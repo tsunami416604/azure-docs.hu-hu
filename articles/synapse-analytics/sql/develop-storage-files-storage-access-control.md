@@ -10,10 +10,10 @@ ms.date: 06/11/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.openlocfilehash: 182ab55f8e86d972293222f8a3bcf32dada89328
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91449470"
 ---
 # <a name="control-storage-account-access-for-sql-on-demand-preview"></a>A Storage-fiók hozzáférésének vezérlése az SQL igény szerinti használatához (előzetes verzió)
@@ -49,7 +49,7 @@ A **közös hozzáférésű aláírás (SAS)** delegált hozzáférést biztosí
 SAS-token beszerzéséhez lépjen a **Azure Portal-> Storage-fiókhoz – > közös hozzáférésű aláírás – > konfigurálja az engedélyeket – > sas létrehozása és kapcsolati karakterlánc.**
 
 > [!IMPORTANT]
-> SAS-token létrehozásakor a jogkivonat elején szerepel egy kérdőjel ("?"). Ha az SQL-ben igény szerint szeretné használni a tokent, el kell távolítania a kérdőjelet ("?") a hitelesítő adatok létrehozásakor. Példa:
+> SAS-token létrehozásakor a jogkivonat elején szerepel egy kérdőjel ("?"). Ha az SQL-ben igény szerint szeretné használni a tokent, el kell távolítania a kérdőjelet ("?") a hitelesítő adatok létrehozásakor. Például:
 >
 > SAS-jogkivonat:? SV = 2018-03-28&SS = bfqt&SRT = SCO&SP = rwdlacup&se = 2019-04-18T20:42:12Z&St = 2019-04-18T12:42:12Z&spr = HTTPS&SIG = lQHczNvrk1KoYLCpFdSsMANd0ef9BrIPBNJ3VYEIq78% 3D
 

@@ -14,17 +14,17 @@ ms.date: 09/09/2020
 ms.author: duau
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 3366f1a16777ecf46951296e4a1c2c28aed75feb
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90031925"
 ---
 # <a name="tutorial-configure-your-rules-engine"></a>Oktatóanyag: a szabályok motorjának konfigurálása
 
 Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre a szabályok motorjának konfigurációját és az első szabályt a Azure Portal és a parancssori felületen egyaránt. 
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 > [!div class="checklist"]
 > - Konfigurálja a szabályok motort a portál használatával.
 > - Szabályok motor konfigurálása az Azure CLI-vel
@@ -108,11 +108,11 @@ Az előző lépésekben konfigurálta és társította a szabályok motorjának 
 
 1. Törölje az összes útválasztási szabályt, amelyhez ez a szabályrendszer-konfiguráció hozzá van rendelve, majd kattintson a Mentés gombra.
 
-    :::image type="content" source="./media/front-door-rules-engine/front-door-routing-rule-association.png" alt-text="Útválasztási szabály társítása":::
+    :::image type="content" source="./media/front-door-rules-engine/front-door-routing-rule-association.png" alt-text="Útválasztási szabályok hozzárendelése":::
 
 1. Most törölheti a szabály motorjának konfigurációját a bejárati ajtóról.
 
-    :::image type="content" source="./media/front-door-rules-engine/front-door-delete-rule-engine-configuration.png" alt-text="Szabály-végrehajtó konfigurációjának törlése":::
+    :::image type="content" source="./media/front-door-rules-engine/front-door-delete-rule-engine-configuration.png" alt-text="Útválasztási szabályok hozzárendelése":::
 
 ## <a name="next-steps"></a>További lépések
 

@@ -6,10 +6,10 @@ ms.topic: overview
 ms.date: 09/16/2020
 ms.author: enewman
 ms.openlocfilehash: ac390fb6624ffc762f77b676c778165e7382f73f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91334038"
 ---
 # <a name="architecture-fundamentals-in-azure-lab-services"></a>Az architektúra alapjai a Azure Lab Servicesban
@@ -38,6 +38,6 @@ A labor Services a tanulók szolgáltatásban való regisztrációját is kezeli
 
 Az osztályterem laborban üzemeltetett tanulói virtuális gépekhez a tesztkörnyezet létrehozója által beállított Felhasználónév és jelszó tartozik.  A tesztkörnyezet létrehozója lehetővé teheti a regisztrált tanulók számára, hogy az első bejelentkezéskor saját jelszavukat válasszák.  
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a labor-szolgáltatásokban elérhető szolgáltatásokról: [Azure Lab Services fogalmak](classroom-labs-concepts.md) és [Azure Lab Services áttekintése](classroom-labs-overview.md).

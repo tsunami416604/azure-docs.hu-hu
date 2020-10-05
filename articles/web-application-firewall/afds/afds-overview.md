@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 05/22/2020
 ms.author: victorh
 ms.openlocfilehash: e3b3b7a058fbd1235619c01e0dca24a3de9036db
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89231435"
 ---
 # <a name="azure-web-application-firewall-on-azure-front-door"></a>Azure webalkalmazási tűzfal az Azure-beli bejárati ajtón
@@ -121,10 +121,10 @@ Ha a bot Protection engedélyezve van, a rendszer a bot-szabályoknak megfelelő
 
 Az összes WAF konfigurálhatja és telepítheti a Azure Portal, a REST API-k, a Azure Resource Manager sablonok és a Azure PowerShell használatával.
 
-## <a name="monitoring"></a>Figyelés
+## <a name="monitoring"></a>Nyomon követés
 
 A WAF figyelése a bejárati ajtón integrált Azure Monitor a riasztások nyomon követésére és a forgalmi trendek egyszerű figyelésére.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ismerje meg az Azure-beli [webalkalmazási tűzfalat Application Gateway](../ag/ag-overview.md)

@@ -13,10 +13,10 @@ ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
 ms.openlocfilehash: 7285325d92949a331833968b8f71fbeffd6543f4
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89437904"
 ---
 # <a name="what-is-conditional-access"></a>Mi az a feltételes hozzáférés?
@@ -98,7 +98,7 @@ Ismerje meg, hogy más szervezetek hogyan használják az Azure AD feltételes h
 
 A [bejelentkezési kockázathoz](concept-conditional-access-conditions.md#sign-in-risk) hozzáférés szükséges az [Identity Protection](../identity-protection/overview-identity-protection.md) szolgáltatáshoz
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Feltételes hozzáférési szabályzat létrehozása darab alapján](concept-conditional-access-policies.md)
 - [A feltételes hozzáférés üzembe helyezésének megtervezése](plan-conditional-access.md)

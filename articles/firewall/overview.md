@@ -10,10 +10,10 @@ ms.date: 09/24/2020
 ms.author: victorh
 Customer intent: As an administrator, I want to evaluate Azure Firewall so I can determine if I want to use it.
 ms.openlocfilehash: 24b30842bea51394a375cf48e09b7547e057405c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91261736"
 ---
 # <a name="what-is-azure-firewall"></a>Mi az Azure Firewall?
@@ -26,7 +26,7 @@ Az Azure Firewall egy felügyelt, felhőalapú hálózatbiztonsági szolgáltat�
 
 Központilag hozhatja létre, érvényesítheti és naplózhatja az alkalmazás- és hálózatelérési szabályzatokat az előfizetésekre és a virtuális hálózatokra vonatkozóan. Az Azure Firewall statikus nyilvános IP-címet használ a virtuális hálózat erőforrásaihoz, így a külső tűzfalak azonosíthatják a virtuális hálózatból érkező forgalmat.  A szolgáltatás teljesen integrálva van az Azure Monitorral a naplózás és az elemzés érdekében.
 
-## <a name="features"></a>Funkciók
+## <a name="features"></a>Szolgáltatások
 
 Azure Firewall szolgáltatásokkal kapcsolatos további tudnivalókért lásd: [Azure Firewall szolgáltatások](features.md).
 
@@ -58,7 +58,7 @@ A nem TCP/UDP-protokollokra (például ICMP) vonatkozó hálózati szűrési sza
 |Az egyéni DNS (előzetes verzió) nem működik a kényszerített bújtatással|Ha a kényszerített bújtatás engedélyezve van, az egyéni DNS (előzetes verzió) nem működik.|A rendszer kivizsgálja a javítást.|
 |Új nyilvános IP-cím támogatása több Availability Zones|Ha két rendelkezésre állási zónával (1 és 2, 2 és 3, vagy 1 és 3) rendelkező tűzfalat telepít, nem adhat hozzá új nyilvános IP-címet.|Ez egy nyilvános IP-cím-erőforrásra vonatkozó korlátozás.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Oktatóanyag: Az Azure Firewall üzembe helyezése és konfigurálása az Azure Portalon](tutorial-firewall-deploy-portal.md)
 - [Azure Firewall üzembe helyezése sablon használatával](deploy-template.md)

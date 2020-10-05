@@ -5,10 +5,10 @@ ms.topic: overview
 ms.date: 04/09/2018
 ms.custom: mvc
 ms.openlocfilehash: 2c17b311811fd2cba46db379fcc766c04dd9d56d
-ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91403075"
 ---
 # <a name="choose-the-right-integration-and-automation-services-in-azure"></a>A megfelelő integrációs és automatizálási szolgáltatások kiválasztása az Azure-ban
@@ -56,9 +56,9 @@ Ezeket a szolgáltatásokat használhatja vegyesen a vezénylések létrehozás�
 | **Fejlesztés** | Kódközpontú (imperatív) | Tervezőközpontú (deklaratív) |
 | **Kapcsolatok** | [Körülbelül egy tucat beépített kötési típus](functions-triggers-bindings.md#supported-bindings), kód írása az egyéni kötésekhez | [Az összekötők nagy gyűjteménye](../connectors/apis-list.md), [Enterprise Integration Pack B2B-forgatókönyvekhez](../logic-apps/logic-apps-enterprise-integration-overview.md), [Egyéni összekötők létrehozása](../logic-apps/custom-connector-overview.md) |
 | **Műveletek** | Minden tevékenység egy Azure-függvény; kód írásával hozhat létre tevékenységfüggvényeket |[Használatra kész műveletek széles választéka](../logic-apps/logic-apps-workflow-actions-triggers.md)|
-| **Figyelés** | [Azure Application Insights](../azure-monitor/app/app-insights-overview.md) | [Azure Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md), [Azure monitor naplók](../logic-apps/monitor-logic-apps.md)|
+| **Nyomon követés** | [Azure Application Insights](../azure-monitor/app/app-insights-overview.md) | [Azure Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md), [Azure monitor naplók](../logic-apps/monitor-logic-apps.md)|
 | **Felügyelet** | [REST API](durable/durable-functions-http-api.md), [Visual Studio](/visualstudio/azure/vs-azure-tools-resources-managing-with-cloud-explorer?view=vs-2019) | [Azure Portal](../logic-apps/quickstart-create-first-logic-app-workflow.md), [REST API](/rest/api/logic/), [PowerShell](/powershell/module/az.logicapp), [Visual Studio](../logic-apps/manage-logic-apps-with-visual-studio.md) |
-| **Végrehajtási környezet** | [Helyileg](functions-runtime-overview.md) vagy a felhőben is futtatható | Csak felhőben futtatható|
+| **Végrehajtás környezete** | [Helyileg](functions-runtime-overview.md) vagy a felhőben is futtatható | Csak felhőben futtatható|
 
 <a name="function"></a>
 
@@ -90,7 +90,7 @@ Az Azure Functions a WebJobs SDK-ra épül, így sok, más Azure-szolgáltatáso
 
 <sup>2</sup> a webjobs (a webjobs SDK nélkül) támogatja a NPM és a NuGet.
 
-### <a name="summary"></a>Összefoglalás
+### <a name="summary"></a>Összegzés
 
 Azure Functions nagyobb fejlesztői hatékonyságot biztosít, mint Azure App Service webjobs. Emellett több lehetőséget is kínál a programozási nyelvek, a fejlesztői környezetek, az Azure-szolgáltatások integrálására és a díjszabásra. A legtöbb forgatókönyvhöz ez a legjobb választás.
 

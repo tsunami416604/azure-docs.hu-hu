@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: quickstart
 ms.date: 06/10/2020
 ms.openlocfilehash: 756c62aa070f05c4b66de0cde6c7df59d9b1d09a
-ms.sourcegitcommit: c4ad4ba9c9aaed81dfab9ca2cc744930abd91298
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/12/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "84735191"
 ---
 # <a name="quickstart-use-the-copy-data-tool-to-copy-data"></a>Gyors útmutató: az Adatok másolása eszközzel másolhatja az Adatmásolást
@@ -33,10 +33,10 @@ Ebben a rövid útmutatóban egy adat-előállítót hoz létre az Azure Portal 
 
 [!INCLUDE [data-factory-quickstart-prerequisites](../../includes/data-factory-quickstart-prerequisites.md)] 
 
-## <a name="create-a-data-factory"></a>Data factory létrehozása
+## <a name="create-a-data-factory"></a>Adat-előállító létrehozása
 
 1. Indítsa el a **Microsoft Edge** vagy a **Google Chrome** böngészőt. A Data Factory felhasználói felületének használata jelenleg csak a Microsoft Edge-ben és a Google Chrome-ban támogatott.
-1. Lépjen a [Azure Portal](https://portal.azure.com). 
+1. Nyissa meg az [Azure Portalt](https://portal.azure.com). 
 1. A Azure Portal menüben válassza az **erőforrás létrehozása**  >  **elemzési**  >  **Data Factory**:
 
     ![Új adat-előállító létrehozása](./media/doc-common-process/new-azure-data-factory-menu.png)
@@ -111,7 +111,7 @@ Ebben a rövid útmutatóban egy adat-előállítót hoz létre az Azure Portal 
 
     ![„Üzembe helyezés kész” lap](./media/quickstart-create-data-factory-copy-data-tool/deployment-page.png)
 
-1. Az alkalmazás a **figyelő** lapra vált. Ezen a lapon látható a folyamat állapota. a lista frissítéséhez kattintson a **frissítés** gombra. Kattintson a **folyamat neve** alatt látható hivatkozásra a tevékenység futtatási részleteinek megtekintéséhez vagy a folyamat újrafuttatásához. 
+1. Az alkalmazás a **figyelő** lapra vált. Ezen a lapon látható a folyamat állapota. A lista frissítéséhez kattintson a **frissítés** gombra. Kattintson a **folyamat neve** alatt látható hivatkozásra a tevékenység futtatási részleteinek megtekintéséhez vagy a folyamat újrafuttatásához. 
    
     ![Folyamat frissítése](./media/quickstart-create-data-factory-copy-data-tool/refresh-pipeline.png)
 

@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 ms.custom: mvc
 ms.openlocfilehash: 26aba84fcc38fddf43c04550b1c3d1ce2d70b21f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87001951"
 ---
 # <a name="quickstart-add-a-simulated-device-to-your-iot-central-application"></a>Gyors útmutató: szimulált eszköz hozzáadása a IoT Central alkalmazáshoz
@@ -120,7 +120,7 @@ Eszköz sablonjának közzététele:
 
 1. Az **eszköz sablonjának közzététele az alkalmazás** párbeszédpanelen válassza a **Közzététel**lehetőséget. 
 
-Miután közzétett egy sablont, az az **eszközök** lapon látható. Egy közzétett eszköz sablonjában nem szerkesztheti az eszköz képességeinek modelljét új verzió létrehozása nélkül. A közzétett eszközön azonban verziószámozás nélkül is frissítheti a felhő tulajdonságait, testreszabásait és nézeteit. A módosítások elvégzése után válassza a **Közzététel** lehetőséget a módosítások elküldéséhez az operátornak.
+Miután közzétett egy sablont, az az **eszközök** lapon látható. Egy közzétett eszköz sablonjában nem szerkesztheti az eszköz képességeinek modelljét új verzió létrehozása nélkül. A közzétett eszközön azonban verziószámozás nélkül is frissítheti a felhő tulajdonságait, testreszabásait és nézeteit. A módosítások elvégzése után válassza a **Közzététel**  lehetőséget a módosítások elküldéséhez az operátornak.
 
 ## <a name="add-a-simulated-device"></a>Szimulált eszköz hozzáadása
 

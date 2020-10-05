@@ -9,10 +9,10 @@ ms.topic: include
 ms.date: 03/05/2020
 ms.author: aahi
 ms.openlocfilehash: bdbd183ba161c96e0ed8e160ce602da2ec30dfb7
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "85940419"
 ---
 Az Bing Web Search ügyféloldali kódtár megkönnyíti a Bing Web Search integrálását a Python-alkalmazásba. Ebben a rövid útmutatóban elsajátíthatja a kérésküldésnek, a JSON-válaszok fogadásának, valamint az eredmények szűrésének és elemzésének módját.
@@ -83,7 +83,7 @@ Ha a válasz tartalmaz weblapokat, képeket, cikkeket vagy videókat, a rendszer
 
 1. Hozzon létre egy új Python-projektet a kedvenc IDE-környezetében vagy szerkesztőjében.
 
-1. Másolja a mintát a projektbe. `endpoint`az az alábbi globális végpont lehet, vagy az [Egyéni altartomány](~/articles/cognitive-services/cognitive-services-custom-subdomains.md) végpontja jelenik meg az erőforrás Azure Portalban.:  
+1. Másolja a mintát a projektbe. `endpoint` az az alábbi globális végpont lehet, vagy az [Egyéni altartomány](~/articles/cognitive-services/cognitive-services-custom-subdomains.md) végpontja jelenik meg az erőforrás Azure Portalban.:  
 
     ```python
     # Import required modules.
@@ -169,7 +169,7 @@ Ha a válasz tartalmaz weblapokat, képeket, cikkeket vagy videókat, a rendszer
 
 1. Cserélje le a kifejezést a `YOUR_ENDPOINT` portálon a végpont URL-címére, és távolítsa el a "Bing/v 7.0" szakaszt a végpontról.
 
-1. Futtassa a programot. Példa: `python your_program.py`.
+1. Futtassa a programot. Például: `python your_program.py`.
 
 ## <a name="define-functions-and-filter-results"></a>Függvények definiálása és az eredmények szűrése
 
@@ -309,7 +309,7 @@ Ez a példa a `answer_count` , a és a paramétereket használja a `promote` `sa
 
 1. Futtassa a programot.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha végzett ezzel a projekttel, ne felejtse el eltávolítani az előfizetői azonosítót a program kódjából és inaktiválni a virtuális környezetet.
 
@@ -318,6 +318,6 @@ Ha végzett ezzel a projekttel, ne felejtse el eltávolítani az előfizetői az
 > [!div class="nextstepaction"]
 > [Cognitive Services Python SDK-minták](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples)
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 * [Azure Python SDK-referencia](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/websearch)

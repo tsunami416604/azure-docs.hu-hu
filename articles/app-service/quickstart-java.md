@@ -1,6 +1,6 @@
 ---
 title: 'Gyors útmutató: Java-alkalmazás létrehozása Azure App Service'
-description: Percek alatt üzembe helyezheti az első Java-"Helló világ!" alkalmazás Azure App Service. A Mavenhez készült Azure Web App beépülő modul lehetővé teszi a Java-alkalmazások üzembe helyezését.
+description: Percek alatt üzembe helyezheti az első Java-„Helló világ!” alkalmazás Azure App Service. A Mavenhez készült Azure Web App beépülő modul lehetővé teszi a Java-alkalmazások üzembe helyezését.
 keywords: Azure, app Service, Web App, Windows, Linux, Java, Maven, gyors útmutató
 author: jasonfreeberg
 ms.assetid: 582bb3c2-164b-42f5-b081-95bfcb7a502a
@@ -11,10 +11,10 @@ ms.author: jafreebe
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
 zone_pivot_groups: app-service-platform-windows-linux
 ms.openlocfilehash: 4041623d1c6ae464afd20e3beff753fb89e0a350
-ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91405071"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service"></a>Gyors útmutató: Java-alkalmazás létrehozása Azure App Service
@@ -256,7 +256,7 @@ az group delete --name <your resource group name; for example: helloworld-155840
 
 A parancs futtatása egy percig is eltarthat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 > [!div class="nextstepaction"]
 > [Kapcsolódás Azure SQL Database Javával](../azure-sql/database/connect-query-java.md?toc=%2fazure%2fjava%2ftoc.json)
 

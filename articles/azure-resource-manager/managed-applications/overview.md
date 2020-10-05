@@ -6,10 +6,10 @@ ms.topic: overview
 ms.date: 07/12/2019
 ms.author: tomfitz
 ms.openlocfilehash: eb93321e0eb1b3d2dc7963f03715b1aedb4cfdcb
-ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91403687"
 ---
 # <a name="azure-managed-applications-overview"></a>Az Azure Managed Applications áttekintése
@@ -45,7 +45,7 @@ A szolgáltatáskatalógus egy belső katalógus azokról a megoldásokról, ame
 
 A szolgáltatáskatalógusban elérhető felügyelt alkalmazások közzétételével kapcsolatban lásd a [szolgáltatáskatalógusban elérhető alkalmazások létrehozását](publish-service-catalog-app.md) ismertető témakört.
 
-### <a name="marketplace"></a>Marketplace
+### <a name="marketplace"></a>Piactér
 
 A szolgáltatásaikat értékesíteni kívánó szállítók a felügyelt alkalmazásokat elérhetővé tehetik az Azure Marketplace-en. Miután a szállító közzétesz egy alkalmazást, az elérhetővé válik a vállalaton kívüli felhasználók számára. Ezzel a módszerrel a felügyelt szolgáltatások szolgáltatói (MSP-k), a független szoftverszállítók (ISV-k) és a rendszerintegrátorok (SI-k) minden Azure-ügyfél számára felkínálhatják a megoldásaikat.
 

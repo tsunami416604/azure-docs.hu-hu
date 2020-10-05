@@ -16,10 +16,10 @@ ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: it-pro;
 ms.openlocfilehash: b85f1d8bd7249ad26ff957a72a9cc7285158caba
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91397725"
 ---
 # <a name="classic-subscription-administrator-roles-azure-roles-and-azure-ad-roles"></a>Klasszikus előfizetés-rendszergazdai szerepkörök, Azure-szerepkörök és Azure AD-szerepkörök
@@ -129,5 +129,5 @@ Számos Azure AD-szerepkör az Azure AD-t és Microsoft 365-t, például a glob�
 ## <a name="next-steps"></a>További lépések
 
 - [Mi az az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)?](overview.md)
-- [Adminisztrátori szerepkörök engedélyei az Azure Active Directoryban](../active-directory/users-groups-roles/directory-assign-admin-roles.md)
+- [Rendszergazdai szerepkörök engedélyezése az Azure Active Directoryban](../active-directory/users-groups-roles/directory-assign-admin-roles.md)
 - [Klasszikus Azure-előfizetés rendszergazdái](classic-administrators.md)

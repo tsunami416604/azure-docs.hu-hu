@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 11/28/2018
 ms.author: duau
 ms.openlocfilehash: 7a347d5cd72fcf955dae0aa8319632fdb43d3bf7
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89400262"
 ---
 # <a name="quickstart-create-a-traffic-manager-profile-using-the-azure-portal"></a>Gyors útmutató: Traffic Manager profil létrehozása a Azure Portal használatával
@@ -71,7 +71,7 @@ Hozzon létre egy Traffic Manager profilt, amely a végponti prioritás alapján
     | Erőforráscsoport | Válassza a *myResourceGroupTM1*lehetőséget.|
     | Hely |Ez a beállítás az erőforráscsoport helyét jelöli. Nincs hatása a globálisan telepítendő Traffic Manager-profilra.|
 
-3. Válassza a **Létrehozás** lehetőséget.
+3. Kattintson a **Létrehozás** gombra.
 
 ## <a name="add-traffic-manager-endpoints"></a>Traffic Manager-végpontok hozzáadása
 
@@ -85,7 +85,7 @@ Adja hozzá az *USA keleti régiójában* lévő webhelyt elsődleges végpontk�
     | Beállítás | Érték |
     | ------- | ------|
     | Típus | Válassza ki az **Azure-végpontot**. |
-    | Name | Adja meg a *myPrimaryEndpoint*. |
+    | Név | Adja meg a *myPrimaryEndpoint*. |
     | Célerőforrás típusa | Válassza a **app Service**lehetőséget. |
     | Célerőforrás | Válassza **az App Service az**  >  **USA keleti**régiója lehetőséget. |
     | Prioritás | Válassza az **1**lehetőséget. Az összes forgalom állapota erre a végpontra kerül, amikor kifogástalan állapotú. |
@@ -98,7 +98,7 @@ Adja hozzá az *USA keleti régiójában* lévő webhelyt elsődleges végpontk�
     | Beállítás | Érték |
     | ------- | ------|
     | Típus | Válassza ki az **Azure-végpontot**. |
-    | Name | Adja meg a *myFailoverEndpoint*. |
+    | Név | Adja meg a *myFailoverEndpoint*. |
     | Célerőforrás típusa | Válassza a **app Service**lehetőséget. |
     | Célerőforrás | Válassza **az App Service**  >  **Nyugat-Európa**kiválasztása lehetőséget. |
     | Prioritás | Válassza a **2**lehetőséget. Az összes forgalom erre a feladatátvételi végpontra kerül, ha az elsődleges végpont állapota nem megfelelő. |
@@ -141,7 +141,7 @@ Az elsődleges végpont nem érhető el, ezért a rendszer átirányítja a fela
 
 Ha elkészült, törölje az erőforráscsoportot, a webalkalmazásokat és az összes kapcsolódó erőforrást. Ehhez jelölje ki az egyes elemeket az irányítópulton, és válassza a **Törlés** lehetőséget az egyes oldalak tetején.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban létrehozott egy Traffic Manager profilt. Lehetővé teszi a felhasználói forgalom közvetlen használatát a magas rendelkezésre állású webalkalmazásokhoz. Ha többet szeretne megtudni az útválasztási forgalomról, folytassa a Traffic Manager oktatóanyagokkal.
 

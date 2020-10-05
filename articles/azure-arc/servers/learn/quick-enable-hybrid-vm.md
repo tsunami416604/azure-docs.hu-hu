@@ -4,10 +4,10 @@ description: Ismerje meg, hogyan csatlakozhat és regisztrálhat hibrid gépet a
 ms.topic: quickstart
 ms.date: 09/23/2020
 ms.openlocfilehash: b57f30821a105a99041d8187716b75096116ea8e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91327884"
 ---
 # <a name="quickstart-connect-hybrid-machine-with-azure-arc-enabled-servers"></a>Gyors útmutató: hibrid gép összekapcsolása az Azure arc-kompatibilis kiszolgálókkal
@@ -99,9 +99,9 @@ Az Azure arc letöltésének, telepítésének és létrehozásának automatizá
 
 Miután telepítette az ügynököt, és konfigurálta az Azure arc-kompatibilis kiszolgálókhoz való csatlakozáshoz, lépjen a Azure Portal, és ellenőrizze, hogy a kiszolgáló sikeresen csatlakozott-e. Megtekintheti a gépet a [Azure Portalban](https://aka.ms/hybridmachineportal).
 
-:::image type="content" source="./media/quick-enable-hybrid-vm/enabled-machine.png" alt-text="A számítógép sikeres csatlakoztatása" border="false":::
+:::image type="content" source="./media/quick-enable-hybrid-vm/enabled-machine.png" alt-text="Az ív használatára képes kiszolgálók keresése az összes szolgáltatásban" border="false":::
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy engedélyezte a Linux vagy Windows rendszerű hibrid gépet, és sikeresen csatlakozott a szolgáltatáshoz, készen áll a Azure Policy az Azure-ban való megfelelőség megismerésére.
 

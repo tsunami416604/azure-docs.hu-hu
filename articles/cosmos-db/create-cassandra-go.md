@@ -9,10 +9,10 @@ ms.devlang: go
 ms.topic: quickstart
 ms.date: 07/14/2020
 ms.openlocfilehash: ba53fb786b1d1f61535168cda2152049a12dfb99
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "86535790"
 ---
 # <a name="quickstart-build-a-go-app-with-the-gocql-client-to-manage-azure-cosmos-db-cassandra-api-data"></a>Gyors útmutató: go-alkalmazás létrehozása az `gocql` ügyféllel a Azure Cosmos DB Cassandra API-alapú adatkezeléshez
@@ -128,7 +128,7 @@ func DropKeySpaceIfExists(keyspace string, session *gocql.Session) {
 }
 ```
 
-`CreateKeySpace`a függvény a () létrehozásához használatos `keyspace` `user_profile` .
+`CreateKeySpace` a függvény a () létrehozásához használatos `keyspace` `user_profile` .
 
 ```go
 const createKeyspace = "CREATE KEYSPACE %s WITH REPLICATION = { 'class' : 'NetworkTopologyStrategy', 'datacenter1' : 1 }"
@@ -158,7 +158,7 @@ func CreateUserTable(keyspace, table string, session *gocql.Session) {
 
 A térköz és a tábla létrehozása után a rendszer szifilisz-műveleteket (a részét) hívja meg `operations\crud.go` . 
 
-`InsertUser`a létrehozásához használatos `User` . A felhasználó adatait (azonosító, név és város) a lekérdezési argumentumok használatával állítja be[`Bind`](https://godoc.org/github.com/gocql/gocql#Query.Bind)
+`InsertUser` a létrehozásához használatos `User` . A felhasználó adatait (azonosító, név és város) a lekérdezési argumentumok használatával állítja be [`Bind`](https://godoc.org/github.com/gocql/gocql#Query.Bind)
 
 ```go
 const createQuery = "INSERT INTO %s.%s (user_id, user_name , user_bcity) VALUES (?,?,?)"
@@ -172,7 +172,7 @@ func InsertUser(keyspace, table string, session *gocql.Session, user model.User)
 }
 ```
 
-`FindUser`egy adott felhasználói azonosítóval rendelkező felhasználó () keresésére szolgál, `model\user.go` miközben [`Scan`](https://godoc.org/github.com/gocql/gocql#Iter.Scan) a felhasználói attribútumokat (a Cassandra által visszaadottak) az egyes változókra ( `userid` , `name` ,) használja `city` – csak az egyik módszer, amellyel a keresési lekérdezési eredményként kapott eredményt lehet használni.
+`FindUser` egy adott felhasználói azonosítóval rendelkező felhasználó () keresésére szolgál, `model\user.go` miközben [`Scan`](https://godoc.org/github.com/gocql/gocql#Iter.Scan) a felhasználói attribútumokat (a Cassandra által visszaadottak) az egyes változókra ( `userid` , `name` ,) használja `city` – csak az egyik módszer, amellyel a keresési lekérdezési eredményként kapott eredményt lehet használni.
 
 ```go
 const selectQuery = "SELECT * FROM %s.%s where user_id = ?"
@@ -193,7 +193,7 @@ func FindUser(keyspace, table string, id int, session *gocql.Session) model.User
 }
 ```
 
-`FindAllUsers`az összes felhasználó beolvasására szolgál. [`SliceMap`](https://godoc.org/github.com/gocql/gocql#Iter.SliceMap)rövidítéssel van elfoglalva, hogy a felhasználó összes adatát egy szelet s betű formájában kapja meg `map` . Gondoljunk a `map` kulcs-érték párokra, ahol az oszlopnév (például `user_id` ) a kulcs a megfelelő értékkel együtt.
+`FindAllUsers` az összes felhasználó beolvasására szolgál. [`SliceMap`](https://godoc.org/github.com/gocql/gocql#Iter.SliceMap) rövidítéssel van elfoglalva, hogy a felhasználó összes adatát egy szelet s betű formájában kapja meg `map` . Gondoljunk a `map` kulcs-érték párokra, ahol az oszlopnév (például `user_id` ) a kulcs a megfelelő értékkel együtt.
 
 ```go
 const findAllUsersQuery = "SELECT * FROM %s.%s"
@@ -254,17 +254,17 @@ go run main.go
 
 4. Ha megnyitja az **Adatkezelőt** az Azure Portalon, lekérdezheti és módosíthatja és használhatja az új adatokat. 
 
-    :::image type="content" source="./media/create-cassandra-go/view-data-explorer-go-app.png" alt-text="Adatkezelő-Azure Cosmos DBban lévő adatmegjelenítés":::
+    :::image type="content" source="./media/create-cassandra-go/view-data-explorer-go-app.png" alt-text="Részletek megtekintése és másolása a kapcsolati sztring lapról Azure Portal":::
 
 ## <a name="review-slas-in-the-azure-portal"></a>Tekintse át az SLA-kat az Azure Portalon
 
 [!INCLUDE [cosmosdb-tutorial-review-slas](../../includes/cosmos-db-tutorial-review-slas.md)]
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebből a rövid útmutatóból megtudhatta, hogyan hozhat létre egy Azure Cosmos DB fiókot Cassandra API használatával, és hogyan futtathat egy go-adatbázist és egy tárolót. Mostantól további adatait is importálhatja a Azure Cosmos DB-fiókjába. 
 

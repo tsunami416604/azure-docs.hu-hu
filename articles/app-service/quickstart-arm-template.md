@@ -9,10 +9,10 @@ ms.date: 05/25/2020
 ms.custom: subject-armqs
 zone_pivot_groups: app-service-platform-windows-linux
 ms.openlocfilehash: e577616e0976ca050a55c8524e68129545ed1912
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89653574"
 ---
 # <a name="create-app-service-app-using-an-azure-resource-manager-template"></a>App Service alkalmazás létrehozása Azure Resource Manager sablon használatával
@@ -47,7 +47,7 @@ Ez a sablon számos olyan paramétert tartalmaz, amelyek előre definiálva vann
 | location   | sztring  | "[[resourceGroup (). location](/azure/azure-resource-manager/templates/template-functions-resource#resourcegroup)]" | Alkalmazás-régió |
 | SKU        | sztring  | F1                         | Példány mérete (F1 = ingyenes csomag) |
 | language   | sztring  | .net                       | Programozási nyelv stack (.net, php, node, HTML) |
-| helloWorld | boolean | Hamis                        | True = ""Helló világ!"alkalmazás" alkalmazás üzembe helyezése |
+| helloWorld | boolean | Hamis                        | True = "„Helló világ!” alkalmazás" alkalmazás üzembe helyezése |
 | reszakadás    | sztring  | " "                          | Külső git-tárház (opcionális) |
 ::: zone-end
 ::: zone pivot="platform-linux"
@@ -124,7 +124,7 @@ Tallózással keresse `http://<app_name>.azurewebsites.net/` meg és ellenőrizz
 
 Ha már nincs rá szükség, [törölje az erőforráscsoportot](../azure-resource-manager/management/delete-resource-group.md?tabs=azure-portal#delete-resource-group).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Üzembe helyezés a helyi Gitből](deploy-local-git.md)

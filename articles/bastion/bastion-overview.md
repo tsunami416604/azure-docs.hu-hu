@@ -8,10 +8,10 @@ ms.topic: overview
 ms.date: 09/01/2020
 ms.author: cherylmc
 ms.openlocfilehash: 680eb8414696109e8cc15d82d8bd5f2c5740f488
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89291874"
 ---
 # <a name="what-is-azure-bastion"></a>Mi az az Azure Bastion?
@@ -47,7 +47,7 @@ A következő szolgáltatások érhetők el:
 * A **portok vizsgálatával szembeni védelem:** Mivel a virtuális gépeket nem kell nyilvános internetre kiadnia, a virtuális gépek a virtuális hálózatán kívüli rosszindulatú felhasználók által a portok vizsgálatával védve vannak.
 * **Védelem a nulla napi kihasználat ellen. Csak egy helyen kell megerősíteni:** az Azure Bastion egy teljes körűen felügyelt Pásti-szolgáltatás. Mivel a virtuális hálózat peremén helyezkedik el, nem kell aggódnia a virtuális hálózatban lévő virtuális gépek megerősítésével kapcsolatban. Az Azure-platform az Azure-ban megerősített és mindig naprakészen tartja a napi zéró kihasználást.
 
-## <a name="whats-new"></a><a name="new"></a>Újdonságok
+## <a name="whats-new"></a><a name="new"></a>Mi újság?
 
 Fizessen elő az RSS-hírcsatornára, és tekintse meg az Azure-szolgáltatások legújabb frissítéseit az [Azure Updates](https://azure.microsoft.com/updates/?category=networking&query=Azure%20Bastion) oldalon.
 

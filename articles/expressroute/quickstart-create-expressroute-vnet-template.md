@@ -10,10 +10,10 @@ ms.custom: subject-armsq
 ms.date: 08/31/2020
 ms.author: duau
 ms.openlocfilehash: f1dbb9623ddc87f9940fd97b05abbee113fd71c4
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90016554"
 ---
 # <a name="quickstart-create-an-expressroute-circuit-with-private-peering-using-an-arm-template"></a>Gyors útmutató: ExpressRoute-áramkör létrehozása egy ARM-sablon használatával
@@ -92,11 +92,11 @@ A Azure PowerShell a sablon üzembe helyezésére szolgál. A Azure PowerShellon
 
 1. Az erőforráscsoport az alábbi, itt látható erőforrásokat tartalmazza:
 
-     :::image type="content" source="./media/quickstart-create-expressroute-vnet/expressroute-resource-group.png" alt-text="ExpressRoute üzembe helyezési erőforráscsoport":::
+     :::image type="content" source="./media/quickstart-create-expressroute-vnet/expressroute-resource-group.png" alt-text="ExpressRoute Resource Manager-sablon PowerShell üzembe helyezési kimenete":::
 
 1. Válassza ki az ExpressRoute áramkör **er-ck01** annak ellenőrzéséhez, hogy az áramkör állapota **engedélyezve**van-e, a szolgáltató állapota nincs **kiépítve** , és a privát társítás állapota **kiépítve**.
 
-    :::image type="content" source="./media/quickstart-create-expressroute-vnet/expressroute-circuit.png" alt-text="ExpressRoute üzembe helyezési áramkör":::
+    :::image type="content" source="./media/quickstart-create-expressroute-vnet/expressroute-circuit.png" alt-text="ExpressRoute Resource Manager-sablon PowerShell üzembe helyezési kimenete":::
 
 > [!NOTE]
 > A virtuális hálózat áramkörhöz való összekapcsolásához meg kell hívnia a szolgáltatót a létesítési folyamat befejezéséhez.
@@ -111,7 +111,7 @@ Az erőforráscsoport törléséhez hívja meg a következő `Remove-AzResourceG
 Remove-AzResourceGroup -Name <your resource group name>
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban létrehozta a következőket:
 * ExpressRoute-kapcsolatcsoport

@@ -13,10 +13,10 @@ ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
 ms.openlocfilehash: a8bfa91ac9b70c0ff4f461bd9e10899d1170b24d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91272514"
 ---
 # <a name="failover-cluster-instances-with-sql-server-on-azure-virtual-machines"></a>Feladatátvevő fürt példányai SQL Server az Azure-ban Virtual Machines
@@ -48,8 +48,8 @@ Az Azure-beli virtuális gépeken SQL Server különböző lehetőségeket kín�
 
 ||[Azure megosztott lemezek](../../../virtual-machines/windows/disks-shared.md)|[Prémium fájlmegosztás](../../../storage/files/storage-how-to-create-premium-fileshare.md) |[Közvetlen tárolóhelyek (S2D)](/windows-server/storage/storage-spaces/storage-spaces-direct-overview)|
 |---------|---------|---------|---------|
-|**Operációs rendszer minimális verziója**| Mind |Windows Server 2012|Windows Server 2016|
-|**Minimális SQL Server-verzió**|Mind|SQL Server 2012|SQL Server 2016|
+|**Operációs rendszer minimális verziója**| Összes |Windows Server 2012|Windows Server 2016|
+|**Minimális SQL Server-verzió**|Összes|SQL Server 2012|SQL Server 2016|
 |**Támogatott virtuális gépek rendelkezésre állása** |Rendelkezésre állási csoportok Proximity elhelyezési csoportokkal |Rendelkezésre állási készletek és rendelkezésre állási zónák|Rendelkezésre állási csoportok |
 |**A FileStream támogatása**|Igen|Nem|Igen |
 |**Azure BLOB-gyorsítótár**|Nem|Nem|Igen|
@@ -138,7 +138,7 @@ Például a NetApp Private Storage (NPS) egy iSCSI-célt tesz elérhetővé az E
 
 A Microsoft-partnerek megosztott tárolási és adatreplikációs megoldásaiért forduljon a szállítóhoz a feladatátvételi adatokhoz való hozzáféréssel kapcsolatos esetleges problémákhoz.
 
-## <a name="connectivity"></a>Kapcsolatok
+## <a name="connectivity"></a>Kapcsolat
 
 Az Azure-SQL Serverokkal rendelkező feladatátvevő fürt példányai Virtual Machines egy [elosztott hálózati nevet (DNN)](hadr-distributed-network-name-dnn-configure.md) vagy egy [virtuális hálózati nevet (VNN)](hadr-vnn-azure-load-balancer-configure.md) használ a Azure Load Balancer használatával, hogy a forgalmat az SQL Server példányra irányítsa, függetlenül attól, hogy melyik csomópont tulajdonosa a fürtözött erőforrás. Bizonyos szolgáltatások és a DNN SQL Server-vel való használata esetén további szempontokat is figyelembe kell venni. További információért lásd: [DNN együttműködés a SQL Server](failover-cluster-instance-dnn-interoperability.md) -os-vel. 
 
@@ -163,7 +163,7 @@ Az Azure Virtual Machines az MSDTC nem támogatott a Windows Server 2016-es vagy
 - Az alapszintű Load Balancer nem kezeli az RPC-portokat.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tekintse át a [fürt konfigurációjának ajánlott eljárásait](hadr-cluster-best-practices.md), majd [készítse elő a SQL Server VMt a következőre:](failover-cluster-instance-prepare-vm.md). 
 

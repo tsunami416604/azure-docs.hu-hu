@@ -4,10 +4,10 @@ description: Az Azure-alkalmazások és-erőforrások kezelésével kapcsolatos 
 ms.date: 09/09/2020
 ms.topic: overview
 ms.openlocfilehash: 0aaa23dd2841802919cfdfcc857a189e072a5c6b
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89662139"
 ---
 # <a name="what-are-the-azure-management-areas"></a>Mik az Azure felügyeleti területei?
@@ -26,7 +26,7 @@ Egyetlen Azure-szolgáltatás sem tölti ki teljesen az adott felügyeleti terü
 
 A következő szakaszok röviden ismertetik az egyes felügyeleti területeket, és az ezek kezelésére hivatott Azure-szolgáltatások részletes ismertetésére mutató hivatkozásokat adnak meg.
 
-## <a name="monitor"></a>Monitor
+## <a name="monitor"></a>Figyelés
 
 A monitorozás az adatok összegyűjtésére és elemzésére szolgál az erőforrások teljesítményének, állapotának és rendelkezésre állásának naplózása érdekében. Egy hatékony figyelési stratégia segíti az összetevők működésének megértését és az értesítésekkel való üzemidő növelését. A monitoring áttekintése, amely az [Azure-alkalmazások és-erőforrások figyeléséhez](../azure-monitor/overview.md)használt különböző szolgáltatásokat fedi le.
 

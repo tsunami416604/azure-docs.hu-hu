@@ -9,10 +9,10 @@ ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-csharp
 ms.openlocfilehash: fa37db7a5c63f7a5e8a84d98afbb81e007904974
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89001433"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-for-net"></a>Rövid útmutató: Az Azure Blob Storage .NET-hez készült ügyféloldali kódtára (v12)
@@ -22,7 +22,7 @@ Ismerkedés a .NET-hez készült Azure Blob Storage ügyféloldali kódtáraval.
 Használja az Azure Blob Storage ügyféloldali kódtárat a .NET-hez a következőhöz:
 
 * Tároló létrehozása
-* BLOB feltöltése az Azure Storage-ba
+* Blob feltöltése az Azure Storage-ba
 * Egy tároló összes blobjának listázása
 * A blob letöltése a helyi számítógépre
 * Tároló törlése
@@ -50,7 +50,7 @@ Ez a szakasz végigvezeti a projekt előkészítésének folyamatán a .NET-hez 
 
 Hozzon létre egy *BlobQuickstartV12*nevű .net Core-alkalmazást.
 
-1. A konzol ablakban (például cmd, PowerShell vagy bash) az `dotnet new` paranccsal hozzon létre egy új, *BlobQuickstartV12*nevű Console-alkalmazást. Ez a parancs egy egyszerű ""Helló világ!"alkalmazás" C#-projektet hoz létre egyetlen forrásfájlban: *program.cs*.
+1. A konzol ablakban (például cmd, PowerShell vagy bash) az `dotnet new` paranccsal hozzon létre egy új, *BlobQuickstartV12*nevű Console-alkalmazást. Ez a parancs egy egyszerű "„Helló világ!” alkalmazás" C#-projektet hoz létre egyetlen forrásfájlban: *program.cs*.
 
    ```console
    dotnet new console -n BlobQuickstartV12
@@ -133,7 +133,7 @@ Az alábbi kódrészletek azt mutatják be, hogyan végezheti el a következőke
 * [A kapcsolati sztring lekérése](#get-the-connection-string)
 * [Tároló létrehozása](#create-a-container)
 * [Blobok feltöltése tárolóba](#upload-blobs-to-a-container)
-* [A tárolóban lévő blobok listázása](#list-the-blobs-in-a-container)
+* [Tárolóban lévő blobok kilistázása](#list-the-blobs-in-a-container)
 * [Blobok letöltése](#download-blobs)
 * [Tároló törlése](#delete-a-container)
 
@@ -207,7 +207,7 @@ await blobClient.UploadAsync(uploadFileStream, true);
 uploadFileStream.Close();
 ```
 
-### <a name="list-the-blobs-in-a-container"></a>A tárolóban lévő blobok listázása
+### <a name="list-the-blobs-in-a-container"></a>Tárolóban lévő blobok kilistázása
 
 A tárolóban lévő Blobok listázása a [GetBlobsAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsasync) metódus meghívásával. Ebben az esetben a tárolóhoz csak egy blob lett hozzáadva, így a listázási művelet csak ezt az egy blobot adja vissza.
 
@@ -308,7 +308,7 @@ A tisztítási folyamat megkezdése előtt tekintse *meg a két fájl adatmappá
 
 A fájlok ellenőrzése után nyomja le az **ENTER** billentyűt a tesztoldal törléséhez és a bemutató befejezéséhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ennek a rövid útmutatónak a segítségével megismerkedett a blobok a .NET használatával való fel- és letöltésével, valamint kilistázásával.
 

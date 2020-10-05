@@ -4,10 +4,10 @@ description: Létrehozhat egy QnA Maker-tudásbázist a saját tartalmak, péld�
 ms.topic: quickstart
 ms.date: 05/26/2020
 ms.openlocfilehash: 3cc38ca49820b1a97ec11c890bfd0ef1670f6eef
-ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/08/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89535849"
 ---
 # <a name="quickstart-create-train-and-publish-your-qna-maker-knowledge-base"></a>Rövid útmutató: a QnA Maker Tudásbázis létrehozása, betanítása és közzététele
@@ -64,7 +64,7 @@ Létrehozhat egy QnA Maker-tudásbázist a saját tartalmak, például gyakori k
 
     ` * Azure QnA Maker service\n* Azure Cognitive Search\n* Azure web app\n* Azure app plan`
 
-    :::image type="content" source="../media/qnamaker-create-publish-knowledge-base/add-question-and-answer.png" alt-text="Adja hozzá a kérdést szövegként és a Markdown formázott választ.":::
+    :::image type="content" source="../media/qnamaker-create-publish-knowledge-base/add-question-and-answer.png" alt-text="Képernyőkép a QnA Maker szolgáltatás tudásbázisának kiválasztásáról":::
 
     A Markdown szimbóluma `*` . Az `\n` új sorhoz használatos.
 
@@ -81,7 +81,7 @@ A jobb felső sarokban kattintson a **Mentés és a betanítás** lehetőségre 
 
     `How many Azure services are used by a knowledge base?`
 
-    :::image type="content" source="../media/qnamaker-create-publish-knowledge-base/test-panel-in-qna-maker.png" alt-text="Írjon be egy példát egy felhasználói lekérdezésre a szövegmezőben.":::
+    :::image type="content" source="../media/qnamaker-create-publish-knowledge-base/test-panel-in-qna-maker.png" alt-text="Képernyőkép a QnA Maker szolgáltatás tudásbázisának kiválasztásáról":::
 
 1. Válassza az **Inspect** (Vizsgálat) lehetőséget a válasz részletesebb vizsgálatához. A test (teszt) ablak segítségével tesztelheti a Tudásbázis módosításait, mielőtt közzéteszi a tudásbázist.
 
@@ -114,7 +114,7 @@ Ha módosítja a tudásbázist, és újból közzéteszi, nem kell további műv
 
 1. Megnyílik egy új böngésző lap a Azure Portal számára a Azure Bot Service létrehozási oldalával. Konfigurálja az Azure bot Service-t. A robot és a QnA Maker megoszthatják a Web App Service-csomagot, de nem oszthatják meg a webalkalmazást. Ez azt jelenti, hogy a robot **alkalmazásának neve** nem lehet a QnA Maker szolgáltatás alkalmazásának neve.
 
-    * **Nem**
+    * **Ajánlott**
         * A bot fogantyújának módosítása – ha nem egyedi.
         * Válassza ki az SDK nyelvét. A robot létrehozása után letöltheti a kódot a helyi fejlesztési környezetbe, és folytathatja a fejlesztési folyamatot.
     * **Nem ajánlott**
@@ -131,7 +131,7 @@ Ha módosítja a tudásbázist, és újból közzéteszi, nem kell további műv
 
     A csevegési robot a Tudásbázisban válaszol.
 
-    :::image type="content" source="../media/qnamaker-create-publish-knowledge-base/test-web-chat.png" alt-text="Adjon meg egy felhasználói lekérdezést a teszt webes csevegésben.":::
+    :::image type="content" source="../media/qnamaker-create-publish-knowledge-base/test-web-chat.png" alt-text="Képernyőkép a QnA Maker szolgáltatás tudásbázisának kiválasztásáról":::
 
 ## <a name="what-did-you-accomplish"></a>Mit ért el?
 

@@ -8,24 +8,24 @@ ms.topic: include
 ms.date: 09/01/2020
 ms.author: pafarley
 ms.openlocfilehash: cb066ecc1dc11985c0ccb0fa687a15d6b038b9fa
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89321618"
 ---
 Tekintse meg az alábbi lista az SKU-ket és a díjszabási információkat. 
 
 #### <a name="multi-service"></a>Több szolgáltatás
 
-| Szolgáltatás                    | Altípus                      |
+| Szolgáltatás                    | Erőforrás                      |
 |----------------------------|---------------------------|
 | Több szolgáltatás. További információkért tekintse meg a [díjszabási](https://azure.microsoft.com/pricing/details/cognitive-services/) oldalt.            | `CognitiveServices`     |
 
 
 #### <a name="vision"></a>Látás
 
-| Szolgáltatás                    | Altípus                      |
+| Szolgáltatás                    | Erőforrás                      |
 |----------------------------|---------------------------|
 | Computer Vision            | `ComputerVision`          |
 | Custom Vision – előrejelzés | `CustomVision.Prediction` |
@@ -36,7 +36,7 @@ Tekintse meg az alábbi lista az SKU-ket és a díjszabási információkat.
 
 #### <a name="search"></a>Keresés
 
-| Szolgáltatás            | Altípus                  |
+| Szolgáltatás            | Erőforrás                  |
 |--------------------|-----------------------|
 | Bing Autosuggest   | `Bing.Autosuggest.v7` |
 | Bing – Egyéni keresés | `Bing.CustomSearch`   |
@@ -46,14 +46,14 @@ Tekintse meg az alábbi lista az SKU-ket és a díjszabási információkat.
 
 #### <a name="speech"></a>Speech
 
-| Szolgáltatás            | Altípus                 |
+| Szolgáltatás            | Erőforrás                 |
 |--------------------|----------------------|
 | Beszédszolgáltatások    | `SpeechServices`     |
 | Beszédfelismerés | `SpeakerRecognition` |
 
 #### <a name="language"></a>Nyelv
 
-| Szolgáltatás            | Altípus                |
+| Szolgáltatás            | Erőforrás                |
 |--------------------|---------------------|
 | Űrlap megértése | `FormUnderstanding` |
 | LUIS               | `LUIS`              |
@@ -63,10 +63,10 @@ Tekintse meg az alábbi lista az SKU-ket és a díjszabási információkat.
 
 #### <a name="decision"></a>Döntés
 
-| Szolgáltatás           | Altípus               |
+| Szolgáltatás           | Erőforrás               |
 |-------------------|--------------------|
 | Anomáliadetektor  | `AnomalyDetector`  |
-| Tartalommoderátor | `ContentModerator` |
+| Content Moderator | `ContentModerator` |
 | Personalizer      | `Personalizer`     |
 
 

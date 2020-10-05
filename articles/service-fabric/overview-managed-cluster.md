@@ -4,10 +4,10 @@ description: Service Fabric felügyelt fürtök az Azure Service Fabric fürter�
 ms.topic: overview
 ms.date: 09/28/2020
 ms.openlocfilehash: 3d26a92126491662d5c51b3c4e8900ffa547f830
-ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91410488"
 ---
 # <a name="service-fabric-managed-clusters-preview"></a>Felügyelt fürtök Service Fabric (előzetes verzió)
@@ -53,7 +53,7 @@ Service Fabric felügyelt fürtökre a fürthöz szükséges mögöttes erőforr
 
 Service Fabric felügyelt fürtök az alapszintű és a standard SKU-ban is elérhetők.
 
-| Funkció | Alapszintű | Standard |
+| Szolgáltatás | Alapszintű | Standard |
 | ------- | ----- | -------- |
 | Hálózati erőforrás (SKU [Load Balancer](../load-balancer/skus.md), [nyilvános IP-cím](../virtual-network/public-ip-addresses.md)) | Alapszintű | Standard |
 | Minimális csomópont (VM-példány) száma | 3 | 5 |
@@ -74,7 +74,7 @@ Mivel ez a Service Fabric felügyelt fürtök korai előzetes verziója, néhán
 * NSG-szabályok frissítése 
 * Automatikus operációs rendszer frissítése
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Service Fabric felügyelt fürtök használatának megkezdéséhez próbálja ki a gyors üzembe helyezési útmutatót:
 

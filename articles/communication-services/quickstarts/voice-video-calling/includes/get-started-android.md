@@ -7,10 +7,10 @@ ms.date: 08/11/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
 ms.openlocfilehash: 93037d1e1c56e280458a91ae5723502bff27995b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91377424"
 ---
 Ebből a rövid útmutatóból megtudhatja, hogyan indíthat el hívást az Android rendszerhez készült ügyféloldali kódtárat hívó Azure kommunikációs szolgáltatással.

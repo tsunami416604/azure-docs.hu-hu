@@ -6,10 +6,10 @@ ms.topic: overview
 ms.date: 07/06/2020
 ms.custom: devx-track-dotnet, mvc, seodec18
 ms.openlocfilehash: 1b72224441741990a1fc94400dfe718ea9d1b0b3
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88961482"
 ---
 # <a name="app-service-overview"></a>Az App Service áttekintése
@@ -54,7 +54,7 @@ A Linuxon App Service számos különböző beépített rendszerképet támogat.
 - A Azure Portal csak a Linux-alkalmazásokhoz jelenleg használható funkciókat jeleníti meg. Ha a funkciók engedélyezve vannak, azok aktiválva lesznek a portálon.
 - Beépített rendszerképekre való üzembe helyezéskor a kód és a tartalom a webes tartalomhoz tartozó tárolási kötetet foglal le, amelyet az Azure Storage támogat. A kötet lemezének késése nagyobb és változó, mint a tároló fájlrendszerének késése. Azok az alkalmazások, amelyeknek a tartalomhoz való nagy olvasási hozzáférésre van szükségük, az egyéni tároló lehetőséggel is rendelkezhetnek, amely a tartalom kötetén található fájlokat a tároló fájlrendszerében helyezi el.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Hozza létre első webalkalmazását.
 

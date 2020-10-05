@@ -8,10 +8,10 @@ ms.topic: overview
 ms.date: 08/25/2020
 ms.author: duau
 ms.openlocfilehash: 40d84a4196a3cc104a29b4b9511bd627f3f8d40e
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89566874"
 ---
 # <a name="what-is-azure-expressroute"></a>Mi az az Azure ExpressRoute?
@@ -33,7 +33,7 @@ A kapcsolatok lehetnek: bármely elemek közötti (IP VPN) hálózat, pontok kö
 
 További információ: [ExpressRoute GYIK](expressroute-faqs.md).
 
-## <a name="features"></a>Funkciók
+## <a name="features"></a>Szolgáltatások
 
 ### <a name="layer-3-connectivity"></a>3. rétegbeli kapcsolatok
 A Microsoft egy iparági szabványnak megfelelő dinamikus útválasztási protokollt, a BGP-t alkalmazza az útvonalak cseréjéhez a helyszíni hálózat, az Azure-ban lévő példányai és a Microsoft nyilvános címek között. Több BGP-munkamenetet létesítünk a hálózattal, különböző forgalomprofilokkal. További részletek az [ExpressRoute circuit and routing domains](expressroute-circuit-peerings.md) (ExpressRoute-kapcsolatcsoportok és útválasztási tartományok) című cikkben találhatók.
@@ -44,7 +44,7 @@ Minden [ExpressRoute-áramkör](https://docs.microsoft.com/azure/expressroute/ex
 ### <a name="connectivity-to-microsoft-cloud-services"></a>Kapcsolódás a Microsoft-felhőszolgáltatásokhoz
 Az ExpressRoute-kapcsolatok a következő szolgáltatásokhoz biztosítanak hozzáférést:
 * Microsoft Azure-szolgáltatások
-* Microsoft 365 szolgáltatások
+* Microsoft 365-szolgáltatások
 
 > [!NOTE]
 > [!INCLUDE [expressroute-office365-include](../../includes/expressroute-office365-include.md)]

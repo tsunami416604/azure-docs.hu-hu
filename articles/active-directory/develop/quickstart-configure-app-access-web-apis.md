@@ -14,10 +14,10 @@ ms.author: marsma
 ms.custom: aaddev, contperfq1
 ms.reviewer: lenalepa, aragra, sureshja
 ms.openlocfilehash: fc2f3202ac88e3ee6c24db21dd9072a13a8deef9
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89442279"
 ---
 # <a name="quickstart-configure-a-client-application-to-access-a-web-api"></a>Gyors útmutató: ügyfélalkalmazás konfigurálása webes API-k eléréséhez
@@ -59,7 +59,7 @@ Miután regisztrálta az ügyfélalkalmazás és a webes API-t, és hatókörök
 
 Miután hozzáadta az engedélyeket az API-hoz, a **konfigurált engedélyek**területen látnia kell a kiválasztott engedélyeket. Az alábbi ábrán a példa *alkalmazottak. Read.* az ügyfélalkalmazás regisztrációja során hozzáadott összes delegált engedély.
 
-:::image type="content" source="media/quickstart-configure-app-access-web-apis/portal-02-configured-permissions-pane.png" alt-text="Az újonnan hozzáadott engedélyt megjelenítő Azure Portal konfigurált engedélyek panelje":::
+:::image type="content" source="media/quickstart-configure-app-access-web-apis/portal-02-configured-permissions-pane.png" alt-text="Vonal diagram, amely egy webes API-t mutat be a jobb oldalon elérhető hatókörökkel, a bal oldalon pedig egy ügyfélalkalmazás":::
 
 Azt is megfigyelheti, hogy a *felhasználó. olvasás* engedéllyel rendelkezik a Microsoft Graph API-hoz. Ezt az engedélyt automatikusan felveszi a rendszer, amikor regisztrál egy alkalmazást a Azure Portal.
 
@@ -136,15 +136,15 @@ Az API-k teljes készletét hozzáadhatja, vagy az egyes engedélyek a **konfigu
 
 A rendszergazdai **jóváhagyás engedélyezése {a bérlőnek}** gomb lehetővé teszi a rendszergazda számára, hogy rendszergazdai jogosultságot adjon az alkalmazáshoz konfigurált engedélyekhez. A gomb kiválasztásakor megjelenik egy párbeszédpanel, amely azt kéri, hogy erősítse meg a jóváhagyást.
 
-:::image type="content" source="media/quickstart-configure-app-access-web-apis/portal-03-grant-admin-consent-button.png" alt-text="Adja meg a rendszergazdai jóváhagyás gombot a Azure Portal konfigurált engedélyek paneljén":::
+:::image type="content" source="media/quickstart-configure-app-access-web-apis/portal-03-grant-admin-consent-button.png" alt-text="Vonal diagram, amely egy webes API-t mutat be a jobb oldalon elérhető hatókörökkel, a bal oldalon pedig egy ügyfélalkalmazás":::
 
 A jóváhagyás megadása után a rendszergazdai jóváhagyást igénylő engedélyek a jóváhagyásnak megfelelően jelennek meg:
 
-:::image type="content" source="media/quickstart-configure-app-access-web-apis/portal-04-admin-consent-granted.png" alt-text="Konfigurálja az engedélyek táblát Azure Portal a fájlokhoz tartozó rendszergazdai beleegyezést. Read. All engedély":::
+:::image type="content" source="media/quickstart-configure-app-access-web-apis/portal-04-admin-consent-granted.png" alt-text="Vonal diagram, amely egy webes API-t mutat be a jobb oldalon elérhető hatókörökkel, a bal oldalon pedig egy ügyfélalkalmazás":::
 
 A **rendszergazdai jóváhagyás megadása** gomb *le van tiltva* , ha Ön nem rendszergazda, vagy ha nincs beállítva az alkalmazáshoz tartozó engedély. Ha rendelkezik a megadott, de még nem konfigurált engedélyekkel, a rendszergazdai jóváhagyás gomb megkéri, hogy kezelje ezeket az engedélyeket. Hozzáadhatók a konfigurált engedélyekhez, vagy eltávolíthatók.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Folytassa a következő rövid útmutatóval, amelyből megtudhatja, hogyan konfigurálhatja, hogy mely fióktípus férhet hozzá az alkalmazáshoz. Előfordulhat például, hogy korlátozni szeretné a hozzáférést csak a szervezetben lévő felhasználókra (egybérlős), vagy más Azure AD-bérlők (több-bérlős) és személyes Microsoft-fiókkal (MSA) rendelkező felhasználók számára.
 

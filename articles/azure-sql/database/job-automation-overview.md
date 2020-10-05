@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/10/2020
 ms.openlocfilehash: 6b4b31ab4bc0cb1fe5bd9140870df86db6841ff3
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91450354"
 ---
 # <a name="automate-management-tasks-using-database-jobs"></a>Felügyeleti feladatok automatizálása adatbázis-feladatok használatával
@@ -210,7 +210,7 @@ Az aktuális előzetes verzióhoz a rugalmas feladatok ügynökének létrehozá
 
 A *feladat adatbázisának* a szó szerint nem kell újnak lennie, de tiszta, üres, S0 vagy magasabb szolgáltatási célnak kell lennie. A *feladat-adatbázis* javasolt szolgáltatási célja az S1 vagy a magasabb, de az optimális választás a feladat (ok) teljesítményének, a feladatok számának, a feladathoz tartozó célok számának és a gyakran futtatott feladatok számától függ. Előfordulhat például, hogy egy S0-adatbázis elegendő ahhoz, hogy egy olyan feladathoz tartozó ügynök, amely tíz adatbázisnál kevesebb feladatot futtat, de a feladat futtatása percenként nem elég gyors egy S0-adatbázishoz, és a magasabb szolgáltatási szintet is érdemes lehet.
 
-Ha a feladatra vonatkozó művelet a vártnál lassabban működik, [Figyelje](monitor-tune-overview.md#azure-sql-database-and-azure-sql-managed-instance-resource-monitoring) az adatbázis teljesítményét és az erőforrás-kihasználtságot a feladatban a Azure Portal vagy a [sys. dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) DMV használatával. Ha egy Erőforrás kihasználtsága, például a CPU, az adat IO vagy a log Write a 100%-ot közelíti meg, és a lassulási időszakokkal összefügg, érdemes lehet az adatbázis növekményes méretezését magasabb szolgáltatási célkitűzésekre (akár a [DTU-modellbe](service-tiers-dtu.md) , akár a [virtuális mag-modellbe](service-tiers-vcore.md)), amíg a feladatok adatbázisának teljesítménye nem megfelelő.
+Ha a feladatra vonatkozó művelet a vártnál lassabban működik, [Figyelje](monitor-tune-overview.md#azure-sql-database-and-azure-sql-managed-instance-resource-monitoring) az adatbázis teljesítményét és az erőforrás-kihasználtságot a feladatban a Azure Portal vagy a [sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) DMV használatával. Ha egy Erőforrás kihasználtsága, például a CPU, az adat IO vagy a log Write a 100%-ot közelíti meg, és a lassulási időszakokkal összefügg, érdemes lehet az adatbázis növekményes méretezését magasabb szolgáltatási célkitűzésekre (akár a [DTU-modellbe](service-tiers-dtu.md) , akár a [virtuális mag-modellbe](service-tiers-vcore.md)), amíg a feladatok adatbázisának teljesítménye nem megfelelő.
 
 ##### <a name="job-database-permissions"></a>Feladat-adatbázis engedélyei
 
@@ -218,7 +218,7 @@ Feladatügynök létrehozásakor a séma, a táblák és a *jobs_reader* nevű s
 
 |Szerepkörnév |'jobs' sémaengedélyek |'jobs_internal' sémaengedélyek |
 |---------|---------|---------|
-|**jobs_reader** | SELECT | Nincsenek |
+|**jobs_reader** | SELECT | Nincs |
 
 > [!IMPORTANT]
 > Mielőtt adatbázis-rendszergazdaként hozzáférést biztosítana a *feladat-adatbázishoz*, fontolja meg a lehetséges biztonsági következményeket. A feladatok létrehozásához és szerkesztéséhez szükséges engedélyekkel rendelkező rosszindulatú felhasználó létrehozhat vagy szerkeszthet egy olyan feladatot, amely tárolt hitelesítő adattal csatlakozik a rosszindulatú felhasználó által vezérelt adatbázishoz, ezáltal a felhasználó meghatározhatja a hitelesítő adathoz tartozó jelszót.
@@ -286,7 +286,7 @@ Jelenleg az előzetes verzió 100 feladat egyidejű futtatására képes.
 
 Ha szeretné elkerülni, hogy az erőforrások túlterheltek legyenek egy rugalmas SQL-készlet adatbázisain történő feladatvégrehajtás közben, akkor a feladatok esetén konfigurálhatja, hogy azok egyszerre legfeljebb hány adatbázison futhatnak.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Mi az SQL Server Agent?](https://docs.microsoft.com/sql/ssms/agent/sql-server-agent)
 - [Rugalmas feladatok létrehozása és kezelése](elastic-jobs-overview.md)

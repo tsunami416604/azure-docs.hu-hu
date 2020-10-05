@@ -18,10 +18,10 @@ ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
 ms.custom: contperfq1
 ms.openlocfilehash: b454ced085ec3d73f3ca0f761abb6c5de44244ab
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89594339"
 ---
 # <a name="what-are-azure-ad-access-reviews"></a>Mik azok az Azure AD-hozzáférési felülvizsgálatok?
@@ -89,7 +89,7 @@ További információ a licencekről: [licencek kiosztása vagy eltávolítása 
 
 Íme néhány példa a licencekre, amelyek segítségével meghatározhatja a szükséges licencek számát.
 
-| Forgatókönyv | Számítás | Licencek száma |
+| Használati eset | Számítás | Licencek száma |
 | --- | --- | --- |
 | A rendszergazda létrehoz egy hozzáférési felülvizsgálatot az A csoportban a 75-felhasználók és 1 csoport tulajdonosa számára, és a csoport tulajdonosát a véleményezőként rendeli hozzá. | 1 a csoport tulajdonosának licence felülvizsgáló | 1 |
 | A rendszergazda az 500-es és 3 csoportbeli tulajdonosok hozzáférési felülvizsgálatát hozza létre a B csoport számára, és a 3 csoport tulajdonosait felülvizsgáló rendeli hozzá. | 3 licenc minden csoport tulajdonosának felülvizsgáló | 3 |
@@ -99,7 +99,7 @@ További információ a licencekről: [licencek kiosztása vagy eltávolítása 
 
 \* Az Azure AD külső identitások (vendég felhasználó) díjszabása a havi aktív felhasználók (MAU) alapján történik, amely a naptári hónapon belül a hitelesítési tevékenységgel rendelkező egyedi felhasználók száma. Ez a modell a 1:5 arányú számlázási modellt váltja fel, amely legfeljebb öt vendéget engedélyez a bérlő minden prémium szintű Azure AD licence számára. Ha a bérlő egy előfizetéshez van csatolva, és külső identitási funkciókat használ a vendég felhasználókkal való együttműködésre, akkor a MAU-alapú számlázási modell alapján automatikusan számlázunk. További információ: az Azure AD külső identitások számlázási modellje.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Csoportok vagy alkalmazások hozzáférési felülvizsgálatának létrehozása](create-access-review.md)
 - [Hozzáférési felülvizsgálat létrehozása Azure AD rendszergazdai szerepkörrel rendelkező felhasználókhoz](../privileged-identity-management/pim-how-to-start-security-review.md?toc=%2fazure%2factive-directory%2fgovernance%2ftoc.json)

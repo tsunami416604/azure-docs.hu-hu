@@ -11,13 +11,13 @@ ms.custom:
 - mvc
 - device-developer
 ms.openlocfilehash: 6fabd7d8cf5c19f05bd31c2d0b12863fd6e25382
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90017523"
 ---
-# <a name="iot-central-device-development-overview"></a>IoT Central az eszközök fejlesztésének áttekintése
+# <a name="iot-central-device-development-overview"></a>Az IoT Central-eszközfejlesztés áttekintése
 
 *Ez a cikk az eszközök fejlesztőire vonatkozik.*
 
@@ -95,7 +95,7 @@ Néhány mintakód: [Node.js ügyfélalkalmazás létrehozása és összekötés
 
 További információ a támogatott nyelvekről és SDK-k használatáról: az [Azure IoT hub Device SDK-k megismerése és használata](../../iot-hub/iot-hub-devguide-sdks.md#azure-iot-hub-device-sdks).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha Ön egy eszköz fejlesztője, és szeretne belemerülni egy kódra, a javasolt következő lépés egy [ügyfélalkalmazás létrehozása és csatlakoztatása az Azure IoT Central-alkalmazáshoz](./tutorial-connect-device-nodejs.md).
 

@@ -10,10 +10,10 @@ ms.topic: overview
 ms.date: 07/10/2020
 ms.author: alkohli
 ms.openlocfilehash: 9f559587e1abca7642edfc6278018d760b55e774
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "86206230"
 ---
 # <a name="what-is-azure-data-box"></a>Mi az az Azure Data Box?
@@ -82,7 +82,7 @@ A Data Box eszköz jelen kiadása az alábbi funkciókkal rendelkezik.
 | Adatátviteli felület                                     | RJ45, SFP + 10 GbE réz Ethernet  |
 | Biztonság                                                | Ütésálló eszköztok, az illetéktelen hozzáférést gátló, egyedi csavarokkal <br> Az illetéktelen hozzáférést jelző matricák az eszköz alján|
 | Adatátviteli sebesség                                      | Legfeljebb 80 TB naponta, 10 GbE sávszélességű hálózati adapter használata esetén        |
-| Kezelés                                              | Helyi webes felhasználói felület – egyszeri kezdeti beállítás és konfigurálás <br> Azure Portal – mindennapos eszközkezelés        |
+| Felügyelet                                              | Helyi webes felhasználói felület – egyszeri kezdeti beállítás és konfigurálás <br> Azure Portal – mindennapos eszközkezelés        |
 
 ## <a name="data-box-components"></a>Data Box-összetevők
 

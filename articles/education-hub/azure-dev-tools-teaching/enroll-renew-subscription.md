@@ -8,10 +8,10 @@ ms.service: azure-education
 ms.subservice: education-hub
 ms.date: 06/30/2020
 ms.openlocfilehash: edb0de9f235565d09c81ce4466de59698a321f56
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87102049"
 ---
 # <a name="enroll-or-renew-an-azure-dev-tools-for-teaching-subscription"></a>Azure fejlesztői eszközök regisztrálása vagy megújítása az előfizetéshez
@@ -33,19 +33,19 @@ Ez a cikk az Azure fejlesztői eszközök beléptetésének folyamatát ismertet
 
 1. Ha első alkalommal regisztrálja az **intézmény adatait**, végezze el a beléptetést. Ha megújítja, az információ automatikusan kitöltődik.
 
-    :::image type="content" source="media/enroll-renew-subscription/application-institution-information.png" alt-text="Adja meg az intézmény adatait." border="false":::
+    :::image type="content" source="media/enroll-renew-subscription/application-institution-information.png" alt-text="Bejelentkezési hibaüzenet." border="false":::
     
 1. Töltse ki a **számlázási adatokat**. Ha az intézmény mennyiségi licencszerződés részét képezi, megadhatja a mennyiségi licencelési szerződés számát. Ha regisztrál egy új előfizetésre, és a hitelkártyán kívül más fizet, előfordulhat, hogy a fizetési folyamat során a rendszer késlelteti az előfizetés elérését. E-maileket fog kapni a fizetési folyamat frissítéséhez.
 
-    :::image type="content" source="media/enroll-renew-subscription/application-billing-information.png" alt-text="Adja meg a számlázási adatokat." border="false":::
+    :::image type="content" source="media/enroll-renew-subscription/application-billing-information.png" alt-text="Bejelentkezési hibaüzenet." border="false":::
     
 1. Válassza ki az **előfizetési tervet** , és erősítse meg az előfizetés- **adminisztrátort** az előfizetéshez. Az előfizetés-adminisztrátor e-mail-tartománya lehetővé teszi, hogy az azonos tartományba tartozó diákok egyszerűen hozzáférjenek a szoftveres előnyök letöltéséhez.
 
-    :::image type="content" source="media/enroll-renew-subscription/application-select-subscription-plan.png" alt-text="Válassza az előfizetési terv lehetőséget." border="false":::
+    :::image type="content" source="media/enroll-renew-subscription/application-select-subscription-plan.png" alt-text="Bejelentkezési hibaüzenet." border="false":::
     
 1. Erősítse meg az összes vásárlási információt, és kattintson a **megrendelés**elemre. A rendszer megerősítő e-maileket küld a Beérkezett üzenetek mappájába, a fizetési állapotra vonatkozó frissítéseket és az esetleges további lépéseket.
 
-    :::image type="content" source="media/enroll-renew-subscription/application-confirm-place-order.png" alt-text="Erősítse meg a rendelését." border="false":::
+    :::image type="content" source="media/enroll-renew-subscription/application-confirm-place-order.png" alt-text="Bejelentkezési hibaüzenet." border="false":::
 
 ## <a name="renew-an-existing-subscription"></a>Meglévő Előfizetés megújítása
 

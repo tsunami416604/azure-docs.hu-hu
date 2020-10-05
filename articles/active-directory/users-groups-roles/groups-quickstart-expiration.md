@@ -15,10 +15,10 @@ ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9fa15a9134fdc49d87baea48490854c1289a662a
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90054398"
 ---
 # <a name="quickstart-set-microsoft-365-groups-to-expire-in-azure-active-directory"></a>Gyors útmutató: Microsoft 365 csoportok lejáratának beállítása Azure Active Directory
@@ -82,7 +82,7 @@ Ennyi az egész! Ebben a rövid útmutatóban sikeresen beállította a kijelöl
 1. Válassza ki a **Azure Active Directory**  >  **csoportok**  >  **általános**elemet. 
 2. A **felhasználók Microsoft 365 csoportokat hozhatnak létre az Azure-portálokon** a **nem**értékre.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a Lejáratról, beleértve a PowerShell-utasításokat és a technikai korlátozásokat, lásd a következő cikket:
 

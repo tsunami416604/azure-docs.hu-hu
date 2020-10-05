@@ -9,10 +9,10 @@ ms.custom: subject-armqs
 ms.author: jrasnick
 ms.date: 08/07/2020
 ms.openlocfilehash: dc6d36f2316e0ae19ce8b813fa9eb127b1a9cf1f
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91569019"
 ---
 # <a name="quickstart-create-an-azure-synapse-workspace-using-a-deployment-template"></a>Rövid útmutató: Azure szinapszis-munkaterület létrehozása központi telepítési sablonnal
@@ -58,7 +58,7 @@ A sablon két erőforrást határoz meg:
    * **Áttekintés és létrehozás**: válassza a lehetőséget.
    * **Létrehozás**: válassza a lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha többet szeretne megtudni az Azure szinapszis Analyticsről és a Azure Resource Managerról, folytassa az alábbi cikkekkel.
 

@@ -9,10 +9,10 @@ ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 4fa7ebc71f2bbe6abe6956ad36daaf983e011a94
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89001327"
 ---
 # <a name="quickstart-azure-blob-storage-client-library-v12-with-xamarin"></a>Gyors útmutató: Azure Blob Storage ügyféloldali kódtár V12 és Xamarin
@@ -22,7 +22,7 @@ Ismerkedjen meg az Azure Blob Storage-beli Xamarin-vel. Az Azure Blob Storage a 
 Használja az Azure Blob Storage ügyféloldali kódtárat a Xamarin:
 
 * Tároló létrehozása
-* BLOB feltöltése az Azure Storage-ba
+* Blob feltöltése az Azure Storage-ba
 * Egy tároló összes blobjának listázása
 * A blob letöltése az eszközre
 * Tároló törlése
@@ -32,7 +32,7 @@ Hivatkozásokra mutató hivatkozások:
 * [API-referenciadokumentáció](/dotnet/api/azure.storage.blobs)
 * [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/storage/Azure.Storage.Blobs)
 * [Csomag (NuGet)](https://www.nuget.org/packages/Azure.Storage.Blobs)
-* [Sample](https://github.com/Azure-Samples/storage-blobs-xamarin-quickstart)
+* [Minta](https://github.com/Azure-Samples/storage-blobs-xamarin-quickstart)
 
 [!INCLUDE [storage-multi-protocol-access-preview](../../../includes/storage-multi-protocol-access-preview.md)]
 
@@ -104,7 +104,7 @@ Az alábbi kódrészletek azt mutatják be, hogyan hajthatja végre a következ�
 * [Osztály szintű változók létrehozása](#create-class-level-variables)
 * [Tároló létrehozása](#create-a-container)
 * [Blobok feltöltése tárolóba](#upload-blobs-to-a-container)
-* [A tárolóban lévő blobok listázása](#list-the-blobs-in-a-container)
+* [Tárolóban lévő blobok kilistázása](#list-the-blobs-in-a-container)
 * [Blobok letöltése](#download-blobs)
 * [Tároló törlése](#delete-a-container)
 
@@ -175,7 +175,7 @@ async void Upload_Clicked(object sender, EventArgs e)
 }
 ```
 
-### <a name="list-the-blobs-in-a-container"></a>A tárolóban lévő blobok listázása
+### <a name="list-the-blobs-in-a-container"></a>Tárolóban lévő blobok kilistázása
 
 A tárolóban lévő Blobok listázása a [GetBlobsAsync](/dotnet/api/azure.storage.blobs.blobcontainerclient.getblobsasync) metódus meghívásával. Ebben az esetben a tárolóhoz csak egy blob lett hozzáadva, így a listázási művelet csak ezt az egy blobot adja vissza.
 
@@ -267,7 +267,7 @@ A tisztítási folyamat megkezdése előtt ellenőrizze, hogy a blob tartalmána
 
 Miután ellenőrizte az értékeket, erősítse meg a tároló törlésére és a bemutató befejezésére vonatkozó kérést.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan tölthet fel, tölthet le és listázhat blobokat az Azure Blob Storage ügyféloldali Library V12 és a Xamarin használatával.
 

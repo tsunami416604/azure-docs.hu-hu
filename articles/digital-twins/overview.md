@@ -8,10 +8,10 @@ ms.date: 3/12/2020
 ms.topic: overview
 ms.service: digital-twins
 ms.openlocfilehash: ea08843dc73ed7603181eee1cf36495fda82b8d4
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89003847"
 ---
 # <a name="what-is-azure-digital-twins"></a>Mi az az Azure Digital Twins?
@@ -88,7 +88,7 @@ Az Azure Digital Twins használatával végzett teljes megoldás a következő r
 
 Az alábbi ábra azt mutatja be, hogy az Azure Digital Twins egy nagyobb Azure IoT-megoldás kontextusában rejlik.
 
-:::image type="content" source="media/overview/solution-context.png" alt-text="A bemeneti forrásokat, a kimeneti szolgáltatásokat és az ügyfélalkalmazások és a külső számítási erőforrások közötti kétirányú kommunikációt bemutató ábra." border="false" lightbox="media/overview/solution-context.png":::
+:::image type="content" source="media/overview/solution-context.png" alt-text="Képernyőkép az Azure Digital Twins Explorer alkalmazásról, amely a digitális ikreket jelképező csomópontok gráfját mutatja" border="false" lightbox="media/overview/solution-context.png":::
 
 ## <a name="service-limits-in-public-preview"></a>Nyilvános előzetes verzióban elérhető a szolgáltatás korlátai
 
@@ -98,7 +98,7 @@ Az alábbi ábra azt mutatja be, hogy az Azure Digital Twins egy nagyobb Azure I
 
 A nyilvános előzetes verzióban elérhető Azure Digital Twins-korlátok listáját a következő témakörben tekintheti meg [*: referenciák a nyilvános előzetes verziókra vonatkozó korlátozások*](reference-service-limits.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha az Azure Digital Twins korábbi előzetes kiadásával dolgozott együtt, Ismerje meg, hogy mi változott:
 * [*Áttekintés: eltérések az előző kiadástól*](overview-differences.md)

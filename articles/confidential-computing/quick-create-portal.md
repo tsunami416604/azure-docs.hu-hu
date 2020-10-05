@@ -9,10 +9,10 @@ ms.topic: quickstart
 ms.date: 04/23/2020
 ms.author: JenCook
 ms.openlocfilehash: 4723bce8f3721833ae80b233f7b346fe69363b0b
-ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91409544"
 ---
 # <a name="quickstart-deploy-an-azure-confidential-computing-vm-in-the-azure-portal"></a>Gyors útmutató: Azure-beli bizalmas számítástechnikai virtuális gép üzembe helyezése a Azure Portal
@@ -77,7 +77,7 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy fi
     ![DCsv2 sorozatú virtuális gépek](media/quick-create-portal/dcsv2-virtual-machines.png)
 
     > [!TIP]
-    > Meg kell jelennie a méretek **DC1s_v2**, **DC2s_v2**, **DC4s_V2**és **DC8_v2**. Ez az egyetlen olyan virtuálisgép-méret, amely jelenleg támogatja a bizalmas számítástechnikai feladatokat. [További információ](virtual-machine-solutions.md).
+    > Meg kell jelennie a méretek **DC1s_v2**, **DC2s_v2**, **DC4s_V2**és **DC8_v2**. Ez az egyetlen olyan virtuálisgép-méret, amely jelenleg támogatja a bizalmas számítástechnikai feladatokat. [További információk](virtual-machine-solutions.md).
 
 1. Adja meg a következő információkat:
 
@@ -195,7 +195,7 @@ Ha már nincs rájuk szükség, törölheti az erőforráscsoportot, a virtuáli
 
 Válassza ki a virtuális géphez tartozó erőforráscsoportot, majd válassza a **Törlés**lehetőséget. Erősítse meg az erőforráscsoport nevét az erőforrások törlésének befejezéséhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban egy bizalmas számítástechnikai virtuális gépet helyezett üzembe, és telepítette az Open enklávé SDK-t. Az Azure-beli bizalmas számítástechnikai virtuális gépekkel kapcsolatos további információkért lásd: [Virtual Machines-megoldások](virtual-machine-solutions.md). 
 

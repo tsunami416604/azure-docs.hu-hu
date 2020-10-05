@@ -14,10 +14,10 @@ ms.custom: devx-track-python, devx-track-js, devx-track-csharp, cog-serv-seo-aug
 zone_pivot_groups: speech-full-stack-go
 keywords: beszéd – szöveg, beszéd – szöveges szoftver
 ms.openlocfilehash: 2e738222897b60e3a7578ca10bd7596be4fc4da6
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91327087"
 ---
 # <a name="get-started-with-speech-to-text"></a>A diktálás használatának első lépései
@@ -50,7 +50,7 @@ ms.locfileid: "91327087"
 [!INCLUDE [CLI include](includes/how-to/speech-to-text-basics/speech-to-text-basics-cli.md)]
 ::: zone-end
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Codec tömörített hangformátumok használata](how-to-use-codec-compressed-audio-input-streams.md)
 * Tekintse meg a gyors üzembe helyezési [mintákat](https://github.com/Azure-Samples/cognitive-services-speech-sdk/tree/master/quickstart) a githubon

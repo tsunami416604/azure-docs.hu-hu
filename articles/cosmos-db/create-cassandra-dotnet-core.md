@@ -10,10 +10,10 @@ ms.topic: quickstart
 ms.date: 05/18/2020
 ms.custom: devx-track-dotnet
 ms.openlocfilehash: d24116701347c7d4b60494219b56877e0b121ea3
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89017467"
 ---
 # <a name="quickstart-build-a-cassandra-app-with-net-core-and-azure-cosmos-db"></a>Gyors útmutató: Cassandra-alkalmazás létrehozása a .NET Core és a Azure Cosmos DB használatával
@@ -169,13 +169,13 @@ Lépjen vissza az Azure Portalra a kapcsolati sztring adataiért, majd másolja 
     ```
 3. Az alkalmazás futtatásához nyomja le a CTRL + F5 billentyűkombinációt. Az alkalmazás megjelenik a konzolablakban. 
 
-    :::image type="content" source="./media/create-cassandra-dotnet/output.png" alt-text="A kimenet megtekintése és ellenőrzése":::
+    :::image type="content" source="./media/create-cassandra-dotnet/output.png" alt-text="Hozzáférési kulcs megtekintése és másolása az Azure Portal Kapcsolati sztring oldalán":::
 
     Nyomja le a CTRL + C billentyűkombinációt a program futásának megszakításához, és zárja be a konzolablakot. 
     
 4. Ha megnyitja az **Adatkezelőt** az Azure Portalon, lekérdezheti és módosíthatja és használhatja az új adatokat.
 
-    :::image type="content" source="./media/create-cassandra-dotnet/data-explorer.png" alt-text="Adatok megtekintése az Adatkezelőben":::
+    :::image type="content" source="./media/create-cassandra-dotnet/data-explorer.png" alt-text="Hozzáférési kulcs megtekintése és másolása az Azure Portal Kapcsolati sztring oldalán":::
 
 ## <a name="review-slas-in-the-azure-portal"></a>Tekintse át az SLA-kat az Azure Portalon
 
@@ -185,7 +185,7 @@ Lépjen vissza az Azure Portalra a kapcsolati sztring adataiért, majd másolja 
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban bemutattuk, hogyan lehet Azure Cosmos DB-fiókot létrehozni, hogyan lehet az Adatkezelő segítségével tárolót készíteni, és hogyan lehet futtatni egy webalkalmazást. Most további adatokat importálhat a Cosmos DB-fiókba. 
 

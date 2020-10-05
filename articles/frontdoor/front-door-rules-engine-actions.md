@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 09/29/2020
 ms.author: duau
 ms.openlocfilehash: ff61af192471bcfc9bdb9f1ce3970d5c22f39579
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91569774"
 ---
 # <a name="azure-front-door-rules-engine-actions"></a>Azure Front Door szabálymotor műveletei
@@ -33,7 +33,7 @@ Ezzel a művelettel módosíthatja azokat a fejléceket, amelyek a forrásnak k�
 
 ### <a name="required-fields"></a>Kötelező mezők
 
-Műveletek | HTTP-fejléc neve | Érték
+Művelet | HTTP-fejléc neve | Érték
 -------|------------------|------
 Append (Hozzáfűzés) | Ha ez a beállítás be van jelölve, és a szabály megfelel, a **fejlécben** megadott fejléc a megadott értékkel lesz hozzáadva a kéréshez. Ha a fejléc már létezik, a rendszer hozzáfűzi az értéket a meglévő értékhez. | Sztring
 Felülírás | Ha ez a beállítás be van jelölve, és a szabály megfelel, a **fejlécben** megadott fejléc a megadott értékkel lesz hozzáadva a kéréshez. Ha a fejléc már létezik, a megadott érték felülírja a meglévő értéket. | Sztring
@@ -45,7 +45,7 @@ Ezzel a művelettel módosíthatja azokat a fejléceket, amelyek az ügyfeleknek
 
 ### <a name="required-fields"></a>Kötelező mezők
 
-Műveletek | HTTP-fejléc neve | Érték
+Művelet | HTTP-fejléc neve | Érték
 -------|------------------|------
 Append (Hozzáfűzés) | Ha ez a beállítás be van jelölve, és a szabály megfelel, a **fejlécben** megadott fejléc a megadott **értékkel**lesz hozzáadva a válaszhoz. Ha a fejléc már létezik, a rendszer hozzáfűzi az **értéket** a meglévő értékhez. | Sztring
 Felülírás | Ha ez a beállítás be van jelölve, és a szabály megfelel, a rendszer a **fejlécben** megadott fejlécet adja hozzá a válaszhoz a megadott **érték**használatával. Ha a fejléc már létezik, az **érték** felülírja a meglévő értéket. | Sztring
@@ -105,7 +105,7 @@ Dinamikus tömörítés | A bejárati ajtó dinamikusan tömörítheti a tartalm
 Lekérdezési paraméterek | A gyorsítótárazás alapjául szolgáló engedélyezett (vagy nem engedélyezett) paraméterek vesszővel tagolt listája.
 Gyorsítótár időtartama | Gyorsítótár lejárati időtartama (nap, óra, perc, másodperc) Minden értéknek int-nek kell lennie. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ismerje meg, hogyan konfigurálhatja az első [szabályok motorját](front-door-tutorial-rules-engine.md). 
 - További információ a [szabályok motorjának egyeztetési feltételeiről](front-door-rules-engine-match-conditions.md)

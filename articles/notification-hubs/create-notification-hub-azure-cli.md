@@ -15,10 +15,10 @@ ms.reviewer: thsomasu
 ms.lastreviewed: 03/18/2020
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 5361931328ed107c7cc130b633a40b1582828aa1
-ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90024124"
 ---
 # <a name="quickstart-create-an-azure-notification-hub-using-the-azure-cli"></a>Rövid útmutató: Azure Notification hub létrehozása az Azure CLI használatával
@@ -44,7 +44,7 @@ Telepítse az Notification Hubs Azure CLI-bővítményét.
 az extension add --name notification-hub
 ```
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Az Azure Notification Hubsokat, például az összes Azure-erőforrást, egy erőforráscsoporthoz kell telepíteni.  Az erőforráscsoportok lehetővé teszik az egymáshoz kapcsolódó Azure-erőforrások rendszerezését és kezelését.  Tekintse meg, [Mi az Azure Resource Manager](/azure/azure-resource-manager/management/overview) az erőforráscsoportok megismeréséhez.
 
@@ -174,7 +174,7 @@ Ha már nincs rá szükség, az az [Group delete](/cli/azure/group) paranccsal t
 az group delete --name spnhubrg
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ebben a rövid útmutatóban létrehozott egy értesítési központot. Ha szeretné megtudni, hogyan konfigurálhatja az elosztót a platform Notification System (PNS) beállításokkal, olvassa el a [leküldéses értesítések beállítása értesítési központban](configure-notification-hub-portal-pns-settings.md) című témakört.
 

@@ -13,10 +13,10 @@ ms.reviewer: sahandle
 ms.custom: contperfq1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4a6911f736e466277ba023f97189e1bb6619b8da
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91265272"
 ---
 # <a name="what-is-identity-protection"></a>Mi az az Identity Protection?
@@ -109,7 +109,7 @@ A feltételes hozzáférésű rendszergazdák olyan házirendeket is létrehozha
 | Biztonsági jelentések | Áttekintés |  Nem | Nem |Igen |
 | Biztonsági jelentések | Kockázatos felhasználók  | Korlátozott információ | Korlátozott információ | Teljes hozzáférés|
 | Biztonsági jelentések | Kockázatos bejelentkezések  | Korlátozott információ | Korlátozott információ | Teljes hozzáférés|
-| Biztonsági jelentések | Kockázatészlelések   | No | Korlátozott információ| Teljes hozzáférés|
+| Biztonsági jelentések | Kockázatészlelések   | Nem | Korlátozott információ| Teljes hozzáférés|
 | Értesítések | Veszélyeztetett felhasználók észlelt riasztásai  | Nem | Nem |Igen |
 | Értesítések | Heti kivonat| Nem | Nem | Igen | 
 | | MFA-regisztrációs szabályzat | Nem | Nem | Igen |

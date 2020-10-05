@@ -9,10 +9,10 @@ ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
 ms.openlocfilehash: ab861b3ed265da9060e2367bdfdeeeee7047c584
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88815861"
 ---
 # <a name="use-the-azure-portal-to-restrict-importexport-access-for-managed-disks-with-private-links"></a>A Azure Portal használata a felügyelt lemezek importálási/exportálási hozzáférésének korlátozására privát hivatkozásokkal
@@ -52,7 +52,7 @@ Fel kell jegyeznie azt a virtuális GÉPET, amelyhez a lemezek csatlakoztatva va
 
 Az erőforrás létrehozása után navigáljon közvetlenül rá.
 
-:::image type="content" source="media/disks-enable-private-links-for-import-export-portal/screenshot-resource-button.png" alt-text="Képernyőkép a portálon elérhető forrás gombról":::
+:::image type="content" source="media/disks-enable-private-links-for-import-export-portal/screenshot-resource-button.png" alt-text="Képernyőfelvétel a lemezes hozzáférés létrehozási paneljéről. Adja meg a kívánt nevet, válasszon ki egy régiót, válasszon ki egy erőforráscsoportot, és folytassa":::
 
 ## <a name="create-a-private-endpoint"></a>Privát végpont létrehozása
 
@@ -61,13 +61,13 @@ Most, hogy van egy lemez-hozzáférési erőforrása, használhatja a lemez expo
 1. A lemez-hozzáférési erőforrás területen válassza a **privát végponti kapcsolatok**lehetőséget.
 1. Válassza a **+ privát végpont**lehetőséget.
 
-    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-main-private-blade.png" alt-text="Képernyőkép a lemez-hozzáférési erőforrás áttekintés paneljéről. A magánhálózati végpontok kapcsolatai ki vannak emelve.":::
+    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-main-private-blade.png" alt-text="Képernyőfelvétel a lemezes hozzáférés létrehozási paneljéről. Adja meg a kívánt nevet, válasszon ki egy régiót, válasszon ki egy erőforráscsoportot, és folytassa":::
 
 1. Erőforráscsoport kiválasztása
 1. Adja meg a nevet, és válassza ki ugyanazt a régiót, amelyhez a lemez-hozzáférési erőforrás létrejött.
 1. Válassza a Next (tovább) lehetőséget **: erőforrás >**
 
-    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-private-endpoint-first-blade.png" alt-text="Képernyőkép a privát végpont létrehozási munkafolyamatáról, első panel. Ha nem választja ki a megfelelő régiót, később problémákba ütközhet.":::
+    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-private-endpoint-first-blade.png" alt-text="Képernyőfelvétel a lemezes hozzáférés létrehozási paneljéről. Adja meg a kívánt nevet, válasszon ki egy régiót, válasszon ki egy erőforráscsoportot, és folytassa":::
 
 1. Az **erőforrás** panelen válassza a **Kapcsolódás Azure-erőforráshoz a saját címtárban**lehetőséget.
 1. Az **erőforrástípus** területen válassza a **Microsoft. számítás/diskAccesses lehetőséget.**
@@ -75,7 +75,7 @@ Most, hogy van egy lemez-hozzáférési erőforrása, használhatja a lemez expo
 1. A **cél alerőforrás** **lemezként** való elhagyása
 1. Válassza a Next (tovább) lehetőséget **: Configuration >**.
 
-    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-private-endpoint-second-blade.png" alt-text="Képernyőkép a privát végpont létrehozási munkafolyamatáról, második panel. Az összes Kiemelt értékkel (erőforrás típusa, erőforrás, cél alerőforrás)":::
+    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-private-endpoint-second-blade.png" alt-text="Képernyőfelvétel a lemezes hozzáférés létrehozási paneljéről. Adja meg a kívánt nevet, válasszon ki egy régiót, válasszon ki egy erőforráscsoportot, és folytassa":::
 
 1. Válassza ki azt a virtuális hálózatot, amelyre korlátozni szeretné a lemez exportálását, más virtuális hálózatok nem fogják tudni exportálni a lemezt.
 
@@ -85,16 +85,16 @@ Most, hogy van egy lemez-hozzáférési erőforrása, használhatja a lemez expo
 1. Válassza ki a megfelelő alhálózatot
 1. Válassza az **Áttekintés + létrehozás** lehetőséget.
 
-    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-private-endpoint-third-blade.png" alt-text="Képernyőkép a privát végpont létrehozási munkafolyamatáról, a harmadik panelről. A virtuális hálózat és az alhálózat kiemelten van kiemelve.":::
+    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-private-endpoint-third-blade.png" alt-text="Képernyőfelvétel a lemezes hozzáférés létrehozási paneljéről. Adja meg a kívánt nevet, válasszon ki egy régiót, válasszon ki egy erőforráscsoportot, és folytassa":::
 
 ## <a name="enable-private-endpoint-on-your-disk"></a>Privát végpont engedélyezése a lemezen
 
 1. Navigáljon ahhoz a lemezhez, amelyet konfigurálni szeretne
 1. **Hálózatkezelés** kiválasztása
 1. Válassza ki a **privát végpontot (a lemezes hozzáférésen keresztül)** , és válassza ki a korábban létrehozott lemez-hozzáférést.
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
-    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-managed-disk-networking-blade.png" alt-text="Képernyőkép a felügyelt lemez hálózatkezelés paneljéről. Kiemelve a privát végpontok kijelölését, valamint a kiválasztott lemezes hozzáférést. Ennek a beállításnak a mentésekor a lemez erre a hozzáférésre van konfigurálva.":::
+    :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-managed-disk-networking-blade.png" alt-text="Képernyőfelvétel a lemezes hozzáférés létrehozási paneljéről. Adja meg a kívánt nevet, válasszon ki egy régiót, válasszon ki egy erőforráscsoportot, és folytassa":::
 
 Ezzel befejezte a felügyelt lemez importálására/exportálására használható privát hivatkozások konfigurálását.
 

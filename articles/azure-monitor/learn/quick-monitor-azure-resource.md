@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 12/15/2019
 ms.openlocfilehash: a17546f11db881ecacd39986bcd80d9d63b24644
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91448201"
 ---
 # <a name="quickstart-monitor-an-azure-resource-with-azure-monitor"></a>Gyors útmutató: Azure-erőforrások figyelése Azure Monitor
@@ -66,7 +66,7 @@ A metrikák olyan numerikus értékek, amelyek egy adott időpontban írják le 
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebben a rövid útmutatóban megtekintett egy Azure-erőforrás tevékenység-naplóját és metrikáit, amelyeket a Azure Monitor automatikusan gyűjt. Folytassa a következő rövid útmutatóval, amely bemutatja, hogyan gyűjtheti be a tevékenység naplóját egy Log Analytics munkaterületre, ahol a [naplózási lekérdezések](../log-query/log-query-overview.md)használatával elemezhetők.
 
 > [!div class="nextstepaction"]

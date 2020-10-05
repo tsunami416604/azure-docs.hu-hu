@@ -6,10 +6,10 @@ ms.topic: quickstart
 author: spelluru
 ms.author: spelluru
 ms.openlocfilehash: 080b089efa276779420f6d9bc8e76272f1e65788
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90069696"
 ---
 # <a name="use-azure-cli-to-create-a-service-bus-topic-and-subscriptions-to-the-topic"></a>Az Azure CLI használata Service Bus témakör és előfizetések létrehozásához a témakörben
@@ -91,7 +91,7 @@ Minden egyes [témakörre való előfizetés](service-bus-messaging-overview.md#
     Jegyezze fel a kapcsolatok sztringjét és a témakör nevét. Ezek az üzenetek küldésére és fogadására használhatók. 
     
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az alábbi cikkből megtudhatja, hogyan küldhet üzeneteket egy témakörbe, és hogyan fogadhat üzeneteket az előfizetésen keresztül: válassza ki a programozási nyelvet a TARTALOMJEGYZÉKben. 
 
 > [!div class="nextstepaction"]

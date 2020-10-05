@@ -10,10 +10,10 @@ ms.date: 06/05/2019
 ms.author: jasonh
 ms.custom: devx-track-js
 ms.openlocfilehash: c44f7218734af4bc3144137356b85e8845208f6f
-ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91409374"
 ---
 # <a name="quickstart-build-a-nodejs-application-by-using-azure-cosmos-db-gremlin-api-account"></a>Gyors útmutató: Node.js-alkalmazás létrehozása Azure Cosmos DB Gremlin API-fiók használatával
@@ -161,7 +161,7 @@ Ez a konzol alkalmazás a nyílt forráskódú [Gremlin Node.js](https://www.npm
 
     `config.primaryKey = "PRIMARYKEY";`
 
-   :::image type="content" source="./media/create-graph-nodejs/keys.png" alt-text="Azure Portal kulcsok panel":::
+   :::image type="content" source="./media/create-graph-nodejs/keys.png" alt-text="Hozzáférési kulcs megtekintése és másolása a Azure Portal, áttekintés oldalon":::
 
 4. A config.database és a config.collection értékéhez adja meg az adatbázis és a gráf (tároló) nevét. 
 
@@ -205,7 +205,7 @@ A szűrő teszteléséhez hajtsa végre a `g.V()` függvényt a következővel: 
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben megtanulta, hogyan hozhat létre egy Azure Cosmos DB fiókot, hogyan hozhat létre egy gráfot Adatkezelő használatával, és hogyan futtathat egy Node.js alkalmazást a gráfhoz való adatfelvételhez. Mostantól a Gremlin használatával összetettebb lekérdezéseket is létrehozhat, és hatékony gráfbejárási logikákat implementálhat. 
 

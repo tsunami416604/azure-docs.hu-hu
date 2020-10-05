@@ -5,17 +5,17 @@ ms.topic: include
 ms.date: 02/10/2020
 ms.author: travisw
 ms.openlocfilehash: 84c9f61783d2fea425b83c214deede295c4ed581
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87375177"
 ---
 1. Indítsa el Android Studio, majd válassza az **új Android Studio projekt indítása** lehetőséget az **üdvözlő** ablakban.
 
     ![Az Android Studio üdvözlőablakának képernyőképe](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-android-01-start-new-android-studio-project.png)
 
-1. Megjelenik a **projekt kiválasztása** varázsló. A tevékenység kiválasztása mezőben válassza a **telefon és a tábla** és az **üres tevékenység** lehetőséget. Válassza a **Tovább** lehetőséget.
+1. Megjelenik a **projekt kiválasztása** varázsló. A tevékenység kiválasztása mezőben válassza a **telefon és a tábla** és az **üres tevékenység** lehetőséget. Kattintson a **Tovább** gombra.
 
    ![A projekt kiválasztása varázsló képernyőképe](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-android-02-target-android-devices.png)
 
@@ -42,7 +42,7 @@ Készítse elő a projektet a Speech SDK használatára. Nyissa meg a **projekt 
 
    ![A könyvtár függőségének képernyőképe](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-android-07-add-module-dependency.png)
 
-1. A megjelenő ablakban adja meg az Androidhoz készült Speech SDK nevét és verzióját ( *com. microsoft. cognitiveservices. Speech: Client-SDK: 1.13.0*). Ez után válassza az **OK** gombot.
+1. A megjelenő ablakban adja meg az Androidhoz készült Speech SDK nevét és verzióját ( *com. microsoft. cognitiveservices. Speech: Client-SDK: 1.13.0*). Ezután válassza az **OK** gombot.
    A beszédfelismerési SDK-t most a következő módon kell hozzáadni a függőségek listájához:
 
    ![Képernyőkép a Speech SDK-ról a függőségek listájában](../articles/cognitive-services/Speech-Service/media/sdk/qs-java-android-08-dependency-added-1.0.0.png)

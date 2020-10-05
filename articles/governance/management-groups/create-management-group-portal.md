@@ -4,10 +4,10 @@ description: Ebben a rövid útmutatóban a Azure Portal használatával hozzon 
 ms.date: 08/31/2020
 ms.topic: quickstart
 ms.openlocfilehash: c8cb7b8bd3ad33d1f315670bfbb1782972e6e97f
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89661736"
 ---
 # <a name="quickstart-create-a-management-group"></a>Gyors útmutató: felügyeleti csoport létrehozása
@@ -39,9 +39,9 @@ A címtárban létrehozott első felügyeleti csoport akár 15 percet is igényb
    - A **felügyeleti csoport azonosítója** a címtár egyedi azonosítója, amely a parancsok ezen a felügyeleti csoporton való elküldésére szolgál. Ez az azonosító nem szerkeszthető a létrehozás után, mivel az egész Azure-rendszeren a csoport azonosítására szolgál. A rendszer automatikusan létrehozza a [gyökérszintű felügyeleti csoportot](./overview.md#root-management-group-for-each-directory) a Azure Active Directory azonosítójaként megadott azonosítóval. Az összes többi felügyeleti csoport esetében rendeljen hozzá egy egyedi azonosítót.
    - A megjelenítendő név mező a Azure Portal belül megjelenő név. A felügyeleti csoport létrehozásakor egy külön megjelenítendő név nem választható mező, és bármikor módosítható.
 
-   :::image type="content" source="./media/create_context_menu.png" alt-text="Képernyőkép a felügyeleti csoport hozzáadása lehetőségről az új felügyeleti csoport létrehozásához.":::
+   :::image type="content" source="./media/create_context_menu.png" alt-text="Képernyőfelvétel a felügyeleti csoportok lapról alárendelt felügyeleti csoportok és előfizetések.":::
 
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

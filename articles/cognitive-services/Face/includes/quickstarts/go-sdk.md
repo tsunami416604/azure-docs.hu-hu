@@ -10,10 +10,10 @@ ms.topic: include
 ms.date: 09/17/2020
 ms.author: pafarley
 ms.openlocfilehash: 382a04021053bef0b5d3378231e38453885b0ef2
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91322963"
 ---
 Ismerkedjen meg az arc-felismeréssel a Face ügyféloldali kódtár for go használatával. Az alábbi lépéseket követve telepítheti a csomagot, és kipróbálhatja az alapszintű feladatokhoz tartozó példa kódját. A Face szolgáltatás hozzáférést biztosít a speciális algoritmusokhoz a képeken található emberi arcok észleléséhez és felismeréséhez.
@@ -310,7 +310,7 @@ Ha Cognitive Services-előfizetést szeretne törölni, törölheti az erőforr�
 
 Ha ebben a rövid útmutatóban létrehozott egy **PersonGroup** , és törölni szeretné, hívja meg a **[delete](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#PersonGroupClient.Delete)** metódust. Ha ebben a rövid útmutatóban az adatok áttelepítve lettek a pillanatkép-szolgáltatással, törölnie kell a megcélzott előfizetésbe mentett **PersonGroup** is.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan használhatja az arc ügyféloldali függvénytárat a go to do-alapú Arcfelismerés feladatok elvégzéséhez. Ezután tekintse át a dokumentációt, és ismerkedjen meg a könyvtárral.
 

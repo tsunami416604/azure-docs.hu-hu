@@ -9,10 +9,10 @@ ms.custom: subject-armqs
 ms.date: 05/26/2020
 ms.author: allensu
 ms.openlocfilehash: 553d36a86671617417b6b9b1ea47966c3ba3fdf6
-ms.sourcegitcommit: e0785ea4f2926f944ff4d65a96cee05b6dcdb792
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88705809"
 ---
 # <a name="quickstart-create-a-private-endpoint-by-using-an-arm-template"></a>Rövid útmutató: privát végpont létrehozása ARM-sablonnal
@@ -76,7 +76,7 @@ Kapcsolódjon a _(z) {UniqueID}_ virtuális gép myVm az internetről a követke
 
 1. A portál keresősáv mezőjébe írja be a _myVm {UniqueID}_ értéket.
 
-2. Válassza a **Kapcsolódás** lehetőséget. Megnyílik **a virtuális géphez való kapcsolódás** .
+2. Kattintson a **Csatlakozás** gombra. Megnyílik **a virtuális géphez való kapcsolódás** .
 
 3. Válassza az **RDP-fájl letöltése** lehetőséget. Az Azure létrehoz egy RDP protokoll (_. rdp_) fájlt, és letölti a számítógépre.
 
@@ -91,7 +91,7 @@ Kapcsolódjon a _(z) {UniqueID}_ virtuális gép myVm az internetről a követke
 
 5. Válassza az **OK** lehetőséget.
 
-6. A bejelentkezés során egy figyelmeztetés jelenhet meg a tanúsítvánnyal kapcsolatban. Ha a tanúsítvány figyelmeztetést kap, válassza az **Igen** vagy a **Folytatás**lehetőséget.
+6. A bejelentkezés során egy figyelmeztetés jelenhet meg a tanúsítvánnyal kapcsolatban. Ha a tanúsítvány figyelmeztetést kap, válassza az **Igen** vagy a **Folytatás** lehetőséget.
 
 7. A virtuális gép asztalának megjelenése után csökkentse a helyi asztalra való visszalépést.
 
@@ -101,7 +101,7 @@ A következőképpen csatlakozhat a virtuális gépről a SQL Database-kiszolgá
 
 1.  A _myVM ({UniqueID}_) távoli asztal nyissa meg a PowerShellt.
 2.  Adja meg a következőt: nslookup SQLServer {UniqueID}. database. Windows. net. 
-    Ehhez hasonló üzenet jelenik meg:
+    Egy ehhez hasonló üzenet jelenik meg:
 
     ```
       Server:  UnKnown
@@ -120,7 +120,7 @@ A következőképpen csatlakozhat a virtuális gépről a SQL Database-kiszolgá
     - **Password (jelszó**): adja meg a létrehozás során megadott jelszót.
     - **Jelszó megjegyzése**: válassza az **Igen**lehetőséget.
 
-5.  Válassza a **Kapcsolódás** lehetőséget.
+5.  Kattintson a **Csatlakozás** gombra.
 6.  A bal oldali menüben válassza az **adatbázisok**elemet.
 7.  Lehetőség van arra is, hogy adatokat hozzon létre vagy lekérdezzen a _Sample-db-_ ből.
 8.  A _(távoli asztal) {UniqueID} myVm_való kapcsolódás lezárása.

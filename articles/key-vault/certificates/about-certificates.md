@@ -11,10 +11,10 @@ ms.topic: overview
 ms.date: 09/04/2019
 ms.author: mbaldwin
 ms.openlocfilehash: e7bae2ad19aaf4f1c93d8d2bdefa7fa9f0414860
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88923687"
 ---
 # <a name="about-azure-key-vault-certificates"></a>Információk az Azure Key Vault-tanúsítványokról
@@ -103,14 +103,14 @@ A következő táblázat a x509-használati szabályzat hozzárendelését mutat
 
 |**X509-használat jelzői**|**Key Vault Key Ops**|**Alapértelmezett viselkedés**|
 |----------|--------|--------|
-|DataEncipherment|titkosítás, visszafejtés| N.A. |
-|DecipherOnly|visszafejteni| N.A.  |
+|DataEncipherment|titkosítás, visszafejtés| N/A |
+|DecipherOnly|visszafejteni| N/A  |
 |DigitalSignature|aláírás, ellenőrzés| Key Vault alapértelmezett beállítás a tanúsítvány létrehozási idejének használati specifikációja nélkül | 
-|EncipherOnly|encrypt| N.A. |
-|KeyCertSign|aláírás, ellenőrzés|N.A.|
+|EncipherOnly|encrypt| N/A |
+|KeyCertSign|aláírás, ellenőrzés|N/A|
 |KeyEncipherment|wrapKey, unwrapKey| Key Vault alapértelmezett beállítás a tanúsítvány létrehozási idejének használati specifikációja nélkül | 
-|Letagadhatatlanság nyújtására|aláírás, ellenőrzés| N.A. |
-|crlsign|aláírás, ellenőrzés| N.A. |
+|Letagadhatatlanság nyújtására|aláírás, ellenőrzés| N/A |
+|crlsign|aláírás, ellenőrzés| N/A |
 
 ## <a name="certificate-issuer"></a>Tanúsítvány kiállítója
 

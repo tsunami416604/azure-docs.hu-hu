@@ -8,10 +8,10 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: quickstart
 ms.openlocfilehash: f4016349e354c84e9e096ac6d5072a4870e9ef29
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "68726459"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-using-go"></a>Rövid útmutató: blobok feltöltése, letöltése és listázása a Go használatával
@@ -32,7 +32,7 @@ Győződjön meg arról, hogy a következő további előfeltételek vannak tele
     ``` 
 
     > [!NOTE]
-    > Az SDK használatakor ügyeljen arra `Azure` , hogy az URL-cím alapján kihasználja az esetekkel kapcsolatos importálási problémákat. Az importálási `Azure` utasításokban is kihasználható.
+    > Az SDK használatakor ügyeljen arra, hogy az URL-cím alapján kihasználja az `Azure` esetekkel kapcsolatos importálási problémákat. Az `Azure` importálási utasításokban is kihasználható.
     
 ## <a name="download-the-sample-application"></a>A mintaalkalmazás letöltése
 A rövid útmutatóban használt [mintaalkalmazás](https://github.com/Azure-Samples/storage-blobs-go-quickstart.git) egy egyszerű Go-alkalmazás.  
@@ -182,7 +182,7 @@ _, err = azblob.UploadFileToBlockBlob(ctx, file, blobURL, azblob.UploadToBlockBl
 handleErrors(err)
 ```
 
-### <a name="list-the-blobs-in-a-container"></a>A tárolóban lévő blobok listázása
+### <a name="list-the-blobs-in-a-container"></a>Tárolóban lévő blobok kilistázása
 
 A tárolóban található fájlok listájának lekéréséhez használja a **ListBlobs** metódust a **ContainerURL** objektumon. A ListBlob egy szegmensben adja vissza a blobokat (akár 5000-et) a megadott **jelölőtől** kezdve. Ha az elejétől szeretné kezdeni, használjon üres jelölőt. A blobneveket a rendszer szótári sorrendben adja vissza. Ha kapott egy szegmenst, dolgozza fel, majd hívja meg újra a ListBlobs metódust a korábban visszaadott jelölővel.  
 

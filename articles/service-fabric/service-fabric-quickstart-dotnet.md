@@ -7,10 +7,10 @@ ms.date: 06/26/2019
 ms.author: mikhegn
 ms.custom: mvc, devcenter, vs-azure
 ms.openlocfilehash: b88dfedd5454d708386afa6912a26dac41c6d6b4
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "86258562"
 ---
 # <a name="quickstart-deploy-a-net-reliable-services-application-to-service-fabric"></a>Rövid útmutató: .NET Reliable Services-alkalmazás üzembe helyezése a Service Fabricben
@@ -161,12 +161,12 @@ Az alkalmazás frissítéséhez tegye a következőket:
 
     ![Verzió módosítása párbeszédpanel](./media/service-fabric-quickstart-dotnet/change-version.png)
 7. Az **Service Fabric alkalmazás közzététele** párbeszédpanelen jelölje be az **alkalmazás frissítése jelölőnégyzetet**.
-8.  Módosítsa a **cél profilt** **PublishProfiles\Local.5Node.xmlre** , és győződjön meg arról, hogy a **kapcsolódási végpont** **helyi fürtre**van beállítva. 
+8.  Módosítsa a **cél profilt** **PublishProfiles\Local.5Node.xmlre ** , és győződjön meg arról, hogy a **kapcsolódási végpont** **helyi fürtre**van beállítva. 
 9. Válassza **az alkalmazás frissítése**lehetőséget.
 
     ![A Közzététel párbeszédpanel frissítési beállításai](./media/service-fabric-quickstart-dotnet/upgrade-app.png)
 
-10. Kattintson a **Publish** (Közzététel) gombra.
+10. Kattintson a **Közzététel** gombra.
 
     Frissítés közben az alkalmazás továbbra is használható. Mivel a fürtön a szolgáltatás két példánya fut, a kérelmek egy része már az alkalmazás frissített verziójával találkozik, míg mások továbbra is a régebbivel.
 
@@ -176,7 +176,7 @@ Az alkalmazás frissítéséhez tegye a következőket:
 
     A Service Fabric a biztonságos frissítés érdekében a fürt minden egyes csomópontjának frissítése után két percet várakozik. A teljes frissítés körülbelül nyolc percet vesz igénybe.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ennek a rövid útmutatónak a segítségével megtanulta a következőket:
 

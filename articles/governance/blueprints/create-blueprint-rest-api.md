@@ -4,10 +4,10 @@ description: Ebben a rövid útmutatóban az Azure-tervezeteket használja az ö
 ms.date: 06/29/2020
 ms.topic: quickstart
 ms.openlocfilehash: e3cdf28cfe523e52aceefe20294042d28b98e1e2
-ms.sourcegitcommit: f684589322633f1a0fafb627a03498b148b0d521
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "85971198"
 ---
 # <a name="quickstart-define-and-assign-an-azure-blueprint-with-rest-api"></a>Gyors útmutató: Azure Blueprint definiálása és hozzárendelése REST API
@@ -16,7 +16,7 @@ A tervrajzok létrehozásának és hozzárendelésének megismerése lehetővé 
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free).
+- Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free) a virtuális gép létrehozásának megkezdése előtt.
 - Regisztrálja az `Microsoft.Blueprint` erőforrás-szolgáltatót. Az utasításokért lásd: [erőforrás-szolgáltatók és típusok](../../azure-resource-manager/management/resource-providers-and-types.md).
 
 [!INCLUDE [cloud-shell-try-it.md](../../../includes/cloud-shell-try-it.md)]
@@ -59,7 +59,7 @@ A megfelelőségi szabványminták definiálásának első lépése, hogy össze
 
 Minden REST API URI tartalmaz olyan változókat, amelyeket le kell cserélnie saját értékekre:
 
-- `{YourMG}`-Csere a felügyeleti csoportjának azonosítójával
+- `{YourMG}` -Csere a felügyeleti csoportjának azonosítójával
 - `{subscriptionId}` – Cserélje le az előfizetése azonosítójára
 
 > [!NOTE]
@@ -325,8 +325,8 @@ Miután a REST API használatával közzétett egy tervet, az hozzárendelhető 
 
 Minden REST API URI tartalmaz olyan változókat, amelyeket le kell cserélnie saját értékekre:
 
-- `{tenantId}`– Cserélje le a-t a bérlői AZONOSÍTÓra
-- `{YourMG}`-Csere a felügyeleti csoportjának azonosítójával
+- `{tenantId}` – Cserélje le a-t a bérlői AZONOSÍTÓra
+- `{YourMG}` -Csere a felügyeleti csoportjának azonosítójával
 - `{subscriptionId}` – Cserélje le az előfizetése azonosítójára
 
 1. Adja az Azure Blueprints-szolgáltatásnévnek a **Tulajdonos** szerepkört a célelőfizetésen. A AppId statikus ( `f71766dc-90d9-4b7d-bd9d-4499c4331c3f` ), de a szolgáltatás egyszerű azonosítója a bérlőtől függ. A bérlőre vonatkozó adatok a következő REST API használatával kérhetők le. Az [Azure Active Directory Graph API-t](../../active-directory/develop/active-directory-graph-api.md) használja, amely más engedélyekkel rendelkezik.
@@ -408,7 +408,7 @@ Minden REST API URI tartalmaz olyan változókat, amelyeket le kell cserélnie s
      > [!IMPORTANT]
      > Az Azure-tervrajzok nem kezelik a felhasználó által hozzárendelt felügyelt identitást. A felhasználók feladata a megfelelő szerepkörök és engedélyek kiosztása, vagy a terv hozzárendelése sikertelen lesz.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 ### <a name="unassign-a-blueprint"></a>Terv hozzárendelésének megszüntetése
 
