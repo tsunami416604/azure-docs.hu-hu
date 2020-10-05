@@ -10,10 +10,10 @@ services: azure-maps
 manager: philmea
 ms.custom: mvc, references_regions
 ms.openlocfilehash: 11a0ddc5c7b297d0700e6fd07d60f8efe0e55a8f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91285332"
 ---
 # <a name="what-is-azure-maps"></a>Mi az Azure Maps?
@@ -52,7 +52,7 @@ A Azure Maps web SDK lehetővé teszi az interaktív térképek egyéni tartalom
 
 Mobil leképezési alkalmazások létrehozásához használja a Azure Maps Android SDK-t.
 
-:::image type="content" source="./media/about-azure-maps/android_sdk.png" border="false" alt-text="Példák megjelenítése mobileszközön":::
+:::image type="content" source="./media/about-azure-maps/android_sdk.png" border="false" alt-text="Példa a Azure Maps web SDK-val létrehozott lakossági változások leképezésére":::
 
 ## <a name="services-in-azure-maps"></a>Az Azure Maps szolgáltatásai
 
@@ -78,7 +78,7 @@ A szolgáltatással kapcsolatos további tudnivalókért tekintse meg a [mobilit
 
 A jelenleg előzetes verzióban elérhető [Render Service v2](https://docs.microsoft.com/rest/api/maps/renderv2) bevezeti a [Get Map csempe v2 API](https://docs.microsoft.com/rest/api/maps/renderv2/getmaptilepreview)új verzióját. A Get Map csempe v2 API mostantól lehetővé teszi az ügyfeleknek, hogy a Azure Maps Creator használatával létrehozott Azure Maps Road csempéket, időjárási csempéket vagy Térkép csempéket kérjenek. Javasoljuk, hogy használja az új Get Map csempe v2 API-t.  
 
-:::image type="content" source="./media/about-azure-maps/intro_map.png" border="false" alt-text="Példa a render Service v2-ből származó térképre":::
+:::image type="content" source="./media/about-azure-maps/intro_map.png" border="false" alt-text="Példa a Azure Maps web SDK-val létrehozott lakossági változások leképezésére":::
 
 További részletekért olvassa el a [Render Service v2 dokumentációját](https://docs.microsoft.com/rest/api/maps/renderv2).
 
@@ -88,7 +88,7 @@ A GA-ban (általános rendelkezésre állás) található Render Service v1 szol
 
 Az útválasztási szolgáltatások segítségével kiszámíthatja az egyes kért útvonalak becsült érkezési idejét (ETA). Az útválasztási API-k olyan tényezőket vizsgálnak, mint például a valós idejű forgalmi információk és a korábbi adatforgalmi adatok, például a hét kért napjának és a nap időpontjának a szokásos országúti sebessége. Az API-k a legrövidebb vagy leggyorsabb útvonalakat adják vissza több célhelyre egyszerre, sorrendben vagy optimalizált sorrendben, az idő vagy a távolság alapján. A szolgáltatás lehetővé teszi a fejlesztők számára, hogy különböző utazási módokon, például autón, teherautón, kerékpáron vagy gyalogláson, illetve elektromos járművön is kiszámítsanak útvonalakat. A szolgáltatás a bemeneteket is figyelembe veszi, például az indulási időt, a súlyozási korlátozásokat vagy a veszélyes anyagok átvitelét.
 
-:::image type="content" source="./media/about-azure-maps/intro_route.png" border="false" alt-text="Példa egy térképre az útvonal-szolgáltatásból":::
+:::image type="content" source="./media/about-azure-maps/intro_route.png" border="false" alt-text="Példa a Azure Maps web SDK-val létrehozott lakossági változások leképezésére":::
 
 A Route szolgáltatás speciális készlet-funkciókat kínál, például:
 
@@ -102,7 +102,7 @@ Az útválasztási képességekkel kapcsolatos részletekért olvassa el az [út
 
 A Search szolgáltatás segítségével a fejlesztők megkereshetik a címeket, a helyeket, az üzleti listákat név vagy kategória alapján, valamint egyéb földrajzi információkat. Emellett a szolgáltatások a földrajzi szélesség és a hosszúságok alapján [fordított geocode](https://en.wikipedia.org/wiki/Reverse_geocoding) -címeket és több utcákat is használhatnak.
 
-:::image type="content" source="./media/about-azure-maps/intro_search.png" border="false" alt-text="Térképes keresés – példa":::
+:::image type="content" source="./media/about-azure-maps/intro_search.png" border="false" alt-text="Példa a Azure Maps web SDK-val létrehozott lakossági változások leképezésére":::
 
 A Search szolgáltatás olyan speciális funkciókat is kínál, mint például a következők:
 
@@ -204,7 +204,7 @@ A Azure Maps egy egyszerű programozási modellel is kényelmes [JavaScript-lek�
 
 A Power BI Azure Maps vizualizációja az adatvizualizációk gazdag készletét kínálja a térbeli adatvizualizációk számára a térképen felül. A becslések szerint az üzleti adatmennyiség több mint 80%-a rendelkezik helyi környezettel. A Azure Maps vizualizáció egy kód nélküli megoldást kínál arra, hogy betekintést nyerjen a helyi környezet és az üzleti adatai hatására.
 
-:::image type="content" source="./media/about-azure-maps/intro-power-bi.png" border="false" alt-text="Power BI asztal a Azure Maps vizualizáció üzleti adataival":::
+:::image type="content" source="./media/about-azure-maps/intro-power-bi.png" border="false" alt-text="Példa a Azure Maps web SDK-val létrehozott lakossági változások leképezésére":::
 
 További információ: a [Azure Maps Power bi Visual](power-bi-visual-getting-started.md) dokumentációjának első lépései.
 
@@ -227,7 +227,7 @@ A Azure Maps szolgáltatások jelenleg csak a következő országokban/régiókb
 
 Ellenőrizze, hogy az aktuális IP-cím helye támogatott országban/régióban található-e.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Próbálja ki a Azure Mapst bemutató minta alkalmazást:
 

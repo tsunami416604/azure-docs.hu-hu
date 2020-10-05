@@ -10,10 +10,10 @@ ms.topic: quickstart
 ms.reviewer: dineshm
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 8e782dc632fe4100194015c3e0adb4ceb1ac30a6
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89011463"
 ---
 # <a name="quickstart-use-the-azure-storage-sdk-v11-for-net-to-manage-a-queue"></a>Rövid útmutató: a .NET-hez készült Azure Storage SDK v11 használatával kezelheti a várólistákat
@@ -276,7 +276,7 @@ Tekintse meg ezeket a további forrásokat a .NET-fejlesztéshez az Azure Queues
 - A .NET ügyféloldali kódtárral kapcsolatos további információért lásd a [.NET API-referenciáját](https://docs.microsoft.com/dotnet/api/overview/azure/storage).
 - A .NET ügyféloldali kódtár használatával írt [üzenetsor-tárolási minták](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=dotnet&term=queues) megismerése.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebből a rövid útmutatóból megtudhatta, hogyan adhat hozzá üzeneteket egy várólistához, hogyan szúrhat be üzeneteket egy várólistából, és hogyan dolgozza fel az üzeneteket a .NET használatával. 
 

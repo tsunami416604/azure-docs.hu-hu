@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.date: 09/14/2020
 ms.author: aahi
 ms.openlocfilehash: fbc73e20b8cc2baa1cc5c5a5b2f674fb1b2dde84
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90947226"
 ---
 # <a name="quickstart-explore-the-metrics-advisor-demo-with-example-data"></a>Gyors útmutató: a metrikai tanácsadó bemutatójának bemutatása példaként megadott adatokkal
@@ -44,14 +44,14 @@ Kattintson a *minta – ár/bevétel – város/kategória* adatcsatornára. A h
 * Az adatcsatorna frissítésének naplózása.   
 * Adatcsatorna adatai és beállításai.
 
-:::image type="content" source="../media/data-feed-view.png" alt-text="Adatcsatorna nézet" lightbox="../media/data-feed-view.png":::
+:::image type="content" source="../media/data-feed-view.png" alt-text="Mintaadatok listája" lightbox="../media/data-feed-view.png":::
 
 
 ## <a name="view-time-series-visualizations-and-configurations"></a>Idősorozat-vizualizációk és-konfigurációk megtekintése
 
 Kattintson a *Cost* mérőszámra a *minta-Cost/Revenue-City/category* adatcsatornán. A társított idősorozatot dimenziók szerint darabolva láthatja, a korábbi metrikai adatoknak megfelelő vizualizációkkal. A metrikai adatok körüli kék sáv a metrikai tanácsadó gépi tanulási modelljeiből származó várt értéket jelöli. A sávon kívüli pontok piros pontokként lesznek megjelölve, amelyek rendellenességeket észleltek. 
 
-:::image type="content" source="../media/series-visualization.png" alt-text="Adatsorozat-vizualizáció" lightbox="../media/series-visualization.png":::
+:::image type="content" source="../media/series-visualization.png" alt-text="Mintaadatok listája" lightbox="../media/series-visualization.png":::
 
 Az anomáliák észlelése konfigurálható úgy, hogy az **észlelési konfigurációkat** a metrika részletei lap bal oldalán hangolja. Több anomália-észlelési módszer is rendelkezésre áll, és kombinálhatja őket. Emellett különböző érzékenységeket, észlelési irányokat és egyéb konfigurációkat is kipróbálhat. A **konfigurációk észlelésének** alján található **Speciális konfigurációs** hivatkozás lehetővé teszi, hogy összetettebb és testreszabott észlelési beállításokat hozzon létre, amelyek csoportok vagy különálló adatsorozatok esetében használhatók. 
 
@@ -59,7 +59,7 @@ Az észlelési algoritmus visszajelzésének megadásával is beállíthatja a a
 
 A **visszajelzés hozzáadása** panel alján található egy hivatkozás az **incidens**-központra, amely az incidensek elemzése oldalra irányítja, és az incidens kiváltó okát elemezni fogja.  
 
-:::image type="content" source="../media/incident-link.png" alt-text="Incidens hivatkozása" lightbox="../media/incident-link.png":::
+:::image type="content" source="../media/incident-link.png" alt-text="Mintaadatok listája" lightbox="../media/incident-link.png":::
 
 ## <a name="explore-anomaly-detection-results-and-perform-root-cause-analysis"></a>Az anomáliák észlelési eredményeinek megismerése és az alapvető okok elemzésének végrehajtása
 
@@ -67,11 +67,11 @@ Ha egy rendellenességből rákattint a **to incidens hub** hivatkozásra, megje
 
 A **diagnosztika** szakasz az incidens fáját mutatja be, valamint az incidens diagnosztizálásának több lapját.
 
-:::image type="content" source="../media/incident-diagnostic.png" alt-text="Incidensek diagnosztika" lightbox="../media/incident-diagnostic.png":::
+:::image type="content" source="../media/incident-diagnostic.png" alt-text="Mintaadatok listája" lightbox="../media/incident-diagnostic.png":::
 
 Az incidens kiváltó okának kijavításával elvégezheti a probléma megoldását, és csökkentheti a problémát, mielőtt a helyzet még rosszabb lesz. További információkhoz is tájékozódhat, ha a további diagnosztikai funkciókra kattint. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [A webes portál használata](web-portal.md)
 - [A REST API használata](rest-api.md)

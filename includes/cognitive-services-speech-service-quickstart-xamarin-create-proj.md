@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 09/13/2019
 ms.author: erhopf
 ms.openlocfilehash: 35133b64e43ca3814410d7bbf2ac1be9f760b369
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91654403"
 ---
 Ha Visual Studio-projektet szeretne létrehozni a platformfüggetlen Mobile App .NET-fejlesztéshez a Xamarin-mel, a következőket kell tennie:
@@ -83,7 +83,7 @@ Telepítse a [SPEECH SDK NuGet-csomagot](https://aka.ms/csspeech/nuget), és hiv
 
 1. A keresési eredmények melletti csomag állapota ablaktáblán válassza a minden projekt: **HelloWorld**, **HelloWorld lehetőséget. Android**, **HelloWorld. iOS**és **HelloWorld. UWP**.
 
-1. Válassza a **Telepítés** lehetőséget.
+1. Válassza a **Telepítés** gombot.
 
 1. A **módosítások előnézete** párbeszédpanelen kattintson **az OK gombra**.
 

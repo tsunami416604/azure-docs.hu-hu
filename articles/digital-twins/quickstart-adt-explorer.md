@@ -8,10 +8,10 @@ ms.date: 9/24/2020
 ms.topic: quickstart
 ms.service: digital-twins
 ms.openlocfilehash: dbe37e8a5cba18254cff1dc5d0fff4d5b9bc783d
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91372612"
 ---
 # <a name="quickstart---explore-a-sample-azure-digital-twins-scenario-using-adt-explorer"></a>Gyors útmutató – a minta Azure digitális Twins-forgatókönyvek megismerése a ADT Explorer használatával
@@ -29,7 +29,7 @@ A rövid útmutató a következő főbb lépéseket tartalmazza:
 
 A példában szereplő gráf két emeleten és két szobával működő épületet jelöl. A gráf így fog kinézni:
 
-:::image type="content" source="media/quickstart-adt-explorer/graph-view-full.png" alt-text="Egy 4 kör alakú csomópontból álló gráf nézete, amely a nyilakhoz csatlakozik. A Floor1 címkével ellátott kör egy Room1 címkével ellátott nyíllal van összekötve. a Floor0 címkével ellátott kör egy Room0 címkével ellátott nyíllal van összekötve. A Floor1 és a Floor0 nincs csatlakoztatva.":::
+:::image type="content" source="media/quickstart-adt-explorer/graph-view-full.png" alt-text="Egy 4 kör alakú csomópontból álló gráf nézete, amely a nyilakhoz csatlakozik. A &quot;Floor1&quot; címkével ellátott kör egy &quot;Room1&quot; címkével ellátott nyíllal van összekötve. a &quot;Floor0&quot; címkével ellátott kör egy &quot;Room0&quot; címkével ellátott nyíllal van összekötve. A &quot;Floor1&quot; és a &quot;Floor0&quot; nincs csatlakoztatva.":::
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -62,7 +62,7 @@ Ezt követően készítse elő a létrehozott Azure digitális Twins-példányt,
 
 Válassza a *hitelesítés* lehetőséget a regisztráció menüjében, és nyomja meg *a + platform hozzáadása*elemet.
 
-:::image type="content" source="media/quickstart-adt-explorer/authentication-pre.png" alt-text="Az alkalmazás-regisztráció hitelesítési adatainak Azure Portal lapja. A platform hozzáadása gomb körül van egy kiemelés" lightbox="media/quickstart-adt-explorer/authentication-pre.png":::
+:::image type="content" source="media/quickstart-adt-explorer/authentication-pre.png" alt-text="Egy 4 kör alakú csomópontból álló gráf nézete, amely a nyilakhoz csatlakozik. A &quot;Floor1&quot; címkével ellátott kör egy &quot;Room1&quot; címkével ellátott nyíllal van összekötve. a &quot;Floor0&quot; címkével ellátott kör egy &quot;Room0&quot; címkével ellátott nyíllal van összekötve. A &quot;Floor1&quot; és a &quot;Floor0&quot; nincs csatlakoztatva." lightbox="media/quickstart-adt-explorer/authentication-pre.png":::
 
 A következő *platformok konfigurálása* oldalon válassza a *web*lehetőséget.
 Adja meg a konfigurációs adatokat a következőképpen:
@@ -73,7 +73,7 @@ A *Konfigurálás* befejezéséhez.
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/quickstart-adt-explorer/authentication-configure-web.png" alt-text="A platformok konfigurálása oldal, a fent ismertetett információk kiemelése":::
+        :::image type="content" source="media/quickstart-adt-explorer/authentication-configure-web.png" alt-text="Egy 4 kör alakú csomópontból álló gráf nézete, amely a nyilakhoz csatlakozik. A &quot;Floor1&quot; címkével ellátott kör egy &quot;Room1&quot; címkével ellátott nyíllal van összekötve. a &quot;Floor0&quot; címkével ellátott kör egy &quot;Room0&quot; címkével ellátott nyíllal van összekötve. A &quot;Floor1&quot; és a &quot;Floor0&quot; nincs csatlakoztatva.":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -81,7 +81,7 @@ A *Konfigurálás* befejezéséhez.
 
 Most már rendelkezik egy olyan webes konfigurációval, amelyet a ADT Explorer használni fog. Ennek a Azure Portal hitelesítés lapjának kell szerepelnie. Az alábbi fejezetek ellenőrzése után kattintson a *Mentés gombra*.
 
-:::image type="content" source="media/quickstart-adt-explorer/authentication-post.png" alt-text="Az alkalmazás-regisztráció hitelesítési adatainak Azure Portal lapja. A webes platform szakasz egy átirányítási URI-ja http://localhost:3000 , a hozzáférési jogkivonatok esetében pedig az implicit támogatás engedélyezve van. A Mentés gomb szintén ki van emelve.":::
+:::image type="content" source="media/quickstart-adt-explorer/authentication-post.png" alt-text="Egy 4 kör alakú csomópontból álló gráf nézete, amely a nyilakhoz csatlakozik. A &quot;Floor1&quot; címkével ellátott kör egy &quot;Room1&quot; címkével ellátott nyíllal van összekötve. a &quot;Floor0&quot; címkével ellátott kör egy &quot;Room0&quot; címkével ellátott nyíllal van összekötve. A &quot;Floor1&quot; és a &quot;Floor0&quot; nincs csatlakoztatva.":::
 
 ### <a name="run-and-configure-adt-explorer"></a>A ADT Explorer futtatása és konfigurálása
 
@@ -95,11 +95,11 @@ Ezután indítsa el az alkalmazást a futtatásával `npm run start` .
 
 Néhány másodperc elteltével megnyílik egy böngészőablak, és az alkalmazás megjelenik a böngészőben.
 
-:::image type="content" source="media/quickstart-adt-explorer/explorer-blank.png" alt-text="A böngészőablakban futó alkalmazást bemutató böngészőablak: 3000. Az alkalmazás neve ADT Explorer, és tartalmazza a lekérdezési Explorer, a modell nézet, a Graph View és a Property Explorer mezőit. Még nincsenek megjeleníthető adathalmazok." lightbox="media/quickstart-adt-explorer/explorer-blank.png":::
+:::image type="content" source="media/quickstart-adt-explorer/explorer-blank.png" alt-text="Egy 4 kör alakú csomópontból álló gráf nézete, amely a nyilakhoz csatlakozik. A &quot;Floor1&quot; címkével ellátott kör egy &quot;Room1&quot; címkével ellátott nyíllal van összekötve. a &quot;Floor0&quot; címkével ellátott kör egy &quot;Room0&quot; címkével ellátott nyíllal van összekötve. A &quot;Floor1&quot; és a &quot;Floor0&quot; nincs csatlakoztatva." lightbox="media/quickstart-adt-explorer/explorer-blank.png":::
 
 Az ablak tetején található *Bejelentkezés* gombra kattintva (az alábbi képen látható) megadhatja, hogy a ADT Explorer működjön a beállított példánnyal. 
 
-:::image type="content" source="media/quickstart-adt-explorer/sign-in.png" alt-text="ADT Explorer – a bejelentkezési ikon kiemelése az ablak tetején. Az ikon a kulcs sziluettjét ábrázoló személy egyszerű sziluettjét jeleníti meg." lightbox="media/quickstart-adt-explorer/sign-in.png":::
+:::image type="content" source="media/quickstart-adt-explorer/sign-in.png" alt-text="Egy 4 kör alakú csomópontból álló gráf nézete, amely a nyilakhoz csatlakozik. A &quot;Floor1&quot; címkével ellátott kör egy &quot;Room1&quot; címkével ellátott nyíllal van összekötve. a &quot;Floor0&quot; címkével ellátott kör egy &quot;Room0&quot; címkével ellátott nyíllal van összekötve. A &quot;Floor1&quot; és a &quot;Floor0&quot; nincs csatlakoztatva." lightbox="media/quickstart-adt-explorer/sign-in.png":::
 
 Adja meg az [Előfeltételek](#prerequisites) szakaszban korábban összegyűjtött fontos adatokat:
 * Alkalmazás (ügyfél) azonosítója
@@ -139,21 +139,21 @@ Ebben a rövid útmutatóban a modell fájljait már megírtuk és érvényesít
 
 A *modell nézet* mezőben nyomja meg a *modell feltöltése* ikont.
 
-:::image type="content" source="media/quickstart-adt-explorer/upload-model.png" alt-text="A modell nézet mezőben a középső ikon ki van emelve. Egy felhőbe mutató nyilat mutat be." lightbox="media/quickstart-adt-explorer/upload-model.png":::
+:::image type="content" source="media/quickstart-adt-explorer/upload-model.png" alt-text="Egy 4 kör alakú csomópontból álló gráf nézete, amely a nyilakhoz csatlakozik. A &quot;Floor1&quot; címkével ellátott kör egy &quot;Room1&quot; címkével ellátott nyíllal van összekötve. a &quot;Floor0&quot; címkével ellátott kör egy &quot;Room0&quot; címkével ellátott nyíllal van összekötve. A &quot;Floor1&quot; és a &quot;Floor0&quot; nincs csatlakoztatva." lightbox="media/quickstart-adt-explorer/upload-model.png":::
  
 1. A megjelenő fájl kiválasztása mezőben navigáljon a letöltött adattár *Azure_Digital_Twins_samples/adtsampleapp/sampleclientapp/models* mappájába.
 2. Válassza a *Room.js* be és *Floor.js*be lehetőséget, majd kattintson az OK gombra. (Ha szeretné, feltöltheti a többi modellt is, de ebben a rövid útmutatóban nem használható.)
 3. Az Azure-fiókba való bejelentkezéshez kattintson a felugró ablakra.
 
 >[!NOTE]
->Ha a következő hibaüzenet jelenik meg: :::image type="content" source="media/quickstart-adt-explorer/error-models-popup.png" alt-text="egy felugró ablak olvasása hiba: hiba történt a modellek beolvasásakor: ClientAuthError: hiba A felugró ablak megnyitásakor. Ez akkor fordulhat elő, ha az IE-t használja, vagy ha az előugró ablakok le vannak tiltva a böngészőben. egy Bezárás gomb alul" border="false"::: 
+>Ha a következő hibaüzenet jelenik meg: :::image type="content" source="media/quickstart-adt-explorer/error-models-popup.png" alt-text="Egy 4 kör alakú csomópontból álló gráf nézete, amely a nyilakhoz csatlakozik. A &quot;Floor1&quot; címkével ellátott kör egy &quot;Room1&quot; címkével ellátott nyíllal van összekötve. a &quot;Floor0&quot; címkével ellátott kör egy &quot;Room0&quot; címkével ellátott nyíllal van összekötve. A &quot;Floor1&quot; és a &quot;Floor0&quot; nincs csatlakoztatva." border="false"::: 
 > Próbálja meg letiltani a felugró ablakok blokkolása vagy egy másik böngésző használatával.
 
 A ADT Explorer ekkor feltölti ezeket a modell-fájlokat az Azure Digital Twins-példányba. Meg kell jelennie a *modell nézet* mezőben, amely megjeleníti a felhasználóbarát neveket és a teljes modell azonosítóit. A *modellre* vonatkozó információk megtekintése buborékok lehetőségre kattintva megtekintheti a mögöttes DTDL-kódot.
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/quickstart-adt-explorer/model-info.png" alt-text="A Model View (modell nézet) mező nézete két, a padlón (dtmi: Floor; 1) és a Room (dtmi: példa: Room; 1) felsorolt modell-definícióval. A modell megtekintése ikon egy kör i betűjét jeleníti meg az egyes modellekhez." lightbox="media/quickstart-adt-explorer/model-info.png":::
+        :::image type="content" source="media/quickstart-adt-explorer/model-info.png" alt-text="Egy 4 kör alakú csomópontból álló gráf nézete, amely a nyilakhoz csatlakozik. A &quot;Floor1&quot; címkével ellátott kör egy &quot;Room1&quot; címkével ellátott nyíllal van összekötve. a &quot;Floor0&quot; címkével ellátott kör egy &quot;Room0&quot; címkével ellátott nyíllal van összekötve. A &quot;Floor1&quot; és a &quot;Floor0&quot; nincs csatlakoztatva." lightbox="media/quickstart-adt-explorer/model-info.png":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -177,7 +177,7 @@ Ebben a szakaszban fel kell töltenie az előre létrehozott ikreket, amelyek eg
 
 A *gráf nézet* mezőben kattintson a *diagram importálása* ikonra.
 
-:::image type="content" source="media/quickstart-adt-explorer/import-graph.png" alt-text="A gráf nézet mezőben egy ikon van kiemelve. Egy felhőbe mutató nyilat mutat be." lightbox="media/quickstart-adt-explorer/import-graph.png":::
+:::image type="content" source="media/quickstart-adt-explorer/import-graph.png" alt-text="Egy 4 kör alakú csomópontból álló gráf nézete, amely a nyilakhoz csatlakozik. A &quot;Floor1&quot; címkével ellátott kör egy &quot;Room1&quot; címkével ellátott nyíllal van összekötve. a &quot;Floor0&quot; címkével ellátott kör egy &quot;Room0&quot; címkével ellátott nyíllal van összekötve. A &quot;Floor1&quot; és a &quot;Floor0&quot; nincs csatlakoztatva." lightbox="media/quickstart-adt-explorer/import-graph.png":::
 
 A fájl kiválasztása mezőben navigáljon a *Azure_Digital_Twins_samples/adtsampleapp/sampleclientapp* mappára, és válassza ki a _**buildingScenario.xlsx**_ számolótábla-fájlt. Ez a fájl tartalmazza a minta gráf leírását. Nyomja meg az OK gombot.
 
@@ -187,7 +187,7 @@ A gráf feltöltésének megerősítéséhez nyomja meg a *diagram nézet*jobb f
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/quickstart-adt-explorer/graph-preview-save.png" alt-text="A Save (Mentés) ikon kiemelése a gráf betekintő ablaktábláján" lightbox="media/quickstart-adt-explorer/graph-preview-save.png":::
+        :::image type="content" source="media/quickstart-adt-explorer/graph-preview-save.png" alt-text="Egy 4 kör alakú csomópontból álló gráf nézete, amely a nyilakhoz csatlakozik. A &quot;Floor1&quot; címkével ellátott kör egy &quot;Room1&quot; címkével ellátott nyíllal van összekötve. a &quot;Floor0&quot; címkével ellátott kör egy &quot;Room0&quot; címkével ellátott nyíllal van összekötve. A &quot;Floor1&quot; és a &quot;Floor0&quot; nincs csatlakoztatva." lightbox="media/quickstart-adt-explorer/graph-preview-save.png":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -197,7 +197,7 @@ A ADT Explorer most a feltöltött fájllal hozza létre a kért ikreket és kap
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/quickstart-adt-explorer/import-success.png" alt-text="A Graph importálás sikerességét jelző párbeszédpanel. A sikeres importálást olvassa be. 49 ikrek importálva. 50 kapcsolat importálva." lightbox="media/quickstart-adt-explorer/import-success.png":::
+        :::image type="content" source="media/quickstart-adt-explorer/import-success.png" alt-text="Egy 4 kör alakú csomópontból álló gráf nézete, amely a nyilakhoz csatlakozik. A &quot;Floor1&quot; címkével ellátott kör egy &quot;Room1&quot; címkével ellátott nyíllal van összekötve. a &quot;Floor0&quot; címkével ellátott kör egy &quot;Room0&quot; címkével ellátott nyíllal van összekötve. A &quot;Floor1&quot; és a &quot;Floor0&quot; nincs csatlakoztatva." lightbox="media/quickstart-adt-explorer/import-success.png":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -207,7 +207,7 @@ A ADT Explorer most a feltöltött fájllal hozza létre a kért ikreket és kap
 
 A gráf már fel lett töltve a ADT Explorerben. Ha látni szeretné a gráfot, a ADT Explorer ablakának tetején kattintson a *lekérdezés futtatása* gombra a *Graph Explorerben* . 
 
-:::image type="content" source="media/quickstart-adt-explorer/run-query.png" alt-text="Az ablak felső részén található lekérdezés futtatása gomb beolvasása megnyomva jelenik meg" lightbox="media/quickstart-adt-explorer/run-query.png":::
+:::image type="content" source="media/quickstart-adt-explorer/run-query.png" alt-text="Egy 4 kör alakú csomópontból álló gráf nézete, amely a nyilakhoz csatlakozik. A &quot;Floor1&quot; címkével ellátott kör egy &quot;Room1&quot; címkével ellátott nyíllal van összekötve. a &quot;Floor0&quot; címkével ellátott kör egy &quot;Room0&quot; címkével ellátott nyíllal van összekötve. A &quot;Floor1&quot; és a &quot;Floor0&quot; nincs csatlakoztatva." lightbox="media/quickstart-adt-explorer/run-query.png":::
 
 Ez az alapértelmezett lekérdezést fogja futtatni az összes digitális ikrek kiválasztásához és megjelenítéséhez. A ADT Explorer lekéri az összes ikreket és kapcsolatot a szolgáltatásból, és a *gráf nézet* mezőben rajzolja meg az általuk meghatározott gráfot.
 
@@ -215,7 +215,7 @@ Ez az alapértelmezett lekérdezést fogja futtatni az összes digitális ikrek 
 
 Most láthatja a minta forgatókönyv feltöltött gráfját:
 
-:::image type="content" source="media/quickstart-adt-explorer/graph-view-full.png" alt-text="A Graph View (gráf nézet) mező megjelenítése, amelyen belül egy dupla gráf található. A floor1 címkével ellátott kör egy room1 címkével ellátott nyíllal van összekötve. a floor0 címkével ellátott kör egy room0 címkével ellátott nyíllal van összekötve.":::
+:::image type="content" source="media/quickstart-adt-explorer/graph-view-full.png" alt-text="Egy 4 kör alakú csomópontból álló gráf nézete, amely a nyilakhoz csatlakozik. A &quot;Floor1&quot; címkével ellátott kör egy &quot;Room1&quot; címkével ellátott nyíllal van összekötve. a &quot;Floor0&quot; címkével ellátott kör egy &quot;Room0&quot; címkével ellátott nyíllal van összekötve. A &quot;Floor1&quot; és a &quot;Floor0&quot; nincs csatlakoztatva.":::
 
 A körök (gráf "csomópontok") a digitális ikreket jelölik, és a vonalak a kapcsolatokat jelképezik. Látni fogja, hogy a *Floor0* Twin *Room0*tartalmaz, és a *Floor1* Twin tartalmazza a *Room1*.
 
@@ -229,7 +229,7 @@ A *Room0*tulajdonságai:
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/quickstart-adt-explorer/properties-room0.png" alt-text="Jelölje ki a Property Explorer (Tulajdonságok) panelt, amely a Room0 tulajdonságait mutatja, beleértve a (többek között) $dtId mezőt a Room0, a 70-es hőmérsékleti mező és a 30-as páratartalom mező mellett." lightbox="media/quickstart-adt-explorer/properties-room0.png":::
+        :::image type="content" source="media/quickstart-adt-explorer/properties-room0.png" alt-text="Egy 4 kör alakú csomópontból álló gráf nézete, amely a nyilakhoz csatlakozik. A &quot;Floor1&quot; címkével ellátott kör egy &quot;Room1&quot; címkével ellátott nyíllal van összekötve. a &quot;Floor0&quot; címkével ellátott kör egy &quot;Room0&quot; címkével ellátott nyíllal van összekötve. A &quot;Floor1&quot; és a &quot;Floor0&quot; nincs csatlakoztatva." lightbox="media/quickstart-adt-explorer/properties-room0.png":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -241,7 +241,7 @@ A *Room1*tulajdonságai:
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/quickstart-adt-explorer/properties-room1.png" alt-text="Jelölje ki a Property Explorer (Tulajdonságok) panelt, amely a Room1 tulajdonságait mutatja, beleértve a (többek között) $dtId mezőt a Room1, a 80-es hőmérsékleti mező és a 60-es páratartalom mező mellett." lightbox="media/quickstart-adt-explorer/properties-room1.png":::
+        :::image type="content" source="media/quickstart-adt-explorer/properties-room1.png" alt-text="Egy 4 kör alakú csomópontból álló gráf nézete, amely a nyilakhoz csatlakozik. A &quot;Floor1&quot; címkével ellátott kör egy &quot;Room1&quot; címkével ellátott nyíllal van összekötve. a &quot;Floor0&quot; címkével ellátott kör egy &quot;Room0&quot; címkével ellátott nyíllal van összekötve. A &quot;Floor1&quot; és a &quot;Floor0&quot; nincs csatlakoztatva." lightbox="media/quickstart-adt-explorer/properties-room1.png":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -265,7 +265,7 @@ SELECT * FROM DigitalTwins T WHERE T.Temperature > 75
 
 A korábbi tulajdonságok megtekintésének visszahívása, hogy a *Room0* a **70** -as hőmérséklettel rendelkezik, és a *Room1* hőmérséklete **80**. Ennek eredményeképpen csak a _**Room1**_ jelennek meg az eredmények között.
     
-:::image type="content" source="media/quickstart-adt-explorer/result-query-property-before.png" alt-text="A tulajdonság-lekérdezés eredménye, amely csak a Room1 jeleníti meg" lightbox="media/quickstart-adt-explorer/result-query-property-before.png":::
+:::image type="content" source="media/quickstart-adt-explorer/result-query-property-before.png" alt-text="Egy 4 kör alakú csomópontból álló gráf nézete, amely a nyilakhoz csatlakozik. A &quot;Floor1&quot; címkével ellátott kör egy &quot;Room1&quot; címkével ellátott nyíllal van összekötve. a &quot;Floor0&quot; címkével ellátott kör egy &quot;Room0&quot; címkével ellátott nyíllal van összekötve. A &quot;Floor1&quot; és a &quot;Floor0&quot; nincs csatlakoztatva." lightbox="media/quickstart-adt-explorer/result-query-property-before.png":::
 
 >[!TIP]
 > Más összehasonlító operátorok (,,, *<* *>* *=* vagy *! =*) is támogatottak a fenti lekérdezésen belül. Kipróbálhatja ezeket, különböző értékeket vagy különböző Twin tulajdonságokat a lekérdezésbe, hogy kipróbálja a saját kérdéseinek megválaszolását.
@@ -280,7 +280,7 @@ A lista tulajdonságai szerkeszthető. Az új érték beírásának engedélyez�
 
 :::row:::
     :::column:::
-        :::image type="content" source="media/quickstart-adt-explorer/new-properties-room0.png" alt-text="A Property Explorer mező, amely a Room0 tulajdonságait mutatja. A hőmérséklet értéke egy 76-es szerkeszthető mező, amely a mentés ikon körül látható." lightbox="media/quickstart-adt-explorer/new-properties-room0.png":::
+        :::image type="content" source="media/quickstart-adt-explorer/new-properties-room0.png" alt-text="Egy 4 kör alakú csomópontból álló gráf nézete, amely a nyilakhoz csatlakozik. A &quot;Floor1&quot; címkével ellátott kör egy &quot;Room1&quot; címkével ellátott nyíllal van összekötve. a &quot;Floor0&quot; címkével ellátott kör egy &quot;Room0&quot; címkével ellátott nyíllal van összekötve. A &quot;Floor1&quot; és a &quot;Floor0&quot; nincs csatlakoztatva." lightbox="media/quickstart-adt-explorer/new-properties-room0.png":::
     :::column-end:::
     :::column:::
     :::column-end:::
@@ -298,7 +298,7 @@ SELECT * FROM DigitalTwins T WHERE T.Temperature > 75
 
 Most, hogy a *Room0* hőmérséklete **70** – **76**értékre változott, mindkét ikreknek meg kell jelennie az eredményben.
 
-:::image type="content" source="media/quickstart-adt-explorer/result-query-property-after.png" alt-text="A Room0 és a Room1 mutató tulajdonság-lekérdezés eredményei" lightbox="media/quickstart-adt-explorer/result-query-property-after.png":::
+:::image type="content" source="media/quickstart-adt-explorer/result-query-property-after.png" alt-text="Egy 4 kör alakú csomópontból álló gráf nézete, amely a nyilakhoz csatlakozik. A &quot;Floor1&quot; címkével ellátott kör egy &quot;Room1&quot; címkével ellátott nyíllal van összekötve. a &quot;Floor0&quot; címkével ellátott kör egy &quot;Room0&quot; címkével ellátott nyíllal van összekötve. A &quot;Floor1&quot; és a &quot;Floor0&quot; nincs csatlakoztatva." lightbox="media/quickstart-adt-explorer/result-query-property-after.png":::
 
 ## <a name="review-and-contextualize-learnings"></a>A contextualize áttekintése és megismerése
 
@@ -323,7 +323,7 @@ Ha azt tervezi, hogy folytatja az Azure digitális Twins-oktatóanyagokat, az eb
 
 Végezetül törölje a helyi gépre letöltött Project Sample-mappákat (_**Azure_Digital_Twins__ADT__explorer**_ és _**Azure_Digital_Twins_samples**_). Előfordulhat, hogy törölnie kell a tömörített és a kibontott verziókat is.
 
-## <a name="next-steps"></a>Következő lépések 
+## <a name="next-steps"></a>További lépések 
 
 Ezután folytassa az Azure digitális Twins-oktatóanyagokkal, és készítse elő saját Azure digitális Twins-forgatókönyvét és interakciós eszközeit.
 

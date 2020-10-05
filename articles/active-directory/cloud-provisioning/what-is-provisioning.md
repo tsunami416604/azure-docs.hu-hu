@@ -12,10 +12,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a5d5528865fc910751b8052dcc78a82131e17290
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91266241"
 ---
 # <a name="what-is-identity-provisioning"></a>Mi az az identitáslétesítés?
@@ -62,7 +62,7 @@ A leggyakoribb forgatókönyv a következő: Ha Active Directory (AD) felhaszná
 
 Ezt a Azure AD Connect Sync, Azure AD Connect a felhőalapú kiépítés és a Microsoft Identity Manager használatával hajtották végre. 
  
-## <a name="next-steps"></a>Következő lépések 
+## <a name="next-steps"></a>További lépések 
 
 - [Mi az az Azure AD Connect felhőalapú jogosultságkiosztás?](what-is-cloud-provisioning.md)
 - [A felhő kiépítés telepítése](how-to-install.md)

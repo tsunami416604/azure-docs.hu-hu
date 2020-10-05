@@ -9,10 +9,10 @@ ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
 ms.openlocfilehash: c6913fee6872d8875e068b2502727c9f42f80401
-ms.sourcegitcommit: 1b320bc7863707a07e98644fbaed9faa0108da97
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89594203"
 ---
 # <a name="what-is-azure-analysis-services"></a>Mi az Azure Analysis Services?
@@ -55,7 +55,7 @@ Ez a csomag kisebb táblázatos modellekkel, korlátozott felhasználói párhuz
 |B1    |    40     |    10     |
 |B2    |    80     |    16     |
 
-### <a name="standard-tier"></a>Standard csomag
+### <a name="standard-tier"></a>Standard szint
 
 Ez a szint olyan létfontosságú, éles környezetben használt alkalmazásokhoz ideális, amelyek rugalmasságot követelnek meg a párhuzamos felhasználói tevékenységekre vonatkozóan, és amelyek gyorsan növekvő adatmodelleket használnak. Támogatja a speciális adatfrissítést az adatmodellek közel valós idejű frissítése érdekében, valamint az összes táblázatos modellezési funkciót is.
 
@@ -79,7 +79,7 @@ Az Azure Analysis Services a világ összes régiójában támogatott. A támoga
 
 ### <a name="americas"></a>Észak-, Dél- és Közép-Amerika
 
-|Régió  | Támogatott csomagok | Lekérdezésreplikák (csak standard csomagok esetén) |
+|Region  | Támogatott csomagok | Lekérdezésreplikák (csak standard csomagok esetén) |
 |---------|---------|:---------:|
 |Dél-Brazília     |    B1, B2, S0, S1, S2, S4, D1     |     1    |
 |Közép-Kanada    |     B1, B2, S0, S1, S2, S4, D1    |     1    |
@@ -99,7 +99,7 @@ Az Azure Analysis Services a világ összes régiójában támogatott. A támoga
 
 ### <a name="europe"></a>Európa
 
-|Régió  | Támogatott csomagok | Lekérdezésreplikák (csak standard csomagok esetén) |
+|Region  | Támogatott csomagok | Lekérdezésreplikák (csak standard csomagok esetén) |
 |---------|---------|:---------:|
 |Észak-Európa     |    B1, B2, S0, S1, S2, S4, D1      |    7     |
 |Észak-Európa     |    S8v2, S9v2      |    3     |
@@ -109,7 +109,7 @@ Az Azure Analysis Services a világ összes régiójában támogatott. A támoga
 
 ### <a name="asia-pacific"></a>Ázsia és a Csendes-óceáni térség 
 
-|Régió  | Támogatott csomagok | Lekérdezésreplikák (csak standard csomagok esetén) |
+|Region  | Támogatott csomagok | Lekérdezésreplikák (csak standard csomagok esetén) |
 |---------|---------|:---------:|
 |Kelet-Ausztrália     |    B1, B2, S0, S1, S2, S4     |    3     |
 |Kelet-Ausztrália     |    S8, S9, S8v2, S9v2    |    1     |
@@ -260,7 +260,7 @@ A dolgok gyorsan változnak. Szerezze be a legfrissebb információkat a [Power 
 
 Az Analysis Services felhasználói pezsgő közösséget alkotnak. Csatlakozzon a párbeszédhez az [Azure Analysis Services fórumon](https://aka.ms/azureanalysisservicesforum).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Az Azure ingyenes próbaverziójának kipróbálása](https://azure.microsoft.com/offers/ms-azr-0044p/)   

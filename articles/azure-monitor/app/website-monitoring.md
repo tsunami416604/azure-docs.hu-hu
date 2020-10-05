@@ -5,10 +5,10 @@ ms.topic: quickstart
 ms.date: 08/19/2020
 ms.custom: mvc
 ms.openlocfilehash: 959beeac004c71fb4593740d3c1685771638e40c
-ms.sourcegitcommit: cd0a1ae644b95dbd3aac4be295eb4ef811be9aaa
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88611330"
 ---
 # <a name="quickstart-start-monitoring-your-website-with-azure-monitor-application-insights"></a>Rövid útmutató: a webhely figyelésének megkezdése Azure Monitor Application Insights
@@ -134,7 +134,7 @@ Ha azt tervezi, hogy további rövid útmutatókkal vagy oktatóanyagokkal dolgo
 1. A Azure Portal bal oldali menüjében válassza az **erőforráscsoportok**lehetőséget, majd válassza a **myResourceGroup** vagy az ideiglenes erőforráscsoport nevét.
 1. Az erőforráscsoport lapon válassza a **Törlés**lehetőséget, írja be a **myResourceGroup** szöveget a szövegmezőbe, majd válassza a **Törlés**lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Teljesítményproblémák észlelése és diagnosztizálása](../log-query/log-query-overview.md)

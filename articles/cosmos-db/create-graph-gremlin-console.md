@@ -8,10 +8,10 @@ ms.topic: quickstart
 ms.date: 07/10/2020
 ms.author: jasonh
 ms.openlocfilehash: ca1ca258296f5ac8f1fb7120d2965ccacf74b5d5
-ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91409391"
 ---
 # <a name="quickstart-create-query-and-traverse-an-azure-cosmos-db-graph-database-using-the-gremlin-console"></a>Rövid útmutató: Azure Cosmos DB gráfadatbázis létrehozása, lekérdezése és bejárása a Gremlin konzol használatával
@@ -65,11 +65,11 @@ Emellett a [Gremlin-konzolnak](https://tinkerpop.apache.org/downloads.html) tele
 
    A gazdagépek értékéhez másolja a **GREMLIN URI** értékét az **Áttekintés** lapról:
 
-   :::image type="content" source="./media/create-graph-gremlin-console/gremlin-uri.png" alt-text="Az Azure Portal Áttekintés lapján található Gremlin URI érték megtekintése és másolása":::
+   :::image type="content" source="./media/create-graph-gremlin-console/gremlin-uri.png" alt-text="Azure Cosmos DB az Apache Gremlin-konzolból":::
 
    A jelszó értékéhez másolja az **elsődleges kulcsot** a **kulcsok** lapról:
 
-   :::image type="content" source="./media/create-graph-gremlin-console/keys.png" alt-text="Az elsődleges kulcs megtekintése és másolása a Azure Portal, kulcsok lapon":::
+   :::image type="content" source="./media/create-graph-gremlin-console/keys.png" alt-text="Azure Cosmos DB az Apache Gremlin-konzolból":::
 
    A remote-secure.yaml fájlnak így kell kinéznie:
 
@@ -319,7 +319,7 @@ Gratulálunk! Az Azure Cosmos DB: Gremlin API-oktatóanyag végére ért.
 
 [!INCLUDE [cosmosdb-delete-resource-group](../../includes/cosmos-db-delete-resource-group.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A rövid útmutatóból megtudhatta, hogyan hozhat létre Azure Cosmos DB-fiókot, miként készíthet gráfokat az Adatkezelő használatával, és hogyan hozhat létre csúcsokat és éleket, valamint hogy hogyan járhat be gráfokat a Gremlin-konzollal. Az útmutató információira támaszkodva összetett lekérdezéseket hozhat létre és hatékony gráfbejárási logikákat helyezhet üzembe a Gremlin használatával. 
 

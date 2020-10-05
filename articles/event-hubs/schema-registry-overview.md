@@ -5,10 +5,10 @@ ms.topic: overview
 ms.date: 09/22/2020
 ms.custom: references_regions
 ms.openlocfilehash: a0cc54f6ada1a5900e817c8e22fc192cd73f6550
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91653570"
 ---
 # <a name="azure-schema-registry-in-event-hubs-preview"></a>Azure Schema Registry az Event Hubsban (előzetes verzió)
@@ -62,7 +62,7 @@ Ha programozott módon fér hozzá a séma beállításjegyzékéhez, regisztrá
 
 Az alkalmazások a Azure Portal használatával történő regisztrálásával kapcsolatos utasításokért lásd: [alkalmazás regisztrálása az Azure ad](../active-directory/develop/quickstart-register-app.md)-ben. Jegyezze fel az ügyfél-azonosítót (az alkalmazás AZONOSÍTÓját), a bérlő AZONOSÍTÓját és a kódban használandó titkot. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ha meg szeretné tudni, hogyan hozhat létre egy séma-beállításjegyzéket a Azure Portal használatával, tekintse meg a [Event Hubs séma-beállításjegyzék létrehozása a Azure Portal használatával](create-schema-registry.md)című témakört.
 - Tekintse meg az alábbi, **Avro ügyféloldali függvénytár** -mintákat.

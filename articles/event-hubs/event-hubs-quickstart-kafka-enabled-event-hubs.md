@@ -4,10 +4,10 @@ description: 'Gyors útmutató: Ez a cikk az Azure-Event Hubs a Kafka protokoll 
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.openlocfilehash: 612a7515c14b77569b34c91d9b43413353b4d0e8
-ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90061546"
 ---
 # <a name="quickstart-data-streaming-with-event-hubs-using-the-kafka-protocol"></a>Gyors útmutató: adatstream Event Hubs a Kafka protokoll használatával
@@ -102,5 +102,5 @@ A **standard** szintű Event Hubs névtér létrehozásakor a rendszer automatik
 
 Ha az Event Hubs Kafka-fürtön vannak események, most el kell kezdeniük érkezni a fogyasztóról.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebben a cikkben megtanulta, hogyan végezheti el a Event Hubs továbbítását a protokoll-ügyfelek módosítása vagy a saját fürtök futtatása nélkül. További információ: [Apache Kafka fejlesztői útmutató az Azure Event Hubshoz](apache-kafka-developer-guide.md). 

@@ -10,10 +10,10 @@ ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
 ms.openlocfilehash: 95a7ae951edab8e75894b0e9aa85029a54a50acb
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91664919"
 ---
 # <a name="sms-client-library-overview"></a>Az SMS-ügyfélkódtár áttekintése
@@ -36,10 +36,10 @@ Az alábbi lista az ügyféloldali kódtárakban jelenleg elérhető funkciók k
 | Események            | A Event Grid használatával konfigurálhatja a webhookokat a bejövő üzenetek és a kézbesítési jelentések fogadására | ✔️   | ✔️    | ✔️    | ✔️      |
 | Telefonszám      | Díjmentes számok                                                                     | ✔️   | ✔️    | ✔️    | ✔️      |
 | Szabályozási        | Letiltások kezelésére                                                                      | ✔️   | ✔️    | ✔️    | ✔️      |
-| Figyelés        | A küldött és fogadott üzenetek használatának figyelése                                          | ✔️   | ✔️    | ✔️    | ✔️      |
+| Nyomon követés        | A küldött és fogadott üzenetek használatának figyelése                                          | ✔️   | ✔️    | ✔️    | ✔️      |
 | PSTN-hívás      | PSTN-hívási képességek hozzáadása SMS-kompatibilis díjmentes számhoz (privát előzetes verzió)                    | ✔️   | ✔️    | ✔️    | ✔️      |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Ismerkedés az SMS küldésével](../../quickstarts/telephony-sms/send.md)

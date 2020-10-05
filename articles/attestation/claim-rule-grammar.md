@@ -8,10 +8,10 @@ ms.topic: overview
 ms.date: 08/31/2020
 ms.author: mbaldwin
 ms.openlocfilehash: 3ed5c3f8232047787c6f05628f1eef35a7533999
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91285418"
 ---
 # <a name="claim-and-claim-rules"></a>Jogcím-és jogcím-szabályok
@@ -80,7 +80,7 @@ A következő operátorok használhatók a feltételek ellenőrzési feltételé
 |--|--|
 | Egész szám | = = (egyenlő), \! = (nem egyenlő), <= (kisebb vagy egyenlő), < (kevesebb, mint), >= (nagyobb vagy egyenlő), > (nagyobb, mint) |
 | Sztring | = = (egyenlő), \! = (nem egyenlő) |
-| Logikai | = = (egyenlő), \! = (nem egyenlő) |
+| Logikai érték | = = (egyenlő), \! = (nem egyenlő) |
 
 A feltételek kiértékelése lista:
 
@@ -98,7 +98,7 @@ A szabályzatokban engedélyezett műveletek készletét alább találja.
 | probléma (jogcím) | Hozzáadja a jogcímet a bejövő és a kimenő jogcímek készletéhez. | **issuancerules** |
 | issueproperty (jogcím) | Hozzáadja a jogcímet a bejövő és a tulajdonság jogcímek készletéhez. | **issuancerules**
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Igazolási szabályzat létrehozása és aláírása](author-sign-policy.md)
 - [Az Azure-igazolás beállítása a PowerShell használatával](quickstart-powershell.md)

@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.date: 09/25/2020
 ms.custom: devx-track-js
 ms.openlocfilehash: ab3142426b12f86b9f8afa84ce0ea05fc1939eec
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91400604"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-nodejs-using-rest-apis"></a>Gyors útmutató: Azure Cognitive Search index létrehozása a Node.js REST API-k használatával
@@ -64,7 +64,7 @@ A szolgáltatás felé irányuló hívások URL-végpontot és hozzáférési ku
 
 Minden kérelemhez API-kulcs szükséges a szolgáltatásnak küldött összes kérelem fejlécében. Egy érvényes kulcs a kérést küldő alkalmazás és az azt kezelő szolgáltatás közötti megbízhatósági kapcsolatot hoz létre a kérelmek alapján.
 
-## <a name="set-up-your-environment"></a>A környezet kialakítása
+## <a name="set-up-your-environment"></a>Saját környezet beállítása
 
 Először nyisson meg egy PowerShell-konzolt vagy más környezetet, amelyben Node.js telepítette.
 
@@ -473,7 +473,7 @@ A program által végrehajtott műveleteket ismertető üzenetnek kell megjelenn
 
 Nyissa meg a keresési szolgáltatás **áttekintését** a Azure Portal. Válassza ki az **indexek** lapot. A következőhöz hasonlónak kell megjelennie:
 
-:::image type="content" source="media/search-get-started-nodejs/create-index-no-data.png" alt-text="Képernyőkép a Azure Portalről, a keresési szolgáltatás áttekintése, indexek lap" border="false":::
+:::image type="content" source="media/search-get-started-nodejs/create-index-no-data.png" alt-text="A szolgáltatás nevének és a rendszergazda és a lekérdezési kulcsok beszerzése" border="false":::
 
 A következő lépésben hozzá kell adnia az adatindexhez. 
 

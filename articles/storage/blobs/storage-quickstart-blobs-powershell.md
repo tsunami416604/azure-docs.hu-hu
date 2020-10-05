@@ -11,10 +11,10 @@ ms.date: 03/31/2020
 ms.author: tamram
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: b051a4ffe4d24e1ef0e69ab7c18a8ed3388b57e5
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89078282"
 ---
 # <a name="quickstart-upload-download-and-list-blobs-with-powershell"></a>Rövid útmutató: Blobok feltöltése, letöltése és listázása a PowerShell-lel
@@ -83,7 +83,7 @@ Set-AzStorageBlobContent -File "D:\_TestImages\foldername\Image003.jpg" `
 
 Mielőtt továbblépne, töltsön fel annyi fájlt, amennyit csak szeretne.
 
-## <a name="list-the-blobs-in-a-container"></a>A tárolóban lévő blobok listázása
+## <a name="list-the-blobs-in-a-container"></a>Tárolóban lévő blobok kilistázása
 
 Szerezze be a tárolóban lévő Blobok listáját a [Get-AzStorageBlob](/powershell/module/az.storage/get-azstorageblob)használatával. A példában csak a feltöltött blobok neve látható.
 
@@ -130,7 +130,7 @@ Távolítsa el az összes létrehozott adategységet. Az adategységek eltávol�
 Remove-AzResourceGroup -Name $resourceGroup
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban a fájlokat a helyi fájlrendszer és az Azure Blob Storage között helyezi át. Ha többet szeretne megtudni a blob Storage PowerShell használatával történő használatáról, tekintse meg Azure PowerShell mintákat a blob Storage-hoz.
 

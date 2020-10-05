@@ -9,17 +9,17 @@ ms.topic: quickstart
 ms.custom: hdinsightactive
 ms.date: 12/03/2019
 ms.openlocfilehash: 49b576fd511d17616880e5d981fd3f649de797df
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "79367924"
 ---
 # <a name="quickstart-execute-apache-hive-queries-in-azure-hdinsight-with-apache-zeppelin"></a>Gyors útmutató: Apache Hive lekérdezések végrehajtása az Azure HDInsight az Apache Zeppelin-vel
 
 Ebből a rövid útmutatóból megtudhatja, hogyan futtathat [Apache Hive](https://hive.apache.org/) -lekérdezéseket az Azure HDInsight-ben az Apache Zeppelin használatával. A HDInsight interaktív lekérdezési fürtök olyan [Apache Zeppelin](https://zeppelin.apache.org/) -jegyzetfüzeteket tartalmaznak, amelyekkel interaktív struktúra-lekérdezéseket futtathat.
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) .
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -27,7 +27,7 @@ An méretű HDInsight interaktív lekérdezési fürt. Lásd: [fürt létrehozá
 
 ## <a name="create-an-apache-zeppelin-note"></a>Apache Zeppelin-Megjegyzés létrehozása
 
-1. Cserélje `CLUSTERNAME` le a nevet a fürt nevére a következő URL- `https://CLUSTERNAME.azurehdinsight.net/zeppelin`címben. Ezután írja be az URL-címet egy böngészőben.
+1. Cserélje le a `CLUSTERNAME` nevet a fürt nevére a következő URL-címben `https://CLUSTERNAME.azurehdinsight.net/zeppelin` . Ezután írja be az URL-címet egy böngészőben.
 
 2. Adja meg a fürt bejelentkezési felhasználónevét és jelszavát. A Zeppelin lapon létrehozhat egy új megjegyzést, vagy megnyithatja a meglévő megjegyzéseket. A **HiveSample** tartalmaz néhány minta kaptár-lekérdezést.  
 

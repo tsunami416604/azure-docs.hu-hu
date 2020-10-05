@@ -9,10 +9,10 @@ ms.custom: subject-armqs
 ms.author: allensu
 ms.date: 09/14/2020
 ms.openlocfilehash: 287afc51aa15ed4cadba7e2d6cd389e4869d7d61
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90532855"
 ---
 # <a name="quickstart-create-an-internal-load-balancer-to-load-balance-vms-by-using-an-arm-template"></a>Rövid útmutató: belső terheléselosztó létrehozása a virtuális gépek terheléselosztásához ARM-sablon használatával
@@ -81,7 +81,7 @@ Ha már nincs rá szükség, az az [Group delete](/cli/azure/group#az-group-dele
     --name myResourceGroupLB
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A sablonok létrehozásának folyamatát ismertető, lépésenkénti oktatóanyagért lásd:
 

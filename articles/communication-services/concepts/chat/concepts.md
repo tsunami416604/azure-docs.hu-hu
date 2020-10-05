@@ -10,10 +10,10 @@ ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
 ms.openlocfilehash: c3b4970b70a9bd5399199771a081481e17e2efb1
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91666993"
 ---
 # <a name="chat-concepts"></a>Csevegéssel kapcsolatos alapfogalmak
@@ -132,7 +132,7 @@ Ezt úgy érheti el, ha a megbízható szolgáltatás egy csevegési szál tagja
 
 :::image type="content" source="../media/chat/cognitive-services.png" alt-text="A kommunikációs szolgáltatások csevegési architektúráját bemutató ábra.":::
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Ismerkedés a csevegéssel](../../quickstarts/chat/get-started.md)

@@ -12,10 +12,10 @@ ms.date: 08/24/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 6c1a720e7e9bd9c71f925f104ca7fc70a1a5ef59
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89051066"
 ---
 # <a name="what-is-the-ink-recognizer-api"></a>Mi az Ink Recognizer API?
@@ -26,7 +26,7 @@ A tinta-felismerő kognitív szolgáltatás felhőalapú REST API biztosít a di
 
 ![Egy, az API-ba irányuló tollvonási bemenet küldését leíró folyamatábra](media/ink-recognizer-pen-graph.svg)
 
-## <a name="features"></a>Funkciók
+## <a name="features"></a>Szolgáltatások
 
 A kézírás-felismerő API használatával könnyedén felismerheti az alkalmazásaiban található kézzel írt tartalmakat. 
 
@@ -49,7 +49,7 @@ Regisztráció után:
 1. Küldjön egy kérelmet a tinta-felismerő API-nak az adataival.
 1. Az API válaszának feldolgozásához elemezze a visszaadott JSON-üzenetet.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A következő nyelveken kipróbálhat egy rövid útmutatót, amellyel megkezdheti a szabadkézi felismerő API hívását.
 * [C#](quickstarts/csharp.md)

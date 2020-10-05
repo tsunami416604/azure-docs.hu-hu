@@ -8,10 +8,10 @@ ms.date: 08/07/2020
 author: sivethe
 ms.author: sivethe
 ms.openlocfilehash: 50414d48c3368ddf409630422d3316cdc45a63fe
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88587395"
 ---
 # <a name="azure-cosmos-dbs-api-for-mongodb-36-version-supported-features-and-syntax"></a>MongoDB-hez készült Azure Cosmos DB API (3.6-os verzió): támogatott funkciók és szintaxis
@@ -22,7 +22,7 @@ A Azure Cosmos DB API-MongoDB való használatával élvezheti a használt Mongo
 
 ## <a name="protocol-support"></a>Protokollok támogatása
 
-A MongoDB Azure Cosmos DB API-ját az MongoDB Server **3,6** -es verziójának az új fiókok esetében alapértelmezés szerint kompatibilisnek kell lennie. A támogatott operátorok, valamint a korlátozások és kivételek listája alább található. Minden olyan ügyfélillesztőnek, amely ismeri ezeket a protokollokat, tudnia kell kapcsolódnia a MongoDB-hez készült Azure Cosmos DB API-hoz. Vegye figyelembe, hogy a MongoDB-fiókok Azure Cosmos DB API-ját használva a fiókok 3,6-es verziója a végpontot használja, `*.mongo.cosmos.azure.com` míg a fiókok 3,2-es verziójának formátuma a végpont `*.documents.azure.com` .
+A MongoDB-hez készült Azure Cosmos DB API új fiókok esetén alapértelmezés szerint kompatibilis a MongoDB-kiszolgáló **3.6**-os verziójával. A támogatott operátorok, valamint a korlátozások és kivételek listája alább található. Minden olyan ügyfélillesztőnek, amely ismeri ezeket a protokollokat, tudnia kell kapcsolódnia a MongoDB-hez készült Azure Cosmos DB API-hoz. Vegye figyelembe, hogy ha a MongoDB fiókokhoz készült Azure Cosmos DB API-t használja, a 3.6-os verziójú fiókok végpontja `*.mongo.cosmos.azure.com` formátumban van, míg a 3.2-es verziójú fiókok végpontja `*.documents.azure.com` formátumban van.
 
 ## <a name="query-language-support"></a>Nyelvi támogatás lekérdezése
 
@@ -36,75 +36,75 @@ Azure Cosmos DB API-MongoDB a következő adatbázis-parancsokat támogatja:
 
 |Parancs  |Támogatott |
 |---------|---------|
-|delete | Yes |
-|find | Yes     |
-|findAndModify | Yes  |
-|getLastError|   Yes |
-|getMore  |  Yes  |
-|getPrevError | No  |
-|insert  |   Yes  |
-|parallelCollectionScan  | Yes   |
-|resetError |    No  |
-|update  |   Yes  |
-|[Streamek módosítása](mongodb-change-streams.md)  |  Yes  |
-|GridFS |   Yes  |
+|delete | Igen |
+|find | Igen     |
+|findAndModify | Igen  |
+|getLastError|   Igen |
+|getMore  |  Igen  |
+|getPrevError | Nem  |
+|insert  |   Igen  |
+|parallelCollectionScan  | Igen   |
+|resetError |    Nem  |
+|update  |   Igen  |
+|[Streamek módosítása](mongodb-change-streams.md)  |  Igen  |
+|GridFS |   Igen  |
 
 ### <a name="authentication-commands"></a>Hitelesítési parancsok
 
 |Parancs  |Támogatott |
 |---------|---------|
-|authenticate    |   Yes      |
-|logout    |      Yes   |
-|getnonce   |    Yes     |
+|authenticate    |   Igen      |
+|logout    |      Igen   |
+|getnonce   |    Igen     |
 
 
 ### <a name="administration-commands"></a>Adminisztrációs parancsok
 
 |Parancs  |Támogatott |
 |---------|---------|
-|Korlátozott gyűjtemények   |   No      |
-|cloneCollectionAsCapped     |   No      |
-|collMod     |   No      |
-|collMod: expireAfterSeconds   |   No      |
-|convertToCapped   |  No       |
-|copydb     |  No       |
-|létrehozás   |    Yes     |
-|createIndexes     |  Yes       |
-|currentOp     |  Yes       |
-|drop     |   Yes      |
-|dropDatabase     |  Yes       |
-|dropIndexes     |   Yes      |
-|filemd5    |   Yes      |
-|killCursors    |  Yes       |
-|Mintálné     |   No      |
-|listCollections     |  Yes       |
-|listDatabases     |  Yes       |
-|listIndexes     |  Yes       |
-|reIndex     |    Yes     |
-|renameCollection     |    No     |
-|connectionStatus    |     No    |
+|Korlátozott gyűjtemények   |   Nem      |
+|cloneCollectionAsCapped     |   Nem      |
+|collMod     |   Nem      |
+|collMod: expireAfterSeconds   |   Nem      |
+|convertToCapped   |  Nem       |
+|copydb     |  Nem       |
+|létrehozás   |    Igen     |
+|createIndexes     |  Igen       |
+|currentOp     |  Igen       |
+|drop     |   Igen      |
+|dropDatabase     |  Igen       |
+|dropIndexes     |   Igen      |
+|filemd5    |   Igen      |
+|killCursors    |  Igen       |
+|Mintálné     |   Nem      |
+|listCollections     |  Igen       |
+|listDatabases     |  Igen       |
+|listIndexes     |  Igen       |
+|reIndex     |    Igen     |
+|renameCollection     |    Nem     |
+|connectionStatus    |     Nem    |
 
 ### <a name="diagnostics-commands"></a>Diagnosztikai parancsok
 
 |Parancs  |Támogatott |
 |---------|---------|
-|buildInfo         |   Yes      |
-|collStats    |  Yes       |
-|connPoolStats     |  No       |
-|connectionStatus     |  No       |
-|dataSize     |   No      |
-|dbHash    |    No     |
-|dbStats     |   Yes      |
-|megmagyarázni     |   Yes      |
-|magyarázat: executionStats     |   Yes      |
-|funkciók     |    No     |
-|hostInfo     |   No      |
-|listDatabases         |   Yes      |
-|Parancslista elemre     |  No       |
-|Profiler     |  No       |
-|serverStatus     |  No       |
-|top     |    No     |
-|whatsmyuri     |   Yes      |
+|buildInfo         |   Igen      |
+|collStats    |  Igen       |
+|connPoolStats     |  Nem       |
+|connectionStatus     |  Nem       |
+|dataSize     |   Nem      |
+|dbHash    |    Nem     |
+|dbStats     |   Igen      |
+|megmagyarázni     |   Igen      |
+|magyarázat: executionStats     |   Igen      |
+|funkciók     |    Nem     |
+|hostInfo     |   Nem      |
+|listDatabases         |   Igen      |
+|Parancslista elemre     |  Nem       |
+|Profiler     |  Nem       |
+|serverStatus     |  Nem       |
+|top     |    Nem     |
+|whatsmyuri     |   Igen      |
 
 <a name="aggregation-pipeline"></a>
 
@@ -114,241 +114,241 @@ Azure Cosmos DB API-MongoDB a következő adatbázis-parancsokat támogatja:
 
 |Parancs  |Támogatott |
 |---------|---------|
-|aggregate |   Yes  |
-|count     |   Yes  |
-|distinct  | Yes |
-|mapReduce | No |
+|aggregate |   Igen  |
+|count     |   Igen  |
+|distinct  | Igen |
+|mapReduce | Nem |
 
 ### <a name="aggregation-stages"></a>Összesítési fázisok
 
 |Parancs  |Támogatott |
 |---------|---------|
-|$collStats    |No|
-|$project    |Yes|
-|$match    |Yes|
-|$redact|    Yes|
-|$limit    |Yes|
-|$skip    |Yes|
-|$unwind|    Yes|
-|$group    |    Yes|
-|$sample|        Yes|
-|$sort    |Yes|
-|$geoNear|    No|
-|$lookup    |    Yes|
-|$out        |Yes|
-|$indexStats|        No|
-|$facet    |Yes|
-|$bucket|    No|
-|$bucketAuto|    No|
-|$sortByCount|    Yes|
-|$addFields    |Yes|
-|$replaceRoot|    Yes|
-|$count    |Yes|
-|$currentOp|    No|
-|$listLocalSessions    |No|
-|$listSessions    |No|
-|$graphLookup    |No|
+|$collStats    |Nem|
+|$project    |Igen|
+|$match    |Igen|
+|$redact|    Igen|
+|$limit    |Igen|
+|$skip    |Igen|
+|$unwind|    Igen|
+|$group    |    Igen|
+|$sample|        Igen|
+|$sort    |Igen|
+|$geoNear|    Nem|
+|$lookup    |    Igen|
+|$out        |Igen|
+|$indexStats|        Nem|
+|$facet    |Igen|
+|$bucket|    Nem|
+|$bucketAuto|    Nem|
+|$sortByCount|    Igen|
+|$addFields    |Igen|
+|$replaceRoot|    Igen|
+|$count    |Igen|
+|$currentOp|    Nem|
+|$listLocalSessions    |Nem|
+|$listSessions    |Nem|
+|$graphLookup    |Nem|
 
 ### <a name="boolean-expressions"></a>Logikai kifejezések
 
 |Parancs  |Támogatott |
 |---------|---------|
-|$and| Yes|
-|$or|Yes|
-|$not|Yes|
+|$and| Igen|
+|$or|Igen|
+|$not|Igen|
 
 ### <a name="set-expressions"></a>Halmazkifejezések
 
 |Parancs  |Támogatott |
 |---------|---------|
-| $setEquals | Yes|
-|$setIntersection|Yes|
-| $setUnion|Yes|
-| $setDifference|Yes|
-| $setIsSubset|Yes|
-| $anyElementTrue|Yes|
-| $allElementsTrue|Yes|
+| $setEquals | Igen|
+|$setIntersection|Igen|
+| $setUnion|Igen|
+| $setDifference|Igen|
+| $setIsSubset|Igen|
+| $anyElementTrue|Igen|
+| $allElementsTrue|Igen|
 
 ### <a name="comparison-expressions"></a>Összehasonlító kifejezések
 
 |Parancs  |Támogatott |
 |---------|---------|
-|$cmp     |  Yes       |
-|$eq|    Yes| 
-|$gt |    Yes| 
-|$gte|    Yes| 
-|$lt    |Yes|
-|$lte|    Yes| 
-|$ne    |    Yes| 
-|$in    |    Yes| 
-|$nin    |    Yes| 
+|$cmp     |  Igen       |
+|$eq|    Igen| 
+|$gt |    Igen| 
+|$gte|    Igen| 
+|$lt    |Igen|
+|$lte|    Igen| 
+|$ne    |    Igen| 
+|$in    |    Igen| 
+|$nin    |    Igen| 
 
 ### <a name="arithmetic-expressions"></a>Aritmetikai kifejezések
 
 |Parancs  |Támogatott |
 |---------|---------|
-|$abs |  Yes       |
-| $add |  Yes       |
-| $ceil |  Yes       |
-| $divide |  Yes       |
-| $exp |  Yes       |
-| $floor |  Yes       |
-| $ln |  Yes       |
-| $log |  Yes       |
-| $log10 |  Yes       |
-| $mod |  Yes       |
-| $multiply |  Yes       |
-| $pow |  Yes       |
-| $sqrt |  Yes       |
-| $subtract |  Yes       |
-| $trunc |  Yes       |
+|$abs |  Igen       |
+| $add |  Igen       |
+| $ceil |  Igen       |
+| $divide |  Igen       |
+| $exp |  Igen       |
+| $floor |  Igen       |
+| $ln |  Igen       |
+| $log |  Igen       |
+| $log10 |  Igen       |
+| $mod |  Igen       |
+| $multiply |  Igen       |
+| $pow |  Igen       |
+| $sqrt |  Igen       |
+| $subtract |  Igen       |
+| $trunc |  Igen       |
 
 ### <a name="string-expressions"></a>Sztringkifejezések
 
 |Parancs  |Támogatott |
 |---------|---------|
-|$concat |  Yes       |
-| $indexOfBytes|  Yes       |
-| $indexOfCP|  Yes       |
-| $split|  Yes       |
-| $strLenBytes|  Yes       |
-| $strLenCP|  Yes       |
-| $strcasecmp|  Yes       |
-| $substr|  Yes       |
-| $substrBytes|  Yes       |
-| $substrCP|  Yes       |
-| $toLower|  Yes       |
-| $toUpper|  Yes       |
+|$concat |  Igen       |
+| $indexOfBytes|  Igen       |
+| $indexOfCP|  Igen       |
+| $split|  Igen       |
+| $strLenBytes|  Igen       |
+| $strLenCP|  Igen       |
+| $strcasecmp|  Igen       |
+| $substr|  Igen       |
+| $substrBytes|  Igen       |
+| $substrCP|  Igen       |
+| $toLower|  Igen       |
+| $toUpper|  Igen       |
 
 ### <a name="text-search-operator"></a>Szöveges keresési operátor
 
 |Parancs  |Támogatott |
 |---------|---------|
-| $meta | No|
+| $meta | Nem|
 
 ### <a name="array-expressions"></a>Tömbkifejezések
 
 |Parancs  |Támogatott |
 |---------|---------|
-|$arrayElemAt    |    Yes|
-|$arrayToObject|    Yes|
-|$concatArrays    |    Yes|
-|$filter    |    Yes|
-|$indexOfArray    |Yes|
-|$isArray    |    Yes|
-|$objectToArray    |Yes|
-|$range    |Yes|
-|$reverseArray    |    Yes|
-|$reduce|    Yes|
-|$size    |    Yes|
-|$slice    |    Yes|
-|$zip    |    Yes|
-|$in    |    Yes|
+|$arrayElemAt    |    Igen|
+|$arrayToObject|    Igen|
+|$concatArrays    |    Igen|
+|$filter    |    Igen|
+|$indexOfArray    |Igen|
+|$isArray    |    Igen|
+|$objectToArray    |Igen|
+|$range    |Igen|
+|$reverseArray    |    Igen|
+|$reduce|    Igen|
+|$size    |    Igen|
+|$slice    |    Igen|
+|$zip    |    Igen|
+|$in    |    Igen|
 
 ### <a name="variable-operators"></a>Változó operátorok
 
 |Parancs  |Támogatott |
 |---------|---------|
-|$map    |No|
-|$let    |Yes|
+|$map    |Nem|
+|$let    |Igen|
 
 ### <a name="system-variables"></a>Rendszerváltozók
 
 |Parancs  |Támogatott |
 |---------|---------|
-|$ $CURRENT|    Yes|
-|$ $DESCEND|        Yes|
-|$ $KEEP        |Yes|
-|$ $PRUNE    |    Yes|
-|$ $REMOVE    |Yes|
-|$ $ROOT        |Yes|
+|$ $CURRENT|    Igen|
+|$ $DESCEND|        Igen|
+|$ $KEEP        |Igen|
+|$ $PRUNE    |    Igen|
+|$ $REMOVE    |Igen|
+|$ $ROOT        |Igen|
 
 ### <a name="literal-operator"></a>Literális operátor
 
 |Parancs  |Támogatott |
 |---------|---------|
-|$literal    |Yes|
+|$literal    |Igen|
 
 ### <a name="date-expressions"></a>Dátumkifejezések
 
 |Parancs  |Támogatott |
 |---------|---------|
-|$dayOfYear    |Yes    |
-|$dayOfMonth|    Yes    |
-|$dayOfWeek    |Yes    |
-|$year    |Yes    |
-|$month    |Yes|    
-|$week    |Yes    |
-|$hour    |Yes    |
-|$minute|    Yes|    
-|$second    |Yes    |
-|$millisecond|    Yes|    
-|$dateToString    |Yes    |
-|$isoDayOfWeek    |Yes    |
-|$isoWeek    |Yes    |
-|$dateFromParts|    No|    
-|$dateToParts    |No    |
-|$dateFromString|    No|
-|$isoWeekYear    |Yes    |
+|$dayOfYear    |Igen    |
+|$dayOfMonth|    Igen    |
+|$dayOfWeek    |Igen    |
+|$year    |Igen    |
+|$month    |Igen|    
+|$week    |Igen    |
+|$hour    |Igen    |
+|$minute|    Igen|    
+|$second    |Igen    |
+|$millisecond|    Igen|    
+|$dateToString    |Igen    |
+|$isoDayOfWeek    |Igen    |
+|$isoWeek    |Igen    |
+|$dateFromParts|    Nem|    
+|$dateToParts    |Nem    |
+|$dateFromString|    Nem|
+|$isoWeekYear    |Igen    |
 
 ### <a name="conditional-expressions"></a>Feltételes kifejezések
 
 |Parancs  |Támogatott |
 |---------|---------|
-| $cond| Yes|
-| $ifNull| Yes|
-| $switch |Yes|
+| $cond| Igen|
+| $ifNull| Igen|
+| $switch |Igen|
 
 ### <a name="data-type-operator"></a>Adattípus-operátor
 
 |Parancs  |Támogatott |
 |---------|---------|
-| $type| Yes|
+| $type| Igen|
 
 ### <a name="accumulator-expressions"></a>Gyűjtői kifejezések
 
 |Parancs  |Támogatott |
 |---------|---------|
-|$sum    |Yes    |
-|$avg    |Yes    |
-|$first|    Yes|
-|$last    |Yes    |
-|$max    |Yes    |
-|$min    |Yes    |
-|$push|    Yes|
-|$addToSet|    Yes|
-|$stdDevPop|    No    |
-|$stdDevSamp|    No|
+|$sum    |Igen    |
+|$avg    |Igen    |
+|$first|    Igen|
+|$last    |Igen    |
+|$max    |Igen    |
+|$min    |Igen    |
+|$push|    Igen|
+|$addToSet|    Igen|
+|$stdDevPop|    Nem    |
+|$stdDevSamp|    Nem|
 
 ### <a name="merge-operator"></a>Egyesítési operátor
 
 |Parancs  |Támogatott |
 |---------|---------|
-| $mergeObjects | Yes|
+| $mergeObjects | Igen|
 
 ## <a name="data-types"></a>Adattípusok
 
 |Parancs  |Támogatott |
 |---------|---------|
-|Dupla    |Yes    |
-|Sztring    |Yes    |
-|Objektum    |Yes    |
-|Tömb    |Yes    |
-|Bináris adatértékek    |Yes|    
-|ObjectId    |Yes    |
-|Logikai    |Yes    |
-|Dátum    |Yes    |
-|Null    |Yes    |
-|32 bites egész szám (int)    |Yes    |
-|Timestamp    |Yes    |
-|64 bites egész szám (hosszú)    |Yes    |
-|MinKey    |Yes    |
-|MaxKey    |Yes    |
-|Decimal128    |Yes|    
-|Reguláris kifejezés    |Yes|
-|JavaScript    |Yes|
-|JavaScript (hatókörrel)|    Yes    |
-|Nem definiált    |Yes    |
+|Dupla    |Igen    |
+|Sztring    |Igen    |
+|Objektum    |Igen    |
+|Tömb    |Igen    |
+|Bináris adatértékek    |Igen|    
+|ObjectId    |Igen    |
+|Logikai érték    |Igen    |
+|Dátum    |Igen    |
+|Null    |Igen    |
+|32 bites egész szám (int)    |Igen    |
+|Timestamp    |Igen    |
+|64 bites egész szám (hosszú)    |Igen    |
+|MinKey    |Igen    |
+|MaxKey    |Igen    |
+|Decimal128    |Igen|    
+|Reguláris kifejezés    |Igen|
+|JavaScript    |Igen|
+|JavaScript (hatókörrel)|    Igen    |
+|Nem definiált    |Igen    |
 
 ## <a name="indexes-and-index-properties"></a>Indexek és index tulajdonságai
 
@@ -356,24 +356,24 @@ Azure Cosmos DB API-MongoDB a következő adatbázis-parancsokat támogatja:
 
 |Parancs  |Támogatott |
 |---------|---------|
-|Egyetlen mező indexe    |Yes    |
-|Összetett index    |Yes    |
-|Multikey index    |Yes    |
-|Szöveges index    |No|
-|2dsphere    |Yes    |
-|2D-index    |No    |
-|Kivonatos index    | Yes|
+|Egyetlen mező indexe    |Igen    |
+|Összetett index    |Igen    |
+|Multikey index    |Igen    |
+|Szöveges index    |Nem|
+|2dsphere    |Igen    |
+|2D-index    |Nem    |
+|Kivonatos index    | Igen|
 
 ### <a name="index-properties"></a>Index tulajdonságai
 
 |Parancs  |Támogatott |
 |---------|---------|
-|TTL|    Yes    |
-|Egyedi    |Yes|
-|Részleges|    No|
-|Kis-és nagybetűk megkülönböztetése    |No|
-|Ritka    |No |
-|Háttér|    Yes |
+|TTL|    Igen    |
+|Egyedi    |Igen|
+|Részleges|    Nem|
+|Kis-és nagybetűk megkülönböztetése    |Nem|
+|Ritka    |Nem |
+|Háttér|    Igen |
 
 ## <a name="operators"></a>Operátorok
 
@@ -381,28 +381,28 @@ Azure Cosmos DB API-MongoDB a következő adatbázis-parancsokat támogatja:
 
 |Parancs  |Támogatott |
 |---------|---------|
-|$or    |    Yes|
-|$and    |    Yes|
-|$not    |    Yes|
-|$nor    |    Yes| 
+|$or    |    Igen|
+|$and    |    Igen|
+|$not    |    Igen|
+|$nor    |    Igen| 
 
 ### <a name="element-operators"></a>Elem operátorai
 
 |Parancs  |Támogatott |
 |---------|---------|
-|$exists|    Yes|
-|$type    |    Yes|
+|$exists|    Igen|
+|$type    |    Igen|
 
 ### <a name="evaluation-query-operators"></a>Kiértékelési lekérdezési operátorok
 
 |Parancs  |Támogatott |
 |---------|---------|
-|$expr    |    No|
-|$jsonSchema    |    No|
-|$mod    |    Yes|
-|$regex |    Yes|
+|$expr    |    Nem|
+|$jsonSchema    |    Nem|
+|$mod    |    Igen|
+|$regex |    Igen|
 |$text    | Nem (nem támogatott. Ehelyett használja a $regex.)| 
-|$where    |No| 
+|$where    |Nem| 
 
 A $regex lekérdezésekben a bal oldali rögzített kifejezések lehetővé teszik az indexek keresését. Azonban az „i” módosító (kis- és nagybetűk megkülönböztetése nélkül) és az „m” módosító (többsoros) használatakor a gyűjtemény az összes kifejezésben keres.
 
@@ -416,23 +416,23 @@ Az első rész az indexet fogja használni a keresés ^abc kezdetű dokumentumok
 
 |Parancs  |Támogatott | 
 |---------|---------|
-| $all | Yes| 
-| $elemMatch | Yes| 
-| $size | Yes | 
+| $all | Igen| 
+| $elemMatch | Igen| 
+| $size | Igen | 
 
 ### <a name="comment-operator"></a>Megjegyzés operátora
 
 |Parancs  |Támogatott | 
 |---------|---------|
-$comment |Yes| 
+$comment |Igen| 
 
 ### <a name="projection-operators"></a>Kivetítési operátorok
 
 |Parancs  |Támogatott |
 |---------|---------|
-|$elemMatch    |Yes|
-|$meta|    No|
-|$slice    | Yes|
+|$elemMatch    |Igen|
+|$meta|    Nem|
+|$slice    | Igen|
 
 ### <a name="update-operators"></a>Frissítési operátorok
 
@@ -440,101 +440,101 @@ $comment |Yes|
 
 |Parancs  |Támogatott |
 |---------|---------|
-|$inc    |    Yes|
-|$mul    |    Yes|
-|$rename    |    Yes|
-|$setOnInsert|    Yes|
-|$set    |Yes|
-|$unset| Yes|
-|$min    |Yes|
-|$max    |Yes|
-|$currentDate    | Yes|
+|$inc    |    Igen|
+|$mul    |    Igen|
+|$rename    |    Igen|
+|$setOnInsert|    Igen|
+|$set    |Igen|
+|$unset| Igen|
+|$min    |Igen|
+|$max    |Igen|
+|$currentDate    | Igen|
 
 #### <a name="array-update-operators"></a>Tömbfrissítő operátorok
 
 |Parancs  |Támogatott |
 |---------|---------|
-|$    |Yes|
-|$[]|    Yes|
-|$[<identifier>]|    Yes|
-|$addToSet    |Yes|
-|$pop    |Yes|
-|$pullAll|    Yes|
-|$pull    |Yes|
-|$push    |Yes|
-|$pushAll| Yes|
+|$    |Igen|
+|$[]|    Igen|
+|$[<identifier>]|    Igen|
+|$addToSet    |Igen|
+|$pop    |Igen|
+|$pullAll|    Igen|
+|$pull    |Igen|
+|$push    |Igen|
+|$pushAll| Igen|
 
 
 #### <a name="update-modifiers"></a>Módosítók frissítése
 
 |Parancs  |Támogatott |
 |---------|---------|
-|$each    |    Yes|
-|$slice    |Yes|
-|$sort    |Yes|
-|$position    |Yes|
+|$each    |    Igen|
+|$slice    |Igen|
+|$sort    |Igen|
+|$position    |Igen|
 
 #### <a name="bitwise-update-operator"></a>Bitenként frissítő operátor
 
 |Parancs  |Támogatott |
 |---------|---------|
-| $bit    |    Yes|    
-|$bitsAllSet    |    No|
-|$bitsAnySet    |    No|
-|$bitsAllClear    |No|
-|$bitsAnyClear    |No|
+| $bit    |    Igen|    
+|$bitsAllSet    |    Nem|
+|$bitsAnySet    |    Nem|
+|$bitsAllClear    |Nem|
+|$bitsAnyClear    |Nem|
 
 ### <a name="geospatial-operators"></a>Térinformatikai operátorok
 
 Operátor | Támogatott| 
 --- | --- |
-$geoWithin | Yes |
-$geoIntersects | Yes | 
-$near |  Yes |
-$nearSphere |  Yes |
-$geometry |  Yes |
-$minDistance | Yes |
-$maxDistance | Yes |
-$center | No |
-$centerSphere | No |
-$box | No |
-$polygon |  No |
+$geoWithin | Igen |
+$geoIntersects | Igen | 
+$near |  Igen |
+$nearSphere |  Igen |
+$geometry |  Igen |
+$minDistance | Igen |
+$maxDistance | Igen |
+$center | Nem |
+$centerSphere | Nem |
+$box | Nem |
+$polygon |  Nem |
 
 ## <a name="cursor-methods"></a>Kurzormetódusok
 
 |Parancs  |Támogatott |
 |---------|---------|
-|cursor.batchSize ()    |    Yes|
-|kurzor. Bezárás ()    |Yes|
-|cursor. isClosed ()|        Yes|
-|kurzor. rendezés ()|    No|
-|kurzor. comment ()    |Yes|
-|kurzor. Count ()    |Yes|
-|kurzor. magyarázat ()|    No|
-|cursor. forEach ()    |Yes|
-|cursor. hasNext ()    |Yes|
-|cursor. Hint ()    |Yes|
-|cursor. isExhausted ()|    Yes|
-|cursor. itcount ()    |Yes|
-|kurzor. limit ()    |Yes|
-|kurzor. map ()    |Yes|
-|cursor. maxScan ()    |Yes|
-|cursor. maxTimeMS ()|    Yes|
-|kurzor. max ()    |Yes|
-|kurzor. min ()    |Yes|
-|kurzor. Next ()|    Yes|
-|cursor. noCursorTimeout ()    |No|
-|cursor. objsLeftInBatch ()    |Yes|
-|kurzor. Pretty ()|    Yes|
-|cursor. readConcern ()|    Yes|
-|cursor. readPref ()        |Yes|
-|kurzor. rekulcsrakész ()    |No|
-|cursor. showRecordId ()|    No|
-|kurzor. Size ()    |Yes|
-|kurzor. skip ()    |Yes|
-|cursor.sort()    |    Yes|
-|kurzor. farok ()|    No|
-|cursor. toArray ()    |Yes|
+|cursor.batchSize ()    |    Igen|
+|kurzor. Bezárás ()    |Igen|
+|cursor. isClosed ()|        Igen|
+|kurzor. rendezés ()|    Nem|
+|kurzor. comment ()    |Igen|
+|kurzor. Count ()    |Igen|
+|kurzor. magyarázat ()|    Nem|
+|cursor. forEach ()    |Igen|
+|cursor. hasNext ()    |Igen|
+|cursor. Hint ()    |Igen|
+|cursor. isExhausted ()|    Igen|
+|cursor. itcount ()    |Igen|
+|kurzor. limit ()    |Igen|
+|kurzor. map ()    |Igen|
+|cursor. maxScan ()    |Igen|
+|cursor. maxTimeMS ()|    Igen|
+|kurzor. max ()    |Igen|
+|kurzor. min ()    |Igen|
+|kurzor. Next ()|    Igen|
+|cursor. noCursorTimeout ()    |Nem|
+|cursor. objsLeftInBatch ()    |Igen|
+|kurzor. Pretty ()|    Igen|
+|cursor. readConcern ()|    Igen|
+|cursor. readPref ()        |Igen|
+|kurzor. rekulcsrakész ()    |Nem|
+|cursor. showRecordId ()|    Nem|
+|kurzor. Size ()    |Igen|
+|kurzor. skip ()    |Igen|
+|cursor.sort()    |    Igen|
+|kurzor. farok ()|    Nem|
+|cursor. toArray ()    |Igen|
 
 ## <a name="sort-operations"></a>Rendezési műveletek
 

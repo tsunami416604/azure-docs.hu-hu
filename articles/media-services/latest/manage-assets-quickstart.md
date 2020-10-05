@@ -7,10 +7,10 @@ author: IngridAtMicrosoft
 ms.author: inhenkel
 manager: femila
 ms.openlocfilehash: 6b4373efc4979900e676257cc0b2748145165499
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91261413"
 ---
 # <a name="quickstart-upload-encode-and-stream-content-with-portal"></a>Gyors útmutató: tartalom feltöltése, kódolása és továbbítása a portálon
@@ -84,7 +84,7 @@ Ha az eszközök ablakra navigál, látni fogja, hogy a kimeneti eszköz hozzá 
 
 A feladat állapotának megtekintéséhez navigáljon a **feladatok**elemhez. A feladatok általában a következő állapotokon haladnak át: ütemezett, várólistán lévő, feldolgozás, befejezett (végső állapot). Ha a feladat hibát észlelt, a Hiba állapot jelenik meg.
 
-![Állapot](./media/manage-assets-quickstart/job-status.png)
+![status](./media/manage-assets-quickstart/job-status.png)
 
 ## <a name="publish-and-stream"></a>Közzététel és stream
 
@@ -114,6 +114,6 @@ Vagy másolja a streaming URL-címet, és használja azt az ügyfél-lejátszób
 
 Ha szeretné kipróbálni a többi rövid útmutatót, tartsa be a következőt: a létrehozott erőforrásokhoz. Ellenkező esetben lépjen a Azure Portalra, keresse meg az erőforráscsoportot, válassza ki azt az erőforráscsoportot, amelyben futtatta ezt a rövid útmutatót, és törölje az összes erőforrást.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [A portál használata tartalom titkosításához](encrypt-content-quickstart.md)

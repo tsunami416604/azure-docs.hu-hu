@@ -1,7 +1,7 @@
 ---
-title: Internetes társ-és peering szolgáltatás
+title: Internetes társviszony-létesítés vagy Peering Service
 titleSuffix: Azure
-description: Internetes társ-és peering szolgáltatás
+description: Internetes társviszony-létesítés vagy Peering Service
 services: internet-peering
 author: derekolo
 ms.service: internet-peering
@@ -9,13 +9,13 @@ ms.topic: overview
 ms.date: 5/22/2020
 ms.author: derekol
 ms.openlocfilehash: 3ffef24d459a2864ffd3f2271e6bca9e4bc638cc
-ms.sourcegitcommit: 1f25aa993c38b37472cf8a0359bc6f0bf97b6784
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/26/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "83849382"
 ---
-# <a name="internet-peering-vs-peering-service"></a>Internetes társ-és peering szolgáltatás
+# <a name="internet-peering-vs-peering-service"></a>Internetes társviszony-létesítés vagy Peering Service
 
 Az internetes társítás a Microsoft globális hálózata (AS8075) és a szállítók vagy a szolgáltatók hálózata közötti kapcsolatokra utal. A szolgáltató a következő, az ügyfél és a Microsoft hálózata közötti optimális útválasztást biztosító, megbízható és nagy teljesítményű nyilvános kapcsolat biztosítására is lehetőséget nyújt a szolgáltatói partnereknek.
 

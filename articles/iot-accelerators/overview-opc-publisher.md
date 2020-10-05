@@ -12,10 +12,10 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: 49ca12ed4f408e2a3fce1c8e59f541778f35311e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91281779"
 ---
 # <a name="what-is-opc-publisher"></a>Mi az OPC-közzétevő?
@@ -47,7 +47,7 @@ Az OPC-közzétevő támogatja a hálózati terhelés csökkentése érdekében 
 
 Ez az alkalmazás az OPC Foundation OPC UA Reference stacket használja NuGet-csomagként. Lásd [https://opcfoundation.org/license/redistributables/1.3/](https://opcfoundation.org/license/redistributables/1.3/) a licencelési feltételeket.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy megismerte az OPC-közzétevőt, a javasolt következő lépés az alábbiak megismerése:
 

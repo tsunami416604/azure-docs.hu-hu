@@ -8,10 +8,10 @@ ms.author: apimpm
 ms.topic: quickstart
 ms.date: 09/14/2020
 ms.openlocfilehash: 19080679291b88b693c95bd71f8ddc0e59286356
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90057412"
 ---
 # <a name="quickstart-create-a-new-azure-api-management-service-instance-using-visual-studio-code"></a>Rövid útmutató: új Azure API Management Service-példány létrehozása a Visual Studio Code használatával
@@ -67,7 +67,7 @@ Másik lehetőségként kiválaszthatja a **delete API Management** elemet a API
 
 ![API Management példány törlése a VS Code-ból](./media/vscode-create-service-instance/vscode-apim-delete.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Az első API importálása és közzététele](import-and-publish.md)

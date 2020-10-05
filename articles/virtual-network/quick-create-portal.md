@@ -12,10 +12,10 @@ ms.workload: infrastructure
 ms.date: 03/05/2020
 ms.author: kumud
 ms.openlocfilehash: dfeb9c6bc3dbe33881fc51ccb08a776b827dfe9c
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "86082437"
 ---
 # <a name="quickstart-create-a-virtual-network-using-the-azure-portal"></a>Rövid útmutató: Virtuális hálózat létrehozása az Azure Portallal
@@ -38,9 +38,9 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
     | Beállítás | Érték |
     | ------- | ----- |
-    | Előfizetés | Válassza ki az előfizetését.|
+    | Előfizetés | Válassza ki előfizetését.|
     | Erőforráscsoport | Válassza az **új létrehozása**elemet, írja be a *myResourceGroup*, majd kattintson **az OK gombra**. |
-    | Name | Adja meg a *myVirtualNetwork*. |
+    | Név | Adja meg a *myVirtualNetwork*. |
     | Hely | Válassza az **USA keleti régiója** lehetőséget.|
 
 1. Válassza a **tovább lehetőséget: IP-címek**és **IPv4-címterület**esetében adja meg a *10.1.0.0/16*értéket.
@@ -59,28 +59,28 @@ Hozzon létre két virtuális gépet a virtuális hálózaton:
 
 1. Az Azure Portal menüjében válassza az **Erőforrás létrehozása** elemet.
 
-1. Az Azure Marketplace-en válassza a **számítás**  >  **Windows Server 2019 Datacenter**lehetőséget. Válassza a **Létrehozás** lehetőséget.
+1. Az Azure Marketplace-en válassza a **számítás**  >  **Windows Server 2019 Datacenter**lehetőséget. Kattintson a **Létrehozás** gombra.
 
 1. A **virtuális gép létrehozása – alapismeretek**területen adja meg vagy válassza ki az alábbi adatokat:
 
     | Beállítás | Érték |
     | ------- | ----- |
     | **Projekt részletei** | |
-    | Előfizetés | Válassza ki az előfizetését. |
-    | Erőforráscsoport | Válassza a **myResourceGroup**lehetőséget. Ezt az erőforráscsoportot az előző szakaszban hozta létre. |
-    | **Példány részletei** |  |
+    | Előfizetés | Válassza ki előfizetését. |
+    | Erőforráscsoport | Válassza a **myResourceGroup** lehetőséget. Ezt az erőforráscsoportot az előző szakaszban hozta létre. |
+    | **Példány adatai** |  |
     | Virtuális gép neve | Adja meg a *myVm1*. |
-    | Régió | Válassza az **USA keleti régiója** lehetőséget. |
+    | Region | Válassza az **USA keleti régiója** lehetőséget. |
     | Rendelkezésre állási beállítások | Alapértelmezés szerint **nem szükséges infrastruktúra-redundancia**. |
     | Kép | Alapértelmezett érték a **Windows Server 2019 Datacenter rendszerhez**. |
     | Méret | Az alapértelmezett érték a **standard DS1 v2**. |
     | **Rendszergazdai fiók** |  |
     | Felhasználónév | Adja meg a választott felhasználónevet. |
-    | Jelszó | Adjon meg egy tetszőleges jelszót. A jelszónak legalább 12 karakter hosszúságúnak kell lennie, [az összetettségre vonatkozó követelmények teljesülése mellett](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
+    | Jelszó | Adjon meg egy tetszőleges jelszót. A jelszónak legalább 12 karakter hosszúnak kell lennie, és meg kell felelnie a [meghatározott összetettségi követelményeknek](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
     | Jelszó megerősítése | Adja meg újra a jelszót. |
-    | **Bejövőport-szabályok** |  |
+    | **Bejövő portok szabályai** |  |
     | Nyilvános bejövő portok | Válassza a **kiválasztott portok engedélyezése**lehetőséget. |
-    | Bejövő portok kiválasztása | Adja meg a *http (80)* és az *RDP (3389)* értéket. |
+    | Válassza ki a bejövő portokat | Adja meg a *http (80)* és az *RDP (3389)* értéket. |
     | **Pénz megtakarítása** |  |
     | Már van Windows-licence? | Alapértelmezett érték: **nem**. |
 
@@ -97,7 +97,7 @@ Hozzon létre két virtuális gépet a virtuális hálózaton:
     | Nyilvános IP-cím | Alapértelmezett érték **(új) myVm – IP**. |
     | NIC hálózati biztonsági csoport | Alapértelmezés szerint **alapszintű**. |
     | Nyilvános bejövő portok | Alapértelmezés a **kiválasztott portok engedélyezéséhez**. |
-    | Bejövő portok kiválasztása | Az alapértelmezett érték a **http** és az **RDP**.
+    | Válassza ki a bejövő portokat | Az alapértelmezett érték a **http** és az **RDP**.
 
 1. Válassza a **Tovább: kezelés**lehetőséget.
 
@@ -107,14 +107,14 @@ Hozzon létre két virtuális gépet a virtuális hálózaton:
 
     | Beállítás | Érték |
     | ------- | ----- |
-    | Name (Név) | Adja meg a *myvmstorageaccount*. Ha ezt a nevet hozza, hozzon létre egy egyedi nevet.|
-    | Fióktípus | Alapértelmezett a **Storage-hoz (általános célú v1)**. |
+    | Név | Adja meg a *myvmstorageaccount*. Ha ezt a nevet hozza, hozzon létre egy egyedi nevet.|
+    | Fiók altípusa | Alapértelmezett a **Storage-hoz (általános célú v1)**. |
     | Teljesítmény | Alapértelmezett érték: **standard**. |
     | Replikáció | Az alapértelmezett érték a **helyileg redundáns tárolás (LRS)**. |
 
-1. Válassza **az OK**, majd a **felülvizsgálat + létrehozás**elemet. A **felülvizsgálat + létrehozás** oldalon az Azure ellenőrzi a konfigurációt.
+1. Válassza **az OK**, majd a **felülvizsgálat + létrehozás**elemet. Az **Áttekintés és létrehozása** lapra kerül, ahol az Azure érvényesíti az Ön konfigurációját.
 
-1. Amikor megjelenik az **átadott üzenet ellenőrzése** lehetőség, válassza a **Létrehozás**lehetőséget.
+1. Amikor megjelenik a **Megfelelt az ellenőrzésen** üzenet, válassza a **Létrehozás** lehetőséget.
 
 ### <a name="create-the-second-vm"></a>A második virtuális gép létrehozása
 
@@ -137,7 +137,7 @@ A *myVm1*létrehozása után kapcsolódjon az internethez.
 
     Megnyílik a **kapcsolat** lap.
 
-1. Válassza az **RDP-fájl letöltése**lehetőséget. Az Azure létrehoz egy RDP protokoll (*. rdp*) fájlt, és letölti a számítógépre.
+1. Válassza az **RDP-fájl letöltése** lehetőséget. Az Azure létrehoz egy RDP protokoll (*. rdp*) fájlt, és letölti a számítógépre.
 
 1. Nyissa meg az RDP-fájlt. Ha a rendszer kéri, válassza a **Csatlakozás** lehetőséget.
 
@@ -148,7 +148,7 @@ A *myVm1*létrehozása után kapcsolódjon az internethez.
 
 1. Válassza az **OK** lehetőséget.
 
-1. A bejelentkezéskor a tanúsítványra vonatkozó figyelmeztetés jelenhet meg. Ha a tanúsítvány figyelmeztetést kap, válassza az **Igen** vagy a **Folytatás**lehetőséget.
+1. A bejelentkezéskor a tanúsítványra vonatkozó figyelmeztetés jelenhet meg. Ha a tanúsítvány figyelmeztetést kap, válassza az **Igen** vagy a **Folytatás** lehetőséget.
 
 1. Ha megjelenik a virtuális gép asztala, csökkentse a helyi asztalra való visszatérést.
 
@@ -156,7 +156,7 @@ A *myVm1*létrehozása után kapcsolódjon az internethez.
 
 1. A *myVm1*távoli asztal nyissa meg a PowerShellt.
 
-1. Írja be a `ping myVm2` (igen) kifejezést.
+1. Írja be a következő szöveget: `ping myVm2`.
 
     Ehhez a kimenethez hasonló üzenet jelenik meg:
 
@@ -206,7 +206,7 @@ A *myVm1*létrehozása után kapcsolódjon az internethez.
 
 1. Zárja be a *myVm2* virtuális géppel létesített távoli asztali kapcsolatot.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ebben a rövid útmutatóban létrehozott egy alapértelmezett virtuális hálózatot és két virtuális gépet. Az internetről csatlakozik egy virtuális géphez, és biztonságosan kommunikál a két virtuális gép között.
 
@@ -218,7 +218,7 @@ Ha végzett a virtuális hálózat és a virtuális gépek használatával, tör
 
 1. Írja be a *myResourceGroup* **nevet az erőforráscsoport neveként** , majd válassza a **Törlés**lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a virtuális hálózati beállításokról: [virtuális hálózat létrehozása, módosítása vagy törlése](manage-virtual-network.md).
 

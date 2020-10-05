@@ -10,10 +10,10 @@ ms.date: 04/15/2020
 ms.author: saveenr
 ms.reviewer: jrasnick
 ms.openlocfilehash: 4dd83bdd68773ac594c71767b9e316bdd05a0ae7
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91620273"
 ---
 # <a name="azure-synapse-analytics-cheat-sheet"></a>Azure szinapszis Analytics – Cheat Sheet
@@ -35,12 +35,12 @@ A **SZINAPSZIS SQL** lehetővé teszi a T-SQL-alapú elemzések elvégzését a 
 A Spark Analytics használatához hozzon létre és használjon **Spark-készleteket** a szinapszis-munkaterületen.
 
 ## <a name="sql-terminology"></a>SQL-terminológia
-| Kifejezés                         | Definíció      |
+| Kifejezés                         | Meghatározás      |
 |:---                                 |:---                 |
 | **SQL-kérelem**  |   Olyan művelet, mint például az SQL-készlet vagy az SQL igény szerinti futtatása. |
 
 ## <a name="spark-terminology"></a>Spark-terminológia
-| Kifejezés                         | Definíció      |
+| Kifejezés                         | Meghatározás      |
 |:---                                 |:---                 |
 |**A szinapszis Apache Spark** | Spark Run – a Spark-készletben használt idő. A jelenleg támogatott verzió a Spark 2,4 a Python 3.6.1, a Scala 2.11.12, a .NET-támogatás a Apache Spark 0,5 és a Delta Lake 0,3.  | 
 | **Apache Spark készlet**  | a 0 – N Spark kiosztott erőforrásai és a hozzájuk tartozó adatbázisok is üzembe helyezhetők egy munkaterületen. A Spark-készlet lehet automatikusan szüneteltethető, folytatható és méretezhető.  |

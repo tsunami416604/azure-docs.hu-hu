@@ -5,10 +5,10 @@ ms.date: 09/12/2019
 ms.topic: quickstart
 ms.reviewer: janders
 ms.openlocfilehash: 4a45e02a861ff20a4dc774668a4e008f9b42aeea
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90530437"
 ---
 # <a name="quickstart-use-metamask-to-connect-and-deploy-a-smart-contract"></a>Gyors útmutató: az MetaMask használata intelligens szerződéshez való kapcsolódáshoz és üzembe helyezéshez
@@ -134,7 +134,7 @@ Megtekintheti az **egyszerű** szerződések létrehozását, a tranzakciót **e
 
 A MetaMask lévő tranzakciók előzményeinek megtekintéséhez nyissa meg a MetaMask böngésző bővítményét, és tekintse meg az **Előzmények** szakaszt a központilag telepített szerződés és tranzakciók naplójához.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban a MetaMask böngésző bővítményét használta egy Azure Blockchain szolgáltatás-tranzakciós csomóponthoz való kapcsolódáshoz, egy intelligens szerződés üzembe helyezéséhez és egy tranzakció elküldéséhez a Blockchain. Próbálja ki a következő oktatóanyagot az Azure Blockchain Development Kit for Ethereum és a szarvasgomba használatával egy intelligens szerződési funkció egy tranzakción keresztül történő létrehozásához, létrehozásához, üzembe helyezéséhez és végrehajtásához.
 

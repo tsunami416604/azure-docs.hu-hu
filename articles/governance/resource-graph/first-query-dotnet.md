@@ -5,10 +5,10 @@ ms.date: 06/29/2020
 ms.topic: quickstart
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 0470f100b6323f760bc48af70e8a6c11b94dfb3c
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89005870"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-net-core"></a>Rövid útmutató: az első Resource Graph-lekérdezés futtatása a .NET Core használatával
@@ -135,7 +135,7 @@ Ha a végső lekérdezés többször is fut, feltételezve, hogy a környezetéb
 
 Ha el szeretné távolítani a .NET Core Console alkalmazást és a telepített csomagokat, ezt a Project mappa törlésével teheti meg `argQuery` .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban létrehozott egy .NET Core Console-alkalmazást a szükséges Resource Graph-csomagokkal, és futtatta az első lekérdezést. Ha többet szeretne megtudni az erőforrás-gráf nyelvéről, folytassa a lekérdezés nyelvének részletei lapon.
 

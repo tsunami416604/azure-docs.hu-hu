@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 09/07/2020
 ms.author: alkohli
 ms.openlocfilehash: c27f6ef47b8e4db83ceb63e308e318803800f8a5
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90890722"
 ---
 # <a name="deploy-vms-on-your-azure-stack-edge-pro-gpu-device-using-azure-cli-and-python"></a>Virtuális gépek üzembe helyezése Azure Stack Edge Pro GPU-eszközön az Azure CLI és a Python használatával
@@ -32,7 +32,7 @@ Az üzembe helyezési munkafolyamat a következő ábrán látható.
 Az üzembe helyezési munkafolyamat magas szintű összefoglalása a következő:
 
 1. Kapcsolódás Azure Resource Managerhoz
-2. Hozzon létre egy erőforráscsoportot
+2. Erőforráscsoport létrehozása
 3. Tárfiók létrehozása
 4. BLOB URI hozzáadása a Hosts fájlhoz
 5. Tanúsítványok telepítése
@@ -427,6 +427,6 @@ A rendszer egy Python-szkriptet hoz létre a virtuális gép létrehozásához. 
     ``` 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Általános az CLI parancsok Linux rendszerű virtuális gépekhez](../virtual-machines/linux/cli-manage.md)

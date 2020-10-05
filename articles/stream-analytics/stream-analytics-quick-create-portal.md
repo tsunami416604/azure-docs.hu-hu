@@ -8,10 +8,10 @@ ms.topic: quickstart
 ms.service: stream-analytics
 ms.custom: mvc
 ms.openlocfilehash: 5ad261064adf34945a600983296cb3e0ceaa5247
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90901072"
 ---
 # <a name="quickstart-create-a-stream-analytics-job-by-using-the-azure-portal"></a>Útmutató: Stream Analytics-feladat létrehozása az Azure Portal használatával
@@ -152,7 +152,7 @@ Ebben a szakaszban egy IoT Hub eszköz bemenetét fogja konfigurálni a Stream A
    HAVING Temperature > 27
    ```
 
-3. Ebben a példában a lekérdezés beolvassa az adatokat a IoT Hubból, és átmásolja egy új fájlba a blobban. Kattintson a **Mentés** gombra.  
+3. Ebben a példában a lekérdezés beolvassa az adatokat a IoT Hubból, és átmásolja egy új fájlba a blobban. Válassza a **Mentés** lehetőséget.  
 
    ![A transzformáció konfigurálása](./media/stream-analytics-quick-create-portal/add-asa-query.png)
 
@@ -184,7 +184,7 @@ Ha már nincs rá szükség, törölje az erőforráscsoportot, a Stream Analyti
 
 2. Az erőforráscsoport lapján válassza a **Törlés** elemet, írja be a törölni kívánt erőforrás nevét a szövegmezőbe, majd válassza a **Törlés** lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban egy egyszerű Stream Analytics-feladatot helyezett üzembe az Azure Portallal. Stream Analytics feladatokat a [PowerShell](stream-analytics-quick-create-powershell.md), a [Visual Studio](stream-analytics-quick-create-vs.md)és a [Visual Studio Code](quick-create-visual-studio-code.md)használatával is üzembe helyezhet.
 

@@ -8,10 +8,10 @@ ms.custom: mvc
 ms.date: 09/08/2020
 ms.author: apimpm
 ms.openlocfilehash: 66d0874536b358b720b43780d6ecce879ac866ee
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90708206"
 ---
 # <a name="quickstart-create-a-new-azure-api-management-service-instance-by-using-the-azure-portal"></a>Rövid útmutató: új Azure API Management Service-példány létrehozása a Azure Portal használatával
@@ -32,16 +32,16 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
 1. Az Azure Portal menüjében válassza az **Erőforrás létrehozása** elemet. Kiválaszthatja az **erőforrás létrehozása** lehetőséget is az Azure **kezdőlapján** . 
    
-   :::image type="content" source="media/get-started-create-service-instance/00-CreateResource-01.png" alt-text="Válassza az erőforrás létrehozása lehetőséget.":::
+   :::image type="content" source="media/get-started-create-service-instance/00-CreateResource-01.png" alt-text="API Management-példány":::
 
    
 1. Az **új** lapon válassza az **integráció**  >  **API Management**elemet.
 
-   :::image type="content" source="media/get-started-create-service-instance/00-CreateResource-02.png" alt-text="Új Azure API Management-példány":::
+   :::image type="content" source="media/get-started-create-service-instance/00-CreateResource-02.png" alt-text="API Management-példány":::
    
 1. A **API Management szolgáltatás** lapon adja meg a beállításokat.
 
-   :::image type="content" source="media/get-started-create-service-instance/get-started-create-service-instance-create-new.png" alt-text="Új példány":::
+   :::image type="content" source="media/get-started-create-service-instance/get-started-create-service-instance-create-new.png" alt-text="API Management-példány":::
    
    | Beállítás                 | Leírás   |                                                                     
    |-------------------------|-----------------------------------------------|
@@ -72,17 +72,17 @@ Ha már nincs rájuk szükség, eltávolíthatja az erőforráscsoportot és az 
 
 1. A Azure Portal keresse meg és válassza ki az **erőforráscsoportok**elemet. A **kezdőlapon** kiválaszthatja az **erőforráscsoportok** lehetőséget is. 
 
-   :::image type="content" source="media/get-started-create-service-instance/00-DeleteResource-01.png" alt-text="Erőforráscsoport navigációja":::
+   :::image type="content" source="media/get-started-create-service-instance/00-DeleteResource-01.png" alt-text="API Management-példány":::
 
 1. Az **erőforráscsoportok** lapon válassza ki az erőforráscsoportot.
 
-   :::image type="content" source="media/get-started-create-service-instance/00-DeleteResource-02.png" alt-text="Erőforráscsoport kiválasztása":::
+   :::image type="content" source="media/get-started-create-service-instance/00-DeleteResource-02.png" alt-text="API Management-példány":::
 
 1. Az erőforráscsoport lapon válassza az **erőforráscsoport törlése**elemet. 
    
 1. Írja be az erőforráscsoport nevét, majd válassza a **Törlés**lehetőséget.
 
-   :::image type="content" source="media/get-started-create-service-instance/00-DeleteResource-03.png" alt-text="Erőforráscsoport törlése":::
+   :::image type="content" source="media/get-started-create-service-instance/00-DeleteResource-03.png" alt-text="API Management-példány":::
 
 ## <a name="next-steps"></a>További lépések
 

@@ -11,10 +11,10 @@ ms.topic: overview
 ms.date: 09/04/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 7aa2feba5a2b2fa47bbb0c055a2f556b8997ab34
-ms.sourcegitcommit: a6d477eb3cb9faebb15ed1bf7334ed0611c72053
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/08/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "82930471"
 ---
 # <a name="about-azure-key-vault-secrets"></a>Tudnivalók a Azure Key Vault titkairól
@@ -46,7 +46,7 @@ A titkos attribútumokat tartalmazó válaszokban további írásvédett attrib�
 
 ### <a name="date-time-controlled-operations"></a>Dátum-idő vezérelt műveletek
 
-A titkos **beolvasási** művelet a *NBF* / *exp* ablakon kívül még nem érvényes és lejárt titkokat fog működni. A titkos kód **lekérési** műveletének meghívása tesztelési célokra használható. A lejárt titkos kód beolvasása **(beolvasása**) helyreállítási műveletekhez használható.
+A titkos **beolvasási** művelet a *NBF*  /  *exp* ablakon kívül még nem érvényes és lejárt titkokat fog működni. A titkos kód **lekérési** műveletének meghívása tesztelési célokra használható. A lejárt titkos kód beolvasása **(beolvasása**) helyreállítási műveletekhez használható.
 
 ## <a name="secret-access-control"></a>Titkoskulcs-hozzáférés vezérlése
 

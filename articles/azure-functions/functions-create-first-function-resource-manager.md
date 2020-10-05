@@ -6,10 +6,10 @@ ms.topic: quickstart
 ms.service: azure-functions
 ms.custom: subject-armqs
 ms.openlocfilehash: 362ff5cd59982c1d848ed59af8381090344f5c5e
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88642265"
 ---
 # <a name="quickstart-create-and-deploy-azure-functions-resources-from-an-arm-template"></a>Rövid útmutató: Azure Functions-erőforrások létrehozása és üzembe helyezése ARM-sablonból
@@ -117,7 +117,7 @@ A kimenetben másolja a HTTP-trigger URL-címét. Ezt az Azure-ban futó függv�
 
 1. A közzététel befejeződése után másolja a **webhely URL-címét**.
 
-    :::image type="content" source="media/functions-create-first-function-arm/publish-summary-site-url.png" alt-text="A webhely URL-címének másolása a közzétételi összegzésből":::
+    :::image type="content" source="media/functions-create-first-function-arm/publish-summary-site-url.png" alt-text="Meglévő közzétételi cél kiválasztása":::
 
 1. Fűzze hozzá az elérési utat `/api/<FUNCTION_NAME>?name=Functions` , ahol a a `<FUNCTION_NAME>` függvény neve. A HTTP-trigger függvényt meghívó URL-cím formátuma a következő:
 
@@ -159,7 +159,7 @@ az group delete --name <RESOURCE_GROUP_NAME>
 
 Cserélje le az `<RESOURCE_GROUP_NAME>` nevet az erőforráscsoport nevére.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy közzétette az első függvényt, további információt a függvényhez tartozó kimeneti kötés hozzáadásával ismerheti meg.
 

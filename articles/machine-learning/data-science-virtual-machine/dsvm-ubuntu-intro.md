@@ -9,10 +9,10 @@ ms.author: laobri
 ms.topic: quickstart
 ms.date: 03/10/2020
 ms.openlocfilehash: 375149047d51574e14df15b6385b8c296d49a8ec
-ms.sourcegitcommit: bf99428d2562a70f42b5a04021dde6ef26c3ec3a
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "85254701"
 ---
 # <a name="quickstart-set-up-the-data-science-virtual-machine-for-linux-ubuntu"></a>Gyors útmutató: a Linux Data Science Virtual Machine beállítása (Ubuntu)
@@ -30,7 +30,7 @@ Ubuntu 18,04 Data Science Virtual Machine létrehozásához Azure-előfizetésse
 
 Az alábbi lépéseket követve hozhatja létre a Data Science Virtual Machine Ubuntu 18,04-példányát:
 
-1. Lépjen a [Azure Portal](https://portal.azure.com). Előfordulhat, hogy a rendszer arra kéri, hogy jelentkezzen be az Azure-fiókjába, ha még nincs bejelentkezve.
+1. Nyissa meg az [Azure Portalt](https://portal.azure.com). Előfordulhat, hogy a rendszer arra kéri, hogy jelentkezzen be az Azure-fiókjába, ha még nincs bejelentkezve.
 1. Keresse meg a virtuális gép listáját az "adatelemzési virtuális gép" beírásával, és válassza a "Data Science Virtual Machine-Ubuntu 18,04" lehetőséget.
 
 1. A következő ablakban válassza a **Létrehozás**lehetőséget.
@@ -85,30 +85,30 @@ Ha a virtuális gépet SSH-hitelesítéssel konfigurálta, a 3. lépés **alapja
 
 ### <a name="x2go"></a>X2Go
 
-A Linux rendszerű virtuális gép már ki van építve a X2Go-kiszolgálóval, és készen áll az ügyfélkapcsolatok fogadására. A Linux rendszerű virtuális gép grafikus asztalához való kapcsolódáshoz végezze el az alábbi eljárást az ügyfélen:
+A Linux rendszerű virtuális gép már ki van építve a X2Go-kiszolgálóval, és készen áll az ügyfélkapcsolatok fogadására. A linuxos virtuális gép grafikus asztalához az ügyfélen végrehajtott alábbi eljárással csatlakozhat:
 
-1. Töltse le és telepítse a X2Go-ügyfelet az [X2Go](https://wiki.x2go.org/doku.php/doc:installation:x2goclient)-ből származó ügyféloldali platformra.
+1. Töltse le és telepítse az X2Go-ügyfelet az ügyfélplatformjára az [X2Go](https://wiki.x2go.org/doku.php/doc:installation:x2goclient) webhelyéről.
 1. Jegyezze fel a virtuális gép nyilvános IP-címét, amelyet a Azure Portal a létrehozott virtuális gép megnyitásával talál.
 
    ![Ubuntu gép IP-címe](./media/dsvm-ubuntu-intro/ubuntu-ip-address.png)
 
-1. Futtassa a X2Go-ügyfelet. Ha az "új munkamenet" ablak nem jelenik meg automatikusan, ugorjon a munkamenet-> új munkamenet elemre.
+1. Futtassa az X2Go-ügyfelet. Ha az "új munkamenet" ablak nem jelenik meg automatikusan, ugorjon a munkamenet-> új munkamenet elemre.
 
-1. Az eredményül kapott konfigurációs ablakban adja meg a következő konfigurációs paramétereket:
+1. A megjelenő konfigurációs ablakban adja meg a következő konfiguráció-paramétereket:
    * **Munkamenet lap**:
-     * **Gazdagép**: adja meg a virtuális gép IP-címét, amelyet korábban jegyzett készített.
-     * **Bejelentkezés**: adja meg a felhasználónevet a Linux rendszerű virtuális gépen.
-     * **SSH-port**: hagyja meg az alapértelmezett értéket 22-én.
-     * **Munkamenet típusa**: módosítsa az értéket az **Xfce**értékre. A Linux rendszerű virtuális gép jelenleg csak az XFCE Desktopot támogatja.
-   * **Média lap**: kikapcsolhatja a hangtámogatást és az ügyfél-nyomtatást, ha nincs szükség rájuk.
+     * **Állomásnév**: Adja meg a virtuális gép IP-címét, amelyet korábban feljegyzett.
+     * **Bejelentkezési név**: Adja meg a linuxos virtuális gépen érvényes felhasználónevét.
+     * **SSH-port**: Hagyja meg az alapértelmezett 22 értéket.
+     * **Munkamenet típusa**: Állítsa át az **XFCE** értékre. A linuxos virtuális gép jelenleg csak az XFCE-asztalt támogatja.
+   * **Multimédia lap**: Kikapcsolhatja a hangtámogatást és az ügyfélről indított nyomtatást, ha nincs rájuk szüksége.
    * **Megosztott mappák**: ezen a lapon adhatja hozzá a virtuális gépen csatlakoztatni kívánt ügyfélszámítógép-könyvtárat. 
 
-   ![X2go-konfiguráció](./media/dsvm-ubuntu-intro/x2go-ubuntu.png)
-1. Válassza az **OK** lehetőséget.
+   ![X2Go-konfiguráció](./media/dsvm-ubuntu-intro/x2go-ubuntu.png)
+1. Kattintson az **OK** gombra.
 1. A X2Go ablak jobb oldali paneljén kattintson a jelölőnégyzetre a virtuális gép bejelentkezési képernyőjének megjelenítéséhez.
-1. Adja meg a virtuális gép jelszavát.
-1. Válassza az **OK** lehetőséget.
-1. Előfordulhat, hogy meg kell adnia a X2Go engedélyt a tűzfal megkerüléséhez a csatlakozás befejezéséhez.
+1. Adja meg a virtuális gépen érvényes jelszavát.
+1. Kattintson az **OK** gombra.
+1. A csatlakozás befejezéséhez esetleg engedélyt kell adnia az X2Go-nak a tűzfal megkerülésére.
 1. Ekkor megjelenik az Ubuntu-DSVM grafikus felülete. 
 
 

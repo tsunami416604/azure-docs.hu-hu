@@ -11,10 +11,10 @@ ms.service: machine-learning
 ms.subservice: data-science-vm
 ms.topic: quickstart
 ms.openlocfilehash: 8f83cdb09b94fb7eda1f8f700390be8b2c2147e0
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90883151"
 ---
 # <a name="quickstart-create-an-ubuntu-data-science-virtual-machine-using-an-arm-template"></a>Gyors útmutató: Ubuntu-Data Science Virtual Machine létrehozása ARM-sablonnal
@@ -29,7 +29,7 @@ Ha a környezet megfelel az előfeltételeknek, és már ismeri az ARM-sablonoka
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/services/machine-learning/).
+* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/services/machine-learning/), mielőtt hozzákezd.
 
 * Ha a jelen dokumentumban a CLI-parancsokat a **helyi környezetből**szeretné használni, szüksége lesz az [Azure CLI](/cli/azure/install-azure-cli)-re.
 
@@ -77,7 +77,7 @@ A fenti parancs futtatásakor írja be a következőket:
 
 A Data Science Virtual Machine megtekintéséhez:
 
-1. Ugrás a [Azure Portal](https://portal.azure.com)
+1. Nyissa meg az [Azure Portalt](https://portal.azure.com)
 1. Jelentkezzen be.
 1. Válassza ki az imént létrehozott erőforráscsoportot.
 
@@ -98,7 +98,7 @@ az group delete --name $resourceGroupName &&
 echo "Press [ENTER] to continue ..."
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban létrehozott egy Data Science Virtual Machine egy ARM-sablonból.
 

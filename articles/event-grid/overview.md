@@ -4,10 +4,10 @@ description: Eseményazonosító küldése a forrástól a kezelőknek Azure Eve
 ms.topic: overview
 ms.date: 09/24/2020
 ms.openlocfilehash: 73d218058c5f95d8c2d2324f1a0e1e77b24f1364
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91326498"
 ---
 # <a name="what-is-azure-event-grid"></a>Mi az Azure Event Grid?
@@ -69,7 +69,7 @@ Az Azure Event Grid öt fontos alapfogalma:
 
 További információ ezekről a fogalmakról: [Az Azure Event Grid alapfogalmai](concepts.md).
 
-## <a name="capabilities"></a>Képességek
+## <a name="capabilities"></a>Funkciók
 
 Az Azure Event Grid néhány főbb jellemzője:
 
@@ -110,7 +110,7 @@ Az Event Grid más szolgáltatásokkal kapcsolja össze alkalmazását. Létreho
 
 Az Azure Event Grid árképzése eseményenkénti fizetésen alapul, tehát a fizetés a használat alapján történik. A havi első 100 000 művelet ingyenes. A műveletek a következőképpen vannak meghatározva: események bejövő forgalma, előfizetési kézbesítési kísérletek, kezelési hívások és tárgyutótag szerinti szűrés. A részleteket lásd az [árképzést ismertető oldalon](https://azure.microsoft.com/pricing/details/event-grid/).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Storage Blob-események útválasztása](../storage/blobs/storage-blob-event-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json)  
   Az Event Grid használatával válaszolhat a Storage Blob-eseményekre.

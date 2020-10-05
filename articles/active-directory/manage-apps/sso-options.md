@@ -12,10 +12,10 @@ ms.date: 12/03/2019
 ms.author: kenwith
 ms.reviewer: arvindh, japere
 ms.openlocfilehash: 5c02733167db5071b1f2a9c5e04dc05a069fda3c
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90604206"
 ---
 # <a name="single-sign-on-options-in-azure-ad"></a>Egyszeri bejelentkezési lehetőségek az Azure AD-ben
@@ -80,7 +80,7 @@ A helyszíni alkalmazások SAML-alapú egyszeri bejelentkezéshez való konfigur
 
 További információ az SAML protokollról: [egyszeri bejelentkezéses SAML protokoll](../develop/single-sign-on-saml-protocol.md).
 
-## <a name="password-based-sso"></a>Jelszó-alapú egyszeri bejelentkezés
+## <a name="password-based-sso"></a>Jelszóalapú SSO
 
 A jelszó-alapú bejelentkezéssel a felhasználók első alkalommal jelentkeznek be az alkalmazásba egy felhasználónévvel és jelszóval. Az első bejelentkezés után az Azure AD megadja a felhasználónevet és a jelszót az alkalmazáshoz.
 

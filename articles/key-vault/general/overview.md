@@ -12,10 +12,10 @@ ms.custom: mvc
 ms.date: 01/07/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 500648b3037a81b39f474538ec062ef922b6e2df
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89421645"
 ---
 # <a name="about-azure-key-vault"></a>Információk az Azure Key Vaultról
@@ -78,7 +78,7 @@ Az Azure-beli Biztonságos tár Key Vault a következő forgatókönyvek egyszer
 
 A Key Vault integrálható tárfiókokkal, eseményközpontokkal és a naplóelemzéssel.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ a [kulcsokról, a titkokról és a tanúsítványokról](about-keys-secrets-certificates.md)
 - [Rövid útmutató: Azure Key Vault-kulcstartó létrehozása a parancssori felülettel](../secrets/quick-create-cli.md)

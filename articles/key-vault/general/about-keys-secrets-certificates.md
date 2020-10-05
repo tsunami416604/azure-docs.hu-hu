@@ -10,10 +10,10 @@ ms.topic: overview
 ms.date: 04/17/2020
 ms.author: mbaldwin
 ms.openlocfilehash: c02a2658325fdd88ef1052937edc3b84c4545872
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91296837"
 ---
 # <a name="azure-key-vault-keys-secrets-and-certificates-overview"></a>Azure Key Vault kulcsok, titkok és tanúsítványok áttekintése
@@ -96,7 +96,7 @@ Ebben a példában:
 |`object-name`|Az a `object-name` felhasználó által megadott név, és egyedinek kell lennie egy Key Vaulton belül. A névnek 1-127 karakterből álló karakterláncnak kell lennie, betűvel kell kezdődnie, és csak 0-9, a-z, A-Z és-.|  
 |`object-version`|Az egy `object-version` rendszer által generált, 32 karakterből álló karakterlánc-azonosító, amely egy objektum egyedi verziójának kezelésére szolgál.|  
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Információ a kulcsokról](../keys/about-keys.md)
 - [Információ a titkos kulcsokról](../secrets/about-secrets.md)

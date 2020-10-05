@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 03/31/2020
 ms.author: memildin
 ms.openlocfilehash: 68cb738ae6e4689a0356ea56c1de2d383ea83ad6
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91449935"
 ---
 # <a name="supported-platforms"></a>Támogatott platformok 
@@ -57,7 +57,7 @@ A Cloud Service-ben futó virtuális gépek is támogatottak. Csak az üzemi tá
 
 A Azure Stackban található virtuális gépek védelme is támogatott. A Security Center Azure Stack-nal való integrálásával kapcsolatos további információkért tekintse meg [a Azure stack virtuális gépek Security Centerba való](quickstart-onboard-machines.md)bevezetését ismertető témakört. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ismerje meg, hogy [a Security Center hogyan gyűjt adatokat az log Analytics ügynökkel](security-center-enable-data-collection.md).
 - Megtudhatja [, hogyan kezeli és védi a Security Center az információkat](security-center-data-security.md).

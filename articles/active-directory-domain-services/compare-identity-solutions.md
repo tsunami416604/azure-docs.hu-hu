@@ -11,10 +11,10 @@ ms.topic: overview
 ms.date: 06/08/2020
 ms.author: iainfou
 ms.openlocfilehash: af4ebcac38d4714b8a133087fe328b4d2f6c4872
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91396365"
 ---
 # <a name="compare-self-managed-active-directory-domain-services-azure-active-directory-and-managed-azure-active-directory-domain-services"></a>Az önállóan felügyelt Active Directory tartományi szolgáltatások, Azure Active Directory és felügyelt Azure Active Directory Domain Services összehasonlítása
@@ -62,7 +62,7 @@ Közös üzembe helyezési modellek olyan önfelügyelt AD DS környezetekhez, a
 
 Az alábbi táblázat néhány olyan funkciót vázol fel, amelyek a szervezet számára szükségesek, valamint a felügyelt Azure AD DS tartomány vagy egy önállóan felügyelt AD DS tartomány közötti különbségek:
 
-| **Funkció** | **Azure AD DS** | **Önállóan felügyelt AD DS** |
+| **Szolgáltatás** | **Azure AD DS** | **Önállóan felügyelt AD DS** |
 | ----------- |:---------------:|:----------------------:|
 | **Felügyelt szolgáltatás**                               | **&#x2713;** | **&#x2715;** |
 | **Biztonságos központi telepítések**                            | **&#x2713;** | A rendszergazda gondoskodik az üzemelő példányról |
@@ -111,7 +111,7 @@ Az Azure AD DS csatlakoztatott eszközeivel az alkalmazások a Kerberos és az N
 | Eszköz által vezérelt            | Azure AD                                            | Azure AD DS felügyelt tartomány                                                |
 | Képviselet a címtárban | Eszközök objektumai az Azure AD-címtárban            | Számítógép-objektumok az Azure AD DS felügyelt tartományban                        |
 | Hitelesítés                  | OAuth/OpenID Connect-alapú protokollok              | Kerberos és NTLM protokollok                                               |
-| Kezelés                      | Mobileszköz-felügyeleti (MDM) szoftverek, például az Intune | Csoportházirend                                                              |
+| Felügyelet                      | Mobileszköz-felügyeleti (MDM) szoftverek, például az Intune | Csoportházirend                                                              |
 | Hálózat                      | Az interneten működik                             | Csatlakoznia kell ahhoz a virtuális hálózathoz, amelyhez a felügyelt tartományt telepíteni kell |
 | Nagyszerű...                    | Végfelhasználói mobil-vagy asztali eszközök                  | Az Azure-ban üzembe helyezett kiszolgálói virtuális gépek                                              |
 

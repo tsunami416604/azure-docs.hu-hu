@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: eliotgra
 ms.openlocfilehash: ffecd09d1084188195da83568ab3fe32ef2cdaac
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90972223"
 ---
 # <a name="continuous-patient-monitoring-architecture"></a>A folyamatos betegfigyelés architektúrája
@@ -47,6 +47,6 @@ A gépi tanulási modellek segítségével FHIR-adataival elemzési és támogat
 
 Az Azure API-val FHIR-adatokkal egy beteg-elemzési irányítópultot hozhat létre, vagy integrálhatja azt közvetlenül egy Care Teams által használt elektronikus orvosi rekordba. A Care Teams az irányítópultot használva segíti a betegeket, és azonosíthatja a korai előrejelző jeleinek romlását. További tudnivalókat a Power BI- [szolgáltatói irányítópult létrehozása](howto-health-data-triage.md) című oktatóanyagban talál.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A következő lépés az, hogy [megtudja, hogyan helyezhet üzembe egy folyamatos beteg monitorozási alkalmazás sablonját](tutorial-continuous-patient-monitoring.md).

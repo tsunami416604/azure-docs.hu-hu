@@ -11,10 +11,10 @@ ms.topic: quickstart
 ms.date: 05/21/2020
 ms.author: aahi
 ms.openlocfilehash: 44dc3f16128913f76369ad645a32e91f38272546
-ms.sourcegitcommit: 64fc70f6c145e14d605db0c2a0f407b72401f5eb
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "83869860"
 ---
 # <a name="quickstart-check-spelling-with-the-bing-spell-check-rest-api-and-php"></a>Gyors útmutató: helyesírás ellenőrzése a Bing Spell Check REST API és a PHP-vel
@@ -94,7 +94,7 @@ Bár ez az alkalmazás PHP-ben íródott, az API egy REST-alapú webszolgáltat�
     ```
 
 
-## <a name="run-the-application"></a>Alkalmazás futtatása
+## <a name="run-the-application"></a>Az alkalmazás futtatása
 
 Az alkalmazás futtatásához indítsa el a webkiszolgálót, és navigáljon a fájlhoz.
 

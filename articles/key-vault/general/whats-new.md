@@ -10,10 +10,10 @@ ms.topic: reference
 ms.date: 10/01/2020
 ms.author: mbaldwin
 ms.openlocfilehash: 164ba4767e0154154e5b3dc864265ba1505859d0
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91653145"
 ---
 # <a name="whats-new-for-azure-key-vault"></a>A Azure Key Vault újdonságai
@@ -97,6 +97,6 @@ A második előzetes verzió (2015-02-01-es verzió – előzetes verzió) bejel
  
 Az első előzetes verzió (2014-12-08-es verzió – előzetes verzió) a 2015. január 8-án jelent meg.  
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha további kérdése van, vegye fel velünk a kapcsolatot az [ügyfélszolgálaton](https://azure.microsoft.com/support/options/)keresztül.  

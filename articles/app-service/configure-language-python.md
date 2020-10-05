@@ -1,15 +1,15 @@
 ---
 title: Linux Python-alkalmazások konfigurálása
-description: Megtudhatja, hogyan konfigurálhat egy előre elkészített Python-tárolót az alkalmazásához. Ez a cikk a leggyakoribb konfigurációs feladatokat ismerteti.
+description: Megtudhatja, hogyan konfigurálhat egy előre elkészített Python-tárolót az alkalmazásához. A cikk a leggyakoribb konfigurációs feladatokat ismerteti.
 ms.topic: quickstart
 ms.date: 03/28/2019
 ms.reviewer: astay; kraigb
 ms.custom: mvc, seodec18, devx-track-python
 ms.openlocfilehash: 88a3876757c3f51d1fc70692976987560ee1b991
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88961635"
 ---
 # <a name="configure-a-linux-python-app-for-azure-app-service"></a>Linux Python-alkalmazás konfigurálása a Azure App Servicehoz
@@ -38,7 +38,7 @@ Az összes támogatott Python-verzió megjelenítéséhez futtassa a következő
 az webapp list-runtimes --linux | grep PYTHON
 ```
 
-A Python nem támogatott verzióját a saját tároló rendszerképének létrehozásával futtathatja. További információ: [Egyéni Docker-rendszerkép használata](tutorial-custom-container.md?pivots=container-linux).
+A Python nem támogatott verzióját a saját tároló rendszerképének létrehozásával futtathatja. További információ: [egyéni Docker-rendszerkép használata](tutorial-custom-container.md?pivots=container-linux).
 
 ## <a name="set-python-version"></a>Python-verzió beállítása
 
@@ -156,7 +156,7 @@ python3.7 -m aiohttp.web -H localhost -P 8080 package.module:init_func
 
 ## <a name="access-environment-variables"></a>Hozzáférés a környezeti változókhoz
 
-App Service az [Alkalmazásbeállítások](configure-common.md#configure-app-settings) az alkalmazás kódján kívül is megadhatók. Ezt követően a szabványos [operációs rendszer. Enviro](https://docs.python.org/3/library/os.html#os.environ) minta használatával férhet hozzájuk. Ha például egy nevű alkalmazáshoz szeretne hozzáférni `WEBSITE_SITE_NAME` , használja a következő kódot:
+Az App Service-szel az alkalmazás kódján kívül is [megadhatja az alkalmazások beállításait](configure-common.md#configure-app-settings). Ezt követően a szabványos [operációs rendszer. Enviro](https://docs.python.org/3/library/os.html#os.environ) minta használatával férhet hozzájuk. Például egy `WEBSITE_SITE_NAME` nevű alkalmazásbeállítás hozzáféréséhez használja a következő kódot:
 
 ```python
 os.environ['WEBSITE_SITE_NAME']
@@ -193,7 +193,7 @@ A népszerű webes keretrendszerek lehetővé teszik a `X-Forwarded-*` szabvány
 - Ellenőrizze, hogy az alkalmazás struktúrája megfelel-e annak, amit az App Service a [Django](#django-app) vagy a [Flask](#flask-app) számára elvár, vagy használjon [egyéni indítási parancsot](#customize-startup-command).
 - [A log stream elérése](#access-diagnostic-logs).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Oktatóanyag: Python-alkalmazás és PostgreSQL](tutorial-python-postgresql-app.md)
@@ -202,4 +202,4 @@ A népszerű webes keretrendszerek lehetővé teszik a `X-Forwarded-*` szabvány
 > [Oktatóanyag: üzembe helyezés Private Container adattárból](tutorial-custom-container.md?pivots=container-linux)
 
 > [!div class="nextstepaction"]
-> [App Service Linux – gyakori kérdések](faq-app-service-linux.md)
+> [App Service a Linuxon – gyakori kérdések](faq-app-service-linux.md)

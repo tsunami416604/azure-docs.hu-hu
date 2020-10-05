@@ -10,10 +10,10 @@ ms.date: 07/27/2020
 ms.author: aahi
 ms.reviewer: assafi
 ms.openlocfilehash: 7e074bf898667bb0019d4147ec9abaea2c674d74
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91400956"
 ---
 <a name="HOLTop"></a>
@@ -44,7 +44,7 @@ a [v3-referenciák dokumentációja](https://aka.ms/azsdk-net-textanalytics-ref-
 
 ### <a name="create-a-new-net-core-application"></a>Új .NET Core-alkalmazás létrehozása
 
-Hozzon létre egy új .NET Core Console-alkalmazást a Visual Studio IDE használatával. Ezzel létrehoz egy ""Helló világ!"alkalmazás" projektet egyetlen C# forrásfájl használatával: *program.cs*.
+Hozzon létre egy új .NET Core Console-alkalmazást a Visual Studio IDE használatával. Ezzel létrehoz egy "„Helló világ!” alkalmazás" projektet egyetlen C# forrásfájl használatával: *program.cs*.
 
 # <a name="version-31-preview"></a>[3,1-es verzió előnézet](#tab/version-3-1)
 
@@ -174,7 +174,7 @@ Ha a szolgáltatás verzióját használja `3.x` , egy opcionális példánnyal 
 
 ## <a name="code-examples"></a>Kódpéldák
 
-* [Hangulat elemzése](#sentiment-analysis)
+* [Hangulatelemzés](#sentiment-analysis)
 * [Nyelvfelismerés](#language-detection)
 * [Megnevezett entitások felismerése](#named-entity-recognition-ner)
 * [Entitás összekapcsolása](#entity-linking)

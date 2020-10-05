@@ -11,10 +11,10 @@ ms.topic: overview
 ms.date: 09/14/2020
 ms.author: aahi
 ms.openlocfilehash: 408bdd948977218d9b39a39bf97391a4141e545c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90947125"
 ---
 # <a name="what-is-metrics-advisor-preview"></a>Mi a mérőszámok tanácsadója (előzetes verzió)? 
@@ -61,7 +61,7 @@ A munkafolyamat egyszerű: az adatfeldolgozás után finomíthatja a rendellenes
     4. Diagnosztikai ismeretek megtekintése
 1. A példány testreszabásához használja a REST API.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Próbálja ki a [bemutató webhelyet](quickstarts/explore-demo.md).
 * Ismerkedjen meg a gyors útmutatóval: [Figyelje meg az első mérőszámot a weben](quickstarts/web-portal.md).

@@ -11,10 +11,10 @@ ms.topic: overview
 ms.date: 09/30/2020
 ms.custom: seodec18
 ms.openlocfilehash: f395f96dfa48567f95a1c50cf5403d3cbb427cb7
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91597827"
 ---
 # <a name="what-is-azure-time-series-insights-gen1"></a>Mi az Azure Time Series Insights Gen1?
@@ -68,7 +68,7 @@ Azure Time Series Insights rögzíti és tárolja az összes új eseményt sorra
 
    A Azure Time Series Insights REST lekérdezési API-kat tesz elérhetővé, amelyekkel idősorozat-adatokkal rendelkező alkalmazásokat hozhat létre.
 
-## <a name="capabilities"></a>Képességek
+## <a name="capabilities"></a>Funkciók
 
 - **Gyors kezdés**: Azure Time Series Insights nem igényel előzetes adatelőkészítést, így gyorsan csatlakozhat több millió eseményhez az IoT hub vagy az Event hub szolgáltatásban. A kapcsolódást követően megjelenítheti és kezelheti az érzékelők adatait, hogy gyorsan érvényesítse IoT-megoldásait. Kód írása nélkül is dolgozhat az adataival, és nem kell új nyelvet tanulnia. A Azure Time Series Insights egy részletes, szabadszöveges lekérdezési felületet biztosít a speciális felhasználók számára, és a pont-és kattintásos feltárást is lehetővé teszi.
 
@@ -78,7 +78,7 @@ Azure Time Series Insights rögzíti és tárolja az összes új eseményt sorra
 
 - **Méretezhetőség**: a Azure Time Series Insights a IoT nagy léptékű támogatására lett tervezve. Napi 1–100 millió bejövő eseményt képes kezelni, és alapértelmezés szerint 31 napig őrzi meg ezeket. Közel valós időben jeleníthet meg és elemezheti az élő adatfolyamokat a korábbi adatelemzések mellett.
 
-## <a name="get-started"></a>Első lépések
+## <a name="get-started"></a>Bevezetés
 
 Az első lépésekhez kövesse az alábbi lépéseket.
 

@@ -11,10 +11,10 @@ ms.topic: overview
 ms.date: 09/21/2020
 ms.author: aahi
 ms.openlocfilehash: 714a4709eceea875798940de962716d34437f2a9
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91530459"
 ---
 # <a name="migrate-to-the-read-v3x-ocr-containers"></a>Migrálás az olvasási v3. x OCR-tárolóba
@@ -77,8 +77,8 @@ A tároló v3. x verziójában a RabbitMQ jelenleg nem támogatott. A támogatot
 | Implementálás | Futásidejű argumentum (ok) | Rendeltetésszerű használat |
 |---------|---------|-------|
 | A memóriában (alapértelmezett) | Nincs szükség futásidejű argumentumokra. | Fejlesztés és tesztelés |
-| Azure Queues | `Queue:Azure:ConnectionString={AzureStorageConnectionString}` | Éles környezet |
-| RabbitMQ  | Nem érhető el | Éles környezet |
+| Azure Queues | `Queue:Azure:ConnectionString={AzureStorageConnectionString}` | Production |
+| RabbitMQ  | Nem érhető el | Production |
 
 A hozzáadott redundancia érdekében az olvasási v3. x tároló egy láthatósági időzítőt használ annak biztosítására, hogy a kérések sikeresen feldolgozhatók összeomlás esetén, ha egy többtárolós beállítás fut. 
 

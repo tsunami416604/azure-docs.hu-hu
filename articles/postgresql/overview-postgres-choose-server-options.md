@@ -8,10 +8,10 @@ ms.service: postgresql
 ms.topic: overview
 ms.date: 09/21/2020
 ms.openlocfilehash: f81a44af4a90ccda1875c0a9f2bfaa8dc0b73441
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90947232"
 ---
 # <a name="choose-the-right-postgresql-server-option-in-azure"></a>Válassza ki a megfelelő PostgreSQL-kiszolgáló lehetőséget az Azure-ban
@@ -94,7 +94,7 @@ Emellett a magas rendelkezésre állás konfigurálása egy másik adatközponth
 
 - Ha el szeretné kerülni az új helyszíni hardver beszerzésének idejét és költségét, a PostgreSQL az Azure-beli virtuális gépeken a megfelelő megoldás olyan alkalmazásokhoz, amelyek a szolgáltatás által nem támogatott, vagy a mögöttes operációs rendszer elérését igénylik a PostgreSQL motor részletes szabályozására és testreszabására.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Lásd: az Azure Database for [PostgreSQL díjszabása](https://azure.microsoft.com/pricing/details/postgresql/server/).
 - Első lépésként hozza létre első kiszolgálóját.

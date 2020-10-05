@@ -9,10 +9,10 @@ ms.custom: subject-armqs
 ms.author: mblythe
 ms.date: 09/14/2020
 ms.openlocfilehash: 393678342ad1e8e6e2ff5d3c38dab68ce29ee7e7
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91711717"
 ---
 # <a name="quickstart-use-an-arm-template-to-deploy-azure-api-for-fhir"></a>Gyors útmutató: ARM-sablon használata az Azure API FHIR való üzembe helyezéséhez
@@ -226,7 +226,7 @@ read -p "Press [ENTER] to continue: "
 
 ---
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az ARM-sablonok létrehozásának folyamatát ismertető lépésenkénti oktatóanyagért lásd:
 

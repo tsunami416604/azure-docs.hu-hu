@@ -9,10 +9,10 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: overview
 ms.date: 09/14/2020
 ms.openlocfilehash: 9fe149fb026aabcb50a595061d3ba57df7812563
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90602812"
 ---
 # <a name="apache-cassandra-features-supported-by-azure-cosmos-db-cassandra-api"></a>Az Azure Cosmos DB Cassandra API-ja által támogatott Apache Cassandra-funkciók 
@@ -81,7 +81,7 @@ Az Azure Cosmos DB Cassandra API a következő CQL-függvényeket támogatja:
 | Jogkivonat | Igen |
 | ttl | Igen |
 | writetime | Igen |
-| típuskonverzió | No |
+| típuskonverzió | Nem |
 
 \* Cassandra API a tokent kivetítési/választóként támogatja, és csak a tokent (PK) engedélyezi egy WHERE záradék bal oldalán. Például `WHERE token(pk) > 1024` támogatott, de `WHERE token(pk) > token(100)` nem támogatott.
 
@@ -129,48 +129,48 @@ Az Azure Cosmos DB a következő adatbázisparancsokat támogatja a Cassandra AP
 |---------|---------|
 | SZŰRÉS ENGEDÉLYEZÉSE | Igen |
 | LEMEZTERÜLET MÓDOSÍTÁSA | N/A (Pásti szolgáltatás, belső replikáció felügyelt)|
-| MÓDOSÍTHATÓ ANYAGÚ NÉZET | No |
-| SZEREPKÖR MÓDOSÍTÁSA | No |
+| MÓDOSÍTHATÓ ANYAGÚ NÉZET | Nem |
+| SZEREPKÖR MÓDOSÍTÁSA | Nem |
 | ALTER TABLE | Igen |
-| MÓDOSÍTÁS TÍPUSA | No |
-| FELHASZNÁLÓ MÓDOSÍTÁSA | No |
+| MÓDOSÍTÁS TÍPUSA | Nem |
+| FELHASZNÁLÓ MÓDOSÍTÁSA | Nem |
 | BATCH | Igen (csak nem naplózott köteg)|
 | KOMPAKT TÁROLÓ | N/A (Pásti szolgáltatás) |
-| ÖSSZESÍTÉS LÉTREHOZÁSA | No | 
-| EGYÉNI INDEX LÉTREHOZÁSA (SASI) | No |
+| ÖSSZESÍTÉS LÉTREHOZÁSA | Nem | 
+| EGYÉNI INDEX LÉTREHOZÁSA (SASI) | Nem |
 | CREATE INDEX | Igen (az [index nevének megadása](cassandra-secondary-index.md)és a fürtözési kulcsok indexelése nélkül, vagy a teljes fagyasztott gyűjtemény nem támogatott) |
-| FÜGGVÉNY LÉTREHOZÁSA | No |
+| FÜGGVÉNY LÉTREHOZÁSA | Nem |
 | SZÓKÖZ létrehozása (replikációs beállítások figyelmen kívül hagyva) | Igen |
-| ANYAGELSZÁMOLÁSÚ NÉZET LÉTREHOZÁSA | No |
+| ANYAGELSZÁMOLÁSÚ NÉZET LÉTREHOZÁSA | Nem |
 | CREATE TABLE | Igen |
-| TRIGGER LÉTREHOZÁSA | No |
+| TRIGGER LÉTREHOZÁSA | Nem |
 | LÉTREHOZÁS TÍPUSA | Igen |
-| SZEREPKÖR LÉTREHOZÁSA | No |
-| FELHASZNÁLÓ létrehozása (natív Apache Cassandra-ban elavult) | No |
+| SZEREPKÖR LÉTREHOZÁSA | Nem |
+| FELHASZNÁLÓ létrehozása (natív Apache Cassandra-ban elavult) | Nem |
 | DELETE | Igen |
 | Törlés (az IF feltétellel rendelkező könnyű tranzakciók)| Igen |
-| ÖSSZESÍTÉS ELDOBÁSA | No |
-| DROP FÜGGVÉNY | No |
+| ÖSSZESÍTÉS ELDOBÁSA | Nem |
+| DROP FÜGGVÉNY | Nem |
 | DROP INDEX | Igen |
 | SZÓKÖZ ELDOBÁSA | Igen |
-| ANYAGOS NÉZET ELDOBÁSA | No |
-| SZEREPKÖR ELDOBÁSA | No |
+| ANYAGOS NÉZET ELDOBÁSA | Nem |
+| SZEREPKÖR ELDOBÁSA | Nem |
 | TÁBLÁZAT ELDOBÁSA | Igen |
-| TRIGGER ELDOBÁSA | No | 
+| TRIGGER ELDOBÁSA | Nem | 
 | DROP TYPE | Igen |
-| FELHASZNÁLÓ eldobása (elavult, natív Apache Cassandra) | No |
-| GRANT | No |
+| FELHASZNÁLÓ eldobása (elavult, natív Apache Cassandra) | Nem |
+| GRANT | Nem |
 | INSERT | Igen |
 | INSERT (könnyű tranzakciók IF feltétellel)| Igen |
-| ENGEDÉLYEK LISTÁZÁSA | No |
-| SZEREPKÖRÖK LISTÁZÁSA | No |
-| FELHASZNÁLÓK LISTÁZÁSa (a natív Apache Cassandra-ban elavult) | No |
-| VISSZAVONJA | No |
+| ENGEDÉLYEK LISTÁZÁSA | Nem |
+| SZEREPKÖRÖK LISTÁZÁSA | Nem |
+| FELHASZNÁLÓK LISTÁZÁSa (a natív Apache Cassandra-ban elavult) | Nem |
+| VISSZAVONJA | Nem |
 | SELECT | Igen |
-| SELECT (könnyűsúlyú tranzakciók IF feltétellel)| No |
+| SELECT (könnyűsúlyú tranzakciók IF feltétellel)| Nem |
 | UPDATE | Igen |
-| FRISSÍTÉS (kis-és nagyméretű tranzakciók, ha feltétellel)| No |
-| TRUNCATE | No |
+| FRISSÍTÉS (kis-és nagyméretű tranzakciók, ha feltétellel)| Nem |
+| TRUNCATE | Nem |
 | USE | Igen |
 
 ## <a name="json-support"></a>JSON-támogatás
@@ -178,8 +178,8 @@ Az Azure Cosmos DB a következő adatbázisparancsokat támogatja a Cassandra AP
 |---------|---------|
 | JSON KIVÁLASZTÁSA | Igen |
 | JSON BESZÚRÁSA | Igen |
-| fromJson() | No |
-| toJson() | No |
+| fromJson() | Nem |
+| toJson() | Nem |
 
 
 ## <a name="cassandra-api-limits"></a>A Cassandra API korlátai
@@ -196,7 +196,7 @@ Az Azure Cosmos DB Cassandra API egy felügyelt szolgáltatási platform. A für
 
 Egy üzemeltetett natív Cassandra shellt (CQLSH v 5.0.1) közvetlenül a [Azure Portal](data-explorer.md) vagy az [Azure Cosmos Explorer](https://cosmos.azure.com/)adatkezelő lehet megnyitni. A CQL-rendszerhéj engedélyezése előtt engedélyeznie kell [a jegyzetfüzetek](enable-notebooks.md) szolgáltatást a fiókjában (ha még nincs engedélyezve, akkor a rendszer rákérdez a gombra `Open Cassandra Shell` ). Jelölje be a Kiemelt Megjegyzés a [jegyzetfüzetek engedélyezése Azure Cosmos db-fiókok](enable-notebooks.md) számára támogatott Azure-régiók számára című részt.
 
-:::image type="content" source="./media/cassandra-support/cqlsh.png" alt-text="CQLSH megnyitása":::
+:::image type="content" source="./media/cassandra-support/cqlsh.png" alt-text="CQLSH megnyitása&quot;:::
 
 A helyi gépre telepített CQLSH használatával a Azure Cosmos DB Cassandra API is csatlakozhat. Az Apache Cassandra 3.1.1-es verziójában a környezeti változók beállításával működik a doboz. A következő részekben a CQLSH-t használó Windowson vagy Linuxon Cassandra API telepítéséhez, konfigurálásához és a Azure Cosmos DBhoz való kapcsolódáshoz szükséges utasítások találhatók.
 
@@ -220,7 +220,7 @@ curl https://cacert.omniroot.com/bc2025.crt > bc2025.crt
 keytool -importcert -alias bc2025ca -file bc2025.crt
 
 # Install the Cassandra libraries in order to get CQLSH:
-echo "deb http://www.apache.org/dist/cassandra/debian 311x main" | sudo tee -a /etc/apt/sources.list.d/cassandra.sources.list
+echo &quot;deb http://www.apache.org/dist/cassandra/debian 311x main" | sudo tee -a /etc/apt/sources.list.d/cassandra.sources.list
 curl https://downloads.apache.org/cassandra/KEYS | sudo apt-key add -
 sudo apt-get update
 sudo apt-get install cassandra

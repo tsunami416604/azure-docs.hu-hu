@@ -9,10 +9,10 @@ ms.date: 07/28/2020
 ms.topic: include
 ms.service: azure-communication-services
 ms.openlocfilehash: d4ef8baa123f805d380b14fa24abff65903cb41d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90947094"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
@@ -132,7 +132,7 @@ Futtassa az Azure-függvényt helyileg a használatával `F5` . Ez a művelet he
 
 Nyissa meg az URL-címet a böngészőjében, és meg kell jelennie a válasz törzsének a kommunikációs felhasználói azonosítóval, a tokenrel és a token lejáratával.
 
-:::image type="content" source="../media/trusted-service-sample-response.png" alt-text="Képernyőfelvétel: a létrehozott Azure-függvényre mutató válasz.":::
+:::image type="content" source="../media/trusted-service-sample-response.png" alt-text="A megbízható szolgáltatás architektúrájának diagramja":::
 
 ## <a name="deploy-the-function-to-azure"></a>A függvény üzembe helyezése az Azure-ban
 

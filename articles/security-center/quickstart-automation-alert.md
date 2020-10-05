@@ -9,10 +9,10 @@ ms.custom: subject-armqs
 ms.author: memildin
 ms.date: 08/20/2020
 ms.openlocfilehash: 6c8a3d6c291435a379a637707a42f9ad7fe8dc00
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90906352"
 ---
 # <a name="quickstart-create-an-automatic-response-to-a-specific-security-alert-using-an-azure-resource-manager-template-arm-template"></a>Gyors útmutató: automatikus válasz létrehozása egy adott biztonsági riasztáshoz egy Azure Resource Manager sablon (ARM-sablon) használatával
@@ -84,12 +84,12 @@ Ha már nincs rá szükség, törölje a munkafolyamat-automatizálást a Azure 
 1. [A Azure Portal](https://portal.azure.com)nyissa meg **Security Center**.
 1. A felső menüsorban kattintson a szűrő ikonra, és válassza ki azt az előfizetést, amelyre az új munkafolyamat-automatizálást telepítette.
 1. A Security Center oldalsávján nyissa meg a **munkafolyamatok automatizálását** , és keresse meg a törölni kívánt automatizálást.
-    :::image type="content" source="./media/quickstart-automation-alert/deleting-workflow-automation.png" alt-text="A Munkafolyamat-automatizálás eltávolításának lépései" lightbox="./media/quickstart-automation-alert/deleting-workflow-automation.png":::
+    :::image type="content" source="./media/quickstart-automation-alert/deleting-workflow-automation.png" alt-text="Konfigurált automatizálások listája" lightbox="./media/quickstart-automation-alert/deleting-workflow-automation.png":::
 1. Jelölje be a törölni kívánt elem jelölőnégyzetét.
 1. Az eszköztáron válassza a **Törlés**lehetőséget.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A sablonok létrehozásának folyamatát ismertető, lépésenkénti oktatóanyagért lásd:
 
