@@ -12,10 +12,10 @@ ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
 ms.openlocfilehash: 691cdcb525f8e9e3d1fb914372b9f62366f4bfba
-ms.sourcegitcommit: 6fd28c1e5cf6872fb28691c7dd307a5e4bc71228
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/23/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "85213023"
 ---
 # <a name="quickstart-create-a-synapse-sql-pool-workload-classifier-using-the-azure-portal"></a>Gyors útmutató: szinapszis SQL Pool számítási feladatok besorolásának létrehozása a Azure Portal használatával
@@ -23,7 +23,7 @@ ms.locfileid: "85213023"
 Ebben a rövid útmutatóban egy számítási feladatot fog [létrehozni, amellyel](sql-data-warehouse-workload-classification.md) lekérdezéseket rendelhet a munkaterhelés-csoportokhoz.  Az osztályozó az SQL-felhasználótól érkező kérelmeket `ELTLogin` a `DataLoads` munkaterhelés csoportjába rendeli.   Kövesse a gyors üzembe helyezési útmutató: a számítási [feladatok elkülönítése](quickstart-configure-workload-isolation-portal.md) oktatóanyagot a `DataLoads` munkaterhelés csoport létrehozásához.  Ez az oktatóanyag az WLM_LABEL lehetőséggel létrehoz egy számítási feladatot, amely segít a kérelmek helyes osztályozásában.  Az osztályozó a számítási `HIGH` [feladatok fontosságát](sql-data-warehouse-workload-importance.md) is hozzárendeli a kérelmekhez.
 
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
+Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány perc alatt létrehozhat egy [ingyenes](https://azure.microsoft.com/free/) fiókot.
 
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
@@ -92,18 +92,18 @@ A besorolás lehetővé teszi, hogy a kérelmeket egy adott szabálykészlet ala
 9.  Válassza `High` a **kérés fontosságát**.  Nem *kötelező*, a normál fontosság alapértelmezett.
 10. Adja meg `fact_loads` a **címkét**.
 11. Kattintson a **Hozzáadás** parancsra.
-12. Kattintson a **Save** (Mentés) gombra.
+12. Kattintson a **Mentés** gombra.
 
     ![Kattintson a konfiguráció elemre.](./media/quickstart-create-a-workload-classifier-portal/config-wc.png)
 
 ## <a name="verify-and-test-classification"></a>Ellenőrzés és tesztelés besorolása
-Ellenőrizze a [sys. workload_management_workload_classifiers](/sql/relational-databases/system-catalog-views/sys-workload-management-workload-classifiers-transact-sql?view=azure-sqldw-latest) katalógus nézetét, és ellenőrizze, hogy létezik-e az `ELTLoginDataLoads` osztályozó.
+Az osztályozó létezésének ellenőrzéséhez tekintse meg a [sys.workload_management_workload_classifiers](/sql/relational-databases/system-catalog-views/sys-workload-management-workload-classifiers-transact-sql?view=azure-sqldw-latest) katalógus nézetét `ELTLoginDataLoads` .
 
 ```sql
 SELECT * FROM sys.workload_management_workload_classifiers WHERE name = 'ELTLoginDataLoads'
 ```
 
-Az osztályozó részleteinek ellenőrzéséhez ellenőrizze a [sys. workload_management_workload_classifier_details](/sql/relational-databases/system-catalog-views/sys-workload-management-workload-classifier-details-transact-sql?view=azure-sqldw-latest) katalógus nézetét.
+Az osztályozó részleteinek ellenőrzéséhez tekintse meg a [sys.workload_management_workload_classifier_details](/sql/relational-databases/system-catalog-views/sys-workload-management-workload-classifier-details-transact-sql?view=azure-sqldw-latest) katalógus nézetét.
 
 ```sql
 SELECT c.[name], c.group_name, c.importance, cd.classifier_type, cd.classifier_value
@@ -137,7 +137,7 @@ ORDER BY submit_time DESC
 
 
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Az `ELTLoginDataLoads` oktatóanyagban létrehozott számítási feladatok besorolásának törlése:
 
@@ -161,7 +161,7 @@ Az erőforrások tisztításához kövesse az alábbi lépéseket.
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com), és válassza ki az adattárházat.
 
-    ![Erőforrások felszabadítása](./media/load-data-from-azure-blob-storage-using-polybase/clean-up-resources.png)
+    ![Az erőforrások eltávolítása](./media/load-data-from-azure-blob-storage-using-polybase/clean-up-resources.png)
 
 2. A számítás szüneteltetéséhez kattintson a **szüneteltetés** gombra. Ha az adattárház szüneteltetve van, az **Indítás** gomb látható.  A számítás folytatásához kattintson a **Start**gombra.
 

@@ -9,10 +9,10 @@ author: peterclu
 ms.author: peterlu
 ms.date: 08/24/2020
 ms.openlocfilehash: 7b0db0f97531c60b3e809dd0dafa042dbcc2b542
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91667435"
 ---
 # <a name="what-is-azure-machine-learning-studio"></a>Mi az Azure Machine Learning Studio?
@@ -80,7 +80,7 @@ Azt javasoljuk, hogy az új felhasználók ML Studio (klasszikus) helyett **Azur
 
 Az alábbi táblázat összefoglalja ML Studio (klasszikus) és Azure Machine Learning közötti fő különbségeket.
 
-| Funkció | ML Studio (klasszikus) | Azure Machine Learning |
+| Szolgáltatás | ML Studio (klasszikus) | Azure Machine Learning |
 |---| --- | --- |
 | Húzási interfész | Klasszikus felhasználói élmény | Frissített tapasztalat – [Azure Machine learning Designer](concept-designer.md)| 
 | SDK-kód | Nem támogatott | Teljes mértékben integrált [Azure Machine learning Python](https://docs.microsoft.com/python/api/overview/azure/ml/) és [R](tutorial-1st-r-experiment.md) SDK-k |
@@ -95,7 +95,7 @@ Az alábbi táblázat összefoglalja ML Studio (klasszikus) és Azure Machine Le
 | Adatcímkéző projektek | Nem támogatott | [Támogatott](how-to-create-labeling-projects.md) |
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Látogasson el a [studióba](https://ml.azure.com), vagy Ismerje meg a különböző szerzői lehetőségeket a következő oktatóanyagokkal:  
   + [Python-jegyzetfüzetek használata &-modellek üzembe helyezéséhez](tutorial-1st-experiment-sdk-setup.md)

@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
 ms.openlocfilehash: 258908ed1118b0463e8c824cd8c699fb460dfff2
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90947263"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
@@ -127,7 +127,7 @@ Ha létre kell hoznia egy erőforráscsoportot, ezt a [Azure Portal](https://doc
 
 A kommunikációs szolgáltatások kezelésének ügyféloldali függvénytár-ügyfelének () példánya a ``Azure.ResourceManager.Communication.CommunicationManagementClient`` kommunikációs szolgáltatások erőforrásain végzett műveletek végrehajtásához használható.
 
-#### <a name="create-a-communication-services-resource"></a>Kommunikációs szolgáltatások erőforrásának létrehozása
+#### <a name="create-a-communication-services-resource"></a>Communication Services-erőforrás létrehozása
 
 A kommunikációs szolgáltatások erőforrásának létrehozásakor meg kell adnia az erőforráscsoport nevét és az erőforrás nevét. Vegye figyelembe, hogy a `Location` tulajdonság mindig lesz `global` , és a nyilvános előzetes verzióban az `DataLocation` értéknek kell lennie `UnitedStates` .
 

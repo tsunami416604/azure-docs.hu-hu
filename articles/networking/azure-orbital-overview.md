@@ -8,10 +8,10 @@ ms.topic: overview
 ms.date: 09/22/2020
 ms.author: wamota
 ms.openlocfilehash: fcc44bb1c8017d63ee7926a31177aebaafd832fc
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91336377"
 ---
 # <a name="what-is-azure-orbital-preview"></a>Mi az az Azure Orbital? (Előzetes verzió)
@@ -25,7 +25,7 @@ Az Azure orbiting egy partneri ökoszisztéma kiépítését, amely lehetővé t
 
 Az Azure orbitális több felhasználási esetet tesz lehetővé ügyfeleink számára, beleértve a föld megfigyelését és a globális kommunikációt. Olyan platformot is biztosít, amely lehetővé teszi a meglévő földterületek digitális átalakítását a virtualizáció használatával. Közvetlen hozzáférést biztosít az összes Azure-szolgáltatáshoz, az Azure globális infrastruktúrához, a piactérhez és a világszínvonalú partner-ökoszisztémához a szolgáltatáson keresztül.
 
-:::image type="content" source="./media/azure-orbital-overview/orbital-all-overview.png" alt-text="Az Azure orbitális áttekintése":::
+:::image type="content" source="./media/azure-orbital-overview/orbital-all-overview.png" alt-text="Azure orbitális Ignite – videó indítása":::
 
 **Az Azure orbitális-felhasználók számára az érték-kiosztások a következők:**
 
@@ -49,13 +49,13 @@ Az előzetes verzióval kapcsolatos további információkért, vagy az előzete
 
 ## <a name="earth-observation"></a><a name="earth-observation"></a>Föld megfigyelése
 
-:::image type="content" source="./media/azure-orbital-overview/orbital-eos-dataflow.png" alt-text="Azure orbitális a Föld megfigyelési adatfolyam" lightbox="./media/azure-orbital-overview/orbital-eos-dataflow-expanded.png":::
+:::image type="content" source="./media/azure-orbital-overview/orbital-eos-dataflow.png" alt-text="Azure orbitális Ignite – videó indítása" lightbox="./media/azure-orbital-overview/orbital-eos-dataflow-expanded.png":::
 
 Az Azure orbitális használatával a kapcsolatait a downlink és a hasznos adattartalomra vonatkozó, utólagos elszámolású ügyfelek ütemezhetik. Használja az ütemezett hozzáférési időpontokat az adatok műholdról való betöltéséhez, a műhold állapotának és állapotának figyeléséhez, illetve a parancsok műholdra küldéséhez. A rendszer a bejövő adatait a saját virtuális hálózatának továbbítja, amely lehetővé teszi, hogy az Azure-ban feldolgozza vagy tárolja azt.
 
 Mivel a szolgáltatás teljes mértékben digitalizálva van, az Kratos és a Amergint szoftveres modem a moduláció/demoduláció és a kódolási/dekódolási függvények végrehajtásához használható az adatok helyreállításához. Lehetősége van megvásárolni a piactéren, vagy az Ön számára, hogy Ön is kezelje ezt a részt. Emellett integrálja a Kubos-nal, hogy teljes körűen kihasználja a flotta-és telemetria,-követési, &-vezérlési (TT-&C) függvények felügyeletéhez szükséges teljes körű megoldást. Az Azure-erőforrások és-eszközkészletek segítségével implementálhatja az Azure-beli számítási feladatokat a hasznos adatoknak a végső ajánlatokban való kezeléséhez.
 
-:::image type="content" source="./media/azure-orbital-overview/orbital-eos-schedule.png" alt-text="Az Azure orbitális for Earth megfigyelési ütemezése":::
+:::image type="content" source="./media/azure-orbital-overview/orbital-eos-schedule.png" alt-text="Azure orbitális Ignite – videó indítása":::
 
 ### <a name="scheduling-contacts"></a><a name="scheduling-contacts"></a>Névjegyek ütemezése
 
@@ -71,7 +71,7 @@ Az előzetes verzióval kapcsolatos további információkért, vagy az előzete
 
 ## <a name="global-communication"></a><a name="global-communication"></a>Globális kommunikáció
 
-:::image type="content" source="./media/azure-orbital-overview/orbital-communications-use-flow.png" alt-text="Azure orbitális globális kommunikációs Useflow":::
+:::image type="content" source="./media/azure-orbital-overview/orbital-communications-use-flow.png" alt-text="Azure orbitális Ignite – videó indítása":::
 
 Azok a műholdas szolgáltatók, akik globális kommunikációs képességeket biztosítanak ügyfeleiknek, az Azure orbitális szolgáltatással az Azure-adatközpontokban vagy az Azure-hálózat peremén is használhatják az új földterületeket Ezután a globális Microsoft-hálózatra irányítják a forgalmat, és az Azure-hálózat szélétől kihasználhatják az internetes kitörést, hogy internetes szolgáltatásokat és más felügyelt szolgáltatásokat nyújtsanak ügyfeleiknek.
 
@@ -85,7 +85,7 @@ A saját földterületek kiépítése mellett az Azure orbitális lehetővé tes
 
 A terepi állomás vagy a teleport-szolgáltatók az Azure orbitális partnerrel csatlakozhatnak a terepi állomások digitális átalakításához. Ennek köszönhetően az ügyfelek ezekkel a földterületekkel ütemezhetik a névjegyeket a szatellitekre, miközben a platform és az orbitális partnerek által kínált összes szoftveres rádió-feldolgozási és adatfeldolgozási képességet kihasználják a piactéren. A szolgáltatás szorosan integrálva van a Felhőbeli számítási feladatokkal, valamint a harmadik féltől származó megoldások vibráló ökoszisztémáját a piactéren, például a modemeken, az erőforrás-kezelésen és a Mission Control servicesen keresztül. Az Azure-beli kis késleltetésű és magas megbízhatóságú globális száloptikai hálózat is az összes adattal kihasználható. Úgy véljük, hogy a lehető legszélesebb körű lefedettségi & rugalmasságot biztosítunk ügyfeleinknek, hogy a legmagasabb fokú gyorsasággal és megbízhatósággal kommunikáljanak a műholdakkal.
 
-:::image type="content" source="./media/azure-orbital-overview/orbital-all-digital-transformations.png" alt-text="Azure orbitális digitális átalakításhoz":::
+:::image type="content" source="./media/azure-orbital-overview/orbital-all-digital-transformations.png" alt-text="Azure orbitális Ignite – videó indítása":::
 
 Az előzetes verzióval kapcsolatos további információkért, vagy az előzetes verzióban való részvételhez kérjük, töltse ki a kapcsolatfelvételi űrlapot [itt](https://aka.ms/iaminterested), vagy küldjön e-mailt a következő címre: [MSAzureOrbital@microsoft.com](mailto:MSAzureOrbital@microsoft.com) .
 
@@ -93,7 +93,7 @@ Az előzetes verzióval kapcsolatos további információkért, vagy az előzete
 
 Ahogy haladunk a területünk felé, további partnereket fogunk felvenni az ökoszisztémába, hogy ügyfeleink könnyebben tudják elérni az Azure orbitális szolgáltatását. Az Azure orbitális kialakítása során partnereink által vezetett megközelítésünk lesz. Célunk, hogy a partnereink vibráló ökoszisztémáját közösen hozzuk létre a partnereink és ügyfeleink számára is. Gondoljon rá, mint egy Coral Reef!
 
-:::image type="content" source="./media/azure-orbital-overview/orbital-all-partners.png" alt-text="Azure orbitális-partnerek":::
+:::image type="content" source="./media/azure-orbital-overview/orbital-all-partners.png" alt-text="Azure orbitális Ignite – videó indítása":::
 
 A következő szakaszokban a partnerek kategóriái és az Azure orbitális-partnerek listája látható, amelyek már részei az orbitális ökoszisztémának:
 
@@ -115,6 +115,6 @@ A SES globális gerinc-hálózatot használ a forgalom globális átirányítás
 
 A [Kubos](https://www.kubos.com/) -szel együttműködve a főbb Tom-t, a felhőalapú Mission Control szoftvert, az Azure Marketplace-t az Azure orbitális ügyfelei számára.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az előzetes verzióval kapcsolatos további információkért, vagy az előzetes verzióban való részvételhez kérjük, töltse ki a kapcsolatfelvételi űrlapot [itt](https://aka.ms/iaminterested), vagy küldjön e-mailt a következő címre: [MSAzureOrbital@microsoft.com](mailto:MSAzureOrbital@microsoft.com) .

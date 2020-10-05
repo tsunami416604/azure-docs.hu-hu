@@ -10,10 +10,10 @@ ms.date: 06/30/2020
 ms.reviewer: jushiman
 ms.custom: avverma
 ms.openlocfilehash: dd042b28035b5e9a4b18041d6c1a81f77cfd4ea7
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "86527404"
 ---
 # <a name="overview-of-autoscale-with-azure-virtual-machine-scale-sets"></a>Az Azure-beli virtuálisgép-méretezési csoportokkal végzett automatikus skálázás áttekintése
@@ -73,7 +73,7 @@ Amikor egy adott metrika figyelésére hoz létre autoskálázási szabályokat,
 | Összesítés típusa |
 |------------------|
 | Átlag          |
-| Minimális          |
+| Minimum          |
 | Maximum          |
 | Összesen            |
 | Utolsó             |
@@ -84,8 +84,8 @@ Az autoskálázási szabályok akkor aktiválódnak, ha a metrikák összevetés
 | Művelet                 |
 |--------------------------|
 | Nagyobb, mint             |
-| Nagyobb vagy egyenlő, mint |
-| Kisebb                |
+| Nagyobb vagy egyenlő |
+| Kisebb, mint                |
 | Kisebb vagy egyenlő    |
 | Egyenlő                 |
 | Nem egyenlő             |
@@ -128,7 +128,7 @@ Az alábbi példák olyan forgatókönyveket mutatnak be, amelyek hasznosak lehe
 - Ha marketing-, előléptetési vagy üdülési értékesítésre van szükség, automatikusan méretezheti a virtuálisgép-példányok számát a várt ügyfél-igény előtt. 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az alábbi eszközök egyikével hozhat létre olyan autoskálázási szabályokat, amelyek gazdagép-alapú metrikákat használnak:
 
 - [Azure PowerShell](tutorial-autoscale-powershell.md)

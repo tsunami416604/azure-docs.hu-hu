@@ -10,10 +10,10 @@ ms.date: 06/22/2020
 ms.author: danis
 ms.reviewer: cynthn
 ms.openlocfilehash: a7d9aa7de8bb75a22acc85c77924765eaa1b6b3b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87080148"
 ---
 # <a name="azure-linux-vm-provisioning"></a>Azure Linux rendszerű virtuális gépek üzembe helyezése
@@ -44,7 +44,7 @@ Ha olyan linuxos kernelt használ, amely nem támogatja az ügynök futtatását
 - SSH-gazdagép kulcsának ujjlenyomatának jelentése a platformnak
 - Erőforrás-lemezek kezelése
 - Az erőforrás lemezének formázása és csatlakoztatása
-- Fogyasztás és feldolgozás`customData`
+- Fogyasztás és feldolgozás `customData`
  
 **Hálózat**
   
@@ -54,7 +54,7 @@ Ha olyan linuxos kernelt használ, amely nem támogatja az ügynök futtatását
 **Kernel**
   
 - Virtuális NUMA konfigurálása (kernel <letiltása `2.6.37` )
-- A Hyper-V entrópia használata a következőhöz:`/dev/random`
+- A Hyper-V entrópia használata a következőhöz: `/dev/random`
 - SCSI-időtúllépések konfigurálása a gyökérszintű eszközhöz (amely távoli lehet)
 
 **Diagnosztika**
@@ -73,7 +73,7 @@ A Linux-ügynök és a Cloud-init a megfelelő működés érdekében néhány r
 - Python 2.6 +
 - OpenSSL 1.0 +
 - OpenSSH 5.3 +
-- Filesystem segédprogramok: `sfdisk` ,, `fdisk` `mkfs` ,`parted`
+- Filesystem segédprogramok: `sfdisk` ,, `fdisk` `mkfs` , `parted`
 - Jelszó-eszközök: chpasswd, sudo
 - Text Processing Tools: sed, grep
 - Hálózati eszközök: IP-útvonal

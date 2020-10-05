@@ -7,10 +7,10 @@ ms.topic: quickstart
 ms.author: mblythe
 ms.date: 09/11/2020
 ms.openlocfilehash: 3b9783e7f452b38292c784d44ddb60672e150961
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91650398"
 ---
 # <a name="view-and-filter-azure-resource-information"></a>Azure-erőforrások adatainak megtekintése és szűrése
@@ -81,7 +81,7 @@ Erőforrás-gráf lekérdezésének futtatása:
 
     További információ: [az első Resource Graph-lekérdezés futtatása az Azure Resource Graph Explorerben](../governance/resource-graph/first-query-portal.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Az Azure Portal áttekintése](azure-portal-overview.md)
 

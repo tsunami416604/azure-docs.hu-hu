@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: bastion
 author: cherylmc
 ms.service: bastion
@@ -9,10 +9,10 @@ ms.date: 05/04/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: efb32631c5ee1eedece6d2a06b94702b602ed418
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "86276114"
 ---
 ### <a name="which-regions-are-available"></a><a name="regions"></a>Mely régiók érhetők el?
@@ -43,7 +43,7 @@ Az RDP és az SSH egy használaton alapuló protokoll. A munkamenetek magas kiha
 
 ### <a name="what-features-are-supported-in-an-rdp-session"></a><a name="rdpfeaturesupport"></a>Milyen funkciók támogatottak egy RDP-munkamenetben?
 
-Jelenleg csak a szöveg másolása/beillesztése támogatott. Az olyan funkciók, mint a fájlmásolás, nem támogatottak. Kérjük, ossza meg velünk az új funkciókkal kapcsolatos visszajelzéseit az [Azure Bastion feedback oldalán](https://feedback.azure.com/forums/217313-networking?category_id=367303).
+Jelenleg csak a szövegek másolása és beillesztése támogatott. Az olyan funkciók, mint a fájlmásolás, nem támogatottak. Ossza meg velünk az új funkciókkal kapcsolatos visszajelzéseit az [Azure Bastion visszajelzési oldalán](https://feedback.azure.com/forums/217313-networking?category_id=367303).
 
 ### <a name="which-browsers-are-supported"></a><a name="browsers"></a>Mely böngészők támogatottak?
 

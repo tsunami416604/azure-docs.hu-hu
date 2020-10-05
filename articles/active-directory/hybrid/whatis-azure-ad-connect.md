@@ -12,10 +12,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 338f957d3e881a76b39b0b7c00288ae2ebf2be59
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90018611"
 ---
 # <a name="what-is-azure-ad-connect"></a>Mi az Azure AD Connect?
@@ -71,7 +71,7 @@ Részletes [használati metrikák](how-to-connect-health-adfs.md#usage-analytics
 ## <a name="license-requirements-for-using-azure-ad-connect-health"></a>A Azure AD Connect Health használatára vonatkozó licencfeltételek
 [!INCLUDE [active-directory-free-license.md](../../../includes/active-directory-p1-license.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Hardver és előfeltételek](how-to-connect-install-prerequisites.md) 
 - [Gyorsbeállítások](how-to-connect-install-express.md)

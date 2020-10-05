@@ -9,10 +9,10 @@ ms.service: security-center
 ms.custom: references_regions
 manager: rkarlin
 ms.openlocfilehash: 6649a8d470a75922aac423bf0b411163bdd79f71
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91449084"
 ---
 # <a name="introduction-to-azure-defender-for-key-vault"></a>A Key Vault Azure Defender bemutatása
@@ -48,7 +48,7 @@ A riasztások a Key Vault **Biztonság** lapján, az Azure Defender irányítóp
 > Az Azure Defender Key Vault riasztásokhoz való szimulálása érdekében kövesse az [Azure Key Vault veszélyforrások észlelésének érvényesítése Azure Security Centerban](https://techcommunity.microsoft.com/t5/azure-security-center/validating-azure-key-vault-threat-detection-in-azure-security/ba-p/1220336)című témakör utasításait.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebből a cikkből megtudhatta, hogyan Key Vault Azure Defendert.
 

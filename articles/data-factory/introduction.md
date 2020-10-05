@@ -10,10 +10,10 @@ ms.workload: data-services
 ms.topic: overview
 ms.date: 09/30/2019
 ms.openlocfilehash: 1840bf93cbca73e593465c999b416e7cbd7af201
-ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/08/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89536312"
 ---
 # <a name="what-is-azure-data-factory"></a>Mi az az Azure Data Factory?
@@ -24,13 +24,13 @@ A big data világában a nyers, rendezetlen adatok tárolása leggyakrabban rel�
 
 A big data esetében olyan szolgáltatásra van szükség, amely lehetővé teszi az irányítási és üzembe helyezési folyamatok számára, hogy ezt a hatalmas nyers adatmennyiséget a gyakorlatban használható üzleti elemzésekké alakítsák. Az Azure Data Factory egy ilyen, az összetett hibrid ETL-, ELT- és adatintegrációs projektek kezelésre szolgáló felügyelt felhőszolgáltatás.
 
-Képzeljünk el például egy játékokkal foglalkozó vállalatot, amely több petabájtnyi, a játékok által készített naplót gyűjt össze a felhőben. A vállalat e naplókat szeretné elemezni, hogy betekintést nyerhessen az ügyfelek preferenciáiba, demográfiai adataiba és felhasználói viselkedésébe. hogy ezek alapján azonosítsa az értékesítési és keresztértékesítési lehetőségeket, új funkciókat fejlesszen az üzleti növekedés elősegítése érdekében, és jobb felhasználói élményt nyújtson az ügyfeleinek.
+Képzeljünk el például egy játékfejlesztő vállalatot, amely több petabájtnyi, a játékok által készített naplót gyűjt össze a felhőben. A vállalat e naplókat szeretné elemezni, hogy betekintést nyerhessen az ügyfelek preferenciáiba, demográfiai adataiba és felhasználói viselkedésébe, hogy ezek alapján azonosítsa az értékesítési és keresztértékesítési lehetőségeket, új funkciókat fejlesszen az üzleti növekedés elősegítése érdekében, és jobb felhasználói élményt nyújtson az ügyfeleinek.
 
 A naplók elemzéséhez a vállalatnak a helyszíni adattárban tárolt referenciaadatokat kell felhasználnia, mint például az ügyféladatokat, a játékadatokat és a reklámkampány-adatokat. A vállalat úgy kívánja hasznosítani ezeket a helyszíni adattárakból származó adatokat, hogy azokat további, a felhőalapú adattárban lévő naplóadatokkal kombinálja. 
 
-Az elemzések kinyeréséhez a Felhőbeli Spark-fürt (Azure HDInsight) használatával szeretné feldolgozni az egyesített adatok feldolgozását, és az átalakított adatok közzétételét egy Felhőbeli adattárházba, például az Azure szinapszis Analyticsbe (korábban SQL Data Warehouse), hogy egyszerűen létrejöjjön egy jelentés. A vállalat automatizálni, illetve napi rendszerességgel monitorozni és kezelni kívánja ezt a munkafolyamatot. Ezen kívül végre is kívánja hajtani azt, ha fájlok kerülnek egy blobtárolóba.
+Az elemzések kinyeréséhez a Felhőbeli Spark-fürt (Azure HDInsight) használatával szeretné feldolgozni az egyesített adatok feldolgozását, és az átalakított adatok közzétételét egy Felhőbeli adattárházba, például az Azure szinapszis Analyticsbe (korábban SQL Data Warehouse), hogy egyszerűen létrejöjjön egy jelentés. A vállalat automatizálni, illetve napi rendszerességgel monitorozni és kezelni szeretné ezt a munkafolyamatot. Ezenkívül végre is szeretné hajtani, ha fájlok kerülnek egy blobtárolóba.
 
-Az Azure Data Factory az a platform, amely az ilyen adatforgatókönyvek esetében sikeresen használható. Ez a *FELHŐALAPÚ ETL-és adatintegrációs szolgáltatás, amely lehetővé teszi, hogy adatvezérelt munkafolyamatokat hozzon létre az adatáthelyezés előkészítéséhez és a nagy léptékű adatátalakításhoz*. Az Azure Data Factory segítségével létrehozhatók és ütemezhetők a különböző adattárolókból adatokat beolvasó adatvezérelt munkafolyamatok, Összetett ETL-folyamatokat hozhat létre, amelyek az adatok vizuálisan alakíthatók át adatfolyamatokkal vagy számítási szolgáltatások, például Azure HDInsight Hadoop, Azure Databricks és Azure SQL Database használatával. 
+Az Azure Data Factory az a platform, amely az ilyen adatforgatókönyvek esetében sikeresen használható. Ez a *FELHŐALAPÚ ETL-és adatintegrációs szolgáltatás, amely lehetővé teszi, hogy adatvezérelt munkafolyamatokat hozzon létre az adatáthelyezés előkészítéséhez és a nagy léptékű adatátalakításhoz*. Az Azure Data Factory segítségével létrehozhatók és ütemezhetők a különböző adattárolókból adatokat beolvasó adatvezérelt munkafolyamatok. Összetett ETL-folyamatokat hozhat létre, amelyek az adatok vizuálisan alakíthatók át adatfolyamatokkal vagy számítási szolgáltatások, például Azure HDInsight Hadoop, Azure Databricks és Azure SQL Database használatával. 
 
 Emellett közzéteheti az átalakított adatait olyan adattárakban is, mint például az Azure szinapszis Analytics for Business Intelligence-(BI-) alkalmazások. Végső soron az Azure Data Factory segítségével a nyers adatokat használható adattárakba rendezhetjük, így jobb üzleti döntéseket hozhatunk.
 
@@ -38,7 +38,7 @@ Emellett közzéteheti az átalakított adatait olyan adattárakban is, mint pé
 
 ## <a name="how-does-it-work"></a>Hogyan működik?
 
-Data Factory több összekapcsolt rendszert tartalmaz, amelyek teljes körű platformot biztosítanak az adatmérnökök számára.
+A Data Factory egymással összekapcsolt rendszerek sorozatát tartalmazza, amelyek teljes körű platformot biztosítanak az adatszakértők számára.
 
 ### <a name="connect-and-collect"></a>Csatlakozás és összegyűjtés
 
@@ -58,7 +58,7 @@ Ha inkább a kód átalakítását részesíti előnyben, az ADF támogatja a k�
 ### <a name="cicd-and-publish"></a>CI/CD és közzététel
 A Data Factory teljes körű támogatást nyújt az adatfolyamatok CI/CD-hez az Azure DevOps és a GitHub használatával. Ez lehetővé teszi az ETL-folyamatok fokozatos fejlesztését és továbbítását a végtermék közzététele előtt. Miután a nyers adatok át lettek alakítva üzleti használatra kész formába, feltöltheti azokat az Azure Data Warehouse-ba, az Azure SQL Database-be, az Azure CosmosDB-be vagy bármely olyan elemzési motorra, amelyre üzleti felhasználói intelligens üzleti eszközeikkel rámutathatnak.
 
-### <a name="monitor"></a>Monitor
+### <a name="monitor"></a>Figyelés
 Miután sikeresen kiépítette és üzembe helyezte az adatintegrációs folyamatot, amely üzleti értéket állít elő a feldolgozott adatokból, kövesse figyelemmel az ütemezett tevékenységek és folyamatok sikerességi arányát. A Azure Data Factory beépített támogatást nyújt a folyamat-figyeléshez Azure Monitor, API, PowerShell, Azure Monitor naplók és az Azure Portal található állapotadatok használatával.
 
 ## <a name="top-level-concepts"></a>Legfelső szintű fogalmak

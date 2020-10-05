@@ -10,10 +10,10 @@ ms.date: 03/19/2020
 ms.custom: devx-track-java
 ms.author: aahi
 ms.openlocfilehash: 2b3d4993406f150b2983d4d820f7d070b5de1e96
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87375604"
 ---
 Ezzel a rövid útmutatóval megkezdheti a Java-hoz készült Bing Video Search ügyféloldali kódtáraval kapcsolatos hírek keresését. Habár a Bing Video Search REST API kompatibilis a legtöbb programozási nyelvvel, az ügyféloldali kódtár egyszerű módszert kínál a szolgáltatás integrálására az alkalmazásokba. A minta forráskódja megtalálható a [githubon](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingVideoSearch), és további megjegyzéseket és funkciókat is tartalmaz.
@@ -158,7 +158,7 @@ Hozzon létre egy új Java-projektet a kedvenc IDE-környezetében vagy szerkesz
 > [!div class="nextstepaction"]
 > [Egyoldalas Webalkalmazás létrehozása](../../tutorial-bing-video-search-single-page-app.md)
 
-## <a name="see-also"></a>További információ 
+## <a name="see-also"></a>Lásd még 
 
 * [Mi az a Bing Video Search API?](../../overview.md)
 * [A kognitív szolgáltatások .NET SDK-minták](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/tree/master/BingSearchv7)

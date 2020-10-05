@@ -11,10 +11,10 @@ ms.topic: overview
 ms.date: 09/15/2020
 ms.author: ambapat
 ms.openlocfilehash: 8ac5b0976e677cc48fb3fe47c50797b07acdbc44
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91708866"
 ---
 # <a name="about-keys"></a>Információ a kulcsokról
@@ -215,7 +215,7 @@ A következő engedélyek adhatók meg felhasználónkénti vagy egyszerű szolg
 
 A kulcsok használatával kapcsolatos további információkért tekintse meg [a Key Vault REST API-referenciával](/rest/api/keyvault)foglalkozó témakörben található főbb műveleteket. Az engedélyek létrehozásával kapcsolatos információkért lásd: tárolók [– Létrehozás vagy frissítés](/rest/api/keyvault/vaults/createorupdate) és tárolók [– frissítési hozzáférési szabályzat](/rest/api/keyvault/vaults/updateaccesspolicy). 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - [Tudnivalók a Key Vaultról](../general/overview.md)
 - [A Managed HSM ismertetése](../managed-hsm/overview.md)
 - [Információ a titkos kulcsokról](../secrets/about-secrets.md)

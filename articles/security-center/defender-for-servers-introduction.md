@@ -8,10 +8,10 @@ ms.topic: overview
 ms.service: security-center
 manager: rkarlin
 ms.openlocfilehash: 8757399329f3a9bd9f4d7b914b12b2a0f7e85603
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91448293"
 ---
 # <a name="introduction-to-azure-defender-for-servers"></a>Bevezetés az Azure Defender for Servers szolgáltatásba
@@ -29,32 +29,32 @@ Az Azure Defender for Servers szolgáltatáshoz biztosított fenyegetések észl
 
 - **Biztonsági rések felmérése virtuális gépekhez** – a Azure Security Center által tartalmazott sebezhetőségi képolvasót a Qualys működteti. 
 
-    A Qualys "Scanner az Azure-Virtual Machines biztonsági réseinak valós idejű azonosítására szolgáló vezető eszközök egyike. Nincs szüksége Qualys-licencre, vagy akár Qualys-fiókra is – minden a Security Centeron belül zökkenőmentesen kezelhető. [További információ](deploy-vulnerability-assessment-vm.md).
+    A Qualys "Scanner az Azure-Virtual Machines biztonsági réseinak valós idejű azonosítására szolgáló vezető eszközök egyike. Nincs szüksége Qualys-licencre, vagy akár Qualys-fiókra is – minden a Security Centeron belül zökkenőmentesen kezelhető. [További információk](deploy-vulnerability-assessment-vm.md).
 
 - Igény szerinti **(JIT)** virtuálisgép-hozzáférés – a fenyegetést kezelő szereplők aktívan vadásznak a nyílt felügyeleti portok, például az RDP vagy az SSH számára elérhető gépekről. Az összes virtuális gép potenciális célpont a támadásoknak. Ha egy virtuális gép biztonsága sikeres, a rendszer belépési pontként használja a környezetében lévő további erőforrások támadásához.
 
-    Ha engedélyezi az Azure Defender for Servers-t, a virtuális gépek igény szerinti elérésével zárolhatja a bejövő forgalmat a virtuális gépekre, így csökkentve a támadásoknak való kitettséget, miközben könnyű hozzáférést biztosít a virtuális gépekhez, amikor szükséges. [További információ](just-in-time-explained.md).
+    Ha engedélyezi az Azure Defender for Servers-t, a virtuális gépek igény szerinti elérésével zárolhatja a bejövő forgalmat a virtuális gépekre, így csökkentve a támadásoknak való kitettséget, miközben könnyű hozzáférést biztosít a virtuális gépekhez, amikor szükséges. [További információk](just-in-time-explained.md).
 
 - A fájlok **integritásának figyelése (FIM)** – a fájl integritásának figyelése (FIM), más néven a változások figyelése, megvizsgálja az operációs rendszer, az alkalmazás szoftvere és mások által a támadásra utaló módosításokat. A rendszer összehasonlító módszert használ annak megállapítására, hogy a fájl aktuális állapota eltér-e a fájl legutóbbi vizsgálatával. Ezt az összehasonlítást kihasználva megállapíthatja, hogy érvényes vagy gyanús módosítások történtek-e a fájlokban.
 
-    Ha engedélyezi az Azure Defender for Servers használatát, a FIM használatával ellenőrizheti a Windows-fájlok, a Windows-beállításjegyzékek és a Linux-fájlok integritását. [További információ](security-center-file-integrity-monitoring.md).
+    Ha engedélyezi az Azure Defender for Servers használatát, a FIM használatával ellenőrizheti a Windows-fájlok, a Windows-beállításjegyzékek és a Linux-fájlok integritását. [További információk](security-center-file-integrity-monitoring.md).
 
 - **Adaptív alkalmazás-vezérlőelemek (AAC)** – az adaptív alkalmazások intelligens és automatizált megoldást biztosítanak a gépek ismert biztonságos alkalmazásainak engedélyezési listájához.
 
-    Ha engedélyezte és konfigurálta az adaptív alkalmazások vezérlőit, akkor biztonsági riasztásokat fog kapni, ha bármely alkalmazás a biztonságosként definiált beállításoktól eltérő módon fut. [További információ](security-center-adaptive-application.md).
+    Ha engedélyezte és konfigurálta az adaptív alkalmazások vezérlőit, akkor biztonsági riasztásokat fog kapni, ha bármely alkalmazás a biztonságosként definiált beállításoktól eltérő módon fut. [További információk](security-center-adaptive-application.md).
 
 - **Adaptív hálózat megerősítése (** NSG) – a hálózati biztonsági csoportok (-ek) alkalmazása az erőforrások felé irányuló és onnan érkező forgalom szűrésére, javítja a hálózat biztonsági helyzetét. Azonban továbbra is előfordulhatnak olyan esetek, amikor a NSG keresztül áramló tényleges forgalom a definiált NSG-szabályok részhalmaza. Ezekben az esetekben a NSG-szabályoknak a tényleges forgalmi minták alapján történő megerősítése révén a biztonsági helyzet további javítása is megvalósítható.
 
-    Az adaptív hálózat megerősítése ajánlásokat biztosít a NSG-szabályok további megerősítéséhez. Egy gépi tanulási algoritmust használ, amely a tényleges forgalom, az ismert megbízható konfiguráció, a veszélyforrások felderítése és más, a biztonsággal kapcsolatos mutatók szempontjából tényezőket tartalmaz, és javaslatokat tesz arra, hogy csak adott IP-/port-rekordok származó forgalmat engedélyezzen. [További információ](security-center-adaptive-network-hardening.md).
+    Az adaptív hálózat megerősítése ajánlásokat biztosít a NSG-szabályok további megerősítéséhez. Egy gépi tanulási algoritmust használ, amely a tényleges forgalom, az ismert megbízható konfiguráció, a veszélyforrások felderítése és más, a biztonsággal kapcsolatos mutatók szempontjából tényezőket tartalmaz, és javaslatokat tesz arra, hogy csak adott IP-/port-rekordok származó forgalmat engedélyezzen. [További információk](security-center-adaptive-network-hardening.md).
 
-- **Integráció a Microsoft Defender komplex veszélyforrások elleni védelemmel (ATP) (csak Windows)** – az Azure Defender a Microsoft Defender komplex veszélyforrások elleni védelem (ATP) szolgáltatással integrálható. Együttesen átfogó végpont-észlelési és-reagálási (EDR) képességeket biztosítanak. [További információ](security-center-wdatp.md).
+- **Integráció a Microsoft Defender komplex veszélyforrások elleni védelemmel (ATP) (csak Windows)** – az Azure Defender a Microsoft Defender komplex veszélyforrások elleni védelem (ATP) szolgáltatással integrálható. Együttesen átfogó végpont-észlelési és-reagálási (EDR) képességeket biztosítanak. [További információk](security-center-wdatp.md).
 
     > [!IMPORTANT]
     > A Microsoft Defender ATP-érzékelő automatikusan engedélyezve van a Security Center-t használó Windows-kiszolgálókon.
 
     Ha a Microsoft Defender ATP fenyegetést észlel, riasztást indít el. A riasztás Security Center jelenik meg. A Security Center a Microsoft Defender ATP-konzolt is elvégezheti, és részletes vizsgálatot végezhet a támadás hatókörének felderítése érdekében. További információ a Microsoft Defender ATP szolgáltatással kapcsolatban: kiszolgálók beléptetése [a Microsoft DEFENDER ATP szolgáltatásba](https://docs.microsoft.com/windows/security/threat-protection/microsoft-defender-atp/configure-server-endpoints).
 
-- A **Docker-gazdagép megerősítése** – Azure Security Center azonosítja a IaaS Linux rendszerű virtuális gépeken üzemeltetett nem felügyelt tárolókat, illetve a Docker-tárolókat futtató más Linux-gépeket. Security Center folyamatosan elemzi a tárolók konfigurációit. Ezután összehasonlítja azokat a Center for Internet Security (CIS) Docker-teljesítményteszttel. Security Center tartalmazza a CIS Docker-teljesítményteszt teljes szabályait, és riasztást küld, ha a tárolók nem elégítik ki a vezérlőelemek egyikét sem. [További információ](harden-docker-hosts.md).
+- A **Docker-gazdagép megerősítése** – Azure Security Center azonosítja a IaaS Linux rendszerű virtuális gépeken üzemeltetett nem felügyelt tárolókat, illetve a Docker-tárolókat futtató más Linux-gépeket. Security Center folyamatosan elemzi a tárolók konfigurációit. Ezután összehasonlítja azokat a Center for Internet Security (CIS) Docker-teljesítményteszttel. Security Center tartalmazza a CIS Docker-teljesítményteszt teljes szabályait, és riasztást küld, ha a tárolók nem elégítik ki a vezérlőelemek egyikét sem. [További információk](harden-docker-hosts.md).
 
 - **Fájlok nélküli támadás észlelése (csak Windows)** – a fájl nélküli támadások rosszindulatú hasznos adatokat szúrnak be a memóriába a lemezes ellenőrzési módszerek észlelése érdekében. A támadó adattartalma a feltört folyamatok memóriájában marad, és számos kártékony tevékenységet hajt végre.
 

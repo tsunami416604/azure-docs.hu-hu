@@ -16,10 +16,10 @@ ms.date: 04/30/2020
 ms.author: allensu
 ms.custom: mvc
 ms.openlocfilehash: af90166b688dee104e7bda18a88a2fe7c98f657b
-ms.sourcegitcommit: 309a9d26f94ab775673fd4c9a0ffc6caa571f598
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/09/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "82996260"
 ---
 # <a name="quickstart-create-an-azure-cdn-profile-and-endpoint"></a>Gyors útmutató: Azure CDN-profil és -végpont létrehozása
@@ -33,7 +33,7 @@ Ebben a rövid útmutatóban egy új CDN-profil létrehozásával engedélyezi a
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
-Jelentkezzen be az [Azure Portalba](https://portal.azure.com) az Azure-fiókjával.
+Jelentkezzen be az [Azure Portalra](https://portal.azure.com) az Azure-fiókjával.
 
 [!INCLUDE [cdn-create-profile](../../includes/cdn-create-profile.md)]
 
@@ -53,12 +53,12 @@ Miután létrehozott egy CDN-profilt, a használatával végpontot hozhat létre
 
     | Beállítás | Érték |
     | ------- | ----- |
-    | **Név** | Adja meg a *CDN-Endpoint-123* értéket a végponti állomásnévhez. Ennek a névnek globálisan egyedinek kell lennie az Azure-ban. Ha már használatban van, adjon meg másik nevet. A rendszer ezt a nevet használja a gyorsítótárazott erőforrások eléréséhez a tartomány _ &lt;végpontjának neve&gt;_. azureedge.net.|
+    | **Név** | Adja meg a *CDN-Endpoint-123* értéket a végponti állomásnévhez. Ennek a névnek globálisan egyedinek kell lennie az Azure-ban. Ha már használatban van, adjon meg másik nevet. A rendszer ezt a nevet használja a gyorsítótárazott erőforrások eléréséhez a tartomány _ &lt; végpontjának neve &gt; _. azureedge.net.|
     | **Forrás típusa** | Válassza a **tárterület**lehetőséget. | 
     | **Forrás gazdaneve** | Válassza ki a legördülő listából a használni kívánt Azure Storage-fiók állomásnevét, például *cdnstorageacct123.blob.Core.Windows.net*. |
     | **Forrás elérési útvonala** | Hagyja üresen. |
     | **Forrás állomásfejléce** | Hagyja meg az alapértelmezett értéket (amely a Storage-fiók állomásneve). |  
-    | **Protocol (Protokoll)** | Hagyja bejelölve az alapértelmezett **HTTP-** és **HTTPS-** beállításokat. |
+    | **Protokoll** | Hagyja bejelölve az alapértelmezett **HTTP-** és **HTTPS-** beállításokat. |
     | **Forrásport** | Hagyja meg az alapértelmezett portértéket. | 
     | **Optimalizálva a következőre:** | Hagyja meg az alapértelmezett kijelölést, az **Általános webes kézbesítést**. |
 

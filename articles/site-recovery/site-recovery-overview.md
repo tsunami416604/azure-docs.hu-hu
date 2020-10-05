@@ -5,10 +5,10 @@ ms.topic: overview
 ms.date: 03/17/2020
 ms.custom: MVC
 ms.openlocfilehash: 2b8268a47a141bb7254571a762bb9603e1a31b04
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "86135225"
 ---
 # <a name="about-site-recovery"></a>Tudnivalók a Site Recovery szolgáltatásról
@@ -39,11 +39,11 @@ A Site Recovery a következők replikációját képes kezelni:
 **RTO- és RPO-célok** | A vállalati korlátokon belül tartja a helyreállítási idők célkitűzéseit (recovery time objectives, RTO-k) és a helyreállítási pont célkitűzéseit (recovery point objectives, RPO-k). A Site Recovery folyamatos replikációt biztosít Azure és VMware virtuális gépek esetén, és csupán 30 másodperces replikációs frekvenciát Hyper-V esetén. Az RTO tovább csökkenthető az [Azure Traffic Managerrel](https://azure.microsoft.com/blog/reduce-rto-by-using-azure-traffic-manager-with-azure-site-recovery/) való integrációval.
 **Alkalmazás-konzisztencia feladatátvétel esetén** | Alkalmazáskonzisztens pillanatképekkel rendelkező helyreállítási pontokat használhat a replikáláshoz. Ezek a pillanatképek a lemez adatait, a memóriában lévő összes adatot és az összes folyamatban lévő tranzakciót is rögzítik.
 **Megszakítás nélküli tesztelés** | Egyszerűen végrehajthat vészhelyreállítási próbákat anélkül, hogy ez hatással lenne a folyamatban lévő replikációra.
-**Rugalmas feladatátvételek** | A várt kimaradások esetében a nulla adatvesztéssel rendelkező tervezett feladatátvételeket is futtathatja. Vagy nem tervezett feladatátvétel minimális adatvesztéssel, a replikálás gyakorisága alapján, váratlan katasztrófák esetén. Amint az elsődleges hely megint elérhetővé válik, egyszerűen visszaadhatja a feladatokat.
+**Rugalmas feladatátvétel** | A várt kimaradások esetében a nulla adatvesztéssel rendelkező tervezett feladatátvételeket is futtathatja. Vagy nem tervezett feladatátvétel minimális adatvesztéssel, a replikálás gyakorisága alapján, váratlan katasztrófák esetén. Amint az elsődleges hely megint elérhetővé válik, egyszerűen visszaadhatja a feladatokat.
 **Testre szabott helyreállítási tervek** | A helyreállítási tervek segítségével testre szabhatja és elvégezheti a több virtuális gépen futó többrétegű alkalmazások feladatátvételét és helyreállítását. Csoportosíthatja a gépeket a helyreállítási terveken belül, valamint opcionálisan szkripteket és manuális műveleteket vehet fel. A helyreállítási tervek integrálhatók az Azure Automation-runbook használatával.
 **BCDR-integráció** | A Site Recovery más BCDR-technológiákkal integrálható. A Site Recovery segítségével megvédheti például a vállalati számítási feladatok SQL Server-háttérrendszerét, ideértve az SQL Server AlwaysOn natív támogatását is a rendelkezésre állási csoportok feladatátvételének kezelésében.
 **Azure Automation-integráció** | Az Azure Automation-könyvtár gazdag, éles használatra kész és alkalmazásspecifikus parancsfájlokat tartalmazó automatizálási könyvtár, amely letölthető, és beépíthető a Site Recovery szolgáltatásba.
-**Hálózati integráció** | A Site Recovery az Azure-t integrálja az alkalmazások hálózatkezeléséhez. Például az IP-címek foglalásához konfigurálja a terheléselosztást, és használja az Azure Traffic Managert a hatékony hálózati hálózatváltást.
+**Hálózatintegráció** | A Site Recovery az Azure-t integrálja az alkalmazások hálózatkezeléséhez. Például az IP-címek foglalásához konfigurálja a terheléselosztást, és használja az Azure Traffic Managert a hatékony hálózati hálózatváltást.
 
 ## <a name="what-can-i-replicate"></a>Miket replikálhatok?
 
@@ -54,7 +54,7 @@ A Site Recovery a következők replikációját képes kezelni:
 **Replikált gépek** | Áttekintheti az [Azure-beli virtuális gépeknek](azure-to-azure-support-matrix.md#replicated-machine-operating-systems), a [helyszíni VMware virtuális gépeknek és fizikai kiszolgálóknak](vmware-physical-azure-support-matrix.md#replicated-machines), valamint a [helyszíni Hyper-V virtuális gépeknek](hyper-v-azure-support-matrix.md#replicated-vms) a replikációs követelményeit.
 **Számítási feladatok** | A támogatott replikációs gépeken futó bármilyen számítási feladat replikálható. És a Site Recovery csapata [számos](site-recovery-workload.md#workload-summary)alkalmazáshoz adott meg alkalmazásspecifikus teszteket.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ a számítási [feladatok támogatásáról](site-recovery-workload.md).
 - Első lépések: [Azure-beli virtuális gép replikálása régiók között](azure-to-azure-quickstart.md).

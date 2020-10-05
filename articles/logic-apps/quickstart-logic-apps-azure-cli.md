@@ -8,10 +8,10 @@ ms.topic: quickstart
 ms.custom: mvc
 ms.date: 07/30/2020
 ms.openlocfilehash: e492a5f0afdfc2087e5719df65221d08db0a2e77
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87499551"
 ---
 # <a name="quickstart-create-and-manage-logic-apps-using-the-azure-cli"></a>Gyors útmutató: logikai alkalmazások létrehozása és kezelése az Azure CLI használatával
@@ -25,7 +25,7 @@ Ez a rövid útmutató bemutatja, hogyan hozhat létre és kezelhet Logic apps-t
 
 * Aktív előfizetéssel rendelkező Azure-fiók. Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Az [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) telepítve van a helyi számítógépen.
-* A számítógépre telepített [Logic apps Azure CLI-bővítmény](/cli/azure/azure-cli-extensions-list?view=azure-cli-latest) . A bővítmény telepítéséhez használja a következő parancsot:`az extension add --name logic`
+* A számítógépre telepített [Logic apps Azure CLI-bővítmény](/cli/azure/azure-cli-extensions-list?view=azure-cli-latest) . A bővítmény telepítéséhez használja a következő parancsot: `az extension add --name logic`
 * Egy [Azure-erőforráscsoport](#example---create-resource-group) , amelyben létre kívánja hozni a logikai alkalmazást.
 
 ### <a name="prerequisite-check"></a>Előfeltételek ellenőrzése
@@ -90,7 +90,7 @@ A parancsnak tartalmaznia kell a következő [szükséges paramétereket](/cli/a
 | --------- | ----- | ----------- |
 | Munkafolyamat-definíció | `--definition` | Egy JSON-fájl a logikai alkalmazás [munkafolyamatának definíciójában](#workflow-definition). |
 | Hely | `--location -l` | Az az Azure-régió, amelyben a logikai alkalmazás található. |
-| Name | `--name -n` | A logikai alkalmazás neve. A név csak betűket, számokat, kötőjeleket () `-` , aláhúzásokat ( `_` ), zárójeleket ( `()` ) és pontokat ( `.` ) tartalmazhat. A névnek egyedinek kell lennie régiók között is. |
+| Név | `--name -n` | A logikai alkalmazás neve. A név csak betűket, számokat, kötőjeleket () `-` , aláhúzásokat ( `_` ), zárójeleket ( `()` ) és pontokat ( `.` ) tartalmazhat. A névnek egyedinek kell lennie régiók között is. |
 | Erőforráscsoport neve | `--resource-group -g` | Az [Azure-erőforráscsoport](../azure-resource-manager/management/overview.md) , amelyben létre szeretné hozni a logikai alkalmazást. [Hozzon létre egy erőforráscsoportot](#example---create-resource-group) , mielőtt elkezdené, ha még nem rendelkezik ilyennel a logikai alkalmazáshoz. |
 
 További [választható paramétereket](/cli/azure/ext/logic/logic/workflow?view=azure-cli-latest#ext-logic-az-logic-workflow-create-optional-parameters) is beállíthat a logikai alkalmazás hozzáférés-vezérlésének, végpontjának, integrációs fiókjának, integrációs szolgáltatási környezetének, állapotának és erőforrás-címkének konfigurálásához.

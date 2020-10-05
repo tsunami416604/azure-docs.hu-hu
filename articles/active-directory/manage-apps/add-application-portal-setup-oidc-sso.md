@@ -11,10 +11,10 @@ ms.workload: identity
 ms.date: 07/01/2020
 ms.author: kenwith
 ms.openlocfilehash: 0f3073214fb47de006c6d9ebb07f443f3e63a4f3
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91349003"
 ---
 # <a name="quickstart-set-up-oidc-based-single-sign-on-sso-for-an-application-in-your-azure-active-directory-azure-ad-tenant"></a>Gyors útmutató: OIDC-alapú egyszeri bejelentkezés (SSO) beállítása egy alkalmazáshoz a Azure Active Directory (Azure AD) bérlőben
@@ -54,7 +54,7 @@ Egyszeri bejelentkezés beállítása egy alkalmazáshoz:
 
 3. A sikeres hitelesítés után egy párbeszédpanel jelenik meg, amely a rendszergazdai jóváhagyást kéri. Válassza **a jóváhagyva lehetőséget a szervezet nevében** , majd válassza az **elfogadás**lehetőséget. 
 
-    :::image type="content" source="media/add-application-portal-setup-oidc-sso/consent.png" alt-text="Képernyőfelvétel: az alkalmazás beleegyezési képernyője." lightbox="media/add-application-portal-setup-oidc-sso/consent.png":::
+    :::image type="content" source="media/add-application-portal-setup-oidc-sso/consent.png" alt-text="A képernyőképen az egyszeri bejelentkezési lehetőség és a regisztrációs gomb látható." lightbox="media/add-application-portal-setup-oidc-sso/consent.png":::
 
 4. A rendszer hozzáadja az alkalmazást a bérlőhöz, és megjelenik az alkalmazás kezdőlapja.
 
@@ -67,7 +67,7 @@ Egyszeri bejelentkezés beállítása egy alkalmazáshoz:
 
 Ha elkészült ezzel a rövid útmutatóval, érdemes törölni az alkalmazást a tesztelési bérlő tisztításához. Az alkalmazás törlését a sorozat utolsó rövid útmutatója tartalmazza. [alkalmazás törlése](delete-application-portal.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A következő cikkből megtudhatja, hogyan törölhet egy alkalmazást.
 > [!div class="nextstepaction"]

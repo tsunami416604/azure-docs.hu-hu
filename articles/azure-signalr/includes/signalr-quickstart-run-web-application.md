@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 author: anthonychu
 ms.service: signalr
 ms.topic: include
@@ -8,10 +8,10 @@ ms.date: 03/04/2019
 ms.author: antchu
 ms.custom: include file
 ms.openlocfilehash: 2af9c1dfd13d3aeafa7cf1ac76537117ecc15aff
-ms.sourcegitcommit: d118ad4fb2b66c759b70d4d8a18e6368760da3ad
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/02/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "84317781"
 ---
 ## <a name="run-the-web-application"></a>A webalkalmazás futtatása
@@ -19,7 +19,7 @@ ms.locfileid: "84317781"
 1. Az ügyfelek tesztelésének egyszerűbbé tételéhez nyissa meg a böngészőt a mintául szolgáló egyoldalas webalkalmazásban [https://azure-samples.github.io/signalr-service-quickstart-serverless-chat/demo/chat-v2/](https://azure-samples.github.io/signalr-service-quickstart-serverless-chat/demo/chat-v2/) . 
 
     > [!NOTE]
-    > A HTML-fájl forrása a következő helyen található: [/docs/demo/chat-v2/index.html](https://github.com/Azure-Samples/signalr-service-quickstart-serverless-chat/blob/master/docs/demo/chat-v2/index.html). Ha pedig saját maga is szeretné üzemeltetni a HTML-t, indítson el egy helyi HTTP-kiszolgálót, például a [http-Servert](https://www.npmjs.com/package/http-server) a */docs/demo/chat-v2* könyvtárban. Győződjön meg arról, hogy a forrás hozzá van adva a `CORS` *Local. Settings. JSON* fájlhoz a mintához hasonló beállításhoz.
+    > A HTML-fájl forrása a következő helyen található: [/docs/demo/chat-v2/index.html](https://github.com/Azure-Samples/signalr-service-quickstart-serverless-chat/blob/master/docs/demo/chat-v2/index.html). Ha pedig saját maga is szeretné üzemeltetni a HTML-t, indítson el egy helyi HTTP-kiszolgálót, például a [http-Servert](https://www.npmjs.com/package/http-server) a */docs/demo/chat-v2* könyvtárban. Győződjön meg arról, hogy a forrás hozzá van adva a `CORS` *local.settings.js* a mintához hasonló beállításhoz.
     > 
     > ```javascript
     > "Host": {

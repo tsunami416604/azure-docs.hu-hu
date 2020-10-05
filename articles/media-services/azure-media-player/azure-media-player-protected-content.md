@@ -8,10 +8,10 @@ ms.topic: overview
 ms.date: 04/20/2020
 ms.custom: devx-track-js
 ms.openlocfilehash: 83f144c06c23f3ab5507e3561be4a12350e20a42
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91329686"
 ---
 # <a name="protected-content"></a>Védett tartalom #
@@ -84,6 +84,6 @@ vagy több DRM-mel
 > [!IMPORTANT]
 > A lejátszóba átadott jogkivonat biztonságos tartalomra van kialakítva, és csak hitelesített felhasználók számára használható. Feltételezzük, hogy az alkalmazás SSL-t vagy más biztonsági mértéket használ. Emellett a végfelhasználónak megbízhatónak kell lennie, hogy ne assummed a jogkivonatot; Ha ez nem igaz, vonja be biztonsági szakértőit.
 
-## <a name="next-steps"></a>Következő lépések ##
+## <a name="next-steps"></a>További lépések ##
 
 - [Azure Media Player rövid útmutató](azure-media-player-quickstart.md)

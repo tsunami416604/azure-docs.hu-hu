@@ -7,10 +7,10 @@ ms.topic: overview
 ms.date: 9/22/2020
 ms.author: amgowda
 ms.openlocfilehash: b388b8efb7d993baa243975dbf499576246f3185
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91000977"
 ---
 # <a name="enclave-aware-containers"></a>Enklávé-Aware tárolók
@@ -43,7 +43,7 @@ A bizalmas konzorciumi keretrendszer (CCF) egy nyílt forráskódú keretrendsze
 
 Ismerkedjen meg az Azure bizalmas számítástechnikai és [a CCF használatába](https://github.com/Microsoft/CCF)
 
-### <a name="confidential-inferencing-onnx-runtime"></a>Bizalmas következtetések ONNX futtatókörnyezete
+### <a name="confidential-inferencing-onnx-runtime"></a>Bizalmas származtatású ONNX Runtime
 
 A nyílt forráskódú enklávé-alapú ONNX-futtatókörnyezet biztonságos csatornát hoz létre az ügyfél és a következtetés szolgáltatás között, így biztosítva, hogy sem a kérés, sem a válasz nem hagyhatja el a biztonságos enklávét. 
 

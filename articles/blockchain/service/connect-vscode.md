@@ -5,10 +5,10 @@ ms.date: 04/22/2020
 ms.topic: quickstart
 ms.reviewer: caleteet
 ms.openlocfilehash: 8b502966317c5d07e89de4ae70ff72b899e963e6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "82084838"
 ---
 # <a name="quickstart-use-visual-studio-code-to-connect-to-an-azure-blockchain-service-consortium-network"></a>Gyors útmutató: Azure Blockchain Service Consortium-hálózathoz való kapcsolódás a Visual Studio Code használatával
@@ -22,17 +22,17 @@ Ebben a rövid útmutatóban a Ethereum Visual Studio Code (VS Code) bővítmén
 * Teljes rövid útmutató [: blockchain-tag létrehozása a Azure Portal vagy a](create-member.md) gyors útmutató [: Azure blockchain Service Blockchain-tag létrehozása az Azure CLI használatával](create-member-cli.md)
 * [Visual Studio Code](https://code.visualstudio.com/Download)
 * [Az Azure Blockchain Development Kit for Ethereum bővítmény](https://marketplace.visualstudio.com/items?itemName=AzBlockchain.azure-blockchain)
-* [Node. js 10.15. x vagy újabb](https://nodejs.org)
+* [Node.js 10.15. x vagy újabb](https://nodejs.org)
 * [Git 2.10. x vagy újabb](https://git-scm.com)
-* [Python-2.7.15](https://www.python.org/downloads/release/python-2715/) Adja hozzá a Python. exe fájlt az elérési úthoz. Ahhoz, hogy a Python-verzió 2.7.15 az Ön útvonalán, az Azure Blockchain Development Kit-nek kell lennie.
+* [Python-2.7.15](https://www.python.org/downloads/release/python-2715/) python.exe hozzáadása az elérési úthoz. Ahhoz, hogy a Python-verzió 2.7.15 az Ön útvonalán, az Azure Blockchain Development Kit-nek kell lennie.
 * [Szarvasgomba 5.0.0](https://www.trufflesuite.com/docs/truffle/getting-started/installation)
 * [Ganache CLI-6.0.0](https://github.com/trufflesuite/ganache-cli)
 
 Windows rendszeren a Node-GYP modulhoz egy telepített C++ fordító szükséges. Használhatja az MSBuild-eszközöket:
 
-* Ha a Visual Studio 2017 telepítve van, konfigurálja a NPM az MSBuild-eszközök használatára a paranccsal`npm config set msvs_version 2017 -g`
+* Ha a Visual Studio 2017 telepítve van, konfigurálja a NPM az MSBuild-eszközök használatára a paranccsal `npm config set msvs_version 2017 -g`
 * Ha a Visual Studio 2019 telepítve van, állítsa be az MS Build Tools elérési útját a NPM. Például: `npm config set msbuild_path "C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\MSBuild\Current\Bin\MSBuild.exe"`
-* Ellenkező esetben telepítse a különálló, vagy Build eszközöket egy emelt szintű `npm install --global windows-build-tools` *Futtatás rendszergazdaként* parancs-rendszerhéj használatával.
+* Ellenkező esetben telepítse a különálló, vagy Build eszközöket `npm install --global windows-build-tools` egy emelt szintű *Futtatás rendszergazdaként* parancs-rendszerhéj használatával.
 
 További információ a Node-GYP-ről: [Node-GYP adattár a githubon](https://github.com/nodejs/node-gyp).
 

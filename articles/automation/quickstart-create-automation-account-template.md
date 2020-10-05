@@ -14,10 +14,10 @@ ms.date: 07/23/2020
 ms.author: magoedte
 ms.custom: mvc,subject-armqs
 ms.openlocfilehash: 441e53123512a9611f9568edccfd40a3e17c981f
-ms.sourcegitcommit: 420c30c760caf5742ba2e71f18cfd7649d1ead8a
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "89055430"
 ---
 # <a name="quickstart-create-an-automation-account-by-using-arm-template"></a>Rövid útmutató: Automation-fiók létrehozása ARM-sablon használatával
@@ -120,7 +120,7 @@ Ha még nem Azure Automation és Azure Monitor, fontos, hogy megértse a követk
 
 Ha már nincs szüksége rájuk, válassza le az Automation-fiókot a Log Analytics munkaterületről, majd törölje az Automation-fiókot és-munkaterületet.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban létrehozott egy Automation-fiókot, egy Log Analytics munkaterületet, és összekapcsolta őket egymással.
 

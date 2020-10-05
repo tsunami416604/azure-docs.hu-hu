@@ -11,10 +11,10 @@ ms.topic: overview
 ms.date: 10/02/2020
 ms.custom: seodec18
 ms.openlocfilehash: fa0416db440e6433829b8077b6988eeaa6a596ad
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91667061"
 ---
 # <a name="what-is-azure-time-series-insights-gen2"></a>Mi az Azure Time Series Insights Gen2
@@ -87,7 +87,7 @@ Ezeknek a kulcsfontosságú ipari IoT képességeknek a bevezetésével a Azure 
 | Bővíthetőség és integráció | Az Power BI Connector integrációja közvetlenül a Time Series Explorer felhasználói felületén érhető el az **exportálási** lehetőséggel, így az ügyfelek a felhasználói élményben létrehozott idősorozat-lekérdezéseket közvetlenül a Power bi asztalra, a más bi Analytics szolgáltatással pedig az idősorozat-diagramokat is megtekinthetik. Ez megnyitja az ajtót egy új forgatókönyvnek az olyan ipari IoT vállalatok számára, akik befektettek a Power BIba a különböző adatforrásokból, például a IoT-sorozatokból származó elemzések egyetlen paneljét biztosítva. |
 | Az Azure Time Series Insights Gen2 platformra épülő egyéni alkalmazások | Azure Time Series Insights Gen2 támogatja a [JavaScript SDK](https://github.com/microsoft/tsiclient/blob/master/docs/API.md)-t. Az SDK sokoldalú vezérlőket és egyszerűsített hozzáférést biztosít a lekérdezésekhez. Az SDK használatával egyéni IoT-alkalmazásokat hozhat létre Azure Time Series Insights Gen2, hogy megfeleljen az üzleti igényeinek. A Azure Time Series Insights Gen2- [lekérdezési API-kat](./concepts-query-overview.md) közvetlenül is használhatja az egyéni IoT-alkalmazásokba való adattovábbításhoz. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ismerkedés a Azure Time Series Insights Gen2:
 

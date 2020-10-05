@@ -6,12 +6,12 @@ ms.author: pepogors
 author: peterpogorski
 ms.date: 09/28/2020
 ms.custom: references_regions
-ms.openlocfilehash: 73815e793357dd38244dd429f9056c4c6a0bfff1
-ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
+ms.openlocfilehash: 77d7b3fba62fb9f059df97c4f7fae99db783f3f0
+ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91410331"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91728998"
 ---
 # <a name="service-fabric-managed-clusters-frequently-asked-questions"></a>Service Fabric felügyelt fürtök gyakran ismételt kérdései
 
@@ -41,7 +41,7 @@ Az SLA nem változik az aktuális Service Fabric erőforrás-modellből.
 
 ### <a name="what-is-the-difference-between-a-basic-and-standard-sku-cluster"></a>Mi a különbség az alapszintű és a standard SKU-fürt között?
 
-Egy alapszintű SKU-fürt azt jelenti, hogy a konfigurációk többségét a Service Fabric erőforrás-szolgáltató biztosítja. Az alapszintű SKU-fürtök tesztelésre és üzem előtti környezetekre való használatra készültek. A standard SKU-fürtök lehetővé teszik a felhasználók számára, hogy az igényeiknek megfelelő módon konfigurálja a fürtöt. További információ: [Service Fabric felügyelt fürt SKU](overview-managed-cluster.md#service-fabric-managed-cluster skus.md) -ban további részleteket.
+Egy alapszintű SKU-fürt azt jelenti, hogy a konfigurációk többségét a Service Fabric erőforrás-szolgáltató biztosítja. Az alapszintű SKU-fürtök tesztelésre és üzem előtti környezetekre való használatra készültek. A standard SKU-fürtök lehetővé teszik a felhasználók számára, hogy az igényeiknek megfelelő módon konfigurálja a fürtöt. További információ: [Service Fabric felügyelt fürt SKU](https://docs.microsoft.com/azure/service-fabric/overview-managed-cluster#service-fabric-managed-cluster-skus) -ban további részleteket.
 
 ## <a name="cluster-deployment-and-management"></a>Fürt üzembe helyezése és kezelése
 

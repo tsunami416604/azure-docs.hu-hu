@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 09/14/2020
 ms.author: duau
 ms.openlocfilehash: 1727193faa028a1d681f2a74df950afeb9570ec9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91270049"
 ---
 # <a name="tutorial-add-security-headers-with-rules-engine"></a>Oktatóanyag: biztonsági fejlécek hozzáadása a Rules Engine szolgáltatással
@@ -25,7 +25,7 @@ Ez az oktatóanyag bemutatja, hogyan valósítható meg a biztonsági fejlécek 
 
 Az alábbi példa bemutatja, hogyan adhat hozzá egy Content-Security-Policy fejlécet az összes olyan bejövő kérelemhez, amely megfelel a szabályok motor-konfigurációjának útvonalán megadott elérési útnak. Itt csak a megbízható webhelyről származó szkripteket engedélyezzük **https://apiphany.portal.azure-api.net** az alkalmazáson való futtatáshoz.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 > [!div class="checklist"]
 > - Content-Security-Policy beállítása a szabályok motorján belül.
 
@@ -55,7 +55,7 @@ Az előző lépésekben a biztonsági fejléceket a szabályok motorral konfigur
 
 :::image type="content" source="./media/front-door-rules-engine/rules-engine-delete-rule.png" alt-text="Szabály törlése":::
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha meg szeretné tudni, hogyan konfigurálhat egy webalkalmazási tűzfalat az előtérben, folytassa a következő oktatóanyaggal.
 

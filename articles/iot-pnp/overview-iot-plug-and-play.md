@@ -10,10 +10,10 @@ services: iot-pnp
 manager: eliotgra
 ms.custom: references_regions
 ms.openlocfilehash: 3f74c593cd44470efd231578fddcf53715a3979a
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91575095"
 ---
 # <a name="what-is-iot-plug-and-play"></a>Mi az IoT Plug and Play?
@@ -64,7 +64,7 @@ Eszköz-szerkesztőként olyan IoT-terméket fejleszthet, amely támogatja a IoT
 > [!Important]
 > A IoT Plug and Play-eszközöknek MQTT vagy MQTT-t kell használniuk a WebSockets-en keresztül. Más protokollok, például a AMQP vagy a HTTP nem érvényesek a IoT Plug and Play-eszközök megvalósítására.
 
-## <a name="device-certification"></a>Eszköz minősítése
+## <a name="device-certification"></a>Eszköztanúsítás
 
 A [IoT Plug and Play eszköz minősítési program](howto-certify-device.md) ellenőrzi, hogy az eszköz megfelel-e a IoT Plug and Play minősítési követelményeinek. Hozzáadhat egy hitelesített eszközt az [Azure IoT-eszközök nyilvános minősítésére](https://aka.ms/devicecatalog).
 

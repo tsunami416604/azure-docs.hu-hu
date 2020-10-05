@@ -10,10 +10,10 @@ ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
 ms.openlocfilehash: 2a205daeffb659ce0dd5756066d11691a89c166e
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91664953"
 ---
 # <a name="event-handling-in-azure-communication-services"></a>Események feldolgozása az Azure kommunikációs szolgáltatásokban
@@ -350,7 +350,7 @@ Ez a szakasz egy példát mutat be, hogy az egyes események milyen módon nézn
 | [Az SMS-események kezelése a kommunikációs szolgáltatásokban](../quickstarts/telephony-sms/handle-sms-events.md) | A kommunikációs szolgáltatás által a webhook használatával fogadott összes SMS-esemény kezelését. |
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A Azure Event Grid bemutatása: [Mi az Event Grid?](https://docs.microsoft.com/azure/event-grid/overview)
 * Azure Event Grid fogalmak bevezetését lásd: [fogalmak a Event Gridban?](https://docs.microsoft.com/azure/event-grid/concepts)
