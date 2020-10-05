@@ -5,10 +5,10 @@ ms.topic: overview
 ms.date: 09/22/2020
 ms.custom: contentperfq1
 ms.openlocfilehash: 3c282178decc1a07b2c0acc102b279688c42d52e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91300649"
 ---
 # <a name="overview-of-azure-service-fabric"></a>Az Azure Service Fabric áttekintése
@@ -49,7 +49,7 @@ A [Windows-fejlesztéshez](service-fabric-get-started.md)a Service FABRIC .net S
 
 Az Azure Service Fabric erőforrás-szolgáltató minden Azure-régióban elérhető, és megfelel az összes Azure-megfelelőségi tanúsítványnak, beleértve a következőket: SOC, ISO, PCI DSS, HIPAA és GDPR. A teljes listát lásd: [Microsoft megfelelőségi ajánlatok](https://www.microsoft.com/trustcenter/compliance/complianceofferings).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az első alkalmazás létrehozása és üzembe helyezése az Azure Service Fabricban:
 

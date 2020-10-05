@@ -7,10 +7,10 @@ ms.date: 05/19/2020
 author: deborahc
 ms.author: dech
 ms.openlocfilehash: 0299ab1e76e742adb8d2653b8b5d6923aff2f11f
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88588155"
 ---
 # <a name="built-in-jupyter-notebooks-support-in-azure-cosmos-db-preview"></a>A Azure Cosmos DB beépített Jupyter notebookok támogatása (előzetes verzió)
@@ -23,7 +23,7 @@ Azure Cosmos DB beépített Jupyter jegyzetfüzetek közvetlenül integrálva va
 
 A Azure Cosmos DB a C# és a Python jegyzetfüzeteket is támogatja minden API-hoz, beleértve a Core (SQL), Cassandra, Gremlin, Table és API-t a MongoDB. A notebookon belül kihasználhatja a beépített parancsok és szolgáltatások előnyeit, amelyek megkönnyítik Azure Cosmos DB erőforrások létrehozását, az adatok feltöltését és a lekérdezési adatok megjelenítését Azure Cosmos DBokban. 
 
-:::image type="content" source="./media/cosmosdb-jupyter-notebooks/jupyter-notebooks-portal.png" alt-text="A Jupyter notebookok támogatása Azure Cosmos DB":::
+:::image type="content" source="./media/cosmosdb-jupyter-notebooks/jupyter-notebooks-portal.png" alt-text="Jupyter notebook-vizualizációk Azure Cosmos DB":::
 
 ## <a name="benefits-of-jupyter-notebooks"></a>A Jupyter notebookok előnyei
 

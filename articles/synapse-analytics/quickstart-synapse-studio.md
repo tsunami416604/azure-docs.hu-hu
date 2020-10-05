@@ -10,10 +10,10 @@ ms.date: 04/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
 ms.openlocfilehash: a80a87cf595ff8f47d1f14d50cd3af0a1519b694
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91260393"
 ---
 # <a name="quickstart-use-synapse-studio-preview"></a>Rövid útmutató: a szinapszis Studio használata (előzetes verzió)
@@ -62,7 +62,7 @@ Miután megnyitotta a szinapszis Studio alkalmazást, tallózással keresse meg 
 
 4. A lekérdezés módosításával szűrheti és rendezheti az eredményeket. Megtalálhatja az SQL igény szerint elérhető nyelvi funkcióit az [SQL-funkciók áttekintésében](sql/overview-features.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Az Azure AD-felhasználók számára lehetővé teszi fájlok lekérdezését [a **Storage blob-Adatolvasó** vagy a **Storage blob adatközreműködői** RBAC engedélyeinek hozzárendelésével az Azure Storage](../storage/common/storage-auth-aad-rbac-portal.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json#assign-an-azure-built-in-role) szolgáltatásban
 - [Fájlok lekérdezése az Azure Storage-ban az SQL igény szerinti használatával](sql/on-demand-workspace-overview.md)

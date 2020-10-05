@@ -5,10 +5,10 @@ ms.topic: quickstart
 ms.date: 12/04/2018
 ms.custom: devx-track-python
 ms.openlocfilehash: 655c016b55abdcf4b6f546a1fe16348ec4c83724
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87853364"
 ---
 # <a name="quickstart-create-a-project-with-a-custom-environment-in-azure-notebooks-preview"></a>Rövid útmutató: projekt létrehozása egyéni környezettel Azure Notebooks előzetes verzióban
@@ -54,7 +54,7 @@ A Azure Notebooksban egy projekt a fájlok, például a jegyzetfüzetek, az adat
 
    | Művelet | Leírás |
    | --- | --- |
-   | Requirements.txt | A Python-projektek requirements.txt fájlban határozzák meg a függőségeiket. Ha ezt a lehetőséget választja, válassza ki a megfelelő fájlt a projekt fájljának listájából, és válassza ki a Python-verziót is a megjelenő további legördülő listában. Ha szükséges, a **Mégse** gombra kattintva térjen vissza a projekthez, töltse fel vagy hozza létre a fájlt, majd térjen vissza a **projekt beállításai**  >  **környezet** lapra, és hozzon létre egy új lépést. Ezzel a lépéssel automatikusan futtat egy jegyzetfüzetet a projektben.`pip install -r <file>` |
+   | Requirements.txt | A Python-projektek requirements.txt fájlban határozzák meg a függőségeiket. Ha ezt a lehetőséget választja, válassza ki a megfelelő fájlt a projekt fájljának listájából, és válassza ki a Python-verziót is a megjelenő további legördülő listában. Ha szükséges, a **Mégse** gombra kattintva térjen vissza a projekthez, töltse fel vagy hozza létre a fájlt, majd térjen vissza a **projekt beállításai**  >  **környezet** lapra, és hozzon létre egy új lépést. Ezzel a lépéssel automatikusan futtat egy jegyzetfüzetet a projektben. `pip install -r <file>` |
    | Rendszerhéj-parancsfájl | A használatával egy bash rendszerhéj-parancsfájlt (jellemzően egy *. sh* kiterjesztésű fájlt) jelezhet, amely a környezet inicializálásához futtatni kívánt parancsokat tartalmazza. |
    | Environment. YML | A környezetek kezelésére szolgáló Conda használó Python-projekt egy Environment *. YML* fájlt használ a függőségek leírására. Ha ezt a lehetőséget választja, válassza ki a megfelelő fájlt a projekt fájl listájából. |
 
@@ -67,7 +67,7 @@ A Azure Notebooksban egy projekt a fájlok, például a jegyzetfüzetek, az adat
 
 1. A környezet teszteléséhez hozzon létre és futtasson egy új jegyzetfüzetet, majd hozzon létre egy kódot tartalmazó cellát olyan utasításokkal, amelyek a környezetben lévő csomagtól függenek, például egy Python- `import` utasítás használatával. Ha az utasítás sikeres, a szükséges csomag telepítése sikeresen megtörtént a környezetben.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Projektek kezelése és konfigurálása Azure Notebooks](configure-manage-azure-notebooks-projects.md)

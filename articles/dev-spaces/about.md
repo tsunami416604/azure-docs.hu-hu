@@ -7,10 +7,10 @@ description: Ismerje meg, hogy az Azure dev Spaces hogyan nyújt gyors, ismétl�
 keywords: Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, kubectl, k8s
 manager: gwallace
 ms.openlocfilehash: ad884d5e054f23269b238b791e250c732d70a9b8
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88210645"
 ---
 # <a name="what-is-azure-dev-spaces"></a>Mi az Azure Dev Spaces?
@@ -40,7 +40,7 @@ Az Azure dev Spaces működésével kapcsolatos további információkért lásd
 
 Az Azure dev-helyeket csak [bizonyos régiókban][supported-regions]található AK-fürtök támogatják. Az Azure dev Spaces támogatja az Azure [CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) vagy a [Visual Studio Code](https://code.visualstudio.com/download) használatát a Linux, MacOS vagy Windows 8 vagy újabb rendszereken telepített [Azure dev Spaces bővítménnyel](https://marketplace.visualstudio.com/items?itemName=azuredevspaces.azds) , hogy az alkalmazásait az AK-ban hozza létre és futtassa. Emellett támogatja a Windows rendszeren telepített [Visual Studio 2019](https://aka.ms/vsdownload?utm_source=mscom&utm_campaign=msdocs) Azure-fejlesztési számítási feladattal való használatát is.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ az Azure dev Spaces működéséről.
 

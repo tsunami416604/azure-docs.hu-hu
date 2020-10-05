@@ -11,10 +11,10 @@ ms.custom: mvc
 ms.date: 09/15/2020
 ms.author: mbaldwin
 ms.openlocfilehash: 4d1488d6dd2e5d08ae774ca88b7ab41b2020efe5
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91000960"
 ---
 # <a name="quickstart-create-an-key-vault-managed-hsm-using-an-azure-resource-manager-template"></a>Gyors útmutató: Key Vault felügyelt HSM létrehozása Azure Resource Manager sablon használatával
@@ -23,7 +23,7 @@ A Managed HSM egy teljes körűen felügyelt, magas rendelkezésre állású, eg
 
 Ez a rövid útmutató a Resource Manager-sablonok felügyelt HSM létrehozásához való üzembe helyezésének folyamatát összpontosítja.  A [Resource Manager-sablon](../../azure-resource-manager/templates/overview.md) egy JavaScript Object Notation- (JSON-) fájl, amely meghatározza a projekt infrastruktúráját és konfigurációját. A sablon olyan deklaratív szintaxist használ, amellyel anélkül határozhatja meg, hogy mit szeretne üzembe helyezni, hogy ehhez programozási parancsok sorozatát kellene megírnia. A Resource Manager-sablonokról további információért tekintse meg a [Resource Manager dokumentációját](../../azure-resource-manager/index.yml) és a [sablonreferenciát](/azure/templates/microsoft.keyvault/allversions).
 
-Ha nem rendelkezik Azure-előfizetéssel, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -87,7 +87,7 @@ Szüksége lehet a bérlői AZONOSÍTÓra is. A kereséshez használja az Azure 
 
 Az Azure Portalon helyezhető üzembe a sablon. A Azure Portalon kívül használhatja a Azure PowerShell, az Azure CLI és a REST API is. További információ az üzembe helyezési módszerekről: [sablonok üzembe helyezése](../../azure-resource-manager/templates/deploy-powershell.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban létrehozott egy felügyelt HSM-et. Ez a felügyelt HSM nem lesz teljesen működőképes, amíg be nem aktiválja. A HSM aktiválásához a [felügyelt HSM](quick-create-cli.md#activate-your-managed-hsm) aktiválása című témakörben talál további információt.
 

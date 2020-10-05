@@ -7,10 +7,10 @@ ms.date: 03/18/2020
 ms.author: azfuncdf
 zone_pivot_groups: code-editors-set-one
 ms.openlocfilehash: f5eb5f5ce6c6ded3fffc95b73d3ac86ae9e94ba2
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88055462"
 ---
 # <a name="create-your-first-durable-function-in-c"></a>Hozza létre első tartós funkcióját a C-ben\#
@@ -90,7 +90,7 @@ Az új függvényeket tartalmazó osztályt a projekthez adja hozzá a rendszer.
 
 Nyissa meg az új *HelloOrchestration.cs* fájlt a tartalom megtekintéséhez. Ez a tartós függvény egy egyszerű függvények láncolására szolgáló példa a következő módszerekkel:  
 
-| Metódus | Függvénynév | Leírás |
+| Módszer | Függvénynév | Leírás |
 | -----  | ------------ | ----------- |
 | **`RunOrchestrator`** | `HelloOrchestration` | Kezeli a tartós összeszerelést. Ebben az esetben a folyamat elindul, létrehoz egy listát, és hozzáadja a listához a három függvény hívásának eredményét.  Ha a három függvény meghívása befejeződött, a rendszer visszaadja a listát. |
 | **`SayHello`** | `HelloOrchestration_Hello` | A függvény egy Hello értéket ad vissza. Ez az a függvény, amely az összehangolt üzleti logikát tartalmazza. |
@@ -217,7 +217,7 @@ A következő lépésekkel hozhatja létre a projektben a tartós függvény kó
 
 A rendszer új tartós függvényt ad hozzá az alkalmazáshoz.  A tartalom megtekintéséhez nyissa meg az új. cs fájlt. Ez a tartós függvény egy egyszerű függvények láncolására szolgáló példa a következő módszerekkel:  
 
-| Metódus | Függvénynév | Leírás |
+| Módszer | Függvénynév | Leírás |
 | -----  | ------------ | ----------- |
 | **`RunOrchestrator`** | `<file-name>` | Kezeli a tartós összeszerelést. Ebben az esetben a folyamat elindul, létrehoz egy listát, és hozzáadja a listához a három függvény hívásának eredményét.  Ha a három függvény meghívása befejeződött, a rendszer visszaadja a listát. |
 | **`SayHello`** | `<file-name>_Hello` | A függvény egy Hello értéket ad vissza. Ez az a függvény, amely az összehangolt üzleti logikát tartalmazza. |

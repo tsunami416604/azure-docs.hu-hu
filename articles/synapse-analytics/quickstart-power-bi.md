@@ -10,10 +10,10 @@ ms.date: 04/29/2020
 ms.author: jocaplan
 ms.reviewer: jrasnick
 ms.openlocfilehash: 9b4b9da37b753418773141f832f253003ad40014
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91260458"
 ---
 # <a name="quickstart-linking-a-power-bi-workspace-to-a-synapse-workspace"></a>Gyors útmutató: Power BI munkaterület összekapcsolása egy szinapszis-munkaterülettel
@@ -49,7 +49,7 @@ Ha nem rendelkezik Azure-előfizetéssel, [a Kezdés előtt hozzon létre egy in
 
     ![Power BI társított szolgáltatás telepítésének megjelenítése.](media/quickstart-link-powerbi/workspace-link-dialog.png)
 
-6. Kattintson a **Létrehozás** lehetőségre.
+6. Kattintson a **Létrehozás** elemre.
 
 ## <a name="view-power-bi-workspace-in-synapse-studio"></a>Power BI munkaterület megtekintése a szinapszis Studióban
 
@@ -68,6 +68,6 @@ A munkaterületek összekapcsolása után böngészhet a Power BI adatkészletek
 ![Power BI jelentés megtekintése és szerkesztése.](media/quickstart-link-powerbi/powerbi-report.png)
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ az [Azure Storage-ban tárolt fájlokról Power bi jelentés létrehozásáról](sql/tutorial-connect-power-bi-desktop.md).

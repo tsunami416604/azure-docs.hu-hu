@@ -10,10 +10,10 @@ ms.topic: quickstart
 ms.custom: hdinsightactive,hdiseo17may2017,mvc,seodec18
 ms.date: 02/24/2020
 ms.openlocfilehash: 8939d9b342094342d576c00cf02e622286c8fc0f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "80130570"
 ---
 # <a name="quickstart-create-apache-hadoop-cluster-in-azure-hdinsight-using-azure-portal"></a>Rövid útmutató: Apache Hadoop-fürt létrehozása az Azure HDInsight Azure Portal használatával
@@ -24,7 +24,7 @@ Ebben a rövid útmutatóban egy HDInsight Hadoop-fürtöt hoz létre az Azure P
 
 A HDInsight jelenleg [hét különböző típusú fürtöt](../hdinsight-overview.md#cluster-types-in-hdinsight)tartalmaz. Minden egyes fürttípus más és más összetevőket támogat. A Hive-ot minden fürttípus támogatja. A HDInsight által támogatott összetevők listáját a következő témakörben tekintheti [meg: Újdonságok a Apache Hadoop-fürt HDInsight által biztosított verzióiban?](../hdinsight-component-versioning.md)  
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
 ## <a name="create-an-apache-hadoop-cluster"></a>Apache Hadoop-fürt létrehozása
 
@@ -36,7 +36,7 @@ Ebben a szakaszban egy Hadoop-fürtöt hozhat létre a HDInsightban az Azure Por
 
     ![Erőforrás-HDInsight fürt létrehozása](./media/apache-hadoop-linux-create-cluster-get-started-portal/azure-portal-create-resource.png "Erőforrás-HDInsight fürt létrehozása")
 
-1. Válassza az **Analytics** > **Azure HDInsight** lehetőséget a **HDInsight-fürt létrehozása** lap megjelenítéséhez.
+1. Válassza az **Analytics**  >  **Azure HDInsight** lehetőséget a **HDInsight-fürt létrehozása** lap megjelenítéséhez.
 
 1. Az **alapok** lapon adja meg a következő információkat:
 
@@ -45,10 +45,10 @@ Ebben a szakaszban egy Hadoop-fürtöt hozhat létre a HDInsightban az Azure Por
     |Előfizetés    |  A legördülő listában válassza ki a fürthöz használt Azure-előfizetést. |
     |Erőforráscsoport     | A legördülő listából válassza ki a meglévő erőforráscsoportot, vagy válassza az **új létrehozása**lehetőséget.|
     |Fürt neve   | Adjon meg egy globálisan egyedi nevet. A név legfeljebb 59 karaktert tartalmazhat, beleértve a betűket, számokat és kötőjeleket. A név első és utolsó karaktere nem lehet kötőjel. |
-    |Régió    | A legördülő listából válassza ki azt a régiót, ahol a fürtöt létrehozták.  A legjobb teljesítmény érdekében válassza az Önhöz legközelebb eső helyet. |
+    |Region    | A legördülő listából válassza ki azt a régiót, ahol a fürtöt létrehozták.  A legjobb teljesítmény érdekében válassza az Önhöz legközelebb eső helyet. |
     |Fürt típusa| Válassza a **fürt típusának kiválasztása**lehetőséget. Ezután válassza a **Hadoop** lehetőséget.|
     |Verzió|A legördülő listából válassza ki a kívánt **verziót**. Ha nem tudja, mit kell választania, használja az alapértelmezett verziót.|
-    |A fürt bejelentkezési felhasználóneve és jelszava    | Az alapértelmezett bejelentkezési név a **rendszergazda**. A jelszónak legalább 10 karakterből kell állnia, és tartalmaznia kell legalább egy számot, egy nagybetűs és egy kisbetűs betűt, egy nem alfanumerikus karaktert (kivéve a következő karaktereket: \)"" ". Győződjön meg róla, hogy **ne adjon meg** gyakori jelszót, mint például a következő: Pass@word1.|
+    |A fürt bejelentkezési felhasználóneve és jelszava    | Az alapértelmezett bejelentkezési név a **rendszergazda**. A jelszónak legalább 10 karakterből kell állnia, és tartalmaznia kell legalább egy számot, egy nagybetűs és egy kisbetűs betűt, egy nem alfanumerikus karaktert (kivéve a következő karaktereket: "" " \) . Győződjön meg róla, hogy **ne adjon meg** gyakori jelszót, mint például a következő: Pass@word1.|
     |Secure Shell- (SSH-) felhasználónév | Az alapértelmezett felhasználónév az **sshuser**.  SSH-felhasználónévként más nevet is megadhat. |
     |Fürt bejelentkezési jelszavának használata SSH-hoz| Jelölje be ezt a jelölőnégyzetet, ha ugyanazt a jelszót szeretné használni az SSH-felhasználó számára, mint a fürt bejelentkezési felhasználójának.|
 
@@ -88,7 +88,7 @@ Az [Apache Hive](hdinsight-use-hive.md) a HDInsight legnépszerűbb összetevőj
 > [!NOTE]
 > Apache Hive nézet nem érhető el a HDInsight 4,0-ben.
 
-1. Az Ambari megnyitásához az előző képernyőkép szerint válassza a **Fürt irányítópultja** elemet.  Tallózással is megkeresheti, hogy `https://ClusterName.azurehdinsight.net` hol `ClusterName` található a fürt, amelyet az előző szakaszban hozott létre.
+1. Az Ambari megnyitásához az előző képernyőkép szerint válassza a **Fürt irányítópultja** elemet.  Tallózással is megkeresheti, hogy  `https://ClusterName.azurehdinsight.net` hol `ClusterName` található a fürt, amelyet az előző szakaszban hozott létre.
 
     ![HDInsight Linux – első lépések fürt irányítópultja](./media/apache-hadoop-linux-create-cluster-get-started-portal/hdinsight-linux-get-started-open-cluster-dashboard.png "HDInsight Linux – első lépések fürt irányítópultja")
 

@@ -12,10 +12,10 @@ ms.date: 05/06/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 1157d322d6329774b638a0692bc7ef68d7ecc189
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91277529"
 ---
 # <a name="quickstart-suggest-search-queries-with-the-bing-autosuggest-rest-api-and-c"></a>Gyors útmutató: keresési lekérdezések javaslata a Bing Autosuggest REST API és C #
@@ -159,7 +159,7 @@ A rendszer JSON formátumban ad vissza egy sikeres választ a következő péld�
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Bing Autosuggest-oktatóanyag](../tutorials/autosuggest.md)

@@ -1,15 +1,15 @@
 ---
 title: 'Gyors útmutató: PHP-alapú Webalkalmazás létrehozása'
-description: Percek alatt üzembe helyezheti az első PHP-"Helló világ!" alkalmazás Azure App Service. Az üzembe helyezés a git használatával történik, amely a App Service üzembe helyezésének számos módszerének egyike.
+description: Percek alatt üzembe helyezheti az első PHP-„Helló világ!” alkalmazás Azure App Service. Az üzembe helyezés a git használatával történik, amely a App Service üzembe helyezésének számos módszerének egyike.
 ms.assetid: 6feac128-c728-4491-8b79-962da9a40788
 ms.topic: quickstart
 ms.date: 08/01/2020
 zone_pivot_groups: app-service-platform-windows-linux
 ms.openlocfilehash: 152a000939f74b1852073742e501ac66246389a5
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88961418"
 ---
 # <a name="create-a-php-web-app-in-azure-app-service"></a>PHP-alapú Webalkalmazás létrehozása Azure App Service
@@ -204,7 +204,7 @@ Az üzembe helyezés befejezését követően térjen vissza **Az alkalmazás me
 
 [!INCLUDE [cli-samples-clean-up](../../includes/cli-samples-clean-up.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [PHP és MySQL](tutorial-php-mysql-app.md)

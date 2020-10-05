@@ -12,10 +12,10 @@ ms.date: 04/18/2020
 ms.custom: devx-track-java
 ms.author: lcozzens
 ms.openlocfilehash: 10b38d5c5802ec4f6bc33b15b3ddef12e8256a78
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88586453"
 ---
 # <a name="quickstart-create-a-java-spring-app-with-azure-app-configuration"></a>Rövid útmutató: Java Spring-alkalmazás létrehozása az Azure app Configuration szolgáltatással
@@ -40,7 +40,7 @@ Ebben a rövid útmutatóban beépíti az Azure-alkalmazások konfigurációját
 
     Most hagyja üresen a **címke** és a **tartalom típusát** .
 
-7. Válassza az **Alkalmaz** lehetőséget.
+7. Kattintson az **Alkalmaz** gombra.
 
 ## <a name="create-a-spring-boot-app"></a>Spring boot-alkalmazás létrehozása
 

@@ -9,10 +9,10 @@ ms.topic: include
 ms.date: 02/27/2020
 ms.author: aahi
 ms.openlocfilehash: ec0ffdcf86e67a7126a3100c1e20b6e5c3474e35
-ms.sourcegitcommit: 34a6fa5fc66b1cfdfbf8178ef5cdb151c97c721c
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "78252883"
 ---
 Ismerkedés a Bing Custom Search a Pythonhoz készült ügyféloldali kódtáraval. Az alábbi lépéseket követve telepítheti a csomagot, és kipróbálhatja az alapszintű feladatokhoz tartozó példa kódját. A Bing Custom Search API lehetővé teszi, hogy testreszabott, ad-ingyenes keresési élményeket hozzon létre az Ön számára fontos témakörökhöz. A minta forráskódja a [githubon](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/blob/master/samples/search/custom_search_samples.py)található.
@@ -20,7 +20,7 @@ Ismerkedés a Bing Custom Search a Pythonhoz készült ügyféloldali kódtárav
 A Pythonhoz készült Bing Custom Search ügyféloldali kódtára a következőre használható:
 * Keresési eredmények keresése a weben a Bing Custom Search-példányból.
 
-[A dokumentációs](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/customsearch?view=azure-python) | [könyvtár forráskód](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-search-customsearch) | [-csomagjához (PyPi)](https://pypi.org/project/azure-cognitiveservices-search-customsearch/) | tartozó[minták](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/)
+[Dokumentáció](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/customsearch?view=azure-python)  |  [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-search-customsearch)  |  [Csomag (PyPi)](https://pypi.org/project/azure-cognitiveservices-search-customsearch/)  |  [Példák](https://github.com/Azure-Samples/cognitive-services-python-sdk-samples/)
 
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -58,13 +58,13 @@ from msrest.authentication import CognitiveServicesCredentials
     endpoint = 'your-endpoint'
     ```
 
-2. Hozzon létre egy `CustomSearchClient`példányt az előfizetési kulccsal rendelkező `CognitiveServicesCredentials` objektum használatával. 
+2. Hozzon létre egy példányt az `CustomSearchClient` `CognitiveServicesCredentials` előfizetési kulccsal rendelkező objektum használatával. 
 
     ```python
     client = CustomSearchClient(endpoint=endpoint, credentials=CognitiveServicesCredentials(subscription_key))
     ```
 
-3. Keresési kérelem küldése a szolgáltatással `client.custom_instance.search()`. Fűzze hozzá a keresési kifejezést a `query` paraméterhez, és `custom_config` állítsa az egyéni konfigurációs azonosítót a keresési példány használatára. Az azonosítót a [Bing Custom Search-portálon](https://www.customsearch.ai/)szerezheti be, az **éles** lapon kattintva.
+3. Keresési kérelem küldése a szolgáltatással `client.custom_instance.search()` . Fűzze hozzá a keresési kifejezést a `query` paraméterhez, és állítsa az `custom_config` egyéni konfigurációs azonosítót a keresési példány használatára. Az azonosítót a [Bing Custom Search-portálon](https://www.customsearch.ai/)szerezheti be, az **éles** lapon kattintva.
 
     ```python
     web_data = client.custom_instance.search(query="xbox", custom_config="your-configuration-id")

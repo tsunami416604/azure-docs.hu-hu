@@ -8,10 +8,10 @@ ms.topic: quickstart
 ms.date: 09/03/2020
 ms.author: cshoe
 ms.openlocfilehash: b009b34be69e48ae6205cd9ab88d1583ca9c6561
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91280562"
 ---
 # <a name="quickstart-building-your-first-static-web-app-in-the-azure-portal"></a>Rövid útmutató: az első statikus webalkalmazás felépítése a Azure Portal
@@ -22,7 +22,7 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes próbaverz
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- [GitHub](https://github.com) -fiók
+- [GitHub](https://github.com)-fiók
 - [Azure](https://portal.azure.com) -fiók
 
 [!INCLUDE [create repository from template](../../includes/static-web-apps-get-started-create-repo.md)]
@@ -51,7 +51,7 @@ Az _alapok_ szakaszban kezdje az új alkalmazás konfigurálásával és a GitHu
 
 Miután bejelentkezett a GitHubba, adja meg a tárház adatait.
 
-:::image type="content" source="media/getting-started-portal/repository-details.png" alt-text="Adattár részletei":::
+:::image type="content" source="media/getting-started-portal/repository-details.png" alt-text="Alapismeretek szakasz":::
 
 1. Válassza ki az előnyben részesített _szervezetet_
 1. Válassza a **saját-első-web-static-app** elemet az _adattár_ legördülő menüből.
@@ -94,18 +94,18 @@ Miután bejelentkezett a GitHubba, adja meg a tárház adatait.
 
 1. Válassza az **Áttekintés + létrehozás** lehetőséget.
 
-    :::image type="content" source="media/getting-started-portal/review-create.png" alt-text="A létrehozás gomb áttekintése":::
+    :::image type="content" source="media/getting-started-portal/review-create.png" alt-text="Alapismeretek szakasz":::
 
     > [!NOTE]
     > A [munkafolyamat-fájl](github-actions-workflow.md) szerkesztésével módosíthatja ezeket az értékeket az alkalmazás létrehozása után.
 
 1. Kattintson a **Létrehozás** gombra.
 
-    :::image type="content" source="media/getting-started-portal/create-button.png" alt-text="Létrehozás gomb":::
+    :::image type="content" source="media/getting-started-portal/create-button.png" alt-text="Alapismeretek szakasz":::
 
 1. Válassza az **Erőforrás megnyitása** lehetőséget.
 
-    :::image type="content" source="media/getting-started-portal/resource-button.png" alt-text="Erőforrás megnyitása gomb":::
+    :::image type="content" source="media/getting-started-portal/resource-button.png" alt-text="Alapismeretek szakasz":::
 
 [!INCLUDE [view website](../../includes/static-web-apps-get-started-view-website.md)]
 
@@ -119,7 +119,7 @@ Ha nem folytatja az alkalmazás használatát, az alábbi lépésekkel törölhe
 1. Válassza a **Törlés** gombot
 1. Válassza az **Igen** lehetőséget a törlési művelet megerősítéséhez
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [API hozzáadása](add-api.md)

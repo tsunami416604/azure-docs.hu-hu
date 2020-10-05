@@ -4,10 +4,10 @@ description: Ebben a rövid útmutatóban a következő lépésekkel futtathatja
 ms.date: 08/10/2020
 ms.topic: quickstart
 ms.openlocfilehash: 4d68366005ad6379669d29fb8264f78d1b8f4972
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88056380"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-resource-graph-explorer"></a>Rövid útmutató: az első Resource Graph-lekérdezés futtatása az Azure Resource Graph Explorerrel
@@ -31,7 +31,7 @@ Az első Resource Graph-lekérdezés futtatásához a következő lépésekkel k
    > [!NOTE]
    > Mivel ez a lekérdezési példa nem tartalmaz olyan rendezési módosítót, mint a `order by` , a lekérdezés többszöri futtatása valószínűleg egy másik erőforrás-készletet eredményez.
 
-1. Tekintse át a lekérdezési választ az **eredmények** lapon. a lekérdezés részleteinek megtekintéséhez válassza az **üzenetek** fület, beleértve az eredmények számát és a lekérdezés időtartamát. A hibák (ha vannak) a lapon jelennek meg.
+1. Tekintse át a lekérdezési választ a **Results (eredmények** ) lapon. Válassza az **üzenetek** fület a lekérdezés részleteinek megtekintéséhez, beleértve az eredmények számát és a lekérdezés időtartamát. A hibák (ha vannak) a lapon jelennek meg.
 
 1. Frissítse a lekérdezést `order by` a **Name (név** ) tulajdonságra: `Resources | project name, type | limit 5 | order by name asc` . Ezután válassza a **lekérdezés futtatása**lehetőséget.
 
@@ -94,7 +94,7 @@ A Resource Graph-lekérdezések példáinak megadásához, valamint arról, hogy
 
 - [Resource Graph Explorer – minta irányítópult #2](https://github.com/Azure-Samples/Governance/blob/master/src/resource-graph/portal-dashboards/sample-2/resourcegraphexplorer-sample-2.json)
 
-  :::image type="content" source="./media/arge-sample2-small.png" alt-text="Példa a minta irányítópultjának képének #2" lightbox="./media/arge-sample2-large.png":::
+  :::image type="content" source="./media/arge-sample2-small.png" alt-text="Példa a minta irányítópultjának képének #1" lightbox="./media/arge-sample2-large.png":::
 
 > [!NOTE]
 > A fenti példában látható irányítópultok és diagramok az Azure-környezettől függően eltérőek.

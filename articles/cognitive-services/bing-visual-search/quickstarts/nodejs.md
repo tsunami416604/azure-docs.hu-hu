@@ -12,10 +12,10 @@ ms.date: 05/22/2020
 ms.author: scottwhi
 ms.custom: devx-track-js
 ms.openlocfilehash: e96ff9173d920208e067988602323626767d9017
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91277092"
 ---
 # <a name="quickstart-get-image-insights-using-the-bing-visual-search-rest-api-and-nodejs"></a>Gyors útmutató: a Bing Visual Search REST API és a Node.js
@@ -89,7 +89,7 @@ Ezzel a rövid útmutatóval megteheti az első hívást a Bing Visual Search AP
     });
     ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Visual Search egyoldalas Webalkalmazás létrehozása](../tutorial-bing-visual-search-single-page-app.md)

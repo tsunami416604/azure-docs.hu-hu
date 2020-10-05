@@ -9,10 +9,10 @@ ms.date: 08/03/2020
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
 ms.openlocfilehash: d67b0c89fbec8da9a3057164aa59d458a85c41d7
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91280589"
 ---
 # <a name="quickstart-build-and-deploy-apps-to-azure-spring-cloud"></a>Gyors útmutató: alkalmazások létrehozása és üzembe helyezése az Azure Spring Cloud-ban
@@ -162,7 +162,7 @@ Az alkalmazás teszteléséhez küldjön egy böngészőből egy HTTP GET-kéré
 
 ## <a name="test-the-application"></a>Az alkalmazás tesztelése
 
-Küldjön egy GET kérelmet az `solar-system-weather` alkalmazásnak. Egy böngészőben nyissa meg a nyilvános URL-címet, amely a `/weatherforecast` végéhez van hozzáfűzve. Példa:
+Küldjön egy GET kérelmet az `solar-system-weather` alkalmazásnak. Egy böngészőben nyissa meg a nyilvános URL-címet, amely a `/weatherforecast` végéhez van hozzáfűzve. Például:
 
 ```
 https://servicename-solar-system-weather.azuremicroservices.io/weatherforecast
@@ -353,7 +353,7 @@ Az URL-cím megkereséséhez navigáljon a Azure Portal is.
 
 ::: zone-end
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban olyan Azure-erőforrásokat hozott létre, amelyek továbbra is felhalmozzák a díjakat, ha az előfizetésben maradnak. Ha nem szeretne továbblépni a következő rövid útmutatóra, tekintse meg az [erőforrások tisztítása](spring-cloud-quickstart-logs-metrics-tracing.md#clean-up-resources)című témakört. Ellenkező esetben folytassa a következő rövid útmutatóval:
 

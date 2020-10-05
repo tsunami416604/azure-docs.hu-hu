@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 53f99456449e778ff7c1fd3ab096e1afd3562c1e
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88948861"
 ---
 # <a name="quickstart-require-terms-of-use-to-be-accepted-before-accessing-cloud-apps"></a>Rövid útmutató: a használati feltételek elfogadásának megkövetelése a felhőalapú alkalmazások elérése előtt
@@ -82,7 +82,7 @@ Ez a szakasz a minta felhasználási feltételek létrehozásának lépéseit is
    1. **Nyelvként**válassza az **angol**nyelvet.
    1. Ahogy a felhasználók a használati **feltételek kibontását kérik**, válassza **a be**lehetőséget.
    1. A **feltételes hozzáférési házirend-sablonokkal való betartatáshoz**válassza az **egyéni házirend**elemet.
-   1. Kattintson a **Create** (Létrehozás) gombra.
+   1. Kattintson a **Létrehozás** elemre.
 
 ## <a name="create-your-conditional-access-policy"></a>Feltételes hozzáférési szabályzat létrehozása
 
@@ -146,7 +146,7 @@ A házirendben állítsa be a következőket:
 
    ![Szabályzat engedélyezése](./media/require-tou/18.png)
 
-1. Kattintson a **Create** (Létrehozás) gombra.
+1. Kattintson a **Létrehozás** elemre.
 
 ## <a name="evaluate-a-simulated-sign-in"></a>Szimulált bejelentkezés kiértékelése
 
@@ -200,13 +200,13 @@ Ha már nincs rá szükség, törölje a teszt felhasználót és a feltételes 
 - Ha nem tudja, hogyan törölhet egy Azure AD-felhasználót, tekintse meg [a felhasználók törlése az Azure ad-ból](../fundamentals/add-users-azure-active-directory.md#delete-a-user)című témakört.
 - A szabályzat törléséhez válassza ki a szabályzatot, majd kattintson a gyorselérési eszköztár **Törlés** elemére.
 
-    ![Multi-Factor Authentication](./media/require-tou/33.png)
+    ![Többtényezős hitelesítés](./media/require-tou/33.png)
 
 - A használati feltételek törléséhez jelölje ki azt, majd kattintson a **feltételek törlése** elemre a felül található eszköztárban.
 
-    ![Multi-Factor Authentication](./media/require-tou/29.png)
+    ![Többtényezős hitelesítés](./media/require-tou/29.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [MFA megkövetelése adott alkalmazásokhoz](../authentication/tutorial-enable-azure-mfa.md)

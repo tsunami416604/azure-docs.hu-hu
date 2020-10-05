@@ -6,10 +6,10 @@ ms.topic: quickstart
 ms.custom: devx-track-python
 zone_pivot_groups: programming-languages-set-functions
 ms.openlocfilehash: 3e84db3aa13ae77f931a46683f0c5e4572f6ce44
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87852633"
 ---
 # <a name="connect-azure-functions-to-azure-storage-using-command-line-tools"></a>Azure Functions összekötése az Azure Storage-hoz a parancssori eszközök használatával
@@ -115,7 +115,7 @@ mvn azure-functions:deploy
 
 1. Az előző szakaszban leírtak szerint vizsgálja meg újra a tárolási várólistát annak ellenőrzéséhez, hogy az tartalmazza-e a várólistára írt új üzenetet.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Miután végzett, a következő paranccsal törölheti az erőforráscsoportot és az összes benne lévő erőforrást, hogy elkerülje a további költségek felmerülését.
 
@@ -123,7 +123,7 @@ Miután végzett, a következő paranccsal törölheti az erőforráscsoportot �
 az group delete --name AzureFunctionsQuickstart-rg
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Frissítette a HTTP által aktivált függvényt az adattárolási várólistába való íráshoz. Most már többet is megtudhat a függvények parancssorból való fejlesztéséről a Core Tools és az Azure CLI használatával:
 

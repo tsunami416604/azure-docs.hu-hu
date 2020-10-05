@@ -10,10 +10,10 @@ ms.date: 05/15/2020
 ms.author: v-stazar
 ms.reviewer: jrasnick
 ms.openlocfilehash: 8bd955e844c9569438c5d35f152ba1bcdfccc306
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91288001"
 ---
 # <a name="self-help-for-sql-on-demand-preview"></a>Önkiszolgáló Súgó az SQL igény szerinti használatra (előzetes verzió)
@@ -71,7 +71,7 @@ CREATE EXTERNAL FILE FORMAT [SynapseParquetFormat]
 WITH ( FORMAT_TYPE = PARQUET)
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az SQL igény szerinti használatáról az alábbi cikkekben olvashat bővebben:
 

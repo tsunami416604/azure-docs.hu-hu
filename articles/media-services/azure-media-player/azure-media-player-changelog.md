@@ -7,10 +7,10 @@ ms.service: media-services
 ms.topic: overview
 ms.date: 09/23/2020
 ms.openlocfilehash: c63a8efc4bbcf6e5a124d439e6f9f91397e2fa53
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91315082"
 ---
 # <a name="changelog"></a>Változásnapló
@@ -741,6 +741,6 @@ Ha az Apple-eszközökön a "playsinline" HLS-lejátszást használja, az "élő
 
 Kezdeti előzetes kiadás
 
-## <a name="next-steps"></a>Következő lépések ##
+## <a name="next-steps"></a>További lépések ##
 
 - [Azure Media Player rövid útmutató](azure-media-player-quickstart.md)

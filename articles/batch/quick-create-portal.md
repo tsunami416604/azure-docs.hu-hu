@@ -5,10 +5,10 @@ ms.topic: quickstart
 ms.date: 08/17/2020
 ms.custom: mvc
 ms.openlocfilehash: cf65a681764a848f8132ec44b8ba313ef1a83235
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88511371"
 ---
 # <a name="quickstart-run-your-first-batch-job-in-the-azure-portal"></a>Rövid útmutató: Az első Batch-feladat futtatása az Azure Portalon
@@ -49,7 +49,7 @@ Most, hogy már rendelkezik Batch-fiókkal, hozzon létre egy windowsos számít
   
    |Beállítás  |Érték  |
    |---------|---------|
-   |**Rendszerkép típusa**|Marketplace|
+   |**Rendszerkép típusa**|Piactér|
    |**Publisher**     |microsoftwindowsserver|
    |**Ajánlat**     |windowsserver|
    |**SKU**     |2019 – Datacenter-Core – smalldisk|
@@ -83,7 +83,7 @@ Batch használata esetén a parancssorban adhatja meg az alkalmazást vagy szkri
 
 Az első tevékenység létrehozása:
 
-1. Válassza a **Hozzáadás** elemet.
+1. Válassza a **Hozzáadás** lehetőséget.
 
 1. Adja meg a következő **tevékenységazonosítót**: *mytask*.
 
@@ -97,7 +97,7 @@ Egy második feladat létrehozásához ismételje meg a fenti lépéseket. Adjon
 
 A példaként létrehozott feladatok elvégzése néhány percen belül megtörténik. Egy befejezett feladat kimenetének megtekintéséhez jelölje ki a feladatot, majd válassza a **fájlok csomóponton**lehetőséget. Válassza ki a fájlt a `stdout.txt` feladat normál kimenetének megtekintéséhez. A tartalma a következőhöz hasonló lesz:
 
-:::image type="content" source="media/quick-create-portal/task-output.png" alt-text="A befejezett feladat kimenetének képernyőképe.":::
+:::image type="content" source="media/quick-create-portal/task-output.png" alt-text="Képernyőkép a Batch szolgáltatásról az Azure piactéren.":::
 
 A tartalom a csomóponton beállított Azure Batch környezeti változókat jeleníti meg. Saját Batch-feladatok és -tevékenységek létrehozása során hivatkozhat ezekre a környezeti változókra a tevékenységek parancssorában, illetve a parancssorok által futtatott alkalmazásokban és szkriptekben.
 

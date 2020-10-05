@@ -13,10 +13,10 @@ ms.author: marsma
 ms.custom: aaddev, identityplatformtop40, contperfq1
 ms.reviewer: aragra, lenalepa, sureshja
 ms.openlocfilehash: 9cd59d6bf5b9bf6e17cba0786bfac27ed12d7638
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91258132"
 ---
 # <a name="quickstart-register-an-application-with-the-microsoft-identity-platform"></a>Gyors útmutató: alkalmazás regisztrálása a Microsoft Identity platformmal
@@ -30,7 +30,7 @@ Minden egyes alkalmazásnak regisztrálnia kell a Microsoft Identity platformot 
 * Aktív előfizetéssel rendelkező Azure-fiók – [ingyenes fiók létrehozása](https://azure.microsoft.com/free/?WT.mc_id=A261C142F)
 * A rövid útmutató befejezése [: bérlő beállítása](quickstart-create-new-tenant.md)
 
-## <a name="register-an-application"></a>Alkalmazás regisztrálása
+## <a name="register-an-application"></a>Egy alkalmazás regisztrálása
 
 Az alkalmazás regisztrálása megbízhatósági kapcsolatot létesít az alkalmazás és a Microsoft Identity platform között. A bizalmi kapcsolat egyirányú: az alkalmazás megbízhatónak tartja a Microsoft Identity platformot, nem pedig fordítva.
 
@@ -59,7 +59,7 @@ Ha a regisztráció befejeződik, a Azure Portal megjeleníti az alkalmazás reg
 
 Az alkalmazás kódja, vagy általában az alkalmazásban használt hitelesítési tár is az ügyfél-azonosítót használja az identitási platformtól kapott biztonsági jogkivonatok érvényesítéséhez.
 
-:::image type="content" source="media/quickstart-register-app/portal-03-app-reg-02.png" alt-text="Képernyőfelvétel a webböngészőben lévő Azure Portalről, amely az alkalmazás regisztrálásának áttekintés paneljét jeleníti meg.":::
+:::image type="content" source="media/quickstart-register-app/portal-03-app-reg-02.png" alt-text="Képernyőkép a Azure Portalról egy webböngészőben, amely az alkalmazás regisztrálása ablaktáblát jeleníti meg.":::
 
 ## <a name="add-a-redirect-uri"></a>Átirányítási URI hozzáadása
 
@@ -80,7 +80,7 @@ Alkalmazásbeállítások konfigurálása a célzott platform vagy eszköz alapj
 1. A **platform-konfigurációk**területen válassza **a platform hozzáadása**lehetőséget.
 1. A **platformok konfigurálása**területen válassza ki az alkalmazás típusa (platform) csempéjét a beállítások konfigurálásához.
 
-    :::image type="content" source="media/quickstart-register-app/portal-04-app-reg-03-platform-config.png" alt-text="Képernyőfelvétel a platform konfigurációs paneljéről a Azure Portal" border="false":::
+    :::image type="content" source="media/quickstart-register-app/portal-04-app-reg-03-platform-config.png" alt-text="Képernyőkép a Azure Portalról egy webböngészőben, amely az alkalmazás regisztrálása ablaktáblát jeleníti meg." border="false":::
 
     | Platform | Konfigurációs beállítások |
     | -------- | ---------------------- |
@@ -101,7 +101,7 @@ A hitelesítő adatokat a webes API-hoz hozzáférő bizalmas ügyfélalkalmazá
 
 A bizalmas ügyfélalkalmazás regisztrációjának hitelesítő adataiként is hozzáadhat tanúsítványokat és ügyfél-titkot (karakterláncot).
 
-:::image type="content" source="media/quickstart-register-app/portal-05-app-reg-04-credentials.png" alt-text="Képernyőkép a Azure Portal a tanúsítványok és titkok panel megjelenítéséről az alkalmazás regisztrálásakor":::
+:::image type="content" source="media/quickstart-register-app/portal-05-app-reg-04-credentials.png" alt-text="Képernyőkép a Azure Portalról egy webböngészőben, amely az alkalmazás regisztrálása ablaktáblát jeleníti meg.":::
 
 ### <a name="add-a-certificate"></a>Tanúsítvány hozzáadása
 
@@ -123,7 +123,7 @@ Az ügyfél titkos kulcsa (más néven *alkalmazás jelszava*) egy olyan karakte
 1. Válassza a **Hozzáadás** lehetőséget.
 1. **Jegyezze fel a titkos kulcs értékét** az ügyfélalkalmazás kódjában való használathoz – ez a lap *nem jelenik meg többé* , miután elhagyja ezt a lapot.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az ügyfélalkalmazások általában a webes API-k erőforrásaihoz férnek hozzá. Az ügyfélalkalmazás Microsoft Identity platformmal való védelme mellett a platformon is engedélyezheti a hatókörön belüli, a webes API-hoz való hozzáféréshez szükséges engedélyeket.
 

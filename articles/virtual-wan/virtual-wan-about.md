@@ -9,10 +9,10 @@ ms.date: 09/22/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to understand what Virtual WAN is and if it is the right choice for my Azure network.
 ms.openlocfilehash: 69525173aa5c4af536105a4e897ee4860f021b6c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91267431"
 ---
 # <a name="what-is-azure-virtual-wan"></a>Mi az Azure Virtual WAN?
@@ -136,6 +136,6 @@ Az útválasztási táblák mostantól társítási és propagálási funkciókk
 
 Fizessen elő az RSS-hírcsatornára, és tekintse meg a virtuális WAN legújabb funkcióinak frissítéseit az [Azure Updates](https://azure.microsoft.com/updates/?category=networking&query=VIRTUAL%20WAN) oldalon.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Helyek közötti kapcsolat létrehozása virtuális WAN használatával](virtual-wan-site-to-site-portal.md)

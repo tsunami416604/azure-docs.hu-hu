@@ -13,10 +13,10 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: aragra, lenalepa, sureshja
 ms.openlocfilehash: d143bde9c22bc726f00b5c209d1b7fbc131905b0
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91258013"
 ---
 # <a name="quickstart-modify-the-accounts-supported-by-an-application"></a>Gyors útmutató: alkalmazás által támogatott fiókok módosítása
@@ -53,7 +53,7 @@ Ha olyan alkalmazást ír, amelyet a szervezeten kívüli ügyfelei és partnere
     * Válassza a **Csak az ebben a címtárban található fiókok** lehetőséget, ha üzletági alkalmazást készít. Ez a lehetőség nem érhető el, ha nem regisztrálta az alkalmazást valamely címtárban.
     * Válassza a **Tetszőleges szervezeti címtárban található fiókok** lehetőséget, ha szeretne minden üzleti és az oktatási ügyfelet megcélozni.
     * Válassza a **Tetszőleges szervezeti címtárban található fiókok és személyes Microsoft-fiókok** lehetőséget, ha a lehető legszélesebb ügyfélkört szeretné megcélozni.
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
 ## <a name="enable-oauth-20-implicit-grant-for-single-page-applications"></a>OAuth 2.0 implicit engedély használatának engedélyezése egyoldalas alkalmazásoknál
 
@@ -70,9 +70,9 @@ Az OAuth 2.0 implicit engedély alapértelmezés szerint le van tiltva az alkalm
 1. Az alkalmazás **Áttekintés** lapján válassza a **Hitelesítés** szakaszt.
 1. A **Speciális beállítások** alatt keresse meg au **Implicit engedély** szakaszt.
 1. Jelölje ki az **Azonosító-jogkivonatok** vagy a **Hozzáférési jogkivonatok** lehetőséget, vagy mindkettőt.
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Védjegyzési útmutató az alkalmazásokhoz](howto-add-branding-in-azure-ad-apps.md)

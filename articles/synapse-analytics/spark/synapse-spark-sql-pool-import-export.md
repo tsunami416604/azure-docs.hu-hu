@@ -10,13 +10,13 @@ ms.date: 04/15/2020
 ms.author: prgomata
 ms.reviewer: euang
 ms.openlocfilehash: 11f73d2becb40b800c49afe0cd58f56953f8d42d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91259918"
 ---
-# <a name="introduction"></a>Introduction (Bevezetés)
+# <a name="introduction"></a>Bevezetés
 
 Az Azure szinapszis Apache Spark a szinapszis SQL connectorhoz az Azure szinapszisban az adatoknak a Spark-készletek (előzetes verzió) és az SQL-készletek közötti hatékony átvitelét szolgálja. Az Azure szinapszis Apache Spark a szinapszis SQL-összekötő csak az SQL-készleteken működik, az SQL igény szerint nem működik.
 
@@ -235,7 +235,7 @@ A munkaterülethez csatlakoztatott ADLS Gen2 Storage-fiókban tárolnia kell a b
 > [!IMPORTANT]
 > Ügyeljen arra, hogy ne válassza az "alapértelmezett" lehetőséget, ha nem kívánja.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [SQL-készlet létrehozása a Azure Portal használatával](../../synapse-analytics/quickstart-create-apache-spark-pool-portal.md)
 - [Új Apache Spark-készlet létrehozása a Azure Portal használatával](../../synapse-analytics/quickstart-create-apache-spark-pool-portal.md) 

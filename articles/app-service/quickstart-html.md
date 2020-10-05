@@ -1,6 +1,6 @@
 ---
 title: 'Gyors útmutató: statikus HTML-Webalkalmazás létrehozása'
-description: Percek alatt üzembe helyezheti az első HTML-"Helló világ!" alkalmazás Azure App Service. Az üzembe helyezés a git használatával történik, amely a App Service üzembe helyezésének számos módszerének egyike.
+description: Percek alatt üzembe helyezheti az első HTML-„Helló világ!” alkalmazás Azure App Service. Az üzembe helyezés a git használatával történik, amely a App Service üzembe helyezésének számos módszerének egyike.
 author: msangapu-msft
 ms.assetid: 60495cc5-6963-4bf0-8174-52786d226c26
 ms.topic: quickstart
@@ -8,10 +8,10 @@ ms.date: 08/23/2019
 ms.author: msangapu
 ms.custom: mvc, cli-validate, seodec18
 ms.openlocfilehash: d624d332fa35bf458e9158e00aaf83ce495b9061
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88961340"
 ---
 # <a name="create-a-static-html-web-app-in-azure"></a>Statikus HTML-webalkalmazás létrehozása az Azure-ban
@@ -132,7 +132,7 @@ az group delete --name appsvc_rg_Windows_westeurope
 
 A parancs futtatása egy percig is eltarthat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Egyéni tartomány leképezése](app-service-web-tutorial-custom-domain.md)

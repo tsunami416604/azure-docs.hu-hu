@@ -10,10 +10,10 @@ ms.topic: overview
 ms.date: 08/28/2019
 ms.author: alkohli
 ms.openlocfilehash: 2f1f01a8cfa25c222848e7cc5c86dc3532eba348
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "80437773"
 ---
 # <a name="what-is-azure-data-box-heavy"></a>Mi az az Azure Data Box Heavy?
@@ -65,7 +65,7 @@ A Data Box Heavy eszköz ebben a kiadásban a következő funkciókkal rendelkez
 | Dimenziók                                              | Szélesség: 26 hüvelyk magasság: 28 cm hosszúság: 48 hüvelyk |
 | Kiszolgálószekrény-terület                                              | Nem lehet állványra csatlakoztatni|
 | Szükséges kábelek                                         | 4 megalapozott 120 V/10 A beépített tápkábelek (néma 5-15) <br> Az eszköz legfeljebb 240 V-os teljesítményt támogat, és C-13 energiaellátási tárolóval rendelkezik <br> A [MELLANOX MCX314A-BCCT](https://store.mellanox.com/products/mellanox-mcx314a-bcct-connectx-3-pro-en-network-interface-card-40-56gbe-dual-port-qsfp-pcie3-0-x8-8gt-s-rohs-r6.html) kompatibilis hálózati kábelek használata  |
-| Power                                                    | 4 az eszközök csomópontjain megosztott beépített tápegységek (PSUs-EK) <br> 1 200 wattos átlagos Power Draw|
+| Energiaellátás                                                    | 4 az eszközök csomópontjain megosztott beépített tápegységek (PSUs-EK) <br> 1 200 wattos átlagos Power Draw|
 | Tárkapacitás                                        | ~ 1 – PB nyers, 70, egyenként 14 TB-os lemez <br> 770 – TB felhasználható kapacitás|
 | Csomópontok száma                                          | 2 független csomópont/eszköz (500 TB) |
 | Hálózati adapterek/csomópont                             | 4 hálózati adapter/csomópont <br><br> MGMT, DATA3 <ul><li> 2 X 1 – GbE felületek </li><li> A MGMT a felügyelet és a kezdeti beállítás, nem pedig a felhasználó által konfigurálható </li><li> A DATA3 felhasználó által konfigurálható és Dynamic Host Configuration Protocol (DHCP) alapértelmezés szerint</li></ul>DATA1, DATA2-adatillesztők <ul><li>2 X 40 – GbE felületek </li><li> Felhasználó által konfigurálható DHCP (alapértelmezett) vagy statikus</li></ul>|
@@ -118,7 +118,7 @@ A Data Box Heavy regisztrálásához hajtsa végre a következő lépéseket:
 
 1. [Jelentkezzen be a Azure Portalba](https://portal.azure.com).
 2. Kattintson az **+ erőforrás létrehozása** lehetőségre egy új erőforrás létrehozásához. Keressen az **Azure Data Box** kifejezésre. Válassza az **Azure Data Box** szolgáltatást.
-3. Kattintson a **Létrehozás**gombra.
+3. Kattintson a **Létrehozás** elemre.
 4. Válassza ki a Data Box Heavyhoz használni kívánt előfizetést. Válassza ki a régiót, ahol üzembe szeretné helyezni a Data Box Heavy-erőforrást. A **Data Box Heavy** lehetőségnél kattintson a **Regisztráció** elemre.
 5. Válaszoljon az adatforgalomra, a hálózati sávszélességre és az adatátviteli gyakoriságra vonatkozó, az adatok tartózkodási országával/régiójával, az időkerettel és az Azure-szolgáltatással kapcsolatos kérdésekre. Tekintse át az adatvédelmi és felhasználási feltételeket, és a négyzet bejelölésével járuljon hozzá, hogy a Microsoft használhassa az e-mail-címét az Önnel való kapcsolatfelvételhez.
 

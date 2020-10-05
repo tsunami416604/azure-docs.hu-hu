@@ -10,10 +10,10 @@ ms.date: 06/24/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.openlocfilehash: 55059f4edea19a1e559ea1ad99d9e7e60756cc96
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87836377"
 ---
 # <a name="introduction-to-azure-blob-storage"></a>Az Azure Blob Storage bemutatása
@@ -44,7 +44,7 @@ http://mystorageaccount.blob.core.windows.net
 
 A Storage-fiók létrehozásával kapcsolatban tekintse meg [a Storage-fiók létrehozása](../common/storage-account-create.md)című témakört. További információ a Storage-fiókokról: az [Azure Storage-fiók áttekintése](../common/storage-account-overview.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
-### <a name="containers"></a>Tárolók
+### <a name="containers"></a>Containers
 
 Egy tároló blobokat szervez, hasonlóan a fájlrendszer egy könyvtárához. Egy tárfiók korlátlan számú tárolót tartalmazhat, egy tároló pedig korlátlan számú blob tárolására használható.
 
@@ -72,7 +72,7 @@ Számos megoldás létezik a meglévő és a blob Storage-tárolóba való átte
 - **Azure Data Box** szolgáltatás elérhető a helyszíni adatok blob Storage-ba történő átviteléhez, ha a nagyméretű adathalmazok vagy hálózati korlátozások miatt az adatok feltöltése nem reális. Az adatmérettől függően [Azure Data Box Disk](../../databox/data-box-disk-overview.md), [Azure Data Box](../../databox/data-box-overview.md)vagy [Azure Data Box Heavy](../../databox/data-box-heavy-overview.md) eszközt kérhet a Microsofttól. Ezután átmásolhatja az adatait az eszközökre, és visszaküldheti azokat a Microsoftnak a blob Storage-ba való feltöltéshez.
 - Az **Azure import/export szolgáltatás** lehetővé teszi nagy mennyiségű adatok importálását és exportálását a Storage-fiókba az Ön által megadott merevlemez-meghajtók használatával. További információ: [a Microsoft Azure import/export szolgáltatás használata adatok blob Storage-tárolóba történő átviteléhez](../common/storage-import-export-service.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Tárfiók létrehozása](../common/storage-create-storage-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json)
 - [A blob Storage méretezhetőségi és teljesítménybeli céljai](scalability-targets.md)

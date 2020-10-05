@@ -11,10 +11,10 @@ ms.author: mrys
 ms.reviewer: jrasnick
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 58c1aea944d89872a79d0672a925b1696791c1a8
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91260852"
 ---
 # <a name="azure-synapse-analytics-shared-database"></a>Az Azure szinapszis Analytics megosztott adatbázisa
@@ -74,7 +74,7 @@ SELECT * FROM sys.databases;
 
 Ellenőrizze, hogy `mytestdb` szerepel-e az eredmények között.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [További információ az Azure szinapszis Analytics megosztott metaadatairól](overview.md)
 - [További információ az Azure szinapszis Analytics megosztott metaadatait tartalmazó tábláiról](table.md)

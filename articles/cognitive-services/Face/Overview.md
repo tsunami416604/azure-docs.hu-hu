@@ -12,10 +12,10 @@ ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: arc-felismerés, Arcfelismerés szoftver, arc-elemzés, szembenézés egyeztetése, Arcfelismerés alkalmazás, Szembenézés a képek alapján, Arcfelismerés keresés
 ms.openlocfilehash: 0a7e242add9fdaa9e169a4003e8ad8f39b1fb111
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91262484"
 ---
 # <a name="what-is-the-azure-face-service"></a>Mi az Azure Face Service?
@@ -29,7 +29,7 @@ Az Azure Face szolgáltatás olyan AI-algoritmusokat biztosít, amelyek a képek
 
 A Face szolgáltatás számos különböző arc-elemzési funkciót biztosít, amelyek mindegyike az alábbi részben látható.
 
-## <a name="face-detection"></a>Arcfelismerés
+## <a name="face-detection"></a>Arcészlelés
 
 A Face szolgáltatás észleli az emberi arcokat egy képen, és visszaadja a helyük téglalapjának koordinátáit. Ha szeretné, a Arcfelismerés számos arc-alapú attribútumot, például a Head póz, a nemek, a kor, az érzelem, az arcszőrzet és a szemüvegeket is kinyerheti.
 
@@ -76,7 +76,7 @@ Az adatbázis létrehozása és betanítása után az azonosítást a csoporton 
 
 A személy azonosításával kapcsolatos további információkért tekintse meg az [arc-felismerési](concepts/face-recognition.md) fogalmakat ismertető útmutatót vagy az API-referenciák [azonosítására](https://westus.dev.cognitive.microsoft.com/docs/services/563879b61984550e40cbbe8d/operations/563879b61984550f30395239) szolgáló dokumentációt.
 
-## <a name="containers"></a>Tárolók
+## <a name="containers"></a>Containers
 
 [A Face tárolóval](face-how-to-install-containers.md) az arcok észlelésére, felismerésére és azonosítására van egy szabványosított Docker-tároló telepítése az adataihoz közelebb.
 
@@ -91,7 +91,7 @@ Az alábbi példák a Face szolgáltatás használatának néhány módját muta
 
 Akárcsak az összes Cognitive Services erőforrás esetében, a Face szolgáltatást használó fejlesztőknek ismerniük kell a Microsoft adatkezelési szabályzatait. További információkért tekintse meg a Microsoft adatvédelmi központjának [Cognitive Services lapját](https://www.microsoft.com/trustcenter/cloudservices/cognitiveservices) .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Kövessen egy rövid útmutatót egy Arcfelismerés alkalmazás alapvető összetevőinek a választott nyelven való kódolásához.
 

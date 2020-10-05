@@ -9,10 +9,10 @@ ms.date: 07/20/2020
 ms.topic: overview
 ms.service: azure-communication-services
 ms.openlocfilehash: 1c79ffb02df4a64b2c506ef0863d9bb2da06db53
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91303369"
 ---
 # <a name="what-is-azure-communication-services"></a>Az Azure Communication Services bemutatása
@@ -56,7 +56,7 @@ Az alábbi források nagyszerű kiindulópontot jelentenek, ha most ismerkedik a
 Az alábbi minták az Azure kommunikációs szolgáltatások ügyféloldali kódtárainak végpontok közötti kihasználtságát szemléltetik. Nyugodtan használhatja ezeket a mintákat a saját kommunikációs szolgáltatások megoldásának elindításához.
 <br>
 
-| Minta neve                               | Description                           |
+| Minta neve                               | Leírás                           |
 |---                                    |---                                   |
 |**[A Hero-mintát hívó csoport](./samples/calling-hero-sample.md)**|Megtudhatja, hogyan használható a kommunikációs szolgáltatások ügyféloldali kódtára egy csoportos hívási élmény létrehozásához.|
 |**[A csoportos csevegési hős mintája](./samples/chat-hero-sample.md)**|Megtudhatja, hogyan használható a kommunikációs szolgáltatások ügyféloldali kódtára egy csoportos csevegési élmény létrehozásához.|

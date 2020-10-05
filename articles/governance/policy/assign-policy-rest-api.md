@@ -4,10 +4,10 @@ description: Ebben a rövid útmutatóban a REST API használatával hozhat lét
 ms.date: 08/10/2020
 ms.topic: quickstart
 ms.openlocfilehash: 04880ef013060bc5ff12618af6a9156295a26a88
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88136523"
 ---
 # <a name="quickstart-create-a-policy-assignment-to-identify-non-compliant-resources-with-rest-api"></a>Gyors útmutató: szabályzat-hozzárendelés létrehozása a nem megfelelő erőforrások azonosításához REST API
@@ -55,10 +55,10 @@ Az előző végpont és a kérelem törzse a következő információkat haszná
 
 REST API URI:
 - **Hatókör** – A hatókör határozza meg, hogy a szabályzat-hozzárendelés milyen erőforrások vagy erőforráscsoportok esetében lesz kényszerítve. Egy felügyeleti csoportból egy adott erőforrásra terjedhet. Ügyeljen arra, hogy a `{scope}` következő minták egyikét cserélje le:
-  - Felügyeleti csoport:`/providers/Microsoft.Management/managementGroups/{managementGroup}`
-  - Előfizetés`/subscriptions/{subscriptionId}`
+  - Felügyeleti csoport: `/providers/Microsoft.Management/managementGroups/{managementGroup}`
+  - Előfizetés `/subscriptions/{subscriptionId}`
   - Erőforráscsoport: `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}`
-  - Erőforrás`/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}`
+  - Erőforrás `/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/{resourceProviderNamespace}/[{parentResourcePath}/]{resourceType}/{resourceName}`
 - **Name** – A hozzárendelés tényleges neve. A fenti példában az _audit-vm-manageddisks_ nevet használtuk.
 
 Kérelem törzse:
@@ -112,7 +112,7 @@ DELETE https://management.azure.com/{scope}/providers/Microsoft.Authorization/po
 
 Cserélje le a helyére `{scope}` a szabályzat-hozzárendelés első létrehozásakor használt hatókört.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban hozzárendelt egy szabályzatdefiníciót az Azure-környezetben megtalálható, nem megfelelő erőforrások azonosítása céljából.
 

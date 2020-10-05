@@ -8,10 +8,10 @@ ms.author: mathoma
 ms.date: 06/29/2020
 ms.service: virtual-machines-sql
 ms.openlocfilehash: 21909a9c7a1edda5059b9e83cf8dda243862b966
-ms.sourcegitcommit: d18a59b2efff67934650f6ad3a2e1fe9f8269f21
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88660207"
 ---
 # <a name="quickstart-create-sql-server-vm-using-an-arm-template"></a>Rövid útmutató: SQL Server VM létrehozása ARM-sablonnal
@@ -77,7 +77,7 @@ Az Azure-beli virtuálisgép-sablonokkal kapcsolatos további SQL Server a gyors
     * **Napló elérési útja**: a SQL Server naplófájlok elérési útja. 
     * **Hely**: az összes erőforrás helye, ennek az értéknek az alapértelmezettnek kell maradnia `[resourceGroup().location]` . 
 
-3. Válassza a **Felülvizsgálat + létrehozás** lehetőséget. A SQL Server VM sikeres üzembe helyezését követően értesítést kap.
+3. Válassza az **Áttekintés + létrehozás** lehetőséget. A SQL Server VM sikeres üzembe helyezését követően értesítést kap.
 
 Az Azure Portalon helyezhető üzembe a sablon. A Azure Portalon kívül használhatja a Azure PowerShell, az Azure CLI és a REST API is. További információ az üzembe helyezési módszerekről: [sablonok üzembe helyezése](../../../azure-resource-manager/templates/deploy-powershell.md).
 

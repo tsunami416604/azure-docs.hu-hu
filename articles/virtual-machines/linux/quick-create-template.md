@@ -9,10 +9,10 @@ ms.date: 06/04/2020
 ms.author: cynthn
 ms.custom: subject-armqs
 ms.openlocfilehash: bd22d20703dc72e220f9b479b4a4005033f964ae
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88649771"
 ---
 # <a name="quickstart-create-an-ubuntu-linux-virtual-machine-using-an-arm-template"></a>Gyors útmutató: Ubuntu Linux virtuális gép létrehozása ARM-sablonnal
@@ -69,7 +69,7 @@ Több erőforrás van definiálva a sablonban:
     - **Virtual Network neve**: a vNet használandó név.
     - **Alhálózat neve**: a virtuális gép által használandó alhálózat neve.
     - **Hálózati biztonsági csoport neve**: a NSG neve.
-1. Válassza a **Felülvizsgálat + létrehozás** lehetőséget. Az érvényesítés befejezése után a **Létrehozás** gombra kattintva hozhatja létre és helyezheti üzembe a virtuális gépet.
+1. Válassza az **Áttekintés + létrehozás** lehetőséget. Az érvényesítés befejezése után a **Létrehozás** gombra kattintva hozhatja létre és helyezheti üzembe a virtuális gépet.
 
 
 Az Azure Portalon helyezhető üzembe a sablon. A Azure Portalon kívül használhatja az Azure CLI-t, a Azure PowerShellt és a REST API is. További információ az üzembe helyezési módszerekről: [sablonok üzembe helyezése](../../azure-resource-manager/templates/deploy-cli.md).

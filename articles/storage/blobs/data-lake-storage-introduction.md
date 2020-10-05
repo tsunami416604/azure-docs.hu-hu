@@ -9,13 +9,13 @@ ms.author: normesta
 ms.reviewer: jamesbak
 ms.subservice: data-lake-storage-gen2
 ms.openlocfilehash: d85b0cd2f9fa7eb81f5c39bd5d163188e3cd7106
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87835765"
 ---
-# <a name="introduction-to-azure-data-lake-storage-gen2"></a>Bevezetés a Azure Data Lake Storage Gen2ba
+# <a name="introduction-to-azure-data-lake-storage-gen2"></a>Az Azure Data Lake Storage Gen2 bemutatása
 
 A Azure Data Lake Storage Gen2 az [Azure Blob Storage](storage-blobs-introduction.md)-ra épülő, Big Data Analytics szolgáltatáshoz dedikált képességek összessége. Data Lake Storage Gen2 a két meglévő tárolási szolgáltatás, az Azure Blob Storage és a Azure Data Lake Storage Gen1 képességeinek átszervezését eredményezi. A [Azure Data Lake Storage Gen1](https://docs.microsoft.com/azure/data-lake-store/index), például a fájlrendszer szemantikai, a könyvtári és a fájl szintű biztonság és a skálázás funkciói kombinálva vannak az [Azure Blob Storage](storage-blobs-introduction.md)alacsony díjas, többszintű tárolási, magas rendelkezésre állású/vész-helyreállítási képességeivel.
 
@@ -80,7 +80,7 @@ Data Lake Storage a Gen2 számos olyan Azure-szolgáltatást támogat, amelyet a
 
 Számos nyílt forráskódú platform támogatja a Data Lake Storage Gen2. A teljes listát lásd: a [Azure Data Lake Storage Gen2t támogató nyílt forráskódú platformok](data-lake-storage-supported-open-source-platforms.md).
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 - [Ismert problémák a Azure Data Lake Storage Gen2](data-lake-storage-known-issues.md)
 - [Több protokollos hozzáférés Azure Data Lake Storage](data-lake-storage-multi-protocol-access.md)

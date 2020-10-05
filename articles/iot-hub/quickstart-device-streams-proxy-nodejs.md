@@ -10,10 +10,10 @@ ms.custom: mvc, devx-track-js
 ms.date: 03/14/2019
 ms.author: robinsh
 ms.openlocfilehash: c54a112a85ad930dde524ba4293a3ad0b700a22f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91303063"
 ---
 # <a name="quickstart-enable-ssh-and-rdp-over-an-iot-hub-device-stream-by-using-a-nodejs-proxy-application-preview"></a>Gyors útmutató: SSH és RDP engedélyezése IoT Hub-adatfolyamon egy Node.js alkalmazásproxy alkalmazásával (előzetes verzió)
@@ -43,7 +43,7 @@ A Microsoft Azure IoT Hub jelenleg [előzetes verziójú szolgáltatásként](ht
 > [!IMPORTANT]
 > Az adatfolyamok előnézete jelenleg csak a következő régiókban létrehozott IoT hubok esetében támogatott:
 >
-> * Az USA középső régiója
+> * USA középső régiója
 > * USA középső – EUAP
 > * Észak-Európa
 > * Délkelet-Ázsia
@@ -168,7 +168,7 @@ Most használja az RDP-ügyfélalkalmazás használatát, és kapcsolódjon a Se
 
 [!INCLUDE [iot-hub-quickstarts-clean-up-resources](../../includes/iot-hub-quickstarts-clean-up-resources-device-streams.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban egy IoT hubot állít be, regisztrált egy eszközt, és üzembe helyezett egy Service proxy-alkalmazást az RDP és az SSH IoT-eszközön való engedélyezéséhez. Az RDP-és SSH-forgalom az IoT hub-on keresztül egy eszköz streamen keresztül lesz átirányítva. Ez a folyamat nem teszi szükségessé az eszközhöz való közvetlen csatlakozást.
 

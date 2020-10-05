@@ -4,13 +4,13 @@ description: Ebből a cikkből megtudhatja, milyen viszonyítási metaadatok sé
 ms.topic: overview
 ms.date: 09/14/2020
 ms.openlocfilehash: 6239713fc92b75b8ed026a8f04953e92a24c4596
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88691861"
 ---
-# <a name="inference-metadata-schema"></a>Metaadat-séma következtetése 
+# <a name="inference-metadata-schema"></a>Következtetéses metaadatok sémája 
 
 Minden olyan következtetési objektum, amely HTTP-alapú vagy gRPC-alapú szerződés használatával történik, a jelen témakörben ismertetett objektummodell követi.
 

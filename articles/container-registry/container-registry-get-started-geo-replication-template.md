@@ -9,10 +9,10 @@ ms.custom: subject-armqs
 ms.author: danlep
 ms.date: 05/26/2020
 ms.openlocfilehash: 2cfce37ff63a8321f40843ced2a7b786bcfc013e
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88649601"
 ---
 # <a name="quickstart-create-a-geo-replicated-container-registry-by-using-an-arm-template"></a>Gyors útmutató: földrajzilag replikált tároló-beállításjegyzék létrehozása ARM-sablon használatával
@@ -62,7 +62,7 @@ További Azure Container Registry-sablonok a gyorsindítási [sablonok](https://
 
  3. Ha elfogadja a használati feltételeket, válassza a **vásárlás**lehetőséget. A beállításjegyzék sikeres létrehozása után értesítést kap:
 
-     :::image type="content" source="media/container-registry-get-started-geo-replication-template/deployment-notification.png" alt-text="Portál értesítése":::
+     :::image type="content" source="media/container-registry-get-started-geo-replication-template/deployment-notification.png" alt-text="Sablon tulajdonságai":::
 
  Az Azure Portalon helyezhető üzembe a sablon. A Azure Portalon kívül a Azure PowerShell, az Azure CLI és a REST API is használható. További információ az üzembe helyezési módszerekről: [sablonok üzembe helyezése](../azure-resource-manager/templates/deploy-cli.md).
 
@@ -74,11 +74,11 @@ A tároló-beállításjegyzék tulajdonságainak áttekintéséhez használja a
 
 1. Az **Áttekintés** lapon jegyezze fel a beállításjegyzék **bejelentkezési kiszolgálóját** . Akkor használja ezt az URI-t, ha a Docker használatával címkézi és leküldi a lemezképeket a beállításjegyzékbe. További információ: az [első rendszerkép leküldése a Docker CLI használatával](container-registry-get-started-docker-cli.md).
 
-    :::image type="content" source="media/container-registry-get-started-geo-replication-template/registry-overview.png" alt-text="A beállításjegyzék áttekintése":::
+    :::image type="content" source="media/container-registry-get-started-geo-replication-template/registry-overview.png" alt-text="Sablon tulajdonságai":::
 
 1. A **replikálások** lapon erősítse meg a Kezdőlap replika és a sablonon keresztül hozzáadott replika helyét. Ha kívánja, adjon hozzá további replikákat ezen a lapon.
 
-    :::image type="content" source="media/container-registry-get-started-geo-replication-template/registry-replications.png" alt-text="Beállításjegyzék-replikálások":::
+    :::image type="content" source="media/container-registry-get-started-geo-replication-template/registry-replications.png" alt-text="Sablon tulajdonságai":::
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

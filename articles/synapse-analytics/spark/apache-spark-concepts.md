@@ -10,10 +10,10 @@ ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
 ms.openlocfilehash: 74e85906742207d6cde0b7c4cc5c021c23ee4c7b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91260138"
 ---
 # <a name="apache-spark-in-azure-synapse-analytics-core-concepts"></a>Apache Spark az Azure szinapszis Analytics alapvető fogalmakkal
@@ -60,7 +60,7 @@ Ha egy második feladatot küld el, ha van kapacitás a készletben, akkor a meg
 - Egy másik felhasználó, a U2, a J3, amely 10 csomópontot használ, egy új Spark-példányt hoz létre a SI2, amely feldolgozza a feladatot.
 - Most elküld egy másik feladatot, a J2, amely 10 csomópontot használ, mivel a készletben továbbra is rendelkezésre áll a kapacitása, a J2 pedig a SI1 dolgozza fel.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Azure Synapse Analytics](https://docs.microsoft.com/azure/synapse-analytics)
 - [Apache Spark dokumentáció](https://spark.apache.org/docs/2.4.4/)

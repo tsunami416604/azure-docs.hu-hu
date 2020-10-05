@@ -17,10 +17,10 @@ ms.date: 08/20/2020
 ms.author: allensu
 ms.custom: mvc, devx-track-js, devx-track-azurecli
 ms.openlocfilehash: dc6abc51fd0e5669126f1d2f1a977194479db5f5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91269879"
 ---
 # <a name="quickstart-create-an-internal-load-balancer-to-load-balance-vms-using-azure-cli"></a>Rövid útmutató: belső terheléselosztó létrehozása a virtuális gépek terheléselosztásához az Azure CLI használatával
@@ -36,7 +36,7 @@ Ismerkedjen meg Azure Load Balancer az Azure CLI használatával, és hozzon lé
 
 Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez a rövid útmutatóhoz az Azure CLI 2.0.28 verziójára vagy újabb verziójára van szükség. A verzió megkereséséhez futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését]( /cli/azure/install-azure-cli) ismertető cikket.
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.
 
@@ -172,7 +172,7 @@ Ebben a szakaszban a következőket hozza létre:
 
 ### <a name="create-cloud-init-configuration-file"></a>Cloud-init konfigurációs fájl létrehozása
 
-Egy Cloud-init konfigurációs fájllal telepítheti az NGINX-et, és futtathat egy ""Helló világ!"alkalmazás" Node.js alkalmazást Linux rendszerű virtuális gépen. 
+Egy Cloud-init konfigurációs fájllal telepítheti az NGINX-et, és futtathat egy "„Helló világ!” alkalmazás" Node.js alkalmazást Linux rendszerű virtuális gépen. 
 
 A jelenlegi rendszerhéjában hozzon létre egy cloud-init.txt nevű fájlt. Másolja és illessze be a következő konfigurációt a rendszerhéjba. Győződjön meg arról, hogy helyesen másolja a teljes Cloud-init-fájlt, különösen az első sort:
 
@@ -508,7 +508,7 @@ A terheléselosztó sikeres létrehozásának ellenőrzéséhez telepítse az NG
 
 ### <a name="create-cloud-init-configuration-file"></a>Cloud-init konfigurációs fájl létrehozása
 
-Egy Cloud-init konfigurációs fájllal telepítheti az NGINX-et, és futtathat egy ""Helló világ!"alkalmazás" Node.js alkalmazást Linux rendszerű virtuális gépen. 
+Egy Cloud-init konfigurációs fájllal telepítheti az NGINX-et, és futtathat egy "„Helló világ!” alkalmazás" Node.js alkalmazást Linux rendszerű virtuális gépen. 
 
 A jelenlegi rendszerhéjában hozzon létre egy cloud-init.txt nevű fájlt. Másolja és illessze be a következő konfigurációt a rendszerhéjba. Győződjön meg arról, hogy helyesen másolja a teljes Cloud-init-fájlt, különösen az első sort:
 
@@ -857,7 +857,7 @@ Ha már nincs rá szükség, az az [Group delete](https://docs.microsoft.com/cli
     --name myResourceGroupLB
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebben a rövid útmutatóban
 
 * Létrehozta a standard vagy a nyilvános terheléselosztó

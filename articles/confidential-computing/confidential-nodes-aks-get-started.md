@@ -7,10 +7,10 @@ ms.topic: quickstart
 ms.date: 9/22/2020
 ms.author: amgowda
 ms.openlocfilehash: c8c64dadebb092d7f376fd2b6590b26f4dde0ee0
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91000983"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-with-confidential-computing-nodes-using-azure-cli-preview"></a>Gyors útmutató: Azure Kubernetes Service (ak) fürt üzembe helyezése bizalmas számítástechnikai csomópontokkal az Azure CLI használatával (előzetes verzió)
@@ -111,7 +111,7 @@ kube-system     sgx-device-plugin-xxxx     1/1     Running
 ```
 Ha a kimenet megfelel a fentinek, akkor az AK-fürt most már készen áll a bizalmas alkalmazások futtatására.
 
-Nyissa meg ["Helló világ!" alkalmazás az enklávé](#hello-world) üzembe helyezése szakaszát, hogy tesztelje az alkalmazást egy enklávéban. Vagy kövesse az alábbi utasításokat további Node-készletek hozzáadásához az AK-ban (az AK támogatja a SGX ENKLÁVÉHOZ-csomópontok és a nem SGX ENKLÁVÉHOZ csomópont-készletek keverését)
+Nyissa meg [„Helló világ!” alkalmazás az enklávé](#hello-world) üzembe helyezése szakaszát, hogy tesztelje az alkalmazást egy enklávéban. Vagy kövesse az alábbi utasításokat további Node-készletek hozzáadásához az AK-ban (az AK támogatja a SGX ENKLÁVÉHOZ-csomópontok és a nem SGX ENKLÁVÉHOZ csomópont-készletek keverését)
 
 >Ha a SGX ENKLÁVÉHOZ kapcsolódó démon-készletek nincsenek telepítve a DCSv2-csomópontok készletén, futtassa az alábbi parancsot.
 
@@ -154,7 +154,7 @@ kube-system     sgx-quote-helper-xxxx      1/1     Running
 ```
 Ha a kimenet megfelel a fentinek, akkor az AK-fürt most már készen áll a bizalmas alkalmazások futtatására.
 
-## <a name="hello-world-from-isolated-enclave-application"></a>"Helló világ!" alkalmazás izolált enklávé alkalmazásból <a id="hello-world"></a>
+## <a name="hello-world-from-isolated-enclave-application"></a>„Helló világ!” alkalmazás izolált enklávé alkalmazásból <a id="hello-world"></a>
 Hozzon létre egy *Hello-World-enklávé. YAML* nevű fájlt, és illessze be a következő YAML-jegyzékbe. Ez a nyílt enklávé-alapú minta alkalmazás kódja az [Open enklávé projektben](https://github.com/openenclave/openenclave/tree/master/samples/helloworld)található.
 
 ```yaml
@@ -234,7 +234,7 @@ Removing the confidential computing node pool
 az aks nodepool delete --cluster-name myAKSCluster --name myNodePoolName --resource-group myResourceGroup
 ``````
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Python, node stb. futtatása Bizalmas tárolókban bizalmasan kezelheti az alkalmazásokat a [bizalmas tárolók mintáinak](https://github.com/Azure-Samples/confidential-container-samples)meglátogatásával.
 

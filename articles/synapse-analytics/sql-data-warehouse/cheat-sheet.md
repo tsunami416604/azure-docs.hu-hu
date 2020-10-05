@@ -11,10 +11,10 @@ ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
 ms.openlocfilehash: 3b5783476e0d4a96561e11158cd2b0f6421cfbf6
-ms.sourcegitcommit: 1aef4235aec3fd326ded18df7fdb750883809ae8
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88136099"
 ---
 # <a name="cheat-sheet-for-azure-synapse-analytics-formerly-sql-dw"></a>Cheat Sheet for Azure szinapszis Analytics (korábban SQL DW)
@@ -39,11 +39,11 @@ A művelettípusok előzetes ismerete segít optimalizálni a táblák kialakít
 
 Először töltse be az adatait [Azure Data Lake Storageba](../../data-factory/connector-azure-data-lake-store.md?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json) vagy az Azure Blob Storageba. Ezután a [copy utasítás](/sql/t-sql/statements/copy-into-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) (előzetes verzió) használatával töltse be az adatait az átmeneti táblákba. Használja a következő konfigurációt:
 
-| Tervezés | Javaslat |
+| Tervezés | Ajánlás |
 |:--- |:--- |
 | Disztribúció | Ciklikus időszeletelés |
 | Indexelés | Halommemória |
-| Particionálás | Nincsenek |
+| Particionálás | Nincs |
 | Erőforrásosztály | largerc vagy xlargerc |
 
 Itt további információkat tudhat meg az [adatok migrálásáról](https://blogs.msdn.microsoft.com/sqlcat/20../../migrating-data-to-azure-sql-data-warehouse-in-practice/), az [adatok betöltéséről](design-elt-data-loading.md) és a [kinyerési, betöltési és átalakítási (ELT) folyamatról](design-elt-data-loading.md).
@@ -65,7 +65,7 @@ A tábla tulajdonságaitól függően a következő stratégiákat használja:
 * Ne terjesszen varchar formátumra.
 * A gyakori csatlakozási műveletekkel rendelkező ténytáblákhoz közös kivonatkulccsal rendelkező dimenziótáblákhoz kivonatterjesztés használható.
 * A *[sys.dm_pdw_nodes_db_partition_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-partition-stats-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)* segítségével elemezheti az adatokban lévő eltéréseket.
-* A *[sys. dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)* használatával elemezheti a lekérdezések mögötti mozgásokat, figyelheti a szórási időt, és megtekintheti a shuffle-műveleteket. Ez az elosztási stratégia áttekintéséhez hasznos.
+* A *[sys.dm_pdw_request_steps](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-request-steps-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)* használatával elemezheti a lekérdezéseket a lekérdezések mögött, figyelheti a szórási időt, és megtekintheti a shuffle-műveleteket. Ez az elosztási stratégia áttekintéséhez hasznos.
 
 További tudnivalók a [replikált táblákról](design-guidance-for-replicated-tables.md) és az [elosztott táblákról](sql-data-warehouse-tables-distribute.md).
 

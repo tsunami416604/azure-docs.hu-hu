@@ -8,24 +8,24 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 3/18/2020
 ms.openlocfilehash: 84fd24890495e7278c69c2f83c7182fd65f86791
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "79535561"
 ---
-# <a name="what-is-azure-database-for-mariadb"></a>Mi az Azure Database for MariaDB?
+# <a name="what-is-azure-database-for-mariadb"></a>Mi az az Azure Database for MariaDB?
 
 Az Azure Database for MariaDB egy fejlesztőknek készült relációsadatbázis-szolgáltatás a Microsoft Cloudban. A Azure Database for MariaDB a [MariaDB Community Edition rendszeren](https://mariadb.org/download/) alapul (amely az GPLv2-licenc alatt érhető el) adatbázismotor, 10,2-es és 10,3-es verzió.
 
-Az Azure Database for MariaDB szolgáltatás a következőket nyújtja:
+Az Azure Database for MariaDB a következőket biztosítja:
 
-- Beépített magas rendelkezésre állás további költség nélkül.
-- Kiszámítható teljesítmény, használatalapú díjszabással.
-- Méretezés igény szerint, másodpercek alatt.
-- Az inaktív és mozgásban lévő bizalmas adatok megerősített védelme.
+- Beépített magas rendelkezésre állás, további költségek nélkül.
+- Kiszámítható teljesítmény, használatalapú fizetéses befoglaló díjszabással.
+- Igény szerinti skálázás másodpercek alatt.
+- A bizalmas adatok biztonságos védelme inaktív állapotban és mozgásban is.
 - Automatikus biztonsági mentések és időponthoz kötött visszaállítás akár 35 napig.
-- Vállalati szintű biztonság és megfelelőség.
+- Nagyvállalati szintű biztonság és megfelelőség.
 
 Ezen képességek használata szinte semmilyen felügyeletet nem igényel, és nem jár további költségekkel. Az Azure Database for MariaDB segítségével gyorsabban fejlesztheti ki és hozhatja forgalomba az alkalmazásait. Nem kell értékes időt és erőforrásokat szánnia a virtuális gépek és az infrastruktúra kezelésére. Az alkalmazások fejlesztését a használni kívánt nyílt forráskódú eszközökkel és platformon folytathatja. A folyamatot az üzlet által megkövetelt sebességen és hatékonysággal hajthatja végre, és új készségeket sem kell elsajátítania.
 
@@ -55,7 +55,7 @@ Az Azure piacvezető 99,99%-os rendelkezésre állási SLA-t a Microsoft által 
 
 Az Azure-beli adatbázis-szolgáltatásokra jellemző adatvédelmet az Azure Database for MariaDB is biztosítja. Az Azure Database for MariaDB funkciói korlátozzák a hozzáférést, védik az inaktív és a mozgásban lévő adatokat, és segítenek a tevékenységek monitorozásában. Az Azure platform biztonságáról az [Azure biztonsági és adatkezelési központban](https://www.microsoft.com/trustcenter/security) talál információkat. A Azure Database for MariaDB biztonsági funkcióival kapcsolatos további információkért tekintse meg a [Biztonság áttekintése](concepts-security.md)című témakört.
 
-## <a name="contacts"></a>Kapcsolatok
+## <a name="contacts"></a>Kapcsolattartók
 
 Az Azure Database for MariaDB használatával kapcsolatos kérdéseit és javaslatait elküldheti egy e-mailben az [Azure Database for MariaDB csapatának](mailto:AskAzureDBforMariaDB@service.microsoft.com) (ez nem egyenlő a műszaki támogatással).
 

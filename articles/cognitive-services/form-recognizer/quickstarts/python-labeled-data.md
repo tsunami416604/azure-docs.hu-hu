@@ -11,10 +11,10 @@ ms.date: 05/27/2020
 ms.author: pafarley
 ms.custom: devx-track-python
 ms.openlocfilehash: e96940960b6ee131068b77bca4818499377ea3dd
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88723494"
 ---
 # <a name="train-a-form-recognizer-model-with-labels-using-rest-api-and-python"></a>Űrlap-felismerő modell betanítása címkékkel REST API és Python használatával
@@ -40,7 +40,7 @@ A rövid útmutató elvégzéséhez a következőket kell tennie:
 
 Ezután be kell állítania a szükséges bemeneti adatokat. A címkézett adatok funkció olyan speciális bemeneti követelményekkel rendelkezik, amelyeken túl van szükség az egyéni modellek címkék nélküli betanításához.
 
-Győződjön meg arról, hogy az összes betanítási dokumentum formátuma azonos. Ha több formátumban is rendelkezik űrlapokkal, a közös formátum alapján rendezheti őket almappákba. A betanítás során az API-t egy almappába kell irányítani.
+Győződjön meg arról, hogy az összes betanítási dokumentum formátuma azonos. Ha űrlapjai többféle formátumban vannak, rendezze őket almappákba formátum szerint. A betanítás során egy almappára kell hivatkoznia az API-nak.
 
 Ha címkével ellátott adatokkal kívánja betanítani a modellt, a következő fájloknak kell lennie bemenetként az almappában. Megtudhatja, hogyan hozhatja létre ezeket a fájlokat alább.
 
@@ -255,7 +255,7 @@ Minden forrás űrlap esetében a megfelelő címkefájl az eredeti fájlnevet f
 Ha címkével ellátott adattal szeretne betanítani egy modellt, a következő Python-kód futtatásával hívja meg az **[Egyéni modell](https://westus2.dev.cognitive.microsoft.com/docs/services/form-recognizer-api-v2/operations/TrainCustomModelAsync)** API-t. A kód futtatása előtt végezze el a következő módosításokat:
 
 1. Cserélje le az értékét `<Endpoint>` az űrlap-felismerő erőforrás végponti URL-címére.
-1. Cserélje le `<SAS URL>` az-t az Azure Blob Storage-tároló megosztott hozzáférési aláírása (SAS) URL-címére. Az SAS URL-cím lekéréséhez nyissa meg a Microsoft Azure Storage Explorer, kattintson a jobb gombbal a tárolóra, majd válassza a **közös hozzáférésű aláírás beolvasása**elemet. Győződjön meg arról, hogy az **olvasási** és a **listázási** engedély be van jelölve, majd kattintson a **Létrehozás**gombra. Ezután másolja az értéket az **URL** szakaszban. A formátumnak a következőket kell tartalmaznia: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>` .
+1. Cserélje le `<SAS URL>` az-t az Azure Blob Storage-tároló megosztott hozzáférési aláírása (SAS) URL-címére. Az SAS URL-cím lekéréséhez nyissa meg a Microsoft Azure Storage Explorer, kattintson a jobb gombbal a tárolóra, majd válassza a **közös hozzáférésű aláírás beolvasása**elemet. Győződjön meg arról, hogy az **olvasási** és a **listázási** engedély be van jelölve, majd kattintson a **Létrehozás**gombra. Ezután másolja az értéket az **URL** szakaszban. A következő formátumban kell lennie: `https://<storage account>.blob.core.windows.net/<container name>?<SAS value>`.
 1. A helyére írja `<Blob folder name>` be annak a mappának a nevét a blob-tárolóban, ahol a bemeneti adatok találhatók. Ha az adatok a gyökérben vannak, hagyja üresen, és távolítsa el a `"prefix"` mezőt a HTTP-kérelem törzsében.
 
 # <a name="v20"></a>[2.0-s verzió](#tab/v2-0)

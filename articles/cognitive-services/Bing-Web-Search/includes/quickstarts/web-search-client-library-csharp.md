@@ -10,10 +10,10 @@ ms.date: 03/05/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 3f8f7c41e4d18909ec4f483a0e37d83b4d05e79d
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88931087"
 ---
 Az Bing Web Search ügyféloldali kódtár megkönnyíti a C#-alkalmazásba való Bing Web Search integrálását. Ebben a rövid útmutatóban elsajátíthatja az ügyfél-példányosítás, a kérésküldés és a válaszmegjelenítés módját.
@@ -36,7 +36,7 @@ Az alábbi dolgokra szüksége lesz a rövid útmutató futtatásához:
 > [!TIP]
 > Szerezze be a legújabb kódot Visual Studio-megoldásként a [githubról](https://github.com/Azure-Samples/cognitive-services-dotnet-sdk-samples/).
 
-Az első lépés egy új konzolprojekt létrehozása. Ha segítségre van szüksége egy konzol-projekt beállításához, tekintse [meg a "Helló világ!" alkalmazás – az első programját (C# programozási útmutató)](https://docs.microsoft.com/dotnet/csharp/programming-guide/inside-a-program/hello-world-your-first-program). Ha a Bing Web Search SDK-t használná az alkalmazásában, a NuGet-csomagkezelővel telepítse a következőt: `Microsoft.Azure.CognitiveServices.Search.WebSearch`.
+Az első lépés egy új konzolprojekt létrehozása. Ha segítségre van szüksége egy konzol-projekt beállításához, tekintse [meg a „Helló világ!” alkalmazás – az első programját (C# programozási útmutató)](https://docs.microsoft.com/dotnet/csharp/programming-guide/inside-a-program/hello-world-your-first-program). Ha a Bing Web Search SDK-t használná az alkalmazásában, a NuGet-csomagkezelővel telepítse a következőt: `Microsoft.Azure.CognitiveServices.Search.WebSearch`.
 
 A [Web Search SDK-csomag](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Search.WebSearch/1.2.0) a követezőket is telepíti:
 

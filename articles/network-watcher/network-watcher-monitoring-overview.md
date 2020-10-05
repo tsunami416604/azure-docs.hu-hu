@@ -15,10 +15,10 @@ ms.date: 04/24/2018
 ms.author: damendo
 ms.custom: mvc
 ms.openlocfilehash: 81621a2b63eec804aaa7c74e1d77b06ef1adb79a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "76844989"
 ---
 # <a name="what-is-azure-network-watcher"></a>Mi az az Azure Network Watcher?
@@ -89,7 +89,7 @@ Ez az információ hasznosnak bizonyulhat a későbbi erőforrások üzembe hely
 
 A hálózati biztonsági csoportok (NSG-k) engedélyezik vagy elutasítják a virtuális gépek hálózati adaptereinek bejövő vagy kimenő forgalmát. Az *NSG-forgalom naplója* funkció lehetővé teszi a forrás és cél IP-cím, port, protokoll, valamint annak naplózását, hogy egy hálózati biztonsági csoport engedélyezte vagy elutasította-e a forgalmat. A naplók számos eszközzel elemezhetők (pl. PowerBI és a *Traffic Analytics* funkció). A Traffic Analytics gazdag vizualizációs lehetőségeket biztosít az NSG-forgalom naplóiba írt adatok számára. Az alábbi képen a Traffic Analytics által az NSG-forgalom naplóinak adataiból létrehozott információk és vizualizációk egy része látható:
 
-![Traffic Analytics](./media/network-watcher-monitoring-overview/traffic-analytics.png)
+![Forgalomelemzés](./media/network-watcher-monitoring-overview/traffic-analytics.png)
 
 Az NSG-forgalomnaplókkal kapcsolatos további információkért végezze el a [virtuális gép bejövő és kimenő hálózati forgalmának naplózását](network-watcher-nsg-flow-logging-portal.md) és a [Traffic Analytics megvalósítását](traffic-analytics.md) ismertető oktatóanyagot.
 

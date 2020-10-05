@@ -10,10 +10,10 @@ ms.date: 04/15/2020
 ms.author: fipopovi
 ms.reviewer: jrasnick
 ms.openlocfilehash: dc47bf73f39d73861c166674a692932d51064e6d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91288528"
 ---
 # <a name="sql-on-demand-preview-in-azure-synapse-analytics"></a>SQL on-demand (előzetes verzió) az Azure szinapszis Analytics szolgáltatásban 
@@ -143,7 +143,7 @@ Az SQL igény szerinti szolgáltatásba bejelentkezett felhasználónak jogosult
 
 - A **felhasználói identitás** (más néven "átmenő") olyan engedélyezési típus, ahol az SQL-on igénybe vett Azure ad-felhasználó identitása az adatokhoz való hozzáférés engedélyezésére szolgál. Az adatok elérése előtt az Azure Storage rendszergazdájának engedélyeket kell adnia az Azure AD-felhasználónak az adatokhoz való hozzáféréshez. Ez az engedélyezési típus az SQL on-demand szolgáltatásba bejelentkezett Azure AD-felhasználót használja, ezért az SQL-felhasználók típusai nem támogatottak.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A végponti kapcsolatok és a lekérdezési fájlok további információi a következő cikkekben találhatók: 
 - [Kapcsolódás a végponthoz](connect-overview.md)
 - [Fájlok lekérdezése](develop-storage-files-overview.md)

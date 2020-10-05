@@ -10,10 +10,10 @@ services: azure-maps
 manager: philmea
 ms.custom: mvc
 ms.openlocfilehash: 99257b7bef83d0acef484118c7d53aea8eda168c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91264286"
 ---
 # <a name="quickstart-create-an-interactive-search-map-with-azure-maps"></a>Gyors útmutató: interaktív keresési Térkép létrehozása Azure Maps
@@ -62,7 +62,7 @@ Miután sikeresen létrejött a Maps-fiókja, kérje le az elsődleges kulcsot, 
 >[!NOTE]
 > Ha az elsődleges kulcs helyett az előfizetési kulcsot használja, a Térkép nem jelenik meg megfelelően. Biztonsági okokból javasolt az elsődleges és másodlagos kulcsok közötti váltás. A kulcsok elforgatásához frissítse az alkalmazást a másodlagos kulcs használatára, telepítse, majd nyomja le az elsődleges kulcs melletti ciklus/frissítés gombot egy új elsődleges kulcs létrehozásához. A régi elsődleges kulcs le lesz tiltva. A kulcsok elforgatásával kapcsolatos további információkért lásd: [Azure Key Vault beállítása kulcsfontosságú rotációs és naplózási](https://docs.microsoft.com/azure/key-vault/secrets/key-rotation-log-monitoring) szolgáltatással
 
-:::image type="content" source="./media/quick-demo-map-app/get-key.png" alt-text="Elsődleges kulcs Azure Maps kulcs beolvasása Azure Portal":::
+:::image type="content" source="./media/quick-demo-map-app/get-key.png" alt-text="Maps-fiók létrehozása a portálon":::
 
 ## <a name="download-the-demo-application"></a>A bemutató alkalmazás letöltése
 
@@ -78,7 +78,7 @@ Miután sikeresen létrejött a Maps-fiókja, kérje le az elsődleges kulcsot, 
 4. Próbálja ki az interaktív keresést. A bemutató webalkalmazás bal felső sarkában található keresőmezőbe keressen az **éttermek**kifejezésre.
 5. Vigye az egérmutatót a keresési mező alatt megjelenő címek és helyszínek listájára. Figyelje meg, hogy a térképen a megfelelő PIN-kód jelenik meg. A magánvállalkozások adatainak védelme érdekében az itt látható nevek és címek nem valósak.
 
-    :::image type="content" source="./media/quick-demo-map-app/interactive-search.png" alt-text="Interaktív térképes keresési webalkalmazás":::
+    :::image type="content" source="./media/quick-demo-map-app/interactive-search.png" alt-text="Maps-fiók létrehozása a portálon":::
 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
@@ -98,7 +98,7 @@ További példákat és egy interaktív kódolási élményt a következő útmu
 
 [Használja a Azure Maps térképkezelés](how-to-use-map-control.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban létrehozta Azure Maps-fiókját, és létrehozott egy bemutató alkalmazást. Tekintse meg az alábbi oktatóanyagokat, amelyekben többet tudhat meg Azure Maps:
 

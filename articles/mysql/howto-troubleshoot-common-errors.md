@@ -8,10 +8,10 @@ ms.custom: mvc
 ms.topic: overview
 ms.date: 8/20/2020
 ms.openlocfilehash: ebe9f936e3d0dfafec23842fcdbfd225995d546b
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88720250"
 ---
 # <a name="common-errors"></a>Gyakori hibák
@@ -62,7 +62,7 @@ DELIMITER ;;
 DELIMITER ;
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ha nem találta meg a keresett választ, vegye figyelembe a következőket:
 - Tegye fel kérdéseit a [Microsoft Q&a kérdéses oldalra](https://docs.microsoft.com/answers/topics/azure-database-mysql.html) vagy [stack Overflowra](https://stackoverflow.com/questions/tagged/azure-database-mysql).
 - Küldjön e-mailt a MySQL-hez készült Azure Database for MySQL Team [ @Ask Azure db](mailto:AskAzureDBforMySQL@service.microsoft.com)-nek. Ez az e-mail-cím nem technikai támogatási alias.

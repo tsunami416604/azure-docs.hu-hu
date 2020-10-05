@@ -10,10 +10,10 @@ ms.service: genomics
 ms.topic: overview
 ms.date: 12/07/2017
 ms.openlocfilehash: 04ecab58db822aa80ca2abba1bebaa39598498bd
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "73498813"
 ---
 # <a name="what-is-microsoft-genomics"></a>Mi az a Microsoft Genomics?
@@ -35,5 +35,5 @@ A Microsoft Genomics szolgáltatás ISO 27001, ISO 27018 és ISO 9001 tanúsítv
 Most, hogy elolvasta a Microsoft Genomics bevezetését, készen áll a következőre:
 - Tekintse meg az árképzést ismertető oldalt a költségek összehasonlításáért és árkalkulációjáért. [Díjszabás](https://azure.microsoft.com/pricing/details/genomics/)
 - Első lépésként futtassa az első munkafolyamatot a Microsoft Genomics szolgáltatáson keresztül. [Munkafolyamat futtatása a Microsoft Genomics szolgáltatással](quickstart-run-genomics-workflow-portal.md)
-- Saját adatai elküldése a Microsoft Genomics szolgáltatás általi feldolgozáshoz: [párosított FASTQ](quickstart-input-pair-FASTQ.md) | [Bam](quickstart-input-BAM.md) | [több FASTQ vagy Bam](quickstart-input-multiple.md) 
+- Saját adatai elküldése a Microsoft Genomics szolgáltatás általi feldolgozáshoz: [párosított FASTQ](quickstart-input-pair-FASTQ.md)  |  [Bam](quickstart-input-BAM.md)  |  [több FASTQ vagy Bam](quickstart-input-multiple.md) 
 

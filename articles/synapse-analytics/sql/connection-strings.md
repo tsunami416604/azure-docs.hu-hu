@@ -11,10 +11,10 @@ ms.author: v-stazar
 ms.reviewer: jrasnick
 ms.custom: devx-track-csharp
 ms.openlocfilehash: aa940b00e9c23ab08244ea55c0cd22a8d5f1897f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91289378"
 ---
 # <a name="connection-strings-for-synapse-sql-preview"></a>A szinapszis SQL-hez kapcsolódó kapcsolatok karakterláncai (előzetes verzió)
@@ -54,6 +54,6 @@ jdbc:sqlserver://yourserver.sql.azuresynapse.net:1433;database=yourdatabase;user
 
 Az **igény szerinti SQL-** lekérdezések végrehajtásához ajánlott eszközök a [Azure Data Studio](get-started-azure-data-studio.md) és az Azure szinapszis Studio.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az elemzés a Visual Studióval és más alkalmazásokkal való lekérdezésének megkezdéséhez lásd: [lekérdezés a Visual Studióval](../sql-data-warehouse/sql-data-warehouse-query-visual-studio.md?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json).

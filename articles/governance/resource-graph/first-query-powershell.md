@@ -4,10 +4,10 @@ description: Ebben a rövid útmutatóban a következő lépésekkel engedélyez
 ms.date: 08/10/2020
 ms.topic: quickstart
 ms.openlocfilehash: 4cc7eb524060f2a797077f38321ae9ce6c9cf267
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88056397"
 ---
 # <a name="quickstart-run-your-first-resource-graph-query-using-azure-powershell"></a>Rövid útmutató: az első Resource Graph-lekérdezés futtatása a Azure PowerShell használatával
@@ -88,7 +88,7 @@ Miután az Azure PowerShell modul hozzá lett adva a választott környezethez, 
 Ha a végső lekérdezés többször is fut, feltételezve, hogy a környezetében semmi sem változik, a visszaadott eredmények konzisztensek és a **Name** tulajdonság szerint vannak rendezve, de továbbra is az első öt találatra korlátozódnak.
 
 > [!NOTE]
-> Ha a lekérdezés nem ad vissza olyan előfizetésből származó eredményeket, amelyhez már van hozzáférése, akkor vegye figyelembe, hogy `Search-AzGraph` a parancsmag alapértelmezett környezetében az előfizetések alapértelmezés szerint szerepelnek. Ha szeretné megtekinteni az alapértelmezett környezet részét képező előfizetési azonosítók listáját `(Get-AzContext).Account.ExtendedProperties.Subscriptions` , akkor az összes Ön által elérhető előfizetésben megadhatja a PSDefaultParameterValues a `Search-AzGraph` parancsmag futtatásával.`$PSDefaultParameterValues=@{"Search-AzGraph:Subscription"= $(Get-AzSubscription).ID}`
+> Ha a lekérdezés nem ad vissza olyan előfizetésből származó eredményeket, amelyhez már van hozzáférése, akkor vegye figyelembe, hogy `Search-AzGraph` a parancsmag alapértelmezett környezetében az előfizetések alapértelmezés szerint szerepelnek. Ha szeretné megtekinteni az alapértelmezett környezet részét képező előfizetési azonosítók listáját `(Get-AzContext).Account.ExtendedProperties.Subscriptions` , akkor az összes Ön által elérhető előfizetésben megadhatja a PSDefaultParameterValues a `Search-AzGraph` parancsmag futtatásával. `$PSDefaultParameterValues=@{"Search-AzGraph:Subscription"= $(Get-AzSubscription).ID}`
    
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

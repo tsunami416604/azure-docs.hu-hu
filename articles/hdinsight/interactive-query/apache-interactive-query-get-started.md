@@ -9,10 +9,10 @@ ms.topic: overview
 ms.custom: hdinsightactive
 ms.date: 03/03/2020
 ms.openlocfilehash: e133e08e333cb478269a93cce963566e195d6949
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "78271955"
 ---
 # <a name="what-is-interactive-query-in-azure-hdinsight"></a>Mi az az interaktív lekérdezés az Azure HDInsight-ben?
@@ -36,7 +36,7 @@ További információ a HDInsight-fürtök létrehozásáról: [Apache Hadoop-f�
 
 A kaptár-lekérdezések végrehajtásához a következő lehetőségek állnak rendelkezésre:
 
-|Módszer |Leírás |
+|Metódus |Leírás |
 |---|---|
 |Microsoft Power BI|Tekintse meg az [interaktív lekérdezési Apache Hive az Azure-HDInsight Power BIával](./apache-hadoop-connect-hive-power-bi-directquery.md), valamint az [azure-HDInsight Power BIával kapcsolatos Big Data megjelenítését](../hadoop/apache-hadoop-connect-hive-power-bi.md)ismertető témakört.|
 |Visual Studio|Lásd: [Kapcsolódás az Azure HDInsight és Apache Hive lekérdezések futtatása a Visual studióhoz készült Data Lake Tools használatával](../hadoop/apache-hadoop-visual-studio-tools-get-started.md#run-interactive-apache-hive-queries).|
@@ -47,7 +47,7 @@ A kaptár-lekérdezések végrehajtásához a következő lehetőségek állnak 
 
 A Java Database Connectivity (JDBC) kapcsolati karakterláncának megkeresése:
 
-1. Egy webböngészőből nyissa meg `https://CLUSTERNAME.azurehdinsight.net/#/main/services/HIVE/summary`a következőt:, ahol `CLUSTERNAME` a a fürt neve.
+1. Egy webböngészőből nyissa meg a következőt: `https://CLUSTERNAME.azurehdinsight.net/#/main/services/HIVE/summary` , ahol a a `CLUSTERNAME` fürt neve.
 1. Az URL-cím másolásához válassza a vágólap ikont:
 
    ![HDInsight Hadoop interaktív lekérdezési LLAP JDBC](./media/apache-interactive-query-get-started/hdinsight-hadoop-use-interactive-hive-jdbc.png)

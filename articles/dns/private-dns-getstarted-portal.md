@@ -8,17 +8,17 @@ ms.topic: quickstart
 ms.date: 10/11/2019
 ms.author: rohink
 ms.openlocfilehash: 52bf9e061eb57c7ce6ea698b7468b5ba5e11b4e8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "78244972"
 ---
 # <a name="quickstart-create-an-azure-private-dns-zone-using-the-azure-portal"></a>Rövid útmutató: Azure Private DNS-zóna létrehozása a Azure Portal használatával
 
 Ez a rövid útmutató végigvezeti az első saját DNS-zóna és-rekord létrehozásának lépésein a Azure Portal használatával.
 
-Az egyes tartományokhoz tartozó DNS-rekordok üzemeltetése DNS-zónákban történik. A tartománya Azure DNS-ben való üzemeltetésének megkezdéséhez létre kell hoznia egy DNS-zónát az adott tartománynévhez. Ezután a tartománya összes DNS-rekordja ebben a DNS-zónában jön létre. A saját DNS-zóna virtuális hálózaton történő közzétételéhez meg kell adnia azon virtuális hálózatok listáját, amelyek számára engedélyezett a zónán belüli rekordok feloldása.  Ezeket *csatolt* virtuális hálózatoknak nevezzük. Ha engedélyezve van az automatikus regisztráció, a Azure DNS a zóna rekordjait is frissíti, amikor létrejön egy virtuális gép, megváltoztatja az IP-címét, vagy törli azt.
+Az egyes tartományokhoz tartozó DNS-rekordok üzemeltetése DNS-zónákban történik. A tartománya Azure DNS-ben való üzemeltetésének megkezdéséhez létre kell hoznia egy DNS-zónát az adott tartománynévhez. Ezután a tartománya összes DNS-rekordja ebben a DNS-zónában jön létre. Ha privát DNS-zónát szeretne közzétenni a virtuális hálózaton, meg kell adnia azon virtuális hálózatok listáját, amelyek feloldhatnak rekordokat a zónában.  Ezeket *csatolt* virtuális hálózatoknak nevezzük. Ha engedélyezve van az automatikus regisztráció, a Azure DNS a zóna rekordjait is frissíti, amikor létrejön egy virtuális gép, megváltoztatja az IP-címét, vagy törli azt.
 
 Ezen rövid útmutató segítségével megtanulhatja a következőket:
 
@@ -64,19 +64,19 @@ Ebben a szakaszban le kell cserélnie a következő paramétereket a lépésekbe
 
 | Paraméter                   | Érték                |
 |-----------------------------|----------------------|
-| **\<erőforrás-csoport neve>**  | MyAzureResourceGroup (meglévő erőforráscsoport kiválasztása) |
-| **\<virtuális hálózat neve>** | MyAzureVNet          |
-| **\<régió neve>**          | USA nyugati középső régiója      |
-| **\<IPv4 – címtartomány>**   | 10.2.0.0 \ 16          |
-| **\<alhálózat – név>**          | MyAzureSubnet        |
-| **\<alhálózat – címtartomány>** | 10.2.0.0 \ 24          |
+| **\<resource-group-name>**  | MyAzureResourceGroup (meglévő erőforráscsoport kiválasztása) |
+| **\<virtual-network-name>** | MyAzureVNet          |
+| **\<region-name>**          | USA nyugati középső régiója      |
+| **\<IPv4-address-space>**   | 10.2.0.0 \ 16          |
+| **\<subnet-name>**          | MyAzureSubnet        |
+| **\<subnet-address-range>** | 10.2.0.0 \ 24          |
 
 
 [!INCLUDE [virtual-networks-create-new](../../includes/virtual-networks-create-new.md)]
 
 ## <a name="link-the-virtual-network"></a>A virtuális hálózat összekapcsolása
 
-Ha a magánhálózati DNS-zónát virtuális hálózathoz szeretné kapcsolni, hozzon létre egy virtuális hálózati kapcsolatot.
+Ha a privát DNS-zónát egy virtuális hálózathoz szeretné kapcsolni, hozzon létre egy virtuális hálózati kapcsolatot.
 
 ![Virtuális hálózati kapcsolat hozzáadása](media/private-dns-portal/dns-add-virtual-network-link.png)
 
@@ -86,7 +86,7 @@ Ha a magánhálózati DNS-zónát virtuális hálózathoz szeretné kapcsolni, h
 4. Írja **myLink** be a myLink **nevet a hivatkozás neveként**.
 5. A **Virtual Network**esetében válassza a **myAzureVNet**lehetőséget.
 6. Jelölje be az **automatikus regisztráció engedélyezése** jelölőnégyzetet.
-7. Kattintson az **OK** gombra.
+7. Válassza az **OK** lehetőséget.
 
 ## <a name="create-the-test-virtual-machines"></a>A tesztelési célú virtuális gépek létrehozása
 
@@ -115,10 +115,10 @@ A virtuális gépek betöltéséhez néhány percet is igénybe vehet.
  A következő példa létrehoz egy rekordot a relatív name **db** -vel a DNS-zóna **Private.contoso.com**, az erőforráscsoport **MyAzureResourceGroup**. A **db.Private.contoso.com**teljesen minősített neve. A rekord típusa "A", a **myVM01**IP-címével.
 
 1. Nyissa meg a **MyAzureResourceGroup** erőforráscsoportot, és válassza ki a **Private.contoso.com** saját zónáját.
-2. Kattintson a **+ Rekordhalmaz** gombra.
+2. Válassza a **+ Rekordhalmaz** lehetőséget.
 3. A **név**mezőbe írja be a következőt: **adatbázis**.
 4. Az **IP-cím**mezőbe írja be a **myVM01**megjelenő IP-címet. Ezt automatikusan regisztrálni kell a virtuális gép indításakor.
-5. Kattintson az **OK** gombra.
+5. Válassza az **OK** lehetőséget.
 
 ## <a name="test-the-private-zone"></a>A saját zóna tesztelése
 
@@ -129,7 +129,7 @@ Most tesztelheti a **Private.contoso.com** saját zónájának névfeloldását.
 A névfeloldás teszteléséhez használhatja a ping parancsot. Ehhez konfigurálja mindkét virtuális gépen a tűzfalat arra, hogy engedélyezze a bejövő ICMP-csomagokat.
 
 1. Csatlakozzon a myVM01 virtuális géphez, és nyisson meg egy Windows PowerShell-ablakot rendszergazdai jogosultsággal.
-2. Futtassa az alábbi parancsot:
+2. Futtassa a következő parancsot:
 
    ```powershell
    New-NetFirewallRule –DisplayName "Allow ICMPv4-In" –Protocol ICMPv4
@@ -188,5 +188,5 @@ Ha már nincs rá szükség, törölje a **MyAzureResourceGroup** erőforráscso
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Az Azure DNS Private Zones forgatókönyvei](private-dns-scenarios.md)
+> [Azure DNS Private Zones forgatókönyvek](private-dns-scenarios.md)
 

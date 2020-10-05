@@ -9,10 +9,10 @@ ms.subservice: blobs
 ms.topic: quickstart
 ms.custom: seo-python-october2019, devx-track-python
 ms.openlocfilehash: a01b6e644ce3afda451d94d3e00eda278a645adf
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87851324"
 ---
 # <a name="quickstart-manage-blobs-with-python-v21-sdk"></a>Gyors útmutató: Blobok kezelése a Python v 2.1 SDK-val
@@ -168,7 +168,7 @@ block_blob_service.create_blob_from_path(
 
 A Blob-tárolóval többféle feltöltési módszer használható. Ha például memóriastreamje van, használhatja a `create_blob_from_stream` metódust a `create_blob_from_path` helyett. 
 
-### <a name="list-the-blobs-in-a-container"></a>A tárolóban lévő blobok listázása
+### <a name="list-the-blobs-in-a-container"></a>Tárolóban lévő blobok kilistázása
 
 Az alábbi kód létrehoz egy `generator` `list_blobs` metódust a metódushoz. A kód a tárolóban lévő Blobok listáján keresztül hurkot jelenít meg, és kiírja a nevét a konzolra.
 
@@ -196,7 +196,7 @@ block_blob_service.get_blob_to_path(
     container_name, local_file_name, full_path_to_file2)
 ```
 
-### <a name="clean-up-resources"></a>Erőforrások felszabadítása
+### <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 Ha már nincs szüksége az ebben a rövid útmutatóban feltöltött blobokra, a teljes tárolót törölheti a `delete_container` metódussal. Az egyes fájlok törléséhez használja a `delete_blob` metódust.
 
 ```python
@@ -219,7 +219,7 @@ A Python-fejlesztés és a blob Storage szolgáltatással kapcsolatos további i
 - További információ a Python-ügyfél könyvtáráról: a [Pythonhoz készült Azure Storage kódtárak](https://docs.microsoft.com/python/api/overview/azure/storage).
 - Tekintse át a Python ügyféloldali kódtár használatával írt [Blob Storage-mintákat](https://azure.microsoft.com/resources/samples/?sort=0&service=storage&platform=python&term=blob).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
  
 Ennek a rövid útmutatónak a segítségével megtanulta, hogyan vihetők át fájlok egy helyi lemez és az Azure Blob Storage között a Python használatával. 
 

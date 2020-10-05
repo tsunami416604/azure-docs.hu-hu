@@ -9,10 +9,10 @@ ms.date: 06/19/2019
 ms.author: hrasheed
 ms.custom: mvc
 ms.openlocfilehash: af41a7569dedc9a56f67be8ae791d7185e0c7489
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "73241597"
 ---
 # <a name="quickstart-execute-an-r-script-on-an-ml-services-cluster-in-azure-hdinsight-using-r-console"></a>Gyors útmutató: R-szkript végrehajtása egy ML Services-fürtön az Azure HDInsight R Console használatával
@@ -30,7 +30,7 @@ Ebből a rövid útmutatóból megtudhatja, hogyan futtathat olyan R-szkriptet a
 
 ## <a name="connect-to-r-console"></a>Kapcsolódás az R-konzolhoz
 
-1. Kapcsolódjon egy ML Services HDInsight-fürt peremhálózati csomópontjára az SSH használatával. Szerkessze az alábbi parancsot úgy `CLUSTERNAME` , hogy lecseréli a fürt nevét, majd beírja a következő parancsot:
+1. Kapcsolódjon egy ML Services HDInsight-fürt peremhálózati csomópontjára az SSH használatával. Szerkessze az alábbi parancsot úgy, hogy lecseréli a `CLUSTERNAME` fürt nevét, majd beírja a következő parancsot:
 
     ```cmd
     ssh sshuser@CLUSTERNAME-ed-ssh.azurehdinsight.net

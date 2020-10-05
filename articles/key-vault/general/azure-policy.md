@@ -8,10 +8,10 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
 ms.openlocfilehash: 62ea64f6f0ccf3a9f4ceabc64a97e1e5570b92b4
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "88586069"
 ---
 # <a name="integrate-azure-key-vault-with-azure-policy"></a>Az Azure Key Vault integrálása az Azure Policyval
@@ -124,7 +124,7 @@ Az 100-es tanúsítványokat tartalmazó több csapat által használt kulcstart
 
 ### <a name="view-compliance-results"></a>Megfelelési eredmények megtekintése
 
-1. Lépjen vissza a szabályzat panelre, és válassza a megfelelőség fület. kattintson arra a szabályzat-hozzárendelésre, amelyben meg szeretné tekinteni a megfelelőségi eredményeket.
+1. Lépjen vissza a szabályzat panelre, és válassza a megfelelőség lapot. Kattintson arra a szabályzat-hozzárendelésre, amelyben meg szeretné tekinteni a megfelelőségi eredményeket.
 
     ![A Azure Key Vault működésének áttekintése](../media/policy-img8.png)
 

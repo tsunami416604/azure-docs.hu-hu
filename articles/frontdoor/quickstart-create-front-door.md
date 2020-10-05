@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 09/16/2020
 ms.author: duau
 ms.openlocfilehash: 4846438f8479fe622570aa515a4d8b40cccc57b8
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91252306"
 ---
 # <a name="quickstart-create-a-front-door-for-a-highly-available-global-web-application"></a>Rövid útmutató: Front Door létrehozása magas rendelkezésre állású globális webalkalmazásokhoz
@@ -58,7 +58,7 @@ Ha még nem rendelkezik webalkalmazással, a következő lépésekkel állíthat
 
 1. Válassza a **felülvizsgálat + létrehozás**lehetőséget, tekintse át az **összegzést**, majd kattintson a **Létrehozás**gombra. A telepítés befejezéséhez több percet is igénybe vehet.
 
-    :::image type="content" source="media/quickstart-create-front-door/create-web-app.png" alt-text="Webalkalmazás összegzésének áttekintése":::
+    :::image type="content" source="media/quickstart-create-front-door/create-web-app.png" alt-text="Webalkalmazás létrehozása az Azure Portalon":::
 
 A telepítés befejezése után hozzon létre egy második webalkalmazást. Ugyanazt az eljárást használja ugyanazokkal az értékekkel, az alábbi értékek kivételével:
 
@@ -87,7 +87,7 @@ Konfigurálja az Azure bejárati ajtaját a felhasználói forgalom közvetlen e
 
 1. A **gazdagép neve**mezőben adjon meg egy globálisan egyedi állomásnevet. Ez a példa a *contoso-frontend felületet*használja. Válassza a **Hozzáadás** lehetőséget.
 
-    :::image type="content" source="media/quickstart-create-front-door/add-frontend-host-azure-front-door.png" alt-text="Előtér-gazdagép hozzáadása az Azure bejárati ajtóhoz":::
+    :::image type="content" source="media/quickstart-create-front-door/add-frontend-host-azure-front-door.png" alt-text="Webalkalmazás létrehozása az Azure Portalon":::
 
 Ezután hozzon létre egy háttér-készletet, amely tartalmazza a két webalkalmazást.
 
@@ -95,7 +95,7 @@ Ezután hozzon létre egy háttér-készletet, amely tartalmazza a két webalkal
 
 1. A **név**mezőbe írja be a *myBackendPool*nevet, majd válassza **a háttér hozzáadása**elemet.
 
-    :::image type="content" source="media/quickstart-create-front-door/front-door-add-backend-pool.png" alt-text="Háttérbeli készlet hozzáadása":::
+    :::image type="content" source="media/quickstart-create-front-door/front-door-add-backend-pool.png" alt-text="Webalkalmazás létrehozása az Azure Portalon":::
 
 1. A **háttér hozzáadása** panelen válassza ki a következő adatokat, majd válassza a **Hozzáadás**lehetőséget.
 
@@ -107,7 +107,7 @@ Ezután hozzon létre egy háttér-készletet, amely tartalmazza a két webalkal
 
     **Hagyja meg az összes többi mező alapértelmezett értékét.*
 
-    :::image type="content" source="media/quickstart-create-front-door/front-door-add-a-backend.png" alt-text="Háttérbeli gazdagép hozzáadása a bejárati ajtóhoz":::
+    :::image type="content" source="media/quickstart-create-front-door/front-door-add-a-backend.png" alt-text="Webalkalmazás létrehozása az Azure Portalon":::
 
 1. Válassza **a háttér hozzáadása** elemet. Válassza ki a következő adatokat, majd válassza a **Hozzáadás**lehetőséget.
 
@@ -121,7 +121,7 @@ Ezután hozzon létre egy háttér-készletet, amely tartalmazza a két webalkal
 
 1. Válassza a **Hozzáadás** lehetőséget a **háttérbeli készlet hozzáadása** panelen a háttérbeli készlet konfigurációjának befejezéséhez.
 
-    :::image type="content" source="media/quickstart-create-front-door/front-door-add-backend-pool-complete.png" alt-text="Háttérbeli készlet hozzáadása az Azure bejárati ajtóhoz":::
+    :::image type="content" source="media/quickstart-create-front-door/front-door-add-backend-pool-complete.png" alt-text="Webalkalmazás létrehozása az Azure Portalon":::
 
 Végül adjon hozzá egy útválasztási szabályt. Egy útválasztási szabály leképezi az előtér-gazdagépet a háttér-készletre. A szabály továbbítja a kérést a `contoso-frontend.azurefd.net` **myBackendPool**.
 
@@ -129,14 +129,14 @@ Végül adjon hozzá egy útválasztási szabályt. Egy útválasztási szabály
 
 1. A **szabály hozzáadása**területen a **név**mezőbe írja be a következőt: *LocationRule*. Fogadja el az összes alapértelmezett értéket, majd válassza a **Hozzáadás** lehetőséget az útválasztási szabály hozzáadásához.
 
-    :::image type="content" source="media/quickstart-create-front-door/front-door-add-a-rule.png" alt-text="Szabály hozzáadása az előtérben":::
+    :::image type="content" source="media/quickstart-create-front-door/front-door-add-a-rule.png" alt-text="Webalkalmazás létrehozása az Azure Portalon":::
 
    >[!WARNING]
    > Győződjön **meg arról, hogy** a bevezető ajtajában lévő összes előtér-gazdagéphez tartozik egy alapértelmezett elérési úttal () rendelkező útválasztási szabály `\*` . Vagyis az összes útválasztási szabályhoz az alapértelmezett elérési úton () megadott előtér-gazdagépekhez legalább egy útválasztási szabálynak kell tartoznia `\*` . Ha ezt elmulasztja, akkor a végfelhasználói forgalom nem lesz megfelelően átirányítva.
 
 1. Válassza a **felülvizsgálat + létrehozás**, majd a **Létrehozás**lehetőséget.
 
-    :::image type="content" source="media/quickstart-create-front-door/configuration-azure-front-door.png" alt-text="Azure-beli bejárati ajtó konfigurálva":::
+    :::image type="content" source="media/quickstart-create-front-door/configuration-azure-front-door.png" alt-text="Webalkalmazás létrehozása az Azure Portalon":::
 
 ## <a name="view-azure-front-door-in-action"></a>Azure-beli bejárati ajtó megtekintése működés közben
 
@@ -161,7 +161,7 @@ Az azonnali globális feladatátvétel teszteléséhez hajtsa végre a következ
 
 1. Frissítse a böngészőjét. Ekkor egy hibaüzenet jelenik meg.
 
-   :::image type="content" source="media/quickstart-create-front-door/web-app-stopped-message.png" alt-text="A webalkalmazás mindkét példánya leállt":::
+   :::image type="content" source="media/quickstart-create-front-door/web-app-stopped-message.png" alt-text="Webalkalmazás létrehozása az Azure Portalon":::
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -180,7 +180,7 @@ Miután elkészült, eltávolíthatja az összes létrehozott elemet. Egy erőfo
 
 Ismételje meg a másik két csoport eljárását.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A következő cikkből megtudhatja, hogyan adhat hozzá egyéni tartományt az előtérben.
 > [!div class="nextstepaction"]

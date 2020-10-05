@@ -12,10 +12,10 @@ ms.custom: mvc
 ms.date: 03/24/2020
 ms.author: mbaldwin
 ms.openlocfilehash: 0a2c1b39f5688b4fc544e5456666ccb8b4801517
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91281049"
 ---
 # <a name="quickstart-set-and-retrieve-a-certificate-from-azure-key-vault-using-the-azure-portal"></a>Gyors útmutató: tanúsítvány beállítása és lekérése Azure Key Vault a Azure Portal használatával
@@ -61,7 +61,7 @@ Ha tanúsítványt szeretne hozzáadni a tárolóhoz, mindössze néhány továb
     - **Tanúsítvány létrehozásának metódusa**: létrehozás.
     - **Tanúsítvány neve**: ExampleCertificate.
     - **Tárgy**: CN = ExampleDomain
-    - A többi értéket hagyja az alapértelmezett értéken. Kattintson a **Létrehozás** lehetőségre.
+    - A többi értéket hagyja az alapértelmezett értéken. Kattintson a **Létrehozás** elemre.
 
 Miután megkapta az üzenetet, hogy a tanúsítvány sikeresen létrejött, kattintson rá a listában. Ezután megjelenik néhány tulajdonság. Ha a jelenlegi verzióra kattint, láthatja az előző lépésben megadott értéket.
 
@@ -82,7 +82,7 @@ Ha már nincs rá szükség, törölje az erőforráscsoportot. Ezzel törli a k
 3. Az **ÍRJA BE AZ ERŐFORRÁSCSOPORT NEVÉT:** mezőbe írja be az erőforráscsoport nevét, és válassza a **Törlés** lehetőséget.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban létrehozott egy Key Vault, és tárolt benne egy tanúsítványt. Ha többet szeretne megtudni a Key Vaultről és az alkalmazásokkal való integrálásáról, folytassa az alábbi cikkekkel.
 

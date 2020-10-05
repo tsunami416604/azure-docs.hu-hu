@@ -11,10 +11,10 @@ ms.date: 10/28/2019
 ms.author: kgremban
 ms.custom: mvc
 ms.openlocfilehash: 1ba133acda414d9779e2fb10150bbdd57285e9a5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "76511212"
 ---
 # <a name="what-is-azure-iot-edge"></a>Az Azure IoT Edge bemutatása
@@ -42,7 +42,7 @@ A Azure IoT Edge lehetővé teszi az összetett események feldolgozását, a g�
 
 ### <a name="bring-your-own-code"></a>Saját kód használata
 
-Ha a saját kódját szeretné üzembe helyezni az eszközein, az Azure IoT Edge ezt is támogatja. Az IoT Edge ugyanazt a programozási modellt használja, mint a többi Azure IoT-szolgáltatás. Ugyanazt a kódot futtathatja egy eszközön vagy a felhőben is. Az Azure IoT Edge a Linux és Windows rendszereket is támogatja, így szabadon kiválasztható a kódolás platformja. Támogatja a Java, a .NET Core 2,0, a Node. js, a C és a Python használatát, így a fejlesztők a már ismert nyelveken és a meglévő üzleti logikában is képesek kódot bejelentkezni.
+Ha a saját kódját szeretné üzembe helyezni az eszközein, az Azure IoT Edge ezt is támogatja. Az IoT Edge ugyanazt a programozási modellt használja, mint a többi Azure IoT-szolgáltatás. Ugyanazt a kódot futtathatja egy eszközön vagy a felhőben is. Az Azure IoT Edge a Linux és Windows rendszereket is támogatja, így szabadon kiválasztható a kódolás platformja. Támogatja a Java, a .NET Core 2,0, a Node.js, a C és a Python használatát, így a fejlesztők a már ismert nyelven tudják majd használni a meglévő üzleti logikát.
 
 ## <a name="iot-edge-runtime"></a>IoT Edge-futtatókörnyezet
 

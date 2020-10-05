@@ -10,10 +10,10 @@ ms.date: 05/07/2020
 ms.author: jrasnick
 ms.reviewer: jrasnick
 ms.openlocfilehash: 6c76fcc0fefdf8aa3ae97a4c131481f7ea6ada81
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91288851"
 ---
 # <a name="use-external-tables-with-synapse-sql"></a>Külső táblák használata a szinapszis SQL használatával
@@ -281,7 +281,7 @@ column_name <data_type>
 
 ### <a name="arguments-create-external-table"></a>Argumentumok külső tábla létrehozása
 
-*{database_name. schema_name. table_name | schema_name. table_name | table_name}*
+*{adatbázisnév. schema_name. table_name | schema_name. table_name | table_name}*
 
 A létrehozandó tábla egy vagy három részének neve. Külső táblák esetében az igény szerinti SQL csak a tábla metaadatait tárolja. A tényleges adatok nem helyezhetők át vagy nem tárolódnak az SQL on-demandban.
 
@@ -374,6 +374,6 @@ A külső tábla most létrejön, a külső tábla tartalmának későbbi feltá
 > [!div class="mx-imgBorder"]
 >![externaltable5](./media/develop-tables-external-tables/external-table-5.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A lekérdezés eredményeinek az Azure Storage külső táblájába való mentéséhez olvassa el a [CETAS](develop-tables-cetas.md) című cikket. Vagy megkezdheti [a Apache Spark lekérdezését az Azure szinapszis külső tábláihoz](develop-storage-files-spark-tables.md).

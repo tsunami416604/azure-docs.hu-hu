@@ -8,10 +8,10 @@ ms.date: 09/16/2020
 ms.author: ccompy
 ms.custom: mvc, seodec18
 ms.openlocfilehash: 1bda52227737b082927dd1449fa6469cf849ff15
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91273262"
 ---
 # <a name="create-and-use-an-internal-load-balancer-app-service-environment"></a>Belső Load Balancer létrehozása és használata App Service Environment 
@@ -141,7 +141,7 @@ Ha többet szeretne megtudni arról, hogyan konfigurálhatja a ILB a WAF eszköz
 
 Az 2019. május előtt elkészített ILB-ASE a tartomány utótagjának a központilag történő létrehozása során történő beállításához szükséges. Emellett az adott tartományi utótagon alapuló alapértelmezett tanúsítvány feltöltésére is szükség van. Emellett egy régebbi ILB-benyújtó használatával nem végezheti el az egyszeri bejelentkezést a kudu-konzolon a ILB-elősegítő alkalmazásokkal. Ha a DNS-t egy régebbi ILB-alapú központhoz konfigurálja, akkor egy olyan rekordot kell beállítania egy olyan zónában, amely megfelel a tartomány utótagjának. 
 
-## <a name="get-started"></a>Első lépések ##
+## <a name="get-started"></a>Bevezetés ##
 
 * Az ASE használatával kapcsolatos első lépésekről [Az App Service Environment bemutatása][Intro] témakörben olvashat. 
 
