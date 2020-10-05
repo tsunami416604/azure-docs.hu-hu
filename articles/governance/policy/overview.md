@@ -4,10 +4,10 @@ description: Az Azure Policy az Azure egy szolgáltatása, amelynek használatá
 ms.date: 09/22/2020
 ms.topic: overview
 ms.openlocfilehash: 596e52cca2be2a347c26502434048053a8b4684c
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91538956"
 ---
 # <a name="what-is-azure-policy"></a>Mi az Azure Policy?
@@ -105,7 +105,7 @@ Azure Policy kiértékeli az összes erőforrást az Azure-ban. Bizonyos erőfor
 
 Az Azure Policyban a szabályzatok létrehozásának és bevezetésének folyamata egy szabályzatdefiníció létrehozásával kezdődik. Minden szabályzat-definíció rendelkezik olyan feltételekkel, amelyek érvényben vannak. Továbbá egy meghatározott hatással van, amely a feltételek teljesülése esetén zajlik.
 
-Azure Policy számos beépített szabályzatot kínálunk, amelyek alapértelmezés szerint elérhetők. Példa:
+Azure Policy számos beépített szabályzatot kínálunk, amelyek alapértelmezés szerint elérhetők. Például:
 
 - **Engedélyezett Storage-fiók SKU** -jának (megtagadás): meghatározza, hogy az üzembe helyezett Storage-fiók SKU-méreteken belül van-e. Ennek hatására az összes olyan Storage-fiók megtagadható, amely nem felel meg a definiált SKU-méretek készletének.
 - **Engedélyezett erőforrástípus** (megtagadás): meghatározza az üzembe helyezhető erőforrástípusok típusát. Ennek hatására az összes olyan erőforrást meg kell tagadni, amely nem része ennek a definiált listának.

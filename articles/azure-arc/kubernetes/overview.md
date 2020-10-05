@@ -10,13 +10,13 @@ description: Ez a cikk az Azure arc-kompatibilis Kubernetes áttekintését tart
 keywords: Kubernetes, arc, Azure, tárolók
 ms.custom: references_regions
 ms.openlocfilehash: 61317f7f5f2bf17c88fc019294574993c1854e59
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91540642"
 ---
-# <a name="what-is-azure-arc-enabled-kubernetes-preview"></a>Mi az az Azure arc-kompatibilis Kubernetes előzetes verziója?
+# <a name="what-is-azure-arc-enabled-kubernetes-preview"></a>Mi az Azure Arc-kompatibilis Kubernetes előzetes verziója?
 
 Az Azure arc-kompatibilis Kubernetes előzetes verziójának használatával csatlakoztathat és konfigurálhat Kubernetes-fürtöket az Azure-on belül vagy kívül is. Ha egy Kubernetes-fürt csatlakozik az Azure arc-hoz, akkor az megjelenik a Azure Portalban. Azure Resource Manager azonosítója és felügyelt identitása lesz. A fürtök szabványos Azure-előfizetésekhez vannak csatolva, és egy erőforráscsoport alatt találhatók, és ugyanúgy fogadhatnak címkéket, mint bármely más Azure-erőforrást. 
 

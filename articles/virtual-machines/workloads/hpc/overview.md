@@ -9,10 +9,10 @@ ms.workload: infrastructure-services
 ms.topic: overview
 ms.date: 07/29/2020
 ms.openlocfilehash: f9a672777fbc8a75cb6af10ba25232f8a274c894
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87543724"
 ---
 # <a name="high-performance-computing-on-infiniband-enabled-h-series-and-n-series-vms"></a>Nagy teljesítményű számítástechnika a InfiniBand-t használó H-és N-sorozatú virtuális gépeken
@@ -42,7 +42,7 @@ Másodszor konfigurálja a virtuális gépet a InfiniBand engedélyezésével. E
 Harmadszor, az elosztott csomópontok számítási feladataihoz az MPI kiválasztása és konfigurálása kritikus fontosságú. További részleteket az [MPI beállítása](setup-mpi.md) című témakörben talál.
 Negyedszer, a teljesítmény és a méretezhetőség érdekében optimálisan konfigurálja a munkaterheléseket a virtuálisgép-családra jellemző útmutatást követve, például a [HB-sorozat áttekintéséhez](hb-series-overview.md) és a [HC-sorozat áttekintéséhez](hc-series-overview.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ismerje meg [, hogyan konfigurálhatja és optimalizálhatja](configure.md) a [H-sorozatú](../../sizes-hpc.md) és az [N sorozatú](../../sizes-gpu.md) virtuális gépek InfiniBand.
 - Tekintse át a [HB-sorozat áttekintését](hb-series-overview.md) és a [HC-sorozat áttekintését](hc-series-overview.md) , amelyből megismerheti a számítási feladatok optimális konfigurálását a teljesítmény és a méretezhetőség érdekében.

@@ -15,10 +15,10 @@ ms.custom:
 - cog-serv-seo-aug-2020
 keywords: Computer vízió, Computer víziós alkalmazások, számítógépes jövőkép szolgáltatás
 ms.openlocfilehash: fa00265f3c591578f9970b77770fbf7290d87510
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90907066"
 ---
 # <a name="what-is-computer-vision"></a>Mi a Computer Vision?
@@ -111,7 +111,7 @@ A Computer Vision a következő követelményeknek megfelelő képeket képes el
 
 Akárcsak az összes Cognitive Services esetében, a Computer Vision szolgáltatást használó fejlesztőknek ismerniük kell a Microsoft adatkezelési szabályzatait. További információért tekintse meg a Microsoft adatvédelmi központjának [Cognitive Services lapját](https://www.microsoft.com/trustcenter/cloudservices/cognitiveservices) .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A Computer Vision használatának első lépései a gyors üzembe helyezési útmutatót követve:
 

@@ -7,10 +7,10 @@ ms.date: 07/24/2020
 ms.topic: quickstart
 ms.service: azure-communication-services
 ms.openlocfilehash: bb0af58c9abc4fad701b1d0927f4c13e1fdcca49
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91377391"
 ---
 Ebből a rövid útmutatóból megtudhatja, hogyan indíthat el hívást az iOS-hez készült ügyféloldali kódtárat hívó Azure kommunikációs szolgáltatással.
@@ -47,7 +47,7 @@ Adja hozzá az ügyféloldali függvénytárat hívó Azure kommunikációs szol
 5. Nyissa meg a Project Settings Editor **Build Settings (létrehozási beállítások** ) lapját, és görgessen a **keresési útvonalak** szakaszhoz. Adjon hozzá egy új **Framework keresési útvonalak** bejegyzést a **AzureCommunicationCalling. Framework**-t tartalmazó könyvtárhoz.
     1. Vegyen fel egy másik Framework keresési útvonal bejegyzést, amely a függőségeket tartalmazó mappára mutat.
 
-:::image type="content" source="../media/ios/xcode-framework-search-paths.png" alt-text="Képernyőfelvétel: a keretrendszer keresési útvonalainak frissítése a XCode belül.":::
+:::image type="content" source="../media/ios/xcode-framework-search-paths.png" alt-text="Képernyőfelvétel: az új projekt ablak a Xcode belül.":::
 
 ### <a name="request-access-to-the-microphone"></a>Hozzáférés kérése a mikrofonhoz
 
@@ -192,7 +192,7 @@ func endCall()
 
 Az alkalmazást az iOS-szimulátorban a **termék**  >  **futtatása** vagy a (&#8984;-R) billentyűparancs használatával hozhatja létre és futtathatja.
 
-:::image type="content" source="../media/ios/quick-start-make-call.png" alt-text="A gyors üzembe helyezési alkalmazás végső megjelenésének és működésének első lépései":::
+:::image type="content" source="../media/ios/quick-start-make-call.png" alt-text="Képernyőfelvétel: az új projekt ablak a Xcode belül.":::
 
 A kimenő VOIP-hívást úgy teheti meg, hogy egy felhasználói azonosítót biztosít a szövegmezőben, és a **hívás indítása** gombra koppint. A Calling `8:echo123` egy echo-robottal csatlakozik, ez nagyszerű megoldás az első lépésekhez és a hangeszközök ellenőrzéséhez. 
 

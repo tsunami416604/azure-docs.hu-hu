@@ -9,10 +9,10 @@ ms.topic: quickstart
 ms.date: 09/22/2020
 ms.custom: devx-track-azurecli, subject-armqs
 ms.openlocfilehash: d118bef4a7ccc263010fe176432a5301c4104118
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91533893"
 ---
 # <a name="quickstart-set-up-azure-netapp-files-and-create-an-nfs-volume"></a>Gyors útmutató: Azure NetApp Files beállítása és NFS-kötet létrehozása 
@@ -194,7 +194,7 @@ A következő kódrészlet azt mutatja be, hogyan hozható létre NetApp-fiók e
     * A készlet méreteként **4 (TiB)** adható meg. 
     * Használja az **automatikus** QoS-típust.
 
-5. Kattintson a **Létrehozás** lehetőségre.
+5. Kattintson a **Létrehozás** elemre.
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 

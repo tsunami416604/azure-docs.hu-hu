@@ -4,10 +4,10 @@ description: A blob Storage-fiók létrehozásához használja a Azure Event Gri
 ms.date: 07/07/2020
 ms.topic: quickstart
 ms.openlocfilehash: fc6216142c6bec99cb12bf4e0bdae920f27f1bf2
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91598353"
 ---
 # <a name="quickstart-route-blob-storage-events-to-web-endpoint-by-using-an-arm-template"></a>Gyors útmutató: blob Storage-események átirányítása a webes végpontba ARM-sablon használatával
@@ -88,5 +88,5 @@ Azure Resource Manager-sablonokkal kapcsolatos további információkért tekint
 
 * [Azure Resource Manager dokumentáció](../azure-resource-manager/index.yml)
 * [Erőforrások definiálása Azure Resource Manager-sablonokban](/azure/templates/)
-* [Azure Gyorsindítás sablonok](https://azure.microsoft.com/resources/templates/)
+* [Azure-gyorssablonok](https://azure.microsoft.com/resources/templates/)
 * [Azure Event Grid sablonok](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Eventgrid).

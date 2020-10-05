@@ -9,10 +9,10 @@ ms.topic: overview
 ms.date: 09/09/2020
 ms.author: alkohli
 ms.openlocfilehash: 7030030699668b3d316743955dabfb2cc175f6e1
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90893882"
 ---
 # <a name="what-is-azure-stack-edge-pro-with-fpga"></a>Mi az FPGA-val rendelkező Azure Stack Edge Pro?
@@ -82,7 +82,7 @@ Azure Stack Edge Pro fizikai eszköz, az Azure-erőforrás és a célként megad
     
 - **Céloldali tárfiókok** – Az adatokat tároló tárfiókok minden Azure-régióban elérhetők. Azokat a régiókat, amelyekben a Storage-fiókok Azure Stack Edge Pro-adataikat tárolják, közel kell lennie ahhoz, hogy az eszköz az optimális teljesítmény érdekében legyen. Az eszköztől távol található tárfiók esetében hosszú késések és lassabb teljesítmény várható.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Tekintse át az [Azure stack Edge Pro rendszerkövetelményeit](azure-stack-edge-system-requirements.md).
 - Az [Azure stack Edge Pro korlátainak](azure-stack-edge-limits.md)megismerése.

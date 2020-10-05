@@ -12,10 +12,10 @@ ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, azure-synapse
 ms.openlocfilehash: bf9d8234be754bd6ed325713f3c9ad27bd283b79
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91567638"
 ---
 # <a name="quickstart-pause-and-resume-compute-in-synapse-sql-pool-via-the-azure-portal"></a>Rövid útmutató: a számítások szüneteltetése és folytatása a szinapszis SQL-készletben a Azure Portal használatával
@@ -103,7 +103,7 @@ Kövesse az alábbi lépéseket a fölöslegessé vált erőforrások eltávolí
 5. Az erőforráscsoport törléséhez kattintson a **myResourceGroup** elemre, majd az **Erőforráscsoport törlése** parancsra.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ezzel szüneteltette és folytatta a számítást az SQL-készlethez. A következő cikkből megtudhatja, hogyan [tölthetők be](load-data-from-azure-blob-storage-using-polybase.md)az információk az SQL-készletbe. A számítási képességek kezelésével kapcsolatos további információkért tekintse meg a [számítás áttekintését](sql-data-warehouse-manage-compute-overview.md) ismertető cikket. 
 

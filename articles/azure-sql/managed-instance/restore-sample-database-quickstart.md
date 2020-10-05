@@ -13,10 +13,10 @@ ms.author: srbozovi
 ms.reviewer: sstein, bonova
 ms.date: 12/14/2018
 ms.openlocfilehash: 18f717ca05e93c9a8f06ac8868e9a6e5ff80eadb
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91355533"
 ---
 # <a name="quickstart-restore-a-database-to-azure-sql-managed-instance-with-ssms"></a>Gyors útmutató: adatbázis visszaállítása az Azure SQL felügyelt példányára a SSMS használatával
@@ -88,13 +88,13 @@ A SQL Server Management Studio az alábbi lépéseket követve állítsa vissza 
    WHERE r.command in ('BACKUP DATABASE','RESTORE DATABASE')
    ```
 
-7. Ha a visszaállítás befejeződött, tekintse meg az adatbázist Object Explorerban. A [sys. dm_operation_status](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) nézet használatával ellenőrizheti, hogy az adatbázis-visszaállítás befejeződött-e.
+7. Ha a visszaállítás befejeződött, tekintse meg az adatbázist Object Explorerban. Ellenőrizheti, hogy az adatbázis-visszaállítás a [sys.dm_operation_status](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) nézet használatával fejeződött-e be.
 
 > [!NOTE]
-> Az adatbázis-visszaállítási művelet aszinkron és újrapróbálható. Előfordulhat, hogy a rendszer hibát jelez SQL Server Management Studio, ha a kapcsolatok megszakadnak, vagy lejár az időtúllépés. Azure SQL Database továbbra is megkísérli visszaállítani az adatbázist a háttérben, és nyomon követheti a visszaállítás előrehaladását a [sys. dm_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) és a [sys. dm_operation_status](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) nézetek használatával.
+> Az adatbázis-visszaállítási művelet aszinkron és újrapróbálható. Előfordulhat, hogy a rendszer hibát jelez SQL Server Management Studio, ha a kapcsolatok megszakadnak, vagy lejár az időtúllépés. Azure SQL Database továbbra is megkísérli visszaállítani az adatbázist a háttérben, és a [sys.dm_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) és [sys.dm_operation_status](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database) nézetek használatával nyomon követheti a visszaállítás előrehaladását.
 > A visszaállítási folyamat egyes fázisaiban egyedi azonosítót fog látni a rendszernézetek tényleges neve helyett. Ismerje meg az `RESTORE` utasítások viselkedésével kapcsolatos [here](https://docs.microsoft.com/azure/sql-database/sql-database-managed-instance-transact-sql-information#restore-statement)eltéréseket.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ha az 5. lépésben az adatbázis-visszaállítás a 22003-es AZONOSÍTÓJÚ üzenettel megszűnik, hozzon létre egy új biztonságimásolat-fájlt, amely biztonsági mentési ellenőrzőösszegeket tartalmaz, és végezze el a visszaállítást. A biztonsági mentés vagy a visszaállítás során olvassa el a [biztonsági másolatok ellenőrzőösszegének engedélyezése vagy letiltása](https://docs.microsoft.com/sql/relational-databases/backup-restore/enable-or-disable-backup-checksums-during-backup-or-restore-sql-server)című témakört.
 - Az URL-címekre történő biztonsági mentés hibaelhárítását lásd: [SQL Server biztonsági mentés az URL-címekhez – ajánlott eljárások és hibaelhárítás](https://docs.microsoft.com/sql/relational-databases/backup-restore/sql-server-backup-to-url-best-practices-and-troubleshooting).

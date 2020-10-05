@@ -8,10 +8,10 @@ ms.service: postgresql
 ms.topic: overview
 ms.date: 09/21/2020
 ms.openlocfilehash: 5945f50ada9af6a8d117d3d773ebeae48d5f4085
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90903762"
 ---
 # <a name="what-is-azure-database-for-postgresql"></a>Mi az Azure Database for PostgreSQL?
@@ -43,7 +43,7 @@ A PostgreSQL Community Edition által működtetett Azure Database for PostgreSQ
 
 Azure Database for PostgreSQL egyetlen kiszolgáló egy teljes körűen felügyelt adatbázis-szolgáltatás, amely minimális követelményeket támaszt az adatbázis testreszabásához. Az egykiszolgálós platform úgy lett kialakítva, hogy az adatbázis-kezelési funkciók, például a javítások, a biztonsági mentések, a magas rendelkezésre állás, a biztonság minimális felhasználói konfigurációval és vezérléssel kezelhető legyen. Az architektúra beépített, magas rendelkezésre állású, 99,99%-os rendelkezésre állást biztosít egyetlen rendelkezésre állási zónában. A PostgreSQL 9,5, 9, 6, 10 és 11 közösségi verzióját támogatja. A szolgáltatás ma már széles körben elérhető az [Azure számos régiójában](https://azure.microsoft.com/global-infrastructure/services/).
 
-Az egykiszolgálós üzembe helyezési lehetőség három díjszabási szintet kínál: alapszintű, általános célú és memória optimalizálva. Az egyes szintek különböző erőforrásokat és képességeket kínálnak az adatbázisok számítási feladatainak támogatásához. Havi pár dollárért létrehozhatja első, kisméretű adatbázis-alkalmazását, majd később a megoldása szükségletei alapján módosíthatja a méretet. A dinamikus méretezhetőség révén az adatbázis átlátható módon reagál a gyorsan változó erőforrásigényekre. Csak azokért az erőforrásokért kell fizetnie, amelyekre szüksége van, és csak akkor, amikor szüksége van rájuk. A részleteket a [tarifacsomagok](https://docs.microsoft.com/azure/postgresql/concepts-pricing-tiers) leírása tartalmazza.
+Az egykiszolgálós üzembehelyezési lehetőség három tarifacsomagot kínál: Alapszintű, Általános célú és Memóriaoptimalizált. Az egyes szintek különböző erőforrásokat és képességeket kínálnak az adatbázisok számítási feladatainak támogatásához. Havi pár dollárért létrehozhatja első, kisméretű adatbázis-alkalmazását, majd később a megoldása szükségletei alapján módosíthatja a méretet. A dinamikus méretezhetőség révén az adatbázis átlátható módon reagál a gyorsan változó erőforrásigényekre. Csak azokért az erőforrásokért kell fizetnie, amelyekre szüksége van, és csak akkor, amikor szüksége van rájuk. A részleteket a [tarifacsomagok](https://docs.microsoft.com/azure/postgresql/concepts-pricing-tiers) leírása tartalmazza.
 
 Az egyetlen kiszolgáló a legjobb megoldás a Felhőbeli natív alkalmazásokhoz, amelyek az automatikus javítás kezelésére szolgálnak anélkül, hogy a javítási ütemterv és az egyéni PostgreSQL konfigurációs beállítások részletes szabályozására lenne szükség.
 
@@ -64,17 +64,17 @@ A rugalmas kiszolgáló üzembe helyezési módjának részletes áttekintését
 
 ### <a name="azure-database-for-postgresql--hyperscale-citus"></a>Azure Database for PostgreSQL – nagy kapacitású (Citus)
 
-A nagy kapacitású (Citus) lehetőség vízszintesen méretezi a lekérdezéseket több gép között a horizontális skálázással. A lekérdezési motor parallelizes a bejövő SQL-lekérdezéseket ezen kiszolgálókon a nagyméretű adatkészletek gyorsabb megválaszolásához. Olyan alkalmazásokat kínál, amelyek nagyobb méretet és teljesítményt igényelnek, és általában a várható munkaterhelések, vagy már meghaladja a-100 GB-ot.
+A rugalmas skálázás (Citus) beállítás horizontálisan skálázza a lekérdezéseket több gépen a sharding (horizontális skálázás) segítségével. A lekérdezési motor párhuzamosan hajtja végre a bejövő SQL-lekérdezéseket ezeken kiszolgálókon, hogy a nagy méretű adathalmazok esetében is gyors választ biztosítson. Nagyobb méretet és teljesítményt igénylő alkalmazásokat szolgál ki. Ezek általában olyan számítási feladatok, amelyekben az adatok mérete megközelíti (vagy meghaladta) a 100 GB-ot.
 
-A nagy kapacitású (Citus) telepítési lehetőség a következőket biztosítja:
+A rugalmas skálázási (Citus) üzembehelyezési lehetőség a következőket nyújtja:
 
-- Horizontális skálázás több gépen több szegmensen keresztül
-- Párhuzamos lekérdezése a kiszolgálók között a nagyméretű adatkészletek gyorsabb reagálásához
+- Horizontális skálázás több gépen a sharding (horizontális skálázás) segítségével
+- A lekérdezések párhuzamosítása a kiszolgálókon a nagy méretű adathalmazokról adott gyors válaszokhoz
 - Kiváló támogatás a több-bérlős alkalmazások, a valós idejű működési elemzések és a nagy teljesítményű tranzakciós számítási feladatok számára
   
 A PostgreSQL-re épülő alkalmazások [a standard szintű](https://docs.microsoft.com/azure/postgresql/concepts-connection-libraries) nagy kapacitású (Citus) elosztott lekérdezéseket futtathatnak, és minimális módosításokat hajtanak végre.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a Azure Database for PostgreSQL három üzembe helyezési módjáról, valamint az igényeinek megfelelő beállítások kiválasztásáról.
 

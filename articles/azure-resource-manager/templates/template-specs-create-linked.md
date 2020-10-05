@@ -3,16 +3,16 @@ title: Sablon létrehozása a csatolt sablonokkal
 description: Útmutató sablon létrehozásához csatolt sablonokkal.
 ms.topic: conceptual
 ms.date: 08/31/2020
-ms.openlocfilehash: df3403fea47f31481f4b3c6d1292749d69f2f584
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: adcce8194f380b90eb9a29f4da25763e112b9f12
+ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91369178"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91728539"
 ---
 # <a name="tutorial-create-a-template-spec-with-linked-templates-preview"></a>Oktatóanyag: spec sablon létrehozása csatolt sablonokkal (előzetes verzió)
 
-Megtudhatja, hogyan hozhat létre egy [sablon-specifikációt](template-specs.md) [csatolt sablonnal](linked-templates.md#linked-template). A sablon specifikációi segítségével megoszthatja az ARM-sablonokat a szervezet más felhasználóival. Ebből a cikkből megtudhatja, hogyan hozhat létre egy sablon-specifikációt a fősablon és a hozzá társított sablonok a `relativePath` [telepítési erőforrás](/azure/templates/microsoft.resources/deployments)új tulajdonságának használatával történő előkészítéséhez.
+Megtudhatja, hogyan hozhat létre egy [sablon-specifikációt](template-specs.md) [csatolt sablonnal](linked-templates.md#linked-template). A sablon specifikációi segítségével megoszthatja az ARM-sablonokat a szervezet más felhasználóival. Ebből a cikkből megtudhatja, hogyan hozhat létre egy sablon-specifikációt a fősablon és a hozzá társított sablonok a `relativePath` [telepítési erőforrás](/azure/templates/microsoft.resources/deployments)tulajdonságával történő előkészítéséhez.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -249,6 +249,6 @@ az deployment group create \
 
 ---
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha szeretne többet megtudni a sablon specifikációjának csatolt sablonként való üzembe helyezéséről, tekintse meg a következő [oktatóanyagot: a sablon specifikációjának telepítése csatolt sablonként](template-specs-deploy-linked-template.md).

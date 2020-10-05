@@ -9,10 +9,10 @@ ms.topic: overview
 ms.custom: hdinsightactive
 ms.date: 02/25/2020
 ms.openlocfilehash: c6209ae985f8e59e1acae2d8fd6a1c821acae5a7
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91449553"
 ---
 # <a name="what-is-apache-kafka-in-azure-hdinsight"></a>Mi az Azure HDInsight Apache Kafka
@@ -73,7 +73,7 @@ Néhány gyakori feladat és minta, amelyek a HDInsight-alapú Kafkával elvége
 |Összesítés|Az adatfolyam-feldolgozás használatával a különböző streamekről származó információk összevonhatók az adatoknak az operatív adatokba való összevonásához és központosításához.|
 |Átalakítás|Az adatfolyam-feldolgozás használatával több bemeneti témakörből származó adatok egyesíthetők és bővíthetők egy vagy több kimeneti témakörbe.|
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A HDInsighton futó Apache Kafka használatának megismeréséhez tekintse meg a következő hivatkozásokat:
 

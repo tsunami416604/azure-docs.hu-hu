@@ -11,10 +11,10 @@ ms.date: 09/14/2020
 ms.author: aahi
 ms.custom: subject-armqs
 ms.openlocfilehash: d88d613b6edfc6b08d08410cdc7cf481d973512d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91349012"
 ---
 # <a name="quickstart-create-a-cognitive-services-resource-using-an-arm-template"></a>Rövid útmutató: Cognitive Services-erőforrás létrehozása ARM-sablonnal
@@ -137,7 +137,7 @@ az group delete --name $resourceGroupName
 
 ---
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Kérelmek hitelesítése az Azure Cognitive Services](authentication.md)
 * [Mi az Azure Cognitive Services?](Welcome.md)

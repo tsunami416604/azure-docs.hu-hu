@@ -10,10 +10,10 @@ ms.date: 09/17/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to prepare the portal to quickly deploy Azure Stack Edge so I can use it to transfer data to Azure.
 ms.openlocfilehash: 200e7f191cb19588fa79ba685c91a75dabd0156a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91349009"
 ---
 # <a name="quickstart-get-started-with-azure-stack-edge-pro-with-gpu"></a>Gyors útmutató: az Azure Stack Edge Pro és a GPU használatának első lépései 
@@ -75,7 +75,7 @@ A telepítése előtt győződjön meg arról, hogy az alábbi előfeltételek t
 
 Készen áll a számítási feladatok üzembe helyezésére az eszközön a [IoT Edge](azure-stack-edge-gpu-deploy-sample-module-marketplace.md)keresztül [, `kubectl` ](azure-stack-edge-gpu-create-kubernetes-cluster.md) az [Azure arc-kompatibilis Kubernetes](azure-stack-edge-gpu-deploy-arc-kubernetes-cluster.md)keresztül vagy az használatával. Ha a telepítés során problémák merülnek fel, lépjen az [eszközök problémáinak elhárítása](), a [problémák megoldása](azure-stack-edge-gpu-troubleshoot.md), a [tanúsítványok problémái](azure-stack-edge-j-series-certificate-troubleshooting.md)vagy a Kubernetes problémákra. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Azure Stack Edge Pro GPU telepítése](./azure-stack-edge-gpu-deploy-install.md)
 

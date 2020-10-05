@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 06/25/2020
 ms.openlocfilehash: 47cf0a1f1d40b9e8358d6bdb4a3ea6a501b67da2
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91439222"
 ---
 # <a name="send-azure-activity-log-to-log-analytics-workspace-using-azure-portal"></a>Azure-tevékenység naplójának küldése Log Analytics munkaterületre a Azure Portal használatával
@@ -72,7 +72,7 @@ Bontsa ki az egyik rekordot a részletes tulajdonságainak megtekintéséhez.
 ![Összetett lekérdezés](media/quick-collect-activity-log/query-02.png)
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebben a rövid útmutatóban úgy konfigurálta a tevékenység naplóját, hogy az Log Analytics munkaterületre legyen küldve. Mostantól más adatokat is konfigurálhat a munkaterületre, ahol elemezheti azt a Azure Monitor található [naplók](../log-query/log-query-overview.md) használatával, és olyan funkciókat használhat, mint például a [naplózási riasztások](../platform/alerts-log-query.md) és a [munkafüzetek](../platform/workbooks-overview.md). A következő lépésekkel gyűjtsön [erőforrás-naplókat](../platform/resource-logs.md) az Azure-erőforrásokból, amelyek a tevékenység naplójában lévő adatokat szolgáltatva betekintést nyújtanak az egyes erőforrásokon végrehajtott műveletekre.
 
 

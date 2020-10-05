@@ -13,10 +13,10 @@ ms.author: pafarley
 ms.custom: cog-serv-seo-aug-2020
 keywords: képek felismerése, képfelismerési alkalmazás, egyéni jövőkép
 ms.openlocfilehash: ab747ad5e7b9362e9c587741198a0191c032b124
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91596894"
 ---
 # <a name="quickstart-build-an-object-detector-with-the-custom-vision-website"></a>Gyors útmutató: objektum-detektor létrehozása a Custom Vision webhellyel
@@ -53,7 +53,7 @@ A böngészőben nyissa meg a [Custom Vision weblapot](https://customvision.ai) 
 
 1. Ezután válassza ki a rendelkezésre álló tartományok egyikét. Az egyes tartományok a következő táblázatban leírtak szerint optimalizálja az adott típusú képek detektorát. Ha szeretné, később is megváltoztathatja a tartományt.
 
-    |Tartomány|Cél|
+    |Tartomány|Rendeltetés|
     |---|---|
     |__Általános__| Az objektum-észlelési feladatok széles körére optimalizált. Ha a többi tartomány egyike sem megfelelő, vagy nem biztos benne, hogy melyik tartományt szeretné kiválasztani, válassza ki az általános tartományt. |
     |__Embléma__|A képeken található márka emblémák keresésére optimalizált.|

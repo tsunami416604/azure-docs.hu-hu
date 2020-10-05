@@ -15,10 +15,10 @@ ms.topic: overview
 ms.date: 09/30/2020
 ms.author: b-juche
 ms.openlocfilehash: beb1cc9957f7b43bc6ad9b9b6ee6c7707eb0c2d6
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91571564"
 ---
 # <a name="whats-new-in-azure-netapp-files"></a>A Azure NetApp Files újdonságai
@@ -83,6 +83,6 @@ Azure NetApp Files rendszeresen frissül. Ez a cikk a legújabb új funkciókró
 
     Azure NetApp Files lehetővé teszi olyan további fiókok hozzáadását, amelyek emelt szintű jogosultságokat igényelnek a Azure NetApp Fileshoz való használatra létrehozott számítógépfiók számára. A megadott fiókok a fájl vagy mappa szintjén módosíthatják az NTFS-engedélyeket. Megadhat például egy nem Kiemelt szolgáltatásfiók-fiókot, amely az adatáttelepítés során az SMB-fájlmegosztás Azure NetApp Files-ben való áttelepítésére szolgál. A biztonsági mentési házirend felhasználói szolgáltatás jelenleg előzetes verzióban érhető el.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Mi az az Azure NetApp Files?](azure-netapp-files-introduction.md)
 * [Az Azure NetApp Files tárhely-hierarchiájának ismertetése](azure-netapp-files-understand-storage-hierarchy.md) 

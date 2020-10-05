@@ -3,12 +3,12 @@ title: 'GYIK: Azure Files biztonsági mentése'
 description: Ebből a cikkből megismerheti az Azure-fájlmegosztás Azure Backup szolgáltatással való védelemmel kapcsolatos gyakori kérdésekre adott válaszokat.
 ms.date: 04/22/2020
 ms.topic: conceptual
-ms.openlocfilehash: c62f8376b220911edd26edbe18955d0103440b81
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.openlocfilehash: 74d8cc9cdb1d9c01c8238f205ae485b61d665cd7
+ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89377420"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91729066"
 ---
 # <a name="questions-about-backing-up-azure-files"></a>Kérdések az Azure Files biztonsági mentéséről
 
@@ -75,6 +75,23 @@ Igen. A részletes dokumentációt [itt](backup-azure-afs-automation.md)találja
 ### <a name="can-i-access-the-snapshots-taken-by-azure-backups-and-mount-them"></a>Hozzáférhetek az Azure Backups által készített pillanatképekhez, és csatlakoztatják őket?
 
 A Azure Backup által készített Pillanatképek a portálon, a PowerShellben vagy a CLI-ben is elérhetők. Ha többet szeretne megtudni a Azure Files-megosztási pillanatképekről, tekintse meg a [Azure Files megosztási Pillanatképek áttekintése](../storage/files/storage-snapshots-files.md)című témakört.
+
+### <a name="what-happens-after-i-move-a-backed-up-file-share-to-a-different-subscription"></a>Mi történik, ha egy biztonsági másolatba mentett fájlmegosztást másik előfizetésre helyezek át?
+
+A fájlmegosztás egy másik előfizetésbe való áthelyezését követően a rendszer a Azure Backup új fájlmegosztást tekinti. A javasolt lépések az alábbiak:
+ 
+Forgatókönyv: tegyük fel, hogy van egy fájlmegosztási FS1 a (z) S1 előfizetésben, és a v1-tárolón keresztül védett. Most szeretné áthelyezni a fájlmegosztást az előfizetés S2-re.
+ 
+1.  Helyezze át a kívánt Storage-fiókot és-fájlmegosztást (FS1) egy másik előfizetésbe (S2).
+2.  A v1-tárolóban a FS1-hez tartozó adattörlési művelettel aktiválja a védelem leállítása műveletet.
+3.  Szüntesse meg a FS1 üzemeltető Storage-fiók regisztrációját a v1-tárból.
+4.  Konfigurálja újra a biztonsági mentést a FS1, most pedig S2-re költözött, és egy S2-előfizetésben található tárolóval (v2). 
+ 
+Vegye figyelembe, hogy a biztonsági mentés v2-vel való újrakonfigurálását követően a v1-mel készített pillanatképeket a továbbiakban nem fogja felügyelni Azure Backup, ezért ezeket a pillanatképeket manuálisan kell törölni a követelménynek megfelelően.
+
+### <a name="can-i-move-my-backed-up-file-share-to-a-different-resource-group"></a>Áthelyezhetem a mentett fájlmegosztást egy másik erőforráscsoporthoz?
+ 
+Igen, áthelyezheti a mentett fájlmegosztást egy másik erőforráscsoporthoz. A fájlmegosztás biztonsági mentését azonban újra kell konfigurálnia, mivel Azure Backup alapján új erőforrásként lesz kezelve. Emellett az erőforráscsoport áthelyezése előtt létrehozott pillanatképeket az Azure Backup már nem fogja felügyelni. Ezért manuálisan kell törölnie ezeket a pillanatképeket a követelménynek megfelelően.
 
 ### <a name="what-is-the-maximum-retention-i-can-configure-for-backups"></a>Mi a biztonsági mentésekhez konfigurálható maximális adatmegőrzés?
 
@@ -155,6 +172,6 @@ Amikor új házirendet alkalmaznak a fájlmegosztás esetében, az összes jöv�
 >[!NOTE]
 >A házirend módosítása csak az ütemezett biztonsági mentés részeként létrehozott helyreállítási pontokra lesz hatással. Igény szerinti biztonsági mentések esetén a megőrzési időtartamot a biztonsági mentés során megadott **megőrzési** érték határozza meg.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Az Azure-fájlmegosztás biztonsági mentése során felmerülő problémák elhárítása](troubleshoot-azure-files.md)

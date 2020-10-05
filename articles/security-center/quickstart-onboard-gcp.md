@@ -8,10 +8,10 @@ ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
 ms.openlocfilehash: 71f1de7b4ff265a5740181a2bb2032f33a83abe3
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91448984"
 ---
 #  <a name="connect-your-gcp-accounts-to-azure-security-center"></a>A GCP-fiókok összekapcsolásának Azure Security Center
@@ -119,7 +119,7 @@ Ha az erőforrás típusa szerint szeretné megtekinteni az összes aktív javas
 :::image type="content" source="./media/quickstart-onboard-gcp/gcp-resource-types-in-inventory.png" alt-text="3 GCP-projekt szerepel a Security Center áttekintési irányítópultján"::: 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A GCP-fiók csatlakoztatása a Azure Security Centerben elérhető többfelhős felület része. A kapcsolódó információk a következő oldalon találhatók:
 

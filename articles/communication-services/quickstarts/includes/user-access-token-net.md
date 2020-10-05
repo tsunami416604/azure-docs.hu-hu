@@ -11,10 +11,10 @@ ms.topic: include
 ms.custom: include file
 ms.author: marobert
 ms.openlocfilehash: e4a52095f7fc1c8252ffbbbbedf4520773d3efc1
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91377044"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
@@ -27,7 +27,7 @@ ms.locfileid: "91377044"
 
 ### <a name="create-a-new-c-application"></a>Új C#-alkalmazás létrehozása
 
-A konzol ablakban (például cmd, PowerShell vagy bash) az `dotnet new` paranccsal hozzon létre egy új, a nevű Console-alkalmazást `UserAccessTokensQuickstart` . Ez a parancs egy egyszerű ""Helló világ!"alkalmazás" C#-projektet hoz létre egyetlen forrásfájlban: **program.cs**.
+A konzol ablakban (például cmd, PowerShell vagy bash) az `dotnet new` paranccsal hozzon létre egy új, a nevű Console-alkalmazást `UserAccessTokensQuickstart` . Ez a parancs egy egyszerű "„Helló világ!” alkalmazás" C#-projektet hoz létre egyetlen forrásfájlban: **program.cs**.
 
 ```console
 dotnet new console -o UserAccessTokensQuickstart

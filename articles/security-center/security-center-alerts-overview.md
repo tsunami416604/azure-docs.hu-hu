@@ -8,18 +8,18 @@ manager: rkarlin
 ms.assetid: 1b71e8ad-3bd8-4475-b735-79ca9963b823
 ms.service: security-center
 ms.topic: conceptual
-ms.date: 07/14/2020
+ms.date: 10/05/2020
 ms.author: memildin
-ms.openlocfilehash: b2d5731ea9e8f2fb13d234fc9d951e221c0ab3e5
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 7228368645023ffc7debbc84adb8e3b7c27b1bbb
+ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90905478"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91728437"
 ---
 # <a name="security-alerts-in-azure-security-center"></a>Biztonsági riasztások az Azure Security Centerben
 
-A Azure Security Center számos különböző típusú erőforráshoz biztosít riasztásokat. A Security Center riasztásokat hoz létre az Azure-ban üzembe helyezett erőforrásokról, valamint a helyszíni és hibrid felhőalapú környezetekben üzembe helyezett erőforrásokról is.
+A Security Center számos különböző típusú erőforráshoz biztosít riasztásokat. A Security Center riasztásokat hoz létre az Azure-ban üzembe helyezett erőforrásokról, valamint a helyszíni és hibrid felhőalapú környezetekben üzembe helyezett erőforrásokról is.
 
 A biztonsági riasztásokat a speciális észlelések váltották ki, és csak az Azure Defender esetében érhetők el. Ennek létezik egy ingyenesen elérhető próbaverziója. A frissítés a **díjszabás & beállítások** lapról végezhető el. További információ a [Security Center díjszabásáról](https://azure.microsoft.com/pricing/details/security-center/).
 
@@ -85,8 +85,16 @@ Azure Security Center a biztonsági kutatási és adatelemzési csapatokból sz�
 
 Ezek az összetett erőfeszítések új és továbbfejlesztett észleléseket eredményeznek, amelyekkel azonnal kihasználhatja a műveletet.
 
+## <a name="export-alerts"></a>Riasztások exportálása
 
-## <a name="next-steps"></a>Következő lépések
+Számos lehetősége van a riasztások Security Centeron kívüli megtekintésére, többek között a következőkre:
+
+- **CSV-jelentés letöltése** a riasztások irányítópultján egy egyszeri exportálás CSV-be.
+- A díjszabási & beállítások **folyamatos exportálásával** konfigurálhatja a biztonsági riasztások és javaslatok adatfolyamait log Analytics munkaterületekre és Event Hubsokra. [További információ a folyamatos exportálásról](continuous-export.md)
+- Az Azure **Sentinel-összekötő** az Azure Defender-riasztásokat Azure Security Center az Azure sentinelbe továbbítja. [További információ a Azure Security Center és a Sentinel összekapcsolásáról](../sentinel/connect-azure-security-center.md)
+
+
+## <a name="next-steps"></a>További lépések
 
 Ebből a cikkből megtudhatta, milyen típusú riasztások érhetők el a Security Centerban. További információkért lásd:
 

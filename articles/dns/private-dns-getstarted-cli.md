@@ -9,10 +9,10 @@ ms.date: 10/05/2019
 ms.author: rohink
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 8fdf78c0a3dd2f7a130d827751ce93c5539575df
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87502953"
 ---
 # <a name="quickstart-create-an-azure-private-dns-zone-using-the-azure-cli"></a>Rövid útmutató: Azure Private DNS-zóna létrehozása az Azure CLI használatával
@@ -214,5 +214,5 @@ az group delete --name MyAzureResourceGroup
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Az Azure DNS Private Zones forgatókönyvei](private-dns-scenarios.md)
+> [Azure DNS Private Zones forgatókönyvek](private-dns-scenarios.md)
 

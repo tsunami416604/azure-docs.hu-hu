@@ -5,10 +5,10 @@ ms.topic: overview
 ms.date: 06/03/2019
 ms.custom: mvc
 ms.openlocfilehash: f00eea37c43fba10e0a89498dd81366630852db7
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91371379"
 ---
 # <a name="what-is-application-insights"></a>Mi az Application Insights?
@@ -66,7 +66,7 @@ Az adatokat többféle módon lehet böngészni. Olvassa el az alábbi cikkeket:
 
 ## <a name="how-do-i-use-application-insights"></a>Hogyan használható az Application Insights?
 
-### <a name="monitor"></a>Monitor
+### <a name="monitor"></a>Figyelés
 Telepítse az Application Insightsot az alkalmazásba, állítsa be a [rendelkezésre állási webes teszteket](./monitor-web-app-availability.md), és az alábbiakra nyílik lehetőség:
 
 * Tekintse meg az alapértelmezett [alkalmazás-irányítópultot](./overview-dashboard.md) a munkahelye számára, hogy figyelje a terhelést, a válaszadást és a függőségek, az oldalak terhelését és az Ajax-hívásokat.
@@ -87,7 +87,7 @@ Az újonnan üzembe helyezett szolgáltatások [hatékonyságának mérése](./u
 * Egyéni telemetriai adatokat vehet fel a kódba.
 * A következési fejlesztési ciklust a telemetriai adatokból származó konkrét tényekre alapozhatja.
 
-## <a name="get-started"></a>Első lépések
+## <a name="get-started"></a>Bevezetés
 Az Application Insights a Microsoft Azure-ban üzemeltetett számos szolgáltatás egyike, és a telemetriai adatok ide érkeznek be elemzésre és megjelenítésre. A használat megkezdéséhez egy [Microsoft Azure-előfizetésre](https://azure.com) van szükség. A regisztráció ingyenes, és ha az Application Insights alapszintű [díjcsomagját](https://azure.microsoft.com/pricing/details/application-insights/) választja, a használat mindaddig díjmentes, amíg az alkalmazás el nem ér egy jelentős használati értéket. Ha a munkahelye már rendelkezik előfizetéssel, lehetőség van felvenni az Ön Microsoft-fiókját az adott előfizetésbe.
 
 Az első lépések megtételének számos módja van. Kezdje azzal, amelyik Önnek a legmegfelelőbb. További szolgáltatásokat később is felvehet.
@@ -108,7 +108,7 @@ Az első lépések megtételének számos módja van. Kezdje azzal, amelyik Önn
 * **[Elemezheti a mobilalkalmazások használatát](../learn/mobile-center-quickstart.md)** a Visual Studio App Center integrálásával.
 * **[Rendelkezésre állási tesztek](./monitor-web-app-availability.md)** – rendszeresen pingelheti webhelyét kiszolgálóinkról.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Első lépések futtatáskor:
 
 * [Azure-beli virtuális gépek és Azure-beli virtuálisgép-méretezési csoport – IIS által üzemeltetett alkalmazások](./azure-vm-vmss-apps.md)

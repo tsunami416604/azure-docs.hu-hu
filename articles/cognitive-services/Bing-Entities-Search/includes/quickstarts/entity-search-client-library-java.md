@@ -10,10 +10,10 @@ ms.date: 03/06/2020
 ms.custom: devx-track-java
 ms.author: aahi
 ms.openlocfilehash: f69b9b989a93949f9a0441676c81af7480fb968f
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87375096"
 ---
 Ezzel a rövid útmutatóval megkezdheti az entitások keresését a Javához készült Bing Entity Search ügyféloldali kódtár használatával. Habár a Bing Entity Search REST API kompatibilis a legtöbb programozási nyelvvel, az ügyféloldali kódtár egyszerű módszert kínál a szolgáltatás integrálására az alkalmazásokba. A minta forráskódja a [githubon](https://github.com/Azure-Samples/cognitive-services-java-sdk-samples/tree/master/Search/BingEntitySearch)található.

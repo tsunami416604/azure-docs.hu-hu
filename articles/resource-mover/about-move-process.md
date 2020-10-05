@@ -8,10 +8,10 @@ ms.topic: overview
 ms.date: 09/09/2020
 ms.author: raynew
 ms.openlocfilehash: 4d520f51717aa11dba55697d63852b17e0ba9cf0
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90604495"
 ---
 # <a name="about-the-move-process"></a>Az áthelyezési folyamat
@@ -66,13 +66,13 @@ Az áthelyezési folyamat során előfordulhat, hogy a rendszer a következő f�
 
 ### <a name="remove-resources"></a>Erőforrások eltávolítása
 
-Ha nem szeretne áthelyezni egy erőforrást, távolítsa el az áthelyezési gyűjteményből. Általában az erőforrás törlődik a gyűjteményből, valamint a kapcsolódó műveletekkel vagy objektumokkal, például a replikálással vagy a tárolt sablonokkal együtt. Pontosan mi történik, ha eltávolít egy erőforrást az erőforrás típusától és az erőforrás állapotáról a törléskor. [További információ](remove-move-resources.md).
+Ha nem szeretne áthelyezni egy erőforrást, távolítsa el az áthelyezési gyűjteményből. Általában az erőforrás törlődik a gyűjteményből, valamint a kapcsolódó műveletekkel vagy objektumokkal, például a replikálással vagy a tárolt sablonokkal együtt. Pontosan mi történik, ha eltávolít egy erőforrást az erőforrás típusától és az erőforrás állapotáról a törléskor. [További információk](remove-move-resources.md).
 
 ## <a name="move-impact"></a>Hatás áthelyezése
 
 A táblázat összefoglalja, hogy mi befolyásolja a régiók közötti váltást.
 
-**Viselkedés** | **Régiók között**
+**Működés** | **Régiók között**
 --- | --- | --- 
 **Adatok** | Az erőforrás-adatok és a metaadatok át lesznek helyezve.<br/><br/> A metaadatok ideiglenes tárolása az erőforrás-függőségek és műveletek állapotának nyomon követése érdekében történik.
 **Erőforrás** | A forrás erőforrásai érintetlenek maradnak, hogy az alkalmazások továbbra is működőképesek legyenek, és az áthelyezés után is eltávolíthatók.<br/><br/> Egy erőforrás jön létre a célként megadott régióban.

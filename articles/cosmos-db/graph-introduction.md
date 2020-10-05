@@ -8,10 +8,10 @@ ms.topic: overview
 ms.date: 07/10/2020
 ms.author: jasonh
 ms.openlocfilehash: 67a2c9537851343e8e5dad4a3654b31082e83d11
-ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91409612"
 ---
 # <a name="introduction-to-gremlin-api-in-azure-cosmos-db"></a>A Gremlin API bemutatása Azure Cosmos DB
@@ -106,7 +106,7 @@ A Graph-adatbázisok gyakran beletartoznak a NoSQL vagy a nem kapcsolódó adatb
 
 Használjunk egy mintagráfot annak megismeréséhez, hogyan adhatók meg lekérdezések a Gremlinben. Az alábbi ábrán egy üzleti alkalmazás látható, amely felhasználókkal, érdeklődési körökkel és eszközökkel kapcsolatos adatokat kezel egy gráf formájában.  
 
-:::image type="content" source="./media/gremlin-support/sample-graph.png" alt-text="Személyeket, eszközöket és érdeklődési köröket tartalmazó mintaadatbázis" border="false"::: 
+:::image type="content" source="./media/gremlin-support/sample-graph.png" alt-text="Az Azure Cosmos DB gráfarchitektúrája" border="false"::: 
 
 Ez a gráf a következő *csúcs* -típusokkal rendelkezik (ezeket a "label" is nevezik a Gremlin-ben):
 
@@ -150,7 +150,7 @@ A gráfok különösen akkor hasznosak, ha olyan kérdéseket kell megválaszoln
 :> g.V('thomas.1').out('knows').out('uses').out('runsos').group().by('name').by(count())
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A gráfok Azure Cosmos DB általi támogatásával kapcsolatos további információkért lásd:
 

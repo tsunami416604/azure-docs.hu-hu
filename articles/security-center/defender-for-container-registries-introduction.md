@@ -8,10 +8,10 @@ ms.topic: overview
 ms.service: security-center
 manager: rkarlin
 ms.openlocfilehash: 12264a79ee5428e98d6cf7d37bef6706295e68dc
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91448371"
 ---
 # <a name="introduction-to-azure-defender-for-container-registries"></a>Bevezetés az Azure Defender for Container-jegyzékbe
@@ -73,7 +73,7 @@ Az Azure Defender által a Container nyilvántartók számára támogatott táro
 Ha nem támogatott beállításjegyzéket csatlakozik az Azure-előfizetéséhez, a rendszer nem ellenőrzi őket, és nem lesz rájuk kiszámlázva.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha többet szeretne megtudni a Security Center tárolójának biztonsági funkcióiról, tekintse meg a következő témakört:
 

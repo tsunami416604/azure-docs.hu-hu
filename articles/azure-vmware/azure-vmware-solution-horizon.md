@@ -3,12 +3,12 @@ title: Horizont üzembe helyezése az Azure VMware-megoldáson
 description: Ismerje meg, hogyan helyezhet üzembe VMware horizontot az Azure VMware-megoldáson.
 ms.topic: how-to
 ms.date: 09/29/2020
-ms.openlocfilehash: 60207b0ed9e1df805ac667752b55f14a693ec25c
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.openlocfilehash: bda4be049e360670cb7038bfbb3070c2a5f262c4
+ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91492471"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91729049"
 ---
 # <a name="deploy-horizon-on-azure-vmware-solution"></a>Horizont üzembe helyezése az Azure VMware-megoldáson 
 
@@ -84,7 +84,7 @@ Mindegyik Azure Private Cloud/SDDC képes a 4 000 asztali vagy alkalmazás-munka
 
 Az Azure Private Cloud/SDDC maximális korlátja miatt ajánlott üzembe helyezési architektúra, ahol a Horizon-kapcsolati kiszolgálók és a VMware Unified Access Gateway (UAGs) az Azure Virtual Networkon belül futnak. Ez gyakorlatilag minden egyes Azure-beli privát felhőt/SDDC bekapcsol egy blokkba. Ez viszont maximalizálja az Azure VMware-megoldáson futó horizont méretezhetőségét.
 
-Az Azure Virtual Networkról az Azure privát felhőkre/SDDCs való kapcsolódást ExpressPath gyors elérési úttal kell konfigurálni. Az alábbi ábrán egy alapszintű Horizon Pod üzemelő példány látható.
+Az Azure Virtual Networkról az Azure privát felhőkre/SDDCs való kapcsolódást ExpressRoute FastPath kell konfigurálni. Az alábbi ábrán egy alapszintű Horizon Pod üzemelő példány látható.
 
 :::image type="content" source="media/horizon/horizon-pod-deployment-expresspath-fast-path.png" alt-text="Az Azure-beli VMware-megoldás és a Horizon-felhő közötti különbségek az Azure-ban" border="false":::
 
@@ -92,7 +92,7 @@ Az Azure Virtual Networkról az Azure privát felhőkre/SDDCs való kapcsolódá
 
 Ez a szakasz a hálózati architektúrát magas szinten mutatja be az Azure VMware-megoldás távlati skálázásával, néhány gyakori telepítési példával. A hangsúly itt kifejezetten a kritikus hálózati elemekre vonatkozik.
 
-### <a name="single-horizon-pd-on-azure-vmware-solution"></a>Single Horizon PD az Azure VMware-megoldással
+### <a name="single-horizon-pod-on-azure-vmware-solution"></a>Egy Horizon Pod az Azure VMware-megoldásban
 
 :::image type="content" source="media/horizon/single-horizon-pod-azure-vmware-solution.png" alt-text="Az Azure-beli VMware-megoldás és a Horizon-felhő közötti különbségek az Azure-ban" border="false":::
 

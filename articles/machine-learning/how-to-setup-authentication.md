@@ -3,20 +3,20 @@ title: Hitelesítés beállítása
 titleSuffix: Azure Machine Learning
 description: Megtudhatja, hogyan állíthatja be és konfigurálhatja a hitelesítési módszert a Azure Machine Learning különböző erőforrásaihoz és munkafolyamataihoz. A szolgáltatáson belüli hitelesítés több módon is konfigurálható és használható, az egyszerű, felhasználói felületen alapuló hitelesítéstől kezdve a fejlesztési és tesztelési célokra, a teljes Azure Active Directory a szolgáltatás egyszerű hitelesítése.
 services: machine-learning
-author: larryfr
-ms.author: larryfr
+author: cjgronlund
+ms.author: cgronlun
 ms.reviewer: larryfr
 ms.service: machine-learning
 ms.subservice: core
 ms.date: 06/17/2020
 ms.topic: conceptual
 ms.custom: how-to, has-adal-ref, devx-track-js
-ms.openlocfilehash: 0650b1c6364a187447ea3a378675df9d76eef4d9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 486f026f0d9b325f8e17a040c69f9d3e1da9b359
+ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91275727"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91729032"
 ---
 # <a name="set-up-authentication-for-azure-machine-learning-resources-and-workflows"></a>Azure Machine Learning erőforrások és munkafolyamatok hitelesítésének beállítása
 
@@ -381,7 +381,7 @@ print(token)
 >
 > Továbbá minél nagyobb a távolság a fürt régiója és a munkaterület régiója között, annál hosszabb ideig tart a token beolvasása.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A [titkok használata a képzésben](how-to-use-secrets-in-runs.md).
 * [Rendszerkép-besorolási modell betanítása és üzembe helyezése](tutorial-train-models-with-aml.md).

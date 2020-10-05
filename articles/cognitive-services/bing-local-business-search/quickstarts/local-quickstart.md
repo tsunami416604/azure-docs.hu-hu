@@ -12,10 +12,10 @@ ms.date: 05/12/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 3102742d19e7e0dffa6135c9267f51b1231dafc8
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90970462"
 ---
 # <a name="quickstart-send-a-query-to-the-bing-local-business-search-api-in-c"></a>Gyors útmutató: lekérdezés küldése a Bing helyi üzleti keresési API-nak C-ben #
@@ -209,7 +209,7 @@ namespace localSearch
 
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - [Helyi üzleti keresés – Java rövid útmutató](local-search-java-quickstart.md)
 - [Helyi üzleti keresés Node.js rövid útmutató](local-search-node-quickstart.md)
 - [Helyi üzleti keresés – Python rövid útmutató](local-search-python-quickstart.md)

@@ -8,10 +8,10 @@ ms.topic: quickstart
 ms.service: security-center
 manager: rkarlin
 ms.openlocfilehash: cddae0a7115fc2999b52eaba7df2b49db509981b
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91449031"
 ---
 #  <a name="connect-your-aws-accounts-to-azure-security-center"></a>AWS-fiókok összekötése Azure Security Center
@@ -191,7 +191,7 @@ Támogatott operációs rendszer automatikus bevezetéshez az Azure arc for AWS-
 - Red Hat Enterprise Linux (RHEL) 7 (x64) – az SSM-et manuálisan kell telepíteni vagy külön előkészíteni
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az AWS-fiók csatlakoztatása a Azure Security Centerban elérhető többfelhős élmény része. A kapcsolódó információk a következő oldalon találhatók:
 

@@ -8,10 +8,10 @@ ms.subservice: iot-central-retail
 ms.topic: tutorial
 ms.date: 10/20/2019
 ms.openlocfilehash: 827d571a6545d0aaffb0f96134fcf094eaa5f26b
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90980613"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-smart-inventory-management-application-template"></a>Oktatóanyag: üzembe helyezés és útmutató intelligens leltár-kezelési alkalmazás sablonja
@@ -112,7 +112,7 @@ Ha nem folytatja az alkalmazás használatát, törölje az alkalmazás sablonj�
 > [!div class="mx-imgBorder"]
 > ![Képernyőfelvétel az alkalmazás törléséről, ha elkészült vele](./media/tutorial-iot-central-smart-inventory-management/smart_inventory_management_cleanup.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * További információ az intelligens leltár kezeléséről 
 > [!div class="nextstepaction"]
 > [Intelligens leltár-felügyeleti koncepció](./architecture-smart-inventory-management.md)

@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 9/29/2020
 ms.author: duau
 ms.openlocfilehash: 8e478cebcf8c5c9365100ade23c3d610c24930ba
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91569753"
 ---
 # <a name="what-is-rules-engine-for-azure-front-door"></a>Mi a szabályok motorja az Azure bejárati kapujában? 
@@ -54,7 +54,7 @@ A AFD Rules Engine használatával létrehozhatók a szabályokhoz tartozó konf
 - *Művelet*: a műveletek azt írják elő, hogy mi történik a bejövő kérelmekkel – a kérés/válasz fejléc műveletei, a továbbítás, az átirányítások és az újraírások még ma elérhetők. Egy szabály legfeljebb öt műveletet tartalmazhat. egy szabály azonban csak egy útvonal-konfiguráció felülbírálását tartalmazhatja.  A műveletek teljes listája [itt](front-door-rules-engine-actions.md)található.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Megtudhatja, hogyan konfigurálhatja az első [szabályok motorjának konfigurációját](front-door-tutorial-rules-engine.md). 
 - Útmutató a [Front Door létrehozásához](quickstart-create-front-door.md).

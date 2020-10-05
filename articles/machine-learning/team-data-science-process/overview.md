@@ -12,10 +12,10 @@ ms.date: 1/10/2020
 ms.author: tdsp
 ms.custom: previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: fc9a5e604e6ac52eb0e853725123272ca924fa36
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91362231"
 ---
 # <a name="what-is-the-team-data-science-process"></a>Mi a csoportos adatelemzési folyamat?
@@ -103,6 +103,6 @@ Az elemzési és tárolási infrastruktúrát, ahol a nyers és a feldolgozott a
 A legtöbb szervezet folyamatainak bevezetése kihívást jelent. Az adatelemzési folyamat és az életciklus megvalósításához biztosított eszközök csökkentik a korlátokat, és növelhetik az elfogadásuk következetességét. A TDSP az eszközök és parancsfájlok kezdeti készletét kínálja a TDSP a csapaton belüli bevezetésének megkezdéséhez. Emellett segít automatizálni az adatelemzési életciklus általános feladatait, például az adatfeltárást és a kiindulási modellezést. Egy jól definiált struktúra van megadva, hogy a felhasználók közösen használják a megosztott eszközöket és segédprogramokat a csapatuk megosztott kódjának tárházában. Ezeket az erőforrásokat ezután a csapaton vagy a szervezeten belül más projektek is kihasználhatják. A TDSP azt is tervezi, hogy lehetővé tegye az eszközök és segédprogramok teljes Közösséghez való hozzájárulását. Előfordulhat, hogy a TDSP segédprogramok klónozása a [githubról](https://github.com/Azure/Azure-TDSP-Utilities)lehetséges.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Csoportos adatelemzési folyamat: szerepkörök és feladatok](https://github.com/Azure/Microsoft-TDSP/blob/master/Docs/roles-tasks.md) Felvázolja a kulcsfontosságú személyzeti szerepköröket és azokhoz kapcsolódó feladatait egy adatelemzési csapat számára, amely egységesíti a folyamatot. 

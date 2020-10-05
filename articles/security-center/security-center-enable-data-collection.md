@@ -9,10 +9,10 @@ ms.topic: quickstart
 ms.date: 04/27/2020
 ms.author: memildin
 ms.openlocfilehash: 92c73fed84910e525378aa18e02456960acf9911
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91447265"
 ---
 # <a name="data-collection-in-azure-security-center"></a>Adatgyűjtés az Azure Security Centerben
@@ -40,7 +40,7 @@ Az log Analytics-ügynök automatikus kiépítés engedélyezése:
 1. A Security Center menüjében válassza a **díjszabás & beállítások**lehetőséget.
 1. Válassza ki az adott előfizetést.
 1. Az **adatgyűjtés** lapon állítsa be az **automatikus kiépítés** **a**következőre:.
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
     :::image type="content" source="./media/security-center-enable-data-collection/enable-automatic-provisioning.png" alt-text="Az log Analytics-ügynök automatikus kiépítés engedélyezése":::
 
@@ -108,7 +108,7 @@ Meglévő Log Analytics munkaterület kiválasztása:
    >
    >
 
-3. Kattintson a **Mentés** gombra.
+3. Válassza a **Mentés** lehetőséget.
 4. A **Mentés**gombra kattintva a rendszer megkérdezi, hogy szeretné-e újrakonfigurálni azokat a figyelt virtuális gépeket, amelyek korábban egy alapértelmezett munkaterülethez voltak csatlakoztatva.
 
    - Válassza a **nem** lehetőséget, ha azt szeretné, hogy az új munkaterület-beállítások csak az új virtuális gépeken legyenek érvényesek. Az új munkaterület-beállítások csak az új ügynök telepítésére érvényesek; újonnan felderített virtuális gépek, amelyeken nincs telepítve a Log Analytics ügynök.
@@ -192,7 +192,7 @@ Itt látható az egyes készletekhez tartozó biztonsági és alkalmazás-zárol
 A szűrési házirend kiválasztásához:
 1. Az **adatgyűjtés** lapon válassza ki a szűrési házirendet a **további nyers adat tárolása – Windows biztonsági események**.
  
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
     :::image type="content" source="./media/security-center-enable-data-collection/data-collection-tiers.png" alt-text="Az log Analytics-ügynök automatikus kiépítés engedélyezése":::
 
 ### <a name="automatic-provisioning-in-cases-of-a-pre-existing-agent-installation"></a>Automatikus kiépítés egy korábban létező ügynök telepítése esetén <a name="preexisting"></a> 
@@ -227,7 +227,7 @@ A log Analytics ügynök automatikus kiépítés kikapcsolása:
 
 3. Válassza **az adatgyűjtés**lehetőséget.
 4. Az automatikus **kiépítés**területen válassza ki a **ki** lehetőséget az automatikus kiépítés letiltásához.
-5. Kattintson a **Mentés** gombra. 
+5. Válassza a **Mentés** lehetőséget. 
 
 
 Ha az automatikus kiépítés le van tiltva (kikapcsolva), az alapértelmezett munkaterület-konfiguráció szakasz nem jelenik meg.
@@ -299,7 +299,7 @@ Manuálisan is telepítheti a Log Analytics-ügynököt, így Security Center a 
     Ha további információra van szükség arról, hogy Security Center miért nem tudja sikeresen figyelni a virtuális gépeket és a számítógépeket az automatikus kiépítés során, tekintse meg a [figyelési ügynök állapotával kapcsolatos problémákat](security-center-troubleshooting-guide.md#mon-agent).
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ez a cikk bemutatja, hogyan működik az adatgyűjtés és az automatikus kiépítés a Security Centerban. Ha többet szeretne megtudni a Security Centerről, tekintse meg a következő lapokat:
 
 * [Azure Security Center – gyakran ismételt kérdések](faq-general.md) – Gyakran ismételt kérdések a szolgáltatás használatával kapcsolatban.

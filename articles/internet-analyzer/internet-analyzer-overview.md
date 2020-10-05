@@ -8,10 +8,10 @@ ms.topic: overview
 ms.date: 10/16/2019
 ms.author: mebeatty
 ms.openlocfilehash: 2512092c69390ce604c26ab6c5dd000afafc7c05
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91360888"
 ---
 # <a name="what-is-internet-analyzer-preview"></a>Mi az Internet Analyzer? (Előzetes verzió)
@@ -38,7 +38,7 @@ Az előzetes verzió ideje alatt a következő előre konfigurált végpontok é
 * **Azure-régiók**
     * Dél-Brazília
     * Közép-India
-    * Az USA középső régiója
+    * USA középső régiója
     * Kelet-Ázsia
     * USA keleti régiója
     * Nyugat-Japán
@@ -104,7 +104,7 @@ A teszt elindítását követően a telemetria adatai megjelennek az Internet An
 A scorecardokkal kapcsolatos további információkért tekintse meg a [Scorecardok értelmezését](internet-analyzer-scorecard.md) ismertető oldalt. 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ismerje meg, hogyan [hozhatja létre az első Internet Analyzer-erőforrását](internet-analyzer-create-test-portal.md).
 * Olvassa el az [Internet Analyzer – gyakori kérdések](internet-analyzer-faq.md)című részt. 

@@ -12,10 +12,10 @@ ms.author: anvang
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019, devx-track-azurepowershell
 ms.openlocfilehash: 8077b1a52e44ce3a5160309c92288f756bed1014
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91566142"
 ---
 # <a name="quickstart-scale-compute-for-synapse-sql-pool-with-azure-powershell"></a>Gyors útmutató: a Azure PowerShell
@@ -119,7 +119,7 @@ Az állapot önmagában való megjelenítéséhez használja a következő paran
 $database | Select-Object DatabaseName,Status
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ezzel megtanulta, hogyan méretezheti a számítási lehetőséget az SQL-készlethez. Ha többet szeretne megtudni az SQL-készletről, folytassa a betöltési oktatóanyaggal.
 

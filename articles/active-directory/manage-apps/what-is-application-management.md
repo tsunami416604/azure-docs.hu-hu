@@ -13,15 +13,15 @@ ms.author: kenwith
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: abe222ff783032c5d6d19a42bfb3d8aeffc284a1
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90604121"
 ---
 # <a name="what-is-application-management"></a>Mi az alkalmazáskezelés?
 
-Az Azure AD egy identitás-és hozzáférés-kezelési (IAM) rendszer. Egyetlen helyet biztosít a digitális identitásokkal kapcsolatos információk tárolásához. A szoftveralkalmazások úgy konfigurálhatók, hogy az Azure AD-t használják a felhasználói adatok tárolásának helyeként. 
+Az Azure AD egy identitás- és hozzáférés-kezelési (IAM-) rendszer. Központi helyet biztosít a digitális identitásokkal kapcsolatos információk tárolásához. A szoftveralkalmazásait konfigurálhatja az Azure AD, mint a felhasználói információkat tároló hely használatára. 
 
 Az Azure AD-t úgy kell konfigurálni, hogy integrálható legyen az alkalmazással. Más szóval tudnia kell, hogy mely alkalmazások használják identitási rendszerként. Az Azure AD-t az alkalmazások felügyeletének és kezelésének folyamata is ismert.
 

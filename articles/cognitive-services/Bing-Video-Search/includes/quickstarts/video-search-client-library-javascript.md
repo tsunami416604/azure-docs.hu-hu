@@ -10,10 +10,10 @@ ms.date: 03/19/2020
 ms.author: aahi
 ms.custom: devx-track-js
 ms.openlocfilehash: fa1ecb24649d9355e6104bff8add5430fdd64c3c
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91376677"
 ---
 Ezzel a rövid útmutatóval megkezdheti a hírek keresését a JavaScripthez készült Bing Video Search ügyféloldali kódtár használatával. Habár a Bing Video Search REST API kompatibilis a legtöbb programozási nyelvvel, az ügyféloldali kódtár egyszerű módszert kínál a szolgáltatás integrálására az alkalmazásokba. A minta forráskódja a [githubon](https://github.com/Azure-Samples/cognitive-services-node-sdk-samples/blob/master/Samples/videoSearch.js)található. További megjegyzéseket és funkciókat tartalmaz.
@@ -56,7 +56,7 @@ Ezzel a rövid útmutatóval megkezdheti a hírek keresését a JavaScripthez k�
     });
     ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Egyoldalas Webalkalmazás létrehozása](../../tutorial-bing-video-search-single-page-app.md)

@@ -9,10 +9,10 @@ ms.topic: overview
 ms.workload: infrastructure
 ms.date: 08/24/2018
 ms.openlocfilehash: 0f67939358a4395416ea28c1c459d4890ab0351d
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91397810"
 ---
 # <a name="get-started-for-azure-it-operators"></a>Első lépések az Azure IT-kezelők számára
@@ -144,7 +144,7 @@ Az Azure használatának egyik előnye, hogy az alkalmazásait különböző ada
 
 A Azure Portal egy webalapú alkalmazás, amely Azure-erőforrások és-szolgáltatások létrehozásához, kezeléséhez és eltávolításához használható. A Azure Portal a következő helyen található: [Portal.Azure.com](https://portal.azure.com). Tartalmaz egy testreszabható irányítópultot és az Azure-erőforrások kezelésére szolgáló eszközöket. Emellett számlázási és előfizetési információkat is biztosít. További információ: [Microsoft Azure Portal áttekintése](https://azure.microsoft.com/documentation/articles/azure-portal-overview/) és az [Azure-erőforrások kezelése a portálon keresztül](https://docs.microsoft.com/azure/azure-portal/resource-group-portal).
 
-### <a name="resources"></a>Források
+### <a name="resources"></a>További források
 
 Az Azure-erőforrások az Azure-előfizetésbe telepített egyéni számítási, hálózati, adatkezelési és alkalmazás-üzemeltetési szolgáltatások. Néhány gyakori erőforrás a virtuális gépek, a Storage-fiókok vagy az SQL-adatbázisok. Az Azure-szolgáltatások gyakran több kapcsolódó Azure-erőforrásból állnak. Előfordulhat például, hogy egy Azure-beli virtuális gép tartalmaz egy virtuális gépet, egy Storage-fiókot, egy hálózati adaptert és egy nyilvános IP-címet. Ezek az erőforrások egyenként vagy csoportként hozhatók létre, kezelhetők és törölhetők. Az Azure-erőforrásokat az útmutató későbbi részében részletesebben tárgyaljuk.
 
@@ -471,7 +471,7 @@ A virtuális hálózatok telepítéséhez több lehetőség is rendelkezésre á
 
 - [Parancssori felület (CLI)](../../virtual-network/quick-create-cli.md)
 
-- Azure Resource Manager sablonok
+- Azure Resource Manager-sablonok
 
 > **Mikor érdemes használni**: Ha az Azure-beli virtuális gépekkel dolgozik, virtuális hálózatokkal fog működni. Ez lehetővé teszi, hogy a virtuális gépeket a helyi adatközpontokhoz hasonló, nyilvános és privát alhálózatokra lehessen szegmentálni.
 >

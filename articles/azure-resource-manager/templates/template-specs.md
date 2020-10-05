@@ -2,21 +2,21 @@
 title: A sablon specifikációinak áttekintése
 description: Leírja, hogyan lehet létrehozni a sablon specifikációit, és megoszthatja őket a szervezet más felhasználóival.
 ms.topic: conceptual
-ms.date: 09/28/2020
+ms.date: 10/02/2020
 ms.author: tomfitz
 author: tfitzmac
-ms.openlocfilehash: 30e7f26a53e81ebdeebe2acaef44dccab1cf4b27
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: b0dfc41bddccc6b5c5c924168044cffc0aa5e2b5
+ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91448811"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91728471"
 ---
 # <a name="azure-resource-manager-template-specs-preview"></a>Azure Resource Manager sablon specifikációi (előzetes verzió)
 
-A sablon specifikációja egy új erőforrástípus, amellyel egy Azure Resource Manager sablon (ARM-sablon) tárolható az Azure-ban a későbbi üzembe helyezéshez. Ez az erőforrástípus lehetővé teszi, hogy megossza az ARM-sablonokat a szervezet más felhasználóival. A többi Azure-erőforráshoz hasonlóan az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával is megoszthatja a sablon specifikációját.
+A sablon specifikációja egy Azure Resource Manager sablon (ARM-sablon) az Azure-ban való tárolásához szükséges erőforrástípus a későbbi üzembe helyezéshez. Ez az erőforrástípus lehetővé teszi, hogy megossza az ARM-sablonokat a szervezet más felhasználóival. A többi Azure-erőforráshoz hasonlóan az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával is megoszthatja a sablon specifikációját.
 
-A **Microsoft. Resources/templateSpecs** a sablonhoz tartozó specifikációk új erőforrástípus. Egy fő sablonból és tetszőleges számú csatolt sablonból áll. Az Azure biztonságosan tárolja a sablonhoz tartozó specifikációkat az erőforráscsoportok között. A sablon specifikációi támogatják a [verziószámozást](#versioning).
+A **Microsoft. Resources/templateSpecs** a sablonhoz tartozó specifikációk típusa. Egy fő sablonból és tetszőleges számú csatolt sablonból áll. Az Azure biztonságosan tárolja a sablonhoz tartozó specifikációkat az erőforráscsoportok között. A sablon specifikációi támogatják a [verziószámozást](#versioning).
 
 A sablon specifikációjának üzembe helyezéséhez szabványos Azure-eszközöket (például PowerShell, Azure CLI, Azure Portal, REST és más támogatott SDK-kat és ügyfeleket) kell használnia. Ugyanazokat a parancsokat használja, mint a sablonhoz.
 
@@ -336,7 +336,7 @@ A sablon specifikációinak összekapcsolásával kapcsolatos további informác
 
 A sablon specifikációjának létrehozásakor meg kell adnia a verziószámát. A sablon kódjának megismétlése után frissítheti a meglévő verziót (gyorsjavítások esetén), vagy közzétehet egy új verziót. A verzió egy szöveges karakterlánc. Dönthet úgy, hogy bármely verziószámozási rendszer követését választja, beleértve a szemantikai verziószámozást is. A sablon specifikációjának felhasználói megadhatják a telepítéskor használni kívánt verziószámot.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A sablon specifikációjának létrehozásához és üzembe helyezéséhez lásd: gyors útmutató [: sablon létrehozása és üzembe helyezése specifikáció](quickstart-create-template-specs.md).
 

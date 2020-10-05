@@ -10,10 +10,10 @@ ms.subservice: azure-arc-data
 ms.date: 09/22/2020
 ms.topic: overview
 ms.openlocfilehash: 47fef490c5ece577823a14e3fa4c415f0f613ccb
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90947212"
 ---
 # <a name="what-are-azure-arc-enabled-data-services-preview"></a>Mik azok az Azure arc-kompatibilis adatszolgáltatások (előzetes verzió)?
@@ -47,7 +47,7 @@ A jól ismert eszközök, például a Azure Portal, a Azure Data Studio és az A
 
 A szolgáltatások számos szolgáltatása, például az önkiszolgáló üzembe helyezés, az automatizált biztonsági mentések/visszaállítás és a figyelés helyileg is futtatható az infrastruktúrában az Azure-hoz való közvetlen kapcsolódással vagy anélkül. A közvetlenül az Azure-hoz való csatlakozás további lehetőségeket biztosít a más Azure-szolgáltatásokkal való integrációhoz, például a Azure Monitorhoz, és lehetővé teszi, hogy a világ bármely pontjáról a Azure Portal és Azure Resource Manager API-kat használja az Azure arc-kompatibilis adatszolgáltatások kezeléséhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > **Csak szeretné kipróbálni a dolgokat?**  
 > Gyorsan elsajátíthatja az [Azure arc Jumpstart](https://github.com/microsoft/azure_arc#azure-arc-enabled-data-services) az Azure Kubernetes Service (ak), az AWS rugalmas Kubernetes szolgáltatás (EKS), a Google Cloud Kubernetes Engine (GKE) vagy egy Azure-beli virtuális gépen.

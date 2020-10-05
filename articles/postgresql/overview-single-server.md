@@ -8,10 +8,10 @@ ms.service: postgresql
 ms.topic: overview
 ms.date: 09/21/2020
 ms.openlocfilehash: 469235957ebe26dd44cc6ce464a68167629099ab
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90947233"
 ---
 # <a name="azure-database-for-postgresql-single-server"></a>Egyetlen kiszolgáló Azure Database for PostgreSQL
@@ -77,7 +77,7 @@ A Azure Database for PostgreSQL biztonsági funkcióival kapcsolatos további in
 
 Az egykiszolgálós szolgáltatás beépített teljesítmény-figyelési és riasztási funkciókkal rendelkezik. Minden Azure-metrika egyperces gyakorisággal rendelkezik, és minden metrika 30 napos előzményt biztosít. A mérőszámokra vonatkozó riasztásokat is beállíthat. A szolgáltatás lehetővé teszi a lassú lekérdezési naplók konfigurálását, és egy eltérő [lekérdezési tárolási](./concepts-query-store.md) funkcióval rendelkezik. A Query Store leegyszerűsíti a teljesítménnyel kapcsolatos hibaelhárítást, így gyorsan megtalálhatja a leghosszabb ideig futó és a legtöbb erőforrás-igényes lekérdezést. Ezen eszközök használatával gyorsan optimalizálhatja a számítási feladatokat, és konfigurálhatja a kiszolgálót a legjobb teljesítmény érdekében. További részletek: [figyelés](./concepts-monitoring.md) .
 
-## <a name="migration"></a>Áttelepítés
+## <a name="migration"></a>Migrálás
 
 A szolgáltatás a PostgreSQL közösségi verzióját futtatja. Ez lehetővé teszi az alkalmazások teljes kompatibilitását, és minimális újrabontási költségeket igényel a PostgreSQL-motoron az egykiszolgálós szolgáltatáshoz fejlesztett meglévő alkalmazások áttelepítéséhez. Az egyetlen kiszolgálóra történő áttelepítés a következő lehetőségek egyikével végezhető el:
 
@@ -94,7 +94,7 @@ Ezenkívül a következő elérhetőségeken léphet velünk kapcsolatba:
 - Ha a fiókjával van probléma, nyújtson be [támogatási kérelmet](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) az Azure Portalon.
 - Ha visszajelzést szeretne küldeni vagy új szolgáltatásokat kérne, hozzon létre egy bejegyzést a [UserVoice-on](https://feedback.azure.com/forums/597976-azure-database-for-postgresql).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy elolvasta Azure Database for PostgreSQL egykiszolgálós üzembe helyezési mód bevezetését, készen áll a következőre:
 - Hozza létre az első kiszolgálót.

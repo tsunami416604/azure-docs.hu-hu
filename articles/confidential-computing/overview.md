@@ -9,10 +9,10 @@ ms.topic: overview
 ms.date: 09/22/2020
 ms.author: JenCook
 ms.openlocfilehash: 16f45c39a329998f4b4da4ea89315683a0fab790
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90967585"
 ---
 # <a name="confidential-computing-on-azure"></a>Bizalmas számítástechnika az Azure-ban
@@ -92,7 +92,7 @@ A bizalmas következtetési keretrendszer használatával megkezdheti a enkláv�
 - Alkalmazások írása DCsv2 virtuális gépeken való futtatásra: [Open-ENKLÁVÉ SDK](https://github.com/openenclave/openenclave)
 - Bizalmas ML-modellek a ONNX-futtatókörnyezetben: [bizalmas következtetés (bétaverzió)](https://aka.ms/confidentialinference)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Helyezzen üzembe egy DCsv2-sorozatú virtuális gépet, és telepítse az OE SDK-t.
 

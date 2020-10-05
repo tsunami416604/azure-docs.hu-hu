@@ -14,10 +14,10 @@ ms.author: ninarn
 ms.reviewer: sstein
 ms.date: 05/29/2020
 ms.openlocfilehash: 4eb02c65a8ce486ea152863d8b6c6d0600280893
-ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91409586"
 ---
 # <a name="quickstart-use-the-azure-portals-query-editor-preview-to-query-an-azure-sql-database"></a>Gyors útmutató: a Azure Portal lekérdezési szerkesztőjének (előzetes verzió) használata Azure SQL Database lekérdezéséhez
@@ -191,6 +191,6 @@ A lekérdezés-szerkesztő használatakor néhány tudnivalót is megtudhat.
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha többet szeretne megtudni a Azure SQL Database által támogatott Transact-SQL (T-SQL) szolgáltatásról, tekintse meg a [Transact-SQL-különbségek feloldása az áttelepítés során SQL Databasere](transact-sql-tsql-differences-sql-server.md)című témakört.

@@ -8,10 +8,10 @@ ms.topic: include
 ms.date: 04/04/2020
 ms.author: ralphe
 ms.openlocfilehash: 74aa4d62490778ba13a085d62264b7791112504e
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91376270"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
@@ -301,6 +301,6 @@ Az első lépések előtt ügyeljen a következőre:
 
 9. Lépjen vissza a böngészőbe, és lépjen ki a beszélgetésből a jobb felső sarokban található Exit (Kilépés) gomb használatával.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [!INCLUDE [footer](./footer.md)]

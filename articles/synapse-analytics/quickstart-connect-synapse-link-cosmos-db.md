@@ -10,10 +10,10 @@ ms.date: 04/21/2020
 ms.author: acomet
 ms.reviewer: jrasnick
 ms.openlocfilehash: ed717c2423b5336824bccd256bf43654c31a4c8a
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91568955"
 ---
 # <a name="quickstart-connect-to-azure-synapse-link-for-azure-cosmos-db"></a>Gyors útmutató: csatlakozás az Azure szinapszis-hoz Azure Cosmos DB
@@ -64,7 +64,7 @@ Azure Cosmos DB adatbázisok láthatók a Azure Cosmos DB szakaszban **csatolt**
 
 Ha a jobb gombbal rákattint egy tárolóra, megjelenik egy olyan kézmozdulatok listája, amelyek a Spark vagy az SQL futási idejét indítják el. A tárolóba való írás a Azure Cosmos DB tranzakciós tárolójával történik, és a rendszer a kérelmek egységeit fogja felhasználni.  
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Ismerkedjen meg a szinapszis és a Azure Cosmos DB között támogatottak között](./synapse-link/concept-synapse-link-cosmos-db-support.md)
 * [Megtudhatja, hogyan kérdezheti le a Apache Spark for Azure szinapszis Analytics szolgáltatással rendelkező analitikus tárolót](synapse-link/how-to-query-analytical-store-spark.md)

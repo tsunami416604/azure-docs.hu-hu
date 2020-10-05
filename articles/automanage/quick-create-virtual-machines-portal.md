@@ -9,10 +9,10 @@ ms.topic: quickstart
 ms.date: 09/04/2020
 ms.author: jushiman
 ms.openlocfilehash: d66c19ce3a9786a5ca0f1390acb398c2a9cf502f
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91445800"
 ---
 # <a name="quickstart-enable-azure-automanage-for-virtual-machines-in-the-azure-portal"></a>Gyors útmutató: az Azure automanage engedélyezése virtuális gépekhez a Azure Portal
@@ -113,7 +113,7 @@ Az Azure automanage alapértelmezett erőforráscsoportokat hoz létre az erőfo
 1. Ha a rendszer kéri, erősítse meg az erőforráscsoport nevét, majd válassza a **Törlés**lehetőséget.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban engedélyezte a virtuális gépek Azure-beli felügyeletét. 
 

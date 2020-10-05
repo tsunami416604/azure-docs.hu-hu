@@ -8,10 +8,10 @@ ms.custom: mvc
 ms.topic: quickstart
 ms.date: 9/21/2020
 ms.openlocfilehash: 77e4e2e1548beaa840f46953ef5bb4e94345416f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90947079"
 ---
 # <a name="quickstart-use-php-to-connect-and-query-data-in-azure-database-for-mysql---flexible-server"></a>Rövid útmutató: a PHP használatával csatlakozhat, és lekérdezheti az Azure Database for MySQL-rugalmas kiszolgálókon tárolt adatlekérdezéseket
@@ -257,7 +257,7 @@ mysqli_stmt_close($stmt);
 mysqli_close($conn);
 ?>
 ```
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - [Titkosított kapcsolat Transport Layer Security (TLS 1,2) használatával Azure Database for MySQL-rugalmas kiszolgálón](./how-to-connect-tls-ssl.md).
 - További információ a [Azure Database for MySQL rugalmas kiszolgáló hálózatkezeléséről](./concepts-networking.md).
 - [Azure Database for MySQL rugalmas kiszolgálói tűzfalszabályok létrehozása és kezelése a Azure Portal használatával](./how-to-manage-firewall-portal.md).

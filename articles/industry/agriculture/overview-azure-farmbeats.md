@@ -6,10 +6,10 @@ ms.topic: overview
 ms.date: 11/04/2019
 ms.author: v-umha
 ms.openlocfilehash: 12bb0b0098b5108bf780b88fc42b86861ea6fcdc
-ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87439554"
 ---
 # <a name="overview-of-azure-farmbeats-preview"></a>Az Azure FarmBeats áttekintése (előzetes verzió)
@@ -61,7 +61,7 @@ A rendszergazdák több partnert is hozzáadhatnak adatszolgáltatóként az Azu
 | Képekkel rendelkező partner  |   Létrehozás, olvasás, frissítés <br/> <br/> Olvasás, frissítés <br/> <br/> Olvasás | Jelenet, SceneFile <br/> <br/> ExtendedType <br/> <br/> Farm |
 | Időjárási partner * <br/> <br/>  (* Hamarosan érkezik) |   Létrehozás, olvasás, frissítés <br/> <br/> Olvasás, frissítés <br/> <br/> Olvasás | WeatherDataModel, WeatherDataLocation, JobType <br/> <br/> ExtendedType <br/> <br/> Farm |
 
-## <a name="resources"></a>Források
+## <a name="resources"></a>További források
 
 Az Azure FarmBeats díjmentesen vehető igénybe, és csak a használt Azure-erőforrásokért kell fizetnie. Az alábbi források segítségével többet tudhat meg az ajánlatról:
 
@@ -69,7 +69,7 @@ Az Azure FarmBeats díjmentesen vehető igénybe, és csak a használt Azure-er�
 - Kérjen segítséget az [Azure FarmBeats támogatási fórumának](https://aka.ms/farmbeatssupport)kérdéseivel.
 - Küldjön visszajelzést az [Azure FarmBeats visszajelzési fórumának](https://aka.ms/farmbeatsfeedback)funkcióinak közzétételével vagy szavazásával.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Az Azure FarmBeats telepítése](install-azure-farmbeats.md)

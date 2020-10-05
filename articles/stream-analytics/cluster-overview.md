@@ -9,10 +9,10 @@ ms.topic: overview
 ms.custom: mvc
 ms.date: 09/22/2020
 ms.openlocfilehash: 613cf7d9b68fe42c26f2c01cb1fb5dd1da1e1fb5
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90947142"
 ---
 # <a name="overview-of-azure-stream-analytics-cluster-preview"></a>Azure Stream Analytics-fürt áttekintése (előzetes verzió)
@@ -23,9 +23,9 @@ Stream Analytics a fürtöket a folyamatos átviteli egységek (SUs-EK) számlá
 
 ## <a name="what-are-stream-analytics-clusters"></a>Mik azok a Stream Analytics fürtök
 
-Stream Analytics fürtöket ugyanazzal a motorral működteti, mint a több-bérlős környezetben futó Stream Analytics feladatokat. Az egyetlen bérlő, a dedikált fürt a következő funkciókkal rendelkezik:
+A Stream Analytics-fürtöket ugyanaz a motor működteti, mint a több-bérlős környezetekben futó Stream Analytics-feladatokat. Az egybérlős, dedikált fürt az alábbi funkciókkal rendelkezik:
 
-* Egyetlen bérlő, amely más bérlők zaja nélkül üzemel. Az erőforrások valóban "elkülönítettek", és jobb teljesítményű, ha a forgalom burst.
+* Egybérlős üzemeltetés, a többi bérlőtől származó zaj nélkül. Az erőforrások valóban „izoláltak”, és jobban teljesítenek ingadozó forgalom esetében.
 
 * A fürt méretezése 36 és 216 SUs között történik, mivel a folyamatos átviteli használat az idő múlásával növekszik.
 
@@ -71,7 +71,7 @@ A Stream Analytics-fürtök díját a kiválasztott SU-kapacitás alapján szám
 
 Stream Analytics támogatja a különböző bemeneti és kimeneti típusokat. Az Azure Private-hivatkozásokat támogató szolgáltatások bármelyike magántulajdonban tud csatlakozni a feladatokhoz. Létrehozhat olyan [magánhálózati végpontokat](private-endpoints.md) a fürtben, amelyek lehetővé teszik a feladatok számára a bemeneti és kimeneti erőforrások elérését.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most már áttekintheti Azure Stream Analytics-fürtöt. Ezután létrehozhatja a fürtöt, és futtathatja a Stream Analytics feladatot: 
 

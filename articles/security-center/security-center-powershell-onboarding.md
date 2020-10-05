@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 10/02/2018
 ms.author: memildin
 ms.openlocfilehash: c805b35b2c05600f96983da42ea7206a09e2e3e8
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91447385"
 ---
 # <a name="automate-onboarding-of-azure-security-center-using-powershell"></a>Azure Security Center bevezetésének automatizálása a PowerShell használatával
@@ -98,7 +98,7 @@ Ezeket a PowerShell-parancsmagokat az Automation-parancsfájlok segítségével 
 
 
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 Ha többet szeretne megtudni arról, hogy a PowerShell Hogyan automatizálható a Security Center bevezetésének automatizálásához, tekintse meg a következő cikket:
 
 * [Az. Security](https://docs.microsoft.com/powershell/module/az.security)

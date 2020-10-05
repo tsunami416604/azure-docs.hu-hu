@@ -8,10 +8,10 @@ ms.subservice: iot-central-retail
 ms.topic: tutorial
 ms.date: 10/20/2019
 ms.openlocfilehash: a76df67d1ef9d203d5e5d54cb95bb8fc90f70180
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90980737"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-digital-distribution-center-application-template"></a>Oktatóanyag: a Digital Distribution Center alkalmazás-sablon üzembe helyezése és átjárása
@@ -113,7 +113,7 @@ Ha nem folytatja az alkalmazás használatát, törölje az alkalmazás sablonj�
 > [!div class="mx-imgBorder"]
 > ![Képernyőfelvétel az alkalmazás törléséről, ha elkészült vele](./media/tutorial-iot-central-ddc/ddc-cleanup.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * További információ a Digital Distribution Center megoldási architektúráról 
 > [!div class="nextstepaction"]
 > [a Digital Distribution Center koncepciója](./architecture-digital-distribution-center.md)

@@ -8,10 +8,10 @@ ms.custom: mvc
 ms.topic: quickstart
 ms.date: 5/26/2020
 ms.openlocfilehash: 5ec6aab8aaa63b848131d44f78867100f154d251
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90896327"
 ---
 # <a name="quickstart-use-mysql-workbench-to-connect-and-query-data-in-azure-database-for-mysql"></a>Rövid útmutató: a MySQL Workbench használata az Azure Database for MySQL-beli adatlekérdezéshez
@@ -49,7 +49,7 @@ Kapcsolódás az Azure MySQL-kiszolgálóhoz a MySQL Workbench GUI eszköz haszn
 
 2.    A **Setup New Connection** (Új kapcsolat beállítása) párbeszédpanelen adja meg a következő információkat a **Parameters** (Paraméterek) lapon:
 
-:::image type="content" source="./media/connect-workbench/2-setup-new-connection.png" alt-text="új kapcsolat beállítása":::
+:::image type="content" source="./media/connect-workbench/2-setup-new-connection.png" alt-text="A MySQL-hez készült Azure Database-kiszolgáló neve":::
 
 | **Beállítás** | **Ajánlott érték** | **Mező leírása** |
 |---|---|---|
@@ -103,7 +103,7 @@ Kapcsolódás az Azure MySQL-kiszolgálóhoz a MySQL Workbench GUI eszköz haszn
 
     A képernyőkép az SQL-példakódot és a futtatás utáni kimenetet mutatja az SQL Workbench-ben.
     
-    :::image type="content" source="media/connect-workbench/3-workbench-sql-tab.png" alt-text="MySQL Workbench SQL lap SQL-mintakód futtatásához":::
+    :::image type="content" source="media/connect-workbench/3-workbench-sql-tab.png" alt-text="A MySQL-hez készült Azure Database-kiszolgáló neve":::
 
 2. A SQL-mintakód futtatásához kattintson az **SQL File** (SQL-fájl) lévő eszköztár villám ikonjára.
 3. Figyelje meg az oldal közepén, a **Result Grid** (Eredménytáblázat) szakaszban lévő többlapos eredményeket. 
@@ -111,6 +111,6 @@ Kapcsolódás az Azure MySQL-kiszolgálóhoz a MySQL Workbench GUI eszköz haszn
 
 A MySQL Workbench használatával csatlakozott az Azure Database for MySQL kiszolgálóhoz, és az SQL nyelv használatával lekérdezte az adatokat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 > [!div class="nextstepaction"]
 > [Adatbázis migrálása exportálással és importálással](./concepts-migrate-import-export.md)

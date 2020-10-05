@@ -9,13 +9,13 @@ ms.date: 09/08/2020
 ms.custom: devx-track-java
 zone_pivot_groups: programming-languages-spring-cloud
 ms.openlocfilehash: dd36bb18e84ea299195b77286887a3b279f81469
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90903597"
 ---
-# <a name="introduction-to-the-sample-app"></a>A minta alkalmazás bemutatása
+# <a name="introduction-to-the-sample-app"></a>A mintaalkalmazás bemutatása
 
 ::: zone pivot="programming-language-csharp"
 Ez a sorozat a gyors üzembe helyezési útmutató két összetevőből áll, amelyekből megtudhatja, hogyan helyezhet üzembe egy .NET Core Steeltoe-alkalmazást az Azure Spring Cloud Service-ben. Az Azure Spring Cloud képességeit, például a Service Discovery, a konfigurációs kiszolgáló, a naplók, a metrikák és az elosztott nyomkövetés használatát fogja használni.
@@ -90,7 +90,7 @@ Az elosztott rendszerekben számos gyakori minta van, amelyek segítenek az alap
 A teljes körű megvalósítás részleteiért lásd: [PiggyMetrics](https://github.com/Azure-Samples/piggymetrics). A minták szükség szerint hivatkoznak a forráskódra.
 ::: zone-end
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Azure Spring Cloud-példány kiépítése](spring-cloud-quickstart-provision-service-instance.md)

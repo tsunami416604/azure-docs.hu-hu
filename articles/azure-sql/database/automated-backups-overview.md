@@ -10,13 +10,13 @@ ms.topic: conceptual
 author: shkale-msft
 ms.author: shkale
 ms.reviewer: mathoma, stevestein, danil
-ms.date: 09/25/2020
-ms.openlocfilehash: 93370050b503875d670283b720088b0871377c09
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.date: 10/05/2020
+ms.openlocfilehash: 43551ca17180cbb3614c670490a19aeaae6c7701
+ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91535083"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91728658"
 ---
 # <a name="automated-backups---azure-sql-database--sql-managed-instance"></a>Automatikus biztonsági mentések – Azure SQL Database & SQL felügyelt példánya
 
@@ -50,7 +50,7 @@ A SQL Database a biztonsági mentési tár redundancia konfigurálható az adatb
 > Zóna – a redundáns tárolás jelenleg csak [bizonyos régiókban](../../storage/common/storage-redundancy.md#zone-redundant-storage)érhető el. 
 
 > [!NOTE]
-> Azure SQL Database konfigurálható biztonsági mentési tár redundancia jelenleg csak nyilvános előzetes verzióban érhető el a Délkelet-ázsiai Azure-régióban.  
+> A Azure SQL Database konfigurálható biztonságimásolat-tárolási redundancia jelenleg csak nyilvános előzetes verzióban érhető el a Délkelet-ázsiai Azure-régióban. Ez a funkció még nem érhető el a nagy kapacitású szinten. 
 
 ### <a name="backup-usage"></a>Biztonsági mentés használata
 

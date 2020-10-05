@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 09/25/2020
 ms.openlocfilehash: b69feec7249c80fc63d803a14f360614bcf880fa
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91399822"
 ---
 # <a name="quickstart-create-a-demo-app-in-the-portal-azure-cognitive-search"></a>Rövid útmutató: bemutató alkalmazás létrehozása a portálon (Azure Cognitive Search)
@@ -61,7 +61,7 @@ A varázsló alapvető elrendezést biztosít a megjelenített keresési eredmé
 
 1. A Description (Leírás) mezőben válasszon ki egy olyan mezőt, amely segítséget nyújthat valakinek annak eldöntésében, hogy az adott dokumentumra kattint-e.
 
-   :::image type="content" source="media/search-create-app-portal/configure-results.png" alt-text="Mintaadatok eredményeinek konfigurálása" border="false":::
+   :::image type="content" source="media/search-create-app-portal/configure-results.png" alt-text="adatforrások lapja mintaadatok esetén" border="false":::
 
 ## <a name="add-a-sidebar"></a>Oldalsáv hozzáadása
 
@@ -83,7 +83,7 @@ A javaslatok meghatározott mező-definíciókban engedélyezettek. A varázsló
 
 Az alábbi képernyőfelvételen a varázsló azon beállításai láthatók, amelyek az alkalmazás megjelenített oldalával vannak összefoglalva. Megtekintheti a mezők kiválasztásának módját, valamint azt, hogy a rendszer hogyan használja a "mezőnév megjelenítése" kifejezést a javaslaton belüli címkézés befoglalására vagy kizárására.
 
-:::image type="content" source="media/search-create-app-portal/suggestions.png" alt-text="Lekérdezési javaslat konfigurálása":::
+:::image type="content" source="media/search-create-app-portal/suggestions.png" alt-text="adatforrások lapja mintaadatok esetén":::
 
 ## <a name="create-download-and-execute"></a>Létrehozás, letöltés és végrehajtás
 
@@ -95,7 +95,7 @@ Az alábbi képernyőfelvételen a varázsló azon beállításai láthatók, am
 
 Az alapul szolgáló index olyan fiktív, generált adatokból áll, amelyek a dokumentumok között duplikálva vannak, és a leírások időnként nem egyeznek meg a képpel. Az alkalmazások saját indexek alapján történő létrehozásakor több összetartó élményre számíthat.
 
-:::image type="content" source="media/search-create-app-portal/run-app.png" alt-text="Az alkalmazás futtatása":::
+:::image type="content" source="media/search-create-app-portal/run-app.png" alt-text="adatforrások lapja mintaadatok esetén":::
 
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása

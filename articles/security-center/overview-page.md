@@ -8,10 +8,10 @@ ms.topic: overview
 ms.service: security-center
 manager: rkarlin
 ms.openlocfilehash: cc52610eacc3916b7a8978cba17a1db3f3d50686
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91447681"
 ---
 # <a name="azure-security-centers-overview-page"></a>Azure Security Center áttekintése lap
@@ -37,10 +37,10 @@ A **felső menüsor** a következőket kínálja:
 
 
 A lap közepén **négy központi csempe**található, melyek mindegyike egy dedikált irányítópultra mutat, további részletekért:
-- **Biztonságos pontszám** – a Security Center folyamatosan értékeli az erőforrásokat, az előfizetéseket és a szervezetet a biztonsági problémákhoz. Ezután összesíti az összes megállapítást egyetlen pontszámba, így eldöntheti, hogy az aktuális biztonsági helyzet: minél magasabb a pontszám, annál alacsonyabb az azonosított kockázati szint. [További információ](secure-score-security-controls.md).
+- **Biztonságos pontszám** – a Security Center folyamatosan értékeli az erőforrásokat, az előfizetéseket és a szervezetet a biztonsági problémákhoz. Ezután összesíti az összes megállapítást egyetlen pontszámba, így eldöntheti, hogy az aktuális biztonsági helyzet: minél magasabb a pontszám, annál alacsonyabb az azonosított kockázati szint. [További információk](secure-score-security-controls.md).
 - **Megfelelőség** – a Security Center az Azure-környezet folyamatos felmérése alapján betekintést nyújt a megfelelőségi állapotba. A Security Center az ajánlott biztonsági eljárásoknak megfelelően elemzi a hibrid felhőalapú környezet kockázati tényezőit. Ezek az értékelések a megfelelőségi vezérlőkre vannak leképezve a szabványok támogatott készletében. [További információ](security-center-compliance-dashboard.md).
-- **Azure Defender** – ez a felhőalapú munkaterhelés-védelmi platform (CWPP), amely az Azure-beli és a hibrid számítási feladatok speciális, intelligens és védett Security Centeron belül van integrálva. A csempén látható a csatlakoztatott erőforrások (a jelenleg kiválasztott előfizetések esetében) és a legutóbbi riasztások lefedettsége, súlyosság szerint kódolva. [További információ](azure-defender.md).
-- **Leltár** – a csempe a nem figyelt virtuális gépek számát és a biztonsági CenterBen által figyelt erőforrások egyszerű barométerét jeleníti meg. [További információ](asset-inventory.md).
+- **Azure Defender** – ez a felhőalapú munkaterhelés-védelmi platform (CWPP), amely az Azure-beli és a hibrid számítási feladatok speciális, intelligens és védett Security Centeron belül van integrálva. A csempén látható a csatlakoztatott erőforrások (a jelenleg kiválasztott előfizetések esetében) és a legutóbbi riasztások lefedettsége, súlyosság szerint kódolva. [További információk](azure-defender.md).
+- **Leltár** – a csempe a nem figyelt virtuális gépek számát és a biztonsági CenterBen által figyelt erőforrások egyszerű barométerét jeleníti meg. [További információk](asset-inventory.md).
 
 
 Az **Áttekintés** panel testreszabott elemeket kínál a környezethez, többek között a következőket:
@@ -49,7 +49,7 @@ Az **Áttekintés** panel testreszabott elemeket kínál a környezethez, többe
 - A legtöbb erőforrást érintő aktív javaslatok
 - Legutóbbi blogbejegyzések Azure Security Center szakértők által
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez az oldal a Security Center áttekintése lapot mutatta be. A kapcsolódó információk a következő témakörben találhatók:
 

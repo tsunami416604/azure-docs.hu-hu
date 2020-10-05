@@ -8,10 +8,10 @@ ms.subservice: language-understanding
 ms.topic: include
 ms.date: 06/03/2020
 ms.openlocfilehash: 0db01cbd281b2060c1e08e6c44202624faefc5d7
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91534653"
 ---
 [Dokumentáció](https://westeurope.dev.cognitive.microsoft.com/docs/services/luis-programmatic-apis-v3-0-preview/operations/5890b47c39e2bb052c5b9c45)  |  [Minta](https://github.com/Azure-Samples/cognitive-services-quickstart-code/blob/master/go/LUIS/go-rest-model/model.go)
@@ -37,7 +37,7 @@ ms.locfileid: "91534653"
 
 1. Cserélje le az értékeket a `YOUR-` saját értékeivel kezdődő értékekre.
 
-    |Tájékoztatás|Szerep|
+    |Tájékoztatás|Rendeltetés|
     |--|--|
     |`YOUR-APP-ID`| A LUIS-alkalmazás azonosítója. |
     |`YOUR-AUTHORING-KEY`|Az 32 karakteres szerzői kulcs.|

@@ -8,10 +8,10 @@ ms.date: 01/18/2020
 ms.topic: quickstart
 ms.custom: mvc
 ms.openlocfilehash: 5ba47522f483b6c9b2a03e99f3608c58e916e010
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90947727"
 ---
 # <a name="quickstart-create-an-azure-stream-analytics-job-in-visual-studio-code-preview"></a>Rövid útmutató: Azure Stream Analytics-feladatok létrehozása a Visual Studio Code-ban (előzetes verzió)
@@ -68,7 +68,7 @@ A Stream Analytics feladatának megadása előtt elő kell készítenie azokat a
    |Region  |  \<Select the region that is closest to your users\> | Válassza ki azt a földrajzi helyet, ahol az IoT hubot üzemeltetni szeretné. Használja a felhasználókhoz legközelebb eső helyet. |
    |IoT Hub neve  | MyASAIoTHub  |   Válassza ki az IoT hub nevét.   |
 
-   ![IoT Hub létrehozása](./media/quick-create-visual-studio-code/create-iot-hub.png)
+   ![IoT-központ létrehozása](./media/quick-create-visual-studio-code/create-iot-hub.png)
 
 4. Válassza **a Next (tovább) lehetőséget: a méret és a skála beállítása**.
 
@@ -269,7 +269,7 @@ Ha a későbbiekben tervezi használni a feladatot, leállíthatja, és később
 
 2. Az erőforráscsoport oldalán kattintson a **Törlés** parancsra. Adja meg a törlendő erőforrás nevét a szövegmezőben, majd válassza a **Törlés**lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban egy egyszerű Stream Analytics feladatot telepített a Visual Studio Code használatával. Stream Analytics feladatokat a [Azure Portal](stream-analytics-quick-create-portal.md), a [PowerShell](stream-analytics-quick-create-powershell.md)és a [Visual Studio](stream-analytics-quick-create-vs.md)használatával is üzembe helyezhet.
 

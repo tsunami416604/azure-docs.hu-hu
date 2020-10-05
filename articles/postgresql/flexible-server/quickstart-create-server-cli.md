@@ -9,10 +9,10 @@ ms.topic: quickstart
 ms.date: 9/22/2020
 ms.custom: mvc
 ms.openlocfilehash: 78824ef6f557a2df431e664158da9d858df0603f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90947819"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql-flexible-server-using-azure-cli"></a>Gyors útmutató: Azure Database for PostgreSQL rugalmas kiszolgáló létrehozása az Azure CLI használatával
@@ -136,7 +136,7 @@ Ha csak az újonnan létrehozott kiszolgálót szeretné törölni, futtathatja 
 az postgres flexible-server delete --resource-group myresourcegroup --name mydemoserver
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 >[Django-alkalmazás üzembe helyezése App Service és PostgreSQL használatával](tutorial-django-app-service-postgres.md)

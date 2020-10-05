@@ -11,10 +11,10 @@ ms.topic: overview
 ms.date: 09/15/2020
 ms.author: memildin
 ms.openlocfilehash: 377c68cd2f0b0c132fc690cb03d7c3c5694bb52e
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "91438908"
 ---
 # <a name="additional-threat-protections-in-azure-security-center"></a>További veszélyforrások elleni védelem Azure Security Center
@@ -95,7 +95,7 @@ A DDoS-támadások elleni védelemhez vásároljon Azure DDoS Protection-licence
 A Azure DDoS Protection riasztások listáját a [riasztások hivatkozási táblájában](alerts-reference.md#alerts-azureddos)tekintheti meg.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ha többet szeretne megtudni a veszélyforrások elleni védelmi funkciókkal kapcsolatos biztonsági riasztásokról, tekintse meg a következő cikkeket:
 
 * [Az összes Azure Security Center-riasztás hivatkozási táblázata](alerts-reference.md)

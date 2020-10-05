@@ -12,10 +12,10 @@ ms.devlang: python
 ms.topic: quickstart
 ms.date: 5/26/2020
 ms.openlocfilehash: aad160f8a4ec96a1e0e627684c598062079b57e0
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90896302"
 ---
 # <a name="quickstart-use-python-to-connect-and-query-data-in-azure-database-for-mysql"></a>Rövid útmutató: a Python használatával csatlakozhat és lekérdezheti Azure Database for MySQL
@@ -272,7 +272,7 @@ else:
   print("Done.")
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Adatbázis migrálása exportálással és importálással](./concepts-migrate-import-export.md)

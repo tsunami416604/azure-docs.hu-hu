@@ -4,10 +4,10 @@ description: 'Gyors útmutató: Azure Event Grid és Azure Portal használatáva
 ms.date: 07/07/2020
 ms.topic: quickstart
 ms.openlocfilehash: 46cd88558334239a1a9971c63b8b2608def3c4d3
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "87421603"
 ---
 # <a name="quickstart-route-blob-storage-events-to-web-endpoint-with-the-azure-portal"></a>Gyors útmutató: blob Storage-események átirányítása webes végpontra a Azure Portal
@@ -36,7 +36,7 @@ A folyamat végén látni fogja, hogy a rendszer elküldte az eseményadatokat a
     1. Válassza ki az Azure-előfizetését. 
     2. **Erőforráscsoport**esetén hozzon létre egy új erőforráscsoportot, vagy válasszon ki egy meglévőt. 
     3. Adja meg a tárfiók nevét. 
-    4. Válassza a **Felülvizsgálat és létrehozás** lehetőséget. 
+    4. Válassza az **Áttekintés + létrehozás** lehetőséget. 
 
        ![Kezdeti lépések](./media/blob-event-quickstart-portal/provide-blob-values.png)    
     5. A **felülvizsgálat + létrehozás** oldalon tekintse át a beállításokat, majd kattintson a **Létrehozás**gombra. 
@@ -56,7 +56,7 @@ A Blob Storage-eseményekre való feliratkozás előtt hozzuk létre az esemény
     2. A **hely neve**mezőben adja meg a webalkalmazás nevét.
     3. A **üzemeltetési terv neve**mezőben adja meg a webalkalmazás üzemeltetéséhez használni kívánt app Service-csomag nevét.
     4. Jelölje be az Elfogadom a **fenti feltételeket és kikötéseket**jelölőnégyzetet. 
-    5. Válassza a **Beszerzés** lehetőséget. 
+    5. Válassza a **Vásárlás** lehetőséget. 
 
        ![Központi telepítési paraméterek](./media/blob-event-quickstart-portal/template-deploy-parameters.png)
 1. Az üzembe helyezés befejezése eltarthat néhány percig. Válassza a riasztások (harang ikon) lehetőséget a portálon, majd válassza az **Ugrás az erőforrás-csoportba**lehetőséget. 
@@ -137,7 +137,7 @@ Ha tovább kívánja használni az eseményt, akkor ne törölje a cikkben létr
 
 Válassza ki az erőforráscsoportot, majd válassza az **Erőforráscsoport törlése** elemet.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy megismerte, hogyan hozhat létre egyéni témaköröket és esemény-előfizetéseket, bővebben is tájékozódhat arról, hogy miben nyújthat segítséget az Event Grid:
 

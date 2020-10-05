@@ -8,10 +8,10 @@ ms.custom: mvc
 ms.topic: quickstart
 ms.date: 09/22/2020
 ms.openlocfilehash: 25c3f875717c9c064af0ce27bdab735db67d2f5d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/05/2020
 ms.locfileid: "90947064"
 ---
 # <a name="quickstart-create-an-azure-database-for-postgresql---flexible-server-in-the-azure-portal"></a>Gyors útmutató: Azure Database for PostgreSQL rugalmas kiszolgáló létrehozása a Azure Portal
@@ -41,11 +41,11 @@ Azure Database for PostgreSQL-kiszolgáló létrehozásához kövesse az alábbi
 
 3. Válassza a **rugalmas kiszolgáló** üzembe helyezési lehetőséget.
 
-   :::image type="content" source="./media/quickstart-create-database-portal/2-select-deployment-option.png" alt-text="Azure Database for PostgreSQL – rugalmas kiszolgáló üzembe helyezési lehetőségének kiválasztása":::
+   :::image type="content" source="./media/quickstart-create-database-portal/2-select-deployment-option.png" alt-text="A Azure Database for PostgreSQL a menüben":::
 
 4. Töltse ki az **alapok** űrlapot a következő információkkal:
 
-    :::image type="content" source="./media/quickstart-create-database-portal/3-create-basics.png" alt-text="A kiszolgáló létrehozása":::
+    :::image type="content" source="./media/quickstart-create-database-portal/3-create-basics.png" alt-text="A Azure Database for PostgreSQL a menüben":::
 
     Beállítás|Ajánlott érték|Leírás
     ---|---|---
@@ -58,23 +58,23 @@ Azure Database for PostgreSQL-kiszolgáló létrehozásához kövesse az alábbi
     Verzió|A legújabb főverzió| A legújabb PostgreSQL-főverzió, hacsak nincsenek más konkrét követelmények.
     Számítás + tárolás | **Általános célú**, **4 virtuális mag**, **512 GB**, **7 nap** | Az új kiszolgáló számítási, tárolási és biztonsági mentési konfigurációi. Válassza a **kiszolgáló konfigurálása**lehetőséget. *Általános célú*, *4 virtuális mag*, *512 GB*és *7 nap* a **számítási rétegek**, a **virtuális mag**, a **tárolók**és a **biztonsági másolatok megőrzési időszakának**alapértelmezett értékei. Ezeket a csúszkákat meghagyhatja, vagy módosíthatja is azokat. A tarifacsomag beállításának mentéséhez válassza az **OK** gombot. A következő képernyőkép ezeket a beállításokat tartalmazza.
 
-    :::image type="content" source="./media/quickstart-create-database-portal/4-pricing-tier.png" alt-text="A díjszabási szintek panelje":::
+    :::image type="content" source="./media/quickstart-create-database-portal/4-pricing-tier.png" alt-text="A Azure Database for PostgreSQL a menüben":::
     
 5. Hálózati beállítások konfigurálása
 
     A hálózat lapon megadhatja, hogyan érhető el a kiszolgáló. Az Azure Database for PostgreSQL kiszolgálószinten hoz létre egy tűzfalat. Ez megakadályozza, hogy külső alkalmazások és eszközök csatlakozzanak a kiszolgálóhoz vagy a kiszolgálón lévő adatbázisokhoz, kivéve, ha olyan szabályt hoz létre, amely adott IP-címek számára megnyitja a tűzfalat. Javasoljuk, hogy a kiszolgálót nyilvánosan elérhetővé tegye:
 
-    :::image type="content" source="./media/quickstart-create-database-portal/5-networking.png" alt-text="A hálózatkezelés panel":::
+    :::image type="content" source="./media/quickstart-create-database-portal/5-networking.png" alt-text="A Azure Database for PostgreSQL a menüben":::
 
     Majd korlátozza azt a saját ügyfél IP-címére:
 
-    :::image type="content" source="./media/quickstart-create-database-portal/6-add-client-ip.png" alt-text="Válassza az aktuális ügyfél IP-címének hozzáadása lehetőséget.":::
+    :::image type="content" source="./media/quickstart-create-database-portal/6-add-client-ip.png" alt-text="A Azure Database for PostgreSQL a menüben":::
 
 6. Válassza a **felülvizsgálat + létrehozás** lehetőséget a beállítások áttekintéséhez. A kiszolgáló üzembe helyezéséhez válassza a **Létrehozás** lehetőséget. A művelet eltarthat néhány percig.
 
 7. Az eszköztáron válassza az **Értesítések** ikont (csengő) az üzembehelyezési folyamat megfigyeléséhez. Az üzembe helyezés után kiválaszthatja a **Rögzítés az irányítópulton** lehetőséget, amellyel létrehoz egy csempét a kiszolgálóhoz az Azure Portal irányítópultján. A csempe a kiszolgáló **Áttekintés** oldalának közvetlen megnyitására szolgál. Az **Erőforrás megnyitása** lehetőség kiválasztásával megnyitja a kiszolgáló **Áttekintés** oldalát.
 
-    :::image type="content" source="./media/quickstart-create-database-portal/7-notifications.png" alt-text="Az értesítések panel":::
+    :::image type="content" source="./media/quickstart-create-database-portal/7-notifications.png" alt-text="A Azure Database for PostgreSQL a menüben":::
 
    Alapértelmezés szerint a **postgres** adatbázis a kiszolgáló alatt jön létre. A [postgres](https://www.postgresql.org/docs/12/static/app-initdb.html) adatbázis egy alapértelmezett adatbázis, amelyet a felhasználók, segédprogramok és külső féltől származó alkalmazások általi használatra szántak. (A másik alapértelmezett adatbázis az **azure_maintenance**. Az a feladata, hogy elkülönítse a felügyelt szolgáltatások folyamatait a felhasználói műveletektől. Ehhez az adatbázishoz nem lehet hozzáférni.)
 
@@ -88,7 +88,7 @@ Az Azure Database for PostgreSQL-kiszolgáló létrehozásakor egy **postgres** 
 
 Nyissa meg kiszolgáló **Áttekintés** lapját. Jegyezze fel a **kiszolgálónevet** és a **kiszolgáló-rendszergazdai bejelentkezési nevet**. Vigye az egérmutatót az egyes mezők fölé. Ekkor a szövegtől jobbra megjelenik a másolási szimbólum. Az értékek másolásához kattintson a másolási szimbólumra.
 
- :::image type="content" source="./media/quickstart-create-database-portal/8-server-name.png" alt-text="A kiszolgáló áttekintő lapja":::
+ :::image type="content" source="./media/quickstart-create-database-portal/8-server-name.png" alt-text="A Azure Database for PostgreSQL a menüben":::
 
 ## <a name="connect-to-the-postgresql-database-using-psql"></a>Csatlakozás a PostgreSQL-adatbázishoz a psql használatával
 
@@ -162,7 +162,7 @@ Csak az újonnan létrehozott kiszolgáló törlése:
 
 2. Az **Áttekintés** oldalon válassza a **Törlés** elemet.
 
-    :::image type="content" source="./media/quickstart-create-database-portal/9-delete.png" alt-text="A törlés gomb":::
+    :::image type="content" source="./media/quickstart-create-database-portal/9-delete.png" alt-text="A Azure Database for PostgreSQL a menüben":::
 
 3. Erősítse meg a törölni kívánt kiszolgáló nevét, és tekintse meg az érintett adatbázisokat. Adja meg a kiszolgáló nevét a szövegmezőben, például: **mydemoserver**. Válassza a **Törlés** elemet.
 

@@ -9,12 +9,12 @@ ms.subservice: spot
 ms.date: 03/25/2020
 ms.reviewer: jagaveer
 ms.custom: jagaveer, devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 61f82cf907ef861307a907f6cd2b9b13f043b9a0
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.openlocfilehash: 4c5386e2fad0ebdd30ca8f9a8f4933e8adaf5d6b
+ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2020
-ms.locfileid: "91709044"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91729015"
 ---
 # <a name="azure-spot-vms-for-virtual-machine-scale-sets"></a>Azure spot virtuális gépek virtuálisgép-méretezési csoportokhoz 
 
@@ -163,7 +163,7 @@ Ha törölni szeretné a példányt a kizárása után, módosítsa a paraméter
 
 **K:**  Működik az autoskálázás a kizárási házirendekkel (felszabadítás és törlés)?
 
-**A:** Azt javasoljuk, hogy állítsa be a kizárási házirendet a törléshez az autoscale használatakor. Ennek az az oka, hogy a lefoglalt példányok száma a méretezési csoport kapacitásának száma alapján történik. Az autoscale használatakor a megcélzott példányok száma gyorsan elvégezhető a delefoglalt, kizárt példányok miatt. Emellett a méretezési műveleteket a helyszíni kizárások is befolyásolhatják. A VMSS-példányok például a percek száma alá eshetnek a méretezési műveletek során több hely kizárása miatt. 
+**A:** Igen, de javasoljuk, hogy a kizárási szabályzatot állítsa a törlésre az autoscale használatakor. Ennek az az oka, hogy a lefoglalt példányok száma a méretezési csoport kapacitásának száma alapján történik. Az autoscale használatakor a megcélzott példányok száma gyorsan elvégezhető a delefoglalt, kizárt példányok miatt. Emellett a méretezési műveleteket a helyszíni kizárások is befolyásolhatják. A VMSS-példányok például a percek száma alá eshetnek a méretezési műveletek során több hely kizárása miatt. 
 
 **K:** Milyen csatornák támogatják a helyszíni virtuális gépeket?
 
@@ -173,11 +173,11 @@ Ha törölni szeretné a példányt a kizárása után, módosítsa a paraméter
 
 | Azure-csatornák               | Azure helyszíni virtuális gépek rendelkezésre állása       |
 |------------------------------|-----------------------------------|
-| Nagyvállalati Szerződés         | Yes                               |
-| Használatalapú fizetés                | Yes                               |
+| Nagyvállalati Szerződés         | Igen                               |
+| Használatalapú fizetés                | Igen                               |
 | Felhőalapú szolgáltató (CSP) | [Kapcsolatfelvétel a partnerrel](/partner-center/azure-plan-get-started) |
 | Előnyök                     | Nem elérhető                     |
-| Szponzorált                    | Yes                               |
+| Szponzorált                    | Igen                               |
 | Ingyenes próba                   | Nem elérhető                     |
 
 
@@ -185,6 +185,6 @@ Ha törölni szeretné a példányt a kizárása után, módosítsa a paraméter
 
 **A:** A kérdését a következő címen teheti közzé és címkézheti `azure-spot` : [Q&a](/answers/topics/azure-spot.html). 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A díjszabással kapcsolatos részletekért tekintse meg a [virtuálisgép-méretezési csoport díjszabását ismertető oldalt](https://azure.microsoft.com/pricing/details/virtual-machine-scale-sets/linux/) .
