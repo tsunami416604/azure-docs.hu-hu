@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 7223d33f8f26897d24841f84454405f91cf3bc49
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 1e758a886e32c5a3f7cd3c744ac451b948a74802
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88686343"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91308860"
 ---
 # <a name="upgrade-your-azure-free-account-or-azure-for-students-starter-account"></a>Ingyenes Azure-fiók vagy Azure for Students Starter-fiók frissítése
 
@@ -80,4 +80,4 @@ Ha jogosult a frissítésre, kövesse az alábbi lépéseket az ingyenes Azure-f
 
 ## <a name="next-steps"></a>További lépések
 
-Most, hogy frissítette a fiókját, tekintse meg, [hogyan kerülheti el a váratlan költségeket az Azure-számlázással és -költségkezeléssel](getting-started.md).
+Most, hogy frissítette a fiókját, tekintse meg, [hogyan tervezheti meg az Azure-költségek kezelését](../understand/plan-manage-costs.md).

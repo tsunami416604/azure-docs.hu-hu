@@ -10,12 +10,12 @@ ms.topic: reference
 ms.date: 02/12/2020
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: 18ef6b9f813ee2decdd416fe53b7247591eec11f
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: da657fdf2545b585ccd5ec83a7f86897b67c4fe2
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88686241"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91370249"
 ---
 # <a name="use-azure-billing-apis-to-programmatically-get-insight-into-your-azure-usage"></a>Az Azure Billing API-kkal szoftveres úton juthat az Azure-használatra vonatkozó megállapításokhoz.
 Az Azure Billing API-kkal lekérhetők a használattal és erőforrásokkal kapcsolatos adatok az előnyben részesített adatelemző eszközökbe. Az Azure erőforrás-használati és RateCard API-k segítségével pontosan előrejelezheti és felügyelheti a költségeket. Az API-k erőforrás-szolgáltatóként vannak implementálva, és az Azure Resource Manager által közzétett API-k családjának részei.  
@@ -23,7 +23,7 @@ Az Azure Billing API-kkal lekérhetők a használattal és erőforrásokkal kapc
 ## <a name="azure-invoice-download-api-preview"></a>Azure Invoice Download API (előzetes verzió)
 A [jóváhagyás befejezése után](manage-billing-access.md#opt-in) az [Invoice API](/rest/api/billing) előzetes verziójával letöltheti a számlákat. Többek között az alábbi funkciók érhetők el:
 
-* **Azure-beli szerepköralapú hozzáférés-vezérlés** – hozzáférési szabályzatok konfigurálása az [Azure Portal](https://portal.azure.com) vagy [Azure PowerShell-parancsmagok](/powershell/azure/) segítségével annak megadásához, hogy mely felhasználók vagy alkalmazások férhetnek hozzá az előfizetés használati adataihoz. A hívóknak standard Azure Active Directory-jogkivonatokat kell használniuk a hitelesítéshez. Adja hozzá a hívót a számlázási olvasó, olvasó, tulajdonos vagy közreműködő szerepkörhöz, hogy hozzáférjen az adott Azure-előfizetéshez tartozó használati adatokhoz.
+* **Azure-beli szerepköralapú hozzáférés-vezérlés (Azure RBAC)** – hozzáférési szabályzatok konfigurálása az [Azure Portal](https://portal.azure.com) vagy [Azure PowerShell-parancsmagok](/powershell/azure/) segítségével annak megadásához, hogy mely felhasználók vagy alkalmazások férhetnek hozzá az előfizetés használati adataihoz. A hívóknak standard Azure Active Directory-jogkivonatokat kell használniuk a hitelesítéshez. Adja hozzá a hívót a számlázási olvasó, olvasó, tulajdonos vagy közreműködő szerepkörhöz, hogy hozzáférjen az adott Azure-előfizetéshez tartozó használati adatokhoz.
 * **Dátum szerinti szűrés** – a `$filter` paraméterrel lekérheti az összes számlát fordított időrendi sorrendben, a számlázási időszak záró dátuma szerint.
 
 > [!NOTE]
@@ -32,7 +32,7 @@ A [jóváhagyás befejezése után](manage-billing-access.md#opt-in) az [Invoice
 ## <a name="azure-resource-usage-api-preview"></a>Azure Resource Usage API (előzetes verzió)
 Az Azure [Resource Usage API](/previous-versions/azure/reference/mt219003(v=azure.100))-val megjelenítheti az Azure becsült használati adatait. Az API a következőket tartalmazza:
 
-* **Azure-beli szerepköralapú hozzáférés-vezérlés** – hozzáférési szabályzatok konfigurálása az [Azure Portal](https://portal.azure.com) vagy [Azure PowerShell-parancsmagok](/powershell/azure/) segítségével annak megadásához, hogy mely felhasználók vagy alkalmazások férhetnek hozzá az előfizetés használati adataihoz. A hívóknak standard Azure Active Directory-jogkivonatokat kell használniuk a hitelesítéshez. Adja hozzá a hívót a számlázási olvasó, olvasó, tulajdonos vagy közreműködő szerepkörhöz, hogy hozzáférjen az adott Azure-előfizetéshez tartozó használati adatokhoz.
+* **Azure-beli szerepköralapú hozzáférés-vezérlés (Azure RBAC)** – hozzáférési szabályzatok konfigurálása az [Azure Portal](https://portal.azure.com) vagy [Azure PowerShell-parancsmagok](/powershell/azure/) segítségével annak megadásához, hogy mely felhasználók vagy alkalmazások férhetnek hozzá az előfizetés használati adataihoz. A hívóknak standard Azure Active Directory-jogkivonatokat kell használniuk a hitelesítéshez. Adja hozzá a hívót a számlázási olvasó, olvasó, tulajdonos vagy közreműködő szerepkörhöz, hogy hozzáférjen az adott Azure-előfizetéshez tartozó használati adatokhoz.
 * **Óránkénti vagy napi összesítések** – a hívók meghatározhatják, hogy az Azure-használati adatokat óránkénti gyűjtőkben vagy napi gyűjtőkben szeretnék-e megkapni. Az alapértelmezett beállítás a napi.
 * **Példány metaadatai (erőforrás-címkéket tartalmaz)** – az adatok példányszintű részletezése, például a teljes erőforrás URI-ja (/subscriptions/{előfizetési-azonosító}/..), az erőforráscsoport adatai és az erőforrás-címkék. Ezekkel a metaadatokkal determinisztikus és programozott módon oszthatja fel a használati adatokat a címkék alapján olyan használati esetekhez, mint például a szolgáltatások közötti díjszámítás.
 * **Erőforrás-metaadatok** – az erőforrás részletei, például a mérőszám neve, a mérőszám kategóriája, a mérőszám alkategóriája, az egység és a régió lehetővé teszik a hívó számára, hogy jobban megértse a felhasználást. Arra is törekszünk, hogy az erőforrás-metaadatokat az Azure Portal, az Azure-használati CSV, a nagyvállalati szerződéses számlázási CSV és más, nyilvános felületek között összehangoljuk, így lehetővé téve az adatok a különböző felületek közötti egyeztetését.
@@ -41,7 +41,7 @@ Az Azure [Resource Usage API](/previous-versions/azure/reference/mt219003(v=azur
 ## <a name="azure-resource-ratecard-api-preview"></a>Azure Resource RateCard API (előzetes verzió)
 Az [Azure Resource RateCard API](/previous-versions/azure/reference/mt219005(v=azure.100)) használatával lekérheti az elérhető Azure-erőforrások listáját, illetve az egyes erőforrások becsült díjszabásával kapcsolatos információkat. Az API a következőket tartalmazza:
 
-* **Azure-beli szerepköralapú hozzáférés-vezérlés** – a hozzáférési szabályzatok konfigurálása az [Azure Portalon](https://portal.azure.com) vagy [Azure PowerShell-parancsmagok](/powershell/azure/) segítségével annak megadásához, hogy mely felhasználók vagy alkalmazások férhetnek hozzá a RateCard-adatokhoz. A hívóknak standard Azure Active Directory-jogkivonatokat kell használniuk a hitelesítéshez. Adja hozzá a hívót az olvasó, a tulajdonos vagy a közreműködő szerepkörhöz, hogy hozzáférjen az adott Azure-előfizetés használati adataihoz.
+* **Azure-beli szerepköralapú hozzáférés-vezérlés (Azure RBAC)** – a hozzáférési szabályzatok konfigurálása az [Azure Portalon](https://portal.azure.com) vagy [Azure PowerShell-parancsmagok](/powershell/azure/) segítségével annak megadásához, hogy mely felhasználók vagy alkalmazások férhetnek hozzá a RateCard-adatokhoz. A hívóknak standard Azure Active Directory-jogkivonatokat kell használniuk a hitelesítéshez. Adja hozzá a hívót az olvasó, a tulajdonos vagy a közreműködő szerepkörhöz, hogy hozzáférjen az adott Azure-előfizetés használati adataihoz.
 * **A használatalapú fizetéshez, MSDN-hez, pénzügyi kerethez és pénzügyi kredithez kapcsolódó ajánlatok támogatása (a Nagyvállalati Szerződés és a [CSP](https://docs.microsoft.com/partner-center) nem támogatott)** – ez az API az Azure ajánlatszintű díjszabásairól nyújt információt.  Az API hívójának át kell adnia az ajánlat adatait az erőforrás részleteinek és díjszabásának lekéréséhez. Jelenleg nem tudjuk megadni a Nagyvállalati Szerződés díjait, mert az ilyen ajánlatoknak regisztrációnként testreszabott díjszabásai vannak.
 
 ## <a name="scenarios"></a>Forgatókönyvek

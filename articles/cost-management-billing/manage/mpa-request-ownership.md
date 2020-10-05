@@ -1,6 +1,6 @@
 ---
 title: Azure-előfizetés számlázási tulajdonjogának beszerzése a Microsoft-partnerszerződéshez (MPA)
-description: Megtudhatja, hogyan kérhet az Azure-előfizetésekre vonatkozó számlázási tulajdonjogot a többi felhasználótól.
+description: Megtudhatja, hogyan kérhet az Azure-előfizetésekre vonatkozó számlázási tulajdonjogot Microsoft-partnerszerződéshez (MPA) a többi felhasználótól.
 author: amberbhargava
 tags: billing
 ms.service: cost-management-billing
@@ -8,12 +8,12 @@ ms.subservice: billing
 ms.topic: how-to
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: eef36726db735cfdd42f5a103073303cf3b3a632
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: bb2a58b76445f2cfd14a905de1fb66dbff3eee7e
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684949"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371014"
 ---
 # <a name="get-billing-ownership-of-azure-subscriptions-to-your-mpa-account"></a>Azure-előfizetés számlázási tulajdonjogának beszerzése az MPA-fiókjához
 
@@ -35,7 +35,7 @@ Ez a cikk a Microsoft-partnerszerződések számlázási fiókjaira vonatkozik. 
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) a CSP rendszergazdai ügynök hitelesítő adataival a CSP-bérlőn.
 1. Keressen rá a **Költségkezelés + számlázás** kifejezésre.  
-    ![Képernyőkép az Azure Portal keresőmezőjéről a költségkezelés + számlázás keresőkifejezéssel](./media/mpa-request-ownership/search-cmb.png)
+    ![Képernyőkép az Azure Portal keresőmezőjéről a költségkezelés + számlázás keresőkifejezéssel a számlázási tulajdonjog igénylése kapcsán.](./media/mpa-request-ownership/search-cmb.png)
 1. Válassza az **Ügyfelek** lehetőséget a bal oldalon, majd válasszon ki egy ügyfelet a listából.  
     [![Képernyőkép az ügyfelek kiválasztásáról](./media/mpa-request-ownership/mpa-select-customers.png)](./media/mpa-request-ownership/mpa-select-customers.png#lightbox)
 1. Válassza a bal alsó részen az **Átadási kérelmek** lehetőséget, majd az **Új kérelem hozzáadása** elemet.  
@@ -56,7 +56,7 @@ Ez a cikk a Microsoft-partnerszerződések számlázási fiókjaira vonatkozik. 
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. Keressen rá a **Költségkezelés + számlázás** kifejezésre.  
-    ![Képernyőkép az Azure Portal keresőmezőjéről a költségkezelés + számlázás keresőkifejezéssel](./media/mpa-request-ownership/billing-search-cost-management-billing.png)
+    ![Képernyőkép az Azure Portal keresőmezőjéről a költségkezelés + számlázás keresőkifejezéssel az átadási állapotra vonatkozó kérés kapcsán.](./media/mpa-request-ownership/billing-search-cost-management-billing.png)
 1. Válassza az **Ügyfelek** lehetőséget a bal oldalon.  
     [![Képernyőkép az ügyfelek kiválasztásáról](./media/mpa-request-ownership/mpa-select-customers.png)](./media/mpa-request-ownership/mpa-select-customers.png#lightbox)
 1. Válassza ki a listából azt az ügyfelet, akire az elküldött átadási kérelem vonatkozik.
@@ -127,7 +127,7 @@ Az Azure-foglalásokat a rendszer nem helyezi át automatikusan. Megtarthatja a 
 
 ### <a name="access-to-azure-services"></a>Hozzáférés az Azure-szolgáltatásokhoz
 
-A meglévő felhasználók, csoportok vagy szolgáltatásnevek hozzáféréseire, amelyek az [Azure RBAC (szerepköralapú hozzáférés-vezérlés)](../../role-based-access-control/overview.md) segítségével lettek hozzárendelve, az átadás nincs hatással. A partner nem kap új RBAC-hozzáférést az előfizetésekhez.
+A meglévő felhasználók, csoportok vagy szolgáltatásnevek hozzáféréseire, amelyek az [Azure-beli szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../../role-based-access-control/overview.md) segítségével lettek hozzárendelve, az átadás nincs hatással. A partner nem kap új Azure RBAC-hozzáférést az előfizetésekhez.
 
 A partnereknek együtt kell működniük az ügyféllel, hogy hozzáférjenek az előfizetésekhez. A partnereknek rendelkezniük kell [Megbízott felügyeleti – AOBO](https://channel9.msdn.com/Series/cspdev/Module-11-Admin-On-Behalf-Of-AOBO) vagy [Azure Lighthouse](https://docs.microsoft.com/azure/lighthouse/concepts/cloud-solution-provider)-hozzáféréssel a támogatási jegyek eléréséhez.
 
@@ -174,4 +174,4 @@ Ha segítségre van szüksége, [vegye fel a kapcsolatot az ügyfélszolgálatta
 ## <a name="next-steps"></a>További lépések
 
 * Az Azure-előfizetések számlázási tulajdonjoga átadódik az Önnek. Az ezen előfizetésekre vonatkozó díjak alakulását nyomon követheti az [Azure Portalon](https://portal.azure.com).
-* Működjön együtt az ügyféllel, hogy hozzáférjen az átvitt Azure-előfizetésekhez. [Azure-erőforrásokhoz való hozzáférés kezelése RBAC használatával](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal).
+* Működjön együtt az ügyféllel, hogy hozzáférjen az átvitt Azure-előfizetésekhez. [Azure-beli szerepkör-hozzárendelés hozzáadása vagy eltávolítása az Azure Portal használatával](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal).
