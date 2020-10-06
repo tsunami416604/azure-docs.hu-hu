@@ -3,12 +3,12 @@ title: Élő videó elemzése a IoT Edge és az Azure élő videó-elemzésével
 description: Megtudhatja, hogyan használhatja a Custom Visiont olyan tárolós modell kiépítéséhez, amely képes észlelni a játékok teherautóját, és az élő videó-elemzések AI-bővíthetőségi funkcióját használja a IoT Edge (LVA) szolgáltatásban a modellnek az élő videó streamből való észlelésére.
 ms.topic: tutorial
 ms.date: 09/08/2020
-ms.openlocfilehash: 0e980ac73d77b6fbbfdb8178f285904d3bf29920
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 022dc5714e7a2e19446ee57e827a08ef4c56413e
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90946521"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761430"
 ---
 # <a name="tutorial-analyze-live-video-with-live-video-analytics-on-iot-edge-and-azure-custom-vision"></a>Oktatóanyag: élő videó elemzése élő videó-elemzéssel IoT Edge és az Azure-on Custom Vision
 
@@ -57,7 +57,7 @@ Az oktatóanyag előfeltételei a következők:
 ## <a name="review-the-sample-video"></a>A minta videó áttekintése
 
 
-Ez az oktatóanyag egy, az élő stream szimulálása érdekében egy [Toy Car-következtetést tartalmazó videót](https://lvamedia.blob.core.windows.net/public/t2.mkv/) használ. Megvizsgálhatja a videót egy alkalmazással, például a [VLC Media Player](https://www.videolan.org/vlc/)használatával. Válassza a CTRL + N billentyűkombinációt, majd illesszen be egy hivatkozást a [Toy Car következtetési videóra](https://lvamedia.blob.core.windows.net/public/t2.mkv) a lejátszás megkezdéséhez. A videó megtekintéséhez vegye figyelembe, hogy a videóban megjelenik a 36-Second marker an Toy Truck. Az egyéni modell ki lett tanítva, hogy észlelje az adott Toy Truck-t. Ebben az oktatóanyagban élő videó-elemzéseket fog használni a IoT Edgeon az ilyen játékszer-teherautók észleléséhez és a kapcsolódó következtetési események közzétételéhez IoT Edge hubhoz.
+Ez az oktatóanyag egy, az élő stream szimulálása érdekében egy [Toy Car-következtetést tartalmazó videót](https://lvamedia.blob.core.windows.net/public/t2.mkv) használ. Megvizsgálhatja a videót egy alkalmazással, például a [VLC Media Player](https://www.videolan.org/vlc/)használatával. Válassza a CTRL + N billentyűkombinációt, majd illesszen be egy hivatkozást a [Toy Car következtetési videóra](https://lvamedia.blob.core.windows.net/public/t2.mkv) a lejátszás megkezdéséhez. A videó megtekintéséhez vegye figyelembe, hogy a videóban megjelenik a 36-Second marker an Toy Truck. Az egyéni modell ki lett tanítva, hogy észlelje az adott Toy Truck-t. Ebben az oktatóanyagban élő videó-elemzéseket fog használni a IoT Edgeon az ilyen játékszer-teherautók észleléséhez és a kapcsolódó következtetési események közzétételéhez IoT Edge hubhoz.
 
 ## <a name="overview"></a>Áttekintés
 
@@ -81,33 +81,7 @@ További megjegyzések:
 Ha elkészült, a modell készen áll az Ön megelégedésére, a teljesítmény lapon lévő Exportálás gombra kattintva exportálhatja azt egy Docker-tárolóba. Győződjön meg arról, hogy a Linux lehetőséget választja a tároló platform típusaként. Ez az a platform, amelyen a tároló futni fog. A tárolót letöltő gép lehet Windows vagy Linux. Az alábbi utasítások a Windows rendszerű gépre letöltött tároló fájlon alapulnak.
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/custom-vision-tutorial/docker-file.png" alt-text="Dockerfile":::
- 
-1. Egy zip-fájllal kell letöltenie a nevű helyi gépre `<projectname>.DockerFile.Linux.zip` . 
-1. Ellenőrizze, hogy telepítve van-e a Docker, ha nem telepíti a [Docker](https://docs.docker.com/get-docker/) -t a Windows asztalára.
-1. Csomagolja ki a letöltött fájlt egy tetszőleges helyre. A parancssor használatával lépjen a kibontott mappa könyvtárába.
-    
-    Futtassa az alábbi parancsokat 
-    
-    1. `docker build -t cvtruck` 
-    
-        Ezzel a paranccsal egy rakás csomagot tölthet le, és felépítheti a Docker-rendszerképet, és megcímkézheti azt `cvtruck:latest` . 
-    
-        > [!NOTE]
-        > Ha a Build parancs végrehajtása sikertelen, akkor a következőnek kell megjelennie `- Successfully built <docker image id> and Successfully tagged cvtruck:latest.` , amikor a függőségi csomagok néha nem töltik le első alkalommal.
-    1. `docker  image ls`
-
-        Ez a parancs ellenőrzi, hogy az új rendszerkép a helyi beállításjegyzékben található-e.
-    1. `docker run -p 127.0.0.1:80:80 -d cvtruck`
-    
-        A parancsnak közzé kell tennie a (80-es) Docker-portot a helyi gép portjára (80).
-    1. `docker container ls`
-    
-        Ez a parancs ellenőrzi a port-hozzárendeléseket, és ha a Docker-tároló sikeresen fut a gépen. A kimenetnek a következőhöz hasonlónak kell lennie:
-
-        ```
-        CONTAINER ID        IMAGE               COMMAND                  CREATED             STATUS              PORTS                      NAMES
-        8b7505398367        cvtruck             "/bin/sh -c 'python …"   13 hours ago        Up 25 seconds       127.0.0.1:80->80/tcp   practical_cohen
+> :::image type="content" source="./media/custom-vision-tutorial/docker-file.png" alt-text="Custom Vision áttekintése"   13 hours ago        Up 25 seconds       127.0.0.1:80->80/tcp   practical_cohen
         ```
       1. `curl -X POST http://127.0.0.1:80/image -F imageData=@<path to any image file that has the toy delivery truck in it>`
             
@@ -148,37 +122,13 @@ Ha elkészült, a modell készen áll az Ön megelégedésére, a teljesítmény
 1. Kattintson a jobb gombbal az "src/Edge/deployment.customvision.template.json" fájlra, és kattintson a **IoT Edge üzembe helyezési jegyzék előállítása**elemre.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/custom-vision-tutorial/deployment-template-json.png" alt-text="IoT Edge üzembe helyezési jegyzék előállítása":::
-  
-    Ehhez létre kell hoznia egy jegyzékfájlt a "deployment.customvision.amd64.json" nevű src/Edge/config mappában.
-1. Nyissa meg az "src/Edge/deployment.customvision.template.json" fájlt, és keresse meg a registryCredentials JSON-blokkot. Ebben a blokkban az Azure Container Registry-t a felhasználónevével és jelszavával együtt fogja megtalálni.
-1. A parancssorban a következő paranccsal küldje le a helyi Custom Vision tárolót az Azure Container registrybe.
-
-    1. Jelentkezzen be a beállításjegyzékbe a következő parancs végrehajtásával:
-    
-        `docker login <address>`
-    
-        Adja meg a felhasználónevet és a jelszót, amikor a rendszer a hitelesítést kéri. 
-        
-        > [!NOTE]
-        > A jelszó nem látható a parancssorban.
-    1. A rendszerkép címkézése a használatával:<br/>`docker tag cvtruck   <address>/cvtruck`
-    1. A rendszerkép leküldése a használatával:<br/>`docker push <address>/cvtruck`
-
-        Ha sikeres, a parancssorban a "leküldve" üzenet jelenik meg a rendszerképhez tartozó SHA mellett. 
-    1. Azt is megerősítheti, hogy ellenőrzi az Azure Container registryt a Azure Portalon. Itt láthatja az adattár nevét a címkével együtt. 
-1. Állítsa be a IoTHub-kapcsolódási karakterláncot úgy, hogy a bal alsó sarokban található AZURE IOT HUB ablaktábla melletti "További műveletek" ikonra kattint. A karakterláncot a appsettings.jsfájlból másolhatja. (Itt van egy másik ajánlott módszer, amellyel biztosíthatja, hogy a megfelelő IoT Hub a VSCode-n belül legyen konfigurálva a [Select IoT hub parancs](https://github.com/Microsoft/vscode-azure-iot-toolkit/wiki/Select-IoT-Hub)használatával).
+    > :::image type="content" source="./media/custom-vision-tutorial/deployment-template-json.png" alt-text="Custom Vision áttekintése" ikonra kattint. A karakterláncot a appsettings.jsfájlból másolhatja. (Itt van egy másik ajánlott módszer, amellyel biztosíthatja, hogy a megfelelő IoT Hub a VSCode-n belül legyen konfigurálva a [Select IoT hub parancs](https://github.com/Microsoft/vscode-azure-iot-toolkit/wiki/Select-IoT-Hub)használatával).
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/custom-vision-tutorial/connection-string.png" alt-text="Kapcsolatok karakterlánca":::
-1. Ezután kattintson a jobb gombbal az "src/Edge/config/deployment.customvision.amd64.json" elemre, majd kattintson a **központi telepítés létrehozása egyetlen eszközhöz**lehetőségre. 
+    > :::image type="content" source="./media/custom-vision-tutorial/connection-string.png" alt-text="Custom Vision áttekintése" elemre, majd kattintson a **központi telepítés létrehozása egyetlen eszközhöz**lehetőségre. 
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/custom-vision-tutorial/deployment-amd64-json.png" alt-text="Központi telepítés létrehozása egyetlen eszközhöz":::
-1. Ezután meg kell adnia egy IoT Hub eszköz kiválasztását. Válassza ki a LVA-Sample-Device elemet a legördülő menüből.
-1. Körülbelül 30 másodperc alatt frissítse az Azure IOT hub-t a bal alsó szakaszban, és a következő modulokat kell telepítenie a peremhálózati eszközön:
-
-    * Az élő videó elemzése IoT Edge modulban, "lvaEdge" néven.
+    > :::image type="content" source="./media/custom-vision-tutorial/deployment-amd64-json.png" alt-text="Custom Vision áttekintése" néven.
     * Egy nevű modul `rtspsim` , amely szimulál egy RTSP-kiszolgálót, amely egy élő videó-hírcsatorna forrásaként működik.
     * Egy nevű modul `cv` , amelynek a neve azt sugallja, az a Custom Vision Toy Truck észlelési modell, amely a lemezképek egyéni nézetét alkalmazza, és több címkét ad vissza. (A modell csak egy címkére lett betanítva – "Delivery Truck").
 
@@ -187,7 +137,7 @@ Ha elkészült, a modell készen áll az Ön megelégedésére, a teljesítmény
 Kattintson a jobb gombbal a Live Video Analytics-eszközre, és válassza a **figyelés beépített esemény végpontjának elindítása**lehetőséget. Erre a lépésre szüksége lesz a Visual Studio Code kimeneti ablakának IoT Hub eseményeinek figyeléséhez.
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/custom-vision-tutorial/start-monitoring.png" alt-text="A beépített esemény-végpont figyelésének megkezdése":::
+> :::image type="content" source="./media/custom-vision-tutorial/start-monitoring.png" alt-text="Custom Vision áttekintése":::
 
 ## <a name="run-the-sample-program"></a>A minta program futtatása
 

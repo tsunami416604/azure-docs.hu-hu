@@ -6,12 +6,12 @@ ms.author: sumuth
 ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2020
-ms.openlocfilehash: 8f078c2c7b22a27c1fd87030361fc56d4495177c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 0f3c21d5c7f328ddef000ca7f1eaa9d5e18e6ca9
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90940728"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761889"
 ---
 # <a name="manage-an-azure-database-for-postgresql---flexible-server-using-the-azure-cli"></a>Azure Database for PostgreSQL rugalmas kiszolgáló kezelése az Azure CLI használatával
 
@@ -40,7 +40,7 @@ az account set --subscription <subscription id>
 
 ## <a name="scale-compute-and-storage"></a>Számítási és tárolási méretezés
 
-A számítási szintet, a virtuális mag és a tárterületet könnyedén méretezheti a következő parancs használatával. Az összes olyan kiszolgálói műveletet megtekintheti, amelyet futtat az [postgres flexibilis-Server Server Overview](/cli/azure/PostgreSQL/server)
+A számítási szintet, a virtuális mag és a tárterületet könnyedén méretezheti a következő parancs használatával. Az összes olyan kiszolgálói műveletet megtekintheti, amelyet futtat az [postgres flexibilis-Server Server Overview](https://azure.microsoft.com/services/postgresql/)
 
 ```azurecli-interactive
 az postgres flexible-server update --resource-group myresourcegroup --name mydemoserver --sku-name Standard_D4ds_v3 --storage-size 6144
@@ -50,7 +50,7 @@ A fenti argumentumok részletei:
 
 **Beállítás** | **Mintaérték** | **Leírás**
 ---|---|---
-név | mydemoserver | Adjon meg egy egyedi nevet a kiszolgáló számára. A kiszolgálónév csak kisbetűket, számokat és a kötőjel (-) karaktert tartalmazhatja. 3–63 karakter hosszúságú lehet.
+name | mydemoserver | Adjon meg egy egyedi nevet a kiszolgáló számára. A kiszolgálónév csak kisbetűket, számokat és a kötőjel (-) karaktert tartalmazhatja. 3–63 karakter hosszúságú lehet.
 resource-group | myResourceGroup | Adja meg az Azure-erőforráscsoport nevét.
 sku-name|Standard_D4ds_v3|Adja meg a számítási rétegek és a méret nevét. A következő konvenciót követi: Standard_ {VM size} a gyorsírásban. További információkért tekintse meg a [díjszabási szintet](../concepts-pricing-tiers.md) .
 storage-size | 6144 | A kiszolgáló tárkapacitása (megabájtban megadva). A 5120 minimális és a 1024-os növekmények száma.

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
-ms.openlocfilehash: 794a952ba719faa16e3584afaf8f2f292deb6c03
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 8a8a9587fd50b63dc862f8b74bc99548699fa6e2
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551814"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760665"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clickup-productivity-platform"></a>Oktatóanyag: Azure Active Directory integráció a ClickUp hatékonyságnövelő platformmal
 
@@ -118,17 +118,17 @@ Az Azure AD egyszeri bejelentkezés ClickUp hatékonyságnövelő platformmal va
 
 2. Kattintson a **felhasználói profilra**, majd válassza a **Beállítások**lehetőséget.
 
-    ![ClickUp hatékonyságnövelő konfiguráció](./media/clickup-productivity-platform-tutorial/configure0.png)
+    ![Képernyőfelvétel: a ClickUp termelékenységi bérlője a beállítások ikon kiválasztásával jelenik meg.](./media/clickup-productivity-platform-tutorial/configure0.png)
 
-    ![ClickUp hatékonyságnövelő konfiguráció](./media/clickup-productivity-platform-tutorial/configure1.png)
+    ![A képernyőfelvételen a beállítások láthatók.](./media/clickup-productivity-platform-tutorial/configure1.png)
 
 3. Válassza a **Microsoft**lehetőséget az egyszeri bejelentkezés (SSO) szolgáltató alatt.
 
-    ![ClickUp hatékonyságnövelő konfiguráció](./media/clickup-productivity-platform-tutorial/configure2.png)
+    ![A képernyőképen a Microsoft által kiválasztott hitelesítési ablaktábla látható.](./media/clickup-productivity-platform-tutorial/configure2.png)
 
 4. A **Microsoft egyszeri bejelentkezés konfigurálása** lapon hajtsa végre a következő lépéseket:
 
-    ![ClickUp hatékonyságnövelő konfiguráció](./media/clickup-productivity-platform-tutorial/configure3.png)
+    ![Képernyőfelvétel: a Microsoft egyszeri bejelentkezési oldalának konfigurálása, amelyen átmásolhatja a D entitást, és mentheti az Azure összevonási metaadatokat. R L.](./media/clickup-productivity-platform-tutorial/configure3.png)
 
     a. Kattintson a **Másolás** elemre az entitás-azonosító értékének másolásához, majd illessze be a Azure Portal **ALAPszintű SAML-konfiguráció** szakaszában lévő **azonosító (Entity ID)** szövegmezőbe.
     
@@ -136,7 +136,7 @@ Az Azure AD egyszeri bejelentkezés ClickUp hatékonyságnövelő platformmal va
 
 5. A telepítés befejezéséhez kattintson a **hitelesítés a Microsofttal lehetőségre a telepítés befejezéséhez** és a Microsoft-fiókkal való hitelesítéshez.
 
-    ![ClickUp hatékonyságnövelő konfiguráció](./media/clickup-productivity-platform-tutorial/configure4.png)
+    ![Képernyőfelvétel: a hitelesítés a Microsofttal a telepítés befejezéséhez gomb.](./media/clickup-productivity-platform-tutorial/configure4.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
@@ -195,13 +195,13 @@ Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egysz
 
 2. Kattintson a **felhasználói profilra**, majd válassza a **személyek**lehetőséget.
    
-    ![ClickUp hatékonyságnövelő konfiguráció](./media/clickup-productivity-platform-tutorial/configure0.png)
+    ![Képernyőfelvétel: a ClickUp hatékonyságnövelő bérlője.](./media/clickup-productivity-platform-tutorial/configure0.png)
 
-    ![ClickUp hatékonyságnövelő konfiguráció](./media/clickup-productivity-platform-tutorial/user1.png)
+    ![Képernyőfelvétel: a személyek hivatkozás kiválasztva.](./media/clickup-productivity-platform-tutorial/user1.png)
 
 3. Adja meg a felhasználó e-mail-címét a szövegmezőben, majd kattintson a **meghívás**elemre.
 
-    ![ClickUp hatékonyságnövelő konfiguráció](./media/clickup-productivity-platform-tutorial/user2.png)
+    ![Képernyőfelvétel: a csoport felhasználói beállításai, ahol e-mailben meghívhatja a személyeket.](./media/clickup-productivity-platform-tutorial/user2.png)
 
     > [!NOTE]
     > A felhasználó megkapja az értesítést, és el kell fogadnia a meghívót a fiók aktiválásához.

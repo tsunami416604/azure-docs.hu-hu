@@ -1,6 +1,6 @@
 ---
 title: GPU-modul üzembe helyezése az Microsoft Azure Stack Edge Pro-eszközön az Azure Marketplace-en | Microsoft Docs
-description: Ismerteti, hogyan engedélyezhető a számítási funkció, és hogyan végezhető el a Azure Stack Edge Pro-eszköz számítási felkészültsége a helyi felhasználói felületen keresztül.
+description: Ismerteti, hogyan helyezhetők üzembe GPU-kompatibilis IoT-modulok a Azure Stack Edge Pro GPU-eszközön.
 services: databox
 author: alkohli
 ms.service: databox
@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 09/09/2020
 ms.author: alkohli
-ms.openlocfilehash: a15e74dd2a1a2737675ef66284f348f33cd753dd
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 64d028892298a70e7588863bf9a3f4fc6f4ca609
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90899956"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760059"
 ---
 # <a name="deploy-a-gpu-enabled-iot-module-from-azure-marketplace-on-azure-stack-edge-pro-gpu-device"></a>GPU-t támogató IoT-modul üzembe helyezése az Azure Marketplace-en Azure Stack Edge Pro GPU-eszközön
 
@@ -55,7 +55,7 @@ Mielőtt hozzákezd, győződjön meg arról, hogy rendelkezik az alábbiakkal:
 
 4. A **tovább** gombra kattintva nyugtázza a szolgáltató használati feltételeit és adatvédelmi szabályzatát. 
 
-    ![Minta modul beolvasása](media/azure-stack-edge-gpu-deploy-sample-module-marketplace/terms-of-use-1.png)
+    ![2. mintavételi modul beolvasása](media/azure-stack-edge-gpu-deploy-sample-module-marketplace/terms-of-use-1.png)
 
 5. Válassza ki azt az előfizetést, amelyet az Azure Stack Edge Pro-eszköz üzembe helyezéséhez használt.
 
@@ -89,7 +89,7 @@ Mielőtt hozzákezd, győződjön meg arról, hogy rendelkezik az alábbiakkal:
 
 13. Ellenőrizze, hogy a modul telepítve van-e a IoT Hub a Azure Portalban. Válassza ki az eszközt, válassza a **modulok beállítása**elemet,   és a modult a **IoT Edge modulok**szakaszban kell megadnia   .
 
-    ![Kattintás a Létrehozás gombra](media/azure-stack-edge-gpu-deploy-sample-module-marketplace/running-module-iotres-1.png)
+    ![Válassza a létrehozás 2](media/azure-stack-edge-gpu-deploy-sample-module-marketplace/running-module-iotres-1.png)
 
 ## <a name="monitor-the-module"></a>A modul figyelése  
 
@@ -111,6 +111,6 @@ Mielőtt hozzákezd, győződjön meg arról, hogy rendelkezik az alábbiakkal:
 
         Láthatja, hogy a GPU által az azonos műveletek végrehajtásához szükséges idő (5000-es ismétlés) nem sokkal kisebb, mint a CPU esetében.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ arról, hogyan [konfigurálhatja a GPU-t modul használatára](azure-stack-edge-j-series-configure-gpu-modules.md).

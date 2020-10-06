@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 47ffaef940b3fe2ffe033405a712195c5c74d774
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 85b355981a50804f1c43441efa38c5db59967c1d
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88520381"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760631"
 ---
 # <a name="tutorial-integrate-civic-platform-with-azure-active-directory"></a>Oktatóanyag: a polgári platform integrálása a Azure Active Directory
 
@@ -91,7 +91,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a Másolás gombra az **alkalmazás-összevonási metaadatok URL-címének** másolásához és a számítógépre mentéséhez.
 
-    ![A tanúsítvány letöltési hivatkozása](common/copy-metadataurl.png)
+    ![Képernyőfelvétel: az SAML aláíró tanúsítvány lapja, amelyen átmásolhatja az alkalmazások összevonási metaadatait.](common/copy-metadataurl.png)
 
 1. Navigáljon **Azure Active Directory**  >  **Alkalmazásregisztrációk** az Azure ad-ben, majd válassza ki az alkalmazást.
 
@@ -120,21 +120,21 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. Kattintson a **normál beállítások lehetőségre**.
 
-    ![A tanúsítvány letöltési hivatkozása](media/civic-platform-tutorial/standard-choices.png)
+    ![A képernyőképen a Atlassian Felhőbeli webhely látható, amely a felügyeleti eszközök alatt elnevezett általános döntéseket tartalmazza.](media/civic-platform-tutorial/standard-choices.png)
 
 1. Hozzon létre egy szabványos választható **ssoconfig**.
 
 1. Keresse meg a **ssoconfig**  , és küldje el.
 
-    ![A tanúsítvány letöltési hivatkozása](media/civic-platform-tutorial/sso-config.png)
+    ![A képernyőképen a standard szintű lehetőségek keresését láthatja az s s o-konfigurációban megadott névvel.](media/civic-platform-tutorial/sso-config.png)
 
 1. A piros pontra kattintva bontsa ki a SSOCONFIG elemet.
 
-    ![A tanúsítvány letöltési hivatkozása](media/civic-platform-tutorial/sso-config01.png)
+    ![A képernyőfelvételen a szokásos lehetőségek között böngészhet az S S O-KONFIGURÁCIÓval.](media/civic-platform-tutorial/sso-config01.png)
 
 1. Adja meg az SSO-hez kapcsolódó konfigurációs információkat a következő lépésben:
 
-    ![A tanúsítvány letöltési hivatkozása](media/civic-platform-tutorial/sso-config02.png)
+    ![Képernyőfelvétel: a standard Choices elemek szerkesztése az S S O-KONFIGURÁCIÓKhoz.](media/civic-platform-tutorial/sso-config02.png)
 
     1. A **ApplicationId** mezőben adja meg az **alkalmazás azonosítójának** értékét, amelyet a Azure Portal másolt.
 

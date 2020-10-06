@@ -5,13 +5,13 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: conceptual
-ms.date: 07/30/2020
-ms.openlocfilehash: 84d1ba6ff343b5f3d1f88d7ae5c618601f416e2c
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.date: 10/02/2020
+ms.openlocfilehash: d63cec0e0697a15efe7f15be5f6f0daaa6d6a372
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2020
-ms.locfileid: "87513765"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761515"
 ---
 # <a name="roles-and-requirements-for-azure-data-share"></a>Az Azure Data Share szerepkörei és követelményei 
 
@@ -32,14 +32,13 @@ Az alábbiakban az adatmegosztási erőforrás felügyelt identitásához rendel
 
 |**Adattár típusa**|**Adatszolgáltató forrásának adattára**|**Adatfogyasztói célként szolgáló adattár**|
 |---|---|---|
-|Azure Blob Storage| Storage blob-Adatolvasó | Storage blob adatközreműködői
+|Azure Blob Storage| Storage-blobadatok olvasója | Storage-blobadatok közreműködője
 |Azure Data Lake Gen1 | Tulajdonos | Nem támogatott
-|Azure Data Lake Gen2 | Storage blob-Adatolvasó | Storage blob adatközreműködői
-|Azure SQL Server | SQL-adatbázis közreműködői | SQL-adatbázis közreműködői
+|Azure Data Lake Gen2 | Storage-blobadatok olvasója | Storage-blobadatok közreműködője
 |Azure Data Explorer-fürt | Közreműködő | Közreműködő
 |
 
-SQL-alapú megosztás esetén az SQL-felhasználót egy olyan külső szolgáltatóból kell létrehozni, amely az Azure-beli adatmegosztási erőforrással megegyező nevű Azure SQL Databaseban van. Az alábbiakban az SQL-felhasználó által megkövetelt engedélyek összegzése látható.
+SQL-alapú megosztás esetén az SQL-felhasználót egy olyan külső szolgáltatóból kell létrehozni, amely az Azure-beli adatmegosztási erőforrással megegyező nevű Azure SQL Databaseban van. A felhasználó létrehozásához Azure Active Directory rendszergazdai engedély szükséges. Az alábbiakban az SQL-felhasználó által megkövetelt engedélyek összegzése látható.
 
 |**SQL Database típusa**|**Adatszolgáltató SQL-felhasználói engedélye**|**Adatfogyasztói SQL-felhasználói engedély**|
 |---|---|---|
@@ -104,6 +103,6 @@ Az alábbi lépéseket követve regisztrálja a Microsoft. DataShare erőforrás
 1. Keressen rá a Microsoft. DataShare kifejezésre.
 1. Kattintson a **Regisztrálás** parancsra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ az Azure-beli szerepkörökről – a [szerepkör-definíciók ismertetése](../role-based-access-control/role-definitions.md)

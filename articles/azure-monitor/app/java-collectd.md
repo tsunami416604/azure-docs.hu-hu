@@ -3,12 +3,12 @@ title: A Java-webalkalmazások teljesítményének monitorozása Linux rendszere
 description: A Java-webhely bővített alkalmazás-teljesítményének figyelése a Application Insights gyűjtött beépülő modullal.
 ms.topic: conceptual
 ms.date: 03/14/2019
-ms.openlocfilehash: 648d0e5adc289dfeb83a54c3dcb9ab7d25fc1cc4
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: fd061d6dd1f87456b92a61c9a62caaf3ef3189b2
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322601"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761022"
 ---
 # <a name="collectd-linux-performance-metrics-in-application-insights"></a>begyűjtve: Linux teljesítmény-metrikák a Application Insights
 
@@ -28,7 +28,7 @@ Készítsen másolatot a kialakítási kulcsról, amely azonosítja az erőforr�
 A Linux Server rendszerű gépeken:
 
 1. Telepítse a [gyűjtött](https://collectd.org/) 5.4.0 vagy újabb verziót.
-2. Töltse le a [Application Insights gyűjtött író beépülő modult](https://github.com/microsoft/ApplicationInsights-Java/tree/master/collectd/src/main/java/com/microsoft/applicationinsights/collectd/internal). Jegyezze fel a verziószámot.
+2. Töltse le a [Application Insights gyűjtött író beépülő modult](https://github.com/microsoft/ApplicationInsights-Java/tree/master/core/src/main/java/com/microsoft/applicationinsights/internal). Jegyezze fel a verziószámot.
 3. Másolja a beépülő modult a-ba `/usr/share/collectd/java` .
 4. Szerkesztés `/etc/collectd/collectd.conf` :
    * Győződjön meg arról, hogy [a Java beépülő modul](https://collectd.org/wiki/index.php/Plugin:Java) engedélyezve van.

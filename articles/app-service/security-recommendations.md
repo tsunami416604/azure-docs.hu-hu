@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 06/17/2019
 ms.author: mbaldwin
 ms.custom: security-recommendations
-ms.openlocfilehash: eba08211355b0f57dd9dd11ec4c18d5912208ec8
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 9f8fba617eb0274a8db7adc5d36c6ff50be10924
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88962213"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761379"
 ---
 # <a name="security-recommendations-for-app-service"></a>A App Service biztonsági javaslatai
 
@@ -56,7 +56,7 @@ Ez a cikk a Azure App Service biztonsági javaslatait tartalmazza. A javaslatok 
 
 | Ajánlás | Megjegyzések |
 |-|-|
-|Standard szintű Azure Security Center használata | A [Azure Security Center](../security-center/security-center-app-services.md) natív módon van integrálva a Azure app Serviceval. Értékeléseket futtathat, és biztonsági javaslatokat is megadhat. |
+|Standard szintű Azure Security Center használata | A [Azure Security Center](https://docs.microsoft.com/azure/security-center/defender-for-app-service-introduction) natív módon van integrálva a Azure app Serviceval. Értékeléseket futtathat, és biztonsági javaslatokat is megadhat. |
 
 ## <a name="next-steps"></a>Következő lépések
 

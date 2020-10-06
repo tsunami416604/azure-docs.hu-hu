@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/31/2020
 ms.author: jeedes
-ms.openlocfilehash: 4fd6b46353cdeb4493c1a767c92e75d602e52843
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: b6da84c1be38dde72b663de1db3756e77f4db915
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88528884"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91759810"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cisco-webex"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Cisco WebEx
 
@@ -96,7 +96,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. A fentieken kívül a Cisco WebEx alkalmazás néhány további attribútumot vár az SAML-válaszokban, amelyek alább láthatók. Ezek az attribútumok előre fel vannak töltve, de a követelményeinek megfelelően áttekintheti őket.
   
-    | Name |  Forrás attribútum|
+    | Name (Név) |  Forrás attribútum|
     | ---------------|--------- |
     | UID | User. userPrincipalName |
 
@@ -151,13 +151,13 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 4. Válassza a **Beállítások** lehetőséget, majd a **hitelesítés** szakaszban kattintson a **módosítás**lehetőségre.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/cisco-spark-tutorial/tutorial-cisco-spark-10.png)
+    ![A képernyőképen a módosítás lehetőségre kattintva megjelenítheti a hitelesítési beállításokat.](./media/cisco-spark-tutorial/tutorial-cisco-spark-10.png)
   
 5. Válassza **a harmadik féltől származó identitás-szolgáltató integrálása lehetőséget. (Speciális)** és lépjen a következő képernyőre.
 
 6. Az **identitásszolgáltató-Metaadatok importálása** lapon húzza át az Azure ad metaadat-fájlját az oldalra, vagy használja az Azure ad metaadat-fájljának megkereséséhez és feltöltéséhez a fájl tallózása lehetőséget. Ezután jelölje be **a hitelesítésszolgáltató által aláírt tanúsítvány megkövetelése a metaadatokban (biztonságosabb)** jelölőnégyzetet, majd kattintson a **tovább**gombra.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/cisco-spark-tutorial/tutorial-cisco-spark-11.png)
+    ![Képernyőfelvétel: az import I d P metaadatok lapja.](./media/cisco-spark-tutorial/tutorial-cisco-spark-11.png)
 
 7. Válassza az **egyszeri bejelentkezéses csatlakozás tesztelése**lehetőséget, és amikor megnyílik egy új böngésző lap, jelentkezzen be az Azure ad-be.
 
@@ -171,13 +171,13 @@ Ebben a szakaszban egy B. Simon nevű felhasználót hoz létre a Cisco WebEx. E
 
 2. Kattintson a **felhasználók** , majd a **felhasználók kezelése**lehetőségre.
    
-    ![Egyszeri bejelentkezés konfigurálása](./media/cisco-spark-tutorial/tutorial-cisco-spark-12.png) 
+    ![Képernyőfelvétel: a felhasználók lap, amelyen kezelheti a felhasználókat.](./media/cisco-spark-tutorial/tutorial-cisco-spark-12.png) 
 
 3. A **felhasználó kezelése** ablakban válassza a **felhasználók manuális hozzáadása vagy módosítása** lehetőséget, majd kattintson a **tovább**gombra.
 
 4. Válassza **a nevek és e-mail-cím**elemet. Ezután töltse ki a szövegmezőt a következő módon:
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/cisco-spark-tutorial/tutorial-cisco-spark-13.png) 
+    ![Képernyőfelvétel: a felhasználók manuális hozzáadására és módosítására szolgáló panel.](./media/cisco-spark-tutorial/tutorial-cisco-spark-13.png) 
 
     a. Az **Utónév** szövegmezőbe írja be a (z) " **B**" felhasználó utónevét.
 

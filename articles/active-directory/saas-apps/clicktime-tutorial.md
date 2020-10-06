@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/21/2019
 ms.author: jeedes
-ms.openlocfilehash: ed39064d4aee07554ce795be73732024e1b47f84
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 98b5c3bd1f41bd3b6a4100fdaebd1d44fb45bf9f
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549332"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760114"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clicktime"></a>Oktatóanyag: Azure Active Directory integráció a ClickTime
 
@@ -207,7 +207,7 @@ ClickTime esetén a kiépítés manuális feladat.
 
 1. A felső eszköztáron kattintson a **vállalat**elemre, majd a **személyek**elemre.
    
-    ![People](./media/clicktime-tutorial/tic777282.png "People")
+    ![Képernyőfelvétel: a ClickTime bérlő a vállalat és a kiválasztott személyek közül.](./media/clicktime-tutorial/tic777282.png "People")
 
 1. Kattintson a **személy hozzáadása**lehetőségre.
    
@@ -215,7 +215,7 @@ ClickTime esetén a kiépítés manuális feladat.
 
 1. Az új személy szakaszban hajtsa végre a következő lépéseket:
    
-    ![People](./media/clicktime-tutorial/tic777284.png "People")
+    ![Képernyőfelvétel: a személy hozzáadása szakasz, ahol az ebben a lépésben szereplő információkat adhatja hozzá.](./media/clicktime-tutorial/tic777284.png "People")
    
     a.  A **teljes név** szövegmezőbe írja be a felhasználó teljes nevét, például a **Britta Simon**nevet. 
   

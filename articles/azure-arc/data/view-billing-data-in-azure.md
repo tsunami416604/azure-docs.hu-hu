@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 375191bbe6f45189fba50ea927454c0ec4f64678
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 55269b45159210eec2ec7a6dd8eaea661ff13ebd
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90936028"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760306"
 ---
 # <a name="upload-billing-data-to-azure-and-view-it-in-the-azure-portal"></a>Számlázási adatok feltöltése az Azure-ba, és megtekintés a Azure Portal
 
@@ -30,7 +30,7 @@ A jövőben két mód lesz az Azure arc-kompatibilis adatszolgáltatások futtat
 - **Közvetett** csatlakozás – nincs közvetlen kapcsolat az Azure-hoz. Az adatok csak az exportálási/feltöltési folyamaton keresztül érkeznek az Azure-ba. Az Azure arc-adatszolgáltatások összes központi telepítése ebben a módban jelenleg előzetes verzióban működik.
 - **Közvetlen csatlakozás** – ebben a módban az Azure arc-kompatibilis Kubernetes szolgáltatástól függ, hogy közvetlen kapcsolatot biztosít az Azure és a Kubernetes-fürt között, amelyen az Azure arc-kompatibilis adatszolgáltatások futnak. Ez lehetővé teszi a további képességeket, és lehetővé teszi, hogy a Azure Portal és az Azure CLI-vel kezelje az Azure arc-kompatibilis adatszolgáltatásait ugyanúgy, mint az Azure-beli adatszolgáltatások kezelését.  Ez a csatlakozási mód még nem érhető el előzetes verzióban, de hamarosan elérhető lesz.
 
-További információt a [kapcsolati módok](/docs/connectivity.md)közötti különbségről itt olvashat.
+További információt a [kapcsolati módok](https://docs.microsoft.com/azure/azure-arc/data/connectivity)közötti különbségről itt olvashat.
 
 A közvetve csatlakoztatott módban a számlázási adatmennyiséget az Azure arc-adatvezérlőből egy biztonságos fájlba exportálja a rendszer, majd feltölti az Azure-ba, majd feldolgozza azokat.  A közelgő közvetlen csatlakozású módban a számlázási adatait körülbelül 1/óra múlva automatikusan elküldi az Azure-ba, hogy közel valós időben megtekintse a szolgáltatások költségeit. A közvetetten csatlakoztatott módban tárolt adatexportálás és-feltöltés folyamata parancsfájlok használatával is automatizálható, vagy létrehozhatunk egy olyan szolgáltatást, amely elvégzi Önt.
 
@@ -40,7 +40,7 @@ A számlázási adatok Azure-ba való feltöltéséhez először a következők 
 
 1. Hozzon létre egy Azure arc-kompatibilis adatszolgáltatást, ha még nem rendelkezik ilyennel. Például hozzon létre egyet a következők közül:
    - [Azure SQL felügyelt példány létrehozása az Azure arc-ban](create-sql-managed-instance.md)
-   - [Azure arc-kompatibilis PostgreSQL nagy kapacitású-kiszolgálócsoport létrehozása](create-postgresql-hyperscale-server-group.md)
+   - [Azure Arc-kompatibilis, rugalmas skálázású PostgreSQL-kiszolgálócsoport létrehozása](create-postgresql-hyperscale-server-group.md)
 1. [Az erőforrás-leltár, a használati adatok, a metrikák és a naplók feltöltésével Azure monitor](upload-metrics-and-logs-to-azure-monitor.md) , ha még nem tette meg.
 1. Várjon legalább 2 órát az adatszolgáltatás létrehozása óta, hogy a számlázási telemetria gyűjtési folyamata egyes számlázási adatokat is gyűjtsön.
 

@@ -13,12 +13,12 @@ ms.date: 09/17/2020
 ms.author: shoatman
 ms.custom: aaddev
 ms.reviewer: shoatman, hahamil, brianmel
-ms.openlocfilehash: 2bb48971e86c2b61742735020469865fa969bee3
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 5042bfad2cfe06c7c368c6b476aa1b02d67bcc9c
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91258408"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760754"
 ---
 # <a name="brokered-authentication-in-android"></a>Felügyelt hitelesítés az Androidban
 
@@ -55,7 +55,7 @@ Ha egy eszközön még nincs telepítve Broker-alkalmazás, a MSAL arra utasítj
 
 Ha egy ügynök telepítve van egy eszközön, az összes további interaktív jogkivonat-kérést (hívásokat `acquireToken()` ) a közvetítő kezeli, nem pedig helyileg a MSAL. A MSAL számára korábban elérhető SSO-állapotok nem érhetők el a közvetítő számára. Ennek eredményeképpen a felhasználónak újra hitelesítenie kell magát, vagy ki kell választania egy fiókot az eszközön ismert fiókok meglévő listájából.
 
-A Broker telepítése nem igényli, hogy a felhasználó újra bejelentkezzen. `MsalUiRequiredException`A következő kérelem csak akkor jelenik meg a közvetítőn, ha a felhasználónak meg kell oldania. `MsalUiRequiredException` több okból is elvégezhető, és interaktív módon kell feloldani. Példa:
+A Broker telepítése nem igényli, hogy a felhasználó újra bejelentkezzen. `MsalUiRequiredException`A következő kérelem csak akkor jelenik meg a közvetítőn, ha a felhasználónak meg kell oldania. `MsalUiRequiredException` több okból is elvégezhető, és interaktív módon kell feloldani. Például:
 
 - A felhasználó megváltoztatta a fiókhoz társított jelszót.
 - A felhasználó fiókja már nem felel meg a feltételes hozzáférési szabályzatnak.
@@ -95,7 +95,7 @@ keytool -exportcert -alias androiddebugkey -keystore %HOMEPATH%\.android\debug.k
 
 Miután létrehozta az aláírási kivonatot a (z) *eszközzel*, a Azure Portal használatával hozza létre az ÁTirányítási URI-t:
 
-1. Jelentkezzen be a [Azure Portalba](https://protal.azure.com) , és válassza ki az Android-alkalmazást a **Alkalmazásregisztrációkban**.
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) , és válassza ki az Android-alkalmazást a **Alkalmazásregisztrációkban**.
 1. Válassza **Authentication**  >  **a hitelesítés platform hozzáadása**  >  **Android**lehetőséget.
 1. A megnyíló **Android-alkalmazás konfigurálása** panelen adja meg a korábban létrehozott **aláírási kivonatot** és a **csomag nevét**.
 1. Válassza a **Konfigurálás** gombot.

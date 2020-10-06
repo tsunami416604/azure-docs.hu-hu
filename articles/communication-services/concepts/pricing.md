@@ -9,12 +9,12 @@ ms.author: mikben
 ms.date: 09/29/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 0b82d7dc8f6aaaa28a5293966440f058fbf42dc1
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 4eec258cf642688c87b363ff467f1f368727a013
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91460934"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761226"
 ---
 # <a name="pricing-scenarios"></a>Díjszabási forgatókönyvek
 
@@ -59,7 +59,7 @@ A kommunikációs szolgáltatások segítségével javíthatja az alkalmazását
 
 ### <a name="price"></a>Ár
 
-- Minden elküldött Csevegésnél $0,0008 díjat számítunk fel.
+Minden elküldött Csevegésnél $0,0008 díjat számítunk fel.
 
 ### <a name="pricing-example-chat-between-two-users"></a>Díjszabási példa: csevegés két felhasználó között 
 
@@ -77,3 +77,46 @@ Rose látja az üzeneteket, és elindítja a csevegést. Az időpontban egy hív
 **Költségszámítások** 
 
 - Küldött üzenetek száma (20 + 30 + 18 + 30 + 25 + 35) x $0,0008 = $0,1264
+
+
+## <a name="telephony-and-sms"></a>Telefonos funkciók és SMS
+
+## <a name="price"></a>Ár 
+
+A telefonos szolgáltatások díjszabása percenként történik, az SMS-t pedig az üzenetek díjszabása alapján számítjuk fel. A díjszabást a használt szám típusa és helye, valamint a hívások és az SMS-üzenetek rendeltetése határozza meg.
+
+### <a name="telephone-calling"></a>Telefonos hívás
+
+A hagyományos telefonhívás (amely a nyilvános kapcsolós telefonvonalon keresztül fordul elő) a Egyesült Államokon alapuló telefonszámok utólagos elszámolású díjszabásával érhető el. Az ár percenkénti díj, amely a felhasznált szám és a hívás célhelye alapján történik. A legnépszerűbb hívási célok díjszabását az alábbi táblázat tartalmazza. A célhelyek teljes listájáért tekintse meg a [részletes díjszabási listát](https://github.com/Azure/Communication/blob/master/pricing/communication-services-pstn-rates.csv) .
+
+
+#### <a name="united-states-calling-prices"></a>Meghívási díjak Egyesült Államok
+
+A következő díjak a szükséges kommunikációs adókat és díjakat tartalmazzák a 2021. június 30-ig:
+
+|Számtípus   |Hívások kezdeményezése   |Hívások fogadása|
+|--------------|-----------|------------|
+|Helyi     |Kezdés: $0.013/perc       |$0.0085/perc        |
+|Díjmentes |$0.013/perc   |$0.0220/perc |
+
+#### <a name="other-calling-destinations"></a>Egyéb hívási célhelyek
+
+A következő díjak a szükséges kommunikációs adókat és díjakat tartalmazzák a 2021. június 30-ig:
+
+|Hívások kezdeményezése   |Percenkénti díj|
+|-----------|------------|
+|Kanada     |Kezdés: $0.013/perc   |
+|Egyesült Királyság     |Kezdés: $0.015/perc   |
+|Németország     |Kezdés: $0.015/perc   |
+|Franciaország     |Kezdés: $0.016/perc   |
+
+
+### <a name="sms"></a>SMS
+
+Az SMS utólagos elszámolású díjszabást kínál. Az ár az üzenet célján alapuló díj. Az üzeneteket ingyenesen hívható telefonszámok is elküldhetik a Egyesült Államokban lévő telefonszámokra. Vegye figyelembe, hogy a helyi (földrajzi) telefonszámok nem használhatók SMS-üzenetek küldésére.
+
+A következő díjak a szükséges kommunikációs adókat és díjakat tartalmazzák a 2021. június 30-ig:
+
+|Ország   |Üzenetek küldése|Üzenetek fogadása|
+|-----------|------------|------------|
+|USA (díjmentes)    |$0.0075/msg   | $0.0075/msg |

@@ -5,18 +5,17 @@ ms.topic: conceptual
 author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
-ms.openlocfilehash: 07b5ae99b98c6c6bbf4dc903cd1b583eb655a825
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: df8ebd97ed9e34e0fce85a50297c595732057115
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87041405"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761464"
 ---
 # <a name="troubleshooting-application-insights-agent-formerly-named-status-monitor-v2"></a>Application Insights ügynök hibaelhárítása (korábbi nevén Állapotmonitor v2)
 
 Ha engedélyezi a figyelést, az adatgyűjtést akadályozó problémák merülhetnek fel.
 Ez a cikk felsorolja az összes ismert problémát, és hibaelhárítási példákat tartalmaz.
-Ha olyan problémát tapasztal, amely itt nem szerepel, felveheti velünk a kapcsolatot a [githubon](https://github.com/Microsoft/ApplicationInsights-Home/issues).
 
 ## <a name="known-issues"></a>Ismert problémák
 
@@ -72,12 +71,10 @@ Az enable parancs futtatása után végezze el a következő lépéseket:
 ### <a name="iis-nested-applications"></a>IIS beágyazott alkalmazások
 
 Az IIS-ben a 1,0-es verzióban nem található beágyazott alkalmazás.
-Ezt a problémát [itt](https://github.com/microsoft/ApplicationInsights-Home/issues/369)követjük nyomon.
 
 ### <a name="advanced-sdk-configuration-isnt-available"></a>A speciális SDK-konfiguráció nem érhető el.
 
 Az SDK-konfiguráció nem érhető el a végfelhasználó számára az 1,0-es verzióban.
-Ezt a problémát [itt](https://github.com/microsoft/ApplicationInsights-Home/issues/375)követjük nyomon.
 
     
     
@@ -131,13 +128,13 @@ A parancsmag használatának részletes ismertetését az [API-referenciában](s
 
 ### <a name="collect-etw-logs-by-using-perfview"></a>ETW-naplók gyűjtése a Perfview eszköz használatával
 
-#### <a name="setup"></a>Előkészületek
+#### <a name="setup"></a>Telepítés
 
 1. Töltse le PerfView.exe és PerfView64.exe a [githubról](https://github.com/Microsoft/perfview/releases).
 2. PerfView64.exe elindítása.
 3. Bontsa ki a **Speciális beállítások elemet**.
 4. Törölje a jelet a következő jelölőnégyzetekből:
-    - **Zip**
+    - **Irányítószám**
     - **Egyesítés**
     - **.NET-szimbólum gyűjteménye**
 5. **További szolgáltatók**beállítása:`61f6ca3b-4b5f-5602-fa60-759a2a2d1fbd,323adc25-e39b-5c87-8658-2c1af1a92dc5,925fa42b-9ef6-5fa7-10b8-56449d7a2040,f7d60e07-e910-5aca-bdd2-9de45b46c560,7c739bb9-7861-412e-ba50-bf30d95eae36,61f6ca3b-4b5f-5602-fa60-759a2a2d1fbd,323adc25-e39b-5c87-8658-2c1af1a92dc5,252e28f4-43f9-5771-197a-e8c7e750a984`
@@ -153,7 +150,6 @@ A parancsmag használatának részletes ismertetését az [API-referenciában](s
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A kihagyott paraméterek megismeréséhez tekintse át az [API-referenciát](status-monitor-v2-overview.md#powershell-api-reference) .
-- Ha olyan problémát tapasztal, amely itt nem szerepel, felveheti velünk a kapcsolatot a [githubon](https://github.com/Microsoft/ApplicationInsights-Home/issues).

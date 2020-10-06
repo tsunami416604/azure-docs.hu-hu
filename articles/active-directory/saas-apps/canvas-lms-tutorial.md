@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/02/2018
 ms.author: jeedes
-ms.openlocfilehash: 24350c63df04e55107ed32c2d61d1026aa27bdb9
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 6c75103f74ee648c46b805df9495bc668ef4f5bd
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547630"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761566"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-canvas"></a>Oktatóanyag: Azure Active Directory-integráció a vásznon
 
@@ -223,11 +223,11 @@ Ha engedélyezni szeretné az Azure AD-felhasználók számára, hogy bejelentke
 
 3. Kattintson a **felhasználók**elemre.
 
-   ![Felhasználók](./media/canvas-lms-tutorial/ic775995.png "Felhasználók")
+   ![Képernyőfelvétel: a kiválasztott felhasználókkal rendelkező vászon menü.](./media/canvas-lms-tutorial/ic775995.png "Felhasználók")
 
 4. Kattintson az **új felhasználó hozzáadása**lehetőségre.
 
-   ![Felhasználók](./media/canvas-lms-tutorial/ic775996.png "Felhasználók")
+   ![A képernyőképen az új felhasználó hozzáadása gomb látható.](./media/canvas-lms-tutorial/ic775996.png "Felhasználók")
 
 5. Az új felhasználó hozzáadása párbeszédpanelen hajtsa végre a következő lépéseket:
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/11/2019
 ms.author: jeedes
-ms.openlocfilehash: cbcbcb6a649969c5348c3ad445ff43f10372faeb
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 4c4ee5fa6281b0a137bd46a9d3a82db22adc77ea
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91306174"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760768"
 ---
 # <a name="tutorial-azure-active-directory-ad-single-sign-on-sso-integration-with-f5"></a>Oktatóanyag: Azure Active Directory (AD) egyszeri bejelentkezéses (SSO) integráció az F5-mel
 
@@ -114,7 +114,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás** lehetőségre.
+   1. Kattintson a **Create** (Létrehozás) gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -146,38 +146,38 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 1. Importálnia kell a metaadat-tanúsítványt az F5 (Advanced Kerberos) rendszerbe, amelyet később a telepítési folyamat során fog használni. Nyissa meg a **System > tanúsítványkezelő > forgalmi tanúsítványok kezelése >> SSL-tanúsítványok listáját**. Kattintson a jobb oldali sarokban található **Importálás** elemre.
 
-    ![F5 (speciális Kerberos) konfiguráció](./media/advance-kerbf5-tutorial/configure01.png)
+    ![Képernyőfelvétel: az Importálás gomb a metaadat-tanúsítvány importálásához.](./media/advance-kerbf5-tutorial/configure01.png)
  
 1. Az SAML-IDENTITÁSSZOLGÁLTATÓ beállításához lépjen a **hozzáférés > összevonási > SAML-szolgáltató > > létrehozása metaadatokból elemre**.
 
-    ![F5 (speciális Kerberos) konfiguráció](./media/advance-kerbf5-tutorial/configure02.png)
+    ![Képernyőkép, amely kiemeli, hogyan hozható létre az SAML-IDENTITÁSSZOLGÁLTATÓ a metaadatokból.](./media/advance-kerbf5-tutorial/configure02.png)
 
-    ![F5 (speciális Kerberos) konfiguráció](./media/advance-kerbf5-tutorial/configure03.png)
+    ![Az új SAML identitásszolgáltató-összekötő létrehozása képernyőt bemutató képernyőkép.](./media/advance-kerbf5-tutorial/configure03.png)
  
     ![F5 (speciális Kerberos) konfiguráció](./media/advance-kerbf5-tutorial/configure04.png)
 
-    ![F5 (speciális Kerberos) konfiguráció](./media/advance-kerbf5-tutorial/configure05.png)
+    ![Képernyőkép, amely az egyszeri bejelentkezés szolgáltatás beállításait megjelenítő képernyőt jeleníti meg. ](./media/advance-kerbf5-tutorial/configure05.png)
  
 1. A 3. feladatból feltöltött tanúsítvány meghatározása
 
-    ![F5 (speciális Kerberos) konfiguráció](./media/advance-kerbf5-tutorial/configure06.png)
+    ![Képernyőfelvétel: az SAML identitásszolgáltató-összekötő szerkesztése képernyő.](./media/advance-kerbf5-tutorial/configure06.png)
 
-    ![F5 (speciális Kerberos) konfiguráció](./media/advance-kerbf5-tutorial/configure07.png)
+    ![Képernyőfelvétel: az egyszeri kijelentkezési szolgáltatás beállításai képernyő.](./media/advance-kerbf5-tutorial/configure07.png)
 
  1. Az SAML SP beállításához nyissa meg a **hozzáférés > összevonási > SAML-szolgáltatás Összevonása > helyi SP-szolgáltatások > létrehozás**lehetőséget.
 
-    ![F5 (speciális Kerberos) konfiguráció](./media/advance-kerbf5-tutorial/configure08.png)
+    ![Képernyőkép, amely megjeleníti a képernyőt, ahol létrehoz egy helyi SP-szolgáltatást.](./media/advance-kerbf5-tutorial/configure08.png)
  
 1. Kattintson az **OK** gombra.
 
 1. Válassza ki az SP-konfigurációt, és kattintson a **bind/szüntesse identitásszolgáltató-összekötők**elemre.
 
-     ![F5 (speciális Kerberos) konfiguráció](./media/advance-kerbf5-tutorial/configure09.png)
+     ![Az SAML-szolgáltatót megjelenítő képernyőkép.](./media/advance-kerbf5-tutorial/configure09.png)
  
  
 1. Kattintson az **új sor hozzáadása** elemre, és válassza ki az előző lépésben létrehozott **külső identitásszolgáltató-összekötőt** .
 
-    ![F5 (speciális Kerberos) konfiguráció](./media/advance-kerbf5-tutorial/configure10.png)
+    ![Képernyőkép az új sor hozzáadása gomb kiemeléséhez.](./media/advance-kerbf5-tutorial/configure10.png)
  
 1. A Kerberos SSO konfigurálásához **hozzáférés > egyszeri bejelentkezés > Kerberos**
 
@@ -188,54 +188,54 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
     • Felhasználói tartomány forrása  `session.logon.last.domain`
 
-    ![F5 (speciális Kerberos) konfiguráció](./media/advance-kerbf5-tutorial/configure11.png)
+    ![Képernyőkép, amely kiemeli a hozzáférést > egyszeri bejelentkezést.](./media/advance-kerbf5-tutorial/configure11.png)
 
 1. Hozzáférési profil konfigurálásához **nyissa meg > profil/szabályzatok > hozzáférési profil (munkamenetenkénti házirendek) című szakaszt**.
 
-    ![F5 (speciális Kerberos) konfiguráció](./media/advance-kerbf5-tutorial/configure12.png)
+    ![A profilok/házirendek menüpont alatt a tulajdonságok lapot kiemelő képernyőkép.](./media/advance-kerbf5-tutorial/configure12.png)
 
-    ![F5 (speciális Kerberos) konfiguráció](./media/advance-kerbf5-tutorial/configure13.png)
+    ![Az SSO/Auth tartományok lapot megjelenítő képernyőkép.](./media/advance-kerbf5-tutorial/configure13.png)
 
-    ![F5 (speciális Kerberos) konfiguráció](./media/advance-kerbf5-tutorial/configure14.png)
+    ![A hozzáférési házirend lapot megjelenítő képernyőkép.](./media/advance-kerbf5-tutorial/configure14.png)
 
-    ![F5 (speciális Kerberos) konfiguráció](./media/advance-kerbf5-tutorial/configure15.png)
+    ![Képernyőkép, amely a hozzáférési házirend Tulajdonságok lapját jeleníti meg.](./media/advance-kerbf5-tutorial/configure15.png)
 
-    ![F5 (speciális Kerberos) konfiguráció](./media/advance-kerbf5-tutorial/configure16.png)
+    ![A változó hozzárendelésének tulajdonságait bemutató képernyőkép.](./media/advance-kerbf5-tutorial/configure16.png)
  
     * Session. Logon. Last. usernameUPN kifejezés {[mcget {Session. SAML. Last. Identity}]}
 
     * Session. ad. lastactualdomain TEXT-bemutató. élő
 
-    ![F5 (speciális Kerberos) konfiguráció](./media/advance-kerbf5-tutorial/configure17.png)
+    ![Az AD-lekérdezés tulajdonságait megjelenítő képernyőkép.](./media/advance-kerbf5-tutorial/configure17.png)
 
     * (userPrincipalName =% {Session. Logon. Last. usernameUPN})
 
-    ![F5 (speciális Kerberos) konfiguráció](./media/advance-kerbf5-tutorial/configure18.png)
+    ![A fiókirodai szabályok lapot és az ellenőrzési fiók szabályát megjelenítő képernyőkép.](./media/advance-kerbf5-tutorial/configure18.png)
 
-    ![F5 (speciális Kerberos) konfiguráció](./media/advance-kerbf5-tutorial/configure19.png)
+    ![Képernyőkép, amely az egyéni változót és az egyéni kifejezés szövegmezőit jeleníti meg.](./media/advance-kerbf5-tutorial/configure19.png)
 
     * Session. Logon. Last. username kifejezés {"[mcget {Session. ad. Last. attr. sAMAccountName}]"}
 
-    ![F5 (speciális Kerberos) konfiguráció](./media/advance-kerbf5-tutorial/configure20.png)
+    ![Képernyőkép, amely az SSO-jogkivonat neve és az SSO-jogkivonat jelszava mezőkben szereplő értékeket jeleníti meg.](./media/advance-kerbf5-tutorial/configure20.png)
 
     * mcget {Session. Logon. Last. username}
     * mcget {Session. Logon. Last. password}
 
 1. Új csomópont hozzáadásához lépjen a **helyi forgalom > csomópontok > csomópontok listája > +**.
 
-    ![F5 (speciális Kerberos) konfiguráció](./media/advance-kerbf5-tutorial/configure21.png)
+    ![Képernyőfelvétel: a helyi forgalom > csomópontok.](./media/advance-kerbf5-tutorial/configure21.png)
  
 1. Új készlet létrehozásához nyissa meg a **helyi forgalom > készletek > készlet lista > létrehozás**lehetőséget.
 
-     ![F5 (speciális Kerberos) konfiguráció](./media/advance-kerbf5-tutorial/configure22.png)
+     ![Képernyőfelvétel a helyi adatforgalom > készletekről.](./media/advance-kerbf5-tutorial/configure22.png)
 
  1. Új virtuális kiszolgáló létrehozásához nyissa meg a **helyi forgalom > Virtual servers > virtuális kiszolgálók listáját > +**.
 
-    ![F5 (speciális Kerberos) konfiguráció](./media/advance-kerbf5-tutorial/configure23.png)
+    ![Képernyőfelvétel: a helyi forgalom kiemelése > virtuális kiszolgálókon.](./media/advance-kerbf5-tutorial/configure23.png)
 
 1. Itt adhatja meg az előző lépésben létrehozott hozzáférési profilt.
 
-    ![F5 (speciális Kerberos) konfiguráció](./media/advance-kerbf5-tutorial/configure24.png) 
+    ![Képernyőkép, amely megmutatja, hol kell megadni a létrehozott hozzáférési profilt.](./media/advance-kerbf5-tutorial/configure24.png) 
 
 ### <a name="setting-up-kerberos-delegation"></a>A Kerberos-delegálás beállítása 
 
@@ -264,15 +264,15 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
     * Állítsa be a megfelelő delegálást az F5 delegálási fiókhoz.
     * Az alábbi példában az APM delegálási fiók konfigurálva van a FRP-App1. redemo. Live alkalmazás KCD.
 
-        ![F5 (speciális Kerberos) konfiguráció](./media/advance-kerbf5-tutorial/configure25.png)
+        ![Képernyőfelvétel: az APM Delegatio-fiók tulajdonságai > Delegálás lap.](./media/advance-kerbf5-tutorial/configure25.png)
 
 1. Adja meg [a fenti hivatkozási](https://techdocs.f5.com/kb/en-us/products/big-ip_apm/manuals/product/apm-authentication-single-sign-on-11-5-0/2.html) dokumentumban említett részleteket
 
 1. Függelék – SAML – F5 BIG-IP változó-hozzárendelések az alábbiakban láthatók:
 
-    ![F5 (speciális Kerberos) konfiguráció](./media/advance-kerbf5-tutorial/configure26.png)
+    ![Képernyőkép, amely az áttekintő > aktív munkamenetek lapot mutatja.](./media/advance-kerbf5-tutorial/configure26.png)
 
-    ![F5 (speciális Kerberos) konfiguráció](./media/advance-kerbf5-tutorial/configure27.png) 
+    ![A változókat és a munkamenet kulcsait bemutató képernyőkép.](./media/advance-kerbf5-tutorial/configure27.png) 
 
 1. Az alábbi lista az alapértelmezett SAML-attribútumok teljes listáját tartalmazza. A GivenName a következő karakterláncot használja.
 `session.saml.last.attr.name.http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname`

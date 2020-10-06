@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 09/03/2020
-ms.openlocfilehash: df937ba7f23f2789d929a043c7239ababb24374f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 1c0247c5adfe60dc2436c832cf3d561882ae3a5d
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91285060"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760161"
 ---
 # <a name="audit-queries-in-azure-monitor-logs-preview"></a>Lekérdezések naplózása Azure Monitor naplókban (előzetes verzió)
 A napló lekérdezési naplói a Azure Monitorban futtatott telemetria kapcsolatos információkat biztosítanak. Ez olyan információkat tartalmaz, mint például a lekérdezés futtatása, a futtatásuk, a használt eszköz, a lekérdezés szövege és a lekérdezés végrehajtását leíró teljesítmény-statisztika.
@@ -68,6 +68,9 @@ A rendszer minden alkalommal létrehoz egy naplózási rekordot, amikor egy lek�
 - A teljesítménnyel kapcsolatos statisztikák nem érhetők el az Azure Adatkezelő proxyról érkező lekérdezések esetén. A lekérdezésekre vonatkozó egyéb adatok továbbra is fel lesznek töltve.
 - A [sztringeket eltorzító](/azure/data-explorer/kusto/query/scalar-data-types/string#obfuscated-string-literals) karakterláncok *h* -célzása nem lesz hatással a lekérdezési naplókra. A lekérdezések pontosan úgy lesznek rögzítve, hogy a karakterlánc ne legyen elküldve. Győződjön meg arról, hogy csak a megfelelőségi jogokkal rendelkező felhasználók láthatják ezt az információt Log Analytics munkaterületeken elérhető különböző RBAC módok használatával.
 - Több munkaterület adatait tartalmazó lekérdezések esetén a lekérdezés csak azokon a munkaterületeken lesz rögzítve, amelyekhez a felhasználónak hozzáférése van.
+
+## <a name="costs"></a>Költségek  
+Az Azure diagnosztikai bővítmény használatáért nem számítunk fel díjat, de díjkötelesek lehetnek a betöltött adatokért járó díjak. Tekintse meg [Azure monitor díjszabását](https://azure.microsoft.com/pricing/details/monitor/) azon a célhelyen, amelyben az adatok gyűjtése folyamatban van.
 
 ## <a name="next-steps"></a>Következő lépések
 

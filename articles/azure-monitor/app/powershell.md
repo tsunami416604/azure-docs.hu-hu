@@ -3,12 +3,12 @@ title: Azure-Application Insights automatizálása a PowerShell használatával 
 description: Erőforrások, riasztások és rendelkezésre állási tesztek létrehozása és kezelése a PowerShellben egy Azure Resource Manager sablon használatával.
 ms.topic: conceptual
 ms.date: 05/02/2020
-ms.openlocfilehash: 53cdf338db5cc4ea359f729297fe57e63853aa5c
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: b5f3ba12fe8a730ce45e64b896ccc9c32b17b30c
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322482"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760903"
 ---
 #  <a name="manage-application-insights-resources-using-powershell"></a>Application Insights-erőforrások kezelése a PowerShell használatával
 
@@ -188,8 +188,8 @@ Hozzon létre egy új. JSON fájlt – hívjuk meg `template1.json` ezt a péld�
 
 ### <a name="use-the-resource-manager-template-to-create-a-new-application-insights-resource"></a>Új Application Insights erőforrás létrehozása a Resource Manager-sablonnal
 
-1. A PowerShellben jelentkezzen be az Azure-ba a`$Connect-AzAccount`
-2. Környezet beállítása előfizetésre a következővel`Set-AzContext "<subscription ID>"`
+1. A PowerShellben jelentkezzen be az Azure-ba a `$Connect-AzAccount`
+2. Környezet beállítása előfizetésre a következővel `Set-AzContext "<subscription ID>"`
 2. Új Application Insights-erőforrás létrehozásához futtasson egy új központi telepítést:
    
     ```PS
@@ -199,9 +199,9 @@ Hozzon létre egy új. JSON fájlt – hívjuk meg `template1.json` ezt a péld�
 
     ``` 
    
-   * `-ResourceGroupName`az a csoport, amelyben létre kívánja hozni az új erőforrásokat.
-   * `-TemplateFile`az egyéni paraméterek előtt kell történnie.
-   * `-appName`A létrehozandó erőforrás neve.
+   * `-ResourceGroupName` az a csoport, amelyben létre kívánja hozni az új erőforrásokat.
+   * `-TemplateFile` az egyéni paraméterek előtt kell történnie.
+   * `-appName` A létrehozandó erőforrás neve.
 
 További paramétereket is hozzáadhat – a sablon paraméterek szakaszában megtalálja a leírásokat.
 
@@ -451,7 +451,7 @@ A karakterláncok csak egy részét parametrizálja, ezért a karakterláncok `c
 | `"myWebTest-myAppName"` |`"[variables(testName)]"'` |
 | `"myTestName-myAppName-subsId"` |`"[variables('alertRuleName')]"` |
 | `"myAppName"` |`"[parameters('appName')]"` |
-| `"myappname"`(kisbetűs) |`"[toLower(parameters('appName'))]"` |
+| `"myappname"` (kisbetűs) |`"[toLower(parameters('appName'))]"` |
 | `"<WebTest Name=\"myWebTest\" ...`<br/>`Url=\"http://fabrikam.com/home\" ...>"` |`[concat('<WebTest Name=\"',` <br/> `parameters('webTestName'),` <br/> `'\" ... Url=\"', parameters('Url'),` <br/> `'\"...>')]"`|
 
 ### <a name="set-dependencies-between-the-resources"></a>Az erőforrások közötti függőségek beállítása
@@ -466,12 +466,12 @@ Az Azure-nak szigorú sorrendben kell beállítania az erőforrásokat. A követ
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Egyéb Automation-cikkek:
 
 * [Hozzon létre egy Application Insights erőforrás](./create-new-resource.md#creating-a-resource-automatically) -gyors metódust sablon használata nélkül.
 * [Riasztások beállítása](powershell-alerts.md)
 * [Hozzon létre webes teszteket](https://azure.microsoft.com/blog/creating-a-web-test-alert-programmatically-with-application-insights/)
 * [Az Azure Diagnostics küldése az Application Insights-ba](powershell-azure-diagnostics.md)
-* [Kiadási jegyzetek létrehozása](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1)
+* [Kiadási jegyzetek létrehozása](https://github.com/MohanGsk/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1)
 

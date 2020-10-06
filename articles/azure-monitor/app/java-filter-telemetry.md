@@ -4,12 +4,12 @@ description: Csökkentse a telemetria forgalmat úgy, hogy kiszűri azokat az es
 ms.topic: conceptual
 ms.date: 3/14/2019
 ms.custom: devx-track-java
-ms.openlocfilehash: 825c807d9af542e8776e3b6361b8f6b6dd08f164
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.openlocfilehash: e450cf0de7dce4f626fd41252bfeed5fba294c70
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87372178"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761005"
 ---
 # <a name="filter-telemetry-in-your-java-web-app"></a>Telemetria szűrése a Java-webalkalmazásban
 
@@ -78,10 +78,7 @@ A ApplicationInsights.xmlban vegyen fel egy `TelemetryProcessors` szakaszt a kö
 
 ```
 
-
-
-
-[Vizsgálja meg a beépített processzorok teljes készletét](https://github.com/Microsoft/ApplicationInsights-Java/tree/master/core/src/main/java/com/microsoft/applicationinsights/internal/processor).
+[Vizsgálja meg a beépített processzorok teljes készletét](https://github.com/Microsoft/ApplicationInsights-Java/tree/master/core/src/main/java/com/microsoft/applicationinsights/internal).
 
 ## <a name="built-in-filters"></a>Beépített szűrők
 
@@ -94,7 +91,7 @@ A ApplicationInsights.xmlban vegyen fel egy `TelemetryProcessors` szakaszt a kö
            </Processor>
 ```
 
-* `NotNeeded`– Az egyéni metrikák neveinek vesszővel tagolt listája.
+* `NotNeeded` – Az egyéni metrikák neveinek vesszővel tagolt listája.
 
 
 ### <a name="page-view-telemetry-filter"></a>Oldal nézet telemetria szűrője
@@ -108,9 +105,9 @@ A ApplicationInsights.xmlban vegyen fel egy `TelemetryProcessors` szakaszt a kö
            </Processor>
 ```
 
-* `DurationThresholdInMS`– Az időtartam a lap betöltéséhez szükséges időt jelenti. Ha ez a beállítás be van állítva, a rendszer nem adja meg az adott időpontnál gyorsabban betöltött lapokat.
-* `NotNeededNames`– A lapok neveinek vesszővel tagolt listája.
-* `NotNeededUrls`-URL-töredékek vesszővel tagolt listája. `"home"`Kiszűri például az összes olyan oldalt, amely az URL-ben "Home" (Kezdőlap).
+* `DurationThresholdInMS` – Az időtartam a lap betöltéséhez szükséges időt jelenti. Ha ez a beállítás be van állítva, a rendszer nem adja meg az adott időpontnál gyorsabban betöltött lapokat.
+* `NotNeededNames` – A lapok neveinek vesszővel tagolt listája.
+* `NotNeededUrls` -URL-töredékek vesszővel tagolt listája. `"home"`Kiszűri például az összes olyan oldalt, amely az URL-ben "Home" (Kezdőlap).
 
 
 ### <a name="request-telemetry-filter"></a>Telemetria-szűrő kérése
@@ -149,7 +146,7 @@ Kiszűri az adott szintetikus források telemetria:
            </Processor>
 ```
 
-* `NotNeeded`-A szintetikus források neveinek vesszővel tagolt listája.
+* `NotNeeded` -A szintetikus források neveinek vesszővel tagolt listája.
 
 ### <a name="telemetry-event-filter"></a>Telemetria-esemény szűrője
 
@@ -164,7 +161,7 @@ Egyéni események szűrése (a [TrackEvent ()](./api-custom-events-metrics.md#t
 ```
 
 
-* `NotNeededNames`– Az események neveinek vesszővel tagolt listája.
+* `NotNeededNames` – Az események neveinek vesszővel tagolt listája.
 
 
 ### <a name="trace-telemetry-filter"></a>Nyomkövetési telemetria szűrője
@@ -178,7 +175,7 @@ Szűri a naplók nyomkövetéseit (a [TrackTrace ()](./api-custom-events-metrics
            </Processor>
 ```
 
-* `FromSeverityLevel`az érvényes értékek a következők:
+* `FromSeverityLevel` az érvényes értékek a következők:
   *  Az összes nyomkövetés kiszűrése
   *  Nyomkövetés – nincs szűrés. a nyomkövetési szinttel egyenlő
   *  INFORMÁCIÓ – kiszűrési NYOMKÖVETÉSi szint

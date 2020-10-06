@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: cshoe
-ms.openlocfilehash: 2a8e0ec113b4d008f759c7d199c4dab823576e16
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 60e62228e33d2d86bb407e45802f5c0621a94049
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90946589"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761090"
 ---
 # <a name="tutorial-building-a-static-web-app-with-blazor-in-azure-static-web-apps"></a>Oktatóanyag: statikus Webalkalmazás létrehozása az Azure statikus Web Apps villámgyors szolgáltatásával
 
@@ -22,7 +22,7 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes próbaverz
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-- [GitHub](https://github.com) -fiók
+- [GitHub](https://github.com)-fiók
 - [Azure](https://portal.azure.com) -fiók
 
 ## <a name="application-overview"></a>Az alkalmazás áttekintése
@@ -33,7 +33,7 @@ Az Azure statikus Web Apps lehetővé teszi a kiszolgáló nélküli háttér á
 
 Az oktatóanyagban szereplő alkalmazás három különböző Visual Studio-projektből áll:
 
-- **API**: a C# Azure functions alkalmazás, amely megvalósítja az API-végpontot, amely időjárási információkat biztosít a statikus alkalmazásnak. Az [`WeatherForecastFunction`](https://github.com/staticwebev/blazor-starter/blob/main/Api/WeatherForecastFunction.cs) objektumok tömbjét adja vissza `WeatherForecast` .
+- **API**: a C# Azure functions alkalmazás, amely megvalósítja az API-végpontot, amely időjárási információkat biztosít a statikus alkalmazásnak. Az [`WeatherForecastFunction`](https://github.com/ssdeepak/blazor/blob/main/Api/WeatherForecastFunction.cs) objektumok tömbjét adja vissza `WeatherForecast` .
 
 - **Client**: az előtér-webszolgáltatások webes szerelvényének projektje. A rendszer egy [tartalék útvonalat](#fallback-route) vezet be annak biztosítására, hogy az összes útvonal a _index.html_ -fájlt szolgálja ki.
 
@@ -67,7 +67,7 @@ Ez a cikk egy GitHub-sablon tárházát használja, amely megkönnyíti az első
     - https://github.com/staticwebdev/blazor-starter/generate
 1. Nevezze el a tárházat **az első-static-Blazer-App**
 
-## <a name="create-a-static-web-app"></a>Statikus Webalkalmazás létrehozása
+## <a name="create-a-static-web-app"></a>Statikus webalkalmazás létrehozása
 
 Most, hogy létrejött a tárház, hozzon létre egy statikus webalkalmazást a Azure Portal.
 
@@ -79,7 +79,7 @@ Most, hogy létrejött a tárház, hozzon létre egy statikus webalkalmazást a 
 
 Az _alapok_ szakaszban kezdje az új alkalmazás konfigurálásával és a GitHub-tárházhoz való csatolásával.
 
-:::image type="content" source="media/deploy-blazor/basics.png" alt-text="Alapbeállítások lap":::
+:::image type="content" source="media/deploy-blazor/basics.png" alt-text="A Blazer-alkalmazás befejezése":::
 
 1. Azure- _előfizetés_ kiválasztása
 1. Válasszon ki vagy hozzon létre egy új _erőforráscsoportot_
@@ -91,7 +91,7 @@ Az _alapok_ szakaszban kezdje az új alkalmazás konfigurálásával és a GitHu
 
 Miután bejelentkezett a GitHubba, adja meg a tárház adatait.
 
-:::image type="content" source="media/deploy-blazor/repository-details.png" alt-text="Adattár részletei":::
+:::image type="content" source="media/deploy-blazor/repository-details.png" alt-text="A Blazer-alkalmazás befejezése":::
 
 1. Válassza ki az előnyben részesített _szervezetet_
 1. Válassza ki az **én-első-static-Blazer-alkalmazást** az _adattár_ legördülő menüből
@@ -105,15 +105,15 @@ Miután bejelentkezett a GitHubba, adja meg a tárház adatait.
 
 1. Válassza az **Áttekintés + létrehozás** lehetőséget.
 
-    :::image type="content" source="media/deploy-blazor/review-create.png" alt-text="A létrehozás gomb áttekintése":::
+    :::image type="content" source="media/deploy-blazor/review-create.png" alt-text="A Blazer-alkalmazás befejezése":::
 
 1. Kattintson a **Létrehozás** gombra.
 
-    :::image type="content" source="media/deploy-blazor/create-button.png" alt-text="Létrehozás gomb":::
+    :::image type="content" source="media/deploy-blazor/create-button.png" alt-text="A Blazer-alkalmazás befejezése":::
 
 1. Válassza az **Erőforrás megnyitása** lehetőséget.
 
-    :::image type="content" source="media/deploy-blazor/resource-button.png" alt-text="Erőforrás megnyitása gomb":::
+    :::image type="content" source="media/deploy-blazor/resource-button.png" alt-text="A Blazer-alkalmazás befejezése":::
 
 ## <a name="view-the-website"></a>Webhely megtekintése
 
@@ -123,7 +123,7 @@ Az új statikus helyhez való csatlakozás előtt az üzembe helyezési buildnek
 
 A statikus Web Apps áttekintése ablak a webalkalmazással való interakciót segítő hivatkozásokat jelenít meg.
 
-:::image type="content" source="./media/deploy-blazor/overview-window.png" alt-text="Áttekintő ablak":::
+:::image type="content" source="./media/deploy-blazor/overview-window.png" alt-text="A Blazer-alkalmazás befejezése":::
 
 1. A szalagcímre kattintva _megtekintheti a GitHub-műveletek_ futtatásának állapotát a tárházon futó GitHub-műveletekkel. Miután meggyőződött arról, hogy befejeződött a telepítési feladatok befejezése, a generált URL-címen keresztül megnyithatja a webhelyet.
 

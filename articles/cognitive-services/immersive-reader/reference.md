@@ -10,18 +10,18 @@ ms.subservice: immersive-reader
 ms.topic: reference
 ms.date: 06/20/2019
 ms.author: metan
-ms.openlocfilehash: aa85f1323795098d161e6bfb1b9cf9237b2a5501
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: dbd5724797fdaf44d147d2f29362b1e5092728dd
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91330604"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761549"
 ---
 # <a name="immersive-reader-javascript-sdk-reference-v11"></a>Magával ragadó olvasó JavaScript SDK-referenciája (v 1.1)
 
 A lebilincselő olvasó SDK egy JavaScript-függvénytárat tartalmaz, amely lehetővé teszi a magával ragadó olvasó integrálását az alkalmazásba.
 
-## <a name="functions"></a>Függvények
+## <a name="functions"></a>Functions
 
 Az SDK a függvényeket teszi elérhetővé:
 
@@ -115,7 +115,7 @@ renderButtons(options?: RenderButtonsOptions): void;
 
 #### <a name="renderbuttons-parameters"></a>renderButtons paraméterek
 
-| Név | Típus | Description |
+| Név | Típus | Leírás |
 | ---- | ---- |------------ |
 | `options` | [renderButtons-beállítások](#renderbuttons-options) | A renderButtons függvény bizonyos viselkedésének konfigurálására szolgáló beállítások. Választható. |
 
@@ -131,11 +131,11 @@ A magával ragadó olvasó gombok megjelenítésének lehetőségei.
 
 #### <a name="renderbuttons-options-parameters"></a>renderButtons-beállítások paraméterei
 
-| Beállítás | Típus | Description |
+| Beállítás | Típus | Leírás |
 | ------- | ---- | ----------- |
 | elemek | HTMLDivElement[] | Elemek, amelyekkel a beolvasó gombokat jelenítheti meg. |
 
-##### `-elements`
+##### `elements`
 ```Parameters
 Type: HTMLDivElement[]
 Required: false
@@ -156,7 +156,7 @@ A hívásának válaszát tartalmazza `ImmersiveReader.launchAsync` . Vegye figy
 
 #### <a name="launchresponse-parameters"></a>LaunchResponse paraméterek
 
-| Beállítás | Típus | Description |
+| Beállítás | Típus | Leírás |
 | ------- | ---- | ----------- |
 | tároló | HTMLDivElement | HTML-elem, amely az olvasó iframe-t tartalmazza. |
 | sessionId | Sztring | A munkamenet globálisan egyedi azonosítója, amelyet a rendszer hibakereséshez használ. |
@@ -174,14 +174,14 @@ A hibával kapcsolatos információkat tartalmaz.
 
 #### <a name="error-parameters"></a>Hiba paraméterei
 
-| Beállítás | Típus | Description |
+| Beállítás | Típus | Leírás |
 | ------- | ---- | ----------- |
 | code | Sztring | A hibakódok egyike. Lásd: [hibakódok](#error-codes). |
 | message | Sztring | A hiba ember által olvasható ábrázolása. |
 
 #### <a name="error-codes"></a>Hibakódok
 
-| Code | Description |
+| Code | Leírás |
 | ---- | ----------- |
 | BadArgument | A megadott argumentum érvénytelen: `message` a [hiba](#error)paramétere. |
 | Időtúllépés | Nem sikerült betölteni a magával ragadó olvasót a megadott időkorláton belül. |
@@ -205,19 +205,19 @@ A lebilincselő olvasóban megjelenítendő tartalmat tartalmazza.
 
 #### <a name="content-parameters"></a>Tartalmi paraméterek
 
-| Név | Típus | Description |
+| Név | Típus | Leírás |
 | ---- | ---- |------------ |
 | cím | Sztring | A lebilincselő olvasó tetején látható cím szövege (nem kötelező) |
 | adattömböket | [Adathalmaz []](#chunk) | Adathalmazok tömbje |
 
-##### `-title`
+##### `title`
 ```Parameters
 Type: String
 Required: false
 Default value: "Immersive Reader" 
 ```
 
-##### `-chunks`
+##### `chunks`
 ```Parameters
 Type: Chunk[]
 Required: true
@@ -240,27 +240,27 @@ Egyetlen adathalmaz, amely a magára az olvasóba kerül át a tartalomba.
 
 #### <a name="chunk-parameters"></a>Adattömb paramétereinek
 
-| Név | Típus | Description |
+| Név | Típus | Leírás |
 | ---- | ---- |------------ |
 | tartalom | Sztring | Az a karakterlánc, amely a lebilincselő olvasónak eljuttatott tartalmat tartalmazza. |
 | lang | Sztring | A szöveg nyelve, az érték az IETF BCP 47 Language címke formátuma, például en, es-ES. Ha nincs megadva, a rendszer automatikusan észleli a nyelvet. Lásd: [Támogatott nyelvek](#supported-languages). |
 | mimeType | sztring | Az egyszerű szöveg, a MathML, a HTML & a Microsoft Word DOCX formátuma támogatott. További részletekért tekintse meg a [támogatott MIME-típusokat](#supported-mime-types) . |
 
-##### `-content`
+##### `content`
 ```Parameters
 Type: String
 Required: true
 Default value: null 
 ```
 
-##### `-lang`
+##### `lang`
 ```Parameters
 Type: String
 Required: false
 Default value: Automatically detected 
 ```
 
-##### `-mimeType`
+##### `mimeType`
 ```Parameters
 Type: String
 Required: false
@@ -269,11 +269,11 @@ Default value: "text/plain"
 
 #### <a name="supported-mime-types"></a>Támogatott MIME-típusok
 
-| MIME-típus | Description |
+| MIME-típus | Leírás |
 | --------- | ----------- |
 | szöveg/egyszerű | Egyszerű szöveg. |
 | szöveg/html | HTML-tartalom. [További információ](#html-support)|
-| Application/MathML + XML | Matematikai Markup Language (MathML). [További információ](./how-to/display-math.md).
+| Application/MathML + XML | Matematikai Markup Language (MathML). [További információk](./how-to/display-math.md).
 | alkalmazás/vnd.openxmlformats-officedocument.wordprocessingml.document | Microsoft Word. docx formátumú dokumentum.
 
 
@@ -305,56 +305,56 @@ Azokat a tulajdonságokat tartalmazza, amelyek a magába foglaló olvasó bizony
 
 #### <a name="options-parameters"></a>Beállítások paraméterei
 
-| Név | Típus | Description |
+| Név | Típus | Leírás |
 | ---- | ---- |------------ |
 | uiLang | Sztring | A felhasználói felület nyelve, az érték az IETF BCP 47 Language címke formátuma, például en, es-ES. Ha nincs megadva, a rendszer alapértelmezés szerint a böngésző nyelvét adja meg. |
 | timeout | Szám | Az időtartam (ezredmásodpercben), mielőtt a [launchAsync](#launchasync) időtúllépési hiba miatt meghiúsul (az alapértelmezett érték 15000 MS). Ez az időkorlát csak az olvasó oldal kezdeti indítására vonatkozik, ahol a sikeres megfigyelhető, amikor megnyílik az olvasó lap, és elindul a tárcsa. Az időkorlát módosítása nem szükséges. |
 | uiZIndex | Szám | Z – a létrehozandó iframe-index (alapértelmezett érték: 1000). |
-| useWebview | Logikai| IFrame helyett Webview címkét használhat a Chrome-alkalmazásokkal való kompatibilitáshoz (az alapértelmezett érték a False). |
-| onExit | Funkció | Végrehajtja, amikor a magától megjelenő olvasó kilép. |
-| allowFullscreen | Logikai | Teljes képernyős váltás lehetősége (az alapértelmezett érték igaz). |
-| hideExitButton | Logikai | Azt jelzi, hogy el kell-e rejteni a megölelő olvasó kilépési gombjának nyilát (az alapértelmezett érték hamis). Ez csak akkor lehet igaz, ha egy olyan alternatív mechanizmus van megadva, amely kizárja az olvasót (például a mobil eszköztár vissza nyilát). |
+| useWebview | Logikai érték| IFrame helyett Webview címkét használhat a Chrome-alkalmazásokkal való kompatibilitáshoz (az alapértelmezett érték a False). |
+| onExit | Függvény | Végrehajtja, amikor a magától megjelenő olvasó kilép. |
+| allowFullscreen | Logikai érték | Teljes képernyős váltás lehetősége (az alapértelmezett érték igaz). |
+| hideExitButton | Logikai érték | Azt jelzi, hogy el kell-e rejteni a megölelő olvasó kilépési gombjának nyilát (az alapértelmezett érték hamis). Ez csak akkor lehet igaz, ha egy olyan alternatív mechanizmus van megadva, amely kizárja az olvasót (például a mobil eszköztár vissza nyilát). |
 | cookiePolicy | [CookiePolicy](#cookiepolicy-options) | Az olvasó cookie-felhasználásának beállítása (az alapértelmezett érték a *CookiePolicy. disable*). A gazda alkalmazás feladata a szükséges felhasználói jóváhagyások beszerzése az EU cookie-k megfelelőségi szabályzatának megfelelően. Lásd: [cookie-házirend beállításai](#cookiepolicy-options). |
-| disableFirstRun | Logikai | Tiltsa le az első futtatási élményt. |
+| disableFirstRun | Logikai érték | Tiltsa le az első futtatási élményt. |
 | readAloudOptions | [ReadAloudOptions](#readaloudoptions) | Beállítások a beolvasás konfigurálásához. |
 | translationOptions | [TranslationOptions](#translationoptions) | A fordítás konfigurálásának beállításai. |
 | displayOptions | [DisplayOptions](#displayoptions) | A szövegméret konfigurálására szolgáló beállítások, betűkészletek stb. |
 | beállítások | Sztring | Az a onPreferencesChanged, amely a felhasználó beállításait jelképezi a felhasználóbarát olvasóban. További információért lásd a [Beállítások paramétereit](#settings-parameters) és a [felhasználói beállítások tárolását](./how-to-store-user-preferences.md) ismertető témakört. |
-| onPreferencesChanged | Funkció | A felhasználó beállításainak megváltozásakor végez végrehajtást. További információkért lásd: [útmutató a felhasználói beállítások tárolásához](./how-to-store-user-preferences.md) . |
+| onPreferencesChanged | Függvény | A felhasználó beállításainak megváltozásakor végez végrehajtást. További információkért lásd: [útmutató a felhasználói beállítások tárolásához](./how-to-store-user-preferences.md) . |
 | customDomain | Sztring | Belső használatra fenntartva. Az az egyéni tartomány, ahol a magával ragadó olvasó WebApp fut (az alapértelmezett érték null). |
 
-##### `-uiLang`
+##### `uiLang`
 ```Parameters
 Type: String
 Required: false
 Default value: User's browser language 
 ```
 
-##### `-timeout`
+##### `timeout`
 ```Parameters
 Type: Number
 Required: false
 Default value: 15000
 ```
 
-##### `-uiZIndex`
+##### `uiZIndex`
 ```Parameters
 Type: Number
 Required: false
 Default value: 1000
 ```
 
-##### `-onExit`
+##### `onExit`
 ```Parameters
 Type: Function
 Required: false
 Default value: null
 ```
 
-##### `-preferences`
+##### `preferences`
 
 > [!CAUTION]
-> **Fontos** Ne próbálja meg programozott módon megváltoztatni a `-preferences` felhasználóbarát olvasó alkalmazásba érkező és a felé irányuló karakterlánc értékeit, mivel ez váratlan viselkedést eredményezhet, ami az ügyfelek számára csökkentett teljesítményű felhasználói élményt eredményez.
+> **Fontos** Ne próbálja meg programozott módon megváltoztatni a `-preferences` felhasználóbarát olvasó alkalmazásba érkező és a felé irányuló karakterlánc értékeit, mivel ez váratlan viselkedést eredményezhet, ami az ügyfelek számára csökkentett teljesítményű felhasználói élményt eredményez. A gazdagép alkalmazásai soha nem rendelhetnek egyéni értéket a karakterlánchoz, vagy kezelhetik azokat `-preferences` . A `-preferences` karakterlánc beállítás használatakor csak a `-onPreferencesChanged` visszahívási beállításban visszaadott pontos értéket használja.
 
 ```Parameters
 Type: String
@@ -362,14 +362,14 @@ Required: false
 Default value: null
 ```
 
-##### `-onPreferencesChanged`
+##### `onPreferencesChanged`
 ```Parameters
 Type: Function
 Required: false
 Default value: null
 ```
 
-##### `-customDomain`
+##### `customDomain`
 ```Parameters
 Type: String
 Required: false
@@ -390,13 +390,13 @@ type ReadAloudOptions = {
 
 #### <a name="readaloudoptions-parameters"></a>ReadAloudOptions paraméterek
 
-| Név | Típus | Description |
+| Név | Típus | Leírás |
 | ---- | ---- |------------ |
 | hang | Sztring | Hang, "női" vagy "férfi". Vegye figyelembe, hogy nem minden nyelv támogatja a nemek közötti különbségeket. |
 | sebesség | Szám | A lejátszási sebességnek 0,5 és 2,5 közöttinek kell lennie, a határokat is beleértve. |
-| Robotpilota | Logikai | A rendszer automatikusan beolvassa a beolvasást, amikor a magával ragadó olvasó betöltődik. |
+| Robotpilota | Logikai érték | A rendszer automatikusan beolvassa a beolvasást, amikor a magával ragadó olvasó betöltődik. |
 
-##### `-voice`
+##### `voice`
 ```Parameters
 Type: String
 Required: false
@@ -404,7 +404,7 @@ Default value: "Female" or "Male" (determined by language)
 Values available: "Female", "Male"
 ```
 
-##### `-speed`
+##### `speed`
 ```Parameters
 Type: Number
 Required: false
@@ -429,13 +429,13 @@ type TranslationOptions = {
 
 #### <a name="translationoptions-parameters"></a>TranslationOptions paraméterek
 
-| Név | Típus | Description |
+| Név | Típus | Leírás |
 | ---- | ---- |------------ |
 | language | Sztring | Beállítja a fordítási nyelvet, az érték az IETF BCP 47 nyelvi címke formátumában van, például: fr-FR, es-MX, zh-Hans-CN. A Word vagy a dokumentum fordításának automatikus engedélyezéséhez szükséges. |
-| autoEnableDocumentTranslation | Logikai | A teljes dokumentum automatikus lefordítása. |
-| autoEnableWordTranslation | Logikai | A Word fordítás automatikus engedélyezése. |
+| autoEnableDocumentTranslation | Logikai érték | A teljes dokumentum automatikus lefordítása. |
+| autoEnableWordTranslation | Logikai érték | A Word fordítás automatikus engedélyezése. |
 
-##### `-language`
+##### `language`
 ```Parameters
 Type: String
 Required: true
@@ -457,13 +457,13 @@ type DisplayOptions = {
 
 #### <a name="displayoptions-parameters"></a>DisplayOptions paraméterek
 
-| Név | Típus | Description |
+| Név | Típus | Leírás |
 | ---- | ---- |------------ |
 | Textsize értékének | Szám | Beállítja a kiválasztott szövegméret méretét. |
-| increaseSpacing | Logikai | Beállítja, hogy be-vagy kikapcsolja-e a szöveg térközét. |
+| increaseSpacing | Logikai érték | Beállítja, hogy be-vagy kikapcsolja-e a szöveg térközét. |
 | fontFamily | Sztring | Beállítja a kiválasztott betűkészletet ("Calibri", "ComicSans" vagy "Sitka"). |
 
-##### `-textSize`
+##### `textSize`
 ```Parameters
 Type: Number
 Required: false
@@ -471,7 +471,7 @@ Default value: 20, 36 or 42 (Determined by screen size)
 Values available: 14, 20, 28, 36, 42, 48, 56, 64, 72, 84, 96
 ```
 
-##### `-fontFamily`
+##### `fontFamily`
 ```Parameters
 Type: String
 Required: false
@@ -491,24 +491,24 @@ enum CookiePolicy { Disable, Enable }
 
 #### <a name="settings-parameters"></a>Beállítások paraméterei
 
-| Beállítás | Típus | Description |
+| Beállítás | Típus | Leírás |
 | ------- | ---- | ----------- |
 | Textsize értékének | Szám | Beállítja a kiválasztott szövegméret méretét. |
 | fontFamily | Sztring | Beállítja a kiválasztott betűkészletet ("Calibri", "ComicSans" vagy "Sitka"). |
 | textSpacing | Szám | Beállítja, hogy be-vagy kikapcsolja-e a szöveg térközét. |
-| formattingEnabled | Logikai | Beállítja, hogy a HTML-formázás be van-e kapcsolva vagy ki van-e kapcsolva. |
+| formattingEnabled | Logikai érték | Beállítja, hogy a HTML-formázás be van-e kapcsolva vagy ki van-e kapcsolva. |
 | Téma | Sztring | Beállítja a kiválasztott témát (például "Light", "Dark"...). |
-| syllabificationEnabled | Logikai | Beállítja, hogy be-vagy kikapcsolja-e a syllabification. |
-| nounHighlightingEnabled | Logikai | azt határozza meg, hogy be van-e kapcsolva a főnév kiemelése. |
+| syllabificationEnabled | Logikai érték | Beállítja, hogy be-vagy kikapcsolja-e a syllabification. |
+| nounHighlightingEnabled | Logikai érték | azt határozza meg, hogy be van-e kapcsolva a főnév kiemelése. |
 | nounHighlightingColor | Sztring | Beállítja a kijelölt főnév kiemelésének színét. |
-| verbHighlightingEnabled | Logikai | Beállítja, hogy be van-e kapcsolva a művelet kiemelése. |
+| verbHighlightingEnabled | Logikai érték | Beállítja, hogy be van-e kapcsolva a művelet kiemelése. |
 | verbHighlightingColor | Sztring | Beállítja a kiválasztott művelet kiemelésének színét. |
-| adjectiveHighlightingEnabled | Logikai | Beállítja, hogy be van-e kapcsolva a melléknév kiemelése. |
+| adjectiveHighlightingEnabled | Logikai érték | Beállítja, hogy be van-e kapcsolva a melléknév kiemelése. |
 | adjectiveHighlightingColor | Sztring | Beállítja a kijelölt jelző kiemelésének színét. |
-| adverbHighlightingEnabled | Logikai | Beállítja, hogy be van-e kapcsolva a határozószók kiemelése. |
+| adverbHighlightingEnabled | Logikai érték | Beállítja, hogy be van-e kapcsolva a határozószók kiemelése. |
 | adverbHighlightingColor | Sztring | Beállítja a kiválasztott határozószók kiemelésének színét. |
-| pictureDictionaryEnabled | Logikai | Beállítja, hogy be-vagy kikapcsolja-e a képszótárat. |
-| posLabelsEnabled | Logikai | Azt határozza meg, hogy a beszéd minden Kiemelt részének felső felirata be van-e kapcsolva.  |
+| pictureDictionaryEnabled | Logikai érték | Beállítja, hogy be-vagy kikapcsolja-e a képszótárat. |
+| posLabelsEnabled | Logikai érték | Azt határozza meg, hogy a beszéd minden Kiemelt részének felső felirata be van-e kapcsolva.  |
 
 <br>
 

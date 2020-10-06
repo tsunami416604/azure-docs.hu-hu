@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 5ca2e37c3524dc75328b0b6615e15c58652d20d1
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: a7ab3d32253b354f759c4d348526e22521a5fde4
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88542955"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760723"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-agiloft"></a>Oktatóanyag: Azure Active Directory integráció a Agiloft
 
@@ -100,7 +100,7 @@ Az Azure AD egyszeri bejelentkezés Agiloft való konfigurálásához hajtsa vé
 
 4. Az **alapszintű SAML-konfiguráció** szakaszban, ha az alkalmazást **identitásszolgáltató** kezdeményezett módban szeretné konfigurálni, hajtsa végre a következő lépéseket:
 
-    ![Agiloft tartomány és URL-címek egyszeri bejelentkezési adatai](common/idp-intiated.png)
+    ![Képernyőkép az azonosító és a válasz URL-címe szövegmezők kiemeléséhez.](common/idp-intiated.png)
 
     a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával:
 
@@ -150,11 +150,11 @@ Az Azure AD egyszeri bejelentkezés Agiloft való konfigurálásához hajtsa vé
 
 2. Kattintson a **telepítés** elemre (a bal oldali ablaktáblán), majd válassza a **hozzáférés**lehetőséget.
 
-    ![Agiloft-konfiguráció](./media/agiloft-tutorial/setup1.png)
+    ![A hozzáférési szakaszt kiemelő képernyőkép.](./media/agiloft-tutorial/setup1.png)
 
 3. Kattintson a gombra az **SAML 2,0 egyszeri bejelentkezés konfigurálásához**.
 
-    ![Agiloft-konfiguráció](./media/agiloft-tutorial/setup2.png)
+    ![Képernyőfelvétel: az SAML 2,0 egyszeri bejelentkezés gombjának kiemelése.](./media/agiloft-tutorial/setup2.png)
 
 4. Megjelenik egy varázsló párbeszédpanel. A párbeszédpanelen kattintson az **identitás-szolgáltató részletei** elemre, és töltse ki a következő mezőket:  
 
@@ -168,7 +168,7 @@ Az Azure AD egyszeri bejelentkezés Agiloft való konfigurálásához hajtsa vé
 
     d. Nyissa meg az **Alap-64 kódolású tanúsítványt** a jegyzettömbben, Azure Portal letöltve, másolja a vágólapra a tartalmat, majd illessze be az **X. 509 tanúsítvány tartalmának identitásszolgáltató** szövegmezőbe.
 
-    e. Kattintson a **Befejezés** gombra.
+    e. Kattintson a **Finish** (Befejezés) gombra.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 

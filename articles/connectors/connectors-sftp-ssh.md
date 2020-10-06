@@ -6,14 +6,14 @@ ms.suite: integration
 author: divyaswarnkar
 ms.reviewer: estfan, logicappspm
 ms.topic: article
-ms.date: 07/20/2020
+ms.date: 10/02/2020
 tags: connectors
-ms.openlocfilehash: f3de582ff69dbd57aa4692fd5c3901602569cf9e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: b832edca79cbbff39b7d526a21b1fbe95bd7a2ad
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87286614"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761124"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>SFTP-fájlok monitorozása, létrehozása és kezelése SSH és az Azure Logic Apps használatával
 
@@ -253,6 +253,22 @@ Ha nem tudja elkerülni vagy késleltetni a fájl áthelyezését, kihagyhatja a
 
 1. Ha később szüksége van erre a fájl-metaadatokra, használhatja a **fájl metaadatainak beolvasása** műveletet.
 
+### <a name="504-error-a-connection-attempt-failed-because-the-connected-party-did-not-properly-respond-after-a-period-of-time-or-established-connection-failed-because-connected-host-has-failed-to-respond-or-request-to-the-sftp-server-has-taken-more-than-000030-seconds"></a>504 hiba: "A kapcsolódási kísérlet sikertelen volt, mert a csatlakoztatott fél nem válaszolt egy adott idő elteltével, vagy a kapcsolat létrejötte sikertelen volt, mert a csatlakoztatott gazdagép nem válaszolt a (z)" vagy "kérelemre az SFTP-kiszolgálónak több mint" 00:00:30 "másodpercet.
+
+Ez a hiba akkor fordulhat elő, ha a logikai alkalmazás nem tud sikeresen kapcsolatot létesíteni az SFTP-kiszolgálóval. Számos különböző ok lehet, és javasoljuk, hogy a probléma elhárításához kövesse a következő szempontokat. 
+
+1. A kapcsolatok időtúllépése 20 másodperc. Győződjön meg arról, hogy az SFTP-kiszolgáló megfelelő teljesítmény-és intermidiate-eszközökkel rendelkezik, például a tűzfal nem vesz fel nagy terhelést. 
+
+2. Ha van tűzfal, ellenőrizze, hogy a **felügyelt összekötő IP-** címei szerepelnek-e az engedélyezési listán. Ezek az IP-címek megtalálhatók a logikai alkalmazás régiójához [**itt**] (https://docs.microsoft.com/azure/logic-apps/logic-apps-limits-and-config#multi-tenant-azure---outbound-ip-addresses)
+
+3. Ha ez a probléma átmeneti, ellenőrizze az újrapróbálkozási beállítást, és ellenőrizze, hogy az újrapróbálkozások száma meghaladja-e az alapértelmezett 4-es értéket.
+
+4. Ellenőrizze, hogy az SFTP-kiszolgáló korlátozza-e a kapcsolatok számát az egyes IP-címekről. Ha igen, szükség lehet az egyidejű Logic apps-példányok számának korlátozására. 
+
+5. Növelje a [**ClientAliveInterval**](https://man.openbsd.org/sshd_config#ClientAliveInterval) tulajdonságot úgy, hogy az az SFTP-kiszolgálón lévő SSH-konfigurációban az 1 órára hasonlítson, hogy csökkentse a kapcsolatok létesítésének költségeit.
+
+6. Az SFTP-kiszolgáló naplójában megtekintheti, hogy a logikai alkalmazás kérelme elérte-e az SFTP-kiszolgálót. A tűzfalon és az SFTP-kiszolgálón is igénybe vehet néhány hálózati nyomkövetést a kapcsolódási problémák további kiásásához.
+
 ## <a name="connector-reference"></a>Összekötő-referencia
 
 Az összekötő részletes technikai részleteiről, például az eseményindítók, a műveletek és a korlátok az összekötő hencegő fájljában leírtak alapján: az [összekötő hivatkozási lapja](/connectors/sftpwithssh/).
@@ -260,7 +276,7 @@ Az összekötő részletes technikai részleteiről, például az eseményindít
 > [!NOTE]
 > Az [integrációs szolgáltatási környezet (ISE)](../logic-apps/connect-virtual-network-vnet-isolated-environment-overview.md)logikai alkalmazásai esetében az összekötő ISE-címkével ellátott verziója adatdarabolást igényel az [ISE-üzenetek használatának korlátozásához](../logic-apps/logic-apps-limits-and-config.md#message-size-limits) .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További Logic Apps- [Összekötők](../connectors/apis-list.md) megismerése
 

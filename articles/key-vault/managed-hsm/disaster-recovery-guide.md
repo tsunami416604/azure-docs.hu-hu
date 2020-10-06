@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: ambapat
-ms.openlocfilehash: 13f62631e4913434699f4c5dd5eb1956ca3e3a36
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 7dbb7b3fdc15c0a9d502fbe9a0d12d084f9ddf29
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "91000773"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760393"
 ---
 # <a name="managed-hsm-disaster-recovery"></a>Felügyelt HSM vész-helyreállítás
 
@@ -30,7 +30,7 @@ A HSM-példányt újra létrehozhatja azonos vagy más régióban, ha rendelkezi
 A vész-helyreállítási eljárás lépései a következők:
 
 1. Hozzon létre egy új HSM-példányt.
-1. Aktiválja a "biztonsági tartomány helyreállítása" lehetőséget. A rendszer létrehoz egy új RSA kulcspárt (biztonsági tartományi Exchange-kulcsot) a biztonsági tartományok átviteléhez, és válaszként küldi el a rendszer, amely letölti a SecurityDomainExchangeKey (nyilvános kulcs).
+1. Aktiválja a "biztonsági tartomány helyreállítása" lehetőséget. A rendszer létrehoz egy új RSA kulcspárt (biztonsági tartományi Exchange-kulcsot) a biztonsági tartományok átviteléhez, és válaszként küldi el, amely SecurityDomainExchangeKey (nyilvános kulcs) lesz letöltve.
 1. Hozza létre, majd töltse fel a "biztonsági tartomány átvitele" nevű fájlt. Szüksége lesz a biztonsági tartományt titkosító titkos kulcsokra. A titkos kulcsok helyileg vannak használatban, és soha nem kerülnek át a folyamatba.
 1. Készítsen biztonsági másolatot az új HSM-ről. A visszaállítás előtt biztonsági másolatra van szükség, még akkor is, ha a HSM üres. A biztonsági mentések lehetővé teszik az egyszerű visszaállítást.
 1. A legújabb HSM biztonsági mentés visszaállítása a forrás HSM-ből
@@ -61,7 +61,7 @@ az keyvault create --hsm-name "ContosoMHSM" --resource-group "ContosoResourceGro
 A parancs kimenete a létrehozott felügyelt HSM tulajdonságait jeleníti meg. A két legfontosabb tulajdonság:
 
 * **név**: a példában a név ContosoMHSM. Ezt a nevet fogja használni a többi Key Vault parancshoz.
-* **hsmUri**: a PÉLDÁBAN az URI a (z https://contosohsm.managedhsm.azure.net ). A HSM-et a REST API használó alkalmazásoknak ezt az URI-t kell használniuk.
+* **hsmUri**: a PÉLDÁBAN az URI a következő: " https://contosohsm.managedhsm.azure.net ." A HSM-et a REST API használó alkalmazásoknak ezt az URI-t kell használniuk.
 
 Az Azure-fiókja már jogosult bármilyen művelet végrehajtására ezen a felügyelt HSM-ben. Még senki más nem rendelkezik jogosultsággal.
 
@@ -83,7 +83,7 @@ Ehhez a lépéshez a következőkre lesz szüksége:
 A `az keyvault security-domain upload` parancs a következő műveleteket hajtja végre:
 
 - A forrás HSM biztonsági tartományának visszafejtése a megadott titkos kulcsokkal. 
-- hozzon létre egy biztonsági tartományi feltöltési blobot, amely az előző lépésben letöltött biztonsági tartományi Exchange-kulccsal lett titkosítva, majd
+- Hozzon létre egy biztonsági tartományi feltöltési blobot, amely az előző lépésben letöltött biztonsági tartományi Exchange-kulccsal lett titkosítva, majd
 - Töltse fel a biztonsági tartomány feltöltési blobját a HSM-be a biztonsági tartomány helyreállításának befejezéséhez
 
 Az alábbi példában a biztonsági tartományt használjuk a **ContosoMHSM**, a megfelelő titkos kulcsok közül 2, és fel kell tölteni a **ContosoMHSM2**-be, amely egy biztonsági tartomány fogadására vár. 
@@ -102,7 +102,7 @@ HSM biztonsági mentés létrehozásához a következőkre lesz szüksége
 - Egy Storage-fiók, amelyben a biztonsági mentés tárolva lesz
 - Az ebben a Storage-fiókban található blob Storage-tároló, amelyben a biztonsági mentési folyamat létrehoz egy új mappát a titkosított biztonsági mentés tárolásához.
 
-Az alábbi példában a `az keyvault backup` **MHSMBACKUPCONTAINER** található HSM biztonsági mentés parancsát használjuk a Storage-tárolóban. **ContosoBackup** Létrehozunk egy 30 percen belül lejáró SAS-jogkivonatot, és a felügyelt HSM-nek kell megírnia a biztonsági mentést.
+A `az keyvault backup` következő példában szereplő Storage-fiókhoz tartozó **mhsmbackupcontainer**használja a HSM biztonsági mentésre szolgáló parancsot a **ContosoBackup** tároló-tárolóban. Létrehozunk egy 30 percen belül lejáró SAS-jogkivonatot, és a felügyelt HSM-nek kell megírnia a biztonsági mentést.
 
 ```azurecli-interactive
 end=$(date -u -d "30 minutes" '+%Y-%m-%dT%H:%MZ')

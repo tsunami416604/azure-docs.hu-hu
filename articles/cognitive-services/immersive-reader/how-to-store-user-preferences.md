@@ -9,20 +9,29 @@ ms.subservice: immersive-reader
 ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: metan
-ms.openlocfilehash: beb053551dc1fa28672c488b31dfb29ca3b53651
-ms.sourcegitcommit: 1d9f7368fa3dadedcc133e175e5a4ede003a8413
+ms.openlocfilehash: ddae4a99964e438c003fe0ff0db91c5808fa7631
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/27/2020
-ms.locfileid: "85486907"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761107"
 ---
 # <a name="how-to-store-user-preferences"></a>Felhasználói beállítások tárolása
 
-Ez a cikk bemutatja, hogyan tárolhatja a felhasználó beállításait. Ez a funkció másodlagos eszközként szolgál a felhasználó beállításainak tárolásához abban az esetben, ha a cookie-k használata nem kívánatos vagy lehetséges.
+Ez a cikk bemutatja, hogyan tárolhatja a felhasználó felhasználói FELÜLETi beállításait (a **felhasználói beállításoknak**megfelelően) a [-Preferences](./reference.md#options) és a [-onPreferencesChanged](./reference.md#options) teljes olvasó SDK-beállításokkal.
+
+Ha a [CookiePolicy](./reference.md#cookiepolicy-options) SDK beállítás *engedélyezve*értékre van állítva, a felhasználóbarát olvasó alkalmazás tárolja a cookie-k **felhasználói beállításait** (a szöveg méretét, a téma színét, a betűtípust stb.), amelyek egy adott böngészőhöz és eszközhöz tartoznak. Minden alkalommal, amikor a felhasználó ugyanazzal a böngészővel és eszközön indítja el az olvasót, megnyílik a felhasználó beállításai az adott eszköz utolsó munkamenetében. Ha azonban a felhasználó egy másik böngészőben vagy eszközön nyitja meg az olvasót, a beállítások kezdetben a magával ragadó olvasó alapértelmezett beállításaival lesznek konfigurálva, és a felhasználónak újra be kell állítania a beállításait, és így minden egyes használt eszközön. A `-preferences` és a teljes `-onPreferencesChanged` OLVASÓi SDK-k lehetővé teszik, hogy az alkalmazások különböző böngészőkben és eszközökön barangolják a felhasználók beállításait, így a felhasználó egységes felhasználói felülettel rendelkezik, ahol az alkalmazást használják.
+
+Először is, a `-onPreferencesChanged` visszahívási SDK beállítás megadásával, amikor elindítja a felhasználóbarát olvasó alkalmazást, a magától megjelenő olvasó egy `-preferences` sztringet küld vissza a gazda alkalmazásnak, amikor a felhasználó megváltoztatja a beállításait az olvasói munkamenet során. Ezután a gazda alkalmazás feladata a felhasználói beállítások tárolása a saját rendszerében. Ha ugyanez a felhasználó ismét elindítja az olvasót, a gazda alkalmazás lekérheti a felhasználó beállításait a tárolóból, és karakterlánc-SDK-ként adhatja meg azokat a felhasználóbarát `-preferences` olvasó alkalmazás indításakor, hogy a felhasználó beállításait visszaállítsa.
+
+Ez a funkció alternatív módszerként is használható a **felhasználói beállítások** tárolásához abban az esetben, ha a cookie-k használata nem kívánatos vagy nem valósítható meg.
+
+> [!CAUTION]
+> **Fontos** Ne próbálja meg programozott módon megváltoztatni a `-preferences` felhasználóbarát olvasó alkalmazásba érkező és a felé irányuló karakterlánc értékeit, mivel ez váratlan viselkedést eredményezhet, ami az ügyfelek számára csökkentett teljesítményű felhasználói élményt eredményez. A gazdagép alkalmazásai soha nem rendelhetnek egyéni értéket a karakterlánchoz, vagy kezelhetik azokat `-preferences` . A `-preferences` karakterlánc beállítás használatakor csak a `-onPreferencesChanged` visszahívási beállításban visszaadott pontos értéket használja.
 
 ## <a name="how-to-enable-storing-user-preferences"></a>Felhasználói beállítások tárolásának engedélyezése
 
-A `options` paraméter tartalmazza a `onPreferencesChanged` visszahívást. Ezt a függvényt akkor kell meghívni, amikor a felhasználó megváltoztatja a beállításait (például megváltoztatja a szöveg méretét, a téma színét, a betűtípust stb.). A `value` paraméter egy karakterláncot tartalmaz, amely a felhasználó aktuális beállításait jelöli. Ezt a karakterláncot tetszőleges, tetszőleges mechanizmussal lehet tárolni.
+a magával ragadó olvasó SDK [launchAsync](./reference.md#launchasync) `options` paraméter tartalmazza a `-onPreferencesChanged` visszahívást. Ezt a függvényt bármikor meghívja a rendszer, amikor a felhasználó megváltoztatja a beállításait. A `value` paraméter egy karakterláncot tartalmaz, amely a felhasználó aktuális beállításait jelöli. Ezt a karakterláncot ezután tárolja a rendszer az adott felhasználó számára a gazda alkalmazásban.
 
 ```typescript
 const options = {
@@ -36,18 +45,20 @@ ImmersiveReader.launchAsync(YOUR_TOKEN, YOUR_SUBDOMAIN, YOUR_DATA, options);
 
 ## <a name="how-to-load-user-preferences-into-the-immersive-reader"></a>Felhasználói beállítások betöltése a felhasználóbarát olvasóba
 
-A paraméter használatával továbbítsa a felhasználó beállításait a magára az olvasóhoz `preferences` . A felhasználó preferenciáinak tárolására és betöltésére szolgáló triviális példa a következő:
+A beállítás használatával adja át a felhasználó beállításait a magára az olvasónak `-preferences` . A felhasználó preferenciáinak tárolására és betöltésére szolgáló triviális példa a következő:
 
 ```typescript
-let userPreferences = null;
+const storedUserPreferences = localStorage.getItem("USER_PREFERENCES");
+let userPreferences = storedUserPreferences === null ? null : storedUserPreferences;
 const options = {
     preferences: userPreferences,
     onPreferencesChanged: (value: string) => {
         userPreferences = value;
+        localStorage.setItem("USER_PREFERENCES", userPreferences);
     }
 };
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ismerje meg az [olvasói SDK-referenciát](./reference.md)

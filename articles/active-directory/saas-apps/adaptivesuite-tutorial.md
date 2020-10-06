@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 3471d79875fb34ea0285c086e7d908aa254957dc
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 35414820228b615816f2389b7a609f5d63f5830d
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88537738"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760781"
 ---
 # <a name="tutorial-integrate-adaptive-insights-with-azure-active-directory"></a>Oktatóanyag: adaptív adatáttekintések integrálása a Azure Active Directory
 
@@ -99,7 +99,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 2. Nyissa meg az **adminisztrációt**.
 
-    ![Felügyelet](./media/adaptivesuite-tutorial/ic805644.png "Rendszergazda")
+    ![A navigációs panelen a felügyeletet kiemelő képernyőkép.](./media/adaptivesuite-tutorial/ic805644.png "Rendszergazda")
 
 3. A **felhasználók és szerepkörök** szakaszban kattintson az **SAML SSO-beállítások**elemre.
 

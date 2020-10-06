@@ -6,15 +6,15 @@ author: jifems
 ms.author: jife
 ms.service: data-share
 ms.topic: troubleshooting
-ms.date: 08/14/2020
-ms.openlocfilehash: c68c9dc961475d6916b1f00e7d4f596bfd8c77dd
-ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+ms.date: 10/02/2020
+ms.openlocfilehash: 620fe1e693a177123e166220ab94bbd74c4826ff
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2020
-ms.locfileid: "88257808"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761532"
 ---
-# <a name="troubleshoot-common-issues-in-azure-data-share"></a>Az Azure-adatmegosztás gyakori problémáinak elhárítása 
+# <a name="troubleshoot-common-issues-in-azure-data-share"></a>Az Azure Data Share gyakori hibáinak elhárítása 
 
 Ez a cikk bemutatja, hogyan lehet elhárítani az Azure-adatmegosztással kapcsolatos gyakori problémákat. 
 
@@ -24,21 +24,21 @@ Bizonyos esetekben, amikor egy új felhasználó az elküldött e-mailes meghív
 
 ![Nincsenek meghívók](media/no-invites.png)
 
-Ennek oka a következő lehet:
+Ez az alábbi okok miatt történhet:
 
-* **Az Azure-beli adatmegosztási szolgáltatás nincs regisztrálva az Azure-bérlő bármely Azure-előfizetésének erőforrás-szolgáltatója.** Ezt a problémát akkor fogja tapasztalni, ha nincs adatmegosztási erőforrás az Azure-bérlőben. Azure-beli adatmegosztási erőforrás létrehozásakor a automatikusan regisztrálja az erőforrás-szolgáltatót az Azure-előfizetésében. Az alábbi lépéseket követve manuálisan is regisztrálhatja az adatmegosztási szolgáltatást. A lépések végrehajtásához rendelkeznie kell az Azure közreműködő szerepkörrel.
+* **Az Azure Data Share szolgáltatás nincs erőforrás-szolgáltatóként regisztrálva az Azure-bérlő egyik Azure-előfizetésében sem.** Akkor ütközhet ebbe a problémába, ha nem található Data Share-erőforrás az Azure-bérlőben. Az Azure Data Share-erőforrást a létrehozásakor a rendszer automatikusan erőforrás-szolgáltatóként regisztrálja az Azure-előfizetésben. A Data Share szolgáltatást manuálisan is regisztrálhatja az alábbi lépésekkel. A lépések elvégzéséhez közreműködői Azure-szerepkörre lesz szüksége.
 
-    1. A Azure Portal navigáljon az **előfizetések** elemre.
-    1. Válassza ki az Azure-beli adatmegosztási erőforrás létrehozásához használni kívánt előfizetést
-    1. Kattintson az **erőforrás-szolgáltatók** elemre
-    1. A **Microsoft. DataShare** keresése
-    1. Kattintson a **regisztráció** elemre. 
+    1. Az Azure Portalon lépjen az **Előfizetések** felületre
+    1. Válassza ki azt az előfizetést, amelyet az Azure Data Share-erőforrás létrehozásához kíván használni
+    1. Kattintson az **Erőforrás-szolgáltatók** elemre.
+    1. Keresse meg a **Microsoft.DataShare** elemet.
+    1. Kattintson a **Regisztráció** parancsra. 
 
     A lépések elvégzéséhez az Azure- [közreműködő szerepkörrel](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#contributor) kell rendelkeznie az Azure-előfizetéshez. 
 
-* **A meghívót az Azure bejelentkezési e-mail-címe helyett az e-mail aliasára küldi a rendszer.** Ha regisztrálta az Azure-beli adatmegosztási szolgáltatást, vagy már létrehozott egy adatmegosztási erőforrást az Azure-bérlőben, de még mindig nem látja a meghívót, akkor valószínűleg azért, mert a szolgáltató az e-mail aliasát címzettként adta meg az Azure bejelentkezési e-mail-címe helyett. Forduljon az adatszolgáltatóhoz, és győződjön meg arról, hogy elküldte a meghívót az Azure-beli bejelentkezési e-mail címre, és nem az e-mail aliasát.
+* **A meghívót az Azure-hoz tartozó bejelentkezési e-mail-címe helyett az e-mail aliasára küldte a rendszer.** Ha regisztrálta az Azure Data Share szolgáltatást, vagy már létrehozott egy Data Share-erőforrást az Azure-bérlőben, de még mindig nem látja a meghívást, akkor annak az lehet az oka, hogy a szolgáltató az e-mail aliasát adta meg címzettként az Azure-hoz tartozó bejelentkezési e-mail-címe helyett. Forduljon az adatszolgáltatóhoz, és győződjön meg arról, hogy az Azure-hoz tartozó bejelentkezési e-mail-címre küldte a meghívót, nem pedig az e-mail aliasára.
 
-* **A meghívást már elfogadták.** Az e-mailben található hivatkozás a Azure Portal adatmegosztási Meghívási oldalára kerül, amely csak a függőben lévő meghívókat listázza. Ha már elfogadta a meghívót, az nem fog megjelenni az adatmegosztási Meghívási oldalon. Folytassa az adatmegosztási erőforrással, amelyet a meghívás fogadására használt a kapott megosztások megtekintéséhez és a cél Azure Adatkezelő-fürt beállításainak konfigurálásához.
+* **A meghívás már el lett fogadva.** Az e-mailben található hivatkozás az Azure Portal Data Share-meghívási oldalára irányítja, amely csak a függőben lévő meghívások listáját mutatja. Ha már elfogadta a meghívást, nem jelenik meg többé a Data Share-meghívások oldalán. Navigáljon a meghívás elfogadására használt Data Share-erőforráshoz, amelyet a megosztások megtekintéséhez kapott, és konfigurálja a kívánt Azure Data Explorer-fürt beállításait.
 
 ## <a name="error-when-creating-or-receiving-a-new-share"></a>Hiba új megosztás létrehozásakor vagy fogadásakor
 
@@ -58,36 +58,17 @@ Ha a fenti hibák bármelyikét megkapja egy új megosztás vagy leképezési ad
 
 Ha első alkalommal oszt meg vagy fogad el egy Azure-adattárat, szüksége lesz a *Microsoft. Authorization/szerepkör-hozzárendelésekre/írási* engedélyre, amely általában a tulajdonosi szerepkörben található. Még ha létrehozta az Azure adattár-erőforrást, az nem teszi automatikusan az erőforrás tulajdonosát. A megfelelő engedélyekkel az Azure adatmegosztási szolgáltatás automatikusan megadja az adatmegosztási erőforrás felügyelt identitás-hozzáférését az adattárhoz. Ez a folyamat néhány percet is igénybe vehet. Ha ez a késés miatt sikertelen, próbálkozzon újra néhány perc múlva.
 
-Az SQL-alapú megosztáshoz további engedélyek szükségesek. További részletek: SQL-alapú megosztás hibaelhárítása.
-
-## <a name="troubleshooting-sql-based-sharing"></a>SQL-alapú megosztás hibáinak elhárítása
-
-"A felhasználó x nem létezik a SQL Databaseban"
-
-Ha ezt a hibaüzenetet akkor kapja meg, amikor SQL-alapú forrásból vesz fel egy adatkészletet, annak oka az lehet, hogy nem hozott létre felhasználót az Azure-beli adatmegosztás felügyelt identitásához SQL Databaseban.  A probléma megoldásához futtassa a következő parancsfájlt:
-
-```sql
-    create user "<share_acct_name>" from external provider; 
-    exec sp_addrolemember db_datareader, "<share_acct_name>";
-```      
-Ha ezt a hibaüzenetet kapja, amikor az adatkészletet SQL-alapú célra rendeli hozzá, annak oka az lehet, hogy nem hozott létre felhasználót az Azure-beli adatmegosztás felügyelt identitásához a SQL Server.  A probléma megoldásához futtassa a következő parancsfájlt:
-
-```sql
-    create user "<share_acc_name>" from external provider; 
-    exec sp_addrolemember db_datareader, "<share_acc_name>"; 
-    exec sp_addrolemember db_datawriter, "<share_acc_name>"; 
-    exec sp_addrolemember db_ddladmin, "<share_acc_name>";
-```
-Vegye figyelembe, hogy a *<share_acc_name>* az adatmegosztási erőforrás neve.      
-
-Győződjön meg arról, hogy követte az [adatai megosztása](share-your-data.md) , valamint az Adatfogadás [és-fogadás](subscribe-to-data-share.md) című részben felsorolt összes előfeltételt.
+Az SQL-alapú megosztáshoz további engedélyek szükségesek. Az előfeltételek részletes listájáért lásd: [SQL-források megosztása](how-to-share-from-sql.md) .
 
 ## <a name="snapshot-failed"></a>A pillanatkép nem sikerült
-A pillanatkép különböző okok miatt sikertelen lehet. A részletes hibaüzenetet a pillanatkép kezdési időpontjára, majd az egyes adatkészletek állapotára kattintva tekintheti meg. 
+A pillanatkép különböző okok miatt sikertelen lehet. A részletes hibaüzenetet a pillanatkép kezdési időpontjára, majd az egyes adatkészletek állapotára kattintva tekintheti meg. A következő okok miatt nem sikerül a pillanatkép:
 
-Ha a hibaüzenet az engedélyhez kapcsolódik, ellenőrizze, hogy az adatmegosztási szolgáltatás rendelkezik-e a szükséges engedéllyel. Részletekért lásd a [szerepkörök és követelmények](concepts-roles-permissions.md) című témakört. Ha először készít pillanatképet, eltarthat néhány percig, amíg az adatmegosztási erőforrás hozzáférést kap az Azure-adattárhoz. Várjon néhány percet, és próbálkozzon újra.
+* Az adatmegosztásnak nincs engedélye a forrás-adattárból való olvasásra vagy a cél adattárba való írásra. A részletes engedélyekkel kapcsolatos követelményekért lásd a [szerepkörök és követelmények](concepts-roles-permissions.md) című témakört. Ha először készít pillanatképet, eltarthat néhány percig, amíg az adatmegosztási erőforrás hozzáférést kap az Azure-adattárhoz. Várjon néhány percet, és próbálkozzon újra.
+* A tűzfal blokkolja az adatmegosztási kapcsolatokat a forrás-vagy a célként megadott adattárhoz.
+* A rendszer törli a megosztott adatkészletet vagy a forrás vagy a cél adattárát.
+* SQL-megosztás esetén a pillanatkép-készítési folyamat vagy a cél adattár nem támogatja az adattípusokat. A részletekért tekintse [meg az SQL-források megosztását](how-to-share-from-sql.md#supported-data-types) ismertető témakört.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az adatmegosztás megkezdésének megismeréséhez folytassa az [adatgyűjtés megosztása](share-your-data.md) című oktatóanyagot. 
 

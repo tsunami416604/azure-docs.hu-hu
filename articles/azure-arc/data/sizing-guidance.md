@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 7afe00746b133e8376cf32ba874831c7962e85b1
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 3bd54d8a23aca7e493cd3c0ddb7f057a6e1f5362
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90940764"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761481"
 ---
 # <a name="sizing-guidance"></a>Méretezési útmutató
 
@@ -27,7 +27,7 @@ Az Azure arc-adatszolgáltatások üzembe helyezésének tervezésekor meg kell 
 ## <a name="general-sizing-requirements"></a>Általános méretezési követelmények
 
 > [!NOTE]
-> Ha nem ismeri a cikkben szereplő fogalmakat, további információt olvashat a [Kubernetes erőforrás-szabályozásáról](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) és a [Kubernetes méretéről](https://kubernetes.io/docs/concepts/configuration/.manage-resources-containers/#resource-units-in-kubernetes).
+> Ha nem ismeri a cikkben szereplő fogalmakat, további információt olvashat a [Kubernetes erőforrás-szabályozásáról](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/) és a [Kubernetes méretéről](https://kubernetes.io/docs/concepts/configuration/manage-resources-containers/#resource-units-in-kubernetes).
 
 A magok számának az eggyel nagyobb vagy azzal egyenlő egész számnak kell lennie.
 

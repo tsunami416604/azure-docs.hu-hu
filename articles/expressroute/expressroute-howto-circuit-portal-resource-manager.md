@@ -1,54 +1,36 @@
 ---
-title: Oktatóanyag – áramkör létrehozása és módosítása a ExpressRoute
-description: Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre, helyezhet üzembe, ellenőrizheti, frissítheti, törölheti és kiépítheti az ExpressRoute-áramkört.
+title: 'Rövid útmutató: áramkör létrehozása és módosítása ExpressRoute'
+description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre, helyezhet üzembe, ellenőrizheti, frissítheti, törölheti és kiépítheti az ExpressRoute-áramkört.
 services: expressroute
 author: duongau
 ms.service: expressroute
-ms.topic: tutorial
-ms.date: 09/01/2020
+ms.topic: quickstart
+ms.date: 10/05/2020
 ms.author: duau
-ms.openlocfilehash: e0ba14cd5db47c12435b2de35d0753b402c947ea
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: c944feb6cc77d8337fccb64915baa576e590ef40
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89566262"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761748"
 ---
-# <a name="tutorial-create-and-modify-an-expressroute-circuit"></a>Oktatóanyag: ExpressRoute-kör létrehozása és módosítása
+# <a name="quickstart-create-and-modify-an-expressroute-circuit"></a>Gyors útmutató: ExpressRoute-kör létrehozása és módosítása
 
-> [!div class="op_single_selector"]
-> * [Azure Portal](expressroute-howto-circuit-portal-resource-manager.md)
-> * [PowerShell](expressroute-howto-circuit-arm.md)
-> * [Azure CLI](howto-circuit-cli.md)
-> * [Azure Resource Manager-sablon](expressroute-howto-circuit-resource-manager-template.md)
-> * [Videó – Azure Portal](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)
-> * [PowerShell (klasszikus)](expressroute-howto-circuit-classic.md)
->
+Ez a rövid útmutató bemutatja, hogyan hozhat létre ExpressRoute-áramkört a Azure Portal és az Azure Resource Manager üzemi modell használatával. Az áramkör állapotát, frissítését, törlését vagy megszüntetését is megtekintheti.
 
-Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre egy ExpressRoute-áramkört a Azure Portal és a Azure Resource Manager üzembe helyezési modell használatával. Az áramkör állapotát, frissítését, törlését vagy megszüntetését is megtekintheti.
+## <a name="prerequisites"></a>Előfeltételek
 
-Ezen oktatóanyag segítségével megtanulhatja a következőket:
-
-> [!div class="checklist"]
-> * ExpressRoute-kapcsolatcsoport létrehozása
-> * Áramkör aktuális állapotának beolvasása
-> * Kapcsolatcsoport módosítása
-> * Áramkör kiépítése és törlése
-
-## <a name="before-you-begin"></a>Előkészületek
-
+* Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * A konfigurálás megkezdése előtt tekintse át az [előfeltételeket](expressroute-prerequisites.md) és a [munkafolyamatokat](expressroute-workflows.md) .
-* Győződjön meg arról, hogy rendelkezik hozzáféréssel a [Azure Portalhoz](https://portal.azure.com).
-* Győződjön meg arról, hogy rendelkezik az új hálózati erőforrások létrehozásához szükséges engedélyekkel. Ha nem rendelkezik a megfelelő engedélyekkel, forduljon a fiók rendszergazdájához.
 * A lépések megkezdése előtt [megtekintheti a videót](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit) .
 
 ## <a name="create-and-provision-an-expressroute-circuit"></a><a name="create"></a>ExpressRoute-kör létrehozása és kiépítése
 
-### <a name="1-sign-in-to-the-azure-portal"></a>1. Jelentkezzen be a Azure Portalba
+### <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
 Egy böngészőből lépjen az [Azure Portalra](https://portal.azure.com), majd jelentkezzen be az Azure-fiókjával.
 
-### <a name="2-create-a-new-expressroute-circuit"></a>2. hozzon létre egy új ExpressRoute áramkört
+### <a name="create-a-new-expressroute-circuit"></a>Új ExpressRoute-áramkör létrehozása
 
 > [!IMPORTANT]
 > A ExpressRoute-áramkör számlázása a szolgáltatási kulcs kiállításának pillanatától számítva történik. Győződjön meg arról, hogy ezt a műveletet akkor hajtja végre, ha a kapcsolati szolgáltató készen áll az áramkör kiépítésére.
@@ -59,86 +41,78 @@ ExpressRoute-áramkör létrehozásához válassza az új erőforrás létrehoz�
 
     :::image type="content" source="./media/expressroute-howto-circuit-portal-resource-manager/create-expressroute-circuit-menu.png" alt-text="ExpressRoute-kapcsolatcsoport létrehozása":::
 
-2. Miután rákattintott a **ExpressRoute**elemre, a **ExpressRoute létrehozása** lap jelenik meg. Adja meg az **erőforrás-csoportot**, a **régiót**és az áramkör  **nevét** . Ezután kattintson a **Tovább gombra: Configuration >**.
+2. A **ExpressRoute**kiválasztása után megjelenik a **ExpressRoute létrehozása** lap. Adja meg az **erőforrás-csoportot**, a **régiót**és az áramkör  **nevét** . Ezután válassza a **következő: Configuration >**.
 
-    :::image type="content" source="./media/expressroute-howto-circuit-portal-resource-manager/expressroute-create-basic.png" alt-text="Az erőforráscsoport és a régió konfigurálása":::
+    :::image type="content" source="./media/expressroute-howto-circuit-portal-resource-manager/expressroute-create-basic.png" alt-text="ExpressRoute-kapcsolatcsoport létrehozása":::
 
 3. Ha kitölti az ezen a lapon található értékeket, győződjön meg arról, hogy a megfelelő SKU-szintet (helyi, standard vagy prémium) és az adatmérési számlázási modellt (korlátlan vagy mért) használja.
 
-    :::image type="content" source="./media/expressroute-howto-circuit-portal-resource-manager/expressroute-create-configuration.png" alt-text="Az áramkör konfigurálása":::
-    
-    * A **port típusa** határozza meg, hogy egy szolgáltatóhoz csatlakozik-e, vagy közvetlenül a Microsoft globális hálózatában van-e egy egyenrangú helyen.
-    * Az **új vagy a klasszikus létrehozásakor** meghatározza, hogy az új áramkör létrehozása folyamatban van-e, vagy klasszikus áramkört szeretne áttelepíteni az ARM-be.
-    * A **szolgáltató** az Internet szolgáltatás, amelyről a szolgáltatást kéri.
-    * A társítás **helye** az a fizikai hely, ahol a Microsofttal való együttműködésre van szükség.
+    :::image type="content" source="./media/expressroute-howto-circuit-portal-resource-manager/expressroute-create-configuration.png" alt-text="ExpressRoute-kapcsolatcsoport létrehozása" tulajdonsághoz van csatolva, amely arra a földrajzi helyre hivatkozik, ahol az Azure hálózati erőforrás-szolgáltató található. Noha nem kapcsolódnak egymáshoz, célszerű kiválasztania a hálózati erőforrás-szolgáltatót földrajzilag közel az áramkör egyenrangú helyéhez.
 
-    > [!IMPORTANT]
-    > A társítási hely azt a [fizikai helyet](expressroute-locations.md) jelzi, ahol a Microsofttal való együttműködésre van szükség. Ez **nem** a "location" tulajdonsághoz van csatolva, amely arra a földrajzi helyre hivatkozik, ahol az Azure hálózati erőforrás-szolgáltató található. Noha nem kapcsolódnak egymáshoz, célszerű kiválasztania a hálózati erőforrás-szolgáltatót földrajzilag közel az áramkör egyenrangú helyéhez.
-
-    * Az **SKU** meghatározza, hogy engedélyezve van-e egy ExpressRoute helyi, ExpressRoute vagy ExpressRoute prémium szintű bővítmény. Megadhatja a **helyi** **SKU-t, amely** a prémium szintű bővítmény standard SKU-jának vagy **premiumjának** beszerzésére szolgál. Vegye figyelembe, hogy a prémium szintű bővítmény engedélyezéséhez módosíthatja az SKU-t.
+    * Az **SKU** meghatározza, hogy engedélyezve van-e egy ExpressRoute helyi, ExpressRoute vagy ExpressRoute prémium szintű bővítmény. Megadhatja a **helyi** **SKU-t, amely** a prémium szintű bővítmény standard SKU-jának vagy **premiumjának** beszerzésére szolgál. A prémium szintű bővítmény engedélyezéséhez módosíthatja az SKU-t.
     > [!IMPORTANT]
     > A SKU nem módosítható a **standard/prémium** szintről a **helyi**értékre.
     
-    * A számlázási **modell** meghatározza a számlázási típust. Megadhatja **a mért adatcsomag díjait** , és **korlátlan** számú adatcsomagot. Vegye figyelembe, hogy a számlázási típus a **mért** értékről **korlátlanra**módosítható.
+    * A számlázási **modell** meghatározza a számlázási típust. Megadhatja **a mért adatcsomag díjait** , és **korlátlan** számú adatcsomagot. A számlázási típus a **mért** értékről **korlátlanra**módosítható.
 
     > [!IMPORTANT]
     > A típust nem lehet **korlátlanról** **mértre**módosítani.
 
     * A **klasszikus művelet** lehetővé teszi a klasszikus virtuális hálózatok számára az áramkörhöz való kapcsolódást.
 
-### <a name="3-view-the-circuits-and-properties"></a>3. a áramkörök és a tulajdonságok megtekintése
+### <a name="view-the-circuits-and-properties"></a>Az áramkörök és a tulajdonságok megtekintése
 
 **Az összes áramkör megtekintése**
 
 Az összes létrehozott áramkört megtekintheti, ha a bal oldali menüben a **minden szolgáltatás > a hálózatkezelés > ExpressRoute** .
 
-:::image type="content" source="./media/expressroute-howto-circuit-portal-resource-manager/expressroute-circuit-menu.png" alt-text="Expressroute áramkör menü":::
+:::image type="content" source="./media/expressroute-howto-circuit-portal-resource-manager/expressroute-circuit-menu.png" alt-text="ExpressRoute-kapcsolatcsoport létrehozása":::
 
 Az előfizetésben létrehozott összes Expressroute-áramkör itt fog megjelenni.
 
-:::image type="content" source="./media/expressroute-howto-circuit-portal-resource-manager/expressroute-circuit-list.png" alt-text="Expressroute áramköri lista":::
+:::image type="content" source="./media/expressroute-howto-circuit-portal-resource-manager/expressroute-circuit-list.png" alt-text="ExpressRoute-kapcsolatcsoport létrehozása":::
 
 **A tulajdonságok megtekintése**
 
 Az áramkör tulajdonságait a kiválasztásával tekintheti meg. Az áramkör **Áttekintés** lapján a szolgáltatási kulcs megjelenik a szolgáltatás kulcsa mezőben. Az üzembe helyezési folyamat befejezéséhez tekintse meg az áramkör szolgáltatási kulcsát, és adja meg azt a szolgáltatónak. A szolgáltatási kulcs az áramkörre jellemző.
 
-:::image type="content" source="./media/expressroute-howto-circuit-portal-resource-manager/expressroute-circuit-overview.png" alt-text="Tulajdonságok megtekintése":::
+:::image type="content" source="./media/expressroute-howto-circuit-portal-resource-manager/expressroute-circuit-overview.png" alt-text="ExpressRoute-kapcsolatcsoport létrehozása":::
 
-### <a name="4-send-the-service-key-to-your-connectivity-provider-for-provisioning"></a>4. küldje el a szolgáltatási kulcsot a kapcsolat szolgáltatójának az üzembe helyezéshez
+### <a name="send-the-service-key-to-your-connectivity-provider-for-provisioning"></a>A szolgáltatás kulcsának elküldése a kapcsolati szolgáltatónak a kiépítés céljából
 
-Ezen az oldalon a **szolgáltatói állapot** információkkal szolgál a kiépítés aktuális állapotáról a szolgáltatói oldalon. Az **áramkör állapota** a Microsoft oldalán található állapotot biztosítja. Az áramkör kiépítési állapotával kapcsolatos további információkért tekintse meg a [munkafolyamatok](expressroute-workflows.md#expressroute-circuit-provisioning-states) című cikket.
+Ezen az oldalon a **szolgáltatói állapot** a szolgáltatás-szolgáltatói oldalon kiépítés aktuális állapotát adja meg. Az **áramkör állapota** biztosítja a Microsoft oldalán lévő állapotot. Az áramkör kiépítési állapotával kapcsolatos további információkért tekintse meg a [munkafolyamatok](expressroute-workflows.md#expressroute-circuit-provisioning-states) című cikket.
 
 Új ExpressRoute-kör létrehozásakor az áramkör a következő állapotban van:
 
 Szolgáltató állapota: **nincs kiépítve**<BR>
 Áramkör állapota: **engedélyezve**
 
-:::image type="content" source="./media/expressroute-howto-circuit-portal-resource-manager/expressroute-circuit-overview-provisioning-state.png" alt-text="Kiépítési folyamat kezdeményezése":::
+:::image type="content" source="./media/expressroute-howto-circuit-portal-resource-manager/expressroute-circuit-overview-provisioning-state.png" alt-text="ExpressRoute-kapcsolatcsoport létrehozása":::
 
-Az áramkör a következő állapotra vált, amikor a kapcsolati szolgáltató a következő állapotban van:
+Az áramkör a következő állapotra vált, amikor a kapcsolati szolgáltató jelenleg engedélyezi az Ön számára:
 
 Szolgáltatói állapot: **kiépítés**<BR>
 Áramkör állapota: **engedélyezve**
 
-Ahhoz, hogy használni tudja a ExpressRoute áramkört, a következő állapotban kell lennie:
+A ExpressRoute áramkör használatához a következő állapotban kell lennie:
 
 Szolgáltató állapota: **kiépítve**<BR>
 Áramkör állapota: **engedélyezve**
 
-### <a name="5-periodically-check-the-status-and-the-state-of-the-circuit-key"></a>5. az áramköri kulcs állapotának és állapotának rendszeres időközönkénti keresése
+### <a name="periodically-check-the-status-and-the-state-of-the-circuit-key"></a>Az áramköri kulcs állapotának és állapotának rendszeres időközönkénti keresése
 
 A kiválasztásával megtekintheti annak az áramkörnek a tulajdonságait, amelyre kíváncsi. Ellenőrizze a **szolgáltató állapotát** , és győződjön meg arról, hogy a folytatás előtt átkerült a **kiépített** állapotba.
 
-:::image type="content" source="./media/expressroute-howto-circuit-portal-resource-manager/provisioned.png" alt-text="Áramkör és szolgáltató állapota":::
+:::image type="content" source="./media/expressroute-howto-circuit-portal-resource-manager/provisioned.png" alt-text="ExpressRoute-kapcsolatcsoport létrehozása":::
 
-### <a name="6-create-your-routing-configuration"></a>6. az útválasztási konfiguráció létrehozása
+### <a name="create-your-routing-configuration"></a>Az útválasztási konfiguráció létrehozása
 
 Részletes útmutatásért tekintse meg az [ExpressRoute-áramkör útválasztási konfigurációját](expressroute-howto-routing-portal-resource-manager.md) ismertető cikket az áramköri társítások létrehozásához és módosításához.
 
 > [!IMPORTANT]
 > Ezek az utasítások csak a 2. rétegbeli kapcsolati szolgáltatásokat nyújtó szolgáltatók által létrehozott áramkörökre vonatkoznak. Ha olyan szolgáltatót használ, amely felügyelt 3. rétegbeli szolgáltatásokat (jellemzően IP VPN, például MPLS) kínál, a kapcsolati szolgáltatója konfigurálja és kezeli az útválasztást.
 
-### <a name="7-link-a-virtual-network-to-an-expressroute-circuit"></a>7. virtuális hálózat összekapcsolása egy ExpressRoute-áramkörrel
+### <a name="link-a-virtual-network-to-an-expressroute-circuit"></a>Virtuális hálózat összekapcsolása egy ExpressRoute-kapcsolatcsoporttal
 
 Ezután csatoljon egy virtuális hálózatot a ExpressRoute-áramkörhöz. Ha a Resource Manager-alapú üzemi modellel dolgozik, használja a [virtuális hálózatok összekapcsolása a ExpressRoute áramkörökkel](expressroute-howto-linkvnet-arm.md) című cikket.
 
@@ -150,14 +124,14 @@ Az áramkör állapotát úgy tekintheti meg, ha kiválasztja, és megtekinti az
 
 Egy ExpressRoute-kör bizonyos tulajdonságait módosíthatja a kapcsolat befolyásolása nélkül. Módosíthatja a sávszélességet, az SKU-t, a számlázási modellt, és engedélyezheti a klasszikus műveleteket a **konfiguráció** lapon. A korlátozásokkal és korlátozásokkal kapcsolatos információkért tekintse meg a [ExpressRoute gyakori kérdések](expressroute-faqs.md)című témakört.
 
-A következő feladatok elvégzése leállás nélkül is elvégezhető:
+A következő feladatokat a leállás nélkül végezheti el:
 
 * Engedélyezheti vagy letilthatja a ExpressRoute-áramkörhöz tartozó ExpressRoute Premium-bővítményt.
 
 > [!IMPORTANT]
   > Az SKU **szabványos/prémiumról** **helyire** történő módosítása nem támogatott.
 
-* Növelje a ExpressRoute-áramkör sávszélességét, ha rendelkezésre áll kapacitás a porton.
+* Növelje a ExpressRoute-áramkör sávszélességét, ha rendelkezésre áll a porton elérhető kapacitás.
 
   > [!IMPORTANT]
   > Az áramkör sávszélességének visszaminősítése nem támogatott.
@@ -175,11 +149,11 @@ A következő feladatok elvégzése leállás nélkül is elvégezhető:
   >
   > A prémium szintű bővítmény műveletének letiltása sikertelen lehet, ha olyan erőforrásokat használ, amelyek nagyobbak a standard áramkör számára engedélyezettnél.
 
-Egy ExpressRoute-kör módosításához kattintson a **konfiguráció**elemre.
+Egy ExpressRoute-áramkör módosításához válassza a **konfiguráció**lehetőséget.
 
-:::image type="content" source="./media/expressroute-howto-circuit-portal-resource-manager/expressroute-circuit-configuration.png" alt-text="Áramkör módosítása":::
+:::image type="content" source="./media/expressroute-howto-circuit-portal-resource-manager/expressroute-circuit-configuration.png" alt-text="ExpressRoute-kapcsolatcsoport létrehozása":::
 
-## <a name="deprovisioning-and-deleting-an-expressroute-circuit"></a><a name="delete"></a>ExpressRoute-kapcsolatcsoport megszüntetése és törlése
+## <a name="deprovisioning-an-expressroute-circuit"></a><a name="delete"></a>ExpressRoute áramkör kiépítése
 
 Ha a ExpressRoute Circuit Service Provider kiépítési állapota kiépítés vagy **kiépítve** **van,** akkor a szolgáltatóval kell együttműködni, hogy kiépítse az áramkört a saját oldalán. Továbbra is fenntartjuk az erőforrásokat és számlázunk, amíg a szolgáltató befejezi az áramkör kiépítését, és értesítést küld nekünk.
 
@@ -187,13 +161,16 @@ Ha a ExpressRoute Circuit Service Provider kiépítési állapota kiépítés va
 >* A kiépítés előtt le kell vonni az *összes virtuális hálózatot* a ExpressRoute áramkörből. Ha a művelet meghiúsul, ellenőrizze, hogy a virtuális hálózatok az áramkörhöz vannak-e kapcsolva.
 >* Ha a szolgáltató kiépítte az áramkört (a szolgáltató kiépítési állapota **nincs kiépítve**), törölheti az áramkört. Ez leállítja a kapcsolatcsoport számlázását.
 
+
+## <a name="clean-up-resources"></a><a name="cleanup"></a>Az erőforrások eltávolítása
+
 A **Törlés** ikonra kattintva törölheti a ExpressRoute áramkörét. 
 
-:::image type="content" source="./media/expressroute-howto-circuit-portal-resource-manager/expressroute-circuit-delete.png" alt-text="Áramkör törlése":::
+:::image type="content" source="./media/expressroute-howto-circuit-portal-resource-manager/expressroute-circuit-delete.png" alt-text="ExpressRoute-kapcsolatcsoport létrehozása":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Az áramkör létrehozása után folytassa a következő lépésekkel:
+Az áramkör létrehozása után folytassa a következő lépéssel:
 
-* [Az ExpressRoute-áramkör útválasztásának létrehozása és módosítása](expressroute-howto-routing-portal-resource-manager.md)
-* [A virtuális hálózat összekapcsolása a ExpressRoute-áramkörrel](expressroute-howto-linkvnet-arm.md)
+> [!div class="nextstepaction"]
+> [Az ExpressRoute-áramkör útválasztásának létrehozása és módosítása](expressroute-howto-routing-portal-resource-manager.md)

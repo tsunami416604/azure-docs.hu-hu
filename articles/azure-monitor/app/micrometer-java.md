@@ -6,12 +6,12 @@ author: lgayhardt
 ms.custom: devx-track-java
 ms.author: lagayhar
 ms.date: 11/01/2018
-ms.openlocfilehash: b4042e65fb9f7dbff6566bd497f782c3e6d591cb
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: e6d464b415c956a0a8486f7c0d41c6e6a32b7c03
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90707849"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761600"
 ---
 # <a name="how-to-use-micrometer-with-azure-application-insights-java-sdk"></a>A Mikrométer használata az Azure Application Insights Java SDK-val
 
@@ -24,7 +24,7 @@ A Mikrométer alkalmazás-figyelési mérőszámai a JVM-alapú alkalmazás kód
 
 ## <a name="using-spring-boot-15x"></a>Spring boot 1.5 x használata
 Adja hozzá a következő függőségeket a pom.xml vagy Build. gradle fájlhoz: 
-* [Application Insights Spring-boot-Starter](https://github.com/Microsoft/ApplicationInsights-Java/tree/master/azure-application-insights-spring-boot-starter) 2.5.0 vagy újabb verzió
+* [Application Insights Spring-boot-Starter](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/spring/azure-spring-boot-starter) 2.5.0 vagy újabb verzió
 * Mikrométer Azure Registry 1.1.0 vagy újabb
 * A [mikrométer rugó örökölt](https://micrometer.io/docs/ref/spring/1.5) 1.1.0-es vagy újabb (ez a backports az automatikus konfigurációs kód a Spring Framework-ben).
 * [ApplicationInsights erőforrás](./create-new-resource.md)
@@ -57,7 +57,7 @@ Lépések
 
      `azure.application-insights.instrumentation-key=<your-instrumentation-key-here>`
 1. Az alkalmazás létrehozása és futtatása
-2. A fenti lépésekkel a Azure Monitorba automatikusan összegyűjtött, előre összevont metrikákkal kezdheti meg a szolgáltatást. A Application Insights Spring boot Starter finomhangolásával kapcsolatos részletekért tekintse meg a [githubon található Readme](https://github.com/Microsoft/ApplicationInsights-Java/blob/master/azure-application-insights-spring-boot-starter/README.md)című témakört.
+2. A fenti lépésekkel a Azure Monitorba automatikusan összegyűjtött, előre összevont metrikákkal kezdheti meg a szolgáltatást. A Application Insights Spring boot Starter finomhangolásával kapcsolatos részletekért tekintse meg a [githubon található Readme](https://github.com/Azure/azure-sdk-for-java/blob/master/sdk/spring/azure-spring-boot-starter/README.md)című témakört.
 
 ## <a name="using-spring-2x"></a>A Spring 2. x használata
 
@@ -275,7 +275,7 @@ Adja hozzá a következő kötési kódot a konfigurációs fájlhoz:
     New GuavaCacheMetrics().bind(registry);
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A mikrométersel kapcsolatos további tudnivalókért tekintse meg a hivatalos [mikrométer dokumentációját](https://micrometer.io/docs).
 * A Spring on Azure-ról az Azure-beli hivatalos [tavaszi dokumentációban](/java/azure/spring-framework/?view=azure-java-stable)olvashat bővebben.

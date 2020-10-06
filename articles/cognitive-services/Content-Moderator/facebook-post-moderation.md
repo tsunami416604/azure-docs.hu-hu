@@ -8,18 +8,21 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: content-moderator
 ms.topic: tutorial
-ms.date: 05/27/2020
+ms.date: 10/05/2020
 ms.author: pafarley
-ms.openlocfilehash: 9d8801037be55a262268afcd6e8f5751d158c76e
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 478f7b7671a71d0d1f1f56c5d1d9889db81f7d37
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88548514"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760195"
 ---
 # <a name="tutorial-moderate-facebook-posts-and-commands-with-azure-content-moderator"></a>Oktatóanyag: mérsékelt Facebook-bejegyzések és-parancsok az Azure Content Moderator
 
 Ebből az oktatóanyagból megtudhatja, hogyan használhatja az Azure Content Moderatort a hozzászólások és megjegyzések moderálásához egy Facebook-oldalon. A Facebook elküldi a látogatók által közzétett tartalmat a Content Moderator szolgáltatásnak. Ezután a Content Moderator-munkafolyamatok közzéteszik a tartalmat, vagy a felülvizsgálati eszközön hozhatnak létre felülvizsgálatokat a tartalom pontszámai és a küszöbértékek függvényében. Ennek a forgatókönyvnek a működéséhez tekintse meg a [Build 2017 bemutató videóját](https://channel9.msdn.com/Events/Build/2017/T6033) .
+
+> [!IMPORTANT]
+> A 2018-ben a Facebook szigorúbb bevezetési szabályzatot vezetett be a Facebook-alkalmazásokhoz. Nem fogja tudni befejezni az oktatóanyag lépéseit, ha az alkalmazást a Facebook felülvizsgálati csapata nem tekinti át és hagyta jóvá.
 
 Ez az oktatóanyag a következőket mutatja be:
 
@@ -33,9 +36,6 @@ Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](h
 Ez az ábra a forgatókönyv egyes összetevőit szemlélteti:
 
 ![A Facebook információinak a "FBListener" és a "CMListener" használatával történő elküldésére szolgáló Content Moderator ábrája](images/tutorial-facebook-moderation.png)
-
-> [!IMPORTANT]
-> A 2018-ben a Facebook szigorúbb bevezetési szabályzatot vezetett be a Facebook-alkalmazásokhoz. Nem fogja tudni befejezni az oktatóanyag lépéseit, ha az alkalmazást a Facebook felülvizsgálati csapata nem tekinti át és hagyta jóvá.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -68,7 +68,7 @@ Jelentkezzen be a [Azure Portalba](https://portal.azure.com/) , és kövesse az 
 1. Nyissa meg az újonnan létrehozott függvényalkalmazás.
 1. Az alkalmazáson belül lépjen a **platform szolgáltatások** lapra, és válassza a **konfiguráció**lehetőséget. A következő lap **Alkalmazásbeállítások** szakaszában válassza az **új Alkalmazásbeállítás** lehetőséget a következő kulcs/érték párok hozzáadásához:
     
-    | Alkalmazás-beállítás neve | value   | 
+    | Alkalmazás-beállítás neve | érték   | 
     | -------------------- |-------------|
     | `cm:TeamId`   | A Content Moderator csapatazonosítójának beállítása  | 
     | `cm:SubscriptionKey` | A Content Moderator előfizetői azonosítója – lásd: [Hitelesítő adatok](review-tool-user-guide/credentials.md) |
@@ -81,7 +81,7 @@ Jelentkezzen be a [Azure Portalba](https://portal.azure.com/) , és kövesse az 
 
     Kattintson a **Save (Mentés** ) gombra az oldal tetején.
 
-1. Lépjen vissza a **platform szolgáltatásai** lapra. a **+** bal oldali ablaktáblán található gomb használatával hozza létre az **új függvény** ablaktáblát. A létrehozandó függvény a Facebooktól érkező eseményeket fogja kapni.
+1. Lépjen vissza a **platform szolgáltatásai** lapra. A **+** bal oldali ablaktábla gombjának használatával hozza létre az **új függvény** ablaktáblát. A létrehozandó függvény a Facebooktól érkező eseményeket fogja kapni.
 
     ![Azure Functions panel a funkció hozzáadása gomb kiemelve.](images/new-function.png)
 
@@ -157,7 +157,7 @@ Jelentkezzen be a [Azure Portalba](https://portal.azure.com/) , és kövesse az 
 
 A megoldás a Facebook-oldalon közzétett összes képet és szöveget elküldi a Content Moderatornek. Ezután meghívja a korábban konfigurált munkafolyamatokat. A munkafolyamatokban definiált feltételeknek nem megfelelő tartalom a felülvizsgálati eszközön belüli felülvizsgálatokra lesz átadva. A tartalom többi része automatikusan közzé lesz téve.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban egy olyan programot állít be, amely a termékek rendszerképeinek elemzésére szolgál, és lehetővé teszi a felülvizsgálati csapat számára, hogy megalapozott döntéseket hozhasson a tartalom moderálásával kapcsolatban. Következő lépésként tekintse meg a képek moderálásának részleteit.
 

@@ -1,47 +1,37 @@
 ---
-title: 'Azure-ExpressRoute: áramkör módosítása: PowerShell'
+title: 'Rövid útmutató: áramkör létrehozása és módosítása ExpressRoute-Azure PowerShell'
 description: ExpressRoute-áramkör létrehozása, kiépítése, ellenőrzése, frissítése, törlése és megszüntetése.
 services: expressroute
 author: duongau
 ms.service: expressroute
-ms.topic: how-to
-ms.date: 01/08/2020
+ms.topic: quickstart
+ms.date: 10/05/2020
 ms.author: duau
-ms.openlocfilehash: e9bf9dbe0f4146101513ab9786b298ac6b43b6a3
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: b5ac53c44429e23e2d22a934a9dc71bd485ec4cd
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89566297"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761906"
 ---
-# <a name="create-and-modify-an-expressroute-circuit-using-powershell"></a>ExpressRoute-kapcsolatcsoport létrehozása és módosítása a PowerShell-lel
-> [!div class="op_single_selector"]
-> * [Azure Portal](expressroute-howto-circuit-portal-resource-manager.md)
-> * [PowerShell](expressroute-howto-circuit-arm.md)
-> * [Azure CLI](howto-circuit-cli.md)
-> * [Azure Resource Manager-sablon](expressroute-howto-circuit-resource-manager-template.md)
-> * [Videó – Azure Portal](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-an-expressroute-circuit)
-> * [PowerShell (klasszikus)](expressroute-howto-circuit-classic.md)
->
+# <a name="quickstart-create-and-modify-an-expressroute-circuit-using-azure-powershell"></a>Rövid útmutató: ExpressRoute-kör létrehozása és módosítása Azure PowerShell használatával
 
-Ebből a cikkből megtudhatja, hogyan hozhat létre ExpressRoute-áramkört PowerShell-parancsmagok és a Azure Resource Manager üzemi modell használatával. Az áramkör állapotát, frissítését, törlését vagy megszüntetését is megtekintheti.
+Ez a rövid útmutató bemutatja, hogyan hozhat létre ExpressRoute-áramkört PowerShell-parancsmagok és a Azure Resource Manager üzemi modell használatával. Az áramkör állapotát, frissítését, törlését vagy megszüntetését is megtekintheti.
 
-## <a name="before-you-begin"></a>Előkészületek
+## <a name="prerequisites"></a>Előfeltételek
 
-Mielőtt elkezdené, tekintse át az [előfeltételeket](expressroute-prerequisites.md) és a [munkafolyamatokat](expressroute-workflows.md) a konfigurálás megkezdése előtt.
+* A konfigurálás megkezdése előtt tekintse át az [előfeltételeket](expressroute-prerequisites.md) és a [munkafolyamatokat](expressroute-workflows.md) .
+* Aktív előfizetéssel rendelkező Azure-fiók. [Hozzon létre egy fiókot ingyenesen](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Helyileg telepített Azure PowerShell vagy Azure Cloud Shell
 
-### <a name="working-with-azure-powershell"></a>A Azure PowerShell használata
-
-[!INCLUDE [updated-for-az](../../includes/hybrid-az-ps.md)]
-
-[!INCLUDE [expressroute-cloudshell](../../includes/expressroute-cloudshell-powershell-about.md)]
+[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="create-and-provision-an-expressroute-circuit"></a><a name="create"></a>ExpressRoute-kör létrehozása és kiépítése
-### <a name="1-sign-in-to-your-azure-account-and-select-your-subscription"></a>1. Jelentkezzen be az Azure-fiókjába, és válassza ki az előfizetését
+### <a name="sign-in-to-your-azure-account-and-select-your-subscription"></a>Jelentkezzen be az Azure-fiókjába, és válassza ki az előfizetését
 
 [!INCLUDE [sign in](../../includes/expressroute-cloud-shell-connect.md)]
 
-### <a name="2-get-the-list-of-supported-providers-locations-and-bandwidths"></a>2. a támogatott szolgáltatók, helyszínek és sávszélességek listájának beolvasása
+### <a name="get-the-list-of-supported-providers-locations-and-bandwidths"></a>A támogatott szolgáltatók, helyszínek és sávszélességek listájának beolvasása
 A ExpressRoute kör létrehozása előtt szüksége lesz a támogatott kapcsolati szolgáltatók, helyszínek és sávszélesség-beállítások listájára.
 
 A **Get-AzExpressRouteServiceProvider PowerShell-** parancsmag ezt az információt adja vissza, amelyet a későbbi lépésekben fog használni:
@@ -52,20 +42,20 @@ Get-AzExpressRouteServiceProvider
 
 Ellenőrizze, hogy szerepel-e a kapcsolat szolgáltatója. Jegyezze fel a következő információkat, amelyekre később szüksége lesz az áramkör létrehozásakor:
 
-* Name
+* Name (Név)
 * PeeringLocations
 * BandwidthsOffered
 
 Most már készen áll egy ExpressRoute-áramkör létrehozására.
 
-### <a name="3-create-an-expressroute-circuit"></a>3. ExpressRoute áramkör létrehozása
+### <a name="create-an-expressroute-circuit"></a>ExpressRoute-kapcsolatcsoport létrehozása
 Ha még nem rendelkezik erőforráscsoporthoz, létre kell hoznia egyet a ExpressRoute áramkör létrehozása előtt. Ezt a következő parancs futtatásával teheti meg:
 
 ```azurepowershell-interactive
 New-AzResourceGroup -Name "ExpressRouteResourceGroup" -Location "West US"
 ```
 
-Az alábbi példa bemutatja, hogyan hozhat létre egy 200 Mbps ExpressRoute áramkört a Equinix a Szilícium-völgyben. Ha más szolgáltatót használ, és különböző beállításokkal rendelkezik, akkor a kérés végrehajtásakor cserélje le ezt az információt. Az alábbi példa egy új szolgáltatási kulcs igénylésére használható:
+Az alábbi példa bemutatja, hogyan hozhat létre egy 200 Mbps ExpressRoute áramkört a Equinix a Szilícium-völgyben. Ha más szolgáltatót használ, és a különböző beállításokat használja, cserélje le ezeket az információkat a kérelem elkészítésekor. Az alábbi példa egy új szolgáltatási kulcs igénylésére használható:
 
 ```azurepowershell-interactive
 New-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup" -Location "West US" -SkuTier Standard -SkuFamily MeteredData -ServiceProviderName "Equinix" -PeeringLocation "Silicon Valley" -BandwidthInMbps 200
@@ -73,12 +63,11 @@ New-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "Exp
 
 Győződjön meg arról, hogy a megfelelő SKU-szintet és SKU-családot adta meg:
 
-* Az SKU-szint meghatározza, hogy a ExpressRoute áramkör [helyi](expressroute-faqs.md#expressroute-local), standard vagy [prémium](expressroute-faqs.md#expressroute-premium)szintű-e. Megadhat *helyi*, *standard* vagy *prémium*szintűeket is. A SKU nem módosítható a *standard/prémium* szintről a *helyi*értékre.
-* Az SKU termékcsalád meghatározza a számlázási típust. Megadhatja a *Metereddata* a forgalmi díjas csomaghoz és a *Unlimiteddata* korlátlan adatcsomag esetén. A számlázási típust a *Metereddata* és a *Unlimiteddata*között is módosíthatja, de a típus nem módosítható a *Unlimiteddata* értékről a *Metereddata*-re. A *helyi* áramkör mindig *Unlimiteddata*.
+* Az SKU-szint meghatározza, hogy a ExpressRoute áramkör [helyi](expressroute-faqs.md#expressroute-local), standard vagy [prémium](expressroute-faqs.md#expressroute-premium)szintű-e. Megadhat helyi, * standard vagy *prémium* *szintűeket*is. A SKU nem módosítható a *standard/prémium* szintről a *helyi*értékre.
+* Az SKU termékcsalád meghatározza a számlázási típust. Megadhatja a *MeteredData* a forgalmi díjas csomaghoz és a *UnlimitedData* korlátlan adatcsomag esetén. A számlázási típust a *MeteredData* és a *UnlimitedData*között is módosíthatja, de a típus nem módosítható a *UnlimitedData* értékről a *MeteredData*-re. A *helyi* áramkör mindig *UnlimitedData*.
 
 > [!IMPORTANT]
 > A ExpressRoute-áramkör számlázása a szolgáltatási kulcs kiállításának pillanatától számítva történik. Győződjön meg arról, hogy ezt a műveletet akkor hajtja végre, ha a kapcsolati szolgáltató készen áll az áramkör kiépítésére.
->
 >
 
 A válasz tartalmazza a szolgáltatás kulcsát. Az összes paraméter részletes leírását a következő parancs futtatásával érheti el:
@@ -88,7 +77,7 @@ get-help New-AzExpressRouteCircuit -detailed
 ```
 
 
-### <a name="4-list-all-expressroute-circuits"></a>4. az összes ExpressRoute-áramkör listázása
+### <a name="list-all-expressroute-circuits"></a>Az összes ExpressRoute-áramkör listázása
 Az összes létrehozott ExpressRoute-áramkör listájának lekéréséhez futtassa a **Get-AzExpressRouteCircuit** parancsot:
 
 ```azurepowershell-interactive
@@ -127,7 +116,6 @@ Ezeket az adatokat bármikor lekérheti a `Get-AzExpressRouteCircuit` parancsmag
 Get-AzExpressRouteCircuit
 ```
 
-
 A válasz az alábbi példához hasonlóan néz ki:
 
 ```azurepowershell
@@ -154,9 +142,8 @@ ServiceKey                       : **************************************
 Peerings                         : []
 ```
 
-
-### <a name="5-send-the-service-key-to-your-connectivity-provider-for-provisioning"></a>5. küldje el a szolgáltatási kulcsot a kapcsolat szolgáltatójának az üzembe helyezéshez
-A *ServiceProviderProvisioningState* információt nyújt a szolgáltatói oldalon a kiépítés aktuális állapotáról. Az állapot a Microsoft oldalon található állapotot biztosítja. További információ az áramkör kiépítési állapotáról: [munkafolyamatok](expressroute-workflows.md#expressroute-circuit-provisioning-states).
+### <a name="send-the-service-key-to-your-connectivity-provider-for-provisioning"></a>A szolgáltatás kulcsának elküldése a kapcsolati szolgáltatónak a kiépítés céljából
+A *ServiceProviderProvisioningState* információt nyújt a szolgáltatói oldalon üzembe helyezés aktuális állapotáról. Az állapot a Microsoft oldalán található állapotot biztosítja. További információ az áramkör kiépítési állapotáról: [munkafolyamatok](expressroute-workflows.md#expressroute-circuit-provisioning-states).
 
 Új ExpressRoute-kör létrehozásakor az áramkör a következő állapotban van:
 
@@ -165,29 +152,26 @@ ServiceProviderProvisioningState : NotProvisioned
 CircuitProvisioningState         : Enabled
 ```
 
-
-
-Az áramkör a következő állapotra vált, amikor a kapcsolati szolgáltató a következő állapotban van:
+Az áramkör a következő állapotra vált, amikor a kapcsolati szolgáltató jelenleg engedélyezi az Ön számára:
 
 ```azurepowershell
 ServiceProviderProvisioningState : Provisioning
 Status                           : Enabled
 ```
 
-Ahhoz, hogy használni tudja a ExpressRoute áramkört, a következő állapotban kell lennie:
+A ExpressRoute áramkör használatához a következő állapotban kell lennie:
 
 ```azurepowershell
 ServiceProviderProvisioningState : Provisioned
 CircuitProvisioningState         : Enabled
 ```
 
-### <a name="6-periodically-check-the-status-and-the-state-of-the-circuit-key"></a>6. az áramköri kulcs állapotának és állapotának rendszeres időközönkénti keresése
-Az állapot és az áramköri kulcs állapotának ellenőrzése lehetővé teszi, hogy a szolgáltató engedélyezte az áramkört. Az áramkör konfigurálása után a *ServiceProviderProvisioningState* *kiépítve*jelenik meg, ahogy az az alábbi példában is látható:
+### <a name="periodically-check-the-status-and-the-state-of-the-circuit-key"></a>Az áramköri kulcs állapotának és állapotának rendszeres időközönkénti keresése
+Az állapot és a szolgáltatási kulcs állapotának ellenőrzése után megtudhatja, hogy a szolgáltató kiosztotta-e az áramkört. Az áramkör konfigurálása után a *ServiceProviderProvisioningState* *kiépítve*jelenik meg, ahogy az az alábbi példában is látható:
 
 ```azurepowershell-interactive
 Get-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
 ```
-
 
 A válasz az alábbi példához hasonlóan néz ki:
 
@@ -215,15 +199,14 @@ ServiceKey                       : **************************************
 Peerings                         : []
 ```
 
-### <a name="7-create-your-routing-configuration"></a>7. hozza létre az útválasztási konfigurációt
+### <a name="create-your-routing-configuration"></a>Az útválasztási konfiguráció létrehozása
 Részletes útmutatásért lásd az [ExpressRoute-áramköri útválasztási konfiguráció](expressroute-howto-routing-arm.md) című cikket az áramköri társítások létrehozásához és módosításához.
 
 > [!IMPORTANT]
 > Ezek az utasítások csak a 2. rétegbeli kapcsolati szolgáltatásokat nyújtó szolgáltatók által létrehozott áramkörökre vonatkoznak. Ha olyan szolgáltatót használ, amely felügyelt 3. rétegbeli szolgáltatásokat (jellemzően IP VPN, például MPLS) kínál, a kapcsolati szolgáltatója konfigurálja és kezeli az útválasztást.
 >
->
 
-### <a name="8-link-a-virtual-network-to-an-expressroute-circuit"></a>8. virtuális hálózat összekapcsolása egy ExpressRoute-áramkörrel
+### <a name="link-a-virtual-network-to-an-expressroute-circuit"></a>Virtuális hálózat összekapcsolása egy ExpressRoute-kapcsolatcsoporttal
 Ezután csatoljon egy virtuális hálózatot a ExpressRoute-áramkörhöz. Ha a Resource Manager-alapú üzemi modellel dolgozik, használja a [virtuális hálózatok összekapcsolása a ExpressRoute áramkörökkel](expressroute-howto-linkvnet-arm.md) című cikket.
 
 ## <a name="getting-the-status-of-an-expressroute-circuit"></a>ExpressRoute kör állapotának beolvasása
@@ -232,7 +215,6 @@ Ezeket az adatokat bármikor lekérheti a **Get-AzExpressRouteCircuit** parancsm
 ```azurepowershell-interactive
 Get-AzExpressRouteCircuit
 ```
-
 
 A válasz a következő példához hasonló:
 
@@ -260,13 +242,11 @@ ServiceKey                       : **************************************
 Peerings                         : []
 ```
 
-
 Az adott ExpressRoute-áramkörre vonatkozó információk lekéréséhez adja meg az erőforráscsoport nevét és az áramkör nevét paraméterként a híváshoz:
 
 ```azurepowershell-interactive
 Get-AzExpressRouteCircuit -Name "ExpressRouteARMCircuit" -ResourceGroupName "ExpressRouteResourceGroup"
 ```
-
 
 A válasz az alábbi példához hasonlóan néz ki:
 
@@ -294,7 +274,6 @@ ServiceKey                       : **************************************
 Peerings                         : []
 ```
 
-
 Az összes paraméter részletes leírását a következő parancs futtatásával érheti el:
 
 ```azurepowershell-interactive
@@ -307,7 +286,7 @@ Egy ExpressRoute-kör bizonyos tulajdonságait módosíthatja a kapcsolat befoly
 A következő feladatokat a leállás nélkül végezheti el:
 
 * Engedélyezheti vagy letilthatja a ExpressRoute-áramkörhöz tartozó ExpressRoute Premium-bővítményt. Az SKU *szabványos/prémiumról* *helyire* történő módosítása nem támogatott.
-* Növelje a ExpressRoute-áramkör sávszélességét, ha rendelkezésre áll a porton elérhető kapacitás. Az áramkör sávszélességének visszaminősítése nem támogatott.
+* Növelje a ExpressRoute-áramkör sávszélességét, ha rendelkezésre áll a porton elérhető kapacitás. Egy áramkör sávszélességének visszaminősítése nem támogatott.
 * Módosítsa a mérési tervet a mért adatokról a korlátlan mennyiségű adatokra. A mérési terv korlátlan mennyiségű és mért adatok közötti módosítása nem támogatott.
 * Engedélyezheti és letilthatja a *klasszikus műveletek engedélyezését*.
 
@@ -331,13 +310,12 @@ Az áramkör most már engedélyezve van a ExpressRoute Premium kiegészítő fu
 > [!IMPORTANT]
 > Ha olyan erőforrásokat használ, amelyek nagyobbak a standard szintű áramkör esetében, ez a művelet sikertelen lehet.
 >
->
 
 Tekintse meg az alábbi információkat:
 
 * A prémiumról a standard szintre való visszalépés előtt meg kell győződnie arról, hogy az áramkörhöz kapcsolódó virtuális hálózatok száma kevesebb, mint 10. Ha nem, a frissítési kérelem meghiúsul, és a prémium díjszabás szerint számoljuk el.
-* A többi geopolitikai régióban lévő összes virtuális hálózatot le kell kapcsolni. Ha ezt nem teszi meg, a frissítési kérelem meghiúsul, és a prémium díjszabás szerint számoljuk el.
-* Az útválasztási táblázatnak kisebbnek kell lennie, mint 4 000 útvonal a privát társak számára. Ha az útválasztási táblázat mérete nagyobb, mint 4 000 útvonal, a BGP-munkamenet elveszik, és nem lesz újra engedélyezve, amíg a meghirdetett előtagok száma nem haladja meg a 4 000 értéket.
+* A többi geopolitikai régióban lévő virtuális hálózatokat először le kell kapcsolni. Ha nem távolítja el a hivatkozást, a frissítési kérelem sikertelen lesz, és a prémium díjszabásban továbbra is számlázunk.
+* Az útválasztási táblázatnak kisebbnek kell lennie, mint 4 000 útvonal a privát társak számára. Ha az útválasztási táblázat mérete nagyobb, mint 4 000 útvonal, a BGP-munkamenet eldobásra kerül. A BGP-munkamenetet nem lehet újra engedélyezni, amíg a meghirdetett előtagok száma 4 000.
 
 A ExpressRoute Premium bővítményt a következő PowerShell-parancsmaggal tilthatja le a meglévő áramkörhöz:
 
@@ -369,8 +347,7 @@ $ckt.ServiceProviderProperties.BandwidthInMbps = 1000
 Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 ```
 
-
-Az áramkör a Microsoft oldalán lesz felméretezve. Ezt követően kapcsolatba kell lépnie a kapcsolat szolgáltatójával, hogy frissítse a konfigurációkat a saját oldalán a változásnak megfelelően. Az értesítés elvégzése után megkezdjük a frissített sávszélesség-beállítás számlázását.
+Az áramkör a Microsoft oldalán lesz frissítve. Ezt követően kapcsolatba kell lépnie a kapcsolat szolgáltatójával, hogy frissítse a konfigurációkat a saját oldalán a változásnak megfelelően. Az értesítés elvégzése után megkezdjük a frissített sávszélesség-beállítás számlázását.
 
 ### <a name="to-move-the-sku-from-metered-to-unlimited"></a>Az SKU áthelyezése a mért értékről korlátlanra
 A ExpressRoute áramkör SKU-jának módosításához a következő PowerShell-kódrészletet használhatja:
@@ -387,12 +364,14 @@ Set-AzExpressRouteCircuit -ExpressRouteCircuit $ckt
 ### <a name="to-control-access-to-the-classic-and-resource-manager-environments"></a>A klasszikus és a Resource Manager-környezetekhez való hozzáférés szabályozása
 Tekintse át a [ExpressRoute-áramkörök áthelyezése a Klasszikusból a Resource Manager](expressroute-howto-move-arm.md)-alapú üzemi modellbe című témakör utasításait.
 
-## <a name="deprovisioning-and-deleting-an-expressroute-circuit"></a><a name="delete"></a>ExpressRoute-kapcsolatcsoport megszüntetése és törlése
+## <a name="deprovisioning-an-expressroute-circuit"></a><a name="delete"></a>ExpressRoute áramkör kiépítése
 Tekintse meg az alábbi információkat:
 
-* Az összes virtuális hálózatot le kell választania az ExpressRoute-kapcsolatcsoportról. Ha a művelet meghiúsul, ellenőrizze, hogy a virtuális hálózatok az áramkörhöz vannak-e kapcsolva.
+* Az összes virtuális hálózatot le kell kapcsolni a ExpressRoute áramkörből. Ha a művelet meghiúsul, ellenőrizze, hogy a virtuális hálózatok az áramkörhöz vannak-e kapcsolva.
 * Ha a ExpressRoute Circuit Service Provider kiépítési állapota kiépítés vagy **kiépítve** **van,** akkor a szolgáltatóval kell együttműködni, hogy kiépítse az áramkört a saját oldalán. Továbbra is fenntartjuk az erőforrásokat és számlázunk, amíg a szolgáltató befejezi az áramkör kiépítését, és értesítést küld nekünk.
-* Ha a szolgáltató kiépítte az áramkört (a szolgáltató kiépítési állapota **nincs kiépítve**), törölheti az áramkört. Ez leállítja a kapcsolatcsoport számlázását.
+* Ha a szolgáltató kivette az áramkört, ami azt jelenti, hogy a szolgáltató kiépítési állapota **nem kiépítve**értékre van állítva, akkor törölheti az áramkört. Az áramkör számlázása ezután leáll.
+
+## <a name="clean-up-resources"></a><a name="cleanup"></a>Az erőforrások eltávolítása
 
 A ExpressRoute-áramkört a következő parancs futtatásával törölheti:
 
@@ -402,7 +381,7 @@ Remove-AzExpressRouteCircuit -ResourceGroupName "ExpressRouteResourceGroup" -Nam
 
 ## <a name="next-steps"></a>Következő lépések
 
-Az áramkör létrehozása után győződjön meg arról, hogy a következő lépéseket hajtja végre:
+Miután létrehozta az áramkört, és kiépíti a szolgáltatóval, folytassa a következő lépéssel a társítás konfigurálásához:
 
-* [Az ExpressRoute-áramkör útválasztásának létrehozása és módosítása](expressroute-howto-routing-arm.md)
-* [A virtuális hálózat összekapcsolása a ExpressRoute-áramkörrel](expressroute-howto-linkvnet-arm.md)
+> [!div class="nextstepaction"]
+> [Az ExpressRoute-áramkör útválasztásának létrehozása és módosítása](expressroute-howto-routing-arm.md)

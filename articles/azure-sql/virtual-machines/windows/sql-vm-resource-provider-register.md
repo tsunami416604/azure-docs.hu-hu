@@ -10,21 +10,27 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: vm-windows-sql-server
 ms.workload: iaas-sql-server
-ms.date: 11/13/2019
+ms.date: 09/21/2020
 ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: a197f8a11186d799f320c03a5bbe980b1f38e126
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: b48f0429525822d09f08965128df0ceb1e32898a
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91272072"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761311"
 ---
 # <a name="register-a-sql-server-vm-in-azure-with-the-sql-vm-resource-provider-rp"></a>SQL Server VM regisztrálása az Azure-ban az SQL VM erőforrás-szolgáltatóval (RP)
 [!INCLUDE[appliesto-sqlvm](../../includes/appliesto-sqlvm.md)]
 
-Ez a cikk azt ismerteti, hogyan regisztrálhatók a SQL Server virtuális gépek (VM-EK) az Azure-ban az SQL VM erőforrás-szolgáltatóval (RP). Az erőforrás-szolgáltatóval való regisztráció az előfizetésen belül hozza létre az SQL-alapú **virtuális gép** _erőforrását_ , amely a virtuális gép erőforrásának külön erőforrása. A SQL Server VM erőforrás-szolgáltatóból való regisztrációjának törlése eltávolítja az **SQL-alapú virtuális gép** _erőforrását_ , de nem fogja eldobni a tényleges virtuális gépet. 
+Ez a cikk azt ismerteti, hogyan regisztrálhatók a SQL Server virtuális gépek (VM-EK) az Azure-ban az SQL VM erőforrás-szolgáltatóval (RP). 
+
+Ebből a cikkből megtudhatja, hogyan regisztrálhat egyetlen SQL Server VM az SQL VM erőforrás-szolgáltatóval. Azt is megteheti, hogy az összes SQL Server virtuális gépet [automatikusan](sql-vm-resource-provider-automatic-registration.md) vagy [tömegesen](sql-vm-resource-provider-bulk-register.md)is regisztrálja.
+
+## <a name="overview"></a>Áttekintés
+
+Az erőforrás-szolgáltatóval való regisztráció az előfizetésen belül hozza létre az SQL-alapú **virtuális gép** _erőforrását_ , amely a virtuális gép erőforrásának külön erőforrása. A SQL Server VM erőforrás-szolgáltatóból való regisztrációjának törlése eltávolítja az **SQL-alapú virtuális gép** _erőforrását_ , de nem fogja eldobni a tényleges virtuális gépet.
 
 SQL Server VM Azure Marketplace-rendszerkép üzembe helyezése a Azure Portal használatával automatikusan regisztrálja az SQL Server VM az erőforrás-szolgáltatóval. Ha azonban úgy dönt, hogy egy Azure-beli virtuális gépen telepíti a SQL Servert, vagy egyéni virtuális MEREVLEMEZről szeretne üzembe helyezni egy Azure-beli virtuális gépet, akkor a következő erőforrás-szolgáltatóval kell regisztrálnia a SQL Server VM:
 
@@ -58,7 +64,7 @@ Az SQL VM erőforrás-szolgáltató használatához először [regisztrálnia ke
 A SQL Server VM erőforrás-szolgáltatóval való regisztrálásához a következőkre lesz szüksége: 
 
 - Egy [Azure-előfizetés](https://azure.microsoft.com/free/).
-- A nyilvános vagy Azure Government felhőben üzembe helyezett Azure-beli erőforrás-modell [SQL Server VM](create-sql-vm-portal.md) . 
+- Egy Azure-beli erőforrás-modell [Windows rendszerű virtuális gép](../../../virtual-machines/windows/quick-create-portal.md) , amelynek [SQL Server](https://www.microsoft.com/sql-server/sql-server-downloads) központilag telepítve van a nyilvános vagy Azure Government felhőben. 
 - Az [Azure CLI](/cli/azure/install-azure-cli) vagy a [PowerShell](/powershell/azure/new-azureps-module-az)legújabb verziója. 
 
 ## <a name="management-modes"></a>Felügyeleti módok
@@ -328,11 +334,11 @@ A SQL Server VM az erőforrás-szolgáltatóval való regisztrációjának megsz
 
 1. Válassza a **Törlés** elemet. 
 
-   ![SQL-alapú virtuális gép erőforrás-szolgáltatójának törlése](./media/sql-vm-resource-provider-register/delete-sql-vm-resource-provider.png)
+   ![Válassza a Törlés lehetőséget a felső navigációs sávon](./media/sql-vm-resource-provider-register/delete-sql-vm-resource-provider.png)
 
 1. Írja be az SQL-virtuális gép nevét, és **törölje a virtuális gép melletti jelölőnégyzet**jelölését.
 
-   ![SQL-alapú virtuális gép erőforrás-szolgáltatójának törlése](./media/sql-vm-resource-provider-register/confirm-delete-of-resource-uncheck-box.png)
+   ![Szüntesse meg a virtuális gép törlését, hogy ne törölje a tényleges virtuális gépet, majd válassza a Törlés lehetőséget az SQL VM-erőforrás törlésének folytatásához.](./media/sql-vm-resource-provider-register/confirm-delete-of-resource-uncheck-box.png)
 
    >[!WARNING]
    > Nem sikerült törölni a virtuális gép neve melletti jelölőnégyzetet a virtuális gép teljes *törléséhez* . Törölje a jelet a jelölőnégyzetből a SQL Server VM regisztrációjának törléséhez az erőforrás-szolgáltatónál, de *ne törölje a tényleges virtuális gépet*. 
@@ -342,7 +348,7 @@ A SQL Server VM az erőforrás-szolgáltatóval való regisztrációjának megsz
 ### <a name="command-line"></a>Parancssor
 
 # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
-Ha meg szeretné szüntetni a SQL Server VM regisztrációját az erőforrás-szolgáltatóból az Azure CLI-vel, használja az az [SQL VM delete](/cli/azure/sql/vm?view=azure-cli-latest#az-sql-vm-delete) parancsot. Ezzel eltávolítja a SQL Server VM *erőforrást* , de nem törli a virtuális gépet. 
+Ha meg szeretné szüntetni a SQL Server VM regisztrációját az erőforrás-szolgáltatóból az Azure CLI-vel, használja az az [SQL VM delete](/cli/azure/sql/vm?view=azure-cli-latest&preserve-view=true#az-sql-vm-delete) parancsot. Ezzel eltávolítja a SQL Server VM *erőforrást* , de nem törli a virtuális gépet. 
 
 
 ```azurecli-interactive
@@ -400,7 +406,7 @@ Az SQL VM erőforrás-szolgáltatóval való regisztráláskor az alapértelmeze
 
 Igen, az SQL VM erőforrás-szolgáltatóval való regisztrálás egy ügynököt telepít a virtuális gépre.
 
-A SQL Server IaaS bővítmény az ügynökre támaszkodik a SQL Server metaadatainak lekérdezéséhez. Az ügynök telepítése csak akkor történik meg, ha az SQL-alapú virtuális gép erőforrás-szolgáltatója nem regsitered módban van.
+A SQL Server IaaS bővítmény az ügynökre támaszkodik a SQL Server metaadatainak lekérdezéséhez. Az ügynök telepítése csak akkor történik meg, ha az SQL virtuális gép erőforrás-szolgáltatója nem ügynök módban van regisztrálva.
 
 **Regisztrálja az SQL VM erőforrás-szolgáltató újraindítási SQL Server a virtuális gépen?**
 

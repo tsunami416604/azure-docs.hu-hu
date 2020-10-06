@@ -3,12 +3,12 @@ title: Azure Functions biztonságossá tétele
 description: Ismerje meg, hogyan teheti meg az Azure-ban futó funkció kódját az általános támadásokkal szemben.
 ms.date: 4/13/2020
 ms.topic: conceptual
-ms.openlocfilehash: e48991788307a47d0e01a7921e0c94d77ddcd5ad
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 470ee517b929b7327df76963e21c88db21d363da
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91294750"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761413"
 ---
 # <a name="securing-azure-functions"></a>Azure Functions biztonságossá tétele
 
@@ -24,7 +24,7 @@ Ez a szakasz a Function alkalmazás lehető legbiztonságosabb konfigurálását
 
 ### <a name="security-center"></a>Security Center
 
-A Security Center a portálon integrálható a Function alkalmazással. A szolgáltatás ingyenes, gyors értékelést nyújt a konfigurációval kapcsolatos lehetséges biztonsági rések biztonságáról. A dedikált csomagban futtatott functions-alkalmazások felár ellenében a Security Center valós idejű biztonsági funkcióit is használhatják. További információ: [a Azure app Service webalkalmazások és API-k elleni védelem](../security-center/security-center-app-services.md). 
+A Security Center a portálon integrálható a Function alkalmazással. A szolgáltatás ingyenes, gyors értékelést nyújt a konfigurációval kapcsolatos lehetséges biztonsági rések biztonságáról. A dedikált csomagban futtatott functions-alkalmazások felár ellenében a Security Center valós idejű biztonsági funkcióit is használhatják. További információ: [a Azure app Service webalkalmazások és API-k elleni védelem](https://docs.microsoft.com/azure/security-center/defender-for-app-service-introduction). 
 
 ### <a name="log-and-monitor"></a>Naplózás és monitorozás
 
@@ -60,7 +60,7 @@ A következő táblázat a különböző típusú hozzáférési kulcsok haszná
 
 | Művelet                                        | Hatókör                    | Érvényes kulcsok         |
 |-----------------------------------------------|--------------------------|--------------------|
-| Függvény végrehajtása                            | Adott függvény        | Funkció           |
+| Függvény végrehajtása                            | Adott függvény        | Függvény           |
 | Függvény végrehajtása                            | Bármely függvény             | Függvény vagy gazdagép   |
 | Rendszergazdai végpont meghívása                        | Függvényalkalmazás             | Gazdagép (csak Master) |
 | Tartós feladat-kiterjesztési API-k hívása              | <sup>1</sup> . funkció alkalmazás | <sup>2</sup> . System |

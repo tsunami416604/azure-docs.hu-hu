@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: jeedes
-ms.openlocfilehash: 06c4945c6fee82b3ce622304351c3ad6d9ae282d
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 21899ab40836b8ad083c0f005d43084c65c1b6fa
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544685"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91759951"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clear-review"></a>Oktatóanyag: Azure Active Directory integráció egyértelmű áttekintéssel
 
@@ -102,7 +102,7 @@ Ha az Azure AD egyszeri bejelentkezését egyértelmű áttekintéssel szeretné
 
 4. Az **alapszintű SAML-konfiguráció** szakaszban, ha az alkalmazást **identitásszolgáltató** kezdeményezett módban szeretné konfigurálni, hajtsa végre a következő lépéseket:
 
-    ![A tartomány és az URL-címek egyszeri bejelentkezési adatainak törlése](common/idp-intiated.png)
+    ![A képernyőfelvételen az alapszintű SAML-konfiguráció látható, ahol megadható az azonosító, a válasz U R L, majd a Mentés elemre.](common/idp-intiated.png)
 
     a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<customer name>.clearreview.com/sso/metadata/`
 
@@ -110,7 +110,7 @@ Ha az Azure AD egyszeri bejelentkezését egyértelmű áttekintéssel szeretné
 
 5. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
-    ![A tartomány és az URL-címek egyszeri bejelentkezési adatainak törlése](common/metadata-upload-additional-signon.png)
+    ![Képernyőfelvétel: további U R ls beállítása, ahol megadhatja a bejelentkezést az U R L-ben.](common/metadata-upload-additional-signon.png)
 
     A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:  `https://<customer name>.clearreview.com`
 
@@ -119,15 +119,15 @@ Ha az Azure AD egyszeri bejelentkezését egyértelmű áttekintéssel szeretné
 
 6. Az ellenőrző alkalmazás törlése az SAML-jogkivonatokat egy adott formátumban várja, amelyhez egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőfelvételen az alapértelmezett attribútumok listája látható, ahol a **NameIdentifier** a **User. userPrincipalName**leképezéssel van leképezve. Az alkalmazás törlése: a **NameIdentifier** a **User. mail**használatával kell leképezni, ezért az attribútum-hozzárendelést úgy kell módosítania, hogy a **Szerkesztés** ikonra kattint, és megváltoztatja az attribútumok leképezését.
 
-    ![image](common/edit-attribute.png)
+    ![A képernyőképen a szerkesztési ikonnal jelölt felhasználói attribútumok láthatók.](common/edit-attribute.png)
 
 7. A **felhasználói attribútumok & jogcímek** párbeszédpanelen hajtsa végre a következő lépéseket:
 
     a. Kattintson a **név azonosító értékének**jobb oldalán található **Szerkesztés ikonra** .
 
-    ![image](./media/clearreview-tutorial/attribute02.png)
+    ![Képernyőfelvétel: felhasználói attribútumok & jogcímek kijelölése a szerkesztési ikonnal.](./media/clearreview-tutorial/attribute02.png)
 
-    ![image](./media/clearreview-tutorial/attribute01.png)
+    ![Képernyőfelvétel: a felhasználói jogcímek kezelése párbeszédpanel, amelyen megadhatja a leírt értékeket.](./media/clearreview-tutorial/attribute01.png)
 
     b. A **forrás attribútum** listából válassza ki az adott sorhoz tartozó **User. mail** attribútum értékét.
 
@@ -153,15 +153,15 @@ Ha az Azure AD egyszeri bejelentkezését egyértelmű áttekintéssel szeretné
 
 2. A bal oldali navigációs sávon válassza a **rendszergazda** elemet.
 
-    ![Egyszeri bejelentkezéses mentés beállítása gomb](./media/clearreview-tutorial/tutorial_clearreview_app_admin1.png)
+    ![Képernyőfelvétel: a Clear felülvizsgálati portál és a rendszergazda kijelölése.](./media/clearreview-tutorial/tutorial_clearreview_app_admin1.png)
 
 3. Az oldal alján található **integrációk** szakaszban kattintson az **egyszeri bejelentkezés beállításaitól**jobbra található **módosítás** gombra.
 
-    ![Egyszeri bejelentkezéses mentés beállítása gomb](./media/clearreview-tutorial/tutorial_clearreview_app_admin2.png)
+    ![A képernyőképen az egyszeri bejelentkezés módosítása gomb látható.](./media/clearreview-tutorial/tutorial_clearreview_app_admin2.png)
 
 4. Hajtsa végre az alábbi lépéseket az **egyszeri bejelentkezési beállítások** oldalon
 
-    ![Egyszeri bejelentkezéses mentés beállítása gomb](./media/clearreview-tutorial/tutorial_clearreview_app_admin3.png)
+    ![Képernyőfelvétel: az egyszeri bejelentkezési beállítások oldal, amelyen megadhatja az ebben a lépésben szereplő információkat.](./media/clearreview-tutorial/tutorial_clearreview_app_admin3.png)
 
     a. A **kiállító URL-címe** szövegmezőbe illessze be a Azure Portalból másolt **Azure ad-azonosító** értékét.
 

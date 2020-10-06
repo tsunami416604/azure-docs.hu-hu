@@ -13,12 +13,12 @@ ms.workload: identity
 ms.custom: it-pro
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 89b8097aa288be710e95e835bb66904ef2c6ab56
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: add8a533f2b4fba9a9e881442e43030adb7e2b53
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421671"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91762008"
 ---
 # <a name="bulk-add-group-members-in-azure-active-directory"></a>Csoporttagok tömeges hozzáadása Azure Active Directory
 
@@ -75,7 +75,7 @@ A tömeges műveletben szereplő egyes sorokra vonatkozó részletekért válass
 
 ## <a name="bulk-import-service-limits"></a>Tömeges importálási szolgáltatás korlátai
 
-A csoporttagok listájának importálására szolgáló tömeges tevékenységek akár egy óráig is futhatnak. Ez lehetővé teszi, hogy legalább 40 000 tagból álló listát importáljon.
+A csoporttagok listájának importálására szolgáló tömeges tevékenységek akár egy óráig is futhatnak. Ez lehetővé teszi a legfeljebb 40 000 tagot tartalmazó lista importálását.
 
 ## <a name="next-steps"></a>Következő lépések
 

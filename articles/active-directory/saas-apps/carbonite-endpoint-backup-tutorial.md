@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/06/2019
 ms.author: jeedes
-ms.openlocfilehash: 9888ae6f7d28f6fef5901ea246d71d7b9ae9f78f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 4fcc9ab0811c447cebff825a0c45c9dac877219c
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88530592"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761736"
 ---
 # <a name="tutorial-integrate-carbonite-endpoint-backup-with-azure-active-directory"></a>Oktatóanyag: a Carbonite-végpontok biztonsági mentésének integrálása Azure Active Directory
 
@@ -129,19 +129,19 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 4. Kattintson a **vállalatra** a bal oldali ablaktáblán.
 
-    ![Carbonite-végpont biztonsági mentési konfigurációja ](media/carbonite-endpoint-backup-tutorial/configure1.png)
+    ![Képernyőfelvétel: a kiválasztott vállalatnál látható Carbonite-végpont.](media/carbonite-endpoint-backup-tutorial/configure1.png)
 
 5. Kattintson az **egyszeri bejelentkezés**lehetőségre.
 
-    ![Carbonite-végpont biztonsági mentési konfigurációja ](media/carbonite-endpoint-backup-tutorial/configure2.png)
+    ![Képernyőfelvétel: a vállalat egyszeri bejelentkezéssel van kiválasztva.](media/carbonite-endpoint-backup-tutorial/configure2.png)
 
 6. Kattintson az **Engedélyezés** elemre, majd kattintson a **beállítások szerkesztése** elemre a konfiguráláshoz.
 
-    ![Carbonite-végpont biztonsági mentési konfigurációja ](media/carbonite-endpoint-backup-tutorial/configure3.png)
+    ![A képernyőképen az egyszeri bejelentkezés lap jelenik meg, amely lehetővé teszi az engedélyezési és a szerkesztési beállítások kihívását.](media/carbonite-endpoint-backup-tutorial/configure3.png)
 
 7. Az **egyszeri bejelentkezési** beállítások oldalon hajtsa végre a következő lépéseket:
 
-    ![Carbonite-végpont biztonsági mentési konfigurációja ](media/carbonite-endpoint-backup-tutorial/configure4.png)
+    ![Képernyőfelvétel: az egyszeri bejelentkezés lap, amely az ebben a lépésben ismertetett információkat tartalmazza.](media/carbonite-endpoint-backup-tutorial/configure4.png)
 
     1. Az **identitás-szolgáltató neve** szövegmezőbe illessze be azt az **Azure ad-azonosító** értéket, amelyet a Azure Portal másolt.
 
@@ -187,11 +187,11 @@ Ebben a szakaszban engedélyezi, hogy a B. Simon az Azure egyszeri bejelentkezé
 
 1. Kattintson a bal oldali ablaktáblán a **felhasználók** elemre, majd kattintson a **felhasználó hozzáadása**elemre.
 
-    ![Felhasználó hozzáadása a Carbonite Endpoint Backup szolgáltatásban](media/carbonite-endpoint-backup-tutorial/adduser1.png)
+    ![Képernyőfelvétel: a Carbonite-végpont lapja a felhasználók és a kiválasztott felhasználók hozzáadásával.](media/carbonite-endpoint-backup-tutorial/adduser1.png)
 
 1. A **felhasználó hozzáadása** oldalon hajtsa végre a következő lépéseket:
 
-    ![Felhasználó hozzáadása a Carbonite Endpoint Backup szolgáltatásban](media/carbonite-endpoint-backup-tutorial/adduser2.png)
+    ![Képernyőfelvétel: a felhasználó hozzáadása lap, amelyen elvégezheti az itt ismertetett lépéseket.](media/carbonite-endpoint-backup-tutorial/adduser2.png)
 
     1. Adja meg a felhasználó **e-mail-címét**, **utónevét**és **vezetéknevét** , és adja meg a szükséges engedélyeket a felhasználónak a szervezeti követelményeknek megfelelően.
 

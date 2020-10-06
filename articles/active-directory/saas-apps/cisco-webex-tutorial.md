@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/21/2019
 ms.author: jeedes
-ms.openlocfilehash: 52481eb40a46457a0374c776ee4897c81ebddf7c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 466e69ece993ca34f8f6770c0465471d01b9c3ed
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551285"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760937"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cisco-webex-meetings"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció Cisco WebEx-értekezletekkel
 
@@ -101,7 +101,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 6. A fentieken kívül a Cisco WebEx üléseinek alkalmazása néhány további attribútumot vár az SAML-válaszban való visszatéréshez. A felhasználó attribútumai párbeszédpanel felhasználói jogcímek szakaszában a következő lépésekkel adja hozzá az SAML-jogkivonat attribútumát az alábbi táblázatban látható módon: 
 
-    | Name | Forrás attribútum|
+    | Name (Név) | Forrás attribútum|
     | ---------------|  --------- |
     |   FirstName    | User. givenName |
     |   LastName    | felhasználó. vezetéknév |
@@ -164,11 +164,11 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 2. Nyissa meg a **gyakori hely beállításait** , és navigáljon az **SSO-konfigurációhoz**.
  
-    ![Egyszeri bejelentkezés konfigurálása](./media/cisco-webex-tutorial/tutorial-cisco-webex-11.png)
+    ![Képernyőfelvétel: a Cisco WebEx felügyelete a közös hely beállításaival és a S S O konfigurációval van kiválasztva.](./media/cisco-webex-tutorial/tutorial-cisco-webex-11.png)
 
 3. A **WebEx-felügyelet** oldalon hajtsa végre a következő lépéseket:
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/cisco-webex-tutorial/tutorial-cisco-webex-10.png)
+    ![Képernyőfelvétel: a WebEx adminisztrációs oldal, amely az ebben a lépésben ismertetett információkat tartalmazza.](./media/cisco-webex-tutorial/tutorial-cisco-webex-10.png)
 
     a. Válassza az **SAML 2,0** -as **összevonási protokoll**lehetőséget.
 

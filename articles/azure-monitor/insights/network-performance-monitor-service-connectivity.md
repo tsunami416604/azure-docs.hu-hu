@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: abshamsft
 ms.author: absha
 ms.date: 02/20/2018
-ms.openlocfilehash: b7b6a7202392e083aaaa5cdc8adcf0c81cfb0e0d
-ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
+ms.openlocfilehash: 18c07266cec68aaf6e95fe4085b9d21244fecff4
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91403704"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761039"
 ---
 # <a name="service-connectivity-monitor"></a>Szolgáltatáskapcsolati monitor
 
@@ -99,7 +99,7 @@ Annak megállapítása, hogy a gyenge alkalmazások teljesítménye a hálózat 
 
 Miután meghatározta, hogy a probléma a hálózat miatt van-e, válassza a **topológia** nézet hivatkozását, és azonosítsa a topológiai Térkép kellemetlen ugrását. Az alábbi képen egy példa látható. A csomópont és az alkalmazás végpontja közötti 105 – MS teljes késés miatt a 96 MS az Ugrás vörös színnel van megjelölve. A fáradságos ugrás azonosítása után elvégezheti a javítási műveleteket. 
 
-![Szolgáltatás-kapcsolódási figyelő tesztek](media/network-performance-monitor-service-endpoint/service-endpoint-topology.png)
+![Szolgáltatás-kapcsolódási figyelő végpontjának topológiája](media/network-performance-monitor-service-endpoint/service-endpoint-topology.png)
 
 ## <a name="diagnostics"></a>Diagnosztika 
 
@@ -132,6 +132,6 @@ Az USA-beli kormányzati Virginia régió esetében csak a DOD URL-címek beép�
 | Exchange Online | * outlook.office365.us <br> * attachments.office365-net.us <br> * autodiscover-s.office365.us <br> * manage.office365.us <br> * scc.office365.us |
 | MS-csapatok | gov.teams.microsoft.us | 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [Keresési naplók](../log-query/log-query-overview.md) a hálózati teljesítményadatok részletes rekordjainak megtekintéséhez.
 

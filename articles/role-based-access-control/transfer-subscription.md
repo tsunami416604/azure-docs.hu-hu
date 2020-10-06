@@ -8,14 +8,14 @@ ms.service: role-based-access-control
 ms.devlang: na
 ms.topic: how-to
 ms.workload: identity
-ms.date: 08/31/2020
+ms.date: 10/06/2020
 ms.author: rolyon
-ms.openlocfilehash: 6d0c0333186655d4f105337021164814453ab47a
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.openlocfilehash: fd8192b48f6923a8fe68abf674d6100c8b8e5a00
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91652384"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91761872"
 ---
 # <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory"></a>Azure-előfizetés átvitele egy másik Azure AD-címtárba
 
@@ -74,7 +74,7 @@ Számos Azure-erőforrás függőséget tartalmaz egy előfizetéshez vagy egy c
 | Azure Data Lake Storage Gen1 | Igen | Igen |  | Az ACL-eket újra létre kell hoznia. |
 | Azure Files | Igen | Igen |  | Az ACL-eket újra létre kell hoznia. |
 | Azure File Sync | Igen | Igen |  |  |
-| Azure Managed Disks | Yes | N/A |  |  |
+| Azure Managed Disks | Igen | N/A |  |  |
 | Azure Container Services a Kubernetes-hez | Igen | Igen |  |  |
 | Azure Active Directory tartományi szolgáltatások | Igen | Nem |  |  |
 | Alkalmazásregisztrációk | Igen | Igen |  |  |

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/08/2019
 ms.author: jeedes
-ms.openlocfilehash: 6358c41ab6d63baa8ed1fa6960d7d887825a1d78
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: c620393903ee08199632d457ece3b4c06db8ed68
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88529479"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91760648"
 ---
 # <a name="tutorial-integrate-chargebee-with-azure-active-directory"></a>Oktatóanyag: a Chargebee és a Azure Active Directory integrálása
 
@@ -132,11 +132,11 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 4. A menü bal oldalán kattintson a **Beállítások**  >  **biztonsági**  >  **kezelés**elemre.
 
-    ![Chargebee-konfiguráció](./media/chargebee-tutorial/config01.png)
+    ![Képernyőfelvétel: a Chargebee vállalati webhely, amelyen a beállítások, a biztonság és a kezelés van kijelölve.](./media/chargebee-tutorial/config01.png)
 
 5. Az **egyszeri bejelentkezés** előugró ablakában hajtsa végre a következő lépéseket:
 
-    ![Chargebee-konfiguráció](./media/chargebee-tutorial/config02.png)
+    ![Képernyőfelvétel: az egyszeri bejelentkezés párbeszédpanel, amelyben az SAML ki van választva, és a megerősítési lehetőség is megjelenik.](./media/chargebee-tutorial/config02.png)
 
     a. Válassza az **SAML**lehetőséget.
 
@@ -156,11 +156,11 @@ Az Azure AD-felhasználók engedélyezéséhez jelentkezzen be a Chargebee-be, h
 
 2. A menü bal oldalán kattintson a **Customers (ügyfelek)** elemre, majd keresse meg az **új ügyfél létrehozása**elemet.
 
-    ![Freedcamp-konfiguráció](./media/chargebee-tutorial/config03.png)
+    ![Képernyőfelvétel: Chargebee-webhely az ügyfelekkel és a kiválasztott új ügyfél létrehozása.](./media/chargebee-tutorial/config03.png)
 
 3. Az **új ügyfél** lapon töltse ki a megfelelő mezőket az alább látható módon, majd kattintson az **ügyfél létrehozása** felhasználói létrehozáshoz lehetőségre.
 
-    ![Freedcamp-konfiguráció](./media/chargebee-tutorial/config04.png)
+    ![Képernyőfelvétel: az új ügyfél lap, amelyen megadhatja az ügyfél adatait.](./media/chargebee-tutorial/config04.png)
 
 ## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
 
