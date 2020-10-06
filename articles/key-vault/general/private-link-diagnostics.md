@@ -7,22 +7,22 @@ ms.date: 09/30/2020
 ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
-ms.openlocfilehash: faf7a6e0331e3891c2ece7461685b14e751c0894
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 52ac5b89a0c7173b9b2585f84b5f34361b4b136c
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/05/2020
-ms.locfileid: "91713039"
+ms.locfileid: "91744219"
 ---
 # <a name="diagnose-private-links-configuration-issues-on-azure-key-vault"></a>A magánhálózati kapcsolatok konfigurációs problémáinak diagnosztizálása Azure Key Vault
 
-## <a name="introduction"></a>Introduction (Bevezetés)
+## <a name="introduction"></a>Bevezetés
 
 Ez a cikk segítséget nyújt a felhasználóknak a Key Vault és a privát hivatkozások szolgáltatással kapcsolatos problémák diagnosztizálásában és javításában. Ez az útmutató segítséget nyújt a konfigurációs szempontokról, például a privát hivatkozások első alkalommal történő beszerzéséről, vagy egy olyan helyzet kijavításáról, amelyben a magánjellegű hivatkozások valamilyen változás miatt leálltak.
 
 Ha még nem ismeri ezt a funkciót, tekintse meg [a Key Vault integrálása az Azure privát kapcsolattal](private-link-service.md)című témakört.
 
-### <a name="symptoms-covered-by-this-article"></a>A cikkben szereplő tünetek
+### <a name="problems-covered-by-this-article"></a>A cikk által tárgyalt problémák
 
 - A DNS-lekérdezések továbbra is egy nyilvános IP-címet adnak vissza a kulcstartó számára, nem pedig egy magánhálózati IP-címet, amelyet a privát hivatkozások funkció használatával elvár.
 - Egy, a privát hivatkozást használó ügyfél által kezdeményezett összes kérelem időtúllépésekkel vagy hálózati hibákkal meghiúsul, és a probléma nem időszakos.
@@ -31,7 +31,7 @@ Ha még nem ismeri ezt a funkciót, tekintse meg [a Key Vault integrálása az A
 - A Key Vault két privát végponttal rendelkezik. Az egyiket használó kérelmek megfelelően működnek, de a másikat használó kérések sikertelenek lesznek.
 - Rendelkezik egy másik előfizetéssel, kulcstartóval vagy virtuális hálózattal, amely privát hivatkozásokat használ. Új, hasonló üzembe helyezést szeretne végezni, de nem tud saját hivatkozásokat kapni.
 
-### <a name="symptoms-not-covered-by-this-article"></a>A jelen cikkben nem szereplő tünetek
+### <a name="problems-not-covered-by-this-article"></a>A cikkben nem szereplő problémák
 
 - Átmeneti kapcsolati probléma van. Egy adott ügyfélnél néhány kérelem működik, és néhány nem működik. *Az időszakos problémákat általában nem a privát hivatkozások konfigurációjában lévő probléma okozza; a hálózat vagy az ügyfél túlterheltségének jele.*
 - Olyan Azure-terméket használ, amely támogatja a BYOK (Bring Your Own Key) vagy a CMK (az ügyfél által felügyelt kulcsokat), és a termék nem fér hozzá a kulcstartóhoz. *Tekintse meg a termék dokumentációját. Győződjön meg arról, hogy kifejezetten kijelenti, hogy a kulcstartók támogatják a tűzfalat. Szükség esetén vegye fel a kapcsolatot az adott termék terméktámogatásával.*
@@ -188,7 +188,7 @@ Az előző forgatókönyvből származó jelentős különbség az, hogy van egy
 
 Ez nem jelenti azt, hogy a Virtual Networkon *kívüli* gépekről érkező kérések (például az imént használtak) privát hivatkozásokat fognak használni – nem. Láthatja, hogy az állomásnév továbbra is egy nyilvános IP-címhez van feloldva. Csak *a Virtual Networkhoz csatlakoztatott* számítógépek használhatnak privát hivatkozásokat. További tudnivalókat a következő témakörben talál:.
 
-Ha nem látja az `privatelink` aliast, az azt jelenti, hogy a Key vaultban nulla a privát végpont kapcsolatainak `Approved` állapota. Folytassa a cikk elolvasásával.
+Ha nem látja az `privatelink` aliast, az azt jelenti, hogy a Key vaultban nulla a privát végpont kapcsolatainak `Approved` állapota. Az újrapróbálkozás előtt térjen vissza [ehhez a szakaszhoz](#2-confirm-that-the-connection-is-approved-and-succeeded) .
 
 ### <a name="key-vault-with-private-link-resolving-from-virtual-network"></a>Key Vault Virtual Network
 

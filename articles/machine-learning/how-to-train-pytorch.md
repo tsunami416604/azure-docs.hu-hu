@@ -11,12 +11,12 @@ ms.reviewer: peterlu
 ms.date: 09/28/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 99f249c9eba0e3d59fd687ac2c3886d037d1ff20
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 22e834ccc31e2d01646250c973080848173661de
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91532771"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743777"
 ---
 # <a name="train-pytorch-models-at-scale-with-azure-machine-learning"></a>PyTorch-modellek betanítása méretekben Azure Machine Learning
 
@@ -113,48 +113,10 @@ A számítási célokkal kapcsolatos további információkért tekintse meg a [
 
 ### <a name="define-your-environment"></a>A környezet meghatározása
 
-Ha meg szeretné határozni, hogy melyik Azure ML- [környezet](concept-environments.md) tartalmazza a betanítási parancsfájl függőségeit, definiálhat egyéni környezetet, vagy használhatja az Azure ml-t.
-
-#### <a name="create-a-custom-environment"></a>Egyéni környezet létrehozása
-
-Adja meg azt az Azure ML-környezetet, amely magában foglalja a betanítási parancsfájl függőségeit.
-
-Először határozza meg a Conda függőségeit egy YAML-fájlban; Ebben a példában a fájl neve `conda_dependencies.yml` .
-
-```yaml
-channels:
-- conda-forge
-dependencies:
-- python=3.6.2
-- pip:
-  - azureml-defaults
-  - torch==1.6.0
-  - torchvision==0.7.0
-  - future==0.17.1
-  - pillow
-```
-
-Hozzon létre egy Azure ML-környezetet ebből a Conda-környezeti specifikációból. A környezet egy Docker-tárolóba lesz csomagolva futásidőben.
-
-Alapértelmezés szerint, ha nincs megadva alaprendszerkép, az Azure ML egy CPU-rendszerképet fog használni `azureml.core.runconfig.DEFAULT_CPU_IMAGE` az alaprendszerképként. Mivel ez a példa egy GPU-fürtön futtatja a képzést, meg kell adnia egy GPU-alapú alapképet, amely rendelkezik a szükséges GPU-illesztővel és-függőségekkel. Az Azure ML a Microsoft Container Registry (MCR) szolgáltatásban közzétett alaplemezképek készletét tartja fenn. További információért tekintse meg az [Azure/AzureML-containers GitHub-](https://github.com/Azure/AzureML-Containers) tárházat.
-
-```python
-from azureml.core import Environment
-
-pytorch_env = Environment.from_conda_specification(name='pytorch-1.6-gpu', file_path='./conda_dependencies.yml')
-
-# Specify a GPU base image
-pytorch_env.docker.enabled = True
-pytorch_env.docker.base_image = 'mcr.microsoft.com/azureml/openmpi3.1.2-cuda10.1-cudnn7-ubuntu18.04'
-```
-
-> [!TIP]
-> Igény szerint egyszerűen rögzítheti az összes függőségét egy egyéni Docker-rendszerképben vagy Docker, és létrehozhatja a környezetét. További információ: [a betanítás egyéni rendszerképpel](how-to-train-with-custom-image.md).
-
-További információ a környezetek létrehozásáról és használatáról: [szoftverek környezetének létrehozása és használata Azure Machine Learningban](how-to-use-environments.md).
+Ha meg szeretné határozni, hogy melyik Azure ML- [környezet](concept-environments.md) tartalmazza a betanítási parancsfájl függőségeit, definiálhat egy egyéni környezetet, vagy használhat egy Azure ml-alapú kurátori környezetet.
 
 #### <a name="use-a-curated-environment"></a>Kurátori környezet használata
-Ha nem szeretné, hogy a saját rendszerképe ne legyen létrehozva, az Azure ML-ben előre összeállított, kiépített környezetek is elérhetők. Az Azure ML több PROCESSZORral és GPU-val rendelkező környezettel rendelkezik a PyTorch különböző verzióihoz tartozó PyTorch. További információ: [itt](resource-curated-environments.md).
+Az Azure ML-ben előre elkészített, kiépített környezetek is elérhetők, ha nem szeretné saját környezetét meghatározni. Az Azure ML több PROCESSZORral és GPU-val rendelkező környezettel rendelkezik a PyTorch különböző verzióihoz tartozó PyTorch. További információ: [itt](resource-curated-environments.md).
 
 Ha egy kurátori környezetet szeretne használni, a következő parancsot futtathatja inkább:
 
@@ -177,6 +139,44 @@ Ha ehelyett közvetlenül módosította a kurátori környezet objektumát, akko
 ```python
 pytorch_env = pytorch_env.clone(new_name='pytorch-1.6-gpu')
 ```
+
+#### <a name="create-a-custom-environment"></a>Egyéni környezet létrehozása
+
+Létrehozhatja saját Azure ML-környezetét is, amely magában foglalja a betanítási parancsfájl függőségeit.
+
+Először határozza meg a Conda függőségeit egy YAML-fájlban; Ebben a példában a fájl neve `conda_dependencies.yml` .
+
+```yaml
+channels:
+- conda-forge
+dependencies:
+- python=3.6.2
+- pip:
+  - azureml-defaults
+  - torch==1.6.0
+  - torchvision==0.7.0
+  - future==0.17.1
+  - pillow
+```
+
+Hozzon létre egy Azure ML-környezetet ebből a Conda-környezeti specifikációból. A környezet egy Docker-tárolóba lesz csomagolva futásidőben.
+
+Alapértelmezés szerint, ha nincs megadva alaprendszerkép, az Azure ML egy CPU-rendszerképet fog használni `azureml.core.environment.DEFAULT_CPU_IMAGE` az alaprendszerképként. Mivel ez a példa egy GPU-fürtön futtatja a képzést, meg kell adnia egy GPU-alapú alapképet, amely rendelkezik a szükséges GPU-illesztővel és-függőségekkel. Az Azure ML a Microsoft Container Registry (MCR) szolgáltatásban közzétett alaplemezképek készletét tartja fenn. További információért tekintse meg az [Azure/AzureML-containers GitHub-](https://github.com/Azure/AzureML-Containers) tárházat.
+
+```python
+from azureml.core import Environment
+
+pytorch_env = Environment.from_conda_specification(name='pytorch-1.6-gpu', file_path='./conda_dependencies.yml')
+
+# Specify a GPU base image
+pytorch_env.docker.enabled = True
+pytorch_env.docker.base_image = 'mcr.microsoft.com/azureml/openmpi3.1.2-cuda10.1-cudnn7-ubuntu18.04'
+```
+
+> [!TIP]
+> Igény szerint egyszerűen rögzítheti az összes függőségét egy egyéni Docker-rendszerképben vagy Docker, és létrehozhatja a környezetét. További információ: [a betanítás egyéni rendszerképpel](how-to-train-with-custom-image.md).
+
+További információ a környezetek létrehozásáról és használatáról: [szoftverek környezetének létrehozása és használata Azure Machine Learningban](how-to-use-environments.md).
 
 ## <a name="configure-and-submit-your-training-run"></a>A betanítási Futtatás konfigurálása és elküldése
 

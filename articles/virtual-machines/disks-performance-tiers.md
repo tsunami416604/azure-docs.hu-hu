@@ -1,6 +1,6 @@
 ---
 title: Az Azure Managed Disks teljesítményének módosítása
-description: Ismerje meg a felügyelt lemezek teljesítményi szintjeit, valamint a meglévő felügyelt lemezek teljesítményi szintjeinek módosítását.
+description: Ismerje meg a felügyelt lemezek teljesítményi szintjeit, és Ismerje meg, hogyan változtathatók meg a meglévő felügyelt lemezek teljesítményi szintjei.
 author: roygara
 ms.service: virtual-machines
 ms.topic: how-to
@@ -8,22 +8,27 @@ ms.date: 09/24/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: 7da500c3f18b7bf7057b0c5875bc9b39136a6483
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: efbe8bc24b430716da46601ed073300e4c79cca7
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91396586"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743726"
 ---
 # <a name="performance-tiers-for-managed-disks-preview"></a>A felügyelt lemezek teljesítményi szintjei (előzetes verzió)
 
-Azure Disk Storage jelenleg beépített kitörési képességekkel rendelkezik, amelyek nagyobb teljesítményt biztosítanak a rövid távú váratlan forgalom kezeléséhez. A prémium SSD-k rugalmasan növelhetik a lemez teljesítményét a lemez tényleges méretének növelése nélkül, ami lehetővé teszi a számítási feladatok teljesítményének kielégítését és a költségek csökkentését, ez a funkció jelenleg előzetes verzióban érhető el. Ez ideális olyan eseményekhez, amelyek átmenetileg igénylik a magasabb szintű teljesítményt, például az üdülési vásárlást, a teljesítménytesztet vagy a képzési környezet futtatását. Ezeknek az eseményeknek a kezeléséhez a szükségesnél magasabb szintű teljesítményt választhat, és visszatérhet az eredeti szintjére, ha a további teljesítmény már nem szükséges.
+Azure Disk Storage jelenleg beépített kitörési képességekkel rendelkezik, amelyek nagyobb teljesítményt nyújtanak a rövid távú váratlan forgalom kezeléséhez. A prémium SSD-k rugalmasan növelhetik a lemez teljesítményét a lemez tényleges méretének növelése nélkül. Ez a funkció lehetővé teszi a számítási feladatok teljesítményének kielégítését és a költségek csökkentését. 
+
+> [!NOTE]
+> Ez a szolgáltatás jelenleg előzetes kiadásban elérhető. 
+
+Ez a funkció ideális olyan eseményekhez, amelyek átmenetileg igénylik a magasabb szintű teljesítményt, például az üdülési vásárlást, a teljesítmény tesztelését vagy a képzési környezet futtatását. Ezeknek az eseményeknek a kezeléséhez használhat magasabb szintű teljesítményt, ha szüksége van rá. Ezután visszatérhet az eredeti szintjéhez, ha már nincs szüksége a további teljesítményre.
 
 ## <a name="how-it-works"></a>Működés
 
-Amikor először telepít vagy kiépít egy lemezt, a lemez alapteljesítményi szintje a kiosztott lemez mérete alapján van beállítva. Magasabb teljesítményszint kiválasztható úgy, hogy magasabb szintű igényt lehessen kielégíteni, és ha ez a teljesítmény már nem szükséges, visszatérhet a kezdeti alapteljesítményi szintjéhez.
+Amikor először telepít vagy kiépít egy lemezt, a lemez alapteljesítményi szintje a kiosztott lemez mérete alapján van beállítva. A magasabb szintű igények kielégítéséhez magasabb teljesítményszint is használható. Ha már nincs szüksége erre a teljesítményre, visszatérhet a kezdeti teljesítmény szintjéhez.
 
-A számlázási változások a rétegek változásakor változnak. Ha például kiépít egy P10-lemezt (128 GiB), az alapteljesítmény-szintet a P10 (500 IOPS és 100 MB/s) értékre állítja be, és a P10 arányban kell fizetnie. A szintet a P50 (7500 IOPS és 250 MB/s) teljesítményének megfelelően frissítheti a lemez méretének növelése nélkül, amely során a P50 díjszabása alapján számítjuk fel a díjat. Ha a nagyobb teljesítményre már nincs szükség, visszatérhet a P10 szintjéhez, és a lemez újbóli számlázása a P10 arányban történik.
+A számlázási változások a rétegek változásakor változnak. Ha például kiépít egy P10-lemezt (128 GiB), az alapteljesítmény szintje P10 (500 IOPS és 100 MBps) van beállítva. A díjat a P10 díjszabása alapján számítjuk fel. A szintet úgy frissítheti, hogy az megfeleljen a P50 teljesítményének (7 500 IOPS és 250 MBps) a lemez méretének növelése nélkül. A frissítés ideje alatt a P50 díjszabása alapján számítjuk fel a díjat. Ha már nincs szüksége a magasabb teljesítményre, visszatérhet a P10 szintjéhez. A lemez újbóli számlázása a P10 arányban történik.
 
 | Lemezméret | Alapteljesítmény szintje | Frissíthető a következőre |
 |----------------|-----|-------------------------------------|
@@ -36,26 +41,24 @@ A számlázási változások a rétegek változásakor változnak. Ha például 
 | 256 GiB | P15 | P20, P30, P40, P50 |
 | 512 GiB | P20 | P30, P40, P50 |
 | 1 TiB | P30 | P40, P50 |
-| 2 tebibájt | P40 | P50 |
-| 4 TiB | P50 | Nincsenek |
+| 2 TiB | P40 | P50 |
+| 4 TiB | P50 | Nincs |
 | 8 TiB | P60 |  P70, P80 |
 | 16 TiB | P70 | P80 |
-| 32 tebibájt | P80 | Nincsenek |
+| 32 tebibájt | P80 | Nincs |
 
 Számlázási információk: a [felügyelt lemez díjszabása](https://azure.microsoft.com/pricing/details/managed-disks/).
 
 ## <a name="restrictions"></a>Korlátozások
 
-- Jelenleg csak a prémium SSD-k támogatottak.
-- A rétegek módosítása előtt le kell választani a lemezeket egy futó virtuális gépről.
-- A P60, a P70 és a P80 teljesítmény-szintjeinek használata a 4096 GiB vagy újabb lemezekre korlátozódik.
-- A lemezek teljesítményi szintje csak 24 óránként módosítható.
+- Ez a funkció jelenleg csak prémium SSD-k esetén támogatott.
+- A lemez szintjeinek módosítása előtt le kell választania a lemezt egy futó virtuális gépről.
+- A P60, a P70 és a P80 teljesítmény-szintjeinek használata a 4 096 GiB vagy újabb lemezekre korlátozódik.
+- A lemez teljesítményi szintje csak 24 óránként módosítható.
 
 ## <a name="regional-availability"></a>Régiónkénti rendelkezésre állás
 
-A felügyelt lemezek teljesítményi szintjének módosítása jelenleg csak a prémium szintű SSD-k számára érhető el a következő régiókban:
-
-- USA nyugati középső régiója 
+A felügyelt lemezek teljesítményének beállítása jelenleg csak a prémium szintű SSD-k esetében érhető el az USA nyugati középső régiójában. 
 
 ## <a name="create-an-empty-data-disk-with-a-tier-higher-than-the-baseline-tier"></a>Hozzon létre egy üres adatlemezt, amely az alapcsomagnál magasabb szintű.
 
@@ -102,7 +105,7 @@ az disk show -n $diskName -g $resourceGroupName --query [tier] -o tsv
 
 ## <a name="next-steps"></a>További lépések
 
-Ha át kell méreteznie egy lemezt, hogy kihasználhassa a nagyobb teljesítményszint előnyeit, tekintse meg a tárgyban található cikkeket:
+Ha át kell méreteznie egy lemezt a magasabb teljesítményszint kihasználásához, tekintse meg a következő cikkeket:
 
 - [Virtuális merevlemezek kibontása Linux rendszerű virtuális GÉPEN az Azure CLI-vel](linux/expand-disks.md)
 - [Windows rendszerű virtuális géphez csatolt felügyelt lemez kibontása](windows/expand-os-disk.md)

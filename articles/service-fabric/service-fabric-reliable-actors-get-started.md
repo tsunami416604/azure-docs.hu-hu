@@ -6,12 +6,12 @@ ms.topic: conceptual
 ms.date: 07/10/2019
 ms.author: vturecek
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3727c41c991b83bc3869279cbb0535a6185ff04d
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: f775608c6c349c93a43ef4aef26ad50707cd39b7
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89015730"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743760"
 ---
 # <a name="getting-started-with-reliable-actors"></a>A Reliable Actors első lépései
 > [!div class="op_single_selector"]
@@ -52,7 +52,7 @@ A megoldás három projektet tartalmaz:
 
 ## <a name="customize-the-helloworld-actor"></a>A HelloWorld Actor testreszabása
 
-A projekt sablonja meghatároz néhány módszert a `IHelloWorld` felületen, és implementálja azokat a `HelloWorld` színészi implementációban.  Cserélje le ezeket a metódusokat, hogy a Actor szolgáltatás egy egyszerű ""Helló világ!"alkalmazás" karakterláncot ad vissza.
+A projekt sablonja meghatároz néhány módszert a `IHelloWorld` felületen, és implementálja azokat a `HelloWorld` színészi implementációban.  Cserélje le ezeket a metódusokat, hogy a Actor szolgáltatás egy egyszerű "„Helló világ!” alkalmazás" karakterláncot ad vissza.
 
 A *HelloWorld. interfaces* projekt *IHelloWorld.cs* fájljában cserélje le az interfész definícióját a következőképpen:
 
@@ -108,7 +108,7 @@ Hozzon létre egy egyszerű konzolos alkalmazást a Actor szolgáltatás meghív
 
     A NuGet-csomag és annak összes függősége telepítve van a ActorClient projektben.
 
-5. Az ügyfél projekthez az illesztőfelületek projektre mutató hivatkozás is szükséges.  A ActorClient projektben kattintson a jobb gombbal a **függőségek** elemre, majd kattintson a **hivatkozás hozzáadása..**. elemre.  Válassza a **projektek > a megoldás** elemet (ha még nincs kiválasztva), majd jelölje be a **HelloWorld. interfaces**elem melletti jelölőnégyzetet.  Kattintson az **OK** gombra.
+5. Az ügyfél projekthez az illesztőfelületek projektre mutató hivatkozás is szükséges.  A ActorClient projektben kattintson a jobb gombbal a **függőségek** elemre, majd kattintson a **projekt-hivatkozás hozzáadása**parancsra.  Válassza a **projektek > a megoldás** elemet (ha még nincs kiválasztva), majd jelölje be a **HelloWorld. interfaces**elem melletti jelölőnégyzetet.  Kattintson az **OK** gombra.
     
     ![Hivatkozás hozzáadása párbeszédpanel][7]
 
@@ -149,7 +149,7 @@ Ha a kimenet tartalmazza a szöveget, *az alkalmazás készen áll*, a ActorClie
 > [!TIP]
 > A Service Fabric Actors Runtime a [színészi módszerekhez kapcsolódó eseményeket és](service-fabric-reliable-actors-diagnostics.md#actor-method-events-and-performance-counters)teljesítményszámlálókat bocsát ki. Ezek a diagnosztika és a teljesítmény monitorozása során hasznosak.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További információ arról, [hogy Reliable Actors hogyan használják a Service Fabric platformot](service-fabric-reliable-actors-platform.md).
 
 

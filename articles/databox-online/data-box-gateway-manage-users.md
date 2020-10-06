@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: how-to
 ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 38b4b701329cf35088d797b095fa3caca46f55b6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9e941007ddc27f809de7d43cd33e44c5b521a6bd
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84338974"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743828"
 ---
 # <a name="use-the-azure-portal-to-manage-users-on-your-azure-data-box-gateway"></a>Azure Data Box Gateway-felhasználók kezelése az Azure Portalon
 
@@ -45,7 +45,7 @@ Felhasználó hozzáadásához hajtsa végre az alábbi lépéseket az Azure Por
 
 2. Adja meg a hozzáadni kívánt felhasználó felhasználónevét és jelszavát. Erősítse meg a jelszót, majd kattintson a **Hozzáadás** gombra.
 
-    ![Kattintson a Felhasználó hozzáadása gombra](media/data-box-gateway-manage-users/add-user-2.png)
+    ![Kattintson a felhasználó hozzáadása 2](media/data-box-gateway-manage-users/add-user-2.png)
 
     > [!IMPORTANT] 
     > A következő rendszer által lefoglalt felhasználók nem használhatóak: Rendszergazda, EdgeUser, EdgeSupport, HcsSetupUser, WDAGUtilityAccount, CLIUSR, DefaultAccount, Vendég.  
@@ -70,11 +70,11 @@ Felhasználó törléséhez hajtsa végre a következő lépéseket az Azure Por
 
 2. A rendszer kérésére erősítse meg a törlést. 
 
-   ![Felhasználó törlése](media/data-box-gateway-manage-users/delete-user-2.png)
+   ![Felhasználó törlése 2](media/data-box-gateway-manage-users/delete-user-2.png)
 
 A törlés végrehajtása után annak megfelelően frissül a felhasználók listája.
 
-![Felhasználó törlése](media/data-box-gateway-manage-users/delete-user-3.png)
+![Felhasználó törlése 3](media/data-box-gateway-manage-users/delete-user-3.png)
 
 
 ## <a name="next-steps"></a>További lépések

@@ -6,14 +6,13 @@ ms.subservice: general
 ms.topic: conceptual
 author: msmbaldwin
 ms.author: mbaldwin
-manager: rkarlin
-ms.date: 03/19/2019
-ms.openlocfilehash: 1affa396407ba9804261c799b559e40928b9b1fa
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.date: 09/30/2020
+ms.openlocfilehash: c8ae10fa059bb9cfd32b95f9bc6d21f30ad9f880
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87388386"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91744202"
 ---
 # <a name="azure-key-vault-soft-delete-overview"></a>Azure Key Vault: a helyreállítható törlés áttekintése
 
@@ -28,7 +27,7 @@ Key Vault a helyreállítható törlési funkció lehetővé teszi a törölt t�
 
 ## <a name="supporting-interfaces"></a>Támogató felületek
 
-A Soft-delete funkció kezdetben a [Rest](/rest/api/keyvault/), a [CLI](soft-delete-cli.md), a [PowerShell](soft-delete-powershell.md)és a [.net/C#](/dotnet/api/microsoft.azure.keyvault?view=azure-dotnet) felületen, valamint az ARM- [sablonokon](https://docs.microsoft.com/azure/templates/microsoft.keyvault/2019-09-01/vaults)keresztül érhető el.
+A Soft-delete funkció a [REST API](/rest/api/keyvault/), az [Azure CLI](soft-delete-cli.md), a [Azure PowerShell](soft-delete-powershell.md)és a [.net/C#](/dotnet/api/microsoft.azure.keyvault?view=azure-dotnet) felületen, valamint az [ARM-sablonokon](/azure/templates/microsoft.keyvault/2019-09-01/vaults)keresztül érhető el.
 
 ## <a name="scenarios"></a>Forgatókönyvek
 
@@ -48,13 +47,13 @@ Az alapértelmezett megőrzési időtartam 90 nap, de a Key Vault létrehozása 
 
 Nem lehet újra felhasználni egy olyan kulcstartó nevét, amelyet a rendszer a megőrzési időszak lejárta után töröl.
 
-### <a name="purge-protection"></a>Védelem kiürítése 
+### <a name="purge-protection"></a>Védelem kiürítése
 
 A védelem kiürítése opcionális Key Vaulti viselkedés, és **alapértelmezés szerint nincs engedélyezve**. A védelem kiürítése csak akkor engedélyezhető, ha a törlés engedélyezve van.  A [parancssori](soft-delete-cli.md#enabling-purge-protection) felület vagy a [PowerShell](soft-delete-powershell.md#enabling-purge-protection)használatával kapcsolható be.
 
-Ha a védelem kiürítése be van kapcsolva, a törölt állapotban lévő tároló vagy objektum nem törölhető, amíg meg nem adta a megőrzési időszakot. A helyreállítható tárolók és objektumok továbbra is helyreállíthatók, így biztosítható, hogy az adatmegőrzési szabályzatot követni fogjuk. 
+Ha a védelem kiürítése be van kapcsolva, a törölt állapotban lévő tároló vagy objektum nem törölhető, amíg meg nem adta a megőrzési időszakot. A helyreállítható tárolók és objektumok továbbra is helyreállíthatók, így biztosítható, hogy az adatmegőrzési szabályzatot követni fogjuk.
 
-Az alapértelmezett megőrzési időtartam 90 nap, de az adatmegőrzési házirend intervalluma 7 – 90 nap értékre állítható be a Azure Portalon keresztül. Ha a megőrzési időtartam beállítása és mentése megtörtént, akkor az adott tár esetében nem módosítható. 
+Az alapértelmezett megőrzési időtartam 90 nap, de az adatmegőrzési házirend intervalluma 7 – 90 nap értékre állítható be a Azure Portalon keresztül. Ha a megőrzési időtartam beállítása és mentése megtörtént, akkor az adott tár esetében nem módosítható.
 
 ### <a name="permitted-purge"></a>Engedélyezett kiürítés
 
@@ -63,6 +62,8 @@ Végleges törlés, ürítés, kulcstartó lehetséges a proxy erőforrás után
 Kivételek:
 - Ha az Azure-előfizetés nem *törölhető*van megjelölve. Ebben az esetben csak a szolgáltatás végezheti el a tényleges törlést, és ezt ütemezett folyamatként is végrehajthatja. 
 - Ha az `--enable-purge-protection flag` engedélyezve van a tárolón. Ebben az esetben Key Vault várni fog a 90 nap, amikor az eredeti titkos objektum törlésre lett megjelölve az objektum végleges törléséhez.
+
+A lépéseket a következő témakörben tekintheti meg: [Key Vault Soft-delete használata](soft-delete-cli.md#purging-a-key-vault) parancssori felülettel: kulcstartó [kiürítése vagy Key Vault-törlés használata a PowerShell használatával: kulcstartó törlése](soft-delete-powershell.md#purging-a-key-vault).
 
 ### <a name="key-vault-recovery"></a>Key Vault-helyreállítás
 
@@ -79,10 +80,10 @@ Ugyanakkor Key Vault a törölt kulcstartónak vagy a Key Vault-objektumnak megf
 A Soft-Deleted-erőforrások megmaradnak egy meghatározott ideig, 90 nap. A helyreállítható törlés megőrzési időköze során a következők érvényesek:
 
 - Az előfizetéshez tartozó összes kulcstartót és kulcstartó objektumot listázhatja, valamint a hozzáférés törlését és a helyreállítási adatokat is.
-    - Csak a speciális engedélyekkel rendelkező felhasználók listázhatja a törölt tárolókat. Javasoljuk, hogy a felhasználók egyéni szerepkört hozzanak létre ezekkel a speciális engedélyekkel a törölt tárolók kezelésére.
-- Azonos nevű kulcstartó nem hozható létre ugyanazon a helyen; Ennek megfelelően egy Key Vault-objektum nem hozható létre egy adott tárolóban, ha a Key Vault azonos nevű objektumot tartalmaz, és amely törölt állapotban van 
+  - Csak a speciális engedélyekkel rendelkező felhasználók listázhatja a törölt tárolókat. Javasoljuk, hogy a felhasználók egyéni szerepkört hozzanak létre ezekkel a speciális engedélyekkel a törölt tárolók kezelésére.
+- Azonos nevű kulcstartó nem hozható létre ugyanazon a helyen; Ennek megfelelően egy Key Vault-objektum nem hozható létre egy adott tárolóban, ha a Key Vault azonos nevű objektumot tartalmaz, és amely törölt állapotban van.
 - Csak egy speciális jogosultsággal rendelkező felhasználó állíthatja vissza a Key vaultot vagy a Key Vault-objektumot úgy, hogy kiállít egy Recover parancsot a megfelelő proxy erőforráson.
-    - A felhasználó, az egyéni szerepkör tagja, aki rendelkezik az erőforráscsoport alatt kulcstartó létrehozásához szükséges jogosultsággal, visszaállíthatja a tárolót.
+  - A felhasználó, az egyéni szerepkör tagja, aki rendelkezik az erőforráscsoport alatt kulcstartó létrehozásához szükséges jogosultsággal, visszaállíthatja a tárolót.
 - Csak egy speciális jogosultsággal rendelkező felhasználó kényszerítheti a Key Vault vagy a Key Vault objektum törlését a megfelelő proxy erőforráson lévő delete parancs kiadásával.
 
 Ha egy kulcstartó vagy kulcstartó-objektum helyreáll, a megőrzési időtartam végén a szolgáltatás elvégzi a nem törölt kulcstartó vagy a kulcstartó objektum és annak tartalma kiürítését. Előfordulhat, hogy az erőforrás-törlés nem lett átütemezett.
@@ -94,10 +95,9 @@ Ha egy kulcstartó vagy kulcstartó-objektum helyreáll, a megőrzési időtarta
 - a "kiürítés" és a "helyreállítás" művelet a normál Key Vault-műveletekbe kerül, és számlázásra kerül.
 - Ha az objektum egy HSM-kulcs, a "HSM-védelemmel ellátott kulcs havi díja" díjat akkor kell alkalmazni, ha az elmúlt 30 napban a kulcs verzióját használták. Ezt követően, mivel az objektum törölve állapotban van, semmilyen műveletet nem lehet végrehajtani, ezért a rendszer díjmentesen alkalmazza.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A következő két útmutató az elsődleges használati forgatókönyveket kínálja a Soft delete használatára.
 
 - [A Key Vault helyreállítható törlés funkciójának használata PowerShell-lel](soft-delete-powershell.md) 
 - [A Key Vault helyreállítható törlés funkciójának használata parancssori felülettel](soft-delete-cli.md)
-

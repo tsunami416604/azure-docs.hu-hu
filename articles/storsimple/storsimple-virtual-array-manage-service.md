@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 2ff987448e3900c2a533789b2f38fd3ced71ce72
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 29ea9300b2f86f442d95c96d4a5df3364628d866
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84698937"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91744134"
 ---
 # <a name="deploy-the-storsimple-device-manager-service-for-storsimple-virtual-array"></a>A StorSimple Eszközkezelő szolgáltatás üzembe helyezése a StorSimple virtuális tömbben
 
@@ -109,7 +109,7 @@ A szolgáltatás regisztrációs kulcsának újralétrehozásához hajtsa végre
 #### <a name="to-regenerate-the-service-registration-key"></a>A szolgáltatás regisztrációs kulcsának előállítása
 1. A **StorSimple Eszközkezelő** panelen lépjen a **felügyeleti &gt; ** **kulcsok**elemre.
    
-   ![Kulcsok panel](./media/storsimple-virtual-array-manage-service/getregkey2.png)
+   ![Kulcsok panel újra](./media/storsimple-virtual-array-manage-service/getregkey2.png)
 2. A **kulcsok** panelen kattintson az **újragenerálás**elemre.
    
    ![Kattintson az újragenerált elemre.](./media/storsimple-virtual-array-manage-service/getregkey5.png)
@@ -118,7 +118,7 @@ A szolgáltatás regisztrációs kulcsának újralétrehozásához hajtsa végre
    ![Kulcs újralétrehozásának megerősítése](./media/storsimple-virtual-array-manage-service/getregkey3.png)
 4. Ekkor megjelenik egy új szolgáltatás regisztrációs kulcsa.
    
-    ![Kulcs újralétrehozásának megerősítése](./media/storsimple-virtual-array-manage-service/getregkey4.png)
+    ![További újragenerált kulcs megerősítése](./media/storsimple-virtual-array-manage-service/getregkey4.png)
    
    Másolja ezt a kulcsot, és mentse a szolgáltatáshoz tartozó új eszközök regisztrálásához.
 

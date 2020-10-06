@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: how-to
 ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 25f74fb78979313acc068320d842d09a982d8d16
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8ccc9725ffe5304942b740d460a67129f9c1c5d8
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84339144"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743845"
 ---
 # <a name="use-the-azure-portal-to-manage-bandwidth-schedules-on-your-azure-data-box-gateway"></a>Az Azure Data Box Gateway sávszélesség-ütemezési beállításait az Azure Portalon keresztül kezelheti  
 
@@ -40,13 +40,13 @@ Felhasználó hozzáadásához hajtsa végre az alábbi lépéseket az Azure Por
 
 3. Az **Ütemezés hozzáadása** területen: 
 
-   1. Adja meg az ütemezés **Kezdő nap**, **Záró nap**, **Kezdés** és **Befejezés** paramétereinek értékeit. 
+   1. Adja meg a **kezdő napot**, a **Befejezés napját**, a **kezdési időt**és az ütemezett **befejezési időpontot** . 
    2. Ha az adott ütemezés az egész napra vonatkozik, jelölje be az **Egész nap** jelölőnégyzetet. 
-   3. A **Sávszélesség** az eszköz által felhasznált sávszélesség Mb/s-ban kifejezett értéke a felhőműveletek (fel- és letöltés egyaránt) esetében. Ebben a mezőben 1–1000 közötti értéket adjon meg. 
+   3. A **sávszélesség sebessége** az eszköz által a felhővel (feltöltések és letöltések) járó műveletekben használt sávszélesség (MB/s). Ebben a mezőben 1–1000 közötti értéket adjon meg. 
    4. Ha nem kívánja korlátozni a fel- és letöltéseket, válassza a **Korlátlan** sávszélesség-beállítást. 
    5. Kattintson a **Hozzáadás** parancsra.
 
-      ![Kattintson a Felhasználó hozzáadása gombra](media/data-box-gateway-manage-bandwidth-schedules/add-schedule-2.png)
+      ![Kattintson a felhasználó hozzáadása 2](media/data-box-gateway-manage-bandwidth-schedules/add-schedule-2.png)
 
 3. Ekkor létrejön egy ütemezés a megadott paraméterekkel. Az ütemezés ezután megjelenik a portálon is, a sávszélesség-ütemezések listájában.
 
@@ -61,11 +61,11 @@ A sávszélesség-ütemezéseket az alábbi lépesek végrehajtásával szerkesz
 
 3. Hajtsa végre és mentse a kívánt módosításokat.
 
-    ![Felhasználó módosítása](media/data-box-gateway-manage-bandwidth-schedules/modify-schedule-2.png)
+    ![Felhasználó módosítása 2](media/data-box-gateway-manage-bandwidth-schedules/modify-schedule-2.png)
 
 4. Az ütemezés módosítása után annak megfelelően frissül az ütemezések listája.
 
-    ![Felhasználó módosítása](media/data-box-gateway-manage-bandwidth-schedules/modify-schedule-3.png)
+    ![3. felhasználó módosítása](media/data-box-gateway-manage-bandwidth-schedules/modify-schedule-3.png)
 
 
 ## <a name="delete-a-schedule"></a>Ütemezés törlése

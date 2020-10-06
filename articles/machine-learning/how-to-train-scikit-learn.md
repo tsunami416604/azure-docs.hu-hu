@@ -10,12 +10,12 @@ author: jpe316
 ms.date: 09/28/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 28401b5900640ed7228d7c7caad0cebbabf00a65
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: f0c923bcb7df930ed4b1380d487ededc6c160844
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91532720"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743743"
 ---
 # <a name="train-scikit-learn-models-at-scale-with-azure-machine-learning"></a>Scikit betanítása – a modellek Azure Machine Learning
 
@@ -66,9 +66,17 @@ Megjegyzések:
 
 Ha meg szeretné határozni, hogy melyik Azure ML- [környezet](concept-environments.md) tartalmazza a betanítási parancsfájl függőségeit, definiálhat egyéni környezetet, vagy használhatja az Azure ml-t.
 
+#### <a name="use-a-curated-environment"></a>Kurátori környezet használata
+Ha nem szeretné, hogy a saját környezete ne legyen meghatározva, az Azure ML előre összeállított, kiszolgált környezeteket is biztosít. További információ: [itt](resource-curated-environments.md).
+Ha egy kurátori környezetet szeretne használni, a következő parancsot futtathatja inkább:
+
+```python
+sklearn_env = Environment.get(workspace=ws, name='AzureML-Tutorial')
+```
+
 #### <a name="create-a-custom-environment"></a>Egyéni környezet létrehozása
 
-Saját egyéni környezet létrehozásához adja meg a Conda függőségeit egy YAML-fájlban; Ebben a példában a fájl neve `conda_dependencies.yml` .
+Létrehozhatja saját egyéni környezetét is. Adja meg a Conda függőségeit egy YAML-fájlban; Ebben a példában a fájl neve `conda_dependencies.yml` .
 
 ```yaml
 dependencies:
@@ -87,14 +95,6 @@ sklearn_env = Environment.from_conda_specification(name='sklearn-env', file_path
 ```
 
 További információ a környezetek létrehozásáról és használatáról: [szoftverek környezetének létrehozása és használata Azure Machine Learningban](how-to-use-environments.md).
-
-#### <a name="use-a-curated-environment"></a>Kurátori környezet használata
-Ha nem szeretné, hogy a saját rendszerképe ne legyen létrehozva, az Azure ML-ben előre összeállított, kiépített környezetek is elérhetők. További információ: [itt](resource-curated-environments.md).
-Ha egy kurátori környezetet szeretne használni, a következő parancsot futtathatja inkább:
-
-```python
-sklearn_env = Environment.get(workspace=ws, name='AzureML-Tutorial')
-```
 
 ## <a name="configure-and-submit-your-training-run"></a>A betanítási Futtatás konfigurálása és elküldése
 

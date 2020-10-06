@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/07/2020
 ms.author: jeedes
-ms.openlocfilehash: 379ae013e9343b14b854386a0a9f486dd2917e94
-ms.sourcegitcommit: 5b69ba21787c07547edfbfd5254eaf34315cfadd
+ms.openlocfilehash: b8593873774575635b31176b162086795e8a1320
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/05/2020
-ms.locfileid: "91712323"
+ms.locfileid: "91744287"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-boomi"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Boomi
 
@@ -89,7 +89,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     c. A metaadat-fájl feltöltése után a rendszer az alapszintű SAML-konfiguráció szakaszban automatikusan feltölti az **azonosítót** és a **Válasz URL-** értékeket.
 
-    ![image](common/idp-intiated.png)
+    ![A képernyőfelvételen az alapszintű SAML-konfiguráció látható, ahol az azonosító és a válasz U R L érték jelenik meg.](common/idp-intiated.png)
 
     d. Adja meg a **bejelentkezési URL-címet**, például: `https://platform.boomi.com/AtomSphere.html#build;accountId={your-accountId}` .
 
@@ -98,7 +98,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. A Boomi alkalmazás egy adott formátumban várja az SAML-jogcímeket, ehhez pedig egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőképen az alapértelmezett attribútumok listája látható.
 
-    ![image](common/default-attributes.png)
+    ![Képernyőfelvétel: felhasználói attribútumok & alapértelmezett értékekkel rendelkező jogcímek, például givenName user. givenName és EmailAddress user. mail.](common/default-attributes.png)
 
 1. A fentiek mellett a Boomi alkalmazás néhány további attribútumot vár az SAML-válaszban, amelyek alább láthatók. Ezek az attribútumok előre fel vannak töltve, de a követelményeinek megfelelően áttekintheti őket.
 
@@ -176,13 +176,13 @@ Ahhoz, hogy az Azure AD-felhasználók bejelentkezzenek a Boomi, a Boomi-ben kel
 
 1. Bejelentkezés után navigáljon a felhasználók **felügyeletéhez** , és nyissa meg a **felhasználókat**.
 
-    ![Felhasználók](./media/boomi-tutorial/tutorial_boomi_001.png "Felhasználók")
+    ![Képernyőfelvétel: a felhasználó-felügyeleti oldal, amelyen a felhasználók ki vannak választva.](./media/boomi-tutorial/tutorial_boomi_001.png "Felhasználók")
 
 1. Kattintson **+**  a ikon gombra, és megnyílik a **felhasználói szerepkörök hozzáadása/karbantartása** párbeszédpanel.
 
-    ![Felhasználók](./media/boomi-tutorial/tutorial_boomi_002.png "Felhasználók")
+    ![Képernyőfelvétel: a kiválasztott + ikon.](./media/boomi-tutorial/tutorial_boomi_002.png "Felhasználók")
 
-    ![Felhasználók](./media/boomi-tutorial/tutorial_boomi_003.png "Felhasználók")
+    ![A képernyőfelvételen a felhasználói szerepkörök hozzáadása és karbantartása látható, ahol a felhasználó konfigurálható.](./media/boomi-tutorial/tutorial_boomi_003.png "Felhasználók")
 
     a. A **felhasználó e-mail címe** szövegmezőbe írja be a felhasználóhoz hasonló e-mail címet B.Simon@contoso.com .
 

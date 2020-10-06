@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: article
-ms.date: 04/19/2019
+ms.date: 10/05/2020
 ms.author: alkohli
-ms.openlocfilehash: 71e0ebf7d7851ae65a6fba67a1695d755fd98bb1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ac5f2de383066d6ee399dac3b0ad8c365b2e72bc
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "61436494"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91744098"
 ---
 # <a name="azure-data-box-blob-storage-requirements"></a>BLOB Storage-követelmények Azure Data Box
 
@@ -30,40 +30,27 @@ Javasoljuk, hogy figyelmesen tekintse át az információkat, mielőtt csatlakoz
 |    Szolgáltatás titkosítása inaktív adatok esetén                  |    256 bites AES-titkosítás                             |    256 bites AES-titkosítás |
 |    Tárfiók típusa                                 |    Általános célú és Azure Blob Storage-fiókok    |    Csak általános célú v1|
 |    A blob neve                                            |    1 024 karakter (2 048 bájt)                     |    880 karakter (1 760 bájt)|
-|    BLOB maximális méretének letiltása                              |    4,75 TB (100 MB X 50 000 blokk)                   |    4,75 TB (100 MB x 50 000 blokk) Azure Data Box v 1,8-től.|
+|    BLOB maximális méretének letiltása                              |    4,75 TB (100 MB X 50 000 blokk)                   |    4,75 TB (100 MB x 50 000 blokk) Azure Data Box v 3,0-től.|
 |    Oldal blobjának maximális mérete                               |    8 TB                                               |    1 TB                   |
 |    Oldal blob-oldalának mérete                                  |    512 bájt                                          |    4 KB                   |
 
 ## <a name="supported-api-versions"></a>Támogatott API-verziók
 
-Az Azure Storage Service API-k következő verziói támogatottak Data Box blob Storage-ban:
+Az Azure Storage Service API-k következő verziói támogatottak Data Box blob Storage-ban.
 
-Azure Data Box 1,8-tól
+### <a name="azure-data-box-30-onwards"></a>Azure Data Box 3,0-tól
 
-- [2017-11-09](/rest/api/storageservices/version-2017-11-09)
-- [2017-07-29](/rest/api/storageservices/version-2017-07-29)
-- [2017. 4. 17.](/rest/api/storageservices/version-2017-04-17)
-- [2016-05-31](/rest/api/storageservices/version-2016-05-31)
-- [2015-12-11](/rest/api/storageservices/version-2015-12-11)
-- [2015-07-08](/rest/api/storageservices/version-2015-07-08)
-- [2015-04-05](/rest/api/storageservices/version-2015-04-05)|
+[!INCLUDE [data-box-rest-supported-api-versions](../../includes/data-box-rest-supported-api-versions.md)]
+
 ## <a name="supported-azure-client-libraries"></a>Támogatott Azure-ügyféloldali kódtárak
 
-Data Box blob Storage esetében bizonyos ügyféloldali kódtárak és meghatározott végponti utótagok szükségesek. A Data Box blob Storage-végpontok nem rendelkeznek teljes paritással az Azure Blob Storage REST API legújabb verziójával, lásd a [támogatott verziókat Azure Data Box 1,8](#supported-api-versions)-es verzióra. A Storage ügyféloldali kódtárai esetében tisztában kell lennie azzal a verzióval, amely kompatibilis a REST APIával.
+Data Box blob Storage esetében bizonyos ügyféloldali kódtárak és meghatározott végponti utótagok szükségesek. A Data Box blob Storage-végpontok nem rendelkeznek teljes paritással az Azure Blob Storage REST API legújabb verziójával. Tekintse [meg a Azure Data Box 3,0 támogatott verzióit](#supported-api-versions). A Storage ügyféloldali kódtárai esetében tisztában kell lennie azzal a verzióval, amely kompatibilis a REST APIával.
 
-### <a name="azure-data-box-18-onwards"></a>Azure Data Box 1,8-tól
+### <a name="azure-data-box-30-onwards"></a>Azure Data Box 3,0-tól
 
-| Ügyfélkódtár     |Data Box blob Storage támogatott verziója     | Hivatkozás   |     Végpont specifikációja      |
-|--------------------|--------------------------------------------|--------|---------------------------------|
-|    .NET                |    9.2.0                                           |    Nuget-csomag:https://www.nuget.org/packages/WindowsAzure.Storage/9.2.0    <br>GitHub-kiadás:https://github.com/Azure/azure-storage-net/releases/tag/v9.2.0                                                                                                                                                                                               |    app.config fájl                 |
-|    Java                |    7.0.0                                           |    Maven-csomag:https://mvnrepository.com/artifact/com.microsoft.azure/azure-storage/6.1.0   <br>GitHub-kiadás:https://github.com/Azure/azure-storage-java/releases/tag/v7.0.0                                                                                                                                                                              |    A kapcsolatok karakterláncának beállítása         |
-|    Node.js             |    2.8.3                                           |    NPM-hivatkozás: https://www.npmjs.com/package/azure-storage (Futtatás: `npm install azure-storage@2.7.0` )   <br>GitHub-kiadás:https://github.com/Azure/azure-storage-node/releases/tag/v2.8.3                                                                                                                                                                        |    Szolgáltatási példány deklarációja    |
-|    C++                 |    5.2.0                                           |    Nuget-csomag:https://www.nuget.org/packages/wastorage.v140/5.2.0   <br>GitHub-kiadás:https://github.com/Azure/azure-storage-cpp/releases/tag/v5.2.0                                                                                                                                                                                                     |    A kapcsolatok karakterláncának beállítása         |
-|    PHP                 |    1.2.0                                           |    GitHub-kiadás:<br>Közöshttps://github.com/Azure/azure-storage-php/releases/tag/v1.2.0-common   <br>BLOBhttps://github.com/Azure/azure-storage-php/releases/tag/v1.2.0-blob      <br>Telepítés a Zeneszerzőn keresztül (további tudnivalókért tekintse meg az alábbi részleteket.)                                                                                                             |    A kapcsolatok karakterláncának beállítása         |
-|    Python              |    1.1.0                                           |    GitHub-kiadás:<br>Közöshttps://github.com/Azure/azure-storage-python/releases/tag/v1.0.0-common <br>BLOBhttps://github.com/Azure/azure-storage-python/releases/tag/v1.1.0-blob                                                                                                                                                                          |    Szolgáltatási példány deklarációja    |
-|    Ruby                |    1.0.1                                           |    RubyGems-csomag:<br>Közöshttps://rubygems.org/gems/azure-storage-common/versions/1.0.1   <br>BLOBhttps://rubygems.org/gems/azure-storage-blob/versions/1.0.1         <br>GitHub-kiadás:<br>Közöshttps://github.com/Azure/azure-storage-ruby/releases/tag/v1.0.1-common   <br>BLOBhttps://github.com/Azure/azure-storage-ruby/releases/tag/v1.0.1-blob          |    A kapcsolatok karakterláncának beállítása         |
+A blob Storage Data Box a következő Azure ügyféloldali függvénytár-verziókat támogatja.
 
-
+[!INCLUDE [data-box-rest-supported-azure-client-libraries](../../includes/data-box-rest-supported-azure-client-libraries.md)]
 
 ### <a name="install-php-client-via-composer---current"></a>PHP-ügyfél telepítése a Zeneszerzőn keresztül – aktuális
 
@@ -83,7 +70,7 @@ A következőn keresztül történő telepítéshez: (blob készítése példak�
 
 ### <a name="endpoint-declaration"></a>Végpont deklarációja
 
-Az Azure Data Box blob Storage-végpont két részből áll: a régió és a Data Box tartomány neve. A Data Box blob Storage SDK-ban az alapértelmezett végpont a `\<serial no. of the device>.microsoftdatabox.com` .  A blob Service-végponttal kapcsolatos további információkért nyissa meg a [kapcsolódás Data Box blob Storage](data-box-deploy-copy-data-via-rest.md)-on keresztül című témakört.
+A Data Box blob Storage SDK-ban a végpont utótagja – `<device serial number>.microsoftdatabox.com` a Data Box tartományt azonosítja. A blob Service-végponttal kapcsolatos további információkért lépjen a [kapcsolódás Data Box blob Storage](data-box-deploy-copy-data-via-rest.md)-on keresztül.
  
 ## <a name="examples"></a>Példák
 

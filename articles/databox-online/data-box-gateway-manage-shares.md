@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: how-to
 ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 785fcbbcde0c4efe3c2d1cd84bf19bd03371ab06
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 847c8a07bfa245d0c9859bb3cf6f6ed233934250
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90883537"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743879"
 ---
 # <a name="use-the-azure-portal-to-manage-shares-on-your-azure-data-box-gateway"></a>Az Azure Data Box Gateway megosztási beállításait az Azure Portalon keresztül kezelheti 
 
@@ -94,7 +94,7 @@ Megosztás frissítéséhez hajtsa végre a következő lépéseket az Azure Por
 
 1. Az Azure Portalon lépjen a **Megosztások** területre. Jelölje ki a frissíteni kívánt megosztást, majd kattintson rá.
 
-   ![Jelölje ki a megosztást](media/data-box-gateway-manage-shares/refresh-1.png)
+   ![2. megosztás kiválasztása](media/data-box-gateway-manage-shares/refresh-1.png)
 
 2. Kattintson a **Frissítés** gombra. 
 
@@ -124,16 +124,16 @@ A tárelérési kulcsok szinkronizálásához hajtsa végre a következő lépé
 1. Lépjen az erőforrás **Áttekintés** területére. 
 2. A megosztások listájában válassza ki, majd kattintson a szinkronizálni kívánt Storage-fiókhoz társított megosztásra. Kattintson a **Storage-kulcs szinkronizálása**elemre. 
 
-     ![1. tárkulcs szinkronizálása](media/data-box-gateway-manage-shares/sync-storage-key-1.png)
+     ![Tárkulcs szinkronizálása](media/data-box-gateway-manage-shares/sync-storage-key-1.png)
 
 3. Ha a rendszer megerősítést kér, kattintson az **Igen** gombra. A szinkronizálást követően zárja be a párbeszédpanelt.
 
-     ![1. tárkulcs szinkronizálása](media/data-box-gateway-manage-shares/sync-storage-key-2.png)
+     ![2. Storage-kulcs szinkronizálása](media/data-box-gateway-manage-shares/sync-storage-key-2.png)
 
 >[!NOTE]
 > Ezt a műveletet csak egyszer kell elvégezni az egyes tárfiókok esetében, nem kell megismételni minden egyes, ugyanazon tárfiókhoz tartozó megosztásnál.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ismerje meg, hogyan [kezelheti a felhasználókat az Azure Portalon keresztül](data-box-gateway-manage-users.md).

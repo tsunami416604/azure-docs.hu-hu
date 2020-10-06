@@ -11,12 +11,12 @@ ms.subservice: core
 ms.date: 07/23/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
-ms.openlocfilehash: 488f48275fa511ea69939563496beaaa709d9bf0
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: 4db53b806adc2e29ae9c9a950faf8fc822c9d66b
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91631664"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743981"
 ---
 # <a name="create--use-software-environments-in-azure-machine-learning"></a>Hozzon létre & a szoftveres környezetek használatával Azure Machine Learning
 
@@ -114,7 +114,7 @@ Alapértelmezés szerint az újonnan létrehozott Docker-rendszerkép megjelenik
 
 #### <a name="use-a-prebuilt-docker-image"></a>Előre összeépített Docker-rendszerkép használata
 
-Alapértelmezés szerint a szolgáltatás automatikusan a Ubuntu Linux-alapú [alaplemezképek](https://github.com/Azure/AzureML-Containers)valamelyikét használja, különösen a által meghatározottak szerint `azureml.core.run_config.DEFAULT_CPU_IMAGE` . Ezután telepíti a megadott, az Azure ML-környezet által meghatározott Python-csomagokat. [Egyéni Docker-alaprendszerkép](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-custom-docker-image#create-a-custom-base-image)is használható.
+Alapértelmezés szerint a szolgáltatás automatikusan a Ubuntu Linux-alapú [alaplemezképek](https://github.com/Azure/AzureML-Containers)valamelyikét használja, különösen a által meghatározottak szerint `azureml.core.environment.DEFAULT_CPU_IMAGE` . Ezután telepíti a megadott, az Azure ML-környezet által meghatározott Python-csomagokat. [Egyéni Docker-alaprendszerkép](https://docs.microsoft.com/azure/machine-learning/how-to-deploy-custom-docker-image#create-a-custom-base-image)is használható.
 
 ```python
 # Specify custom Docker base image and registry, if you don't want to use the defaults

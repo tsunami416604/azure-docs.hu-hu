@@ -3,15 +3,15 @@ title: Azure Batch-készlet létrehozása nyilvános IP-címek nélkül
 description: Megtudhatja, hogyan hozhat létre nyilvános IP-címek nélküli készletet
 author: pkshultz
 ms.topic: how-to
-ms.date: 09/28/2020
+ms.date: 10/05/2020
 ms.author: peshultz
 ms.custom: references_regions
-ms.openlocfilehash: e6922abb48e19157e6905d9ceb71817cfbaff767
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: 3106ceef8bc45d70401265f61bacb17cb0dc7262
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91570866"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743658"
 ---
 # <a name="create-an-azure-batch-pool-without-public-ip-addresses"></a>Azure Batch-készlet létrehozása nyilvános IP-címek nélkül
 
@@ -24,7 +24,7 @@ Alapértelmezés szerint a Azure Batch virtuálisgép-konfigurációs készlet �
 Ha korlátozni szeretné ezen csomópontok elérését, és csökkenti a csomópontok internetről való felderíthetővé tételét, nyilvános IP-címek nélkül is kiépítheti a készletet.
 
 > [!IMPORTANT]
-> A Azure Batch nyilvános IP-címek nélküli készletek támogatása jelenleg nyilvános előzetes verzióban érhető el a következő régiókban: Közép-Franciaország, Kelet-Ázsia, az USA nyugati középső régiója, az USA déli középső régiója, USA 2. nyugati régiója, USA keleti régiója, Észak-Európa, USA 2. keleti régiója, Nyugat-Európa.
+> A nyilvános IP-címek nélküli készletek támogatása a Azure Batch jelenleg nyilvános előzetes verzióban érhető el a következő régiókban: Közép-Franciaország, Kelet-Ázsia, USA nyugati középső régiója, USA déli középső régiója, USA 2. nyugati régiója, USA nyugati régiója, Észak-Európa, USA 2. keleti régiója, USA középső régiója, Nyugat-Kelet-Ausztrália Európa
 > Erre az előzetes verzióra nem vonatkozik szolgáltatói szerződés, és a használata nem javasolt éles számítási feladatok esetén. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -116,7 +116,7 @@ Nyilvános IP-címek nélküli készlet esetén a virtuális gépek nem férhetn
 
 A kimenő kapcsolatok egy másik módja a felhasználó által megadott útvonal (UDR) használata. Ez lehetővé teszi, hogy a forgalmat egy olyan proxykiszolgálón keresztül irányítsa, amely nyilvános internet-hozzáféréssel rendelkezik.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ a [készletek virtuális hálózatban való létrehozásáról](batch-virtual-network.md).
 - Ismerje meg, hogyan [használhatók a privát végpontok a Batch-fiókokkal](private-connectivity.md).

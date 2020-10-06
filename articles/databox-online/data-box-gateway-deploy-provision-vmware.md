@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 09/25/2020
 ms.author: alkohli
-ms.openlocfilehash: 4818755e48a4d497d70920a62a9505346176ed73
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: 026caf101f58ff9d93e3306d0bd224f24e8af864
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91371286"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743947"
 ---
 # <a name="tutorial-provision-azure-data-box-gateway-in-vmware"></a>Oktatóanyag: Azure Data Box Gateway kiépítése a VMware-ben
 
@@ -23,7 +23,7 @@ Ez az oktatóanyag azt ismerteti, hogyan lehet Data Box Gatewayt kiépíteni egy
 
 A virtuális eszközök üzembe helyezéséhez és a hozzájuk való csatlakozáshoz rendszergazdai jogosultság szükséges. Az üzembe helyezés és a kezdeti beállítás körülbelül 10 percet vesz igénybe. 
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
 > * A gazdagép minimális eszközkövetelményeknek való megfelelésének ellenőrzése
@@ -145,11 +145,11 @@ A következő lépések végrehajtásával helyezzen üzembe egy virtuális eszk
 
     Ugyanezen az oldalon kattintson az **Add hard disk** (Merevlemez hozzáadása) elemre, majd az **Existing hard disk** (Létező merevlemez) lehetőségre. Válassza ki a VMDK fájlt az adattárban. Ezzel hozzáad egy operációsrendszer-lemezt. 
 
-     ![Beállítások testreszabása lap](./media/data-box-gateway-deploy-provision-vmware/image14.png)
+     ![Beállítások testreszabása 2. oldal](./media/data-box-gateway-deploy-provision-vmware/image14.png)
 
     Görgessen lefelé, amíg meg nem látja a **New hard disk** (Új merevlemez) elemet, és bontsa azt ki a beállítások megtekintéséhez. Állítsa be a **Virtual Device Node** (Virtuális eszköz csomópontja) beállításnál az **IDE controller 0** értéket.
 
-     ![Beállítások testreszabása lap](./media/data-box-gateway-deploy-provision-vmware/image15.png)
+     ![Beállítások testreszabása lap 3](./media/data-box-gateway-deploy-provision-vmware/image15.png)
 
 17. Választható *Ezt a lépést csak akkor hajtsa végre, ha VMWare ESXi Server 6,7 rendszert futtat*. A **beállítások testreszabása** lapon kattintson a **virtuális gép beállításai lehetőségre**. Lépjen a **rendszerindítási beállítások > belső vezérlőprogram lehetőségre** , és módosítsa a **BIOS**-ra. Alapértelmezés szerint az érték EFI-re van állítva. Kattintson a **Tovább** gombra.
 
@@ -158,7 +158,7 @@ A következő lépések végrehajtásával helyezzen üzembe egy virtuális eszk
 18. A **Ready to Complete** (Befejezésre kész) oldalon tekintse át az új virtuális gépre vonatkozó beállításokat. Ellenőrizze a következőket: a CPU-k száma 4, a memória mérete 8192 MB, a hálózati adapter értéke 1, valamint a 2. merevlemez beállítása: IDE controller 0. Kattintson a **Befejezés** gombra.
    
     ![Készen áll a teljes oldalra ](./media/data-box-gateway-deploy-provision-vmware/image16.png)
-     ![ való felkészülésre](./media/data-box-gateway-deploy-provision-vmware/image17.png)
+     ![ a 2. oldalon](./media/data-box-gateway-deploy-provision-vmware/image17.png)
 
 A rendszer üzembe helyezi a virtuális gépet. Megjelenik erről egy értesítés, és az új virtuális gép hozzáadódik a virtuális gépek listájához.
 
@@ -213,7 +213,7 @@ Ha a kezdeti konfiguráció során bármilyen más hibával szembesül a helyi w
 - [Diagnosztikai tesztek futtatása a webes felhasználói felület beállításának hibakereséséhez](data-box-gateway-troubleshoot.md#run-diagnostics).
 - [Naplófájlok előállítása és a naplófájlok megtekintése](data-box-gateway-troubleshoot.md#collect-support-package).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban a Data Box Gatewayjel kapcsolatos alábbi témakörökkel ismerkedett meg:
 

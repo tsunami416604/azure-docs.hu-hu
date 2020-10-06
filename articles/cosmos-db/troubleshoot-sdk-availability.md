@@ -3,17 +3,17 @@ title: A többrégiós környezetekben elérhető Azure Cosmos SDK-k rendelkezé
 description: Ismerje meg az Azure Cosmos SDK rendelkezésre állási viselkedését többrégiós környezetben való működés esetén.
 author: ealsur
 ms.service: cosmos-db
-ms.date: 09/24/2020
+ms.date: 10/05/2020
 ms.author: maquaran
 ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
-ms.openlocfilehash: 8dd7ced2dfcfd3c555555d6f0a197623bd8726f2
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 400795d20b6e7ad919f5cbbfa6078987bb65297e
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91330434"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743964"
 ---
 # <a name="diagnose-and-troubleshoot-the-availability-of-azure-cosmos-sdks-in-multiregional-environments"></a>A többrégiós környezetekben elérhető Azure Cosmos SDK-k rendelkezésre állásának diagnosztizálása és megoldása
 
@@ -24,7 +24,7 @@ Az összes Azure Cosmos SDK lehetőséget biztosít a területi beállítások t
 * A [ConnectionPolicy. PreferredLocations](/dotnet/api/microsoft.azure.documents.client.connectionpolicy.preferredlocations) tulajdonság a .NET v2 SDK-ban.
 * A [CosmosClientOptions. ApplicationRegion](/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.applicationregion) vagy a [CosmosClientOptions. ApplicationPreferredRegions](/dotnet/api/microsoft.azure.cosmos.cosmosclientoptions.applicationpreferredregions) tulajdonság a .net v3 SDK-ban.
 * A [CosmosClientBuilder. preferredRegions](/java/api/com.azure.cosmos.cosmosclientbuilder.preferredregions) metódus a Java v4 SDK-ban.
-* A Node SDK [CosmosClient. preferred_locations](/python/api/azure-cosmos/azure.cosmos.cosmos_client.cosmosclient) paramétere.
+* A [CosmosClient.preferred_locations](/python/api/azure-cosmos/azure.cosmos.cosmos_client.cosmosclient) paraméter a Python SDK-ban.
 * A [CosmosClientOptions. ConnectionPolicy. preferredLocations](/javascript/api/@azure/cosmos/connectionpolicy#preferredlocations) paraméter a JS SDK-ban.
 
 A területi beállítások megadásakor az ügyfél a következő táblázatban említettek szerint csatlakozik a régióhoz:
@@ -49,6 +49,8 @@ Ha az alábbi esetek bármelyike előfordul, az Azure Cosmos SDK-t használó ü
 * A válaszok *RequestDiagnosticsString* tulajdonsága a .NET v2 SDK-ban.
 * A .NET v3 SDK-beli válaszok és kivételek *diagnosztikai* tulajdonsága.
 * A *getDiagnostics ()* metódus a válaszokat és kivételeket a Java v4 SDK-ban.
+
+A következő régió beállításakor az SDK-ügyfél a fiók régiójának listáját fogja használni, rangsorolva az előnyben részesített régiókat (ha vannak ilyenek).
 
 Az SLA-garanciákkal kapcsolatos átfogó Részletes információkért tekintse meg az SLA-kat a [rendelkezésre álláshoz](high-availability.md#slas-for-availability).
 
@@ -82,7 +84,7 @@ Olyan esetekben, amikor az Azure Cosmos SDK-ügyfél a TCP protokoll használat�
 
 Ha a felhasználó több régióval konfigurált egy előnyben részesített régiót, és az Azure Cosmos-fiók több írási régió vagy egyetlen írási régió, és a művelet egy olvasási kérelem, az ügyfél újra megpróbálja ezt az egyetlen műveletet a következő régióban a preferencia listából.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Tekintse át a [rendelkezésre állási SLA](high-availability.md#slas-for-availability)-kat.
 * A legújabb [.net SDK](sql-api-sdk-dotnet-standard.md) használata

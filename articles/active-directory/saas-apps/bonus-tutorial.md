@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
-ms.openlocfilehash: fd82d3d2d2a76e0c0671c57d9254ff8c9030d3a3
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 7c1bd1b3f9931eff2f19eac7b78881d4f7ad8ae0
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88548264"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91744321"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bonusly"></a>Oktatóanyag: Azure Active Directory integráció a Bonus-nal
 
@@ -169,7 +169,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    d. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -222,11 +222,11 @@ Ha engedélyezni szeretné, hogy az Azure AD-felhasználók bejelentkezzenek a B
 
 1. Kattintson az **Add User** (Felhasználó hozzáadása) elemre.
 
-    ![Felhasználó hozzáadása](./media/bonus-tutorial/ic781044.png "Felhasználó hozzáadása")
+    ![Képernyőfelvétel: a felhasználók kezelése, ahol a felhasználó hozzáadása lehetőséget választhatja.](./media/bonus-tutorial/ic781044.png "Felhasználó hozzáadása")
 
 1. A **felhasználó hozzáadása** párbeszédpanelen hajtsa végre a következő lépéseket:
 
-    ![Felhasználó hozzáadása](./media/bonus-tutorial/ic781045.png "Felhasználó hozzáadása")  
+    ![Képernyőfelvétel: a felhasználó hozzáadása párbeszédpanel, amelyen megadhatja ezeket az adatokat.](./media/bonus-tutorial/ic781045.png "Felhasználó hozzáadása")  
 
     a. Az **Utónév** szövegmezőbe írja be a felhasználó utónevét, például a **Britta**nevet.
 

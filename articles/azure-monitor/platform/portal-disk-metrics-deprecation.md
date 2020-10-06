@@ -7,12 +7,12 @@ ms.topic: conceptual
 author: albecker1
 ms.author: albecker
 ms.date: 03/12/2020
-ms.openlocfilehash: f2b960c2198800e04da77ad6b5be78d7b4762354
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 623d9385b9ae6b13c8964f655fb973fe67a0918a
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79299802"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743709"
 ---
 # <a name="disk-metrics-deprecation-in-the-azure-portal"></a>Lemez metrikáinak elavulása a Azure Portalban
 
@@ -44,38 +44,38 @@ A metrikai riasztások frissítése új metrikák használatára.
 1. A Azure Portalban keressen **riasztásokat**. Ezután a **szolgáltatások** szakaszban válassza a **riasztások**lehetőséget.
 
    > [!div class="mx-imgBorder"]
-   > ![Rendszerkép leírása](./media/portal-disk-metrics-deprecation/alert-service-azure-portal.png)
+   > ![Riasztási szolgáltatás](./media/portal-disk-metrics-deprecation/alert-service-azure-portal.png)
 
 2. A **riasztások** lapon kattintson a **riasztási szabályok kezelése** gombra. 
 
    > [!div class="mx-imgBorder"]
-   > ![Rendszerkép leírása](./media/portal-disk-metrics-deprecation/manage-alert-rules-button.png)
+   > ![Riasztási szabályok kezelése](./media/portal-disk-metrics-deprecation/manage-alert-rules-button.png)
 
 3. Az **erőforráscsoport** legördülő listában jelölje be a **Virtual Machines** jelölőnégyzetet, majd a **jel típusa** legördülő listában válassza a **metrikák** jelölőnégyzetet. 
 
    > [!div class="mx-imgBorder"]
-   > ![Rendszerkép leírása](./media/portal-disk-metrics-deprecation/filter-alerts.png)
+   > ![Riasztások szűrése](./media/portal-disk-metrics-deprecation/filter-alerts.png)
 
 4. A metrikák listájában azonosítsa a lemezekhez kapcsolódó feltételeket. Kattintson a szabály nevére. 
 
    A név hiperhivatkozásként jelenik meg a tábla **Name (név** ) oszlopában.
 
    > [!div class="mx-imgBorder"]
-   > ![Rendszerkép leírása](./media/portal-disk-metrics-deprecation/find-disk-conditions.png)
+   > ![Lemezterület-feltételek keresése](./media/portal-disk-metrics-deprecation/find-disk-conditions.png)
 
 5. A **szabályok kezelése** lap **feltételek** szakaszában kattintson a riasztás feltételére. 
 
    A feltétel hiperhivatkozásként jelenik meg.  
 
    > [!div class="mx-imgBorder"]
-   > ![Rendszerkép leírása](./media/portal-disk-metrics-deprecation/adjust-condition.png)
+   > ![Feltételek igazítása](./media/portal-disk-metrics-deprecation/adjust-condition.png)
 
    Megjelenik a **jel logikai beállítása** lap, és a feltétel beállításai megjelennek az oldal **riasztás logikája** szakaszában.
 
 6. Jegyezze fel ezeket a beállításokat, mert eltűnik az elavult metrika eltávolításakor.
 
    > [!div class="mx-imgBorder"]
-   > ![Rendszerkép leírása](./media/portal-disk-metrics-deprecation/condition-rules.png)
+   > ![Feltétel szabályai](./media/portal-disk-metrics-deprecation/condition-rules.png)
 
    > [!TIP] 
    > Vegye figyelembe ezeket a beállításokat egy képernyőfelvételen vagy egy szövegfájlban. 
@@ -83,7 +83,7 @@ A metrikai riasztások frissítése új metrikák használatára.
 7. Kattintson a **vissza a jelzésre kiválasztási** hivatkozásra.
 
    > [!div class="mx-imgBorder"]
-   > ![Rendszerkép leírása](./media/portal-disk-metrics-deprecation/back-to-signal-selection.png)
+   > ![Vissza a jel kijelöléséhez](./media/portal-disk-metrics-deprecation/back-to-signal-selection.png)
 
 8. A **jel logikai beállítása** lapon válassza ki a megfelelő helyettesítő metrikát (új metrika). A cikk korábbi részében megjelenő [táblázat](#update-metrics) segítségével azonosíthatja az új metrika nevét.
 
@@ -91,17 +91,17 @@ A metrikai riasztások frissítése új metrikák használatára.
    > Kezdjen el gépelni a keresési sávban, hogy szűkítse a metrikák neveinek listáját. 
 
    > [!div class="mx-imgBorder"]
-   > ![Rendszerkép leírása](./media/portal-disk-metrics-deprecation/choose-new-metric.png)
+   > ![Új metrika kiválasztása](./media/portal-disk-metrics-deprecation/choose-new-metric.png)
 
 9. Válassza a **kész** gombot. 
 
    > [!div class="mx-imgBorder"]
-   > ![Rendszerkép leírása](./media/portal-disk-metrics-deprecation/set-new-metric.png)
+   > ![Új metrika beállítása](./media/portal-disk-metrics-deprecation/set-new-metric.png)
 
 10. Véglegesítse a módosításokat a **Save (Mentés** ) gomb kiválasztásával. 
 
     > [!div class="mx-imgBorder"]
-    > ![Rendszerkép leírása](./media/portal-disk-metrics-deprecation/save-new-metric.png)
+    > ![Új metrika mentése](./media/portal-disk-metrics-deprecation/save-new-metric.png)
 
 
 

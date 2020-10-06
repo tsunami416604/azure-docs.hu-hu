@@ -1,72 +1,82 @@
 ---
-title: Titkosított logikai kötetek felügyeleti lemezek átméretezése Azure Disk Encryption
-description: Ez a cikk az ADE titkosított lemezek logikai kötetek kezelésével történő átméretezésére vonatkozó utasításokat tartalmazza.
+title: Titkosított logikai kötet felügyeleti lemezek átméretezése Azure Disk Encryption használatával
+description: Ez a cikk útmutatást nyújt az ADE titkosított lemezek logikai kötetek kezelése használatával történő átméretezéséhez.
 author: jofrance
 ms.service: security
 ms.topic: article
 ms.author: jofrance
 ms.date: 09/21/2020
-ms.openlocfilehash: ba652b9424b8d5ce1b6a2c5b7d70b8fd9e999323
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 3a3e9b7406e11261aff12d77d9fbeed5debbe938
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91343968"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91744270"
 ---
-# <a name="how-to-resize-logical-volume-management-devices-encrypted-with-azure-disk-encryption"></a>A Azure Disk Encryption-mel titkosított logikai kötet-felügyeleti eszközök átméretezése
+# <a name="how-to-resize-logical-volume-management-devices-that-use-azure-disk-encryption"></a>A Azure Disk Encryptiont használó logikai kötet-felügyeleti eszközök átméretezése
 
-Ez a cikk lépésről lépésre bemutatja, hogyan méretezheti át az ADE titkosított adatlemezeket a logikai kötetek kezelése (LVM) használatával Linux rendszeren, több forgatókönyvre alkalmazható.
+Ebből a cikkből megtudhatja, hogyan méretezheti át Azure Disk Encryptiont használó adatlemezeket. A lemezek átméretezéséhez használja a logikai kötetek felügyeletét (LVM) Linux rendszeren. A lépések több forgatókönyvre is érvényesek.
 
-A folyamat a következő környezetekre vonatkozik:
+Ez az átméretezési folyamat a következő környezetekben használható:
 
-- Linux-disztribúciók
-    - RHEL 7+
-    - Ubuntu 16 +
-    - SUSE 12 +
-- Azure Disk Encryption Single-pass bővítmény
-- Azure Disk Encryption Dual-pass bővítmény
+- Linux-disztribúciók:
+    - Red Hat Enterprise Linux (RHEL) 7 vagy újabb
+    - Ubuntu 16 vagy újabb
+    - SUSE 12 vagy újabb
+- Azure Disk Encryption verziók: 
+    - Single-pass kiterjesztés
+    - Kettős pass kiterjesztés
 
-## <a name="considerations"></a>Megfontolandó szempontok
+## <a name="prerequisites"></a>Előfeltételek
 
-Ez a dokumentum azt feltételezi, hogy:
+Ez a cikk feltételezi, hogy rendelkezik a következővel:
 
-1. Létezik egy meglévő LVM-konfiguráció.
-   
-   Az LVM Linux rendszerű virtuális gépen való konfigurálásával kapcsolatos további információkért olvassa el az [LVM konfigurálása](configure-lvm.md) linuxos virtuális gépen című témakört.
+- Egy meglévő LVM-konfiguráció. További információ: az [LVM konfigurálása Linux rendszerű virtuális gépen](configure-lvm.md).
 
-2. A lemezek már titkosítva vannak a Azure Disk Encryption az LVM [konfigurálása a crypt](how-to-configure-lvm-raid-on-crypt.md) -ben az LVM-on-Crypt konfigurálásával kapcsolatos információkért.
+- A Azure Disk Encryption által már titkosított lemezek. További információ: az [LVM és a RAID konfigurálása titkosított eszközökön](how-to-configure-lvm-raid-on-crypt.md).
 
-3. Ezeket a példákat a szükséges Linux-és LVM-szakértelemmel látja el.
+- A Linux és az LVM használatának élménye.
 
-4. Tudomásul veszi, hogy az [eszközök neveivel kapcsolatos problémák elhárítása](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-device-names-problems)során az Azure-beli adatlemezek használatára vonatkozó javaslat a/dev/disk/scsi1/elérési útjának használata.
+- Az Azure-beli adatlemezek */dev/disk/scsi1/* elérési útjainak használata. További információkért lásd: Linux rendszerű [virtuális gépek eszközével kapcsolatos problémák elhárítása](https://docs.microsoft.com/azure/virtual-machines/troubleshooting/troubleshoot-device-names-problems). 
 
 ## <a name="scenarios"></a>Forgatókönyvek
 
 A jelen cikkben ismertetett eljárások a következő helyzetekben érvényesek:
 
-### <a name="for-traditional-lvm-and-lvm-on-crypt-configurations"></a>Hagyományos LVM-és LVM-titkosítási konfigurációk esetén
+- Hagyományos LVM és LVM-on-Crypt konfigurációk
+- Hagyományos LVM titkosítás 
+- LVM-on-Crypt 
 
-- Logikai kötet kibővítése, ha rendelkezésre áll egy szabad terület a VG-ben
+### <a name="traditional-lvm-and-lvm-on-crypt-configurations"></a>Hagyományos LVM és LVM-on-Crypt konfigurációk
 
-### <a name="for-traditional-lvm-encryption-the-logical-volumes-are-encrypted-not-the-whole-disk"></a>Hagyományos LVM titkosítás esetén (a logikai kötetek titkosítva vannak, nem a teljes lemez)
+A hagyományos LVM és LVM-on-Crypt konfigurációk kibővítik a logikai kötetet (LV), ha a kötet (VG) elérhető területtel rendelkezik.
 
-- Egy hagyományos LVM-kötet kiterjesztése új PV-t hozzáadva
-- A hagyományos LVM-kötetek kiterjesztése egy meglévő PV-re
+### <a name="traditional-lvm-encryption"></a>Hagyományos LVM titkosítás 
 
-### <a name="for-lvm-on-crypt-recommended-method-the-entire-disk-is-encrypted-not-only-the-logical-volume"></a>Az LVM-on-Crypt (ajánlott módszer esetén a teljes lemez titkosítva van, nem csak a logikai kötet)
+A hagyományos LVM titkosításban a LVs titkosítva vannak. A teljes lemez titkosítása nem történik meg.
 
-- Az LVM kiterjesztése a crypt-kötetre új PV hozzáadásával
-- Az LVM kiterjesztése egy meglévő PV-t átméretezni a crypt köteten
+A hagyományos LVM titkosítás használatával a következőket teheti:
+
+- Kiterjesztheti az LV-t új fizikai kötet (PV) hozzáadásakor.
+- Kiterjesztheti az LV-t egy meglévő PV átméretezése közben.
+
+### <a name="lvm-on-crypt"></a>LVM-on-Crypt 
+
+A lemezes titkosítás ajánlott módszere az LVM-titkosítás. Ez a módszer titkosítja a teljes lemezt, nem csak az LV-t.
+
+Az LVM-on-Crypt használatával a következőket teheti: 
+
+- Terjessze ki az LV-t új PV hozzáadásakor.
+- Kiterjesztheti az LV-t egy meglévő PV átméretezése közben.
 
 > [!NOTE]
-> A hagyományos LVM titkosítás és az LVM-on-Crypt használata ugyanazon a virtuális gépen nem ajánlott.
+> Nem javasoljuk, hogy ugyanazon a virtuális gépen a hagyományos LVM titkosítást és az LVM-on-Crypt-t keverje.
 
-> [!NOTE]
-> Ezek a példák a lemezek, a fizikai kötetek, a kötetek csoportjai, a logikai kötetek, a fájlrendszerek, az UUID-EK és a csatolási meglévő neveit használják, a környezetnek megfelelően kell lecserélnie a példákban megadott értékeket.
+A következő szakaszokban példákat talál az LVM és az LVM – a crypt használatával történő használatáról. A példák a lemezek, a PVs, a VGs, a LVs, a fájlrendszerek, az univerzálisan egyedi azonosítók (UUID-EK) és a csatlakoztatási pontok már meglévő értékeit használják. Cserélje le ezeket az értékeket a saját értékeire, hogy illeszkedjen a környezetéhez.
 
-#### <a name="extending-a-logical-volume-when-theres-available-space-in-the-vg"></a>Logikai kötet kibővítése, ha rendelkezésre áll egy szabad terület a VG-ben
+#### <a name="extend-an-lv-when-the-vg-has-available-space"></a>Az LV kibővítése, ha a VG rendelkezésre áll terület
 
-A logikai kötetek átméretezésére használt hagyományos módszer a nem titkosított lemezekre, a hagyományos LVM titkosított kötetekre és az LVM-on-Crypt konfigurációra is alkalmazható.
+A LVs hagyományos módszere az, hogy kiterjessze az LV-t, ha a VG terület elérhető. Ezt a módszert használhatja a nem titkosított lemezekhez, a hagyományos LVM titkosítású kötetekhez és az LVM-on-Crypt-konfigurációkhoz.
 
 1. Ellenőrizze a bővíteni kívánt fájlrendszer aktuális méretét:
 
@@ -74,73 +84,73 @@ A logikai kötetek átméretezésére használt hagyományos módszer a nem titk
     df -h /mountpoint
     ```
 
-    ![forgatókönyv – FS1](./media/disk-encryption/resize-lvm/001-resize-lvm-scenarioa-check-fs.png)
+    ![A fájlrendszer méretét ellenőrző kódot megjelenítő képernyőkép. A parancs és az eredmény ki van emelve.](./media/disk-encryption/resize-lvm/001-resize-lvm-scenarioa-check-fs.png)
 
-2. Győződjön meg arról, hogy a VG elegendő területtel rendelkezik az LV növeléséhez
+2. Ellenőrizze, hogy a VG rendelkezik-e elegendő hellyel az LV növeléséhez:
 
     ``` bash
     vgs
     ```
 
-    ![forgatókönyv – pipa-VG](./media/disk-encryption/resize-lvm/002-resize-lvm-scenarioa-check-vgs.png)
+    ![Képernyőkép: a VG területét ellenőrző kód. A parancs és az eredmény ki van emelve.](./media/disk-encryption/resize-lvm/002-resize-lvm-scenarioa-check-vgs.png)
 
-    Használhatja a "vgdisplay" is
+    A következőket is használhatja `vgdisplay` :
 
     ``` bash
     vgdisplay vgname
     ```
 
-    ![forgatókönyv – vgdisplay](./media/disk-encryption/resize-lvm/002-resize-lvm-scenarioa-check-vgdisplay.png)
+    ![Képernyőfelvétel: a következő, a VG-on helyet kereső V G megjelenítési kód. A parancs és az eredmény ki van emelve.](./media/disk-encryption/resize-lvm/002-resize-lvm-scenarioa-check-vgdisplay.png)
 
-3. Annak meghatározása, hogy mely logikai kötetet kell átméretezni
+3. Határozza meg, hogy melyik LV-t kell átméretezni:
 
     ``` bash
     lsblk
     ```
 
-    ![forgatókönyv – lsblk1](./media/disk-encryption/resize-lvm/002-resize-lvm-scenarioa-check-lsblk1.png)
+    ![Képernyőfelvétel: az l s s l k parancs eredményének megjelenítése. A parancs és az eredmény ki van emelve.](./media/disk-encryption/resize-lvm/002-resize-lvm-scenarioa-check-lsblk1.png)
 
-    Az LVM-on-Crypt esetében a különbség ebben a kimenetben látható, ami azt mutatja, hogy a titkosított réteg a teljes lemezre kiterjedő titkosított rétegen található.
+    Az LVM-on-Crypt esetében a különbség az, hogy ez a kimenet azt mutatja, hogy a titkosított réteg a lemez szintjén van.
 
-    ![forgatókönyv – lsblk2](./media/disk-encryption/resize-lvm/002-resize-lvm-scenarioa-check-lsblk2.png)
+    ![Képernyőfelvétel: az l s s l k parancs eredményének megjelenítése. A kimenet ki van emelve. A titkosított réteget mutatja.](./media/disk-encryption/resize-lvm/002-resize-lvm-scenarioa-check-lsblk2.png)
 
-4. A logikai kötet méretének megkeresése
+4. Az LV méretének ellenõrzése:
 
     ``` bash
     lvdisplay lvname
     ```
 
-    ![forgatókönyv – lvdisplay01](./media/disk-encryption/resize-lvm/002-resize-lvm-scenarioa-check-lvdisplay01.png)
+    ![Képernyőkép a logikai kötet méretét ellenőrző kód megjelenítéséről. A parancs és az eredmény ki van emelve.](./media/disk-encryption/resize-lvm/002-resize-lvm-scenarioa-check-lvdisplay01.png)
 
-5. Az LV méretének növeléséhez használja az "-r" kifejezést a fájlrendszer online átméretezéséhez
+5. Növelje az LV-méretet a használatával a `-r` fájlrendszer online átméretezéséhez:
 
     ``` bash
     lvextend -r -L +2G /dev/vgname/lvname
     ```
 
-    ![forgatókönyv – átméretezés – lv](./media/disk-encryption/resize-lvm/003-resize-lvm-scenarioa-resize-lv.png)
+    ![Képernyőfelvétel: a logikai kötet méretét megnövelő kód. A parancs és az eredmények ki vannak emelve.](./media/disk-encryption/resize-lvm/003-resize-lvm-scenarioa-resize-lv.png)
 
-6. A LV és a fájlrendszer új méretének ellenőrzése
+6. Ellenőrizze az LV és a fájlrendszer új méreteit:
 
     ``` bash
     df -h /mountpoint
     ```
 
-    ![forgatókönyv – bejelentkezés-FS](./media/disk-encryption/resize-lvm/004-resize-lvm-scenarioa-check-fs.png)
+    ![Képernyőfelvétel: a kód, amely ellenőrzi az LV és a fájlrendszer méretét. A parancs és az eredmény ki van emelve.](./media/disk-encryption/resize-lvm/004-resize-lvm-scenarioa-check-fs.png)
 
-    Az új méret tükröződik, és az LV és a fájlrendszer sikeres átméretezését jelzi.
+    A méret kimenete azt jelzi, hogy az LV és a fájlrendszer átméretezése sikeresen megtörtént.
 
-7. Az LV-szint módosításának megerősítéséhez ismét ellenőrizheti a LV-adatokat
+A lv-adatok újbóli ellenőrzésével ellenőrizheti az LV szintjén történt módosításokat:
 
-    ``` bash
-    lvdisplay lvname
-    ```
+``` bash
+lvdisplay lvname
+```
 
-    ![forgatókönyv – lvdisplay2](./media/disk-encryption/resize-lvm/004-resize-lvm-scenarioa-check-lvdisplay2.png)
+![Képernyőfelvétel: az új méreteket igazoló kód. A méretek ki vannak emelve.](./media/disk-encryption/resize-lvm/004-resize-lvm-scenarioa-check-lvdisplay2.png)
 
-#### <a name="extending-a-traditional-lvm-volume-adding-a-new-pv"></a>Egy hagyományos LVM-kötet kiterjesztése új PV-t hozzáadva
+#### <a name="extend-a-traditional-lvm-volume-by-adding-a-new-pv"></a>Hagyományos LVM-kötet kiterjesztése új PV hozzáadásával
 
-Akkor alkalmazható, ha új lemezt kell felvennie a kötet csoport méretének növeléséhez.
+Ha új lemezt kell hozzáadnia a VG méretének növeléséhez, a hagyományos LVM-kötetet új PV hozzáadásával bővítheti.
 
 1. Ellenőrizze a bővíteni kívánt fájlrendszer aktuális méretét:
 
@@ -148,141 +158,130 @@ Akkor alkalmazható, ha új lemezt kell felvennie a kötet csoport méretének n
     df -h /mountpoint
     ```
 
-    ![scenariob – bejelentkezés-FS](./media/disk-encryption/resize-lvm/005-resize-lvm-scenariob-check-fs.png)
+    ![Képernyőfelvétel a fájlrendszer aktuális méretét ellenőrző kód megjelenítéséről. A parancs és az eredmény ki van emelve.](./media/disk-encryption/resize-lvm/005-resize-lvm-scenariob-check-fs.png)
 
-2. A fizikai kötet aktuális konfigurációjának ellenőrzése
+2. Az aktuális PV-konfiguráció ellenőrzése:
 
     ``` bash
     pvs
     ```
 
-    ![scenariob – PVS](./media/disk-encryption/resize-lvm/006-resize-lvm-scenariob-check-pvs.png)
+    ![Képernyőfelvétel: az aktuális PV-konfigurációt ellenőrző kód. A parancs és az eredmény ki van emelve.](./media/disk-encryption/resize-lvm/006-resize-lvm-scenariob-check-pvs.png)
 
-3. Az aktuális VG-információ keresése
+3. A jelenlegi VG-információ keresése:
 
     ``` bash
     vgs
     ```
 
-    ![scenariob – vgs](./media/disk-encryption/resize-lvm/007-resize-lvm-scenariob-check-vgs.png)
+    ![Képernyőfelvétel: az aktuális mennyiségi csoport adatait ellenőrző kód. A parancs és az eredmény ki van emelve.](./media/disk-encryption/resize-lvm/007-resize-lvm-scenariob-check-vgs.png)
 
-4. Az aktuális lemez listájának keresése
-
-    Az adatlemezeket az/dev/disk/Azure/scsi1/alatti eszközök ellenőrzésével kell azonosítani.
+4. Az aktuális lemez listájának megkeresése. Az adatlemezek azonosításához ellenőrizze az eszközöket a */dev/disk/Azure/scsi1/*-ben.
 
     ``` bash
     ls -l /dev/disk/azure/scsi1/
     ```
 
-    ![scenariob – scs1](./media/disk-encryption/resize-lvm/008-resize-lvm-scenariob-check-scs1.png)
+    ![Képernyőfelvétel: az aktuális lemezek listáját ellenőrző kód. A parancs és az eredmények ki vannak emelve.](./media/disk-encryption/resize-lvm/008-resize-lvm-scenariob-check-scs1.png)
 
-5. A lsblk kimenetének keresése 
+5. A kimenetének megkeresése `lsblk` : 
 
     ``` bash
     lsbk
     ```
 
-    ![scenariob – lsblk](./media/disk-encryption/resize-lvm/008-resize-lvm-scenariob-check-lsblk.png)
+    ![Képernyőfelvétel: az l s b l k kimenetét ellenőrző kód. A parancs és az eredmények ki vannak emelve.](./media/disk-encryption/resize-lvm/008-resize-lvm-scenariob-check-lsblk.png)
 
-6. Az új lemez csatlakoztatása a virtuális géphez
+6. Csatlakoztassa az új lemezt a virtuális géphez az [adatlemez csatlakoztatása egy Linux rendszerű virtuális géphez](attach-disk-portal.md)című részben leírtak szerint.
 
-    Kövesse az alábbi dokumentum 4. lépését.
-
-   - [Lemez csatlakoztatása egy virtuális géphez](attach-disk-portal.md)
-
-7. A lemez csatolása után tekintse meg a lemezek listáját, és figyelje meg az új lemezt.
+7. Tekintse át a lemezek listáját, és figyelje meg az új lemezt.
 
     ``` bash
     ls -l /dev/disk/azure/scsi1/
     ```
 
-    ![scenariob – scsi12](./media/disk-encryption/resize-lvm/009-resize-lvm-scenariob-check-scsi12.png)
+    ![Képernyőkép a lemezes listát ellenőrző kód megjelenítéséről. Az eredmények ki vannak emelve.](./media/disk-encryption/resize-lvm/009-resize-lvm-scenariob-check-scsi12.png)
 
     ``` bash
     lsbk
     ```
 
-    ![scenariob – lsblk12](./media/disk-encryption/resize-lvm/009-resize-lvm-scenariob-check-lsblk1.png)
+    ![Képernyőfelvétel: a lemezes listát ellenőrző kód, l s b l A parancs és az eredmény ki van emelve.](./media/disk-encryption/resize-lvm/009-resize-lvm-scenariob-check-lsblk1.png)
 
-8. Új PV létrehozása az új adatlemez tetejére
+8. Hozzon létre egy új PV-t az új adatlemez tetejére:
 
     ``` bash
     pvcreate /dev/newdisk
     ```
 
-    ![scenariob-pvcreate](./media/disk-encryption/resize-lvm/010-resize-lvm-scenariob-pvcreate.png)
+    ![Képernyőfelvétel: az új PV-t létrehozó kód. Az eredmény ki van emelve.](./media/disk-encryption/resize-lvm/010-resize-lvm-scenariob-pvcreate.png)
 
-    Ez a módszer a teljes lemezt egy partíció nélküli PV-ként használja, opcionálisan használhatja az "fdisk" parancsot a partíció létrehozásához, majd ezt a partíciót használhatja a "pvcreate" számára.
+    Ez a metódus a teljes lemezt egy partíció nélküli PV-ként használja. Azt is megteheti, `fdisk` hogy partíciót hoz létre, majd ezt a partíciót használja a alkalmazáshoz `pvcreate` .
 
-9. Ellenőrizze, hogy a PV hozzá lett-e adva a PV-listához.
+9. Ellenőrizze, hogy a PV hozzá lett-e adva a PV-listához:
 
     ``` bash
     pvs
     ```
 
-    ![scenariob – pvs1](./media/disk-encryption/resize-lvm/011-resize-lvm-scenariob-check-pvs1.png)
+    ![A fizikai kötetek listáját megjelenítő kódot bemutató képernyőkép. Az eredmény ki van emelve.](./media/disk-encryption/resize-lvm/011-resize-lvm-scenariob-check-pvs1.png)
 
-10. A VG bővítése az új PV hozzáadásával
+10. Terjessze ki a VG-t az új PV hozzáadásával:
 
     ``` bash
     vgextend vgname /dev/newdisk
     ```
 
-    ![scenariob-VG-bővítés](./media/disk-encryption/resize-lvm/012-resize-lvm-scenariob-vgextend.png)
+    ![Képernyőfelvétel: a kötetet kibővítő kód. Az eredmény ki van emelve.](./media/disk-encryption/resize-lvm/012-resize-lvm-scenariob-vgextend.png)
 
-11. Az új VG-méret keresése
+11. Győződjön meg arról, hogy az új VG-méret:
 
     ``` bash
     vgs
     ```
 
-    ![scenariob – vgs1](./media/disk-encryption/resize-lvm/013-resize-lvm-scenariob-check-vgs1.png)
+    ![Képernyőfelvétel a kötet csoport méretét ellenőrző kód megjelenítéséről. Az eredmények ki vannak emelve.](./media/disk-encryption/resize-lvm/013-resize-lvm-scenariob-check-vgs1.png)
 
-12. A lsblk használatával azonosíthatja, hogy mely LV-t kell átméretezni
+12. `lsblk`A használatával azonosíthatja az átméretezni kívánt lv-t:
 
     ``` bash
     lsblk
     ```
 
-    ![scenariob – lsblk1](./media/disk-encryption/resize-lvm/013-resize-lvm-scenariob-check-lsblk1.png)
+    ![Képernyőfelvétel: az átméretezni kívánt helyi kötetet azonosító kódot megjelenítő kód. Az eredmények ki vannak emelve.](./media/disk-encryption/resize-lvm/013-resize-lvm-scenariob-check-lsblk1.png)
 
-13. Az LV-méret kiterjesztése a "-r" használatával a fájlrendszer online növeléséhez
+13. Az LV méretének kiterjesztése a használatával a `-r` fájlrendszer online állapotának növeléséhez:
 
     ``` bash
     lvextend -r -L +2G /dev/vgname/lvname
     ```
 
-    ![scenariob-lvextend](./media/disk-encryption/resize-lvm/013-resize-lvm-scenariob-lvextend.png) 
+    ![Képernyőfelvétel: a fájlrendszer online méretét megnövelő kód. Az eredmények ki vannak emelve.](./media/disk-encryption/resize-lvm/013-resize-lvm-scenariob-lvextend.png) 
 
-14. Az új LV és fájlrendszer méretének ellenőrzése
+14. Ellenőrizze az LV és a fájlrendszer új méretét:
 
     ``` bash
     df -h /mountpoint
     ```
 
-    ![scenariob – FS1](./media/disk-encryption/resize-lvm/014-resize-lvm-scenariob-check-fs1.png)
+    ![Képernyőfelvétel: a helyi kötet és a fájlrendszer méretét ellenőrző kód. A parancs és az eredmény ki van emelve.](./media/disk-encryption/resize-lvm/014-resize-lvm-scenariob-check-fs1.png)
 
-    Fontos tudni, hogy ha az ADE-t hagyományos LVM-konfigurációkon használják, a titkosított réteg az LV szintjén jön létre, nem pedig a lemez szintjén.
-
-    Ezen a ponton a titkosított réteg ki van bontva az új lemezre.
-    A tényleges adatlemez nem rendelkezik titkosítási beállításokkal a platform szintjén, így a titkosítási állapota nem frissül.
-
-    >[!NOTE]
+    >[!IMPORTANT]
+    >Ha az Azure-Adattitkosítás hagyományos LVM-konfigurációkon van használatban, a titkosított réteg az LV szintjén jön létre, nem pedig a lemez szintjén.
+    >
+    >Ezen a ponton a titkosított réteg ki van bontva az új lemezre. A tényleges adatlemez nem rendelkezik titkosítási beállításokkal a platform szintjén, így a titkosítási állapota nem frissül.
+    >
     >Íme néhány ok, amiért az LVM-on-Crypt az ajánlott módszer. 
 
 15. Keresse meg a titkosítási adatokat a portálon:
 
-    ![scenariob – portal1](./media/disk-encryption/resize-lvm/014-resize-lvm-scenariob-check-portal1.png)
+    ![A portálon található titkosítási adatokat bemutató képernyőkép. A lemez neve és a titkosítás ki van emelve.](./media/disk-encryption/resize-lvm/014-resize-lvm-scenariob-check-portal1.png)
 
-    Hozzá kell adnia egy új LV-t, és engedélyeznie kell a bővítményt a virtuális gépen a lemez titkosítási beállításainak frissítése érdekében.
+    A lemezen lévő titkosítási beállítások frissítéséhez adjon hozzá egy új LV-t, és engedélyezze a bővítményt a virtuális gépen.
     
-16. Vegyen fel egy új LV-t, hozzon létre egy állományrendszert, és adja hozzá az/etc/fstab-hez
+16. Vegyen fel egy új LV-et, hozzon létre egy fájlrendszert, és adja hozzá a következőhöz: `/etc/fstab` .
 
-17. Állítsa be újra a titkosítási bővítményt, hogy az új adatlemez titkosítási beállításait a platform szintjén lehessen lepecsételni.
-
-    Példa:
-
-    parancssori felület
+17. Állítsa be újra a titkosítási bővítményt. Ekkor az új adatlemez titkosítási beállításait a platform szintjén kell lepecsételni. Íme egy példa a CLI-re:
 
     ``` bash
     az vm encryption enable -g ${RGNAME} --name ${VMNAME} --disk-encryption-keyvault "<your-unique-keyvault-name>"
@@ -290,68 +289,70 @@ Akkor alkalmazható, ha új lemezt kell felvennie a kötet csoport méretének n
 
 18. Keresse meg a titkosítási adatokat a portálon:
 
-    ![scenariob – portal2](./media/disk-encryption/resize-lvm/014-resize-lvm-scenariob-check-portal2.png)
+    ![A portálon található titkosítási adatokat bemutató képernyőkép. A lemez neve és a titkosítási adatok ki vannak emelve.](./media/disk-encryption/resize-lvm/014-resize-lvm-scenariob-check-portal2.png)
 
-19. A titkosítási beállítások frissítése után törölheti az új LV-t, ezért törölnie kell a bejegyzést a hozzá létrehozott/etc/fstab és/etc/crypttab bejegyzésből is.
+A titkosítási beállítások frissítése után törölheti az új LV-t. Törölje a bejegyzést a és a létrehozott elemből is `/etc/fstab` `/etc/crypttab` .
 
-    ![scenariob-delete-fstab-crypttab](./media/disk-encryption/resize-lvm/014-resize-lvm-scenariob-delete-fstab-crypttab.png)
+![Képernyőfelvétel: az új logikai kötetet törlő kód. A törölt F S és a crypt lap ki van emelve.](./media/disk-encryption/resize-lvm/014-resize-lvm-scenariob-delete-fstab-crypttab.png)
 
-20. A logikai kötet leválasztása
+A tisztítás befejezéséhez kövesse az alábbi lépéseket:
+
+1. Az LV leválasztása:
 
     ``` bash
     umount /mountpoint
     ```
 
-21. A kötet titkosított rétegének lezárása
+1. A kötet titkosított rétegének lezárása:
 
     ``` bash
     cryptsetup luksClose /dev/vgname/lvname
     ```
 
-22. Az LV törlése
+1. Az LV törlése:
 
     ``` bash
     lvremove /dev/vgname/lvname
     ```
 
-#### <a name="extending-a-traditional-lvm-volume-resizing-an-existing-pv"></a>A hagyományos LVM-kötetek kiterjesztése egy meglévő PV-re
+#### <a name="extend-a-traditional-lvm-volume-by-resizing-an-existing-pv"></a>Hagyományos LVM-kötet kiterjesztése egy meglévő PV átméretezésével
 
-Bizonyos forgatókönyveknek vagy korlátozásoknak egy meglévő lemez átméretezésére van szükségük.
+Bizonyos forgatókönyvek esetében előfordulhat, hogy a korlátozásokhoz egy meglévő lemez átméretezése szükséges. Ezt a következőképpen teheti meg:
 
-1. A titkosított lemezek azonosítása
+1. Azonosítsa a titkosított lemezeket:
 
     ``` bash
     ls -l /dev/disk/azure/scsi1/
     ```
 
-    ![scenarioc – scsi1](./media/disk-encryption/resize-lvm/015-resize-lvm-scenarioc-check-scsi1.png)
+    ![A titkosított lemezeket azonosító kódot bemutató képernyőkép. Az eredmények ki vannak emelve.](./media/disk-encryption/resize-lvm/015-resize-lvm-scenarioc-check-scsi1.png)
 
     ``` bash
     lsblk -fs
     ```
 
-    ![scenarioc – lsblk](./media/disk-encryption/resize-lvm/015-resize-lvm-scenarioc-check-lsblk.png)
+    ![Képernyőfelvétel: a titkosított lemezeket azonosító alternatív kód. Az eredmények ki vannak emelve.](./media/disk-encryption/resize-lvm/015-resize-lvm-scenarioc-check-lsblk.png)
 
-2. A PV-információk keresése
+2. Keresse meg a PV-információkat:
 
     ``` bash
     pvs
     ```
 
-    ![scenarioc – PVS](./media/disk-encryption/resize-lvm/016-resize-lvm-scenarioc-check-pvs.png)
+    ![Képernyőfelvétel: a fizikai kötet adatait ellenőrző kód. Az eredmények ki vannak emelve.](./media/disk-encryption/resize-lvm/016-resize-lvm-scenarioc-check-pvs.png)
 
-    A PVs összes területe jelenleg használatban van
+    A képen látható eredmények azt mutatják, hogy az összes PVs lévő terület jelenleg használatban van.
 
-3. A VGs információinak megtekintése
+3. Keresse meg a VG adatait:
 
     ``` bash
     vgs
     vgdisplay -v vgname
     ```
 
-    ![scenarioc – vgs](./media/disk-encryption/resize-lvm/017-resize-lvm-scenarioc-check-vgs.png)
+    ![Képernyőfelvétel: a kötetre vonatkozó információkat ellenőrző kód. Az eredmények ki vannak emelve.](./media/disk-encryption/resize-lvm/017-resize-lvm-scenarioc-check-vgs.png)
 
-4. A lemezek méretének megadásához az fdisk vagy a lsblk használatával listázhatja a meghajtók méretét
+4. Vizsgálja meg a lemez méretét. Használhatja `fdisk` `lsblk` a vagy a lehetőséget a meghajtók méretének listázásához.
 
     ``` bash
     for disk in `ls -l /dev/disk/azure/scsi1/* | awk -F/ '{print $NF}'` ; do echo "fdisk -l /dev/${disk} | grep ^Disk "; done | bash
@@ -359,18 +360,18 @@ Bizonyos forgatókönyveknek vagy korlátozásoknak egy meglévő lemez átmére
     lsblk -o "NAME,SIZE"
     ```
 
-    ![scenarioc – az fdisk engedélyezése](./media/disk-encryption/resize-lvm/018-resize-lvm-scenarioc-check-fdisk.png)
+    ![Képernyőkép a lemez méretét ellenőrző kód megjelenítéséről. Az eredmények ki vannak emelve.](./media/disk-encryption/resize-lvm/018-resize-lvm-scenarioc-check-fdisk.png)
 
-    Azonosította azokat a PVs, amelyekhez társítva van a lsblk-FS LVs, a "lvdisplay" parancs futtatásával is azonosíthatja azt.
+    Itt azonosította azokat a PVs, amelyekhez LVs van társítva `lsblk -fs` . A társítások a futtatásával azonosíthatók `lvdisplay` .
 
     ``` bash
     lvdisplay --maps VG/LV
     lvdisplay --maps datavg/datalv1
     ```
 
-    ![lvdisplay](./media/disk-encryption/resize-lvm/019-resize-lvm-scenarioc-check-lvdisplay.png)
+    ![Képernyőkép a helyi kötetekkel rendelkező fizikai kötetek hozzárendeléseinek azonosítására szolgáló alternatív módszerről. Az eredmények ki vannak emelve.](./media/disk-encryption/resize-lvm/019-resize-lvm-scenarioc-check-lvdisplay.png)
 
-    Ebben a konkrét esetben mind a 4 adatmeghajtó ugyanannak a VG-nek és egyetlen LV-nek a része, a konfiguráció eltérő lehet ettől a példától.
+    Ebben az esetben mind a négy adatmeghajtó ugyanannak a VG-nek és egyetlen LV-nek a részét képezi. A konfiguráció eltérő lehet.
 
 5. A fájlrendszer aktuális kihasználtságának keresése:
 
@@ -378,16 +379,14 @@ Bizonyos forgatókönyveknek vagy korlátozásoknak egy meglévő lemez átmére
     df -h /datalvm*
     ```
 
-    ![scenarioc – keresés – DF](./media/disk-encryption/resize-lvm/020-resize-lvm-scenarioc-check-df.png)
+    ![A fájlrendszer kihasználtságát ellenőrző kódot bemutató képernyőkép. A parancs és az eredmények ki vannak emelve.](./media/disk-encryption/resize-lvm/020-resize-lvm-scenarioc-check-df.png)
 
-6. Az adatlemez (ek) átméretezése:
+6. Méretezze át az adatlemezeket az [Azure felügyelt lemez kibontása](expand-disks.md#expand-an-azure-managed-disk)című részben leírtak szerint. Használhatja a portált, a CLI-t vagy a PowerShellt.
 
-    A [Linux kibontására szolgáló lemezekre](expand-disks.md) hivatkozhat (csak a lemez átméretezésére vonatkozik), a portál, a CLI vagy a PowerShell segítségével hajthatja végre ezt a lépést.
+    >[!IMPORTANT]
+    >A virtuális lemezek nem méretezhetők át, amíg a virtuális gép fut. A virtuális gép felszabadítása ehhez a lépéshez.
 
-    >[!NOTE]
-    >Vegye figyelembe, hogy a virtuális lemezek átméretezési műveletei nem hajthatók végre a-t futtató virtuális géppel. Ehhez a lépéshez felszabadítani kell a virtuális gépet
-
-7. Ha a lemezek átméretezése a szükséges értékre történik, indítsa el a virtuális gépet, és az fdisk használatával vizsgálja meg az új méreteket
+7. Indítsa el a virtuális gépet, és a használatával vizsgálja meg az új méreteket `fdisk` .
 
     ``` bash
     for disk in `ls -l /dev/disk/azure/scsi1/* | awk -F/ '{print $NF}'` ; do echo "fdisk -l /dev/${disk} | grep ^Disk "; done | bash
@@ -395,186 +394,185 @@ Bizonyos forgatókönyveknek vagy korlátozásoknak egy meglévő lemez átmére
     lsblk -o "NAME,SIZE"
     ```
 
-    ![scenarioc – fdisk1](./media/disk-encryption/resize-lvm/021-resize-lvm-scenarioc-check-fdisk1.png)
+    ![Képernyőfelvétel a lemez méretét ellenőrző kód megjelenítéséről. Az eredmény ki van emelve.](./media/disk-encryption/resize-lvm/021-resize-lvm-scenarioc-check-fdisk1.png)
 
-    Ebben a konkrét esetben a/dev/SDD az 5G-ról a 20G-re lett méretezve
+    Ebben az esetben `/dev/sdd` 5 g és 20 g közötti méretre módosult.
 
-8. Az aktuális PV-méret ellenõrzése
+8. Az aktuális PV-méret ellenõrzése:
 
     ``` bash
     pvdisplay /dev/resizeddisk
     ```
 
-    ![scenarioc – pvdisplay](./media/disk-encryption/resize-lvm/022-resize-lvm-scenarioc-check-pvdisplay.png)
+    ![Képernyőfelvétel: a P V méretét ellenőrző kód. Az eredmény ki van emelve.](./media/disk-encryption/resize-lvm/022-resize-lvm-scenarioc-check-pvdisplay.png)
     
-    Még ha a lemez átméretezése is megtörtént, a PV továbbra is az előző mérettel rendelkezik.
+    Bár a lemez átméretezése megtörtént, a PV továbbra is az előző mérettel rendelkezik.
 
-9. A PV átméretezése
+9. Méretezze át a PV-t:
 
     ``` bash
     pvresize /dev/resizeddisk
     ```
 
-    ![scenarioc – pvresize](./media/disk-encryption/resize-lvm/023-resize-lvm-scenarioc-check-pvresize.png)
+    ![Képernyőfelvétel: a fizikai kötet átméretezésére szolgáló kód. Az eredmény ki van emelve.](./media/disk-encryption/resize-lvm/023-resize-lvm-scenarioc-check-pvresize.png)
 
 
-10. A PV méretének ellenõrzése
+10. A PV méretének ellenõrzése:
 
     ``` bash
     pvdisplay /dev/resizeddisk
     ```
 
-    ![scenarioc – pvdisplay1](./media/disk-encryption/resize-lvm/024-resize-lvm-scenarioc-check-pvdisplay1.png)
+    ![Képernyőfelvétel: a fizikai kötet méretét ellenőrző kód. Az eredmény ki van emelve.](./media/disk-encryption/resize-lvm/024-resize-lvm-scenarioc-check-pvdisplay1.png)
 
     Alkalmazza ugyanazt az eljárást az összes átméretezni kívánt lemez esetében.
 
-11. A VG információinak megtekintése
+11. Keresse meg a VG-információkat.
 
     ``` bash
     vgdisplay vgname
     ```
 
-    ![scenarioc – vgdisplay1](./media/disk-encryption/resize-lvm/025-resize-lvm-scenarioc-check-vgdisplay1.png)
+    ![Képernyőfelvétel a kötetre vonatkozó információkat ellenőrző kód megjelenítéséről. Az eredmény ki van emelve.](./media/disk-encryption/resize-lvm/025-resize-lvm-scenarioc-check-vgdisplay1.png)
 
-    A VG most már rendelkezik a LVs való lefoglaláshoz szükséges hellyel
+    A VG-nek most már elegendő lemezterületet kell kiosztania a LVs.
 
-12. Az LV átméretezése
+12. Az LV átméretezése:
 
     ``` bash
     lvresize -r -L +5G vgname/lvname
     lvresize -r -l +100%FREE /dev/datavg/datalv01
     ```
 
-    ![scenarioc – lvresize1](./media/disk-encryption/resize-lvm/031-resize-lvm-scenarioc-check-lvresize1.png)
+    ![Képernyőfelvétel: az L V átméretezni kívánt kód. Az eredmények ki vannak emelve.](./media/disk-encryption/resize-lvm/031-resize-lvm-scenarioc-check-lvresize1.png)
 
-13. FS méretének keresése
+13. A fájlrendszer méretének ellenõrzése:
 
     ``` bash
     df -h /datalvm2
     ```
 
-    ![scenarioc – Df3](./media/disk-encryption/resize-lvm/032-resize-lvm-scenarioc-check-df3.png)
+    ![A fájlrendszer méretét ellenőrző kódot megjelenítő képernyőkép. Az eredmény ki van emelve.](./media/disk-encryption/resize-lvm/032-resize-lvm-scenarioc-check-df3.png)
 
-#### <a name="extending-an-lvm-on-crypt-volume-adding-a-new-pv"></a>Az LVM-on-Crypt Kötet kiterjesztése egy új PV-t hozzáadva
+#### <a name="extend-an-lvm-on-crypt-volume-by-adding-a-new-pv"></a>Egy új PV hozzáadásával kiterjesztheti az LVM-on-Crypt kötetet
 
-Ez a módszer szorosan követi az [LVM konfigurálása a crypt](how-to-configure-lvm-raid-on-crypt.md) -ben című témakör lépéseit egy új lemez hozzáadásához és egy LVM-on-Crypt konfigurációban való konfigurálásához.
+Egy új PV hozzáadásával is kiterjesztheti az LVM-on-Crypt kötetet. Ez a módszer szorosan követi az [LVM és a RAID konfigurálása titkosított eszközökön](how-to-configure-lvm-raid-on-crypt.md#general-steps)című témakör lépéseit. Tekintse meg az új lemezek hozzáadását és az LVM-on-Crypt konfigurációban való beállítását ismertető szakaszt.
 
-Ezzel a módszerrel hozzáadhat helyet egy már létező LV-hez, vagy Ehelyett létrehozhat új VGs vagy LVs.
+Ezzel a módszerrel hozzáadhat helyet egy meglévő LV-hez. Vagy létrehozhat új VGs vagy LVs is.
 
-1. A VG jelenlegi méretének ellenőrzése
+1. A VG jelenlegi méretének ellenőrzése:
 
     ``` bash
     vgdisplay vgname
     ```
 
-    ![forgatókönyv – vg01](./media/disk-encryption/resize-lvm/033-resize-lvm-scenarioe-check-vg01.png)
+    ![Képernyőfelvétel a kötet csoport méretét ellenőrző kód megjelenítéséről. Az eredmények ki vannak emelve.](./media/disk-encryption/resize-lvm/033-resize-lvm-scenarioe-check-vg01.png)
 
-2. Ellenőrizze a bővíteni kívánt FS-és lv-méretet
+2. Ellenőrizze a kibontani kívánt fájlrendszer és LV méretét:
 
     ``` bash
     lvdisplay /dev/vgname/lvname
     ```
 
-    ![forgatókönyv – lv01](./media/disk-encryption/resize-lvm/034-resize-lvm-scenarioe-check-lv01.png)
+    ![Képernyőfelvétel: a helyi kötet méretét ellenőrző kód. Az eredmények ki vannak emelve.](./media/disk-encryption/resize-lvm/034-resize-lvm-scenarioe-check-lv01.png)
 
     ``` bash
     df -h mountpoint
     ```
 
-    ![forgatókönyv – FS01](./media/disk-encryption/resize-lvm/034-resize-lvm-scenarioe-check-fs01.png)
+    ![Képernyőfelvétel: a fájlrendszer méretét ellenőrző kód. Az eredmény ki van emelve.](./media/disk-encryption/resize-lvm/034-resize-lvm-scenarioe-check-fs01.png)
 
 3. Adjon hozzá egy új adatlemezt a virtuális géphez, és azonosítsa azt.
 
-    A lemez hozzáadása előtt keresse meg a lemezeket
+    Az új lemez hozzáadása előtt tekintse meg a lemezeket:
 
     ``` bash
     fdisk -l | egrep ^"Disk /"
     ```
 
-    ![forgatókönyv – newdisk01](./media/disk-encryption/resize-lvm/035-resize-lvm-scenarioe-check-newdisk01.png)
+    ![A lemezek méretét ellenőrző kódot megjelenítő képernyőkép. Az eredmény ki van emelve.](./media/disk-encryption/resize-lvm/035-resize-lvm-scenarioe-check-newdisk01.png)
 
-    Az új lemez hozzáadása előtt keresse meg a lemezeket
+    Az új lemez hozzáadása előtt a következő egy másik módja a lemezek ellenőrzésének:
 
     ``` bash
     lsblk
     ```
 
-    ![forgatókönyv – newdisk002](./media/disk-encryption/resize-lvm/035-resize-lvm-scenarioe-check-newdisk02.png)
+    ![Képernyőfelvétel: a lemezek méretét ellenőrző alternatív kód. Az eredmények ki vannak emelve.](./media/disk-encryption/resize-lvm/035-resize-lvm-scenarioe-check-newdisk02.png)
 
-    Vegyen fel egy új lemezt a PowerShell, az Azure CLI vagy a Azure Portal használatával. Tekintse meg, hogyan [csatolhat lemezeket](attach-disk-portal.md) a virtuális géphez való hozzáadáshoz.
+    Az új lemez hozzáadásához használhatja a PowerShellt, az Azure CLI-t vagy a Azure Portal. További információ: [adatlemez csatlakoztatása Linux rendszerű virtuális géphez](attach-disk-portal.md).
 
-    Az eszközökhöz tartozó kernel-elnevezési séma után az új meghajtó általában a következő rendelkezésre álló betűhöz lesz rendelve, ebben az esetben az új hozzáadott lemez SDD.
+    A kernel-elnevezési séma az újonnan hozzáadott eszközre vonatkozik. Az új meghajtó általában a következő elérhető levélhez van rendelve. Ebben az esetben a hozzáadott lemez a következő: `sdd` .
 
-4. Az új lemez hozzáadása után keresse meg a lemezeket
+4. Ellenőrizze a lemezeket, és győződjön meg arról, hogy az új lemez hozzá lett adva:
 
     ``` bash
     fdisk -l | egrep ^"Disk /"
     ```
 
-    ![forgatókönyv – newdisk02](./media/disk-encryption/resize-lvm/036-resize-lvm-scenarioe-check-newdisk02.png)-
+    ![A lemezeket felsoroló kódot megjelenítő képernyőkép. Az eredmények ki vannak emelve.](./media/disk-encryption/resize-lvm/036-resize-lvm-scenarioe-check-newdisk02.png)
 
     ``` bash
     lsblk
     ```
 
-    ![forgatókönyv – newdisk003](./media/disk-encryption/resize-lvm/036-resize-lvm-scenarioe-check-newdisk03.png)
+    ![Képernyőfelvétel: az újonnan hozzáadott lemez a kimenetben.](./media/disk-encryption/resize-lvm/036-resize-lvm-scenarioe-check-newdisk03.png)
 
-5. Hozzon létre egy fájlrendszert a legutóbb hozzáadott lemez tetején
-
-    A legutóbb hozzáadott lemez megfeleltetése a/dev/disk/Azure/scsi1/társított eszközökhöz
+5. Hozzon létre egy fájlrendszert a legutóbb hozzáadott lemez tetején. Társítsa a lemezt a társított eszközökhöz `/dev/disk/azure/scsi1/` .
 
     ``` bash
     ls -la /dev/disk/azure/scsi1/
     ```
 
-    ![forgatókönyv – newdisk03](./media/disk-encryption/resize-lvm/037-resize-lvm-scenarioe-check-newdisk03.png)
+    ![Képernyőfelvétel a fájlrendszert létrehozó kód megjelenítéséről. Az eredmények ki vannak emelve.](./media/disk-encryption/resize-lvm/037-resize-lvm-scenarioe-check-newdisk03.png)
 
     ``` bash
     mkfs.ext4 /dev/disk/azure/scsi1/${disk}
     ```
 
-    ![forgatókönyv – mkfs01](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-mkfs01.png)
+    ![Képernyőfelvétel: a fájlrendszert létrehozó további kód, amely megfelel a társított eszközök lemezének. Az eredmények ki vannak emelve.](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-mkfs01.png)
 
-6. Új ideiglenes csatlakoztatási pont létrehozása az új hozzáadott lemezhez
+6. Hozzon létre egy ideiglenes csatlakozási pontot az új hozzáadott lemezhez:
 
     ``` bash
     newmount=/data4
     mkdir ${newmount}
     ```
 
-7. A nemrég létrehozott fájlrendszer hozzáadása az/etc/fstab modulhoz
+7. Adja hozzá a legutóbb létrehozott fájlrendszert a következőhöz: `/etc/fstab` .
 
     ``` bash
     blkid /dev/disk/azure/scsi1/lun4| awk -F\" '{print "UUID="$2" '${newmount}' "$4" defaults,nofail 0 0"}' >> /etc/fstab
     ```
 
-8. Az új létrehozott FS csatlakoztatása a Mount-a paranccsal
+8. Csatlakoztassa az újonnan létrehozott fájlrendszert:
 
     ``` bash
     mount -a
     ```
 
-9. Ellenőrizze, hogy az új, hozzáadott FS csatlakoztatva van-e
+9. Ellenőrizze, hogy az új fájlrendszer csatlakoztatva van-e:
 
     ``` bash
     df -h
     ```
 
-    ![átméretezés – LVM-forgatókönyv-DF](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-df.png)
+    ![Képernyőfelvétel: az a kód, amely ellenőrzi, hogy a fájlrendszer csatlakoztatva van-e. Az eredmény ki van emelve.](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-df.png)
 
     ``` bash
     lsblk
     ```
 
-    ![átméretezés-LVM-forgatókönyv-lsblk](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-lsblk.png)
+    ![Képernyőfelvétel: további kód, amely ellenőrzi, hogy a fájlrendszer csatlakoztatva van-e. Az eredmény ki van emelve.](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-lsblk.png)
 
 10. Indítsa újra az adatmeghajtók korábban elindított titkosítását.
 
-    Az LVM-on-Crypt esetében javasolt a EncryptFormatAll használata, máskülönben a dupla titkosítás a további lemezek beállításakor is előfordulhat.
+    >[!TIP]
+    >Az LVM-Crypt esetében ajánlott a használata `EncryptFormatAll` . Ellenkező esetben előfordulhat, hogy a további lemezek beállításakor a rendszer dupla titkosítást lát.
+    >
+    >További információ: az [LVM és a RAID konfigurálása titkosított eszközökön](how-to-configure-lvm-raid-on-crypt.md).
 
-    A használattal kapcsolatos információkért lásd: az [LVM konfigurálása a crypt](how-to-configure-lvm-raid-on-crypt.md)-ben.
-
-    Példa:
+    Bemutatunk egy példát:
 
     ``` bash
     az vm encryption enable \
@@ -588,172 +586,157 @@ Ezzel a módszerrel hozzáadhat helyet egy már létező LV-hez, vagy Ehelyett l
     -o table
     ```
 
-    A titkosítás befejezésekor megjelenik egy Crypt-réteg az újonnan hozzáadott lemezen.
+    Ha a titkosítás befejeződik, a rendszer egy Crypt réteget lát az újonnan hozzáadott lemezen:
 
     ``` bash
     lsblk
     ```
 
-    ![forgatókönyv – lsblk2](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-lsblk2.png)
+    ![Képernyőkép a crypt réteget ellenőrző kód megjelenítéséről. Az eredmény ki van emelve.](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-lsblk2.png)
 
-11. Az új lemez titkosított rétegének leválasztása
+11. Válassza le az új lemez titkosított rétegét:
 
     ``` bash
     umount ${newmount}
     ```
 
-12. Az aktuális PVS-információ keresése
+12. Az aktuális PV-információ keresése:
 
     ``` bash
     pvs
     ```
 
-    ![forgatókönyv – currentpvs](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-currentpvs.png)
+    ![Képernyőfelvétel: a fizikai kötet adatait ellenőrző kód. Az eredmény ki van emelve.](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-currentpvs.png)
 
-13. Hozzon létre egy PV-t a lemez titkosított rétegének tetején
-
-    Fogadja el az eszköz nevét az előző lsblk parancsból, és adja hozzá a/dev/Mapper az eszköz neve előtt a PV létrehozásához.
+13. Hozzon létre egy PV-t a lemez titkosított rétegének tetején. Használja az eszköz nevét az előző `lsblk` parancsból. `/dev/`A PV létrehozásához vegyen fel egy Mapper-t az eszköz neve elé:
 
     ``` bash
     pvcreate /dev/mapper/mapperdevicename
     ```
 
-    ![forgatókönyv – pvcreate](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-pvcreate.png)
+    ![Képernyőfelvétel: a titkosított réteg fizikai kötetét létrehozó kód. Az eredmények ki vannak emelve.](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-pvcreate.png)
 
-    Megjelenik egy figyelmeztetés arról, hogyan törli a jelenlegi ext4 FS-aláírást, ennek a kérdésnek az y válasza jelenik meg
+    Az aktuális aláírás törlésével kapcsolatos figyelmeztetés jelenik meg `ext4 fs` . Ez a figyelmeztetés várható. Válaszolja meg ezt a kérdést a következővel: `y` .
 
-14. Annak ellenőrzése, hogy az új PV hozzá lett-e adva az LVM-konfigurációhoz
+14. Győződjön meg arról, hogy az új PV hozzá lett adva az LVM-konfigurációhoz:
 
     ``` bash
     pvs
     ```
 
-    ![forgatókönyv – newpv](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-newpv.png)
+    ![Képernyőfelvétel: az a kód, amely ellenőrzi, hogy a fizikai kötet hozzá lett-e adva az LVM-konfigurációhoz. Az eredmény ki van emelve.](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-newpv.png)
 
-15. Adja hozzá az új PV-t ahhoz a VG-hez, amelyet fokoznia kell
+15. Adja hozzá az új PV-t a növeléshez szükséges VG-hez.
 
     ``` bash
     vgextend vgname /dev/mapper/nameofhenewpv
     ```
 
-    ![forgatókönyv – vgextent](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-vgextent.png)
+    ![Képernyőfelvétel: a fizikai kötetet egy kötet csoportba feltüntető kód. Az eredmények ki vannak emelve.](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-vgextent.png)
 
-16. A VG új méretének és szabad területének ellenőrzése
+16. Ellenőrizze a VG új méretét és szabad területét:
 
     ``` bash
     vgdisplay vgname
     ```
 
-    ![forgatókönyv – vgdisplay](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-vgdisplay.png)
+    ![A kötet méretét és szabad területét ellenőrző kódot bemutató képernyőkép. Az eredmények ki vannak emelve.](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-vgdisplay.png)
 
-    Figyelje meg a teljes PE-szám és az ingyenes PE/méret növelését
+    Figyelje meg a `Total PE` darabszám és a mennyiség növekedését `Free PE / Size` .
 
-17. Növelje a LV és a fájlrendszer méretét a lvextend-r kapcsolóval (ebben a példában a teljes szabad terület a VG-ben, és hozzáadja azt az adott logikai kötethez)
+17. Növelje a LV és a fájlrendszer méretét. Használja a `-r` kapcsolót `lvextend` . Ebben a példában a teljes rendelkezésre álló tárterületet adjuk hozzá a VG-hoz az adott LV-hez.
 
     ``` bash
     lvextend -r -l +100%FREE /dev/vgname/lvname
     ```
 
-    ![forgatókönyv – lvextend](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-lvextend.png)
+    ![Képernyőfelvétel: a helyi kötet és a fájlrendszer méretét megnövelő kód. Az eredmények ki vannak emelve.](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-lvextend.png)
 
-18. Az LV méretének ellenőrzése
+A módosítások ellenőrzéséhez kövesse a következő lépéseket.
+
+1. A LV méretének ellenőrzése:
 
     ``` bash
     lvdisplay /dev/vgname/lvname
     ```
 
-    ![forgatókönyv – lvdisplay](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-lvdisplay.png)
+    ![Képernyőfelvétel: a helyi kötet új méretét ellenőrző kód. Az eredmények ki vannak emelve.](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-lvdisplay.png)
 
-19. Az imént átméretezett fájlrendszer méretének ellenőrzése
+1. Ellenőrizze a fájlrendszer új méretét:
 
     ``` bash
     df -h mountpoint
     ```
 
-    ![forgatókönyv – DF1](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-df1.png)
+    ![A fájlrendszer új méretét ellenőrző kódot megjelenítő képernyőkép. Az eredmény ki van emelve.](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-df1.png)
 
-20. Győződjön meg arról, hogy az LVM réteg a titkosított réteg felett lett létrehozva
+1. Győződjön meg arról, hogy az LVM réteg a titkosított rétegen felül van:
 
     ``` bash
     lsblk
     ```
 
-    ![forgatókönyv – lsblk3](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-lsblk3.png)
+    ![Képernyőfelvétel: a kód, amely azt ellenőrzi, hogy az LVM réteg a titkosított rétegen felül van-e. Az eredmény ki van emelve.](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-lsblk3.png)
 
-    Ha a lsblk beállítások nélkül szeretné használni a csatlakoztatási pontokat, az eszköz és a logikai kötetek alapján rendezi a csatlakoztatási pontokat, érdemes lehet a lsblk, a-s megfordítani a sort, hogy a csatolási egyszer jelenjen meg, majd a lemezek többször is megjelenjenek.
+    Ha `lsblk` beállítások nélkül használja, akkor a csatlakoztatási pontok többször is megjelennek. A parancs eszköz-és LVs szerint rendezi. 
+
+    Érdemes lehet használni `lsblk -fs` . Ebben a parancsban `-fs` megfordítja a rendezési sorrendet, hogy a csatlakoztatási pontok egyszer megjelenjenek. A lemezek többször is megjelennek.
 
     ``` bash
     lsblk -fs
     ```
 
-    ![forgatókönyv – lsblk4](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-lsblk4.png)
+    ![Képernyőfelvétel: alternatív kód, amely azt ellenőrzi, hogy az LVM réteg a titkosított rétegen felül van-e. Az eredmény ki van emelve.](./media/disk-encryption/resize-lvm/038-resize-lvm-scenarioe-lsblk4.png)
 
-#### <a name="extending-an-lvm-on-crypt-volume-resizing-an-existing-pv"></a>Az LVM kiterjesztése egy meglévő PV-t átméretezni a crypt köteten
+#### <a name="extend-an-lvm-on-a-crypt-volume-by-resizing-an-existing-pv"></a>Az LVM kibővítése egy Crypt-köteten egy meglévő PV átméretezésével
 
-1. A titkosított lemezek azonosítása
+1. Azonosítsa a titkosított lemezeket:
 
     ``` bash
     lsblk
     ```
 
-    ![scenariof-lsblk01](./media/disk-encryption/resize-lvm/039-resize-lvm-scenariof-lsblk01.png)
+    ![A titkosított lemezeket azonosító kódot megjelenítő képernyőkép. Az eredmények ki vannak emelve.](./media/disk-encryption/resize-lvm/039-resize-lvm-scenariof-lsblk01.png)
 
     ``` bash
     lsblk -s
     ```
 
-    ![scenariof-lsblk012](./media/disk-encryption/resize-lvm/040-resize-lvm-scenariof-lsblk012.png)
+    ![A titkosított lemezeket azonosító alternatív kódot bemutató képernyőkép. Az eredmények ki vannak emelve.](./media/disk-encryption/resize-lvm/040-resize-lvm-scenariof-lsblk012.png)
 
-2. A PV-adatok megtekintése
+2. A PV-információk megkeresése:
 
     ``` bash
     pvs
     ```
 
-    ![scenariof-pvs1](./media/disk-encryption/resize-lvm/041-resize-lvm-scenariof-pvs.png)
+    ![A fizikai kötetek adatait ellenőrző kódot ábrázoló képernyőkép. Az eredmények ki vannak emelve.](./media/disk-encryption/resize-lvm/041-resize-lvm-scenariof-pvs.png)
 
-3. A VG-információk keresése
+3. Keresse meg a VG-adatokat:
 
     ``` bash
     vgs
     ```
 
-    ![scenariof-vgs](./media/disk-encryption/resize-lvm/042-resize-lvm-scenariof-vgs.png)
+    ![Képernyőfelvétel: a mennyiségi csoportok adatait ellenőrző kód. Az eredmények ki vannak emelve.](./media/disk-encryption/resize-lvm/042-resize-lvm-scenariof-vgs.png)
 
-4. Az LV-adatok keresése
+4. Az LV-információk megtekintése:
 
     ``` bash
     lvs
     ```
 
-    ![scenariof – LVS](./media/disk-encryption/resize-lvm/043-resize-lvm-scenariof-lvs.png)
+    ![Képernyőkép a helyi kötet információit ellenőrző kód megjelenítéséről. Az eredmény ki van emelve.](./media/disk-encryption/resize-lvm/043-resize-lvm-scenariof-lvs.png)
 
-5. A fájlrendszer kihasználtságának keresése
+5. Keresse meg a fájlrendszer kihasználtságát:
 
     ``` bash
     df -h /mountpoint(s)
     ```
 
-    ![LVM-scenariof-FS](./media/disk-encryption/resize-lvm/044-resize-lvm-scenariof-fs.png)
+    ![Képernyőfelvétel: a fájlrendszer mennyiségét ellenőrző kód. Az eredmények ki vannak emelve.](./media/disk-encryption/resize-lvm/044-resize-lvm-scenariof-fs.png)
 
-6. A lemezek méretének ellenőrzéséhez
-
-    ``` bash
-    fdisk
-    fdisk -l | egrep ^"Disk /"
-    lsblk
-    ```
-
-    ![scenariof-fdisk01](./media/disk-encryption/resize-lvm/045-resize-lvm-scenariof-fdisk01.png)
-
-7. Az adatlemez átméretezése
-
-    A [Linux kibontására szolgáló lemezekre](expand-disks.md) hivatkozhat (csak a lemez átméretezésére vonatkozik), a portál, a CLI vagy a PowerShell segítségével hajthatja végre ezt a lépést.
-
-    >[!NOTE]
-    >Vegye figyelembe, hogy a virtuális lemezek átméretezési műveletei nem hajthatók végre a-t futtató virtuális géppel. Ehhez a lépéshez felszabadítani kell a virtuális gépet
-
-8. A lemezek méretének ellenőrzéséhez
+6. A lemezek méretének ellenőrzéséhez:
 
     ``` bash
     fdisk
@@ -761,37 +744,50 @@ Ezzel a módszerrel hozzáadhat helyet egy már létező LV-hez, vagy Ehelyett l
     lsblk
     ```
 
-    ![scenariof-fdisk02](./media/disk-encryption/resize-lvm/046-resize-lvm-scenariof-fdisk02.png)
+    ![A lemezek méretét ellenőrző kódot megjelenítő képernyőkép. Az eredmények ki vannak emelve.](./media/disk-encryption/resize-lvm/045-resize-lvm-scenariof-fdisk01.png)
 
-    Vegye figyelembe, hogy (ebben az esetben) mindkét lemezt 2 GB-ról 4GB-ra méretezi át, azonban az FS, az LV és a PV méret változatlan marad.
+7. Méretezze át az adatlemezt. Használhatja a portált, a CLI-t vagy a PowerShellt. További információ: a [virtuális merevlemezek kibontása Linux](expand-disks.md#expand-an-azure-managed-disk)rendszerű virtuális gépen a lemez átméretezése szakasz. 
 
-9. Az aktuális PV-méret ellenõrzése
+    >[!IMPORTANT]
+    >A virtuális lemezek nem méretezhetők át, amíg a virtuális gép fut. A virtuális gép felszabadítása ehhez a lépéshez.
 
-    Ne feledje, hogy az LVM-on-Crypt esetében a PV a/dev/Mapper/-eszköz, nem pedig az/dev/SD * eszköz
+8. A lemezek méretének ellenőrzéséhez:
+
+    ``` bash
+    fdisk
+    fdisk -l | egrep ^"Disk /"
+    lsblk
+    ```
+
+    ![A lemez méretét ellenőrző kódot bemutató képernyőkép. Az eredmények ki vannak emelve.](./media/disk-encryption/resize-lvm/046-resize-lvm-scenariof-fdisk02.png)
+
+    Ebben az esetben mindkét lemez mérete 2 GB és 4 GB között volt. A fájlrendszer, az LV és a PV mérete azonban változatlan marad.
+
+9. Az aktuális PV-méret ellenõrzése. Ne feledje, hogy az LVM-on-Crypt-on a PV az `/dev/mapper/` eszköz, nem az `/dev/sd*` eszköz.
 
     ``` bash
     pvdisplay /dev/mapper/devicemappername
     ```
 
-    ![scenariof – PVS](./media/disk-encryption/resize-lvm/047-resize-lvm-scenariof-pvs.png)
+    ![Képernyőfelvétel: az aktuális fizikai kötet méretét ellenőrző kód. Az eredmények ki vannak emelve.](./media/disk-encryption/resize-lvm/047-resize-lvm-scenariof-pvs.png)
 
-10. A PV átméretezése
+10. Méretezze át a PV-t:
 
     ``` bash
     pvresize /dev/mapper/devicemappername
     ```
 
-    ![scenariof-átméretezés – PV](./media/disk-encryption/resize-lvm/048-resize-lvm-scenariof-resize-pv.png)
+    ![Képernyőfelvétel: a fizikai kötet átméretezésére szolgáló kód. Az eredmények ki vannak emelve.](./media/disk-encryption/resize-lvm/048-resize-lvm-scenariof-resize-pv.png)
 
-11. Az átméretezést követően az mé méretének ellenõrzése
+11. Győződjön meg arról, hogy az új PV-méret:
 
     ``` bash
     pvdisplay /dev/mapper/devicemappername
     ```
 
-    ![scenariof – PV](./media/disk-encryption/resize-lvm/049-resize-lvm-scenariof-pv.png)
+    ![Képernyőfelvétel: a fizikai kötet méretét ellenőrző kód. Az eredmények ki vannak emelve.](./media/disk-encryption/resize-lvm/049-resize-lvm-scenariof-pv.png)
 
-12. A titkosított réteg átméretezése a PV-ben
+12. Méretezze át a titkosított réteget a PV-ben:
 
     ``` bash
     cryptsetup resize /dev/mapper/devicemappername
@@ -799,60 +795,60 @@ Ezzel a módszerrel hozzáadhat helyet egy már létező LV-hez, vagy Ehelyett l
 
     Alkalmazza ugyanazt az eljárást az összes átméretezni kívánt lemez esetében.
 
-13. A VG-információk keresése
+13. Keresse meg a VG-adatokat:
 
     ``` bash
     vgdisplay vgname
     ```
 
-    ![scenariof – VG](./media/disk-encryption/resize-lvm/050-resize-lvm-scenariof-vg.png)
+    ![Képernyőfelvétel a kötetre vonatkozó információkat ellenőrző kód megjelenítéséről. Az eredmények ki vannak emelve.](./media/disk-encryption/resize-lvm/050-resize-lvm-scenariof-vg.png)
 
-    A VG most már rendelkezik a LVs való lefoglaláshoz szükséges hellyel
+    A VG-nek most már elegendő lemezterületet kell kiosztania a LVs.
 
-14. Az LV információinak megtekintése
+14. Keresse meg az LV-adatokat:
 
     ``` bash
     lvdisplay vgname/lvname
     ```
 
-    ![scenariof – lv](./media/disk-encryption/resize-lvm/051-resize-lvm-scenariof-lv.png)
+    ![Képernyőkép a helyi kötet információit ellenőrző kód megjelenítéséről. Az eredmények ki vannak emelve.](./media/disk-encryption/resize-lvm/051-resize-lvm-scenariof-lv.png)
 
-15. Az FS kihasználtságának keresése
+15. Keresse meg a fájlrendszer kihasználtságát:
 
     ``` bash
     df -h /mountpoint
     ```
 
-    ![scenariof – FS](./media/disk-encryption/resize-lvm/052-resize-lvm-scenariof-fs.png)
+    ![A fájlrendszer kihasználtságát ellenőrző kódot bemutató képernyőkép. Az eredmények ki vannak emelve.](./media/disk-encryption/resize-lvm/052-resize-lvm-scenariof-fs.png)
 
-16. Az LV átméretezése
+16. Az LV átméretezése:
 
     ``` bash
     lvresize -r -L +2G /dev/vgname/lvname
     ```
 
-    ![scenariof-lvresize](./media/disk-encryption/resize-lvm/053-resize-lvm-scenariof-lvresize.png)
+    ![Képernyőfelvétel: a helyi kötet átméretezésére szolgáló kód. Az eredmények ki vannak emelve.](./media/disk-encryption/resize-lvm/053-resize-lvm-scenariof-lvresize.png)
 
-    Az-r kapcsoló használatával is végrehajtja az FS átméretezését
+    Itt azt a `-r` lehetőséget használjuk, hogy a fájlrendszert is átméretezheti.
 
-17. Az LV információinak megtekintése
+17. Keresse meg az LV-adatokat:
 
     ``` bash
     lvdisplay vgname/lvname
     ```
 
-    ![scenariof-lvsize](./media/disk-encryption/resize-lvm/054-resize-lvm-scenariof-lvsize.png)
+    ![Képernyőfelvétel: a helyi kötetre vonatkozó adatokat lekérdező kód. Az eredmények ki vannak emelve.](./media/disk-encryption/resize-lvm/054-resize-lvm-scenariof-lvsize.png)
 
-18. A fájlrendszer kihasználtságának keresése
+18. Keresse meg a fájlrendszer kihasználtságát:
 
     ``` bash
     df -h /mountpoint
     ```
 
-    ![fájlrendszer létrehozása](./media/disk-encryption/resize-lvm/055-resize-lvm-scenariof-fs.png)
+    ![A fájlrendszer kihasználtságát ellenőrző kódot megjelenítő képernyőkép. Az eredmények ki vannak emelve.](./media/disk-encryption/resize-lvm/055-resize-lvm-scenariof-fs.png)
 
-    Alkalmazza ugyanazt az átméretezési eljárást minden további lv-re, amely megköveteli
+Alkalmazza ugyanazt az átméretezési eljárást minden olyan LV-re, amelyhez szükség van.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- [Azure Disk Encryption – hibaelhárítás](disk-encryption-troubleshooting.md)
+[Hibakeresés Azure Disk Encryption](disk-encryption-troubleshooting.md)

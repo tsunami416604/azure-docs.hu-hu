@@ -2,13 +2,13 @@
 title: Privát hivatkozás beállítása
 description: Hozzon létre egy privát végpontot egy tároló-beállításjegyzékben, és engedélyezze a hozzáférést egy helyi virtuális hálózatban lévő privát kapcsolaton keresztül. A Private link Access a prémium szintű szolgáltatási szint egyik funkciója.
 ms.topic: article
-ms.date: 06/26/2020
-ms.openlocfilehash: da07d35ad944db8e9b8a7bac0602fff23cd222d8
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.date: 10/01/2020
+ms.openlocfilehash: 793003edea853922f78b36f0dc1a6e35205cdadb
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89488745"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743641"
 ---
 # <a name="connect-privately-to-an-azure-container-registry-using-azure-private-link"></a>Privát csatlakozás Azure Container registryhez az Azure Private link használatával
 
@@ -79,7 +79,7 @@ az network vnet subnet update \
 
 ### <a name="configure-the-private-dns-zone"></a>A magánhálózati DNS-zóna konfigurálása
 
-Hozzon létre egy privát DNS-zónát a privát Azure Container Registry-tartományhoz. A későbbi lépések során DNS-rekordokat hoz létre a beállításjegyzék tartományához ebben a DNS-zónában.
+Hozzon létre egy [privát DNS-zónát](../dns/private-dns-privatednszone.md) a privát Azure Container Registry-tartományhoz. A későbbi lépések során DNS-rekordokat hoz létre a beállításjegyzék tartományához ebben a DNS-zónában.
 
 Ha privát zónát szeretne használni az Azure Container Registry alapértelmezett DNS-feloldásának felülbírálásához, akkor a zónának **privatelink.azurecr.IO**nevűnek kell lennie. A privát zóna létrehozásához futtassa a következő az [Network Private-DNS Zone Create][az-network-private-dns-zone-create] parancsot:
 
@@ -213,14 +213,14 @@ Hozzon létre egy privát hivatkozást a beállításjegyzék létrehozásakor, 
     | ------- | ----- |
     | Előfizetés | Válassza ki előfizetését. |
     | Erőforráscsoport | Adja meg egy meglévő csoport nevét, vagy hozzon létre egy újat.|
-    | Name | Adjon meg egy egyedi nevet. |
+    | Név | Adjon meg egy egyedi nevet. |
     | Alerőforrás |**Beállításjegyzék** kiválasztása|
     | **Hálózat** | |
     | Virtuális hálózat| Válassza ki azt a virtuális hálózatot, amelyben a virtuális gép telepítve van, például *myDockerVMVNET*. |
     | Alhálózat | Válasszon ki egy alhálózatot, például a *myDockerVMSubnet* , ahol a virtuális gép telepítve van. |
     |**saját DNS integráció**||
     |Integrálás saját DNS-zónával |Válassza az **Igen** lehetőséget. |
-    |saját DNS zóna |Select *(új) privatelink.azurecr.IO* |
+    |Privát DNS-zóna |Select *(új) privatelink.azurecr.IO* |
     |||
 1. Konfigurálja a fennmaradó beállításjegyzék-beállításokat, majd válassza a **felülvizsgálat + létrehozás**lehetőséget.
 
@@ -238,7 +238,7 @@ Hozzon létre egy privát hivatkozást a beállításjegyzék létrehozásakor, 
     | **Projekt részletei** | |
     | Előfizetés | Válassza ki előfizetését. |
     | Erőforráscsoport | Adja meg egy meglévő csoport nevét, vagy hozzon létre egy újat.|
-    | **Példány részletei** |  |
+    | **Példány adatai** |  |
     | Name | Adjon meg egy nevet. |
     |Region|Válasszon régiót.|
     |||
@@ -263,11 +263,11 @@ Hozzon létre egy privát hivatkozást a beállításjegyzék létrehozásakor, 
     | Alhálózat | Válasszon ki egy alhálózatot, például a *myDockerVMSubnet* , ahol a virtuális gép telepítve van. |
     |**saját DNS integráció**||
     |Integrálás saját DNS-zónával |Válassza az **Igen** lehetőséget. |
-    |saját DNS zóna |Select *(új) privatelink.azurecr.IO* |
+    |Privát DNS-zóna |Select *(új) privatelink.azurecr.IO* |
     |||
 
-1. Válassza a **Felülvizsgálat + létrehozás** lehetőséget. A **felülvizsgálat + létrehozás** oldalon az Azure ellenőrzi a konfigurációt. 
-2. Amikor megjelenik az **átadott üzenet ellenőrzése** lehetőség, válassza a **Létrehozás**lehetőséget.
+1. Válassza az **Áttekintés + létrehozás** lehetőséget. Az **Áttekintés és létrehozása** lapra kerül, ahol az Azure érvényesíti az Ön konfigurációját. 
+2. Amikor megjelenik a **Megfelelt az ellenőrzésen** üzenet, válassza a **Létrehozás** lehetőséget.
 
 A magánhálózati végpont létrehozása után a privát zónában a DNS-beállítások a portál **privát végpontok** lapján jelennek meg:
 
@@ -306,28 +306,46 @@ Győződjön meg arról, hogy a privát végpont alhálózatán belüli erőforr
 
 A magánhálózati kapcsolat kapcsolatának ellenőrzéséhez SSH-kapcsolatot kell létesítenie a virtuális hálózatban beállított virtuális géppel.
 
-Futtassa a `nslookup` parancsot a beállításjegyzék IP-címének feloldásához a privát hivatkozáson keresztül:
+Futtasson egy segédprogramot, például a vagy a lehetőséget `nslookup` `dig` , hogy megkeresse a beállításjegyzék IP-címét a privát hivatkozáson keresztül. Például:
 
 ```bash
-nslookup $REGISTRY_NAME.azurecr.io
+dig $REGISTRY_NAME.azurecr.io
 ```
 
 Például a kimenet a beállításjegyzék IP-címét jeleníti meg az alhálózat címterület:
 
 ```console
 [...]
-myregistry.azurecr.io       canonical name = myregistry.privatelink.azurecr.io.
-Name:   myregistry.privatelink.azurecr.io
-Address: 10.0.0.6
+; <<>> DiG 9.11.3-1ubuntu1.13-Ubuntu <<>> myregistry.azurecr.io
+;; global options: +cmd
+;; Got answer:
+;; ->>HEADER<<- opcode: QUERY, status: NOERROR, id: 52155
+;; flags: qr rd ra; QUERY: 1, ANSWER: 2, AUTHORITY: 0, ADDITIONAL: 1
+
+;; OPT PSEUDOSECTION:
+; EDNS: version: 0, flags:; udp: 65494
+;; QUESTION SECTION:
+;myregistry.azurecr.io.         IN      A
+
+;; ANSWER SECTION:
+myregistry.azurecr.io.  1783    IN      CNAME   myregistry.privatelink.azurecr.io.
+myregistry.privatelink.azurecr.io. 10 IN A      10.0.0.7
+
+[...]
 ```
 
-Hasonlítsa össze ezt az eredményt a kimenetben lévő nyilvános IP-címmel `nslookup` egy nyilvános végponton keresztül:
+Hasonlítsa össze ezt az eredményt a kimenetben lévő nyilvános IP-címmel `dig` egy nyilvános végponton keresztül:
 
 ```console
 [...]
-Non-authoritative answer:
-Name:   myregistry.westeurope.cloudapp.azure.com
-Address: 40.78.103.41
+;; ANSWER SECTION:
+myregistry.azurecr.io.  2881    IN  CNAME   myregistry.privatelink.azurecr.io.
+myregistry.privatelink.azurecr.io. 2881 IN CNAME xxxx.xx.azcr.io.
+xxxx.xx.azcr.io.    300 IN  CNAME   xxxx-xxx-reg.trafficmanager.net.
+xxxx-xxx-reg.trafficmanager.net. 300 IN CNAME   xxxx.westeurope.cloudapp.azure.com.
+xxxx.westeurope.cloudapp.azure.com. 10  IN A 20.45.122.144
+
+[...]
 ```
 
 ### <a name="registry-operations-over-private-link"></a>Beállításjegyzékbeli műveletek privát kapcsolaton keresztül
@@ -361,9 +379,15 @@ Ha a jelen cikkben ismertetett lépésekkel állít be egy privát végponti kap
 
 ## <a name="add-zone-records-for-replicas"></a>Zónaadatok hozzáadása a replikák számára
 
-Ahogy az ebben a cikkben is látható, amikor egy magánhálózati végponti kapcsolattal bővíti a beállításjegyzéket, a zónában lévő DNS-rekordok a beállításjegyzékben `privatelink.azurecr.io` és annak adatvégpontjában jönnek létre azokban a régiókban, ahol a beállításjegyzék [replikálódik](container-registry-geo-replication.md). 
+Ahogy az ebben a cikkben is látható, amikor privát végponti kapcsolattal bővít egy beállításjegyzéket, DNS-rekordokat hoz létre a `privatelink.azurecr.io` beállításjegyzékben és annak adatvégpontjában abban a régióban, ahol a beállításjegyzék [replikálódik](container-registry-geo-replication.md). 
 
 Ha később új replikát ad hozzá, manuálisan kell hozzáadnia egy új zónát az adott régióban lévő adatvégponthoz. Ha például létrehoz egy *myregistry* -replikát a *northeurope* helyen, vegyen fel egy zóna rekordot a következőhöz: `myregistry.northeurope.data.azurecr.io` . További lépések: [DNS-rekordok létrehozása a privát zónában](#create-dns-records-in-the-private-zone) ebben a cikkben.
+
+## <a name="dns-configuration-options"></a>DNS-konfigurációs beállítások
+
+Az ebben a példában szereplő privát végpont egy alapszintű virtuális hálózathoz társított magánhálózati DNS-zónával integrálódik. Ez a telepítő az Azure által biztosított DNS szolgáltatást használja közvetlenül a beállításjegyzék nyilvános teljes tartománynevének a virtuális hálózatban lévő magánhálózati IP-címére való feloldásához. 
+
+A privát hivatkozás további DNS-konfigurációs forgatókönyveket támogat, amelyek a privát zónát használják, beleértve az egyéni DNS-megoldásokat is. Előfordulhat például, hogy rendelkezik egy egyéni DNS-megoldással, amelyet a virtuális hálózatban vagy a helyszínen helyez üzembe egy olyan hálózaton, amely VPN-átjáró használatával csatlakozik a virtuális hálózathoz. Ha a beállításjegyzék nyilvános FQDN-jét szeretné feloldani a magánhálózati IP-címekre ezekben a forgatókönyvekben, konfigurálnia kell egy kiszolgálói szintű továbbítót a Azure DNS szolgáltatásra (168.63.129.16). A konfigurációs beállítások és lépések pontos beállításai a meglévő hálózatokból és DNS-ről függenek. Példák: [Azure Private Endpoint DNS-konfiguráció](../private-link/private-endpoint-dns.md).
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -375,7 +399,7 @@ az group delete --name $RESOURCE_GROUP
 
 A portálon található erőforrások törléséhez navigáljon az erőforráscsoporthoz. Miután betöltötte az erőforráscsoportot, kattintson az **erőforráscsoport törlése** elemre az erőforráscsoport és az ott tárolt erőforrások eltávolításához.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ha többet szeretne megtudni a privát hivatkozásokról, tekintse meg az [Azure Private link](../private-link/private-link-overview.md) dokumentációját.
 * Ha be kell állítania a beállításjegyzék-hozzáférési szabályokat az ügyfél tűzfala mögött, tekintse meg a [szabályok konfigurálása az Azure Container Registry tűzfal mögötti eléréséhez](container-registry-firewall-access-rules.md)című témakört.

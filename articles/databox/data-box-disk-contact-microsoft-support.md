@@ -8,12 +8,12 @@ ms.subservice: disk
 ms.topic: how-to
 ms.date: 05/24/2019
 ms.author: alkohli
-ms.openlocfilehash: d4622ae1fa87a47915094b7ab90390c753b82dbb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d0c45626016049424c8028eea7ffbd7f281e9012
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84609114"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91744151"
 ---
 # <a name="open-a-support-ticket-for-azure-data-box"></a>Támogatási jegy megnyitása Azure Data Box
 
@@ -38,7 +38,7 @@ Támogatási kérelem létrehozásához hajtsa végre a következő lépéseket:
     4. Adja meg a **támogatási csomagot**.
     5. Kattintson a **Tovább** gombra.
 
-        ![Alapvető beállítások](./media/data-box-disk-contact-microsoft-support/data-box-disk-support1.png)
+        ![Alapbeállítások](./media/data-box-disk-contact-microsoft-support/data-box-disk-support1.png)
 
 3. Az **új támogatási kérelem**területen válassza a **2. lépéssel kapcsolatos problémát**. A **probléma megoldásához**hajtsa végre a következő lépéseket:
 
@@ -57,7 +57,7 @@ Támogatási kérelem létrehozásához hajtsa végre a következő lépéseket:
 
    1. A **kapcsolattartási beállítások**területen adja meg a kívánt kapcsolattartási módszert (telefon vagy e-mail) és a nyelvet. A válaszidő automatikusan ki van választva az előfizetési terv alapján.
    2. A **kapcsolattartási adatok**területen adja meg a nevét, az e-mail-címet, a nem kötelező kapcsolattartót, az országot/régiót. Válassza **a kapcsolatfelvételi változások mentése a későbbi támogatási kérelmekhez**lehetőséget.
-   3. Kattintson a **Létrehozás** lehetőségre.
+   3. Kattintson a **Létrehozás** elemre.
 
        ![Kapcsolattartási adatok](./media/data-box-disk-contact-microsoft-support/data-box-disk-support3.png)   
 
@@ -76,7 +76,7 @@ A támogatási jegy létrehozása után a jegyet a teljes életciklusán kereszt
 
 2. A **Súgó és támogatás**szolgáltatásban megjelenik a **legújabb támogatási kérelmek** táblázatos listája.
 
-    ![Támogatási kérelmek kezelése](./media/data-box-disk-contact-microsoft-support/data-box-disk-manage-support-ticket2.png)
+    ![Támogatási kérelmek kezelése 2](./media/data-box-disk-contact-microsoft-support/data-box-disk-manage-support-ticket2.png)
 
 3. Válasszon ki egy támogatási kérést, és kattintson rá. Megtekintheti a kérelem állapotát és részleteit. Ha ezt a kérést szeretné követni, kattintson az **+ új üzenet** elemre.
 

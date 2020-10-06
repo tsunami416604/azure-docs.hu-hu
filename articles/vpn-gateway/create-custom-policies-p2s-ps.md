@@ -8,14 +8,14 @@ ms.service: vpn-gateway
 ms.topic: how-to
 ms.date: 09/09/2020
 ms.author: cherylmc
-ms.openlocfilehash: 852ff5e6ad847ff33f8e32b4c3d9f8b325b80716
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: a77a870304e20c179e22b4a4ffe404315894d8a0
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89664517"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743692"
 ---
-# <a name="create-and-set-custom-ipsec-policies-for-point-to-site"></a>Egyéni IPsec-házirendek létrehozása és beállítása pont – hely kapcsolatokhoz
+# <a name="create-and-set-custom-ipsec-policies-for-point-to-site-preview"></a>Egyéni IPsec-házirendek létrehozása és beállítása pont – hely kapcsolatokhoz (előzetes verzió)
 
 Ha a környezethez Egyéni IPsec-házirend szükséges a titkosításhoz, egyszerűen konfigurálhat egy házirend-objektumot a szükséges beállításokkal. Ebből a cikkből megtudhatja, hogyan hozhat létre egyéni házirend-objektumot, majd hogyan állíthatja be a PowerShell használatával.
 
@@ -57,6 +57,6 @@ $gateway = Get-AzVirtualNetworkGateway -ResourceGroupName $RG -name $GWName
 Set-AzVirtualNetworkGateway -VirtualNetworkGateway $gateway -VpnClientIpsecPolicy $vpnclientipsecpolicy
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a P2S-konfigurációkról: [Tudnivalók a pont – hely VPN-ről](point-to-site-about.md).

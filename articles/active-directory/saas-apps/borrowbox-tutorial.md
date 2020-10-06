@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
-ms.openlocfilehash: d7cab94520464662589ca952e9d50102f450ab8d
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: c0ffa67725c3178155c495754ca67270c946778b
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88548345"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91744304"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-borrowbox"></a>Oktatóanyag: Azure Active Directory integráció a BorrowBox
 
@@ -100,11 +100,11 @@ Az Azure AD egyszeri bejelentkezés BorrowBox való konfigurálásához hajtsa v
 
 4. Az **alapszintű SAML-konfiguráció** szakaszban a felhasználónak nem kell végrehajtania egy lépést, mivel az alkalmazás már előre integrálva van az Azure-ban.
 
-    ![[Alkalmazás neve] Tartományi és URL-címek egyszeri bejelentkezési adatai](common/preintegrated.png)
+    ![[A képernyőképen az alapszintű SAML-konfiguráció látható.] Tartományi és URL-címek egyszeri bejelentkezési adatai](common/preintegrated.png)
 
 5. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
-    ![[Alkalmazás neve] Tartományi és URL-címek egyszeri bejelentkezési adatai](common/metadata-upload-additional-signon.png)
+    ![[Képernyőfelvétel: további U R ls beállítása, ahol megadhatja a bejelentkezés U R L.] Tartományi és URL-címek egyszeri bejelentkezési adatai](common/metadata-upload-additional-signon.png)
 
     A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:  `https://fe.bolindadigital.com/wldcs_bol_fo/b2i/mainPage.html?b2bSite=<ID>`
 
@@ -156,7 +156,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    d. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
