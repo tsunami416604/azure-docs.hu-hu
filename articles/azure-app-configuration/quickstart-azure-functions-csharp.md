@@ -8,12 +8,12 @@ ms.custom: devx-track-csharp
 ms.topic: quickstart
 ms.date: 09/28/2020
 ms.author: lcozzens
-ms.openlocfilehash: 7d4fe0f54ecd11c197f258d190e9eaef14bf2bb7
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b62bf900e3e7859437b10b7b45801ee0dc575282
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91459923"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91767778"
 ---
 # <a name="quickstart-create-an-azure-functions-app-with-azure-app-configuration"></a>Gyors útmutató: Azure Functions-alkalmazás létrehozása az Azure-alkalmazás konfigurálásával
 
@@ -29,7 +29,7 @@ Ebben a rövid útmutatóban beépíti az Azure app Configuration szolgáltatás
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. **Configuration Explorer**  >  **+ Create**  >  A következő kulcs-érték párok hozzáadásához válassza a Configuration Explorer +**kulcs létrehozása-érték** elemet:
+7. **Configuration Explorer**  >  **+ Create**  >  A következő kulcs-érték párok hozzáadásához válassza a Configuration Explorer +**kulcs létrehozása-érték** elemet:
 
     | Kulcs | Érték |
     |---|---|
@@ -37,7 +37,7 @@ Ebben a rövid útmutatóban beépíti az Azure app Configuration szolgáltatás
 
     Most hagyja üresen a **címke** és a **tartalom típusát** .
 
-7. Kattintson az **Alkalmaz** gombra.
+8. Kattintson az **Alkalmaz** gombra.
 
 ## <a name="create-a-functions-app"></a>Functions-alkalmazás létrehozása
 
@@ -118,7 +118,7 @@ Ebben a rövid útmutatóban beépíti az Azure app Configuration szolgáltatás
 
 [!INCLUDE [azure-app-configuration-cleanup](../../includes/azure-app-configuration-cleanup.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban létrehozott egy új alkalmazás-konfigurációs tárolót, és azt egy Azure Functions alkalmazással használta az [alkalmazás-konfigurációs szolgáltatón](https://go.microsoft.com/fwlink/?linkid=2074664)keresztül. Ha szeretné megtudni, hogyan konfigurálhatja a Azure Functions alkalmazást a konfigurációs beállítások dinamikus frissítéséhez, folytassa a következő oktatóanyaggal.
 

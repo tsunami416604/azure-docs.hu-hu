@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: how-to
-ms.date: 10/05/2020
+ms.date: 10/06/2020
 ms.author: alkohli
-ms.openlocfilehash: 3a61bd16d127afadc2dc4d968b3492f3c8491d29
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: 59b2307bb2e1f4effce9f68530be86e9ca625c9c
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91743216"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91766297"
 ---
 # <a name="manage-an-azure-stack-edge-pro-gpu-device-via-windows-powershell"></a>Azure Stack Edge Pro GPU-eszköz kezelése a Windows PowerShell használatával
 
@@ -430,7 +430,16 @@ DEBUG 2020-05-14T20:42:14Z: loop process - 0 events, 0.000s
 A alaplapi felügyeleti vezérlő (BMC) használatával távolról figyelheti és kezelheti az eszközt. Ez a szakasz azokat a parancsmagokat ismerteti, amelyek segítségével kezelhető a BMC-konfiguráció. A parancsmagok bármelyikének futtatása előtt [kapcsolódjon az eszköz PowerShell-felületéhez](#connect-to-the-powershell-interface).
 
 - `Get-HcsNetBmcInterface`: Ezzel a parancsmaggal kérheti le a BMC hálózati konfigurációs tulajdonságait, például:, `IPv4Address` , `IPv4Gateway` `IPv4SubnetMask` , `DhcpEnabled` : 
-
+    
+    Itt látható egy mintakimenet:
+    
+    ```powershell
+    [10.100.10.10]: PS>Get-HcsNetBmcInterface
+    IPv4Address   IPv4Gateway IPv4SubnetMask DhcpEnabled
+    -----------   ----------- -------------- -----------
+    10.128.53.186 10.128.52.1 255.255.252.0        False
+    [10.100.10.10]: PS>
+    ```
 - `Set-HcsNetBmcInterface`: Ezt a parancsmagot a következő két módon használhatja.
 
     - A (z) parancsmag használatával engedélyezze vagy tiltsa le a BMC DHCP-konfigurációját a megfelelő értékkel a `UseDhcp` paraméterhez. 
@@ -480,6 +489,6 @@ A alaplapi felügyeleti vezérlő (BMC) használatával távolról figyelheti é
 
 A távoli PowerShell-munkamenetből való kilépéshez zárja be a PowerShell ablakát.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Azure stack Edge Pro](azure-stack-edge-gpu-deploy-prep.md) üzembe helyezése Azure Portalban.

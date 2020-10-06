@@ -7,12 +7,12 @@ ms.custom: devx-track-csharp
 ms.topic: quickstart
 ms.date: 09/28/2020
 ms.author: lcozzens
-ms.openlocfilehash: 4643e18088fe32f6b02f684b7a71307798b12c12
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 7d146004fb4fa120e08b4d67c1d68d51cc6f3c8f
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91441600"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91767729"
 ---
 # <a name="quickstart-add-feature-flags-to-an-aspnet-core-app"></a>Gyors útmutató: szolgáltatás-jelzők hozzáadása ASP.NET Core-alkalmazáshoz
 
@@ -29,7 +29,7 @@ A .NET Core-szolgáltatások felügyeleti kódtárai kiterjesztik a keretrendsze
 
 [!INCLUDE[Azure App Configuration resource creation steps](../../includes/azure-app-configuration-create.md)]
 
-7. Válassza a **Operations**  >  **Feature Manager**  >  **Hozzáadás** elemet a *Beta*nevű szolgáltatás-jelölő hozzáadásához.
+8. Válassza a **Operations**  >  **Feature Manager**  >  **Hozzáadás** elemet a *Beta*nevű szolgáltatás-jelölő hozzáadásához.
 
     > [!div class="mx-imgBorder"]
     > ![A szolgáltatás jelölő engedélyezése Beta néven](media/add-beta-feature-flag.png)
@@ -258,7 +258,7 @@ dotnet new mvc --no-https --output TestFeatureFlags
 
 [!INCLUDE[Azure App Configuration cleanup](../../includes/azure-app-configuration-cleanup.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban létrehozott egy új alkalmazás-konfigurációs tárolót, és felhasználta egy ASP.NET Core webalkalmazás funkcióinak kezelésére a [szolgáltatás-felügyeleti kódtárak](https://go.microsoft.com/fwlink/?linkid=2074664)segítségével.
 

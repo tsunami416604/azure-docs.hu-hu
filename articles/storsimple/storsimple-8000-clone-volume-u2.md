@@ -10,12 +10,12 @@ ms.devlang: NA
 ms.topic: how-to
 ms.date: 07/15/2020
 ms.author: alkohli
-ms.openlocfilehash: 86a3e2ab15e83f5393315f75f37ad8b41d3489b2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 5ebb7f1d9440bc7a8b75afe64403762532213c1d
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86496145"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91767579"
 ---
 # <a name="use-the-storsimple-device-manager-service-in-azure-portal-to-clone-a-volume"></a>Kötet klónozása az Azure Portal StorSimple-eszközkezelő szolgáltatásával
 
@@ -64,11 +64,11 @@ A következő lépések végrehajtásával hozza létre a kötet klónját a biz
 
       A kiválasztott kötethez vagy biztonsági mentési szabályzathoz társított biztonsági másolatoknak szerepelniük kell a biztonságimásolat-készletek listájában.
    
-      ![Biztonságimásolat-készlet listája](./media/storsimple-8000-clone-volume-u2/bucatalog.png)
+      ![Biztonságimásolat-készlet 2. listája](./media/storsimple-8000-clone-volume-u2/bucatalog.png)
      
 3. Bontsa ki a biztonságimásolat-készletet, hogy megtekintse a társított kötetet, és válasszon egy kötetet egy biztonságimásolat-készletben. Kattintson a jobb gombbal, majd a helyi menüben válassza a **klónozás**lehetőséget.
 
-   ![Biztonságimásolat-készlet listája](./media/storsimple-8000-clone-volume-u2/clonevol3b.png) 
+   ![Biztonságimásolat-készlet 3. listája](./media/storsimple-8000-clone-volume-u2/clonevol3b.png) 
 
 3. A **klónozás** panelen hajtsa végre a következő lépéseket:
    
@@ -84,17 +84,17 @@ A következő lépések végrehajtásával hozza létre a kötet klónját a biz
           
    3. A **csatlakoztatott gazdagépek**területen határozzon meg egy hozzáférés-vezérlési REKORDOT (ACR) a klónozáshoz. Hozzáadhat egy új ACR-t, vagy választhat a meglévő listából is. Az ACR meghatározza, hogy mely gazdagépek férhetnek hozzá ehhez a klónhoz.
       
-       ![Biztonságimásolat-készlet listája](./media/storsimple-8000-clone-volume-u2/clonevol3a.png) 
+       ![Biztonságimásolat-készlet listája 4](./media/storsimple-8000-clone-volume-u2/clonevol3a.png) 
 
    4. A művelet befejezéséhez kattintson a **klónozás** gombra.
 
 4. A klónozott feladatok elindulnak, és értesítést kap, amikor a klón sikeresen létrejött. A klónozási feladat figyeléséhez kattintson a feladat értesítése vagy a **feladatok** panelre.
 
-    ![Biztonságimásolat-készlet listája](./media/storsimple-8000-clone-volume-u2/clonevol5.png)
+    ![Biztonságimásolat-készlet 5. listája](./media/storsimple-8000-clone-volume-u2/clonevol5.png)
 
 7. A klónozási feladatok befejezése után lépjen az eszközre, majd kattintson a **kötetek**elemre. A kötetek listájában látnia kell a klónozást, amelyet az imént hozott létre ugyanabban a kötet-tárolóban, amelyben a forrás kötet található.
 
-    ![Biztonságimásolat-készlet listája](./media/storsimple-8000-clone-volume-u2/clonevol6.png)
+    ![Biztonságimásolat-készlet listája 6](./media/storsimple-8000-clone-volume-u2/clonevol6.png)
 
 Az így létrehozott klón egy átmeneti klón. További információ a klónozási típusokról: [átmeneti és állandó klónok](#transient-vs-permanent-clones).
 

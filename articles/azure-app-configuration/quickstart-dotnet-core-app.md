@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.custom: devx-track-csharp
 ms.date: 09/28/2020
 ms.author: lcozzens
-ms.openlocfilehash: 83da47ce27d452fd77fab3905c9ce48944c42ffb
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: f133572b0c3163f5c5fe0a5c2e48ce5e6d53adcc
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91575061"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91767735"
 ---
 # <a name="quickstart-create-a-net-core-app-with-app-configuration"></a>Gyors útmutató: .NET Core-alkalmazás létrehozása az alkalmazás konfigurációjával
 
@@ -28,7 +28,7 @@ Ebben a rövid útmutatóban az Azure-alkalmazások konfigurációját egy .NET 
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. **Configuration Explorer**  >  **Create**  >  A következő kulcs-érték párok hozzáadásához válassza a Configuration Explorer Create**Key-Value** elemet:
+7. **Configuration Explorer**  >  **Create**  >  A következő kulcs-érték párok hozzáadásához válassza a Configuration Explorer Create**Key-Value** elemet:
 
     | Kulcs | Érték |
     |---|---|
@@ -36,7 +36,7 @@ Ebben a rövid útmutatóban az Azure-alkalmazások konfigurációját egy .NET 
 
     Most hagyja üresen a **címke** és a **tartalom típusát** .
 
-7. Kattintson az **Alkalmaz** gombra.
+8. Kattintson az **Alkalmaz** gombra.
 
 ## <a name="create-a-net-core-console-app"></a>.NET Core Console-alkalmazás létrehozása
 
@@ -122,7 +122,7 @@ A [.net Core parancssori felület (CLI)](https://docs.microsoft.com/dotnet/core/
 
 [!INCLUDE [azure-app-configuration-cleanup](../../includes/azure-app-configuration-cleanup.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban létrehozott egy új alkalmazás-konfigurációs tárolót, és azt egy .NET Core Console-alkalmazással használta az [alkalmazás-konfigurációs szolgáltatón](https://go.microsoft.com/fwlink/?linkid=2074664)keresztül. Ha szeretné megtudni, hogyan konfigurálhatja a .NET Core-alkalmazást a konfigurációs beállítások dinamikus frissítéséhez, folytassa a következő oktatóanyaggal.
 

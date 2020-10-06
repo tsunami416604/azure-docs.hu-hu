@@ -8,12 +8,12 @@ ms.custom: devx-track-csharp
 ms.topic: quickstart
 ms.date: 8/26/2020
 ms.author: alkemper
-ms.openlocfilehash: 5542dca6d9b1ab18cf1b9b93e20fa64da0eb1dd4
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: f57163b3d17877f7f8c66fa57fc8a0736c6affb7
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91000965"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91767710"
 ---
 # <a name="quickstart-add-feature-flags-to-an-azure-functions-app"></a>Gyors útmutató: szolgáltatás-jelzők hozzáadása Azure Functions-alkalmazáshoz
 
@@ -31,14 +31,14 @@ A .NET-szolgáltatások felügyeleti könyvtárai kiterjesztik a keretrendszert 
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. Válassza a **funkció-kezelő**  >  **+ Hozzáadás** elemet a szolgáltatáshoz tartozó jelző hozzáadásához `Beta` .
+7. Válassza a **funkció-kezelő**  >  **+ Hozzáadás** elemet a szolgáltatáshoz tartozó jelző hozzáadásához `Beta` .
 
     > [!div class="mx-imgBorder"]
     > ![A szolgáltatás jelölő engedélyezése Beta néven](media/add-beta-feature-flag.png)
 
     `label`Most hagyja és `Description` meghatározatlan maradjon.
 
-7. Válassza az **alkalmaz** lehetőséget az új funkció jelző mentéséhez.
+8. Válassza az **alkalmaz** lehetőséget az új funkció jelző mentéséhez.
 
 ## <a name="create-a-functions-app"></a>Functions-alkalmazás létrehozása
 
@@ -147,7 +147,7 @@ A .NET-szolgáltatások felügyeleti könyvtárai kiterjesztik a keretrendszert 
 
 [!INCLUDE [azure-app-configuration-cleanup](../../includes/azure-app-configuration-cleanup.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban létrehozta a szolgáltatás jelölőjét, és azt egy Azure Functions alkalmazással használta az [alkalmazás-konfigurációs szolgáltatón](https://go.microsoft.com/fwlink/?linkid=2074664)keresztül.
 

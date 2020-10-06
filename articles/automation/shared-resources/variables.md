@@ -3,14 +3,14 @@ title: Változók kezelése a Azure Automationban
 description: Ez a cikk azt ismerteti, hogyan használhatók változók a runbookok és a DSC-konfigurációkban.
 services: automation
 ms.subservice: shared-capabilities
-ms.date: 09/10/2020
+ms.date: 10/05/2020
 ms.topic: conceptual
-ms.openlocfilehash: 300bfa2ed801b810bcaaeb5bc4d04775d590015b
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: 4749fcb6698ff1716f2cae257cc0efad458bf9a9
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90004563"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91766196"
 ---
 # <a name="manage-variables-in-azure-automation"></a>Változók kezelése a Azure Automationban
 
@@ -37,13 +37,13 @@ Ha a Azure Portal változót hoz létre, meg kell adnia egy adattípust a legör
 
 * Sztring
 * Egész szám
-* Dátum/idő
-* Logikai
+* DateTime
+* Logikai érték
 * Null
 
 A változó nem korlátozódik a megadott adattípusra. A változót a Windows PowerShell használatával kell beállítani, ha más típusú értéket szeretne megadni. Ha a jelzést adja meg `Not defined` , a változó értéke null. Az értéket a [set-AzAutomationVariable](/powershell/module/az.automation/set-azautomationvariable) parancsmaggal vagy a belső `Set-AutomationVariable` parancsmaggal kell beállítani.
 
-Nem használhatja a Azure Portal egy összetett változó típusának értékének létrehozására vagy módosítására. A Windows PowerShell használatával azonban bármilyen típusú értéket megadhat. Az összetett típusok beolvasása [pscustomobject formájában kapja](/dotnet/api/system.management.automation.pscustomobject)történik.
+Nem használhatja a Azure Portal egy összetett változó típusának értékének létrehozására vagy módosítására. A Windows PowerShell használatával azonban bármilyen típusú értéket megadhat. Az összetett típusokNewtonsoft.Jsként lesznek beolvasva [ . A LINQ. JProperty](https://www.newtonsoft.com/json/help/html/N_Newtonsoft_Json_Linq.htm) egy összetett objektumtípust PSObject típusú [pscustomobject formájában kapja](/dotnet/api/system.management.automation.pscustomobject)helyett.
 
 Tömb vagy szórótábla létrehozásával és a változóba való mentésével több értéket is tárolhat egyetlen változóban.
 
@@ -56,7 +56,7 @@ Az alábbi táblázatban található parancsmagok automatizálási változókat 
 
 | Parancsmag | Leírás |
 |:---|:---|
-|[Get-AzAutomationVariable](/powershell/module/az.automation/get-azautomationvariable) | Egy létező változó értékét kérdezi le. Ha az érték egy egyszerű típus, akkor a rendszer ugyanazt a típust kéri le. Összetett típus esetén a `PSCustomObject` rendszer beolvassa a típust. <br>**Megjegyzés:**  Nem használhatja ezt a parancsmagot egy titkosított változó értékének lekéréséhez. Ennek egyetlen módja, ha a belső `Get-AutomationVariable` parancsmagot használja egy runbook vagy DSC-konfigurációban. [A változók eléréséhez tekintse meg a belső parancsmagokat](#internal-cmdlets-to-access-variables). |
+|[Get-AzAutomationVariable](/powershell/module/az.automation/get-azautomationvariable) | Egy létező változó értékét kérdezi le. Ha az érték egy egyszerű típus, akkor a rendszer ugyanazt a típust kéri le. Összetett típus esetén a `PSCustomObject` rendszer beolvassa a típust. <br>**Megjegyzés:** Nem használhatja ezt a parancsmagot egy titkosított változó értékének lekéréséhez. Ennek egyetlen módja, ha a belső `Get-AutomationVariable` parancsmagot használja egy runbook vagy DSC-konfigurációban. [A változók eléréséhez tekintse meg a belső parancsmagokat](#internal-cmdlets-to-access-variables). |
 |[Új – AzAutomationVariable](/powershell/module/az.automation/new-azautomationvariable) | Létrehoz egy új változót, és beállítja annak értékét.|
 |[Remove-AzAutomationVariable](/powershell/module/az.automation/remove-azautomationvariable)| Eltávolít egy meglévő változót.|
 |[Set-AzAutomationVariable](/powershell/module/az.automation/set-azautomationvariable)| Beállítja egy létező változó értékét. |
@@ -65,7 +65,7 @@ Az alábbi táblázatban található parancsmagok automatizálási változókat 
 
 A következő táblázatban található belső parancsmagok a runbookok és a DSC-konfigurációk változóinak elérésére szolgálnak. Ezek a parancsmagok a globális modulhoz tartoznak `Orchestrator.AssetManagement.Cmdlets` . További információ: [belső parancsmagok](modules.md#internal-cmdlets).
 
-| Belső parancsmag | Description |
+| Belső parancsmag | Leírás |
 |:---|:---|
 |`Get-AutomationVariable`|Egy létező változó értékét kérdezi le.|
 |`Set-AutomationVariable`|Beállítja egy létező változó értékét.|
@@ -74,7 +74,7 @@ A következő táblázatban található belső parancsmagok a runbookok és a DS
 > Ne használjon változókat a `Name` `Get-AutomationVariable` RUNBOOK vagy DSC-konfigurációban lévő paraméterben. A változók használata megnehezítheti a runbookok és az Automation változók közötti függőségek felderítését a tervezési időszakban.
 
 `Get-AutomationVariable` a nem működik a PowerShellben, de csak runbook vagy DSC-konfigurációban. Ha például egy titkosított változó értékét szeretné megtekinteni, létrehozhat egy runbook a változó beszerzéséhez, majd a kimeneti adatfolyamba írja a következőt:
- 
+
 ```powershell
 $mytestencryptvar = Get-AutomationVariable -Name TestVariable
 Write-output "The encrypted value of the variable is: $mytestencryptvar"
@@ -84,7 +84,7 @@ Write-output "The encrypted value of the variable is: $mytestencryptvar"
 
 A következő táblázatban szereplő függvények a Python 2 runbook változóinak elérésére szolgálnak.
 
-|Python 2 függvények|Description|
+|Python 2 függvények|Leírás|
 |:---|:---|
 |`automationassets.get_automation_variable`|Egy létező változó értékét kérdezi le. |
 |`automationassets.set_automation_variable`|Beállítja egy létező változó értékét. |
@@ -123,18 +123,18 @@ $string = (Get-AzAutomationVariable -ResourceGroupName "ResourceGroup01" `
 –AutomationAccountName "MyAutomationAccount" –Name 'MyStringVariable').Value
 ```
 
-Az alábbi példa bemutatja, hogyan hozhat létre egy összetett típusú változót, majd hogyan kérheti le a tulajdonságait. Ebben az esetben a [Get-AzVM virtuálisgép-](/powershell/module/Az.Compute/Get-AzVM) objektumot használja a rendszer.
+Az alábbi példa bemutatja, hogyan hozhat létre egy összetett típusú változót, majd hogyan kérheti le a tulajdonságait. Ebben az esetben a [Get-AzVM virtuálisgép-](/powershell/module/Az.Compute/Get-AzVM) objektum a tulajdonságok részhalmazának megadására szolgál.
 
 ```powershell
-$vm = Get-AzVM -ResourceGroupName "ResourceGroup01" –Name "VM01"
-New-AzAutomationVariable –AutomationAccountName "MyAutomationAccount" –Name "MyComplexVariable" –Encrypted $false –Value $vm
+$vm = Get-AzVM -ResourceGroupName "ResourceGroup01" –Name "VM01" | Select Name, Location, Extensions
+New-AzAutomationVariable -ResourceGroupName "ResourceGroup01" –AutomationAccountName "MyAutomationAccount" –Name "MyComplexVariable" –Encrypted $false –Value $vm
 
-$vmValue = (Get-AzAutomationVariable -ResourceGroupName "ResourceGroup01" `
-–AutomationAccountName "MyAutomationAccount" –Name "MyComplexVariable").Value
+$vmValue = Get-AzAutomationVariable -ResourceGroupName "ResourceGroup01" `
+–AutomationAccountName "MyAutomationAccount" –Name "MyComplexVariable"
+
 $vmName = $vmValue.Name
-$vmIpAddress = $vmValue.IpAddress
+$vmExtensions = $vmValue.Extensions
 ```
-
 ## <a name="textual-runbook-examples"></a>Szöveges runbook-példák
 
 ### <a name="retrieve-and-set-a-simple-value-from-a-variable"></a>Egyszerű érték beolvasása és beállítása egy változóból

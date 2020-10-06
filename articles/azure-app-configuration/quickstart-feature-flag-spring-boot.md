@@ -7,12 +7,12 @@ ms.topic: quickstart
 ms.date: 04/18/2020
 ms.author: lcozzens
 ms.custom: devx-track-java
-ms.openlocfilehash: 337baae97d426fe05ac59290a882865038f60c02
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 220d446990a9c362c30b3352e247af2b76d3d128
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89019742"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91767668"
 ---
 # <a name="quickstart-add-feature-flags-to-a-spring-boot-app"></a>Gyors útmutató: szolgáltatás-jelzők hozzáadása Spring boot-alkalmazáshoz
 
@@ -30,7 +30,7 @@ A tavaszi rendszerindítási szolgáltatás felügyeleti kódtárai kiterjesztik
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. Válassza a **funkció-kezelő**  >  **+ Hozzáadás** elemet a szolgáltatáshoz tartozó jelző hozzáadásához `Beta` .
+7. Válassza a **funkció-kezelő**  >  **+ Hozzáadás** elemet a szolgáltatáshoz tartozó jelző hozzáadásához `Beta` .
 
     > [!div class="mx-imgBorder"]
     > ![A szolgáltatás jelölő engedélyezése Beta néven](media/add-beta-feature-flag.png)
@@ -302,7 +302,7 @@ A [Spring inicializáló](https://start.spring.io/) használatával hozzon létr
 
 [!INCLUDE [azure-app-configuration-cleanup](../../includes/azure-app-configuration-cleanup.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban létrehozott egy új alkalmazás-konfigurációs tárolót, és felhasználta egy Spring boot-webalkalmazás funkcióinak kezeléséhez a [Feature Management librarys](https://go.microsoft.com/fwlink/?linkid=2074664)használatával.
 

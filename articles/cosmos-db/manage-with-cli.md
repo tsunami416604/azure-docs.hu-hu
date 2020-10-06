@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 07/29/2020
 ms.author: mjbrown
-ms.openlocfilehash: c248755c1f32d41b6926d4492dcc3d0eea2869b8
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: c8726801e8becd6533ae5fec099d6c535b63261a
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91566873"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91767551"
 ---
 # <a name="manage-azure-cosmos-resources-using-azure-cli"></a>Azure Cosmos-erőforrások kezelése az Azure CLI-vel
 
@@ -20,6 +20,9 @@ Az alábbi útmutató az Azure Cosmos DB-fiókok, -adatbázisok és -tárolók f
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez a témakörhöz az Azure CLI 2.9.1 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](/cli/azure/install-azure-cli).
+
+> [!IMPORTANT]
+> Azure Cosmos DB erőforrásokat nem lehet átnevezni, mivel ez megsérti, hogyan működik az Azure Resource Manager erőforrás-URI-k.
 
 ## <a name="azure-cosmos-accounts"></a>Azure Cosmos-fiókok
 

@@ -6,16 +6,16 @@ services: storage
 author: tamram
 ms.service: storage
 ms.topic: conceptual
-ms.date: 08/27/2020
+ms.date: 10/06/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 191213511a6b41e3a8419660a40b8d79a5c747f2
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 20e48640d52fba7b3262014c2e84cfc56c7110cc
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91714937"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91767229"
 ---
 # <a name="blob-versioning"></a>BLOB verziószámozása
 
@@ -36,13 +36,13 @@ A blob verziószámozásának engedélyezéséről a [blob verziószámozásána
 
 A verzió rögzíti egy blob állapotát egy adott időpontban. Ha a blob verziószámozása engedélyezve van egy Storage-fiókhoz, az Azure Storage automatikusan létrehoz egy blob új verzióját a blob módosításának vagy törlésének minden egyes időpontjában.
 
-Ha olyan blobot hoz létre, amelyen engedélyezve van a verziószámozás, az új blob a blob aktuális verziója (vagy az alap blob). Ha ezt követően módosítja a blobot, az Azure Storage egy olyan verziót hoz létre, amely rögzíti a blob állapotát a módosítás előtt. A módosított blob lesz az új aktuális verzió. Minden alkalommal létrejön egy új verzió, amikor módosítja a blobot.
+Ha olyan blobot hoz létre, amelyen engedélyezve van a verziószámozás, az új blob a blob aktuális verziója (vagy az alap blob). Ha ezt követően módosítja a blobot, az Azure Storage egy olyan verziót hoz létre, amely rögzíti a blob állapotát a módosítás előtt. A módosított blob lesz az új aktuális verzió. Minden alkalommal létrejön egy új verzió, amikor módosítja a blobot. A Blobok legfeljebb 1000 társított verzióval rendelkezhetnek.
 
 Ha olyan blobot töröl, amelyen engedélyezve van a verziószámozás, az Azure Storage egy olyan verziót hoz létre, amely rögzíti a blob állapotát a törlés előtt. Ezután törli a blob aktuális verzióját, de a blob verziója továbbra is fennmarad, így szükség esetén újra létrehozható. 
 
 A blob-verziók nem változtathatók meg. Egy meglévő blob-verzió tartalmát vagy metaadatait nem módosíthatja.
 
-A blob verziószámozása az általános célú v2, a blob és a blob Storage-fiókok esetében érhető el. A Azure Data Lake Storage Gen2-mel való használatra engedélyezett hierarchikus névtérrel rendelkező Storage-fiókok jelenleg nem támogatottak.
+A blob verziószámozása az általános célú v2, a blob és a blob Storage-fiókok esetében érhető el. A Azure Data Lake Storage Gen2-mel való használatra engedélyezett hierarchikus névtérrel rendelkező Storage-fiókok jelenleg nem támogatottak. 
 
 Az Azure Storage REST API 2019-10-10-es és újabb verziója támogatja a blob verziószámozását.
 

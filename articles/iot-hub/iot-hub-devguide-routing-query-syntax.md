@@ -10,12 +10,12 @@ ms.author: asrastog
 ms.custom:
 - 'Role: Cloud Development'
 - 'Role: Data Analytics'
-ms.openlocfilehash: 4ff61687f2fa045b51dfcb69488d1fbd87b65f75
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 9b5463ba789a1bcfb707fb03c70f1a8464cb6b59
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87336497"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91767354"
 ---
 # <a name="iot-hub-message-routing-query-syntax"></a>IoT-központ üzenet-útválasztásának lekérdezési szintaxisa
 
@@ -59,8 +59,8 @@ A rendszer tulajdonságai segítenek az üzenetek tartalmának és forrásának 
 | contentEncoding | sztring | A felhasználó megadja az üzenet kódolási típusát. Az engedélyezett értékek: UTF-8, UTF-16, UTF-32, ha a contentType alkalmazás/JSON értékre van beállítva. |
 | iothub--összekötő-eszköz-azonosító | sztring | Ezt az értéket IoT Hub állítja be, és azonosítja az eszköz AZONOSÍTÓját. A lekérdezéshez használja a következőt: `$connectionDeviceId` . |
 | iothub – enqueuedtime | sztring | Ezt az értéket a IoT Hub állítja be, és a tényleges időpontot jelöli, hogy az üzenet enqueuing az UTC-ben. A lekérdezéshez használja a következőt: `enqueuedTime` . |
-| DT – DataSchema | sztring |  Ezt az értéket az IoT hub állítja be az eszközről a felhőbe irányuló üzenetekben. Ez tartalmazza az eszköz-kapcsolatban beállított eszköz-modell AZONOSÍTÓját. Ez a szolgáltatás a [IoT Plug and Play nyilvános előzetes](../iot-pnp/overview-iot-plug-and-play.md)verziójának részeként érhető el. A lekérdezéshez használja a következőt: `$dt-dataschema` . |
-| DT – tárgy | sztring | Annak az összetevőnek a neve, amely az eszközről a felhőbe irányuló üzeneteket küld. Ez a szolgáltatás a [IoT Plug and Play nyilvános előzetes](../iot-pnp/overview-iot-plug-and-play.md)verziójának részeként érhető el. A lekérdezéshez használja a következőt: `$dt-subject` . |
+| DT – DataSchema | sztring |  Ezt az értéket az IoT hub állítja be az eszközről a felhőbe irányuló üzenetekben. Ez tartalmazza az eszköz-kapcsolatban beállított eszköz-modell AZONOSÍTÓját. A lekérdezéshez használja a következőt: `$dt-dataschema` . |
+| DT – tárgy | sztring | Annak az összetevőnek a neve, amely az eszközről a felhőbe irányuló üzeneteket küld. A lekérdezéshez használja a következőt: `$dt-subject` . |
 
 A [IoT hub üzeneteiben](iot-hub-devguide-messages-construct.md)leírtak szerint további Rendszertulajdonságok találhatók egy üzenetben. Az előző táblázat fenti tulajdonságai mellett a **connectionModuleId**is lekérdezheti a **connectionDeviceId**.
 

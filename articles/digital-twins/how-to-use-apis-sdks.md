@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 06/04/2020
 ms.topic: how-to
 ms.service: digital-twins
-ms.openlocfilehash: 9812724b62717440160b9db8604a65ab787f3a9d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 2af4f2e2148c96a6059836f861cf56d4a4ac005b
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91252663"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91766170"
 ---
 # <a name="use-the-azure-digital-twins-apis-and-sdks"></a>Az Azure Digital Twins API-k és SDK-k használata
 
@@ -61,8 +61,9 @@ Az adatsík API-k használata:
 * Használhatja a **JavaScript** SDK-t. A JavaScript SDK használata...
    - a csomagot a NPM-ből tekintheti meg és telepítheti: [Azure Azure digitális Twins ügyféloldali kódtár a javascripthez](https://www.npmjs.com/package/@azure/digital-twins/v/1.0.0-preview.1).
    - megtekintheti az [SDK-referenciák dokumentációját](https://docs.microsoft.com/javascript/api/@azure/digital-twins/?view=azure-node-latest&preserve-view=true).
-* Használhatja a **JavaScript** SDK-t. A JavaScript SDK használata...
+* Használhatja a **Java** SDK-t. A Java SDK használata...
    - a csomagot a Mavenből tekintheti meg és telepítheti: [`com.azure:azure-digitaltwins-core`](https://search.maven.org/artifact/com.azure/azure-digitaltwins-core/1.0.0-beta.1/jar)
+   - megtekintheti az [SDK-referenciák dokumentációját](https://docs.microsoft.com/java/api/overview/azure/digitaltwins/client?view=azure-java-preview&preserve-view=true)
 * Az autorest használatával egy másik nyelvhez is létrehozhat SDK-t. Kövesse az útmutató [*: egyéni SDK-k létrehozása az Azure digitális ikrekhez az autorest használatával*](how-to-create-custom-sdks.md)című témakör utasításait.
 
 A Date Plant API-kat a [CLI](how-to-use-cli.md)használatával is használhatja az Azure digitális ikrekkel.

@@ -3,61 +3,24 @@ title: Azure Automation futtató fiók kezelése
 description: Ez a cikk azt ismerteti, hogyan kezelheti a futtató fiókot a PowerShell vagy a Azure Portal használatával.
 services: automation
 ms.subservice: shared-capabilities
-ms.date: 06/26/2020
+ms.date: 09/28/2020
 ms.topic: conceptual
-ms.openlocfilehash: cb804b21d6f5312c13bfdbf7b0fc0404961ba1e3
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: 3357cb40ff476a3cc0bce259930068aeccf2c10c
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90005734"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91767382"
 ---
 # <a name="manage-an-azure-automation-run-as-account"></a>Azure Automation futtató fiók kezelése
 
-A Azure Automation futtató fiókok az Azure-parancsmagok használatával biztosítanak hitelesítést az Azure-erőforrások kezeléséhez. A futtató fiók létrehozásakor létrehoz egy új egyszerű szolgáltatásnevet a Azure Active Directory (AD) szolgáltatásban, és hozzárendeli a közreműködői szerepkört a felhasználóhoz az előfizetés szintjén.
+A Azure Automation futtató fiókok hitelesítést biztosítanak a Azure Resource Manager vagy a klasszikus Azure üzemi modell erőforrásainak automatizálási runbookok és egyéb Automation-funkciók használatával történő kezeléséhez. Ez a cikk útmutatást nyújt egy futtató vagy klasszikus futtató fiók kezeléséhez.
 
-## <a name="types-of-run-as-accounts"></a>A futtató fiókok típusai
+Ha többet szeretne megtudni Azure Automation fiók hitelesítéséről és a folyamat-automatizálási forgatókönyvekkel kapcsolatos útmutatásról, tekintse meg az [Automation-fiók hitelesítésének áttekintése](automation-security-overview.md)című cikket.
 
-Azure Automation két típusú futtató fiókot használ:
-
-* Azure-beli futtató fiók
-* Klasszikus Azure-beli futtató fiók
-
->[!NOTE]
->A Azure Cloud Solution Provider (CSP) előfizetések csak a Azure Resource Manager modellt támogatják. A nem Azure Resource Manager szolgáltatások nem érhetők el a programban. Ha CSP-előfizetést használ, a klasszikus Azure-beli futtató fiók nem jön létre, de létrejön az Azure-beli futtató fiók. A CSP-előfizetésekkel kapcsolatos további tudnivalókért tekintse meg a [CSP-előfizetésekben elérhető szolgáltatások](/azure/cloud-solution-provider/overview/azure-csp-available-services)című témakört.
-
-A futtató fiókhoz tartozó egyszerű szolgáltatásnév nem rendelkezik az Azure AD alapértelmezett olvasási engedélyeivel. Ha engedélyeket szeretne adni az Azure AD olvasásához vagy kezeléséhez, meg kell adnia az engedélyeket az egyszerű szolgáltatáshoz az **API-engedélyek**alatt. További információért lásd: [engedélyek hozzáadása a webes API-hoz való hozzáféréshez](../active-directory/develop/quickstart-configure-app-access-web-apis.md#add-permissions-to-access-your-web-api).
-
-### <a name="run-as-account"></a>Futtató fiók
-
-A futtató fiók a [Resource Manager üzembe helyezési modell](../azure-resource-manager/management/deployment-models.md) erőforrásait kezeli. A következő feladatokat hajtja végre.
-
-* Létrehoz egy önaláírt tanúsítvánnyal ellátott Azure AD-alkalmazást, továbbá létrehoz egy egyszerűszolgáltatás-fiókot az Azure AD-ben lévő alkalmazáshoz, és hozzárendeli a közreműködői szerepkört a jelenlegi előfizetésben lévő fiókhoz. A tanúsítvány beállítását a tulajdonosra vagy bármely más szerepkörre módosíthatja. További információk: [Szerepköralapú hozzáférés-vezérlés az Azure Automationben](automation-role-based-access-control.md).
-
-* Létrehoz egy nevű Automation-tanúsítványt `AzureRunAsCertificate` a megadott Automation-fiókban. A tanúsítvány objektuma tartalmazza az Azure AD-alkalmazás által használt tanúsítvány titkos kulcsát.
-
-* Létrehoz egy nevű Automation-összekötő eszközt `AzureRunAsConnection` a megadott Automation-fiókban. A szolgáltatás tartalmazza az alkalmazás AZONOSÍTÓját, a bérlő AZONOSÍTÓját, az előfizetés AZONOSÍTÓját és a tanúsítvány ujjlenyomatát.
-
-### <a name="azure-classic-run-as-account"></a>Klasszikus Azure-futtatófiók
-
-A klasszikus Azure-beli futtató fiók kezeli a [klasszikus üzembe helyezési modell](../azure-resource-manager/management/deployment-models.md) erőforrásait. Ilyen típusú fiók létrehozásához vagy megújításához az előfizetés egyik társ-rendszergazda tagjának kell lennie.
-
-A klasszikus Azure-beli futtató fiók a következő feladatokat hajtja végre.
-
-  * Létrehoz egy felügyeleti tanúsítványt az előfizetésben.
-
-  * Létrehoz egy nevű Automation-tanúsítványt `AzureClassicRunAsCertificate` a megadott Automation-fiókban. Ez a tanúsítványobjektum tartalmazza a felügyeleti tanúsítvány által használt titkos tanúsítványkulcsot.
-
-  * Létrehoz egy nevű Automation-összekötő eszközt `AzureClassicRunAsConnection` a megadott Automation-fiókban. A szolgáltatás tartalmazza az előfizetés nevét, az előfizetés AZONOSÍTÓját és a tanúsítvány-eszköz nevét.
-
->[!NOTE]
->A klasszikus Azure-beli futtató fiók alapértelmezés szerint nem jön létre Automation-fiók létrehozásakor. Ezt a fiókot külön hozza létre a cikk későbbi részében ismertetett lépéseket követve.
-
-## <a name="obtain-run-as-account-permissions"></a><a name="permissions"></a>Futtató fiók engedélyeinek beszerzése
+## <a name="run-as-account-permissions"></a><a name="permissions"></a>Futtató fiók engedélyei
 
 Ez a szakasz a normál futtató fiókok és a klasszikus futtató fiókok engedélyeit határozza meg.
-
-### <a name="get-permissions-to-configure-run-as-accounts"></a>A futtató fiókok konfigurálásához szükséges engedélyek beolvasása
 
 Futtató fiók létrehozásához vagy frissítéséhez konkrét jogosultságokkal és engedélyekkel kell rendelkeznie. Azure Active Directory és egy előfizetéshez tartozó egyik alkalmazás rendszergazdája elvégezheti az összes feladatot. Az alábbi táblázat a feladatok elkülönítését mutatja be, a megfelelő parancsmagot és engedélyeket, valamint a szükséges engedélyek listáját:
 
@@ -74,7 +37,7 @@ Futtató fiók létrehozásához vagy frissítéséhez konkrét jogosultságokka
 
 Ha nem tagja az előfizetés Active Directory példányának, mielőtt hozzáadja az előfizetés globális rendszergazdai szerepköréhez, vendégként lesz hozzáadva. Ebben az esetben `You do not have permissions to create…` figyelmeztetést kap az **Automation-fiók hozzáadása** oldalon.
 
-Ha az előfizetés Active Directory példányának tagja a globális rendszergazdai szerepkör hozzárendelésekor, akkor `You do not have permissions to create…` az **Automation-fiók hozzáadása** oldalon is megjelenik egy figyelmeztetés. Ebben az esetben kérheti az előfizetés Active Directory példányának eltávolítását, majd újból felveszi a kérést, hogy teljes jogú felhasználó legyen a Active Directoryban.
+Ha az előfizetés Active Directory-példányának tagja, ahol a globális rendszergazdai szerepkör hozzá van rendelve, akkor `You do not have permissions to create…` az **Automation-fiók hozzáadása** oldalon is megjelenik egy figyelmeztetés. Ebben az esetben kérheti az előfizetés Active Directory példányának eltávolítását, majd újból felveszi a kérést, hogy teljes jogú felhasználó legyen a Active Directoryban.
 
 Annak ellenőrzése, hogy a hibaüzenetet előállító helyzet kijavítása megtörtént-e:
 
@@ -83,7 +46,7 @@ Annak ellenőrzése, hogy a hibaüzenetet előállító helyzet kijavítása meg
 3. Válassza ki a nevét, majd válassza a **profil**lehetőséget.
 4. Győződjön meg arról, hogy a felhasználó profiljában a **felhasználó típusa** attribútum értéke nincs beállítva **vendégként**.
 
-### <a name="get-permissions-to-configure-classic-run-as-accounts"></a><a name="permissions-classic"></a>Engedélyek beszerzése klasszikus futtató fiókok konfigurálásához
+### <a name="permissions-required-to-create-or-manage-classic-run-as-accounts"></a><a name="permissions-classic"></a>A klasszikus futtató fiókok létrehozásához és kezeléséhez szükséges engedélyek
 
 Klasszikus futtató fiókok konfigurálásához vagy megújításához az előfizetés szintjén kell lennie a társ-rendszergazda szerepkörnek. A klasszikus előfizetési engedélyekkel kapcsolatos további tudnivalókért tekintse meg a [klasszikus Azure-előfizetés rendszergazdái](../role-based-access-control/classic-administrators.md#add-a-co-administrator)című témakört.
 
@@ -97,17 +60,87 @@ A következő lépésekkel frissítheti Azure Automation-fiókját a Azure Porta
 
 3. Az Automation-fiókok lapon válassza ki az Automation-fiókját a listából.
 
-4. A bal oldali ablaktáblán válassza a **futtató fiókok** lehetőséget a Fiókbeállítások szakaszban.
+4. A bal oldali ablaktáblán válassza a **futtató fiókok** lehetőséget a **Fiókbeállítások** szakaszban.
 
-5. Attól függően, hogy melyik fiókra van szüksége, válassza az **Azure-alapú futtató fiók** vagy a **Klasszikus Azure-alapú futtató fiók** lehetőséget.
+    :::image type="content" source="media/manage-runas-account/automation-account-properties-pane.png" alt-text="Válassza a futtató fiók lehetőséget.":::
 
-6. Az érdeklődési fióktól függően használja az Azure-beli **futtató fiók hozzáadása** vagy a klasszikus Azure-beli **futtató fiók hozzáadása** panelt. Az áttekintő információk áttekintése után kattintson a **Létrehozás**gombra.
+5. Attól függően, hogy milyen fiókra van szüksége, használja a **+ Azure-beli futtató fiók** vagy a **klasszikus Azure** -beli futtató fiók panelt. Az áttekintő információk áttekintése után kattintson a **Létrehozás**gombra.
 
-7. Amíg az Azure létrehozza a futtató fiókot, a menü **Értesítések** részén nyomon követheti a folyamat állapotát. Megjelenik egy szalagcím is, amely azt jelzi, hogy a fiók létrehozása folyamatban van. A folyamat eltarthat néhány percig.
+    :::image type="content" source="media/manage-runas-account/automation-account-create-runas.png" alt-text="Válassza a futtató fiók lehetőséget.":::
+
+6. Amíg az Azure létrehozza a futtató fiókot, a menü **Értesítések** részén nyomon követheti a folyamat állapotát. Megjelenik egy szalagcím is, amely azt jelzi, hogy a fiók létrehozása folyamatban van. A folyamat eltarthat néhány percig.
+
+## <a name="create-a-run-as-account-using-powershell"></a>Futtató fiók létrehozása a PowerShell használatával
+
+A következő lista a futtató fióknak a PowerShellben egy megadott parancsfájllal történő létrehozásához szükséges követelményeket ismerteti. Ezek a követelmények mindkét típusú futtató fiókra érvényesek.
+
+* Windows 10 vagy Windows Server 2016, Azure Resource Manager modul 3.4.1-es és újabb verzióival. A PowerShell-parancsfájl nem támogatja a Windows korábbi verzióit.
+* Azure PowerShell PowerShell-6.2.4 vagy újabb. További információ: [Azure PowerShell telepítése és konfigurálása](/powershell/azure/install-az-ps).
+* Egy Automation-fiók, amelyre a és a paraméterek értékeként hivatkozunk `AutomationAccountName` `ApplicationDisplayName` .
+* A [futtató fiókok konfigurálásához szükséges engedélyekkel](#permissions)egyenértékű engedélyek.
+
+A következő lépések végrehajtásával kérheti le a, a és a értékeit a `AutomationAccountName` `SubscriptionId` PowerShell- `ResourceGroupName` parancsfájlhoz szükséges paraméterekkel.
+
+1. A Azure Portal válassza az **Automation-fiókok**elemet.
+
+1. Az Automation-fiókok lapon válassza ki az Automation-fiókját.
+
+1. A Fiókbeállítások szakaszban válassza a **Tulajdonságok**lehetőséget.
+
+1. Jegyezze fel a **Name**, az **előfizetés-azonosító**és az **erőforráscsoport** értékét a **Tulajdonságok** lapon.
+
+   ![Automation-fiók tulajdonságai lap](media/manage-runas-account/automation-account-properties.png)
+
+### <a name="powershell-script-to-create-a-run-as-account"></a>PowerShell-parancsfájl futtató fiók létrehozásához
+
+A PowerShell-parancsfájl több konfigurációt is támogat.
+
+* Futtató fiók létrehozása önaláírt tanúsítvány használatával.
+* Futtató fiók és klasszikus futtató fiók létrehozása önaláírt tanúsítvány használatával.
+* Egy futtató fiók és egy klasszikus futtató fiók létrehozása a vállalati hitelesítésszolgáltató által kibocsátott tanúsítvánnyal.
+* Futtató fiók és klasszikus futtató fiók létrehozása az Azure Government Cloud egyik önaláírt tanúsítványának használatával.
+
+1. Töltse le és mentse a parancsfájlt egy helyi mappába a következő parancs használatával.
+
+    ```powershell
+    wget https://raw.githubusercontent.com/azureautomation/runbooks/master/Utility/AzRunAs/Create-RunAsAccount.ps1 -outfile Create-RunAsAccount.ps1
+    ```
+
+2. Indítsa el a PowerShellt emelt szintű felhasználói jogosultságokkal, és navigáljon a parancsfájlt tartalmazó mappához.
+
+3. Futtassa a következő parancsok egyikét egy futtató és/vagy klasszikus futtató fiók létrehozásához a követelmények alapján.
+
+    * Futtató fiók létrehozása önaláírt tanúsítvány használatával.
+
+        ```powershell
+        .\Create-RunAsAccount.ps1 -ResourceGroup <ResourceGroupName> -AutomationAccountName <NameofAutomationAccount> -SubscriptionId <SubscriptionId> -ApplicationDisplayName <DisplayNameofAADApplication> -SelfSignedCertPlainPassword <StrongPassword> -CreateClassicRunAsAccount $false
+        ```
+
+    * Futtató fiók és klasszikus futtató fiók létrehozása önaláírt tanúsítvány használatával.
+
+        ```powershell
+        .\Create-RunAsAccount.ps1 -ResourceGroup <ResourceGroupName> -AutomationAccountName <NameofAutomationAccount> -SubscriptionId <SubscriptionId> -ApplicationDisplayName <DisplayNameofAADApplication> -SelfSignedCertPlainPassword <StrongPassword> -CreateClassicRunAsAccount $true
+        ```
+
+    * Futtató fiók és klasszikus futtató fiók létrehozása vállalati tanúsítvány használatával.
+
+        ```powershell
+        .\Create-RunAsAccount.ps1 -ResourceGroup <ResourceGroupName> -AutomationAccountName <NameofAutomationAccount> -SubscriptionId <SubscriptionId> -ApplicationDisplayName <DisplayNameofAADApplication>  -SelfSignedCertPlainPassword <StrongPassword> -CreateClassicRunAsAccount $true -EnterpriseCertPathForRunAsAccount <EnterpriseCertPfxPathForRunAsAccount> -EnterpriseCertPlainPasswordForRunAsAccount <StrongPassword> -EnterpriseCertPathForClassicRunAsAccount <EnterpriseCertPfxPathForClassicRunAsAccount> -EnterpriseCertPlainPasswordForClassicRunAsAccount <StrongPassword>
+        ```
+
+        Ha a klasszikus futtató fiókot vállalati nyilvános tanúsítvánnyal (. cer fájllal) hozta létre, használja ezt a tanúsítványt. A parancsfájl létrehozza és menti a számítógép ideiglenes fájlok mappájába a `%USERPROFILE%\AppData\Local\Temp` PowerShell-munkamenet végrehajtásához használt felhasználói profil alatt. Lásd: [felügyeleti API-tanúsítvány feltöltése a Azure Portal](../cloud-services/cloud-services-configure-ssl-certificate-portal.md).
+
+    * Futtató fiók és klasszikus futtató fiók létrehozása önaláírt tanúsítvány használatával a Azure Government-felhőben
+
+        ```powershell
+        .\Create-RunAsAccount.ps1 -ResourceGroup <ResourceGroupName> -AutomationAccountName <NameofAutomationAccount> -SubscriptionId <SubscriptionId> -ApplicationDisplayName <DisplayNameofAADApplication> -SelfSignedCertPlainPassword <StrongPassword> -CreateClassicRunAsAccount $true -EnvironmentName AzureUSGovernment
+        ```
+
+4. A parancsfájl végrehajtása után a rendszer kéri, hogy végezzen hitelesítést az Azure-ban. Jelentkezzen be egy olyan fiókkal, amely tagja az előfizetés-rendszergazdák szerepkörnek. Ha klasszikus futtató fiókot hoz létre, akkor a fióknak az előfizetés közös rendszergazdájának kell lennie.
 
 ## <a name="delete-a-run-as-or-classic-run-as-account"></a>Futtató fiók vagy klasszikus futtató fiók törlése
 
-Ez a szakasz azt ismerteti, hogyan lehet törölni egy futtató vagy klasszikus futtató fiókot. A művelet során a rendszer megőrzi az Automation-fiókot. A fiók törlése után újból létrehozhatja azt a Azure Portalban.
+Ez a szakasz azt ismerteti, hogyan lehet törölni egy futtató vagy klasszikus futtató fiókot. A művelet során a rendszer megőrzi az Automation-fiókot. A futtató fiók törlését követően újra létrehozhatja azt a Azure Portal vagy a megadott PowerShell-parancsfájl használatával.
 
 1. Az Azure Portalon nyissa meg az Automation-fiókot.
 
@@ -120,10 +153,6 @@ Ez a szakasz azt ismerteti, hogyan lehet törölni egy futtató vagy klasszikus 
    ![Futtató fiók törlése](media/manage-runas-account/automation-account-delete-runas.png)
 
 5. A fiók törlése során a menü **Értesítések** részén nyomon követheti a folyamat állapotát.
-
-6. A törlés után újra létrehozhatja a fiókot a Futtató fiókok tulajdonságlapon az **Azure-alapú futtató fiók** lehetőség kiválasztásával.
-
-   ![Automation futtató fiók újbóli létrehozása](media/manage-runas-account/automation-account-create-runas.png)
 
 ## <a name="renew-a-self-signed-certificate"></a><a name="cert-renewal"></a>Önaláírt tanúsítvány megújítása
 
@@ -174,8 +203,7 @@ Megadhatja, hogy a futtató fiók által használt egyszerű szolgáltatásnév 
 2. Válassza az Azure-beli **futtató fiók**lehetőséget.
 3. Válassza ki a **szerepkört** a használatban lévő szerepkör-definíció megkereséséhez.
 
-:::image type="content" source="media/manage-runas-account/verify-role.png" alt-text="Ellenőrizze a futtató fiók szerepkört." lightbox="media/manage-runas-account/verify-role-expanded.png":::
-
+:::image type="content" source="media/manage-runas-account/verify-role.png" alt-text="Válassza a futtató fiók lehetőséget." lightbox="media/manage-runas-account/verify-role-expanded.png":::
 
 A futtató fiókok által használt szerepkör-definíciót több előfizetés vagy Automation-fiók esetében is meghatározhatja. Ezt a PowerShell-galéria [Check-AutomationRunAsAccountRoleAssignments.ps1](https://aka.ms/AA5hug5) parancsfájljának használatával teheti meg.
 
@@ -199,7 +227,7 @@ Előfordulhat, hogy a futtató vagy klasszikus futtató fiókhoz szükséges kon
 
 Az ilyen hibás konfigurációs példányok esetében az Automation-fiók észleli a módosításokat, és *hiányos* állapotot jelenít meg a fiók futtató fiókok tulajdonságok paneljén.
 
-![Hiányos futtatófiók-konfigurációs állapot](media/manage-runas-account/automation-account-runas-incomplete-config.png)
+![Hiányos futtatófiók-konfigurációs állapot](media/manage-runas-account/automation-account-runas-config-incomplete.png)
 
 Ha kiválasztja a futtató fiókot, a fiók tulajdonságai ablaktábla a következő hibaüzenetet jeleníti meg:
 

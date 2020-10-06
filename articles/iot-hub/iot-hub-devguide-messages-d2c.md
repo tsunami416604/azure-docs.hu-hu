@@ -11,12 +11,12 @@ ms.author: asrastog
 ms.custom:
 - 'Role: Cloud Development'
 - devx-track-csharp
-ms.openlocfilehash: a451e13b39aea27b4f1e23f9faa30f4b11c1cff1
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 256ede9471f3e889dcce9415a6728414b5ab5f75
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89021238"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91766948"
 ---
 # <a name="use-iot-hub-message-routing-to-send-device-to-cloud-messages-to-different-endpoints"></a>Eszközről a felhőbe irányuló üzenetek küldése különböző végpontokra IoT Hub üzenet-útválasztás használatával
 
@@ -126,7 +126,7 @@ Engedélyezheti vagy letilthatja a tartalék útvonalat a Azure Portal->üzenet-
 
 ## <a name="non-telemetry-events"></a>Nem telemetria események
 
-Az eszköz telemetria mellett az üzenet-útválasztás is lehetővé teszi az eszköz kettős változási eseményeinek, az eszköz életciklusa eseményeinek és a digitális kettős változási események küldését (nyilvános előzetes verzióban). Ha például egy útvonal úgy jön létre, hogy az **eszköz kettős változási eseményre**van beállítva, akkor IoT hub üzeneteket küld a végpontnak, amely tartalmazza az eszköz kettős változását. Hasonlóképpen, ha egy útvonal az **eszköz életciklusára**beállított adatforrással jön létre, IoT hub üzenetet küld, amely jelzi, hogy az eszköz törölve lett vagy létrejött. Végül, a [IoT Plug and Play nyilvános előzetes](../iot-pnp/overview-iot-plug-and-play.md)verziójának részeként a fejlesztő olyan útvonalakat hozhat létre, amelyek **digitális kettős változási eseményekre** vannak beállítva, és IoT hub üzeneteket küld, amikor egy digitális Twin [tulajdonságot](../iot-pnp/iot-plug-and-play-glossary.md) állítanak be vagy módosítanak, a rendszer lecseréli a [digitális](../iot-pnp/iot-plug-and-play-glossary.md) twint, vagy ha változási esemény történik az alapul szolgáló eszköz esetében.
+Az eszközök telemetria mellett az üzenet-útválasztás is lehetővé teszi az eszköz kettős változási eseményeinek, az eszköz életciklusa eseményeinek és a digitális kettős változási események küldését. Ha például egy útvonal úgy jön létre, hogy az **eszköz kettős változási eseményre**van beállítva, akkor IoT hub üzeneteket küld a végpontnak, amely tartalmazza az eszköz kettős változását. Hasonlóképpen, ha egy útvonal az **eszköz életciklusára**beállított adatforrással jön létre, IoT hub üzenetet küld, amely jelzi, hogy az eszköz törölve lett vagy létrejött. Végezetül, a [IoT Plug and Play](../iot-pnp/overview-iot-plug-and-play.md)részeként a fejlesztő olyan útvonalakat hozhat létre, amelyek **digitális kettős változási eseményekre** vannak beállítva, és IoT hub üzeneteket küld, amikor egy digitális Twin [tulajdonságot](../iot-pnp/iot-plug-and-play-glossary.md) állítanak be vagy módosítanak, a rendszer lecseréli a [digitális Twin](../iot-pnp/iot-plug-and-play-glossary.md) -et, vagy ha változási esemény történik az alapul szolgáló eszköz esetében.
 
 A IoT Hub a Azure Event Grid-nal [is integrálva van](iot-hub-event-grid.md) az eszköz eseményeinek közzétételéhez, hogy támogassa a valós idejű integrációkat és a munkafolyamatok automatizálását ezen események alapján. Tekintse meg az [üzenet-útválasztás és a Event Grid közötti fő különbségeket](iot-hub-event-grid-routing-comparison.md) , amelyekből megtudhatja, melyik a legmegfelelőbb a forgatókönyvhöz.
 

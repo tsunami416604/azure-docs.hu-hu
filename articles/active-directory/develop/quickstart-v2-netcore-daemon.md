@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 07/16/2019
+ms.date: 10/05/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:aspnet-core
-ms.openlocfilehash: 6f4f4c2de3b1030c4d14cb74e562954a3d3d1144
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: bf9a2232a04b929d716d3b2412f1b2c666b29f62
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91257824"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91767276"
 ---
 # <a name="quickstart-acquire-a-token-and-call-microsoft-graph-api-using-console-apps-identity"></a>Gyors útmutató: token beszerzése és Microsoft Graph API meghívása a konzol alkalmazás identitásával
 
@@ -25,7 +25,7 @@ Ebből a rövid útmutatóból megtudhatja, hogyan írhat olyan .NET Core-alkalm
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Ehhez a rövid útmutatóhoz a [.net Core 2,2](https://www.microsoft.com/net/download/dotnet-core/2.2)szükséges.
+Ehhez a rövid útmutatóhoz a [.net Core 3,1](https://www.microsoft.com/net/download/dotnet-core)szükséges.
 
 > [!div renderon="docs"]
 > ## <a name="register-and-download-your-quickstart-app"></a>A rövid útmutató mintaalkalmazásának regisztrálása és letöltése
@@ -48,12 +48,12 @@ Ehhez a rövid útmutatóhoz a [.net Core 2,2](https://www.microsoft.com/net/dow
 >
 > 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) munkahelyi vagy iskolai fiókkal, vagy személyes Microsoft-fiók használatával.
 > 1. Ha a fiókja több bérlőhöz is biztosít hozzáférést, válassza ki a fiókot az oldal jobb felső sarkában, és állítsa a portálmunkamenetét a kívánt Azure AD-bérlőre.
-> 1. Navigáljon a Microsoft Identity platform for Developers [Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) oldalára.
+> 1. Keresse meg a Microsoft Identity platform for Developers [Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) oldalt az Azure Portal keresési sávján található **Alkalmazásregisztrációk** keresésével.
 > 1. Válassza az **új regisztráció**lehetőséget.
 > 1. Amikor megjelenik az **alkalmazás regisztrálása** lap, adja meg az alkalmazás regisztrációs adatait.
 > 1. A **név** szakaszban adjon meg egy értelmezhető nevet, amely megjelenik az alkalmazás felhasználói számára, például a `Daemon-console` **regisztrálás** elemre kattintva hozza létre az alkalmazást.
 > 1. A regisztrálás után válassza a **tanúsítványok & titkok** menüt.
-> 1. Az **ügyfél**titkos kulcsa területen válassza az **+ új ügyfél titka**lehetőséget. Adja meg a nevet, és válassza a **Hozzáadás**lehetőséget. Másolja a titkos kulcsot egy biztonságos helyre. Szüksége lesz rá a kódban való használatra.
+> 1. Az **ügyfél**titkos kulcsa területen válassza az **+ új ügyfél titka**lehetőséget. Adja meg a nevet, és válassza a **Hozzáadás**lehetőséget. Másolja a titkos kulcsot egy biztonságos helyre. Szüksége lesz rá a kódban való használatra, és nem jelenik meg újra a portálon.
 > 1. Most válassza ki az **API-engedélyek** menüt, válassza az **+ engedély hozzáadása** gombot, és válassza a **Microsoft Graph**lehetőséget.
 > 1. Válassza ki az **alkalmazás engedélyeit**.
 > 1. A **felhasználó** csomópont alatt válassza a **felhasználó. olvasás. mind**, majd az **engedélyek hozzáadása** elemet.
@@ -73,6 +73,11 @@ Ehhez a rövid útmutatóhoz a [.net Core 2,2](https://www.microsoft.com/net/dow
 
 > [!div renderon="docs"]
 > [A Visual Studio-projekt letöltése](https://github.com/Azure-Samples/active-directory-dotnetcore-daemon-v2/archive/master.zip)
+
+> [!div renderon="docs"]
+> > [!NOTE]
+> > A megadott projektet a Visual Studióban vagy a Visual Studio for Macban is futtathatja
+
 
 > [!div class="sxs-lookup" renderon="portal"]
 > Futtassa a projektet a Visual Studio 2019 használatával.
@@ -115,7 +120,7 @@ Ha ezen a ponton próbálja meg futtatni az alkalmazást, *HTTP 403-Tiltott* hib
 ##### <a name="global-tenant-administrator"></a>Globális bérlői rendszergazda
 
 > [!div renderon="docs"]
-> Ha Ön globális bérlői rendszergazda, nyissa meg az **API-engedélyek** lapot az Azure Portal alkalmazás-regisztrációjában (előzetes verzió), és válassza a **rendszergazdai jóváhagyás megadása a következőhöz: {bérlő neve}** (a (z) {bérlő neve} a címtár neve).
+> Ha Ön globális bérlői rendszergazda, az Azure Portalon navigáljon a **vállalati alkalmazásokhoz** > kattintson az alkalmazás regisztrálására > a bal oldali navigációs ablaktábla biztonság szakaszában válassza az **"engedélyek"** lehetőséget. Kattintson a **{bérlő neve}** (a (z) {bérlő neve}, ahol a (z) {bérlő neve} gombra, és adja meg a címtár nevét.
 
 > [!div renderon="portal" class="sxs-lookup"]
 > Ha Ön globális rendszergazda, lépjen az API- **engedélyek** oldalra, és válassza **a rendszergazdai jóváhagyás megadása Enter_the_Tenant_Name_Here**
@@ -144,10 +149,10 @@ https://login.microsoftonline.com/Enter_the_Tenant_Id_Here/adminconsent?client_i
 > [!div renderon="docs"]
 > #### <a name="step-5-run-the-application"></a>5. lépés: az alkalmazás futtatása
 
-Ha a Visual studiót használja, nyomja le az **F5** billentyűt az alkalmazás futtatásához, ellenkező esetben futtassa az alkalmazást a parancssorból vagy a konzolon keresztül:
+Ha a Visual studiót vagy a Visual Studio for Mac használja, nyomja le az **F5** billentyűt az alkalmazás futtatásához, ellenkező esetben futtassa az alkalmazást a parancssorból, a konzolon vagy a terminálon keresztül:
 
 ```console
-cd {ProjectFolder}\daemon-console\1-Call-Graph
+cd {ProjectFolder}\1-Call-MSGraph\daemon-console
 dotnet run
 ```
 
@@ -218,7 +223,7 @@ További információkért tekintse [meg `AcquireTokenForClient` ](/dotnet/api/m
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Daemon-alkalmazásokkal kapcsolatos további tudnivalókért tekintse meg a forgatókönyv áttekintését:
 

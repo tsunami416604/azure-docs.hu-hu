@@ -8,12 +8,12 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 05/10/2019
 ms.author: robinsh
-ms.openlocfilehash: 08eb5fd4d28421105988d64b99afb441a0b824f4
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 792486a78dfed606ce8317d9bc037221ae33d508
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87290308"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91767204"
 ---
 # <a name="message-enrichments-for-device-to-cloud-iot-hub-messages"></a>Üzenetek bővítése az eszközről a felhőbe IoT Hub üzenetekhez
 
@@ -62,7 +62,7 @@ A dúsítást a következő módszerekkel lehet konfigurálni:
 
 | **Metódus** | **Parancs** |
 | ----- | -----| 
-| Portál | [Azure Portal](https://portal.azure.com) | Lásd az [üzenet gazdagítása oktatóanyagot](tutorial-message-enrichments.md) | 
+| Portál | [Azure Portalra](https://portal.azure.com) | Lásd az [üzenet gazdagítása oktatóanyagot](tutorial-message-enrichments.md) | 
 | Azure CLI   | [az IOT hub Message-gazdagodás](https://docs.microsoft.com/cli/azure/iot/hub/message-enrichment?view=azure-cli-latest) |
 | Azure PowerShell | [Add-AzIotHubMessageEnrichment](https://docs.microsoft.com/powershell/module/az.iothub/add-aziothubmessageenrichment) |
 
@@ -86,7 +86,7 @@ Az üzenetek dúsításának kipróbálásához tekintse meg az [üzenet gazdag�
 
 * Az üzenetek teljes mérete, beleértve a dúsítást, nem lépheti túl a 256 KB-ot. Ha az üzenet mérete meghaladja az 256 KB-ot, akkor a IoT Hub el fogja dobni az üzenetet. Az üzenetek eldobásakor a [IoT hub metrikák](iot-hub-metrics.md) használatával azonosíthatók és hibakeresési hibák jelentkezhetnek. Megfigyelheti például a D2C. telemetria. kimenő. érvénytelen.
 
-* Az üzenetek gazdagítása nem vonatkozik a digitális kettős változási eseményekre (a [IoT Plug and Play nyilvános előzetes](../iot-pnp/overview-iot-plug-and-play.md)verzió része).
+* Az üzenet-gazdagítás nem vonatkozik a digitális kettős változási eseményekre.
 
 ## <a name="pricing"></a>Díjszabás
 

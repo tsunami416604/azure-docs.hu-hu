@@ -13,12 +13,12 @@ ms.custom:
 - 'Role: IoT Device'
 - 'Role: Cloud Development'
 - contperfq1
-ms.openlocfilehash: 0a5cf5ad4a7cbf7d732d1fafdcafd434cba20d13
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.openlocfilehash: 720d8f3b1f3d13427cda56ee68596d190ac40dc7
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91664936"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91767319"
 ---
 # <a name="communicate-with-your-iot-hub-using-the-mqtt-protocol"></a>Kommunikáció az IoT hub használatával a MQTT protokollal
 
@@ -54,7 +54,7 @@ Az alábbi táblázat az egyes támogatott nyelvekre mutató hivatkozásokat tar
 | --- | --- | --- |
 | [Node.js](https://github.com/Azure/azure-iot-sdk-node/blob/master/device/samples/simple_sample_device.js) | Azure-IOT-Device-mqtt. Mqtt | Azure-IOT-Device-mqtt. MqttWs |
 | [Java](https://github.com/Azure/azure-iot-sdk-java/blob/master/device/iot-device-samples/send-receive-sample/src/main/java/samples/com/microsoft/azure/sdk/iot/SendReceive.java) |[IotHubClientProtocol](https://docs.microsoft.com/java/api/com.microsoft.azure.sdk.iot.device.iothubclientprotocol?view=azure-java-stable). MQTT | IotHubClientProtocol.MQTT_WS |
-| [C#](https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client/samples/iothub_client_sample_mqtt_dm) | [MQTT_Protocol](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothubtransportmqtt-h/mqtt-protocol) | [MQTT_WebSocket_Protocol](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothubtransportmqtt-websockets-h/mqtt-websocket-protocol) |
+| [C](https://github.com/Azure/azure-iot-sdk-c/tree/master/iothub_client/samples/iothub_client_sample_mqtt_dm) | [MQTT_Protocol](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothubtransportmqtt-h/mqtt-protocol) | [MQTT_WebSocket_Protocol](https://docs.microsoft.com/azure/iot-hub/iot-c-sdk-ref/iothubtransportmqtt-websockets-h/mqtt-websocket-protocol) |
 | [C#](https://github.com/Azure/azure-iot-sdk-csharp/tree/master/iothub/device/samples) | [TransportType](https://docs.microsoft.com/dotnet/api/microsoft.azure.devices.client.transporttype?view=azure-dotnet). Mqtt | A TransportType. Mqtt visszaesik a MQTT-ra, ha a MQTT meghibásodik. Ha csak a webes szoftvercsatornák MQTT szeretné megadni, használja a TransportType.Mqtt_WebSocket_Only |
 | [Python](https://github.com/Azure/azure-iot-sdk-python/tree/master/azure-iot-device/samples) | Alapértelmezés szerint a MQTT támogatja | Hozzáadás a `websockets=True` -ügyfél létrehozásához a hívásban |
 
@@ -79,11 +79,11 @@ Annak biztosítása érdekében, hogy az ügyfél/IoT Hub-kapcsolatok életben m
 
 |Nyelv  |Alapértelmezett életben tartási időköz  |Konfigurálható  |
 |---------|---------|---------|
-|Node.js     |   180 másodperc      |     No    |
-|Java     |    230 másodperc     |     No    |
-|C#     | 240 másodperc |  [Igen](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/Iothub_sdk_options.md#mqtt-transport)   |
+|Node.js     |   180 másodperc      |     Nem    |
+|Java     |    230 másodperc     |     Nem    |
+|C     | 240 másodperc |  [Igen](https://github.com/Azure/azure-iot-sdk-c/blob/master/doc/Iothub_sdk_options.md#mqtt-transport)   |
 |C#     | 300 másodperc |  [Igen](https://github.com/Azure/azure-iot-sdk-csharp/blob/master/iothub/device/src/Transport/Mqtt/MqttTransportSettings.cs#L89)   |
-|Python   | 60 másodperc |  No   |
+|Python   | 60 másodperc |  Nem   |
 
 Az [MQTT specifikáció](http://docs.oasis-open.org/mqtt/mqtt/v3.1.1/os/mqtt-v3.1.1-os.html#_Toc398718081)után a IoT hub életben tartási pingelési intervalluma 1,5 alkalommal az ügyfél életben tartási értéke. A IoT Hub azonban korlátozza a kiszolgálóoldali időtúllépési korlátot 29,45 percre (1767 másodpercre), mert az összes Azure-szolgáltatás az Azure Load Balancer TCP üresjárati időkorlátjának (29,45 perc) van kötve. 
 
@@ -119,7 +119,7 @@ A tárház tartalma:
 
 * DeviceTwinMQTTWin32: olyan kódot tartalmaz, amely lekérdezi és előfizet egy eszköznek az Azure IoT hub-ban egy Windows rendszerű gépen lévő eszközének kettős eseményeire.
 
-* PnPMQTTWin32: olyan kódot tartalmaz, amely egy telemetria-üzenetet küld a IoT beépülő & modulnak, amely a Windows rendszerű gépeken létrehozott és futtatott Azure IoT hub-eszközökre vonatkozó képességeket jelenít meg. További információk a [IoT Plug & Play](https://docs.microsoft.com/azure/iot-pnp/overview-iot-plug-and-play) -ről
+* PnPMQTTWin32: olyan kódot tartalmaz, amely a IoT Plug and Play telemetria üzenetet küld egy Azure IoT hub-ra, amely Windows rendszerű gépen lett létrehozva és futtatva. További információk a [IoT Plug and Play](https://docs.microsoft.com/azure/iot-pnp/overview-iot-plug-and-play)
 
 **Linux esetén:**
 
@@ -312,7 +312,7 @@ IoT Hub kézbesíti az üzeneteket a **témakör nevével** `devices/{device_id}
 
 A felhőből az eszközre irányuló üzenetekben a tulajdonságok táskájában lévő értékek a következő táblázatban látható módon jelennek meg:
 
-| Tulajdonság értéke | Képviselet | Description |
+| Tulajdonság értéke | Képviselet | Leírás |
 |----|----|----|
 | `null` | `key` | Csak a kulcs jelenik meg a tulajdonság táskájában |
 | üres karakterlánc | `key=` | A kulcsot, és nem értékkel rendelkező egyenlőségjelet kell írni |

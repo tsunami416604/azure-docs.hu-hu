@@ -11,12 +11,12 @@ ms.topic: quickstart
 ms.date: 04/18/2020
 ms.custom: devx-track-java
 ms.author: lcozzens
-ms.openlocfilehash: 10b38d5c5802ec4f6bc33b15b3ddef12e8256a78
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: e3bc26b8f4d66c95f6f777af06d71172a4b882b9
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88586453"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91767635"
 ---
 # <a name="quickstart-create-a-java-spring-app-with-azure-app-configuration"></a>Rövid útmutató: Java Spring-alkalmazás létrehozása az Azure app Configuration szolgáltatással
 
@@ -32,15 +32,15 @@ Ebben a rövid útmutatóban beépíti az Azure-alkalmazások konfigurációját
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. **Configuration Explorer**  >  **+ Create**  >  A következő kulcs-érték párok hozzáadásához válassza a Configuration Explorer +**kulcs létrehozása-érték** elemet:
+7. **Configuration Explorer**  >  **+ Create**  >  A következő kulcs-érték párok hozzáadásához válassza a Configuration Explorer +**kulcs létrehozása-érték** elemet:
 
     | Kulcs | Érték |
     |---|---|
-    | /application/config.message | Üdvözöljük |
+    | /application/config.message | helló |
 
     Most hagyja üresen a **címke** és a **tartalom típusát** .
 
-7. Kattintson az **Alkalmaz** gombra.
+8. Kattintson az **Alkalmaz** gombra.
 
 ## <a name="create-a-spring-boot-app"></a>Spring boot-alkalmazás létrehozása
 
@@ -186,7 +186,7 @@ A [Spring inicializáló](https://start.spring.io/) használatával hozzon létr
 
 [!INCLUDE [azure-app-configuration-cleanup](../../includes/azure-app-configuration-cleanup.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban létrehozott egy új alkalmazás-konfigurációs tárolót, amelyet egy Java Spring-alkalmazással használt. További információ: [Spring on Azure](https://docs.microsoft.com/java/azure/spring-framework/). Ha szeretné megtudni, hogyan engedélyezheti a Java Spring-alkalmazást a konfigurációs beállítások dinamikus frissítéséhez, folytassa a következő oktatóanyaggal.
 

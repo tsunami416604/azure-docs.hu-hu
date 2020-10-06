@@ -3,12 +3,12 @@ title: Azure Service Bus hálózati biztonsága
 description: Ez a cikk a hálózati biztonsági funkciókat, például a szolgáltatási címkéket, az IP-tűzfalszabályok, a szolgáltatási végpontokat és a magánhálózati végpontokat ismerteti.
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: 731300179ce9a0ff72169cdad5c7c039749b20f6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: fb21c8beb6d48ecab04917525011cc4762c46ff3
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85341141"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91766391"
 ---
 # <a name="network-security-for-azure-service-bus"></a>Azure Service Bus hálózati biztonsága 
 Ez a cikk azt ismerteti, hogyan használhatók a következő biztonsági szolgáltatások a Azure Service Bus használatával: 
@@ -16,7 +16,7 @@ Ez a cikk azt ismerteti, hogyan használhatók a következő biztonsági szolgá
 - Szolgáltatáscímkék
 - IP-tűzfalszabályok
 - Hálózati szolgáltatási végpontok
-- Privát végpontok (előzetes verzió)
+- Privát végpontok
 
 
 ## <a name="service-tags"></a>Szolgáltatáscímkék
@@ -24,13 +24,13 @@ A szolgáltatás címkéje egy adott Azure-szolgáltatás IP-címeinek egy csopo
 
 A szolgáltatás-címkék használatával hálózati [biztonsági csoportokon](../virtual-network/security-overview.md#security-rules) vagy [Azure Firewallon](../firewall/service-tags.md)is meghatározhat hálózati hozzáférés-vezérlést. A szolgáltatási címkéket adott IP-címek helyett használhatja biztonsági szabályok létrehozásakor. A szolgáltatási címke nevének (például **ServiceBus**) megadásával a szabály megfelelő *forrás* vagy *cél* mezőjében engedélyezheti vagy megtagadhatja a megfelelő szolgáltatás forgalmát.
 
-| Szolgáltatáscímke | Szerep | Használhat bejövő vagy kimenő adatforgalmat? | Lehet regionális? | Használható a Azure Firewall? |
+| Szolgáltatáscímke | Cél | Használhat bejövő vagy kimenő adatforgalmat? | Lehet regionális? | Használható a Azure Firewall? |
 | --- | -------- |:---:|:---:|:---:|:---:|:---:|:---:|:---:|
 | **ServiceBus** | Azure Service Bus a prémium szintű szolgáltatási szintet használó forgalom. | Kimenő | Igen | Igen |
 
 
 > [!NOTE]
-> A szolgáltatási címkéket csak a **prémium** szintű névterek esetében használhatja. Ha **standard** névteret használ, használja a következő parancs futtatásakor megjelenő IP-címet: `nslookup <host name for the namespace>` . Példa: `nslookup contosons.servicebus.windows.net`. 
+> A szolgáltatási címkéket csak a **prémium** szintű névterek esetében használhatja. Ha **standard** névteret használ, használja a következő parancs futtatásakor megjelenő IP-címet: `nslookup <host name for the namespace>` . Például: `nslookup contosons.servicebus.windows.net`. 
 
 ## <a name="ip-firewall"></a>IP-tűzfal 
 Alapértelmezés szerint a Service Bus névterek az internetről érhetők el, feltéve, hogy a kérés érvényes hitelesítéssel és engedélyezéssel rendelkezik. Az IP-tűzfallal továbbra is korlátozhatja, hogy csak IPv4-címek vagy IPv4-címtartományok legyenek a [CIDR (osztály nélküli tartományok közötti útválasztás)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) jelöléssel.
@@ -81,14 +81,12 @@ További információ: [Mi az az Azure Private link?](../private-link/private-li
 
 > [!NOTE]
 > Ez a funkció a Azure Service Bus **Premium** szintjével támogatott. A prémium szintű csomaggal kapcsolatos további információkért tekintse meg a [prémium és standard szintű üzenetkezelési szintek Service Busét](service-bus-premium-messaging.md) ismertető cikket.
->
-> Ez a funkció jelenleg **előzetes**verzióban érhető el. 
 
 
 További információ: [privát végpontok konfigurálása Service Bus névtérhez](private-link-service.md)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Lásd az alábbi cikkeket:
 
 - [Az IP-tűzfal konfigurálása Service Bus névtérhez](service-bus-ip-filtering.md)

@@ -3,12 +3,12 @@ title: Hálózati biztonság az Azure Event Hubs
 description: Ez a cikk azt ismerteti, hogyan konfigurálható a hozzáférés a privát végpontokról
 ms.topic: conceptual
 ms.date: 06/23/2020
-ms.openlocfilehash: ddb816e872625da06e370a7e130b4dd444de8de7
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: ae6cbdc8258cde9bb2da961cb452f996f0797cfe
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86521853"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91767785"
 ---
 # <a name="network-security-for-azure-event-hubs"></a>Hálózati biztonság az Azure Event Hubs 
 Ez a cikk azt ismerteti, hogyan használható az Azure Event Hubs a következő biztonsági funkciókkal: 
@@ -16,7 +16,7 @@ Ez a cikk azt ismerteti, hogyan használható az Azure Event Hubs a következő 
 - Szolgáltatáscímkék
 - IP-tűzfalszabályok
 - Hálózati szolgáltatási végpontok
-- Privát végpontok (előzetes verzió)
+- Privát végpontok
 
 
 ## <a name="service-tags"></a>Szolgáltatáscímkék
@@ -74,9 +74,6 @@ A privát végpontok olyan hálózati adapterek, amelyek az Azure Private-kapcso
 
 > [!NOTE]
 > Ez a funkció csak a **dedikált** szinten támogatott. További információ a dedikált platformról: [dedikált Event Hubs áttekintése](event-hubs-dedicated-overview.md). 
->
-> Ez a funkció jelenleg **előzetes**verzióban érhető el. 
-
 
 További információ: [privát végpontok konfigurálása az Event hub-hoz](private-link-service.md)
 

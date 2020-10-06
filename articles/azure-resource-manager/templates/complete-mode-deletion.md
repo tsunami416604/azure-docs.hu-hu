@@ -2,13 +2,13 @@
 title: Törlés Teljes mód esetén
 description: Azt mutatja, hogy az erőforrástípusok hogyan kezelik a teljes módú törlést Azure Resource Manager-sablonokban.
 ms.topic: conceptual
-ms.date: 09/21/2020
-ms.openlocfilehash: 1e27960953aeb16486f893054c7653edb98bbdbc
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.date: 10/06/2020
+ms.openlocfilehash: 72303a7916aec39c05f9b4fa2cbc77de18b7fb3e
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91372461"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91766709"
 ---
 # <a name="deletion-of-azure-resources-for-complete-mode-deployments"></a>Azure-erőforrások törlése a teljes módú üzembe helyezésekhez
 
@@ -19,6 +19,11 @@ Az **Igen** értékkel jelölt erőforrástípusok törlődnek, ha a típus ninc
 A **nem** a (z) jelölésű erőforrástípusok nem törlődnek automatikusan, ha nem a sablonban; azonban törlődnek, ha a szülő erőforrás törölve lett. A viselkedés teljes leírását lásd: [Azure Resource Manager telepítési módok](deployment-modes.md).
 
 Ha [egy sablonban több erőforráscsoporthoz](cross-scope-deployment.md)is telepít, a telepítési műveletben megadott erőforráscsoport erőforrásai törölhetők. A másodlagos erőforráscsoportok erőforrásai nem törlődnek.
+
+Az erőforrásokat az erőforrás-szolgáltatói névtér sorolja fel. Az erőforrás-szolgáltatói névtér az Azure-szolgáltatás nevével való egyeztetéséhez tekintse meg az [Azure-szolgáltatások erőforrás-szolgáltatóit](../management/azure-services-resource-providers.md)ismertető témakört.
+
+> [!NOTE]
+> A sablonok teljes módban való üzembe helyezése előtt mindig használja a [mi-if műveletet](template-deploy-what-if.md) . Mi a teendő, hogy mely erőforrások lesznek létrehozva, törölve vagy módosítva. A mi – if használatával elkerülhető az erőforrások akaratlan törlése.
 
 Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="op_single_selector"]
@@ -204,2277 +209,2277 @@ Ugrás erőforrás-szolgáltatói névtérre:
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | DomainServices | Yes |
-> | DomainServices / oucontainer | No |
+> | DomainServices | Igen |
+> | DomainServices / oucontainer | Nem |
 
 ## <a name="microsoftaddons"></a>Microsoft. addons
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | supportProviders | No |
+> | supportProviders | Nem |
 
 ## <a name="microsoftadhybridhealthservice"></a>Microsoft. ADHybridHealthService
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | aadsupportcases | No |
-> | addsservices | No |
-> | ügynökök | No |
-> | anonymousapiusers | No |
-> | konfiguráció | No |
-> | naplók | No |
-> | jelentések | No |
-> | servicehealthmetrics | No |
-> | services | No |
+> | aadsupportcases | Nem |
+> | addsservices | Nem |
+> | ügynökök | Nem |
+> | anonymousapiusers | Nem |
+> | konfiguráció | Nem |
+> | naplók | Nem |
+> | jelentések | Nem |
+> | servicehealthmetrics | Nem |
+> | services | Nem |
 
 ## <a name="microsoftadvisor"></a>Microsoft. Advisor
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | advisorScore | No |
-> | konfigurációk | No |
-> | generateRecommendations | No |
-> | metaadatok | No |
-> | javaslatok | No |
-> | fóliakondenzát | No |
+> | advisorScore | Nem |
+> | konfigurációk | Nem |
+> | generateRecommendations | Nem |
+> | metaadatok | Nem |
+> | javaslatok | Nem |
+> | fóliakondenzát | Nem |
 
 ## <a name="microsoftagfoodplatform"></a>Microsoft. AgFoodPlatform
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | farmBeats | Yes |
+> | farmBeats | Igen |
 
 ## <a name="microsoftalertsmanagement"></a>Microsoft. AlertsManagement
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | actionRules | Yes |
-> | riasztások | No |
-> | alertsList | No |
-> | alertsMetaData | No |
-> | alertsSummary | No |
-> | alertsSummaryList | No |
-> | smartDetectorAlertRules | Yes |
-> | smartGroups | No |
+> | actionRules | Igen |
+> | riasztások | Nem |
+> | alertsList | Nem |
+> | alertsMetaData | Nem |
+> | alertsSummary | Nem |
+> | alertsSummaryList | Nem |
+> | smartDetectorAlertRules | Igen |
+> | smartGroups | Nem |
 
 ## <a name="microsoftanalysisservices"></a>Microsoft. AnalysisServices
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | kiszolgálók | Yes |
+> | kiszolgálók | Igen |
 
 ## <a name="microsoftapimanagement"></a>Microsoft. ApiManagement
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | reportFeedback | No |
-> | szolgáltatás | Yes |
-> | validateServiceName | No |
+> | reportFeedback | Nem |
+> | szolgáltatás | Igen |
+> | validateServiceName | Nem |
 
 ## <a name="microsoftappconfiguration"></a>Microsoft. AppConfiguration
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | configurationStores | Yes |
-> | configurationStores / eventGridFilters | No |
-> | configurationStores/-értékek | No |
+> | configurationStores | Igen |
+> | configurationStores / eventGridFilters | Nem |
+> | configurationStores/-értékek | Nem |
 
 ## <a name="microsoftappplatform"></a>Microsoft. AppPlatform
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | Spring | Yes |
-> | Spring/apps | No |
-> | Spring/apps/üzemelő példányok | No |
+> | Spring | Igen |
+> | Spring/apps | Nem |
+> | Spring/apps/üzemelő példányok | Nem |
 
 ## <a name="microsoftattestation"></a>Microsoft. igazolás
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | attestationProviders | Yes |
-> | defaultProviders | No |
+> | attestationProviders | Igen |
+> | defaultProviders | Nem |
 
 ## <a name="microsoftauthorization"></a>Microsoft.Authorization
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | accessReviewScheduleDefinitions | No |
-> | accessReviewScheduleSettings | No |
-> | classicAdministrators | No |
-> | dataAliases | No |
-> | denyAssignments | No |
-> | elevateAccess | No |
-> | findOrphanRoleAssignments | No |
-> | zárak | No |
-> | engedélyek | No |
-> | policyAssignments | No |
-> | policyDefinitions | No |
-> | policyExemptions | No |
-> | policySetDefinitions | No |
-> | privateLinkAssociations | No |
-> | providerOperations | No |
-> | resourceManagementPrivateLinks | Yes |
-> | roleAssignments | No |
-> | roleAssignmentsUsageMetrics | No |
-> | roleDefinitions | No |
+> | accessReviewScheduleDefinitions | Nem |
+> | accessReviewScheduleSettings | Nem |
+> | classicAdministrators | Nem |
+> | dataAliases | Nem |
+> | denyAssignments | Nem |
+> | elevateAccess | Nem |
+> | findOrphanRoleAssignments | Nem |
+> | zárak | Nem |
+> | engedélyek | Nem |
+> | policyAssignments | Nem |
+> | policyDefinitions | Nem |
+> | policyExemptions | Nem |
+> | policySetDefinitions | Nem |
+> | privateLinkAssociations | Nem |
+> | providerOperations | Nem |
+> | resourceManagementPrivateLinks | Igen |
+> | roleAssignments | Nem |
+> | roleAssignmentsUsageMetrics | Nem |
+> | roleDefinitions | Nem |
 
 ## <a name="microsoftautomanage"></a>Microsoft. automanage
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | fiókok | Yes |
-> | configurationProfileAssignments | No |
-> | configurationProfilePreferences | Yes |
+> | fiókok | Igen |
+> | configurationProfileAssignments | Nem |
+> | configurationProfilePreferences | Igen |
 
 ## <a name="microsoftautomation"></a>Microsoft. Automation
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | automationAccounts | Yes |
-> | automationAccounts/konfigurációk | Yes |
-> | automationAccounts/feladatok | No |
-> | automationAccounts / privateEndpointConnectionProxies | No |
-> | automationAccounts / privateEndpointConnections | No |
-> | automationAccounts / privateLinkResources | No |
-> | automationAccounts/runbookok | Yes |
-> | automationAccounts / softwareUpdateConfigurations | No |
-> | automationAccounts/webhookok | No |
+> | automationAccounts | Igen |
+> | automationAccounts/konfigurációk | Igen |
+> | automationAccounts/feladatok | Nem |
+> | automationAccounts / privateEndpointConnectionProxies | Nem |
+> | automationAccounts / privateEndpointConnections | Nem |
+> | automationAccounts / privateLinkResources | Nem |
+> | automationAccounts/runbookok | Igen |
+> | automationAccounts / softwareUpdateConfigurations | Nem |
+> | automationAccounts/webhookok | Nem |
 
 ## <a name="microsoftavs"></a>Microsoft. AVS
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | privateClouds | Yes |
-> | privateClouds/engedélyek | No |
-> | privateClouds/fürtök | No |
-> | privateClouds / globalReachConnections | No |
-> | privateClouds / hcxEnterpriseSites | No |
-> | privateClouds / workloadNetworks | No |
-> | privateClouds / workloadNetworks / dhcpConfigurations | No |
-> | privateClouds/workloadNetworks/átjárók | No |
-> | privateClouds / workloadNetworks / portMirroringProfiles | No |
-> | privateClouds/workloadNetworks/szegmensek | No |
-> | privateClouds / workloadNetworks / virtualMachines | No |
-> | privateClouds / workloadNetworks / vmGroups | No |
+> | privateClouds | Igen |
+> | privateClouds/engedélyek | Nem |
+> | privateClouds/fürtök | Nem |
+> | privateClouds / globalReachConnections | Nem |
+> | privateClouds / hcxEnterpriseSites | Nem |
+> | privateClouds / workloadNetworks | Nem |
+> | privateClouds / workloadNetworks / dhcpConfigurations | Nem |
+> | privateClouds/workloadNetworks/átjárók | Nem |
+> | privateClouds / workloadNetworks / portMirroringProfiles | Nem |
+> | privateClouds/workloadNetworks/szegmensek | Nem |
+> | privateClouds / workloadNetworks / virtualMachines | Nem |
+> | privateClouds / workloadNetworks / vmGroups | Nem |
 
 ## <a name="microsoftazuregeneva"></a>Microsoft. Azure. Genf
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | környezetben | No |
-> | környezetek/fiókok | No |
-> | környezetek/fiókok/névterek | No |
-> | környezetek/fiókok/névterek/konfigurációk | No |
+> | környezetben | Nem |
+> | környezetek/fiókok | Nem |
+> | környezetek/fiókok/névterek | Nem |
+> | környezetek/fiókok/névterek/konfigurációk | Nem |
 
 ## <a name="microsoftazureactivedirectory"></a>Microsoft. AzureActiveDirectory
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | b2cDirectories | Yes |
-> | b2ctenants | No |
-> | guestUsages | Yes |
+> | b2cDirectories | Igen |
+> | b2ctenants | Nem |
+> | guestUsages | Igen |
 
 ## <a name="microsoftazuredata"></a>Microsoft. AzureData
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | dataControllers | Yes |
-> | postgresInstances | Yes |
-> | sqlManagedInstances | Yes |
-> | sqlServerInstances | Yes |
-> | sqlServerRegistrations | Yes |
-> | sqlServerRegistrations / sqlServers | No |
+> | dataControllers | Igen |
+> | postgresInstances | Igen |
+> | sqlManagedInstances | Igen |
+> | sqlServerInstances | Igen |
+> | sqlServerRegistrations | Igen |
+> | sqlServerRegistrations / sqlServers | Nem |
 
 ## <a name="microsoftazurestack"></a>Microsoft. AzureStack
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | cloudManifestFiles | No |
-> | edgeSubscriptions | Yes |
-> | linkedSubscriptions | Yes |
-> | regisztrációk | Yes |
-> | regisztrációk/customerSubscriptions | No |
-> | regisztrációk/termékek | No |
+> | cloudManifestFiles | Nem |
+> | edgeSubscriptions | Igen |
+> | linkedSubscriptions | Igen |
+> | regisztrációk | Igen |
+> | regisztrációk/customerSubscriptions | Nem |
+> | regisztrációk/termékek | Nem |
 
 ## <a name="microsoftazurestackhci"></a>Microsoft. AzureStackHCI
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | fürtök | Yes |
+> | fürtök | Igen |
 
 ## <a name="microsoftbatch"></a>Microsoft.Batch
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | batchAccounts | Yes |
+> | batchAccounts | Igen |
 
 ## <a name="microsoftbilling"></a>Microsoft. számlázás
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | billingAccounts | No |
-> | billingAccounts/szerződések | No |
-> | billingAccounts / billingPermissions | No |
-> | billingAccounts / billingProfiles | No |
-> | billingAccounts / billingProfiles / billingPermissions | No |
-> | billingAccounts / billingProfiles / billingRoleAssignments | No |
-> | billingAccounts / billingProfiles / billingRoleDefinitions | No |
-> | billingAccounts / billingProfiles / billingSubscriptions | No |
-> | billingAccounts / billingProfiles / createBillingRoleAssignment | No |
-> | billingAccounts/billingProfiles/ügyfelek | No |
-> | billingAccounts/billingProfiles/utasítások | No |
-> | billingAccounts/billingProfiles/számlák | No |
-> | billingAccounts/billingProfiles/számlák/árlista | No |
-> | billingAccounts/billingProfiles/számlák/tranzakciók | No |
-> | billingAccounts / billingProfiles / invoiceSections | No |
-> | billingAccounts / billingProfiles / invoiceSections / billingPermissions | No |
-> | billingAccounts / billingProfiles / invoiceSections / billingRoleAssignments | No |
-> | billingAccounts / billingProfiles / invoiceSections / billingRoleDefinitions | No |
-> | billingAccounts / billingProfiles / invoiceSections / billingSubscriptions | No |
-> | billingAccounts / billingProfiles / invoiceSections / createBillingRoleAssignment | No |
-> | billingAccounts / billingProfiles / invoiceSections / initiateTransfer | No |
-> | billingAccounts/billingProfiles/invoiceSections/termékek | No |
-> | billingAccounts/billingProfiles/invoiceSections/termékek/átvitel | No |
-> | billingAccounts/billingProfiles/invoiceSections/termékek/updateAutoRenew | No |
-> | billingAccounts/billingProfiles/invoiceSections/tranzakciók | No |
-> | billingAccounts/billingProfiles/invoiceSections/Transfers | No |
-> | billingAccounts / BillingProfiles / patchOperations | No |
-> | billingAccounts / billingProfiles / paymentMethods | No |
-> | billingAccounts/billingProfiles/házirendek | No |
-> | billingAccounts/billingProfiles/árlista | No |
-> | billingAccounts / billingProfiles / pricesheetDownloadOperations | No |
-> | billingAccounts/billingProfiles/termékek | No |
-> | billingAccounts/billingProfiles/foglalások | No |
-> | billingAccounts/billingProfiles/tranzakciók | No |
-> | billingAccounts / billingProfiles / validateDetachPaymentMethodEligibility | No |
-> | billingAccounts / billingRoleAssignments | No |
-> | billingAccounts / billingRoleDefinitions | No |
-> | billingAccounts / billingSubscriptions | No |
-> | billingAccounts/billingSubscriptions/számlák | No |
-> | billingAccounts / createBillingRoleAssignment | No |
-> | billingAccounts / createInvoiceSectionOperations | No |
-> | billingAccounts/ügyfelek | No |
-> | billingAccounts/ügyfelek/billingPermissions | No |
-> | billingAccounts/ügyfelek/billingSubscriptions | No |
-> | billingAccounts/ügyfelek/initiateTransfer | No |
-> | billingAccounts/ügyfelek/szabályzatok | No |
-> | billingAccounts/ügyfelek/termékek | No |
-> | billingAccounts/ügyfelek/tranzakciók | No |
-> | billingAccounts/ügyfelek/átvitelek | No |
-> | billingAccounts/részlegek | No |
-> | billingAccounts/részlegek/billingPermissions | No |
-> | billingAccounts/részlegek/billingRoleAssignments | No |
-> | billingAccounts/részlegek/billingRoleDefinitions | No |
-> | billingAccounts / enrollmentAccounts | No |
-> | billingAccounts / enrollmentAccounts / billingPermissions | No |
-> | billingAccounts / enrollmentAccounts / billingRoleAssignments | No |
-> | billingAccounts / enrollmentAccounts / billingRoleDefinitions | No |
-> | billingAccounts/számlák | No |
-> | billingAccounts/számlák/tranzakciók | No |
-> | billingAccounts / invoiceSections | No |
-> | billingAccounts / invoiceSections / billingSubscriptionMoveOperations | No |
-> | billingAccounts / invoiceSections / billingSubscriptions | No |
-> | billingAccounts/invoiceSections/billingSubscriptions/átvitel | No |
-> | billingAccounts/invoiceSections/Jogosultságszint-emelés | No |
-> | billingAccounts / invoiceSections / initiateTransfer | No |
-> | billingAccounts / invoiceSections / patchOperations | No |
-> | billingAccounts / invoiceSections / productMoveOperations | No |
-> | billingAccounts/invoiceSections/termékek | No |
-> | billingAccounts/invoiceSections/termékek/átvitel | No |
-> | billingAccounts/invoiceSections/termékek/updateAutoRenew | No |
-> | billingAccounts/invoiceSections/tranzakciók | No |
-> | billingAccounts/invoiceSections/átvitel | No |
-> | billingAccounts / lineOfCredit | No |
-> | billingAccounts / patchOperations | No |
-> | billingAccounts / paymentMethods | No |
-> | billingAccounts/termékek | No |
-> | billingAccounts/foglalások | No |
-> | billingAccounts/tranzakciók | No |
-> | billingPeriods | No |
-> | billingPermissions | No |
-> | billingProperty | No |
-> | billingRoleAssignments | No |
-> | billingRoleDefinitions | No |
-> | createBillingRoleAssignment | No |
-> | részlegek | No |
-> | enrollmentAccounts | No |
-> | számlák | No |
-> | transzferek | No |
-> | átvitelek/acceptTransfer | No |
-> | átvitelek/declineTransfer | No |
-> | átvitelek/operationStatus | No |
-> | átvitelek/validateTransfer | No |
-> | validateAddress | No |
+> | billingAccounts | Nem |
+> | billingAccounts/szerződések | Nem |
+> | billingAccounts / billingPermissions | Nem |
+> | billingAccounts / billingProfiles | Nem |
+> | billingAccounts / billingProfiles / billingPermissions | Nem |
+> | billingAccounts / billingProfiles / billingRoleAssignments | Nem |
+> | billingAccounts / billingProfiles / billingRoleDefinitions | Nem |
+> | billingAccounts / billingProfiles / billingSubscriptions | Nem |
+> | billingAccounts / billingProfiles / createBillingRoleAssignment | Nem |
+> | billingAccounts/billingProfiles/ügyfelek | Nem |
+> | billingAccounts/billingProfiles/utasítások | Nem |
+> | billingAccounts/billingProfiles/számlák | Nem |
+> | billingAccounts/billingProfiles/számlák/árlista | Nem |
+> | billingAccounts/billingProfiles/számlák/tranzakciók | Nem |
+> | billingAccounts / billingProfiles / invoiceSections | Nem |
+> | billingAccounts / billingProfiles / invoiceSections / billingPermissions | Nem |
+> | billingAccounts / billingProfiles / invoiceSections / billingRoleAssignments | Nem |
+> | billingAccounts / billingProfiles / invoiceSections / billingRoleDefinitions | Nem |
+> | billingAccounts / billingProfiles / invoiceSections / billingSubscriptions | Nem |
+> | billingAccounts / billingProfiles / invoiceSections / createBillingRoleAssignment | Nem |
+> | billingAccounts / billingProfiles / invoiceSections / initiateTransfer | Nem |
+> | billingAccounts/billingProfiles/invoiceSections/termékek | Nem |
+> | billingAccounts/billingProfiles/invoiceSections/termékek/átvitel | Nem |
+> | billingAccounts/billingProfiles/invoiceSections/termékek/updateAutoRenew | Nem |
+> | billingAccounts/billingProfiles/invoiceSections/tranzakciók | Nem |
+> | billingAccounts/billingProfiles/invoiceSections/Transfers | Nem |
+> | billingAccounts / BillingProfiles / patchOperations | Nem |
+> | billingAccounts / billingProfiles / paymentMethods | Nem |
+> | billingAccounts/billingProfiles/házirendek | Nem |
+> | billingAccounts/billingProfiles/árlista | Nem |
+> | billingAccounts / billingProfiles / pricesheetDownloadOperations | Nem |
+> | billingAccounts/billingProfiles/termékek | Nem |
+> | billingAccounts/billingProfiles/foglalások | Nem |
+> | billingAccounts/billingProfiles/tranzakciók | Nem |
+> | billingAccounts / billingProfiles / validateDetachPaymentMethodEligibility | Nem |
+> | billingAccounts / billingRoleAssignments | Nem |
+> | billingAccounts / billingRoleDefinitions | Nem |
+> | billingAccounts / billingSubscriptions | Nem |
+> | billingAccounts/billingSubscriptions/számlák | Nem |
+> | billingAccounts / createBillingRoleAssignment | Nem |
+> | billingAccounts / createInvoiceSectionOperations | Nem |
+> | billingAccounts/ügyfelek | Nem |
+> | billingAccounts/ügyfelek/billingPermissions | Nem |
+> | billingAccounts/ügyfelek/billingSubscriptions | Nem |
+> | billingAccounts/ügyfelek/initiateTransfer | Nem |
+> | billingAccounts/ügyfelek/szabályzatok | Nem |
+> | billingAccounts/ügyfelek/termékek | Nem |
+> | billingAccounts/ügyfelek/tranzakciók | Nem |
+> | billingAccounts/ügyfelek/átvitelek | Nem |
+> | billingAccounts/részlegek | Nem |
+> | billingAccounts/részlegek/billingPermissions | Nem |
+> | billingAccounts/részlegek/billingRoleAssignments | Nem |
+> | billingAccounts/részlegek/billingRoleDefinitions | Nem |
+> | billingAccounts / enrollmentAccounts | Nem |
+> | billingAccounts / enrollmentAccounts / billingPermissions | Nem |
+> | billingAccounts / enrollmentAccounts / billingRoleAssignments | Nem |
+> | billingAccounts / enrollmentAccounts / billingRoleDefinitions | Nem |
+> | billingAccounts/számlák | Nem |
+> | billingAccounts/számlák/tranzakciók | Nem |
+> | billingAccounts / invoiceSections | Nem |
+> | billingAccounts / invoiceSections / billingSubscriptionMoveOperations | Nem |
+> | billingAccounts / invoiceSections / billingSubscriptions | Nem |
+> | billingAccounts/invoiceSections/billingSubscriptions/átvitel | Nem |
+> | billingAccounts/invoiceSections/Jogosultságszint-emelés | Nem |
+> | billingAccounts / invoiceSections / initiateTransfer | Nem |
+> | billingAccounts / invoiceSections / patchOperations | Nem |
+> | billingAccounts / invoiceSections / productMoveOperations | Nem |
+> | billingAccounts/invoiceSections/termékek | Nem |
+> | billingAccounts/invoiceSections/termékek/átvitel | Nem |
+> | billingAccounts/invoiceSections/termékek/updateAutoRenew | Nem |
+> | billingAccounts/invoiceSections/tranzakciók | Nem |
+> | billingAccounts/invoiceSections/átvitel | Nem |
+> | billingAccounts / lineOfCredit | Nem |
+> | billingAccounts / patchOperations | Nem |
+> | billingAccounts / paymentMethods | Nem |
+> | billingAccounts/termékek | Nem |
+> | billingAccounts/foglalások | Nem |
+> | billingAccounts/tranzakciók | Nem |
+> | billingPeriods | Nem |
+> | billingPermissions | Nem |
+> | billingProperty | Nem |
+> | billingRoleAssignments | Nem |
+> | billingRoleDefinitions | Nem |
+> | createBillingRoleAssignment | Nem |
+> | részlegek | Nem |
+> | enrollmentAccounts | Nem |
+> | számlák | Nem |
+> | transzferek | Nem |
+> | átvitelek/acceptTransfer | Nem |
+> | átvitelek/declineTransfer | Nem |
+> | átvitelek/operationStatus | Nem |
+> | átvitelek/validateTransfer | Nem |
+> | validateAddress | Nem |
 
 ## <a name="microsoftbingmaps"></a>Microsoft. BingMaps
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | mapApis | Yes |
-> | updateCommunicationPreference | No |
+> | mapApis | Igen |
+> | updateCommunicationPreference | Nem |
 
 ## <a name="microsoftblockchain"></a>Microsoft. Blockchain
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | blockchainMembers | Yes |
-> | cordaMembers | Yes |
-> | Watchers | Yes |
+> | blockchainMembers | Igen |
+> | cordaMembers | Igen |
+> | Watchers | Igen |
 
 ## <a name="microsoftblockchaintokens"></a>Microsoft. BlockchainTokens
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | TokenServices | Yes |
-> | TokenServices / BlockchainNetworks | No |
-> | TokenServices/csoportok | No |
-> | TokenServices/csoportok/fiókok | No |
-> | TokenServices / TokenTemplates | No |
+> | TokenServices | Igen |
+> | TokenServices / BlockchainNetworks | Nem |
+> | TokenServices/csoportok | Nem |
+> | TokenServices/csoportok/fiókok | Nem |
+> | TokenServices / TokenTemplates | Nem |
 
 ## <a name="microsoftblueprint"></a>Microsoft. Blueprint
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | blueprintAssignments | No |
-> | blueprintAssignments / assignmentOperations | No |
-> | blueprintAssignments/műveletek | No |
-> | tervrajzok | No |
-> | tervrajzok/összetevők | No |
-> | tervezetek/verziók | No |
-> | tervrajzok/verziók/összetevők | No |
+> | blueprintAssignments | Nem |
+> | blueprintAssignments / assignmentOperations | Nem |
+> | blueprintAssignments/műveletek | Nem |
+> | tervrajzok | Nem |
+> | tervrajzok/összetevők | Nem |
+> | tervezetek/verziók | Nem |
+> | tervrajzok/verziók/összetevők | Nem |
 
 ## <a name="microsoftbotservice"></a>Microsoft. BotService
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | botServices | Yes |
-> | botServices/csatornák | No |
-> | botServices/kapcsolatok | No |
-> | nyelv | No |
-> | sablonok | No |
+> | botServices | Igen |
+> | botServices/csatornák | Nem |
+> | botServices/kapcsolatok | Nem |
+> | nyelv | Nem |
+> | sablonok | Nem |
 
 ## <a name="microsoftcache"></a>Microsoft. cache
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | Redis | Yes |
-> | Redis/EventGridFilters | No |
-> | Redis/privateEndpointConnectionProxies | No |
-> | Redis/privateEndpointConnectionProxies/érvényesítés | No |
-> | Redis/privateEndpointConnections | No |
-> | Redis/privateLinkResources | No |
-> | redisEnterprise | Yes |
-> | RedisEnterprise / privateEndpointConnectionProxies | No |
-> | RedisEnterprise/privateEndpointConnectionProxies/érvényesítés | No |
-> | RedisEnterprise / privateEndpointConnections | No |
-> | RedisEnterprise / privateLinkResources | No |
+> | Redis | Igen |
+> | Redis/EventGridFilters | Nem |
+> | Redis/privateEndpointConnectionProxies | Nem |
+> | Redis/privateEndpointConnectionProxies/érvényesítés | Nem |
+> | Redis/privateEndpointConnections | Nem |
+> | Redis/privateLinkResources | Nem |
+> | redisEnterprise | Igen |
+> | RedisEnterprise / privateEndpointConnectionProxies | Nem |
+> | RedisEnterprise/privateEndpointConnectionProxies/érvényesítés | Nem |
+> | RedisEnterprise / privateEndpointConnections | Nem |
+> | RedisEnterprise / privateLinkResources | Nem |
 
 ## <a name="microsoftcapacity"></a>Microsoft. Capacity
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | appliedReservations | No |
-> | autoQuotaIncrease | No |
-> | calculateExchange | No |
-> | calculatePrice | No |
-> | calculatePurchasePrice | No |
-> | katalógusok | No |
-> | commercialReservationOrders | No |
-> | Exchange | No |
-> | ownReservations | No |
-> | placePurchaseOrder | No |
-> | reservationOrders | No |
-> | reservationOrders / calculateRefund | No |
-> | reservationOrders/egyesítés | No |
-> | reservationOrders/foglalások | No |
-> | reservationOrders/foglalások/változatok | No |
-> | reservationOrders/Return | No |
-> | reservationOrders/felosztás | No |
-> | reservationOrders/swap | No |
-> | foglalások | No |
-> | resourceProviders | No |
-> | resources | No |
-> | validateReservationOrder | No |
+> | appliedReservations | Nem |
+> | autoQuotaIncrease | Nem |
+> | calculateExchange | Nem |
+> | calculatePrice | Nem |
+> | calculatePurchasePrice | Nem |
+> | katalógusok | Nem |
+> | commercialReservationOrders | Nem |
+> | Exchange | Nem |
+> | ownReservations | Nem |
+> | placePurchaseOrder | Nem |
+> | reservationOrders | Nem |
+> | reservationOrders / calculateRefund | Nem |
+> | reservationOrders/egyesítés | Nem |
+> | reservationOrders/foglalások | Nem |
+> | reservationOrders/foglalások/változatok | Nem |
+> | reservationOrders/Return | Nem |
+> | reservationOrders/felosztás | Nem |
+> | reservationOrders/swap | Nem |
+> | foglalások | Nem |
+> | resourceProviders | Nem |
+> | resources | Nem |
+> | validateReservationOrder | Nem |
 
 ## <a name="microsoftcdn"></a>Microsoft. CDN
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | CdnWebApplicationFirewallManagedRuleSets | No |
-> | CdnWebApplicationFirewallPolicies | Yes |
-> | edgenodes | No |
-> | profilok | Yes |
-> | profilok/végpontok | Yes |
-> | profilok/végpontok/customdomains | No |
-> | profilok/végpontok/origingroups | No |
-> | profilok/végpontok/eredetek | No |
-> | validateProbe | No |
+> | CdnWebApplicationFirewallManagedRuleSets | Nem |
+> | CdnWebApplicationFirewallPolicies | Igen |
+> | edgenodes | Nem |
+> | profilok | Igen |
+> | profilok/végpontok | Igen |
+> | profilok/végpontok/customdomains | Nem |
+> | profilok/végpontok/origingroups | Nem |
+> | profilok/végpontok/eredetek | Nem |
+> | validateProbe | Nem |
 
 ## <a name="microsoftcertificateregistration"></a>Microsoft. CertificateRegistration
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | Tanúsítványrendelések | Yes |
-> | Tanúsítványrendelések/tanúsítványok | No |
-> | validateCertificateRegistrationInformation | No |
+> | Tanúsítványrendelések | Igen |
+> | Tanúsítványrendelések/tanúsítványok | Nem |
+> | validateCertificateRegistrationInformation | Nem |
 
 ## <a name="microsoftchangeanalysis"></a>Microsoft. ChangeAnalysis
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | profil | No |
-> | resourceChanges | No |
+> | profil | Nem |
+> | resourceChanges | Nem |
 
 ## <a name="microsoftclassiccompute"></a>Microsoft.ClassicCompute
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | képességek | No |
-> | Tartománynevek | Yes |
-> | Tartománynevek/képességek | No |
-> | Tartománynevek/internalLoadBalancers | No |
-> | Tartománynevek/serviceCertificates | No |
-> | Tartománynevek/tárolóhelyek | No |
-> | Tartománynevek/bővítőhelyek/szerepkörök | No |
-> | Tartománynevek/bővítőhelyek/szerepkörök/metricDefinitions | No |
-> | Tartománynevek/bővítőhelyek/szerepkörök/mérőszámok | No |
-> | moveSubscriptionResources | No |
-> | operatingSystemFamilies | No |
-> | operatingSystems | No |
-> | kvóták | No |
-> | resourceTypes | No |
-> | validateSubscriptionMoveAvailability | No |
-> | virtualMachines | Yes |
-> | virtualMachines / diagnosticSettings | No |
-> | virtualMachines / metricDefinitions | No |
-> | virtualMachines/mérőszámok | No |
+> | képességek | Nem |
+> | Tartománynevek | Igen |
+> | Tartománynevek/képességek | Nem |
+> | Tartománynevek/internalLoadBalancers | Nem |
+> | Tartománynevek/serviceCertificates | Nem |
+> | Tartománynevek/tárolóhelyek | Nem |
+> | Tartománynevek/bővítőhelyek/szerepkörök | Nem |
+> | Tartománynevek/bővítőhelyek/szerepkörök/metricDefinitions | Nem |
+> | Tartománynevek/bővítőhelyek/szerepkörök/mérőszámok | Nem |
+> | moveSubscriptionResources | Nem |
+> | operatingSystemFamilies | Nem |
+> | operatingSystems | Nem |
+> | kvóták | Nem |
+> | resourceTypes | Nem |
+> | validateSubscriptionMoveAvailability | Nem |
+> | virtualMachines | Igen |
+> | virtualMachines / diagnosticSettings | Nem |
+> | virtualMachines / metricDefinitions | Nem |
+> | virtualMachines/mérőszámok | Nem |
 
 ## <a name="microsoftclassicinfrastructuremigrate"></a>Microsoft. ClassicInfrastructureMigrate
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | classicInfrastructureResources | No |
+> | classicInfrastructureResources | Nem |
 
 ## <a name="microsoftclassicnetwork"></a>Microsoft. ClassicNetwork
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | képességek | No |
-> | expressRouteCrossConnections | No |
-> | expressRouteCrossConnections/társak | No |
-> | gatewaySupportedDevices | No |
-> | networkSecurityGroups | Yes |
-> | kvóták | No |
-> | reservedIps | Yes |
-> | virtualNetworks | Yes |
-> | virtualNetworks/remoteVirtualNetworkPeeringProxies | No |
-> | virtualNetworks/virtualNetworkPeerings | No |
+> | képességek | Nem |
+> | expressRouteCrossConnections | Nem |
+> | expressRouteCrossConnections/társak | Nem |
+> | gatewaySupportedDevices | Nem |
+> | networkSecurityGroups | Igen |
+> | kvóták | Nem |
+> | reservedIps | Igen |
+> | virtualNetworks | Igen |
+> | virtualNetworks/remoteVirtualNetworkPeeringProxies | Nem |
+> | virtualNetworks/virtualNetworkPeerings | Nem |
 
 ## <a name="microsoftclassicstorage"></a>Microsoft. ClassicStorage
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | képességek | No |
-> | lemezek | No |
-> | images | No |
-> | osImages | No |
-> | osPlatformImages | No |
-> | publicImages | No |
-> | kvóták | No |
-> | storageAccounts | Yes |
-> | storageAccounts/blobServices | No |
-> | storageAccounts/fileServices | No |
-> | storageAccounts/metricDefinitions | No |
-> | storageAccounts/mérőszámok | No |
-> | storageAccounts/queueServices | No |
-> | storageAccounts/szolgáltatások | No |
-> | storageAccounts/szolgáltatások/diagnosticSettings | No |
-> | storageAccounts/szolgáltatások/metricDefinitions | No |
-> | storageAccounts/szolgáltatások/mérőszámok | No |
-> | storageAccounts/tableServices | No |
-> | storageAccounts/lemezképet | No |
-> | Lemezképet | No |
+> | képességek | Nem |
+> | lemezek | Nem |
+> | images | Nem |
+> | osImages | Nem |
+> | osPlatformImages | Nem |
+> | publicImages | Nem |
+> | kvóták | Nem |
+> | storageAccounts | Igen |
+> | storageAccounts/blobServices | Nem |
+> | storageAccounts/fileServices | Nem |
+> | storageAccounts/metricDefinitions | Nem |
+> | storageAccounts/mérőszámok | Nem |
+> | storageAccounts/queueServices | Nem |
+> | storageAccounts/szolgáltatások | Nem |
+> | storageAccounts/szolgáltatások/diagnosticSettings | Nem |
+> | storageAccounts/szolgáltatások/metricDefinitions | Nem |
+> | storageAccounts/szolgáltatások/mérőszámok | Nem |
+> | storageAccounts/tableServices | Nem |
+> | storageAccounts/lemezképet | Nem |
+> | Lemezképet | Nem |
 
 ## <a name="microsoftcodespaces"></a>Microsoft. Codespaces
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | tervek | Yes |
-> | registeredSubscriptions | No |
+> | tervek | Igen |
+> | registeredSubscriptions | Nem |
 
 ## <a name="microsoftcognitiveservices"></a>Microsoft. CognitiveServices
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | fiókok | Yes |
-> | fiókok/privateEndpointConnectionProxies | No |
-> | fiókok/privateEndpointConnections | No |
-> | fiókok/privateLinkResources | No |
+> | fiókok | Igen |
+> | fiókok/privateEndpointConnectionProxies | Nem |
+> | fiókok/privateEndpointConnections | Nem |
+> | fiókok/privateLinkResources | Nem |
 
 ## <a name="microsoftcommerce"></a>Microsoft. Commerce
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | RateCard | No |
-> | UsageAggregates | No |
+> | RateCard | Nem |
+> | UsageAggregates | Nem |
 
 ## <a name="microsoftcompute"></a>Microsoft.Compute
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | availabilitySets | Yes |
-> | cloudServices | Yes |
-> | cloudServices / networkInterfaces | No |
-> | cloudServices/nyilvános IP | No |
-> | cloudServices / roleInstances | No |
-> | cloudServices / roleInstances / networkInterfaces | No |
-> | cloudServices/szerepkörök | No |
-> | diskAccesses | Yes |
-> | diskEncryptionSets | Yes |
-> | lemezek | Yes |
-> | katalógusok | Yes |
-> | galériák/alkalmazások | No |
-> | galériák/alkalmazások/verziók | No |
-> | galériák/lemezképek | No |
-> | galériák/lemezképek/verziók | No |
-> | hostGroups | Yes |
-> | hostGroups/gazdagépek | Yes |
-> | images | Yes |
-> | proximityPlacementGroups | Yes |
-> | restorePointCollections | Yes |
-> | restorePointCollections / restorePoints | No |
-> | sharedVMExtensions | Yes |
-> | sharedVMExtensions/verziók | No |
-> | sharedVMImages | Yes |
-> | sharedVMImages/verziók | No |
-> | pillanatképek | Yes |
-> | sshPublicKeys | Yes |
-> | virtualMachines | Yes |
-> | virtualMachines/bővítmények | Yes |
-> | virtualMachines / metricDefinitions | No |
-> | virtualMachines / runCommands | Yes |
-> | virtualMachineScaleSets | Yes |
-> | virtualMachineScaleSets/bővítmények | No |
-> | virtualMachineScaleSets/networkInterfaces | No |
-> | virtualMachineScaleSets/nyilvános IP | No |
-> | virtualMachineScaleSets/virtualMachines | No |
-> | virtualMachineScaleSets/virtualMachines/networkInterfaces | No |
+> | availabilitySets | Igen |
+> | cloudServices | Igen |
+> | cloudServices / networkInterfaces | Nem |
+> | cloudServices/nyilvános IP | Nem |
+> | cloudServices / roleInstances | Nem |
+> | cloudServices / roleInstances / networkInterfaces | Nem |
+> | cloudServices/szerepkörök | Nem |
+> | diskAccesses | Igen |
+> | diskEncryptionSets | Igen |
+> | lemezek | Igen |
+> | katalógusok | Igen |
+> | galériák/alkalmazások | Nem |
+> | galériák/alkalmazások/verziók | Nem |
+> | galériák/lemezképek | Nem |
+> | galériák/lemezképek/verziók | Nem |
+> | hostGroups | Igen |
+> | hostGroups/gazdagépek | Igen |
+> | images | Igen |
+> | proximityPlacementGroups | Igen |
+> | restorePointCollections | Igen |
+> | restorePointCollections / restorePoints | Nem |
+> | sharedVMExtensions | Igen |
+> | sharedVMExtensions/verziók | Nem |
+> | sharedVMImages | Igen |
+> | sharedVMImages/verziók | Nem |
+> | pillanatképek | Igen |
+> | sshPublicKeys | Igen |
+> | virtualMachines | Igen |
+> | virtualMachines/bővítmények | Igen |
+> | virtualMachines / metricDefinitions | Nem |
+> | virtualMachines / runCommands | Igen |
+> | virtualMachineScaleSets | Igen |
+> | virtualMachineScaleSets/bővítmények | Nem |
+> | virtualMachineScaleSets/networkInterfaces | Nem |
+> | virtualMachineScaleSets/nyilvános IP | Nem |
+> | virtualMachineScaleSets/virtualMachines | Nem |
+> | virtualMachineScaleSets/virtualMachines/networkInterfaces | Nem |
 
 ## <a name="microsoftconnectedcache"></a>Microsoft. ConnectedCache
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | CacheNodes | Yes |
+> | CacheNodes | Igen |
 
 ## <a name="microsoftconsumption"></a>Microsoft. felhasználás
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | AggregatedCost | No |
-> | Egyenlegek | No |
-> | Költségvetések | No |
-> | Díjak | No |
-> | CostTags | No |
-> | hitelek | No |
-> | események | No |
-> | Előrejelzések | No |
-> | számos | No |
-> | Piacterek | No |
-> | Árlisták | No |
-> | termékek | No |
-> | ReservationDetails | No |
-> | ReservationRecommendationDetails | No |
-> | ReservationRecommendations | No |
-> | ReservationSummaries | No |
+> | AggregatedCost | Nem |
+> | Egyenlegek | Nem |
+> | Költségvetések | Nem |
+> | Díjak | Nem |
+> | CostTags | Nem |
+> | hitelek | Nem |
+> | események | Nem |
+> | Előrejelzések | Nem |
+> | számos | Nem |
+> | Piacterek | Nem |
+> | Árlisták | Nem |
+> | termékek | Nem |
+> | ReservationDetails | Nem |
+> | ReservationRecommendationDetails | Nem |
+> | ReservationRecommendations | Nem |
+> | ReservationSummaries | Nem |
 > | ReservationTransactions | Nem |
 > | Címkék | Nem |
-> | bérlők | No |
-> | Kifejezések | No |
-> | UsageDetails | No |
+> | bérlők | Nem |
+> | Kifejezések | Nem |
+> | UsageDetails | Nem |
 
 ## <a name="microsoftcontainerinstance"></a>Microsoft. ContainerInstance
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | containerGroups | Yes |
-> | serviceAssociationLinks | No |
+> | containerGroups | Igen |
+> | serviceAssociationLinks | Nem |
 
 ## <a name="microsoftcontainerregistry"></a>Microsoft. ContainerRegistry
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | kibocsátásiegység | Yes |
-> | kibocsátásiegység-forgalmi jegyzékek/agentPools | Yes |
-> | kibocsátásiegység-forgalmi jegyzékek/buildek | No |
-> | kibocsátásiegység-forgalmi jegyzékek/buildek/Mégse | No |
-> | kibocsátásiegység-forgalmi jegyzékek/buildek/getLogLink | No |
-> | kibocsátásiegység-forgalmi jegyzékek/buildTasks | Yes |
-> | kibocsátásiegység-forgalmi jegyzékek/buildTasks/lépések | No |
-> | kibocsátásiegység-forgalmi jegyzékek/eventGridFilters | No |
-> | kibocsátásiegység-forgalmi jegyzékek/exportPipelines | No |
-> | kibocsátásiegység-forgalmi jegyzékek/generateCredentials | No |
-> | kibocsátásiegység-forgalmi jegyzékek/getBuildSourceUploadUrl | No |
-> | kibocsátásiegység-forgalmi jegyzékek/GetCredentials | No |
-> | kibocsátásiegység-forgalmi jegyzékek/importImage | No |
-> | kibocsátásiegység-forgalmi jegyzékek/importPipelines | No |
-> | kibocsátásiegység-forgalmi jegyzékek/pipelineRuns | No |
-> | kibocsátásiegység-forgalmi jegyzékek/privateEndpointConnectionProxies | No |
-> | nyilvántartások/privateEndpointConnectionProxies/érvényesítés | No |
-> | kibocsátásiegység-forgalmi jegyzékek/privateEndpointConnections | No |
-> | kibocsátásiegység-forgalmi jegyzékek/privateLinkResources | No |
-> | kibocsátásiegység-forgalmi jegyzékek/queueBuild | No |
-> | kibocsátásiegység-forgalmi jegyzékek/regenerateCredential | No |
-> | kibocsátásiegység-forgalmi jegyzékek/regenerateCredentials | No |
-> | kibocsátásiegység-forgalmi jegyzékek/replikálások | Yes |
-> | kibocsátásiegység-forgalmi jegyzékek/futtatások | No |
-> | nyilvántartások/futtatások/megszakítás | No |
-> | kibocsátásiegység-forgalmi jegyzékek/scheduleRun | No |
-> | kibocsátásiegység-forgalmi jegyzékek/scopeMaps | No |
-> | kibocsátásiegység-forgalmi jegyzékek/taskRuns | No |
-> | kibocsátásiegység-forgalmi jegyzékek/feladatok | Yes |
-> | kibocsátásiegység-forgalmi jegyzékek/jogkivonatok | No |
-> | kibocsátásiegység-forgalmi jegyzékek/updatePolicies | No |
-> | kibocsátásiegység-forgalmi jegyzékek/webhookok | Yes |
-> | kibocsátásiegység-forgalmi jegyzékek/webhookok/getCallbackConfig | No |
-> | kibocsátásiegység-forgalmi jegyzékek/webhookok/ping | No |
+> | kibocsátásiegység | Igen |
+> | kibocsátásiegység-forgalmi jegyzékek/agentPools | Igen |
+> | kibocsátásiegység-forgalmi jegyzékek/buildek | Nem |
+> | kibocsátásiegység-forgalmi jegyzékek/buildek/Mégse | Nem |
+> | kibocsátásiegység-forgalmi jegyzékek/buildek/getLogLink | Nem |
+> | kibocsátásiegység-forgalmi jegyzékek/buildTasks | Igen |
+> | kibocsátásiegység-forgalmi jegyzékek/buildTasks/lépések | Nem |
+> | kibocsátásiegység-forgalmi jegyzékek/eventGridFilters | Nem |
+> | kibocsátásiegység-forgalmi jegyzékek/exportPipelines | Nem |
+> | kibocsátásiegység-forgalmi jegyzékek/generateCredentials | Nem |
+> | kibocsátásiegység-forgalmi jegyzékek/getBuildSourceUploadUrl | Nem |
+> | kibocsátásiegység-forgalmi jegyzékek/GetCredentials | Nem |
+> | kibocsátásiegység-forgalmi jegyzékek/importImage | Nem |
+> | kibocsátásiegység-forgalmi jegyzékek/importPipelines | Nem |
+> | kibocsátásiegység-forgalmi jegyzékek/pipelineRuns | Nem |
+> | kibocsátásiegység-forgalmi jegyzékek/privateEndpointConnectionProxies | Nem |
+> | nyilvántartások/privateEndpointConnectionProxies/érvényesítés | Nem |
+> | kibocsátásiegység-forgalmi jegyzékek/privateEndpointConnections | Nem |
+> | kibocsátásiegység-forgalmi jegyzékek/privateLinkResources | Nem |
+> | kibocsátásiegység-forgalmi jegyzékek/queueBuild | Nem |
+> | kibocsátásiegység-forgalmi jegyzékek/regenerateCredential | Nem |
+> | kibocsátásiegység-forgalmi jegyzékek/regenerateCredentials | Nem |
+> | kibocsátásiegység-forgalmi jegyzékek/replikálások | Igen |
+> | kibocsátásiegység-forgalmi jegyzékek/futtatások | Nem |
+> | nyilvántartások/futtatások/megszakítás | Nem |
+> | kibocsátásiegység-forgalmi jegyzékek/scheduleRun | Nem |
+> | kibocsátásiegység-forgalmi jegyzékek/scopeMaps | Nem |
+> | kibocsátásiegység-forgalmi jegyzékek/taskRuns | Nem |
+> | kibocsátásiegység-forgalmi jegyzékek/feladatok | Igen |
+> | kibocsátásiegység-forgalmi jegyzékek/jogkivonatok | Nem |
+> | kibocsátásiegység-forgalmi jegyzékek/updatePolicies | Nem |
+> | kibocsátásiegység-forgalmi jegyzékek/webhookok | Igen |
+> | kibocsátásiegység-forgalmi jegyzékek/webhookok/getCallbackConfig | Nem |
+> | kibocsátásiegység-forgalmi jegyzékek/webhookok/ping | Nem |
 
 ## <a name="microsoftcontainerservice"></a>Microsoft. Tárolószolgáltatás
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | containerServices | Yes |
-> | managedClusters | Yes |
-> | openShiftManagedClusters | Yes |
+> | containerServices | Igen |
+> | managedClusters | Igen |
+> | openShiftManagedClusters | Igen |
 
 ## <a name="microsoftcostmanagement"></a>Microsoft. CostManagement
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | Riasztások | No |
-> | BillingAccounts | No |
-> | Költségvetések | No |
-> | CloudConnectors | No |
-> | Összekötők | Yes |
-> | costAllocationRules | No |
-> | Részlegek | No |
-> | Dimenziók | No |
-> | EnrollmentAccounts | No |
-> | Export | No |
-> | ExternalBillingAccounts | No |
-> | ExternalBillingAccounts/riasztások | No |
-> | ExternalBillingAccounts/méretek | No |
-> | ExternalBillingAccounts/előrejelzés | No |
-> | ExternalBillingAccounts/lekérdezés | No |
-> | ExternalSubscriptions | No |
-> | ExternalSubscriptions/riasztások | No |
-> | ExternalSubscriptions/méretek | No |
-> | ExternalSubscriptions/előrejelzés | No |
-> | ExternalSubscriptions/lekérdezés | No |
-> | Előrejelzés | No |
-> | Insights | No |
-> | Lekérdezés | No |
-> | Regisztráció | No |
-> | Reportconfigs | No |
-> | Jelentések | No |
-> | Beállítások | No |
-> | showbackRules | No |
-> | Nézetek | No |
+> | Riasztások | Nem |
+> | BillingAccounts | Nem |
+> | Költségvetések | Nem |
+> | CloudConnectors | Nem |
+> | Összekötők | Igen |
+> | costAllocationRules | Nem |
+> | Részlegek | Nem |
+> | Dimenziók | Nem |
+> | EnrollmentAccounts | Nem |
+> | Export | Nem |
+> | ExternalBillingAccounts | Nem |
+> | ExternalBillingAccounts/riasztások | Nem |
+> | ExternalBillingAccounts/méretek | Nem |
+> | ExternalBillingAccounts/előrejelzés | Nem |
+> | ExternalBillingAccounts/lekérdezés | Nem |
+> | ExternalSubscriptions | Nem |
+> | ExternalSubscriptions/riasztások | Nem |
+> | ExternalSubscriptions/méretek | Nem |
+> | ExternalSubscriptions/előrejelzés | Nem |
+> | ExternalSubscriptions/lekérdezés | Nem |
+> | Előrejelzés | Nem |
+> | Insights | Nem |
+> | Lekérdezés | Nem |
+> | Regisztráció | Nem |
+> | Reportconfigs | Nem |
+> | Jelentések | Nem |
+> | Beállítások | Nem |
+> | showbackRules | Nem |
+> | Nézetek | Nem |
 
 ## <a name="microsoftcustomerlockbox"></a>Microsoft. CustomerLockbox
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | kérelmek | No |
+> | kérelmek | Nem |
 
 ## <a name="microsoftcustomproviders"></a>Microsoft. CustomProviders
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | szövetségek | No |
-> | resourceProviders | Yes |
+> | szövetségek | Nem |
+> | resourceProviders | Igen |
 
 ## <a name="microsoftd365customerinsights"></a>Microsoft. D365CustomerInsights
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | esetben | Yes |
+> | esetben | Igen |
 
 ## <a name="microsoftdatabox"></a>Microsoft. DataBox
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | feladatok | Yes |
+> | feladatok | Igen |
 
 ## <a name="microsoftdataboxedge"></a>Microsoft. DataBoxEdge
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | DataBoxEdgeDevices | Yes |
+> | DataBoxEdgeDevices | Igen |
 
 ## <a name="microsoftdatabricks"></a>Microsoft. Databricks
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | munkaterületek | Yes |
-> | munkaterületek/dbWorkspaces | No |
-> | munkaterületek/storageEncryption | No |
-> | munkaterületek/virtualNetworkPeerings | No |
+> | munkaterületek | Igen |
+> | munkaterületek/dbWorkspaces | Nem |
+> | munkaterületek/storageEncryption | Nem |
+> | munkaterületek/virtualNetworkPeerings | Nem |
 
 ## <a name="microsoftdatacatalog"></a>Microsoft. DataCatalog
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | katalógusok | Yes |
+> | katalógusok | Igen |
 
 ## <a name="microsoftdatafactory"></a>Microsoft. DataFactory
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | dataFactories | Yes |
-> | dataFactories / diagnosticSettings | No |
-> | dataFactories / metricDefinitions | No |
-> | dataFactorySchema | No |
-> | előállítók | Yes |
-> | gyárak/integrationRuntimes | No |
+> | dataFactories | Igen |
+> | dataFactories / diagnosticSettings | Nem |
+> | dataFactories / metricDefinitions | Nem |
+> | dataFactorySchema | Nem |
+> | előállítók | Igen |
+> | gyárak/integrationRuntimes | Nem |
 
 ## <a name="microsoftdatalakeanalytics"></a>Microsoft. DataLakeAnalytics
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | fiókok | Yes |
-> | fiókok/dataLakeStoreAccounts | No |
-> | fiókok/storageAccounts | No |
-> | fiókok/storageAccounts/tárolók | No |
-> | fiókok/transferAnalyticsUnits | No |
+> | fiókok | Igen |
+> | fiókok/dataLakeStoreAccounts | Nem |
+> | fiókok/storageAccounts | Nem |
+> | fiókok/storageAccounts/tárolók | Nem |
+> | fiókok/transferAnalyticsUnits | Nem |
 
 ## <a name="microsoftdatalakestore"></a>Microsoft. Data Lake Store
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | fiókok | Yes |
-> | fiókok/eventGridFilters | No |
-> | fiókok/firewallRules | No |
+> | fiókok | Igen |
+> | fiókok/eventGridFilters | Nem |
+> | fiókok/firewallRules | Nem |
 
 ## <a name="microsoftdatamigration"></a>Microsoft. DataMigration
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | services | Yes |
-> | szolgáltatások/projektek | Yes |
+> | services | Igen |
+> | szolgáltatások/projektek | Igen |
 
 ## <a name="microsoftdataprotection"></a>Microsoft. DataProtection
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | BackupVaults | Yes |
-> | ResourceOperationGateKeepers | Yes |
+> | BackupVaults | Igen |
+> | ResourceOperationGateKeepers | Igen |
 
 ## <a name="microsoftdatashare"></a>Microsoft. DataShare
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | fiókok | Yes |
-> | fiókok/megosztások | No |
-> | fiókok/megosztások/adatkészletek | No |
-> | fiókok/megosztások/meghívók | No |
-> | fiókok/megosztások/providersharesubscriptions | No |
-> | fiókok/megosztások/synchronizationSettings | No |
-> | fiókok/sharesubscriptions | No |
-> | fiókok/sharesubscriptions/consumerSourceDataSets | No |
-> | fiókok/sharesubscriptions/datasetmappings | No |
-> | fiókok/sharesubscriptions/eseményindítók | No |
+> | fiókok | Igen |
+> | fiókok/megosztások | Nem |
+> | fiókok/megosztások/adatkészletek | Nem |
+> | fiókok/megosztások/meghívók | Nem |
+> | fiókok/megosztások/providersharesubscriptions | Nem |
+> | fiókok/megosztások/synchronizationSettings | Nem |
+> | fiókok/sharesubscriptions | Nem |
+> | fiókok/sharesubscriptions/consumerSourceDataSets | Nem |
+> | fiókok/sharesubscriptions/datasetmappings | Nem |
+> | fiókok/sharesubscriptions/eseményindítók | Nem |
 
 ## <a name="microsoftdbformariadb"></a>Microsoft. DBforMariaDB
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | kiszolgálók | Yes |
-> | kiszolgálók/tanácsadók | No |
-> | kiszolgálók/kulcsok | No |
-> | kiszolgálók/privateEndpointConnectionProxies | No |
-> | kiszolgálók/privateEndpointConnections | No |
-> | kiszolgálók/privateLinkResources | No |
-> | kiszolgálók/queryTexts | No |
-> | kiszolgálók/recoverableServers | No |
-> | kiszolgálók/indítás | No |
-> | kiszolgálók/leállítás | No |
-> | kiszolgálók/topQueryStatistics | No |
-> | kiszolgálók/virtualNetworkRules | No |
-> | kiszolgálók/waitStatistics | No |
+> | kiszolgálók | Igen |
+> | kiszolgálók/tanácsadók | Nem |
+> | kiszolgálók/kulcsok | Nem |
+> | kiszolgálók/privateEndpointConnectionProxies | Nem |
+> | kiszolgálók/privateEndpointConnections | Nem |
+> | kiszolgálók/privateLinkResources | Nem |
+> | kiszolgálók/queryTexts | Nem |
+> | kiszolgálók/recoverableServers | Nem |
+> | kiszolgálók/indítás | Nem |
+> | kiszolgálók/leállítás | Nem |
+> | kiszolgálók/topQueryStatistics | Nem |
+> | kiszolgálók/virtualNetworkRules | Nem |
+> | kiszolgálók/waitStatistics | Nem |
 
 ## <a name="microsoftdbformysql"></a>Microsoft. DBforMySQL
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | flexibleServers | Yes |
-> | kiszolgálók | Yes |
-> | kiszolgálók/tanácsadók | No |
-> | kiszolgálók/kulcsok | No |
-> | kiszolgálók/privateEndpointConnectionProxies | No |
-> | kiszolgálók/privateEndpointConnections | No |
-> | kiszolgálók/privateLinkResources | No |
-> | kiszolgálók/queryTexts | No |
-> | kiszolgálók/recoverableServers | No |
-> | kiszolgálók/indítás | No |
-> | kiszolgálók/leállítás | No |
-> | kiszolgálók/topQueryStatistics | No |
-> | kiszolgálók/verziófrissítés | No |
-> | kiszolgálók/virtualNetworkRules | No |
-> | kiszolgálók/waitStatistics | No |
+> | flexibleServers | Igen |
+> | kiszolgálók | Igen |
+> | kiszolgálók/tanácsadók | Nem |
+> | kiszolgálók/kulcsok | Nem |
+> | kiszolgálók/privateEndpointConnectionProxies | Nem |
+> | kiszolgálók/privateEndpointConnections | Nem |
+> | kiszolgálók/privateLinkResources | Nem |
+> | kiszolgálók/queryTexts | Nem |
+> | kiszolgálók/recoverableServers | Nem |
+> | kiszolgálók/indítás | Nem |
+> | kiszolgálók/leállítás | Nem |
+> | kiszolgálók/topQueryStatistics | Nem |
+> | kiszolgálók/verziófrissítés | Nem |
+> | kiszolgálók/virtualNetworkRules | Nem |
+> | kiszolgálók/waitStatistics | Nem |
 
 ## <a name="microsoftdbforpostgresql"></a>Microsoft. DBforPostgreSQL
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | flexibleServers | Yes |
-> | serverGroups | Yes |
-> | kiszolgálók | Yes |
-> | kiszolgálók/tanácsadók | No |
-> | kiszolgálók/kulcsok | No |
-> | kiszolgálók/privateEndpointConnectionProxies | No |
-> | kiszolgálók/privateEndpointConnections | No |
-> | kiszolgálók/privateLinkResources | No |
-> | kiszolgálók/queryTexts | No |
-> | kiszolgálók/recoverableServers | No |
-> | kiszolgálók/topQueryStatistics | No |
-> | kiszolgálók/virtualNetworkRules | No |
-> | kiszolgálók/waitStatistics | No |
-> | serversv2 | Yes |
+> | flexibleServers | Igen |
+> | serverGroups | Igen |
+> | kiszolgálók | Igen |
+> | kiszolgálók/tanácsadók | Nem |
+> | kiszolgálók/kulcsok | Nem |
+> | kiszolgálók/privateEndpointConnectionProxies | Nem |
+> | kiszolgálók/privateEndpointConnections | Nem |
+> | kiszolgálók/privateLinkResources | Nem |
+> | kiszolgálók/queryTexts | Nem |
+> | kiszolgálók/recoverableServers | Nem |
+> | kiszolgálók/topQueryStatistics | Nem |
+> | kiszolgálók/virtualNetworkRules | Nem |
+> | kiszolgálók/waitStatistics | Nem |
+> | serversv2 | Igen |
 
 ## <a name="microsoftdeploymentmanager"></a>Microsoft. DeploymentManager
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | artifactSources | Yes |
-> | kibocsátások | Yes |
-> | serviceTopologies | Yes |
-> | serviceTopologies/szolgáltatások | Yes |
-> | serviceTopologies/szolgáltatások/serviceUnits | Yes |
-> | lépések | Yes |
+> | artifactSources | Igen |
+> | kibocsátások | Igen |
+> | serviceTopologies | Igen |
+> | serviceTopologies/szolgáltatások | Igen |
+> | serviceTopologies/szolgáltatások/serviceUnits | Igen |
+> | lépések | Igen |
 
 ## <a name="microsoftdesktopvirtualization"></a>Microsoft. DesktopVirtualization
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | applicationgroups | Yes |
-> | applicationgroups/alkalmazások | No |
-> | applicationgroups/asztali számítógépek | No |
-> | applicationgroups / startmenuitems | No |
-> | hostpools | Yes |
-> | hostpools / sessionhosts | No |
-> | hostpools / sessionhosts / usersessions | No |
-> | hostpools / usersessions | No |
-> | munkaterületek | Yes |
+> | applicationgroups | Igen |
+> | applicationgroups/alkalmazások | Nem |
+> | applicationgroups/asztali számítógépek | Nem |
+> | applicationgroups / startmenuitems | Nem |
+> | hostpools | Igen |
+> | hostpools / sessionhosts | Nem |
+> | hostpools / sessionhosts / usersessions | Nem |
+> | hostpools / usersessions | Nem |
+> | munkaterületek | Igen |
 
 ## <a name="microsoftdevices"></a>Microsoft.Devices
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | ElasticPools | Yes |
-> | ElasticPools / IotHubTenants | Yes |
-> | ElasticPools/IotHubTenants/securitySettings | No |
-> | IotHubs | Yes |
-> | IotHubs/eventGridFilters | No |
-> | IotHubs/securitySettings | No |
-> | ProvisioningServices | Yes |
-> | használat | No |
+> | ElasticPools | Igen |
+> | ElasticPools / IotHubTenants | Igen |
+> | ElasticPools/IotHubTenants/securitySettings | Nem |
+> | IotHubs | Igen |
+> | IotHubs/eventGridFilters | Nem |
+> | IotHubs/securitySettings | Nem |
+> | ProvisioningServices | Igen |
+> | használat | Nem |
 
 ## <a name="microsoftdeviceupdate"></a>Microsoft. DeviceUpdate
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | fiókok | Yes |
-> | fiókok/példányok | Yes |
+> | fiókok | Igen |
+> | fiókok/példányok | Igen |
 
 ## <a name="microsoftdevops"></a>Microsoft. DevOps
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | csővezetékek | Yes |
+> | csővezetékek | Igen |
 
 ## <a name="microsoftdevspaces"></a>Microsoft. DevSpaces
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | tartományvezérlők | Yes |
+> | tartományvezérlők | Igen |
 
 ## <a name="microsoftdevtestlab"></a>Microsoft. segédösszetevője
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | labcenters | Yes |
-> | Labs | Yes |
-> | Labs/környezetek | Yes |
-> | Labor/serviceRunners | Yes |
-> | Labor/virtualMachines | Yes |
-> | menetrend | Yes |
+> | labcenters | Igen |
+> | Labs | Igen |
+> | Labs/környezetek | Igen |
+> | Labor/serviceRunners | Igen |
+> | Labor/virtualMachines | Igen |
+> | menetrend | Igen |
 
 ## <a name="microsoftdigitaltwins"></a>Microsoft. DigitalTwins
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | digitalTwinsInstances | Yes |
-> | digitalTwinsInstances/végpontok | No |
+> | digitalTwinsInstances | Igen |
+> | digitalTwinsInstances/végpontok | Nem |
 
 ## <a name="microsoftdocumentdb"></a>Microsoft.DocumentDB
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | databaseAccountNames | No |
-> | databaseAccounts | Yes |
-> | restorableDatabaseAccounts | No |
+> | databaseAccountNames | Nem |
+> | databaseAccounts | Igen |
+> | restorableDatabaseAccounts | Nem |
 
 ## <a name="microsoftdomainregistration"></a>Microsoft. DomainRegistration
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | tartományok | Yes |
-> | tartományok/domainOwnershipIdentifiers | No |
-> | generateSsoRequest | No |
-> | topLevelDomains | No |
-> | validateDomainRegistrationInformation | No |
+> | tartományok | Igen |
+> | tartományok/domainOwnershipIdentifiers | Nem |
+> | generateSsoRequest | Nem |
+> | topLevelDomains | Nem |
+> | validateDomainRegistrationInformation | Nem |
 
 ## <a name="microsoftdynamicslcs"></a>Microsoft. DynamicsLcs
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | lcsprojects | No |
-> | lcsprojects / clouddeployments | No |
-> | lcsprojects/összekötők | No |
+> | lcsprojects | Nem |
+> | lcsprojects / clouddeployments | Nem |
+> | lcsprojects/összekötők | Nem |
 
 ## <a name="microsoftenterpriseknowledgegraph"></a>Microsoft. EnterpriseKnowledgeGraph
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | services | Yes |
+> | services | Igen |
 
 ## <a name="microsofteventgrid"></a>Microsoft. EventGrid
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | tartományok | Yes |
-> | tartományok/témakörök | No |
-> | eventSubscriptions | No |
-> | extensionTopics | No |
-> | partnerNamespaces | Yes |
-> | partnerNamespaces/eventChannels | No |
-> | partnerRegistrations | Yes |
-> | partnerTopics | Yes |
-> | partnerTopics / eventSubscriptions | No |
-> | systemTopics | Yes |
-> | systemTopics / eventSubscriptions | No |
-> | témakörök | Yes |
-> | topicTypes | No |
+> | tartományok | Igen |
+> | tartományok/témakörök | Nem |
+> | eventSubscriptions | Nem |
+> | extensionTopics | Nem |
+> | partnerNamespaces | Igen |
+> | partnerNamespaces/eventChannels | Nem |
+> | partnerRegistrations | Igen |
+> | partnerTopics | Igen |
+> | partnerTopics / eventSubscriptions | Nem |
+> | systemTopics | Igen |
+> | systemTopics / eventSubscriptions | Nem |
+> | témakörök | Igen |
+> | topicTypes | Nem |
 
 ## <a name="microsofteventhub"></a>Microsoft. EventHub
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | fürtök | Yes |
-> | névterek | Yes |
-> | névterek/engedélyezési szabályok | No |
-> | névterek/disasterrecoveryconfigs | No |
-> | névterek/eventhubs | No |
-> | névterek/eventhubs/engedélyezési szabályok | No |
-> | névterek/eventhubs/consumergroups | No |
-> | névterek/networkrulesets | No |
-> | névterek/privateEndpointConnections | No |
+> | fürtök | Igen |
+> | névterek | Igen |
+> | névterek/engedélyezési szabályok | Nem |
+> | névterek/disasterrecoveryconfigs | Nem |
+> | névterek/eventhubs | Nem |
+> | névterek/eventhubs/engedélyezési szabályok | Nem |
+> | névterek/eventhubs/consumergroups | Nem |
+> | névterek/networkrulesets | Nem |
+> | névterek/privateEndpointConnections | Nem |
 
 ## <a name="microsoftexperimentation"></a>Microsoft. kísérletezés
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | experimentWorkspaces | Yes |
+> | experimentWorkspaces | Igen |
 
 ## <a name="microsoftfalcon"></a>Microsoft. Falcon
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | névterek | Yes |
+> | névterek | Igen |
 
 ## <a name="microsoftfeatures"></a>Microsoft. features
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | featureProviders | No |
-> | funkciók | No |
-> | szolgáltatók | No |
-> | subscriptionFeatureRegistrations | No |
+> | featureProviders | Nem |
+> | funkciók | Nem |
+> | szolgáltatók | Nem |
+> | subscriptionFeatureRegistrations | Nem |
 
 ## <a name="microsoftgallery"></a>Microsoft. Gallery
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | beiratkozik | No |
-> | galleryitems | No |
-> | generateartifactaccessuri | No |
-> | myareas | No |
-> | myareas/területek | No |
-> | myareas/területek/területek | No |
-> | myareas/területek/területek/galleryitems | No |
-> | myareas/területek/galleryitems | No |
-> | myareas / galleryitems | No |
-> | Regisztráció | No |
-> | resources | No |
-> | retrieveresourcesbyid | No |
+> | beiratkozik | Nem |
+> | galleryitems | Nem |
+> | generateartifactaccessuri | Nem |
+> | myareas | Nem |
+> | myareas/területek | Nem |
+> | myareas/területek/területek | Nem |
+> | myareas/területek/területek/galleryitems | Nem |
+> | myareas/területek/galleryitems | Nem |
+> | myareas / galleryitems | Nem |
+> | Regisztráció | Nem |
+> | resources | Nem |
+> | retrieveresourcesbyid | Nem |
 
 ## <a name="microsoftgenomics"></a>Microsoft. genomika
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | fiókok | Yes |
+> | fiókok | Igen |
 
 ## <a name="microsoftguestconfiguration"></a>Microsoft. GuestConfiguration
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | autoManagedAccounts | Yes |
-> | autoManagedVmConfigurationProfiles | Yes |
-> | configurationProfileAssignments | No |
-> | guestConfigurationAssignments | No |
-> | szoftver | No |
-> | softwareUpdateProfile | No |
-> | softwareUpdates | No |
+> | autoManagedAccounts | Igen |
+> | autoManagedVmConfigurationProfiles | Igen |
+> | configurationProfileAssignments | Nem |
+> | guestConfigurationAssignments | Nem |
+> | szoftver | Nem |
+> | softwareUpdateProfile | Nem |
+> | softwareUpdates | Nem |
 
 ## <a name="microsofthanaonazure"></a>Microsoft. HanaOnAzure
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | hanaInstances | Yes |
-> | sapMonitors | Yes |
+> | hanaInstances | Igen |
+> | sapMonitors | Igen |
 
 ## <a name="microsofthardwaresecuritymodules"></a>Microsoft. HardwareSecurityModules
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | dedicatedHSMs | Yes |
+> | dedicatedHSMs | Igen |
 
 ## <a name="microsofthdinsight"></a>Microsoft. HDInsight
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | fürtök | Yes |
-> | fürtök/alkalmazások | No |
+> | fürtök | Igen |
+> | fürtök/alkalmazások | Nem |
 
 ## <a name="microsofthealthcareapis"></a>Microsoft. HealthcareApis
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | services | Yes |
-> | szolgáltatások/iomtconnectors | No |
-> | szolgáltatások/iomtconnectors/kapcsolatok | No |
-> | szolgáltatások/iomtconnectors/leképezések | No |
-> | szolgáltatások/privateEndpointConnectionProxies | No |
-> | szolgáltatások/privateEndpointConnections | No |
-> | szolgáltatások/privateLinkResources | No |
+> | services | Igen |
+> | szolgáltatások/iomtconnectors | Nem |
+> | szolgáltatások/iomtconnectors/kapcsolatok | Nem |
+> | szolgáltatások/iomtconnectors/leképezések | Nem |
+> | szolgáltatások/privateEndpointConnectionProxies | Nem |
+> | szolgáltatások/privateEndpointConnections | Nem |
+> | szolgáltatások/privateLinkResources | Nem |
 
 ## <a name="microsofthybridcompute"></a>Microsoft. HybridCompute
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | gépek | Yes |
-> | gépek/assessPatches | No |
-> | gépek/bővítmények | Yes |
-> | gépek/installPatches | No |
+> | gépek | Igen |
+> | gépek/assessPatches | Nem |
+> | gépek/bővítmények | Igen |
+> | gépek/installPatches | Nem |
 
 ## <a name="microsofthybriddata"></a>Microsoft. HybridData
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | dataManagers | Yes |
+> | dataManagers | Igen |
 
 ## <a name="microsofthybridnetwork"></a>Microsoft. HybridNetwork
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | eszközök | Yes |
-> | registeredSubscriptions | No |
-> | szállítók | No |
-> | szállítók/vendorskus | No |
-> | szállítók/vendorskus/previewSubscriptions | No |
-> | virtualnetworkfunctions | Yes |
-> | virtualnetworkfunctionvendors | No |
+> | eszközök | Igen |
+> | registeredSubscriptions | Nem |
+> | szállítók | Nem |
+> | szállítók/vendorskus | Nem |
+> | szállítók/vendorskus/previewSubscriptions | Nem |
+> | virtualnetworkfunctions | Igen |
+> | virtualnetworkfunctionvendors | Nem |
 
 ## <a name="microsofthydra"></a>Microsoft. Hydra
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | összetevők | Yes |
-> | networkScopes | Yes |
+> | összetevők | Igen |
+> | networkScopes | Igen |
 
 ## <a name="microsoftimportexport"></a>Microsoft. ImportExport
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | feladatok | Yes |
+> | feladatok | Igen |
 
 ## <a name="microsoftintune"></a>Microsoft.Intune
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | diagnosticSettings | No |
-> | diagnosticSettingsCategories | No |
+> | diagnosticSettings | Nem |
+> | diagnosticSettingsCategories | Nem |
 
 ## <a name="microsoftiotcentral"></a>Microsoft. IoTCentral
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | appTemplates | No |
-> | IoTApps | Yes |
+> | appTemplates | Nem |
+> | IoTApps | Igen |
 
 ## <a name="microsoftiotspaces"></a>Microsoft. IoTSpaces
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | Graph | Yes |
+> | Graph | Igen |
 
 ## <a name="microsoftkeyvault"></a>Microsoft. kulcstartó
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | deletedVaults | No |
-> | hsmPools | Yes |
-> | managedHSMs | Yes |
-> | boltívek | Yes |
-> | tárolók/accessPolicies | No |
-> | tárolók/eventGridFilters | No |
-> | tárolók/kulcsok | No |
-> | tárolók/kulcsok/verziók | No |
-> | tárolók/titkok | No |
+> | deletedVaults | Nem |
+> | hsmPools | Igen |
+> | managedHSMs | Igen |
+> | boltívek | Igen |
+> | tárolók/accessPolicies | Nem |
+> | tárolók/eventGridFilters | Nem |
+> | tárolók/kulcsok | Nem |
+> | tárolók/kulcsok/verziók | Nem |
+> | tárolók/titkok | Nem |
 
 ## <a name="microsoftkubernetes"></a>Microsoft. Kubernetes
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | connectedClusters | Yes |
-> | registeredSubscriptions | No |
+> | connectedClusters | Igen |
+> | registeredSubscriptions | Nem |
 
 ## <a name="microsoftkubernetesconfiguration"></a>Microsoft. KubernetesConfiguration
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | Extensions | No |
-> | sourceControlConfigurations | No |
+> | Extensions | Nem |
+> | sourceControlConfigurations | Nem |
 
 ## <a name="microsoftkusto"></a>Microsoft.Kusto
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | fürtök | Yes |
-> | fürtök/attacheddatabaseconfigurations | No |
-> | fürtök/adatbázisok | No |
-> | fürtök/adatbázisok/dataconnections | No |
-> | fürtök/adatbázisok/eventhubconnections | No |
-> | fürtök/adatbázisok/principalassignments | No |
-> | fürtök/dataconnections | No |
-> | fürtök/principalassignments | No |
-> | fürtök/sharedidentities | No |
+> | fürtök | Igen |
+> | fürtök/attacheddatabaseconfigurations | Nem |
+> | fürtök/adatbázisok | Nem |
+> | fürtök/adatbázisok/dataconnections | Nem |
+> | fürtök/adatbázisok/eventhubconnections | Nem |
+> | fürtök/adatbázisok/principalassignments | Nem |
+> | fürtök/dataconnections | Nem |
+> | fürtök/principalassignments | Nem |
+> | fürtök/sharedidentities | Nem |
 
 ## <a name="microsoftlabservices"></a>Microsoft. LabServices
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | labaccounts | Yes |
-> | felhasználók | No |
+> | labaccounts | Igen |
+> | felhasználók | Nem |
 
 ## <a name="microsoftlogic"></a>Microsoft. Logic
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | hostingEnvironments | Yes |
-> | integrationAccounts | Yes |
-> | integrationServiceEnvironments | Yes |
-> | integrationServiceEnvironments/król | Yes |
-> | isolatedEnvironments | Yes |
-> | munkafolyamatok | Yes |
+> | hostingEnvironments | Igen |
+> | integrationAccounts | Igen |
+> | integrationServiceEnvironments | Igen |
+> | integrationServiceEnvironments/król | Igen |
+> | isolatedEnvironments | Igen |
+> | munkafolyamatok | Igen |
 
 ## <a name="microsoftmachinelearning"></a>Microsoft. MachineLearning
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | commitmentPlans | Yes |
-> | webServices | Yes |
-> | Munkaterületek | Yes |
+> | commitmentPlans | Igen |
+> | webServices | Igen |
+> | Munkaterületek | Igen |
 
 ## <a name="microsoftmachinelearningservices"></a>Microsoft.MachineLearningServices
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | munkaterületek | Yes |
-> | munkaterületek/számítások | No |
-> | munkaterületek/eventGridFilters | No |
-> | munkaterületek/linkedServices | No |
+> | munkaterületek | Igen |
+> | munkaterületek/számítások | Nem |
+> | munkaterületek/eventGridFilters | Nem |
+> | munkaterületek/linkedServices | Nem |
 
 ## <a name="microsoftmaintenance"></a>Microsoft. Maintenance
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | applyUpdates | No |
-> | configurationAssignments | No |
-> | maintenanceConfigurations | Yes |
-> | publicMaintenanceConfigurations | No |
-> | frissítések | No |
+> | applyUpdates | Nem |
+> | configurationAssignments | Nem |
+> | maintenanceConfigurations | Igen |
+> | publicMaintenanceConfigurations | Nem |
+> | frissítések | Nem |
 
 ## <a name="microsoftmanagedidentity"></a>Microsoft. ManagedIdentity
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | Identitások | No |
-> | userAssignedIdentities | Yes |
+> | Identitások | Nem |
+> | userAssignedIdentities | Igen |
 
 ## <a name="microsoftmanagednetwork"></a>Microsoft. ManagedNetwork
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | managedNetworks | Yes |
-> | managedNetworks / managedNetworkGroups | Yes |
-> | managedNetworks / managedNetworkPeeringPolicies | Yes |
-> | értesítés | Yes |
+> | managedNetworks | Igen |
+> | managedNetworks / managedNetworkGroups | Igen |
+> | managedNetworks / managedNetworkPeeringPolicies | Igen |
+> | értesítés | Igen |
 
 ## <a name="microsoftmanagedservices"></a>Microsoft. ManagedServices
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | marketplaceRegistrationDefinitions | No |
-> | registrationAssignments | No |
-> | registrationDefinitions | No |
+> | marketplaceRegistrationDefinitions | Nem |
+> | registrationAssignments | Nem |
+> | registrationDefinitions | Nem |
 
 ## <a name="microsoftmanagement"></a>Microsoft. Management
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | getEntities | No |
-> | managementGroups | No |
-> | managementGroups/beállítások | No |
-> | resources | No |
-> | startTenantBackfill | No |
-> | tenantBackfillStatus | No |
+> | getEntities | Nem |
+> | managementGroups | Nem |
+> | managementGroups/beállítások | Nem |
+> | resources | Nem |
+> | startTenantBackfill | Nem |
+> | tenantBackfillStatus | Nem |
 
 ## <a name="microsoftmaps"></a>Microsoft. Maps
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | fiókok | Yes |
-> | fiókok/eventGridFilters | No |
-> | fiókok/privateAtlases | Yes |
+> | fiókok | Igen |
+> | fiókok/eventGridFilters | Nem |
+> | fiókok/privateAtlases | Igen |
 
 ## <a name="microsoftmarketplace"></a>Microsoft. Marketplace
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | MACC | No |
-> | kínál | No |
-> | offerTypes | No |
-> | offerTypes/közzétevők | No |
-> | offerTypes/kiadók/ajánlatok | No |
-> | offerTypes/kiadók/ajánlatok/csomagok | No |
-> | offerTypes/kiadók/ajánlatok/csomagok/szerződések | No |
-> | offerTypes/kiadók/ajánlatok/csomagok/konfigurációk | No |
-> | offerTypes/kiadók/ajánlatok/csomagok/konfigurációk/importImage | No |
-> | privategalleryitems | No |
-> | privateStoreClient | No |
-> | privateStores | No |
-> | privateStores/ajánlatok | No |
-> | termékek | No |
-> | közzétevők | No |
-> | kiadók/ajánlatok | No |
-> | közzétevők/ajánlatok/módosítások | No |
-> | Regisztráció | No |
+> | MACC | Nem |
+> | kínál | Nem |
+> | offerTypes | Nem |
+> | offerTypes/közzétevők | Nem |
+> | offerTypes/kiadók/ajánlatok | Nem |
+> | offerTypes/kiadók/ajánlatok/csomagok | Nem |
+> | offerTypes/kiadók/ajánlatok/csomagok/szerződések | Nem |
+> | offerTypes/kiadók/ajánlatok/csomagok/konfigurációk | Nem |
+> | offerTypes/kiadók/ajánlatok/csomagok/konfigurációk/importImage | Nem |
+> | privategalleryitems | Nem |
+> | privateStoreClient | Nem |
+> | privateStores | Nem |
+> | privateStores/ajánlatok | Nem |
+> | termékek | Nem |
+> | közzétevők | Nem |
+> | kiadók/ajánlatok | Nem |
+> | közzétevők/ajánlatok/módosítások | Nem |
+> | Regisztráció | Nem |
 
 ## <a name="microsoftmarketplaceapps"></a>Microsoft. MarketplaceApps
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | classicDevServices | Yes |
-> | updateCommunicationPreference | No |
+> | classicDevServices | Igen |
+> | updateCommunicationPreference | Nem |
 
 ## <a name="microsoftmarketplaceordering"></a>Microsoft. MarketplaceOrdering
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | megállapodások | No |
-> | offertypes | No |
+> | megállapodások | Nem |
+> | offertypes | Nem |
 
 ## <a name="microsoftmedia"></a>Microsoft. Media
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | Mediaservices | Yes |
-> | Mediaservices/accountFilters | No |
-> | Mediaservices/-eszközök | No |
-> | Mediaservices/eszközök/assetFilters | No |
-> | Mediaservices/contentKeyPolicies | No |
-> | Mediaservices/eventGridFilters | No |
-> | Mediaservices/liveEventOperations | No |
-> | Mediaservices/liveEvents | Yes |
-> | Mediaservices/liveEvents/liveOutputs | No |
-> | Mediaservices/liveOutputOperations | No |
-> | Mediaservices/mediaGraphs | No |
-> | Mediaservices/privateEndpointConnectionOperations | No |
-> | Mediaservices/privateEndpointConnectionProxies | No |
-> | Mediaservices/privateEndpointConnections | No |
-> | Mediaservices/streamingEndpointOperations | No |
-> | Mediaservices/streamingEndpoints | Yes |
-> | Mediaservices/streamingLocators | No |
-> | Mediaservices/streamingPolicies | No |
-> | Mediaservices/átalakítások | No |
-> | Mediaservices/átalakítások/feladatok | No |
+> | Mediaservices | Igen |
+> | Mediaservices/accountFilters | Nem |
+> | Mediaservices/-eszközök | Nem |
+> | Mediaservices/eszközök/assetFilters | Nem |
+> | Mediaservices/contentKeyPolicies | Nem |
+> | Mediaservices/eventGridFilters | Nem |
+> | Mediaservices/liveEventOperations | Nem |
+> | Mediaservices/liveEvents | Igen |
+> | Mediaservices/liveEvents/liveOutputs | Nem |
+> | Mediaservices/liveOutputOperations | Nem |
+> | Mediaservices/mediaGraphs | Nem |
+> | Mediaservices/privateEndpointConnectionOperations | Nem |
+> | Mediaservices/privateEndpointConnectionProxies | Nem |
+> | Mediaservices/privateEndpointConnections | Nem |
+> | Mediaservices/streamingEndpointOperations | Nem |
+> | Mediaservices/streamingEndpoints | Igen |
+> | Mediaservices/streamingLocators | Nem |
+> | Mediaservices/streamingPolicies | Nem |
+> | Mediaservices/átalakítások | Nem |
+> | Mediaservices/átalakítások/feladatok | Nem |
 
 ## <a name="microsoftmicroservices4spring"></a>Microsoft. Microservices4Spring
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | appClusters | Yes |
+> | appClusters | Igen |
 
 ## <a name="microsoftmigrate"></a>Microsoft. Migrálás
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | assessmentProjects | Yes |
-> | migrateprojects | Yes |
-> | moveCollections | Yes |
-> | projektek | Yes |
+> | assessmentProjects | Igen |
+> | migrateprojects | Igen |
+> | moveCollections | Igen |
+> | projektek | Igen |
 
 ## <a name="microsoftmixedreality"></a>Microsoft. MixedReality
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | holographicsBroadcastAccounts | Yes |
-> | objectUnderstandingAccounts | Yes |
-> | remoteRenderingAccounts | Yes |
-> | spatialAnchorsAccounts | Yes |
+> | holographicsBroadcastAccounts | Igen |
+> | objectUnderstandingAccounts | Igen |
+> | remoteRenderingAccounts | Igen |
+> | spatialAnchorsAccounts | Igen |
 
 ## <a name="microsoftnetapp"></a>Microsoft. NetApp
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | netAppAccounts | Yes |
-> | netAppAccounts / accountBackups | No |
-> | netAppAccounts / capacityPools | Yes |
-> | netAppAccounts/capacityPools/kötetek | Yes |
-> | netAppAccounts/capacityPools/kötetek/Pillanatképek | No |
+> | netAppAccounts | Igen |
+> | netAppAccounts / accountBackups | Nem |
+> | netAppAccounts / capacityPools | Igen |
+> | netAppAccounts/capacityPools/kötetek | Igen |
+> | netAppAccounts/capacityPools/kötetek/Pillanatképek | Nem |
 ## <a name="microsoftnetwork"></a>Microsoft.Network
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | applicationGateways | Yes |
-> | applicationGatewayWebApplicationFirewallPolicies | Yes |
-> | applicationSecurityGroups | Yes |
-> | azureFirewallFqdnTags | No |
-> | azureFirewalls | Yes |
-> | bastionHosts | Yes |
-> | bgpServiceCommunities | No |
-> | kapcsolatok | Yes |
-> | ddosCustomPolicies | Yes |
-> | ddosProtectionPlans | Yes |
-> | dnsOperationStatuses | No |
-> | dnszones | Yes |
-> | dnszones/A | No |
-> | dnszones/AAAA | No |
-> | dnszones/mind | No |
-> | dnszones/CAA | No |
-> | dnszones/CNAME | No |
-> | dnszones/MX | No |
-> | dnszones/NS | No |
-> | dnszones/PTR | No |
-> | dnszones/rekordhalmazok | No |
-> | dnszones/SOA | No |
-> | dnszones/SRV | No |
-> | dnszones/TXT | No |
-> | expressRouteCircuits | Yes |
-> | expressRouteCrossConnections | Yes |
-> | expressRouteGateways | Yes |
-> | expressRoutePorts | Yes |
-> | expressRouteServiceProviders | No |
-> | firewallPolicies | Yes |
-> | frontdoors | Yes |
-> | frontdoorWebApplicationFirewallManagedRuleSets | No |
-> | frontdoorWebApplicationFirewallPolicies | Yes |
-> | getDnsResourceReference | No |
-> | internalNotify | No |
-> | ipGroups | Yes |
-> | loadBalancers | Yes |
-> | localNetworkGateways | Yes |
-> | natGateways | Yes |
-> | networkIntentPolicies | Yes |
-> | networkInterfaces | Yes |
-> | networkProfiles | Yes |
-> | networkSecurityGroups | Yes |
-> | networkWatchers | Yes |
-> | networkWatchers / connectionMonitors | Yes |
-> | networkWatchers / flowLogs | Yes |
-> | networkWatchers/objektívek | Yes |
-> | networkWatchers / pingMeshes | Yes |
-> | p2sVpnGateways | Yes |
-> | privateDnsOperationStatuses | No |
-> | privateDnsZones | Yes |
-> | privateDnsZones/A | No |
-> | privateDnsZones/AAAA | No |
-> | privateDnsZones/mind | No |
-> | privateDnsZones/CNAME | No |
-> | privateDnsZones/MX | No |
-> | privateDnsZones/PTR | No |
-> | privateDnsZones/SOA | No |
-> | privateDnsZones/SRV | No |
-> | privateDnsZones/TXT | No |
-> | privateDnsZones / virtualNetworkLinks | Yes |
-> | privateEndpoints | Yes |
-> | privateLinkServices | Yes |
-> | Nyilvános IP | Yes |
-> | publicIPPrefixes | Yes |
-> | routeFilters | Yes |
-> | routeTables | Yes |
-> | serviceEndpointPolicies | Yes |
-> | trafficManagerGeographicHierarchies | No |
-> | trafficmanagerprofiles | Yes |
-> | trafficmanagerprofiles/Intenzitástérképei | No |
-> | trafficManagerUserMetricsKeys | No |
-> | virtualHubs | Yes |
-> | virtualNetworkGateways | Yes |
-> | virtualNetworks | Yes |
-> | virtualNetworks/alhálózatok | No |
-> | virtualNetworkTaps | Yes |
-> | virtualWans | Yes |
-> | vpnGateways | Yes |
-> | vpnSites | Yes |
-> | webApplicationFirewallPolicies | Yes |
+> | applicationGateways | Igen |
+> | applicationGatewayWebApplicationFirewallPolicies | Igen |
+> | applicationSecurityGroups | Igen |
+> | azureFirewallFqdnTags | Nem |
+> | azureFirewalls | Igen |
+> | bastionHosts | Igen |
+> | bgpServiceCommunities | Nem |
+> | kapcsolatok | Igen |
+> | ddosCustomPolicies | Igen |
+> | ddosProtectionPlans | Igen |
+> | dnsOperationStatuses | Nem |
+> | dnszones | Igen |
+> | dnszones/A | Nem |
+> | dnszones/AAAA | Nem |
+> | dnszones/mind | Nem |
+> | dnszones/CAA | Nem |
+> | dnszones/CNAME | Nem |
+> | dnszones/MX | Nem |
+> | dnszones/NS | Nem |
+> | dnszones/PTR | Nem |
+> | dnszones/rekordhalmazok | Nem |
+> | dnszones/SOA | Nem |
+> | dnszones/SRV | Nem |
+> | dnszones/TXT | Nem |
+> | expressRouteCircuits | Igen |
+> | expressRouteCrossConnections | Igen |
+> | expressRouteGateways | Igen |
+> | expressRoutePorts | Igen |
+> | expressRouteServiceProviders | Nem |
+> | firewallPolicies | Igen |
+> | frontdoors | Igen |
+> | frontdoorWebApplicationFirewallManagedRuleSets | Nem |
+> | frontdoorWebApplicationFirewallPolicies | Igen |
+> | getDnsResourceReference | Nem |
+> | internalNotify | Nem |
+> | ipGroups | Igen |
+> | loadBalancers | Igen |
+> | localNetworkGateways | Igen |
+> | natGateways | Igen |
+> | networkIntentPolicies | Igen |
+> | networkInterfaces | Igen |
+> | networkProfiles | Igen |
+> | networkSecurityGroups | Igen |
+> | networkWatchers | Igen |
+> | networkWatchers / connectionMonitors | Igen |
+> | networkWatchers / flowLogs | Igen |
+> | networkWatchers/objektívek | Igen |
+> | networkWatchers / pingMeshes | Igen |
+> | p2sVpnGateways | Igen |
+> | privateDnsOperationStatuses | Nem |
+> | privateDnsZones | Igen |
+> | privateDnsZones/A | Nem |
+> | privateDnsZones/AAAA | Nem |
+> | privateDnsZones/mind | Nem |
+> | privateDnsZones/CNAME | Nem |
+> | privateDnsZones/MX | Nem |
+> | privateDnsZones/PTR | Nem |
+> | privateDnsZones/SOA | Nem |
+> | privateDnsZones/SRV | Nem |
+> | privateDnsZones/TXT | Nem |
+> | privateDnsZones / virtualNetworkLinks | Igen |
+> | privateEndpoints | Igen |
+> | privateLinkServices | Igen |
+> | Nyilvános IP | Igen |
+> | publicIPPrefixes | Igen |
+> | routeFilters | Igen |
+> | routeTables | Igen |
+> | serviceEndpointPolicies | Igen |
+> | trafficManagerGeographicHierarchies | Nem |
+> | trafficmanagerprofiles | Igen |
+> | trafficmanagerprofiles/Intenzitástérképei | Nem |
+> | trafficManagerUserMetricsKeys | Nem |
+> | virtualHubs | Igen |
+> | virtualNetworkGateways | Igen |
+> | virtualNetworks | Igen |
+> | virtualNetworks/alhálózatok | Nem |
+> | virtualNetworkTaps | Igen |
+> | virtualWans | Igen |
+> | vpnGateways | Igen |
+> | vpnSites | Igen |
+> | webApplicationFirewallPolicies | Igen |
 
 ## <a name="microsoftnotebooks"></a>Microsoft. notebookok
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | NotebookProxies | No |
+> | NotebookProxies | Nem |
 
 ## <a name="microsoftnotificationhubs"></a>Microsoft. NotificationHubs
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | névterek | Yes |
-> | névterek/notificationHubs | Yes |
+> | névterek | Igen |
+> | névterek/notificationHubs | Igen |
 
 ## <a name="microsoftobjectstore"></a>Microsoft. ObjectStore
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | osNamespaces | Yes |
+> | osNamespaces | Igen |
 
 ## <a name="microsoftoffazure"></a>Microsoft. OffAzure
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | HyperVSites | Yes |
-> | ImportSites | Yes |
-> | MasterSites | Yes |
-> | ServerSites | Yes |
-> | VMwareSites | Yes |
+> | HyperVSites | Igen |
+> | ImportSites | Igen |
+> | MasterSites | Igen |
+> | ServerSites | Igen |
+> | VMwareSites | Igen |
 
 ## <a name="microsoftoperationalinsights"></a>Microsoft. OperationalInsights
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | fürtök | Yes |
-> | deletedWorkspaces | No |
-> | linkTargets | No |
-> | storageInsightConfigs | No |
-> | munkaterületek | Yes |
-> | munkaterületek/dataExports | No |
-> | munkaterületek/adatforrások | No |
-> | munkaterületek/linkedServices | No |
-> | munkaterületek/linkedStorageAccounts | No |
-> | munkaterületek/metaadatok | No |
-> | munkaterületek/lekérdezés | No |
-> | munkaterületek/scopedPrivateLinkProxies | No |
+> | fürtök | Igen |
+> | deletedWorkspaces | Nem |
+> | linkTargets | Nem |
+> | storageInsightConfigs | Nem |
+> | munkaterületek | Igen |
+> | munkaterületek/dataExports | Nem |
+> | munkaterületek/adatforrások | Nem |
+> | munkaterületek/linkedServices | Nem |
+> | munkaterületek/linkedStorageAccounts | Nem |
+> | munkaterületek/metaadatok | Nem |
+> | munkaterületek/lekérdezés | Nem |
+> | munkaterületek/scopedPrivateLinkProxies | Nem |
 
 ## <a name="microsoftoperationsmanagement"></a>Microsoft. OperationsManagement
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | managementassociations | No |
-> | managementconfigurations | Yes |
-> | megoldások | Yes |
-> | kilátással | Yes |
+> | managementassociations | Nem |
+> | managementconfigurations | Igen |
+> | megoldások | Igen |
+> | kilátással | Igen |
 
 ## <a name="microsoftpeering"></a>Microsoft. peering
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | legacyPeerings | No |
-> | peerAsns | No |
-> | társviszonyok | Yes |
-> | peeringServiceCountries | No |
-> | peeringServiceProviders | No |
-> | peeringServices | Yes |
+> | legacyPeerings | Nem |
+> | peerAsns | Nem |
+> | társviszonyok | Igen |
+> | peeringServiceCountries | Nem |
+> | peeringServiceProviders | Nem |
+> | peeringServices | Igen |
 
 ## <a name="microsoftpolicyinsights"></a>Microsoft. PolicyInsights
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | igazolások | No |
-> | policyEvents | No |
-> | policyMetadata | No |
-> | policyStates | No |
-> | policyTrackedResources | No |
-> | szervizelések | No |
+> | igazolások | Nem |
+> | policyEvents | Nem |
+> | policyMetadata | Nem |
+> | policyStates | Nem |
+> | policyTrackedResources | Nem |
+> | szervizelések | Nem |
 
 ## <a name="microsoftportal"></a>Microsoft. Portal
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> |  -konzolok | No |
-> | irányítópultok | Yes |
-> | UserSettings | No |
+> |  -konzolok | Nem |
+> | irányítópultok | Igen |
+> | UserSettings | Nem |
 
 ## <a name="microsoftpowerbi"></a>Microsoft. PowerBI
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | privateLinkServicesForPowerBI | Yes |
-> | bérlők | Yes |
-> | bérlők/munkaterületek | No |
-> | workspaceCollections | Yes |
+> | privateLinkServicesForPowerBI | Igen |
+> | bérlők | Igen |
+> | bérlők/munkaterületek | Nem |
+> | workspaceCollections | Igen |
 
 ## <a name="microsoftpowerbidedicated"></a>Microsoft. PowerBIDedicated
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | kapacitások | Yes |
+> | kapacitások | Igen |
 
 ## <a name="microsoftprojectbabylon"></a>Microsoft. ProjectBabylon
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | fiókok | Yes |
-> | deletedAccounts | No |
+> | fiókok | Igen |
+> | deletedAccounts | Nem |
 
 ## <a name="microsoftproviderhub"></a>Microsoft. ProviderHub
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | providerRegistrations | No |
-> | providerRegistrations / defaultRollouts | No |
-> | providerRegistrations / resourceTypeRegistrations | No |
-> | kibocsátások | Yes |
+> | providerRegistrations | Nem |
+> | providerRegistrations / defaultRollouts | Nem |
+> | providerRegistrations / resourceTypeRegistrations | Nem |
+> | kibocsátások | Igen |
 
 ## <a name="microsoftquantum"></a>Microsoft. Quantum
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | Munkaterületek | Yes |
+> | Munkaterületek | Igen |
 
 ## <a name="microsoftrecoveryservices"></a>Microsoft. Recoveryservices szolgáltatónál
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | backupProtectedItems | No |
-> | boltívek | Yes |
+> | backupProtectedItems | Nem |
+> | boltívek | Igen |
 
 ## <a name="microsoftredhatopenshift"></a>Microsoft. RedHatOpenShift
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | OpenShiftClusters | Yes |
+> | OpenShiftClusters | Igen |
 
 ## <a name="microsoftrelay"></a>Microsoft. Relay
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | névterek | Yes |
-> | névterek/engedélyezési szabályok | No |
-> | névterek/hybridconnections | No |
-> | névterek/hybridconnections/engedélyezési szabályok | No |
-> | névterek/privateEndpointConnections | No |
-> | névterek/wcfrelays | No |
-> | névterek/wcfrelays/engedélyezési szabályok | No |
+> | névterek | Igen |
+> | névterek/engedélyezési szabályok | Nem |
+> | névterek/hybridconnections | Nem |
+> | névterek/hybridconnections/engedélyezési szabályok | Nem |
+> | névterek/privateEndpointConnections | Nem |
+> | névterek/wcfrelays | Nem |
+> | névterek/wcfrelays/engedélyezési szabályok | Nem |
 
 ## <a name="microsoftresourcegraph"></a>Microsoft. ResourceGraph
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | lekérdezések | Yes |
-> | resourceChangeDetails | No |
-> | resourceChanges | No |
-> | resources | No |
-> | resourcesHistory | No |
-> | subscriptionsStatus | No |
+> | lekérdezések | Igen |
+> | resourceChangeDetails | Nem |
+> | resourceChanges | Nem |
+> | resources | Nem |
+> | resourcesHistory | Nem |
+> | subscriptionsStatus | Nem |
 
 ## <a name="microsoftresourcehealth"></a>Microsoft. ResourceHealth
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | availabilityStatuses | No |
-> | childAvailabilityStatuses | No |
-> | childResources | No |
-> | emergingissues | No |
-> | események | No |
-> | impactedResources | No |
-> | metaadatok | No |
-> | értesítések | No |
+> | availabilityStatuses | Nem |
+> | childAvailabilityStatuses | Nem |
+> | childResources | Nem |
+> | emergingissues | Nem |
+> | események | Nem |
+> | impactedResources | Nem |
+> | metaadatok | Nem |
+> | értesítések | Nem |
 
 ## <a name="microsoftresources"></a>Microsoft. Resources
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | calculateTemplateHash | No |
-> | központi telepítések | No |
-> | üzembe helyezések/műveletek | No |
-> | deploymentScripts | Yes |
-> | deploymentScripts/naplók | No |
-> | linkek | No |
-> | notifyResourceJobs | No |
-> | szolgáltatók | No |
-> | resourceGroups | No |
-> | előfizetések | No |
-> | templateSpecs | Yes |
-> | templateSpecs/verziók | Yes |
-> | bérlők | No |
+> | calculateTemplateHash | Nem |
+> | központi telepítések | Nem |
+> | üzembe helyezések/műveletek | Nem |
+> | deploymentScripts | Igen |
+> | deploymentScripts/naplók | Nem |
+> | linkek | Nem |
+> | notifyResourceJobs | Nem |
+> | szolgáltatók | Nem |
+> | resourceGroups | Nem |
+> | előfizetések | Nem |
+> | templateSpecs | Igen |
+> | templateSpecs/verziók | Igen |
+> | bérlők | Nem |
 
 ## <a name="microsoftsaas"></a>Microsoft. SaaS
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | alkalmazások | Yes |
-> | saasresources | No |
+> | alkalmazások | Igen |
+> | saasresources | Nem |
 
 ## <a name="microsoftscvmm"></a>Microsoft. ScVmm
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | felhők | Yes |
-> | VirtualMachines | Yes |
-> | VirtualMachineTemplates | Yes |
-> | VirtualNetworks | Yes |
-> | vmmservers | Yes |
+> | felhők | Igen |
+> | VirtualMachines | Igen |
+> | VirtualMachineTemplates | Igen |
+> | VirtualNetworks | Igen |
+> | vmmservers | Igen |
 
 ## <a name="microsoftsearch"></a>Microsoft. Search
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | resourceHealthMetadata | No |
-> | searchServices | Yes |
+> | resourceHealthMetadata | Nem |
+> | searchServices | Igen |
 
 ## <a name="microsoftsecurity"></a>Microsoft. Security
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | adaptiveNetworkHardenings | No |
-> | advancedThreatProtectionSettings | No |
-> | riasztások | No |
-> | alertsSuppressionRules | No |
-> | allowedConnections | No |
-> | applicationWhitelistings | No |
-> | assessmentMetadata | No |
-> | értékelések | No |
-> | autoDismissAlertsRules | No |
-> | automatizálások szabványának létrehozásában | Yes |
-> | AutoProvisioningSettings | No |
-> | Felelésről | No |
-> | összekötők | No |
-> | dataCollectionAgents | No |
-> | deviceSecurityGroups | No |
-> | discoveredSecuritySolutions | No |
-> | externalSecuritySolutions | No |
-> | InformationProtectionPolicies | No |
-> | iotDefenderSettings | No |
-> | iotSecuritySolutions | Yes |
-> | iotSecuritySolutions / analyticsModels | No |
-> | iotSecuritySolutions / analyticsModels / aggregatedAlerts | No |
-> | iotSecuritySolutions / analyticsModels / aggregatedRecommendations | No |
-> | iotSecuritySolutions / iotAlerts | No |
-> | iotSecuritySolutions / iotAlertTypes | No |
-> | iotSecuritySolutions / iotRecommendations | No |
-> | iotSecuritySolutions / iotRecommendationTypes | No |
-> | iotSensors | No |
-> | jitNetworkAccessPolicies | No |
-> | jitPolicies | No |
-> | policies | No |
-> | pricings | No |
-> | regulatoryComplianceStandards | No |
-> | regulatoryComplianceStandards / regulatoryComplianceControls | No |
-> | regulatoryComplianceStandards / regulatoryComplianceControls / regulatoryComplianceAssessments | No |
-> | secureScoreControlDefinitions | No |
-> | secureScoreControls | No |
-> | secureScores | No |
-> | secureScores / secureScoreControls | No |
-> | securityContacts | No |
-> | securitySolutions | No |
-> | securitySolutionsReferenceData | No |
-> | securityStatuses | No |
-> | securityStatusesSummaries | No |
-> | serverVulnerabilityAssessments | No |
-> | beállítások | No |
-> | sqlVulnerabilityAssessments | No |
-> | alértékelések | No |
-> | feladatok | No |
-> | topológiák | No |
-> | workspaceSettings | No |
+> | adaptiveNetworkHardenings | Nem |
+> | advancedThreatProtectionSettings | Nem |
+> | riasztások | Nem |
+> | alertsSuppressionRules | Nem |
+> | allowedConnections | Nem |
+> | applicationWhitelistings | Nem |
+> | assessmentMetadata | Nem |
+> | értékelések | Nem |
+> | autoDismissAlertsRules | Nem |
+> | automatizálások szabványának létrehozásában | Igen |
+> | AutoProvisioningSettings | Nem |
+> | Felelésről | Nem |
+> | összekötők | Nem |
+> | dataCollectionAgents | Nem |
+> | deviceSecurityGroups | Nem |
+> | discoveredSecuritySolutions | Nem |
+> | externalSecuritySolutions | Nem |
+> | InformationProtectionPolicies | Nem |
+> | iotDefenderSettings | Nem |
+> | iotSecuritySolutions | Igen |
+> | iotSecuritySolutions / analyticsModels | Nem |
+> | iotSecuritySolutions / analyticsModels / aggregatedAlerts | Nem |
+> | iotSecuritySolutions / analyticsModels / aggregatedRecommendations | Nem |
+> | iotSecuritySolutions / iotAlerts | Nem |
+> | iotSecuritySolutions / iotAlertTypes | Nem |
+> | iotSecuritySolutions / iotRecommendations | Nem |
+> | iotSecuritySolutions / iotRecommendationTypes | Nem |
+> | iotSensors | Nem |
+> | jitNetworkAccessPolicies | Nem |
+> | jitPolicies | Nem |
+> | policies | Nem |
+> | pricings | Nem |
+> | regulatoryComplianceStandards | Nem |
+> | regulatoryComplianceStandards / regulatoryComplianceControls | Nem |
+> | regulatoryComplianceStandards / regulatoryComplianceControls / regulatoryComplianceAssessments | Nem |
+> | secureScoreControlDefinitions | Nem |
+> | secureScoreControls | Nem |
+> | secureScores | Nem |
+> | secureScores / secureScoreControls | Nem |
+> | securityContacts | Nem |
+> | securitySolutions | Nem |
+> | securitySolutionsReferenceData | Nem |
+> | securityStatuses | Nem |
+> | securityStatusesSummaries | Nem |
+> | serverVulnerabilityAssessments | Nem |
+> | beállítások | Nem |
+> | sqlVulnerabilityAssessments | Nem |
+> | alértékelések | Nem |
+> | feladatok | Nem |
+> | topológiák | Nem |
+> | workspaceSettings | Nem |
 
 ## <a name="microsoftsecuritygraph"></a>Microsoft. SecurityGraph
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | diagnosticSettings | No |
-> | diagnosticSettingsCategories | No |
+> | diagnosticSettings | Nem |
+> | diagnosticSettingsCategories | Nem |
 
 ## <a name="microsoftsecurityinsights"></a>Microsoft. SecurityInsights
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | összesítések | No |
-> | alertRules | No |
-> | alertRuleTemplates | No |
-> | automationRules | No |
-> | könyvjelzők | No |
-> | esetekben | No |
-> | dataConnectors | No |
-> | dataConnectorsCheckRequirements | No |
-> | szervezetek | No |
-> | entityQueries | No |
-> | incidensek | No |
-> | officeConsents | No |
-> | beállítások | No |
-> | threatIntelligence | No |
-> | Watchlists | No |
+> | összesítések | Nem |
+> | alertRules | Nem |
+> | alertRuleTemplates | Nem |
+> | automationRules | Nem |
+> | könyvjelzők | Nem |
+> | esetekben | Nem |
+> | dataConnectors | Nem |
+> | dataConnectorsCheckRequirements | Nem |
+> | szervezetek | Nem |
+> | entityQueries | Nem |
+> | incidensek | Nem |
+> | officeConsents | Nem |
+> | beállítások | Nem |
+> | threatIntelligence | Nem |
+> | Watchlists | Nem |
 
 ## <a name="microsoftserialconsole"></a>Microsoft. SerialConsole
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | consoleServices | No |
+> | consoleServices | Nem |
 
 ## <a name="microsoftservicebus"></a>Microsoft.ServiceBus
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | névterek | Yes |
-> | névterek/engedélyezési szabályok | No |
-> | névterek/disasterrecoveryconfigs | No |
-> | névterek/eventgridfilters | No |
-> | névterek/networkrulesets | No |
-> | névterek/privateEndpointConnections | No |
-> | névterek/várólisták | No |
-> | névterek/várólisták/engedélyezési szabályok | No |
-> | névterek/témakörök | No |
-> | névterek/témakörök/engedélyezési szabályok | No |
-> | névterek/témakörök/előfizetések | No |
-> | névterek/témakörök/előfizetések/szabályok | No |
-> | premiumMessagingRegions | No |
+> | névterek | Igen |
+> | névterek/engedélyezési szabályok | Nem |
+> | névterek/disasterrecoveryconfigs | Nem |
+> | névterek/eventgridfilters | Nem |
+> | névterek/networkrulesets | Nem |
+> | névterek/privateEndpointConnections | Nem |
+> | névterek/várólisták | Nem |
+> | névterek/várólisták/engedélyezési szabályok | Nem |
+> | névterek/témakörök | Nem |
+> | névterek/témakörök/engedélyezési szabályok | Nem |
+> | névterek/témakörök/előfizetések | Nem |
+> | névterek/témakörök/előfizetések/szabályok | Nem |
+> | premiumMessagingRegions | Nem |
 
 ## <a name="microsoftservicefabric"></a>Microsoft. ServiceFabric
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | alkalmazások | Yes |
-> | fürtök | Yes |
-> | fürtök/alkalmazások | No |
-> | containerGroups | Yes |
-> | containerGroupSets | Yes |
-> | edgeclusters | Yes |
-> | edgeclusters/alkalmazások | No |
-> | managedclusters | Yes |
-> | managedclusters / nodetypes | No |
-> | hálózatok | Yes |
-> | secretstores | Yes |
-> | secretstores/tanúsítványok | No |
-> | secretstores/titkok | No |
-> | volumes | Yes |
+> | alkalmazások | Igen |
+> | fürtök | Igen |
+> | fürtök/alkalmazások | Nem |
+> | containerGroups | Igen |
+> | containerGroupSets | Igen |
+> | edgeclusters | Igen |
+> | edgeclusters/alkalmazások | Nem |
+> | managedclusters | Igen |
+> | managedclusters / nodetypes | Nem |
+> | hálózatok | Igen |
+> | secretstores | Igen |
+> | secretstores/tanúsítványok | Nem |
+> | secretstores/titkok | Nem |
+> | volumes | Igen |
 
 ## <a name="microsoftservicefabricmesh"></a>Microsoft. ServiceFabricMesh
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | alkalmazások | Yes |
-> | containerGroups | Yes |
-> | átjárók | Yes |
-> | hálózatok | Yes |
-> | titkok | Yes |
-> | volumes | Yes |
+> | alkalmazások | Igen |
+> | containerGroups | Igen |
+> | átjárók | Igen |
+> | hálózatok | Igen |
+> | titkok | Igen |
+> | volumes | Igen |
 
 ## <a name="microsoftservices"></a>Microsoft. Services
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | providerRegistrations | No |
-> | providerRegistrations / resourceTypeRegistrations | No |
-> | kibocsátások | Yes |
+> | providerRegistrations | Nem |
+> | providerRegistrations / resourceTypeRegistrations | Nem |
+> | kibocsátások | Igen |
 
 ## <a name="microsoftsignalrservice"></a>Microsoft. SignalRService
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | SignalR | Yes |
-> | Jelző/eventGridFilters | No |
+> | SignalR | Igen |
+> | Jelző/eventGridFilters | Nem |
 
 ## <a name="microsoftsoftwareplan"></a>Microsoft. SoftwarePlan
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | hybridUseBenefits | No |
+> | hybridUseBenefits | Nem |
 
 ## <a name="microsoftsolutions"></a>Microsoft. Solutions
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | applicationDefinitions | Yes |
-> | alkalmazások | Yes |
-> | jitRequests | Yes |
+> | applicationDefinitions | Igen |
+> | alkalmazások | Igen |
+> | jitRequests | Igen |
 
 ## <a name="microsoftsql"></a>Microsoft. SQL
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | managedInstances | Yes |
-> | managedInstances/adatbázisok | Yes |
-> | managedInstances/adatbázisok/backupShortTermRetentionPolicies | No |
-> | managedInstances/adatbázisok/sémák/táblák/oszlopok/sensitivityLabels | No |
-> | managedInstances/adatbázisok/vulnerabilityAssessments | No |
-> | managedInstances/adatbázisok/vulnerabilityAssessments/szabályok/alaptervek | No |
-> | managedInstances / encryptionProtector | No |
-> | managedInstances/kulcsok | No |
-> | managedInstances / restorableDroppedDatabases / backupShortTermRetentionPolicies | No |
-> | managedInstances / vulnerabilityAssessments | No |
-> | kiszolgálók | Yes |
-> | kiszolgálók/rendszergazdák | No |
-> | kiszolgálók/communicationLinks | No |
-> | kiszolgálók/adatbázisok | Yes |
-> | kiszolgálók/encryptionProtector | No |
-> | kiszolgálók/firewallRules | No |
-> | kiszolgálók/kulcsok | No |
-> | kiszolgálók/restorableDroppedDatabases | No |
-> | kiszolgálók/serviceobjectives | No |
-> | kiszolgálók/tdeCertificates | No |
-> | virtualClusters | No |
+> | managedInstances | Igen |
+> | managedInstances/adatbázisok | Igen |
+> | managedInstances/adatbázisok/backupShortTermRetentionPolicies | Nem |
+> | managedInstances/adatbázisok/sémák/táblák/oszlopok/sensitivityLabels | Nem |
+> | managedInstances/adatbázisok/vulnerabilityAssessments | Nem |
+> | managedInstances/adatbázisok/vulnerabilityAssessments/szabályok/alaptervek | Nem |
+> | managedInstances / encryptionProtector | Nem |
+> | managedInstances/kulcsok | Nem |
+> | managedInstances / restorableDroppedDatabases / backupShortTermRetentionPolicies | Nem |
+> | managedInstances / vulnerabilityAssessments | Nem |
+> | kiszolgálók | Igen |
+> | kiszolgálók/rendszergazdák | Nem |
+> | kiszolgálók/communicationLinks | Nem |
+> | kiszolgálók/adatbázisok | Igen |
+> | kiszolgálók/encryptionProtector | Nem |
+> | kiszolgálók/firewallRules | Nem |
+> | kiszolgálók/kulcsok | Nem |
+> | kiszolgálók/restorableDroppedDatabases | Nem |
+> | kiszolgálók/serviceobjectives | Nem |
+> | kiszolgálók/tdeCertificates | Nem |
+> | virtualClusters | Nem |
 
 ## <a name="microsoftsqlvirtualmachine"></a>Microsoft. SqlVirtualMachine
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | SqlVirtualMachineGroups | Yes |
-> | SqlVirtualMachineGroups / AvailabilityGroupListeners | No |
-> | SqlVirtualMachines | Yes |
+> | SqlVirtualMachineGroups | Igen |
+> | SqlVirtualMachineGroups / AvailabilityGroupListeners | Nem |
+> | SqlVirtualMachines | Igen |
 
 ## <a name="microsoftstorage"></a>Microsoft.Storage
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | deletedAccounts | No |
-> | storageAccounts | Yes |
-> | storageAccounts/blobServices | No |
-> | storageAccounts/fileServices | No |
-> | storageAccounts/queueServices | No |
-> | storageAccounts/szolgáltatások | No |
-> | storageAccounts/szolgáltatások/metricDefinitions | No |
-> | storageAccounts/tableServices | No |
-> | használat | No |
+> | deletedAccounts | Nem |
+> | storageAccounts | Igen |
+> | storageAccounts/blobServices | Nem |
+> | storageAccounts/fileServices | Nem |
+> | storageAccounts/queueServices | Nem |
+> | storageAccounts/szolgáltatások | Nem |
+> | storageAccounts/szolgáltatások/metricDefinitions | Nem |
+> | storageAccounts/tableServices | Nem |
+> | használat | Nem |
 
 ## <a name="microsoftstoragecache"></a>Microsoft. StorageCache
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | gyorsítótárak | Yes |
-> | gyorsítótárak/storageTargets | No |
-> | usageModels | No |
+> | gyorsítótárak | Igen |
+> | gyorsítótárak/storageTargets | Nem |
+> | usageModels | Nem |
 
 ## <a name="microsoftstoragereplication"></a>Microsoft. StorageReplication
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | replicationGroups | No |
+> | replicationGroups | Nem |
 
 ## <a name="microsoftstoragesync"></a>Microsoft. StorageSync
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | storageSyncServices | Yes |
-> | storageSyncServices / registeredServers | No |
-> | storageSyncServices / syncGroups | No |
-> | storageSyncServices / syncGroups / cloudEndpoints | No |
-> | storageSyncServices / syncGroups / serverEndpoints | No |
-> | storageSyncServices/munkafolyamatok | No |
+> | storageSyncServices | Igen |
+> | storageSyncServices / registeredServers | Nem |
+> | storageSyncServices / syncGroups | Nem |
+> | storageSyncServices / syncGroups / cloudEndpoints | Nem |
+> | storageSyncServices / syncGroups / serverEndpoints | Nem |
+> | storageSyncServices/munkafolyamatok | Nem |
 
 ## <a name="microsoftstoragesyncdev"></a>Microsoft. StorageSyncDev
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | storageSyncServices | Yes |
-> | storageSyncServices / registeredServers | No |
-> | storageSyncServices / syncGroups | No |
-> | storageSyncServices / syncGroups / cloudEndpoints | No |
-> | storageSyncServices / syncGroups / serverEndpoints | No |
-> | storageSyncServices/munkafolyamatok | No |
+> | storageSyncServices | Igen |
+> | storageSyncServices / registeredServers | Nem |
+> | storageSyncServices / syncGroups | Nem |
+> | storageSyncServices / syncGroups / cloudEndpoints | Nem |
+> | storageSyncServices / syncGroups / serverEndpoints | Nem |
+> | storageSyncServices/munkafolyamatok | Nem |
 
 ## <a name="microsoftstoragesyncint"></a>Microsoft. StorageSyncInt
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | storageSyncServices | Yes |
-> | storageSyncServices / registeredServers | No |
-> | storageSyncServices / syncGroups | No |
-> | storageSyncServices / syncGroups / cloudEndpoints | No |
-> | storageSyncServices / syncGroups / serverEndpoints | No |
-> | storageSyncServices/munkafolyamatok | No |
+> | storageSyncServices | Igen |
+> | storageSyncServices / registeredServers | Nem |
+> | storageSyncServices / syncGroups | Nem |
+> | storageSyncServices / syncGroups / cloudEndpoints | Nem |
+> | storageSyncServices / syncGroups / serverEndpoints | Nem |
+> | storageSyncServices/munkafolyamatok | Nem |
 
 ## <a name="microsoftstorsimple"></a>Microsoft. StorSimple
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | kezelők | Yes |
+> | kezelők | Igen |
 
 ## <a name="microsoftstreamanalytics"></a>Microsoft. StreamAnalytics
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | fürtök | Yes |
-> | streamingjobs | Yes |
+> | fürtök | Igen |
+> | streamingjobs | Igen |
 
 ## <a name="microsoftsubscription"></a>Microsoft. előfizetés
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | acceptChangeTenant | No |
-> | aliasok | No |
-> | mégse | No |
-> | changeTenantRequest | No |
-> | changeTenantStatus | No |
-> | CreateSubscription | No |
-> | engedélyezése | No |
-> | átnevezés | No |
-> | SubscriptionDefinitions | No |
-> | SubscriptionOperations | No |
-> | előfizetések | No |
+> | acceptChangeTenant | Nem |
+> | aliasok | Nem |
+> | mégse | Nem |
+> | changeTenantRequest | Nem |
+> | changeTenantStatus | Nem |
+> | CreateSubscription | Nem |
+> | engedélyezése | Nem |
+> | átnevezés | Nem |
+> | SubscriptionDefinitions | Nem |
+> | SubscriptionOperations | Nem |
+> | előfizetések | Nem |
 
 ## <a name="microsoftsynapse"></a>Microsoft. szinapszis
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | privateLinkHubs | Yes |
-> | munkaterületek | Yes |
-> | munkaterületek/bigDataPools | Yes |
-> | munkaterületek/operationStatuses | No |
-> | munkaterületek/sqlDatabases | Yes |
-> | munkaterületek/sqlPools | Yes |
+> | privateLinkHubs | Igen |
+> | munkaterületek | Igen |
+> | munkaterületek/bigDataPools | Igen |
+> | munkaterületek/operationStatuses | Nem |
+> | munkaterületek/sqlDatabases | Igen |
+> | munkaterületek/sqlPools | Igen |
 
 ## <a name="microsofttimeseriesinsights"></a>Microsoft. TimeSeriesInsights
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | környezetben | Yes |
-> | környezetek/accessPolicies | No |
-> | környezetek/eventsources | Yes |
-> | környezetek/referenceDataSets | Yes |
+> | környezetben | Igen |
+> | környezetek/accessPolicies | Nem |
+> | környezetek/eventsources | Igen |
+> | környezetek/referenceDataSets | Igen |
 
 ## <a name="microsofttoken"></a>Microsoft. token
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | tárolja | Yes |
-> | üzletek/accessPolicies | No |
-> | üzletek/szolgáltatások | No |
-> | üzletek/szolgáltatások/jogkivonatok | No |
+> | tárolja | Igen |
+> | üzletek/accessPolicies | Nem |
+> | üzletek/szolgáltatások | Nem |
+> | üzletek/szolgáltatások/jogkivonatok | Nem |
 
 ## <a name="microsoftvirtualmachineimages"></a>Microsoft. VirtualMachineImages
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | imageTemplates | Yes |
-> | imageTemplates / runOutputs | No |
+> | imageTemplates | Igen |
+> | imageTemplates / runOutputs | Nem |
 
 ## <a name="microsoftvmware"></a>Microsoft. VMware
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | ArcZones | Yes |
-> | ResourcePools | Yes |
-> | VCenter | Yes |
-> | VirtualMachines | Yes |
-> | VirtualMachineTemplates | Yes |
-> | VirtualNetworks | Yes |
+> | ArcZones | Igen |
+> | ResourcePools | Igen |
+> | VCenter | Igen |
+> | VirtualMachines | Igen |
+> | VirtualMachineTemplates | Igen |
+> | VirtualNetworks | Igen |
 
 ## <a name="microsoftvmwarecloudsimple"></a>Microsoft. VMwareCloudSimple
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | dedicatedCloudNodes | Yes |
-> | dedicatedCloudServices | Yes |
-> | virtualMachines | Yes |
+> | dedicatedCloudNodes | Igen |
+> | dedicatedCloudServices | Igen |
+> | virtualMachines | Igen |
 
 ## <a name="microsoftvnfmanager"></a>Microsoft. VnfManager
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | eszközök | Yes |
-> | registeredSubscriptions | No |
-> | szállítók | No |
-> | szállítók/SKU-i | No |
-> | szállítók/vnfs | No |
-> | virtualNetworkFunctionSkus | No |
-> | vnfs | Yes |
+> | eszközök | Igen |
+> | registeredSubscriptions | Nem |
+> | szállítók | Nem |
+> | szállítók/SKU-i | Nem |
+> | szállítók/vnfs | Nem |
+> | virtualNetworkFunctionSkus | Nem |
+> | vnfs | Igen |
 
 ## <a name="microsoftvsonline"></a>Microsoft. VSOnline
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | fiókok | Yes |
-> | tervek | Yes |
-> | registeredSubscriptions | No |
+> | fiókok | Igen |
+> | tervek | Igen |
+> | registeredSubscriptions | Nem |
 
 ## <a name="microsoftweb"></a>Microsoft. Web
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | apiManagementAccounts | No |
-> | apiManagementAccounts / apiAcls | No |
-> | apiManagementAccounts/API-k | No |
-> | apiManagementAccounts/API-k/apiAcls | No |
-> | apiManagementAccounts/API-k/connectionAcls | No |
-> | apiManagementAccounts/API-k/kapcsolatok | No |
-> | apiManagementAccounts/API-k/kapcsolatok/connectionAcls | No |
-> | apiManagementAccounts/API-k/localizedDefinitions | No |
-> | apiManagementAccounts / connectionAcls | No |
-> | apiManagementAccounts/kapcsolatok | No |
-> | billingMeters | No |
-> | tanúsítványok | Yes |
-> | connectionGateways | Yes |
-> | kapcsolatok | Yes |
-> | customApis | Yes |
-> | deletedSites | No |
-> | hostingEnvironments | Yes |
-> | hostingEnvironments / eventGridFilters | No |
-> | hostingEnvironments / multiRolePools | No |
-> | hostingEnvironments / workerPools | No |
-> | kubeEnvironments | Yes |
-> | publishingUsers | No |
-> | javaslatok | No |
-> | resourceHealthMetadata | No |
-> | Runtimes | No |
-> | Kiszolgálófarmok | Yes |
-> | Kiszolgálófarmok/eventGridFilters | No |
-> | helyek | Yes |
-> | helyek/konfiguráció  | No |
-> | helyek/eventGridFilters | No |
-> | helyek/hostNameBindings | No |
-> | helyek/networkConfig | No |
-> | helyek/premieraddons | Yes |
-> | helyek/bővítőhelyek | Yes |
-> | helyek/bővítőhelyek/eventGridFilters | No |
-> | helyek/bővítőhelyek/hostNameBindings | No |
-> | helyek/bővítőhelyek/networkConfig | No |
-> | sourceControls | No |
-> | staticSites | Yes |
-> | érvényesít | No |
-> | verifyHostingEnvironmentVnet | No |
+> | apiManagementAccounts | Nem |
+> | apiManagementAccounts / apiAcls | Nem |
+> | apiManagementAccounts/API-k | Nem |
+> | apiManagementAccounts/API-k/apiAcls | Nem |
+> | apiManagementAccounts/API-k/connectionAcls | Nem |
+> | apiManagementAccounts/API-k/kapcsolatok | Nem |
+> | apiManagementAccounts/API-k/kapcsolatok/connectionAcls | Nem |
+> | apiManagementAccounts/API-k/localizedDefinitions | Nem |
+> | apiManagementAccounts / connectionAcls | Nem |
+> | apiManagementAccounts/kapcsolatok | Nem |
+> | billingMeters | Nem |
+> | tanúsítványok | Igen |
+> | connectionGateways | Igen |
+> | kapcsolatok | Igen |
+> | customApis | Igen |
+> | deletedSites | Nem |
+> | hostingEnvironments | Igen |
+> | hostingEnvironments / eventGridFilters | Nem |
+> | hostingEnvironments / multiRolePools | Nem |
+> | hostingEnvironments / workerPools | Nem |
+> | kubeEnvironments | Igen |
+> | publishingUsers | Nem |
+> | javaslatok | Nem |
+> | resourceHealthMetadata | Nem |
+> | Runtimes | Nem |
+> | Kiszolgálófarmok | Igen |
+> | Kiszolgálófarmok/eventGridFilters | Nem |
+> | helyek | Igen |
+> | helyek/konfiguráció  | Nem |
+> | helyek/eventGridFilters | Nem |
+> | helyek/hostNameBindings | Nem |
+> | helyek/networkConfig | Nem |
+> | helyek/premieraddons | Igen |
+> | helyek/bővítőhelyek | Igen |
+> | helyek/bővítőhelyek/eventGridFilters | Nem |
+> | helyek/bővítőhelyek/hostNameBindings | Nem |
+> | helyek/bővítőhelyek/networkConfig | Nem |
+> | sourceControls | Nem |
+> | staticSites | Igen |
+> | érvényesít | Nem |
+> | verifyHostingEnvironmentVnet | Nem |
 
 ## <a name="microsoftwindowsdefenderatp"></a>Microsoft. WindowsDefenderATP
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | diagnosticSettings | No |
-> | diagnosticSettingsCategories | No |
+> | diagnosticSettings | Nem |
+> | diagnosticSettingsCategories | Nem |
 
 ## <a name="microsoftwindowsesu"></a>Microsoft. WindowsESU
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | multipleActivationKeys | Yes |
+> | multipleActivationKeys | Igen |
 
 ## <a name="microsoftwindowsiot"></a>Microsoft. WindowsIoT
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | DeviceServices | Yes |
+> | DeviceServices | Igen |
 
 ## <a name="microsoftworkloadbuilder"></a>Microsoft. WorkloadBuilder
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | számítási feladatok | Yes |
-> | munkaterhelések/példányok | No |
-> | munkaterhelések/verziók | No |
-> | munkaterhelések/verziók/összetevők | No |
+> | számítási feladatok | Igen |
+> | munkaterhelések/példányok | Nem |
+> | munkaterhelések/verziók | Nem |
+> | munkaterhelések/verziók/összetevők | Nem |
 
 ## <a name="microsoftworkloadmonitor"></a>Microsoft. WorkloadMonitor
 
 > [!div class="mx-tableFixed"]
 > | Erőforrás típusa | Törlés Teljes mód esetén |
 > | ------------- | ----------- |
-> | összetevők | No |
-> | componentsSummary | No |
-> | monitorInstances | No |
-> | monitorInstancesSummary | No |
-> | figyeli | No |
+> | összetevők | Nem |
+> | componentsSummary | Nem |
+> | monitorInstances | Nem |
+> | monitorInstancesSummary | Nem |
+> | figyeli | Nem |
 > | notificationSettings | Nem |
 
 ## <a name="next-steps"></a>Következő lépések

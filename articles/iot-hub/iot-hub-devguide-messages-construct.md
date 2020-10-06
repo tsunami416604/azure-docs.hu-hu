@@ -11,12 +11,12 @@ ms.author: asrastog
 ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
-ms.openlocfilehash: dd2b88d923d0398dc42362242b94b978ccd24252
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.openlocfilehash: 06db7b46d095a79177b80bba6df3d5e9aadad16b
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87336718"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91766972"
 ---
 # <a name="create-and-read-iot-hub-messages"></a>IoT Hub-üzenetek létrehozása és olvasása
 
@@ -61,8 +61,8 @@ További információ a különböző protokollok használatával elküldött ü
 | iothub – összekapcsolási modul azonosítója |Az eszközről a felhőbe irányuló üzenetekben IoT Hub által beállított azonosító. Az üzenetet küldő eszköz **moduleId** tartalmazza. | Nem | connectionModuleId |
 | iothub – kapcsolatok – hitelesítés – generálási azonosító |Az eszközről a felhőbe irányuló üzenetekben IoT Hub által beállított azonosító. Az üzenetet küldő eszköz **connectionDeviceGenerationId** (az [eszköz identitásának tulajdonságai](iot-hub-devguide-identity-registry.md#device-identity-properties)alapján) tartalmazza. | Nem |connectionDeviceGenerationId |
 | iothub – kapcsolatok – hitelesítés – módszer |Az eszközről a felhőbe irányuló üzenetekben IoT Hub által beállított hitelesítési módszer. Ez a tulajdonság az üzenetet küldő eszköz hitelesítéséhez használt hitelesítési módszerről tartalmaz információkat.| Nem | connectionAuthMethod |
-| DT – DataSchema | Ezt az értéket az IoT hub állítja be az eszközről a felhőbe irányuló üzenetekben. Ez tartalmazza az eszköz-kapcsolatban beállított eszköz-modell AZONOSÍTÓját. Ez a szolgáltatás a [IoT Plug and Play nyilvános előzetes](../iot-pnp/overview-iot-plug-and-play.md)verziójának részeként érhető el. | Nem | n.a. |
-| DT – tárgy | Annak az összetevőnek a neve, amely az eszközről a felhőbe irányuló üzeneteket küld. Ez a szolgáltatás a [IoT Plug and Play nyilvános előzetes](../iot-pnp/overview-iot-plug-and-play.md)verziójának részeként érhető el. | Igen | n.a. |
+| DT – DataSchema | Ezt az értéket az IoT hub állítja be az eszközről a felhőbe irányuló üzenetekben. Ez tartalmazza az eszköz-kapcsolatban beállított eszköz-modell AZONOSÍTÓját. | Nem | N/A |
+| DT – tárgy | Annak az összetevőnek a neve, amely az eszközről a felhőbe irányuló üzeneteket küld. | Igen | N/A |
 
 ## <a name="system-properties-of-c2d-iot-hub-messages"></a>**C2D** IoT hub üzenetek rendszertulajdonságai
 
@@ -90,7 +90,7 @@ A Rendszertulajdonságok nevei attól függően változnak, hogy az üzenetek mi
 |Kapcsolatok hitelesítési módszere|iothub – kapcsolatok – hitelesítés – módszer|connectionAuthMethod|iothub – kapcsolatok – hitelesítés – módszer|iothub – kapcsolatok – hitelesítés – módszer|
 |contentType|Content-Type|contentType|ContentType|iothub – tartalomtípus|
 |contentEncoding|Content-Encoding|contentEncoding|ContentEncoding|iothub – tartalom kódolása|
-|iothub – enqueuedtime|iothub – enqueuedtime|enqueuedTime| n.a. |iothub – enqueuedtime|
+|iothub – enqueuedtime|iothub – enqueuedtime|enqueuedTime| N/A |iothub – enqueuedtime|
 |CorrelationId|korrelációs azonosító|correlationId|CorrelationId|korrelációs azonosító|
 |DT – DataSchema|DT – DataSchema|DT – DataSchema|DT – DataSchema|DT – DataSchema|
 |DT – tárgy|DT – tárgy|DT – tárgy|DT – tárgy|DT – tárgy|
@@ -125,7 +125,7 @@ A **iothub-kapcsolat-Auth-Method** tulajdonság JSON szerializált objektumot ta
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ a IoT Hub üzenet méretének korlátairól: [IoT hub kvóták és szabályozás](iot-hub-devguide-quotas-throttling.md).
 

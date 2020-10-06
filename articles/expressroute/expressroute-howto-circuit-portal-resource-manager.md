@@ -1,18 +1,18 @@
 ---
-title: 'Rövid útmutató: áramkör létrehozása és módosítása ExpressRoute'
-description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre, helyezhet üzembe, ellenőrizheti, frissítheti, törölheti és kiépítheti az ExpressRoute-áramkört.
+title: 'Rövid útmutató: áramkör létrehozása és módosítása ExpressRoute-Azure Portal'
+description: Ebből a rövid útmutatóból megtudhatja, hogyan hozhat létre, helyezhet üzembe, ellenőrizheti, frissítheti, törölheti és kiépítheti az ExpressRoute-áramkört a Azure Portal használatával.
 services: expressroute
 author: duongau
 ms.service: expressroute
 ms.topic: quickstart
 ms.date: 10/05/2020
 ms.author: duau
-ms.openlocfilehash: c944feb6cc77d8337fccb64915baa576e590ef40
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: dbb28726d1c2eaf887ced818284d4b1e0298f8db
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/06/2020
-ms.locfileid: "91761748"
+ms.locfileid: "91767812"
 ---
 # <a name="quickstart-create-and-modify-an-expressroute-circuit"></a>Gyors útmutató: ExpressRoute-kör létrehozása és módosítása
 

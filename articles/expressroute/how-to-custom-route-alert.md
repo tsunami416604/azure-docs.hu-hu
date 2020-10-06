@@ -7,12 +7,12 @@ ms.service: expressroute
 ms.topic: how-to
 ms.date: 05/29/2020
 ms.author: duau
-ms.openlocfilehash: e546963a7ca90c7494164af7afefbb4e78b2259b
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.openlocfilehash: 67591e9227ff32e81b973c181da2c1374f0ded47
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91651938"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91766675"
 ---
 # <a name="configure-custom-alerts-to-monitor-advertised-routes"></a>Egyéni riasztások konfigurálása a meghirdetett elérési utak figyeléséhez
 
@@ -32,7 +32,7 @@ Az egyéni riasztások beállítása három fő lépésen alapul:
 
 3. Hozzon létre egy logikai alkalmazást, amely az Automation-fiókot fogja használni, és küldjön riasztási e-mailt, ha a szám nagyobb, mint a küszöbérték (például 160).
 
-## <a name="before-you-begin"></a><a name="before"></a>Kezdés előtt
+## <a name="before-you-begin"></a><a name="before"></a>Előkészületek
 
 A konfigurálás megkezdése előtt győződjön meg a következő feltételek teljesüléséről:
 
@@ -52,7 +52,7 @@ A konfigurálás megkezdése előtt győződjön meg a következő feltételek t
 
 ## <a name="create-and-configure-accounts"></a><a name="accounts"></a>Fiókok létrehozása és konfigurálása
 
-Amikor Automation-fiókot hoz létre a Azure Portalban, a rendszer automatikusan létrehoz egy [futtató](../automation/manage-runas-account.md#types-of-run-as-accounts) fiókot. Ez a fiók a következő műveleteket végzi el:
+Amikor Automation-fiókot hoz létre a Azure Portalban, a rendszer automatikusan létrehoz egy [futtató](../automation/automation-security-overview.md#run-as-accounts) fiókot. Ez a fiók a következő műveleteket végzi el:
 
 * Létrehoz egy Azure Active Directory (Azure AD) alkalmazást egy önaláírt tanúsítvánnyal. A futtató fióknak olyan tanúsítványa van, amelyet alapértelmezés szerint minden évben meg kell újítani.
 

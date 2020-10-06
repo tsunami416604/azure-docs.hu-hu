@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 5/12/2020
-ms.openlocfilehash: b47ab44c5a5f8faad85b60032a6781475235a170
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 12623dccdc298aaad23ad6779caf33d895c5634a
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83402236"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91766121"
 ---
 # <a name="monitor-azure-database-for-mysql-performance-with-query-store"></a>A Azure Database for MySQL teljesítményének figyelése a lekérdezési tárolóval
 
@@ -108,15 +108,15 @@ A [Azure Portal](howto-server-parameters.md)   vagy az [Azure CLI](howto-conf
 
 ## <a name="views-and-functions"></a>Nézetek és függvények
 
-A lekérdezési tárolót a következő nézetekkel és függvényekkel tekintheti meg és kezelheti. A [Select jogosultsági nyilvános szerepkörben](howto-create-users.md#how-to-create-additional-admin-users-in-azure-database-for-mysql) bárki megtekintheti ezeket a nézeteket a lekérdezési tárolóban lévő információk megjelenítéséhez. Ezek a nézetek csak a **MySQL** -adatbázisban érhetők el.
+A lekérdezési tárolót a következő nézetekkel és függvényekkel tekintheti meg és kezelheti. A [Select jogosultsági nyilvános szerepkörben](howto-create-users.md#to-create-additional-admin-users-in-azure-database-for-mysql) bárki megtekintheti ezeket a nézeteket a lekérdezési tárolóban lévő információk megjelenítéséhez. Ezek a nézetek csak a **MySQL** -adatbázisban érhetők el.
 
 A lekérdezések normalizálása úgy történik, hogy a konstansok és konstansok eltávolítása után megvizsgálják a szerkezetét. Ha két lekérdezés megegyezik a literális értékektől, akkor ugyanazzal a kivonattal fog rendelkezni.
 
-### <a name="mysqlquery_store"></a>MySQL. query_store
+### <a name="mysqlquery_store"></a>mysql.query_store
 
 Ez a nézet a lekérdezési tárolóban lévő összes adathalmazt adja vissza. Minden különböző adatbázis-AZONOSÍTÓhoz, felhasználói AZONOSÍTÓhoz és lekérdezési AZONOSÍTÓhoz egy sor van.
 
-| **Name (Név)** | **Adattípus** | **IS_NULLABLE** | **Leírás** |
+| **Név** | **Adattípus** | **IS_NULLABLE** | **Leírás** |
 |---|---|---|---|
 | `schema_name`| varchar (64) | NO | A séma neve |
 | `query_id`| bigint (20) | NO| Az adott lekérdezéshez generált egyedi azonosító, ha ugyanazt a lekérdezést különböző sémában hajtja végre, a rendszer új azonosítót fog generálni. |
@@ -145,11 +145,11 @@ Ez a nézet a lekérdezési tárolóban lévő összes adathalmazt adja vissza. 
 | `first_seen` | időbélyeg| NO| A lekérdezés első előfordulása (UTC) az összesítési ablakban|
 | `last_seen` | időbélyeg| NO| A lekérdezés utolsó előfordulása (UTC) ebben az összesítési ablakban|
 
-### <a name="mysqlquery_store_wait_stats"></a>MySQL. query_store_wait_stats
+### <a name="mysqlquery_store_wait_stats"></a>mysql.query_store_wait_stats
 
 Ez a nézet visszaadja az események várakozási idejének értékét a lekérdezési tárolóban. Minden különböző adatbázis-AZONOSÍTÓhoz, felhasználói AZONOSÍTÓhoz, lekérdezési AZONOSÍTÓhoz és eseményhez egy sor van.
 
-| **Name (Név)**| **Adattípus** | **IS_NULLABLE** | **Leírás** |
+| **Név**| **Adattípus** | **IS_NULLABLE** | **Leírás** |
 |---|---|---|---|
 | `interval_start` | időbélyeg | NO| Az időköz kezdete (15 perces növekmény)|
 | `interval_end` | időbélyeg | NO| Az intervallum vége (15 perces növekmény)|
@@ -163,7 +163,7 @@ Ez a nézet visszaadja az események várakozási idejének értékét a lekérd
 
 ### <a name="functions"></a>Functions
 
-| **Name (Név)**| **Leírás** |
+| **Név**| **Leírás** |
 |---|---|
 | `mysql.az_purge_querystore_data(TIMESTAMP)` | A lekérdezési tár összes adatának kiürítése a megadott időbélyegző előtt |
 | `mysql.az_procedure_purge_querystore_event(TIMESTAMP)` | A várakozási esemény összes adatának törlése a megadott időbélyegző előtt |
@@ -176,6 +176,6 @@ Ez a nézet visszaadja az események várakozási idejének értékét a lekérd
 - A várakozási statisztikák megőrzési időtartama 24 óra.
 - A várakozási statisztikák minta használatával rögzítik az események egy részét. A gyakoriság módosítható a paraméter használatával `query_store_wait_sampling_frequency` .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [lekérdezési teljesítményről](concepts-query-performance-insight.md)

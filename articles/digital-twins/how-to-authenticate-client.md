@@ -8,20 +8,20 @@ ms.date: 4/22/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.custom: devx-track-js
-ms.openlocfilehash: dd0d3e462f0b2d8b525e63d65d657a8f056d01a9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 0438632a36fe14d35210cb5acb8d3a50d0f038b7
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91331862"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91767821"
 ---
 # <a name="write-client-app-authentication-code"></a>Ügyfél-alkalmazás hitelesítési kódjának írása
 
 Miután [beállított egy Azure digitális Twins-példányt és-hitelesítést](how-to-set-up-instance-portal.md), létrehozhat egy ügyfélalkalmazás, amelyet a példánnyal való interakcióhoz használni fog. Miután beállította a Starter Client projektet, ez a cikk bemutatja, **hogyan írhat kódot az adott ügyfélalkalmazás számára** az Azure Digital Twins-példánnyal való hitelesítéshez.
 
 Ebben a cikkben két módszer létezik a mintakód megírására. A választott nyelvtől függően használhatja az Ön számára legmegfelelőbbet:
-* A mintakód első szakasza az Azure Digital Twins .NET (C#) SDK-t használja. Az SDK a .NET-hez készült Azure SDK része, és itt található: az [*Azure IoT Digital Twin ügyféloldali kódtár a .net-hez*](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core).
-* A mintakód második szakasza olyan felhasználók számára készült, akik nem a .NET SDK-t használják, hanem az autorest által generált SDK-kat használják más nyelveken. A stratégiával kapcsolatos további információkért lásd [*: útmutató: egyéni SDK-k létrehozása az Azure Digital Twins szolgáltatáshoz autorest használatával*](how-to-create-custom-sdks.md).
+* A mintakód első szakasza az Azure Digital Twins .NET (C#) SDK-t használja. Az SDK a .NET-hez készült Azure SDK része, és itt található: az [*Azure IoT Digital Twin ügyféloldali kódtár a .net-hez*](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/digitaltwins/Azure.DigitalTwins.Core). A [Java](https://search.maven.org/artifact/com.azure/azure-digitaltwins-core/1.0.0-beta.1/jar ) és a [JavaScript](https://www.npmjs.com/package/@azure/digital-twins/v/1.0.0-preview.1)is támogatott SDK-kat is használhat, amelyek hasonló módon használhatók.
+* A mintakód második szakasza olyan felhasználók számára készült, akik nem használnak a megadott SDK-t, hanem az autorest által generált SDK-kat más nyelveken használják. A stratégiával kapcsolatos további információkért lásd [*: útmutató: egyéni SDK-k létrehozása az Azure Digital Twins szolgáltatáshoz autorest használatával*](how-to-create-custom-sdks.md).
 
 További információ az Azure Digital Twins API-jai és SDK [*-król: az Azure Digital Twins API-k és SDK*](how-to-use-apis-sdks.md)-k használata.
 
@@ -32,6 +32,8 @@ Először végezze el a telepítési lépéseket a következő [*útmutatóban: 
 A folytatáshoz szüksége lesz egy ügyfélalkalmazás-projektre, amelyben a kódot írja. Ha még nem rendelkezik beállított ügyfélalkalmazás-projekttel, hozzon létre egy alapszintű projektet a választott nyelven az oktatóanyag használatával.
 
 ## <a name="authentication-and-client-creation-net-c-sdk"></a>Hitelesítés és ügyfél-létrehozás: .NET (C#) SDK
+
+Ez a szakasz egy példát mutat be a C#-ban a megadott .NET SDK használatával.
 
 Először is vegye fel a következő csomagokat a projektbe a .NET SDK és a hitelesítési eszközök használatához ehhez a útmutatóhoz:
 * `Azure.DigitalTwins.Core`
@@ -100,7 +102,7 @@ Továbbá a függvények hitelesítésének használatához ne felejtse el a kö
 
 ## <a name="authentication-with-an-autorest-generated-sdk"></a>Hitelesítés az autorest által generált SDK-val
 
-Ha nem a .NET-et használja, dönthet úgy, hogy az SDK-függvénytárat tetszőleges nyelven felépíti, ahogy azt a [*útmutató: egyéni SDK-k létrehozása az Azure Digital Twins*](how-to-create-custom-sdks.md)szolgáltatáshoz az autorest használatával című témakör ismerteti.
+Ha nem a megadott SDK-k (.NET, Java, JavaScript) egyikét használja, dönthet úgy, hogy az SDK-kódtárat az Ön által választott nyelven, az [*autorest használatával létrehozott egyéni SDK-k létrehozása az Azure Digital ikrek számára*](how-to-create-custom-sdks.md)című témakörben leírtak szerint.
 
 Ez a szakasz azt ismerteti, hogyan lehet hitelesítést végezni ebben az esetben.
 

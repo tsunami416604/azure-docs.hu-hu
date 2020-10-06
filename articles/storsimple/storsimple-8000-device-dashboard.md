@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 07/03/2017
 ms.author: alkohli
-ms.openlocfilehash: ed624fd5fb86b95e0b79c1c7ed4de50749ec7046
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 93d230656fd7ef34e76a143fb3186d23f8d3afed
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85512038"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91766250"
 ---
 # <a name="use-the-device-summary-in-storsimple-device-manager-service"></a>Az eszköz összegzésének használata a StorSimple Eszközkezelő szolgáltatásban
 
@@ -44,7 +44,7 @@ Az Essentials terület a fontos tulajdonságok, például az állapot, a modell,
 
 ![Eszköz Essentials](./media/storsimple-8000-device-dashboard/device-summary3.png)
 
-## <a name="monitoring"></a>Figyelés
+## <a name="monitoring"></a>Nyomon követés
 
 * A **riasztások** csempéje az eszközre vonatkozó összes aktív riasztást tartalmazza, a riasztás súlyossága szerint csoportosítva.
 
@@ -86,14 +86,14 @@ Az Essentials terület a fontos tulajdonságok, például az állapot, a modell,
 
 * A **kapacitás** csempe az eszközön az összes rendelkezésre álló tárterülethez képest kiépített elsődleges tárterületet jeleníti meg. A **kiépített** mennyiség a használatra előkészített és lefoglalt tárterületre utal, és a **fennmaradó** kapacitás az eszközön kiépíthető fennmaradó kapacitásra utal. 
 
-    ![Használati csempe](./media/storsimple-8000-device-dashboard/device-summary8.png)
+    ![Használat csempe 2](./media/storsimple-8000-device-dashboard/device-summary8.png)
 
     Erre a csempére kattintva megtekintheti, hogyan legyen kiépítve a kapacitás a többszintű és a helyileg rögzített kötetek között. A **fennmaradó többszintű** kapacitás a rendelkezésre álló kapacitás, amelyet a felhőbe lehet kiépíteni, míg a **fennmaradó helyi** érték az eszközhöz csatolt lemezek kapacitása marad.
 
     ![Kattintson a használati diagram elemre.](./media/storsimple-8000-device-dashboard/device-summary13.png)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * További információ a [StorSimple szolgáltatás összefoglalási](storsimple-8000-service-dashboard.md)paneljéről.
 * További információ [a StorSimple Eszközkezelő szolgáltatás a StorSimple-eszköz felügyeletéhez való használatáról](storsimple-8000-manager-service-administration.md).
 

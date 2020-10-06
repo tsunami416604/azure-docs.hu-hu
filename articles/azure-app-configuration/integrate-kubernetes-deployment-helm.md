@@ -8,12 +8,12 @@ ms.service: azure-app-configuration
 ms.topic: tutorial
 ms.date: 04/14/2020
 ms.author: shuawan
-ms.openlocfilehash: aac42e6f782ac1e939ff955c5811238f99e703eb
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 2b5440ad2bec94d4ef14fa29e723cc91a4fcdf10
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "83725669"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91766862"
 ---
 # <a name="integrate-with-kubernetes-deployment-using-helm"></a>Integrálás a Kubernetes üzembe helyezésével a Helm használatával
 
@@ -41,7 +41,7 @@ Ez az oktatóanyag azt feltételezi, hogy a Kubernetes a Helmtel való felügyel
 
 [!INCLUDE [azure-app-configuration-create](../../includes/azure-app-configuration-create.md)]
 
-6. Válassza a **Configuration Explorer**  >  **Létrehozás** lehetőséget a következő kulcs-érték párok hozzáadásához:
+7. Válassza a **Configuration Explorer**  >  **Létrehozás** lehetőséget a következő kulcs-érték párok hozzáadásához:
 
     | Kulcs | Érték |
     |---|---|
@@ -237,7 +237,7 @@ Az alkalmazás konfigurációjában az Key Vault-referenciák egyik titka, **jel
 
 [!INCLUDE [azure-app-configuration-cleanup](../../includes/azure-app-configuration-cleanup.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban az Azure-alkalmazás konfigurációs beállításait exportálta egy Kubernetes-telepítésben a Helm használatával. Ha többet szeretne megtudni az alkalmazások konfigurációjának használatáról, folytassa az Azure CLI-mintákkal.
 

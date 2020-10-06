@@ -10,12 +10,12 @@ ms.date: 10/05/2020
 ms.topic: overview
 ms.custom: references_regions
 ms.service: azure-communication-services
-ms.openlocfilehash: ada37175988155332503c0c15e998ab284d099e5
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: 6a63df282cadf86668e69d2422a6c791e86010b6
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/06/2020
-ms.locfileid: "91758506"
+ms.locfileid: "91767124"
 ---
 # <a name="plan-your-telephony-and-sms-solution"></a>A telefonos és SMS-megoldás megtervezése
 
@@ -23,6 +23,9 @@ ms.locfileid: "91758506"
 
 
 Az Azure kommunikációs szolgáltatások lehetővé teszik a telefonszámok használatát hanghívások készítésére és SMS-üzenetek küldésére a nyilvános kapcsolású telefonos hálózattal (PSTN). Ebben a dokumentumban áttekintjük a telefonos és SMS-megoldások kommunikációs szolgáltatásokkal történő megtervezéséhez szükséges telefonszámokat, terveket és régiókat.
+
+[!INCLUDE [Emergency Calling Notice](../../includes/emergency-calling-notice-include.md)]
+
 
 ## <a name="phone-number-types-in-azure-communication-services"></a>Telefonszám-típusok az Azure kommunikációs szolgáltatásokban
  
