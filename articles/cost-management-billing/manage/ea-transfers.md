@@ -8,12 +8,12 @@ ms.subservice: enterprise
 ms.topic: conceptual
 ms.date: 09/03/2020
 ms.author: banders
-ms.openlocfilehash: c4d328d2e2ef562813bcb529c104b3559f03066e
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 140fc450623f0dcb6c7cf1bf08a8cfc43b094763
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89442428"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371898"
 ---
 # <a name="azure-enterprise-transfers"></a>Azure Enterprise-átvitelek
 
@@ -101,13 +101,13 @@ Az Azure EA Portalon át lehet adni az előfizetéseket egyik fióktulajdonostó
 
 Ha az Azure-előfizetést ugyanazon Azure Active Directory-bérlő egy másik fiókjába helyezi át, akkor az összes [Azure szerepköralapú hozzáférés-vezérléssel (Azure RBAC)](../../role-based-access-control/overview.md) rendelkező felhasználó, csoport és szolgáltatásnév megtartja az erőforrások kezeléséhez való hozzáférését.
 
-Az előfizetéshez RBAC-hozzáféréssel rendelkező felhasználók megtekintése:
+Az előfizetéshez Azure RBAC-hozzáféréssel rendelkező felhasználók megtekintése:
 
 1. Az Azure Portalon nyissa meg az **Előfizetések** oldalt.
 2. Válassza ki a megtekinteni kívánt előfizetést, majd válassza a **Hozzáférés-vezérlés (IAM)** elemet.
-3. Válassza a **Szerepkör-hozzárendelések** lehetőséget. A szerepkör-hozzárendelések oldala felsorolja az összes felhasználót, aki RBAC-hozzáféréssel rendelkezik az előfizetéshez.
+3. Válassza a **Szerepkör-hozzárendelések** lehetőséget. A szerepkör-hozzárendelések oldala felsorolja az összes felhasználót, aki Azure RBAC-hozzáféréssel rendelkezik az előfizetéshez.
 
-Ha az előfizetést egy másik Azure AD-bérlő fiókjába helyezi át, akkor az összes [RBAC-vel](../../role-based-access-control/overview.md) rendelkező felhasználó, csoport és szolgáltatásnév _elveszíti_ a hozzáférését az erőforrások kezeléséhez. Bár nincs RBAC-hozzáférés, mégis előfordulhat, hogy az előfizetést el lehet érni biztonsági mechanizmusokon keresztül, például:
+Ha az előfizetést egy másik Azure AD-bérlő fiókjába helyezi át, akkor az összes [Azure RBAC-vel](../../role-based-access-control/overview.md) rendelkező felhasználó, csoport és szolgáltatásnév _elveszíti_ a hozzáférését az erőforrások kezeléséhez. Bár nincs Azure RBAC-hozzáférés, mégis előfordulhat, hogy az előfizetést el lehet érni biztonsági mechanizmusokon keresztül, például:
 
 - Felügyeleti tanúsítványok, amelyek rendszergazdai jogosultságokat biztosítanak a felhasználónak az előfizetés erőforrásaihoz. További információért lásd: [Felügyeleti tanúsítvány létrehozása és feltöltése az Azure szolgáltatáshoz](../../cloud-services/cloud-services-certs-create.md).
 - A Storage-hoz hasonló szolgáltatások hozzáférési kulcsai. További információkat az [Azure Storage-fiókok áttekintésében](../../storage/common/storage-account-overview.md) találhat.

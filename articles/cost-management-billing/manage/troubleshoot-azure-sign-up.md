@@ -10,12 +10,12 @@ ms.subservice: billing
 ms.topic: troubleshooting
 ms.date: 08/20/2020
 ms.author: v-miegge
-ms.openlocfilehash: 86f9f92810cff241f816dadfc6e1e8ca120f1f4a
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 3e611e25288d52b0be93c76e8a3a28ce6d7d5088
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88686649"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91326606"
 ---
 # <a name="troubleshoot-issues-when-you-sign-up-for-a-new-account-in-azure-portal-or-azure-account-center"></a>Új fiók az Azure Portalon vagy az Azure Fiókközpontban történő regisztrálásának hibaelhárítása
 
@@ -131,7 +131,7 @@ A böngésző cookie-beállításainak frissítéséhez hajtsa végre az alábbi
 
 ### <a name="i-saw-a-charge-on-my-free-trial-account"></a>Megjelent egy díjtétel az ingyenes próbafiókban
 
-A regisztráció után előfordulhat, hogy megjelenik egy átmeneti, kis összegű azonosítási zárolás a hitelkártyához tartozó számláján. Ez az összeg 3–5 napon belül fel lesz oldva. Ha aggódik a költségek kezelése miatt, tekintse meg [a váratlan költségek elkerülését](https://docs.microsoft.com/azure/cost-management-billing/manage/getting-started) bemutató témakört.
+A regisztráció után előfordulhat, hogy megjelenik egy átmeneti, kis összegű azonosítási zárolás a hitelkártyához tartozó számláján. Ez az összeg 3–5 napon belül fel lesz oldva. Ha aggódik a költségek kezelése miatt, tekintse meg a [váratlan költségek elemzését](../understand/analyze-unexpected-charges.md) ismertető témakört.
 
 ## <a name="agreement"></a>Megállapodás
 

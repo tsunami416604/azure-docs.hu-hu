@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: micflan
 ms.custom: ''
-ms.openlocfilehash: 64e7f0eae10f590ffd268b43b63a5d8cb0987c57
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 16ddb9cfc2f0731381b1c92d8fdb5f4cffa1ca63
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88683147"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91372357"
 ---
 # <a name="understand-and-work-with-scopes"></a>A hatókörök ismertetése és használata
 
@@ -26,7 +26,7 @@ A _hatókör_ az Azure-erőforrás-hierarchia egyik csomópontja, amelynek keret
 - Számlázási adatok, mint például kifizetések és számlák
 - Felhőszolgáltatások, mint például költséggel és szabályzattal kapcsolatos irányítás
 
-A hatókörökben lehet kezelni a számlázási adatokat, rendelkezhet a kifizetésekre vonatkozó konkrét szerepkörökkel, megtekinthetők a számlák, és általános fiókkezelési feladatok végezhetők el. A számlázási és fiókszerepköröket az erőforrás-kezelésre használt szerepköröktől elkülönítve kezelik, amelyek az [Azure RBAC-t](../../role-based-access-control/overview.md) használják. Annak érdekében, hogy egyértelműen meg lehessen különböztetni a különálló hatókörök mögötti szándékot, beleértve a hozzáférés-vezérlésre kiterjedő eltéréseket is, ezeket _számlázási hatóköröknek_, illetve _RBAC-hatóköröknek_ nevezzük.
+A hatókörökben lehet kezelni a számlázási adatokat, rendelkezhet a kifizetésekre vonatkozó konkrét szerepkörökkel, megtekinthetők a számlák, és általános fiókkezelési feladatok végezhetők el. A számlázási és fiókszerepköröket az erőforrás-kezelésre használt szerepköröktől elkülönítve kezelik, amelyek az [Azure RBAC-t](../../role-based-access-control/overview.md) használják. Annak érdekében, hogy egyértelműen meg lehessen különböztetni a különálló hatókörök mögötti szándékot, beleértve a hozzáférés-vezérlésre kiterjedő eltéréseket is, ezeket _számlázási hatóköröknek_, illetve _Azure RBAC-hatóköröknek_ nevezzük.
 
 A hatókörökkel kapcsolatos további információkért tekintse meg [a hierarchiák Cost Managementben történő beállításával](https://www.youtube.com/watch?v=n3TLRaYJ1NY) kapcsolatos videót. További videók megtekintéséhez látogasson el a [Cost Management YouTube-csatornájára](https://www.youtube.com/c/AzureCostManagement).
 
@@ -34,7 +34,7 @@ A hatókörökkel kapcsolatos további információkért tekintse meg [a hierarc
 
 ## <a name="how-cost-management-uses-scopes"></a>Hogyan használja a Cost Management a hatóköröket?
 
-A Cost Management az erőforrások feletti összes hatókörben működik, hogy a szervezeteknek a hozzáférési szintjüknek megfelelő költségkezelést tegyen elérhetővé, függetlenül attól, hogy a teljes számlázási fiókról vagy egyetlen erőforráscsoportról van-e szó. Bár a számlázási hatókörök eltérnek az Ön Microsoft-szerződése (előfizetés típusa) alapján, az RBAC-hatókörök nem.
+A Cost Management az erőforrások feletti összes hatókörben működik, hogy a szervezeteknek a hozzáférési szintjüknek megfelelő költségkezelést tegyen elérhetővé, függetlenül attól, hogy a teljes számlázási fiókról vagy egyetlen erőforráscsoportról van-e szó. Bár a számlázási hatókörök eltérnek az Ön Microsoft-szerződése (előfizetés típusa) alapján, az Azure RBAC-hatókörök nem.
 
 ## <a name="azure-rbac-scopes"></a>Azure RBAC-hatókörök
 
@@ -98,7 +98,7 @@ Az EA számlázási hatókörei a következő szerepköröket támogatják:
 - **Vállalati írásvédett felhasználó** – Megtekintheti a számlázási fiókok beállításait, a költségadatokat és a költségkonfigurációt. Például a költségvetéseket és az exportálásokat. Gyakorlatilag az EA számlázási hatóköre ugyanaz, mint a [Cost Management-olvasó Azure-szerepkör](../../role-based-access-control/built-in-roles.md#cost-management-reader).
 - **Részlegszintű rendszergazda** – Kezelheti a részlegbeállításokat, például a költséghelyet, valamint elérheti és megtekintheti az összes költséget, és kezelheti a költségkonfigurációt. Például a költségvetéseket és az exportálásokat.  A **Díjtételek megtekintése a részlegszintű rendszergazda számára** számlázási fiókbeállítást engedélyezni kell a részlegszintű rendszergazdák és a csak olvasási jogosultsággal rendelkező felhasználók számára a költségek megtekintéséhez. Ha a **Díjtételek megtekintése a részlegszintű rendszergazda számára** lehetőség le van tiltva, a részleg felhasználói semmilyen szinten nem láthatják a költségeket, még akkor sem, ha egy fiók vagy előfizetés tulajdonosai.
 - **Részlegszintű írásvédett felhasználó** – Megtekintheti a részlegszintű beállításokat, a költségadatokat és a költségkonfigurációt. Például a költségvetéseket és az exportálásokat. Ha a **Díjtételek megtekintése a részlegszintű rendszergazda számára** lehetőség le van tiltva, a részleg felhasználói semmilyen szinten nem láthatják a költségeket, még akkor sem, ha egy fiók vagy előfizetés tulajdonosai.
-- **Fiók tulajdonosa** – Kezelheti a regisztrációs fiók beállításait (mint például a költséghelyeket), megtekintheti az összes költséget, és kezelheti a regisztrációs fiókhoz tartozó költségkonfigurációt (például a költségvetést és az exportálásokat). A **Díjtételek megtekintése a fióktulajdonos számára** számlázási fiókbeállítást engedélyezni kell a fióktulajdonosok és az RBAC-felhasználók számára a költségek megtekintéséhez.
+- **Fiók tulajdonosa** – Kezelheti a regisztrációs fiók beállításait (mint például a költséghelyeket), megtekintheti az összes költséget, és kezelheti a regisztrációs fiókhoz tartozó költségkonfigurációt (például a költségvetést és az exportálásokat). A **Díjtételek megtekintése a fióktulajdonos számára** számlázási fiókbeállítást engedélyezni kell a fióktulajdonosok és az Azure RBAC-felhasználók számára a költségek megtekintéséhez.
 
 Az EA számlázási fiókfelhasználói nem rendelkeznek közvetlen hozzáféréssel a számlákhoz. A számlák a külső mennyiségi licencelési rendszerből érhetők el.
 

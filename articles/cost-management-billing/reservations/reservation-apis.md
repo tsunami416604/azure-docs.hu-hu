@@ -9,12 +9,12 @@ ms.subservice: reservations
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: cffb753d515c4d066c8ce52e7dacebe5a8f6f8ca
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 12b20f7556a460506067305401fb2379678ee58e
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88682637"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371694"
 ---
 # <a name="apis-for-azure-reservation-automation"></a>API-k az Azure-foglalás automatizálásához
 
@@ -88,9 +88,9 @@ Ha azt tapasztalja, hogy a szervezete foglalásai nincsenek kihasználva:
 
 A [Foglalás – Működés – Lista API](/rest/api/reserved-vm-instances/reservationorder/list) használatával lekérheti az összes olyan foglalás listáját, amelyekhez egy adott felhasználónak hozzáférése van. A foglalások programozott módon való hozzáférésével kapcsolatban lásd a következők cikkek valamelyikét:
 
-- [Hozzáférés-kezelés az RBAC és a REST API használatával](../../role-based-access-control/role-assignments-rest.md)
-- [Hozzáférés-kezelés az RBAC és az Azure PowerShell használatával](../../role-based-access-control/role-assignments-powershell.md)
-- [Hozzáférés-kezelés az RBAC és az Azure CLI használatával](../../role-based-access-control/role-assignments-cli.md)
+- [Azure-beli szerepkör-hozzárendelés hozzáadása vagy eltávolítása a REST API használatával](../../role-based-access-control/role-assignments-rest.md)
+- [Azure-beli szerepkör-hozzárendelés hozzáadása vagy eltávolítása az Azure PowerShell használatával](../../role-based-access-control/role-assignments-powershell.md)
+- [Azure-beli szerepkör-hozzárendelés hozzáadása vagy eltávolítása az Azure CLI használatával](../../role-based-access-control/role-assignments-cli.md)
 
 ## <a name="split-or-merge-reservation"></a>Foglalás felosztása vagy egyesítése
 

@@ -9,12 +9,12 @@ ms.subservice: billing
 ms.topic: tutorial
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 4adb3bb1408357d40e3869c2a0d251b11d015195
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 619dec1b2246b7e74b058e570df4021888196b0c
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88689524"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447550"
 ---
 # <a name="tutorial-review-your-microsoft-customer-agreement-invoice"></a>Oktatóanyag: A Microsoft Ügyfélszerződéshez tartozó számla áttekintése
 
@@ -47,7 +47,7 @@ A szerződéstípusra kattintva megállapíthatja, hogy rendelkezik-e hozzáfér
 
 Az Azure Portalon írja be a *költségkezelés + számlázás* szöveget a keresőmezőbe, majd válassza a **Költségkezelés + Számlázás** lehetőséget.
 
-![Képernyőkép az Azure Portal keresőmezőjéről a költségkezelés + számlázás keresőkifejezéssel](./media/review-customer-agreement-bill/billing-search-cost-management-billing.png)
+![Képernyőkép az Azure Portal keresőmezőjéről a Költségkezelés + számlázás keresőkifejezéssel.](./media/review-customer-agreement-bill/billing-search-cost-management-billing.png)
 
 Ha csak egy számlázási hatókörhöz rendelkezik hozzáféréssel, válassza a bal oldalon található **Tulajdonságok** elemet. Akkor fér hozzá a Microsoft-ügyfélszerződéshez tartozó számlázási fiókhoz, ha a számlázási fiók típusa **Microsoft-ügyfélszerződés**.
 
@@ -106,7 +106,7 @@ Válassza az **Összegzés** lehetőséget a képernyő felső részén.
 
 A díjak szakasz az aktuális hónap és az utolsó hónap díjait jeleníti meg.
 
-![Képernyőkép az Azure Portal keresőmezőjéről a költségkezelés + számlázás keresőkifejezéssel](./media/review-customer-agreement-bill/mca-billing-profile-summary.png)
+![Képernyőkép egy számlázási profil összegzéséről.](./media/review-customer-agreement-bill/mca-billing-profile-summary.png)
 
 Az aktuális hónap díjai az aktuális hónap függőben lévő díjai, és számlázásuk a havi számla létrehozásakor történik. Ha az előző havi számla még nincs létrehozva, a múlt havi díjak is függőben vannak, és a következő számlán fognak megjelenni.
 
@@ -138,7 +138,7 @@ Válassza ki az **Összes előfizetés** elemet az oldal bal oldalán.
 
 Az Azure-előfizetések oldala megjeleníti a számlázási profilban szereplő egyes előfizetések aktuális és utolsó havi díjait. Az aktuális hónap díjai az aktuális hónap függőben lévő díjai, és számlázásuk a havi számla létrehozásakor történik. Ha az előző havi számla még nincs létrehozva, a múlt havi díjak is függőben vannak.
 
-![A számlázási profil Azure-előfizetéseinek listáját megjelenítő képernyőkép](./media/review-customer-agreement-bill/mca-billing-profile-subscriptions-list.png)
+![Képernyőkép az előfizetésekről, az aktuális és az előző hónap díjaival.](./media/review-customer-agreement-bill/mca-billing-profile-subscriptions-list.png)
 
 ## <a name="analyze-your-azure-usage-charges"></a>Az Azure használati díjainak elemzése
 
@@ -172,7 +172,7 @@ Az Azure használati adatait és díjait tartalmazó CSV-fájlt szűrheti az el�
 
 A következő kép az Azure Portalon szereplő előfizetések listáját jeleníti meg.
 
-![A számlázási profil Azure-előfizetéseinek listáját megjelenítő képernyőkép](./media/review-customer-agreement-bill/mca-billing-profile-subscriptions-list-highlighted.png)
+![Képernyőkép az előfizetések listájáról az Azure Portalon, egy kiemelt előfizetéssel.](./media/review-customer-agreement-bill/mca-billing-profile-subscriptions-list-highlighted.png)
 
 Szűrje az Azure használati adatait és díjait tartalmazó CSV-fájl **subscriptionName** oszlopát a **WA_Subscription** értékre a WA_Subscription részletes használati díjainak megtekintéséhez.
 

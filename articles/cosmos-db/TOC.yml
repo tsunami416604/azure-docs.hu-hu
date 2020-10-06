@@ -1064,6 +1064,8 @@
       items:
         - name: Migrálás Java V4 SDK-ba
           href: migrate-java-v4-sdk.md
+        - name: Migrálás a .NET V3 SDK-ba
+          href: migrate-dotnet-v3.md
     - name: Hibaelhárítás
       items:
         - name: Gyakori hibák

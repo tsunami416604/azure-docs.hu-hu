@@ -10,12 +10,12 @@ ms.subservice: billing
 ms.topic: how-to
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 32a6284c7766f3b5d9413a76056dc915a8ac93dc
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 550be6c10402398b62af307281660b93981a0df3
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88686802"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91308962"
 ---
 # <a name="reactivate-a-disabled-azure-subscription"></a>Letiltott Azure-előfizetés újraaktiválása
 
@@ -32,7 +32,7 @@ A kreditekkel rendelkező Azure-előfizetések, például az ingyenes próba és
 > [!NOTE]
 > Ha ingyenes próba-előfizetéssel rendelkezik, és eltávolítja a költségkeretet, az előfizetés az ingyenes próbaidőszak végeztével átalakul egyéni, használatalapú fizetéses előfizetéssé. Az előfizetés létrehozása után a fennmaradó kreditek még 30 teljes napig megmaradnak. Az ingyenes szolgáltatásokhoz emellett további 12 hónapig lesz hozzáférése.
 
-Az Azure számlázási tevékenységeinek monitorozása és kezelése: [Az Azure-számlázással és -költségkezeléssel kapcsolatos váratlan költségek megelőzése](getting-started.md).
+Az Azure számlázási tevékenységeinek monitorozásával és kezelésével kapcsolatban tekintse meg, [hogyan tervezheti meg az Azure-költségek kezelését](../understand/plan-manage-costs.md).
 
 
 ## <a name="your-bill-is-past-due"></a>Lejárt a számla esedékessége
@@ -60,4 +60,4 @@ Más típusú előfizetések újraaktiválásához [forduljon az ügyfélszolgá
 Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatási kérést](https://go.microsoft.com/fwlink/?linkid=2083458).
 
 ## <a name="next-steps"></a>Következő lépések
-- Ismerje meg, hogyan [monitorozhatja és kezelheti az Azure számlázási tevékenységeit](getting-started.md).
+- Ismerje meg, [hogyan tervezheti meg az Azure-költségek kezelését](../understand/plan-manage-costs.md).

@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: aparnag
 ms.custom: secdec18
-ms.openlocfilehash: 6dfced457f6840294700fb998c93cf2ab993024c
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: b1f261d3d777ccf19cea84e77ef83eb45ecc2065
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88683538"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91372255"
 ---
 # <a name="get-started-with-azure-cost-management-for-partners"></a>Ismerkedés a partnerek számára készült Azure Cost Management szolgáltatással
 
@@ -22,7 +22,7 @@ Az Azure Cost Management natív módon érhető el azon közvetlen partnerek sz�
 
 Közvetlen partnerek és közvetett szolgáltatók esetén a globális rendszergazda és a rendszergazdai ügynökök hozzáférhetnek a Cost Managementhez a partnerbérlőben, és a számlázott áron kezelhetik a költségeket.
 
-A viszonteladók és az ügyfelek az ügyfélbérlőben érhetik el a Cost Managementet, illetve tekinthetik meg az előfizetések költségeit, amelyek kiszámítása és megjelenítése kiskereskedelmi ár mellett történik. Az előfizetéshez azonban RBAC-hozzáféréssel kell rendelkezni az ügyfélbérlőben a költségek megtekintéséhez. A szolgáltatónak engedélyeznie kell a költségek láthatóságára vonatkozó szabályzatot az ügyfélbérlő számára.
+A viszonteladók és az ügyfelek az ügyfélbérlőben érhetik el a Cost Managementet, illetve tekinthetik meg az előfizetések költségeit, amelyek kiszámítása és megjelenítése kiskereskedelmi ár mellett történik. Az előfizetéshez azonban Azure RBAC-hozzáféréssel kell rendelkezni az ügyfélbérlőben a költségek megtekintéséhez. A szolgáltatónak engedélyeznie kell a költségek láthatóságára vonatkozó szabályzatot az ügyfélbérlő számára.
 
 Az ügyfelek a CSP-partnerük által engedélyezett Cost Management-funkciókat használhatják.
 
@@ -55,13 +55,13 @@ Az Azure Cost Management esetében olvasási hozzáférésre van szükség az Ö
 
 További információ az Azure Cost Managementhez való hozzáférés engedélyezéséről és hozzárendeléséről egy számlázási fiók esetében: [Felhasználói szerepkörök és engedélyek hozzárendelése](/partner-center/permissions-overview). A **globális rendszergazda**  és a **rendszergazdai ügynök** szerepkörök kezelhetik a számlázási fiók költségeit.
 
-Az Azure Cost Managementhez az előfizetési hatókörben történő hozzáféréshez bármely, az előfizetéshez RBAC-hozzáféréssel rendelkező felhasználó megtekintheti a költségeket kiskereskedelmi (használatalapú fizetéses) díjak mellett. Azonban engedélyezni kell a [költségek láthatóságára vonatkozó szabályzatot az ügyfélbérlő számára](#enable-the-policy-to-view-azure-usage-charges). A támogatott fióktípusok teljes listáját [A Cost Management adatainak értelmezése](understand-cost-mgt-data.md) című részben tekintheti meg.
+Az Azure Cost Managementhez az előfizetési hatókörben történő hozzáféréshez bármely, az előfizetéshez Azure RBAC-hozzáféréssel rendelkező felhasználó megtekintheti a költségeket kiskereskedelmi (használatalapú fizetéses) díjak mellett. Azonban engedélyezni kell a [költségek láthatóságára vonatkozó szabályzatot az ügyfélbérlő számára](#enable-the-policy-to-view-azure-usage-charges). A támogatott fióktípusok teljes listáját [A Cost Management adatainak értelmezése](understand-cost-mgt-data.md) című részben tekintheti meg.
 
 ## <a name="how-cost-management-uses-scopes"></a>Hogyan használja a Cost Management a hatóköröket?
 
-A hatókörökben lehet kezelni a számlázási adatokat, rendelkezhet a kifizetésekre vonatkozó konkrét szerepkörökkel, megtekinthetők a számlák, és általános fiókkezelési feladatok végezhetők el. A számlázási és fiókszerepköröket az erőforrás-kezelésre használtak hatóköröktől elkülönítve kezelik, amelyek az RBAC-t használják. Annak érdekében, hogy egyértelműen meg lehessen különböztetni a különálló hatókörök mögötti szándékot, beleértve a hozzáférés-vezérlésre kiterjedő eltéréseket is, ezeket számlázási hatóköröknek, illetve RBAC-hatóköröknek nevezzük.
+A hatókörökben lehet kezelni a számlázási adatokat, rendelkezhet a kifizetésekre vonatkozó konkrét szerepkörökkel, megtekinthetők a számlák, és általános fiókkezelési feladatok végezhetők el. A számlázási és fiókszerepköröket az erőforrás-kezelésre használt hatóköröktől elkülönítve kezelik, amelyek az Azure RBAC-t használják. Annak érdekében, hogy egyértelműen meg lehessen különböztetni a különálló hatókörök mögötti szándékot, beleértve a hozzáférés-vezérlésre kiterjedő eltéréseket is, ezeket számlázási hatóköröknek, illetve Azure RBAC-hatóköröknek nevezzük.
 
-A számlázási és RBAC-hatókörök, valamint a költségkezelés és a hatókörök együttes működésének megértéshez tekintse meg [A hatókörök ismertetése és használata](understand-work-scopes.md) című részt.
+A számlázási és Azure RBAC-hatókörök, valamint a költségkezelés és a hatókörök együttes működésének megértéséhez tekintse meg [A hatókörök ismertetése és használata](understand-work-scopes.md) című részt.
 
 ## <a name="manage-costs-with-partner-tenant-billing-scopes"></a>Költségek kezelése a partnerbérlő számlázási hatóköreivel
 
@@ -116,9 +116,9 @@ Csak a **globális rendszergazda** és a **rendszergazdai ügynök** szerepkörr
 
 ## <a name="enable-cost-management-for-customer-tenant-subscriptions"></a>Költségkezelés engedélyezése az ügyfélbérlő előfizetéséhez
 
-A partnerek engedélyezhetik a Cost Managementhez való hozzáférést, miután az ügyfeleket előkészítették a Microsoft Ügyfélszerződésre. A partnerek ezután engedélyezhetik azt a szabályzatot, amely lehetővé teszi, hogy az ügyfelek megtekintsék az Azure által használt szolgáltatások kiskereskedelmi, használatalapú díjszabás alapján felszámított költségeit. A költségek az ügyfél számlázási pénznemében jelennek meg a RBAC-előfizetés és az erőforráscsoportok hatókörére vonatkozó felhasználásukra vonatkozóan.
+A partnerek engedélyezhetik a Cost Managementhez való hozzáférést, miután az ügyfeleket előkészítették a Microsoft Ügyfélszerződésre. A partnerek ezután engedélyezhetik azt a szabályzatot, amely lehetővé teszi, hogy az ügyfelek megtekintsék az Azure által használt szolgáltatások kiskereskedelmi, használatalapú díjszabás alapján felszámított költségeit. A költségek az ügyfél számlázási pénznemében jelennek meg az Azure RBAC-előfizetés és az erőforráscsoportok hatókörére vonatkozó felhasználásukra vonatkozóan.
 
-Ha a partner engedélyezi a költségek láthatóságára vonatkozó szabályzatot, az előfizetéshez Azure Resource Manager-hozzáféréssel rendelkező minden felhasználó kezelheti és elemezheti a költségeket, használatalapú díjszabás mellett. Így azok a viszonteladók és ügyfelek, akik megfelelő RBAC-hozzáféréssel rendelkeznek az Azure-előfizetésekhez, megtekinthetik a költségeket.
+Ha a partner engedélyezi a költségek láthatóságára vonatkozó szabályzatot, az előfizetéshez Azure Resource Manager-hozzáféréssel rendelkező minden felhasználó kezelheti és elemezheti a költségeket, használatalapú díjszabás mellett. Így azok a viszonteladók és ügyfelek, akik megfelelő Azure RBAC-hozzáféréssel rendelkeznek az Azure-előfizetésekhez, megtekinthetik a költségeket.
 
 A szabályzattól függetlenül a globális rendszergazdák és a szolgáltató rendszergazdai ügynökei megtekinthetik az előfizetési költségeket, ha hozzáféréssel rendelkeznek az előfizetéshez és az erőforráscsoporthoz.
 
@@ -149,9 +149,9 @@ Az előfizetés költségeinek megtekintéséhez lépjen a **Költségkezelés +
 
 [![Költségelemzés megtekintése ügyfélként ](./media/get-started-partners/subscription-costs.png)](./media/get-started-partners/subscription-costs.png#lightbox)
 
-A költségelemzés, a költségvetések és a riasztások a használatalapú fizetés díjszabása szerinti költségek mellett érhetők el az előfizetés és az erőforráscsoport RBAC-hatóköreihez.
+A költségelemzés, a költségvetések és a riasztások a használatalapú fizetés díjszabása szerinti költségek mellett érhetők el az előfizetés és az erőforráscsoport Azure RBAC-hatóköreihez.
 
-A fenntartott példányok amortizált nézetei és tényleges költségei nulla díjat mutatnak az RBAC-hatókörben. A fenntartott példányok költségei csak azokban a számlázási hatókörökben jelennek meg, ahol a vásárlások történtek.
+A fenntartott példányok amortizált nézetei és tényleges költségei nulla díjat mutatnak az Azure RBAC-hatókörben. A fenntartott példányok költségei csak azokban a számlázási hatókörökben jelennek meg, ahol a vásárlások történtek.
 
 A nézetben látható költségek kiszámításához használt kiskereskedelmi árak ugyanazok, amelyeket az Azure-díjkalkulátor minden ügyfélnek megjelenít. A megjelenő költségek nem tartalmazzák az olyan kedvezményeket vagy jóváírásokat, amelyekkel a partnerek rendelkezhetnek. Ezek lehetnek például a partneri jóváírások, a szintkedvezmények vagy a globális szolgáltatási kedvezmények.
 
@@ -159,7 +159,7 @@ A nézetben látható költségek kiszámításához használt kiskereskedelmi �
 
 Azok a partnerek, akik hozzáférnek számlázási hatókörökhöz a partnerbérlőben, felderíthetik és elemezhetik a számlázott költségeket több ügyfél költségelemzésében egy adott ügyfélre vagy számlára vonatkozóan. A [költségelemzés](quick-acm-cost-analysis.md) nézetben lehetőség van továbbá [a nézetek mentésére](quick-acm-cost-analysis.md#saving-and-sharing-customized-views) és az adatok [CSV- és PNG-fájlokba](quick-acm-cost-analysis.md#download-usage-data) való exportálására.
 
-Az ügyfélbérlőben lévő előfizetéshez hozzáféréssel rendelkező RBAC-felhasználók emellett elemezhetik a kiskereskedelmi költségeket az ügyfélbérlőben lévő előfizetésekre vonatkozóan, menthetik a nézeteket, valamint CSV- és PNG-fájlokba exportálhatják az adatokat.
+Az ügyfélbérlőben lévő előfizetéshez hozzáféréssel rendelkező Azure RBAC-felhasználók emellett elemezhetik a kiskereskedelmi költségeket az ügyfélbérlőben lévő előfizetésekre vonatkozóan, menthetik a nézeteket, valamint CSV- és PNG-fájlokba exportálhatják az adatokat.
 
 A költségelemzés szűrő és csoportosítás funkcióival több mező szerint elemezheti a költségeket. A partnerspecifikus mezők a következő szakaszban láthatók.
 
@@ -223,8 +223,8 @@ A következő adatmezők találhatók a használatrészletező fájlokban és a 
 | costinBillingCurrency | ExtendedCost vagy adók levonása előtti kevert költség a számlázott pénznemben. | N/A |
 | costinPricingCurrency | ExtendedCost vagy adók levonása előtti kevert költség az árképzési pénznemben, az árakkal való egyeztetéshez. | N/A |
 | **costinUSD** | Becsült ExtendedCost vagy adók levonása előtti kevert költség amerikai dollárban. | N/A |
-| **paygCostInBillingCurrency** | Megjeleníti a költségeket, ha a díjszabás kiskereskedelmi áron történik. Megjeleníti a használatalapú fizetéshez tartozó árakat a számlázási pénznemben. Csak RBAC-hatókörök esetében érhető el. | N/A |
-| **paygCostInUSD** | Megjeleníti a költségeket, ha a díjszabás kiskereskedelmi áron történik. Megjeleníti a használatalapú fizetéshez tartozó árakat amerikai dollárban. Csak RBAC-hatókörök esetében érhető el. | N/A |
+| **paygCostInBillingCurrency** | Megjeleníti a költségeket, ha a díjszabás kiskereskedelmi áron történik. Megjeleníti a használatalapú fizetéshez tartozó árakat a számlázási pénznemben. Csak Azure RBAC-hatókörök esetében érhető el. | N/A |
+| **paygCostInUSD** | Megjeleníti a költségeket, ha a díjszabás kiskereskedelmi áron történik. Megjeleníti a használatalapú fizetéshez tartozó árakat amerikai dollárban. Csak Azure RBAC-hatókörök esetében érhető el. | N/A |
 | exchangeRate | Az árképzési pénznemről a számlázási pénznemre való átváltáshoz használt árfolyam. | A Partnerközpontban PCToBCExchangeRate néven jelenik meg. Az árképzési pénznemről a számlázási pénznemre való átváltási árfolyam.|
 | exchangeRateDate | Az árképzési pénznemről a számlázási pénznemre való átváltáshoz használt árfolyamra vonatkozó dátum. | A Partnerközpontban PCToBCExchangeRateDat néven jelenik meg. Az árképzési pénznemről a számlázási pénznemre való átváltási árfolyam dátuma.|
 | isAzureCreditEligible | Jelzi, hogy a költség jogosult-e Azure-kreditek általi fizetésre. | N/A |
@@ -262,7 +262,7 @@ A **PartnerEarnedCreditApplied** tulajdonság szerint is végezhet csoportosít�
 
 A partnerbérlőben számlázási hatókörökhöz való hozzáféréssel rendelkező partnerek exportálhatják költség- és használati adataikat egy Azure Storage-blobba. A blobnak a partnerbérlő olyan előfizetésében kell lennie, amely nem megosztott szolgáltatás-előfizetés vagy egy ügyfél előfizetése. A költségadatok exportálásának engedélyezéséhez javasoljuk, hogy hozzon létre egy független, használatalapú fizetéses előfizetést a partnerbérlőben, hogy helyet biztosítson az exportált költségadatoknak. Az exportálási tárfiók a használatalapú fizetéses előfizetésben üzemeltetett Azure Storage-blobon jön létre. Azon hatókör alapján, amelyben a partner létrehozza az exportálást, a vonatkozó adatok automatikusan, rendszeres időközönként lesznek exportálva a tárfiókba.
 
-Az előfizetéshez RBAC-hozzáféréssel rendelkező felhasználók a költségadatokat az ügyfélbérlő bármelyik előfizetésében lévő Azure-blobba is exportálhatják.
+Az előfizetéshez Azure RBAC-hozzáféréssel rendelkező felhasználók a költségadatokat az ügyfélbérlő bármelyik előfizetésében lévő Azure-blobba is exportálhatják.
 
 ### <a name="create-an-export-in-a-partner-tenant-or-customer-tenant"></a>Exportálás létrehozása egy partnerbérlőben vagy ügyfélbérlőben
 
@@ -276,7 +276,7 @@ Ezután válassza a **Hozzáadás** lehetőséget, írja be a nevet, és válass
 
 Amikor létrehoz egy exportálást a partnerbérlőben, válassza a használatalapú fizetéses előfizetést a partnerbérlőben. Hozzon létre egy Azure Storage-tárfiókot a szóban forgó előfizetés használatával.
 
-Az ügyfélbérlőben lévő RBAC-felhasználók esetében válasszon ki egy előfizetést az ügyfélbérlőben. Hozzon létre egy Azure Storage-tárfiókot az előfizetés használatával.
+Az ügyfélbérlőben lévő Azure RBAC-felhasználók esetében válasszon ki egy előfizetést az ügyfélbérlőben. Hozzon létre egy Azure Storage-tárfiókot az előfizetés használatával.
 
 Tekintse át a tartalmat, majd válassza a **Létrehozás** lehetőséget az exportálás ütemezéséhez.
 

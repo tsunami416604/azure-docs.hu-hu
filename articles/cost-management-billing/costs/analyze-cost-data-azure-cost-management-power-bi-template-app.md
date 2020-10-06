@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: benshy
-ms.openlocfilehash: 2a66ef2f91715180ae84036fc7eead759e7ee00f
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 0174c8a0c96d884f42aea9b6fb1cb0d9c06ce400
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88685051"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447660"
 ---
 # <a name="analyze-cost-with-the-azure-cost-management-power-bi-app-for-enterprise-agreements-ea"></a>Az Azure költségeinek elemzése a Nagyvállalati Szerződésekhez (EA) készült Azure Cost Management Power BI-alkalmazással
 
@@ -47,7 +47,7 @@ Az alkalmazás telepítése:
 9. A megjelenő párbeszédablakban adja meg EA regisztrációs számát a **BillingProfileIdOrEnrollmentNumber** értékeként. Adja meg, hogy hány hónapnyi adatot kíván lekérni. Hagyja meg a **Regisztrációs szám** alapértelmezett **Hatókör** értékét, majd válassza a **Következő** lehetőséget.  
   ![EA regisztrációs adatok megadása](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ea-number.png)  
 10. A következő párbeszédablak csatlakozik az Azure-hoz, és beolvassa a fenntartott példányokra vonatkozó javaslatokhoz szükséges adatokat. *Hagyja meg az alapértelmezett értékek konfigurációját*, majd válassza a **Bejelentkezés** lehetőséget.  
-  ![Csatlakozás az Azure-hoz](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/autofit.png)  
+  ![Képernyőkép a Csatlakozás az Azure Cost Managementhez alkalmazás párbeszédablakáról, az alapértelmezett értékekkel.](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/autofit.png)  
 11. A telepítés utolsó lépésében csatlakozni kell az EA-regisztrációhoz, amihez [vállalati rendszergazdai](../manage/understand-ea-roles.md) fiók szükséges. Válassza a **Bejelentkezés** elemet az EA-regisztrációval való hitelesítéshez. Ez a lépés egy adatfrissítési műveletet is elindít a Power BI-ban.  
   ![Csatlakozás EA-regisztrációhoz](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/ea-auth.png)  
     > [!NOTE]
@@ -189,7 +189,7 @@ Ez a hiba akkor fordul elő, ha módosítja az AutoFitComboMeter blobkapcsolat h
 
 1. Csatlakozzon az adatokhoz.
 1. Az EA-regisztráció és a hónapok számának megadása után bizonyosodjon meg arról, hogy az alapértelmezett **Névtelen** érték van beállítva a Hitelesítési módszerhez, és a **Nincs** érték az Adatvédelmi szinthez.  
-  ![Csatlakozás az Azure-hoz](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/autofit-troubleshoot.png)  
+  ![Képernyőkép a Csatlakozás az Azure Cost Managementhez alkalmazás párbeszédablakáról, amelyben Névtelen és Nincs értékek vannak megadva.](./media/analyze-cost-data-azure-cost-management-power-bi-template-app/autofit-troubleshoot.png)  
 1. A következő oldalon állítsa be az **OAuth2** értéket a Hitelesítési módszerhez, és a **Nincs** értéket az Adatvédelmi szinthez. Majd jelentkezzen be a regisztrációval való hitelesítéshez. Ez a lépés egy Power BI-adatfrissítési műveletet is elindít.
 
 

@@ -9,12 +9,12 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
 ms.custom: seodec18
-ms.openlocfilehash: c0fcc9d5753ce90365829fba658031e633819513
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 6ef5a457bac7b384dc1b4349b1782a752c41ea26
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88683266"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447615"
 ---
 # <a name="tutorial-create-and-manage-exported-data"></a>Oktatóanyag: Exportált adatok létrehozása és kezelése
 
@@ -91,9 +91,9 @@ Más előfizetési típusokhoz tartozó felügyeleti csoportok adatainak export�
 
 1. Ha még nem hozott létre felügyeleti csoportot, hozzon létre egyet, és rendeljen hozzá előfizetéseket.
 1. Adja meg a felügyeleti csoport hatókörét a költségelemzésben, majd jelölje ki a **Válassza ezt a felügyeleti csoportot** lehetőséget.  
-    :::image type="content" source="./media/tutorial-export-acm-data/management-group-scope.png" alt-text="A Válassza ezt a felügyeleti csoportot lehetőséget bemutató példa" lightbox="./media/tutorial-export-acm-data/management-group-scope.png":::
+    :::image type="content" source="./media/tutorial-export-acm-data/management-group-scope.png" alt-text="Új exportálási példa" lightbox="./media/tutorial-export-acm-data/management-group-scope.png":::
 1. Hozzon létre egy megfelelő hatókörű exportálást, hogy lekérhesse a felügyeleti csoportba tartozó előfizetések költségkezelési adatait.  
-    :::image type="content" source="./media/tutorial-export-acm-data/new-export-management-group-scope.png" alt-text="Az új exportálás felügyeleti csoport hatókörrel való létrehozását bemutató példa":::
+    :::image type="content" source="./media/tutorial-export-acm-data/new-export-management-group-scope.png" alt-text="Új exportálási példa":::
 
 ## <a name="verify-that-data-is-collected"></a>Az adatgyűjtés sikerességének ellenőrzése
 
@@ -128,11 +128,11 @@ Az exportált CSV-fájlt az Azure Portalon is letöltheti. A következő lépés
 
 Az ütemezett exportálások futtatási előzményeinek megtekintéséhez válasszon ki egy exportálást az exportálások listáját tartalmazó oldalon. Az exportálások listáját tartalmazó oldalon gyorsan megtekintheti a korábbi exportálások futásidejét és a következő exportálás futtatásának időpontját is. Az alábbi példa a futtatási előzményeket mutatja be.
 
-:::image type="content" source="./media/tutorial-export-acm-data/run-history.png" alt-text="Az exportálás futtatási előzményeit bemutató példa":::
+:::image type="content" source="./media/tutorial-export-acm-data/run-history.png" alt-text="Új exportálási példa":::
 
 Válasszon ki egy exportálást a futtatási előzményei megtekintéséhez.
 
-:::image type="content" source="./media/tutorial-export-acm-data/single-export-run-history.png" alt-text="Az exportálás futtatási előzményeit bemutató példa":::
+:::image type="content" source="./media/tutorial-export-acm-data/single-export-run-history.png" alt-text="Új exportálási példa":::
 
 ## <a name="access-exported-data-from-other-systems"></a>Exportált adatokhoz való hozzáférés más rendszerekből
 

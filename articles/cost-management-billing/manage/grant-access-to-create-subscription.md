@@ -8,12 +8,12 @@ ms.reviewer: amberb
 ms.topic: conceptual
 ms.date: 08/26/2020
 ms.author: banders
-ms.openlocfilehash: b154d723e82d02ea864459ef65eb5c05c14ae336
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 661b088d024a6da631fa06fbd97131091b9f650b
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88943189"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371881"
 ---
 # <a name="grant-access-to-create-azure-enterprise-subscriptions-preview"></a>Hozzáférés biztosítása Azure Enterprise-előfizetés létrehozáshoz (előzetes verzió)
 
@@ -23,11 +23,11 @@ ms.locfileid: "88943189"
 
 ## <a name="grant-access"></a>Hozzáférés biztosítása
 
-Ha [előfizetéseket szeretnének létrehozni egy regisztrációs fiókhoz](programmatically-create-subscription.md), a felhasználóknak az [RBAC-tulajdonos szerepkörrel kell rendelkezniük](../../role-based-access-control/built-in-roles.md#owner) az adott fiók kapcsán. A következő lépésekkel biztosíthatja az RBAC-tulajdonos szerepkört egy regisztrációs fiókhoz egy felhasználó vagy felhasználócsoport számára:
+Ha [előfizetéseket szeretnének létrehozni egy regisztrációs fiókhoz](programmatically-create-subscription.md), a felhasználóknak Azure RBAC-alapú [Tulajdonos szerepkörrel](../../role-based-access-control/built-in-roles.md#owner) kell rendelkezniük az adott fiók esetében. A következő lépésekkel biztosíthatja az Azure RBAC-alapú Tulajdonos szerepkört egy regisztrációs fiók esetében, egy felhasználó vagy felhasználócsoport számára:
 
 1. Kérje le annak a regisztrációs fióknak az objektumazonosítóját, amelyhez hozzáférést szeretne adni.
 
-    Ha RBAC-tulajdonos szerepkört szeretne biztosítani másoknak egy regisztrációs fiókhoz, akkor a fiók tulajdonosának vagy RBAC-tulajdonosának kell lennie.
+    Ha Azure RBAC-alapú Tulajdonos szerepkört szeretne biztosítani mások számára egy regisztrációs fiók esetében, akkor a fiók tulajdonosának vagy Azure RBAC-tulajdonosának kell lennie.
 
     # <a name="rest"></a>[REST](#tab/rest)
 
@@ -62,7 +62,7 @@ Ha [előfizetéseket szeretnének létrehozni egy regisztrációs fiókhoz](prog
     }
     ```
 
-    Használja a `principalName` tulajdonságot a fiók azonosításához, amelyhez RBAC-tulajdonosi hozzáférést kíván biztosítani. Másolja ki a fiók `name` elemét. Ha például RBAC-tulajdonosi hozzáférést szeretne biztosítani a SignUpEngineering@contoso.com regisztrációs fiókhoz, a következőt kell másolnia: ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx``` Ez a regisztrációs fiók objektumazonosítója. Illessze be valahova ezt az értéket, hogy a következő lépésben használni tudja mint `enrollmentAccountObjectId`.
+    Használja a `principalName` tulajdonságot a fiók azonosításához, amelyhez Azure RBAC-tulajdonosi hozzáférést kíván biztosítani. Másolja ki a fiók `name` elemét. Ha például Azure RBAC-tulajdonosi hozzáférést szeretne biztosítani a SignUpEngineering@contoso.com regisztrációs fiókhoz, a következőt kell másolnia: ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```. Ez a regisztrációs fiók objektumazonosítója. Illessze be valahova ezt az értéket, hogy a következő lépésben használni tudja mint `enrollmentAccountObjectId`.
 
     # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -80,7 +80,7 @@ Ha [előfizetéseket szeretnének létrehozni egy regisztrációs fiókhoz](prog
     4cd2fcf6-xxxx-xxxx-xxxx-xxxxxxxxxxxx   | BillingPlatformTeam@contoso.com
     ```
 
-    Használja a `principalName` tulajdonságot a fiók azonosításához, amelyhez RBAC-tulajdonosi hozzáférést kíván biztosítani. Másolja ki a fiók `ObjectId` elemét. Ha például RBAC-tulajdonosi hozzáférést szeretne biztosítani a SignUpEngineering@contoso.com regisztrációs fiókhoz, a következőt kell másolnia: ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx``` Illessze be valahova ezt az objektumazonosítót, hogy a következő lépésben használni tudja mint `enrollmentAccountObjectId`.
+    Használja a `principalName` tulajdonságot a fiók azonosításához, amelyhez Azure RBAC-tulajdonosi hozzáférést kíván biztosítani. Másolja ki a fiók `ObjectId` elemét. Ha például Azure RBAC-tulajdonosi hozzáférést szeretne biztosítani a SignUpEngineering@contoso.com regisztrációs fiókhoz, a következőt kell másolnia: ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```. Illessze be valahova ezt az objektumazonosítót, hogy a következő lépésben használni tudja mint `enrollmentAccountObjectId`.
 
     # <a name="azure-cli"></a>[Azure CLI](#tab/azure-cli)
 
@@ -111,18 +111,18 @@ Ha [előfizetéseket szeretnének létrehozni egy regisztrációs fiókhoz](prog
 
     ---
 
-    Használja a `principalName` tulajdonságot a fiók azonosításához, amelyhez RBAC-tulajdonosi hozzáférést kíván biztosítani. Másolja ki a fiók `name` elemét. Ha például RBAC-tulajdonosi hozzáférést szeretne biztosítani a SignUpEngineering@contoso.com regisztrációs fiókhoz, a következőt kell másolnia: ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx``` Ez a regisztrációs fiók objektumazonosítója. Illessze be valahova ezt az értéket, hogy a következő lépésben használni tudja mint `enrollmentAccountObjectId`.
+    Használja a `principalName` tulajdonságot a fiók azonosításához, amelyhez Azure RBAC-tulajdonosi hozzáférést kíván biztosítani. Másolja ki a fiók `name` elemét. Ha például Azure RBAC-tulajdonosi hozzáférést szeretne biztosítani a SignUpEngineering@contoso.com regisztrációs fiókhoz, a következőt kell másolnia: ```747ddfe5-xxxx-xxxx-xxxx-xxxxxxxxxxxx```. Ez a regisztrációs fiók objektumazonosítója. Illessze be valahova ezt az értéket, hogy a következő lépésben használni tudja mint `enrollmentAccountObjectId`.
 
-1. <a id="userObjectId"></a>Kérje le annak a felhasználónak vagy csoportnak az objektumazonosítóját, amelynek RBAC-tulajdonos szerepkört szeretne adni
+1. <a id="userObjectId"></a>Kérje le annak a felhasználónak vagy csoportnak az objektumazonosítóját, amelynek Azure RBAC-alapú Tulajdonos szerepkört szeretne adni
 
     1. Az Azure Portalon keressen az **Azure Active Directory** kifejezésre.
     1. Ha felhasználói hozzáférést szeretne biztosítani, a bal oldali menüben válassza a **Felhasználók** lehetőséget. Ha egy csoportnak kíván hozzáférést biztosítani, válassza a **Csoportok** lehetőséget.
-    1. Válassza ki a felhasználót vagy csoportot, melynek RBAC-tulajdonos szerepkört szeretne adni.
+    1. Válassza ki azt a felhasználót vagy csoportot, amelynek Azure RBAC-alapú Tulajdonos szerepkört szeretne adni.
     1. Ha egy felhasználót választott, az objektumazonosító a Profil oldalon található. Ha egy csoportot választott, az objektumazonosító az Áttekintés oldalon található. Másolja az **Objektumazonosítót** a szövegmező jobb oldalán található ikon kiválasztásával. Illessze be valahova, hogy a következő lépésben használni tudja mint `userObjectId`.
 
-1. RBAC-tulajdonos szerepkör biztosítása egy felhasználónak vagy csoportnak a regisztrációs fiókhoz
+1. Azure RBAC-alapú Tulajdonos szerepkör biztosítása egy felhasználó vagy csoport számára a regisztrációs fiók esetében
 
-    Az első két lépésben összegyűjtött értékek használatával adja meg a felhasználó vagy csoport számára a RBAC-tulajdonos szerepkört a regisztrációs fiókra vonatkozóan.
+    Az első két lépésben összegyűjtött értékek használatával adja meg a felhasználó vagy csoport számára az Azure RBAC-alapú Tulajdonos szerepkört a regisztrációs fiókra vonatkozóan.
 
     # <a name="rest"></a>[REST](#tab/rest-2)
 
@@ -174,7 +174,7 @@ Ha [előfizetéseket szeretnének létrehozni egy regisztrációs fiókhoz](prog
     az role assignment create --role Owner --assignee-object-id <userObjectId> --scope /providers/Microsoft.Billing/enrollmentAccounts/<enrollmentAccountObjectId>
     ```
 
-    Miután a felhasználó a regisztrációs fiók RBAC-tulajdonosává válik, [programozott módon hozhat létre előfizetéseket](programmatically-create-subscription.md) benne. A delegált felhasználó által létrehozott előfizetés szolgáltatás-rendszergazdája továbbra is az eredeti fióktulajdonos, de a delegált felhasználó is alapértelmezett RBAC-tulajdonos lesz.
+    Miután a felhasználó a regisztrációs fiók Azure RBAC-tulajdonosává válik, [programozott módon hozhat létre előfizetéseket](programmatically-create-subscription.md) benne. A delegált felhasználó által létrehozott előfizetés szolgáltatás-rendszergazdája továbbra is az eredeti fióktulajdonos, de a delegált felhasználó is alapértelmezett Azure RBAC-tulajdonos lesz.
 
     ---
 

@@ -10,12 +10,12 @@ ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
 ms.custom: seodec18
-ms.openlocfilehash: b4905b1aba11a2f8c457d4785897cbe70dd31f76
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 63e648681a63daafe1eaeb1d2e8e5a6cd607aa70
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88687416"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91446343"
 ---
 # <a name="view-and-download-your-organizations-azure-pricing"></a>A cég vagy intézmény Azure-díjszabásának megtekintése és letöltése
 
@@ -28,17 +28,17 @@ A vállalati rendszergazda által a szervezet számára beállított szabályzat
 1. Jelentkezzen be vállalati rendszergazdaként az [Azure Portalra](https://portal.azure.com/).
 1. Keressen rá a *Költségkezelés + számlázás* kifejezésre.
 
-   ![Képernyőkép az Azure Portal keresőmezőjéről](./media/ea-pricing/portal-cm-billing-search.png)
+   ![Képernyőkép az Azure Portal keresőmezőjéről.](./media/ea-pricing/portal-cm-billing-search.png)
 
 1. A számlázási fiókon belül válassza ki a **Felhasználás + díjak** lehetőséget.
 
    ![Képernyőkép a Számlázás területen szereplő használati adatokról és díjakról](./media/ea-pricing/ea-pricing-usage-charges-nav.png)
 
-1. Válassza a ![Képernyőkép az Azure Portal keresőmezőjéről](./media/ea-pricing/download-icon.png) **Letöltés** lehetőséget az adott hónapban.
+1. Válassza a ![Letöltés ikont.](./media/ea-pricing/download-icon.png) **Töltse le** az adott hónapra vonatkozó adatokat.
 
 1. Az **Árlistán** belül válassza a **CSV letöltésére** szolgáló elemet.
 
-   ![Képernyőkép az Árlistán belüli, a CSV letöltésére szolgáló gombról](./media/ea-pricing/download-ea-price-sheet.png)
+   ![Képernyőkép a Felhasználási adatok és díjak letöltése esetében elérhető lehetőségekről.](./media/ea-pricing/download-ea-price-sheet.png)
 
 ## <a name="download-pricing-for-an-mca-or-mpa-account"></a>MCA- vagy MPA-fiók díjszabásának letöltése
 
@@ -46,7 +46,7 @@ Ha MCA-val rendelkezik, a díjszabás megtekintéséhez és letöltéséhez a sz
 
 ### <a name="download-price-sheets-for-billed-charges"></a>A számlázott díjak árlistáinak letöltése
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalba](https://portal.azure.com).
 1. Keressen rá a *Költségkezelés + számlázás* kifejezésre.
 1. Válasszon ki egy számlázási profilt. A hozzáférésétől függően előfordulhat, hogy először ki kell választania egy számlázási fiókot.
 1. Válassza ki a **Számlák** elemet.
@@ -63,14 +63,14 @@ Ha MCA-val rendelkezik, a díjszabás megtekintéséhez és letöltéséhez a sz
 
 Ha rendelkezik MCA-val, letöltheti az aktuális számlázási időszakra vonatkozó díjszabást.
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalba](https://portal.azure.com).
 1. Keressen rá a *Költségkezelés + számlázás* kifejezésre.
 1. Válasszon ki egy számlázási profilt. A hozzáférésétől függően előfordulhat, hogy először ki kell választania egy számlázási fiókot.
 1. Az **Áttekintés** területen keresse meg a letöltési hivatkozásokat az aktuális havi díjak alatt.
 1. Válassza az **Azure-árlista** lehetőséget.
 ![Képernyőkép az Áttekintés területen található letöltési lehetőségről](./media/ea-pricing/open-pricing01.png)
 
-## <a name="estimate-costs-with-the-azure-pricing-calculator"></a>Költségek kiszámítása az Azure-díjkalkulátorral
+## <a name="estimate-costs-with-the-azure-pricing-calculator"></a>Költségbecslés az Azure díjkalkulátorral
 
 A szervezete díjszabásának használatával megbecsülheti a költségeket az Azure-díjkalkulátorral.
 
@@ -79,7 +79,7 @@ A szervezete díjszabásának használatával megbecsülheti a költségeket az 
 1. A **Programok és ajánlat** > **Licencprogram** alatt válassza a **Nagyvállalati Szerződés (EA)** lehetőséget.
 1. A **Programok és ajánlat** > **Kiválasztott szerződés** alatt válassza az **Egy elem sincs kijelölve** lehetőséget.
 
-    ![Képernyőkép az Árlistán belüli, a CSV letöltésére szolgáló gombról](./media/ea-pricing/ea-pricing-calculator-estimate.png)
+    ![Képernyőkép az elérhető programokról és ajánlatokról.](./media/ea-pricing/ea-pricing-calculator-estimate.png)
 
 1. Válassza ki a szervezetet.
 1. Kattintson az **Alkalmaz** gombra.
@@ -89,7 +89,7 @@ A szervezete díjszabásának használatával megbecsülheti a költségeket az 
 ## <a name="check-your-billing-account-type"></a>A számlázási fiók típusának ellenőrzése
 [!INCLUDE [billing-check-account-type](../../../includes/billing-check-account-type.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha Ön EA-ügyfél, tekintse meg a következő cikkeket:
 

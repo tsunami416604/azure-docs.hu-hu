@@ -379,7 +379,7 @@
           href: key-vault-parameter.md
     - name: CI/CD
       items:
-        - name: VS-projekt folyamatokkal
+        - name: ARM-sablonok folyamatokkal
           href: add-template-to-azure-pipelines.md
         - name: Üzembe helyezés – GitHub-műveletek
           href: deploy-github-actions.md

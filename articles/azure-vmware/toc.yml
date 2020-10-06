@@ -62,6 +62,8 @@
       href: disaster-recovery-for-virtual-machines.md
     - name: Virtuálisgép üzembe helyezése a tartalomtáron keresztül
       href: tutorial-deploy-vm-content-library.md
+    - name: A GitHub Enterprise Server beállítása
+      href: github-enterprise-server.md
     - name: Azure natív integrációja
       items:
         - name: API Management
@@ -84,6 +86,8 @@
       items:
         - name: A vRealize Operations beállítása
           href: vrealize-operations-for-azure-vmware-solution.md
+        - name: A VMware Horizon üzembe helyezése
+          href: azure-vmware-solution-horizon.md
 - name: További források
   items:
     - name: Hibaelhárítás

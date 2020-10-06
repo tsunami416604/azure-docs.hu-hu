@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
-ms.openlocfilehash: 27073cb7cbd78183e519290c676c2499700b0cca
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: cc44f05491cc17adb9ca51963d09667400fa1ff6
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89442547"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371915"
 ---
 # <a name="azure-ea-portal-administration"></a>A nagyvállalati szerződéses Azure Portal adminisztrációja
 
@@ -175,7 +175,7 @@ Ez a dokumentum a fiókhoz tartozó előfizetés tulajdonjogával kapcsolatos gy
 
 ### <a name="how-many-azure-account-owners-can-you-have-per-subscription"></a>Hány Azure-fióktulajdonos lehet előfizetésenként?
 
-Előfizetésenként csak egy fióktulajdonos engedélyezett.  További szerepkörök az [Azure Portal](https://portal.azure.com) bal felső sarkában található előfizetési fülön adhatók hozzá a szerepköralapú hozzáférés vagy a Hozzáférés-vezérlés (IAM) használatával.
+Előfizetésenként csak egy fióktulajdonos engedélyezett.  További szerepkörök az [Azure Portal](https://portal.azure.com) bal felső sarkában található előfizetési fülön adhatók hozzá az Azure-beli szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával.
 
 ### <a name="can-an-azure-account-owner-be-listed-under-more-than-one-department"></a>Szerepelhet egy Azure-fiók tulajdonosa több részlegen is?
 
@@ -191,7 +191,7 @@ Egy Azure-fiók tulajdonosa korlátlan számú előfizetést hozhat létre és k
 
 ### <a name="how-can-i-accessview-all-my-organizations-subscriptions"></a>Hogyan lehet hozzáférni és megtekinteni a szervezet összes előfizetését?
 
-Jelenleg ezt szabályzat alapján kell végezni, vagyis minden létrehozott előfizetés esetében a fiókot hozzá kell adni egy előfizetési szerepkörhöz szerepköralapú hozzáférés használatával.
+Jelenleg ezt szabályzat alapján kell végezni, vagyis minden létrehozott előfizetés esetében a fiókot hozzá kell adni egy előfizetési szerepkörhöz az Azure-beli szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával.
 
 ### <a name="where-do-i-go-to-create-a-subscription"></a>Hol hozhatok létre előfizetést?
 

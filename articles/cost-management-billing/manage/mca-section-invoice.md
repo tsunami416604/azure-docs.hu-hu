@@ -8,12 +8,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 9f5e69a609931f4f8ead62f4d5c5ba2a1064a6ea
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 6424fc0ff49566fad949b3fba4718acb2bad4cd3
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88683011"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362771"
 ---
 # <a name="organize-costs-by-customizing-your-billing-account"></a>A költségek rendszerezése a számlázási fiók testreszabásával
 
@@ -53,19 +53,19 @@ Ez a szakasz a költségek rendszerezésével és a hozzájuk tartozó számláz
 |---------|---------|
 |Jack regisztrál az Azure-ba, és egyetlen havi számlát szeretne. | Egy számlázási profil és egy számlaszakasz. Ezt a struktúrát a rendszer automatikusan létrehozza Jack számára az Azure-ba történő regisztráláskor, így nincs szükség további lépésekre. |
 
-![Egy egyszerű számlázási forgatókönyv infografikája](./media/mca-section-invoice/organize-billing-scenario1.png)
+![Egyszeres számlázási forgatókönyv infografikája.](./media/mca-section-invoice/organize-billing-scenario1.png)
 
 |Forgatókönyv  |Struktúra  |
 |---------|---------|
 |A Contoso egy kis szervezet, amelynek egyetlen havi számlára van szüksége, ugyanakkor csoportosítani szeretné a költségeket a kapcsolódó részlegek (marketing és mérnöki) alapján.  | A Contoso számlázási profilja és egy-egy számlaszakasz a marketing és a mérnöki részleghez. |
 
-![Egy egyszerű számlázási forgatókönyv infografikája](./media/mca-section-invoice/organize-billing-scenario2.png)
+![Többszörös számlázási forgatókönyv infografikája.](./media/mca-section-invoice/organize-billing-scenario2.png)
 
 |Forgatókönyv  |Struktúra  |
 |---------|---------|
 |A Fabrikam egy közepes szervezet, amelynek külön számlára van szüksége a mérnöki és a marketing részleghez. A mérnöki részleg esetében csoportosítani szeretnék a költségeket a környezet (éles és fejlesztési) szerint.  | Egy-egy számlázási profil a marketing és a mérnöki részleghez. A mérnöki részleg esetében egy-egy számlaszakasz az éles és a fejlesztési környezetekhez. |
 
-![Egy egyszerű számlázási forgatókönyv infografikája](./media/mca-section-invoice/organize-billing-scenario3.png)
+![Többszörös számlázási forgatókönyv infografikája, ahol külön történik az éles és a fejlesztési környezet számlázása.](./media/mca-section-invoice/organize-billing-scenario3.png)
 
 ## <a name="create-a-new-invoice-section"></a>Új számlaszakasz létrehozása
 
@@ -79,7 +79,7 @@ Számlázási szakasz létrehozásához a **számlázási profil tulajdonosának
 
 3. Válassza a **Számlázási profilok** lehetőséget a bal oldali panelen. Válasszon ki egy számlázási profilt a listából. Az új szakasz megjelenik a kiválasztott számlázási profilhoz tartozó számlán.
 
-   [![Képernyőkép a számlázási profilok listájáról](./media/mca-section-invoice/mca-select-profile.png)](./media/mca-section-invoice/mca-select-profile-zoomed-in.png#lightbox)
+   [![Képernyőkép a számlázási profilok listájáról.](./media/mca-section-invoice/mca-select-profile.png)](./media/mca-section-invoice/mca-select-profile-zoomed-in.png#lightbox)
 
 4. A bal oldali panelen válassza az **Számlaszakaszok** elemet, majd az oldal tetején található **Hozzáadás** elemet.
 
@@ -107,7 +107,7 @@ Számlázási profil létrehozásához a **számlázási fiók tulajdonosának**
 
 3. A bal oldali panelen válassza az **Számlázási profilok** elemet, majd az oldal tetején található **Hozzáadás** elemet.
 
-   [![Képernyőkép a számlázási profilok listájáról](./media/mca-section-invoice/mca-list-profiles.png)](./media/mca-section-invoice/mca-list-profiles-zoomed-in.png#lightbox)
+   [![Képernyőkép a számlázási profilok listájáról, amelyen a Hozzáadás lehetőség van kiválasztva.](./media/mca-section-invoice/mca-list-profiles.png)](./media/mca-section-invoice/mca-list-profiles-zoomed-in.png#lightbox)
 
     > [!Note]
     >
@@ -136,15 +136,15 @@ Miután az igényeinek megfelelően személyre szabta a számlázási fiókot, a
 
 2. Keressen rá az **Előfizetések** kifejezésre.
 
-   [![Képernyőkép az előfizetés kifejezés kereséséről a portálon](./media/mca-section-invoice/search-subscriptions.png)](./media/mca-section-invoice/search-subscriptions.png#lightbox)
+   [![Képernyőkép az előfizetés-keresésről az Azure Portalon.](./media/mca-section-invoice/search-subscriptions.png)](./media/mca-section-invoice/search-subscriptions.png#lightbox)
 
 3. A lap tetején válassza a **Hozzáadás** elemet.
 
-   ![Képernyőkép az Előfizetések nézet Hozzáadás gombjáról](./media/mca-section-invoice/subscription-add.png)
+   ![Képernyőkép egy új előfizetés Előfizetések nézetének Hozzáadás gombjáról.](./media/mca-section-invoice/subscription-add.png)
 
 4. Ha több számlázási fiókhoz is hozzáféréssel rendelkezik, válassza ki a Microsoft Ügyfélszerződéshez tartozó számlázási fiókot.
 
-   ![Képernyőkép az Előfizetések nézet Hozzáadás gombjáról](./media/mca-section-invoice/mca-create-azure-subscription.png)
+   ![Képernyőkép az Előfizetés létrehozása panelről.](./media/mca-section-invoice/mca-create-azure-subscription.png)
 
 5. Válassza ki azt a számlázási profilt, amelyre az előfizetés használata ki lesz számlázva. Az előfizetéshez tartozó Azure-használat és egyéb vásárlások díjai a kiválasztott számlázási profil számlájára lesznek kiszámlázva.
 
@@ -166,7 +166,7 @@ Ha már rendelkezik Azure-előfizetésekkel vagy egyéb termékekkel (például 
 
 2. Keressen rá a **Költségkezelés + számlázás** kifejezésre.
 
-   ![Képernyőkép az előfizetés kifejezés kereséséről a portálon](./media/mca-section-invoice/search-cmb.png)
+   ![Képernyőkép az Azure Portal keresőmezőjéről a Költségkezelés + számlázás keresőkifejezéssel.](./media/mca-section-invoice/search-cmb.png)
 
 3. Az előfizetés új számlaszakaszhoz való csatolásához válassza az **Azure-előfizetések** lehetőséget a képernyő bal oldalán. Egyéb termékek (például Azure Marketplace- és AppSource-erőforrások) esetében válassza az **Ismétlődő díjak** lehetőséget.
 

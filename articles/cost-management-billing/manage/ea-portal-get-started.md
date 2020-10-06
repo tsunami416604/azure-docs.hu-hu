@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: enterprise
 ms.reviewer: boalcsva
-ms.openlocfilehash: 8997cf5e86eb79b527c0b37ef0b85556469aea98
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 0404e3b268f5797e34b3818df8eebeefbe68a1f3
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88687637"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371949"
 ---
 # <a name="get-started-with-the-azure-enterprise-portal"></a>Ismerkedés az Azure Enterprise portállal
 
@@ -242,10 +242,10 @@ Fiókok átvitelekor vegye figyelembe ezeket a fontos információkat:
 
 - Az előfizetés-átvitel befejezésekor a Microsoft frissíti a fióktulajdonost.
 
-A szerepköralapú hozzáférés-vezérlési (RBAC-) szabályok megismerése:
+Ismerje meg az Azure-beli szerepköralapú hozzáférés-vezérlés (Azure RBAC) alábbi szabályzatait:
 
-- Ha ugyanazon bérlő két szervezeti azonosítója közötti Azure-előfizetés-átvitelt hajt végre, az RBAC-szabályzatok és a meglévő szolgáltatásadminisztrátori és társadminisztrátori szerepkörök megmaradnak.
-- Más előfizetés-átvitelek az RBAC-szabályzatok és a szerepkör-hozzárendelések elvesztését eredményezhetik.
+- Ha ugyanazon bérlő két szervezeti azonosítója közötti Azure-előfizetés-átvitelt hajt végre, az Azure RBAC-szabályzatok és a meglévő szolgáltatásadminisztrátori és társadminisztrátori szerepkörök megmaradnak.
+- Más előfizetés-átvitelek az Azure RBAC-szabályzatok és a szerepkör-hozzárendelések elvesztését eredményezhetik.
 - A szabályzatok és a rendszergazdai szerepkörök nem vihetők át különböző címtárakba. A szolgáltatásadminisztrátorokból a célfiók tulajdonosa lesz.
 
 A fióktulajdonos módosítása előtt:
@@ -569,7 +569,7 @@ Költségkvótát a részleg szintjén állíthat be, és a rendszer automatikus
 
 A költségkvóta meghatározásához válasszon egy részleget, majd válassza a Szerkesztés ikont. A költségkeret részleteinek szerkesztése után válassza a **Mentés** parancsot.
 
-### <a name="i-used-resource-groups-to-implement-rbac-and-track-usage-how-can-i-view-the-associated-usage-details"></a>Erőforráscsoportokat használtam az RBAC implementálásához és a használat nyomon követéséhez. Hogyan tekinthetem meg a kapcsolódó használati adatokat?
+### <a name="i-used-resource-groups-to-implement-azure-rbac-and-track-usage-how-can-i-view-the-associated-usage-details"></a>Erőforráscsoportokat használtam az Azure RBAC implementálásához és a használat nyomon követéséhez. Hogyan tekinthetem meg a kapcsolódó használati adatokat?
 
 Ha használ _erőforráscsoportokat_ és _címkéket_, ezen információk nyomon követése a szolgáltatás szintjén történik, és az információk a részletes használati adatokat tartalmazó (.csv) fájlban érhetők el. Lásd a [Használati jelentés letöltése](https://ea.azure.com/report/downloadusage) szakaszt az Azure Enterprise portálon.
 

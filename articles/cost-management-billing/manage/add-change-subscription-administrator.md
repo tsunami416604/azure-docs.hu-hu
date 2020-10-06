@@ -1,6 +1,6 @@
 ---
 title: Azure-előfizetés-adminisztrátorok hozzáadása vagy módosítása
-description: A cikk azt ismerteti, hogyan végezheti el az Azure-előfizetés-adminisztrátorok hozzáadását vagy módosítását szerepköralapú hozzáférés-vezérléssel (RBAC).
+description: A cikk azt ismerteti, hogyan végezheti el az Azure-előfizetés-adminisztrátorok hozzáadását vagy módosítását Azure-beli szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával.
 author: genlin
 ms.reviewer: dcscontentpm
 tags: billing
@@ -9,21 +9,21 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 2ccdb16af788f6f8d106628742b2a83e25b26263
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 273f12765f60eb1a0d65037e30e33e58b16463bf
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88683096"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91372306"
 ---
 # <a name="add-or-change-azure-subscription-administrators"></a>Azure-előfizetés-adminisztrátorok hozzáadása vagy módosítása
 
 
 Az Azure-erőforrások hozzáférésének kezeléséhez megfelelő rendszergazdai szerepkörrel kell rendelkeznie. Az Azure az [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../../role-based-access-control/overview.md) nevű engedélyezési rendszert használja, amelyben számos beépített szerepkör közül választhat. A szerepkörök hozzárendelését különböző hatókörök (például felügyeleti csoport, előfizetés vagy erőforráscsoport) szerint is elvégezheti. Alapértelmezés szerint az új Azure-előfizetést létrehozó személy rendelheti hozzá más felhasználókhoz az adminisztratív hozzáférést az előfizetésekhez.
 
-Ez a cikk azt ismerteti, hogyan adhatja hozzá az adminisztrátori szerepkört egy felhasználóhoz, illetve módosíthatja azt később az RBAC használatával az előfizetés hatókörében.
+Ez a cikk azt ismerteti, hogyan adhatja hozzá az adminisztrátori szerepkört egy felhasználóhoz, illetve módosíthatja azt később az Azure RBAC használatával az előfizetés hatókörében.
 
-A Microsoft azt javasolja, hogy az erőforrásokhoz való hozzáférést az RBAC segítségével szabályozza. Azonban, ha továbbra is a klasszikus üzembehelyezési modellt használja, és klasszikus erőforrásokat felügyel az [Azure szolgáltatásfelügyeleti PowerShell-moduljával](/powershell/module/servicemanagement/azure.service), egy klasszikus adminisztrátorra lesz szüksége.
+A Microsoft azt javasolja, hogy az erőforrásokhoz való hozzáférést az Azure RBAC segítségével szabályozza. Azonban, ha továbbra is a klasszikus üzembehelyezési modellt használja, és klasszikus erőforrásokat felügyel az [Azure szolgáltatásfelügyeleti PowerShell-moduljával](/powershell/module/servicemanagement/azure.service), egy klasszikus adminisztrátorra lesz szüksége.
 
 > [!TIP]
 > Amennyiben kizárólag az Azure Portalon keresztül végzi a klasszikus erőforrások felügyeletét, nem szükséges klasszikus adminisztrátort használni.

@@ -9,12 +9,12 @@ ms.subservice: billing
 ms.topic: how-to
 ms.date: 08/20/2019
 ms.author: banders
-ms.openlocfilehash: 334193f64c49b546bab5f44840df5b3f59e32c4f
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: ebe750440528e40feaf0b4700c018a612b482e34
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690578"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447631"
 ---
 # <a name="track-microsoft-customer-agreement-azure-credit-balance"></a>A Microsoft-ügyfélszerződéshez tartozó Azure-kreditek egyenlegének nyomon követése
 
@@ -35,11 +35,11 @@ Ez a cikk a Microsoft-ügyfélszerződéshez tartozó számlázási fiókokra vo
 
 2. Keressen rá a **Költségkezelés + számlázás** kifejezésre.
 
-    ![Képernyőkép a „költségkezelés + számlázás” kifejezés portálon történő kereséséről](./media/mca-check-azure-credits-balance/billing-search-cost-management-billing.png)
+    ![Képernyőkép a „költségkezelés + számlázás” kifejezés portálon történő kereséséről.](./media/mca-check-azure-credits-balance/billing-search-cost-management-billing.png)
 
 3. A számlázási hatókörök lapon válassza ki azt a számlázási fiókot, amelynek kreditegyenlegét nyomon szeretné követni. A számlázási fióknak **Microsoft-ügyfélszerződés** típusú lesz.
 
-    ![Képernyőkép a „költségkezelés + számlázás” kifejezés portálon történő kereséséről](./media/mca-check-azure-credits-balance/list-of-scopes.png)
+    ![A számlázási hatóköröket megjelenítő képernyőkép.](./media/mca-check-azure-credits-balance/list-of-scopes.png)
 
     > [!NOTE]
     >
@@ -47,7 +47,7 @@ Ez a cikk a Microsoft-ügyfélszerződéshez tartozó számlázási fiókokra vo
 
 3. A bal oldalon válassza ki a **Fizetési módok**, majd az **Azure-kreditek** elemet.
 
-   ![Képernyőkép a számlázási profil kreditegyenlegéről](./media/mca-check-azure-credits-balance/mca-payment-methods.png)
+   ![A becsült és aktuális egyenlegeket megjelenítő képernyőkép.](./media/mca-check-azure-credits-balance/mca-payment-methods.png)
 
 4. Az Azure-kreditek lap az alábbi szakaszokból áll:
 

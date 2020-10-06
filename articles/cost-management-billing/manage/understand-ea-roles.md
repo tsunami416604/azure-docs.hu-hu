@@ -8,12 +8,12 @@ ms.subservice: enterprise
 ms.topic: conceptual
 ms.date: 09/03/2020
 ms.author: banders
-ms.openlocfilehash: 564acd6d6072a4308141942666cc0ebcc0ad0136
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 13b344d3f13993dc7b6acf7bfe9a0ccdea0c866b
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89433517"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371354"
 ---
 # <a name="managing-azure-enterprise-roles"></a>Az Azure Enterprise szerepköreinek kezelése
 
@@ -114,12 +114,12 @@ A következő táblázat bemutatja a Nagyvállalati Szerződés rendszergazdai s
 |Fióktulajdonos VAGY részlegszintű rendszergazda|✘ Letiltva |Nincs|Nincs díjszabás|
 |None|Nem alkalmazható |Tulajdonos|Kiskereskedelmi díjszabás|
 
-A vállalati rendszergazdai szerepkört és a díjtétel-megtekintési szabályzatokat az Enterprise Portalon lehet beállítani. Az Azure-szerepkört az Azure Portalon lehet frissíteni. További információkért lásd [a hozzáférés az RBAC és az Azure Portal használatával történő kezelését](../../role-based-access-control/role-assignments-portal.md) ismertető cikket.
+A vállalati rendszergazdai szerepkört és a díjtétel-megtekintési szabályzatokat az Enterprise Portalon lehet beállítani. Az Azure-szerepkört az Azure Portalon lehet frissíteni. További információ: [Azure-beli szerepkör-hozzárendelés hozzáadása vagy eltávolítása az Azure Portal használatával](../../role-based-access-control/role-assignments-portal.md).
 
 
 
 ## <a name="next-steps"></a>További lépések
 
 - [Az Azure-beli számlázási információkhoz való hozzáférés kezelése](manage-billing-access.md)
-- [Hozzáférés kezelése az RBAC és az Azure Portal használatával](../../role-based-access-control/role-assignments-portal.md)
+- [Azure-beli szerepkör-hozzárendelés hozzáadása vagy eltávolítása az Azure Portal használatával](../../role-based-access-control/role-assignments-portal.md)
 - [Beépített Azure-szerepkörök](../../role-based-access-control/built-in-roles.md)

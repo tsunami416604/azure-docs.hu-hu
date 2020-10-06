@@ -4,18 +4,18 @@ ms.service: cost-management-billing
 ms.topic: include
 ms.date: 02/28/2019
 ms.author: amberb
-ms.openlocfilehash: 58bf7c300d7f52807bd255da62bf1cc452883811
-ms.sourcegitcommit: 0947111b263015136bca0e6ec5a8c570b3f700ff
+ms.openlocfilehash: 70139f6dc051cc0aa6b6a65ab76f0f2db3b94a13
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 03/24/2020
-ms.locfileid: "75779348"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91362770"
 ---
 A szerződéstípusra kattintva megállapíthatja, hogy rendelkezik-e hozzáféréssel a Microsoft-ügyfélszerződéshez tartozó számlázási fiókhoz.
  
 1. Nyissa meg az [Azure Portalt](https://portal.azure.com) a számlázási fiók hozzáférés ellenőrzéséhez. Keresse meg és válassza ki a **Költségkezelés + számlázás** lehetőséget.
 
-   ![Keresse meg a Költségkezelés és számlázás elemet a Microsoft Azure Portalon.](./media/billing-check-mca/billing-search-cost-management-billing.png)
+   ![Képernyőkép az Azure Portal keresőmezőjéről a Költségkezelés + számlázás keresőkifejezéssel.](./media/billing-check-mca/billing-search-cost-management-billing.png)
  
 2. Ha csak egy számlázási hatókörhöz rendelkezik hozzáféréssel, válassza a menü **Tulajdonságok** elemét. Akkor fér hozzá a Microsoft-ügyfélszerződéshez tartozó számlázási fiókhoz, ha a számlázási fiók típusa **Microsoft-ügyfélszerződés**.
  

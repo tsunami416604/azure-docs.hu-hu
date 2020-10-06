@@ -9,12 +9,12 @@ ms.subservice: cost-management
 ms.topic: how-to
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 7bed8cc55e0880d88df22ca32bc5886e22022cbc
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 50451acdbd1c88b6ae703ed25de9cee1f3e48216
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690187"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91446461"
 ---
 # <a name="manage-costs-with-azure-budgets"></a>Költségek kezelése az Azure Budgetsszel
 
@@ -152,7 +152,7 @@ Feltételes utasítás használatával győződjön meg arról, hogy a küszöb�
 1. A kifejezés beállításához kattintson az **OK** gombra.
 1. A **Feltétel** legördülő listából válassza a **nagyobb vagy egyenlő, mint** lehetőséget.
 1. A feltétel **Válasszon egy értéket** mezőjébe írja be a következőt: `.8`.  
-    ![Azure – Logic Apps-alkalmazás – Lebegőpontos kifejezés értékkel](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-12.png)
+    ![Képernyőkép a Feltétel párbeszédpanelről, a kiválasztott értékekkel.](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-12.png)
 1. A Feltétel mezőben válassza a **Hozzáadás** > **Sor hozzáadása** lehetőséget a feltétel további részének hozzáadásához.
 1. A **Feltétel** mezőben válassza a `Choose a value` szöveget tartalmazó szövegmezőt.
 1. Válassza a **Kifejezés** lehetőséget a lista tetején, és írja be a következő kifejezést a kifejezésszerkesztőbe: `float()`
@@ -160,7 +160,7 @@ Feltételes utasítás használatával győződjön meg arról, hogy a küszöb�
 1. A kifejezés beállításához kattintson az **OK** gombra.
 1. A **Feltétel** legördülő listából válassza a **Kevesebb, mint** lehetőséget.
 1. A feltétel **Válasszon egy értéket** mezőjébe írja be a következőt: `1`.  
-    ![Azure – Logic Apps-alkalmazás – Lebegőpontos kifejezés értékkel](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-13.png)
+    ![Képernyőkép a Feltétel párbeszédpanelről, két feltétellel.](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-13.png)
 1. A **Ha igaz** mezőben válassza a **Művelet hozzáadása** lehetőséget. Egy HTTP POST-műveletet fog hozzáadni, amely kikapcsolja a választható virtuális gépeket.  
     ![Azure – Logic Apps-alkalmazás – Művelet hozzáadása](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-14.png)
 1. A HTTP-művelet megkereséséhez adja meg a **HTTP** kulcsszót, majd válassza a **HTTP – HTTP** műveletet.  
@@ -183,7 +183,7 @@ Feltételes utasítás használatával győződjön meg arról, hogy a küszöb�
 Feltételes utasítás használatával győződjön meg arról, hogy a küszöbérték elérte vagy túllépte-e a költségvetési érték 100%-át. Ha elérte a küszöbértéket, küldjön egy HTTP POST-ot a **Teljes** nevű webhook használatával. Ez a művelet leállítja az összes hátralévő virtuális gépet.
 
 1. Válassza az **Új lépés** > **Feltétel hozzáadása** lehetőséget.  
-    ![Azure – Logic Apps-alkalmazás – Művelet hozzáadása](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-20.png)
+    ![Képernyőkép a Ha igaz párbeszédpanelről, amelyen a Művelet hozzáadása lehetőség van kiemelve.](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-20.png)
 1. A **Feltétel** mezőben válassza a `Choose a value` szövegmezőt az elérhető értékek megjelenítéséhez.
 1. Válassza a **Kifejezés** lehetőséget a lista tetején, és írja be a következő kifejezést a kifejezésszerkesztőbe: `float()`
 1. Válassza a **Dinamikus tartalom** lehetőséget, vigye a kurzort a () zárójelek közé, és a listából válassza a **NotificationThresholdAmount** lehetőséget a teljes kifejezés feltöltéséhez.
@@ -194,11 +194,11 @@ Feltételes utasítás használatával győződjön meg arról, hogy a küszöb�
 1. A feltétel **Válasszon egy értéket** mezőjébe írja be a következőt: `1`.  
     ![Azure – Logic Apps-alkalmazás – Feltétel beállítása](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-21.png)
 1. A **Ha igaz** mezőben válassza a **Művelet hozzáadása** lehetőséget. Egy HTTP POST-műveletet fog hozzáadni, amely leállítja az összes fennmaradó virtuális gépet.  
-    ![Azure – Logic Apps-alkalmazás – Művelet hozzáadása](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-22.png)
+    ![Képernyőkép a Ha igaz párbeszédpanelről, ahol hozzáadhatók HTTP POST-műveletek.](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-22.png)
 1. A HTTP-művelet megkereséséhez adja meg a **HTTP** kulcsszót, majd válassza a **HTTP – HTTP** műveletet.
 1. A **Metódus** beállításhoz válassza a **POST** értéket.
 1. **Uri** értékként írja be az oktatóanyag korábbi szakaszában létrehozott **Teljes** elnevezésű webhook URL-címét.  
-    ![Azure – Logic Apps-alkalmazás – Művelet hozzáadása](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-23.png)
+    ![Képernyőkép a HTTP párbeszédpanelről, ahol megadható az URL-cím érték.](./media/cost-management-budget-scenario/billing-cost-management-budget-scenario-23.png)
 1. A **Ha igaz** mezőben válassza a **Művelet hozzáadása** lehetőséget. Egy e-mail-műveletet fog hozzáadni, amely értesíti a címzettet arról, hogy a fennmaradó virtuális gépek le lettek állítva.
 1. Keressen rá az „e-mail küldése” kifejezésre, és válassza az Ön e-mail-szolgáltatásához tartozó *e-mail küldése* műveletet.
 1. Adja hozzá az e-mailhez a **Címzett**, a **Tárgy** és a **Szövegtörzs** szövegét, amely értesíti a címzettet arról, hogy a választható virtuális gépek le lettek állítva. A **BudgetName** és a **NotificationThresholdAmount** dinamikus tartalmat használva töltse fel a tárgy és a szövegtörzs mezőket.  

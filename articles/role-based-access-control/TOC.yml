@@ -103,7 +103,7 @@
       href: elevate-access-global-admin.md
     - name: Klasszikus adminisztrátorok
       href: classic-administrators.md
-    - name: Előfizetés áthelyezése egy másik könyvtárba (előzetes verzió)
+    - name: Előfizetés áthelyezése egy másik könyvtárba
       href: transfer-subscription.md
     - name: Hibaelhárítás
       href: troubleshooting.md

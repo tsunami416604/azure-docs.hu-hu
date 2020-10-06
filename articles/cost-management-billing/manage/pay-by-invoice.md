@@ -9,12 +9,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: 30fa6e0489c1f2c33e02286280e7508239c1c1d2
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.openlocfilehash: 0667e253d50ecc34acef822a928a95e49f13282e
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89567911"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91439776"
 ---
 # <a name="pay-for-your-azure-subscription-by-invoice"></a>Azure-előfizetés fizetése számla alapján
 
@@ -85,7 +85,7 @@ Kövesse az alábbi lépéseket Azure-előfizetése számlás fizetésre (csekk/
 
 1. Nyissa meg az [Azure Portalt](https://portal.azure.com), és jelentkezzen be fiókadminisztrátorként. Keresse meg és válassza ki a **Költségkezelés + számlázás** lehetőséget.
 
-    ![Keresse meg a Költségkezelés és számlázás elemet a Microsoft Azure Portalon.](./media/pay-by-invoice/search.png)
+    ![Képernyőkép az Azure Portal keresőmezőjéről a Költségkezelés + számlázás keresőkifejezéssel.](./media/pay-by-invoice/search.png)
 
 1. Válassza ki azt az előfizetést, amelyet számlás fizetésre kíván átváltani.
 1. Válassza a **Fizetési módok** elemet.

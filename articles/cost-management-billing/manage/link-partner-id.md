@@ -8,12 +8,12 @@ ms.date: 07/24/2020
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.openlocfilehash: dc4d319e0e6b55af8af460fa8a56b9ef24a53341
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: 03953e210f1c4caf1541db272ce4c02c271dafaa
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89487351"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371830"
 ---
 # <a name="link-a-partner-id-to-your-azure-accounts"></a>Partnerazonosítók csatolása az Azure-fiókhoz
 
@@ -151,9 +151,9 @@ A Cloud Product Performance jelentéskészítő szolgáltatás a Partner Centerb
 
 A következő lehetséges okok miatt nem jelenik meg az ügyfél a jelentésekben
 
-1. A csatolt felhasználói fiók nem rendelkezik [szerepköralapú hozzáféréssel](https://docs.microsoft.com/azure/role-based-access-control/overview) egyik ügyfél Azure-előfizetéséhez vagy erőforrásához sem.
+1. A csatolt felhasználói fiók nem rendelkezik [Azure-beli szerepköralapú hozzáférés-vezérléssel (Azure RBAC-vel)](https://docs.microsoft.com/azure/role-based-access-control/overview) egyik ügyfél Azure-előfizetéséhez vagy erőforrásához sem.
 
-2. Nincs használatban az Azure-előfizetés, amelyben a felhasználó [szerepköralapú hozzáféréssel](https://docs.microsoft.com/azure/role-based-access-control/overview) rendelkezik.
+2. Nincs használatban az Azure-előfizetés, amelyben a felhasználó [Azure-beli szerepköralapú hozzáférés-vezérléssel (Azure RBAC-vel)](https://docs.microsoft.com/azure/role-based-access-control/overview) rendelkezik.
 
 **Működik-e a partnerazonosító csatolása funkció az Azure Stackkel?**
 

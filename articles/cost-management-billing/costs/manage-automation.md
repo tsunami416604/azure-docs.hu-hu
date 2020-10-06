@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: matrive
-ms.openlocfilehash: eb6ed73305d55b4f76464a4567c6b53715b10c3a
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 2bf28384ae672440a18331cad8ac95f6ea051b85
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90526646"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91372187"
 ---
 # <a name="manage-costs-with-automation"></a>Költségek kezelése automatizálással
 
@@ -234,7 +234,7 @@ A költségvetéseket számos különféle módon konfigurálhatja az Azure-kör
 - **Időtartam** – A költségvetés érvényességének hossza. A költségvetés csak addig végez aktív monitorozást és küld riasztásokat, amíg érvényben van.
 - **Értesítések**
   - Kapcsolattartói e-mail-címek – Azok az e-mail-címek, amelyekre a rendszer riasztásokat küld a költségvetésben felmerülő költségekről és a küszöbértékek túllépéséről.
-  - Kapcsolattartói szerepkörök – A beállítás kiválasztásakor minden felhasználó e-mailes riasztást kap, aki megfelelő Azure RBAC-szerepkörrel rendelkezik az adott hatókörben. Az előfizetés-tulajdonosok például riasztásokat kaphatnak az előfizetés hatókörében létrehozott költségvetésekről.
+  - Kapcsolattartói szerepkörök – A beállítás kiválasztásakor minden olyan felhasználó e-mailes riasztást kap, aki megfelelő Azure-szerepkörrel rendelkezik az adott hatókörben. Az előfizetés-tulajdonosok például riasztásokat kaphatnak az előfizetés hatókörében létrehozott költségvetésekről.
   - Kapcsolattartói csoportok – A riasztási küszöbérték túllépésekor a költségvetés meghívja a beállított műveletcsoportokat.
 - **Költségdimenzió-szűrők** – A költségelemzésben vagy a Query API-ban alkalmazott szűrések a költségvetésen is alkalmazhatók. A szűrővel csökkentheti a költségvetésben monitorozott költségek tartományát.
 

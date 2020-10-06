@@ -1,69 +1,53 @@
 ---
 title: Azure-előfizetés számlázási tulajdonjogának átadása
-description: Leírja, hogyan lehet átruházni az Azure-előfizetés számlázási tulajdonjogát egy másik fiókra, és megválaszol néhány gyakori kérdést (GYIK) a folyamatra vonatkozóan.
+description: Ismerteti, hogyan lehet átadni egy Azure-előfizetés számlázási tulajdonjogát egy másik fióknak.
 keywords: azure-előfizetés átadása, átadás azure-előfizetés, azure-előfizetés áthelyezése másik fiókba, azure-előfizetés tulajdonosának módosítása, azure-előfizetés átvitele másik fiókba, azure számlázás átadása
 author: bandersmsft
 ms.reviewer: amberb
 tags: billing,top-support-issue
 ms.service: cost-management-billing
 ms.subservice: billing
-ms.topic: conceptual
-ms.date: 08/20/2020
+ms.topic: how-to
+ms.date: 09/23/2020
 ms.author: banders
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 27ae816e3930ee0e5948c2daae40a0961a6cf474
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.custom: contperfq1
+ms.openlocfilehash: ef497439d77fef63f4b0c902aee06428a30c5ff5
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88685034"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91276730"
 ---
 # <a name="transfer-billing-ownership-of-an-azure-subscription-to-another-account"></a>Azure-előfizetés számlázási tulajdonjogának átadása másik fióknak
 
-Az Azure-előfizetés számlázási tulajdonjogának átadására akkor lehet szükség, ha elhagyja a szervezetet, vagy egy másik fióknak kell küldeni az előfizetésre vonatkozó számlákat. A számlázási tulajdonjog másik fióknak való átadása lehetővé teszi az új fiók rendszergazdái számára a számlázási feladatok végrehajtását. Ilyenek például a fizetési mód megváltoztatása, a díjak megtekintése és az előfizetés lemondása.
+Ez a cikk lépésenként ismerteti, hogyan lehet átadni egy Azure-előfizetés számlázási tulajdonjogát egy másik fióknak. Az előfizetés számlázási tulajdonjogának átadása előtt olvassa el a [Tudnivalók az Azure-előfizetés számlázási tulajdonjogának átadásáról](../understand/subscription-transfer.md) cikket.
 
 Ha meg szeretné tartani a számlázási tulajdonjogot, de módosítani kívánja az előfizetés típusát, tekintse meg [az Azure-előfizetés másik ajánlatra váltását](switch-azure-offer.md) bemutató cikket. Ha szeretné szabályozni, hogy ki férhet hozzá az előfizetés erőforrásaihoz, tekintse meg [az Azure beépített szerepköreit](../../role-based-access-control/built-in-roles.md).
 
-A Nagyvállalati Szerződéssel (EA) rendelkező ügyfelek esetében a vállalati rendszergazdák adhatják át az előfizetések számlázási tulajdonjogát az egyes fiókok között. További információ: [Nagyvállalati Szerződéssel (EA) rendelkező előfizetések számlázási tulajdonjogának átadása](#EA).
+A Nagyvállalati Szerződéssel (EA) rendelkező ügyfelek esetében a vállalati rendszergazda adhatja át az előfizetések számlázási tulajdonjogát az egyes fiókok között. További információ: [Fiók tulajdonosának módosítása](ea-portal-get-started.md#change-account-owner).
+
+Az előfizetés tulajdonjogát csak egy fiók számlázási rendszergazdája adhatja át.
 
 ## <a name="transfer-billing-ownership-of-an-azure-subscription"></a>Azure-előfizetés számlázási tulajdonjogának átadása
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) az átadni kívánt előfizetést tartalmazó számlázási fiók rendszergazdájaként. Ha ellenőrizni szeretné, hogy Ön rendszergazda-e, tekintse meg a [gyakori kérdéseket](#faq).
-
-1. Végezzen keresést a **Költségkezelés + Számlázás** oldalon.
-
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com) az átadni kívánt előfizetést tartalmazó számlázási fiók rendszergazdájaként. Ha nem biztos abban, hogy Ön a rendszergazda, vagy meg szeretné állapítani, hogy ki a rendszergazda, tekintse meg a [Fiók számlázási rendszergazdájának megállapítása](../understand/subscription-transfer.md#whoisaa) cikket.
+1. Keressen rá a **Költségkezelés + számlázás** kifejezésre.  
    ![Képernyőkép az Azure Portal keresőmezőjéről](./media/billing-subscription-transfer/billing-search-cost-management-billing.png)
-
 1. A bal oldali panelen válassza az **Előfizetések** elemet. A hozzáférésétől függően előfordulhat, hogy ki kell választania egy számlázási hatókört, majd az **Előfizetések** vagy az **Azure-előfizetések** lehetőséget.
-
-1. Az átadni kívánt előfizetésnél válassza a **Számlázási tulajdonjog átadása** lehetőséget.
-
+1. Az átadni kívánt előfizetésnél válassza a **Számlázási tulajdonjog átadása** lehetőséget.  
    ![Válassza ki az átadni kívánt előfizetést.](./media/billing-subscription-transfer/billing-select-subscription-to-transfer.png)
-
 1. Adja meg egy olyan felhasználó e-mail-címét, aki annak a fióknak a számlázási adminisztrátora, amely az előfizetés új tulajdonosa lesz.
-
-1. Ha az előfizetését egy másik Azure AD-bérlőn lévő fiókba helyezi át, válassza ki, hogy át kívánja-e helyezni az előfizetést az új fiók bérlőjére. További információért lásd az [előfizetés egy másik Azure AD-bérlőn lévő fiókra történő átadását](#transfer-a-subscription-to-another-azure-ad-tenant-account) ismertető cikket.
-
+1. Ha az előfizetését egy másik Azure AD-bérlőn lévő fiókba helyezi át, válassza ki, hogy át kívánja-e helyezni az előfizetést az új fiók bérlőjére. További információ: [Előfizetés átadása egy másik Azure AD-bérlőn található fióknak](#transfer-a-subscription-to-another-azure-ad-tenant-account).
     > [!IMPORTANT]
-    >
-    > Ha úgy dönt, hogy áthelyezi az előfizetést az új fiók Azure AD-bérlőjére, azzal véglegesen eltávolítja az előfizetés erőforrásainak eléréséhez szükséges összes [Azure-beli szerepkör-hozzárendelést](../../role-based-access-control/role-assignments-portal.md). Csak az új fiók átadási kérelmet elfogadó felhasználójának lesz hozzáférése az előfizetés erőforrásainak kezeléséhez. További információt az [előfizetés másik Azure AD-bérlői fiókra való áthelyezését](#transfer-a-subscription-to-another-azure-ad-tenant-account) ismertető következő szakaszban talál.) Másik lehetőségként törölheti az **Előfizetés Azure AD-bérlője** jelölőnégyzet jelölését, így anélkül adhatja át a számlázási tulajdonjogot az új fiók bérlőjének, hogy áthelyezné az előfizetést. Ha ezt a módszert választja, megtarthatja az Azure-erőforrások eléréséhez szükséges meglévő Azure-beli szerepkör-hozzárendeléseket.
-
-    ![Átadási kérelem küldése lap](./media/billing-subscription-transfer/billing-send-transfer-request.PNG)
-
+    > Ha úgy dönt, hogy áthelyezi az előfizetést az új fiók Azure AD-bérlőjére, azzal véglegesen eltávolítja az előfizetés erőforrásainak eléréséhez szükséges összes [Azure-beli szerepkör-hozzárendelést](../../role-based-access-control/role-assignments-portal.md). Csak az új fiók átadási kérelmet elfogadó felhasználójának lesz hozzáférése az előfizetés erőforrásainak kezeléséhez. Másik lehetőségként törölheti az **Előfizetés Azure AD-bérlője** jelölőnégyzet jelölését, így anélkül adhatja át a számlázási tulajdonjogot az új fiók bérlőjének, hogy áthelyezné az előfizetést. Ha ezt a módszert választja, megtarthatja az Azure-erőforrások eléréséhez szükséges meglévő Azure-beli szerepkör-hozzárendeléseket.  
+    ![Átadási kérelem küldése lap](./media/billing-subscription-transfer/billing-send-transfer-request.png)
 1. Válassza az **Átadási kérelem küldése** lehetőséget.
-
-1. A felhasználó egy e-mailt kap, amely felszólítja az átadási kérelem áttekintéséra.
-
+1. A felhasználó egy e-mailt kap, amely felszólítja az átadási kérelem áttekintéséra.  
    ![Az előfizetés átadásáról szóló e-mail, amely el lett küldve a címzettnek](./media/billing-subscription-transfer/billing-receiver-email.png)
-
-1. Az átadási kérelem jóváhagyásához a felhasználó kiválasztja az e-mailben szereplő hivatkozást, és követi az útmutatást. A felhasználó ezután kiválasztja az előfizetés díjának fizetésére használt fizetési módot. Ha a felhasználó még nem rendelkezik Azure-fiókkal, regisztrálnia kell egyet.
-
+1. Az átadási kérelem jóváhagyásához a felhasználó kiválasztja az e-mailben szereplő hivatkozást, és követi az útmutatást. A felhasználó ezután kiválasztja az előfizetés díjának fizetésére használt fizetési módot. Ha a felhasználó még nem rendelkezik Azure-fiókkal, regisztrálnia kell egyet.  
    ![Előfizetés-átadás: első weblap](./media/billing-subscription-transfer/billing-accept-ownership-step1.png)
-
    ![Előfizetés-átadás: második weblap](./media/billing-subscription-transfer/billing-accept-ownership-step2.png)
-
-   ![Előfizetés-átadás: második weblap](./media/billing-subscription-transfer/billing-accept-ownership-step3.png)
-
+   ![Előfizetés-átadás: harmadik weblap](./media/billing-subscription-transfer/billing-accept-ownership-step3.png)
 1. Sikerült! Az előfizetés átadása ezzel megtörtént.
 
 ## <a name="transfer-a-subscription-to-another-azure-ad-tenant-account"></a>Előfizetés átadása másik Azure AD-bérlői fiók számára
@@ -74,17 +58,9 @@ Amikor új előfizetést hoz létre, az a fiókja Azure AD-bérlőjén lesz tár
 
 Amikor az előfizetése számlázási tulajdonjogát egy másik Azure AD-bérlőn lévő fióknak adja át, az előfizetést is áthelyezheti az új fiók bérlőjére. Ha így tesz, akkor az összes korábbi [Azure-beli szerepkör-hozzárendeléssel](../../role-based-access-control/role-assignments-portal.md) rendelkező felhasználó, csoport és szolgáltatásnév elveszíti az előfizetés és az előfizetés erőforrásainak kezeléséhez szükséges hozzáférést. Csak az új fiók átadást elfogadó felhasználójának lesz hozzáférése az erőforrások kezeléséhez. Az új tulajdonosnak manuálisan kell hozzáadnia ezeket a felhasználókat az előfizetéshez, ha hozzáférést kíván biztosítani az azt elveszítő felhasználónak. További információ: [Azure-előfizetés átadása egy másik Azure AD-címtárba (Előzetes verzió)](../../role-based-access-control/transfer-subscription.md).
 
-
 ## <a name="transfer-visual-studio-and-partner-network-subscriptions"></a>Visual Studio- és a Microsoft Partner Network-előfizetések átadása
 
 A Visual Studio- és a Microsoft Partner Network-előfizetésekhez havonta ismétlődő Azure-kredit tartozik. Az előfizetések átadásakor ez a kredit nem válik elérhetővé a cél számlázási fiókban. Az előfizetés a cél számlázási fiókban rendelkezésre álló kreditet használja fel. Például: Bob átad egy Visual Studio Enterprise-előfizetést Jane fiókjába szeptember 9-én, és Jane elfogadja a tranzakciót. Az átadás befejezését követően az előfizetés Jane fiókjának kreditjét kezdi használni. A kreditek mennyisége minden hónap 9. napján visszaáll az alapértékre.
-
-
-<a id="EA"></a>
-
-## <a name="transfer-ea-subscription-billing-ownership"></a>EA-előfizetés számlázási tulajdonjogának átadása
-
-A vállalati adminisztrátor átadhatja az előfizetések tulajdonjogát egyik fiókból a másiknak egy adott regisztráción belül. További információért lásd a [Fiók tulajdonosának módosítása](https://docs.microsoft.com/azure/cost-management-billing/manage/ea-portal-get-started#change-account-owner) részt az EA Portalon.
 
 ## <a name="next-steps-after-accepting-billing-ownership"></a>A számlázási tulajdonjog elfogadását követő lépések
 
@@ -95,130 +71,25 @@ Ha elfogadta egy Azure-előfizetés számlázási tulajdonjogát, javasoljuk, ho
    1. Felügyeleti tanúsítványok, amelyek rendszergazdai jogosultságokat biztosítanak a felhasználónak az előfizetés erőforrásaihoz. További információk: [Felügyeleti tanúsítvány létrehozása és feltöltése az Azure szolgáltatáshoz](../../cloud-services/cloud-services-certs-create.md)
    1. A Storage-hoz hasonló szolgáltatások hozzáférési kulcsai. További információkat az [Azure Storage-fiókokkal kapcsolatos tudnivalókat](../../storage/common/storage-create-storage-account.md) ismertető témakörben olvashat.
    1. Az olyan szolgáltatások távelérési hitelesítő adatai, mint az Azure-beli virtuális gépek.
-1. Ha egy partnerrel közösen dolgozik, fontolja meg a partnerazonosító frissítését ezen az előfizetésen. A partnerazonosítót az [Azure Portalon](https://portal.azure.com) frissítheti. További információért lásd a [partnerazonosítók az Azure-fiókokhoz csatolását](link-partner-id.md) ismertető cikket.
-
-<a id="supported"></a>
-
-## <a name="supported-subscription-types"></a>Támogatott előfizetési típusok
-
-Az előfizetések Azure Portalon történő átadása az alábbi előfizetési típusok esetében érhető el. Az átadás lehetősége jelenleg nem támogatott az [ingyenes próba-előfizetések](https://azure.microsoft.com/offers/ms-azr-0044p/) és az [Azure in Open- (AIO-)](https://azure.microsoft.com/offers/ms-azr-0111p/) előfizetések esetében. Áthidaló megoldásért tekintse meg az [erőforrások új erőforráscsoportba vagy előfizetésbe való áthelyezését](../../azure-resource-manager/management/move-resource-group-and-subscription.md) ismertető témakört. Egyéb előfizetések, például támogatási csomagok átviteléhez [forduljon az Azure ügyfélszolgálatához](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
-
-- [Nagyvállalati Szerződés (EA)](https://azure.microsoft.com/pricing/enterprise-agreement/)\*
-- [Microsoft Partner Network](https://azure.microsoft.com/offers/ms-azr-0025p/)  
-- [Visual Studio Enterprise- (MPN-) előfizetők](https://azure.microsoft.com/offers/ms-azr-0029p/)
-- [MSDN-platformok](https://azure.microsoft.com/offers/ms-azr-0062p/)  
-- [Használatalapú fizetés](https://azure.microsoft.com/offers/ms-azr-0003p/)
-- [Pay-As-You-Go Dev/Test](https://azure.microsoft.com/offers/ms-azr-0023p/)
-- [Visual Studio Enterprise](https://azure.microsoft.com/offers/ms-azr-0063p/)
-- [Visual Studio Enterprise: BizSpark](https://azure.microsoft.com/offers/ms-azr-0064p/)
-- [Visual Studio Professional](https://azure.microsoft.com/offers/ms-azr-0059p/)
-- [Visual Studio Test Professional](https://azure.microsoft.com/offers/ms-azr-0060p/)
-- [Microsoft Azure-csomag](https://azure.microsoft.com/offers/ms-azr-0017g/)\*\*
-
-\*[Az EA Portalon](#EA).
-
-\*\*Csak az Azure webhelyre való regisztráció során létrehozott fiókok esetében támogatott.
-
-<a id="faq"></a>
-
-## <a name="frequently-asked-questions-faq-for-senders"></a>Gyakori kérdések (GYIK) küldők számára
-
-Ezek a gyakori kérdések azoknak a felhasználóknak szólnak, akik átadják egy Azure-előfizetés számlázási tulajdonjogát egy másik fióknak.
-
-### <a name="who-is-a-billing-administrator-of-an-account"></a><a name="whoisaa"></a> Ki a fiók számlázási adminisztrátora?
-
-A számlázási adminisztrátor az a személy, aki jogosult kezelni a fiók számlázási feladatait. Ő férhet hozzá a számlákhoz az [Azure Portalon](https://portal.azure.com), és ő végzi el a különböző számlázási feladatokat, mint az előfizetések létrehozása, a számlák áttekintése és kifizetése, valamint a fizetési módok frissítése.
-
-A következő módon tudhatja meg, hogy Ön mely fiókok számlázási adminisztrátora:
-
-1. Nyissa meg [az Azure Portal Költségkezelés + számlázás oldalát](https://portal.azure.com/#blade/Microsoft_Azure_Billing/ModernBillingMenuBlade/Overview).
-1. A bal oldali panelen válassza a **Minden számlázási hatókör** lehetőséget.
-1. Az Előfizetések lapon megtalálható az összes előfizetés, amelynek Ön a számlázási adminisztrátora.
-
-Ha nem biztos benne, hogy az adott előfizetésnek ki a fiókadminisztrátora, az alábbi lépésekkel kiderítheti.
-
-1. Nyissa meg [az Azure Portal Előfizetések oldalát](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade).
-1. Válassza ki az ellenőrizni kívánt előfizetést, majd lépjen a **Beállítások** területre.
-1. Válassza ki a **Tulajdonságok** elemet. Az előfizetés fiókadminisztrátora a **Fiókadminisztrátor** mezőben látható.
-
-### <a name="does-everything-transfer-including-resource-groups-vms-disks-and-other-running-services"></a>Minden át lesz helyezve az új fiókba, beleértve az erőforráscsoportokat, a virtuális gépeket, a lemezeket és az egyéb futó szolgáltatásokat?
-
-Az összes erőforrás, például virtuális gép, lemez és webhely át lesz helyezve az új fiókba. Ugyanakkor ha az előfizetést egy másik Azure AD-bérlőben található fiókba helyezi át, az előfizetés [rendszergazdai szerepkörei](add-change-subscription-administrator.md) és [Azure-beli szerepkör-hozzárendelései](../../role-based-access-control/role-assignments-portal.md) [nem lesznek áthelyezve](#transfer-a-subscription-to-another-azure-ad-tenant-account). Ezenkívül az [alkalmazásregisztrációkat](../../active-directory/develop/quickstart-v1-integrate-apps-with-azure-ad.md) és más, bérlőspecifikus szolgáltatásokat sem adja át az előfizetéssel.
-
-### <a name="can-i-transfer-ownership-to-an-account-in-another-countryregion"></a>Átadhatom a fiók tulajdonjogát egy másik országban vagy régióban található felhasználónak?
-Sajnos az Azure Portalon nem végezhetők országok vagy régiók közötti átviteli műveletek. Az előfizetés országok vagy régiók közötti átviteléhez [forduljon az ügyfélszolgálathoz](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade).
-
-### <a name="i-am-an-administrator-on-two-accounts-can-i-transfer-a-subscription-from-one-of-my-accounts-to-another"></a>Két fiók rendszergazdája vagyok. Megtehetem, hogy átadom az egyik fiókomban található előfizetést a másik fiókomnak?
-Igen, átadhat előfizetéseket a fiókjai között. A fiókjai technikailag két különálló felhasználó fiókjainak tekinthetők, ezért az előfizetések fiókok közötti átadására vonatkozó fenti eljárás ebben az esetben alkalmazható.
-
-### <a name="does-a-subscription-transfer-result-in-any-service-downtime"></a>Az előfizetés átadása jár valamennyi szolgáltatáskieséssel?
-
-Egy előfizetésnek az ugyanazon Azure AD-bérlőn lévő fiókba való átadása nincs hatással az előfizetésen futó erőforrásokra. A PowerShellben mentett környezeti információk azonban nem frissülnek, ezért előfordulhat, hogy ezeket törölnie kell, vagy módosítania kell a beállításokat. Ha az előfizetést egy másik bérlő fiókjába helyezi át, és úgy dönt, hogy áthelyezi az előfizetést a bérlőre, akkor az összes korábbi, [Azure-beli szerepkör-hozzárendeléssel](../../role-based-access-control/role-assignments-portal.md) rendelkező felhasználó, csoport és szolgáltatásnév elveszíti az előfizetésben lévő erőforrások eléréséhez való hozzáférést. Emiatt szolgáltatáskiesés fordulhat elő.
-
-### <a name="can-users-in-new-account-access-usage-and-billing-history"></a>Az új fiók felhasználói hozzáférhetnek a használati és számlázási előzményekhez?
-
-Az új fiókban lévő felhasználók számára elérhető egyetlen információ az előfizetése utolsó havi díja. A használati és számlázási előzmények közül más nem kerül át az előfizetéssel együtt.
-
-### <a name="how-do-i-migrate-data-and-services-for-my-azure-subscription-to-new-subscription"></a>Hogyan migrálhatom az Azure-előfizetésem adatait és szolgáltatásait az új előfizetésre?
-
-Ha nem tudja átadni az előfizetés tulajdonjogát, manuálisan is elvégezheti az erőforrások migrálását. Lásd [az erőforrások új erőforráscsoportba vagy előfizetésbe való áthelyezését](../../azure-resource-manager/management/move-resource-group-and-subscription.md) ismertető témakört.
-
-### <a name="if-i-transfer-a-visual-studio-or-microsoft-partner-network-subscription-does-my-credit-carry-forward-with-the-subscription-in-the-new-account"></a>Visual Studio- vagy Microsoft Partner Network-előfizetés átadásakor az előfizetéssel együtt a kreditek is átkerülnek az új fiókba?
-
-Nem, a kreditek nem lesznek elérhetők az új fiókban. Az átadási kérelmet elfogadó felhasználónak rendelkeznie kell Visual Studio-licenccel a kérelem elfogadásához. Az előfizetés a felhasználó fiókjában rendelkezésre álló Visual Studio-krediteket használja. További információ: [A Visual Studio- és a Microsoft Partner Network-előfizetések átadása](#transfer-visual-studio-and-partner-network-subscriptions).
-
-
-## <a name="frequently-asked-questions-faq-for-recipients"></a>Gyakori kérdések (GYIK) címzettek számára
-
-Ezek a gyakori kérdések azoknak a felhasználóknak szólnak, akik elfogadják egy Azure-előfizetés számlázási tulajdonjogát egy másik fióktól.
-
-### <a name="if-i-take-over-billing-ownership-of-a-subscription-from-another-account-do-users-in-that-account-continue-to-have-access-to-my-resources"></a>Ha átveszem egy előfizetés számlázási tulajdonjogát egy másik fióktól, a szóban forgó fiók felhasználói továbbra is hozzáférhetnek az erőforrásaimhoz?
-
-Igen. Azonban előfordulhat, hogy a [rendszergazdai szerepkörök](add-change-subscription-administrator.md) és az [Azure-beli szerepkör-hozzárendelések](../../role-based-access-control/role-assignments-portal.md) el lesznek távolítva. A hozzáférés akkor veszik el, ha a fiók az előfizetés bérlőjétől eltérő Azure AD-bérlőn található, és az átadási kérelmet küldő felhasználó áthelyezi az előfizetést az Ön fiókjának bérlőjére. A következő lépésekkel tekintheti meg azokat a felhasználókat, akik Azure-beli szerepkör-hozzárendeléssel rendelkeznek az előfizetés erőforrásaihoz való hozzáféréshez:
-
-1. Nyissa meg [az Azure Portal Előfizetés lapját](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade).
-1. Válassza ki a megtekinteni kívánt előfizetést, majd a bal oldali panelen válassza a **Hozzáférés-vezérlés (IAM)** elemet.
-1. Válassza a lap tetején található **Szerepkör-hozzárendelések** elemet. A Szerepkör-hozzárendelések oldal felsorolja az összes felhasználót, aki hozzáféréssel rendelkezik az előfizetéshez.
-
-Az [Azure-beli szerepkör-hozzárendeléseknek](../../role-based-access-control/role-assignments-portal.md) az átadás során történő eltávolítása esetén is előfordulhat, hogy az eredeti tulajdonosi fiók felhasználói továbbra is hozzáféréssel rendelkeznek az előfizetéshez más biztonsági mechanizmusokon keresztül, például:
-
-* Felügyeleti tanúsítványok, amelyek rendszergazdai jogosultságokat biztosítanak a felhasználónak az előfizetés erőforrásaihoz. További információért lásd: [Felügyeleti tanúsítvány létrehozása és feltöltése az Azure szolgáltatáshoz](../../cloud-services/cloud-services-certs-create.md).
-* A Storage-hoz hasonló szolgáltatások hozzáférési kulcsai. További információkat az [Azure Storage-fiókokkal kapcsolatos tudnivalókat](../../storage/common/storage-create-storage-account.md) ismertető témakörben olvashat.
-* Az olyan szolgáltatások távelérési hitelesítő adatai, mint az Azure-beli virtuális gépek.
-
-Ha a címzettnek korlátoznia kell a hozzáférését az erőforrásaihoz, érdemes megfontolnia a szolgáltatáshoz társított titkos kódok frissítését. A legtöbb erőforrást a következő lépésekkel lehet frissíteni:
-
-  1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
-  2. A központi menüben válassza a **Minden erőforrás** elemet.
-  3. Válassza ki az erőforrást.
-  4. Az erőforrás lapján válassza a **Beállítások** elemet. Itt tekintheti meg és frissítheti a meglévő titkos kódokat.
-
-### <a name="if-i-take-over-the-billing-ownership-of-a-subscription-in-the-middle-of-the-billing-cycle-do-i-have-to-pay-for-the-entire-billing-cycle"></a>Ha egy számlázási ciklus közepén veszem át egy előfizetés számlázási tulajdonjogát, akkor a teljes számlázási ciklust ki kell fizetnem?
-
-Az Ön fiókja felelős az átadás időpontjától kezdve jelentkező használati díjak megfizetéséért. Előfordulhat, hogy bizonyos használatra az átadás előtt került sor, de csak az átadást követően lett jelentve. Ez is az Ön fiókjának számlájában fog szerepelni.
-
-### <a name="can-i-use-a-different-payment-method"></a>Használhatok más fizetési módot?
-
-Igen. Az átadási kérelem elfogadásakor kiválaszthatja a fiókja meglévő fizetési módját, vagy hozzáadhat egy új fizetési módot.
-
-### <a name="how-can-i-transfer-ownership-of-my-enterprise-agreement-ea-subscription-account-ownership-if-the-original-account-owner-is-no-longer-with-the-organization"></a>Hogyan adhatom át a nagyvállalati szerződéssel (EA) rendelkező előfizetés fióktulajdonjogát, ha az eredeti fióktulajdonos már nem a vállalat munkatársa?
-
-A vállalati rendszergazda bármilyen fiók tulajdonjogát frissítheti, még azután is, hogy az eredeti fióktulajdonos már nem a vállalat munkatársa. Ehhez [a fiók tulajdonjogának átvitele az összes előfizetésre vonatkozóan](https://ea.azure.com/helpdocs/changeAccountOwnerForASubscription) eljárás utasításait kell követnie az EA Portalon.
+1. Ha egy partnerrel közösen dolgozik, fontolja meg a partnerazonosító frissítését az előfizetésen. A partnerazonosítót az [Azure Portalon](https://portal.azure.com) frissítheti. További információért lásd a [partnerazonosítók az Azure-fiókokhoz csatolását](link-partner-id.md) ismertető cikket.
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
-### <a name="why-dont-i-see-the-transfer-subscription-button"></a><a id="no-button"></a> Miért nem látom Az előfizetés átadása gombot?
+Ha problémába ütközik az előfizetések átadása során, az alábbi hibaelhárítási információk segítséget nyújthatnak.
+
+### <a name="the-transfer-subscription-option-is-unavailable"></a>„Az előfizetés átadása” lehetőség nem érhető el
+
+<a name="no-button"></a> 
 
 Az önkiszolgáló előfizetés-átadási funkció nem érhető el a számlázási fiókjában. Jelenleg a nagyvállalati szerződéses (EA-) fiókok esetében nem támogatott az előfizetések számlázási tulajdonjogának átadása az Azure Portalon. Ezenkívül a Microsoft-képviselővel közösen létrehozott Microsoft-ügyfélszerződési fiókok nem támogatják a számlázási tulajdonjog átadását.
 
-### <a name="why-doesnt-my-subscription-type-support-transfer"></a><a id="no-button"></a> Miért nem támogatja az előfizetési típusom az átadást?
+###  <a name="not-all-subscription-types-can-transfer"></a>Nem minden előfizetés-típus adható át
 
-Nem minden előfizetés-típus támogatja a számlázási tulajdonjog átadását. Az átadást támogató előfizetési típusok teljes listáját a [támogatott előfizetési típusokat](#supported-subscription-types) felsoroló témakörben tekintheti át.
+Nem minden előfizetés-típus támogatja a számlázási tulajdonjog átadását. Az átadást támogató előfizetési típusok teljes listáját a [támogatott előfizetési típusokat](../understand/subscription-transfer.md#supported-subscription-types) felsoroló témakörben tekintheti át.
 
-### <a name="why-am-i-receiving-an-access-denied-error-when-i-try-to-transfer-billing-ownership-of-a-subscription"></a><a id="no-button"></a> Miért jelenik meg hozzáférés megtagadva hiba, amikor megpróbálom átadni az előfizetés számlázási tulajdonjogát?
+###  <a name="access-denied-error-shown-when-trying-to-transfer-subscription-billing-ownership"></a>Hozzáférés megtagadva hibaüzenet jelenik meg az előfizetés számlázási tulajdonjogának átadásakor
 
-Akkor kapja ezt a hibaüzenetet, ha úgy próbálja átadni egy Microsoft Azure-csomag előfizetését, hogy nem rendelkezik a szükséges engedéllyel. A Microsoft Azure-csomag előfizetésének átadásához tulajdonosnak vagy közreműködőnek kell lennie abban a számlázási szakaszban, ahol az előfizetés számlái megjelennek. További információk: [A számlázási szakaszokhoz tartozó előfizetések kezelése](understand-mca-roles.md#manage-subscriptions-for-invoice-section).
-
+Akkor kapja ezt a hibaüzenetet, ha úgy próbálja átadni egy Microsoft Azure-csomag előfizetését, hogy nem rendelkezik a szükséges engedéllyel. A Microsoft Azure-csomag előfizetésének átadásához tulajdonosnak vagy közreműködőnek kell lennie abban a számlázási szakaszban, ahol az előfizetés számlái megjelennek. További információk: [A számlázási szakaszokhoz tartozó előfizetések kezelése](../manage/understand-mca-roles.md#manage-subscriptions-for-invoice-section).
 
 ## <a name="need-help-contact-us"></a>Segítségre van szüksége? Vegye fel velünk a kapcsolatot.
 

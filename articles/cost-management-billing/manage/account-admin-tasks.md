@@ -9,12 +9,12 @@ ms.subservice: billing
 ms.topic: how-to
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: ad39b9980562c345aff87f4e0771f265011886b3
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 469ccad773693047391f56c1f1109a9c444ee90b
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88683300"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447704"
 ---
 # <a name="account-administrator-tasks-in-the-azure-portal"></a>Fiókadminisztrátori feladatok az Azure Portalon
 
@@ -35,14 +35,14 @@ Ezen feladatok elvégzéséhez fiókadminisztrátornak kell lennie.
 
 1. A **Saját előfizetések** listából válassza ki azt az előfizetést, amelyhez hozzá szeretné adni a hitelkártyát.
 
-   ![Képernyőkép a saját előfizetések rácsának áttekintésével](./media/account-admin-tasks/cost-management-billing-overview-x.png)
+   ![Képernyőkép a Költségkezelés + számlázás oldalról, az előfizetés-kiválasztási lehetőséggel.](./media/account-admin-tasks/cost-management-billing-overview-x.png)
 
    > [!NOTE]
    > Ha bizonyos előfizetéseit nem látja itt, előfordulhat, hogy valamikor módosította az előfizetés könyvtárát. Az ilyen előfizetések esetében módosítania kell a könyvtárat az eredeti könyvtárra (arra, amelyben eredetileg regisztrált). Ezután ismételje meg a 2. lépést.
 
 1. Válassza a **Fizetési módok** elemet.
 
-    ![Képernyőkép kiválasztott fizetési módok panellel.](./media/account-admin-tasks/subscription-payment-methods-blade.png)
+    ![Képernyőkép a Fizetési módok oldalról, a fizetésimód-hozzáadási lehetőséggel.](./media/account-admin-tasks/subscription-payment-methods-blade.png)
 
 Itt új hitelkártyát adhat hozzá, módosíthatja az aktív fizetési módszert, szerkesztheti a hitelkártya adatait, és hitelkártyákat törölhet.
 
@@ -100,7 +100,7 @@ Ha jogosult számlás fizetésre (csekk/banki átutalás), akkor az Azure Portal
 
 1. Válassza a **Fizetés számla alapján** lehetőséget a parancssorban.
 
-    ![Képernyőkép kiválasztott fizetési módok panellel.](./media/account-admin-tasks/subscription-payment-methods-pay-by-invoice.png)
+    ![Képernyőkép a Fizetési módok oldalról, ahol a Számlás fizetés lehetőség van kiválasztva.](./media/account-admin-tasks/subscription-payment-methods-pay-by-invoice.png)
 
 1. Adja meg a számlás fizetési mód címét.
 1. Kattintson a **Tovább** gombra.
@@ -124,7 +124,7 @@ A költségkeret nem érhető el hűségszerződéses csomagokat és használata
 
 1. A **Saját előfizetések** listában válassza ki a Visual Studio Enterprise-előfizetését.
 
-   ![Képernyőkép a saját előfizetések rácsának áttekintésével](./media/account-admin-tasks/cost-management-overview-msdn-x.png)
+   ![Képernyőkép a Saját előfizetések területről, ahol kiválaszthatja saját Visual Studio Enterprise-előfizetését.](./media/account-admin-tasks/cost-management-overview-msdn-x.png)
 
     > [!NOTE]
     > Ha bizonyos Visual Studio-előfizetéseit nem látja itt, előfordulhat, hogy valamikor módosította egy előfizetés könyvtárát. Az ilyen előfizetések esetében módosítania kell a könyvtárat az eredeti könyvtárra (arra, amelyben eredetileg regisztrált). Ezután ismételje meg a 2. lépést.
@@ -152,7 +152,7 @@ Ha Azure in Open licencelési előfizetéssel rendelkezik, az Azure Portalon kre
 
 1. A **Saját előfizetések** listában válassza ki Azure in Open-előfizetését.
 
-    ![Képernyőkép a saját előfizetések rácsának áttekintésével](./media/account-admin-tasks/cost-management-overview-aio-x.png)
+    ![Képernyőkép a Saját előfizetések területről, ahol kiválaszthatja saját Azure in Open-előfizetését.](./media/account-admin-tasks/cost-management-overview-aio-x.png)
 
    > [!NOTE]
    > Ha bizonyos előfizetéseit nem látja itt, előfordulhat, hogy valamikor módosította az előfizetés könyvtárát. Módosítania kell az előfizetés könyvtárát az eredeti könyvtárra (arra, amelyben eredetileg regisztrált). Ezután ismételje meg a 2. lépést.
@@ -183,4 +183,4 @@ Ha Azure in Open licencelési előfizetéssel rendelkezik, az Azure Portalon kre
 Nem támogatjuk a virtuális kártyákat és a feltöltőkártyákat. Ha egy érvényes hitelkártya hozzáadása vagy frissítése során hibák lépnek fel, próbálja meg megnyitni a böngészőt inkognitó módban.
 
 ## <a name="next-steps"></a>Következő lépések
-- További információ a [váratlan költségek elemzéséről és megelőzéséről az Azure Portalon](getting-started.md)
+- További információ a [váratlan költségek elemzéséről](../understand/analyze-unexpected-charges.md)

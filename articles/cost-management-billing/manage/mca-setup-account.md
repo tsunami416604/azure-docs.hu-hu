@@ -8,12 +8,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: afa95609e0bcb879b6ad4b3b50b5dff5feb9a9f7
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 5498fd83efa0fa52f5f0861588eaa8cdeb0953ac
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88682790"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371796"
 ---
 # <a name="set-up-your-billing-account-for-a-microsoft-customer-agreement"></a>Számlázási fiók beállítása Microsoft-ügyfélszerződéshez
 
@@ -132,7 +132,7 @@ Az előfizetésében lévő Azure-szolgáltatások megszakítás nélkül futnak
 
 ### <a name="user-access-to-azure-resources"></a>Felhasználói hozzáférés az Azure-erőforrásokhoz
 
-Az Azure RBAC (szerepköralapú hozzáférés-vezérlés) használatával beállított Azure-erőforrások hozzáférése érintetlen marad az átváltás során.
+Az Azure-beli szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával beállított Azure-erőforrások hozzáférése érintetlen marad az átváltás során.
 
 ### <a name="azure-reservations"></a>Azure Reservations
 
@@ -225,7 +225,7 @@ A Nagyvállalati Szerződés regisztrációjába foglalt Azure Reserved Virtual 
 
 4. A bal oldalon válassza az **Access control (IAM)** lehetőséget.
 
-   ![A vállalati rendszergazdák átváltás utáni hozzáférését megjelenítő képernyőkép](./media/mca-setup-account/mca-ea-admins-ba-access-post-transition.png)
+   ![Képernyőkép a számlázásifiók-tulajdonosokként felsorolt vállalati rendszergazdák hozzáféréséről az átváltás után.](./media/mca-setup-account/mca-ea-admins-ba-access-post-transition.png)
 
 A vállalati rendszergazdák számlázásifiók-tulajdonosokként vannak felsorolva, míg a csak olvasási jogosultsággal rendelkező vállalati rendszergazdák számlázásifiók-olvasókként jelennek meg. Ha úgy gondolja, hogy hiányzik valamelyik vállalati rendszergazda hozzáférése, hozzáférést adhat neki az Azure Portalon. További információért lásd [a számlázási szerepkörök az Azure Portalon történő kezelését](understand-mca-roles.md#manage-billing-roles-in-the-azure-portal).
 
@@ -241,7 +241,7 @@ A vállalati rendszergazdák számlázásifiók-tulajdonosokként vannak felsoro
 
 4. A bal oldalon válassza az **Access control (IAM)** lehetőséget.
 
-   ![A vállalati rendszergazdák átváltás utáni hozzáférését megjelenítő képernyőkép](./media/mca-setup-account/mca-ea-admins-bp-access-post-transition.png)
+   ![Képernyőkép a számlázásiprofil-tulajdonosokként felsorolt vállalati rendszergazdák hozzáféréséről az átváltás után.](./media/mca-setup-account/mca-ea-admins-bp-access-post-transition.png)
 
 A vállalati rendszergazdák számlázásiprofil-tulajdonosokként vannak felsorolva, míg a csak olvasási jogosultsággal rendelkező vállalati rendszergazdák számlázásiprofil-olvasókként jelennek meg. Ha úgy gondolja, hogy hiányzik valamelyik vállalati rendszergazda hozzáférése, hozzáférést adhat neki az Azure Portalon. További információért lásd [a számlázási szerepkörök az Azure Portalon történő kezelését](understand-mca-roles.md#manage-billing-roles-in-the-azure-portal).
 

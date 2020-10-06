@@ -9,20 +9,20 @@ ms.service: cost-management-billing
 ms.subservice: cost-management
 ms.reviewer: adwise
 ms.custom: secdec18
-ms.openlocfilehash: c69dc63af6bacb4aaf1beda1a0846a98b06ec209
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 660b5751e3b3cbc632331e99d797af3392a8aea4
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88689252"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371966"
 ---
 # <a name="assign-access-to-cost-management-data"></a>A Cost Management adataihoz való hozzáférés hozzárendelése
 
-Az Azure nagyvállalati szerződéssel rendelkező felhasználók esetén az Azure Portalon és az Enterprise (EA) Portalon megadott engedélyek együttese határozza meg, hogy a felhasználók milyen szintű hozzáféréssel rendelkeznek az Azure Cost Management adataihoz. Más típusú Azure-fiókkal rendelkező felhasználók esetén a felhasználóknak a Cost Management adataihoz való hozzáférési szintje egyszerűbben határozható meg az Azure szerepköralapú hozzáférés-vezérlésével. Ez a cikk a Cost Management adataihoz való hozzáférés hozzárendelését mutatja be. Az engedélyek együttesének hozzárendelését követően a felhasználó saját hozzáférési hatóköre és azon hatókör alapján tekintheti meg a Cost Management adatait, amelyet kiválaszt az Azure Portalon.
+Az Azure nagyvállalati szerződéssel rendelkező felhasználók esetén az Azure Portalon és az Enterprise (EA) Portalon megadott engedélyek együttese határozza meg, hogy a felhasználók milyen szintű hozzáféréssel rendelkeznek az Azure Cost Management adataihoz. Más típusú Azure-fiókkal rendelkező felhasználók esetén a felhasználóknak a Cost Management adataihoz való hozzáférési szintje egyszerűbben határozható meg az Azure-beli szerepköralapú hozzáférés-vezérléssel (Azure RBAC). Ez a cikk a Cost Management adataihoz való hozzáférés hozzárendelését mutatja be. Az engedélyek együttesének hozzárendelését követően a felhasználó saját hozzáférési hatóköre és azon hatókör alapján tekintheti meg a Cost Management adatait, amelyet kiválaszt az Azure Portalon.
 
 A felhasználó által kiválasztott hatókör az adatkonszolidációt és a költségadatokhoz való hozzáférés szabályozását határozza meg a költségkezelés során. A hatókörök használatakor a felhasználók nem választhatnak ki egyszerre több hatókört. Ehelyett egy magasabb szintű hatókör választhatnak ki, amely alá több, alacsonyabb szintű gyermekhatókör is tartozik, és szűrő alkalmazásával kereshetik meg a kívánt adatokat. Az adatkonszolidációval azért fontos megismerkedni, mert nem mindenki rendelkezhet hozzáféréssel egy szülőhatókörhöz, amely több gyermekhatókört is magába foglal.
 
-A [hozzáférés Cost Managementben történő vezérléséről](https://www.youtube.com/watch?v=_uQzQ9puPyM) szóló videóból megtudhatja, hogyan oszthat ki hozzáférést az Azure szerepköralapú hozzáférés-vezérlésével a költségek és díjak megtekintéséhez. További videók megtekintéséhez látogasson el a [Cost Management YouTube-csatornájára](https://www.youtube.com/c/AzureCostManagement).
+A [hozzáférés Cost Managementben történő vezérléséről](https://www.youtube.com/watch?v=_uQzQ9puPyM) szóló videóból megtudhatja, hogyan oszthat ki hozzáférést az Azure-beli szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával a költségek és díjak megtekintéséhez. További videók megtekintéséhez látogasson el a [Cost Management YouTube-csatornájára](https://www.youtube.com/c/AzureCostManagement).
 
 >[!VIDEO https://www.youtube.com/embed/_uQzQ9puPyM]
 
@@ -71,7 +71,7 @@ A beállítások engedélyezéséhez az Azure Portalon:
 1. A **Beállításoknál** válassza ki a **Szabályzatok** menüelemet, és konfigurálja a beállítást.  
     ![Számlázási hatókörre vonatkozó szabályzatok a díjak megtekintési lehetőségeivel](./media/assign-access-acm-data/azure-portal-policies-view-charges.png)
 
-A díjtételek megtekintésére vonatkozó beállítások engedélyezése után a hatókörök többsége megköveteli szerepköralapú hozzáférés-vezérlési (RBAC-) engedélyek konfigurálását az Azure Portalon.
+A díjtételek megtekintésére vonatkozó beállítások engedélyezése után a hatókörök többsége megköveteli Azure-beli szerepköralapú hozzáférés-vezérlési (Azure RBAC-) engedélyek konfigurálását az Azure Portalon.
 
 ## <a name="enable-access-to-costs-in-the-ea-portal"></a>Költségekhez való hozzáférés engedélyezése az EA Portalon
 
@@ -84,7 +84,7 @@ A beállítások engedélyezéséhez az EA Portalon:
 3. Engedélyezze a **Díjtételek megtekintése a részlegszintű rendszergazda számára** és/vagy a **Díjtételek megtekintése a fióktulajdonos számára** díjtétel-beállítást azoknál a Cost Management-hatóköröknél, amelyekhez hozzáférést szeretne biztosítani.  
     ![Díjtételek megtekintése a részlegszintű rendszergazda és a fióktulajdonos számára díjtétel-beállítások a Regisztráció lapon](./media/assign-access-acm-data/ea-portal-enrollment-tab.png)
 
-A díjtételek megtekintésére vonatkozó beállítások engedélyezése után a hatókörök többsége megköveteli szerepköralapú hozzáférés-vezérlési (RBAC-) engedélyek konfigurálását az Azure Portalon.
+A díjtételek megtekintésére vonatkozó beállítások engedélyezése után a hatókörök többsége megköveteli Azure-beli szerepköralapú hozzáférés-vezérlési (Azure RBAC-) engedélyek konfigurálását az Azure Portalon.
 
 ## <a name="enterprise-administrator-role"></a>Vállalati rendszergazdai szerepkör
 
@@ -182,9 +182,9 @@ Az erőforráscsoporthoz való hozzáféréshez legalább Cost Management-olvas�
 
 ## <a name="cross-tenant-authentication-issues"></a>A több-bérlős hitelesítéssel kapcsolatos problémák
 
-Az Azure Cost Management jelenleg korlátozott mértékben támogatja a több-bérlős hitelesítést. A bérlők hitelesítése során bizonyos körülmények között előfordulhat, hogy **Hozzáférés megtagadva** hibát kap a költségelemzésben. Ez a probléma akkor fordulhat elő, ha szerepköralapú hozzáférés-vezérlést (RBAC) konfigurál egy másik bérlő előfizetéséhez, majd megpróbálja megtekinteni a költségadatokat.
+Az Azure Cost Management jelenleg korlátozott mértékben támogatja a több-bérlős hitelesítést. A bérlők hitelesítése során bizonyos körülmények között előfordulhat, hogy **Hozzáférés megtagadva** hibát kap a költségelemzésben. Ez a probléma akkor fordulhat elő, ha Azure-beli szerepköralapú hozzáférés-vezérlést (Azure RBAC) konfigurál egy másik bérlő előfizetéséhez, majd megpróbálja megtekinteni a költségadatokat.
 
-*Megkerülő megoldás a problémára*: A több-bérlős RBAC konfigurálását követően várjon egy órát. Ezután próbálja meg megtekinteni a költségeket a költségelemzésben, vagy adja meg a Cost Managementhez való hozzáférést mindkét bérlő felhasználói számára.  
+*Megkerülő megoldás a problémára*: A több-bérlős Azure RBAC konfigurálását követően várjon egy órát. Ezután próbálja meg megtekinteni a költségeket a költségelemzésben, vagy adja meg a Cost Managementhez való hozzáférést mindkét bérlő felhasználói számára.  
 
 
 ## <a name="next-steps"></a>További lépések

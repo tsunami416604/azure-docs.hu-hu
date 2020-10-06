@@ -8,12 +8,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/03/2020
 ms.author: banders
-ms.openlocfilehash: 27a6f8f0ed0d58deb64f768d2e47bafebc910edb
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: fce0ca7df3851aa0e96b6ee630a4a1b0b85eb070
+ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88690425"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91371742"
 ---
 # <a name="get-started-with-your-updated-azure-billing-account"></a>A frissített Azure-beli számlázási fiók használatának első lépései
 
@@ -113,7 +113,7 @@ A következő szakaszok további információkkal szolgálnak az újdonságokró
 
 **Nincs szolgáltatáskiesés** Az előfizetésében lévő Azure-szolgáltatások megszakítás nélkül futnak tovább. Csak a számlázás menete frissül. Meglévő erőforrásait, erőforráscsoportjait vagy felügyeleti csoportjait a változás nem érinti.
 
-**Az Azure-erőforrások nem módosulnak** Az Azure RBAC (szerepköralapú hozzáférés-vezérlés) használatával beállított Azure-erőforrások hozzáférését a frissítés nem érinti.
+**Az Azure-erőforrások nem módosulnak** Az Azure-beli szerepköralapú hozzáférés-vezérlés (Azure RBAC) használatával beállított Azure-erőforrások hozzáférését a frissítés nem érinti.
 
 **A régebbi számlák elérhetők maradnak** A fiók frissítése előtt létrejött számlák továbbra is elérhetők lesznek az Azure Portalon.
 

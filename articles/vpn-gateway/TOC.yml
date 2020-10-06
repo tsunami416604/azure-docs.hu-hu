@@ -170,7 +170,7 @@
               href: vpn-gateway-howto-openvpn-clients.md
             - name: Áttérés az OpenVPN-protokollra vagy az IKEv2-re az SSTP-ről
               href: ikev2-openvpn-from-sstp.md
-        - name: P2S-munkamenet kezelésének konfigurálása
+        - name: P2S-munkamenet kezelése
           href: p2s-session-management.md
         - name: Váltás nyilvános hitelesítésszolgáltatói átjárótanúsítványra a P2S-kapcsolatok esetében
           href: vpn-gateway-point-to-site-gateway-public-ca.md

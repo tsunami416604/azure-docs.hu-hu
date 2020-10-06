@@ -9,12 +9,12 @@ ms.subservice: reservations
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: banders
-ms.openlocfilehash: b1b5a344da20bff31f85a2d3cb20a0a35e4c4bde
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 2b00c90abce915ae6fd645cbcce3536870609558
+ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88681923"
+ms.lasthandoff: 09/29/2020
+ms.locfileid: "91447886"
 ---
 # <a name="understand-azure-reservation-usage-for-your-individual-subscription-with-pay-as-you-go-rates-subscription"></a>Használatalapú fizetéses egyéni előfizetés Azure-beli foglalása használatának ismertetése
 
@@ -74,7 +74,7 @@ Tegyük fel, hogy egy 4. generációs SQL Database-adatbázist futtat az USA kel
 
 Szűrjön a **Reserved Instance Usage** fogyasztómérőnévre, és válassza ki a szükséges **Meter Category** értéket: az Azure SQL Database-t vagy az Azure Cosmos DB-t. Az alábbi képernyőképhez hasonló eredmény jelenik meg:
 
-![A fenntartott SQL Database-kapacitás CSV-fájlja](./media/understand-reserved-instance-usage/billing-payg-sql-db-reserved-capacity-csv-statements.png)
+![Képernyőkép egy Fogyasztásmérő kategóriája típusú bejegyzésről.](./media/understand-reserved-instance-usage/billing-payg-sql-db-reserved-capacity-csv-statements.png)
 
 A **Reserved Instance Usage** sor a magok foglalás által fedezett óráinak teljes számát mutatja. Ebben a sorban $0 értékű díj szerepel, mivel a foglalás fedezi a költséget.
 
@@ -82,7 +82,7 @@ A **Reserved Instance Usage** sor a magok foglalás által fedezett óráinak te
 
 Szűrjön az **Additional Info** mezőre, és adja meg a **foglalásazonosítót**. Az alábbi képernyőképen a fenntartott SQL Database-kapacitás foglalásához kapcsolódó mezők láthatók.
 
-![A fenntartott SQL Database-kapacitás CSV-fájlja](./media/understand-reserved-instance-usage/billing-payg-sql-db-reserved-capacity-csv-details.png)
+![Képernyőkép egy fenntartott kapacitáshoz tartozó CSV-fájl részleteiről.](./media/understand-reserved-instance-usage/billing-payg-sql-db-reserved-capacity-csv-details.png)
 
 1. Az **Additional Info** mező **ReservationId** értéke az SQL Database-erőforrásra alkalmazott fenntartott SQL Database-kapacitás foglalását jelöli.
 2. A **ConsumptionMeter** érték az SQL Database-erőforrás fogyasztómérő-azonosítóját jelöli.

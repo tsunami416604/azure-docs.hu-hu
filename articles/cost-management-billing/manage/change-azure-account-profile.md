@@ -1,25 +1,27 @@
 ---
-title: Az Azure-fiókban megadott kapcsolattartási adatok módosítsa
-description: Ez a cikk ismerteti, hogyan módosíthatók az Azure adminisztratív fiókban megadott kapcsolattartási adatok.
+title: Azure-beli számlázási fiók kapcsolattartási adatainak módosítása
+description: Ez a cikk ismerteti, hogyan módosíthatók az Azure-beli számlázási fiókban megadott kapcsolattartási adatok
 author: genlin
 ms.reviewer: dcscontentpm
 tags: billing
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.date: 08/03/2020
+ms.date: 09/23/2020
 ms.author: banders
-ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 6045afba230fa204dd5f93adc11b67ff0e3e209f
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.custom: contperfq1
+ms.openlocfilehash: be3de838e340400da09ad261d82328f6793aed2e
+ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88684898"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91297725"
 ---
-# <a name="change-the-contact-information-for-your-azure-account"></a>Az Azure-fiókban megadott kapcsolattartási adatok módosítsa
+# <a name="change-contact-information-for-an-azure-billing-account"></a>Azure-beli számlázási fiók kapcsolattartási adatainak módosítása
 
-Ez a cikk a fiókban megadott kapcsolattartási adatoknak az Azure Portalon történő frissítéséhez nyújt segítséget. A kapcsolattartási adatok frissítésére vonatkozó utasítások a számlázási fiók típusától függően eltérnek. A számlázási fiókokkal és a saját fiókja típusával kapcsolatos további információkért lásd [a számlázási fiókoknak az Azure Portalon történő megtekintését](view-all-accounts.md) ismertető cikket.
+Ez a cikk a *számlázási fiók* esetében megadott kapcsolattartási adatoknak az Azure Portalon történő frissítéséhez nyújt segítséget. A kapcsolattartási adatok frissítésére vonatkozó utasítások a számlázási fiók típusától függően eltérnek. A számlázási fiókokkal és a saját fiókja típusával kapcsolatos további információkért lásd [a számlázási fiókoknak az Azure Portalon történő megtekintését](view-all-accounts.md) ismertető cikket. Az Azure-beli számlázási fiók nem azonos az Azure-beli felhasználói fiókkal vagy a [Microsoft-fiókkal](https://account.microsoft.com/).
+
+Ha a frissíteni kell egy Active Directory-felhasználó profilját, annak adatait csak egy felhasználói rendszergazda módosíthatja. Ha nincs hozzárendelve a Felhasználói rendszergazda szerepkörhöz, forduljon a felhasználói rendszergazdájához. A felhasználói profilok módosítására vonatkozó további információért lásd: [Felhasználói profil adatainak hozzáadása vagy frissítése az Azure Active Directory használatával](../../active-directory/fundamentals/active-directory-users-profile-azure-portal.md).
 
 *Vevő címe* – A vevő címe annak a szervezetnek vagy magánszemélynek a címe és kapcsolattartási adatai, amely vagy aki a számlázási fiókért felelős. A számlázási fiók számára létrehozott számlák mindegyikén látható.
 
@@ -31,21 +33,21 @@ Ez a cikk a fiókban megadott kapcsolattartási adatoknak az Azure Portalon tör
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/) azzal az e-mail-címmel, amely fiókadminisztrátori jogosultsággal rendelkezik a fiókra vonatkozóan.
 1. Keressen rá a **Költségkezelés + számlázás** kifejezésre.  
-    ![Képernyőkép a „költségkezelés + számlázás” kifejezés portálon történő kereséséről](./media/change-azure-account-profile/search-cmb.png)
+    ![Képernyőkép az Azure Portal keresőmezőjének helyéről, a Költségkezelés + számlázás keresőkifejezés használatával](./media/change-azure-account-profile/search-cmb.png)
 1. Válassza a **Tulajdonságok** elemet a bal oldalon.  
-    ![Képernyőkép a címfrissítési oldalról](./media/change-azure-account-profile/update-contact-information-select-properties.png)
+    ![Képernyőkép az MOSP számlázási fiók tulajdonságairól](./media/change-azure-account-profile/update-contact-information-select-properties.png)
 1. A vevői és a számlázási cím frissítéséhez válassza a **Számlázási cím frissítése** elemet. Adja meg az új címet, majd válassza a **Mentés** parancsot.  
-    ![Képernyőkép a címfrissítési oldalról](./media/change-azure-account-profile/update-contact-information-mosp.png)
+    ![Képernyőkép az MOSP számlázási fiókhoz tartozó cím frissítéséről](./media/change-azure-account-profile/update-contact-information-mosp.png)
 
 ## <a name="update-an-mca-billing-account-sold-to-address"></a>MCA számlázási fiók vevői címének frissítése
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/) azzal az e-mail-címmel, amely tulajdonosi vagy közreműködői szerepkörrel rendelkezik a Microsoft-ügyfélszerződés számlázási fiókjára vonatkozóan.
 1. Keressen rá a **Költségkezelés + számlázás** kifejezésre.  
-    ![Képernyőkép a „költségkezelés + számlázás” kifejezés portálon történő kereséséről](./media/change-azure-account-profile/search-cmb.png)
+    ![Képernyőkép az Azure Portal keresőmezőjének helyéről](./media/change-azure-account-profile/search-cmb.png)
 1. Válassza a **Tulajdonságok** elemet a bal oldalon, majd válassza a **Vevő címének frissítése** lehetőséget.  
-    ![Képernyőkép a vevői cím frissítése szolgáló elem kiválasztásáról](./media/change-azure-account-profile/update-sold-to-list-properties-mca.png)
+    ![Képernyőkép egy MCA számlázási fiók tulajdonságairól, ahol a vevői cím módosítható](./media/change-azure-account-profile/update-sold-to-list-properties-mca.png)
 1. Adja meg az új címet, majd válassza a **Mentés** parancsot.  
-    ![Képernyőkép a cím frissítéséről](./media/change-azure-account-profile/update-sold-to-save-mca.png)
+    ![Képernyőkép egy MCA fiók vevői címének frissítéséről](./media/change-azure-account-profile/update-sold-to-save-mca.png)
 
     > [!IMPORTANT]
     > Egyes fiókok további igazolást igényelnek, mielőtt a vevői cím frissíthető lenne. Ha a fiókja manuális jóváhagyást igényel, a rendszer megkéri, hogy forduljon az Azure ügyfélszolgálatához.
@@ -54,13 +56,12 @@ Ez a cikk a fiókban megadott kapcsolattartási adatoknak az Azure Portalon tör
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/) azzal az e-mail-címmel, amely tulajdonosi vagy közreműködői szerepkörrel rendelkezik az MCA számlázási fiókjára vagy számlázási profiljára vonatkozóan.
 1. Keressen rá a **Költségkezelés + számlázás** kifejezésre.  
-    ![Képernyőkép a „költségkezelés + számlázás” kifejezés portálon történő kereséséről](./media/change-azure-account-profile/search-cmb.png)
 1. Válassza a **Számlázási profilok** lehetőséget a bal oldalon.
 1. Válasszon ki egy számlázási profilt a számlázási cím frissítéséhez.  
-    ![Képernyőkép a „költségkezelés + számlázás” kifejezés portálon történő kereséséről](./media/change-azure-account-profile/update-bill-to-list-profiles-mca.png)
+    ![Képernyőkép a Számlázási profilok oldalról, ahol kiválasztható egy számlázási profil](./media/change-azure-account-profile/update-bill-to-list-profiles-mca.png)
 1. Válassza a **Tulajdonságok** elemet a bal oldalon.
 1. Válassza a **Cím frissítése** lehetőséget.  
-    ![Képernyőkép a „költségkezelés + számlázás” kifejezés portálon történő kereséséről](./media/change-azure-account-profile/update-bill-to-list-properties-mca.png)
+    ![Képernyőkép a címfrissítési lehetőség helyéről](./media/change-azure-account-profile/update-bill-to-list-properties-mca.png)
 1. Adja meg az új címet, majd válassza a **Mentés** parancsot.  
     ![Képernyőkép a cím frissítéséről](./media/change-azure-account-profile/update-bill-to-save-mca.png)
 
@@ -83,11 +84,9 @@ Adja meg azt az e-mail-címet, amelyen a fiókjához kapcsolódó e-maileket fog
 
 Az alábbi módszerek egyikével módosíthatja a kapcsolattartási e-mail-címet. A kapcsolattartási e-mail-cím frissítése nem frissíti a bejelentkezéshez használt e-mail-címet.
 
-* Ha Ön egy MOSP-fiók fiókadminisztrátora, kövesse a [MOSP számlázási fiók címének frissítése](#update-an-mosp-billing-account-address) című szakaszban ismertetett utasításokat, és válassza a **Kapcsolattartási adatok frissítése** elemet az utolsó lépésben. Ezután adja meg az új e-mail-címet.
-
-* Az Azure Portalon lépjen a [Kapcsolattartási adatok](https://portal.azure.com/#blade/HubsExtension/ContactInfoBlade) területre, és adja meg az új e-mail-címet. 
-
-* Az [Azure Portalon](https://portal.azure.com/#blade/HubsExtension/ContactInfoBlade) válassza ki a monogramját vagy képét tartalmazó ikont. Majd válassza ki a helyi menüt ( **...** ). Ezután válassza a **Kapcsolattartási adataim** lehetőséget a menüből, és adja meg az új e-mail-címet.
+1. Ha Ön egy MOSP-fiók fiókadminisztrátora, kövesse a [MOSP számlázási fiók címének frissítése](#update-an-mosp-billing-account-address) című szakaszban ismertetett utasításokat, és válassza a **Kapcsolattartási adatok frissítése** elemet az utolsó lépésben. Ezután adja meg az új e-mail-címet.
+1. Az Azure Portalon lépjen a [Kapcsolattartási adatok](https://portal.azure.com/#blade/HubsExtension/ContactInfoBlade) területre, és adja meg az új e-mail-címet. 
+1. Az [Azure Portalon](https://portal.azure.com/#blade/HubsExtension/ContactInfoBlade) válassza ki a monogramját vagy képét tartalmazó ikont. Majd válassza ki a helyi menüt ( **...** ). Ezután válassza a **Kapcsolattartási adataim** lehetőséget a menüből, és adja meg az új e-mail-címet.
 
 ![Példa az Azure-beli e-mail cím frissítésére](./media/change-azure-account-profile/azure-contact-information.png)
 

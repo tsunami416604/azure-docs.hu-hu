@@ -8,12 +8,12 @@ ms.subservice: billing
 ms.topic: conceptual
 ms.date: 08/20/2020
 ms.author: banders
-ms.openlocfilehash: b18e08f93df143f9844fe774eee59452978d7437
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.openlocfilehash: 42d9c2b4b1edac62449fa4120463a384400d6d27
+ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88686394"
+ms.lasthandoff: 09/25/2020
+ms.locfileid: "91360692"
 ---
 # <a name="billing-accounts-and-scopes-in-the-azure-portal"></a>Számlázási fiókok és hatókörök az Azure Portalon
 
@@ -80,11 +80,11 @@ A hatókör egy csomópont a számlázási fiókon belül. Ennek használatával
 
 2. Keressen rá a **Költségkezelés + számlázás** kifejezésre.
 
-   ![Képernyőkép az Azure Portal keresőmezőjéről](./media/view-all-accounts/billing-search-cost-management-billing.png)
+   ![Képernyőkép az Azure Portal keresőmezőjéről a Költségkezelés + számlázás keresőkifejezéssel.](./media/view-all-accounts/billing-search-cost-management-billing.png)
 
 3. Az áttekintés oldalon válassza a **Hatókör váltása** elemet.
 
-   ![A számlázási hatóköröket megjelenítő képernyőkép](./media/view-all-accounts/overview-select-scopes.png)
+   ![A számlázási hatóköröket megjelenítő képernyőkép.](./media/view-all-accounts/overview-select-scopes.png)
 
    > [!Note]
     >
@@ -92,7 +92,7 @@ A hatókör egy csomópont a számlázási fiókon belül. Ennek használatával
 
 4. Válasszon ki egy hatókört a részletek megtekintéséhez.
 
-   ![A számlázási hatóköröket megjelenítő képernyőkép](./media/view-all-accounts/list-of-scopes.png)
+   ![Képernyőkép a számlázási hatókörökről, amelyeket kiválasztva megtekinthetők azok részletei.](./media/view-all-accounts/list-of-scopes.png)
 
 ## <a name="check-the-type-of-your-account"></a>A fiók típusának megtekintése
 [!INCLUDE [billing-check-mca](../../../includes/billing-check-account-type.md)]

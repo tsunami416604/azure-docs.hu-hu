@@ -80,6 +80,8 @@
       href: encryption-overview.md
     - name: Dupla titkosítás
       href: double-encryption.md
+    - name: TLS-tanúsítványváltozások
+      href: tls-certificate-changes.md
     - name: Disk encryption (Lemeztitkosítás)
       items:
         - name: Ajánlott eljárások
