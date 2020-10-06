@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/06/2019
 ms.author: jeedes
-ms.openlocfilehash: 149656bebac7e8fab24dc1e1847a4e56bf5f3888
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 0465d6219f9c9d13b4dd3321beb90af524cade36
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547341"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91741565"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bime"></a>Oktatóanyag: Azure Active Directory integráció a Bime
 
@@ -132,7 +132,7 @@ Az Azure AD egyszeri bejelentkezés Bime való konfigurálásához hajtsa végre
 
 2. Az eszköztáron kattintson a **rendszergazda**elemre, majd a **fiók**lehetőségre.
   
-    ![Felügyelet](./media/bime-tutorial/ic775558.png "Rendszergazda")
+    ![Képernyőfelvétel: a kiválasztott felügyeleti elemet és a kiválasztott fiókot jeleníti meg.](./media/bime-tutorial/ic775558.png "Rendszergazda")
 
 3. A fiók konfigurációja lapon hajtsa végre a következő lépéseket:
   
@@ -169,7 +169,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    d. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -207,7 +207,7 @@ Ahhoz, hogy az Azure AD-felhasználók bejelentkezzenek a Bime, a Bime-ben kell 
 
 2. Az eszköztáron kattintson a **rendszergazda**, majd a **felhasználók**lehetőségre.
 
-    ![Felügyelet](./media/bime-tutorial/ic775561.png "Rendszergazda")
+    ![Képernyőfelvétel: a kiválasztott rendszergazdai elemek és a kijelölt felhasználók.](./media/bime-tutorial/ic775561.png "Rendszergazda")
 
 3. A **felhasználók listában**kattintson az **új felhasználó hozzáadása** ("+") elemre.
 

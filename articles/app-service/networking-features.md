@@ -7,18 +7,18 @@ ms.topic: article
 ms.date: 03/16/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: d2b74af723e3ba8b1d71e9f481bf96d009540a52
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: af4c333fb539ad533756c538cb3ecde1d9a91413
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88962094"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743046"
 ---
 # <a name="app-service-networking-features"></a>Hálózati szolgáltatások App Service
 
 A Azure App Service alkalmazásai több módon is üzembe helyezhetők. Alapértelmezés szerint App Service üzemeltetett alkalmazások közvetlenül az internetről elérhetők, és csak az internetről futtatott végpontok elérésére képesek. Számos ügyfél-alkalmazásnak azonban a bejövő és a kimenő hálózati forgalmat is szabályoznia kell. A App Service több funkciója is rendelkezésre áll, hogy megfeleljenek az igényeknek. A kihívás az adott probléma megoldására szolgáló szolgáltatás ismerete. Ez a dokumentum arra szolgál, hogy segítsen az ügyfeleknek meghatározni, hogy milyen szolgáltatást kell használni bizonyos példa használati esetek alapján.
 
-A Azure App Service két elsődleges központi telepítési típust tartalmaz. Létezik a több-bérlős nyilvános szolgáltatás, amely az ingyenes, közös, alapszintű, standard, prémium és Premiumv2 díjszabási SKU-ban App Service csomagokat üzemeltet. Ebben az esetben az egyetlen bérlői App Service Environment (bemutató), amely az elkülönített SKU-App Service csomagokat közvetlenül az Azure Virtual Networkban (VNet) üzemelteti. A használt funkciók attól függően változnak, hogy a több-bérlős szolgáltatásban vagy egy szolgáltatóban van. 
+A Azure App Service két elsődleges központi telepítési típust tartalmaz. Létezik a több-bérlős nyilvános szolgáltatás, amely App Service csomagokat üzemeltet az ingyenes, közös, alapszintű, standard, prémium, PremiumV2 és PremiumV3 díjszabási SKU-ban. Ebben az esetben az egyetlen bérlői App Service Environment (bemutató), amely az elkülönített SKU-App Service csomagokat közvetlenül az Azure Virtual Networkban (VNet) üzemelteti. A használt funkciók attól függően változnak, hogy a több-bérlős szolgáltatásban vagy egy szolgáltatóban van. 
 
 ## <a name="multi-tenant-app-service-networking-features"></a>Több-bérlős App Service hálózatkezelési funkciók 
 
@@ -62,7 +62,7 @@ A következő kimenő használati esetek azt mutatják be, hogyan használhatók
 
 ### <a name="default-networking-behavior"></a>Alapértelmezett hálózatkezelési viselkedés
 
-A Azure App Service skálázási egységek számos ügyfelet támogatnak az egyes telepítések során. Az ingyenes és a közös SKU-csomagok a több-bérlős feldolgozók esetében az ügyfelek munkaterheléseit üzemeltetik. Az alapszintű és a fenti csomagok olyan felhasználói munkaterheléseket üzemeltetnek, amelyek csak egy App Service csomagra (ASP) vannak kijelölve. Ha standard App Service csomaggal rendelkezett, akkor a tervben szereplő összes alkalmazás ugyanazon a munkavégzőn fog futni. Ha kibővíti a munkavégzőt, akkor az adott ASP-ben lévő összes alkalmazás replikálva lesz egy új feldolgozón az ASP minden példánya számára. A Premiumv2 használt munkavégzők eltérnek a többi csomaghoz használt munkatársaitól. Minden App Service központi telepítésnek van egy IP-címe, amelyet a rendszer az adott App Service üzemelő alkalmazásokhoz tartozó összes bejövő forgalomhoz használ. A kimenő hívások végrehajtásához azonban 4 – 11 cím van használatban. Ezeket a címeket a App Service üzemelő példány összes alkalmazása osztja meg. A kimenő címek különböző munkavégző típusok alapján különböznek. Ez azt jelenti, hogy az ingyenes, a megosztott, az alapszintű, a standard és a prémium ASP által használt címek eltérnek a Premiumv2 ASP kimenő hívásai által használt címektől. Ha megtekinti az alkalmazás tulajdonságait, láthatja az alkalmazás által használt bejövő és kimenő címeket. Ha egy IP ACL-sel kell lezárnia egy függőséget, használja a possibleOutboundAddresses. 
+A Azure App Service skálázási egységek számos ügyfelet támogatnak az egyes telepítések során. Az ingyenes és a közös SKU-csomagok a több-bérlős feldolgozók esetében az ügyfelek munkaterheléseit üzemeltetik. Az alapszintű és a fenti csomagok olyan felhasználói munkaterheléseket üzemeltetnek, amelyek csak egy App Service csomagra (ASP) vannak kijelölve. Ha standard App Service csomaggal rendelkezett, akkor a tervben szereplő összes alkalmazás ugyanazon a munkavégzőn fog futni. Ha kibővíti a munkavégzőt, akkor az adott ASP-ben lévő összes alkalmazás replikálva lesz egy új feldolgozón az ASP minden példánya számára. A PremiumV2 és a PremiumV3 használt munkavégzők eltérnek a többi csomaghoz használt munkatársaitól. Minden App Service központi telepítésnek van egy IP-címe, amelyet a rendszer az adott App Service üzemelő alkalmazásokhoz tartozó összes bejövő forgalomhoz használ. A kimenő hívások végrehajtásához azonban 4 – 11 cím van használatban. Ezeket a címeket a App Service üzemelő példány összes alkalmazása osztja meg. A kimenő címek különböző munkavégző típusok alapján különböznek. Ez azt jelenti, hogy az ingyenes, a megosztott, az alapszintű, a standard és a prémium ASP által használt címek eltérnek a PremiumV2 és a PremiumV3 ASP kimenő hívásai által használt címektől. Ha megtekinti az alkalmazás tulajdonságait, láthatja az alkalmazás által használt bejövő és kimenő címeket. Ha egy IP ACL-sel kell lezárnia egy függőséget, használja a possibleOutboundAddresses. 
 
 ![Alkalmazás tulajdonságai](media/networking-features/app-properties.png)
 

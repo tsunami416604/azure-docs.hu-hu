@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/13/2019
 ms.author: jeedes
-ms.openlocfilehash: 4f5994aa4114f12b55f2e232ea5a35fa2df87626
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 8f5a8abf4272cf90691e60f97416023a76252e41
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547732"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91740494"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bugsnag"></a>Oktatóanyag: Azure Active Directory integráció a Bugsnag
 
@@ -100,7 +100,7 @@ Az Azure AD egyszeri bejelentkezés Bugsnag való konfigurálásához hajtsa vé
 
 4. Az **alapszintű SAML-konfiguráció** szakaszban, ha az alkalmazást **identitásszolgáltató** kezdeményezett módban szeretné konfigurálni, hajtsa végre a következő lépést:
 
-    ![Bugsnag tartomány és URL-címek egyszeri bejelentkezési adatai](common/both-replyurl.png)
+    ![A képernyőfelvételen az alapszintű SAML-konfiguráció látható, ahol megadhatja a válasz U R L-t, majd a mentés lehetőséget.](common/both-replyurl.png)
 
     A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:  `https://app.bugsnag.com/user/sign_in/saml/<org_slug>/acs`
 
@@ -109,7 +109,7 @@ Az Azure AD egyszeri bejelentkezés Bugsnag való konfigurálásához hajtsa vé
 
 5. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
-    ![Bugsnag tartomány és URL-címek egyszeri bejelentkezési adatai](common/both-signonurl.png)
+    ![Képernyőfelvétel: további U R ls beállítása, ahol megadhatja a bejelentkezést az U R L-ben.](common/both-signonurl.png)
 
     A **bejelentkezési URL-cím** szövegmezőbe írja be a következőt:  `https://app.bugsnag.com/user/identity_provider`
 
@@ -144,7 +144,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    d. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

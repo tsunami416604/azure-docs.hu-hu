@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 09/22/2019
+ms.date: 10/05/2020
 ms.author: b-juche
-ms.openlocfilehash: 818b3b59b1113875b6486ffe64bc8d2d30d613d3
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: b5c576211fe7bb202e7a27bee5ee3bfd90d74cf9
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91325460"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743097"
 ---
 # <a name="service-levels-for-azure-netapp-files"></a>Az Azure NetApp Files szolgáltatásszintjei
 A szolgáltatási szint a kapacitási készlet egyik attribútuma. A szolgáltatási szinteket a rendszer a kötethez hozzárendelt kvóta alapján határozza meg, és megkülönbözteti a kapacitások megengedett maximális átviteli sebességét.
@@ -66,13 +66,13 @@ SAP HANA rendszer esetén ez a kapacitás-készlet a következő kötetek létre
 * SAP HANA adatmennyiség: 4 TB méretű, legfeljebb 704 MiB/s
 * SAP HANA naplózási kötet: 0,5 TB méretű, legfeljebb 256 MiB/s
 * SAP HANA megosztott kötet: 1 TB méretű, legfeljebb 64 MiB/s
-* SAP HANA biztonsági mentési kötet: a 4,5 TB-os méret akár 256 MiB/s
+* SAP HANA biztonsági mentési kötet: a 6,5 TB-os méret akár 256 MiB/s
 
 Az alábbi ábra szemlélteti a SAP HANA kötetek forgatókönyveit:
 
 ![QoS-SAP HANA kötetek forgatókönyvei](../media/azure-netapp-files/qos-sap-hana-volume-scenarios.png) 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Azure NetApp Files díjszabási oldala](https://azure.microsoft.com/pricing/details/storage/netapp/)
 - [Az Azure NetApp Files költségmodellje](azure-netapp-files-cost-model.md) 

@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 6/10/2020
-ms.openlocfilehash: 41e99d11199ae0f2a411b6e2c0b93ea8efcebca2
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 5faed87995d1c49ab635f39264354a791f729b57
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91542529"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91742859"
 ---
 # <a name="how-to-create-and-manage-read-replicas-in-azure-database-for-mariadb-using-the-azure-portal"></a>Olvasási replikák létrehozása és kezelése a Azure Database for MariaDB a Azure Portal használatával
 
@@ -116,7 +116,7 @@ A forráskiszolgáló Azure Portalból való törléséhez kövesse az alábbi l
 
 3. Írja be a forráskiszolgáló nevét, és kattintson a **Törlés** gombra a forráskiszolgáló törlésének megerősítéséhez.  
 
-   ![Azure Database for MariaDB – főkiszolgáló törlése](./media/howto-read-replica-portal/delete-master-confirm.png)
+   ![Azure Database for MariaDB – főkiszolgáló törlésének megerősítése](./media/howto-read-replica-portal/delete-master-confirm.png)
 
 ## <a name="monitor-replication"></a>Replikáció monitorozása
 
@@ -134,7 +134,7 @@ A forráskiszolgáló Azure Portalból való törléséhez kövesse az alábbi l
 
 5. A kijelölt időtartomány replikációs késésének megtekintése. Az alábbi képen egy nagy munkaterhelés esetében az elmúlt 30 perc látható.
 
-   ![Időtartomány kiválasztása](./media/howto-read-replica-portal/monitor-replication-lag-time-range-thirty-mins.png)
+   ![Időtartomány kiválasztása 30 perc](./media/howto-read-replica-portal/monitor-replication-lag-time-range-thirty-mins.png)
 
 ## <a name="next-steps"></a>További lépések
 

@@ -7,20 +7,20 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 10/01/2020
+ms.date: 10/05/2020
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: 7d610f7ad8f9c211f99f01cd866e26956c7242a1
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.openlocfilehash: 202a7f6b01423045fe7c72db5b42c29ae58f648d
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91667214"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91739663"
 ---
 # <a name="tutorial-add-autocomplete-and-suggestions-using-the-net-sdk"></a>Oktatóanyag: automatikus kiegészítés és javaslatok hozzáadása a .NET SDK használatával
 
 Megtudhatja, hogyan valósítható meg az automatikus kiegészítés (typeahead-lekérdezések és a javasolt eredmények), amikor a felhasználó elkezd begépelni egy keresőmezőt. Ebben az oktatóanyagban az automatikusan befejezett lekérdezéseket és a javasolt eredményeket külön, majd együtt fogjuk megjeleníteni. Egy felhasználónak csak két vagy három karaktert kell beírnia az összes elérhető eredmény megkereséséhez.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 > [!div class="checklist"]
 > * Javaslatok hozzáadása
 > * Kiemelés hozzáadása a javaslatokhoz
@@ -145,13 +145,13 @@ Kezdjük a legegyszerűbb esettel, ha alternatívákat ajánlunk fel a felhaszn�
 
 3. Futtassa az alkalmazást. A "Po" beírásakor számos lehetőséget kap, például? Most próbálkozzon a "PA" kifejezéssel.
 
-    ![A "Po" beírása két javaslatot mutat be](./media/tutorial-csharp-create-first-app/azure-search-suggest-po.png)
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-suggest-po.png" alt-text="A * Po * beírása két javaslatot mutat be" border="false":::
 
     Figyelje meg, hogy a beírt betűknek egy szót _kell_ elkezdeniük, és nem egyszerűen bele kell foglalni a szót.
 
 4. A View szkriptben állítsa a **&fuzzy** igaz értékre, majd futtassa újra az alkalmazást. Most írja be a "Po" kifejezést. Figyelje meg, hogy a keresés azt feltételezi, hogy van egy levél hibás.
  
-    ![A "PA" kifejezés beírása az igaz értékre](./media/tutorial-csharp-create-first-app/azure-search-suggest-fuzzy.png)
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-suggest-fuzzy.png" alt-text="A * Po * beírása két javaslatot mutat be" border="false":::
 
     Ha érdekli, a [Lucene lekérdezési szintaxisa az Azure Cognitive Search](./query-lucene-syntax.md) ismerteti a fuzzy keresésekben használt logikát.
 
@@ -196,7 +196,7 @@ Javíthatjuk a javaslatok megjelenését a felhasználó számára úgy, hogy a 
 
 1. Futtassa újra az alkalmazást, és a javaslatok között a beírt szöveg félkövérrel jelenik meg. Próbálja meg beírni a "PA" kifejezést.
  
-    ![A "PA" beírása kiemeléssel](./media/tutorial-csharp-create-first-app/azure-search-suggest-highlight.png)
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-suggest-highlight.png" alt-text="A * Po * beírása két javaslatot mutat be" border="false":::
 
    A fenti kiemelési parancsfájlban használt logika nem üzembiztos. Ha egy olyan kifejezést ad meg, amely ugyanabban a névben kétszer jelenik meg, a félkövérrel szedett eredmények nem eléggé, amit szeretne. Próbálja beírni a "mo" kifejezést.
 
@@ -255,7 +255,7 @@ Egy másik variáció, amely némileg eltér a javaslatoktól, az autocomplete (
 
 1. Futtassa az alkalmazást. Figyelje meg, hogy a legördülő listában megjelenő beállítások köre egyetlen szó. Próbálja meg beírni a szavakat az "újra" kifejezéssel kezdődően. Figyelje meg, hogy a lehetőségek száma több karakter beírásával csökken.
 
-    ![Alapszintű autocomplete beírása](./media/tutorial-csharp-create-first-app/azure-search-suggest-autocompletebasic.png)
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-suggest-autocompletebasic.png" alt-text="A * Po * beírása két javaslatot mutat be" border="false":::
 
     Ebben az esetben a korábban futtatott javaslatok szkriptje valószínűleg hasznosabb ennél az autocomplete parancsfájlnál. Annak érdekében, hogy az autocomplete felhasználóbarát legyen, érdemes a javasolt eredményekkel használni.
 
@@ -451,7 +451,7 @@ Vannak olyan kódtárak, amelyek ezt a funkciót használják – gyakran "beág
 
 1. Most futtassa az alkalmazást. Írja be a "PA" kifejezést a keresőmezőbe. Az automatikus kiegészítési javaslatként "Palace"-t kap, valamint két, "PA"-t tartalmazó szállodát?
 
-    ![Bevitel beágyazott automatikus kiegészítéssel és javaslatok](./media/tutorial-csharp-create-first-app/azure-search-suggest-autocomplete.png)
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-suggest-autocomplete.png" alt-text="A * Po * beírása két javaslatot mutat be" border="false":::
 
 1. Próbálja megismételni az automatikus kiegészítési javaslat elfogadását, majd próbálja meg kiválasztani a javaslatokat a nyílbillentyűkkel és a TAB billentyűvel, és próbálkozzon újra az egérrel és egyetlen kattintással. Győződjön meg arról, hogy a parancsfájl szépen kezeli az összes helyzetet.
 
@@ -466,7 +466,7 @@ Vegye figyelembe az alábbi elvihetőket a projektből:
 * Mindig tesztelje az autocomplete függvényeket a bemenet összes formájával.
 * A **setInterval** függvény használata hasznos lehet a felhasználói felületi elemek ellenőrzése és javítása érdekében.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A következő oktatóanyagban megvizsgáljuk a felhasználói élmény javításának egy másik módját, a dimenziók használatával szűkítheti a keresést egyetlen kattintással.
 

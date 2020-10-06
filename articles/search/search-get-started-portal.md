@@ -8,12 +8,12 @@ ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: quickstart
 ms.date: 09/16/2020
-ms.openlocfilehash: 0a28bd0d4101fc9d49413adaaccc0a6d38ec64ed
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 460c37107ac2dbd8bc3377d3716e708331db9904
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/05/2020
-ms.locfileid: "91307721"
+ms.locfileid: "91740927"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-index-in-the-azure-portal"></a>Gyors útmutató: Azure Cognitive Search index létrehozása a Azure Portal
 
@@ -35,7 +35,7 @@ Sok ügyfél az ingyenes szolgáltatással kezdi. Ez a verzió három indexre, h
 
 A szolgáltatás irányítópultjának fejezetei azt mutatják be, hogy hány index, indexelő és adatforrás van. 
 
-![Indexek, indexelő és adatforrások listája](media/search-get-started-portal/tiles-indexers-datasources.png)
+:::image type="content" source="media/search-get-started-portal/tiles-indexers-datasources.png" alt-text="Indexek, indexelő és adatforrások listája":::
 
 ## <a name="create-an-index-and-load-data"></a><a name="create-index"></a> Index létrehozása és az adatok betöltése
 
@@ -49,11 +49,11 @@ Ebben az oktatóanyagban egy beépített minta-adathalmazt használunk, amely az
 
 1. [Keresse meg a keresési szolgáltatást](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Storage%2storageAccounts/) , és az Áttekintés lapon kattintson az **adatok importálása** gombra a parancssorban a keresési index létrehozásához és feltöltéséhez.
 
-   ![Adatok importálása parancs](media/search-get-started-portal/import-data-cmd.png)
+   :::image type="content" source="media/search-get-started-portal/import-data-cmd.png" alt-text="Indexek, indexelő és adatforrások listája":::
 
 1. A varázslóban kattintson a **Kapcsolódás**az  >  **adatmintákhoz**  >  **Hotels-Sample**elemre. Ez az adatforrás beépített. Ha saját adatforrást hozott létre, meg kell adnia a nevet, a típust és a kapcsolódási adatokat. Létrehozását követően „meglévő adatforrássá” válik, amely más importálási műveletek során ismét felhasználható.
 
-   ![Minta adatkészlet kiválasztása](media/search-get-started-portal/import-datasource-sample.png)
+   :::image type="content" source="media/search-get-started-portal/import-datasource-sample.png" alt-text="Indexek, indexelő és adatforrások listája":::
 
 1. Folytassa a következő oldallal.
 
@@ -63,7 +63,7 @@ A varázsló támogatja egy AI-bővítési [folyamat](cognitive-search-concept-i
 
 Most kihagyjuk ezt a lépést, és közvetlenül a cél- **index testreszabásához**.
 
-   ![A kognitív képességek lépés kihagyása](media/search-get-started-portal/skip-cog-skill-step.png)
+   :::image type="content" source="media/search-get-started-portal/skip-cog-skill-step.png" alt-text="Indexek, indexelő és adatforrások listája":::
 
 > [!TIP]
 > Egy rövid [útmutatóban vagy oktatóanyagban](cognitive-search-tutorial-blob.md) [egy AI](cognitive-search-quickstart-blob.md) -indexelési példát is megadhat.
@@ -87,7 +87,7 @@ Alapértelmezés szerint a varázsló átvizsgálja a adatforrást egyedi azonos
 
    Ha a varázslót Másodszor futtatja egy meglévő szálláshely-adatforrás használatával, az index nem lesz alapértelmezett attribútumokkal konfigurálva. A jövőbeli importálások attribútumait manuálisan kell kiválasztani. 
 
-   ![Generált szállodák indexe](media/search-get-started-portal/hotelsindex.png)
+   :::image type="content" source="media/search-get-started-portal/hotelsindex.png" alt-text="Indexek, indexelő és adatforrások listája":::
 
 2. Folytassa a következő oldallal.
 
@@ -100,7 +100,7 @@ Ez az objektum egy végrehajtható folyamatot határoz meg. Azt is megteheti, ho
 
 Kattintson a **Submit (Küldés** ) gombra az indexelő létrehozásához és egyidejű futtatásához.
 
-  ![Hotels indexelő](media/search-get-started-portal/hotels-indexer.png)
+  :::image type="content" source="media/search-get-started-portal/hotels-indexer.png" alt-text="Indexek, indexelő és adatforrások listája":::
 
 ## <a name="monitor-progress"></a>Figyelési folyamat
 
@@ -108,7 +108,7 @@ A varázslónak el kell végeznie az indexelő lista listáját, ahol nyomon kö
 
 Több percet is igénybe vehet, amíg a portál frissíti az oldalt, de az újonnan létrehozott indexelő megjelenik a listában, amelynek állapota "folyamatban" vagy sikeres, valamint az indexelt dokumentumok száma.
 
-   ![Indexelő állapotüzenete](media/search-get-started-portal/indexers-inprogress.png)
+   :::image type="content" source="media/search-get-started-portal/indexers-inprogress.png" alt-text="Indexek, indexelő és adatforrások listája":::
 
 ## <a name="view-the-index"></a>Az index megtekintése
 
@@ -116,13 +116,13 @@ A szolgáltatás fő lapja az Azure Cognitive Search szolgáltatásban létrehoz
 
 Várjon, amíg frissül a portál oldala. Néhány perc elteltével az indexnek a dokumentumok száma és a tárterület mérete alapján kell megjelennie.
 
-   ![Indexek listája a szolgáltatás irányítópultján](media/search-get-started-portal/indexes-list.png)
+   :::image type="content" source="media/search-get-started-portal/indexes-list.png" alt-text="Indexek, indexelő és adatforrások listája":::
 
 Ebből a listából rákattinthat az imént létrehozott *Hotels-Sample* indexre, és megtekintheti az index sémát. és opcionálisan hozzáadhat új mezőket. 
 
 A **mezők** lap az index sémát jeleníti meg. Görgessen a lista aljára, és adjon meg egy új mezőt. A legtöbb esetben nem módosíthatja a meglévő mezőket. A meglévő mezők fizikai ábrázolással rendelkeznek az Azure Cognitive Searchban, ezért nem módosíthatók, még a kódban sem. Egy meglévő mező alapvető módosításához hozzon létre egy új indexet, és vidd az eredetit.
 
-   ![példa indexdefinícióra](media/search-get-started-portal/sample-index-def.png)
+   :::image type="content" source="media/search-get-started-portal/sample-index-def.png" alt-text="Indexek, indexelő és adatforrások listája":::
 
 Egyéb szerkezetek, például pontozási profilok és CORS-paraméterek, bármikor hozzáadhatók.
 
@@ -140,15 +140,15 @@ A **Search Explorer** csak [REST API kérelmek](/rest/api/searchservice/search-d
 
 1. A parancssávon kattintson a **Keresési ablak** elemre.
 
-   ![Keresési ablak parancs](media/search-get-started-portal/search-explorer-cmd.png)
+   :::image type="content" source="media/search-get-started-portal/search-explorer-cmd.png" alt-text="Indexek, indexelő és adatforrások listája":::
 
 2. Az **index** legördülő menüben válassza a  *Hotels-Sample-index*lehetőséget. Kattintson az **API-verzió** legördülő menüre, és ellenőrizze, hogy mely REST API-k érhetők el. Az alábbi lekérdezésekhez használja az általánosan elérhető verziót (2020-06-30).
 
-   ![Index és API-parancsok](media/search-get-started-portal/search-explorer-changeindex.png)
+   :::image type="content" source="media/search-get-started-portal/search-explorer-changeindex.png" alt-text="Indexek, indexelő és adatforrások listája":::
 
 3. A keresősáv alatt illessze be az alábbi lekérdezési karakterláncokat, és kattintson a **Keresés**gombra.
 
-   ![Lekérdezési karakterlánc és Keresés gomb](media/search-get-started-portal/search-explorer-query-string-example.png)
+   :::image type="content" source="media/search-get-started-portal/search-explorer-query-string-example.png" alt-text="Indexek, indexelő és adatforrások listája":::
 
 ## <a name="example-queries"></a>Példa a lekérdezésekre
 

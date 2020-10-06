@@ -5,19 +5,19 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 05/27/2020
+ms.date: 10/05/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
-ms.openlocfilehash: 990d8ef275982b6d70c51819e47b33f543345023
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: bc6e72a5e5ab9f95ec88b1e8ed711f00b8051208
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91531275"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91741717"
 ---
 # <a name="password-policies-and-account-restrictions-in-azure-active-directory"></a>Jelszóházirend és a fiókra vonatkozó korlátozások a Azure Active Directoryban
 
@@ -41,11 +41,13 @@ Az alábbi táblázat azokat a felhasználóneveket ismerteti, amelyek az Azure 
 
 ## <a name="azure-ad-password-policies"></a><a name="password-policies-that-only-apply-to-cloud-user-accounts"></a>Azure AD-jelszóházirend
 
-A rendszer az Azure AD-ben közvetlenül létrehozott és felügyelt összes felhasználói fiókra alkalmazza a jelszóházirend-szabályzatot. Ez a jelszóházirend nem módosítható, de [Az Azure ad jelszavas védelemhez egyéni tiltott jelszavakat is beállíthat](tutorial-configure-custom-password-protection.md).
+A rendszer az Azure AD-ben közvetlenül létrehozott és felügyelt összes felhasználói fiókra alkalmazza a jelszóházirend-szabályzatot. Ezen jelszóházirend-beállítások némelyike nem módosítható, de az [Azure ad jelszavas védelemhez vagy a fiókzárolási paraméterekhez egyéni tiltott jelszavakat is beállíthat](tutorial-configure-custom-password-protection.md) .
 
-A jelszóházirend nem vonatkozik a helyszíni AD DS környezetből Azure AD Connect használatával szinkronizált felhasználói fiókokra, hacsak nem engedélyezi a EnforceCloudPasswordPolicyForPasswordSyncedUsers.
+Alapértelmezés szerint a rendszer 10 sikertelen bejelentkezési kísérlet után zárolja a fiókot a helytelen jelszóval. A felhasználó egy percig ki van zárva. A további helytelen bejelentkezési kísérletek miatt a felhasználó kizárja az időtartam növelését. Az [intelligens zárolási](howto-password-smart-lockout.md) szolgáltatás az utolsó három rossz jelszó-kivonatot követi, így elkerülhető, hogy a zárolási számláló ugyanazon a jelszónál legyen növelve. Ha valaki többször is ugyanazt a jelszót adja meg, akkor ez a viselkedés nem eredményezi a fiók zárolását. Megadhatja az intelligens zárolás küszöbértékét és időtartamát.
 
-A következő jelszóházirend-beállítások vannak meghatározva:
+Az Azure AD jelszóházirend nem vonatkozik a helyszíni AD DS környezetből Azure AD Connect használatával szinkronizált felhasználói fiókokra, hacsak nem engedélyezi a *EnforceCloudPasswordPolicyForPasswordSyncedUsers*.
+
+A következő Azure AD-jelszóházirend-beállítások vannak meghatározva. A következő beállítások nem módosíthatók:
 
 | Tulajdonság | Követelmények |
 | --- | --- |
@@ -57,7 +59,6 @@ A következő jelszóházirend-beállítások vannak meghatározva:
 | Jelszó lejárata (hagyja, hogy a jelszavak soha ne járjanak le) |<ul><li>Alapértelmezett érték: **false** (azt jelzi, hogy a jelszó lejárati dátuma).</li><li>Az érték egyéni felhasználói fiókokhoz is konfigurálható a parancsmag használatával `Set-MsolUser` .</li></ul> |
 | Jelszó-módosítási előzmények | Az utolsó jelszó *nem* használható újra, amikor a felhasználó megváltoztatja a jelszót. |
 | Jelszó-visszaállítási előzmények | Az *utolsó jelszó újra használható,* amikor a felhasználó visszaállít egy elfelejtett jelszót. |
-| Fiókzárolási | 10 sikertelen bejelentkezési kísérlet után a rendszer egy percig kizárja a felhasználót. A további helytelen bejelentkezési kísérletek miatt a felhasználó kizárja az időtartam növelését. Az [intelligens zárolási](howto-password-smart-lockout.md) szolgáltatás az utolsó három rossz jelszó-kivonatot követi, így elkerülhető, hogy a zárolási számláló ugyanazon a jelszónál legyen növelve. Ha valaki többször is ugyanazt a jelszót adja meg, akkor ez a viselkedés nem eredményezi a fiók zárolását. |
 
 ## <a name="administrator-reset-policy-differences"></a>A rendszergazdai visszaállítási szabályzat eltérései
 

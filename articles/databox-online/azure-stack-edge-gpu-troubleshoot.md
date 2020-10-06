@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: troubleshooting
 ms.date: 08/19/2020
 ms.author: alkohli
-ms.openlocfilehash: 9deb10336d959a3f706cfc0ba970c3b83d5cd0a4
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 026f476b888380b6f262a6a52c064c939e27e931
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90891544"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743199"
 ---
 # <a name="troubleshoot-issues-on-your-azure-stack-edge-pro-gpu-device"></a>Az Azure Stack Edge Pro GPU-eszköz problémáinak elhárítása 
 
@@ -51,7 +51,7 @@ Kövesse az alábbi lépéseket a támogatási csomag összeállításához.
  
 2. A támogatási csomag létrehozása után válassza a **támogatási csomag letöltése**lehetőséget. A rendszer a tömörített csomagot letölti a megadott helyre. Csomagolja ki a csomagot, és tekintse meg a rendszernapló fájljait.
 
-    ![Válassza a felhasználó hozzáadása elemet.](media/azure-stack-edge-gpu-troubleshoot/collect-logs-2.png)
+    ![Válassza a felhasználó hozzáadása 2 lehetőséget](media/azure-stack-edge-gpu-troubleshoot/collect-logs-2.png)
 
 ## <a name="gather-advanced-security-logs"></a>Speciális biztonsági naplók összegyűjtése
 
@@ -200,6 +200,6 @@ Itt láthatók a blob Storage szolgáltatással kapcsolatos hibák Azure Stack E
 |A kapcsolatok időtúllépést mutatnak.|Jelentkezzen be az Azure Stack Edge Pro-ba, majd győződjön meg róla, hogy a zárolása fel van oldva. Az eszköz minden újraindításakor zárolva marad, amíg valaki bejelentkezik.|
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információk a [jelen kiadás ismert problémáiról](azure-stack-edge-gpu-2008-release-notes.md).

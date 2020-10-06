@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/25/2020
 ms.author: jeedes
-ms.openlocfilehash: 02358dcffa6f757e3c61b3c1ae0e7c5298f7d9ca
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 63d3a874c3d3d55ec1e3af3765ae63119dca287b
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88542683"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91740360"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-britive"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Britrel
 
@@ -103,7 +103,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Create** (Létrehozás) gombra.
+   1. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -129,11 +129,11 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 1. Kattintson a **rendszergazdai beállítások ikonra** , és válassza a **Biztonság**elemet.
 
-    ![Brit-konfiguráció](./media/britive-tutorial/configure1.png)
+    ![Képernyőfelvétel: a brit webhelyről kiválasztott beállítások és biztonság.](./media/britive-tutorial/configure1.png)
 
 1. Válassza az **SSO-konfiguráció** lehetőséget, és hajtsa végre a következő lépéseket:
 
-    ![Brit-konfiguráció](./media/britive-tutorial/configure2.png)
+    ![Képernyőfelvétel: a S S O-konfiguráció, ahol az ebben a lépésben megadott adatokat adja meg.](./media/britive-tutorial/configure2.png)
 
     a. Másolja a **célközönség/entitás azonosító** értékét, és illessze be a Azure Portal **ALAPszintű SAML-konfiguráció** szakaszában lévő **azonosító (Entity ID)** szövegmezőbe.
 
@@ -147,15 +147,15 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 1. Kattintson a **rendszergazdai beállítások ikonra** , és válassza a **felhasználói felügyelet**lehetőséget.
 
-    ![Brit-konfiguráció](./media/britive-tutorial/user1.png)
+    ![Képernyőfelvétel: a brit webhelye, amelyen a beállítások és a felhasználói adminisztráció van kiválasztva.](./media/britive-tutorial/user1.png)
 
 1. Kattintson a **felhasználó hozzáadása**elemre.
 
-    ![Brit-konfiguráció](./media/britive-tutorial/user2.png)
+    ![Képernyőfelvétel: a felhasználó hozzáadása gomb.](./media/britive-tutorial/user2.png)
 
 1. Töltse ki az összes szükséges adatot a felhasználó számára a szervezet követelményeinek megfelelően, és kattintson a **felhasználó hozzáadása**elemre.
 
-    ![Brit-konfiguráció](./media/britive-tutorial/user3.png)
+    ![Képernyőfelvétel: az ad a felhasználói oldal, ahol a felhasználói adatokat adja meg.](./media/britive-tutorial/user3.png)
 
 ## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
 

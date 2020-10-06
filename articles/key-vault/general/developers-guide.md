@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/05/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 23c64f956821dd2a204a15c37bf0fcdde4d09ba8
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 662c23a29e383800a4591c900e02133c16fa2090
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/05/2020
-ms.locfileid: "91716130"
+ms.locfileid: "91743318"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Az Azure Key Vault fejlesztői útmutatója
 
@@ -51,11 +51,10 @@ További információ a Key Vault felügyeleti síkon: [Key Vault felügyeleti s
 
 Key Vault olyan Azure AD-hitelesítést használ, amelyhez hozzáférést kell biztosítani az Azure AD rendszerbiztonsági tag számára. Az Azure AD rendszerbiztonsági tag lehet egy felhasználó, egy egyszerű alkalmazás, egy [felügyelt identitás az Azure-erőforrásokhoz](../../active-directory/managed-identities-azure-resources/overview.md), vagy bármilyen rendszerbiztonsági tag egy csoportja.
 
-A biztonságos alkalmazások esetében ajánlott felügyelt identitást használni az Azure-ban üzembe helyezett alkalmazásokhoz. Ha az Azure-szolgáltatások, amelyek nem támogatják a helyszíni felügyelet alatt álló felügyelt identitást vagy alkalmazásokat, lehetséges, hogy az [egyszerű szolgáltatás egy tanúsítvánnyal rendelkezik](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) . A tanúsítványt Key Vault kell tárolni, és gyakran el kell forgatni. 
+### <a name="authentication-best-practices"></a>Ajánlott eljárások a hitelesítéshez
+Ajánlott felügyelt identitást használni az Azure-ban üzembe helyezett alkalmazásokhoz. Ha olyan Azure-szolgáltatásokat használ, amelyek nem támogatják a felügyelt identitást, vagy ha az alkalmazások üzembe helyezése a helyszínen történik, az [egyszerű szolgáltatásnév egy](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal) lehetséges alternatíva. Ebben az esetben a tanúsítványt Key Vault kell tárolni, és gyakran el kell forgatni. A titkos kulccsal rendelkező szolgáltatásnév fejlesztési és tesztelési környezetekhez használható, valamint helyileg vagy Cloud Shell felhasználói rendszerbiztonsági tag használata ajánlott.
 
-A Secret szolgáltatással rendelkező szolgáltatásnév fejlesztési és tesztelési környezetekben, valamint helyileg vagy Cloud Shell felhasználói résztvevőnél ajánlott.
-
-Az alkalmazásfejlesztés során az Azure Identity SDK-t különböző környezetekben és platformokon is használhatja, a kód módosítása nélkül. Az Azure Identity integrálva van az Azure CLI-vel, a Visual Studióval, a Visual Studio Code-val és másokkal. 
+A fenti hitelesítési forgatókönyveket az Azure Identity Client Library támogatja, és integrálva van Key Vault SDK-val. Az Azure Identity Library különböző környezetekben és platformokon is használható a kód módosítása nélkül. Az Azure Identity azt is automatikusan lekéri a hitelesítési tokent, hogy bejelentkezett az Azure-felhasználónak az Azure CLI-vel, a Visual Studióval, a Visual Studio Code-val és másokkal. 
 
 További információkért lásd: 
 

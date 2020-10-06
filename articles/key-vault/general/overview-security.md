@@ -3,19 +3,18 @@ title: Az Azure Key Vault biztonsága
 description: Azure Key Vault, kulcsok és titkos kódok hozzáférési engedélyeinek kezelése. Lefedi a Key Vault hitelesítési és engedélyezési modelljét, valamint a kulcstartó biztonságossá tételét.
 services: key-vault
 author: msmbaldwin
-manager: rkarlin
 tags: azure-resource-manager
 ms.service: key-vault
 ms.subservice: general
 ms.topic: conceptual
-ms.date: 04/18/2019
+ms.date: 09/30/2020
 ms.author: mbaldwin
-ms.openlocfilehash: b6163ca0cb02670024fe95459f31ac81c4da756c
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.openlocfilehash: c3dd4e5138741a3c035507358830f3572cf92751
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91596360"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91739690"
 ---
 # <a name="azure-key-vault-security"></a>Az Azure Key Vault biztonsága
 
@@ -76,29 +75,16 @@ A tűzfalszabályok érvénybe léptetése után a felhasználók csak akkor tud
 
 További információ a [Azure Key Vault virtuális hálózati szolgáltatási végpontokról](overview-vnet-service-endpoints.md)Azure Key Vault hálózati címek áttekintéséhez)
 
-### <a name="tls-and-https"></a>TLS és HTTPS
+## <a name="tls-and-https"></a>TLS és HTTPS
 
 *   A Key Vault előtér (adatsík) egy több-bérlős kiszolgáló. Ez azt jelenti, hogy a különböző ügyfelektől származó kulcstartók ugyanazt a nyilvános IP-címet tudják megosztani. Az elkülönítés érdekében minden HTTP-kérelem hitelesítése és engedélyezése más kérelmektől függetlenül történik.
 *   A biztonsági rések jelentésére a TLS régebbi verzióit is meghatározhatja, de mivel a nyilvános IP-cím meg van osztva, nem lehetséges, hogy a Key Vault szolgáltatás csapata letiltsa a TLS régi verzióit az egyes kulcstartók esetében a szállítási szinten.
 *   A HTTPS protokoll lehetővé teszi, hogy az ügyfél részt vegyen a TLS-egyeztetésben. Az **ügyfelek kihasználhatják a TLS legújabb verzióját**, és amikor az ügyfél ezt teszi, a teljes kapcsolatok a megfelelő szintű védelmet fogják használni. Az a tény, hogy Key Vault továbbra is támogatja a régebbi TLS-verziókat, nem rontja a kapcsolatok biztonságát újabb TLS-verziók használatával.
 *   A TLS protokoll ismert biztonsági rései ellenére nincs olyan ismert támadás, amely lehetővé tenné egy rosszindulatú ügynök számára, hogy kinyerje a kulcstartóból származó adatokat, amikor a támadó a biztonsági réseket tartalmazó TLS-verzióval létesített kapcsolatokat kezdeményez. A támadónak továbbra is hitelesítenie és hitelesítenie kell magát, és mindaddig, amíg a megbízható ügyfelek mindig csatlakoznak a legutóbbi TLS-verziókhoz, nincs mód arra, hogy a hitelesítő adatokat kiszivárgott a korábbi TLS-verziók biztonsági rései miatt.
 
+## <a name="logging-and-monitoring"></a>Naplózás és figyelés
 
-## <a name="monitoring"></a>Figyelés
-
-Key Vault naplózás a tárolón végrehajtott tevékenységekre vonatkozó adatokat takarít meg. Naplók Key Vault:
-
-- Minden hitelesített REST API kérelem, beleértve a sikertelen kérelmeket is
-  - Maga a kulcstartó műveletei. Ezek a műveletek magukban foglalják a létrehozási, törlési és hozzáférési szabályzatok beállítását, valamint a Key Vault-attribútumok, például címkék frissítését
-  - A Key vaultban lévő kulcsokkal és titkos kulcsokkal kapcsolatos műveletek, beleértve a következőket:
-    - A kulcsok vagy titkos kódok létrehozása, módosítása vagy törlése.
-    - A kulcsok aláírása, ellenőrzése, titkosítása, visszafejtése, becsomagolása és kicsomagolása, a titkok beolvasása és a kulcsok és titkok listázása (és azok verziói).
-- A 401-es választ eredményező, nem hitelesített kérelmek. Ilyenek például azok a kérelmek, amelyek nem rendelkeznek olyan tulajdonosi jogkivonattal, amely nem formázott vagy lejárt, vagy érvénytelen tokent tartalmaz.
-
-A naplózási adatok a Key Vault műveletét követő 10 percen belül érhetők el. A naplókat a Storage-fiókban kezelheti.
-
-- Az Azure szabványos hozzáférés-vezérlési módszereivel korlátozhatja a naplókhoz való hozzáférést, így megvédheti azokat.
-- Törölje azokat a naplókat, amelyeket nem kíván megőrizni a tárfiókban.
+Key Vault naplózás a tárolón végrehajtott tevékenységekre vonatkozó adatokat takarít meg. Részletekért lásd: [Key Vault naplózása](logging.md).
 
 A Storage-fiókok biztonságos kezelésével kapcsolatos javaslatért tekintse át az [Azure Storage biztonsági útmutatóját](../../storage/blobs/security-recommendations.md) .
 
@@ -106,4 +92,3 @@ A Storage-fiókok biztonságos kezelésével kapcsolatos javaslatért tekintse �
 
 - [Virtuális hálózati szolgáltatás végpontjai Azure Key Vault](overview-vnet-service-endpoints.md)
 - [RBAC: beépített szerepkörök](../../role-based-access-control/built-in-roles.md)
-

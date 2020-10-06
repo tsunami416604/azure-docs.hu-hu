@@ -10,16 +10,16 @@ ms.subservice: translator-text
 ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: swmachan
-ms.openlocfilehash: 37d2e4c0131569ab50ebf49ff73b6adf7a420713
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.openlocfilehash: ec39b3692a90f22409e85b5502d3ea874e3282d6
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
-ms.locfileid: "83996176"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91742060"
 ---
 # <a name="how-to-prevent-translation-of-content-with-the-translator"></a>A tartalom fordításának megakadályozása a fordítóval
 
-A fordító lehetővé teszi a tartalom címkézését, hogy az ne legyen lefordítva. Előfordulhat például, hogy meg szeretné címkézni a kódot, a márkanevet vagy egy olyan szót vagy kifejezést, amely nincs értelme a honosított értéknél.
+A fordító lehetővé teszi a tartalom címkézését, hogy az ne legyen lefordítva. Érdemes lehet például kódokat, márkaneveket vagy olyan szavakat/kifejezéseket megjelölni, amelyek a fordításban értelmüket vesztik.
 
 ## <a name="methods-for-preventing-translation"></a>A fordítás megakadályozásának módszerei
 
@@ -37,13 +37,26 @@ A fordító lehetővé teszi a tartalom címkézését, hogy az ne legyen leford
    <div>This will be translated. </div>
    ```
 
-2. A [dinamikus szótár](dynamic-dictionary.md) használatával egy adott fordítást írhat elő.
+2. A tartalom címkézése a alkalmazással `translate="no"` . Ez csak akkor működik, ha a bemeneti textType HTML-ként van beállítva
 
-3. Ne adja át a karakterláncot a fordítónak a fordításhoz.
+   Példa:
 
-4. Egyéni fordító: használjon egy [szótárt az egyéni fordítóban](custom-translator/what-is-dictionary.md) egy kifejezés fordításának megírásához 100%-os valószínűséggel.
+   ```html
+   <span translate="no">This will not be translated.</span>
+   <span>This will be translated. </span>
+   ```
+   
+   ```html
+   <div translate="no">This will not be translated.</div>
+   <div>This will be translated. </div>
+
+3. Use the [dynamic dictionary](dynamic-dictionary.md) to prescribe a specific translation.
+
+4. Don't pass the string to the Translator for translation.
+
+5. Custom Translator: Use a [dictionary in Custom Translator](custom-translator/what-is-dictionary.md) to prescribe the translation of a phrase with 100% probability.
 
 
-## <a name="next-steps"></a>További lépések
+## Next steps
 > [!div class="nextstepaction"]
-> [Kerülje a fordítást a fordítói hívásban](reference/v3-0-translate.md)
+> [Use the Translate operation to translate text](reference/v3-0-translate.md)

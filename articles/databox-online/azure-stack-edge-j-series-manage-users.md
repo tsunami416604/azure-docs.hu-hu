@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
-ms.openlocfilehash: 5f7e8c09a09084b28278667cdeaf94f7e38908cd
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 66967c1fa8f6ca42459559caf46bffb0e5afe925
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90904496"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743590"
 ---
 # <a name="use-the-azure-portal-to-manage-users-on-your-azure-stack-edge-pro"></a>A Azure Portal használatával kezelheti a felhasználókat a Azure Stack Edge Pro-ban
 
@@ -74,12 +74,12 @@ Felhasználó törléséhez hajtsa végre a következő lépéseket az Azure Por
 
 2. Válasszon ki egy felhasználót a felhasználók listájából, majd válassza a **Törlés**lehetőséget. A rendszer kérésére erősítse meg a törlést.
 
-    ![Válassza ki a törölni kívánt felhasználót](media/azure-stack-edge-j-series-manage-users/delete-user-2.png)
+    ![Válassza ki a törölni kívánt felhasználót 2](media/azure-stack-edge-j-series-manage-users/delete-user-2.png)
 
 A törlés végrehajtása után annak megfelelően frissül a felhasználók listája.
 
 ![A felhasználók frissített listája](media/azure-stack-edge-j-series-manage-users/delete-user-4.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További tudnivalókat a [sávszélesség-kezeléssel foglalkozó részben](azure-stack-edge-j-series-manage-bandwidth-schedules.md) talál.

@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 08/05/2020
 ms.author: ccompy
 ms.custom: seodec18
-ms.openlocfilehash: 433d519cc71b8bb218569679c94142658f3c9416
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 141649f7620063b58134caaa878162f3a7e767e7
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91255244"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91739909"
 ---
 # <a name="integrate-your-app-with-an-azure-virtual-network"></a>Alkalmazás integrálása egy Azure-beli virtuális hálózattal
 
@@ -144,7 +144,7 @@ A regionális VNet-integrációs szolgáltatás nem számít fel további díjat
 
 Az átjáróhoz szükséges VNet-integrációs funkció három díjat tartalmaz:
 
-* **App Service csomag díjszabása**: az alkalmazásoknak standard, prémium vagy PremiumV2 app Service csomaggal kell rendelkezniük. További információ ezekről a költségekről: [app Service díjszabása][ASPricing].
+* **App Service csomag díjszabása**: az alkalmazásoknak standard, prémium, PremiumV2 vagy PremiumV3 app Service csomaggal kell rendelkezniük. További információ ezekről a költségekről: [app Service díjszabása][ASPricing].
 * **Adatátviteli költségek**: a kimenő adatforgalomért akkor is díjat számítunk fel, ha a VNet ugyanabban az adatközpontban található. Ezeket a díjakat [adatátvitel díjszabása][DataPricing]ismerteti.
 * **VPN Gateway – költségek**: a pont – hely típusú VPN-hez szükséges virtuális hálózati átjáró díja. További információ: a [VPN Gateway díjszabása][VNETPricing].
 

@@ -5,15 +5,15 @@ services: cosmos-db
 author: SnehaGunda
 ms.service: cosmos-db
 ms.topic: include
-ms.date: 01/22/2020
+ms.date: 10/01/2020
 ms.author: sngun
 ms.custom: include file
-ms.openlocfilehash: 8f7a69b81430d964d1aade26ed179354171e4164
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 1d7af1b29d1ed2d8ff0ae60da0a171b9d8b98bbf
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/05/2020
-ms.locfileid: "77134629"
+ms.locfileid: "91743145"
 ---
 1. Egy új böngészőablakban jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
@@ -35,7 +35,7 @@ ms.locfileid: "77134629"
     API|Cassandra|A létrehozni kívánt fiók típusát az API határozza meg. A Azure Cosmos DB öt API-t biztosít: Core (SQL) dokumentum-adatbázisokhoz, Gremlin, MongoDB, Azure Table és Cassandra-hoz. Minden API-hoz létre kell hoznia egy külön fiókot. <br><br>Válassza a **Cassandra**lehetőséget, mert ebben a rövid útmutatóban olyan táblát hoz létre, amely együttműködik a Cassandra API. <br><br>[További információ a Cassandra API-ról](../articles/cosmos-db/cassandra-introduction.md).|
     Hely|Válassza ki a felhasználóihoz legközelebb eső régiót|Válassza ki az Azure Cosmos DB-fiókot üzemeltetéséhez használni kívánt földrajzi helyet. Használja a felhasználókhoz legközelebb lévő helyet, hogy a lehető leggyorsabb hozzáférést biztosítsa az adatokhoz.
 
-    Válassza a **felülvizsgálat + létrehozás**lehetőséget. Kihagyhatja a **hálózat** és **címkék** szakaszt. 
+    Válassza a **felülvizsgálat + létrehozás**lehetőséget. Kihagyhatja a **hálózatkezelés**, a **biztonsági mentés**, a **titkosítás** és a **címkék** szakaszt. 
 
     ![Az Azure Cosmos DB Új fiók lapja](./media/cosmos-db-create-dbaccount-cassandra/azure-cosmos-db-create-new-account.png)
 

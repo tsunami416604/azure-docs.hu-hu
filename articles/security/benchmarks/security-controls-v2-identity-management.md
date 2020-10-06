@@ -7,22 +7,22 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: a007b8e85440faab6f3d9f35c49ee207ee1597ff
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 8a29dbbf365304240283fe4fd5899b58e3bc227c
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91295498"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91741407"
 ---
 # <a name="security-control-v2-identity-management"></a>Security Control v2: Identitáskezelés
 
 Az Identitáskezelés kiterjed a biztonságos identitás-és hozzáférés-vezérlések létrehozására Azure Active Directory használatával. Ez magában foglalja az egyszeri bejelentkezést, az erős hitelesítéseket, a felügyelt identitásokat (és a szolgáltatási alapelveket) az alkalmazásokhoz, a feltételes hozzáféréshez és a fiókok rendellenességének figyeléséhez.
 
-## <a name="id-1-standardize-azure-active-directory-as-the-central-identity-and-authentication-system"></a>1. azonosító: szabványosított Azure Active Directory központi identitás-és hitelesítési rendszerrel
+## <a name="im-1-standardize-azure-active-directory-as-the-central-identity-and-authentication-system"></a>IM-1: szabványosított Azure Active Directory központi identitás-és hitelesítési rendszerrel
 
 | Azure-azonosító | CIS Controls v 7.1 azonosító (k) | NIST SP800-53 R4 azonosító (k) |
 |--|--|--|--|
-| 1. AZONOSÍTÓ | 16,1, 16,2, 16,4, 16,5 | IA-2, IA-8, AC-2, AC-3 |
+| IM-1 | 16,1, 16,2, 16,4, 16,5 | IA-2, IA-8, AC-2, AC-3 |
 
 Azure Active Directory (Azure AD) az Azure alapértelmezett identitás-és hozzáférés-kezelési szolgáltatása. Egységesítse az Azure AD-ben a szervezet identitás-és hozzáférés-kezelésének szabályozását a ben:
 - A Microsoft felhőalapú erőforrásai, például a Azure Portal, az Azure Storage, az Azure Virtual Machines (Linux és Windows), a Azure Key Vault, a Pásti és az SaaS-alkalmazások.
@@ -55,11 +55,11 @@ Megjegyzés: az Azure AD támogatja a külső identitás-szolgáltatókat, amely
 
 - [Helyzetkezelés](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)
 
-## <a name="id-2-manage-application-identities-securely-and-automatically"></a>2. azonosító: az alkalmazás-identitások biztonságos és automatikus kezelése
+## <a name="im-2-manage-application-identities-securely-and-automatically"></a>IM-2: az alkalmazás-identitások biztonságos és automatikus kezelése
 
 | Azure-azonosító | CIS Controls v 7.1 azonosító (k) | NIST SP800-53 R4 azonosító (k) |
 |--|--|--|--|
-| AZONOSÍTÓ – 2 | N.A. | AC-2, AC-3, IA-2, IA-4, IA-9 |
+| IM-2 | N/A | AC-2, AC-3, IA-2, IA-4, IA-9 |
 
 A nem emberi fiókok, például a szolgáltatások vagy az automatizálás esetében az Azure által felügyelt identitások használata helyett az erőforrások eléréséhez és a kód végrehajtásához hatékonyabb emberi fiókot kell létrehoznia. Az Azure által felügyelt identitások hitelesítése az Azure AD-hitelesítést támogató Azure-szolgáltatásokban és-erőforrásokban történik. A hitelesítés az előre meghatározott hozzáférés-engedélyezési szabályokon keresztül engedélyezett, a forráskódban vagy a konfigurációs fájlokban lévő, nehezen kódolt hitelesítő adatok elkerülésével. 
 
@@ -83,11 +83,11 @@ Azure Key Vault használata rendszerbiztonsági tag regisztrálásához: hiteles
 
 - [Alkalmazásbiztonság és DevSecOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
-## <a name="id-3-use-azure-ad-single-sign-on-sso-for-application-access"></a>3. azonosító: az Azure AD egyszeri bejelentkezés (SSO) használata az alkalmazásokhoz való hozzáféréshez
+## <a name="im-3-use-azure-ad-single-sign-on-sso-for-application-access"></a>IM-3: az Azure AD egyszeri bejelentkezés (SSO) használata az alkalmazásokhoz való hozzáféréshez
 
 | Azure-azonosító | CIS Controls v 7.1 azonosító (k) | NIST SP800-53 R4 azonosító (k) |
 |--|--|--|--|
-| AZONOSÍTÓ – 3 | 4.4 | IA-2, IA-4 |
+| IM-3 | 4.4 | IA-2, IA-4 |
 
 Az Azure AD identitás-és hozzáférés-kezelést biztosít az Azure-erőforrásokhoz, a felhőalapú alkalmazásokhoz és a helyszíni alkalmazásokhoz. Az identitás-és hozzáférés-kezelés olyan vállalati identitásokra vonatkozik, mint az alkalmazottak, valamint a külső identitások, mint például a partnerek, a szállítók és a szállítók.
 
@@ -105,11 +105,11 @@ Az Azure AD egyszeri bejelentkezés (SSO) használatával felügyelheti és bizt
 
 - [Alkalmazásbiztonság és DevSecOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
-## <a name="id-4-use-strong-authentication-controls-for-all-azure-active-directory-based-access"></a>4. azonosító: erős hitelesítési vezérlők használata az összes Azure Active Directory-alapú hozzáféréshez
+## <a name="im-4-use-strong-authentication-controls-for-all-azure-active-directory-based-access"></a>IM-4: erős hitelesítési vezérlők használata az összes Azure Active Directory-alapú hozzáféréshez
 
 | Azure-azonosító | CIS Controls v 7.1 azonosító (k) | NIST SP800-53 R4 azonosító (k) |
 |--|--|--|--|
-| AZONOSÍTÓ – 4 | 4,2, 4,4 4,5, 11,5, 12,11, 16,3 | AC-2, AC-3, IA-2, IA-4 |
+| IM-4 | 4,2, 4,4 4,5, 11,5, 12,11, 16,3 | AC-2, AC-3, IA-2, IA-4 |
 
 Az Azure AD a többtényezős hitelesítéssel (MFA) és az erős, jelszóval nem rendelkező metódusokkal támogatja az erős hitelesítési vezérlést.  
 - Többtényezős hitelesítés: engedélyezze az Azure AD MFA-t, és kövesse Azure Security Center identitás-és hozzáférés-kezelési javaslatait az MFA-telepítéshez. Az MFA kikényszeríthető minden felhasználóra, kiválaszthatja a felhasználókat vagy a felhasználónkénti szinten a bejelentkezési feltételek és kockázati tényezők alapján. 
@@ -140,11 +140,11 @@ Megjegyzés: a jelszó-hitelesítő adatokon alapuló hitelesítés csak a néps
 
 - [Alkalmazásbiztonság és DevSecOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
 
-## <a name="id-5-monitor-and-alert-on-account-anomalies"></a>5. azonosító: a fiókok rendellenességének figyelése és riasztása
+## <a name="im-5-monitor-and-alert-on-account-anomalies"></a>IM-5: a fiókok rendellenességeit figyelő és riasztások
 
 | Azure-azonosító | CIS Controls v 7.1 azonosító (k) | NIST SP800-53 R4 azonosító (k) |
 |--|--|--|--|
-| AZONOSÍTÓ – 5 | 4,8, 4,9, 16,12, 16,13 | AC-2, AC-3, AC-7, AU-6 |
+| IM-5 | 4,8, 4,9, 16,12, 16,13 | AC-2, AC-3, AC-7, AU-6 |
 
 Az Azure AD a következő adatforrásokat biztosítja: 
 -   Bejelentkezések – a bejelentkezési jelentés információt nyújt a felügyelt alkalmazások és a felhasználói bejelentkezési tevékenységek használatáról.
@@ -185,11 +185,11 @@ Az Azure komplex veszélyforrások elleni védelem (ATP) olyan biztonsági megol
 
 - [Helyzetkezelés](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)
 
-## <a name="id-6-restrict-azure-resource-access-based-on-conditions"></a>ID-6: az Azure erőforrás-hozzáférés korlátozása feltételek alapján
+## <a name="im-6-restrict-azure-resource-access-based-on-conditions"></a>IM-6: az Azure erőforrás-hozzáférés korlátozása feltételek alapján
 
 | Azure-azonosító | CIS Controls v 7.1 azonosító (k) | NIST SP800-53 R4 azonosító (k) |
 |--|--|--|--|
-| AZONOSÍTÓ – 6 | N.A. | AC-2, AC-3 |
+| IM-6 | N/A | AC-2, AC-3 |
 
 Az Azure AD feltételes hozzáférés használatával részletesebb hozzáférés-vezérlést használhat a felhasználó által definiált feltételek alapján, például bizonyos IP-címtartományok felhasználói bejelentkezésének megkövetelése az MFA használatára. A részletes hitelesítési munkamenetek kezelése az Azure AD feltételes hozzáférési szabályzatán keresztül is felhasználható a különböző használati esetekben. 
 
@@ -211,11 +211,11 @@ Az Azure AD feltételes hozzáférés használatával részletesebb hozzáféré
 
 - [Fenyegetésészlelési intelligencia](/azure/cloud-adoption-framework/organize/cloud-security-threat-intelligence)
 
-## <a name="id-7-eliminate-unintended-credential-exposure"></a>7. azonosító: a nem szándékolt hitelesítő adatok expozíciójának megszüntetése
+## <a name="im-7-eliminate-unintended-credential-exposure"></a>IM-7: a nem szándékolt hitelesítő adatok expozíciójának megszüntetése
 
 | Azure-azonosító | CIS Controls v 7.1 azonosító (k) | NIST SP800-53 R4 azonosító (k) |
 |--|--|--|--|
-| AZONOSÍTÓ – 7 | 18,1, 18,7 | IA-5 |
+| IM-7 | 18,1, 18,7 | IA-5 |
 
 Implementálja az Azure DevOps hitelesítőadat-olvasót a kódban található hitelesítő adatok azonosításához. A hitelesítő adatok képolvasó a felderített hitelesítő adatoknak a biztonságosabb helyszínekre (például Azure Key Vault) való áthelyezését is javasolja
 
@@ -233,11 +233,11 @@ A GitHub esetében a natív titkos keresési funkcióval azonosíthatók a kódo
 
 - [Helyzetkezelés](/azure/cloud-adoption-framework/organize/cloud-security-posture-management)
 
-## <a name="id-8-secure-user-access-to-legacy-applications"></a>8. azonosító: a felhasználók hozzáférésének biztosítása az örökölt alkalmazásokhoz
+## <a name="im-8-secure-user-access-to-legacy-applications"></a>IM-8: a felhasználók hozzáférésének biztosítása az örökölt alkalmazásokhoz
 
 | Azure-azonosító | CIS Controls v 7.1 azonosító (k) | NIST SP800-53 R4 azonosító (k) |
 |--|--|--|--|
-| AZONOSÍTÓ – 8 | 14,6 | AC-2, AC-3, SC-11 |
+| IM-8 | 14,6 | AC-2, AC-3, SC-11 |
 
 Győződjön meg arról, hogy rendelkezik a modern hozzáférés-vezérléssel és a munkamenet-figyeléssel a régi alkalmazásokhoz, valamint az általuk tárolt és feldolgozott adatkezelés Habár a VPN-eket általában a régi alkalmazások elérésére használják, gyakran csak alapszintű hozzáférés-vezérléssel és korlátozott munkamenet-figyeléssel rendelkeznek.
 
@@ -258,4 +258,3 @@ Azt is megteheti, Microsoft Cloud App Security egy felhőalapú hozzáférés-ve
 - [Infrastruktúra és végpontbiztonság](/azure/cloud-adoption-framework/organize/cloud-security-architecture)
 
 - [Alkalmazásbiztonság és DevSecOps](/azure/cloud-adoption-framework/organize/cloud-security-application-security-devsecops)
-

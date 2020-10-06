@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
+ms.date: 10/05/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: a9d508afac64e448ca220a36b2be983da85d96b0
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 9360fc000e01e1c52561cbaa3e2f2968e67e2fa2
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89002623"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91740870"
 ---
 # <a name="how-to-build-a-facet-filter-in-azure-cognitive-search"></a>Dimenziós szűrő létrehozása az Azure-ban Cognitive Search 
 
@@ -29,7 +29,8 @@ A részletes Navigálás a lekérdezés eredményeinek önálló irányított sz
 
 A dimenziók dinamikusak, és egy lekérdezésen keresztül lesznek visszaadva. A keresési válaszok bemutatják azokat az eredmények eléréséhez használt aspektus-kategóriákat. Ha nem ismeri a dimenziókat, a következő példa egy dimenziós navigációs struktúra szemléltetése.
 
-  ![Egy olyan kép, amely egy keresési párbeszédpanelt jelenít meg, és a szűrt keresési eredményeket üzleti cím szerint csoportosítja. Egy nyíl jelzi, hogy az eredmények olyan dimenziók, amelyek egy aspektus navigációs struktúrában jelennek meg.](./media/search-filters-facets/facet-nav.png)
+:::image type="complex" source="media/search-filters-facets/facet-nav.png" alt-text="szűrt keresési eredmények":::
+"Egy olyan kép, amely egy keresési párbeszédpanelt jelenít meg, és a szűrt keresési eredményeket üzleti cím szerint csoportosítja. Egy nyíl jelzi, hogy az eredmények olyan dimenziók, amelyek egy dimenziós navigációs struktúrában jelennek meg. :::image-end:::
 
 Új a csiszolatlan navigációhoz, és további részletekre van szüksége? Megtudhatja [, hogyan valósítható meg a részletes navigálás az Azure Cognitive Searchban](search-faceted-navigation.md).
 

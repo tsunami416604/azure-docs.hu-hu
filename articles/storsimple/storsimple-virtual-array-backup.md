@@ -15,12 +15,12 @@ ms.workload: TBD
 ms.date: 02/27/2017
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
-ms.openlocfilehash: 41cb02e77fa77c5a7452c5e3e0d2080ee3d472d5
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.openlocfilehash: 5c49a46dfcd97f5feb43b0b910476ef3ad6f402a
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
-ms.locfileid: "88183224"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91742247"
 ---
 # <a name="back-up-shares-or-volumes-on-your-storsimple-virtual-array"></a>A StorSimple virtuális tömbben lévő megosztások vagy kötetek biztonsági mentése
 
@@ -76,7 +76,7 @@ Az ütemezett biztonsági mentések mellett bármikor manuálisan (igény szerin
    
     Az igény szerinti biztonsági mentés elindul, és látni fogja, hogy a biztonsági mentési feladatok megkezdődtek.
    
-    ![biztonsági mentés indítása](./media/storsimple-virtual-array-backup/takebackup3m.png) 
+    ![a biztonsági mentés 2. kezdete](./media/storsimple-virtual-array-backup/takebackup3m.png) 
    
     Ha a feladatot sikeresen elvégezte, értesítést kap. Ekkor elindul a biztonsági mentési folyamat.
    
@@ -112,7 +112,7 @@ A meglévő biztonsági másolatok megtekintéséhez hajtsa végre a következő
    
     ![Frissített biztonsági mentési katalógus](./media/storsimple-virtual-array-backup/viewbackups3.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ [a StorSimple virtuális tömb felügyeletéről](storsimple-ova-web-ui-admin.md).
 

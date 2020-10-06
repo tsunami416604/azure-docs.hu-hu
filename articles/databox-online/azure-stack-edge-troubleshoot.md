@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: troubleshooting
 ms.date: 08/11/2020
 ms.author: alkohli
-ms.openlocfilehash: bc4afa0d26f6ba256354d3802a0c4f9b9b04088e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: f668136713024ba57d72bf5a457cd249742a3b11
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90903651"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91742026"
 ---
 # <a name="troubleshoot-your-azure-stack-edge-pro-issues"></a>Az Azure Stack Edge Pro-problémák elhárítása
 
@@ -55,7 +55,7 @@ Kövesse az alábbi lépéseket a támogatási csomag összeállításához.
 
 2. A támogatási csomag létrehozása után válassza a **támogatási csomag letöltése**lehetőséget. A rendszer a tömörített csomagot letölti a megadott helyre. Csomagolja ki a csomagot, és tekintse meg a rendszernapló fájljait.
 
-    ![Kattintson a Felhasználó hozzáadása gombra](media/azure-stack-edge-troubleshoot/collect-logs-2.png)
+    ![Kattintson a felhasználó hozzáadása 2](media/azure-stack-edge-troubleshoot/collect-logs-2.png)
 
 ## <a name="use-logs-to-troubleshoot"></a>Hibaelhárítás naplók használatával
 
@@ -82,6 +82,6 @@ A feltöltési és frissítési folyamat során észlelt hibákat a megfelelő h
 
     [!INCLUDE [data-box-edge-edge-upload-error-reference](../../includes/data-box-edge-gateway-upload-error-reference.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * További információk a [jelen kiadás ismert problémáiról](data-box-gateway-release-notes.md).

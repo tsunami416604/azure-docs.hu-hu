@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: TBD
 ms.date: 07/25/2019
 ms.author: alkohli
-ms.openlocfilehash: 4560ca2b07826e2a071f515f147dfab8cbec3624
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 81799e6ec366c7429fdb29b85b4ff65d353a8fba
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84704590"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91742417"
 ---
 # <a name="deploy-storsimple-virtual-array--set-up-as-an-iscsi-server-via-azure-portal"></a>StorSimple virtuális tömb üzembe helyezése – iSCSI-kiszolgálóként való beállítása Azure Portalon keresztül
 
@@ -125,7 +125,7 @@ A StorSimple virtuális tömb beállításához és konfigurálásához használ
 11. Navigáljon a szolgáltatás **eszközök** paneljére. Ha sok erőforrással rendelkezik, kattintson a **minden erőforrás**lehetőségre, kattintson a szolgáltatás nevére (keresse meg, ha szükséges), majd kattintson az **eszközök**elemre.
 12. Az **eszközök** panelen ellenőrizze, hogy az eszköz sikeresen csatlakozott-e a szolgáltatáshoz az állapot megkeresésével. Az eszköznek **Beállításra kész** állapotúnak kell lennie.
     
-    ![Eszköz regisztrálása](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis1m.png)
+    ![Eszköz üzembe helyezése](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis1m.png)
 
 ## <a name="step-2-configure-the-device-as-iscsi-server"></a>2. lépés: az eszköz konfigurálása iSCSI-kiszolgálóként
 
@@ -138,7 +138,7 @@ A szükséges eszköz telepítésének befejezéséhez hajtsa végre a következ
     ![Eszköz konfigurálása iSCSI-kiszolgálóként](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis1m.png) 
 2. Kattintson az eszközre, és megjelenik egy szalagcím üzenet, amely jelzi, hogy az eszköz készen áll a telepítésre.
    
-    ![Eszköz konfigurálása iSCSI-kiszolgálóként](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis2m.png)  
+    ![Eszköz konfigurálása iSCSI-kiszolgálóként 2](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis2m.png)  
 3. Kattintson a **Konfigurálás** elemre az eszköz parancssáv-sávján. Ekkor megnyílik a **configure (Konfigurálás** ) panel. A **configure (Konfigurálás** ) panelen tegye a következőket:
    
    * Az iSCSI-kiszolgáló neve automatikusan ki lesz töltve.
@@ -146,13 +146,13 @@ A szükséges eszköz telepítésének befejezéséhez hajtsa végre a következ
    * Válasszon egy 32 karakterből álló titkosítási kulcsot, és jegyezze fel egy kulcskezelő alkalmazásban későbbi használatra.
    * Válassza ki az eszközhöz használni kívánt Storage-fiókot. Ebben az előfizetésben választhat egy meglévő Storage-fiókot, vagy a **Hozzáadás** gombra kattintva kiválaszthatja a fiókot egy másik előfizetésből.
      
-     ![Eszköz konfigurálása iSCSI-kiszolgálóként](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis4m.png)
+     ![Eszköz konfigurálása iSCSI-kiszolgálóként 3](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis4m.png)
 4. Kattintson a **Konfigurálás** elemre az iSCSI-kiszolgáló beállításának befejezéséhez.
    
-    ![Eszköz konfigurálása iSCSI-kiszolgálóként](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis5m.png) 
+    ![Eszköz konfigurálása iSCSI-kiszolgálóként 4](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis5m.png) 
 5. A rendszer értesítést küld arról, hogy az iSCSI-kiszolgáló létrehozása folyamatban van. Az iSCSI-kiszolgáló sikeres létrehozása után a rendszer frissíti az **eszközök** panelt, és a megfelelő eszköz állapota **online**állapotú.
    
-    ![Eszköz konfigurálása iSCSI-kiszolgálóként](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis9m.png)
+    ![Eszköz konfigurálása iSCSI-kiszolgálóként 5](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis9m.png)
 
 ## <a name="step-3-add-a-volume"></a>3. lépés: kötet hozzáadása
 
@@ -169,17 +169,17 @@ A szükséges eszköz telepítésének befejezéséhez hajtsa végre a következ
      
      A többrészes köteteket a rendszer dinamikusan kiépíti. A rétegű kötetek létrehozásakor a terület körülbelül 10%-a a helyi szinten van kiépítve, a terület 90%-a pedig a felhőben van kiépítve. Ha például egy 1 TB-os kötetet telepített, a 100 GB a helyi térben, a 900 GB-ot pedig a felhőben fogja használni az adatrétegeknél. Ez azt jelenti, hogy ha elfogyott az eszközön lévő összes helyi terület, nem lehet kiépíteni egy rétegű megosztást (mivel a 10% nem lesz elérhető).
      
-     ![Kötet hozzáadása](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis12.png)
+     ![2. kötet hozzáadása](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis12.png)
    * Kattintson a **csatlakoztatott gazdagépek**elemre, jelölje ki a kötethez csatlakozni kívánt iSCSI-kezdeményezőhöz tartozó hozzáférés-vezérlési REKORDOT (ACR), majd kattintson a **kiválasztás**gombra. <br><br> 
 3. Új csatlakoztatott gazdagép hozzáadásához kattintson az **új hozzáadása**lehetőségre, adja meg a gazdagép nevét és az iSCSI minősített nevét (IQN), majd kattintson a **Hozzáadás**gombra. Ha nem rendelkezik a IQN, ugorjon a " [a" függelékre: a Windows Server-GAZDAGÉP IQN beszerzése](#appendix-a-get-the-iqn-of-a-windows-server-host).
    
-      ![Kötet hozzáadása](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis15m.png)
+      ![3. kötet hozzáadása](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis15m.png)
 4. Ha befejezte a kötet konfigurálását, kattintson **az OK**gombra. A rendszer létrehoz egy kötetet a megadott beállításokkal, és értesítést fog látni. Alapértelmezés szerint a rendszer engedélyezi a figyelést és a biztonsági mentést a köteten.
    
-     ![Kötet hozzáadása](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis18m.png)
+     ![4. kötet hozzáadása](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis18m.png)
 5. A kötet sikeres létrehozásának ellenőrzéséhez nyissa meg a **kötetek** panelt. Ekkor meg kell jelennie a felsorolt kötetnek.
    
-   ![Kötet hozzáadása](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis20m.png)
+   ![5. kötet hozzáadása](./media/storsimple-virtual-array-deploy3-iscsi-setup/deployis20m.png)
 
 ## <a name="step-4-mount-initialize-and-format-a-volume"></a>4. lépés: kötet csatlakoztatása, inicializálása és formázása
 

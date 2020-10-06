@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mariadb
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: 5687255057fdd5e73478626721c789c98b2ea366
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.openlocfilehash: 6ed890fca9dddcbc7f04914a6f920d530d18ed0f
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86120075"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91742842"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-mariadb"></a>Az Azure Portal használatával riasztásokat állíthat be a metrikákkal kapcsolatban Azure Database for MariaDB
 
@@ -25,11 +25,11 @@ A következő műveletek elvégzéséhez beállíthatja a riasztást:
 * Webhook meghívása
 
 A riasztási szabályokkal kapcsolatos információkat a használatával konfigurálhatja és kérheti le:
-* [Azure Portalra](../azure-monitor/platform/alerts-metric.md#create-with-azure-portal)
+* [Azure Portal](../azure-monitor/platform/alerts-metric.md#create-with-azure-portal)
 * [Azure CLI](../azure-monitor/platform/alerts-metric.md#with-azure-cli)
 * [Azure Monitor REST API](https://docs.microsoft.com/rest/api/monitor/metricalerts)
 
-## <a name="create-an-alert-rule-on-a-metric"></a>Riasztási szabály létrehozása metrika esetén
+## <a name="create-an-alert-rule-on-a-metric"></a>Metrikához tartozó riasztási szabály létrehozása
 1. A [Azure Portal](https://portal.azure.com/)válassza ki a figyelni kívánt Azure Database for MariaDB-kiszolgálót.
 
 2. Az oldalsáv **figyelés** szakaszában válassza a **riasztások** lehetőséget az alábbiak szerint:
@@ -52,7 +52,7 @@ A riasztási szabályokkal kapcsolatos információkat a használatával konfigu
    
    A Befejezés gombra kattintva válassza a **kész** lehetőséget.
 
-   ![Metrika kiválasztása](./media/howto-alert-metric/7-set-threshold-time.png)
+   ![2. metrika kiválasztása](./media/howto-alert-metric/7-set-threshold-time.png)
 
 8. A **műveleti csoportok** szakaszban válassza az **új létrehozása** lehetőséget egy új csoport létrehozásához, hogy értesítést kapjon a riasztásról.
 
@@ -70,7 +70,7 @@ A riasztási szabályokkal kapcsolatos információkat a használatával konfigu
 
 11. Adja meg a riasztási szabály nevét, leírását és súlyosságát.
 
-    ![Műveletcsoport](./media/howto-alert-metric/11-name-description-severity.png) 
+    ![2. műveleti csoport](./media/howto-alert-metric/11-name-description-severity.png) 
 
 12. A riasztás létrehozásához válassza a **riasztási szabály létrehozása** lehetőséget.
 
@@ -84,6 +84,6 @@ Miután létrehozta a riasztást, kiválaszthatja, és elvégezheti a következ�
 * **Tiltsa le** vagy **engedélyezze** a riasztást, ha átmenetileg le kívánja állítani vagy folytatni szeretné az értesítések fogadását.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * További információ a [webhookok riasztásokban való konfigurálásáról](../monitoring-and-diagnostics/insights-webhooks-alerts.md).
 * [Tekintse át a metrikák gyűjteményét](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md) , és győződjön meg arról, hogy a szolgáltatás elérhető és rugalmas.

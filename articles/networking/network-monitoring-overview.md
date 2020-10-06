@@ -15,12 +15,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 02/22/2018
 ms.author: agummadi
-ms.openlocfilehash: 5e2d3f0b5abcd7a9dcd4f49c120353adacffcb31
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 36e41db6e1a3cff13f31f0abf2e83e872dfd7c49
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91399652"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91742332"
 ---
 # <a name="network-monitoring-solutions"></a>Hálózati figyelési megoldások 
 
@@ -103,7 +103,7 @@ Traffic Analytics egy felhőalapú megoldás, amely láthatóságot biztosít a 
 
 Traffic Analytics a szervezet hálózati tevékenységének, az alkalmazások és az adatok biztonságossá tételének, a munkaterhelés teljesítményének optimalizálása és a megfelelő működés biztosítása érdekében hasznos információkat nyújt.
 
-![Régiók közötti forgalmat mutató geo-Térkép](../network-watcher/media/traffic-analytics/geo-map-view-showcasing-traffic-distribution-to-countries-and-continents.png) 
+![A 2. régión belüli forgalmat bemutató geo-Térkép](../network-watcher/media/traffic-analytics/geo-map-view-showcasing-traffic-distribution-to-countries-and-continents.png) 
 
 Kapcsolódó hivatkozások:
 * [Blogbejegyzés](https://aka.ms/trafficanalytics), [dokumentáció](https://aka.ms/trafficanalyticsdocs), [GYIK](https://docs.microsoft.com/azure/network-watcher/traffic-analytics-faq)

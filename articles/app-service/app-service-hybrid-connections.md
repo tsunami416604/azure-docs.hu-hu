@@ -7,12 +7,12 @@ ms.topic: article
 ms.date: 06/08/2020
 ms.author: ccompy
 ms.custom: seodec18, fasttrack-edit
-ms.openlocfilehash: 8c8b71e4be11a886da3e0889add0a3cdc19a56c3
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 1cb86f77a6ffcbb0fb45b3a57b57de531822f2b0
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88962417"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91742604"
 ---
 # <a name="azure-app-service-hybrid-connections"></a>Az Azure App Service hibrid kapcsolatai
 
@@ -42,7 +42,7 @@ A Hibrid kapcsolatok képesség számos előnnyel jár, többek között:
 - Általában nincs szükség tűzfal-lyukakra. A kapcsolatok mindegyike kimenő a szabványos webes portoknál.
 - Mivel a szolgáltatás hálózati szintű, az alkalmazás által használt nyelv és a végpont által használt technológia egyaránt független.
 - A szolgáltatás használatával több hálózatban is biztosítható a hozzáférés egyetlen alkalmazásból. 
-- A Windows-alkalmazásokban a GA támogatja, és a Linux-alkalmazások esetében előzetes verzióban érhető el.
+- A Windows natív alkalmazásaiban a GA támogatja, és a Linux-alkalmazások esetében előzetes verzióban érhető el. A Windows Container apps esetében nem támogatott.
 
 ### <a name="things-you-cannot-do-with-hybrid-connections"></a>A Hibrid kapcsolatokkal nem rendelkező dolgok ###
 

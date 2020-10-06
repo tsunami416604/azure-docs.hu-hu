@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/02/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to install Azure Stack Edge Pro in datacenter so I can use it to transfer data to Azure.
-ms.openlocfilehash: b9f3b564e36939197acd532a37f9a6098fbc870f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: ba903793844e44b26931a70183860c983adaf18a
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90900022"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743403"
 ---
 # <a name="tutorial-install-azure-stack-edge-pro-with-gpu"></a>Oktatóanyag: Azure Stack Edge Pro telepítése GPU-val
 
@@ -22,7 +22,7 @@ Ez az oktatóanyag leírja, hogyan telepíthet egy Azure Stack Edge Pro fizikai 
 
 A telepítés elvégzése körülbelül két órát is igénybe vehet.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
 > * Az eszköz kicsomagolása
@@ -124,7 +124,7 @@ Keresse meg a következő összetevőket a Rail Kit szerelvény telepítéséhez
 3. Csatolja a bal és a jobb oldali szerelvényt az elülső függőleges rack karimához két pár csavart használva.
 4. Csúsztassa a bal és a jobb oldali zárójelet a hátsó függőleges rack karimák felé, és csatolja őket két pár csavar használatával.
 
-    ![Eszközre telepített sínek telepítése és eltávolítása](./media/azure-stack-edge-deploy-install/installing-removing-tooled-rails.png)
+    ![Eszközre telepített sínek telepítése és eltávolítása 2](./media/azure-stack-edge-deploy-install/installing-removing-tooled-rails.png)
 
 ### <a name="install-the-system-in-a-rack"></a>A rendszer telepítése rackben
 
@@ -166,7 +166,7 @@ Az eszköz kábelezésének megkezdése előtt a következőkre lesz szüksége:
 - Legalább egy 1-GbE RJ-45 hálózati kábel a felügyeleti felülethez való csatlakozáshoz. Az eszközön két 1-GbE hálózati adapter (egy felügyeleti és egy adathálózati) található.
 - Egy 25-GbE SFP+ rézkábel minden konfigurálni kívánt adathálózati adapterhez. Legalább egy adathálózati adaptert a 2. port, a 3. port, az 5. port vagy a 6-os port közül kell csatlakoztatni az internethez (az Azure-hoz való csatlakozással).  
 - Hozzáférés két energiaellátási egységhez (ajánlott).
-- Legalább egy GbE hálózati kapcsolóval egy 1 GbE hálózati adapter csatlakozik az internethez az adatkapcsolathoz. A helyi webes felhasználói felület nem lesz elérhető, ha a csatlakoztatott kapcsoló nem legalább 1 GbE. Ha 25/10 GbE felületet használ az adataihoz, akkor 25 GbE vagy 10 GbE kapcsolóra van szüksége. 
+- Legalább 1 1-GbE hálózati kapcsolóval egy 1 GbE hálózati adapter csatlakozik az internethez az adatkapcsolathoz. A helyi webes felhasználói felület nem lesz elérhető, ha a csatlakoztatott kapcsoló nem legalább 1 GbE. Ha 25/10 GbE felületet használ az adataihoz, akkor 25 GbE vagy 10 GbE kapcsolóra van szüksége. 
 
 > [!NOTE]
 > - Ha csak egy adathálózati adaptert csatlakoztat, javasoljuk, hogy használjon 25/10 GbE hálózati adaptert, például a 3. portot, a 4-es portot, az 5. portot vagy a 6-os PORTOT az Azure-ba való adatküldéshez. 
@@ -182,7 +182,7 @@ Azure Stack Edge Pro-eszközön:
 - A háttérrendszer redundáns tápegységeket (PSUs) tartalmaz.
 - A hátsó síkon hat hálózati adapter van:
 
-    - Két 1 GB/s illesztőfelület.
+    - 2 1 – Gbps felületek.
     - 4 25 – Gbps felületek, amelyek 10 GB/s illesztőfelületként is használhatók.
     - Egy alaplapi felügyeleti vezérlő (BMC).
 
@@ -207,11 +207,11 @@ A következő lépésekkel csatlakoztassa az eszközt az áramellátáshoz és a
 
     - Eszköz 3 PCI bővítőhelytel és egy GPU-val
 
-        ![Kábeles eszköz hátsó síkja](./media/azure-stack-edge-gpu-deploy-install/ase-three-pci-slots-one-gpu.png)
+        ![Kábeles eszköz hátsó síkja 2](./media/azure-stack-edge-gpu-deploy-install/ase-three-pci-slots-one-gpu.png)
 
     - Eszköz 3 PCI bővítőhelytel és két GPU-val
 
-        ![Kábeles eszköz hátsó síkja](./media/azure-stack-edge-gpu-deploy-install/ase-three-pci-slots-two-gpu.png)
+        ![Kábeles eszköz hátsó síkja 3](./media/azure-stack-edge-gpu-deploy-install/ase-three-pci-slots-two-gpu.png)
 
 2. Keresse meg a lemezes tárolóhelyeket és a főkapcsoló gombot az eszköz elején.
 
@@ -230,7 +230,7 @@ A következő lépésekkel csatlakoztassa az eszközt az áramellátáshoz és a
     - Ha a 2-es PORTOT csatlakoztatja, használja az 1-GbE RJ-45 hálózati kábelt.
     - A 10/25 GbE hálózati adapterek esetében használja az SFP + Copper kábeleket.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban megtanulta Azure Stack Edge Pro-témaköröket, például a következőket:
 

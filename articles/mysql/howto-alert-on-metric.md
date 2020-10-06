@@ -6,12 +6,12 @@ ms.author: andrela
 ms.service: mysql
 ms.topic: how-to
 ms.date: 3/18/2020
-ms.openlocfilehash: b7054b520d31c6c5363c8784bb9a4839e9249c88
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 3891d1730648fea3c480cd03921a76fe005c308f
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90902865"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91740054"
 ---
 # <a name="use-the-azure-portal-to-set-up-alerts-on-metrics-for-azure-database-for-mysql"></a>Az Azure Portal használatával riasztásokat állíthat be a metrikákkal kapcsolatban Azure Database for MySQL 
 
@@ -40,37 +40,25 @@ A riasztási szabályokkal kapcsolatos információkat a használatával konfigu
 
 4. Megnyílik a **szabály létrehozása** lap az alább látható módon. Adja meg a kötelező adatokat:
 
-   :::image type="content" source="./media/howto-alert-on-metric/4-add-rule-form.png" alt-text="Metrikus riasztási űrlap hozzáadása":::
-
-5. A **feltétel** szakaszban válassza a **feltétel hozzáadása**lehetőséget.
-
-6. Válasszon ki egy mérőszámot azon jelek listájáról, amelyekről riasztást szeretne kapni. Ebben a példában válassza a "tárolási százalék" lehetőséget.
+   :::image type="content" source="./media/howto-alert-on-metric/4-add-rule-form.png" alt-text="Riasztási szabályok kiválasztása" lehetőséget.
    
-   :::image type="content" source="./media/howto-alert-on-metric/6-configure-signal-logic.png" alt-text="Metrika kiválasztása":::
+   :::image type="content" source="./media/howto-alert-on-metric/6-configure-signal-logic.png" alt-text="Riasztási szabályok kiválasztása":::
 
 7. Konfigurálja a riasztási logikát, beleértve a **feltételt** (pl. "Nagyobb, mint"), **küszöbérték** (pl. 85 százalék), **időösszesítés**, **időtartam** a metrikai szabálynak meg kell felelnie a riasztási eseményindítók előtt (pl. "Az elmúlt 30 percben") és a **gyakoriság**.
    
    A Befejezés gombra kattintva válassza a **kész** lehetőséget.
 
-   :::image type="content" source="./media/howto-alert-on-metric/7-set-threshold-time.png" alt-text="Metrika kiválasztása":::
-
-8. A **műveleti csoportok** szakaszban válassza az **új létrehozása** lehetőséget egy új csoport létrehozásához, hogy értesítést kapjon a riasztásról.
-
-9. Töltse ki a "műveleti csoport hozzáadása" űrlapot névvel, rövid névvel, előfizetéssel és erőforráscsoporthoz.
-
-10. **E-mail/SMS/leküldéses/** hangműveletek típusának konfigurálása.
-    
-    Válassza az "e-mail-Azure Resource Manager szerepkör" lehetőséget az előfizetés-tulajdonosok, a közreműködők és az olvasók számára az értesítések fogadásához.
+   :::image type="content" source="./media/howto-alert-on-metric/7-set-threshold-time.png" alt-text="Riasztási szabályok kiválasztása" lehetőséget az előfizetés-tulajdonosok, a közreműködők és az olvasók számára az értesítések fogadásához.
    
     Szükség esetén adjon meg egy érvényes URI-t a **webhook** mezőben, ha azt szeretné, hogy a riasztás tüzek esetén legyen meghívva.
 
     Ha elkészült, kattintson **az OK gombra** .
 
-    :::image type="content" source="./media/howto-alert-on-metric/10-action-group-type.png" alt-text="Műveletcsoport":::
+    :::image type="content" source="./media/howto-alert-on-metric/10-action-group-type.png" alt-text="Riasztási szabályok kiválasztása":::
 
 11. Adja meg a riasztási szabály nevét, leírását és súlyosságát.
 
-    :::image type="content" source="./media/howto-alert-on-metric/11-name-description-severity.png" alt-text="Műveletcsoport"::: 
+    :::image type="content" source="./media/howto-alert-on-metric/11-name-description-severity.png" alt-text="Riasztási szabályok kiválasztása"::: 
 
 12. A riasztás létrehozásához válassza a **riasztási szabály létrehozása** lehetőséget.
 
@@ -84,6 +72,6 @@ Miután létrehozta a riasztást, kiválaszthatja, és elvégezheti a következ�
 * **Tiltsa le** vagy **engedélyezze** a riasztást, ha átmenetileg le kívánja állítani vagy folytatni szeretné az értesítések fogadását.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * További információ a [webhookok riasztásokban való konfigurálásáról](../azure-monitor/platform/alerts-webhooks.md).
 * [Tekintse át a metrikák gyűjteményét](../monitoring-and-diagnostics/insights-how-to-customize-monitoring.md) , és győződjön meg arról, hogy a szolgáltatás elérhető és rugalmas.

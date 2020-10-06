@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 07/11/2019
 ms.author: alkohli
-ms.openlocfilehash: 9df729277934e074e1e8cc92126e777336708586
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: dbdd4c7d23f56618c0e76649abe4faad86c5804c
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90904525"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743301"
 ---
 # <a name="open-a-support-ticket-for-azure-stack-edge-pro-and-azure-data-box-gateway"></a>Támogatási jegy megnyitása Azure Stack Edge Pro-hoz és Azure Data Box Gateway
 
@@ -39,7 +39,7 @@ Támogatási kérelem létrehozásához hajtsa végre a következő lépéseket:
     7. A kiválasztott probléma típusa alapján válasszon ki egy megfelelő **problémát altípust**.
     8. Válassza a **tovább lehetőséget: megoldások >>**.
 
-        ![Alapvető beállítások](./media/azure-stack-edge-contact-microsoft-support/data-box-edge-support-request-1.png)
+        ![Alapbeállítások](./media/azure-stack-edge-contact-microsoft-support/data-box-edge-support-request-1.png)
 
 3. A **részletek** lapon hajtsa végre a következő lépéseket:
 
@@ -59,7 +59,7 @@ Támogatási kérelem létrehozásához hajtsa végre a következő lépéseket:
 
 4. A **felülvizsgálat + létrehozás** lapon tekintse át a támogatási jegyhez kapcsolódó információkat. Kattintson a **Létrehozás** gombra. 
 
-    ![Probléma](./media/azure-stack-edge-contact-microsoft-support/data-box-edge-support-request-3.png)
+    ![2. probléma](./media/azure-stack-edge-contact-microsoft-support/data-box-edge-support-request-3.png)
 
     Miután létrehozta a támogatási jegyet, a támogatási szakember a lehető leghamarabb kapcsolatba lép Önnel, hogy folytassa a kérést.
 
@@ -96,7 +96,7 @@ A támogatási jegy létrehozása után a jegyet a teljes életciklusán kereszt
 
 3. Válasszon ki egy támogatási kérést, és kattintson rá. Megtekintheti a kérelem állapotát és részleteit. Ha ezt a kérést szeretné követni, kattintson az **+ új üzenet** elemre.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ismerje meg, hogyan lehet [elhárítani a Azure stack Edge Pro-val kapcsolatos problémákat](azure-stack-edge-troubleshoot.md).
 Ismerje meg, hogyan lehet [elhárítani a Data Box Gateway kapcsolatos problémákat](data-box-gateway-troubleshoot.md).

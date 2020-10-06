@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/09/2020
 ms.author: jeedes
-ms.openlocfilehash: 94b8a26a398ad8604a469486185d805fcbb6a8b2
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 43189d40c57ce6c300904207edc35011b0581ecc
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88545403"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91740448"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-bluejeans-for-azure-ad"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a BlueJeans for Azure AD-vel
 
@@ -101,7 +101,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. A fentiek mellett a BlueJeans alkalmazás néhány további attribútumot vár az SAML-válaszban, amelyek alább láthatók. Ezek az attribútumok előre fel vannak töltve, de a követelményeinek megfelelően áttekintheti őket.
 
-    | Name |  Forrás attribútum|
+    | Név |  Forrás attribútum|
     | ---------| --------- |
     | Telefon | User. telephoneNumber |
     | cím | User. beosztás |
@@ -124,7 +124,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Create** (Létrehozás) gombra.
+   1. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -150,7 +150,7 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 
 2. Lépjen a **felügyeleti \> csoport beállításai \> Biztonság**menüpontra.
 
-    ![Felügyelet](./media/bluejeans-tutorial/ic785868.png "Rendszergazda")
+    ![A képernyőképen egy böngészőablak része jelenik meg, amelyen a rendszergazda lap van kiválasztva, és a csoport beállítása és a biztonság elem van kiválasztva.](./media/bluejeans-tutorial/ic785868.png "Rendszergazda")
 
 3. A **Biztonság** szakaszban hajtsa végre a következő lépéseket:
 
@@ -192,14 +192,14 @@ Ennek a szakasznak a célja, hogy létrehozzon egy B. Simon nevű felhasználót
 
 2. Nyissa meg a **rendszergazda \> felhasználók \> hozzáadása felhasználót**.
 
-    ![Felügyelet](./media/bluejeans-tutorial/ic785877.png "Rendszergazda")
+    ![A képernyőfelvétel egy böngészőablak részét jeleníti meg a rendszergazda lapon, a felhasználók kezelése és a kiválasztott felhasználók hozzáadása lehetőséggel.](./media/bluejeans-tutorial/ic785877.png "Rendszergazda")
 
     > [!IMPORTANT]
     > A **felhasználó hozzáadása** lap csak akkor érhető el, ha a **biztonsági lapon**az **automatikus kiépítés engedélyezése** nincs bejelölve.
 
 3. A **felhasználó hozzáadása** szakaszban hajtsa végre a következő lépéseket:
 
-    ![Felhasználó hozzáadása](./media/bluejeans-tutorial/ic785886.png "Felhasználó hozzáadása")
+    ![Képernyőfelvétel: a felhasználó hozzáadása szakasz, ahol megadhatja az ebben a lépésben ismertetett információkat.](./media/bluejeans-tutorial/ic785886.png "Felhasználó hozzáadása")
 
     a. Az **Utónév** szövegmezőbe írja be a (z) " **B**" felhasználó utónevét.
 
@@ -219,7 +219,7 @@ Ennek a szakasznak a célja, hogy létrehozzon egy B. Simon nevű felhasználót
 
     i. Kattintson a **Folytatás**gombra.
 
-    ![Felhasználó hozzáadása](./media/bluejeans-tutorial/ic785887.png "Felhasználó hozzáadása")
+    ![Képernyőfelvétel: a felhasználó hozzáadása szakasz, ahol megtekintheti a beállításokat és a szolgáltatásokat, ha a felhasználó hozzáadása gomb van kiválasztva.](./media/bluejeans-tutorial/ic785887.png "Felhasználó hozzáadása")
 
     J. Kattintson a **felhasználó hozzáadása**elemre.
 

@@ -16,12 +16,12 @@ ms.date: 07/27/2020
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 99ebac32193f764059bea2a30b6ddbce879938a6
-ms.sourcegitcommit: c94a177b11a850ab30f406edb233de6923ca742a
+ms.openlocfilehash: 1a602405065a41cb26b2ae5303d12c45ed21616f
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89275923"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91741193"
 ---
 # <a name="troubleshoot-azure-active-directory-pass-through-authentication"></a>Az Azure Active Directory átmenő hitelesítésének hibaelhárítása
 
@@ -96,6 +96,7 @@ Ha a bérlőhöz prémium szintű Azure AD licenc van társítva, akkor a [bejel
 | 80007 | A hitelesítési ügynök nem tudott csatlakozni az Active Directory-hoz. | Ellenőrizze, hogy a Active Directory elérhető-e a hitelesítési ügynöktől.
 | 80010 | A hitelesítési ügynök nem tudta visszafejteni a jelszót. | Ha a probléma következetesen reprodukálható, telepítsen és regisztráljon egy új hitelesítési ügynököt. És távolítsa el a jelenlegit. 
 | 80011 | A hitelesítési ügynök nem tudta lekérni a visszafejtési kulcsot. | Ha a probléma következetesen reprodukálható, telepítsen és regisztráljon egy új hitelesítési ügynököt. És távolítsa el a jelenlegit.
+| 80014 | Az érvényesítési kérelem a maximális eltelt idő lejárta után válaszolt. | A hitelesítési ügynök időkorlátja lejárt. Nyisson meg egy támogatási jegyet a hibakódtal, a korrelációs AZONOSÍTÓval és az időbélyeggel, ha további részleteket szeretne kapni erről a hibáról
 
 >[!IMPORTANT]
 >Az átmenő hitelesítési ügynökök a [Win32 LOGONUSER API](/windows/win32/api/winbase/nf-winbase-logonusera)meghívásával hitelesítik az Azure ad-felhasználókat a felhasználónevek és a jelszavak Active Directory való ellenőrzésével. Ennek eredményeképpen, ha beállította a "Bejelentkezés a következőre" beállítást a Active Directory a munkaállomás bejelentkezési hozzáférésének korlátozásához, akkor az áteresztő hitelesítési ügynököket futtató kiszolgálókat is fel kell vennie a "Bejelentkezés" kiszolgálókra. Ha ezt nem teszi meg, azzal letiltja a felhasználók számára az Azure AD-ba való bejelentkezést.

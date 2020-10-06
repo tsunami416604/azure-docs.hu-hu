@@ -14,12 +14,12 @@ ms.tgt_pltfrm: NA
 ms.workload: NA
 ms.date: 11/21/2016
 ms.author: alkohli
-ms.openlocfilehash: dd82f7dd821991bbcf57cc7d8105575e0baa4d12
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: b6cc89cb082cd0ed32abd88e3a6683c60a27ba90
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87070693"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91742179"
 ---
 # <a name="clone-from-a-backup-of-your-storsimple-virtual-array"></a>Klónozás a StorSimple virtuális tömb biztonsági másolatából
 
@@ -44,7 +44,7 @@ Ez a cikk részletesen ismerteti a megosztások vagy kötetek biztonsági másol
    
    c.    Kattintson az **OK** gombra.
    
-   ![Biztonsági másolat klónozása](./media/storsimple-virtual-array-clone/cloneshare3.png)
+   ![Biztonsági másolat klónozása 2](./media/storsimple-virtual-array-clone/cloneshare3.png)
 3. A **klónozás** panelen kattintson a **cél beállítások** elemre, majd tegye a következőket:
    
    a.    Adja meg a megosztás nevét. A megosztás nevének 3-127 karaktert kell tartalmaznia.
@@ -59,13 +59,13 @@ Ez a cikk részletesen ismerteti a megosztások vagy kötetek biztonsági másol
    
    f.    Kattintson az **OK** gombra.
    
-   ![Biztonsági másolat klónozása](./media/storsimple-virtual-array-clone/cloneshare6.png)
+   ![Biztonsági másolat klónozása 3](./media/storsimple-virtual-array-clone/cloneshare6.png)
 
 4. A klónozott feladatok elindításához kattintson a **klónozás** elemre. A feladatok befejezése után elindul a klónozási művelet, és értesítést kap. A klónozás állapotának figyeléséhez lépjen a **feladatok** panelre, és kattintson a feladatra a feladat részleteinek megtekintéséhez.
 5. A klón sikeres létrehozása után váltson vissza az eszköz **megosztások** paneljére.
 6. Most már megtekintheti az új klónozott megosztást az eszközön található megosztások listájában. A többplatformos megosztások klónozottként vannak beosztva, és helyileg rögzített megosztásként, helyileg rögzített megosztásként.
    
-   ![Biztonsági másolat klónozása](./media/storsimple-virtual-array-clone/cloneshare10.png)
+   ![Biztonsági másolat klónozása 4](./media/storsimple-virtual-array-clone/cloneshare10.png)
 
 ## <a name="clone-volumes-from-a-backup-set"></a>Kötetek klónozása biztonságimásolat-készletből
 
@@ -84,7 +84,7 @@ A biztonsági másolatból való klónozáshoz a Azure Portal a megosztás klón
    
    c.    Kattintson az **OK** gombra.
    
-   ![Biztonsági másolat klónozása](./media/storsimple-virtual-array-clone/clonevolume3.png)
+   ![2. kötet klónozása](./media/storsimple-virtual-array-clone/clonevolume3.png)
 3. A **klónozás** panelen kattintson a **cél kötet beállításai** lehetőségre, majd tegye a következőket:
    
    a. Az eszköz neve automatikusan kitöltődik.
@@ -95,16 +95,16 @@ A biztonsági másolatból való klónozáshoz a Azure Portal a megosztás klón
    
    d. A **csatlakoztatott gazdagépek**esetében kattintson a **kiválasztás**elemre.
    
-   ![Biztonsági másolat klónozása](./media/storsimple-virtual-array-clone/clonevolume4.png)
-4. A **csatlakoztatott gazdagépek** panelen válasszon egy meglévő ACR közül, vagy adjon hozzá egy új ACR-t. Új ACR hozzáadásához meg kell adnia egy ACR-nevet és a gazdagép IQN. Válassza a **Kiválasztás** lehetőséget.
+   ![3. kötet klónozása](./media/storsimple-virtual-array-clone/clonevolume4.png)
+4. A **csatlakoztatott gazdagépek** panelen válasszon egy meglévő ACR közül, vagy adjon hozzá egy új ACR-t. Új ACR hozzáadásához meg kell adnia egy ACR-nevet és a gazdagép IQN. Kattintson a **Kiválasztás** elemre.
    
-   ![Biztonsági másolat klónozása](./media/storsimple-virtual-array-clone/clonevolume5.png)
+   ![4. kötet klónozása](./media/storsimple-virtual-array-clone/clonevolume5.png)
 5. A klónozott feladatok elindításához kattintson a **klónozás** elemre.
    
-   ![Biztonsági másolat klónozása](./media/storsimple-virtual-array-clone/clonevolume6.png)  
+   ![5. kötet klónozása](./media/storsimple-virtual-array-clone/clonevolume6.png)  
 6. A klónozási feladatok létrehozása után elindul a klónozás. A klón létrehozása után megjelenik az eszköz kötetek paneljén. Vegye figyelembe, hogy a többkötetes kötetek klónozása lépcsőzetesen történik, a helyileg rögzített kötetek pedig helyileg rögzített kötetként vannak klónozottak.
    
-   ![Biztonsági másolat klónozása](./media/storsimple-virtual-array-clone/clonevolume8.png)
+   ![6. kötet klónozása](./media/storsimple-virtual-array-clone/clonevolume8.png)
 7. Ha a kötet megjelenik a kötetek listáján, a kötet elérhetővé válik. Az iSCSI-kezdeményező gazdagépen frissítse a célok listáját az iSCSI-kezdeményező tulajdonságai ablakban. A klónozott kötet nevét tartalmazó új cél "inaktívként" jelenik meg az Állapot oszlopban.
 8. Válassza ki a célt, és kattintson a **kapcsolat**elemre. Miután a kezdeményező csatlakozott a célhoz, az állapotnak **csatlakoztatva**értékre kell váltania.
 9. A **Lemezkezelés** ablakban a csatlakoztatott kötetek az alábbi ábrán látható módon jelennek meg. Kattintson a jobb gombbal a felderített kötetre (kattintson a lemez nevére), majd kattintson az **Online** elemre.

@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 1fa464eca69f50fba7fa125212b85e0f7f63bcc9
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.date: 10/05/2020
+ms.openlocfilehash: 60c5051b403d3072292a03c60d7cba95bd0cf1d7
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89294781"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91740632"
 ---
 # <a name="create-and-manage-api-keys-for-an-azure-cognitive-search-service"></a>Azure Cognitive Search-szolgáltatás API-kulcsainak létrehozása és kezelése
 
@@ -21,7 +21,7 @@ A keresési szolgáltatásnak küldött összes kérelemnek egy írásvédett AP
 
 A kulcsok a szolgáltatás kiépítés során jönnek létre a keresési szolgáltatással. A [Azure Portalban](https://portal.azure.com)megtekintheti és beszerezheti a kulcs értékeit.
 
-![Portál lap, beállítások beolvasása, kulcsok szakasz](media/search-manage/azure-search-view-keys.png)
+:::image type="content" source="media/search-manage/azure-search-view-keys.png" alt-text="Portál lap, beállítások beolvasása, kulcsok szakasz" border="false":::
 
 ## <a name="what-is-an-api-key"></a>Mi az API-kulcs?
 
@@ -29,7 +29,7 @@ Az API-Key egy véletlenszerűen generált számokból és betűkből álló kar
 
 A keresési szolgáltatás eléréséhez két típusú kulcs használható: admin (olvasás és írás) és lekérdezés (csak olvasható).
 
-|Kulcs|Description|Korlátok|  
+|Kulcs|Leírás|Korlátok|  
 |---------|-----------------|------------|  
 |Rendszergazda|Minden művelethez teljes körű jogosultságot biztosít, beleértve a szolgáltatás felügyeletének képességét, indexek létrehozását és törlését, indexelő és adatforrásokat.<br /><br /> A szolgáltatás létrehozásakor két, a portál *elsődleges* és *másodlagos* kulcsának nevezett rendszergazdai kulcs jön létre, és igény szerint egyénileg újragenerálható. A két kulcs lehetővé teszi egy kulcs átadását, miközben a második kulcsot használja a szolgáltatás folyamatos eléréséhez.<br /><br /> A rendszergazdai kulcsok csak a HTTP-kérések fejlécében vannak megadva. A felügyeleti API-kulcs nem helyezhető el egy URL-címben.|Maximum 2/szolgáltatás|  
 |Lekérdezés|Csak olvasási hozzáférést biztosít az indexekhez és a dokumentumokhoz, és általában a keresési kérelmeket kibocsátó ügyfélalkalmazások számára történik.<br /><br /> A lekérdezési kulcsok igény szerint jönnek létre. Ezeket manuálisan is létrehozhatja a portálon vagy programozott módon a [felügyeleti REST API](/rest/api/searchmanagement/)használatával.<br /><br /> A lekérdezési kulcsok a keresés, javaslat vagy keresési művelet HTTP-kérelem fejlécében adhatók meg. Azt is megteheti, hogy a lekérdezési kulcsot paraméterként adja át egy URL-címben. Attól függően, hogy az ügyfélalkalmazás hogyan fogalmazza meg a kérést, könnyebb lehet átadni a kulcsot lekérdezési paraméterként:<br /><br /> `GET /indexes/hotels/docs?search=*&$orderby=lastRenovationDate desc&api-version=2020-06-30&api-key=[query key]`|50/szolgáltatás|  
@@ -47,7 +47,7 @@ A hozzáférési kulcsokat a portálon vagy a [felügyeleti REST API](/rest/api/
 2. Az előfizetéshez tartozó [keresési szolgáltatások](https://portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.Search%2FsearchServices)  listázása.
 3. Válassza ki a szolgáltatást, és az Áttekintés lapon kattintson a **Beállítások**  > **kulcsok** elemre a felügyeleti és a lekérdezési kulcsok megtekintéséhez.
 
-   ![Portál lap, beállítások megtekintése, kulcsok szakasz](media/search-security-overview/settings-keys.png)
+   :::image type="content" source="media/search-security-overview/settings-keys.png" alt-text="Portál lap, beállítások beolvasása, kulcsok szakasz" border="false":::
 
 ## <a name="create-query-keys"></a>Lekérdezési kulcsok létrehozása
 
@@ -61,7 +61,7 @@ Az ügyfélalkalmazások hozzáférésének és műveleteinek korlátozása elen
 4. Kattintson a **lekérdezési kulcsok kezelése**lehetőségre.
 5. Használja a szolgáltatáshoz már létrehozott lekérdezési kulcsot, vagy hozzon létre akár 50 új lekérdezési kulcsot. Az alapértelmezett lekérdezési kulcs neve nem, de a kezelhetőséghez további lekérdezési kulcsok is megtekinthetők.
 
-   ![Lekérdezési kulcs létrehozása vagy használata](media/search-security-overview/create-query-key.png) 
+   :::image type="content" source="media/search-security-overview/create-query-key.png" alt-text="Portál lap, beállítások beolvasása, kulcsok szakasz" border="false":::
 
 > [!Note]
 > A lekérdezési kulcs használatát bemutató példa a [C# nyelven elérhető Azure Cognitive Search index lekérdezésében](./search-get-started-dotnet.md)található.

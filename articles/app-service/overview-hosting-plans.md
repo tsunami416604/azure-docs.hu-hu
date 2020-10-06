@@ -4,14 +4,14 @@ description: Megtudhatja, hogy App Service csomagok hogyan működnek a Azure Ap
 keywords: App Service, Azure app Service, skálázás, skálázható, méretezhetőség, app Service-csomag, app Service-díj
 ms.assetid: dea3f41e-cf35-481b-a6bc-33d7fc9d01b1
 ms.topic: article
-ms.date: 08/12/2020
+ms.date: 10/01/2020
 ms.custom: seodec18
-ms.openlocfilehash: f30221de81b6bef199c0a25e770558c4db8c4006
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.openlocfilehash: 4c3003a5cbb55464f3a089c3045ac28f3786cb6b
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88958512"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91742973"
 ---
 # <a name="azure-app-service-plan-overview"></a>Az Azure App Service-csomagok áttekintése
 
@@ -22,32 +22,32 @@ Ha egy App Service tervet hoz létre egy bizonyos régióban (például Nyugat-E
 - Régió (USA nyugati régiója, USA keleti régiója, stb.)
 - Virtuálisgép-példányok száma
 - Virtuálisgép-példányok mérete (kicsi, közepes, nagy)
-- Díjszabási szint (ingyenes, közös, alapszintű, standard, prémium, PremiumV2, elkülönített)
+- Díjszabási szint (ingyenes, közös, alapszintű, standard, prémium, PremiumV2, PremiumV3, elkülönített)
 
 Egy App Service-csomag _díjszabási szintje_ határozza meg, hogy milyen app Service funkciókat kap, és mennyit fizet a csomagért. A tarifacsomagok a következő kategóriákba sorolhatók:
 
 - **Megosztott számítás**: az **ingyenes** és a **közös**, a két alapszintű alkalmazás ugyanazon az Azure-beli virtuális gépen futtatja az alkalmazást, mint a többi app Service alkalmazást, beleértve a más ügyfelek alkalmazásait is. Ezek a csomagok CPU-kvótákat rendelnek mindegyik, a közös erőforrásokon futó alkalmazáshoz, és ezek az erőforrások nem skálázhatóak fel horizontálisan.
-- **Dedikált számítás** **: az alapszintű**, **standard**, **prémium**és **PremiumV2** szinteken a dedikált Azure-beli virtuális gépeken futó alkalmazások futnak. A számítási erőforrások elosztása csak az ugyanabban az App Service-csomagban lévő alkalmazások között történik. Minél magasabb szintű a csomag, annál több virtuálisgép-példány áll rendelkezésére a horizontális felskálázáshoz.
+- **Dedikált számítás**: az **alapszintű**, a **standard**, a **prémium**, a **PremiumV2**és a **PremiumV3** csomag alkalmazások futtatása dedikált Azure-beli virtuális gépeken. A számítási erőforrások elosztása csak az ugyanabban az App Service-csomagban lévő alkalmazások között történik. Minél magasabb szintű a csomag, annál több virtuálisgép-példány áll rendelkezésére a horizontális felskálázáshoz.
 - **Elkülönített**: Ez a szintű dedikált Azure-beli virtuális gépeket futtat dedikált Azure-beli virtuális hálózatokon. Hálózati elkülönítést biztosít az alkalmazások számára a számítási elkülönítésen. Ez a szint biztosítja a legnagyobb horizontális felskálázási lehetőségeket.
 
 [!INCLUDE [app-service-dev-test-note](../../includes/app-service-dev-test-note.md)]
 
 Az egyes szintek a App Service szolgáltatások egy adott részhalmazát is biztosítják. Ezek a szolgáltatások egyéni tartományokat és TLS/SSL-tanúsítványokat, automatikus skálázást, üzembe helyezési pontokat, biztonsági másolatokat, Traffic Manager integrációt és egyebeket tartalmaznak. Minél magasabb a szintet, annál több funkció érhető el. Ha szeretné megtudni, hogy mely funkciók támogatottak az egyes díjszabási szinten, tekintse meg a [app Service csomag részleteit](https://azure.microsoft.com/pricing/details/app-service/plans/).
 
-<a name="new-pricing-tier-premiumv2"></a>
+<a name="new-pricing-tier-premiumv3"></a>
 
 > [!NOTE]
-> Az új **PremiumV2** -díjszabási csomag [Dv2 sorozatú virtuális gépeket](../virtual-machines/dv2-dsv2-series.md) biztosít, amelyek gyorsabb processzorokkal, SSD-tárolóval, valamint a **standard** szinthez képest kétszeres memória-mag aránnyal rendelkeznek. A **PremiumV2** a megnövelt példányszámot is támogatja, miközben továbbra is biztosítja a standard csomagban található összes speciális funkciót. A meglévő **prémium** szinten elérhető összes funkció a **PremiumV2**részét képezi.
+> Az új **PremiumV3** díjszabási csomag a **standard** szinthez képest a [Dv3 sorozatú virtuális GÉPEKet](../virtual-machines/dv3-dsv3-series.md) , valamint az SSD-tárolást és a négyszeres memória-mag arányt garantálja. A **PremiumV3** a megnövelt példányszámot is támogatja, miközben továbbra is biztosítja a **standard** szinten található összes speciális funkciót. A meglévő **PremiumV2** -szinten elérhető összes funkció a **PremiumV3**része.
 >
 > A többi dedikált platformhoz hasonlóan három virtuálisgép-méret érhető el ehhez a platformhoz:
 >
-> - Kicsi (egy CPU mag, 3,5 GiB memória) 
-> - Közepes (két CPU-mag, 7 GiB memória) 
-> - Nagyméretű (négy CPU-mag, 14 GiB memória)  
+> - Kicsi (2 CPU mag, 8 GiB memória) 
+> - Közepes (4 CPU-mag, 16 GiB memória) 
+> - Nagyméretű (8 CPU mag, 32 GiB memória)  
 >
-> A **PremiumV2** díjszabásával kapcsolatos információkért lásd: [app Service díjszabása](https://azure.microsoft.com/pricing/details/app-service/).
+> A **PremiumV3** díjszabásával kapcsolatos információkért lásd: [app Service díjszabása](https://azure.microsoft.com/pricing/details/app-service/).
 >
-> Az új **PremiumV2** -díjszabási csomag megkezdéséhez lásd: PremiumV2-csomag [konfigurálása app Servicehoz](app-service-configure-premium-tier.md).
+> Az új **PremiumV3** -díjszabási csomag megkezdéséhez lásd: PremiumV3-csomag [konfigurálása app Servicehoz](app-service-configure-premium-tier.md).
 
 ## <a name="how-does-my-app-run-and-scale"></a>Hogyan fut és méretezhető az alkalmazásom?
 
@@ -68,7 +68,7 @@ Ez a szakasz azt ismerteti, hogyan történik a App Service alkalmazások száml
 Az **ingyenes** csomag kivételével az App Service-csomagok díjat számítunk fel az általa használt számítási erőforrásokért.
 
 - A **megosztott** szinten az egyes alkalmazások CPU-percenként kapják meg a kvótát, így _minden alkalmazás_ díja a CPU-kvóta.
-- A dedikált számítási rétegek (**Alapszintű**, **standard**, **prémium**, **PremiumV2**) esetében az App Service-csomag határozza meg, hogy hány virtuálisgép-példányra méretezhetők az alkalmazások, így a app Service csomag minden virtuálisgép- _példánya_ díjköteles. Ezek a virtuálisgép-példányok ugyanarra a számlára vonatkoznak, függetlenül attól, hogy hány alkalmazás fut rajtuk. A váratlan költségek elkerülése érdekében lásd: [app Service terv tisztítása](app-service-plan-manage.md#delete).
+- A dedikált számítási rétegek (**Alapszintű**, **standard**, **Premium**, **PremiumV2**, **PremiumV3**) esetében az App Service-csomag határozza meg, hogy hány virtuálisgép-példányra méretezhető az alkalmazások, így a app Service csomag minden virtuálisgép- _példánya_ díjköteles. Ezek a virtuálisgép-példányok ugyanarra a számlára vonatkoznak, függetlenül attól, hogy hány alkalmazás fut rajtuk. A váratlan költségek elkerülése érdekében lásd: [app Service terv tisztítása](app-service-plan-manage.md#delete).
 - Az **elkülönített** szinten a app Service Environment meghatározza az alkalmazásokat futtató elkülönített _munkavégzők számát, és minden feldolgozót_ felszámítunk. Emellett a App Service Environment futtatásához is van egy egyszerű Stamp-díj.
 
 Nem számítunk fel díjat az Ön számára elérhető App Service szolgáltatások (egyéni tartományok, TLS/SSL-tanúsítványok, üzembe helyezési pontok, biztonsági másolatok stb.) használatára. A kivételek a következők:

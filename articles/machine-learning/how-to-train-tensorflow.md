@@ -10,12 +10,12 @@ author: mx-iao
 ms.date: 09/28/2020
 ms.topic: conceptual
 ms.custom: how-to
-ms.openlocfilehash: 618889f40816ec8ccc64487778bf1f6fbdd3b886
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 21a0672db5a7038fbcdeb01e4cf07bcd760cf7ef
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91536545"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91742995"
 ---
 # <a name="train-tensorflow-models-at-scale-with-azure-machine-learning"></a>TensorFlow-modellek betanítása méretekben Azure Machine Learning
 
@@ -127,45 +127,10 @@ A számítási célokkal kapcsolatos további információkért tekintse meg a [
 
 ### <a name="define-your-environment"></a>A környezet meghatározása
 
-Ha meg szeretné határozni, hogy melyik Azure ML- [környezet](concept-environments.md) tartalmazza a betanítási parancsfájl függőségeit, definiálhat egyéni környezetet, vagy használhatja az Azure ml-t.
-
-#### <a name="create-a-custom-environment"></a>Egyéni környezet létrehozása
-
-Adja meg azt az Azure ML-környezetet, amely magában foglalja a betanítási parancsfájl függőségeit.
-
-Először határozza meg a Conda függőségeit egy YAML-fájlban; Ebben a példában a fájl neve `conda_dependencies.yml` .
-
-```yaml
-channels:
-- conda-forge
-dependencies:
-- python=3.6.2
-- pip:
-  - azureml-defaults
-  - tensorflow-gpu==2.2.0
-```
-
-Hozzon létre egy Azure ML-környezetet ebből a Conda-környezeti specifikációból. A környezet egy Docker-tárolóba lesz csomagolva futásidőben.
-
-Alapértelmezés szerint, ha nincs megadva alaprendszerkép, az Azure ML egy CPU-rendszerképet fog használni `azureml.core.runconfig.DEFAULT_CPU_IMAGE` az alaprendszerképként. Mivel ez a példa egy GPU-fürtön futtatja a képzést, meg kell adnia egy GPU-alapú alapképet, amely rendelkezik a szükséges GPU-illesztővel és-függőségekkel. Az Azure ML a Microsoft Container Registry (MCR) szolgáltatásban közzétett alaplemezképek készletét tartja fenn. További információért tekintse meg az [Azure/AzureML-containers GitHub-](https://github.com/Azure/AzureML-Containers) tárházat.
-
-```python
-from azureml.core import Environment
-
-tf_env = Environment.from_conda_specification(name='tensorflow-2.2-gpu', file_path='./conda_dependencies.yml')
-
-# Specify a GPU base image
-tf_env.docker.enabled = True
-tf_env.docker.base_image = 'mcr.microsoft.com/azureml/openmpi3.1.2-cuda10.1-cudnn7-ubuntu18.04'
-```
-
-> [!TIP]
-> Igény szerint egyszerűen rögzítheti az összes függőségét egy egyéni Docker-rendszerképben vagy Docker, és létrehozhatja a környezetét. További információ: [a betanítás egyéni rendszerképpel](how-to-train-with-custom-image.md).
-
-További információ a környezetek létrehozásáról és használatáról: [szoftverek környezetének létrehozása és használata Azure Machine Learningban](how-to-use-environments.md).
+Ha meg szeretné határozni, hogy melyik Azure ML- [környezet](concept-environments.md) tartalmazza a betanítási parancsfájl függőségeit, definiálhat egy egyéni környezetet, vagy használhat egy Azure ml-alapú kurátori környezetet.
 
 #### <a name="use-a-curated-environment"></a>Kurátori környezet használata
-Ha nem szeretné, hogy a saját rendszerképe ne legyen létrehozva, az Azure ML-ben előre összeállított, kiépített környezetek is elérhetők. Az Azure ML több PROCESSZORral és GPU-val rendelkező környezettel rendelkezik a TensorFlow különböző verzióihoz tartozó TensorFlow. További információ: [itt](resource-curated-environments.md).
+Az Azure ML-ben előre elkészített, kiépített környezetek is elérhetők, ha nem szeretné saját környezetét meghatározni. Az Azure ML több PROCESSZORral és GPU-val rendelkező környezettel rendelkezik a TensorFlow különböző verzióihoz tartozó TensorFlow. További információ: [itt](resource-curated-environments.md).
 
 Ha egy kurátori környezetet szeretne használni, a következő parancsot futtathatja inkább:
 
@@ -188,6 +153,41 @@ Ha ehelyett közvetlenül módosította a kurátori környezet objektumát, akko
 ```python
 tf_env = tf_env.clone(new_name='tensorflow-2.2-gpu')
 ```
+
+#### <a name="create-a-custom-environment"></a>Egyéni környezet létrehozása
+
+Létrehozhatja saját Azure ML-környezetét is, amely magában foglalja a betanítási parancsfájl függőségeit.
+
+Először határozza meg a Conda függőségeit egy YAML-fájlban; Ebben a példában a fájl neve `conda_dependencies.yml` .
+
+```yaml
+channels:
+- conda-forge
+dependencies:
+- python=3.6.2
+- pip:
+  - azureml-defaults
+  - tensorflow-gpu==2.2.0
+```
+
+Hozzon létre egy Azure ML-környezetet ebből a Conda-környezeti specifikációból. A környezet egy Docker-tárolóba lesz csomagolva futásidőben.
+
+Alapértelmezés szerint, ha nincs megadva alaprendszerkép, az Azure ML egy CPU-rendszerképet fog használni `azureml.core.environment.DEFAULT_CPU_IMAGE` az alaprendszerképként. Mivel ez a példa egy GPU-fürtön futtatja a képzést, meg kell adnia egy GPU-alapú alapképet, amely rendelkezik a szükséges GPU-illesztővel és-függőségekkel. Az Azure ML a Microsoft Container Registry (MCR) szolgáltatásban közzétett alaplemezképek készletét tartja fenn. További információért tekintse meg az [Azure/AzureML-containers GitHub-](https://github.com/Azure/AzureML-Containers) tárházat.
+
+```python
+from azureml.core import Environment
+
+tf_env = Environment.from_conda_specification(name='tensorflow-2.2-gpu', file_path='./conda_dependencies.yml')
+
+# Specify a GPU base image
+tf_env.docker.enabled = True
+tf_env.docker.base_image = 'mcr.microsoft.com/azureml/openmpi3.1.2-cuda10.1-cudnn7-ubuntu18.04'
+```
+
+> [!TIP]
+> Igény szerint egyszerűen rögzítheti az összes függőségét egy egyéni Docker-rendszerképben vagy Docker, és létrehozhatja a környezetét. További információ: [a betanítás egyéni rendszerképpel](how-to-train-with-custom-image.md).
+
+További információ a környezetek létrehozásáról és használatáról: [szoftverek környezetének létrehozása és használata Azure Machine Learningban](how-to-use-environments.md).
 
 ## <a name="configure-and-submit-your-training-run"></a>A betanítási Futtatás konfigurálása és elküldése
 

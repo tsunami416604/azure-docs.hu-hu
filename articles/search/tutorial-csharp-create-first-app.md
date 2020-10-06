@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 09/30/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2ddd93341bacea039a40c56a6ed7e36f439e137b
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.openlocfilehash: 23cf7cdb75f1889f58cec152b1b520deac3f6839
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91667383"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91740615"
 ---
 # <a name="tutorial-create-your-first-search-app-using-the-net-sdk"></a>Oktatóanyag: az első keresőalkalmazás létrehozása a .NET SDK használatával
 
@@ -569,7 +569,7 @@ Vegye figyelembe az alábbi elvihetőket a projektből:
 * Az aszinkron hívások kis bonyolultságot adhatnak a vezérlőhöz, de az ajánlott eljárás, ha minőségi alkalmazásokat szeretne fejleszteni.
 * Az alkalmazás egyszerű szöveges keresést hajtott végre, amelyet a **searchOptions**-ben beállított beállítások határoznak meg. Ez az osztály azonban számos olyan taggal feltölthető, amely kifinomultságot ad a kereséshez. Nem sok további munka szükséges ahhoz, hogy ez az alkalmazás lényegesen nagyobb teljesítményű legyen.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A felhasználói élmény javítása érdekében vegyen fel további funkciókat, például a lapozást (oldalszámok vagy végtelen görgetés használatával), valamint az automatikus kiegészítés/javaslatok lehetőséget. Összetettebb keresési lehetőségeket is megvizsgálhat (például a földrajzi keresést egy adott pont egy adott sugarán belül, a keresési eredmények sorrendje alapján).
 

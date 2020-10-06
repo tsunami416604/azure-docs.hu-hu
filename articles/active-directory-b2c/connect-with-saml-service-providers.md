@@ -8,16 +8,16 @@ manager: celestedg
 ms.service: active-directory
 ms.workload: identity
 ms.topic: how-to
-ms.date: 09/09/2020
+ms.date: 10/05/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: fasttrack-edit
-ms.openlocfilehash: 09edfc91f98e51a7dce7e98b48f2970ccba33586
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.openlocfilehash: 9e67f24cf670024432f64487df20b9fca515c006
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89611606"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91740377"
 ---
 # <a name="register-a-saml-application-in-azure-ad-b2c"></a>SAML-alkalmazás regisztrálása Azure AD B2C
 
@@ -36,7 +36,7 @@ Azure AD B2C az SAML együttműködési képességet kétféleképpen éri el:
 
 A két nem kizárólagos alapszintű forgatókönyvek összefoglalása az SAML használatával:
 
-| Forgatókönyv | Azure AD B2C szerepkör | Használati útmutató |
+| Használati eset | Azure AD B2C szerepkör | Használati útmutató |
 | -------- | ----------------- | ------- |
 | Az alkalmazás egy SAML-állítást vár a hitelesítés elvégzéséhez. | **Azure AD B2C identitás-szolgáltatóként (identitásszolgáltató) működik**<br />Azure AD B2C SAML-identitásszolgáltató viselkedik az alkalmazásokban. | Ez a cikk. |
 | A felhasználóknak egyszeri bejelentkezésre van szükségük egy SAML-kompatibilis identitás-szolgáltatóval, például az ADFS, a Salesforce vagy a Shibboleth.  | **Azure AD B2C szolgáltatóként működik (SP)**<br />A Azure AD B2C szolgáltatóként működik, amikor az SAML-identitás szolgáltatóhoz csatlakozik. Ez egy összevonási proxy az alkalmazás és a SAML-identitás szolgáltatója között.  | <ul><li>[Bejelentkezés beállítása SAML-identitásszolgáltató az ADFS-ben egyéni szabályzatok használatával](identity-provider-adfs2016-custom.md)</li><li>[Bejelentkezés beállítása Salesforce SAML-szolgáltatóval egyéni szabályzatok használatával](identity-provider-salesforce-custom.md)</li></ul> |
@@ -253,6 +253,9 @@ A végleges függő entitás házirend-fájljának a következőhöz hasonlóan 
 </TrustFrameworkPolicy>
 ```
 
+> [!NOTE]
+> Más típusú felhasználói folyamatok (például a bejelentkezés, a jelszó-visszaállítás vagy a profil szerkesztése) megvalósításakor a folyamat lényegében ugyanaz, mint az ebben a részben leírtak szerint. A fenti 4. lépésben a felhasználói utazás utolsó lépését fogja módosítani a verzióról a verzióra `JWTIssuer` `Saml2AssertionIssuer` . A fenti 6. lépésben pedig a függő entitás szakaszban a **protokollt** a verzióról a verzióra módosítja `OpenIdConnect` `SAML2` .
+
 ### <a name="32-upload-and-test-your-policy-metadata"></a>3,2 a szabályzat metaadatainak feltöltése és tesztelése
 
 Mentse a módosításokat, és töltse fel az új házirend-fájlt. Miután feltöltötte mindkét szabályzatot (a kiterjesztést és a függő entitás fájljait), nyisson meg egy webböngészőt, és navigáljon a szabályzat metaadataihoz.
@@ -435,7 +438,7 @@ A saját metaadat-végponton keresztül a következő, SAML-függő entitások (
 Jelenleg nem támogatottak a következő SAML-függő entitások (RP):
 * Az identitás-szolgáltató kezdeményezte a bejelentkezést, ahol az identitás szolgáltatója külső identitás-szolgáltató, például ADFS.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információt az [SAML-protokollról az Oasis webhelyén](https://www.oasis-open.org/)talál.
 - Szerezze be az SAML-teszt webalkalmazást [Azure ad B2C GitHub közösségi](https://github.com/azure-ad-b2c/saml-sp-tester)adattárból.

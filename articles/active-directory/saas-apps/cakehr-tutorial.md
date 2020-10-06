@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/16/2019
 ms.author: jeedes
-ms.openlocfilehash: 2884302ae636739243e0277fa49ef6889b077c86
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 8464d8918ccb6351de06dcba9a355e93c2cd97cd
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547596"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91740343"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cakehr"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a CakeHR
 
@@ -108,7 +108,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Create** (Létrehozás) gombra.
+   1. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -142,11 +142,11 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 1. A lap jobb felső sarkában kattintson a **profil** elemre, majd navigáljon a **Beállítások**pontra.
 
-    ![CakeHR-konfiguráció](./media/cakehr-tutorial/config01.png)
+    ![Képernyőfelvétel: a kiválasztott beállításokkal rendelkező profilt jeleníti meg.](./media/cakehr-tutorial/config01.png)
 
 1. A menüsáv bal oldalán kattintson az **integráció**  >  **SAML SSO** elemre, és hajtsa végre a következő lépéseket:
 
-    ![CakeHR-konfiguráció](./media/cakehr-tutorial/config02.png)
+    ![Képernyőfelvétel: a beállítások ablaktábla, ahol elvégezheti ezeket a lépéseket.](./media/cakehr-tutorial/config02.png)
 
     a. Az **entitás-azonosító** szövegmezőbe írja be a következőt: `cake.hr` .
 
@@ -168,11 +168,11 @@ Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a Ca
 
 2. A menüsáv bal oldalán kattintson a **vállalati**  >  **Hozzáadás**elemre.
 
-    ![CakeHR-konfiguráció](./media/cakehr-tutorial/config03.png)
+    ![Képernyőfelvétel: a CakeHR a VÁLLALATtal és a kijelölt hozzáadása.](./media/cakehr-tutorial/config03.png)
 
 3. Az **új alkalmazott hozzáadása** felugró ablakban végezze el a következő lépéseket:
 
-     ![CakeHR-konfiguráció](./media/cakehr-tutorial/config04.png)
+     ![Képernyőfelvétel: új alkalmazott hozzáadása, ahol elvégezheti ezeket a lépéseket.](./media/cakehr-tutorial/config04.png)
 
     a. A **teljes név** szövegmezőbe írja be a felhasználó nevét, például: B. Simon.
 

@@ -1,14 +1,14 @@
 ---
 title: Gyakori hibák elhárítása
 description: Ismerje meg, hogy miként lehet elhárítani a szabályzat-definíciókat, a különböző SDK-t és a Kubernetes bővítményét.
-ms.date: 08/17/2020
+ms.date: 10/05/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: d4ede1703df922196c89a4c1ca4f37cbc95a6297
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 6026dc75187c8a70203a2484380eed70d519599d
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88545539"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743437"
 ---
 # <a name="troubleshoot-errors-using-azure-policy"></a>Hibák elhárítása a Azure Policy használatával
 
@@ -52,7 +52,7 @@ Az új szabályzatok vagy kezdeményezési hozzárendelések alkalmazása körü
 
 Először is várjon, amíg az értékelés befejeződik, és a megfelelőségi eredmények elérhetővé válnak Azure Portal vagy SDK-ban. Ha Azure PowerShell vagy REST API használatával szeretne új értékelési vizsgálatot kezdeni, tekintse [meg az igény szerinti értékelés vizsgálatát](../how-to/get-compliance-data.md#on-demand-evaluation-scan)ismertető témakört.
 
-### <a name="scenario-evaluation-not-as-expected"></a>Forgatókönyv: a kiértékelés nem a várt módon történik
+### <a name="scenario-compliance-not-as-expected"></a>Forgatókönyv: nem a várt megfelelőség
 
 #### <a name="issue"></a>Probléma
 
@@ -64,10 +64,21 @@ Az erőforrás nem a megfelelő hatókörben van a házirend-hozzárendeléshez,
 
 #### <a name="resolution"></a>Feloldás
 
-- Egy nem megfelelő erőforráshoz, amelynek a megfelelőségét várták, a meg [nem felelés okainak meghatározásával](../how-to/determine-non-compliance.md)kezdheti meg. A definíció és a kiértékelt tulajdonság értékének összehasonlítása azt jelzi, hogy az erőforrás miért nem megfelelő.
-- A nem megfelelőnek minősülő megfelelő erőforrás esetén olvassa el a házirend-definíció feltételét, és értékelje ki az erőforrások tulajdonságait. Ellenőrizze, hogy a logikai operátorok a megfelelő feltételeket csoportosítják-e, és hogy a feltételek ne legyenek invertálva.
+A házirend-definíció hibaelhárításához kövesse az alábbi lépéseket:
 
-Ha a szabályzat-hozzárendelés megfelelősége `0/0` erőforrásokat mutat, a hozzárendelési hatókörön belül nem határoztak meg erőforrásokat. A házirend-definíciót és a hozzárendelési hatókört egyaránt ellenőriznie kell.
+1. Először is várjon, amíg az értékelés befejeződik, és a megfelelőségi eredmények elérhetővé válnak Azure Portal vagy SDK-ban. Ha Azure PowerShell vagy REST API használatával szeretne új értékelési vizsgálatot kezdeni, tekintse [meg az igény szerinti értékelés vizsgálatát](../how-to/get-compliance-data.md#on-demand-evaluation-scan)ismertető témakört.
+1. Győződjön meg arról, hogy a hozzárendelési paraméterek és a hozzárendelési hatókör helyesen van beállítva.
+1. A [házirend-definíciós mód](../concepts/definition-structure.md#mode)ellenõrzése:
+   - Az összes erőforrástípus "all" üzemmódja.
+   - Az "indexelt" mód, ha a házirend-definíció címkéket vagy helyet keres.
+1. Győződjön meg arról, hogy az erőforrás hatóköre nincs [kizárva](../concepts/assignment-structure.md#excluded-scopes) vagy [mentesített](../concepts/exemption-structure.md).
+1. Ha a szabályzat-hozzárendelés megfelelősége `0/0` erőforrásokat mutat, a hozzárendelési hatókörön belül nem határoztak meg erőforrásokat. A házirend-definíciót és a hozzárendelési hatókört egyaránt ellenőriznie kell.
+1. Ahhoz, hogy egy nem megfelelő erőforrást a megfelelőnek kellene lennie, vizsgálja meg a meg [nem felelés okainak megállapítását](../how-to/determine-non-compliance.md). A definíció és a kiértékelt tulajdonság értékének összehasonlítása azt jelzi, hogy az erőforrás miért nem megfelelő.
+   - Ha a **célként megadott érték** helytelen, módosítsa a házirend-definíciót.
+   - Ha az **aktuális érték** helytelen, ellenőrizze az erőforrás adattartalmát a használatával `resources.azure.com` .
+1. Tekintse meg a hibaelhárítást: a többi gyakori probléma és megoldás esetében [nem a várt módon érvényesíthető](#scenario-enforcement-not-as-expected) .
+
+Ha továbbra is problémája van a duplikált és testreszabott beépített szabályzat-definícióval vagy egyéni definícióval, hozzon létre egy támogatási jegyet a **szabályzat készítése** területen a probléma helyes átirányításához.
 
 ### <a name="scenario-enforcement-not-as-expected"></a>Forgatókönyv: a végrehajtás nem a várt módon történik
 
@@ -81,7 +92,18 @@ A házirend-hozzárendelés _le_lett állítva a [enforcementMode](../concepts/a
 
 #### <a name="resolution"></a>Feloldás
 
-Frissítse a **enforcementMode** az _engedélyezett_értékre. Ez a módosítás lehetővé teszi, hogy Azure Policy a szabályzat-hozzárendelés erőforrásaira, és bejegyzéseket küldjön a tevékenységi naplóba. Ha a **enforcementMode** már engedélyezve van, tekintse meg a következő témakört: [kiértékelés nem várt módon](#scenario-evaluation-not-as-expected) a tanfolyamok.
+A szabályzat-hozzárendelés kényszerítésének hibaelhárításához kövesse az alábbi lépéseket:
+
+1. Először is várjon, amíg az értékelés befejeződik, és a megfelelőségi eredmények elérhetővé válnak Azure Portal vagy SDK-ban. Ha Azure PowerShell vagy REST API használatával szeretne új értékelési vizsgálatot kezdeni, tekintse [meg az igény szerinti értékelés vizsgálatát](../how-to/get-compliance-data.md#on-demand-evaluation-scan)ismertető témakört.
+1. Győződjön meg arról, hogy a hozzárendelési paraméterek és a hozzárendelési hatókör helyesen van beállítva, és hogy a **EnforcementMode** _engedélyezve_van. 
+1. A [házirend-definíciós mód](../concepts/definition-structure.md#mode)ellenõrzése:
+   - Az összes erőforrástípus "all" üzemmódja.
+   - Az "indexelt" mód, ha a házirend-definíció címkéket vagy helyet keres.
+1. Győződjön meg arról, hogy az erőforrás hatóköre nincs [kizárva](../concepts/assignment-structure.md#excluded-scopes) vagy [mentesített](../concepts/exemption-structure.md).
+1. Ellenőrizze, hogy az erőforrás-tartalom megfelel-e a szabályzat logikájának. Ezt a [har-nyomkövetés rögzítésével](../../../azure-portal/capture-browser-trace.md) vagy az ARM-sablon tulajdonságainak áttekintésével végezheti el.
+1. Hibaelhárítás ellenőrzése: az egyéb gyakori problémák és megoldások esetében [nem a várt megfelelőség](#scenario-compliance-not-as-expected) .
+
+Ha továbbra is problémája van a duplikált és testreszabott beépített szabályzat-definícióval vagy egyéni definícióval, hozzon létre egy támogatási jegyet a **szabályzat készítése** területen a probléma helyes átirányításához.
 
 ### <a name="scenario-denied-by-azure-policy"></a>Forgatókönyv: Azure Policy megtagadva
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/21/2019
 ms.author: jeedes
-ms.openlocfilehash: 98740153def94742a8bbba1ee6f4f022b614ecfa
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 12c0647e0244464966c52bafe8c976eb4a35ddda
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88537107"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91741210"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-benselect"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a BenSelect
 
@@ -89,15 +89,15 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. A BenSelect alkalmazás egy adott formátumban várja az SAML-jogcímeket, ehhez pedig egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőképen az alapértelmezett attribútumok listája látható.
 
-    ![image](common/edit-attribute.png)
+    ![A képernyőképen az alapértelmezett attribútumokkal (például givenName user. givenName és EmailAddress user. mail) rendelkező felhasználói attribútumok láthatók.](common/edit-attribute.png)
 
 1. A **név azonosító értékének**szerkesztéséhez kattintson a **Szerkesztés** ikonra.
 
-    ![image](media/benselect-tutorial/mail-prefix1.png)
+    ![Képernyőfelvétel: a felhasználói attribútumok & a jogcímek ablaktábla, ahol a szerkesztési ikon látható.](media/benselect-tutorial/mail-prefix1.png)
 
 1. A **felhasználói jogcímek kezelése** szakaszban hajtsa végre a következő lépéseket:
 
-    ![image](media/benselect-tutorial/mail-prefix2.png)
+    ![Képernyőfelvétel: a felhasználói jogcímek kezelése, ahol megadhatja az ebben a lépésben ismertetett értékeket.](media/benselect-tutorial/mail-prefix2.png)
 
     a. Válassza a **transzformáció** **forrásként**lehetőséget.
 
@@ -125,7 +125,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Create** (Létrehozás) gombra.
+   1. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

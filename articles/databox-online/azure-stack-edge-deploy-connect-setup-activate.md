@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to connect and activate Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: 5a89125edf6082bbbcbaf139a648c9edc2debf81
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 8a143dadffb3f89ef67dc20a2038bb3c9bf5a0e4
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90894260"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743335"
 ---
 # <a name="tutorial-connect-set-up-and-activate-azure-stack-edge-pro"></a>Oktatóanyag: a Azure Stack Edge Pro összekapcsolása, beállítása és aktiválása 
 
@@ -22,7 +22,7 @@ Ez az oktatóanyag azt ismerteti, hogyan lehet csatlakozni, beállítani és akt
 
 A telepítés és az aktiválás folyamata körülbelül 20 percet vesz igénybe.
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
 >
@@ -146,7 +146,7 @@ Az irányítópulton a fizikai eszköz a Azure Stack Edge szolgáltatással val�
 
     4. Előfordulhat, hogy a frissítés sikeres befejeződése után néhány percet várnia kell. Az oldal frissül, és jelzi, hogy az eszköz aktiválása sikeres volt.
 
-        ![A helyi webes felhasználói felület "Cloud Settings" (Felhőbeli beállítások) lapja frissítve](./media/azure-stack-edge-deploy-connect-setup-activate/set-up-activate-8.png)
+        ![Helyi webes felhasználói felület "Cloud Settings" (Felhőbeli beállítások) lap frissítve 2](./media/azure-stack-edge-deploy-connect-setup-activate/set-up-activate-8.png)
 
 Az eszköz telepítése befejeződött. Mostantól megosztásokat is hozzáadhat az eszközhöz.
 

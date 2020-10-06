@@ -9,12 +9,12 @@ ms.subservice: pod
 ms.topic: tutorial
 ms.date: 07/02/2020
 ms.author: alkohli
-ms.openlocfilehash: 71f966cd62ffd2c735259dcfa98b9b97f87d9a19
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: 17fa361fa4cef194d910d08d4a0afe075b119109
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87926195"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91742519"
 ---
 # <a name="tutorial-use-rest-apis-to-copy-data-to-azure-data-box-blob-storage"></a>Oktatóanyag: REST API-k használata adatok másolásához Azure Data Box blob Storage-ba  
 
@@ -115,11 +115,11 @@ A következő lépésekkel importálhatja a `.cer` fájlt egy Windows-vagy Linux
 
 3. Jelölje be **az összes tanúsítvány tárolása a következő tárolóban**jelölőnégyzetet, majd kattintson a **Tallózás**gombra. Navigáljon a távoli gazdagép legfelső szintű tárolójához, majd kattintson a **tovább**gombra.
 
-    ![Tanúsítvány importálása a PowerShell használatával](media/data-box-deploy-copy-data-via-rest/import-cert-ws-2.png)
+    ![Tanúsítvány importálása a PowerShell 2 használatával](media/data-box-deploy-copy-data-via-rest/import-cert-ws-2.png)
 
 4. Kattintson a **Befejezés** gombra. Megjelenik egy üzenet, amely tájékoztatja, hogy az importálás sikeres volt.
 
-    ![Tanúsítvány importálása a PowerShell használatával](media/data-box-deploy-copy-data-via-rest/import-cert-ws-3.png)
+    ![Tanúsítvány importálása a PowerShell 3 használatával](media/data-box-deploy-copy-data-via-rest/import-cert-ws-3.png)
 
 #### <a name="use-a-linux-system"></a>Linux rendszer használata
 
@@ -133,7 +133,7 @@ Több, például Ubuntu és Debian is használja az `update-ca-certificates` par
 A RHEL, Fedora és CentOS legújabb verziói a parancsot használják `update-ca-trust` .
 
 * Másolja a tanúsítványfájl-fájlt a `/etc/pki/ca-trust/source/anchors` könyvtárba.
-* A `update-ca-trust` parancs futtatása.
+* Futtassa az `update-ca-trust` parancsot.
 
 A részletekért olvassa el a disztribúcióra vonatkozó dokumentációt.
 

@@ -1,15 +1,15 @@
 ---
 title: Támogatott Azure Resource Manager erőforrástípusok
 description: Adja meg az Azure Resource Graph és a Change History által támogatott Azure Resource Manager-erőforrástípusok listáját.
-ms.date: 09/15/2020
+ms.date: 09/30/2020
 ms.topic: reference
 ms.custom: generated
-ms.openlocfilehash: a52378422c6ee740f30f155cdfb0839a3f281abe
-ms.sourcegitcommit: 80b9c8ef63cc75b226db5513ad81368b8ab28a28
+ms.openlocfilehash: 385ee96fa821b8d90ff529fecb52dbec9803dea2
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90600602"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91740003"
 ---
 # <a name="azure-resource-graph-table-and-resource-type-reference"></a>Az Azure Resource Graph táblázat-és erőforrástípus-referenciája
 
@@ -119,6 +119,7 @@ Az Azure Resource Graph a [Azure Resource Manager](../../../azure-resource-manag
 - Microsoft. CDN/profilok
 - Microsoft. CDN/profilok/végpontok
 - Microsoft. certificateregistration/tanúsítványrendelések
+- Microsoft. Chaos/chaosexperiments
 - Microsoft. classiccompute/tartománynév
 - Microsoft. classiccompute/virtualmachines
 - Microsoft. classicnetwork/networksecuritygroups
@@ -400,6 +401,8 @@ Az Azure Resource Graph a [Azure Resource Manager](../../../azure-resource-manag
 - Microsoft. operationalinsights/munkaterületek
 - Microsoft. operationsmanagement/megoldások
 - Microsoft. operationsmanagement/nézetek
+- Microsoft. orbitális/contactprofiles
+- Microsoft. orbitális/űrhajók
 - Microsoft. peering/társaik
 - Microsoft. peering/peeringservices
 - Microsoft. Portal/irányítópultok
@@ -420,6 +423,10 @@ Az Azure Resource Graph a [Azure Resource Manager](../../../azure-resource-manag
 - Microsoft. Resources/templatespecs/Versions
 - Microsoft. SaaS/alkalmazások
 - Microsoft. Scheduler/feladatgyűjtemények
+- Microsoft. SCVMM/felhők
+- Microsoft. SCVMM/virtualmachines
+- Microsoft. SCVMM/virtualmachinetemplates
+- Microsoft. SCVMM/virtualnetworks
 - Microsoft. SCVMM/vmmservers
 - Microsoft. Search/searchservices
 - Microsoft. Security/automations
@@ -436,6 +443,7 @@ Az Azure Resource Graph a [Azure Resource Manager](../../../azure-resource-manag
 - Microsoft. servicefabricmesh/kötetek
 - Microsoft. serviceshub/összekötők
 - Microsoft. signalrservice/szignáló
+- Microsoft. szingularitás/fiókok
 - Microsoft. Solutions/appliancedefinitions
 - Microsoft. Solutions/készülékek
 - Microsoft. Solutions/applicationdefinitions
@@ -531,6 +539,7 @@ Az Azure Resource Graph a [Azure Resource Manager](../../../azure-resource-manag
 - wandisco. Fusion/fusiongroups/onpremzones
 - wandisco. Fusion/fusiongroups/replicationrules
 - wandisco. Fusion/áttelepítések
+- wandisco. Fusion/áttelepítési/livedatamigrations
 - wandisco. Fusion/migrálók/célok
 
 ## <a name="securityresources"></a>securityresources

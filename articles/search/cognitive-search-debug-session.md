@@ -7,13 +7,13 @@ author: tchristiani
 ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 05/19/2020
-ms.openlocfilehash: b428ff4a9a4f4b9110e88dba57cfad20f2221cf1
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.date: 10/05/2020
+ms.openlocfilehash: 941d7f54bcb44653280abe264ff1cffbeae33679
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88936163"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743182"
 ---
 # <a name="debug-sessions-in-azure-cognitive-search"></a>Hibakeresési munkamenetek az Azure Cognitive Search
 
@@ -35,8 +35,7 @@ Ha a dúsítási folyamat nem tartalmaz hibát, a rendszer egy hibakeresési mun
 
 A hibakeresési munkamenet elindításához rendelkeznie kell egy meglévő AI-bővítési folyamattal, beleértve a következőket: egy adatforrás, egy készségkészlet, egy indexelő és egy index. A hibakeresési munkamenet konfigurálásához nevezze el a munkamenetet, és adjon meg egy általános célú Storage-fiókot, amelyet a rendszer az indexelő futtatása során a szakértelem-végrehajtás gyorsítótárazásához használ majd. Azt is ki kell választania, hogy melyik indexelő fog futni. Az indexelő az adatforrásra, a készségkészlet és az indexre vonatkozó hivatkozásokat tartalmaz. A hibakeresési munkamenet alapértelmezett értéke az adatforrás első dokumentuma, vagy megadhat egy dokumentumot az adatforrásban a lépéshez.
 
-> [!div class="mx-imgBorder"]
-> ![Hibakeresési munkamenet létrehozása](media/cognitive-search-debug/debug-session-new.png)
+> :::image type="content" source="media/cognitive-search-debug/debug-session-new.png" alt-text="Hibakeresési munkamenet létrehozása":::
 
 ## <a name="debug-session-features"></a>A munkamenet funkcióinak hibakeresése
 
@@ -52,8 +51,7 @@ A **skill Graph** nézet a készségkészlet hierarchikus, vizuális ábrázolá
 
 A gráfban lévő képességek kiválasztásával kiemelheti a hozzá kapcsolódó képességeket, a bemeneteit létrehozó csomópontokat és a kimeneteit elfogadó csomópontokat. Az egyes képességek csomópontok a típusait, hibáit, figyelmeztetéseit és a végrehajtások számát jelenítik meg. A **skill Graphban** kiválaszthatja, hogy melyik képességet szeretné a hibakereséshez vagy a fejlesztéshez. Ha kiválasztja a megfelelő képzettséget, a részletek ablaktáblán megjelennek a gráftól jobbra.
 
-> [!div class="mx-imgBorder"]
-> ![Skill Graph](media/cognitive-search-debug/skills-graph.png)
+> :::image type="content" source="media/cognitive-search-debug/skills-graph.png" alt-text="Hibakeresési munkamenet létrehozása":::
 
 ## <a name="skill-details"></a>Szakértelem részletei
 
@@ -75,8 +73,7 @@ Egyéni szakértelem létrehozásakor vagy egy egyéni képességgel kapcsolatos
 
 A bővített **adatstruktúra** ablaktábla a dokumentum dúsítását jeleníti meg a készségkészlet keresztül, részletezve az egyes alkoholtartalom-növelés és a kezdeményező képesség kontextusát. A **kifejezés kiértékelése** az egyes dúsítások tartalmának megtekintésére is használható.
 
-> [!div class="mx-imgBorder"]
-> ![Dúsított adatstruktúra](media/cognitive-search-debug/enriched-data-structure-display.png)
+> :::image type="content" source="media/cognitive-search-debug/enriched-data-structure-display.png" alt-text="Hibakeresési munkamenet létrehozása":::
 
 ## <a name="expression-evaluator"></a>Kifejezés kiértékelése
 

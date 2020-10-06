@@ -7,13 +7,13 @@ author: tchristiani
 ms.author: terrychr
 ms.service: cognitive-search
 ms.topic: quickstart
-ms.date: 09/16/2020
-ms.openlocfilehash: 246cdb458b4529c60f61c3ddcb26280c1e3223af
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.date: 10/05/2020
+ms.openlocfilehash: 713199dc6b1eb1330b49c320022af137d0d1402e
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/05/2020
-ms.locfileid: "91268366"
+ms.locfileid: "91741006"
 ---
 # <a name="quickstart-create-an-azure-cognitive-search-service-in-the-portal"></a>Rövid útmutató: Azure Cognitive Search-szolgáltatások létrehozása a portálon
 
@@ -47,7 +47,7 @@ Választhatja az [MSDN-előfizetői értékelemek aktiválását](https://azure.
 
 1. A keresősáv segítségével keresse meg az "Azure Cognitive Search", vagy navigáljon az erőforráshoz a **web**  >  **Azure Cognitive Search**használatával.
 
-![Erőforrás létrehozása a portálon](./media/search-create-service-portal/find-search3.png "Erőforrás létrehozása a portálon")
+:::image type="content" source="media/search-create-service-portal/find-search3.png" alt-text="Erőforrás létrehozása a portálon" border="false":::
 
 ## <a name="choose-a-subscription"></a>Előfizetés kiválasztása
 
@@ -59,11 +59,11 @@ Az erőforráscsoportok olyan tárolók, amelyek az Azure-megoldáshoz kapcsoló
 
 Ha egyetlen csoporthoz sem egyesít erőforrásokat, vagy ha a meglévő erőforráscsoportok a nem kapcsolódó megoldásokban használt erőforrásokkal vannak kitöltve, hozzon létre egy új erőforráscsoportot az Azure Cognitive Search-erőforráshoz. 
 
-![Új erőforráscsoport létrehozása](./media/search-create-service-portal/new-resource-group.png "Új erőforráscsoport létrehozása")
+:::image type="content" source="media/search-create-service-portal/new-resource-group.png" alt-text="Erőforrás létrehozása a portálon" border="false":::
 
 Idővel nyomon követheti az aktuális és a tervezett költségeket, vagy megtekintheti az egyes erőforrások díját. Az alábbi képernyőképen látható, hogy milyen költségadatok várhatóak, ha több erőforrást egyesít egy csoportba.
 
-![Költségek kezelése az erőforráscsoport szintjén](./media/search-create-service-portal/resource-group-cost-management.png "Költségek kezelése az erőforráscsoport szintjén")
+:::image type="content" source="media/search-create-service-portal/resource-group-cost-management.png" alt-text="Erőforrás létrehozása a portálon" border="false":::
 
 > [!TIP]
 > Az erőforráscsoportok leegyszerűsítik a tisztítást, mert egy csoport törlése törli a benne lévő összes szolgáltatást. Több szolgáltatást igénybe vevő prototípus-projektek végén könnyebb mindent törölni, ha az összeset egy erőforráscsoportban helyezi el.
@@ -114,11 +114,11 @@ Ne feledje, hogy a szolgáltatás létrehozása után nem módosítható az árk
 
 Miután megadta a szükséges bemeneteket, lépjen tovább, és hozza létre a szolgáltatást. 
 
-![A szolgáltatás áttekintése és létrehozása](./media/search-create-service-portal/new-service3.png "A szolgáltatás áttekintése és létrehozása")
+:::image type="content" source="media/search-create-service-portal/new-service3.png" alt-text="Erőforrás létrehozása a portálon" border="false":::
 
 A szolgáltatás percek alatt üzembe helyezhető. Az Azure-értesítéseken keresztül nyomon követheti a folyamat előrehaladását. Érdemes lehet a szolgáltatást az irányítópultra rögzíteni, hogy később könnyebben hozzáférhessen.
 
-![A szolgáltatás monitorozása és rögzítése](./media/search-create-service-portal/monitor-notifications.png "A szolgáltatás monitorozása és rögzítése")
+:::image type="content" source="media/search-create-service-portal/monitor-notifications.png" alt-text="Erőforrás létrehozása a portálon" border="false":::
 
 ## <a name="get-a-key-and-url-endpoint"></a>Kulcs és URL-cím végpontjának beolvasása
 
@@ -128,7 +128,7 @@ Ha nem használja a portált, az új szolgáltatáshoz való programozott hozzá
 
 2. A **kulcsok** lapon másolja át a rendszergazdai kulcsok egyikét (ezek egyenértékűek). Felügyeleti API-kulcsok szükségesek a szolgáltatásban található objektumok létrehozásához, frissítéséhez és törléséhez. Ezzel szemben a lekérdezési kulcsok olvasási hozzáférést biztosítanak a tartalom indexeléséhez.
 
-   ![A szolgáltatás áttekintő lapja URL-végponttal](./media/search-create-service-portal/get-url-key.png "URL-végpont és egyéb szolgáltatás részletei")
+   :::image type="content" source="media/search-create-service-portal/get-url-key.png" alt-text="Erőforrás létrehozása a portálon" border="false":::
 
 A portálon alapuló feladatokhoz nincs szükség végpontra és kulcsra. A portál már társítva van az Azure Cognitive Search-erőforráshoz rendszergazdai jogosultságokkal. A portál bemutatójának első lépései a gyors üzembe helyezési útmutató [: Azure Cognitive Search index létrehozása a portálon](search-get-started-portal.md).
 
@@ -149,7 +149,7 @@ Az erőforrások hozzáadása növeli a havi költségeket. A [díjkalkulátor](
 2. A bal oldali navigációs panelen válassza a **Beállítások**  >  **skála**lehetőséget.
 3. A csúszka segítségével bármelyik típusú erőforrásokat hozzáadhatja.
 
-![Kapacitás hozzáadása](./media/search-create-service-portal/settings-scale.png "Kapacitás hozzáadása replikák és partíciók használatával")
+:::image type="content" source="media/search-create-service-portal/settings-scale.png" alt-text="Erőforrás létrehozása a portálon" border="false":::
 
 > [!Note]
 > A partíción belüli tárolás és a gyorsabb növekedés magasabb szintű szinten történik. További információ: [kapacitás és korlátok](search-limits-quotas-capacity.md).

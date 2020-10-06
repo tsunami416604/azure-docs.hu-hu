@@ -6,14 +6,14 @@ ms.service: storsimple
 ms.topic: how-to
 ms.date: 01/16/2018
 ms.author: alkohli
-ms.openlocfilehash: 2562e7463ba0a79cf77d21f3bb619f13283c989d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f13e402344111dea28514ed7b0d381b46ff73064
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85514935"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743607"
 ---
-# <a name="use-azure-automation-to-trigger-a-job"></a>A Azure Automation használata a feladatok elindításához
+# <a name="use-azure-automation-to-trigger-a-job"></a>Az Azure Automation használata feladat indításához
 
 Ez a cikk azt ismerteti, hogyan használható a StorSimple Data Manager szolgáltatás Adatátalakítási funkciója az StorSimple átalakításához. Az Adatátalakítási feladatok kétféleképpen indíthatók el: 
 
@@ -28,7 +28,7 @@ Mielőtt elkezdené, győződjön meg arról, hogy rendelkezik az alábbiakkal:
 
 *   Azure PowerShell telepítve van az ügyfélszámítógépen. [Azure PowerShell letöltése](https://docs.microsoft.com/powershell/azure/azurerm/install-azurerm-ps).
 *   Egy adott erőforráscsoport egy StorSimple Data Manager szolgáltatásának megfelelően konfigurált feladatdefiníció.
-*   Töltse le [`DataTransformationApp.zip`](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/raw/master/Azure%20Automation%20For%20Data%20Manager/DataTransformationApp.zip) a fájlt a GitHub-adattárból. 
+*   Töltse le  [`DataTransformationApp.zip`](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/raw/master/Azure%20Automation%20For%20Data%20Manager/DataTransformationApp.zip) a fájlt a GitHub-adattárból. 
 *   [`Trigger-DataTransformation-Job.ps1`](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/blob/master/Azure%20Automation%20For%20Data%20Manager/Trigger-DataTransformation-Job.ps1)Parancsfájl letöltése a GitHub-adattárból.
 
 ## <a name="step-by-step-procedure"></a>Lépésről lépésre haladó eljárás
@@ -41,7 +41,7 @@ Mielőtt elkezdené, győződjön meg arról, hogy rendelkezik az alábbiakkal:
 
 2. Új Automation-fiók hozzáadásához kattintson a **+ Hozzáadás**gombra.
 
-    ![Futtató Automation-fiók létrehozása](./media/storsimple-data-manager-job-using-automation/add-automation-account1.png)
+    ![Futtató Automation-fiók létrehozása 2](./media/storsimple-data-manager-job-using-automation/add-automation-account1.png)
 
 3. Az **Automation hozzáadása**:
 
@@ -50,9 +50,9 @@ Mielőtt elkezdené, győződjön meg arról, hogy rendelkezik az alábbiakkal:
    3. Hozzon létre egy új erőforráscsoportot, vagy válasszon ki egy meglévő erőforráscsoportot.
    4. Válasszon egy **helyet**.
    5. Hagyja bejelölve az alapértelmezett **futtató fiók létrehozása** lehetőséget.
-   6. Az irányítópulton való gyors hozzáférésre mutató hivatkozás beszerzéséhez tekintse meg a **rögzítés az irányítópulton**lehetőséget. Kattintson a **Létrehozás** lehetőségre.
+   6. Az irányítópulton való gyors hozzáférésre mutató hivatkozás beszerzéséhez tekintse meg a **rögzítés az irányítópulton**lehetőséget. Kattintson a **Létrehozás** elemre.
 
-      ![Futtató Automation-fiók létrehozása](./media/storsimple-data-manager-job-using-automation/create-automation-run-as-account.png)
+      ![3. futtató Automation-fiók létrehozása](./media/storsimple-data-manager-job-using-automation/create-automation-run-as-account.png)
     
       Az Automation-fiók sikeres létrehozása után értesítést kap.
     
@@ -86,7 +86,7 @@ Az alábbi lépések végrehajtásával importálhatja, közzéteheti és futtat
 
 2. A **Runbook hozzáadása**területen kattintson a **meglévő runbook importálása**elemre.
 
-3. Mutasson a `Trigger-DataTransformation-Job.ps1` **Runbook fájl**Azure PowerShell parancsfájlra. A runbook típusa automatikusan ki van választva. Adja meg a runbook nevét és leírását (nem kötelező). Kattintson a **Létrehozás** lehetőségre.
+3. Mutasson a `Trigger-DataTransformation-Job.ps1` **Runbook fájl**Azure PowerShell parancsfájlra. A runbook típusa automatikusan ki van választva. Adja meg a runbook nevét és leírását (nem kötelező). Kattintson a **Létrehozás** elemre.
 
     ![2. runbook hozzáadása](./media/storsimple-data-manager-job-using-automation/add-runbook-2.png)
 

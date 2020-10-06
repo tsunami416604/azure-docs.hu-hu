@@ -9,12 +9,12 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.custom: ''
-ms.openlocfilehash: 4520332fbc5040aff682ce52e819fa4a940999cc
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 14e0998b75e0e5bd3ae996f5f5010ecc50180f14
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90108747"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91741669"
 ---
 # <a name="migrate-web-service-from-bing-maps"></a>Webszolgáltatás migrálása a Bing Mapsből
 
@@ -24,7 +24,7 @@ Az alábbi táblázat tartalmazza a Azure Maps Service API-kat, amelyek hasonló
 
 | Bing Maps Service API                 | Azure Maps Service API      |
 |---------------------------------------|-----------------------------|
-| AutoSuggest                           | [Search](https://docs.microsoft.com/rest/api/maps/search)     |
+| Automatikus kiegészítés                           | [Search](https://docs.microsoft.com/rest/api/maps/search)     |
 | Irányok (beleértve a teherautót)          | [Útvonal iránya](https://docs.microsoft.com/rest/api/maps/route/getroutedirections)                          |
 | Távolsági mátrix                       | [Útvonal-mátrix](https://docs.microsoft.com/rest/api/maps/route/postroutematrixpreview)                          |
 | Képek – statikus Térkép                  | [Megjelenítés](https://docs.microsoft.com/rest/api/maps/render/getmapimage)                                   |
@@ -150,7 +150,7 @@ A Azure Maps fordított helymeghatározáshoz API olyan további funkciókat tar
 
 A következő táblázat a Bing Maps entitás típusú értékeket a Azure Mapsban található egyenértékű tulajdonságokra hivatkozik.
 
-| Bing Maps-entitás típusa | Hasonló Azure Maps entitás típusa               | Description                                |
+| Bing Maps-entitás típusa | Hasonló Azure Maps entitás típusa               | Leírás                                |
 |-----------------------|-------------------------------------------------|--------------------------------------------|
 | `Address`             |                                                 | *Cím*                                  |
 | `Neighborhood`        | `Neighbourhood`                                 | *Környékén*                             |
@@ -249,7 +249,7 @@ A Azure Maps Routing API számos további funkcióval nem érhető el a Bing Map
 
 Több módon is összehangolhatja a koordinátákat Azure Maps-utakon.
 
--   A Route Directions API használatával összehangolhatja a koordinátákat és az úthálózaton keresztüli logikai útvonalon.
+-   A Route Directions API-val egy logikai útvonal koordinátáit a közúti hálózaton keresztül igazíthatja.
 -   A Azure Maps web SDK-val az egyes koordinátákat a vektor csempén lévő legközelebbi úthoz igazíthatja.
 -   Az egyes koordinátákat közvetlenül a Azure Maps vektor csempével lehet összepattintani.
 
@@ -662,7 +662,7 @@ Nyílt forráskódú ügyféloldali kódtárak más programozási nyelvekhez;
 
 -   .NET Standard 2,0 – [GitHub Project](https://github.com/perfahlen/AzureMapsRestServices) \| [NuGet csomag](https://www.nuget.org/packages/AzureMapsRestToolkit/)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a Azure Maps REST Services szolgáltatásról.
 

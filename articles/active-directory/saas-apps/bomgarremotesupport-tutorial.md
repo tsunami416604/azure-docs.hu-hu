@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/30/2019
 ms.author: jeedes
-ms.openlocfilehash: ecaeea625bc4891c95614292a44d31b616d39eb2
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: a70216286e6f19f565d189c1c16f8862494e3aef
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549291"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743080"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-beyondtrust-remote-support"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a BeyondTrust távoli támogatással
 
@@ -93,11 +93,11 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. A fentieken kívül a BeyondTrust távoli támogatási alkalmazás néhány további attribútumot vár az SAML-válaszokban, amelyek alább láthatók. Ezek az attribútumok előre fel vannak töltve, de a követelményeinek megfelelően áttekintheti őket.
 
-    | Name |  Forrás attribútum|
+    | Név |  Forrás attribútum|
     | ---------------| ----------|
     | GivenName | User. givenName |
     | EmailAddress | User. mail |
-    | Name | User. userPrincipalName |
+    | Név | User. userPrincipalName |
     | Felhasználónév | User. userPrincipalName |
     | Csoportok | User. groups |
     | Egyedi felhasználói azonosító | User. userPrincipalName |
@@ -129,7 +129,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Create** (Létrehozás) gombra.
+   1. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -155,7 +155,7 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 
 1. Kattintson az **állapot** menüre, és másolja ki az **azonosítót**, a **Válasz URL-címét** és a **bejelentkezési URL-címet** , és használja ezeket az értékeket a Azure Portal **alapszintű SAML-konfiguráció** szakaszában.
 
-    ![A BeyondTrust távoli támogatásának konfigurálása](./media/bomgarremotesupport-tutorial/config-url-values.png)
+    ![A képernyőképen a BeyondTrust távoli támogatás állapot menüje látható, ahol összegyűjtheti ezeket az adatokat.](./media/bomgarremotesupport-tutorial/config-url-values.png)
 
 1. Navigáljon a BeyondTrust távoli támogatás belépési pont felületéhez, `https://support.example.com/login` ahol a **support.example.com** a berendezés elsődleges állomásneve, és a rendszergazdai hitelesítő adataival hitelesíthető.
 
@@ -165,20 +165,20 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 
 1. Az identitás-szolgáltató beállításai szakaszban lehetősége van az identitás-szolgáltató metaadatainak feltöltésére. Keresse meg a Azure Portal letöltött metaadat-XML-fájlt, majd kattintson a **feltöltés** gombra. Az **entitás-azonosító**, az **egyszeri bejelentkezési szolgáltatás URL-címe** és a tanúsítvány automatikusan feltöltve lesz, és a **protokoll kötését** a **http post**értékre kell módosítani. Lásd az alábbi képernyőképet:
 
-    ![A BeyondTrust távoli támogatásának konfigurálása](./media/bomgarremotesupport-tutorial/config-uploadfile.png)
+    ![A képernyőképen az Identity Provider beállításainak szakasza látható, ahol elvégezheti ezeket a műveleteket.](./media/bomgarremotesupport-tutorial/config-uploadfile.png)
 
 ### <a name="create-beyondtrust-remote-support-test-user"></a>BeyondTrust távoli támogatási teszt felhasználó létrehozása
 
 A felhasználó-kiépítési beállításokat itt fogjuk konfigurálni. Az ebben a szakaszban használt értékeket a Azure Portal **felhasználói attribútumok & jogcímek** szakasza hivatkozik. Ezt úgy konfiguráltuk, hogy az a létrehozáskor már importált alapértelmezett értékek legyenek, azonban az érték szükség esetén testreszabható.
 
-![Felhasználó létrehozása](./media/bomgarremotesupport-tutorial/config-user1.png)
+![Képernyőfelvétel: a felhasználói kiépítési beállítások, amelyekkel konfigurálhatja a felhasználói értékeket.](./media/bomgarremotesupport-tutorial/config-user1.png)
 
 > [!NOTE]
 > A csoportok és az e-mail-attribútum nem szükséges ehhez a megvalósításhoz. Ha Azure AD-csoportokat használ, és hozzárendeli őket a BeyondTrust távoli támogatási csoportházirendekhez az engedélyekhez, a csoport objektum-AZONOSÍTÓját a Azure Portal és az "elérhető csoportok" szakaszban elhelyezett tulajdonságok segítségével kell hivatkozni. A művelet befejezését követően az objektum-azonosító/AD-csoport elérhető lesz a Csoportházirendhez való hozzárendeléshez az engedélyek számára.
 
-![Felhasználó létrehozása](./media/bomgarremotesupport-tutorial/config-user2.png)
+![Képernyőfelvétel: az I T szakasz a tagsági típussal, a forrással, a típussal és a D objektummal.](./media/bomgarremotesupport-tutorial/config-user2.png)
 
-![Felhasználó létrehozása](./media/bomgarremotesupport-tutorial/config-user3.png)
+![Képernyőfelvétel: a csoportházirend alapszintű beállítások lapja.](./media/bomgarremotesupport-tutorial/config-user3.png)
 
 > [!NOTE]
 > Másik lehetőségként beállíthatja a egy SAML2 biztonsági szolgáltató alapértelmezett csoportházirendjét is. Ennek a beállításnak a megadásával a a csoportházirendben megadott engedélyek alapján az SAML-n keresztül hitelesítő összes felhasználót hozzárendeli. Az általános tagok házirend a BeyondTrust-alapú távoli támogatás/privilegizált távoli hozzáférés korlátozott engedélyekkel való használatának része, amely a hitelesítés tesztelésére és a felhasználók megfelelő szabályzatokhoz való hozzárendelésére használható. A felhasználók nem töltik be a egy SAML2-felhasználók listájára a belépési pont > felhasználóval & a biztonságot az első sikeres hitelesítési kísérletig. A csoportházirendekkel kapcsolatos további információk a következő hivatkozáson találhatók: `https://www.beyondtrust.com/docs/remote-support/getting-started/admin/group-policies.htm`

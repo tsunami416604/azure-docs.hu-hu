@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/23/2019
 ms.author: jeedes
-ms.openlocfilehash: 7909f793407956247a8378a86e20bbe7b1bcddb6
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 75e4937966c549c4d815a8776c70aa6366abe3e0
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88542802"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91740795"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-brightidea"></a>Oktatóanyag: Azure Active Directory integráció a Brightidea
 
@@ -112,14 +112,14 @@ Az Azure AD egyszeri bejelentkezés Brightidea való konfigurálásához hajtsa 
 
     c. A metaadat-fájl feltöltése után az **azonosító** és a **Válasz URL-** értékei automatikusan fel lesznek töltve a Brightidea szakasz szövegmezőben:
 
-    ![image](common/idp-intiated.png)
+    ![A képernyőfelvételen az alapszintű SAML-konfiguráció látható, ahol megadható az azonosító, a válasz U R L, majd a Mentés elemre.](common/idp-intiated.png)
 
     > [!Note]
     > Ha az **azonosító** és a **Válasz URL-címe** nem kap automatikus polulated, akkor a követelménynek megfelelően adja meg manuálisan az értékeket.
 
 5. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
-    ![image](common/metadata-upload-additional-signon.png)
+    ![Képernyőfelvétel: további U R ls beállítása, ahol megadhatja a bejelentkezést az U R L-ben.](common/metadata-upload-additional-signon.png)
 
     A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:  `https://<SUBDOMAIN>.brightidea.com`
 
@@ -143,21 +143,21 @@ Az Azure AD egyszeri bejelentkezés Brightidea való konfigurálásához hajtsa 
 
 2. A Brightidea-rendszeren lévő egyszeri bejelentkezés funkció beszerzéséhez navigáljon a **vállalati beállítási**  ->  **hitelesítés lapra**. Itt két allapot láthat: auth Selection & SAML-profilok.
 
-    ![Brightidea-konfiguráció](./media/brightidea-tutorial/configure1.png)
+    ![Képernyőfelvétel: a Brightidea webhely, amelyen a hitelesítés lap van kiválasztva.](./media/brightidea-tutorial/configure1.png)
 
 3. Válassza az **Auth kiválasztása**lehetőséget. Alapértelmezés szerint csak két szabványos metódus látható: a Brightidea bejelentkezési & regisztrációja. Az egyszeri bejelentkezési módszer hozzáadásakor megjelenik a listában.
 
-    ![Brightidea-konfiguráció](./media/brightidea-tutorial/configure2.png)
+    ![A képernyőképen a Brightidea-hitelesítés lap van kiválasztva.](./media/brightidea-tutorial/configure2.png)
 
 4. Válassza ki az **SAML-profilokat** , és hajtsa végre a következő lépéseket:
 
-    ![Brightidea-konfiguráció](./media/brightidea-tutorial/configure3.png)
+    ![Képernyőfelvétel: a Brightidea-hitelesítés lap, amely SAML-profilokkal van kiválasztva, és a metaadatok letöltésére és új hozzáadására szolgáló lehetőségeket biztosít.](./media/brightidea-tutorial/configure3.png)
 
     a. Kattintson a **metaadatok letöltése** elemre, és töltse fel az **alapszintű SAML-konfiguráció** szakaszát a Azure Portal.
 
     b. Kattintson az **új hozzáadása** gombra az identitás- **szolgáltató beállítás** alatt, és hajtsa végre a következő lépéseket:
     
-    ![Brightidea-konfiguráció](./media/brightidea-tutorial/configure4.png)
+    ![Képernyőfelvétel: a Brightidea identitás-szolgáltatói beállítás, ahová az adatokat adja meg.](./media/brightidea-tutorial/configure4.png)
     
    * Adja meg az **SAML-profil nevét** , például: `Azure Ad SSO`
     
@@ -195,7 +195,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    d. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

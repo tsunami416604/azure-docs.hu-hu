@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 05/07/2020
 ms.author: alkohli
 ms.subservice: pod
-ms.openlocfilehash: 60e621b34250b036888b233b084ba1ddff939048
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 31147d534109e0d74d33d102075c69eeb703496e
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87087798"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91739935"
 ---
 # <a name="use-customer-managed-keys-in-azure-key-vault-for-azure-data-box"></a>Ügyfél által felügyelt kulcsok használata Azure Key Vaultban Azure Data Box
 
@@ -61,7 +61,7 @@ Az ügyfél által felügyelt kulcs konfigurálása a Azure Data Box esetében n
 
     Új kulcstartó létrehozásához az **új létrehozása** lehetőséget is választhatja. A **Key Vault létrehozása**panelen adja meg az erőforráscsoportot és a kulcstároló nevét. Győződjön meg arról, hogy a helyreállítható **törlési** és törlési **védelem** engedélyezve van. Fogadja el az összes többi alapértelmezett beállítást. Válassza a **felülvizsgálat + létrehozás**lehetőséget.
 
-    ![Új Azure Key Vault létrehozása](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-4.png)
+    ![Új Azure Key Vault létrehozása 2](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-4.png)
 
 7. Tekintse át a kulcstartóhoz tartozó információkat, és válassza a **Létrehozás**lehetőséget. Várjon pár percet, amíg a Key Vault létrehozása befejeződik.
 
@@ -69,11 +69,11 @@ Az ügyfél által felügyelt kulcs konfigurálása a Azure Data Box esetében n
 
 8. A **válasszon kulcsot Azure Key Vault közül**választhat egy kulcsot a meglévő kulcstartóban.
 
-    ![Új kulcs létrehozása Azure Key Vaultban](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-6.png)
+    ![Új kulcs létrehozása Azure Key Vault 3](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-6.png)
 
 9. Ha új kulcsot szeretne létrehozni, válassza az **új létrehozása** elemet a kulcs létrehozásához. Az RSA-kulcs mérete 2048 vagy nagyobb lehet.
 
-    ![Új kulcs létrehozása Azure Key Vaultban](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-61.png)
+    ![Új kulcs létrehozása Azure Key Vault 4](./media/data-box-customer-managed-encryption-key-portal/customer-managed-key-61.png)
 
 10. Adja meg a kulcs nevét, fogadja el a többi alapértelmezett értéket, majd válassza a **Létrehozás**lehetőséget. 
 

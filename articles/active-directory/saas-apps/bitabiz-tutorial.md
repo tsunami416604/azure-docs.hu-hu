@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/06/2019
 ms.author: jeedes
-ms.openlocfilehash: 397197c2ab3ba4f135912eab800f1abd7ab73a0f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 729427dac174037c8750af7ab0f6cb17fa4d4c1e
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88531059"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91741470"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bitabiz"></a>Oktatóanyag: Azure Active Directory integráció a BitaBIZ
 
@@ -132,15 +132,15 @@ Az Azure AD egyszeri bejelentkezés BitaBIZ való konfigurálásához hajtsa vé
 
 2. Kattintson a **telepítési rendszergazda**elemre.
 
-    ![BitaBIZ-konfiguráció](./media/bitabiz-tutorial/settings1.png)
+    ![Képernyőfelvétel: a böngészőablak egy részét jeleníti meg a beállítási rendszergazda kiválasztásával.](./media/bitabiz-tutorial/settings1.png)
 
 3. Kattintson a **Microsoft Integration** ( **érték hozzáadása** ) szakaszra.
 
-    ![BitaBIZ-konfiguráció](./media/bitabiz-tutorial/settings2.png)
+    ![Képernyőfelvétel: a kiválasztott Microsoft-integrációk értékének megadása.](./media/bitabiz-tutorial/settings2.png)
 
 4. Görgessen le az **Microsoft Azure ad (egyszeri bejelentkezés engedélyezése)** szakaszhoz, és hajtsa végre a következő lépéseket:
 
-    ![BitaBIZ-konfiguráció](./media/bitabiz-tutorial/settings3.png)
+    ![A képernyőképen a D szakasz Microsoft Azure látható, ahol megadhatja az ebben a lépésben ismertetett információt.](./media/bitabiz-tutorial/settings3.png)
 
     a. Másolja az értéket az **entitás-azonosítóból ("azonosító" az Azure ad-ben)** szövegmezőbe, és illessze be az **azonosító** szövegmezőbe az **alapszintű SAML-konfiguráció** szakaszának Azure Portal. 
 
@@ -179,7 +179,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    d. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -218,19 +218,19 @@ BitaBIZ esetén a kiépítés manuális feladat.
 
 2. Kattintson a **telepítési rendszergazda**elemre.
 
-    ![Felhasználó hozzáadása a BitaBIZ](./media/bitabiz-tutorial/settings1.png)
+    ![A képernyőfelvétel a böngészőablak egy részét jeleníti meg a beállítási rendszergazda kiválasztásával.](./media/bitabiz-tutorial/settings1.png)
 
 3. Kattintson a **felhasználók hozzáadása** a **szervezethez** szakaszban.
 
-    ![Felhasználó hozzáadása a BitaBIZ](./media/bitabiz-tutorial/user1.png)
+    ![Képernyőfelvétel: a szervezet szakasza, ahol a felhasználók hozzáadása lehetőség be van jelölve.](./media/bitabiz-tutorial/user1.png)
 
 4. Kattintson az **új alkalmazott hozzáadása**lehetőségre.
 
-    ![Felhasználó hozzáadása a BitaBIZ](./media/bitabiz-tutorial/user2.png)
+    ![Képernyőfelvétel: felhasználók hozzáadása a kiválasztott új alkalmazott hozzáadásával.](./media/bitabiz-tutorial/user2.png)
 
 5. Az **új alkalmazott hozzáadása** párbeszédpanelen hajtsa végre a következő lépéseket:
 
-    ![Felhasználó hozzáadása a BitaBIZ](./media/bitabiz-tutorial/user3.png)
+    ![Képernyőfelvétel: az a lap, amelyen az ebben a lépésben ismertetett adatokat adja meg.](./media/bitabiz-tutorial/user3.png)
 
     a. Az **Utónév** szövegmezőbe írja be a felhasználó utónevét, például a Britta nevet.
 

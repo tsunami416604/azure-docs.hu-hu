@@ -3,12 +3,12 @@ title: A beállításjegyzék hálózati problémáinak elhárítása
 description: Az Azure Container Registry virtuális hálózatban való elérésekor vagy tűzfal mögötti gyakori problémák tünetei, okai és megoldása
 ms.topic: article
 ms.date: 10/01/2020
-ms.openlocfilehash: c2ae8609dbd28a1a39a634e3c065030552aefb06
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: f84b11418344bfeaf790377c1d8644fbc7d7d636
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91630950"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743369"
 ---
 # <a name="troubleshoot-network-issues-with-registry"></a>A beállításjegyzék hálózati problémáinak elhárítása
 
@@ -90,6 +90,8 @@ Ha konfigurálva van egy szolgáltatási végpont a beállításjegyzékhez, gy�
 Ha egy másik Azure-előfizetésben lévő virtuális hálózat használatával szeretné korlátozni a beállításjegyzék-hozzáférést, ügyeljen arra, hogy regisztrálja az `Microsoft.ContainerRegistry` erőforrás-szolgáltatót az előfizetésben. [Regisztrálja Azure Container Registry erőforrás-szolgáltatóját](../azure-resource-manager/management/resource-providers-and-types.md) a Azure Portal, az Azure CLI vagy más Azure-eszközök használatával.
 
 Ha Azure Firewall vagy hasonló megoldás van konfigurálva a hálózaton, ellenőrizze, hogy a kimenő forgalom más erőforrásokból, például egy AK-fürtből van-e engedélyezve a beállításjegyzékbeli végpontok eléréséhez.
+
+Ha egy privát végpont konfigurálva van, ellenőrizze, hogy a DNS feloldja-e a beállításjegyzék nyilvános FQDN-jét, például a *myregistry.azurecr.IO* a beállításjegyzék magánhálózati IP-címére. Használjon olyan hálózati segédprogramot, mint a `dig` vagy `nslookup` a DNS-keresés.
 
 Kapcsolódó hivatkozások:
 

@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: alkohli
 Customer intent: As an IT admin, I need to understand how to activate Azure Stack Edge Pro so I can use it to transfer data to Azure.
-ms.openlocfilehash: 15680a4f8228af95e6643478c9262653171912ca
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 6807174f374e75f826001afecc1eccf8ba1a0603
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90903462"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91743386"
 ---
 # <a name="tutorial-activate-azure-stack-edge-pro-with-gpu"></a>Oktatóanyag: Azure Stack Edge Pro aktiválása GPU-val
 
@@ -52,12 +52,12 @@ Az Azure Stack Edge Pro-eszköz GPU-val való konfigurálása előtt győződjö
 
 4. Kattintson az **Alkalmaz** gombra.
 
-    ![Helyi webes felhasználói felület "felhő részletei" oldal](./media/azure-stack-edge-gpu-deploy-activate/activate-2.png)
+    ![Helyi webes felhasználói felület "Cloud details" 2. oldal](./media/azure-stack-edge-gpu-deploy-activate/activate-2.png)
 
 
 5. Először az eszköz aktiválva van. Ekkor a rendszer kéri a kulcsfájl letöltését.
     
-    ![Helyi webes felhasználói felület "felhő részletei" oldal](./media/azure-stack-edge-gpu-deploy-activate/activate-3.png)
+    ![Helyi webes felhasználói felület "Cloud details" 3. oldal](./media/azure-stack-edge-gpu-deploy-activate/activate-3.png)
     
     Válassza a **letöltés és folytatás** lehetőséget, majd mentse a *device-serial-no.js* fájlt biztonságos helyen az eszközön kívül. **Ez a kulcsfájl tartalmazza az operációs rendszer lemezének és adatlemezének helyreállítási kulcsait az eszközön**. Ezek a kulcsok szükségesek lehetnek a jövőbeli rendszerek helyreállításának megkönnyítésére.
 
@@ -88,12 +88,12 @@ Az Azure Stack Edge Pro-eszköz GPU-val való konfigurálása előtt győződjö
 
 6. Ugrás az **Áttekintés** oldalra. Az eszköz állapotának **aktiválva**kell lennie.
 
-    ![Helyi webes felhasználói felület "felhő részletei" oldal](./media/azure-stack-edge-gpu-deploy-activate/activate-4.png)
+    ![Helyi webes felhasználói felület – felhő részletei – 4. oldal](./media/azure-stack-edge-gpu-deploy-activate/activate-4.png)
  
 Az eszköz aktiválása befejeződött. Mostantól megosztásokat is hozzáadhat az eszközhöz.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban megismerte a következőket:
 

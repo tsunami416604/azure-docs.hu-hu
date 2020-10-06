@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: tutorial
 ms.date: 03/18/2019
 ms.author: alkohli
-ms.openlocfilehash: 78c06cc7f08fe94a25ea63d9bf76cc1352d9f2b7
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: cb6ef6ac25c4afa72160ba437e0ea3b5492cfd93
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "82561674"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91741958"
 ---
 # <a name="tutorial-connect-set-up-activate-azure-data-box-gateway"></a>Oktatóanyag: csatlakozási, beállítás, aktiválás Azure Data Box Gateway
 
@@ -23,7 +23,7 @@ Ez az oktatóanyag azt ismerteti, hogyan lehet csatlakozni, beállítani és akt
 
 A telepítés és az aktiválási folyamat körülbelül 10 percet vesz igénybe. 
 
-Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+Az oktatóanyag a következőket ismerteti:
 
 > [!div class="checklist"]
 > * Kapcsolódás virtuális eszközhöz
@@ -43,9 +43,9 @@ A Data Box Gateway konfigurálása és beállítása előtt győződjön meg az 
    
    https: \/ /IP-Address-of-Network-Interface
    
-   Használja az előző oktatóanyagban feljegyzett kapcsolatok URL-címét. Hibaüzenet vagy figyelmeztetés jelenik meg, amely jelzi, hogy probléma van a webhely biztonsági tanúsítványával.
+   Használja az előző oktatóanyagban feljegyzett kapcsolatok URL-címét. Megjelenik egy hiba vagy egy figyelmeztetés, amely azt jelzi, hogy probléma van a webhely biztonsági tanúsítványával.
 
-2. Válassza **a folytatás ehhez a weboldalhoz**lehetőséget. Ezek a lépések a használt böngészőtől függően eltérőek lehetnek.
+2. Válassza **a folytatás ehhez a weboldalhoz**lehetőséget. Ezek a lépések eltérők lehetnek, attól függően, hogy milyen böngészőt használ.
    
     ![A webhely biztonsági tanúsítványának hibaüzenete](./media/data-box-gateway-deploy-connect-setup-activate/image2.png)
 
@@ -75,12 +75,12 @@ Az irányítópulton a virtuális eszköznek a Data Box Gateway szolgáltatássa
    
     A hálózati beállítások konfigurálásakor vegye figyelembe a következőket:
 
-    - Ha a DHCP engedélyezve van a környezetben, a hálózati adapterek beállítása automatikusan megtörténik. A rendszer automatikusan hozzárendeli az IP-címet, az alhálózatot, az átjárót és a DNS-t.
+    - Ha a DHCP engedélyezve van a környezetben, a hálózati adapterek beállítása automatikusan megtörténik. A rendszer automatikusan hozzárendel egy IP-címet, egy alhálózatot, egy átjárót és egy DNS-t.
     - Ha a DHCP nincs engedélyezve, szükség esetén statikus IP-címeket is hozzárendelhet.
     - A hálózati adaptert IPv4-ként is konfigurálhatja.
 
      >[!NOTE] 
-     > Azt javasoljuk, hogy ne váltson a hálózati adapter helyi IP-címére statikusról DHCP-re, hacsak nem rendelkezik másik IP-címmel az eszközhöz való csatlakozáshoz. Ha egy hálózati adaptert használ, és a DHCP-re vált, a DHCP-címeket nem lehet meghatározni. Ha egy DHCP-címről szeretne váltani, várjon, amíg az eszköz regisztrálva van a szolgáltatásban, majd módosítsa a következőt:. Ezután megtekintheti az összes adapter IP-címeit az **eszköz tulajdonságai** között a szolgáltatás Azure Portal.
+     > Azt javasoljuk, hogy ne váltson a hálózati adapter helyi IP-címére statikusról DHCP-re, hacsak nem rendelkezik másik IP-címmel az eszközhöz való csatlakozáshoz. Ha egy hálózati adaptert használ és DHCP-re vált, a DHCP-címeket nem lehet meghatározni. Ha DHCP-címre szeretne váltani, várjon, amíg az eszköz regisztrálja magát a szolgáltatásban, majd hajtsa végre a módosítást. Ezután megtekintheti az összes adapter IP-címeit az **eszköz tulajdonságai** között a szolgáltatás Azure Portal.
 
 3. (Nem kötelező) konfigurálja a webproxy-kiszolgálót. Bár a webproxy konfigurálása nem kötelező, ha webproxyt használ, csak ezen a lapon konfigurálhatja.
    
@@ -95,7 +95,7 @@ Az irányítópulton a virtuális eszköznek a Data Box Gateway szolgáltatássa
 
    > [!NOTE]
    > A proxy-Auto config (PAC) fájlok nem támogatottak. A PAC-fájlok azt határozzák meg, hogy a böngészők és más felhasználói ügynökök hogyan tudják automatikusan kiválasztani a megfelelő proxykiszolgálót (hozzáférési módszer) egy adott URL beolvasásához.
-   > Azok a proxyk, amelyek megpróbálják feltartóztatni és beolvasni az összes forgalmat (majd újra aláírni a saját tanúsítvánnyal), nem kompatibilisek, mert a proxy tanúsítványa nem megbízható.
+   > Azok a proxyk, amelyek megpróbálják megszakítani és beolvasni az összes forgalmat (majd újra aláírni a saját tanúsítványukkal) nem kompatibilisek, mert a proxy tanúsítványa nem megbízható.
    > Általában az átlátszó proxyk jól működnek Azure Data Box Gateway.
 
 4. Választható A bal oldali panelen válassza az **időbeállítások**lehetőséget, majd konfigurálja az adott eszközhöz tartozó időzónát és az elsődleges és másodlagos NTP-kiszolgálókat. 
@@ -126,7 +126,7 @@ Az irányítópulton a virtuális eszköznek a Data Box Gateway szolgáltatássa
     
     3. Az eszköz aktiválva van, és ha elérhető, a kritikus frissítések automatikusan alkalmazva lesznek. Ekkor megjelenik egy értesítés erre a hatásra. A frissítési folyamat figyelése a Azure Portal használatával.
 
-        ![Helyi webes felhasználói felület "Cloud Settings" (Felhőbeli beállítások) lapja](./media/data-box-gateway-deploy-connect-setup-activate/image12.png)
+        ![Helyi webes felhasználói felület "felhő beállításai" 2. oldal](./media/data-box-gateway-deploy-connect-setup-activate/image12.png)
         
         **A párbeszédpanelen egy olyan helyreállítási kulcs is található, amelyet egy biztonságos helyre kell másolni és menteni. Ez a kulcs az adatok helyreállításához használható abban az esetben, ha az eszköz nem tud elindulni.**
 

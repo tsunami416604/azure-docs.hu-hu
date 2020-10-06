@@ -8,12 +8,12 @@ ms.subservice: gateway
 ms.topic: troubleshooting
 ms.date: 03/20/2019
 ms.author: alkohli
-ms.openlocfilehash: e49cc400fd8af3d284a223363f3384063d862981
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.openlocfilehash: e5280805090a83245e287c0b15a1735ee41e934e
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "87927181"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91741805"
 ---
 # <a name="troubleshoot-your-azure-data-box-gateway-issues"></a>Az Azure Data Box Gateway hibáinak elhárítása
 
@@ -30,13 +30,13 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 Az eszközök diagnosztizálásához és a hibák elhárításához futtassa le a diagnosztikai teszteket. Eszközének helyi webes felhasználói felületen kövesse az alábbi lépéseket a diagnosztikai tesztek futtatásához.
 
-1. A helyi webes felhasználói felületen válassza a **Hibaelhárítás > Diagnosztikai tesztek** lehetőséget. Válassza ki a tesztet a futtatáshoz, és kattintson a **Teszt futtatása** gombra. Megtörténik a hálózat, az eszköz, a webalkalmazás-proxy, az idő és a felhő beállításaival kapcsolatos lehetséges problémák diagnosztizálása. Értesítést kap, hogy az eszköz teszteket futtat.
+1. A helyi webes felhasználói felületen válassza a **Hibaelhárítás > Diagnosztikai tesztek** lehetőséget. Válassza ki a futtatni kívánt tesztet, majd kattintson a **teszt futtatása**gombra. Megtörténik a hálózat, az eszköz, a webalkalmazás-proxy, az idő és a felhő beállításaival kapcsolatos lehetséges problémák diagnosztizálása. Értesítést kap, hogy az eszköz teszteket futtat.
 
     ![Kattintson a Felhasználó hozzáadása gombra](media/data-box-gateway-troubleshoot/run-diag-1.png)
  
 2. A tesztek lefutása után megjelennek az eredmények. Ha egy teszt sikertelen, megjelenik a javasolt művelet URL-címe. Az URL-címre kattintva tekintse meg a javasolt műveletet. 
  
-    ![Kattintson a Felhasználó hozzáadása gombra](media/data-box-gateway-troubleshoot/run-diag-2.png)
+    ![Kattintson a felhasználó hozzáadása 2](media/data-box-gateway-troubleshoot/run-diag-2.png)
 
 
 ## <a name="collect-support-package"></a>Támogatási csomag összeállítása
@@ -47,11 +47,11 @@ Kövesse az alábbi lépéseket a támogatási csomag összeállításához.
 
 1. A helyi webes felhasználói felületen válassza a **Hibaelhárítás > Támogatás** lehetőséget. Kattintson a **Támogatási csomag létrehozása** elemre. A rendszer megkezdi a támogatási csomag összeállítását. A csomagok gyűjteményének létrehozása eltarthat néhány percig.
 
-    ![Kattintson a Felhasználó hozzáadása gombra](media/data-box-gateway-troubleshoot/collect-logs-1.png)
+    ![Kattintson a 3. felhasználó hozzáadása elemre.](media/data-box-gateway-troubleshoot/collect-logs-1.png)
  
 2. A támogatási csomag létrehozásának befejezését követően kattintson a **Támogatási csomag letöltése** elemre. A rendszer a tömörített csomagot letölti a megadott helyre. A csomag kibontható.
 
-    ![Kattintson a Felhasználó hozzáadása gombra](media/data-box-gateway-troubleshoot/collect-logs-2.png)
+    ![Kattintson a felhasználó hozzáadása 4](media/data-box-gateway-troubleshoot/collect-logs-2.png)
 
 ## <a name="use-logs-to-troubleshoot"></a>Hibaelhárítás naplók használatával
 
@@ -59,7 +59,7 @@ A feltöltési és frissítési folyamat során észlelt hibákat a megfelelő h
 
 1. A hibafájlok megtekintéséhez nyissa meg saját megosztását, majd megosztásra kattintva tekintse meg tartalmát. 
 
-      ![Kattintson a Felhasználó hozzáadása gombra](media/data-box-gateway-troubleshoot/troubleshoot-logs-1.png)
+      ![Kattintson a felhasználó hozzáadása 5 elemre.](media/data-box-gateway-troubleshoot/troubleshoot-logs-1.png)
 
 2. Kattintson a _Microsoft Data Box Gateway mappára_. Ebben a mappában két almappát talál:
 

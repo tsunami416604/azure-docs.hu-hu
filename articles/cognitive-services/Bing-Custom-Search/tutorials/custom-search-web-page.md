@@ -10,12 +10,12 @@ ms.subservice: bing-custom-search
 ms.topic: tutorial
 ms.date: 03/05/2019
 ms.author: aahi
-ms.openlocfilehash: da1ada27b9420643f6f0b15f0986c245ba585acd
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: a07365dd313f75a844e41b71427d8ddcf78ded85
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "85921940"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91742502"
 ---
 # <a name="tutorial-build-a-custom-search-web-page"></a>Oktatóanyag: Custom Search-weboldal létrehozása
 
@@ -45,7 +45,7 @@ Bing Custom Search-példány létrehozása:
   
 2. Navigáljon a Custom Search [portálra](https://customsearch.ai).  
   
-3. Egy Microsoft-fiók (MSA) használatával jelentkezzen be a portálra. Ha nem rendelkezik MSA, kattintson **a Microsoft-fiók létrehozása**elemre. Ha első alkalommal használja a portált, a rendszer engedélyt kér az adatai eléréséhez. Kattintson az **Igen**gombra.  
+3. Egy Microsoft-fiók (MSA) használatával jelentkezzen be a portálra. Ha nem rendelkezik MSA, kattintson **a Microsoft-fiók létrehozása**elemre. Ha első alkalommal használja a portált, a rendszer engedélyt kér az adatai eléréséhez. Kattintson a **Yes** (Igen) gombra.  
   
 4. A bejelentkezés után kattintson a **New custom search** (Új egyéni keresés) elemre. Az **új egyéni keresési példány létrehozása** ablakban adjon meg egy értelmes nevet, és írja le a keresés által visszaadott tartalom típusát. A nevet bármikor módosíthatja.  
   
@@ -118,7 +118,7 @@ A Custom Search üzemeltetett felhasználói felületet biztosít, amelyen megje
   
 5. Válassza ki előfizetési kulcsait a legördülő listákból. Másik lehetőségként manuálisan is megadhatja az előfizetési kulcsot.
   
-   ![Képernyőkép az üzemeltetett felhasználói felület további beállítási lépéséről](./media/custom-search-hosted-ui-subscription-key.png)
+   ![Képernyőkép az üzemeltetett felhasználói felület előfizetési kulcsáról](./media/custom-search-hosted-ui-subscription-key.png)
 
 [!INCLUDE [publish or revert](../includes/publish-revert.md)]
 
@@ -144,7 +144,7 @@ Az oktatóanyag hátralévő része az 1. **lehetőség: JavaScript-kódrészlet
   
 4. A **New ASP.NET Core Web Application** (Új ASP.NET Core-webalkalmazás) ablakban válassza a **Web Application** (Webalkalmazás) lehetőséget, majd kattintson az **OK** gombra.  
   
-   ![Az új projekt ablak képernyőképe](./media/custom-search-new-webapp.png)  
+   ![Az új WebApp-ablak képernyőképe](./media/custom-search-new-webapp.png)  
 
 ## <a name="edit-indexcshtml"></a>Az index.cshtml szerkesztése
 

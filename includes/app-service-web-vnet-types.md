@@ -2,14 +2,14 @@
 author: ccompy
 ms.service: app-service-web
 ms.topic: include
-ms.date: 04/15/2020
+ms.date: 10/01/2020
 ms.author: ccompy
-ms.openlocfilehash: c31a5aaa9866a4ce97cd3cd59a8e363834f70587
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 481bd4f50eb527bcad2ba79b5ba4b9df4b872bfc
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81312842"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91739908"
 ---
 * A több-bérlős rendszerek, amelyek támogatják az elkülönített díjszabási csomagok teljes skáláját.
 * A App Service Environment, amely üzembe helyezi a VNet, és támogatja az elkülönített díjszabási csomagot.
@@ -23,7 +23,7 @@ A VNet integrációja lehetővé teszi az alkalmazás számára a VNet lévő er
 
 A VNet integrációs funkciói:
 
-* Standard, prémium, PremiumV2 vagy rugalmas prémium díjszabási csomag szükséges.
+* Standard, prémium szintű, PremiumV2, PremiumV3 vagy rugalmas prémium díjszabási csomag szükséges.
 * A TCP és az UDP támogatása.
 * Azure App Service-alkalmazások és-függvények használata.
 

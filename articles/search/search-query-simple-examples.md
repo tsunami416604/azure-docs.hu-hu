@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 11/04/2019
-ms.openlocfilehash: 3c469d7274bb90e194478af2464cb352efe7490c
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.date: 10/05/2020
+ms.openlocfilehash: e2c6f627c69316b8f146d3ac82b8d29801ec3902
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89294866"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91740683"
 ---
 # <a name="create-a-simple-query-in-azure-cognitive-search"></a>Egyszerű lekérdezés létrehozása az Azure Cognitive Search
 
@@ -37,13 +37,13 @@ A GET-ben a HTTP-kérelem kiadásához szükséges Poster vagy azzal egyenérté
 
 A kérelem fejlécének megadását követően újra felhasználhatja azt a jelen cikk összes lekérdezéséhez, csak a **Search =** sztringet felcserélve. 
 
-  ![Poster-kérelem fejlécének paramétereinek beállítása](media/search-query-lucene-examples/postman-header.png)
+  :::image type="content" source="media/search-query-lucene-examples/postman-header.png" alt-text="Poster-kérelem fejlécének paramétereinek beállítása" border="false":::
 
 ### <a name="set-the-request-url"></a>A kérelem URL-címének beállítása
 
 A kérelem egy GET parancs, amely az Azure Cognitive Search végpontot és a keresési karakterláncot tartalmazó URL-címmel párosítva van.
 
-  ![Poster-kérelem fejlécének beolvasása](media/search-query-lucene-examples/postman-basic-url-request-elements.png)
+  :::image type="content" source="media/search-query-lucene-examples/postman-basic-url-request-elements.png" alt-text="Poster-kérelem fejlécének paramétereinek beállítása" border="false":::
 
 Az URL-összeállítás a következő elemekből áll:
 
@@ -97,7 +97,7 @@ https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-
 
 A lekérdezésre adott válasznak az alábbi képernyőképhez hasonlóan kell kinéznie.
 
-  ![Poster-minta válasz](media/search-query-lucene-examples/postman-sample-results.png)
+  :::image type="content" source="media/search-query-lucene-examples/postman-sample-results.png" alt-text="Poster-kérelem fejlécének paramétereinek beállítása" border="false":::
 
 Lehetséges, hogy észrevette a keresési pontszámot a válaszban. 1 egységes pontszám akkor fordul elő, ha nincs rangsor, vagy mert a keresés nem teljes szöveges keresés, vagy nem lett alkalmazva. A feltétel nélküli null kereséshez a sorok tetszőleges sorrendben jönnek vissza. A tényleges feltételek belefoglalásakor a keresési pontszámok jelentős értékekre lesznek kialakítva.
 
@@ -133,7 +133,7 @@ POST /indexes/nycjobs/docs/search?api-version=2020-06-30
 
 Együtt használva a szűrő először a teljes indexre lesz alkalmazva, majd a keresés a szűrő eredményein történik. A szűrők éppen ezért hasznosak a lekérdezés teljesítményének javítására, mivel általuk lecsökkenthető a keresési lekérdezés által feldolgozandó dokumentumok köre.
 
-  ![Lekérdezési válasz szűrése](media/search-query-simple-examples/filtered-query.png)
+  :::image type="content" source="media/search-query-simple-examples/filtered-query.png" alt-text="Poster-kérelem fejlécének paramétereinek beállítása" border="false":::
 
 Ha szeretné kipróbálni a Poster használatával a GET paranccsal, illessze be a következő karakterláncot:
 
@@ -167,7 +167,7 @@ POST /indexes/nycjobs/docs/search?api-version=2020-06-30
       "count": "true"
     }
 ```
-  ![Numerikus tartományokhoz tartozó tartomány-szűrő](media/search-query-simple-examples/rangefilternumeric.png)
+  :::image type="content" source="media/search-query-simple-examples/rangefilternumeric.png" alt-text="Poster-kérelem fejlécének paramétereinek beállítása" border="false":::
 
 
 ```http
@@ -181,7 +181,7 @@ POST /indexes/nycjobs/docs/search?api-version=2020-06-30
     }
 ```
 
-  ![Tartomány-szűrő a szöveges tartományokhoz](media/search-query-simple-examples/rangefiltertext.png)
+  :::image type="content" source="media/search-query-simple-examples/rangefiltertext.png" alt-text="Poster-kérelem fejlécének paramétereinek beállítása" border="false":::
 
 A GET paranccsal is kipróbálhatja ezeket a Poster használatával:
 
@@ -251,14 +251,14 @@ Az alapértelmezett searchMode (any), a 2800-es dokumentumok visszaadása: a tö
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&$count=true&searchMode=any&search="fire department"  -"Metrotech Center"
 ```
 
-  ![tetszőleges keresési mód](media/search-query-simple-examples/searchmodeany.png)
+  :::image type="content" source="media/search-query-simple-examples/searchmodeany.png" alt-text="Poster-kérelem fejlécének paramétereinek beállítása" border="false":::
 
 A searchMode módosítása a `all` feltételek kumulatív hatásának érvényesítésére és egy kisebb eredményhalmaz-21 dokumentum visszaadására, amely a teljes "tűzoltó részleg" kifejezést tartalmazza, és levonva a feladatokat a Metrotech Center-címen.
 
 ```http
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&$count=true&searchMode=all&search="fire department"  -"Metrotech Center"
 ```
-  ![összes keresési mód](media/search-query-simple-examples/searchmodeall.png)
+  :::image type="content" source="media/search-query-simple-examples/searchmodeall.png" alt-text="Poster-kérelem fejlécének paramétereinek beállítása" border="false":::
 
 ## <a name="example-8-structuring-results"></a>8. példa: az eredmények strukturálása
 
@@ -285,7 +285,7 @@ A következő 5 beszerzéséhez hagyja ki az első köteget:
 https://azs-playground.search.windows.net/indexes/nycjobs/docs?api-version=2020-06-30&$count=true&$select=job_id,agency,business_title,civil_service_title,work_location,job_description&search="fire department"&$orderby=civil_service_title&$top=5&$skip=5
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Próbálkozzon a kódban szereplő lekérdezések megadásával. Az alábbi hivatkozások azt ismertetik, hogyan állíthat be keresési lekérdezéseket a .NET-hez és a REST APIhoz az alapértelmezett egyszerű szintaxis használatával.
 
 * [Az index lekérdezése a .NET SDK használatával](./search-get-started-dotnet.md)
