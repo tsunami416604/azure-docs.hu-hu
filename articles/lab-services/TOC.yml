@@ -88,6 +88,8 @@
           href: specify-marketplace-images.md
         - name: Támogatási információk megadása (tesztkörnyezetfiók tulajdonosa)
           href: lab-account-owner-support-information.md
+        - name: Egyéni rendszerkép feltöltése a Shared Image Gallerybe
+          href: upload-custom-image-shared-image-gallery.md
     - name: Osztályterem-tesztkörnyezetek létrehozása és konfigurálása (oktató)
       items:
         - name: Osztálytermi tesztkörnyezetek létrehozása és kezelése
