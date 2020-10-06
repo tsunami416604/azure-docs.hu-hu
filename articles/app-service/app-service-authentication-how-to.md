@@ -4,12 +4,12 @@ description: Megtudhatja, hogyan szabhatja testre a hitelesítési és engedély
 ms.topic: article
 ms.date: 07/08/2020
 ms.custom: seodec18
-ms.openlocfilehash: a5d81d99759c972d91f66ec75c482e08826a8e07
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a01ca051f676f6a62face2c8ef0c9055c0c98c31
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91255213"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91757520"
 ---
 # <a name="advanced-usage-of-authentication-and-authorization-in-azure-app-service"></a>A hitelesítés és az engedélyezés speciális használata Azure App Service
 
@@ -33,7 +33,7 @@ Először a Azure Portal **hitelesítés/engedélyezés** lapján konfigurálja 
 
 **Ha a kérelem nem hitelesítve van**, válassza a **Névtelen kérelmek engedélyezése (nincs művelet)** lehetőséget.
 
-A bejelentkezési oldalon vagy a navigációs sávon vagy az alkalmazás bármely más helyén vegyen fel egy bejelentkezési hivatkozást az összes engedélyezett szolgáltatóhoz ( `/.auth/login/<provider>` ). Példa:
+A bejelentkezési oldalon vagy a navigációs sávon vagy az alkalmazás bármely más helyén vegyen fel egy bejelentkezési hivatkozást az összes engedélyezett szolgáltatóhoz ( `/.auth/login/<provider>` ). Például:
 
 ```html
 <a href="/.auth/login/aad">Log in with Azure AD</a>
@@ -55,7 +55,7 @@ Ha át szeretné irányítani a felhasználói bejelentkezést egy egyéni URL-c
 
 Az ügyfél által irányított bejelentkezés során az alkalmazás manuálisan bejelentkezik a felhasználónak a szolgáltatóba, majd elküldi a hitelesítési jogkivonatot az ellenőrzéshez App Service (lásd: [hitelesítési folyamat](overview-authentication-authorization.md#authentication-flow)). Ez az érvényesítés önmagában nem biztosít hozzáférést a kívánt alkalmazás-erőforrásokhoz, de sikeres ellenőrzés esetén egy munkamenet-tokent ad meg, amely az alkalmazás erőforrásainak elérésére használható. 
 
-A szolgáltatói jogkivonat érvényesítéséhez a App Service alkalmazást először konfigurálni kell a kívánt szolgáltatóval. Futásidőben a szolgáltatótól kapott hitelesítési jogkivonat lekérése után a tokent az `/.auth/login/<provider>` érvényesítéshez tegye közzé. Példa: 
+A szolgáltatói jogkivonat érvényesítéséhez a App Service alkalmazást először konfigurálni kell a kívánt szolgáltatóval. Futásidőben a szolgáltatótól kapott hitelesítési jogkivonat lekérése után a tokent az `/.auth/login/<provider>` érvényesítéshez tegye közzé. Például: 
 
 ```
 POST https://<appname>.azurewebsites.net/.auth/login/aad HTTP/1.1
@@ -86,7 +86,7 @@ Ha a szolgáltatói jogkivonat ellenőrzése sikeresen megtörtént, az API a `a
 }
 ```
 
-Ha ezzel a munkamenet-jogkivonattal rendelkezik, a védett alkalmazás erőforrásaihoz a `X-ZUMO-AUTH` fejlécet a http-kérelmekhez hozzáadva érheti el. Példa: 
+Ha ezzel a munkamenet-jogkivonattal rendelkezik, a védett alkalmazás erőforrásaihoz a `X-ZUMO-AUTH` fejlécet a http-kérelmekhez hozzáadva érheti el. Például: 
 
 ```
 GET https://<appname>.azurewebsites.net/api/products/1
@@ -107,7 +107,7 @@ A következő egy egyszerű kijelentkezési hivatkozás egy webhelyen:
 <a href="/.auth/logout">Sign out</a>
 ```
 
-Alapértelmezés szerint a sikeres kijelentkezés az URL-címre irányítja át az ügyfelet `/.auth/logout/done` . A kijelentkezési átirányítási lapot a lekérdezési paraméter hozzáadásával módosíthatja `post_logout_redirect_uri` . Példa:
+Alapértelmezés szerint a sikeres kijelentkezés az URL-címre irányítja át az ügyfelet `/.auth/logout/done` . A kijelentkezési átirányítási lapot a lekérdezési paraméter hozzáadásával módosíthatja `post_logout_redirect_uri` . Például:
 
 ```
 GET /.auth/logout?post_logout_redirect_uri=/index.html
@@ -269,7 +269,7 @@ Bármely Windows-alkalmazás esetében a *Web.config* fájl szerkesztésével me
 
 ### <a name="identity-provider-level"></a>Identitás-szolgáltató szintje
 
-Az identitás-szolgáltató bizonyos kulcsrakész engedélyezést is biztosíthat. Példa:
+Az identitás-szolgáltató bizonyos kulcsrakész engedélyezést is biztosíthat. Például:
 
 - [Azure app Service](configure-authentication-provider-aad.md)esetében a [vállalati szintű hozzáférés](../active-directory/manage-apps/what-is-access-management.md) közvetlenül az Azure ad-ben is kezelhető. Útmutatásért lásd: [felhasználó hozzáférésének eltávolítása egy alkalmazáshoz](../active-directory/manage-apps/methods-for-removing-user-access.md).
 - A [Google](configure-authentication-provider-google.md)-ban a [szervezethez](https://cloud.google.com/resource-manager/docs/cloud-platform-resource-hierarchy#organizations) tartozó Google API-projektek konfigurálhatók úgy, hogy csak a szervezet felhasználói számára engedélyezzenek hozzáférést (lásd: a [Google **OAuth 2,0** -támogatás beállítása oldal](https://support.google.com/cloud/answer/6158849?hl=en)).
@@ -322,6 +322,17 @@ Az alábbi kimeríti a fájl lehetséges konfigurációs beállításait:
             "/path1",
             "/path2"
         ]
+    },
+    "httpSettings": {
+        "requireHttps": <true|false>,
+        "routes": {
+            "apiPrefix": "<api prefix>"
+        },
+        "forwardProxy": {
+            "convention": "NoProxy|Standard|Custom",
+            "customHostHeaderName": "<host header value>",
+            "customProtoHeaderName": "<proto header value>"
+        }
     },
     "identityProviders": {
         "azureActiveDirectory": {
@@ -398,7 +409,7 @@ Az alábbi kimeríti a fájl lehetséges konfigurációs beállításait:
             }
         },
         "openIdConnectProviders": {
-            "provider name": {
+            "<providerName>": {
                 "enabled": <true|false>,
                 "registration": {
                     "clientId": "<client id>",
@@ -427,45 +438,35 @@ Az alábbi kimeríti a fájl lehetséges konfigurációs beállításait:
                 }
             },
             //...
+        }
+    },
+    "login": {
+        "routes": {
+            "logoutEndpoint": "<logout endpoint>"
         },
-        "login": {
-            "routes": {
-                "logoutEndpoint": "<logout endpoint>"
+        "tokenStore": {
+            "enabled": <true|false>,
+            "tokenRefreshExtensionHours": "<double>",
+            "fileSystem": {
+                "directory": "<directory to store the tokens in if using a file system token store (default)>"
             },
-            "tokenStore": {
-                "enabled": <true|false>,
-                "tokenRefreshExtensionHours": "<double>",
-                "fileSystem": {
-                    "directory": "<directory to store the tokens in if using a file system token store (default)>"
-                },
-                "azureBlobStorage": {
-                    "sasUrlSettingName": "<app setting name containing the sas url for the Azure Blob Storage if opting to use that for a token store>"
-                }
-            },
-            "preserveUrlFragmentsForLogins": <true|false>,
-            "allowedExternalRedirectUri": [
-                "https://uri1.azurewebsites.net/",
-                "https://uri2.azurewebsites.net/"
-            ],
-            "cookieExpiration": {
-                "convention": "FixedTime|IdentityProviderDerived",
-                "timeToExpiration": "<timespan>"
-            },
-            "nonce": {
-                "validateNonce": <true|false>,
-                "nonceExpirationInterval": "<timespan>"
+            "azureBlobStorage": {
+                "sasUrlSettingName": "<app setting name containing the sas url for the Azure Blob Storage if opting to use that for a token store>"
             }
         },
-        "httpSettings": {
-            "requireHttps": <true|false>,
-            "routes": {
-                "apiPrefix": "<api prefix>"
-            },
-            "forwardProxy": {
-                "convention": "NoProxy|Standard|Custom",
-                "customHostHeaderName": "<host header value>",
-                "customProtoHeaderName": "<proto header value>"
-            }
+        "preserveUrlFragmentsForLogins": <true|false>,
+        "allowedExternalRedirectUri": [
+            "https://uri1.azurewebsites.net/",
+            "https://uri2.azurewebsites.net/",
+            "url_scheme_of_your_app://easyauth.callback"
+        ],
+        "cookieExpiration": {
+            "convention": "FixedTime|IdentityProviderDerived",
+            "timeToExpiration": "<timespan>"
+        },
+        "nonce": {
+            "validateNonce": <true|false>,
+            "nonceExpirationInterval": "<timespan>"
         }
     }
 }
@@ -489,7 +490,7 @@ Megtekintheti a platform-hitelesítés middleware aktuális verzióját az Azure
 
 ##### <a name="from-the-azure-cli"></a>Az Azure CLI-ből
 
-Az Azure CLI használatával tekintse meg az aktuális middleware-verziót az az [WebApp Auth show](/cli/azure/webapp/auth?view=azure-cli-latest#az-webapp-auth-show) paranccsal.
+Az Azure CLI használatával tekintse meg az aktuális middleware-verziót az az [WebApp Auth show](/cli/azure/webapp/auth?view=azure-cli-latest&preserve-view=true#az-webapp-auth-show) paranccsal.
 
 ```azurecli-interactive
 az webapp auth show --name <my_app_name> \
@@ -520,7 +521,7 @@ Egy alkalmazás/.auth/Version-végpontját is elérheti, ha meg szeretné tekint
 
 #### <a name="update-the-current-runtime-version"></a>Az aktuális futtatókörnyezet verziójának frissítése
 
-Az Azure CLI használatával az az `runtimeVersion` [WebApp Auth Update](/cli/azure/webapp/auth?view=azure-cli-latest#az-webapp-auth-update) paranccsal frissítheti az alkalmazás beállításait.
+Az Azure CLI használatával az az `runtimeVersion` [WebApp Auth Update](/cli/azure/webapp/auth?view=azure-cli-latest&preserve-view=true#az-webapp-auth-update) paranccsal frissítheti az alkalmazás beállításait.
 
 ```azurecli-interactive
 az webapp auth update --name <my_app_name> \

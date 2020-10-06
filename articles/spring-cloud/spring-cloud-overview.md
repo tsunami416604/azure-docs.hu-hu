@@ -7,12 +7,12 @@ ms.topic: overview
 ms.date: 09/08/2020
 ms.author: brendm
 ms.custom: devx-track-java
-ms.openlocfilehash: f622042c9a2e8cc5bc11c8dc909d02afe38e5c78
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b03bedd9abbe59ed3bc1b0ec1439aa27af57e6da
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90908371"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91758897"
 ---
 # <a name="what-is-azure-spring-cloud"></a>Mi az az Azure Spring Cloud?
 
@@ -32,7 +32,7 @@ Ez a bevezetés az Azure Spring Cloud következő képességeit ismerteti:
 
 ## <a name="spring-cloud-config-server"></a>Spring Cloud config-kiszolgáló
 
-Az Azure Spring Cloud config Server külső konfigurációt biztosít egy elosztott rendszeren a kiszolgáló-és ügyféloldali támogatással.  Az Azure Spring Cloud config Server egy központi hely az alkalmazások tulajdonságainak az összes környezetben való kezeléséhez. További információ: [Spring Cloud config Server Reference](https://spring.io/projects/spring-cloud-config.md). 
+Az Azure Spring Cloud config Server külső konfigurációt biztosít egy elosztott rendszeren a kiszolgáló-és ügyféloldali támogatással.  Az Azure Spring Cloud config Server egy központi hely az alkalmazások tulajdonságainak az összes környezetben való kezeléséhez. További információ: [Spring Cloud config Server Reference](https://spring.io/projects/spring-cloud-config). 
 
 ## <a name="bluegreen-deployments"></a>Kék/zöld üzembe helyezések
 
@@ -50,7 +50,7 @@ Az Azure Spring Cloud segítségével könnyedén méretezheti az Azure Spring C
 
 A Spring Cloud elosztott nyomkövetési eszközei lehetővé teszik a fejlesztők számára, hogy hibakeresést végezzenek, és figyelemmel kísérik az alkalmazásokban található szolgáltatások közötti összetett kapcsolatokat.  A [Spring Cloud Sleuth](https://spring.io/projects/spring-cloud-sleuth) és az Azure [Application Insights](../azure-monitor/insights/insights-overview.md)integrálásával az Azure hatékony elosztott nyomkövetési képességet biztosít közvetlenül a Azure Portal.  További információért olvassa el ezt az [oktatóanyagot](spring-cloud-tutorial-distributed-tracing.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Első lépésként fejezze be a [Spring Cloud](spring-cloud-quickstart.md) gyors útmutatóját
 

@@ -4,12 +4,12 @@ description: Megfigyelheti egy webhely teljesítményét annak ismételt üzembe
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 603cbde20ae6e8d19e4ad3ae290bbfc925483595
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 6c27c78bf8e3f3b8af342a14a38c9be3821d781a
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88923823"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91758663"
 ---
 # <a name="instrument-web-apps-at-runtime-with-application-insights-codeless-attach"></a>Az eszköz webalkalmazásai futásidőben Application Insights kód nem csatolhatók
 
@@ -130,7 +130,7 @@ A web.config frissítésének javításához:
 </dependentAssembly>
 ```
 
-Ezt a problémát [itt](https://github.com/Microsoft/ApplicationInsights-Home/issues/301)követjük nyomon.
+Ezt a problémát [itt](https://github.com/MohanGsk/ApplicationInsights-Home)követjük nyomon.
 
 
 ### <a name="application-diagnostic-messages"></a>Alkalmazás diagnosztikai üzenetei
@@ -316,7 +316,7 @@ A fordítási során már kiépített alkalmazások esetén:
 - A [Állapotmonitor telepítőjének](https://go.microsoft.com/fwlink/?LinkId=506648) letöltése és futtatása
 - Vagy futtasson [webplatform-telepítőt](https://www.microsoft.com/web/downloads/platform.aspx) , és keressen rá Application Insights állapotfigyelő.
 
-## <a name="next-steps"></a><a name="next"></a>További lépések
+## <a name="next-steps"></a><a name="next"></a>Következő lépések
 
 A telemetriai adatok megtekintése:
 

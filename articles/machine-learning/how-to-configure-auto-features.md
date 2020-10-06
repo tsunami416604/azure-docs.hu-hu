@@ -11,12 +11,12 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to
 ms.date: 05/28/2020
-ms.openlocfilehash: d8779a25b7c6036f3b09badab67733fa55acfee7
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 0138715e4c9df8ae05c9a3eade64d539eb7cdeda
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90907577"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91756551"
 ---
 # <a name="featurization-in-automated-machine-learning"></a>Featurization az automatizált gépi tanulásban
 
@@ -103,7 +103,7 @@ Az adatguardrails három állapot egyikét jeleníti meg:
 
 A következő táblázat ismerteti a jelenleg támogatott guardrails, valamint a kísérlet elküldésekor esetlegesen megjelenő társított állapotokat:
 
-Guardrail|Állapot|Trigger feltétele &nbsp; &nbsp;
+Guardrail|status|Trigger feltétele &nbsp; &nbsp;
 ---|---|---
 **Hiányzó szolgáltatási értékek imputálási** |Telt <br><br><br> Kész| A betanítási adatok nem észleltek hiányzó szolgáltatási értékeket. További információ a [hiányzó értékű imputálási.](https://docs.microsoft.com/azure/machine-learning/how-to-use-automated-ml-for-ml-models#advanced-featurization-options) <br><br> A rendszer hiányzó szolgáltatási értékeket észlelt a betanítási adatokban, és imputáltak voltak.
 **Magas fokú szolgáltatások kezelését** |Telt <br><br><br> Kész| A rendszer elemezte a bemeneteket, és nem észlelt magas szintű funkciókat. <br><br> A rendszer a Kiemelt funkciókat észlelte a bemenetekben, és kezelte azokat.
@@ -120,7 +120,7 @@ A featurizations testreszabásához adja meg  `"featurization": FeaturizationCo
 
 A támogatott testreszabások a következők:
 
-|Testreszabás|Definíció|
+|Testreszabás|Meghatározás|
 |--|--|
 |**Oszlop céljának frissítése**|Felülbírálja a megadott oszlop automatikus észlelési funkciójának típusát.|
 |**A transzformátor paraméterének frissítése** |Frissítse a megadott átalakító paramétereit. Jelenleg támogatja az *imputált* (mean, leggyakoribb és közepes) és a *HashOneHotEncoder*.|
@@ -207,7 +207,7 @@ Kimenet
     'Tranformations': ['DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime','DateTime']}]
   ```
 
-   |Kimenet|Definíció|
+   |Kimenet|Meghatározás|
    |----|--------|
    |RawFeatureName|A megadott adatkészlet bemeneti funkciójának vagy oszlopának neve.|
    |TypeDetected|A bemeneti funkció észlelt adattípusa.|
@@ -316,7 +316,7 @@ A BERT meghívásához be kell állítania a  `enable_dnn: True` automl_settings
 
 A AutoML a következő lépéseket hajtja végre a BERT esetében. 
 
-1. **Az összes szöveges oszlop előfeldolgozása és jogkivonatok létrehozása**. Például a "StringCast" átalakító a végső modell featurization összegzésében található. [Ebben a jegyzetfüzetben](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/automated-machine-learning/classification-text-dnn/auto-ml-classification-text-dnn.ipynb)egy példát láthat a modell featurization összegzésének elkészítésére.
+1. **Az összes szöveges oszlop előfeldolgozása és jogkivonatok létrehozása**. Például a "StringCast" átalakító a végső modell featurization összegzésében található. [Ebben a jegyzetfüzetben](https://towardsdatascience.com/automated-text-classification-using-machine-learning-3df4f4f9570b)egy példát láthat a modell featurization összegzésének elkészítésére.
 
 2. Az **összes szöveges oszlop összefűzése egyetlen szöveges oszlopba**, ezért a `StringConcatTransformer` végső modellben. 
 

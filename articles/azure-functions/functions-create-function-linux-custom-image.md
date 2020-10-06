@@ -5,16 +5,18 @@ ms.date: 03/30/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp, mvc, devx-track-python, devx-track-azurepowershell
 zone_pivot_groups: programming-languages-set-functions
-ms.openlocfilehash: 1a29b8cfbc07e1232ffee788da8d195d39b9ca93
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 7940e0f90e29e5c69ccde79dfbec889dbe31fe63
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90531644"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91758982"
 ---
 # <a name="create-a-function-on-linux-using-a-custom-container"></a>Függvény létrehozása Linux rendszerben egyéni tárolóval
 
 Ebben az oktatóanyagban létrehozhatja és üzembe helyezheti a kódot úgy, hogy az egyéni Docker-tárolóként Azure Functions egy Linux-alapú alaprendszerkép használatával. Általában egyéni rendszerképeket használ, ha a függvények egy adott nyelvi verziót igényelnek, vagy olyan függőséget vagy konfigurációt használnak, amelyet a beépített rendszerkép nem biztosít.
+
+A függvény kódjának egyéni Linux-tárolóban való üzembe helyezéséhez [Prémium csomag](functions-premium-plan.md#features) vagy [dedikált (App Service) csomag](functions-scale.md#app-service-plan) szükséges. Ennek az oktatóanyagnak az elvégzésével az Azure-fiókban néhány USA-dollárért járó költséget számolunk fel, amelyet a befejezéskor a [takarítási erőforrások](#clean-up-resources) minimalizálásával csökkentheti.
 
 Az alapértelmezett Azure App Service tárolót a [Linuxon üzemeltetett első függvény létrehozása](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-python)című témakörben leírtak szerint is használhatja. A Azure Functions támogatott alaplemezképei a [Azure functions Base images](https://hub.docker.com/_/microsoft-azure-functions-base)tárházban találhatók.
 
@@ -31,7 +33,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > * Engedélyezze az SSH-kapcsolatokat a tárolóhoz.
 > * Adja hozzá a várólista-tároló kimeneti kötését. 
 
-Ezt az oktatóanyagot követheti Windows, macOS vagy Linux rendszerű számítógépeken is. Az oktatóanyag elvégzése után az Azure-fiókban néhány USA-dollárért kell fizetnie.
+Ezt az oktatóanyagot követheti Windows, macOS vagy Linux rendszerű számítógépeken is. 
 
 [!INCLUDE [functions-requirements-cli](../../includes/functions-requirements-cli.md)]
 
@@ -243,7 +245,7 @@ Ezeket az elemeket az Azure CLI-parancsok használatával hozhatja létre. Az eg
     az functionapp plan create --resource-group AzureFunctionsContainers-rg --name myPremiumPlan --location westeurope --number-of-workers 1 --sku EP1 --is-linux
     ```   
 
-    Az egyéni functions-tárolók Linux-üzemeltetése [dedikált (App Service) csomagok](functions-scale.md#app-service-plan) és [prémium csomagok](functions-premium-plan.md#features)esetén támogatott. Az itt található prémium csomagot használjuk, amely igény szerint méretezhető. További információk az üzemeltetésről: [Azure Functions szolgáltatási csomagok összehasonlítása](functions-scale.md). A költségek kiszámításához tekintse meg a [functions díjszabását ismertető oldalt](https://azure.microsoft.com/pricing/details/functions/).
+    Az itt található prémium csomagot használjuk, amely igény szerint méretezhető. További információk az üzemeltetésről: [Azure Functions szolgáltatási csomagok összehasonlítása](functions-scale.md). A költségek kiszámításához tekintse meg a [functions díjszabását ismertető oldalt](https://azure.microsoft.com/pricing/details/functions/).
 
     A parancs egy kapcsolódó Azure Application Insights-példányt is kiépít ugyanabban az erőforráscsoporthoz, amellyel nyomon követheti a Function alkalmazást, és megtekintheti a naplókat. További információ: [Azure functions figyelése](functions-monitoring.md). A példány nem jár költséggel, amíg be nem aktiválja.
 

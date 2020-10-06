@@ -4,12 +4,12 @@ description: Webes és feldolgozói szerepkörök hatékony figyelése az Applic
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 09/05/2018
-ms.openlocfilehash: 1662b45d8243217357d1e69124832c499d587812
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: 676d3543cbcbf86feb67cad4bd2b9709c2b81437
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89437326"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91759373"
 ---
 # <a name="application-insights-for-azure-cloud-services"></a>Azure Cloud Services-Application Insights
 A [Application Insights][start] képes figyelni az [Azure Cloud Service-alkalmazásokat](https://azure.microsoft.com/services/cloud-services/) a rendelkezésre állásra, a teljesítményre, a hibákra és a használatra, ha Application Insights SDK-ból származó adatokat egyesít a cloud servicesből származó [Azure Diagnostics](../platform/diagnostics-extension-overview.md) adatokkal. A széles körben elérhető módon működő alkalmazások teljesítményével és hatékonyságával kapcsolatos visszajelzések birtokában tájékozott döntéseket hozhat a fejlesztés irányát illetően az egyes fejlesztési fázisokban.
@@ -42,7 +42,7 @@ A következő fejezetek a következő további lehetőségeket tárgyalják:
 * Egyéni telemetriát adhat hozzá az alkalmazásból.
 
 ## <a name="sample-app-instrumented-with-application-insights"></a>Példa Application Insights
-Ebben a [példában](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService)a Application Insights egy felhőalapú szolgáltatáshoz kerül, amely az Azure-ban üzemeltetett két feldolgozói szerepkörrel rendelkezik. 
+Ebben a [példában](https://github.com/MohanGsk/ApplicationInsights-Home/tree/master/Samples/AzureEmailService)a Application Insights egy felhőalapú szolgáltatáshoz kerül, amely az Azure-ban üzemeltetett két feldolgozói szerepkörrel rendelkezik. 
 
 A következő szakaszban megtudhatja, hogyan igazíthatja saját Cloud Service-projektjét ugyanúgy.
 
@@ -93,7 +93,7 @@ Ha úgy döntött, hogy külön Application Insights-erőforrást használ minde
 
 ![Application Insights konfigurálása](./media/cloudservices/configure-azure-diagnostics.png)
 
-Ennek hatására be kell szúrni a Application Insights rendszerállapot-kulcsokat a ServiceConfiguration nevű fájlba *. \* cscfg*. Itt látható a [mintakód](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/AzureEmailService/ServiceConfiguration.Cloud.cscfg).
+Ennek hatására be kell szúrni a Application Insights rendszerállapot-kulcsokat a ServiceConfiguration nevű fájlba *. \* cscfg*. Itt látható a [mintakód](https://github.com/MohanGsk/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/AzureEmailService/ServiceConfiguration.Cloud.cscfg).
 
 Ha szeretné, hogy a Application Insights eljuttatott diagnosztikai információk szintje eltérő legyen, ezt a [ *. cscfg* fájlok közvetlen szerkesztésével](../platform/diagnostics-extension-to-application-insights.md)teheti meg.
 
@@ -123,9 +123,9 @@ A Visual Studióban konfigurálja külön az Application Insights SDK-t az egyes
    
     b. Ismételje meg a "Step a" műveletet az alkalmazás egyes szerepköreinél. Lásd az alábbi példákat:
    
-    * [Webes szerepkör](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/Global.asax.cs#L27)
-    * [Feldolgozói szerepkör](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L232)
-    * [Weblapok esetén](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/Views/Shared/_Layout.cshtml#L13) 
+    * [Webes szerepkör](https://github.com/MohanGsk/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/Global.asax.cs#L27)
+    * [Feldolgozói szerepkör](https://github.com/MohanGsk/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L232)
+    * [Weblapok esetén](https://github.com/MohanGsk/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/Views/Shared/_Layout.cshtml#L13) 
 
 1. Állítsa be, hogy a rendszer mindig a kimeneti könyvtárba másolja a *ApplicationInsights.config* fájlt.
 
@@ -150,7 +150,7 @@ Erre a lépésre csak akkor van szükség, ha a .NET-keretrendszerben teljes SQL
     </Startup>
     ```
     
-2. Töltse le [InstallAgent.bat](https://github.com/microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/AppInsightsAgent/InstallAgent.bat) és [InstallAgent.ps1](https://github.com/microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/AppInsightsAgent/InstallAgent.ps1), majd helyezze azokat az `AppInsightsAgent` összes szerepkör-projekt mappájába. Ügyeljen rá, hogy a Visual Studio-fájl tulajdonságain keresztül másolja őket a kimeneti könyvtárba, vagy hozzon létre parancsfájlokat.
+2. Töltse le [InstallAgent.bat](https://github.com/MohanGsk/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/AppInsightsAgent/InstallAgent.bat) és [InstallAgent.ps1](https://github.com/MohanGsk/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/AppInsightsAgent/InstallAgent.ps1), majd helyezze azokat az `AppInsightsAgent` összes szerepkör-projekt mappájába. Ügyeljen rá, hogy a Visual Studio-fájl tulajdonságain keresztül másolja őket a kimeneti könyvtárba, vagy hozzon létre parancsfájlokat.
 
 3. A feldolgozói szerepkörökben adja hozzá a környezeti változókat: 
 
@@ -199,26 +199,26 @@ A Azure Diagnostics által eljuttatott nyomkövetési naplók közötti keresés
 A következő részekben megismerheti, hogyan szerezhet be további telemetria az alkalmazás különböző szempontjaiból.
 
 ## <a name="track-requests-from-worker-roles"></a>Feldolgozói szerepkörök kéréseinek nyomon követése
-A webes szerepkörökben a kérések modulja automatikusan gyűjti a HTTP-kérésekkel kapcsolatos adatokat. Az alapértelmezett gyűjtési viselkedés felülbírálásával kapcsolatos példákért tekintse meg a [minta MVCWebRole](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/MvcWebRole). 
+A webes szerepkörökben a kérések modulja automatikusan gyűjti a HTTP-kérésekkel kapcsolatos adatokat. Az alapértelmezett gyűjtési viselkedés felülbírálásával kapcsolatos példákért tekintse meg a [minta MVCWebRole](https://github.com/MohanGsk/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/MvcWebRole). 
 
 A feldolgozói szerepkörökhöz intézett hívások teljesítményének rögzítése a HTTP-kérésekkel megegyező módon történő nyomkövetéssel hajtható végre. Az Application Insightsban a Kérés telemetriatípus a megnevezett kiszolgálóoldali műveletek egységeit méri, amelyeknek mérhető az idejük, és külön-külön sikerülhetnek vagy meghiúsulhatnak. Habár az SDK automatikusan rögzíti a HTTP-kéréseket, beillesztheti a saját kódját, hogy nyomon követhesse a feldolgozói szerepkörökre irányuló kéréseket.
 
 Tekintse meg a kérelmeket a következő két minta feldolgozói szerepkörrel: 
-* [WorkerRoleA](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/WorkerRoleA)
-* [WorkerRoleB](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/WorkerRoleB)
+* [WorkerRoleA](https://github.com/MohanGsk/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/WorkerRoleA)
+* [WorkerRoleB](https://github.com/MohanGsk/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/WorkerRoleB)
 
 ## <a name="exceptions"></a>Kivételek
 A különböző webalkalmazások típusaitól származó nem kezelt kivételek gyűjtésével kapcsolatos további információkért lásd: [a kivételek figyelése Application Insightsban](./asp-net-exceptions.md).
 
 A minta webes szerepkör MVC5 és Web API 2 vezérlőkkel rendelkezik. A két vezérlőtől származó nem kezelt kivételeket a rendszer a következő kezelőkkel rögzíti:
 
-* [AiHandleErrorAttribute](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/Telemetry/AiHandleErrorAttribute.cs) az MVC5-vezérlőkhöz [, ahogy az ebben a példában is látható](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/App_Start/FilterConfig.cs#L12) 
-* [AiWebApiExceptionLogger](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/Telemetry/AiWebApiExceptionLogger.cs) beállítása a webes API 2-vezérlőkhöz az [ebben a példában látható módon](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/App_Start/WebApiConfig.cs#L25) 
+* [AiHandleErrorAttribute](https://github.com/MohanGsk/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/Telemetry/AiHandleErrorAttribute.cs) az MVC5-vezérlőkhöz [, ahogy az ebben a példában is látható](https://github.com/MohanGsk/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/App_Start/FilterConfig.cs#L12) 
+* [AiWebApiExceptionLogger](https://github.com/MohanGsk/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/Telemetry/AiWebApiExceptionLogger.cs) beállítása a webes API 2-vezérlőkhöz az [ebben a példában látható módon](https://github.com/MohanGsk/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/MvcWebRole/App_Start/WebApiConfig.cs#L25) 
 
 A feldolgozói szerepkörök esetében kétféleképpen követheti a kivételeket:
 
 * Használja a TrackException (pl.).
-* Ha hozzáadta a Application Insights Trace Listener NuGet-csomagot, a System. Diagnostics. Trace használatával naplózhatja a kivételeket, [ahogy az ebben a példában is látható](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L107).
+* Ha hozzáadta a Application Insights Trace Listener NuGet-csomagot, a System. Diagnostics. Trace használatával naplózhatja a kivételeket, [ahogy az ebben a példában is látható](https://github.com/MohanGsk/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L107).
 
 ## <a name="performance-counters"></a>Teljesítményszámlálók
 A rendszer alapértelmezés szerint az alábbi számlálókat gyűjti:
@@ -236,7 +236,7 @@ Webes szerepkörök esetében a rendszer az alábbi számlálókat is gyűjti:
 * \ASP.NET Applications(??APP_W3SVC_PROC??)\Request Execution Time
 * \ASP.NET Applications(??APP_W3SVC_PROC??)\Requests In Application Queue
 
-További egyéni vagy más Windows-teljesítményszámlálókat is megadhat a *ApplicationInsights.config* szerkesztésével [, ahogy az ebben a példában is látható](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/ApplicationInsights.config#L14).
+További egyéni vagy más Windows-teljesítményszámlálókat is megadhat a *ApplicationInsights.config* szerkesztésével [, ahogy az ebben a példában is látható](https://github.com/MohanGsk/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/ApplicationInsights.config#L14).
 
   ![Teljesítményszámlálók](./media/cloudservices/002-servers.png)
 
@@ -245,11 +245,11 @@ A hatékony diagnosztikai élmény érdekében megtekintheti, hogy mi vezetett e
 
 Ha ezt a nézetet szeretné elérni a feldolgozói szerepkörökhöz, használhat egy egyéni telemetria-inicializálást az összes telemetria közös Operation.Id-környezeti attribútumának beállításához. Ezzel egy pillantással megtekintheti, hogy a késés vagy a hiba problémáját egy függőség vagy a kód okozta-e. 
 
-Ez a következőképpen érhető el:
+Ezt a következőképpen teheti meg:
 
-* Állítsa be a correlationId egy CallContext [, az ebben a példában látható módon](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L36). Ebben az esetben a kérelem AZONOSÍTÓját használjuk correlationId.
-* Vegyen fel egy egyéni TelemetryInitializer-megvalósítást, hogy a Operation.Id a korábban beállított correlationId állítsa be. Példaként tekintse meg a következőt: [ItemCorrelationTelemetryInitializer](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/Telemetry/ItemCorrelationTelemetryInitializer.cs#L13).
-* Adja hozzá az egyéni telemetriainicializálót. Ezt megteheti a *ApplicationInsights.config* fájlban vagy kódban [, ahogy az ebben a példában is látható](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L233).
+* Állítsa be a correlationId egy CallContext [, az ebben a példában látható módon](https://github.com/MohanGsk/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L36). Ebben az esetben a kérelem AZONOSÍTÓját használjuk correlationId.
+* Vegyen fel egy egyéni TelemetryInitializer-megvalósítást, hogy a Operation.Id a korábban beállított correlationId állítsa be. Példaként tekintse meg a következőt: [ItemCorrelationTelemetryInitializer](https://github.com/MohanGsk/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/Telemetry/ItemCorrelationTelemetryInitializer.cs#L13).
+* Adja hozzá az egyéni telemetriainicializálót. Ezt megteheti a *ApplicationInsights.config* fájlban vagy kódban [, ahogy az ebben a példában is látható](https://github.com/MohanGsk/ApplicationInsights-Home/blob/master/Samples/AzureEmailService/WorkerRoleA/WorkerRoleA.cs#L233).
 
 ## <a name="client-telemetry"></a>Ügyfél-telemetria
 A böngészőalapú telemetria beszerzéséhez, például a lapok megtekintésének száma, az oldal betöltési ideje vagy a parancsfájlok kivételei, valamint az egyéni telemetria írása az oldal parancsfájljaiba: [a JavaScript SDK hozzáadása a weblapokhoz][client].
@@ -265,7 +265,7 @@ Ha a rendszer más Azure-szolgáltatásokat (például Stream Analytics) haszná
 Ha rendelkezik ügyfél-mobilalkalmazással, használja az [App Centert](../learn/mobile-center-quickstart.md). [Analytics](../log-query/log-query-overview.md)-lekérdezések létrehozásával megjelenítheti az események számát, és rögzítheti őket az irányítópulton.
 
 ## <a name="example"></a>Példa
-[Ez a példa](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService) egy olyan szolgáltatást figyel, amely egy webes és két feldolgozói szerepkörrel rendelkezik.
+[Ez a példa](https://github.com/MohanGsk/ApplicationInsights-Home/tree/master/Samples/AzureEmailService) egy olyan szolgáltatást figyel, amely egy webes és két feldolgozói szerepkörrel rendelkezik.
 
 ## <a name="exception-method-not-found-on-running-in-azure-cloud-services"></a>Kivétel "a metódus nem található" az Azure Cloud Servicesben való futtatáskor
 A .NET 4.6-os verziójára készítette el az alkalmazást? A .NET 4,6 nem támogatott automatikusan az Azure Cloud Services szerepköreiben. Az alkalmazás futtatása előtt [telepítse a .net 4,6-es verzióját az egyes szerepkörökre](../../cloud-services/cloud-services-dotnet-install-dotnet.md) .

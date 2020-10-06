@@ -5,18 +5,18 @@ services: private-link
 author: malopMSFT
 ms.service: private-link
 ms.topic: conceptual
-ms.date: 09/16/2019
+ms.date: 10/05/2019
 ms.author: allensu
-ms.openlocfilehash: f557bb271c88b32a9b53cf9b41b911314427530a
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: 91823ff0d324cd30566948fecd86cc441342f14e
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91629947"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91757044"
 ---
 # <a name="azure-private-link-frequently-asked-questions-faq"></a>Azure Private-hivatkozás – gyakori kérdések (GYIK)
 
-## <a name="private-link"></a>Privát kapcsolat
+## <a name="private-link"></a>Private Link
 
 ### <a name="what-is-azure-private-endpoint-and-azure-private-link-service"></a>Mi az Azure Private Endpoint és az Azure Private link Service?
 
@@ -24,14 +24,16 @@ ms.locfileid: "91629947"
 - **[Azure Private link Service](private-link-service-overview.md)**: az Azure Private link Service szolgáltató által létrehozott szolgáltatás. Jelenleg egy magánhálózati kapcsolati szolgáltatás csatlakoztatható egy standard Load Balancer előtérbeli IP-konfigurációjához. 
 
 ### <a name="how-is-traffic-being-sent-when-using-private-link"></a>Hogyan történik a forgalom küldése a privát hivatkozás használatakor?
-A forgalmat a Microsoft gerincen keresztül küldjük el. Nem halad át az interneten.  
+A forgalmat a Microsoft gerincen keresztül küldjük el. Nem halad át az interneten. Az Azure Private link nem tárolja az ügyféladatokat.
  
 ### <a name="what-is-the-difference-between-a-service-endpoints-and-a-private-endpoints"></a>Mi a különbség a szolgáltatási végpontok és a privát végpontok között?
-- Privát végpontok használata esetén a hálózati hozzáférés egy adott szolgáltatás mögötti, részletes szegmentálást biztosító erőforrásokhoz van biztosítva, a forgalom azonban a helyi végpontok használata nélkül is elérheti a szolgáltatási erőforrást a helyszínen.
+- A privát végpontok egy adott szolgáltatás mögötti, részletes szegmentálást biztosító erőforrásokhoz biztosítanak hálózati hozzáférést. A forgalom nyilvános végpontok használata nélkül érheti el a szolgáltatási erőforrást a helyszínen.
 - A szolgáltatási végpontok egy nyilvánosan irányítható IP-címen maradnak.  A privát végpont a magánhálózati IP-cím azon virtuális hálózat címterület területén, ahol a magánhálózati végpont konfigurálva van.
 
 ### <a name="what-is-the-relationship-between-private-link-service-and-private-endpoint"></a>Mi a kapcsolat a Private link Service és a privát végpont között?
-A privát végpont több privát kapcsolati erőforrás-típushoz biztosít hozzáférést, beleértve az Azure Pásti-szolgáltatásokat és a saját privát kapcsolati szolgáltatását. Ez egy-a-többhöz kapcsolat. Egy privát kapcsolati szolgáltatás több privát végpontról is fogadhat kapcsolatokat. Másfelől az egyik privát végpont csak egy privát kapcsolati szolgáltatáshoz tud csatlakozni.    
+Több magánhálózati kapcsolati erőforrástípus támogatja a hozzáférést a privát végponton keresztül. Az erőforrások közé tartozik az Azure Pásti-szolgáltatások és a saját privát kapcsolati szolgáltatás. Ez egy-a-többhöz kapcsolat. 
+
+A privát kapcsolati szolgáltatás több privát végponttól érkező kapcsolatokat fogad. Egy privát végpont egy privát kapcsolati szolgáltatáshoz csatlakozik.    
 
 ## <a name="private-endpoint"></a>Privát végpont 
  
@@ -68,15 +70,15 @@ Az expozíciót a magánjellegű kapcsolat szolgáltatás láthatósági konfigu
 - **Restrictive** A csak a jóváhagyott és a RBAC hozzáféréssel rendelkező előfizetések megkereshetik a szolgáltatást. 
 - **Minden** – mindenki megtalálja a szolgáltatást. 
  
-### <a name="can-i-create-a-private-link-service-with-basic-load-balancer"></a>Létrehozhatok alapszintű Load Balancerekkel rendelkező privát hivatkozás szolgáltatást? 
-Nem. A Private link Service egy alapszintű Load Balanceron nem támogatott.
+### <a name="can-i-create-a-private-link-service-with-basic-load-balancer"></a>Létrehozhatok egy alapszintű Load balancert tartalmazó privát hivatkozási szolgáltatást? 
+Nem. Az alapszintű Load balanceren keresztüli privát kapcsolati szolgáltatás nem támogatott.
  
 ### <a name="is-a-dedicated-subnet-required-for-private-link-service"></a>Dedikált alhálózat szükséges a Private link Service-hez? 
 Nem. A Private link Service nem igényel dedikált alhálózatot. Bármelyik alhálózatot kiválaszthatja a VNet, ahol a szolgáltatás telepítve van.   
 
-### <a name="i-am-a-service-provider-using-azure-private-link-do-i-need-to-make-sure-all-my-customers-have-unique-ip-space-and-dont-overlap-with-my-ip-space"></a>Az Azure privát hivatkozását használó szolgáltató vagyok. Meg kell győződni arról, hogy minden ügyfélnek egyedi IP-címmel kell rendelkeznie, és ne legyen átfedésben az IP-tárhelytel? 
-Nem. Az Azure Private link ezt a funkciót biztosítja Önnek. Ezért nincs szükség arra, hogy nem átfedésben lévő címtartomány álljon rendelkezésre az ügyfél címterület használatával. 
+### <a name="im-a-service-provider-using-azure-private-link-do-i-need-to-make-sure-all-my-customers-have-unique-ip-space-and-dont-overlap-with-my-ip-space"></a>Azure Private-hivatkozást használó szolgáltató vagyok. Meg kell győződni arról, hogy minden ügyfélnek egyedi IP-címmel kell rendelkeznie, és ne legyen átfedésben az IP-tárhelytel? 
+Nem. Az Azure Private link ezt a funkciót biztosítja Önnek. Nem szükséges, hogy ne legyen átfedésben a címtartomány az ügyfél címterület-területével. 
 
-##  <a name="next-steps"></a>További lépések
+##  <a name="next-steps"></a>Következő lépések
 
 - További információ az [Azure Private linkről](private-link-overview.md)

@@ -6,12 +6,12 @@ ms.author: manishku
 ms.service: mysql
 ms.topic: conceptual
 ms.date: 09/21/2020
-ms.openlocfilehash: a5f11a6054358584a8511cb967860c89f6491beb
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: a72552d8654a45d1ff4c1890c8086d43d7bd801d
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90936160"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91756534"
 ---
 # <a name="backup-and-restore-in-azure-database-for-mysql-flexible-server-preview"></a>Biztonsági mentés és visszaállítás Azure Database for MySQL rugalmas kiszolgálóban (előzetes verzió)
 
@@ -24,7 +24,7 @@ Azure Database for MySQL rugalmas kiszolgáló, a automatikusan létrehozza a ki
 
 A rugalmas kiszolgáló pillanatképes biztonsági másolatot készít az adatfájlokról, és egy helyi redundáns tárolóban tárolja őket. A kiszolgáló a tranzakciós naplók biztonsági mentését is végrehajtja, és a helyi redundáns tárolóban tárolja őket. Ezek a biztonsági másolatok lehetővé teszik a kiszolgálók visszaállítását bármely időpontra a beállított biztonsági mentési megőrzési időszakon belül. Az alapértelmezett biztonsági mentési megőrzési időszak hét nap. Az adatbázis biztonsági mentését opcionálisan 1 – 35 napig is beállíthatja. Az összes biztonsági mentés titkosítása AES 256 bites titkosítással történik a nyugalmi állapotban tárolt adatok esetében.
 
-Ezeket a biztonságimásolat-fájlokat nem lehet exportálni. A biztonsági másolatok csak a rugalmas kiszolgálók visszaállítási műveleteihez használhatók. A [mysqldump](https://docs.microsoft.com/azure/MySQL/howto-migrate-using-dump-and-restore)   -t egy MySQL-ügyfélről is használhatja egy adatbázis másolásához.
+Ezeket a biztonságimásolat-fájlokat nem lehet exportálni. A biztonsági másolatok csak a rugalmas kiszolgálók visszaállítási műveleteihez használhatók. A [mysqldump](https://docs.microsoft.com/azure/postgresql/howto-migrate-using-dump-and-restore)   -t egy MySQL-ügyfélről is használhatja egy adatbázis másolásához.
 
 ## <a name="backup-frequency"></a>Biztonsági mentés gyakorisága
 

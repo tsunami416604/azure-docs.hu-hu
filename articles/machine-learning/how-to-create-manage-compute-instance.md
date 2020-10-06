@@ -11,12 +11,12 @@ ms.author: sgilley
 author: sdgilley
 ms.reviewer: sgilley
 ms.date: 10/02/2020
-ms.openlocfilehash: 1ba3f49c9016d71acf162efb07cd6120b1dcc1ec
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: 3b5698c782b691dd8ae91913115db184fc83a2eb
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91743556"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91756619"
 ---
 # <a name="create-and-manage-an-azure-machine-learning-compute-instance"></a>Azure Machine Learning számítási példány létrehozása és kezelése
 
@@ -46,7 +46,7 @@ A számítási példányok biztonságosan futtathatnak feladatokat egy [virtuál
 
 A számítási példány létrehozása a munkaterület egyszeri folyamata. Ezt a számítást felhasználhatja fejlesztési munkaállomásként vagy betanításra szolgáló számítási célként. Több számítási példány is csatolható a munkaterülethez.
 
-A számítási példányok létrehozásakor a dedikált magok régiónként, a virtuálisgép-család kvótája és a teljes regionális kvóta alapján, valamint az Azure Machine Learning betanítása számítási fürt kvótáját egyesítjük és megosztva. A számítási példány leállítása nem mentesíti a kvótát, hogy biztosan újra tudja indítani a számítási példányt.
+A számítási példányok létrehozásakor a dedikált magok régiónként, a virtuálisgép-család kvótája és a teljes regionális kvóta alapján, valamint az Azure Machine Learning betanítása számítási fürt kvótáját egyesítjük és megosztva. A számítási példány leállítása nem mentesíti a kvótát, hogy biztosan újra tudja indítani a számítási példányt. Vegye figyelembe, hogy az létrehozása után nem lehet módosítani a számítási példány virtuálisgép-méretét.
 
 Az alábbi példa bemutatja, hogyan hozhat létre számítási példányt:
 
@@ -289,6 +289,6 @@ A [rendelkezésre álló Jupyter-kernelek](https://github.com/jupyter/jupyter/wi
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Betanítási Futtatás beküldése](how-to-set-up-training-targets.md) 

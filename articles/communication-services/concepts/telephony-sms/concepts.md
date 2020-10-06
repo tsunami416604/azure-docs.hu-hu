@@ -9,16 +9,16 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 542532ba660c9d625b22a06e989f5a7d13e7a9d3
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 35398d60008ac52ba16dca0a0201f8c2f2101a0f
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91664970"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91758557"
 ---
 # <a name="sms-concepts"></a>SMS-sel kapcsolatos alapfogalmak
 
-[!INCLUDE [Private Preview Notice](../../includes/private-preview-include.md)]
+[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 
 Az Azure kommunikációs szolgáltatások lehetővé teszik SMS szöveges üzenetek küldését és fogadását a kommunikációs szolgáltatások SMS-ügyfél kódtárai használatával. Ezek az ügyféloldali kódtárak az ügyfélszolgálati forgatókönyvek, a kinevezési emlékeztetők, a kétfaktoros hitelesítés és az egyéb valós idejű kommunikációs igények támogatásához használhatók. A kommunikációs szolgáltatások SMS-je lehetővé teszi az üzenetek megbízható küldését, miközben kiteszi a kampányok által megfigyelt kézbesítési és reagálási arányt.
 
@@ -36,7 +36,7 @@ Az Azure Communication Services SMS ügyféloldali kódtárainak legfontosabb fu
   - A Leállítás, a leállítás és az indítási üzenetek vissza lesznek továbbítva Önnek. Az Azure kommunikációs szolgáltatásokkal megfigyelheti és implementálhatja ezeket a letiltásokat, így biztosíthatja, hogy a rendszer ne küldjön olyan üzenetet a címzetteknek, akik kiválasztották a kommunikációt.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Ismerkedés az SMS küldésével](../../quickstarts/telephony-sms/send.md)

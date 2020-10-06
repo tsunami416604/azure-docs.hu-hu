@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/30/2020
 ms.author: jeedes
-ms.openlocfilehash: ffa4f0ab40e413da78257bde81a00fd3910131b1
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 08a9cbadb86f59cca1f361dc66ee03a300f91968
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88555969"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91759527"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-coggle"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Coggle
 
@@ -96,7 +96,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. A fentieken kívül a Coggle alkalmazás néhány további attribútumot vár az SAML-válaszban, amelyek alább láthatók. Ezek az attribútumok előre fel vannak töltve, de a követelményeinek megfelelően áttekintheti őket.
     
-    | Name | Forrás attribútum|
+    | Name (Név) | Forrás attribútum|
     | ---------------| --------- |
     | firstName | User. givenName |
     | lastName | felhasználó. vezetéknév |
@@ -146,19 +146,19 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 2. Kattintson a **Coggle** fiók lehetőségre, és válassza **a saját beállítások**lehetőséget.
 
-    ![Coggle-konfiguráció](./media/Coggle-tutorial/configure1.png)
+    ![Képernyőfelvétel: a Coggle céges webhely megjelenítése a saját beállítások közül.](./media/Coggle-tutorial/configure1.png)
 
 3. Kattintson a következő **emblémára** , és válassza a **hitelesítés**lehetőséget.
 
-    ![Coggle-konfiguráció](./media/Coggle-tutorial/configure2.png)
+    ![Képernyőfelvétel: a bálna ikon és a hitelesítés kiválasztva.](./media/Coggle-tutorial/configure2.png)
 
 4. Kattintson az **SAML-konfiguráció szerkesztése**elemre.
 
-    ![Coggle-konfiguráció](./media/Coggle-tutorial/configure3.png)
+    ![A képernyőfelvételen látható az SAML-integráció oldal az SAML-konfiguráció szerkesztése lehetőséggel.](./media/Coggle-tutorial/configure3.png)
 
 5. Az **SAML-integráció** párbeszédpanelen hajtsa végre a következő lépéseket:
 
-    ![Coggle-konfiguráció](./media/Coggle-tutorial/configure4.png)
+    ![Képernyőfelvétel: az SAML-integráció oldal, ahol megadhatja az ebben a lépésben szereplő információkat.](./media/Coggle-tutorial/configure4.png)
 
     a. A **BelépésiPont (azonosító szolgáltató SSO URL-címe)** szövegmezőbe illessze be a **bejelentkezési URL** -címet, amelyet a Azure Portal másolt.
 

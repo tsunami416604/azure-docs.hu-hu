@@ -8,12 +8,12 @@ ms.topic: quickstart
 ms.service: iot-pnp
 services: iot-pnp
 ms.custom: mvc
-ms.openlocfilehash: 1a8155c9c0466184a09bc4ff224c9bdf42c173b9
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: b35268cd8d36901f750225713407c5392e5c429e
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91612557"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91759169"
 ---
 # <a name="quickstart-interact-with-an-iot-plug-and-play-device-thats-connected-to-your-solution-c"></a>Gyors útmutató: a megoldáshoz csatlakoztatott IoT Plug and Play eszköz használata (C#)
 
@@ -48,7 +48,7 @@ Ebben a rövid útmutatóban egy C# nyelven írt minta termosztátot használ a 
 
 1. A Visual Studióban navigáljon a **Project > termosztát tulajdonságai > hibakeresés**elemre. Ezután adja hozzá a következő környezeti változókat a projekthez:
 
-    | Név | Érték |
+    | Name (Név) | Érték |
     | ---- | ----- |
     | IOTHUB_DEVICE_SECURITY_TYPE | DPS |
     | IOTHUB_DEVICE_DPS_ENDPOINT | global.azure-devices-provisioning.net |
@@ -66,7 +66,7 @@ Ebben a rövid útmutatóban egy C# nyelven írt minta termosztátot használ a 
 A [környezet beállítása a IoT Plug and Play rövid útmutatók és oktatóanyagok](set-up-environment.md) létrehozott két környezeti változót a minta konfigurálásához a IoT hub és az eszközhöz való kapcsolódáshoz:
 
 * **IOTHUB_CONNECTION_STRING**: a IoT hub-kapcsolatok karakterlánca korábban már jegyzett készített.
-* **DEVICE_ID**: `"my-pnp-device"` .
+* **IOTHUB_DEVICE_ID**: `"my-pnp-device"` .
 
 Ebben a rövid útmutatóban egy minta IoT megoldást használ a C#-ban, hogy együttműködjön az imént beállított eszközzel.
 
@@ -74,9 +74,9 @@ Ebben a rövid útmutatóban egy minta IoT megoldást használ a C#-ban, hogy eg
 
 1. A Visual Studióban navigáljon a **Project > termosztát tulajdonságai > hibakeresés**elemre. Ezután adja hozzá a következő környezeti változókat a projekthez:
 
-    | Név | Érték |
+    | Name (Név) | Érték |
     | ---- | ----- |
-    | DEVICE_ID | saját PnP-eszköz |
+    | IOTHUB_DEVICE_ID | saját PnP-eszköz |
     | IOTHUB_CONNECTION_STRING | Az érték, amelyet a [környezet beállításakor](set-up-environment.md) jegyzett készített |
 
 1. Most már létrehozhatja a mintát a Visual Studióban, és hibakeresési módban futtathatja.
@@ -157,7 +157,7 @@ Ez a kód a következő kimenetet hozza létre az eszközről, amikor a szolgál
       Command: MaxMinReport since 21/09/2020 11:25:58: maxTemp=32, minTemp=32, avgTemp=32, startTime=21/09/2020 11:25:59, endTime=21/09/2020 11:26:04
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan csatlakoztatható egy IoT Plug and Play-eszköz egy IoT-megoldáshoz. Ha többet szeretne megtudni a IoT Plug and Play eszköz modelljeiről, tekintse meg a következőt:
 

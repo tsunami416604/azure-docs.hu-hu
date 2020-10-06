@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
-ms.openlocfilehash: 8a29dbbf365304240283fe4fd5899b58e3bc227c
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: e7447d03fc231d8d96b71c7d944a380c10add0d0
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91741407"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91757936"
 ---
 # <a name="security-control-v2-identity-management"></a>Security Control v2: Identitáskezelés
 
@@ -169,7 +169,7 @@ Az Azure komplex veszélyforrások elleni védelem (ATP) olyan biztonsági megol
 
 - [A felhasználók identitás-és hozzáférési tevékenységének figyelése Azure Security Center](../../security-center/security-center-identity-access.md)
 
-- [Riasztások Azure Security Center veszélyforrások elleni védelmi moduljában](//azure/security-center/alerts-reference)
+- [Riasztások Azure Security Center veszélyforrások elleni védelmi moduljában](/azure/security-center/alerts-reference)
 
 - [Azure-beli tevékenység-naplók integrálása a Azure Monitorba](../../active-directory/reports-monitoring/howto-integrate-activity-logs-with-log-analytics.md)
 

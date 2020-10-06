@@ -235,17 +235,23 @@
         - name: Resource Manager-sablon használata
           displayName: arm
           href: how-to-create-workspace-template.md
-    - name: Számítási erőforrások létrehozása
+    - name: Számítási erőforrások létrehozása és kezelése
       items:
-        - name: A Studio használata
-          displayName: 'compute target, dsvm, Data Science Virtual Machine, local, cluster, ACI, container instance, Databricks, data lake, lake, HDI, HDInsight, low priority'
-          href: how-to-create-attach-compute-studio.md
-        - name: A Python SDK használata
-          displayName: 'compute target, dsvm, Data Science Virtual Machine, local, cluster, ACI, container instance, Databricks, data lake, lake, HDI, HDInsight, low priority'
-          href: how-to-create-attach-compute-sdk.md
+        - name: Számítási példány
+          displayName: compute target
+          href: how-to-create-manage-compute-instance.md
+        - name: Számítási fürt
+          displayName: 'compute target, low priority, managed identity'
+          href: how-to-create-attach-compute-cluster.md
         - name: Azure Kubernetes Service
           displayName: 'AKS, inference'
           href: how-to-create-attach-kubernetes.md
+        - name: Saját csatlakoztatása
+          displayName: 'compute target, dsvm, Data Science Virtual Machine, local, ACI, container instance, Databricks, data lake, lake, HDI, HDInsight'
+          href: how-to-attach-compute-targets.md
+        - name: A Studio használata
+          displayName: 'compute target, dsvm, Data Science Virtual Machine, local, cluster, ACI, container instance, Databricks, data lake, lake, HDI, HDInsight, low priority, managed identity'
+          href: how-to-create-attach-compute-studio.md
     - name: A környezet kialakítása
       items:
         - name: Fejlesztési környezetek beállítása

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/04/2019
 ms.author: jeedes
-ms.openlocfilehash: dba77045f8aef1799717c6f6af91046b3ca6119e
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 3b8f91bca3650004472d8fe51d4e92b42ade3122
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88520311"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91759764"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-claromentis"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Claromentis
 
@@ -138,19 +138,19 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 1. Kattintson az **Alkalmazások ikonra** , és válassza a **rendszergazda**elemet.
 
-    ![Claromentis-konfiguráció](./media/claromentis-tutorial/config1.png)
+    ![Képernyőfelvétel: a Claromentis webhely, amelyen a rendszergazda van kiválasztva.](./media/claromentis-tutorial/config1.png)
 
 1. Válassza az **Egyéni bejelentkezési kezelő** fület.
 
-    ![Claromentis-konfiguráció](./media/claromentis-tutorial/config2.png)
+    ![Képernyőfelvétel: az adminisztrációs oldal, amelyen az egyéni bejelentkezési kezelő van kiválasztva.](./media/claromentis-tutorial/config2.png)
 
 1. Válassza az **SAML-konfiguráció**lehetőséget.
 
-    ![Claromentis-konfiguráció](./media/claromentis-tutorial/config3.png)
+    ![A képernyőfelvételen az SAML konfigurációs oldala látható.](./media/claromentis-tutorial/config3.png)
 
 1. Az **SAML-konfiguráció** lapon görgessen le a **konfiguráció** szakaszhoz, és hajtsa végre a következő lépéseket:
 
-    ![Claromentis-konfiguráció](./media/claromentis-tutorial/config4.png)
+    ![Képernyőfelvétel: az oldal konfigurációs szakasza, amelyen megadhatja az ebben a lépésben ismertetett információt.](./media/claromentis-tutorial/config4.png)
 
     a. A **technikai kapcsolattartó neve** szövegmezőbe írja be a technikai kapcsolattartó személy nevét.
 
@@ -160,7 +160,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 1. Görgessen le a **hitelesítési forrásokhoz** , és hajtsa végre a következő lépéseket:
 
-    ![Claromentis-konfiguráció](./media/claromentis-tutorial/config5.png)
+    ![Képernyőfelvétel: az Auth sources (hitelesítési források) szakasz, ahol megadhatja az ebben a lépésben ismertetett információkat.](./media/claromentis-tutorial/config5.png)
 
     a. A **identitásszolgáltató** szövegmezőbe írja be az **Azure ad-azonosító** értékét, amelyet a Azure Portal másolt.
 
@@ -172,7 +172,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 1. Ekkor megjelenik az összes URL-cím az **SAML-konfiguráció** szakasz **Identity Provider** szakaszában.
 
-    ![Claromentis-konfiguráció](./media/claromentis-tutorial/config6.png)
+    ![A képernyőképen látható az U R ls-val feltöltött Identity Provider oldal.](./media/claromentis-tutorial/config6.png)
 
     a. Másolja az **azonosító (Entity ID)** értéket, illessze be ezt az értéket a Azure Portal **alapszintű SAML-konfiguráció** szakaszának **azonosító** szövegmezőbe.
 

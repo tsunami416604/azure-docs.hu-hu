@@ -2,107 +2,78 @@
 title: Az Azure kommunikációs szolgáltatások telefonos és SMS-megoldásának megtervezése
 titleSuffix: An Azure Communication Services concept document
 description: Megtudhatja, hogyan tervezheti meg hatékonyan a telefonszámok és a telefonos szolgáltatások használatát.
-author: stkozak
-manager: rampras
+author: prakulka
+manager: nmurav
 services: azure-communication-services
-ms.author: stkozak
-ms.date: 06/23/2020
+ms.author: prakulka
+ms.date: 10/05/2020
 ms.topic: overview
+ms.custom: references_regions
 ms.service: azure-communication-services
-ms.openlocfilehash: 39f88ab8b735438f60d8e20513ea5cbda43d41ee
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ada37175988155332503c0c15e998ab284d099e5
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90947108"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91758506"
 ---
 # <a name="plan-your-telephony-and-sms-solution"></a>A telefonos és SMS-megoldás megtervezése
 
-[!INCLUDE [Private Preview Notice](../../includes/private-preview-include.md)]
+[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 
-Ez a dokumentum az Azure kommunikációs szolgáltatások által kínált különböző telefonos csomagokat és típusokat ismerteti. Áttekintjük a döntési folyamatokat, amelyek segítenek kiválasztani a kommunikációs szolgáltatásokon keresztül elérhető hangszolgáltatót, telefonszám-típusokat, terveket és képességeket.
 
-## <a name="about-phone-numbers-in-azure-communications-services"></a>Az Azure Communications Services telefonszámai
-
-Az Azure kommunikációs szolgáltatások lehetővé teszik telefonszámok használatát telefonos hívások és SMS-üzenetek elhelyezésére és fogadására. Ezek a telefonszámok a hívó AZONOSÍTÓjának konfigurálására használhatók a szolgáltatás által elhelyezett kimenő hívásoknál.
-  
-Ha nem rendelkezik meglévő telefonszámmal a kommunikációs szolgáltatási megoldásba való importáláshoz, a legegyszerűbb lehetőség az, hogy percek alatt új telefonszámot szerezzen be az Azure kommunikációs szolgáltatásokból.
-
-Ha van egy meglévő telefonszáma, amelyet továbbra is használni szeretne a megoldásban (például 1 – 800 – vállalat), a telefonszámot a meglévő szolgáltatótól a kommunikációs szolgáltatásokba is elvégezheti.
-
-A következő ábrán az elérhető lehetőségek közül lehet navigálni:
-
-:::image type="content" source="../media/plan-solution/decision-tree-basic.png" alt-text="Ábra, amely bemutatja, hogyan hozhat döntéseket a telefonszámokkal kapcsolatban.":::
-
-Most tekintsük át a kommunikációs szolgáltatásokon keresztül elérhető telefonszám-típusokat és képességeket. 
-
-## <a name="microsoft-direct-offer-of-phone-numbers-and-capabilities"></a>Telefonszámok és képességek Microsoft közvetlen ajánlata
-
-Az Azure kommunikációs szolgáltatásai kiváló rugalmasságot biztosítanak a fejlesztők számára. A legtöbb telefonszámon lehetővé tesszük a "a la carte" csomagok beállításának konfigurálását. Bizonyos fejlesztőknek csak bejövő hívási tervre van szükségük; Egyesek a bejövő és a kimenő SMS-csomagok esetében is dönthetnek. Ezek a tervek kiválaszthatók a telefonos telefonszámok távközlési szolgáltatásokban való bérlete és/vagy portjának kiválasztásával.
-
-Az elérhető csomagok az országtól és a telefonszámtól függenek. Az alábbi ábra a döntési folyamatot mutatja be: a rendelkezésre álló csomagok az országtól és a telefonszámtól függenek.
-
-<!-- Tami/team have rejected this multiple times despite updates, says it needs to be higher res - need to work with her to get approval for this image. Commenting out to move our staging forward. :::image type="content" source="../../media/example-decision-flow.png" alt-text="Ábra, amely bemutatja, hogyan hozhat döntéseket a telefonszámokkal kapcsolatban."::: -->
-
-A telefonszám típusának kiválasztása előtt tekintse át a nemzetközi telefonszám-számozási tervet.
-
-### <a name="optional-reading-international-public-telecommunication-numbering-plan-e164"></a>Opcionális olvasás. Nemzetközi nyilvános távközlési számozási terv (E. 164)
-
-> [!NOTE]
-> Azt javasoljuk, hogy tekintse át ezeket az adatokat még akkor is, ha ismeri az E. 164 telefonszámát, hogy jobban megértse az Azure kommunikációs szolgáltatások közvetlen ajánlatában kínált számok típusát és képességeit.
-
-A nemzetközi nyilvános távközlési számozási terv az E. 164 nemzetközi távközlési Unió (ITU) ajánlásában van meghatározva. A megfelelési számok legfeljebb 15 számjegyre korlátozódnak.
-
-A telefonszám a következőkből áll
-
--   A "+" előtag
--   Nemzetközi tárcsázási előtag vagy ország/régió kódja (egy, kettő vagy három számjegy) 
--   *(Nem kötelező)* Egy nemzeti célcím vagy számozási terv, amelyet általában körzetszámnak nevezünk. A kód hossza az országtól függ. A Egyesült Államok három számjegyből áll. Ausztráliában és Új-Zélandon egyetlen számjegyből áll. Németország, Japán, Mexikó és néhány más ország esetében változó hosszúságú a körzetszám. Németországban például a körzetszám két-öt számjegyből állhat, míg Japánban egy-öt számjegyből állhat.
--   Egy előfizetői szám
-
-> [!NOTE]
-> A fenti besorolás nem felel meg teljesen az ITU E. 164 szabványnak, és egyszerűsített leírást kíván megadni. Az előfizetői szám például a standardon belül van felosztva. Ha jobban érdekli a nemzetközi számozási terv mélyebb megismerése, az [ITU E. 164 szabvány](https://www.itu.int/rec/T-REC-E.164) kiváló kiindulópont.  
-
-Íme néhány példa, amely segítséget nyújt a számozási terv jobb megismeréséhez:
-
-Az Egyesült államokbeli régióbeli telefonszám:
-
-:::image type="content" source="../media/plan-solution/regional-us.png" alt-text="Ábra, amely bemutatja, hogyan hozhat döntéseket a telefonszámokkal kapcsolatban.":::
-
-A kanadai régióbeli telefonszám:
-
-:::image type="content" source="../media/plan-solution/regional-canada.png" alt-text="Ábra, amely bemutatja, hogyan hozhat döntéseket a telefonszámokkal kapcsolatban.":::
-
-Díjmentes szám a Észak-Amerika régióban:
-
-:::image type="content" source="../media/plan-solution/tollfree-us.png" alt-text="Ábra, amely bemutatja, hogyan hozhat döntéseket a telefonszámokkal kapcsolatban.":::
-
-Az Egyesült Királyságban egy mobiltelefon-telefonszám:
-
-:::image type="content" source="../media/plan-solution/mobile-uk.png" alt-text="Ábra, amely bemutatja, hogyan hozhat döntéseket a telefonszámokkal kapcsolatban.":::
-
-Ezután tekintse át az Azure kommunikációs szolgáltatásokban elérhető telefonszám-típusokat.
+Az Azure kommunikációs szolgáltatások lehetővé teszik a telefonszámok használatát hanghívások készítésére és SMS-üzenetek küldésére a nyilvános kapcsolású telefonos hálózattal (PSTN). Ebben a dokumentumban áttekintjük a telefonos és SMS-megoldások kommunikációs szolgáltatásokkal történő megtervezéséhez szükséges telefonszámokat, terveket és régiókat.
 
 ## <a name="phone-number-types-in-azure-communication-services"></a>Telefonszám-típusok az Azure kommunikációs szolgáltatásokban
+ 
+A kommunikációs szolgáltatások kétféle telefonszámot biztosítanak: **helyi** és **díjmentes**. 
 
-A Microsoft regionális és díjmentesen elérhető csomagokat biztosít a rövid kódokhoz és a mobil számokhoz az országokban, ahol alkalmazható.
+### <a name="local-numbers"></a>Helyi számok
+A helyi (földrajzi) számok 10 számjegyű telefonszámok, amelyek a Egyesült Államokban található helyi körzetszámokból állnak. Például `+1 (206) XXX-XXXX` egy helyi szám, amelynek körzetszáma `206` . Ez a körzetszám a Seattle városához van rendelve. Ezeket a telefonszámokat általában magánszemélyek és helyi vállalatok használják. Az Azure kommunikációs szolgáltatások helyi számokat biztosítanak a Egyesült Államokban. Ezek a számok a telefonhívások elhelyezésére, de SMS-üzenetek küldésére is használhatók. 
+
+### <a name="toll-free-numbers"></a>Díjmentes számok
+Az ingyenesen hívható telefonszámok 10 számjegyű telefonszámok, amelyek különböző körzetszámmal hívhatók meg ingyenesen. Például `+1 (800) XXX-XXXX` egy díjmentes szám a Észak-Amerika régióban. Ezeket a telefonszámokat általában az ügyfélszolgálati célokra használják. Az Azure kommunikációs szolgáltatás díjmentes számokkal rendelkezik az Egyesült Államokban. Ezek a számok a telefonhívások és SMS-üzenetek küldésére használhatók. Az ingyenesen hívható számok nem használhatók a felhasználók számára, és csak alkalmazásokhoz rendelhetők hozzá.
+
+#### <a name="choosing-a-phone-number-type"></a>Telefonszám típusának kiválasztása
+
+Ha a telefonszámát egy alkalmazás fogja használni (például hívások kezdeményezéséhez vagy üzenetek küldéséhez a szolgáltatás nevében), akkor kiválaszthat egy díjmentes vagy helyi (földrajzi) számot. A díjmentes számot kiválaszthatja, ha az alkalmazás SMS-üzeneteket küld és/vagy hívásokat kezdeményez.
+
+Ha a telefonszámot egy személy (például a hívó alkalmazás felhasználója) használja, akkor a helyi (földrajzi) telefonszámot kell használni. 
 
 Az alábbi táblázat összefoglalja a következő telefonszámokat: 
 
-| Telefonszám típusa | Példa                              | Ország elérhetősége    | Gyakori használati eset                                                                                                     |
-| ----------------- | ------------------------------------ | ----------------------- | ------------------------------------------------------------------------------------------------------------------- |
-| Regionális          | + 1 (földrajzi terület kódja) XXX XX XX  | Egyesült Államok, Kanada, Puerto Rico | Telefonszámok kiosztása a felhasználók számára az alkalmazásokban vagy az interaktív hangválasztó (IVR) rendszerek/robotok számára való hozzárendelés |
-| Díjmentes         | + 1 (díjmentes terület *kódja*) xxx XX XX | Egyesült Államok, Kanada, Puerto Rico | Az interaktív hangválasztó (IVR) rendszerek/robotok, SMS-alkalmazások kiosztása                                        |
+| Telefonszám típusa | Példa                              | Ország elérhetősége    | Telefonszám-képesség |Gyakori használati eset                                                                                                     |
+| ----------------- | ------------------------------------ | ----------------------- | ------------------------|------------------------------------------------------------------------------------------------------------------- |
+| Helyi (földrajzi)        | + 1 (helyi körzetszám) XXX XX XX  | USA                      | Hívás (kimenő) | Telefonszámok kiosztása a felhasználók számára az alkalmazásokban  |
+| Díjmentes         | + 1 (díjmentes terület *kódja*) xxx XX XX | USA                      | Calling (kimenő), SMS (bejövő/kimenő)| Telefonszámok kiosztása interaktív hangválaszi (IVR) rendszerekhez/robotokhoz, SMS-alkalmazásokhoz                                        |
 
-## <a name="plans"></a>Tervek 
 
-Nézzük meg a telefonszámok számára engedélyezhető funkciókat. Ezek a képességek országonként változnak, a szabályozási követelmények miatt. Az Azure kommunikációs szolgáltatás a következő képességeket kínálja:
+## <a name="phone-number-plans-in-azure-communication-services"></a>Telefonos csomagok az Azure kommunikációs szolgáltatásokban 
 
-- **Egyirányú kimenő SMS**, hasznos értesítések és kétfaktoros hitelesítési forgatókönyvek esetén.
-- **Kétirányú bejövő és kimenő SMS**, egy előre definiált csomag, amely lehetővé teszi az SMS küldését és fogadását egy csomag részeként.
-- **PSTN-hívás**, kiválaszthat egy bejövő hívást, és a hívó azonosító használatával helyezheti el a kimenő hívásokat.
+A legtöbb telefonszám esetében lehetővé tesszük a "a la carte" csomagok készletének konfigurálását. Bizonyos fejlesztőknek csak kimenő hívási tervre van szükségük; Előfordulhat, hogy egyesek a kimenő hívások és a kimenő SMS-csomagok közül választhatnak. Ezeket a csomagokat kiválaszthatja a telefonszámok Azure kommunikációs szolgáltatásokban való bérletének megadásával.
 
-## <a name="next-steps"></a>További lépések
+A rendelkezésre álló csomagok attól függnek, hogy melyik országból, a használati esethez és a kiválasztott telefonszám-típushoz tartoznak. Ezek a csomagok országonként változnak, a szabályozási követelmények miatt. Az Azure kommunikációs szolgáltatás a következő terveket kínálja:
+
+- **Egyirányú kimenő SMS** Ez a csomag lehetővé teszi, hogy SMS-üzeneteket küldjön a felhasználóknak. Ez a csomag olyan forgatókönyvek esetén hasznos, mint az értesítések és a kétfaktoros hitelesítési riasztások. 
+- **Kétirányú bejövő és kimenő SMS** Ez a csomag lehetővé teszi üzenetek küldését és fogadását a felhasználóktól a telefonszámok használatával. Ez a csomag az ügyfél-szolgáltatási forgatókönyvekben hasznos.
+- **Egyirányú kimenő telefonhívás** Ezzel a csomaggal hívásokat indíthat a felhasználók számára, és konfigurálhatja a hívó AZONOSÍTÓját a szolgáltatás által elhelyezett kimenő hívásokhoz. Ez a csomag az ügyfélszolgálati és a hangalapú értesítési forgatókönyvekben hasznos.
+
+## <a name="countryregion-availability"></a>Ország/régió elérhetősége
+
+A következő táblázat bemutatja, hogy hol szerezhetők be különböző típusú telefonszámok, valamint a bejövő és kimenő hívási és SMS-funkciók, amelyek az ilyen típusú telefonszámokhoz vannak társítva.
+
+|Szám típusa| Számok beolvasása a | Hívások kezdeményezése                                        | Hívások fogadása innen:                                    |Üzenetek küldése a következőnek       | Üzenetek fogadása innen: |
+|-----------| ------------------ | ---------------------------------------------------  |-------------------------------------------------------|-----------------------|--------|
+| Helyi (földrajzi)  | USA                 | USA, Kanada, Egyesült Királyság, Németország, Franciaország,. + További *| USA, Kanada, Egyesült Királyság, Németország, Franciaország,. + További * |Nem érhető el| Nem érhető el |
+| Díjmentes | USA                 | USA                                                   | USA                                                    |USA                | USA |
+
+* A hívási célokkal és a díjszabással kapcsolatos további információkért tekintse meg a [díjszabási oldalt](../pricing.md).
+
+## <a name="azure-subscriptions-eligibility"></a>Azure-előfizetések jogosultsága
+
+Telefonszám beolvasásához fizetős Azure-előfizetésre van szükség. A próbaverziós fiókokban nem szerezhetők be telefonszámok. 
+
+## <a name="next-steps"></a>Következő lépések
 
 ### <a name="quickstarts"></a>Rövid útmutatók
 
@@ -113,5 +84,5 @@ Nézzük meg a telefonszámok számára engedélyezhető funkciókat. Ezek a ké
 ### <a name="conceptual-documentation"></a>Fogalmi dokumentáció
 
 - [A hang- és videóhívással kapcsolatos alapfogalmak](../voice-video-calling/about-call-types.md)
-- [Folyamatok és SMS-folyamatok hívása](../call-flows.md)
+- [Folyamatok meghívása](../call-flows.md)
 - [Díjszabás](../pricing.md)

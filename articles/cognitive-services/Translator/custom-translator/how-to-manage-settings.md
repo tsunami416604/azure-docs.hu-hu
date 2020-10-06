@@ -9,12 +9,12 @@ ms.subservice: translator-text
 ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: conceptual
-ms.openlocfilehash: 488ca52abdd5f8d6cfd1f92a5f91861a17a77d19
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.openlocfilehash: 184073ef3ee1b6a67c844754f7da81f88bbbdf62
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88510520"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91757027"
 ---
 # <a name="how-to-manage-settings"></a>Beállítások kezelése
 
@@ -51,6 +51,8 @@ Ha nem rendelkezik előfizetéssel, kövesse az alábbi lépéseket:
 
     ![Új munkaterület létrehozása párbeszédpanel](media/how-to/create-new-workspace-dialog.png)
 
+>[!Note]
+>Az egyéni fordító nem támogatja munkaterületek létrehozását Translator Text API erőforráshoz (más néven Az [engedélyezett VNET](https://docs.microsoft.com/azure/api-management/api-management-using-with-vnet)belül létrehozott Azure-előfizetési kulcs).
 
 ### <a name="modify-existing-key"></a>Meglévő kulcs módosítása
 
@@ -61,7 +63,7 @@ Ha nem rendelkezik előfizetéssel, kövesse az alábbi lépéseket:
 
 3. A párbeszédpanelen adja meg a fordítói előfizetés kulcsát, majd kattintson a Save (Mentés) gombra.
 
-    ![Előfizetési kulcs hozzáadása](media/how-to/how-to-add-subscription-key-dialog.png)
+    ![Előfizetés-kulcs hozzáadása párbeszédpanel](media/how-to/how-to-add-subscription-key-dialog.png)
 
 ## <a name="manage-your-workspace"></a>Saját munkaterület kezelése
 
@@ -113,6 +115,6 @@ Az első létrehozott munkaterület alapértelmezés szerint rögzített. Amikor
 
     ![Munkaterület rögzítése](media/how-to/how-to-pin-workspace.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerje meg [, hogyan hozhat létre munkaterületet és projekteket](workspace-and-project.md)

@@ -9,18 +9,18 @@ ms.subservice: custom-vision
 ms.topic: how-to
 ms.date: 09/08/2020
 ms.author: pafarley
-ms.openlocfilehash: 5285dfb23476662a13162788b2ec497b4fe49228
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 78ae0fc94e74755b481f80724ca26b34da99122c
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90532635"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91758574"
 ---
 # <a name="copy-and-move-your-custom-vision-projects"></a>Custom Vision projektek másolása és áthelyezése
 
 Miután létrehozta és betanított egy Custom Vision projektet, érdemes lehet átmásolni a projektet egy másik erőforrásba. Tegyük fel például, hogy egy projektet a fejlesztésből éles környezetbe kíván áthelyezni, vagy egy projektről egy másik Azure-régióban lévő fiókra szeretne biztonsági másolatot készíteni az adatbiztonság növelése érdekében.
 
-A **[ExportProject](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Training_3.3/operations/5eb0bcc6548b571998fddeb3])** és a **[ImportProject](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Training_3.3/operations/5eb0bcc7548b571998fddee3)** API-k ezt a forgatókönyvet teszik lehetővé azáltal, hogy lehetővé teszik projektek másolását egy Custom Vision fiókból másokba. Ez az útmutató bemutatja, hogyan használhatja ezeket a REST API-kat a cURL használatával. HTTP-kérelmeket is használhat, például a Poster szolgáltatást a kérések kiadásához.
+A **[ExportProject](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Training_3.3/operations/5eb0bcc6548b571998fddeb3)** és a **[ImportProject](https://southcentralus.dev.cognitive.microsoft.com/docs/services/Custom_Vision_Training_3.3/operations/5eb0bcc7548b571998fddee3)** API-k ezt a forgatókönyvet teszik lehetővé azáltal, hogy lehetővé teszik projektek másolását egy Custom Vision fiókból másokba. Ez az útmutató bemutatja, hogyan használhatja ezeket a REST API-kat a cURL használatával. HTTP-kérelmeket is használhat, például a Poster szolgáltatást a kérések kiadásához.
 
 ## <a name="business-scenarios"></a>Üzleti forgatókönyvek
 

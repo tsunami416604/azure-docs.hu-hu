@@ -4,12 +4,12 @@ description: Application Insights telemetria környezeti adatmodellje
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.reviewer: sergkanz
-ms.openlocfilehash: 25ff7d92da5ea0a6aba84aad1cfc98e5295e151e
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: cbd717243ed35fc90772cb2b727f7670bb77ee70
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87322669"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91757299"
 ---
 # <a name="telemetry-context-application-insights-data-model"></a>Telemetria kontextus: Application Insights adatmodell
 
@@ -113,7 +113,7 @@ Maximális hossz: 256
 
 ## <a name="internal-sdk-version"></a>Belső: SDK-verzió
 
-SDK-verzió. További információért tekintse meg [ezt a cikket](https://github.com/microsoft/ApplicationInsights-Home/blob/master/EndpointSpecs/SDK-VERSIONS.md) .
+SDK-verzió. További információért tekintse meg [ezt a cikket](https://github.com/MohanGsk/ApplicationInsights-Home/blob/master/EndpointSpecs/SDK-VERSIONS.md) .
 
 Maximális hossz: 64
 
@@ -125,7 +125,7 @@ A mező a számlázási célra használt csomópont nevét jelöli. Ezzel felül
 Maximális hossz: 256
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerje meg [, hogyan bővítheti és szűrheti a telemetria](./api-filtering-sampling.md).
 - Lásd: [adatmodell](data-model.md) Application Insights típusokhoz és adatmodellekhez.

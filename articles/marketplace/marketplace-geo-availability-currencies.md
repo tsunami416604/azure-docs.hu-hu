@@ -7,12 +7,12 @@ ms.topic: reference
 author: keferna
 ms.author: keferna
 ms.date: 07/29/2020
-ms.openlocfilehash: cc697cd78e929b62f951014f760d644552fa082c
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 59c5473e88e0c4a8108f651e9543ec90c08290ab
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89651001"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91759086"
 ---
 # <a name="geographic-availability-and-currency-support-for-commercial-marketplace"></a>Földrajzi Elérhetőség és pénznemek támogatása a kereskedelmi piactéren
 
@@ -166,7 +166,7 @@ A kereskedelmi Piactéri ajánlatok az ügyfél számlázási címe által megha
 | Zimbabwe                            | ZW        | USD          |
 |   |   |   |
 
-\* Brazíliában a commcercial Marketplace a Cloud Solution Providers (CSP) használatával USD-t használ.
+\* Brazíliában a kereskedelmi piactér a Cloud Solution Providers (CSP) használatával USD-t használ.
 
 \** Csak az ingyenes és a BYOL VM-lemezképek.
 
@@ -181,7 +181,7 @@ Ha bármilyen árat szeretne módosítani a közzététel előtt, csak exportál
 
 Az ajánlat díja mindig az ügyfelek számára jelenik meg a helyi pénznemben. A partner Centerben kiválasztott árat az ügyfelek helyi pénznemére alakítja át az árfolyamok alapján, amikor az árat a partner Centerben mentette. Az online áruházakban lévő ügyfeleknek megjelenő ár nem változik, kivéve, ha újból közzéteszi az ajánlatot.
 
-A Microsoft a helyi pénznemben fogadja az ügyfelektől érkező befizetéseket, és a helyi pénznemben fizet Önnek. A Microsoft az ügyfél helyi pénznemét átalakítja a helyi pénznemre a vásárlás napján érvényes árfolyam használatával.
+A Microsoft a helyi pénznemben fogadja az ügyfelektől érkező befizetéseket, és a partner Centerben kiválasztott pénznemben fizet Önnek. A Microsoft az ügyfél helyi pénznemét a vásárlási nap árfolyama alapján alakítja át.
 
 > [!NOTE]
 > A Microsoft a Microsoft Treasury Exchange díjszabásával konvertálja az ajánlatok árát.

@@ -9,12 +9,12 @@ ms.author: twright
 ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
-ms.openlocfilehash: 3e3b804e2a3c43eb9579d1c6a1195511df528de2
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: d508e2e24ac35171d87cdba9cb79981dfb8764e3
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91629998"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91757469"
 ---
 # <a name="upload-usage-data-metrics-and-logs-to-azure-monitor"></a>Használati adatok, metrikák és naplók feltöltése a Azure Monitorba
 
@@ -95,7 +95,7 @@ Az alábbi parancsokkal hozza létre a metrikák feltöltésére szolgáló egys
 Egyszerű szolgáltatásnév létrehozásához futtassa a következő parancsot:
 
 > [!NOTE]
-> Egy egyszerű szolgáltatásnév létrehozásához [bizonyos engedélyek szükségesek az Azure-ban](/active-directory/develop/howto-create-service-principal-portal#required-permissions).
+> Egy egyszerű szolgáltatásnév létrehozásához [bizonyos engedélyek szükségesek az Azure-ban](/azure/active-directory/develop/howto-create-service-principal-portal#permissions-required-for-registering-an-app).
 
 ```console
 az ad sp create-for-rbac --name <a name you choose>
@@ -426,7 +426,7 @@ Az előzetes verzió ideje alatt ez a folyamat éjjel történik. Az általános
 
 A metrikák feltöltéséhez az Azure monitor csak az utolsó 30 perces adatokat fogadja el ([További információ](../../azure-monitor/platform/metrics-store-custom-rest-api.md#troubleshooting)). A metrikák feltöltésére vonatkozó útmutató a metrikák az exportfájl létrehozása utáni azonnali feltöltésére szolgál, így megtekintheti a teljes adathalmazt Azure Portalban. Ha például a 2:00 ÓRAKOR exportálta a metrikákat, és a feltöltési parancsot 2:50 ÓRAKOR futtatta. Mivel a Azure Monitor csak az elmúlt 30 percben fogadja az adatgyűjtést, előfordulhat, hogy a portálon nem jelennek meg az összes információ. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Számlázási adatok feltöltése az Azure-ba, és megtekintés a Azure Portal](view-billing-data-in-azure.md)
 

@@ -7,12 +7,12 @@ ms.author: pariks
 ms.custom: mvc
 ms.topic: overview
 ms.date: 8/21/2020
-ms.openlocfilehash: 6af3d9b99625dbecf6aec656d4aa7a65e4d1b4cd
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d3d58cab6e3b9ed0bf3b8ed409aa736357687f09
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91715200"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91759645"
 ---
 # <a name="azure-database-for-mysql---flexible-server-preview"></a>Azure Database for MySQL – rugalmas kiszolgáló (előzetes verzió)
 
@@ -97,7 +97,7 @@ A rugalmas kiszolgáló szolgáltatás az FIPS 140-2 ellenőrzött titkosítási
 
 A szolgáltatás alapértelmezés szerint titkosítja a mozgásban lévő adatátviteli réteget. A rugalmas kiszolgálók csak a Transport Layer Security (TLS 1,2) használatával titkosított kapcsolatokat támogatnak, és a TLS 1,0 és a TLS 1,1 összes bejövő kapcsolata meg lesz tagadva. 
 
-További információért lásd: [titkosított kapcsolatok használata rugalmas kiszolgálókhoz](/articles/mysql/flexible-server/how-to-connect-tls-ssl.md) .
+További információért lásd: [titkosított kapcsolatok használata rugalmas kiszolgálókhoz](https://docs.mongodb.com/manual/tutorial/configure-ssl) .
 
 A rugalmas kiszolgálók lehetővé teszik a kiszolgálók teljes magánhálózati elérését az [Azure Virtual Network](https://docs.microsoft.com/azure/virtual-network/virtual-networks-overview) (VNet) integrációjának használatával. Az Azure virtuális hálózatban található kiszolgálók csak magánhálózati IP-címeken keresztül érhetők el és csatlakoztathatók. A VNet-integrációval a nyilvános hozzáférés megtagadva, és a kiszolgálók nem érhetők el nyilvános végpontok használatával. 
 
@@ -110,7 +110,7 @@ A rugalmas kiszolgáló szolgáltatás beépített teljesítmény-figyelési és
 
 További információért tekintse meg a [figyelési fogalmakat](concepts-monitoring.md) .
 
-## <a name="migration"></a>Migrálás
+## <a name="migration"></a>Áttelepítés
 
 A szolgáltatás a MySQL közösségi verzióját futtatja. Ez lehetővé teszi az alkalmazások teljes kompatibilitását, és minimális újrabontási költségeket igényel a MySQL-motoron az egykiszolgálós szolgáltatáshoz fejlesztett meglévő alkalmazások áttelepítéséhez. Az egyetlen kiszolgálóra történő áttelepítés a következő lehetőségek egyikével végezhető el:
 
@@ -126,7 +126,7 @@ Ezenkívül a következő elérhetőségeken léphet velünk kapcsolatba:
 - Ha a fiókjával van probléma, nyújtson be [támogatási kérelmet](https://ms.portal.azure.com/#blade/Microsoft_Azure_Support/HelpAndSupportBlade/newsupportrequest) az Azure Portalon.
 - Ha visszajelzést szeretne küldeni vagy új szolgáltatásokat kérne, hozzon létre egy bejegyzést a [UserVoice-on](https://feedback.azure.com/forums/597982-azure-database-for-mysql).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Most, hogy elolvasta Azure Database for MySQL egykiszolgálós üzembe helyezési mód bevezetését, készen áll a következőre:
 
 - Hozza létre az első kiszolgálót. 

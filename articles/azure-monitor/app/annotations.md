@@ -3,12 +3,12 @@ title: A Application Insights kibocsátási megjegyzései | Microsoft Docs
 description: Adja hozzá az üzembe helyezést, vagy készítsen jelölőket a metrikák Explorer diagramjaihoz Application Insights.
 ms.topic: conceptual
 ms.date: 08/14/2020
-ms.openlocfilehash: e21981f134f6a78109d70b1edf6d61e204b64e12
-ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+ms.openlocfilehash: 58f6603687838713fafbf4cd5cc3f100e22b7401
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2020
-ms.locfileid: "88258409"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91758183"
 ---
 # <a name="annotations-on-metric-charts-in-application-insights"></a>Jegyzetek a metrikus diagramokon Application Insights
 
@@ -96,9 +96,9 @@ Ha engedélyezni szeretné a jegyzeteket a munkafüzetben, ugorjon a **Speciáli
 A kiadás részleteinek megnyitásához válassza a Megjegyzés jelölőjét, beleértve a kérelmezőt, a verziókövetés ágat, a kiadási folyamatot és a környezetet.
 
 ## <a name="create-custom-annotations-from-powershell"></a>Egyéni jegyzetek létrehozása a PowerShellből
-A GitHubról származó [CreateReleaseAnnotation](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1) PowerShell-szkripttel megjegyzéseket hozhat létre bármely olyan folyamatból, amely az Azure DevOps használata nélkül használható. 
+A GitHubról származó [CreateReleaseAnnotation](https://github.com/MohanGsk/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1) PowerShell-szkripttel megjegyzéseket hozhat létre bármely olyan folyamatból, amely az Azure DevOps használata nélkül használható. 
 
-1. Készítse elő [CreateReleaseAnnotation.ps1](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1)helyi másolatát.
+1. Készítse elő [CreateReleaseAnnotation.ps1](https://github.com/MohanGsk/ApplicationInsights-Home/blob/master/API/CreateReleaseAnnotation.ps1)helyi másolatát.
    
 1. Az előző eljárás lépéseit követve szerezze be a Application Insights azonosítót, és hozzon létre egy API-kulcsot a Application Insights **API-hozzáférés** lapon.
    
@@ -117,7 +117,7 @@ A GitHubról származó [CreateReleaseAnnotation](https://github.com/Microsoft/A
 
 Módosíthatja a parancsfájlt, például a múltbeli jegyzetek létrehozásához.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Munkaelemek létrehozása](./diagnostic-search.md#create-work-item)
 * [Automatizálás a PowerShell használatával](./powershell.md)

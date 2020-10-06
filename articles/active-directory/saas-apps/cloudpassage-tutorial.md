@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/22/2019
 ms.author: jeedes
-ms.openlocfilehash: 34e36be8ee9444b5612901439aa5dca4771f2dda
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 8fdb59db7e11e3c8b946be940a2f98bd42810b88
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551659"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91758353"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cloudpassage"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a CloudPassage
 
@@ -85,7 +85,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://portal.cloudpassage.com/saml/consume/accountid` . Az attribútum értékét az CloudPassage-portál **egyszeri bejelentkezés beállításai** szakaszának egyszeri bejelentkezési beállítások szakaszában található **SSO beállítási dokumentáció** elemre kattintva érheti el.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/cloudpassage-tutorial/tutorial_cloudpassage_05.png)
+    ![Képernyőfelvétel: a CloudPassage-portál az S S O Setup dokumentációs hivatkozását tartalmazza.](./media/cloudpassage-tutorial/tutorial_cloudpassage_05.png)
 
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel és a válasz URL-címével. Az értékek lekéréséhez forduljon a CloudPassage ügyfélszolgálati [csapatához](https://www.cloudpassage.com/company/contact/) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
@@ -96,7 +96,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. A fentiek mellett a CloudPassage alkalmazás néhány további attribútumot vár az SAML-válaszban, amelyek alább láthatók. Ezek az attribútumok előre is fel vannak töltve, de a követelménynek megfelelően áttekintheti őket.
 
-    | Name | Forrás attribútum|
+    | Name (Név) | Forrás attribútum|
     | ---------------| --------------- |
     | FirstName |User. givenName |
     | LastName |felhasználó. vezetéknév |
@@ -146,15 +146,15 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 1. A felső menüben kattintson a **Beállítások**, majd a **Hely felügyelete**elemre. 
    
-    ![Egyszeri bejelentkezés konfigurálása][12]
+    ![Képernyőfelvétel: a CloudPassage hely van kiválasztva.][12]
 
 1. Kattintson a **hitelesítési beállítások** fülre. 
    
-    ![Egyszeri bejelentkezés konfigurálása][13]
+    ![Képernyőfelvétel: a CloudPassage webhely, amelyen a hitelesítési beállítások lap van kiválasztva.][13]
 
 1. Az **egyszeri bejelentkezés beállításai** szakaszban hajtsa végre a következő lépéseket: 
    
-    ![Egyszeri bejelentkezés konfigurálása][14]
+    ![Képernyőfelvétel: az egyszeri bejelentkezés beállításai szakasz, ahol megadhatja az ebben a lépésben szereplő információkat.][14]
 
     a. Jelölje be az **egyszeri bejelentkezés engedélyezése (SSO) (SSO beállítási dokumentáció)** jelölőnégyzetet.
     
@@ -178,15 +178,15 @@ Ennek a szakasznak a célja egy B. Simon nevű felhasználó létrehozása a Clo
 
 1. A felső eszköztáron kattintson a **Beállítások**, majd a **Hely felügyelete**elemre. 
    
-    ![CloudPassage-tesztelési felhasználó létrehozása][22] 
+    ![Képernyőfelvétel: a CloudPassage kiválasztása a hely felügyeletével.][22] 
 
 1. Kattintson a **felhasználók** lapra, majd az **új felhasználó hozzáadása**lehetőségre. 
    
-    ![CloudPassage-tesztelési felhasználó létrehozása][23]
+    ![Képernyőfelvétel: a CloudPassage megjelenítése a felhasználók lapon, és az új felhasználó hozzáadása lehetőség.][23]
 
 1. Az **új felhasználó hozzáadása** szakaszban hajtsa végre a következő lépéseket: 
    
-    ![CloudPassage-tesztelési felhasználó létrehozása][24]
+    ![Képernyőfelvétel: az új felhasználó hozzáadása szakasz, ahol megadhatja a felhasználói adatokat.][24]
     
     a. A **Utónév** szövegmezőbe írja be a következőt: Britta. 
   

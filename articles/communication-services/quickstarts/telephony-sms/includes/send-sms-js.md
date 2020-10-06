@@ -10,12 +10,12 @@ ms.date: 07/28/2020
 ms.topic: include
 ms.custom: include file
 ms.author: dademath
-ms.openlocfilehash: cdd4988f9a23904c0771852c4539aa9bce2ee683
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ad8266d936c272ee2f6bad254738622c3f81bf03
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90947680"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91757141"
 ---
 Ismerkedés az Azure kommunikációs szolgáltatásokkal a kommunikációs szolgáltatások JavaScript SMS ügyféloldali kódtár használatával SMS-üzenetek küldéséhez.
 
@@ -97,16 +97,20 @@ const smsClient = new SmsClient(connectionString);
 SMS-üzenet küldése a metódus meghívásával `send` . Adja hozzá ezt a kódot a **send-sms.js**végéhez:
 
 ```javascript
-await smsClient.send({
-  from: "<leased-phone-number>",
-  to: ["<to-phone-number>"],
-  message: "Hello World 👋🏻 via Sms"
-}, {
-  enableDeliveryReport: true //Optional parameter
-});
+async function main() {
+  await smsClient.send({
+    from: "<leased-phone-number>",
+    to: ["<to-phone-number>"],
+    message: "Hello World 👋🏻 via Sms"
+  }, {
+    enableDeliveryReport: true //Optional parameter
+  });
+}
+
+main();
 ```
 
-A lecserélni kívánt `<leased-phone-number>` SMS-kompatibilis telefonszámot a kommunikációs szolgáltatások erőforrásaihoz és `<to-phone-number>` azon telefonszámhoz kell cserélni, amelyhez üzenetet szeretne küldeni. Minden telefonszám-paraméternek be kell tartania az [E. 164 szabványt](../../../concepts/telephony-sms/plan-solution.md#optional-reading-international-public-telecommunication-numbering-plan-e164).
+A lecserélni kívánt `<leased-phone-number>` SMS-kompatibilis telefonszámot a kommunikációs szolgáltatások erőforrásaihoz és `<to-phone-number>` azon telefonszámhoz kell cserélni, amelyhez üzenetet szeretne küldeni.
 
 A `enableDeliveryReport` paraméter egy opcionális paraméter, amely a kézbesítési jelentéskészítés konfigurálására használható. Ez olyan esetekben hasznos, amikor az SMS-üzenetek kézbesítése során eseményeket szeretne kibocsátani. Tekintse meg az [SMS-események kezelése](../handle-sms-events.md) rövid útmutatót az SMS-üzenetek kézbesítési jelentéskészítésének konfigurálásához.
 

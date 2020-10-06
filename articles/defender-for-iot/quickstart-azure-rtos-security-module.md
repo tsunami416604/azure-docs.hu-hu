@@ -4,21 +4,21 @@ description: Ismerje meg, hogyan hozhatja be és engedélyezheti az Azure RTOS s
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
-author: mlottner
+author: rkarlin
 manager: rkarlin
 editor: ''
 ms.devlang: na
 ms.topic: quickstart
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/06/2020
-ms.author: mlottner
-ms.openlocfilehash: 6f438bd7dd0b3e45fd292947a3b08db80401b825
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.date: 09/24/2020
+ms.author: rkarlin
+ms.openlocfilehash: 38e78b80fd14aec7557b563b2b33faf7d51bd114
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90947164"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91759732"
 ---
 # <a name="quickstart-security-module-for-azure-rtos-preview"></a>Gyors útmutató: biztonsági modul az Azure RTOS (előzetes verzió)
 
@@ -35,7 +35,7 @@ Ez a cikk az első lépések előtt ismerteti az előfeltételeket, és bemutatj
 - NXP i.MX RT1060 EVK
 - Microchip SAM E54 Xplained Pro EVK
 
-Az [Azure RTOS GitHub-erőforrás biztonsági moduljának](hhtps://github.com/azure-rtos/azure-iot-preview/releases)használatával letöltheti, lefordíthatja és futtathatja az adott tábla és eszköz (IAR, fél ide vagy számítógép) egyik. zip fájlját.
+Az [Azure RTOS GitHub-erőforrás biztonsági moduljának](https://github.com/azure-rtos/azure-iot-preview/releases)használatával letöltheti, lefordíthatja és futtathatja az adott tábla és eszköz (IAR, fél ide vagy számítógép) egyik. zip fájlját.
 
 ### <a name="azure-resources"></a>Azure-erőforrások
 
@@ -68,7 +68,7 @@ A IoT Hub Log Analytics betöltését a IoT-megoldás alapértelmezett védelmez
 1. Térjen vissza az Azure-erőforrások listájához, és ellenőrizze, hogy a létrehozott vagy csatolt Log Analytics munkaterület engedélyezve van-e a IoT Hub.
     :::image type="content" source="media/quickstart/verify-azure-resource-list.png" alt-text="Az Azure RTOS Access adatgyűjtési beállítása"::: 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Folytassa a következő cikkel a megoldás konfigurálásának és testreszabásának befejezéséhez.
 

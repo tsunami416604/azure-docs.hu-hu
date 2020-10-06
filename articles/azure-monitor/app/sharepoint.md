@@ -3,19 +3,19 @@ title: SharePoint-hely megfigyelése az Application Insights segítségével
 description: Új alkalmazás figyelésének megkezdése új kialakítási kulccsal
 ms.topic: conceptual
 ms.date: 09/08/2020
-ms.openlocfilehash: 0d365e1fbcc52e14cfc727dd1de3e31a7d3e5d68
-ms.sourcegitcommit: c52e50ea04dfb8d4da0e18735477b80cafccc2cf
+ms.openlocfilehash: afd7a5fc8ccf7546078fa8a4ffa7a076cb05be6a
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/08/2020
-ms.locfileid: "89536497"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91757248"
 ---
 # <a name="monitor-a-sharepoint-site-with-application-insights"></a>SharePoint-hely megfigyelése az Application Insights segítségével
 
 Az Azure Application Insights figyeli alkalmazásai rendelkezésre állását, teljesítményét és használatát. Ebből a cikkből megismerheti, hogyan állíthatja be egy SharePoint-helyhez.
 
 > [!NOTE]
-> Biztonsági okokból a jelen cikkben ismertetett parancsfájlt nem lehet közvetlenül felvenni a SharePoint modern UX weblapjára. Alternatív megoldásként használhatja a [SharePoint Framework (SPFx)](/sharepoint/dev/spfx/extensions/overview-extensions) szolgáltatást, amellyel létrehozhat egy egyéni bővítményt, amellyel a SharePoint-webhelyekre Application Insights telepíthet. További információért lásd: [SPFx-bővítményi megoldás létrehozása a AppInsights-ben telepített](https://github.com/microsoft/ApplicationInsights-JS/tree/master/SPO#how-to-create-a-spfx-extension-solution-with-appinsights-installed-from-scratch) , vagy [a minta megtekintése](https://github.com/microsoft/ApplicationInsights-JS/tree/master/SPO/AppInsightsExtensionSolutionSample-NPM). 
+> Biztonsági okokból a jelen cikkben ismertetett parancsfájlt nem lehet közvetlenül felvenni a SharePoint modern UX weblapjára. Alternatív megoldásként használhatja a [SharePoint Framework (SPFx)](/sharepoint/dev/spfx/extensions/overview-extensions) szolgáltatást, amellyel létrehozhat egy egyéni bővítményt, amellyel a SharePoint-webhelyekre Application Insights telepíthet.
 
 ## <a name="create-an-application-insights-resource"></a>Application Insights-erőforrás létrehozása
 Az [Azure Portalon](https://portal.azure.com) hozzon létre egy új Application Insights-erőforrást. Az alkalmazás típusának válassza az ASP.NET lehetőséget.
@@ -136,7 +136,7 @@ function onRequestFail(sender, args) {
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Webes tesztek](./monitor-web-app-availability.md) webhelye rendelkezésre állásának figyeléséhez.
 * [Application Insights](./app-insights-overview.md) más típusú alkalmazásokhoz.
 

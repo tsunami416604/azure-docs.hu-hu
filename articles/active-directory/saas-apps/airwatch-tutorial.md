@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/11/2019
 ms.author: jeedes
-ms.openlocfilehash: 049066ffc5ce0aea2af956343dfa7ba97b6b5bb4
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 2baff2ac2af10caf857fd08b0d7e7df5030220e4
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88542819"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91758141"
 ---
 # <a name="tutorial-integrate-airwatch-with-azure-active-directory"></a>Oktatóanyag: a AirWatch és a Azure Active Directory integrálása
 
@@ -88,7 +88,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. A **felhasználó attribútumai** párbeszédpanel **felhasználói jogcímek** szakaszában szerkessze a jogcímeket a **Szerkesztés ikon** használatával, vagy adja hozzá a jogcímeket az **új jogcím hozzáadása** paranccsal az SAML-token attribútum konfigurálásához a fenti képen látható módon, és hajtsa végre a következő lépéseket:
 
-    | Name |  Forrás attribútum|
+    | Name (Név) |  Forrás attribútum|
     |---------------|----------------|
     | UID | User. userPrincipalName |
     | | |
@@ -125,7 +125,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. Kattintson a **felhasználó** lapra, az **Alap DN** szövegmezőbe írja be a tartomány nevét, majd kattintson a **Mentés**gombra.
 
-   ![Felhasználó](./media/airwatch-tutorial/ic791922.png "Felhasználó")
+   ![Képernyőfelvétel: az alapszintű DN szövegmező kiemelése.](./media/airwatch-tutorial/ic791922.png "Felhasználó")
 
 1. Kattintson a **kiszolgáló** fülre.
 
@@ -133,7 +133,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. Hajtsa végre a következő lépéseket az **LDAP** szakaszban:
 
-    ![Feltöltés](./media/airwatch-tutorial/ic791924.png "LDAP")   
+    ![Képernyőkép, amely az LDAP szakaszban szükséges módosításokat mutatja.](./media/airwatch-tutorial/ic791924.png "LDAP")   
 
     a. A **könyvtár típusa**mezőben válassza a **nincs**lehetőséget.
 
@@ -223,7 +223,7 @@ Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a Ai
 
 3. A **felhasználók** menüben kattintson a **listanézet**lehetőségre, majd kattintson a **Hozzáadás gombra > felhasználó hozzáadása**lehetőségre.
   
-   ![Felhasználó hozzáadása](./media/airwatch-tutorial/ic791930.png "Felhasználó hozzáadása")
+   ![Képernyőkép, amely kiemeli a felhasználók hozzáadása és hozzáadása gombokat.](./media/airwatch-tutorial/ic791930.png "Felhasználó hozzáadása")
 
 4. A **felhasználó hozzáadása/szerkesztése** párbeszédpanelen hajtsa végre a következő lépéseket:
 

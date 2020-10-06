@@ -15,12 +15,12 @@ ms.devlang: na
 ms.topic: article
 ms.date: 09/08/2020
 ms.author: Zhchia
-ms.openlocfilehash: 221039ad1dc30e645d98ba6dd7e79c7b81ba3430
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 5ce2c866954f46e3a01cabb23033ea2dae77ead6
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91313059"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91757452"
 ---
 # <a name="tutorial-configure-apple-school-manager-for-automatic-user-provisioning"></a>Oktatóanyag: az Apple School Manager konfigurálása automatikus felhasználók kiosztásához
 
@@ -55,7 +55,7 @@ Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezi
 1. Az Apple School Managerben jelentkezzen be egy olyan fiókkal, amely a rendszergazda, a Site Manager vagy a People Manager szerepkörrel rendelkezik.
 2. Kattintson az oldalsáv alján található beállítások elemre, kattintson a szervezeti beállítások alatti adatforrás lehetőségre, majd kattintson a kapcsolódás adatforráshoz lehetőségre.
 3. Kattintson a Kapcsolódás a SCIM mellett lehetőségre, figyelmesen olvassa el a figyelmeztetést, kattintson a másolás, majd a Bezárás gombra.
-[A Kapcsolódás a SCIM ablakhoz, amely egy jogkivonatot és egy másolási gombot biztosít.] Hagyja nyitva ezt az ablakot, és másolja a bérlői URL-címet az Apple Business Managerből az Azure AD-be, amely a következő: https://federation.apple.com/feeds/school/scim
+[A Kapcsolódás a SCIM ablakhoz, amely egy jogkivonatot és egy másolási gombot biztosít.] Hagyja nyitva ezt az ablakot, hogy átmásolja a bérlői URL-címet az Apple Business Managerből az Azure AD-be, amely a következő: https://federation.apple.com/feeds/school/scim
 
     ![Apple School Manager](media/appleschoolmanager-provisioning-tutorial/scim-token.png)
 
@@ -152,16 +152,16 @@ Az átadás konfigurálása után a következő erőforrásokkal monitorozhatja 
 
 * [Felhasználói fiók átadásának kezelése vállalati alkalmazásokhoz](../manage-apps/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
-* [Az Apple School Manager SCIM-követelményeinek áttekintése](URL=https://support.apple.com/guide/apple-school-manager/apdd88331cd6)
-* [A személy AZONOSÍTÓjának használata az Apple School Managerben](URL=https://support.apple.com/guide/apple-school-manager/apd69e1e48e9)
-* [Felhasználók importálása az Apple School Managerbe a SCIM használatával](URL=https://support.apple.com/guide/apple-school-manager/apd3ec7b95ad)
-* [SCIM felhasználói fiókok ütközésének feloldása az Apple School Managerben](URL=https://support.apple.com/guide/apple-school-manager/apd313013d12)
-* [Az Apple School Managerben megjelenő Azure AD-fiókok törlése](URL=https://support.apple.com/guide/apple-school-manager/apdaa5798fbe)
-* [SCIM-tevékenység megtekintése az Apple School Managerben](URL=https://support.apple.com/guide/apple-school-manager/apd1bfd8dfde)
-* [Meglévő SCIM-jogkivonat és-kapcsolatok kezelése az Apple School Managerben](URL=https://support.apple.com/guide/apple-school-manager/apdc9a823611)
-* [Az SCIM-kapcsolat leválasztása az Apple School Managerben](URL=https://support.apple.com/guide/apple-school-manager/apd609be3a61)
-* [Meglévő SCIM-jogkivonat és-kapcsolatok kezelése az Apple School Managerben](URL=https://support.apple.com/guide/apple-school-manager/apdc9a8236e9)
-* [Az SCIM-kapcsolatok hibaelhárítása az Apple School Managerben](URL=https://support.apple.com/guide/apple-school-manager/apd403a0f3bd)
+* [Az Apple School Manager SCIM-követelményeinek áttekintése](https://support.apple.com/guide/apple-school-manager/apdd88331cd6)
+* [A személy AZONOSÍTÓjának használata az Apple School Managerben](https://support.apple.com/guide/apple-school-manager/apd69e1e48e9)
+* [Felhasználók importálása az Apple School Managerbe a SCIM használatával](https://support.apple.com/guide/apple-school-manager/apd3ec7b95ad)
+* [SCIM felhasználói fiókok ütközésének feloldása az Apple School Managerben](https://support.apple.com/guide/apple-school-manager/apd313013d12)
+* [Az Apple School Managerben megjelenő Azure AD-fiókok törlése](https://support.apple.com/guide/apple-school-manager/apdaa5798fbe)
+* [SCIM-tevékenység megtekintése az Apple School Managerben](https://support.apple.com/guide/apple-school-manager/apd1bfd8dfde)
+* [Meglévő SCIM-jogkivonat és-kapcsolatok kezelése az Apple School Managerben](https://support.apple.com/guide/apple-school-manager/apdc9a823611)
+* [Az SCIM-kapcsolat leválasztása az Apple School Managerben](https://support.apple.com/guide/apple-school-manager/apd609be3a61)
+* [Meglévő SCIM-jogkivonat és-kapcsolatok kezelése az Apple School Managerben](https://support.apple.com/guide/apple-school-manager/apdc9a8236e9)
+* [Az SCIM-kapcsolatok hibaelhárítása az Apple School Managerben](https://support.apple.com/guide/apple-school-manager/apd403a0f3bd)
 
 ## <a name="next-steps"></a>További lépések
 

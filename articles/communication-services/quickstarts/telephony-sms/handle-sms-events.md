@@ -9,16 +9,16 @@ ms.author: mikben
 ms.date: 09/30/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 66160f17a15ce81dbc21ddf65dba17c0a4ad7a99
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 072e885ec1c618229141dea477cd598d8db34ce7
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91665371"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91756752"
 ---
 # <a name="quickstart-handle-sms-events"></a>Gyors útmutató: SMS-események kezelése
 
-[!INCLUDE [Private Preview Notice](../../includes/private-preview-include.md)]
+[!INCLUDE [Public Preview Notice](../../includes/public-preview-include.md)]
 
 Az Azure kommunikációs szolgáltatások használatának első lépései a kommunikációs szolgáltatások SMS-események kezelésére Azure Event Grid használatával. 
 
@@ -96,7 +96,7 @@ A fenti műveletek elvégzése után láthatja, hogy a rendszer  `SMS Received` 
 
 :::image type="content" source="./media/handle-sms-events/sms-received.png" alt-text="Képernyőfelvétel: az esemény-előfizetések gombjának kiválasztása az erőforrás események lapján.":::
 
-:::image type="content" source="./media/handle-sms-events/SMS-Delivery-Report-Received.png" alt-text="Képernyőfelvétel: az esemény-előfizetések gombjának kiválasztása az erőforrás események lapján.":::
+:::image type="content" source="./media/handle-sms-events/sms-delivery-report-received.png" alt-text="Képernyőfelvétel: az esemény-előfizetések gombjának kiválasztása az erőforrás események lapján.":::
 
 További információk az [esemény-sémákkal és egyéb eseményvezérelt fogalmakkal](../../concepts/event-handling.md) kapcsolatban
 
@@ -104,7 +104,7 @@ További információk az [esemény-sémákkal és egyéb eseményvezérelt foga
 
 Ha törölni szeretné a kommunikációs szolgáltatások előfizetését, törölheti az erőforrást vagy az erőforráscsoportot. Az erőforráscsoport törlésével a hozzá társított egyéb erőforrások is törlődnek. További információ az [erőforrások tisztításáról](../create-communication-resource.md#clean-up-resources).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban megtanulta, hogyan használhat SMS-eseményeket. SMS-üzeneteket a Event Grid előfizetés létrehozásával fogadhat.
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/12/2020
 ms.author: jeedes
-ms.openlocfilehash: 116ee7c8db3070a667c21a052bec739fd397a2dd
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.openlocfilehash: fbab2bbaa47090ff4bd7fb99495912bd1f645b61
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88825562"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91758139"
 ---
 # <a name="tutorial-integrate-azure-ad-single-sign-on-with-maverics-identity-orchestrator-saml-connector"></a>Oktatóanyag: az Azure AD egyszeri bejelentkezés integrálása a Maverics Identity Orchestrator SAML-összekötővel
 
@@ -36,7 +36,7 @@ Ez az oktatóanyag bemutatja, hogyan telepíthet át egy olyan helyszíni webalk
 4. Állítson be egy Azure Key vaultot, és konfigurálja a Maverics, hogy azok a titkokat kezelő szolgáltatóként használhassák.
 5. A felhasználók áttelepítésének és a munkamenetek absztrakciójának bemutatása a Maverics használatával a helyszíni Java-webalkalmazásokhoz való hozzáférés biztosításához.
 
-További telepítési és konfigurációs utasításokért lépjen a [rétegek webhelyére](https://strata.io/docs).
+További telepítési és konfigurációs utasításokért lépjen a [rétegek webhelyére](https://www.strata.io).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -45,7 +45,7 @@ További telepítési és konfigurációs utasításokért lépjen a [rétegek w
 
 ## <a name="install-maverics-identity-orchestrator"></a>A Maverics Identity Orchestrator telepítése
 
-A Maverics Identity Orchestrator telepítésének megkezdéséhez tekintse meg a [telepítési utasításokat](https://strata.io/docs).
+A Maverics Identity Orchestrator telepítésének megkezdéséhez tekintse meg a [telepítési utasításokat](https://www.strata.io).
 
 ### <a name="system-requirements"></a>Rendszerkövetelmények
 * Támogatott operációs rendszerek
@@ -163,7 +163,7 @@ Az Azure Key Vault a Azure Portal vagy az Azure CLI használatával állítható
 1. [Alkalmazás regisztrálása az Azure ad](https://docs.microsoft.com/azure/active-directory/develop/howto-create-service-principal-portal#create-an-azure-active-directory-application)-ben.
 1. [Engedélyezze az alkalmazás számára a titkos kód használatát](https://docs.microsoft.com/azure/key-vault/secrets/quick-create-portal#add-a-secret-to-key-vault).
 
-**Az Azure parancssori felületének használata**
+**Az Azure CLI használata**
 
 1. Nyissa meg az [Azure CLI](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)-t, majd írja be a következő parancsot:
 

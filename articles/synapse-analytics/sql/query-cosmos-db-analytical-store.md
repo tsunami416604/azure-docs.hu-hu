@@ -9,12 +9,12 @@ ms.subservice: sql
 ms.date: 09/15/2020
 ms.author: jovanpop
 ms.reviewer: jrasnick
-ms.openlocfilehash: 9d36cee1ebf9f58991db6fd40fd6aa9422546b61
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.openlocfilehash: 6f4dd0836ba04d0e07ada8aced964317498b1f22
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2020
-ms.locfileid: "91710753"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91757595"
 ---
 # <a name="query-azure-cosmos-db-data-using-sql-serverless-in-azure-synapse-link-preview"></a>Az SQL Server nélküli Azure szinapszis-kapcsolaton keresztüli lekérdezés Azure Cosmos DB
 
@@ -23,7 +23,7 @@ A szinapszis SQL Server nélküli (korábban SQL on-demand) lehetővé teszi az 
 > [!NOTE]
 > Az SQL Server nélküli Azure Cosmos DB analitikus tároló lekérdezésének támogatása jelenleg a GateD Preview-ban érhető el. 
 
-Azure Cosmos DB lekérdezéséhez a [OpenRowset](develop-openrowset.md) függvény a teljes [kijelölés](/sql/t-sql/queries/select-transact-sql.md?view=sql-server-ver15&preserve-view=true) felületét támogatja, beleértve az [SQL-függvények és-operátorok](overview-features.md)többségét. Azt is megteheti, hogy a lekérdezés eredményeit a Azure Cosmos DB az Azure Blob Storage vagy Azure Data Lake Storage a [külső tábla létrehozása lehetőséggel](develop-tables-cetas.md#cetas-in-sql-on-demand)együtt beolvassa az adatokat. Az SQL Server nélküli lekérdezési eredményeket jelenleg nem tárolhatja a [CETAS](develop-tables-cetas.md#cetas-in-sql-on-demand)használatával Azure Cosmos db.
+Azure Cosmos DB lekérdezéséhez a [OpenRowset](develop-openrowset.md) függvény a teljes [kijelölés](/sql/t-sql/queries/select-transact-sql?view=sql-server-ver15) felületét támogatja, beleértve az [SQL-függvények és-operátorok](overview-features.md)többségét. Azt is megteheti, hogy a lekérdezés eredményeit a Azure Cosmos DB az Azure Blob Storage vagy Azure Data Lake Storage a [külső tábla létrehozása lehetőséggel](develop-tables-cetas.md#cetas-in-sql-on-demand)együtt beolvassa az adatokat. Az SQL Server nélküli lekérdezési eredményeket jelenleg nem tárolhatja a [CETAS](develop-tables-cetas.md#cetas-in-sql-on-demand)használatával Azure Cosmos db.
 
 Ebből a cikkből megtudhatja, hogyan írhat egy lekérdezést az SQL Server nélküli lekérdezéssel, amely lekérdezi az Azure Cosmos DB tárolók adatait, amelyeken engedélyezve van a szinapszis-hivatkozás. Ezután további információt kaphat az SQL Server nélküli nézetek Azure Cosmos DB tárolókkal való létrehozásáról, valamint [az oktatóanyagban](./tutorial-data-analyst.md) található Power bi modellekhez való csatlakozásról. 
 

@@ -100,6 +100,8 @@
           href: rbac-migration.md
         - name: Hozzáférési problémák elhárítása
           href: troubleshooting-access-issues.md
+    - name: A naplózás engedélyezése
+      href: howto-logging.md
     - name: Fejlesztés
       items:
         - name: Az Azure Key Vault fejlesztői útmutatója

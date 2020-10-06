@@ -79,6 +79,8 @@
       href: table-storage-design-modeling.md
     - name: Táblatervezési minták
       href: table-storage-design-patterns.md
+    - name: A Table Storage monitorozása
+      href: monitor-table-storage.md
 - name: Használati útmutató
   items:
     - name: Tárfiók létrehozása
@@ -172,6 +174,8 @@
       href: 'https://azure.microsoft.com/pricing/calculator/'
 - name: Referencia
   items:
+    - name: Az Azure Table Storage monitorozása – referencia
+      href: monitor-table-storage-reference.md
     - name: Méretezhetőségi és teljesítménycélok
       items:
         - name: Table Storage

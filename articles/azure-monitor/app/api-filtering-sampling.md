@@ -4,12 +4,12 @@ description: Telemetria-processzorok és telemetria-inicializálók írása az S
 ms.topic: conceptual
 ms.date: 11/23/2016
 ms.custom: devx-track-js, devx-track-csharp
-ms.openlocfilehash: d2a0c348eda569e95a3029b9dce76aa981989ddf
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: b3ccc3516d5b31f4c119c2d5a2bd11a63dbdc611
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91264031"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91758030"
 ---
 # <a name="filter-and-preprocess-telemetry-in-the-application-insights-sdk"></a>Telemetria szűrése és előfeldolgozása az Application Insights SDK-ban
 
@@ -292,7 +292,7 @@ protected void Application_Start()
 }
 ```
 
-Tekintse meg [ezt a mintát](https://github.com/Microsoft/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/MvcWebRole).
+Tekintse meg [ezt a mintát](https://github.com/MohanGsk/ApplicationInsights-Home/tree/master/Samples/AzureEmailService/MvcWebRole).
 
 ASP.NET **Core/Worker Service-alkalmazások: az inicializálás betöltése**
 

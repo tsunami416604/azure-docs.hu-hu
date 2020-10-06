@@ -11,12 +11,12 @@ ms.reviewer: larryfr
 ms.date: 06/17/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, devx-track-csharp
-ms.openlocfilehash: 2e1c7c1ca15d7c47ec8973ac8e93f7391916f5e4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 6aacc2778e02b96f31c633671da014ced30778fd
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91302400"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91756670"
 ---
 # <a name="consume-an-azure-machine-learning-model-deployed-as-a-web-service"></a>Azure Machine Learning-modell felhasználása webszolgáltatásként
 
@@ -179,7 +179,7 @@ Az CORS-támogatás szolgáltatásban való engedélyezésével kapcsolatos info
 
 ## <a name="call-the-service-c"></a>A szolgáltatás meghívása (C#)
 
-Ez a példa azt mutatja be, hogy a C# használatával hogyan hívhatja meg a vonattal létrehozott webszolgáltatást a [notebookon belül](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/training-with-deep-learning/how-to-use-estimator/notebook_example.ipynb) . példa:
+Ez a példa azt mutatja be, hogy a C# használatával hogyan hívhatja meg a vonattal létrehozott webszolgáltatást a [notebookon belül](https://github.com/Azure/MachineLearningNotebooks/blob/master/how-to-use-azureml/machine-learning-pipelines/intro-to-pipelines/notebook_runner/training_notebook.ipynb) . példa:
 
 ```csharp
 using System;

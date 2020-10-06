@@ -4,12 +4,12 @@ description: Az alkalmazások teljesítményének figyelése az Azure app Servic
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-js, devx-track-dotnet
-ms.openlocfilehash: 2ac5466e280bb7dd835314561f565ca72be2743c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 36f6ad4c248b3de54de5de0893410e9b13df0c26
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91321815"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91759458"
 ---
 # <a name="monitor-azure-app-service-performance"></a>Az Azure App Service teljesítményének monitorozása
 
@@ -65,7 +65,7 @@ Az alkalmazások figyelését kétféleképpen engedélyezheti az Azure App Serv
 | Használati trendek gyűjtése, a rendelkezésreállási eredmények és a tranzakciók összevetése | Igen |Igen |
 | A gazdafolyamat által nem kezelt kivételek gyűjtése | Igen |Igen |
 | Az APM-metrikák pontosságának növelése terhelés alatt, mintavételezés használatakor | Igen |Igen |
-| Mikroszolgáltatások összevetése kérési és függőségi határokon keresztül | Nem (csak egypéldányos APM-képességek) |Yes |
+| Mikroszolgáltatások összevetése kérési és függőségi határokon keresztül | Nem (csak egypéldányos APM-képességek) |Igen |
 
 3. Ha olyan beállításokat szeretne konfigurálni, mint például a mintavétel, amelyet korábban a applicationinsights.config fájlon keresztül szabályozhat, mostantól a megfelelő előtaggal használhatja ugyanezeket a beállításokat az Alkalmazásbeállítások használatával. 
 
@@ -162,7 +162,7 @@ Ahhoz, hogy a telemetria-gyűjtést Application Insights használatával engedé
 
 ### <a name="application-settings-definitions"></a>Alkalmazásbeállítások definíciói
 
-|Alkalmazás-beállítás neve |  Definíció | Érték |
+|Alkalmazás-beállítás neve |  Meghatározás | Érték |
 |-----------------|:------------|-------------:|
 |ApplicationInsightsAgent_EXTENSION_VERSION | A fő bővítmény, amely a futtatókörnyezet figyelését vezérli. | `~2` |
 |XDT_MicrosoftApplicationInsights_Mode |  Az alapértelmezett módban csak az alapvető funkciók engedélyezettek az optimális teljesítmény biztosításához. | `default` vagy `recommended`. |
@@ -391,7 +391,7 @@ Ha APPINSIGHTS_JAVASCRIPT_ENABLED = True értéket használ a tartalom kódolás
 
 Ennek az az oka, hogy a APPINSIGHTS_JAVASCRIPT_ENABLED alkalmazás beállítása true (igaz) értékre van állítva, és a Content-Encoding egyszerre van jelen. Ez a forgatókönyv még nem támogatott. A megkerülő megoldás az alkalmazás beállításaiból való APPINSIGHTS_JAVASCRIPT_ENABLED eltávolítása. Sajnos ez azt jelenti, hogy ha az ügyfél/böngésző oldali JavaScript-rendszerállapotra továbbra is szükség van, a weboldalakhoz manuális SDK-referenciára van szükség. Kövesse a manuális rendszerállapotra vonatkozó [utasításokat](https://github.com/Microsoft/ApplicationInsights-JS#snippet-setup-ignore-if-using-npm-setup) a JavaScript SDK-val.
 
-A Application Insights ügynökkel/bővítménnyel kapcsolatos legfrissebb információkért tekintse meg a [kibocsátási megjegyzéseket](https://github.com/Microsoft/ApplicationInsights-Home/blob/master/app-insights-web-app-extensions-releasenotes.md).
+A Application Insights ügynökkel/bővítménnyel kapcsolatos legfrissebb információkért tekintse meg a [kibocsátási megjegyzéseket](https://github.com/MohanGsk/ApplicationInsights-Home/blob/master/app-insights-web-app-extensions-releasenotes.md).
 
 ### <a name="default-website-deployed-with-web-apps-does-not-support-automatic-client-side-monitoring"></a>A Web Apps szolgáltatással telepített alapértelmezett webhely nem támogatja az automatikus ügyféloldali figyelést
 

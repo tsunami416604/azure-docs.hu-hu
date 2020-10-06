@@ -7,16 +7,16 @@ ms.topic: how-to
 ms.date: 08/31/2020
 ms.author: rosouz
 ms.custom: references_regions
-ms.openlocfilehash: 559c596ed9b7412b277fbfc1cf30cad15e852cef
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a634743441866c4f1a9f6d634efe0ff9e368b5e9
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91253156"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91757843"
 ---
 # <a name="configure-and-use-azure-synapse-link-for-azure-cosmos-db-preview"></a>Azure szinapszis-hivatkozás konfigurálása és használata Azure Cosmos DB (előzetes verzió)
 
-A Azure Cosmos DB szinapszis hivatkozása egy felhőalapú hibrid tranzakciós és analitikai feldolgozási (HTAP) képesség, amely lehetővé teszi a közel valós idejű elemzések futtatását Azure Cosmos DBokban lévő operatív adatokon. A szinapszis-kapcsolat szoros zökkenőmentes integrációt hoz létre Azure Cosmos DB és az Azure szinapszis Analytics között.
+Az [Azure szinapszis hivatkozása Azure Cosmos db](synapse-link.md) egy felhőalapú hibrid tranzakciós és analitikai feldolgozási (HTAP) képesség, amely lehetővé teszi a közel valós idejű elemzések futtatását Azure Cosmos db-ban lévő operatív adaton. A szinapszis-kapcsolat szoros zökkenőmentes integrációt hoz létre Azure Cosmos DB és az Azure szinapszis Analytics között.
 
 > [!IMPORTANT]
 > Az Azure szinapszis-hivatkozás használatához győződjön meg róla, hogy az Azure szinapszis Analytics-munkaterületet & az egyik támogatott régióban Azure Cosmos DB fiókját. Az Azure szinapszis hivatkozás jelenleg a következő Azure-régiókban érhető el: USA nyugati középső régiója, USA keleti régiója, Nyugat-RÉGIÓJA, Észak-Európa, Nyugat-Európa, az USA déli középső régiója, Délkelet-Ázsia, Kelet-Ausztrália, Kelet-Európai U2, Egyesült Királyság déli régiója.
@@ -46,7 +46,7 @@ Az Azure szinapszis hivatkozás Azure Cosmos DB SQL API-tárolók vagy a Mongo D
 
 1. Ezután felszólítja, hogy engedélyezze a szinapszis hivatkozását a fiókján. Válassza az **Engedélyezés** lehetőséget. A folyamat elvégzése 1 – 5 percet is igénybe vehet.
 
-   :::image type="content" source="./media/configure-synapse-link/enable-synapse-link-feature.png" alt-text="Szinapszis-hivatkozás funkciójának engedélyezése":::
+   :::image type="content" source="./media/configure-synapse-link/enable-synapse-link-feature.png" alt-text="A szinapszis-hivatkozás előzetes funkciójának keresése":::
 
 1. A fiókja mostantól engedélyezve van a szinapszis-hivatkozás használatára. Ezután olvassa el az analitikai tárolóval rendelkező tárolók létrehozása a működési adatok tranzakciós tárolóból az analitikai tárolóba való replikálásának automatikus megkezdéséhez című témakört.
 
@@ -68,7 +68,7 @@ A tároló létrehozásakor bekapcsolhatja az analitikus tárolót egy Azure Cos
 
 1. Válassza az **új tároló** lehetőséget, és adja meg az adatbázis nevét, a tárolót, a partíció kulcsát és az átviteli sebesség részleteit. Kapcsolja be az **analitikai tároló** lehetőséget. Az analitikai tároló engedélyezése után egy olyan tárolót hoz létre, amelynek `AnalyicalTTL` a tulajdonsága az alapértelmezett-1 értékre van beállítva (végtelen megőrzés). Ez az analitikai tároló a rekordok összes korábbi verzióját megőrzi.
 
-   :::image type="content" source="./media/configure-synapse-link/create-container-analytical-store.png" alt-text="Az analitikai tár bekapcsolása az Azure Cosmos-tárolóhoz":::
+   :::image type="content" source="./media/configure-synapse-link/create-container-analytical-store.png" alt-text="A szinapszis-hivatkozás előzetes funkciójának keresése":::
 
 1. Ha korábban nem engedélyezte a szinapszis hivatkozását ezen a fiókon, a rendszer felszólítja erre, mert ez egy, az analitikai tároló engedélyezett tárolójának létrehozásához szükséges előfeltétel. Ha a rendszer kéri, válassza a **szinapszis-hivatkozás engedélyezése**lehetőséget. A folyamat elvégzése 1 – 5 percet is igénybe vehet.
 

@@ -1,119 +1,115 @@
 - name: A kereskedelmi piactér dokumentációja
   href: index.yml
+  items: null
+- name: Tudnivalók a kereskedelmi piactérről
+  href: overview.md
+- name: Fiókkezelés
   items:
-    - name: Kereskedelmi piactér – frissítések
-      href: marketplace-roadmap.md
-    - name: A kereskedelmi piactér áttekintése és előnyei
-      href: marketplace-publishers-guide.md
+    - name: Új Partnerközpontfiók létrehozása
+      href: partner-center-portal/create-account.md
+    - name: Saját fiók kezelése
+      href: partner-center-portal/manage-account.md
+    - name: Vállalati munkahelyi fiók megkeresése vagy létrehozása
+      href: partner-center-portal/company-work-accounts.md
+    - name: Fiók migrálása a CPP-ből a Partnerközpontba
+      href: partner-center-portal/account-migration-from-cpp-to-pc.md
+- name: Fogalmak
+  items:
+    - name: Közzétételi lehetőségek és szempontok
+      href: determine-your-listing-type.md
+    - name: Tranzakciók a kereskedelmi piactéren
+      href: marketplace-commercial-transaction-capabilities-and-considerations.md
+    - name: Személyes ajánlatok
+      href: private-offers.md
+    - name: Csomagok és díjszabás
+      href: plans-pricing.md
+    - name: Standard szerződés
+      href: standard-contract.md
+    - name: Azure Marketplace-termékoldalak követelményei
+      href: marketplace-criteria-content-validation.md
+    - name: Érdeklődők kezelése
+      href: partner-center-portal/commercial-marketplace-get-customer-leads.md
+    - name: Tesztverziók
       items:
-        - name: 'Egy piactér, két online áruház'
-          href: comparing-appsource-azure-marketplace.md
-        - name: Közzétételi lehetőségek és szempontok
-          href: determine-your-listing-type.md
-          items:
-            - name: Érdeklődők kezelése
-              href: lead-management-for-cloud-marketplace.md
-            - name: Tranzakciók a kereskedelmi piactéren
-              href: marketplace-commercial-transaction-capabilities-and-considerations.md
-            - name: Csomagok és díjszabás
-              href: plans-pricing.md
-            - name: Személyes ajánlatok
-              href: private-offers.md
-            - name: Standard szerződés
-              href: standard-contract.md
-            - name: Az Azure-partnererőforrások ügyfelek általi használatának nyomon követése
-              href: azure-partner-customer-usage-attribution.md
-            - name: Támogatott országok és régiók
-              href: sell-from-countries.md
-        - name: Közzétételi útmutatók ajánlattípusok szerint
-          href: publisher-guide-by-offer-type.md
-          items:
-            - name: SaaS-ajánlat tervezése
-              href: plan-saas-offer.md
-            - name: Virtual machines (Virtuális gépek)
-              href: marketplace-virtual-machines.md
-            - name: 'Azure-alkalmazások: megoldássablonok'
-              href: marketplace-solution-templates.md
-            - name: 'Azure-alkalmazások: felügyelt alkalmazások'
-              href: marketplace-managed-apps.md
-            - name: Containers
-              href: marketplace-containers.md
-            - name: IoT Edge-modulok
-              href: iot-edge-module.md
-            - name: Tanácsadói szolgáltatások
-              href: consulting-services.md
-            - name: 'Microsoft 365, Dynamics 365 és Power BI'
-              href: appsource-offer-publishing-guide.md
-            - name: Ajánlat hitelesítésének engedélyezése az Azure AD-vel
-              href: enable-appsource-marketplace-using-azure-ad.md
-            - name: Integrált megoldások
-              href: integrated-solutions-for-publishers.md
-        - name: Marketingre vonatkozó ajánlott eljárások
-          href: gtm-marketing-best-practices.md
-          items:
-            - name: Ajánlatlistákra vonatkozó ajánlott eljárások
-              href: gtm-offer-listing-best-practices.md
-            - name: Alkalmazás kiemeltté tétele
-              href: gtm-how-to-get-featured.md
-            - name: Marketplace-tartalmak érvényesítése
-              href: marketplace-criteria-content-validation.md
-            - name: Felhőszolgáltatók
-              href: cloud-solution-providers.md
-            - name: A Connect program regisztrálási útmutatója
-              href: business-applications-isv-program.md
+        - name: Mit jelent a tesztverzió?
+          href: what-is-test-drive.md
+        - name: Tesztverzió műszaki konfigurálása
+          href: test-drive-technical-configuration.md
+        - name: Az Azure Resource Manager tesztverziója
+          href: azure-resource-manager-test-drive.md
+    - name: Az Azure-partnererőforrások ügyfelek általi használatának nyomon követése
+      href: azure-partner-customer-usage-attribution.md
+    - name: Piaci bevezetési beállítások
+      items:
         - name: A Marketplace-ből származó előnyei
           href: gtm-your-marketplace-benefits.md
-          items:
-            - name: Az Azure-beli használati kötelezettségvállalás előnyei
-              href: azure-consumption-commitment-benefit.md
-            - name: Együttes értékesítési partnerek bevonása
-              href: marketplace-co-sell.md
-            - name: Előnyben részesített megoldások
-              href: preferred-solutions.md
-            - name: Integrált megoldások
-              href: integrated-solutions.md
-        - name: A kereskedelmi piactér támogatása
-          href: support-azure-marketplace.md
-          items:
-            - name: Kereskedelmi piactér – Gyakori kérdések
-              href: marketplace-faq-publisher-guide.md
-            - name: Földrajzi rendelkezésre állás és pénznemek
-              href: marketplace-geo-availability-currencies.md
-- name: A kereskedelmi piactér a Partnerközpontban
+        - name: Együttes értékesítési partnerek bevonása
+          href: marketplace-co-sell.md
+        - name: Együttes értékesítési lehetőség a Partnerközpontban
+          href: partner-center-portal/commercial-marketplace-co-sell.md
+        - name: Viszonteladás CSP-partnereken keresztül
+          href: cloud-solution-providers.md
+        - name: A Connect program regisztrálási útmutatója
+          href: business-applications-isv-program.md
+        - name: Az Azure-beli használati kötelezettségvállalás előnyei
+          href: azure-consumption-commitment-benefit.md
+        - name: Előnyben részesített megoldások
+          href: preferred-solutions.md
+        - name: Integrált megoldások
+          href: integrated-solutions-for-publishers.md
+    - name: A Marketplace Rewards aktiválása
+      href: partner-center-portal/marketplace-rewards.md
+    - name: Fizetés fogadása
+      items:
+        - name: Fizetés fogadása
+          href: /partner-center/marketplace-get-paid?context=/azure/marketplace/context/context
+        - name: Kifizetési számla és űrlapok beállítása
+          href: /partner-center/set-up-your-payout-account?context=/azure/marketplace/context/context
+        - name: Fizetési küszöbértékek és időkeretek
+          href: /partner-center/payment-thresholds-methods-timeframes?context=/azure/marketplace/context/context
+        - name: Kifizetési utasítások
+          href: /partner-center/payout-statement?context=/azure/marketplace/context/context
+        - name: Fizetési szabályzat részletei
+          href: /partner-center/payout-policy-details?context=/azure/marketplace/context/context
+        - name: Adó részletei
+          href: /partner-center/tax-details-marketplace?context=/azure/marketplace/context/context
+        - name: Kifizetések – GYIK
+          href: /partner-center/payout-faq?context=/azure/marketplace/context/context
+- name: Ajánlatok létrehozása és kezelése
   items:
-    - name: A kereskedelmi piactér áttekintése
-      href: partner-center-portal/commercial-marketplace-overview.md
-    - name: Migrálás – gyakori kérdések
-      href: cloud-partner-portal-migration-faq.md
-    - name: Fiókkezelés
+    - name: Közzétételi útmutató ajánlattípusok szerint
+      href: publisher-guide-by-offer-type.md
+    - name: Ajánlat hitelesítésének engedélyezése az Azure AD-vel
+      href: enable-appsource-marketplace-using-azure-ad.md
+    - name: Azure-alkalmazásajánlatok
       items:
-        - name: Új Partnerközpontfiók létrehozása
-          href: partner-center-portal/create-account.md
-        - name: A Partnerközpontfiók kezelése
-          href: partner-center-portal/manage-account.md
-        - name: Vállalati munkahelyi fiók megkeresése vagy létrehozása
-          href: partner-center-portal/company-work-accounts.md
-        - name: Fiók migrálása a CPP-ből a Partnerközpontba
-          href: partner-center-portal/account-migration-from-cpp-to-pc.md
-    - name: Új ajánlat létrehozása
+        - name: Megoldássablon-ajánlat megtervezése
+          href: marketplace-solution-templates.md
+        - name: Felügyelt alkalmazást kínáló ajánlat megtervezése
+          href: marketplace-managed-apps.md
+        - name: Azure-alkalmazásajánlat létrehozása és közzététele
+          href: partner-center-portal/create-new-azure-apps-offer.md
+        - name: Azure-alkalmazások forgalmi díjas számlázása
+          href: partner-center-portal/azure-app-metered-billing.md
+        - name: Értékelési visszajelzések kezelése
+          href: partner-center-portal/azure-apps-review-feedback.md
+        - name: Azure-alkalmazás API-k
+          href: partner-center-portal/azure-app-apis.md
+    - name: Azure-tárolóra vonatkozó ajánlat
       items:
-        - name: Azure-alkalmazásajánlatok
-          items:
-            - name: Azure-alkalmazásajánlat létrehozása
-              href: partner-center-portal/create-new-azure-apps-offer.md
-            - name: Azure-alkalmazások forgalmi díjas számlázása
-              href: partner-center-portal/azure-app-metered-billing.md
-            - name: Értékelési visszajelzések kezelése
-              href: partner-center-portal/azure-apps-review-feedback.md
-            - name: Előkészítési célú API
-              href: partner-center-portal/azure-app-apis.md
-        - name: Azure-tárolóra vonatkozó ajánlat
+        - name: Azure-tárolóra vonatkozó ajánlat megtervezése
+          href: marketplace-containers.md
+        - name: Azure-tárolóra vonatkozó ajánlat létrehozása és közzététele
           items:
             - name: Technikai eszközök előkészítése
               href: partner-center-portal/create-azure-container-technical-assets.md
             - name: Azure-tárolóra vonatkozó ajánlat létrehozása
               href: partner-center-portal/create-azure-container-offer.md
-        - name: Virtuálisgép-ajánlat
+    - name: Azure-beli virtuális gépekre vonatkozó ajánlatok
+      items:
+        - name: Virtuálisgép-ajánlat megtervezése
+          href: marketplace-virtual-machines.md
+        - name: Virtuálisgép-ajánlat létrehozása és közzététele
           items:
             - name: Azure-beli virtuális géppel kapcsolatos ajánlat létrehozása
               href: partner-center-portal/azure-vm-create-offer.md
@@ -133,15 +129,23 @@
                       href: partner-center-portal/get-sas-uri.md
                     - name: SAS URI – gyakori kérdések
                       href: partner-center-portal/common-sas-uri-issues.md
-        - name: Tanácsadói szolgáltatások
+    - name: Tanácsadói szolgáltatások
+      items:
+        - name: Tanácsadói szolgáltatásokra vonatkozó ajánlat megtervezése
+          href: consulting-services.md
+        - name: Tanácsadói szolgáltatásokra vonatkozó ajánlat létrehozása és közzététele
           items:
             - name: Előfeltételek
               href: partner-center-portal/consulting-service-prerequisites.md
             - name: Tanácsadási szolgáltatásajánlat létrehozása
               href: partner-center-portal/create-consulting-service-offer.md
-        - name: Dynamics 365-ajánlatok
+    - name: Dynamics 365-ajánlatok
+      items:
+        - name: Dynamics 365-ajánlat megtervezése
+          href: appsource-offer-publishing-guide.md
+        - name: Dynamics 365-ajánlat létrehozása és közzététele
           items:
-            - name: Dynamics 365 for Customer Engagement- és PowerApps-ajánlat létrehozása
+            - name: Dynamics 365 Customer Engagement- és PowerApps-ajánlat létrehozása
               href: partner-center-portal/create-new-customer-engagement-offer.md
             - name: Dynamics 365 for Operations-ajánlat létrehozása
               items:
@@ -153,150 +157,123 @@
               href: partner-center-portal/create-new-business-central-offer.md
         - name: IoT Edge-modulajánlat
           items:
+            - name: IoT Edge-modulajánlat megtervezése
+              href: iot-edge-module.md
             - name: IoT Edge-modulajánlat létrehozása
               href: partner-center-portal/azure-iot-edge-module-creation.md
             - name: IoT Edge-modulok technikai eszközeinek előkészítése
               href: partner-center-portal/create-iot-edge-module-asset.md
-        - name: Felügyelt szolgáltatásra vonatkozó ajánlatok
+    - name: Felügyelt szolgáltatásra vonatkozó ajánlatok
+      items:
+        - name: Felügyelt szolgáltatásra vonatkozó ajánlat létrehozása
+          href: partner-center-portal/create-new-managed-service-offer.md
+    - name: Power BI-alkalmazásajánlatok
+      items:
+        - name: Power BI-alkalmazásajánlat megtervezése
+          href: partner-center-portal/create-power-bi-app-overview.md
+        - name: Power BI-alkalmazásajánlat létrehozása
+          href: partner-center-portal/create-power-bi-app-offer.md
+    - name: SaaS-ajánlatok
+      items:
+        - name: SaaS-ajánlat tervezése
+          href: plan-saas-offer.md
+        - name: Azure AD-hitelesítés SaaS-hez
           items:
-            - name: Felügyelt szolgáltatásra vonatkozó ajánlat létrehozása
-              href: partner-center-portal/create-new-managed-service-offer.md
-        - name: Power BI-alkalmazásajánlatok
+            - name: Az Azure AD és az SaaS áttekintése
+              href: azure-ad-saas.md
+            - name: Lebonyolítható ajánlatok kezdőlapja
+              href: azure-ad-transactable-saas-landing-page.md
+            - name: Ingyenes vagy próbaverziós ajánlatok kezdőlapja
+              href: azure-ad-free-or-trial-landing-page.md
+        - name: SaaS forgalmi díjas számlázás
+          href: partner-center-portal/saas-metered-billing.md
+        - name: SaaS-ajánlat létrehozása és közzététele
           items:
-            - name: Áttekintés közzététele
-              href: partner-center-portal/create-power-bi-app-overview.md
-            - name: Power BI-alkalmazásajánlat létrehozása
-              href: partner-center-portal/create-power-bi-app-offer.md
-        - name: SaaS-ajánlatok
-          items:
-            - name: SaaS-ajánlat tervezése
-              href: plan-saas-offer.md
-            - name: Azure AD-hitelesítés SaaS-hez
-              items:
-                - name: Az Azure AD és az SaaS áttekintése
-                  href: azure-ad-saas.md
-                - name: Lebonyolítható ajánlatok kezdőlapja
-                  href: azure-ad-transactable-saas-landing-page.md
-                - name: Ingyenes vagy próbaverziós ajánlatok kezdőlapja
-                  href: azure-ad-free-or-trial-landing-page.md
-            - name: SaaS forgalmi díjas számlázás
-              href: partner-center-portal/saas-metered-billing.md
-            - name: SaaS-ajánlat létrehozása és közzététele
-              items:
-                - name: SaaS-ajánlat létrehozása
-                  href: create-new-saas-offer.md
-                - name: SaaS-ajánlat tulajdonságainak konfigurálása
-                  href: create-new-saas-offer-properties.md
-                - name: SaaS-ajánlatlista konfigurálása
-                  href: create-new-saas-offer-listing.md
-                - name: Előzetes verzió célközönségének hozzáadása
-                  href: create-new-saas-offer-preview.md
-                - name: Technikai részletek hozzáadása
-                  href: create-new-saas-offer-technical.md
-                - name: Csomagok létrehozása
-                  href: create-new-saas-offer-plans.md
-                - name: SaaS-ajánlat tesztelése és közzététele
-                  href: test-publish-saas-offer.md
-            - name: SaaS-ajánlat értékesítése
-              href: create-new-saas-offer-marketing.md
-            - name: SaaS Fulfillment API-k
-              href: partner-center-portal/pc-saas-fulfillment-apis.md
-              items:
-                - name: SaaS-alkalmazás regisztrálása
-                  href: partner-center-portal/pc-saas-registration.md
-                - name: 'SaaS Fulfillment API-k, 2-es verzió'
-                  href: partner-center-portal/pc-saas-fulfillment-api-v2.md
-                - name: 'SaaS Fulfillment API-k, 1-es verzió (elavult)'
-                  href: partner-center-portal/pc-saas-fulfillment-api-v1.md
-                - name: SaaS Fulfillment API-k – GYIK
-                  href: partner-center-portal/saas-fulfillment-apis-faq.md
-        - name: Érdeklődők kezelése – áttekintés
-          href: partner-center-portal/commercial-marketplace-get-customer-leads.md
-          items:
-            - name: Azure-blob
-              href: partner-center-portal/commercial-marketplace-lead-management-instructions-azure-blob.md
-            - name: Azure-tábla
-              href: partner-center-portal/commercial-marketplace-lead-management-instructions-azure-table.md
-            - name: Dynamics 365 for Customer Engagement
-              href: partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics.md
-            - name: Https-végpont
-              href: partner-center-portal/commercial-marketplace-lead-management-instructions-https.md
-            - name: Marketo
-              href: partner-center-portal/commercial-marketplace-lead-management-instructions-marketo.md
-            - name: Salesforce
-              href: partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce.md
-        - name: Marketplace metering service
-          items:
-            - name: Hitelesítési stratégiák
-              href: partner-center-portal/marketplace-metering-service-authentication.md
-            - name: Marketplace metering service API-k
-              href: partner-center-portal/marketplace-metering-service-apis.md
-            - name: Marketplace metering service API-k – GYIK
-              href: partner-center-portal/marketplace-metering-service-apis-faq.md
-        - name: Tesztverzió
-          items:
-            - name: Mit jelent a tesztverzió?
-              href: what-is-test-drive.md
-            - name: Tesztverzió műszaki konfigurálása
-              href: test-drive-technical-configuration.md
-            - name: Az Azure Resource Manager tesztverziója
-              href: azure-resource-manager-test-drive.md
-        - name: Együttes értékesítési lehetőség
-          href: partner-center-portal/commercial-marketplace-co-sell.md
-          items:
-            - name: Ország- és régiókódok
-              href: partner-center-portal/commercial-marketplace-co-sell-countries.md
-            - name: Államkódok
-              href: partner-center-portal/commercial-marketplace-co-sell-states.md
-    - name: Felülvizsgálat és közzététel
+            - name: SaaS-ajánlat létrehozása
+              href: create-new-saas-offer.md
+            - name: SaaS-ajánlat tulajdonságainak konfigurálása
+              href: create-new-saas-offer-properties.md
+            - name: SaaS-ajánlatlista konfigurálása
+              href: create-new-saas-offer-listing.md
+            - name: Előzetes verzió célközönségének hozzáadása
+              href: create-new-saas-offer-preview.md
+            - name: Technikai részletek hozzáadása
+              href: create-new-saas-offer-technical.md
+            - name: Csomagok létrehozása
+              href: create-new-saas-offer-plans.md
+            - name: SaaS-ajánlat tesztelése és közzététele
+              href: test-publish-saas-offer.md
+        - name: SaaS-ajánlat értékesítése
+          href: create-new-saas-offer-marketing.md
+    - name: Ajánlatok felülvizsgálata és közzététele
       href: review-publish-offer.md
     - name: Létező ajánlatok frissítése
       href: partner-center-portal/update-existing-offer.md
-    - name: A Marketplace Rewards aktiválása
-      href: partner-center-portal/marketplace-rewards.md
-    - name: Partnerközpont – elemzések
+- name: Ajánlatok értékesítése és piaci bevezetése
+  items:
+    - name: Marketingre vonatkozó ajánlott eljárások
+      href: gtm-marketing-best-practices.md
+    - name: Ajánlatlistákra vonatkozó ajánlott eljárások
+      href: gtm-offer-listing-best-practices.md
+    - name: Alkalmazás kiemeltté tétele
+      href: gtm-how-to-get-featured.md
+    - name: Érdeklődők kezelésének konfigurálása
       items:
-        - name: A kereskedelmi piactérre vonatkozó elemzések
-          href: partner-center-portal/analytics.md
-        - name: Összegzés irányítópult
-          href: partner-center-portal/summary-dashboard.md
-        - name: Rendelések irányítópult
-          href: partner-center-portal/orders-dashboard.md
-        - name: Használat irányítópult
-          href: partner-center-portal/usage-dashboard.md
-        - name: Ügyfél irányítópult
-          href: partner-center-portal/customer-dashboard.md
-        - name: Marketplace Insights irányítópult
-          href: partner-center-portal/insights-dashboard.md
-        - name: Letöltések irányítópult
-          href: partner-center-portal/downloads-dashboard.md
-        - name: Értékelések és vélemények irányítópult
-          href: partner-center-portal/ratings-reviews.md
-        - name: Gyakori kérdések és terminológia
-          href: partner-center-portal/faq-terminology.md
-    - name: Fizetés fogadása
-      items:
-        - name: Fizetés fogadása
-          href: /partner-center/marketplace-get-paid?context=/azure/marketplace/context/context
-        - name: Kifizetési számla és űrlapok beállítása
-          href: /partner-center/set-up-your-payout-account?context=/azure/marketplace/context/context
-        - name: Fizetési küszöbértékek és időkeretek
-          href: /partner-center/payment-thresholds-methods-timeframes?context=/azure/marketplace/context/context
-        - name: Kifizetési utasítások
-          href: /partner-center/payout-statement?context=/azure/marketplace/context/context
-        - name: Fizetési szabályzat részletei
-          href: /partner-center/payout-policy-details?context=/azure/marketplace/context/context
-        - name: Adó részletei
-          href: /partner-center/tax-details-marketplace?context=/azure/marketplace/context/context
-        - name: Kifizetések – GYIK
-          href: /partner-center/payout-faq?context=/azure/marketplace/context/context
+        - name: Azure-blob
+          href: partner-center-portal/commercial-marketplace-lead-management-instructions-azure-blob.md
+        - name: Azure-tábla
+          href: partner-center-portal/commercial-marketplace-lead-management-instructions-azure-table.md
+        - name: Dynamics 365 for Customer Engagement
+          href: partner-center-portal/commercial-marketplace-lead-management-instructions-dynamics.md
+        - name: Https-végpont
+          href: partner-center-portal/commercial-marketplace-lead-management-instructions-https.md
+        - name: Marketo
+          href: partner-center-portal/commercial-marketplace-lead-management-instructions-marketo.md
+        - name: Salesforce
+          href: partner-center-portal/commercial-marketplace-lead-management-instructions-salesforce.md
+        - name: Érdeklődők kezelése – Gyakori kérdések
+          href: lead-management-faq.md
+- name: Adatok és analitika
+  items:
+    - name: A kereskedelmi piactér elemzése
+      href: partner-center-portal/analytics.md
+    - name: Összegzés irányítópult
+      href: partner-center-portal/summary-dashboard.md
+    - name: Rendelések irányítópult
+      href: partner-center-portal/orders-dashboard.md
+    - name: Használat irányítópult
+      href: partner-center-portal/usage-dashboard.md
+    - name: Ügyfél irányítópult
+      href: partner-center-portal/customer-dashboard.md
+    - name: Marketplace Insights irányítópult
+      href: partner-center-portal/insights-dashboard.md
+    - name: Letöltések irányítópult
+      href: partner-center-portal/downloads-dashboard.md
+    - name: Értékelések és vélemények irányítópult
+      href: partner-center-portal/ratings-reviews.md
+    - name: A Partnerközpont-elemzések terminológiája
+      href: partner-center-portal/faq-terminology.md
+- name: Szabályzatok és feltételek
+  items:
+    - name: A szabályzatok és feltételek ismertetése
+      href: policies-terms.md
+    - name: Kereskedelmi piactér tanúsítási szabályzatai
+      href: /legal/marketplace/certification-policies?context=/azure/marketplace/context/context
+    - name: A kereskedelmi piactér felülvizsgálati szabályzatai
+      href: /legal/marketplace/rating-review-policies?context=/azure/marketplace/context/context
+    - name: Az Azure Marketplace részvételi szabályzata
+      href: /legal/marketplace/participation-policy?context=/azure/marketplace/context/context
+    - name: Az Azure Marketplace használati feltételei
+      href: /legal/marketplace/terms?context=/azure/marketplace/context/context
+- name: Referencia
+  items:
     - name: CPP API-referencia
       items:
-        - name: Áttekintés
+        - name: A CPP API áttekintése
           href: cloud-partner-portal-api-overview.md
-        - name: Előfeltételek
+        - name: API-előfeltételek
           href: cloud-partner-portal-api-prerequisites.md
-        - name: Megfontolandó szempontok
+        - name: API-kkal kapcsolatos szempontok
           href: cloud-partner-portal-api-considerations.md
         - name: Egyidejűség-vezérlés
           href: cloud-partner-portal-api-concurrency-control.md
@@ -320,21 +297,44 @@
           href: cloud-partner-portal-api-setting-price.md
         - name: Hitelesítési hibák hibaelhárítása
           href: cloud-partner-portal-api-troubleshooting-authentication-errors.md
-    - name: Támogatási lehetőségek
-      href: partner-center-portal/support.md
-- name: A kereskedelmi piactér szabályzatai és feltételei
-  items:
-    - name: A szabályzatok és feltételek ismertetése
-      href: policies-terms.md
-    - name: Kereskedelmi piactér tanúsítási szabályzatai
-      href: /legal/marketplace/certification-policies?context=/azure/marketplace/context/context
-    - name: A kereskedelmi piactér felülvizsgálati szabályzatai
-      href: /legal/marketplace/rating-review-policies?context=/azure/marketplace/context/context
-    - name: Az Azure Marketplace részvételi szabályzata
-      href: /legal/marketplace/participation-policy?context=/azure/marketplace/context/context
-    - name: Az Azure Marketplace használati feltételei
-      href: /legal/marketplace/terms?context=/azure/marketplace/context/context
+    - name: Marketplace metering service
+      items:
+        - name: Hitelesítési stratégiák
+          href: partner-center-portal/marketplace-metering-service-authentication.md
+        - name: Marketplace metering service API-k
+          href: partner-center-portal/marketplace-metering-service-apis.md
+        - name: Marketplace metering service API-k – GYIK
+          href: partner-center-portal/marketplace-metering-service-apis-faq.md
+    - name: SaaS Fulfillment API-k
+      items:
+        - name: Az SaaS Fulfillment API áttekintése
+          href: partner-center-portal/pc-saas-fulfillment-apis.md
+          items:
+            - name: SaaS-alkalmazás regisztrálása
+              href: partner-center-portal/pc-saas-registration.md
+            - name: 'SaaS Fulfillment API-k, 2-es verzió'
+              href: partner-center-portal/pc-saas-fulfillment-api-v2.md
+            - name: 'SaaS Fulfillment API-k, 1-es verzió (elavult)'
+              href: partner-center-portal/pc-saas-fulfillment-api-v1.md
+            - name: SaaS Fulfillment API-k – GYIK
+              href: partner-center-portal/saas-fulfillment-apis-faq.md
 - name: További források
   items:
+    - name: Kereskedelmi piactér – Gyakori kérdések
+      href: marketplace-faq-publisher-guide.md
+    - name: A Cloud Partner Portal migrálása – Gyakori kérdések
+      href: cloud-partner-portal-migration-faq.md
+    - name: A partnerközpont támogatási lehetőségei
+      href: partner-center-portal/support.md
+    - name: Földrajzi rendelkezésre állás és pénznemek
+      href: marketplace-geo-availability-currencies.md
+    - name: Támogatott országok és régiók
+      href: sell-from-countries.md
     - name: Támogatott HTML-címkék
       href: supported-html-tags.md
+    - name: Együttes értékesítés ország- és régiókódjai
+      href: partner-center-portal/commercial-marketplace-co-sell-countries.md
+    - name: Együttes értékesítés államkódjai
+      href: partner-center-portal/commercial-marketplace-co-sell-states.md
+    - name: 'Fórumok, blogok és gyorshivatkozások'
+      href: marketplace-roadmap.md

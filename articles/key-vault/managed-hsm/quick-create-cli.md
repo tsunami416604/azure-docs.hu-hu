@@ -9,12 +9,12 @@ ms.subservice: managed-hsm
 ms.topic: quickstart
 ms.date: 09/15/2020
 ms.author: ambapat
-ms.openlocfilehash: 705e389c83fbab6075c25a3f56e5392fb8cafcd9
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 86d0a336a7d3f5d12ed8e53de802616f839f9eba
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91000974"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91756816"
 ---
 # <a name="quickstart-provision-and-activate-a-managed-hsm-using-azure-cli"></a>Gyors útmutató: felügyelt HSM kiépítése és aktiválása az Azure CLI-vel
 
@@ -76,7 +76,7 @@ az keyvault create --hsm-name "ContosoMHSM" --resource-group "ContosoResourceGro
 A parancs kimenete a létrehozott felügyelt HSM tulajdonságait jeleníti meg. A két legfontosabb tulajdonság:
 
 * **név**: a példában a név ContosoMHSM. Ezt a nevet fogja használni a többi Key Vault parancshoz.
-* **hsmUri**: a PÉLDÁBAN az URI a (z https://contosohsm.managedhsm.azure.net ). A HSM-et a REST API használó alkalmazásoknak ezt az URI-t kell használniuk.
+* **hsmUri**: a PÉLDÁBAN az URI a következő: " https://contosohsm.managedhsm.azure.net ." A HSM-et a REST API használó alkalmazásoknak ezt az URI-t kell használniuk.
 
 Az Azure-fiókja már jogosult bármilyen művelet végrehajtására ezen a felügyelt HSM-ben. Még senki más nem rendelkezik jogosultsággal.
 
@@ -121,7 +121,7 @@ Ha már nincs rá szükség, az [az group delete](/cli/azure/group) paranccsal e
 az group delete --name ContosoResourceGroup
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban létrehozott egy Key Vault, és egy titkos kulcsot tárolt benne. Ha többet szeretne megtudni a Key Vaultről és az alkalmazásokkal való integrálásáról, folytassa az alábbi cikkekkel.
 

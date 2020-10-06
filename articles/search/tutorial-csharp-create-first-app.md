@@ -9,12 +9,12 @@ ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 09/30/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 23cf7cdb75f1889f58cec152b1b520deac3f6839
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: 2414570a1d483cd7630e628b13c92dbdc331370d
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91740615"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91759135"
 ---
 # <a name="tutorial-create-your-first-search-app-using-the-net-sdk"></a>Oktatóanyag: az első keresőalkalmazás létrehozása a .NET SDK használatával
 
@@ -55,15 +55,15 @@ Az oktatóanyagban szereplő kód befejezett verziója a következő projektben 
 
 * [1 – alapszintű keresés – oldal (GitHub)](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/v11/1-basic-search-page)
 
+Ez az oktatóanyag a Azure.Search.Documents (11-es verzió) csomag használatára lett frissítve. A .NET SDK egy korábbi verziójával kapcsolatban lásd: [Microsoft. Azure. Search (10-es verzió)](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/v10)mintakód.
+
 ## <a name="prerequisites"></a>Előfeltételek
+
+Mivel a Microsoft által üzemeltetett nyilvános minta keresési indexet használ, nincs szükség keresési szolgáltatásra vagy Azure-fiókra ehhez az oktatóanyaghoz.
 
 * [Visual Studio](https://visualstudio.microsoft.com/)
 
 * [Azure Cognitive Search ügyféloldali kódtár (11-es verzió)](https://www.nuget.org/packages/Azure.Search.Documents/)
-
-Ez az oktatóanyag a Azure.Search.Documents (11-es verzió) csomag használatára lett frissítve. A .NET SDK egy korábbi verziójával kapcsolatban lásd: [Microsoft. Azure. Search (10-es verzió)](https://github.com/Azure-Samples/azure-search-dotnet-samples/tree/master/create-first-app/v10)mintakód.
-
-Mivel a Microsoft által üzemeltetett nyilvános mintát használ, ehhez az oktatóanyaghoz nincs szüksége keresési szolgáltatásra vagy Azure-fiókra.
 
 ### <a name="install-and-run-the-project-from-github"></a>A projekt telepítése és futtatása a GitHubról
 
@@ -569,7 +569,7 @@ Vegye figyelembe az alábbi elvihetőket a projektből:
 * Az aszinkron hívások kis bonyolultságot adhatnak a vezérlőhöz, de az ajánlott eljárás, ha minőségi alkalmazásokat szeretne fejleszteni.
 * Az alkalmazás egyszerű szöveges keresést hajtott végre, amelyet a **searchOptions**-ben beállított beállítások határoznak meg. Ez az osztály azonban számos olyan taggal feltölthető, amely kifinomultságot ad a kereséshez. Nem sok további munka szükséges ahhoz, hogy ez az alkalmazás lényegesen nagyobb teljesítményű legyen.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A felhasználói élmény javítása érdekében vegyen fel további funkciókat, például a lapozást (oldalszámok vagy végtelen görgetés használatával), valamint az automatikus kiegészítés/javaslatok lehetőséget. Összetettebb keresési lehetőségeket is megvizsgálhat (például a földrajzi keresést egy adott pont egy adott sugarán belül, a keresési eredmények sorrendje alapján).
 
