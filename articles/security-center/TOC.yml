@@ -263,8 +263,6 @@
       href: release-notes-archive.md
     - name: Az Azure-ütemterv blogja
       href: 'https://azure.microsoft.com/updates/?product=security-center'
-    - name: Funkciók és API kivezetése (2019. július)
-      href: security-center-features-retirement-july2019.md
     - name: Végpontvédelmi értékelés és javaslatok
       href: security-center-endpoint-protection.md
 - name: További források

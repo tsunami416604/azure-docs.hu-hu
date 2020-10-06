@@ -544,6 +544,8 @@
           href: data-flow-new-branch.md
         - name: Kimutatás
           href: data-flow-pivot.md
+        - name: Sorszám
+          href: data-flow-rank.md
         - name: 'Válassza ezt:'
           href: data-flow-select.md
         - name: Sink (Fogadó)
