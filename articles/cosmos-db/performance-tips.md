@@ -7,14 +7,14 @@ ms.topic: how-to
 ms.date: 06/26/2020
 ms.author: sngun
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: bdf512c66958338992c5959f8e00b4589850ff33
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: efedfb9701d12548b80eccda9cd2aa29bc644ac2
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89008369"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91802140"
 ---
-# <a name="performance-tips-for-azure-cosmos-db-and-net-sdk-v2"></a>Teljesítménnyel kapcsolatos tippek a Azure Cosmos DB és a .NET SDK v2-hez
+# <a name="performance-tips-for-azure-cosmos-db-and-net-sdk-v2"></a>Teljesítménnyel kapcsolatos tippek az Azure Cosmos DB Java SDK v2-höz
 
 > [!div class="op_single_selector"]
 > * [.NET SDK v3](performance-tips-dotnet-sdk-v3-sql.md)
@@ -42,7 +42,7 @@ Megjelent a [.net v3 SDK](https://github.com/Azure/azure-cosmos-dotnet-v3) . Ha 
 
 A jobb teljesítmény érdekében javasoljuk a Windows 64 bites gazdagépek feldolgozását. Az SQL SDK tartalmaz egy natív ServiceInterop.dll a lekérdezések helyi elemzéséhez és optimalizálásához. A ServiceInterop.dll csak a Windows x64 platformon támogatott. Linux és egyéb nem támogatott platformok esetén, ahol a ServiceInterop.dll nem érhető el, az átjáróra további hálózati hívás történik az optimalizált lekérdezés beszerzéséhez. A következő típusú alkalmazások alapértelmezés szerint 32 bites gazdagép-feldolgozást használnak. Ha módosítani szeretné a gazdagép feldolgozását 64 bites feldolgozásra, kövesse az alábbi lépéseket az alkalmazás típusa alapján:
 
-- A végrehajtható alkalmazások esetében úgy módosíthatja a gazdagépek feldolgozását, hogy a [platform célját](https://docs.microsoft.com/visualstudio/ide/how-to-configure-projects-to-target-platforms?view=vs-2019) **x64**  értékre állítja a **Projekt tulajdonságai** ablakban a **Build** lapon.
+- A végrehajtható alkalmazások esetében úgy módosíthatja a gazdagépek feldolgozását, hogy a [platform célját](https://docs.microsoft.com/visualstudio/ide/how-to-configure-projects-to-target-platforms?view=vs-2019&preserve-view=true) **x64**  értékre állítja a **Projekt tulajdonságai** ablakban a **Build** lapon.
 
 - A VSTest-alapú tesztelési projektek esetében **Test**  >  **Test Settings**  >  a Visual Studio **test** menüben válassza a tesztelési beállítások**alapértelmezett processzor-architektúra x64-ként** lehetőséget.
 
@@ -203,7 +203,7 @@ Ha csökkenteni szeretné az összes vonatkozó eredmény beolvasásához szüks
 > [!NOTE] 
 > A `maxItemCount` tulajdonságot nem szabad csak a tördeléshez használni. Fő felhasználási célja a lekérdezések teljesítményének javítása azáltal, hogy csökkenti az egyetlen oldalon visszaadott elemek maximális számát.  
 
-Az oldalméret az elérhető Azure Cosmos DB SDK-k használatával is beállítható. A [MaxItemCount](/dotnet/api/microsoft.azure.documents.client.feedoptions.maxitemcount?view=azure-dotnet) tulajdonsága `FeedOptions` lehetővé teszi, hogy beállítsa a számbavételi műveletben visszaadott elemek maximális számát. Ha a `maxItemCount` értéke-1, az SDK automatikusan megkeresi az optimális értéket a dokumentum méretétől függően. Például:
+Az oldalméret az elérhető Azure Cosmos DB SDK-k használatával is beállítható. A [MaxItemCount](/dotnet/api/microsoft.azure.documents.client.feedoptions.maxitemcount?view=azure-dotnet&preserve-view=true) tulajdonsága `FeedOptions` lehetővé teszi, hogy beállítsa a számbavételi műveletben visszaadott elemek maximális számát. Ha a `maxItemCount` értéke-1, az SDK automatikusan megkeresi az optimális értéket a dokumentum méretétől függően. Például:
     
 ```csharp
 IQueryable<dynamic> authorResults = client.CreateDocumentQuery(documentCollection.SelfLink, "SELECT p.Author FROM Pages p WHERE p.Title = 'About Seattle'", new FeedOptions { MaxItemCount = 1000 });
@@ -280,7 +280,7 @@ Az automatikus újrapróbálkozási viselkedés segíti a legtöbb alkalmazás r
 
 Egy adott műveletre vonatkozó kérelem díja (azaz a kérelmek feldolgozási díja) közvetlenül a dokumentum méretével összefügg. A nagyméretű dokumentumokon végzett műveletek többek között a kis dokumentumokon végzett műveletekhez szükségesek.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az egyes ügyfélszámítógépeken a nagy teljesítményű forgatókönyvek Azure Cosmos DB kiértékeléséhez használt minta alkalmazással kapcsolatban lásd: [teljesítmény-és méretezési tesztek a Azure Cosmos db](performance-testing.md)használatával.
 

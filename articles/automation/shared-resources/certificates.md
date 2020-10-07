@@ -5,12 +5,12 @@ services: automation
 ms.subservice: shared-capabilities
 ms.date: 09/10/2020
 ms.topic: conceptual
-ms.openlocfilehash: b6220cfb5649995e54338f245b4cb62511b89a2c
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: a4cc6a08ab0725f8fa3ceb745b933153842075a6
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90004697"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91803177"
 ---
 # <a name="manage-certificates-in-azure-automation"></a>Tanúsítványok kezelése a Azure Automationban
 
@@ -36,7 +36,7 @@ Az [Add-AzureCertificate](/powershell/module/servicemanagement/azure.service/add
 
 A következő táblázatban található belső parancsmag a runbookok lévő tanúsítványok elérésére szolgál. Ez a parancsmag a globális modulhoz tartozik `Orchestrator.AssetManagement.Cmdlets` . További információ: [belső parancsmagok](modules.md#internal-cmdlets).
 
-| Belső parancsmag | Description |
+| Belső parancsmag | Leírás |
 |:---|:---|
 |`Get-AutomationCertificate`|Lekéri egy runbook vagy DSC-konfigurációban használandó tanúsítványt. Egy [System. Security. kriptográfiai. X509Certificates. x509certificate2)](/dotnet/api/system.security.cryptography.x509certificates.x509certificate2) objektumot ad vissza.|
 
@@ -84,8 +84,7 @@ New-AzAutomationCertificate -AutomationAccountName "MyAutomationAccount" -Name $
 Az alábbi példa bemutatja, hogyan helyezhet üzembe egy tanúsítványt az Automation-fiókjában egy Resource Manager-sablonnal a PowerShell használatával:
 
 ```powershell-interactive
-$AutomationAccountName = "<automation account name>"
-$PfxCertPath = '<PFX cert path'
+$PfxCertPath = '<PFX cert path>'
 $CertificatePassword = '<password>'
 $certificateName = '<certificate name>'
 $AutomationAccountName = '<automation account name>'
@@ -160,7 +159,7 @@ cert = automationassets.get_automation_certificate("AzureRunAsCertificate")
 print cert
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ha többet szeretne megtudni a tanúsítványok eléréséhez használt parancsmagokról, tekintse meg a [modulok kezelése a Azure Automationban](modules.md)című témakört.
 * A runbookok kapcsolatos általános információkért lásd: [a Runbook végrehajtása Azure Automation](../automation-runbook-execution.md).

@@ -9,12 +9,12 @@ ms.subservice: cosmosdb-sql
 ms.topic: troubleshooting
 ms.reviewer: sngun
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 3093996156a31d4a06f0d91dbca1bd00d58eacdb
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 581c8fcad62c40555a90b7455a260259f3a09212
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91330451"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91802413"
 ---
 # <a name="diagnose-and-troubleshoot-issues-when-using-azure-cosmos-db-net-sdk"></a>Az Azure Cosmos DB .NET SDK használatakor felmerülő hibák diagnosztizálása és elhárítása
 
@@ -55,7 +55,7 @@ A [portál metrikáinak](monitor-accounts.md) ellenőrzése segít meghatározni
 
 ## <a name="common-error-status-codes"></a>Gyakori hibák állapotkódok <a id="error-codes"></a>
 
-| Állapotkód | Description | 
+| Állapotkód | Leírás | 
 |----------|-------------|
 | 400 | Hibás kérés (a hibaüzenettől függ)| 
 | 401 | [Nincs engedélyezve](troubleshoot-unauthorized.md) | 
@@ -82,7 +82,7 @@ Ha az alkalmazás [nyilvános IP-cím nélküli Azure-Virtual Machines](../load-
 * Rendeljen hozzá egy [nyilvános IP-címet az Azure-beli virtuális géphez](../load-balancer/troubleshoot-outbound-connection.md#assignilpip).
 
 ### <a name="high-network-latency"></a><a name="high-network-latency"></a>Nagy hálózati késés
-A hálózati késést a v2 SDK- [ban vagy a](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.responsemessage.diagnostics?view=azure-dotnet#Microsoft_Azure_Cosmos_ResponseMessage_Diagnostics) v3 SDK-ban lévő diagnosztika [diagnosztikai karakterláncának](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.resourceresponsebase.requestdiagnosticsstring?view=azure-dotnet) használatával lehet azonosítani.
+A hálózati késést a v2 SDK- [ban vagy a](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.responsemessage.diagnostics?view=azure-dotnet&preserve-view=true#Microsoft_Azure_Cosmos_ResponseMessage_Diagnostics) v3 SDK-ban lévő diagnosztika [diagnosztikai karakterláncának](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.resourceresponsebase.requestdiagnosticsstring?view=azure-dotnet&preserve-view=true) használatával lehet azonosítani.
 
 Ha nincsenek [időtúllépések](troubleshoot-dot-net-sdk-request-timeout.md) , és a diagnosztika egyetlen kérést mutat be, ahol a nagy késés nyilvánvaló a és a közötti különbségnél `ResponseTime` `RequestStartTime` (>300 ezredmásodperc ebben a példában):
 
@@ -112,7 +112,7 @@ A [lekérdezési metrikák](sql-api-query-metrics.md) segítenek meghatározni, 
 
 Ha a következő hibába ütközik: `Unable to load DLL 'Microsoft.Azure.Cosmos.ServiceInterop.dll' or one of its dependencies:` és Windows rendszert használ, frissítsen a legújabb Windows-verzióra.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A [.net v3](performance-tips-dotnet-sdk-v3-sql.md) és a [.NET v2](performance-tips.md) teljesítményével kapcsolatos irányelvek ismertetése
 * Tudnivalók a [reaktor-alapú Java SDK](https://github.com/Azure-Samples/azure-cosmos-java-sql-api-samples/blob/master/reactor-pattern-guide.md) -k használatáról

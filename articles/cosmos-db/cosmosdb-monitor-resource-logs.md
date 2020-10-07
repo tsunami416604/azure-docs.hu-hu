@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/05/2020
 ms.author: sngun
-ms.openlocfilehash: 881ddfec587df61201f2c251fd0dd0a8164496c3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9284fca6a96441ad5e6c23f9c6920ba184e03086
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85549971"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91801418"
 ---
 # <a name="monitor-azure-cosmos-db-data-by-using-diagnostic-settings-in-azure"></a>Azure Cosmos DB adatai figyelése az Azure diagnosztikai beállításainak használatával
 
@@ -20,7 +20,7 @@ Az Azure diagnosztikai beállításai az erőforrás-naplók összegyűjtésére
 
 A platform metrikáit és a tevékenységek naplóit automatikusan gyűjti a rendszer, míg az erőforrás-naplók összegyűjtéséhez és a Azure Monitoron kívüli továbbításához létre kell hoznia egy diagnosztikai beállítást. Az Azure Cosmos-fiókok diagnosztikai beállításainak bekapcsolásához hajtsa végre a következő lépéseket:
 
-1. Jelentkezzen be az [Azure Portalon](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
 1. Navigáljon az Azure Cosmos-fiókjához. Nyissa meg a **diagnosztikai beállítások** ablaktáblát, majd kattintson a **diagnosztikai beállítás hozzáadása** lehetőségre.
 
@@ -71,7 +71,7 @@ A platform metrikáit és a tevékenységek naplóit automatikusan gyűjti a ren
 A diagnosztikai beállítások a Azure Portal, a CLI vagy a PowerShell használatával történő létrehozásával kapcsolatos részletes információkért lásd: [diagnosztikai beállítás létrehozása a platform-naplók és-metrikák gyűjtéséhez az Azure-ban](../azure-monitor/platform/diagnostic-settings.md) .
 
 
-## <a name="troubleshoot-issues-with-diagnostics-queries"></a><a id="diagnostic-queries"></a>Diagnosztikai lekérdezésekkel kapcsolatos hibák elhárítása
+## <a name="troubleshoot-issues-with-diagnostics-queries"></a><a id="diagnostic-queries"></a> Diagnosztikai lekérdezésekkel kapcsolatos hibák elhárítása
 
 1. A 3 ezredmásodpercnél hosszabb ideig futó műveletek lekérdezése:
 
@@ -99,12 +99,12 @@ A diagnosztikai beállítások a Azure Portal, a CLI vagy a PowerShell használa
    | render timechart
    ```
     
-1. A partíciós kulcs statisztikáinak beszerzése, amelyekkel kiértékelheti az adatbázis-fiók felső 3 partíciójának kiértékelését:
+1. A partíciós kulcs statisztikáinak beszerzése az adatbázis-fiókok első 3 partíciójának kiértékeléséhez:
 
    ```Kusto
    AzureDiagnostics 
    | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="PartitionKeyStatistics" 
-   | project SubscriptionId, regionName_s, databaseName_s, collectionname_s, partitionkey_s, sizeKb_s, ResourceId 
+   | project SubscriptionId, regionName_s, databaseName_s, collectionName_s, partitionKey_s, sizeKb_d, ResourceId 
    ```
 
 1. Hogyan kérheti le a költséges lekérdezések díjait?
@@ -214,14 +214,6 @@ A diagnosztikai beállítások a Azure Portal, a CLI vagy a PowerShell használa
    | where todouble(sizeKb_d) > 800000
    ```
 
-1. A partíciós kulcs statisztikáinak beszerzése, hogy kiértékelje az adatbázis-fiók három partíciójának kiértékelését?
-
-   ```Kusto
-   AzureDiagnostics 
-   | where ResourceProvider=="MICROSOFT.DOCUMENTDB" and Category=="PartitionKeyStatistics" 
-   | project SubscriptionId, regionName_s, databaseName_s, collectionName_s, partitionKey_s, sizeKb_d, ResourceId
-   ```
-
 1. Hogyan kérhető le a P99 vagy a P50 replikáció késése a műveletekhez, a kérelmek díja vagy a válasz hossza?
 
    ```Kusto
@@ -238,7 +230,7 @@ A diagnosztikai beállítások a Azure Portal, a CLI vagy a PowerShell használa
  
 1. Hogyan kérhető le a Controlplane-naplók?
  
-   Ne felejtse el bekapcsolni a jelölőt a [kulcs-alapú metaadat-írási hozzáférés letiltása](audit-control-plane-logs.md#disable-key-based-metadata-write-access) articleand a művelet végrehajtása Azure POWERSHELL, CLI vagy ARM használatával.
+   Ne felejtse el bekapcsolni a jelzőt a [kulcs alapú metaadatok írási hozzáférésének letiltása](audit-control-plane-logs.md#disable-key-based-metadata-write-access) című cikkben leírtak szerint, és hajtsa végre a műveleteket Azure PowerShell, az Azure CLI vagy a Azure Resource Manager használatával.
  
    ```Kusto  
    AzureDiagnostics 

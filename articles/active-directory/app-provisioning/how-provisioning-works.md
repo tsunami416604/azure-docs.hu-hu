@@ -11,12 +11,12 @@ ms.workload: identity
 ms.date: 05/20/2020
 ms.author: kenwith
 ms.reviewer: arvinh
-ms.openlocfilehash: 69ea1964449143a25f447375f2aae15d9feeff10
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.openlocfilehash: 5fdce791ba8848b93a8457f3738392b1f5f15508
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
-ms.locfileid: "88235723"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91801800"
 ---
 # <a name="how-provisioning-works"></a>Az üzembe helyezés menete
 
@@ -169,24 +169,44 @@ A teljesítmény attól függ, hogy a kiépítési feladatok kezdeti kiépítés
 A felhasználói kiépítési szolgáltatás által futtatott összes művelet rögzítve van az Azure AD- [létesítési naplókban (előzetes verzió)](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context). A naplók tartalmazzák a forrás-és a megcélzott rendszerekre vonatkozó összes olvasási és írási műveletet, valamint az egyes műveletek során beolvasott vagy írt felhasználói adatok tartalmát. További információ a kiépítési naplók beolvasásáról a Azure Portalban: a [kiépítési jelentési útmutató](./check-status-user-account-provisioning.md).
 
 ## <a name="de-provisioning"></a>Kiépítés megszüntetése
+Az Azure AD-kiépítési szolgáltatás megőrzi a forrás-és a megcélzott rendszereket a kiépítési fiókok szinkronizálásával a felhasználói hozzáférés eltávolításakor.
 
-Az Azure AD-kiépítési szolgáltatás megőrzi a forrás-és a megcélzott rendszereket a kiépítési fiókok szinkronizálásával, ha a felhasználóknak többé nem férnek hozzá. 
+A kiépítési szolgáltatás támogatja a törlést és a letiltást (más néven a nem kötelező törlést) használó felhasználókat. A Letiltás és törlés pontos meghatározása a célalkalmazás implementációja alapján változik, de általában a Letiltás azt jelzi, hogy a felhasználó nem tud bejelentkezni. A DELETE azt jelzi, hogy a felhasználó teljesen el lett távolítva az alkalmazásból. A SCIM alkalmazások esetében a letiltás egy kérelem, amely az *aktív* tulajdonságot false értékre állítja be a felhasználónál. 
 
-Az Azure AD-kiépítési szolgáltatás helyreállítja a felhasználót egy alkalmazásban, ha az alkalmazás támogatja a Soft deletes (Update Request with Active = false) és az alábbi események bármelyikét:
+**Az alkalmazás konfigurálása egy felhasználó letiltásához**
 
-* A felhasználói fiók törlődik az Azure AD-ben
-*   A felhasználó nincs kiosztva az alkalmazásból
-*   A felhasználó már nem felel meg egy hatóköri szűrőnek, és kikerül a hatókörből
-    * Alapértelmezés szerint az Azure AD-kiépítési szolgáltatás nem törli vagy letiltja a hatókörön kívüli felhasználókat. Ha szeretné felülbírálni ezt az alapértelmezett viselkedést, beállíthatja a jelölőt a [hatókörbeli törlés kihagyásához](../app-provisioning/skip-out-of-scope-deletions.md).
-*   A AccountEnabled tulajdonság értéke false (hamis)
+Győződjön meg arról, hogy a frissítések jelölőnégyzet be van jelölve.
 
-Ha a fenti négy esemény egyike következik be, és a célalkalmazás nem támogatja a Soft deletes szolgáltatást, a kiépítési szolgáltatás egy TÖRLÉSi kérelmet küld, amely véglegesen törli a felhasználót az alkalmazásból. 
+Győződjön meg arról, hogy rendelkezik az alkalmazáshoz tartozó *aktív* leképezéssel. Ha egy alkalmazást használ az alkalmazás-katalógusból, a leképezés némileg eltérő lehet. Győződjön meg arról, hogy a katalógusbeli alkalmazások esetében a Box-leképezés alapértelmezett/kijelentkezését használja.
 
-30 nappal azután, hogy egy felhasználó törölve lett az Azure AD-ben, véglegesen törölve lesznek a bérlőről. Ezen a ponton a kiépítési szolgáltatás elküld egy TÖRLÉSi kérelmet, amely véglegesen törli a felhasználót az alkalmazásban. A 30 napos időszak alatt bármikor [manuálisan törölheti a felhasználót](../fundamentals/active-directory-users-restore.md), amely törlési kérelmet küld az alkalmazásnak.
 
-Ha az IsSoftDeleted attribútumot lát, a rendszer a felhasználó állapotát határozza meg, valamint azt, hogy az aktív = false értékkel rendelkező frissítési kérést szeretné-e elküldeni a felhasználó számára. 
+**Az alkalmazás konfigurálása felhasználó törlésére**
 
-## <a name="next-steps"></a>Következő lépések
+A következő forgatókönyvek letiltást vagy törlést indítanak el: 
+* A rendszer az Azure AD-ben törli a felhasználót (a Lomtár/AccountEnabled tulajdonság értéke false (hamis) értékre van állítva).
+    30 nappal azután, hogy egy felhasználó törölve lett az Azure AD-ben, véglegesen törölve lesznek a bérlőről. Ezen a ponton a kiépítési szolgáltatás elküld egy TÖRLÉSi kérelmet, amely véglegesen törli a felhasználót az alkalmazásban. A 30 napos időszak alatt bármikor [manuálisan törölheti a felhasználót](../fundamentals/active-directory-users-restore.md), amely törlési kérelmet küld az alkalmazásnak.
+* A rendszer véglegesen törli vagy eltávolítja a felhasználót az Azure AD-beli Lomtárból.
+* Egy felhasználó nem rendelhető hozzá egy alkalmazáshoz.
+* A felhasználó hatókörből kívülre kerül a hatókörből (nem haladja meg a hatókör-szűrőt).
+    
+Alapértelmezés szerint az Azure AD-kiépítési szolgáltatás nem törli vagy letiltja a hatókörön kívüli felhasználókat. Ha szeretné felülbírálni ezt az alapértelmezett viselkedést, beállíthatja a jelölőt a [hatókörbeli törlés kihagyásához.](skip-out-of-scope-deletions.md)
+
+Ha a fenti négy esemény egyike következik be, és a célalkalmazás nem támogatja a Soft deletes szolgáltatást, a kiépítési szolgáltatás egy TÖRLÉSi kérelmet küld, amely véglegesen törli a felhasználót az alkalmazásból.
+
+Ha az IsSoftDeleted attribútumot lát, a rendszer a felhasználó állapotát határozza meg, valamint azt, hogy az aktív = false értékkel rendelkező frissítési kérést szeretné-e elküldeni a felhasználó számára.
+
+**Ismert korlátozások**
+
+* Ha egy korábban a kiépítési szolgáltatás által felügyelt felhasználó nincs hozzárendelve egy alkalmazáshoz, vagy egy alkalmazáshoz rendelt csoportból, akkor a rendszer letiltási kérelmet küld. Ezen a ponton a felhasználót nem a szolgáltatás felügyeli, és a rendszer nem küld törlési kérelmet, ha azokat törlik a címtárból.
+* Az Azure AD-ben letiltott felhasználók kiépítés nem támogatott. A kiépítés előtt aktívnak kell lenniük az Azure AD-ben.
+* Ha a felhasználó nem törölhető az aktív állapotba, az Azure AD kiépítési szolgáltatás aktiválja a felhasználót a célalkalmazás számára, de nem állítja be automatikusan a csoporttagságok visszaállítását. A célként megadott alkalmazásnak inaktív állapotban kell tartania a csoport tagságait. Ha a célalkalmazás nem támogatja ezt a lehetőséget, a csoporttagság frissítéséhez újraindíthatja az üzembe helyezést. 
+
+**Ajánlás**
+
+Egy alkalmazás fejlesztésekor mindig támogatja a Soft delete és a Hard deletet is. Lehetővé teszi az ügyfelek számára a helyreállítást, ha a felhasználó véletlenül le van tiltva.
+
+
+## <a name="next-steps"></a>További lépések
 
 [Automatikus felhasználóátadást használó üzembe helyezés tervezése](../app-provisioning/plan-auto-user-provisioning.md)
 

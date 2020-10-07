@@ -6,24 +6,24 @@ ms.topic: how-to
 author: kanshiG
 ms.author: govindk
 ms.date: 04/07/2020
-ms.openlocfilehash: 5be2365fb5850c3f45b320d66c114fb791b22c3e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9c266e42804a12403e446bf024e93fe879497570
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85262701"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91803262"
 ---
 # <a name="how-to-monitor-the-server-side-latency-for-operations-in-an-azure-cosmos-db-container-or-account"></a>Azure Cosmos DB tárolóban vagy fiókban lévő műveletek kiszolgálóoldali késésének figyelése
 
 A Azure Cosmos DB Azure Monitor metrikai nézetet biztosít a fiók figyeléséhez és az irányítópultok létrehozásához. A rendszer alapértelmezés szerint összegyűjti a Azure Cosmos DB metrikákat, így nem kell explicit módon engedélyeznie vagy konfigurálnia a szolgáltatást. A kiszolgálóoldali késés mérőszáma egy művelet kiszolgálóoldali késésének megtekintésére szolgál. Azure Cosmos DB a közvetlen kapcsolattal rendelkező pont írási/olvasási műveleteinél 10 MS-nál kevesebb SLA-t biztosít. Az olvasási és írási műveletek esetében a SLA-kat az [SLA-dokumentumban](https://azure.microsoft.com/support/legal/sla/cosmos-db/v1_3/)részletezett módon számítjuk ki.
 
-Ha szokatlanul nagy késést tapasztal a pontok műveleteinél, például:
+A kiszolgálóoldali késést figyelheti, ha szokatlanul magas késést tapasztal a pont működéséhez, például:
 
-* Egy Get vagy set művelet partíciós kulccsal és AZONOSÍTÓval közvetlen módban
+* GET vagy a SET művelet partíciós kulccsal és AZONOSÍTÓval közvetlen kapcsolati módban
 * Olvasási vagy írási művelet vagy
 * Egy lekérdezés
 
-A visszaadott adatmennyiség megjelenítéséhez megkeresheti a diagnosztikai naplót. Ha a lekérdezési műveletekhez tartósan magas késés tapasztalható, megkeresheti a diagnosztikai naplót a visszaadott adatok méretére, az [átviteli sebességre vagy az ru/s](cosmosdb-monitor-resource-logs.md#diagnostic-queries) értékre, illetve az ilyen műveletek számát egy adott időszakban. Így hibakeresést végezhet a kiszolgálóoldali késéssel kapcsolatos problémákról.
+Megkeresheti a diagnosztikai naplót, hogy megtekintse a visszaadott adatmennyiség méretét. Ha a lekérdezési műveletekhez tartósan magas késés tapasztalható, a magasabb [átviteli sebességre vagy ru/s-](cosmosdb-monitor-resource-logs.md#diagnostic-queries) re vonatkozó diagnosztikai naplót kell keresnie. A kiszolgálóoldali késés azt mutatja, hogy mennyi idő telik el a háttér-infrastruktúrán, mielőtt a rendszer visszaadná az adott adathoz az ügyfelet. Fontos, hogy tekintse meg ezt a metrikát, hogy kizárják a háttérbeli késéssel kapcsolatos problémákat.
 
 ## <a name="view-the-server-side-latency-metric"></a>Kiszolgálóoldali késési metrika megtekintése
 
@@ -35,11 +35,11 @@ A visszaadott adatmennyiség megjelenítéséhez megkeresheti a diagnosztikai na
 
 1. A **metrikák** ablaktáblán > **válasszon ki egy erőforrást** > válassza ki a szükséges **előfizetést**és **erőforráscsoportot**. Az **erőforrástípus**mezőben válassza a **Azure Cosmos db fiókok**lehetőséget, válasszon ki egy meglévő Azure Cosmos-fiókot, majd válassza az **alkalmaz**lehetőséget.
    
-   :::image type="content" source="./media/monitor-server-side-latency/select-cosmos-db-account.png" alt-text="Válassza ki a Azure Cosmos DB fiókot a metrikák megtekintéséhez":::
+   :::image type="content" source="./media/monitor-server-side-latency/select-cosmos-db-account.png" alt-text="Metrikák ablaktábla Azure Monitor":::
 
-1. Ezután válassza ki a **kiszolgálóoldali késés** metrikáját az elérhető metrikák listájából. A listán szereplő összes mérőszám részletes megismeréséhez tekintse meg a [metrikák kategória szerint](monitor-cosmos-db-reference.md) című cikket. Ebben a példában a **kiszolgálóoldali késést** és az **átlagot** adja meg az összesítési értékként. Ezen részletek mellett kiválaszthatja a metrikák **időtartományát** és **időrészletességét** is. A maximális értéknél megtekintheti az elmúlt 30 nap mérőszámait.  A szűrő alkalmazása után egy diagram jelenik meg a szűrő alapján. A kiszolgálóoldali késést percenként láthatja a kiválasztott időszakra vonatkozóan.  
+1. Ezután válassza ki a **kiszolgálóoldali késés**  metrikáját az elérhető metrikák listájából. A listán szereplő összes mérőszám részletes megismeréséhez tekintse meg a [metrikák kategória szerint](monitor-cosmos-db-reference.md) című cikket. Ebben a példában a **kiszolgálóoldali késést** és az **átlagot** adja meg az összesítési értékként. Ezen részletek mellett kiválaszthatja a metrikák **időtartományát** és **időrészletességét** is. A maximális értéknél megtekintheti az elmúlt 30 nap mérőszámait.  A szűrő alkalmazása után egy diagram jelenik meg a szűrő alapján. A kiszolgálóoldali késést percenként láthatja a kiválasztott időszakra vonatkozóan.  
 
-   :::image type="content" source="./media/monitor-server-side-latency/server-side-latency-metric.png" alt-text="Válassza ki a kiszolgálóoldali késés metrikáját a Azure Portal":::
+   :::image type="content" source="./media/monitor-server-side-latency/server-side-latency-metric.png" alt-text="Metrikák ablaktábla Azure Monitor":::
 
 ## <a name="filters-for-server-side-latency"></a>Kiszolgálóoldali késéssel kapcsolatos szűrők
 
@@ -49,7 +49,7 @@ A metrikák szűréséhez válassza a **szűrő hozzáadása** lehetőséget, é
 
 Az egyes műveletek **kiszolgálóoldali késési** mérőszámai az alábbi képen látható módon jelennek meg:
 
-:::image type="content" source="./media/monitor-server-side-latency/server-side-latency-filters.png" alt-text="Kiszolgálóoldali késési metrikák szűrőinek szűrői":::
+:::image type="content" source="./media/monitor-server-side-latency/server-side-latency-filters.png" alt-text="Metrikák ablaktábla Azure Monitor":::
 
 A metrikákat a **felosztás alkalmazása** lehetőség használatával is csoportosíthatja.  
 

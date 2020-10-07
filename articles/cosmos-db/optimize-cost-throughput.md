@@ -7,12 +7,12 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 02/07/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e1359fd2a59b49f10bb3b2daa4bcbadae921e188
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 22fcee69c32388c764434bedac04465bbc3e28cb
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89012449"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91801324"
 ---
 # <a name="optimize-provisioned-throughput-cost-in-azure-cosmos-db"></a>A kiosztott átviteli sebesség költségeinek optimalizálása az Azure Cosmos DB-ben
 
@@ -80,7 +80,7 @@ A natív SDK-k (.NET/.NET Core, Java, Node.js és Python) implicit módon elkapj
 
 Ha több ügyfél halmozottan működik, és a kérések aránya meghaladja a kérelmek arányát, akkor az újrapróbálkozások alapértelmezett száma, amely jelenleg 9, előfordulhat, hogy nem elegendő. Ilyen esetekben az ügyfél az `RequestRateTooLargeException` 429-as állapotkódot veti fel az alkalmazáshoz. Az újrapróbálkozások alapértelmezett száma módosítható a ConnectionPolicy-példányra való beállításával `RetryOptions` . Alapértelmezés szerint a `RequestRateTooLargeException` 429-as állapotkód a 30 másodperces kumulatív várakozási idő után tér vissza, ha a kérés továbbra is a kérelem arányán felül működik. Ez akkor is előfordul, ha a jelenlegi újrapróbálkozások száma kisebb, mint az újrapróbálkozások maximális száma, legyen az alapértelmezett 9-es vagy felhasználó által definiált érték. 
 
-A [MaxRetryAttemptsOnThrottledRequests](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretryattemptsonthrottledrequests?view=azure-dotnet) értéke 3, tehát ebben az esetben ha egy kérési művelet a tároló számára fenntartott átviteli sebesség meghaladása miatt korlátozott, a kérési művelet háromszor újrapróbálkozik a kivételnek az alkalmazásba való eldobása előtt. A [MaxRetryWaitTimeInSeconds](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretrywaittimeinseconds?view=azure-dotnet#Microsoft_Azure_Documents_Client_RetryOptions_MaxRetryWaitTimeInSeconds) értéke 60, tehát ebben az esetben, ha az első kérelemnél nagyobb az újrapróbálkozási várakozási idő másodpercben, mivel az első kérés meghaladja a 60 másodpercet, a kivételt a rendszer eldobta.
+A [MaxRetryAttemptsOnThrottledRequests](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretryattemptsonthrottledrequests?view=azure-dotnet&preserve-view=true) értéke 3, tehát ebben az esetben ha egy kérési művelet a tároló számára fenntartott átviteli sebesség meghaladása miatt korlátozott, a kérési művelet háromszor újrapróbálkozik a kivételnek az alkalmazásba való eldobása előtt. A [MaxRetryWaitTimeInSeconds](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.retryoptions.maxretrywaittimeinseconds?view=azure-dotnet&preserve-view=true#Microsoft_Azure_Documents_Client_RetryOptions_MaxRetryWaitTimeInSeconds) értéke 60, tehát ebben az esetben, ha az első kérelemnél nagyobb az újrapróbálkozási várakozási idő másodpercben, mivel az első kérés meghaladja a 60 másodpercet, a kivételt a rendszer eldobta.
 
 ```csharp
 ConnectionPolicy connectionPolicy = new ConnectionPolicy(); 
@@ -174,7 +174,7 @@ A következő lépések segítségével a megoldásait rugalmasan méretezhető 
 
 10. Azure Cosmos DB fenntartott kapacitással három évig akár 65%-os kedvezményt érhet el. Azure Cosmos DB fenntartott kapacitási modell előzetes kötelezettségvállalás a kérések egysége számára az idő múlásával. A kedvezményeket úgy kell megválasztani, hogy minél több kérési egységet használjanak hosszabb időszakra, annál nagyobb a kedvezmény. Ezeket a kedvezményeket azonnal alkalmazza a rendszer. A kiépített értékek fölött használt összes RUs díja a nem fenntartott kapacitás díja alapján történik. További részletekért tekintse meg [Cosmos db fenntartott kapacitást](cosmos-db-reserved-capacity.md)). Vegye fontolóra a fenntartott kapacitás megvásárlását, hogy tovább csökkentse a kiosztott átviteli sebességet.  
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A következő cikkekben további tudnivalókat talál a Azure Cosmos DB a Cost optimizationról:
 

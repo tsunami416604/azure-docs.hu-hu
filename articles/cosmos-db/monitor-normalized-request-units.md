@@ -6,18 +6,18 @@ ms.topic: how-to
 author: kanshiG
 ms.author: govindk
 ms.date: 06/25/2020
-ms.openlocfilehash: e7005a3786bb2d538450b076c113e159c766d72e
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.openlocfilehash: 183b161039b86ce824fd0bfde82cf291d54024fc
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
-ms.locfileid: "88642078"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91801477"
 ---
 # <a name="how-to-monitor-normalized-rus-for-an-azure-cosmos-container-or-an-account"></a>A normalizált RU/s figyelése Azure Cosmos-tárolóhoz vagy-fiókhoz
 
 A Azure Cosmos DB Azure Monitor metrikai nézetet biztosít a fiók figyeléséhez és az irányítópultok létrehozásához. A rendszer alapértelmezés szerint összegyűjti a Azure Cosmos DB metrikákat, így nem kell explicit módon engedélyeznie vagy konfigurálnia a szolgáltatást.
 
-A **normalizált ru** -használati metrika azt mutatja, hogy mennyire telített a partíciós kulcsok tartománya a forgalom tekintetében. Azure Cosmos DB az átviteli sebességet egyenlően osztja el a partíciós kulcsok összes tartománya között. Ez a metrika a partíciós kulcs tartományának maximális átviteli sebességét jeleníti meg másodpercenként. Ezzel a metrikával számíthatja ki az RU/s használatát a partíciós kulcs tartománya között az adott tárolónál. Ha ezt a metrikát használja, ha az Azure monitor összes partíciós kulcs-tartományának nagy hányadát látja, akkor növelje az átviteli sebességet, hogy megfeleljen a számítási feladatok igényeinek. 
+A **normalizált ru** -használati metrika azt mutatja, hogy mennyire telített a partíciós kulcsok tartománya a forgalom tekintetében. Azure Cosmos DB az átviteli sebességet egyenlően osztja el a partíciós kulcsok összes tartománya között. Ez a metrika a partíciós kulcs tartományának maximális átviteli sebességét jeleníti meg másodpercenként. Ezzel a metrikával számíthatja ki az RU/s használatát a partíciós kulcs tartománya között az adott tárolónál. Ha ezt a metrikát használja, ha az Azure monitor összes partíciós kulcs-tartományának nagy hányadát látja, akkor növelje az átviteli sebességet, hogy megfeleljen a számítási feladatok igényeinek. Példa – a normalizált kihasználtságot a rendszer az összes partíciós kulcs tartományában lévő RU/s kihasználtság maximális értékeként határozza meg. Tegyük fel például, hogy a maximális átviteli sebesség 20 000 RU/s, és két partíciós kulcs tartománya van, P_1 és P_2, amelyek mindegyike 10 000 RU/s méretre képes. Egy adott másodpercben, ha P_1 6000 RUs-t használ, és P_2 8000 RUs, a normalizált kihasználtság MAX (6000 RU/10 000 RU, 8000 RU/10 000 RU) = 0,8.
 
 ## <a name="what-to-expect-and-do-when-normalized-rus-is-higher"></a>Mire számíthat, és ha a normalizált RU/s magasabb
 
@@ -43,13 +43,13 @@ Ha folyamatos csúcsa 100%-os normalizált RU/s-fogyasztás, vagy a több partí
 
 3. A **metrikák** ablaktáblán > **válasszon ki egy erőforrást** > válassza ki a szükséges **előfizetést**és **erőforráscsoportot**. Az **erőforrástípus**mezőben válassza a **Azure Cosmos db fiókok**lehetőséget, válasszon ki egy meglévő Azure Cosmos-fiókot, majd válassza az **alkalmaz**lehetőséget.
 
-   :::image type="content" source="./media/monitor-normalized-request-units/select-cosmos-db-account.png" alt-text="Válasszon ki egy Azure Cosmos-fiókot a metrikák megtekintéséhez":::
+   :::image type="content" source="./media/monitor-normalized-request-units/select-cosmos-db-account.png" alt-text="Metrikák ablaktábla Azure Monitor":::
 
 4. Következő lépésként kiválaszthat egy mérőszámot az elérhető metrikák listájából. Kiválaszthatja a kérelmekhez tartozó mérőszámokat, a tárolást, a késést, a rendelkezésre állást, a Cassandra és másokat. A listán szereplő összes mérőszám részletes megismeréséhez tekintse meg a [metrikák kategória szerint](monitor-cosmos-db-reference.md) című cikket. Ebben a példában a **normalizált ru** használati metrikát és a **Max** értéket adjuk meg az összesítési értékként.
 
    Ezen részletek mellett kiválaszthatja a metrikák **időtartományát** és **időrészletességét** is. A maximális értéknél megtekintheti az elmúlt 30 nap mérőszámait.  A szűrő alkalmazása után egy diagram jelenik meg a szűrő alapján.
 
-   :::image type="content" source="./media/monitor-normalized-request-units/normalized-request-unit-usage-metric.png" alt-text="Metrika kiválasztása a Azure Portal":::
+   :::image type="content" source="./media/monitor-normalized-request-units/normalized-request-unit-usage-metric.png" alt-text="Metrikák ablaktábla Azure Monitor":::
 
 ### <a name="filters-for-normalized-request-unit-consumption"></a>A normalizált kérelmek egységének felhasználására szolgáló szűrők
 
@@ -59,9 +59,9 @@ A metrikákat a **felosztás alkalmazása** lehetőség használatával csoporto
 
 Az egyes tárolók normalizált kérések egységenkénti mérőszáma az alábbi képen látható módon jelenik meg:
 
-:::image type="content" source="./media/monitor-normalized-request-units/normalized-request-unit-usage-filters.png" alt-text="Szűrők alkalmazása a normalizált kérelmek egységének felhasználási metrikája":::
+:::image type="content" source="./media/monitor-normalized-request-units/normalized-request-unit-usage-filters.png" alt-text="Metrikák ablaktábla Azure Monitor":::
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Az Azure-ban [diagnosztikai beállításokkal](cosmosdb-monitor-resource-logs.md) figyelheti Azure Cosmos db az adataikat.
 * [Azure Cosmos DB vezérlési sík műveleteinek naplózása](audit-control-plane-logs.md)

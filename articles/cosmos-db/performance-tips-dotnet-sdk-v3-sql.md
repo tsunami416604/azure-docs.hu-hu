@@ -7,12 +7,12 @@ ms.topic: how-to
 ms.date: 06/16/2020
 ms.author: jawilley
 ms.custom: devx-track-dotnet
-ms.openlocfilehash: 9d50ed62343a7fd0aafb1fed97c0f33f2caaec12
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: f8e610531eaf3e7e5dbee9c40c88683a05029303
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89019929"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91802990"
 ---
 # <a name="performance-tips-for-azure-cosmos-db-and-net"></a>Az Azure Cosmos DB és a .NET teljesítményével kapcsolatos tippek
 
@@ -39,7 +39,7 @@ Linux és egyéb nem támogatott platformok esetén, ahol a ServiceInterop.dll n
 
 Az itt felsorolt négy alkalmazás típusa alapértelmezés szerint a 32 bites gazdagép-feldolgozást használja. Ha módosítani szeretné a gazdagép feldolgozását az alkalmazás típusának 64 bites feldolgozására, tegye a következőket:
 
-- **Végrehajtható alkalmazások esetén**: a **Projekt tulajdonságai** ablak **Build** ablaktábláján állítsa a [platform célt](https://docs.microsoft.com/visualstudio/ide/how-to-configure-projects-to-target-platforms?view=vs-2019) az **x64**értékre.
+- **Végrehajtható alkalmazások esetén**: a **Projekt tulajdonságai** ablak **Build** ablaktábláján állítsa a [platform célt](https://docs.microsoft.com/visualstudio/ide/how-to-configure-projects-to-target-platforms?view=vs-2019&preserve-view=true) az **x64**értékre.
 
 - **VSTest-alapú tesztelési projektek esetén**: a Visual Studio **test** menüben válassza a **Test**teszt  >  **beállításainak**tesztelése lehetőséget, majd állítsa az **alapértelmezett processzor-architektúra** értéket az **x64**értékre.
 
@@ -126,7 +126,7 @@ Ha lehetséges, helyezzen olyan alkalmazásokat, amelyek a Azure Cosmos DB-adatb
 
 A lehető legkevesebb késést úgy érheti el, hogy a hívó alkalmazás ugyanabban az Azure-régióban található, mint a kiépített Azure Cosmos DB végpont. Az elérhető régiók listáját az [Azure-régiók](https://azure.microsoft.com/regions/#services)című részben tekintheti meg.
 
-:::image type="content" source="./media/performance-tips/same-region.png" alt-text="Rézvezetékes végezhet-ügyfelek ugyanabban a régióban." border="false":::
+:::image type="content" source="./media/performance-tips/same-region.png" alt-text="Hozzon létre kapcsolatot a Azure Cosmos DB különböző kapcsolati módokkal és protokollokkal." border="false":::
 
    <a id="increase-threads"></a>
 
@@ -199,7 +199,7 @@ A párhuzamos lekérdezések két paramétert biztosítanak, amelyeket az igény
 
 A teljesítmény tesztelése során növelje a terhelést, amíg a rendszer kis mennyiségű kérést nem szabályoz. Ha a kérelmek szabályozása megtörténik, az ügyfélalkalmazás a kiszolgáló által megadott újrapróbálkozási időköz szabályozásának visszavonását hajtja végre. A leállítási tiszteletben tartásával biztosítható, hogy az újrapróbálkozások között minimálisan megtörténjen az idő várakozása. 
 
-További információ: [RetryAfter](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosexception.retryafter?view=azure-dotnet#Microsoft_Azure_Cosmos_CosmosException_RetryAfter).
+További információ: [RetryAfter](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.cosmosexception.retryafter?view=azure-dotnet&preserve-view=true#Microsoft_Azure_Cosmos_CosmosException_RetryAfter).
     
 Létezik egy mechanizmus a további diagnosztikai információk naplózására és a késéssel kapcsolatos hibák elhárítására, ahogy az az alábbi példában is látható. Naplózhatja a diagnosztikai karakterláncot olyan kérelmek esetében, amelyek nagyobb olvasási késéssel rendelkeznek. A rögzített diagnosztikai karakterlánc segít megérteni, hogy hányszor kapott egy adott kéréshez *429* hibát.
 
@@ -284,7 +284,7 @@ További információt a [kérelmek egységei](request-units.md)című témakör
 
 Egy adott műveletre vonatkozó kérelem díja (azaz a kérelmek feldolgozási díja) közvetlenül a dokumentum méretével összefügg egymással. A nagyméretű dokumentumokon végzett műveletek többek között a kis dokumentumokon végzett műveletekhez szükségesek.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az egyes ügyfélszámítógépeken a nagy teljesítményű forgatókönyvek Azure Cosmos DB kiértékeléséhez használt minta alkalmazással kapcsolatban lásd: [teljesítmény-és méretezési tesztek a Azure Cosmos db](performance-testing.md)használatával.
 
 Ha többet szeretne megtudni az alkalmazás méretezési és nagy teljesítményű kialakításáról, tekintse meg [a particionálás és skálázás Azure Cosmos DBban](partition-data.md)című témakört.

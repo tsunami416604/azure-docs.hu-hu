@@ -3,12 +3,12 @@ title: Az Azure VMware-megoldás üzembe helyezésének megtervezése
 description: Ez a cikk egy Azure VMware-megoldás üzembe helyezési munkafolyamatát ismerteti.  A végeredmény egy olyan környezet, amely készen áll a virtuális gép (VM) létrehozására és áttelepítésére.
 ms.topic: tutorial
 ms.date: 10/02/2020
-ms.openlocfilehash: 1a9ff313243650cc3f9c44be2eb1c62da5557955
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: e279f14406d464171f0879d85cc33f9844d22ec3
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91583299"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91802208"
 ---
 # <a name="planning-the-azure-vmware-solution-deployment"></a>Az Azure VMware-megoldás üzembe helyezésének megtervezése
 
@@ -19,6 +19,40 @@ Ennek a rövid útmutatónak a folyamatai a virtuális gépek (VM-EK) és a Migr
 >[!IMPORTANT]
 >Az Azure VMware-megoldási erőforrás létrehozása előtt egy támogatási jegyet kell benyújtania a csomópontok lefoglalásához. Miután a támogatási csapat megkapja a kérést, akár öt munkanapot is igénybe vesz, hogy erősítse meg a kérését, és lefoglalja a csomópontjait. Ha van egy meglévő Azure VMware-megoldás saját felhője, és több csomópontot szeretne lefoglalni, akkor ugyanezt a folyamatot kell megtennie. További információ: [Az Azure VMware megoldás erőforrásának engedélyezése](enable-azure-vmware-solution.md). 
 
+## <a name="subscription"></a>Előfizetés
+
+Azonosítsa az Azure VMware-megoldás üzembe helyezéséhez használni kívánt előfizetést.  Létrehozhat egy új előfizetést, vagy felhasználhat egy meglévőt.
+
+>[!NOTE]
+>Az előfizetést egy Microsoft Nagyvállalati Szerződéshoz kell társítani.
+
+## <a name="resource-group"></a>Erőforráscsoport
+
+Azonosítsa az Azure VMware-megoldáshoz használni kívánt erőforráscsoportot.  Általában egy erőforráscsoport jön létre kifejezetten az Azure VMware megoldáshoz, de használhat egy meglévő erőforráscsoportot is.
+
+## <a name="region"></a>Régió
+
+Azonosítsa az Azure VMware-megoldás üzembe helyezéséhez használni kívánt régiót.  További információkért tekintse meg az [Azure-termékek régiónként elérhető útmutatót](https://azure.microsoft.com/en-us/global-infrastructure/services/?products=azure-vmware).
+
+## <a name="resource-name"></a>Erőforrás neve
+
+Adja meg az üzembe helyezés során használni kívánt erőforrás nevét.  Az erőforrás neve egy felhasználóbarát és leíró név, amelyben az Azure VMware-megoldás saját felhőjét adja meg.
+
+## <a name="size-nodes"></a>Csomópontok mérete
+
+Azonosítsa az Azure VMware-megoldás telepítésekor használni kívánt méretű csomópontokat.  A teljes listát az [Azure VMware megoldás privát felhők és fürtök](concepts-private-clouds-clusters.md#hosts) dokumentációjában találja.
+
+## <a name="number-of-hosts"></a>Gazdagépek száma
+
+Adja meg az Azure VMware-megoldás saját felhőbe telepíteni kívánt gazdagépek számát.  A csomópontok minimális száma három, a maximális érték pedig a fürt 16.  További információkért tekintse meg az [Azure VMware Solution Private Cloud és a Clusters](concepts-private-clouds-clusters.md#clusters) dokumentációját.
+
+Később is kiterjesztheti a fürtöt, ha a kezdeti üzembe helyezési számon túl kell lépnie.
+
+## <a name="vcenter-admin-password"></a>vCenter rendszergazdai jelszava
+Adja meg a vCenter rendszergazdai jelszavát.  Az üzembe helyezés során létre kell hoznia egy vCenter-rendszergazdai jelszót. A jelszó a cloudadmin@vsphere.local vCenter létrehozásakor a rendszergazdai fiókra vonatkozik. Ezzel bejelentkezhet a vCenter-be.
+
+## <a name="nsx-t-admin-password"></a>NSX-T rendszergazdai jelszó
+Adja meg a NSX-T rendszergazdai jelszót.  Az üzembe helyezés során létre fog hozni egy NSX-T rendszergazdai jelszót. A jelszó a NSX-fiókban a rendszergazda felhasználóhoz van hozzárendelve a NSX Build során. Ezzel bejelentkezik a NSX-T kezelőjébe.
 
 ## <a name="ip-address-segment"></a>IP-cím szegmense
 
@@ -63,41 +97,6 @@ Azonosítson egy `/29` hálózati CIDR, amely szükséges a ExpressRoute Global 
 
 :::image type="content" source="media/pre-deployment/expressroute-global-reach-ip-diagram.png" alt-text="Azonosítsa az IP-címek szegmensét" border="false":::
 
-## <a name="subscription"></a>Előfizetés
-
-Azonosítsa az Azure VMware-megoldás üzembe helyezéséhez használni kívánt előfizetést.  Létrehozhat egy új előfizetést, vagy felhasználhat egy meglévőt.
-
->[!NOTE]
->Az előfizetést egy Microsoft Nagyvállalati Szerződéshoz kell társítani.
-
-## <a name="resource-group"></a>Erőforráscsoport
-
-Azonosítsa az Azure VMware-megoldáshoz használni kívánt erőforráscsoportot.  Általában egy erőforráscsoport jön létre kifejezetten az Azure VMware megoldáshoz, de használhat egy meglévő erőforráscsoportot is.
-
-## <a name="region"></a>Region
-
-Azonosítsa az Azure VMware-megoldás üzembe helyezéséhez használni kívánt régiót.  További információkért tekintse meg az [Azure-termékek régiónként elérhető útmutatót](https://azure.microsoft.com/en-us/global-infrastructure/services/?products=azure-vmware).
-
-## <a name="resource-name"></a>Erőforrás neve
-
-Adja meg az üzembe helyezés során használni kívánt erőforrás nevét.  Az erőforrás neve egy felhasználóbarát és leíró név, amelyben az Azure VMware-megoldás saját felhőjét adja meg.
-
-## <a name="size-nodes"></a>Csomópontok mérete
-
-Azonosítsa az Azure VMware-megoldás telepítésekor használni kívánt méretű csomópontokat.  A teljes listát az [Azure VMware megoldás privát felhők és fürtök](concepts-private-clouds-clusters.md#hosts) dokumentációjában találja.
-
-## <a name="number-of-hosts"></a>Gazdagépek száma
-
-Adja meg az Azure VMware-megoldás saját felhőbe telepíteni kívánt gazdagépek számát.  A csomópontok minimális száma három, a maximális érték pedig a fürt 16.  További információkért tekintse meg az [Azure VMware Solution Private Cloud és a Clusters](concepts-private-clouds-clusters.md#clusters) dokumentációját.
-
-Később is kiterjesztheti a fürtöt, ha a kezdeti üzembe helyezési számon túl kell lépnie.
-
-## <a name="vcenter-admin-password"></a>vCenter rendszergazdai jelszava
-Adja meg a vCenter rendszergazdai jelszavát.  Az üzembe helyezés során létre kell hoznia egy vCenter-rendszergazdai jelszót. A jelszó a cloudadmin@vsphere.local vCenter létrehozásakor a rendszergazdai fiókra vonatkozik. Ezzel bejelentkezhet a vCenter-be.
-
-## <a name="nsx-t-admin-password"></a>NSX-T rendszergazdai jelszó
-Adja meg a NSX-T rendszergazdai jelszót.  Az üzembe helyezés során létre fog hozni egy NSX-T rendszergazdai jelszót. A jelszó a NSX-fiókban a rendszergazda felhasználóhoz van hozzárendelve a NSX Build során. Ezzel bejelentkezik a NSX-T kezelőjébe.
-
 ## <a name="azure-virtual-network-to-attach-azure-vmware-solution"></a>Azure-Virtual Network az Azure VMware-megoldás csatlakoztatásához
 
 Az Azure VMware-megoldás saját felhőhöz való hozzáféréséhez az Azure VMware-megoldáshoz tartozó ExpressRoute-áramkörnek egy Azure Virtual Networkhoz kell csatlakoznia.  Az üzembe helyezés során megadhat egy új virtuális hálózatot, vagy kiválaszthat egy meglévőt.
@@ -121,8 +120,6 @@ Mindkét esetben dokumentálja, hogy mit szeretne tenni ebben a lépésben.
 
 :::image type="content" source="media/pre-deployment/azure-vmware-solution-expressroute-diagram.png" alt-text="Azonosítsa az IP-címek szegmensét" border="false":::
 
-
-
 ## <a name="vmware-hcx-network-segments"></a>VMware HCX hálózati szegmensek
 
 A VMware HCX egy olyan technológia, amely az Azure VMware megoldással együtt van kiépítve. A VMware HCX elsődleges használati esetei a munkaterhelések áttelepítése és a vész-helyreállítás. Ha azt tervezi, hogy ezt a lehetőséget választja, érdemes megtervezni a hálózatkezelést most.   Ellenkező esetben kihagyhatja és folytathatja a következő lépéssel.
@@ -133,4 +130,4 @@ A VMware HCX egy olyan technológia, amely az Azure VMware megoldással együtt 
 Most, hogy összegyűjtötte és dokumentálta a szükséges információkat, folytassa a következő szakasszal az Azure VMware-megoldás saját Felhőbeli létrehozásához.
 
 > [!div class="nextstepaction"]
-> [Azure VMware-megoldás üzembe helyezése](deploy-azure-vmware-solution.md)
+> [Az Azure VMware Solution üzembe helyezése](deploy-azure-vmware-solution.md)

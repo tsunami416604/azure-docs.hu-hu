@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 05/19/2020
 ms.author: dech
-ms.openlocfilehash: f4236b099915e737f9d489d89e5bf18b84736d75
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.openlocfilehash: 5599a64e812c3006cf4379f98c5a0f0b0cd067e7
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87761195"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91801851"
 ---
 # <a name="use-built-in-notebook-commands-and-features-in-azure-cosmos-db-python-notebooks-preview"></a>Beépített notebook-parancsok és-szolgáltatások használata Azure Cosmos DB Python-jegyzetfüzetekben (előzetes verzió)
 
@@ -164,10 +164,10 @@ Lásd: [PYTHON SDK-minták](https://github.com/Azure/azure-sdk-for-python/tree/m
 > [!IMPORTANT]
 > A beépített Python SDK csak az SQL (Core) API-fiókok esetében támogatott. Más API-k esetén [telepítenie kell az](#install-a-new-package) API-nak megfelelő Python-illesztőprogramot. 
 
-## <a name="create-a-custom-instance-of-cosmos_client"></a>Egyéni példány létrehozása``cosmos_client``
+## <a name="create-a-custom-instance-of-cosmos_client"></a>Egyéni példány létrehozása ``cosmos_client``
 A rugalmasság érdekében létrehozhat egy egyéni példányt a ``cosmos_client`` következőhöz:
 
-- A [kapcsolatok házirendjének](https://docs.microsoft.com/python/api/azure-cosmos/azure.cosmos.documents.connectionpolicy?view=azure-python-preview) testreszabása
+- A [kapcsolatok házirendjének](https://docs.microsoft.com/python/api/azure-cosmos/azure.cosmos.documents.connectionpolicy?view=azure-python-preview&preserve-view=true) testreszabása
 - Futtasson műveleteket egy másik Azure Cosmos-fiókon, mint a
 
 Az aktuális fiók kapcsolati sztringjét és elsődleges kulcsát a [környezeti változók](#access-the-account-endpoint-and-primary-key-env-variables)segítségével érheti el. 
@@ -200,7 +200,7 @@ primary_key = COSMOS.KEY
 ## <a name="reset-notebooks-workspace"></a>Jegyzetfüzetek alaphelyzetbe állítása munkaterület
 Ha a jegyzetfüzetek munkaterületet az alapértelmezett beállításokra szeretné visszaállítani, válassza a parancssáv **munkaterület alaphelyzetbe** állítása lehetőséget. Ezzel eltávolítja az összes egyéni telepített csomagot, majd újraindítja a Jupyter-kiszolgálót. A jegyzetfüzeteket, a fájlokat és az Azure Cosmos-erőforrásokat nem érinti a rendszer.  
 
-:::image type="content" source="media/use-notebook-features-and-commands/reset-workspace.png" alt-text="Jegyzetfüzetek alaphelyzetbe állítása munkaterület":::
+:::image type="content" source="media/use-notebook-features-and-commands/reset-workspace.png" alt-text="nteract adatkezelő":::
 
 ## <a name="next-steps"></a>További lépések
 

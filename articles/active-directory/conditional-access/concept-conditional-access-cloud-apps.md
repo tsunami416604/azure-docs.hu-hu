@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2512602b0c8c00c696253a708af13278bc513a1f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 6f65a43cf5730f56b43d79388a0e73ea93e3225b
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91258744"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91801987"
 ---
 # <a name="conditional-access-cloud-apps-or-actions"></a>Feltételes hozzáférés: felhőalapú alkalmazások vagy műveletek
 
@@ -102,6 +102,7 @@ A Microsoft Azure felügyeleti alkalmazás több mögöttes szolgáltatást is t
    - Azure Resource Manager szolgáltató
    - Klasszikus üzembe helyezési modell API-k
    - Azure PowerShell
+   - Azure CLI
    - Visual Studio-előfizetések felügyeleti portál
    - Azure DevOps
    - Azure Data Factory portál
@@ -127,7 +128,7 @@ A Microsoft-alkalmazások mellett a rendszergazdák bármilyen Azure AD-beli reg
 
 A felhasználói műveletek olyan feladatok, amelyeket a felhasználók elvégezhetnek. Az egyetlen jelenleg támogatott művelet a **biztonsági információk regisztrálása**, amely lehetővé teszi, hogy a feltételes hozzáférési szabályzat kikényszerítse azokat a felhasználókat, akik a kombinált regisztrációhoz engedélyezve vannak a biztonsági információik regisztrálásához. További információt a következő cikkben talál: [kombinált biztonsági információk regisztrálása](../authentication/concept-registration-mfa-sspr-combined.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Feltételes hozzáférés: feltételek](concept-conditional-access-conditions.md)
 

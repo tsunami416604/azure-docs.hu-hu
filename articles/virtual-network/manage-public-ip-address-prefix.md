@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 05/13/2019
 ms.author: allensu
-ms.openlocfilehash: c844b25394d865453e653bfc3ac6bff396d97a47
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.openlocfilehash: 90fc35249daea51a08cb83143c6be024e78964a7
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88035059"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91804010"
 ---
 # <a name="create-change-or-delete-a-public-ip-address-prefix"></a>Nyilvános IP-címelőtag létrehozása, módosítása vagy törlése
 
@@ -48,11 +48,11 @@ A nyilvános IP-címek előtagjai díjkötelesek. Részletekért tekintse meg a 
 
    |Beállítás|Kötelező?|Részletek|
    |---|---|---|
-   |Előfizetés|Yes|Ugyanabban az [előfizetésben](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription) kell lennie, mint azt az erőforrást, amelyhez hozzá szeretné rendelni a nyilvános IP-címet.|
-   |Erőforráscsoport|Yes|Ugyanabban a vagy más [erőforrás-csoportban](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group) létezhet, mint azt az erőforrást, amelyhez hozzá szeretné rendelni a nyilvános IP-címet.|
-   |Name|Yes|A névnek egyedinek kell lennie a kiválasztott erőforráscsoporthoz.|
-   |Régió|Yes|Ugyanabban a [régióban](https://azure.microsoft.com/regions)kell lennie, mint a nyilvános IP-címek, a tartományból kell címeket rendelni.|
-   |Előtag mérete|Yes| A szükséges előtag mérete. Az alapértelmezett érték a/28 vagy 16 IP-cím.
+   |Előfizetés|Igen|Ugyanabban az [előfizetésben](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#subscription) kell lennie, mint azt az erőforrást, amelyhez hozzá szeretné rendelni a nyilvános IP-címet.|
+   |Erőforráscsoport|Igen|Ugyanabban a vagy más [erőforrás-csoportban](../azure-glossary-cloud-terminology.md?toc=%2fazure%2fvirtual-network%2ftoc.json#resource-group) létezhet, mint azt az erőforrást, amelyhez hozzá szeretné rendelni a nyilvános IP-címet.|
+   |Name (Név)|Igen|A névnek egyedinek kell lennie a kiválasztott erőforráscsoporthoz.|
+   |Régió|Igen|Ugyanabban a [régióban](https://azure.microsoft.com/regions)kell lennie, mint a nyilvános IP-címek, a tartományból kell címeket rendelni.|
+   |Előtag mérete|Igen| A szükséges előtag mérete. Az alapértelmezett érték a/28 vagy 16 IP-cím.
 
 **Parancsok**
 
@@ -71,9 +71,9 @@ Az előtag létrehozása után statikus IP-címeket kell létrehoznia az előtag
 
    |Beállítás|Kötelező?|Részletek|
    |---|---|---|
-   |Name|Yes|A nyilvános IP-cím nevének egyedinek kell lennie a kiválasztott erőforráscsoporthoz.|
-   |Üresjárati időkorlát (perc)|No|Hány percet tart a TCP-vagy HTTP-kapcsolatok megnyitása anélkül, hogy az ügyfelek a Keep-Alive üzenetek küldésére támaszkodnak. |
-   |DNS-névcímke|No|Egyedinek kell lennie az Azure-régióban, amelyben a nevet létrehozza (az összes előfizetésben és az összes ügyfélen). Az Azure automatikusan regisztrálja a nevet és az IP-címet a DNS-ben, hogy csatlakozni tudjanak a névvel rendelkező erőforráshoz. Az Azure a teljes DNS-név létrehozásához hozzáfűz egy alapértelmezett alhálózatot, például a *Location.cloudapp.Azure.com* (ahol a hely az Ön által kiválasztott hely). További információ: [Azure DNS használata Azure nyilvános IP-címmel](../dns/dns-custom-domain.md?toc=%2fazure%2fvirtual-network%2ftoc.json#public-ip-address).|
+   |Name (Név)|Igen|A nyilvános IP-cím nevének egyedinek kell lennie a kiválasztott erőforráscsoporthoz.|
+   |Üresjárati időkorlát (perc)|Nem|Hány percet tart a TCP-vagy HTTP-kapcsolatok megnyitása anélkül, hogy az ügyfelek a Keep-Alive üzenetek küldésére támaszkodnak. |
+   |DNS-névcímke|Nem|Egyedinek kell lennie az Azure-régióban, amelyben a nevet létrehozza (az összes előfizetésben és az összes ügyfélen). Az Azure automatikusan regisztrálja a nevet és az IP-címet a DNS-ben, hogy csatlakozni tudjanak a névvel rendelkező erőforráshoz. Az Azure a teljes DNS-név létrehozásához hozzáfűz egy alapértelmezett alhálózatot, például a *Location.cloudapp.Azure.com* (ahol a hely az Ön által kiválasztott hely). További információ: [Azure DNS használata Azure nyilvános IP-címmel](../dns/dns-custom-domain.md?toc=%2fazure%2fvirtual-network%2ftoc.json#public-ip-address).|
 
 Másik lehetőségként használhatja a CLI és a PS parancsokat is a--Public-IP-előtag (CLI) és a-PublicIpPrefix (PS) paraméterekkel a nyilvános IP-cím erőforrás létrehozásához. 
 
@@ -88,7 +88,7 @@ Másik lehetőségként használhatja a CLI és a PS parancsokat is a--Public-IP
 2. Válassza ki a megtekinteni kívánt nyilvános IP-cím előtagjának nevét, a beállítások módosítását vagy a listából való törlését.
 3. Hajtsa végre a következő lehetőségek egyikét attól függően, hogy meg szeretné-e tekinteni, törölni vagy módosítani a nyilvános IP-cím előtagját.
    - **Megtekintés**: az **Áttekintés** szakasz a nyilvános IP-cím előtagjának legfontosabb beállításait, például az előtagot tartalmazza.
-   - **Törlés**: a nyilvános IP-cím előtag törléséhez válassza a **Törlés** lehetőséget az **Áttekintés** szakaszban. Ha az előtagon belüli címek a nyilvános IP-cím erőforrásaihoz vannak társítva, először törölnie kell a nyilvános IP-címek erőforrásait. Lásd: [nyilvános IP-cím törlése](virtual-network-public-ip-address.md#view-change-settings-for-or-delete-a-public-ip-address).
+   - **Törlés**: a nyilvános IP-cím előtag törléséhez válassza a **Törlés** lehetőséget az **Áttekintés** szakaszban. Ha az előtagon belüli címek a nyilvános IP-cím erőforrásaihoz vannak társítva, először törölnie kell a nyilvános IP-címek erőforrásait. Lásd: [nyilvános IP-cím törlése](virtual-network-public-ip-address.md#view-modify-settings-for-or-delete-a-public-ip-address).
 
 **Parancsok**
 
@@ -101,7 +101,7 @@ Másik lehetőségként használhatja a CLI és a PS parancsokat is a--Public-IP
 
 A nyilvános IP-címek előtagjaival kapcsolatos feladatok elvégzéséhez a fiókját hozzá kell rendelni a [hálózati közreműködő](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) szerepkörhöz vagy egy [Egyéni](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) szerepkörhöz, amely az alábbi táblázatban felsorolt megfelelő műveletekhez van rendelve:
 
-| Művelet                                                            | Name                                                           |
+| Művelet                                                            | Name (Név)                                                           |
 | ---------                                                         | -------------                                                  |
 | Microsoft. Network/publicIPPrefixes/READ                           | Nyilvános IP-cím előtagjának beolvasása                                |
 | Microsoft. Network/publicIPPrefixes/Write                          | Nyilvános IP-cím előtagjának létrehozása vagy frissítése                    |

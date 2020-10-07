@@ -10,12 +10,12 @@ ms.date: 12/11/2019
 ms.topic: conceptual
 ms.service: azure-remote-rendering
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 3d0628777fbd6250fff4bb8347461d206d13782d
-ms.sourcegitcommit: 6e1124fc25c3ddb3053b482b0ed33900f46464b3
+ms.openlocfilehash: 332213adf64e17c0935ddf612acac5bbca413a87
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90561873"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91802293"
 ---
 # <a name="graphics-binding"></a>Grafikus kötés
 
@@ -87,7 +87,7 @@ if (ApiHandle<GraphicsBinding> binding = currentSession->GetGraphicsBinding())
 
 Jelenleg két grafikus API lehet kijelölni, `WmrD3D11` és `SimD3D11` . Egy harmadik `Headless` létezik, de az ügyféloldali oldalon még nem támogatott.
 
-### <a name="windows-mixed-reality"></a>Windows vegyes valóság
+### <a name="windows-mixed-reality"></a>Windows Mixed Reality
 
 `GraphicsApiType.WmrD3D11` az alapértelmezett kötés, amely a 2. HoloLens fut. Létrehozza majd a `GraphicsBindingWmrD3d11` kötést. Ebben az üzemmódban az Azure-alapú távoli renderelés közvetlenül a holografikus API-khoz csatlakozik.
 
@@ -120,7 +120,10 @@ Ahol a fentieknek olyan `ptr` natív objektumra mutató mutatónak kell lenniük
 
 #### <a name="render-remote-image"></a>Távoli rendszerkép megjelenítése
 
-Az egyes keretek elején a távoli keretet a hátsó pufferbe kell megjeleníteni. Ezt a hívással végezheti el `BlitRemoteFrame` , amely a szín-és a mélységi információkat is kitölti az aktuálisan kötött megjelenítési célra. Ezért fontos, hogy ezt a hátsó puffer leképezési célként való kötése után végezze el.
+Az egyes keretek elején a távoli keretet a hátsó pufferbe kell megjeleníteni. Ezt a meghívásával végezheti el `BlitRemoteFrame` , amely mindkét szem színét és részletes információit kitölti a jelenleg kötött megjelenítési célra. Ezért fontos, hogy ezt követően a teljes hátsó puffert leképezési célként kell kötni.
+
+> [!WARNING]
+> Miután a távoli rendszerkép be lett blit a backbuffer, a helyi tartalmat egy egyszeri továbbítású sztereó renderelési technikával kell megjeleníteni, például **SV_RenderTargetArrayIndex**használatával. Más sztereó renderelési technikák (például az egyes szemeknek külön pass-alapú renderelés) használatával jelentős teljesítmény-romlást vagy grafikus összetevőket eredményezhet, és el kell kerülni.
 
 ```cs
 AzureSession currentSession = ...;

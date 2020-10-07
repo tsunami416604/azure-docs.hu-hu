@@ -6,14 +6,14 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/24/2020
 ms.author: tisande
-ms.openlocfilehash: d292b7cfcda73cb4cd6ac2535c7e27fc675e1030
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: f4ee0c0af6939e71f696fc900ec2ab1343ca91df
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87308185"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91802514"
 ---
-# <a name="getting-started-with-sql-queries"></a>SQL-lekérdezések – első lépések
+# <a name="getting-started-with-sql-queries"></a>Bevezetés az SQL-lekérdezések használatába
 
 Azure Cosmos DB SQL API-fiókokban kétféleképpen olvashatók be az információk:
 
@@ -25,10 +25,10 @@ A legtöbb nagy mennyiségű olvasási terhelés Azure Cosmos DB a pontok és az
 
 Íme néhány példa arra, hogyan végezheti el a pontok olvasását az egyes SDK-kal:
 
-- [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.container.readitemasync?view=azure-dotnet)
-- [Java SDK](https://docs.microsoft.com/java/api/com.azure.cosmos.cosmoscontainer.readitem?view=azure-java-stable#com_azure_cosmos_CosmosContainer__T_readItem_java_lang_String_com_azure_cosmos_models_PartitionKey_com_azure_cosmos_models_CosmosItemRequestOptions_java_lang_Class_T__)
-- [Node.js SDK](https://docs.microsoft.com/javascript/api/@azure/cosmos/item?view=azure-node-latest#read-requestoptions-)
-- [Python SDK](https://docs.microsoft.com/python/api/azure-cosmos/azure.cosmos.containerproxy?view=azure-python#read-item-item--partition-key--populate-query-metrics-none--post-trigger-include-none----kwargs-)
+- [.NET SDK](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.container.readitemasync?view=azure-dotnet&preserve-view=true)
+- [Java SDK](https://docs.microsoft.com/java/api/com.azure.cosmos.cosmoscontainer.readitem?view=azure-java-stable&preserve-view=true#com_azure_cosmos_CosmosContainer__T_readItem_java_lang_String_com_azure_cosmos_models_PartitionKey_com_azure_cosmos_models_CosmosItemRequestOptions_java_lang_Class_T__)
+- [Node.js SDK](https://docs.microsoft.com/javascript/api/@azure/cosmos/item?view=azure-node-latest&preserve-view=true#read-requestoptions-)
+- [Python SDK](https://docs.microsoft.com/python/api/azure-cosmos/azure.cosmos.containerproxy?view=azure-python&preserve-view=true#read-item-item--partition-key--populate-query-metrics-none--post-trigger-include-none----kwargs-)
 
 A dokumentum hátralévő része azt mutatja be, hogyan kezdheti el az SQL-lekérdezések írását a Azure Cosmos DBban. Az SQL-lekérdezések az SDK-n vagy a Azure Portalon is futtathatók.
 
@@ -174,12 +174,12 @@ Az előző példák a Cosmos DB lekérdezési nyelvének számos aspektusát mut
 
 * Mivel a lekérdezési nyelv a séma nélküli adatmennyiséggel működik, a típusrendszer számára dinamikusan kell kötni. Ugyanez a kifejezés különböző típusokat eredményezhet különböző elemeken. A lekérdezés eredménye egy érvényes JSON-érték, de nem garantált, hogy rögzített séma legyen.  
 
-* A Azure Cosmos DB csak a szigorú JSON-elemeket támogatja. A Type rendszer és a kifejezések kizárólag JSON-típusokkal való kezelésre korlátozódnak. További információ: [JSON-specifikáció](https://www.json.org/).  
+* A Azure Cosmos DB csak a szigorú JSON-elemeket támogatja. A típusrendszer és a kifejezések kizárólag JSON-típusokkal működnek. További információ: [JSON-specifikáció](https://www.json.org/).  
 
 * A Cosmos-tároló a JSON-elemek séma nélküli gyűjteménye. A tároló elemein belüli és azok közötti kapcsolatok implicit módon vannak rögzítve az adattárolással, nem az elsődleges kulcs és a idegenkulcs-kapcsolatok esetében. Ez a funkció fontos a cikk későbbi részében tárgyalt elemekhez tartozó illesztések esetében.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-- [Bevezetés a Azure Cosmos DBba](introduction.md)
+- [Az Azure Cosmos DB bemutatása](introduction.md)
 - [.NET-minták Azure Cosmos DB](https://github.com/Azure/azure-cosmos-dotnet-v3)
 - [SELECT záradék](sql-query-select.md)

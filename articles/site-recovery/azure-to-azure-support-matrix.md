@@ -4,12 +4,12 @@ description: Összefoglalja az Azure-beli virtuális gépek vész-helyreállít�
 ms.topic: article
 ms.date: 07/14/2020
 ms.author: raynew
-ms.openlocfilehash: fb2c048580022f44af30178070a6c2b84ce54df1
-ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
+ms.openlocfilehash: 786947a03440cc837f9d104d43e8061c80a0844c
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91728743"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91803092"
 ---
 # <a name="support-matrix-for-azure-vm-disaster-recovery-between-azure-regions"></a>Azure-beli virtuális gépek Azure-régiók közti vészhelyreállításának támogatási mátrixa
 
@@ -20,7 +20,7 @@ Ez a cikk összefoglalja az Azure-beli virtuális gépeknek az egyik Azure-régi
 
 **Üzembe helyezés** |  **Támogatás**
 --- | ---
-**Azure Portal** | Támogatott.
+**Azure Portalra** | Támogatott.
 **PowerShell** | Támogatott. [További információ](azure-to-azure-powershell.md)
 **REST API** | Támogatott.
 **Parancssori felület** | Egyelőre nem támogatott
@@ -273,7 +273,7 @@ Prémium szintű P20, P30, P40 vagy P50 lemez | 16 KB vagy több |20 MB/s | 1684
 **Beállítás** | **Támogatás** | **Részletek**
 --- | --- | ---
 Hálózati adapter | Egy adott Azure-beli virtuálisgép-méret által támogatott maximális szám | A hálózati adapterek akkor jönnek létre, amikor a virtuális gép létrejön a feladatátvétel során.<br/><br/> A feladatátvételi virtuális gépen lévő hálózati adapterek száma a forrás virtuális gépen lévő hálózati adapterek számától függ, amikor a replikáció engedélyezve volt. Ha a replikáció engedélyezése után ad hozzá vagy távolít el egy hálózati adaptert, az nem befolyásolja a replikált virtuális gépen lévő hálózati adapterek számát a feladatátvételt követően. <br/><br/> A NIC-ket a feladatátvételt követően nem garantált, hogy megegyezzen az eredeti rendeléssel. <br/><br/> A hálózati adaptereket átnevezheti a cél régióban a szervezet elnevezési konvenciói alapján. A NIC-Átnevezés a PowerShell használatával támogatott.
-Internetes Load Balancer | Támogatott | Az előre konfigurált terheléselosztó hozzárendelése egy Azure Automation parancsfájl használatával helyreállítási tervben.
+Internetes Load Balancer | Nem támogatott | Az Azure site Recovery nem támogatja a nyilvános/Internet Load balancert.
 Belső terheléselosztó | Támogatott | Az előre konfigurált terheléselosztó hozzárendelése egy Azure Automation parancsfájl használatával helyreállítási tervben.
 Nyilvános IP-cím | Támogatott | Társítson egy meglévő nyilvános IP-címet a hálózati adapterhez. Vagy hozzon létre egy nyilvános IP-címet, és társítsa azt a hálózati adapterhez egy helyreállítási tervben Azure Automation parancsfájl használatával.
 NSG a hálózati adapteren | Támogatott | Társítsa a NSG a hálózati adapterhez egy helyreállítási tervben Azure Automation parancsfájl használatával.

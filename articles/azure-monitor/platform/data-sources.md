@@ -5,13 +5,13 @@ ms.subservice: ''
 ms.topic: conceptual
 author: bwren
 ms.author: bwren
-ms.date: 12/19/2019
-ms.openlocfilehash: d469566d7ae5feda37944dda5a0702dca6fca19b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.date: 10/06/2020
+ms.openlocfilehash: 8ef498a51f25a6b084a0d048661f3d18a5881644
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86515580"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91802063"
 ---
 # <a name="sources-of-monitoring-data-for-azure-monitor"></a>A Azure Monitor figyelési adatforrásai
 Azure Monitor egy [közös figyelési adatplatformon](data-platform.md) alapul, amely [naplókat](data-platform-logs.md) és [mérőszámokat](data-platform-metrics.md)tartalmaz. Az adatok ebbe a platformba való gyűjtése lehetővé teszi, hogy a több erőforrásból származó adatok együttesen legyenek elemezve az Azure Monitor-ban lévő eszközök közös eszközkészletének használatával. A figyelési adatokat más helyszínekre is elküldheti bizonyos forgatókönyvek támogatása céljából, és egyes erőforrások a naplókba vagy metrikába való összegyűjtésük előtt más helyszínekre is írhatnak.
@@ -65,7 +65,7 @@ Telemetria az Azure-előfizetés állapotával és működésével kapcsolatos.
 
 ![Azure-előfizetés](media/data-sources/azure-subscription.png)
 
-### <a name="azure-activity-log"></a>Azure-tevékenység naplója 
+### <a name="azure-activity-log"></a>Azure-tevékenységnapló 
 Az [Azure-tevékenység naplója](platform-logs-overview.md) tartalmazza a szolgáltatás állapotával kapcsolatos rekordokat, valamint az Azure-előfizetésében található erőforrásokon végrehajtott konfigurációs módosításokat tartalmazó rekordokat. A tevékenység naplója az összes Azure-erőforrás számára elérhető, és a _külső_ nézetet jelöli.
 
 | Cél | Leírás | Referencia |
@@ -86,7 +86,7 @@ Az [Azure-tevékenység naplója](platform-logs-overview.md) tartalmazza a szolg
 ## <a name="azure-resources"></a>Azure-erőforrások
 A mérőszámok és az erőforrás-naplók információt nyújtanak az Azure-erőforrások _belső_ műveleteiről. Ezek a legtöbb Azure-szolgáltatáshoz elérhetők, és a figyelési megoldások és elemzések további adatokat gyűjtenek az egyes szolgáltatásokhoz.
 
-![Azure-erőforrások gyűjteménye](media/data-sources/azure-resources.png)
+![Azure-erőforrások gyűjteménye](media/data-sources/data-source-azure-resources.svg)
 
 
 ### <a name="platform-metrics"></a>Platformmetrikák 
@@ -180,7 +180,7 @@ A [tárolók Azure monitor](../insights/container-insights-overview.md) testresz
 |:---|:---|:---|
 | Azure Monitor-naplók | Tárolja a figyelési adattáblákat, beleértve a leltárt, a naplókat és az eseményeket. A metrikák adatait a rendszer a naplókban is tárolja, hogy az elemzési funkcióit kihasználja a portálon. | [AKS-fürt teljesítményvizsgálata tárolókhoz készült Azure Monitor segítségével](../insights/container-insights-analyze.md) |
 | Azure Monitor metrikák | A metrikai adatok a metrikus adatbázisban tárolódnak a vizualizációk és a riasztások megjelenítéséhez. | [Tároló metrikáinak megtekintése a metrikák Explorerben](../insights/container-insights-analyze.md#view-container-metrics-in-metrics-explorer) |
-| Azure Kubernetes Service | Közvetlen hozzáférést biztosít az Azure Kubernetes szolgáltatás (ak) tároló naplóihoz (StdOut/stderror), az eseményekhez és a pod metrikához a portálon. | [A Kubernetes-naplók,-események és a pod-metrikák valós idejű megtekintése](../insights/container-insights-livedata-overview.md) |
+| Azure Kubernetes Service | Közvetlen hozzáférést biztosít az Azure Kubernetes szolgáltatás (ak) tároló naplóihoz (StdOut/stderror), az eseményekhez és a pod metrikához a portálon. | [A Kubernetes-naplók,-események és a pod-metrikák valós idejű megtekintése ](../insights/container-insights-livedata-overview.md) |
 
 ### <a name="azure-monitor-for-vms"></a>Azure Monitor virtuális gépekhez
 A [Azure monitor for VMS](../insights/vminsights-overview.md) testreszabott felhasználói élményt biztosít a virtuális gépek figyeléséhez. A Azure Monitor for VMs által gyűjtött adatok leírását a fenti [operációs rendszer (vendég)](#operating-system-guest) szakasza tartalmazza.
@@ -205,7 +205,7 @@ Az Azure egyéb szolgáltatásai a Azure Monitor adatplatformba írnak be adatf�
 | [Azure Sentinel](../../sentinel/index.yml) | Azure Monitor-naplók | Az Azure Sentinel a különböző adatforrásokból gyűjtött adatokat egy Log Analytics munkaterületen tárolja, amely lehetővé teszi, hogy a rendszer a Azure Monitor által gyűjtött egyéb naplózási adatokkal elemezze.  | [Adatforrások csatlakoztatása](../../sentinel/quickstart-onboard.md) |
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ a [Azure monitor által gyűjtött megfigyelési adatok típusairól](data-platform.md) , valamint az adatok megtekintésének és elemzésének módjáról.
 - Sorolja fel azokat a [különböző helyeket, amelyekben az Azure-erőforrások tárolják az adattárolási](data-locations.md) és elérési módját. 

@@ -5,21 +5,21 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: authentication
 ms.topic: conceptual
-ms.date: 09/02/2020
+ms.date: 10/09/2020
 ms.author: iainfou
 author: iainfoulds
 manager: daveba
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 79870bcfc3b2cacb856141841a1f018eb1c50641
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 1520f3ef77353e653dca10779228e70488bcbd75
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90532675"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91801749"
 ---
 # <a name="authentication-methods-in-azure-active-directory---microsoft-authenticator-app"></a>Hitelesítési módszerek a Azure Active Directory-Microsoft Authenticator alkalmazásban
 
-A Microsoft Authenticator alkalmazás további biztonsági szintet biztosít az Azure AD munkahelyi vagy iskolai fiókjához vagy a Microsoft-fiókhoz, és [Android](https://go.microsoft.com/fwlink/?linkid=866594), [iOS](https://go.microsoft.com/fwlink/?linkid=866594)és [Windows Phone-telefon](https://www.microsoft.com/p/microsoft-authenticator/9nblgggzmcj6)rendszerekhez érhető el. A Microsoft Authenticator alkalmazással a felhasználók jelszó nélküli módon hitelesíthetők a bejelentkezés során, illetve további ellenőrzési lehetőségként az önkiszolgáló jelszó-visszaállítás (SSPR) vagy az Azure Multi-Factor Authentication események során.
+A Microsoft Authenticator alkalmazás további biztonsági szintet biztosít az Azure AD munkahelyi vagy iskolai fiókjához vagy a Microsoft-fiókhoz, és elérhető az [Android](https://go.microsoft.com/fwlink/?linkid=866594) és az [iOS](https://go.microsoft.com/fwlink/?linkid=866594)rendszerhez. A Microsoft Authenticator alkalmazással a felhasználók jelszó nélküli módon hitelesíthetők a bejelentkezés során, illetve további ellenőrzési lehetőségként az önkiszolgáló jelszó-visszaállítás (SSPR) vagy az Azure Multi-Factor Authentication események során.
 
 A felhasználók értesítéseket kaphatnak a mobil alkalmazástól, hogy jóváhagyják vagy megtagadják, vagy a hitelesítő alkalmazással olyan eskü-ellenőrző kódot állítanak elő, amely bejelentkezési felületen adható meg. Ha az értesítési és ellenőrző kódot is engedélyezi, a hitelesítő alkalmazást regisztráló felhasználók bármelyik módszert használhatják az identitásuk ellenőrzéséhez.
 
@@ -58,7 +58,7 @@ Előfordulhat, hogy a felhasználók legfeljebb öt ESKÜvel rendelkező hardver
 >
 > Ha két módszerre van szükség, a felhasználók visszaállíthatják az értesítési vagy ellenőrző kódokat a más engedélyezett módszerek kiegészítéseként.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A jelszó nélküli bejelentkezés használatának megkezdéséhez tekintse meg [a jelszó nélküli bejelentkezés engedélyezése a Microsoft Authenticator alkalmazással](howto-authentication-passwordless-phone.md)című témakört.
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: overview
 ms.custom: contperfq1
 ms.date: 08/21/2020
-ms.openlocfilehash: f66eaaa3be0b300f6a0aa68bd43a2c336f4b4d23
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 657c29b79c98adf1041c49c0315edfd4e9363a36
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90526629"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91804061"
 ---
 # <a name="what-is-azure-hdinsight"></a>Mi az az Azure HDInsight?
 
@@ -35,13 +35,13 @@ Ez a szakasz felsorolja az Azure HDInsight képességeit.
 
 |Képesség  |Leírás  |
 |---------|---------|
-|Natív felhőalapú     |     Az Azure HDInsight segítségével optimalizált fürtöket hozhat létre az Azure-ban a következőkhöz: [Hadoop](./hadoop/apache-hadoop-linux-tutorial-get-started.md), [Spark](./spark/apache-spark-jupyter-spark-sql.md), [Interaktív lekérdezés (LLAP)](./interactive-query/apache-interactive-query-get-started.md), [Kafka](./kafka/apache-kafka-get-started.md), [Storm](./storm/apache-storm-tutorial-get-started-linux.md), [HBase](./hbase/apache-hbase-tutorial-get-started-linux.md) és  [ML-szolgáltatások](./r-server/r-server-overview.md). A HDInsight egy végpontok közötti SLA-t is biztosít az összes éles környezetben futó számítási feladathoz.  |
-|Alacsony költségű és méretezhető     | A HDInsight lehetővé teszi [scale](./hdinsight-administer-use-portal-linux.md#scale-clusters)a   munkaterhelések felfelé vagy lefelé méretezését.Csökkentheti a költségeket úgy, hogy [igény szerint létrehozza a fürtöket](./hdinsight-hadoop-create-linux-clusters-adf.md)   , és csak azért fizet, amit használ. A feladatokat adatfolyamatok létrehozásával is működtetheti. A leválasztott számítás és tárolás jobb teljesítményt és rugalmasságot biztosít. |
-|Biztonságos és megfelelő    | Az [Azure Virtual Network](./hdinsight-plan-virtual-network-deployment.md), a [titkosítás](./hdinsight-hadoop-create-linux-clusters-with-secure-transfer-storage.md) és az [Azure Active Directoryval való integráció](./domain-joined/hdinsight-security-overview.md) segítségével a HDInsight lehetővé teszi a vállalati adategységek védelmét. A HDInsight továbbá megfelel a legnépszerűbb iparági és kormányzati [megfelelőségi szabványoknak](https://azure.microsoft.com/overview/trusted-cloud).        |
-|Nyomon követés    | Az Azure HDInsight integrálható [Azure monitor naplókkal](./hdinsight-hadoop-oms-log-analytics-tutorial.md) , így egyetlen felületet biztosít, amellyel az összes fürtöt nyomon követheti.        |
-|Globális rendelkezésre állás | A HDInsight több [régióban](https://azure.microsoft.com/regions/services/)is elérhető,   mint bármely más Big Data elemzési ajánlat. Az Azure HDInsight elérhető az Azure Governmentben, Kínában, és Németországban is, így megfelelhet a vállalati igényeknek a főbb szuverén területeken. |  
-|Termelékenység     |  Az Azure HDInsight számos hatékony eszközt biztosít a Hadoop és a Spark használatához a választott fejlesztési környezetben. Ez a fejlesztési környezet lehet a [Visual Studio](./hadoop/apache-hadoop-visual-studio-tools-get-started.md), a [VSCode](./hdinsight-for-vscode.md), az [Eclipse](./spark/apache-spark-eclipse-tool-plugin.md) vagy az [IntelliJ](./spark/apache-spark-intellij-tool-plugin.md) a Scala, a Python, az R, a Java és a .NET támogatásához. Az adatelemzők is együttműködhetnek olyan népszerű notebookok használatával, mint a [Jupyter](./spark/apache-spark-jupyter-notebook-kernels.md) vagy a [Zeppelin](./spark/apache-spark-zeppelin-notebook.md).    |
-|Bővíthetőség     |  A HDInsight-fürtöket bővítheti telepített összetevőkkel (Hue, Presto stb.) [szkriptműveletek](./hdinsight-hadoop-customize-cluster-linux.md) használatával, [élcsomópontok felvételével](./hdinsight-apps-use-edge-node.md) vagy [más big data minősítéssel rendelkező alkalmazások integrálásával](./hdinsight-apps-install-applications.md). A HDInsight [egykattintásos](https://azure.microsoft.com/services/hdinsight/partner-ecosystem/) üzembe helyezéssel biztosít zökkenőmentes integrációt a legnépszerűbb big data-megoldásokkal.|
+|Natív felhőalapú     |     Az Azure HDInsight lehetővé teszi, hogy optimalizált fürtöket hozzon létre a Hadoop, a Spark, az [interaktív lekérdezés (LLAP)](./interactive-query/apache-interactive-query-get-started.md), a Kafka, a Storm, a HBase és a ml szolgáltatások számára az Azure-ban. A HDInsight egy végpontok közötti SLA-t is biztosít az összes éles környezetben futó számítási feladathoz.  |
+|Alacsony költségű és méretezhető     | A HDInsight lehetővé teszi a munkaterhelések felfelé vagy lefelé méretezését.Csökkentheti a költségeket úgy, hogy igény szerint létrehozza a fürtöket, és csak azért fizet, amit használ. A feladatokat adatfolyamatok létrehozásával is működtetheti. A leválasztott számítás és tárolás jobb teljesítményt és rugalmasságot biztosít. |
+|Biztonságos és megfelelő    | Az Azure Virtual Network, a titkosítás és az Azure Active Directoryval való integráció segítségével a HDInsight lehetővé teszi a vállalati adategységek védelmét. A HDInsight továbbá megfelel a legnépszerűbb iparági és kormányzati megfelelőségi szabványoknak.        |
+|Figyelés    | Az Azure HDInsight integrálható Azure Monitor naplókkal, így egyetlen felületet biztosít, amellyel az összes fürtöt nyomon követheti.        |
+|Globális rendelkezésre állás | A HDInsight több régióban is elérhető, mint bármely más big data elemzési ajánlat. Az Azure HDInsight elérhető az Azure Governmentben, Kínában, és Németországban is, így megfelelhet a vállalati igényeknek a főbb szuverén területeken. |  
+|Termelékenység     |  Az Azure HDInsight számos hatékony eszközt biztosít a Hadoop és a Spark használatához a választott fejlesztési környezetben. Ez a fejlesztési környezet lehet a Visual Studio, a VSCode, az Eclipse vagy az IntelliJ a Scala, a Python, az R, a Java és a .NET támogatásához. Az adatelemzők is együttműködhetnek olyan népszerű notebookok használatával, mint a Jupyter vagy a Zeppelin.    |
+|Bővíthetőség     |  A HDInsight-fürtöket bővítheti telepített összetevőkkel (Hue, Presto stb.) szkriptműveletek használatával, élcsomópontok felvételével vagy más big data minősítéssel rendelkező alkalmazások integrálásával. A HDInsight egykattintásos üzembe helyezéssel biztosít zökkenőmentes integrációt a legnépszerűbb big data-megoldásokkal.|
 
 ## <a name="scenarios-for-using-hdinsight"></a>A HDInsight használatára vonatkozó forgatókönyvek
 
@@ -91,11 +91,11 @@ A HDInsight adott fürttípusokat és fürttestreszabási képességeket is tart
 
 ## <a name="open-source-components-in-hdinsight"></a>Nyílt forráskódú összetevők a HDInsightban
 
-Az Azure HDInsight olyan nyílt forráskódú keretrendszerekkel rendelkező fürtöket hoz létre, mint például a Hadoop, a Spark, a kaptár, a LLAP, a Kafka, a Storm, a HBase és az R. Ezek a fürtök alapértelmezés szerint a fürtben található más, nyílt forráskódú összetevőket is tartalmaznak, például az [Apache Ambari](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md), a [Avro](https://avro.apache.org/docs/current/spec.html), a [Apache Hive](https://hive.apache.org), a [HCatalog](https://cwiki.apache.org/confluence/display/Hive/HCatalog/), az [Apache MAHOUT](https://mahout.apache.org/), a [Apache Hadoop MapReduce](https://hadoop.apache.org/docs/current/hadoop-mapreduce-client/hadoop-mapreduce-client-core/MapReduceTutorial.html), a [Apache Hadoop a fonalat](https://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html), az [Apache Phoenix](https://phoenix.apache.org/), az [Apache Pig](https://pig.apache.org/), az Apache [Sqoop](https://sqoop.apache.org/) [, az Apache TEZ](https://tez.apache.org/), [az Apache Oozie](https://oozie.apache.org/), az [Apache ZooKeeper](https://zookeeper.apache.org/).  
+Az Azure HDInsight olyan nyílt forráskódú keretrendszerekkel rendelkező fürtöket hoz létre, mint például a Hadoop, a Spark, a kaptár, a LLAP, a Kafka, a Storm, a HBase és az R. Ezek a fürtök alapértelmezés szerint a fürtben található más, nyílt forráskódú összetevőket is tartalmaznak, például az Apache Ambari5, a Avro5, az Apache Hive3, a HCatalog2, az Apache Mahout2, a Apache Hadoop MapReduce3, a Apache Hadoop YARN2, az Apache Phoenix3, az Apache Pig3, az Apache Sqoop3, az Apache Tez3, az Apache Oozie2 és az Apache ZooKeeper5.  
 
 ## <a name="programming-languages-in-hdinsight"></a>Programozási nyelvek a HDInsightban
 
-A HDInsight-fürtök, például többek közt a Spark, a HBase, a Kafka, és a Hadoop, számos programozási nyelvet támogatnak. Egyes programozási nyelvek nincsenek alapértelmezés szerint telepítve. Az alapértelmezés szerint nem telepített könyvtárak, modulok vagy csomagok esetén [használjon parancsfájl-műveletet az összetevő telepítéséhez](./hdinsight-hadoop-script-actions-linux.md).
+A HDInsight-fürtök, például többek közt a Spark, a HBase, a Kafka, és a Hadoop, számos programozási nyelvet támogatnak. Egyes programozási nyelvek nincsenek alapértelmezés szerint telepítve. Az alapértelmezés szerint nem telepített könyvtárak, modulok vagy csomagok esetén használjon parancsfájl-műveletet az összetevő telepítéséhez.
 
 |Programozási nyelv  |Tájékoztatás  |
 |---------|---------|
@@ -107,13 +107,10 @@ A HDInsight-fürtök, például többek közt a Spark, a HBase, a Kafka, és a H
 
 A HDInsight fejlesztői eszközei (köztük az IntelliJ, az Eclipse, a Visual Studio Code és a Visual Studio) használatával HDInsight-adatlekérdezéseket és feladatokat szerkeszthet és küldhet be Azure-ral zökkenőmentesen együttműködve.
 
-* [IntelliJ készült Azure-eszközkészlet](./spark/apache-spark-intellij-tool-plugin.md)
-
-* [Azure Toolkit for Eclipse](./spark/apache-spark-eclipse-tool-plugin.md)
-
-* [A VS Code-hoz készült Azure HDInsight-eszközök](./hdinsight-for-vscode.md)
-
-* [A Visual Studióhoz készült Azure Data Lake-eszközök](./hadoop/apache-hadoop-visual-studio-tools-get-started.md)
+* IntelliJ10 készült Azure-eszközkészlet
+* Eclipse6 készült Azure-eszközkészlet
+* Azure HDInsight-eszközök a VS Kód13
+* Azure-beli adatközpont-eszközök a Visual Studio9
 
 ## <a name="business-intelligence-on-hdinsight"></a>Üzleti intelligencia a HDInsighton
 
@@ -143,5 +140,4 @@ Az ismerős üzleti intelligencia (BI) eszközei a Power Query beépülő modull
 
 * [Apache Hadoop-fürt létrehozása a HDInsight-ben](./hadoop/apache-hadoop-linux-create-cluster-get-started-portal.md)
 * [Apache Spark-fürt létrehozása – Portal](./spark/apache-spark-jupyter-spark-sql-use-portal.md)
-* [Virtuális hálózat megtervezése az Azure HDInsight](hdinsight-plan-virtual-network-deployment.md)
 * [Vállalati biztonság az Azure HDInsight](./domain-joined/hdinsight-security-overview.md)

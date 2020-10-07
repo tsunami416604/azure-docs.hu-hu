@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 05/12/2020
 ms.author: anfeldma
 ms.custom: devx-track-java
-ms.openlocfilehash: 9daa09209818b9e01738630911a1bb926e3c257d
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.openlocfilehash: 913bc4373785d9341064e505ddce84fe43f727b1
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88079943"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91801596"
 ---
 # <a name="tutorial-build-a-java-web-application-using-azure-cosmos-db-and-the-sql-api"></a>Oktatóanyag: Java-Webalkalmazás létrehozása Azure Cosmos DB és az SQL API használatával
 
@@ -47,7 +47,7 @@ Az alkalmazásfejlesztési oktatóanyag elkezdéséhez az alábbiakkal kell rend
 
   [!INCLUDE [cosmos-db-emulator-docdb-api](../../includes/cosmos-db-emulator-docdb-api.md)]
 
-* [Java fejlesztői készlet (JDK) 7+](/java/azure/jdk/?view=azure-java-stable).
+* [Java fejlesztői készlet (JDK) 7+](/java/azure/jdk/?view=azure-java-stable&preserve-view=true).
 * [Eclipse IDE for Java EE Developers.](https://www.eclipse.org/downloads/packages/release/luna/sr1/eclipse-ide-java-ee-developers)
 * [Engedélyezett Java-futtatókörnyezettel (pl. Tomcat vagy Jetty) rendelkező Azure-webhely.](../app-service/quickstart-java.md)
 
@@ -67,7 +67,7 @@ JSP-alkalmazás létrehozása:
 
 1. Először egy Java-projekt létrehozásával kezdjük. Indítsa el az Eclipse-t, kattintson a **File** (Fájl), **New** (Új), majd a **Dynamic Web Projekt** (Dinamikus webes projekt) lehetőségre. Ha nem jelenik meg a **dinamikus webes projekt** elérhető projektként való felsorolása, tegye a következőket: kattintson a **fájl**menü **új**elemére, majd a **projekt**..., a **web**elemre, végül a **dinamikus webes projekt**elemre, és kattintson a **tovább**gombra.
    
-    :::image type="content" source="./media/sql-api-java-application/image10.png" alt-text="JSP Java-alkalmazások fejlesztése":::
+    :::image type="content" source="./media/sql-api-java-application/image10.png" alt-text="Saját teendőlista Java-alkalmazása":::
 
 1. Adja meg a projekt nevét a **Project name** (Projekt neve) mezőben, majd a **Target Runtime** (Tervezett futásidő) legördülő menüben válasszon ki egy értéket (pl. Apache Tomcat v7.0) (nem kötelező), és kattintson a **Finish** (Befejezés) gombra. A tervezett futásidő megadása lehetővé teszi, hogy helyileg, az Eclipse-ben is futtathassa projektjét.
 
@@ -75,11 +75,11 @@ JSP-alkalmazás létrehozása:
 
 1. A **New JSP File** (Új JSP-fájl) párbeszédablakban nevezze el a fájlt az alábbi módon: **index.jsp**. A szülőmappa neve maradjon **WebContent**, ahogy azt az alábbi ábra is mutatja, majd kattintson a **Next** (Tovább) lehetőségre.
    
-    :::image type="content" source="./media/sql-api-java-application/image11.png" alt-text="Új JSP-fájl létrehozása – Java-alkalmazásokra vonatkozó oktatóanyag":::
+    :::image type="content" source="./media/sql-api-java-application/image11.png" alt-text="Saját teendőlista Java-alkalmazása":::
 
 1. A **Select JSP Template** (JSP-sablon kiválasztása) párbeszédablakban, a jelen oktatóanyag céljából válassza a **New JSP File (html)** (Új JSP-fájl (html)) lehetőséget, majd kattintson a **Finish** (Befejezés) lehetőségre.
 
-1. Ha a *index.jsp* -fájl az Eclipse-ben nyílik meg, szöveg hozzáadásával jelenítheti meg a **"Helló világ!" alkalmazás!** a már meglévő `<body>` elemhez. A frissített `<body>` tartalomnak az alábbi kódhoz kell hasonlítania:
+1. Ha a *index.jsp* -fájl az Eclipse-ben nyílik meg, szöveg hozzáadásával jelenítheti meg a **„Helló világ!” alkalmazás!** a már meglévő `<body>` elemhez. A frissített `<body>` tartalomnak az alábbi kódhoz kell hasonlítania:
 
    ```html
    <body>
@@ -91,7 +91,7 @@ JSP-alkalmazás létrehozása:
 
 1. Ha megadta a tervezett futásidőt a 2. lépésben, most rákattinthat a **Project** (Projekt), majd a **Run** (Futtatás) elemre a JSP-alkalmazás helyileg történő futtatásához.
 
-   :::image type="content" source="./media/sql-api-java-application/image12.png" alt-text="Hello World – Java-alkalmazásokra vonatkozó oktatóanyag":::
+   :::image type="content" source="./media/sql-api-java-application/image12.png" alt-text="Saját teendőlista Java-alkalmazása":::
 
 ## <a name="install-the-sql-java-sdk"></a><a id="InstallSDK"></a>Az SQL Java SDK telepítése
 
@@ -195,7 +195,7 @@ Az Azure Websites megkönnyíti a Java-alkalmazások telepítését. Nincs más 
    
    * A Web project (Webes projekt) mezőben adja meg a következőt: azure-documentdb-java-sample.
    * A Destination (Cél) mezőben válassza ki, hova szeretné menteni a WAR-fájlt.
-   * Kattintson a **Befejezés** gombra.
+   * Kattintson a **Finish** (Befejezés) gombra.
 
 1. Most, hogy megvan a WAR-fájl, egyszerűen töltse fel az Azure Websites **webapps** könyvtárába. A fájl feltöltésével kapcsolatos további információkért lásd a [Java-alkalmazások az Azure App Service Web Appshoz való hozzáadását](../app-service/web-sites-java-add-app.md) ismertető cikket. Miután feltöltötte a WAR-fájlt a webapps könyvtárba, a futásidejű környezet felismeri azt, és automatikusan betöltődik.
 

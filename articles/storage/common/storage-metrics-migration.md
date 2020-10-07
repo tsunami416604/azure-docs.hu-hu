@@ -4,17 +4,17 @@ description: Megtudhatja, hogyan válthat a Storage Analytics metrikák (klasszi
 author: normesta
 ms.service: storage
 ms.topic: conceptual
-ms.date: 09/04/2020
+ms.date: 10/20/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring
-ms.openlocfilehash: 076f5573b599fbb83486087380174fc2da53986c
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.openlocfilehash: c6a5f69a5a32ed1279b367c93b5246eb77ef0208
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2020
-ms.locfileid: "91708577"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91802837"
 ---
 # <a name="transition-to-metrics-in-azure-monitor"></a>Váltás a mérőszámokra Azure Monitor
 
@@ -46,6 +46,8 @@ A Azure Monitor mérőszámokra való áttéréshez a következő módszert ajá
 Ez a szakasz néhány fontos különbséget ismertet a két metrikai platform között.
 
 A fő különbség a metrikák kezelése. A klasszikus metrikákat az Azure Storage felügyeli, míg a Azure Monitor metrikáit Azure Monitor kezeli. A klasszikus metrikák esetében az Azure Storage metrikus értékeket gyűjt, összesíti őket, majd a Storage-fiókban található táblázatokban tárolja őket. Azure Monitor metrikáinak használatával az Azure Storage metrikai adatokat küld a Azure Monitor háttérbe. Azure Monitor egységes figyelési élményt nyújt, amely a Azure Portalból és a betöltött adatokból származó adatokkal is rendelkezik. 
+
+A klasszikus metrikák küldése és tárolása egy Azure Storage-fiókban történik. Azure Monitor metrikák több hely számára is küldhetők. A Storage-fiók lehet ezen helyszínek egyike, de nem kötelező.  
 
 A metrikák támogatása érdekében a klasszikus metrikák csak az Azure Blob Storage-hoz biztosítanak **Kapacitási** metrikákat. A Azure Monitor metrikái a blob, a Table, a file, a üzenetsor és a Premium Storage kapacitási mérőszámait biztosítják. A klasszikus metrikák **tranzakciós** mérőszámokat biztosítanak a blob-, tábla-, Azure-fájl-és üzenetsor-tároláshoz. A Azure Monitor a prémium szintű Storage-t adja hozzá a listához.
 
@@ -113,7 +115,7 @@ Ha többet szeretne megtudni a Azure Monitor metrikákkal kapcsolatban, tekintse
 | `TotalIngress` | `Ingress` |
 | `TotalRequests` | `Transactions` |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Azure Monitor](../../monitoring-and-diagnostics/monitoring-overview.md)
 

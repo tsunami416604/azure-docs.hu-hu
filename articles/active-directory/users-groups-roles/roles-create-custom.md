@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: e172a023cc9156f435b4f40b2262ee44128c138e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 4210ad382301851a41d3fbd7ee3dc20a748fb544
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84732004"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91802191"
 ---
 # <a name="create-and-assign-a-custom-role-in-azure-active-directory"></a>Egyéni szerepkör létrehozása és társítása Azure Active Directory
 
@@ -58,14 +58,14 @@ Először [le kell töltenie az Azure ad Preview PowerShell-modult](https://www.
 Az Azure AD PowerShell-modul telepítéséhez használja az alábbi parancsokat:
 
 ``` PowerShell
-install-module azureadpreview
-import-module azureadpreview
+Install-Module AzureADPreview
+Import-Module AzureADPreview
 ```
 
 A következő parancs használatával ellenőrizheti, hogy a modul használatra kész-e:
 
 ``` PowerShell
-get-module azureadpreview
+Get-Module AzureADPreview
   ModuleType Version      Name                         ExportedCommands
   ---------- ---------    ----                         ----------------
   Binary     2.0.2.31     azuread                      {Add-AzureADAdministrati...}
@@ -125,7 +125,7 @@ $roleAssignment = New-AzureADMSRoleAssignment -ResourceScope $resourceScope -Rol
     Törzs
 
     ``` HTTP
-   {
+    {
        "description": "Can manage basic aspects of application registrations.",
        "displayName": "Application Support Administrator",
        "isEnabled": true,
@@ -138,11 +138,11 @@ $roleAssignment = New-AzureADMSRoleAssignment -ResourceScope $resourceScope -Rol
                ]
            }
        ]
-   }
+    }
     ```
 
-  > [!Note]
-  > A "templateId": "GUID" egy opcionális paraméter, amelyet a rendszer a követelménytől függően elküldött a törzsben. Ha a közös paraméterekkel több különböző egyéni szerepkört kell létrehoznia, a legjobb megoldás egy sablon létrehozása és egy templateId meghatározása. A PowerShell-parancsmag (New-GUID) használatával előre létrehozhat egy templateId. GUID. 
+    > [!Note]
+    > Az egy `"templateId": "GUID"` opcionális paraméter, amelyet a rendszer a követelménytől függően elküldhet a törzsben. Ha több különböző egyéni szerepkört kell létrehoznia közös paraméterekkel, érdemes létrehoznia egy sablont, és meg kell határoznia egy `templateId` értéket. `templateId`A PowerShell-parancsmag használatával előre létrehozhat egy értéket `(New-Guid).Guid` . 
 
 1. Hozza létre a szerepkör-hozzárendelést.
 
@@ -164,13 +164,12 @@ $roleAssignment = New-AzureADMSRoleAssignment -ResourceScope $resourceScope -Rol
    }
     ```
 
-
 ## <a name="assign-a-custom-role-scoped-to-a-resource"></a>Erőforráshoz tartozó egyéni szerepkör társítása
 
 A beépített szerepkörökhöz hasonlóan az egyéni szerepkörök alapértelmezés szerint az alapértelmezett szervezeti szintű hatókörben vannak hozzárendelve, hogy hozzáférési engedélyeket adjanak a szervezet összes alkalmazás-regisztrációja felett. A beépített szerepköröktől eltérően azonban egyéni szerepkörök is hozzárendelhetők egyetlen Azure AD-erőforrás hatóköréhez. Ez lehetővé teszi, hogy a felhasználónak engedélyt kapjon egy alkalmazás hitelesítő adatainak és alapvető tulajdonságainak frissítésére anélkül, hogy egy második egyéni szerepkört kellene létrehoznia.
 
 1. Jelentkezzen be az [Azure ad felügyeleti központba](https://aad.portal.azure.com) az alkalmazás fejlesztői engedélyeivel az Azure ad-szervezetben.
-1. Válassza a **Alkalmazásregisztrációk**lehetőséget.
+1. Válassza az **Alkalmazásregisztrációk** lehetőséget.
 1. Válassza ki azt az alkalmazás-regisztrációt, amelyhez hozzáférést kíván adni a kezeléshez. Előfordulhat, hogy az **összes alkalmazás** lehetőséget kell választania az Azure ad-szervezetben az alkalmazások regisztrálásának teljes listájának megtekintéséhez.
 
     ![Válassza ki az alkalmazás regisztrációját erőforrás-hatókörként a szerepkör-hozzárendeléshez](./media/roles-create-custom/appreg-all-apps.png)

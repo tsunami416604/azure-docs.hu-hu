@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.author: banders
 ms.custom: contperfq1
-ms.openlocfilehash: ae15fc59137e9bf6fb7bfd9fedfb410aa4e0931c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 2e0b9f10a321fce0b8ccc31bf914fe4f2995c49a
+ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91337051"
+ms.lasthandoff: 10/02/2020
+ms.locfileid: "91651904"
 ---
 # <a name="analyze-unexpected-charges"></a>Váratlan költségek elemzése
 
@@ -26,7 +26,7 @@ Az Azure-szolgáltatások megvásárlásának módja segít meghatározni az Ön
 
 A következő cikkek részletesen ismertetik, hogyan tekintheti át a számláját az ügyfél típusa alapján. Mindegyik cikkben útmutatást talál arról, hogyan tölthető le egy adott számlázási időszak használati és költségadatait tartalmazó CSV-fájl.
 
-- [Használatalapú számla áttekintési folyamata](review-individual-bill.md#compare-invoiced-charges-with-usage-file)
+- [Használatalapú számla áttekintési folyamata](review-individual-bill.md#charges)
 - [Nagyvállalati szerződéses számla áttekintési folyamata](review-enterprise-agreement-bill.md)
 - [Microsoft-ügyfélszerződés áttekintési folyamata](review-customer-agreement-bill.md#analyze-your-azure-usage-charges)
 - [Microsoft-partnerszerződés áttekintési folyamata](review-partner-agreement-bill.md#analyze-your-azure-usage-charges)

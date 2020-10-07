@@ -4,20 +4,16 @@ description: Hálózatok biztonságos csatlakoztatása az Azure Monitorhoz az Az
 author: nkiest
 ms.author: nikiest
 ms.topic: conceptual
-ms.date: 05/20/2020
+ms.date: 10/05/2020
 ms.subservice: ''
-ms.openlocfilehash: 2b94c782b5d7139fae7a01233bffd3b17cf43c7c
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: 0c7838b291ca5ba1747b08d7e8fcc6d17cc35f7d
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91570424"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91802225"
 ---
 # <a name="use-azure-private-link-to-securely-connect-networks-to-azure-monitor"></a>Hálózatok biztonságos csatlakoztatása az Azure Monitorhoz az Azure Private Linkkel
-
-> [!IMPORTANT]
-> Jelenleg a funkció használatához hozzáférést kell **kérnie** . A [feliratkozási űrlap](https://aka.ms/AzMonPrivateLinkSignup)használatával kérheti a hozzáférést.
-
 
 Az [Azure Private link](../../private-link/private-link-overview.md) lehetővé teszi, hogy a privát végpontok használatával biztonságosan összekapcsolja az Azure Pásti-szolgáltatásokat a virtuális hálózattal. Számos szolgáltatás esetében csak egy végpontot állít be erőforrásként. A Azure Monitor azonban a különböző összekapcsolt szolgáltatások egyik konstellációja, amely együttműködik a számítási feladatok monitorozásával. Ennek eredményeképpen létrehozott egy Azure Monitor Private link (AMPLS) nevű erőforrást, amely lehetővé teszi a megfigyelési hálózat határainak meghatározását és a virtuális hálózathoz való csatlakozást. Ez a cikk azt ismerteti, hogy mikor kell használni és hogyan kell beállítani egy Azure Monitor privát hivatkozás hatókörét.
 
@@ -146,7 +142,7 @@ Most, hogy rendelkezik a AMPLS kapcsolódó erőforrásokkal, hozzon létre egy 
  
    d.    Az érvényesítési fázis engedélyezése. 
  
-   e.    Kattintson a **Létrehozás** lehetőségre. 
+   e.    Kattintson a **Létrehozás** elemre. 
 
     ![Képernyőkép a Select Private Endpoint2 létrehozásáról](./media/private-link-security/ampls-select-private-endpoint-create-5.png)
 
@@ -252,6 +248,6 @@ Csomagolja be a JavaScript-kódot a parancsfájlba, hogy a böngésző ne kísé
 
 Ha privát kapcsolaton keresztül csatlakozik a Azure Monitor-erőforrásokhoz, ezen erőforrás felé irányuló forgalomnak a hálózaton konfigurált privát végponton kell haladnia. A magánhálózati végpont engedélyezéséhez frissítse a DNS-beállításokat a [Kapcsolódás privát végponthoz](#connect-to-a-private-endpoint)című részben leírtak szerint. Egyes böngészők a beállított beállítások helyett a saját DNS-beállításait használják. Előfordulhat, hogy a böngésző megpróbál csatlakozni Azure Monitor nyilvános végpontokhoz, és teljesen megkerüli a privát hivatkozást. Győződjön meg arról, hogy a böngészők beállításai nem felülbírálják vagy gyorsítótárazzák a régi DNS-beállításokat. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Tudnivalók a [privát tárterületről](private-storage.md)
