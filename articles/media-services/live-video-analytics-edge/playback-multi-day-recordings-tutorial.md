@@ -3,12 +3,12 @@ title: Több napos felvétel lejátszása – Azure
 description: Ebből az oktatóanyagból megtudhatja, hogyan használhatja az Azure Media Service API-kat többnapos folyamatos videofelvételek lejátszásához.
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: 7641114dbae5a118937e7f4973092d5f0eadbccc
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: 1ec9260be7241057478b06446ac2aa53c14bcb47
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91776374"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91803432"
 ---
 # <a name="tutorial-playback-of-multi-day-recordings"></a>Oktatóanyag: több napos felvétel lejátszása  
 
@@ -96,6 +96,6 @@ Ha a listában szereplő bármelyik bejegyzésre kattint, az alkalmazás létreh
 
 Azt is megteheti, hogy meghatározott kezdési és befejezési időpontokat használ az oldal alján található vezérlőkkel. A availableMedia-hívás eredményeit a jobb oldalon látható módon, a kezdő és a befejező időpontok megengedett értékeire mutató útmutatóként használhatja. Az időpontok és a befejezési szűrők részletes megkötéseit dokumentáljuk a útmutatóban [: a felvételek lejátszása](playback-recordings-how-to.md). Az időértékek kiválasztása után ha a Submit (küldés) gombra kattint, az alkalmazás betölti a lejátszót egy streaming URL-címmel, például: https://{hostname}/{locatorId}/Content. ISM/manifest (Format = mpd-Time-CSF, kezdő időpont = éééé-hh-NNTÓÓ: PP: MM, Befejezés = éééé-hh-NNTÓÓ: PP: mm)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Esemény-alapú videofelvétel a felhőbe és a felhőből való lejátszásra](event-based-video-recording-tutorial.md)

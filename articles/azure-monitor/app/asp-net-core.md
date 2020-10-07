@@ -4,12 +4,12 @@ description: ASP.NET Core webalkalmazások figyelése a rendelkezésre állás, 
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 04/30/2020
-ms.openlocfilehash: ac742aae88b3e3c62ffca857dcb690fa71434482
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.openlocfilehash: eae6117f82f3bb138edb6cea23a2c052e19fb0cf
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "90006759"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91803591"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>Application Insights ASP.NET Core alkalmazásokhoz
 
@@ -25,7 +25,7 @@ A [ASP.NET Core Application INSIGHTS SDK](https://nuget.org/packages/Microsoft.A
 * **Üzembe helyezési módszer**: keretrendszer függő vagy önálló.
 * **Webkiszolgáló**: IIS (Internet Information Server) vagy vércse.
 * **Üzemeltetési platform**: az Azure app Service, az Azure VM, a Docker, az Azure Kubernetes Service (ak) Web Apps funkciója stb.
-* **.Net Core futtatókörnyezet verziója**: 1. xx, 2. xx vagy 3. xx
+* **.Net Core-verzió**: az összes hivatalosan [támogatott](https://dotnet.microsoft.com/download/dotnet-core) .net Core-verzió.
 * **Ide**: Visual Studio, vs Code vagy Command line.
 
 > [!NOTE]
@@ -122,7 +122,7 @@ Visual Studio for Mac használja a [manuális útmutatót](#enable-application-i
 ### <a name="user-secrets-and-other-configuration-providers"></a>Felhasználói titkok és egyéb konfigurációs szolgáltatók
 
 Ha a kialakítási kulcsot ASP.NET Core felhasználói titokban szeretné tárolni, vagy egy másik konfigurációs szolgáltatótól kéri le, akkor a túlterhelés paraméterrel is felhasználható `Microsoft.Extensions.Configuration.IConfiguration` . Például: `services.AddApplicationInsightsTelemetry(Configuration);`.
-A Microsoft. ApplicationInsights. AspNetCore [2.15.0-beta3](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore)verziótól kezdődően a hívás `services.AddApplicationInsightsTelemetry()` automatikusan beolvassa a kialakítási kulcsot `Microsoft.Extensions.Configuration.IConfiguration` az alkalmazásból. Nem kell explicit módon megadnia a következőt: `IConfiguration` .
+A Microsoft. ApplicationInsights. AspNetCore [2.15.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore)-verziótól kezdődően a hívás `services.AddApplicationInsightsTelemetry()` automatikusan beolvassa a kialakítási kulcsot `Microsoft.Extensions.Configuration.IConfiguration` az alkalmazásból. Nem kell explicit módon megadnia a következőt: `IConfiguration` .
 
 ## <a name="run-your-application"></a>Az alkalmazás futtatása
 
@@ -151,7 +151,7 @@ A [teljesítményszámlálók](./web-monitor-performance.md) támogatása ASP.ne
 
 ### <a name="eventcounter"></a>EventCounter
 
-`EventCounterCollectionModule` Alapértelmezés szerint engedélyezve van, és a rendszer a .NET Core 3. X alkalmazások alapértelmezett számlálóit gyűjti. A [EventCounter](eventcounters.md) -oktatóanyag a gyűjtött teljesítményszámlálók alapértelmezett készletét sorolja fel. Emellett a lista testreszabására vonatkozó utasításokat is tartalmaz.
+`EventCounterCollectionModule` Alapértelmezés szerint engedélyezve van. A [EventCounter](eventcounters.md) -oktatóanyag útmutatást tartalmaz a gyűjteni kívánt számlálók listájának konfigurálásához.
 
 ## <a name="enable-client-side-telemetry-for-web-applications"></a>Ügyféloldali telemetria engedélyezése webalkalmazásokhoz
 
@@ -226,9 +226,9 @@ A beállítások teljes listája `ApplicationInsightsServiceOptions`
 
 A legnaprakészebb listához tekintse [meg `ApplicationInsightsServiceOptions` a konfigurálható beállításokat](https://github.com/microsoft/ApplicationInsights-dotnet/blob/develop/NETCORE/src/Shared/Extensions/ApplicationInsightsServiceOptions.cs) .
 
-### <a name="configuration-recommendation-for-microsoftapplicationinsightsaspnetcore-sdk-2150-beta3--above"></a>Konfigurációs javaslat a Microsoft. ApplicationInsights. AspNetCore SDK 2.15.0 – beta3 & felett
+### <a name="configuration-recommendation-for-microsoftapplicationinsightsaspnetcore-sdk-2150--above"></a>A Microsoft. ApplicationInsights. AspNetCore SDK-beli 2.15.0-& konfigurációs javaslata
 
-A Microsoft. ApplicationInsights. AspNetCore SDK verziótól kezdődően a [2.15.0-beta3](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/2.15.0-beta3) az ajánlott beállítás szerint konfigurálja az összes rendelkezésre álló beállítást `ApplicationInsightsServiceOptions` , beleértve az alkalmazások példányát használó instrumentationkey is `IConfiguration` . A beállításoknak a "ApplicationInsights" szakasz alá kell esnie, ahogy az alábbi példában is látható. A következő szakasz a rendszerállapot-kulcs konfigurálásának appsettings.js, valamint az adaptív mintavételi és teljesítményszámláló-gyűjtemény letiltására is lehetőséget nyújt.
+A Microsoft. ApplicationInsights. AspNetCore [SDK verziójától](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/2.15.0) kezdődően a javaslat az összes rendelkezésre álló beállítás konfigurálása a `ApplicationInsightsServiceOptions` alkalmazásban, beleértve az alkalmazások példányát használó instrumentationkey is `IConfiguration` . A beállításoknak a "ApplicationInsights" szakasz alá kell esnie, ahogy az alábbi példában is látható. A következő szakasz a rendszerállapot-kulcs konfigurálásának appsettings.js, valamint az adaptív mintavételi és teljesítményszámláló-gyűjtemény letiltására is lehetőséget nyújt.
 
 ```json
 {
@@ -244,7 +244,7 @@ Ha a `services.AddApplicationInsightsTelemetry(aiOptions)` használatban van, a 
 
 ### <a name="sampling"></a>Mintavételezés
 
-A ASP.NET Core Application Insights SDK a rögzített sebességű és az adaptív mintavételezést is támogatja. Az adaptív mintavételezés alapértelmezés szerint engedélyezve van. 
+A ASP.NET Core Application Insights SDK a rögzített sebességű és az adaptív mintavételezést is támogatja. Az adaptív mintavételezés alapértelmezés szerint engedélyezve van.
 
 További információ: [adaptív mintavételezés konfigurálása ASP.net Core alkalmazásokhoz](./sampling.md#configuring-adaptive-sampling-for-aspnet-core-applications).
 
@@ -335,7 +335,6 @@ public void ConfigureServices(IServiceCollection services)
     services.ConfigureTelemetryModule<EventCounterCollectionModule>(
             (module, o) =>
             {
-                module.Counters.Clear();
                 module.Counters.Add(new EventCounterCollectionRequest("System.Runtime", "gen-0-size"));
             }
         );
@@ -447,10 +446,6 @@ Ha az SDK-t a jelen cikkben látható módon telepíti a Build időpontban, nem 
 
 Nem. A [Állapotmonitor](./monitor-performance-live-website-now.md) és a [Állapotmonitor v2](./status-monitor-v2-overview.md) jelenleg csak a 4. x ASP.net támogatja.
 
-### <a name="is-application-insights-automatically-enabled-for-my-aspnet-core-20-application"></a>Application Insights automatikusan engedélyezve van a saját ASP.NET Core 2,0 alkalmazáshoz?
-
-Az `Microsoft.AspNetCore.All` 2,0-es metacsomag tartalmazza a Application INSIGHTS SDK-t (2.1.0-verzió). Ha az alkalmazást a Visual Studio Debugger alatt futtatja, a Visual Studio lehetővé teszi, hogy a Application Insights és a telemetria helyileg jelenítse meg az IDE-ben. A telemetria nem lett elküldve a Application Insights szolgáltatásnak, kivéve, ha meg van adva a kialakítási kulcs. Javasoljuk, hogy a cikk utasításait követve engedélyezze a Application Insights, még az 2,0-alkalmazások esetében is.
-
 ### <a name="if-i-run-my-application-in-linux-are-all-features-supported"></a>Ha Linuxon futtatom az alkalmazást, az összes funkció támogatott?
 
 Igen. Az SDK funkcióinak támogatása minden platformon azonos, a következő kivételekkel:
@@ -474,6 +469,8 @@ using Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel;
     }
 ```
 
+Ez a korlátozás nem alkalmazható a [2.15.0](https://www.nuget.org/packages/Microsoft.ApplicationInsights.AspNetCore/2.15.0) és az újabb verziókra.
+
 ### <a name="is-this-sdk-supported-for-the-new-net-core-3x-worker-service-template-applications"></a>Támogatott ez az SDK az új .NET Core 3. X feldolgozó szolgáltatás-sablon alkalmazásaihoz?
 
 Ehhez az SDK `HttpContext` -hoz szükséges, ezért nem működik semmilyen nem http-alkalmazásban, beleértve a .net Core 3. X Worker Service-alkalmazásokat. Tekintse meg [ezt](worker-service.md) a dokumentumot, amely lehetővé teszi az Application bepillantást az alkalmazásokban az újonnan kiadott Microsoft. ApplicationInsights. WorkerService SDK használatával.
@@ -484,7 +481,7 @@ Ehhez az SDK `HttpContext` -hoz szükséges, ezért nem működik semmilyen nem 
 
 A legújabb frissítések és hibajavítások [olvassa el a kibocsátási megjegyzéseket](./release-notes.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Fedezze fel a felhasználói folyamatokat](./usage-flows.md) , hogy megtudja, hogyan navigálnak a felhasználók az alkalmazáson keresztül.
 * [Egy pillanatkép-gyűjtemény konfigurálásával](./snapshot-debugger.md) megtekintheti a forráskód és a változók állapotát a kivétel pillanatában.

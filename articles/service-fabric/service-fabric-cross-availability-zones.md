@@ -5,12 +5,12 @@ author: peterpogorski
 ms.topic: conceptual
 ms.date: 04/25/2019
 ms.author: pepogors
-ms.openlocfilehash: d763511032ebff9116702b1f649751a4b7b52afd
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 56f7224d93293a0a26d09692996d2c4a4ace344b
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86518996"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91803738"
 ---
 # <a name="deploy-an-azure-service-fabric-cluster-across-availability-zones"></a>Azure Service Fabric-fürt üzembe helyezése Availability Zones
 Az Azure-beli Availability Zones magas rendelkezésre állású ajánlat, amely védelmet nyújt alkalmazásai és adatai számára az adatközpont hibáiból. A rendelkezésre állási zónák egy Azure-régión belüli, független energiaellátással, hűtéssel és hálózatkezeléssel ellátott egyedi fizikai helyek.
@@ -150,7 +150,7 @@ Ha egy zónát szeretne engedélyezni egy virtuálisgép-méretezési csoporton,
 
 * Az első érték a **Zones** tulajdonság, amely megadja, hogy melyik rendelkezésre állási zónát telepíti a rendszer a virtuálisgép-méretezési csoport számára.
 * A második érték a "singlePlacementGroup" tulajdonság, amelyet igaz értékre kell beállítani.
-* A harmadik érték a Service Fabric virtuálisgép-méretezési csoport bővítményének "faultDomainOverride" tulajdonsága. Ennek a tulajdonságnak az értékének tartalmaznia kell azt a régiót és zónát, amelyben a virtuálisgép-méretezési csoport el lesz helyezve. Példa: "faultDomainOverride": "eastus/az1" a virtuálisgép-méretezési csoport összes erőforrását ugyanabba a régióba kell helyezni, mert az Azure Service Fabric-fürtök nem rendelkeznek több régiós támogatással.
+* A harmadik érték a Service Fabric virtuálisgép-méretezési csoport bővítményének "faultDomainOverride" tulajdonsága. A tulajdonság értékének csak azt a zónát kell tartalmaznia, amelyben ez a virtuálisgép-méretezési csoport el lesz helyezve. Példa: "faultDomainOverride": "az1" a virtuálisgép-méretezési csoport összes erőforrását ugyanabba a régióba kell helyezni, mert az Azure Service Fabric-fürtök nem rendelkeznek több régiós támogatással.
 
 ```json
 {
@@ -183,7 +183,7 @@ Ha egy zónát szeretne engedélyezni egy virtuálisgép-méretezési csoporton,
             "systemLogUploadSettings": {
                 "Enabled": true
             },
-            "faultDomainOverride": "eastus/az1"
+            "faultDomainOverride": "az1"
         },
         "typeHandlerVersion": "1.0"
     }

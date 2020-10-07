@@ -4,16 +4,16 @@ description: A rendszer és az egyéni .NET/.NET Core EventCounters figyelése A
 ms.topic: conceptual
 ms.date: 09/20/2019
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f8ae36545eecbbad2a6695ca979fb7da8380e8cc
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: a9af36f3c81ee52b41a8eed875c1a286b95bf838
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89657014"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91803643"
 ---
 # <a name="eventcounters-introduction"></a>EventCounters bemutatása
 
-`EventCounter` a .NET/.NET Core mechanizmusa számlálók vagy statisztikák közzétételére és felhasználására szolgál. [Ez](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.Tracing/documentation/EventCounterTutorial.md) a dokumentum áttekintést nyújt és `EventCounters` példákkal szolgál az alkalmazások közzétételére és felhasználására. A EventCounters minden operációsrendszer-platformon támogatott – Windows, Linux és macOS. Azt is megteheti, hogy a [PerformanceCounters](/dotnet/api/system.diagnostics.performancecounter) platformfüggetlen, csak Windows rendszerekben támogatott.
+[`EventCounter`](/dotnet/core/diagnostics/event-counters) a .NET/.NET Core mechanizmusa számlálók vagy statisztikák közzétételére és felhasználására szolgál. A EventCounters minden operációsrendszer-platformon támogatott – Windows, Linux és macOS. Azt is megteheti, hogy a [PerformanceCounters](/dotnet/api/system.diagnostics.performancecounter) platformfüggetlen, csak Windows rendszerekben támogatott.
 
 Míg a felhasználók bármilyen egyéni személyt közzétehetnek az `EventCounters` igényeik kielégítése érdekében, a .net Core 3,0 és a magasabb szintű futtatókörnyezet alapértelmezés szerint közzéteszi a számlálók készletét. Ez a dokumentum végigvezeti az Azure Application Insightsban való összegyűjtéséhez és megtekintéséhez szükséges lépéseken `EventCounters` (rendszer által definiált vagy felhasználó által definiált).
 
@@ -23,32 +23,9 @@ Application Insights támogatja a begyűjtést a `EventCounters` alkalmazással 
 
 ## <a name="default-counters-collected"></a>Összegyűjtött alapértelmezett számlálók
 
-A .NET Core 3,0 vagy újabb verzióban futó alkalmazások esetében az SDK automatikusan összegyűjti a következő számlálókat. A számlálók neve "Category |" formában jelenik meg. Számláló ".
+A [ASPNETCORE SDK](asp-net-core.md) vagy a [WorkerService SDK](worker-service.md)2.15.0 verziójától kezdve a rendszer alapértelmezés szerint nem gyűjt számlálókat. A modul maga is engedélyezve van, így a felhasználók egyszerűen hozzáadhatják a kívánt számlálókat a gyűjtéshez.
 
-|Kategória | Számláló|
-|---------------|-------|
-|`System.Runtime` | `cpu-usage` |
-|`System.Runtime` | `working-set` |
-|`System.Runtime` | `gc-heap-size` |
-|`System.Runtime` | `gen-0-gc-count` |
-|`System.Runtime` | `gen-1-gc-count` |
-|`System.Runtime` | `gen-2-gc-count` |
-|`System.Runtime` | `time-in-gc` |
-|`System.Runtime` | `gen-0-size` |
-|`System.Runtime` | `gen-1-size` |
-|`System.Runtime` | `gen-2-size` |
-|`System.Runtime` | `loh-size` |
-|`System.Runtime` | `alloc-rate` |
-|`System.Runtime` | `assembly-count` |
-|`System.Runtime` | `exception-count` |
-|`System.Runtime` | `threadpool-thread-count` |
-|`System.Runtime` | `monitor-lock-contention-count` |
-|`System.Runtime` | `threadpool-queue-length` |
-|`System.Runtime` | `threadpool-completed-items-count` |
-|`System.Runtime` | `active-timer-count` |
-
-> [!NOTE]
-> A [ASPNETCORE SDK](asp-net-core.md) vagy a [WorkerService SDK](worker-service.md)2.15.0-beta3 verziójától kezdve a rendszer alapértelmezés szerint nem gyűjt számlálókat. A modul maga is engedélyezve van, így a felhasználók egyszerűen hozzáadhatják a kívánt számlálókat a gyűjtéshez.
+A .NET-futtatókörnyezet által közzétett ismert számlálók listájának lekéréséhez tekintse meg a [rendelkezésre álló számlálók](/dotnet/core/diagnostics/event-counters#available-counters) dokumentumát.
 
 ## <a name="customizing-counters-to-be-collected"></a>A gyűjteni kívánt számlálók testreszabása
 
@@ -67,7 +44,7 @@ Az alábbi példa bemutatja, hogyan adhat hozzá vagy távolíthat el számlál�
         services.ConfigureTelemetryModule<EventCounterCollectionModule>(
             (module, o) =>
             {
-                // This removes all default counters.
+                // This removes all default counters, if any.
                 module.Counters.Clear();
 
                 // This adds a user defined counter "MyCounter" from EventSource named "MyEventSource"
@@ -156,7 +133,7 @@ Az élő metrikák nem jelenítik meg a EventCounters a mai naptól. A telemetri
 
  ASP.NET Core [Application Insights bővítmény](./azure-web-apps.md) még nem támogatja ezt a funkciót. Ez a dokumentum akkor frissül, ha ez a funkció támogatott.
 
-## <a name="next-steps"></a><a name="next"></a>Következő lépések
+## <a name="next-steps"></a><a name="next"></a>További lépések
 
 * [Függőségek nyomon követése](./asp-net-dependencies.md)
 

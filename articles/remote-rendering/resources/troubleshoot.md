@@ -5,12 +5,12 @@ author: florianborn71
 ms.author: flborn
 ms.date: 02/25/2020
 ms.topic: troubleshooting
-ms.openlocfilehash: f82ea8361cef76b2030e5b257b3d3351968d8050
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: e8de33e7417ab6421792d341474c320a5f63423b
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91322189"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91803823"
 ---
 # <a name="troubleshoot"></a>Hibaelhárítás
 
@@ -88,7 +88,7 @@ A videó minősége a hálózati minőség vagy a hiányzó H265-videó kodekkel
 
 ## <a name="video-recorded-with-mrc-does-not-reflect-the-quality-of-the-live-experience"></a>A MRC-mel rögzített videó nem tükrözi az élő élmény minőségét
 
-A Hololens [vegyes valóság-rögzítéssel (MRC)](https://docs.microsoft.com/windows/mixed-reality/mixed-reality-capture-for-developers)rögzíthet videót. Az eredményül kapott videó azonban rosszabb minőségben működik, mint az élő élmény, két okból:
+A HoloLens [vegyes valóság-rögzítéssel (MRC)](https://docs.microsoft.com/windows/mixed-reality/mixed-reality-capture-for-developers)rögzíthet videót. Az eredményül kapott videó azonban rosszabb minőségben működik, mint az élő élmény, két okból:
 * A videó frameráta 30 Hz-re van korlátozva, szemben a 60 Hz-es értékkel.
 * A videó-lemezképek nem haladnak át a [késői szakasz újravetítésének](../overview/features/late-stage-reprojection.md) feldolgozásának lépésén, így a videó choppier válik.
 
@@ -185,7 +185,7 @@ A `AudioPluginMsHRTF.dll` for Arm64 hozzá lett adva a *Windows vegyes valóság
 
 ### <a name="library-not-found-error-for-uwp-application-or-dll"></a>"A könyvtár nem található" hiba a UWP-alkalmazás vagy-DLL esetében
 
-A C++ Nuget csomagon belül van egy fájl, amely `microsoft.azure.remoterendering.Cpp.targets` meghatározza, hogy a bináris íz milyen típusú legyen. Az azonosításához a `UWP` fájlban található feltételeket kell megkeresni `ApplicationType == 'Windows Store'` . Ezért biztosítani kell, hogy ez a típus be legyen állítva a projektben. Ennek a helyzetnek kell lennie, amikor UWP-alkalmazást vagy DLL-t hoz létre a Visual Studio Project varázslójával.
+A C++ NuGet csomagon belül van egy fájl, amely `microsoft.azure.remoterendering.Cpp.targets` meghatározza, hogy a bináris íz milyen típusú legyen. Az azonosításához a `UWP` fájlban található feltételeket kell megkeresni `ApplicationType == 'Windows Store'` . Ezért biztosítani kell, hogy ez a típus be legyen állítva a projektben. Ennek a helyzetnek kell lennie, amikor UWP-alkalmazást vagy DLL-t hoz létre a Visual Studio Project varázslójával.
 
 ## <a name="unstable-holograms"></a>Instabil Hologramok
 
@@ -193,7 +193,7 @@ Ha úgy tűnik, hogy a megjelenített objektumok a fej mozgásával együtt mozo
 
 Az instabil Hologramok (ingadozó, hajlítási, vibrálás vagy jumping Hologramok) egy másik oka lehet gyenge hálózati kapcsolat, különösen a nem megfelelő hálózati sávszélesség vagy túl nagy késés. A hálózati kapcsolatok minőségének jó mutatója a [teljesítmény statisztika](../overview/features/performance-queries.md) értéke `ARRServiceStats.VideoFramesReused` . Az újrafelhasznált keretek olyan helyzeteket jeleznek, amikor egy régi videó-keretet újra fel kell használni az ügyféloldali oldalon, mert nem volt elérhető új videó keret – például a csomagok elvesztése miatt vagy a hálózati késésben lévő változatok miatt. Ha a `ARRServiceStats.VideoFramesReused` értéke gyakran nagyobb nullánál, ez hálózati problémát jelez.
 
-Egy másik érték a következő: `ARRServiceStats.LatencyPoseToReceiveAvg` . Következetesen 100 MS alá kell esnie. Ha magasabb értékeket lát, ez azt jelzi, hogy egy túl távol lévő adatközponthoz csatlakozik.
+Egy másik érték a következő: `ARRServiceStats.LatencyPoseToReceiveAvg` . Következetesen 100 MS alá kell esnie. A nagyobb értékek megjelenítésével jelezheti, hogy egy túl távol lévő adatközponthoz csatlakozik.
 
 A lehetséges enyhítések listáját a [hálózati kapcsolatra vonatkozó irányelvek](../reference/network-requirements.md#guidelines-for-network-connectivity)című részben tekintheti meg.
 
@@ -245,9 +245,11 @@ Az egymáshoz tartozó felületek számos különböző oka lehet:
 
 * A felületek célirányosan megtalálhatók, például matricák vagy szövegek a falakon.
 
+## <a name="graphics-artifacts-using-multi-pass-stereo-rendering-in-native-c-apps"></a>Multi-pass sztereó renderelést használó grafikus összetevők natív C++-alkalmazásokban
 
+Bizonyos esetekben a [**BlitRemoteFrame**](../concepts/graphics-bindings.md#render-remote-image) meghívása után olyan egyéni natív C++-alkalmazások, amelyek többcsatornás sztereó renderelési módot használnak a helyi tartalomhoz (a bal és a jobb oldali megjelenítésre külön-külön haladnak), az illesztőprogram hibájának meghívása után. A hiba a nem determinisztikus raszterizálási-hibákat eredményezi, ami a helyi tartalom egyes háromszögeit vagy háromszögeit véletlenszerűen eltűnnek. A teljesítménnyel kapcsolatos okokból ajánlott a helyi tartalom megjelenítése egy modern, Egylépéses sztereó renderelési technikával, például **SV_RenderTargetArrayIndex**használatával.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Rendszerkövetelmények](../overview/system-requirements.md)
 * [A hálózatra vonatkozó követelmények](../reference/network-requirements.md)

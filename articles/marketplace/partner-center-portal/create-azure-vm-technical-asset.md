@@ -1,5 +1,5 @@
 ---
-title: Azure-beli virtuális gépek technikai eszközeinek létrehozása
+title: Technikai eszközök létrehozása Azure Marketplace-beli virtuálisgép-ajánlathoz
 description: Ismerje meg, hogyan hozhat létre és konfigurálhat technikai eszközöket az Azure Marketplace-hez készült virtuálisgép-(VM-) ajánlathoz.
 ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
@@ -7,22 +7,22 @@ ms.topic: how-to
 author: iqshahmicrosoft
 ms.author: iqshah
 ms.date: 08/14/2020
-ms.openlocfilehash: 07c8de2a9d94b51f7183829466bd68d56e19efba
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: a83532e2dd6fc8e83206a3b4a055170b40d131fd
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89646810"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91803517"
 ---
-# <a name="create-azure-virtual-machine-technical-assets"></a>Azure-beli virtuális gépek technikai eszközeinek létrehozása
+# <a name="create-technical-assets-for-an-azure-marketplace-virtual-machine-offer"></a>Technikai eszközök létrehozása Azure Marketplace-beli virtuálisgép-ajánlathoz
 
 A virtuális gép (VM) lemezképének az Azure Marketplace-en való közzétételekor az Azure-csapat ellenőrzi a virtuálisgép-lemezképet, hogy biztosítsa a rendszerindítást, a biztonságot és az Azure-kompatibilitást. Ha a kiváló minőségű tesztek bármelyike meghibásodik, a közzététel sikertelen lesz, és a rendszer hibaüzenetet tartalmaz, és a lehetséges [helyesbítési lépéseket](https://docs.microsoft.com/azure/marketplace/partner-center-portal/vm-certification-issues-solutions)tartalmazza.
 
 Ez a cikk bemutatja, hogyan hozhat létre és konfigurálhat technikai eszközöket az Azure Marketplace-hez készült virtuálisgép-(VM-) ajánlathoz. A virtuális gépek két összetevőt tartalmaznak: az operációs rendszer virtuális merevlemezét (VHD) és opcionálisan kapcsolódó adatlemezek VHD-ket:
 
-1. **Operációs rendszer virtuális merevlemeze** – az ajánlatával üzembe helyezett operációs rendszert és megoldást tartalmazza. A VHD előkészítési folyamata attól függően eltérő, hogy Linux-alapú, Windows-alapú vagy egyéni virtuális gép-e.
+- **Operációs rendszer virtuális merevlemeze**: az ajánlatával üzembe helyezett operációs rendszert és megoldást tartalmazza. A VHD előkészítési folyamata attól függően eltérő, hogy Linux-alapú, Windows-alapú vagy egyéni virtuális gép-e.
 
-2. **Adatlemez VHD** -k – dedikált, állandó tárterület egy virtuális géphez. Ne használja az operációs rendszer VHD-jét (például a C: meghajtót) az állandó információk tárolásához.
+- **Adatlemez VHD**-k: dedikált, állandó tárterület egy virtuális géphez. Ne használja az operációs rendszer VHD-jét (például a C: meghajtót) az állandó információk tárolásához.
 
 A virtuálisgép-lemezképek egy operációsrendszer-lemezt és legfeljebb 16 adatlemezt tartalmaznak. Adatlemez esetén használjon egy VHD-t, még akkor is, ha a lemez üres.
 
@@ -98,20 +98,20 @@ Az alábbi lépéseket követve hozza létre az alapszintű VM-rendszerképet a 
 4. Válassza a **+ Hozzáadás** lehetőséget a **virtuális gép létrehozásának élményének**megnyitásához.
 5. Válassza ki a lemezképet a legördülő listából, vagy válassza az **összes nyilvános és privát rendszerkép tallózása** lehetőséget a rendelkezésre álló virtuálisgép-lemezképek kereséséhez vagy tallózásához. Példa:
 
-    :::image type="content" source="media/vm/create-resource-group-example.png" alt-text="Egy minta virtuálisgép-rendszerképet jelenít meg.":::
+    :::image type="content" source="media/vm/create-resource-group-example.png" alt-text="Egy erőforráscsoport létrehozásának kezdetét jeleníti meg.":::
 
 6. Válassza ki az alábbi javaslatok alapján telepítendő virtuális gép méretét:
     1. Ha a helyszíni virtuális merevlemez fejlesztését tervezi, a méret nem számít. Érdemes lehet a kisebb virtuális gépek egyikét használni.
     2. Ha azt tervezi, hogy az Azure-ban fejleszti a rendszerképet, érdemes lehet a kiválasztott rendszerképhez ajánlott virtuálisgép-méreteket használni.
 
-    :::image type="content" source="media/vm/create-virtual-machine.png" alt-text="A virtuális gép méretének kiválasztását mutatja.":::
+    :::image type="content" source="media/vm/create-virtual-machine.png" alt-text="Egy erőforráscsoport létrehozásának kezdetét jeleníti meg.":::
 
 7. A **lemezek** szakaszban bontsa ki a **speciális** szakaszt, és állítsa a **felügyelt lemezek használata** lehetőséget a **nem**értékre.
 
-    :::image type="content" source="media/vm/use-managed-disks.png" alt-text="A felügyelt lemezek használatára vonatkozó beállítást mutatja.":::
+    :::image type="content" source="media/vm/use-managed-disks.png" alt-text="Egy erőforráscsoport létrehozásának kezdetét jeleníti meg.":::
 
 8. Adja meg a virtuális gép létrehozásához szükséges egyéb adatokat.
-9. Válassza a **felülvizsgálat + létrehozás** lehetőséget a választási lehetőségek áttekintéséhez. Amikor megjelenik az **átadott üzenet ellenőrzése** lehetőség, válassza a **Létrehozás**lehetőséget.
+9. Válassza a **felülvizsgálat + létrehozás** lehetőséget a választási lehetőségek áttekintéséhez. Amikor megjelenik a **Megfelelt az ellenőrzésen** üzenet, válassza a **Létrehozás** lehetőséget.
 
 Az Azure megkezdi a megadott virtuális gép üzembe helyezését. Az előrehaladás nyomon követéséhez válassza a bal oldali **Virtual Machines** fület. A létrehozása után az állapot **fut**értékre változik.
 
@@ -129,7 +129,7 @@ Hozzon létre egy 2. generációs (Gen2) virtuális gépet Azure Portal.
 8. Válassza ki a [támogatott 2. generációs virtuális gép](https://docs.microsoft.com/azure/virtual-machines/windows/generation-2#generation-2-vm-sizes) és méret javasolt méretét.
 9. A virtuális gép létrehozásának befejezéséhez folytassa a [Azure Portal létrehozás folyamatán](https://docs.microsoft.com/azure/virtual-machines/windows/quick-create-portal) .
 
-    :::image type="content" source="media/vm/vm-generation.png" alt-text="Megjeleníti a virtuális gép generációjának kiválasztására szolgáló lehetőséget.":::
+    :::image type="content" source="media/vm/vm-generation.png" alt-text="Egy erőforráscsoport létrehozásának kezdetét jeleníti meg.":::
 
 ## <a name="connect-to-your-azure-vm"></a>Kapcsolódás Azure-beli virtuális géphez
 
@@ -157,7 +157,7 @@ Linux-alapú virtuális géphez való kapcsolódáshoz Secure Shell Protocol-(SS
 7. Nyissa meg a PuTTY alkalmazást.
 8. A PuTTY konfigurációja párbeszédpanelen adja meg a virtuális gép IP-címét vagy DNS-nevét.
 
-    :::image type="content" source="media/vm/putty-configuration.png" alt-text="Bemutatja a PuTTY-terminál beállításait, kiemelve az állomásnév és a port mezőket.":::
+    :::image type="content" source="media/vm/putty-configuration.png" alt-text="Egy erőforráscsoport létrehozásának kezdetét jeleníti meg.":::
 
 9. Válassza a **Megnyitás** lehetőséget egy Putty terminál megnyitásához.
 10. Ha a rendszer kéri, adja meg a linuxos virtuális gép fiókjának nevét és jelszavát.
@@ -179,7 +179,7 @@ Mivel a virtuális gépek engedélyezik az alapul szolgáló operációs rendsze
 
 | VHD-méret | Tényleges foglalt méret | Megoldás |
 | --- | --- | --- |
-| >500 TB | n.a. | Kivétel jóváhagyásához forduljon a támogatási csoporthoz. |
+| >500 TB | n/a | Kivétel jóváhagyásához forduljon a támogatási csoporthoz. |
 | 250-500 TB | A blob méretétől eltérő 200 GB > | Kivétel jóváhagyásához forduljon a támogatási csoporthoz. |
 
 ### <a name="install-the-most-current-updates"></a>A legújabb frissítések telepítése
@@ -229,7 +229,7 @@ A következő folyamat általánosít egy Linux rendszerű virtuális gépet, é
     1. A Azure Portal válassza ki az erőforráscsoportot (RG) és a virtuális gép lefoglalását.
     2. A VHD-fájl már általánosítva van, és létrehozhat egy új virtuális gépet a virtuális merevlemez használatával.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ha nehézségekbe ütközött az új Azure-alapú virtuális merevlemez létrehozása során, tekintse meg a [gyakori problémák a VHD létrehozása során](common-issues-during-vhd-creation.md)című témakört.
 - Ha nem, a [VHD-ről üzembe helyezett virtuális gép (VM)](azure-vm-image-certification.md) elmagyarázza, hogyan kell tesztelni és elküldeni az Azure Marketplace minősítéshez tartozó virtuálisgép-lemezképet, beleértve az Azure Certified eszköz minősítési teszt eszközének beszerzését és a virtuálisgép-lemezképek hitelesítésének módját.

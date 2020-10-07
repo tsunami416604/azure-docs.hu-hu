@@ -11,12 +11,12 @@ ms.author: jaredmoo
 author: jaredmoo
 ms.reviewer: sstein
 ms.date: 02/07/2020
-ms.openlocfilehash: 5c05db4d6e0c98935fc13325b5656f8023c6228e
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: bbecfac4bfd3d5ce1510cb671b93df5f4982cbc4
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91443338"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91803857"
 ---
 # <a name="use-transact-sql-t-sql-to-create-and-manage-elastic-database-jobs-preview"></a>A Transact-SQL (T-SQL) használata Elastic Database feladatok létrehozásához és kezeléséhez (előzetes verzió)
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -1023,13 +1023,13 @@ Adatbázis vagy adatbázis-csoport hozzáadását egy célcsoporthoz.
 Annak a célcsoportnak a neve, amelyhez a tag hozzá lesz adva. target_group_name nvarchar (128), alapértelmezés szerint nincs megadva.
 
 [ ** \@ membership_type =** ] "membership_type"  
-Megadja, hogy a célcsoport tagja belefoglalt vagy kizárva lesz-e. target_group_name a nvarchar (128), amelynek alapértelmezett értéke a "include". A target_group_name érvényes értékei a következők: "include" vagy "kizár".
+Megadja, hogy a célcsoport tagja belefoglalt vagy kizárva lesz-e. target_group_name a nvarchar (128), amelynek alapértelmezett értéke a "include". A membership_type érvényes értékei a következők: "include" vagy "kizár".
 
 [ ** \@ target_type =** ] "target_type"  
 A céladatbázis vagy adatbázisok gyűjteményének típusa, beleértve a kiszolgálókon lévő összes adatbázist, a rugalmas készletben lévő összes adatbázist, a szegmensben található összes adatbázist vagy egy adott adatbázist. target_type nvarchar (128), alapértelmezés szerint nincs megadva. A target_type érvényes értékei: "SqlServer", "SqlElasticPool", "SqlDatabase" vagy "SqlShardMap".
 
 [ ** \@ refresh_credential_name =** ] "refresh_credential_name"  
-A kiszolgáló neve. refresh_credential_name nvarchar (128), alapértelmezés szerint nincs megadva.
+Az adatbázis-hatókörű hitelesítő adat neve. refresh_credential_name nvarchar (128), alapértelmezés szerint nincs megadva.
 
 [ ** \@ server_name =** ] "server_name"  
 Annak a kiszolgálónak a neve, amelyet fel kell venni a megadott célcsoportba. server_name kell megadni, ha a target_type "SqlServer". server_name nvarchar (128), alapértelmezés szerint nincs megadva.
@@ -1041,7 +1041,7 @@ Annak az adatbázisnak a neve, amelyet fel kell venni a megadott célcsoportba. 
 Annak a rugalmas készletnek a neve, amelyet hozzá kell adni a megadott célcsoporthoz. elastic_pool_name kell megadni, ha a target_type "SqlElasticPool". elastic_pool_name nvarchar (128), alapértelmezés szerint nincs megadva.
 
 [ ** \@ shard_map_name =** ] "shard_map_name"  
-A megadott célcsoporthoz hozzáadandó szegmenses leképezési készlet neve. elastic_pool_name kell megadni, ha a target_type "SqlSqlShardMap". shard_map_name nvarchar (128), alapértelmezés szerint nincs megadva.
+A megadott célcsoporthoz hozzáadandó szegmenses leképezési készlet neve. elastic_pool_name kell megadni, ha a target_type "SqlShardMap". shard_map_name nvarchar (128), alapértelmezés szerint nincs megadva.
 
 [ ** \@ target_id =** ] target_group_id kimenet  
 A célcsoport tagja számára hozzárendelt cél azonosító szám, ha a csoport hozzá lett adva. target_id uniqueidentifier típusú kimeneti változó, amelynek alapértelmezett értéke NULL.

@@ -6,12 +6,12 @@ ms.service: cosmos-db
 ms.topic: how-to
 ms.date: 07/30/2019
 ms.author: dech
-ms.openlocfilehash: 6a30535ac3aaa90dc3553f6901a83ab300546fb5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: ec80791f9a43dc45d670442ee7b2d0c67d54f582
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85261851"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91803398"
 ---
 # <a name="estimate-rus-using-the-azure-cosmos-db-capacity-planner"></a>RU/s becslése a Azure Cosmos DB Capacity Planner használatával
 
@@ -30,7 +30,7 @@ A Capacity Planner két módban is használható.
 ## <a name="estimate-provisioned-throughput-and-cost-using-basic-mode"></a>Kiépített átviteli sebesség és a Cost alapszintű módban való kibecslése
 Ha az alapszintű módban gyors becslést szeretne kapni a számítási feladathoz, navigáljon a [Capacity plannerhez](https://cosmos.azure.com/capacitycalculator/). Adja meg az alábbi paramétereket a munkaterhelés alapján: 
 
-|**Bevitel**  |**Leírás**  |
+|**Input (Bemenet)**  |**Leírás**  |
 |---------|---------|
 |Régiók száma|Azure Cosmos DB az összes Azure-régióban elérhető. Válassza ki a munkaterheléshez szükséges régiók számát. A Cosmos-fiókkal tetszőleges számú régiót rendelhet hozzá. További részletekért tekintse meg a Azure Cosmos DB [globális terjesztését](distribute-data-globally.md) ismertető témakört.|
 |Több régióba írt írások|Ha engedélyezi a [többrégiós írásokat](distribute-data-globally.md#key-benefits-of-global-distribution), az alkalmazás bármely Azure-régióba képes olvasni és írni. Ha letiltja a többrégiós írásokat, az alkalmazás egyetlen régióba írhat adatot. <br/><br/> Engedélyezze a többrégiós írásokat, ha olyan aktív-aktív számítási feladatra van szüksége, amely kis késleltetésű írásokat igényel különböző régiókban. Például egy olyan IOT számítási feladat, amely különböző régiókban lévő nagy mennyiségű adatbázisba ír adatot. <br/><br/> A többrégiós írások 99,999%-os olvasási és írási rendelkezésre állást garantálnak. A többrégiós írásokhoz több átviteli sebesség szükséges az egyetlen írási régióhoz képest. További információkért lásd: [az egyes és a többszörös írási régiókról szóló cikk, hogyan különböznek az RUs](optimize-cost-regions.md) .|
@@ -49,20 +49,20 @@ A speciális mód lehetővé teszi további beállítások megadását, amelyek 
 
 A bejelentkezést követően további mezőket is láthat a mezőkhöz képest alapszintű módban. Adja meg a további paramétereket a munkaterhelés alapján. 
 
-|**Bevitel**  |**Leírás**  |
+|**Input (Bemenet)**  |**Leírás**  |
 |---------|---------|
 |API|Azure Cosmos DB egy többmodelles és többplatformos szolgáltatás. Új munkaterhelések esetén válassza az SQL (mag) API elemet. |
 |Régiók száma|Azure Cosmos DB az összes Azure-régióban elérhető. Válassza ki a munkaterheléshez szükséges régiók számát. A Cosmos-fiókkal tetszőleges számú régiót rendelhet hozzá. További részletekért tekintse meg a Azure Cosmos DB [globális terjesztését](distribute-data-globally.md) ismertető témakört.|
 |Több régióba írt írások|Ha engedélyezi a [többrégiós írásokat](distribute-data-globally.md#key-benefits-of-global-distribution), az alkalmazás bármely Azure-régióba képes olvasni és írni. Ha letiltja a többrégiós írásokat, az alkalmazás egyetlen régióba írhat adatot. <br/><br/> Engedélyezze a többrégiós írásokat, ha olyan aktív-aktív számítási feladatra van szüksége, amely kis késleltetésű írásokat igényel különböző régiókban. Például egy olyan IOT számítási feladat, amely különböző régiókban lévő nagy mennyiségű adatbázisba ír adatot. <br/><br/> A többrégiós írások 99,999%-os olvasási és írási rendelkezésre állást garantálnak. A többrégiós írásokhoz több átviteli sebesség szükséges az egyetlen írási régióhoz képest. További információkért lásd: [az egyes és a többszörös írási régiókról szóló cikk, hogyan különböznek az RUs](optimize-cost-regions.md) .|
 |Alapértelmezett konzisztencia|A Azure Cosmos DB 5 konzisztencia-szintet támogat, hogy a fejlesztők egyensúlyt tegyenek a konzisztencia, a rendelkezésre állás és a késések közötti kompromisszumok között. További információt a [konzisztencia-szintek](consistency-levels.md) című cikkben talál. <br/><br/> Alapértelmezés szerint a Azure Cosmos DB a munkamenet konzisztenciáját használja, ami garantálja a saját írások olvasását egy munkamenetben. <br/><br/> Az erős vagy határos elavulás kiválasztásához a szükséges RU/s-k megadására van szükség a munkamenethez, a konzisztens előtaghoz és a végleges konzisztenciahez képest. A többrégiós írásokkal való erős konzisztencia nem támogatott, és a rendszer automatikusan az egyrégiós írásokat erős konzisztencia használatával veszi alapul. |
-|Indexelési szabályzat|Alapértelmezés szerint a Azure Cosmos DB [indexeli az összes tulajdonságot](index-policy.md) a rugalmas és hatékony lekérdezésekhez (az **automatikus** indexelési házirendhez tartozó térképeket). <br/><br/> Ha a **ki**lehetőséget választja, a tulajdonságok egyike sem indexelt. Ennek eredményeképpen a legalacsonyabb RU díjat számítjuk fel az írásokhoz. Válassza **ki a szabályzatot** , ha csak a [pontok olvasását](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.container.readitemasync?view=azure-dotnet) (kulcs értékének keresése) és/vagy írásokat kívánja végrehajtani, és nincsenek lekérdezések. <br/><br/> Az egyéni indexelési házirend lehetővé teszi, hogy az indexből bizonyos tulajdonságokat tartalmazzon vagy kizárjon az alacsonyabb írási sebesség és a tárterület számára. További információ: az [indexelési házirend](index-overview.md) és a [minta indexelési szabályzatok](how-to-manage-indexing-policy.md#indexing-policy-examples) cikkei.|
+|Indexelési szabályzat|Alapértelmezés szerint a Azure Cosmos DB [indexeli az összes tulajdonságot](index-policy.md) a rugalmas és hatékony lekérdezésekhez (az **automatikus** indexelési házirendhez tartozó térképeket). <br/><br/> Ha a **ki**lehetőséget választja, a tulajdonságok egyike sem indexelt. Ennek eredményeképpen a legalacsonyabb RU díjat számítjuk fel az írásokhoz. Válassza **ki a szabályzatot** , ha csak a [pontok olvasását](https://docs.microsoft.com/dotnet/api/microsoft.azure.cosmos.container.readitemasync?view=azure-dotnet&preserve-view=true) (kulcs értékének keresése) és/vagy írásokat kívánja végrehajtani, és nincsenek lekérdezések. <br/><br/> Az egyéni indexelési házirend lehetővé teszi, hogy az indexből bizonyos tulajdonságokat tartalmazzon vagy kizárjon az alacsonyabb írási sebesség és a tárterület számára. További információ: az [indexelési házirend](index-overview.md) és a [minta indexelési szabályzatok](how-to-manage-indexing-policy.md#indexing-policy-examples) cikkei.|
 |Összes tárolt adatmennyiség (régiónként)|A GB-ban tárolt összes becsült adat egyetlen régióban.|
 |Munkaterhelés mód|Válassza a **stabil** lehetőséget, ha a munkaterhelés mennyisége állandó. <br/><br/> Válassza a **változó** lehetőséget, ha a munkaterhelés mennyisége az idő múlásával változik.  Például egy adott nap vagy egy hónap során. <br/><br/> A következő beállítások érhetők el, ha a változó munkaterhelés beállítást választja:<ul><li>Az idő százalékos aránya: a hónap azon hányada, amelyben a számítási feladathoz a csúcs (legmagasabb) átviteli sebesség szükséges. <br/><br/> Ha például olyan számítási feladattal rendelkezik, amely magas aktivitású munkaidőben, 9 – 6 napos munkaidő alatt van, akkor a csúcson az idő százalékos aránya: 45 óra a csúcs/730 órában/hónapban = ~ 6%.<br/><br/></li><li>A másodpercenkénti olvasási sebesség (olvasás/mp) a várhatóan másodpercenkénti olvasási értéknél.</li><li>Írás/mp régiónként – a várható írási idő másodpercenkénti száma.</li><li>Beolvasások másodpercenkénti száma/s/mp – az elvárt olvasási sebesség másodpercenként a kiinduló csúcson.</li><li>Írás/mp/régió – kikapcsolt érték – a várhatóan másodpercenkénti írási idő.</li></ul>A csúcs-és az off-Peak intervallumokkal optimalizálhatja a költségeket a [kiépített átviteli sebesség programozott módon történő méretezésével](set-throughput.md#update-throughput-on-a-database-or-a-container) .|
 |Elem mérete|Az adatelem (például dokumentum) mérete 1 KB és 2 MB között lehet. <br/><br/>A **minta-(JSON-)** dokumentumok pontosabb becslést is feltölthetnek.<br/><br/>Ha a munkaterhelés több típusú elemet tartalmaz (különböző JSON-tartalommal) ugyanabban a tárolóban, több JSON-dokumentumot is feltölthet, és lekérheti a becslést. Az **új elem hozzáadása** gomb használatával több minta JSON-dokumentumot is hozzáadhat.|
 
 Az aktuális becslést tartalmazó CSV-fájl letöltéséhez használhatja a **becslés mentése** gombot is. 
 
-:::image type="content" source="./media/estimate-ru-with-capacity-planner/advanced-mode.png" alt-text="A Capacity Planner speciális módja":::
+:::image type="content" source="./media/estimate-ru-with-capacity-planner/advanced-mode.png" alt-text="A Capacity Planner alapszintű üzemmódja":::
 
 A Azure Cosmos DB Capacity Planner által megjelenő díjak becslése az átviteli sebesség és a tárterület nyilvános díjszabási díja alapján történik. Az összes ár az USA dollárban jelenik meg. Az összes díjszabás régiónként való megjelenítéséhez tekintse meg a [Azure Cosmos db díjszabási oldalát](https://azure.microsoft.com/pricing/details/cosmos-db/) .  
 
