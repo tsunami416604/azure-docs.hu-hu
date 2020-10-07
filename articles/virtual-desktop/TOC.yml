@@ -34,6 +34,8 @@
           href: connect-macos.md
         - name: Kapcsolódás az iOS-ügyfélhez
           href: connect-ios.md
+        - name: Kapcsolódás a Microsoft Store-ügyfélhez
+          href: connect-microsoft-store.md
     - name: A PowerShell-modul beállítása
       href: powershell-module.md
     - name: Gazdagépkészlet és munkamenetgazdák létrehozása

@@ -497,12 +497,8 @@
               href: database/database-copy.md
             - name: Replikálás az SQL Database-be
               href: database/replication-to-sql-database.md
-            - name: SQL-adatszinkronizálás
-              items:
-                - name: Sémaváltozások replikálása
-                  href: database/sql-data-sync-update-sync-schema.md
-                - name: Monitorozás az OMS-szel
-                  href: database/sql-data-sync-monitor-sync.md
+            - name: Sémaváltozások replikálása (adatszinkronizálás)
+              href: database/sql-data-sync-update-sync-schema.md
         - name: Adatbázis horizontális skálázása
           items:
             - name: A klienskódtár frissítése

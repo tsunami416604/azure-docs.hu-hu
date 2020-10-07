@@ -976,6 +976,8 @@
           href: insights/vminsights-maps.md
         - name: Teljesítmény figyelése
           href: insights/vminsights-performance.md
+        - name: Módosítások figyelése
+          href: insights/vminsights-change-analysis.md
         - name: Adatelemzés naplólekérdezésekkel
           href: insights/vminsights-log-search.md
         - name: Adatok megjelenítése munkafüzetekben
@@ -1324,6 +1326,8 @@
       href: samples/policy-reference.md
     - name: Szolgáltatás és API kivezetése
       items:
+        - name: OperationalInsights API
+          href: platform/operationalinsights-api-retirement.md
         - name: Klasszikus automatikus skálázási és metrikai API
           href: ./platform/classic-api-retirement-metrics-autoscale.md
         - name: Klasszikus riasztás és monitorozás
