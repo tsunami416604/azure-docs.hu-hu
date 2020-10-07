@@ -7,12 +7,12 @@ ms.date: 10/25/2019
 ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
-ms.openlocfilehash: 0cf343ccd89ac5b00740d8c559538a0f97ec7905
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: dae2461336316defb6f2cfc63b775c67cf2196d0
+ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88716571"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91813066"
 ---
 # <a name="what-are-application-templates"></a>Mik azok az alkalmazássablonok?
 
@@ -30,18 +30,13 @@ Az alkalmazás létrehozásakor kiválaszthatja az alkalmazás sablonját. Az al
 
 ## <a name="custom-templates"></a>Egyéni sablonok
 
-Ha teljesen új alkalmazást szeretne létrehozni, válassza ki a két egyéni alkalmazás-sablon egyikét:
-
-- Egyéni alkalmazás
-- Egyéni alkalmazás (örökölt)
-
-Válassza ki az **egyéni alkalmazás** sablont, hacsak nem rendelkezik a régi sablon használatának konkrét okáról.
+Ha létre szeretné hozni az alkalmazást a semmiből, válassza az egyik **egyéni alkalmazás** sablont.
 
 ## <a name="industry-focused-templates"></a>Iparági fókuszált sablonok
 
 Az Azure IoT Central az iparági független alkalmazások platformja. Az alkalmazás-sablonok olyan iparági fókuszált példák, amelyek manapság elérhetők a jövőben:
 
-- [Kiskereskedelem](../retail/overview-iot-central-retail.md)
+- [Retail](../retail/overview-iot-central-retail.md)
   - Összekapcsolt logisztika
   - Digitális terjesztési központ
   - Tárolt elemzési állapot figyelése
@@ -51,7 +46,7 @@ Az Azure IoT Central az iparági független alkalmazások platformja. Az alkalma
 - [Energia](../energy/overview-iot-central-energy.md)
   - Intelligens fogyasztásmérő figyelése
   - Napelemek figyelése
-- [Government](../government/overview-iot-central-government.md)
+- [Államigazgatás](../government/overview-iot-central-government.md)
   - Csatlakoztatott hulladékgazdálkodás
   - A víz felhasználásának figyelése
   - A víz minőségének monitorozása
@@ -62,6 +57,6 @@ Az Azure IoT Central az iparági független alkalmazások platformja. Az alkalma
 
 A sablonok adott IoT Central alkalmazás-verziókhoz vannak társítva. Az alkalmazások verzióját az alkalmazás [névjegye](./howto-get-app-info.md) oldalon találja a **Súgó** hivatkozásra kattintva.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy tudja, mi IoT Central alkalmazás-sablonok, első lépésként [hozzon létre egy IoT Central alkalmazást](quick-deploy-iot-central.md).

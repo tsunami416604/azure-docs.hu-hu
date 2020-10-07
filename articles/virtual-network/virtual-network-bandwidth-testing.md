@@ -10,14 +10,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 07/21/2017
+ms.date: 10/06/2020
 ms.author: steveesp
-ms.openlocfilehash: e5aa2c1c51fccddc3fb62d7ebdbadee19a2b093e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 0b009b7c44084e76194c1447fefdb2ff59f8086a
+ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87265177"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91812284"
 ---
 # <a name="bandwidththroughput-testing-ntttcp"></a>Sávszélesség/átviteli sebesség tesztelése (NTTTCP)
 
@@ -26,7 +26,7 @@ Az Azure-ban a hálózati teljesítmény teljesítményének tesztelésekor érd
 Másolja az eszközt két azonos méretű Azure-beli virtuális gépre. Egy virtuális gép KÜLDŐként és a másikat FOGADÓként működik.
 
 #### <a name="deploying-vms-for-testing"></a>Virtuális gépek üzembe helyezése teszteléshez
-Ebben a tesztben a két virtuális gépnek ugyanabban a felhőalapú szolgáltatásban vagy ugyanazon rendelkezésre állási csoportban kell lennie, hogy a belső IP-címeket használják, és kizárja a terheléselosztó a tesztből való kizárását. A virtuális IP-címen tesztelhető, de az ilyen típusú tesztelés kívül esik a jelen dokumentum hatókörén.
+Ebben a tesztben a két virtuális gépnek ugyanabban a [közelségi elhelyezési csoportban](../virtual-machines/windows/co-location.md) vagy ugyanazon a rendelkezésre állási csoporton kell lennie, hogy a belső IP-címeket használják, és kizárja a terheléselosztó a tesztből való kizárását. A virtuális IP-címen tesztelhető, de az ilyen típusú tesztelés kívül esik a jelen dokumentum hatókörén.
 
 Jegyezze fel a fogadó IP-címét. Nevezzük ezt az IP-címet: "a. b. c. r"
 
@@ -52,7 +52,7 @@ Feladó paraméterei: ntttcp-s 10.27.33.7-t 10-n 1-P 1
 
 #### <a name="get-ntttcp-onto-the-vms"></a>NTTTCP beolvasása a virtuális gépekre.
 
-Töltse le a legújabb verziót:<https://gallery.technet.microsoft.com/NTttcp-Version-528-Now-f8b12769>
+Töltse le a legújabb verziót: <https://gallery.technet.microsoft.com/NTttcp-Version-528-Now-f8b12769>
 
 Vagy keressen rá, ha áthelyezte: <https://www.bing.com/search?q=ntttcp+download> \< --először meg kell nyomnia
 
@@ -89,7 +89,7 @@ Várjon az eredményekre.
 
 ## <a name="testing-vms-running-linux"></a>LINUX rendszerű virtuális gépek tesztelése:
 
-A nttcp-for-Linux használata. Elérhető innen:<https://github.com/Microsoft/ntttcp-for-linux>
+A nttcp-for-Linux használata. Elérhető innen: <https://github.com/Microsoft/ntttcp-for-linux>
 
 A Linux rendszerű virtuális gépeken (a küldő és a FOGADÓn is) futtassa ezeket a parancsokat a ntttcp-for-Linux rendszerre való előkészítéséhez a virtuális gépeken:
 
@@ -165,7 +165,7 @@ A következő szakaszt hozzá kell adnia a ServiceDefinition. csdef
 </Endpoints> 
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * Az eredményektől függően előfordulhat, hogy a forgatókönyvhöz a [hálózati átviteli sebességű gépeket optimalizálni](virtual-network-optimize-network-bandwidth.md) kell.
 * További információ arról [, hogyan vannak lefoglalva a sávszélesség a virtuális gépekhez](virtual-machine-network-throughput.md)
 * További információ az [Azure Virtual Network gyakori kérdéseiről (GYIK)](virtual-networks-faq.md)

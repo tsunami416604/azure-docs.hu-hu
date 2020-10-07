@@ -6,12 +6,12 @@ ms.author: tisande
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 07/29/2020
-ms.openlocfilehash: 7f7f895b61e3c638cb347a2d73bb5ee458b31acd
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 1cd0c3f48d4dc79294b3ebf9907ac18d23794830
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87498820"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91804197"
 ---
 # <a name="pagination-in-azure-cosmos-db"></a>Tördelés Azure Cosmos DB
 
@@ -56,7 +56,7 @@ Ha a lekérdezés folytatási tokent ad vissza, akkor további lekérdezési ere
 
 Azure Cosmos DB REST API a folytatási tokeneket a `x-ms-continuation` fejléctel kezelheti. Mint a .NET vagy a Java SDK lekérdezésével, ha a `x-ms-continuation` Válasz fejléce nem üres, akkor a lekérdezés további eredményeket tartalmaz.
 
-Ha ugyanazt az SDK-verziót használja, a folytatási tokenek soha nem járnak le. Lehetősége van a [folytatási token méretének korlátozására](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.feedoptions.responsecontinuationtokenlimitinkb?view=azure-dotnet#Microsoft_Azure_Documents_Client_FeedOptions_ResponseContinuationTokenLimitInKb)is. Az adatmennyiségtől vagy a tároló fizikai partícióinak számától függetlenül a lekérdezések egyetlen folytatási tokent adnak vissza.
+Ha ugyanazt az SDK-verziót használja, a folytatási tokenek soha nem járnak le. Lehetősége van a [folytatási token méretének korlátozására](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.feedoptions.responsecontinuationtokenlimitinkb?view=azure-dotnet&preserve-view=true#Microsoft_Azure_Documents_Client_FeedOptions_ResponseContinuationTokenLimitInKb)is. Az adatmennyiségtől vagy a tároló fizikai partícióinak számától függetlenül a lekérdezések egyetlen folytatási tokent adnak vissza.
 
 A folytatási tokenek nem használhatók a [Group By](sql-query-group-by.md) vagy [DISTINCT](sql-query-keywords.md#distinct) lekérdezésekhez, mert ezek a lekérdezések jelentős mennyiségű állapot tárolását igénylik. A alkalmazással végzett lekérdezésekhez használhatja `DISTINCT` a folytatási jogkivonatokat, ha hozzáadja `ORDER BY` a lekérdezéshez.
 
@@ -70,6 +70,6 @@ ORDER BY c.name
 
 ## <a name="next-steps"></a>További lépések
 
-- [Bevezetés a Azure Cosmos DBba](introduction.md)
+- [Az Azure Cosmos DB bemutatása](introduction.md)
 - [.NET-minták Azure Cosmos DB](https://github.com/Azure/azure-cosmos-dotnet-v3)
 - [ORDER BY záradék](sql-query-order-by.md)

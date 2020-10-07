@@ -5,19 +5,19 @@ ms.topic: quickstart
 ms.date: 09/22/2020
 ms.custom: seo-python-october2019, cli-validate, devx-track-python
 zone_pivot_groups: python-frameworks-01
-ms.openlocfilehash: 0ce995bddb89ce6aa1a550971fbcd92c6515d58e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 8a0cce6dd68513380759319c378d15aeb0e029c3
+ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91264548"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91813185"
 ---
 # <a name="quickstart-create-a-python-app-in-azure-app-service-on-linux"></a>Gyors útmutató: Python-alkalmazás létrehozása Azure App Service Linuxon
 
 Ebben a rövid útmutatóban egy Python-webalkalmazást helyez üzembe a [Linuxon](overview.md#app-service-on-linux), az Azure rugalmasan méretezhető, önjavító webes üzemeltetési szolgáltatásának app Service. Egy Mac, Linux vagy Windows rendszerű számítógépen a helyi [Azure parancssori felület (CLI)](/cli/azure/install-azure-cli) segítségével helyezheti üzembe a mintát a lombiktal vagy a Django keretrendszerek használatával. Az Ön által konfigurált webalkalmazás ingyenes App Service szintet használ, így a cikk során nem jár költségekkel.
 
 > [!TIP]
-> Ha egy IDE-n keresztül szeretné telepíteni az alkalmazásokat, tekintse **[meg a Python-alkalmazások üzembe helyezése a Visual Studio Code-ból való app Service](/azure/developer/python/tutorial-deploy-app-service-on-linux-01)** című témakört.
+> Ha inkább a Visual Studio Code-ot szeretné használni, kövesse a **[Visual Studio code app Service](/azure/developer/python/tutorial-deploy-app-service-on-linux-01)** rövid útmutatót.
 
 ## <a name="set-up-your-initial-environment"></a>A kezdeti környezet beállítása
 
@@ -134,25 +134,9 @@ A minta olyan keretrendszer-specifikus kódot tartalmaz, amelyet az alkalmazás 
     
 1. Futtassa a fejlesztői kiszolgálót.
 
-    # <a name="bash"></a>[Bash](#tab/bash)
-
-    ```bash
-    python3 manage.py runserver
+    ```terminal
+    python manage.py runserver
     ```
-
-    # <a name="powershell"></a>[PowerShell](#tab/powershell)
-
-    ```powershell
-    py -3 manage.py runserver
-    ```
-
-    # <a name="cmd"></a>[Cmd](#tab/cmd)
-
-    ```cmd
-    py -3 manage.py runserver
-    ```
-
-    ---    
 
 1. Nyisson meg egy webböngészőt, és nyissa meg a minta alkalmazást a következő címen: `http://localhost:8000/` . Az alkalmazás megjeleníti a **Hello, World!** üzenetet.
 
@@ -292,7 +276,7 @@ Az `--no-wait` argumentum lehetővé teszi, hogy a parancs visszaadja a művelet
 
 [Problémák léptek fel? Tudassa velünk.](https://aka.ms/FlaskCLIQuickstartHelp)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Oktatóanyag: Python (Django) webalkalmazás és PostgreSQL](tutorial-python-postgresql-app.md)

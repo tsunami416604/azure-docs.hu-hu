@@ -17,12 +17,12 @@ ms.date: 09/17/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 23cfc2ea17e1801ec4caeea9e8933cfdc72e33d4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 994fe6c5005eeeab1399091dca5f72024fdd7262
+ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91331250"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91812590"
 ---
 # <a name="audit-activity-reports-in-the-azure-active-directory-portal"></a>Naplózott tevékenységekre vonatkozó jelentések az Azure Active Directory portálon 
 
@@ -35,6 +35,7 @@ A jelentéskészítési architektúra a következő összetevőkből áll:
 - **Tevékenység** 
     - **Bejelentkezések** – a [bejelentkezési jelentés](concept-sign-ins.md) információt nyújt a felügyelt alkalmazások és a felhasználói bejelentkezési tevékenységek használatáról.
     - **Auditnaplók** – az Azure AD-n belül különböző szolgáltatások által végrehajtott összes módosításra vonatkozó nyomkövetési naplókat biztosít. A naplók például a felhasználók, alkalmazások, csoportok, szerepkörök és házirendek hozzáadásával vagy eltávolításával kapcsolatos, az Azure AD-ban található összes erőforráson végrehajtott módosítások.
+    - Naplók kiépítés **Provisioning logs**  -  A [kiépítési naplók](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) lehetővé teszik az ügyfelek számára, hogy a kiépítési szolgáltatás által végzett tevékenységeket figyeljenek, például egy csoport létrehozását a ServiceNow-ben, vagy egy munkanapokból importált felhasználót. 
 - **Biztonság** 
     - **Kockázatos bejelentkezések** – a [kockázatos bejelentkezés](../identity-protection/overview-identity-protection.md) egy olyan bejelentkezési kísérletre utal, amelyet a felhasználói fiók jogos tulajdonosaként elvégeztek. 
     - **Kockázatnak** kitett felhasználók – a [kockázatos felhasználók](../identity-protection/overview-identity-protection.md) egy olyan felhasználói fiókra vonatkozó jelző, amely esetleg sérült.
@@ -45,7 +46,7 @@ Ez a cikk áttekintést nyújt a naplózási jelentésről.
 
 * A **biztonsági rendszergazda**, a **biztonsági olvasó**, a **jelentéskészítő olvasó** , a **globális olvasó** vagy a **globális rendszergazdai** szerepkör felhasználói
 
-## <a name="audit-logs"></a>Auditnaplók
+## <a name="audit-logs"></a>Naplók
 
 Az Azure AD-naplók megfelelőségi adatokat biztosítanak a rendszertevékenységekről. A naplózási jelentés eléréséhez válassza a **naplók** lehetőséget a **Azure Active Directory** **figyelés** szakaszában. 
 
@@ -60,7 +61,7 @@ Az auditnapló alapértelmezett listanézete az alábbi adatokat jeleníti meg:
 - a célt
 - a tevékenység kezdeményezőjét / szereplőjét (ki?)
 
-![Auditnaplók](./media/concept-audit-logs/listview.png "Auditnaplók")
+![Auditnaplók](./media/concept-audit-logs/listview.png "Naplók")
 
 A listanézetet az eszköztár **Oszlopok** elemére kattintva lehet testre szabni.
 

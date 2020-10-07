@@ -17,12 +17,12 @@ ms.date: 03/24/2020
 ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 2791b62d8abb1ade199ae3eb72deaf4db56f3725
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 696b295a481d7b986f08f1d758edb8d5adca5717
+ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91361296"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91812828"
 ---
 # <a name="sign-in-activity-reports-in-the-azure-active-directory-portal"></a>Bejelentkezési tevékenységre vonatkozó jelentések az Azure Active Directory portálon
 
@@ -31,6 +31,7 @@ A Azure Active Directory (Azure AD) jelentéskészítési architektúrája a kö
 - **Tevékenység** 
     - **Bejelentkezések** – információk a felügyelt alkalmazások és a felhasználói bejelentkezési tevékenységek használatáról.
     - **Naplók**  -  A [naplók](concept-audit-logs.md) rendszertevékenységi információkat biztosítanak a felhasználókról és a csoport kezeléséről, a felügyelt alkalmazásokról és a címtárbeli tevékenységekről.
+    - Naplók kiépítés **Provisioning logs**  -  A [kiépítési naplók](https://docs.microsoft.com/azure/active-directory/reports-monitoring/concept-provisioning-logs) lehetővé teszik az ügyfelek számára, hogy a kiépítési szolgáltatás által végzett tevékenységeket figyeljenek, például egy csoport létrehozását a ServiceNow-ben, vagy egy munkanapokból importált felhasználót. 
 - **Biztonság** 
     - **Kockázatos bejelentkezések** – a [kockázatos bejelentkezés](../identity-protection/overview-identity-protection.md) egy olyan bejelentkezési kísérlet, amely nem a felhasználói fiók legitim tulajdonosa.
     - **Kockázatnak** kitett felhasználók – a [kockázatos felhasználók](../identity-protection/overview-identity-protection.md) egy olyan felhasználói fiókra vonatkozó jelző, amely esetleg sérült.
@@ -142,7 +143,7 @@ A **hely** – a hálózatról kezdeményezett hely:
 ![Ügyfélalkalmazás-szűrő](./media/concept-sign-ins/client-app-filter.png)
 
 
-|Name|Modern hitelesítés|Description|
+|Name (Név)|Modern hitelesítés|Leírás|
 |---|:-:|---|
 |Hitelesített SMTP| |Az e-mail-üzenetek küldéséhez használja a POP és az IMAP-ügyfél.|
 |Automatikus észlelési| |Az Outlook és az EAS-ügyfelek használják a postaládák keresésére és az Exchange Online-ban való kapcsolódására.|

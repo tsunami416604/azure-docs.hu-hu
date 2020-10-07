@@ -1,6 +1,6 @@
 ---
 title: Naplók kiépítés a Azure Active Directory portálon (előzetes verzió) | Microsoft Docs
-description: A Azure Active Directory-portálon végzett kiépítési tevékenységekről szóló jelentések bemutatása
+description: A naplók kiépítési jelentéseinek bemutatása a Azure Active Directory portálon
 services: active-directory
 documentationcenter: ''
 author: MarkusVi
@@ -13,16 +13,16 @@ ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: identity
 ms.subservice: report-monitor
-ms.date: 09/02/2020
+ms.date: 10/07/2020
 ms.author: markvi
 ms.reviewer: arvinh
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8aa31c6e196f916b4c7633da0c54a30ab9d7b548
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 6109f35c42d4b4a44430eeb99ec115f4cdc1a619
+ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91361279"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91812556"
 ---
 # <a name="provisioning-reports-in-the-azure-active-directory-portal-preview"></a>Jelentések kiépítési jelentései a Azure Active Directory portálon (előzetes verzió)
 
@@ -42,6 +42,7 @@ Ez a témakör áttekintést nyújt a kiépítési jelentésről.
 ## <a name="prerequisites"></a>Előfeltételek
 
 ### <a name="who-can-access-the-data"></a>Ki férhet hozzá az adatokhoz?
+* Alkalmazás tulajdonosai
 * Felhasználók a biztonsági rendszergazda, a biztonsági olvasó, a jelentéskészítő, az alkalmazás rendszergazdája és a Felhőbeli alkalmazás rendszergazdai szerepkörei
 * Globális rendszergazdák
 
@@ -95,7 +96,7 @@ Az alapértelmezett nézetben a következő szűrőket választhatja ki:
 
 - Identitás
 - Dátum
-- Állapot
+- status
 - Művelet
 
 
@@ -210,13 +211,11 @@ Az **Összefoglalás** lapon áttekintheti, hogy mi történt, és milyen azonos
 
 ## <a name="what-you-should-know"></a>Alapismeretek
 
-- A Azure Portal 30 napig tárolja a kiépítési adatgyűjtési jelentést, ha rendelkezik prémium szintű kiadással, és 7 nap van, ha ingyenes kiadással rendelkezik.
+- Ha ingyenes kiadással rendelkezik, a Azure Portal 30 napig tárolja a kiépítési adatgyűjtési jelentést. A kiépítési naplók 30 napon túli megőrzés céljából közzétehetők a log Analyticsben. 
 
 - A Change ID attribútum egyedi azonosítóként használható. Ez például a terméktámogatással való interakció esetén hasznos.
 
 - Jelenleg nincs lehetőség a kiépítési adatainak CSV-fájlként való letöltésére, de az adatexportálást [Microsoft Graph](https://docs.microsoft.com/graph/api/provisioningobjectsummary-list?view=graph-rest-beta&tabs=http)használatával végezheti el.
-
-- A log Analytics jelenleg nem támogatott.
 
 - A kihagyott eseményeket a hatókörön kívüli felhasználók számára is megtekintheti. Ez várható, különösen akkor, ha a szinkronizálási hatókör az összes felhasználóra és csoportra van beállítva. A szolgáltatás a bérlő összes objektumát kiértékeli, még a hatókörön kívül is. 
 
@@ -226,7 +225,7 @@ Az **Összefoglalás** lapon áttekintheti, hogy mi történt, és milyen azonos
 
 Az alábbi táblázat segítségével jobban megismerheti, Hogyan oldhatók meg a kiépítési naplókban esetlegesen felmerülő hibák. A hiányzó hibakódok esetében küldjön visszajelzést az oldal alján található hivatkozás használatával. 
 
-|Hibakód|Description|
+|Hibakód|Leírás|
 |---|---|
 |Ütközés, EntryConflict|Javítsa ki az ütköző attribútum értékeit az Azure AD-ben vagy az alkalmazásban, vagy tekintse át a megfelelő attribútum-konfigurációt, ha az ütköző felhasználói fióknak meg kell egyeznie és át kellene vennie. Az egyeztetési attribútumok konfigurálásával kapcsolatos további információkért tekintse át az alábbi [dokumentációt](../app-provisioning/customize-application-attributes.md) .|
 |TooManyRequests|A célalkalmazás elutasította ezt a kísérletet a felhasználó frissítésére, mert túlterhelt, és túl sok kérést fogad. Semmi teendő. A rendszer automatikusan kivonja ezt a kísérletet. A Microsoft értesítette a problémát is.|
@@ -252,3 +251,4 @@ Az alábbi táblázat segítségével jobban megismerheti, Hogyan oldhatók meg 
 
 * [A felhasználó kiépítési állapotának megtekintése](../app-provisioning/application-provisioning-when-will-provisioning-finish-specific-user.md)
 * [Hiba történt a felhasználók Azure AD Gallery-alkalmazásba való konfigurálásának beállításakor](../app-provisioning/application-provisioning-config-problem.md)
+* [Naplók kiépítés gráf API-val](https://docs.microsoft.com/graph/api/resources/provisioningobjectsummary?view=graph-rest-beta)

@@ -12,14 +12,14 @@ ms.devlang: na
 ms.topic: how-to
 ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
-ms.date: 11/15/2017
+ms.date: 10/06/2020
 ms.author: steveesp
-ms.openlocfilehash: 7b693d10b4e1925e9c07111982a616b56b77e5b6
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.openlocfilehash: 20403b8c45120a53ea38fbbed60c8f96fd9d55e7
+ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87265143"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91812845"
 ---
 # <a name="optimize-network-throughput-for-azure-virtual-machines"></a>Az Azure-beli virtuális gépek hálózati teljesítményének optimalizálása
 
@@ -56,12 +56,12 @@ Az RSS-t az Azure Linux virtuális gépek alapértelmezés szerint mindig enged�
 
 ### <a name="ubuntu-for-new-deployments"></a>Ubuntu az új üzemelő példányokhoz
 
-Az Ubuntu Azure kernel a legjobb hálózati teljesítményt biztosítja az Azure-ban, és az alapértelmezett kernel volt a 2017. szeptember 21. óta. A rendszermag beszerzéséhez először telepítse az 16,04-LTS legújabb támogatott verzióját, a következőképpen:
+Az Ubuntu Azure kernel a leginkább optimalizált hálózati teljesítmény az Azure-ban. A legújabb optimalizálások beszerzéséhez először telepítse az 18,04-LTS legújabb támogatott verzióját, a következőképpen:
 
 ```json
 "Publisher": "Canonical",
 "Offer": "UbuntuServer",
-"Sku": "16.04-LTS",
+"Sku": "18.04-LTS",
 "Version": "latest"
 ```
 
@@ -89,7 +89,7 @@ apt-get -y dist-upgrade
 
 #### <a name="ubuntu-azure-kernel-upgrade-for-existing-vms"></a>Ubuntu Azure kernel frissítése meglévő virtuális gépekhez
 
-Az Azure Linux kernelre való frissítéssel jelentős átviteli teljesítmény érhető el. Annak ellenőrzéséhez, hogy van-e ilyen kernel, ellenőrizze a kernel verzióját.
+Az Azure Linux kernelre való frissítéssel jelentős átviteli teljesítmény érhető el. Annak ellenőrzéséhez, hogy van-e ilyen kernel, ellenőrizze a kernel verzióját. A példánál vagy annál későbbinek kell lennie.
 
 ```bash
 #Azure kernel name ends with "-azure"
@@ -117,7 +117,7 @@ A legújabb optimalizáláshoz a következő paraméterek megadásával érdemes
 ```json
 "Publisher": "OpenLogic",
 "Offer": "CentOS",
-"Sku": "7.4",
+"Sku": "7.7",
 "Version": "latest"
 ```
 
@@ -151,7 +151,8 @@ sudo ./install.sh #or upgrade.sh if prior LIS was previously installed
 
 További információ a Hyper-V-hez készült Linux Integration Services 4,2-es verziójáról a [letöltési oldal](https://www.microsoft.com/download/details.aspx?id=55106)megtekintésével.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
+* Virtuális gépek üzembe helyezése közel egymáshoz a [közelségi elhelyezési csoporttal](../virtual-machines/windows/co-location.md) való alacsony késés érdekében
 * Tekintse meg az optimalizált eredményt a [sávszélesség/átviteli sebesség tesztelése Azure virtuális gépen](virtual-network-bandwidth-testing.md) a forgatókönyvhöz.
 * További információ arról [, hogyan vannak lefoglalva a sávszélesség a virtuális gépekhez](virtual-machine-network-throughput.md)
 * További információ az [Azure Virtual Network gyakori kérdéseiről (GYIK)](virtual-networks-faq.md)

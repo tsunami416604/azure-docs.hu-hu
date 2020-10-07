@@ -8,16 +8,16 @@ manager: nitinme
 ms.service: cognitive-services
 ms.subservice: speech-service
 ms.topic: conceptual
-ms.date: 10/05/2020
+ms.date: 10/07/2020
 ms.author: aahi
 ms.custom: cog-serv-seo-aug-2020
 keywords: helyszíni, Docker, tároló
-ms.openlocfilehash: ed14b0b90fadf02ee23852ebce9a60b758b82573
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.openlocfilehash: 0ba479e8c73cb7b0f397f39124ec32d7b9afbf4f
+ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91766472"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91813270"
 ---
 # <a name="install-and-run-docker-containers-for-the-speech-service-apis"></a>Docker-tárolók telepítése és futtatása a Speech Service API-khoz 
 
@@ -39,7 +39,7 @@ A Speech-tárolókkal az ügyfelek beszédalapú alkalmazások architektúrájá
 >
 > A beszédfelismerési tárolók használatához online kérelmet kell elküldenie, és azt jóvá kell hagynia. További információért tekintse **meg a kérelem jóváhagyása a tároló futtatása** című szakaszt.
 
-| Tároló | Funkciók | Legutóbbi |
+| Tároló | Szolgáltatások | Legutóbbi |
 |--|--|--|
 | Diktálás | Elemzi az érzelmeket, és átírja a folyamatos valós idejű beszédet vagy a Batch hangfelvételeket közbenső eredményekkel.  | 2.5.0 |
 | Custom Speech – szöveg | A [Custom Speech portál](https://speech.microsoft.com/customspeech)egyéni modelljét használva folyamatos valós idejű beszédet vagy batch-hangfelvételeket vált ki közbenső eredményekkel rendelkező szövegbe. | 2.5.0 |
@@ -140,7 +140,7 @@ A Speech tároló lemezképei a következő Container Registry érhetők el.
 # <a name="speech-language-detection"></a>[Beszédfelismerési Nyelvfelismerés](#tab/lid)
 
 > [!TIP]
-> A legjobb eredmény érdekében javasoljuk, hogy a beszédfelismerési nyelvfelismerés tárolót használja a beszéd – szöveg vagy az egyéni beszéd – szöveg tárolók használatával. 
+> A leghasznosabb eredmények elérése érdekében javasoljuk, hogy a beszédfelismerési nyelvfelismerés tárolót használja a beszéd – szöveg vagy az egyéni beszéd – szöveg tárolók használatával. 
 
 | Tároló | Adattár |
 |-----------|------------|
@@ -673,7 +673,7 @@ További információ ezekről a beállításokról: [tárolók konfigurálása]
 
 [!INCLUDE [Discoverability of more container information](../../../includes/cognitive-services-containers-discoverability.md)]
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
 Ebben a cikkben megtanulta a beszédfelismerési tárolók letöltésére, telepítésére és futtatására vonatkozó fogalmakat és munkafolyamatokat. Összegezve:
 

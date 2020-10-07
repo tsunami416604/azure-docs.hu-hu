@@ -8,12 +8,12 @@ ms.topic: overview
 ms.service: iot-central
 services: iot-central
 ms.custom: mvc
-ms.openlocfilehash: 4ad1bcabc2e30e9e636883219d42f96335e32e78
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 6d95c07e5bec810ce82e98b2291b348fbcc2d8bc
+ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90987362"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91812437"
 ---
 # <a name="what-is-azure-iot-central"></a>Mi az az Azure IoT Central?
 
@@ -50,14 +50,21 @@ Gyorsan üzembe helyezhet egy új IoT Central alkalmazást, és testre szabhatja
 
 Megoldás-szerkesztőként a webalapú eszközök használatával hozzon létre egy _sablont_ az alkalmazáshoz csatlakozó eszközökhöz. Az eszköz sablonja az a terv, amely meghatározza egy adott típusú eszköz jellemzőit és viselkedését, például:
 
-- Telemetria.
-- Az operátor által módosítható üzleti tulajdonságok.
-- Azok az eszköztulajdonságok, amelyeket az eszköz állít be, és az alkalmazásban csak olvashatók.
-- A tulajdonságok, amelyeket az operátor állít be, amelyek meghatározzák az eszköz viselkedését.
+- Telemetria. Ilyenek például a hőmérséklet és a páratartalom. A telemetria adatfolyam-adatátviteli szolgáltatás.
+- Az operátor által módosítható üzleti tulajdonságok. Ilyenek például az ügyfél címe és az utolsó kiszolgált dátum.
+- Azok az eszköztulajdonságok, amelyeket az eszköz állít be, és az alkalmazásban csak olvashatók. Például a szelep állapota nyitott vagy leállított állapotú lehet.
+- A tulajdonságok, amelyeket az operátor állít be, amelyek meghatározzák az eszköz viselkedését. Például az eszközhöz tartozó cél hőmérséklet.
+- Az eszközön futó operátor által hívható parancsok. Például egy eszköz távoli újraindítására szolgáló parancs.
 
 Ez az [eszköz](howto-set-up-template.md) a következőket tartalmazza:
 
-- Egy _eszköz-képesség modell_ , amely leírja az eszköz által megvalósított képességeket, például az általa küldött telemetria és az általa jelentett tulajdonságokat.
+- Egy _eszköz-képesség modell_ , amely leírja az eszköz által megvalósított képességeket. Az eszköz képességei a következők:
+
+  - A IoT Central telemetria.
+  - A csak olvasható tulajdonságok a jelentés állapotát IoT Central.
+  - Az eszköz állapotának beállításához a IoT Centraltól kapott írható tulajdonságok.
+  - A IoT Central által hívott parancsok.
+
 - Az eszközön nem tárolt Felhőbeli tulajdonságok.
 - A IoT Central alkalmazás részét képező testreszabások, irányítópultok és űrlapok.
 
@@ -144,10 +151,9 @@ Minden Azure-előfizetéshez tartozik alapértelmezett kvóta, amely hatással l
 - A tömb sémájának típusai nem támogatottak.
 - Csak a C eszközoldali SDK és a Node.js eszköz és a szolgáltatás SDK-k támogatottak.
 - IoT Central jelenleg a Egyesült Államok, Európa, Ázsia és a Csendes-óceáni térség, Ausztrália, Egyesült Királyság és Japán helyszíneken érhető el.
-- Az **egyéni alkalmazás (örökölt)** alkalmazás-sablon nem használható az Egyesült Királyság és Japán helyein.
 - Az eszköz képességeinek modelljeinek minden, ugyanabban a fájlban definiált illesztőfelülettel kell rendelkezniük.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy áttekintette a IoT Centralt, néhány javasolt lépés:
 

@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 10/06/2020
 ms.author: rolyon
-ms.openlocfilehash: fd8192b48f6923a8fe68abf674d6100c8b8e5a00
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: e5b0eb5fc9014a4f8df0f0cc363b5dddb45674af
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91761872"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91804180"
 ---
 # <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory"></a>Azure-előfizetés átvitele egy másik Azure AD-címtárba
 
@@ -74,7 +74,7 @@ Számos Azure-erőforrás függőséget tartalmaz egy előfizetéshez vagy egy c
 | Azure Data Lake Storage Gen1 | Igen | Igen |  | Az ACL-eket újra létre kell hoznia. |
 | Azure Files | Igen | Igen |  | Az ACL-eket újra létre kell hoznia. |
 | Azure File Sync | Igen | Igen |  |  |
-| Azure Managed Disks | Igen | N/A |  |  |
+| Azure Managed Disks | Igen | Igen |  |  Ha az ügyfél által felügyelt kulcsokkal rendelkező Managed Disks titkosítását használja, le kell tiltania, majd újra engedélyeznie kell a lemezes titkosítási csoportokhoz társított rendszerhez rendelt identitásokat. És újra létre kell hoznia a szerepkör-hozzárendeléseket, azaz újra meg kell adnia a szükséges engedélyeket a lemez titkosítási csoportjai számára a Kulcstartókban. |
 | Azure Container Services a Kubernetes-hez | Igen | Igen |  |  |
 | Azure Active Directory tartományi szolgáltatások | Igen | Nem |  |  |
 | Alkalmazásregisztrációk | Igen | Igen |  |  |
@@ -377,7 +377,7 @@ Ha szeretné eltávolítani a hozzáférést a forrás címtárban lévő felhas
 
 1. A tanúsítványokat használó erőforrások esetében frissítse a tanúsítványt.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Azure-előfizetés számlázási tulajdonjogának átadása másik fióknak](../cost-management-billing/manage/billing-subscription-transfer.md)
 - [Azure-előfizetések átvitele az előfizetők és a CSP-k között](../cost-management-billing/manage/transfer-subscriptions-subscribers-csp.md)

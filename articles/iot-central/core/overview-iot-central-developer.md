@@ -1,6 +1,6 @@
 ---
 title: Az Azure IoT Central eszközének fejlesztése | Microsoft Docs
-description: Az Azure IoT Central egy IoT-alkalmazásplatform, amely megkönnyíti IoT-megoldások létrehozását. Ez a cikk áttekintést nyújt a IoT Central-alkalmazáshoz való kapcsolódáshoz szükséges eszközök fejlesztéséről.
+description: Az Azure IoT Central egy IoT-alkalmazásplatform, amely megkönnyíti IoT-megoldások létrehozását. Ez a cikk áttekintést nyújt a IoT Central-alkalmazáshoz való kapcsolódáshoz szükséges eszközök fejlesztéséről. Az eszközök a telemetria használatával küldenek adatfolyam-adatátviteli és-tulajdonságokat az eszköz állapotának jelentéséhez. A IOT Central eszköz állapotának beállításához írható tulajdonságok és hívási parancsok használhatók az eszközökön.
 author: dominicbetts
 ms.author: dobett
 ms.date: 05/05/2020
@@ -10,12 +10,12 @@ services: iot-central
 ms.custom:
 - mvc
 - device-developer
-ms.openlocfilehash: 6fabd7d8cf5c19f05bd31c2d0b12863fd6e25382
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 39ce436cd59447b2b6f8d9f88deaab80b00dd639
+ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90017523"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91812352"
 ---
 # <a name="iot-central-device-development-overview"></a>Az IoT Central-eszközfejlesztés áttekintése
 
@@ -26,7 +26,7 @@ Egy IoT Central alkalmazás lehetővé teszi több millió eszköz figyelését 
 Az eszközök az alábbi primitívek használatával kommunikálnak IoT Central alkalmazásokkal:
 
 - A _telemetria_ olyan adatokat mutatnak be, amelyeket az eszköz a IoT Centralnek küld. Például egy fedélzeti érzékelőből származó hőmérsékleti értékek streamje.
-- A _Tulajdonságok_ olyan állapotinformációkat jelentenek, amelyeket az eszköz IoT Central. Például az eszköz aktuális belső vezérlőprogram-verziója. Használhat olyan írható tulajdonságokat is, amelyeket IoT Central frissíthet az eszközön.
+- A _Tulajdonságok_ olyan állapotinformációkat jelentenek, amelyeket az eszköz IoT Central. Például az eszköz aktuális belső vezérlőprogram-verziója. Használhat olyan írható tulajdonságokat is, amelyeket IoT Central frissíthet az eszközön, például a cél hőmérsékletét.
 - Az eszközök viselkedésének szabályozására a rendszer a IoT Central _parancsokat_ hívja meg. Előfordulhat például, hogy a IoT Central alkalmazás meghív egy parancsot egy eszköz újraindítására.
 
 A megoldás-szerkesztő feladata az irányítópultok és nézetek konfigurálása a IoT Central webes felületen a telemetria, a tulajdonságok kezelése és a hívási parancsok megjelenítéséhez.
@@ -95,7 +95,7 @@ Néhány mintakód: [Node.js ügyfélalkalmazás létrehozása és összekötés
 
 További információ a támogatott nyelvekről és SDK-k használatáról: az [Azure IoT hub Device SDK-k megismerése és használata](../../iot-hub/iot-hub-devguide-sdks.md#azure-iot-hub-device-sdks).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha Ön egy eszköz fejlesztője, és szeretne belemerülni egy kódra, a javasolt következő lépés egy [ügyfélalkalmazás létrehozása és csatlakoztatása az Azure IoT Central-alkalmazáshoz](./tutorial-connect-device-nodejs.md).
 

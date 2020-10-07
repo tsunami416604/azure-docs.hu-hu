@@ -5,17 +5,37 @@ author: mamccrea
 ms.author: mamccrea
 ms.service: stream-analytics
 ms.topic: how-to
-ms.date: 03/05/2020
-ms.openlocfilehash: 637ac97d1e054599ec297344ff0c5fff600c8487
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.date: 09/23/2020
+ms.openlocfilehash: fa37c251e61b1f920edc55ead38f745439f2de92
+ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
-ms.locfileid: "86045348"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91812862"
 ---
 # <a name="data-protection-in-azure-stream-analytics"></a>Adatvédelem a Azure Stream Analyticsban 
 
 A Azure Stream Analytics egy teljes körűen felügyelt platform-szolgáltatás, amellyel valós idejű elemzési folyamatokat hozhat létre. Az összes nehéz megoldás, mint például a fürt üzembe helyezése, a csomópontok méretezése a használathoz, és a belső ellenőrzőpontok kezelése a háttérben történik.
+
+## <a name="private-data-assets-that-are-stored"></a>Tárolt privát adategységek
+
+A Azure Stream Analytics a következő metaadatokat és adatokat őrzi meg a futtatásához: 
+
+* Lekérdezés definíciója és kapcsolódó konfigurációja  
+
+* Felhasználó által definiált függvények vagy összesítések  
+
+* Az Stream Analytics futtatókörnyezet által igényelt ellenőrzőpontok
+
+* A hivatkozási adatpillanatképek 
+
+* A Stream Analytics-feladathoz használt erőforrások kapcsolati adatai
+
+A megfelelőségi kötelezettségeinek bármely szabályozott iparágban vagy környezetben való kielégítése érdekében további információkat olvashat a [Microsoft megfelelőségi ajánlatáról](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942). 
+
+## <a name="in-region-data-residency"></a>Régión belüli adattárolás
+A Azure Stream Analytics az ügyféladatokat és a fent leírt egyéb metaadatokat tárolja. A rendszer alapértelmezés szerint egyetlen régióban Azure Stream Analytics tárolja az ügyféladatokat, így a szolgáltatás automatikusan megfelel a régiókban tárolt adattárolási követelményeknek, beleértve a [megbízhatósági központban](https://azuredatacentermap.azurewebsites.net/)megadott követelményeket is.
+Emellett dönthet úgy is, hogy a stream Analytics-feladathoz kapcsolódó összes adategységet (ügyféladatokat és egyéb metaadatokat) egyetlen régióban tárolja úgy, hogy az Ön által választott Storage-fiókban titkosítja őket.
 
 ## <a name="encrypt-your-data"></a>Adatok titkosítása
 
@@ -28,7 +48,14 @@ Ezt a beállítást a Stream Analytics feladatok létrehozásának időpontjába
 A Storage-fiók kulcsainak frissítése vagy elforgatása nem lehetséges a Stream Analytics portál használatával. A kulcsokat a REST API-k használatával frissítheti.
 
 
-## <a name="configure-storage-account-for-private-data"></a>A Storage-fiók konfigurálása magánjellegű adatként 
+### <a name="configure-storage-account-for-private-data"></a>A Storage-fiók konfigurálása magánjellegű adatként 
+
+
+Titkosítsa a Storage-fiókját, hogy biztosítsa az összes adatait, és explicit módon válassza ki a személyes adatai helyét. 
+
+A megfelelőségi kötelezettségeinek bármely szabályozott iparágban vagy környezetben való kielégítése érdekében további információkat olvashat a [Microsoft megfelelőségi ajánlatáról](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942). 
+
+
 
 A következő lépésekkel konfigurálhatja a Storage-fiókot a privát adategységekhez. Ez a konfiguráció a Stream Analyticsi feladatokból, és nem a Storage-fiókból történik.
 
@@ -46,26 +73,12 @@ A következő lépésekkel konfigurálhatja a Storage-fiókot a privát adategys
 
    ![Magánjellegű adattárolási fiók beállításai](./media/data-protection/storage-account-create.png)
 
-## <a name="private-data-assets-that-are-stored"></a>Tárolt privát adategységek
 
-Az Stream Analytics által megőrzött személyes adatait a Storage-fiókban kell tárolni. A privát adategységek például a következők: 
 
-* A létrehozott lekérdezések és a hozzájuk kapcsolódó konfigurációk  
+### <a name="known-issues"></a>Ismert problémák
+Jelenleg létezik egy ismert korlátozás, amelyben az ügyfél által felügyelt kulcsot használó feladatok hibákkal futnak, amikor felügyelt identitást használ a bemenetek és kimenetek hitelesítéséhez.
 
-* Felhasználó által meghatározott függvények 
-
-* Az Stream Analytics futtatókörnyezet által igényelt ellenőrzőpontok
-
-* A hivatkozási adatpillanatképek 
-
-A Stream Analytics-feladatban használt erőforrások kapcsolati adatait is tárolja a rendszer. Titkosítsa a Storage-fiókját az összes adatai védelméhez. 
-
-A megfelelőségi kötelezettségeinek bármely szabályozott iparágban vagy környezetben való kielégítése érdekében további információkat olvashat a [Microsoft megfelelőségi ajánlatáról](https://gallery.technet.microsoft.com/Overview-of-Azure-c1be3942). 
-
-## <a name="known-issues"></a>Ismert problémák
-Ismert hiba történt, amikor az ügyfél által felügyelt kulcsot használó feladatok hibákba ütközik, amikor felügyelt identitást használ a bemenetek és kimenetek hitelesítéséhez. A probléma javítása folyamatban van, és hamarosan elérhetővé válik a közeljövőben. 
-
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Azure Storage-fiók létrehozása](../storage/common/storage-account-create.md)
 * [Azure Stream Analytics-bemenetek ismertetése](stream-analytics-add-inputs.md)

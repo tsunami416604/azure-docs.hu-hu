@@ -1,14 +1,14 @@
 ---
 title: Biztonságos webhook-kézbesítés az Azure AD-vel Azure Event Grid
 description: Ismerteti, hogyan lehet eseményeket kézbesíteni a Azure Active Directory által védett HTTPS-végpontoknak Azure Event Grid használatával
-ms.topic: conceptual
-ms.date: 09/23/2020
-ms.openlocfilehash: e4a6e08f3e28b84198346efb7de09b202b884575
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.topic: how-to
+ms.date: 10/05/2020
+ms.openlocfilehash: 0320e78e6b436f6ba1c0a6ca1bfec81eb974e106
+ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91322546"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91812199"
 ---
 # <a name="publish-events-to-azure-active-directory-protected-endpoints"></a>Események közzététele az Azure Active Directory által védett végpontokon
 
@@ -23,27 +23,46 @@ Először hozzon létre egy Azure AD-alkalmazást a védett végpont számára. 
     - Beállíthatja, hogy a védett API-t egy Daemon-alkalmazás hívja meg.
     
 ## <a name="enable-event-grid-to-use-your-azure-ad-application"></a>Az Azure AD-alkalmazás használatának engedélyezése Event Grid
+Ez a szakasz bemutatja, hogyan engedélyezheti Event Grid az Azure AD-alkalmazás használatát. 
 
-Az alábbi PowerShell-szkripttel hozzon létre egy szerepkört és egy szolgáltatásnevet az Azure AD-alkalmazásban. Az Azure AD-alkalmazásban szüksége lesz a bérlői AZONOSÍTÓra és az objektum-AZONOSÍTÓra:
+> [!NOTE]
+> A szkript végrehajtásához az [Azure ad alkalmazás-rendszergazda szerepkör](../active-directory/users-groups-roles/directory-assign-admin-roles.md#available-roles) tagjának kell lennie.
 
-   > [!NOTE]
-   > A szkript végrehajtásához az [Azure ad alkalmazás-rendszergazda szerepkör](../active-directory/users-groups-roles/directory-assign-admin-roles.md#available-roles) tagjának kell lennie.
-    
-1. Módosítsa a PowerShell-parancsfájl $myTenantIdét az Azure AD-bérlő AZONOSÍTÓjának használatára.
-1. A PowerShell-parancsfájl $myAzureADApplicationObjectId módosítása az Azure AD-alkalmazás objektumazonosítójának használatára
-1. Futtassa a módosított parancsfájlt.
+### <a name="connect-to-your-azure-tenant"></a>Kapcsolódás az Azure-bérlőhöz
+Először kapcsolódjon az Azure-bérlőhöz a `Connect-AzureAD` parancs használatával. 
 
 ```PowerShell
 # This is your Tenant Id. 
 $myTenantId = "<the Tenant Id of your Azure AD Application>"
-
 Connect-AzureAD -TenantId $myTenantId
-    
-# This is your Azure AD Application's ObjectId. 
-$myAzureADApplicationObjectId = "<the Object Id of your Azure AD Application>"
-    
+```
+
+### <a name="create-microsofteventgrid-service-principal"></a>A Microsoft. EventGrid egyszerű szolgáltatásnév létrehozása
+A következő parancsfájl futtatásával hozza létre a **Microsoft. EventGrid** szolgáltatáshoz tartozó egyszerű szolgáltatást, ha még nem létezik. 
+
+```PowerShell
 # This is the "Azure Event Grid" Azure Active Directory AppId
 $eventGridAppId = "4962773b-9cdb-44cf-a8bf-237846a00ab7"
+    
+$eventGridSP = Get-AzureADServicePrincipal -Filter ("appId eq '" + $eventGridAppId + "'")
+
+# Create the service principal if it doesn't exist
+if ($eventGridSP -match "Microsoft.EventGrid")
+{
+    Write-Host "The Service principal is already defined.`n"
+} else
+{
+    # Create a service principal for the "Azure Event Grid" Azure AD Application and add it to the role
+    $eventGridSP = New-AzureADServicePrincipal -AppId $eventGridAppId
+}
+```
+
+### <a name="create-a-role-for-your-application"></a>Szerepkör létrehozása az alkalmazáshoz   
+Futtassa az alábbi szkriptet az Azure AD-alkalmazáshoz tartozó szerepkör létrehozásához. Ebben a példában a szerepkör neve: **AzureEventGridSecureWebhook**. Módosítsa a PowerShell-parancsfájlt az `$myTenantId` Azure ad-bérlői azonosító használatára, valamint az `$myAzureADApplicationObjectId` Azure ad-alkalmazás Object ID azonosítójával
+
+```PowerShell
+# This is your Azure AD Application's ObjectId. 
+$myAzureADApplicationObjectId = "<the Object Id of your Azure AD Application>"
     
 # This is the name of the new role we will add to your Azure AD Application
 $eventGridRoleName = "AzureEventGridSecureWebhook"
@@ -61,11 +80,10 @@ Function CreateAppRole([string] $Name, [string] $Description)
     $appRole.Value = $Name;
     return $appRole
 }
-    
+
 # Get my Azure AD Application, it's roles and service principal
 $myApp = Get-AzureADApplication -ObjectId $myAzureADApplicationObjectId
 $myAppRoles = $myApp.AppRoles
-$eventGridSP = Get-AzureADServicePrincipal -Filter ("appId eq '" + $eventGridAppId + "'")
 
 Write-Host "App Roles before addition of new role.."
 Write-Host $myAppRoles
@@ -74,8 +92,7 @@ Write-Host $myAppRoles
 if ($myAppRoles -match $eventGridRoleName)
 {
     Write-Host "The Azure Event Grid role is already defined.`n"
-}
-else
+} else
 {
     $myServicePrincipal = Get-AzureADServicePrincipal -Filter ("appId eq '" + $myApp.AppId + "'")
     
@@ -84,25 +101,25 @@ else
     $myAppRoles.Add($newRole)
     Set-AzureADApplication -ObjectId $myApp.ObjectId -AppRoles $myAppRoles
 }
-    
-# Create the service principal if it doesn't exist
-if ($eventGridSP -match "Microsoft.EventGrid")
-{
-    Write-Host "The Service principal is already defined.`n"
-}
-else
-{
-    # Create a service principal for the "Azure Event Grid" Azure AD Application and add it to the role
-    $eventGridSP = New-AzureADServicePrincipal -AppId $eventGridAppId
-}
-    
+
+# print application's roles
+Write-Host "My Azure AD Application's Roles: "
+Write-Host $myAppRoles
+```
+
+### <a name="add-event-grid-service-principal-to-the-role"></a>Event Grid egyszerű szolgáltatásnév hozzáadása a szerepkörhöz    
+Most futtassa a `New-AzureADServiceAppRoleAssignment` parancsot Event Grid egyszerű szolgáltatásnév hozzárendeléséhez az előző lépésben létrehozott szerepkörhöz. 
+
+```powershell
 New-AzureADServiceAppRoleAssignment -Id $myApp.AppRoles[0].Id -ResourceId $myServicePrincipal.ObjectId -ObjectId $eventGridSP.ObjectId -PrincipalId $eventGridSP.ObjectId
-    
+```
+
+Futtassa az alábbi parancsokat a következő lépések végrehajtásához szükséges információk kiírásához. 
+
+```powershell    
 Write-Host "My Azure AD Tenant Id: $myTenantId"
 Write-Host "My Azure AD Application Id: $($myApp.AppId)"
 Write-Host "My Azure AD Application ObjectId: $($myApp.ObjectId)"
-Write-Host "My Azure AD Application's Roles: "
-Write-Host $myApp.AppRoles
 ```
     
 ## <a name="configure-the-event-subscription"></a>Az esemény-előfizetés konfigurálása

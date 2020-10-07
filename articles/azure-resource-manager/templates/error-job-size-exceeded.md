@@ -2,13 +2,13 @@
 title: A feladatok mérete túllépte a hibát.
 description: Leírja, hogyan lehet elhárítani a hibákat, amikor a feladatok mérete vagy a sablon túl nagy.
 ms.topic: troubleshooting
-ms.date: 09/25/2020
-ms.openlocfilehash: 06645561964d9634d93061b3be4d100a578cc7e7
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.date: 10/07/2020
+ms.openlocfilehash: 5f0df102611dba8ce49da948b14110fff32dc2a9
+ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91373172"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91812896"
 ---
 # <a name="resolve-errors-for-job-size-exceeded"></a>Túllépte a feladatokhoz tartozó hibák elhárítását
 
@@ -38,6 +38,10 @@ Az első lehetőség a sablon egyszerűsítése. Ez a beállítás akkor működ
 
 A társított sablontól függőként más erőforrásokat is beállíthat, és [értékeket kaphat a csatolt sablon kimenetéről](linked-templates.md#get-values-from-linked-template).
 
-## <a name="solution-2---use-serial-copy"></a>2. megoldás – soros másolás használata
+## <a name="solution-2---reduce-name-size"></a>2. megoldás – a név méretének csökkentése
+
+Próbálja megrövidíteni a [paraméterekhez](template-parameters.md), [változókhoz](template-variables.md)és [kimenetekhez](template-outputs.md)használt nevek hosszát. Ha ezeket az értékeket a másolási hurkok használatával ismétli meg, a nagyméretű nevek többször is megszorul. A sablon végső mérete szükségtelenül nagy.
+
+## <a name="solution-3---use-serial-copy"></a>3. megoldás – soros másolás használata
 
 A második lehetőség a másolási hurok [párhuzamosról soros feldolgozásra](copy-resources.md#serial-or-parallel)való módosítása. Ezt a lehetőséget csak akkor használja, ha azt gyanítja, hogy a hiba nagy számú erőforrásnak a másolással történő központi telepítését eredményezi. Ez a változás jelentősen növelheti a központi telepítési időt, mert az erőforrások párhuzamosan nincsenek telepítve.

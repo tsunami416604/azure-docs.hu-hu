@@ -3,12 +3,12 @@ title: Élő videó elemzése a IoT Edge és az Azure élő videó-elemzésével
 description: Megtudhatja, hogyan használhatja a Custom Visiont olyan tárolós modell kiépítéséhez, amely képes észlelni a játékok teherautóját, és az élő videó-elemzések AI-bővíthetőségi funkcióját használja a IoT Edge (LVA) szolgáltatásban a modellnek az élő videó streamből való észlelésére.
 ms.topic: tutorial
 ms.date: 09/08/2020
-ms.openlocfilehash: 97aa514e2347b3398aab6293d8543afcdc239bdb
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: 5da3186e64dd369dc57a0d5d1b635fc082158765
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91776595"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91804146"
 ---
 # <a name="tutorial-analyze-live-video-with-live-video-analytics-on-iot-edge-and-azure-custom-vision"></a>Oktatóanyag: élő videó elemzése élő videó-elemzéssel IoT Edge és az Azure-on Custom Vision
 
@@ -142,37 +142,14 @@ Kattintson a jobb gombbal a Live Video Analytics-eszközre, és válassza a **fi
 
 Ha megnyitja az oktatóanyaghoz tartozó Graph-topológiát egy böngészőben, látni fogja, hogy a inferencingUrl értéke be van állítva http://cv:80/image , ami azt jelenti, hogy a következtetési kiszolgáló visszaadja az eredményeket, miután az élő videóban észleli a Toy Trucks-t, ha van ilyen.
 
-1. A hibakeresési munkamenet indításához válassza az F5 billentyűt. A terminál ablakban láthatók a kinyomtatott üzenetek.
-1. A kód operations.jsa GraphTopologyList és a GraphInstanceList közvetlen metódusok hívásával indul el. Ha az előző rövid útmutatók befejezése után törölte az erőforrásokat, akkor ez a folyamat üres listát ad vissza, majd szünetelteti. A folytatáshoz válassza az ENTER billentyűt.
-    
-   A terminál ablak a közvetlen metódusok következő készletét jeleníti meg:
-    
-   * Az előző topologyUrl használó GraphTopologySet hívása.
-   * A következő törzset használó GraphInstanceSet hívása:
-        
-   ```
-        {
-          "@apiVersion": "1.0",
-          "name": "Sample-Graph-1",
-          "properties": {
-            "topologyName": "CustomVisionWithHttpExtension",
-            "description": "Sample graph description",
-            "parameters": [
-              { 
-                "name": "inferencingUrl",
-                "value": "http://cv:80/image"
-              },
-              {
-                "name": "rtspUrl",
-                "value": "rtsp://rtspsim:554/media/t2.mkv"
-              },
-              {
-                "name": "rtspUserName",
-                "value": "testuser"
-              },
-              {
-                "name": "rtspPassword",
-                "value": "testpassword"
+1. A Visual Studio Code-ban nyissa meg a **bővítmények** lapot (vagy nyomja le a CTRL + SHIFT + X billentyűkombinációt), és keressen rá az Azure IoT hubra.
+1. Kattintson a jobb gombbal, és válassza a **bővítmény beállításai**lehetőséget.
+
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="Custom Vision áttekintése" lehetőséget.
+
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="Custom Vision áttekintése"
               }
             ]
           }
@@ -325,7 +302,7 @@ Vegye figyelembe a következőket a fenti üzenetekben:
 
 Ha szeretné kipróbálni a más oktatóanyagokat vagy gyors útmutatókat, tartsa be a következőt: a létrehozott erőforrásokhoz. Ellenkező esetben lépjen a Azure Portalra, keresse meg az erőforráscsoportot, válassza ki azt az erőforráscsoportot, amelyben az oktatóanyagot futtatta, és törölje az összes erőforrást.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tekintse át a speciális felhasználókra vonatkozó további kihívásokat:
 

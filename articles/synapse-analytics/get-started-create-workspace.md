@@ -8,13 +8,13 @@ manager: julieMSFT
 ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.topic: tutorial
-ms.date: 09/30/2020
-ms.openlocfilehash: b7fd495c735116d3b895a55225c1ef55091db4cb
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.date: 10/07/2020
+ms.openlocfilehash: d3a5f2bd4bf536c1bc5b3723b9b612beef6a647c
+ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91620069"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91812318"
 ---
 # <a name="creating-a-synapse-workspace"></a>Szinapszis-munkaterület létrehozása
 
@@ -29,16 +29,15 @@ Az oktatóanyag lépéseinek elvégzéséhez hozzáféréssel kell rendelkeznie 
 1. Nyissa meg a [Azure Portal](https://portal.azure.com), és a legfelső szintű keresés a **szinapszisban**.
 1. A keresési eredmények között, a **szolgáltatások**területen válassza az **Azure szinapszis Analytics (munkaterületek előzetes verzió)** lehetőséget.
 1. Munkaterület létrehozásához válassza a **Hozzáadás** lehetőséget.
-1. Az **alapvető beállítások**területen válassza ki a munkaterület nevét. Ebben az oktatóanyagban a **sajátmunkaterület**-t fogjuk használni.
+1. Az **alapismeretek**területen adja meg a kötelező mezőket, és válassza ki a munkaterület nevét. Ebben az oktatóanyagban a **sajátmunkaterület**-t fogjuk használni.
 1. Munkaterület létrehozásához ADLSGEN2-fiókra van szükség. A legegyszerűbb lehetőség, hogy újat hozzon létre. Ha újra szeretné használni a meglévőket, néhány további konfigurálást is végre kell hajtania. 
 1. 1. lehetőség új ADLSGEN2-fiók létrehozása 
     1. Navigáljon a **2. generációs Data Lake Storage kiválasztásához**. 
     1. Kattintson az **új létrehozása** elemre, és nevezze el **contosolake**.
-    1. Kattintson a **fájlrendszer** elemre, és nevezze el a **felhasználókat**.
+    1. Kattintson a **fájlrendszer** elemre, és nevezze el a **felhasználókat**. Ekkor létrejön egy **felhasználó** nevű tároló.
 1. 2. lehetőség meglévő ADLSGEN2-fiók használatával. Tekintse meg a jelen dokumentum alján található **ADLSGEN2-fiók előkészítésével** kapcsolatos utasításokat.
 1. Az Azure szinapszis-munkaterülete ezt a Storage-fiókot fogja használni az "elsődleges" Storage-fiók és a munkaterület-adattárolási tároló számára. A munkaterület Apache Spark táblákban tárolja az adattárakat. Egy **/Synapse/workspacename**nevű mappában tárolja a Spark-alkalmazás naplóit.
 1. Válassza a **Felülvizsgálat + létrehozás** > **Létrehozás** lehetőséget. A munkaterület pár percen belül elkészül.
-
 
 ## <a name="open-synapse-studio"></a>A szinapszis Studio megnyitása
 
@@ -117,10 +116,10 @@ Konfigurálja a Storage-fiókhoz való hozzáférést a munkaterületről. Előf
 1. Rendelje hozzá a következő szerepköröket, vagy győződjön meg arról, hogy már hozzá van rendelve. Ugyanazt a nevet használjuk a munkaterület-identitáshoz és a munkaterület nevéhez.
     * A Storage- **blob adatközreműködői** szerepköréhez a Storage-fiókban rendeljen **sajátmunkaterület** a munkaterület-identitáshoz.
     * Rendelje hozzá a **sajátmunkaterület** a munkaterület neveként.
-
 1. Válassza a **Mentés** lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Elemzés SQL-készlet használatával](get-started-analyze-sql-pool.md)

@@ -4,12 +4,12 @@ description: Ez a cikk áttekintést nyújt az Azure Event Hubs (előzetes verzi
 ms.topic: overview
 ms.date: 09/22/2020
 ms.custom: references_regions
-ms.openlocfilehash: a0cc54f6ada1a5900e817c8e22fc192cd73f6550
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 1da59d7757a7f78235ab3ef7ab18ca78e419b761
+ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91653570"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91812420"
 ---
 # <a name="azure-schema-registry-in-event-hubs-preview"></a>Azure Schema Registry az Event Hubsban (előzetes verzió)
 Számos esemény-adatfolyam és üzenetküldési forgatókönyv esetén az esemény vagy az üzenet tartalma strukturált adatokat tartalmaz, amelyek szerializálása vagy deszerializálása séma-vezérelt formátum, például Apache Avro használatával történik. A küldők és a fogadók is ellenőrizhetik az adatok integritását egy séma-dokumentummal, mint a JSON-sémával. A séma által vezérelt formátumok esetében a séma elérhetővé tétele az üzenet fogyasztói számára előfeltétel, hogy a fogyasztó képes legyen deszerializálni az adatmennyiséget. 
@@ -41,7 +41,7 @@ A következő kódtárak egyikét használhatja egy Avro-szerializáló használ
 - [Java – Azure-schemaregistry – Avro](https://github.com/Azure/azure-sdk-for-java/tree/master/sdk/schemaregistry/azure-data-schemaregistry-avro/)
 - [Python – Azure-schemaregistry – avroserializer](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/schemaregistry/azure-schemaregistry-avroserializer)
 - [JavaScript @azure/schema-registry-avro](https://github.com/Azure/azure-sdk-for-js/tree/master/sdk/schemaregistry/schema-registry-avro)
-- [Apache Kafka](https://github.com/Azure/azure-schema-registry-for-kafka/tree/master/avro/samples) – az Azure Schema Registry által támogatott Kafka-integrált Apache Avro-szerializálók és deszerializálók futtatása. A Java-ügyfél Apache Kafka ügyfél-szerializáló az Azure sémakezelő beállításjegyzékben bármilyen Apache Kafka-forgatókönyvben és bármely Apache Kafka®-alapú üzembe helyezéssel vagy felhőalapú szolgáltatásban használható. 
+- [Apache Kafka](https://github.com/Azure/azure-schema-registry-for-kafka/) – az Azure Schema Registry által támogatott Kafka-integrált Apache Avro-szerializálók és deszerializálók futtatása. A Java-ügyfél Apache Kafka ügyfél-szerializáló az Azure sémakezelő beállításjegyzékben bármilyen Apache Kafka-forgatókönyvben és bármely Apache Kafka®-alapú üzembe helyezéssel vagy felhőalapú szolgáltatásban használható. 
 
 Az alábbi ábrán a séma beállításjegyzékének Event Hubs: 
 
@@ -62,7 +62,7 @@ Ha programozott módon fér hozzá a séma beállításjegyzékéhez, regisztrá
 
 Az alkalmazások a Azure Portal használatával történő regisztrálásával kapcsolatos utasításokért lásd: [alkalmazás regisztrálása az Azure ad](../active-directory/develop/quickstart-register-app.md)-ben. Jegyezze fel az ügyfél-azonosítót (az alkalmazás AZONOSÍTÓját), a bérlő AZONOSÍTÓját és a kódban használandó titkot. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ha meg szeretné tudni, hogyan hozhat létre egy séma-beállításjegyzéket a Azure Portal használatával, tekintse meg a [Event Hubs séma-beállításjegyzék létrehozása a Azure Portal használatával](create-schema-registry.md)című témakört.
 - Tekintse meg az alábbi, **Avro ügyféloldali függvénytár** -mintákat.

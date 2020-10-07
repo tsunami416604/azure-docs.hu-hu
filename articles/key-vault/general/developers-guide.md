@@ -8,12 +8,12 @@ ms.subservice: general
 ms.topic: how-to
 ms.date: 10/05/2020
 ms.author: mbaldwin
-ms.openlocfilehash: 662c23a29e383800a4591c900e02133c16fa2090
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: a04435b1e2feb537231bb80d2777b9ea2599c241
+ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91743318"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91812403"
 ---
 # <a name="azure-key-vault-developers-guide"></a>Az Azure Key Vault fejlesztői útmutatója
 
@@ -61,6 +61,11 @@ További információkért lásd:
 | .NET | Python | Java | JavaScript |
 |--|--|--|--|
 |[Azure Identity SDK .NET](https://docs.microsoft.com/dotnet/api/overview/azure/identity-readme)|[Azure Identity SDK Python](https://docs.microsoft.com/python/api/overview/azure/identity-readme)|[Azure Identity SDK Java](https://docs.microsoft.com/java/api/overview/azure/identity-readme)|[Azure Identity SDK JavaScript](https://docs.microsoft.com/javascript/api/overview/azure/identity-readme)|     
+
+Hitelesítés Key Vault alkalmazásokban:
+- [Hitelesítés Key Vault a virtuális gépen üzemeltetett alkalmazásban a .NET-ben](https://docs.microsoft.com/azure/key-vault/general/tutorial-net-virtual-machine)
+- [Hitelesítés Key Vault a virtuális gépen futó alkalmazásban a Pythonban](https://docs.microsoft.com/azure/key-vault/general/tutorial-python-virtual-machine)
+- [Hitelesítés Key Vault a App Service](https://docs.microsoft.com/azure/key-vault/general/tutorial-net-create-vault-azure-web-app)
 
 ## <a name="manage-keys-certificates-and-secrets"></a>Kulcsok, tanúsítványok és titkos kódok kezelése
 
@@ -112,9 +117,13 @@ A következő cikkek és forgatókönyvek feladat-specifikus útmutatást nyújt
 
 Ezek a cikkek olyan egyéb forgatókönyvekkel és szolgáltatásokkal kapcsolatosak, amelyek a Key Vault-t használják vagy integrálják.
 
-- [Inaktív titkosítás Key Vault](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest)
-
+- A [nyugalmi](https://docs.microsoft.com/azure/security/fundamentals/encryption-atrest) állapotban lévő titkosítás lehetővé teszi az adatok kódolását (titkosítását), amikor a rendszer megőrzi a tartalmat. Az adattitkosítási kulcsokat gyakran titkosítja Azure Key Vault a hozzáférés további korlátozása érdekében a kulcs titkosítási kulcsával.
 - [Azure Information Protection](/azure/information-protection/plan-implement-tenant-key) lehetővé teszi a saját bérlői kulcsának felettesét. Például ahelyett, hogy a Microsoft a bérlői kulcsát (az alapértelmezettet) kezelhesse, a saját bérlői kulcsát úgy kezelheti, hogy megfeleljen a szervezetére vonatkozó egyes előírásoknak. A saját bérlőkulcs felügyelete más néven a saját kulcs használata (BYOK).
+- Az [Azure Private link Service](private-link-service.md) lehetővé teszi az Azure-szolgáltatások (például az Azure Key Vault, az Azure Storage és a Azure Cosmos db) és az Azure által üzemeltetett ügyfél-és partneri szolgáltatások elérését a virtuális hálózat privát végpontján keresztül.
+- Key Vault integrációja [Event Grid](https://docs.microsoft.com/azure/event-grid/event-schema-key-vault)  lehetővé teszi a felhasználók számára, hogy a Key vaultban tárolt titkos kód állapotának változásakor értesítést kapjanak. A kiesések elkerülése érdekében a titkok új verzióit terjesztheti az alkalmazásokra, vagy elforgathatja közel lejáró titkokat.
+- Az [Azure Devops](https://docs.microsoft.com/azure/devops/pipelines/release/azure-key-vault) -titkokat a Key Vaultban található nemkívánatos hozzáférésekkel biztosíthatja.
+- [A DataBricks Key Vault tárolt titkos kulcs használata az Azure Storage-hoz való kapcsolódáshoz](https://docs.microsoft.com/azure/key-vault/general/integrate-databricks-blob-storage)
+- A [Secrets Store CSI-illesztőprogram](https://docs.microsoft.com/azure/key-vault/general/key-vault-integrate-kubernetes) Azure Key Vault-szolgáltatójának konfigurálása és futtatása a Kubernetes-on
 
 ## <a name="key-vault-overviews-and-concepts"></a>Key Vault áttekintések és fogalmak
 

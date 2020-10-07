@@ -3,12 +3,12 @@ title: Fájlok visszaállítása Windows Serverre a MARS-ügynök használatáva
 description: Ebből a cikkből megtudhatja, hogyan állíthatja vissza az Azure-ban tárolt információkat egy Windows Server vagy Windows rendszerű számítógépre a Microsoft Azure Recovery Services-(MARS-) ügynökkel.
 ms.topic: conceptual
 ms.date: 09/07/2018
-ms.openlocfilehash: 0d2f9e8197ac397bf61e4cb293e354a10ba0e1da
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 79a4d32d6dbca5ca5be5d46c6b44a07ef42de061
+ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89178557"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91813253"
 ---
 # <a name="restore-files-to-windows-server-using-the-mars-agent"></a>Fájlok visszaállítása Windows Serverre a MARS-ügynök használatával
 
@@ -107,7 +107,7 @@ Ezek a lépések a következő terminológiát tartalmazzák:
 
 5. Adja meg a tár hitelesítő adatait tartalmazó fájlt, amely megfelel a mintatartó tárolónak, majd kattintson a **Tovább gombra**.
 
-    Ha a tároló hitelesítőadat-fájlja érvénytelen (vagy lejárt), töltse le a tárolóban lévő új hitelesítőadat-fájlt a Azure Portal. A tár érvényes hitelesítő adatainak megadását követően megjelenik a megfelelő biztonságimásolat-tároló neve.
+    Ha a tároló hitelesítőadat-fájlja érvénytelen (vagy lejárt), [töltse le a tárolóban lévő új hitelesítőadat-fájlt](backup-azure-file-folder-backup-faq.md#where-can-i-download-the-vault-credentials-file) a Azure Portal. A tár érvényes hitelesítő adatainak megadását követően megjelenik a megfelelő biztonságimásolat-tároló neve.
 
 6. A **biztonsági mentési kiszolgáló kiválasztása** lapon válassza ki a forrásszámítógép listáját a megjelenített gépek listájából, és adja meg a jelszót. Ezután kattintson a **Tovább** gombra.
 
@@ -141,7 +141,7 @@ Ezek a lépések a következő terminológiát tartalmazzák:
     > Ha nem választja ki a **Leválasztás**lehetőséget, a helyreállítási kötet a csatlakoztatása után 6 órán keresztül továbbra is csatlakoztatva marad. A csatlakoztatási idő azonban legfeljebb 24 órára van kiterjesztve egy folyamatban lévő fájl másolásakor. A kötet csatlakoztatása közben nem fut biztonsági mentési művelet. A kötet csatlakoztatásakor ütemezett biztonsági mentési művelet a helyreállítási kötet leválasztása után fog futni.
     >
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Most, hogy helyreállítja a fájlokat és mappákat, [kezelheti a biztonsági mentéseket](backup-azure-manage-windows-server.md).
 

@@ -1,6 +1,6 @@
 ---
 title: Mik az Azure IoT Centralban található eszközök sablonjai | Microsoft Docs
-description: Az Azure IoT Central-sablonjai lehetővé teszik az alkalmazáshoz csatlakoztatott eszközök viselkedésének megadását.
+description: Az Azure IoT Central-sablonjai lehetővé teszik az alkalmazáshoz csatlakoztatott eszközök viselkedésének megadását. Az telemetria az eszköz által megvalósított eszközöket, tulajdonságokat és parancsokat határozza meg. Az eszköz sablonja az eszköz felhasználói felületét is meghatározza IoT Central például az operátor által használt űrlapokat és irányítópultokat.
 author: dominicbetts
 ms.author: dobett
 ms.date: 05/21/2020
@@ -8,12 +8,12 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.custom: device-developer
-ms.openlocfilehash: cdc85029ec004060abf69b111d8a0ebca42147a4
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: 75317b5c6af2d0ce89d2db32f4343d9cc73a1a81
+ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90015092"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91813168"
 ---
 # <a name="what-are-device-templates"></a>Mik azok az eszközsablonok?
 
@@ -26,12 +26,10 @@ A megoldás-szerkesztő egy IoT Central alkalmazáshoz adja hozzá az eszközök
 Az eszköz sablonjai a következő szakaszt tartalmazzák:
 
 - _Egy eszköz-képesség modell (DCM)_. Az eszköz ezen része határozza meg, hogy az eszköz hogyan kommunikál az alkalmazással. Az eszközök fejlesztői implementálják a DCM-ben meghatározott viselkedéseket.
+    - _Felületek_. A DCM egy vagy több olyan felületet tartalmaz, amelyek meghatározzák azokat a telemetria, tulajdonságokat és parancsokat, amelyeket az eszköznek végre kell hajtania.
 - _Felhő tulajdonságai_ A sablon ezen része lehetővé teszi, hogy a megoldás fejlesztője a tárolni kívánt eszköz-metaadatokat határozza meg. A felhő tulajdonságai soha nem szinkronizálhatók az eszközökkel, és csak az alkalmazásban léteznek. A felhő tulajdonságai nem érintik azt a kódot, amelyet az eszköz fejlesztője a DCM megvalósítására ír.
 - _Testreszabások_. A sablon ezen része lehetővé teszi, hogy a megoldás fejlesztője felülbírálja a DCM egyes definícióit. A testreszabások akkor hasznosak, ha a megoldás fejlesztője szeretné megszabni, hogy az alkalmazás hogyan kezelje az értéket, például egy tulajdonság megjelenített nevének vagy a telemetria értékének megjelenítéséhez használt színnek a módosítását. A testreszabások nem érintik azt a kódot, amelyet az eszköz fejlesztője a DCM megvalósítására ír.
 - _Nézetek_. Az eszközbeállítások ezen része lehetővé teszi, hogy a megoldás fejlesztője a vizualizációkat definiálja az eszköz adatainak megtekintéséhez, valamint az eszközök felügyeletére és vezérlésére szolgáló űrlapokat. A nézetek a DCM, a Cloud Properties és a testreszabásokat használják. A nézetek nem érintik azt a kódot, amelyet az eszköz fejlesztője a DCM megvalósítására ír.
-
-> [!NOTE]
-> A [IoT Plug and Play a nyilvános előzetes verzió frissítésének](../../iot-pnp/overview-iot-plug-and-play.md) célja, hogy az eszközök fejlesztői és OEM-eszközei kiépítsék az eszközöket, amelyek tanúsítják a IoT Plug and Play a ga elindítása előtt.
 
 ## <a name="device-capability-models"></a>Eszközképesség-modellek
 
@@ -108,11 +106,11 @@ Az illesztőfelületnek van néhány kötelező mezője:
 
 Vannak olyan választható mezők, amelyek segítségével további részleteket adhat hozzá a képesség modelljéhez, például a megjelenítendő név és a Leírás lehetőséghez.
 
-### <a name="interface"></a>Interfész
+## <a name="interfaces"></a>Interfészek
 
 A DTDL lehetővé teszi az eszköz képességeinek leírását. A kapcsolódó képességek felületekbe vannak csoportosítva. A felületek leírják, hogy a tulajdonságok, a telemetria és a parancsok hogyan implementálják az eszköz részét:
 
-- `Properties`. A tulajdonságok olyan adatmezők, amelyek az eszköz állapotát jelölik. A tulajdonságok használatával az eszköz tartós állapotát, például egy Hűtőfolyadék-szivattyú on-off állapotát jelölheti ki. A tulajdonságok az alapszintű eszköz tulajdonságait is jelezhetik, például az eszköz belső vezérlőprogram-verzióját. A tulajdonságokat csak olvasható vagy írható módon deklarálhatja.
+- `Properties`. A tulajdonságok olyan adatmezők, amelyek az eszköz állapotát jelölik. A tulajdonságok használatával az eszköz tartós állapotát, például egy Hűtőfolyadék-szivattyú on-off állapotát jelölheti ki. A tulajdonságok az alapszintű eszköz tulajdonságait is jelezhetik, például az eszköz belső vezérlőprogram-verzióját. A tulajdonságokat csak olvasható vagy írható módon deklarálhatja. Csak olvasható tulajdonság értékének frissítése csak az eszközökön végezhető el. Az operátor beállíthatja egy írható tulajdonság értékét az eszközre történő küldéshez.
 - `Telemetry`. A telemetria mezők az érzékelők méréseit jelölik. Minden alkalommal, amikor az eszköz érzékelőt használ, egy telemetria eseményt kell küldenie, amely az érzékelő adatait tartalmazza.
 - `Commands`. A parancsok olyan metódusokat jelölnek, amelyeket az eszköz felhasználói futtathatnak az eszközön. Például egy alaphelyzetbe állítási parancs vagy egy, a ventilátor be-és kikapcsolására szolgáló parancs.
 
@@ -159,7 +157,7 @@ A következő példa a környezeti érzékelő felületének definícióját mut
 }
 ```
 
-Ez a példa két tulajdonságot, egy telemetria és két parancsot mutat be. A mező minimális leírása a következőket tartalmazhatja:
+Ez a példa két tulajdonságot (egy írásvédett és egy írható), egy telemetria-típust és két parancsot mutat be. A mező minimális leírása a következőket tartalmazhatja:
 
 - `@type` a képesség típusának megadása: `Telemetry` , `Property` , vagy `Command` .  Bizonyos esetekben a típus egy szemantikai típust tartalmaz, amely lehetővé teszi, hogy IoT Central az érték kezelésével kapcsolatos feltételezések elvégzéséhez.
 - `name` a telemetria értékhez.
@@ -168,7 +166,7 @@ Ez a példa két tulajdonságot, egy telemetria és két parancsot mutat be. A m
 
 Az opcionális mezők, például a megjelenítendő név és a Leírás lehetővé teszik, hogy további részleteket adjon hozzá az interfészhez és a képességekhez.
 
-### <a name="properties"></a>Tulajdonságok
+## <a name="properties"></a>Tulajdonságok
 
 Alapértelmezés szerint a tulajdonságok csak olvashatók. A csak olvasható tulajdonságok érték azt jelenti, hogy az eszköz a IoT Central alkalmazásra frissíti a tulajdonság értékét. A IoT Central alkalmazás nem állíthatja be a csak olvasható tulajdonság értékét.
 
@@ -180,13 +178,13 @@ Ne használjon tulajdonságokat a telemetria az eszközről való küldéséhez.
 
 Az írható tulajdonságok esetében az eszköz a kívánt állapot kódját, verzióját és leírását adja vissza annak jelzésére, hogy a kapott és alkalmazta-e a tulajdonság értékét.
 
-### <a name="telemetry"></a>Telemetria
+## <a name="telemetry"></a>Telemetria
 
 IoT Central segítségével megtekintheti az irányítópultokon és diagramokon lévő telemetria, és a szabályok segítségével elindíthatja a műveleteket, ha elérik a küszöbértékeket. A IoT Central a DCM-ben található információkat, például adattípusokat, egységeket és megjelenítendő neveket használ a telemetria-értékek megjelenítésének meghatározásához.
 
 A IoT Central adatexportálási szolgáltatással továbbíthatja a telemetria más célhelyekre, például a Storage-ba vagy a Event Hubsba.
 
-### <a name="commands"></a>Parancsok
+## <a name="commands"></a>Parancsok
 
 A parancsok szinkron vagy aszinkron jellegűek. A szinkron parancsoknak alapértelmezés szerint 30 másodpercen belül kell futniuk, és az eszköznek csatlakoztatva kell lennie a parancs megérkezése után. Ha az eszköz időben válaszol, vagy az eszköz nincs csatlakoztatva, akkor a parancs sikertelen lesz.
 

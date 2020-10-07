@@ -6,12 +6,12 @@ ms.topic: sample
 author: bwren
 ms.author: bwren
 ms.date: 09/11/2020
-ms.openlocfilehash: f346e5e73c52690d575140fd4abc52b1cb382cc6
-ms.sourcegitcommit: 487a9f5272300d60df2622c3d13e794d54680f90
+ms.openlocfilehash: ad399272673f1e2ede7bcaa82b66688fbaa8ac45
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91661091"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91804044"
 ---
 # <a name="resource-manager-template-samples-for-diagnostic-settings-in-azure-monitor"></a>Resource Manager-sablonok – minták a diagnosztikai beállításokhoz Azure Monitor
 Ez a cikk minta [Azure Resource Manager sablonokat](../../azure-resource-manager/templates/template-syntax.md) tartalmaz az Azure-erőforrások diagnosztikai beállításainak létrehozásához. Mindegyik minta tartalmaz egy sablonfájlt és egy, a sablonhoz adni kívánt minta értékeket tartalmazó paramétereket tartalmazó fájlt.
@@ -30,7 +30,7 @@ A következő minta diagnosztikai beállítást hoz létre egy tevékenység-nap
 
 ```json
 {
-    "$schema": "https://schema.management.azure.com/schemas/2019-04-01/deploymentTemplate.json#",
+    "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
     "contentVersion": "1.0.0.0",
     "parameters": {
         "settingName": {
@@ -103,7 +103,7 @@ A következő minta diagnosztikai beállítást hoz létre egy tevékenység-nap
 
 ```json
 {
-  "$schema": "https://schema.management.azure.com/schemas/2015-01-01/deploymentParameters.json#",
+  "$schema": "https://schema.management.azure.com/schemas/2018-05-01/subscriptionDeploymentTemplate.json#",
   "contentVersion": "1.0.0.0",
   "parameters": {
       "settingName": {
@@ -810,7 +810,7 @@ A következő minta létrehoz egy diagnosztikai beállítást a Storage-fiókban
   }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [További Azure monitor-sablonok beszerzése](resource-manager-samples.md).
 * [További információ a diagnosztikai beállításokról](../platform/diagnostic-settings.md).

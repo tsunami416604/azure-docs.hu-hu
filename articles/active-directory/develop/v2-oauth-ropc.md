@@ -13,12 +13,12 @@ ms.date: 05/18/2020
 ms.author: hirsin
 ms.reviewer: hirsin
 ms.custom: aaddev
-ms.openlocfilehash: 24d50635efb4d7fe18db9836311cf0a85dfcc734
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: 39cd25c2c84e92a0b06bc2ee6c6229ecb2d296d5
+ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88118620"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91812539"
 ---
 # <a name="microsoft-identity-platform-and-oauth-20-resource-owner-password-credentials"></a>Microsoft Identity platform és OAuth 2,0 erőforrás-tulajdonosi jelszó hitelesítő adatai
 
@@ -64,7 +64,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 &grant_type=password
 ```
 
-| Paraméter | Feltétel | Leírás |
+| Paraméter | Condition (Állapot) | Leírás |
 | --- | --- | --- |
 | `tenant` | Kötelező | Az a címtár-bérlő, amelybe be szeretné jelentkezni a felhasználót. Ez lehet a GUID vagy a felhasználóbarát név formátuma. Ez a paraméter nem állítható be `common` vagy értékre `consumers` , de beállítható a következőre: `organizations` . |
 | `client_id` | Kötelező | Az alkalmazáshoz hozzárendelt [Azure Portal-Alkalmazásregisztrációk](https://go.microsoft.com/fwlink/?linkid=2083908) oldal alkalmazás-(ügyfél-) azonosítója. |
@@ -112,5 +112,4 @@ Ha a felhasználó nem adta meg a helyes felhasználónevet vagy jelszót, vagy 
 
 ## <a name="learn-more"></a>További információ
 
-* Próbálja ki a ROPC a [minta konzol alkalmazás](https://github.com/azure-samples/active-directory-dotnetcore-console-up-v2)használatával.
-* Annak megállapításához, hogy a 2.0-s végpontot kell-e használni, olvassa el a [Microsoft Identity platform korlátozásait](../azuread-dev/azure-ad-endpoint-comparison.md)ismertetőt.
+A ROPC használatára vonatkozó példát a következő témakörben talál: a [.net Core Console alkalmazás](https://github.com/azure-samples/active-directory-dotnetcore-console-up-v2) kódjának mintája a githubon.

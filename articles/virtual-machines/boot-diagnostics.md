@@ -7,12 +7,12 @@ author: mimckitt
 ms.author: mimckitt
 ms.topic: conceptual
 ms.date: 08/04/2020
-ms.openlocfilehash: b51b44f3a3d0889836bb41e0bf2fa37234338cf4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a8879bed4160c7cd1bd74cb196ce271964e384f7
+ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91287083"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91813236"
 ---
 # <a name="azure-boot-diagnostics"></a>Azure rendszerindítási diagnosztika
 
@@ -25,12 +25,14 @@ Egy alternatív rendszerindítási diagnosztikai megoldás a felhasználó álta
 
 > [!IMPORTANT]
 > Az Azure-ügyfeleket nem számítjuk fel a felügyelt Storage-fiókkal a 2020-es számú rendszerindítási diagnosztika használatával kapcsolatos tárolási költségekért.
+>
+> A rendszerindítási diagnosztika adatblobok (amelyek a naplókból és a pillanatkép-lemezképből állnak) egy felügyelt Storage-fiókban tárolódnak. Az ügyfeleknek csak a Blobok által használt GiBs kell fizetniük, nem pedig a lemez kiosztott méretétől. A rendszer a felügyelt Storage-fiók számlázására szolgáló pillanatkép-mérőszámokat használja. Mivel a felügyelt fiókok szabványos LRS vagy standard szintű ZRS jönnek létre, a rendszer havi 0,05/GB-onként díjat számít fel a diagnosztikai adatblobok méretére. A díjszabással kapcsolatos további információkért lásd: [felügyelt lemezek díjszabása](https://azure.microsoft.com/pricing/details/managed-disks/). Az ügyfelek ezt a díjat a virtuális gép erőforrás-URI-ja alapján fogják látni. 
 
 ## <a name="boot-diagnostics-view"></a>Rendszerindítási diagnosztika nézet
 A virtuális gép paneljén a rendszerindítási diagnosztika lehetőség a Azure Portal *támogatási és hibaelhárítási* szakaszában található. A rendszerindítási diagnosztika lehetőségre kattintva megjelenik a képernyőkép és a soros napló adatai. A soros napló kernel-üzenetkezelést tartalmaz, és a képernyőkép a virtuális gépek aktuális állapotának pillanatképe. Attól függően, hogy a virtuális gép Windows vagy Linux rendszert futtat-e, meghatározza, hogy a várt képernyőkép hogyan fog kinézni. A Windowsban a felhasználók asztali hátteret és Linux rendszerű felhasználókat látnak, és a felhasználók egy bejelentkezési kérést fognak látni.
 
 :::image type="content" source="./media/boot-diagnostics/boot-diagnostics-linux.png" alt-text="A Linux rendszerindítási diagnosztika képernyőképe":::
-:::image type="content" source="./media/boot-diagnostics/boot-diagnostics-windows.png" alt-text="A Windows rendszerindítási diagnosztika képernyőképe":::
+:::image type="content" source="./media/boot-diagnostics/boot-diagnostics-windows.png" alt-text="A Linux rendszerindítási diagnosztika képernyőképe":::
 
 
 ## <a name="limitations"></a>Korlátozások
