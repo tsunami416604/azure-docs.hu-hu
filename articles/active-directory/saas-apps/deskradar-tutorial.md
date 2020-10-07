@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/24/2019
 ms.author: jeedes
-ms.openlocfilehash: a9004577fa8d946281df88284139e2e507e485b7
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 071b311466869321a12626190e894287c28e707b
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88536427"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91774126"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-deskradar"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Deskradar
 
@@ -99,7 +99,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. A fentiek mellett a Deskradar alkalmazás néhány további attribútumot vár az SAML-válaszban, amelyek alább láthatók. Ezek az attribútumok előre is fel vannak töltve, de a követelménynek megfelelően áttekintheti őket.
 
-    | Name | Forrás attribútum|
+    | Name (Név) | Forrás attribútum|
     | ---------------| --------- |
     | FirstName | User. givenName |
     | LastName | felhasználó. vezetéknév |
@@ -162,7 +162,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 1. Az **SAML 2,0** lapon hajtsa végre a következő lépéseket:
 
-    ![Deskradar-konfiguráció](./media/deskradar-tutorial/14-paste-urls.jpg)
+    ![Képernyőkép, amely az "S A M l 2,0" fület jeleníti meg, és az "S A M L S D U R L" és "Identifier Provider kiállító" mezőkre mutató nyilak láthatók.](./media/deskradar-tutorial/14-paste-urls.jpg)
 
     a. **SAML** -alapú hitelesítési módszer engedélyezése.
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/23/2019
 ms.author: jeedes
-ms.openlocfilehash: 6773805fac9a23ca918a1bf6e4889d3e1a3bb336
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: a2c1ba8feb933be7c4970f061dd5acdc1ef68a16
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88550109"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91775439"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-darwinbox"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Darwinbox
 
@@ -143,19 +143,19 @@ Ha a hozzáférési panelen a Darwinbox csempére kattint, automatikusan be kell
 
 1. Nyissa meg a Darwinbox Mobile Application alkalmazást. Kattintson a **szervezet beírása URL-cím** beírása a szervezet URL-címére a szövegmezőbe, majd kattintson a nyíl gombra.
 
-    ![Darwinbox Mobile-alkalmazás](media/darwinbox-tutorial/DarwinboxMobile01.jpg)
+    ![Képernyőkép, amely a "Darwinbox" nevű mobil alkalmazást jeleníti meg az "ENTER Organization U R L" kiválasztásával, és egy példaként szolgáló szervezet és "nyíl" gomb kiemelve.](media/darwinbox-tutorial/DarwinboxMobile01.jpg)
 
 1. Ha több tartománya van, kattintson a tartományra.
 
-    ![Darwinbox Mobile-alkalmazás](media/darwinbox-tutorial/DarwinboxMobile02.jpg)
+    ![Képernyőkép, amely a "tartomány kiválasztása" képernyőt jeleníti meg egy példaként kiválasztott tartománnyal.](media/darwinbox-tutorial/DarwinboxMobile02.jpg)
 
 1. Adja meg az Azure AD-beli e-mail-címét a Darwinbox alkalmazásban, és kattintson a **tovább**gombra.
 
-    ![Darwinbox Mobile-alkalmazás](media/darwinbox-tutorial/DarwinboxMobile03.jpg)
+    ![A "Next" (tovább) gombot kiemelő "Bejelentkezés" képernyőt bemutató képernyőkép.](media/darwinbox-tutorial/DarwinboxMobile03.jpg)
 
 1. Adja meg Azure AD-jelszavát a Darwinbox alkalmazásban, és kattintson a **Bejelentkezés**elemre.
 
-    ![Darwinbox Mobile-alkalmazás](media/darwinbox-tutorial/DarwinboxMobile04.jpg)
+    ![Képernyőfelvétel: "a jelszó megadása" képernyő, a "Next" (tovább) gombot kiemelve.](media/darwinbox-tutorial/DarwinboxMobile04.jpg)
 
 1. Végül a sikeres bejelentkezés után megjelenik az alkalmazás kezdőlapja.
 

@@ -4,15 +4,15 @@ description: Nagy teljesítményű alkalmazások tervezése az Azure Premium SSD
 author: roygara
 ms.service: virtual-machines
 ms.topic: conceptual
-ms.date: 06/27/2017
+ms.date: 10/05/2020
 ms.author: rogarana
 ms.subservice: disks
-ms.openlocfilehash: 48157c8d9285c48d49e76f39602075a2a8ac9682
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: f89358f4ca34c39527d7e65307ada042ba3df7e0
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89650717"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776153"
 ---
 # <a name="azure-premium-storage-design-for-high-performance"></a>Azure Premium Storage: nagy teljesítményű kialakítás
 
@@ -119,7 +119,7 @@ Az alkalmazás teljesítménybeli követelményeinek mérésére a legjobb móds
 
 A PerfMon-számlálók elérhetők a processzor, a memória és a kiszolgáló minden logikai lemeze és fizikai lemeze számára. Ha Premium Storage-lemezeket használ egy virtuális géppel, a fizikai lemezek számlálói a Premium Storage-lemezekhez tartoznak, és a logikai lemezek számlálói a Premium Storage-lemezeken létrehozott minden kötethez tartoznak. Rögzítenie kell az alkalmazás számítási feladatait tároló lemezek értékeit. Ha a logikai és fizikai lemezek között egy hozzárendelés van, akkor a fizikai lemez számlálókat is megtekintheti. egyéb esetben a logikai lemez számlálóit kell megtekinteni. Linux rendszeren a iostat parancs CPU-és lemezhasználat-jelentést hoz létre. A lemezhasználat-jelentés fizikai eszközön vagy partíción jeleníti meg a statisztikát. Ha adatbázis-kiszolgálója van az adatokkal, és külön lemezeket naplóz, gyűjtsön adatokat mindkét lemezre. Az alábbi táblázat a lemezek, processzorok és memória számlálóit ismerteti:
 
-| Számláló | Description | PerfMon | Iostat |
+| Számláló | Leírás | PerfMon | Iostat |
 | --- | --- | --- | --- |
 | **IOPS vagy tranzakciók másodpercenként** |A tárolási lemezre másodpercenként kiadott I/O-kérelmek száma. |Olvasási sebesség (lemez/mp) <br> Írási sebesség (írás/mp) |TPS <br> r/s <br> w/s |
 | **Lemez olvasása és írása** |a lemezen végrehajtott olvasási és írási műveletek%-a. |% Lemez olvasási ideje <br> % Lemez írási ideje |r/s <br> w/s |
@@ -152,7 +152,7 @@ A virtuálisgép-méretekről, valamint a IOPS, az átviteli sebességről és a
 | **Teljesítménnyel kapcsolatos tényezők** | &nbsp; | &nbsp; | &nbsp; |
 | **IO-méret** |A kisebb IO-méret magasabb IOPS eredményez. |Nagyobb IO-méret, amely magasabb átviteli sebességet eredményez. | &nbsp;|
 | **Virtuális gép mérete** |Használjon olyan virtuálisgép-méretet, amely IOPS nagyobb, mint az alkalmazásra vonatkozó követelmény. |Használjon olyan virtuálisgép-méretet, amelynek átviteli korlátja nagyobb, mint az alkalmazásra vonatkozó követelmény. |Használjon olyan virtuálisgép-méretet, amely az alkalmazásra vonatkozó követelménynél nagyobb skálázási korlátokat biztosít. |
-| **Lemezméret** |Használjon olyan méretű IOPS, amely nagyobb, mint az alkalmazásra vonatkozó követelmény. |Az alkalmazásra vonatkozó követelménynél nagyobb méretű adatátviteli korláttal rendelkező lemezeket használjon. |Használjon olyan méretű lemezt, amely az alkalmazás követelményeinél nagyobb léptéket biztosít. |
+| **Lemez mérete** |Használjon olyan méretű IOPS, amely nagyobb, mint az alkalmazásra vonatkozó követelmény. |Az alkalmazásra vonatkozó követelménynél nagyobb méretű adatátviteli korláttal rendelkező lemezeket használjon. |Használjon olyan méretű lemezt, amely az alkalmazás követelményeinél nagyobb léptéket biztosít. |
 | **VIRTUÁLIS gépek és lemezek méretezési korlátai** |A kiválasztott virtuálisgép-méret IOPS-korlátjának nagyobbnak kell lennie, mint a IOPS csatlakoztatott tárolók teljes száma. |A kiválasztott virtuális gép maximális átviteli sebességének nagyobbnak kell lennie, mint a Premium Storage-lemezek által csatlakoztatott teljes átviteli sebesség. |A kiválasztott virtuálisgép-méret skálázási korlátjának nagyobbnak kell lennie a csatolt Premium Storage-lemezek teljes méretezési korlátainál. |
 | **Lemezes gyorsítótárazás** |A magasabb olvasási IOPS érdekében engedélyezze az írásvédett gyorsítótárat a prémium szintű Storage-lemezeken. | &nbsp; |A prémium szintű Storage-lemezek írásvédett gyorsítótárazásának engedélyezése kész, nagy mennyiségű olvasási késést biztosító műveletekkel. |
 | **Lemezek csíkozása** |Több lemezt is használhat, és összekapcsolhatja őket, hogy egy kombinált, magasabb szintű IOPS és adatátviteli korlátot kapjon. A virtuális gépek összesített korlátjának nagyobbnak kell lennie, mint a csatlakoztatott prémium szintű lemezek összesített korlátai. | &nbsp; | &nbsp; |
@@ -279,7 +279,7 @@ Az adatlemezek ajánlott lemezgyorsítótár-beállításai a következők:
 
 | **Lemezes gyorsítótárazási beállítás** | **a beállítás használatára vonatkozó javaslat** |
 | --- | --- |
-| Nincs |Konfigurálja a gazdagép-gyorsítótárat a Nincs értékre a csak írható és a nagy írási sebességű lemezekhez. |
+| Nincsenek |Konfigurálja a gazdagép-gyorsítótárat a Nincs értékre a csak írható és a nagy írási sebességű lemezekhez. |
 | ReadOnly |A gazdagép-gyorsítótár írásvédettként való konfigurálása írásvédett és írható lemezekhez. |
 | ReadWrite |Konfigurálja a gazdagép-gyorsítótárat úgy, hogy csak akkor ReadWrite, ha az alkalmazás megfelelően kezeli a gyorsítótárazott adatlemezek írását, ha szükséges. |
 
@@ -305,45 +305,11 @@ Az alábbi irányelvek alkalmazásával például Premium Storage futtathatja SQ
 
 ## <a name="optimize-performance-on-linux-vms"></a>Teljesítmény optimalizálása Linux rendszerű virtuális gépeken
 
-Az összes olyan prémium szintű SSD-vagy Ultra-lemez esetében, amelynek a gyorsítótára **readonly** vagy **none**értékre van állítva, le kell tiltania a "korlátok" kifejezést a fájlrendszer csatlakoztatásakor. Ebben az esetben nincs szükség korlátokra, mert a Premium Storage-lemezekre való írás a gyorsítótár beállításainál tartós. Az írási kérelem sikeres befejeződése után a szolgáltatás az adattárolást az állandó tárolóba írja. A "korlátok" letiltásához használja az alábbi módszerek egyikét. Válassza ki a fájlrendszerhez tartozó egyet:
-  
-* A **reiserFS**az akadályok letiltásához használja a  `barrier=none` csatlakoztatási lehetőséget. (A korlátok engedélyezéséhez használja a `barrier=flush` következőt:.)
-* Az **ext3/ext4**esetében az akadályok letiltásához használja a `barrier=0` csatlakoztatási lehetőséget. (A korlátok engedélyezéséhez használja a `barrier=1` következőt:.)
-* A **XFS**az akadályok letiltásához használja a `nobarrier` csatlakoztatási lehetőséget. (A korlátok engedélyezéséhez használja a `barrier` következőt:.)
-* A prémium szintű Storage-lemezek esetében a cache a **READWRITE**beállításnál engedélyezze a korlátokat az írási tartósság érdekében.
-* Ahhoz, hogy a kötetek a virtuális gép újraindítása után is fennmaradnak, frissítenie kell az/etc/fstabet az univerzálisan egyedi azonosítóval (UUID) a lemezekre mutató hivatkozásokkal. További információ: [felügyelt lemez hozzáadása Linux rendszerű virtuális géphez](./linux/add-disk.md).
+Az összes prémium szintű SSD-vagy Ultra-lemez esetében letilthatja a lemezen lévő fájlrendszerek "korlátozásait", hogy javítsa a teljesítményt, ha ismert, hogy nincsenek olyan gyorsítótárak, amelyek adatvesztést okozhatnak.  Ha az Azure Disk gyorsítótárazása ReadOnly vagy none értékre van beállítva, letilthatja a korlátozásokat.  Ha azonban a gyorsítótárazás a ReadWrite értékre van állítva, a korlátozásoknak engedélyezve kell maradniuk az írás tartósságának biztosítása érdekében.  A korlátok általában alapértelmezés szerint engedélyezve vannak, de az alábbi módszerek egyikével letilthatja a korlátozásokat a fájlrendszer típusától függően:
 
-A prémium SSD-k esetében a következő Linux-disztribúciók lettek érvényesítve. A prémium SSD-k jobb teljesítményének és stabilitásának érdekében javasoljuk, hogy a virtuális gépeket az alábbi vagy újabb verzióra frissítse. 
-
-A verziók némelyike az Azure-hoz készült legújabb Linux Integration Services (LIS), v 4.0-s verziójára van szükség. A terjesztés letöltéséhez és telepítéséhez kövesse az alábbi táblázatban szereplő hivatkozást. A listában szereplő képeket a teljes ellenőrzés befejezése után vesszük fel. Az érvényesítések azt mutatják, hogy a teljesítmény minden rendszerkép esetében változik. A teljesítmény a munkaterhelés jellemzőitől és a rendszerkép beállításaitól függ. Különböző rendszerképek vannak hangolva különböző típusú számítási feladatokhoz.
-
-| Disztribúció | Verzió | Támogatott kernel | Részletek |
-| --- | --- | --- | --- |
-| Ubuntu | 12,04 vagy újabb| 3.2.0 – 75.110 + | &nbsp; |
-| Ubuntu | 14,04 vagy újabb| 3.13.0-44.73 +  | &nbsp; |
-| Debian | 7. x, 8. x vagy újabb| 3.16.7-ckt4-1 + | &nbsp; |
-| SUSE | SLES 12 vagy újabb| 3.12.36-38.1 + | &nbsp; |
-| SUSE | SLES 11 SP4 vagy újabb| 3.0.101-0.63.1 + | &nbsp; |
-| CoreOS | 584.0.0 + vagy újabb| 3.18.4 + | &nbsp; |
-| CentOS | 6,5, 6,6, 6,7, 7,0 vagy újabb| &nbsp; | [LIS4 szükséges](https://www.microsoft.com/download/details.aspx?id=55106) <br> *Lásd: Megjegyzés a következő szakaszban* |
-| CentOS | 7.1 + vagy újabb| 3.10.0-229.1.2. el7 + | [LIS4 ajánlott](https://www.microsoft.com/download/details.aspx?id=55106) <br> *Lásd: Megjegyzés a következő szakaszban* |
-| Red Hat Enterprise Linux (RHEL) | 6.8 +, 7.2 + vagy újabb | &nbsp; | &nbsp; |
-| Oracle | 6.0 +, 7.2 + vagy újabb | &nbsp; | UEK4 vagy RHCK |
-| Oracle | 7.0 – 7.1 vagy újabb | &nbsp; | UEK4 vagy RHCK w/[LIS4](https://www.microsoft.com/download/details.aspx?id=55106) |
-| Oracle | 6.4 – 6,7 vagy újabb | &nbsp; | UEK4 vagy RHCK w/[LIS4](https://www.microsoft.com/download/details.aspx?id=55106) |
-
-### <a name="lis-drivers-for-openlogic-centos"></a>LIS-illesztőprogramok a OpenLogic CentOS-hez
-
-Ha OpenLogic CentOS virtuális gépeket futtat, futtassa a következő parancsot a legújabb illesztőprogramok telepítéséhez:
-
-```
-sudo yum remove hypervkvpd  ## (Might return an error if not installed. That's OK.)
-sudo yum install microsoft-hyper-v
-sudo reboot
-```
-
-Bizonyos esetekben a fenti parancs frissíti a kernelt is. Ha szükség van a kernel frissítésére, előfordulhat, hogy újra kell futtatnia a fenti parancsokat a Microsoft-Hyper-v csomag teljes telepítésének újraindítása után.
-
+* A **reiserFS**esetében a Barrier = none csatlakoztatási lehetőséggel tiltsa le a korlátokat.  A korlátok explicit engedélyezéséhez használja a Barrier = flush lehetőséget.
+* Az **ext3/ext4**esetén használja a Barrier = 0 csatlakoztatási lehetőséget a korlátok letiltásához.  A korlátok explicit engedélyezéséhez használja a Barrier = 1.
+* A **XFS**esetében használja a nem Barrier Mount kapcsolót a korlátok letiltásához.  A korlátok explicit engedélyezéséhez használja a gáton.  Vegye figyelembe, hogy a Linux kernel későbbi verzióiban a XFS fájlrendszer kialakítása mindig biztosítja a tartósságot, és a korlátok letiltásának nincs hatása.  
 
 ## <a name="disk-striping"></a>Lemezek csíkozása
 

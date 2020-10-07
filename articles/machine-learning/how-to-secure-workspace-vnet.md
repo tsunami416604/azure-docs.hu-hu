@@ -8,15 +8,15 @@ ms.subservice: core
 ms.reviewer: larryfr
 ms.author: peterlu
 author: peterclu
-ms.date: 07/07/2020
+ms.date: 10/06/2020
 ms.topic: conceptual
 ms.custom: how-to, contperfq4, tracking-python, contperfq1
-ms.openlocfilehash: be476af3696e0753c8e36cfc34a024f8b585c605
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.openlocfilehash: 5d34fe403e0af4bc871ba176d0fa755650c26292
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2020
-ms.locfileid: "91708316"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776042"
 ---
 # <a name="secure-an-azure-machine-learning-workspace-with-virtual-networks"></a>Azure Machine Learning munkaterület biztonságossá tétele virtuális hálózatokkal
 
@@ -57,10 +57,9 @@ Az Azure Private link segítségével privát végponton keresztül csatlakozhat
 
 A privát kapcsolati munkaterület beállításával kapcsolatos további információkért lásd: [privát hivatkozás konfigurálása](how-to-configure-private-link.md).
 
+## <a name="secure-azure-storage-accounts-with-service-endpoints"></a>Azure Storage-fiókok biztonságossá tétele szolgáltatási végpontokkal
 
-## <a name="secure-azure-storage-accounts"></a>Azure Storage-fiókok biztonságossá tétele
-
-Ebből a szakaszból megtudhatja, hogyan védheti meg az Azure Storage-fiókot a szolgáltatási végpontok használatával. A privát végpontokat azonban használhatja az Azure Storage biztonságossá tételéhez is. További információ: [privát végpontok használata az Azure Storage](../storage/common/storage-private-endpoints.md)-hoz.
+Azure Machine Learning támogatja a szolgáltatás-végpontok vagy a magánhálózati végpontok használatára konfigurált Storage-fiókokat. Ebből a szakaszból megtudhatja, hogyan védheti meg az Azure Storage-fiókot a szolgáltatási végpontok használatával. Privát végpontok esetén tekintse meg a következő szakaszt.
 
 > [!IMPORTANT]
 > Az _alapértelmezett Storage-fiókot_ a virtuális hálózatban lévő Azure Machine learning vagy _nem alapértelmezett tárolási fiókok_ számára is elhelyezheti.
@@ -95,11 +94,23 @@ Ha egy virtuális hálózatban lévő munkaterülethez Azure Storage-fiókot sze
 
    [![A Azure Portal tűzfalak és virtuális hálózatok panelje](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks-page.png)](./media/how-to-enable-virtual-network/storage-firewalls-and-virtual-networks-page.png#lightbox)
 
+## <a name="secure-azure-storage-accounts-with-private-endpoints"></a>Privát végpontokkal rendelkező Azure Storage-fiókok biztonságossá tétele
+
+Azure Machine Learning támogatja a szolgáltatás-végpontok vagy a magánhálózati végpontok használatára konfigurált Storage-fiókokat. Ha a Storage-fiók privát végpontokat használ, két magánhálózati végpontot kell konfigurálnia az alapértelmezett Storage-fiókhoz:
+1. Egy titkos végpont egy **blob** Target alerőforrással.
+1. Egy privát végpont egy **fájlmegosztási** alerőforrással (fájlmegosztás).
+
+![A privát végpontok konfigurációs lapját bemutató képernyőfelvétel a blob és a fájl beállításaival](./media/how-to-enable-studio-virtual-network/configure-storage-private-endpoint.png)
+
+Ha olyan Storage-fiókhoz szeretne magánhálózati végpontot beállítani, amely **nem** az alapértelmezett tároló, válassza ki a hozzáadni kívánt Storage-fióknak megfelelő **alerőforrás-** típust.
+
+További információ: [privát végpontok használata az Azure Storage](../storage/common/storage-private-endpoints.md) -hoz
+
 ## <a name="secure-datastores-and-datasets"></a>Biztonságos adattárolók és adatkészletek
 
-Ebből a szakaszból megtudhatja, hogyan használhatja az adattárt és az adatkészletet a virtuális hálózat SDK-felületének használatával. A Studio-felülettel kapcsolatos további információkért lásd: [Azure Machine learning Studio használata virtuális hálózaton](how-to-enable-studio-virtual-network.md).
+Ebből a szakaszból megtudhatja, hogyan használhatók az adattár és az adatkészletek az SDK-ban egy virtuális hálózattal. A Studio-felülettel kapcsolatos további információkért lásd: [Azure Machine learning Studio használata virtuális hálózaton](how-to-enable-studio-virtual-network.md).
 
-Ha az SDK-val szeretné elérni az adatelérést, az egyes szolgáltatásokhoz szükséges hitelesítési módszert kell használnia, amelyet az adatai tárolnak. Ha például regisztrál egy adattárt Azure Data Lake Store Gen2 eléréséhez, akkor továbbra is az [Azure Storage-szolgáltatásokhoz való kapcsolódáshoz](how-to-access-data.md#azure-data-lake-storage-generation-2)szükséges egyszerű szolgáltatásnevet kell használnia.
+Az SDK-val való hozzáféréshez az egyes szolgáltatásokhoz szükséges hitelesítési módszert kell használnia, amelyet az adatai tárolnak. Ha például regisztrál egy adattárt Azure Data Lake Store Gen2 eléréséhez, akkor továbbra is az [Azure Storage-szolgáltatásokhoz való kapcsolódáshoz](how-to-access-data.md#azure-data-lake-storage-generation-2)szükséges egyszerű szolgáltatásnevet kell használnia.
 
 ### <a name="disable-data-validation"></a>Adatérvényesítés letiltása
 
@@ -186,7 +197,7 @@ A követelmények teljesítése után a következő lépésekkel engedélyezheti
 
 1. Keresse meg a munkaterülethez tartozó Azure Container Registry nevét az alábbi módszerek egyikének használatával:
 
-    __Azure Portal__
+    __Azure Portalra__
 
     A munkaterület Áttekintés szakaszában a __beállításjegyzék__ értéke a Azure Container Registryra hivatkozik.
 

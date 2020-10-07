@@ -8,15 +8,15 @@ ms.subservice: core
 ms.reviewer: larryfr
 ms.author: peterlu
 author: peterclu
-ms.date: 09/30/2020
+ms.date: 10/06/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, references_regions, contperfq1
-ms.openlocfilehash: d4690062dead8186022cc53ca47dbc7e17a9376f
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: 7bc56f6296bf41933348fad9ea4aeb640b9afbf0
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91631188"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776017"
 ---
 # <a name="virtual-network-isolation-and-privacy-overview"></a>Virtual Network elkülönítés és Adatvédelem – áttekintés
 
@@ -43,7 +43,7 @@ Ebben a szakaszban megtudhatja, hogyan történik a közös hálózati forgatók
 
 Az alábbi táblázat összehasonlítja, hogyan fér hozzá a szolgáltatások a Azure Machine Learning hálózat különböző részeihez egy VNet és VNet nélkül.
 
-| Használati eset | Munkaterület | Társított erőforrások | Számítási környezet betanítása | Viszonyítási számítási környezet |
+| Forgatókönyv | Munkaterület | Társított erőforrások | Számítási környezet betanítása | Viszonyítási számítási környezet |
 |-|-|-|-|-|-|
 |**Nincs virtuális hálózat**| Nyilvános IP-cím | Nyilvános IP-cím | Nyilvános IP-cím | Nyilvános IP-cím |
 |**Virtuális hálózatok erőforrásainak védelme**| Magánhálózati IP-cím (privát végpont) | Nyilvános IP-cím (szolgáltatási végpont) <br> **vagy** <br> Magánhálózati IP-cím (privát végpont) | Magánhálózati IP-cím | Magánhálózati IP-cím  | 
@@ -70,7 +70,7 @@ A munkaterület és a kapcsolódó erőforrások védelméhez kövesse az alább
 
 1. Hozzon létre egy [magánhálózati kapcsolattal rendelkező munkaterületet](how-to-secure-workspace-vnet.md#secure-the-workspace-with-private-endpoint) a VNet és a munkaterület közötti kommunikáció engedélyezéséhez.
 1. Azure Key Vault hozzáadása a virtuális hálózathoz [szolgáltatási végponttal](../key-vault/general/overview-vnet-service-endpoints.md) vagy [privát végponttal](../key-vault/general/private-link-service.md). A Key Vault beállítása a [következőre: "megbízható Microsoft-szolgáltatások engedélyezése a tűzfal megkerüléséhez"](how-to-secure-workspace-vnet.md#secure-azure-key-vault).
-1. Azure Storage-fiók hozzáadása a virtuális hálózathoz [szolgáltatási végponttal](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts) vagy [privát végponttal](../storage/common/storage-private-endpoints.md)
+1. Adja hozzá az Azure Storage-fiókot a virtuális hálózathoz egy [szolgáltatási végponttal](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-service-endpoints) vagy egy [privát végponttal](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-private-endpoints).
 1. [Konfigurálja úgy a Azure Container registryt, hogy privát végpontot használjon](how-to-secure-workspace-vnet.md#enable-azure-container-registry-acr) , és [engedélyezze az alhálózati delegálást a Azure Container Instancesban](how-to-secure-inferencing-vnet.md#enable-azure-container-instances-aci).
 
 ![Architektúra-diagram, amely bemutatja, hogy a munkaterület és a kapcsolódó erőforrások hogyan kommunikálnak egymással a szolgáltatási végpontokon vagy a VNet belüli privát végpontokon](./media/how-to-network-security-overview/secure-workspace-resources.png)
@@ -141,17 +141,17 @@ A következő hálózati diagram egy biztonságos Azure Machine Learning munkate
 
 [A munkaterület védelme](#secure-the-workspace-and-associated-resources)  >  [A képzési környezet](#secure-the-training-environment)  >  biztonságossá tétele [A következtetési környezet](#secure-the-inferencing-environment)  >  biztonságossá tétele A **Studio funkcióinak engedélyezése**  >  [Tűzfalbeállítások konfigurálása](#configure-firewall-settings)
 
-Bár a Studio egy szolgáltatás-végponttal konfigurált Storage-fiókban fér hozzá az adateléréshez, egyes szolgáltatások alapértelmezés szerint le vannak tiltva:
+Ha a tároló egy VNet van, először további konfigurációs lépéseket kell végrehajtania a [Studio](overview-what-is-machine-learning-studio.md)teljes funkcionalitásának engedélyezéséhez. Alapértelmezés szerint a következő szolgáltatás le van tiltva:
 
 * A Studióban tárolt előzetes verzió.
 * Jelenítse meg a tervezőben tárolt adatmegjelenítést.
 * AutoML-kísérlet küldése.
 * Címkéző projekt elindítása.
 
-A Storage szolgáltatásbeli végpontok használatának teljes funkcionalitásának engedélyezéséhez lásd: [Azure Machine learning Studio használata virtuális hálózaton](how-to-enable-studio-virtual-network.md#access-data-using-the-studio). A Studio mindkét szolgáltatási végpontot és privát végpontot támogatja a Storage-fiókok esetében.
+Ha egy VNet belül szeretné engedélyezni a teljes Studio-funkciókat, tekintse meg a [Azure Machine learning Studio használata virtuális hálózatban](how-to-enable-studio-virtual-network.md#access-data-using-the-studio)című témakört. A Studio a szolgáltatási végpontok vagy a magánhálózati végpontok használatával támogatja a Storage-fiókokat.
 
 ### <a name="limitations"></a>Korlátozások
-- A Studio nem fér hozzá a privát végpontok használatára konfigurált Storage-fiókokban tárolt információhoz. A teljes funkcionalitás érdekében szolgáltatási végpontokat kell használnia a tároláshoz, és felügyelt identitást kell használnia.
+- A [ml által támogatott adatfeliratok](how-to-create-labeling-projects.md#use-ml-assisted-labeling) nem támogatják a virtuális hálózat mögött biztonságossá tett alapértelmezett Storage-fiókokat. A ML által támogatott adatfeliratokhoz nem alapértelmezett Storage-fiókot kell használnia. Vegye figyelembe, hogy a nem alapértelmezett Storage-fiók biztonságossá tétele a virtuális hálózat mögött végezhető el. 
 
 ## <a name="configure-firewall-settings"></a>Tűzfalbeállítások konfigurálása
 
@@ -159,7 +159,7 @@ Konfigurálja a tűzfalat a Azure Machine Learning munkaterület erőforrásaiho
 
 További információ a tűzfal beállításairól: [munkaterület használata tűzfal mögött](how-to-access-azureml-behind-firewall.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez a cikk egy négy részből álló virtuális hálózati sorozat első része. A virtuális hálózatok biztonságossá tételéhez tekintse meg a cikkek további részeit:
 

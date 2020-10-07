@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/25/2019
 ms.author: jeedes
-ms.openlocfilehash: f765b950074958f801bef2fdc8e555acf9a47986
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 2dfc8bbb570c57ef22c2bde210dc7a64b48fb06d
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88522097"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91775762"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-convercent"></a>Oktatóanyag: Azure Active Directory integráció a Convercent
 
@@ -98,7 +98,7 @@ Az Azure AD egyszeri bejelentkezés Convercent való konfigurálásához hajtsa 
 
 4. Az **alapszintű SAML-konfiguráció** szakaszban, ha az alkalmazást **identitásszolgáltató** kezdeményezett módban szeretné konfigurálni, hajtsa végre a következő lépést:
 
-    ![Convercent tartomány és URL-címek egyszeri bejelentkezési adatai](common/both-identifier.png)
+    ![Képernyőkép, amely az "alapszintű k L konfiguráció" szakaszt jeleníti meg az "azonosító (entitás azonosítója)" mező és a "Mentés" gomb kiemelve.](common/both-identifier.png)
 
     Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával:  `https://<instancename>.convercent.com/`
 

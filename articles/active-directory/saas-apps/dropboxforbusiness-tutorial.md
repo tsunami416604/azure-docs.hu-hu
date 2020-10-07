@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/23/2020
 ms.author: jeedes
-ms.openlocfilehash: 3c1ff9de1057a5ef551ad941965f64907e4243e5
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 93d13023dfda8164bf0d327bee6106f9803e1bf7
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88555739"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91775143"
 ---
 # <a name="tutorial-integrate-dropbox-business-with-azure-active-directory"></a>Oktatóanyag: a Dropbox Business integrálása a Azure Active Directory
 
@@ -145,27 +145,27 @@ Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egysz
 
 3. Ha manuálisan szeretné beállítani a Dropbox businesst, nyisson meg egy új böngészőablakot, és lépjen a Dropbox üzleti bérlőre, és jelentkezzen be a Dropbox üzleti bérlőbe. és hajtsa végre a következő lépéseket:
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/dropboxforbusiness-tutorial/ic769509.png "Egyszeri bejelentkezés konfigurálása")
+    ![Képernyőkép, amely a "Dropbox Business Sign in" lapot mutatja.](./media/dropboxforbusiness-tutorial/ic769509.png "Egyszeri bejelentkezés konfigurálása")
 
 4. Kattintson a **felhasználó ikonra** , és válassza a **Beállítások** lapot.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/dropboxforbusiness-tutorial/configure1.png "Egyszeri bejelentkezés konfigurálása")
+    ![Képernyőkép, amely a "felhasználó ikon" műveletet és a "beállítások" beállítást mutatja.](./media/dropboxforbusiness-tutorial/configure1.png "Egyszeri bejelentkezés konfigurálása")
 
 5. A bal oldali navigációs ablaktáblán kattintson a **felügyeleti konzol**elemre.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/dropboxforbusiness-tutorial/configure2.png "Egyszeri bejelentkezés konfigurálása")
+    ![A "felügyeleti konzol" elemet megjelenítő képernyőkép.](./media/dropboxforbusiness-tutorial/configure2.png "Egyszeri bejelentkezés konfigurálása")
 
 6. A **felügyeleti konzolon**kattintson a bal oldali navigációs ablaktábla **Beállítások** elemére.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/dropboxforbusiness-tutorial/configure3.png "Egyszeri bejelentkezés konfigurálása")
+    ![Képernyőkép, amely a "beállítások" elemet jeleníti meg.](./media/dropboxforbusiness-tutorial/configure3.png "Egyszeri bejelentkezés konfigurálása")
 
 7. Válassza az **egyszeri bejelentkezés** lehetőséget a **hitelesítés** szakaszban.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/dropboxforbusiness-tutorial/configure4.png "Egyszeri bejelentkezés konfigurálása")
+    ![A "hitelesítés" szakaszt az "egyszeri bejelentkezés" beállítással ábrázoló képernyőkép.](./media/dropboxforbusiness-tutorial/configure4.png "Egyszeri bejelentkezés konfigurálása")
 
 8. Az **egyszeri bejelentkezés** szakaszban hajtsa végre a következő lépéseket:  
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/dropboxforbusiness-tutorial/configure5.png "Egyszeri bejelentkezés konfigurálása")
+    ![Képernyőkép, amely az "egyszeri bejelentkezés" konfigurációs beállításait jeleníti meg.](./media/dropboxforbusiness-tutorial/configure5.png "Egyszeri bejelentkezés konfigurálása")
 
     a. Válassza a **kötelező** lehetőséget a legördülő listából az **egyszeri bejelentkezéshez**.
 

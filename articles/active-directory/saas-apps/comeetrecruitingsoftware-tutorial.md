@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/22/2019
 ms.author: jeedes
-ms.openlocfilehash: a47721122456d32cef91de4bd5ef2b92738bf496
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: ed68e02be500ebd863eb7d6d54ddffe63873fe61
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88520124"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91774550"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-comeet-recruiting-software"></a>Oktatóanyag: Azure Active Directory integráció a szoftverek toborzásával
 
@@ -99,7 +99,7 @@ Az Azure AD egyszeri bejelentkezés és a szoftveres toborzás közös használa
 
 4. Az **alapszintű SAML-konfiguráció** szakaszban, ha az alkalmazást **identitásszolgáltató** kezdeményezett módban szeretné konfigurálni, hajtsa végre a következő lépéseket:
 
-    ![A szoftveres tartomány és az URL-címek egyszeri bejelentkezési adatainak összekapcsolása](common/idp-intiated.png)
+    ![Képernyőkép, amely az "alapszintű k L konfiguráció" szakaszt jeleníti meg a "Mentés" művelet, az "azonosító" mező és a "válasz U R L" mező kiemelésével.](common/idp-intiated.png)
 
     a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://app.comeet.co/adfs_auth/acs/<UNIQUEID>/`
 
@@ -116,18 +116,18 @@ Az Azure AD egyszeri bejelentkezés és a szoftveres toborzás közös használa
 
 5. A munkatársak toborzása egy adott formátumban vár az SAML-kijelentésekre. Konfigurálja a következő jogcímeket ehhez az alkalmazáshoz. Az attribútumok értékeit az alkalmazás-integráció lapon, a **felhasználói attribútumok** szakaszban kezelheti. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** gombra a **felhasználói attribútumok** párbeszédpanel megnyitásához.
 
-    ![image](common/edit-attribute.png)
+    ![A "felhasználó attribútumai" szakaszt a "szerkesztés" gomb kiválasztásával ábrázoló képernyőkép.](common/edit-attribute.png)
 
 6. A **felhasználó attribútumai** párbeszédpanel **felhasználói jogcímek** szakaszában szerkessze a jogcímeket a **Szerkesztés ikon** használatával, vagy adja hozzá a jogcímeket az **új jogcím hozzáadása** paranccsal az SAML-token attribútum konfigurálásához a fenti képen látható módon, és hajtsa végre a következő lépéseket: 
 
-    | Name |  Forrás attribútum|
+    | Name (Név) |  Forrás attribútum|
     | ---------------| --------------- |
     | nameidentifier | User. mail |
     | comeet_id | User. userPrincipalName |
 
     a. Kattintson az **új jogcím hozzáadása** elemre a **felhasználói jogcímek kezelése** párbeszédpanel megnyitásához.
 
-    ![image](common/new-save-attribute.png)
+    ![Képernyőfelvétel: a "felhasználói jogcímek" szakasz az "új jogcím hozzáadása" és a "Mentés" művelet kiemelve.](common/new-save-attribute.png)
 
     ![image](common/new-attribute-details.png)
 

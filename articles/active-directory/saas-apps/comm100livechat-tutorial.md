@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/22/2019
 ms.author: jeedes
-ms.openlocfilehash: abeb52155b933c223ee0621e8ab203ac035e5f36
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 0ce6e4dc44a19f4aaee35cc4477761010d76a96b
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88519708"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91775917"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-comm100-live-chat"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Comm100 élő csevegéssel
 
@@ -92,7 +92,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. A fentieken kívül a Comm100 élő csevegési alkalmazás néhány további attribútumot vár az SAML-válaszokban, amelyek alább láthatók. Ezek az attribútumok előre is fel vannak töltve, de a követelménynek megfelelően áttekintheti őket.
 
-    | Name |  Forrás attribútum|
+    | Name (Név) |  Forrás attribútum|
     | ---------------| --------------- |
     |   e-mail    | User. mail |
 
@@ -144,7 +144,7 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 
 1. A menü bal oldalán kattintson a **Biztonság** elemre, majd az **ügynök egyszeri bejelentkezés**elemre.
 
-   ![Comm100 élő csevegés biztonsága](./media/comm100livechat-tutorial/tutorial_comm100livechat_security.png)
+   ![Képernyőkép, amely a bal oldali fiók menüt jeleníti meg a "biztonság" és az "ügynök egyszeri bejelentkezés" kiemelésével.](./media/comm100livechat-tutorial/tutorial_comm100livechat_security.png)
 
 1. Az **ügynök egyszeri bejelentkezés** lapján hajtsa végre a következő lépéseket:
 

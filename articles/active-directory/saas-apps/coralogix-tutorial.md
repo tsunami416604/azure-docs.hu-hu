@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/24/2019
 ms.author: jeedes
-ms.openlocfilehash: 20a6702a37a4432504d85c787218eb10a10931b9
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 17e2d04a39a2ef5a935ea6e56ef16958419eddb1
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88555903"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91775622"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-coralogix"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Coralogix
 
@@ -95,13 +95,14 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
  1. A Coralogix alkalmazás megadott formátumban várja az SAML-kijelentéseket. Konfigurálja a következő jogcímeket ehhez az alkalmazáshoz. Az attribútumok értékeit az alkalmazás-integráció lapon lévő **felhasználói attribútumok** szakaszban kezelheti. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** gombra a **felhasználói attribútumok** párbeszédpanel megnyitásához.
 
-    ![image](common/edit-attribute.png)
+    ![A "felhasználó attribútumai" párbeszédpanelt a "szerkesztés" gomb kiemelésével ábrázoló képernyőkép.](common/edit-attribute.png)
 
 1. A felhasználói **jogcímek** szakaszban a **felhasználói attribútumok** párbeszédpanelen szerkessze a jogcímeket a **Szerkesztés** ikon használatával. A jogcímeket az **új jogcím hozzáadása** lehetőséggel is hozzáadhatja az SAML-jogkivonat attribútum konfigurálásához az előző képen látható módon. Ezután hajtsa végre a következő lépéseket:
     
     a. Kattintson a **Szerkesztés ikonra** a **felhasználói jogcímek kezelése** párbeszédpanel megnyitásához.
 
-    ![rendszerkép ](./media/coralogix-tutorial/tutorial_usermail.png) ![](./media/coralogix-tutorial/tutorial_usermailedit.png)
+    ![A "szerkesztés" gombbal Kiemelt "a felhasználói attribútumok & jogcímek" párbeszédpanelt megjelenítő képernyőkép.](./media/coralogix-tutorial/tutorial_usermail.png)
+    ![kép](./media/coralogix-tutorial/tutorial_usermailedit.png)
 
     b. A **név-azonosító formátum kiválasztása** listából válassza az **e-mail cím**elemet.
 

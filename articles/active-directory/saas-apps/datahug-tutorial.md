@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 787de3e3e44ca921c5dccd7b51a2e655a31d112b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: ba76618892cace6681c82e96d7a2f9b36f839664
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88555964"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91775575"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-datahug"></a>Oktatóanyag: Azure Active Directory integráció a Datahug
 
@@ -99,7 +99,7 @@ Az Azure AD egyszeri bejelentkezés Datahug való konfigurálásához hajtsa vé
 
 4. Az **alapszintű SAML-konfiguráció** szakaszban, ha az alkalmazást **identitásszolgáltató** kezdeményezett módban szeretné konfigurálni, hajtsa végre a következő lépéseket:
 
-    ![Datahug tartomány és URL-címek egyszeri bejelentkezési adatai](common/idp-intiated.png)
+    ![Képernyőkép, amely az "alapszintű S A M L konfiguráció" szakaszt mutatja az "azonosító", a "válasz URL" és a "Mentés" gomb kiemelésével.](common/idp-intiated.png)
 
     a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://apps.datahug.com/identity/<uniqueID>`
 
@@ -206,11 +206,11 @@ Datahug esetén a kiépítés manuális feladat.
 
 2. Vigye a kurzort a jobb felső sarokban található **fogaskerék** fölé, és kattintson a **Beállítások** elemre.
    
-    ![Alkalmazott hozzáadása](./media/datahug-tutorial/1.png)
+    ![Képernyőfelvétel: a "Datahug", a "fogaskerék" ikon és a "beállítások" lehetőség van kiválasztva a legördülő menüben.](./media/datahug-tutorial/1.png)
 
 3. Válassza a **személyek** lehetőséget, majd kattintson a **felhasználók hozzáadása** fülre.
 
-    ![Alkalmazott hozzáadása](./media/datahug-tutorial/2.png)
+    ![Képernyőfelvétel: a "People" és a "felhasználók hozzáadása" lap "beállítások" lapját jeleníti meg.](./media/datahug-tutorial/2.png)
 
 4. Írja be annak a személynek az e-mail-címét, amelyhez fiókot szeretne létrehozni, majd kattintson a **Hozzáadás**gombra.
 

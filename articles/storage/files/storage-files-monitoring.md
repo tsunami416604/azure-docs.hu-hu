@@ -10,12 +10,12 @@ ms.date: 10/02/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: e0c5e6041da933b4a42bc438900f8c4c91cc6dbc
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.openlocfilehash: 4b2f819edd875130c57d487536691b4588dcc71f
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2020
-ms.locfileid: "91711609"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91772668"
 ---
 # <a name="monitoring-azure-files"></a>Figyelés Azure Files
 
@@ -71,6 +71,8 @@ Meg kell adnia a következő típusú műveletek egyikét is, amelyekhez naplók
 | StorageRead | Objektumok olvasási műveletei. |
 | StorageWrite | Írási műveletek az objektumokon. |
 | StorageDelete | Objektumok törlési műveletei. |
+
+A naplózott SMB-és REST-műveletek listájának lekéréséhez tekintse meg a [Storage naplózott műveletek és állapotüzenetek](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) és a [Azure Files figyelési adatok referenciáját](storage-files-monitoring-reference.md).
 
 ## <a name="analyzing-metrics"></a>Mérőszámok elemzése
 
@@ -276,7 +278,7 @@ Az alábbi példa bemutatja, hogyan olvashatja el a metrikus adatokat a többdim
 
 Az erőforrás-naplókat megadhatja blobként egy Storage-fiókban, az Event-adatként vagy a log analitikus lekérdezésekkel.
 
-Az ezekben a naplókban megjelenő mezők részletes ismertetését lásd: [Azure Azure Files monitoring-információk referenciája](storage-files-monitoring-reference.md).
+A naplózott SMB-és REST-műveletek listájának lekéréséhez tekintse meg a [Storage naplózott műveletek és állapotüzenetek](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) és a [Azure Files figyelési adatok referenciáját](storage-files-monitoring-reference.md).
 
 > [!NOTE]
 > Az Azure Monitor Azure Storage-naplók nyilvános előzetes verzióban érhetők el, és elérhetők az előzetes teszteléshez az összes nyilvános felhőben. Az előzetes verzióra való regisztráláshoz tekintse meg [ezt a lapot](https://forms.microsoft.com/Pages/ResponsePage.aspx?id=v4j5cvGGr0GRqy180BHbRxW65f1VQyNCuBHMIMBV8qlUM0E0MFdPRFpOVTRYVklDSE1WUTcyTVAwOC4u). Ez az előzetes verzió lehetővé teszi a Blobok (köztük a Azure Data Lake Storage Gen2), a fájlok, a várólisták, a táblák, a Premium Storage-fiókok általános célú v1-ben és az általános célú v2 Storage-fiókokban való naplózását. A klasszikus Storage-fiókok nem támogatottak.
@@ -292,7 +294,7 @@ A naplóbejegyzések csak akkor jönnek létre, ha a szolgáltatás-végpontra i
 - Megosztott elérési aláírást (SAS) vagy OAuth használó kérelmek, beleértve a sikertelen és sikeres kérelmeket
 - Elemzési adatokra irányuló kérelmek (a klasszikus naplózási adatok a **$logs** tárolóban és az osztály metrikájának adatai a **$metric** táblákban)
 
-A Azure Files szolgáltatás által kezdeményezett kérelmek (például a naplók létrehozása vagy törlése) nem kerülnek naplózásra. A naplózott adatok teljes listáját a [Storage naplózott műveletek és állapotüzenetek](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) és a [tárolási napló formátuma](storage-files-monitoring-reference.md)című témakörben tekintheti meg.
+A Azure Files szolgáltatás által kezdeményezett kérelmek (például a naplók létrehozása vagy törlése) nem kerülnek naplózásra. A naplózott SMB-és REST-kérelmek teljes listáját lásd: [Storage naplózott műveletek és állapotüzenetek](https://docs.microsoft.com/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) , valamint [Azure Files monitorozási adatok referenciája](storage-files-monitoring-reference.md).
 
 ### <a name="log-anonymous-requests"></a>Névtelen kérelmek naplózása
 
@@ -303,7 +305,7 @@ A Azure Files szolgáltatás által kezdeményezett kérelmek (például a napl�
 - Ügyfél- és kiszolgálóoldali időtúllépési hibák
 - Sikertelen GET kérelmek a 304 hibakódmal (nincs módosítva)
 
-Az összes többi sikertelen névtelen kérelmet nem naplózza a rendszer. A naplózott adatok teljes listáját a [Storage naplózott műveletek és állapotüzenetek](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) és a [tárolási napló formátuma](storage-files-monitoring-reference.md)című témakörben tekintheti meg.
+Az összes többi sikertelen névtelen kérelmet nem naplózza a rendszer. A naplózott SMB-és REST-kérelmek teljes listáját lásd: [Storage naplózott műveletek és állapotüzenetek](/rest/api/storageservices/storage-analytics-logged-operations-and-status-messages) , valamint [Azure Files monitorozási adatok referenciája](storage-files-monitoring-reference.md).
 
 ### <a name="accessing-logs-in-a-storage-account"></a>Naplófájlok elérése a Storage-fiókban
 
@@ -383,7 +385,7 @@ Azure Monitor riasztások proaktívan értesítik Önt, ha fontos feltételek ta
 
 A következő táblázat a riasztásra vonatkozó példákat és a riasztáshoz használandó megfelelő mérőszámot sorolja fel:
 
-| Használati eset | A riasztáshoz használandó metrika |
+| Forgatókönyv | A riasztáshoz használandó metrika |
 |-|-|
 | A fájlmegosztás szabályozása megtörténik. | Metrika: tranzakciók<br>Dimenzió neve: válasz típusa <br>Dimenzió neve: fájlmegosztás (csak prémium fájlmegosztás esetén) |
 | A fájlmegosztás mérete a kapacitás 80%-a. | Metrika: fájl kapacitása<br>Dimenzió neve: fájlmegosztás (csak prémium fájlmegosztás esetén) |

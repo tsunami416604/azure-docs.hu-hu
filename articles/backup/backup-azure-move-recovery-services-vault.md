@@ -4,12 +4,12 @@ description: Útmutatás az Recovery Services-tárolók Azure-előfizetések és
 ms.topic: conceptual
 ms.date: 04/08/2019
 ms.custom: references_regions
-ms.openlocfilehash: 69021131f12b57aedcd531997029858b0722933f
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.openlocfilehash: 19b1c930ffc0e4b519c25f421662547a4d8dcde6
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2020
-ms.locfileid: "89181510"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91773365"
 ---
 # <a name="move-a-recovery-services-vault-across-azure-subscriptions-and-resource-groups"></a>Recovery Services-tároló áthelyezése az Azure-előfizetések és-erőforráscsoportok között
 
@@ -143,7 +143,51 @@ az resource move --destination-group <destinationResourceGroupName> --ids <Vault
 1. Az erőforráscsoportok hozzáférés-vezérlésének beállítása/ellenőrzése.  
 2. A Mentés befejezését követően újra kell konfigurálni a biztonsági mentési jelentéskészítési és figyelési funkciót. Az áthelyezési művelet során az előző konfiguráció el fog veszni.
 
-## <a name="next-steps"></a>További lépések
+## <a name="move-an-azure-virtual-machine-to-a-different-recovery-service-vault"></a>Azure-beli virtuális gép áthelyezése egy másik helyreállítási tárba. 
+
+Ha olyan Azure-beli virtuális gépet szeretne áthelyezni, amelyen engedélyezve van az Azure Backup, akkor két lehetőség közül választhat. Az üzleti igényektől függ:
+
+- [Nem kell megőriznie az előző biztonsági mentést.](#dont-need-to-preserve-previous-backed-up-data)
+- [Meg kell őriznie az előző biztonsági mentéssel](#must-preserve-previous-backed-up-data)
+
+### <a name="dont-need-to-preserve-previous-backed-up-data"></a>Nem kell megőriznie az előző biztonsági mentést.
+
+Egy új tárolóban a munkaterhelések védelme érdekében a jelenlegi védelmet és az adatok törlését törölni kell a régi tárolóban, és a biztonsági mentés újra konfigurálva lesz.
+
+>[!WARNING]
+>A következő művelet romboló, ezért nem vonható vissza. A rendszer véglegesen törli a védett kiszolgálóhoz társított biztonsági mentési adatokat és biztonsági másolati elemeket. Legyen óvatos.
+
+**Az aktuális védelem leállítása és törlése a régi tárolón:**
+
+1. A tároló tulajdonságaiban tiltsa le a nem kötelező törlést. A Soft delete letiltásához kövesse az [alábbi lépéseket](backup-azure-security-feature-cloud.md#disabling-soft-delete-using-azure-portal) .
+
+2. Állítsa le a védelmet, és törölje a biztonsági mentéseket az aktuális tárból. A tároló irányítópultjának menüjében válassza a **biztonsági másolati elemek elemet**. Az itt felsorolt elemeket, amelyeket át kell helyezni az új tárolóba, el kell távolítani a biztonsági másolati adatokkal együtt. Lásd: [védett elemek törlése a felhőben](backup-azure-delete-vault.md#delete-protected-items-in-the-cloud) és a [védett elemek törlése a helyszínen](backup-azure-delete-vault.md#delete-protected-items-on-premises).
+
+3. Ha az AFS (Azure-fájlmegosztás), az SQL-kiszolgálók vagy a SAP HANA-kiszolgálók áthelyezését tervezi, akkor regisztrálnia kell a regisztrációt is. A tároló irányítópultjának menüjében válassza a **biztonsági mentési infrastruktúra**elemet. Tekintse meg [az SQL Server regisztrációjának](manage-monitor-sql-database-backup.md#unregister-a-sql-server-instance)megszüntetését, az [Azure-fájlmegosztáshoz társított Storage-fiók regisztrációjának](manage-afs-backup.md#unregister-a-storage-account)megszüntetését és a [SAP HANA példány regisztrációjának](sap-hana-db-manage.md#unregister-an-sap-hana-instance)megszüntetését ismertető témakört.
+
+4. Miután eltávolította őket a régi tárolóból, folytassa a számítási feladatok biztonsági mentésének konfigurálását az új tárolóban.
+
+### <a name="must-preserve-previous-backed-up-data"></a>Meg kell őriznie az előző biztonsági mentéssel
+
+Ha meg kell őriznie a jelenlegi védett adatok védelmét a régi tárolóban, és egy új tárolóban szeretné folytatni a védelmet, bizonyos számítási feladatokhoz korlátozott lehetőségek állnak rendelkezésre:
+
+- A MARS esetében [leállíthatja a védelmet az adatmegőrzés](backup-azure-manage-mars.md#stop-protecting-files-and-folder-backup) és az ügynök regisztrálása az új tárolóban.
+
+  - Azure Backup szolgáltatás továbbra is megőrzi a régi tároló összes meglévő helyreállítási pontját.
+  - A helyreállítási pontok megőrzéséhez a régi tárolóban kell fizetnie.
+  - A biztonsági másolatból csak a régi tárolóban található nem lejárt helyreállítási pontok esetében állíthatja vissza a biztonsági mentést.
+  - Az új tárolón létre kell hozni az új eredeti replikát.
+
+- Egy Azure-beli virtuális gép esetében [leállíthatja](backup-azure-manage-vms.md#stop-protecting-a-vm) a virtuális gép védelmét a régi tárolóban, áthelyezheti a virtuális gépet egy másik erőforráscsoporthoz, majd védetté teheti a virtuális gépet az új tárolóban. Tekintse meg a virtuális gép másik erőforráscsoporthoz való áthelyezésével kapcsolatos [útmutatást és korlátozásokat](https://docs.microsoft.com/azure/azure-resource-manager/management/move-limitations/virtual-machines-move-limitations) .
+
+  Egy virtuális gépet egyszerre csak egy tárolóban lehet védeni. Az új erőforráscsoport virtuális gépe azonban az új tárolóban is védhető, mivel ez egy másik virtuális gép.
+
+  - A Azure Backup szolgáltatás megőrzi azokat a helyreállítási pontokat, amelyek biztonsági mentése a régi tárolón történik.
+  - A helyreállítási pontok megőrzéséhez a régi tárolóban kell fizetnie (további részletekért lásd a [Azure Backup díjszabását](azure-backup-pricing.md) ).
+  - Szükség esetén visszaállíthatja a virtuális gépet a régi tárból.
+  - Az új erőforrásban található virtuális gép új tárolójának első biztonsági mentése kezdeti replika lesz.
+
+## <a name="next-steps"></a>Következő lépések
 
 Több különböző típusú erőforrást is áthelyezhet az erőforráscsoportok és az előfizetések között.
 

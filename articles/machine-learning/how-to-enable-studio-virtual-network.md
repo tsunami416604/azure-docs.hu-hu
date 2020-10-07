@@ -11,12 +11,12 @@ ms.author: aashishb
 author: aashishb
 ms.date: 07/16/2020
 ms.custom: contperfq4, tracking-python
-ms.openlocfilehash: 58395463c494a95a8842cddbe4d51544ce03d212
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 4b6f2db8a8245db7dddbabc3a31a0de0d8963b84
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91713372"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776085"
 ---
 # <a name="use-azure-machine-learning-studio-in-an-azure-virtual-network"></a>Azure Machine Learning Studio használata Azure-beli virtuális hálózaton
 
@@ -24,14 +24,15 @@ Ebből a cikkből megtudhatja, hogyan használhatja a Azure Machine Learning Stu
 
 > [!div class="checklist"]
 > - A Studio egy virtuális hálózaton belüli erőforrásból érhető el.
+> - Magánhálózati végpontok konfigurálása a Storage-fiókokhoz.
 > - A Studio hozzáférést biztosít a virtuális hálózaton belül tárolt adatmennyiségekhez.
-> - Ismerje meg, hogy a Studio milyen hatással van a tárterület biztonságára.
+> - Ismerje meg, hogy a Studio hogyan befolyásolja a tárolók biztonságát.
 
 Ez a cikk egy öt részes sorozat ötödik része, amely végigvezeti egy Azure Machine Learning munkafolyamat biztonságossá tételének lépésein. Javasoljuk, hogy először olvassa el az első [részt: VNet – áttekintés](how-to-network-security-overview.md) az általános architektúra megismeréséhez. 
 
 Tekintse meg a sorozat egyéb cikkeit:
 
-[1. VNet – áttekintés](how-to-network-security-overview.md)  >  [2. A](how-to-secure-workspace-vnet.md)  >  [3. munkaterület védelme Gondoskodjon a 4. képzési környezet védelméről](how-to-secure-training-vnet.md)  >  [. Gondoskodjon az 5. következtetési környezet védelméről](how-to-secure-inferencing-vnet.md)  >  [. A Studio funkcióinak engedélyezése](how-to-enable-studio-virtual-network.md)
+[1. VNet – áttekintés](how-to-network-security-overview.md)  >  [2. A](how-to-secure-workspace-vnet.md)  >  [3. munkaterület védelme Gondoskodjon a 4. képzési környezet védelméről](how-to-secure-training-vnet.md)  >  [. Gondoskodjon az 5. következtetési környezet védelméről](how-to-secure-inferencing-vnet.md)  >  **. A Studio funkcióinak engedélyezése**
 
 
 > [!IMPORTANT]
@@ -46,7 +47,7 @@ Tekintse meg a sorozat egyéb cikkeit:
 
 + Meglévő [Azure Machine learning munkaterület, amelyen engedélyezve van a privát hivatkozás](how-to-secure-workspace-vnet.md#secure-the-workspace-with-private-endpoint).
 
-+ Egy meglévő [Azure Storage-fiók lett hozzáadva a virtuális hálózathoz](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts).
++ Egy meglévő [Azure Storage-fiók lett hozzáadva a virtuális hálózathoz](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-service-endpoints).
 
 ## <a name="access-the-studio-from-a-resource-inside-the-vnet"></a>A studióhoz való hozzáférés a VNet belüli erőforrásból
 
@@ -56,7 +57,7 @@ Ha például hálózati biztonsági csoportokat (NSG) használ a kimenő forgalo
 
 ## <a name="access-data-using-the-studio"></a>Hozzáférés az adataihoz a Studio használatával
 
-Miután [hozzáadta az Azure Storage-fiókot a virtuális hálózathoz](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts), úgy kell beállítania a Storage-fiókot, hogy a [felügyelt identitást](../active-directory/managed-identities-azure-resources/overview.md) használja, hogy biztosítsa a Studio számára az adatokhoz való hozzáférést. A Studio támogatja a szolgáltatási végpontok vagy privát végpontok használatára konfigurált Storage-fiókokat. A Storage-fiókok alapértelmezés szerint szolgáltatás-végpontokat használnak. A magánhálózati végpontok tárolásának engedélyezéséhez lásd: [privát végpontok használata az Azure Storage](../storage/common/storage-private-endpoints.md) -hoz
+Miután hozzáadta az Azure Storage-fiókot a virtuális hálózathoz egy [szolgáltatási végponttal](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-service-endpoints) vagy [privát végponttal](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-private-endpoints), konfigurálnia kell a Storage-fiókot úgy, hogy a [felügyelt identitást](../active-directory/managed-identities-azure-resources/overview.md) használja a Studio számára az adatokhoz való hozzáférés biztosításához.
 
 Ha nem engedélyezi a felügyelt identitást, akkor ez a hibaüzenet jelenik meg, `Error: Unable to profile this dataset. This might be because your data is stored behind a virtual network or your data does not support profile.` továbbá a következő műveletek lesznek letiltva:
 
@@ -64,6 +65,9 @@ Ha nem engedélyezi a felügyelt identitást, akkor ez a hibaüzenet jelenik meg
 * Jelenítse meg a tervezőben tárolt adatmegjelenítést.
 * AutoML-kísérlet küldése.
 * Címkéző projekt elindítása.
+
+> [!NOTE]
+> A ml-ben [támogatott adatfeliratok](how-to-create-labeling-projects.md#use-ml-assisted-labeling) nem támogatják a virtuális hálózat mögött biztonságossá tett alapértelmezett Storage-fiókokat. A ML által támogatott adatcímkézéshez nem alapértelmezett Storage-fiókot kell használnia. A nem alapértelmezett Storage-fiók a virtuális hálózat mögött is biztonságossá tehető. 
 
 A Studio a következő adattár-típusokból származó adatok olvasását támogatja egy virtuális hálózatban:
 
@@ -134,7 +138,7 @@ Az alapértelmezett adattárat is felülbírálhatja egy modul alapján. Ez lehe
 1. Válassza a **kimeneti beállítások megadása**lehetőséget.
 1. Új adattárt kell megadnia.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez a cikk egy négy részből álló virtuális hálózati sorozat választható részét képezi. A virtuális hálózatok biztonságossá tételéhez tekintse meg a cikkek további részeit:
 

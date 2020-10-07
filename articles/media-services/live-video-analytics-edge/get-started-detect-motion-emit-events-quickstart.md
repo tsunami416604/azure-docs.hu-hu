@@ -3,12 +3,12 @@ title: Ismerkedés a Live Video Analytics szolgáltatással IoT Edge-Azure-ban
 description: Ez a rövid útmutató bemutatja, hogyan kezdheti el a IoT Edge Live Video Analytics szolgáltatást. Ismerje meg, hogyan derítheti fel a mozgást egy élő videó streamben.
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 0d1aaf34ad38b50403a3cbefbc953f9140f2fe82
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 9cf574cba023c9eb5a44999b3aa04f6c1e626ed1
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "90884939"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91773396"
 ---
 # <a name="quickstart-get-started---live-video-analytics-on-iot-edge"></a>Gyors útmutató: első lépések – élő videó-elemzés IoT Edge
 
@@ -43,12 +43,8 @@ Ebben a rövid útmutatóban azt javasoljuk, hogy az Azure-előfizetésében lé
 1. Ha első alkalommal használja a Cloud Shell, a rendszer kérni fogja, hogy válasszon egy előfizetést egy Storage-fiók és egy Microsoft Azure-fájlmegosztás létrehozásához. Válassza a **tároló létrehozása** lehetőséget a Cloud Shell munkamenet-információhoz tartozó Storage-fiók létrehozásához. Ez a Storage-fiók elkülönül a parancsfájl által a Azure Media Services-fiókkal való használatra létrehozott fióktól.
 1. A Cloud Shell ablak bal oldalán lévő legördülő menüben válassza a **bash** lehetőséget a környezetében.
 
-    ![Környezeti választó](./media/quickstarts/env-selector.png)
-
-1. Futtassa az alábbi parancsot.
-
-    ```
-    bash -c "$(curl -sL https://aka.ms/lva-edge/setup-resources-for-samples)"
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/quickstarts/env-selector.png" alt-text="Élő videó-elemzés a mozgásészlelés alapján"
     ```
     
 Ha a parancsfájl sikeresen befejeződik, az előfizetésben szereplő összes szükséges erőforrást látnia kell. A szkript kimenetében az erőforrások táblázata felsorolja az IoT hub nevét. Keresse meg az erőforrás típusát `Microsoft.Devices/IotHubs` , és jegyezze fel a nevet. Ezt a nevet a következő lépésben kell megadnia. 
@@ -76,7 +72,15 @@ A modulok üzembe helyezése mostantól megtörtént, de az adathordozó-diagram
 
 Kövesse ezeket az utasításokat az IoT hubhoz való kapcsolódáshoz az Azure IoT Tools bővítmény használatával.
 
-1. A Visual Studio Code-ban **View**válassza az  >  **Explorer**megtekintése lehetőséget. Vagy válassza a CTRL + SHIFT + E billentyűkombinációt.
+1. A Visual Studio Code-ban nyissa meg a **bővítmények** lapot (vagy nyomja le a CTRL + SHIFT + X billentyűkombinációt), és keressen rá az Azure IoT hubra.
+1. Kattintson a jobb gombbal, és válassza a **bővítmény beállításai**lehetőséget.
+
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="Élő videó-elemzés a mozgásészlelés alapján" lehetőséget.
+
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="Élő videó-elemzés a mozgásészlelés alapján":::
+1. <!--In Visual Studio Code-->Válassza a **View**  >  **Explorer**lehetőséget. Vagy válassza a CTRL + SHIFT + E billentyűkombinációt.
 1. Az **Explorer** lap bal alsó sarkában válassza az **Azure IoT hub**elemet.
 1. A helyi menü megjelenítéséhez kattintson a **További beállítások** ikonra. Ezután válassza a **IoT hub a kapcsolatok karakterláncának beállítása**lehetőséget.
 1. Amikor megjelenik egy beviteli mező, adja meg IoT Hub kapcsolódási karakterláncát. Cloud Shell a (z) *~/clouddrive/lva-sample/appsettings.js*.
@@ -683,7 +687,7 @@ Próbálkozzon a következő lépésekkel:
 
 Ha nem folytatja az alkalmazás használatát, törölje az ebben a rövid útmutatóban létrehozott erőforrásokat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Megtudhatja, hogyan [rögzíthet videót a IoT Edge élő video Analytics használatával](continuous-video-recording-tutorial.md).
 * További információ a [diagnosztikai üzenetekről](monitoring-logging.md).

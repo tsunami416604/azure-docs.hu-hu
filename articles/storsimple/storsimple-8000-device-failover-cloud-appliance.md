@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/03/2017
 ms.author: alkohli
-ms.openlocfilehash: 198b87d0a458108ce76934217c651d613ab5d75e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 18b34ff466f3935cb5cd18d46e6d26e36e756a9b
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85512075"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91774460"
 ---
 # <a name="fail-over-to-your-storsimple-cloud-appliance"></a>Feladatátvétel a StorSimple Cloud Appliance
 
@@ -46,15 +46,15 @@ A következő lépések végrehajtásával állítsa vissza az eszközt egy cél
     ![Eszköz kiválasztása](./media/storsimple-8000-device-failover-disaster-recovery/failover-cloud-dev1.png)
 3. Válassza ki a forrás eszközt, majd kattintson rá. A forrásoldali eszközön szerepelnek a felvenni kívánt mennyiségi tárolók. Válassza a **beállítások > kötetek tárolók lehetőséget**.
 
-    ![Eszköz kiválasztása](./media/storsimple-8000-device-failover-disaster-recovery/failover-cloud-dev2.png)
+    ![2. eszköz kiválasztása](./media/storsimple-8000-device-failover-disaster-recovery/failover-cloud-dev2.png)
     
 4. Válasszon ki egy olyan mennyiségi tárolót, amelyet át szeretne adni egy másik eszközre. Kattintson a kötet tárolóra a tárolóban található kötetek listájának megjelenítéséhez. Válasszon ki egy kötetet, kattintson rá a jobb gombbal, majd kattintson az **Offline** állapotba állítás lehetőségre a kötet offline állapotba helyezéséhez.
 
-    ![Eszköz kiválasztása](./media/storsimple-8000-device-failover-disaster-recovery/failover-cloud-dev5.png)
+    ![3. eszköz kiválasztása](./media/storsimple-8000-device-failover-disaster-recovery/failover-cloud-dev5.png)
 
 5. Ismételje meg a folyamatot a mennyiségi tároló összes kötetén.
 
-     ![Eszköz kiválasztása](./media/storsimple-8000-device-failover-disaster-recovery/failover-cloud-dev7.png)
+     ![4. eszköz kiválasztása](./media/storsimple-8000-device-failover-disaster-recovery/failover-cloud-dev7.png)
 
 6. Ismételje meg az előző lépést az összes olyan mennyiségi tárolónál, amelyet át szeretne adni egy másik eszközre.
 
@@ -81,7 +81,7 @@ A következő lépések végrehajtásával állítsa vissza az eszközt egy cél
 
     1. Válassza ki azt az eszközt, amelyet a feladatátvétel céljaként használt.
 
-       ![Eszköz kiválasztása](./media/storsimple-8000-device-failover-disaster-recovery/failover-phy-dev14.png)
+       ![5. eszköz kiválasztása](./media/storsimple-8000-device-failover-disaster-recovery/failover-phy-dev14.png)
 
     2. Kattintson a **kötetek tárolók**elemre. Az összes kötet-tárolót, valamint a régi eszköz köteteit is fel kell listázni.
 
@@ -90,7 +90,7 @@ A következő lépések végrehajtásával állítsa vissza az eszközt egy cél
        ![Cél mennyiségi tárolók megtekintése](./media/storsimple-8000-device-failover-disaster-recovery/failover-phy-dev17.png)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A feladatátvétel elvégzése után szükség lehet [a StorSimple-eszköz inaktiválására vagy törlésére](storsimple-8000-deactivate-and-delete-device.md).
 

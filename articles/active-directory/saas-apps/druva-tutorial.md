@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/06/2020
 ms.author: jeedes
-ms.openlocfilehash: d0dffe602aef01af2fb2ef8ee9462a0bb99c1ae0
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 401b1ef4e057d145574c0a8fcbfce8c9f586c266
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88555686"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91775065"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-druva"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Druva
 
@@ -93,7 +93,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. A fentiek mellett a Druva alkalmazás néhány további attribútumot vár az SAML-válaszban, amelyek alább láthatók. Ezek az attribútumok előre fel vannak töltve, de a követelményeinek megfelelően áttekintheti őket.
 
-    | Name | Forrás attribútum|
+    | Name (Név) | Forrás attribútum|
     | ------------------- | -------------------- |
     | emailAddress | User. e-mail |
     | druva_auth_token | A DCP felügyeleti konzolról generált SSO-token idézőjelek nélkül.  Például: X-XXXXX-XXXX-S-A-M-P-L-E + TXOXKXEXNX =. Az Azure automatikusan hozzáadja az idézőjeleket az Auth-jogkivonat köré. |
@@ -146,7 +146,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 1. Az **egyszeri bejelentkezés** lapon kattintson a **Szerkesztés**elemre.
 
-    ![Egyszeri bejelentkezési beállítások](./media/druva-tutorial/ic795092.png "Egyszeri bejelentkezési beállítások")
+    ![Képernyőfelvétel: a "szerkesztés" gomb kiválasztásával megjelenítheti a "hozzáférési beállítások – egyszeri bejelentkezés" lapot.](./media/druva-tutorial/ic795092.png "Egyszeri bejelentkezési beállítások")
 
 1. Az **egyszeri bejelentkezési beállítások szerkesztése** oldalon hajtsa végre a következő lépéseket:
 

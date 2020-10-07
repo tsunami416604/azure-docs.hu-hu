@@ -1,5 +1,5 @@
 ---
-title: Régiók és Availability Zones az Azure-ban
+title: Régiók és rendelkezésre állási zónák az Azure-ban
 description: Ismerje meg az Azure-beli régiókat és Availability Zoneseket, hogy megfeleljenek a technikai és szabályozási követelményeinek.
 author: cynthn
 ms.service: azure
@@ -7,14 +7,14 @@ ms.topic: article
 ms.date: 08/27/2020
 ms.author: cynthn
 ms.custom: fasttrack-edit, mvc
-ms.openlocfilehash: b9a400862280cbbc219e87695e363c0ec2e75ee6
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 9a9cdef27276aa589a4aadd853185b0e3fb4be61
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89018671"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91773739"
 ---
-# <a name="regions-and-availability-zones-in-azure"></a>Régiók és Availability Zones az Azure-ban
+# <a name="regions-and-availability-zones-in-azure"></a>Régiók és rendelkezésre állási zónák az Azure-ban
 
 Microsoft Azure szolgáltatások globálisan elérhetők a Felhőbeli műveletek optimális szinten történő elvégzéséhez. Az igényeinek legmegfelelőbb régiót a technikai és szabályozási megfontolások alapján választhatja ki: a szolgáltatás funkcióit, az adattárolást, a megfelelőségi követelményeket és a késést.
 
@@ -79,7 +79,7 @@ Ha egy szolgáltatási ajánlat nem érhető el egy adott régióban, a Microsof
 | Régió típusa | Nem regionális | Alapító | Mainstream | Specializált | Rendelkezésre állási zónák | Adattárolási hely |
 | --- | --- | --- | --- | --- | --- | --- |
 | Ajánlott | :heavy_check_mark: | :heavy_check_mark: | :heavy_check_mark: | Igény szerint vezérelt | :heavy_check_mark: | :heavy_check_mark: |
-| Alternatív | :heavy_check_mark: | :heavy_check_mark: | Igény szerint vezérelt | Igény szerint vezérelt | n.a. | :heavy_check_mark: |
+| Alternatív | :heavy_check_mark: | :heavy_check_mark: | Igény szerint vezérelt | Igény szerint vezérelt | N/A | :heavy_check_mark: |
 
 ### <a name="services-by-category"></a>Szolgáltatások kategóriánként
 
@@ -95,7 +95,7 @@ Ahogy azt korábban említettük, az Azure három kategóriába sorolja a szolg�
 > | Application Gateway | Alkalmazás konfigurációja | Azure Analysis Services |
 > | Azure Backup | App Service | Azure Blockchain Service |
 > | Azure Cosmos DB | Automation | Azure Blueprints |
-> | 2. generációs Azure Data Lake Storage | Azure Active Directory Domain Services | Azure Database for MariaDB |
+> | 2. generációs Azure Data Lake Storage | Azure Active Directory tartományi szolgáltatások | Azure Database for MariaDB |
 > | Azure ExpressRoute | Azure Bastion | Azure Dedicated HSM |
 > | Azure SQL Database | Azure Cache for Redis | Azure Dev Spaces |
 > | Cloud Services | Azure Cognitive Search | Azure Digital Twins |
@@ -113,7 +113,7 @@ Ahogy azt korábban említettük, az Azure három kategóriába sorolja a szolg�
 > | Service Fabric | Azure HPC Cache | Data Catalog |
 > | Virtual Machine Scale Sets | Azure IoT Hub | Data Factory: Data Factory v1 |
 > | Virtual Machines | Azure Kubernetes Service (AKS) | Data Lake Analytics |
-> | Virtual Machines: Av2 sorozat | Azure Machine Learning | Machine Learning Studio |
+> | Virtual Machines: Av2 sorozat | Azure Machine Learning | Azure Machine Learning Studio (klasszikus)|
 > | Virtual Machines: BS sorozat | Azure Private Link | Microsoft Genomics |
 > | Virtual Machines: DSv2 sorozat | Azure Red Hat OpenShift | Remote Rendering |
 > | Virtual Machines: DSv3 sorozat | Azure SignalR szolgáltatás | Spatial Anchors |
@@ -131,7 +131,7 @@ Ahogy azt korábban említettük, az Azure három kategóriába sorolja a szolg�
 > |  | Cognitive Services: Language Understanding | Virtual Machines: HCv1 sorozat |
 > |  | Cognitive Services: QnA Maker | Virtual Machines: H sorozat |
 > |  | Cognitive Services: Speech Services | Virtual Machines: LS-sorozat |
-> |  | Container Instances | Virtual Machines: LSv2 sorozat |
+> |  | Tárolópéldányok | Virtual Machines: LSv2 sorozat |
 > |  | Container Registry | Virtual Machines: Mv2 sorozat |
 > |  | Data Factory | Virtual Machines: NC sorozat |
 > |  | Event Grid | Virtual Machines: NCv2 sorozat |

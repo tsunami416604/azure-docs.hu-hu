@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/25/2019
 ms.author: jeedes
-ms.openlocfilehash: 5bae2173fc49cb9f41787905be66cf32a99fa03a
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 5ffdc510fd2a0f81fbfa5d9d04c337c99b389110
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88536963"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91774498"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-dealpath"></a>Oktatóanyag: Azure Active Directory integráció a Dealpath
 
@@ -128,7 +128,7 @@ Az Azure AD egyszeri bejelentkezés Dealpath való konfigurálásához hajtsa v�
 
 2. A jobb felső sarokban kattintson a **felügyeleti eszközök** elemre, és navigáljon az **integrációk**elemre, majd az **SAML 2,0-hitelesítés** szakaszban kattintson a **beállítások frissítése**elemre:
 
-    ![Dealpath-konfiguráció](./media/dealpath-tutorial/tutorial_dealpath_admin.png)
+    ![Képernyőfelvétel: a "felügyeleti eszközök – integrációs" oldal, amely az "S A M L 2,0 Authentication" szakaszt és a "frissítési beállítások" elemet mutatja.](./media/dealpath-tutorial/tutorial_dealpath_admin.png)
 
 3. Az **SAML 2,0-hitelesítés beállítása** oldalon hajtsa végre a következő lépéseket:
 

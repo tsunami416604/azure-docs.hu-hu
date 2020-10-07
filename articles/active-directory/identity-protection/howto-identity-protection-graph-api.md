@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: how-to
-ms.date: 07/14/2020
+ms.date: 10/06/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 86d88f841f76b367e83f0ae6b81e604e1b7f3e4b
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: e16f33cb8aa7c6ceeb1398dd23ccba31b5f936b1
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88950119"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776136"
 ---
 # <a name="get-started-with-azure-active-directory-identity-protection-and-microsoft-graph"></a>A Azure Active Directory Identity Protection és a Microsoft Graph első lépései
 
@@ -70,7 +70,7 @@ Az Identity Protection-adatok elérésének négy lépése van Microsoft Graph:
 1. A létrehozott **alkalmazásból** válassza a **tanúsítványok & Secrets**elemet.
 1. Az **ügyfél**titkos kulcsa területen válassza az **új ügyfél titka**lehetőséget.
    1. Adja meg az ügyfél titkos **leírását** , és állítsa be a lejárati időszakot a szervezeti szabályzatok szerint.
-   1. Válassza a **Hozzáadás** elemet.
+   1. Válassza a **Hozzáadás** lehetőséget.
 
    > [!NOTE]
    > Ha elveszíti ezt a kulcsot, térjen vissza ehhez a szakaszhoz, és hozzon létre egy új kulcsot. Titkos kulcs megtartása: bárki, aki hozzáfér az adataihoz.
@@ -104,6 +104,8 @@ Küldje el ezt a fejlécet kérelemként a következő API URL-címre: `https://
 A válasz, ha a sikeres, az identitások kockázatának észlelése és a hozzájuk kapcsolódó adatok OData JSON formátumban való gyűjteménye, amely elemezhető és kezelhető, ahogy az illik.
 
 ### <a name="sample"></a>Sample
+
+Ez a példa egy közös titok használatát mutatja be a hitelesítéshez. A kódban a titkokat tároló éles környezetben általában a rendszer elkerüli a felszínre. A szervezetek az Azure-erőforrások felügyelt identitásait is használhatják a hitelesítő adatok biztonságossá tételéhez. A felügyelt identitásokkal kapcsolatos további információkért tekintse meg az [Azure-erőforrások felügyelt identitásait](../managed-identities-azure-resources/overview.md)ismertető cikket.
 
 Az alábbi mintakód a PowerShell használatával történő hitelesítéshez és az API meghívásához.  
 Csak adja hozzá az ügyfél-azonosítót, a titkos kulcsot és a bérlői tartományt.

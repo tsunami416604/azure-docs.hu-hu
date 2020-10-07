@@ -10,12 +10,12 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.date: 07/10/2020
-ms.openlocfilehash: 1afa9173c2ca3704bf4408c271e3cf950ef79077
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 58bb08cad111e0744f7831783169901cd76caef4
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91302216"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91772634"
 ---
 # <a name="use-private-python-packages-with-azure-machine-learning"></a>Privát Python-csomagok használata Azure Machine Learning
 
@@ -58,7 +58,7 @@ Ez a módszer személyes hozzáférési tokent használ a tárházon végzett hi
 
  1. [Hozzon létre egy személyes hozzáférési jogkivonatot (Pat)](https://docs.microsoft.com/azure/devops/organizations/accounts/use-personal-access-tokens-to-authenticate?view=azure-devops&preserve-view=true&tabs=preview-page#create-a-pat) az Azure DevOps-példányhoz. Állítsa be a jogkivonat hatókörét __csomagolási > olvasásra__. 
 
- 2. Adja hozzá az Azure DevOps URL-címét és a PAT as munkaterület-tulajdonságokat a [munkaterület. set_connection](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py&preserve-view=true#&preserve-view=trueset-connection-name--category--target--authtype--value-) metódus használatával.
+ 2. Adja hozzá az Azure DevOps URL-címét és a PAT as munkaterület-tulajdonságokat a [Workspace.set_connection](https://docs.microsoft.com/python/api/azureml-core/azureml.core.workspace.workspace?view=azure-ml-py&preserve-view=true#&preserve-view=trueset-connection-name--category--target--authtype--value-) metódus használatával.
 
      ```python
     from azureml.core import Workspace
@@ -91,7 +91,7 @@ A környezet most már készen áll a futtatásra vagy a webszolgáltatás-végp
 
 Az Azure Storage-fiókból csomagokat használhat a szervezet tűzfalán belül. A Storage-fiókban tárolhatók a csomagok vagy a nyilvánosan elérhető csomagok belső tükrözései.
 
-A magánhálózati tároló beállításához lásd: [Azure Machine learning munkaterület biztonságossá tétele és a kapcsolódó erőforrások](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts). A [VNet mögé kell helyeznie a Azure Container Registry (ACR)](how-to-secure-workspace-vnet.md#enable-azure-container-registry-acr)is.
+A magánhálózati tároló beállításához lásd: [Azure Machine learning munkaterület biztonságossá tétele és a kapcsolódó erőforrások](how-to-secure-workspace-vnet.md#secure-azure-storage-accounts-with-service-endpoints). A [VNet mögé kell helyeznie a Azure Container Registry (ACR)](how-to-secure-workspace-vnet.md#enable-azure-container-registry-acr)is.
 
 > [!IMPORTANT]
 > Ezt a lépést kell végrehajtania ahhoz, hogy a privát csomag adattárával be tudja tanítani vagy üzembe lehessen helyezni a modelleket.

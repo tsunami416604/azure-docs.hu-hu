@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/20/2019
 ms.author: jeedes
-ms.openlocfilehash: a69b4a068e62c6376660a79b3a7c8ab5402b5704
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: b91f24f9c1a2cedd4292d98fc66630c6b66d37b0
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88536257"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91775165"
 ---
 # <a name="tutorial-integrate-displayr-with-azure-active-directory"></a>Oktatóanyag: a lejátszó integrálása Azure Active Directory
 
@@ -88,15 +88,15 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. A kijátszó alkalmazás az SAML-jogcímeket egy adott formátumban várja, amelyhez egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőképen az alapértelmezett attribútumok listája látható. Kattintson a **Szerkesztés** ikonra a felhasználói attribútumok párbeszédpanel megnyitásához.
 
-    ![image](common/edit-attribute.png)
+    ![A "szerkesztés" ikonnal jelölt "felhasználói attribútumok" szakaszt megjelenítő képernyőkép.](common/edit-attribute.png)
 
 1. A fentieken kívül a kijátszó alkalmazás néhány további attribútumot vár az SAML-válaszban. A **csoport jogcímek (előzetes verzió)** párbeszédpanel **felhasználói attribútumok & jogcímek** szakaszában hajtsa végre a következő lépéseket:
 
     a. Kattintson a **kérelemben visszaadott csoportok**melletti **tollra** .
 
-    ![image](./media/displayr-tutorial/config04.png)
+    ![Képernyőfelvétel: a "felhasználói attribútumok & jogcímek" szakasz "toll" ikonnal jelölt "a visszaadott csoportba tartozó csoportok" elem mellett.](./media/displayr-tutorial/config04.png)
 
-    ![image](./media/displayr-tutorial/config05.png)
+    ![Képernyőkép, amely megjeleníti a "csoport jogcímek (előzetes verzió)" ablakot a kiválasztott beállításokkal.](./media/displayr-tutorial/config05.png)
 
     b. Válassza az **összes csoport** lehetőséget a választógombok listájáról.
 
@@ -126,11 +126,11 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 4. Kattintson a **Beállítások** elemre, majd navigáljon a **fiókhoz**.
 
-    ![Konfiguráció](./media/displayr-tutorial/config01.png)
+    ![Képernyőfelvétel: a "beállítások" ikon és a "fiók" lehetőség van kiválasztva.](./media/displayr-tutorial/config01.png)
 
 5. Váltson a **Beállítások** elemre a felső menüben, majd görgessen le az oldalra, és kattintson az **egyszeri bejelentkezés konfigurálása (SAML)** elemre.
 
-    ![Konfiguráció](./media/displayr-tutorial/config02.png)
+    ![Képernyőfelvétel: a "beállítások" lap van kiválasztva, valamint az "egyszeri bejelentkezés konfigurálása (S L)" művelet be van jelölve.](./media/displayr-tutorial/config02.png)
 
 6. Az **egyszeri bejelentkezés (SAML)** oldalon hajtsa végre a következő lépéseket:
 
@@ -190,11 +190,11 @@ Az Azure AD-felhasználók engedélyezéséhez jelentkezzen be a lejátszó szol
 
 2. Kattintson a **Beállítások** elemre, majd navigáljon a **fiókhoz**.
 
-    ![Lejátszó konfigurálása](./media/displayr-tutorial/config01.png)
+    ![A "fiók" beállítással rendelkező "beállítások (fogaskerék)" ikont megjelenítő képernyőkép.](./media/displayr-tutorial/config01.png)
 
 3. A felső menüben váltson a **Beállítások** elemre, és görgessen le az oldalra, amíg a **felhasználók** szakaszra nem kattint, majd az **új felhasználó**elemre.
 
-    ![Lejátszó konfigurálása](./media/displayr-tutorial/config07.png)
+    ![Képernyőfelvétel: a "felhasználók" feliratú "Settings" (beállítások) lap, és az "új felhasználó" gomb van kiválasztva.](./media/displayr-tutorial/config07.png)
 
 4. Az **új felhasználó** lapon hajtsa végre a következő lépéseket:
 

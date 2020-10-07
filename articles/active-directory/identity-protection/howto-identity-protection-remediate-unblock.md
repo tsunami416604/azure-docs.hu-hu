@@ -5,24 +5,24 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: how-to
-ms.date: 06/05/2020
+ms.date: 10/06/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 06335798addadcd8591625e25ed2eafe8469ae48
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c297e1a4f6443e584f04914712314d33df23b119
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84463960"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776102"
 ---
 # <a name="remediate-risks-and-unblock-users"></a>Kockázatok szervizelése és a felhasználók blokkolásának feloldása
 
 A [vizsgálat](howto-identity-protection-investigate-risk.md)befejezése után el kell végeznie a kockázat javítását vagy a felhasználók blokkolásának feloldását. A szervezeteknek lehetősége van arra is, hogy az automatizált szervizelést is engedélyezzék a [kockázati szabályzatok](howto-identity-protection-configure-risk-policies.md)használatával. A szervezeteknek meg kell próbálnia lezárva az összes olyan kockázati észlelést, amelyet az adott időszakban a szervezete számára kényelmesnek tart. A Microsoft a lehető legrövidebb időn belül javasolja az események bezárását, mivel a kockázatok kezelésekor az idő számít.
 
-## <a name="remediation"></a>Kockázatcsökkentés
+## <a name="remediation"></a>Szervizelés
 
 Minden aktív kockázati észlelés hozzájárul a felhasználói kockázati szint nevű érték kiszámításához. A felhasználói kockázati szint egy kijelző (alacsony, közepes és magas), amely a fiók biztonságának valószínűségét jelzi. Rendszergazdaként az összes kockázati észlelést le szeretné állítani, hogy az érintett felhasználók többé ne legyenek kitéve.
 
@@ -89,6 +89,10 @@ A bejelentkezési kockázaton alapuló fiókok blokkolásának feloldásához a 
 1. **A felhasználó kizárása a szabályzatból** – ha úgy gondolja, hogy a bejelentkezési szabályzat jelenlegi konfigurációja problémákat okoz bizonyos felhasználók számára, kizárhatja a felhasználókat. További információ [: a kockázatkezelési házirendek konfigurálása és engedélyezése](howto-identity-protection-configure-risk-policies.md#exclusions)című cikk kizárásai.
 1. **Házirend letiltása** – ha úgy gondolja, hogy a házirend-konfiguráció az összes felhasználónál problémát okoz, letilthatja a szabályzatot. További információt a [kockázatkezelési házirendek konfigurálása és engedélyezése](howto-identity-protection-configure-risk-policies.md)című cikkben talál.
 
-## <a name="next-steps"></a>További lépések
+## <a name="powershell-preview"></a>PowerShell-előnézet
+
+A Microsoft Graph PowerShell SDK előzetes verziójú moduljának használatával a szervezetek a PowerShell használatával kezelhetik a kockázatokat. Az előzetes verziójú modulok és a mintakód az [Azure ad GitHub](https://github.com/AzureAD/IdentityProtectionTools)-adattárában található.
+
+## <a name="next-steps"></a>Következő lépések
 
 A Azure AD Identity Protection áttekintéséhez tekintse meg a [Azure ad Identity Protection áttekintését](overview-identity-protection.md).

@@ -11,18 +11,18 @@ author: iainfoulds
 manager: daveba
 ms.reviewer: librown
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9b225ccb0e607b073fd28f79d0151da0b77f5cdf
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 922cea49179e63e2481a7f15b1e78bd8bf6c4848
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91266615"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91773926"
 ---
 # <a name="passwordless-authentication-options-for-azure-active-directory"></a>A Azure Active Directory jelszóval nem rendelkező hitelesítési beállításai
 
 Az olyan funkciók, mint a többtényezős hitelesítés (MFA), nagyszerű megoldást jelentenek a szervezet biztonságossá tételére, de a felhasználók gyakran csalódottak lesznek a további biztonsági réteggel, hogy emlékezzenek a jelszavára. A jelszóval nem rendelkező hitelesítési módszerek sokkal kényelmesebbek, mert a jelszó el lett távolítva, és lecserélve valamire, vagy valamire, amit tud.
 
-| Hitelesítés  | Valamilyen dolog | Amit Ön vagy ismer |
+| Hitelesítés  | Valami, ami az Öné | Amit Ön vagy ismer |
 | --- | --- | --- |
 | Jelszó nélküli | Windows 10-es eszköz, telefon vagy biztonsági kulcs | Biometrikus vagy PIN-kód |
 
@@ -61,6 +61,8 @@ Azt is lehetővé teheti, hogy az alkalmazott telefonja jelszavas hitelesítési
 ![Bejelentkezés a Microsoft Edge-be a Microsoft Authenticator alkalmazással](./media/concept-authentication-passwordless/concept-web-sign-in-microsoft-authenticator-app.png)
 
 A hitelesítő alkalmazás minden iOS-vagy Android-telefont erős, jelszóval nem rendelkező hitelesítő adatba kapcsol. A felhasználók bármilyen platformra vagy böngészőbe bejelentkezhetnek, ha értesítést küldenek a telefonjára, és a képernyőn megjelenő számot a telefonján megjelenő telefonszámra, majd a biometrikus (érintés vagy arc) vagy a PIN-kód használatával megerősítik. A telepítés részleteiért tekintse meg [a Microsoft Authenticator alkalmazás letöltése és telepítése](../user-help/user-help-auth-app-download-install.md) című témakört.
+
+Az Azure AD-vel való jelszó nélküli bejelentkezés jelenleg előzetes verzióban érhető el a Microsoft Authenticator alkalmazással. Az Microsoft Authenticator alkalmazás használata másodlagos hitelesítéshez az Azure Multi-Factor Authentication, az önkiszolgáló jelszó-visszaállítás (SSPR) vagy az eskü szoftver jogkivonata GA. További információ az előzetes verziókról: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
 A hitelesítő alkalmazással való jelszóval nem rendelkező hitelesítés a vállalati Windows Hello szolgáltatással megegyező alapszintű mintát követi. Ez egy kicsit bonyolultabb, mivel a felhasználó azonosítására van szükség, hogy az Azure AD megtalálja a használt Microsoft Authenticator alkalmazás verzióját:
 
@@ -172,7 +174,7 @@ A három jelszóval nem rendelkező lehetőség közül választhat, hogy a vál
 
 A következő táblázat segítségével kiválaszthatja, hogy melyik módszer fogja támogatni a követelményeket és a felhasználókat.
 
-|Persona|Használati eset|Környezet|Jelszóval nem rendelkező technológia|
+|Persona|Forgatókönyv|Környezet|Jelszóval nem rendelkező technológia|
 |:-|:-|:-|:-|
 |**Felügyelet**|Biztonságos hozzáférés egy eszközhöz felügyeleti feladatokhoz|Hozzárendelt Windows 10-es eszköz|Vállalati Windows Hello és/vagy FIDO2 biztonsági kulcs|
 |**Felügyelet**|Felügyeleti feladatok nem Windows rendszerű eszközökön| Mobil-vagy nem Windows-eszköz|Jelszó nélküli bejelentkezés a Microsoft Authenticator alkalmazással|

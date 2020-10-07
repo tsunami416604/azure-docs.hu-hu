@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/25/2019
 ms.author: jeedes
-ms.openlocfilehash: e9ca679c7bb8deedca20a5aa97cbb53a9139ea8a
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 6d0062214b4faa0cb2b26c30f1c2833d25d5493e
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88536869"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91774523"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-deputy"></a>Oktatóanyag: Azure Active Directory integráció a helyettessel
 
@@ -99,7 +99,7 @@ Az Azure AD egyszeri bejelentkezés helyettessel való konfigurálásához hajts
 
 4. Az **alapszintű SAML-konfiguráció** szakaszban, ha az alkalmazást **identitásszolgáltató** kezdeményezett módban szeretné konfigurálni, hajtsa végre a következő lépéseket:
 
-    ![A tartomány és az URL-címek egyszeri bejelentkezési adatainak helyettese](common/idp-intiated.png)
+    ![Képernyőkép, amely az "alapszintű S A M L konfiguráció" szakaszt mutatja az "azonosító", a "válasz URL" és a "Mentés" gomb kiemelésével.](common/idp-intiated.png)
 
     a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával:
 
@@ -171,7 +171,7 @@ Az Azure AD egyszeri bejelentkezés helyettessel való konfigurálásához hajts
 
 1. Navigáljon a következő URL-címre: `https://(your-subdomain).deputy.com/exec/config/system_config` . Lépjen a **biztonsági beállítások** menüpontra, majd kattintson a **Szerkesztés**elemre.
    
-    ![Egyszeri bejelentkezés konfigurálása](./media/deputy-tutorial/tutorial_deputy_004.png)
+    ![Képernyőkép, amely a "biztonsági beállítások – szerkesztés" gomb kiválasztásával jeleníti meg a "rendszer konfigurációja" lapot.](./media/deputy-tutorial/tutorial_deputy_004.png)
 
 2. A **biztonsági beállítások** lapon végezze el az alábbi lépéseket.
 

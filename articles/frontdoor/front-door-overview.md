@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/27/2020
 ms.author: duau
-ms.openlocfilehash: 039e5b94bbd9d3b6c3edcb92eff88e7a9931205d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: bf0d802dc4ea4d18122a12b107dfb0cc0af80d63
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91448750"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91773450"
 ---
 # <a name="what-is-azure-front-door"></a>Mi az az Azure Front Door?
 
@@ -56,7 +56,7 @@ A bejárati ajtóhoz tartozó főbb funkciók:
 
 * Saját **[egyéni tartomány](front-door-custom-domain.md)** definiálása. 
 
-* Az alkalmazás biztonsága egyéni **[webalkalmazási tűzfal (WAF)](../web-application-firewall/overview.md)** szabályokkal és **[Azure DDoS Protectionokkal](../virtual-network/ddos-protection-overview.md)**.
+* Alkalmazások biztonsága integrált  **[webalkalmazási tűzfallal (WAF)](../web-application-firewall/overview.md)**.
 
 * HTTP-forgalom átirányítása HTTPS **[-re URL-átirányítás](front-door-url-redirect.md)** használatával.
 
@@ -72,7 +72,7 @@ Díjszabási információkért tekintse meg [A Front Door díjszabása](https://
 
 Fizessen elő az RSS-hírcsatornára, és tekintse meg az Azure-beli első ajtó funkciójának frissítéseit az [Azure Updates](https://azure.microsoft.com/updates/?category=networking&query=Azure%20Front%20Door) oldalon.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Útmutató a [Front Door létrehozásához](quickstart-create-front-door.md).
 - A [Front Door működésének](front-door-routing-architecture.md) ismertetése.

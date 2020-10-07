@@ -4,24 +4,19 @@ description: Privát kapcsolódás egy webalkalmazáshoz az Azure Private Endpoi
 author: ericgre
 ms.assetid: 2dceac28-1ba6-4904-a15d-9e91d5ee162c
 ms.topic: article
-ms.date: 08/12/2020
+ms.date: 10/07/2020
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
 ms.custom: fasttrack-edit, references_regions
-ms.openlocfilehash: 9f593bd5e1d4970b43b25c434abfa87177b72066
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: c6a55958102c89c78fe2cd797bb59cf72f9ec505
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91743012"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91773144"
 ---
-# <a name="using-private-endpoints-for-azure-web-app-preview"></a>Privát végpontok használata az Azure Web App-hoz (előzetes verzió)
-
-> [!Note]
-> Az előzetes verzió frissítésével megjelent a kiszűrése Protection szolgáltatás.
->
-> Az előzetes verzió az összes nyilvános régióban elérhető a Windows-és Linux-alkalmazások PremiumV2 és PremiumV3, valamint a rugalmas prémium szintű funkciókhoz. 
+# <a name="using-private-endpoints-for-azure-web-app"></a>Privát végpontok használata az Azure Web App-hoz
 
 Az Azure-webalkalmazás privát végpontjának használatával engedélyezheti a magánhálózaton található ügyfelek számára, hogy biztonságosan hozzáférjenek az alkalmazáshoz privát kapcsolaton keresztül. A privát végpont az Azure VNet IP-címét használja. A magánhálózaton lévő ügyfél és a webalkalmazás közötti hálózati forgalom a VNet és a Microsoft gerinc hálózatán található privát kapcsolaton keresztül történik, ami kiküszöböli a nyilvános internetről való kitettséget.
 
@@ -99,7 +94,7 @@ A névfeloldás például a következő lesz:
 A DNS-konfiguráció után a webalkalmazást a mywebappname.azurewebsites.net alapértelmezett névvel együtt érheti el.
 
 
-Ha egyéni DNS-nevet kell használnia, hozzá kell adnia az egyéni nevet a webalkalmazásban. Az előzetes verzióban az egyéni nevet a nyilvános DNS-feloldást használó bármely egyéni névnek hasonlóan kell érvényesíteni. További információ: [Egyéni DNS-ellenőrzés][dnsvalidation].
+Ha egyéni DNS-nevet kell használnia, hozzá kell adnia az egyéni nevet a webalkalmazásban. Az egyéni nevet úgy kell érvényesíteni, mint bármely egyéni nevet, a nyilvános DNS-feloldást használva. További információ: [Egyéni DNS-ellenőrzés][dnsvalidation].
 
 A kudu-konzol vagy a kudu REST API (az Azure DevOps saját üzemeltetésű ügynökökkel való üzembe helyezése) esetében két rekordot kell létrehoznia a Azure DNS saját zónájában vagy az egyéni DNS-kiszolgálón. 
 
@@ -118,11 +113,13 @@ A díjszabással kapcsolatos információkért lásd: az [Azure Private link dí
 
 Ha az Azure-függvényt privát végponttal rendelkező rugalmas prémium szintű csomagban használja, a függvény futtatásához vagy végrehajtásához az Azure web Portalon közvetlen hálózati hozzáférésre van szükség, vagy HTTP 403-hibaüzenetet fog kapni. Más szóval a böngészőnek képesnek kell lennie arra, hogy elérje a privát végpontot, hogy végrehajtsa a függvényt az Azure web Portalon. 
 
-Az előzetes verzió ideje alatt a rendszer csak az üzemi tárolóhelyet teszi elérhetővé a privát végpont mögött, a többi tárolóhelyet nyilvános végpontnak kell elérnie.
+Egy adott webalkalmazáshoz akár 100 magánhálózati végpontot is csatlakozhat.
+
+A privát végpont PremiumV2, PremiumV3, Windows és Linux rendszerű webalkalmazáshoz, tárolóhoz vagy nem, valamint a Azure Functions prémium csomaghoz (más néven a rugalmas prémium csomaghoz) érhető el. 
 
 Rendszeresen fejlesztjük a privát kapcsolat funkciót és a privát végpontot, és a korlátozásokról a [jelen cikkben][pllimitations] tájékozódhat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ha privát végpontot szeretne telepíteni a webalkalmazáshoz a portálon keresztül, tekintse meg a [webalkalmazásokhoz való privát kapcsolódás a portálon][howtoguide1] című témakört.
 - Ha privát végpontot szeretne üzembe helyezni a webalkalmazáshoz az Azure CLI használatával, tekintse meg a [webalkalmazásokhoz való privát kapcsolódás az Azure CLI-vel][howtoguide2] című témakört.

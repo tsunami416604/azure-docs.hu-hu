@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/05/2019
 ms.author: jeedes
-ms.openlocfilehash: d629e5d572f1e8fff05104a4a5004b7aaa8c7a0d
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: 12f6e66140b3654f1283cad45c97325e2bfb1a28
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88892949"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91775666"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-confluence-saml-sso-by-microsoft"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Microsoft által a torkolatánál SAML SSO-val
 
@@ -159,11 +159,11 @@ Ebben a szakaszban lehetővé teszi, hogy a B. Simon az Azure egyszeri bejelentk
 
 1. Mutasson a fogaskerékre, és kattintson a **bővítmények**elemre.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/confluencemicrosoft-tutorial/addon1.png)
+    ![A legördülő menüben a "fogaskerék" ikont és a "bővítmények" elemet bemutató képernyőkép.](./media/confluencemicrosoft-tutorial/addon1.png)
 
 1. Töltse le a beépülő modult a [Microsoft letöltőközpontból](https://www.microsoft.com/download/details.aspx?id=56503). Töltse fel manuálisan a Microsoft által biztosított beépülő modult a **feltöltés** menü használatával. A beépülő modul letöltése a [Microsoft szolgáltatási szerződése](https://www.microsoft.com/servicesagreement/)alá tartozik.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/confluencemicrosoft-tutorial/addon12.png)
+    ![Képernyőfelvétel: a "bővítmények kezelése" lap, amelyen a "bővítmény feltöltése" művelet van kiválasztva.](./media/confluencemicrosoft-tutorial/addon12.png)
 
 1. Az összefolyásánál fordított proxy vagy a terheléselosztó forgatókönyvének futtatásához hajtsa végre a következő lépéseket:
 
@@ -174,19 +174,19 @@ Ebben a szakaszban lehetővé teszi, hogy a B. Simon az Azure egyszeri bejelentk
 
     `scheme="https" proxyName="<subdomain.domain.com>" proxyPort="<proxy_port>" secure="true"`
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/confluencemicrosoft-tutorial/reverseproxy1.png)
+    ![Képernyőkép, amely az "összekötő" porthoz hozzáadott attribútummal rendelkező "server.xml" fájlt mutatja.](./media/confluencemicrosoft-tutorial/reverseproxy1.png)
 
     b. Az **alap URL-cím** módosítása a **rendszerbeállításokban** a proxy/Load Balancer alapján.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/confluencemicrosoft-tutorial/reverseproxy2.png)
+    ![Képernyőkép, amely a "kiindulási URL-címmel" jelölt "adminisztráció-beállítások" lapot mutatja.](./media/confluencemicrosoft-tutorial/reverseproxy2.png)
 
 1. Miután telepítette a beépülő modult, megjelenik a felhasználói bővítmények **kezelése** szakasz a **felhasználó által telepített** bővítmények szakaszában. Az új beépülő modul konfigurálásához kattintson a **Konfigurálás** elemre.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/confluencemicrosoft-tutorial/addon15.png)
+    ![Képernyőfelvétel: a "felhasználó által telepített" szakasz, a "configure" (Konfigurálás) gomb kiemelve.](./media/confluencemicrosoft-tutorial/addon15.png)
 
 1. Hajtsa végre a következő lépéseket a konfiguráció lapon:
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/confluencemicrosoft-tutorial/addon54.png)
+    ![Képernyőkép, amely az egyszeri bejelentkezési konfiguráció oldalát jeleníti meg.](./media/confluencemicrosoft-tutorial/addon54.png)
 
     > [!TIP]
     > Győződjön meg arról, hogy az alkalmazáshoz csak egy tanúsítvány van hozzárendelve, így nincs hiba a metaadatok feloldásakor. Ha több tanúsítvány is van, a rendszergazda hibaüzenetet kap a metaadatok feloldásakor.
@@ -237,7 +237,7 @@ Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a he
 
 1. A felhasználók szakaszban kattintson a **felhasználók hozzáadása** fülre. A **felhasználó hozzáadása** párbeszédpanelen hajtsa végre a következő lépéseket:
 
-    ![Alkalmazott hozzáadása](./media/confluencemicrosoft-tutorial/user2.png)
+    ![Képernyőkép, amely megjeleníti a "torkolatánál-adminisztráció" elemet a "felhasználók hozzáadása" lapon, és a "felhasználó hozzáadása" adatokat.](./media/confluencemicrosoft-tutorial/user2.png)
 
     a. A **Felhasználónév** szövegmezőbe írja be a következőhöz hasonló felhasználó e-mail címét: B. Simon.
 

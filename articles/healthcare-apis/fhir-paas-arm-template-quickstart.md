@@ -7,13 +7,13 @@ ms.subservice: fhir
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: mblythe
-ms.date: 09/14/2020
-ms.openlocfilehash: 393678342ad1e8e6e2ff5d3c38dab68ce29ee7e7
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.date: 10/06/2020
+ms.openlocfilehash: e9b2ec017ca985c1de739ee74c4d0732f39bdc1d
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91711717"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91772736"
 ---
 # <a name="quickstart-use-an-arm-template-to-deploy-azure-api-for-fhir"></a>Gyors útmutató: ARM-sablon használata az Azure API FHIR való üzembe helyezéséhez
 
@@ -62,8 +62,6 @@ Replace the line above with the following line once https://docs.microsoft.com/a
 * [**Microsoft.HealthcareApis/services**](/azure/templates/microsoft.healthcareapis/services)
 
 -->
-
-További Azure API FHIR-sablonokhoz a gyors üzembe helyezési [sablon](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Healthcareapis&pageNumber=1&sort=Popular)katalógusában talál további tudnivalókat.
 
 ## <a name="deploy-the-template"></a>A sablon üzembe helyezése
 
@@ -226,7 +224,7 @@ read -p "Press [ENTER] to continue: "
 
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az ARM-sablonok létrehozásának folyamatát ismertető lépésenkénti oktatóanyagért lásd:
 

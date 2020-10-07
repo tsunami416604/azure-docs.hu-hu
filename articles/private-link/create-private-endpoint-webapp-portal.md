@@ -1,28 +1,28 @@
 ---
-title: Privát kapcsolódás egy webalkalmazáshoz az Azure Private Endpoint (előzetes verzió) használatával
-description: Ez a cikk azt ismerteti, hogyan csatlakozhat egy webalkalmazáshoz az Azure Private Endpoint (előzetes verzió) használatával.
+title: Privát kapcsolódás egy webalkalmazáshoz az Azure Private Endpoint használatával
+description: Ez a cikk azt ismerteti, hogyan csatlakozhat egy webalkalmazáshoz az Azure Private Endpoint használatával.
 author: ericgre
 ms.assetid: b8c5c7f8-5e90-440e-bc50-38c990ca9f14
 ms.topic: how-to
-ms.date: 09/08/2020
+ms.date: 10/07/2020
 ms.author: ericg
 ms.service: app-service
 ms.workload: web
-ms.openlocfilehash: ccbcdbe9204120e1cf181136f566556ec30be871
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 3e0f05240aba9b5c92689315e409aaabe793b3f4
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90054534"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91772838"
 ---
-# <a name="connect-privately-to-a-web-app-by-using-azure-private-endpoint-preview"></a>Privát kapcsolódás egy webalkalmazáshoz az Azure Private Endpoint (előzetes verzió) használatával
+# <a name="connect-privately-to-a-web-app-by-using-azure-private-endpoint"></a>Privát kapcsolódás egy webalkalmazáshoz az Azure Private Endpoint használatával
 
-Az Azure Private-végpont (előzetes verzió) az Azure privát kapcsolatának alapvető építőeleme. Privát végpont használatával a webalkalmazáshoz is csatlakozhat. Ebből a cikkből megtudhatja, hogyan helyezhet üzembe egy webalkalmazást privát végpont használatával, majd hogyan csatlakozhat a webalkalmazáshoz egy virtuális gépről (VM).
+Az Azure Private-végpont az Azure privát kapcsolatának alapvető építőeleme. Privát végpont használatával a webalkalmazáshoz is csatlakozhat. Ebből a cikkből megtudhatja, hogyan helyezhet üzembe egy webalkalmazást privát végpont használatával, majd hogyan csatlakozhat a webalkalmazáshoz egy virtuális gépről (VM).
 
 További információ: [privát végpontok használata egy Azure-webalkalmazáshoz][privateendpointwebapp].
 
 > [!Note]
-> A privát végpont (előzetes verzió) nyilvános régiókban érhető el a PremiumV2 Windows Web Apps, a Linux Web Apps és a Azure Functions Premium csomag (más néven a rugalmas Prémium csomag) számára. 
+> A privát végpontok nyilvános régiókban érhetők el a PremiumV2, a PremiumV3 Windows Web Apps, a Linux Web Apps és a Azure Functions Premium csomag (más néven a rugalmas Prémium csomag) számára. 
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
@@ -53,7 +53,7 @@ A virtuális hálózat és az alhálózat létrehozásához tegye a következők
    > [!div class="mx-imgBorder"]
    > ![Képernyőkép az "alhálózat hozzáadása" panelről.][3]
 
-1. Válassza a **Felülvizsgálat + létrehozás** lehetőséget.
+1. Válassza az **Áttekintés + létrehozás** lehetőséget.
 
 1. A sikeres ellenőrzés után válassza a **Létrehozás**lehetőséget.
 
@@ -77,7 +77,7 @@ A virtuális gép létrehozásához tegye a következőket:
    > [!div class="mx-imgBorder"]
    > ![Képernyőkép a "virtuális gép létrehozása" panel "hálózatkezelés" lapjáról.][5]
 
-1. Válassza a **Felülvizsgálat + létrehozás** lehetőséget.
+1. Válassza az **Áttekintés + létrehozás** lehetőséget.
 
 1. A sikeres ellenőrzés után válassza a **Létrehozás**lehetőséget.
 
@@ -86,7 +86,7 @@ A virtuális gép létrehozásához tegye a következőket:
 Ebben a szakaszban egy privát végpontot használó privát webalkalmazást hoz létre.
 
 > [!Note]
-> A privát végpont funkció csak a PremiumV2 szinten érhető el.
+> A privát végpont funkció csak a PremiumV2 és a PremiumV3 szinten érhető el.
 
 ### <a name="create-the-web-app"></a>A webapp létrehozása
 
@@ -97,26 +97,26 @@ Ebben a szakaszban egy privát végpontot használó privát webalkalmazást hoz
    > [!div class="mx-imgBorder"]
    > ![Képernyőkép a "Web App" panel "alapismeretek" lapjáról.][6]
 
-1. Válassza a **Felülvizsgálat + létrehozás** lehetőséget.
+1. Válassza az **Áttekintés + létrehozás** lehetőséget.
 
 1. A sikeres ellenőrzés után válassza a **Létrehozás**lehetőséget.
 
 ### <a name="create-the-private-endpoint"></a>A magánhálózati végpont létrehozása
 
-1. A webalkalmazás tulajdonságai között, a **Beállítások**területen válassza a **hálózatkezelés**lehetőséget, majd a **privát Endpoint Connections (előzetes verzió)** alatt válassza **a privát végponti kapcsolatok konfigurálása**lehetőséget.
+1. A webalkalmazás tulajdonságai között, a **Beállítások**területen válassza a **hálózatkezelés**lehetőséget, majd a * * privát végponti kapcsolatok * * területen válassza **a privát végponti kapcsolatok konfigurálása**lehetőséget.
 
    > [!div class="mx-imgBorder"]
    > ![Képernyőkép a "privát végponti kapcsolatok konfigurálása" hivatkozásra a webalkalmazás hálózatkezelési paneljén.][7]
 
-1. A **Private Endpoint Connections (előzetes verzió)** varázslóban válassza a **Hozzáadás**lehetőséget.
+1. A **Private Endpoint Connections** varázslóban válassza a **Hozzáadás**lehetőséget.
 
    > [!div class="mx-imgBorder"]
-   > ![Képernyőkép a "Private Endpoint Connections (előzetes verzió)" varázslóban a Hozzáadás gombra kattintva.][8]
+   > ![Képernyőfelvétel a "Private Endpoint connections" varázslóban a Hozzáadás gombra kattintva.][8]
 
 1. Válassza ki a megfelelő információkat az **előfizetés**, a **virtuális hálózat**és az **alhálózat** legördülő listájában, majd kattintson az **OK gombra**.
 
    > [!div class="mx-imgBorder"]
-   > ![Képernyőkép a "privát végpont hozzáadása (előzetes verzió)" panelről.][9]
+   > ![Képernyőkép a "privát végpont hozzáadása" panelről.][9]
 
 1. A magánhálózati végpont létrehozásának előrehaladásának figyelése.
 
@@ -180,9 +180,6 @@ Ebben a szakaszban a privát végpont használatával kapcsolódhat a webalkalma
    > [!div class="mx-imgBorder"]
    > ![Képernyőfelvétel: "hiba 403 – Tiltott" hibaüzenet.][17]
 
-   > [!Important]
-   > Mivel ez a funkció előzetes verzióban érhető el, manuálisan kell kezelnie a tartománynév-szolgáltatás (DNS) bejegyzését.
-
    A DNS esetében hajtsa végre az alábbi műveletek egyikét:
  
    - Használja a Azure DNS Private Zone szolgáltatást.  
@@ -223,7 +220,7 @@ Ha elkészült a privát végponttal, a webalkalmazással és a virtuális gépp
 
 Ebben a cikkben egy virtuális GÉPET hozott létre egy virtuális hálózaton, egy webalkalmazáson és egy privát végponton. Csatlakozik egy virtuális géphez az internetről, és biztonságos módon kommunikál a webalkalmazással a privát hivatkozás használatával. 
 
-További információ a privát végpontról (előzetes verzió): [Mi az az Azure Private Endpoint?][privateendpoint].
+További információ a privát végpontról: [Mi az az Azure Private Endpoint?][privateendpoint].
 
 <!--Image references-->
 [1]: ./media/create-private-endpoint-webapp-portal/createnetwork.png

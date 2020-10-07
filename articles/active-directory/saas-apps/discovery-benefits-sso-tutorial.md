@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/03/2019
 ms.author: jeedes
-ms.openlocfilehash: 3beefb467f7875e6bc76765811c6525f5dab9393
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 83f1eef14a5c22fbab998fb6c939775873748670
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88536189"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91774115"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-discovery-benefits-sso"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a felderítési előnyökkel (SSO)
 
@@ -86,7 +86,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     a. Kattintson a **Szerkesztés**  ikonra az **egyedi felhasználói azonosító (név azonosítója)** párbeszédpanel megnyitásához.
 
-    ![Észlelési előnyök – SSO-konfiguráció](./media/discovery-benefits-sso-tutorial/attribute01.png)
+    ![Képernyőfelvétel: a "szükséges jogcím" (a "felhasználói attribútumok & jogcímek") szakasz a jobb oldalon kiválasztva.](./media/discovery-benefits-sso-tutorial/attribute01.png)
 
     ![Észlelési előnyök – SSO-konfiguráció](./media/discovery-benefits-sso-tutorial/attribute02.png)
 
@@ -103,7 +103,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     f. Automatikusan kitöltöttük az SSO-konfigurációhoz szükséges további jogcímeket ( `SSOInstance` és `SSOID` ). A **Szerkesztés** ikon használatával képezhető le az értékek a szervezeten belül.
 
-    ![Észlelési előnyök – SSO-konfiguráció](./media/discovery-benefits-sso-tutorial/attribute03.png)
+    ![Képernyőfelvétel: a "felhasználói attribútumok & jogcímek" a "S S O-példány" és "S S O I D" értékek kiemelve.](./media/discovery-benefits-sso-tutorial/attribute03.png)
 
 1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg a **tanúsítvány (Base64)** elemet, majd a **Letöltés** gombra kattintva töltse le a tanúsítványt, és mentse a számítógépre.
 

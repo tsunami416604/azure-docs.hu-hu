@@ -6,13 +6,13 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 author: keferna
 ms.author: keferna
-ms.date: 09/29/2020
-ms.openlocfilehash: 2dfdfaae2c07adc7d9193ffb00f8549bd4090a6e
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.date: 10/06/2020
+ms.openlocfilehash: ff31e29b8c2a36c9aaa3d72eab86340ed405b1ff
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91578461"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91772651"
 ---
 # <a name="publishing-guide-by-offer-type"></a>Közzétételi útmutató ajánlattípusok szerint
 
@@ -30,20 +30,21 @@ A következő táblázat a partner Center kereskedelmi Piactéri ajánlatának t
 
 | **Ajánlat típusa**    | **Leírás**  |
 | :------------------- | :-------------------|
-| [Azure-alkalmazás: **felügyelt alkalmazás**](./marketplace-managed-apps.md) | Használja az Azure-alkalmazást: felügyelt alkalmazási ajánlat típusa, ha a következő feltételek szükségesek: <br> <ul> <li> Az ügyfél előfizetésen alapuló megoldását egy virtuális gép vagy egy teljes IaaS-alapú megoldás használatával helyezheti üzembe. </li> <li>Ön vagy az ügyfele megköveteli, hogy a megoldást egy partner felügyelje. </li> <ul> |
-| [Azure-alkalmazás: **megoldás sablonja**](./marketplace-solution-templates.md) | Az Azure-alkalmazás: megoldás-sablon típusú ajánlat típusa akkor használható, ha a megoldás további üzembe helyezést és konfigurációs automatizálást igényel egy virtuális gépen kívül. A megoldási sablonok számos különböző Azure-erőforrást alkalmazhatnak, többek között a virtuális gépeket is beleértve.  |
-  | [**Azure-tároló**](./marketplace-containers.md) | Használja az Azure Container ajánlat típusát, ha a megoldás egy Kubernetes-alapú Azure Container Service-ben kiépített Docker-tároló-rendszerkép. |
-| [**Azure-beli virtuális gép**](./marketplace-virtual-machines.md) | Ha virtuális berendezést telepít az ügyfélhez társított előfizetésre, használja a virtuális gép ajánlatának típusát. |
-| [**Tanácsadási szolgáltatás**](./consulting-services.md) | A tanácsadási szolgáltatások segítségével az ügyfeleket összekapcsolhatja a szolgáltatásokkal az Azure, a Dynamics 365 vagy a Power Suite szolgáltatások használatának támogatásához és bővítéséhez.|
-| [**Dynamics 365**](./appsource-offer-publishing-guide.md) | Közzéteheti a Dynamics 365 Business Central, a Dynamics 365 Customer engagement, a Power apps és a Finance és az Operations alkalmazások szolgáltatásait felépítő AppSource-ajánlatokat.|
-| [**IoT Edge modul**](./iot-edge-module.md) | Azure IoT Edge modulok a IoT Edge által kezelt legkisebb számítási egységek, és tartalmazhatnak Microsoft-szolgáltatásokat (például Azure Stream Analytics), harmadik féltől származó szolgáltatásokat vagy a saját megoldásokra vonatkozó kódokat. |
-| [**Power BI alkalmazás <br/> Microsoft 365**](./appsource-offer-publishing-guide.md) | Közzéteheti azokat a AppSource-ajánlatokat, amelyek Power BI és Microsoft 365 kiépítésére vagy kiterjesztésére épülnek.|
+| [Azure-alkalmazás: **felügyelt alkalmazás**](marketplace-managed-apps.md) | Használja az Azure-alkalmazást: felügyelt alkalmazási ajánlat típusa, ha a következő feltételek szükségesek: <br> <ul> <li>Az ügyfél előfizetésen alapuló megoldását egy virtuális gép vagy egy teljes IaaS-alapú megoldás használatával helyezheti üzembe. </li> <li>Ön vagy az ügyfele megköveteli, hogy a megoldást egy partner felügyelje. </li> <ul> |
+| [Azure-alkalmazás: **megoldás sablonja**](marketplace-solution-templates.md) | Az Azure-alkalmazás: megoldás-sablon típusú ajánlat típusa akkor használható, ha a megoldás további üzembe helyezést és konfigurációs automatizálást igényel egy virtuális gépen kívül. A megoldási sablonok számos különböző Azure-erőforrást alkalmazhatnak, többek között a virtuális gépeket is beleértve.  |
+  | [**Azure-tároló**](marketplace-containers.md) | Használja az Azure Container ajánlat típusát, ha a megoldás egy Kubernetes-alapú Azure Container Service-ben kiépített Docker-tároló-rendszerkép. |
+| [**Azure-beli virtuális gép**](marketplace-virtual-machines.md) | Ha virtuális berendezést telepít az ügyfélhez társított előfizetésre, használja a virtuális gép ajánlatának típusát. |
+| [**Tanácsadási szolgáltatás**](consulting-services.md) | A tanácsadási szolgáltatások segítségével az ügyfeleket összekapcsolhatja a szolgáltatásokkal az Azure, a Dynamics 365 vagy a Power Suite szolgáltatások használatának támogatásához és bővítéséhez.|
+| [**Dynamics 365**](appsource-offer-publishing-guide.md) | Közzéteheti a Dynamics 365 Business Central, a Dynamics 365 Customer engagement, a Power apps és a Finance és az Operations alkalmazások szolgáltatásait felépítő AppSource-ajánlatokat.|
+| [**IoT Edge modul**](iot-edge-module.md) | Azure IoT Edge modulok a IoT Edge által kezelt legkisebb számítási egységek, és tartalmazhatnak Microsoft-szolgáltatásokat (például Azure Stream Analytics), harmadik féltől származó szolgáltatásokat vagy a saját megoldásokra vonatkozó kódokat. |
+| [**Felügyelt szolgáltatás**](partner-center-portal/create-new-managed-service-offer.md) | Az [Azure Lighthouse](/azure/lighthouse/overview)használatával felügyelt szolgáltatásokat hozhat létre, és kezelheti az ügyfelek által delegált előfizetéseket vagy erőforráscsoportokat.|
+| [**Power bi alkalmazás** <br/> **Microsoft 365**](appsource-offer-publishing-guide.md) | Közzéteheti azokat a AppSource-ajánlatokat, amelyek Power BI és Microsoft 365 kiépítésére vagy kiterjesztésére épülnek.|
 | [**Szolgáltatásként szolgáló szoftver**](plan-saas-offer.md) | A szolgáltatott szoftver (SaaS) ajánlat típusa lehetővé teszi az ügyfél számára, hogy előfizetésként vásárolja meg SaaS-alapú, technikai megoldásait. |
-| [**Integrált megoldások**](./integrated-solutions-for-publishers.md) | Olyan integrált, iparághoz igazított megoldásokat tehet közzé, amelyek egyetlen ajánlatként ötvözik a technológiát és a szolgáltatásokat.|
 
-Az egyszeri bejelentkezésre vonatkozó követelményekről és az ajánlatok típusairól az [**Azure ad-követelmények**](./enable-appsource-marketplace-using-azure-ad.md)című témakörben olvashat bővebben.
 
-## <a name="next-steps"></a>További lépések
+Az egyszeri bejelentkezésre vonatkozó követelményekről és az ajánlatok típusairól az [**Azure ad-követelmények**](enable-appsource-marketplace-using-azure-ad.md)című témakörben olvashat bővebben.
+
+## <a name="next-steps"></a>Következő lépések
 
 - Az ajánlat kiválasztásának és konfigurációjának véglegesítéséhez tekintse át a megfelelő cikkben szereplő támogathatósági követelményeket.
 - Tekintse át az egyes online áruházak közzétételi mintáit, példákat arra, hogy a megoldás hogyan mutasson az ajánlat típusára és a konfigurációra.

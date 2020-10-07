@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 9435a0eccff5a3be0dc9e0a2844bae175d753a5c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: be9d0503b411577d4ecbfb65c4bdae42a571d175
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88555877"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91775139"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-check-point-cloudguard-dome9-arc"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a CloudGuard Dome9 Arcmal
 
@@ -97,7 +97,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. A fentieken kívül a CloudGuard Dome9 arc alkalmazás néhány további attribútumot vár az SAML-válaszokban, amelyek alább láthatók. Ezek az attribútumok előre is fel vannak töltve, de a követelménynek megfelelően áttekintheti őket.
     
-    | Name |  Forrás attribútum|
+    | Name (Név) |  Forrás attribútum|
     | ---------------| --------------- |
     | memberOf | User. assignedroles |
 
@@ -156,11 +156,11 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 
 2. Kattintson a jobb felső sarokban található **Profilbeállítások** lehetőségre, majd a **Fiókbeállítások**lehetőségre. 
 
-    ![Ellenőrzési pont CloudGuard Dome9 ív konfigurációja](./media/dome9arc-tutorial/configure1.png)
+    ![Képernyőkép, amely megjeleníti a "Fiókbeállítások" menüt a "Fiókbeállítások" beállítással.](./media/dome9arc-tutorial/configure1.png)
 
 3. Navigáljon az **egyszeri bejelentkezéshez** , majd kattintson az **Engedélyezés**elemre.
 
-    ![Ellenőrzési pont CloudGuard Dome9 ív konfigurációja](./media/dome9arc-tutorial/configure2.png)
+    ![Képernyőkép, amely megjeleníti a "S S O" fület és az "engedélyezés" lehetőséget.](./media/dome9arc-tutorial/configure2.png)
 
 4. Az SSO-konfiguráció szakaszban hajtsa végre a következő lépéseket:
 
@@ -189,11 +189,11 @@ Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a Cl
 
 2. Kattintson a **felhasználók & szerepkörök** elemre, majd kattintson a **felhasználók**elemre.
 
-    ![Alkalmazott hozzáadása](./media/dome9arc-tutorial/user1.png)
+    ![Képernyőfelvétel: "felhasználók & szerepkörök" a kiválasztott "felhasználók" művelettel.](./media/dome9arc-tutorial/user1.png)
 
 3. Kattintson a **felhasználó hozzáadása**elemre.
 
-    ![Alkalmazott hozzáadása](./media/dome9arc-tutorial/user2.png)
+    ![Képernyőfelvétel: "felhasználók & szerepkörök" a "felhasználó hozzáadása" gomb kiválasztásával.](./media/dome9arc-tutorial/user2.png)
 
 4. A **felhasználó létrehozása** szakaszban hajtsa végre a következő lépéseket:
 

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to create a Network Virtual Appliance (NVA) in my Virtual WAN hub.
-ms.openlocfilehash: 83267b1bebd501871277ea3e40b7fa9ba38f33cd
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 014339b02167a1bb4cba11cc10c9740b8fa53f2c
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91313756"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91773246"
 ---
 # <a name="how-to-create-a-network-virtual-appliance-in-an-azure-virtual-wan-hub-preview"></a>Hálózati virtuális berendezés létrehozása Azure-beli virtuális WAN-központban (előzetes verzió)
 
@@ -21,7 +21,7 @@ Ez az oktatóanyag bemutatja, hogyan használható a Virtual WAN az Azure-beli e
 
 A cikkben ismertetett lépések segítséget nyújtanak a **Barracuda CLOUDGEN WAN** hálózati virtuális berendezés létrehozásában a virtuális WAN-központban. Ennek a gyakorlatnak a végrehajtásához a Barracuda Cloud bevezetési eszközt (CPE) és a Barracuda CloudGen WAN-berendezés licencét kell megadnia, mielőtt megkezdené a központi telepítést.
 
-A **Cisco SD-WAN** Azure Virtual WAN-on belüli üzembe helyezési dokumentációjában küldjön e-mailt a Cisco-nak a következő e-mail-címre: vwan_public_preview@cisco.com .
+A **Cisco SD-WAN** Azure Virtual WAN-on belüli üzembe helyezési dokumentációjában küldjön e-mailt a Cisco-nak a következő e-mail-címre: vwan_public_preview@external.cisco.com
 
 
 ## <a name="before-you-begin"></a>Előkészületek
@@ -49,13 +49,13 @@ A hub olyan virtuális hálózat, amely átjárókat tartalmazhat a helyek köz�
 1. Keresse meg a létrehozott virtuális WAN-t. A **virtuális WAN** lapon a **kapcsolat** szakaszban válassza a **hubok**lehetőséget.
 1. A **hubok** lapon válassza az + új hub lehetőséget a **virtuális központ létrehozása** lap megnyitásához.
 
-   :::image type="content" source="./media/how-to-nva-hub/vwan-hub.png" alt-text="Alapvető beállítások":::
+   :::image type="content" source="./media/how-to-nva-hub/vwan-hub.png" alt-text="Alapbeállítások":::
 1. A **virtuális központ létrehozása** lap **alapjai** lapon végezze el a következő mezőket:
 
    **Projekt részletei**
 
    * Régió (korábbi nevén hely)
-   * Name
+   * Name (Név)
    * Hub magánhálózati címtartomány. A minimális címtartomány/24 a hub létrehozásához, ami azt jelenti, hogy a/25-től/32-ig terjedő minden tartomány hibát eredményez a létrehozás során. Az Azure Virtual WAN a Microsoft által felügyelt szolgáltatás, amely a megfelelő alhálózatokat hozza létre a virtuális központban a különböző átjárók/szolgáltatások számára. (Például: hálózati virtuális berendezések, VPN-átjárók, ExpressRoute-átjárók, felhasználói VPN/pont – hely átjárók, tűzfal, útválasztás stb.). Nincs szükség arra, hogy a felhasználó explicit módon tervezze meg a virtuális központ szolgáltatásainak alhálózati címterület-területét, mert a Microsoft ezt a szolgáltatást részeként kezeli.
 1. Válassza a **felülvizsgálat + létrehozás** elemet az ellenőrzéshez.
 1. Válassza a **Létrehozás** lehetőséget a központ létrehozásához.
@@ -66,14 +66,14 @@ Ebben a lépésben egy hálózati virtuális berendezést fog létrehozni a köz
 
 1. Keresse meg az előző lépésben létrehozott virtuális WAN-hubot, és nyissa meg.
 
-   :::image type="content" source="./media/how-to-nva-hub/nva-hub.png" alt-text="Virtuális központ":::
+   :::image type="content" source="./media/how-to-nva-hub/nva-hub.png" alt-text="Alapbeállítások":::
 1. Keresse meg a hálózati virtuális berendezések csempét, és válassza a **Létrehozás** hivatkozást.
 1. A **hálózati virtuális berendezés** panelen válassza a **Barracuda CloudGen WAN**elemet, majd kattintson a **Létrehozás** gombra.
 
-   :::image type="content" source="./media/how-to-nva-hub/select-nva.png" alt-text="NVA kiválasztása":::
+   :::image type="content" source="./media/how-to-nva-hub/select-nva.png" alt-text="Alapbeállítások":::
 1. Ekkor megnyílik a Barracuda CloudGen WAN-átjáró Azure Marketplace-ajánlata. Olvassa el a használati feltételeket, majd válassza a **Létrehozás** gombot, ha elkészült.
 
-   :::image type="content" source="./media/how-to-nva-hub/barracuda-create-basics.png" alt-text="Barracuda NVA alapjai":::
+   :::image type="content" source="./media/how-to-nva-hub/barracuda-create-basics.png" alt-text="Alapbeállítások":::
 1. Az **alapok** lapon a következő információkat kell megadnia:
 
    * **Előfizetés** – válassza ki a virtuális WAN és hub üzembe helyezéséhez használt előfizetést.
@@ -83,7 +83,7 @@ Ebben a lépésben egy hálózati virtuális berendezést fog létrehozni a köz
    * **Felügyelt erőforráscsoport** – ez az a felügyelt erőforráscsoport neve, amelyben a Barracuda telepíti az általuk felügyelt erőforrásokat. Ezt a nevet előre ki kell tölteni.
 1. Válassza a **Next: CLOUDGEN WAN Gateway (tovább** ) gombot.
 
-   :::image type="content" source="./media/how-to-nva-hub/barracuda-cloudgen-wan.png" alt-text="CloudGen WAN-átjáró":::
+   :::image type="content" source="./media/how-to-nva-hub/barracuda-cloudgen-wan.png" alt-text="Alapbeállítások":::
 1. Adja meg a következő információkat:
 
    * **Virtual WAN hub** – a virtuális WAN hub, amelyre a NVA telepíteni kívánja.
