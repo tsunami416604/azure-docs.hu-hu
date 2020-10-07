@@ -1,14 +1,16 @@
 ---
 title: Az import-QnA Maker által támogatott URL-típusok
 description: Ismerje meg, hogy az URL-típusok hogyan használhatók az QnA-párok importálásához és létrehozásához.
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 01/02/2020
-ms.openlocfilehash: c6c6c7ba19fe7be54733f45997134fddb56a6ba0
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 8bf50c1ea81cdf5246c47646d1a55926fe7d58d6
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80804316"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776697"
 ---
 # <a name="urls-supported-for-importing-documents"></a>Dokumentumok importálásához támogatott URL-címek
 

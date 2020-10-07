@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 10/06/2020
 ms.author: alkohli
-ms.openlocfilehash: 59b2307bb2e1f4effce9f68530be86e9ca625c9c
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.openlocfilehash: e0b02f8d6a46c26b8927b4bac4d2089d3b57c295
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/06/2020
-ms.locfileid: "91766297"
+ms.locfileid: "91777762"
 ---
 # <a name="manage-an-azure-stack-edge-pro-gpu-device-via-windows-powershell"></a>Azure Stack Edge Pro GPU-eszköz kezelése a Windows PowerShell használatával
 
@@ -429,7 +429,7 @@ DEBUG 2020-05-14T20:42:14Z: loop process - 0 events, 0.000s
 
 A alaplapi felügyeleti vezérlő (BMC) használatával távolról figyelheti és kezelheti az eszközt. Ez a szakasz azokat a parancsmagokat ismerteti, amelyek segítségével kezelhető a BMC-konfiguráció. A parancsmagok bármelyikének futtatása előtt [kapcsolódjon az eszköz PowerShell-felületéhez](#connect-to-the-powershell-interface).
 
-- `Get-HcsNetBmcInterface`: Ezzel a parancsmaggal kérheti le a BMC hálózati konfigurációs tulajdonságait, például:, `IPv4Address` , `IPv4Gateway` `IPv4SubnetMask` , `DhcpEnabled` : 
+- `Get-HcsNetBmcInterface`: Ezzel a parancsmaggal kérheti le a BMC hálózati konfigurációs tulajdonságait, például:,,, `IPv4Address` `IPv4Gateway` `IPv4SubnetMask` `DhcpEnabled` . 
     
     Itt látható egy mintakimenet:
     
@@ -476,7 +476,7 @@ A alaplapi felügyeleti vezérlő (BMC) használatával távolról figyelheti é
         [10.100.10.10]: PS>
         ```    
 
-- `Set-HcsBmcPassword`: Ezzel a parancsmaggal módosíthatja a BMC-jelszavát `EdgeUser` . 
+- `Set-HcsBmcPassword`: Ezzel a parancsmaggal módosíthatja a BMC-jelszavát `EdgeUser` . A Felhasználónév – `EdgeUser` megkülönbözteti a kis-és nagybetűket.
 
     Itt látható egy mintakimenet: 
 

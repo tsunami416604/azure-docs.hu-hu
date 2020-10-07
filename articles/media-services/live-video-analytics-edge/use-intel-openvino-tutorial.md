@@ -4,12 +4,12 @@ description: Ebben az oktatóanyagban az Intel által biztosított AI-modell-kis
 ms.topic: tutorial
 ms.date: 09/08/2020
 titleSuffix: Azure
-ms.openlocfilehash: e620da1a4f0b7f782d478314fb0e2e83ab9a124a
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: d03737f43ee719b72860e7ffeff076e3f156cade
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90906630"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776340"
 ---
 # <a name="tutorial-analyze-live-video-by-using-openvino-model-server--ai-extension-from-intel"></a>Oktatóanyag: élő videó elemzése a OpenVINO™ Model Server – AI bővítménnyel az Intel használatával 
 
@@ -141,33 +141,14 @@ Kattintson a jobb gombbal a Live Video Analytics-eszközre, és válassza a **fi
 ### <a name="run-the-sample-program-to-detect-vehicles"></a>A minta program futtatása a járművek észleléséhez
 Ha megnyitja a [Graph-topológiát](https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/httpExtensionOpenVINO/topology.json) ehhez az oktatóanyaghoz egy böngészőben, látni fogja, hogy a értéke `inferencingUrl` be van állítva `http://openvino:4000/vehicleDetection` , ami azt jelenti, hogy a következtetési kiszolgáló visszaadja az eredményeket az élő videóban található járművek észlelése után.
 
-1. A hibakeresési munkamenet indításához válassza az F5 billentyűt. A **terminál** ablakban láthatók a kinyomtatott üzenetek.
-1. A kód *operations.js* a közvetlen metódusok hívásával indul el `GraphTopologyList` `GraphInstanceList` . Ha az előző rövid útmutatók befejezése után törölte az erőforrásokat, akkor ez a folyamat üres listát ad vissza, majd szünetelteti. A folytatáshoz válassza az ENTER billentyűt.
+1. A Visual Studio Code-ban nyissa meg a **bővítmények** lapot (vagy nyomja le a CTRL + SHIFT + X billentyűkombinációt), és keressen rá az Azure IoT hubra.
+1. Kattintson a jobb gombbal, és válassza a **bővítmény beállításai**lehetőséget.
 
-    A **terminál** ablak a közvetlen metódusok következő készletét jeleníti meg:
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="Áttekintés" lehetőséget.
 
-     * `GraphTopologySet`Az előzőt használó hívás`topologyUrl`
-     * A `GraphInstanceSet` következő törzset használó hívás:
-
-         ```
-         {
-           "@apiVersion": "1.0",
-           "name": "Sample-Graph-1",
-           "properties": {
-             "topologyName": "InferencingWithOpenVINO",
-             "description": "Sample graph description",
-             "parameters": [
-               {
-                 "name": "rtspUrl",
-                 "value": "rtsp://rtspsim:554/media/lots_015.mkv"
-               },
-               {
-                 "name": "rtspUserName",
-                 "value": "testuser"
-               },
-               {
-                 "name": "rtspPassword",
-                 "value": "testpassword"
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="Áttekintés"
                }
              ]
            }

@@ -1,14 +1,16 @@
 ---
 title: Ajánlott eljárások – QnA Maker
 description: Az ajánlott eljárások segítségével javíthatja tudásbázisát, és jobb eredményeket biztosíthat az alkalmazás-és csevegési robot végfelhasználóinak.
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 02/15/2020
-ms.openlocfilehash: 9a6f7f7d6edc4544942476050a1ed3c2011af7fb
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 15cb1391cb6482401c2a091a4d5c0e9d819ba52d
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80053135"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777020"
 ---
 # <a name="best-practices-of-a-qna-maker-knowledge-base"></a>QnA Maker Tudásbázis ajánlott eljárásai
 
@@ -35,11 +37,11 @@ Vegyen fel annyi alternatív kérdést, amennyire szüksége van, de a változta
 
 ### <a name="add-relevant-alternative-questions"></a>Adjon hozzá kapcsolódó alternatív kérdéseket
 
-A felhasználó kérdéseket is megadhat egy szöveges szöveggel vagy egy kulcsszavas `How do I add a toner cartridge to my printer?` kereséssel, például: `toner cartridge`. A Tudásbázisnak mindkét típusú kérdéssel kell rendelkeznie ahhoz, hogy helyesen visszaállítsa a legjobb választ. Ha nem tudja biztosan, hogy az ügyfél mely kulcsszavakat írja be, használja a Application Insights adatokat a lekérdezések elemzéséhez.
+A felhasználó kérdéseket is megadhat egy szöveges szöveggel `How do I add a toner cartridge to my printer?` vagy egy kulcsszavas kereséssel, például: `toner cartridge` . A Tudásbázisnak mindkét típusú kérdéssel kell rendelkeznie ahhoz, hogy helyesen visszaállítsa a legjobb választ. Ha nem tudja biztosan, hogy az ügyfél mely kulcsszavakat írja be, használja a Application Insights adatokat a lekérdezések elemzéséhez.
 
 ### <a name="good-answers"></a>Helyes válaszok
 
-A legjobb válaszok az egyszerű válaszok, de nem túl egyszerűek. Ne használjon olyan válaszokat, mint `yes` a `no`és a. Ha a válasznak más forrásokhoz kell kapcsolódnia, vagy az adathordozóval és a hivatkozásokkal gazdag élményben kell megjelennie, a [metaadatok címkézésével](../how-to/edit-knowledge-base.md#add-metadata) megkülönböztetheti a válaszokat `strictFilters` , majd [elküldheti a lekérdezés](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration) metaadat-címkékkel a tulajdonságban a megfelelő válasz-verzió beszerzéséhez.
+A legjobb válaszok az egyszerű válaszok, de nem túl egyszerűek. Ne használjon olyan válaszokat, mint a `yes` és a `no` . Ha a válasznak más forrásokhoz kell kapcsolódnia, vagy az adathordozóval és a hivatkozásokkal gazdag élményben kell megjelennie, a [metaadatok címkézésével](../how-to/edit-knowledge-base.md#add-metadata) megkülönböztetheti a válaszokat, majd [elküldheti a lekérdezés](../how-to/metadata-generateanswer-usage.md#generateanswer-request-configuration) metaadat-címkékkel a `strictFilters` tulajdonságban a megfelelő válasz-verzió beszerzéséhez.
 
 |Válasz|Follup-kérések|
 |--|--|
@@ -77,7 +79,7 @@ Javasoljuk, hogy a következő Chit-Chat-QnAs konkrétabb legyen:
 
 ### <a name="adding-custom-chit-chat-with-a-metadata-tag"></a>Egyéni Chit-Chat hozzáadása metaadat-címkével
 
-Ha saját Chit-csevegési QnA-párokat ad hozzá, ügyeljen arra, hogy metaadatokat adjon hozzá, így ezek a válaszok visszakerülnek. A metaadatok neve/értéke pár `editorial:chitchat`.
+Ha saját Chit-csevegési QnA-párokat ad hozzá, ügyeljen arra, hogy metaadatokat adjon hozzá, így ezek a válaszok visszakerülnek. A metaadatok neve/értéke pár `editorial:chitchat` .
 
 ## <a name="searching-for-answers"></a>Válaszok keresése
 
@@ -85,7 +87,7 @@ A GenerateAnswer API mindkét kérdést és a választ használja a felhasznál�
 
 ### <a name="searching-questions-only-when-answer-is-not-relevant"></a>Kérdések keresése csak akkor, ha a válasz nem releváns
 
-Ha nem [`RankerType=QuestionOnly`](#choosing-ranker-type) szeretne válaszokat keresni, használja a következőt:.
+[`RankerType=QuestionOnly`](#choosing-ranker-type)Ha nem szeretne válaszokat keresni, használja a következőt:.
 
 Ilyen például, ha a Tudásbázis a betűszók katalógusa, amely a válaszként megjelenő teljes űrlappal kapcsolatos kérdés. A válasz értéke nem fog segíteni a megfelelő válasz megkeresésében.
 
@@ -97,7 +99,7 @@ Győződjön meg arról, hogy a rangsorolási funkciók legjobb használatát Qn
 A küszöbértékként használt alapértelmezett [megbízhatósági pontszám](confidence-score.md) 0, azonban az igényeinek megfelelően módosíthatja a KB-os [küszöbértéket](confidence-score.md#set-threshold) . Mivel minden KB különböző, érdemes tesztelni és kiválasztani a KB-hoz legmegfelelőbb küszöbértéket.
 
 ### <a name="choosing-ranker-type"></a>A ranker típusának kiválasztása
-Alapértelmezés szerint a QnA Maker kérdésekkel és válaszokkal keres. Ha csak kérdésekkel szeretne keresni, válasz létrehozásához használja a `RankerType=QuestionOnly` GENERATEANSWER kérelem post törzsében.
+Alapértelmezés szerint a QnA Maker kérdésekkel és válaszokkal keres. Ha csak kérdésekkel szeretne keresni, válasz létrehozásához használja a `RankerType=QuestionOnly` GenerateAnswer kérelem post törzsében.
 
 ### <a name="add-alternate-questions"></a>Alternatív kérdések hozzáadása
 A [másodlagos kérdések](../How-To/edit-knowledge-base.md) javítják a felhasználói lekérdezésekkel való egyezés valószínűségét. A helyettesítő kérdések akkor hasznosak, ha több módon is megteheti a kérdést. Ez magában foglalhatja a mondat szerkezetének és a szó stílusainak változásait is.
@@ -130,7 +132,7 @@ Előfordulhat például, hogy két különálló QnAs rendelkezik a következő 
 |Hol található a parkoló *helye*|
 |Hol található az ATM *helye*|
 
-Mivel ez a két QnAs nagyon hasonló szavakkal van megfogalmazva, ez a hasonlóság nagyon hasonló pontszámokat okozhat számos olyan felhasználói lekérdezés esetében, amelyek *"hol van a `<x>` hely"*. Ehelyett próbálja meg egyértelműen megkülönböztetni a lekérdezéseket, például *a "hol van a parkolóban"* és *"hol van az ATM"*, a "location" kifejezéssel, amely a KB-ban sok kérdésben lehet.
+Mivel ez a két QnAs nagyon hasonló szavakkal van megfogalmazva, ez a hasonlóság nagyon hasonló pontszámokat okozhat számos olyan felhasználói lekérdezés esetében, amelyek  *"hol van a `<x>` hely"*. Ehelyett próbálja meg egyértelműen megkülönböztetni a lekérdezéseket, például  *a "hol van a parkolóban"* és *"hol van az ATM"*, a "location" kifejezéssel, amely a KB-ban sok kérdésben lehet.
 
 ## <a name="collaborate"></a>Együttműködés
 QnA Maker lehetővé teszi a felhasználók számára, hogy a Tudásbázisban [működjenek együtt](../How-to/collaborate-knowledge-base.md) . A tudásbázisok eléréséhez a felhasználóknak hozzá kell férniük az Azure QnA Maker erőforráscsoporthoz. Előfordulhat, hogy néhány szervezet szeretné kiszervezni a Tudásbázis szerkesztését és karbantartását, és továbbra is képes lesz biztosítani az Azure-erőforrásokhoz való hozzáférést. Ez a szerkesztő-jóváhagyó modell két azonos [QnA Maker-szolgáltatásnak](../How-to/set-up-qnamaker-service-azure.md) a különböző előfizetésekben való beállításával és a szerkesztési tesztelési ciklus egyikének kiválasztásával valósítható meg. A tesztelés befejezése után a Tudásbázis tartalma [importálási és exportálási](../Tutorials/migrate-knowledge-base.md) folyamattal kerül át a jóváhagyó QnA Maker szolgáltatásához, amely végül közzéteszi a tudásbázist, és frissíti a végpontot.
@@ -141,7 +143,7 @@ QnA Maker lehetővé teszi a felhasználók számára, hogy a Tudásbázisban [m
 
 Az [aktív tanulás](../How-to/use-active-learning.md) a legjobb megoldás arra, hogy alternatív kérdéseket tegyen fel, ha számos minőségi és mennyiségű felhasználó-alapú lekérdezést tartalmaz. Fontos, hogy az ügyfélalkalmazások felhasználói lekérdezései részt vegyenek az aktív tanulási visszajelzési hurokban a cenzúra nélkül. Ha kérdése van a QnA Maker-portálon, akkor a **[javaslatok alapján szűrheti a javaslatokat](../How-To/improve-knowledge-base.md#accept-an-active-learning-suggestion-in-the-knowledge-base)** , majd áttekintheti, elfogadhatja vagy elutasíthatja ezeket a javaslatokat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Tudásbázis szerkesztése](../How-to/edit-knowledge-base.md)

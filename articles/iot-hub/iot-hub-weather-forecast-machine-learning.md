@@ -1,6 +1,6 @@
 ---
-title: Időjárás-előrejelzés a Azure Machine Learning IoT Hub adataival
-description: A Azure Machine Learning segítségével előre megjósolhatja, hogy az IoT hub milyen hőmérséklet-és páratartalom-adatok alapján gyűjti az eső esélyét.
+title: Időjárás-előrejelzés a Azure Machine Learning Studio (klasszikus) használatával IoT Hub adattal
+description: A Azure Machine Learning Studio (klasszikus) használatával megjósolhatja, hogy az IoT hub milyen hőmérséklet-és páratartalom-adatok alapján gyűjti az adatokat az érzékelőből.
 author: robinsh
 manager: philmea
 keywords: Időjárás-előrejelzés gépi tanulás
@@ -10,24 +10,24 @@ ms.topic: conceptual
 ms.tgt_pltfrm: arduino
 ms.date: 09/16/2020
 ms.author: robinsh
-ms.openlocfilehash: 5f51ffc3135ff35214a2c5c40cce1f2b3fcaf33e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 8ba68e56d2475b1ff2fb3e63f291f76063ca62e7
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91290917"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777156"
 ---
-# <a name="weather-forecast-using-the-sensor-data-from-your-iot-hub-in-azure-machine-learning"></a>Időjárás-előrejelzés az IoT hub Sensor-adatainak használatával Azure Machine Learning
+# <a name="weather-forecast-using-the-sensor-data-from-your-iot-hub-in-azure-machine-learning-studio-classic"></a>Időjárás-előrejelzés az IoT hub Sensor-adatainak használatával Azure Machine Learning Studio (klasszikus)
 
 ![Végpontok közötti diagram](media/iot-hub-get-started-e2e-diagram/6.png)
 
 [!INCLUDE [iot-hub-get-started-note](../../includes/iot-hub-get-started-note.md)]
 
-A gépi tanulás olyan adatelemzési módszer, amely segít a számítógépeknek megtanulni a meglévő adatokból a jövőbeli viselkedések, eredmények és trendek előrejelzését. Az Azure Machine Learning egy felhőalapú prediktív elemzési szolgáltatás, amely lehetővé teszi elemzési megoldásként használható prediktív modellek gyors létrehozását és üzembe helyezését.
+A gépi tanulás olyan adatelemzési módszer, amely segít a számítógépeknek megtanulni a meglévő adatokból a jövőbeli viselkedések, eredmények és trendek előrejelzését. A Azure Machine Learning Studio (klasszikus) egy felhőalapú prediktív elemzési szolgáltatás, amely lehetővé teszi, hogy elemzési megoldásként gyorsan hozzon létre és helyezzen üzembe prediktív modelleket.
 
 ## <a name="what-you-learn"></a>Ismertetett témák
 
-Az Azure IoT hub hőmérséklet-és páratartalom-adatainak használatával megtudhatja, hogyan végezheti el az időjárás-előrejelzés (az eső esélye) Azure Machine Learning használatát. Az eső esélye az előkészített időjárási előrejelzési modell kimenete. A modell a múltbeli adatmennyiségre épül, hogy a hőmérséklet és a páratartalom alapján megbecsülje az eső esélyét.
+Az Azure IoT hub hőmérséklet-és páratartalom-adatainak használatával megtudhatja, hogyan végezheti el a Azure Machine Learning Studio (klasszikus) használatát az időjárási előrejelzések (az eső esélye) használatára. Az eső esélye az előkészített időjárási előrejelzési modell kimenete. A modell a múltbeli adatmennyiségre épül, hogy a hőmérséklet és a páratartalom alapján megbecsülje az eső esélyét.
 
 ## <a name="what-you-do"></a>Teendők
 
@@ -49,7 +49,7 @@ Az Azure IoT hub hőmérséklet-és páratartalom-adatainak használatával megt
 - Egy [Azure Storage-fiók](https://docs.microsoft.com/azure/storage/common/storage-account-overview?toc=/azure/storage/blobs/toc.json#types-of-storage-accounts), egy **általános célú v2-** fiók használata javasolt, de az Azure Blob Storage-t támogató Azure Storage-fiókok is működni fognak.
 
 > [!Note]
-> Ez a cikk Azure Stream Analytics és számos más fizetős szolgáltatást használ. Az adatoknak az Azure-régiókban való átadásakor a Azure Stream Analytics további díjakat számítunk fel. Ezért jó lenne gondoskodni arról, hogy az erőforráscsoport, a IoT Hub és az Azure Storage-fiók, valamint az oktatóanyagban később hozzáadott Machine Learning Studio (klasszikus) munkaterület és Azure Stream Analytics-feladatok is elérhetők legyenek, amelyek ugyanabban az Azure-régióban találhatók. A Azure Machine Learning Studio és más Azure-szolgáltatások regionális támogatását az Azure- [termékek rendelkezésre állása régiónként oldalon](https://azure.microsoft.com/global-infrastructure/services/?products=machine-learning-studio&regions=all)tekintheti meg.
+> Ez a cikk Azure Stream Analytics és számos más fizetős szolgáltatást használ. Az adatoknak az Azure-régiókban való átadásakor a Azure Stream Analytics további díjakat számítunk fel. Ezért jó lenne gondoskodni arról, hogy az erőforráscsoport, a IoT Hub és az Azure Storage-fiók, valamint az oktatóanyagban később hozzáadott Machine Learning Studio (klasszikus) munkaterület és Azure Stream Analytics-feladatok is elérhetők legyenek, amelyek ugyanabban az Azure-régióban találhatók. Az [Azure-termékek rendelkezésre állása régiónként lapon](https://azure.microsoft.com/global-infrastructure/services/?products=machine-learning-studio&regions=all)a Azure Machine learning Studio (klasszikus) és más Azure-szolgáltatások regionális támogatását is megtekintheti.
 
 ## <a name="deploy-the-weather-prediction-model-as-a-web-service"></a>Az időjárási előrejelzési modell üzembe helyezése webszolgáltatásként
 
@@ -71,7 +71,7 @@ Ebben a szakaszban megtekintheti a Azure AI Gallery időjárási előrejelzési 
 
 Ahhoz, hogy a modell megfelelően viselkedjen, a hőmérséklet-és páratartalom-adatnak a numerikus adatértékekre kell átállnia. Ebben a szakaszban egy R-script modult ad hozzá az időjárási előrejelzési modellhez, amely eltávolítja azokat a sorokat, amelyek hőmérséklete vagy nedvességtartalma nem alakítható át numerikus értékekre.
 
-1. A Azure Machine Learning Studio ablak bal oldalán kattintson a nyílra az eszközök panel kibontásához. Írja be a "végrehajtás" kifejezést a keresőmezőbe. Válassza az **R-parancsfájl végrehajtása** modult.
+1. A Azure Machine Learning Studio (klasszikus) ablak bal oldalán kattintson a nyílra az eszközök panel kibontásához. Írja be a "végrehajtás" kifejezést a keresőmezőbe. Válassza az **R-parancsfájl végrehajtása** modult.
 
    ![Válassza az R-parancsfájl végrehajtása modult](media/iot-hub-weather-forecast-machine-learning/select-r-script-module.png)
 
@@ -170,7 +170,7 @@ Ebben a szakaszban érvényesíti a modellt, állítson be egy prediktív webszo
 
    ![Bemenet hozzáadása a Stream Analytics feladathoz az Azure-ban](media/iot-hub-weather-forecast-machine-learning/add-input-stream-analytics-job.png)
 
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
 ### <a name="add-an-output-to-the-stream-analytics-job"></a>Kimenet hozzáadása a Stream Analytics-feladathoz
 
@@ -189,7 +189,7 @@ Ebben a szakaszban érvényesíti a modellt, állítson be egy prediktív webszo
 
    ![Kimenet hozzáadása a Stream Analytics feladatokhoz az Azure-ban](media/iot-hub-weather-forecast-machine-learning/add-output-stream-analytics-job.png)
 
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
 ### <a name="add-a-function-to-the-stream-analytics-job-to-call-the-web-service-you-deployed"></a>Függvény hozzáadása a Stream Analytics feladathoz a telepített webszolgáltatás meghívásához
 
@@ -204,7 +204,7 @@ Ebben a szakaszban érvényesíti a modellt, állítson be egy prediktív webszo
 
    ![Függvény hozzáadása a Stream Analytics feladathoz az Azure-ban](media/iot-hub-weather-forecast-machine-learning/add-function-stream-analytics-job.png)
 
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.
 
 ### <a name="configure-the-query-of-the-stream-analytics-job"></a>A Stream Analytics-feladat lekérdezésének konfigurálása
 
@@ -246,10 +246,10 @@ Futtassa az ügyfélalkalmazás a hőmérséklet és a páratartalom adatok IoT 
 1. Válassza ki az előfizetését > **Storage** -fiókokat, > a Storage-fiókot, > **blob-tárolókat** > a tárolót.
 1. Töltsön le egy. csv-fájlt, és tekintse meg az eredményt. Az utolsó oszlop az eső esélyét rögzíti.
 
-   ![Időjárás-előrejelzési eredmény beolvasása Azure Machine Learning](media/iot-hub-weather-forecast-machine-learning/weather-forecast-result.png)
+   ![Időjárás-előrejelzési eredmény beolvasása Azure Machine Learning Studio (klasszikus)](media/iot-hub-weather-forecast-machine-learning/weather-forecast-result.png)
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 
-Sikeresen használta a Azure Machine Learningt, hogy az IoT hub hőmérséklet-és páratartalom-adatai alapján előkészítse az eső esélyét.
+Sikeresen használta a Azure Machine Learning Studio (klasszikus) szolgáltatást, hogy az IoT hub hőmérséklet-és páratartalom-adatai alapján előkészítse az eső esélyét.
 
 [!INCLUDE [iot-hub-get-started-next-steps](../../includes/iot-hub-get-started-next-steps.md)]

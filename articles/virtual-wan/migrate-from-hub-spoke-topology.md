@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.author: cherylmc
-ms.openlocfilehash: 68f54e18cf20680156de8a29c54f7924ca6064d1
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.openlocfilehash: e6078ffcaaf98702bf809dfeb435cdaa0f9b5701
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91610109"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777190"
 ---
 # <a name="migrate-to-azure-virtual-wan"></a>Migrálás az Azure Virtual WAN-ba
 
@@ -27,7 +27,7 @@ Az Azure hub és a küllős kapcsolat modelljét több ezer ügyfelünk fogadta 
 
 Ez a cikk bemutatja, hogyan telepíthet át egy meglévő ügyfél által felügyelt sugaras környezetet egy Azure-beli virtuális WAN-alapú topológiára.
 
-## <a name="scenario"></a>Használati eset
+## <a name="scenario"></a>Forgatókönyv
 
 A contoso egy globális pénzügyi szervezet, amely az európai és az ázsiai irodákkal is rendelkezik. Azt tervezzük, hogy meglévő alkalmazásaikat a helyszíni adatközpontból az Azure-ba helyezik át, és az ügyfél által felügyelt sugaras architektúrán alapuló alapszintű kialakítást alakítottunk ki, beleértve a hibrid kapcsolatokhoz tartozó regionális központ virtuális hálózatokat is. A felhőalapú technológiákba való áttérés részeként a hálózati csapat feladata annak biztosítása, hogy a kapcsolat a vállalat felé irányuló továbbításra legyen optimalizálva.
 
@@ -66,11 +66,11 @@ Az alábbi ábra az Azure Virtual WAN használatával az előző szakaszban rés
 
 Összegzés:
 
-- Az Európai HQ ExpressRoute továbbra is csatlakoztatva van, a helyszíni TARTOMÁNYVEZÉRLŐk teljes mértékben áttelepültek az Azure-ba, és most már leszerelték.
-- Az Asia DC és a HQ továbbra is csatlakoztatva van a privát WAN-hoz. Az Azure Virtual WAN mostantól a helyi Carrier hálózat bővítésére és a globális kapcsolatok biztosítására szolgál.
-- A Nyugat-Európában és Dél-Kelet-Ázsia Azure-régiókban üzembe helyezett Azure-beli virtuális WAN-hubok a ExpressRoute és a VPN-hez csatlakoztatott eszközökhöz biztosítanak csatlakozási központot.
-- A hubok VPN-lezárást is biztosítanak a barangoló felhasználók számára több ügyfélen keresztül, a globális Mesh hálózattal való OpenVPN-kapcsolat használatával, amely lehetővé teszi, hogy ne csak az Azure-ba migrált alkalmazások, hanem a helyszínen maradó erőforrások is elérhetők legyenek.
-- Internetkapcsolat az Azure Virtual WAN által biztosított virtuális hálózaton belüli erőforrásokhoz.
+* Az Európai HQ ExpressRoute továbbra is csatlakoztatva van, a helyszíni TARTOMÁNYVEZÉRLŐk teljes mértékben áttelepültek az Azure-ba, és most már leszerelték.
+* Az Asia DC és a HQ továbbra is csatlakoztatva van a privát WAN-hoz. Az Azure Virtual WAN mostantól a helyi Carrier hálózat bővítésére és a globális kapcsolatok biztosítására szolgál.
+* A Nyugat-Európában és Dél-Kelet-Ázsia Azure-régiókban üzembe helyezett Azure-beli virtuális WAN-hubok a ExpressRoute és a VPN-hez csatlakoztatott eszközökhöz biztosítanak csatlakozási központot.
+* A hubok VPN-lezárást is biztosítanak a barangoló felhasználók számára több ügyfélen keresztül, a globális Mesh hálózattal való OpenVPN-kapcsolat használatával, amely lehetővé teszi, hogy ne csak az Azure-ba migrált alkalmazások, hanem a helyszínen maradó erőforrások is elérhetők legyenek.
+* Internetkapcsolat az Azure Virtual WAN által biztosított virtuális hálózaton belüli erőforrásokhoz.
 
 Az Azure Virtual WAN által is biztosított távoli helyek internetkapcsolata. A helyi Internet breakout a partner-integráción keresztül támogatott a SaaS-szolgáltatásokhoz, például a Microsoft 365hoz való optimalizált hozzáféréshez.
 
@@ -87,20 +87,21 @@ Az alábbi ábra a contoso egyetlen régiós topológiáját mutatja be az Azure
 
 A sugaras megközelítésnek megfelelően az ügyfél által felügyelt hub virtuális hálózat több függvény blokkot tartalmaz:
 
-- Megosztott szolgáltatások (a több küllő által igényelt általános függvények). Példa: a contoso a Windows Server tartományvezérlőket használja az infrastruktúra-szolgáltatás (IaaS) virtuális gépeken.
-- Az IP-/útválasztási tűzfalakat egy külső gyártótól származó hálózati virtuális készülék biztosítja, amely küllős, 3. rétegbeli IP-útválasztást tesz lehetővé.
-- A bejövő HTTPS-kérelmekre és a virtuális gépeken futó külső proxy szolgáltatásokra, például az internetes erőforrásokhoz való szűrt kimenő hozzáféréshez használt Azure Application Gateway.
-- ExpressRoute és VPN virtuális hálózati átjáró a helyszíni hálózatokhoz való kapcsolódáshoz.
+* Megosztott szolgáltatások (a több küllő által igényelt általános függvények). Példa: a contoso a Windows Server tartományvezérlőket használja az infrastruktúra-szolgáltatás (IaaS) virtuális gépeken.
+* Az IP-/útválasztási tűzfalakat egy külső gyártótól származó hálózati virtuális készülék biztosítja, amely küllős, 3. rétegbeli IP-útválasztást tesz lehetővé.
+* A bejövő HTTPS-kérelmekre és a virtuális gépeken futó külső proxy szolgáltatásokra, például az internetes erőforrásokhoz való szűrt kimenő hozzáféréshez használt Azure Application Gateway.
+* ExpressRoute és VPN virtuális hálózati átjáró a helyszíni hálózatokhoz való kapcsolódáshoz.
 
 ### <a name="step-2-deploy-virtual-wan-hubs"></a>2. lépés: virtuális WAN-hubok üzembe helyezése
 
 Helyezzen üzembe egy virtuális WAN-hubot minden régióban. Állítsa be a virtuális WAN-hubot VPN-és ExpressRoute-funkcióval a következő cikkekben leírtak szerint:
 
-- [Oktatóanyag: Helyek közötti kapcsolat létrehozása az Azure Virtual WAN használatával](virtual-wan-site-to-site-portal.md)
-- [Oktatóanyag: ExpressRoute-társítás létrehozása az Azure Virtual WAN használatával](virtual-wan-expressroute-portal.md)
+* [Oktatóanyag: Helyek közötti kapcsolat létrehozása az Azure Virtual WAN használatával](virtual-wan-site-to-site-portal.md)
+* [Oktatóanyag: ExpressRoute-társítás létrehozása az Azure Virtual WAN használatával](virtual-wan-expressroute-portal.md)
 
 > [!NOTE]
 > Az Azure Virtual WAN-nak a standard SKU-t kell használnia ahhoz, hogy a jelen cikkben szereplő forgalmi útvonalak némelyikét engedélyezzék.
+>
 
 :::image type="content" source="./media/migrate-from-hub-spoke-topology/figure2.png" alt-text="hub és küllő":::
 **2. ábra: az ügyfél által felügyelt központ és küllő a virtuális WAN-Migrálás**
@@ -111,6 +112,7 @@ Kapcsolja össze a virtuális WAN-hubot a meglévő ExpressRoute-áramkörökkel
 
 > [!NOTE]
 > A virtuális WAN-hubhoz való kapcsolódáshoz a Express Routes-áramköröket prémium SKU-típusra kell frissíteni.
+>
 
 :::image type="content" source="./media/migrate-from-hub-spoke-topology/figure3.png" alt-text="hub és küllő":::
 **3. ábra: az ügyfél által felügyelt központ és küllő a virtuális WAN-Migrálás**
@@ -176,9 +178,9 @@ Az 1. elérési út azt mutatja be, hogy egy S2S VPN-kapcsolattal rendelkező á
 
 A forgalom a következőképpen lesz átirányítva:
 
-- Az ázsiai ág rugalmas S2S BGP-t használó alagutakon keresztül csatlakozik a Dél-Kelet-Ázsia virtuális WAN-hubhoz.
+* Az ázsiai ág rugalmas S2S BGP-t használó alagutakon keresztül csatlakozik a Dél-Kelet-Ázsia virtuális WAN-hubhoz.
 
-- Az Asia Virtual WAN hub a forgalmat helyileg irányítja a csatlakoztatott VNet.
+* Az Asia Virtual WAN hub a forgalmat helyileg irányítja a csatlakoztatott VNet.
 
 :::image type="content" source="./media/migrate-from-hub-spoke-topology/flow1.png" alt-text="hub és küllő":::
 
@@ -188,9 +190,9 @@ A 2. elérési út a ExpressRoute csatlakoztatott európai HQ és a Dél-Kelet-�
 
 A forgalom a következőképpen lesz átirányítva:
 
-- Az Európai HQ a prémium szintű ExpressRoute áramkörön keresztül csatlakozik a Nyugat-európai Virtual WAN hub-hoz.
+* Az Európai HQ a prémium szintű ExpressRoute áramkörön keresztül csatlakozik a Nyugat-európai Virtual WAN hub-hoz.
 
-- A virtuális WAN hub – hub globális kapcsolat lehetővé teszi a forgalom átvitelét a távoli régióba csatlakoztatott VNet.
+* A virtuális WAN hub – hub globális kapcsolat lehetővé teszi a forgalom átvitelét a távoli régióba csatlakoztatott VNet.
 
 :::image type="content" source="./media/migrate-from-hub-spoke-topology/flow2.png" alt-text="hub és küllő":::
 
@@ -200,11 +202,11 @@ A 3. elérési út azt mutatja, hogy az ázsiai helyszíni TARTOMÁNYVEZÉRLŐr�
 
 A forgalom a következőképpen lesz átirányítva:
 
-- Az Asia DC a helyi privát WAN-szolgáltatóhoz csatlakozik.
+* Az Asia DC a helyi privát WAN-szolgáltatóhoz csatlakozik.
 
-- A ExpressRoute áramkör helyi leállítása a magánhálózati WAN-kapcsolattal a Dél-Kelet-Ázsia virtuális WAN-hubhoz csatlakozik.
+* A ExpressRoute áramkör helyi leállítása a magánhálózati WAN-kapcsolattal a Dél-Kelet-Ázsia virtuális WAN-hubhoz csatlakozik.
 
-- A virtuális WAN hub – hub globális kapcsolat lehetővé teszi a forgalom átvitelét.
+* A virtuális WAN hub – hub globális kapcsolat lehetővé teszi a forgalom átvitelét.
 
 :::image type="content" source="./media/migrate-from-hub-spoke-topology/flow3.png" alt-text="hub és küllő":::
 
@@ -214,7 +216,7 @@ A 4. elérési út a Dél-Kelet-Ázsia régióban található Azure-VNet szárma
 
 A forgalom a következőképpen lesz átirányítva:
 
-- A virtuális WAN hub – hub globális kapcsolat lehetővé teszi az összes csatlakoztatott Azure-virtuális hálózatok natív átvitelét további felhasználói konfiguráció nélkül.
+* A virtuális WAN hub – hub globális kapcsolat lehetővé teszi az összes csatlakoztatott Azure-virtuális hálózatok natív átvitelét további felhasználói konfiguráció nélkül.
 
 :::image type="content" source="./media/migrate-from-hub-spoke-topology/flow4.png" alt-text="hub és küllő":::
 
@@ -224,9 +226,9 @@ Az 5. elérési út a barangoló VPN (P2S) felhasználóinak a Nyugat-európai r
 
 A forgalom a következőképpen lesz átirányítva:
 
-- A laptop-és mobileszköz-felhasználók az OpenVPN-ügyféllel transzparens módon csatlakozhatnak a P2S VPN-átjáróhoz Nyugat-Európában.
+* A laptop-és mobileszköz-felhasználók az OpenVPN-ügyféllel transzparens módon csatlakozhatnak a P2S VPN-átjáróhoz Nyugat-Európában.
 
-- A Nyugat-európai Virtual WAN hub a forgalmat helyileg irányítja a csatlakoztatott VNet.
+* A Nyugat-európai Virtual WAN hub a forgalmat helyileg irányítja a csatlakoztatott VNet.
 
 :::image type="content" source="./media/migrate-from-hub-spoke-topology/flow5.png" alt-text="hub és küllő":::
 
@@ -254,9 +256,9 @@ A 6. elérési út a virtuális hálózatok közötti biztonságos forgalmat mut
 
 A forgalom a következőképpen lesz átirányítva:
 
-- Az ugyanahhoz a biztonságos virtuális hubhoz csatlakoztatott virtuális hálózatok mostantól a Azure Firewall keresztül irányítják a forgalmat.
+* Az ugyanahhoz a biztonságos virtuális hubhoz csatlakoztatott virtuális hálózatok mostantól a Azure Firewall keresztül irányítják a forgalmat.
 
-- A Azure Firewall szabályzatot alkalmazhat ezekre a folyamatokra.
+* A Azure Firewall szabályzatot alkalmazhat ezekre a folyamatokra.
 
 :::image type="content" source="./media/migrate-from-hub-spoke-topology/flow6.png" alt-text="hub és küllő":::
 
@@ -266,9 +268,9 @@ Az elérési út 7 az Azure-VNet az internetre vagy a harmadik féltől származ
 
 A forgalom a következőképpen lesz átirányítva:
 
-- A biztonságos virtuális hubhoz csatlakozó virtuális hálózatok a nyilvános, az internet felé irányuló adatforgalmat a biztonságos központi internet-hozzáférési pont használatával küldhetik el.
+* A biztonságos virtuális hubhoz csatlakozó virtuális hálózatok a nyilvános, az internet felé irányuló adatforgalmat a biztonságos központi internet-hozzáférési pont használatával küldhetik el.
 
-- Ez a forgalom a Azure Firewall FQDN-szabályokkal helyileg szűrhető, vagy egy külső biztonsági szolgáltatásba való elküldése a vizsgálathoz.
+* Ez a forgalom a Azure Firewall FQDN-szabályokkal helyileg szűrhető, vagy egy külső biztonsági szolgáltatásba való elküldése a vizsgálathoz.
 
 :::image type="content" source="./media/migrate-from-hub-spoke-topology/flow7.png" alt-text="hub és küllő":::
 
@@ -278,12 +280,12 @@ A 8. elérési út a fiókirodából az internetre vagy a harmadik féltől szá
 
 A forgalom a következőképpen lesz átirányítva:
 
-- A biztonságos virtuális hubhoz csatlakozó ágak a biztonságos központi internet-hozzáférési pont használatával küldhetnek forgalmat a nyilvános célhelyekre az interneten.
+* A biztonságos virtuális hubhoz csatlakozó ágak a biztonságos központi internet-hozzáférési pont használatával küldhetnek forgalmat a nyilvános célhelyekre az interneten.
 
-- Ez a forgalom a Azure Firewall FQDN-szabályokkal helyileg szűrhető, vagy egy külső biztonsági szolgáltatásba való elküldése a vizsgálathoz.
+* Ez a forgalom a Azure Firewall FQDN-szabályokkal helyileg szűrhető, vagy egy külső biztonsági szolgáltatásba való elküldése a vizsgálathoz.
 
 :::image type="content" source="./media/migrate-from-hub-spoke-topology/flow8.png" alt-text="hub és küllő":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-További információ az [Azure Virtual WAN](virtual-wan-about.md) -ról
+További információ az [Azure Virtual WAN](virtual-wan-about.md)-ról.

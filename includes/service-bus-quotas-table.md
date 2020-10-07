@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: service-bus-messaging
 author: spelluru
 ms.service: service-bus-messaging
@@ -8,12 +8,12 @@ ms.topic: include
 ms.date: 07/15/2020
 ms.author: spelluru
 ms.custom: include file
-ms.openlocfilehash: d22b0100074a230451e5c6b3967fa5dbc8ae3f56
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 535ee447ff63aabb9af1f32252fb4e4dd2c392de
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86515875"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91779731"
 ---
 A következő táblázat a Azure Service Bus üzenetkezelésre vonatkozó kvóta-információkat sorolja fel. További információ a Service Bus díjszabásáról és egyéb kvótáról: [Service Bus díjszabása](https://azure.microsoft.com/pricing/details/service-bus/).
 
@@ -32,7 +32,7 @@ A következő táblázat a Azure Service Bus üzenetkezelésre vonatkozó kvóta
 | Egy üzenet-munkamenet- [azonosító](/dotnet/api/microsoft.azure.servicebus.message.sessionid) maximális mérete | Entitás |- | 128 |
 | Üzenetsor, témakör vagy előfizetési entitás üzeneteinek mérete |Entitás |Az ezeket a kvótákat meghaladó bejövő üzenetek elutasításra kerülnek, és a hívási kód kivételt kap. |Maximális üzenet mérete: 256 KB [standard](../articles/service-bus-messaging/service-bus-premium-messaging.md)csomag esetén, 1 MB a [prémium szinthez](../articles/service-bus-messaging/service-bus-premium-messaging.md). <br /><br />A rendszer terhelése miatt ez a korlát kevesebb, mint az érték.<br /><br />Fejléc maximális mérete: 64 KB.<br /><br />Fejléc tulajdonságainak maximális száma a (z) Bag: **byte/int tulajdonságban. MaxValue**.<br /><br />Tulajdonság maximális mérete a (z) táskában: nincs kifejezett korlát. A fejlécek maximális mérete korlátozza. |
 | Üzenetsor, témakör vagy előfizetési entitás üzenet-tulajdonságának mérete |Entitás | A kivétel `SerializationException` létrejött. |Az üzenetsor maximális mérete az egyes tulajdonságokhoz 32 000. Az összes tulajdonság összesített mérete nem haladhatja meg a 64 000-ot. Ez a korlát a felügyelt [üzenet](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)teljes fejlécére vonatkozik, amely a felhasználói tulajdonságokat és a rendszer tulajdonságait, például a [sorozatszámot](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.sequencenumber), a [CÍMKÉt](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.label)és az [üzenet azonosítóját](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.messageid)is érinti. |
-| Előfizetések száma témakör szerint |Entitás |A további előfizetések létrehozására vonatkozó további kérelmeket a rendszer elutasítja. Ennek eredményeképpen, ha a portálon keresztül van konfigurálva, hibaüzenet jelenik meg. Ha a felügyeleti API hívja meg, a hívási kód kivételt kap. |2 000/témakör a standard szinthez. |
+| Előfizetések száma témakör szerint |Entitás |A további előfizetések létrehozására vonatkozó további kérelmeket a rendszer elutasítja. Ennek eredményeképpen, ha a portálon keresztül van konfigurálva, hibaüzenet jelenik meg. Ha a felügyeleti API hívja meg, a hívási kód kivételt kap. |2 000/témakör a standard szint és a prémium szint esetében. |
 | SQL-szűrők száma egy témakörben |Entitás |A rendszer elutasítja a további szűrők létrehozására vonatkozó további kérelmeket a témakörben, és kivételt kapott a hívó kód. |2000 |
 | Korrelációs szűrők száma egy témakörben |Entitás |A rendszer elutasítja a további szűrők létrehozására vonatkozó további kérelmeket a témakörben, és kivételt kapott a hívó kód. |100.000 |
 | SQL-szűrők vagy-műveletek mérete |Névtér |A rendszer elutasítja a további szűrők létrehozására vonatkozó további kérelmeket, és a hívási kód kivételt kap. |A szűrési feltétel karakterláncának maximális hossza: 1 024 (1 K).<br /><br />Szabály műveleti karakterláncának maximális hossza: 1 024 (1 K).<br /><br />Kifejezések maximális száma szabály szerint művelet: 32. |

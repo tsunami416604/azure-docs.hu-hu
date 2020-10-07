@@ -8,14 +8,14 @@ ms.subservice: edge
 ms.topic: how-to
 ms.date: 03/25/2019
 ms.author: alkohli
-ms.openlocfilehash: cc9c7dda86d39d31b8c9a6329ac29970888f12d1
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: d7ff32b33a8eab5c6729d84d38fec2e5b2c87449
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90904477"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777207"
 ---
-# <a name="use-the-azure-portal-to-manage-shares-on-your-azure-stack-edge-pro"></a>A Azure Portal használata az Azure Stack Edge Pro-beli megosztások kezeléséhez
+# <a name="use-the-azure-portal-to-manage-shares-on-azure-stack-edge-pro"></a>A Azure Portal használata a megosztások kezeléséhez Azure Stack Edge Pro-ban
 
 Ez a cikk bemutatja, hogyan kezelheti a megosztásokat a Azure Stack Edge Pro-ban. A Azure Stack Edge Pro-t a Azure Portal vagy a helyi webes felületen keresztül kezelheti. A megosztásokhoz társított Storage-fiókhoz használja a Azure Portal a megosztások hozzáadásához, törléséhez, frissítéséhez vagy a Storage-kulcs szinkronizálásához.
 
@@ -74,7 +74,7 @@ Megosztás létrehozásához hajtsa végre a következő lépéseket az Azure Po
 
 1. A Azure Portal nyissa meg a Azure Stack Edge-erőforrást, és válassza az **átjáró > megosztások**lehetőséget. Válassza a **+ megosztás hozzáadása** parancsot a parancssorban.
 
-   ![Válassza a megosztás hozzáadása elemet.](media/azure-stack-edge-manage-shares/add-local-share-1.png)
+   ![Válassza a 2. megosztás hozzáadása lehetőséget](media/azure-stack-edge-manage-shares/add-local-share-1.png)
 
 2. A **Megosztás hozzáadása** területen adja meg a megosztás beállításait. Adjon egy egyedi nevet a megosztásnak.
     
@@ -106,7 +106,7 @@ Ha létrehozott egy megosztást, mielőtt beállította a számítást a Azure S
 
 1. A Azure Portal nyissa meg a Azure Stack Edge-erőforrást, és válassza az **átjáró > megosztások**lehetőséget. A megosztások listájában válassza ki a csatlakoztatni kívánt megosztást. A **számítási** oszlophoz használt érték a kiválasztott megosztásnál **letiltott** állapotot jeleníti meg.
 
-   ![Jelölje ki a megosztást](media/azure-stack-edge-manage-shares/select-share-mount.png)
+   ![3. megosztás kiválasztása](media/azure-stack-edge-manage-shares/select-share-mount.png)
 
 2. Válassza a **Csatlakoztatás**lehetőséget.
 
@@ -130,7 +130,7 @@ A megosztás leválasztásához hajtsa végre az alábbi lépéseket a Azure Por
 
 1. A Azure Portal nyissa meg a Azure Stack Edge-erőforrást, és válassza az **átjáró > megosztások**lehetőséget.
 
-   ![Jelölje ki a megosztást](media/azure-stack-edge-manage-shares/select-share-unmount.png)
+   ![4. megosztás kiválasztása](media/azure-stack-edge-manage-shares/select-share-unmount.png)
 
 2. A megosztások listájában válassza ki a leválasztani kívánt megosztást. Meg szeretné győződni arról, hogy a leválasztott megosztást egyetlen modul sem használja. Ha a megosztást egy modul használja, akkor a rendszer a megfelelő modullal kapcsolatos problémákat fogja látni. Válassza a **Leválasztás**lehetőséget.
 
@@ -150,7 +150,7 @@ Megosztás törléséhez hajtsa végre a következő lépéseket az Azure Portal
 
 1. A megosztások listájában jelölje ki a törölni kívánt megosztást, majd kattintson rá.
 
-   ![Jelölje ki a megosztást](media/azure-stack-edge-manage-shares/delete-share-1.png)
+   ![5. megosztás kiválasztása](media/azure-stack-edge-manage-shares/delete-share-1.png)
 
 2. Kattintson a **Törlés** gombra.
 
@@ -175,7 +175,7 @@ Megosztás frissítéséhez hajtsa végre a következő lépéseket az Azure Por
 
 1. Az Azure Portalon lépjen a **Megosztások** területre. Jelölje ki a frissíteni kívánt megosztást, majd kattintson rá.
 
-   ![Jelölje ki a megosztást](media/azure-stack-edge-manage-shares/refresh-share-1.png)
+   ![6. megosztás kiválasztása](media/azure-stack-edge-manage-shares/refresh-share-1.png)
 
 2. Kattintson a **Frissítés** gombra.
 

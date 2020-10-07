@@ -1,14 +1,16 @@
 ---
 title: Integrálás más alkalmazásokkal – QnA Maker
 description: A QnA Maker az ügyfélalkalmazások, például a csevegési robotok, valamint más természetes nyelvi feldolgozási szolgáltatások, például a Language Understanding (LUIS) integrálására is használható.
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 01/27/2020
-ms.openlocfilehash: c1edbfb6badfb73ce08a99709da0f8bfb61b7dc3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: ff5e64dd31542b1e31df6d9ca709567b322995ce
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "80804187"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776527"
 ---
 # <a name="design-knowledge-base-for-client-applications"></a>Tudásbázis kialakítása ügyfélalkalmazások számára
 
@@ -30,6 +32,6 @@ A robot-ügyfél biztosítja a legalkalmasabb választ a Tudásbázisból, és k
 
 QnA Maker a természetes nyelvi feldolgozást használó kérdéseket is felhasználhat, de egy nagyobb rendszer részeként is használható, amely több Tudásbázisból származó kérdésekre ad választ. A QnA Makereket kombinálhatja egy másik kognitív szolgáltatással, Language Understanding (LUIS), hogy természetes nyelvi feldolgozást nyújtson, mielőtt bekerül egy adott tudásbázisba. További információ a [Luis és a QnA Maker](../../luis/choose-natural-language-processing-service.md?toc=/azure/cognitive-services/qnamaker/toc.json) együttes használatáról.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A QnA Maker fejlesztési ciklusokkal kapcsolatos [fogalmait](development-lifecycle-knowledge-base.md) megismerheti.

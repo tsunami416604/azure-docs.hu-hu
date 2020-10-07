@@ -9,12 +9,12 @@ ms.reviewer: dineshm
 ms.date: 09/11/2020
 ms.subservice: blobs
 ms.custom: devx-track-javascript, github-actions-azure
-ms.openlocfilehash: 9b616f8df0a8b64969fac1d18544e6d316120e50
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.openlocfilehash: 919fa0d7b6dff0361e4439b442bcfe9648ed8677
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/06/2020
-ms.locfileid: "91771071"
+ms.locfileid: "91776391"
 ---
 # <a name="set-up-a-github-actions-workflow-to-deploy-your-static-website-in-azure-storage"></a>GitHub-műveletek munkafolyamatának beállítása a statikus webhely üzembe helyezéséhez az Azure Storage-ban
 
@@ -83,7 +83,7 @@ A fenti példában cserélje le a helyőrzőket az előfizetés-AZONOSÍTÓra é
 
 1. Töröljön mindent a `on:` munkafolyamat-fájl szakasza után. Előfordulhat például, hogy a hátralévő munkafolyamat így néz ki. 
 
-    ```yml
+    ```yaml
     name: CI
 
     on:
@@ -95,7 +95,7 @@ A fenti példában cserélje le a helyőrzőket az előfizetés-AZONOSÍTÓra é
 
 1. Nevezze át a munkafolyamatot `Blob storage website CI` , és adja hozzá a pénztári és bejelentkezési műveleteket. Ezek a műveletek kiveszik a helykódot, és a korábban létrehozott GitHub-titok használatával hitelesítik magukat az Azure-ban `AZURE_CREDENTIALS` . 
 
-    ```yml
+    ```yaml
     name: Blob storage website CI
 
     on:
@@ -181,7 +181,7 @@ A fenti példában cserélje le a helyőrzőket az előfizetés-AZONOSÍTÓra é
 
 1. Töröljön mindent a `on:` munkafolyamat-fájl szakasza után. Előfordulhat például, hogy a hátralévő munkafolyamat így néz ki. 
 
-    ```yml
+    ```yaml
     name: CI
 
     on:
@@ -193,7 +193,7 @@ A fenti példában cserélje le a helyőrzőket az előfizetés-AZONOSÍTÓra é
 
 1. Nevezze át a munkafolyamatot `Blob storage website CI` , és adja hozzá a pénztári és bejelentkezési műveleteket. Ezek a műveletek kiveszik a helykódot, és a korábban létrehozott GitHub-titok használatával hitelesítik magukat az Azure-ban `AZURE_CREDENTIALS` . 
 
-    ```yml
+    ```yaml
     name: Blob storage website CI
 
     on:

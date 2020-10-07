@@ -1,17 +1,17 @@
 ---
-title: Azure Policy erőforrások exportálása
+title: Azure Policy-erőforrások exportálása
 description: Megtudhatja, hogyan exportálhat Azure Policy erőforrásokat a GitHubra, például házirend-definíciók és szabályzat-hozzárendelések számára.
 ms.date: 09/30/2020
 ms.topic: how-to
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
-ms.openlocfilehash: 17f0322390cd2cd89ba182a9e3c7c95843cc135e
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.openlocfilehash: 691e0a026c5f4f1a0a68c744ee81b1da8da9e70b
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91604327"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777088"
 ---
-# <a name="export-azure-policy-resources"></a>Azure Policy erőforrások exportálása
+# <a name="export-azure-policy-resources"></a>Azure Policy-erőforrások exportálása
 
 Ez a cikk a meglévő Azure Policy erőforrásainak exportálásáról nyújt információt. Az erőforrások exportálása hasznos és ajánlott a biztonsági mentéshez, de fontos lépés a felhő irányításával és a [szabályzatok szerinti kód](../concepts/policy-as-code.md)kezelésével is. Azure Policy erőforrások exportálhatók a [Azure Portal](#export-with-azure-portal), az [Azure CLI](#export-with-azure-cli), a [Azure PowerShell](#export-with-azure-powershell)és a támogatott SDK-k használatával.
 
@@ -84,10 +84,10 @@ Azure Policy a definíciók, a kezdeményezések és a hozzárendelések ugyanú
 Íme egy példa arra, hogyan történik a JSON beszerzése egy _VirtualMachineStorage_ **nevű** szabályzat-definícióhoz:
 
 ```azurepowershell-interactive
-Get-AzPolicyDefinition --Name 'VirtualMachineStorage'
+Get-AzPolicyDefinition -Name 'VirtualMachineStorage'
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tekintse át a példákat [Azure Policy mintákon](../samples/index.md).
 - Tekintse meg az [Azure szabályzatdefiníciók struktúrája](../concepts/definition-structure.md) szakaszt.

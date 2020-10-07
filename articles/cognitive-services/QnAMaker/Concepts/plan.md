@@ -1,14 +1,16 @@
 ---
 title: Az alkalmazás megtervezése – QnA Maker
 description: Megtudhatja, hogyan tervezze meg QnA Maker alkalmazását. Ismerje meg, hogy az QnA Maker hogyan működik, és hogyan kommunikálhat más Azure-szolgáltatásokkal és néhány ismereti alapfogalmakkal.
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 07/2/2020
-ms.openlocfilehash: 19499aceed96155fa42c78865b1d673a3830f5cc
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 84e4d6907c9036503f43cd607b54577fd3d97444
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87054208"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776935"
 ---
 # <a name="plan-your-qna-maker-app"></a>A QnA Maker alkalmazás megtervezése
 
@@ -181,7 +183,7 @@ A Tudásbázis megosztja a Cognitive Search indexet az QnA Maker erőforrás min
 
 Ahhoz, hogy _ugyanaz a pontszám_ legyen a `test` és a `production` Tudásbázisban, el kell különíteni egy QnA Maker erőforrást egyetlen tudásbázisba. Ebben az architektúrában az erőforrásnak csak az elkülönített batch-teszt után kell élnie.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Azure-erőforrások](../how-to/set-up-qnamaker-service-azure.md)
 * [Kérdés-válasz párok](question-answer-set.md)

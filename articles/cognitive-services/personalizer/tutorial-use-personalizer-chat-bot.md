@@ -1,15 +1,17 @@
 ---
 title: Személyre szabás használata a csevegési robotban – személyre szabás
 description: Testreszabhatja a C# .NET chat robotot egy személyre szabott hurok használatával, hogy a megfelelő tartalmat biztosítsa a felhasználóknak a műveletek (funkciók) és a környezeti funkciók alapján.
+ms.service: cognitive-services
+ms.subservice: personalizer
 ms.topic: tutorial
 ms.date: 07/17/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 2d95a6999186b964e59ff8f287d917b1f93e1813
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.openlocfilehash: 3ae22294d86ab65be0f09b734735885177c1cf63
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90089887"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777309"
 ---
 # <a name="tutorial-use-personalizer-in-net-chat-bot"></a>Oktatóanyag: személyre szabott használata a .NET-csevegési robotban
 
@@ -176,18 +178,18 @@ Tartsa meg a webhelyet, mert az oktatóanyag leírja, hogy mit csinál a robot, 
 
 1. Nyissa meg a bot Framework Emulatort, és válassza a **robot megnyitása**lehetőséget.
 
-    :::image type="content" source="media/tutorial-chat-bot/bot-emulator-startup.png" alt-text="Képernyőkép a robot-emulátor indítási képernyőjéről.":::
+    :::image type="content" source="media/tutorial-chat-bot/bot-emulator-startup.png" alt-text="A csevegési robot webhelyét megjelenítő böngésző képernyőképe.":::
 
 
 1. Konfigurálja a robotot a következő **robot URL-címmel** , majd válassza a **kapcsolat**elemet:
 
     `http://localhost:3978/api/messages`
 
-    :::image type="content" source="media/tutorial-chat-bot/bot-emulator-open-bot-settings.png" alt-text="Képernyőkép a robot-emulátor megnyitási beállításairól.":::
+    :::image type="content" source="media/tutorial-chat-bot/bot-emulator-open-bot-settings.png" alt-text="A csevegési robot webhelyét megjelenítő böngésző képernyőképe.":::
 
     Az emulátor csatlakozik a csevegési robothoz, és megjeleníti az útmutató szövegét, valamint a naplózási és hibakeresési információkat a helyi fejlesztéshez.
 
-    :::image type="content" source="media/tutorial-chat-bot/bot-emulator-bot-conversation-first-turn.png" alt-text="Képernyőkép a bot emulatorról az első beszélgetés során.":::
+    :::image type="content" source="media/tutorial-chat-bot/bot-emulator-bot-conversation-first-turn.png" alt-text="A csevegési robot webhelyét megjelenítő böngésző képernyőképe.":::
 
 ## <a name="use-the-bot-in-the-bot-emulator"></a>A robot használata a bot emulatorban
 

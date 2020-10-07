@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: milismsft
 ms.author: adrianmi
 ms.date: 09/21/2020
-ms.openlocfilehash: ec034ac3cf6f4cbec2d373d9dade45a00f70ddbe
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: f2a40744053ccc804b2513faf1bc2879d4fde902
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91566688"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777173"
 ---
 # <a name="azure-cosmos-emulator---release-notes-and-download-information"></a>Azure Cosmos Emulator – kibocsátási megjegyzések és letöltési információk
 
@@ -25,6 +25,10 @@ Ez a cikk az Azure Cosmos Emulator kiadási megjegyzéseit mutatja be az egyes k
 |**Első lépések**|[Helyi fejlesztés az Azure Cosmos emulatorrel](local-emulator.md)|
 
 ## <a name="release-notes"></a>Kibocsátási megjegyzések
+
+### <a name="2116-6-october-2020"></a>2.11.6 (2020. október 6.)
+
+ - Ez a kiadás a párhuzamosságtal kapcsolatos problémát tárgyalja, ha egyszerre több tároló is létrehozható. Ilyen esetekben az emulátor adatai sérült állapotban maradnak, és az emulátor végpontjának API-kérelmei a "szolgáltatás nem érhető el" hibával meghiúsulnak, újraindítást igényelnek, és az emulátor helyi adatai alaphelyzetbe állnak.
 
 ### <a name="2115-23-august-2020"></a>2.11.5 (2020. augusztus 23.)
 

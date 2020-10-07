@@ -1,14 +1,16 @@
 ---
 title: Hibaelhárítás – személyre szabás
 description: Ez a cikk a személyre szabással kapcsolatos gyakran ismételt hibaelhárítási kérdésekre adott válaszokat tartalmazza.
+ms.service: cognitive-services
+ms.subservice: personalizer
 ms.topic: troubleshooting
 ms.date: 02/26/2020
-ms.openlocfilehash: 55b9068dbd7bfbb3ea3972c3381fda6d9cde5076
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.openlocfilehash: b5f7ed1f2ded8f6ec0320d417b59bab016d75028
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
-ms.locfileid: "87126108"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777275"
 ---
 # <a name="personalizer-troubleshooting"></a>Személyre szabás – hibaelhárítás
 
@@ -90,6 +92,6 @@ További információ a [tanulási szabályzatokkal kapcsolatos fogalmakról](co
 Ha az ügyfeleket a másik kulcs használatára szeretné felcserélni, újra létrehozhat egy kulcsot. A két kulcs lehetővé teszi, hogy a kulcsot lusta módon propagálja anélkül, hogy állásidőt kellene leállítania. Azt javasoljuk, hogy ezt egy rendszeres ciklusban biztonsági intézkedésként hajtsa végre.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [A modell frissítési gyakoriságának konfigurálása](how-to-settings.md#model-update-frequency)

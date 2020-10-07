@@ -1,14 +1,16 @@
 ---
 title: 'Gyors útmutató: kérdések és válaszok hozzáadása QnA Maker portálon'
 description: Ez a rövid útmutató bemutatja, hogyan adhat hozzá a kérdésekhez és a válaszokhoz a metaadatokat, hogy a felhasználók megtalálják a megfelelő választ a kérdésére.
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: quickstart
 ms.date: 05/26/2020
-ms.openlocfilehash: a832d9f421d3a1851401c286f129e29d0196ec99
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 930acbd3bbdb8f63b6aa888b292025a76435b289
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "84331389"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776748"
 ---
 # <a name="quickstart-add-questions-and-answer-with-qna-maker-portal"></a>Gyors útmutató: kérdések és válaszok felvétele QnA Maker portálra
 
@@ -103,7 +105,7 @@ A tudásbázist úgy szerkesztette, hogy több kérdést támogasson, és a név
 
 Ha nem folytatja a következő rövid útmutatót, törölje a QnA Maker és a bot Framework erőforrásait a Azure Portalban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Válasz kérése Postman vagy cURL használatával](get-answer-from-knowledge-base-using-url-tool.md)

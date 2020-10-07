@@ -1,16 +1,18 @@
 ---
 title: Mi az QnA Maker szolgáltatás?
 description: A QnA Maker egy felhőalapú NLP-szolgáltatás, amely könnyen létrehoz egy természetes társalgási réteget az adataiban. A felhasználó az egyéni Tudásbázis (KB) adatai alapján megkeresheti a legmegfelelőbb választ az adott természetes nyelvi bevitelhez.
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: overview
 ms.date: 05/26/2020
 ms.custom: cog-serv-seo-aug-2020
 keywords: QnA-készítő, alacsony kódú csevegési robotok, több fordulatos beszélgetések
-ms.openlocfilehash: ed790016c11199a4422f0489fb52bfcfce5533b3
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: fe46fadc6d3f5a74c95faeec6b7759f18e843f7d
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/06/2020
-ms.locfileid: "91761243"
+ms.locfileid: "91776782"
 ---
 # <a name="what-is-qna-maker"></a>Mi a QnA Maker?
 

@@ -1,16 +1,18 @@
 ---
 title: Mi a Personalizer?
 description: A személyre szabott felhőalapú szolgáltatás lehetővé teszi, hogy kiválassza a legjobb felhasználói élményt, amely a valós idejű viselkedéstől való tanulást mutatja be.
+ms.service: cognitive-services
+ms.subservice: personalizer
 ms.topic: overview
 ms.date: 08/27/2020
 ms.custom: cog-serv-seo-aug-2020
 keywords: személyre szabott, Azure személyre szabott, gépi tanulás
-ms.openlocfilehash: 93b1f0487818cf783cc4a19f79618cfe2285cbd1
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ae17b799c2b222525db53d5bb8e0afdbbcf19975
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89055617"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777241"
 ---
 # <a name="what-is-personalizer"></a>Mi a Personalizer?
 
@@ -77,7 +79,7 @@ Mivel a személyre szabott, közel valós időben a személyre szabott adatokat 
 1. [Tervezze](concepts-features.md) meg és tervezze meg a tartalmat, a **_műveleteket_** és a **_környezetet_**. Határozza meg **_a jutalmas pontszámhoz_** tartozó jutalmazási algoritmust.
 1. Az Ön által létrehozott minden [személyre szabott erőforrás](how-to-settings.md) egy tanulási ciklusnak tekintendő. A hurok az adott tartalomhoz vagy felhasználói élményhez tartozó rang és jutalmazási hívásokat is megkapja.
 
-    |Erőforrás típusa| Rendeltetés|
+    |Erőforrás típusa| Cél|
     |--|--|
     |[Gyakornoki mód](concept-apprentice-mode.md) `E0`|A személyre szabott modell betanítása anélkül, hogy ez hatással lenne a meglévő alkalmazásra, majd telepítse az online tanulási viselkedést éles környezetbe|
     |Standard `S0`|Online tanulási viselkedés éles környezetben|
@@ -119,7 +121,7 @@ A személyre szabott szolgáltatás használatának megkezdése után próbálja
 * [Személyre szabott Python SDK](https://docs.microsoft.com/python/api/overview/azure/cognitiveservices/personalizer?view=azure-python)
 * [REST API-k](https://westus2.dev.cognitive.microsoft.com/docs/services/personalizer-api/operations/Rank)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > A [megszemélyesítő működése](how-personalizer-works.md) 

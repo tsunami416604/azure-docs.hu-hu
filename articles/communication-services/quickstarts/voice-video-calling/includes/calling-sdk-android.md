@@ -4,12 +4,12 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
-ms.openlocfilehash: aec9d2049a69aebc7102a70274e5fb2a3ef865a8
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: bed2a4ccbe87aef9afa395ed789da393e885cc89
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91377569"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91779606"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -48,7 +48,7 @@ Ezután a modul szintjén a Build. gradle adja hozzá a következő sorokat a f�
 ```groovy
 dependencies {
     ...
-    implementation 'com.azure.android:azure-communication-calling:1.0.0-beta.1'
+    implementation 'com.azure.android:azure-communication-calling:1.0.0-beta.2'
     ...
 }
 
@@ -109,7 +109,7 @@ Context appContext = this.getApplicationContext();
 Call groupCall = callAgent.call(participants, startCallOptions);
 ```
 
-### <a name="place-a-11-call-with-with-video-camera"></a>1:1-hívás elhelyezése a kamerával
+### <a name="place-a-11-call-with-video-camera"></a>1:1-hívás elhelyezése videokameráról
 > [!WARNING]
 > Jelenleg csak egy kimenő helyi videós adatfolyam hívható meg a videóban, hogy a helyi kamerákat az API használatával kell enumerálni `deviceManager` `getCameraList` .
 Miután kiválasztotta a kívánt kamerát, a használatával létrehozhat egy `LocalVideoStream` példányt, és `videoOptions` a tömbben lévő elemként átadhatja azt egy `localVideoStream` `call` metódusnak.
@@ -136,17 +136,17 @@ JoinCallOptions joinCallOptions = new JoinCallOptions();
 call = callAgent.join(context, groupCallContext, joinCallOptions);
 ```
 
-## <a name="push-notification"></a>Leküldéses értesítés
+## <a name="push-notifications"></a>Leküldéses értesítések
 
 ### <a name="overview"></a>Áttekintés
-A mobil leküldéses értesítés az a felugró értesítés, amelyet egy mobileszközön kap. A híváshoz a VoIP-ra (Internet Protocol) leküldéses értesítések küldésére fogunk összpontosítani. A leküldéses értesítések regisztrálásához, a leküldéses értesítések kezeléséhez, valamint a leküldéses értesítések törléséhez szükséges képességeket kínáljuk.
+A mobil leküldéses értesítések a mobil eszközökön látható előugró értesítések. A híváshoz a VoIP (Internet Protocol) leküldéses értesítések küldésére fogunk összpontosítani. A leküldéses értesítések regisztrálása, a leküldéses értesítések kezelése, majd a leküldéses értesítések regisztrációjának megszüntetése.
 
-### <a name="prerequisite"></a>Előfeltétel
+### <a name="prerequisites"></a>Előfeltételek
 
-Ez az oktatóanyag feltételezi, hogy rendelkezik olyan Firebase-fiókkal, amelyen engedélyezve van a Cloud Messaging (FCM), és a Firebase Cloud Messaging csatlakozik egy Azure Notification hub-(fahálózati) példányhoz. További információ: a [Firebase és az Azure összekapcsolása](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-android-push-notification-google-fcm-get-started) .
-Emellett az oktatóanyag azt feltételezi, hogy a Android Studio 3,6-es vagy újabb verzióját használja az alkalmazás létrehozásához.
+A szakasz elvégzéséhez hozzon létre egy Firebase-fiókot, és engedélyezze a Cloud Messaging (FCM) szolgáltatást. Győződjön meg arról, hogy a Firebase Cloud Messaging csatlakozik egy Azure Notification hub-példányhoz. Útmutatásért lásd: [Firebase összekötése az Azure-](https://docs.microsoft.com/azure/notification-hubs/notification-hubs-android-push-notification-google-fcm-get-started) ban.
+Ez a szakasz azt is feltételezi, hogy a Android Studio 3,6-es vagy újabb verzióját használja az alkalmazás létrehozásához.
 
-Az Android-alkalmazáshoz engedélyekre van szükség ahhoz, hogy fogadni lehessen az FCM-ből érkező értesítési üzeneteket. A AndroidManifest.xml fájlban adja hozzá a következő engedélyeket közvetlenül a<jegyzékfájl után. * .. >* vagy a *</application>* címke alatt
+Az Android-alkalmazáshoz engedélyekre van szükség ahhoz, hogy fogadni tudja az értesítési üzeneteket a Firebase Cloud Messaging szolgáltatásból. A `AndroidManifest.xml` fájlban adja hozzá a következő engedélyeket közvetlenül a *<manifest... >* vagy a címke alatt. *</application>*
 
 ```XML
     <uses-permission android:name="android.permission.INTERNET"/>
@@ -154,39 +154,41 @@ Az Android-alkalmazáshoz engedélyekre van szükség ahhoz, hogy fogadni lehess
     <uses-permission android:name="com.google.android.c2dm.permission.RECEIVE" />
 ```
 
-### <a name="register-for-push-notification"></a>Regisztráció leküldéses értesítéshez
+### <a name="register-for-push-notifications"></a>Regisztráció leküldéses értesítésekhez
 
-- A leküldéses értesítések regisztrálásához az alkalmazásnak meg kell hívnia a registerPushNotification () függvényt egy *CallAgent* -példányon egy eszköz regisztrációs jogkivonattal.
+A leküldéses értesítések regisztrálásához az alkalmazásnak meg kell hívnia `registerPushNotification()` egy *CallAgent* -példányt egy eszköz regisztrációs jogkivonattal.
 
-- Az eszköz regisztrációs jogkivonatának beszerzése
-1. Ügyeljen arra, hogy a Firebase ügyféloldali függvénytárát hozzáadja az alkalmazás moduljának *Build. gradle* fájlhoz a *függőségek* szakasz következő sorainak hozzáadásával, ha még nem létezik:
+Az eszköz regisztrációs jogkivonatának beszerzéséhez adja hozzá a Firebase ügyféloldali függvénytárát az alkalmazás moduljának *Build. gradle* fájlhoz, ha a következő sorokat adja hozzá a `dependencies` szakaszhoz, ha még nem létezik:
+
 ```
     // Add the client library for Firebase Cloud Messaging
     implementation 'com.google.firebase:firebase-core:16.0.8'
     implementation 'com.google.firebase:firebase-messaging:20.2.4'
 ```
 
-2. A projekt szintjének *Build. gradle* fájljában adja hozzá a következőt a *függőségek* szakaszban, ha még nem létezik
+A projekt szintjének *Build. gradle* fájljában adja hozzá a következőt a `dependencies` szakaszban, ha még nem létezik:
+
 ```
     classpath 'com.google.gms:google-services:4.3.3'
 ```
 
-3. Ha még nem létezik, adja hozzá a következő beépülő modult a fájl elejéhez.
+Ha még nem létezik, adja hozzá a következő beépülő modult a fájl elejéhez:
+
 ```
 apply plugin: 'com.google.gms.google-services'
 ```
 
-4. Válassza a *szinkronizálás most* lehetőséget az eszköztáron
+Kattintson a *szinkronizálás most* elemre az eszköztáron. Adja hozzá a következő kódrészletet a Firebase Cloud Messaging ügyféloldali kódtár által generált eszköz regisztrációs jogkivonat létrehozásához az ügyfélalkalmazás példányához. ügyeljen arra, hogy az alábbi importálásokat hozzáadja a példány fő tevékenységének fejlécébe. Szükségük van arra, hogy a kódrészlet beolvassa a jogkivonatot:
 
-5. Adja hozzá a következő kódrészletet a Client Application-példányhoz tartozó FCM ügyféloldali kódtár által generált eszköz-regisztrációs jogkivonat beszerzéséhez. 
-- Adja hozzá ezeket az importálást a példány fő tevékenységének fejlécébe. Szükségük van arra, hogy a kódrészlet beolvassa a jogkivonatot
 ```
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.iid.FirebaseInstanceId;
 import com.google.firebase.iid.InstanceIdResult;
 ```
-- Adja hozzá ezt a kódrészletet a jogkivonat lekéréséhez
+
+Adja hozzá ezt a kódrészletet a jogkivonat lekéréséhez:
+
 ```
         FirebaseInstanceId.getInstance().getInstanceId()
                 .addOnCompleteListener(new OnCompleteListener<InstanceIdResult>() {
@@ -204,7 +206,7 @@ import com.google.firebase.iid.InstanceIdResult;
                     }
                 });
 ```
-6. Regisztrálja az eszköz regisztrációs tokenjét a Calling Services ügyféloldali függvénytárában a bejövő hívások leküldéses értesítésekhez
+Regisztrálja az eszköz regisztrációs tokenjét a Calling Services ügyféloldali függvénytárában a bejövő hívások leküldéses értesítéseihez:
 
 ```java
 String deviceRegistrationToken = "some_token";
@@ -218,10 +220,9 @@ catch(Exception e) {
 
 ### <a name="push-notification-handling"></a>Leküldéses értesítések kezelését
 
-- Ahhoz, hogy fogadni lehessen a bejövő hívások leküldéses értesítéseit, hívja a *handlePushNotification ()* függvényt egy adattartalommal rendelkező *CallAgent* -példányra.
+Ha fogadni szeretné a bejövő hívások leküldéses értesítéseit, hívja a *handlePushNotification ()* függvényt egy adattartalommal rendelkező *CallAgent* -példányra.
 
-1. Az FCM-ből származó adattartalom beszerzéséhez a szükséges lépések a következők:
-- Hozzon létre egy új szolgáltatást (a fájl > új > Service > szolgáltatás), amely kiterjeszti a *FirebaseMessagingService* Firebase, és ügyeljen rá, hogy felülbírálja a *onMessageReceived* metódust. Ez a módszer az eseménykezelőt hívja meg, ha az FCM kézbesíti a leküldéses értesítést az alkalmazásnak.
+A Firebase Cloud Messaging szolgáltatásból származó hasznos adatok beszerzéséhez először hozzon létre egy új szolgáltatást (fájl > új > Service > Service), amely kibővíti a *FirebaseMessagingService* Firebase ügyféloldali függvénytár osztályát, és felülbírálja a `onMessageReceived` metódust. Ez a módszer az eseménykezelő, ha a Firebase Cloud Messaging kézbesíti a leküldéses értesítést az alkalmazásnak.
 
 ```java
 public class MyFirebaseMessagingService extends FirebaseMessagingService {
@@ -239,7 +240,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
     }
 }
 ```
-- Adja hozzá a következő szolgáltatási definíciót a AndroidManifest.xml fájlhoz a <application> címkén belül.
+Adja hozzá a következő szolgáltatási definíciót a `AndroidManifest.xml` fájlhoz a <application> címkén belül:
 
 ```
         <service
@@ -251,7 +252,7 @@ public class MyFirebaseMessagingService extends FirebaseMessagingService {
         </service>
 ```
 
-- A hasznos adatok beolvasása után a *handlePushNotification* metódus meghívásával átadható a *kommunikációs szolgáltatások* ügyféloldali könyvtára a *CallAgent* -példányon.
+A hasznos adatok lekérése után a rendszer átadhatja azt a kommunikációs szolgáltatások ügyféloldali függvénytárának, amelyet a `handlePushNotification` metódus egy példányon történő meghívásával kezel `CallAgent` .
 
 ```java
 java.util.Map<String, String> pushNotificationMessageDataFromFCM = remoteMessage.getData();
@@ -262,11 +263,12 @@ catch(Exception e) {
     System.out.println("Something went wrong while handling the Incoming Calls Push Notifications.");
 }
 ```
+
 Ha a leküldéses értesítési üzenet kezelése sikeres, és a minden eseménykezelő megfelelően van regisztrálva, akkor az alkalmazás cseng.
 
-### <a name="unregister-push-notification"></a>Leküldéses értesítés regisztrációjának törlése
+### <a name="unregister-push-notifications"></a>Leküldéses értesítések regisztrációjának törlése
 
-- Az alkalmazások bármikor megszüntetik a leküldéses értesítések regisztrációját. A regisztráció megszüntetéséhez hívja `unregisterPushNotification()` meg a metódust a callAgent.
+Az alkalmazások bármikor megszüntetik a leküldéses értesítések regisztrációját. A regisztráció megszüntetéséhez hívja `unregisterPushNotification()` meg a metódust a callAgent.
 
 ```java
 try {
@@ -281,25 +283,31 @@ catch(Exception e) {
 A hívási tulajdonságokat elérheti, és különböző műveleteket hajthat végre a videóval és hanggal kapcsolatos beállítások kezeléséhez.
 
 ### <a name="call-properties"></a>Hívás tulajdonságai
-* A hívás egyedi AZONOSÍTÓjának beolvasása.
+
+A hívás egyedi AZONOSÍTÓjának beolvasása:
+
 ```java
 String callId = call.getCallId();
 ```
 
-* Ha szeretne többet megtudni a Call vizsgálatban részt vevő többi résztvevőről a `remoteParticipant` `call` példányon:
+Ha szeretne többet megtudni a Call vizsgálatban részt vevő többi résztvevőről a `remoteParticipant` `call` példányon:
+
 ```java
 List<RemoteParticipant> remoteParticipants = call.getRemoteParticipants();
 ```
 
-* A hívó identitása, ha a hívás beérkező.
+A hívó személyazonossága, ha a hívás beérkező:
+
 ```java
 CommunicationIdentifier callerId = call.getCallerId();
 ```
 
-* A hívás állapotának beolvasása.
+A hívás állapotának beolvasása: 
+
 ```java
 CallState callState = call.getState();
 ```
+
 Egy hívás aktuális állapotát jelképező karakterláncot ad vissza:
 * "None" – kezdeti hívás állapota
 * "Bejövő" – azt jelzi, hogy a hívás bejövő, vagy el kell fogadni vagy el kell utasítani
@@ -312,39 +320,45 @@ Egy hívás aktuális állapotát jelképező karakterláncot ad vissza:
 * "Leválasztott" – végső hívás állapota
 
 
-* Ha meg szeretné tudni, hogy a hívás miért fejeződött be, vizsgálja meg a `callEndReason` tulajdonságot.
-A kód/alkód (TODO-hivatkozás a dokumentációhoz) tartalmaz
+Ha meg szeretné tudni, hogy a hívás miért fejeződött be, vizsgálja meg a `callEndReason` tulajdonságot. Kód/alkódt tartalmaz: 
+
 ```java
 CallEndReason callEndReason = call.getCallEndReason();
 int code = callEndReason.getCode();
 int subCode = callEndReason.getSubCode();
 ```
 
-* Ha meg szeretné tekinteni, hogy az aktuális hívás bejövő hívás-e, tekintse meg a következő `isIncoming` tulajdonságot:
+Ha meg szeretné tekinteni, hogy az aktuális hívás bejövő hívás-e, tekintse meg a következő `isIncoming` tulajdonságot:
+
 ```java
 boolean isIncoming = call.getIsIncoming();
 ```
 
-*  Ha szeretné ellenőrizni, hogy az aktuális mikrofon el van-e némítva, tekintse meg a következő `muted` tulajdonságot:
+Ha szeretné ellenőrizni, hogy az aktuális mikrofon el van-e némítva, tekintse meg a következő `muted` tulajdonságot:
+
 ```java
 boolean muted = call.getIsMicrophoneMuted();
 ```
 
-* Az aktív videó streamek vizsgálatához tekintse meg a `localVideoStreams` gyűjteményt:
+Az aktív videó streamek vizsgálatához tekintse meg a `localVideoStreams` gyűjteményt:
+
 ```java
 List<LocalVideoStream> localVideoStreams = call.getLocalVideoStreams();
 ```
 
 ### <a name="mute-and-unmute"></a>Némítás és némítás feloldása
+
 A helyi végpont némításához vagy a némítás feloldásához használhatja a `mute` és az `unmute` aszinkron API-kat:
+
 ```java
 call.mute().get();
 call.unmute().get();
 ```
 
 ### <a name="start-and-stop-sending-local-video"></a>Helyi videó küldésének elindítása és leállítása
-A videók elindításához a kamerák enumerálását az objektum API-jával kell használni `getCameraList` `deviceManager` .
-Ezután hozzon létre egy új példányt a `LocalVideoStream` kívánt kamera átadásához, és argumentumként adja át azt az API-nak. `startVideo`
+
+A videók elindításához a kamerák enumerálását az objektum API-jával kell használni `getCameraList` `deviceManager` . Ezután hozzon létre egy új példányt a `LocalVideoStream` kívánt kamera átadásához, és adja át az API-nak `startVideo` argumentumként:
+
 ```java
 VideoDeviceInfo desiredCamera = <get-video-device>;
 Context appContext = this.getApplicationContext();
@@ -355,11 +369,13 @@ startVideoFuture.get();
 ```
 
 A videó küldésének sikeres megkezdése után a rendszer egy `LocalVideoStream` példányt ad hozzá a `localVideoStreams` gyűjteményhez a hívási példányon.
+
 ```java
 currentVideoStream == call.getLocalVideoStreams().get(0);
 ```
 
 A helyi videó leállításához adja át a `localVideoStream` következő `localVideoStreams` gyűjteményben elérhető példányt:
+
 ```java
 call.stopVideo(localVideoStream).get();
 ```
@@ -383,7 +399,7 @@ List<RemoteParticipant> remoteParticipants = call.getRemoteParticipants(); // [r
 Bármely adott távoli résztvevő rendelkezik a hozzá társított tulajdonságokkal és gyűjteményekkel:
 
 * A távoli résztvevő azonosítójának beolvasása.
-Az identitás egyike az "azonosító" típusok egyike.
+Az identitás az "azonosító" típusok egyike
 ```java
 CommunicationIdentifier participantIdentity = remoteParticipant.getIdentifier();
 ```
@@ -452,8 +468,10 @@ MediaStreamType streamType = remoteParticipantStream.getType(); // of type Media
 ```
  
 Ha egy `RemoteVideoStream` távoli résztvevőtől szeretne megjeleníteni egy eseményt, elő kell fizetnie egy `OnVideoStreamsUpdated` eseményre.
-Az eseményen belül a `isAvailable` tulajdonság értéke TRUE (igaz) érték azt jelzi, hogy a távoli résztvevő jelenleg egyszer küld egy streamet, létrehoz egy új példányt `Renderer` , majd létrehoz egy új aszinkron API-t, `RendererView` `createView` és `view.target` az alkalmazás felhasználói felületén bárhová csatlakozik.
-Ha a távoli adatfolyamok változásai elérhetők, dönthet úgy, hogy eldönti, hogy a teljes megjelenítő, egy adott `RendererView` vagy megtartható, de ez az üres videó keretét eredményezi.
+
+Az eseményen belül a tulajdonság értéke `isAvailable` true (igaz) érték azt jelzi, hogy a távoli résztvevő jelenleg streamet küld. Ha ez megtörténik, hozzon létre egy új példányt az a `Renderer` , majd hozzon létre egy új aszinkron API-t, `RendererView` `createView` és csatolja `view.target` az alkalmazás felhasználói felületén.
+
+Ha a távoli adatfolyamok változásai elérhetők, eldöntheti, hogy az egész renderelő, egy adott `RendererView` vagy megtartható, de ez az üres videó keretének megjelenítését eredményezi.
 
 ```java
 Renderer remoteVideoRenderer = new Renderer(remoteParticipantStream, appContext);

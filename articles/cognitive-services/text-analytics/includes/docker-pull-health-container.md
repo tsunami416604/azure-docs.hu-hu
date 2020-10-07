@@ -6,15 +6,16 @@ services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
+ms.subservice: text-analytics
 ms.topic: include
 ms.date: 07/07/2020
 ms.author: aahi
-ms.openlocfilehash: b28049f1854494b61d63824334b986d814a641cd
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 519625f6468372ec7ace523dae7648212f4f3203
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91309310"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91779483"
 ---
 Töltse ki és küldje el a [Cognitive Services tárolók kérelem űrlapját](https://aka.ms/csgate) , hogy hozzáférést Kérjen a tárolóhoz.
 Az űrlap adatokat kér Önnek, a vállalatnak és a felhasználói forgatókönyvnek, amelyhez a tárolót fogja használni. Miután elküldte az űrlapot, az Azure Cognitive Services csapata ellenőrzi, hogy megfelelnek-e a Private Container registryhez való hozzáférés feltételeinek.

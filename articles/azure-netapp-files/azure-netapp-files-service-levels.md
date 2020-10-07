@@ -12,14 +12,14 @@ ms.workload: storage
 ms.tgt_pltfrm: na
 ms.devlang: na
 ms.topic: conceptual
-ms.date: 10/05/2020
+ms.date: 10/06/2020
 ms.author: b-juche
-ms.openlocfilehash: b5c576211fe7bb202e7a27bee5ee3bfd90d74cf9
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: 1c64bd10b34b61797cb3bf3de0cd7d2aa819e795
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91743097"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777130"
 ---
 # <a name="service-levels-for-azure-netapp-files"></a>Az Azure NetApp Files szolgáltatásszintjei
 A szolgáltatási szint a kapacitási készlet egyik attribútuma. A szolgáltatási szinteket a rendszer a kötethez hozzárendelt kvóta alapján határozza meg, és megkülönbözteti a kapacitások megengedett maximális átviteli sebességét.
@@ -59,20 +59,20 @@ Az alábbi ábra az automatikus QoS-kapacitási készletben lévő kötetek átv
 
 ### <a name="throughput-limit-examples-of-volumes-in-a-manual-qos-capacity-pool"></a>Átviteli sebességre vonatkozó példák a manuális QoS-kapacitás készletében lévő kötetekre 
 
-Ha kézi QoS-kapacitású készletet használ, a kötet kapacitását és átviteli sebességét egymástól függetlenül is hozzárendelheti. Amikor manuálisan hoz létre kötetet egy manuális QoS-kapacitási készletben, megadhatja az átviteli sebesség (MiB/S) értékét. A manuális QoS-készlet köteteihez rendelt teljes átviteli sebesség a készlet méretétől és a szolgáltatási szinttől függ. A korlátot a (kapacitási készlet mérete a TiB x szolgáltatási szint átviteli sebessége/TiB-ben). Az ultra Service szinttel rendelkező 10 TiB kapacitású készlet például a kötetek számára elérhető teljes átviteli kapacitás 1280 MiB/s (10 TiB x 128 MiB/s/TiB).
+Ha kézi QoS-kapacitású készletet használ, a kötet kapacitását és átviteli sebességét egymástól függetlenül is hozzárendelheti. Amikor manuálisan hoz létre kötetet egy manuális QoS-kapacitási készletben, megadhatja az átviteli sebesség (MiB/S) értékét. A manuális QoS-készlet köteteihez rendelt teljes átviteli sebesség a készlet méretétől és a szolgáltatási szinttől függ. A korlátot a (kapacitási készlet mérete a TiB x szolgáltatási szint átviteli sebessége/TiB-ben). Például az ultra Service-szinttel rendelkező 10 TiB-es kapacitású készlet teljes átviteli kapacitása 1280 MiB/s (10 TiB x 128 MiB/s/TiB) áll rendelkezésre a kötetek számára.
 
 SAP HANA rendszer esetén ez a kapacitás-készlet a következő kötetek létrehozására használható. Az egyes kötetek az alkalmazás követelményeinek megfelelő egyéni méretet és átviteli sebességet biztosítanak:
 
-* SAP HANA adatmennyiség: 4 TB méretű, legfeljebb 704 MiB/s
-* SAP HANA naplózási kötet: 0,5 TB méretű, legfeljebb 256 MiB/s
-* SAP HANA megosztott kötet: 1 TB méretű, legfeljebb 64 MiB/s
-* SAP HANA biztonsági mentési kötet: a 6,5 TB-os méret akár 256 MiB/s
+* SAP HANA adatmennyiség: 4 TiB méretű, legfeljebb 704 MiB/s
+* SAP HANA naplózási kötet: méret 0,5 TiB vagy akár 256 MiB/s
+* SAP HANA megosztott kötet: 1 TiB méretű, legfeljebb 64 MiB/s
+* SAP HANA biztonsági mentési kötet: méret 4,5 TiB vagy akár 256 MiB/s
 
 Az alábbi ábra szemlélteti a SAP HANA kötetek forgatókönyveit:
 
 ![QoS-SAP HANA kötetek forgatókönyvei](../media/azure-netapp-files/qos-sap-hana-volume-scenarios.png) 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Azure NetApp Files díjszabási oldala](https://azure.microsoft.com/pricing/details/storage/netapp/)
 - [Az Azure NetApp Files költségmodellje](azure-netapp-files-cost-model.md) 

@@ -5,12 +5,12 @@ description: Ismerje meg az Azure Kubernetes Service-ben (ak) a fürt biztonság
 services: container-service
 ms.topic: conceptual
 ms.date: 12/06/2018
-ms.openlocfilehash: c2734aa8e4ebf0bdb693a49c3ba785dd134e8c83
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 5f249a7e6e7fac13301f0d2717336651b171b422
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88003053"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776306"
 ---
 # <a name="best-practices-for-cluster-security-and-upgrades-in-azure-kubernetes-service-aks"></a>Ajánlott eljárások a fürtök biztonságához és frissítéséhez az Azure Kubernetes szolgáltatásban (ak)
 
@@ -177,7 +177,7 @@ További információ az elérhető szűrőkkel kapcsolatban: [seccompot biztons
 
 A Kubernetes a hagyományos infrastruktúra-platformoknál gyorsabb ütemben bocsátja ki az új funkciókat. A Kubernetes-frissítések közé tartoznak az új funkciók, valamint a hibák vagy biztonsági javítások. Az új funkciók általában az *alfa* , majd a *Beta* állapotba kerülnek, mielőtt azok *stabilak* lesznek, és általánosan elérhetők és éles használatra ajánlottak. Ennek a kiadási ciklusnak lehetővé kell tennie a Kubernetes frissítését anélkül, hogy rendszeresen megtapasztalja a módosításokat, vagy módosítania kell az üzembe helyezéseket és a sablonokat.
 
-Az AK támogatja a Kubernetes négy kisebb verzióját. Ez azt jelenti, hogy amikor új, kisebb javításokat tartalmazó verziót vezet be, a rendszer kivonja a legrégebbi másodlagos verziót és a javítási kiadásokat. A Kubernetes kisebb frissítései rendszeres időközönként történnek. Ellenőrizze, hogy van-e irányítási folyamata, és szükség szerint frissítsen, hogy ne érje el a támogatást. További információ: [támogatott Kubernetes-verziók (ak][aks-supported-versions] )
+Az AK támogatja a Kubernetes három kisebb verzióját. Ez azt jelenti, hogy amikor új, kisebb javításokat tartalmazó verziót vezet be, a rendszer kivonja a legrégebbi másodlagos verziót és a javítási kiadásokat. A Kubernetes kisebb frissítései rendszeres időközönként történnek. Ellenőrizze, hogy van-e irányítási folyamata, és szükség szerint frissítsen, hogy ne érje el a támogatást. További információ: [támogatott Kubernetes-verziók (ak][aks-supported-versions]).
 
 A fürthöz elérhető verziók ellenőrzését a következő példában látható módon tekintheti meg az az [AK Get-Upgrades][az-aks-get-upgrades] parancs használatával:
 
@@ -186,6 +186,8 @@ az aks get-upgrades --resource-group myResourceGroup --name myAKSCluster
 ```
 
 Ezután az az [AK upgrade][az-aks-upgrade] paranccsal frissítheti az AK-fürtöt. A frissítési folyamat biztonságosan kiüríti, és egyszerre egy csomópontot helyez el, ütemezi a megmaradt csomópontokon a hüvelyt, majd telepíti a legújabb operációs rendszert és Kubernetes-verziót futtató új csomópontot.
+
+Javasoljuk, hogy tesztelje az új alverziókat egy fejlesztői tesztkörnyezetben, így ellenőrizheti, hogy a számítási feladatok továbbra is kifogástalanul működik-e az új Kubernetes-verzióval. A Kubernetes olyan API-kat is tartalmazhatnak, mint például az 1,16-es verzió, amely a munkaterhelések által hivatkozott. Új verziók éles környezetben való üzembe helyezése esetén érdemes lehet [több Node-készletet használni külön verziókban](use-multiple-node-pools.md) , és egyenként frissíteni az egyes készleteket, hogy fokozatosan a frissítést a fürtön keresztül lehessen felépíteni. Ha több fürtöt futtat, egyszerre egy fürtöt kell frissítenie, hogy fokozatosan figyelje a hatásokat vagy a módosításokat.
 
 ```azurecli-interactive
 az aks upgrade --resource-group myResourceGroup --name myAKSCluster --kubernetes-version KUBERNETES_VERSION
@@ -207,7 +209,7 @@ Ha az újraindítások során finomabb gabona-szabályozásra van szükség, `ku
 
 A csomópont-újraindítások kezelésével kapcsolatos további információkért lásd: [biztonsági és kernel-frissítések alkalmazása a csomópontokra az AK-ban][aks-kured].
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez a cikk az AK-fürt biztonságossá tételére koncentrál. Ezen területek némelyikének megvalósításához tekintse meg a következő cikkeket:
 

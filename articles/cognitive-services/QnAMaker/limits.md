@@ -1,14 +1,16 @@
 ---
 title: Korlátok és határok – QnA Maker
 description: A QnA Maker meta-korlátozásokkal rendelkezik a Tudásbázis és a szolgáltatás részeihez. A teszteléshez és közzétételhez fontos, hogy megőrizze a tudásbázist a korlátokon belül.
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 02/14/2020
-ms.openlocfilehash: cce95574c8ffc245818b61e9843c5f7984de972f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.openlocfilehash: 773c9caa2fb25b3abe4fb451bc59598c485a6110
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
-ms.locfileid: "86524437"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776255"
 ---
 # <a name="qna-maker-knowledge-base-limits-and-boundaries"></a>QnA Maker Tudásbázis korlátai és határai
 
@@ -32,8 +34,8 @@ A fájlnevek nem tartalmazhatják a következő karaktereket:
 
 |Ne használja a karaktert|
 |--|
-|Szimpla idézőjel`'`|
-|Idézőjel`"`|
+|Szimpla idézőjel `'`|
+|Idézőjel `"`|
 
 ### <a name="maximum-file-size"></a>Maximális fájlméret
 
@@ -69,10 +71,10 @@ A metaadatok mezőinek maximális száma a Tudásbázisban az Azure- **[Cognitiv
 
 A metaadatok nevének és értékének hosszát és elfogadható karaktereit a következő táblázat tartalmazza.
 
-|Item|Engedélyezett karakterek|Regex-minta egyezése|Karakterek maximális száma|
+|Elem|Engedélyezett karakterek|Regex-minta egyezése|Karakterek maximális száma|
 |--|--|--|--|
-|Név (kulcs)|Lehetővé teszi<br>alfanumerikus karakterek (betűk és számjegyek)<br>`_`aláhúzásjellel<br> Nem tartalmazhat szóközt.|`^[a-zA-Z0-9_]+$`|100|
-|Érték|Mindent lehetővé tesz, kivéve<br>`:`kettőspont<br>`|`(függőleges cső)<br>Csak egy érték engedélyezett.|`^[^:|]+$`|500|
+|Név (kulcs)|Lehetővé teszi<br>alfanumerikus karakterek (betűk és számjegyek)<br>`_` aláhúzásjellel<br> Nem tartalmazhat szóközt.|`^[a-zA-Z0-9_]+$`|100|
+|Érték|Mindent lehetővé tesz, kivéve<br>`:` kettőspont<br>`|` (függőleges cső)<br>Csak egy érték engedélyezett.|`^[^:|]+$`|500|
 |||||
 
 ## <a name="knowledge-base-content-limits"></a>A Tudásbázis tartalmi korlátai
@@ -81,8 +83,8 @@ A Tudásbázis tartalmának általános korlátai:
 * A szóban forgó szöveg hossza: 1 000
 * A metaadat-kulcs szövegének hossza: 100
 * A metaadatok értékének hossza szöveg: 500
-* A metaadatok nevének támogatott karakterei: ábécék, számjegyek és`_`
-* A metaadatok értékének támogatott karaktereinek száma: az összes kivételével `:` , és`|`
+* A metaadatok nevének támogatott karakterei: ábécék, számjegyek és `_`
+* A metaadatok értékének támogatott karaktereinek száma: az összes kivételével `:` , és `|`
 * Fájlnév hossza: 200
 * Támogatott fájlformátumok: ". TSV", ". pdf", ". txt", ". docx", ". xlsx".
 * Alternatív kérdések maximális száma: 300

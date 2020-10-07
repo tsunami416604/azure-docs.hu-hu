@@ -4,12 +4,12 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/1/2020
 ms.author: mikben
-ms.openlocfilehash: 5542ca2f50152e7588f32e9ac8717f691fdb4d63
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: eaa7efe761490a639acabd9fd6d91378e1259a67
+ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91376953"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91779123"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -72,9 +72,9 @@ const oneToOneCall = callAgent.call([CommunicationUser]);
 ```
 
 ### <a name="place-a-1n-call-with-users-and-pstn"></a>1: n hívás elhelyezése a felhasználók és a PSTN között
-> [!WARNING]
-> A PSTN-hívás jelenleg privát előzetes verzióban érhető el. A hozzáféréshez a [korai alkalmazói programra kell alkalmazni](https://aka.ms/ACS-EarlyAdopter).
+
 Ha 1: n hívást szeretne elhelyezni egy felhasználóhoz és egy PSTN-számhoz, meg kell adnia egy CommunicationUser és egy telefonszámot mindkét Calle esetében.
+
 A kommunikációs szolgáltatások erőforrását úgy kell konfigurálni, hogy engedélyezze a PSTN-hívást.
 ```js
 

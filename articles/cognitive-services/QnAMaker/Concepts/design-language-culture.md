@@ -1,14 +1,16 @@
 ---
 title: Nyelvi tervezés – QnA Maker
 description: A QnA Maker erőforrás és az erőforráson belüli összes Tudásbázis egyetlen nyelvet támogat. Az egyetlen nyelv szükséges ahhoz, hogy a lekérdezéshez a legjobb eredményt adja.
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 01/27/2020
-ms.openlocfilehash: 5cb1dcd35649debbafd2e234606ad4c9d6906ea6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e09e15f71b0574a5612e7f9bacd8aaa4739a441c
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "76843421"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777003"
 ---
 # <a name="design-knowledge-base-for-content-language"></a>A tartalom nyelvének tervezési tudásbázisa
 
@@ -39,6 +41,6 @@ QnA Maker [által támogatott nyelvek](../overview/language-support.md) áttekin
 * Csak az adott nyelvhez tartozó fájlok és URL-címek hozzáadása
 * A nyelv azonosításához használjon egy elnevezési konvenciót az erőforráshoz. Ilyen például `qna-maker-fr` a francia dokumentumok összes tudásbázisa
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Megtudhatja, [Hogyan kérdezheti](query-knowledge-base.md) le egy adott válasz tudásbázisát.

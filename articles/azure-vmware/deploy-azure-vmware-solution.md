@@ -2,13 +2,14 @@
 title: Azure VMware-megoldás üzembe helyezése és konfigurálása
 description: Megtudhatja, hogyan használhatja a tervezési szakaszban összegyűjtött információkat az Azure VMware-megoldás saját felhőbe történő üzembe helyezéséhez.
 ms.topic: tutorial
+ms.author: tredavis
 ms.date: 10/02/2020
-ms.openlocfilehash: af2a9e4fcb4125683342ad739e3890671f64b0bf
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.openlocfilehash: c20bf0f4a8c182d5ade1caec0dd66100c4613204
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91598182"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776425"
 ---
 # <a name="deploy-and-configure-azure-vmware-solution"></a>Azure VMware-megoldás üzembe helyezése és konfigurálása
 
@@ -19,7 +20,7 @@ Ebben a cikkben a [tervezési szakaszban](production-ready-deployment-steps.md) 
 [!INCLUDE [register-resource-provider-steps](includes/register-resource-provider-steps.md)]
 
 
-## <a name="deploy-azure-vmware-solution"></a>Azure VMware-megoldás üzembe helyezése
+## <a name="deploy-azure-vmware-solution"></a>Az Azure VMware Solution üzembe helyezése
 
 Használja az [Azure VMware megoldás üzembe helyezésének megtervezése](production-ready-deployment-steps.md) című cikkben összegyűjtött információkat:
 
@@ -28,17 +29,15 @@ Használja az [Azure VMware megoldás üzembe helyezésének megtervezése](prod
 
 [!INCLUDE [create-avs-private-cloud-azure-portal](includes/create-private-cloud-azure-portal-steps.md)]
 
-
+>[!NOTE]
+>Ennek a lépésnek a teljes körű áttekintéséhez tekintse meg az [Azure VMware-megoldást: üzembehelyezési](https://www.youtube.com/embed/1JLB3L2WDWI) videó. 
 
 ## <a name="create-the-jump-box"></a>A Jump Box létrehozása
 
 >[!IMPORTANT]
 >Ha a **saját felhő létrehozása** képernyő kezdeti kiépítési lépése során üresen hagyta a **Virtual Network** lehetőséget, a szakasz folytatása **előtt** fejezze be a [hálózatkezelés konfigurálása a VMware Private Cloud](tutorial-configure-networking.md) oktatóanyaghoz című témakört.  
 
-
-
 Az Azure VMware-megoldás üzembe helyezése után létre kell hoznia a virtuális hálózat vCenter és NSX csatlakozó ugrási mezőjét. Miután konfigurálta a ExpressRoute áramköröket és a ExpressRoute Global Reach, a Jump Box nem szükséges.  Az Azure VMware-megoldásban azonban hasznos lehet a vCenter és a NSX elérése.  
-
 
 :::image type="content" source="media/pre-deployment/jump-box-diagram.png" alt-text="Az Azure VMware-megoldás Jump Box létrehozása" border="false" lightbox="media/pre-deployment/jump-box-diagram.png":::
 
@@ -128,7 +127,7 @@ Jelentkezzen be az előző lépésben létrehozott virtuális gépre, és ellen�
 >[!IMPORTANT]
 >Ezen a ponton az Azure VMware-megoldás működik, és sikeresen létesített kapcsolatot az Azure Virtual Network és az internet között.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő szakaszban az Azure VMware-megoldást a helyszíni hálózathoz a ExpressRoute-on keresztül kapcsolhatja össze.
 > [!div class="nextstepaction"]

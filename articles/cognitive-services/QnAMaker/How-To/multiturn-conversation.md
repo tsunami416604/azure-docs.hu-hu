@@ -1,14 +1,16 @@
 ---
 title: Több-turn beszélgetések – QnA Maker
 description: A kérdésekkel és környezettel kezelheti a több fordulatot, más néven a robotot az egyik kérdésből a másikba. A többszörös bekapcsolás lehetősége van arra, hogy olyan háttérbeli beszélgetést lehessen használni, ahol az előző kérdés kontextusa befolyásolja a következő kérdést és választ.
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 04/13/2020
-ms.openlocfilehash: eff2eccac55bc05784636ecd9d2dfb784f86c4ef
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 57e878f11f5857f4c5b629a8069f64de259e8e7a
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91322835"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777810"
 ---
 # <a name="use-follow-up-prompts-to-create-multiple-turns-of-a-conversation"></a>Követő kérések használata több kérdés–válasz párból álló beszélgetések létrehozásához
 
@@ -92,7 +94,7 @@ Válassza a **megtekintési beállítások**, majd a **környezet megjelenítés
 
 A többszörös kapcsolási környezet az első oszlopban jelenik meg.
 
-:::image type="content" source="../media/conversational-context/surface-manual-pdf-follow-up-prompt.png" alt-text="A képernyőképen a környezeti szakasz jelenik meg." lightbox="../media/conversational-context/surface-manual-pdf-follow-up-prompt.png":::
+:::image type="content" source="../media/conversational-context/surface-manual-pdf-follow-up-prompt.png" alt-text="A képernyőképen egy példa látható a struktúrára egy felhasználói kézikönyvben." lightbox="../media/conversational-context/surface-manual-pdf-follow-up-prompt.png":::
 
 Az előző képen a **#1** félkövér szöveget jelöl az oszlopban, amely az aktuális kérdést jelzi. A szülő kérdés a sorban lévő legfelső elem. Az alábbi kérdések a csatolt kérdés-válasz párok. Ezek az elemek kiválaszthatók, így azonnal átléphet a többi környezeti elemre.
 
@@ -167,7 +169,7 @@ Amikor új kérdés-válasz párokat ad hozzá a tudásbázishoz, az egyes páro
 
     A szülő kérdés egy új kérdést jelenít meg az egyik lehetőség közül.
 
-    :::image type="content" source="../media/conversational-context/child-prompt-created.png" alt-text="A képernyőfelvételen a környezeti oszlop látható, a két kérdés esetében pedig követő kérdéses kapcsolat látható." lightbox="../media/conversational-context/child-prompt-created.png":::
+    :::image type="content" source="../media/conversational-context/child-prompt-created.png" alt-text="A képernyőképen egy példa látható a struktúrára egy felhasználói kézikönyvben." lightbox="../media/conversational-context/child-prompt-created.png":::
 
 1. Miután hozzáadta a követő parancssort, válassza a **Mentés és betanítás** lehetőséget a felső navigációs sávon.
 

@@ -1,14 +1,16 @@
 ---
 title: Tudásbázisok kezelése – QnA Maker
 description: A QnA Maker lehetővé teszi a Tudásbázis-beállítások és-tartalmak hozzáférésének biztosítását.
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 03/18/2020
-ms.openlocfilehash: 08736ce61e6768cfd9ac3d3ded7092a4ab93fca9
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 890b555703f922168a820a0535296b9f55218752
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551778"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777728"
 ---
 # <a name="create-knowledge-base-and-manage-settings"></a>Tudásbázis létrehozása és beállítások kezelése
 
@@ -103,7 +105,7 @@ Egy Tudásbázis törlése (KB) állandó művelet. Nem vonható vissza. A Tudá
 
 Ha a tudásbázist a közreműködők, a] (együttműködés – Knowledge-base.md) használatával osztja meg, akkor törölje, mindenki elveszti a KB-hoz való hozzáférést.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg, hogyan [kezelheti az](language-knowledge-base.md) erőforrások összes tudásbázisának nyelvét.
 

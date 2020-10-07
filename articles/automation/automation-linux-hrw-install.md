@@ -3,14 +3,14 @@ title: Linuxos hibrid Runbook-feldolgozó üzembe helyezése Azure Automation
 description: Ez a cikk azt ismerteti, hogyan telepíthet egy Azure Automation hibrid Runbook-feldolgozót a runbookok Linux-alapú gépeken való futtatásához a helyi adatközpontban vagy a felhőalapú környezetben.
 services: automation
 ms.subservice: process-automation
-ms.date: 09/15/2020
+ms.date: 10/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: fb975305e18315fa8d0a39e4fe0ab6902c98b7e7
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 8295b6bba9703c276bf60a0360ded6f0e195369e
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90987218"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776272"
 ---
 # <a name="deploy-a-linux-hybrid-runbook-worker"></a>Linux Hybrid Runbook Worker üzembe helyezése
 
@@ -45,6 +45,10 @@ A Change Tracking és a leltár funkciónak a munkaterülethez való hozzáadás
 ### <a name="log-analytics-agent"></a>Log Analytics-ügynök
 
 A hibrid Runbook feldolgozói szerepkörhöz a [log Analytics ügynök](../azure-monitor/platform/log-analytics-agent.md) szükséges a támogatott Linux operációs rendszerhez.
+
+>[!NOTE]
+>A Linux rendszerhez készült Log Analytics-ügynök telepítése után ne módosítsa a `sudoers.d` mappa vagy a tulajdonosának engedélyeit. Sudo engedély szükséges a **nxautomation** -fiókhoz, amely a hibrid Runbook-feldolgozót futtató felhasználói környezet. A rendszer nem távolítja el az engedélyeket. Ha bizonyos mappákra vagy parancsokra korlátozza ezt a korlátozást, előfordulhat, hogy a rendszer megszakítja a változást.
+>
 
 ### <a name="supported-linux-operating-systems"></a>Támogatott linuxos operációs rendszerek
 
@@ -88,11 +92,11 @@ A linuxos hibrid Runbook-feldolgozók korlátozott számú Runbook-típust támo
 
 |Runbook típusa | Támogatott |
 |-------------|-----------|
-|Python 2 |Yes |
+|Python 2 |Igen |
 |PowerShell |Igen<sup>1</sup> |
-|PowerShell-munkafolyamat |No |
-|Grafikus |No |
-|Grafikus PowerShell-munkafolyamat |No |
+|PowerShell-munkafolyamat |Nem |
+|Grafikus |Nem |
+|Grafikus PowerShell-munkafolyamat |Nem |
 
 <sup>1</sup> A PowerShell-runbookok a PowerShell Core-t kell telepíteni a Linux rendszerű gépen. A telepítésének megismeréséhez lásd: [a PowerShell Core telepítése Linux rendszeren](/powershell/scripting/install/installing-powershell-core-on-linux) .
 

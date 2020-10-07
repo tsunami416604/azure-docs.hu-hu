@@ -5,21 +5,22 @@ services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
+ms.subservice: text-analytics
 ms.topic: include
 ms.date: 04/29/2020
 ms.author: aahi
-ms.openlocfilehash: 8e0798f75aaa79031ca7cc03814282daa049fbfe
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: 49a2b285d9494dfc5ca0863c021733b4bc874efa
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89662879"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91779544"
 ---
 Az entitás kategóriája pénzügyi információkat és az azonosítás hivatalos formáit tartalmazza. A modell verziójától kezdődően érhető el `2019-10-01` . Az altípusok alább láthatók. 
 
 ### <a name="financial-account-identification"></a>Pénzügyi fiók azonosítása
 
-| Altípus neve               | Description                                                                |
+| Altípus neve               | Leírás                                                                |
 |----------------------------|----------------------------------------------------------------------------|
 | ABA átutalási kód        | American Banker Association (ABA) tranzit-útválasztási számok.                  |
 | SWIFT-kód                 | SWIFT-kódok a fizetési utasítással kapcsolatos információkhoz.                           |

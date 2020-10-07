@@ -1,14 +1,16 @@
 ---
 title: Hol és hogyan kell használni a-személyre szabott
 description: A személyre szabás bármilyen helyzetben alkalmazható, ahol az alkalmazás kiválaszthatja a megfelelő elemet, műveletet vagy terméket a megjelenítéshez, hogy a élmény jobban elérhető legyen, jobb üzleti eredményeket érjen el, vagy javítsa a termelékenységet.
+ms.service: cognitive-services
+ms.subservice: personalizer
 ms.topic: conceptual
 ms.date: 02/18/2020
-ms.openlocfilehash: c562d7a1853736204a7a03262547e083bd85fb75
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: 87179950c33a6facb59ce499aa0ae393e53fb37f
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "81617683"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777224"
 ---
 # <a name="where-and-how-to-use-personalizer"></a>Hol és hogyan kell használni a személyre szabott
 
@@ -106,6 +108,6 @@ Egyes architektúrákban a fenti sorozatot nehéz lehet megvalósítani. Ebben a
     * Ha a legfelső szintű művelet nem életképes, ne aktiválja a betanítást ehhez a rangsoroláshoz, és döntse el saját logikáját vagy alternatív megközelítéseit a felhasználónak való megjelenítéshez. Még ha a második legjobb rangsorolási lehetőséget is használja, ne aktiválja a tanulást ehhez a rangsoroláshoz.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Etikai & felelős használat](ethics-responsible-use.md).

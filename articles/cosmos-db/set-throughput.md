@@ -6,12 +6,12 @@ ms.author: mjbrown
 ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/19/2020
-ms.openlocfilehash: 00ed8f6ff9839c227f3d8a929a071834c5559226
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.openlocfilehash: 81a31448a588849a410b37868cf579fbb0a9ceb6
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
-ms.locfileid: "88605733"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777788"
 ---
 # <a name="introduction-to-provisioned-throughput-in-azure-cosmos-db"></a>Bevezetés a kiépített átviteli sebességbe Azure Cosmos DB
 
@@ -40,7 +40,7 @@ Azt javasoljuk, hogy az átviteli sebességet a tároló részletessége szerint
 
 Az alábbi képen látható, hogy egy fizikai partíció egy vagy több tároló logikai partícióját tárolja:
 
-:::image type="content" source="./media/set-throughput/resource-partition.png" alt-text="Fizikai partíció" border="false":::
+:::image type="content" source="./media/set-throughput/resource-partition.png" alt-text="Egy vagy több tároló logikai partícióját tároló fizikai partíció" border="false":::
 
 ## <a name="set-throughput-on-a-database"></a>Átviteli sebesség beállítása egy adatbázison
 
@@ -75,7 +75,7 @@ Ha a Azure Cosmos DB fiók már tartalmaz egy megosztott átviteli sebességű a
 
 Ha a számítási feladatok egy adatbázisban lévő összes gyűjtemény törlését és újbóli létrehozását vonják maguk után, akkor azt javasoljuk, hogy a gyűjtemény létrehozása előtt dobja el az üres adatbázist, és hozzon létre egy új adatbázist. Az alábbi képen látható, hogyan tárolhat egy fizikai partíció egy vagy több olyan logikai partíciót, amely különböző tárolókban található egy adatbázison belül:
 
-:::image type="content" source="./media/set-throughput/resource-partition2.png" alt-text="Fizikai partíció" border="false":::
+:::image type="content" source="./media/set-throughput/resource-partition2.png" alt-text="Egy vagy több tároló logikai partícióját tároló fizikai partíció" border="false":::
 
 ## <a name="set-throughput-on-a-database-and-a-container"></a>Átviteli sebesség beállítása egy adatbázison és egy tárolón
 
@@ -84,7 +84,7 @@ A két modellt kombinálhatja. Az adatátviteli sebesség az adatbázison és a 
 * Létrehozhat egy *Z* nevű Azure Cosmos-adatbázist a standard (manuális) kiépített átviteli sebességgel a *"K"* RUs használatával. 
 * Ezután hozzon létre öt tárolót a-adatbázison *belül a,* *B*, *C*, *D*és *E* névvel. A B tároló létrehozásakor ügyeljen arra, hogy engedélyezze a **tároló beállítás dedikált átviteli sebességét** , és explicit módon konfigurálja a *"P"* kiépített átviteli sebességét ezen a tárolón. Vegye figyelembe, hogy a megosztott és a dedikált átviteli sebességet csak az adatbázis és a tároló létrehozásakor lehet konfigurálni. 
 
-   :::image type="content" source="./media/set-throughput/coll-level-throughput.png" alt-text="Az átviteli sebesség beállítása a tároló szintjén":::
+   :::image type="content" source="./media/set-throughput/coll-level-throughput.png" alt-text="Egy vagy több tároló logikai partícióját tároló fizikai partíció":::
 
 * A *"K"* RUs-átviteli sebesség az *a*, *C*, *D*és *E*négy tárolóban van megosztva. Az *a*, a *C*, a *D*vagy az *E* által elérhető átviteli sebesség pontos mennyisége változó. Az egyes tárolók átviteli sebességéhez nem tartoznak SLA-k.
 * A *B* nevű tároló garantált, hogy minden alkalommal megkapja a *"P"* RUs átviteli sebességét. Ez a SLA-k által támogatott.
@@ -105,11 +105,11 @@ Egy adatbázis vagy tároló [minimális kiosztott átviteli sebességének](con
 
 A tényleges RU/mp a fiók konfigurációjától függően változhat. [Azure monitor metrikák](monitor-cosmos-db.md#view-operation-level-metrics-for-azure-cosmos-db) használatával megtekintheti az erőforráson kiépített átviteli sebesség (ru/s) és tárterület előzményeit.
 
-Egy tároló vagy egy adatbázis minimális átviteli sebességét programozott módon lekérheti az SDK-k használatával, vagy megtekintheti a Azure Portal értékét. A .NET SDK használatakor a [DocumentClient. ReplaceOfferAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient.replaceofferasync?view=azure-dotnet) metódus lehetővé teszi a kiépített átviteli sebesség méretezését. A Java SDK használatakor a [RequestOptions. setOfferThroughput](sql-api-java-sdk-samples.md) metódus lehetővé teszi a kiépített átviteli sebesség méretezését. 
+Egy tároló vagy egy adatbázis minimális átviteli sebességét programozott módon lekérheti az SDK-k használatával, vagy megtekintheti a Azure Portal értékét. A .NET SDK használatakor a [tárolót. A ReplaceThroughputAsync](/dotnet/api/microsoft.azure.cosmos.container.replacethroughputasync?view=azure-dotnet&preserve-view=true) metódus lehetővé teszi a kiépített átviteli sebesség méretezését. A Java SDK használatakor a [CosmosContainer. replaceProvisionedThroughput](sql-api-java-sdk-samples.md) metódus lehetővé teszi a kiépített átviteli sebesség méretezését.
 
-A .NET SDK használatakor a [DocumentClient. ReadOfferAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.documents.client.documentclient.readofferasync?view=azure-dotnet) metódus lehetővé teszi egy tároló vagy adatbázis minimális átviteli sebességének lekérését. 
+A .NET SDK használatakor a [Container. ReadThroughputAsync](/dotnet/api/microsoft.azure.cosmos.container.readthroughputasync?view=azure-dotnet&preserve-view=true) metódus lehetővé teszi a tárolók vagy adatbázisok minimális teljesítményének lekérését. 
 
-A tárolók vagy adatbázisok kiépített átviteli sebességét bármikor méretezheti. Ha méretezési műveletet hajt végre az átviteli sebesség növelése érdekében, az hosszabb időt vehet igénybe, mivel a rendszerfeladatok kiépítik a szükséges erőforrásokat. A skálázási művelet állapotát Azure Portal vagy programozott módon is megtekintheti az SDK-k használatával. A .NET SDK használatakor a skálázási művelet állapotát a metódus segítségével érheti el `DocumentClient.ReadOfferAsync` .
+A tárolók vagy adatbázisok kiépített átviteli sebességét bármikor méretezheti. Ha méretezési műveletet hajt végre az átviteli sebesség növelése érdekében, az hosszabb időt vehet igénybe, mivel a rendszerfeladatok kiépítik a szükséges erőforrásokat. A skálázási művelet állapotát Azure Portal vagy programozott módon is megtekintheti az SDK-k használatával. A .NET SDK használatakor a skálázási művelet állapotát a metódus segítségével érheti el `Container.ReadThroughputAsync` .
 
 ## <a name="comparison-of-models"></a>Modellek összehasonlítása
 Ez a táblázat a kiépítési standard (manuális) átviteli sebességének összehasonlítását mutatja be egy adatbázison és egy tárolón. 

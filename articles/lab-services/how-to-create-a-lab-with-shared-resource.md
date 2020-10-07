@@ -5,12 +5,12 @@ author: emaher
 ms.topic: article
 ms.date: 06/26/2020
 ms.author: enewman
-ms.openlocfilehash: 9cb5698f95aa220208fb02a35a52ff5363a173ac
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 2d6610a2f69b6da34972510a5619c6d16a605289
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85443366"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776442"
 ---
 # <a name="how-to-create-a-lab-with-a-shared-resource-in-azure-lab-services"></a>Tesztkörnyezet létrehozása megosztott erőforrással Azure Lab Services
 
@@ -31,6 +31,20 @@ A megosztott erőforrás lehet egy virtuális gépen vagy egy Azure-ban biztosí
 A diagram egy hálózati biztonsági csoportot (NSG) is megjelenít, amely a tanuló virtuális gépről érkező forgalom korlátozására használható.  Írhat például egy olyan biztonsági szabályt, amely a tanuló virtuális gép IP-címeiről érkező forgalmat állítja be, csak egy megosztott erőforráshoz fér hozzá, és semmi más nem.  A biztonsági szabályok beállításával kapcsolatos további információkért lásd: a [hálózati biztonsági csoport kezelése](../virtual-network/manage-network-security-group.md#work-with-security-rules). Ha a megosztott erőforrásokhoz való hozzáférést egy adott laborhoz szeretné korlátozni, szerezze be a labor IP-címét a Lab- [fiók labor beállításaiból](manage-labs.md#view-labs-in-a-lab-account) , és állítson be egy bejövő szabályt, amely csak az adott IP-címről engedélyezi a hozzáférést.  Ne felejtse el engedélyezni a 49152 és 65535 közötti portokat az adott IP-címhez.  Opcionálisan megkeresheti a tanuló virtuális gépek magánhálózati IP-címét a [virtuálisgép-készlet lap](how-to-set-virtual-machine-passwords.md)használatával.
 
 Ha a megosztott erőforrás egy szükséges szoftvert futtató Azure-beli virtuális gép, előfordulhat, hogy módosítania kell a virtuális gép alapértelmezett tűzfalszabály-szabályait.
+
+### <a name="tips-for-shared-resources---license-server"></a>Tippek megosztott erőforrásokhoz – licenckiszolgáló
+Az egyik leggyakoribb megosztott erőforrás a licenckiszolgáló, íme néhány tipp arról, hogyan lehet sikeres a beállítással.
+#### <a name="server-region"></a>Kiszolgáló régiója
+A licenckiszolgálót ahhoz a virtuális hálózathoz kell csatlakoztatni, amely a laborhoz van csatlakoztatva, ezért a licenckiszolgálóra a labor-fiókkal megegyező régióban kell lennie.
+
+#### <a name="static-private-ip-and-mac-address"></a>Statikus magánhálózati IP-cím és MAC-cím
+Alapértelmezés szerint a virtuális gépek dinamikus magánhálózati IP-címmel rendelkeznek, [mielőtt bármilyen szoftvert beállít a magánhálózati IP-cím statikusra állítása előtt](https://docs.microsoft.com/azure/virtual-network/virtual-networks-static-private-ip-arm-pportal). Ez a beállítás a magánhálózati IP-címet és a MAC-címet statikusra állítja.  
+
+#### <a name="control-access"></a>Vezérlési hozzáférés
+A licenckiszolgáló hozzáférésének szabályozása kulcs.  Ha a virtuális gép beállítása a telepítéshez továbbra is szükséges lesz a karbantartáshoz, a hibaelhárításhoz és a frissítéshez.  Íme néhány különböző módszer.
+- [Igény szerinti (JIT) hozzáférés beállítása Azure Security Centeron belül.](https://docs.microsoft.com/azure/security-center/security-center-just-in-time?tabs=jit-config-asc%2Cjit-request-asc)
+- [Hálózati biztonsági csoport beállítása a hozzáférés korlátozására.](https://docs.microsoft.com/azure/virtual-network/network-security-groups-overview)
+- [Állítsa be a Bastion-t a licenckiszolgáló biztonságos elérésének engedélyezéséhez.](https://azure.microsoft.com/services/azure-bastion/)
 
 ## <a name="lab-account"></a>Labor-fiók
 

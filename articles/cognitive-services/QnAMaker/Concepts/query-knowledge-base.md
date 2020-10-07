@@ -1,14 +1,16 @@
 ---
 title: A Tudásbázis lekérdezése – QnA Maker
 description: A tudásbázist közzé kell tenni. A közzététel után a tudásbázist a generateAnswer API használatával kérdezi le a futásidejű előrejelzési végponton.
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: conceptual
 ms.date: 01/27/2020
-ms.openlocfilehash: cb777aa16fada50811cce1bbf49f28662c62b49b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: e903714aab35de40c1179045505e1520c65b3ebc
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79220720"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776918"
 ---
 # <a name="query-the-knowledge-base-for-answers"></a>A válaszok tudásbázisának lekérdezése
 
@@ -29,7 +31,7 @@ A folyamatot az alábbi táblázat ismerteti.
 |1|Az ügyfélalkalmazás elküldi a felhasználói lekérdezést a [GENERATEANSWER API](/azure/cognitive-services/qnamaker/how-to/metadata-generateanswer-usage)-nak.|
 |2|QnA Maker elődolgozza a felhasználói lekérdezést a nyelvfelismerés, a helyesírás-ellenőrző és a Word-megszakítók használatával.|
 |3|Ez az előfeldolgozás a legjobb keresési eredmények felhasználói lekérdezésének megváltoztatásához szükséges.|
-|4|Ezt a módosított lekérdezést egy Azure Cognitive Search indexbe küldik, amely megkapja az `top` eredmények számát. Ha a helyes válasz nem szerepel ezekben az eredményekben, növelje a `top` kis-és nagymértékű értéket. Általában a 10-es érték a lekérdezések 90 `top` %-ában működik.|
+|4|Ezt a módosított lekérdezést egy Azure Cognitive Search indexbe küldik, amely megkapja az `top` eredmények számát. Ha a helyes válasz nem szerepel ezekben az eredményekben, növelje a kis-és nagymértékű értéket `top` . Általában a 10-es érték a `top` lekérdezések 90%-ában működik.|
 |5|A QnA Maker szintaktikai és szemantikai alapú featurization használatával határozza meg a felhasználói lekérdezés és a beolvasott QnA eredményei közötti hasonlóságot.|
 |6|A géppel megtanult Ranger-modell az 5. lépés különböző funkcióit használja a megbízhatósági pontszámok és az új rangsorolási sorrend meghatározásához.|
 |7|Az új eredményeket rangsorolt sorrendben adja vissza az ügyfélalkalmazás.|
@@ -42,7 +44,7 @@ A Tudásbázis közzétételekor a szolgáltatás egy REST-alapú HTTP-végponto
 
 ### <a name="the-user-query-request-to-generate-an-answer"></a>A felhasználó lekérdezési kérelme a válasz létrehozásához
 
-A felhasználó lekérdezése az a kérdés, hogy a végfelhasználó kéri a tudásbázist, például: `How do I add a collaborator to my app?`. A lekérdezés gyakran természetes nyelvi formátumban van, vagy néhány kulcsszó, amely a kérdést jelképezi, például: `help with collaborators`. A rendszer elküldi a lekérdezést az ügyfélalkalmazás HTTP-kérelme alapján.
+A felhasználó lekérdezése az a kérdés, hogy a végfelhasználó kéri a tudásbázist, például: `How do I add a collaborator to my app?` . A lekérdezés gyakran természetes nyelvi formátumban van, vagy néhány kulcsszó, amely a kérdést jelképezi, például: `help with collaborators` . A rendszer elküldi a lekérdezést az ügyfélalkalmazás HTTP-kérelme alapján.
 
 ```json
 {
@@ -65,7 +67,7 @@ A beszélgetési [kontextusban](../how-to/metadata-generateanswer-usage.md#use-q
 
 ### <a name="the-response-from-a-call-to-generate-an-answer"></a>Válasz meghívása a válasz létrehozásához
 
-A HTTP-válasz a Tudásbázisból beolvasott válasz, amely egy adott felhasználói lekérdezés legjobb egyezése alapján történik. A válasz tartalmazza a választ és az előrejelzési pontszámot. Ha a `top` tulajdonsággal egynél több legfelső szintű választ kér, egynél több legjobb választ kap, amelyek mindegyike egy pontszámmal rendelkezik.
+A HTTP-válasz a Tudásbázisból beolvasott válasz, amely egy adott felhasználói lekérdezés legjobb egyezése alapján történik. A válasz tartalmazza a választ és az előrejelzési pontszámot. Ha a tulajdonsággal egynél több legfelső szintű választ kér `top` , egynél több legjobb választ kap, amelyek mindegyike egy pontszámmal rendelkezik.
 
 ```json
 {
@@ -96,7 +98,7 @@ A HTTP-válasz a Tudásbázisból beolvasott válasz, amely egy adott felhaszná
 ```
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Megbízhatósági pontszám](./confidence-score.md)

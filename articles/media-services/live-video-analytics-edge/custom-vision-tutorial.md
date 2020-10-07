@@ -3,12 +3,12 @@ title: Élő videó elemzése a IoT Edge és az Azure élő videó-elemzésével
 description: Megtudhatja, hogyan használhatja a Custom Visiont olyan tárolós modell kiépítéséhez, amely képes észlelni a játékok teherautóját, és az élő videó-elemzések AI-bővíthetőségi funkcióját használja a IoT Edge (LVA) szolgáltatásban a modellnek az élő videó streamből való észlelésére.
 ms.topic: tutorial
 ms.date: 09/08/2020
-ms.openlocfilehash: 022dc5714e7a2e19446ee57e827a08ef4c56413e
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: 97aa514e2347b3398aab6293d8543afcdc239bdb
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/06/2020
-ms.locfileid: "91761430"
+ms.locfileid: "91776595"
 ---
 # <a name="tutorial-analyze-live-video-with-live-video-analytics-on-iot-edge-and-azure-custom-vision"></a>Oktatóanyag: élő videó elemzése élő videó-elemzéssel IoT Edge és az Azure-on Custom Vision
 
@@ -56,8 +56,7 @@ Az oktatóanyag előfeltételei a következők:
 
 ## <a name="review-the-sample-video"></a>A minta videó áttekintése
 
-
-Ez az oktatóanyag egy, az élő stream szimulálása érdekében egy [Toy Car-következtetést tartalmazó videót](https://lvamedia.blob.core.windows.net/public/t2.mkv) használ. Megvizsgálhatja a videót egy alkalmazással, például a [VLC Media Player](https://www.videolan.org/vlc/)használatával. Válassza a CTRL + N billentyűkombinációt, majd illesszen be egy hivatkozást a [Toy Car következtetési videóra](https://lvamedia.blob.core.windows.net/public/t2.mkv) a lejátszás megkezdéséhez. A videó megtekintéséhez vegye figyelembe, hogy a videóban megjelenik a 36-Second marker an Toy Truck. Az egyéni modell ki lett tanítva, hogy észlelje az adott Toy Truck-t. Ebben az oktatóanyagban élő videó-elemzéseket fog használni a IoT Edgeon az ilyen játékszer-teherautók észleléséhez és a kapcsolódó következtetési események közzétételéhez IoT Edge hubhoz.
+Ez az oktatóanyag egy, az élő stream szimulálása érdekében egy [Toy Car-következtetést tartalmazó videót](https://lvamedia.blob.core.windows.net/public/t2.mkv/) használ. Megvizsgálhatja a videót egy alkalmazással, például a [VLC Media Player](https://www.videolan.org/vlc/)használatával. Válassza a CTRL + N billentyűkombinációt, majd illesszen be egy hivatkozást a [Toy Car következtetési videóra](https://lvamedia.blob.core.windows.net/public/t2.mkv) a lejátszás megkezdéséhez. A videó megtekintéséhez vegye figyelembe, hogy a videóban megjelenik a 36-Second marker an Toy Truck. Az egyéni modell ki lett tanítva, hogy észlelje az adott Toy Truck-t. Ebben az oktatóanyagban élő videó-elemzéseket fog használni a IoT Edgeon az ilyen játékszer-teherautók észleléséhez és a kapcsolódó következtetési események közzétételéhez IoT Edge hubhoz.
 
 ## <a name="overview"></a>Áttekintés
 

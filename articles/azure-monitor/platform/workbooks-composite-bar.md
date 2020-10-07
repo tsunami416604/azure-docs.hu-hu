@@ -8,12 +8,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 9/04/2020
 ms.author: lagayhar
-ms.openlocfilehash: 76c52d47c7fd7e271f3e74439ee8502117eb83a7
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.openlocfilehash: 80846ecb1ad48d9f8ba49f0025772b4e131c23e2
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89664308"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776357"
 ---
 # <a name="composite-bar-renderer"></a>Összetett sáv megjelenítő
 
@@ -46,7 +46,7 @@ Az összetett sáv megjelenítő a rácsok, csempék és gráfok vizualizációi
 7. Válassza az "összes" lehetőséget az *oszlopok* közül, és válassza az "összetett sáv" lehetőséget az *oszlopok megjelenítéséhez*.
 8. Adja meg a következő beállításokat az *összetett sáv beállításai*területen.
 
-| Oszlop neve | Color        |
+| Oszlop neve | Szín        |
 |-------------|--------------|
 | online      | Zöld        |
 | helyreállítása  | Sárga       |
@@ -91,7 +91,7 @@ Csoportosítási beállítások hozzáadása:
 
 ![Képernyőfelvétel a csoportosítási beállításokról.](./media/workbooks-composite-bar/group-by-settings.png)
 
-#### <a name="none"></a>Nincs
+#### <a name="none"></a>Nincsenek
 
 A none összesítés azt jelenti, hogy a csoportosítási sorok nem jelenítik meg az adott oszlopra vonatkozó eredményeket.
 
@@ -124,28 +124,28 @@ A rácsos vizualizációk esetében az oszlop sorainak rendezése az összetett 
 3. Vizualizációk módosítása *csempére*
 4. Lekérdezés futtatása.
 5. Válassza a **csempe beállításai**lehetőséget.
-6. Válassza a *bal oldali* címet a cím mezőben.
+6. Válassza a *bal oldali* elemet a csempe mezőiben.
 7. Adja meg az alábbi beállításokat a *mező beállításai*területen.
     1. Használja az oszlopot: "Server".
     2. Oszlop megjelenítő: "text".
-8. Válassza az *alsó* elemet a cím mezőiben.
+8. Válassza az *alsó* elemet a csempe mezőiben.
 9. Adja meg az alábbi beállításokat a *mező beállításai*területen.
     1. Oszlop használata: "Total".
     2. Oszlop megjelenítő: "összetett sáv".
     3. Adja meg a következő beállításokat az "összetett sáv beállításai" területen.
 
-    | Oszlop neve | Color        |
+    | Oszlop neve | Szín        |
     |-------------|--------------|
     | online      | Zöld        |
     | helyreállítása  | Sárga       |
     | Offline     | Piros (fényes) |
 
     4. Címke hozzáadása: `["online"] of ["total"] are healthy` .
-10. Válassza az **Alkalmaz** lehetőséget.
+10. Kattintson az **Alkalmaz** gombra.
 
-Az összetett sávok címeinek beállításai:
+A csempék összetett sávjának beállításai:
 
-![Képernyőkép az összetett sáv címének beállításairól a fent leírt beállításokkal.](./media/workbooks-composite-bar/tiles-settings.png)
+![Képernyőkép az összetett sáv csempe beállításairól a fent leírt beállításokkal.](./media/workbooks-composite-bar/tiles-settings.png)
 
 A fenti beállításokkal rendelkező csempék összetett sávjának nézete a következőképpen fog kinézni:
 
@@ -157,7 +157,7 @@ Az alábbi utasításokat követve készíthet összetett görgetősávot a grap
 
 1. Válassza a **Hozzáadás** és a *lekérdezés hozzáadása*lehetőséget.
 2. Módosítsa az adatforrást a JSON-be az [előző példából](#adding-composite-bar-renderer)származó adatok megadásával.
-3. Vizualizációk módosítása *csempére*
+3. Vizualizációk módosítása *gráfokra*.
 4. Lekérdezés futtatása.
 5. Válassza a **Graph-beállítások**lehetőséget.
 6. Válassza ki a *középső tartalom* elemet a csomópont formátumának beállításainál.
@@ -166,7 +166,7 @@ Az alábbi utasításokat követve készíthet összetett görgetősávot a grap
     2. Oszlop megjelenítő: "összetett sáv".
     3. Adja meg a következő beállításokat az *összetett sáv beállításai*területen.
 
-    |Oszlop neve  |     Color    |
+    |Oszlop neve  |     Szín    |
     |-------------|--------------|
     | online      | Zöld        |
     | helyreállítása  | Sárga       |
@@ -180,7 +180,7 @@ Az alábbi utasításokat követve készíthet összetett görgetősávot a grap
     4. Csomópont mérete: 100.
     5. Hatszögek közötti árrés: 5.
     6. Színezés típusa típus: **nincs**.
-1. Válassza az **Alkalmaz** lehetőséget.
+1. Kattintson az **Alkalmaz** gombra.
     
 A gráfok összetett sávjának beállításai:
 

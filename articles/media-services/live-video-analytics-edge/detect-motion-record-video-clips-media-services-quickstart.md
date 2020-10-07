@@ -3,12 +3,12 @@ title: Mozgás észlelése, videó rögzítése Azure Media Services
 description: Ebből a rövid útmutatóból megtudhatja, hogyan használhatja a IoT Edge élő videós elemzéseket, hogy felderítse az élő videó streamben való mozgást, és videoklipeket rögzítsen a Azure Media Services.
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: d4301a9c0c5684be04ee2cfbace60c1bb1904876
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 861351e16120c3f46612ba35518135fbfaf4c81b
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89569006"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776476"
 ---
 # <a name="quickstart-detect-motion-record-video-to-media-services"></a>Gyors útmutató: mozgás észlelése, videó rögzítése Media Services
 
@@ -39,6 +39,15 @@ Az alábbi lépések elvégzése után élő videó-elemzéseket használt IoT E
 ## <a name="use-direct-method-calls"></a>Közvetlen metódusú hívások használata
 
 A modul segítségével közvetlen metódusok meghívásával elemezheti az élő videó streameket. A [IoT Edge élő videó-elemzések közvetlen módszereinek](direct-methods.md) olvasása a modul által biztosított közvetlen módszerek megismeréséhez. 
+
+1. A Visual Studio Code-ban nyissa meg a **bővítmények** lapot (vagy nyomja le a CTRL + SHIFT + X billentyűkombinációt), és keressen rá az Azure IoT hubra.
+1. Kattintson a jobb gombbal, és válassza a **bővítmény beállításai**lehetőséget.
+
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="Esemény-alapú videó rögzítése az eszközökön a mozgási események alapján" lehetőséget.
+
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="Esemény-alapú videó rögzítése az eszközökön a mozgási események alapján":::
 
 ### <a name="invoke-graphtopologylist"></a>GraphTopologyList meghívása
 Ez a lépés az összes [gráf-topológiát](media-graph-concept.md#media-graph-topologies-and-instances) enumerálja a modulban.
@@ -850,7 +859,7 @@ Ezután használhatja a Azure Portal a rögzített videó lejátszásához.
 
 Ha nem folytatja az alkalmazás használatát, törölje az ebben a rövid útmutatóban létrehozott erőforrásokat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Megtudhatja, hogyan hívhat meg programozott módon az élő videó-elemzéseket IoT Edge [közvetlen módszerekkel](direct-methods.md) .
 * További információ a diagnosztikai üzenetekről.    

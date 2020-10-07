@@ -10,12 +10,12 @@ ms.date: 08/01/2020
 ms.author: jafreebe
 ms.custom: mvc, seo-java-july2019, seo-java-august2019, seo-java-september2019
 zone_pivot_groups: app-service-platform-windows-linux
-ms.openlocfilehash: 4041623d1c6ae464afd20e3beff753fb89e0a350
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: f6a4045308aa0ae8488839b0d5ea4d476c4dc883
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91405071"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776323"
 ---
 # <a name="quickstart-create-a-java-app-on-azure-app-service"></a>Gyors útmutató: Java-alkalmazás létrehozása Azure App Service
 
@@ -256,27 +256,25 @@ az group delete --name <your resource group name; for example: helloworld-155840
 
 A parancs futtatása egy percig is eltarthat.
 
-## <a name="next-steps"></a>További lépések
-> [!div class="nextstepaction"]
-> [Kapcsolódás Azure SQL Database Javával](../azure-sql/database/connect-query-java.md?toc=%2fazure%2fjava%2ftoc.json)
-
-> [!div class="nextstepaction"]
-> [Kapcsolódás a MySQL-hez készült Azure DB-hez a Javával](../mysql/connect-java.md)
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Kapcsolódás a PostgreSQL-hez készült Azure-ADATBÁZIShoz Java használatával](../postgresql/connect-java.md)
 
 > [!div class="nextstepaction"]
+> [CI/CD beállítása](deploy-continuous-deployment.md)
+
+> [!div class="nextstepaction"]
+> [Díjszabási információk](https://azure.microsoft.com/pricing/details/app-service/linux/)
+
+> [!div class="nextstepaction"]
+> [Összesítő naplók és mérőszámok](troubleshoot-diagnostic-logs.md)
+
+> [!div class="nextstepaction"]
+> [Vertikális felskálázás](manage-scale-up.md)
+
+> [!div class="nextstepaction"]
 > [Azure Java-fejlesztőknek – erőforrások](/java/azure/)
 
 > [!div class="nextstepaction"]
-> [Java-alkalmazás konfigurálása](configure-language-java.md)
-
-> [!div class="nextstepaction"]
-> [CI/CD – Jenkins](/azure/developer/jenkins/deploy-to-azure-app-service-using-plugin)
-
-> [!div class="nextstepaction"]
-> [Egyéni tartomány leképezése](app-service-web-tutorial-custom-domain.md)
-
-> [!div class="nextstepaction"]
-> [További információ az Azure-hoz készült Maven beépülő modulokról](https://github.com/microsoft/azure-maven-plugins)
+> [A Java-alkalmazás konfigurálása](configure-language-java.md)

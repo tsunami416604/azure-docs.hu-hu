@@ -1,16 +1,18 @@
 ---
 title: 'Rövid útmutató: Tudásbázis létrehozása – REST, Java – QnA Maker'
 description: Ez a Java REST-alapú rövid útmutató végigvezeti Önt a Cognitive Services API-fiók Azure-irányítópultján megjelenő példa QnA Maker tudásbázis létrehozásán.
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.date: 12/16/2019
 ROBOTS: NOINDEX,NOFOLLOW
 ms.custom: RESTCURL2020FEB27, devx-track-java
 ms.topic: how-to
-ms.openlocfilehash: 3a20198e1fce7b72befb0963a4f1eb7a5e7e3f08
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: 275b1976e51789d4a458e7bd9f7cfa3240cc81d5
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89259795"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777668"
 ---
 # <a name="quickstart-create-a-knowledge-base-in-qna-maker-using-java"></a>Rövid útmutató: Tudásbázis létrehozása a QnA Makerben a Java használatával
 
@@ -139,7 +141,7 @@ A tudásbázis létrehozása után a QnA Maker portálján, a [My knowledge base
 
 [!INCLUDE [Clean up files and KB](../../../../includes/cognitive-services-qnamaker-quickstart-cleanup-resources.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [QnA Maker (V4) REST API-referencia](https://go.microsoft.com/fwlink/?linkid=2092179)

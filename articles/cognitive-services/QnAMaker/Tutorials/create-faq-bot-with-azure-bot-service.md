@@ -1,14 +1,16 @@
 ---
 title: 'Oktatóanyag: GYIK-bot létrehozása Azure Bot Service'
 description: Ebben az oktatóanyagban hozzon létre egy kód nélküli GYIK-robotot QnA Maker és Azure Bot Service.
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: tutorial
 ms.date: 08/31/2020
-ms.openlocfilehash: 0ec3b381c4361234b29717164b6b718aff0ae294
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.openlocfilehash: ab78ac41be2f900d84e82c21e566f5250b2afd18
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89653376"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777391"
 ---
 # <a name="tutorial-create-an-faq-bot-with-azure-bot-service"></a>Oktatóanyag: GYIK-bot létrehozása Azure Bot Service
 Hozzon létre egy GYIK-robotot a QnA Maker és az Azure [bot Service](https://azure.microsoft.com/en-us/services/bot-service/) kód nélkül.
@@ -43,7 +45,7 @@ Ha módosítja a tudásbázist, és újból közzéteszi, nem kell további műv
 
 1. Megnyílik egy új böngésző lap a Azure Portal számára a Azure Bot Service létrehozási oldalával. Konfigurálja az Azure bot Service-t. A robot és a QnA Maker megoszthatják a Web App Service-csomagot, de nem oszthatják meg a webalkalmazást. Ez azt jelenti, hogy a robot **alkalmazásának neve** nem lehet a QnA Maker szolgáltatás alkalmazásának neve.
 
-    * **Nem**
+    * **Ajánlott**
         * A bot fogantyújának módosítása – ha nem egyedi.
         * Válassza ki az SDK nyelvét. A robot létrehozása után letöltheti a kódot a helyi fejlesztési környezetbe, és folytathatja a fejlesztési folyamatot.
     * **Nem ajánlott**

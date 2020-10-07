@@ -1,14 +1,16 @@
 ---
 title: Markdown formátuma – QnA Maker
 description: A következő lista azokat a Markdown-formátumokat tartalmazza, amelyeket QnA Maker a válasz szövegében is használhat.
+ms.service: cognitive-services
+ms.subservice: qna-maker
 ms.topic: reference
 ms.date: 03/19/2020
-ms.openlocfilehash: d5bf8342b3e595ed4b381ec5104a0c82f0d7ecc9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: f5f640f8895cd6defe31a68b790ce841c4679a6f
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91321033"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91777363"
 ---
 # <a name="markdown-format-supported-in-qna-maker-answer-text"></a>QnA Maker válasz szövegében támogatott Markdown formátum
 
@@ -26,7 +28,7 @@ A Markdown jobb eszköz, ha automatikusan létre kell hoznia egy tartalmat a CI/
 
 A következő lista azokat a Markdown-formátumokat tartalmazza, amelyeket QnA Maker a válasz szövegében is használhat.
 
-|Rendeltetés|Formátum|Markdown-példa|Renderelés<br>a csevegési robotban megjelenő módon|
+|Cél|Formátum|Markdown-példa|Renderelés<br>a csevegési robotban megjelenő módon|
 |--|--|--|--|
 Egy új sor két mondat között.|`\n\n`|`How can I create a bot with \n\n QnA Maker?`|![új sor formázása két mondat között](./media/qnamaker-concepts-datasources/format-newline.png)|
 |A H1-től a H6-ig terjedő fejlécek száma, `#` amely a fejlécet jelöli. 1 `#` a H1.|`\n# text \n## text \n### text \n####text \n#####text` |`## Creating a bot \n ...text.... \n### Important news\n ...text... \n### Related Information\n ....text...`<br><br>`\n# my h1 \n## my h2\n### my h3 \n#### my h4 \n##### my h5`|![formátum Markdown-fejlécekkel](./media/qnamaker-concepts-datasources/format-headers.png)<br>![formátum Markdown fejlécekkel H1 – H5](./media/qnamaker-concepts-datasources/format-h1-h5.png)|
@@ -49,8 +51,8 @@ Ha a Tudásbázis API-jai segítségével szeretne tartalmat felvenni, és a tar
 
 | HTML megőrzése  | Ábrázolás az API-kérelemben  | Megjelenítés a KB-ban |
 |-----------|---------|-------------------------|
-| Yes | \&lt; br \& gt; | &lt;br&gt; |
-| Yes | \&lt; H3 \& gt; fejléc \& lt;/H3 \& gt; | &lt;H3 &gt; fejléc &lt; /H3&gt; |
+| Igen | \&lt; br \& gt; | &lt;br&gt; |
+| Igen | \&lt; H3 \& gt; fejléc \& lt;/H3 \& gt; | &lt;H3 &gt; fejléc &lt; /H3&gt; |
 
 Emellett a CR LF (\r\n) a KB-ban a \n értékre lett konvertálva. Az LF (\n) a következőképpen van megtartva:. Ha a \t vagy a \n escape-sorozatot is el szeretné kerülni, használhat fordított perjelet, például: " \\ \\ r \\ \\ n" és " \\ \\ t"
 

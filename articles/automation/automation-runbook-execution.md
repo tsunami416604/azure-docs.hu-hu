@@ -1,16 +1,16 @@
 ---
 title: Runbook végrehajtása az Azure Automationben
-description: Ez a cikk a runbookok feldolgozásának áttekintését mutatja be Azure Automationban.
+description: Ez a cikk áttekintést nyújt a runbookok feldolgozásáról a Azure Automationban.
 services: automation
 ms.subservice: process-automation
-ms.date: 09/22/2020
+ms.date: 10/06/2020
 ms.topic: conceptual
-ms.openlocfilehash: b5dd445ec4dd9014f107c0a349deed6cde47f968
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 883cf48fd38d79544d08a68f2c18fc2d2efb4706
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91325827"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776289"
 ---
 # <a name="runbook-execution-in-azure-automation"></a>Runbook végrehajtása az Azure Automationben
 
@@ -65,7 +65,7 @@ Ha ideiglenes fájlokat kell létrehoznia a runbook logikájának részeként, a
 
 A hibrid homokozóval a `C:\temp` hibrid Runbook-feldolgozók tárterületének rendelkezésre állása alapján lehet használni. Az Azure-beli virtuális gépekre vonatkozó javaslatok azonban nem használhatják az [ideiglenes lemezt](../virtual-machines/managed-disks-overview.md#temporary-disk) Windows vagy Linux rendszeren a megőrizni kívánt adatmennyiséghez.
 
-## <a name="resources"></a>Források
+## <a name="resources"></a>További források
 
 A runbookok tartalmaznia kell a logikai [erőforrásokat](/rest/api/resources/resources), például a virtuális gépeket, a hálózatot és az erőforrásokat a hálózaton. Az erőforrások egy Azure-előfizetéshez vannak kötve, és a megfelelő hitelesítő adatok megkövetelése az erőforrásokhoz való runbookok. A runbook erőforrásainak kezelésével kapcsolatos példát az [erőforrások kezelése](manage-runbooks.md#handle-resources)című témakörben talál.
 
@@ -89,20 +89,22 @@ A Azure Automation a [Azure monitor](../azure-monitor/overview.md) használja a 
 
 ### <a name="log-analytics-agent-for-windows"></a>Windows-ügynök Log Analytics
 
-A Windows rendszerhez készült [log Analytics agent](../azure-monitor/platform/agent-windows.md) Azure monitor a Windows rendszerű virtuális gépek és a fizikai számítógépek kezelésére használható. A gépek akár az Azure-ban, akár egy nem Azure-környezetben, például egy helyi adatközpontban is futtathatók. Az ügynököt úgy kell konfigurálni, hogy egy vagy több Log Analytics-munkaterületre jelentsen.
+A Windows rendszerhez készült [log Analytics agent](../azure-monitor/platform/agent-windows.md) Azure monitor a Windows rendszerű virtuális gépek és a fizikai számítógépek kezelésére használható. A gépek akár az Azure-ban, akár egy nem Azure-környezetben, például egy helyi adatközpontban is futtathatók.
 
 >[!NOTE]
 >A Windows rendszerhez készült Log Analytics ügynök korábban Microsoft monitoring Agent (MMA) néven ismert.
 
 ### <a name="log-analytics-agent-for-linux"></a>Linux-Log Analytics ügynök
 
-A [linux log Analytics-ügynöke](../azure-monitor/platform/agent-linux.md) hasonlóan működik a Windows-ügynökhöz, de a Linux rendszerű számítógépeket csatlakoztatja a Azure monitorhoz. Az ügynök egy olyan **nxautomation** -felhasználói fiókkal van telepítve, amely lehetővé teszi a rendszergazdai jogosultságokat igénylő parancsok végrehajtását például egy hibrid Runbook-feldolgozón. A **nxautomation** fiók olyan rendszerfiók, amely nem igényel jelszót.
+A [linux log Analytics-ügynöke](../azure-monitor/platform/agent-linux.md) hasonlóan működik a Windows-ügynökhöz, de a Linux rendszerű számítógépeket csatlakoztatja a Azure monitorhoz. Az ügynök olyan **nxautomation** -felhasználói fiókkal van telepítve, amely lehetővé teszi a rendszergazdai jogosultságokat igénylő parancsok végrehajtását, például egy hibrid Runbook-feldolgozón. A **nxautomation** fiók olyan rendszerfiók, amely nem igényel jelszót.
 
 A [Linux Hybrid Runbook Worker telepítése](automation-linux-hrw-install.md)során a megfelelő sudo engedélyekkel rendelkező **nxautomation** -fióknak jelen kell lennie. Ha megpróbálja telepíteni a munkavégzőt, és a fiók nem létezik, vagy nem rendelkezik a megfelelő engedélyekkel, a telepítés sikertelen lesz.
 
+Ne módosítsa a `sudoers.d` mappa vagy a tulajdonosának engedélyeit. A **nxautomation** -fiókhoz sudo engedély szükséges, és az engedélyek nem távolíthatók el. Ha bizonyos mappákra vagy parancsokra korlátozza ezt a korlátozást, előfordulhat, hogy a rendszer megszakítja a változást.
+
 A Log Analytics-ügynökhöz és a **nxautomation** -fiókhoz elérhető naplók a következők:
 
-* /var/opt/Microsoft/omsagent/log/omsagent.log – Log Analytics ügynök naplója 
+* /var/opt/Microsoft/omsagent/log/omsagent.log – Log Analytics ügynök naplója
 * /var/opt/Microsoft/omsagent/Run/automationworker/Worker.log – Automation Worker-napló
 
 >[!NOTE]
@@ -137,7 +139,7 @@ A következő táblázat a feladatokhoz lehetséges állapotokat ismerteti. Megt
 
 | Állapot | Leírás |
 |:--- |:--- |
-| Befejeződött |A feladat sikeresen befejeződött. |
+| Befejezve |A feladat sikeresen befejeződött. |
 | Sikertelen |A grafikus vagy a PowerShell-munkafolyamat runbook nem sikerült lefordítani. Nem sikerült elindítani egy PowerShell-runbook, vagy kivétel történt a feladatokban. Lásd: [Azure Automation runbook-típusok](automation-runbook-types.md).|
 | Sikertelen, várakozás erőforrásokra |A feladatot nem sikerült végrehajtani, mert elérte a [valós megosztási](#fair-share) korlátot háromszor, és ugyanabból az ellenőrzőpontból vagy a runbook elejétől indul el. |
 | Várólistán |A művelet arra vár, hogy az automatizálási feldolgozón lévő erőforrások elérhetővé váljanak, hogy el lehessen indítani. |
@@ -226,7 +228,7 @@ A külső szolgáltatások, például az Azure DevOps Services és a GitHub, Azu
 
 Az Azure a felhőben lévő összes runbookok között megoszthatja az erőforrásokat, a Fair Share nevű koncepciót alkalmazva. A méltányos megosztás használatával az Azure átmenetileg kitölti vagy leállítja a három óránál hosszabb ideig futó feladatokat. A [PowerShell-runbookok](automation-runbook-types.md#powershell-runbooks) és a [Python-runbookok](automation-runbook-types.md#python-runbooks) kapcsolatos feladatok leállnak, és nem indulnak újra, és a feladat állapota leáll.
 
-A hosszú ideig futó Azure Automation feladatok esetében ajánlott hibrid Runbook-feldolgozót használni. A hibrid Runbook-feldolgozók nem korlátozódnak a méltányos megosztásra, és nincs korlátozás arra vonatkozóan, hogy mennyi ideig lehet végrehajtani a Runbook. A többi [feladattípus az](../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits) Azure-beli és a hibrid Runbook-feldolgozókra is érvényes. Amíg a hibrid Runbook-feldolgozók nem korlátozzák a 3 órás igazságos megosztási korlátot, akkor olyan runbookok kell fejlesztenie, amelyek támogatják a váratlan helyi infrastruktúra-problémákról való újraindítást.
+A hosszú ideig futó Azure Automation feladatok esetében ajánlott hibrid Runbook-feldolgozót használni. A hibrid Runbook-feldolgozók nem korlátozódnak a méltányos megosztásra, és nincs korlátozás arra vonatkozóan, hogy mennyi ideig lehet végrehajtani a Runbook. A többi [feladattípus az](../azure-resource-manager/management/azure-subscription-service-limits.md#automation-limits) Azure-beli és a hibrid Runbook-feldolgozókra is érvényes. Míg a hibrid Runbook-feldolgozók nem korlátozzák a három órás igazságos részvény korlátot, a runbookok-t olyan feldolgozók futtatására kell fejleszteni, amelyek támogatják a váratlan helyi infrastruktúra-problémákból való újraindítást.
 
 Egy másik lehetőség, hogy optimalizálja a runbook a gyermek runbookok használatával. Előfordulhat például, hogy a runbook több erőforráson ugyanazt a függvényt is felvehetik, például egy adatbázis-művelettel több adatbázison. Ezt a függvényt áthelyezheti egy [alárendelt runbook](automation-child-runbooks.md) , és a runbook meghívja azt a [Start-AzAutomationRunbook](/powershell/module/az.automation/start-azautomationrunbook)használatával. A gyermek runbookok párhuzamosan hajthatók végre külön folyamatokban.
 

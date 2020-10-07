@@ -3,12 +3,12 @@ title: Több napos felvétel lejátszása – Azure
 description: Ebből az oktatóanyagból megtudhatja, hogyan használhatja az Azure Media Service API-kat többnapos folyamatos videofelvételek lejátszásához.
 ms.topic: tutorial
 ms.date: 05/27/2020
-ms.openlocfilehash: e01c8603869f17ef2d68a39861f11818a4cea975
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.openlocfilehash: 7641114dbae5a118937e7f4973092d5f0eadbccc
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
-ms.locfileid: "90530573"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91776374"
 ---
 # <a name="tutorial-playback-of-multi-day-recordings"></a>Oktatóanyag: több napos felvétel lejátszása  
 
@@ -70,22 +70,16 @@ Ezután a Visual Studio Code-ban nyissa meg az src/AMS-Asset-Player elemet. Ez a
 } 
 ```
 
-A Visual Studio Code-ban a bal oldalon (vagy a CTRL + SHIFT + D) a Futtatás ikonra kattintva megtekintheti az elérhető alkalmazásokat:
+1. A Visual Studio Code-ban nyissa meg a **bővítmények** lapot (vagy nyomja le a CTRL + SHIFT + X billentyűkombinációt), és keressen rá az Azure IoT hubra.
+1. Kattintson a jobb gombbal, és válassza a **bővítmény beállításai**lehetőséget.
 
-![Képernyőfelvétel: a Visual Studio Code egy menüje, amelyen a Futtatás elem van kiválasztva.](./media/playback-multi-day-recordings-tutorial/run.png)
- 
-Válassza ki az AMS Asset Player alkalmazást a legördülő listából az alább látható módon, és nyomja le az F5 billentyűt a hibakeresés megkezdéséhez.
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="Bővítmény beállításai&quot;:::
+1. Keresse meg és engedélyezze a &quot;részletes üzenet megjelenítése" lehetőséget.
 
-![Képernyőfelvétel: egy menü megjelenítése a Visual Studio Code-ban az AMS Asset Player kiválasztásával.](./media/playback-multi-day-recordings-tutorial/debug.png)
-
-A minta alkalmazás létrehozza és elindítja az alapértelmezett böngésző alkalmazást, és megnyitja az AMS-eszköz Player-lapját.
-
-> [!NOTE]
-> A böngésző biztonsági beállításaitól függően figyelmeztető üzenet jelenhet meg. Mivel a weblap helyileg fut, dönthet úgy, hogy figyelmen kívül hagyja a figyelmeztetést.
-
-Az AMS-eszköz felhasználója megkéri, hogy adja meg egy Media Service-eszköz nevét. Az oktatóanyagban a videó rögzítéséhez használt eszköz nevét kell használnia [: folyamatos videofelvétel](continuous-video-recording-tutorial.md).
-
-Az eszköz nevének beírása és a Küldés elküldése után a lejátszó kódja betölti a folyamatos átviteli URL-címet. További információkért lásd: útmutató [a felvételek lejátszásához](playback-recordings-how-to.md). Ha a javasolt módon továbbra is rögzíti az adategységet, a lejátszó észlelni fogja, és megkísérli a lejátszást a rögzített videó legfrissebb részébe. A Player bal felső sarkában látható a timestamp (UTC). Az alábbi képernyőképen vegye figyelembe, hogy az "élő" gomb van kiválasztva.
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="Bővítmény beállításai&quot;:::
+1. Keresse meg és engedélyezze a &quot;részletes üzenet megjelenítése" gomb van kiválasztva.
 
 ![Adatfolyam](./media/playback-multi-day-recordings-tutorial/assetplayer1.png)
  

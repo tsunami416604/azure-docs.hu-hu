@@ -5,15 +5,16 @@ services: cognitive-services
 author: aahill
 manager: nitinme
 ms.service: cognitive-services
+ms.subservice: text-analytics
 ms.topic: include
 ms.date: 07/16/2020
 ms.author: aahi
-ms.openlocfilehash: 74586222bbd92b2d6182b34b4667cda0bc599b93
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.openlocfilehash: eedfe4f24797a9b564479b2f8d3f4d04b0751272
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2020
-ms.locfileid: "91709529"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91779765"
 ---
 > [!NOTE]
 > A védett állapottal kapcsolatos információk (PHI) észleléséhez használja a `domain=phi` paramétert és a modell verzióját, `2020-04-01` vagy később.
@@ -22,7 +23,7 @@ ms.locfileid: "91709529"
  
 A rendszer a következő entitás-kategóriákat adja vissza, amikor kéréseket küld a `/v3.1-preview.2/entities/recognition/pii` végpontnak.
 
-| Kategória   | Alkategória | Description                          | Modell verziójának indítása | Jegyzetek |
+| Kategória   | Alkategória | Leírás                          | Modell verziójának indítása | Jegyzetek |
 |------------|-------------|--------------------------------------|------------------------|---|
 | Személy     | N/A         | Személyek nevei.  | `2019-10-01`  | Szintén visszaadott `domain=phi` . |
 | PersonType | N/A         | Egy személy által birtokolt feladattípusok vagy szerepkörök. | `2020-02-01` | |
@@ -45,7 +46,7 @@ A rendszer a következő entitás-kategóriákat adja vissza, amikor kéréseket
 
 Az entitás kategóriája tartalmaz egy azonosítható Azure-információt, beleértve a hitelesítési adatokat és a kapcsolatok karakterláncait is. A modell verziójától kezdődően érhető el `2019-10-01` . A paraméterrel nem tért vissza `domain=phi` .
 
-| Alkategória                           | Description                                                                 |
+| Alkategória                           | Leírás                                                                 |
 |---------------------------------------|-----------------------------------------------------------------------------|
 | Azure DocumentDB-hitelesítési kulcs             | Azure Cosmos DB-kiszolgáló engedélyezési kulcsa.                           |
 | Azure IAAS adatbázis-kapcsolatok karakterlánca és Azure SQL-kapcsolatok karakterlánca | Az Azure infrastruktúra-szolgáltatás (IaaS) adatbázisának és az SQL-kapcsolatok karakterláncának a kapcsolatainak karakterlánca. |

@@ -10,12 +10,12 @@ ms.date: 08/20/2020
 ms.topic: include
 ms.custom: include file
 ms.author: marobert
-ms.openlocfilehash: e4a52095f7fc1c8252ffbbbbedf4520773d3efc1
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 5c9066f369183de3b4cfe19cc5635e8f1b4a94a2
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91377044"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91779300"
 ---
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -45,7 +45,7 @@ dotnet build
 Miközben még mindig az alkalmazás könyvtárában van, telepítse a .NET-csomaghoz készült Azure Communication Services Felügyeleti függvénytárat a `dotnet add package` paranccsal.
 
 ```console
-dotnet add package Azure.Communication.Administration --version 1.0.0-beta.1
+dotnet add package Azure.Communication.Administration --version 1.0.0-beta.2
 ```
 
 ### <a name="set-up-the-app-framework"></a>Az alkalmazás-keretrendszer beállítása

@@ -4,12 +4,12 @@ ms.service: azure-communication-services
 ms.topic: include
 ms.date: 9/14/2020
 ms.author: nikuklic
-ms.openlocfilehash: d25f14f7413e0f9263b067f31f9075a126b2c124
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: 5c20543caf5bf623738996ed01064d71a0745c04
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/06/2020
-ms.locfileid: "91762610"
+ms.locfileid: "91779098"
 ---
 [!INCLUDE [Emergency Calling Notice](../../../includes/emergency-calling-notice-include.md)]
 ## <a name="prerequisites"></a>Előfeltételek
@@ -26,7 +26,7 @@ ms.locfileid: "91762610"
 
 ## <a name="setting-up"></a>Beállítás
 
-### <a name="add-pstn-functionality-your-app"></a>PSTN-funkció hozzáadása az alkalmazáshoz
+### <a name="add-pstn-functionality-to-your-app"></a>PSTN-funkciók hozzáadása az alkalmazáshoz
 
 Adja hozzá a `PhoneNumber` típust az alkalmazáshoz a **MainActivity. Java**módosításával:
 
@@ -39,15 +39,6 @@ import com.azure.android.communication.common.PhoneNumber;
 > [!TBD]
 > Namespace based on input from Komivi Agbakpem. But it does not correlates with other use namespaces in Calling Quickstart. E.g: "com.azure.communication.calling.CommunicationUser" or "com.azure.communication.common.client.CommunicationUserCredential". Double-chek this.
 -->
-
-## <a name="object-model"></a>Objektummodell
-
-Az alábbi osztályok és felületek az Azure kommunikációs szolgáltatások számos főbb funkcióját kezelik az Androidhoz készült ügyféloldali kódtár számára.
-
-| Név                                           | Leírás                                                                                          |
-| ---------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
-| PhoneNumber | Ez az osztály szükséges a telefonos funkciókhoz használni kívánt telefonszám inicializálásához. |
-
 
 ## <a name="start-a-call-to-phone"></a>Telefonhívás indítása telefonra
 
