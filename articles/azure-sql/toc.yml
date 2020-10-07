@@ -992,6 +992,8 @@
                 - name: Regisztrálás az SQL VM erőforrás-szolgáltatónál
                   displayName: 'resource provider, registration'
                   items:
+                    - name: Automatikus regisztráció
+                      href: virtual-machines/windows/sql-vm-resource-provider-automatic-registration.md
                     - name: Egyetlen virtuális gép
                       href: virtual-machines/windows/sql-vm-resource-provider-register.md
                     - name: Több virtuális gép tömeges regisztrálása

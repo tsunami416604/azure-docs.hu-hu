@@ -301,8 +301,6 @@
               href: platform/move-workspace.md
             - name: A szolgáltatókat szem előtt tartó tervezés
               href: platform/service-providers.md
-            - name: Hozzáférés kezelése
-              href: platform/manage-access.md
             - name: Dedikált fürtök
               href: log-query/logs-dedicated-clusters.md
     - name: Metrikaböngésző
@@ -751,8 +749,6 @@
             - name: Rendelkezésre állási riasztások
               displayname: 'alerts, global, alerting'
               href: app/availability-alerts.md
-            - name: Teljesítménytesztelés
-              href: app/performance-testing.md
             - name: Hibaelhárítás
               displayname: 'availability, troubleshoot, troubleshoot availability'
               href: app/troubleshoot-availability.md
