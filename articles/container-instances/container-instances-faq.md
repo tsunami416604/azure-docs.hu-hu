@@ -1,21 +1,22 @@
 ---
 title: Gyakori kérdések
 description: A Azure Container Instances szolgáltatással kapcsolatos gyakori kérdésekre adott válaszok
-author: dkkapur
+author: macolso
+ms.author: macolso
 ms.topic: article
 ms.date: 06/02/2020
-ms.openlocfilehash: 95190496df4037a973207e14292911225094782e
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.openlocfilehash: 1cedfb7464fd97249c5cd3fae73c9290365da6cd
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
-ms.locfileid: "87421280"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91818488"
 ---
 # <a name="frequently-asked-questions-about-azure-container-instances"></a>Gyakori kérdések a Azure Container Instances
 
 Ez a cikk a Azure Container Instancesával kapcsolatos gyakori kérdéseket tárgyalja.
 
-## <a name="deployment"></a>Telepítés
+## <a name="deployment"></a>Üzembe helyezés
 
 ### <a name="how-large-can-my-container-image-be"></a>Mekkora méretű lehet a tároló képe?
 
@@ -39,7 +40,7 @@ A tároló indítási idejének csökkentésével kapcsolatos részletesebb [út
 #### <a name="windows-server-2016-base-images"></a>Windows Server 2016 alaplemezképek
 
 * [Nano Server](https://hub.docker.com/_/microsoft-windows-nanoserver): `sac2016` `10.0.14393.3506` vagy újabb
-* [Windows Server Core](https://hub.docker.com/_/microsoft-windows-servercore): `ltsc2016` `10.0.14393.3506` vagy újabb
+* [Windows Server Core](https://hub.docker.com/_/microsoft-windows-servercore): `ltsc2016`  `10.0.14393.3506` vagy újabb
 
 > [!NOTE]
 > A 1709-es vagy a 1803-es féléves csatornán alapuló Windows-lemezképek nem támogatottak.
@@ -52,7 +53,7 @@ A tároló indítási idejének csökkentésével kapcsolatos részletesebb [út
 
 ### <a name="what-net-or-net-core-image-layer-should-i-use-in-my-container"></a>Milyen .NET-vagy .NET Core-lemezképfájlt használok a tárolóban? 
 
-Használja a legkisebb rendszerképet, amely megfelel a követelményeinek. A Linux esetében használhat egy *Runtime-Alpine* .net Core-rendszerképet, amelyet a .net Core 2,1 kiadása óta támogattak. Windows esetén, ha a teljes .NET-keretrendszert használja, akkor Windows Server Core rendszerképet kell használnia (csak futásidejű rendszerkép, például *4.7.2-windowsservercore-ltsc2016*). A csak futásidejű lemezképek kisebbek, de nem támogatják a .NET SDK-t igénylő munkaterheléseket.
+Használja a legkisebb rendszerképet, amely megfelel a követelményeinek. A Linux esetében használhat egy *Runtime-Alpine* .net Core-rendszerképet, amelyet a .net Core 2,1 kiadása óta támogattak. Windows esetén, ha a teljes .NET-keretrendszert használja, akkor Windows Server Core rendszerképet kell használnia (csak futásidejű rendszerkép, például  *4.7.2-windowsservercore-ltsc2016*). A csak futásidejű lemezképek kisebbek, de nem támogatják a .NET SDK-t igénylő munkaterheléseket.
 
 ## <a name="availability-and-quotas"></a>Rendelkezésre állás és kvóták
 

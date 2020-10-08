@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb, rogoya
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 45263ca0448042aa972ee53093b51dd47bd51190
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.openlocfilehash: bac3e0dc6c6bcc98bb57989e1335ce6a60872a37
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
-ms.locfileid: "89049349"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91818337"
 ---
 # <a name="conditional-access-require-mfa-for-administrators"></a>Feltételes hozzáférés: MFA megkövetelése rendszergazdák számára
 
@@ -24,11 +24,12 @@ A hozzárendelt rendszergazdai jogosultságokkal rendelkező fiókokat a támad�
 
 A Microsoft azt javasolja, hogy az MFA-t legalább a következő szerepkörökhöz írja elő:
 
+* Hitelesítés rendszergazdája
 * Számlázási adminisztrátor
 * Feltételes hozzáférésű rendszergazda
 * Exchange-rendszergazda
 * Globális rendszergazda
-* Segélyszolgálat (jelszó) rendszergazdája
+* Segélyszolgálat rendszergazdája
 * Jelszókezelő
 * Biztonsági rendszergazda
 * SharePoint-rendszergazda
@@ -70,9 +71,9 @@ A következő lépésekkel létrehozhat egy feltételes hozzáférési szabályz
       > A feltételes hozzáférési szabályzatok nem támogatják azokat a felhasználókat, akik egy [felügyeleti egységre](../users-groups-roles/roles-admin-units-assign-roles.md) vagy címtár-szerepkörre hatókörrel rendelkező, közvetlenül az adott objektumra (például [Egyéni szerepkörökre](../users-groups-roles/roles-create-custom.md)) kiterjedő címtár-szerepkört rendeltek.
 
    1. A **kizárás**területen válassza a **felhasználók és csoportok** lehetőséget, majd válassza ki a szervezet vészhelyzeti hozzáférését vagy az adatbontási fiókokat. 
-   1. Válassza a **Kész** lehetőséget.
+   1. Válassza a **Done** (Kész) lehetőséget.
 1. A **Cloud apps vagy a műveletek**területen válassza a  >  **Include** **minden felhőalapú alkalmazás**lehetőséget, majd kattintson a **kész**gombra.
-1. Az **Conditions**  >  **ügyfélalkalmazások (előzetes verzió)** feltételek alatt **válassza ki a házirend** hatálya alá tartozó ügyfélalkalmazások kiválasztása lehetőséget az összes kijelölt alapértelmezett érték elhagyásához, majd válassza a **kész**lehetőséget.
+1. Az **Conditions**  >  **ügyfélalkalmazások**feltételei területen állítsa a **Konfigurálás** az **Igen** értékre, majd **a válassza ki az ügyfélalkalmazások lehetőséget, hogy a házirend érvényes legyen** , és válassza a **kész**lehetőséget.
 1. A **hozzáférés-vezérlés**  >  **megadása**területen válassza a **hozzáférés biztosítása**, a **többtényezős hitelesítés megkövetelése**, majd a **kiválasztás**lehetőséget.
 1. Erősítse meg a beállításokat, és állítsa be az engedélyezési **szabályzatot** **bekapcsolva**értékre.
 1. Válassza a **Létrehozás** lehetőséget a szabályzat engedélyezéséhez.

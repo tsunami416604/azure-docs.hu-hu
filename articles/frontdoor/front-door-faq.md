@@ -11,12 +11,12 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/18/2020
 ms.author: duau
-ms.openlocfilehash: 0d669d4232adca3348b51c2a48947e0dabf0a472
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 45f9e7a4e508cffd3593cec7bbcea3dd7882a60c
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91324059"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91819022"
 ---
 # <a name="frequently-asked-questions-for-azure-front-door"></a>Gyakori kérdések az Azure bejárati ajtóról
 
@@ -248,6 +248,10 @@ Ahhoz, hogy sikeresen HTTPS-kapcsolatot lehessen létesíteni a háttérrel, hog
 1. A **tanúsítvány tulajdonosának neve nem egyezik**: a HTTPS-kapcsolatok esetében a bejárati ajtó azt várja, hogy a háttérrendszer a háttérbeli állomásnévvel egyező tulajdonosi névvel rendelkező érvényes hitelesítésszolgáltatótól származó tanúsítványt jelenít meg. Ha például a háttérbeli állomásnév be van állítva, `myapp-centralus.contosonews.net` és az a tanúsítvány, amelyet a háttér a TLS-kézfogás során ad meg `myapp-centralus.contosonews.net` `*myapp-centralus*.contosonews.net` , sem a tulajdonos, sem a tulajdonos nevében, akkor a bejárati ajtó elutasítja a kapcsolódást, és hibát eredményez. 
     1. **Megoldás**: noha a megfelelőség szempontjából nem ajánlott, megkerülheti ezt a hibát, ha letiltja a tanúsítvány tulajdonosának nevének ellenőrzését az előtérben. Ez a Azure Portal és az API BackendPoolsSettings területén található beállítások területen érhető el.
 2. A **tanúsítvány érvénytelen hitelesítésszolgáltatótól való üzemeltetése**: csak az [érvényes hitelesítésszolgáltatóktól](/azure/frontdoor/front-door-troubleshoot-allowed-ca) származó tanúsítványok használhatók a háttérbe a bejárati ajtónál. A belső hitelesítésszolgáltatóktól vagy önaláírt tanúsítványokból származó tanúsítványok nem engedélyezettek.
+
+### <a name="can-i-use-clientmutual-authentication-with-azure-front-door"></a>Használhatok ügyfél/kölcsönös hitelesítést az Azure bejárati ajtaján?
+
+Nem. Bár az Azure bejárati ajtaja támogatja a TLS 1,2-et, amely az [RFC 5246](https://tools.ietf.org/html/rfc5246)-ben bevezette az ügyfél/kölcsönös hitelesítést, az Azure bejárati ajtó jelenleg nem támogatja az ügyfél/kölcsönös
 
 ## <a name="diagnostics-and-logging"></a>Diagnosztika és naplózás
 

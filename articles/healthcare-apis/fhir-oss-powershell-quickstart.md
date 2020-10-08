@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: quickstart
 ms.date: 02/07/2019
 ms.author: matjazl
-ms.openlocfilehash: c133a309cc85ffcfb69be2ae7bbb614cbb540f2e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: c6c1a7e21f0a1554c67c7f1860a2bd3382c941f5
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87847126"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91817951"
 ---
 # <a name="quickstart-deploy-open-source-fhir-server-using-powershell"></a>Gyors útmutató: nyílt forráskódú FHIR-kiszolgáló üzembe helyezése a PowerShell használatával
 
@@ -36,10 +36,27 @@ $rg = New-AzResourceGroup -Name $fhirServiceName -Location westus2
 
 ## <a name="deploy-the-fhir-server-template"></a>A FHIR-kiszolgáló sablonjának üzembe helyezése
 
-Az Azure [GitHub-tárház](https://github.com/Microsoft/fhir-server) Microsoft FHIR-kiszolgálója olyan sablont tartalmaz, amely az összes szükséges erőforrást üzembe helyezi. Üzembe helyezés az alábbiakkal:
+Az Azure [GitHub-tárház](https://github.com/Microsoft/fhir-server) Microsoft FHIR-kiszolgálója olyan sablont tartalmaz, amely az összes szükséges erőforrást üzembe helyezi. Az üzembe helyezési folyamat több percet vesz igénybe, mint a szükséges Azure-erőforrások létrehozása és konfigurálása. Üzembe helyezés az alábbiakkal:
 
 ```azurepowershell-interactive
 New-AzResourceGroupDeployment -TemplateUri https://raw.githubusercontent.com/Microsoft/fhir-server/master/samples/templates/default-azuredeploy.json -ResourceGroupName $rg.ResourceGroupName -serviceName $fhirServiceName
+```
+
+> [!NOTE]
+> Ha még nem jelentkezett be, először futtassa a következő parancsokat.
+
+```azurepowershell-interactive
+Connect-AzAccount
+get-azsubscription
+Set-AzContext -SubscriptionId yoursubscriptionid
+```
+
+Meglévő erőforráscsoport használatához módosítsa $rg értékeket a $rg változó definíciós sorában és az Azure ARM-sablon üzembe helyezési parancssorában a kódban látható módon.
+
+```azurepowershell-interactive
+$fhirServiceName = "MyFhirService"
+$rg = "MyExistingResourceGroupName"
+New-AzResourceGroupDeployment -TemplateUri https://raw.githubusercontent.com/Microsoft/fhir-server/master/samples/templates/default-azuredeploy.json -ResourceGroupName $rg -serviceName $fhirServiceName
 ```
 
 ## <a name="verify-fhir-server-is-running"></a>Ellenőrizze, hogy fut-e a FHIR-kiszolgáló
@@ -60,7 +77,7 @@ Ha nem folytatja az alkalmazás használatát, törölje az erőforráscsoportot
 Remove-AzResourceGroup -Name $rg.ResourceGroupName
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban üzembe helyezte az Azure-hoz készült Microsoft nyílt forráskódú FHIR-kiszolgálót az előfizetésében. Ha szeretné megtudni, hogyan érheti el a FHIR API-t a Poster használatával, folytassa a Poster-oktatóanyaggal.
  

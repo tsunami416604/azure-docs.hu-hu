@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0ae663b2c7a88e116315464c11b8d162135f0aff
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 112c1c6a0fbbd7e0011890d1ce92c6e21e168137
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91450390"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91817971"
 ---
 # <a name="assign-scoped-roles-to-an-administrative-unit"></a>Hatókörrel rendelkező szerepkörök társítása egy felügyeleti egységhez
 
@@ -38,8 +38,10 @@ Licenc rendszergazdája  |  Csak a felügyeleti egységen belül lehet hozzáren
 Jelszó-rendszergazda  |  A csak a hozzárendelt felügyeleti egységen belül állíthatja alaphelyzetbe a nem rendszergazdák és a jelszó-rendszergazdák jelszavát.
 Felhasználói rendszergazda  |  A a felhasználók és csoportok minden aspektusát képes kezelni, beleértve a korlátozott rendszergazdák jelszavainak alaphelyzetbe állítását a hozzárendelt felügyeleti egységen belül.
 
-## <a name="security-principals-that-can-be-assigned-to-an-au-scoped-role"></a>Az AU hatókörű szerepkörhöz hozzárendelhető rendszerbiztonsági tag
-Az alábbi rendszerbiztonsági tag rendelhető hozzá egy AU hatókörű szerepkörhöz:
+## <a name="security-principals-that-can-be-assigned-to-a-scoped-role"></a>Hatókörrel rendelkező szerepkörhöz hozzárendelhető rendszerbiztonsági tag
+
+A következő rendszerbiztonsági tag a felügyeleti egység hatókörével rendelkező szerepkörhöz rendelhető hozzá:
+
 * Felhasználók
 * Szerepkörhöz rendelhető felhőalapú csoportok (előzetes verzió)
 * Egyszerű szolgáltatásnév (SPN)

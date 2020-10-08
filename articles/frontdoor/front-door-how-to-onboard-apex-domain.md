@@ -7,12 +7,12 @@ ms.service: frontdoor
 ms.topic: how-to
 ms.date: 09/30/2020
 ms.author: duau
-ms.openlocfilehash: 6be33df90ed58dc448009fb0e26ca49c800d1931
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.openlocfilehash: 44813a7662420ab4dedcd0bf99cc1eec7e9d9d2d
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91766061"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91819087"
 ---
 # <a name="onboard-a-root-or-apex-domain-on-your-front-door"></a>Gyökértartomány vagy Apex-tartomány előkészítése a Front Dooron
 Az Azure bevezető ajtaja CNAME rekordokat használ a tartomány tulajdonjogának ellenőrzéséhez az egyéni tartományok bevezetéséhez. A bejárati ajtó nem teszi elérhetővé az előtér-profilhoz társított előtérbeli IP-címet. Így a csúcspont tartománya nem rendelhető hozzá IP-címhez, ha a cél az, hogy az Azure-ba bekerüljön.
@@ -54,7 +54,7 @@ A Azure Portal használatával üzembe helyezhet egy APEX-tartományt az előté
 
 1. A módosítások elküldéséhez válassza a **Mentés** lehetőséget.
 
-    :::image type="content" source="./media/front-door-apex-domain/front-door-onboard-apex-domain.png" alt-text="Alias rekord a zóna csúcsához&quot;:::
+   :::image type="content" source="./media/front-door-apex-domain/front-door-onboard-apex-domain.png" alt-text="Alias rekord a zóna csúcsához&quot;:::
 
 1. A fenti lépés egy zóna csúcspont-rekordot hoz létre, amely az előtérben lévő erőforrásra mutat, valamint egy CNAME rekordot, amely a &quot;afdverify":::
 
@@ -64,12 +64,12 @@ A Azure Portal használatával üzembe helyezhet egy APEX-tartományt az előté
 
 1. Válassza ki a  **tanúsítványkezelő típusát** a *saját tanúsítvány használata*lehetőségnél.
 
-    :::image type="content" source="./media/front-door-apex-domain/front-door-onboard-apex-custom-domain.png" alt-text="Alias rekord a zóna csúcsához&quot;:::
+   :::image type="content" source="./media/front-door-apex-domain/front-door-onboard-apex-custom-domain.png" alt-text="Alias rekord a zóna csúcsához&quot;:::
 
 1. A fenti lépés egy zóna csúcspont-rekordot hoz létre, amely az előtérben lévő erőforrásra mutat, valamint egy CNAME rekordot, amely a &quot;afdverify":::    
 
-    > [!WARNING]
-    > Az előtérben felügyelt tanúsítvány-felügyeleti típus jelenleg nem támogatott az APEX-vagy a gyökérszintű tartományokban. Az egyetlen lehetőség, hogy a HTTPS-t egy csúcson vagy gyökértartományen engedélyezze a bejárati ajtónál, a saját, Azure Key Vault üzemeltetett egyéni TLS/SSL-tanúsítványát használja.
+   > [!WARNING]
+   > Az előtérben felügyelt tanúsítvány-felügyeleti típus jelenleg nem támogatott az APEX-vagy a gyökérszintű tartományokban. Az egyetlen lehetőség, hogy a HTTPS-t egy csúcson vagy gyökértartományen engedélyezze a bejárati ajtónál, a saját, Azure Key Vault üzemeltetett egyéni TLS/SSL-tanúsítványát használja.
 
 1. Mielőtt továbblép a következő lépésre, győződjön meg arról, hogy a megfelelő engedélyekkel rendelkezik a bejárati ajtóhoz a kulcstartóhoz való hozzáféréshez.
 

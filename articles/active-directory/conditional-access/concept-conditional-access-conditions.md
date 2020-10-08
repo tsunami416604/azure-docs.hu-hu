@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: calebb
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 0dcbd58c5d8dc12898fe343dbba6c3a6f8cd61b4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 2dddad5692ab2eebb6ef9b427c091be449791d7c
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91258712"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91818351"
 ---
 # <a name="conditional-access-conditions"></a>Feltételes hozzáférés: feltételek
 
@@ -49,6 +49,9 @@ Az Azure AD feltételes hozzáférés a következő eszköz platformokat támoga
 - macOS
 
 Ha letiltja az örökölt hitelesítést a **többi ügyfél** feltételének használatával, beállíthatja az eszköz platformjának feltételeit is.
+
+> [!IMPORTANT]
+> A Microsoft azt javasolja, hogy a nem támogatott eszköz platformokra vonatkozó feltételes hozzáférési szabályzattal rendelkezzen. Ha például le szeretné tiltani a vállalati erőforrásokhoz való hozzáférést a Linux vagy bármely más nem támogatott ügyfél esetében, akkor olyan házirendet kell konfigurálnia egy eszköz-platformmal, amely bármilyen eszközt tartalmaz, és kizárja a támogatott eszközök platformját, és letiltja a hozzáférést a hozzáférés blokkolásához.
 
 ## <a name="locations"></a>Helyek
 
@@ -165,7 +168,7 @@ Ez a beállítás hatással van a következő Mobile apps és asztali ügyfelek 
 | Outlook 2016 (macOS-es iroda) | Exchange Online | macOS |
 | Outlook 2016, Outlook 2013 (modern hitelesítéssel), Skype vállalati verzió (modern hitelesítéssel) | Exchange Online | Windows 8,1, Windows 7 |
 | Outlook Mobile alkalmazás | Exchange Online | Android, iOS |
-| Power BI alkalmazás | Power BI szolgáltatás | Windows 10, Windows 8,1, Windows 7, Android és iOS |
+| Power BI alkalmazás | Power BI szolgáltatásban | Windows 10, Windows 8,1, Windows 7, Android és iOS |
 | Skype Vállalati verzió | Exchange Online| Android, iOS |
 | Visual Studio Team Services-alkalmazás | Visual Studio Team Services | Windows 10, Windows 8,1, Windows 7, iOS és Android |
 

@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: f3e223dd46806551fbba05127b70a9119a5d9c75
-ms.sourcegitcommit: 487a9f5272300d60df2622c3d13e794d54680f90
+ms.openlocfilehash: 0d29f4ef5806eb8ed9385696dea78f4ae0992b93
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91661142"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91818239"
 ---
 # <a name="add-and-manage-users-in-an-administrative-unit-in-azure-active-directory"></a>Felhasználók hozzáadása és kezelése egy felügyeleti egységben Azure Active Directory
 
@@ -31,21 +31,30 @@ A PowerShell és a Microsoft Graph felügyeleti egység felügyeletéhez való e
 
 ### <a name="azure-portal"></a>Azure Portal
 
-A felhasználókat kétféleképpen rendelheti hozzá felügyeleti egységekhez.
+A felhasználókat felügyeleti egységekhez egyenként vagy tömeges műveletekben rendelheti hozzá.
 
-1. Egyéni hozzárendelés
+- Egyéni hozzárendelés felhasználói profilból
 
-    1. Nyissa meg az Azure AD-t a portálon, és válassza a felhasználók lehetőséget, majd válassza ki a felügyeleti egységhez hozzárendelni kívánt felhasználót. Ezután a bal oldali panelen kiválaszthatja a felügyeleti egységeket. A felhasználó egy vagy több felügyeleti egységhez is hozzárendelhető, ha a * * hozzárendelés felügyeleti egységhez gombra kattint, és kiválasztja azokat a felügyeleti egységeket, amelyekhez a felhasználót hozzá szeretné rendelni.
+   1. Jelentkezzen be az [Azure ad felügyeleti központba](https://portal.azure.com) a Kiemelt szerepkörű rendszergazdai engedélyekkel.
+   1. Válassza a **felhasználók** lehetőséget, majd válassza ki a rendszergazda egységhez hozzárendelendő felhasználót a felhasználó profiljának megnyitásához.
+   1. Válassza a **felügyeleti egységek**lehetőséget. A felhasználó hozzárendelhető egy vagy több felügyeleti egységhez, ha a **hozzárendelés a felügyeleti egységhez** lehetőséget választja, és kiválasztja azokat a felügyeleti egységeket, amelyekhez a felhasználót hozzá szeretné rendelni.
 
        ![Válassza a Hozzáadás lehetőséget, majd adja meg a felügyeleti egység nevét.](./media/roles-admin-units-add-manage-users/assign-users-individually.png)
 
-    1. Nyissa meg az Azure AD-t a portálon, és válassza a felügyeleti egységek lehetőséget a bal oldali ablaktáblán, majd válassza ki azt a felügyeleti egységet, amelyben a felhasználókat hozzá szeretné rendelni. Válassza **a minden felhasználó** lehetőséget, majd válassza a **tag hozzáadása**elemet. Ezután a jobb oldali panelen kiválaszthat egy vagy több felhasználót a felügyeleti egységhez való hozzárendeléshez.
+- Egyéni hozzárendelés egy felügyeleti egységből
+
+   1. Jelentkezzen be az [Azure ad felügyeleti központba](https://portal.azure.com) a Kiemelt szerepkörű rendszergazdai engedélyekkel.
+   1. Válassza a **felügyeleti egységek** lehetőséget, majd válassza ki azt a felügyeleti egységet, amelyben a felhasználókat hozzá szeretné rendelni.
+   1. Válassza a **minden felhasználó** lehetőséget, majd válassza a **tag hozzáadása** lehetőséget, ha ki szeretne választani egy vagy több felhasználót, amelyet a felügyeleti egységhez szeretne rendelni a **tag hozzáadása** panelen.
 
         ![Válasszon ki egy felügyeleti egységet, majd válassza a tag hozzáadása elemet.](./media/roles-admin-units-add-manage-users/assign-to-admin-unit.png)
 
-1. Tömeges hozzárendelés
+- Tömeges hozzárendelés
 
-    Nyissa meg az Azure AD-t a portálon, és válassza a felügyeleti egységek lehetőséget. Válassza ki azt a felügyeleti egységet, ahová a felhasználókat hozzá szeretné adni. Folytassa a minden felhasználóra kattintva – > Tagok hozzáadása. csv-fájlból. Ezután letöltheti a CSV-sablont, és szerkesztheti a fájlt. A formátum egyszerű, és minden sorba hozzá kell adni egy egyszerű FELHASZNÁLÓNEVEt. Ha a fájl elkészült, mentse a fájlt egy megfelelő helyre, majd töltse fel a 3. lépésben, ahogy az a pillanatképben ki van jelölve.
+   1. Jelentkezzen be az [Azure ad felügyeleti központba](https://portal.azure.com) a Kiemelt szerepkörű rendszergazdai engedélyekkel.
+   1. Válassza a **felügyeleti egységek**lehetőséget.
+   1. Válassza ki azt a felügyeleti egységet, ahová a felhasználókat hozzá szeretné adni.
+   1. Nyissa meg az **összes felhasználót**  >  **. csv-fájlból származó tagok hozzáadása elemet**. Ezután letöltheti a vesszővel tagolt értékeket tartalmazó (CSV) sablont, és szerkesztheti a fájlt. A formátum egyszerű, és az egyes sorokban hozzá kell adni egyetlen egyszerű felhasználónevet. Ha a fájl elkészült, mentse a fájlt egy megfelelő helyre, majd töltse fel a lépés részeként.
 
     ![felhasználók tömeges kiosztása egy felügyeleti egységhez](./media/roles-admin-units-add-manage-users/bulk-assign-to-admin-unit.png)
 

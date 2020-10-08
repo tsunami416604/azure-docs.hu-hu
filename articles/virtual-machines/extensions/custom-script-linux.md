@@ -14,12 +14,12 @@ ms.tgt_pltfrm: vm-linux
 ms.workload: infrastructure-services
 ms.date: 04/25/2018
 ms.author: mimckitt
-ms.openlocfilehash: 367116948034fd4bedbeec15e655a09b179865d6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 2dbfc2173f6631aff2d65c770a5204bbd72d3ed1
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87085724"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91818808"
 ---
 # <a name="use-the-azure-custom-script-extension-version-2-with-linux-virtual-machines"></a>Az Azure Custom Script Extension 2. verziójának használata Linux rendszerű virtuális gépekkel
 Az egyéni szkriptek bővítményének 2. verziója letölti és futtatja a parancsfájlokat az Azure Virtual Machines szolgáltatásban. Ez a bővítmény az üzembe helyezés utáni konfiguráció, a Szoftvertelepítés vagy bármely egyéb konfigurációs/felügyeleti feladat esetén hasznos. A szkripteket letöltheti az Azure Storage-ból vagy más elérhető Internet-helyről, vagy megadhatja a bővítmény futtatókörnyezetét. 
@@ -55,8 +55,9 @@ Ha a parancsfájl egy helyi kiszolgálón található, akkor továbbra is szüks
 * Győződjön meg arról, hogy a parancsfájlok futtatásakor nincs szükség felhasználói bevitelre.
 * A szkript futtatásához 90 perc van engedélyezve, ami továbbra is a bővítmény sikertelen kiépítését eredményezi.
 * Ne helyezzen újraindítást a parancsfájlba, ezért a rendszer a telepített többi bővítménnyel kapcsolatos problémákat okoz, és az újraindítás után a bővítmény nem fog folytatódni az újraindítás után. 
+* Nem ajánlott olyan parancsfájlt futtatni, amely a virtuálisgép-ügynök leállítását vagy frissítését eredményezi. Ez a bővítmény átmeneti állapotba kerülhet, és időtúllépéshez vezethet.
 * Ha olyan szkripttel rendelkezik, amely újraindítást eredményez, telepítse az alkalmazásokat, és futtassa a parancsfájlokat stb. Be kell ütemezni az újraindítást egy cron-feladatokkal, vagy olyan eszközök használatával, mint a DSC, a Chef vagy a Puppet Extensions.
-* A bővítmény csak egyszer futtatja a parancsfájlt, ha parancsfájlt szeretne futtatni minden rendszerindításkor, használhatja a [Cloud-init rendszerképet](../linux/using-cloud-init.md) , és használhat [parancsfájlokat rendszerindítási](https://cloudinit.readthedocs.io/en/latest/topics/modules.html#scripts-per-boot) modulként. Azt is megteheti, hogy a parancsfájl segítségével létrehoz egy rendszerszintű szolgáltatási egységet.
+* A bővítmény csak egyszer futtatja a parancsfájlt, ha parancsfájlt szeretne futtatni minden rendszerindításkor, használhatja a [Cloud-init rendszerképet](../linux/using-cloud-init.md)  , és használhat [parancsfájlokat rendszerindítási](https://cloudinit.readthedocs.io/en/latest/topics/modules.html#scripts-per-boot) modulként. Azt is megteheti, hogy a parancsfájl segítségével létrehoz egy rendszerszintű szolgáltatási egységet.
 * A virtuális gépen csak egy bővítmény egy verziója alkalmazható. Egy második egyéni parancsfájl futtatásához el kell távolítania az egyéni szkriptek bővítményét, és újra kell alkalmaznia a frissített parancsfájllal. 
 * Ha egy parancsfájl futását szeretné ütemezni, a bővítmény használatával hozzon létre egy cron-feladatot. 
 * Amikor a szkript fut, az Azure Portalon vagy a CLI-n a bővítmény „átmeneti” állapotát fogja látni. Ha egy futó parancsfájl gyakoribb frissítési állapotát szeretné használni, létre kell hoznia a saját megoldását.
@@ -111,14 +112,14 @@ Ezeket az elemeket bizalmas adatokként kell kezelni, és meg kell adni a bőví
 
 ### <a name="property-values"></a>Tulajdonságértékek
 
-| Name | Érték/példa | Adattípus | 
+| Name (Név) | Érték/példa | Adattípus | 
 | ---- | ---- | ---- |
 | apiVersion | 2019-03-01 | dátum |
 | közzétevő | Microsoft. számítás. bővítmények | sztring |
 | típus | CustomScript | sztring |
 | typeHandlerVersion | 2.1 | int |
 | fileUris (például) | `https://github.com/MyProject/Archive/MyPythonScript.py` | array |
-| commandToExecute (például) | Python-MyPythonScript.py\<my-param1> | sztring |
+| commandToExecute (például) | Python-MyPythonScript.py \<my-param1> | sztring |
 | parancsfájl | IyEvYmluL3NoCmVjaG8gIlVwZGF0aW5nIHBhY2thZ2VzIC4uLiIKYXB0IHVwZGF0ZQphcHQgdXBncmFkZSAteQo = | sztring |
 | skipDos2Unix (például) | hamis | boolean |
 | időbélyeg (például) | 123456789 | 32 bites egész szám |
@@ -127,9 +128,9 @@ Ezeket az elemeket bizalmas adatokként kell kezelni, és meg kell adni a bőví
 | managedIdentity (például) | {} vagy {"clientId": "31b403aa-c364-4240-a7ff-d85fb6cd7232"} vagy {"objectId": "12dd289c-0583-46e5-b9b4-115d5c19ef4b"} | JSON-objektum |
 
 ### <a name="property-value-details"></a>Tulajdonság értékének részletei
-* `apiVersion`: A legnaprakészebb apiVersion [erőforrás-kezelő](https://resources.azure.com/) vagy az Azure CLI használatával a következő paranccsal található meg`az provider list -o json`
+* `apiVersion`: A legnaprakészebb apiVersion [erőforrás-kezelő](https://resources.azure.com/) vagy az Azure CLI használatával a következő paranccsal található meg `az provider list -o json`
 * `skipDos2Unix`: (nem kötelező, logikai) kihagyhatja a parancsfájl-alapú dos2unix és-parancsfájlok átalakítását.
-* `timestamp`(opcionális, 32 bites egész szám) Ez a mező csak a parancsfájl újbóli futtatásának elindításához használható a mező értékének módosításával.  Bármely egész érték elfogadható; csak az előző értéktől eltérő lehet.
+* `timestamp` (opcionális, 32 bites egész szám) Ez a mező csak a parancsfájl újbóli futtatásának elindításához használható a mező értékének módosításával.  Bármely egész érték elfogadható; csak az előző értéktől eltérő lehet.
 * `commandToExecute`: (**kötelező** , ha a parancsfájl nincs beállítva, string) a beléptetési pont parancsfájlját a végrehajtáshoz. Ezt a mezőt használja helyette, ha a parancs titkos kódokat, például jelszavakat tartalmaz.
 * `script`: (**kötelező** , ha a commandToExecute nincs beállítva, string) a/bin/sh. által végrehajtott Base64 kódolású (és opcionálisan gzip'ed) parancsfájlt
 * `fileUris`: (opcionális, karakterlánc-tömb) a letölteni kívánt fájl (ok) URL-címei.
@@ -498,5 +499,5 @@ A kimenet a következő szöveghez hasonlít:
 ]
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A kód, az aktuális problémák és a verziók megtekintéséhez lásd: [Custom-script-Extension-Linux](https://github.com/Azure/custom-script-extension-linux)adattár.

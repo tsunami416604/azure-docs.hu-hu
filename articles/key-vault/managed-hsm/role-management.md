@@ -8,19 +8,19 @@ ms.subservice: managed-hsm
 ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: ambapat
-ms.openlocfilehash: 6654b97f914ce4c1e3e55d38f47bd5bde0a4891e
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 814167425fcd39e90edccd952e1a3e4fbd570988
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "91000769"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91818029"
 ---
-# <a name="managed-hsm-role-management"></a>Felügyelt HSM szerepkör-kezelés
+# <a name="managed-hsm-role-management"></a>A Managed HSM szerepkörkezelése
 
 > [!NOTE]
 > Key Vault két típusú erőforrást támogat: a tárolókat és a felügyelt HSM. Ez a cikk a **felügyelt HSM**-ről szól. Ha szeretné megismerni a tárolók kezelését, tekintse meg [a Key Vault kezelése az Azure CLI használatával](../general/manage-with-cli2.md)című témakört.
 
-A Managed HSM áttekintését lásd: [Mi a felügyelt HSM?](overview.md). Ha nem rendelkezik Azure-előfizetéssel, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+A Managed HSM áttekintését lásd: [Mi a felügyelt HSM?](overview.md). Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
 Ez a cikk bemutatja, hogyan kezelheti a felügyelt HSM-adatsíkok szerepköreit. A felügyelt HSM hozzáférés-vezérlési modelljével kapcsolatos további tudnivalókért lásd: [felügyelt HSM hozzáférés-vezérlése](access-control.md).
 
@@ -52,7 +52,7 @@ A parancssori felületről való bejelentkezéssel kapcsolatos további informá
 
 ### <a name="assign-roles-for-all-keys"></a>Szerepkörök társítása az összes kulcshoz
 
-`az keyvault role assignment create`A parancs használatával rendeljen hozzá egy **felügyelt HSM kriptográfiai vezérigazgatói** szerepkört az **user2@contoso.com** ContosoHSM összes **kulcsához** (hatóköréhez) tartozó felhasználó egyszerű nevével azonosított felhasználóhoz `/keys` .
+A (z `az keyvault role assignment create` ) parancs használatával rendeljen hozzá egy **felügyelt HSM kriptográfiai** vezető szerepkört a felhasználóhoz az **Felhasználó2 \@ contoso.com** nevű felhasználó által azonosított, a ContosoHSM összes  **kulcsához** (hatóköréhez `/keys` ).
 
 ```azurecli-interactive
 az keyvault role assignment create --hsm-name ContosoMHSM --role "Managed HSM Crypto Officer" --assignee user2@contoso.com  --scope /keys
@@ -60,7 +60,7 @@ az keyvault role assignment create --hsm-name ContosoMHSM --role "Managed HSM Cr
 
 ### <a name="assign-role-for-a-specific-key"></a>Szerepkör társítása egy adott kulcshoz
 
-A `az keyvault role assignment create` parancs használatával rendeljen hozzá egy **felügyelt HSM kriptográfiai** vezető szerepkört az egyszerű felhasználónév alapján azonosított felhasználóhoz **user2@contoso.com** egy **myrsakey**nevű adott kulcshoz.
+A `az keyvault role assignment create` parancs használatával rendeljen hozzá egy **felügyelt HSM kriptográfiai** vezető szerepkört a felhasználóhoz az egyszerű felhasználónév **Felhasználó2 \@ contoso.com** egy **myrsakey**nevű adott kulcshoz.
 
 ```azurecli-interactive
 az keyvault role assignment create --hsm-name ContosoMHSM --role "Managed HSM Crypto Officer" --assignee user2@contoso.com  --scope /keys/myrsakey
@@ -97,7 +97,7 @@ az keyvault role assignment list --hsm-name ContosoMHSM --assignee user2@contoso
 
 ## <a name="delete-a-role-assignment"></a>Szerepkör-hozzárendelés törlése
 
-A `az keyvault role assignment delete` paranccsal törölhet egy **felügyelt HSM kriptográfiai főigazgatói** szerepkört, amely a felhasználóhoz van rendelve **user2@contoso.com** a kulcs **myrsakey2**.
+A `az keyvault role assignment delete` paranccsal törölheti a **felügyelt HSM kriptográfiai főigazgatói** szerepkört, amely a **myrsakey2** ** \@ contoso.com felhasználói Felhasználó2** van hozzárendelve.
 
 ```azurecli-interactive
 az keyvault role assignment delete --hsm-name ContosoMHSM --role "Managed HSM Crypto Officer" --assignee user2@contoso.com  --scope /keys/myrsakey2
