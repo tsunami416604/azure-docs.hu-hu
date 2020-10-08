@@ -10,12 +10,12 @@ ms.subservice: general
 ms.topic: quickstart
 ms.date: 11/08/2019
 ms.author: mbaldwin
-ms.openlocfilehash: 41254accbfff8f1d68a8bbef4d74ed01c64891b9
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.openlocfilehash: ace6d21d2928eac1fb91903c5e395f1e3479a3ff
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/07/2020
-ms.locfileid: "91803891"
+ms.locfileid: "91823452"
 ---
 # <a name="quickstart-create-a-key-vault-using-powershell"></a>Gyors útmutató: kulcstartó létrehozása a PowerShell használatával
 
@@ -52,7 +52,7 @@ Hozzon létre egy Key Vault az erőforráscsoporthoz az előző lépésben. A k�
 - A hely: **EastUS**.
 
 ```azurepowershell-interactive
-New-AzKeyVault -Name <your-unique-key-vault-name> -ResourceGroupName "myResourceGroup" -Location "East US"
+New-AzKeyVault -Name "<your-unique-key-vault-name>" -ResourceGroupName "myResourceGroup" -Location "East US"
 ```
 
 Ezzel a parancsmaggal megjelenítheti az újonnan létrehozott kulcstartó tulajdonságait. Jegyezze fel az alábbi két tulajdonságot:
@@ -72,7 +72,7 @@ Ha már nincs rá szükség, használhatja a Azure PowerShell [Remove-AzResource
 Remove-AzResourceGroup -Name "myResourceGroup"
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban létrehozott egy Key Vault, és egy titkos kulcsot tárolt benne. Ha többet szeretne megtudni a Key Vaultről és az alkalmazásokkal való integrálásáról, folytassa az alábbi cikkekkel.
 

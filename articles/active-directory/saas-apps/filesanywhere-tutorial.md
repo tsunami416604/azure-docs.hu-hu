@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/13/2019
 ms.author: jeedes
-ms.openlocfilehash: 072c02401a5d1ef49a3f25828f5b60fa8504d2ee
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: c62967950d9f6d9ba9e3578357f65cc4988412c2
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88555110"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91824909"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-filesanywhere"></a>Oktatóanyag: Azure Active Directory integráció a FilesAnywhere
 
@@ -101,7 +101,7 @@ Az Azure AD egyszeri bejelentkezés FilesAnywhere való konfigurálásához hajt
 
 4. Az **alapszintű SAML-konfiguráció** szakaszban, ha az alkalmazást **identitásszolgáltató** kezdeményezett módban szeretné konfigurálni, hajtsa végre a következő lépést:
 
-    ![FilesAnywhere tartomány és URL-címek egyszeri bejelentkezési adatai](common/both-replyurl.png)
+    ![Képernyőkép, amely az "alapszintű k L konfiguráció" szakaszt jeleníti meg a "válasz U R L" mező kiemelésével és a "Mentés" gomb kiválasztásával.](common/both-replyurl.png)
 
     A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:  `https://<company name>.filesanywhere.com/saml20.aspx?c=<Client Id>`
 
@@ -116,19 +116,19 @@ Az Azure AD egyszeri bejelentkezés FilesAnywhere való konfigurálásához hajt
 
 6. A FilesAnywhere alkalmazás egy adott formátumban várja az SAML-jogcímeket, ehhez pedig egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőképen az alapértelmezett attribútumok listája látható. Az attribútumok hozzáadásához kattintson a Szerkesztés ikonra.
 
-    ![image](common/edit-attribute.png)
+    ![A "felhasználó attribútumai" szakaszt a "szerkesztés" gomb kiválasztásával ábrázoló képernyőkép.](common/edit-attribute.png)
 
     Amikor a felhasználók bejelentkeznek a FilesAnywhere, megkapják a **ClientID** attribútum értékét a [FilesAnywhere csapattól](mailto:support@FilesAnywhere.com). Hozzá kell adnia az "ügyfél-azonosító" attribútumot a FilesAnywhere által megadott egyedi értékkel.
 
 7. A fentieken kívül a FilesAnywhere alkalmazás néhány további attribútumot vár, amelyeket az SAML-válaszban vissza kell adni. A **felhasználó attribútumai** párbeszédpanel **felhasználói jogcímek** szakaszában a következő lépésekkel adja hozzá az SAML-jogkivonat attribútumát az alábbi táblázatban látható módon:
 
-    | Name | Forrás attribútum|
+    | Name (Név) | Forrás attribútum|
     | ---------------| --------------- |    
     | ClientID | *"uniquevalue"* |
 
     a. Kattintson az **új jogcím hozzáadása** elemre a **felhasználói jogcímek kezelése** párbeszédpanel megnyitásához.
 
-    ![image](common/new-save-attribute.png)
+    ![A "felhasználói jogcímek" párbeszédpanelt, amely az "új jogcím hozzáadása" és a "Mentés" elemet mutatja.](common/new-save-attribute.png)
 
     ![image](common/new-attribute-details.png)
 
@@ -185,7 +185,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    d. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

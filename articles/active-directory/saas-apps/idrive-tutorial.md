@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/23/2019
 ms.author: jeedes
-ms.openlocfilehash: 83631c6c6503f32ba81195ecfe5df0b1a6c14092
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: a8d79deb55a5693978569f5e3a940a03897efb80
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88545283"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91824819"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-idrive"></a>Oktatóanyag: Azure Active Directory integráció a IDrive
 
@@ -99,11 +99,11 @@ Az Azure AD egyszeri bejelentkezés IDrive való konfigurálásához hajtsa vég
 
 4. Az **alapszintű SAML-konfiguráció** szakaszban a felhasználónak nem kell végrehajtania egy lépést, mivel az alkalmazás már előre integrálva van az Azure-ban.
 
-    ![[Alkalmazás neve] Tartományi és URL-címek egyszeri bejelentkezési adatai](common/preintegrated.png)
+    ![A képernyőfelvételen az alapszintű SAML-konfiguráció látható.](common/preintegrated.png)
 
 5. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
-    ![[Alkalmazás neve] Tartományi és URL-címek egyszeri bejelentkezési adatai](common/metadata-upload-additional-signon.png)
+    ![Képernyőfelvétel: további U R ls beállítása, ahol megadhatja a bejelentkezést az U R L-ben.](common/metadata-upload-additional-signon.png)
 
     A **bejelentkezési URL** szövegmezőbe írja be a következő URL-címet:   `https://www.idrive.com/idrive/login/loginForm`
 
@@ -148,7 +148,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    d. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

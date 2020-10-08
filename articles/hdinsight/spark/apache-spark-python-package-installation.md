@@ -8,16 +8,16 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020, devx-track-python
 ms.date: 04/29/2020
-ms.openlocfilehash: 09d1063f704c37eb31546be08765f2b5b6fb8632
-ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
+ms.openlocfilehash: a6ad1c068a41b4b865c148ebb7cdb509821609d4
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2020
-ms.locfileid: "90060747"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91823416"
 ---
 # <a name="safely-manage-python-environment-on-azure-hdinsight-using-script-action"></a>Python-környezet biztonságos kezelése az Azure HDInsightban szkriptműveletekkel
 
-A HDInsight két beépített Python-telepítéssel rendelkezik a Spark-fürtben, az anaconda Python 2,7 és a Python 3,5. Előfordulhat, hogy az ügyfeleknek testre kell szabnia a Python-környezetet. Például külső Python-csomagok vagy más Python-verziók telepítéséhez. Itt bemutatjuk a Python-környezetek biztonságos kezelésének bevált gyakorlatát Apache Spark-fürtökön a HDInsight-on.
+A HDInsight két beépített Python-telepítéssel rendelkezik a Spark-fürtben, az anaconda Python 2,7 és a Python 3,5. Előfordulhat, hogy az ügyfeleknek testre kell szabnia a Python-környezetet, például a külső Python-csomagok telepítését. Itt bemutatjuk a Python-környezetek biztonságos kezelésének bevált gyakorlatát Apache Spark-fürtökön a HDInsight-on.
 
 ## <a name="prerequisites"></a>Előfeltételek
 

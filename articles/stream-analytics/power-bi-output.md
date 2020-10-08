@@ -7,12 +7,12 @@ ms.reviewer: mamccrea
 ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 08/25/2020
-ms.openlocfilehash: d398cfe063dbbb2bc87a3debf1669afa6a16b43e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: aee5cb077604e5fc95647eca0e6570ea3582a785
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90891997"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91822996"
 ---
 # <a name="power-bi-output-from-azure-stream-analytics"></a>Azure Stream Analytics Power BI kimenete
 
@@ -43,6 +43,9 @@ A Power BI kimenetének és irányítópultjának konfigurálásához lásd: [Az
 Azure Stream Analytics létrehoz egy Power BI adatkészletet és egy tábla sémát a felhasználó számára, ha még nem léteznek. Minden más esetben a tábla új értékekkel frissül. Jelenleg csak egy tábla létezhet egy adatkészleten belül. 
 
 A Power BI az első, az első kimenő (FIFO) adatmegőrzési szabályt használja. Az adatok egy táblában lesznek gyűjtve, amíg 200 000 sort nem üt.
+
+> [!NOTE]
+> Nem ajánlott több kimenetet ugyanarra az adatkészletbe írni, mert több probléma merülhet fel. Az egyes kimenetek egymástól függetlenül megpróbálják létrehozni az Power BI adatkészletet, ami több azonos nevű adatkészletet eredményezhet. Továbbá, ha a kimenetek nem konzisztens sémákkal rendelkeznek, az adatkészlet módosítja a sémát az egyes írásokra, ami túl sok séma-módosítási kérést eredményez. Még ha ezek a problémák elkerülhetők, a több kimenet kevesebb lesz, mint egyetlen egyesített kimenet.
 
 ### <a name="convert-a-data-type-from-stream-analytics-to-power-bi"></a>Adattípus átalakítása Stream Analyticsból Power BI
 

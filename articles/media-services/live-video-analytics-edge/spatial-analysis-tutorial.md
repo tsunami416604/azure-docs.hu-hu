@@ -3,12 +3,12 @@ title: Élő videók elemzése Computer Vision térbeli elemzéshez – Azure
 description: Ebből az oktatóanyagból megtudhatja, hogyan használhatja a Live Video Analytics szolgáltatást az Azure Cognitive Services Computer Vision térbeli Analysis AI funkciójának használatával egy élő videó-hírcsatorna (szimulált) IP-kamerából való elemzéséhez.
 ms.topic: tutorial
 ms.date: 09/08/2020
-ms.openlocfilehash: 72063cdefdf349eaad1b1d2fd760bb30b42786da
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.openlocfilehash: cad96847d6fbf682f1d694b0c8c255b3725e96d1
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91649753"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91824122"
 ---
 # <a name="analyze-live-video-with-computer-vision-for-spatial-analysis-preview"></a>Élő videó elemzése a Computer Vision for térbeli Analysis (előzetes verzió)
 
@@ -21,7 +21,7 @@ Ebben az oktatóanyagban a következőket fogja elsajátítani:
 > * Vizsgálja meg a kódot.
 > * Futtassa a kódot.
 > * Események figyelése.
-
+ 
 [!INCLUDE [quickstarts-free-trial-note](../../../includes/quickstarts-free-trial-note.md)]
 
 ## <a name="suggested-pre-reading"></a>Javasolt előzetes olvasás
@@ -185,7 +185,15 @@ Kövesse az alábbi lépéseket a jegyzékfájlnak a sablonból való létrehoz�
 
 Az események megtekintéséhez kövesse az alábbi lépéseket:
 
-1. Nyissa meg az Explorer panelt a Visual Studio Code-ban, és keresse meg az Azure IoT Hub a bal alsó sarokban.
+1. A Visual Studio Code-ban nyissa meg a **bővítmények** lapot (vagy nyomja le a CTRL + SHIFT + X billentyűkombinációt), és keressen rá az Azure IoT hubra.
+1. Kattintson a jobb gombbal, és válassza a **bővítmény beállításai**lehetőséget.
+
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/run-program/extensions-tab.png" alt-text="Térbeli elemzés – áttekintés" lehetőséget.
+
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="Térbeli elemzés – áttekintés":::
+1. Nyissa meg az Explorer ablaktáblát, és keresse meg az Azure IoT Hub a bal alsó sarokban.
 1. Bontsa ki az eszközök csomópontot.
 1. Kattintson a jobb gombbal az Azure Stack Edge-re, és válassza a figyelés beépített esemény végpontja lehetőséget.
     

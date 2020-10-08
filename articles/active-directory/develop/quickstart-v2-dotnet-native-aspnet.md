@@ -9,15 +9,15 @@ ms.service: active-directory
 ms.subservice: develop
 ms.topic: quickstart
 ms.workload: identity
-ms.date: 12/12/2019
+ms.date: 10/05/2020
 ms.author: jmprieur
 ms.custom: devx-track-csharp, aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
-ms.openlocfilehash: bf9c92d631d1d48527cd3a2734879d400d3e0bf0
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 786f566b121d5f0d5d64e7b8b269c7cdfab9e4a6
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91631613"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91825063"
 ---
 # <a name="quickstart-call-an-aspnet-web-api-thats-protected-by-microsoft-identity-platform"></a>Rövid útmutató: a Microsoft Identity platform által védett ASP.NET webes API meghívása
 
@@ -185,7 +185,7 @@ Egyéni módszert is alkalmazhat a kiállítók érvényesítésére a paraméte
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ a Microsoft Identity platform által támogatott védett webes API-forgatókönyvről:
 > [!div class="nextstepaction"]
 > [Védett webes API-forgatókönyv](scenario-protected-web-api-overview.md)

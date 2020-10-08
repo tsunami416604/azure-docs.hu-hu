@@ -1,5 +1,5 @@
 ---
-title: Az adatfolyam-ablak átalakításának leképezése
+title: Ablak átalakítása a leképezési adatfolyamban
 description: Azure Data Factory leképezési adatfolyam ablakának átalakítása
 author: kromerm
 ms.author: makromer
@@ -8,14 +8,14 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 01/30/2019
-ms.openlocfilehash: 1f440a5877dcefeca8c1baa82fad4299b5ce7bce
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 0231fc8919444558abcbc965ad127f7372eceb66
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81606226"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91823607"
 ---
-# <a name="azure-data-factory-window-transformation"></a>Azure Data Factory ablak átalakítása
+# <a name="window-transformation-in-mapping-data-flow"></a>Ablak átalakítása a leképezési adatfolyamban
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
@@ -47,6 +47,6 @@ Végül a Kifejezésszerkesztő segítségével definiálhatja azokat az összes
 
 A kifejezés-szerkesztőben az ADF adatáramlás kifejezésének nyelvén használható összesítési és elemzési függvények teljes listája itt található: https://aka.ms/dataflowexpressions .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha egy egyszerű csoportosítási összesítést keres, használja az [összesített transzformációt](data-flow-aggregate.md)

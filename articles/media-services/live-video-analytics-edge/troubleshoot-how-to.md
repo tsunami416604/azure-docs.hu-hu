@@ -5,12 +5,12 @@ author: IngridAtMicrosoft
 ms.topic: how-to
 ms.author: inhenkel
 ms.date: 05/24/2020
-ms.openlocfilehash: bbd3cb88b017209adff58a646e274caf31ab425f
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: c297a189f3b13ca8e72daf4eef009bc28fac32bf
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87486442"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91823196"
 ---
 # <a name="troubleshoot-live-video-analytics-on-iot-edge"></a>Élő videó-elemzések hibáinak megoldása IoT Edge
 
@@ -308,7 +308,7 @@ Ha a hibakeresési naplók létrehozásához IoT Edge modul Live Video Analytics
     `/var/local/mediaservices/logs:/var/lib/azuremediaservices/logs`
 
     > [!NOTE] 
-    > Ez a parancs a peremhálózati eszköz és a tároló közötti naplók mappáját köti össze. Ha a naplókat egy másik helyen szeretné összegyűjteni, használja a következő parancsot, és cserélje le **$LOG _LOCATION_ON_EDGE_DEVICE** a használni kívánt helyre:`/var/$LOG_LOCATION_ON_EDGE_DEVICE:/var/lib/azuremediaservices/logs`
+    > Ez a parancs a peremhálózati eszköz és a tároló közötti naplók mappáját köti össze. Ha a naplókat egy másik helyen szeretné összegyűjteni, használja a következő parancsot, és cserélje le **$LOG _LOCATION_ON_EDGE_DEVICE** a használni kívánt helyre: `/var/$LOG_LOCATION_ON_EDGE_DEVICE:/var/lib/azuremediaservices/logs`
 
 1. Válassza a **Frissítés** lehetőséget.
 1. Válassza a **felülvizsgálat + létrehozás**lehetőséget. Egy sikeres érvényesítési üzenet a zöld szalagcím alatt lesz közzétéve.
@@ -321,10 +321,12 @@ Ha a hibakeresési naplók létrehozásához IoT Edge modul Live Video Analytics
     `"DebugLogsDirectory": "/var/lib/azuremediaservices/logs"`
 
     > [!NOTE] 
-    > Ez a parancs a peremhálózati eszköz és a tároló közötti naplók mappáját köti össze. Ha a naplókat egy másik helyen szeretné összegyűjteni, használja a következő parancsot, és cserélje le **$DEBUG _LOG_LOCATION_ON_EDGE_DEVICE** a használni kívánt helyre:  
-    > `"DebugLogsDirectory": "/var/$DEBUG_LOG_LOCATION_ON_EDGE_DEVICE"`  
-
-    d. Kattintson a **Mentés** gombra.
+    > Ez a parancs a peremhálózati eszköz és a tároló közötti naplók mappáját köti össze. Ha a naplókat egy másik helyen szeretné összegyűjteni az eszközön:
+    > 1. Hozzon létre egy kötést a hibakeresési napló helyéhez a **kötések** szakaszban, és cserélje le a **$DEBUG _LOG_LOCATION_ON_EDGE_DEVICE** és **$Debug _LOG_LOCATION** a kívánt helyre: `/var/$DEBUG_LOG_LOCATION_ON_EDGE_DEVICE:/var/$DEBUG_LOG_LOCATION`
+    > 2. Használja az alábbi parancsot, és cserélje le **$DEBUG _LOG_LOCATION** az előző lépésben használt helyre:  
+    > `"DebugLogsDirectory": "/var/$DEBUG_LOG_LOCATION"`  
+    
+    d. Válassza a **Mentés** lehetőséget.
 
 1. Reprodukálja a problémát.
 1. Kapcsolódjon a virtuális géphez a portál **IoT hub** oldaláról.
@@ -346,6 +348,6 @@ Ha a hibakeresési naplók létrehozásához IoT Edge modul Live Video Analytics
 
     `"DebugLogsDirectory": ""`
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Oktatóanyag: eseményvezérelt videofelvétel a felhőben és a felhőből való lejátszás](event-based-video-recording-tutorial.md)

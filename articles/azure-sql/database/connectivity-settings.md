@@ -9,12 +9,12 @@ author: rohitnayakmsft
 ms.author: rohitna
 ms.reviewer: sstein, vanto
 ms.date: 07/06/2020
-ms.openlocfilehash: eab9004b37da83b5d571ff700c32215354286c94
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: a3ceb78a85546e5e75c4c484f131b67ff7fc9249
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91443859"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91824149"
 ---
 # <a name="azure-sql-connectivity-settings"></a>Az Azure SQL-kapcsolatok beállításai
 [!INCLUDE[appliesto-sqldb-asa](../includes/appliesto-sqldb-asa.md)]
@@ -22,7 +22,7 @@ ms.locfileid: "91443859"
 Ez a cikk a Azure SQL Database és az Azure szinapszis Analytics-kiszolgálóhoz való kapcsolódást szabályozó beállításokat ismerteti. Ezek a beállítások a kiszolgálóhoz társított **összes** SQL Database és Azure szinapszis-adatbázisra érvényesek.
 
 > [!IMPORTANT]
-> Ez a cikk *nem* vonatkozik az **Azure SQL felügyelt példányaira**
+> Ez a cikk *nem* vonatkozik az **Azure SQL felügyelt példányaira**.
 
 A kapcsolódási beállítások a **tűzfalak és a virtuális hálózatok** képernyőn érhetők el, az alábbi képernyőképen látható módon:
 
@@ -38,6 +38,9 @@ Ha a **nyilvános hálózati hozzáférés megtagadása** beállítást az **Ige
  ![Képernyőfelvétel a nyilvános hálózati hozzáférés megtagadásával létesített kapcsolatról][2]
 
 A **nyilvános hálózati hozzáférés megtagadási** beállításának az **Igen** értékre állítására tett kísérletek a logikai kiszolgálón lévő meglévő privát végpontok nélkül sikertelenek lesznek, és a következőhöz hasonló hibaüzenet jelenik meg:  
+
+> [!NOTE]
+> A virtuális hálózati tűzfalszabályok olyan logikai kiszolgálókon való definiálásához, amelyek magánhálózati végpontokkal már konfigurálva vannak, állítsa a **nem**értékre a **nyilvános hálózati hozzáférés megtagadása** beállítást.
 
 ```output
 Error 42102

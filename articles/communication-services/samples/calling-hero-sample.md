@@ -9,12 +9,12 @@ ms.author: dademath
 ms.date: 07/20/2020
 ms.topic: overview
 ms.service: azure-communication-services
-ms.openlocfilehash: 5aa168c8f280859112f3ab317ef83d32260cead4
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 8ae69abc9a5f2969f0d60b2fa712c4c9910b678c
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91460594"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91823829"
 ---
 # <a name="get-started-with-the-group-calling-hero-sample"></a>Ismerkedés a csoport meghívása Hero-mintával
 
@@ -98,7 +98,7 @@ A mintát helyileg tesztelheti úgy, hogy több böngészős munkamenetet nyit m
 
 Ha törölni szeretné a kommunikációs szolgáltatások előfizetését, törölheti az erőforrást vagy az erőforráscsoportot. Az erőforráscsoport törlésével a hozzá társított egyéb erőforrások is törlődnek. További információ az [erőforrások tisztításáról](../quickstarts/create-communication-resource.md#clean-up-resources).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 >[!div class="nextstepaction"] 
 >[A minta letöltése a GitHubról](https://github.com/Azure/Communication/tree/master/samples/Group%20Calling%20Hero%20Sample/Web/Calling)
@@ -113,6 +113,6 @@ További információkért tekintse át a következő cikkeket:
 
 - [Azure Communication GitHub](https://github.com/Azure/communication) – további példákat és információkat talál a hivatalos GitHub-oldalon
 - [Redux](https://redux.js.org/) – ügyféloldali állapot kezelése
-- [FluentUI](https://developer.microsoft.com/fluentui#/) – Microsoft powered UI Library
+- [FluentUI](https://aka.ms/fluent-ui) – Microsoft powered UI Library
 - [Reagálás](https://reactjs.org/) – függvénytár a felhasználói felületek létrehozásához
 - [ASP.net Core](https://docs.microsoft.com/aspnet/core/introduction-to-aspnet-core?view=aspnetcore-3.1&preserve-view=true) -keretrendszer webalkalmazások létrehozásához

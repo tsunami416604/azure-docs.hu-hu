@@ -8,12 +8,12 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 10/02/2020
 tags: connectors
-ms.openlocfilehash: b832edca79cbbff39b7d526a21b1fbe95bd7a2ad
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: cb851734dc8f71347168e7ac16ac0752845dda7b
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91761124"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91823627"
 ---
 # <a name="monitor-create-and-manage-sftp-files-by-using-ssh-and-azure-logic-apps"></a>SFTP-fájlok monitorozása, létrehozása és kezelése SSH és az Azure Logic Apps használatával
 
@@ -259,7 +259,7 @@ Ez a hiba akkor fordulhat elő, ha a logikai alkalmazás nem tud sikeresen kapcs
 
 1. A kapcsolatok időtúllépése 20 másodperc. Győződjön meg arról, hogy az SFTP-kiszolgáló megfelelő teljesítmény-és intermidiate-eszközökkel rendelkezik, például a tűzfal nem vesz fel nagy terhelést. 
 
-2. Ha van tűzfal, ellenőrizze, hogy a **felügyelt összekötő IP-** címei szerepelnek-e az engedélyezési listán. Ezek az IP-címek megtalálhatók a logikai alkalmazás régiójához [**itt**] (https://docs.microsoft.com/azure/logic-apps/logic-apps-limits-and-config#multi-tenant-azure---outbound-ip-addresses)
+2. Ha van tűzfal, ellenőrizze, hogy a **felügyelt összekötő IP-** címei hozzá lettek-e adva a jóváhagyott listához. Ezek az IP-címek megtalálhatók a logikai alkalmazás régiójához [**itt**] (https://docs.microsoft.com/azure/logic-apps/logic-apps-limits-and-config#multi-tenant-azure---outbound-ip-addresses)
 
 3. Ha ez a probléma átmeneti, ellenőrizze az újrapróbálkozási beállítást, és ellenőrizze, hogy az újrapróbálkozások száma meghaladja-e az alapértelmezett 4-es értéket.
 
@@ -279,4 +279,3 @@ Az összekötő részletes technikai részleteiről, például az eseményindít
 ## <a name="next-steps"></a>Következő lépések
 
 * További Logic Apps- [Összekötők](../connectors/apis-list.md) megismerése
-

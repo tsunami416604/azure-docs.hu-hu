@@ -8,13 +8,13 @@ ms.author: brjohnst
 tags: complex data types; compound data types; aggregate data types
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 07/12/2020
-ms.openlocfilehash: 5b430d5a8f0c2702617b7f6b3935e1b169753552
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.date: 10/07/2020
+ms.openlocfilehash: ee1c0957761fc1c8b9ca80477defae8cef044827
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91530854"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91824467"
 ---
 # <a name="how-to-model-complex-data-types-in-azure-cognitive-search"></a>Összetett adattípusok modellezése az Azure-ban Cognitive Search
 
@@ -35,11 +35,13 @@ Első lépésként javasoljuk a [Hotel adatkészletét](https://github.com/Azure
 
 A következő JSON-dokumentum egyszerű mezőkből és összetett mezőkből áll. Az összetett mezők, például a `Address` és a `Rooms` , rendelkeznek almezővel. `Address` az adott almezőhöz tartozó értékek egyetlen halmaza, mivel ez a dokumentum egyetlen objektuma. Ezzel szemben `Rooms` az almezőinek több halmaza van, egyet a gyűjtemény minden objektumához.
 
+
 ```json
 {
   "HotelId": "1",
   "HotelName": "Secret Point Motel",
   "Description": "Ideally located on the main commercial artery of the city in the heart of New York.",
+  "Tags": ["Free wifi", "on-site parking", "indoor pool", "continental breakfast"]
   "Address": {
     "StreetAddress": "677 5th Ave",
     "City": "New York",
@@ -48,17 +50,26 @@ A következő JSON-dokumentum egyszerű mezőkből és összetett mezőkből ál
   "Rooms": [
     {
       "Description": "Budget Room, 1 Queen Bed (Cityside)",
-      "Type": "Budget Room",
-      "BaseRate": 96.99
+      "RoomNumber": 1105,
+      "BaseRate": 96.99,
     },
     {
       "Description": "Deluxe Room, 2 Double Beds (City View)",
       "Type": "Deluxe Room",
-      "BaseRate": 150.99
-    },
+      "BaseRate": 150.99,
+    }
+    . . .
   ]
 }
 ```
+
+<a Name = "indexelés – összetett típusok></a>
+
+## <a name="indexing-complex-types"></a>Összetett típusok indexelése
+
+Az indexelés során legfeljebb 3000 elem adható meg az összes összetett gyűjteményben egyetlen dokumentumon belül. Egy összetett gyűjtemény egy eleme a gyűjtemény tagja, így a szobák esetében (az egyetlen összetett gyűjtemény a szállodai példában), minden szoba egy elem. A fenti példában, ha a "Secret Point Motel" már 500 szobát tartalmaz, a (z) "{0}" dokumentumnak 500 a szoba elemei. A beágyazott összetett gyűjtemények esetében a külső (szülő) elemen kívül minden beágyazott elem is számításba kerül.
+
+Ez a korlát csak az összetett gyűjteményekre vonatkozik, az összetett típusokra (például a címekre) vagy a karakterlánc-gyűjteményekre (például a címkékre).
 
 ## <a name="creating-complex-fields"></a>Összetett mezők létrehozása
 
@@ -93,7 +104,7 @@ Az alábbi példa egy olyan JSON-index sémát mutat be, amely egyszerű mezőke
 
 ## <a name="updating-complex-fields"></a>Összetett mezők frissítése
 
-Az általános mezőkre vonatkozó összes [újraindexelő szabály](search-howto-reindex.md) továbbra is összetett mezőkre vonatkozik. Az itt található főbb szabályok újbóli létrehozásakor a mező hozzáadásához nincs szükség index-újraépítésre, de a legtöbb módosítás nem szükséges.
+Az általános mezőkre vonatkozó összes [újraindexelő szabály](search-howto-reindex.md) továbbra is összetett mezőkre vonatkozik. Az itt található főbb szabályok újbóli létrehozásakor az összetett típushoz hozzáadott mezőhöz nem szükséges egy index-Újraépítés, de a legtöbb módosítás igen.
 
 ### <a name="structural-updates-to-the-definition"></a>A definíció szerkezeti frissítései
 
@@ -151,7 +162,7 @@ Egy összetett gyűjtemény mező szűréséhez használhat **lambda kifejezést
 
 A legfelső szintű egyszerű mezőkhöz hasonlóan a komplex mezők egyszerű almezői csak akkor szerepelhetnek a szűrőkben, ha az index definíciójában a **szűrhető** attribútum van beállítva `true` . További információ: [create index API Reference](/rest/api/searchservice/create-index).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Próbálja ki a [Hotels adatkészletet](https://github.com/Azure-Samples/azure-search-sample-data/blob/master/README.md) az **adatimportálás** varázslóban. Az adatok eléréséhez a readme szolgáltatásban megadott Cosmos DB kapcsolati információkra lesz szüksége.
 

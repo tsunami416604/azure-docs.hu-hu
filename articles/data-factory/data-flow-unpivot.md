@@ -1,5 +1,5 @@
 ---
-title: Adatforgalom leképezése az átalakításhoz
+title: Az átalakítás kibontása a leképezési adatfolyamban
 description: Azure Data Factory leképezési adatfolyamok kibontásának átalakítása
 author: kromerm
 ms.author: makromer
@@ -7,14 +7,14 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/14/2020
-ms.openlocfilehash: e7c0a4cd6e44994c4b002fcc2e5fde441cf22283
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.openlocfilehash: 38986c3f93856981e903ae93ed7788ae01fc6d5b
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
-ms.locfileid: "87541651"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91823582"
 ---
-# <a name="azure-data-factory-unpivot-transformation"></a>Azure Data Factory unpivot átalakítás
+# <a name="unpivot-transformation-in-mapping-data-flow"></a>Az átalakítás kibontása a leképezési adatfolyamban
 
 [!INCLUDE[appliesto-adf-asa-md](includes/appliesto-adf-asa-md.md)]
 
@@ -54,6 +54,6 @@ Ha úgy állítja be az oszlop elrendezését a "NORMAL" értékre, hogy az öss
 
 A végleges, nem felváltott adateredményhalmaz azt mutatja, hogy az oszlopok összesítései mostantól külön sorba vannak bontva.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Sorok oszlopokra való kimutatásához használja a [pivot transzformációt](data-flow-pivot.md) .
