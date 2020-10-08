@@ -975,6 +975,8 @@
           displayName: ARM
         - name: Áthelyezés régiók között
           href: how-to-move-regions.md
+        - name: Módosítások és törlés megakadályozása
+          href: resource-locks.md
     - name: Globális terjesztés
       items:
         - name: Többrégiós írások konfigurálása

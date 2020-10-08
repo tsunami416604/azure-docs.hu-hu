@@ -34,7 +34,7 @@
       items:
         - name: ASP.NET
           href: quickstart-v2-aspnet-webapp.md
-        - name: ASP.NET-mag
+        - name: ASP.NET Core
           href: quickstart-v2-aspnet-core-webapp.md
         - name: NodeJS
           href: quickstart-v2-nodejs-webapp.md
@@ -384,6 +384,9 @@
             - name: Alkalmazások migrálása ADAL-ból az MSAL-be
               href: msal-migration.md
               displayName: migration
+    - name: Webes Microsoft-identitáskódtár
+      href: microsoft-identity-web.md
+      displayName: 'auth, library, .NET Core'
     - name: Hitelesítési protokollok
       displayName: Auth protocol
       items:

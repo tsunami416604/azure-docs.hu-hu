@@ -20,10 +20,14 @@
       items:
         - name: Telefonszám lekérése
           href: quickstarts/telephony-sms/get-phone-number.md
+        - name: Telefonhívás hozzáadása az alkalmazáshoz
+          href: quickstarts/voice-video-calling/pstn-call.md
         - name: SMS küldése
           href: quickstarts/telephony-sms/send.md
         - name: SMS-események kezelése
           href: quickstarts/telephony-sms/handle-sms-events.md
+        - name: SMS küldése az Azure Logic Appsben
+          href: quickstarts/telephony-sms/logic-app.md
     - name: Hang- és videóhívás
       items:
         - name: Hanghívás hozzáadása az alkalmazáshoz

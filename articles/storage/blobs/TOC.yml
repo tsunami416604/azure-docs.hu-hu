@@ -462,6 +462,8 @@
               href: storage-blob-static-website-how-to.md
             - name: Integrálás az Azure CDN-nel
               href: static-website-content-delivery-network.md
+            - name: A GitHub Actions használata statikus hely üzembe helyezéséhez az Azure Storage-ben
+              href: storage-blobs-static-site-github-actions.md
         - name: Egyéni tartomány használata
           href: storage-custom-domain-name.md
         - name: Események átirányítása egyéni végponthoz

@@ -134,14 +134,12 @@
       items:
         - name: Az Azure Firewall központban történő telepítése
           href: howto-firewall.md
+        - name: A privát kapcsolat csatlakoztathatóságának konfigurálása
+          href: howto-private-link.md
     - name: Figyelés
       items:
         - name: Naplók és mérőszámok
           href: logs-metrics.md
-    - name: Private Link
-      items:
-        - name: A privát kapcsolat csatlakoztathatóságának konfigurálása
-          href: howto-private-link.md
 - name: Referencia
   items:
     - name: Azure PowerShell
