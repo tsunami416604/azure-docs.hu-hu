@@ -13,26 +13,26 @@ ms.workload: infrastructure-services
 ms.date: 06/13/2019
 ms.author: kumud
 ms.reviewer: ypitsch
-ms.openlocfilehash: 00199f81e2dc8ca699fabf312955bf7a8a2b5cbd
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.openlocfilehash: 05e966d3f4631e3c344bd97c0faec99cc3c6dd66
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2020
-ms.locfileid: "91398389"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91819895"
 ---
 # <a name="microsoft-global-network"></a>Microsoft globális hálózat
 
-A Microsoft a világ egyik legnagyobb gerinces hálózatát birtokolja és üzemelteti. Ez a globális és kifinomult architektúra, amely több mint 160 000 mérföldet ölel fel, összekapcsolja az adatközpontokat és az ügyfeleket. 
+A Microsoft a világ egyik legnagyobb gerinces hálózatát birtokolja és üzemelteti. Ez a globális és kifinomult architektúra, amely több mint 165 000 mérföldet ölel fel, összekapcsolja az adatközpontokat és az ügyfeleket. 
  
 Minden nap, a világ minden napján csatlakozik, és a Microsoft Azure, a Bing, a Dynamics 365, a Microsoft 365, az XBox és sok más számára több ezer kérést továbbít. A típustól függetlenül az ügyfelek azonnali megbízhatóságot és rugalmasságot várnak a szolgáltatásainktól. 
  
-A [Microsoft Global Network](https://azure.microsoft.com/global-infrastructure/global-network/) (WAN) a nagyszerű felhőalapú élmény megvalósításának központi része. A Microsoft- [adatközpontok](https://azure.microsoft.com/global-infrastructure/) 54 Azure-régiókban és a világ minden pontján stratégiai módon elhelyezett nagy szembőségű, globális hálózatban egyaránt elérhetővé teszi a rendelkezésre állást, a kapacitást és a rugalmasságot, hogy megfeleljenek az igényeknek.
+A [Microsoft Global Network](https://azure.microsoft.com/global-infrastructure/global-network/) (WAN) a nagyszerű felhőalapú élmény megvalósításának központi része. A Microsoft- [adatközpontok](https://azure.microsoft.com/global-infrastructure/) 61 Azure-régiókban és a világ minden pontján stratégiai módon elhelyezett nagy szembőségű, globális hálózatban egyaránt elérhetővé teszi a rendelkezésre állást, a kapacitást és a rugalmasságot, hogy megfeleljenek az igényeknek.
 
 ![Microsoft globális hálózat](./media/microsoft-global-network/microsoft-global-wan.png)
  
 ## <a name="get-the-premium-cloud-network"></a>A prémium szintű felhőalapú hálózat beszerzése
  
-A Microsoft Cloud használata esetén a [lehető legjobb élményt](https://www.sdxcentral.com/articles/news/azure-tops-aws-gcp-in-cloud-performance-says-thousandeyes/2018/11/) lehet választani. Abban a pillanatban, amikor az ügyfél-forgalom stratégiai módon elhelyezett Edge-csomópontokon keresztül belép a globális hálózatba, az adatok az optimalizált útvonalakon haladnak át a fénysebesség közelében. Ez optimális késést biztosít a legjobb teljesítmény érdekében. Ezek a peremhálózat-csomópontok, amelyek több mint 3500 egyedi internetes partnerhez (társhoz) csatlakoznak, több ezer kapcsolaton keresztül több mint 165 helyen, megadják az összekapcsolási stratégiánk alapjait. 
+A Microsoft Cloud használata esetén a [lehető legjobb élményt](https://www.sdxcentral.com/articles/news/azure-tops-aws-gcp-in-cloud-performance-says-thousandeyes/2018/11/) lehet választani. Abban a pillanatban, amikor az ügyfél-forgalom stratégiai módon elhelyezett Edge-csomópontokon keresztül belép a globális hálózatba, az adatok az optimalizált útvonalakon haladnak át a fénysebesség közelében. Ez optimális késést biztosít a legjobb teljesítmény érdekében. Ezek a peremhálózat-csomópontok, amelyek több mint 4000 egyedi internetes partnerhez (társhoz) csatlakoznak, több ezer kapcsolaton keresztül több mint 175 helyen, megadják az összekapcsolási stratégiánk alapjait. 
  
 Akár Londonból Tokióba, akár Washington D.C.-ből Los Angelesbe, a hálózati teljesítmény számszerűsítve van, és hatással van az olyan dolgokra, mint a késés, a jitter, a csomagok elvesztése és az átviteli sebesség.  A Microsoft a közvetlen csatlakozásokat előnyben részesítette a továbbítási hivatkozások helyett, így a forgalom szimmetrikusan tartja a forgalmat, és segít a komló, a felek és az elérési utak lehető legrövidebb és egyszerű megtartásában. 
 
@@ -70,5 +70,5 @@ Ezek az alapelvek a hálózat összes rétegére érvényesek: a gazdagép hál�
  
 Az Azure és a hálózat exponenciális növekedése elérte azt a pontot, ahol végül rájött, hogy az emberi intuíciót már nem lehet a globális hálózati műveletek kezeléséhez. A hálózatban a hosszú, közepes és rövid távú változások ellenőrzésének szükségessége érdekében kifejlesztettünk egy platformot, amely a termelési hálózatot szintetikusan tükrözte és emulálja. Tükrözött környezetek hozhatók létre, és több millió szimuláció is futtatható, lehetővé téve a szoftverek és a hardveres változások tesztelését, valamint azok hatását, mielőtt az éles platformra és hálózatra véglegesíti őket. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [További információ az Azure-ban elérhető hálózati szolgáltatásokról](https://azure.microsoft.com/product-categories/networking/)

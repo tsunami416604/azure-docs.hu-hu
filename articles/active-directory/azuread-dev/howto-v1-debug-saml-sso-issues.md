@@ -13,12 +13,12 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: luleon, hirsin, paulgarn
 ROBOTS: NOINDEX
-ms.openlocfilehash: 3f1829127d1eaf65be586ddff3fb2615cae72c5d
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.openlocfilehash: fcdb0a571a9d6b81e25d061c33d8a3a812da189f
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
-ms.locfileid: "88116138"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91819324"
 ---
 # <a name="debug-saml-based-single-sign-on-to-applications-in-azure-active-directory"></a>Az Azure Active Directoryban található alkalmazásokba történő SAML-alapú egyszeri bejelentkezés hibaelhárítása
 
@@ -86,7 +86,7 @@ Ha a bejelentkezési hiba nem tartalmaz megoldást, javasoljuk, hogy a visszajel
 
 Előfordulhat, hogy sikeresen bejelentkezik, majd az alkalmazás oldalán hibaüzenet jelenik meg. Ez akkor fordul elő, ha az Azure AD tokent ad ki az alkalmazásnak, de az alkalmazás nem fogadja el a választ.
 
-A hiba elhárításához kövesse az alábbi lépéseket:
+A hiba elhárításához kövesse az alábbi lépéseket, vagy tekintse meg ezt a [rövid videót arról, hogyan használhatja az Azure ad-t az SAML SSO hibaelhárításához](https://www.youtube.com/watch?v=poQCJK0WPUk&list=PLLasX02E8BPBm1xNMRdvP6GtA6otQUqp0&index=8):
 
 1. Ha az alkalmazás az Azure AD-katalógusban található, ellenőrizze, hogy végrehajtotta-e az alkalmazás Azure AD-vel való integrálásának lépéseit. Az alkalmazáshoz kapcsolódó integrációs utasításokért tekintse meg az [SaaS Application Integration oktatóanyagok listáját](../saas-apps/tutorial-list.md).
 1. Az SAML-válasz beolvasása.
@@ -102,6 +102,6 @@ A hiba elhárításához kövesse az alábbi lépéseket:
 1. Most, hogy áttekintette az SAML-választ, tekintse meg a [hiba az alkalmazás oldalán, miután bejelentkezett](../manage-apps/application-sign-in-problem-application-error.md) a probléma megoldásához szükséges útmutatásra. 
 1. Ha még nem tud sikeresen bejelentkezni, megkérheti az alkalmazás gyártójától, hogy mi hiányzik az SAML-válaszból.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy az egyszeri bejelentkezés az alkalmazáson dolgozik, [automatizálhatja a felhasználók üzembe](../app-provisioning/user-provisioning.md) helyezését és megszüntetését az SaaS-alkalmazásokhoz vagy [a feltételes hozzáférés használatának megkezdéséhez](../conditional-access/app-based-conditional-access.md).

@@ -9,12 +9,12 @@ ms.subservice: synapse-link
 ms.date: 04/21/2020
 ms.author: acomet
 ms.reviewer: jrasnick
-ms.openlocfilehash: f453c074126e448eb54d432532b9064b3eb3cb35
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 50717c7e8a7b0f748df98c1896e1b7eb64cd7be3
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91287892"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91819355"
 ---
 # <a name="connect-to-azure-synapse-link-preview-for-azure-cosmos-db"></a>Csatlakozás az Azure szinapszis hivatkozásához (előzetes verzió) Azure Cosmos DB
 
@@ -36,7 +36,7 @@ Ha nagy léptékű elemzést szeretne Azure Cosmos DB a működési teljesítmé
 
 ## <a name="navigate-to-synapse-studio"></a>Navigáljon a szinapszis studióhoz
 
-A szinapszis munkaterületen válassza a **szinapszis Studio elindítása**lehetőséget. A szinapszis Studio kezdőlapján válassza az * * adatelemet, amely az **adatObject Explorer**.
+A szinapszis munkaterületen válassza a **szinapszis Studio elindítása**lehetőséget. A szinapszis Studio kezdőlapján **válassza az adatelemet**, amely végigvezeti az **adatObject Explorer**.
 
 ## <a name="connect-an-azure-cosmos-db-database-to-a-synapse-workspace"></a>Azure Cosmos DB-adatbázis összekötése egy szinapszis-munkaterülettel
 
@@ -67,7 +67,7 @@ Azure Cosmos DB adatbázisok láthatók a Azure Cosmos DB szakaszban **csatolt**
 
 Ha a jobb gombbal rákattint egy tárolóra, olyan kézmozdulatok listája látható, amelyek elindítják a Spark vagy az SQL futási idejét. A tárolóba való írás a Azure Cosmos DB tranzakciós tárolójával történik, és a rendszer a kérelmek egységeit fogja felhasználni.  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Ismerkedjen meg a szinapszis és a Azure Cosmos DB között támogatottak között](./concept-synapse-link-cosmos-db-support.md)
 * [Ismerje meg, hogyan kérdezheti le az analitikai áruházat a Spark használatával](./how-to-query-analytical-store-spark.md)

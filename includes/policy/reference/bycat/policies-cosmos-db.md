@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 09/16/2020
+ms.date: 10/07/2020
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 3c41bea602c76a31c694edd8026f756a6093c913
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: abac36543eddcaba21f0dca5c5cc096593054891
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90982224"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91820541"
 ---
-|Name<br /><sub>(Azure Portal)</sub> |Leírás |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
+|Name (Név)<br /><sub>(Azure Portal)</sub> |Leírás |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[Azure Cosmos DB fióknak az ügyfelek által felügyelt kulcsokat kell használnia a REST-adatok titkosításához](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F1f905d99-2ab7-462c-a6b0-f709acca6c8f) |Az ügyfél által felügyelt kulcsokkal szabályozhatja a Azure Cosmos DB tárolt adatok titkosítását, ha ez egy szabályozási vagy megfelelőségi követelmény. Az ügyfél által felügyelt kulcsok emellett kettős titkosítást is biztosítanak, ha egy második titkosítási réteget adnak hozzá, amely a szolgáltatás által felügyelt kulcsokkal együtt az alapértelmezetten történik. Lásd [https://aka.ms/cosmosdb-cmk](https://aka.ms/cosmosdb-cmk) |naplózás, megtagadás, letiltva |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Cosmos%20DB/Cosmos_CMK_Deny.json) |
 |[Azure Cosmos DB fiókoknak tűzfalszabályok](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F862e97cf-49fc-4a5c-9de4-40d4e2e7c8eb) |Naplózhatja vagy megtagadhatja a konfigurált IP-szabályokkal nem rendelkező erőforrásokat, és alapértelmezés szerint engedélyezheti az összes hálózatot. Azok a fiókok, amelyeken engedélyezve van a virtuális hálózati szűrővel megadott legalább egy IP-szabály, megfelelőnek tekintendők. A nyilvános hozzáférést letiltó fiókok is megfelelőnek tekintendők. |Naplózás, megtagadás, letiltva |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Cosmos%20DB/Cosmos_NetworkRulesExist_Audit.json) |

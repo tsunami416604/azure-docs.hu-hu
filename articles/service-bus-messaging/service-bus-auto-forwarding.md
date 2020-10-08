@@ -4,12 +4,12 @@ description: Ez a cikk egy Azure Service Bus üzenetsor vagy előfizetés egy m�
 ms.topic: article
 ms.date: 06/23/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 34b73967813abdcb811221aa4a3a4ac96dce0664
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 8f5f93f65871c0b9658a75264ab959dbae7fefe7
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91333681"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91819573"
 ---
 # <a name="chaining-service-bus-entities-with-autoforwarding"></a>Service Bus entitások láncolása az autoforwarding révén
 
@@ -52,6 +52,8 @@ Ha összekapcsolja az egyes témaköröket egy összetett témakör számos elő
 Service Bus egy műveletet számláz az egyes továbbított üzenetekhez. Ha például egy, a 20 előfizetéssel rendelkező témakörre küld üzenetet, és mindegyik úgy van konfigurálva, hogy az üzeneteket egy másik várólistára vagy témakörbe továbbítsa, akkor a számlázás 21 műveletként történik, ha az összes első szintű előfizetés megkapja az üzenet másolatát.
 
 Egy másik várólistához vagy témakörhöz láncolt előfizetés létrehozásához az előfizetés létrehozójának a forrás és a cél entitáson is **kezelnie** kell a felügyeleti jogosultságokat. Az üzenetek a forrás témakörbe való küldése csak a forrás témakör **küldési** engedélyeit igényli.
+
+Ne hozzon létre olyan láncot, amely meghaladja a 4 ugrást. A 4 ugrásnál hosszabb üzeneteket a rendszer kézbesíti.
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -10,12 +10,12 @@ ms.topic: how-to
 ms.workload: identity
 ms.date: 10/06/2020
 ms.author: rolyon
-ms.openlocfilehash: e5b0eb5fc9014a4f8df0f0cc363b5dddb45674af
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.openlocfilehash: 35c6d94ce69acf59ae6cd8b26b0ad75645eb526a
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/07/2020
-ms.locfileid: "91804180"
+ms.locfileid: "91819707"
 ---
 # <a name="transfer-an-azure-subscription-to-a-different-azure-ad-directory"></a>Azure-előfizetés átvitele egy másik Azure AD-címtárba
 
@@ -24,7 +24,7 @@ A szervezetek több Azure-előfizetéssel is rendelkezhetnek. Minden előfizeté
 Ez a cikk az előfizetés egy másik Azure AD-címtárba való átviteléhez és az átvitel után az egyes erőforrások újbóli létrehozásához szükséges alapvető lépéseket ismerteti.
 
 > [!NOTE]
-> Az Azure Cloud Service Providers (CSP) előfizetések esetében az előfizetés Azure AD-címtárának módosítása nem támogatott.
+> Az Azure Cloud Solution Providers (CSP) előfizetések esetében az előfizetés Azure AD-címtárának módosítása nem támogatott.
 
 ## <a name="overview"></a>Áttekintés
 
@@ -377,7 +377,7 @@ Ha szeretné eltávolítani a hozzáférést a forrás címtárban lévő felhas
 
 1. A tanúsítványokat használó erőforrások esetében frissítse a tanúsítványt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Azure-előfizetés számlázási tulajdonjogának átadása másik fióknak](../cost-management-billing/manage/billing-subscription-transfer.md)
 - [Azure-előfizetések átvitele az előfizetők és a CSP-k között](../cost-management-billing/manage/transfer-subscriptions-subscribers-csp.md)

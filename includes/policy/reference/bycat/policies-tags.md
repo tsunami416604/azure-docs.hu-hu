@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 09/16/2020
+ms.date: 10/07/2020
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: b03ae1743b2281a9d79342e8a90537a68f31f45f
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 9779036c432fc2dbeb8aea05e79c90e602db9b99
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90982284"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91820642"
 ---
-|Name<br /><sub>(Azure Portal)</sub> |Leírás |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
+|Name (Név)<br /><sub>(Azure Portal)</sub> |Leírás |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[Címke hozzáadása az erőforráscsoportok csoporthoz](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F726aca4c-86e9-4b04-b0c5-073027359532) |Hozzáadja a megadott címkét és értéket, ha bármely erőforráscsoport hiányzik vagy frissül. A meglévő erőforráscsoportok javíthatók egy szervizelési feladat elindításával. Ha a címke eltérő értékkel rendelkezik, nem lesz módosítva. |módosítása |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Tags/AddTag_ResourceGroup_Modify.json) |
 |[Címke hozzáadása az erőforrásokhoz](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F4f9dc7db-30c1-420c-b61a-e1d640128d26) |Hozzáadja a megadott címkét és értéket, ha a címkéből hiányzó összes erőforrás létrejött vagy frissül. A meglévő erőforrások egy javítási feladat indításával javíthatók. Ha a címke eltérő értékkel rendelkezik, nem lesz módosítva. Nem módosítja az erőforráscsoportokon lévő címkéket. |módosítása |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Tags/AddTag_Modify.json) |

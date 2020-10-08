@@ -9,12 +9,12 @@ ms.subservice: general
 ms.topic: conceptual
 ms.date: 12/02/2019
 ms.author: mbaldwin
-ms.openlocfilehash: f32a988ec0d75ca8d8eca04e69edd7226bf283b4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 7aa33bb062abf748031b27df46d42e8f13aabfc3
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81432085"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91819969"
 ---
 # <a name="azure-key-vault-throttling-guidance"></a>Az Azure Key Vaultra vonatkozó szabályozási irányelvek
 
@@ -43,7 +43,7 @@ Ha úgy látja, hogy a fentiek továbbra sem felelnek meg az igényeinek, tölts
 |--|--|--|--|--|--|--|--|--|
 | https://mykeyvault.vault.azure.net/ | | Kulcs | Előjel | EC | P-256 | Nem | 200 | 1000 |
 
-\*A lehetséges értékek teljes listáját a [Azure Key Vault műveletek](/rest/api/keyvault/key-operations)című részben tekintheti meg.
+\* A lehetséges értékek teljes listáját a [Azure Key Vault műveletek](/rest/api/keyvault/key-operations)című részben tekintheti meg.
 
 Ha további kapacitást hagy jóvá, vegye figyelembe a következőket a kapacitás növekedésének eredményeképpen:
 1. Az adatkonzisztencia-modell módosul. Miután a tár engedélyezve van a további adatátviteli kapacitással, a Key Vault szolgáltatás adatkonzisztencia-garanciája módosul (a nagyobb mennyiségű RPS-vel való megfeleléshez szükséges, mivel a mögöttes Azure Storage szolgáltatás nem tud lépést tartani).  Dióhéjban:
@@ -75,7 +75,7 @@ SecretClientOptions options = new SecretClientOptions()
             Mode = RetryMode.Exponential
          }
     };
-    var client = new SecretClient(new Uri(https://keyVaultName.vault.azure.net"), new DefaultAzureCredential(),options);
+    var client = new SecretClient(new Uri("https://keyVaultName.vault.azure.net"), new DefaultAzureCredential(),options);
                                  
     //Retrieve Secret
     secret = client.GetSecret(secretName);
@@ -96,7 +96,7 @@ A 429-as HTTP-hibakódon kezdje el az ügyfél szabályozását egy exponenciál
 
 Ezen a ponton nem kell lekérdezni a HTTP 429-Response kódokat.
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 A Microsoft Cloud szabályozásának mélyebb tájolását lásd: [szabályozási minta](https://docs.microsoft.com/azure/architecture/patterns/throttling).
 

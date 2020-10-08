@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/02/2020
 ms.author: jeedes
-ms.openlocfilehash: 0c43dfe3ad28417e13196c5ac1e75419906f6eae
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 1a0fff21c85104498895c9de20de9961a77cffeb
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549153"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91820498"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-hrworks-single-sign-on"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció az HRworks egyszeri bejelentkezéssel
 
@@ -100,7 +100,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Create** (Létrehozás) gombra.
+   1. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -156,15 +156,15 @@ Az Azure AD-felhasználók engedélyezéséhez jelentkezzen be az HRworks egysze
 
 1. A menüsáv bal oldalán kattintson a **rendszergazda**  >  **személyek**  >  **személyre**  >  **új személy** elemre.
 
-     ![Egyszeri bejelentkezés konfigurálása](./media/hrworks-single-sign-on-tutorial/configure02.png)
+     ![Képernyőfelvétel: a H R Works oldala, melyen személyeket és új személyeket jelölt ki.](./media/hrworks-single-sign-on-tutorial/configure02.png)
 
 1. Az előugró ablakban kattintson a **tovább**gombra.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/hrworks-single-sign-on-tutorial/configure03.png)
+    ![A képernyőképen a személy számára kiválasztható országok listája látható.](./media/hrworks-single-sign-on-tutorial/configure03.png)
 
 1. Az **új személy létrehozása országba jogi feltételek** előugró ablakban adja meg a megfelelő adatokat, például az **Utónév**és a **vezetéknév nevet** , majd kattintson a **Létrehozás**gombra.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/hrworks-single-sign-on-tutorial/configure04.png)
+    ![Képernyőfelvétel: szövegmezők, ahol megadhatja a személy első és utolsó nevét.](./media/hrworks-single-sign-on-tutorial/configure04.png)
 
 ## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
 

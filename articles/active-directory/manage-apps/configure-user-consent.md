@@ -11,12 +11,12 @@ ms.topic: how-to
 ms.date: 06/01/2020
 ms.author: kenwith
 ms.reviewer: arvindh, luleon, phsignor
-ms.openlocfilehash: 877e90fa3c1c8a595c438fc6745c142e97b5692c
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.openlocfilehash: cff2af745e9b79f573aba02e0a9baefe4a5e45a3
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/07/2020
-ms.locfileid: "91803279"
+ms.locfileid: "91819275"
 ---
 # <a name="configure-how-end-users-consent-to-applications"></a>A végfelhasználók alkalmazásokra vonatkozó hozzájárulásának konfigurálása
 
@@ -75,7 +75,7 @@ Ha engedélyezni szeretné a felhasználói hozzájárulást, válassza ki, hogy
   ```powershell
   Set-AzureADMSAuthorizationPolicy `
      -Id "authorizationPolicy" `
-     -PermissionGrantPolicyIdsAssignedToDefaultUserRole @("{consent-policy-id}")
+     -PermissionGrantPolicyIdsAssignedToDefaultUserRole @("managePermissionGrantsForSelf.{consent-policy-id}")
   ```
 
 A helyére írja be az `{consent-policy-id}` alkalmazni kívánt szabályzat azonosítóját. Kiválaszthat egy létrehozott [egyéni alkalmazás-engedélyezési szabályzatot](manage-app-consent-policies.md#create-a-custom-app-consent-policy) , vagy a következő beépített szabályzatok közül választhat:
@@ -90,7 +90,7 @@ Ha például engedélyezni kívánja a felhasználói engedélyt a beépített s
 ```powershell
 Set-AzureADMSAuthorizationPolicy `
    -Id "authorizationPolicy" `
-   -PermissionGrantPolicyIdsAssignedToDefaultUserRole @("microsoft-user-default-low")
+   -PermissionGrantPolicyIdsAssignedToDefaultUserRole @("managePermissionGrantsForSelf.microsoft-user-default-low")
 ```
 
 ---
@@ -172,7 +172,7 @@ A [AzureADPreview](https://docs.microsoft.com/powershell/module/azuread/?view=az
     }
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További tudnivalók:
 

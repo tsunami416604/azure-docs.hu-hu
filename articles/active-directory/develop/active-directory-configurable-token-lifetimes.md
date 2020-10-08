@@ -13,12 +13,12 @@ ms.date: 09/29/2020
 ms.author: ryanwi
 ms.custom: aaddev, identityplatformtop40, content-perf, FY21Q1
 ms.reviewer: hirsin, jlu, annaba
-ms.openlocfilehash: a9bf992a65914afb8fa800041b57ad9f44ba4fa0
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.openlocfilehash: 8697676abe5af77c8c7795ae4e2ec6480cb99e91
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91595610"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91819440"
 ---
 # <a name="configurable-token-lifetimes-in-microsoft-identity-platform-preview"></a>Konfigurálható jogkivonat-élettartamok a Microsoft Identity platformban (előzetes verzió)
 
@@ -90,9 +90,9 @@ A jogkivonat élettartama házirend olyan házirend-objektum, amely a jogkivonat
 | Hozzáférési jogkivonat élettartama |<sup>2</sup> . AccessTokenLifetime |Hozzáférési tokenek, azonosító tokenek, egy SAML2 tokenek |1 óra |10 perc |1 nap |
 | Frissítési jogkivonat maximális inaktív ideje |MaxInactiveTime |Tokenek frissítése |90 nap |10 perc |90 nap |
 | Egy tényező frissítési Tokenének maximális kora |MaxAgeSingleFactor |Tokenek frissítése (bármely felhasználó esetében) |Visszavonásig |10 perc |Visszavonás:<sup>1</sup> |
-| Multi-Factor refresh token Max Age |MaxAgeMultiFactor |Tokenek frissítése (bármely felhasználó esetében) | 180 nap |10 perc |Visszavonás:<sup>1</sup> |
+| Multi-Factor refresh token Max Age |MaxAgeMultiFactor |Tokenek frissítése (bármely felhasználó esetében) | 180 nap |10 perc |180 nap<sup>1</sup> |
 | Egy tényezős munkamenet-token maximális kora |MaxAgeSessionSingleFactor |Munkamenet-tokenek (állandó és nem állandó) |Visszavonásig |10 perc |Visszavonás:<sup>1</sup> |
-| Többtényezős munkamenet-token maximális kora |MaxAgeSessionMultiFactor |Munkamenet-tokenek (állandó és nem állandó) | 180 nap |10 perc |Visszavonás:<sup>1</sup> |
+| Többtényezős munkamenet-token maximális kora |MaxAgeSessionMultiFactor |Munkamenet-tokenek (állandó és nem állandó) | 180 nap |10 perc | 180 nap<sup>1</sup> |
 
 * <sup>1</sup>365 nappal az attribútumok maximális explicit hosszúsága adható meg.
 * <sup>2</sup> A Microsoft Teams Web Client működésének biztosítása érdekében ajánlott a AccessTokenLifetime 15 percnél hosszabb ideig megőrizni a Microsoft Teams szolgáltatásban.
@@ -246,6 +246,6 @@ A szolgáltatás használatához prémium szintű Azure AD P1 licenc szükséges
 
 A [Microsoft 365 vállalati verzió licenccel](/office365/servicedescriptions/microsoft-365-service-descriptions/microsoft-365-business-service-description) rendelkező ügyfelek hozzáférhetnek a feltételes hozzáférési funkciókhoz is.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információért olvassa el [a jogkivonat-élettartamok konfigurálásának példáit](configure-token-lifetimes.md).

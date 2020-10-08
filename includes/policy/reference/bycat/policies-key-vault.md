@@ -2,17 +2,17 @@
 author: DCtheGeek
 ms.service: azure-policy
 ms.topic: include
-ms.date: 09/16/2020
+ms.date: 10/07/2020
 ms.author: dacoulte
 ms.custom: generated
-ms.openlocfilehash: 1c5ab172f4d6382cf09d1c1f67bfa6b673f7c82c
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: f8e70191a390144ac25d9973ae3070532f35c8fb
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90982695"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91820694"
 ---
-|Name<br /><sub>(Azure Portal)</sub> |Leírás |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
+|Name (Név)<br /><sub>(Azure Portal)</sub> |Leírás |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[A tanúsítványokat a megadott integrált hitelesítésszolgáltatónak kell kiállítania](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F8e826246-c976-48f6-b03e-619bb92b3d82) |A szervezeti megfelelőségi követelmények kezelése az Azure-beli integrált hitelesítésszolgáltatók megadásával, amelyek tanúsítványokat bocsáthatnak ki a kulcstartóban (például Digicert vagy GlobalSign). |naplózás, megtagadás, letiltva |[2.0.0 – előzetes verzió](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/Certificates_Issuers_SupportedCAs.json) |
 |[A tanúsítványokat a megadott nem integrált hitelesítésszolgáltatótól kell kibocsátani](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa22f4a40-01d3-4c7d-8071-da157eeff341) |A szervezeti megfelelőségi követelményeket a kulcstartóban tanúsítványokat kiállító egyéni vagy belső hitelesítésszolgáltatók megadásával kezelheti. |naplózás, megtagadás, letiltva |[2.0.0 – előzetes verzió](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Key%20Vault/Certificates_Issuers_CustomCAs.json) |

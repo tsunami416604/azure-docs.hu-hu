@@ -11,12 +11,12 @@ author: msmimart
 manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 159a14b30113a251c6ac61c4c04a2a3c4d69d3e5
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.openlocfilehash: 132711b4a3fc584261cd577b4b8f1d4fb13da09d
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87909418"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91819379"
 ---
 # <a name="grant-b2b-users-in-azure-ad-access-to-your-on-premises-applications"></a>B2B-felhasználók engedélyezése az Azure AD-ben a helyszíni alkalmazásokhoz való hozzáféréshez
 
@@ -41,6 +41,9 @@ Ahhoz, hogy a B2B-felhasználók hozzáférhessenek az integrált Windows-hitele
 
 - **Hitelesítés az Azure ad Application Proxyon keresztül**. A B2B-felhasználóknak képesnek kell lenniük a hitelesítésre a helyszíni alkalmazásban. Ehhez közzé kell tennie a helyszíni alkalmazást az Azure AD Application Proxyon keresztül. További információkért lásd: [az alkalmazásproxy használatának első lépései, az összekötő telepítése](../manage-apps/application-proxy-enable.md) és [alkalmazások közzététele az Azure ad Application proxy használatával](../manage-apps/application-proxy-publish-azure-portal.md).
 - **Engedélyezés vállalatközi felhasználói objektumon keresztül a helyszíni címtárban**. Az alkalmazásnak képesnek kell lennie a felhasználói hozzáférés ellenőrzéséhez, és hozzáférést kell biztosítania a megfelelő erőforrásokhoz. Az engedélyezés végrehajtásához a IWA és a KCD felhasználói objektumra van szükség a helyszíni Windows Server Active Directory. Az [egyszeri bejelentkezés a KCD](../manage-apps/application-proxy-configure-single-sign-on-with-kcd.md#how-single-sign-on-with-kcd-works)-mel való használatával című cikkben leírtak szerint az alkalmazásproxy erre a felhasználói objektumra van szüksége a felhasználó megszemélyesítéséhez és egy Kerberos-token beszerzéséhez az alkalmazáshoz. 
+
+   > [!NOTE]
+   > Az Azure AD Application Proxy konfigurálásakor győződjön meg arról, hogy a **delegált bejelentkezési identitás** a IWA egyszeri bejelentkezéshez az **egyszerű felhasználónév** (alapértelmezett) értékre van beállítva.
 
    A B2B felhasználói forgatókönyvben két módszer áll rendelkezésre, amelyek segítségével létrehozhatja az engedélyezéshez szükséges vendég felhasználói objektumokat a helyszíni címtárban:
 
@@ -74,7 +77,7 @@ További információ a (z) 2016 Service Pack 1 és a Rendszerfelügyeleti websz
 
 Létezik egy PowerShell-minta parancsfájl, amely kiindulási pontként használható a vendég felhasználói objektumok létrehozásához a helyszíni Active Directory.
 
-A parancsfájlt és a Readme fájlt letöltheti a [letöltőközpontból](https://www.microsoft.com/download/details.aspx?id=51495). Válassza ki a **parancsfájlt és a readme-t az Azure ad B2B-felhasználók on-prem.zipfájljának lekéréséhez** .
+A parancsfájlt és a Readme fájlt letöltheti a [letöltőközpontból](https://www.microsoft.com/download/details.aspx?id=51495). Válassza ki a **parancsfájlt és a readme-t az Azure ad B2B-felhasználók on-prem.zipfájljának lekéréséhez ** .
 
 A szkript használata előtt győződjön meg arról, hogy áttekinti az előfeltételeket és a fontos szempontokat a társított readme fájlban. Továbbá Ismerje meg, hogy a szkript csak mintaként érhető el. A fejlesztői csapatnak vagy partnernek a futtatása előtt testre kell szabnia és ellenőriznie kell a parancsfájlt.
 

@@ -8,12 +8,12 @@ ms.service: marketplace
 ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 08/30/2020
-ms.openlocfilehash: 1d75e0d9f57aee495524e2d35231dd3c78cedea1
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.openlocfilehash: 8dfc1eb35572a6b706deb47335357417bd837825
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2020
-ms.locfileid: "91708118"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91819933"
 ---
 # <a name="how-to-plan-a-saas-offer-for-the-commercial-marketplace"></a>SaaS-ajánlat tervezése a kereskedelmi piactéren
 
@@ -130,8 +130,8 @@ Amikor [új SaaS-ajánlatot hoz létre](create-new-saas-offer.md) a partner Cent
 5. Használati feltételek
 6. Adatvédelmi irányelvek
 7. Ajánlat neve
-8. Összegzés
-9. Description
+8. Összefoglalás
+9. Leírás
 10. Képernyőképek/videók
 11. Dokumentumok
 
@@ -158,11 +158,11 @@ Ha könnyebben létre szeretné hozni az ajánlatot, készítse elő ezeket az e
     Ez a szövegmező olyan Rich Text Editor-vezérlőkkel rendelkezik, amelyekkel a Leírás még vonzóbbá teheti a leírást. A leírást a HTML-címkék használatával is formázhatja. Ebben a mezőben legfeljebb 3 000 karaktert adhat meg, beleértve a HTML-jelölést is. További tippeket a [nagyszerű alkalmazás leírásának írása](https://docs.microsoft.com/windows/uwp/publish/write-a-great-app-description)című témakörben talál.
 
 - **Első lépések utasítások**: Ha úgy dönt, hogy eladja az ajánlatot a Microsoft (visszagörgethető ajánlat) szolgáltatáson keresztül, ez a mező kötelező. Ezek az utasítások segítenek az ügyfeleknek az SaaS-ajánlathoz való kapcsolódásban. Akár 3 000 karakterből álló szöveget is hozzáadhat, és a részletesebb online dokumentációra mutató hivatkozásokat is megadhat.
-- **Kulcsszavak keresése** (nem kötelező): legfeljebb három olyan keresési kulcsszót adhat meg, amelyeket az ügyfelek a piactér (ek) ben használhatnak fel az ajánlat megtalálására. Nem kell megadnia az ajánlat **nevét** és **leírását**: a program automatikusan belefoglalja a szöveget a keresésbe.
+- **Kulcsszavak keresése** (nem kötelező): legfeljebb három olyan kulcsszavat adjon meg, amelyekkel az ügyfelek megtalálják az ajánlatot az online áruházakban. Nem kell megadnia az ajánlat **nevét** és **leírását**: a program automatikusan belefoglalja a szöveget a keresésbe.
 - **Adatvédelmi szabályzat hivatkozása**: a vállalata adatvédelmi szabályzatának URL-címe. Érvényes adatvédelmi szabályzatot kell megadnia, és annak biztosításáért felelős, hogy az alkalmazás megfelel az adatvédelmi törvényeknek és előírásoknak.
 - **Kapcsolattartási adatok**: a szervezet következő névjegyeit kell kijelölnie:
   - **Támogatási kapcsolattartó**: adja meg a Microsoft-partnerek nevét, telefonszámát és e-mail-címét, amelyet az ügyfelek nyitott jegyekként használhatnak. Meg kell adnia a támogatási webhely URL-címét is.
-  - **Mérnöki kapcsolattartó**: adja meg a Microsoft számára a nevét, telefonszámát és e-mail-címét, ha problémák merülnek fel az ajánlatával kapcsolatban. A kapcsolattartási adatok nem szerepelnek a piactéren.
+  - **Mérnöki kapcsolattartó**: adja meg a Microsoft számára a nevét, telefonszámát és e-mail-címét, ha problémák merülnek fel az ajánlatával kapcsolatban. A kapcsolattartási adatok nem szerepelnek a kereskedelmi piactéren.
   - **CSP programbeli kapcsolat** (nem kötelező): adja meg a nevet, a telefonszámot és az e-mailt, ha bejelentkezett a CSP programba, így ezek a partnerek bármilyen kérdéssel felvehetik Önnel a kapcsolatot. Megadhatja a marketing-anyagok URL-címét is.
 - **Hasznos hivatkozások** (nem kötelező): az ajánlat felhasználói számára különböző forrásokra mutató hivatkozásokat is megadhat. Például fórumok, GYIK és kibocsátási megjegyzések.
 - **Támogató dokumentumok**: legfeljebb három, az ügyfelek felé irányuló dokumentumot, például tanulmányokat, brosúrákat, ellenőrzőlistákat vagy PowerPoint-bemutatókat biztosíthat.
@@ -174,16 +174,16 @@ Ha könnyebben létre szeretné hozni az ajánlatot, készítse elő ezeket az e
 
   Ezeket az emblémákat az online áruházak különböző helyein használják:
 
-  -  A kis embléma megjelenik az Azure Marketplace keresési eredményei között, valamint a Microsoft AppSource főoldalán és a keresési eredmények oldalon.
-  -  A közepes embléma akkor jelenik meg, amikor új erőforrást hoz létre Microsoft Azureban.
-  -  Az Azure Marketplace-en és a Microsoft AppSourceban megjelenik a nagyméretű embléma az ajánlati lista oldalán.
+  - A kis embléma megjelenik az Azure Marketplace keresési eredményei között, valamint a Microsoft AppSource főoldalán és a keresési eredmények oldalon.
+  - A közepes embléma akkor jelenik meg, amikor új erőforrást hoz létre Microsoft Azureban.
+  - Az Azure Marketplace-en és a Microsoft AppSourceban megjelenik a nagyméretű embléma az ajánlati lista oldalán.
 
 - **Média – képernyőképek**: legalább egy és legfeljebb öt képernyőképet kell hozzáadnia az alábbi követelményekkel, amelyek bemutatják, hogy az ajánlat hogyan működik:
   - 1280 x 720 képpont
   - . png fájl
   - Tartalmaznia kell egy feliratot
 - **Média – videók** (nem kötelező): legfeljebb négy videót adhat hozzá az alábbi követelményekkel:
-  - Név
+  - Name (Név)
   - URL: csak a YouTube vagy a Vimeo szolgáltatásban kell tárolni.
   - Miniatűr: 1280 x 720. png fájl
 

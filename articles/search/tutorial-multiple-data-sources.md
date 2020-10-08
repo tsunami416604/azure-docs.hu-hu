@@ -7,14 +7,14 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: tutorial
-ms.date: 06/20/2020
+ms.date: 10/07/2020
 ms.custom: devx-track-csharp
-ms.openlocfilehash: d3dd75d246c1f74253a9ce910e50b05402065464
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 06b80b5fe14a7a913d8ad8454c6568b04fe01c2f
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88998458"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91819790"
 ---
 # <a name="tutorial-index-from-multiple-data-sources-using-the-net-sdk"></a>Oktatóanyag: több adatforrásból származó index a .NET SDK használatával
 
@@ -61,19 +61,19 @@ Ez a példa két kisebb adathalmazt használ, amelyek a hét kitalált szállod�
 
 1. Válassza a **adatkezelő** lehetőséget, majd válassza az **új adatbázis**lehetőséget.
 
-   ![Új adatbázis létrehozása](media/tutorial-multiple-data-sources/cosmos-newdb.png "Új adatbázis létrehozása")
+   :::image type="content" source="media/tutorial-multiple-data-sources/cosmos-newdb.png" alt-text="Új adatbázis létrehozása" border="false":::
 
 1. Adja meg a **Hotel-Rooms-db**nevet. Fogadja el az alapértelmezett értékeket a többi beállításhoz.
 
-   ![Adatbázis konfigurálása](media/tutorial-multiple-data-sources/cosmos-dbname.png "Adatbázis konfigurálása")
+   :::image type="content" source="media/tutorial-multiple-data-sources/cosmos-dbname.png" alt-text="Új adatbázis létrehozása" border="false":::
 
 1. Hozzon létre egy új tárolót. Használja az imént létrehozott meglévő adatbázist. Adja **meg a helyet a tároló** neveként, és használja a **/HotelId** a partíciós kulcshoz.
 
-   ![Tároló hozzáadása](media/tutorial-multiple-data-sources/cosmos-add-container.png "Tároló hozzáadása")
+   :::image type="content" source="media/tutorial-multiple-data-sources/cosmos-add-container.png" alt-text="Új adatbázis létrehozása" border="false":::
 
 1. Válassza a **hotelek**területen található **elemek** elemet, majd kattintson az **elem feltöltése** gombra a parancssorban. Keresse meg, majd válassza ki a **cosmosdb/HotelsDataSubset_CosmosDb.js** fájlt a Project mappában.
 
-   ![Feltöltés Azure Cosmos DB gyűjteménybe](media/tutorial-multiple-data-sources/cosmos-upload.png "Feltöltés Cosmos DB gyűjteménybe")
+   :::image type="content" source="media/tutorial-multiple-data-sources/cosmos-upload.png" alt-text="Új adatbázis létrehozása" border="false":::
 
 1. A refresh (frissítés) gombbal frissítheti a Hotels gyűjteményben lévő elemek nézetét. A felsorolt hét új adatbázis-dokumentumnak kell megjelennie.
 
@@ -83,11 +83,11 @@ Ez a példa két kisebb adathalmazt használ, amelyek a hét kitalált szállod�
 
 1. [Hozzon létre egy](../storage/blobs/storage-quickstart-blobs-portal.md) " **Hotel-Rooms** " nevű BLOB-tárolót a minta szállodai szoba JSON-fájljainak tárolásához. Megadhatja a nyilvános hozzáférési szintet bármelyik érvényes értékéhez.
 
-   ![Blobtároló létrehozása](media/tutorial-multiple-data-sources/blob-add-container.png "Blobtároló létrehozása")
+   :::image type="content" source="media/tutorial-multiple-data-sources/blob-add-container.png" alt-text="Új adatbázis létrehozása" border="false":::
 
 1. A tároló létrehozása után nyissa meg, majd válassza a parancssáv **feltöltés** elemét. Navigáljon a minta fájlokat tartalmazó mappához. Jelölje ki az összeset, majd kattintson a **feltöltés**elemre.
 
-   ![Fájlok feltöltése](media/tutorial-multiple-data-sources/blob-upload.png "Fájlok feltöltése")
+   :::image type="content" source="media/tutorial-multiple-data-sources/blob-upload.png" alt-text="Új adatbázis létrehozása" border="false":::
 
 A feltöltés befejeződése után a fájlok megjelennek az adattároló listájában.
 
@@ -105,7 +105,7 @@ Az Azure Cognitive Search szolgáltatással való kommunikációhoz szüksége l
 
    Kérje le a lekérdezési kulcsot is. Ajánlott a lekérdezési kérelmeket csak olvasási hozzáféréssel kibocsátani.
 
-   ![A szolgáltatás nevének és a rendszergazda és a lekérdezési kulcsok beszerzése](media/search-get-started-nodejs/service-name-and-keys.png)
+   :::image type="content" source="media/search-get-started-nodejs/service-name-and-keys.png" alt-text="Új adatbázis létrehozása" border="false":::
 
 Érvényes kulcs birtokában kérelmenként létesíthető megbízhatósági kapcsolat a kérést küldő alkalmazás és az azt kezelő szolgáltatás között.
 
@@ -115,7 +115,7 @@ Az Azure Cognitive Search szolgáltatással való kommunikációhoz szüksége l
 
 1. A **Tallózás** lapon keresse meg és telepítse a **Microsoft. Azure. Search** (9.0.1 vagy újabb verzió). A telepítés befejezéséhez kattintson a további párbeszédablakok lehetőségre.
 
-    ![Azure-kódtárak hozzáadása a NuGet használatával](./media/tutorial-csharp-create-first-app/azure-search-nuget-azure.png)
+    :::image type="content" source="media/tutorial-csharp-create-first-app/azure-search-nuget-azure.png" alt-text="Új adatbázis létrehozása" border="false":::
 
 1. Keresse meg a **Microsoft.Extensions.Configuration.Jsa** NuGet-csomagban, és telepítse azt is.
 
@@ -352,7 +352,7 @@ A program futtatása után megtekintheti a feltöltött keresési indexet a port
 
 A Azure Portalban nyissa meg a keresési szolgáltatás **áttekintése** lapot, és keresse meg a **Hotel-Rooms-Sample** indexet az **indexek** listájában.
 
-  ![Az Azure Cognitive Search indexek listája](media/tutorial-multiple-data-sources/index-list.png "Az Azure Cognitive Search indexek listája")
+  :::image type="content" source="media/tutorial-multiple-data-sources/index-list.png" alt-text="Új adatbázis létrehozása" border="false":::
 
 Kattintson a Hotel-Rooms-Sample index elemre a listában. Ekkor megjelenik az indexhez tartozó keresési Explorer felülete. Adjon meg egy lekérdezést egy olyan kifejezéshez, mint a "Luxury". Meg kell jelennie legalább egy dokumentumnak az eredményekben, és a dokumentumnak tartalmaznia kell a Room Objects-objektumok listáját a szobák tömbben.
 
