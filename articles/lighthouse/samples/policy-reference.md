@@ -1,15 +1,15 @@
 ---
 title: Az Azure Lighthouse beépített szabályzat-definíciói
 description: Felsorolja Azure Policy az Azure Lighthouse beépített szabályzat-definícióit. Ezek a beépített szabályzat-definíciók közös megközelítéseket biztosítanak az Azure-erőforrások kezeléséhez.
-ms.date: 09/16/2020
+ms.date: 10/07/2020
 ms.topic: reference
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 5ab66af95ab4bbfdebf7b2ab71af4297485f7090
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 7556fc99e0c80b0968b91391879cb07b5aa89c74
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90971919"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91821623"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-lighthouse"></a>Az Azure Lighthouse beépített definíciói Azure Policy
 

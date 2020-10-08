@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/07/2020
 ms.author: jeedes
-ms.openlocfilehash: 007f4d0c0e56051c369d8d06cdd40c9251647673
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: b26ee6d6e82903a3dad91ae931885f62daf5d15b
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90985897"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91821180"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-github"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a GitHubtal
 
@@ -91,7 +91,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 5. A GitHub-alkalmazás egy adott formátumban várja az SAML-jogcímeket, ehhez pedig egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőfelvételen az alapértelmezett attribútumok listája látható, ahol az **egyedi felhasználói azonosító (Name ID)** a **User. userPrincipalName**leképezéssel van leképezve. A GitHub-alkalmazás a **User. mail**használatával rendeli hozzá az **egyedi felhasználói azonosítót (Name ID)** , ezért az attribútum-hozzárendelést úgy kell módosítania, hogy rákattint a **Szerkesztés** ikonra, és megváltoztatja az attribútumok leképezését.
 
-    ![image](common/edit-attribute.png)
+    ![A "szerkesztés" ikonnal jelölt "felhasználói attribútumok" szakaszt megjelenítő képernyőkép.](common/edit-attribute.png)
 
 6. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállítások alapján, és mentse a számítógépre.
 
@@ -117,7 +117,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás** lehetőségre.
+   1. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -149,11 +149,11 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 2. Navigáljon a **beállításokhoz** , és kattintson a **Biztonság** elemre.
 
-    ![Beállítások](./media/github-tutorial/security.png)
+    ![Képernyőfelvétel: a GitHub "szervezeti beállítások" menüjének kijelölése a "biztonság" lehetőség kiválasztásával.](./media/github-tutorial/security.png)
 
 3. Jelölje be az **SAML-hitelesítés engedélyezése** jelölőnégyzetet, amely az egyszeri bejelentkezés konfigurációs mezőit mutatja be. hajtsa végre a következő lépéseket:
 
-    ![Beállítások](./media/github-tutorial/saml-sso.png)
+    ![Képernyőkép, amely az "S A M l egyszeri bejelentkezés" szakaszt jeleníti meg az "1. M L hitelesítés engedélyezése" és az U R L szövegmezők kiemelésével.](./media/github-tutorial/saml-sso.png)
 
     a. Másolja az **egyszeri bejelentkezési URL-címet** , és illessze be ezt az értéket a **bejelentkezési URL** szövegmezőbe a Azure Portal **alapszintű SAML-konfigurációjában** .
     
@@ -161,7 +161,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 4. Konfigurálja a következő mezőket:
 
-    ![Beállítások](./media/github-tutorial/configure.png)
+    ![A "bejelentkezési URL", a "kiállító" és a "nyilvános tanúsítvány" szövegmezőket megjelenítő képernyőkép.](./media/github-tutorial/configure.png)
 
     a. A **bejelentkezési URL** szövegmezőbe illessze be a **bejelentkezési URL-cím** értéket, amelyet a Azure Portal másolt.
 
@@ -208,7 +208,7 @@ A szakasz célja, hogy létrehozzon egy Britta Simon nevű felhasználót a GitH
 
     b. Kattintson a **Meghívás küldése**gombra.
 
-    ![Személyek meghívása](./media/github-tutorial/send-invitation.png "Személyek meghívása")
+    ![A "tag" kijelölt és a "Meghívás küldése" gombra kattintva megjelenő képernyőkép a "tag meghívása" párbeszédpanelt jeleníti meg.](./media/github-tutorial/send-invitation.png "Személyek meghívása")
 
     > [!NOTE]
     > A Azure Active Directory fiók tulajdonosa kap egy e-mailt, és egy hivatkozást követve erősítse meg a fiókját, mielőtt az aktívvá válna.
@@ -219,7 +219,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszt
 
 Amikor a hozzáférési panelen a GitHub csempére kattint, automatikusan be kell jelentkeznie a GitHubba, amelyhez be kell állítania az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 - [ Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

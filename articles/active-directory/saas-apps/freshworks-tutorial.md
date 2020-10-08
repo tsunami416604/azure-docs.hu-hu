@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/11/2019
 ms.author: jeedes
-ms.openlocfilehash: eb59d7ecd6183d144fd275a50f3682a2b961df98
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: c953297d4e66f737250451b9a5f42ce7f45dd2e4
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88550964"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91821254"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-freshworks"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Freshworks
 
@@ -95,7 +95,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
      ![image](common/edit-certificate.png)
 
-     ![Freshworks-konfiguráció](./media/freshworks-tutorial/response.png)
+     ![A "szerkesztés" gomb kiválasztásával megjelenített "S A M L aláíró tanúsítvány" párbeszédpanelt megjelenítő képernyőkép.](./media/freshworks-tutorial/response.png)
 
     a. Válassza az **SAML-válasz** aláírása az **aláírásként lehetőséget**.
 
@@ -115,7 +115,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Create** (Létrehozás) gombra.
+   1. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -141,7 +141,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 2. A menü bal oldalán kattintson a **Biztonság**   ikonra, majd az **egyszeri bejelentkezés** lehetőségre, és válassza az **SAML SSO** lehetőséget a **hitelesítési módszerek**alatt.
 
-    ![Freshworks-konfiguráció](./media/freshworks-tutorial/configure01.png)
+    ![Képernyőkép: "a biztonsági hitelesítési módszerek" szakasz "egyszeri bejelentkezés" beállítással és "S A M L S O" kiválasztásával.](./media/freshworks-tutorial/configure01.png)
 
 3. Az **egyszeri bejelentkezés** szakaszban hajtsa végre a következő lépéseket:
 

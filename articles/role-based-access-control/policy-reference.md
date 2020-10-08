@@ -1,18 +1,18 @@
 ---
 title: Az Azure RBAC beépített szabályzat-definíciói
 description: Felsorolja Azure Policy az Azure RBAC beépített szabályzat-definícióit. Ezek a beépített szabályzat-definíciók közös megközelítéseket biztosítanak az Azure-erőforrások kezeléséhez.
-ms.date: 09/16/2020
+ms.date: 10/07/2020
 ms.topic: reference
 author: rolyon
 ms.author: rolyon
 ms.service: role-based-access-control
 ms.custom: subject-policy-reference
-ms.openlocfilehash: b099534a380e36580efff7e7b734582ddad54815
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 6d8cfec34790a886cb433c01c3bd0cf11ec9d284
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90986912"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91822425"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-rbac"></a>Az Azure RBAC beépített definíciói Azure Policy
 

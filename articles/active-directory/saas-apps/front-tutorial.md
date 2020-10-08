@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
-ms.openlocfilehash: 606ee409a241db7b4deb9d15db86b034b8fbffd3
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: bbd39c85385d6690a80f540c9e0cd23a321e7e84
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88550979"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91821231"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-front"></a>Oktatóanyag: Azure Active Directory integráció elölről
 
@@ -128,23 +128,23 @@ Az Azure AD egyszeri bejelentkezésének előzetes konfigurálásához hajtsa v�
 
 2. Lépjen a **beállítások (fogaskerék ikon a bal oldalsáv alján) > beállítások**elemre.
    
-    ![Egyszeri bejelentkezés konfigurálása az alkalmazás oldalán](./media/front-tutorial/tutorial_front_000.png)
+    ![A "beállítások" elem kiválasztásával megjelenített "Settings (fogaskerék ikon)" képernyő.](./media/front-tutorial/tutorial_front_000.png)
 
 3. Kattintson **az egyszeri bejelentkezés** hivatkozásra.
    
-    ![Egyszeri bejelentkezés konfigurálása az alkalmazás oldalán](./media/front-tutorial/tutorial_front_001.png)
+    ![A "vállalati beállítások" szakaszt megjelenítő képernyőkép, amely az "egyszeri bejelentkezés" hivatkozásra van kiválasztva.](./media/front-tutorial/tutorial_front_001.png)
 
 4. Az **egyszeri bejelentkezés**legördülő listájában válassza az **SAML** lehetőséget.
    
-    ![Egyszeri bejelentkezés konfigurálása az alkalmazás oldalán](./media/front-tutorial/tutorial_front_002.png)
+    ![Képernyőkép, amely az "egyszeri bejelentkezés" legördülő listát jeleníti meg "S A M L" jelöléssel.](./media/front-tutorial/tutorial_front_002.png)
 
 5. A **belépési pont** szövegmezőbe helyezze a **bejelentkezési URL-cím** értéket az Azure ad-alkalmazás konfigurációja varázslóban.
     
-    ![Egyszeri bejelentkezés konfigurálása az alkalmazás oldalán](./media/front-tutorial/tutorial_front_003.png)
+    ![Képernyőkép, amely a "belépési pont" szövegmezőt jeleníti meg.](./media/front-tutorial/tutorial_front_003.png)
 
 6. Nyissa meg a letöltött **tanúsítvány (Base64)** fájlt a Jegyzettömbben, másolja a vágólapra a tartalmát, majd illessze be az **aláíró tanúsítvány** szövegmezőbe.
     
-    ![Egyszeri bejelentkezés konfigurálása az alkalmazás oldalán](./media/front-tutorial/tutorial_front_004.png)
+    ![Képernyőkép, amely a "tanúsítvány aláírása" feliratot jeleníti meg, és a szövegmező szürkén jelenik meg.](./media/front-tutorial/tutorial_front_004.png)
 
 7. A **szolgáltató beállításai** szakaszban hajtsa végre a következő lépéseket:
 
@@ -179,7 +179,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    d. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

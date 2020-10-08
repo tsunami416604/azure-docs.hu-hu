@@ -5,15 +5,15 @@ services: virtual-wan
 author: cherylmc
 ms.service: virtual-wan
 ms.topic: tutorial
-ms.date: 09/22/2020
+ms.date: 10/07/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my corporate on-premises network(s) to my VNets using Virtual WAN and ExpressRoute.
-ms.openlocfilehash: 536d233a9c135b0b7dde6d6d80c705d2008226e6
-ms.sourcegitcommit: f796e1b7b46eb9a9b5c104348a673ad41422ea97
+ms.openlocfilehash: 1694c8a602315ab5f0ffa5d4e0bc218f03220c30
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91569645"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91821882"
 ---
 # <a name="tutorial-create-an-expressroute-association-using-azure-virtual-wan"></a>Oktatóanyag: ExpressRoute-társítás létrehozása az Azure Virtual WAN használatával
 
@@ -38,7 +38,7 @@ A konfigurálás megkezdése előtt győződjön meg a következő feltételek t
 
 * A virtuális hálózat nem rendelkezik virtuális hálózati átjárókkal. Ha a virtuális hálózat átjáróval rendelkezik (VPN vagy ExpressRoute), akkor el kell távolítania az összes átjárót. Ehhez a konfigurációhoz az szükséges, hogy a virtuális hálózatok a virtuális WAN hub-átjáróhoz legyenek csatlakoztatva.
 
-* Igényeljen egy IP-címtartományt az elosztó régiójában. A hub egy virtuális WAN által létrehozott és használt virtuális hálózat. Az hubhoz megadott címtartomány nem fedi át a meglévő virtuális hálózatait, amelyhez csatlakozik. Emellett nem lehet átfedésben azokkal a címtartományokkal sem, amelyekhez a helyszínen csatlakozik. Ha nem ismeri a helyszíni hálózati konfigurációjában található IP-címtartományok körét, akkor egyeztessen valakivel, aki ezeket az adatokat megadhatja Önnek.
+* Igényeljen egy IP-címtartományt az elosztó régiójában. A hub egy virtuális WAN által létrehozott és használt virtuális hálózat. Az hubhoz megadott címtartomány nem fedi át a meglévő virtuális hálózatait, amelyhez csatlakozik. Emellett nem fedi átfedésben a helyszíni kapcsolatokhoz kapcsolódó címtartományt. Ha nem ismeri a helyszíni hálózati konfigurációjában található IP-címtartományok körét, akkor egyeztessen valakivel, aki ezeket az adatokat megadhatja Önnek.
 
 * A ExpressRoute áramkörnek prémium/standard áramkörnek kell lennie ahhoz, hogy csatlakozhasson a hub-átjáróhoz.
 
@@ -105,7 +105,7 @@ Ebben a szakaszban a hub és a VNet közötti összekapcsolási kapcsolatot hozz
 
 ## <a name="connect-your-circuit-to-the-hub-gateway"></a><a name="connectcircuit"></a>Az áramkör összekapcsolása a hub-átjáróval
 
-Az átjáró létrehozása után összekapcsolhatja a [ExpressRoute áramkört](../expressroute/expressroute-howto-circuit-portal-resource-manager.md) . A ExpressRoute Global Reach által támogatott helyszíneken elérhető prémium/standard szintű ExpressRoute a virtuális WAN ExpressRoute-átjáróhoz csatlakozhatnak, és az összes virtuális WAN-továbbítási funkciót (VPN-ről VPN-re, VPN-re és ExpressRoute-ra) is kihasználhatják. A nem Global Reach helyen található prémium/standard áramkörök ExpressRoute csatlakozhatnak az Azure-erőforrásokhoz, de nem fogják tudni használni a virtuális WAN-átviteli képességeket.
+Az átjáró létrehozása után összekapcsolhatja a [ExpressRoute áramkört](../expressroute/expressroute-howto-circuit-portal-resource-manager.md) . A ExpressRoute Global Reach által támogatott helyszíneken található standard vagy prémium szintű áramkörök ExpressRoute csatlakozhatnak egy virtuális WAN ExpressRoute-átjáróhoz, és az összes virtuális WAN-továbbítási funkciót (VPN-VPN-, VPN-és ExpressRoute-átvitel) is élvezhessük. A nem Global Reach helyen található standard és prémium szintű áramkörök képesek csatlakozni az Azure-erőforrásokhoz, de nem fogják tudni használni a virtuális WAN-ExpressRoute. Az Azure Virtual WAN nem támogatja a helyi ExpressRoute.
 
 ### <a name="to-connect-the-circuit-to-the-hub-gateway"></a>Az áramkör összekapcsolása a hub-átjáróval
 
