@@ -8,12 +8,12 @@ ms.date: 08/24/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
-ms.openlocfilehash: ab861b3ed265da9060e2367bdfdeeeee7047c584
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 4387bf8067b399165b32ab1cdbb9e6ce55ab5f59
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88815861"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91816338"
 ---
 # <a name="use-the-azure-portal-to-restrict-importexport-access-for-managed-disks-with-private-links"></a>A Azure Portal használata a felügyelt lemezek importálási/exportálási hozzáférésének korlátozására privát hivatkozásokkal
 
@@ -31,12 +31,6 @@ A NetworkAccessPolicy tulajdonságot beállíthatja úgy `DenyAll` , hogy megaka
 
 [!INCLUDE [virtual-machines-disks-private-links-regions](../../includes/virtual-machines-disks-private-links-regions.md)]
 
-## <a name="prerequisites"></a>Előfeltételek
-
-Ha privát végpontokat szeretne használni a felügyelt lemezek exportálásához és importálásához, akkor az előfizetésén engedélyezve kell lennie a szolgáltatásnak. Küldjön egy e-mailt a. com-ra az mdprivatelinks@microsoft előfizetési azonosítókkal, hogy a funkció engedélyezve legyen az előfizetésekhez.
-
-Fel kell jegyeznie azt a virtuális GÉPET, amelyhez a lemezek csatlakoztatva vannak. A magánhálózati végpont konfigurálásakor a virtuális hálózatra van szükség.
-
 ## <a name="create-a-disk-access-resource"></a>Lemez-hozzáférési erőforrás létrehozása
 
 1. Jelentkezzen be a Azure Portalba, és navigáljon a **lemez elérésére** a [hivatkozással](https://aka.ms/disksprivatelinks).
@@ -46,7 +40,7 @@ Fel kell jegyeznie azt a virtuális GÉPET, amelyhez a lemezek csatlakoztatva va
 
 1. Válassza a **+ Hozzáadás** lehetőséget egy új lemez-hozzáférési erőforrás létrehozásához.
 1. A létrehozás panelen válassza ki az előfizetést, egy erőforráscsoportot, adjon meg egy nevet, és válasszon ki egy régiót.
-1. Válassza az **Áttekintés + létrehozás** lehetőséget.
+1. Válassza a **Felülvizsgálat + létrehozás** lehetőséget.
 
     :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-create-basics.png" alt-text="Képernyőfelvétel a lemezes hozzáférés létrehozási paneljéről. Adja meg a kívánt nevet, válasszon ki egy régiót, válasszon ki egy erőforráscsoportot, és folytassa":::
 
@@ -83,7 +77,7 @@ Most, hogy van egy lemez-hozzáférési erőforrása, használhatja a lemez expo
     > Ha a kiválasztott alhálózathoz engedélyezve van egy hálózati biztonsági csoport (minősítések), akkor az csak ezen az alhálózaton található privát végpontok esetében le lesz tiltva. Az alhálózaton található egyéb erőforrásoknak továbbra is NSG-kényszerítéssel kell rendelkezniük.
 
 1. Válassza ki a megfelelő alhálózatot
-1. Válassza az **Áttekintés + létrehozás** lehetőséget.
+1. Válassza a **Felülvizsgálat + létrehozás** lehetőséget.
 
     :::image type="content" source="media/disks-enable-private-links-for-import-export-portal/disk-access-private-endpoint-third-blade.png" alt-text="Képernyőfelvétel a lemezes hozzáférés létrehozási paneljéről. Adja meg a kívánt nevet, válasszon ki egy régiót, válasszon ki egy erőforráscsoportot, és folytassa":::
 
@@ -98,7 +92,7 @@ Most, hogy van egy lemez-hozzáférési erőforrása, használhatja a lemez expo
 
 Ezzel befejezte a felügyelt lemez importálására/exportálására használható privát hivatkozások konfigurálását.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Privát hivatkozások – GYIK](./faq-for-disks.md#private-links-for-securely-exporting-and-importing-managed-disks)
 - [Felügyelt Pillanatképek exportálása/másolása virtuális merevlemezként egy másik régióban lévő Storage-fiókba a PowerShell használatával](scripts/virtual-machines-windows-powershell-sample-copy-snapshot-to-storage-account.md)

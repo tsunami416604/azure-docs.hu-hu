@@ -13,12 +13,12 @@ ms.assetid: 521180dc-2cc9-43f1-ae87-2701de7ca6b8
 ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.openlocfilehash: e36485b54f209b10f9a4e6b4e6a26248955b2275
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: b05084a7d01f4c5d5d5a79b60ac0b8ba47843622
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90031398"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91816790"
 ---
 # <a name="configure-and-customize-the-build-tasks"></a>A Build-feladatok konfigurálása és testreszabása
 
@@ -131,7 +131,7 @@ Az elérhető lehetőségek a következők:
 
 > [!NOTE]
 >
-> - A a a fordítóval integrált és csak csc.exe fordítás részeként futtatható. Ezért ehhez a feladathoz a fordításban korábban futtatott fordítói parancsnak újra kell játszania vagy újra futnia. Ezt a lekérést vagy futtatást a Visual Studio Team Services (VSTS) lekérdezésével végezheti el az MSBuild Build feladat naplóihoz.
+> - A a a fordítóval integrált és csak csc.exe fordítás részeként futtatható. Ezért ehhez a feladathoz a fordításban korábban futtatott fordítói parancsnak újra kell játszania vagy újra futnia. Ezt a lekérést vagy futtatást az Azure DevOps (korábban Visual Studio Team Services) lekérdezésével végezheti el az MSBuild Build feladat naplóihoz.
 >
 >   Nincs más mód arra, hogy a feladat megbízhatóan lekérje az MSBuild fordítási parancssort a Build definícióból. Egy Szabadkézi szövegmező hozzáadásával engedélyezte a felhasználóknak a parancssorok megadását. Azonban nehéz lenne ezeket a parancssori vonalakat naprakészen tartani, és szinkronizálni a fő buildtel.
 >

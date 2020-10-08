@@ -9,12 +9,12 @@ ms.topic: conceptual
 ms.date: 09/04/2020
 ms.author: deanwe
 ms.custom: references_regions
-ms.openlocfilehash: 54a81ac36fb0b99f6931b372543dc3e4bca6a12c
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 338fe463cec4c44b1ddf019d9ecb435736e46826
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91447902"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91816826"
 ---
 # <a name="azure-automanage-for-virtual-machines"></a>Azure-beli automata felügyelet virtuális gépeken
 
@@ -134,20 +134,20 @@ Ehhez a Azure Portal nyissa meg az automatikus **kezelés – Azure virtuális g
 
 A **Letiltás**előtt olvassa el figyelmesen az üzenetküldést az eredményül kapott előugró ablakban.
 
-```
-Disabling automanagement in a VM results in the following behavior:
+> [!NOTE]
+> A virtuális gépeken az automanagement letiltása a következő viselkedést eredményezi:
+>
+> - A virtuális gép és a hozzájuk tartozó szolgáltatások konfigurációja nem változik.
+> - A szolgáltatásokban felmerülő költségek számlázandóek maradnak, és továbbra is felmerülnek.
+> - Az automanage viselkedés azonnal leáll.
 
-1.    The configuration of the VM and the services it's onboarded to will not be changed
-2.    Any changes incurred by those services will remain billable and will continue to be incurred
-3.    Any Automanage behaviors will stop immediately
-```
 
 Az első és legfontosabb, hogy a virtuális gépet minden olyan szolgáltatásból kiállítjuk, amelyet a be-és kiállítottunk. Így a szolgáltatásokban felmerülő költségek továbbra is számlázva maradnak. Szükség esetén ki kell jelentkeznie a táblából. Az automanage viselkedés azonnal leáll. Például a rendszer nem figyeli a virtuális gépet a drifthez.
 
 
 ## <a name="next-steps"></a>Következő lépések
 
-Ebből a cikkből megtudhatta, hogy a Virtual Machines szolgáltatás automatikusan felügyeli az Azure-szolgáltatások ajánlott eljárásainak ismeretét, bevezetését és konfigurálásának szükségességét. Emellett, ha az automatikus felügyelethez bejelentkezett számítógép Virtual Machines a beállított konfigurációs profiloktól, a rendszer automatikusan visszaállítja a megfelelőséget.
+Ebből a cikkből megtudhatta, hogy a Virtual Machines szolgáltatás automatikusan felügyeli az Azure-szolgáltatások ajánlott eljárásainak ismeretét, bevezetését és konfigurálásának szükségességét. Továbbá, ha a virtuális gépek automatikus felügyeletére szolgáló gép a beállított konfigurációs profilokkal sodródik, a rendszer automatikusan visszaállítja a megfelelőséget.
 
 Próbálja meg engedélyezni a Azure Portalban található virtuális gépek autofelügyeletét.
 

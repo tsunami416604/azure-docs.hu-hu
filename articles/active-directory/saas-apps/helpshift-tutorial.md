@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 12/20/2019
 ms.author: jeedes
-ms.openlocfilehash: fb9c776061407669f27f61ac4bc536b859d04b66
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 41dd61182674d63e7c8b83232c53b9e7054de04d
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88550617"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91816855"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-helpshift"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Helpshift
 
@@ -108,7 +108,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Create** (Létrehozás) gombra.
+   1. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -134,11 +134,11 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 1. Nyissa meg a Helpshift **irányítópultját** , és kattintson a **Beállítások ikonra**.
 
-    ![A Helpshift konfigurációja](./media/helpshift-tutorial/configuration01.png)
+    ![A képernyőképen a Helpshift beállítások ikon látható.](./media/helpshift-tutorial/configuration01.png)
 
 1. Kattintson az **integrációk** fülre, és hajtsa végre a következő lépéseket:
 
-    ![A Helpshift konfigurációja](./media/helpshift-tutorial/configuration02.png)
+    ![Képernyőfelvétel: az integráció lap, amelyen elvégezheti a leírt lépéseket.](./media/helpshift-tutorial/configuration02.png)
 
     a. Kapcsolja be az **egyszeri bejelentkezést (SAML – SSO)**.
 

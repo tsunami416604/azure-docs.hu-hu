@@ -8,6 +8,7 @@
         - name: Mi az az Azure HDInsight?
           href: ./hdinsight-overview.md
     - name: Oktatóanyagok
+      expanded: true
       items:
         - name: HDInsight-fürtök létrehozása
           href: ./hdinsight-hadoop-provision-linux-clusters.md
@@ -37,7 +38,7 @@
           href: ./hdinsight-sdk-python-samples.md
         - name: Azure-minták böngészője
           href: 'https://azure.microsoft.com/resources/samples/?service=hdinsight'
-    - name: Fogalmak
+    - name: Alapelvek
       items:
         - name: Apache-összetevők a HDInsighton
           href: ./hdinsight-component-versioning.md

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/16/2019
 ms.author: jeedes
-ms.openlocfilehash: af2630b977c1ce34712a582175674277799f105b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: a48772c4325717a64bd36873675ff19c6a332de0
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88550605"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91817155"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-highgear"></a>Oktatóanyag: Azure Active Directory integráció a HighGear
 
@@ -99,7 +99,7 @@ Az Azure AD egyszeri bejelentkezés az HighGear-rendszerrel való konfigurálás
 
 4. Az **alapszintű SAML-konfiguráció** szakaszban hajtsa végre a következő lépéseket:
 
-    ![HighGear tartomány és URL-címek egyszeri bejelentkezési adatai](common/idp-intiated.png)
+    ![A képernyőfelvételen az alapszintű SAML-konfiguráció látható, ahol megadható az azonosító, a válasz U R L, majd a Mentés elemre.](common/idp-intiated.png)
 
     a. Az **azonosító** szövegmezőbe illessze be a HighGear rendszer egyszeri bejelentkezési beállítások lapján található **szolgáltatói entitás azonosító** mezőjében szereplő értéket.
 
@@ -116,7 +116,7 @@ Az Azure AD egyszeri bejelentkezés az HighGear-rendszerrel való konfigurálás
 
     c. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
-     ![HighGear tartomány és URL-címek egyszeri bejelentkezési adatai](common/metadata-upload-additional-signon.png)
+     ![Képernyőfelvétel: további U R ls beállítása, ahol megadhatja a bejelentkezést az U R L-ben.](common/metadata-upload-additional-signon.png)
 
      A **bejelentkezési URL-cím** szövegmezőbe illessze be a HighGear rendszer egyszeri bejelentkezési beállítások lapján található **szolgáltatói entitás azonosító** mezőjében szereplő értéket. (Ez az entitás-azonosító az SP által kezdeményezett bejelentkezéshez használandó HighGear rendszer alap URL-címe is.)
 
@@ -182,7 +182,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    d. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

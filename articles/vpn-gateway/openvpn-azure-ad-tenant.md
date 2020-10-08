@@ -5,23 +5,20 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: how-to
-ms.date: 09/03/2020
-ms.author: alzam
-ms.openlocfilehash: 1905db8f28bde41dadbe619894cb76830efca992
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.date: 10/07/2020
+ms.author: cherylmc
+ms.openlocfilehash: 9ee5959c124636e64ef73b901fbc461f36cd27f9
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91445823"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91817290"
 ---
 # <a name="create-an-azure-active-directory-tenant-for-p2s-openvpn-protocol-connections"></a>Azure Active Directory-bérlő létrehozása P2S OpenVPN-protokollkapcsolatokhoz
 
 A VNet való csatlakozáskor tanúsítványalapú hitelesítést vagy RADIUS-hitelesítést használhat. Ha azonban a nyílt VPN protokollt használja, akkor Azure Active Directory hitelesítést is használhat. Ebből a cikkből megtudhatja, hogyan állíthat be egy Azure AD-bérlőt a P2S Open VPN-hitelesítéshez.
 
-> [!NOTE]
-> Az Azure AD-hitelesítés csak az OpenVPN® protokoll-kapcsolatokhoz támogatott, és az Azure VPN-ügyfelet igényli, amely csak a Windows 10 rendszerhez érhető el.
->
-
+[!INCLUDE [Windows 10 and OpenVPN note](../../includes/vpn-gateway-openvpn-auth-include.md)]
 
 ## <a name="1-verify-azure-ad-tenant"></a><a name="tenant"></a>1. az Azure AD-bérlő ellenőrzése
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/24/2019
 ms.author: jeedes
-ms.openlocfilehash: 16783d344c6a0dedec4e24d49150e0b4b2edbe3e
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 1c6faf2bb1811f7b27a49f8029c833499273d8a1
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88548140"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91817113"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-help-scout"></a>Oktatóanyag: Azure Active Directory integráció a help Scout segítségével
 
@@ -89,7 +89,7 @@ Az Azure AD egyszeri bejelentkezés súgóval történő konfigurálásához haj
 
 1. Az **alapszintű SAML-konfiguráció** szakaszban, ha az alkalmazást **identitásszolgáltató** kezdeményezett módban szeretné konfigurálni, hajtsa végre a következő lépéseket:
 
-    ![Súgó a felderítő tartomány és az URL-címek egyszeri bejelentkezési adataihoz](common/idp-intiated.png)
+    ![A képernyőfelvételen az alapszintű SAML-konfiguráció látható, ahol megadható az azonosító, a válasz U R L, majd a Mentés elemre.](common/idp-intiated.png)
 
     a. A súgóban az **azonosító** a **célközönség URI-ja (szolgáltatói entitás azonosítója)** , amely a következővel kezdődik:`urn:`
 
@@ -100,7 +100,7 @@ Az Azure AD egyszeri bejelentkezés súgóval történő konfigurálásához haj
 
 1. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
-    ![Súgó a felderítő tartomány és az URL-címek egyszeri bejelentkezési adataihoz](common/metadata-upload-additional-signon.png)
+    ![Képernyőfelvétel: további U R ls beállítása, ahol megadhatja a bejelentkezést az U R L-ben.](common/metadata-upload-additional-signon.png)
 
     A **bejelentkezési URL** szövegmezőbe írja be az URL-címet a következőként: `https://secure.helpscout.net/members/login/`
 
@@ -141,7 +141,7 @@ Ennek a szakasznak a célja, hogy létrehozzon egy teszt felhasználót a B. Sim
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    d. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -183,15 +183,15 @@ Ebben a szakaszban engedélyezi, hogy a B. Simon az Azure egyszeri bejelentkezé
 
 1. Kattintson a **kezelés** elemre a felső menüben, majd válassza a **vállalat** lehetőséget a legördülő menüből.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/helpscout-tutorial/settings1.png)
+    ![Képernyőfelvétel: a kezelés menü, amelyet a vállalat kiválasztott.](./media/helpscout-tutorial/settings1.png)
 
 1. A bal oldali navigációs ablaktáblán válassza a **hitelesítés** lehetőséget.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/helpscout-tutorial/settings2.png)
+    ![A képernyőképen a kiválasztott hitelesítés látható.](./media/helpscout-tutorial/settings2.png)
 
 1. Ekkor megjelenik az SAML-beállítások szakasz, és hajtsa végre a következő lépéseket:
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/helpscout-tutorial/settings3.png)
+    ![Képernyőfelvétel: az egyszeri bejelentkezés lap, ahol a megadott adatokat adja meg.](./media/helpscout-tutorial/settings3.png)
 
     a. Másolja a **visszaküldési URL-cím (a fogyasztói szolgáltatás URL-címe)** értéket, és illessze be az értéket a Azure Portal **ALAPszintű SAML-konfiguráció** szakaszának **Válasz URL-címe** szövegmezőbe.
 
@@ -199,7 +199,7 @@ Ebben a szakaszban engedélyezi, hogy a B. Simon az Azure egyszeri bejelentkezé
 
 1. Kapcsolja be az **SAML engedélyezése** beállítást, és hajtsa végre a következő lépéseket:
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/helpscout-tutorial/settings4.png)
+    ![Képernyőfelvétel: az egyszeri bejelentkezés lap, amelyen engedélyezheti az SAML-t, és további információkat adhat hozzá.](./media/helpscout-tutorial/settings4.png)
 
     a. Az **egyszeri bejelentkezési URL** szövegmezőben illessze be a **bejelentkezési URL-címet**, amelyet az Azure Portalból másolt.
 

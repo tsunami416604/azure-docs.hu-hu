@@ -4,16 +4,16 @@ description: A .NET Core/. NET Framework nem HTTP-alkalmazások figyelése Azure
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 05/11/2020
-ms.openlocfilehash: 12be39e36c003531b815e137cbd1d360ca7f0fd6
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.openlocfilehash: 643edf81d6a98c8f423267b657feb9dfb6da1070
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91760478"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91816400"
 ---
 # <a name="application-insights-for-worker-service-applications-non-http-applications"></a>Application Insights Worker Service-alkalmazásokhoz (nem HTTP-alkalmazások)
 
-A Application Insights egy új SDK-t szabadít `Microsoft.ApplicationInsights.WorkerService` fel, amely a legalkalmasabb a nem HTTP-alapú számítási feladatokhoz, például az üzenetküldéshez, a háttérbeli feladatokhoz, a konzol alkalmazásaihoz stb. Az ilyen típusú alkalmazások nem rendelkeznek olyan bejövő HTTP-kérések fogalmával, mint a hagyományos ASP.NET/ASP.NET Core-webalkalmazások, és így Application Insights csomagok használata [ASP.net](asp-net.md) vagy [ASP.net Core](asp-net-core.md) alkalmazásokhoz nem támogatott.
+A [Application INSIGHTS SDK for Worker szolgáltatás](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) egy új SDK, amely a nem HTTP-alapú számítási feladatokhoz, például az üzenetküldéshez, a háttérbeli feladatokhoz, a konzol alkalmazásaihoz, Az ilyen típusú alkalmazások nem rendelkeznek olyan bejövő HTTP-kérések fogalmával, mint a hagyományos ASP.NET/ASP.NET Core-webalkalmazások, és így Application Insights csomagok használata [ASP.net](asp-net.md) vagy [ASP.net Core](asp-net-core.md) alkalmazásokhoz nem támogatott.
 
 Az új SDK önmagában nem végez telemetria-gyűjteményt. Ehelyett más jól ismert Application Insights automatikus gyűjtők, például a [DependencyCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.DependencyCollector/), a [PerfCounterCollector](https://www.nuget.org/packages/Microsoft.ApplicationInsights.PerfCounterCollector/), a [ApplicationInsightsLoggingProvider](https://www.nuget.org/packages/Microsoft.Extensions.Logging.ApplicationInsights) stb. Ez az SDK a `IServiceCollection` telemetria-gyűjtés engedélyezéséhez és konfigurálásához a bővítmények metódusait teszi elérhetővé.
 
@@ -138,7 +138,7 @@ VAGY `SET APPINSIGHTS_INSTRUMENTATIONKEY=putinstrumentationkeyhere`
 
 A teljes példa [itt](https://github.com/MohanGsk/ApplicationInsights-Home/tree/master/Samples/WorkerServiceSDK/BackgroundTasksWithHostedService) van megosztva
 
-1. Telepítse a Microsoft. ApplicationInsights. WorkerService ( https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) csomagot az alkalmazásba.
+1. Telepítse a [Microsoft. ApplicationInsights. WorkerService](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) csomagot az alkalmazásba.
 2. Adja hozzá `services.AddApplicationInsightsTelemetryWorkerService();` a `ConfigureServices()` metódushoz az alábbi példában látható módon:
 
 ```csharp
@@ -225,7 +225,7 @@ A cikk elején említettek szerint az új csomag lehetővé teszi, hogy a Applic
 
 A teljes példa [itt](https://github.com/MohanGsk/ApplicationInsights-Home/tree/master/Samples/WorkerServiceSDK/ConsoleAppWithApplicationInsights) van megosztva
 
-1. Telepítse a Microsoft. ApplicationInsights. WorkerService ( https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) csomagot az alkalmazásba.
+1. Telepítse a [Microsoft. ApplicationInsights. WorkerService](https://www.nuget.org/packages/Microsoft.ApplicationInsights.WorkerService) csomagot az alkalmazásba.
 
 2. Módosítsa a Program.cs az alábbi példában látható módon.
 
@@ -293,7 +293,7 @@ Ez a konzolszoftver ugyanazokat az alapértelmezett beállításokat használja 
 
 ## <a name="run-your-application"></a>Az alkalmazás futtatása
 
-Futtassa az alkalmazást. A fentiekben ismertetett feldolgozók a http-hívást másodpercenként bing.com, és néhány naplót is kibocsátanak a ILogger használatával. Ezek a sorok a hívásával vannak becsomagolva `StartOperation` `TelemetryClient` , amely egy művelet létrehozására szolgál (ebben a példában a `RequestTelemetry` "művelet"). A Application Insights összegyűjti ezeket a ILogger-naplókat (alapértelmezés szerint a figyelmeztetést) és a függőségeket, és a `RequestTelemetry` szülő-gyermek kapcsolattal együtt lesznek összekapcsolva. A korreláció a folyamat/hálózat határán is működik. Ha például a hívás egy másik figyelt összetevőre történt, akkor a rendszer ezt a szülővel is összefügg.
+Futtassa az alkalmazást. A fentiekben ismertetett feldolgozók a http-hívást másodpercenként bing.com, és néhány naplót is kibocsátanak a használatával `ILogger` . Ezek a sorok a hívásával vannak becsomagolva `StartOperation` `TelemetryClient` , amely egy művelet létrehozására szolgál (ebben a példában a `RequestTelemetry` "művelet"). A Application Insights összegyűjti ezeket a ILogger-naplókat (alapértelmezés szerint a figyelmeztetést) és a függőségeket, és a `RequestTelemetry` szülő-gyermek kapcsolattal együtt lesznek összekapcsolva. A korreláció a folyamat/hálózat határán is működik. Ha például a hívás egy másik figyelt összetevőre történt, akkor a rendszer ezt a szülővel is összefügg.
 
 Ez az egyéni művelet `RequestTelemetry` azt is megteheti, hogy egy tipikus webalkalmazásban egy bejövő webes kérelem megfelelője. Habár a művelet nem szükséges, a legjobban megfelel a [Application Insights korrelációs adatmodellnek](./correlation.md) – a `RequestTelemetry` szülő műveletként való működéssel, és minden olyan telemetria, amely a munkavégző iteráción belül jön létre, és logikailag ugyanahhoz a művelethez tartozóként van kezelve. Ez a megközelítés azt is biztosítja, hogy az összes generált telemetria (automatikus és manuális) ugyanaz legyen `operation_id` . A mintavételezés alapján a `operation_id` mintavételezési algoritmus vagy az összes telemetria egyetlen iterációból tartja vagy eldobja.
 

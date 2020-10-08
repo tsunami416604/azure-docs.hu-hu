@@ -6,12 +6,12 @@ ms.topic: how-to
 ms.date: 06/16/2020
 ms.author: helohr
 manager: lizross
-ms.openlocfilehash: e461bbf8c3a6cd845744fc0e17b5d1f0eb9bef58
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 3b02be8f35ff33f758aebe03c89287c51c9ffef7
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88010157"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91816321"
 ---
 # <a name="set-up-msix-app-attach"></a>MSIX-alkalmazás csatolásának beállítása
 
@@ -342,20 +342,25 @@ Remove-AppxPackage -PreserveRoamableApplicationData $packageName
 
 ### <a name="destage-powershell-script"></a>PowerShell-parancsfájl lefázisa
 
-Ehhez a parancsfájlhoz cserélje le a **$packageName** helyőrzőjét a tesztelni kívánt csomag nevére.
+Ehhez a parancsfájlhoz cserélje le a **$packageName** helyőrzőjét a tesztelni kívánt csomag nevére. Éles környezetben a legjobb megoldás a leállításkor.
 
 ```powershell
 #MSIX app attach de staging sample
 
+$vhdSrc="<path to vhd>"
+
 #region variables
 $packageName = "<package name>"
-$msixJunction = "C:\temp\AppAttach\"
+$msixJunction = "C:\temp\AppAttach"
 #endregion
 
 #region deregister
 Remove-AppxPackage -AllUsers -Package $packageName
-cd $msixJunction
-rmdir $packageName -Force -Verbose
+Remove-Item "$msixJunction\$packageName" -Recurse -Force -Verbose
+#endregion
+
+#region Detach VHD
+Dismount-DiskImage -ImagePath $vhdSrc -Confirm:$false
 #endregion
 ```
 
@@ -380,8 +385,8 @@ A következő módon állíthatja be a licenceket offline használatra:
 
 1. Töltse le az alkalmazáscsomag, a licencek és a szükséges keretrendszereket a vállalati Microsoft Store. A kódolt és a titkosítatlan licencek is szükségesek. Részletes letöltési utasítások [itt](/microsoft-store/distribute-offline-apps#download-an-offline-licensed-app)találhatók.
 2. Frissítse a következő változókat a 3. lépéshez tartozó parancsfájlban:
-      1. `$contentID`a ContentID értéke a nem kódolt licencfájl (. xml). A licencfájl megnyitható egy tetszőleges szövegszerkesztőben.
-      2. `$licenseBlob`a a titkosított licencfájl (. bin) teljes karakterlánca a licenc blobjának. A kódolt licencfájl megnyitható egy tetszőleges szövegszerkesztőben.
+      1. `$contentID` a ContentID értéke a nem kódolt licencfájl (. xml). A licencfájl megnyitható egy tetszőleges szövegszerkesztőben.
+      2. `$licenseBlob` a a titkosított licencfájl (. bin) teljes karakterlánca a licenc blobjának. A kódolt licencfájl megnyitható egy tetszőleges szövegszerkesztőben.
 3. Futtassa a következő parancsfájlt egy rendszergazdai PowerShell-parancssorból. A licencek telepítésének megfelelő helye az [átmeneti parancsfájl](#stage-powershell-script) végén található, amelyet rendszergazdai parancssorból is futtatni kell.
 
 ```powershell
@@ -418,7 +423,7 @@ catch [Exception]
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez a funkció jelenleg nem támogatott, de kérdéseket tehet fel a Közösségnek a [Windows rendszerű virtuális asztali TechCommunity](https://techcommunity.microsoft.com/t5/Windows-Virtual-Desktop/bd-p/WindowsVirtualDesktop).
 

@@ -5,12 +5,12 @@ ms.topic: conceptual
 ms.date: 05/21/2020
 ms.author: pepogors
 ms.custom: sfrev
-ms.openlocfilehash: 28a01bbc54f752ffc1f25b57dcf2eca566aa635a
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.openlocfilehash: d2b303c22eea9fb46a68bb3c8e36991d47d61554
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2020
-ms.locfileid: "88718101"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91817742"
 ---
 # <a name="service-fabric-cluster-capacity-planning-considerations"></a>Service Fabric a fürt kapacitásának tervezési szempontjait
 
@@ -34,7 +34,7 @@ Minden fürthöz egy **elsődleges csomópont-típus**szükséges, amely Service
 
 A **nem elsődleges csomópontok típusai** az alkalmazás szerepköreinek (például *előtér-* és *háttér-* szolgáltatások) meghatározására és a fürtön belüli szolgáltatások fizikai elkülönítésére használhatók. Service Fabric fürtökhöz nulla vagy több nem elsődleges csomópont típusú típus tartozhat.
 
-Az elsődleges csomópont típusa a `isPrimary` Azure Resource Manager telepítési sablon csomópont típusa definíciójában található attribútummal van konfigurálva. Tekintse meg a csomópont típusú tulajdonságok teljes listáját a [NodeTypeDescription objektumban](/azure/templates/microsoft.servicefabric/clusters#nodetypedescription-object) . Ha például a használatot, nyissa meg a [Service Fabric-fürtökön](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/) található fájlon *AzureDeploy.jst* , és *keressen* rá az `nodetTypes` objektumra a lapon.
+Az elsődleges csomópont típusa a `isPrimary` Azure Resource Manager telepítési sablon csomópont típusa definíciójában található attribútummal van konfigurálva. Tekintse meg a csomópont típusú tulajdonságok teljes listáját a [NodeTypeDescription objektumban](/azure/templates/microsoft.servicefabric/clusters#nodetypedescription-object) . Ha például a használatot, nyissa meg a [Service Fabric-fürtökön](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/) található fájlon *AzureDeploy.jst* , és *keressen* rá az `nodeTypes` objektumra a lapon.
 
 ### <a name="node-type-planning-considerations"></a>Csomópont típusú tervezési szempontok
 
@@ -182,7 +182,7 @@ Service Fabric [megbízható gyűjtemények vagy megbízható szereplők](servic
 
 Az állapot nélküli éles számítási feladatokhoz a minimálisan támogatott nem elsődleges csomópont típusának háromnak kell lennie a kvórum megőrzése érdekében, azonban a csomópont típusának mérete öt ajánlott.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A fürt konfigurálása előtt tekintse át a `Not Allowed` [fürt frissítési szabályzatait](service-fabric-cluster-fabric-settings.md) , hogy csökkentse a fürt ismételt létrehozását, mert a rendszer nem módosítható a rendszerkonfigurációs beállítások miatt.
 

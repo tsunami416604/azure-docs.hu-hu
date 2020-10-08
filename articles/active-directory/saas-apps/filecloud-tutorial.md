@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/12/2019
 ms.author: jeedes
-ms.openlocfilehash: 155675d6d0f6026c528be66f9a67a21fe65d00ba
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: f41312521202f406c3826880f345e0bbe7600bd3
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88555160"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91817215"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-filecloud"></a>Oktatóanyag: Azure Active Directory integráció a FileCloud
 
@@ -130,19 +130,19 @@ Az Azure AD egyszeri bejelentkezés FileCloud való konfigurálásához hajtsa v
 
 2. A bal oldali navigációs ablaktáblán kattintson a **Beállítások**elemre. 
    
-    ![Egyszeri bejelentkezés konfigurálása az alkalmazás oldalán](./media/filecloud-tutorial/tutorial_filecloud_000.png)
+    ![Képernyőkép, amely a bal oldali navigációs panelen a "beállítások" feliratot jeleníti meg.](./media/filecloud-tutorial/tutorial_filecloud_000.png)
 
 3. A beállítások szakaszban kattintson az **SSO** fülre. 
    
-    ![Egyszeri bejelentkezés konfigurálása az alkalmazás oldalán](./media/filecloud-tutorial/tutorial_filecloud_001.png)
+    ![A "Settings" (beállítások) szakaszt ábrázoló képernyőkép, amely a "S S O" lapon van kiválasztva.](./media/filecloud-tutorial/tutorial_filecloud_001.png)
 
 4. Az egyszeri **Bejelentkezés (SSO) beállítások** panelen válassza az **SAML** **alapértelmezett egyszeri bejelentkezési típust** .
    
-    ![Egyszeri bejelentkezés konfigurálása az alkalmazás oldalán](./media/filecloud-tutorial/tutorial_filecloud_002.png)
+    ![Képernyőfelvétel: az "egyszeri bejelentkezés (S O) beállítások" panel "S A M L" van kijelölve.](./media/filecloud-tutorial/tutorial_filecloud_002.png)
 
 5. A **identitásszolgáltató végpont URL-címe** szövegmezőbe illessze be a Azure Portalból másolt **Azure ad-azonosító** értékét.
 
-    ![Egyszeri bejelentkezés konfigurálása az alkalmazás oldalán](./media/filecloud-tutorial/tutorial_filecloud_003.png)
+    ![Képernyőkép, amely az "M L-beállítások" szakaszt jeleníti meg az "I d P végpont U R L" kiemelésével.](./media/filecloud-tutorial/tutorial_filecloud_003.png)
 
 6. Nyissa meg a letöltött metaadat-fájlt a Jegyzettömbben, másolja a vágólapra a tartalmát, majd illessze be a **identitásszolgáltató Meta adat** szövegmezőbe a **SAML-beállítások** panelen.
 
@@ -173,7 +173,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    d. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

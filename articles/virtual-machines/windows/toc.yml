@@ -278,7 +278,7 @@
             - name: Virtuálisgép-példányok méretrugalmassága
               href: ../reserved-vm-instance-size-flexibility.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: Spot virtuális gépek
-          displayName: 'pre-empt, preempt'
+          displayName: 'pre-empt, preempt, spot'
           href: ../spot-vms.md?toc=/azure/virtual-machines/windows/toc.json&bc=/azure/virtual-machines/windows/breadcrumb/toc.json
         - name: Azure-beli virtuális gépek ideiglenes lemez nélkül
           href: ../azure-vms-no-temp-disk.md
@@ -380,7 +380,7 @@
         - name: Spot virtuális gépek üzembe helyezése
           items:
             - name: Portál
-              href: spot-portal.md
+              href: ../spot-portal.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json
             - name: PowerShell
               href: spot-powershell.md
             - name: ARM-sablon

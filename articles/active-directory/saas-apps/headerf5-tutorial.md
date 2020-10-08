@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 11/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 60c699e35cb182c6a90ae60efe93303569a35014
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: d85e6bbaf85ebb84d3664d90e3d645f61b2cb60a
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88540772"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91817371"
 ---
 # <a name="tutorial-configure-single-sign-on-sso-between-azure-active-directory-and-f5"></a>Oktatóanyag: egyszeri bejelentkezés (SSO) konfigurálása Azure Active Directory és F5 között
 
@@ -73,15 +73,15 @@ Első lépésként a következő elemeket kell megadnia:
 
 1. Az **irányított konfiguráció** lapon kattintson az **irányított konfiguráció frissítése** elemre a bal felső sarokban.
 
-    ![F5 (fejléc alapú) konfiguráció](./media/headerf5-tutorial/configure14.png) 
+    ![Képernyőfelvétel: az irányított konfiguráció oldal az interaktív frissítésre mutató hivatkozással.](./media/headerf5-tutorial/configure14.png) 
 
 1. A frissítési útmutató konfigurációjának pop képernyőjén válassza a **fájl kiválasztása** elemet a letöltött használati eset csomag feltöltéséhez, majd kattintson a **feltöltés és telepítés** gombra.
 
-    ![F5 (fejléc alapú) konfiguráció](./media/headerf5-tutorial/configure15.png) 
+    ![A képernyőképen látható az interaktív konfiguráció frissítése párbeszédpanel, ahol a kiválasztott fájl van kiválasztva.](./media/headerf5-tutorial/configure15.png) 
 
 1. A frissítés befejezésekor kattintson a **Continue (folytatás** ) gombra.
 
-    ![F5 (fejléc alapú) konfiguráció](./media/headerf5-tutorial/configure16.png)
+    ![A képernyőképen megjelenik az interaktív útmutató frissítése párbeszédpanel, amelyen a befejezési üzenet látható.](./media/headerf5-tutorial/configure16.png)
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
@@ -174,7 +174,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Create** (Létrehozás) gombra.
+   1. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -211,39 +211,39 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 1. Navigáljon a **System > tanúsítványkezelő > adatforgalom-tanúsítvány kezelése > SSL-tanúsítvány listára**. Válassza az **Importálás** lehetőséget a jobb oldali sarokban. Adja meg a **tanúsítvány nevét** (a konfiguráció későbbi részében lesz hivatkozva). A **tanúsítvány forrása**területen válassza a fájl feltöltése lehetőséget, hogy az SAML egyszeri bejelentkezés konfigurálásakor az Azure-ból letöltött tanúsítványt adja meg. Kattintson az **Importálás**gombra.
 
-    ![F5 (fejléc alapú) konfiguráció](./media/headerf5-tutorial/configure12.png)
+    ![A képernyőképen az S S L-tanúsítványok listája látható, ahol a tanúsítvány nevét és a tanúsítvány forrását választja.](./media/headerf5-tutorial/configure12.png)
  
 1. Emellett **SSL-tanúsítványra lesz szüksége az alkalmazás állomásneve számára. Navigáljon a System > tanúsítványkezelő > adatforgalom-tanúsítvány kezelése > SSL-tanúsítvány listára**. Válassza az **Importálás** lehetőséget a jobb oldali sarokban. AZ **Importálás típusa** **PKCS 12 (IIS)** lesz. Adja meg a **kulcs nevét** (a konfiguráció későbbi részében lesz hivatkozva), majd adja meg a pfx-fájlt. A PFX-fájl **jelszavának** megadása. Kattintson az **Importálás**gombra.
 
     >[!NOTE]
     >A példában az alkalmazás neve az `Headerapp.superdemo.live` , hogy egy wild card-tanúsítványt használunk a kulcsnévben `WildCard-SuperDemo.live` .
 
-    ![F5 (fejléc alapú) konfiguráció](./media/headerf5-tutorial/configure13.png)
+    ![A képernyőképen az S S L tanúsítvány/kulcs forrása lap látható.](./media/headerf5-tutorial/configure13.png)
 
 1. Az Azure AD-összevonás és az alkalmazás-hozzáférés beállításához az interaktív élményt fogjuk használni. Ugrás az – F5 BIG-IP **Main** elemre, és válassza a **hozzáférés > irányított konfiguráció > összevonási > SAML-szolgáltató**elemet. Kattintson a **tovább** gombra, majd a konfigurálás megkezdéséhez kattintson a **tovább** gombra.
 
-    ![F5 (fejléc alapú) konfiguráció](./media/headerf5-tutorial/configure01.png)
+    ![A képernyőképen az irányított konfiguráció lap látható, amelyben az összevonás van kiválasztva.](./media/headerf5-tutorial/configure01.png)
 
-    ![F5 (fejléc alapú) konfiguráció](./media/headerf5-tutorial/configure02.png)
+    ![A képernyőfelvételen az SAML-szolgáltató lapja látható.](./media/headerf5-tutorial/configure02.png)
  
 1. Adja meg a **konfiguráció nevét**. Határozza meg az **entitás azonosítóját** (ugyanaz, mint amit az Azure ad-alkalmazás konfigurációjában konfigurált). Adja meg az **állomásnév nevét**. Adja meg a hivatkozás **leírását** . Fogadja el a fennmaradó alapértelmezett bejegyzéseket, és válassza ki, majd kattintson a **mentés & tovább**gombra.
 
-    ![F5 (fejléc alapú) konfiguráció](./media/headerf5-tutorial/configure03.png) 
+    ![Képernyőfelvétel: a szolgáltató tulajdonságai lap.](./media/headerf5-tutorial/configure03.png) 
 
 1. Ebben a példában egy új virtuális kiszolgálót hozunk létre a 443-as port 192.168.30.20. A **célként megadott címben**válassza a virtuális kiszolgáló IP-címét. Válassza ki az ügyfél **SSL-profilját**, majd válassza az új létrehozása lehetőséget. Adja meg a korábban feltöltött alkalmazás tanúsítványát (a példában szereplő Wild Card-tanúsítványt) és a társított kulcsot, majd kattintson a **mentés & tovább**gombra.
 
     >[!NOTE]
     >Ebben a példában a belső webkiszolgáló a 888-as porton fut, és a 443-as verzióban szeretné közzétenni.
 
-    ![F5 (fejléc alapú) konfiguráció](./media/headerf5-tutorial/configure04.png) 
+    ![A képernyőképen a virtuális kiszolgáló tulajdonságai lap látható.](./media/headerf5-tutorial/configure04.png) 
 
 1. A **identitásszolgáltató-összekötő konfigurálásához válassza a módszer lehetőséget**, majd adja meg a metaadatokat, kattintson a fájl kiválasztása lehetőségre, és töltse fel az Azure ad-ből korábban letöltött metaadat-XML-fájlt. Adja meg az SAML IDENTITÁSSZOLGÁLTATÓ-összekötő egyedi **nevét** . Válassza ki a korábban feltöltött **metaadat-aláíró tanúsítványt** . Kattintson a **mentés & tovább**gombra.
 
-    ![F5 (fejléc alapú) konfiguráció](./media/headerf5-tutorial/configure05.png)
+    ![A képernyőképen a külső identitás-szolgáltató összekötő-beállítások lapja látható.](./media/headerf5-tutorial/configure05.png)
  
 1. A **készlet kiválasztása**területen adja meg az **új létrehozása** elemet (másik lehetőségként válasszon egy már létező készletet). Hagyja, hogy a többi érték legyen alapértelmezett. A készlet-kiszolgálók területen írja be az IP-címet az **IP-cím/csomópont neve**mezőbe. A **portot**határozza meg. Kattintson a **mentés & tovább**gombra.
 
-    ![F5 (fejléc alapú) konfiguráció](./media/headerf5-tutorial/configure06.png)
+    ![Képernyőfelvétel: a készlet tulajdonságai lap.](./media/headerf5-tutorial/configure06.png)
 
 1. Az egyszeri bejelentkezés beállításai képernyőn válassza az **egyszeri bejelentkezés engedélyezése**lehetőséget. A kiválasztott egyszeri bejelentkezés típusnál válassza a **http-fejléc-alapú**lehetőséget. Cserélje le a **Session. SAML. Last. Identity** nevű munkamenetet. **SAML. Last. attr. name. Identity** nevet a Felhasználónév forrása mezőben (ez a változó az Azure ad-ben a jogcímek leképezésével van beállítva). Az SSO-fejlécek területen.
 
@@ -258,21 +258,21 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
     >[!NOTE]
     >A fiók neve az F5 delegálási fiók lett létrehozva (az F5 dokumentációjának bejelölése).
 
-    ![F5 (fejléc alapú) konfiguráció](./media/headerf5-tutorial/configure07.png) 
+    ![A képernyőképen az egyszeri bejelentkezési beállítások lap látható.](./media/headerf5-tutorial/configure07.png) 
 
 1. Ebben az útmutatóban kihagyjuk a végponti ellenőrzéseket.  További részletekért tekintse meg az F5 dokumentációját. Válassza a **mentés & tovább**lehetőséget.
 
-    ![F5 (fejléc alapú) konfiguráció](./media/headerf5-tutorial/configure08.png)
+    ![A képernyőképen a végpont-ellenőrzések tulajdonságai lap látható.](./media/headerf5-tutorial/configure08.png)
 
 1. Fogadja el az alapértelmezett beállításokat, majd kattintson a **mentés & tovább**gombra. Az SAML-munkamenet-kezelési beállításokkal kapcsolatos részletekért tekintse meg az F5 dokumentációját.
 
-    ![F5 (fejléc alapú) konfiguráció](./media/headerf5-tutorial/configure09.png)
+    ![A képernyőképen az időtúllépési beállítások lap látható.](./media/headerf5-tutorial/configure09.png)
 
 1. Tekintse át az összegző képernyőt, és válassza a **telepítés** lehetőséget a Big-IP konfigurálásához. kattintson a **Befejezés**gombra.
 
-    ![F5 (fejléc alapú) konfiguráció](./media/headerf5-tutorial/configure10.png)
+    ![A képernyőképen látható, hogy az alkalmazás készen áll a központilag telepítendő lapra.](./media/headerf5-tutorial/configure10.png)
 
-    ![F5 (fejléc alapú) konfiguráció](./media/headerf5-tutorial/configure11.png)
+    ![Képernyőfelvétel: az alkalmazás üzembe helyezett lapja.](./media/headerf5-tutorial/configure11.png)
 
 ## <a name="advanced-configuration"></a>Speciális konfiguráció
 
@@ -283,7 +283,7 @@ Ez a szakasz akkor használható, ha nem tudja használni az irányított konfig
     >[!NOTE]
     >A példában az alkalmazás neve az `Headerapp.superdemo.live` , hogy egy wild card-tanúsítványt használunk a kulcsnévben `WildCard-SuperDemo.live` .
   
-    ![F5 (fejléc alapú) konfiguráció](./media/headerf5-tutorial/configure17.png)
+    ![A képernyőképen az S S L tanúsítvány/kulcs forrása oldalon láthatja a speciális konfigurációt.](./media/headerf5-tutorial/configure17.png)
 
 ### <a name="adding-a-new-web-server-to-bigip-f5"></a>Új webkiszolgáló hozzáadása a BigIP-F5-hez
 
@@ -291,7 +291,7 @@ Ez a szakasz akkor használható, ha nem tudja használni az irányított konfig
 
 1. Adja meg a **nevet** és a **sablon** területen válassza az **F5. http**lehetőséget.
  
-    ![F5 (fejléc alapú) konfiguráció](./media/headerf5-tutorial/configure18.png)
+    ![Képernyőfelvétel: a alkalmazásszolgáltatás oldal a sablon kiválasztásával.](./media/headerf5-tutorial/configure18.png)
 
 1. Ebben az esetben a HeaderApp2 külsőleg is HTTPS-ként tesszük közzé, **hogyan kell kezelni a Big-IP-rendszer az SSL-forgalmat**? megadjuk az SSL leállítását **az ügyfélről, az egyszerű szöveges kiszolgálókat (SSL-kiszervezést)**. Adja meg a tanúsítványt és a kulcsot, amely alatt az **SSL-tanúsítványt használni szeretné?** és **melyik SSL-titkos kulcsot szeretné használni?**. Megadhatja a virtuális kiszolgáló IP- **címét, hogy milyen IP-címet szeretne használni a virtuális kiszolgálóhoz?**. 
 
@@ -303,15 +303,15 @@ Ez a szakasz akkor használható, ha nem tudja használni az irányított konfig
 
         * Új alkalmazáskiszolgáló létrehozásakor **belső IP-címet** és **portszámot**kell megadni.
 
-        ![F5 (fejléc alapú) konfiguráció](./media/headerf5-tutorial/configure19.png) 
+        ![Képernyőfelvétel: a panel, ahol megadhatja ezeket az adatokat.](./media/headerf5-tutorial/configure19.png) 
 
 1. Kattintson a **kész**gombra.
 
-    ![F5 (fejléc alapú) konfiguráció](./media/headerf5-tutorial/configure20.png) 
+    ![A képernyőképen a befejezést követően látható az oldal.](./media/headerf5-tutorial/configure20.png) 
 
 1. Győződjön meg arról, hogy az alkalmazás tulajdonságai módosíthatók. Kattintson a **Main > IApps > alkalmazásszolgáltatás: applications >> HeaderApp2**elemre. Törölje a **szigorú frissítéseket** (a grafikus felhasználói felületen kívül is módosítjuk a beállításokat). Kattintson a **frissítés** gombra.
 
-    ![F5 (fejléc alapú) konfiguráció](./media/headerf5-tutorial/configure21.png) 
+    ![Képernyőfelvétel: a alkalmazásszolgáltatás oldal, amelyen a Tulajdonságok lap van kiválasztva.](./media/headerf5-tutorial/configure21.png) 
 
 1. Ezen a ponton böngészheti a virtuális kiszolgálót.
 
@@ -319,27 +319,27 @@ Ez a szakasz akkor használható, ha nem tudja használni az irányított konfig
 
 1.  Kattintson a **hozzáférés > összevonás> SAML-szolgáltató > helyi SP szolgáltatás elemre > kattintson a létrehozás vagy a + jel gombra**.
 
-    ![F5 (fejléc alapú) konfiguráció](./media/headerf5-tutorial/configure22.png)
+    ![A képernyőképen a BIG I P-lap névjegye látható. ](./media/headerf5-tutorial/configure22.png)
 
 1. A szolgáltatói szolgáltatás részleteinek megadása. Adja meg az F5 SP konfigurációt jelképező **nevet** . Az **entitás azonosítójának** megadása (általában ugyanaz, mint az alkalmazás URL-címe).
 
-    ![F5 (fejléc alapú) konfiguráció](./media/headerf5-tutorial/configure23.png)
+    ![Képernyőfelvétel: az SAML szolgáltató lapja az új SAML S P szolgáltatás létrehozása párbeszédpanellel.](./media/headerf5-tutorial/configure23.png)
 
-    ![F5 (fejléc alapú) konfiguráció](./media/headerf5-tutorial/configure24.png)
+    ![A képernyőképen az új SAML S P szolgáltatás létrehozása párbeszédpanel jelenik meg, amelyen a végpont beállításai vannak kiválasztva.](./media/headerf5-tutorial/configure24.png)
 
-    ![F5 (fejléc alapú) konfiguráció](./media/headerf5-tutorial/configure25.png)
+    ![A képernyőképen az új SAML S P szolgáltatás létrehozása párbeszédpanel jelenik meg, amelyen a biztonsági beállítások vannak kiválasztva.](./media/headerf5-tutorial/configure25.png)
 
-    ![F5 (fejléc alapú) konfiguráció](./media/headerf5-tutorial/configure26.png)
+    ![Képernyőfelvétel: az új SAML S P szolgáltatás létrehozása párbeszédpanel, amelyen a hitelesítési környezet be van jelölve.](./media/headerf5-tutorial/configure26.png)
 
-    ![F5 (fejléc alapú) konfiguráció](./media/headerf5-tutorial/configure27.png)
+    ![Képernyőfelvétel: az új SAML S P szolgáltatás létrehozása párbeszédpanel, melyen a kért attribútumok vannak kiválasztva.](./media/headerf5-tutorial/configure27.png)
 
-    ![F5 (fejléc alapú) konfiguráció](./media/headerf5-tutorial/configure28.png)
+    ![Képernyőfelvétel: az SAML S P szolgáltatás szerkesztése párbeszédpanel, ahol a speciális beállítások vannak kiválasztva.](./media/headerf5-tutorial/configure28.png)
 
 ### <a name="create-idp-connector"></a>Identitásszolgáltató-összekötő létrehozása
 
 1. Kattintson a **identitásszolgáltató-összekötők kötése/** megszüntetése gombra, válassza az **új identitásszolgáltató-összekötő létrehozása** elemet, és válassza a **metaadatokból** lehetőséget, majd hajtsa végre a következő lépéseket:
  
-    ![F5 (fejléc alapú) konfiguráció](./media/headerf5-tutorial/configure29.png)
+    ![A képernyőképen az SAML I d PS szerkesztése látható, amely ezt a P párbeszédpanelt használja a Create New I d P összekötő kiválasztásával.](./media/headerf5-tutorial/configure29.png)
 
     a. Tallózással keresse meg metadata.xml az Azure AD-ból letöltött fájlt, és adjon meg egy **identitás-szolgáltató nevét**.
 
@@ -347,7 +347,7 @@ Ez a szakasz akkor használható, ha nem tudja használni az irányított konfig
 
     c. Létrejön az összekötő, és a tanúsítvány automatikusan készen áll a metaadatok XML-fájljából.
     
-    ![F5 (fejléc alapú) konfiguráció](./media/headerf5-tutorial/configure30.png)
+    ![A képernyőképen az új SAML I d P összekötő létrehozása párbeszédpanel látható.](./media/headerf5-tutorial/configure30.png)
 
     d. Konfigurálja a F5BIG-IP-t az összes kérelem az Azure AD-be való küldéséhez.
 
@@ -363,7 +363,7 @@ Ez a szakasz akkor használható, ha nem tudja használni az irányított konfig
 
     j. **Az SAML-IDENTITÁSSZOLGÁLTATÓ telepítése befejeződött**
     
-    ![F5 (fejléc alapú) konfiguráció](./media/headerf5-tutorial/configure31.png)
+    ![A képernyőképen az SAML I d PS módosítása látható, amely a felhasználó számára ez a P párbeszédpanel jelenik meg.](./media/headerf5-tutorial/configure31.png)
 
 ### <a name="configure-f5-policy-to-redirect-users-to-azure-saml-idp"></a>Az F5-házirend konfigurálása a felhasználók Azure SAML-IDENTITÁSSZOLGÁLTATÓ való átirányításához
 
@@ -373,39 +373,39 @@ Ez a szakasz akkor használható, ha nem tudja használni az irányított konfig
 
     b. Kattintson a **Létrehozás** gombra.
 
-    ![F5 (fejléc alapú) konfiguráció](./media/headerf5-tutorial/configure32.png)
+    ![A képernyőképen a hozzáférési profilok lap látható.](./media/headerf5-tutorial/configure32.png)
  
     c. Adja meg a **nevet** (a példában a HeaderAppAzureSAMLPolicy).
 
     d. Egyéb beállításokat is testreszabhat, lásd az F5 dokumentációját.
 
-    ![F5 (fejléc alapú) konfiguráció](./media/headerf5-tutorial/configure33.png)
+    ![A képernyőképen az általános Tulajdonságok lap látható.](./media/headerf5-tutorial/configure33.png)
 
-    ![F5 (fejléc alapú) konfiguráció](./media/headerf5-tutorial/configure34.png) 
+    ![A képernyőképen az általános Tulajdonságok lap is látható.](./media/headerf5-tutorial/configure34.png) 
 
     e. Kattintson a **kész**gombra.
 
     f. A szabályzat létrehozása után kattintson a házirendre, és válassza a **hozzáférési házirend** lapot.
 
-    ![F5 (fejléc alapú) konfiguráció](./media/headerf5-tutorial/configure35.png)
+    ![Képernyőfelvétel: a hozzáférési szabályzat lap általános tulajdonságokkal.](./media/headerf5-tutorial/configure35.png)
  
     : Kattintson a **vizualizációs házirend-szerkesztőre**, és módosítsa a **hozzáférési szabályzatot a profil** hivatkozáshoz.
 
     h. Kattintson a + jelre a vizualizációs házirend-szerkesztőben, majd válassza az **SAML-hitelesítés**lehetőséget.
 
-    ![F5 (fejléc alapú) konfiguráció](./media/headerf5-tutorial/configure36.png)
+    ![A képernyőképen egy hozzáférési szabályzat látható.](./media/headerf5-tutorial/configure36.png)
 
-    ![F5 (fejléc alapú) konfiguráció](./media/headerf5-tutorial/configure37.png)
+    ![Képernyőfelvétel: a Keresés párbeszédpanel, amelyen a SAML-hitelesítés be van jelölve.](./media/headerf5-tutorial/configure37.png)
  
     i. Kattintson az **elem hozzáadása**gombra.
 
     j. A **Tulajdonságok** területen adja meg a **nevet** , és az **AAA-kiszolgáló** területen válassza ki a korábban konfigurált SP-t, kattintson a **Mentés**gombra.
  
-    ![F5 (fejléc alapú) konfiguráció](./media/headerf5-tutorial/configure38.png)
+    ![A képernyőképen az elemek tulajdonságai láthatók, beleértve a kiszolgálóját is.](./media/headerf5-tutorial/configure38.png)
 
     k. Az alapszintű szabályzat készen áll a szabályzat testreszabására további források/attribútumok tárolására.
 
-    ![F5 (fejléc alapú) konfiguráció](./media/headerf5-tutorial/configure39.png)
+    ![A képernyőképen a testreszabott szabályzat látható.](./media/headerf5-tutorial/configure39.png)
  
     l. Kattintson a felül található **hozzáférési házirend alkalmazása** hivatkozásra.
 
@@ -415,21 +415,21 @@ Ez a szakasz akkor használható, ha nem tudja használni az irányított konfig
 
     a. Kattintson a **fő**  >  **helyi forgalom**  >  **virtuális kiszolgálók**elemre.
 
-    ![F5 (fejléc alapú) konfiguráció](./media/headerf5-tutorial/configure40.png)
+    ![Képernyőfelvétel: a virtuális kiszolgálók listája lap.](./media/headerf5-tutorial/configure40.png)
  
     b. Kattintson a virtuális kiszolgálóra, görgessen a **hozzáférési házirend** szakaszhoz, a **hozzáférési profil** legördülő menüben válassza ki a létrehozott SAML-szabályzatot (a példában HeaderAppAzureSAMLPolicy)
 
     c. Kattintson a **frissítés** gombra
  
-    ![F5 (fejléc alapú) konfiguráció](./media/headerf5-tutorial/configure41.png)
+    ![Képernyőfelvétel: a hozzáférési szabályzat panelje.](./media/headerf5-tutorial/configure41.png)
 
     d. hozzon létre egy F5 BIG-IP iRule®, hogy kinyerje az egyéni SAML-attribútumokat a bejövő állításból, és HTTP-fejlécként adja át őket a háttér-tesztelési alkalmazásnak. Kattintson a **fő > helyi forgalom > iRules > IRule listára > kattintson a Létrehozás gombra** .
 
-    ![F5 (fejléc alapú) konfiguráció](./media/headerf5-tutorial/configure42.png)
+    ![A képernyőfelvételen a helyi forgalom iRule listája látható.](./media/headerf5-tutorial/configure42.png)
  
     e. Illessze be az F5 BIG-IP iRule szöveget alább a definíciós ablakba.
 
-    ![F5 (fejléc alapú) konfiguráció](./media/headerf5-tutorial/configure43.png)
+    ![A képernyőképen az új iRule oldal jelenik meg.](./media/headerf5-tutorial/configure43.png)
  
     Ha RULE_INIT {set static::d ebug 0}, ha ACCESS_ACL_ALLOWED {
 
@@ -441,7 +441,7 @@ Ez a szakasz akkor használható, ha nem tudja használni az irányított konfig
 
     **Példa a kimenetre**
 
-    ![F5 (fejléc alapú) konfiguráció](./media/headerf5-tutorial/configure44.png)
+    ![A képernyőképen a minta kimenet látható.](./media/headerf5-tutorial/configure44.png)
  
 ### <a name="create-f5-test-user"></a>F5 test User létrehozása
 

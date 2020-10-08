@@ -9,12 +9,12 @@ ms.date: 05/28/2019
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: edfe0a383ab68b640b5bc7e7e0a1fdd038d0fa38
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: f6ed981ab0b67aacaca5300dc3f77894805e3d1b
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91318330"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91816381"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-windows-devices"></a>Oktatóanyag: C IoT Edge modul fejlesztése Windows-eszközökhöz
 
@@ -346,6 +346,7 @@ A fejlesztői gép most már rendelkezik hozzáféréssel a tároló beállítá
 
 A Visual Studio Cloud Explorer és a Azure IoT Edge Tools bővítmény használatával telepítse a modul-projektet a IoT Edge eszközre. Már rendelkezik egy, a forgatókönyvhöz előkészített üzembe helyezési jegyzékfájlval, a konfigurációs mappában található fájl **deployment.windows-amd64.js** . Most csak ki kell választania az üzemelő példányt fogadó eszközt.
 
+
 Ellenőrizze, hogy a IoT Edge eszköz működik-e.
 
 1. A Visual Studio Cloud Explorerben bontsa ki az erőforrásokat a IoT-eszközök listájának megtekintéséhez.
@@ -356,7 +357,7 @@ Ellenőrizze, hogy a IoT Edge eszköz működik-e.
 
 4. A Fájlkezelőben válassza ki a **Deployment. Windows-amd64** fájlt a megoldás konfigurációs mappájába.
 
-5. Frissítse a Cloud Explorert, és tekintse meg az eszköz alatt felsorolt telepített modulokat.
+5. Frissítse a Cloud Explorer alkalmazást, és tekintse meg az eszköz alatt felsorolt telepített modulokat.
 
 ## <a name="view-generated-data"></a>A létrejött adatok megtekintése
 

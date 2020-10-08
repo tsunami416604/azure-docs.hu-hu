@@ -6,12 +6,12 @@ ms.assetid: 9af8a367-7d39-4399-9941-b80cbc5f39a0
 ms.topic: article
 ms.date: 08/13/2019
 ms.custom: devx-track-csharp, seodec18
-ms.openlocfilehash: 18463c4350895401c9bf73dc249ce93218a44f7c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 68ff753a0c6e21fac512792670a24bede8980e99
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91264643"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91816458"
 ---
 # <a name="configure-an-app-service-app-in-the-azure-portal"></a>App Service alkalmazás konfigurálása a Azure Portal
 
@@ -83,6 +83,32 @@ Az Alkalmazásbeállítások a következő JSON-formátummal rendelkeznek:
   ...
 ]
 ```
+
+### <a name="automate-app-settings-with-the-azure-cli"></a>Alkalmazások beállításainak automatizálása az Azure CLI-vel
+
+A parancssorból az Azure CLI használatával hozhatja létre és kezelheti a beállításokat.
+
+- Rendeljen egy értéket egy beállításhoz az [az WebApp config app Settings set](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_set):
+
+    ```azurecli-interactive
+    az webapp config appsettings set --name <app-name> --resource-group <resource-group-name> --settings <setting-name>="<value>"
+    ```
+        
+    Cserélje le a `<setting-name>` értéket a beállítás nevére, és `<value>` a hozzárendelni kívánt értékre. Ez a parancs akkor hozza létre a beállítást, ha még nem létezik.
+    
+- Az összes beállítás és érték megjelenítése az [WebApp config appSettings List](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_list):
+    
+    ```azurecli-interactive
+    az webapp config appsettings list --name <app-name> --resource-group <resource-group-name>
+    ```
+    
+- Távolítson el egy vagy több beállítást az [az WebApp config app Settings delete paranccsal](/cli/azure/webapp/config/appsettings#az_webapp_config_appsettings_delete):
+
+    ```azurecli-interactive
+    az webapp config appsettings delete --name <app-name> --resource-group <resource-group-name> --setting-names {<names>}
+    ```
+    
+    Cserélje le a `<names>` értéket szóközzel tagolt listára.
 
 ## <a name="configure-connection-strings"></a>Kapcsolati sztringek konfigurálása
 
@@ -164,7 +190,12 @@ A [Azure Portal]keresse meg és válassza ki a **app Services**, majd válassza 
 
 Itt konfigurálhatja az alkalmazás egyes gyakori beállításait. Néhány beállításhoz a [magasabb díjszabású csomagok skálázása](manage-scale-up.md)szükséges.
 
-- **Verem beállításai**: az alkalmazás futtatásához használt szoftver, beleértve a nyelv és az SDK verzióját is. A Linux-alkalmazások és az egyéni tárolós alkalmazások esetében opcionális indítási parancsot vagy fájlt is beállíthat.
+- **Verem beállításai**: az alkalmazás futtatásához használt szoftver, beleértve a nyelv és az SDK verzióját is.
+
+    A Linux-alkalmazások és az egyéni tároló-alkalmazások esetében kiválaszthatja a nyelvi futtatókörnyezet verzióját, és beállíthat egy opcionális **indítási parancsot** vagy egy indítási parancsfájlt is.
+
+    ![Linux-tárolók általános beállításai](./media/configure-common/open-general-linux.png)
+
 - **Platform beállításai**: lehetővé teszi az üzemeltetési platform beállításainak konfigurálását, beleértve a következőket:
     - **Bitszáma**: 32 bites vagy 64 bites.
     - **WebSocket protokoll**: [ASP.net-jelzőhöz] vagy [socket.IO](https://socket.io/), például.

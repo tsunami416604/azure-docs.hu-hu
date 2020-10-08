@@ -1,18 +1,18 @@
 ---
 title: Azure Policy szabályozási megfelelőségi szabályozása Azure Database for MySQL
 description: Felsorolja Azure Policy Azure Database for MySQL számára elérhető szabályozási megfelelőségi szabályozásokat. Ezek a beépített szabályzat-definíciók közös megközelítéseket biztosítanak az Azure-erőforrások megfelelőségének kezeléséhez.
-ms.date: 09/16/2020
+ms.date: 10/07/2020
 ms.topic: sample
 author: ajlam
 ms.author: andrela
 ms.service: mysql
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 0964edd95405ef0d8c291739fc46a482f4d60301
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 39ed26bdbc18b5e6fb0b9f6f1158e83c86194ac1
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90987091"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91816252"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-database-for-mysql"></a>Azure Policy szabályozási megfelelőségi szabályozása Azure Database for MySQL
 

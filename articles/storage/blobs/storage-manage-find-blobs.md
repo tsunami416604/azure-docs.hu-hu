@@ -9,12 +9,12 @@ ms.subservice: common
 ms.topic: conceptual
 ms.reviewer: hux
 ms.custom: references_regions
-ms.openlocfilehash: 3b6162552e43c9f475bef2ca3097da22ae198011
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: db23d3b5c532a1539936b51222345c98679c554c
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91713686"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91817534"
 ---
 # <a name="manage-and-find-azure-blob-data-with-blob-index-preview"></a>Azure Blob-adatkezelés és-keresés a blob-indextel (előzetes verzió)
 
@@ -72,8 +72,11 @@ A következő korlátozások vonatkoznak a blob index címkékre:
 - A kulcsok és értékek címkézése megkülönbözteti a kis-és nagybetűket
 - A kulcsok és az értékek címkézése csak a karakterlánc-adattípusokat támogatja; a rendszer karakterláncként menti a számokat, a dátumot, az időpontokat és a speciális karaktereket.
 - A kulcsok és értékek címkézésének meg kell felelnie a következő elnevezési szabályoknak:
-  - Alfanumerikus karakterek: a-z, A-Z, 0-9
-  - Speciális karakterek: szóköz, plusz, mínusz, pont, kettőspont, egyenlő, aláhúzás, továbbítási perjel
+  - Alfanumerikus karakterek:
+    - **a** – **z** (kisbetűs)
+    - **A** – **Z** (nagybetűs)
+    - **0** – **9** (szám)
+  - Érvényes speciális karakterek: szóköz, plusz, mínusz, időtartam, kettőspont, egyenlő, aláhúzás, továbbítási perjel ( ` +-.:=_/` )
 
 ## <a name="getting-and-listing-blob-index-tags"></a>BLOB-index címkék beolvasása és listázása
 
@@ -308,7 +311,7 @@ A blob index címkéi csak a karakterlánc-adattípusokat támogatják, a lekér
 ### <a name="are-blob-index-tags-and-azure-resource-manager-tags-related"></a>A blob-indexek címkéi és a hozzájuk kapcsolódó Azure Resource Manager Címkék?
 Nem, a Resource Manager-címkék segítenek megszervezni a vezérlési sík erőforrásait, például az előfizetéseket, az erőforráscsoportokat és a Storage-fiókokat. A blob index címkéi az objektumok kezelését és felderítését biztosítják az adatsík erőforrásain, például a Storage-fiókban található blobokon.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A blob index kihasználása például a [blob index használata az adatkezeléshez és az adatkereséshez](storage-blob-index-how-to.md)című témakörben olvasható.
 

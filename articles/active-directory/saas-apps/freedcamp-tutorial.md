@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/20/2019
 ms.author: jeedes
-ms.openlocfilehash: 50b5e21c8dc441187b3d78310db55b84aa1cd158
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 7f8bc88cf34c3bbea168bd95d2d03bdc3373ad07
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551030"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91817045"
 ---
 # <a name="tutorial-integrate-freedcamp-with-azure-active-directory"></a>Oktatóanyag: a Freedcamp és a Azure Active Directory integrálása
 
@@ -108,11 +108,11 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 4. A lap jobb felső sarkában kattintson a **profil** elemre, majd keresse meg a **saját fiók**lehetőséget.
 
-    ![Freedcamp-konfiguráció](./media/freedcamp-tutorial/config01.png)
+    ![Képernyőkép, amely a "profil" és a "saját fiók" elemet jeleníti meg.](./media/freedcamp-tutorial/config01.png)
 
 5. A menüsáv bal oldalán kattintson az **SSO** elemre, majd az **SSO-kapcsolatok** oldalon hajtsa végre a következő lépéseket:
 
-    ![Freedcamp-konfiguráció](./media/freedcamp-tutorial/config02.png)
+    ![Képernyőkép, amely a bal oldali menüsorban és a "saját S O-kapcsolatok" oldalon a beírt értékekkel és a "Küldés" gomb kiválasztásával jelenik meg.](./media/freedcamp-tutorial/config02.png)
 
     a. A **title (cím** ) mezőbe írja be a címet.
 
@@ -134,7 +134,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Britta Simon nev�
    1. A **Név** mezőbe írja a következőt: `Britta Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `BrittaSimon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Create** (Létrehozás) gombra.
+   1. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -162,13 +162,13 @@ Az Azure AD-felhasználók engedélyezéséhez jelentkezzen be a Freedcamp-be, h
 
 1. Egy másik böngészőablakban jelentkezzen be a Freedcamp biztonsági rendszergazdaként.
 
-2. A lap felső toright sarkában kattintson a **profil** elemre, majd keresse meg a **rendszer kezelése**lehetőséget.
+2. A lap jobb felső sarkában kattintson a **profil** elemre, majd keresse meg a **rendszer kezelése**lehetőséget.
 
     ![Freedcamp-konfiguráció](./media/freedcamp-tutorial/config03.png)
 
 3. A rendszer kezelése lap jobb oldalán hajtsa végre a következő lépéseket:
 
-    ![Freedcamp-konfiguráció](./media/freedcamp-tutorial/config04.png)
+    ![Képernyőfelvétel: a "felhasználók hozzáadása vagy meghívása" gomb kiválasztásakor megjelenik az "E-mail" mező, és a "felhasználó hozzáadása" gomb van kiválasztva.](./media/freedcamp-tutorial/config04.png)
 
     a. Kattintson a **felhasználók hozzáadása vagy meghívása**elemre.
 

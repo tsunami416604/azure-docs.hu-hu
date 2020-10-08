@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/17/2020
 ms.author: jeedes
-ms.openlocfilehash: 7d0b0a6c935182737a7f207b7c7831fefcd491ea
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: ccdfddd3ea76eddea2ab672fe07a092c9b1f1b62
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88555305"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91817063"
 ---
 # <a name="tutorial-integrate-expensein-with-azure-active-directory"></a>Oktatóanyag: a ExpenseIn és a Azure Active Directory integrálása
 
@@ -100,7 +100,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Create** (Létrehozás) gombra.
+   1. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -135,11 +135,11 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 1. Kattintson a **rendszergazda** elemre az oldal tetején, majd navigáljon az **egyszeri bejelentkezéshez** , és kattintson a **szolgáltató hozzáadása**parancsra.
 
-     ![ExpenseIn-konfiguráció](./media/expenseIn-tutorial/config01.png)
+     ![Képernyőfelvétel: a "rendszergazda" lap és az "egyszeri bejelentkezési szolgáltatók" lap és a "szolgáltató hozzáadása" lehetőség van kiválasztva.](./media/expenseIn-tutorial/config01.png)
 
 1. Az **új identitás-szolgáltató** előugró ablakában hajtsa végre a következő lépéseket:
 
-    ![ExpenseIn-konfiguráció](./media/expenseIn-tutorial/config02.png)
+    ![Képernyőkép: az "Identity Provider szerkesztése" előugró ablak a beírt értékekkel.](./media/expenseIn-tutorial/config02.png)
 
     a. A **szolgáltató neve** szövegmezőbe írja be a nevet; például: Azure.
 
@@ -151,7 +151,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
     e. Nyissa meg a tanúsítványt (Base64) a Jegyzettömbben, másolja ki a tartalmát, és illessze be a **tanúsítvány** szövegmezőbe.
 
-    f. Kattintson a **Create** (Létrehozás) gombra.
+    f. Kattintson a **Létrehozás** elemre.
 
 ### <a name="create-expensein-test-user"></a>ExpenseIn-tesztelési felhasználó létrehozása
 
@@ -163,7 +163,7 @@ Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a Ex
 
 2. A lap tetején kattintson a **rendszergazda** elemre, majd keresse meg a **felhasználók** lapot, és kattintson az **új felhasználó**lehetőségre.
 
-     ![ExpenseIn-konfiguráció](./media/expenseIn-tutorial/config03.png)
+     ![Képernyőkép: a "rendszergazda" lap és a "felhasználók kezelése" lap, amelynél az "új felhasználó" lehetőség van kiválasztva.](./media/expenseIn-tutorial/config03.png)
 
 3. A **részletek** előugró ablakában hajtsa végre a következő lépéseket:
 
@@ -175,7 +175,7 @@ Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a Ex
 
     c. Az **e-mail** szövege szövegmezőbe írja be a felhasználóhoz hasonló e-mail címet `B.Simon@contoso.com` .
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    d. Kattintson a **Létrehozás** elemre.
 
 ## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
 

@@ -34,7 +34,7 @@
       items:
         - name: ASP.NET
           href: quickstart-v2-aspnet-webapp.md
-        - name: ASP.NET Core
+        - name: ASP.NET-mag
           href: quickstart-v2-aspnet-core-webapp.md
         - name: NodeJS
           href: quickstart-v2-nodejs-webapp.md
@@ -535,10 +535,6 @@
     - name: Alkalmazáskonfiguráció
       displayName: App configuration
       items:
-        - name: Alkalmazásregisztráció az Azure Portalon – képzési útmutató
-          href: app-registrations-training-guide-for-app-registrations-legacy-users.md
-        - name: Alkalmazásregisztráció az Azure Portalon – felület
-          href: app-registration-portal-training-guide.md
         - name: Egybérlős alkalmazás átalakítása több-bérlőssé
           href: howto-convert-app-to-be-multi-tenant.md
         - name: Egyszerű szolgáltatás létrehozása

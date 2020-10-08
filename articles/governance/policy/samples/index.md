@@ -3,12 +3,12 @@ title: A szabályzatminták indexe
 description: Az Azure Policyhez készült beépített elemek indexe Kategóriacímkék, Jogszabályi megfelelőség, Key Vault, Kubernetes, Vendégkonfiguráció és egyebek.
 ms.date: 07/20/2020
 ms.topic: sample
-ms.openlocfilehash: b4f76c42eb23ce368875dfb91f2f7b9e7ee1bd50
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: 9fec7c7b0db554d424f8faee7e4e10e6121f1caa
+ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89481562"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91812522"
 ---
 # <a name="azure-policy-samples"></a>Azure Policy-minták
 
@@ -27,7 +27,7 @@ Az alábbiakban példákat láthat az Azure Policyben található nyelvet és op
 - [Mezők](./pattern-fields.md)
 - [Paraméterek](./pattern-parameters.md)
 - [Hatás részletei](./pattern-effect-details.md)
-- [Címkék használata](./pattern-effect-details.md)
+- [Címkék használata](./pattern-tags.md)
 - [Értékoperátor](./pattern-value-operator.md)
 - [Számoperátor](./pattern-count-operator.md)
 - [Szabályzatdefiníciók csoportosítása egy kezdeményezésben](./pattern-group-with-initiative.md)

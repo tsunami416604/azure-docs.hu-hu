@@ -11,18 +11,18 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-java
-ms.openlocfilehash: 230fac982e19c1106aa5757c9bf1c32d192740d7
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.openlocfilehash: fafce52f9d760fac0d5c3f0ea1be2480547c5d4d
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87314509"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91817524"
 ---
 # <a name="client-side-encryption-and-azure-key-vault-with-java-for-microsoft-azure-storage"></a>Ügyféloldali titkosítás és Azure Key Vault Javával Microsoft Azure Storage
 [!INCLUDE [storage-selector-client-side-encryption-include](../../../includes/storage-selector-client-side-encryption-include.md)]
 
 ## <a name="overview"></a>Áttekintés
-A [Javához készült Azure Storage ügyféloldali kódtára](https://mvnrepository.com/artifact/com.microsoft.azure/azure-storage) támogatja az ügyfeleken belüli adattitkosítást az Azure Storage-ba való feltöltés előtt, és az adatvisszafejtést az ügyfélre való letöltés során. A függvénytár támogatja a Storage-fiókok kulcsának felügyeletéhez [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) integrációt is.
+A [Javához készült Azure Storage ügyféloldali kódtára](https://search.maven.org/artifact/com.azure/azure-storage-blob-cryptography) támogatja az ügyfeleken belüli adattitkosítást az Azure Storage-ba való feltöltés előtt, és az adatvisszafejtést az ügyfélre való letöltés során. A függvénytár támogatja a Storage-fiókok kulcsának felügyeletéhez [Azure Key Vault](https://azure.microsoft.com/services/key-vault/) integrációt is.
 
 ## <a name="encryption-and-decryption-via-the-envelope-technique"></a>Titkosítás és visszafejtés a boríték-technikán keresztül
 A titkosítási és visszafejtési folyamatok követik a burkológörbe technikáját.  
@@ -250,7 +250,7 @@ public void setEncryptedProperty1(final String encryptedProperty1) {
 
 Vegye figyelembe, hogy a tárolási adatokat a rendszer további teljesítménybeli terhelést eredményez. A tartalmi kulcsot és a IV-t elő kell állítani, a tartalmat titkosítani kell, és további metaadatokat kell formázni és feltölteni. Ez a terhelés a titkosított adatmennyiségtől függően eltérő lesz. Javasoljuk, hogy az ügyfelek mindig tesztelje az alkalmazásaikat a fejlesztés során.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Töltse le az [Azure Storage ügyféloldali kódtárat a Java Maven-csomaghoz](https://mvnrepository.com/artifact/com.microsoft.azure/azure-storage)  
 * Az [Azure Storage ügyféloldali kódtár letöltése a githubról a Java-forráskódhoz](https://github.com/Azure/azure-storage-java)

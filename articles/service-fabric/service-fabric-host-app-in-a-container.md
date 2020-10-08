@@ -3,18 +3,18 @@ title: .NET-alkalmazás üzembe helyezése tárolóban az Azure Service Fabric
 description: Megtudhatja, hogyan helyezhet tárolóba egy meglévő .NET-alkalmazást a Visual Studio segítségével, illetve hogyan végezhet helyi hibakeresést a Service Fabric szolgáltatásbeli tárolókon. A tárolóba helyezett alkalmazást a rendszer Azure-tárolóregisztrációs adatbázisba küldi, és üzembe helyezi egy Service Fabric-fürtben. Az Azure-ban való üzembe helyezéskor az alkalmazás Azure SQL-adatbázist használ adatmegőrzéshez.
 ms.topic: tutorial
 ms.date: 07/08/2019
-ms.openlocfilehash: 7c77b2e5b60aef246b513cb852f6231ba7531056
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: b841591bb200bca7edbde24744c5b47302816ea0
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91743811"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91817635"
 ---
 # <a name="tutorial-deploy-a-net-application-in-a-windows-container-to-azure-service-fabric"></a>Oktatóanyag: Windows-tárolóban lévő .NET-alkalmazás telepítése Azure Service Fabricre
 
 Ez az oktatóanyag bemutatja, hogyan helyezhet tárolóba egy meglévő ASP.NET-alkalmazást és csomagot Service Fabric-alkalmazásként.  Futtassa a tárolókat helyileg egy Service Fabric fejlesztési fürtön, és telepítse az alkalmazást az Azure-ba.  Az alkalmazás [Azure SQL-adatbázisban](../azure-sql/database/sql-database-paas-overview.md) őrzi meg az adatokat.
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 >
@@ -109,7 +109,7 @@ Write-Host "Server name is $servername"
 
 ## <a name="update-the-web-config"></a>A webes konfiguráció frissítése
 
-Lépjen vissza a **FabrikamFiber.Web** projektre, frissítse a kapcsolati sztringet a **web.config** fájlban, hogy az a tárolóban lévő SQL Serverre mutasson.  Frissítse a kapcsolati karakterlánc *kiszolgálói* részét az előző szkript által létrehozott kiszolgálónévre. Ehhez hasonlónak kell lennie: "fab-fiber-751718376.database.windows.net".
+Lépjen vissza a **FabrikamFiber.Web** projektre, frissítse a kapcsolati sztringet a **web.config** fájlban, hogy az a tárolóban lévő SQL Serverre mutasson.  Frissítse a kapcsolati karakterlánc *kiszolgálói* részét az előző szkript által létrehozott kiszolgálónévre. Ehhez hasonlónak kell lennie: "fab-fiber-751718376.database.windows.net". A következő XML-fájlban csak az attribútumot kell frissítenie `connectionString` ; a `providerName` és `name` attribútumokat nem szükséges módosítani.
 
 ```xml
 <add name="FabrikamFiber-Express" connectionString="Server=<server name>,1433;Initial Catalog=call-center-db;Persist Security Info=False;User ID=ServerAdmin;Password=Password@123;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;" providerName="System.Data.SqlClient" />
