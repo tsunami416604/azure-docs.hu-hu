@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/16/2019
 ms.author: jeedes
 ms.openlocfilehash: a48772c4325717a64bd36873675ff19c6a332de0
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91817155"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-highgear"></a>Oktatóanyag: Azure Active Directory integráció a HighGear
@@ -73,7 +73,7 @@ Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a HighG
 Az Azure AD egyszeri bejelentkezés HighGear-rendszerrel való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
 
 1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. **[HighGear egyszeri bejelentkezés konfigurálása](#configure-highgear-single-sign-on)** – az egyszeri bejelentkezés beállításainak konfigurálása a HighGear alkalmazás oldalán.
+2. **[HighGear egyszeri bejelentkezés konfigurálása](#configure-highgear-single-sign-on)** – az HighGear-alkalmazás oldalának egyetlen Sign-On beállítása.
 3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
 4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
 5. **[Hozzon létre HighGear-teszt felhasználót](#create-highgear-test-user)** – hogy a felhasználó Azure ad-Britta összekapcsolt, a HighGear-hoz tartozó Simon-beli partnerrel rendelkezzen. 
@@ -93,7 +93,7 @@ Az Azure AD egyszeri bejelentkezés az HighGear-rendszerrel való konfigurálás
 
     ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
+3. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
@@ -101,16 +101,16 @@ Az Azure AD egyszeri bejelentkezés az HighGear-rendszerrel való konfigurálás
 
     ![A képernyőfelvételen az alapszintű SAML-konfiguráció látható, ahol megadható az azonosító, a válasz U R L, majd a Mentés elemre.](common/idp-intiated.png)
 
-    a. Az **azonosító** szövegmezőbe illessze be a HighGear rendszer egyszeri bejelentkezési beállítások lapján található **szolgáltatói entitás azonosító** mezőjében szereplő értéket.
+    a. Az **azonosító** szövegmezőbe illessze be a **szolgáltatói entitás azonosító** mezőjének értékét, amely a HighGear rendszer egyetlen Sign-On beállítások lapján található.
 
     ![A szolgáltatói entitás azonosítója mező](media/highgear-tutorial/service-provider-entity-id-field.png)
     
     > [!NOTE]
-    > Az egyszeri bejelentkezési beállítások oldalának eléréséhez be kell jelentkeznie a HighGear rendszerbe. Miután bejelentkezett, vigye az egérmutatót a HighGear felügyelet fülére, és kattintson az egyszeri bejelentkezés beállításai menüpontra.
+    > Be kell jelentkeznie a HighGear rendszerbe az egyetlen Sign-On beállítások oldal eléréséhez. Miután bejelentkezett, vigye az egérmutatót a HighGear felügyelet fülére, és kattintson az egyszeres Sign-On beállítások menüpontra.
     
-    ![Az egyszeri bejelentkezési beállítások menüelem](media/highgear-tutorial/single-sign-on-settings-menu-item.png)
+    ![Az egyetlen Sign-On beállítások menüelem](media/highgear-tutorial/single-sign-on-settings-menu-item.png)
 
-    b. A **Válasz URL-címe** szövegmezőbe illessze be a HighGear rendszer egyszeri bejelentkezési beállítások lapjáról az **állítási fogyasztói szolgáltatás (ACS) URL-címének** értékét.
+    b. A **Válasz URL-címe** szövegmezőbe illessze be a HighGear rendszer egyetlen Sign-On beállítások lapjáról az **állítási fogyasztói szolgáltatás (ACS) URL-címének** értékét.
 
     ![Az állítási fogyasztói szolgáltatás (ACS) URL-címe mező](media/highgear-tutorial/assertion-consumer-service-url-field.png)
 
@@ -118,14 +118,14 @@ Az Azure AD egyszeri bejelentkezés az HighGear-rendszerrel való konfigurálás
 
      ![Képernyőfelvétel: további U R ls beállítása, ahol megadhatja a bejelentkezést az U R L-ben.](common/metadata-upload-additional-signon.png)
 
-     A **bejelentkezési URL-cím** szövegmezőbe illessze be a HighGear rendszer egyszeri bejelentkezési beállítások lapján található **szolgáltatói entitás azonosító** mezőjében szereplő értéket. (Ez az entitás-azonosító az SP által kezdeményezett bejelentkezéshez használandó HighGear rendszer alap URL-címe is.)
+     A **bejelentkezési URL-cím** szövegmezőbe illessze be a HighGear rendszer egyetlen Sign-On beállítások lapján található **szolgáltatói entitás azonosító** mezőjének értékét. (Ez az entitás-azonosító az SP által kezdeményezett bejelentkezéshez használandó HighGear rendszer alap URL-címe is.)
 
     ![A szolgáltatói entitás azonosítója mező](media/highgear-tutorial/service-provider-entity-id-field.png)
 
     > [!NOTE]
-    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosító, a válasz URL-cím és a bejelentkezési URL-cím alapján a HighGear rendszer **egyszeri bejelentkezési beállítások** lapján. Ha segítségre van szüksége, lépjen kapcsolatba a [HighGear támogatási csapatával](mailto:support@highgear.com).
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosító, a válasz URL-cím és a bejelentkezési URL-cím alapján a HighGear rendszer **egyetlen Sign-On beállítások** lapján. Ha segítségre van szüksége, lépjen kapcsolatba a [HighGear támogatási csapatával](mailto:support@highgear.com).
 
-4. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány** letöltéséhez, és mentse a számítógépre. Szüksége lesz rá az egyszeri bejelentkezés konfigurációjának egy későbbi lépésében.
+4. Az **egyszeres Sign-On beállítása az SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány** letöltéséhez, és mentse a számítógépre. Szüksége lesz rá az egyszeres Sign-On konfiguráció egy későbbi lépésében.
 
     ![A tanúsítvány letöltési hivatkozása](common/certificatebase64.png)
 
@@ -139,15 +139,15 @@ Az Azure AD egyszeri bejelentkezés az HighGear-rendszerrel való konfigurálás
 
     c. Kijelentkezési URL-cím. Erre az értékre szüksége lesz a következő lépésben #4 a **HighGear-alapú egyszeri bejelentkezés konfigurálása** alatt.
 
-### <a name="configure-highgear-single-sign-on"></a>HighGear egyszeri bejelentkezés konfigurálása
+### <a name="configure-highgear-single-sign-on"></a>HighGear egyetlen Sign-On konfigurálása
 
-Az egyszeri bejelentkezés HighGear konfigurálásához jelentkezzen be a HighGear rendszerbe. Miután bejelentkezett, vigye az egérmutatót a HighGear felügyelet fülére, és kattintson az egyszeri bejelentkezés beállításai menüpontra.
+Az egyszeri bejelentkezés HighGear konfigurálásához jelentkezzen be a HighGear rendszerbe. Miután bejelentkezett, vigye az egérmutatót a HighGear felügyelet fülére, és kattintson az egyszeres Sign-On beállítások menüpontra.
 
-![Az egyszeri bejelentkezési beállítások menüelem](media/highgear-tutorial/single-sign-on-settings-menu-item.png)
+![Az egyetlen Sign-On beállítások menüelem](media/highgear-tutorial/single-sign-on-settings-menu-item.png)
 
-1. Az **identitás-szolgáltató neve**mezőbe írjon be egy rövid leírást, amely megjelenik a HighGear egyszeri bejelentkezés gombjával a bejelentkezési oldalon. Például: Azure AD
+1. Az **identitás-szolgáltató neve**mezőbe írjon be egy rövid leírást, amely megjelenik a HighGear egyetlen Sign-On gombján a bejelentkezési oldalon. Például: Azure AD
 
-2. A HighGear **egyszeri bejelentkezés (SSO) URL-címe** mezőjébe illessze be az Azure-beli **HighGear beállítása** szakaszban található **bejelentkezési URL** -Cím mező értékét.
+2. A HighGear **Sign-On (SSO) URL-címe** mezőben illessze be az értéket a **bejelentkezési URL** -cím mezőből, amely az Azure-beli **HighGear beállítása** szakaszban található.
 
 3. Illessze be az Azure AD- **szolgáltatói entitás azonosítója** mezőjében szereplő értéket az Azure **ad-azonosító** mezőjébe, amely a HighGear **HighGear beállítása** szakaszában található.
 
@@ -157,7 +157,7 @@ Az egyszeri bejelentkezés HighGear konfigurálásához jelentkezzen be a HighGe
 
 6. Küldjön e-mailt a [HighGear támogatási csapatának](mailto:support@highgear.com) a HighGear-tanúsítvány igényléséhez. Kövesse a tőlük kapott utasításokat a **HighGear-tanúsítvány** és a **HighGear-tanúsítvány jelszava** mezők kitöltéséhez.
 
-7. Kattintson a **Save (Mentés** ) gombra az HighGear egyszeri bejelentkezési konfigurációjának mentéséhez.
+7. Kattintson a **Save (Mentés** ) gombra az HighGear egyetlen Sign-On konfigurációjának mentéséhez.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása 
 
@@ -212,7 +212,7 @@ Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egysz
 
 ### <a name="create-highgear-test-user"></a>HighGear-tesztelési felhasználó létrehozása
 
-Ha az egyszeri bejelentkezési konfiguráció teszteléséhez HighGear-tesztelési felhasználót szeretne létrehozni, jelentkezzen be a HighGear rendszerbe.
+Ha egy HighGear tesztelő felhasználót szeretne létrehozni az egyetlen Sign-On konfiguráció teszteléséhez, jelentkezzen be a HighGear rendszerbe.
 
 1. Kattintson az **új Névjegy létrehozása** gombra.
 
@@ -235,7 +235,7 @@ Ha az egyszeri bejelentkezési konfiguráció teszteléséhez HighGear-tesztelé
 
     Az **egyszeri bejelentkezés engedélyezése** mező automatikusan Igen értékre lesz állítva.
 
-6. Az **egyszeri bejelentkezési felhasználói azonosító** mezőben adja meg a felhasználó azonosítóját. Például: BrittaSimon@contoso.com
+6. Az **egyszeres Sign-On felhasználói azonosító** mezőben adja meg a felhasználó azonosítóját. Például: BrittaSimon@contoso.com
 
     A fiókadatok szakasznak ekkor a következőhöz hasonlóan kell kinéznie:  
     ![Az elkészült fiók adatai szakasz](media/highgear-tutorial/finished-account-info-section.png)

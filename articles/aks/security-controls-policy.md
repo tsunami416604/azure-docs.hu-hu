@@ -8,10 +8,10 @@ ms.author: lahugh
 ms.service: container-service
 ms.custom: subject-policy-compliancecontrols
 ms.openlocfilehash: 525da36618c5280374e3e3fadb8ef98510fd2e2e
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91821743"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-kubernetes-service-aks"></a>Az Azure Kubernetes Service (ak) megfelelőségi szabályozásának Azure Policy
@@ -23,7 +23,7 @@ A **biztonsági vezérlők** beépített moduljait egyenként is hozzárendelhet
 
 [!INCLUDE [azure-policy-compliancecontrols-aks](../../includes/policy/standards/byrp/microsoft.containerservice.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ a [Azure Policy szabályozási megfelelőségről](../governance/policy/concepts/regulatory-compliance.md).
 - A beépített elemek megtekintése az [Azure Policy GitHub-adattárában](https://github.com/Azure/azure-policy).

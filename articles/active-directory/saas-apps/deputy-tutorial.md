@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/25/2019
 ms.author: jeedes
 ms.openlocfilehash: 6d0062214b4faa0cb2b26c30f1c2833d25d5493e
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91774523"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-deputy"></a>Oktatóanyag: Azure Active Directory integráció a helyettessel
@@ -73,7 +73,7 @@ Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a hozz�
 Az Azure AD egyszeri bejelentkezés helyettessel való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
 
 1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. Az **[egyszeri bejelentkezés konfigurálása](#configure-deputy-single-sign-on)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+2. Az **[egyszeri bejelentkezés konfigurálása](#configure-deputy-single-sign-on)** – az Sign-On beállításainak konfigurálása az alkalmazás oldalán.
 3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
 4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
 5. **[Hozzon létre egy felhasználó-helyettest](#create-deputy-test-user)** , amely a felhasználó Azure ad-képviseletéhez kapcsolódó Britta Simon-helyettese lesz.
@@ -93,7 +93,7 @@ Az Azure AD egyszeri bejelentkezés helyettessel való konfigurálásához hajts
 
     ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
+3. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
@@ -153,7 +153,7 @@ Az Azure AD egyszeri bejelentkezés helyettessel való konfigurálásához hajts
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és a bejelentkezési URL-címmel. Az értékek megszerzéséhez forduljon a [helyettes ügyfél-támogatási csapathoz](https://www.deputy.com/call-centers-customer-support-scheduling-software) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-6. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállítások alapján, és mentse a számítógépre.
+6. Az **egyszeres Sign-On beállítása az SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállítások alapján, és mentse azt a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozása](common/certificatebase64.png)
 
@@ -167,7 +167,7 @@ Az Azure AD egyszeri bejelentkezés helyettessel való konfigurálásához hajts
 
     c. Kijelentkezési URL-cím
 
-### <a name="configure-deputy-single-sign-on"></a>Az egyszeri bejelentkezés konfigurálása
+### <a name="configure-deputy-single-sign-on"></a>Önálló Sign-On-helyettes konfigurálása
 
 1. Navigáljon a következő URL-címre: `https://(your-subdomain).deputy.com/exec/config/system_config` . Lépjen a **biztonsági beállítások** menüpontra, majd kattintson a **Szerkesztés**elemre.
    
@@ -175,7 +175,7 @@ Az Azure AD egyszeri bejelentkezés helyettessel való konfigurálásához hajts
 
 2. A **biztonsági beállítások** lapon végezze el az alábbi lépéseket.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/deputy-tutorial/tutorial_deputy_005.png)
+    ![Egyetlen Sign-On konfigurálása](./media/deputy-tutorial/tutorial_deputy_005.png)
     
     a. Engedélyezze a **közösségi bejelentkezést**.
    
@@ -212,7 +212,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    d. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

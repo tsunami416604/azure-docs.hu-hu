@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: maheshb
 ms.openlocfilehash: 5b2b8871d868e827532f23c7ef4f14fb00afb5bc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74072808"
 ---
 # <a name="configure-your-custom-autosuggest-experience"></a>Egyéni automatikus kiegészítési élmény konfigurálása
@@ -36,7 +36,7 @@ A Bing-javaslatok engedélyezéséhez kapcsolja be az **automatikus Bing Suggest
 
 ## <a name="add-your-own-suggestions"></a>Saját javaslatok hozzáadása
 
-Saját lekérdezési karakterlánc-javaslatok hozzáadásához vegye fel őket a listára a **felhasználó által definiált javaslatok**alatt. Ha hozzáad egy javaslatot a listához, nyomja le az ENTER billentyűt, **+** vagy kattintson az ikonra. Megadhatja a javaslatot bármilyen nyelven. Legfeljebb 5 000 lekérdezési karakterláncra vonatkozó javaslatot adhat hozzá.
+Saját lekérdezési karakterlánc-javaslatok hozzáadásához vegye fel őket a listára a **felhasználó által definiált javaslatok**alatt. Ha hozzáad egy javaslatot a listához, nyomja le az ENTER billentyűt, vagy kattintson az **+** ikonra. Megadhatja a javaslatot bármilyen nyelven. Legfeljebb 5 000 lekérdezési karakterláncra vonatkozó javaslatot adhat hozzá.
 
 ## <a name="upload-suggestions"></a>Javaslatok feltöltése
 
@@ -48,7 +48,7 @@ A lekérdezési karakterláncokra vonatkozó javaslat eltávolításához kattin
 
 ## <a name="block-suggestions"></a>Javaslatok letiltása
 
-Ha Bing-javaslatokat is tartalmaz, hozzáadhat egy listát a keresési lekérdezési karakterláncokról, amelyeket nem kíván visszaadni a Bingnek. A letiltott lekérdezési karakterláncok hozzáadásához kattintson a **letiltott javaslatok megjelenítése**lehetőségre. Adja hozzá a lekérdezési karakterláncot a listához, majd nyomja le az **+** ENTER billentyűt, vagy kattintson az ikonra. Legfeljebb 50 letiltott lekérdezési karakterláncot adhat hozzá.
+Ha Bing-javaslatokat is tartalmaz, hozzáadhat egy listát a keresési lekérdezési karakterláncokról, amelyeket nem kíván visszaadni a Bingnek. A letiltott lekérdezési karakterláncok hozzáadásához kattintson a **letiltott javaslatok megjelenítése**lehetőségre. Adja hozzá a lekérdezési karakterláncot a listához, majd nyomja le az ENTER billentyűt, vagy kattintson az **+** ikonra. Legfeljebb 50 letiltott lekérdezési karakterláncot adhat hozzá.
 
 
 
@@ -65,13 +65,13 @@ Az üzemeltetett felhasználói felület lekérdezési karakterláncára vonatko
 
 ## <a name="calling-the-autosuggest-api"></a>Az automatikus javaslat API meghívása
 
-Ha a Bing Custom Search API használatával szeretne lekérdezési karakterláncokat beolvasni `GET` , küldjön egy kérelmet a következő végpontnak.
+Ha a Bing Custom Search API használatával szeretne lekérdezési karakterláncokat beolvasni, küldjön egy `GET` kérelmet a következő végpontnak.
 
 ```
 GET https://api.cognitive.microsoft.com/bingcustomsearch/v7.0/Suggestions 
 ```
 
-A válasz tartalmazza a javasolt lekérdezési karakterláncokat tartalmazó `SearchAction` objektumok listáját.
+A válasz tartalmazza a `SearchAction` javasolt lekérdezési karakterláncokat tartalmazó objektumok listáját.
 
 ```
         {  
@@ -81,9 +81,9 @@ A válasz tartalmazza a javasolt lekérdezési karakterláncokat tartalmazó `Se
         },  
 ```
 
-Minden javaslat tartalmaz egy `displayText` és `query` egy mezőt. A `displayText` mező tartalmazza azt a javasolt lekérdezési karakterláncot, amelyet a keresőmező legördülő listájának feltöltéséhez használ.
+Minden javaslat tartalmaz egy `displayText` és egy `query` mezőt. A `displayText` mező tartalmazza azt a javasolt lekérdezési karakterláncot, amelyet a keresőmező legördülő listájának feltöltéséhez használ.
 
-Ha a felhasználó egy javasolt lekérdezési karakterláncot választ a legördülő listából, használja a lekérdezési `query` karakterláncot a mezőben a [Bing Custom Search API](overview.md)hívásakor.
+Ha a felhasználó egy javasolt lekérdezési karakterláncot választ a legördülő listából, használja a lekérdezési karakterláncot a `query` mezőben a [Bing Custom Search API](overview.md)hívásakor.
 
 
 ## <a name="next-steps"></a>További lépések

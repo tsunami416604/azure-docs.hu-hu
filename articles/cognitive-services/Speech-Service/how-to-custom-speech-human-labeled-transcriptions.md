@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
 ms.openlocfilehash: 81b4ffc8f77673e52bb78f891e3de618b67e0d1b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74806062"
 ---
 # <a name="how-to-create-human-labeled-transcriptions"></a>Emberi címkével ellátott átiratok létrehozása
@@ -29,9 +29,9 @@ Az angol hanganyaghoz tartozó emberi feliratú átírásokat egyszerű szövegk
 
 Íme, néhány példa:
 
-| Kerülendő karakterek | Substitution | Megjegyzések |
+| Kerülendő karakterek | Substitution | Jegyzetek |
 | ------------------- | ------------ | ----- |
-| "Helló világ" | "Helló világ" | A nyitó és záró idézőjelek a megfelelő ASCII-karakterekkel lettek helyettesítve. |
+| "Helló világ" | „Hello World” | A nyitó és záró idézőjelek a megfelelő ASCII-karakterekkel lettek helyettesítve. |
 | John 's Day | John 's Day | Az aposztróf a megfelelő ASCII-karakterrel lett helyettesítve. |
 | jó volt – nem, nagyszerű volt! | jó volt – nem, nagyszerű volt! | Az em Dash két kötőjeltel lett helyettesítve. |
 
@@ -76,7 +76,7 @@ A következő normalizálás szabályok automatikusan érvényesek az átíráso
 | 104 Elm utca                         | 1 0 4 Elm utca            |
 | Hangolás a 102,7-re                          | hangolás a 1 0 2 pont Seven    |
 | A PI körülbelül 3,14                       | a PI körülbelül három pontot 1 4  |
-| Informatikai költségek \$3,14                        | informatikai költségek 3 14           |
+| Informatikai költségek \$ 3,14                        | informatikai költségek 3 14           |
 
 ## <a name="mandarin-chinese-zh-cn"></a>Mandarin kínai (zh-CN)
 
@@ -84,7 +84,7 @@ A mandarin kínai hang emberi címkével ellátott átírásait UTF-8 kódoláss
 
 Íme, néhány példa:
 
-| Kerülendő karakterek | Substitution   | Megjegyzések |
+| Kerülendő karakterek | Substitution   | Jegyzetek |
 | ------------------- | -------------- | ----- |
 | "你好" | "你好" | A nyitó és záró idézőjelek a megfelelő karakterekkel lettek helyettesítve. |
 | 需要什么帮助? | 需要什么帮助？| A kérdőjel a megfelelő karakterrel lett helyettesítve. |
@@ -133,7 +133,7 @@ A szöveg normalizálása a szavak átalakítása a modell betanításakor haszn
 - A tizedesjegyek írása "," és nem ".".
 - Írási elválasztók ":" és nem "" karakterrel (például: 12:00 UHR).
 - Rövidítések, például "CA" nincs lecserélve. Javasoljuk, hogy használja a teljes szóbeli űrlapot.
-- A négy fő matematikai operátor (+,-, \*és/) el lesz távolítva. Javasoljuk, hogy a "Plus", a "mínusz", a "mal" és a "geteilt" írásos formában cserélje le őket.
+- A négy fő matematikai operátor (+,-, \* és/) el lesz távolítva. Javasoljuk, hogy a "Plus", a "mínusz", a "mal" és a "geteilt" írásos formában cserélje le őket.
 - Az összehasonlító operátorok el lesznek távolítva (=, < és >). Azt javasoljuk, hogy cserélje le őket "Gleich", "Kleiner ALS" és "grösser ALS" értékre.
 - Írjon a törtek, például a 3/4 írásos formában (például: "Drei Viertel", 3/4 helyett).
 - Cserélje le a "EUR" szimbólumot az "euro" írott formában.
@@ -162,7 +162,7 @@ A következő normalizálás szabályok automatikusan érvényesek az átíráso
 | ¡ Eine Frag!     | Eine-Frag               |
 | Wir, a Hegedűs       | Wir-Hegedűs                |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Az adatfeldolgozás előkészítése és tesztelése](how-to-custom-speech-test-data.md)
 - [Az adatai ellenőrzése](how-to-custom-speech-inspect-data.md)

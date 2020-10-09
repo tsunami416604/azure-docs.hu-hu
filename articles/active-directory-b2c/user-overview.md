@@ -11,10 +11,10 @@ ms.date: 11/05/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 9630e1f23b6595ca690ecafcf0c4b9bfff603f2e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "78185658"
 ---
 # <a name="overview-of-user-accounts-in-azure-active-directory-b2c"></a>A Azure Active Directory B2C felhasználói fiókjainak áttekintése
@@ -49,28 +49,28 @@ A munkahelyi fiókokat ugyanúgy hozza létre a rendszer az összes bérlő szá
 
 Új munkahelyi fiók létrehozásához a következő információkat használhatja:
 
-- [Azure Portalra](../active-directory/fundamentals/add-users-azure-active-directory.md)
+- [Azure Portal](../active-directory/fundamentals/add-users-azure-active-directory.md)
 - [Microsoft Graph](https://docs.microsoft.com/graph/api/user-post-users?view=graph-rest-1.0)
 
 ### <a name="update-a-user-profile"></a>Felhasználói profil frissítése
 
 A következő információk segítségével frissítheti a felhasználó profilját:
 
-- [Azure Portalra](../active-directory/fundamentals/active-directory-users-profile-azure-portal.md)
+- [Azure Portal](../active-directory/fundamentals/active-directory-users-profile-azure-portal.md)
 - [Microsoft Graph](https://docs.microsoft.com/graph/api/user-update?view=graph-rest-1.0)
 
 ### <a name="reset-a-password-for-a-user"></a>Felhasználó jelszavának alaphelyzetbe állítása
 
 A felhasználó jelszavának alaphelyzetbe állításához a következő információkat használhatja:
 
-- [Azure Portalra](../active-directory/fundamentals/active-directory-users-reset-password-azure-portal.md)
+- [Azure Portal](../active-directory/fundamentals/active-directory-users-reset-password-azure-portal.md)
 - [Microsoft Graph](https://docs.microsoft.com/graph/api/user-update?view=graph-rest-1.0)
 
 ## <a name="guest-user"></a>Vendég felhasználó
 
 Meghívhatja a külső felhasználókat a bérlőnek vendég felhasználóként. Egy tipikus példa arra, hogy a vendég felhasználókat meghívja a Azure AD B2C bérlőre, hogy megossza az adminisztrációs feladatokat. A vendég fiók használatára példát a [Azure Active Directory B2B együttműködési felhasználó tulajdonságai](../active-directory/b2b/user-properties.md)című témakörben talál.
 
-Amikor meghívja a vendég felhasználóját a bérlőre, megadja a címzett e-mail-címét, valamint egy, a meghívót leíró üzenetet. A Meghívási hivatkozás a felhasználót a jóváhagyás oldalra viszi, ahol az **első lépések** gomb van kiválasztva, az engedélyek felülvizsgálata pedig elfogadva. Ha a beérkezett fájlok nem az e-mail-címre vannak csatolva, a felhasználó a meghívott hitelesítő adatokkal megnyitva egy Microsoft-oldalra navigálva megkeresheti a beleegyezik lapot. A felhasználónak ezután meg kell váltania a meghívót úgy, hogy az e-mailben szereplő hivatkozásra kattint. Példa: `https://myapps.microsoft.com/B2CTENANTNAME`.
+Amikor meghívja a vendég felhasználóját a bérlőre, megadja a címzett e-mail-címét, valamint egy, a meghívót leíró üzenetet. A Meghívási hivatkozás a felhasználót a jóváhagyás oldalra viszi, ahol az **első lépések** gomb van kiválasztva, az engedélyek felülvizsgálata pedig elfogadva. Ha a beérkezett fájlok nem az e-mail-címre vannak csatolva, a felhasználó a meghívott hitelesítő adatokkal megnyitva egy Microsoft-oldalra navigálva megkeresheti a beleegyezik lapot. A felhasználónak ezután meg kell váltania a meghívót úgy, hogy az e-mailben szereplő hivatkozásra kattint. Például: `https://myapps.microsoft.com/B2CTENANTNAME`.
 
 Használhatja a [Microsoft Graph API](https://docs.microsoft.com/graph/api/invitation-post?view=graph-rest-beta) -t is egy vendég felhasználó meghívásához.
 

@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.date: 04/09/2019
 ms.author: mayg
 ms.openlocfilehash: ba1979c940d4a92b3d1a7a52a4f356b2896ece55
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74082609"
 ---
-# <a name="run-the-azure-site-recovery-deployment-planner-for-hyper-v-disaster-recovery-to-azure"></a>Futtassa az Azure Site Recovery Deployment Plannert a Hyper-V vész-helyreállításhoz az Azure-ba
+# <a name="run-the-azure-site-recovery-deployment-planner-for-hyper-v-disaster-recovery-to-azure"></a>Az Azure Site Recovery Deployment Planner futtatása a Hyper-V Azure-ba történő vészhelyreállításához
 
 A következő négy mód bármelyikében futtathatja a Site Recovery Deployment Planner parancssori eszközt (ASRDeploymentPlanner.exe): 
 -   A virtuálisgép-lista lekérdezése
@@ -35,7 +35,7 @@ A következő táblázat a GetVMList módban futtatandó kötelező és nem köt
 ASRDeploymentPlanner.exe -Operation GetVMList /?
 ```
 
-| Paraméter neve | Description |
+| Paraméter neve | Leírás |
 |---|---|
 | -Művelet | GetVMList |
 | -Felhasználó | A Hyper-V-kiszolgálóhoz vagy Hyper-V-fürthöz való csatlakozáshoz használt felhasználónév. A felhasználónak rendszergazdai hozzáféréssel kell rendelkeznie.|
@@ -85,7 +85,7 @@ A következő táblázat felsorolja a profilkészítési módban futtatandó kö
 ASRDeploymentPlanner.exe -Operation StartProfiling /?
 ```
 
-| Paraméter neve | Description |
+| Paraméter neve | Leírás |
 |---|---|
 | -Művelet | StartProfiling |
 | -Felhasználó | A Hyper-V-kiszolgálóhoz vagy Hyper-V-fürthöz való csatlakozáshoz használt felhasználónév. A felhasználónak rendszergazdai hozzáféréssel kell rendelkeznie.|
@@ -167,7 +167,7 @@ A következő táblázat a jelentéskészítési módban futtatandó kötelező 
 ASRDeploymentPlanner.exe -Operation GenerateReport /?
 ```
 
-| Paraméter neve | Description |
+| Paraméter neve | Leírás |
 |---|---|
 | -Művelet | Jelentés készítése |
 |-VMListFile | Azon virtuális gépek listáját tartalmazó fájl, amelyekről profilt készített, és amelyekről jelentést szeretne készíteni. A fájl elérési útja lehet abszolút vagy relatív. A Hyper-V esetében ez a fájl a GetVMList művelet kimeneti fájlja. Ha az előkészületeket manuálisan végzi el, a fájl minden sorában egy kiszolgáló nevének vagy IP-címének kell szerepelnie, amelyet egy virtuális gép neve követ (soronként \ perjellel elválasztva). A fájlban megadott virtuálisgép-névnek meg kell egyeznie a Hyper-V-gazdagépen szereplő névvel.<br><br>**Például:** A VMList.txt az alábbi virtuális gépeket tartalmazza:<ul><li>Host_1\VM_A</li><li>10.8.59.27\VM_B</li><li>Host_2\VM_C</li><ul>|
@@ -275,7 +275,7 @@ Nyisson meg egy parancssori konzolt, és lépjen az Azure Site Recovery Deployme
 ASRDeploymentPlanner.exe -Operation GetThroughput /?
 ```
 
- Paraméter neve | Description |
+ Paraméter neve | Leírás |
 |---|---|
 | -Művelet | Átviteli sebesség lekérdezése |
 |-Virtualization|A virtualizálás típusa (VMware vagy Hyper-V).|

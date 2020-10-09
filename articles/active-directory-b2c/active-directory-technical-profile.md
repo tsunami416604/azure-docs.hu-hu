@@ -12,10 +12,10 @@ ms.date: 03/26/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 67acf675c6636c5d1066d4fe25310d875fa7c064
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85201514"
 ---
 # <a name="define-an-azure-active-directory-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Azure Active Directory műszaki profil definiálása egy Azure Active Directory B2C egyéni házirendben
@@ -76,7 +76,7 @@ Például a **HRE-UserWriteUsingLogonEmail** technikai profil egy helyi fiókot 
 
 - **objectId**, amely az új fiók azonosítója
 - **newUser**, amely azt jelzi, hogy a felhasználó új-e
-- **authenticationSource**, amely a következőre történő hitelesítést állítja be`localAccountAuthentication`
+- **authenticationSource**, amely a következőre történő hitelesítést állítja be `localAccountAuthentication`
 - **userPrincipalName**, az új fiók egyszerű felhasználóneve
 - **signInNames. emailAddress**, amely a fiók bejelentkezési neve, hasonlóan az **e-mail** bemeneti jogcímhez
 
@@ -248,12 +248,12 @@ A következő technikai profil töröl egy közösségi felhasználói fiókot a
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| Művelet | Yes | A végrehajtandó művelet. Lehetséges értékek: `Read` ,,, `Write` `DeleteClaims` vagy `DeleteClaimsPrincipal` . |
-| RaiseErrorIfClaimsPrincipalDoesNotExist | No | Hiba, ha a felhasználói objektum nem létezik a címtárban. Lehetséges értékek: `true` vagy `false` . |
-| RaiseErrorIfClaimsPrincipalAlreadyExists | No | Hiba, ha a felhasználói objektum már létezik. Lehetséges értékek: `true` vagy `false` .|
-| ApplicationObjectId | No | A bővítmény attribútumaihoz tartozó alkalmazásobjektum-azonosító. Value: egy alkalmazás ObjectId. További információ: egyéni [attribútumok használata egyéni profil szerkesztése házirendben](custom-policy-custom-attributes.md). |
-| ClientID | No | A bérlő harmadik fél számára való elérésének ügyfél-azonosítója. További információ: egyéni [attribútumok használata egyéni profil szerkesztése házirendben](custom-policy-custom-attributes.md) |
-| IncludeClaimResolvingInClaimsHandling  | No | A bemeneti és a kimeneti jogcímek esetén megadja, hogy a [jogcímek feloldása](claim-resolver-overview.md) szerepel-e a technikai profilban. Lehetséges értékek: `true` , vagy `false`   (alapértelmezett). Ha a technikai profilban a jogcím-feloldót szeretné használni, állítsa be a következőt: `true` . |
+| Művelet | Igen | A végrehajtandó művelet. Lehetséges értékek: `Read` ,,, `Write` `DeleteClaims` vagy `DeleteClaimsPrincipal` . |
+| RaiseErrorIfClaimsPrincipalDoesNotExist | Nem | Hiba, ha a felhasználói objektum nem létezik a címtárban. Lehetséges értékek: `true` vagy `false` . |
+| RaiseErrorIfClaimsPrincipalAlreadyExists | Nem | Hiba, ha a felhasználói objektum már létezik. Lehetséges értékek: `true` vagy `false` .|
+| ApplicationObjectId | Nem | A bővítmény attribútumaihoz tartozó alkalmazásobjektum-azonosító. Value: egy alkalmazás ObjectId. További információ: egyéni [attribútumok használata egyéni profil szerkesztése házirendben](custom-policy-custom-attributes.md). |
+| ClientID | Nem | A bérlő harmadik fél számára való elérésének ügyfél-azonosítója. További információ: egyéni [attribútumok használata egyéni profil szerkesztése házirendben](custom-policy-custom-attributes.md) |
+| IncludeClaimResolvingInClaimsHandling  | Nem | A bemeneti és a kimeneti jogcímek esetén megadja, hogy a [jogcímek feloldása](claim-resolver-overview.md) szerepel-e a technikai profilban. Lehetséges értékek: `true` , vagy `false`   (alapértelmezett). Ha a technikai profilban a jogcím-feloldót szeretné használni, állítsa be a következőt: `true` . |
 
 ### <a name="ui-elements"></a>Felhasználói felület elemei
  
@@ -261,8 +261,8 @@ A következő beállításokkal megadhatja a hiba esetén megjelenő hibaüzenet
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| UserMessageIfClaimsPrincipalAlreadyExists | No | Ha hiba lép fel (lásd: RaiseErrorIfClaimsPrincipalAlreadyExists-attribútum leírása), akkor a felhasználónak megjelenítendő üzenetet kell megadnia, ha a felhasználói objektum már létezik. |
-| UserMessageIfClaimsPrincipalDoesNotExist | No | Ha hiba lép fel (lásd a RaiseErrorIfClaimsPrincipalDoesNotExist attribútum leírását), akkor a felhasználónak megjelenítendő üzenetet kell megadnia, ha a felhasználói objektum nem létezik. |
+| UserMessageIfClaimsPrincipalAlreadyExists | Nem | Ha hiba lép fel (lásd: RaiseErrorIfClaimsPrincipalAlreadyExists-attribútum leírása), akkor a felhasználónak megjelenítendő üzenetet kell megadnia, ha a felhasználói objektum már létezik. |
+| UserMessageIfClaimsPrincipalDoesNotExist | Nem | Ha hiba lép fel (lásd a RaiseErrorIfClaimsPrincipalDoesNotExist attribútum leírását), akkor a felhasználónak megjelenítendő üzenetet kell megadnia, ha a felhasználói objektum nem létezik. |
 
 
 ## <a name="next-steps"></a>További lépések

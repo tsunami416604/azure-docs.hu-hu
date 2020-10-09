@@ -10,10 +10,10 @@ ms.service: synapse-analytics
 ms.topic: tutorial
 ms.date: 07/20/2020
 ms.openlocfilehash: 8d26a03a8b61850dc17bc4efff5f8ca12dfca191
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91300224"
 ---
 # <a name="analyze-data-with-sql-on-demand"></a>Az SQL igény szerinti elemzése
@@ -54,7 +54,7 @@ A Spark-adatbázisok táblái automatikusan láthatók, és az SQL igény szerin
   
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Elemzés a Spark használatával](get-started-analyze-spark.md)

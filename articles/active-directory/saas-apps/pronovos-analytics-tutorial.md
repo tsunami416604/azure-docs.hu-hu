@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 08/13/2019
 ms.author: jeedes
 ms.openlocfilehash: 07dab851137d90d3a0106c9b7c25c937e78947e2
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88553415"
 ---
 # <a name="tutorial-tutorial-azure-active-directory-single-sign-on-sso-integration-with-pronovos-analytics"></a>Oktatóanyag: oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a következővel:
@@ -63,7 +63,7 @@ Az Azure AD egyszeri bejelentkezés a következő építőelemek használatával
 1. Az **[Azure ad SSO konfigurálása](#configure-azure-ad-sso)** – a funkció használatának engedélyezése a felhasználók számára.
     1. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
     1. **[Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user)** – ezzel lehetővé teszi, hogy B. Simon engedélyezze az Azure ad egyszeri bejelentkezést.
-2. **[Adja](#configure-pronovos-analytics-sso)** meg a következőt: az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+2. **[Adja](#configure-pronovos-analytics-sso)** meg a következőt: az alkalmazás oldalán az egyes Sign-On beállítások konfigurálása.
     1. Hozzon létre egy, a felhasználó által használt Azure AD-képviselethez kapcsolódó, a "B. Simon" felhasználóhoz tartozó, a **[create novos Analytics-tesztet](#create-pronovos-analytics-test-user)** .
 3. **[SSO tesztelése](#test-sso)** – annak ellenőrzése, hogy a konfiguráció működik-e.
 
@@ -73,7 +73,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. A [Azure Portal](https://portal.azure.com/)a-ben a a "The-Integration **Analytics** -alkalmazás integrációja" oldalon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
 1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
-1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
+1. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
 
    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
@@ -83,7 +83,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     A **bejelentkezési URL** szövegmezőbe írja be a következő URL-címet:  `https://analytics.pronovos.com/Pronovos/servlet/mstrWeb`
 
-4. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg a **tanúsítvány (RAW)** elemet, majd a **Letöltés** gombra kattintva töltse le a tanúsítványt, és mentse a számítógépre.
+4. Az **egyszeres Sign-On beállítása SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg a **tanúsítvány (RAW)** elemet, majd a **Letöltés** gombra kattintva töltse le a tanúsítványt, és mentse a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozása](common/certificateraw.png)
 
@@ -101,7 +101,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Create** (Létrehozás) gombra.
+   1. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

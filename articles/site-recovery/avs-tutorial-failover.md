@@ -9,10 +9,10 @@ ms.date: 09/30/2020
 ms.author: harshacs
 ms.custom: MVC
 ms.openlocfilehash: 60c268ba837540eda86a4cbaf6e0ab1c425d90b4
-ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91814566"
 ---
 # <a name="fail-over--azure-vmware-solution-vms"></a>Azure VMware-megoldás virtuális gépek feladatátvétele
@@ -98,7 +98,7 @@ Bizonyos esetekben a feladatátvételhez további feldolgozásra van szükség, 
 >[!TIP]
 > Ha a feladatátvételt követően bármilyen csatlakozási probléma merül fel, kövesse a [hibaelhárítási útmutatót](site-recovery-failover-to-azure-troubleshoot.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A feladatátvételt követően állítsa be újra az Azure-beli virtuális gépeket az Azure VMware-megoldás saját felhőbe. Ezt követően a virtuális gépek ismételt védelemmel és az Azure VMware-megoldás saját felhőbe való replikálásával visszatérhet az Azure-ból, ha elkészült.
 

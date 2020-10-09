@@ -11,10 +11,10 @@ ms.author: jopapa
 ms.custom: seodec18, devx-track-js
 ms.reviewer: sngun
 ms.openlocfilehash: 3116038939a07084f13db22819726dcbb2622a10
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91292422"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---add-crud-functions-to-the-app"></a>Szögletes alkalmazás létrehozása Azure Cosmos DB API-MongoDB – a szifilisz-függvények hozzáadása az alkalmazáshoz
@@ -88,11 +88,11 @@ Ennek a résznek a megkezdése előtt mindenképp végezze el az oktatóanyag [5
 
 6. Most lépjen vissza a webböngészőjére, és nyissa meg a Fejlesztői eszközök Hálózat lapját – ehhez a legtöbb gépen az F12 billentyűt kell lenyomni. Lépjen a `http://localhost:3000` helyre, és tekintse meg a hálózaton keresztül végzett hívásokat.
 
-    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part6/add-new-hero.png" alt-text="Hálózat lap a Chrome böngészőben a hálózati tevékenységgel":::
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part6/add-new-hero.png" alt-text="A routes.js és a hero.service.js a Visual Studio Code-ban":::
 
 7. Adjon hozzá egy új fő képet az **Add New Hero** (Új fő kép hozzáadása) gomb választásával. Adja meg a „999” azonosítót, a „Fred” nevet és a „Hello” üzenetet, majd válassza a **Save** (Mentés) gombot. A Hálózat lapon látható, hogy POST-kérést küldött egy új fő képre vonatkozóan. 
 
-    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part6/post-new-hero.png" alt-text="Hálózat lap a Chrome böngészőben a Get és Post függvények hálózati tevékenységével":::
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part6/post-new-hero.png" alt-text="A routes.js és a hero.service.js a Visual Studio Code-ban":::
 
     Most térjünk vissza a szerkesztőre, és adjuk hozzá a Put és Delete függvényeket az alkalmazáshoz.
 
@@ -177,15 +177,15 @@ Ennek a résznek a megkezdése előtt mindenképp végezze el az oktatóanyag [5
 
     Most a Hálózat lapon az azonosítót kiválasztva megtekintheti a csomag hasznos adatait. A hasznos adatokban láthatja, hogy az üzenet most már a „Bye”.
 
-    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part6/put-hero-function.png" alt-text="Fő képek alkalmazás és a Hálózat lap a hasznos adatokkal"::: 
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part6/put-hero-function.png" alt-text="A routes.js és a hero.service.js a Visual Studio Code-ban"::: 
 
     A felhasználói felületen törölheti is az egyik fő képet, és láthatja, hogy a törlési műveletek végrehajtása mennyi ideig tart. Ennek kipróbálásához válassza a „Delete” (Törlés) gombot a „Fred” nevű fő képnél.
 
-    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part6/times.png" alt-text="Főképalkalmazás és a Hálózat lap a függvények végrehajtásához szükséges időkkel"::: 
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part6/times.png" alt-text="A routes.js és a hero.service.js a Visual Studio Code-ban"::: 
 
     Ha frissíti az oldalt, a Hálózat lap a fő képek lekéréséhez szükséges időt mutatja. Bár az itt látható idők rövidek, rengeteg múlik azon, hogy az adatok a világ mely részén vannak tárolva, és hogy azokat a felhasználókhoz közeli helyekre tudja-e georeplikálni. A georeplikációról további információkat a nemsokára elérhető következő oktatóanyagban talál majd.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az oktatóanyagnak ebben a részében a következőket hajtotta végre:
 

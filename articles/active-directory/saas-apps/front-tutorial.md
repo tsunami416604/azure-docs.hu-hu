@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
 ms.openlocfilehash: bbd39c85385d6690a80f540c9e0cd23a321e7e84
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91821231"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-front"></a>Oktatóanyag: Azure Active Directory integráció elölről
@@ -73,7 +73,7 @@ Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a kapcs
 Az Azure AD egyszeri bejelentkezés előzetes konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
 
 1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. Az **[első egyszeri bejelentkezés konfigurálása](#configure-front-single-sign-on)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+2. Az **[első egyszeri bejelentkezés konfigurálása](#configure-front-single-sign-on)** – az egyes Sign-On beállítások konfigurálása az alkalmazás oldalán.
 3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
 4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
 5. **[Hozzon létre egy felhasználói](#create-front-test-user)** előfizetést, amely a felhasználó Azure ad-Britta kapcsolódik, és az előtte lévő Simon előtt található.
@@ -93,11 +93,11 @@ Az Azure AD egyszeri bejelentkezésének előzetes konfigurálásához hajtsa v�
 
     ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
+3. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-4. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon hajtsa végre a következő lépéseket:
+4. Az **egyszeri Sign-On beállítása az SAML-vel** lapon hajtsa végre a következő lépéseket:
 
     ![Az első tartomány és az URL-címek egyszeri bejelentkezési adatai](common/idp-intiated.png)
 
@@ -108,7 +108,7 @@ Az Azure AD egyszeri bejelentkezésének előzetes konfigurálásához hajtsa v�
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosító és válasz URL-címmel. Az értékek megszerzéséhez lépjen kapcsolatba az [ügyfél-támogatási csapattal](mailto:support@frontapp.com) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-5. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállítások alapján, és mentse a számítógépre.
+5. Az **egyszeres Sign-On beállítása az SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállítások alapján, és mentse azt a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozása](common/certificatebase64.png)
 
@@ -122,7 +122,7 @@ Az Azure AD egyszeri bejelentkezésének előzetes konfigurálásához hajtsa v�
 
     c. Kijelentkezési URL-cím
 
-### <a name="configure-front-single-sign-on"></a>Az első egyszeri bejelentkezés konfigurálása
+### <a name="configure-front-single-sign-on"></a>A kezdeti egyszeri Sign-On konfigurálása
 
 1. Jelentkezzen be rendszergazdaként az első bérlőbe.
 
@@ -148,7 +148,7 @@ Az Azure AD egyszeri bejelentkezésének előzetes konfigurálásához hajtsa v�
 
 7. A **szolgáltató beállításai** szakaszban hajtsa végre a következő lépéseket:
 
-    ![Egyszeri bejelentkezés konfigurálása az alkalmazás oldalán](./media/front-tutorial/tutorial_front_005.png)
+    ![Egyetlen Sign-On konfigurálása az alkalmazás oldalán](./media/front-tutorial/tutorial_front_005.png)
 
     a. Másolja ki az **entitás-azonosító** értékét, és illessze be az **azonosító** szövegmezőbe az **első tartomány és URL-cím** szakaszban Azure Portal.
 

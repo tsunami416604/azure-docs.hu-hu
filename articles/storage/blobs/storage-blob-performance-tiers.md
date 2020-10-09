@@ -9,13 +9,13 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
 ms.openlocfilehash: ff82986b27d038c536872b07e1308b0d48fadaef
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74270226"
 ---
-# <a name="performance-tiers-for-block-blob-storage"></a>A blob Storage blokkolásához szükséges teljesítményi szintek
+# <a name="performance-tiers-for-block-blob-storage"></a>Blokkblobtárolás teljesítményszintjei
 
 Mivel a vállalatok teljesítményre érzékeny felhőalapú alkalmazásokat helyeznek üzembe, fontos, hogy a költséghatékony adattárolási lehetőségek különböző teljesítményszint esetén is elérhetők legyenek.
 
@@ -45,7 +45,7 @@ A prémium szintű tárterület ideális olyan munkaterhelésekhez, amelyek gyor
 
 - **Interaktív munkaterhelések**. Ezeknek a számítási feladatoknak azonnali frissítésre és felhasználói visszajelzésre van szükségük, például az e-kereskedelmi és a leképezési alkalmazásokhoz. Egy e-kereskedelmi alkalmazásban például a ritkábban megtekintett elemek valószínűleg nem lesznek gyorsítótárazva. Ezeket azonban azonnal meg kell jeleníteni az ügyfél számára igény szerint.
 
-- **Elemzések**. Egy IoT-forgatókönyvben sok kisebb írási műveletet lehet leküldeni a felhőbe másodpercenként. A rendszer nagy mennyiségű adattal is rendelkezhet, összesítve elemzés céljára, majd szinte azonnal törölve. A prémium blokkos blob Storage nagy betöltési képességeinek köszönhetően az ilyen típusú számítási feladatok hatékonyan használhatók.
+- **Elemzés**. Egy IoT-forgatókönyvben sok kisebb írási műveletet lehet leküldeni a felhőbe másodpercenként. A rendszer nagy mennyiségű adattal is rendelkezhet, összesítve elemzés céljára, majd szinte azonnal törölve. A prémium blokkos blob Storage nagy betöltési képességeinek köszönhetően az ilyen típusú számítási feladatok hatékonyan használhatók.
 
 - **Mesterséges intelligencia/gépi tanulás (AI/ml)**. Az AI/ML különféle adattípusok, például vizualizációk, beszédek és szövegek felhasználását és feldolgozását tárgyalja. Ez a nagy teljesítményű számítási feladatok olyan nagy mennyiségű adatot biztosítanak, amely gyors reagálást és hatékony betöltési időt igényel az adatok elemzéséhez.
 

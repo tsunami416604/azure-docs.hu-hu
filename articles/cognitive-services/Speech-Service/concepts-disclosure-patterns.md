@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: angle
 ms.openlocfilehash: 3e7d8ee2b156a30b11cda79798a8af8a8ecf4f64
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74776622"
 ---
 # <a name="disclosure-design-patterns"></a>Közzététel-tervezési minták
@@ -62,7 +62,7 @@ A hangélmény megkezdése előtt vezesse be a digitális asszisztenst úgy, hog
 *A szintetikus hang egy új felhasználó bevezetését követően jelent meg.*
 
 Javaslatok
-- Írja le, hogy a hang mesterséges (például &quot;digitális&quot;)
+- Írja le, hogy a hang mesterséges (például &quot; digitális &quot; )
 - Írja le, hogy az ügynök mire képes
 - A hang&#39;i eredetek explicit módon történő meghívása
 - A szintetikus hangról további információt a belépési pont nyújt.
@@ -141,7 +141,7 @@ Javaslatok
 - A szülők célközönsége elsődleges célközönségként a közzétételhez
 - Bátorítsa a szülőket, hogy tájékoztassák gyermekeiket
 - Ajánlat belépési pontjai a szintetizált hangokkal kapcsolatos további információkért
-- A szülőktől egy egyszerű &quot;védintézkedési&quot; kérdés megadásával megtudhatja, hogy elolvasta a közzétételt
+- A szülőktől egy egyszerű &quot; védintézkedési kérdés megadásával &quot; megtudhatja, hogy elolvasta a közzétételt
 
 ### <a name="providing-opportunities-to-learn-more-about-how-the-voice-was-made"></a>A hangvételi lehetőségek megismerése
 
@@ -193,13 +193,13 @@ Ha a beszélgetések nem várt elérési utakat mutatnak be, érdemes lehet olya
 ![Nem várt elérési utak feldolgozása](media/responsible-ai/disclosure-patterns/conversational-transparency-1.png)<br/>
 
 <br/>
-Az ügynökre irányuló, off-Task vagy &quot;személyes&quot; kérdései jó alkalom arra, hogy emlékeztesse a felhasználókat az ügynök szintetikus természetére, és irányítsa őket, hogy megfelelő módon, vagy egy valós személyre irányítsák őket.
+&quot;Az ügynökre irányuló, off-Task vagy személyes &quot; kérdései jó alkalom arra, hogy emlékeztesse a felhasználókat az ügynök szintetikus természetére, és irányítsa őket, hogy megfelelő módon, vagy egy valós személyre irányítsák őket.
 
 ![Feladatok kikapcsolásával kapcsolatos kérdések](media/responsible-ai/disclosure-patterns/conversational-transparency-2.png)<br/>
 
 ## <a name="when-to-disclose"></a>Mikor kell közzétenni
 
-A felhasználói utazás során számos lehetőség van a közzétételre. Tervezze meg az első használatot, a második használatot, az n..., de &quot;az&quot; átlátszóság kiemelésének pillanatait is, például ha a rendszer hibát jelez, vagy amikor a felhasználó felfedi az ügynök&#39;s képességeinek korlátozását.
+A felhasználói utazás során számos lehetőség van a közzétételre. Tervezze meg az első használatot, a második használatot, az n..., de &quot; az &quot; átlátszóság kiemelésének pillanatait is, például ha a rendszer hibát jelez, vagy amikor a felhasználó felfedi az ügynök&#39;s képességeinek korlátozását.
 
 ![Közzétételi lehetőségek a felhasználói utazás során](media/responsible-ai/disclosure-patterns/touchpoints.png)<br/>
 
@@ -239,7 +239,7 @@ A közzétételi lehetőség használata a zökkenőmentes működés érdekébe
 
 
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 - [Microsoft bot-irányelvek](https://www.microsoft.com/research/uploads/prod/2018/11/Bot_Guidelines_Nov_2018.pdf)
 - [Cortana kialakítási útmutató](https://docs.microsoft.com/cortana/voice-commands/voicecommand-design-guidelines)
 - [Microsoft Windows UWP – beszédfelismerési tervezési irányelvek](https://docs.microsoft.com/windows/uwp/design/input/speech-interactions)

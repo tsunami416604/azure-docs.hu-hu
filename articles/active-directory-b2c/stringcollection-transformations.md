@@ -12,10 +12,10 @@ ms.date: 04/21/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 1ad9cc3d6d07c8d744ec667e2fffb035848121b4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85203248"
 ---
 # <a name="stringcollection-claims-transformations"></a>StringCollection stb jogcímek átalakításai
@@ -28,7 +28,7 @@ Ez a cikk példákat tartalmaz a karakterlánc-gyűjtési jogcímek átalakítá
 
 Karakterlánc-jogcímet hoz létre egy új, egyedi értékekre StringCollection stb jogcímként.
 
-| Item | TransformationClaimType | Adattípus | Jegyzetek |
+| Elem | TransformationClaimType | Adattípus | Jegyzetek |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | item | sztring | A kimeneti jogcímhez hozzáadni kívánt ClaimType. |
 | InputClaim | gyűjtemény | StringCollection stb | Választható Ha meg van adva, a jogcím-átalakítás átmásolja az elemeket ebből a gyűjteményből, és hozzáadja az elemet a kimeneti gyűjteményi jogcím végéhez. |
@@ -62,7 +62,7 @@ A következő jogcím-átalakítás hozzáadja az **e-mail-** claimType az **oth
 
 Egy karakterlánc-paramétert hoz létre egy új, egyedi értékek StringCollection stb jogcímként.
 
-| Item | TransformationClaimType | Adattípus | Jegyzetek |
+| Elem | TransformationClaimType | Adattípus | Jegyzetek |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | gyűjtemény | StringCollection stb | Választható Ha meg van adva, a jogcím-átalakítás átmásolja az elemeket ebből a gyűjteményből, és hozzáadja az elemet a kimeneti gyűjteményi jogcím végéhez. |
 | InputParameter | item | sztring | A kimeneti jogcímhez hozzáadandó érték. |
@@ -97,7 +97,7 @@ Ezzel a jogcím-átalakítással adhat hozzá új vagy meglévő StringCollectio
 
 A megadott karakterlánc-gyűjtemény első elemének beolvasása.
 
-| Item | TransformationClaimType | Adattípus | Jegyzetek |
+| Elem | TransformationClaimType | Adattípus | Jegyzetek |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | gyűjtemény | StringCollection stb | A jogcím-átalakítás által az elemek beolvasásához használt ClaimTypes. |
 | OutputClaim | extractedItem | sztring | A ClaimsTransformation után létrehozott ClaimTypes meghívása megtörtént. A gyűjtemény első eleme. |
@@ -127,12 +127,12 @@ A következő példa beolvassa a **otherMails** jogcímet, és az első tételt 
 
 Annak ellenőrzése, hogy egy StringCollection stb jogcím típusa tartalmaz-e elemet
 
-| Item | TransformationClaimType | Adattípus | Jegyzetek |
+| Elem | TransformationClaimType | Adattípus | Jegyzetek |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputClaim | StringCollection stb | A keresendő jogcím típusa. |
 |InputParameter|item|sztring|A keresendő érték.|
 |InputParameter|ignoreCase|sztring|Meghatározza, hogy az összehasonlítás figyelmen kívül hagyja-e az összehasonlított karakterláncok esetét.|
-| OutputClaim | outputClaim | logikai | A ClaimsTransformation után létrehozott ClaimType meghívása megtörtént. Logikai kijelző, ha a gyűjtemény tartalmaz egy ilyen karakterláncot. |
+| OutputClaim | outputClaim | boolean | A ClaimsTransformation után létrehozott ClaimType meghívása megtörtént. Logikai kijelző, ha a gyűjtemény tartalmaz egy ilyen karakterláncot. |
 
 A következő példa ellenőrzi, hogy a `roles` StringCollection stb jogcím típusa tartalmazza-e a **rendszergazda**értéket.
 
@@ -163,12 +163,12 @@ A következő példa ellenőrzi, hogy a `roles` StringCollection stb jogcím tí
 
 Ellenőrzi, hogy egy StringCollection stb jogcím-típust tartalmaz-e.
 
-| Item | TransformationClaimType | Adattípus | Jegyzetek |
+| Elem | TransformationClaimType | Adattípus | Jegyzetek |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | gyűjtemény | StringCollection stb | A keresendő jogcím típusa. |
 | InputClaim | item|sztring| A keresendő értéket tartalmazó jogcím típusa.|
 |InputParameter|ignoreCase|sztring|Meghatározza, hogy az összehasonlítás figyelmen kívül hagyja-e az összehasonlított karakterláncok esetét.|
-| OutputClaim | outputClaim | logikai | A ClaimsTransformation után létrehozott ClaimType meghívása megtörtént. Logikai kijelző, ha a gyűjtemény tartalmaz egy ilyen karakterláncot. |
+| OutputClaim | outputClaim | boolean | A ClaimsTransformation után létrehozott ClaimType meghívása megtörtént. Logikai kijelző, ha a gyűjtemény tartalmaz egy ilyen karakterláncot. |
 
 A következő példa ellenőrzi, hogy a StringCollection stb jogcím típusa tartalmazza-e a `roles` `role` jogcím típusának értékét.
 

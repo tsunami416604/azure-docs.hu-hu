@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 10/03/2019
 ms.author: jeedes
 ms.openlocfilehash: 0d2953710c559deb094761410e6d46401e103d8b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88553282"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-purecloud-by-genesys"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a PureCloud-mel a Genesys használatával
@@ -73,8 +73,8 @@ Az Azure AD SSO konfigurálásához és a Genesys-mel történő PureCloud való
 Ha engedélyezni szeretné az Azure AD SSO használatát a Azure Portalban, kövesse az alábbi lépéseket:
 
 1. A [Azure Portal](https://portal.azure.com/) **PureCloud a Genesys** alkalmazás-integráció lapján keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
-1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
-1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon válassza az **alapszintű SAML-konfigurációhoz** tartozó toll ikont a beállítások szerkesztéséhez.
+1. Az **egyetlen Sign-On módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
+1. Az **egyszeri Sign-On beállítása az SAML-vel** lapon válassza az **ALAPszintű SAML-konfigurációhoz** tartozó toll ikont a beállítások szerkesztéséhez.
 
    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
@@ -118,12 +118,12 @@ Ha engedélyezni szeretné az Azure AD SSO használatát a Azure Portalban, köv
 
 1. Emellett a Genesys alkalmazás által készített PureCloud néhány további attribútumot vár az SAML-válaszban, ahogy az a következő táblázatban látható. Ezek az attribútumok előre is fel vannak töltve, de szükség szerint áttekinthetők.
 
-    | Name | Forrás attribútum|
+    | Név | Forrás attribútum|
     | ---------------| --------------- |
     | E-mail | User. userPrincipalName |
     | OrganizationName | `Your organization name` |
 
-1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg a **tanúsítvány (Base64)** elemet, majd a **Letöltés** gombra kattintva töltse le a tanúsítványt, és mentse a számítógépre.
+1. Az **egyszeres Sign-On beállítása SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg a **tanúsítvány (Base64)** elemet, majd a **Letöltés** gombra kattintva töltse le a tanúsítványt, és mentse a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozása](common/certificatebase64.png)
 
@@ -167,11 +167,11 @@ Ebben a szakaszban a B. Simon-t fogja beállítani az Azure egyszeri bejelentkez
 
 1. Válassza a felső **rendszergazda** lehetőséget, majd az **integrációk**területen lépjen az **egyszeri bejelentkezés** lehetőségre.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/purecloud-by-genesys-tutorial/configure01.png)
+    ![Egyetlen Sign-On konfigurálása](./media/purecloud-by-genesys-tutorial/configure01.png)
 
 1. Váltson az **ADFS/Azure ad (prémium)** lapra, majd kövesse az alábbi lépéseket:
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/purecloud-by-genesys-tutorial/configure02.png)
+    ![Egyetlen Sign-On konfigurálása](./media/purecloud-by-genesys-tutorial/configure02.png)
 
     a. A **Tallózás** gombra kattintva töltse fel a Azure Portalból letöltött base-64 kódolt tanúsítványt az **ADFS-tanúsítványba**.
 
@@ -181,9 +181,9 @@ Ebben a szakaszban a B. Simon-t fogja beállítani az Azure egyszeri bejelentkez
 
     d. A **függő entitás azonosítójának** értékeként nyissa meg a Azure Portal, majd az **PureCloud by Genesys** Application Integration lapon válassza a **Tulajdonságok** lapot, és másolja az **alkalmazás-azonosító** értékét. Illessze be a **függő entitás azonosító** mezőjébe.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/purecloud-by-genesys-tutorial/configure06.png)
+    ![Egyetlen Sign-On konfigurálása](./media/purecloud-by-genesys-tutorial/configure06.png)
 
-    e. Válassza a **Mentés** lehetőséget.
+    e. Kattintson a **Mentés** gombra.
 
 ### <a name="create-purecloud-by-genesys-test-user"></a>PureCloud létrehozása a Genesys test User használatával
 
@@ -195,15 +195,15 @@ Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a Pu
 
 1. Válassza a **rendszergazda** lehetőséget a felső részen, és lépjen a személyek személyek **& engedélyek** **területen.**
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/purecloud-by-genesys-tutorial/configure03.png)
+    ![Egyetlen Sign-On konfigurálása](./media/purecloud-by-genesys-tutorial/configure03.png)
 
 1. A **személyek** lapon válassza a **személy felvétele**lehetőséget.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/purecloud-by-genesys-tutorial/configure04.png)
+    ![Egyetlen Sign-On konfigurálása](./media/purecloud-by-genesys-tutorial/configure04.png)
 
 1. A **személyek hozzáadása a szervezethez** párbeszédpanelen kövesse az alábbi lépéseket:
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/purecloud-by-genesys-tutorial/configure05.png)
+    ![Egyetlen Sign-On konfigurálása](./media/purecloud-by-genesys-tutorial/configure05.png)
 
     a. A **teljes név** mezőben adja meg a felhasználó nevét. Például: **B. Simon**.
 

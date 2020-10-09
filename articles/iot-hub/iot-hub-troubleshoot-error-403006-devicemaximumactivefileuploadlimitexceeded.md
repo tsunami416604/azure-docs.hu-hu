@@ -9,17 +9,17 @@ ms.topic: troubleshooting
 ms.date: 01/30/2020
 ms.author: jlian
 ms.openlocfilehash: 1e3c05e4cc3ccf34573b55d3729aded16e26d66e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "76960840"
 ---
 # <a name="403006-devicemaximumactivefileuploadlimitexceeded"></a>403006 DeviceMaximumActiveFileUploadLimitExceeded
 
 Ez a cikk a **403006 DeviceMaximumActiveFileUploadLimitExceeded** -hibák okait és megoldásait ismerteti.
 
-## <a name="symptoms"></a>Probléma
+## <a name="symptoms"></a>Hibajelenségek
 
 A fájlfeltöltés kérelme meghiúsul a **403006** hibakódnál, és egy üzenet, amely szerint az "aktív fájlfeltöltés-kérelmek száma nem haladhatja meg a 10" üzenetet.
 

@@ -8,10 +8,10 @@ ms.date: 05/05/2020
 ms.topic: tutorial
 ms.service: digital-twins
 ms.openlocfilehash: bd8eee2fd6134bb36c0b0ab45492567f4fdbec26
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91297504"
 ---
 # <a name="tutorial-coding-with-the-azure-digital-twins-apis"></a>Oktatóanyag: kódolás az Azure Digital Twins API-kkal
@@ -23,7 +23,7 @@ Gyakori, hogy az Azure Digital Twins-szel dolgozó fejlesztők az Azure Digital 
 > * Első lépések a Project Code-ban   
 > * Kód teljes mintája
 > * Az erőforrások eltávolítása
-> * Következő lépések
+> * További lépések
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -560,7 +560,7 @@ Az oktatóanyagban használt példány újra felhasználható a következő okta
 
 Végül törölje a helyi gépen létrehozott Project mappát.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban létrehozta a .NET-konzol ügyfélprogramját a semmiből. Az ügyfélalkalmazás kódját az Azure Digital Twins-példányon végzett alapszintű műveletek végrehajtásához írta.
 

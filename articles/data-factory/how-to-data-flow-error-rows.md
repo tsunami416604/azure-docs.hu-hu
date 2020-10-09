@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 04/20/2020
 ms.author: makromer
 ms.openlocfilehash: 3f8ac2d1434019548b01d8468015a543d89d0fba
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85254412"
 ---
 # <a name="handle-sql-truncation-error-rows-in-data-factory-mapping-data-flows"></a>SQL-csonkolt hibák sorainak kezelése Data Factory leképezési adatforgalomban
@@ -29,7 +29,7 @@ A leképezési adatfolyamatok használatakor Data Factory gyakori forgatókönyv
 
     ![1. filmes adatfolyam](media/data-flow/error4.png)
     
-3. A probléma az, hogy a film címe nem fér el egy fogadó oszlopon belül, amely csak 5 karaktert tartalmazhat. Ha végrehajtja ezt az adatfolyamatot, a következőhöz hasonló hibaüzenet jelenik meg:```"Job failed due to reason: DF-SYS-01 at Sink 'WriteToDatabase': java.sql.BatchUpdateException: String or binary data would be truncated. java.sql.BatchUpdateException: String or binary data would be truncated."```
+3. A probléma az, hogy a film címe nem fér el egy fogadó oszlopon belül, amely csak 5 karaktert tartalmazhat. Ha végrehajtja ezt az adatfolyamatot, a következőhöz hasonló hibaüzenet jelenik meg: ```"Job failed due to reason: DF-SYS-01 at Sink 'WriteToDatabase': java.sql.BatchUpdateException: String or binary data would be truncated. java.sql.BatchUpdateException: String or binary data would be truncated."```
 
 Ez a videó végigvezeti egy, az adatfolyamatban a hibák sorát kezelő logikát bemutató példán:
 > [!VIDEO https://www.microsoft.com/en-us/videoplayer/embed/RE4uOHj]

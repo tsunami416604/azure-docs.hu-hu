@@ -13,10 +13,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: 598a16d25ba375b984a966cba190181edbda3d15
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74703157"
 ---
 # <a name="invoke-mapreduce-programs-from-data-factory"></a>MapReduce-programok meghívása Data Factory
@@ -41,7 +41,7 @@ A Data Factory- [folyamat](data-factory-create-pipelines.md) HDInsight MapReduce
 > [!NOTE] 
 > Ha még nem ismeri a Azure Data Factoryt, olvassa el az [Azure Data Factory bevezetését](data-factory-introduction.md) , és végezze el az oktatóanyagot: a cikk elolvasása előtt hozza [létre az első adatfolyamatát](data-factory-build-your-first-pipeline.md) .  
 
-## <a name="introduction"></a>Introduction (Bevezetés)
+## <a name="introduction"></a>Bevezetés
 Egy Azure-beli adatfeldolgozó folyamata összekapcsolt számítási szolgáltatások használatával dolgozza fel a társított tárolási szolgáltatásokban tárolt adatokkal. Olyan tevékenységek sorát tartalmazza, amelyekben minden tevékenység egy adott feldolgozási műveletet hajt végre. Ez a cikk a HDInsight MapReduce tevékenység használatát ismerteti.
 
 A Pig/kaptár-parancsfájlok Windows-/Linux-alapú HDInsight-fürtökön való futtatásával kapcsolatos részletekért tekintse meg a [Pig](data-factory-pig-activity.md) és a [kaptár](data-factory-hive-activity.md) című témakört a HDInsight Pig és a kaptár tevékenységek használatával. 

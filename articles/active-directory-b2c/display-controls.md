@@ -12,10 +12,10 @@ ms.date: 12/10/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 131ecd010cba55f08199f713654792c0844a47e1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85202296"
 ---
 # <a name="display-controls"></a>Vezérlőelemek megjelenítése
@@ -48,12 +48,12 @@ A **DisplayControl** elem a következő attribútumokat tartalmazza:
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| Azonosító | Yes | A megjelenítési vezérlőelemhez használt azonosító. Erre [hivatkozhat](#referencing-display-controls). |
-| UserInterfaceControlType | Yes | A megjelenítési vezérlőelem típusa Jelenleg támogatott a [VerificationControl](display-control-verification.md) |
+| Id | Igen | A megjelenítési vezérlőelemhez használt azonosító. Erre [hivatkozhat](#referencing-display-controls). |
+| UserInterfaceControlType | Igen | A megjelenítési vezérlőelem típusa Jelenleg támogatott a [VerificationControl](display-control-verification.md) |
 
 A **DisplayControl** elem a következő elemeket tartalmazza:
 
-| Elem | Események | Description |
+| Elem | Események | Leírás |
 | ------- | ----------- | ----------- |
 | Szabályzattípushoz | 0:1 | A **szabályzattípushoz** a felhasználó által összegyűjtött jogcímek értékének előre való feltöltésére szolgálnak. |
 | DisplayClaims | 0:1 | A **DisplayClaims** a felhasználótól gyűjtött jogcímek ábrázolására szolgálnak. |

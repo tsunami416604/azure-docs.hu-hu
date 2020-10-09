@@ -13,10 +13,10 @@ ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 06/09/2020
 ms.openlocfilehash: 916d5ee49838c1e8564b24432b9d5876ed619ab5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91291401"
 ---
 # <a name="tutorial-migrate-rds-mysql-to-azure-database-for-mysql-online-using-dms"></a>Oktatóanyag: RDS MySQL online migrálása az Azure Database for MySQL-be a DMS használatával
@@ -265,7 +265,7 @@ A kezdeti teljes terhelés befejezése után az adatbázisok **készen**állnak 
 
 A Azure Database for MySQL MySQL helyi példányának online áttelepítése most már befejeződött.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Az Azure Database Migration Service szolgáltatással kapcsolatos tudnivalók: [Mi az Azure Database Migration Service?](https://docs.microsoft.com/azure/dms/dms-overview).
 * További információ a Azure Database for MySQLről: mi a [Azure Database for MySQL?](https://docs.microsoft.com/azure/mysql/overview).

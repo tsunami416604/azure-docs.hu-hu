@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: bejövő adatkezelő-bővítmény engedélyezése meglévő AK-fürthöz meglévő Azure-Application Gateway'
-description: Ezzel az Oktatóanyaggal engedélyezheti a meglévő AK-fürt bemenő vezérlő bővítményét meglévő Application Gateway
+title: 'Oktatóanyag: a bejövő vezérlő Add-On engedélyezése meglévő AK-fürthöz meglévő Azure-Application Gateway'
+description: Ezzel az Oktatóanyaggal engedélyezheti a bemenő vezérlő Add-On a meglévő AK-fürthöz meglévő Application Gateway
 services: application-gateway
 author: caya
 ms.service: application-gateway
@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 09/24/2020
 ms.author: caya
 ms.openlocfilehash: d0ce58c5bb6de4712117959f10b48ae3449f0b97
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91285644"
 ---
 # <a name="tutorial-enable-application-gateway-ingress-controller-add-on-for-an-existing-aks-cluster-with-an-existing-application-gateway-through-azure-cli-preview"></a>Oktatóanyag: az Azure CLI (előzetes verzió) szolgáltatással meglévő Application Gatewayokkal rendelkező meglévő AK-fürthöz való belépés Application Gateway bejövő vezérlő bővítményének engedélyezése
@@ -21,7 +21,7 @@ Application Gateway az Azure CLI-vel engedélyezheti az [Azure Kubernetes Servic
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
-> * Hozzon létre egy erőforráscsoportot 
+> * Erőforráscsoport létrehozása 
 > * Új AK-fürt létrehozása 
 > * Új Application Gateway létrehozása 
 > * Engedélyezze a AGIC bővítményt a meglévő AK-fürtön a meglévő Application Gateway használatával 
@@ -62,7 +62,7 @@ az extension update --name aks-preview
 az extension list
 ```
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Az Azure-ban kapcsolódó erőforrásokat oszt ki egy erőforráscsoporthoz. Hozzon létre egy erőforráscsoportot az [az Group Create](/cli/azure/group#az-group-create)paranccsal. A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot a *canadacentral* helyen (régió). 
 
@@ -152,7 +152,7 @@ Ha már nincs rá szükség, távolítsa el az erőforráscsoportot, az alkalmaz
 az group delete --name myResourceGroup 
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [További információ a AGIC-bővítmény letiltásáról](./ingress-controller-disable-addon.md)

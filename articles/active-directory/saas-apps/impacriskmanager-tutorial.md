@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
 ms.openlocfilehash: 4f34f8dc7ae042b48e117ebadaee1d7aa2481505
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91821248"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-impac-risk-manager"></a>Oktatóanyag: Azure Active Directory integráció az IMPAC Risk Managerrel
@@ -73,7 +73,7 @@ Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és az IMPA
 Az Azure AD egyszeri bejelentkezés az IMPAC Risk Managerrel való konfigurálásához és teszteléséhez el kell végeznie a következő építőelemeket:
 
 1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. Az **[IMPAC Risk Manager egyszeri bejelentkezésének konfigurálása](#configure-impac-risk-manager-single-sign-on)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+2. Az **[IMPAC Risk Manager egyszeri bejelentkezésének konfigurálása](#configure-impac-risk-manager-single-sign-on)** – az egyes Sign-On beállítások konfigurálása az alkalmazás oldalán.
 3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
 4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
 5. Az **[IMPAC Risk Manager tesztelési felhasználójának létrehozása](#create-impac-risk-manager-test-user)** – hogy az Azure ad-képviselethez kapcsolódó Britta Simon partnere legyen az IMPAC Risk Managerben.
@@ -93,7 +93,7 @@ Az Azure AD egyszeri bejelentkezés az IMPAC Risk Managerrel való konfigurálá
 
     ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
+3. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
@@ -132,7 +132,7 @@ Az Azure AD egyszeri bejelentkezés az IMPAC Risk Managerrel való konfigurálá
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és a bejelentkezési URL-címmel. Az értékek beszerzéséhez lépjen kapcsolatba az [IMPAC Risk Manager ügyfél-támogatási csapatával](mailto:rmsupport@Impac.co.nz) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-6. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállítások alapján, és mentse a számítógépre.
+6. Az **egyszeres Sign-On beállítása az SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállítások alapján, és mentse azt a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozása](common/certificatebase64.png)
 
@@ -146,7 +146,7 @@ Az Azure AD egyszeri bejelentkezés az IMPAC Risk Managerrel való konfigurálá
 
     c. Kijelentkezési URL-cím
 
-### <a name="configure-impac-risk-manager-single-sign-on"></a>Az IMPAC Risk Manager egyszeri bejelentkezésének konfigurálása
+### <a name="configure-impac-risk-manager-single-sign-on"></a>Az IMPAC Risk Manager egyszeri Sign-On konfigurálása
 
 Az egyszeri bejelentkezés az **IMPAC Risk Manager** oldalán való konfigurálásához el kell küldenie a letöltött **tanúsítványt (Base64)** és a megfelelő másolt url-címeket a Azure Portalról az [IMPAC Risk Manager támogatási csapatához](mailto:rmsupport@Impac.co.nz). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
 

@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: na
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6048ee9237640799b7bec37083e607fc74ffb8e4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85252967"
 ---
 # <a name="windows-10-roaming-settings-reference"></a>Windows 10 roaming beállítások referenciája
@@ -28,10 +28,10 @@ A Windows 10 szinkronizálási, biztonsági mentési és helyreállítási keret
 
 | Fiók típusa és művelet | Asztal | Mobil |
 | --- | --- | --- |
-| Azure Active Directory: szinkronizálás |Yes |No |
+| Azure Active Directory: szinkronizálás |Igen |Nem |
 | Azure Active Directory: biztonsági mentés/visszaállítás |Nem |Nem |
 | Microsoft-fiók: szinkronizálás |Igen |Igen |
-| Microsoft-fiók: biztonsági mentés/visszaállítás |No |Yes |
+| Microsoft-fiók: biztonsági mentés/visszaállítás |Nem |Igen |
 
 ## <a name="what-is-backup"></a>Mi az a biztonsági mentés?
 
@@ -69,11 +69,11 @@ A következő táblázatban a Settings Group (beállítások) csoport oszlopába
 A beállítások csoport oszlop belső bejegyzései olyan beállításokat és alkalmazásokat mutatnak be, amelyek csak az alkalmazáson belüli szinkronizálásból, vagy a teljes eszköz szinkronizálásának a mobileszköz-kezelés (MDM) vagy a Csoportházirend beállítások használatával történő letiltásával érhetők el.
 A nem barangoló vagy szinkronizált beállítások nem tartoznak csoporthoz.
 
-| Beállítások | Asztal | Mobil | Csoport |
+| Beállítások | Asztal | Mobil | Group |
 | --- | --- | --- | --- |
 | **Fiókok**: fiók képe |szinkronizálás |X |Téma |
 | **Fiókok**: egyéb Fiókbeállítások |X |X | |
-| **Speciális mobil szélessáv**: internetkapcsolat megosztási hálózatának neve (lehetővé teszi a mobil Wi-Fi elérési pontok automatikus észlelését Bluetooth-kapcsolaton keresztül) |X |X |Jelszavak |
+| **Speciális mobil szélessáv**: internetkapcsolat megosztási hálózatának neve (lehetővé teszi a mobil Wi-Fi-pontok automatikus észlelését Bluetooth-kapcsolaton keresztül) |X |X |Jelszavak |
 | **Alkalmazásadatok: az**egyes alkalmazások szinkronizálhatja az adatszinkronizálást |biztonsági másolat szinkronizálása |biztonsági másolat szinkronizálása |belső |
 | **Alkalmazások listája**: telepített alkalmazások listája |X |biztonsági mentés |Egyéb |
 | **Bluetooth**: minden Bluetooth-beállítás |X |X | |

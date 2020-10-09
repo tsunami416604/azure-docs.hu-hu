@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 08/27/2020
 ms.author: jeedes
 ms.openlocfilehash: a01a503a9fe2eede01f6a173e233cb39de7d03f3
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91775116"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-egnyte"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Egnyte
@@ -91,9 +91,9 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
     b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<companyname>.egnyte.com/samlconsumer/AzureAD`
     
     > [!NOTE]
-    > Ezek az értékek nem valósak. Frissítse az értéket a tényleges bejelentkezési URL-címmel és a válasz URL-címével. Az érték beszerzéséhez forduljon a Egnyte ügyfélszolgálati [csapatához](https://www.egnyte.com/corp/contact_egnyte.html) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
+    > Ezek az értékek nem valósak. Frissítse az értéket a tényleges Sign-On URL-címmel és a válasz URL-címével. Az érték beszerzéséhez forduljon a Egnyte ügyfélszolgálati [csapatához](https://www.egnyte.com/corp/contact_egnyte.html) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-4. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállítások alapján, és mentse a számítógépre.
+4. Az **egyszeres Sign-On beállítása az SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállítások alapján, és mentse azt a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozása](common/certificatebase64.png)
 
@@ -117,7 +117,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Create** (Létrehozás) gombra.
+   1. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -153,7 +153,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
     ![Biztonság](./media/egnyte-tutorial/ic787821.png "Biztonság")
 
-5. Az **egyszeri bejelentkezéses hitelesítés** szakaszban hajtsa végre a következő lépéseket:
+5. Az **egyszeres Sign-On hitelesítés** szakaszban hajtsa végre a következő lépéseket:
 
     ![Egyszeri bejelentkezéses hitelesítés](./media/egnyte-tutorial/ic787822.png "Egyszeri bejelentkezéses hitelesítés")   
     

@@ -14,25 +14,25 @@ ms.custom: ''
 ms.date: 05/15/2019
 ms.author: ikbarmen
 ms.openlocfilehash: 18f2cf3daa281400151ba223e1735e7138d97e8e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "76990504"
 ---
 # <a name="manage-multiple-tenants"></a>Több bérlő kezelése
 
-Ez a cikk a több bérlő Video Indexer-vel való felügyeletének különböző lehetőségeit tárgyalja. Válasszon egy módszert, amely a legmegfelelőbb a forgatókönyvhöz:
+Ez a cikk a több bérlő Video Indexer-vel való felügyeletének különböző lehetőségeit tárgyalja. Válassza ki azt a módszert, amely a leginkább megfelel a forgatókönyvnek:
 
-* Video Indexer fiók/bérlő
-* Egyetlen Video Indexer fiók az összes bérlőhöz
-* Azure-előfizetés/bérlő
+* Bérlőnkénti Video Indexer-fiók
+* Egyetlen Video Indexer-fiók az összes bérlő számára
+* Bérlőnkénti Azure-előfizetés
 
-## <a name="video-indexer-account-per-tenant"></a>Video Indexer fiók/bérlő
+## <a name="video-indexer-account-per-tenant"></a>Bérlőnkénti Video Indexer-fiók
 
 Ezen architektúra használatakor létrejön egy Video Indexer fiók az egyes bérlők számára. A bérlők teljes elkülönítéssel rendelkeznek az állandó és a számítási rétegben.  
 
-![Video Indexer fiók/bérlő](./media/manage-multiple-tenants/video-indexer-account-per-tenant.png)
+![Bérlőnkénti Video Indexer-fiók](./media/manage-multiple-tenants/video-indexer-account-per-tenant.png)
 
 ### <a name="considerations"></a>Megfontolandó szempontok
 
@@ -66,11 +66,11 @@ Ezzel a beállítással a különböző testreszabási modellek (személy, nyelv
 > [!TIP]
 > A [prioritás](upload-index-videos.md) attribútum használatával rangsorolhatja a bérlők feladatait.
 
-## <a name="azure-subscription-per-tenant"></a>Azure-előfizetés/bérlő 
+## <a name="azure-subscription-per-tenant"></a>Bérlőnkénti Azure-előfizetés 
 
 Ha ezt az architektúrát használja, minden bérlő saját Azure-előfizetéssel fog rendelkezni. Minden felhasználóhoz létre kell hoznia egy új Video Indexer fiókot a bérlői előfizetésben.
 
-![Azure-előfizetés/bérlő](./media/manage-multiple-tenants/azure-subscription-per-tenant.png)
+![Bérlőnkénti Azure-előfizetés](./media/manage-multiple-tenants/azure-subscription-per-tenant.png)
 
 ### <a name="considerations"></a>Megfontolandó szempontok
 

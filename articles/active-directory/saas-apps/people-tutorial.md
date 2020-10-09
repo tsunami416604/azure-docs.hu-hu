@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 08/27/2019
 ms.author: jeedes
 ms.openlocfilehash: 93b418a2bc4e1b03370b1bb86bd7da95255db0b8
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88552390"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-people"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció az emberekkel
@@ -65,7 +65,7 @@ Az Azure AD SSO személyekkel való konfigurálásához és teszteléséhez hajt
 1. Az **[Azure ad SSO konfigurálása](#configure-azure-ad-sso)** – a funkció használatának engedélyezése a felhasználók számára.
     1. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
     1. **[Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user)** – ezzel lehetővé teszi, hogy B. Simon engedélyezze az Azure ad egyszeri bejelentkezést.
-2. A **[felhasználók egyszeri](#configure-people-sso)** bejelentkezésének beállítása – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+2. A **[felhasználók egyszeri bejelentkezésének beállítása](#configure-people-sso)** – az egyes Sign-On beállítások konfigurálása az alkalmazás oldalán.
     1. **[Hozzon létre egy felhasználót](#create-people-test-user)** , aki a felhasználó Azure ad-képviseletéhez csatolt B. Simon-partneri jogosultsággal rendelkezik.
 6. **[SSO tesztelése](#test-sso)** – annak ellenőrzése, hogy a konfiguráció működik-e.
 
@@ -75,7 +75,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. A [Azure Portal](https://portal.azure.com/)a **People** Application Integration oldalon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
 1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
-1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
+1. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
 
    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
@@ -88,9 +88,9 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
     c. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<company name>.peoplehr.net/Pages/Saml/ConsumeAzureAD.aspx`
 
     > [!NOTE]
-    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel és a válasz URL-címével. Vegye fel a kapcsolatot az [ügyfelek ügyfélszolgálatával](mailto:customerservices@peoplehr.com) , hogy megkapják ezeket az értékeket. Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges Sign-On URL-címmel és a válasz URL-címével. Vegye fel a kapcsolatot az [ügyfelek ügyfélszolgálatával](mailto:customerservices@peoplehr.com) , hogy megkapják ezeket az értékeket. Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-4. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg az **összevonási metaadatok XML-fájlját** , és válassza a **Letöltés** lehetőséget a tanúsítvány letöltéséhez és a számítógépre mentéséhez.
+4. Az **egyszeres Sign-On beállítása SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg az **összevonási metaadatok XML-fájlját** , és válassza a **Letöltés** lehetőséget a tanúsítvány letöltéséhez és a számítógépre mentéséhez.
 
     ![A tanúsítvány letöltési hivatkozása](common/certificatebase64.png)
 
@@ -108,7 +108,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Create** (Létrehozás) gombra.
+   1. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -142,15 +142,15 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
    
 4. A bal oldali menüben kattintson a **Beállítások**elemre.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/people-tutorial/tutorial_people_001.png)
+    ![Egyetlen Sign-On konfigurálása](./media/people-tutorial/tutorial_people_001.png)
 
 5. Kattintson a **vállalat**elemre.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/people-tutorial/tutorial_people_002.png)
+    ![Egyetlen Sign-On konfigurálása](./media/people-tutorial/tutorial_people_002.png)
 
 6. Az **"egyszeri bejelentkezés" SAML meta-adatfájljának feltöltéséhez**kattintson a **Tallózás** gombra a letöltött metaadat-fájl feltöltéséhez.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/people-tutorial/tutorial_people_003.png)
+    ![Egyetlen Sign-On konfigurálása](./media/people-tutorial/tutorial_people_003.png)
 
 ### <a name="create-people-test-user"></a>Felhasználók létrehozása tesztelési felhasználó
 

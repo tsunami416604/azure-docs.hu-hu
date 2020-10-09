@@ -11,10 +11,10 @@ ms.author: mireks
 ms.reviewer: vanto
 ms.date: 11/06/2019
 ms.openlocfilehash: 552b3f55632e817cc4669ce5da41b1e127c7d808
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91283870"
 ---
 # <a name="tutorial-security-in-azure-sql-managed-instance-using-azure-ad-server-principals-logins"></a>Oktatóanyag: az Azure SQL felügyelt példányának biztonsága Azure AD Server-rendszerbiztonsági tag használatával (bejelentkezések)
@@ -48,7 +48,7 @@ Az oktatóanyag elvégzéséhez győződjön meg arról, hogy rendelkezik a köv
 - [SQL Server Management Studio](/sql/ssms/download-sql-server-management-studio-ssms) (SSMS)
 - Felügyelt példány
   - Kövesse ezt a cikket: gyors útmutató [: felügyelt példány létrehozása](instance-create-quickstart.md)
-- Képes hozzáférni a felügyelt példányhoz, és [kiépített egy Azure ad-rendszergazdát a felügyelt példányhoz](../database/authentication-aad-configure.md#provision-azure-ad-admin-sql-managed-instance). További tudnivalókért lásd:
+- Képes hozzáférni a felügyelt példányhoz, és [kiépített egy Azure ad-rendszergazdát a felügyelt példányhoz](../database/authentication-aad-configure.md#provision-azure-ad-admin-sql-managed-instance). További információ:
   - [Az alkalmazás összekötése felügyelt példányokkal](connect-application-instance.md)
   - [SQL felügyelt példány kapcsolati architektúrája](connectivity-architecture-overview.md)
   - [Azure Active Directory hitelesítés konfigurálása és kezelése SQL-sel](../database/authentication-aad-configure.md)
@@ -436,7 +436,7 @@ Az Azure ad-fiókok és az Azure AD-kiszolgáló résztvevői (bejelentkezések)
 - A bejelentkezési eseményindítók az Azure AD Server-rendszerbiztonsági tag (bejelentkezések) felől érkező bejelentkezési események esetén támogatottak.
 - Az Service Broker-és adatbázis-levelezés beállítható az Azure AD-kiszolgáló résztvevői (bejelentkezések) használatával.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 ### <a name="enable-security-features"></a>Biztonsági funkciók engedélyezése
 

@@ -17,10 +17,10 @@ ms.date: 12/13/2018
 ms.author: kumud
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 51cafb0a344c5b6226b3b033d8c60327eaf2c05f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91267941"
 ---
 # <a name="create-a-network-for-multi-tier-applications-script-sample"></a>Hálózat létrehozása többszintű alkalmazásokhoz – példaszkript
@@ -36,7 +36,7 @@ A szkriptet az Azure [Cloud Shellben](https://shell.azure.com/powershell) vagy e
 [!INCLUDE [updated-for-az](../../../includes/updated-for-az.md)]
 
 <!-- gitHub issue https://github.com/MicrosoftDocs/azure-docs/issues/17748 -->
-A virtuális hálózat létrehozása után a rendszer alhálózati azonosítót rendel hozzá. pontosabban a New-AzVirtualNetwork parancsmagot használja az-subnet kapcsolóval. Ha az alhálózatot a New-AzVirtualNetworkSubnetConfig parancsmaggal konfigurálja a New-AzVirtualNetwork hívása előtt, az alhálózati azonosító addig nem jelenik meg, amíg a New-AzVirtualNetwork meghívása nem történik meg.
+A virtuális hálózat létrehozása után a rendszer alhálózati azonosítót rendel hozzá. pontosabban a New-AzVirtualNetwork parancsmagot használja az-subnet kapcsolóval. Ha az alhálózatot a New-AzVirtualNetworkSubnetConfig parancsmaggal konfigurálja a New-AzVirtualNetwork hívása előtt, addig nem fogja látni az alhálózati azonosítót addig, amíg nem hívja meg a New-AzVirtualNetwork.
 
 [!code-azurepowershell-interactive[main](../../../powershell_scripts/virtual-network/virtual-network-multi-tier-application/virtual-network-multi-tier-application.ps1  "Virtual network for multi-tier application")]
 
@@ -64,7 +64,7 @@ Ez a szkript az alábbi parancsokkal létrehoz egy erőforráscsoportot, egy vir
 | [New-AzVM](/powershell/module/az.compute/new-azvm) | Virtuális gépeket hoz létre, és minden virtuális géphez csatol egy NIC-t. A parancs megadja továbbá a használandó virtuálisgép-rendszerképet és a rendszergazdai hitelesítő adatokat. |
 | [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) | Töröl egy erőforráscsoportot és a benne található összes erőforrást. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Azure PowerShellről további tudnivalókért tekintse meg az [Azure PowerShell dokumentációt](/powershell/azure/).
 

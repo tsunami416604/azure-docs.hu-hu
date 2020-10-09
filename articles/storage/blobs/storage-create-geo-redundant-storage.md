@@ -12,10 +12,10 @@ ms.reviewer: artek
 ms.custom: mvc, devx-track-python, devx-track-js, devx-track-csharp
 ms.subservice: blobs
 ms.openlocfilehash: 90b3135174d06b6e896d50e0db13fa7747e882c0
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91295447"
 ---
 # <a name="tutorial-build-a-highly-available-application-with-blob-storage"></a>Oktatóanyag: kiválóan elérhető alkalmazás létrehozása blob Storage-val
@@ -340,7 +340,7 @@ const pipeline = StorageURL.newPipeline(sharedKeyCredential, {
 
 ---
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A sorozat első részében megtanulta, hogyan lehet az alkalmazást az RA-GZRS Storage-fiókokkal nagykörben elérhetővé teszi.
 
