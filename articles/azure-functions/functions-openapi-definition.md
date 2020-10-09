@@ -6,10 +6,10 @@ ms.date: 04/21/2020
 ms.reviewer: sunayv
 ms.custom: devx-track-csharp, mvc, cc996988-fb4f-47, references_regions
 ms.openlocfilehash: 9083ff7d8f65c68ce8d173973a4eda650ac355aa
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88212906"
 ---
 # <a name="create-an-openapi-definition-for-a-serverless-api-using-azure-api-management"></a>OpenAPI-definíció létrehozása kiszolgáló nélküli API-hoz az Azure API Management használatával
@@ -49,12 +49,12 @@ A függvény ezután kiszámítja, hogy a javítás Mennyibe kerül, és mennyi 
 
 1. Válassza a **függvény** lehetőséget az **[engedélyezési szint](functions-bindings-http-webhook-trigger.md#http-auth)** legördülő listából, majd kattintson a **függvény létrehozása**elemre.
 
-    :::image type="content" source="media/functions-openapi-definition/select-http-trigger-openapi.png" alt-text="HTTP-függvény létrehozása a OpenAPI":::
+    :::image type="content" source="media/functions-openapi-definition/select-http-trigger-openapi.png" alt-text="HTTP-függvény létrehozása a OpenAPI&quot;:::
 
 1. Válassza a **kód + teszt**lehetőséget, majd válassza a **Run. CSX** elemet a legördülő listából. Cserélje le a Run. CSX C# parancsfájl tartalmát a következő kódra, majd válassza a **Mentés**lehetőséget:
 
     ```csharp
-    #r "Newtonsoft.Json"
+    #r &quot;Newtonsoft.Json"
     
     using System.Net;
     using Microsoft.AspNetCore.Mvc;
@@ -115,7 +115,12 @@ A függvény ezután kiszámítja, hogy a javítás Mennyibe kerül, és mennyi 
     }
     ```
 
-    :::image type="content" source="media/functions-openapi-definition/test-function.png" alt-text="A függvény tesztelése az Azure Portalon":::
+    :::image type="content" source="media/functions-openapi-definition/test-function.png" alt-text="HTTP-függvény létrehozása a OpenAPI&quot;:::
+
+1. Válassza a **kód + teszt**lehetőséget, majd válassza a **Run. CSX** elemet a legördülő listából. Cserélje le a Run. CSX C# parancsfájl tartalmát a következő kódra, majd válassza a **Mentés**lehetőséget:
+
+    ```csharp
+    #r &quot;Newtonsoft.Json":::
 
     A **kimenet** lapon a következő kimenet lesz visszaadva:
 
@@ -131,7 +136,12 @@ A OpenAPI-definíció előállítása:
 
 1. Válassza ki a Function alkalmazást, válassza a bal oldali menüben a **API Management** lehetőséget, majd válassza az **új létrehozása** lehetőséget **API Management**alatt.
 
-    :::image type="content" source="media/functions-openapi-definition/select-all-settings-openapi.png" alt-text="API Management kiválasztása":::
+    :::image type="content" source="media/functions-openapi-definition/select-all-settings-openapi.png" alt-text="HTTP-függvény létrehozása a OpenAPI&quot;:::
+
+1. Válassza a **kód + teszt**lehetőséget, majd válassza a **Run. CSX** elemet a legördülő listából. Cserélje le a Run. CSX C# parancsfájl tartalmát a következő kódra, majd válassza a **Mentés**lehetőséget:
+
+    ```csharp
+    #r &quot;Newtonsoft.Json":::
 
 
 1. Használja a következő táblázatban megadott API Management beállításokat:
@@ -158,7 +168,12 @@ A OpenAPI-definíció előállítása:
 
 1. A **Létrehozás a függvényalkalmazás** lapon fogadja el az alapértelmezett értékeket, majd válassza a **Létrehozás**lehetőséget.
 
-    :::image type="content" source="media/functions-openapi-definition/create-function-openapi.png" alt-text="Létrehozás függvényalkalmazás":::
+    :::image type="content" source="media/functions-openapi-definition/create-function-openapi.png" alt-text="HTTP-függvény létrehozása a OpenAPI&quot;:::
+
+1. Válassza a **kód + teszt**lehetőséget, majd válassza a **Run. CSX** elemet a legördülő listából. Cserélje le a Run. CSX C# parancsfájl tartalmát a következő kódra, majd válassza a **Mentés**lehetőséget:
+
+    ```csharp
+    #r &quot;Newtonsoft.Json":::
 
     Az Azure létrehozza a függvény API-ját.
 
@@ -179,7 +194,12 @@ A OpenAPI-definíció használata előtt ellenőrizze, hogy az API működik-e.
 
 1. Válassza a **Küldés**lehetőséget, majd tekintse meg a **http-választ**.
 
-    :::image type="content" source="media/functions-openapi-definition/test-function-api-openapi.png" alt-text="Function API tesztelése":::
+    :::image type="content" source="media/functions-openapi-definition/test-function-api-openapi.png" alt-text="HTTP-függvény létrehozása a OpenAPI&quot;:::
+
+1. Válassza a **kód + teszt**lehetőséget, majd válassza a **Run. CSX** elemet a legördülő listából. Cserélje le a Run. CSX C# parancsfájl tartalmát a következő kódra, majd válassza a **Mentés**lehetőséget:
+
+    ```csharp
+    #r &quot;Newtonsoft.Json":::
 
 ## <a name="download-the-openapi-definition"></a>A OpenAPI-definíció letöltése
 
@@ -193,7 +213,7 @@ Ha az API a várt módon működik, letöltheti a OpenAPI-definíciót.
 
 [!INCLUDE [clean-up-section-portal](../../includes/clean-up-section-portal.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 API Management integrációt használt a függvények OpenAPI-definíciójának létrehozásához. Most már szerkesztheti a definíciót API Management a portálon. [További tudnivalókat a API Managementról](../api-management/api-management-key-concepts.md)is kaphat.
 

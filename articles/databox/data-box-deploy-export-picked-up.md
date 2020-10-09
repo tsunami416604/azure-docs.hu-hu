@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 07/21/2020
 ms.author: alkohli
 ms.openlocfilehash: 04e4394e6a439c923558ef90e13c14c0adaa4020
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88142111"
 ---
 # <a name="tutorial-return-azure-data-box-preview"></a>Oktatóanyag: visszatérési Azure Data Box (előzetes verzió)
@@ -47,7 +47,7 @@ A következő lépések attól függenek, hogy hol küldi vissza az eszközt.
 
 Győződjön meg arról, hogy az eszközről származó adatok másolása befejeződött, és a **szállításra való előkészítés** futtatása sikeres volt. Az eljárások attól függnek, hogy hol küldi vissza az eszközt.
 
-## <a name="us-canada-europe"></a>[Egyesült Államok, Kanada, Európa](#tab/in-us-canada-europe)
+## <a name="us-canada-europe"></a>[Egyesült Államok, Kanada és Európa](#tab/in-us-canada-europe)
 
 Az alábbi lépéseket akkor végezze el, ha az eszközt az Egyesült Államokban, Kanadában vagy Európában küldi vissza.
 
@@ -71,7 +71,7 @@ Az Ausztráliában található Azure-adatközpontok egy további biztonsági ér
 2. Győződjön meg arról, hogy az adatok eszközre történő másolása befejeződött, és a **Szállításra való előkészítés** futtatása sikeres volt.
 3. Kapcsolja ki az eszközt, és távolítsa el a kábeleket.
 4. Tekerje fel, és biztonságosan helyezze el az eszközhöz mellékelt tápkábelt az eszköz hátuljában.
-5. Online felvételt a [DHL hivatkozásra kattintva](https://mydhl.express.dhl/au/en/schedule-pickup.html#/schedule-pickup#label-reference)foglalhat le.
+5. A [DHL-hivatkozásra](https://mydhl.express.dhl/au/en/schedule-pickup.html#/schedule-pickup#label-reference) kattintva foglaljon egy csomagfelvételt az interneten.
 
 ## <a name="japan"></a>[Japán](#tab/in-japan)
 
@@ -135,7 +135,7 @@ Szükség esetén a következő módokon léphet kapcsolatba a Quantium Solution
 4. Ha a DHL-mel szeretne bejelentkezni, válasszon a következő lehetőségek közül:
 
     * Hívja meg az ügyfélszolgálat kapcsolattartási központját, mielőtt 2:00 PM-t **+ 27 (0) 11 9213600**, válassza az 1. lehetőséget, majd adja meg a fuvarlevél számát.
-    * Küldjön egy e-mailt [Priority.Support@dhl.com](mailto:Priority.Support@dhl.com) a következő sablon használatára:
+    * Küldjön egy e-mailt a [Priority.Support@dhl.com](mailto:Priority.Support@dhl.com) címre az alábbi sablonnal:
 
     ```output
     To: Priority.Support@dhl.com
@@ -145,20 +145,20 @@ Szükség esetén a következő módokon léphet kapcsolatba a Quantium Solution
       *  Requested pickup date: yyyy/mm/dd;time:HH MM
     ```
 
-    * Azt is megteheti, hogy kidobja a csomagot a legközelebbi DHL szolgáltatási ponton.
+    * Másik lehetőségként leadhatja a csomagot a legközelebbi DHL feladási ponton.
 
-5. Ha bármilyen probléma merül fel, az e-mail-cím [Priority.Support@dhl.com](mailto:Priority.Support@dhl.com) az észlelt hibák részleteit és a fuvarlevél számát adja meg a Tárgy: sorban. A + 27 (0) 119213902 is meghívhatja.
+5. Ha problémába ütközik, küldjön e-mailt a következő címre: [Priority.Support@dhl.com](mailto:Priority.Support@dhl.com). Az e-mailben írja meg a tapasztalt probléma/problémák részleteit, a tárgysorban pedig adja meg a fuvarlevél számát. Felhívhatja a +27(0)119213902 telefonszámot is.
 
 ## <a name="hong-kong"></a>[Hongkong](#tab/in-hk)
 
-1. Csomagolja be az eszközt az eredeti mezőbe a visszaszállításhoz.
+1. Az eszközt az eredeti dobozban küldje vissza.
 2. Jegyezze fel az eszköz helyi webes FELÜLETén látható hivatkozási számot (a fordított szállítólevél nyomon követési számát). Ez a szám a **szállításra való előkészítés futtatásának sikeres végrehajtása** után jelenik meg.
 3. Töltse le és nyomtassa ki az eszköz helyi webes FELÜLETén elérhető szállítási címkét, és helyezze azt a szállítási csomagba.
 4. Tekerje fel, és biztonságosan helyezze el az eszközhöz mellékelt tápkábelt az eszköz hátuljában.
-5. Hívja meg az **Quantium Solutions** forródrótot **(852) 2318 1213** az irodai órákban (09:00 – 18:00, hétfőtől péntekig).  
-6. Ajánlat Microsoft Azure pickup és a hivatkozási szám és a nyomkövetési szám (vonalkód fölött) a visszáru-szállítási címkén a gyűjtemény rendezéséhez.
-7. Szóbeli megerősítést kap a csomagátvételi ütemtervről. Ha a futár nem érkezik meg a gyűjteményhez, hívja meg a Quantium Solutions forródrótot alternatív megoldásokhoz.
-8. A Quantium-mel való befoglaláskor ossza meg a megerősítést a [Microsoft Data Box Operations Asia](mailto:adbo@microsoft.com) használatával a következő sablonnal:
+5. Hívja a **Quantum Solutionst** a **(852) 2318 1213** telefonszámon munkaidőben (hétfőtől péntekig 9 és 18 óra között).  
+6. Hivatkozzon a Microsoft Azure-csomagfelvételre, és adja meg a hivatkozási számot és a visszaküldési címkén (a vonalkód fölött) lévő nyomkövetési számot az átvétel egyeztetéséhez.
+7. Szóbeli megerősítést kap a csomagátvételi ütemtervről. Ha a futár nem érkezik meg a csomagfelvételért, hívja a Quantium Solutions telefonszámát alternatív megoldásokért.
+8. A Quantiummal folytatott csomagfelvétel-egyeztetéskor továbbítsa a megerősítést a [Microsoft Data Box Operations Asia](mailto:adbo@microsoft.com) felé az alábbi sablonnal:
 
     ```output
     To: adbo@microsoft.com
@@ -176,7 +176,7 @@ Ha bármilyen problémába ütközik, e-mail-Data Box Operations Asia [adbo@micr
 
 ## <a name="self-managed"></a>[Önállóan felügyelt](#tab/in-selfmanaged)
 
-Ha Data Boxt használ Japánban, Szingapúrban, Koreában, Indiában, Dél-Afrikában vagy Nyugat-Európában, és a rendelés létrehozása során kiválasztotta az önfelügyelt szállítási lehetőséget, kövesse az alábbi utasításokat.
+Ha a Data Boxot Japánban, Szingapúrban, Koreában, Indiában, a Dél-afrikai Köztársaságban vagy Nyugat-Európában használja, és a rendelés létrehozása során a Self-Managed (Önállóan felügyelt) szállítás lehetőséget választotta, kövesse az alábbi utasításokat.
 
 1. Jegyezze fel a hitelesítési kódot (Authorization code), amely a Data Box helyi webes felhasználói felületének „Prepare to Ship” (Szállítás előkészítése) lapján jelenik meg a lépés sikeres befejeződése után.
 2. Kapcsolja ki az eszközt, és távolítsa el a kábeleket. Tekerje fel, és biztonságosan helyezze el az eszközhöz mellékelt tápkábelt az eszköz hátuljánál.
@@ -197,7 +197,7 @@ Ha Data Boxt használ Japánban, Szingapúrban, Koreában, Indiában, Dél-Afrik
  
 Miután az eszköz eléri az Azure-adatközpontot, a Data Box a lemezén lévő adatmennyiséget a [NIST SP 800-88 változat 1 irányelveinek](https://csrc.nist.gov/News/2014/Released-SP-800-88-Revision-1,-Guidelines-for-Medi)megfelelően törli.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban megismerte a következő témaköröket:
 

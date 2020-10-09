@@ -12,10 +12,10 @@ ms.date: 08/05/2020
 ms.author: pafarley
 ms.custom: devx-track-python
 ms.openlocfilehash: af0e9cd66cf64366a6f563148fa6b075161151f4
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87875438"
 ---
 # <a name="tutorial-run-tensorflow-model-in-python"></a>Oktatóanyag: TensorFlow-modell futtatása Python nyelven
@@ -191,7 +191,7 @@ with tf.compat.v1.Session() as sess:
         exit(-1)
 ```
 
-## <a name="view-the-results"></a>Eredmények megtekintése
+## <a name="view-the-results"></a>Az eredmények megtekintése
 
 A képtenzor modellen történő átfuttatásának eredményeit ezután ismét meg kell feleltetni a címkéknek.
 
@@ -209,7 +209,7 @@ A képtenzor modellen történő átfuttatásának eredményeit ezután ismét m
         label_index += 1
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Következő lépésként megtudhatja, hogyan csomagolhatja be a modellt egy mobil alkalmazásba:
 * [Az exportált TensorFlow-modell használata Android-alkalmazásban](https://github.com/Azure-Samples/cognitive-services-android-customvision-sample)

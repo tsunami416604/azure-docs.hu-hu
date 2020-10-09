@@ -10,13 +10,13 @@ ms.date: 08/05/2019
 ms.author: raynew
 ms.custom: mvc
 ms.openlocfilehash: 8d38aa513b0829c2626fcd4a92c40faabff1f83e
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87502392"
 ---
-# <a name="fail-over-and-reprotect-azure-vms-between-regions"></a>Azure-beli virtuális gépek feladatátvétele és újbóli ellátása régiók között
+# <a name="fail-over-and-reprotect-azure-vms-between-regions"></a>Azure-beli virtuális gépek feladatátvétele és védelem-visszaállítása régiók között
 
 Ez az oktatóanyag azt ismerteti, hogyan lehet átadni egy Azure-beli virtuális gépet (VM) egy másodlagos Azure-régióhoz a [Azure site Recovery](site-recovery-overview.md) szolgáltatással. A feladatátvételt követően újra kell védetté tenni a virtuális gépet. Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 

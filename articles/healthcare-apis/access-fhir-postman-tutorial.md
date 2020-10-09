@@ -10,10 +10,10 @@ ms.author: matjazl
 author: matjazl
 ms.date: 02/07/2019
 ms.openlocfilehash: f8b5e344fc963d466571e75ff16f17367dc32971
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87844847"
 ---
 # <a name="access-azure-api-for-fhir-with-postman"></a>Az Azure API elérése a Poster FHIR
@@ -23,15 +23,15 @@ Egy ügyfélalkalmazás egy [Rest APIon](https://www.hl7.org/fhir/http.html)kere
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Egy FHIR-végpont az Azure-ban. Ezt beállíthatja a felügyelt Azure API-FHIR vagy az Azure-hoz készült nyílt forráskódú FHIR-kiszolgáló használatával. A felügyelt Azure API beállítása a FHIR [Azure Portal](fhir-paas-portal-quickstart.md), [POWERSHELL](fhir-paas-powershell-quickstart.md)vagy [Azure CLI](fhir-paas-cli-quickstart.md)használatával.
-- Egy [ügyfélalkalmazás](register-confidential-azure-ad-client-app.md) , amelyet a FHIR szolgáltatás eléréséhez fog használni
-- A Posting telepítése megtörtént. A következő címről kérheti le:[https://www.getpostman.com](https://www.getpostman.com)
+- Egy  [ügyfélalkalmazás](register-confidential-azure-ad-client-app.md) , amelyet a FHIR szolgáltatás eléréséhez fog használni
+- A Posting telepítése megtörtént. A következő címről kérheti le: [https://www.getpostman.com](https://www.getpostman.com)
 
 ## <a name="fhir-server-and-authentication-details"></a>FHIR-kiszolgáló és-hitelesítés részletei
 
 A Poster használatához a következő adatokra van szükség:
 
-- A FHIR-kiszolgáló URL-címe, például:`https://MYACCOUNT.azurehealthcareapis.com`
-- A `Authority` FHIR-kiszolgáló identitás-szolgáltatója, például:`https://login.microsoftonline.com/{TENANT-ID}`
+- A FHIR-kiszolgáló URL-címe, például: `https://MYACCOUNT.azurehealthcareapis.com`
+- A `Authority` FHIR-kiszolgáló identitás-szolgáltatója, például: `https://login.microsoftonline.com/{TENANT-ID}`
 - A konfigurálva `audience` . Ez általában a FHIR-kiszolgáló URL-címe, például `https://MYACCOUNT.azurehealthcareapis.com` vagy csak `https://azurehealthcareapis.com` .
 - A `client_id` FHIR szolgáltatás eléréséhez használni kívánt [ügyfélalkalmazás](register-confidential-azure-ad-client-app.md) (vagy alkalmazás-azonosító).
 - Az `client_secret` ügyfélalkalmazás (vagy alkalmazás titka).
@@ -67,7 +67,7 @@ A következő részletekre lesz szüksége:
 | Jogkivonat neve            | MYTOKEN                                                                                                         | A kiválasztott név          |
 | Engedélyezési típus            | Engedélyezési kód                                                                                              |                            |
 | Visszahívási URL          | `https://www.getpostman.com/oauth2/callback`                                                                      |                            |
-| Hitelesítési URL-cím              | `https://login.microsoftonline.com/{TENANT-ID}/oauth2/authorize?resource=<audience>` | `audience`a `https://MYACCOUNT.azurehealthcareapis.com` FHIR készült Azure API-hoz |
+| Hitelesítési URL-cím              | `https://login.microsoftonline.com/{TENANT-ID}/oauth2/authorize?resource=<audience>` | `audience` a `https://MYACCOUNT.azurehealthcareapis.com` FHIR készült Azure API-hoz |
 | Hozzáférési jogkivonat URL-címe      | `https://login.microsoftonline.com/{TENANT ID}/oauth2/token`                                                      |                            |
 | Ügyfél-azonosító             | `XXXXXXXX-XXX-XXXX-XXXX-XXXXXXXXXXXX`                                                                            | Alkalmazásazonosító             |
 | Titkos ügyfélkulcs         | `XXXXXXXX`                                                                                                        | Titkos ügyfél kulcsa          |
@@ -127,7 +127,7 @@ Ha megismétli a beteges keresést, a következőt kell látnia:
 
 ![Beteg létrehozva](media/tutorial-postman/postman-patient-found.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban egy FHIR API-t adott hozzá a Poster használatával. Olvassa el a támogatott funkciók szakasz támogatott API-funkcióit ismertető szakaszt.
  

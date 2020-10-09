@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 10/24/2019
 ms.openlocfilehash: 345d4fe218f5eed433204622bd47481628ec810f
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87874061"
 ---
 # <a name="get-started-with-log-queries-in-azure-monitor"></a>Ismerkedés az Azure Monitor-naplólekérdezésekkel
@@ -130,7 +130,7 @@ SecurityEvent
 ```
     
 > [!NOTE]
-> Az értékek különböző típusokkal rendelkezhetnek, ezért előfordulhat, hogy a megfelelő típus összehasonlításához el kell végeznie őket. A SecurityEvent *szint* oszlop például karakterlánc típusú, ezért a numerikus operátorok használata előtt át kell őket adni egy numerikus típusba (például *int* vagy *Long*).`SecurityEvent | where toint(Level) >= 10`
+> Az értékek különböző típusokkal rendelkezhetnek, ezért előfordulhat, hogy a megfelelő típus összehasonlításához el kell végeznie őket. A SecurityEvent *szint* oszlop például karakterlánc típusú, ezért a numerikus operátorok használata előtt át kell őket adni egy numerikus típusba (például *int* vagy *Long*). `SecurityEvent | where toint(Level) >= 10`
 
 ## <a name="specify-a-time-range"></a>Időtartomány megadásának időpontja
 
@@ -151,7 +151,7 @@ SecurityEvent
 | where toint(Level) >= 10
 ```
 
-A fenti időpontnál a `ago(30m)` "30 perce" kifejezés azt jelenti, hogy ez a lekérdezés csak az elmúlt 30 perc rekordokat adja vissza. Más időegységek közé tartoznak a napok (2D), a Minutes (25m) és a másodperc (10-es).
+A fenti időpontnál a  `ago(30m)` "30 perce" kifejezés azt jelenti, hogy ez a lekérdezés csak az elmúlt 30 perc rekordokat adja vissza. Más időegységek közé tartoznak a napok (2D), a Minutes (25m) és a másodperc (10-es).
 
 
 ## <a name="project-and-extend-select-and-compute-columns"></a>Projekt és bővítés: Select és számítási oszlopok
@@ -242,7 +242,7 @@ A kimeneti világosabb kiválasztásához jelölje ki, ha idődiagramként szere
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ a sztringek használatával végzett naplózási lekérdezésekben a karakterláncok használata [Azure monitor a naplók lekérdezésében](string-operations.md).
 - További információ az adatösszesítések naplózási lekérdezésekben való összesítéséről [Azure monitor log-lekérdezések speciális összesítései között](advanced-aggregations.md).

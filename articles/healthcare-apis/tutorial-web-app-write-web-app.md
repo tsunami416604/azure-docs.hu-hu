@@ -10,10 +10,10 @@ ms.author: cavoeg
 author: caitlinv39
 ms.date: 01/03/2020
 ms.openlocfilehash: bb9c206a17a11f0cf710ac4ee3ac7ccae0fa9eb9
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87848026"
 ---
 # <a name="write-azure-web-application-to-read-fhir-data"></a>Azure-webalkalmazás írása FHIR-alapú adatolvasásra
@@ -147,11 +147,11 @@ Alább látható a **index.html**-be bevitt kód. A következő elemeket kell fr
 
 Innen visszatérhet a webalkalmazás-erőforráshoz, és megnyithatja az Áttekintés oldalon található URL-címet. Jelentkezzen be, hogy megtekintse a korábban létrehozott James Tiberious Kirk beteget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Sikeresen telepítette a FHIR készült Azure API-t, regisztrált egy nyilvános ügyfélalkalmazás-alkalmazást, tesztelt hozzáférést, és létrehozott egy kis webalkalmazást. A következő lépésként tekintse meg az Azure API FHIR által támogatott funkciókat.
 
 >[!div class="nextstepaction"]
->[Támogatott funkciók](fhir-features-supported.md)
+>[Támogatott szolgáltatások](fhir-features-supported.md)
 
 
 

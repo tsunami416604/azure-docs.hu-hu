@@ -9,10 +9,10 @@ ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
 ms.openlocfilehash: 5ce98c785700301bba92926d7d5a243b614eca7f
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87504228"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-hyper-v-vms-to-azure"></a>Vészhelyreállítás beállítása a helyszíni Hyper-V virtuális gépekhez az Azure-ba
@@ -49,7 +49,7 @@ Ez az oktatóanyag egy sorozat harmadik része. Feltételezi, hogy már végreha
 4. A **hová szeretné replikálni a gépeket?** területen válassza **Az Azure**lehetőséget.
 5. A-ben **a gépek virtualizáltak?**, válassza az **Igen, a Hyper-V**lehetőséget.
 6. A-ben a **System Center VMM használatával felügyelheti a Hyper-V-gazdagépeket?** válassza a **nem**lehetőséget.
-7. Kattintson az **OK** gombra.
+7. Válassza az **OK** lehetőséget.
 
     ![Képernyőkép a védelmi cél lehetőségeiről az infrastruktúra előkészítése során.](./media/hyper-v-azure-tutorial/replication-goal.png)
 
@@ -103,7 +103,7 @@ Ha a Hyper-V Core-kiszolgálót futtatja, töltse le a telepítőfájlt, és kö
 
     `AzureSiteRecoveryProvider.exe /x:. /q`
  
-2. Futtassa az `.\setupdr.exe /i` parancsot. Az eredmények naplózása a%Programdata%\ASRLogs\DRASetupWizard.log.
+2. A `.\setupdr.exe /i` parancs futtatása. Az eredmények naplózása a%Programdata%\ASRLogs\DRASetupWizard.log.
 
 3. Regisztrálja a kiszolgálót a következő parancs futtatásával:
 

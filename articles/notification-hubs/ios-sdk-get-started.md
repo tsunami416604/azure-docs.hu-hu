@@ -9,10 +9,10 @@ ms.service: notification-hubs
 ms.reviewer: thsomasu
 ms.lastreviewed: 06/01/2020
 ms.openlocfilehash: 7cdf095898bfe85e6f3b14fa1dcdb7b0c94ccde6
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88042445"
 ---
 # <a name="tutorial-send-push-notifications-to-ios-apps-using-azure-notification-hubs"></a>Oktatóanyag: leküldéses értesítések küldése iOS-alkalmazásokba az Azure Notification Hubs használatával
@@ -60,11 +60,11 @@ A tanúsítvány-aláírási kérelem (CSR) fájljának létrehozása, amelyet a
 
 3. Válassza ki a **felhasználói e-mail-címét**, írja be a **köznapi név**   értékét, győződjön meg róla, hogy a **lemezre mentve**van, majd válassza a **Folytatás**lehetőséget. Hagyja üresen a **CA e-mail-címét**   , mert nincs rá szükség.
 
-   :::image type="content" source="media/ios-sdk-get-started/image2.png" alt-text="Szükséges tanúsítványinformációk":::
+   :::image type="content" source="media/ios-sdk-get-started/image2.png" alt-text="Kulcstartó-hozzáférés":::
 
 4. Adja meg a CSR-fájl nevét a **Mentés másként**lehetőségnél, válassza ki a helyet a **hol**, majd válassza a **Mentés**lehetőséget.
 
-   :::image type="content" source="media/ios-sdk-get-started/image3.png" alt-text="Fájlnév kiválasztása":::
+   :::image type="content" source="media/ios-sdk-get-started/image3.png" alt-text="Kulcstartó-hozzáférés":::
 
    Ez a művelet menti a CSR-fájlt a kiválasztott helyen. Az alapértelmezett hely az **asztali**. Jegyezze meg a fájlhoz választott helyet.
 
@@ -76,26 +76,26 @@ Ha leküldéses értesítéseket szeretne küldeni egy iOS-alkalmazásnak, regis
 
 1. Ha még nem regisztrálta az alkalmazást, keresse meg az [iOS-es kiépítési portált](https://go.microsoft.com/fwlink/p/?LinkId=272456)   az Apple fejlesztői központban. Jelentkezzen be a portálra az Apple ID azonosítójával, és válassza az **azonosítók**lehetőséget. Ezután válassza  **+**   az új alkalmazás regisztrálását.
 
-   :::image type="content" source="media/ios-sdk-get-started/image4.png" alt-text="Alkalmazás-azonosítók lap":::
+   :::image type="content" source="media/ios-sdk-get-started/image4.png" alt-text="Kulcstartó-hozzáférés":::
 
 2. Az **új azonosító regisztrálása**   képernyőn válassza az alkalmazás- **azonosítók**   választógombot. Ezután válassza a **Folytatás**lehetőséget.
 
-   :::image type="content" source="media/ios-sdk-get-started/image5.png" alt-text="Új azonosító oldal regisztrálása":::
+   :::image type="content" source="media/ios-sdk-get-started/image5.png" alt-text="Kulcstartó-hozzáférés":::
 
 3. Frissítse a következő három értéket az új alkalmazáshoz, majd kattintson a **Folytatás**gombra:
 
    - **Leírás**: adjon meg egy leíró nevet az alkalmazásnak.
    - **Csomag azonosítója**: adja meg az űrlap **szervezeti azonosítójának**egy köteg-azonosítóját. a terméknév az    [alkalmazás-terjesztési útmutatóban](https://help.apple.com/xcode/mac/current/#/dev91fe7130a)említett. A **szervezet azonosítójának**   és a **terméknév**   értékének meg kell egyeznie a Xcode-projekt létrehozásakor használt szervezeti azonosítóval és terméknév-névvel. Az alábbi képernyőképen a **NotificationHubs**   érték a szervezet azonosítója, a **GetStarted**pedig a   termék neve lesz. Győződjön meg arról, hogy a **csomag azonosítójának**   értéke megegyezik a Xcode projekt értékével, hogy a Xcode a megfelelő közzétételi profilt használja.
 
-      :::image type="content" source="media/ios-sdk-get-started/image6.png" alt-text="Alkalmazás-azonosító regisztrálása":::
+      :::image type="content" source="media/ios-sdk-get-started/image6.png" alt-text="Kulcstartó-hozzáférés":::
 
    - **Leküldéses értesítések**: a képességek szakaszban keresse meg a **leküldéses értesítések**   lehetőséget **Capabilities**   .
 
-      :::image type="content" source="media/ios-sdk-get-started/image7.png" alt-text="Új alkalmazás-azonosító regisztrálása":::
+      :::image type="content" source="media/ios-sdk-get-started/image7.png" alt-text="Kulcstartó-hozzáférés":::
 
       Ez a művelet létrehozza az alkalmazás AZONOSÍTÓját, és kéri, hogy erősítse meg az adatokat. Válassza a **Folytatás**lehetőséget, majd válassza a **regisztráció**lehetőséget   az új alkalmazás azonosítójának megerősítéséhez.
 
-      :::image type="content" source="media/ios-sdk-get-started/image8.png" alt-text="Új alkalmazás AZONOSÍTÓjának megerősítése":::
+      :::image type="content" source="media/ios-sdk-get-started/image8.png" alt-text="Kulcstartó-hozzáférés":::
 
       Miután kiválasztotta a **regisztrációt**, megjelenik az új alkalmazás-azonosító a **tanúsítványok, azonosítók & profilok**   lapon.
 
@@ -118,11 +118,11 @@ A második lehetőség számos előnnyel jár a tanúsítványok használata sor
 
 1. Görgessen le a **leküldéses értesítések**   lehetőséghez, majd válassza a **Konfigurálás**lehetőséget a   tanúsítvány létrehozásához.
 
-   :::image type="content" source="media/ios-sdk-get-started/image9.png" alt-text="Alkalmazásazonosító":::
+   :::image type="content" source="media/ios-sdk-get-started/image9.png" alt-text="Kulcstartó-hozzáférés":::
 
 2. Megjelenik az **Apple push Notification szolgáltatás SSL-tanúsítványainak**   ablaka. Kattintson a **tanúsítvány létrehozása**   gombra a **fejlesztési SSL-tanúsítvány**   szakaszban.
 
-   :::image type="content" source="media/ios-sdk-get-started/image10.png" alt-text="Tanúsítvány létrehozása":::
+   :::image type="content" source="media/ios-sdk-get-started/image10.png" alt-text="Kulcstartó-hozzáférés":::
 
    Megjelenik az **új tanúsítvány létrehozása**   képernyő.
 
@@ -133,11 +133,11 @@ A második lehetőség számos előnnyel jár a tanúsítványok használata sor
 
 4. Miután a portál létrehozza a tanúsítványt, kattintson a **Letöltés**   gombra. Mentse a tanúsítványt, és jegyezze meg a helyet, ahová a rendszer mentette.
 
-   :::image type="content" source="media/ios-sdk-get-started/image11.png" alt-text="Tanúsítvány letöltése":::
+   :::image type="content" source="media/ios-sdk-get-started/image11.png" alt-text="Kulcstartó-hozzáférés":::
 
    A rendszer letölti és menti a tanúsítványt a **letöltések**   mappába.
 
-   :::image type="content" source="media/ios-sdk-get-started/image12.png" alt-text="Tanúsítványfájl keresése":::
+   :::image type="content" source="media/ios-sdk-get-started/image12.png" alt-text="Kulcstartó-hozzáférés":::
 
    Alapértelmezés szerint a letöltött fejlesztési tanúsítvány neve **aps_development. cer**.
 
@@ -149,7 +149,7 @@ A második lehetőség számos előnnyel jár a tanúsítványok használata sor
 
 6. A kulcstartó-hozzáférés területen kattintson a jobb gombbal az új leküldéses tanúsítványra, amelyet a **tanúsítványok**   kategóriában hozott létre. Válassza az **Exportálás**lehetőséget, nevezze el a fájlt, válassza ki a **. P12**   formátumot, majd válassza a **Mentés**lehetőséget.
 
-   :::image type="content" source="media/ios-sdk-get-started/image14.png" alt-text="Tanúsítvány exportálása":::
+   :::image type="content" source="media/ios-sdk-get-started/image14.png" alt-text="Kulcstartó-hozzáférés":::
 
    Megadhatja, hogy a tanúsítvány jelszavas védelemmel legyen ellátva, de ez nem kötelező. Kattintson **az OK**gombra,   Ha meg szeretné kerülni a jelszó létrehozását. Jegyezze fel az exportált .p12 tanúsítvány nevét és helyét. A rendszer a APNS használatával engedélyezi a hitelesítést.
 
@@ -201,11 +201,11 @@ Ezeknek a lépéseknek a végén a következő információkat kell használnia 
 
 2. Válassza az **iOS-alkalmazások fejlesztése**lehetőséget   a **fejlesztés**alatt   a létesítési profil típusa területen, majd válassza a **Folytatás**lehetőséget.
 
-   :::image type="content" source="media/ios-sdk-get-started/image15.png" alt-text="Üzembehelyezési profillista":::
+   :::image type="content" source="media/ios-sdk-get-started/image15.png" alt-text="Kulcstartó-hozzáférés":::
 
 3. Ezután válassza ki az **alkalmazás-azonosító**   legördülő listából létrehozott azonosítót, majd válassza a **Folytatás**lehetőséget.
 
-   :::image type="content" source="media/ios-sdk-get-started/image16.png" alt-text="Alkalmazás AZONOSÍTÓjának kiválasztása":::
+   :::image type="content" source="media/ios-sdk-get-started/image16.png" alt-text="Kulcstartó-hozzáférés":::
 
 4. A **tanúsítványok kiválasztása**   ablakban válassza ki a kód aláírásához használt fejlesztési tanúsítványt, és válassza a **Folytatás**lehetőséget. Ez a tanúsítvány nem a létrehozott leküldéses tanúsítvány. Ha az egyik nem létezik, létre kell hoznia. Ha egy tanúsítvány létezik, ugorjon a következő lépésre. Fejlesztési tanúsítvány létrehozása, ha az egyik nem létezik:
 
@@ -224,7 +224,7 @@ Ezeknek a lépéseknek a végén a következő információkat kell használnia 
 
 8. Végül válassza ki a profil nevét a **létesítési profil nevében**, majd válassza a **Létrehozás**lehetőséget.
 
-   :::image type="content" source="media/ios-sdk-get-started/image17.png" alt-text="Kiépítési profil nevének kiválasztása":::
+   :::image type="content" source="media/ios-sdk-get-started/image17.png" alt-text="Kulcstartó-hozzáférés":::
 
 9. Az új létesítési profil létrehozásakor válassza a **Letöltés**lehetőséget. Jegyezze meg a helyet, ahol a mentésre kerül.
 
@@ -238,11 +238,11 @@ Ebben a szakaszban létrehoz egy értesítési központot, és konfigurálja a h
 
 2. A bal oldali menüben válassza a **minden szolgáltatás**lehetőséget   , majd **Notification Hubs**   a **mobil**szakaszban válassza a Notification Hubs lehetőséget   . A szolgáltatás neve melletti csillag ikonra kattintva adja hozzá a szolgáltatást a **Kedvencek**   szakaszhoz a bal oldali menüben. Miután hozzáadta **Notification Hubs**   a **kedvencekhez**, válassza ki.
 
-   :::image type="content" source="media/ios-sdk-get-started/image18.png" alt-text="Azure Portal":::
+   :::image type="content" source="media/ios-sdk-get-started/image18.png" alt-text="Kulcstartó-hozzáférés":::
 
 3. A **Notification Hubs**   lapon válassza a **Hozzáadás**lehetőséget   az eszköztáron.
 
-   :::image type="content" source="media/ios-sdk-get-started/image19.png" alt-text="Eszköztár hozzáadása gomb":::
+   :::image type="content" source="media/ios-sdk-get-started/image19.png" alt-text="Kulcstartó-hozzáférés":::
 
 4. A **Notification Hubs**   oldalon hajtsa végre a következő lépéseket:
 
@@ -252,18 +252,18 @@ Ebben a szakaszban létrehoz egy értesítési központot, és konfigurálja a h
    4. Válasszon ki egy meglévő erőforráscsoportot az **erőforráscsoporthoz**, vagy hozzon létre egy új erőforráscsoportot.
    5. Válassza a **Létrehozás**lehetőséget.
 
-   :::image type="content" source="media/ios-sdk-get-started/image20.png" alt-text="Tulajdonságok beállítása":::
+   :::image type="content" source="media/ios-sdk-get-started/image20.png" alt-text="Kulcstartó-hozzáférés":::
 
 5. Válassza az **értesítések**   (harang ikon) lehetőséget, majd válassza **az Ugrás az erőforráshoz**lehetőséget. A listát a Notification Hubs oldalon is frissítheti **Notification Hubs**   , és kiválaszthatja a hubot.
 
-   :::image type="content" source="media/ios-sdk-get-started/image21.png" alt-text="Portál értesítései":::
+   :::image type="content" source="media/ios-sdk-get-started/image21.png" alt-text="Kulcstartó-hozzáférés":::
 
 6. A listából válassza a **hozzáférési szabályzatok**lehetőséget   . Vegye figyelembe, hogy a két kapcsolódási karakterlánc elérhető az Ön számára. A leküldéses értesítések kezeléséhez később szüksége lesz rájuk.
 
    > [!IMPORTANT]
    > Ne használja az **DefaultFullSharedAccessSignature** szabályzatot az alkalmazásban. Ezt csak a háttérben való használatra szántuk.
 
-   :::image type="content" source="media/ios-sdk-get-started/image22.png" alt-text="Kapcsolati sztringek":::
+   :::image type="content" source="media/ios-sdk-get-started/image22.png" alt-text="Kulcstartó-hozzáférés":::
 
 ## <a name="configure-the-notification-hub-with-apns-information"></a>Az értesítési központ konfigurálása APNS-adatokkal
 
@@ -284,7 +284,7 @@ A **Notification Services**alatt válassza az **Apple (APNS)** lehetőséget, 
 
 5. Válassza a **homokozó**   mód lehetőséget.
 
-   :::image type="content" source="media/ios-sdk-get-started/image23.png" alt-text="Konfigurálás":::
+   :::image type="content" source="media/ios-sdk-get-started/image23.png" alt-text="Kulcstartó-hozzáférés":::
 
 6. Válassza a **Mentés**lehetőséget.
 

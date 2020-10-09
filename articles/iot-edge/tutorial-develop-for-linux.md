@@ -10,10 +10,10 @@ ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
 ms.openlocfilehash: 7ec61bf4db949649c993fad4a3255b55626cb259
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88056227"
 ---
 # <a name="tutorial-develop-iot-edge-modules-for-linux-devices"></a>Oktatóanyag: IoT Edge-modulok fejlesztése linuxos eszközökhöz
@@ -102,7 +102,7 @@ A Visual Studio Code-hoz készült IoT Extensions használatával IoT Edge modul
 
 3. Keressen olyan **Azure IoT-eszközöket**, amelyek tulajdonképpen olyan bővítmények gyűjteményei, amelyek segítséget nyújtanak a IoT hub és a IoT eszközök használatához, valamint IoT Edge modulok fejlesztéséhez.
 
-4. Válassza a **Telepítés** lehetőséget. Az egyes mellékelt bővítmények egyenként települnek.
+4. Válassza a **Telepítés** gombot. Az egyes mellékelt bővítmények egyenként települnek.
 
 5. A bővítmények telepítésének befejezése után nyissa meg a parancssort **View**a  >  **parancs-paletta**megtekintése lehetőség kiválasztásával.
 

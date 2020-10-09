@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 04/30/2020
 ms.custom: devx-track-python
 ms.openlocfilehash: 3a6ce5860704e6fd16b79fc253650dd45ec743e7
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87852616"
 ---
 # <a name="tutorial-convert-ml-experiments-to-production-python-code"></a>Oktatóanyag: ML-kísérletek konvertálása éles Python-kódra
@@ -431,7 +431,7 @@ if __name__ == '__main__':
     main()
 ```
 
-`train.py`Most már meghívható egy terminálról a futtatásával `python train.py` .
+`train.py` Most már meghívható egy terminálról a futtatásával `python train.py` .
 A függvények `train.py` más fájlokból is meghívhatók.
 
 A `train_aml.py` `diabetes_regression/training` MLOpsPython-adattár címtárában található fájl meghívja a `train.py` Azure Machine learning kísérlet környezetében definiált függvényeket. A függvények is meghívhatók az útmutató későbbi részében tárgyalt egység-tesztelésekben.
@@ -493,7 +493,7 @@ def init():
 
 Negyedszer, hozzon létre egység teszteket a Python-függvényekhez. Az egység tesztek védik a kódokat a funkcionális regressziók ellen, és egyszerűbbé teszik a karbantartást. Ebben a szakaszban egység-teszteket hoz létre a függvények számára a alkalmazásban `train.py` .
 
-`train.py`több függvényt tartalmaz, de csak egyetlen egység tesztet hozunk létre a `train_model` függvényhez az oktatóanyag Pytest keretrendszere használatával. A Pytest nem az egyetlen Python-egység tesztelési keretrendszere, de az egyik leggyakrabban használt. További információért látogasson el a [Pytest](https://pytest.org)webhelyre.
+`train.py` több függvényt tartalmaz, de csak egyetlen egység tesztet hozunk létre a `train_model` függvényhez az oktatóanyag Pytest keretrendszere használatával. A Pytest nem az egyetlen Python-egység tesztelési keretrendszere, de az egyik leggyakrabban használt. További információért látogasson el a [Pytest](https://pytest.org)webhelyre.
 
 Az egységek tesztelése általában három fő műveletet tartalmaz:
 
@@ -522,7 +522,7 @@ def test_train_model():
     np.testing.assert_almost_equal(preds, [9.93939393939394, 9.03030303030303])
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy megértette, hogyan alakíthat át kísérletből termelési kódra, tekintse meg a következő hivatkozásokat a további tudnivalókhoz és a következő lépésekhez:
 

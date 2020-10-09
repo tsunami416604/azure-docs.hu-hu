@@ -10,10 +10,10 @@ ms.author: matjazl
 author: matjazl
 ms.date: 04/02/2019
 ms.openlocfilehash: 2e13a9fc32964781dda07e5534e5cab79868ddf0
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87846975"
 ---
 # <a name="tutorial-azure-active-directory-smart-on-fhir-proxy"></a>Oktatóanyag: Azure Active Directory SMART on FHIR proxy
@@ -144,7 +144,7 @@ Figyelje meg, hogy az intelligens on FHIR app Launcher az oldal alján találhat
 
 Vizsgálja meg a jogkivonat válaszát, és tekintse meg, hogy a rendszer hogyan adja át az indítási környezet mezőit az alkalmazásnak.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban konfigurálta a Azure Active Directory SMART on FHIR proxyt. A FHIR készült Azure API-val és az Azure-hoz készült nyílt forráskódú FHIR-kiszolgálóval való intelligens FHIR-alkalmazásokkal kapcsolatos információkért tekintse meg a FHIR Server-minták tárházát a GitHubon:
 

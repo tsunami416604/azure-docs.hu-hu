@@ -7,10 +7,10 @@ ms.date: 04/19/2020
 ms.topic: tutorial
 ms.custom: has-adal-ref, devx-track-python
 ms.openlocfilehash: e12327651165606e6a9b571d410f547a09a8ec8e
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87847924"
 ---
 # <a name="tutorial-create-a-python-runbook"></a>Oktatóanyag: Python-runbook létrehozása
@@ -36,7 +36,7 @@ Az oktatóanyag teljesítéséhez a következőkre lesz szüksége:
 
 ## <a name="create-a-new-runbook"></a>Új runbook létrehozása
 
-Első lépésként hozzon létre egy egyszerű runbook, amely kiírja a *"Helló világ!" alkalmazás*szöveget.
+Első lépésként hozzon létre egy egyszerű runbook, amely kiírja a *„Helló világ!” alkalmazás*szöveget.
 
 1. Az Azure Portalon nyissa meg az Automation-fiókját.
 
@@ -101,7 +101,7 @@ A létrehozott runbook még mindig Piszkozat módban van. Az éles környezetben
 
 9. A forgatókönyv-feladathoz tartozó Streamek panel megnyitásához kattintson **Az összes napló** lehetőségre. Csak `Hello World` a kimeneti adatfolyamban látható. Ez a panel azonban megjeleníthet más streameket egy runbook-feladatokhoz, például a részletes és a hibaüzenetet, ha a runbook ezeket írja.
 
-10. A MyFirstRunbook-Python panelre való visszatéréshez zárjuk be a streamek panelt és a feladatok panelt.
+10. A streamek ablaktábla és a feladatok ablaktábla bezárásával térjen vissza a MyFirstRunbook-Python panelre.
 
 11. Kattintson a **feladatok** lehetőségre a runbook feladatok lapjának megnyitásához. Ezen a lapon a runbook által létrehozott összes feladat szerepel. Egy feladat csak egyszer szerepel a listán, mert csak egyszer futtatta a feladatot.
 
@@ -116,7 +116,7 @@ Ehhez a szkriptnek az Automation-fiókja hitelesítő adataival kell hitelesíte
 > Az Automation-fióknak létre kell hoznia az egyszerű szolgáltatásnév szolgáltatással, hogy egy futtató tanúsítvány legyen.
 > Ha az Automation-fiókja nem az egyszerű szolgáltatással lett létrehozva, akkor a hitelesítés az [Azure felügyeleti kódtárak a Pythonhoz](/azure/python/python-sdk-azure-authenticate)című témakörben leírtak szerint.
 
-1. A MyFirstRunbook-Python panel **Szerkesztés** gombjára kattintva nyissa meg a szöveges szerkesztőt.
+1. A MyFirstRunbook-Python ablaktáblán a **Szerkesztés** gombra kattintva nyissa meg a szöveges szerkesztőt.
 
 2. Adja hozzá a következő kódot az Azure-hitelesítéshez:
 
@@ -242,7 +242,7 @@ except Exception as detail:
 > [!NOTE]
 > A Azure Automation nem támogatja `sys.stderr` .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A PowerShell-runbookok megkezdéséhez tekintse meg [a PowerShell-Runbook létrehozása](automation-tutorial-runbook-textual-powershell.md)című témakört.
 - A grafikus runbookok megkezdéséhez tekintse meg [a grafikus Runbook létrehozását](automation-tutorial-runbook-graphical.md)ismertető témakört.

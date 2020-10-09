@@ -4,10 +4,10 @@ description: Ebben az oktatóanyagban létrehoz egy Resource Graph-lekérdezést
 ms.date: 06/29/2020
 ms.topic: tutorial
 ms.openlocfilehash: f602a6ed26f467f2d3395bdf5e3346c83684b108
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88005170"
 ---
 # <a name="tutorial-create-and-share-an-azure-resource-graph-query-in-the-azure-portal"></a>Oktatóanyag: Azure Resource Graph-lekérdezés létrehozása és megosztása a Azure Portal
@@ -89,7 +89,7 @@ Egy privát lekérdezéstől eltérően a megosztott lekérdezés egy Resource M
 
 1. Kattintson a Save ( **Mentés** ) gombra a **lekérdezés mentése** ablaktábla alján. A lap címe módosul az **1. lekérdezésből** a **virtuális gépek operációs rendszer szerinti megszámlálásához**. Az erőforrás **-gráf-lekérdezések** erőforráscsoport első használatakor a Mentés a vártnál hosszabb időt vesz igénybe, mert az erőforráscsoport létrejön.
    
-   :::image type="content" source="../media/create-share-query/save-shared-query-window.png" alt-text="Az új lekérdezés mentése megosztott lekérdezésként" border="false":::
+   :::image type="content" source="../media/create-share-query/save-shared-query-window.png" alt-text="Az új lekérdezés mentése a Save (Mentés) gomb használatával" border="false":::
 
    > [!NOTE] 
    > Ha meg szeretné adni egy meglévő erőforráscsoport nevét, akkor törölheti a **Közzététel az erőforrás-gráf-lekérdezések erőforráscsoporthoz** jelölőnégyzetet. A lekérdezések alapértelmezett megnevezett erőforráscsoport használatával könnyebben derítheti fel a megosztott lekérdezéseket. Emellett nyilvánvalóvá teszi az erőforráscsoport célját. A meglévő engedélyek alapján azonban dönthet úgy, hogy egy meglévő erőforráscsoportot választ ki biztonsági okokból.
@@ -98,7 +98,7 @@ Egy privát lekérdezéstől eltérően a megosztott lekérdezés egy Resource M
 
 1. Válassza **a lekérdezés megnyitása**lehetőséget. Ellenőrizze, hogy a típus a **megosztott lekérdezésre** van-e beállítva, és hogy az **előfizetés** és az **erőforráscsoport** kombinációja egyezik-e a lekérdezés mentésekor. A mentett **darabszámú virtuális gépek operációsrendszer** -elem alapján most megjelenik a **lekérdezés neve** listában. Válassza ki a mentett lekérdezés cím hivatkozását egy új lapra való betöltéshez a lekérdezés nevével. Megosztott lekérdezésként megjelenít egy ikont a cím melletti lapon, és megoszthatja azt.
 
-   :::image type="content" source="../media/create-share-query/show-saved-shared-query.png" alt-text="A megosztott lekérdezés ikonjának megjelenítése" border="false":::
+   :::image type="content" source="../media/create-share-query/show-saved-shared-query.png" alt-text="Az új lekérdezés mentése a Save (Mentés) gomb használatával" border="false":::
 
    > [!NOTE] 
    > Ha egy mentett lekérdezés meg van nyitva, és a TAB megjeleníti a nevét, a **Save (Mentés** ) gombra kattintva frissítheti az összes végrehajtott módosítást. Új mentett lekérdezés létrehozásához válassza a **Mentés másként** lehetőséget, és folytassa, ha új lekérdezést ment.
@@ -149,7 +149,7 @@ A megosztott lekérdezéseket az alábbi felületeken törölheti:
 - A **lekérdezés megnyitása** lap a Resource Graph Explorerben
 - Erőforráscsoportok lap
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha elkészült az Oktatóanyaggal, törölje a létrehozott privát és megosztott lekérdezéseket, ha már nem szeretné őket.
 

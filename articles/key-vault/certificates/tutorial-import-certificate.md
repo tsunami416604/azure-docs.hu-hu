@@ -12,10 +12,10 @@ ms.custom: mvc, devx-track-azurecli
 ms.date: 04/16/2020
 ms.author: sebansal
 ms.openlocfilehash: ebf687716c8898acffb5e081fbf2f6217fe0f943
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87503123"
 ---
 # <a name="tutorial-import-a-certificate-in-azure-key-vault"></a>Oktatóanyag: tanúsítvány importálása Azure Key Vault
@@ -78,7 +78,7 @@ Ha tanúsítványt szeretne importálni a tárolóba, rendelkeznie kell egy, a l
     - **Tanúsítvány neve**: ExampleCertificate.
     - **Tanúsítványfájl feltöltése**: válassza ki a fájlt a lemezről.
     - **Password** (jelszó): jelszóval védett tanúsítványfájl feltöltésekor itt adja meg a jelszót. Ellenkező esetben hagyja üresen. A tanúsítványfájl sikeres importálása után a Key Vault eltávolítja ezt a jelszót.
-4. Kattintson a **Létrehozás** lehetőségre.
+4. Kattintson a **Létrehozás** elemre.
 
 ![Tanúsítvány tulajdonságai](../media/certificates/tutorial-import-cert/cert-import.png)
 

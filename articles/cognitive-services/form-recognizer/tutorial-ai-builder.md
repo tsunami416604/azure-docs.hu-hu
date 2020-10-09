@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 07/01/2020
 ms.author: pafarley
 ms.openlocfilehash: 981c6f6bb2b0eb597b32ce8e428ef0aa7d19929b
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88003356"
 ---
 # <a name="tutorial-create-a-form-processing-app-with-ai-builder"></a>Oktatóanyag: űrlap-feldolgozó alkalmazás létrehozása AI-szerkesztővel
@@ -43,7 +43,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 1. A bal oldali panelen válassza az **AI Builder**  >  **Build**elemet.
 1. Válassza ki az **űrlap feldolgozására** szolgáló kártyát.
 1. Adja meg a modell nevét.
-1. Válassza a **Létrehozás** lehetőséget.
+1. Kattintson a **Létrehozás** gombra.
 
 ## <a name="upload-and-analyze-documents"></a>Dokumentumok feltöltése és elemzése
 
@@ -124,7 +124,7 @@ Ha bizonyos mezőkhöz rossz eredményeket vagy alacsony megbízhatósági ponts
 
 ## <a name="publish-your-model"></a>A modell közzététele
 
-Ha elégedett a modellel, válassza a **Közzététel** lehetőséget a közzétételhez. A közzététel befejezésekor a rendszer **Közzétett** állapotúként jeleníti meg a modellt, amely innentől kezdve használatba vehető.
+Ha elégedett a modellel, válassza a **Közzététel**  lehetőséget a közzétételhez. A közzététel befejezésekor a rendszer **Közzétett** állapotúként jeleníti meg a modellt, amely innentől kezdve használatba vehető.
 
 > [!div class="mx-imgBorder"]
 > ![dokumentumok hozzáadása lap](./media/tutorial-ai-builder/model-page.png)

@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 07/06/2020
 ms.author: iainfou
 ms.openlocfilehash: 1164d838a45496a075d356995a60beb967cdfcca
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88054340"
 ---
 # <a name="tutorial-configure-secure-ldap-for-an-azure-active-directory-domain-services-managed-domain"></a>Oktatóanyag: biztonságos LDAP konfigurálása Azure Active Directory Domain Services felügyelt tartományhoz
@@ -121,7 +121,7 @@ Ebben az oktatóanyagban létrehozott egy önaláírt tanúsítványt a titkos k
 
 ### <a name="export-a-certificate-for-azure-ad-ds"></a>Tanúsítvány exportálása az Azure AD DS
 
-Ahhoz, hogy az előző lépésben létrehozott digitális tanúsítványt a felügyelt tartományhoz használhassa, exportálja a tanúsítványt a-ba *. *A titkos kulcsot tartalmazó pfx-tanúsítványfájl.
+Ahhoz, hogy az előző lépésben létrehozott digitális tanúsítványt a felügyelt tartományhoz használhassa, exportálja a tanúsítványt a-ba *. * A titkos kulcsot tartalmazó pfx-tanúsítványfájl.
 
 1. A *Futtatás* párbeszédpanel megnyitásához válassza a **Windows**  +  **R** -kulcsok elemet.
 1. Nyissa meg a Microsoft Management Console (MMC) beépülő **modult** a *Futtatás* párbeszédpanelen, majd kattintson **az OK gombra**.
@@ -142,7 +142,7 @@ Ahhoz, hogy az előző lépésben létrehozott digitális tanúsítványt a fel�
 1. A tanúsítvány titkos kulcsát exportálni kell. Ha a titkos kulcs nem szerepel az exportált tanúsítványban, akkor a felügyelt tartomány biztonságos LDAP-engedélyezésének művelete meghiúsul.
 
     A **titkos kulcs exportálása** lapon válassza **az Igen lehetőséget, exportálja a titkos kulcsot**, majd kattintson a **tovább**gombra.
-1. A felügyelt tartományok csak a t támogatják *. *A titkos kulcsot tartalmazó pfx-tanúsítvány fájlformátuma. Ne exportálja a tanúsítványt *. CER* -tanúsítvány fájlformátuma a titkos kulcs nélkül.
+1. A felügyelt tartományok csak a t támogatják *. * A titkos kulcsot tartalmazó pfx-tanúsítvány fájlformátuma. Ne exportálja a tanúsítványt *. CER* -tanúsítvány fájlformátuma a titkos kulcs nélkül.
 
     Az **Exportálás fájlformátuma** lapon válassza a **személyes információcsere – PKCS #12 (. PFX)** az exportált tanúsítvány fájlformátuma. Jelölje be az *összes tanúsítvány belefoglalása a minősítési útvonalon*jelölőnégyzetet, ha lehetséges:
 
@@ -151,7 +151,7 @@ Ahhoz, hogy az előző lépésben létrehozott digitális tanúsítványt a fel�
 1. Mivel ez a tanúsítvány az adatvisszafejtéshez használatos, alaposan meg kell határoznia a hozzáférést. A tanúsítvány használatához jelszó használható. A megfelelő jelszó nélkül nem alkalmazható a tanúsítvány a szolgáltatásra.
 
     A **Biztonság** lapon válassza a **jelszó megadását** a védelméhez *. PFX* -tanúsítványfájl. A titkosítási algoritmusnak *TripleDES-SHA1*értékűnek kell lennie. Adja meg és erősítse meg a jelszót, majd kattintson a **tovább**gombra. Ezt a jelszót a következő szakaszban lehet használni a felügyelt tartomány biztonságos LDAP-szolgáltatásának engedélyezéséhez.
-1. Az **exportálandó fájl** lapon adja meg a fájl nevét és helyét, ahová exportálni szeretné a tanúsítványt, például *C:\Users\accountname\azure-AD-DS.pfx*. Jegyezze fel a jelszavát és helyét *. *A következő lépésekben a pfx-fájlnak ezt az információt kell megadnia.
+1. Az **exportálandó fájl** lapon adja meg a fájl nevét és helyét, ahová exportálni szeretné a tanúsítványt, például *C:\Users\accountname\azure-AD-DS.pfx*. Jegyezze fel a jelszavát és helyét *. * A következő lépésekben a pfx-fájlnak ezt az információt kell megadnia.
 1. Az Áttekintés lapon válassza a **Befejezés** lehetőséget a tanúsítvány exportálásához *. PFX* -tanúsítványfájl. A tanúsítvány sikeres exportálását megerősítő párbeszédpanel jelenik meg.
 1. Hagyja nyitva az MMC-t a következő szakaszban való használatra.
 
@@ -202,7 +202,7 @@ A titkos kulcsot tartalmazó és exportált digitális tanúsítvánnyal, valami
     >
     > Győződjön meg arról, hogy a tanúsítvány megfelelő formátumú. Ha nem, az Azure platform tanúsítvány-ellenőrzési hibákat hoz létre a biztonságos LDAP engedélyezésekor.
 
-1. Adja meg a **visszafejteni kívánt jelszót. **Az előző lépésben beállított pfx-fájl, ha a tanúsítványt exportálták *. PFX* -fájl.
+1. Adja meg a **visszafejteni kívánt jelszót. ** Az előző lépésben beállított pfx-fájl, ha a tanúsítványt exportálták *. PFX* -fájl.
 1. A biztonságos LDAP engedélyezéséhez válassza a **Mentés** lehetőséget.
 
     ![Biztonságos LDAP engedélyezése felügyelt tartományhoz a Azure Portal](./media/tutorial-configure-ldaps/enable-ldaps.png)
@@ -234,7 +234,7 @@ Hozzon létre egy szabályt, amely engedélyezi a bejövő biztonságos LDAP-hoz
     | Protokoll                          | TCP          |
     | Művelet                            | Engedélyezés        |
     | Prioritás                          | 401          |
-    | Name (Név)                              | AllowLDAPS   |
+    | Név                              | AllowLDAPS   |
 
 1. Ha elkészült, kattintson a **Hozzáadás** gombra a szabály mentéséhez és alkalmazásához.
 
@@ -286,7 +286,7 @@ Ha a számítógép helyi gazdagépek fájljához hozzáadott egy DNS-bejegyzés
 
 1. A helyi gépen nyissa meg a *jegyzettömböt* rendszergazdaként
 1. Tallózással keresse meg és nyissa meg a *C:\Windows\System32\drivers\etc\hosts* fájlt.
-1. Törölje a hozzáadott rekordhoz tartozó sort, például:`168.62.205.103    ldaps.aaddscontoso.com`
+1. Törölje a hozzáadott rekordhoz tartozó sort, például: `168.62.205.103    ldaps.aaddscontoso.com`
 
 ## <a name="next-steps"></a>További lépések
 

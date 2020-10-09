@@ -10,10 +10,10 @@ ms.author: cavoeg
 author: caitlinv39
 ms.date: 01/03/2020
 ms.openlocfilehash: 1c64468a2e420734ca51a5b9308bb52e13712c51
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87852922"
 ---
 # <a name="testing-the-fhir-api"></a>A FHIR API tesztelése
@@ -91,7 +91,7 @@ Ha a fenti lépések bármelyike során problémákba ütközött, tekintse át 
 * Az [Azure ad és az Azure API for FHIR](azure-ad-hcapi.md) – ez a dokumentum a Azure Active Directory alapvető alapelveit ismerteti, valamint azt, hogy miként működik együtt a FHIR készült Azure API-val.
 * [Hozzáférési jogkivonat érvényesítése](azure-ad-hcapi-token-validation.md) – ez a útmutató részletesen ismerteti a hozzáférési tokenek érvényesítését és a hozzáférési problémák megoldásához szükséges lépéseket.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Most, hogy sikeresen tud csatlakozni az ügyfélalkalmazáshoz, készen áll a webalkalmazás megírására.
 
 >[!div class="nextstepaction"]

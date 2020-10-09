@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 08/13/2020
 ms.author: victorh
 ms.openlocfilehash: 02332e190def7770fa57977461d57766f3dee13a
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88205578"
 ---
 # <a name="tutorial-create-an-application-gateway-with-path-based-routing-rules-using-the-azure-portal"></a>Oktatóanyag: Application Gateway létrehozása elérésiút-alapú útválasztási szabályokkal a Azure Portal használatával
@@ -62,7 +62,7 @@ Ebben a példában három virtuális gépet hoz létre, amelyek háttér-kiszolg
    - *10.0.1.0/24* – az alhálózati címtartomány esetében.
    - *myAGSubnet* – a második alhálózat neveként.
    - Az alhálózat címtere *10.0.0.0/24*.
-7. Kattintson az **OK** gombra.
+7. Válassza az **OK** lehetőséget.
 
 8. Győződjön meg arról, hogy a **hálózati adapter**területen az alhálózat **myBackendSubnet** van kiválasztva, majd válassza a **Tovább: kezelés**lehetőséget.
 9. A rendszerindítási diagnosztika letiltásához válassza a **ki** lehetőséget.
@@ -208,7 +208,7 @@ Tekintse át a **felülvizsgálat + létrehozás** lapon található beállítá
 
 Ha már nincs rá szükség, törölje az erőforráscsoportot és az összes kapcsolódó erőforrást. Ehhez válassza ki az erőforráscsoportot, majd válassza az **erőforráscsoport törlése**lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Végpontok közötti TLS engedélyezése az Azure-Application Gateway](application-gateway-backend-ssl.md)

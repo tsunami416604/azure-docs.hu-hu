@@ -4,10 +4,10 @@ description: A Media Blueprint-minták leképezésének vezérlése. Mindegyik v
 ms.date: 08/13/2020
 ms.topic: sample
 ms.openlocfilehash: 4101b9030425c22b8806870d467581521870d639
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88208459"
 ---
 # <a name="control-mapping-of-the-media-blueprint-sample"></a>A Media Blueprint minta vezérlőelem-hozzárendelésének vezérlése
@@ -47,7 +47,7 @@ A következő leképezések az **adathordozó** -vezérlőkre vonatkoznak. A job
 
 ### <a name="ac-1-21---separation-of-duties-must-be-enforced-through-appropriate-assignment-of-role"></a>AC-1-21 – a feladatok elkülönítését a szerepkör megfelelő hozzárendelésével kell kikényszeríteni.
 
-- [Előzetes verzió \] : szerepköralapú Access Control (RBAC) használata a Kubernetes-szolgáltatásokban
+- [Előzetes verzió \] : Role-Based Access Control (RBAC) használata a Kubernetes-szolgáltatásokban
 
 ### <a name="ac-140--ensure-that-systems-are-not-connecting-trusted-network-and-untrusted-networks-at-the-same-time"></a>AC-1,40 – győződjön meg arról, hogy a rendszerek nem kapcsolódnak egyszerre a megbízható hálózatokhoz és a nem megbízható hálózatokhoz.
 
@@ -63,7 +63,7 @@ A következő leképezések az **adathordozó** -vezérlőkre vonatkoznak. A job
 
 ### <a name="ac-154--ensure-multi-factor-authentication-mfa-is-enabled-for-all-cloud-console-users"></a>AC-1,54 – győződjön meg arról, hogy a többtényezős hitelesítés (MFA) engedélyezve van a felhőalapú konzol összes felhasználója számára.
 
-- Az MFA-nak engedélyezve kell lennie az előfizetéséhez tartozó írási engedélyekkel rendelkező fiókoknak
+- Az MFA-t engedélyezni kell az előfizetés minden írási engedéllyel rendelkező fiókjában
 - A fiókok vagy erőforrások megszegésének megelőzése érdekében minden írási jogosultsággal rendelkező előfizetési fiók esetében engedélyezni kell a Multi-Factor Authentication (MFA) használatát.
 
 ## <a name="auditing--logging"></a>Naplózási & naplózása
@@ -231,7 +231,7 @@ A következő leképezések az **adathordozó** -vezérlőkre vonatkoznak. A job
 > [!NOTE]
 > Az adott Azure Policy-definíciók rendelkezésre állása Azure Government és más nemzeti felhőkben is változhat. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Áttekintette a Media Blueprint-minta vezérlési leképezését. A következő cikkekben megismerheti az áttekintést és a minta üzembe helyezésének módját:
 

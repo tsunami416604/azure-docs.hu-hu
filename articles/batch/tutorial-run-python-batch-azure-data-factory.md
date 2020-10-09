@@ -8,10 +8,10 @@ ms.date: 08/12/2020
 ms.author: komammas
 ms.custom: mvc, devx-track-python
 ms.openlocfilehash: f4c71cffe00faa6dd8cc440c59f94b8c2d60f712
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88185111"
 ---
 # <a name="tutorial-run-python-scripts-through-azure-data-factory-using-azure-batch"></a>Oktatóanyag: Python-parancsfájlok futtatása Azure Data Factory használatával Azure Batch
@@ -58,7 +58,7 @@ Ebben a szakaszban a Batch Explorer használatával hozza létre az Azure-beli a
     1. Az **adatelemzés**területen válassza a **Windows Dsvm** operációs rendszerként lehetőséget.
     1. Válassza ki `Standard_f2s_v2` a virtuális gép méretét.
     1. Engedélyezze az indítási feladatot, és adja hozzá a parancsot `cmd /c "pip install pandas"` . A felhasználói identitás az alapértelmezett **készlet felhasználója**maradhat.
-    1. Kattintson az **OK** gombra.
+    1. Válassza az **OK** lehetőséget.
 
 ## <a name="create-blob-containers"></a>BLOB-tárolók létrehozása
 
@@ -146,7 +146,7 @@ Ha a parancsfájl végrehajtásával figyelmeztetéseket vagy hibákat állít e
 1. Kattintson arra a feladatra, amelynél hiba történt a kilépési kóddal.
 1. Megtekintheti `stdout.txt` és `stderr.txt` diagnosztizálhatja a problémát.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez az oktatóanyag egy példát mutat be, amely azt tanította, hogyan futtathat Python-parancsfájlokat egy folyamat részeként a Azure Batch használatával Azure Data Factory.
 

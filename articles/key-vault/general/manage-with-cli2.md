@@ -11,10 +11,10 @@ ms.date: 08/12/2019
 ms.author: mbaldwin
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: dc60d2b6cef8ad19526c5ec243ae1c43529954a6
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87504534"
 ---
 # <a name="manage-key-vault-using-the-azure-cli"></a>Key Vault kezelése az Azure CLI használatával 
@@ -44,10 +44,10 @@ A Azure Key Vault áttekintése: [Mi az a Azure Key Vault?](overview.md)) Ha nem
 A cikkben szereplő Azure CLI-parancsok használatához a következő elemek szükségesek:
 
 * Egy Microsoft Azure-előfizetésre. Ha még nincs fiókja, regisztráljon egy [ingyenes próbaverzióra](https://azure.microsoft.com/pricing/free-trial).
-* Az Azure parancssori felületének 2,0-es vagy újabb verziója. A legújabb verzió telepítéséhez tekintse meg [Az Azure CLI telepítését](/cli/azure/install-azure-cli)ismertető témakört.
+* Az Azure Command-Line felületének 2,0-es vagy újabb verziója. A legújabb verzió telepítéséhez tekintse meg [Az Azure CLI telepítését](/cli/azure/install-azure-cli)ismertető témakört.
 * Egy alkalmazás, amely a cikkben létrehozott kulcs vagy jelszó használatára lesz konfigurálva. Egy mintaalkalmazás elérhető a [Microsoft letöltőközpontból](https://www.microsoft.com/download/details.aspx?id=45343). Útmutatásért tekintse meg a mellékelt Readme fájlt.
 
-### <a name="getting-help-with-azure-cross-platform-command-line-interface"></a>Segítség az Azure platformfüggetlen parancssori felületének használatáról
+### <a name="getting-help-with-azure-cross-platform-command-line-interface"></a>Segítség az Azure platformfüggetlen Command-Line felületének használatában
 
 Ez a cikk azt feltételezi, hogy már ismeri a parancssori felületet (bash, Terminal, parancssor).
 
@@ -58,7 +58,7 @@ az account set --help
 az account set -h
 ```
 
-A következő cikkekben megismerheti az Azure platformfüggetlen parancssori felületének Azure Resource Manager megismerését:
+A következő cikkekben megismerheti az Azure platformfüggetlen Command-Line felületének Azure Resource Manager megismerését:
 
 * [Telepítse az Azure CLI-t](/cli/azure/install-azure-cli)
 * [Az Azure CLI használatának első lépései](/cli/azure/get-started-with-azure-cli)
@@ -92,7 +92,7 @@ Előfizetés-paraméterrel rendelkező előfizetést kell megadni.
 az account set --subscription <subscription name or ID>
 ```
 
-Az Azure többplatformos parancssori felületének konfigurálásával kapcsolatos további információkért lásd: az [Azure CLI telepítése](/cli/azure/install-azure-cli).
+Az Azure platformfüggetlen Command-Line felületének konfigurálásával kapcsolatos további információkért lásd: az [Azure CLI telepítése](/cli/azure/install-azure-cli).
 
 ### <a name="create-a-new-resource-group"></a>Új erőforráscsoport létrehozása
 
@@ -219,7 +219,7 @@ Ha ugyanazt az alkalmazást szeretné engedélyezni a tárolóban található ti
 az keyvault set-policy --name "ContosoKeyVault" --spn 8f8c4bbd-485b-45fd-98f7-ec6300b7b4ed --secret-permissions get
 ```
 
-## <a name="setting-key-vault-advanced-access-policies"></a><a name="bkmk_KVperCLI"></a>A Key Vault speciális hozzáférési házirendjeinek beállítása
+## <a name="setting-key-vault-advanced-access-policies"></a><a name="bkmk_KVperCLI"></a> A Key Vault speciális hozzáférési házirendjeinek beállítása
 
 A Key Vault speciális házirendjeinek engedélyezéséhez használja az [az kulcstartó Update](/cli/azure/keyvault#az-keyvault-update) lehetőséget.
 
@@ -271,7 +271,7 @@ A következő parancs importálja a "saját kulcs használata" (BYOK) csomagot. 
 az keyvault key import --vault-name "ContosoKeyVaultHSM" --name "ContosoFirstHSMKey" --byok-file "./ITByok.byok" --protection "hsm"
 ```
 
-A BYOK-csomag létrehozásával kapcsolatos részletes utasításokért lásd: [a HSM-védelemmel ellátott kulcsok használata a Azure Key Vault használatával](../keys/hsm-protected-keys.md).
+A BYOK-csomag létrehozásával kapcsolatos részletes utasításokért lásd: [HSM-Protected kulcsok használata Azure Key Vault használatával](../keys/hsm-protected-keys.md).
 
 ## <a name="deleting-the-key-vault-and-associated-keys-and-secrets"></a>A Key Vault és a hozzá tartozó kulcsok és titkos kódok törlése
 
@@ -327,4 +327,4 @@ az keyvault secret delete --vault-name "ContosoKeyVault" --name "SQLPassword"
 
 - Programozási referenciák: [Azure Key Vault fejlesztői útmutató](developers-guide.md)
 
-- Azure Key Vault-és HSM kapcsolatos információkért lásd: a [HSM-védelemmel ellátott kulcsok használata a Azure Key Vault](../keys/hsm-protected-keys.md).
+- A Azure Key Vault-és HSM kapcsolatos információkért lásd: [HSM-Protected kulcsok használata Azure Key Vault használatával](../keys/hsm-protected-keys.md).
