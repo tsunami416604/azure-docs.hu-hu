@@ -6,10 +6,10 @@ ms.date: 12/09/2019
 ms.topic: tutorial
 ms.author: jgao
 ms.openlocfilehash: 6a56602ad5217af07d9e35872a26ddb478146d0e
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86101885"
 ---
 # <a name="tutorial-import-sql-bacpac-files-with-arm-templates"></a>Oktatóanyag: SQL BACPAC-fájlok importálása ARM-sablonokkal
@@ -259,4 +259,4 @@ Ha már nincs szükség az Azure-erőforrásokra, törölje az üzembe helyezett
 Ebben az oktatóanyagban üzembe helyezett egy kiszolgálót és egy adatbázist, és importált egy BACPAC-fájlt. A sablonok telepítésével kapcsolatos hibák megismeréséhez lásd:
 
 > [!div class="nextstepaction"]
-> [ARM-sablonok központi telepítésének hibakeresése](./template-tutorial-troubleshoot.md)
+> [ARM-sablonalapú üzembe helyezések hibaelhárítása](./template-tutorial-troubleshoot.md)

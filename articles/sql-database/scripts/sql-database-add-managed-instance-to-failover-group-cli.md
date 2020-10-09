@@ -12,10 +12,10 @@ ms.author: mathoma
 ms.reviewer: carlrab
 ms.date: 07/16/2019
 ms.openlocfilehash: f196db537ef0a64d14930ed6bc67696ee4614c23
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86528903"
 ---
 # <a name="use-cli-to-add-an-azure-sql-managed-instance-to-a-failover-group"></a>Azure SQL felügyelt példány hozzáadása feladatátvételi csoporthoz a CLI használatával
@@ -57,7 +57,7 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 | [az Network vnet-Gateway](/cli/azure/network/vnet-gateway) | Virtual Network átjáró parancsai. |
 | [az SQL instance-feladatátvétel-Group](/cli/azure/sql/instance-failover-group) | SQL felügyelt példány feladatátvételi csoportjának parancsai. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](/cli/azure).
 

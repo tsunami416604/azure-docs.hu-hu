@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 04/14/2020
 ms.openlocfilehash: a19e2c6647f1ff072c61044e8e5777d5d3f8d2db
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85958361"
 ---
 # <a name="tutorial-use-apache-hbase-in-azure-hdinsight"></a>Oktatóanyag: az Apache HBase használata az Azure HDInsight
@@ -310,11 +310,11 @@ Az inkonzisztenciák elkerülése érdekében javasoljuk, hogy a fürt törlése
 1. A felső **keresőmezőbe** írja be a **HDInsight**kifejezést.
 1. Válassza ki a **HDInsight-fürtök** elemet a **szolgáltatások**területen.
 1. A megjelenő HDInsight-fürtök listájában kattintson a **...** elemre az oktatóanyaghoz létrehozott fürt mellett.
-1. Kattintson a **Törlés** gombra. Kattintson az **Igen**gombra.
+1. Kattintson a **Törlés** gombra. Kattintson a **Yes** (Igen) gombra.
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban megtanulta, hogyan hozhat létre Apache HBase-fürtöt. És hogyan hozhat létre táblákat, és hogyan tekintheti meg a táblák adatait a HBase-rendszerhéjból. Azt is megtanulta, hogyan használható struktúra-lekérdezés a HBase-táblákban található információkhoz. És hogyan használható a HBase C# REST API-k egy HBase tábla létrehozásához és adatok lekérdezéséhez a táblából. További tudnivalókért lásd:
+Ebben az oktatóanyagban megtanulta, hogyan hozhat létre Apache HBase-fürtöt. És hogyan hozhat létre táblákat, és hogyan tekintheti meg a táblák adatait a HBase-rendszerhéjból. Azt is megtanulta, hogyan használható struktúra-lekérdezés a HBase-táblákban található információkhoz. És hogyan használható a HBase C# REST API-k egy HBase tábla létrehozásához és adatok lekérdezéséhez a táblából. További információ:
 
 > [!div class="nextstepaction"]
 > [A HDInsight HBase áttekintése](./apache-hbase-overview.md)

@@ -8,10 +8,10 @@ ms.date: 11/05/2019
 ms.author: dech
 ms.reviewer: sngun
 ms.openlocfilehash: 9b2ef5ddb56e3d0422a2a876993ddda0bd97e4ff
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85961098"
 ---
 # <a name="tutorial-create-a-notebook-in-azure-cosmos-db-to-analyze-and-visualize-the-data"></a>Oktatóanyag: jegyzetfüzet létrehozása Azure Cosmos DBban az adat elemzéséhez és megjelenítéséhez
@@ -30,11 +30,11 @@ Ebben a szakaszban létrehozza az Azure Cosmos-adatbázist, a tárolót, és imp
 
 1. Lépjen a **jegyzetfüzetek** lapra, válassza a `…` **saját jegyzetfüzetek** lehetőséget, majd hozzon létre egy **új jegyzetfüzetet**. Az alapértelmezett Kernelként válassza a **Python 3** elemet.
 
-   :::image type="content" source="./media/create-notebook-visualize-data/create-new-notebook.png" alt-text="Új jegyzetfüzet létrehozása":::
+   :::image type="content" source="./media/create-notebook-visualize-data/create-new-notebook.png" alt-text="Új jegyzetfüzet létrehozása&quot;:::
 
 1. Egy új jegyzetfüzet létrehozása után átnevezheti a **VisualizeRetailData. ipynb** -hoz hasonló módon.
 
-1. Ezután létre fog hozni egy "RetailDemo" nevű adatbázist és egy "WebsiteData" nevű tárolót a kiskereskedelmi adattároláshoz. A/CartID-t használhatja partíciós kulcsként. Másolja és illessze be a következő kódot egy új cellába a jegyzetfüzetben, majd futtassa azt:
+1. Ezután létre fog hozni egy &quot;RetailDemo&quot; nevű adatbázist és egy &quot;WebsiteData" nevű tárolót a kiskereskedelmi adattároláshoz. A/CartID-t használhatja partíciós kulcsként. Másolja és illessze be a következő kódot egy új cellába a jegyzetfüzetben, majd futtassa azt:
 
    ```python
    import azure.cosmos
@@ -49,7 +49,11 @@ Ebben a szakaszban létrehozza az Azure Cosmos-adatbázist, a tárolót, és imp
 
    Cella futtatásához válassza ki `Shift + Enter` vagy válassza ki a cellát, majd válassza az **aktív cella futtatása** lehetőséget az adatkezelő navigációs sávján.
 
-   :::image type="content" source="./media/create-notebook-visualize-data/run-active-cell.png" alt-text="Az aktív cella futtatása":::
+   :::image type="content" source="./media/create-notebook-visualize-data/run-active-cell.png" alt-text="Új jegyzetfüzet létrehozása&quot;:::
+
+1. Egy új jegyzetfüzet létrehozása után átnevezheti a **VisualizeRetailData. ipynb** -hoz hasonló módon.
+
+1. Ezután létre fog hozni egy &quot;RetailDemo&quot; nevű adatbázist és egy &quot;WebsiteData":::
 
    Az adatbázis és a tároló a jelenlegi Azure Cosmos-fiókban jön létre. A tároló 400 RU/s-vel van kiépítve. Az adatbázis és a tároló létrehozása után a következő kimenet jelenik meg. 
 
@@ -60,23 +64,11 @@ Ebben a szakaszban létrehozza az Azure Cosmos-adatbázist, a tárolót, és imp
 
    Emellett frissítheti az **adatlapot,** és megtekintheti az újonnan létrehozott erőforrásokat:
 
-   :::image type="content" source="media/create-notebook-visualize-data/refresh-data-tab.png" alt-text="Az új tároló megjelenítéséhez frissítse az adatlapot":::
+   :::image type="content" source="media/create-notebook-visualize-data/refresh-data-tab.png" alt-text="Új jegyzetfüzet létrehozása&quot;:::
 
-1. A következő lépésként importálni fogja a minta kiskereskedelmi adattárat az Azure Cosmos-tárolóba. Itt látható a kiskereskedelmi adatokból származó elem formátuma:
+1. Egy új jegyzetfüzet létrehozása után átnevezheti a **VisualizeRetailData. ipynb** -hoz hasonló módon.
 
-   ```json
-    {
-       "CartID":5399,
-       "Action":"Viewed",
-       "Item":"Cosmos T-shirt",
-       "Price":350,
-       "UserName":"Demo.User10",
-       "Country":"Iceland",
-       "EventDate":"2015-06-25T00:00:00",
-       "Year":2015,"Latitude":-66.8673,
-       "Longitude":-29.8214,
-       "Address":"852 Modesto Loop, Port Ola, Iceland",
-       "id":"00ffd39c-7e98-4451-9b91-b2bcf2f9a32d"
+1. Ezután létre fog hozni egy &quot;RetailDemo&quot; nevű adatbázist és egy &quot;WebsiteData"
     }
    ```
 
@@ -135,7 +127,11 @@ Egy új jegyzetfüzet-cellában futtassa a következő kódot a kimenet első 10
 df_cosmos.head(10)
 ```
 
-:::image type="content" source="./media/create-notebook-visualize-data/run-query-get-top10-items.png" alt-text="Lekérdezés futtatása az első 10 elem lekéréséhez":::
+:::image type="content" source="./media/create-notebook-visualize-data/run-query-get-top10-items.png" alt-text="Új jegyzetfüzet létrehozása&quot;:::
+
+1. Egy új jegyzetfüzet létrehozása után átnevezheti a **VisualizeRetailData. ipynb** -hoz hasonló módon.
+
+1. Ezután létre fog hozni egy &quot;RetailDemo&quot; nevű adatbázist és egy &quot;WebsiteData":::
 
 ## <a name="run-queries-and-analyze-your-data"></a>Lekérdezések futtatása és az adataik elemzése
 
@@ -148,7 +144,11 @@ Ebben a szakaszban néhány lekérdezést fog futtatni a beolvasott adatforrásr
    display(df_revenue.head(5))
    ```
 
-   :::image type="content" source="./media/create-notebook-visualize-data/total-sales-revenue-output.png" alt-text="Értékesítési bevétel teljes kimenete":::
+   :::image type="content" source="./media/create-notebook-visualize-data/total-sales-revenue-output.png" alt-text="Új jegyzetfüzet létrehozása&quot;:::
+
+1. Egy új jegyzetfüzet létrehozása után átnevezheti a **VisualizeRetailData. ipynb** -hoz hasonló módon.
+
+1. Ezután létre fog hozni egy &quot;RetailDemo&quot; nevű adatbázist és egy &quot;WebsiteData":::
 
 * **Query2:** Az öt legfontosabb megvásárolt elem listájának lekéréséhez nyisson meg egy új jegyzetfüzet-cellát, és futtassa a következő kódot:
 
@@ -159,7 +159,11 @@ Ebben a szakaszban néhány lekérdezést fog futtatni a beolvasott adatforrásr
    pd.DataFrame(df_cosmos[df_cosmos['Action']=='Purchased'].groupby('Item').size().sort_values(ascending=False).head(5), columns=['Count'])
    ```
 
-   :::image type="content" source="./media/create-notebook-visualize-data/top5-purchased-items.png" alt-text="Az öt legfontosabb megvásárolt elem":::
+   :::image type="content" source="./media/create-notebook-visualize-data/top5-purchased-items.png" alt-text="Új jegyzetfüzet létrehozása&quot;:::
+
+1. Egy új jegyzetfüzet létrehozása után átnevezheti a **VisualizeRetailData. ipynb** -hoz hasonló módon.
+
+1. Ezután létre fog hozni egy &quot;RetailDemo&quot; nevű adatbázist és egy &quot;WebsiteData":::
 
 ## <a name="visualize-your-data"></a>Adatok vizualizációja  
 
@@ -235,7 +239,11 @@ Ebben a szakaszban néhány lekérdezést fog futtatni a beolvasott adatforrásr
 
    A kimenet a világ térképét jeleníti meg különböző színekkel. A világosabb színek a legalacsonyabb bevételsel rendelkező országokat és régiókat jelölik.
 
-   :::image type="content" source="./media/create-notebook-visualize-data/countries-revenue-map-visualization.png" alt-text="Országok/régiók bevételi Térkép vizualizációja":::
+   :::image type="content" source="./media/create-notebook-visualize-data/countries-revenue-map-visualization.png" alt-text="Új jegyzetfüzet létrehozása&quot;:::
+
+1. Egy új jegyzetfüzet létrehozása után átnevezheti a **VisualizeRetailData. ipynb** -hoz hasonló módon.
+
+1. Ezután létre fog hozni egy &quot;RetailDemo&quot; nevű adatbázist és egy &quot;WebsiteData":::
 
 1. Lássuk egy másik esetet az adatvizualizációhoz. A WebsiteData-tároló olyan felhasználókat tartalmaz, akik megtekintett egy tételt, hozzáadták őket a kosárhoz, és megvásárolták az adott tételt. Nézzük meg a megvásárolt elemek konverziós arányát. Futtassa az alábbi kódot egy új cellában az egyes elemek konverziós arányának megjelenítéséhez:
 
@@ -286,7 +294,11 @@ Ebben a szakaszban néhány lekérdezést fog futtatni a beolvasott adatforrásr
    show(p)
    ```
 
-   :::image type="content" source="./media/create-notebook-visualize-data/visualize-purchase-conversion-rate.png" alt-text="Vásárlási konverziós arány megjelenítése":::
+   :::image type="content" source="./media/create-notebook-visualize-data/visualize-purchase-conversion-rate.png" alt-text="Új jegyzetfüzet létrehozása&quot;:::
+
+1. Egy új jegyzetfüzet létrehozása után átnevezheti a **VisualizeRetailData. ipynb** -hoz hasonló módon.
+
+1. Ezután létre fog hozni egy &quot;RetailDemo&quot; nevű adatbázist és egy &quot;WebsiteData":::
 
 ## <a name="next-steps"></a>További lépések
 

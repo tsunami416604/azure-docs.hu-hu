@@ -14,10 +14,10 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 91a92f9dd0eaf55b8ba35f38102ee30b8cda4bfa
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87053821"
 ---
 # <a name="tutorial-use-rest-api-to-create-an-azure-data-factory-pipeline-to-copy-data"></a>Oktatóanyag: REST API használata adatmásoló Azure Data Factory-folyamat létrehozásához 
@@ -519,7 +519,7 @@ Futtassa addig az Invoke-Command parancsot, illetve a következő parancsot, am�
 
 Az egyes szeletek esetében a forrásfájl két sorát másolja a rendszer a Azure SQL Database EMP táblájába. Ezért az összes szelet sikeres feldolgozását követően (azaz amikor az összes szelet Kész állapotban van) 24 új bejegyzésnek kell szerepelnie az emp táblában. 
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 Ebben az oktatóanyagban egy Azure-beli adatfeldolgozó létrehozásához REST APIt használt, amely az adatok Azure-blobból Azure SQL Databaseba való másolását használta. Az oktatóanyag során a következő főbb lépéseket végezte el:  
 
 1. Létrehozott egy Azure **data factoryt**.

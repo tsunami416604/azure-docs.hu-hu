@@ -8,10 +8,10 @@ ms.subservice: cosmosdb-sql
 ms.topic: sample
 ms.date: 07/29/2020
 ms.openlocfilehash: 4d404b1530e58788e5a34eb552d810c1ee40579a
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87432268"
 ---
 # <a name="add-regions-change-failover-priority-trigger-failover-for-an-azure-cosmos-account-using-azure-cli"></a>Régiók hozzáadása, feladatátvételi prioritás módosítása, feladatátvétel indítása Azure Cosmos-fiókhoz az Azure CLI használatával
@@ -56,7 +56,7 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 | [az cosmosdb feladatátvétel – prioritás – módosítás](/cli/azure/cosmosdb#az-cosmosdb-failover-priority-change) | Frissítse a feladatátvételi prioritást, vagy indítsa el a feladatátvételt egy Azure Cosmos DB fiókon. |
 | [az group delete](/cli/azure/resource#az-resource-delete) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A Azure Cosmos DB CLI-vel kapcsolatos további információkért lásd: [Azure Cosmos db parancssori felület dokumentációja](/cli/azure/cosmosdb).
 

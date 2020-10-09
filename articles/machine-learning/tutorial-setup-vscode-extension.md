@@ -10,10 +10,10 @@ author: luisquintanilla
 ms.author: luquinta
 ms.date: 07/09/2020
 ms.openlocfilehash: 48fb2ce3672634af202500ccb256e7730933fff8
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86199755"
 ---
 # <a name="set-up-azure-machine-learning-visual-studio-code-extension-preview"></a>A Visual Studio Code bővítmény Azure Machine Learning beállítása (előzetes verzió)
@@ -38,7 +38,7 @@ Eben az oktatóanyagban az alábbi feladatokkal fog megismerkedni:
 1. Nyissa meg a Visual Studio Code-ot.
 1. Válassza a **bővítmények** ikont a **tevékenység sávján** a bővítmények nézet megnyitásához.
 1. A bővítmények nézetben keressen rá a "Azure Machine Learning" kifejezésre.
-1. Válassza a **Telepítés** lehetőséget.
+1. Válassza a **Telepítés** gombot.
 
     > [!div class="mx-imgBorder"]
     > ![A Azure Machine Learning VS Code bővítmény telepítése](./media/tutorial-setup-vscode-extension/install-aml-vscode-extension.PNG)
@@ -140,6 +140,6 @@ A kísérlet futtatása után a kimenet egy betanított modell. A kimenetek hely
 1. A rendszer helyileg tölti le a Futtatás nevét tartalmazó mappát. Keresse meg.
 1. A modell fájljai a könyvtárban vannak `outputs/outputs/model` .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Oktatóanyag: lemezkép besorolása TensorFlow-modell betanítása és üzembe helyezése a Visual Studio Code Azure Machine learning használatával](tutorial-train-deploy-image-classification-model-vscode.md).

@@ -8,10 +8,10 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: sample
 ms.date: 7/29/2020
 ms.openlocfilehash: 0f11d022567a5e221a306cd7c34f31cae0ef48aa
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87433672"
 ---
 # <a name="create-an-azure-cosmos-cassandra-api-account-keyspace-and-table-with-autoscale-using-azure-cli"></a>Azure Cosmos Cassandra API-fiók,-térköz és-táblázat létrehozása az Azure CLI-vel történő autoskálázással
@@ -44,7 +44,7 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 | [az cosmosdb Cassandra Table Create](/cli/azure/cosmosdb/cassandra/table#az-cosmosdb-cassandra-table-create) | Létrehoz egy Azure Cosmos Cassandra-táblázatot. |
 | [az group delete](/cli/azure/resource#az-resource-delete) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A Azure Cosmos DB CLI-vel kapcsolatos további információkért lásd: [Azure Cosmos db parancssori felület dokumentációja](/cli/azure/cosmosdb).
 

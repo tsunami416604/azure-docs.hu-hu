@@ -10,10 +10,10 @@ ms.reviewer: estfan, LADocs
 ms.topic: tutorial
 ms.date: 07/20/2020
 ms.openlocfilehash: 7af555a634f0e362bdf2d530627a782843105bdf
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87461272"
 ---
 # <a name="tutorial-monitor-virtual-machine-changes-by-using-azure-event-grid-and-logic-apps"></a>Oktatóanyag: Virtuális gépek módosításainak monitorozása az Azure Event Grid és a Logic Apps használatával
@@ -190,7 +190,7 @@ Most adjon hozzá egy [*műveletet*](../logic-apps/logic-apps-overview.md#logic-
 
 1. Ha még nem csatlakozik e-mail-szolgáltatóhoz, jelentkezzen be e-mail-fiókjába, amikor a rendszer a hitelesítő adatok megadását kéri.
 
-1. Nevezze át az e-mail küldése műveletet erre a címre:`Send email when virtual machine updated`
+1. Nevezze át az e-mail küldése műveletet erre a címre: `Send email when virtual machine updated`
 
 1. Adja meg az e-mailre vonatkozó információkat az alábbi táblázatban megadott módon:
 
@@ -201,9 +201,9 @@ Most adjon hozzá egy [*műveletet*](../logic-apps/logic-apps-overview.md#logic-
 
    | Tulajdonság | Kötelező | Érték | Leírás |
    | -------- | -------- | ----- | ----------- |
-   | **Hogy** | Igen | <*címzett \@ tartománya*> | Adja meg a címzett e-mail-címét. Tesztelési célokra használhatja a saját e-mail-címét. |
+   | **Művelet** | Igen | <*címzett \@ tartománya*> | Adja meg a címzett e-mail-címét. Tesztelési célokra használhatja a saját e-mail-címét. |
    | **Tárgy** | Igen | `Resource updated:` **Tárgy** | Adja meg az e-mail tárgymezőjének tartalmát. Ebben az oktatóanyagban adja meg a megadott szöveget, majd válassza ki az esemény **Tárgy** mezőjét. Itt az e-mail tárgya a frissített erőforrás (virtuális gép) nevét tartalmazza. |
-   | **Törzs** | Igen | `Resource:` **Témakör** <p>`Event type:`**Esemény típusa**<p>`Event ID:` **ID**<p>`Time:`**Esemény időpontja** | Adja meg az e-mail törzsének tartalmát. Ebben az oktatóanyagban adja meg a megadott szöveget, és válassza ki az esemény **témakörét**, az **eseménytípus**, az **azonosító**és az **esemény időpontja** mezőket, hogy az e-mail-cím tartalmazza az eseményt, az esemény típusát, az esemény időbélyegét és az esemény azonosítóját a frissítéshez. Ebben az oktatóanyagban az erőforrás az a triggerben kiválasztott Azure-erőforráscsoport. <p>Ha üres sorokat kíván beszúrni a tartalomba, nyomja le a Shift + Enter billentyűkombinációt. |
+   | **Törzs** | Igen | `Resource:` **Témakör** <p>`Event type:` **Eseménytípus**<p>`Event ID:` **ID (Azonosító)**<p>`Time:`**Esemény időpontja** | Adja meg az e-mail törzsének tartalmát. Ebben az oktatóanyagban adja meg a megadott szöveget, és válassza ki az esemény **témakörét**, az **eseménytípus**, az **azonosító**és az **esemény időpontja** mezőket, hogy az e-mail-cím tartalmazza az eseményt, az esemény típusát, az esemény időbélyegét és az esemény azonosítóját a frissítéshez. Ebben az oktatóanyagban az erőforrás az a triggerben kiválasztott Azure-erőforráscsoport. <p>Ha üres sorokat kíván beszúrni a tartalomba, nyomja le a Shift + Enter billentyűkombinációt. |
    ||||
 
    > [!NOTE]

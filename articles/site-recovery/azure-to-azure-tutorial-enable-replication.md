@@ -6,10 +6,10 @@ ms.date: 1/24/2020
 ms.author: raynew
 ms.custom: mvc
 ms.openlocfilehash: 50bf1ec7f21ccbc3a3fa8feaea02e45bd08a158a
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87421416"
 ---
 # <a name="set-up-disaster-recovery-for-azure-vms"></a>Vész-helyreállítás beállítása Azure-beli virtuális gépekhez
@@ -66,7 +66,7 @@ Ahhoz, hogy a Site Recovery a várt módon működjön, módosítania kell a kim
 
 Ha URL-alapú tűzfal-proxyt használ a kimenő kapcsolatok vezérléséhez, engedélyezze az alábbi URL-címek elérését:
 
-| **Név**                  | **Kereskedelmi**                               | **Government**                                 | **Leírás** |
+| **Név**                  | **Kereskedelmi**                               | **Államigazgatás**                                 | **Leírás** |
 | ------------------------- | -------------------------------------------- | ---------------------------------------------- | ----------- |
 | Storage                   | `*.blob.core.windows.net`                  | `*.blob.core.usgovcloudapi.net`              | Lehetővé teszi az adatok írását a virtuális gépről a forrásrégió gyorsítótárjának tárfiókjába. |
 | Azure Active Directory    | `login.microsoftonline.com`                | `login.microsoftonline.us`                   | Hitelesítést és engedélyezést biztosít a Site Recovery szolgáltatás URL-címeihez. |
@@ -75,7 +75,7 @@ Ha URL-alapú tűzfal-proxyt használ a kimenő kapcsolatok vezérléséhez, eng
 
 ### <a name="outbound-connectivity-for-ip-address-ranges"></a>Kimenő kapcsolat az IP-címtartományokhoz
 
-Ha hálózati biztonsági csoportot (NSG) használ, hozzon létre az Azure Storage-hoz, Azure Active Directoryhoz, Site Recovery szolgáltatáshoz és Site Recovery figyeléshez való hozzáféréshez használható, szolgáltatás-címkézési szabályokat. [További információ](azure-to-azure-about-networking.md#outbound-connectivity-using-service-tags).
+Ha hálózati biztonsági csoportot (NSG) használ, hozzon létre az Azure Storage-hoz, Azure Active Directoryhoz, Site Recovery szolgáltatáshoz és Site Recovery figyeléshez való hozzáféréshez használható, szolgáltatás-címkézési szabályokat. [További információk](azure-to-azure-about-networking.md#outbound-connectivity-using-service-tags).
 
 ## <a name="verify-azure-vm-certificates"></a>Azure-beli virtuális gép tanúsítványainak ellenőrzése
 
@@ -137,7 +137,7 @@ A Site Recovery létrehozza a célrégióra vonatkozó alapértelmezett beállí
    | **Célhely** | A vész-helyreállításhoz használt cél régió.<br/><br/> Javasoljuk, hogy a célhely és a Site Recovery-tároló helye ugyanaz legyen. |
    | **Cél erőforráscsoport** | Az Azure-beli virtuális gépeket a feladatátvételt követően tároló erőforráscsoport.<br/><br/> Alapértelmezés szerint a Site Recovery egy új erőforráscsoportot hoz létre a célként megadott régióban `asr` utótaggal. A cél erőforráscsoport helye bármely régió lehet, kivéve azt a régiót, amelyben a forrásként szolgáló virtuális gépek futnak. |
    | **Célként megadott virtuális hálózat** | A célként megadott régióban található, a virtuális gépeket a feladatátvételt követően tároló hálózat.<br/><br/> Alapértelmezés szerint a Site Recovery egy új virtuális hálózatot (és alhálózatokat) hoz létre a célként megadott régióban `asr` utótaggal. |
-   | **Gyorsítótár-tárolási fiókok** | Site Recovery egy Storage-fiókot használ a forrás régióban. A forrás virtuális gépekre vonatkozó módosítások ebbe a fiókba érkeznek a célhelyre történő replikáció előtt.<br/><br/> Ha tűzfallal védett gyorsítótáras Storage-fiókot használ, győződjön meg arról, hogy engedélyezi a **megbízható Microsoft-szolgáltatások engedélyezését**. [További információ](../storage/common/storage-network-security.md#exceptions). Győződjön meg arról is, hogy engedélyezi a hozzáférést a forrás vnet legalább egy alhálózatához. |
+   | **Gyorsítótár-tárolási fiókok** | Site Recovery egy Storage-fiókot használ a forrás régióban. A forrás virtuális gépekre vonatkozó módosítások ebbe a fiókba érkeznek a célhelyre történő replikáció előtt.<br/><br/> Ha tűzfallal védett gyorsítótáras Storage-fiókot használ, győződjön meg arról, hogy engedélyezi a **megbízható Microsoft-szolgáltatások engedélyezését**. [További információk](../storage/common/storage-network-security.md#exceptions). Győződjön meg arról is, hogy engedélyezi a hozzáférést a forrás vnet legalább egy alhálózatához. |
    | **Cél Storage-fiókok (a forrásoldali virtuális gép nem felügyelt lemezeket használ)** | Alapértelmezés szerint a Site Recovery új Storage-fiókot hoz létre a célként megadott régióban a forrásként szolgáló virtuális gép tárolási fiókjának tükrözéséhez.<br/><br/> Engedélyezze a **megbízható Microsoft-szolgáltatások engedélyezését** , ha tűzfallal védett gyorsítótáras Storage-fiókot használ. |
    | **Replika által felügyelt lemezek (ha a forrás virtuális gép felügyelt lemezeket használ)** | Alapértelmezés szerint a Site Recovery replika felügyelt lemezeket hoz létre a célhelyen a forrásként szolgáló virtuális gép felügyelt lemezeit ugyanazzal a tárolási típussal (standard vagy prémium), mint a forrás virtuális gép felügyelt lemezével. Csak a lemez típusát lehet testreszabni. |
    | **Cél rendelkezésre állási csoportok** | Alapértelmezés szerint a Azure Site Recovery egy új rendelkezésre állási készletet hoz létre a céltartományban, amelynek a neve a `asr` rendelkezésre állási csoportnak a forrásoldali régióban lévő virtuális gépek részében utótaggal rendelkezik. Ha a Azure Site Recovery által létrehozott rendelkezésre állási csoport már létezik, az újra használatban van. |
@@ -152,7 +152,7 @@ A Site Recovery létrehozza a célrégióra vonatkozó alapértelmezett beállí
    | **Alkalmazás-konzisztens pillanatkép gyakorisága** | Alapértelmezés szerint a Site Recovery 4 óránként végrehajtja az alkalmazás-konzisztens pillanatképet. 1 és 12 óra közötti értéket konfigurálhat.<br/><br/> Az alkalmazás-konzisztens pillanatkép a virtuális gépen belüli alkalmazásadatok időponthoz tartozó pillanatképe. A kötet árnyékmásolata szolgáltatás (VSS) biztosítja, hogy a virtuális gépen található alkalmazás konzisztens állapotban legyen a pillanatkép készítésekor. |
    | **Replikációs csoport** | Ha az alkalmazás több virtuális gépre kiterjedő konzisztenciát igényel a virtuális gépek között, létrehozhat egy replikációs csoportot ezekhez a virtuális gépekhez. Alapértelmezés szerint a kijelölt virtuális gépek nem részei semmilyen replikációs csoportnak sem. |
 
-1. A **Testreszabás**területen válassza az **Igen** lehetőséget a több virtuális gépre kiterjedő konzisztencia esetén, ha új vagy meglévő replikációs csoportba kívánja hozzáadni a virtuális gépeket. Ez után válassza az **OK** gombot.
+1. A **Testreszabás**területen válassza az **Igen** lehetőséget a több virtuális gépre kiterjedő konzisztencia esetén, ha új vagy meglévő replikációs csoportba kívánja hozzáadni a virtuális gépeket. Ezután válassza az **OK** gombot.
 
    > [!NOTE]
    > - A replikálási csoportban lévő összes gép megosztott összeomlási konzisztens és alkalmazás-konzisztens helyreállítási pontokat tartalmaz a feladatátvétel során.
@@ -182,7 +182,7 @@ A replikáció engedélyezése után nyomon követheti a feladatok állapotát.
    1. A **védelem engedélyezése** feladat előrehaladásának nyomon követése a **Beállítások**  >  **feladatok**  >  **site Recovery feladatok**részen.
    1. A **Beállítások**  >  **replikált elemek**területen megtekintheti a virtuális gépek állapotát és a kezdeti replikálás folyamatát. Válassza ki a virtuális gépet a beállítások részletezéséhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban egy Azure-beli virtuális gép vészhelyreállítását konfigurálta. Mostantól a vész-helyreállítási gyakorlat futtatásával ellenőrizhető, hogy a feladatátvétel a várt módon működik-e.
 

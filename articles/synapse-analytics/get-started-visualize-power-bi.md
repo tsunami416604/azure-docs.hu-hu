@@ -10,10 +10,10 @@ ms.service: synapse-analytics
 ms.topic: tutorial
 ms.date: 07/20/2020
 ms.openlocfilehash: 40a2cd5898ede7fc30db9a8475c5ab7cc68095ff
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87337636"
 ---
 # <a name="visualize-data-with-power-bi"></a>Adatok megjelenítése Power BI használatával
@@ -43,7 +43,7 @@ Power BI munkaterületet az Azure szinapszis-munkaterülethez kapcsolhat. Ez a f
     |**Név**|**NYCTaxiWorkspace1**|
     |**Munkaterület neve**|**NYCTaxiWorkspace1**|
 
-1. Válassza a **Létrehozás** lehetőséget.
+1. Kattintson a **Létrehozás** gombra.
 
 ### <a name="create-a-power-bi-dataset-that-uses-data-in-your-azure-synapse-workspace"></a>Az Azure szinapszis-munkaterületen adatokat használó Power BI adatkészlet létrehozása
 
@@ -91,9 +91,9 @@ Power BI munkaterületet az Azure szinapszis-munkaterülethez kapcsolhat. Ez a f
 1. Ezen a helyen megtekintheti a munkaterületen zajló összes tevékenység előzményeit, és azokat is, amelyek aktívak.
 1. Ismerkedjen meg a **folyamat futtatásával**, **Apache Spark alkalmazásokkal**és **SQL-kérésekkel** , hogy megtekintse a munkaterületen már elvégzett munkát.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Figyelő](get-started-monitor.md)
+> [Figyelés](get-started-monitor.md)
                                  
 

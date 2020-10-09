@@ -5,10 +5,10 @@ ms.devlang: powershell
 ms.topic: sample
 ms.date: 07/08/2020
 ms.openlocfilehash: f3aeec208ba6b80643e50307b89f590977bfb446
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87460762"
 ---
 # <a name="subscribe-to-events-for-a-resource-group-and-filter-for-a-resource-with-powershell"></a>Feliratkozás egy erőforráscsoport eseményeire és szűrés erőforrásra a PowerShell-lel
@@ -27,7 +27,7 @@ Ez a szkript létrehoz egy Event Grid-előfizetést egy erőforráscsoport esem�
 
 [!INCLUDE [requires-azurerm](../../../includes/requires-azurerm.md)]
 
-Az előnézeti minta parancsfájlhoz a Event Grid modul szükséges. A telepítéséhez futtassa a következőt`Install-Module -Name AzureRM.EventGrid -AllowPrerelease -Force -Repository PSGallery`
+Az előnézeti minta parancsfájlhoz a Event Grid modul szükséges. A telepítéséhez futtassa a következőt `Install-Module -Name AzureRM.EventGrid -AllowPrerelease -Force -Repository PSGallery`
 
 [!code-powershell[main](../../../powershell_scripts/event-grid/filter-events-preview/filter-events-preview.ps1 "Filter events")]
 

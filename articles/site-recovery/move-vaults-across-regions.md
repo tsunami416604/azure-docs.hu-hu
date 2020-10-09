@@ -9,10 +9,10 @@ ms.date: 07/31/2019
 ms.author: sharrai
 ms.custom: MVC
 ms.openlocfilehash: a8cb5ec782b5932c13e321b2ba2d6513597fef52
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87422640"
 ---
 # <a name="move-a-recovery-services-vault-and-azure-site-recovery-configuration-to-another-azure-region"></a>Recovery Services-tároló áthelyezése és Azure Site Recovery konfigurálása egy másik Azure-régióba
@@ -73,7 +73,7 @@ Minden replikált Azure-beli virtuális gép esetében lépjen a **védett eleme
 Kövesse az alábbi cikkekben ismertetett lépéseket az Azure-beli virtuális gépek célcsoportra helyezésének követelménye alapján:
 
 - [Azure-beli virtuális gépek áthelyezése egy másik régióba](azure-to-azure-tutorial-migrate.md)
-- [Azure-beli virtuális gépek áthelyezése rendelkezésre állási zónákba](move-azure-VMs-AVset-Azone.md)
+- [Azure-beli virtuális gépek áthelyezése Availability Zonesba](move-azure-VMs-AVset-Azone.md)
 
 ## <a name="set-up-site-recovery-based-on-the-new-source-region-for-the-vms"></a>Site Recovery beállítása a virtuális gépek új forrásoldali régiója alapján
 

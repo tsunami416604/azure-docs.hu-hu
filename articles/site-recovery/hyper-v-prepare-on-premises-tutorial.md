@@ -8,15 +8,15 @@ ms.date: 11/12/2019
 ms.author: raynew
 ms.custom: MVC
 ms.openlocfilehash: 6f24a259d2d71aa6599f6dd417d5e9fc99734e99
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86135658"
 ---
 # <a name="prepare-on-premises-hyper-v-servers-for-disaster-recovery-to-azure"></a>Helyszíni Hyper-V-kiszolgálók előkészítése az Azure-ba irányuló vészhelyreállításhoz
 
-Ez a cikk azt ismerteti, hogyan készítse elő a helyszíni Hyper-V-infrastruktúrát, ha a [Azure site Recovery](site-recovery-overview.md)használatával szeretné beállítani a Hyper-VM-eszközök vész-helyreállítását az Azure-ba.
+Ez a cikk azt ismerteti, hogyan készítse elő a helyszíni Hyper-V-infrastruktúrát, ha a Hyper-VMs az Azure-ba való vész-helyreállítást szeretné beállítani [Azure site Recovery](site-recovery-overview.md)használatával.
 
 
 Ez egy sorozat második oktatóanyaga, amely bemutatja, hogyan állíthatja be a vész-helyreállítást az Azure-ba helyszíni Hyper-V virtuális gépekre. Az első oktatóanyagban [beállítjuk a](tutorial-prepare-azure.md) Hyper-V vész-helyreállításhoz szükséges Azure-összetevőket.

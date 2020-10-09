@@ -10,10 +10,10 @@ ms.author: cynthn
 ms.reviewer: akjosh
 ms.custom: akjosh
 ms.openlocfilehash: 8a0ee8565d22e935535bbe1e830d8399b2489f5c
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86527523"
 ---
 # <a name="tutorial-create-and-use-a-custom-image-for-virtual-machine-scale-sets-with-azure-powershell"></a>Oktatóanyag: Egyéni rendszerkép létrehozása és használata virtuálisgép-méretezési csoportokhoz az Azure PowerShell-lel
@@ -27,7 +27,7 @@ Méretezési csoport létrehozása során meg kell adnia egy rendszerképet a vi
 > * Méretezési készlet létrehozása rendszerképből 
 > * Képtár megosztása
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
@@ -51,7 +51,7 @@ $sourceVM = Get-AzVM `
    -Name sourceVM `
    -ResourceGroupName myResourceGroup
 ```
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Hozzon létre egy erőforráscsoportot a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) paranccsal.
 
@@ -242,7 +242,7 @@ New-AzRoleAssignment `
    -ResourceGroupName $resourceGroup.ResourceGroupName
 ```
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs rá szükség, használhatja a [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) parancsmagot az erőforráscsoport és az összes kapcsolódó erőforrás eltávolításához:
 
@@ -258,7 +258,7 @@ Remove-AzResourceGroup -Name myResoureceGroup
 
 Az Azure a csomagoló, az [Azure VM rendszerkép-készítő](../virtual-machines/windows/image-builder-overview.md)szolgáltatásra épülő szolgáltatást is kínál. Egyszerűen írja le a testreszabásokat egy sablonban, és kezeli a képek létrehozását. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebben az oktatóanyagban megtudhatta, hogyan hozhat létre és használhat egyéni virtuálisgép-rendszerképet a méretezési csoportjai esetében az Azure PowerShell segítségével:
 
 > [!div class="checklist"]

@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 06/15/2018
 ms.author: apimpm
 ms.openlocfilehash: 7f6c7a651e133122dab86d6ed81572f239718b43
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86243239"
 ---
 # <a name="monitor-published-apis"></a>A közzétett API-k monitorozása
@@ -178,7 +178,7 @@ A API Management jelenleg az egyes API-kérésekhez tartozó erőforrás-naplók
 
 | Tulajdonság  | Típus | Leírás |
 | ------------- | ------------- | ------------- |
-| isRequestSuccess | logikai | Akkor igaz, ha a befejezett HTTP-kérelem válaszának állapotkódja a 2xx vagy 3xx tartományon belülre esik. |
+| isRequestSuccess | boolean | Akkor igaz, ha a befejezett HTTP-kérelem válaszának állapotkódja a 2xx vagy 3xx tartományon belülre esik. |
 | time | dátum-idő | Időbélyeg, amikor az átjáró megkezdi a kérelem feldolgozását |
 | operationName | sztring | A „Microsoft.ApiManagement/GatewayLogs” állandó érték |
 | category | sztring | A „GatewayLogs” állandó érték |
@@ -188,7 +188,7 @@ A API Management jelenleg az egyes API-kérésekhez tartozó erőforrás-naplók
 | location | sztring | Az Azure-régió neve, ahol a kérelmet feldolgozó átjáró található |
 | httpStatusCodeCategory | sztring | A HTTP-válasz állapotkódjának kategóriája: Sikeres (301 vagy alacsonyabb, 304 vagy 307), Jogosulatlan (401, 403, 429), Hibás (400, 500 és 600 között), Egyéb |
 | resourceId | sztring | A API Management erőforrás-/SUBSCRIPTIONS/ \<subscription> /RESOURCEGROUPS/- \<resource-group> /providers/Microsoft. azonosítója APIMANAGEMENT/SZOLGÁLTATÁS/\<name> |
-| properties | objektum | Az aktuális kérelem tulajdonságai |
+| properties | object | Az aktuális kérelem tulajdonságai |
 | method | sztring | A bejövő kérelem HTTP-metódusa |
 | url | sztring | A bejövő kérelem URL-címe |
 | clientProtocol | sztring | A bejövő kérelem HTTP-protokolljának verziója |
@@ -209,7 +209,7 @@ A API Management jelenleg az egyes API-kérésekhez tartozó erőforrás-naplók
 | userId | sztring | Az aktuális kérelem felhasználói entitásának azonosítója | 
 | apimSubscriptionId | sztring | Az aktuális kérelem előfizetési entitásának azonosítója | 
 | backendId | sztring | Az aktuális kérelem háttérentitásának azonosítója | 
-| LastError | objektum | A legutóbbi kérelemfeldolgozási hiba | 
+| LastError | object | A legutóbbi kérelemfeldolgozási hiba | 
 | elapsed | egész szám | Ennyi ezredmásodperc telt el, amikor az átjáró megkapta a kérést, és a hiba bekövetkezésének pillanata | 
 | source | sztring | A hibát okozó házirend vagy belső feldolgozáskezelő neve | 
 | scope | sztring | A hibát okozó házirendet tartalmazó szabályzatdokumentum hatóköre | 

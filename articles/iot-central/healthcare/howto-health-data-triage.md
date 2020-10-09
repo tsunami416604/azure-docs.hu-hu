@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: eliotgra
 ms.openlocfilehash: ed06aef4d494fbdce5a07c5bc50bad9737ba5433
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86497046"
 ---
 # <a name="tutorial-build-a-power-bi-provider-dashboard"></a>Oktatóanyag: Power BI-szolgáltató irányítópultjának összeállítása
@@ -81,7 +81,7 @@ A logikai alkalmazás Azure Event Hubshoz való összekapcsolásához kövesse a
 |---|---|
 |Tartalomtípus|application/json|
 |Időköz|3|
-|Gyakoriság|Second|
+|Frequency|Second|
 
 Ennek a lépésnek a végén a Logic app designernek így kell kinéznie:
 
@@ -197,7 +197,7 @@ Válassza ki a három pontot a felső navigációs sávon, majd válassza a **+ 
 
 Válassza ki, hogy milyen típusú csempét szeretne felvenni, és testreszabni szeretné az alkalmazást.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha nem folytatja az alkalmazás használatát, törölje az erőforrásokat a következő lépésekkel:
 
@@ -205,6 +205,6 @@ Ha nem folytatja az alkalmazás használatát, törölje az erőforrásokat a k�
 
 2. IoT Central alkalmazásához lépjen az adminisztráció lapra, és válassza a **Törlés**lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Tekintse át a [folyamatos beteg monitorozási architektúrával kapcsolatos útmutatót](concept-continuous-patient-monitoring-architecture.md).

@@ -15,10 +15,10 @@ ms.date: 09/26/2019
 ms.author: mametcal
 ms.custom: mvc, devx-track-java
 ms.openlocfilehash: 83c437cb613e3dad04dee17f0f67040532066c3b
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87326596"
 ---
 # <a name="tutorial-use-feature-flags-in-a-spring-boot-app"></a>Oktatóanyag: funkció-jelzők használata Spring boot-alkalmazásokban
@@ -37,7 +37,7 @@ Az oktatóanyag során a következőket fogja elsajátítani:
 
 ## <a name="set-up-feature-management"></a>A szolgáltatások kezelésének beállítása
 
-A Spring boot Feature Manager a `FeatureManager` keretrendszer natív konfigurációs rendszerének a funkcióinak jelzőit kapja. Ennek eredményeképpen meghatározhatja az alkalmazás funkciójának jelzőit bármely olyan konfigurációs forrás használatával, amelyet a Spring boot támogat, beleértve a helyi *bootstrap. YML* fájl-vagy környezeti változókat is. `FeatureManager`függőségi injektálásra támaszkodik. A szolgáltatás-felügyeleti szolgáltatásokat szabványos konvenciók használatával regisztrálhatja:
+A Spring boot Feature Manager a `FeatureManager` keretrendszer natív konfigurációs rendszerének a funkcióinak jelzőit kapja. Ennek eredményeképpen meghatározhatja az alkalmazás funkciójának jelzőit bármely olyan konfigurációs forrás használatával, amelyet a Spring boot támogat, beleértve a helyi *bootstrap. YML* fájl-vagy környezeti változókat is. `FeatureManager` függőségi injektálásra támaszkodik. A szolgáltatás-felügyeleti szolgáltatásokat szabványos konvenciók használatával regisztrálhatja:
 
 ```java
 private FeatureManager featureManager;
@@ -96,7 +96,7 @@ Az egyezmény szerint a `feature-management` YML-dokumentum szakasza a szolgált
 
 * `feature-a`*be van kapcsolva*.
 * `feature-b`*ki van kapcsolva*.
-* `feature-c`egy tulajdonsággal megnevezett szűrőt ad meg `Percentage` `parameters` . `Percentage`konfigurálható szűrő. Ebben a példában a `Percentage` jelző 50 százalékos valószínűségét adja `feature-c` *meg*.
+* `feature-c` egy tulajdonsággal megnevezett szűrőt ad meg `Percentage` `parameters` . `Percentage` konfigurálható szűrő. Ebben a példában a `Percentage` jelző 50 százalékos valószínűségét adja `feature-c` *meg*.
 
 ## <a name="feature-flag-checks"></a>Szolgáltatás-jelző ellenőrzése
 

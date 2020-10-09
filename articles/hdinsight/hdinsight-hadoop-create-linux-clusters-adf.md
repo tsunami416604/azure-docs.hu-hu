@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.custom: seoapr2020
 ms.date: 04/24/2020
 ms.openlocfilehash: 7353366af14ca785c5635e1bde8101c1d71cd47f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87079112"
 ---
 # <a name="tutorial-create-on-demand-apache-hadoop-clusters-in-hdinsight-using-azure-data-factory"></a>Oktatóanyag: igény szerinti Apache Hadoop-fürtök létrehozása a HDInsight-ben Azure Data Factory használatával
@@ -236,7 +236,7 @@ Ebben a szakaszban két társított szolgáltatást hoz létre az adatai-előál
 
     |Tulajdonság |Érték |
     |---|---|
-    |Név |Írja be a következő szöveget: `HDIStorageLinkedService`|
+    |Név |Írja be a következő szöveget: `HDIStorageLinkedService`.|
     |Azure-előfizetés |Válassza ki az előfizetését a legördülő listából.|
     |Tárfiók neve |Válassza ki a PowerShell-parancsfájl részeként létrehozott Azure Storage-fiókot.|
 
@@ -258,7 +258,7 @@ Ebben a szakaszban két társított szolgáltatást hoz létre az adatai-előál
 
     | Tulajdonság | Érték |
     | --- | --- |
-    | Név | Írja be a következő szöveget: `HDInsightLinkedService`|
+    | Név | Írja be a következő szöveget: `HDInsightLinkedService`.|
     | Típus | **Igény szerinti HDInsight**kiválasztása. |
     | Azure Storage társított szolgáltatás | Válassza a(z) `HDIStorageLinkedService` lehetőséget. |
     | Fürt típusa | **Hadoop** kiválasztása |
@@ -345,7 +345,7 @@ Ebben a szakaszban két társított szolgáltatást hoz létre az adatai-előál
 
         ![A Azure Data Factory folyamat kimenetének ellenőrzése](./media/hdinsight-hadoop-create-linux-clusters-adf/hdinsight-data-factory-verify-output.png "A Azure Data Factory folyamat kimenetének ellenőrzése")
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Az igény szerinti HDInsight-fürt létrehozásakor nem szükséges explicit módon törölni a HDInsight-fürtöt. A rendszer a folyamat létrehozásakor megadott konfiguráció alapján törli a fürtöt. Még a fürt törlése után is a fürthöz társított Storage-fiókok továbbra is fennállnak. Ez a viselkedés úgy van kialakítva, hogy ne legyenek érintetlenek az adatai. Ha azonban nem szeretné megőrizni az adatmegőrzést, törölheti a létrehozott Storage-fiókot.
 

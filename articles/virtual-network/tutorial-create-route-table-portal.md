@@ -14,10 +14,10 @@ ms.workload: infrastructure
 ms.date: 03/13/2020
 ms.author: kumud
 ms.openlocfilehash: d630a41f9b83a852605ffad2a85ad6dd14bbac73
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86079649"
 ---
 # <a name="tutorial-route-network-traffic-with-a-route-table-using-the-azure-portal"></a>Oktatóanyag: Hálózati forgalom útválasztási táblázattal való irányítása az Azure Portalon
@@ -48,11 +48,11 @@ A hálózati virtuális berendezések (NVA) olyan virtuális gépek, amelyek seg
 
 1. A **virtuális gép létrehozása** lap **alapismeretek**területén adja meg vagy válassza ki az alábbi adatokat:
 
-    | Section | Beállítás | Műveletek |
+    | Section | Beállítás | Művelet |
     | ------- | ------- | ----- |
     | **Projekt részletei** | Előfizetés | Válassza ki az előfizetését. |
     | | Erőforráscsoport | Válassza az **új létrehozása**elemet, írja be a *myResourceGroup*, majd kattintson **az OK gombra**. |
-    | **Példány részletei** | Virtuális gép neve | Adja meg a *myVmNva*. |
+    | **Példány adatai** | Virtuális gép neve | Adja meg a *myVmNva*. |
     | | Region | Válassza az USA **keleti**régióját. |
     | | Rendelkezésre állási beállítások | Válassza az **infrastruktúra-redundancia nem szükséges**lehetőséget. |
     | | Kép | Válassza a **Windows Server 2016 Datacenter**lehetőséget. |
@@ -60,7 +60,7 @@ A hálózati virtuális berendezések (NVA) olyan virtuális gépek, amelyek seg
     | **Rendszergazdai fiók** | Felhasználónév | Adjon meg egy tetszőleges felhasználónevet. |
     | | Jelszó | Adja meg a választott jelszót, amelynek legalább 12 karakter hosszúnak kell lennie, és meg kell felelnie a [meghatározott összetettségi követelményeknek](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm). |
     | | Jelszó megerősítése | Adja meg újra a jelszót. |
-    | **Bejövőport-szabályok** | Nyilvános bejövő portok | Válassza a **nincs lehetőséget**. |
+    | **Bejövő portok szabályai** | Nyilvános bejövő portok | Válassza a **nincs lehetőséget**. |
     | **Pénz megtakarítása** | Már van Windows Server-licence? | Válassza a **nem**. |
 
     ![Alapismeretek, virtuális gép létrehozása, Azure Portal](./media/tutorial-create-route-table-portal/basics-create-virtual-machine.png)
@@ -82,7 +82,7 @@ A hálózati virtuális berendezések (NVA) olyan virtuális gépek, amelyek seg
         | Alhálózat neve | Címtartomány |
         | ----------- | ------------- |
         | *Nyilvános* | *10.0.0.0/24* |
-        | *Privát* | *10.0.1.0/24* |
+        | *Személyes* | *10.0.1.0/24* |
         | *DMZ* | *10.0.2.0/24* |
 
     1. A párbeszédpanel bezárásához kattintson **az OK gombra** .
@@ -108,9 +108,9 @@ A hálózati virtuális berendezések (NVA) olyan virtuális gépek, amelyek seg
     
     1. A párbeszédpanel bezárásához kattintson **az OK gombra** .
 
-    1. Válassza az **Áttekintés + létrehozás** lehetőséget. A **felülvizsgálat + létrehozás** oldalon az Azure ellenőrzi a konfigurációt.
+    1. Válassza a **Felülvizsgálat + létrehozás** lehetőséget. A **felülvizsgálat + létrehozás** oldalon az Azure ellenőrzi a konfigurációt.
 
-1. Amikor megjelenik az **átadott üzenet ellenőrzése** lehetőség, válassza a **Létrehozás**lehetőséget.
+1. Amikor megjelenik a **Megfelelt az ellenőrzésen** üzenet, válassza a **Létrehozás** lehetőséget.
 
     A virtuális gép üzembe helyezése néhány percet vesz igénybe. Várjon, amíg az Azure befejezi a virtuális gép létrehozását. A telepítés **folyamatban van** oldalon látható az üzembe helyezés részletei.
 
@@ -131,7 +131,7 @@ A hálózati virtuális berendezések (NVA) olyan virtuális gépek, amelyek seg
     | Név | *myRouteTablePublic* |
     | Előfizetés | Az Ön előfizetése |
     | Erőforráscsoport | **myResourceGroup** |
-    | Hely | **USA USA keleti régiója** |
+    | Hely | **(US) Az USA keleti régiója** |
     | Virtuális hálózati átjáró útvonalának propagálása | **Engedélyezve** |
 
     ![Útválasztási táblázat létrehozása, Azure Portal](./media/tutorial-create-route-table-portal/create-route-table.png)
@@ -157,7 +157,7 @@ A hálózati virtuális berendezések (NVA) olyan virtuális gépek, amelyek seg
     | A következő ugrás típusa | **Virtuális berendezés** |
     | A következő ugrás címe | *10.0.2.4* (a *DMZ* -alhálózat címtartomány tartományán belüli címe) |
 
-1. Kattintson az **OK** gombra.
+1. Válassza az **OK** lehetőséget.
 
 ## <a name="associate-a-route-table-to-a-subnet"></a>Útválasztási táblázat társítása alhálózattal
 
@@ -208,7 +208,7 @@ Mielőtt a **Létrehozás** gombra kattint a nyilvános vagy a virtuális gép l
 | Alapvető beállítások | Erőforráscsoport | **myResourceGroup** |
 | | Virtuális gép neve | *myVmPublic* |
 | | Nyilvános bejövő portok | **Kijelölt portok engedélyezése** |
-| | Bejövő portok kiválasztása | **RDP** |
+| | Válassza ki a bejövő portokat | **RDP** |
 | Hálózat | Virtuális hálózat | **myVirtualNetwork** |
 | | Alhálózat | **Nyilvános (10.0.0.0/24)** |
 | | Nyilvános IP-cím | Az alapértelmezett érték |
@@ -221,7 +221,7 @@ Mielőtt a **Létrehozás** gombra kattint a nyilvános vagy a virtuális gép l
 | Alapvető beállítások | Erőforráscsoport | **myResourceGroup** |
 | | Virtuális gép neve | *myVmPrivate* |
 | | Nyilvános bejövő portok | **Kijelölt portok engedélyezése** |
-| | Bejövő portok kiválasztása | **RDP** |
+| | Válassza ki a bejövő portokat | **RDP** |
 | Hálózat | Virtuális hálózat | **myVirtualNetwork** |
 | | Alhálózat | **Privát (10.0.1.0/24)** |
 | | Nyilvános IP-cím | Az alapértelmezett érték |
@@ -241,7 +241,7 @@ Mielőtt a **Létrehozás** gombra kattint a nyilvános vagy a virtuális gép l
 
 1. Nyissa meg a letöltött *. rdp* fájlt. Ha a rendszer kéri, válassza a **Csatlakozás** lehetőséget. Válassza a **további lehetőségek**lehetőséget  >  **egy másik fiók használata**lehetőségnél, majd adja meg a magánhálózati virtuális gép létrehozásakor megadott felhasználónevet és jelszót.
 
-1. Kattintson az **OK** gombra.
+1. Válassza az **OK** lehetőséget.
 
 1. Ha a bejelentkezési folyamat során figyelmeztetést kap a tanúsítványról, válassza az **Igen** lehetőséget a virtuális géphez való csatlakozáshoz.
 

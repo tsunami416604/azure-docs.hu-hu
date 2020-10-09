@@ -10,10 +10,10 @@ ms.date: 11/08/2018
 ms.reviewer: mimckitt
 ms.custom: mimckitt
 ms.openlocfilehash: e783f7f0a9be413679e509e4d6124d50bb811821
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87059296"
 ---
 # <a name="tutorial-install-applications-in-virtual-machine-scale-sets-with-azure-powershell"></a>Oktatóanyag: Alkalmazások telepítése virtuálisgép-méretezési csoportokban az Azure PowerShell-lel
@@ -25,7 +25,7 @@ Ha alkalmazásokat szeretne futtatni egy méretezési csoport virtuálisgép-pé
 > * Az egyéni Azure-szkriptek bővítményének használata
 > * Egy méretezési csoporton futtatott alkalmazás frissítése
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
 [!INCLUDE [updated-for-az.md](../../includes/updated-for-az.md)]
 
@@ -186,7 +186,7 @@ A méretezési csoport összes virtuálisgép-példánya automatikusan frissül 
 ![Frissített weboldal az IIS-ben](media/tutorial-install-apps-powershell/running-iis-updated.png)
 
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 A méretezési csoport és a további erőforrások eltávolításához törölje az erőforráscsoportot és az összes erőforrását a [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup)használatával. A `-Force` paraméter megerősíti, hogy további kérdés nélkül szeretné törölni az erőforrásokat. A `-AsJob` paraméter visszaadja a vezérlést a parancssornak, és nem várja meg a művelet befejeztét.
 
 ```azurepowershell-interactive

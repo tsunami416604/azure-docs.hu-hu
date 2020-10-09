@@ -10,10 +10,10 @@ ms.author: matjazl
 author: matjazl
 ms.date: 10/13/2019
 ms.openlocfilehash: 937be72bfec96119474e7effe9ba88a2cf253444
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86081843"
 ---
 # <a name="add-data-to-audit-logs-by-using-custom-http-headers"></a>Az egyéni HTTP-fejlécek használatával adhat hozzá adatnaplókat a naplókhoz
@@ -24,7 +24,7 @@ Ha például az API felhasználóját egy külső rendszer hitelesíti, a rendsz
 
 Ezt az adatfolyamatot a következő ábrán tekintheti meg:
 
-:::image type="content" source="media/custom-headers/custom-headers-diagram.png" alt-text="Egyéni fejlécek diagramja":::
+:::image type="content" source="media/custom-headers/custom-headers-diagram.png" alt-text="Egyéni fejlécek diagramja&quot;:::
 
 A különböző típusú információk rögzítéséhez egyéni fejléceket használhat. Például:
 
@@ -47,9 +47,9 @@ Ezek a HTTP-fejlécek szerepelnek a naplóba felvett egyik tulajdonságlapon is.
 Ezt az információt a rendszer a JSON-ra szerializálja, amikor hozzáadja a tulajdonságok oszlophoz a naplóban. Például:
 
 ```json
-{ "X-MS-AZUREFHIR-AUDIT-USERID" : "1234",
-"X-MS-AZUREFHIR-AUDIT-USERLOCATION" : "XXXX",
-"X-MS-AZUREFHIR-AUDIT-XYZ" : "1234" }
+{ &quot;X-MS-AZUREFHIR-AUDIT-USERID&quot; : &quot;1234&quot;,
+&quot;X-MS-AZUREFHIR-AUDIT-USERLOCATION&quot; : &quot;XXXX&quot;,
+&quot;X-MS-AZUREFHIR-AUDIT-XYZ&quot; : &quot;1234" }
 ```
  
 A HTTP-fejlécekhez hasonlóan a fejléc neve is megismételhető eltérő értékekkel. Például:

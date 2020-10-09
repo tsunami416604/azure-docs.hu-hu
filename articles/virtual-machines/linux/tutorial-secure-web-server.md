@@ -15,10 +15,10 @@ ms.date: 04/30/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 7964f96afc59464c28cabb9e1d5c7961fc765a3d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86501772"
 ---
 # <a name="tutorial-secure-a-web-server-on-a-linux-virtual-machine-in-azure-with-tlsssl-certificates-stored-in-key-vault"></a>Oktatóanyag: webkiszolgáló védelme Azure-beli linuxos virtuális gépen a Key Vault tárolt TLS/SSL-tanúsítványokkal
@@ -144,7 +144,7 @@ Ekkor a biztonságos NGINX-webhely a következő példához hasonlóan jelenik m
 ![Futó biztonságos NGINX-webhely megtekintése](./media/tutorial-secure-web-server/secured-nginx.png)
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban egy NGINX-webkiszolgálót biztosított egy Azure Key Vaultban tárolt TLS/SSL-tanúsítvánnyal. Megtanulta végrehajtani az alábbi műveleteket:
 

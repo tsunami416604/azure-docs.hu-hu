@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc
 ms.openlocfilehash: c259e913a8ee5181bc58aea651af62324cf01fcb
-ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87439403"
 ---
 # <a name="tutorial-deploy-azure-stream-analytics-as-an-iot-edge-module"></a>Oktatóanyag: Azure Stream Analytics üzembe helyezése IoT Edge modulként
@@ -68,7 +68,7 @@ Amikor Azure Stream Analytics-feladatot hoz létre egy IoT Edge-eszköz futtatá
    | ----- | ----- |
    | Előfizetés | Válassza ugyanazt az előfizetést, mint az IoT Hub esetében. |
    | Erőforráscsoport | Azt javasoljuk, hogy az IoT Edge rövid útmutatók és oktatóanyagok esetében ugyanazt az erőforráscsoportot használja az összes tesztelési erőforráshoz. Például: **IoTEdgeResources**. |
-   | Name | Adja meg a tárfiók egyedi nevét. |
+   | Név | Adja meg a tárfiók egyedi nevét. |
    | Hely | Válassza ki az Önhöz legközelebb eső helyet. |
 
 1. Tartsa meg a többi mező alapértelmezett értékeit, és válassza a **felülvizsgálat + létrehozás**lehetőséget.
@@ -89,7 +89,7 @@ Amikor Azure Stream Analytics-feladatot hoz létre egy IoT Edge-eszköz futtatá
    | Hely | Válassza ki az Önhöz legközelebb eső helyet. |
    | Üzemeltetési környezet | Válassza az **Edge** lehetőséget. |
 
-1. Válassza a **Létrehozás** lehetőséget.
+1. Kattintson a **Létrehozás** gombra.
 
 ### <a name="configure-your-job"></a>A feladat konfigurálása
 
@@ -193,7 +193,7 @@ Ebben az oktatóanyagban két modult helyezhet üzembe. Az első a **SimulatedTe
 
 1. Az **útvonalak** lapon megadhatja, hogyan adja át az üzeneteket a modulok és a IoT hub között. Az üzenetek név/érték párokkal vannak kiépítve. Cserélje le az alapértelmezett `route` és a `upstream` nevet és az értékeket az alábbi táblázatban szereplő párokra, a következő név/érték párokat, a _{moduleName}_ példányait pedig a Azure stream Analytics modul nevére cseréli.
 
-    | Name | Érték |
+    | Név | Érték |
     | --- | --- |
     | `telemetryToCloud` | `FROM /messages/modules/SimulatedTemperatureSensor/* INTO $upstream` |
     | `alertsToCloud` | `FROM /messages/modules/{moduleName}/* INTO $upstream` |
@@ -246,7 +246,7 @@ Ellenkező esetben törölheti a cikkben használt helyi konfigurációkat és a
 
 [!INCLUDE [iot-edge-clean-up-cloud-resources](../../includes/iot-edge-clean-up-cloud-resources.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban egy Azure Stream Analytics-feladatot hozott létre az IoT Edge-eszközből származó adatok elemzéséhez. Ezután letöltötte az Azure Stream Analytics-modult az IoT Edge-eszközre, hogy helyileg lehessen feldolgozni és megválaszolni a hőmérséklet-növekedési adatokat, valamint az összesített adatstreamet a felhőbe feltölteni. A többi oktatóanyagra tovább lépve megtudhatja, hogyan lehet az Azure IoT Edge használatával egyéb üzleti megoldásokat létrehozni.
 

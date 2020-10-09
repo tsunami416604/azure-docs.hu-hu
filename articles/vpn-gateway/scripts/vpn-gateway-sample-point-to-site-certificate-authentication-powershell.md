@@ -10,10 +10,10 @@ ms.topic: sample
 ms.date: 01/10/2020
 ms.author: alzam
 ms.openlocfilehash: a76cad8cb89e016d231566089ce30a337ea91d8f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87086965"
 ---
 # <a name="configure-a-point-to-site-vpn-using-native-azure-certificate-authentication"></a>Pont – hely típusú VPN konfigurálása natív Azure tanúsítványalapú hitelesítés használatával
@@ -90,7 +90,7 @@ Add-AzVpnClientRootCertificate -VpnClientRootCertificateName $P2SRootCertName `
 
 ```
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs szüksége a létrehozott erőforrásokra, használja a [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) parancsot az erőforráscsoport törléséhez. Ez a parancs törli az erőforráscsoportot és a benne lévő összes erőforrást.
 

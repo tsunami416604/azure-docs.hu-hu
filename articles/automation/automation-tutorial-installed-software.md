@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.subservice: change-inventory-management
 ms.custom: mvc
 ms.openlocfilehash: cad92ef376a14805049772cd0bfdbac04309f6c4
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86185823"
 ---
 # <a name="discover-what-software-is-installed-on-your-vms"></a>A virtuális gépeken telepített szoftverek felderítése
@@ -137,7 +137,7 @@ ConfigurationData
 | summarize by Publisher, SoftwareName
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban megtanulta, hogyan tekintheti meg a szoftverek leltározását:
 

@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 07/22/2019
 ms.custom: mvc
 ms.openlocfilehash: a7390858e55a456ec5fb2f851be1a7443be97082
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86245041"
 ---
 # <a name="tutorial-deploy-a-service-fabric-cluster-running-windows-into-an-azure-virtual-network"></a>Oktatóanyag: Windows rendszert futtató Service Fabric-fürt üzembe helyezése Azure-beli virtuális hálózatban
@@ -143,7 +143,7 @@ Alapértelmezés szerint a Windows [Defender víruskereső program](/windows/sec
 
 Az [azuredeploy.parameters.json][parameters] paraméterfájl számos, a fürt és a társított erőforrások üzembe helyezéséhez használt értéket meghatároz. A következő paramétereket kell módosítani a telepítéshez:
 
-**Paraméterek** | **Példa értéke** | **Megjegyzések** 
+**Paraméter** | **Példa értéke** | **Megjegyzések** 
 |---|---|---|
 |adminUserName|vmadmin| Rendszergazdai felhasználónév a fürt virtuális gépeihez. [A virtuális gép felhasználónévre vonatkozó követelményei](../virtual-machines/windows/faq.md#what-are-the-username-requirements-when-creating-a-vm). |
 |adminPassword|Password#1234| Rendszergazdai jelszó a fürt virtuális gépeihez. [A virtuális gép jelszavára vonatkozó követelmények](../virtual-machines/windows/faq.md#what-are-the-password-requirements-when-creating-a-vm).|

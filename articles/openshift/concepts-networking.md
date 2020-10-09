@@ -7,10 +7,10 @@ ms.topic: tutorial
 ms.service: container-service
 ms.date: 06/22/2020
 ms.openlocfilehash: fb81405e85d6e2653e0cf6c007c363493992161a
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87419971"
 ---
 # <a name="networking-in-azure-red-hat-on-openshift-4"></a>Hálózatkezelés az Azure Red Hat-on a OpenShift 4
@@ -101,7 +101,7 @@ A következő hálózati beállítások érhetők el az Azure Red Hat OpenShift 
     * A "nyilvános" útvonalak alapértelmezett értéke a nyilvános Azure standard Load Balancer (ez módosítható).
     * A "privát" útvonalak alapértelmezett értéke a belső terheléselosztó (ez módosítható).
 
-## <a name="network-security-groups"></a>Hálózati biztonsági csoportok
+## <a name="network-security-groups"></a>Network security groups (Hálózati biztonsági csoportok)
 A hálózati biztonsági csoportok a csomópont erőforráscsoport-csoportjában lesznek létrehozva, amely zárolva van. A hálózati biztonsági csoportok közvetlenül az alhálózatokhoz vannak rendelve, nem a csomópont hálózati adapterén. A hálózati biztonsági csoportok nem változtathatók meg, ami azt jelenti, hogy nincs engedélye a módosítására. 
 
 Nyilvánosan látható API-kiszolgálóval azonban nem hozhat létre hálózati biztonsági csoportokat, és hozzárendelheti azokat a hálózati adapterekhez.

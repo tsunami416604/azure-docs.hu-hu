@@ -11,10 +11,10 @@ author: iainfoulds
 manager: daveba
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e008091b3d0b450384cb7a672a62c786c33bfeab
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87419631"
 ---
 # <a name="tutorial-use-risk-detections-for-user-sign-ins-to-trigger-azure-multi-factor-authentication-or-password-changes"></a>Oktatóanyag: kockázati észlelések használata felhasználói bejelentkezésekhez az Azure Multi-Factor Authentication vagy a jelszó módosításainak elindításához
@@ -95,7 +95,7 @@ A szabályzat engedélyezéséhez hajtsa végre a következő lépéseket:
 
 1. Válassza ki a **felhasználói kockázati házirendet** a bal oldali menüben.
 1. Alapértelmezés szerint a szabályzat *minden felhasználóra*érvényes. Szükség esetén válassza a **hozzárendelések**lehetőséget, majd válassza ki azokat a felhasználókat vagy csoportokat, amelyekre alkalmazni szeretné a szabályzatot.
-1. A *feltételek*területen válassza **a feltételek kiválasztása lehetőséget > válassza ki a kockázati szintet**, majd válassza a *közepes vagy újabb*lehetőséget.
+1. A *feltételek*területen válassza  **a feltételek kiválasztása lehetőséget > válassza ki a kockázati szintet**, majd válassza a *közepes vagy újabb*lehetőséget.
 1. Válassza a **kiválasztás**, majd a **kész**lehetőséget.
 1. A *hozzáférés*területen válassza a **hozzáférés**lehetőséget. Győződjön meg arról, hogy a **hozzáférés engedélyezése** és a *jelszó megkövetelése* beállítás be van jelölve, majd válassza a **kiválasztás**lehetőséget.
 1. Állítsa be a **szabályzat érvényesítése** beállítást, majd kattintson *a* **Mentés**gombra.
@@ -110,7 +110,7 @@ A szabályzat engedélyezéséhez hajtsa végre a következő lépéseket:
 
 1. Válassza ki a **bejelentkezési kockázati szabályzatot** a bal oldali menüben.
 1. Alapértelmezés szerint a szabályzat *minden felhasználóra*érvényes. Szükség esetén válassza a **hozzárendelések**lehetőséget, majd válassza ki azokat a felhasználókat vagy csoportokat, amelyekre alkalmazni szeretné a szabályzatot.
-1. A *feltételek*területen válassza **a feltételek kiválasztása lehetőséget > válassza ki a kockázati szintet**, majd válassza a *közepes vagy újabb*lehetőséget.
+1. A *feltételek*területen válassza  **a feltételek kiválasztása lehetőséget > válassza ki a kockázati szintet**, majd válassza a *közepes vagy újabb*lehetőséget.
 1. Válassza a **kiválasztás**, majd a **kész**lehetőséget.
 1. A *hozzáférés*területen válassza **a vezérlő kiválasztása**lehetőséget. Győződjön meg arról, hogy a **hozzáférés engedélyezése** és a *többtényezős hitelesítés megkövetelése* jelölőnégyzet **be**van jelölve, majd válassza a kiválasztás lehetőséget.
 1. Állítsa be a **szabályzat érvényesítése** beállítást, majd kattintson *a* **Mentés**gombra.
@@ -127,7 +127,7 @@ Az előző lépésekben létrehozott Azure AD Identity Protection szabályzatok 
 
 Ha befejezte a tesztelést, és már nem szeretné, hogy engedélyezve legyenek a kockázatalapú házirendek, térjen vissza a letiltani kívánt szabályzatokhoz, és állítsa be a **házirend** *kikapcsolását*.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban engedélyezte a Azure AD Identity Protection kockázatalapú felhasználói házirendjeit. Megtanulta végrehajtani az alábbi műveleteket:
 

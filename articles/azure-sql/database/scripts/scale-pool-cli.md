@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 06/25/2019
 ms.openlocfilehash: 01ccf7117cd17118941a00cc0480216bc436bc40
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86514764"
 ---
 # <a name="use-the-azure-cli-to-scale-an-elastic-pool-in-azure-sql-database"></a>Rugalmas készlet méretezése az Azure CLI használatával Azure SQL Database
@@ -54,7 +54,7 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 | [az SQL db](/cli/azure/sql/db) | Adatbázis-parancsok. |
 | [az SQL rugalmas-készletek](/cli/azure/sql/elastic-pool) | Rugalmas készlet parancsai. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](/cli/azure).
 

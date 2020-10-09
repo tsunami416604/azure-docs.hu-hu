@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.custom: hdinsightactive
 ms.date: 04/15/2020
 ms.openlocfilehash: a0f081e0f8df00bbc99d2163fb54a2f15d92a159
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87006432"
 ---
 # <a name="tutorial-create-an-end-to-end-data-pipeline-to-derive-sales-insights-in-azure-hdinsight"></a>Oktatóanyag: végpontok közötti adatfolyamat létrehozása az értékesítési elemzések létrehozásához az Azure HDInsight
@@ -23,7 +23,7 @@ Ez az adatfolyamat a különböző áruházakból származó adatok összegyűjt
 
 ![ETL-architektúra](./media/hdinsight-sales-insights-etl/architecture.png)
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -259,7 +259,7 @@ Az HDInsight használatával történő adatátalakítás egyéb módjairól [eb
 1. A **HDInsight interaktív lekérdezés** párbeszédpanelen:
     1. A **kiszolgáló** szövegmezőbe írja be a LLAP-fürt nevét a formátuma mezőbe `https://LLAPCLUSTERNAME.azurehdinsight.net` .
     1. Az **adatbázis** szövegmezőbe írja be a értéket `default` .
-    1. Kattintson az **OK** gombra.
+    1. Válassza az **OK** lehetőséget.
 
 1. A **AzureHive** párbeszédpanelen:
     1. A **Felhasználónév** szövegmezőbe írja be a nevet `admin` .
@@ -271,7 +271,7 @@ Az HDInsight használatával történő adatátalakítás egyéb módjairól [eb
 * [Irányítópultok bemutatása Power BI-tervezők számára](https://docs.microsoft.com/power-bi/service-dashboards)
 * [Oktatóanyag: Első lépések a Power BI szolgáltatással](https://docs.microsoft.com/power-bi/service-get-started)
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha nem folytatja az alkalmazás használatát, az alábbi parancs használatával törölje az összes erőforrást, hogy ne legyen rájuk felszámítva.
 

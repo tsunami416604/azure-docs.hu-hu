@@ -12,10 +12,10 @@ ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.custom: contperfq4
 ms.openlocfilehash: f4687a98bfb58db8ed5e8a853fa0db2207f435e8
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87419648"
 ---
 # <a name="tutorial-enable-azure-active-directory-self-service-password-reset-writeback-to-an-on-premises-environment"></a>Oktatóanyag: Azure Active Directory önkiszolgáló jelszó-visszaállítási visszaírási engedélyezése helyszíni környezetbe
@@ -57,8 +57,8 @@ Azure AD Connect segítségével szinkronizálhatja a felhasználókat, a csopor
 Ahhoz, hogy megfelelően működjön a SSPR visszaírási, a Azure AD Connectban megadott fióknak rendelkeznie kell a megfelelő engedélyekkel és beállításokkal. Ha nem tudja biztosan, hogy melyik fiók használatban van, nyissa meg Azure AD Connect és válassza az **aktuális konfiguráció megtekintése** lehetőséget. A fiók, amelyhez engedélyeket kell hozzáadnia, megjelenik a **szinkronizált könyvtárak**területen. A következő engedélyeket és beállításokat kell beállítani a fiókhoz:
 
 * **Új jelszó létrehozása**
-* **Írási engedélyek** bekapcsolva`lockoutTime`
-* **Írási engedélyek** bekapcsolva`pwdLastSet`
+* **Írási engedélyek** bekapcsolva `lockoutTime`
+* **Írási engedélyek** bekapcsolva `pwdLastSet`
 * Ha még nincs beállítva, az erdő *minden tartományának* gyökérszintű objektumán a "lejárati jelszó" kifejezésre vonatkozó **kiterjesztett jogosultságok** jelennek meg.
 
 Ha nem rendeli hozzá ezeket az engedélyeket, előfordulhat, hogy a visszaírási megfelelően vannak konfigurálva, de a felhasználók a felhőből származó helyszíni jelszavaik kezelésekor hibákba ütköznek. Meg kell adni az engedélyeket erre az objektumra, és a "lejárat jelszava" kifejezés **összes leszármazott objektumát** meg kell jeleníteni.  
@@ -81,7 +81,7 @@ A jelszó visszaírási vonatkozó megfelelő engedélyek beállításához hajt
     * **LockoutTime írása**
     * **PwdLastSet írása**
 
-    [A ![ megfelelő engedélyek beállítása az aktív felhasználók és számítógépek számára az Azure ad Connect ](media/tutorial-enable-sspr-writeback/set-ad-ds-permissions-cropped.png) által használt fiókhoz](media/tutorial-enable-sspr-writeback/set-ad-ds-permissions.png#lightbox)
+    [A ![ megfelelő engedélyek beállítása az aktív felhasználók és számítógépek számára az Azure ad Connect ](media/tutorial-enable-sspr-writeback/set-ad-ds-permissions-cropped.png) által használt fiókhoz ](media/tutorial-enable-sspr-writeback/set-ad-ds-permissions.png#lightbox)
 
 1. Ha elkészült, kattintson az **alkalmaz/OK gombra** a módosítások alkalmazásához és a megnyitott párbeszédpanelek bezárásához.
 
@@ -147,7 +147,7 @@ Ha már nem szeretne jelszó-funkciót használni, hajtsa végre a következő l
 1. A **Konfigurálásra kész** lapon kattintson a **Konfigurálás** gombra, és várja meg, amíg a folyamat véget ér.
 1. Ha látja, hogy a konfigurálás befejeződött, kattintson a **Kilépés** gombra.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban engedélyezte az Azure AD-SSPR visszaírási egy helyszíni AD DS-környezetben. Megtanulta végrehajtani az alábbi műveleteket:
 

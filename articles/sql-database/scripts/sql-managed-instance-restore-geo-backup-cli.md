@@ -12,10 +12,10 @@ ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 07/03/2019
 ms.openlocfilehash: 5468cfc733b037f6287e8536c8c85994f0840161
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86231254"
 ---
 # <a name="use-cli-to-restore-a-managed-instance-database-to-another-geo-region"></a>Felügyelt példányok adatbázisának visszaállítása a CLI használatával egy másik földrajzi régióba
@@ -60,7 +60,7 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 |---|---|
 | [az SQL MidB](/cli/azure/sql/midb) | Felügyelt példány adatbázis-parancsai. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](/cli/azure).
 

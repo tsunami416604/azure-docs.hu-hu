@@ -17,10 +17,10 @@ ms.date: 05/10/2017
 ms.author: ramankum
 ms.custom: mvc
 ms.openlocfilehash: 83f0ea094c26a1ff664ef27729731b77d987e7ec
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86501497"
 ---
 # <a name="create-a-virtual-machine-using-an-existing-managed-os-disk-with-cli"></a>Virtuális gép létrehozása meglévő felügyelt operációsrendszer-lemezből a CLI használatával
@@ -54,7 +54,7 @@ A szkript a következő parancsokat használja a felügyelt lemez tulajdonságai
 |---|---|
 | [az disk show](/cli/azure/disk) | Lekérdezi a felügyelt lemez tulajdonságait a lemeznév és az erőforráscsoport neve alapján. A felügyelt lemezt az „Id” tulajdonság használatával csatlakoztatja egy új virtuális géphez. |
 | [az vm create](/cli/azure/vm) | Létrehoz egy virtuális gépet egy felügyelt operációsrendszer-lemezből. |
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](/cli/azure).
 

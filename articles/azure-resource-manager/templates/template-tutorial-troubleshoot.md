@@ -6,10 +6,10 @@ ms.date: 01/15/2019
 ms.topic: tutorial
 ms.author: jgao
 ms.openlocfilehash: 68ddb5c07ffac2aad4e2dafd16301fa29f391797
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86119344"
 ---
 # <a name="tutorial-troubleshoot-arm-template-deployments"></a>Oktatóanyag: ARM-sablonok üzembe helyezésének hibakeresése

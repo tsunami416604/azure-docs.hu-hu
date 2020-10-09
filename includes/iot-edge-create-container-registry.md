@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 12/30/2019
 ms.author: kgremban
 ms.openlocfilehash: 0c43c6dcced94225e9ab9ae903535ce74286ad9a
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87406714"
 ---
 ## <a name="create-a-container-registry"></a>Tárolóregisztrációs adatbázis létrehozása
@@ -29,7 +29,7 @@ Ha még nem rendelkezik tároló-beállításjegyzékkel, kövesse az alábbi l�
    | Erőforráscsoport | Javasoljuk, hogy az IoT Edge rövid útmutatók és oktatóanyagok során elkészített erőforráscsoportot használja minden teszterőforráshoz. Például: **IoTEdgeResources**. |
    | Beállításjegyzék neve | Egyedi nevet adjon meg. |
    | Hely | Válassza ki az Önhöz legközelebb eső helyet. |
-   | Termékváltozat | Válassza az **Alapszintű** lehetőséget. |
+   | SKU | Válassza az **Alapszintű** lehetőséget. |
 
 3. Kattintson a **Létrehozás** gombra.
 

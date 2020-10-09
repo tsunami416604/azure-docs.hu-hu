@@ -8,10 +8,10 @@ ms.subservice: cosmosdb-table
 ms.topic: sample
 ms.date: 07/29/2020
 ms.openlocfilehash: b6041bf493cf3cb6dcff5f52bdb0950afbbc5108
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87431471"
 ---
 # <a name="create-resource-lock-for-a-azure-cosmos-db-table-api-table-using-azure-cli"></a>Erőforrás-zárolás létrehozása Azure Cosmos DB Table API táblázathoz az Azure CLI használatával
@@ -38,7 +38,7 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 | [az Lock show](/cli/azure/lock#az-lock-show) | Zárolás tulajdonságainak megjelenítése. |
 | [az Lock delete](/cli/azure/lock#az-lock-delete) | Törli a zárolást. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 -[Erőforrások zárolása a váratlan módosítások megelőzése érdekében](../../../../azure-resource-manager/management/lock-resources.md)
 

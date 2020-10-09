@@ -10,10 +10,10 @@ ms.date: 05/01/2020
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: cf8fc9916384c9eef24c4c50f7647632c0e6b7a2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87077459"
 ---
 # <a name="tutorial-create-windows-vm-images-with-azure-powershell"></a>Oktatóanyag: Windowsos virtuális gépek rendszerképeinek létrehozása a Azure PowerShell
@@ -62,7 +62,7 @@ $sourceVM = Get-AzVM `
    -ResourceGroupName myResourceGroup
 ```
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Hozzon létre egy erőforráscsoportot a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) paranccsal.
 
@@ -193,7 +193,7 @@ New-AzRoleAssignment `
    -ResourceGroupName $resourceGroup.ResourceGroupName
 ```
    
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs rá szükség, használhatja a [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) parancsmagot az erőforráscsoport és az összes kapcsolódó erőforrás eltávolításához:
 

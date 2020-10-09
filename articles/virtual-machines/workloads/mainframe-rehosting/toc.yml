@@ -2,7 +2,7 @@
   items:
     - name: Áttekintés
       items:
-        - name: Első lépések
+        - name: Bevezetés
           href: overview.md
         - name: Számítási feladatok
           href: partner-workloads.md

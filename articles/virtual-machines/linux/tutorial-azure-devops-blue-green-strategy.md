@@ -13,10 +13,10 @@ ms.date: 4/10/2020
 ms.author: moala
 ms.custom: devops
 ms.openlocfilehash: 0d001144f1a2703db118261e5cae5417b1d8c17a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87080131"
 ---
 # <a name="tutorial---configure-the-blue-green-deployment-strategy-for-azure-linux-virtual-machines"></a>Oktatóanyag – az Azure Linux rendszerű virtuális gépekhez készült Blue-Green üzembe helyezési stratégia konfigurálása
@@ -53,7 +53,7 @@ A folyamatos kézbesítés beállítás használatával a Azure Portal a kék-z�
 1. A **központi telepítési stratégia**területen válassza a **kék-zöld**lehetőséget.
 1. Adjon hozzá egy "kék" vagy "zöld" címkét olyan virtuális gépekhez, amelyek a kék-zöld környezetek részét képezik. Ha egy virtuális gép készenléti szerepkörhöz kapcsolódik, a címke "zöld". Ellenkező esetben címkézse "Blue"-ként.
 
-   ![A folyamatos teljesítés panel, a központi telepítési stratégia értékének kék-zöld beállításával](media/tutorial-devops-azure-pipelines-classic/azure-devops-blue-green-configure.png)
+   ![A folyamatos kézbesítés panel, a központi telepítési stratégia értékének Blue-Green választása](media/tutorial-devops-azure-pipelines-classic/azure-devops-blue-green-configure.png)
 
 1. Kattintson az **OK** gombra a folyamatos kézbesítési folyamat konfigurálásához a virtuális gépen való üzembe helyezéshez.
 
@@ -65,7 +65,7 @@ A folyamatos kézbesítés beállítás használatával a Azure Portal a kék-z�
    1. Ebben a fázisban a folyamat szünetel, és megvárja a manuális beavatkozást a Futtatás folytatásához. A felhasználók akkor is folytathatják a folyamatot, ha manuálisan biztosítják a központi telepítés stabilitását a "zöld" címkével jelölt virtuális gépekre.
    1. Ez a fázis a virtuális gépek "kék" és "zöld" címkéit cseréli le. Ez biztosítja, hogy a régebbi verziójú alkalmazásokkal rendelkező virtuális gépek már "zöld" címkével legyenek megjelölve. A következő folyamat futtatásakor az alkalmazások a virtuális gépekre lesznek telepítve.
 
-      ![Az üzembe helyezési csoport panelje a kék-zöld feladat telepítéséhez](media/tutorial-devops-azure-pipelines-classic/azure-devops-blue-green-tasks.png)
+      ![A Blue-Green üzembe helyezése feladat központi telepítési csoport paneljén](media/tutorial-devops-azure-pipelines-classic/azure-devops-blue-green-tasks.png)
 
 1. Az üzembe helyezési parancsfájl végrehajtása feladat alapértelmezés szerint futtatja az üzembe helyezési parancsfájlt deploy.ps1 vagy deploy.sh. A parancsfájl a közzétett csomag gyökérkönyvtárában lévő deployscripts mappában található. Győződjön meg arról, hogy a kiválasztott build-folyamat közzéteszi a központi telepítést a csomag gyökérkönyvtárában.
 
@@ -84,7 +84,7 @@ Az Azure-t egyszerűen megteheti. A Azure DevOps Projects használatával a köv
 - Egy futtatókörnyezet
 - Azure-szolgáltatás
 
-[További információ](https://azure.microsoft.com/features/devops-projects/).
+[További információk](https://azure.microsoft.com/features/devops-projects/).
 
 ## <a name="additional-resources"></a>További források
 

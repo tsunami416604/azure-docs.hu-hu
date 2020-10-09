@@ -10,10 +10,10 @@ ms.date: 02/09/2018
 ms.author: cynthn
 ms.custom: mvc
 ms.openlocfilehash: 3b65d04b383fdc0a409e23ab6b6649604be502c6
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86525586"
 ---
 # <a name="tutorial-secure-a-web-server-on-a-windows-virtual-machine-in-azure-with-tlsssl-certificates-stored-in-key-vault"></a>Oktatóanyag: webkiszolgáló védelme Azure-beli Windows rendszerű virtuális gépen a Key Vault tárolt TLS/SSL-tanúsítványokkal
@@ -165,7 +165,7 @@ Ekkor a biztonságos IIS-webhely a következő példához hasonlóan jelenik meg
 ![Futó biztonságos IIS-hely megtekintése](./media/tutorial-secure-web-server/secured-iis.png)
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebben az oktatóanyagban egy olyan IIS-webkiszolgálót biztosított, amely Azure Key Vaultban tárolt TLS/SSL-tanúsítvánnyal rendelkezik. Megtanulta végrehajtani az alábbi műveleteket:
 
 > [!div class="checklist"]

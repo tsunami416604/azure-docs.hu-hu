@@ -7,10 +7,10 @@ ms.topic: tutorial
 ms.date: 06/20/2019
 ms.author: rohogue
 ms.openlocfilehash: ea963b143cedf36137d9c36bc57d323353da6786
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86231352"
 ---
 # <a name="tutorial-mount-the-cluster"></a>Oktatóanyag: a fürt csatlakoztatása
@@ -49,7 +49,7 @@ A nagyméretű vagy bonyolult rendszerek esetében más terheléselosztási mód
 
 Az ügyféltől a ``mount`` parancs leképezi a virtuális kiszolgálót (VServer) az Azure FXT Edge Filer-fürtön a helyi fájlrendszer egyik elérési útjára.
 
-A formátum``mount <FXT cluster path> <local path> {options}``
+A formátum ``mount <FXT cluster path> <local path> {options}``
 
 A csatlakoztatási parancsnak három eleme van:
 
@@ -77,7 +77,7 @@ Az IP-cím a VServer definiált ügyféloldali IP-címek egyike. Az ügyfélolda
 
 Egyesítse az IP-címet és a névtér elérési útját, hogy a fürt elérési útja a csatlakoztatási parancshoz legyen létrehozva.
 
-Példa az ügyfél csatlakoztatására szolgáló parancsra:``mount 10.0.0.12:/sd-access /mnt/fxt {options}``
+Példa az ügyfél csatlakoztatására szolgáló parancsra: ``mount 10.0.0.12:/sd-access /mnt/fxt {options}``
 
 ### <a name="create-the-local-path"></a>A helyi elérési út létrehozása
 
@@ -104,7 +104,7 @@ A zökkenőmentes ügyfél-csatlakoztatás biztosításához adja át ezeket a b
 --- | ---
 ``nointr``            | Ha az ügyfelek az ezt a lehetőséget támogató régebbi operációsrendszer-kerneleket (mielőtt április 2008) használják, használja azt. A "intr" beállítás az alapértelmezett.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az ügyfelek csatlakoztatása után tesztelheti a munkafolyamatot, és megkezdheti a fürt megkezdését.
 
