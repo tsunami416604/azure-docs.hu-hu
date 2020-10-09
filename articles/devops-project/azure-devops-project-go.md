@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.date: 07/09/2018
 ms.author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 02304758ef89ff7c94d1c3d8f98f6931ab7fd8dc
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: ad62b59587f5ef7823e601cd8b6b526b75b8fd03
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "82233125"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91854613"
 ---
 # <a name="create-a-cicd-pipeline-for-go-using-azure-devops-starter"></a>CI/CD-folyamat létrehozása a Go-hoz az Azure DevOps Starter használatával
 
@@ -123,4 +123,4 @@ Ha már nincs rá szükség, törölheti az Azure App Service példányt és az 
 Ha többet szeretne megtudni arról, hogy a build és a Release folyamat hogyan módosítható a csapat igényeinek megfelelően, tekintse meg a következőt:
 
 > [!div class="nextstepaction"]
-> [A többfázisú folyamatos üzembe helyezés (CD) folyamatának meghatározása](https://docs.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)
+> [A többfázisú folyamatos üzembe helyezés (CD) folyamatának meghatározása](/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)

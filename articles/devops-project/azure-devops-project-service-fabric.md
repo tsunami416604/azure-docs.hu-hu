@@ -8,12 +8,12 @@ ms.technology: devops-cicd
 ms.topic: tutorial
 ms.date: 03/24/2020
 author: mlearned
-ms.openlocfilehash: ce35f3af38b98f43ebbd0d3f42136ab8358b19a5
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 723f46652643883dc8e718468a9ca9eead50e1aa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "82233720"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91856024"
 ---
 # <a name="tutorial-deploy-your-aspnet-core-app-to-azure-service-fabric-by-using-azure-devops-starter"></a>Oktatóanyag: ASP.NET Core-alkalmazás üzembe helyezése az Azure-Service Fabric az Azure DevOps Starter használatával
 
@@ -143,7 +143,7 @@ Ha teszteli, elkerülheti a számlázási díjak felmerülését az erőforráso
 1. A jobb felső sarokban válassza a **Törlés**lehetőséget. 
 1. A parancssorban válassza az **Igen** lehetőséget az erőforrások *végleges törléséhez* .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A csapat igényeihez igazodva módosíthatja az Azure CI-/CD-folyamatot. Ezt a CI-/CD-mintát egyéb folyamatok sablonjaként is használhatja. Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
@@ -158,4 +158,4 @@ A csapat igényeihez igazodva módosíthatja az Azure CI-/CD-folyamatot. Ezt a C
 A Service Fabric és a szolgáltatásokkal kapcsolatos további tudnivalókért tekintse meg a következőt:
 
 > [!div class="nextstepaction"]
-> [A mikroszolgáltatás-alapú megközelítés használata alkalmazások létrehozásához](https://docs.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)
+> [A mikroszolgáltatás-alapú megközelítés használata alkalmazások létrehozásához](/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)

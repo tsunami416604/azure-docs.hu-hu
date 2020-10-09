@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/21/2019
 ms.author: jeedes
-ms.openlocfilehash: 1f4569a45b9ed0eee7c375e660df97925335313b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 5dcd705719510cce3a113c5b0fdc46d016313b6d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549802"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91856409"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-linkedin-elevate"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a LinkedIn emelt szintű szolgáltatással
 
@@ -96,7 +96,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. A fentieken kívül a LinkedIn jogosultságszint-emelési alkalmazás néhány további attribútumot vár az SAML-válaszokban, amelyek alább láthatók. Ezek az attribútumok előre is fel vannak töltve, de a követelménynek megfelelően áttekintheti őket.
 
-    | Name | Forrás attribútum|
+    | Név | Forrás attribútum|
     | -------| -------------|
     | Részleg | felhasználó. részleg |
 
@@ -118,7 +118,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Create** (Létrehozás) gombra.
+   1. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -144,11 +144,11 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 
 1. A **Account Centerben**kattintson a **globális beállítások** elemre a **Beállítások**területen. A legördülő listából válassza az **emelt szintű HRE teszt** lehetőséget.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/linkedinelevate-tutorial/tutorial_linkedin_admin_01.png)
+    ![A képernyőképen a globális beállítások láthatók, ahol kiválaszthatja a D tesztet.](./media/linkedinelevate-tutorial/tutorial_linkedin_admin_01.png)
 
 1. Kattintson **vagy kattintson ide az egyes mezők az űrlapról való betöltéséhez és másolásához** , majd hajtsa végre a következő lépéseket:
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/linkedinelevate-tutorial/tutorial_linkedin_admin_03.png)
+    ![Képernyőfelvétel: egyetlen Sign-On, ahol megadhatja a leírt értékeket.](./media/linkedinelevate-tutorial/tutorial_linkedin_admin_03.png)
 
     a. Másolja ki az **entitás azonosítóját** , és illessze be a Azure Portal **ALAPszintű SAML-konfigurációjának** **azonosító** szövegmezőbe.
 
@@ -156,11 +156,11 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 
 1. Ugrás a **LinkedIn admin Settings** szakaszra. Töltse fel a Azure Portal letöltött XML-fájlt az XML-fájl feltöltése lehetőségre kattintva.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/linkedinelevate-tutorial/tutorial_linkedin_metadata_03.png)
+    ![Képernyőfelvétel: a LinkedIn Service Provider S S O beállításainak konfigurálása, ahol feltölthető egy X M L-fájl.](./media/linkedinelevate-tutorial/tutorial_linkedin_metadata_03.png)
 
 1. Az egyszeri bejelentkezés engedélyezéséhez kattintson **a be** gombra. Az SSO-állapot **nem** kapcsolódik **kapcsolathoz**
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/linkedinelevate-tutorial/tutorial_linkedin_admin_05.png)
+    ![Képernyőfelvétel: egyetlen Sign-On, ahol kiválaszthatja a licencek automatikus hozzárendelését.](./media/linkedinelevate-tutorial/tutorial_linkedin_admin_05.png)
 
 ### <a name="create-linkedin-elevate-test-user"></a>LinkedIn jogosultságszint-emelési teszt felhasználó létrehozása
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/22/2019
 ms.author: jeedes
-ms.openlocfilehash: 507298f323fe14e3b114afebed5f2f258145a76e
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: bc820eb282d08c248b588aa926eb3fd837fe51c3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549940"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91858115"
 ---
 # <a name="tutorial-integrate-knowledge-anywhere-lms-with-azure-active-directory"></a>Oktatóanyag: az ismeretek integrálása bárhová az LMS Azure Active Directory
 
@@ -69,7 +69,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. A [Azure Portal](https://portal.azure.com/), a **Knowledge Anywhere** Application Integration oldalon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
 1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
-1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
+1. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
 
    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
@@ -89,7 +89,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
     > [!NOTE]
     > A bejelentkezési URL-cím értéke nem valós. Frissítse ezt az értéket a tényleges bejelentkezési URL-címmel. Ha ezt az értéket szeretné megkapni, lépjen kapcsolatba az ügyfélszolgálattal [bárhol az LMS ügyfél-támogatási csapattal](https://knowany.zendesk.com/hc/en-us/articles/360000469034-SAML-2-0-Single-Sign-On-SSO-Set-Up-Guide) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg a **tanúsítvány (Base64)** elemet, majd a **Letöltés** gombra kattintva töltse le a tanúsítványt, és mentse a számítógépre.
+1. Az **egyszeres Sign-On beállítása SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg a **tanúsítvány (Base64)** elemet, majd a **Letöltés** gombra kattintva töltse le a tanúsítványt, és mentse a számítógépre.
 
    ![A tanúsítvány letöltési hivatkozása](common/certificatebase64.png)
 
@@ -111,19 +111,19 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 4. Válassza a **site (hely** ) lapot.
 
-    ![Az ismeretek bárhol az LMS-konfigurációban](./media/knowledge-anywhere-lms-tutorial/configure1.png)
+    ![A képernyőképen a hely lap látható.](./media/knowledge-anywhere-lms-tutorial/configure1.png)
 
 5. Válassza az **SAML-beállítások** lapot.
 
-    ![Az ismeretek bárhol az LMS-konfigurációban](./media/knowledge-anywhere-lms-tutorial/configure2.png)
+    ![A képernyőfelvételen a kiválasztott SAML-beállításokkal rendelkező oldalak láthatók.](./media/knowledge-anywhere-lms-tutorial/configure2.png)
 
 6. Kattintson az **új hozzáadása**gombra.
 
-    ![Az ismeretek bárhol az LMS-konfigurációban](./media/knowledge-anywhere-lms-tutorial/configure3.png)
+    ![Képernyőfelvétel: az új hozzáadása gomb a szolgáltató beállításaiban.](./media/knowledge-anywhere-lms-tutorial/configure3.png)
 
 7. Az **SAML-beállítások hozzáadása/frissítése** oldalon hajtsa végre a következő lépéseket:
 
-    ![Az ismeretek bárhol az LMS-konfigurációban](./media/knowledge-anywhere-lms-tutorial/configure4.png)
+    ![Képernyőfelvétel: az SAML-beállítások hozzáadása/frissítése oldal, ahol az itt ismertetett módosításokat végezheti el.](./media/knowledge-anywhere-lms-tutorial/configure4.png)
 
     a. Adja meg a IDENTITÁSSZOLGÁLTATÓ nevét a szervezete számára. Pl.: – `Azure` .
 
@@ -153,7 +153,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B. Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `BrittaSimon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Create** (Létrehozás) gombra.
+   1. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

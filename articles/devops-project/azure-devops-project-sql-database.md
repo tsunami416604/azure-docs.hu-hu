@@ -8,12 +8,12 @@ ms.technology: devops-cicd
 ms.topic: tutorial
 ms.date: 03/24/2020
 author: mlearned
-ms.openlocfilehash: e40eb9cc22cdc071381cc847b49a01d4d713653d
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.openlocfilehash: 6a1af644bbd88af5c513ed9a43ce154f285c06df
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "85318624"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91856007"
 ---
 # <a name="tutorial-deploy-your-aspnet-app-and-azure-sql-database-code-by-using-azure-devops-starter"></a>Oktatóanyag: a ASP.NET-alkalmazás üzembe helyezése és Azure SQL Database kód használata az Azure DevOps Starter használatával
 
@@ -33,7 +33,7 @@ Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 > * A CI-folyamat vizsgálata
 > * A CD-folyamat vizsgálata
 > * Az Azure Repos változásainak érvényesítése és automatikus üzembe helyezése az Azure-ban
-> * Kapcsolódás az Azure SQL Database-hez 
+> * Csatlakozás az Azure SQL Database-hez 
 > * Az erőforrások eltávolítása
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -66,7 +66,7 @@ A DevOps Starter egy CI/CD-folyamatot hoz létre az Azure-folyamatokban. Létreh
 
 1. Válassza ki az Azure-előfizetési szolgáltatásokat. Ha szeretné megtekinteni a további Azure-konfigurációs beállításokat, és azonosítani a felhasználónevet az **adatbázis-kiszolgáló bejelentkezési adatai** szakaszban, akkor válassza a **módosítás**lehetőséget. Tárolja el a felhasználónevet az oktatóanyag további lépéseihez. Ha ezt a választható lépést hajtja végre, lépjen ki az Azure konfigurációs területén a **kész**gombra kattintva.
  
-1. Válassza a **Kész** lehetőséget. Néhány perc elteltével a folyamat befejeződik, és megnyílik a DevOps-indító irányítópult a Azure Portal. Közvetlenül az irányítópulton is megnyithatja a Azure Portal **összes erőforrását** . A jobb oldalon kattintson a **Tallózás** gombra a futó alkalmazás megtekintéséhez.
+1. Válassza a **Done** (Kész) lehetőséget. Néhány perc elteltével a folyamat befejeződik, és megnyílik a DevOps-indító irányítópult a Azure Portal. Közvetlenül az irányítópulton is megnyithatja a Azure Portal **összes erőforrását** . A jobb oldalon kattintson a **Tallózás** gombra a futó alkalmazás megtekintéséhez.
     
 ## <a name="examine-the-ci-pipeline"></a>A CI-folyamat vizsgálata
 
@@ -140,7 +140,7 @@ Most már készen áll az alkalmazásban lévő csapattal való együttműködé
 
 1. A kiadás befejezése után frissítse az alkalmazást a módosítások ellenőrzéséhez.
 
-## <a name="connect-to-azure-sql-database"></a>Kapcsolódás az Azure SQL Database-hez
+## <a name="connect-to-azure-sql-database"></a>Csatlakozás az Azure SQL Database-hez
 
 A Azure SQL Databasehoz való kapcsolódáshoz megfelelő engedélyekkel kell rendelkeznie.
 
@@ -184,13 +184,13 @@ A csapat igényeihez igazodva módosíthatja ezt a buildet és a kiadási folyam
 > * A CI-folyamat vizsgálata
 > * A CD-folyamat vizsgálata
 > * Az Azure Repos változásainak érvényesítése és automatikus üzembe helyezése az Azure-ban
-> * Kapcsolódás az Azure SQL Database-hez 
+> * Csatlakozás az Azure SQL Database-hez 
 > * Az erőforrások eltávolítása
 
 A CI/CD folyamattal kapcsolatos további tudnivalókért tekintse meg a következőt:
 
 > [!div class="nextstepaction"]
-> [A többfázisú folyamatos üzembe helyezés (CD) folyamatának meghatározása](https://docs.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)
+> [A többfázisú folyamatos üzembe helyezés (CD) folyamatának meghatározása](/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)
 
 ## <a name="videos"></a>Videók
 

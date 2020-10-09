@@ -9,12 +9,12 @@ ms.date: 08/03/2020
 ms.topic: tutorial
 ms.service: iot-edge
 ms.custom: mvc, amqp, devx-track-csharp
-ms.openlocfilehash: 24a63a167f640646b9e07126a038663f4da3e23b
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: b9451bcf6f67eb6afc6d06f4aa0cbec83ce75d6e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91449604"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91855259"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-windows-devices"></a>Oktatóanyag: C# IoT Edge modul fejlesztése Windows-eszközökhöz
 
@@ -93,7 +93,7 @@ Az üzembe helyezési jegyzék megosztja a tároló beállításjegyzékének hi
 
 1. A Visual Studio Solution Explorerben nyissa meg a **deployment.template.js** fájlt.
 
-2. Keresse meg a **registryCredentials** tulajdonságot a $edgeAgent kívánt tulajdonságban. A szolgáltatásnak a projekt létrehozásakor megadott információk alapján kell kitöltenie a beállításjegyzékbeli címeket, majd a Felhasználónév és a jelszó mezőben a változók nevét kell tartalmaznia. Példa:
+2. Keresse meg a **registryCredentials** tulajdonságot a $edgeAgent kívánt tulajdonságban. A szolgáltatásnak a projekt létrehozásakor megadott információk alapján kell kitöltenie a beállításjegyzékbeli címeket, majd a Felhasználónév és a jelszó mezőben a változók nevét kell tartalmaznia. Például:
 
    ```json
    "registryCredentials": {
@@ -361,9 +361,9 @@ Ellenkező esetben törölheti a cikkben használt helyi konfigurációkat és a
 
 [!INCLUDE [iot-edge-clean-up-cloud-resources](../../includes/iot-edge-clean-up-cloud-resources.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban IoT Edge-modult hozott létre olyan kóddal, amely szűri az IoT Edge-eszköz által létrehozott nyers adatokat. Ha készen áll a saját modulok létrehozására, többet is megtudhat a [saját IoT Edge moduljainak fejlesztéséről](module-development.md) , illetve a [Visual Studióval történő modulok fejlesztéséről](how-to-visual-studio-develop-module.md). IoT Edge modulokra, például a szimulált hőmérsékleti modulra példaként lásd: [IoT Edge modul minták](https://github.com/Azure/iotedge/tree/master/edge-modules).
+Ebben az oktatóanyagban IoT Edge-modult hozott létre olyan kóddal, amely szűri az IoT Edge-eszköz által létrehozott nyers adatokat.
 
 Folytassa a következő oktatóanyagokkal, amelyből megtudhatja, hogyan hozhatja Azure IoT Edge az Azure Cloud Services üzembe helyezését az adathordozón lévő adatfeldolgozás és-elemzés során.
 

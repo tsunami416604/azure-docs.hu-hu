@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 05/07/2019
 ms.author: jeedes
-ms.openlocfilehash: 9a11ff33245bf92e225f0f2382f6e873eab1338c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 9ebb0927f9721c5c35ee0d83a108efd72732958b
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91323814"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91851220"
 ---
 # <a name="tutorial-configure-dynamic-signal-for-automatic-user-provisioning"></a>Oktatóanyag: dinamikus jel beállítása a felhasználók automatikus üzembe helyezéséhez
 
@@ -100,11 +100,11 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
 6. A dinamikus jel felügyeleti konzolon navigáljon a **rendszergazda > Advanced > API**elemre.
 
-    ![Dinamikus jelek kiépítés](./media/dynamic-signal-provisioning-tutorial/secret-token-1.png)
+    :::image type="content" source="./media/dynamic-signal-provisioning-tutorial/secret-token-1.png" alt-text="Képernyőkép a dinamikus jel felügyeleti konzolról. A speciális elem a felügyeleti menüben van kiemelve. A Speciális menü is látható, egy P kiemelve." border="false":::
 
     Másolja a **scim API URL-címét** a **bérlői URL**-címre. Kattintson az **új jogkivonat létrehozása** lehetőségre egy **tulajdonosi jogkivonat** létrehozásához és az érték **titkos jogkivonatba**való másolásához.
 
-    ![Dinamikus jelek kiépítés](./media/dynamic-signal-provisioning-tutorial/secret-token-2.png)
+    :::image type="content" source="./media/dynamic-signal-provisioning-tutorial/secret-token-2.png" alt-text="Képernyőkép a dinamikus jel felügyeleti konzolról. A speciális elem a felügyeleti menüben van kiemelve. A Speciális menü is látható, egy P kiemelve." border="false":::
 
 7. Az 5. lépésben megjelenő mezők kitöltése után kattintson a **kapcsolat tesztelése** elemre annak biztosításához, hogy az Azure ad csatlakozni tudjanak a dinamikus jellé. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a dinamikus jel fiókja rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
 

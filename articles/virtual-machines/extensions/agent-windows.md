@@ -2,23 +2,17 @@
 title: Az Azure Virtual Machine Agent áttekintése
 description: Az Azure Virtual Machine Agent áttekintése
 services: virtual-machines-windows
-documentationcenter: virtual-machines
 author: mimckitt
-manager: gwallace
-tags: azure-resource-manager
-ms.assetid: 0a1f212e-053e-4a39-9910-8d622959f594
 ms.service: virtual-machines-windows
 ms.topic: article
-ms.tgt_pltfrm: vm-windows
-ms.workload: infrastructure-services
 ms.date: 07/20/2019
-ms.author: akjosh
-ms.openlocfilehash: d9939b706eb63e5681ddef438cde92f32786f889
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.author: mimckitt
+ms.openlocfilehash: 2db83b643ec3000c5b86388f4b603bba32f2a9a4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2020
-ms.locfileid: "89612832"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91855775"
 ---
 # <a name="azure-virtual-machine-agent-overview"></a>Az Azure Virtual Machine Agent áttekintése
 A Microsoft Azure virtuálisgép-ügynök (VM-ügynök) egy biztonságos, egyszerű folyamat, amely a virtuális gép (VM) interakcióját kezeli az Azure Fabric-vezérlővel. A virtuálisgép-ügynök elsődleges szerepköre az Azure-beli virtuális gépek bővítményeinek engedélyezése és végrehajtása. A virtuálisgép-bővítmények lehetővé teszik a virtuális gép telepítés utáni konfigurálását, például a szoftverek telepítését és konfigurálását. A virtuálisgép-bővítmények olyan helyreállítási funkciókat is lehetővé tesznek, mint például egy virtuális gép rendszergazdai jelszavának alaphelyzetbe állítása. Az Azure VM-ügynök nélkül nem futtathatók a virtuálisgép-bővítmények.
@@ -70,7 +64,7 @@ $vm | Update-AzVM
 
 ### <a name="prerequisites"></a>Előfeltételek
 
-- A Windows rendszerű virtuális gép ügynökének legalább a Windows Server 2008 SP2 (64 bites) rendszerre van szüksége a .NET-keretrendszer 4,0-as verziójának futtatásához. Lásd: [Az Azure-beli virtuálisgép-ügynökök minimális verziójának támogatása](https://support.microsoft.com/en-us/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support)
+- A Windows rendszerű virtuális gép ügynökének legalább a Windows Server 2008 SP2 (64 bites) rendszerre van szüksége a .NET-keretrendszer 4,0-as verziójának futtatásához. Lásd: [Az Azure-beli virtuálisgép-ügynökök minimális verziójának támogatása](https://support.microsoft.com/help/4049215/extensions-and-virtual-machine-agent-minimum-version-support).
 
 - Győződjön meg arról, hogy a virtuális gép rendelkezik hozzáféréssel az IP-168.63.129.16. További információ: [Mi az IP-168.63.129.16](../../virtual-network/what-is-ip-address-168-63-129-16.md).
 
@@ -87,7 +81,7 @@ Az Azure-beli virtuális gépekkel kapcsolatos információk lekéréséhez a Az
 Get-AzVM
 ```
 
-A következő összesűrített példa kimenet a *OSProfile*-ben beágyazott *ProvisionVMAgent* tulajdonságot mutatja be. Ezzel a tulajdonsággal határozható meg, hogy a virtuálisgép-ügynök telepítve van-e a virtuális gépen:
+A következő összetömörített példa kimenete a *ProvisionVMAgent* tulajdonságot mutatja be a belsejében `OSProfile` . Ezzel a tulajdonsággal határozható meg, hogy a virtuálisgép-ügynök telepítve van-e a virtuális gépen:
 
 ```powershell
 OSProfile                  :
@@ -120,5 +114,14 @@ A Windows rendszerhez készült Azure virtuálisgép-ügynök automatikusan fris
 ## <a name="windows-guest-agent-automatic-logs-collection"></a>A Windows vendég ügynökének automatikus naplófájljainak gyűjteménye
 A Windows vendég ügynökének van egy funkciója, amellyel automatikusan gyűjthet néhány naplót. Ezt a funkciót a CollectGuestLogs.exe folyamat vezérlője. Mind a Péter Cloud Services, mind a IaaS Virtual Machines, és a célja, hogy gyorsan & automatikusan gyűjtsön néhány diagnosztikai naplót egy virtuális gépről, így offline elemzéshez is használhatók. Az összegyűjtött naplók az eseménynaplók, az operációs rendszer naplói, az Azure-naplók és egyes beállításkulcsok. Létrehoz egy ZIP-fájlt, amely a virtuális gép Gazdagépére kerül át. Ebben a ZIP-fájlban a mérnöki csapatok és a támogatási szakemberek a virtuális gép tulajdonosának kérelmére vonatkozó problémák kivizsgálására is rámutatnak.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="guest-agent-and-osprofile-certificates"></a>Vendég ügynök és OSProfile tanúsítványok
+Az Azure-beli virtuálisgép-ügynök felelős a `OSProfile` virtuális gép vagy virtuálisgép-méretezési csoport által hivatkozott tanúsítványok telepítéséhez. Ha manuálisan távolítja el ezeket a tanúsítványokat a tanúsítványok MMC-konzolról a vendég virtuális gépen, a rendszer azt várta, hogy a vendég ügynök felveszi őket.
+A tanúsítvány végleges eltávolításához el kell távolítania azt a ból `OSProfile` , majd el kell távolítania a vendég operációs rendszerből.
+
+Virtuális gépek esetén a [Remove-AzVMSecret]() használatával távolítsa el a tanúsítványokat a alkalmazásból `OSProfile` .
+
+További információ a virtuálisgép-méretezési csoport tanúsítványainak tanúsítványáról: [Virtual Machine Scale sets-hogyan elavult tanúsítványok eltávolítása?](https://docs.microsoft.com/azure/virtual-machine-scale-sets/virtual-machine-scale-sets-faq#how-do-i-remove-deprecated-certificates)
+
+
+## <a name="next-steps"></a>További lépések
 További információ a virtuálisgép-bővítményekről: [Azure-beli virtuális gépek bővítményei és funkcióinak áttekintése](overview.md).

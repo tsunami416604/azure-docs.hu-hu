@@ -11,12 +11,12 @@ ms.topic: conceptual
 ms.date: 04/18/2019
 ms.author: sbowles
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 231f30f5532d0934ba41e591aa821d56b11d5856
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 500099753ee4fe47f02e7f09d9732b71aa3bae36
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88928003"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91856365"
 ---
 # <a name="get-face-detection-data"></a>Arcfelismerés-adatlekérdezés
 
@@ -36,71 +36,29 @@ Ez az útmutató az észlelési hívás sajátosságait mutatja be, például az
 
 ## <a name="get-basic-face-data"></a>Alapszintű Face-adatok beolvasása
 
-Az arcok megkereséséhez és a helyüknek a rendszerképben való lekéréséhez hívja meg a metódust az _returnFaceId_ paraméter **true**értékre állításával. Ez az alapértelmezett beállítás.
+Az arcok megkereséséhez és a helyüknek a képen való lekéréséhez hívja meg a [DetectWithUrlAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithurlasync?view=azure-dotnet) vagy a [DetectWithStreamAsync](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.faceoperationsextensions.detectwithstreamasync?view=azure-dotnet) metódust az _returnFaceId_ paraméter **true**értékre állításával. Ez az alapértelmezett beállítás.
 
-```csharp
-IList<DetectedFace> faces = await faceClient.Face.DetectWithUrlAsync(imageUrl, true, false, null);
-```
+:::code language="csharp" source="~/cognitive-services-quickstart-code/dotnet/Face/sdk/detect.cs" id="basic1":::
 
 Lekérdezheti a visszaadott [DetectedFace](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.detectedface?view=azure-dotnet) objektumokat egyedi azonosítójuk és egy olyan négyszög között, amely az arc képpontjának koordinátáit adja meg.
 
-```csharp
-foreach (var face in faces)
-{
-    string id = face.FaceId.ToString();
-    FaceRectangle rect = face.FaceRectangle;
-}
-```
+:::code language="csharp" source="~/cognitive-services-quickstart-code/dotnet/Face/sdk/detect.cs" id="basic2":::
 
 További információ az arc helyének és méreteinek elemzéséről: [FaceRectangle](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.facerectangle?view=azure-dotnet). Ez a négyszög általában a szemet, a szemöldökét, az orrát és a száját tartalmazza. A fej, a fülek és az álla teteje nem feltétlenül szerepel. Ha a Face téglalapot szeretné használni egy teljes fej kivágásához vagy egy közép-shot portré létrehozásához, például egy fénykép-azonosító típusú képhez, kibonthatja a téglalapot az egyes irányokban.
 
 ## <a name="get-face-landmarks"></a>Face-tereptárgyak beolvasása
 
-Az [arc tereptárgyak](../concepts/face-detection.md#face-landmarks) könnyen megtalált pontok, például a tanulók és az orr hegye. A tereptárgyak beszerzéséhez állítsa a _returnFaceLandmarks_ paramétert **true (igaz**) értékre.
+Az [arc tereptárgyak](../concepts/face-detection.md#face-landmarks) könnyen megtalált pontok, például a tanulók és az orr hegye. A tereptárgyak beszerzéséhez állítsa a _detectionModel_ paramétert a **detectionModel. Detection01** értékre, a _returnFaceLandmarks_ paramétert pedig **true**értékre.
 
-```csharp
-IList<DetectedFace> faces = await faceClient.Face.DetectWithUrlAsync(imageUrl, true, true, null);
-```
+:::code language="csharp" source="~/cognitive-services-quickstart-code/dotnet/Face/sdk/detect.cs" id="landmarks1":::
 
 A következő kód bemutatja, hogyan kérheti le az orr és a tanulók helyét:
 
-```csharp
-foreach (var face in faces)
-{
-    var landmarks = face.FaceLandmarks;
-
-    double noseX = landmarks.NoseTip.X;
-    double noseY = landmarks.NoseTip.Y;
-
-    double leftPupilX = landmarks.PupilLeft.X;
-    double leftPupilY = landmarks.PupilLeft.Y;
-
-    double rightPupilX = landmarks.PupilRight.X;
-    double rightPupilY = landmarks.PupilRight.Y;
-}
-```
+:::code language="csharp" source="~/cognitive-services-quickstart-code/dotnet/Face/sdk/detect.cs" id="landmarks2":::
 
 A Face tereptárgyak adataival az arc irányának pontos kiszámításához is használható. Például megadhatja az arc elforgatását vektorként a száj közepétől a szem közepéig. A következő kód kiszámítja ezt a vektort:
 
-```csharp
-var upperLipBottom = landmarks.UpperLipBottom;
-var underLipTop = landmarks.UnderLipTop;
-
-var centerOfMouth = new Point(
-    (upperLipBottom.X + underLipTop.X) / 2,
-    (upperLipBottom.Y + underLipTop.Y) / 2);
-
-var eyeLeftInner = landmarks.EyeLeftInner;
-var eyeRightInner = landmarks.EyeRightInner;
-
-var centerOfTwoEyes = new Point(
-    (eyeLeftInner.X + eyeRightInner.X) / 2,
-    (eyeLeftInner.Y + eyeRightInner.Y) / 2);
-
-Vector faceDirection = new Vector(
-    centerOfTwoEyes.X - centerOfMouth.X,
-    centerOfTwoEyes.Y - centerOfMouth.Y);
-```
+:::code language="csharp" source="~/cognitive-services-quickstart-code/dotnet/Face/sdk/detect.cs" id="direction":::
 
 Ha ismeri az arc irányát, elforgathatja a téglalap alakú keretet úgy, hogy az megfelelően illeszkedjen. A képeken lévő arcok kivágásához programozott módon forgathatja el a képet úgy, hogy az arcok mindig egyenesen jelenjenek meg.
 
@@ -108,36 +66,13 @@ Ha ismeri az arc irányát, elforgathatja a téglalap alakú keretet úgy, hogy 
 
 A Face észlelési API-k mellett az arc téglalapok és a tereptárgyak is elemezhetők az arc számos fogalmi attribútuma. A teljes listát a [Face attributes](../concepts/face-detection.md#attributes) fogalmi szakasza tartalmazza.
 
-A Face attribútumok elemzéséhez állítsa a _returnFaceAttributes_ paramétert a [FaceAttributeType enumerálási](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.faceattributetype?view=azure-dotnet) értékek listájára.
+A Face attribútumok elemzéséhez állítsa a _detectionModel_ paramétert a **detectionModel. Detection01** és a _ReturnFaceAttributes_ paraméterre a [FaceAttributeType enumerálási](https://docs.microsoft.com/dotnet/api/microsoft.azure.cognitiveservices.vision.face.models.faceattributetype?view=azure-dotnet) értékek listájára.
 
-```csharp
-var requiredFaceAttributes = new FaceAttributeType[] {
-    FaceAttributeType.Age,
-    FaceAttributeType.Gender,
-    FaceAttributeType.Smile,
-    FaceAttributeType.FacialHair,
-    FaceAttributeType.HeadPose,
-    FaceAttributeType.Glasses,
-    FaceAttributeType.Emotion
-};
-var faces = await faceClient.DetectWithUrlAsync(imageUrl, true, false, requiredFaceAttributes);
-```
+:::code language="csharp" source="~/cognitive-services-quickstart-code/dotnet/Face/sdk/detect.cs" id="attributes1":::
 
 Ezután szerezzen be a visszaadott adatokra mutató hivatkozásokat, és tegye meg az igényeinek megfelelő további műveleteket.
 
-```csharp
-foreach (var face in faces)
-{
-    var attributes = face.FaceAttributes;
-    var age = attributes.Age;
-    var gender = attributes.Gender;
-    var smile = attributes.Smile;
-    var facialHair = attributes.FacialHair;
-    var headPose = attributes.HeadPose;
-    var glasses = attributes.Glasses;
-    var emotion = attributes.Emotion;
-}
-```
+:::code language="csharp" source="~/cognitive-services-quickstart-code/dotnet/Face/sdk/detect.cs" id="attributes2":::
 
 Ha többet szeretne megtudni az egyes attribútumokról, tekintse meg a [arcfelismerés és attribútumok](../concepts/face-detection.md) fogalmi útmutatót.
 

@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 04/15/2020
-ms.openlocfilehash: 098c0a85dc6c0fac8b78f344c4c8559b168b9114
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: 4d9a5900990ea41788ced5f25690619fbde68d33
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91371337"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91854987"
 ---
 # <a name="managed-identities-in-azure-hdinsight"></a>Felügyelt identitások az Azure HDInsight
 
@@ -44,7 +44,7 @@ A felügyelt identitás konfigurálásának hátralévő lépései attól függn
 
 A felügyelt identitásokat több forgatókönyvben használják az Azure HDInsight. A részletes beállítási és konfigurációs utasításokért tekintse meg a kapcsolódó dokumentumokat:
 
-* [Azure Data Lake Storage Gen2](hdinsight-hadoop-use-data-lake-storage-gen2.md#create-a-user-assigned-managed-identity)
+* [Azure Data Lake Storage Gen2](hdinsight-hadoop-use-data-lake-storage-gen2-portal.md#create-a-user-assigned-managed-identity)
 * [Enterprise Security Package](domain-joined/apache-domain-joined-configure-using-azure-adds.md#create-and-authorize-a-managed-identity)
 * [Ügyfél által felügyelt kulcson alapuló lemeztitkosítás](disk-encryption.md)
 
@@ -63,6 +63,6 @@ ezt követően a fürtben használt összes felügyelt identitáshoz hozzá kell
 
 A fürt problémákba ütközik, amikor a felügyelt identitásra van szükség. A fürt létrehozása után jelenleg nincs lehetőség felügyelt identitás frissítésére vagy módosítására. Ezért javasoljuk, hogy a fürt futtatókörnyezetében ne törölje a felügyelt identitást. Vagy újra létrehozhatja a fürtöt, és hozzárendelhet egy új felügyelt identitást.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Mit kell tudni az Azure-erőforrások felügyelt identitásairól?](../active-directory/managed-identities-azure-resources/overview.md)

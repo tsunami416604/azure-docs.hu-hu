@@ -1,41 +1,42 @@
 ---
-title: Azure Batch feladat indítása esemény
-description: A Batch-feladat indítási eseményére vonatkozó információk. Ezt az eseményt akkor bocsátja ki a rendszer, ha az ütemező egy számítási csomóponton indítja el a feladatot.
+title: Azure Batch feladat-ütemterv sikertelen eseménye
+description: A Batch-feladat ütemezett sikertelen eseményének hivatkozása. Ez az esemény akkor jelenik meg, ha egy feladatot nem sikerült ütemezni, és később újra próbálkozik.
 ms.topic: reference
-ms.date: 10/08/2020
-ms.openlocfilehash: 3a57ffbb1e1659cff54d101aa4b90ca1bd5d3a57
+ms.date: 09/20/2020
+ms.openlocfilehash: 549281d2b2c371e8f09c584e771cf44f7abc8a00
 ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/08/2020
-ms.locfileid: "91851016"
+ms.locfileid: "91852141"
 ---
-# <a name="task-start-event"></a>Tevékenység indítása esemény
+# <a name="task-schedule-fail-event"></a>Feladat-ütemterv sikertelen eseménye
 
- Ezt az eseményt akkor bocsátja ki a rendszer, ha az ütemező egy számítási csomóponton indítja el a feladatot. Vegye figyelembe, hogy ha a feladat újrapróbálkozása vagy újbóli várólistára kerül, az esemény ugyanarra a feladatra kerül, de az újrapróbálkozások száma és a rendszerfeladat verziója ennek megfelelően frissül.
+ Ezt az eseményt akkor bocsátja ki a rendszer, ha egy feladatot nem sikerült ütemezni, és később újra próbálkozik. Ez az erőforrás-korlátozás miatti ideiglenes Hiba a feladatütemezés során, például nem áll rendelkezésre elegendő tárolóhely a csomópontokon a megadott feladat futtatásához `requiredSlots` .
 
-
- A következő példa egy feladat-indítási esemény törzsét mutatja be.
+ Az alábbi példa egy feladatütemezés sikertelen eseményének törzsét mutatja be.
 
 ```
 {
-    "jobId": "myJob",
-    "id": "myTask",
+    "jobId": "job-01",
+    "id": "task-01",
     "taskType": "User",
-    "systemTaskVersion": 220192842,
+    "systemTaskVersion": 665378862,
     "requiredSlots": 1,
     "nodeInfo": {
-        "poolId": "pool-001",
-        "nodeId": "tvm-257509324_1-20160908t162728z"
+        "poolId": "pool-01",
+        "nodeId": " "
     },
     "multiInstanceSettings": {
         "numberOfInstances": 1
     },
     "constraints": {
-        "maxTaskRetryCount": 2
+        "maxTaskRetryCount": 0
     },
-    "executionInfo": {
-        "retryCount": 0
+    "schedulingError": {
+        "category": "UserError",
+        "code": "JobPreparationTaskFailed",
+        "message": "Task cannot run because the job preparation task failed on node"
     }
 }
 ```
@@ -44,13 +45,13 @@ ms.locfileid: "91851016"
 |------------------|----------|-----------|
 |`jobId`|Sztring|A feladatot tartalmazó feladat azonosítója.|
 |`id`|Sztring|A feladat azonosítója.|
-|`taskType`|Sztring|A feladat típusa. Ez lehet "JobManager", amely azt jelzi, hogy egy Feladatkezelő feladat vagy "felhasználó", amely azt jelzi, hogy a feladat nem Feladatkezelő feladat.|
+|`taskType`|Sztring|A feladat típusa. Ez lehet "JobManager", amely azt jelzi, hogy egy Feladatkezelő feladat vagy "felhasználó", amely azt jelzi, hogy a feladat nem Feladatkezelő feladat. Ez az esemény nem lett kibocsátva a feladat-előkészítési feladatokhoz, a feladat-felszabadítási feladatokhoz és a tevékenységek indításához|
 |`systemTaskVersion`|Int32|Ez a feladat belső újrapróbálkozási számlálója. A Batch szolgáltatás belsőleg újra tud próbálkozni az átmeneti problémák miatti feladatokkal. Ezek a problémák belső ütemezési hibákat tartalmazhatnak, vagy helytelen állapotú számítási csomópontokból történő helyreállításra tett kísérleteket okozhatnak.|
 |`requiredSlots`|Int32|A feladat futtatásához szükséges tárolóhelyek.|
 |[`nodeInfo`](#nodeInfo)|Összetett típus|A feladat futtatására szolgáló számítási csomóponttal kapcsolatos információkat tartalmazza.|
-|[`multiInstanceSettings`](#multiInstanceSettings)|Összetett típus|Azt adja meg, hogy a feladat több számítási csomópontot igénylő többpéldányos feladat.  További részletekért lásd: [multiInstanceSettings](/rest/api/batchservice/get-information-about-a-task) .|
+|[`multiInstanceSettings`](#multiInstanceSettings)|Összetett típus|Megadja, hogy a feladat több számítási csomópontot igénylő többpéldányos feladat.  [`multiInstanceSettings`](/rest/api/batchservice/get-information-about-a-task)Részletekért lásd:.|
 |[`constraints`](#constraints)|Összetett típus|A feladatra érvényes végrehajtási megkötések.|
-|[`executionInfo`](#executionInfo)|Összetett típus|A feladat végrehajtásával kapcsolatos információkat tartalmaz.|
+|[`schedulingError`](#schedulingError)|Összetett típus|A feladat ütemezési hibájának adatait tartalmazza.|
 
 ###  <a name="nodeinfo"></a><a name="nodeInfo"></a> nodeInfo
 
@@ -63,7 +64,7 @@ ms.locfileid: "91851016"
 
 |Elem neve|Típus|Jegyzetek|
 |------------------|----------|-----------|
-|`numberOfInstances`|Int|A feladat által igényelt számítási csomópontok száma.|
+|`numberOfInstances`|Int32|A feladat által igényelt számítási csomópontok száma.|
 
 ###  <a name="constraints"></a><a name="constraints"></a> korlátok
 
@@ -71,8 +72,11 @@ ms.locfileid: "91851016"
 |------------------|----------|-----------|
 |`maxTaskRetryCount`|Int32|A feladat újrapróbálkozásának maximális száma. A Batch szolgáltatás újrapróbálkozik a feladattal, ha a kilépési kód nem nulla.<br /><br /> Vegye figyelembe, hogy ez az érték kifejezetten meghatározza az újrapróbálkozások számát. A Batch szolgáltatás egyszer próbálkozik a feladattal, és ezt követően újra próbálkozik a korláttal. Ha például az újrapróbálkozások maximális száma 3, a Batch 4 alkalommal próbálkozik a feladattal (egy kezdeti próbálkozás és 3 újrapróbálkozás).<br /><br /> Ha a maximális újrapróbálkozások száma 0, a Batch szolgáltatás nem próbálkozik újra a tevékenységekkel.<br /><br /> Ha a maximális újrapróbálkozások száma-1, a Batch szolgáltatás korlátozás nélkül újrapróbálkozik a feladatokkal.<br /><br /> Az alapértelmezett érték: 0 (nincs újrapróbálkozás).|
 
-###  <a name="executioninfo"></a><a name="executionInfo"></a> executionInfo
+
+###  <a name="schedulingerror"></a><a name="schedulingError"></a> schedulingError
 
 |Elem neve|Típus|Jegyzetek|
 |------------------|----------|-----------|
-|`retryCount`|Int32|A Batch szolgáltatás által újrapróbált feladatok száma. A feladat újra próbálkozik, ha a nullától eltérő kilépési kóddal kilép a megadott MaxTaskRetryCount|
+|`category`|Sztring|A hiba kategóriája.|
+|`code`|Sztring|A feladatütemezés hibájának azonosítója. A kódok Invariant típusúak, és programozott módon való felhasználásra készültek.|
+|`message`|Sztring|A feladat-ütemezési hibát leíró üzenet, amely egy felhasználói felületen való megjelenítésre alkalmas.|

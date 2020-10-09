@@ -11,12 +11,12 @@ ms.date: 12/05/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7a5a69bedb45f8037f3a97f5ebf4e2128930330a
-ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
+ms.openlocfilehash: a9433945ffe1181b62ee193baf1c2dd0b89ec14c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91728352"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91856806"
 ---
 # <a name="what-is-azure-ad-connect-cloud-provisioning"></a>Mi az az Azure AD Connect felhőalapú jogosultságkiosztás?
 Azure AD Connect a felhő-kiépítés egy új Microsoft-ügynök, amely a hibrid identitási célok teljesítésére és a felhasználók, csoportok és névjegyek Azure AD-be való szinkronizálására szolgál.  Azure AD Connect szinkronizálás mellett is használható, és a következő előnyöket biztosítja:
@@ -34,7 +34,7 @@ Azure AD Connect felhőalapú kiépítés révén az AD-ből az Azure AD-be val�
 ## <a name="azure-ad-connect-cloud-provisioning-video"></a>Azure AD Connect felhőalapú kiépítési videó
 A következő rövid videó kiváló overveiw biztosít a Azure AD Connect felhőalapú kiépítés számára:
 
-> [!VIDEO https://youtube/embed/mOT3ID02_YQ]
+> [!VIDEO https://youtube.com/embed/mOT3ID02_YQ]
 
 
 ## <a name="comparison-between-azure-ad-connect-and-cloud-provisioning"></a>Azure AD Connect és a felhő üzembe helyezése közötti összehasonlítás
@@ -58,7 +58,7 @@ Az alábbi táblázat összehasonlítja a Azure AD Connect és a Azure AD Connec
 | A bővítmény attribútumainak szinkronizálása 1-15 |● |● |
 | Ügyfél által definiált AD-attribútumok (címtárszolgáltatás-bővítmények) szinkronizálása |● | |
 | Jelszó-kivonat szinkronizálásának támogatása |●|●|
-| Az átmenő hitelesítés támogatása |●||
+| Pass-Through hitelesítés támogatása |●||
 | Összevonás támogatása |●|●|
 | Közvetlen egyszeri bejelentkezés|● |●|
 | Támogatja a tartományvezérlőre történő telepítést |● |● |

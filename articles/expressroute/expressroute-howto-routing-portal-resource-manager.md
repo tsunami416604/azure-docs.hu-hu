@@ -1,22 +1,22 @@
 ---
-title: 'Azure-ExpressRoute: társítás konfigurálása'
-description: Ez a cikk a privát és a Microsoft-ExpressRoute létrehozásának és kiépítési lépéseinek a lépéseit ismerteti. A cikk azt is bemutatja, hogyan ellenőrizhető az áramkör állapota, frissítése vagy törlése.
+title: 'Oktatóanyag: a ExpressRoute Circuit társításának konfigurálása – Azure Portal'
+description: Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre és helyezhet üzembe ExpressRoute privát és Microsoft-társait a Azure Portal használatával.
 services: expressroute
 author: duongau
 ms.service: expressroute
-ms.topic: how-to
-ms.date: 02/13/2019
+ms.topic: tutorial
+ms.date: 10/08/2020
 ms.author: duau
-ms.openlocfilehash: ccbd9645ac7d331c06e528298b3a45a184c6cc49
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.openlocfilehash: cad098ed2dedc7abba57394ef1e26b9b7c87cd9c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91652227"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91855471"
 ---
-# <a name="create-and-modify-peering-for-an-expressroute-circuit"></a>ExpressRoute-kapcsolatcsoport társviszonyának létrehozása és módosítása
+# <a name="tutorial-create-and-modify-peering-for-an-expressroute-circuit-using-the-azure-portal"></a>Oktatóanyag: társítások létrehozása és módosítása ExpressRoute-áramkörhöz a Azure Portal használatával
 
-Ebből a cikkből megtudhatja, hogyan hozhat létre és kezelhet útválasztási konfigurációt egy Azure Resource Manager (ARM) ExpressRoute-áramkörhöz a Azure Portal használatával. A ExpressRoute-áramkör állapota, frissítése vagy törlése és megszüntetése is ellenőrizhető. Ha más módszert szeretne használni az áramkörrel való munkavégzéshez, válasszon egy cikket a következő listából:
+Ez az oktatóanyag bemutatja, hogyan hozhat létre és kezelhet útválasztási konfigurációt egy Azure Resource Manager ExpressRoute áramkörhöz a Azure Portal használatával. A ExpressRoute-áramkör állapota, frissítése vagy törlése és megszüntetése is ellenőrizhető. Ha más módszert szeretne használni az áramkörrel való munkavégzéshez, válasszon egy cikket a következő listából:
 
 > [!div class="op_single_selector"]
 > * [Azure Portal](expressroute-howto-routing-portal-resource-manager.md)
@@ -30,17 +30,24 @@ Ebből a cikkből megtudhatja, hogyan hozhat létre és kezelhet útválasztási
 
 A ExpressRoute-áramkörhöz privát és Microsoft-társítást is beállíthat (az Azure nyilvános társítása elavult az új áramkörök esetében). A társításokat tetszőleges sorrendben lehet konfigurálni. Az egyes társviszony-létesítéseket azonban mindenképp egyenként kell végrehajtania. További információ az útválasztási tartományokról és a társításokról: [ExpressRoute-útválasztási tartományok](expressroute-circuit-peerings.md). A nyilvános hálózattal kapcsolatos további információkért lásd: [nyilvános ExpressRoute](about-public-peering.md).
 
-## <a name="configuration-prerequisites"></a>Konfigurációs előfeltételek
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
+> [!div class="checklist"]
+> - Microsoft-társítások konfigurálása, frissítése és törlése egy áramkörhöz
+> - Azure-beli privát kapcsolatok konfigurálása, frissítése és törlése egy áramkörhöz
 
-* A konfigurálás megkezdése előtt mindenképp tekintse át az [előfeltételek](expressroute-prerequisites.md), az [útválasztási követelmények](expressroute-routing.md) és a [munkafolyamatok](expressroute-workflows.md) lapot.
-* Egy aktív ExpressRoute-kapcsolatcsoportra lesz szüksége. Kövesse az [ExpressRoute-kapcsolatcsoport létrehozása](expressroute-howto-circuit-portal-resource-manager.md) részben foglalt lépéseket, és engedélyeztesse a kapcsolatcsoportot kapcsolatszolgáltatójával, mielőtt továbblépne. A társítás (ok) konfigurálásához a ExpressRoute áramkörnek kiépített és engedélyezett állapotban kell lennie. 
-* Ha megosztott kulcsot vagy MD5-kivonatot szeretne használni, ügyeljen arra, hogy ezt az alagút mindkét oldalán használja, és legfeljebb 25 alfanumerikus karakterből álljon. A speciális karakterek nem támogatottak. 
+## <a name="prerequisites"></a>Előfeltételek
 
-Az utasítások csak 2. rétegbeli kapcsolatszolgáltatásokat kínáló szolgáltatóknál létrehozott kapcsolatcsoportokra vonatkoznak. Ha olyan szolgáltatót használ, amely felügyelt 3. rétegbeli szolgáltatásokat kínál (jellemzően IPVPN, például MPLS), a kapcsolati szolgáltató konfigurálja és kezeli az útválasztást. 
+* A konfigurálás megkezdése előtt győződjön meg arról, hogy áttekintette a következő lapokat:
+    * [Előfeltételek](expressroute-prerequisites.md) 
+    * [Útválasztási követelmények](expressroute-routing.md)
+    * [Munkafolyamatok](expressroute-workflows.md)
+* Egy aktív ExpressRoute-kapcsolatcsoportra lesz szüksége. Az utasításokat követve [hozzon létre egy ExpressRoute áramkört](expressroute-howto-circuit-portal-resource-manager.md) , és a folytatás előtt engedélyezze az áramkört a kapcsolat szolgáltatója számára. A társítás (ok) konfigurálásához a ExpressRoute áramkörnek kiépített és engedélyezett állapotban kell lennie. 
+* Ha megosztott kulcsot vagy MD5-kivonatot szeretne használni, ügyeljen arra, hogy az alagút mindkét oldalán használja a kulcsot. A korlát legfeljebb 25 alfanumerikus karakterből állhat. A speciális karakterek nem támogatottak. 
+
+Az utasítások csak 2. rétegbeli kapcsolatszolgáltatásokat kínáló szolgáltatóknál létrehozott kapcsolatcsoportokra vonatkoznak. Ha olyan szolgáltatót használ, amely felügyelt 3. rétegbeli szolgáltatásokat kínál (jellemzően IPVPN, például MPLS), a kapcsolati szolgáltató konfigurálja és felügyeli az útválasztást. 
 
 > [!IMPORTANT]
 > A szolgáltatásfelügyeleti portálon jelenleg nem hirdetünk szolgáltatók által konfigurált társviszony-létesítéseket. Dolgozunk azon, hogy hamarosan bevezethessük ezt a képességet. A BGP-társítások konfigurálása előtt érdeklődjön a szolgáltatónál.
-> 
 > 
 
 ## <a name="microsoft-peering"></a><a name="msft"></a>Microsoftos társviszony
@@ -56,7 +63,7 @@ Ez a szakasz segítséget nyújt egy ExpressRoute-áramkör Microsoft-társi kon
 
 1. Konfigurálja az ExpressRoute-kapcsolatcsoportot. Ellenőrizze a **szolgáltató állapotát** , és győződjön meg arról, hogy a kapcsolat szolgáltatója teljes mértékben kiépíti az áramkört a folytatás előtt.
 
-   Ha a kapcsolat szolgáltatója felügyelt 3. rétegbeli szolgáltatásokat kínál, megkérheti a kapcsolat szolgáltatóját, hogy engedélyezze a Microsoft-partneri kapcsolatot. Ebben az esetben nem kell követnie a következő szakaszokban ismertetett utasításokat. Ha azonban a kapcsolat szolgáltatója nem kezeli az útválasztást, az áramkör létrehozása után folytassa ezeket a lépéseket.
+   Ha a kapcsolat szolgáltatója felügyelt 3. rétegbeli szolgáltatásokat kínál, megkérheti a kapcsolat szolgáltatóját, hogy engedélyezze a Microsoft-partneri kapcsolatot. Nem kell követnie a következő szakaszokban felsorolt utasításokat. Ha azonban a kapcsolat szolgáltatója nem kezeli az útválasztást, az áramkör létrehozása után folytassa ezeket a lépéseket.
 
    **Áramköri szolgáltató állapota: nincs kiépítve**
 
@@ -67,14 +74,14 @@ Ez a szakasz segítséget nyújt egy ExpressRoute-áramkör Microsoft-társi kon
 
    [![Képernyőkép, amely a ExpressRoute bemutató oldalát jeleníti meg a szolgáltató állapotának "kiépítve" értékre való kijelölésével.](./media/expressroute-howto-routing-portal-resource-manager/provisioned-m.png)](./media/expressroute-howto-routing-portal-resource-manager/provisioned-m-lightbox.png#lightbox)
 
-2. Konfigurálja a Microsoft társviszony-létesítést a kapcsolatcsoporthoz. Mielőtt folytatná, ellenőrizze az alábbi információk meglétét.
+2. Konfigurálja a Microsoft társviszony-létesítést a kapcsolatcsoporthoz. A folytatás előtt győződjön meg arról, hogy rendelkezik a következő információkkal.
 
-   * Egy /30 alhálózat az elsődleges kapcsolat számára. Ennek egy érvényes nyilvános IPv4-előtagnak kell lennie, amely az Ön tulajdonában van, és regisztrálva van egy RIR-/IRR-jegyzékben. Ebből az alhálózatból az első használható IP-címet hozzá kell rendelni az útválasztóhoz, mivel a Microsoft a második használható IP-címet használja az útválasztóhoz.
-   * Egy /30 alhálózat a másodlagos kapcsolat számára. Ennek egy érvényes nyilvános IPv4-előtagnak kell lennie, amely az Ön tulajdonában van, és regisztrálva van egy RIR-/IRR-jegyzékben. Ebből az alhálózatból az első használható IP-címet hozzá kell rendelni az útválasztóhoz, mivel a Microsoft a második használható IP-címet használja az útválasztóhoz.
+   * Egy /30 alhálózat az elsődleges kapcsolat számára. A Címterület érvényes nyilvános IPv4-előtagnak kell lennie, és egy RIR/IRR van regisztrálva. Ebből az alhálózatból az első használható IP-címet az útválasztóhoz rendeli hozzá, mivel a Microsoft az útválasztó második használható IP-címét használja.
+   * Egy /30 alhálózat a másodlagos kapcsolat számára. A Címterület érvényes nyilvános IPv4-előtagnak kell lennie, és egy RIR/IRR van regisztrálva. Ebből az alhálózatból az első használható IP-címet az útválasztóhoz rendeli hozzá, mivel a Microsoft az útválasztó második használható IP-címét használja.
    * Egy érvényes VLAN-azonosító a tárviszony-létesítés létrehozásához. Győződjön meg róla, hogy a kapcsolatcsoporton egy másik társviszony-létesítés sem használja ugyanezt a VLAN-azonosítót. Az elsődleges és a másodlagos kapcsolatok esetében ugyanazt a VLAN-azonosítót kell használnia.
    * Egy AS-szám a társviszony-létesítéshez. 2 és 4 bájtos AS-számokat is használhat.
-   * Meghirdetett előtagok: Meg kell adnia a BGP-munkamenetben meghirdetni kívánt összes előtag listáját. A rendszer kizárólag a nyilvános IP-cím-előtagokat fogadja el. Ha előtagokat szeretne elküldeni, vesszővel tagolt listát is küldhet. Az előtagoknak egy RIR/IRR jegyzékben regisztrálva kell lenniük az Ön neve alatt.
-   * Nem **kötelező –** Ügyfél ASN: Ha olyan előtagokat hirdet meg, amelyek nem szerepelnek a társítás AS számában, megadhatja az AS-számot, amelyre regisztrálva vannak.
+   * Meghirdetett előtagok: megtekintheti a BGP-munkamenetben meghirdetni kívánt összes előtag listáját. A rendszer kizárólag a nyilvános IP-cím-előtagokat fogadja el. Ha előtagokat szeretne elküldeni, vesszővel tagolt listát is küldhet. Az előtagoknak egy RIR/IRR jegyzékben regisztrálva kell lenniük az Ön neve alatt.
+   * Nem **kötelező –** Ügyfél ASN: Ha olyan előtagokat hirdet meg, amelyek nincsenek regisztrálva a társítás mint szám mezőben, megadhatja az AS-számot, amelyre regisztrálva van.
    * Útválasztási jegyzék neve: Megadhatja az RIR/IRR jegyzék nevét, amelyben az AS-szám és az előtagok regisztrálva vannak.
    * Nem **kötelező –** Egy MD5-kivonat, ha úgy dönt, hogy használ egyet.
 3. Kiválaszthatja a konfigurálni kívánt társítást, ahogy az az alábbi példában is látható. Válassza ki a Microsoft társviszony-létesítés sorát.
@@ -87,7 +94,7 @@ Ez a szakasz segítséget nyújt egy ExpressRoute-áramkör Microsoft-társi kon
 > [!IMPORTANT]
 > A Microsoft ellenőrzi, hogy a megadott "meghirdetett nyilvános előtagok" és "peer ASN" (vagy "Customer ASN") hozzá van-e rendelve az Internet Routing beállításjegyzékben. Ha egy másik entitásból kéri le a nyilvános előtagokat, és ha a hozzárendelés nincs rögzítve az útválasztási beállításjegyzékben, akkor az automatikus ellenőrzés nem fejeződik be, és manuális ellenőrzésre van szükség. Ha az automatikus ellenőrzés meghiúsul, az "érvényesítés szükséges" üzenet jelenik meg. 
 >
-> Ha az "érvényesítés szükséges" üzenet jelenik meg, Gyűjtse össze azokat a dokumentumokat, amelyek megjelenítik a nyilvános előtagokat a szervezethez az útválasztási beállításjegyzékben szereplő előtagok tulajdonosának listáján, majd a dokumentumok manuális ellenőrzéshez való beküldéséhez az alább látható módon nyisson meg egy támogatási jegyet. 
+> Ha az "érvényesítés szükséges" üzenet jelenik meg, Gyűjtse össze azokat a dokumentumokat, amelyek megjelenítik a nyilvános előtagokat a szervezethez az útválasztási beállításjegyzékben szereplő előtagok tulajdonosaként listázott entitásban, és a támogatási jegy megnyitásával manuális ellenőrzés céljából elküldheti ezeket a dokumentumokat. 
 >
 
    Ha az áramkör "érvényesítés szükséges" állapotba kerül, meg kell nyitnia egy támogatási jegyet, hogy igazolja az előtagok tulajdonjogát a támogatási csapatnak. Egy támogatási jegyet közvetlenül a portálról nyithat meg, ahogy az alábbi példában is látható:
@@ -96,7 +103,7 @@ Ez a szakasz segítséget nyújt egy ExpressRoute-áramkör Microsoft-társi kon
 
 5. A konfiguráció sikeres elfogadását követően az alábbi képhez hasonlóan fog megjelenni:
 
-   ![Egyenrangú állapot: konfigurálva](./media/expressroute-howto-routing-portal-resource-manager/configured-m.png "Egyenrangú állapot: konfigurálva")]
+   ![Egyenrangú állapot: konfigurálva](./media/expressroute-howto-routing-portal-resource-manager/configured-m.png "Egyenrangú állapot: konfigurálva")
 
 ### <a name="to-view-microsoft-peering-details"></a><a name="getmsft"></a>Microsoft társviszony-létesítés részleteinek megtekintése
 
@@ -109,12 +116,6 @@ Kiválaszthatja a módosítani kívánt társítás sorát, majd módosíthatja 
 
 ![Egyenrangú sor kijelölése](./media/expressroute-howto-routing-portal-resource-manager/update-peering-m.png)
 
-### <a name="to-delete-microsoft-peering"></a><a name="deletemsft"></a>Microsoft társviszony-létesítés törlése
-
-A társítási konfigurációt a Delete (Törlés) ikonra kattintva távolíthatja el, ahogy az alábbi képen is látható:
-
-![Társítás törlése](./media/expressroute-howto-routing-portal-resource-manager/delete-peering-m.png)
-
 ## <a name="azure-private-peering"></a><a name="private"></a>Azure-beli privát társviszony
 
 Ez a szakasz segítséget nyújt egy ExpressRoute-áramkör Azure-beli privát társ-összevonási konfigurációjának létrehozásához, lekéréséhez, frissítéséhez és törléséhez.
@@ -123,7 +124,7 @@ Ez a szakasz segítséget nyújt egy ExpressRoute-áramkör Azure-beli privát t
 
 1. Konfigurálja az ExpressRoute-kapcsolatcsoportot. A folytatás előtt győződjön meg róla, hogy a kapcsolatszolgáltató teljesen kiépítette a kapcsolatcsoportot. 
 
-   Ha a kapcsolat szolgáltatója felügyelt 3. rétegbeli szolgáltatásokat kínál, megkérheti a kapcsolati szolgáltatót, hogy engedélyezze az Azure-beli privát kapcsolatot. Ebben az esetben nem kell követnie a következő szakaszokban ismertetett utasításokat. Ha azonban a kapcsolat szolgáltatója nem kezeli az útválasztást, az áramkör létrehozása után folytassa a következő lépésekkel.
+   Ha a kapcsolat szolgáltatója felügyelt 3. rétegbeli szolgáltatásokat kínál, megkérheti a kapcsolati szolgáltatót, hogy engedélyezze az Azure-beli privát kapcsolatot. Nem kell követnie a következő szakaszokban felsorolt utasításokat. Ha azonban a kapcsolat szolgáltatója nem kezeli az útválasztást, az áramkör létrehozása után folytassa a következő lépésekkel.
 
    **Áramköri szolgáltató állapota: nincs kiépítve**
 
@@ -133,13 +134,13 @@ Ez a szakasz segítséget nyújt egy ExpressRoute-áramkör Azure-beli privát t
 
    [![Képernyőfelvétel: a ExpressRoute bemutató lapja, amely a szolgáltatói állapotot jelöli, amely a "kiépítve" értékre van állítva.](./media/expressroute-howto-routing-portal-resource-manager/provisioned-p.png)](./media/expressroute-howto-routing-portal-resource-manager/provisioned-p-lightbox.png#lightbox)
 
-2. Konfigurálja az Azure privát társviszony-létesítést a kapcsolatcsoport számára. Mielőtt folytatná a következő lépésekkel, ellenőrizze az alábbi elemek meglétét:
+2. Konfigurálja az Azure privát társviszony-létesítést a kapcsolatcsoport számára. A következő lépések elvégzése előtt győződjön meg arról, hogy rendelkezik az alábbi elemekkel:
 
-   * Egy /30 alhálózat az elsődleges kapcsolat számára. Az alhálózat nem lehet a virtuális hálózatok számára fenntartott címterület része. Ebből az alhálózatból az első használható IP-címet hozzá kell rendelni az útválasztóhoz, mivel a Microsoft a második használható IP-címet használja az útválasztóhoz.
-   * Egy /30 alhálózat a másodlagos kapcsolat számára. Az alhálózat nem lehet a virtuális hálózatok számára fenntartott címterület része. Ebből az alhálózatból az első használható IP-címet hozzá kell rendelni az útválasztóhoz, mivel a Microsoft a második használható IP-címet használja az útválasztóhoz.
+   * Egy /30 alhálózat az elsődleges kapcsolat számára. Az alhálózat nem lehet a virtuális hálózatok számára fenntartott címterület része. Ebből az alhálózatból az első használható IP-címet az útválasztóhoz rendeli hozzá, mivel a Microsoft az útválasztó második használható IP-címét használja.
+   * Egy /30 alhálózat a másodlagos kapcsolat számára. Az alhálózat nem lehet a virtuális hálózatok számára fenntartott címterület része. Ebből az alhálózatból az első használható IP-címet az útválasztóhoz rendeli hozzá, mivel a Microsoft az útválasztó második használható IP-címét használja.
    * Egy érvényes VLAN-azonosító a tárviszony-létesítés létrehozásához. Győződjön meg róla, hogy a kapcsolatcsoporton egy másik társviszony-létesítés sem használja ugyanezt a VLAN-azonosítót. Az elsődleges és a másodlagos kapcsolatok esetében ugyanazt a VLAN-azonosítót kell használnia.
    * Egy AS-szám a társviszony-létesítéshez. 2 és 4 bájtos AS-számokat is használhat. Ehhez a társhoz az 65515 és 65520 közötti számot is használhatja, amely magában foglalja a többit.
-   * Az útvonalakat a helyszíni peremhálózati útválasztóról az Azure-ba kell hirdetni a BGP-n keresztül, amikor beállítja a privát társítást.
+   * Az útvonalakat a helyszíni peremhálózati útválasztóról az Azure-ba kell hirdetni a BGP-n keresztül, amikor konfigurálja a privát társat.
    * Nem **kötelező –** Egy MD5-kivonat, ha úgy dönt, hogy használ egyet.
 3. Válassza ki az Azure privát társ-összevonási sorát az alábbi példában látható módon:
 
@@ -163,6 +164,14 @@ A társviszony-létesítés sorának kijelölésével módosíthatja a társvisz
 
 ![privát társak frissítése](./media/expressroute-howto-routing-portal-resource-manager/update-peering-p.png)
 
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
+
+### <a name="to-delete-microsoft-peering"></a><a name="deletemsft"></a>Microsoft társviszony-létesítés törlése
+
+A társítási konfigurációt a Delete (Törlés) ikonra kattintva távolíthatja el, ahogy az alábbi képen is látható:
+
+![Társítás törlése](./media/expressroute-howto-routing-portal-resource-manager/delete-peering-m.png)
+
 ### <a name="to-delete-azure-private-peering"></a><a name="deleteprivate"></a>Azure privát társviszony-létesítés törlése
 
 A társítási konfigurációt a Delete (Törlés) ikon kiválasztásával távolíthatja el, ahogy az alábbi képen is látható:
@@ -174,10 +183,9 @@ A társítási konfigurációt a Delete (Törlés) ikon kiválasztásával távo
 
 ![privát társak törlése](./media/expressroute-howto-routing-portal-resource-manager/delete-p.png)
 
+## <a name="next-steps"></a>További lépések
 
-## <a name="next-steps"></a>Következő lépések
+Miután konfigurálta az Azure Private-társítást, létrehozhat egy ExpressRoute-átjárót, amely összekapcsolja a virtuális hálózatot az áramkörrel. 
 
-Következő lépés, [VNet csatolása egy ExpressRoute-áramkörhöz](expressroute-howto-linkvnet-portal-resource-manager.md)
-* Az ExpressRoute-munkafolyamatokkal kapcsolatos további információkért lásd: [ExpressRoute workflows](expressroute-workflows.md) (ExpressRoute-munkafolyamatok).
-* A kapcsolatcsoportok társviszony-létesítéseivel kapcsolatos további információkért lásd: [ExpressRoute circuits and routing domains](expressroute-circuit-peerings.md) (ExpressRoute-kapcsolatcsoportok és útválasztási tartományok).
-* További információkért a virtuális hálózatok használatáról lásd: [Virtual network overview](../virtual-network/virtual-networks-overview.md) (Virtuális hálózatok áttekintése).
+> [!div class="nextstepaction"]
+> [Az ExpressRoute virtuális hálózati átjáróinak konfigurálása](expressroute-howto-add-gateway-resource-manager.md)

@@ -9,12 +9,12 @@ ms.author: mlearned
 description: Azure arc-kompatibilis Kubernetes-fürt összekapcsolása az Azure arc szolgáltatással
 keywords: Kubernetes, arc, Azure, K8s, tárolók
 ms.custom: references_regions
-ms.openlocfilehash: 8f1d95db9c30e78e1ca697d5d7e5638988bc9965
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 74a0de494148f1f3315511c0bf6cb10f40cdc416
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91540625"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91855004"
 ---
 # <a name="connect-an-azure-arc-enabled-kubernetes-cluster-preview"></a>Azure arc-kompatibilis Kubernetes-fürt összekapcsolása (előzetes verzió)
 
@@ -68,10 +68,8 @@ Az Azure arc-ügynökök a következő protokollok/portok/kimenő URL-címek mű
 | ------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------- |
 | `https://management.azure.com`                                                                                 | Ahhoz szükséges, hogy az ügynök csatlakozhasson az Azure-hoz, és regisztrálja a fürtöt                                                        |
 | `https://eastus.dp.kubernetesconfiguration.azure.com`, `https://westeurope.dp.kubernetesconfiguration.azure.com` | Adatsík végpontja az ügynök számára az állapot leküldéséhez és a konfigurációs adatok beolvasásához                                      |
-| `https://docker.io`                                                                                            | A tároló lemezképének lekéréséhez szükséges                                                                                         |
-| `https://github.com`, git://github.com                                                                         | Például a GitOps repók a GitHubon futnak. A konfigurációs ügynöknek a megadott git-végponthoz való kapcsolódásra van szüksége. |
 | `https://login.microsoftonline.com`                                                                            | Azure Resource Manager tokenek beolvasásához és frissítéséhez szükséges                                                                                    |
-| `https://azurearcfork8s.azurecr.io`                                                                            | A tároló lemezképének lekéréséhez szükséges az Azure arc-ügynökökhöz                                                                  |
+| `https://mcr.microsoft.com`                                                                            | A tároló lemezképének lekéréséhez szükséges az Azure arc-ügynökökhöz                                                                  |
 | `https://eus.his.arc.azure.com`, `https://weu.his.arc.azure.com`                                                                            |  A rendszer által hozzárendelt felügyelt azonosító tanúsítványok lekéréséhez szükséges                                                                  |
 
 ## <a name="register-the-two-providers-for-azure-arc-enabled-kubernetes"></a>Regisztrálja a két szolgáltatót az Azure arc-kompatibilis Kubernetes:
@@ -183,17 +181,36 @@ Ha a fürt egy kimenő proxykiszolgáló mögött található, az Azure CLI és 
     az -v
     ```
 
-    `connectedk8s`A kimenő proxyval rendelkező ügynökök beállításához >= 0.2.3 kiterjesztési verzió szükséges. Ha a számítógépen verziója < 0.2.3, kövesse a [frissítés lépéseit](#before-you-begin) a bővítmény legújabb verziójának lekéréséhez a gépen.
+    `connectedk8s`A kimenő proxyval rendelkező ügynökök beállításához >= 0.2.5 kiterjesztési verzió szükséges. Ha a számítógépen verziója < 0.2.3, kövesse a [frissítés lépéseit](#before-you-begin) a bővítmény legújabb verziójának lekéréséhez a gépen.
 
-2. Futtassa a csatlakozás parancsot a megadott proxy-paraméterekkel:
+2. Állítsa be az Azure CLI-hez szükséges környezeti változókat a kimenő proxykiszolgáló használatára:
+
+    * Ha bash-et használ, futtassa a következő parancsot a megfelelő értékekkel:
+
+        ```bash
+        export HTTP_PROXY=<proxy-server-ip-address>:<port>
+        export HTTPS_PROXY=<proxy-server-ip-address>:<port>
+        export NO_PROXY=<cluster-apiserver-ip-address>:<port>
+        ```
+
+    * Ha a PowerShellt használja, futtassa a következő parancsot a megfelelő értékekkel:
+
+        ```powershell
+        $Env:HTTP_PROXY = "<proxy-server-ip-address>:<port>"
+        $Env:HTTPS_PROXY = "<proxy-server-ip-address>:<port>"
+        $Env:NO_PROXY = "<cluster-apiserver-ip-address>:<port>"
+        ```
+
+3. Futtassa a csatlakozás parancsot a megadott proxy-paraméterekkel:
 
     ```console
-    az connectedk8s connect -n <cluster-name> -g <resource-group> --proxy-https https://<proxy-server-ip-address>:<port> --proxy-http http://<proxy-server-ip-address>:<port> --proxy-skip-range <excludedIP>,<excludedCIDR>
+    az connectedk8s connect -n <cluster-name> -g <resource-group> --proxy-https https://<proxy-server-ip-address>:<port> --proxy-http http://<proxy-server-ip-address>:<port> --proxy-skip-range <excludedIP>,<excludedCIDR> --proxy-cert <path-to-cert-file>
     ```
 
 > [!NOTE]
 > 1. A excludedCIDR megadása a-proxy-skip-Range területen fontos annak biztosítása érdekében, hogy a fürtön belüli kommunikáció ne legyen megszakítva az ügynököknél.
-> 2. A fenti proxy-specifikációt jelenleg csak az ív-ügynökökre alkalmazza a rendszer, a sourceControlConfiguration használt fluxus-hüvelyek esetében nem. Az arc-kompatibilis Kubernetes csapata aktívan dolgozik ezen a szolgáltatáson, és hamarosan elérhető lesz.
+> 2. Míg a--proxy-http,--proxy-HTTPS és--proxy-skip-Range a legtöbb kimenő proxy esetében várható, a--proxy-CERT csak akkor szükséges, ha megbízható tanúsítványokat kell beinjektálni az ügynök hüvelye megbízható tanúsítványtárolóba.
+> 3. A fenti proxy-specifikációt jelenleg csak az ív-ügynökökre alkalmazza a rendszer, a sourceControlConfiguration használt Flux-hüvelyek esetében nem. Az arc-kompatibilis Kubernetes csapata aktívan dolgozik ezen a szolgáltatáson, és hamarosan elérhető lesz.
 
 ## <a name="azure-arc-agents-for-kubernetes"></a>Azure arc-ügynökök a Kubernetes
 

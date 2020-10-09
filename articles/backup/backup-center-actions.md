@@ -3,12 +3,12 @@ title: Műveletek végrehajtása a Backup Center használatával
 description: Ez a cikk azt ismerteti, hogyan hajtható végre műveletek a Backup Center használatával
 ms.topic: conceptual
 ms.date: 09/07/2020
-ms.openlocfilehash: 81c81f0e9d955e0a5243485baaedff4e6f0fc10d
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 65ac6374b1a9571d0415bc097a6ee957874d3d44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90995792"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91854426"
 ---
 # <a name="perform-actions-using-backup-center"></a>Műveletek végrehajtása a Backup Center használatával
 
@@ -70,7 +70,7 @@ A visszaállítani kívánt adatforrás típusától függően kövesse az aláb
 ### <a name="if-youre-restoring-an-azure-database-for-postgresql-server"></a>Azure Database for PostgreSQL kiszolgáló visszaállításakor
 
 1. Navigáljon a biztonsági mentési központhoz, és válassza a **visszaállítás** lehetőséget az **Áttekintés** lap tetején.
-2. Válassza ki a biztonsági mentéshez használni kívánt adatforrás típusát (ebben az esetben Azure Database for PostgreSQL-kiszolgáló).
+2. Válassza ki a visszaállítani kívánt adatforrás típusát (ebben az esetben Azure Database for PostgreSQL-kiszolgáló).
 
     ![Adatforrás kiválasztása Azure Database for PostgreSQL kiszolgáló visszaállításakor](./media/backup-center-actions/restore-select-datasource-postgresql.png)
 
@@ -134,7 +134,7 @@ Igény szerinti biztonsági mentés elindításához navigáljon a Backup Center
 
 [További információ a Azure Database for PostgreSQL-kiszolgáló biztonsági mentésének leállításáról](backup-azure-database-postgresql.md#stop-protection)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Biztonsági másolatok figyelése és üzemeltetése](backup-center-monitor-operate.md)
 * [A biztonsági mentési hagyaték szabályozása](backup-center-govern-environment.md)

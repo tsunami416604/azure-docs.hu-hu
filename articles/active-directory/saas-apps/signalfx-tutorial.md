@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/24/2020
 ms.author: jeedes
-ms.openlocfilehash: 3eae423763d2d4a05b33e4e1d4b6e9e087a47ba3
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 989b41d4fc55241a5fa75a0eed9ea8f4ebaeee67
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88521553"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91856823"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-signalfx"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a SignalFx
 
@@ -92,7 +92,7 @@ Ezekkel az utasításokkal engedélyezheti az Azure AD SSO használatát a Azure
     
 1. Tekintse át és ellenőrizze, hogy a következő jogcímek leképezik-e a Active Directoryban kitöltött forrás-attribútumokat. 
 
-    | Name |  Forrás attribútum|
+    | Név |  Forrás attribútum|
     | ------------------- | -------------------- |
     | Felhasználó. FirstName  | User. givenName |
     | User. e-mail  | User. mail |
@@ -118,7 +118,7 @@ Ezekkel az utasításokkal létrehozhat egy teszt felhasználót a **B. Simon**n
    1. A **Felhasználónév**mezőbe írja be a (z `username@companydomain.extension` ) nevet, például: `b.simon@contoso.com` .
    1. A **név**mezőben adja meg a nevet `B.Simon` .
    1. Jelölje be a **jelszó megjelenítése**jelölőnégyzetet, majd másolja a megjelenő értéket a **jelszó**mezőbe. Az integráció teszteléséhez szüksége lesz erre az információra a későbbi lépésben. 
-   1. Kattintson a **Create** (Létrehozás) gombra.
+   1. Kattintson a **Létrehozás** elemre.
 
 ## <a name="step-5-assign-the-azure-ad-test-user"></a>5. lépés: az Azure AD-teszt felhasználójának kiosztása
 
@@ -159,7 +159,7 @@ Tekintse át az alábbi információkat az egyszeri bejelentkezés tesztelésév
         * További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 * A SignalFx alkalmazás a hozzáférési panelen vagy a szervezethez rendelt egyéni bejelentkezési oldalon keresztül érhető el. A tesztelési felhasználónak ezen helytől kezdve kell tesztelni az integrációt.
-    * A tesztelési felhasználó használhatja a folyamat során korábban létrehozott hitelesítő adatokat **b.simon@contoso.com** .
+    * A tesztelési felhasználó használhatja a folyamat során korábban létrehozott hitelesítő adatokat **b. simon \@ contoso.com**.
 
 ### <a name="first-time-logins"></a>Első bejelentkezések
 

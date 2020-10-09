@@ -13,12 +13,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, devx-track-azurepowershell
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: d7304ecd73ed73e3ec6ae3c060fef264e016fe38
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: bb53f9a6121ec9329eaec5d8cb554e7f125e058f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89067807"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91856653"
 ---
 # <a name="quickstart-grant-permission-to-create-unlimited-app-registrations"></a>Gyors útmutató: korlátlan alkalmazás-regisztrációk létrehozásának engedélyezése
 
@@ -60,7 +60,7 @@ Kész! Ebben a rövid útmutatóban sikeresen létrehozott egy egyéni szerepkö
 Két engedély áll rendelkezésre, amelyek lehetővé teszi az alkalmazás-regisztrációk létrehozását, amelyek mindegyike különböző viselkedést biztosít.
 
 - Microsoft. Directory/Applications/createAsOwner: az engedély kiosztása azt eredményezi, hogy a létrehozó a létrehozott alkalmazás regisztrációjának első tulajdonosaként lesz hozzáadva, és a létrehozott alkalmazás regisztrálása a létrehozó 250 létrehozott objektum-kvótájának megfelelően fog megjelenni.
-- Microsoft. Directory/applicationPolicies/Create: az engedély kiosztása azt eredményezi, hogy a létrehozó nem jelenik meg a létrehozott alkalmazás regisztrációjának első tulajdonosaként, és a létrehozott alkalmazás regisztrálása nem fog megjelenni a létrehozó 250 létrehozott objektum-kvótájában. Ezt az engedélyt körültekintően kell használni, mivel semmi nem akadályozza meg, hogy az alkalmazás regisztrációkat hozzon létre, amíg meg nem találja a címtár-szintű kvótát. Ha mindkét engedély hozzá van rendelve, ez az engedély elsőbbséget élvez.
+- Microsoft. Directory/alkalmazások/létrehozás: az engedély kiosztása azt eredményezi, hogy a létrehozó nem jelenik meg a létrehozott alkalmazás regisztrációjának első tulajdonosaként, és a létrehozott alkalmazás regisztrálása nem fog megjelenni a létrehozó 250 létrehozott objektum-kvótájában. Ezt az engedélyt körültekintően kell használni, mivel semmi nem akadályozza meg, hogy az alkalmazás regisztrációkat hozzon létre, amíg meg nem találja a címtár-szintű kvótát. Ha mindkét engedély hozzá van rendelve, ez az engedély elsőbbséget élvez.
 
 ## <a name="create-a-custom-role-in-azure-ad-powershell"></a>Egyéni szerepkör létrehozása az Azure AD PowerShellben
 

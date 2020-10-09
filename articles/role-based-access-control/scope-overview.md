@@ -7,14 +7,14 @@ manager: mtillman
 ms.service: role-based-access-control
 ms.topic: how-to
 ms.workload: identity
-ms.date: 09/30/2020
+ms.date: 10/08/2020
 ms.author: rolyon
-ms.openlocfilehash: 80a05fd389ecaf504f58d12bf8efe87debd4ab86
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.openlocfilehash: ad906e3665c6ffc354cf6292c2559d1184037594
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91604307"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91856150"
 ---
 # <a name="understand-scope-for-azure-rbac"></a>Az Azure RBAC hatókörének megismerése
 
@@ -25,6 +25,10 @@ A *hatókör* azon erőforrások halmaza, amelyekhez a hozzáférés vonatkozik.
 Az Azure-ban négy szinten adhatja meg a hatókört: [felügyeleti csoport](../governance/management-groups/overview.md), előfizetés, [erőforráscsoport](../azure-resource-manager/management/overview.md#resource-groups)és erőforrás. A hatókörök szülő-gyermek (származtatott) kapcsolatokba vannak rendezve. A hierarchia minden szintje konkrétabb módon teszi elérhetővé a hatókört. A szerepköröket a hatókör ezen szintjein lehet hozzárendelni. A kiválasztott szint határozza meg, hogy a rendszer milyen széles körben alkalmazza a szerepkört. Az alacsonyabb szintek öröklik a szerepkör-engedélyeket a magasabb szintekről. 
 
 ![Szerepkör-hozzárendelés hatóköre](./media/scope-overview/rbac-scope-no-label.png)
+
+A felügyeleti csoportok az előfizetések feletti hatóköri szint, de a felügyeleti csoportok összetettebb hierarchiákat is támogatnak. Az alábbi ábrán egy példa látható a felügyeleti csoportok és a megadható előfizetések hierarchiájának meghatározására. A felügyeleti csoportokkal kapcsolatos további információkért lásd: [Mi az Azure felügyeleti csoportok?](../governance/management-groups/overview.md).
+
+![Felügyeleti csoport és előfizetési hierarchia](./media/scope-overview/rbac-scope-management-groups.png)
 
 ## <a name="scope-format"></a>Hatókör formátuma
 
@@ -120,4 +124,4 @@ A felügyeleti csoport, az előfizetés vagy az erőforráscsoport hatóköréne
 
 - [Szerepkör-hozzárendelés hozzáadásának lépései](role-assignments-steps.md)
 - [Erőforrás-szolgáltatók az Azure-szolgáltatásokhoz](../azure-resource-manager/management/azure-services-resource-providers.md)
-- [Erőforrások rendszerezése az Azure-beli felügyeleti csoportokkal](../governance/management-groups/overview.md)
+- [Mik az Azure-beli felügyeleti csoportok?](../governance/management-groups/overview.md)

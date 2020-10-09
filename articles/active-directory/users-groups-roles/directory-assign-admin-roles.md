@@ -14,12 +14,12 @@ ms.author: curtand
 ms.reviewer: vincesm
 ms.custom: it-pro, fasttrack-edit
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: c65d77d2cf50a59f18f0007e809e9913c3a5ae13
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a6ccc2911312a74825b885f5f492e67774354316
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91304220"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91858127"
 ---
 # <a name="administrator-role-permissions-in-azure-active-directory"></a>Adminisztrátori szerepkörök engedélyei az Azure Active Directoryban
 
@@ -274,7 +274,7 @@ Ezt a szerepkört korábban "password Administrator" néven nevezték a [Azure P
 
 ### <a name="hybrid-identity-administrator"></a>[Hibrid identitás-rendszergazda](#hybrid-identity-administrator-permissions)
 
-Az ebben a szerepkörben lévő felhasználók engedélyezhetik, konfigurálhatják és kezelhetik a hibrid identitás Azure AD-ben való engedélyezésével kapcsolatos szolgáltatásokat és beállításokat. Ez a szerepkör lehetővé teszi az Azure AD konfigurálását a három támogatott hitelesítési módszer, a jelszó-kivonatolási szinkronizálás (PHS), az átmenő hitelesítés (PTA ESP) vagy az összevonás (AD FS vagy harmadik féltől származó összevonási szolgáltató) egyikére, valamint a kapcsolódó helyszíni infrastruktúra üzembe helyezésére. A helyszíni infrastruktúra magában foglalja az üzembe helyezést és az ESP-ügynököt. Ez a szerepkör lehetővé teszi a zökkenőmentes egyszeri bejelentkezés (S-SSO) engedélyezését a nem Windows 10-es vagy nem Windows Server 2016 rendszerű számítógépek zökkenőmentes hitelesítésének engedélyezéséhez. Emellett ez a szerepkör lehetővé teszi a bejelentkezési naplók megtekintését és az állapot és az elemzés elérését a figyelési és hibaelhárítási célból. 
+Az ebben a szerepkörben lévő felhasználók létrehozhatják, kezelhetik és telepíthetik az AD-ből az Azure AD-be történő üzembe helyezési konfigurációt a felhőalapú kiépítés, valamint az összevonási beállítások kezelése révén. A felhasználók ezen szerepkör használatával is elhárítják és megfigyelheti a naplókat.  
 
 ### <a name="insights-administrator"></a>[Az Áttekintés rendszergazdája](#insights-administrator-permissions)
 Az ebben a szerepkörben lévő felhasználók a M365-betekintő [alkalmazásban](https://go.microsoft.com/fwlink/?linkid=2129521)hozzáférhetnek a felügyeleti funkciók teljes készletéhez. Ez a szerepkör képes a címtáradatok olvasására, a szolgáltatás állapotának figyelésére, a fájlok támogatására szolgáló jegyek megtekintésére és a rendszergazdai beállítások beszerzésére.
@@ -1216,9 +1216,6 @@ A felhőalapú kiépítési és hitelesítési szolgáltatások engedélyezése,
 | Microsoft. Directory/cloudProvisioning/allProperties/allTasks | Az Azure AD Cloud kiépítési szolgáltatás összes tulajdonságának olvasása és konfigurálása. |
 | Microsoft. Directory/federatedAuthentication/allProperties/allTasks | Felügyelheti Active Directory összevont szolgáltatások (ADFS) vagy harmadik féltől származó összevonási szolgáltató összes aspektusát az Azure AD-ben. |
 | Microsoft. Directory/szervezet/rSync/Update | Frissítse a szervezet. a (Azure Active Directory) tulajdonságot. |
-| Microsoft. Directory/passwordHashSync/allProperties/allTasks | A jelszó-kivonatok szinkronizálásának (PHS) minden aspektusának kezelése az Azure AD-ben. |
-| Microsoft. Directory/passThroughAuthentication/allProperties/allTasks | Az átmenő hitelesítés (PTA ESP) összes aspektusának kezelése az Azure AD-ben. |
-| Microsoft. Directory/seamlessSSO/allProperties/allTasks | A zökkenőmentes egyszeri bejelentkezés (SSO) összes aspektusának kezelése az Azure AD-ben. |
 | Microsoft. Directory/servicePrincipals/hallgatóság/frissítés | A servicePrincipals. célközönség tulajdonság frissítése Azure Active Directoryban. |
 | Microsoft. Directory/servicePrincipals/hitelesítés/frissítés | Frissítse a servicePrincipals. Authentication tulajdonságot a Azure Active Directoryban. |
 | Microsoft. Directory/servicePrincipals/Basic/Update | A servicePrincipals alapszintű tulajdonságainak frissítése Azure Active Directory. |
@@ -2002,7 +1999,7 @@ Korlátozott vendég felhasználó | Nem látható, mert nem használható | NA
 Felhasználó | Nem látható, mert nem használható | NA
 Munkahelyi eszközök csatlakoztatása | Elavult | [Elavult szerepkörök dokumentációja](directory-assign-admin-roles.md#deprecated-roles)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ha többet szeretne megtudni arról, hogyan rendeljen hozzá egy felhasználót egy Azure-előfizetés rendszergazdájához, olvassa el az [Azure-beli szerepkör-hozzárendelések hozzáadása vagy eltávolítása (Azure RBAC)](../../role-based-access-control/role-assignments-portal.md) című témakört.
 * Ha többet szeretne megtudni a Microsoft Azure erőforrás-hozzáférés szabályozásáról, tekintse meg [a különböző szerepkörök megismerése](../../role-based-access-control/rbac-and-directory-admin-roles.md) című témakört.

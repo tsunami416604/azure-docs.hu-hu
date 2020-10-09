@@ -1,6 +1,6 @@
 ---
 title: Hozzáférés korlátozása közös hozzáférési aláírások használatával – Azure HDInsight
-description: Megtudhatja, hogyan használhatja a közös hozzáférési aláírásokat az Azure Storage-blobokban tárolt HDInsight való hozzáférés korlátozására.
+description: Megtudhatja, hogyan használhatja a közös hozzáférési aláírásokat az Azure Blob Storage-ban tárolt HDInsight való hozzáférés korlátozására.
 author: hrasheed-msft
 ms.author: hrasheed
 ms.reviewer: jasonh
@@ -8,16 +8,16 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/28/2020
-ms.openlocfilehash: 8ab181eb72b5a3ab54ad8dba19d23288926b8969
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: ea14a67f11974c8f7cdeea9eb84e5efb2377fb15
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87006313"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91856564"
 ---
-# <a name="use-azure-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>Az Azure Storage közös hozzáférésű jogosultságkódok használata az adathozzáférés korlátozásához a HDInsightban
+# <a name="use-azure-blob-storage-shared-access-signatures-to-restrict-access-to-data-in-hdinsight"></a>Az Azure Blob Storage közös hozzáférésű aláírásait használva korlátozza a HDInsight lévő adathozzáférést
 
-A HDInsight teljes hozzáféréssel rendelkezik a fürthöz társított Azure Storage-fiókokban lévő összes adathoz. A blob-tárolón a közös hozzáférési aláírások használatával korlátozhatja az adathozzáférést. A közös hozzáférésű aláírások (SAS) az Azure Storage-fiókok egyik funkciója, amely lehetővé teszi az adathozzáférés korlátozását. Például csak olvasási hozzáférést biztosít az adateléréshez.
+A HDInsight teljes hozzáféréssel rendelkezik a fürthöz társított Azure Blob Storage-fiókok adataihoz. A blob-tárolón a közös hozzáférési aláírások használatával korlátozhatja az adathozzáférést. A közös hozzáférésű aláírások (SAS) az Azure Blob Storage-fiókok egyik funkciója, amely lehetővé teszi az adathozzáférés korlátozását. Például csak olvasási hozzáférést biztosít az adateléréshez.
 
 > [!IMPORTANT]  
 > Az Apache Rangert használó megoldások esetében érdemes lehet tartományhoz csatlakoztatott HDInsight használni. További információ: [tartományhoz csatlakoztatott HDInsight](./domain-joined/apache-domain-joined-configure.md) -dokumentum konfigurálása.
@@ -39,7 +39,7 @@ A HDInsight teljes hozzáféréssel rendelkezik a fürthöz társított Azure St
 
 * A C# használata esetén a Visual Studio 2013-es vagy újabb verziójának kell lennie.
 
-* A Storage-fiók URI-sémája. Ez a séma `wasb://` Az Azure Storage-hoz, `abfs://` Azure Data Lake Storage Gen2 vagy `adl://` Azure Data Lake Storage Gen1hoz. Ha a biztonságos átvitel engedélyezve van az Azure Storage-hoz, az URI a következő lesz: `wasbs://` .
+* A Storage-fiók URI-sémája. Ez a séma `wasb://` Az Azure Blob Storage-hoz, `abfs://` Azure Data Lake Storage Gen2 vagy `adl://` Azure Data Lake Storage Gen1hoz. Ha a biztonságos átvitel engedélyezve van az Azure Blob Storage-hoz, az URI a következő lesz: `wasbs://` .
 
 * Egy meglévő HDInsight-fürt megosztott hozzáférési aláírás hozzáadásához a következőhöz:. Ha nem, akkor a Azure PowerShell használatával létrehozhat egy fürtöt, és hozzáadhat egy közös hozzáférési aláírást a fürt létrehozása során.
 
@@ -48,7 +48,7 @@ A HDInsight teljes hozzáféréssel rendelkezik a fürthöz társított Azure St
   * Egy Visual Studio-projekt, amely létrehoz egy Storage-tárolót, tárolt házirendet és SAS-t a HDInsight-mel való használatra
   * Egy Python-szkript, amely létrehoz egy Storage-tárolót, tárolt házirendet és SAS-t a HDInsight-hez való használatra
   * Egy PowerShell-parancsfájl, amely létrehozhat egy HDInsight-fürtöt, és konfigurálhatja az SAS használatára. A frissített verziók alább láthatók.
-  * Egy minta fájl:`hdinsight-dotnet-python-azure-storage-shared-access-signature-master\sampledata\sample.log`
+  * Egy minta fájl: `hdinsight-dotnet-python-azure-storage-shared-access-signature-master\sampledata\sample.log`
 
 ## <a name="shared-access-signatures"></a>Közös hozzáférésű jogosultságkódok
 
@@ -357,7 +357,7 @@ Ha meglévő fürttel rendelkezik, a következő lépésekkel adhatja hozzá az 
 
 1. Bontsa ki az **Egyéni Core-site** szakaszt, görgessen a végéhez, majd válassza a **tulajdonság hozzáadása..**. lehetőséget. Használja a következő értékeket a **kulcshoz** és az **értékhez**:
 
-    * **Kulcs**:`fs.azure.sas.CONTAINERNAME.STORAGEACCOUNTNAME.blob.core.windows.net`
+    * **Kulcs**: `fs.azure.sas.CONTAINERNAME.STORAGEACCOUNTNAME.blob.core.windows.net`
     * **Érték**: a korábban végrehajtott metódusok egyike által visszaadott sas.
 
     Cserélje le a helyére a `CONTAINERNAME` C# vagy sas-alkalmazáshoz használt tároló nevét. Cserélje le `STORAGEACCOUNTNAME` a nevet a használt Storage-fiók nevére.

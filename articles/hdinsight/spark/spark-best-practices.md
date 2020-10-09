@@ -7,12 +7,12 @@ ms.reviewer: jasonh
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 04/28/2020
-ms.openlocfilehash: 01cdc121abded954c2443599c5d69689acd69b62
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3818ce9ebae8e6af6ee8bb5ed30c7ab446a6f6b2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82562338"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91855174"
 ---
 # <a name="apache-spark-guidelines"></a>Apache Spark irányelvek
 
@@ -37,7 +37,7 @@ Ez a cikk a Apache Spark Azure HDInsight való használatának különböző ir�
 
 | Beállítás | Dokumentumok |
 |---|---|
-| Az Azure Toolkit for IntelliJ | [Hiba a Spark-feladatok hibakereséséhez Azure Toolkit for IntelliJ (előzetes verzió)](apache-spark-intellij-tool-failure-debug.md) |
+| Azure Toolkit for IntelliJ | [Hiba a Spark-feladatok hibakereséséhez Azure Toolkit for IntelliJ (előzetes verzió)](apache-spark-intellij-tool-failure-debug.md) |
 | Azure Toolkit for IntelliJ SSH-n keresztül | [HDInsight-fürtön futó Apache Spark-alkalmazások helyi vagy távoli hibakeresése az IntelliJ-hez készült Azure-eszközkészlettel SSH-n keresztül](apache-spark-intellij-tool-debug-remotely-through-ssh.md) |
 | Azure Toolkit for IntelliJ VPN-en keresztül | [Apache Spark-alkalmazások távoli hibakeresése a HDInsight a VPN-en keresztül a Azure Toolkit for IntelliJ használatával](apache-spark-intellij-tool-plugin-debug-jobs-remotely.md) |
 | A Apache Spark History Serveren futó feladatok gráfja | [Kiterjesztett Apache Spark-előzménykiszolgáló használata az Apache Spark-alkalmazások hibakereséséhez és diagnosztizálásához](./apache-azure-spark-history-server.md) |
@@ -62,8 +62,8 @@ Ez a cikk a Apache Spark Azure HDInsight való használatának különböző ir�
 
 | Beállítás | Dokumentumok |
 |---|---|
-| Data Lake Storage Gen2 | [Az Azure Data Lake Storage Gen2 használata Azure HDInsight-fürtökkel](../hdinsight-hadoop-use-data-lake-storage-gen2.md) |
-| Data Lake Storage Gen1 | [Data Lake Storage Gen1 használata az Azure HDInsight-fürtökkel](../hdinsight-hadoop-use-data-lake-store.md) |
+| 2. generációs Azure Data Lake Storage | [Az Azure Data Lake Storage Gen2 használata Azure HDInsight-fürtökkel](../hdinsight-hadoop-use-data-lake-storage-gen2.md) |
+| 1. generációs Azure Data Lake Storage | [Azure Data Lake Storage Gen1 használata az Azure HDInsight-fürtökkel](../hdinsight-hadoop-use-data-lake-storage-gen1.md) |
 | Azure Blob Storage | [Az Azure Storage és az Azure HDInsight-fürtök együttes használata](../hdinsight-hadoop-use-blob-storage.md) |
 
 ## <a name="next-steps"></a>További lépések

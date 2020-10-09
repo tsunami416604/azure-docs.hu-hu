@@ -8,12 +8,12 @@ ms.workload: infrastructure-services
 ms.topic: troubleshooting
 ms.date: 09/02/2020
 ms.author: genli
-ms.openlocfilehash: 642a1937f44a608ebf235c20da060972788046a0
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.openlocfilehash: 3274e45738c079c89560f546fe58163f695e12df
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89321735"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91851101"
 ---
 # <a name="prepare-a-windows-vhd-or-vhdx-to-upload-to-azure"></a>Windows rendszerű VHD vagy VHDX előkészítése az Azure-ba való feltöltéshez
 
@@ -421,6 +421,7 @@ Különösen a Sysprep megköveteli, hogy a meghajtók teljes mértékben vissza
 
 1. Jelentkezzen be a Windows rendszerű virtuális gépre.
 1. Futtasson egy PowerShell-munkamenetet rendszergazdaként.
+1. Törölje a Panther könyvtárat (C:\Windows\Panther).
 1. Módosítsa a könyvtárat a következőre: `%windir%\system32\sysprep` . Ez után futtassa a `sysprep.exe` parancsot.
 1. A **rendszer-előkészítő eszköz** párbeszédpanelen jelölje be a **rendszerszintű felhasználói élmény (OOBE) megadása**jelölőnégyzetet, és győződjön meg arról, hogy az **általánosítás** jelölőnégyzet be van jelölve.
 
@@ -432,7 +433,7 @@ Különösen a Sysprep megköveteli, hogy a meghajtók teljes mértékben vissza
 Most már készen áll a virtuális merevlemez feltöltésére. A virtuális gépek általánosított lemezről történő létrehozásával kapcsolatos további információkért lásd: [általánosított virtuális merevlemez feltöltése és használata új virtuális gép létrehozásához az Azure-ban](sa-upload-generalized.md).
 
 >[!NOTE]
-> Az egyéni *unattend.xml* -fájlok nem támogatottak. Bár támogatjuk a **additionalUnattendContent** tulajdonságot, amely csak korlátozott támogatást biztosít a [Microsoft-Windows-rendszerhéj-telepítési](/windows-hardware/customize/desktop/unattend/microsoft-windows-shell-setup) beállításoknak az Azure-beli kiépítési ügynök által használt *unattend.xml* -fájlhoz való hozzáadásához. Használhatja például a [additionalUnattendContent](/dotnet/api/microsoft.azure.management.compute.models.additionalunattendcontent?view=azure-dotnet) -t a FirstLogonCommands és a LogonCommands hozzáadásához. További információ: [AdditionalUnattendContent FirstLogonCommands example](https://github.com/Azure/azure-quickstart-templates/issues/1407).
+> Az egyéni *unattend.xml* -fájlok nem támogatottak. Bár támogatjuk a **additionalUnattendContent** tulajdonságot, amely csak korlátozott támogatást biztosít a [Microsoft-Windows-rendszerhéj-telepítési](/windows-hardware/customize/desktop/unattend/microsoft-windows-shell-setup) beállításoknak az Azure-beli kiépítési ügynök által használt *unattend.xml* -fájlhoz való hozzáadásához. Használhatja például a [additionalUnattendContent](/dotnet/api/microsoft.azure.management.compute.models.additionalunattendcontent?view=azure-dotnet&preserve-view=true) -t a FirstLogonCommands és a LogonCommands hozzáadásához. További információ: [AdditionalUnattendContent FirstLogonCommands example](https://github.com/Azure/azure-quickstart-templates/issues/1407).
 
 ## <a name="convert-the-virtual-disk-to-a-fixed-size-vhd"></a>A virtuális lemez átalakítása rögzített méretű VHD-re
 

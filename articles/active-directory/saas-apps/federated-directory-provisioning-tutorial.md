@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/12/2019
 ms.author: zhchia
-ms.openlocfilehash: 336c1e78143c09e07b8f05c3dbd10ca647844242
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 5596dfab98f6826cd61241441a9ddade72e36674
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91319945"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91851271"
 ---
 # <a name="tutorial-configure-federated-directory-for-automatic-user-provisioning"></a>Oktatóanyag: összevont könyvtár konfigurálása a felhasználók automatikus kiépítési felállításához
 
@@ -53,24 +53,24 @@ Az összevont címtár az Azure AD-vel való automatikus felhasználói üzembe 
 
 1. Jelentkezzen be az [összevont címtár-felügyeleti konzolba](https://federated.directory/of)
 
-    ![Összevont címtár – oktatóanyag](media/federated-directory-provisioning-tutorial/companyname.png)
+    :::image type="content" source="media/federated-directory-provisioning-tutorial/companyname.png" alt-text="Képernyőkép az összevont címtár-felügyeleti konzolról, amely egy, a vállalat nevének megadására szolgáló mezőt mutat be. A bejelentkezési gombok is láthatók." border="false":::
 
 2. Navigáljon a **címtárak > felhasználói könyvtárak** elemre, és válassza ki a bérlőt. 
 
-    ![összevont könyvtár](media/federated-directory-provisioning-tutorial/ad-user-directories.png)
+    :::image type="content" source="media/federated-directory-provisioning-tutorial/ad-user-directories.png" alt-text="Képernyőkép az összevont címtár-felügyeleti konzolról, amely egy, a vállalat nevének megadására szolgáló mezőt mutat be. A bejelentkezési gombok is láthatók." border="false":::
 
 3.  Állandó tulajdonosi jogkivonat létrehozásához navigáljon a **címtár kulcsai > hozzon létre új kulcsot.** 
 
-    ![összevont könyvtár](media/federated-directory-provisioning-tutorial/federated01.png)
+    :::image type="content" source="media/federated-directory-provisioning-tutorial/federated01.png" alt-text="Képernyőkép az összevont címtár-felügyeleti konzolról, amely egy, a vállalat nevének megadására szolgáló mezőt mutat be. A bejelentkezési gombok is láthatók." border="false":::
 
 4. Hozzon létre egy könyvtárat. 
 
-    ![összevont könyvtár](media/federated-directory-provisioning-tutorial/federated02.png)
+    :::image type="content" source="media/federated-directory-provisioning-tutorial/federated02.png" alt-text="Képernyőkép az összevont címtár-felügyeleti konzolról, amely egy, a vállalat nevének megadására szolgáló mezőt mutat be. A bejelentkezési gombok is láthatók." border="false":::
     
 
 5. Másolja a **hozzáférési jogkivonat** értékét. Ezt az értéket az összevont Directory-alkalmazás kiépítés lapjának **titkos jogkivonat** mezőjébe írja be a Azure Portal. 
 
-    ![összevont könyvtár](media/federated-directory-provisioning-tutorial/federated03.png)
+    :::image type="content" source="media/federated-directory-provisioning-tutorial/federated03.png" alt-text="Képernyőkép az összevont címtár-felügyeleti konzolról, amely egy, a vállalat nevének megadására szolgáló mezőt mutat be. A bejelentkezési gombok is láthatók." border="false":::
     
 ## <a name="add-federated-directory-from-the-gallery"></a>Összevont könyvtár hozzáadása a gyűjteményből
 
@@ -96,15 +96,15 @@ Az összevont címtár az Azure AD-vel való automatikus felhasználók számár
 
 5. Nyissa meg az alábbi **URL-címet** egy külön böngészőben. 
 
-    ![összevont könyvtár](media/federated-directory-provisioning-tutorial/loginpage1.png)
+    :::image type="content" source="media/federated-directory-provisioning-tutorial/loginpage1.png" alt-text="Képernyőkép az összevont címtár-felügyeleti konzolról, amely egy, a vállalat nevének megadására szolgáló mezőt mutat be. A bejelentkezési gombok is láthatók." border="false":::
 
 6. Kattintson **a bejelentkezés**elemre.
 
-    ![összevont könyvtár](media/federated-directory-provisioning-tutorial/federated04.png)
+    :::image type="content" source="media/federated-directory-provisioning-tutorial/federated04.png" alt-text="Képernyőkép az összevont címtár-felügyeleti konzolról, amely egy, a vállalat nevének megadására szolgáló mezőt mutat be. A bejelentkezési gombok is láthatók." border="false":::
 
 7.  Mivel az összevont címtár egy OpenIDConnect-alkalmazás, az összevont címtárba való bejelentkezést a Microsoft munkahelyi fiókjával lehet bejelentkezni.
     
-    ![összevont könyvtár](media/federated-directory-provisioning-tutorial/loginpage3.png)
+    :::image type="content" source="media/federated-directory-provisioning-tutorial/loginpage3.png" alt-text="Képernyőkép az összevont címtár-felügyeleti konzolról, amely egy, a vállalat nevének megadására szolgáló mezőt mutat be. A bejelentkezési gombok is láthatók." border="false":::
  
 8. Sikeres hitelesítés után fogadja el a jóváhagyást kérő lapot. Az alkalmazás ezután automatikusan hozzáadódik a bérlőhöz, és a rendszer átirányítja az összevont címtár-fiókhoz.
 
@@ -146,12 +146,12 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
 10. A **leképezések** szakaszban válassza a **szinkronizálás Azure Active Directory a felhasználók összevont címtárba**lehetőséget.
 
-    ![Összevont címtár – oktatóanyag](media/federated-directory-provisioning-tutorial/user-mappings.png)
+    :::image type="content" source="media/federated-directory-provisioning-tutorial/user-mappings.png" alt-text="Képernyőkép az összevont címtár-felügyeleti konzolról, amely egy, a vállalat nevének megadására szolgáló mezőt mutat be. A bejelentkezési gombok is láthatók." border="false":::
     
     
 11. Tekintse át az Azure AD-ből szinkronizált felhasználói attribútumokat az attribútum- **hozzárendelési** szakaszban az összevont címtárba. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok az összevont címtárban lévő felhasználói fiókoknak a frissítési műveletekhez való megfeleltetésére szolgálnak. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
 
-    ![Összevont címtár – oktatóanyag](media/federated-directory-provisioning-tutorial/user-attributes.png)
+    :::image type="content" source="media/federated-directory-provisioning-tutorial/user-attributes.png" alt-text="Képernyőkép az összevont címtár-felügyeleti konzolról, amely egy, a vállalat nevének megadására szolgáló mezőt mutat be. A bejelentkezési gombok is láthatók." border="false":::
     
 
 12. Hatókörszűrők konfigurálásához tekintse meg a [hatókörszűrővel kapcsolatos oktatóanyagban](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) szereplő következő utasításokat.

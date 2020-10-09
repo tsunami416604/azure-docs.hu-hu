@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: jeedes
-ms.openlocfilehash: bae3f4a0d8c793061bb3833b04717d378e86f85f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 78f9217ea7288bac56b008911f7b39c73bba7771
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88519760"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91856551"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-launchdarkly"></a>Oktatóanyag: Azure Active Directory integráció a LaunchDarkly
 
@@ -74,7 +74,7 @@ Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és az [alk
 Az Azure AD egyszeri bejelentkezés az [alkalmazásnév] használatával történő konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
 
 1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. **[LaunchDarkly egyszeri bejelentkezés konfigurálása](#configure-launchdarkly-single-sign-on)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+2. **[LaunchDarkly egyszeri bejelentkezés konfigurálása](#configure-launchdarkly-single-sign-on)** – az egyes Sign-On beállítások konfigurálása az alkalmazás oldalán.
 3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
 4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
 5. **[Hozzon létre LaunchDarkly-teszt felhasználót](#create-launchdarkly-test-user)** – hogy a LaunchDarkly Britta, a felhasználó Azure ad-képviseletéhez kapcsolódó partnerrel rendelkezzen.
@@ -94,13 +94,13 @@ Az Azure AD egyszeri bejelentkezés az [alkalmazásnév] használatával törté
 
     ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
+3. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
 4. Az **alapszintű SAML-konfiguráció** szakaszban, ha az alkalmazást **identitásszolgáltató** kezdeményezett módban szeretné konfigurálni, hajtsa végre a következő lépéseket:
 
-    ![LaunchDarkly tartomány és URL-címek egyszeri bejelentkezési adatai](common/idp-intiated.png)
+    ![A képernyőfelvételen az alapszintű SAML-konfiguráció látható, ahol megadható az azonosító, a válasz U R L, majd a Mentés elemre.](common/idp-intiated.png)
 
     a. Az **azonosító** szövegmezőbe írja be az URL-címet: `app.launchdarkly.com`
 
@@ -113,9 +113,9 @@ Az Azure AD egyszeri bejelentkezés az [alkalmazásnév] használatával törté
 
     A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:  `https://app.launchdarkly.com`
 
-    ![LaunchDarkly tartomány és URL-címek egyszeri bejelentkezési adatai](common/metadata-upload-additional-signon.png)
+    ![Képernyőfelvétel: további U R ls beállítása, ahol megadhatja a bejelentkezést az U R L-ben.](common/metadata-upload-additional-signon.png)
 
-6. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállítások alapján, és mentse a számítógépre.
+6. Az **egyszeres Sign-On beállítása az SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállítások alapján, és mentse azt a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozása](common/certificatebase64.png)
 
@@ -129,25 +129,25 @@ Az Azure AD egyszeri bejelentkezés az [alkalmazásnév] használatával törté
 
     c. Kijelentkezési URL-cím
 
-### <a name="configure-launchdarkly-single-sign-on"></a>LaunchDarkly egyszeri bejelentkezés konfigurálása
+### <a name="configure-launchdarkly-single-sign-on"></a>LaunchDarkly egyetlen Sign-On konfigurálása
 
 1. Egy másik böngészőablakban jelentkezzen be a LaunchDarkly vállalati webhelyre rendszergazdaként.
 
 2. Válassza a **Fiókbeállítások** lehetőséget a bal oldali navigációs panelen.
 
-    ![LaunchDarkly-konfiguráció](./media/launchdarkly-tutorial/configure1.png)
+    ![A képernyőképen az éles környezetben kiválasztott Fiókbeállítások elem látható.](./media/launchdarkly-tutorial/configure1.png)
 
 3. Kattintson a **Biztonság** fülre.
 
-    ![LaunchDarkly-konfiguráció](./media/launchdarkly-tutorial/configure2.png)
+    ![Képernyőfelvétel: a Fiókbeállítások Biztonság lapja.](./media/launchdarkly-tutorial/configure2.png)
 
 4. Kattintson az **egyszeri bejelentkezés engedélyezése** , majd az **SAML-konfiguráció szerkesztése**elemre.
 
-    ![LaunchDarkly-konfiguráció](./media/launchdarkly-tutorial/configure3.png)
+    ![Képernyőfelvétel: az egyszeri bejelentkezési oldal, amelyen ENGEDÉLYEZheti az S S O-t, és SZERKESZTHETi az SAML-KONFIGURÁCIÓt.](./media/launchdarkly-tutorial/configure3.png)
 
 5. Az **SAML-konfiguráció szerkesztése** szakaszban hajtsa végre a következő lépéseket:
 
-    ![LaunchDarkly-konfiguráció](./media/launchdarkly-tutorial/configure4.png)
+    ![Képernyőfelvétel: az SAML-konfiguráció szerkesztése szakasz, ahol az itt ismertetett módosításokat végezheti el.](./media/launchdarkly-tutorial/configure4.png)
 
     a. Másolja az **SAML fogyasztói szolgáltatás URL-címét** a példányhoz, és illessze be a válasz URL-szövegmezőbe a **LaunchDarkly tartomány és URL-címek** szakaszban Azure Portal.
 
@@ -180,7 +180,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    d. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

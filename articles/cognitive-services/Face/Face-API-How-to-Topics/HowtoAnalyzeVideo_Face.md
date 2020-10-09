@@ -11,12 +11,12 @@ ms.topic: sample
 ms.date: 03/01/2018
 ms.author: sbowles
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f9d9fa461291b2fe72e9d69928163bb54e9e1be0
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 730946a0c581be4697c0f45c8bdeb1d38f0ca23d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91303811"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91856388"
 ---
 # <a name="example-how-to-analyze-videos-in-real-time"></a>Példa: Videók valós idejű elemzése
 
@@ -79,13 +79,13 @@ A végső "előállító-fogyasztó" alapú rendszerünkben van egy előállít�
 ```csharp
 // Queue that will contain the API call tasks. 
 var taskQueue = new BlockingCollection<Task<ResultWrapper>>();
-     
+     
 // Producer thread. 
 while (true)
 {
     // Grab a frame. 
     Frame f = GrabFrame();
- 
+ 
     // Decide whether to analyze the frame. 
     if (ShouldAnalyze(f))
     {
@@ -119,10 +119,10 @@ while (true)
 {
     // Get the oldest task. 
     Task<ResultWrapper> analysisTask = taskQueue.Take();
- 
+ 
     // Await until the task is completed. 
     var output = await analysisTask;
-     
+     
     // Consume the exception or result. 
     if (output.Exception != null)
     {
@@ -145,52 +145,7 @@ A kódtár tartalmazza a FrameGrabber osztályt, amellyel megvalósítható a fe
 
 Az egyes lehetőségek bemutatására a kódtárat használó két mintaalkalmazás érhető el. Az első egy egyszerű konzolos alkalmazás, és az alább látható egyszerűsített verzió. A rendszer az alapértelmezett webkamera kereteit is megragadja, és a Face szolgáltatásba küldi azokat.
 
-```csharp
-using System;
-using VideoFrameAnalyzer;
-using Microsoft.ProjectOxford.Face;
-using Microsoft.ProjectOxford.Face.Contract;
-     
-namespace VideoFrameConsoleApplication
-{
-    class Program
-    {
-        static void Main(string[] args)
-        {
-            // Create grabber, with analysis type Face[]. 
-            FrameGrabber<Face[]> grabber = new FrameGrabber<Face[]>();
-            
-            // Create Face Client. Insert your Face API key here.
-            private readonly IFaceClient faceClient = new FaceClient(
-            new ApiKeyServiceClientCredentials("<subscription key>"),
-            new System.Net.Http.DelegatingHandler[] { });
-
-            // Set up our Face API call.
-            grabber.AnalysisFunction = async frame => return await faceClient.DetectAsync(frame.Image.ToMemoryStream(".jpg"));
-
-            // Set up a listener for when we receive a new result from an API call. 
-            grabber.NewResultAvailable += (s, e) =>
-            {
-                if (e.Analysis != null)
-                    Console.WriteLine("New result received for frame acquired at {0}. {1} faces detected", e.Frame.Metadata.Timestamp, e.Analysis.Length);
-            };
-            
-            // Tell grabber to call the Face API every 3 seconds.
-            grabber.TriggerAnalysisOnInterval(TimeSpan.FromMilliseconds(3000));
-
-            // Start running.
-            grabber.StartProcessingCameraAsync().Wait();
-
-            // Wait for keypress to stop
-            Console.WriteLine("Press any key to stop...");
-            Console.ReadKey();
-            
-            // Stop, blocking until done.
-            grabber.StopProcessingAsync().Wait();
-        }
-    }
-}
-```
+:::code language="csharp" source="~/cognitive-services-quickstart-code/dotnet/Face/sdk/analyze.cs":::
 
 A második mintaalkalmazás egy kicsit érdekesebb, és ebben kiválasztható, hogy melyik API-t hívja meg a videóképeken. A bal oldalon az alkalmazás az élő videó előnézetét jeleníti meg, a jobb oldalon pedig a legújabb API-eredményéket jeleníti meg a megfelelő képkockára vetítve.
 
@@ -208,7 +163,7 @@ A minta használatához hajtsa végre az alábbi lépéseket:
    - [Arc](https://portal.azure.com/#create/Microsoft.CognitiveServicesFace) Az erőforrások üzembe helyezése után kattintson az **erőforrás keresése** elemre az egyes erőforrásokhoz tartozó kulcs és végpont összegyűjtéséhez. 
 3. A [kognitív-Samples-VideoFrameAnalysis GitHub-](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/) tárház klónozása.
 4. Nyissa meg a mintát a Visual Studióban, és hozza létre és futtassa a minta alkalmazásokat:
-    - A BasicConsoleSample esetében a Face kulcs nem kódolható közvetlenül a [BasicConsoleSample/program. cs](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/blob/master/Windows/BasicConsoleSample/Program.cs)-ban.
+    - A BasicConsoleSample esetében a Face kulcs nem kódolható közvetlenül a [BasicConsoleSample/program. cs](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/blob/master/Windows/BasicConsoleSample/Program.cs)-ban.
     - A LiveCameraSample esetében a kulcsokat az alkalmazás Settings (Beállítások) panelén kell megadni. A kulcsokat a rendszer felhasználói adatként a munkamenetek közt is megőrzi.
         
 
@@ -218,7 +173,7 @@ Ha készen áll az integrálásra, **a saját projektjeiből hivatkozhat a Video
 
 Ebben az útmutatóban megtanulta, hogyan futtathat közel valós idejű elemzést az élő videó streameken az arc, a Computer Vision és az Emotion API-k használatával, és hogyan használhatja a minta kódját a kezdéshez.
 
-Nyugodtan visszajelzést és javaslatokat küldhet a GitHub- [tárházban](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/) , vagy szélesebb körű API-visszajelzéseket a [UserVoice webhelyén](https://cognitive.uservoice.com/).
+Nyugodtan visszajelzést és javaslatokat küldhet a GitHub- [tárházban](https://github.com/Microsoft/Cognitive-Samples-VideoFrameAnalysis/) , vagy szélesebb körű API-visszajelzéseket a [UserVoice webhelyén](https://cognitive.uservoice.com/).
 
 ## <a name="related-topics"></a>Kapcsolódó témakörök
 - [Hogyan lehet arcokat megtalálni a képen](HowtoDetectFacesinImage.md)

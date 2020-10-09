@@ -9,24 +9,23 @@ ms.topic: quickstart
 ms.service: iot-edge
 services: iot-edge
 ms.custom: mvc
-ms.openlocfilehash: bbed5899a860f3ba8ac7047a283966536f6c8a87
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 3540add3020c45e5664f96f5c47dec10a551ed4d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91328615"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91857044"
 ---
 # <a name="quickstart-deploy-your-first-iot-edge-module-to-a-virtual-linux-device"></a>Rövid útmutató: az első IoT Edge modul üzembe helyezése egy virtuális Linux-eszközön
 
 Kipróbálhatja Azure IoT Edge ebben a rövid útmutatóban, ha egy virtuális Linux IoT Edge eszközre helyez üzembe tároló kódot. IoT Edge lehetővé teszi a kódok távoli kezelését az eszközökön, így több számítási feladatot is elküldhet a peremhálózat számára. Ebben a rövid útmutatóban azt javasoljuk, hogy használjon egy Azure-beli virtuális gépet a IoT Edge eszközhöz, amely lehetővé teszi, hogy gyorsan hozzon létre egy tesztelési gépet a telepített IoT Edge szolgáltatással, majd törölje azt, ha elkészült.
 
 Ennek a rövid útmutatónak a segítségével megtanulhatja az alábbiakat:
-> [!div class="checklist"]
->
-> * IoT Hub létrehozása
-> * IoT Edge-eszköz regisztrálása az IoT Hubon
-> * Telepítse és indítsa el a IoT Edge futtatókörnyezetet a virtuális eszközön.
-> * Modul távoli üzembe helyezése IoT Edge-eszközön.
+
+* IoT Hub létrehozása
+* IoT Edge-eszköz regisztrálása az IoT Hubon
+* Telepítse és indítsa el a IoT Edge futtatókörnyezetet a virtuális eszközön.
+* Modul távoli üzembe helyezése IoT Edge-eszközön.
 
 ![Diagram – az eszköz és a felhő gyors üzembe helyezési architektúrája](./media/quickstart-linux/install-edge-full.png)
 

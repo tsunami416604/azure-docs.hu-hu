@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 08/20/2019
-ms.openlocfilehash: f7d2351fdc39ec4600cbca2e436cdcd527157275
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 7bdb2c6ba6717624b19184ca3bcb47ee9b3da367
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91332964"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91856109"
 ---
 # <a name="what-is-sql-data-sync-for-azure"></a>Mi az Azure-SQL-adatszinkronizálás?
 
@@ -58,7 +58,7 @@ Az adatszinkronizálás olyan esetekben hasznos, amikor a Azure SQL Database vag
 
 Az adatszinkronizálás nem az előnyben részesített megoldás a következő esetekben:
 
-| Használati eset | Néhány ajánlott megoldás |
+| Forgatókönyv | Néhány ajánlott megoldás |
 |----------|----------------------------|
 | Vészhelyreállítás | [Azure geo-redundáns biztonsági mentések](automated-backups-overview.md) |
 | Olvasási skála | [Csak olvasható replikák használata az írásvédett lekérdezési feladatok terheléselosztásához (előzetes verzió)](read-scale-out.md) |
@@ -83,7 +83,7 @@ Az adatszinkronizálás nem az előnyben részesített megoldás a következő e
 | **Előnyök** | – Aktív-aktív támogatás<br/>– A helyszíni és a Azure SQL Database közötti kétirányú irányítás | – Alacsonyabb késés<br/>– Tranzakciós konzisztencia<br/>-Meglévő topológia újrafelhasználása az áttelepítés után <br/>– Az Azure SQL felügyelt példányának támogatása |
 | **Hátrányok** | – 5 perc vagy több késés<br/>– Nincs tranzakciós konzisztencia<br/>– Nagyobb teljesítményre gyakorolt hatás | -Nem lehet közzétenni Azure SQL Database <br/>– Magas karbantartási díj |
 
-## <a name="get-started"></a>Első lépések 
+## <a name="get-started"></a>Bevezetés 
 
 ### <a name="set-up-data-sync-in-the-azure-portal"></a>Adatszinkronizálás beállítása a Azure Portal
 
@@ -126,7 +126,7 @@ A szinkronizálási csoport létrehozása, frissítése és törlése során a k
 > - A központ és a tag közötti adatvesztés akkor is elvész, ha a szinkronizálás nem jelent problémát.
 > - A szinkronizálás sikertelen lehet, mert a követési tábla nem létező sort tartalmaz a forrástól az elsődleges kulcs módosítása miatt.
 
-- Engedélyezni kell a pillanatkép-elkülönítést. További információ: [Pillanatkép-elkülönítés az SQL Serveren](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/snapshot-isolation-in-sql-server).
+- A pillanatkép-elkülönítést engedélyezni kell a szinkronizálási tagok és a központ esetében is. További információ: [Pillanatkép-elkülönítés az SQL Serveren](https://docs.microsoft.com/dotnet/framework/data/adonet/sql/snapshot-isolation-in-sql-server).
 
 ### <a name="general-limitations"></a>Általános korlátozások
 
@@ -137,7 +137,7 @@ A szinkronizálási csoport létrehozása, frissítése és törlése során a k
 - Az objektumok (adatbázisok, táblák és oszlopok) nevei nem tartalmazhatják a nyomtatható karaktereket (.), a bal oldali szögletes zárójelet ([) vagy a jobb oldali szögletes zárójelet (]).
 - Azure Active Directory hitelesítés nem támogatott.
 - Az azonos nevű, de eltérő sémával rendelkező táblák (például dbo. Customers és Sales. Customers) nem támogatottak.
-- A felhasználó által definiált adattípusú oszlopok nem támogatottak
+- User-Defined adattípusú oszlopok nem támogatottak
 - A kiszolgálók különböző előfizetések közötti áthelyezése nem támogatott. 
 
 #### <a name="unsupported-data-types"></a>Nem támogatott adattípusok
@@ -224,7 +224,7 @@ Egy ajánlott biztonsági mentési módszer: [adatbázis másolása Azure SQL Da
 ### <a name="can-data-sync-sync-encrypted-tables-and-columns"></a>Az adatszinkronizálás titkosított táblákat és oszlopokat képes szinkronizálni
 
 - Ha egy adatbázis Always Encrypted használ, csak azokat a táblákat és oszlopokat szinkronizálhatja *, amelyek nincsenek titkosítva* . A titkosított oszlopok nem szinkronizálhatók, mert az adatszinkronizálás nem tudja visszafejteni az adattitkosítást.
-- Ha egy oszlop oszlop szintű titkosítást (CLE) használ, szinkronizálhatja az oszlopot, ha a sor mérete nem éri el a maximálisan megengedett 24 MB-ot. Az adatszinkronizálási szolgáltatás a kulcs (CLE) által titkosított oszlopot normál bináris adatként kezeli. A többi szinkronizálási tag adatvisszafejtéséhez ugyanazzal a tanúsítvánnyal kell rendelkeznie.
+- Ha egy oszlop Column-Level titkosítást (CLE) használ, szinkronizálhatja az oszlopot, ha a sor mérete nem éri el a maximálisan megengedett 24 MB-ot. Az adatszinkronizálási szolgáltatás a kulcs (CLE) által titkosított oszlopot normál bináris adatként kezeli. A többi szinkronizálási tag adatvisszafejtéséhez ugyanazzal a tanúsítvánnyal kell rendelkeznie.
 
 ### <a name="is-collation-supported-in-sql-data-sync"></a>SQL-adatszinkronizálás támogatja a rendezést.
 
@@ -241,7 +241,7 @@ Az összevonási gyökér adatbázisa korlátozás nélkül használható a SQL-
 
 A Dynamics 365 saját adatbázis-funkciója lehetővé teszi, hogy a rendszergazdák a saját Microsoft Azure SQL Database-be exportálják az alkalmazásból az adatentitásokat. Az adatszinkronizálás használatával más adatbázisokba is szinkronizálhatja ezeket az adatfájlokat, ha az adatexportálás **növekményes leküldéses** használatával történik (a teljes leküldéses funkció nem támogatott), és az **Eseményindítók engedélyezése a célként megadott adatbázisban** **Igen**értékre van állítva.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 ### <a name="update-the-schema-of-a-synced-database"></a>Szinkronizált adatbázis sémájának frissítése
 

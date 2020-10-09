@@ -8,16 +8,16 @@ ms.topic: tutorial
 ms.date: 10/06/2020
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: b536b0e2601ce1ae9dd3d40723f4cab09a3a4c48
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: 69067ca34b231f1b14f8cc854288c3ed4c4ac82a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91772957"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91855990"
 ---
-# <a name="connect-a-virtual-network-to-an-expressroute-circuit"></a>Virtuális hálózat összekapcsolása egy ExpressRoute-kapcsolatcsoporttal
+# <a name="tutorial-connect-a-virtual-network-to-an-expressroute-circuit"></a>Oktatóanyag: virtuális hálózat összekapcsolása egy ExpressRoute-áramkörrel
 > [!div class="op_single_selector"]
-> * [Azure Portalra](expressroute-howto-linkvnet-portal-resource-manager.md)
+> * [Azure Portal](expressroute-howto-linkvnet-portal-resource-manager.md)
 > * [PowerShell](expressroute-howto-linkvnet-arm.md)
 > * [Azure CLI](howto-linkvnet-cli.md)
 > * [Videó – Azure Portal](https://azure.microsoft.com/documentation/videos/azure-expressroute-how-to-create-a-connection-between-your-vpn-gateway-and-expressroute-circuit)
@@ -206,7 +206,7 @@ Ha már nincs szüksége a ExpressRoute-kapcsolatra, az az előfizetés, amelybe
 Remove-AzVirtualNetworkGatewayConnection "MyConnection" -ResourceGroupName "MyRG"
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A ExpressRoute kapcsolatos további információkért tekintse meg a ExpressRoute gyakori kérdések című témakört.
 
 > [!div class="nextstepaction"]

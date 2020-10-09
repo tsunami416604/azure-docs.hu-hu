@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: 69cfe529f3d2b0f956bfbe9d002a5a220b37e19f
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.openlocfilehash: d11d3edc4eec0a006e71ef1787cbbd62a7f5957e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91620008"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91856976"
 ---
 # <a name="use-azure-powershell-to-create-an-hdinsight-cluster-with-azure-data-lake-storage-gen1-as-additional-storage"></a>A Azure PowerShell használatával hozzon létre egy HDInsight-fürtöt Azure Data Lake Storage Gen1 (további tárterületként)
 
@@ -29,7 +29,7 @@ Megtudhatja, hogyan konfigurálhat egy HDInsight-fürtöt a Azure PowerShell has
 > Ha a HDInsight-fürt számára további tárterületként kívánja használni a Data Lake Storage Gen1, javasoljuk, hogy ezt a cikket a jelen cikkben ismertetett módon hozza létre a fürt létrehozásakor. Data Lake Storage Gen1 hozzáadása egy meglévő HDInsight-fürthöz további tárterületként egy bonyolult folyamat, amely a hibákra hajlamos.
 >
 
-A támogatott fürtök esetében Data Lake Storage Gen1 alapértelmezett tárolóként vagy további Storage-fiókként is használható. Ha a Data Lake Storage Gen1 kiegészítő tárolóként van használatban, a fürtök alapértelmezett Storage-fiókja továbbra is az Azure Storage-Blobok (WASB), a fürthöz kapcsolódó fájlok (például naplók stb.) továbbra is az alapértelmezett tárolóba kerülnek, míg a feldolgozni kívánt adat egy Data Lake Storage Gen1-fiókban tárolható. A Data Lake Storage Gen1 használata további Storage-fiókként nem befolyásolja a teljesítményt, vagy a fürtből a tárolóba való olvasási/írási képességet.
+A támogatott fürtök esetében Data Lake Storage Gen1 alapértelmezett tárolóként vagy további Storage-fiókként is használható. Ha Data Lake Storage Gen1 további tárolóként használja, a fürtök alapértelmezett Storage-fiókja továbbra is az Azure Blob Storage (WASB) lesz, és a fürthöz kapcsolódó fájlok (például naplók stb.) továbbra is az alapértelmezett tárolóba kerülnek, míg a feldolgozni kívánt adat egy Data Lake Storage Gen1 tárolható. A Data Lake Storage Gen1 használata további Storage-fiókként nem befolyásolja a teljesítményt, vagy a fürtből a tárolóba való olvasási/írási képességet.
 
 ## <a name="using-data-lake-storage-gen1-for-hdinsight-cluster-storage"></a>Data Lake Storage Gen1 használata a HDInsight-fürt tárterületéhez
 
@@ -39,7 +39,7 @@ Az alábbiakban néhány fontos szempontot láthat a HDInsight és a Data Lake S
 
 A Data Lake Storage Gen1 PowerShell-lel való használatához a HDInsight konfigurálása a következő lépésekből áll:
 
-* Data Lake Storage Gen1-fiók létrehozása
+* Data Lake Storage Gen1-fiók létrehozása 
 * Szerepköralapú hozzáférés beállítása Data Lake Storage Gen1hoz
 * HDInsight-fürt létrehozása Data Lake Storage Gen1 hitelesítéssel
 * Tesztelési feladatok futtatása a fürtön
@@ -57,7 +57,7 @@ Az oktatóanyag elkezdéséhez az alábbiakkal kell rendelkeznie:
 
     **Ha Ön nem Azure ad-rendszergazda**, nem fogja tudni végrehajtani az egyszerű szolgáltatásnév létrehozásához szükséges lépéseket. Ilyen esetben az Azure AD-rendszergazdának először létre kell hoznia egy egyszerű szolgáltatásnevet, mielőtt HDInsight-fürtöt hozna létre Data Lake Storage Gen1 használatával. Emellett a szolgáltatásnevet tanúsítvány használatával kell létrehozni az [egyszerű szolgáltatásnév létrehozása tanúsítvánnyal](../active-directory/develop/howto-authenticate-service-principal-powershell.md#create-service-principal-with-certificate-from-certificate-authority)című témakörben leírtak szerint.
 
-## <a name="create-a-data-lake-storage-gen1-account"></a>Data Lake Storage Gen1-fiók létrehozása
+## <a name="create-a-data-lake-storage-gen1-account"></a>Data Lake Storage Gen1-fiók létrehozása 
 Data Lake Storage Gen1 fiók létrehozásához kövesse az alábbi lépéseket.
 
 1. Nyisson meg egy új Azure PowerShell ablakot az asztalról, és adja meg a következő kódrészletet. Amikor a rendszer kéri, hogy jelentkezzen be, győződjön meg arról, hogy az előfizetés-rendszergazda/tulajdonos egyike:
@@ -80,7 +80,7 @@ Data Lake Storage Gen1 fiók létrehozásához kövesse az alábbi lépéseket.
    > Ha `Register-AzResourceProvider : InvalidResourceNamespace: The resource namespace 'Microsoft.DataLakeStore' is invalid` a Data Lake Storage Gen1 erőforrás-szolgáltató regisztrálásához hasonló hibaüzenetet kap, akkor előfordulhat, hogy az előfizetését nem hagyja jóvá a Data Lake Storage Gen1. Ezeket az [utasításokat](data-lake-store-get-started-portal.md)követve engedélyezze Data Lake Storage Gen1 Azure-előfizetését.
    >
    >
-2. Egy Data Lake Storage Gen1 fiók egy Azure-erőforráscsoporthoz van társítva. Először hozzon létre egy Azure-erőforráscsoportot.
+2. Data Lake Storage Gen1 társított Storage-fiók egy Azure-erőforráscsoporthoz van társítva. Először hozzon létre egy Azure-erőforráscsoportot.
 
     ```azurepowershell
     $resourceGroupName = "<your new resource group name>"
@@ -97,10 +97,10 @@ Data Lake Storage Gen1 fiók létrehozásához kövesse az alábbi lépéseket.
     ResourceId        : /subscriptions/<subscription-id>/resourceGroups/hdiadlgrp
     ```
 
-3. Hozzon létre egy Data Lake Storage Gen1 fiókot. A megadott fióknév csak kisbetűket és számokat tartalmazhat.
+3. Hozzon létre egy Data Lake Storage Gen1 tartalmazó Storage-fiókot. A megadott fióknév csak kisbetűket és számokat tartalmazhat.
 
     ```azurepowershell
-    $dataLakeStorageGen1Name = "<your new Data Lake Storage Gen1 account name>"
+    $dataLakeStorageGen1Name = "<your new storage account with Data Lake Storage Gen1 name>"
     New-AzDataLakeStoreAccount -ResourceGroupName $resourceGroupName -Name $dataLakeStorageGen1Name -Location "East US 2"
     ```
 
@@ -132,7 +132,7 @@ Data Lake Storage Gen1 fiók létrehozásához kövesse az alábbi lépéseket.
 
 ## <a name="set-up-authentication-for-role-based-access-to-data-lake-storage-gen1"></a>Szerepköralapú hozzáférés beállítása Data Lake Storage Gen1hoz
 
-Minden Azure-előfizetés egy Azure Active Directory van társítva. Azoknak a felhasználóknak és szolgáltatásoknak, amelyek a Azure Portal vagy Azure Resource Manager API használatával érik el az előfizetés erőforrásait, először hitelesíteniük kell az adott Azure Active Directory. Az Azure-előfizetések és-szolgáltatások hozzáférése az Azure-erőforrás megfelelő szerepkörének hozzárendelésével biztosítható.  A szolgáltatások esetében egy egyszerű szolgáltatásnév azonosítja a szolgáltatást a Azure Active Directoryban (HRE). Ez a szakasz azt szemlélteti, hogyan adható meg egy alkalmazás-szolgáltatás, például a HDInsight, hozzáférés egy Azure-erőforráshoz (a korábban létrehozott Data Lake Storage Gen1 fiókhoz), ha létrehoz egy egyszerű szolgáltatásnevet az alkalmazáshoz, és szerepköröket rendel hozzá a Azure PowerShell-on keresztül.
+Minden Azure-előfizetés egy Azure Active Directory van társítva. Azoknak a felhasználóknak és szolgáltatásoknak, amelyek a Azure Portal vagy Azure Resource Manager API használatával érik el az előfizetés erőforrásait, először hitelesíteniük kell az adott Azure Active Directory. Az Azure-előfizetések és-szolgáltatások hozzáférése az Azure-erőforrás megfelelő szerepkörének hozzárendelésével biztosítható.  A szolgáltatások esetében egy egyszerű szolgáltatásnév azonosítja a szolgáltatást a Azure Active Directoryban (Azure AD). Ez a szakasz azt szemlélteti, hogyan adható meg egy alkalmazás-szolgáltatás, például a HDInsight, hozzáférés egy Azure-erőforráshoz (a korábban létrehozott Data Lake Storage Gen1 Storage-fiókhoz), ha létrehoz egy egyszerű szolgáltatásnevet az alkalmazáshoz, és hozzárendeli a szerepköröket az adott Azure PowerShelln keresztül.
 
 Data Lake Storage Gen1 Active Directory hitelesítésének beállításához a következő feladatokat kell végrehajtania.
 
@@ -197,7 +197,7 @@ Ebben a szakaszban egy egyszerű szolgáltatásnév létrehozásához szüksége
      $objectId = $servicePrincipal.Id
     ```
 
-3. Adja meg az egyszerű szolgáltatás elérését a Data Lake Storage Gen1 mappához és a fájlhoz, amelyet a HDInsight-fürthöz fog elérni. Az alábbi kódrészlet hozzáférést biztosít a Data Lake Storage Gen1 fiók gyökeréhez (ahol a minta adatfájlját másolta), és maga a fájl.
+3. Adja meg az egyszerű szolgáltatás elérését a Data Lake Storage Gen1 mappához és a fájlhoz, amelyet a HDInsight-fürthöz fog elérni. Az alábbi kódrészlet hozzáférést biztosít a Storage-fiók gyökeréhez Data Lake Storage Gen1 (amely a minta adatfájlját másolta), és maga a fájl.
 
     ```azurepowershell
     Set-AzDataLakeStoreItemAclEntry -AccountName $dataLakeStorageGen1Name -Path / -AceType User -Id $objectId -Permissions All
@@ -206,7 +206,7 @@ Ebben a szakaszban egy egyszerű szolgáltatásnév létrehozásához szüksége
 
 ## <a name="create-an-hdinsight-linux-cluster-with-data-lake-storage-gen1-as-additional-storage"></a>HDInsight Linux-fürt létrehozása Data Lake Storage Gen1 kiegészítő tárolóként
 
-Ebben a szakaszban egy HDInsight Hadoop Linux-fürtöt hozunk létre Data Lake Storage Gen1 kiegészítő tárolóként. Ebben a kiadásban a HDInsight-fürtnek és a Data Lake Storage Gen1 fióknak ugyanazon a helyen kell lennie.
+Ebben a szakaszban egy HDInsight Hadoop Linux-fürtöt hozunk létre Data Lake Storage Gen1 kiegészítő tárolóként. Ebben a kiadásban a HDInsight-fürt és a Data Lake Storage Gen1-tároló fióknak ugyanazon a helyen kell lennie.
 
 1. Kezdje az előfizetés-bérlő AZONOSÍTÓjának beolvasásával. Erre később szüksége lesz.
 
@@ -214,7 +214,7 @@ Ebben a szakaszban egy HDInsight Hadoop Linux-fürtöt hozunk létre Data Lake S
     $tenantID = (Get-AzContext).Tenant.TenantId
     ```
 
-2. Ebben a kiadásban a Hadoop-fürtök esetében Data Lake Storage Gen1 csak a fürt további tárolóként használható. Az alapértelmezett tárterület továbbra is az Azure Storage-Blobok (WASB) lesz. Ezért először létre kell hozni a fürthöz szükséges Storage-fiókot és tároló-tárolókat.
+2. Ebben a kiadásban a Hadoop-fürtök esetében Data Lake Storage Gen1 csak a fürt további tárolóként használható. Az alapértelmezett tárterület továbbra is az Azure Blob Storage (WASB) lesz. Ezért először létre kell hozni a fürthöz szükséges Storage-fiókot és tároló-tárolókat.
 
     ```azurepowershell
     # Create an Azure storage account
@@ -245,8 +245,8 @@ Ebben a szakaszban egy HDInsight Hadoop Linux-fürtöt hozunk létre Data Lake S
     A parancsmag sikeres befejeződése után megjelenik egy kimenet, amely a fürt részleteit tartalmazza.
 
 
-## <a name="run-test-jobs-on-the-hdinsight-cluster-to-use-the-data-lake-storage-gen1-account"></a>Tesztelési feladatok futtatása a HDInsight-fürtön a Data Lake Storage Gen1 fiók használatához
-A HDInsight-fürt konfigurálását követően tesztelési feladatokat futtathat a fürtön annak ellenőrzéséhez, hogy a HDInsight-fürt elérheti-e Data Lake Storage Gen1. Ehhez egy minta kaptár-feladatot fogunk futtatni, amely létrehoz egy táblázatot a korábban a Data Lake Storage Gen1-fiókba feltöltött mintaadatok használatával.
+## <a name="run-test-jobs-on-the-hdinsight-cluster-to-use-the-data-lake-storage-gen1"></a>Tesztelési feladatok futtatása a HDInsight-fürtön a Data Lake Storage Gen1 használatához
+A HDInsight-fürt konfigurálását követően tesztelési feladatokat futtathat a fürtön annak ellenőrzéséhez, hogy a HDInsight-fürt elérheti-e Data Lake Storage Gen1. Ehhez hozzon létre egy minta kaptár-feladatot, amely létrehoz egy táblázatot a korábban a Storage-fiókba a Data Lake Storage Gen1 segítségével feltöltött mintaadatok használatával.
 
 Ebben a szakaszban az SSH-t fogja létrehozni a létrehozott HDInsight Linux-fürtön, és futtatta a minta struktúra-lekérdezést.
 
@@ -290,10 +290,10 @@ Ebben a szakaszban az SSH-t fogja létrehozni a létrehozott HDInsight Linux-fü
 * Ha Windows-ügyfelet használ az SSH-ba a fürtben, tekintse [meg az SSH használata a HDInsight a Linux-alapú Hadoop a Windows](../hdinsight/hdinsight-hadoop-linux-use-ssh-windows.md)rendszerből című témakört.
 * Ha Linux-ügyfelet használ az SSH-ba a fürtben, tekintse [meg az SSH használata Linux-alapú Hadoop a HDInsight Linuxon](../hdinsight/hdinsight-hadoop-linux-use-ssh-unix.md) című témakört.
 
-Csatlakozás után a következő HDFS fájlrendszer-paranccsal listázhatja a Data Lake Storage Gen1 fiókban található fájlokat.
+A csatlakozás után a következő HDFS fájlrendszer-paranccsal listázhatja a Storage-fiókban lévő fájlokat a Data Lake Storage Gen1 használatával.
 
 ```azurepowershell
-hdfs dfs -ls adl://<Data Lake Storage Gen1 account name>.azuredatalakestore.net:443/
+hdfs dfs -ls adl://<storage account with Data Lake Storage Gen1 name>.azuredatalakestore.net:443/
 ```
 
 Ekkor fel kell sorolni a korábban feltöltött fájlt Data Lake Storage Gen1.
@@ -307,7 +307,7 @@ Found 1 items
 A parancs használatával is `hdfs dfs -put` feltölthet néhány fájlt a Data Lake Storage Gen1ba, majd a használatával ellenőrizheti, hogy `hdfs dfs -ls` a fájlok feltöltése sikeres volt-e.
 
 ## <a name="see-also"></a>Lásd még:
-* [Data Lake Storage Gen1 használata az Azure HDInsight-fürtökkel](../hdinsight/hdinsight-hadoop-use-data-lake-store.md)
+* [Data Lake Storage Gen1 használata az Azure HDInsight-fürtökkel](../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen1.md)
 * [Portál: hozzon létre egy HDInsight-fürtöt Data Lake Storage Gen1 használatához](data-lake-store-hdinsight-hadoop-use-portal.md)
 
 [makecert]: https://msdn.microsoft.com/library/windows/desktop/ff548309(v=vs.85).aspx

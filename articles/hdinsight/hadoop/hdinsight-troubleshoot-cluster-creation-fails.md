@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 04/14/2020
-ms.openlocfilehash: 14b449590f6ffc5e735faa26baadfcc4e526450c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: b8be230044d868cc3ec03f6dc3fc2d21e102f121
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "82996411"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91856296"
 ---
 # <a name="troubleshoot-cluster-creation-failures-with-azure-hdinsight"></a>Fürtök létrehozásával kapcsolatos hibák elhárítása az Azure HDInsight
 
@@ -29,9 +29,9 @@ A fürtök létrehozásával kapcsolatos hibák leggyakoribb kiváltó okai a k�
 
 ## <a name="permissions-issues"></a>Engedélyekkel kapcsolatos problémák
 
-Ha Azure Data Lake Storage Gen2 használ, és a következő hibaüzenetet kapja `AmbariClusterCreationFailedErrorCode` : " :::no-loc text="Internal server error occurred while processing the request. Please retry the request or contact support."::: ", nyissa meg a Azure Portal, lépjen a Storage-fiókjába, és a Access Control (iam) területen győződjön meg arról, hogy a **Storage blob-adatközreműködői** vagy a **Storage blob-adatok tulajdonosi** szerepköre hozzárendelt egy hozzáférést az előfizetés **felhasználóhoz rendelt felügyelt identitásához** . További információt [A felügyelt identitásra vonatkozó engedélyek beállítása a Data Lake Storage Gen2-fiókban](../hdinsight-hadoop-use-data-lake-storage-gen2.md#set-up-permissions-for-the-managed-identity-on-the-data-lake-storage-gen2-account) című szakaszban találhat.
+Ha Azure Data Lake Storage Gen2 használ, és a következő hibaüzenetet kapja `AmbariClusterCreationFailedErrorCode` : " :::no-loc text="Internal server error occurred while processing the request. Please retry the request or contact support."::: ", nyissa meg a Azure Portal, lépjen a Storage-fiókjába, és a Access Control (iam) területen győződjön meg arról, hogy a **Storage blob-adatközreműködői** vagy a **Storage blob-adatok tulajdonosi** szerepköre hozzárendelt egy hozzáférést az előfizetés **felhasználóhoz rendelt felügyelt identitásához** . Részletes utasításokért lásd a [Data Lake Storage Gen2 felügyelt identitásra vonatkozó engedélyek beállítása](../hdinsight-hadoop-use-data-lake-storage-gen2-portal.md#set-up-permissions-for-the-managed-identity-on-the-data-lake-storage-gen2) című témakört.
 
-Ha Azure Data Lake Storage Gen1 használ, tekintse meg a telepítési és konfigurációs utasításokat [itt](../hdinsight-hadoop-use-data-lake-store.md). A Data Lake Storage Gen1 HBase-fürtök esetén nem támogatott, és a HDInsight 4,0-es verziójában nem támogatott.
+Ha Azure Data Lake Storage Gen1 használ, tekintse meg a telepítési és konfigurálási utasításokat [Azure Data Lake Storage Gen1 az Azure HDInsight-fürtök használatával](../hdinsight-hadoop-use-data-lake-storage-gen1.md)című témakört. A Data Lake Storage Gen1 HBase-fürtök esetén nem támogatott, és a HDInsight 4,0-es verziójában nem támogatott.
 
 Ha az Azure Storage-t használja, győződjön meg arról, hogy a Storage-fiók neve érvényes a fürt létrehozásakor.
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/19/2019
 ms.author: jeedes
-ms.openlocfilehash: 77c83e82577cb1d6d07c90a0260a5fa006fd8625
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 8cf4df682a5c141e39a3860547a5b6130e2a3002
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88554827"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91856926"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-m-files"></a>Oktatóanyag: az M-Files integráció Azure Active Directory
 
@@ -73,7 +73,7 @@ Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és az M-Fi
 Az Azure AD egyszeri bejelentkezés az M-Files használatával történő konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
 
 1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. Az **[M-Files egyszeri bejelentkezés konfigurálása](#configure-m-files-single-sign-on)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+2. Az **[M-Files egyszeri bejelentkezés konfigurálása](#configure-m-files-single-sign-on)** – az egyes Sign-On beállítások konfigurálása az alkalmazás oldalán.
 3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
 4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
 5. Az **[m-files tesztelési felhasználó létrehozása](#create-m-files-test-user)** – hogy az m-files-ben a felhasználó Azure ad-képviseletéhez csatolt Britta.
@@ -93,7 +93,7 @@ Az Azure AD egyszeri bejelentkezés az M-Files használatával történő konfig
 
     ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
+3. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
@@ -108,7 +108,7 @@ Az Azure AD egyszeri bejelentkezés az M-Files használatával történő konfig
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel és azonosítóval. Az adatok lekéréséhez vegye fel a kapcsolatot az [M-Files ügyfélszolgálati csapatával](mailto:support@m-files.com) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-5. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
+5. Az **egyszeres Sign-On beállítása SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozása](common/metadataxml.png)
 
@@ -122,7 +122,7 @@ Az Azure AD egyszeri bejelentkezés az M-Files használatával történő konfig
 
     c. Kijelentkezési URL-cím
 
-### <a name="configure-m-files-single-sign-on"></a>Az M-Files egyszeri bejelentkezésének konfigurálása
+### <a name="configure-m-files-single-sign-on"></a>Az M-Files egyetlen Sign-On konfigurálása
 
 1. Ha be szeretné állítani az egyszeri bejelentkezést az alkalmazáshoz, vegye fel a kapcsolatot az [M-Files támogatási csapatával](mailto:support@m-files.com) , és adja meg nekik a letöltött metaadatokat.
    
@@ -133,11 +133,11 @@ Az Azure AD egyszeri bejelentkezés az M-Files használatával történő konfig
 
 1. Nyissa meg az **M-Files asztal beállítások** ablakát. Ezután kattintson a **Hozzáadás**gombra.
    
-    ![Egyszeri bejelentkezés konfigurálása](./media/m-files-tutorial/tutorial_m_files_10.png)
+    ![A képernyőképen az M-Files asztal beállításai láthatók, ahol a Hozzáadás lehetőséget választhatja.](./media/m-files-tutorial/tutorial_m_files_10.png)
 
 1. A **Document Vault-kapcsolatok tulajdonságai** ablakban végezze el a következő lépéseket:
    
-    ![Egyszeri bejelentkezés konfigurálása](./media/m-files-tutorial/tutorial_m_files_11.png)  
+    ![Képernyőfelvétel: a Document Vault-kapcsolatok tulajdonságai, ahol megadhatja a leírt értékeket.](./media/m-files-tutorial/tutorial_m_files_11.png)  
 
     A kiszolgáló szakasz típusa mezőben adja meg a következő értékeket:  
 
@@ -176,7 +176,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    d. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

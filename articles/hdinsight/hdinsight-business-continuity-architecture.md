@@ -8,12 +8,12 @@ keywords: Hadoop magas rendelkezésre állása
 ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 10/07/2020
-ms.openlocfilehash: cb3ef1e802546d5a8b1574b304770fe7a364e2df
-ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
+ms.openlocfilehash: 9eb0cd3fd327a53dd0761779916caa096153a010
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/08/2020
-ms.locfileid: "91843925"
+ms.locfileid: "91856432"
 ---
 # <a name="azure-hdinsight-business-continuity-architectures"></a>Az Azure HDInsight üzletmenet-folytonossági architektúrái
 
@@ -202,12 +202,10 @@ Az elsődleges és a másodlagos Ranger-házirendek replikálásával a másodla
 
 :::image type="content" source="./media/hdinsight-business-continuity-architecture/hdinsight-enterprise-security-package.png" alt-text="Struktúra és interaktív lekérdezési architektúra":::
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha többet szeretne megtudni a cikkben tárgyalt elemekről, tekintse meg a következőt:
 
-* [Apache Ambari – REST-dokumentáció](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)
-* [Az Azure CLI telepítése és konfigurálása](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)
-* [Azure PowerShell modul telepítése és konfigurálása az](/powershell/azure/)
-* [HDInsight-kezelés az Apache Ambari használatával](hdinsight-hadoop-manage-ambari.md)
-* [Linux-alapú HDInsight-fürtök kiépítése](hdinsight-hadoop-provision-linux-clusters.md)
+* [Az Azure HDInsight üzletmenet folytonossága](./hdinsight-business-continuity.md)
+* [Azure HDInsight, magasan elérhető megoldás architektúra-esettanulmány](./hdinsight-high-availability-case-study.md)
+* [Mi a Apache Hive és a HiveQL az Azure HDInsight?](./hadoop/hdinsight-use-hive.md)

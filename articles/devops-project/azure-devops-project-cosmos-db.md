@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 03/24/2020
 author: mlearned
 ms.custom: devx-track-js
-ms.openlocfilehash: 1ceac6edf6cadd380d6eeec545a85c4822748d3a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: de98d9db515e4ed88759efa7f22dddcca06151c8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91316120"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91854681"
 ---
 # <a name="deploy-nodejs-apps-powered-by-azure-cosmos-db-with-devops-starter"></a>Azure Cosmos DB-alapú Node.js-alkalmazások üzembe helyezése a DevOps Starter használatával
 
@@ -154,7 +154,7 @@ Most már készen áll az alkalmazásban lévő csapattal való együttműködé
 
 Törölje a létrehozott kapcsolódó erőforrásokat, ha már nincs rá szüksége. Használja a **delete** funkciót a DevOps Starter irányítópultján.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A csapat igényeihez igazodva módosíthatja ezt a buildet és a kiadási folyamatokat. Ezt a CI-/CD-mintát egyéb folyamatok sablonjaként is használhatja. Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
@@ -167,6 +167,4 @@ A csapat igényeihez igazodva módosíthatja ezt a buildet és a kiadási folyam
 > * Módosítások végrehajtása a git-ben és automatikus üzembe helyezése az Azure-ban
 > * Az erőforrások eltávolítása
 
-További információkat és további lépéseket a [többfázisú folyamatos üzembe helyezés (CD) folyamatának meghatározása](https://docs.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process?view=azure-devops&viewFallbackFrom=vsts) című témakörben talál.
-
-
+További információkat és további lépéseket a [többfázisú folyamatos üzembe helyezés (CD) folyamatának meghatározása](/azure/devops/pipelines/release/define-multistage-release-process?view=azure-devops&viewFallbackFrom=vsts) című témakörben talál.

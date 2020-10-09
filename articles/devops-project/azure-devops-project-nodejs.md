@@ -13,12 +13,12 @@ ms.topic: quickstart
 ms.date: 03/24/2020
 ms.author: angrobe
 ms.custom: mvc, devx-track-js
-ms.openlocfilehash: fa6d0f78f984c5e71ccdbcada45ea1bc50be9e95
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 6cffa6065f0e1cefc31223553a42a7a78c1dbea8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91318619"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91856211"
 ---
 # <a name="create-a-cicd-pipeline-in-azure-pipelines-for-nodejs-with-azure-devops-starter"></a>CI/CD-folyamat létrehozása Azure-folyamatokban Node.js Azure DevOps Starter-vel
 
@@ -73,7 +73,7 @@ A DevOps Starter egy CI/CD-folyamatot hoz létre az Azure-folyamatokban. Létreh
 
     ![Azure DevOps-irányítópult](_img/azure-devops-project-nodejs/devops-projects-dashboard.png) 
 
-1. Az Azure DevOps-projektből meghívhatja a csapattagokat, hogy működjenek együtt egy Kanban-testülettel a munka nyomon követésének megkezdéséhez. További információ: [itt](https://docs.microsoft.com/azure/devops/user-guide/what-is-azure-devops?view=azure-devops).
+1. Az Azure DevOps-projektből meghívhatja a csapattagokat, hogy működjenek együtt egy Kanban-testülettel a munka nyomon követésének megkezdéséhez. További információ: [itt](/azure/devops/user-guide/what-is-azure-devops?view=azure-devops).
 
 ![Az Azure DevOps áttekintése](_img/azure-devops-project-nodejs/azure-devops-overview.png)
 
@@ -195,5 +195,4 @@ Törölheti Azure App Service és az egyéb kapcsolódó erőforrásokat, amelye
 A CI/CD folyamat konfigurálásakor a rendszer automatikusan létrehozza a létrehozási és kiadási folyamatokat. Ezeket a build és kiadási folyamatokat a csapat igényeinek megfelelően módosíthatja. A CI/CD folyamattal kapcsolatos további tudnivalókért tekintse meg a következőt:
 
 > [!div class="nextstepaction"]
-> [CD-folyamat testreszabása](https://docs.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)
-
+> [CD-folyamat testreszabása](/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)

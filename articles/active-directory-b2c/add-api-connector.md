@@ -10,12 +10,12 @@ ms.author: mimart
 author: msmimart
 manager: celestedg
 ms.custom: it-pro
-ms.openlocfilehash: 092246da4c01aa826fd4425e5a778d567b75d9d6
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 824b8f386e6bf822444450305e603e6068a34c5e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91828458"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91854358"
 ---
 # <a name="add-an-api-connector-to-a-sign-up-user-flow"></a>API-összekötő hozzáadása egy regisztrációs felhasználói folyamathoz
 
@@ -36,7 +36,7 @@ Az API- [Összekötők](api-connectors-overview.md)használatához először lé
    - Jelenleg csak az alapszintű hitelesítés támogatott. Ha alapszintű hitelesítés nélküli API-t szeretne használni fejlesztési célokra, egyszerűen adja meg az API által figyelmen kívül hagyható "dummy" **felhasználónevet** és **jelszót** . Ha egy API-kulccsal rendelkező Azure-függvényt használ, a kódot lekérdezési paraméterként is megadhatja a **végpont URL-címében** (például https []() ://contoso.azurewebsites.NET/API/Endpoint<b>? Code = 0123456789</b>).
 
    ![Új API-összekötő konfigurálása](./media/add-api-connector/api-connector-config.png)
-8. Válassza a **Mentés** lehetőséget.
+8. Kattintson a **Mentés** gombra.
 
 ## <a name="the-request-sent-to-your-api"></a>Az API-nak továbbított kérelem
 Az API-összekötők **http post** -kérelemként valósulnak meg, felhasználói attribútumok ("jogcímek") küldésével kulcs-érték párokként egy JSON-törzsben. Az attribútumok a [Microsoft Graph](https://docs.microsoft.com/graph/api/resources/user#properties) felhasználó tulajdonságaihoz hasonlóan lesznek szerializálva. 
@@ -70,7 +70,7 @@ Content-type: application/json
 }
 ```
 
-A kérelemben csak a felhasználói tulajdonságok és az egyéni attribútumok szerepelnek a **Azure Active Directory**  >  **külső identitások**  >  **egyéni felhasználói attribútumaik** felületén.
+A kérelemben csak a felhasználói tulajdonságok és az **Azure ad B2C**  >  **felhasználói attribútumok** című részben felsorolt egyéni attribútumok küldhetők el.
 
 Az egyéni attribútumok a címtár **extension_ \<extensions-app-id> _CustomAttribute**  formátumában találhatók. Az API-nak meg kell várnia, hogy a jogcímeket ugyanabban a szerializált formátumban fogadja. Az egyéni attribútumokkal kapcsolatos további információkért lásd: [Egyéni attribútumok definiálása a Azure Active Directory B2Cban](user-flow-custom-attributes.md).
 
@@ -96,7 +96,7 @@ Az alábbi lépéseket követve hozzáadhat egy API-összekötőt egy regisztrá
 
    ![API-k hozzáadása a felhasználói folyamathoz](./media/add-api-connector/api-connectors-user-flow-select.png)
 
-6. Válassza a **Mentés** lehetőséget.
+6. Kattintson a **Mentés** gombra.
 
 ## <a name="after-signing-in-with-an-identity-provider"></a>Az identitás-szolgáltatóval való bejelentkezés után
 
@@ -294,7 +294,7 @@ Content-type: application/json
 ## <a name="best-practices-and-how-to-troubleshoot"></a>Ajánlott eljárások és hibakeresés
 
 ### <a name="using-serverless-cloud-functions"></a>Kiszolgáló nélküli Felhőbeli függvények használata
-A kiszolgáló nélküli függvények, például a Azure Functions HTTP-eseményindítók egyszerű módszert biztosítanak az API-összekötővel használható API-végpontok létrehozásához. Használhatja a kiszolgáló nélküli felhő függvényt, például az érvényesítési logikát, és korlátozhatja a bejelentkezéseket adott tartományokra. A kiszolgáló nélküli felhő funkció összetettebb forgatókönyvekhez is meghívhat és meghívhat más webes API-kat, felhasználói áruházakat és egyéb felhőalapú szolgáltatásokat.
+A kiszolgáló nélküli függvények, például a Azure Functions HTTP-eseményindítók egyszerű módszert biztosítanak az API-összekötővel használható API-végpontok létrehozásához. Használhatja a kiszolgáló nélküli felhő függvényt, [például](code-samples.md#api-connectors)az érvényesítési logikát, és korlátozhatja a bejelentkezéseket adott e-mail tartományokra. A kiszolgáló nélküli felhő funkció összetettebb forgatókönyvekhez is meghívhat és meghívhat más webes API-kat, felhasználói áruházakat és egyéb felhőalapú szolgáltatásokat.
 
 ### <a name="best-practices"></a>Ajánlott eljárások
 Győződjön meg a következőket:
@@ -312,6 +312,6 @@ Győződjön meg a következőket:
 * Ha szükséges, használjon agresszívebb naplózási szintet (például "trace" vagy "debug") a fejlesztésben.
 * Az API figyelése hosszú válaszidő esetén.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 <!-- - Learn how to [add a custom approval workflow to sign-up](add-approvals.md) -->
-<!-- - Get started with our [Azure Function quickstart samples](code-samples-self-service-sign-up.md#api-connector-azure-function-quickstarts). -->
+- Ismerkedjen meg az [Azure Function](code-samples.md#api-connectors)gyors üzembe helyezési mintákkal.

@@ -8,12 +8,12 @@ ms.technology: devops-cicd
 ms.topic: tutorial
 ms.date: 03/24/2020
 author: mlearned
-ms.openlocfilehash: 7e298afa7efa6035b24f689d1163308ac6b14bff
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: af61254643e9f072995bceed1b6ecf8ecc29e5f8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "82233329"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91855452"
 ---
 # <a name="deploy-aspnet-core-apps-to-azure-kubernetes-service-with-azure-devops-starter"></a>ASP.NET Core alkalmazások üzembe helyezése az Azure Kubernetes Service-ben az Azure DevOps Starter használatával
 
@@ -24,7 +24,7 @@ A DevOps Starter is:
 * Automatikusan létrehozza az Azure-erőforrásokat, például az Azure Kubernetes szolgáltatást (ak).
 * Létrehoz és konfigurál egy kiadási folyamatot az Azure DevOps-ben, amely létrehoz egy létrehozási és kiadási folyamatot a CI/CD számára.
 * Létrehoz egy Azure Application Insights-erőforrást a figyeléshez.
-* Lehetővé teszi [Azure monitor számára](https://docs.microsoft.com/azure/azure-monitor/insights/container-insights-overview) a tárolók számára a tároló munkaterhelések teljesítményének figyelését az AK-fürtön
+* Lehetővé teszi [Azure monitor számára](../azure-monitor/insights/container-insights-overview.md) a tárolók számára a tároló munkaterhelések teljesítményének figyelését az AK-fürtön
 
 Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 
@@ -155,7 +155,7 @@ Ha teszteli, elkerülheti a számlázási díjak felmerülését az erőforráso
 1. A jobb felső sarokban válassza a **Törlés**lehetőséget. 
 1. A parancssorban válassza az **Igen** lehetőséget az erőforrások *végleges törléséhez* .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A csapat igényeihez igazodva módosíthatja ezt a buildet és a kiadási folyamatokat. Ezt a CI-/CD-mintát egyéb folyamatok sablonjaként is használhatja. Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 
@@ -171,4 +171,4 @@ A csapat igényeihez igazodva módosíthatja ezt a buildet és a kiadási folyam
 A Kubernetes-irányítópult használatával kapcsolatos további tudnivalókért tekintse meg a következőt:
 
 > [!div class="nextstepaction"]
-> [A Kubernetes-irányítópult használata](https://docs.microsoft.com/azure/aks/kubernetes-dashboard)
+> [A Kubernetes-irányítópult használata](../aks/kubernetes-dashboard.md)

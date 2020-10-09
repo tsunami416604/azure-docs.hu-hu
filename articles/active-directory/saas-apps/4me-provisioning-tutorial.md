@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 06/3/2019
 ms.author: jeedes
-ms.openlocfilehash: a6dc9aa70c55a0ed511a73570274c68708988451
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 8350ebc92575911991ca772229912941f2af10e0
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91331233"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91851288"
 ---
 # <a name="tutorial-configure-4me-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés 4me konfigurálása
 
@@ -122,15 +122,15 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
 10. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a 4me**lehetőséget.
 
-    ![4me felhasználói leképezések](media/4me-provisioning-tutorial/4me-user-mapping.png)
+    :::image type="content" source="media/4me-provisioning-tutorial/4me-user-mapping.png" alt-text="Képernyőfelvétel a leképezések lapról. A név alatt szinkronizálja Azure Active Directory felhasználókat a FourMe." border="false":::
     
 11. Tekintse át az Azure AD-ből szinkronizált felhasználói attribútumokat az **attribútum-hozzárendelési** szakaszban található 4me. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a 4me felhasználói fiókjainak a frissítési műveletekhez való megfeleltetésére szolgálnak. Győződjön meg arról, hogy a [4me támogatja a szűrést](https://developer.4me.com/v1/scim/users/) a kiválasztott egyező attribútumon. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
 
-    ![4me felhasználói leképezések](media/4me-provisioning-tutorial/4me-user-attributes.png)
+    :::image type="content" source="media/4me-provisioning-tutorial/4me-user-attributes.png" alt-text="Képernyőfelvétel a leképezések lapról. A név alatt szinkronizálja Azure Active Directory felhasználókat a FourMe." border="false":::
     
 12. A **leképezések** szakaszban válassza a **Azure Active Directory csoportok szinkronizálása a 4me**lehetőséget.
 
-    ![4me felhasználói leképezések](media/4me-provisioning-tutorial/4me-group-mapping.png)
+    :::image type="content" source="media/4me-provisioning-tutorial/4me-group-mapping.png" alt-text="Képernyőfelvétel a leképezések lapról. A név alatt szinkronizálja Azure Active Directory felhasználókat a FourMe." border="false":::
     
 13. Tekintse át az Azure AD-ből szinkronizált 4me az attribútumok **leképezése** szakaszban. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a 4me tartozó csoportok egyeztetésére szolgálnak a frissítési műveletekhez. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
 

@@ -4,83 +4,183 @@ description: Megtudhatja, hogyan fejleszthet olyan Python-alkalmazásokat és-sz
 author: roygara
 ms.service: storage
 ms.topic: how-to
-ms.date: 12/14/2018
+ms.date: 10/08/2020
 ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-python
-ms.openlocfilehash: 46512d61238c45936e7ebed4310993159cb43d34
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 11c31b9ce3c5a8d8fba18d8e7c46ac38b0559aec
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87845442"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91856313"
 ---
 # <a name="develop-for-azure-files-with-python"></a>Fejlesztés az Azure Files szolgáltatáshoz Pythonnal
+
 [!INCLUDE [storage-selector-file-include](../../../includes/storage-selector-file-include.md)]
 
-[!INCLUDE [storage-try-azure-tools-files](../../../includes/storage-try-azure-tools-files.md)]
+A Python használatának alapjai a fájlok tárolására Azure Files használó alkalmazások és szolgáltatások fejlesztéséhez. Hozzon létre egy egyszerű konzolos alkalmazást, és Ismerje meg, hogyan hajthat végre alapszintű műveleteket a Python és a Azure Files használatával:
 
-Ez az oktatóanyag bemutatja a Python használatának alapjait olyan alkalmazások vagy szolgáltatások fejlesztéséhez, amelyek a fájlok tárolására Azure Files használnak. Ebben az oktatóanyagban egy egyszerű konzolos alkalmazást hozunk létre, és bemutatjuk, hogyan hajthat végre alapszintű műveleteket a Python és a Azure Files használatával:
+- Azure-fájlmegosztás létrehozása
+- Könyvtárak létrehozása
+- Fájlok és könyvtárak enumerálása Azure-fájlmegosztás esetén
+- Fájl feltöltése, letöltése és törlése
+- Fájlmegosztás biztonsági másolatának létrehozása Pillanatképek használatával
 
-* Azure-fájlmegosztás létrehozása
-* Könyvtárak létrehozása
-* Fájlok és könyvtárak enumerálása Azure-fájlmegosztás esetén
-* Fájl feltöltése, letöltése és törlése
-
-> [!Note]  
-> Mivel Azure Files az SMB-kapcsolaton keresztül érhető el, az Azure-fájlmegosztás szabványos Python I/O-osztályaival és-funkcióival való használatával egyszerű alkalmazásokat is írhat. Ez a cikk leírja, hogyan írhat olyan alkalmazásokat, amelyek az Azure Storage Python SDK-t használják, amely a [Azure Files REST API](https://docs.microsoft.com/rest/api/storageservices/file-service-rest-api) használatával kommunikál Azure files.
+> [!NOTE]
+> Mivel Azure Files az SMB-kapcsolaton keresztül érhető el, az Azure-fájlmegosztás szabványos Python I/O-osztályaival és-funkcióival való használatával egyszerű alkalmazásokat is írhat. Ez a cikk leírja, hogyan írhat olyan alkalmazásokat, amelyek a Azure Files Storage Python SDK-t használják, amely a [Azure Files REST API](/rest/api/storageservices/file-service-rest-api) használatával kommunikál Azure files.
 
 ## <a name="download-and-install-azure-storage-sdk-for-python"></a>Töltse le és telepítse a Pythonhoz készült Azure Storage SDK-t
-
-A [Pythonhoz készült Azure Storage SDK](https://github.com/azure/azure-storage-python) használatához Python 2,7, 3,3, 3,4, 3,5 vagy 3,6 szükséges.
- 
-## <a name="install-via-pypi"></a>Telepítés a PyPi-on keresztül
-
-A Python Package index (PyPI) használatával történő telepítéshez írja be a következőt:
-
-```bash
-pip install azure-storage-file
-```
 
 > [!NOTE]
 > Ha a Python 0,36-es vagy korábbi verziójú Azure Storage SDK-ból frissít, távolítsa el a régebbi SDK-t a `pip uninstall azure-storage` legújabb csomag telepítése előtt.
 
-Alternatív telepítési módszerekért keresse fel a [Pythonhoz készült Azure Storage SDK](https://github.com/Azure/azure-storage-python/)-t a githubon.
+# <a name="python-v12"></a>[Python V12](#tab/python)
 
-## <a name="view-the-sample-application"></a>A minta alkalmazás megtekintése
-A Python és a Azure Files használatának módját bemutató minta alkalmazás megtekintéséhez és futtatásához tekintse meg az [Azure Storage: Első lépések Azure Files a Pythonban](https://github.com/Azure-Samples/storage-file-python-getting-started)című témakört. 
+Az [Azure file Storage a Python v12. x-es verziójának](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage/azure-storage-file-share) Python 2,7-vagy 3,5-es verziójúnak kell lennie.
+
+# <a name="python-v2"></a>[Python v2](#tab/python2)
+
+A [Pythonhoz készült Azure Storage SDK](https://github.com/azure/azure-storage-python) használatához Python 2,7, 3,3, 3,4, 3,5 vagy 3,6 szükséges.
+
+---
+
+## <a name="install-via-pypi"></a>Telepítés a PyPI-on keresztül
+
+A Python Package index (PyPI) használatával történő telepítéshez írja be a következőt:
+
+# <a name="python-v12"></a>[Python V12](#tab/python)
+
+```console
+pip install azure-storage-file-share
+```
+
+# <a name="python-v2"></a>[Python v2](#tab/python2)
+
+```console
+pip install azure-storage-file
+```
+
+### <a name="view-the-sample-application"></a>A minta alkalmazás megtekintése
+
+A Python és a Azure Files használatának módját bemutató minta alkalmazás megtekintéséhez és futtatásához tekintse meg az [Azure Storage: Első lépések Azure Files a Pythonban](https://github.com/Azure-Samples/storage-file-python-getting-started)című témakört.
 
 A minta alkalmazás futtatásához győződjön meg arról, hogy a és a csomagokat is telepítette `azure-storage-file` `azure-storage-common` .
 
+---
+
 ## <a name="set-up-your-application-to-use-azure-files"></a>Az alkalmazás beállítása Azure Files használatára
-Adja hozzá a következőt az összes olyan Python-forrásfájl tetejéhez, amelyben programozottan szeretné elérni az Azure Storage-t.
+
+A cikkben szereplő kódrészletek használatához adja hozzá a következőt a Python-forrásfájl tetejéhez.
+
+# <a name="python-v12"></a>[Python V12](#tab/python)
+
+:::code language="python" source="~/azure-storage-snippets/files/howto/python/python-v12/file_share_ops.py" id="Snippet_Imports":::
+
+# <a name="python-v2"></a>[Python v2](#tab/python2)
 
 ```python
 from azure.storage.file import FileService
 ```
 
-## <a name="set-up-a-connection-to-azure-files"></a>Azure Fileshoz való kapcsolódás beállítása 
-Az `FileService` objektum lehetővé teszi a megosztások, könyvtárak és fájlok munkavégzését. A következő kód létrehoz egy `FileService` objektumot a Storage-fiók neve és a fiók kulcsa alapján. A `<myaccount>` és a `<mykey>` értéket cserélje le a fiók nevére és kulcsára.
+---
+
+## <a name="set-up-a-connection-to-azure-files"></a>Azure Fileshoz való kapcsolódás beállítása
+
+# <a name="python-v12"></a>[Python V12](#tab/python)
+
+A [ShareServiceClient](/azure/developer/python/sdk/storage/azure-storage-file-share/azure.storage.fileshare.shareserviceclient) lehetővé teszi a megosztások, könyvtárak és fájlok működését. A következő kód egy objektumot hoz létre `ShareServiceClient` a Storage-fiókhoz tartozó kapcsolatok karakterláncának használatával.
+
+:::code language="python" source="~/azure-storage-snippets/files/howto/python/python-v12/file_share_ops.py" id="Snippet_CreateShareServiceClient":::
+
+# <a name="python-v2"></a>[Python v2](#tab/python2)
+
+Az `FileService` objektum lehetővé teszi a megosztások, könyvtárak és fájlok működését. A következő kód létrehoz egy `FileService` objektumot a Storage-fiók neve és a fiók kulcsa alapján. A `<myaccount>` és a `<mykey>` értéket cserélje le a fiók nevére és kulcsára.
 
 ```python
 file_service = FileService(account_name='myaccount', account_key='mykey')
 ```
 
+---
+
 ## <a name="create-an-azure-file-share"></a>Azure-fájlmegosztás létrehozása
-A következő példában egy `FileService` objektum segítségével hozhatja létre a megosztást, ha az nem létezik.
+
+# <a name="python-v12"></a>[Python V12](#tab/python)
+
+A következő mintakód egy [ShareClient](/azure/developer/python/sdk/storage/azure-storage-file-share/azure.storage.fileshare.shareclient) objektum használatával hozza létre a megosztást, ha az nem létezik.
+
+:::code language="python" source="~/azure-storage-snippets/files/howto/python/python-v12/file_share_ops.py" id="Snippet_CreateFileShare":::
+
+# <a name="python-v2"></a>[Python v2](#tab/python2)
+
+A következő mintakód egy objektum használatával `FileService` hozza létre a megosztást, ha az nem létezik.
 
 ```python
 file_service.create_share('myshare')
 ```
 
+---
+
 ## <a name="create-a-directory"></a>Könyvtár létrehozása
-A tárolót úgy is rendszerezheti, hogy az alkönyvtárakon belül helyez el fájlokat, ahelyett, hogy mindegyiket a gyökérkönyvtárba helyezné. Azure Files lehetővé teszi, hogy annyi könyvtárat hozzon létre, amennyit a fiókja engedélyezni fog. Az alábbi kód létrehoz egy **sampledir** nevű alkönyvtárat a gyökérkönyvtár alatt.
+
+A tárolást úgy rendezheti, hogy az alkönyvtárakban lévő fájlokat helyezi el, ahelyett, hogy mindegyiket a gyökérkönyvtárba helyezné.
+
+# <a name="python-v12"></a>[Python V12](#tab/python)
+
+A következő metódus egy könyvtárat hoz létre a megadott fájlmegosztás gyökerében egy [ShareDirectoryClient](/azure/developer/python/sdk/storage/azure-storage-file-share/azure.storage.fileshare.sharedirectoryclient) objektum használatával.
+
+:::code language="python" source="~/azure-storage-snippets/files/howto/python/python-v12/file_share_ops.py" id="Snippet_CreateDirectory":::
+
+# <a name="python-v2"></a>[Python v2](#tab/python2)
+
+Az alábbi kód létrehoz egy *sampledir* nevű alkönyvtárat a gyökérkönyvtár alatt.
 
 ```python
 file_service.create_directory('myshare', 'sampledir')
 ```
 
+---
+
+## <a name="upload-a-file"></a>Fájl feltöltése
+
+Ebből a szakaszból megtudhatja, hogyan tölthet fel egy fájlt a helyi tárolóból az Azure File Storageba.
+
+# <a name="python-v12"></a>[Python V12](#tab/python)
+
+A következő módszer feltölti a megadott fájl tartalmát a megadott könyvtárba a megadott Azure-fájlmegosztás alapján.
+
+:::code language="python" source="~/azure-storage-snippets/files/howto/python/python-v12/file_share_ops.py" id="Snippet_UploadFile":::
+
+# <a name="python-v2"></a>[Python v2](#tab/python2)
+
+Az Azure-fájlmegosztás legalább egy olyan gyökérkönyvtárat tartalmaz, ahol a fájlok találhatók. Fájl létrehozásához és az adatok feltöltéséhez használja a `create_file_from_path` , `create_file_from_stream` , `create_file_from_bytes` vagy `create_file_from_text` metódust. Magas szintű módszerek, amelyek elvégzik a szükséges adatdarabolást, ha az adatok mérete meghaladja az 64 MB-ot.
+
+`create_file_from_path` feltölti a fájl tartalmát a megadott elérési útról, és `create_file_from_stream` feltölti a tartalmat egy már megnyitott fájlból/streamből. `create_file_from_bytes` feltölt egy bájtos tömböt, és `create_file_from_text` feltölti a megadott szöveges értéket a megadott kódolással (alapértelmezett érték: UTF-8).
+
+A következő példa feltölti a *sunset.png* fájl tartalmát a **sajat** -fájlba.
+
+```python
+from azure.storage.file import ContentSettings
+file_service.create_file_from_path(
+    'myshare',
+    None,  # We want to create this file in the root directory, so we specify None for the directory_name
+    'myfile',
+    'sunset.png',
+    content_settings=ContentSettings(content_type='image/png'))
+```
+
+---
+
 ## <a name="enumerate-files-and-directories-in-an-azure-file-share"></a>Fájlok és könyvtárak enumerálása Azure-fájlmegosztás esetén
+
+# <a name="python-v12"></a>[Python V12](#tab/python)
+
+Az alkönyvtárban található fájlok és könyvtárak listázásához használja a [list_directories_and_files](/azure/developer/python/sdk/storage/azure-storage-file-share/azure.storage.fileshare.shareclient#list-directories-and-files-directory-name-none--name-starts-with-none--marker-none----kwargs-) metódust. Ez a metódus egy automatikusan megjelenő, előre jelezhető lapozást ad vissza. A következő kód a megadott könyvtárban lévő egyes fájlok és alkönyvtárak **nevét** adja vissza a konzolra.
+
+:::code language="python" source="~/azure-storage-snippets/files/howto/python/python-v12/file_share_ops.py" id="Snippet_ListFilesAndDirs":::
+
+# <a name="python-v2"></a>[Python v2](#tab/python2)
+
 A megosztásban található fájlok és könyvtárak listázásához használja a ** \_ könyvtárak \_ és \_ fájlok listázása** módszert. A metódus egy generátort ad vissza. A következő kód egy megosztásban lévő egyes fájlok és könyvtárak **nevét** adja eredményül a konzolon.
 
 ```python
@@ -89,43 +189,39 @@ for file_or_dir in generator:
     print(file_or_dir.name)
 ```
 
-## <a name="upload-a-file"></a>Fájl feltöltése 
-Az Azure-fájlmegosztás legalább egy gyökérkönyvtárat tartalmaz, ahol a fájlok találhatók. Ebből a szakaszból megtudhatja, hogyan tölthet fel egy fájlt a helyi tárolóból egy megosztás gyökérkönyvtárára.
-
-Fájl létrehozásához és az adatok feltöltéséhez használja a `create_file_from_path` , `create_file_from_stream` `create_file_from_bytes` vagy a `create_file_from_text` metódust. Ezek magas szintű módszerek, amelyek elvégzik a szükséges adatdarabolást, ha az adatok mérete meghaladja az 64 MB-ot.
-
-`create_file_from_path`feltölti a fájl tartalmát a megadott elérési útról, és `create_file_from_stream` feltölti a tartalmat egy már megnyitott fájlból/streamből. `create_file_from_bytes`feltölt egy bájtos tömböt, és `create_file_from_text` feltölti a megadott szöveges értéket a megadott kódolással (alapértelmezett érték: UTF-8).
-
-A következő példa feltölti a **sunset.png** fájl tartalmát a **sajat** -fájlba.
-
-```python
-from azure.storage.file import ContentSettings
-file_service.create_file_from_path(
-    'myshare',
-    None,  # We want to create this blob in the root directory, so we specify None for the directory_name
-    'myfile',
-    'sunset.png',
-    content_settings=ContentSettings(content_type='image/png'))
-```
+---
 
 ## <a name="download-a-file"></a>Fájl letöltése
-Adatok fájlból való letöltéséhez használja a következőt:,, `get_file_to_path` `get_file_to_stream` `get_file_to_bytes` vagy `get_file_to_text` . Ezek magas szintű módszerek, amelyek elvégzik a szükséges adatdarabolást, ha az adatok mérete meghaladja az 64 MB-ot.
 
-Az alábbi példa bemutatja, hogyan `get_file_to_path` töltheti le a **sajat** -fájl tartalmát, és hogyan tárolhatja azt a **out-sunset.png** fájlba.
+# <a name="python-v12"></a>[Python V12](#tab/python)
+
+Az adatok fájlból való letöltéséhez használja a [Download_File](/azure/developer/python/sdk/storage/azure-storage-file-share/azure.storage.fileshare.sharefileclient#download-file-offset-none--length-none----kwargs-).
+
+Az alábbi példa azt mutatja be, hogy a használatával `download_file` beolvassa a megadott fájl tartalmát, és helyileg tárolja a **letöltött** előtagértéke a fájlnévre.
+
+:::code language="python" source="~/azure-storage-snippets/files/howto/python/python-v12/file_share_ops.py" id="Snippet_DownloadFile":::
+
+# <a name="python-v2"></a>[Python v2](#tab/python2)
+
+Adatok fájlból való letöltéséhez használja a következőt:,, `get_file_to_path` `get_file_to_stream` `get_file_to_bytes` vagy `get_file_to_text` . Magas szintű módszerek, amelyek elvégzik a szükséges adatdarabolást, ha az adatok mérete meghaladja az 64 MB-ot.
+
+Az alábbi példa bemutatja, hogyan `get_file_to_path` töltheti le a **sajat** -fájl tartalmát, és hogyan tárolhatja azt a *out-sunset.png* fájlba.
 
 ```python
 file_service.get_file_to_path('myshare', None, 'myfile', 'out-sunset.png')
 ```
 
-## <a name="delete-a-file"></a>Fájl törlése
-Végül a fájl törléséhez hívja meg a következőt: `delete_file` .
+---
 
-```python
-file_service.delete_file('myshare', None, 'myfile')
-```
+## <a name="create-a-share-snapshot"></a>Megosztás-pillanatkép létrehozása
 
-## <a name="create-share-snapshot"></a>Megosztási pillanatkép létrehozása
 A teljes fájlmegosztás időpontját is létrehozhatja.
+
+# <a name="python-v12"></a>[Python V12](#tab/python)
+
+:::code language="python" source="~/azure-storage-snippets/files/howto/python/python-v12/file_share_ops.py" id="Snippet_CreateSnapshot":::
+
+# <a name="python-v2"></a>[Python v2](#tab/python2)
 
 ```python
 snapshot = file_service.snapshot_share(share_name)
@@ -139,23 +235,50 @@ metadata = {"foo": "bar"}
 snapshot = file_service.snapshot_share(share_name, metadata=metadata)
 ```
 
-## <a name="list-shares-and-snapshots"></a>Megosztások és Pillanatképek listázása 
+---
+
+## <a name="list-shares-and-snapshots"></a>Megosztások és Pillanatképek listázása
+
 Egy adott megosztás összes pillanatképét listázhatja.
+
+# <a name="python-v12"></a>[Python V12](#tab/python)
+
+:::code language="python" source="~/azure-storage-snippets/files/howto/python/python-v12/file_share_ops.py" id="Snippet_ListSharesAndSnapshots":::
+
+# <a name="python-v2"></a>[Python v2](#tab/python2)
 
 ```python
 shares = list(file_service.list_shares(include_snapshots=True))
 ```
 
+---
+
 ## <a name="browse-share-snapshot"></a>Megosztási pillanatkép tallózása
-Az egyes megosztási Pillanatképek tartalmának tallózásával lekérheti a fájlokat és a címtárakat az adott időpontban.
+
+Az egyes megosztási Pillanatképek tallózásával lekérheti a fájlokat és a címtárakat az adott időpontban.
+
+# <a name="python-v12"></a>[Python V12](#tab/python)
+
+:::code language="python" source="~/azure-storage-snippets/files/howto/python/python-v12/file_share_ops.py" id="Snippet_BrowseSnapshotDir":::
+
+# <a name="python-v2"></a>[Python v2](#tab/python2)
 
 ```python
 directories_and_files = list(
     file_service.list_directories_and_files(share_name, snapshot=snapshot_id))
 ```
 
+---
+
 ## <a name="get-file-from-share-snapshot"></a>Fájl beolvasása a megosztási pillanatképből
-A visszaállítási forgatókönyvhöz letöltheti a megosztási pillanatképből származó fájlokat.
+
+A fájlokat letöltheti egy megosztási pillanatképből. Ez lehetővé teszi egy fájl korábbi verziójának visszaállítását.
+
+# <a name="python-v12"></a>[Python V12](#tab/python)
+
+:::code language="python" source="~/azure-storage-snippets/files/howto/python/python-v12/file_share_ops.py" id="Snippet_DownloadSnapshotFile":::
+
+# <a name="python-v2"></a>[Python v2](#tab/python2)
 
 ```python
 with open(FILE_PATH, 'wb') as stream:
@@ -163,23 +286,63 @@ with open(FILE_PATH, 'wb') as stream:
         share_name, directory_name, file_name, stream, snapshot=snapshot_id)
 ```
 
-## <a name="delete-a-single-share-snapshot"></a>Egyetlen megosztási pillanatkép törlése  
+---
+
+## <a name="delete-a-single-share-snapshot"></a>Egyetlen megosztási pillanatkép törlése
 Egyetlen megosztási pillanatképet is törölhet.
+
+# <a name="python-v12"></a>[Python V12](#tab/python)
+
+:::code language="python" source="~/azure-storage-snippets/files/howto/python/python-v12/file_share_ops.py" id="Snippet_DeleteSnapshot":::
+
+# <a name="python-v2"></a>[Python v2](#tab/python2)
 
 ```python
 file_service.delete_share(share_name, snapshot=snapshot_id)
 ```
 
+---
+
+## <a name="delete-a-file"></a>Fájl törlése
+
+# <a name="python-v12"></a>[Python V12](#tab/python)
+
+Egy fájl törléséhez hívja meg [delete_file](/azure/developer/python/sdk/storage/azure-storage-file-share/azure.storage.fileshare.sharefileclient#delete-file---kwargs-).
+
+:::code language="python" source="~/azure-storage-snippets/files/howto/python/python-v12/file_share_ops.py" id="Snippet_DeleteFile":::
+
+# <a name="python-v2"></a>[Python v2](#tab/python2)
+
+Egy fájl törléséhez hívja meg a következőt: `delete_file` .
+
+```python
+file_service.delete_file('myshare', None, 'myfile')
+```
+
+---
+
 ## <a name="delete-share-when-share-snapshots-exist"></a>Megosztás törlése, ha a megosztási Pillanatképek léteznek
+
+# <a name="python-v12"></a>[Python V12](#tab/python)
+
+Pillanatképeket tartalmazó megosztás törléséhez hívja meg a [delete_sharet](/azure/developer/python/sdk/storage/azure-storage-file-share/azure.storage.fileshare.shareclient#delete-share-delete-snapshots-false----kwargs-) a következővel: `delete_snapshots=True` .
+
+:::code language="python" source="~/azure-storage-snippets/files/howto/python/python-v12/file_share_ops.py" id="Snippet_DeleteShare":::
+
+# <a name="python-v2"></a>[Python v2](#tab/python2)
+
 Pillanatképeket tartalmazó megosztás csak akkor törölhető, ha az összes pillanatképet először törlik.
 
 ```python
 file_service.delete_share(share_name, delete_snapshots=DeleteSnapshot.Include)
 ```
 
-## <a name="next-steps"></a>Következő lépések
+---
+
+## <a name="next-steps"></a>További lépések
+
 Most, hogy megismerte, hogyan kezelheti Azure Files a Python segítségével, az alábbi hivatkozásokat követve további információkat tudhat meg.
 
-* [Python fejlesztői központ](https://azure.microsoft.com/develop/python/)
-* [Az Azure Storage-szolgáltatások REST API-ja](https://msdn.microsoft.com/library/azure/dd179355)
-* [A Pythonhoz készült Microsoft Azure Storage SDK](https://github.com/Azure/azure-storage-python)
+- [Python fejlesztői központ](/azure/developer/python/)
+- [Az Azure Storage-szolgáltatások REST API-ja](/rest/api/azure/)
+- [A Pythonhoz készült Microsoft Azure Storage SDK](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/storage)

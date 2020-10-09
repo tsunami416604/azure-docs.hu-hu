@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.custom: hdinsightactive,seoapr2020
 ms.topic: conceptual
 ms.date: 04/29/2020
-ms.openlocfilehash: 55ffd563ea0a99d32608bd90bd53d7dc88eb4cf2
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.openlocfilehash: c8862398d5c79335e4ed59f4ca42df9abd58965e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
-ms.locfileid: "85961812"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91856585"
 ---
 # <a name="information-about-using-hdinsight-on-linux"></a>Információk a HDInsight Linuxon való használatáról
 
@@ -101,15 +101,15 @@ Például az adatfájlok és a JAR-fájlok a Hadoop elosztott fájlrendszer cím
 
 A legtöbb Hadoop-eloszlásban az adattárolást a HDFS tárolja. A HDFS a fürtben lévő gépek helyi tárolója támogatja. A helyi tárterület költséges lehet egy felhőalapú megoldáshoz, ahol a számítási erőforrások óradíja óránként vagy percenként történik.
 
-A HDInsight használatakor az adatfájlokat a felhőben az Azure Blob Storage és opcionálisan Azure Data Lake Storage is rugalmas és rugalmas módon tárolja. Ezek a szolgáltatások a következő előnyöket nyújtják:
+A HDInsight használatakor az adatfájlokat a felhőben az Azure Blob Storage és opcionálisan Azure Data Lake Storage Gen1/Gen2 használatával lehet alkalmazkodó és rugalmas módon tárolni. Ezek a szolgáltatások a következő előnyöket nyújtják:
 
 * Olcsó hosszú távú tárolás.
 * A külső szolgáltatásokból, például webhelyekről, fájlfeltöltés/letöltési segédprogramokból, különböző nyelvi SDK-kből és webböngészőkből való kisegítés.
 * Nagyméretű fájl kapacitása és nagy mértékben alkalmazkodó tárterület.
 
-További információ: a [Blobok](https://docs.microsoft.com/rest/api/storageservices/understanding-block-blobs--append-blobs--and-page-blobs) és a [Data Lake Storage](https://azure.microsoft.com/services/storage/data-lake-storage/)ismertetése.
+További információ: [Azure Blob Storage](../storage/common/storage-introduction.md), [Azure Data Lake Storage Gen1](../data-lake-store/data-lake-store-overview.md)vagy [Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md).
 
-Az Azure Storage vagy a Data Lake Storage használatakor nem kell semmit HDInsight az adatok eléréséhez. Például a következő parancs felsorolja a mappában található fájlokat, `/example/data` hogy az Azure Storage-ban vagy Data Lake Storageban van-e tárolva:
+Az Azure Blob Storage vagy a Data Lake Storage Gen1/Gen2 használatakor nem kell a HDInsight-től külön-külön elvégeznie az adatok elérését. Például a következő parancs felsorolja a mappában található fájlokat, `/example/data` hogy az Azure Storage-ban vagy Data Lake Storageban van-e tárolva:
 
 ```console
 hdfs dfs -ls /example/data
@@ -135,7 +135,7 @@ Az [**Azure Storage**](./hdinsight-hadoop-use-blob-storage.md)használatakor has
 
 * `abfs://<container-name>@<account-name>.dfs.core.windows.net/`: Nem alapértelmezett Storage-fiókkal való kommunikációhoz használatos. Ha például egy további Storage-fiókkal vagy egy nyilvánosan elérhető Storage-fiókban tárolt adatokhoz fér hozzá.
 
-[**Azure Data Lake Storage Gen1**](./hdinsight-hadoop-use-data-lake-store.md)használatakor használja a következő URI-sémák egyikét:
+[**Azure Data Lake Storage Gen1**](../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen1.md)használatakor használja a következő URI-sémák egyikét:
 
 * `adl:///`: A fürthöz tartozó alapértelmezett Data Lake Storage elérése.
 
@@ -159,11 +159,11 @@ curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTER
 
 Ez a parancs a következő URI azonosítóhoz hasonló értéket ad vissza:
 
-* `wasb://<container-name>@<account-name>.blob.core.windows.net`Azure Storage-fiók használata esetén.
+* `wasb://<container-name>@<account-name>.blob.core.windows.net` Azure Storage-fiók használata esetén.
 
     A fiók neve az Azure Storage-fiók neve. A tároló neve a fürt tárolójának gyökerét szolgáló blob-tároló.
 
-* `adl://home`Azure Data Lake Storage használata esetén. A Data Lake Storage nevének beszerzéséhez használja a következő REST-hívást:
+* `adl://home` Azure Data Lake Storage használata esetén. A Data Lake Storage nevének beszerzéséhez használja a következő REST-hívást:
 
      ```bash
     curl -u admin -G "https://CLUSTERNAME.azurehdinsight.net/api/v1/clusters/CLUSTERNAME/configurations/service_config_versions?service_name=HDFS&service_config_version=1" | jq '.items[].configurations[].properties["dfs.adls.home.hostname"] | select(. != null)'
@@ -189,9 +189,9 @@ A tárolási adatokat a Azure Portal használatával is megkeresheti a következ
 
 A HDInsight-fürtön kívül különböző módokon férhet hozzá az adatokhoz. Az alábbiakban néhány olyan segédprogramot és SDK-t találhat, amelyek segítségével dolgozhat az adataival:
 
-Ha az __Azure Storage__-t használja, tekintse meg a következő hivatkozásokat az adatai eléréséhez:
+Ha az __Azure Blob Storage__-t használja, tekintse meg a következő hivatkozásokat az adatai eléréséhez:
 
-* [Azure CLI](https://docs.microsoft.com/cli/azure/install-az-cli2): parancssori felületi parancsok az Azure-ban való használathoz. A telepítését követően használja a `az storage` parancsot a tárolás vagy a `az storage blob` blob-specifikus parancsok használatához.
+* [Azure CLI](https://docs.microsoft.com/cli/azure/install-az-cli2): Command-Line felületi parancsok az Azure-ban való használathoz. A telepítését követően használja a `az storage` parancsot a tárolás vagy a `az storage blob` blob-specifikus parancsok használatához.
 * [blobxfer.py](https://github.com/Azure/blobxfer): a Blobok Azure Storage-ban való használatához használható Python-szkript.
 * Különböző SDK-k:
 
@@ -203,7 +203,7 @@ Ha az __Azure Storage__-t használja, tekintse meg a következő hivatkozásokat
     * [.NET](https://github.com/Azure/azure-sdk-for-net)
     * [Tárolási REST API](https://msdn.microsoft.com/library/azure/dd135733.aspx)
 
-__Azure Data Lake Storage__használata esetén tekintse meg az alábbi hivatkozásokat az adatai eléréséhez:
+__Azure Data Lake Storage Gen1__használata esetén tekintse meg az alábbi hivatkozásokat az adatai eléréséhez:
 
 * [Webböngésző](../data-lake-store/data-lake-store-get-started-portal.md)
 * [PowerShell](../data-lake-store/data-lake-store-get-started-powershell.md)

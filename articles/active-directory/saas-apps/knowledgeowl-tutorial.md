@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/14/2019
 ms.author: jeedes
-ms.openlocfilehash: a35fb30ca19e08c68c99c9c9524231706b066e11
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: fc6cb5d992d4c961e23034560a688c7090622359
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549891"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91858098"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-knowledgeowl"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a KnowledgeOwl
 
@@ -111,7 +111,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
     ```
 
     > [!NOTE]
-    > Ezek az értékek nem valósak. A tényleges azonosító, a válasz URL-cím és a bejelentkezési URL-cím alapján frissítenie kell ezeket az értékeket, amelyeket az oktatóanyag későbbi részében ismertetünk.
+    > Ezek az értékek nem valósak. A tényleges azonosító, a válasz URL-cím és a Sign-On URL-cím alapján frissítenie kell ezeket az értékeket, amelyeket az oktatóanyag későbbi részében ismertetünk.
 
 1. A KnowledgeOwl alkalmazás egy adott formátumban várja az SAML-jogcímeket, ehhez pedig egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőképen az alapértelmezett attribútumok listája látható.
 
@@ -119,7 +119,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. A fentiek mellett a KnowledgeOwl alkalmazás néhány további attribútumot vár az SAML-válaszban, amelyek alább láthatók. Ezek az attribútumok előre fel vannak töltve, de a követelményeinek megfelelően áttekintheti őket.
 
-    | Name | Forrás attribútum | Névtér |
+    | Név | Forrás attribútum | Névtér |
     | ------------ | -------------------- | -----|
     | ssoid | User. mail | `http://schemas.xmlsoap.org/ws/2005/05/identity/claims`|
 
@@ -141,7 +141,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Create** (Létrehozás) gombra.
+   1. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -167,11 +167,11 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 1. Kattintson a **Beállítások** , majd a **Biztonság**elemre.
 
-    ![KnowledgeOwl-konfiguráció](./media/knowledgeowl-tutorial/configure1.png)
+    ![A képernyőképen a beállítások menüből kiválasztott biztonság látható.](./media/knowledgeowl-tutorial/configure1.png)
 
 1. Görgessen az **SAML SSO-integrációhoz** , és hajtsa végre a következő lépéseket:
 
-    ![KnowledgeOwl-konfiguráció](./media/knowledgeowl-tutorial/configure2.png)
+    ![A képernyőfelvételen az SAML S O-integráció látható, ahol az itt ismertetett módosításokat végezheti el.](./media/knowledgeowl-tutorial/configure2.png)
 
     a. Válassza az **SAML SSO engedélyezése**lehetőséget.
 
@@ -189,7 +189,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
     h. Kattintson a **Térkép SAML-attribútumok** elemre az attribútumok leképezéséhez, és hajtsa végre a következő lépéseket:
 
-    ![KnowledgeOwl-konfiguráció](./media/knowledgeowl-tutorial/configure3.png)
+    ![A képernyőképen látható az SAML-attribútumok megjelenítése, ahol az itt leírt módosításokat végezheti el.](./media/knowledgeowl-tutorial/configure3.png)
 
     * Adja meg `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/ssoid` az **SSO-azonosító** szövegmezőt
     * Adja meg `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress` a **Felhasználónév/e-mail** szövegmezőt.
@@ -199,7 +199,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
     i. Kattintson a lap alján található **Mentés** gombra.
 
-    ![KnowledgeOwl-konfiguráció](./media/knowledgeowl-tutorial/configure4.png)
+    ![A képernyőképen a Mentés gomb látható.](./media/knowledgeowl-tutorial/configure4.png)
 
 ### <a name="create-knowledgeowl-test-user"></a>KnowledgeOwl-tesztelési felhasználó létrehozása
 

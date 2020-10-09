@@ -8,16 +8,16 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/27/2020
-ms.openlocfilehash: 23e7b0f8dcb0c64259627d5350511ebdc48d6fac
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: 73b5966bf90d2829456401a25cc5b8ea001397d4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87078974"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91856228"
 ---
 # <a name="add-additional-storage-accounts-to-hdinsight"></a>További Storage-fiókok hozzáadása a HDInsight-hez
 
-Megtudhatja, hogyan használhat parancsfájl-műveleteket további Azure Storage- *fiókok* HDInsight való hozzáadásához. A jelen dokumentum lépései egy meglévő HDInsight-fürthöz adhatnak hozzá Storage- *fiókot* . Ez a cikk a Storage- *fiókokra* vonatkozik (nem az alapértelmezett fürtbeli Storage-fiókra), és nem a további tárhelyek, például a [`Azure Data Lake Storage Gen1`](hdinsight-hadoop-use-data-lake-store.md) és a [`Azure Data Lake Storage Gen2`](hdinsight-hadoop-use-data-lake-storage-gen2.md) .
+Megtudhatja, hogyan használhat parancsfájl-műveleteket további Azure Storage- *fiókok* HDInsight való hozzáadásához. A jelen dokumentum lépései egy meglévő HDInsight-fürthöz adhatnak hozzá Storage- *fiókot* . Ez a cikk a Storage- *fiókokra* vonatkozik (nem az alapértelmezett fürtbeli Storage-fiókra), és nem a további tárhelyek, például a [`Azure Data Lake Storage Gen1`](hdinsight-hadoop-use-data-lake-storage-gen1.md) és a [`Azure Data Lake Storage Gen2`](hdinsight-hadoop-use-data-lake-storage-gen2.md) .
 
 > [!IMPORTANT]  
 > A jelen dokumentumban található információk további Storage-fiók (ok) egy fürthöz való hozzáadását ismertetik a létrehozása után. A Storage-fiókok fürt létrehozása során történő hozzáadásával kapcsolatos információkért lásd: [fürtök beállítása a HDInsight-ben Apache Hadoop, Apache Spark, Apache Kafka és sok más](hdinsight-hadoop-provision-linux-clusters.md).
@@ -55,8 +55,8 @@ A következő szempontok alapján alkalmazza a módosításokat a [parancsfájl-
 |Csomópont típusa (i)|Head|
 |Paraméterek|`ACCOUNTNAME``ACCOUNTKEY` `-p` (nem kötelező)|
 
-* `ACCOUNTNAME`a HDInsight-fürthöz hozzáadandó Storage-fiók neve.
-* `ACCOUNTKEY`a elérési kulcsa `ACCOUNTNAME` .
+* `ACCOUNTNAME` a HDInsight-fürthöz hozzáadandó Storage-fiók neve.
+* `ACCOUNTKEY` a elérési kulcsa `ACCOUNTNAME` .
 * A(z) `-p` nem kötelező. Ha meg van adva, a kulcs nincs titkosítva, és a core-site.xml fájlban tárolódik egyszerű szövegként.
 
 ## <a name="verification"></a>Ellenőrzés

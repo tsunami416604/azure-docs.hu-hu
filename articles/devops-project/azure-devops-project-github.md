@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 03/24/2020
 author: mlearned
 ms.custom: mvc
-ms.openlocfilehash: 55c6cbc18e37368dd47c47227041024b13987c47
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 41f2ee9806b8f6818f2b2dd7a48920ac9907ca79
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "82233210"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91854647"
 ---
 # <a name="create-a-cicd-pipeline-for-github-repo-using-azure-devops-starter"></a>CI/CD-folyamat létrehozása a GitHub-tárházhoz az Azure DevOps Starter használatával
 
@@ -83,7 +83,7 @@ Az Azure DevOps Starter egy CI/CD-folyamatot hoz létre az Azure-folyamatokban. 
 
 Most már készen áll az alkalmazásban való együttműködésre a csapattal. A CI/CD-folyamat automatikusan üzembe helyezi a legújabb munkát a webhelyén. A GitHub-tárház minden módosítása elindítja az Azure DevOps, és egy CD-folyamat futtatja az Azure-ba való üzembe helyezést.
 
-1. A DevOps Starter irányítópultján válassza a **tárak**lehetőséget. A GitHub-tárház egy új böngészőablakban nyílik meg. végezze el az alkalmazás módosítását, majd válassza a **módosítások véglegesítve**lehetőséget.
+1. A DevOps Starter irányítópultján válassza a **tárak**lehetőséget. Megnyílik a GitHub-tárház egy új böngésző lapon. Módosítsa az alkalmazást, majd válassza a **módosítások elvégzése**lehetőséget.
 
 1. Néhány pillanat elteltével a buildek az Azure-folyamatokban kezdődnek. A Build állapotát a DevOps Starter irányítópultján figyelheti. Az Azure DevOps-szervezetben is figyelheti azt, ha a DevOps Starter irányítópultján a **folyamatok összeállítása** lapot választja.
 
@@ -111,16 +111,16 @@ Az Azure DevOps Starter automatikusan konfigurálja a CI/CD-folyamatokat az Azur
 
 Ha már nincs szüksége Azure App Servicera és az oktatóanyagban létrehozott kapcsolódó erőforrásokra, törölheti őket. Használja a **delete** funkciót a DevOps projects irányítópulton.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha ebben az oktatóanyagban konfigurálta a CI/CD-folyamatot, a Azure DevOps Projects-ben automatikusan létrehozta a létrehozási és kiadási folyamatokat. A csapat igényeihez igazodva módosíthatja ezt a buildet és a kiadási folyamatokat.
 
 A CI/CD folyamattal kapcsolatos további tudnivalókért tekintse meg a következőt:
 
 > [!div class="nextstepaction"]
-> [A többfázisú folyamatos üzembe helyezés (CD) folyamatának meghatározása](https://docs.microsoft.com/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)
+> [A többfázisú folyamatos üzembe helyezés (CD) folyamatának meghatározása](/azure/devops/pipelines/release/define-multistage-release-process?view=vsts)
 
 Az alkalmazások figyeléséről további információt a következő témakörben talál:
   
  > [!div class="nextstepaction"]
- > [Mi az Azure monitor?](https://docs.microsoft.com/azure/azure-monitor/overview)
+ > [Mi az Azure monitor?](../azure-monitor/overview.md)

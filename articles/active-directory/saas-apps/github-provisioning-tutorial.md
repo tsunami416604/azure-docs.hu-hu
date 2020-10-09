@@ -10,12 +10,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 03/27/2019
 ms.author: arvinh
-ms.openlocfilehash: b88408480bb0822a061e97336eee5c6b3ccfc8e0
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 847c69a18a73d67b9b994e72686a4073ddd6d27f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91358321"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91857535"
 ---
 # <a name="tutorial-configure-github-for-automatic-user-provisioning"></a>Oktatóanyag: a GitHub konfigurálása automatikus felhasználói üzembe helyezéshez
 
@@ -28,6 +28,7 @@ Az ebben az oktatóanyagban felvázolt forgatókönyv feltételezi, hogy már re
 * Azure Active Directory-bérlő
 * GitHub [vállalati felhőben](https://help.github.com/articles/github-s-products/#github-enterprise)létrehozott GitHub-szervezet, amelyhez a [GitHub Enterprise számlázási csomag](https://help.github.com/articles/github-s-billing-plans/#billing-plans-for-organizations) szükséges
 * Felhasználói fiók a GitHubban rendszergazdai engedélyekkel a szervezethez
+* [SAML-konfiguráció a GitHub Enterprise Cloud organizationhoz](https://docs.microsoft.com/azure/active-directory/saas-apps/github-tutorial)
 * Győződjön meg arról, hogy az [itt](https://help.github.com/en/github/setting-up-and-managing-organizations-and-teams/approving-oauth-apps-for-your-organization) leírtak szerint a OAuth hozzáférése meg lett biztosítva a szervezet számára
 * Az SCIM-kiépítés egyetlen szervezet számára csak akkor támogatott, ha a szervezeti szinten engedélyezve van az egyszeri bejelentkezés.
 
@@ -51,9 +52,6 @@ A kiépítési szolgáltatás konfigurálása és engedélyezése előtt el kell
 ## <a name="configuring-user-provisioning-to-github"></a>A felhasználók üzembe helyezésének beállítása a GitHubra
 
 Ez a szakasz végigvezeti az Azure AD-nek a GitHub felhasználói fiók létesítési API-hoz való csatlakoztatásán, valamint a kiépítési szolgáltatás konfigurálásának beállításán az Azure AD-ben a felhasználók és csoportok hozzárendelése alapján a GitHubhoz rendelt felhasználói fiókok létrehozásához, frissítéséhez és letiltásához.
-
-> [!TIP]
-> Dönthet úgy is, hogy engedélyezi az SAML-alapú egyszeri bejelentkezést a GitHubhoz, a [Azure Portalban](https://portal.azure.com)megadott utasításokat követve. Az egyszeri bejelentkezés az automatikus kiépítés függetlenül is konfigurálható, bár ez a két funkció egymáshoz tartozik.
 
 ### <a name="configure-automatic-user-account-provisioning-to-github-in-azure-ad"></a>Automatikus felhasználói fiók üzembe helyezésének beállítása a GitHubhoz az Azure AD-ben
 

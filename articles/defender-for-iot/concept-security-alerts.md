@@ -4,21 +4,21 @@ description: Ismerje meg a biztonsági riasztásokat és az ajánlott szervizel�
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
-author: mlottner
+author: elazark
 manager: rkarlin
 editor: ''
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 09/09/2020
-ms.author: mlottner
-ms.openlocfilehash: 09ee0f9d5bd6e789d8acd4c70db866983beb1119
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 10/08/2020
+ms.author: v-ekrieg
+ms.openlocfilehash: c4c92bfa25d9c43d3c654fbd1f23e242effc7577
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90940977"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91851203"
 ---
 # <a name="defender-for-iot-security-alerts"></a>IoT biztonsági riasztások védelmezője
 
@@ -28,11 +28,11 @@ A riasztás a lehetséges kompromisszumok indikátorként működik, és meg kel
 
 Ebben a cikkben megtalálja a beépített riasztások listáját, amelyek a IoT Hub és/vagy IoT eszközökön indíthatók el.
 A beépített riasztások mellett a Defender for IoT lehetővé teszi egyéni riasztások definiálását a várt IoT Hub és/vagy az eszköz viselkedése alapján.
-További részletek: [testreszabható riasztások](concept-customizable-security-alerts.md).
+További információ: [testreszabható riasztások](concept-customizable-security-alerts.md).
 
 ## <a name="built-in-alerts-for-iot-devices"></a>Beépített riasztások a IoT-eszközökhöz
 
-| Name | Súlyosság | Adatforrás | Leírás | Javasolt szervizelési lépések|
+| Név | Súlyosság | Adatforrás | Leírás | Javasolt szervizelési lépések|
 |----------|---------------|-------------|-----------------------|--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 |**Magas** súlyosság|  |  |  |
 |   Bináris parancssor   | Magas | Ügynök | A rendszer a parancssorból meghívott vagy kifuttatott Linux bináris fájlt észlelt. Ez a folyamat lehet legitim tevékenység, vagy jelzi, hogy az eszköz biztonsága sérült.|   Tekintse át a parancsot a futtatott felhasználóval, és ellenőrizze, hogy az eszközön van-e a várt Futtatás. Ha ez nem történik meg, a riasztást a tájékoztatási biztonsági csapatnak is megteheti. |
@@ -95,7 +95,7 @@ További részletek: [testreszabható riasztások](concept-customizable-security
 |  Érvénytelen SAS-jogkivonat aláírása | Alacsony | Az eszköz által használt SAS-token aláírása érvénytelen. Az aláírás nem felel meg az elsődleges vagy a másodlagos kulcsnak sem.|  Tekintse át a riasztásokat az eszközökön. Nincs szükség további műveletre.  |
 |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Defender a IoT szolgáltatáshoz [– Áttekintés](overview.md)
 - [A biztonsági adatai elérésének](how-to-security-data-access.md) megismerése

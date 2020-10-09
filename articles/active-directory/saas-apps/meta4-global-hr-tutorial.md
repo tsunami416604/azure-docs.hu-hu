@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/09/2019
 ms.author: jeedes
-ms.openlocfilehash: a5d10d776de483919a64ccc46ca4cbb2b633f250
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 6b8ea30e9d6c9b4557643d461d39b6375e987784
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88552575"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91856876"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-meta4-global-hr"></a>Oktatóanyag: Azure Active Directory integráció a Meta4 Global HR-vel
 
@@ -77,7 +77,7 @@ Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a kapcs
 Az Azure AD egyszeri bejelentkezés Meta4 globális HR-vel való konfigurálásához és teszteléséhez a következő építőelemeket kell elvégeznie:
 
 1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. **[Meta4 globális HR egyszeri bejelentkezés konfigurálása](#configure-meta4-global-hr-single-sign-on)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+2. **[Meta4 globális HR egyszeri bejelentkezés konfigurálása](#configure-meta4-global-hr-single-sign-on)** – az egyes Sign-On beállítások konfigurálása az alkalmazás oldalán.
 3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
 4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
 5. **[Meta4 globális HR-teszt felhasználó létrehozása](#create-meta4-global-hr-test-user)** – a META4 globális HR-ben található Britta, amely a felhasználó Azure ad-képviseletéhez van társítva.
@@ -97,26 +97,26 @@ Ha az Azure AD egyszeri bejelentkezést a Meta4 Global HR-vel szeretné konfigur
 
     ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
+3. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
 4. Az **alapszintű SAML-konfiguráció** szakaszban, ha az alkalmazást **identitásszolgáltató** kezdeményezett módban szeretné konfigurálni, hajtsa végre a következő lépést:
 
-    ![Meta4 globális HR-tartomány és URL-címek egyszeri bejelentkezési adatai](common/both-replyurl.png)
+    ![A képernyőfelvételen az alapszintű SAML-konfiguráció látható, ahol megadhatja a válasz U R L-t, majd a mentés lehetőséget.](common/both-replyurl.png)
 
     A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával:  `https://<SUBDOMAIN>.meta4globalhr.com/saml.sso/SAML2/POST`
 
 5. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
-    ![Meta4 globális HR-tartomány és URL-címek egyszeri bejelentkezési adatai](common/both-signonurl.png)
+    ![Képernyőfelvétel: további U R ls beállítása, ahol megadhatja a bejelentkezést az U R L-ben.](common/both-signonurl.png)
 
     A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:  `https://<SUBDOMAIN>.meta4globalhr.com`
 
     > [!NOTE]
-    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges válasz URL-címmel és a bejelentkezési URL-címmel. Az értékek beszerzéséhez lépjen kapcsolatba a [Meta4 Global HR-ügyfél támogatási csapatával](mailto:victors@meta4.com) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges válasz URL-címével és Sign-On URL-címmel. Az értékek beszerzéséhez lépjen kapcsolatba a [Meta4 Global HR-ügyfél támogatási csapatával](mailto:victors@meta4.com) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-6. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
+6. Az **egyszeres Sign-On beállítása SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozása](common/metadataxml.png)
 
@@ -130,7 +130,7 @@ Ha az Azure AD egyszeri bejelentkezést a Meta4 Global HR-vel szeretné konfigur
 
     c. Kijelentkezési URL-cím
 
-### <a name="configure-meta4-global-hr-single-sign-on"></a>Meta4 globális HR egyszeri bejelentkezés konfigurálása
+### <a name="configure-meta4-global-hr-single-sign-on"></a>Meta4 globális HR-Sign-On konfigurálása
 
 Ha az egyszeri bejelentkezést a **Meta4 globális HR** -oldalán szeretné beállítani, el kell küldenie a letöltött **összevonási METAADATOKat tartalmazó XML** -fájlt és a megfelelő másolt url-címeket a Azure Portalról a [Meta4 Global HR támogatási csapatának](mailto:victors@meta4.com). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
 
@@ -156,7 +156,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    d. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

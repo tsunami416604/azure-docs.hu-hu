@@ -10,12 +10,12 @@ ms.custom: mvc
 ms.topic: sample
 ms.service: active-directory
 ms.subservice: B2C
-ms.openlocfilehash: 76cacbea3f98f65e290cb2722062127d2264e171
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.openlocfilehash: 63a79df8e540e88d0f1e3f4c5b8d339ff03c877f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91664834"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91854290"
 ---
 # <a name="azure-active-directory-b2c-code-samples"></a>Azure Active Directory B2C-mintakódok
 
@@ -54,3 +54,15 @@ Az alábbi táblázat többek között iOS-, Android-, .NET- és Node.js-mintaal
 | Sample | Leírás |
 |--------| ----------- |
 | [SAML-SP-Tester](https://github.com/azure-ad-b2c/saml-sp-tester/tree/master/source-code) | SAML-tesztelési alkalmazás, amely SAML-identitás-szolgáltatóként való kiAzure AD B2Cre van konfigurálva. |
+
+## <a name="api-connectors"></a>API-összekötők
+
+Az alábbi táblázatok a felhasználói folyamatokban lévő webes API-k [API-összekötők](api-connectors-overview.md)használatával történő kihasználására szolgáló kódrészletekre mutató hivatkozásokat tartalmaznak.
+
+## <a name="api-connector-azure-function-quickstarts"></a>API-összekötő Azure-függvény rövid útmutatói
+
+| Sample                                                                                                                          | Leírás                                                                                                                                               |
+| ------------------------------------------------------------------------------------------------------------------------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| [.NET Core](https://github.com/Azure-Samples/active-directory-dotnet-external-identities-api-connector-azure-function-validate) | Ez a .NET Core Azure Function minta azt mutatja be, hogyan lehet korlátozni a regisztrációt adott e-mail tartományokra, és érvényesíteni a felhasználó által megadott adatokat. |
+| [Node.js](https://github.com/Azure-Samples/active-directory-nodejs-external-identities-api-connector-azure-function-validate)   | Ez a Node.js Azure Function minta azt mutatja be, hogyan lehet korlátozni a regisztrációt adott e-mail tartományokra, és érvényesíteni a felhasználó által megadott adatokat.  |
+| [Python](https://github.com/Azure-Samples/active-directory-python-external-identities-api-connector-azure-function-validate)    | Ez a Python Azure Function minta azt mutatja be, hogyan lehet korlátozni a regisztrációkat adott e-mail tartományokra, és érvényesíteni a felhasználó által megadott adatokat.    |

@@ -6,12 +6,12 @@ ms.service: data-lake-store
 ms.topic: how-to
 ms.date: 05/29/2018
 ms.author: twooley
-ms.openlocfilehash: d96718176c3cd7486c51e57942c4d12bf0d57992
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.openlocfilehash: db29b6743458a4a3ec87dfec9e367bef0c946a15
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91620009"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91857010"
 ---
 # <a name="create-hdinsight-clusters-with-azure-data-lake-storage-gen1-as-default-storage-by-using-powershell"></a>HDInsight-fürtök létrehozása Azure Data Lake Storage Gen1 alapértelmezett tárolóként a PowerShell használatával
 
@@ -46,7 +46,7 @@ Az oktatóanyag megkezdése előtt győződjön meg arról, hogy megfelel az al�
     >Csak akkor hozhat létre egyszerű szolgáltatásnevet, ha Ön Azure AD-rendszergazda. Az Azure AD-rendszergazdának létre kell hoznia egy egyszerű szolgáltatásnevet ahhoz, hogy HDInsight-fürtöt hozzon létre Data Lake Storage Gen1 használatával. Az egyszerű szolgáltatást tanúsítványokkal kell létrehozni az [egyszerű szolgáltatásnév létrehozása tanúsítvánnyal](../active-directory/develop/howto-authenticate-service-principal-powershell.md#create-service-principal-with-certificate-from-certificate-authority)című témakörben leírtak szerint.
     >
 
-## <a name="create-a-data-lake-storage-gen1-account"></a>Data Lake Storage Gen1-fiók létrehozása
+## <a name="create-an-azure-data-lake-storage-gen1-account"></a>Azure Data Lake Storage Gen1 fiók létrehozása
 
 Data Lake Storage Gen1 fiók létrehozásához tegye a következőket:
 
@@ -282,7 +282,7 @@ hdfs dfs -ls adl:///
 A parancs használatával is `hdfs dfs -put` feltölthet néhány fájlt a Data Lake Storage Gen1ba, majd a használatával ellenőrizheti, hogy `hdfs dfs -ls` a fájlok feltöltése sikeres volt-e.
 
 ## <a name="see-also"></a>Lásd még
-* [Data Lake Storage Gen1 használata az Azure HDInsight-fürtökkel](../hdinsight/hdinsight-hadoop-use-data-lake-store.md)
+* [Data Lake Storage Gen1 használata az Azure HDInsight-fürtökkel](../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen1.md)
 * [Azure Portal: hozzon létre egy HDInsight-fürtöt a használatra Data Lake Storage Gen1](data-lake-store-hdinsight-hadoop-use-portal.md)
 
 [makecert]: https://msdn.microsoft.com/library/windows/desktop/ff548309(v=vs.85).aspx

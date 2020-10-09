@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/06/2020
 ms.author: jeedes
-ms.openlocfilehash: 494a698ac4b6f8262851878cfee4bb91126d9f02
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: a050f7a7d86ef8586cab3e90d9c1bac310a7f18b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91823026"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91854545"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-litmus"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Lakmusz
 
@@ -129,11 +129,11 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 1. A bal oldali navigációs panelen kattintson a **Biztonság** elemre.
 
-    ![Lakmusz-konfiguráció](./media/litmus-tutorial/security-img.png)
+    ![Képernyőfelvétel: a kiválasztott biztonsági elemet jeleníti meg.](./media/litmus-tutorial/security-img.png)
 
 1. Az **SAML-hitelesítés konfigurálása** szakaszban hajtsa végre a következő lépéseket:
 
-    ![Lakmusz-konfiguráció](./media/litmus-tutorial/configure1.png)
+    ![Képernyőfelvétel: az SAML hitelesítés konfigurálása szakasz, ahol megadhatja a leírt értékeket.](./media/litmus-tutorial/configure1.png)
 
     a. Váltson át az **SAML engedélyezése** váltógomb bekapcsolására.
 
@@ -143,7 +143,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 1. Hajtsa végre a következő lépéseket:
 
-    ![Lakmusz-konfiguráció](./media/litmus-tutorial/configure3.png)
+    ![Képernyőfelvétel: az a szakasz, ahol megadhatja a leírt értékeket.](./media/litmus-tutorial/configure3.png)
 
     a. Az **SAML 2,0-végpont (http)** szövegmezőbe illessze be a **bejelentkezési URL-címet** , amelyet a Azure Portal másolt.
 
@@ -157,15 +157,15 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 1. A bal oldali navigációs panelen kattintson a **fiókok** elemre.
 
-    ![Lakmusz-konfiguráció](./media/litmus-tutorial/accounts-img.png)
+    ![Képernyőfelvétel: a kiválasztott fiókok elemet jeleníti meg.](./media/litmus-tutorial/accounts-img.png)
 
 1. Kattintson az **új felhasználó hozzáadása** fülre.
 
-    ![Lakmusz-konfiguráció](./media/litmus-tutorial/add-new-user.png)
+    ![Képernyőfelvétel: az új felhasználói elem hozzáadása lehetőség be van jelölve.](./media/litmus-tutorial/add-new-user.png)
 
 1. A **felhasználó hozzáadása** szakaszban hajtsa végre a következő lépéseket:
 
-    ![Lakmusz-konfiguráció](./media/litmus-tutorial/user-profile.png)
+    ![Képernyőfelvétel: a felhasználó hozzáadása szakasz, ahol megadhatja a leírt értékeket.](./media/litmus-tutorial/user-profile.png)
 
     a. Az **e-mail** szövegmezőbe írja be a felhasználó e-mail-címét, például: **B. Simon \@ contoso.com**
 

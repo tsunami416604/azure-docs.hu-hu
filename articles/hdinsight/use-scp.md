@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/22/2020
-ms.openlocfilehash: 2f602c23f182ede2b9897563a8421163e1328e24
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: 44c87a3415a236f614510aa3163ad2e9cbd1f64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86079190"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91856177"
 ---
 # <a name="use-scp-with-apache-hadoop-in-azure-hdinsight"></a>SZOLGÁLTATÁSKAPCSOLÓDÁSI pont használata az Azure HDInsight Apache Hadoop
 
@@ -42,7 +42,7 @@ Ha egy SSH-munkamenetből kíván feltölteni egy használni kívánt erőforrá
 Adatok közvetlenül a HDFS-kompatibilis tárolóba való betöltésével kapcsolatos információkat a következő dokumentumokban talál:
 
 * [HDInsight az Azure Storage használatával](hdinsight-hadoop-use-blob-storage.md).
-* [HDInsight Azure Data Lake Storage használatával](hdinsight-hadoop-use-data-lake-store.md).
+* [HDInsight Azure Data Lake Storage Gen1 használatával](../hdinsight/hdinsight-hadoop-use-data-lake-storage-gen1.md).
 
 ## <a name="next-steps"></a>További lépések
 

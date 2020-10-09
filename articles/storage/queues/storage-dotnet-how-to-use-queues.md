@@ -3,18 +3,18 @@ title: Az Azure üzenetsor-tárolás használatának első lépései a .NET-Azur
 description: Az Azure-üzenetsorok megbízható, aszinkron üzenetkezelést biztosítanak az alkalmazások összetevői között. A felhőbeli üzenetkezelésnek köszönhetően az alkalmazások összetevői függetlenül méretezhetők.
 author: mhopkins-msft
 ms.author: mhopkins
-ms.date: 05/08/2020
+ms.date: 10/08/2020
 ms.service: storage
 ms.subservice: queues
 ms.topic: how-to
 ms.reviewer: dineshm
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e8dadc999f3bd26671b5a8ee4da26f051a822a26
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: c07ad6e631482b47da674549e976953842cf983e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "89001110"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91855922"
 ---
 # <a name="get-started-with-azure-queue-storage-using-net"></a>Az Azure Queue Storage használatának első lépései a .NET-keretrendszerrel
 
@@ -33,9 +33,6 @@ Ez az oktatóanyag bemutatja, hogyan írhat .NET-kódot néhány, az Azure Queue
 ### <a name="prerequisites"></a>Előfeltételek
 
 - [Microsoft Visual Studio](https://www.visualstudio.com/downloads/)
-- [Az Azure Storage közös ügyféloldali kódtára a .NET-hez](https://www.nuget.org/packages/Microsoft.Azure.Storage.Common/)
-- [Azure Storage-üzenetsor .NET-hez készült ügyféloldali kódtára](https://www.nuget.org/packages/Microsoft.Azure.Storage.Queue/)
-- [Azure Configuration Manager a .NET-hez](https://www.nuget.org/packages/Microsoft.Azure.ConfigurationManager/)
 - [Azure Storage-fiók](../common/storage-account-create.md?toc=%2fazure%2fstorage%2fqueues%2ftoc.json)
 
 [!INCLUDE [storage-queue-concepts-include](../../../includes/storage-queue-concepts-include.md)]
@@ -95,11 +92,6 @@ A NuGet a csomagok beszerzéséhez használható. Kövesse az alábbi lépéseke
 1. Keressen rá az interneten a "Microsoft.Azure.ConfigurationManager" kifejezésre, és válassza a **telepítés** lehetőséget az Azure-Configuration Manager telepítéséhez.
 
 ---
-
-> [!NOTE]
-> A Storage ügyféloldali kódtárainak csomagjai a [.net-hez készült Azure SDK](https://azure.microsoft.com/downloads/)-ban is szerepelnek. Javasoljuk azonban, hogy a Storage ügyféloldali kódtárait a NuGet-ből is telepítse, hogy mindig a legújabb verzióval rendelkezzen.
->
-> A .NET-hez készült Storage ügyféloldali kódtárak ODataLib-függőségeit a NuGet-on elérhető ODataLib-csomagok oldják meg, nem pedig WCF Data Services. Az ODataLib-kódtárak letölthetők közvetlenül, vagy a kódprojektje hivatkozhat rájuk a NuGeten keresztül. A Storage ügyféloldali kódtárai által használt konkrét ODataLib-csomagok a következők: [OData](https://nuget.org/packages/Microsoft.Data.OData/), [EDM](https://nuget.org/packages/Microsoft.Data.Edm/)és [térbeli](https://nuget.org/packages/System.Spatial/). Habár ezeket a kódtárakat az Azure Table Storage osztályai használják, a Storage ügyféloldali kódtárakkal való programozáshoz szükséges függőségek.
 
 ### <a name="determine-your-target-environment"></a>A célkörnyezet meghatározása
 
@@ -185,7 +177,7 @@ A [QueueClient](/dotnet/api/azure.storage.queues.queueclient) osztály lehetőv�
 
 # <a name="net-v11"></a>[\.NETTÓ v11](#tab/dotnetv11)
 
-A [CloudQueueClient](/dotnet/api/microsoft.azure.storage.queue.cloudqueueclient?view=azure-dotnet-legacy) osztály segítségével lekérheti a Queue Storage-ban tárolt üzenetsorokat. A szolgáltatásügyfél létrehozásának egyik módja:
+A [CloudQueueClient](/dotnet/api/microsoft.azure.storage.queue.cloudqueueclient?view=azure-dotnet-legacy&preserve-view=true) osztály segítségével lekérheti a Queue Storage-ban tárolt üzenetsorokat. A szolgáltatásügyfél létrehozásának egyik módja:
 
 ```csharp
 // Retrieve storage account from connection string
@@ -237,7 +229,7 @@ Ha egy üzenetet egy meglévő várólistába szeretne beszúrni, hívja meg a [
 
 # <a name="net-v11"></a>[\.NETTÓ v11](#tab/dotnetv11)
 
-Ha üzenetet szeretne beszúrni egy létező üzenetsorba, először hozzon létre egy [CloudQueueMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage?view=azure-dotnet-legacy) elemet. Ezután hívja meg az [AddMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.addmessage?view=azure-dotnet-legacy) módszert. A `CloudQueueMessage` létrehozható egy `string` (UTF-8 formátumú) vagy egy `byte` tömbben. Az alábbi kód létrehoz egy várólistát (ha nem létezik), és beszúrja a "Hello, World" üzenetet:
+Ha üzenetet szeretne beszúrni egy létező üzenetsorba, először hozzon létre egy [CloudQueueMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueuemessage?view=azure-dotnet-legacy&preserve-view=true) elemet. Ezután hívja meg az [AddMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.addmessage?view=azure-dotnet-legacy&preserve-view=true) módszert. A `CloudQueueMessage` létrehozható egy `string` (UTF-8 formátumú) vagy egy `byte` tömbben. Az alábbi kód létrehoz egy várólistát (ha nem létezik), és beszúrja a "Hello, World" üzenetet:
 
 ```csharp
 // Retrieve storage account from connection string
@@ -270,7 +262,7 @@ A [PeekMessages](/dotnet/api/azure.storage.queues.queueclient.peekmessages) met�
 
 # <a name="net-v11"></a>[\.NETTÓ v11](#tab/dotnetv11)
 
-Egy üzenetsor elején található üzenetbe anélkül is bepillanthat, hogy eltávolítaná az üzenetsorból. Ehhez hívja meg a [PeekMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.peekmessage?view=azure-dotnet-legacy) módszert.
+Egy üzenetsor elején található üzenetbe anélkül is bepillanthat, hogy eltávolítaná az üzenetsorból. Ehhez hívja meg a [PeekMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.peekmessage?view=azure-dotnet-legacy&preserve-view=true) módszert.
 
 ```csharp
 // Retrieve storage account from connection string
@@ -333,7 +325,7 @@ queue.UpdateMessage(message,
 
 # <a name="net-v11"></a>[\.NETTÓ v11](#tab/dotnetv11)
 
-A kód két lépésben távolít el egy üzenetet az üzenetsorból. A [GetMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.getmessage?view=azure-dotnet-legacy) meghívásával lekéri az üzenetsor következő üzenetét. A visszaadott üzenet a `GetMessage` várólistából beolvasott más kódokba is láthatatlanná válik. Alapértelmezés szerint az üzenet 30 másodpercig marad láthatatlan. Ha végleg el szeretné távolítani az üzenetet az üzenetsorból, meg kell hívnia a [DeleteMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.deletemessage?view=azure-dotnet-legacy) módszert is. Az üzenetek kétlépéses eltávolítása lehetővé teszi, hogy ha a kód hardver- vagy szoftverhiba miatt nem tud feldolgozni egy üzenetet, a kód egy másik példánya megkaphassa ugyanazt az üzenetet, és újra megpróbálkozhasson a feldolgozásával. A kód meghívása `DeleteMessage` közvetlenül az üzenet feldolgozása után történik.
+A kód két lépésben távolít el egy üzenetet az üzenetsorból. A [GetMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.getmessage?view=azure-dotnet-legacy&preserve-view=true) meghívásával lekéri az üzenetsor következő üzenetét. A visszaadott üzenet a `GetMessage` várólistából beolvasott más kódokba is láthatatlanná válik. Alapértelmezés szerint az üzenet 30 másodpercig marad láthatatlan. Ha végleg el szeretné távolítani az üzenetet az üzenetsorból, meg kell hívnia a [DeleteMessage](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.deletemessage?view=azure-dotnet-legacy&preserve-view=true) módszert is. Az üzenetek kétlépéses eltávolítása lehetővé teszi, hogy ha a kód hardver- vagy szoftverhiba miatt nem tud feldolgozni egy üzenetet, a kód egy másik példánya megkaphassa ugyanazt az üzenetet, és újra megpróbálkozhasson a feldolgozásával. A kód meghívása `DeleteMessage` közvetlenül az üzenet feldolgozása után történik.
 
 ```csharp
 // Retrieve storage account from connection string
@@ -406,7 +398,7 @@ A következő kódrészlet a [ReceiveMessages](/dotnet/api/azure.storage.queues.
 
 # <a name="net-v11"></a>[\.NETTÓ v11](#tab/dotnetv11)
 
-Az alábbi példakód a [GetMessages](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.getmessages?view=azure-dotnet-legacy) módszer segítségével egyszerre 20 üzenetet kér le. Ezután az összes üzenetet feldolgozza egy `foreach` hurok használatával. Mindemellett a láthatatlansági időkorlátot minden üzenethez öt percre állítja be. Vegye figyelembe, hogy az összes üzenetet egyszerre 5 percben indítja el, ezért a hívása óta az 5 perc elteltével a `GetMessages` rendszer a nem törölt üzeneteket ismét láthatóvá válik.
+Az alábbi példakód a [GetMessages](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.getmessages?view=azure-dotnet-legacy&preserve-view=true) módszer segítségével egyszerre 20 üzenetet kér le. Ezután az összes üzenetet feldolgozza egy `foreach` hurok használatával. Mindemellett a láthatatlansági időkorlátot minden üzenethez öt percre állítja be. Vegye figyelembe, hogy az összes üzenetet egyszerre 5 percben indítja el, ezért a hívása óta az 5 perc elteltével a `GetMessages` rendszer a nem törölt üzeneteket ismét láthatóvá válik.
 
 ```csharp
 // Retrieve storage account from connection string.
@@ -438,7 +430,7 @@ Megbecsülheti egy üzenetsorban található üzenetek számát. A [GetPropertie
 
 # <a name="net-v11"></a>[\.NETTÓ v11](#tab/dotnetv11)
 
-Megbecsülheti egy üzenetsorban található üzenetek számát. A [FetchAttributes](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.fetchattributes?view=azure-dotnet-legacy) módszer lekéri a Queue szolgáltatásból az üzenetsorra vonatkozó attribútumokat, amelyek között megtalálható az üzenetek száma is. A [ApproximateMessageCount](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.approximatemessagecount?view=azure-dotnet-legacy) tulajdonság a metódus által lekért utolsó értéket adja vissza a `FetchAttributes` Queue szolgáltatás hívása nélkül.
+Megbecsülheti egy üzenetsorban található üzenetek számát. A [FetchAttributes](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.fetchattributes?view=azure-dotnet-legacy&preserve-view=true) módszer lekéri a Queue szolgáltatásból az üzenetsorra vonatkozó attribútumokat, amelyek között megtalálható az üzenetek száma is. A [ApproximateMessageCount](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.approximatemessagecount?view=azure-dotnet-legacy&preserve-view=true) tulajdonság a metódus által lekért utolsó értéket adja vissza a `FetchAttributes` Queue szolgáltatás hívása nélkül.
 
 ```csharp
 // Retrieve storage account from connection string.
@@ -473,7 +465,7 @@ Egy üzenetsor és az összes benne foglalt üzenet törléséhez hívja meg a [
 
 # <a name="net-v11"></a>[\.NETTÓ v11](#tab/dotnetv11)
 
-Egy üzenetsor és az összes benne foglalt üzenet törléséhez hívja meg a [Delete](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.delete?view=azure-dotnet-legacy) módszert az üzenetsor-objektumhoz.
+Egy üzenetsor és az összes benne foglalt üzenet törléséhez hívja meg a [Delete](/dotnet/api/microsoft.azure.storage.queue.cloudqueue.delete?view=azure-dotnet-legacy&preserve-view=true) módszert az üzenetsor-objektumhoz.
 
 ```csharp
 // Retrieve storage account from connection string.
@@ -492,23 +484,15 @@ queue.Delete();
 
 ---
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy már megismerte a Queue Storage alapjait, az alábbi hivatkozásokból tájékozódhat az összetettebb tárolási feladatok elvégzéséről is.
 
 - A Queue szolgáltatás elérhető API-kat részletesen ismertető referenciadokumentációjának megtekintése:
   - [A Storage ügyféloldali kódtára a .NET-hez – referencia](https://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409)
   - [REST API-referencia](https://msdn.microsoft.com/library/azure/dd179355)
-- Megtudhatja, hogyan egyszerűsítheti az Azure Storage-ban az [Azure WEBJOBS SDK](https://github.com/Azure/azure-webjobs-sdk/wiki)használatával írt kódot.
 - Az Azure-ban való adattárolás további lehetőségeiről tekintse meg a többi szolgáltatás-útmutatót.
   - [Get started with Azure Table Storage using .NET](../../cosmos-db/table-storage-how-to-use-dotnet.md) (Az Azure Table Storage használatának első lépései a .NET-keretrendszerrel) a strukturált adatok tárolásához.
   - [Get started with Azure Blob storage using .NET](../blobs/storage-dotnet-how-to-use-blobs.md) (Az Azure Blob Storage használatának első lépései a .NET-keretrendszerrel) a strukturálatlan adatok tárolásához.
   - [Csatlakozzon az SQL Database adatbázishoz .NET (C#) használatával](../../azure-sql/database/connect-query-dotnet-core.md) a relációs adatok tárolásához.
-
-[Download and install the Azure SDK for .NET]: /develop/net/
-[.NET client library reference]: https://go.microsoft.com/fwlink/?LinkID=390731&clcid=0x409
-[Creating an Azure Project in Visual Studio]: https://msdn.microsoft.com/library/azure/ee405487.aspx
-[Azure Storage Team Blog]: https://blogs.msdn.com/b/windowsazurestorage/
-[OData]: https://nuget.org/packages/Microsoft.Data.OData/5.0.2
-[Edm]: https://nuget.org/packages/Microsoft.Data.Edm/5.0.2
-[Spatial]: https://nuget.org/packages/System.Spatial/5.0.2
+- Megtudhatja, hogyan egyszerűsítheti az Azure Storage-ban az [Azure WEBJOBS SDK](https://github.com/Azure/azure-webjobs-sdk/wiki)használatával írt kódot.

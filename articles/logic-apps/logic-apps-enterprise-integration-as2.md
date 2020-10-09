@@ -7,20 +7,20 @@ author: divyaswarnkar
 ms.author: divswa
 ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
-ms.date: 07/24/2020
-ms.openlocfilehash: e47cd89b2f0a5de4e0fc7663f37a2960e2ada971
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.date: 10/08/2020
+ms.openlocfilehash: 1845de8332287f85e96b4e29c40caa66cb8704d9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87078635"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91856670"
 ---
 # <a name="exchange-as2-messages-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>AS2-üzenetek váltása nagyvállalati integráció esetében az Azure Logic Appsben az Enterprise Integration Pack csomaggal
 
 > [!IMPORTANT]
 > Az eredeti AS2-összekötő elavult, így ha nincs szüksége követési képességekre, használja helyette az **AS2 (v2)** összekötőt. A nyomon követés kivételével a v2-összekötő ugyanazokat a funkciókat biztosítja, mint az eredeti verzió, natív az Logic Apps Runtime számára, és jelentős teljesítménybeli továbbfejlesztéseket tartalmaz az üzenetek mérete, az átviteli sebesség és a késés terén. Emellett a v2-összekötő nem igényli, hogy hozzon létre egy kapcsolódást az integrációs fiókjához. Ehelyett az előfeltételek szakaszban leírtaknak megfelelően ügyeljen arra, hogy összekapcsolja az integrációs fiókját ahhoz a logikai alkalmazáshoz, ahol az összekötőt használni szeretné.
 
-Az AS2-üzeneteket az AS2-összekötő segítségével használhatja az Azure Logic Appsben. Az AS2-összekötő triggereket és műveleteket biztosít az AS2-kommunikáció kezeléséhez. Ha például az üzenetek továbbításakor meg szeretné teremteni a biztonságot és a megbízhatóságot, a következő műveleteket használhatja:
+Az AS2-üzenetek Azure Logic Appsban való használatához használhatja az AS2-összekötőt, amely az AS2 (1,2-es verzió) kommunikációt támogató és kezelő eseményindítókat és műveleteket biztosít. Ha például az üzenetek továbbításakor meg szeretné teremteni a biztonságot és a megbízhatóságot, a következő műveleteket használhatja:
 
 * Az [ **AS2** ](#encode) a titkosítás, a digitális aláírás és a nyugták küldését teszi lehetővé az üzenet-törlési értesítések (MDN) révén, ami segít a nem megtagadási támogatásban. Ez a művelet például az AS2/HTTP fejléceket alkalmazza, és a következő konfiguráláskor hajtja végre ezeket a feladatokat:
 

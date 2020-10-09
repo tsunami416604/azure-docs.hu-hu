@@ -8,16 +8,16 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: hdiseo17may2017,seoapr2020
 ms.date: 04/27/2020
-ms.openlocfilehash: b678e4de76619ff17703caecfa7a52682e835674
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.openlocfilehash: 45170e9df7082e277c445a2dab6d617eb208cd44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89462564"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91855633"
 ---
 # <a name="upload-data-for-apache-hadoop-jobs-in-hdinsight"></a>Adatok feltöltése Apache Hadoop feladatok számára a HDInsight-ben
 
-A HDInsight Hadoop elosztott fájlrendszert (HDFS) biztosít az Azure Storage-ban, és Azure Data Lake Storage. Ez a tároló tartalmazza a Gen1 és a Gen2. Az Azure Storage és a Data Lake Storage Gen1 és a Gen2 HDFS-bővítményként lettek kialakítva. Lehetővé teszik, hogy a Hadoop-környezetben található összetevők teljes készlete közvetlenül az általa kezelt adaton működjön. Az Azure Storage, a Data Lake Storage Gen1 és a Gen2 különböző fájlrendszerek. A rendszerek az adatok és számítások tárolásához vannak optimalizálva. Az Azure Storage használatának előnyeiről az [Azure Storage és a HDInsight használata](hdinsight-hadoop-use-blob-storage.md)című témakörben olvashat bővebben. Lásd még: [Data Lake Storage Gen1 használata a HDInsight](hdinsight-hadoop-use-data-lake-store.md), és [a Data Lake Storage Gen2 használata a HDInsight használatával](hdinsight-hadoop-use-data-lake-storage-gen2.md).
+A HDInsight Hadoop elosztott fájlrendszert (HDFS) biztosít az Azure Storage-ban, és Azure Data Lake Storage. Ez a tároló tartalmazza a Gen1 és a Gen2. Az Azure Storage és a Data Lake Storage Gen1 és a Gen2 HDFS-bővítményként lettek kialakítva. Lehetővé teszik, hogy a Hadoop-környezetben található összetevők teljes készlete közvetlenül az általa kezelt adaton működjön. Az Azure Storage, a Data Lake Storage Gen1 és a Gen2 különböző fájlrendszerek. A rendszerek az adatok és számítások tárolásához vannak optimalizálva. Az Azure Storage használatának előnyeiről az [Azure Storage és a HDInsight használata](hdinsight-hadoop-use-blob-storage.md)című témakörben olvashat bővebben. Lásd még: [Data Lake Storage Gen1 használata a HDInsight](hdinsight-hadoop-use-data-lake-storage-gen1.md), és [a Data Lake Storage Gen2 használata a HDInsight használatával](hdinsight-hadoop-use-data-lake-storage-gen2.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -26,7 +26,7 @@ A Kezdés előtt vegye figyelembe a következő követelményeket:
 * Egy Azure-beli HDInsight-fürt. Útmutatásért lásd: Ismerkedés [Az Azure HDInsight](hadoop/apache-hadoop-linux-tutorial-get-started.md).
 * A következő cikkek ismerete:
     * [Az Azure Storage és a HDInsight használata](hdinsight-hadoop-use-blob-storage.md)
-    * [Data Lake Storage Gen1 használata a HDInsight](hdinsight-hadoop-use-data-lake-store.md)
+    * [Data Lake Storage Gen1 használata a HDInsight](hdinsight-hadoop-use-data-lake-storage-gen1.md)
     * [Data Lake Storage Gen2 használata a HDInsight](hdinsight-hadoop-use-data-lake-storage-gen2.md)  
 
 ## <a name="upload-data-to-azure-storage"></a>Adatok feltöltése az Azure Storage-ba
@@ -121,7 +121,7 @@ Az Azure Storage egy Azure SDK-val is elérhető a következő programozási nye
 
 Az Azure SDK-k telepítésével kapcsolatos további információkért lásd: [Azure-letöltések](https://azure.microsoft.com/downloads/)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy megértette, hogyan szerezhet be információkat a HDInsight-ba, olvassa el a következő cikkeket az elemzés elsajátításához:
 

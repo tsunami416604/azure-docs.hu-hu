@@ -7,16 +7,16 @@ ms.service: virtual-wan
 ms.topic: how-to
 ms.date: 10/14/2019
 ms.author: cherylmc
-ms.openlocfilehash: 0ea4523d1558f6887e1aef344198026591dac617
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 07eae453441ea8bff81d7cdb60f9c46c08a22829
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "84752617"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91851173"
 ---
 # <a name="configure-a-custom-ipsec-policy-for-virtual-wan-using-the-portal"></a>Egyéni IPsec-házirend konfigurálása a virtuális WAN-hoz a portál használatával
 
-A Azure Portalban Egyéni IPsec-házirendet konfigurálhat a virtuális WAN-hoz. Az egyéni szabályzatok akkor hasznosak, ha azt szeretné, hogy mindkét oldal (a helyszíni és az Azure VPN Gateway) ugyanazokat a beállításokat használja az IKE 1. és a 2. fázisához.
+Egyéni IPsec-házirendet konfigurálhat egy virtuális WAN VPN-kapcsolathoz a Azure Portal. Az egyéni szabályzatok akkor hasznosak, ha azt szeretné, hogy mindkét oldal (a helyszíni és az Azure VPN Gateway) ugyanazokat a beállításokat használja az IKE 1. és a 2. fázisához.
 
 ## <a name="working-with-custom-policies"></a>Egyéni szabályzatok használata
 
@@ -24,14 +24,14 @@ A Azure Portalban Egyéni IPsec-házirendet konfigurálhat a virtuális WAN-hoz.
 
 ## <a name="configure-a-policy"></a>Házirend konfigurálása
 
-1. **Keresse meg a virtuális hubot**. Egy böngészőből lépjen az [Azure Portalra](https://aka.ms/azurevirtualwanpreviewfeatures), majd jelentkezzen be az Azure-fiókjával. Keresse meg a helyhez tartozó virtuális hubot.
-2. **Válassza ki a VPN-helyet**. A központ lapon válassza ki azt a VPN-helyet, amelyhez egyéni szabályzatot kíván beállítani.
+1. **Keresse meg a virtuális hubot**. Egy böngészőből lépjen az [Azure Portalra](https://aka.ms/azurevirtualwanpreviewfeatures), majd jelentkezzen be az Azure-fiókjával. Navigáljon a virtuális WAN-erőforráshoz, és keresse meg azt a virtuális hubot, amelyhez a VPN-hely csatlakozik.
+2. **Válassza ki a VPN-helyet**. A hub – Áttekintés lapon kattintson a **VPN (hely – hely)** elemre, és válassza ki azt a VPN-helyet, amelyhez egyéni IPSec-házirendet kíván beállítani.
 
    ![Válassza](./media/virtual-wan-custom-ipsec-portal/locate.png)
 3. **A VPN-kapcsolat szerkesztése**. A **helyi menüben** válassza a **VPN-kapcsolat szerkesztése** **lehetőséget.**
 
    ![szerkesztés](./media/virtual-wan-custom-ipsec-portal/contextmenu.png)
-4. **Konfigurálja a beállításokat**. A **VPN-kapcsolat szerkesztése** lapon konfigurálja a beállításokat a beállítások között. A beállítások mentéséhez kattintson a **Mentés** gombra.
+4. **Konfigurálja a beállításokat**. A **VPN-kapcsolat szerkesztése** lapon módosítsa az IPSec-beállítást az alapértelmezett értékről az egyénire, és szabja testre az IPSec-házirendet. A beállítások mentéséhez kattintson a **Mentés** gombra.
 
    ![konfigurálás és mentés](./media/virtual-wan-custom-ipsec-portal/edit.png)
 

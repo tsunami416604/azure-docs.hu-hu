@@ -8,12 +8,12 @@ ms.service: hdinsight
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.date: 03/13/2020
-ms.openlocfilehash: f08b7a49d961c3408af6e5360344bdf500a8ac07
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 969aadbe342dbfd345930082d56e0af93eea37d8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91542325"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91854375"
 ---
 # <a name="quickstart-create-interactive-query-cluster-in-azure-hdinsight-using-arm-template"></a>Rövid útmutató: interaktív lekérdezési fürt létrehozása az Azure HDInsight ARM-sablon használatával
 
@@ -59,13 +59,13 @@ Két Azure-erőforrás van definiálva a sablonban:
     |SSH-Felhasználónév|Adja meg a felhasználónevet, az alapértelmezett érték a sshuser.|
     |SSH-jelszó|Adja meg a jelszót.|
 
-    ![Resource Manager-sablon HBase](./media/quickstart-resource-manager-template/resource-manager-template-hive.png)
+    ![Resource Manager-sablon HBase üzembe helyezése](./media/quickstart-resource-manager-template/resource-manager-template-hive.png)
 
 1. Tekintse át a **használati**feltételeket. Ezután válassza **az Elfogadom a fenti feltételeket és kikötéseket**, majd a **vásárlás**lehetőséget. Értesítést kap arról, hogy a telepítés folyamatban van. Egy fürt létrehozása nagyjából 20 percet vesz igénybe.
 
 ## <a name="review-deployed-resources"></a>Üzembe helyezett erőforrások áttekintése
 
-A fürt létrehozása után az **üzembe helyezés sikeres** értesítést fog kapni, amely a **Go to Resource** hivatkozást fogja tartalmazni. Az erőforráscsoport lap felsorolja az új HDInsight-fürtöt és a fürthöz társított alapértelmezett tárolót. Minden fürt rendelkezik egy [Azure Storage](../hdinsight-hadoop-use-blob-storage.md) -fiókkal vagy egy [Azure Data Lake Storage fióktól](../hdinsight-hadoop-use-data-lake-store.md) . Ezt az alapértelmezett Storage-fióknak nevezzük. A HDInsight-fürtnek és az alapértelmezett Storage-fióknak ugyanabban az Azure-régióban kell elhelyezkednie. A fürtök törlésével nem törlődik a Storage-fiók.
+A fürt létrehozása után az **üzembe helyezés sikeres** értesítést fog kapni, amely a **Go to Resource** hivatkozást fogja tartalmazni. Az erőforráscsoport lap felsorolja az új HDInsight-fürtöt és a fürthöz társított alapértelmezett tárolót. Minden fürt rendelkezik egy [Azure Blob Storage](../hdinsight-hadoop-use-blob-storage.md) -fiókkal, egy [Azure Data Lake Storage Gen1](../hdinsight-hadoop-use-data-lake-storage-gen1.md)vagy egy  [`Azure Data Lake Storage Gen2`](../hdinsight-hadoop-use-data-lake-storage-gen2.md) függőséggel. Ezt az alapértelmezett Storage-fióknak nevezzük. A HDInsight-fürtnek és az alapértelmezett Storage-fióknak ugyanabban az Azure-régióban kell elhelyezkednie. A fürtök törlésével nem törlődik a Storage-fiók.
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -73,7 +73,7 @@ A gyors üzembe helyezés befejezése után érdemes lehet törölni a fürtöt.
 
 A Azure Portal navigáljon a fürthöz, és válassza a **Törlés**lehetőséget.
 
-![A képernyőfelvétel egy H D betekintési fürtöt mutat be a törölni kívánt erőforráscsoporthoz.](./media/quickstart-resource-manager-template/azure-portal-delete-hive.png)
+[Resource Manager-sablon HBase törlése](./media/quickstart-resource-manager-template/azure-portal-delete-hive.png)
 
 Az erőforráscsoport nevét kiválasztva is megnyílik az erőforráscsoport oldala, ahol kiválaszthatja az **Erőforráscsoport törlése** elemet. Az erőforráscsoport törlésével törli a HDInsight-fürtöt és az alapértelmezett Storage-fiókot is.
 

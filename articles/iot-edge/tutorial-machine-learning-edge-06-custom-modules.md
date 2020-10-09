@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: devx-track-csharp
-ms.openlocfilehash: 734c898dae10233463fbf783802ffae4c6a3add8
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.openlocfilehash: 3a2087c83ec48b0b732ce1cb954f78fad9b46fef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88997931"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91857435"
 ---
 # <a name="tutorial-create-and-deploy-custom-iot-edge-modules"></a>Oktatóanyag: egyéni IoT Edge-modulok létrehozása és üzembe helyezése
 
@@ -666,7 +666,7 @@ Nem szeretnénk átirányítani az új előrejelzési adatgyűjtést a régi tá
 
 1. Válassza a **teszt útvonal**lehetőséget. Ha a teszt sikeres, "az üzenet megfelelt a lekérdezésnek" jelenik meg.
 
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 ### <a name="configure-file-upload"></a>Fájlfeltöltés konfigurálása
 
@@ -680,7 +680,7 @@ Konfigurálja a IoT Hub fájlfeltöltés funkciót, hogy a fájl-író modul fel
 
 1. Válassza ki a **azureml-blobtárhely-** vel kezdődő tárolót GUID azonosítóval, majd kattintson a **kiválasztás**gombra.
 
-1. Válassza a **Mentés** lehetőséget. A portál értesíti a Mentés befejeződéséről.
+1. Kattintson a **Mentés** gombra. A portál értesíti a Mentés befejeződéséről.
 
 > [!Note]
 > Nincs bekapcsolva a feltöltési értesítés ebben az oktatóanyagban, de a fájlfeltöltés-értesítések kezelésével kapcsolatos részletekért tekintse meg a [fájl feltöltésére vonatkozó értesítés fogadása](../iot-hub/iot-hub-java-java-file-upload.md#receive-a-file-upload-notification) című témakört.
@@ -804,19 +804,11 @@ Ha bejelentkezik a IoT Edge eszközre (az esetünkben a linuxos virtuális gépr
    sudo docker exec -it avroFileWriter bash
    ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben egy IoT Edge megoldást hoztunk létre a Visual Studio Code-ban három modullal: egy osztályozó, egy útválasztó és egy fájl írója/feltöltője. Az útvonalakat úgy állítottuk be, hogy a modulok kommunikáljanak egymással a peremhálózati eszközön. Módosítottuk a peremhálózati eszköz konfigurációját, és frissítettük a Dockerfiles, hogy telepítse a függőségeket, és hozzáadja a kötési csatlakoztatásokat a modulok tárolóhoz. 
 
 A következő lépésben frissítettük a IoT Hub konfigurációját, hogy az üzeneteket a típus és a fájlfeltöltés kezelésére használjuk. Minden esetben a modulokat a IoT Edge eszközre telepítettük, és gondoskodtak arról, hogy a modulok megfelelően futnak.
-
-További útmutatásért tekintse meg a következő cikkeket:
-
-* [Ismerje meg, hogyan telepíthet modulokat és hozhat létre útvonalakat az IoT Edge-ben](module-composition.md)
-* [IoT-központ üzenet-útválasztásának lekérdezési szintaxisa](../iot-hub/iot-hub-devguide-routing-query-syntax.md)
-* [IoT Hub üzenet-útválasztás: most az üzenet törzsének útválasztása](https://azure.microsoft.com/blog/iot-hub-message-routing-now-with-routing-on-message-body/)
-* [Fájlok feltöltése az IoT Hubbal](../iot-hub/iot-hub-devguide-file-upload.md)
-* [Fájlok feltöltése az eszközről a felhőbe IoT Hub](../iot-hub/iot-hub-python-python-file-upload.md)
 
 Folytassa a következő cikkel az adatok küldésének megkezdéséhez és a megoldás működés közbeni megtekintéséhez.
 

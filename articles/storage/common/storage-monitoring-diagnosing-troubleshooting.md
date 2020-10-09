@@ -4,17 +4,17 @@ description: Az Azure Storage szolgáltatással kapcsolatos problémák azonosí
 author: normesta
 ms.service: storage
 ms.topic: troubleshooting
-ms.date: 10/02/2020
+ms.date: 10/08/2020
 ms.author: normesta
 ms.reviewer: fryu
 ms.subservice: common
 ms.custom: monitoring, devx-track-csharp
-ms.openlocfilehash: a63af55161c2e60724fd35987f9dcbf05b12df2e
-ms.sourcegitcommit: 67e8e1caa8427c1d78f6426c70bf8339a8b4e01d
+ms.openlocfilehash: 5f43654b4ff7d0e1f73bd2d83df21d7277c570d1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91667911"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91854557"
 ---
 # <a name="monitor-diagnose-and-troubleshoot-microsoft-azure-storage"></a>Microsoft Azure Storage felügyelete, diagnosztizálása és hibaelhárítása
 [!INCLUDE [storage-selector-portal-monitoring-diagnosing-troubleshooting](../../../includes/storage-selector-portal-monitoring-diagnosing-troubleshooting.md)]
@@ -23,8 +23,6 @@ ms.locfileid: "91667911"
 A felhőalapú környezetben üzemeltetett elosztott alkalmazások hibáinak diagnosztizálása és hibaelhárítása összetettebb lehet, mint a hagyományos környezetekben. Az alkalmazások a IaaS-infrastruktúrában, a helyszínen, a mobileszközön vagy a környezetek valamilyen kombinációjában is üzembe helyezhetők. Az alkalmazás hálózati forgalma általában nyilvános és magánhálózatok bejárására is alkalmas lehet, és az alkalmazás több tárolási technológiát is használhat, például a Microsoft Azure Storage táblákat, blobokat, várólistákat vagy fájlokat, valamint más adattárakon, például a viszonyítási és dokumentum-adatbázisokon kívül.
 
 Az alkalmazások sikeres kezeléséhez proaktív módon kell figyelnie őket, és meg kell értenie, hogyan diagnosztizálhatja és elháríthatja az összes aspektusát és azok függő technológiáit. Az Azure Storage-szolgáltatások felhasználóinak folyamatosan figyelniük kell az alkalmazás által a működés közben fellépő váratlan változásokhoz (például a szokásos válaszidő-időpontnál lassabban) használt tárolási szolgáltatásokat, és a naplózás használatával részletesebb adatokat gyűjthetnek, és részletesen elemezheti a problémát. A figyelésből és a naplózásból beszerzett diagnosztikai információk segítségével meghatározható az alkalmazás által észlelt probléma kiváltó oka. Ezután elháríthatja a problémát, és meghatározhatja a megoldásához szükséges lépéseket. Az Azure Storage egy alapszintű Azure-szolgáltatás, amely az ügyfelek által az Azure-infrastruktúrára telepített megoldások többségének fontos részét képezi. Az Azure Storage olyan képességeket tartalmaz, amelyekkel egyszerűbbé válik a felhőalapú alkalmazások tárolási problémáinak figyelése, diagnosztizálása és hibaelhárítása.
-
-Az Azure Storage-alkalmazásokkal kapcsolatos teljes körű hibaelhárítást a teljes [körű hibaelhárítás az Azure Storage-metrikák és-naplózás, a AzCopy és a Message Analyzer használatával](../storage-e2e-troubleshooting.md)című részben találja.
 
 * [Bevezetés]
   * [Az útmutató rendszerezése]
@@ -68,11 +66,10 @@ Az Azure Storage-alkalmazásokkal kapcsolatos teljes körű hibaelhárítást a 
 * [Függelékek]
   * [1. függelék: a Hegedűs használata a HTTP-és HTTPS-forgalom rögzítéséhez]
   * [2. függelék: hálózati forgalom rögzítése a Wireshark használatával]
-  * [3. függelék: a hálózati forgalom rögzítése a Microsoft Message Analyzer használatával]
   * [4. függelék: az Excel használata a metrikák és a naplózási adatok megtekintéséhez]
   * [5. függelék: az Azure DevOps Application Insights figyelése]
 
-## <a name="introduction"></a><a name="introduction"></a>Introduction (Bevezetés)
+## <a name="introduction"></a><a name="introduction"></a>Bevezetés
 Ez az útmutató bemutatja, hogyan használhatók olyan szolgáltatások, mint például az Azure Storage Analytics, az ügyféloldali naplózás az Azure Storage ügyféloldali Kódtáraban, valamint más, harmadik féltől származó eszközök az Azure Storage-hoz kapcsolódó problémák azonosításához, diagnosztizálásához és hibaelhárításához.
 
 ![Az ügyfélalkalmazások és az Azure Storage-szolgáltatások közötti információáramlást ábrázoló diagram.][1]
@@ -92,7 +89,7 @@ A "[végpontok közötti nyomkövetés]" szakasz azt ismerteti, hogyan lehet ös
 
 A "[hibaelhárítási útmutató]" című szakasz hibaelhárítási útmutatást nyújt az esetlegesen felmerülő gyakori, a tárterülettel kapcsolatos problémákhoz.
 
-A "[függelékek]" az egyéb eszközök, például a Wireshark és a netmon használatát ismertetik a hálózati csomagok adatainak elemzéséhez, a Hegedűs számára a HTTP/HTTPS-üzenetek elemzéséhez, valamint a Microsoft Message Analyzert a naplózási adatok korrelációs kezeléséhez.
+A "[függelékek]" információkkal szolgálnak más eszközök, például a Wireshark és a netmon használatával a hálózati csomagok adatainak elemzéséhez, és a Hegedűs a HTTP/HTTPS-üzenetek elemzéséhez.
 
 ## <a name="monitoring-your-storage-service"></a><a name="monitoring-your-storage-service"></a>A tárolási szolgáltatás figyelése
 Ha ismeri a Windows teljesítményfigyelőjét, a tárolási metrikákat úgy tekintheti meg, hogy a Windows teljesítményfigyelő számlálóinak megfelelő Azure Storage-kompatibilis. A tárolási Mérőszámokban átfogó mérőszámokat (számlálókat a Windows Teljesítményfigyelő terminológiájában) talál, például a szolgáltatás elérhetőségét, a szolgáltatásra irányuló kérelmek teljes számát vagy a sikeres kérelmek százalékos arányát. Az elérhető metrikák teljes listáját itt tekintheti meg: [Storage Analytics mérőszámok tábla sémája](https://msdn.microsoft.com/library/azure/hh343264.aspx). Megadhatja, hogy a tárolási szolgáltatás óránként, vagy percenként összesítse-e a metrikákat. A metrikák engedélyezésével és a tárolási fiókok figyelésével kapcsolatos további információkért lásd: [a tárolási mérőszámok engedélyezése és a metrikák adatainak megtekintése](https://go.microsoft.com/fwlink/?LinkId=510865).
@@ -176,7 +173,7 @@ Az Azure Storage-szolgáltatásokkal kapcsolatos problémák általában a köve
 A következő szakaszokban ismertetjük azokat a lépéseket, amelyeket követnie kell az alábbi négy kategória hibáinak diagnosztizálásához és elhárításához. Az útmutató későbbi, "[hibaelhárítási útmutató]" szakasza részletesebben ismerteti az esetlegesen felmerülő gyakori problémákat.
 
 ### <a name="service-health-issues"></a><a name="service-health-issues"></a>A szolgáltatás állapotával kapcsolatos problémák
-A szolgáltatás állapotával kapcsolatos problémák általában a vezérlőn kívül esnek. A [Azure Portal](https://portal.azure.com) információt nyújt az Azure-szolgáltatásokkal kapcsolatos folyamatos problémákról, beleértve a tárolási szolgáltatásokat is. Ha a Storage-fiók létrehozásakor úgy döntött, hogy olvasási hozzáférésű földrajzi redundáns tárterületet használ, akkor ha az adatai nem lesznek elérhetők az elsődleges helyen, az alkalmazás ideiglenesen a másodlagos helyen lévő írásvédett másolatra vált. A másodlagosból való olvasáshoz az alkalmazásnak képesnek kell lennie az elsődleges és a másodlagos tárolóhelyek közötti váltásra, és képesnek kell lennie csökkentett funkcionalitású módban dolgozni a csak olvasható adatokkal. Az Azure Storage ügyféloldali kódtárai lehetővé teszik az újrapróbálkozási szabályzat megadását, amely képes a másodlagos tárolóból olvasni, ha az elsődleges tárolóból való olvasás meghiúsul. Emellett az alkalmazásnak is tisztában kell lennie azzal, hogy a másodlagos helyen lévő adatai végül konzisztensek. További információkért tekintse meg az [Azure Storage redundancia lehetőségeinek és az olvasási hozzáférés földrajzi redundáns tárolásának](https://blogs.msdn.microsoft.com/windowsazurestorage/2013/12/11/windows-azure-storage-redundancy-options-and-read-access-geo-redundant-storage/)feladatait ismertető blogot.
+A szolgáltatás állapotával kapcsolatos problémák általában a vezérlőn kívül esnek. A [Azure Portal](https://portal.azure.com) információt nyújt az Azure-szolgáltatásokkal kapcsolatos folyamatos problémákról, beleértve a tárolási szolgáltatásokat is. Ha úgy döntött, hogy Read-Access Geo-Redundant tárterületet a Storage-fiók létrehozásakor, akkor ha az adatai nem lesznek elérhetők az elsődleges helyen, az alkalmazás a másodlagos helyen lévő írásvédett másolatra átmenetileg átválthat. A másodlagosból való olvasáshoz az alkalmazásnak képesnek kell lennie az elsődleges és a másodlagos tárolóhelyek közötti váltásra, és képesnek kell lennie csökkentett funkcionalitású módban dolgozni a csak olvasható adatokkal. Az Azure Storage ügyféloldali kódtárai lehetővé teszik az újrapróbálkozási szabályzat megadását, amely képes a másodlagos tárolóból olvasni, ha az elsődleges tárolóból való olvasás meghiúsul. Emellett az alkalmazásnak is tisztában kell lennie azzal, hogy a másodlagos helyen lévő adatai végül konzisztensek. További információkért tekintse meg az [Azure Storage redundancia lehetőségeinek és az olvasási hozzáférés földrajzi redundáns tárolásának](https://blogs.msdn.microsoft.com/windowsazurestorage/2013/12/11/windows-azure-storage-redundancy-options-and-read-access-geo-redundant-storage/)feladatait ismertető blogot.
 
 ### <a name="performance-issues"></a><a name="performance-issues"></a>Teljesítménnyel kapcsolatos problémák
 Egy alkalmazás teljesítményének megítélése szubjektív lehet, főképp a felhasználó szemszögéből. Ezért fontos, hogy rendelkezzen olyan alapmértékekkel, amelyek segíthetnek a teljesítménnyel kapcsolatos problémák azonosításában. Számos tényező hatással lehet az Azure Storage szolgáltatás teljesítményére az ügyfélalkalmazás szemszögéből. Ezek a tényezők működhetnek a Storage szolgáltatásban, az ügyfélen vagy a hálózati infrastruktúrában; Ezért fontos, hogy a teljesítménnyel kapcsolatos probléma eredetének azonosítására szolgáló stratégia legyen.
@@ -221,10 +218,9 @@ Az ügyfél és a kiszolgáló közötti forgalmat rögzítheti az ügyfél és 
 
 * A [Hegedűs](https://www.telerik.com/fiddler) egy ingyenes webes hibakeresési proxy, amely lehetővé teszi a http-és HTTPS-kérések és-válaszüzenetek fejlécének és hasznos adatainak vizsgálatát. További információ: [1. függelék: a Hegedűs használata a http-és HTTPS-forgalom rögzítéséhez](#appendix-1).
 * A [Microsoft Hálózatfigyelő (netmon)](https://cnet-downloads.com/network-monitor) és a [Wireshark](https://www.wireshark.org/) olyan ingyenes hálózati protokoll-elemzők, amelyek lehetővé teszik a hálózati protokollok széles körének részletes csomagjainak megtekintését. A Wireshark kapcsolatos további információkért lásd a "[2. függelék: a hálózati forgalom rögzítése a Wireshark használatával](#appendix-2)" című szakaszt.
-* A Microsoft Message Analyzer a Microsoft egyik eszköze, amely felülírja a netmon, és a hálózati csomagok adatainak rögzítése mellett segít megtekinteni és elemezni a más eszközökről rögzített naplózási adatok megtekintését és elemzését. További információért lásd a "[3. függelék: a hálózati forgalom rögzítése a Microsoft Message Analyzer használatával](#appendix-3)" című szakaszt.
 * Ha alapszintű kapcsolati tesztet szeretne végezni annak ellenőrzéséhez, hogy az ügyfélszámítógép képes-e csatlakozni az Azure Storage szolgáltatáshoz a hálózaton keresztül, ezt a standard **ping** eszközzel nem végezheti el az ügyfélen. A [ **tcping** eszközzel](https://www.elifulkerson.com/projects/tcping.php) azonban ellenőrizheti a kapcsolatot.
 
-Sok esetben a tárolási adatok naplózása és a Storage ügyféloldali kódtára elegendő lesz a probléma diagnosztizálásához, de bizonyos helyzetekben szükség lehet a hálózati naplózási eszközök által biztosított részletesebb információkra. A Hegedűs a HTTP-és HTTPS-üzenetek megtekintéséhez például lehetővé teszi, hogy megtekintse a tárolási szolgáltatásokban küldött fejléc-és hasznos adatokat, ami lehetővé teszi annak vizsgálatát, hogy az ügyfélalkalmazás hogyan próbálkozzon újra a tárolási műveletekkel. A protokollok elemzői, például a Wireshark a csomagok szintjén működnek, lehetővé téve a TCP-adatok megtekintését, ami lehetővé teszi az elveszett csomagok és csatlakozási problémák elhárítását. Az üzenetsor a HTTP-és a TCP-rétegeken is működhet.
+Sok esetben a tárolási adatok naplózása és a Storage ügyféloldali kódtára elegendő lesz a probléma diagnosztizálásához, de bizonyos helyzetekben szükség lehet a hálózati naplózási eszközök által biztosított részletesebb információkra. A Hegedűs a HTTP-és HTTPS-üzenetek megtekintéséhez például lehetővé teszi, hogy megtekintse a tárolási szolgáltatásokban küldött fejléc-és hasznos adatokat, ami lehetővé teszi annak vizsgálatát, hogy az ügyfélalkalmazás hogyan próbálkozzon újra a tárolási műveletekkel. A protokollok elemzői, például a Wireshark a csomagok szintjén működnek, lehetővé téve a TCP-adatok megtekintését, ami lehetővé teszi az elveszett csomagok és csatlakozási problémák elhárítását. 
 
 ## <a name="end-to-end-tracing"></a><a name="end-to-end-tracing"></a>Végpontok közötti nyomkövetés
 A különböző naplófájlokat használó teljes körű nyomkövetés hasznos módszer a lehetséges problémák kivizsgálásához. A metrikák adatai alapján a dátum-és időinformációk segítségével megtekintheti, hogy hol érdemes megkeresni a naplófájlokban a probléma megoldásához segítséget nyújtó részletes információkat.
@@ -385,11 +381,9 @@ queueServicePoint.UseNagleAlgorithm = false;
 Tekintse át az ügyféloldali naplókat, és ellenőrizze, hogy az ügyfélalkalmazás hány kérelmét küldi el, és keresse meg a .NET-sel kapcsolatos általános teljesítménybeli szűk keresztmetszeteket az ügyfélben, például a PROCESSZORt, a .NET-alapú adatgyűjtést, a hálózati kihasználtságot vagy a memóriát. A .NET-ügyfélalkalmazások hibaelhárításának kiindulási pontként lásd: [hibakeresés, nyomkövetés és profilkészítés](https://msdn.microsoft.com/library/7fe0dd2y).
 
 #### <a name="investigating-network-latency-issues"></a>Hálózati késéssel kapcsolatos problémák kivizsgálása
-Általában a hálózat által okozott magas végpontok közötti késés átmeneti körülmények miatt. Az átmeneti és az állandó hálózati problémákat (például a Wireshark vagy a Microsoft Message Analyzer eszközzel) is kivizsgálhatja az eldobott csomagok között.
+Általában a hálózat által okozott magas végpontok közötti késés átmeneti körülmények miatt. Az átmeneti és az állandó hálózati problémákat, például az eldobott csomagokat olyan eszközökkel is vizsgálhatja, mint például a Wireshark.
 
 A hálózati problémák Wireshark használatával kapcsolatos további információkért lásd a "[2. függelék: a Wireshark használata a hálózati forgalom rögzítéséhez]" című szakaszt.
-
-További információ a hálózati problémák elhárításáról a Microsoft Message Analyzer használatával[: "3. függelék: a Microsoft Message Analyzer használata a hálózati forgalom rögzítéséhez]."
 
 ### <a name="metrics-show-low-averagee2elatency-and-low-averageserverlatency-but-the-client-is-experiencing-high-latency"></a><a name="metrics-show-low-AverageE2ELatency-and-low-AverageServerLatency"></a>A mérőszámok alacsony AverageE2ELatency és alacsony AverageServerLatency értéket mutatnak, de az ügyfél nagy mértékű késleltetést tapasztal
 Ebben a forgatókönyvben a legvalószínűbb ok az a tárolási szolgáltatás elérésére irányuló kérelmek késése. Meg kell vizsgálnia, hogy az ügyféltől érkező kérések miért nem teszik át a blob szolgáltatásba.
@@ -402,11 +396,9 @@ Ellenőrizze azt is, hogy az ügyfél több újrapróbálkozást is végrehajt-e
 * Ellenőrizze az ügyfél naplóit. A részletes naplózás azt jelzi, hogy az Újrapróbálkozás megtörtént.
 * Végezzen hibakeresést a kódban, és keresse meg a kérelemhez társított **OperationContext** objektum tulajdonságait. Ha a művelet újrapróbálkozik, a **RequestResults** tulajdonság több egyedi kiszolgálói kérelem azonosítóját fogja tartalmazni. Az egyes kérések kezdési és befejezési időpontját is megtekintheti. További információ: a [kiszolgálói kérelem azonosítója]című szakasz kód mintája.
 
-Ha nincsenek problémák az ügyfélben, vizsgálja meg a lehetséges hálózati problémákat, például a csomagok elvesztését. Hálózati problémák kivizsgálásához használhatja a Wireshark vagy a Microsoft Message Analyzer eszközt is.
+Ha nincsenek problémák az ügyfélben, vizsgálja meg a lehetséges hálózati problémákat, például a csomagok elvesztését. A hálózati problémák kivizsgálásához olyan eszközöket használhat, mint például a Wireshark.
 
 A hálózati problémák Wireshark használatával kapcsolatos további információkért lásd a "[2. függelék: a Wireshark használata a hálózati forgalom rögzítéséhez]" című szakaszt.
-
-További információ a hálózati problémák elhárításáról a Microsoft Message Analyzer használatával[: "3. függelék: a Microsoft Message Analyzer használata a hálózati forgalom rögzítéséhez]."
 
 ### <a name="metrics-show-high-averageserverlatency"></a><a name="metrics-show-high-AverageServerLatency"></a>A mérőszámok magas AverageServerLatency értéket mutatnak
 A blob letöltési kéréseinek magas **averageserverlatency értéket mutatnak** esetén a tárolási naplózási naplók segítségével ellenőrizze, hogy vannak-e ismétlődő kérelmek ugyanahhoz a blobhoz (vagy Blobok készletéhez). A Blobok feltöltésére vonatkozó kérelmek esetében meg kell vizsgálni, hogy az ügyfél által használt blokkolási méret (például az 64 K-nál kevesebb blokk) csak akkor vezethet, ha az olvasások kisebbek, mint 64 K-es adattömböknél, és ha több ügyfél is feltölti a blokkokat ugyanarra a blobra párhuzamosan. Azt is ellenőriznie kell, hogy a másodpercenkénti kérések száma a másodpercenkénti méretezhetőségi célok meghaladása esetén hány percenkénti várakozási[arányt eredményez.]
@@ -476,7 +468,7 @@ A kiszolgáló időtúllépései a további vizsgálatot igénylő tárolási sz
 ### <a name="metrics-show-an-increase-in-percentnetworkerror"></a><a name="metrics-show-an-increase-in-PercentNetworkError"></a>A mérőszámok emelkedő PercentNetworkError értéket mutatnak
 A metrikák az egyik tárolási szolgáltatás **percentnetworkerror értéket mutatnak** növekedését mutatják be. A **percentnetworkerror értéket mutatnak** metrika a következő metrikák összesítése: **NetworkError**, **AnonymousNetworkError**és **SASNetworkError**. Ezek akkor fordulnak elő, ha a tárolási szolgáltatás hálózati hibát észlel, amikor az ügyfél tárolási kérelmet készít.
 
-Ennek a hibának a leggyakoribb oka az ügyfél leválasztása, mielőtt lejár az időkorlát a Storage szolgáltatásban. Vizsgálja meg az ügyfél kódját, hogy megtudja, miért és mikor szakad meg az ügyfél a Storage szolgáltatással. A Wireshark, a Microsoft Message Analyzer vagy a Tcping használatával megvizsgálhatja az ügyfél hálózati kapcsolati problémáit. Ezek az eszközök a [függelékekben]olvashatók.
+Ennek a hibának a leggyakoribb oka az ügyfél leválasztása, mielőtt lejár az időkorlát a Storage szolgáltatásban. Vizsgálja meg az ügyfél kódját, hogy megtudja, miért és mikor szakad meg az ügyfél a Storage szolgáltatással. A Wireshark vagy a Tcping segítségével is ellenőrizheti a hálózati kapcsolattal kapcsolatos problémákat az ügyfélről. Ezek az eszközök a [függelékekben]olvashatók.
 
 ### <a name="the-client-is-receiving-http-403-forbidden-messages"></a><a name="the-client-is-receiving-403-messages"></a>Az ügyfél HTTP 403 (Tiltott) hibaüzeneteket kap
 Ha az ügyfélalkalmazás HTTP 403 (Tiltott) hibákat jelez, annak egyik valószínű oka lehet, hogy az ügyfél egy lejárt közös hozzáférésű jogosultságkódot (SAS-t) használ, amikor tárolási kérelmet küld (egyéb lehetséges okok lehetnek még az óraeltérés, az érvénytelen kulcsok és az üres fejlécek). Ha egy lejárt SAS-kulcs a hiba oka, akkor nem fog bejegyzéseket látni a kiszolgálóoldali Storage naplózási szolgáltatásának naplóadataiban. Az alábbi táblázat a Storage ügyféloldali kódtár által létrehozott ügyféloldali naplóból származó mintát mutatja be, amely a problémát szemlélteti:
@@ -719,13 +711,11 @@ Ha az előző hibaelhárítási szakaszban nem szerepel a tárolási szolgáltat
 
 * Ellenőrizze, hogy van-e változás a várt Base-line viselkedéstől. Előfordulhat, hogy a mérőszámok alapján meg tudja határozni, hogy a probléma átmeneti vagy állandó, és hogy a probléma milyen tárolási műveleteket érint.
 * A metrikák információ segítségével a kiszolgálóoldali naplózási adatokon keresheti meg az esetlegesen előforduló hibákkal kapcsolatos részletesebb információkat. Ezek az információk segíthetnek a probléma elhárításában és megoldásában.
-* Ha a kiszolgálóoldali naplók adatai nem elegendőek a probléma megoldásához, használhatja a Storage ügyféloldali kódtár ügyféloldali naplóit az ügyfélalkalmazás működésének vizsgálatához, valamint a Hegedűs, a Wireshark és a Microsoft Message Analyzer által a hálózat kivizsgálásához szükséges eszközök kivizsgálása érdekében.
+* Ha a kiszolgálóoldali naplókban található információk nem elégségesek a probléma megoldásához, használhatja a Storage ügyféloldali kódtár ügyféloldali naplóit az ügyfélalkalmazás működésének vizsgálatához, valamint az olyan eszközökhöz, mint a Hegedűs, a Wireshark a hálózat kivizsgálásához.
 
 A Hegedűs használatával kapcsolatos további információkért tekintse meg az[1. függelék: a Hegedűs használata a http-és HTTPS-forgalom rögzítéséhez]című témakört.
 
 További információ a Wireshark használatáról: "[2. függelék: a Wireshark használata a hálózati forgalom rögzítéséhez]".
-
-A Microsoft Message Analyzer használatáról további információt a "[3. függelék: a Microsoft Message Analyzer használata a hálózati forgalom rögzítéséhez]" című témakörben talál.
 
 ## <a name="appendices"></a><a name="appendices"></a>Függelékek
 A függelékekben számos olyan eszközt ismertetünk, amelyek hasznosak lehetnek az Azure Storage (és más szolgáltatások) problémáinak diagnosztizálásához és hibaelhárításához. Ezek az eszközök nem részei az Azure Storage-nak, és némelyikük harmadik féltől származó termék. Ennek megfelelően az ezekben a függelékekben tárgyalt eszközökre nem vonatkozik a Microsoft Azure vagy az Azure Storage szolgáltatással esetlegesen támogatott támogatási szerződés, ezért az értékelési folyamat részeként meg kell vizsgálnia az eszközök szolgáltatói által elérhető licencelési és támogatási lehetőségeket.
@@ -777,40 +767,6 @@ Azt is megteheti, hogy megtekinti a TCP-adatforrást, mivel az alkalmazási rét
 >
 >
 
-### <a name="appendix-3-using-microsoft-message-analyzer-to-capture-network-traffic"></a><a name="appendix-3"></a>3. függelék: a hálózati forgalom rögzítése a Microsoft Message Analyzer használatával
-A Microsoft Message Analyzer használatával a HTTP-és HTTPS-forgalmat a Hegedűs hasonló módon rögzítheti, és a hálózati forgalmat a Wireshark hasonló módon rögzítheti.
-
-#### <a name="configure-a-web-tracing-session-using-microsoft-message-analyzer"></a>Webes nyomkövetési munkamenet konfigurálása a Microsoft Message Analyzer használatával
-Ha webes nyomkövetési munkamenetet szeretne konfigurálni a HTTP-és HTTPS-forgalomhoz a Microsoft Message Analyzer használatával, futtassa a Microsoft Message Analyzer alkalmazást, majd a **fájl** menüben kattintson a **rögzítés/nyomkövetés**elemre. Az elérhető nyomkövetési forgatókönyvek listájában válassza a **webproxy**lehetőséget. Ezután a **nyomkövetési forgatókönyv konfigurációs** paneljének **HostnameFilter** szövegmezőbe írja be a tárolási végpontok nevét (ezeket a neveket megkeresheti a [Azure Portal](https://portal.azure.com)). Ha például az Azure Storage-fiók neve **contosodata**, adja hozzá a következőt a **HostnameFilter** szövegmezőhöz:
-
-```
-contosodata.blob.core.windows.net contosodata.table.core.windows.net contosodata.queue.core.windows.net
-```
-
-> [!NOTE]
-> A szóköz elválasztja a gazdagépeket.
->
->
-
-Amikor készen áll a nyomkövetési adatok gyűjtésének megkezdésére, kattintson a **Start with (Kezdés** ) gombra.
-
-További információ a Microsoft Message Analyzer **webproxy** nyomkövetéséről: [Microsoft-PEF-webproxy Provider](https://technet.microsoft.com/library/jj674814.aspx).
-
-A Microsoft Message Analyzer beépített **webproxy** -nyomkövetése a hegedűsen alapul; képes az ügyféloldali HTTPS-forgalom rögzítésére és a titkosítatlan HTTPS-üzenetek megjelenítésére. A **webproxy** -nyomkövetés úgy működik, hogy egy helyi proxyt konfigurál minden olyan http-és HTTPS-forgalomhoz, amely hozzáférést biztosít a titkosítatlan üzenetekhez.
-
-#### <a name="diagnosing-network-issues-using-microsoft-message-analyzer"></a>Hálózati problémák diagnosztizálása a Microsoft Message Analyzer használatával
-Amellett, hogy a Microsoft Message Analyzer **webproxy** nyomkövetését használja az ügyfélalkalmazás és a tárolási szolgáltatás közötti HTTP/HTTPS-forgalom részleteinek rögzítéséhez, a hálózati csomagok adatainak rögzítéséhez használhatja a beépített **helyi kapcsolati réteg** nyomkövetését is. Ez lehetővé teszi az olyanhoz hasonló adatrögzítést, amely a Wireshark rögzíthető, és olyan hálózati problémák diagnosztizálására szolgál, mint például az eldobott csomagok.
-
-Az alábbi képernyőfelvételen egy példa a **helyi hivatkozás rétegének** nyomon követésére és a **DiagnosisTypes** oszlop egyes **tájékoztató** üzeneteire mutat. Ha a **DiagnosisTypes** oszlop egyik ikonjára kattint, az üzenet részletei láthatók. Ebben a példában a kiszolgáló újraküldött üzenetet #305, mert nem kapott nyugtát az ügyféltől:
-
-![Képernyőkép, amely egy példát mutat a helyi kapcsolati réteg nyomon követésére a DiagnosisTypes oszlop egyes tájékoztató üzeneteivel][9]
-
-Amikor létrehozza a nyomkövetési munkamenetet a Microsoft Message Analyzerben, megadhat szűrőket a nyomkövetésben lévő zaj mennyiségének csökkentéséhez. A **rögzítés/nyomkövetés** lapon, ahol a nyomkövetést definiálja, kattintson a **Microsoft-Windows-NDIS-PacketCapture**melletti **configure (Konfigurálás** ) hivatkozásra. Az alábbi képernyőfelvételen egy olyan konfiguráció látható, amely a TCP-forgalmat a három tárolási szolgáltatás IP-címeire szűri:
-
-![Képernyőkép, amely egy olyan konfigurációt mutat be, amely a TCP-forgalmat a három tárolási szolgáltatás IP-címeire szűri.][10]
-
-A Microsoft Message Analyzer helyi kapcsolati rétegének nyomkövetésével kapcsolatos további információkért lásd: [Microsoft-PEF-NDIS-PacketCapture Provider](https://technet.microsoft.com/library/jj659264.aspx).
-
 ### <a name="appendix-4-using-excel-to-view-metrics-and-log-data"></a><a name="appendix-4"></a>4. függelék: az Excel használata a metrikák és a naplózási adatok megtekintéséhez
 Számos eszköz lehetővé teszi, hogy egy tagolt formátumban töltse le a tárolási metrikai adatokat az Azure Table Storage-ból, így a megtekintés és elemzés érdekében egyszerűen betöltheti az adatokat az Excelbe. Az Azure Blob Storage-ból származó tárolási naplózási adatok már olyan tagolt formátumban vannak, amelyet az Excelbe betölthet. Azonban a megfelelő oszlopfejlécek hozzáadására van szükség az információk alapján [Storage Analytics a naplózási formátumot](https://msdn.microsoft.com/library/azure/hh343259.aspx) , és Storage Analytics a [metrikák tábla sémáját](https://msdn.microsoft.com/library/azure/hh343264.aspx).
 
@@ -830,7 +786,7 @@ A teljesítmény és a rendelkezésre állás monitorozásának részeként hasz
 
 További információ: [Mi a Application Insights](../../azure-monitor/app/app-insights-overview.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Azure Storage-beli elemzéssel kapcsolatos további információkért tekintse meg a következő forrásokat:
 
@@ -897,7 +853,6 @@ Az Azure Storage-beli elemzéssel kapcsolatos további információkért tekints
 [Függelékek]: #appendices
 [1. függelék: a Hegedűs használata a HTTP-és HTTPS-forgalom rögzítéséhez]: #appendix-1
 [2. függelék: hálózati forgalom rögzítése a Wireshark használatával]: #appendix-2
-[3. függelék: a hálózati forgalom rögzítése a Microsoft Message Analyzer használatával]: #appendix-3
 [4. függelék: az Excel használata a metrikák és a naplózási adatok megtekintéséhez]: #appendix-4
 [5. függelék: az Azure DevOps Application Insights figyelése]: #appendix-5
 

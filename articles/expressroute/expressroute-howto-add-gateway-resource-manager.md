@@ -8,14 +8,14 @@ ms.topic: tutorial
 ms.date: 10/05/2020
 ms.author: duau
 ms.custom: seodec18
-ms.openlocfilehash: 7554993025d8f64a80c1b223586f856eedf9e964
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.openlocfilehash: 9f01961ec7c7f8e0a4e2d72e28e6def50e93ad5d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91766605"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91854307"
 ---
-# <a name="configure-a-virtual-network-gateway-for-expressroute-using-powershell"></a>Az ExpressRoute virtuális hálózati átjáróinak konfigurálása a PowerShell-lel
+# <a name="tutorial-configure-a-virtual-network-gateway-for-expressroute-using-powershell"></a>Oktatóanyag: virtuális hálózati átjáró konfigurálása ExpressRoute a PowerShell használatával
 > [!div class="op_single_selector"]
 > * [Resource Manager – Azure Portal](expressroute-howto-add-gateway-portal-resource-manager.md)
 > * [Resource Manager – PowerShell](expressroute-howto-add-gateway-resource-manager.md)
@@ -29,8 +29,6 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
 > - Hozzon létre egy átjáró-alhálózatot.
 > - Hozzon létre Virtual Network átjárót.
-
-[!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -48,7 +46,7 @@ A feladat lépései a következő konfigurációs hivatkozási listán szereplő
 | Subnet1 neve | *FrontEnd* |
 | Átjáró alhálózatának neve | *GatewaySubnet* |    
 | Átjáró alhálózatának címtartomány | *192.168.200.0/26* |
-| Régió | *USA keleti régiója* |
+| Region | *USA keleti régiója* |
 | Átjáró neve | *GW* |   
 | Átjáró IP-neve | *GWIP* |
 | Átjáró IP-konfigurációjának neve | *gwipconf* |
@@ -94,7 +92,7 @@ A feladat lépései a következő konfigurációs hivatkozási listán szereplő
    ```azurepowershell-interactive
    $pip = New-AzPublicIpAddress -Name $GWIPName  -ResourceGroupName $RG -Location $Location -AllocationMethod Dynamic
    ```
-1. Hozza létre az átjáró konfigurációját. Az átjáró konfigurációja meghatározza az alhálózatot és a használandó nyilvános IP-címet. Ebben a lépésben megadhatja a konfigurációt, amelyet az átjáró létrehozásakor használni fog. Ez a lépés valójában nem hozza létre az átjáró objektumot. A következő minta használatával hozza létre az átjáró konfigurációját.
+1. Hozza létre az átjáró konfigurációját. Az átjáró konfigurációja meghatározza az alhálózatot és a használandó nyilvános IP-címet. Ebben a lépésben megadhatja a konfigurációt, amelyet az átjáró létrehozásakor használni fog. A következő minta használatával hozza létre az átjáró konfigurációját.
 
    ```azurepowershell-interactive
    $ipconf = New-AzVirtualNetworkGatewayIpConfig -Name $GWIPconfName -Subnet $subnet -PublicIpAddress $pip
@@ -131,7 +129,7 @@ Az átjáró eltávolításához használja az alábbi parancsot:
 Remove-AzVirtualNetworkGateway -Name $GWName -ResourceGroupName $RG
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Miután létrehozta a VNet-átjárót, összekapcsolhatja a VNet egy ExpressRoute-áramkörrel. 
 
 > [!div class="nextstepaction"]

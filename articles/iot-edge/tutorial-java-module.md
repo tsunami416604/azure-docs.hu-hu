@@ -12,12 +12,12 @@ ms.custom:
 - mvc
 - mqtt
 - devx-track-java
-ms.openlocfilehash: ef4b42b56ea3e9e73de6d5bc793b2f1b206f34f3
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: ce9de630af5854b965db27487379cd9eea4cfd1a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87829985"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91857385"
 ---
 # <a name="tutorial-develop-a-java-iot-edge-module-for-linux-devices"></a>Oktatóanyag: Java-IoT Edge modul létrehozása Linux-eszközökhöz
 
@@ -296,7 +296,7 @@ A JavaModule modult az üzembe helyezési jegyzékben használta, hogy 25 fokos 
 
 6. A bejövő eszközről a felhőbe irányuló üzenetek figyelése. Ekkor az új hőmérsékleti küszöb eléréséig az üzenetek leállnak.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha azt tervezi, hogy a következő ajánlott cikkel folytatja, megtarthatja és újból felhasználhatja a létrehozott erőforrásokat és konfigurációkat. Azt is megteheti, hogy ugyanezt az IoT Edge-eszközt használja teszteszközként.
 
@@ -304,9 +304,9 @@ Ellenkező esetben a díjak elkerülése érdekében törölheti a jelen cikkben
 
 [!INCLUDE [iot-edge-clean-up-cloud-resources](../../includes/iot-edge-clean-up-cloud-resources.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
-Ebben az oktatóanyagban létrehozott egy IoT Edge modult, amely a IoT Edge-eszköz által generált nyers adatait szűri. Ha készen áll a saját moduljainak létrehozására, többet is megtudhat a [IoT Edge modulok fejlesztéséről](module-development.md) , illetve a [Visual Studio Code-hoz készült modulok fejlesztéséről](how-to-vs-code-develop-module.md). Tekintse meg az [IoT Edge modul mintáit](https://github.com/Azure/iotedge/tree/master/edge-modules) a példákhoz, beleértve a szimulált hőmérséklet modult is.
+Ebben az oktatóanyagban létrehozott egy IoT Edge modult, amely a IoT Edge-eszköz által generált nyers adatait szűri.
 
 Folytassa a következő oktatóanyagokkal, amelyből megtudhatja, hogyan helyezheti üzembe az Azure Cloud Servicest az Azure IoT Edge a peremhálózat adatfeldolgozásához és elemzéséhez.
 

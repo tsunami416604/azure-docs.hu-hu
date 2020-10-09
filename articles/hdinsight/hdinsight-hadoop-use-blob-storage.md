@@ -8,20 +8,23 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/21/2020
-ms.openlocfilehash: 7941748f7f917847e551b0cf5cd0a7bf926d31a9
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.openlocfilehash: a97147395d4f877b666f4aa54254c8631400c735
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86086976"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91855667"
 ---
 # <a name="use-azure-storage-with-azure-hdinsight-clusters"></a>Az Azure Storage és az Azure HDInsight-fürtök együttes használata
 
-Az [Azure Storage](../storage/common/storage-introduction.md)-ban, [Azure Data Lake Storage 1. gen](../data-lake-store/data-lake-store-overview.md)-ban vagy [Azure Data Lake Storage Gen 2](../storage/blobs/data-lake-storage-introduction.md)-ben tárolhatók az adattárolók. Vagy ezen beállítások kombinációja. Ezek a tárolási beállítások lehetővé teszik a számításhoz használt HDInsight-fürtök biztonságos törlését felhasználói adatvesztés nélkül.
+Az [Azure Blob Storage](../storage/common/storage-introduction.md)-ban, [Azure Data Lake Storage Gen1ban](../data-lake-store/data-lake-store-overview.md)vagy [Azure Data Lake Storage Gen2](../storage/blobs/data-lake-storage-introduction.md)tárolhatja az adattárolást. Vagy ezen beállítások kombinációja. Ezek a tárolási beállítások lehetővé teszik a számításhoz használt HDInsight-fürtök biztonságos törlését felhasználói adatvesztés nélkül.
 
-Apache Hadoop támogatja az alapértelmezett fájlrendszer fogalmát. Az alapértelmezett fájlrendszer egy alapértelmezett sémát és szolgáltatót is jelent. A relatív elérési utak feloldásához is használható. A HDInsight-fürt létrehozási folyamata során megadhat egy BLOB-tárolót az Azure Storage szolgáltatásban alapértelmezett fájlrendszerként. A HDInsight 3,6 esetében pedig az Azure Storage vagy a Azure Data Lake Storage Gen 1/Azure Data Lake Storage Gen 2 értéket választhatja alapértelmezett fájlrendszerként, néhány kivétellel. Az 1. generációs Data Lake Storage az alapértelmezett és a csatolt tárolóként való használatának támogatásához tekintse meg a [HDInsight-fürt rendelkezésre állását](./hdinsight-hadoop-use-data-lake-store.md#availability-for-hdinsight-clusters)ismertető témakört.
+Apache Hadoop támogatja az alapértelmezett fájlrendszer fogalmát. Az alapértelmezett fájlrendszer egy alapértelmezett sémát és szolgáltatót is jelent. A relatív elérési utak feloldásához is használható. A HDInsight-fürt létrehozási folyamata során megadhat egy BLOB-tárolót az Azure Storage szolgáltatásban alapértelmezett fájlrendszerként. A HDInsight 3,6 esetében pedig az Azure Blob Storage-t vagy a Azure Data Lake Storage Gen1/Azure Data Lake Storage Gen2 is választhatja alapértelmezett fájlrendszerként, néhány kivétellel. A Data Lake Storage Gen1 az alapértelmezett és a csatolt tárolóként való használatának támogatásához tekintse meg a [HDInsight-fürt rendelkezésre állását](./hdinsight-hadoop-use-data-lake-storage-gen1.md#availability-for-hdinsight-clusters)ismertető témakört.
 
-Ebből a cikkből megtudhatja, hogyan használható az Azure Storage a HDInsight-fürtökkel. Ha szeretné megtudni, hogyan működik Data Lake Storage Gen 1 HDInsight-fürtökkel, tekintse meg a [Azure Data Lake Storage használata az Azure HDInsight-fürtökkel](hdinsight-hadoop-use-data-lake-store.md)című témakört. További információ a HDInsight-fürtök létrehozásáról: [Apache Hadoop-fürtök létrehozása a HDInsight-ben](hdinsight-hadoop-provision-linux-clusters.md).
+Ebből a cikkből megtudhatja, hogyan használható az Azure Storage a HDInsight-fürtökkel. 
+* Ha szeretné megtudni, hogyan működik a Data Lake Storage Gen1 HDInsight-fürtökkel, tekintse meg [a Azure Data Lake Storage Gen1 használata Azure HDInsight-fürtökkel](./hdinsight-hadoop-use-data-lake-storage-gen1.md)című témakört.
+* Ha szeretné megtudni, hogyan működik a Data Lake Storage Gen2 HDInsight-fürtökkel, tekintse meg [a Azure Data Lake Storage Gen2 használata Azure HDInsight-fürtökkel](./hdinsight-hadoop-use-data-lake-storage-gen2.md)című témakört.
+* További információ a HDInsight-fürtök létrehozásáról: [Apache Hadoop-fürtök létrehozása a HDInsight-ben](./hdinsight-hadoop-provision-linux-clusters.md).
 
 > [!IMPORTANT]  
 > A Storage-fiók típusa **BlobStorage** csak másodlagos tárolóként használhatók a HDInsight-fürtökhöz.
@@ -29,7 +32,7 @@ Ebből a cikkből megtudhatja, hogyan használható az Azure Storage a HDInsight
 | Storage-fiók típusa | Támogatott szolgáltatások | Támogatott teljesítményszint |Nem támogatott teljesítményszint| Támogatott hozzáférési szintek |
 |----------------------|--------------------|-----------------------------|---|------------------------|
 | StorageV2 (általános célú v2)  | Blob     | Standard                    |Prémium| Gyors elérésű, ritka elérésű Archívum\*   |
-| Tároló (általános célú v1)   | Blob     | Standard                    |Prémium| N.A.                    |
+| Tároló (általános célú v1)   | Blob     | Standard                    |Prémium| N/A                    |
 | BlobStorage                    | Blob     | Standard                    |Prémium| Gyors elérésű, ritka elérésű Archívum\*   |
 
 Nem javasoljuk, hogy az üzleti adattároláshoz használja az alapértelmezett BLOB-tárolót. Az alapértelmezett blobtárolót ajánlatos törölni minden egyes használat után. Az alapértelmezett tároló alkalmazás-és rendszernaplókat tartalmaz. A tároló törlése előtt gondoskodjon a naplók begyűjtéséről.
@@ -129,7 +132,7 @@ A Microsoft az alábbi eszközöket biztosítja az Azure Storage-hoz való együ
 
 | Eszköz | Linux | OS X | Windows |
 | --- |:---:|:---:|:---:|
-| [Azure Portalra](../storage/blobs/storage-quickstart-blobs-portal.md) |✔ |✔ |✔ |
+| [Azure Portal](../storage/blobs/storage-quickstart-blobs-portal.md) |✔ |✔ |✔ |
 | [Azure CLI](../storage/blobs/storage-quickstart-blobs-cli.md) |✔ |✔ |✔ |
 | [Azure PowerShell](../storage/blobs/storage-quickstart-blobs-powershell.md) | | |✔ |
 | [AzCopy](../storage/common/storage-use-azcopy-v10.md) |✔ | |✔ |
@@ -146,7 +149,7 @@ A Microsoft az alábbi eszközöket biztosítja az Azure Storage-hoz való együ
 
 Az elérési út Ambari REST API használatával történő beszerzéséhez tekintse meg [az alapértelmezett tároló lekérése](./hdinsight-hadoop-manage-ambari-rest-api.md#get-the-default-storage)című témakört.
 
-## <a name="blob-containers"></a>BLOB-tárolók
+## <a name="blob-containers"></a>Blobtárolók
 
 A blobok használatához először hozzon létre egy [Azure Storage-fiókot](../storage/common/storage-create-storage-account.md). Ennek a lépésnek a részeként meg kell adnia egy Azure-régiót, ahol a Storage-fiók létrejön. A fürtnek és a tárfióknak ugyanabban a régióban kell lennie. A Hive-metaadattár SQL Server adatbázisnak és az Apache Oozie metaadattár SQL Server adatbázisnak ugyanabban a régióban kell lennie.
 
@@ -169,9 +172,9 @@ Ebből a cikkből megtanulta, hogyan használhat HDFS-kompatibilis Azure-tárol�
 
 További információkért lásd:
 
-* [Ismerkedés az Azure HDInsight](hadoop/apache-hadoop-linux-tutorial-get-started.md)
-* [Ismerkedés a Azure Data Lake Storage](../data-lake-store/data-lake-store-get-started-portal.md)
-* [Adatok feltöltése a HDInsightba](hdinsight-upload-data.md)
-* [Az Azure Storage közös hozzáférésű jogosultságkódok használata az adathozzáférés korlátozásához a HDInsightban](hdinsight-storage-sharedaccesssignature-permissions.md)
+* [Rövid útmutató: Apache Hadoop-fürt létrehozása](hadoop/apache-hadoop-linux-create-cluster-get-started-portal.md)
+* [Oktatóanyag: HDInsight-fürtök létrehozása](hdinsight-hadoop-provision-linux-clusters.md)
 * [Az Azure Data Lake Storage Gen2 használata Azure HDInsight-fürtökkel](hdinsight-hadoop-use-data-lake-storage-gen2.md)
+* [Adatok feltöltése a HDInsightba](hdinsight-upload-data.md)
 * [Oktatóanyag: adatok kinyerése, átalakítása és betöltése az Azure HDInsight interaktív lekérdezés használatával](./interactive-query/interactive-query-tutorial-analyze-flight-data.md)
+* [Az Azure Storage közös hozzáférésű jogosultságkódok használata az adathozzáférés korlátozásához a HDInsightban](hdinsight-storage-sharedaccesssignature-permissions.md)

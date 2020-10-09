@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 1/4/2019
 ms.author: jeedes
-ms.openlocfilehash: 0ff2464705a770e257010347f0f04e9b695bb6e4
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: b462dff45263ba3f5e533cd6bd7c4ce089933f66
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88540078"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91855463"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-lifesize-cloud"></a>Oktatóanyag: Azure Active Directory integráció a életnagyságú-felhővel
 
@@ -78,7 +78,7 @@ Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a élet
 Az Azure AD egyszeri bejelentkezés életnagyságú-felhővel való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
 
 1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. **[Életnagyságú Felhőbeli egyszeri bejelentkezés konfigurálása](#configure-lifesize-cloud-single-sign-on)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+2. **[Életnagyságú Felhőbeli egyszeri bejelentkezés konfigurálása](#configure-lifesize-cloud-single-sign-on)** – az egyes Sign-On beállítások konfigurálása az alkalmazás oldalán.
 3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
 4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
 5. **[Hozzon létre egy életnagyságú Cloud test User](#create-lifesize-cloud-test-user)** -t, hogy a életnagyságú-felhőben található, a felhasználó Azure ad-beli Britta kapcsolt,
@@ -98,7 +98,7 @@ Az Azure AD egyszeri bejelentkezés a életnagyságú-felhővel való konfigurá
 
     ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
+3. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
@@ -115,9 +115,9 @@ Az Azure AD egyszeri bejelentkezés a életnagyságú-felhővel való konfigurá
     d. A **továbbítási állapot** szövegmezőbe írja be a következő mintát használó URL-címet: `https://webapp.lifesizecloud.com/?ent=<identifier>`
 
     > [!NOTE]
-    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel, azonosítóval és továbbítási állapottal. Vegye fel a kapcsolatot a [életnagyságú felhőalapú](https://www.lifesize.com/en/support) ügyfélszolgálatával a bejelentkezési URL-cím és az azonosító értékek beszerzéséhez, és a továbbítási állapot értékének beolvasása az oktatóanyag későbbi részében ismertetett SSO-konfigurációból. Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel, azonosítóval és továbbítási állapottal. Vegye fel a kapcsolatot a [életnagyságú felhőalapú](https://www.lifesize.com/en/support) ügyfélszolgálatával Sign-On URL-cím és azonosító értékek beszerzéséhez, és a továbbítási állapot értékének beszerzéséhez az oktatóanyag későbbi részében ISMERTETett SSO-konfigurációból. Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-5. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállítások alapján, és mentse a számítógépre.
+5. Az **egyszeres Sign-On beállítása az SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállítások alapján, és mentse azt a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozása](common/certificatebase64.png)
 
@@ -131,21 +131,21 @@ Az Azure AD egyszeri bejelentkezés a életnagyságú-felhővel való konfigurá
 
     c. Kijelentkezési URL-cím
 
-### <a name="configure-lifesize-cloud-single-sign-on"></a>Életnagyságú Felhőbeli egyszeri bejelentkezés konfigurálása
+### <a name="configure-lifesize-cloud-single-sign-on"></a>A életnagyságú Cloud Single Sign-On konfigurálása
 
 1. Ha be szeretné állítani az egyszeri bejelentkezést az alkalmazáshoz, jelentkezzen be a életnagyságú Cloud alkalmazásba rendszergazdai jogosultságokkal.
 
 2. A jobb felső sarokban kattintson a nevére, majd az **előre megadott beállítások**elemre.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/lifesize-cloud-tutorial/tutorial_lifesizecloud_06.png)
+    ![A képernyőképen a speciális beállítások menüpont látható.](./media/lifesize-cloud-tutorial/tutorial_lifesizecloud_06.png)
 
 3. Az előzetes beállítások lehetőségnél kattintson az **egyszeri bejelentkezés konfigurációs** hivatkozására. Ekkor megnyílik a példány SSO konfigurációs lapja.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/lifesize-cloud-tutorial/tutorial_lifesizecloud_07.png)
+    ![Képernyőfelvétel: speciális beállítások, ahol kiválaszthatja az S S O konfigurációt.](./media/lifesize-cloud-tutorial/tutorial_lifesizecloud_07.png)
 
 4. Most konfigurálja a következő értékeket az SSO konfigurációs felhasználói felületén.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/lifesize-cloud-tutorial/tutorial_lifesizecloud_08.png)
+    ![Képernyőfelvétel: az S S O konfiguráció lapja, ahol megadhatja a leírt értékeket.](./media/lifesize-cloud-tutorial/tutorial_lifesizecloud_08.png)
 
     a. Az **Identity Provider kiállító** szövegmezőben illessze be a Azure Portalból másolt **Azure ad-azonosító** értékét.
 
@@ -191,7 +191,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    d. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

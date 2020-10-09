@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.custom: amqp
-ms.openlocfilehash: d7ff9efcedc1a6a5f92555a62e429be0431f2098
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 1e92da6f99ccb32580d7f0286b5bcbf77d694262
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91448516"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91855650"
 ---
 # <a name="tutorial-configure-an-iot-edge-device"></a>Oktatóanyag: IoT Edge-eszköz konfigurálása
 
@@ -294,12 +294,9 @@ A következő lépésben frissíteni fogjuk a tanúsítványokat és a gazdagép
     ```bash
     journalctl -u iotedge --no-pager --no-full
     ```
-
 ## <a name="next-steps"></a>További lépések
 
 Épp most fejezte be az Azure-beli virtuális gépek Azure IoT Edge transzparens átjáróként való konfigurálását. Elkezdtük a Azure Key Vaultba feltöltött tesztelési tanúsítványok generálását. Ezután egy parancsfájl-és Resource Manager-sablonnal telepítettük a virtuális gépet az "Ubuntu Server 16,04 LTS + Azure IoT Edge Runtime" rendszerképpel az Azure piactéren. Az SSH-n keresztül csatlakoztatott virtuális géppel az Azure-ba jelentkezett be, és a tanúsítványokat a Key Vaultból letöltöttük. A config. YAML fájl frissítésével számos frissítést készítettünk a IoT Edge futtatókörnyezet konfigurációjában.
-
-További információ: [hogyan használható egy IoT Edge eszköz átjáróként](iot-edge-as-gateway.md) , és hogyan [konfigurálható egy IoT Edge-eszköz, amely transzparens átjáróként működik](how-to-create-transparent-gateway.md).
 
 IoT Edge modulok létrehozásához folytassa a következő cikkel.
 

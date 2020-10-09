@@ -7,13 +7,13 @@ ms.reviewer: jasonh
 keywords: Hadoop magas rendelkezésre állása
 ms.service: hdinsight
 ms.topic: conceptual
-ms.date: 10/07/2020
-ms.openlocfilehash: 4c758c63ea08768df226e3d6e4fbf0295334a142
-ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
+ms.date: 10/08/2020
+ms.openlocfilehash: 49f1f475ba4169ea6943dec161577a15e76657f8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/08/2020
-ms.locfileid: "91843916"
+ms.locfileid: "91857775"
 ---
 # <a name="azure-hdinsight-business-continuity"></a>Az Azure HDInsight üzletmenet folytonossága
 
@@ -124,12 +124,10 @@ Az üzletmenet folytonosságának javítása a régiók közötti magas rendelke
 |Üzleti funkciók |Az elsődleges másodlagos üzleti funkciók teljes körű működésének megkövetelése |Értékelje ki, hogy futtatható-e a másodlagos üzleti funkciók minimális kritikus részhalmazával.|
 |Kapcsolat |Az összes felsőbb rétegbeli és alsóbb rétegbeli rendszer megkövetelése az elsődlegestől a másodlagoshoz való kapcsolódáshoz|Korlátozza a másodlagos kapcsolatot egy nem megfelelő minimális kritikus részhalmazra.|
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha többet szeretne megtudni a cikkben tárgyalt elemekről, tekintse meg a következőt:
 
-* [Apache Ambari – REST-dokumentáció](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)
-* [Az Azure CLI telepítése és konfigurálása](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest&preserve-view=true)
-* [Azure PowerShell modul telepítése és konfigurálása az](/powershell/azure/)
-* [HDInsight-kezelés az Apache Ambari használatával](hdinsight-hadoop-manage-ambari.md)
-* [Linux-alapú HDInsight-fürtök kiépítése](hdinsight-hadoop-provision-linux-clusters.md)
+* [Az Azure HDInsight üzletmenet-folytonossági architektúrái](./hdinsight-business-continuity-architecture.md)
+* [Azure HDInsight, magasan elérhető megoldás architektúra-esettanulmány](./hdinsight-high-availability-case-study.md)
+* [Mi a Apache Hive és a HiveQL az Azure HDInsight?](./hadoop/hdinsight-use-hive.md)

@@ -4,7 +4,7 @@ description: További információ a IoT biztonsági szolgáltatás, a biztonsá
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
-author: mlottner
+author: elazark
 manager: rkarlin
 editor: ''
 ms.devlang: na
@@ -12,20 +12,20 @@ ms.custom: devx-track-csharp
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/26/2019
-ms.author: mlottner
-ms.openlocfilehash: 19fa5b2949888993954f3075d1e10c9e8f126e2f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 10/08/2020
+ms.author: v-ekrieg
+ms.openlocfilehash: 13c16407481d4fa6f7d468a73051cc4945e6314e
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90939552"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91851233"
 ---
 # <a name="understanding-the-local-configuration-file-c-agent"></a>A helyi konfigurációs fájl (C# ügynök) ismertetése
 
 A IoT biztonsági ügynök Defender a helyi konfigurációs fájl konfigurációit használja.
 
-A biztonsági ügynök az ügynök indításakor egyszer beolvassa a konfigurációs fájlt. A helyi konfigurációs fájlban található konfigurációk a hitelesítési konfigurációt és az egyéb ügynökkel kapcsolatos konfigurációkat is tartalmazzák.
+A biztonsági ügynök egyszer olvassa be a konfigurációs fájlt, amikor az ügynök elindul. A helyi konfigurációs fájlban található konfigurációk hitelesítési konfigurációt és más ügynökkel kapcsolatos konfigurációkat is tartalmaznak.
 
 A C# biztonsági ügynök több konfigurációs fájlt használ:
 
@@ -57,7 +57,7 @@ Windows esetén:
 | highPriorityQueueSizePercentage | 0 < szám < 1 | A magas prioritású üzenetekhez dedikált teljes gyorsítótár része. |
 | Naplózási szint | "Off", "végzetes", "Error", "Warning", "Information", "debug"  | A naplózási üzenetek a súlyossági szinttel megegyező, a hibakeresési konzolon (syslog in Linux) vannak naplózva. |
 | fileLogLevel |  "Off", "végzetes", "Error", "Warning", "Information", "debug"| A súlyosságot meghaladó naplófájlok naplózása a következő fájlba történik: (syslog in Linux). |
-| diagnosticVerbosityLevel | "None", "some", "all", | A diagnosztikai események részletességi szintje. Nincs – a rendszer a diagnosztikai eseményeket nem továbbítja, csak a nagy fontossággal bíró diagnosztikai eseményeket, a rendszer az összes naplót diagnosztikai eseményként is elküldje. |
+| diagnosticVerbosityLevel | "None", "some", "all", | A diagnosztikai események részletességi szintje. Nincs – a rendszer nem a diagnosztikai eseményeket küldje el. Csak néhány, nagy jelentőséggel bíró diagnosztikai eseményt kell elküldeni. All – az összes naplót diagnosztikai eseményként is elküldi a rendszer. |
 | logFilePath | Fájl elérési útja | Ha a fileLogLevel > ki, a rendszer a naplókat erre a fájlba írja. |
 | defaultEventPriority | "Magas", "alacsony", "off" | Alapértelmezett esemény prioritása. |
 
@@ -85,7 +85,8 @@ Windows esetén:
 | Konfiguráció neve | Lehetséges értékek | Részletek |
 |:-----------|:---------------|:--------|
 | moduleName | sztring | A biztonsági modul identitásának neve. Ennek a névnek meg kell egyeznie a modul identitásának nevével az eszközön. |
-| deviceId | sztring | Az eszköz azonosítója (az Azure IoT Hubban regisztrálva). || schedulerInterval | TimeSpan karakterlánc | Belső ütemező időköze |
+| deviceId | sztring | Az eszköz azonosítója (az Azure IoT Hubban regisztrálva). |
+| schedulerInterval | TimeSpan karakterlánc | Belső ütemező időköze |
 | gatewayHostname | sztring | Az Azure IOT hub állomásneve. Általában <My-hub>. azure-devices.net |
 | filePath | karakterlánc – fájl elérési útja | A hitelesítési titkot tartalmazó fájl elérési útja.|
 | típus | "SymmetricKey", "SelfSignedCertificate" | A hitelesítő felhasználói titok. Válassza a *SymmetricKey* lehetőséget, ha a felhasználói titok szimmetrikus kulcs, válassza az *önaláírt tanúsítvány* lehetőséget, ha a titok egy önaláírt tanúsítvány. |

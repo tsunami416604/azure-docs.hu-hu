@@ -7,12 +7,12 @@ ms.topic: conceptual
 ms.author: erhopf
 ms.service: cognitive-services
 ms.date: 10/02/2020
-ms.openlocfilehash: 73a097907a5b44c77ba5e1a9ead4cb4e3a8077c6
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: 17d887f0834733fdc833bbbad66c957b057a588a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91777758"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91857809"
 ---
 # <a name="cognitive-services-docs-whats-new-for-september-1-2020---september-30-2020"></a>Cognitive Services docs: Újdonságok szeptember 1-től 2020 – szeptember 30., 2020
 
@@ -22,12 +22,12 @@ ms.locfileid: "91777758"
 
 ### <a name="updated-articles"></a>Frissített cikkek
 
-- [Rövid útmutató: Cognitive Services-erőforrás létrehozása az Azure parancssori felületével (CLI)](cognitive-services-apis-create-account-cli.md)
+- [Rövid útmutató: Cognitive Services-erőforrás létrehozása az Azure Command-Line Interface (CLI) használatával](cognitive-services-apis-create-account-cli.md)
 - [Gyors útmutató: Cognitive Services-erőforrás létrehozása az Azure felügyeleti ügyféloldali kódtár használatával](cognitive-services-apis-create-account-client-library.md)
 - [Gyors útmutató: Cognitive Services-erőforrás létrehozása a Azure Portal használatával](cognitive-services-apis-create-account.md)
 - [Rövid útmutató: Cognitive Services-erőforrás létrehozása ARM-sablonnal](create-account-resource-manager-template.md)
 
-## <a name="computer-vision"></a>Computer Vision
+## <a name="computer-vision"></a>Számítógépes látástechnológia
 
 ### <a name="new-articles"></a>Új cikkek
 
@@ -80,7 +80,7 @@ ms.locfileid: "91777758"
 - [Rövid útmutató: a megoldás testreszabásához használja a REST API-kat](/azure/cognitive-services/metrics-advisor/quickstarts/rest-api.md)
 - [Útmutató: riasztások konfigurálása és értesítések beszerzése Hook használatával](/azure/cognitive-services/metrics-advisor/how-tos/alerts.md)
 
-## <a name="text-analytics"></a>Text Analytics
+## <a name="text-analytics"></a>Szövegelemzés
 
 ### <a name="updated-articles"></a>Frissített cikkek
 
@@ -99,3 +99,5 @@ A következő személyek járultak hozzá az Cognitive Services docs-hoz ebben a
 - [iAmBipinPaul](https://github.com/iAmBipinPaul) – Dora Pál (1)
 - [rexwan](https://github.com/rexwan) -Rex Wang (1)
 - [rglidden](https://github.com/rglidden) – Richard Glidden (1)
+
+[!INCLUDE [Service specific updates](./includes/service-specific-updates.md)]
