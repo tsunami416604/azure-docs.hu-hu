@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/16/2020
 ms.author: jeedes
-ms.openlocfilehash: 432ca72a667caa9c2a78b08396884d957b4c650b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: da0e042664d6ca90c53b83bb38770a97d4e97498
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547103"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850748"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-jive"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Jive
 
@@ -90,7 +90,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel és azonosítóval. Az értékek lekéréséhez forduljon a Jive ügyfélszolgálati [csapatához](https://www.jivesoftware.com/services-support/) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-5. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
+5. Az **egyszeres Sign-On beállítása SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozása](common/metadataxml.png)
 
@@ -114,7 +114,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Create** (Létrehozás) gombra.
+   1. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -140,7 +140,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 1. A felső menüben kattintson az **SAML**elemre.
 
-    ![Egyszeri bejelentkezés konfigurálása az alkalmazás oldalán](./media/jive-tutorial/tutorial_jive_002.png)
+    ![Képernyőfelvétel: az SAML lap, amelyen engedélyezve van a kiválasztva.](./media/jive-tutorial/tutorial_jive_002.png)
 
     a. Az **általános** lapon válassza az **engedélyezve** lehetőséget.
 
@@ -148,7 +148,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 1. Navigáljon a **identitásszolgáltató-metaadatok** lapra.
 
-    ![Egyszeri bejelentkezés konfigurálása az alkalmazás oldalán](./media/jive-tutorial/tutorial_jive_003.png)
+    ![A képernyőfelvételen a SAML lap I D P METAADATAI vannak kiválasztva.](./media/jive-tutorial/tutorial_jive_003.png)
 
     a. Másolja a letöltött metaadatok XML-fájljának tartalmát, majd illessze be az **Identity Provider (identitásszolgáltató) metaadatok** szövegmezőbe.
 
@@ -156,7 +156,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 1. Válassza a **felhasználói attribútumok leképezése** fület.
 
-    ![Egyszeri bejelentkezés konfigurálása az alkalmazás oldalán](./media/jive-tutorial/tutorial_jive_004.png)
+    ![A képernyőfelvételen a felhasználói attribútumok LEKÉPEZÉSét tartalmazó SAML lap látható.](./media/jive-tutorial/tutorial_jive_004.png)
 
     a. Az **e-mail** szövegmezőben másolja ki és illessze be a **mail** Value (attribútum) nevét.
 

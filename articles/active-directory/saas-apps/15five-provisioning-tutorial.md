@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: 40fd048e1ace56af7a9198088d6129925033be93
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: c26a581df7ac10777687bf268027eb94862605b1
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91331216"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850132"
 ---
 # <a name="tutorial-configure-15five-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés 15Five konfigurálása
 
@@ -54,19 +54,19 @@ Az Azure AD-vel való automatikus 15Five konfigurálása előtt engedélyeznie k
 
 1. Jelentkezzen be a [15Five felügyeleti konzolra](https://my.15five.com/). Navigáljon a **funkciók > integrációk elemre**.
 
-    ![15Five felügyeleti konzol](media/15five-provisioning-tutorial/integration.png)
+    :::image type="content" source="media/15five-provisioning-tutorial/integration.png" alt-text="Képernyőkép a 15Five felügyeleti konzolról. Az integrációk a menü funkciók területén jelennek meg, és a funkciók és az integrációk is ki vannak emelve." border="false":::
 
 2.  Kattintson a **SCIM 2,0**elemre.
 
-    ![15Five felügyeleti konzol](media/15five-provisioning-tutorial/image00.png)
+    :::image type="content" source="media/15five-provisioning-tutorial/image00.png" alt-text="Képernyőkép a 15Five felügyeleti konzolról. Az integrációk a menü funkciók területén jelennek meg, és a funkciók és az integrációk is ki vannak emelve." border="false":::
 
 3.  Navigáljon a **scim-integráció > OAuth-token létrehozásához**.
 
-    ![15Five-SCIM hozzáadása](media/15five-provisioning-tutorial/image02.png)
+    :::image type="content" source="media/15five-provisioning-tutorial/image02.png" alt-text="Képernyőkép a 15Five felügyeleti konzolról. Az integrációk a menü funkciók területén jelennek meg, és a funkciók és az integrációk is ki vannak emelve." border="false":::
 
 4.  Másolja a **SCIM 2,0 alap URL-cím** és a **hozzáférési jogkivonat**értékeit. Ez az érték a **bérlői URL-cím** és a **titkos jogkivonat** mezőben jelenik meg a 15Five alkalmazás kiépítés lapján a Azure Portalban.
     
-    ![15Five-SCIM hozzáadása](media/15five-provisioning-tutorial/image03.png)
+    :::image type="content" source="media/15five-provisioning-tutorial/image03.png" alt-text="Képernyőkép a 15Five felügyeleti konzolról. Az integrációk a menü funkciók területén jelennek meg, és a funkciók és az integrációk is ki vannak emelve." border="false":::
 
 ## <a name="step-3-add-15five-from-the-azure-ad-application-gallery"></a>3. lépés 15Five hozzáadása az Azure AD Application Galleryből
 

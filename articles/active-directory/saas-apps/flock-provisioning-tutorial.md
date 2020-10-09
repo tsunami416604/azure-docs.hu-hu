@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 08/30/2019
 ms.author: Zhchia
-ms.openlocfilehash: bb6ad9aae5f92f03ea5bfacc028973e4c4a6dbea
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 636bb4c3340f13046706bf887119108b86b6a660
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91312565"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850876"
 ---
 # <a name="tutorial-configure-flock-for-automatic-user-provisioning"></a>Oktatóanyag: Flock konfigurálása automatikus felhasználó-kiépítési szolgáltatáshoz
 
@@ -54,15 +54,15 @@ Az Azure AD-vel való automatikus felhasználó-kiépítés előtt engedélyezni
 
 1. Jelentkezzen be a [nyájba](https://web.flock.com/?). Kattintson a **Beállítások ikonra**  >  **a csapat kezelése**elemre.
 
-    ![Flock](media/flock-provisioning-tutorial/icon.png)
+    :::image type="content" source="media/flock-provisioning-tutorial/icon.png" alt-text="Képernyőfelvétel a Flock webhelyéről. A beállítások ikon ki van emelve, és a helyi menü látható. Ebben a menüben a csapat kezelése kiemelve." border="false":::
 
 2. Válassza **az Auth és a kiépítés**lehetőséget.
 
-    ![Flock](media/Flock-provisioning-tutorial/auth.png)
+    :::image type="content" source="media/Flock-provisioning-tutorial/auth.png" alt-text="Képernyőfelvétel a Flock webhelyéről. A beállítások ikon ki van emelve, és a helyi menü látható. Ebben a menüben a csapat kezelése kiemelve." border="false":::
 
 3. Másolja az **API-tokent**. Ezeket az értékeket a rendszer a Flock-alkalmazás létesítés lapjának **titkos jogkivonat** mezőjébe írja be a Azure Portal.
 
-    ![Flock](media/Flock-provisioning-tutorial/provisioning.png)
+    :::image type="content" source="media/Flock-provisioning-tutorial/provisioning.png" alt-text="Képernyőfelvétel a Flock webhelyéről. A beállítások ikon ki van emelve, és a helyi menü látható. Ebben a menüben a csapat kezelése kiemelve." border="false":::
 
 
 ## <a name="add-flock--from-the-gallery"></a>Flock hozzáadása a gyűjteményből

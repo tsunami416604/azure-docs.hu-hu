@@ -4,14 +4,14 @@ titleSuffix: Azure Kubernetes Service
 description: Megtudhatja, hogyan hozhat létre gyorsan Kubernetes-fürtöt, hogyan helyezhet üzembe egy alkalmazást, és hogyan figyelheti a teljesítményt az Azure Kubernetes szolgáltatásban (ak) a Azure Portal használatával.
 services: container-service
 ms.topic: quickstart
-ms.date: 09/11/2020
+ms.date: 10/06/2020
 ms.custom: mvc, seo-javascript-october2019
-ms.openlocfilehash: 2331f2a9dc4ca0e94b251a03e7917547f360af4a
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 9a666f257cf2616d540a70d145647fbc73350cbd
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91459795"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850439"
 ---
 # <a name="quickstart-deploy-an-azure-kubernetes-service-aks-cluster-using-the-azure-portal"></a>Gyors útmutató: Azure Kubernetes Service (ak) fürt üzembe helyezése a Azure Portal használatával
 
@@ -37,15 +37,15 @@ Az AKS-fürt létrehozásához hajtsa végre az alábbi lépéseket:
 
 3. Az **Alapvető beállítások** lapon konfigurálja az alábbiakat:
     - **Projekt részletei**: válasszon ki egy Azure- **előfizetést**, majd válasszon ki vagy hozzon létre egy Azure- **erőforráscsoportot**, például *myResourceGroup*.
-    - **Fürt részletei**: adjon meg egy **Kubernetes-fürtöt**, például a *myAKSCluster*nevet. Az AKS-fürthöz válasszon egy **régiót**, egy **Kubernetes-verziót** és egy **DNS-név előtagot**.
-    - **Elsődleges csomópont-készlet**: válassza ki a virtuális gép **csomópontjának méretét** az AK-csomópontok számára. A virtuális gép mérete *nem* módosítható, ha egy AK-fürt üzembe helyezése megtörtént. 
+    - **Fürt részletei**: adjon meg egy **Kubernetes-fürtöt**, például a *myAKSCluster*nevet. Válasszon **régiót** és **Kubernetes-verziót** az AK-fürthöz.
+    - **Elsődleges csomópont-készlet**: válassza ki a virtuális gép **csomópontjának méretét** az AK-csomópontok számára. A virtuális gép mérete *nem* módosítható, ha egy AK-fürt üzembe helyezése megtörtént.
             – Válassza ki a fürtbe telepítendő csomópontok számát. Ehhez a rövid útmutatóhoz a **Csomópontok száma** beállítás értékeként adjon meg *1*-et. A csomópontok száma a fürt telepítése után is *módosítható*.
     
     ![AKS-fürt létrehozása – alapvető adatok megadása](media/kubernetes-walkthrough-portal/create-cluster-basics.png)
 
-    Ha elkészült, kattintson a **Tovább: Skálázás** lehetőségre.
+    Válassza a **Next (tovább): node Pools** (Befejezés) lehetőséget.
 
-4. A **skála** lapon tartsa meg az alapértelmezett beállításokat. A képernyő alján kattintson a **Tovább: hitelesítés**elemre.
+4. A **csomópont-készletek** lapon tartsa meg az alapértelmezett beállításokat. A képernyő alján kattintson a **Tovább: hitelesítés**elemre.
     > [!CAUTION]
     > Az új HRE-szolgáltatások létrehozása több percet is igénybe vehet, így az egyszerű szolgáltatásnév nem talált hibákat és érvényesítési hibákat Azure Portalban. Ha ezt tapasztalja, látogasson el [ide](troubleshooting.md#received-an-error-saying-my-service-principal-wasnt-found-or-is-invalid-when-i-try-to-create-a-new-cluster) a mérsékléshez.
 
@@ -260,7 +260,7 @@ Ebben a rövid útmutatóban előre létrehozott tároló-lemezképeket használ
 
 [https://github.com/Azure-Samples/azure-voting-app-redis][azure-vote-app]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban egy Kubernetes-fürtöt és azon egy többtárolós alkalmazást helyezett üzembe.
 

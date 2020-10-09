@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: a6db1866c42dbb90d6ea0f288aceed4672424fe0
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 56aad5ce9045ca205221ba0c56d1ea75f8f3610a
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91321976"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850495"
 ---
 # <a name="tutorial-configure-mypolicies-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés myPolicies konfigurálása
 
@@ -118,7 +118,7 @@ Példa: `<demo0-qa>` . mypolicies.com.
 
 9. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a myPolicies**lehetőséget.
 
-    ![myPolicies felhasználói leképezések](media/mypolicies-provisioning-tutorial/usermapping.png)
+    :::image type="content" source="media/mypolicies-provisioning-tutorial/usermapping.png" alt-text="Képernyőfelvétel a leképezésekről szakasz. A név alatt szinkronizálja Azure Active Directory felhasználókat a customappsso." border="false":::
 
 10. Tekintse át az Azure AD-ből szinkronizált felhasználói attribútumokat az **attribútum-hozzárendelési** szakaszban található myPolicies. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a myPolicies felhasználói fiókjainak a frissítési műveletekhez való megfeleltetésére szolgálnak. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
 

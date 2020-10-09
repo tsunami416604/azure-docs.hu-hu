@@ -8,12 +8,12 @@ ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 10/07/2020
-ms.openlocfilehash: 570481eab44c64db3ec3f513281badd124a2bbdc
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 7e3a5fcdcead402d59e680fcba270e80b4eda8bb
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91825485"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91843430"
 ---
 # <a name="service-limits-in-azure-cognitive-search"></a>Az Azure Cognitive Search szolgáltatási korlátai
 
@@ -50,7 +50,7 @@ A tárolás, a munkaterhelések és az indexek és egyéb objektumok mennyiség�
 
 <sup>1</sup> a december 2017-ig létrehozott alapszintű szolgáltatások alacsonyabb korláttal rendelkeznek (15 helyett 5) az indexeken. Az alapszintű csomag az egyetlen olyan SKU, amelynek alsó korlátja a 100 mező/index.
 
-<sup>2</sup> egy felső korlát létezik az elemekhez, mert nagy mennyiségű, magas tárterület-kihasználtságot okoz. Egy összetett gyűjtemény egy eleme a gyűjtemény tagjaként van definiálva. Tegyük fel például, hogy egy [szállodai dokumentum egy Rooms Complex-gyűjteménysel van ellátva](search-howto-complex-data-types.md#indexing-complex-types), a szobák gyűjtemény minden helyisége elemnek minősül. Az indexelés során az indexelési motor a teljes dokumentumon belül legfeljebb 3000 elemet tud biztonságosan feldolgozni. [Ez a korlát](search-api-migration.md#upgrade-to-2019-05-06) a ben jelent meg, `api-version=2019-05-06` és csak az összetett gyűjteményekre vonatkozik, nem karakterlánc-gyűjteményekbe vagy összetett mezőkbe.
+<sup>2</sup> egy felső korlát létezik az elemekhez, mert nagy mennyiségű, jelentősen növeli az indexhez szükséges tárhelyet. Egy összetett gyűjtemény egy eleme a gyűjtemény tagjaként van definiálva. Tegyük fel például, hogy egy [szállodai dokumentum egy Rooms Complex-gyűjteménysel van ellátva](search-howto-complex-data-types.md#indexing-complex-types), a szobák gyűjtemény minden helyisége elemnek minősül. Az indexelés során az indexelési motor a teljes dokumentumon belül legfeljebb 3000 elemet tud biztonságosan feldolgozni. [Ez a korlát](search-api-migration.md#upgrade-to-2019-05-06) a ben jelent meg, `api-version=2019-05-06` és csak az összetett gyűjteményekre vonatkozik, nem karakterlánc-gyűjteményekbe vagy összetett mezőkbe.
 
 <a name="document-limits"></a>
 

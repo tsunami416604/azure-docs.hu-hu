@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 5d4900713cd8d96180bf74b300a738a8b676421e
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: bd47a528b6c9aef354df8e52da63409002f6fb32
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547154"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850795"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jitbit-helpdesk"></a>Oktatóanyag: Azure Active Directory integráció a Jitbit ügyfélszolgálattal
 
@@ -73,7 +73,7 @@ Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a Jitbi
 Az Azure AD egyszeri bejelentkezés Jitbit ügyfélszolgálattal való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
 
 1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. Az **[Jitbit segélyszolgálat egyszeri bejelentkezésének konfigurálása](#configure-jitbit-helpdesk-single-sign-on)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+2. Az **[Jitbit segélyszolgálat egyszeri bejelentkezésének konfigurálása](#configure-jitbit-helpdesk-single-sign-on)** – az Sign-On beállításainak konfigurálása az alkalmazás oldalán.
 3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
 4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
 5. **[Jitbit helpdesk-teszt felhasználó létrehozása](#create-jitbit-helpdesk-test-user)** – ha a felhasználó Azure ad-Britta összekapcsolt Jitbit helpdesk-beli partneri kapcsolattal rendelkezik.
@@ -93,7 +93,7 @@ Az Azure AD egyszeri bejelentkezés az Jitbit ügyfélszolgálattal való konfig
 
     ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
+3. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
@@ -109,11 +109,11 @@ Az Azure AD egyszeri bejelentkezés az Jitbit ügyfélszolgálattal való konfig
     | |
     
     > [!NOTE] 
-    > Ez az érték nem valós. Frissítse ezt az értéket a tényleges bejelentkezési URL-címmel. Az érték beszerzéséhez lépjen kapcsolatba a [Jitbit helpdesk](https://www.jitbit.com/support/) ügyfélszolgálatával.
+    > Ez az érték nem valós. Frissítse ezt az értéket a tényleges Sign-On URL-címmel. Az érték beszerzéséhez lépjen kapcsolatba a [Jitbit helpdesk](https://www.jitbit.com/support/) ügyfélszolgálatával.
 
     b. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet a következőképpen: `https://www.jitbit.com/web-helpdesk/`
 
-5. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállítások alapján, és mentse a számítógépre.
+5. Az **egyszeres Sign-On beállítása az SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállítások alapján, és mentse azt a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozása](common/certificatebase64.png)
 
@@ -127,7 +127,7 @@ Az Azure AD egyszeri bejelentkezés az Jitbit ügyfélszolgálattal való konfig
 
     c. Kijelentkezési URL-cím
 
-### <a name="configure-jitbit-helpdesk-single-sign-on"></a>Az Jitbit segélyszolgálat egyszeri bejelentkezésének konfigurálása
+### <a name="configure-jitbit-helpdesk-single-sign-on"></a>A Jitbit segélyszolgálat egyetlen Sign-On konfigurálása
 
 1. Egy másik böngészőablakban jelentkezzen be rendszergazdaként a Jitbit segélyszolgálat vállalati webhelyére.
 
@@ -137,13 +137,13 @@ Az Azure AD egyszeri bejelentkezés az Jitbit ügyfélszolgálattal való konfig
 
 1. Kattintson az **általános beállítások**elemre.
 
-    ![Felhasználók, vállalatok és engedélyek](./media/jitbit-helpdesk-tutorial/ic777680.png "Felhasználók, vállalatok és engedélyek")
+    ![A képernyőképen az általános beállítások hivatkozás látható.](./media/jitbit-helpdesk-tutorial/ic777680.png "Felhasználók, vállalatok és engedélyek")
 
 1. A **hitelesítési beállítások** konfigurálása szakaszban hajtsa végre a következő lépéseket:
 
     ![Hitelesítési beállítások](./media/jitbit-helpdesk-tutorial/ic777683.png "Hitelesítési beállítások")
 
-    a. Válassza az **SAML 2,0 egyszeri bejelentkezés engedélyezése**lehetőséget az egyszeri bejelentkezés (SSO) és a **OneLogin**használatával történő bejelentkezéshez.
+    a. Válassza az **SAML 2,0 egyszeri bejelentkezés engedélyezése**lehetőséget, ha egyetlen Sign-On (SSO) használatával szeretne bejelentkezni a **OneLogin**.
 
     b. A **végpont URL-címe** szövegmezőbe illessze be a Azure Portalból másolt **bejelentkezési URL-cím** értékét.
 
@@ -174,7 +174,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    d. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -234,7 +234,7 @@ Ahhoz, hogy az Azure AD-felhasználók bejelentkezzenek a Jitbit Segélyszolgál
 
    d. A **vezetéknév** szövegmezőbe írja be a felhasználó vezetéknevét, például **Simon**nevet.
 
-   e. Kattintson a **Create** (Létrehozás) gombra.
+   e. Kattintson a **Létrehozás** elemre.
 
 > [!NOTE]
 > Az Azure AD felhasználói fiókjainak kiépítéséhez bármilyen más, a Jitbit helpdesk által biztosított Jitbit-segélyszolgálat felhasználói fiók létrehozására szolgáló eszközt vagy API-t használhat.

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: yushwang
 ms.custom: devx-track-azurepowershell
-ms.openlocfilehash: 5abfa26f5d897ade963253da81927a48cc65d781
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.openlocfilehash: aeb43f1b9f53a9f57cc436ced1db1bc3feed02d1
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89394074"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91843260"
 ---
 # <a name="how-to-configure-bgp-on-azure-vpn-gateways-using-powershell"></a>A BGP konfigurálása Azure VPN Gateway-átjárón a PowerShell használatával
 Ez a cikk bemutatja, hogyan engedélyezheti a BGP-t a telephelyek közötti helyek közötti (S2S) VPN-kapcsolaton, valamint egy VNet és VNet kapcsolaton keresztül a Resource Manager-alapú üzemi modell és a PowerShell használatával.
@@ -109,7 +109,7 @@ $gwipconf1 = New-AzVirtualNetworkGatewayIpConfig -Name $GWIPconfName1 -Subnet $s
 ```
 
 #### <a name="2-create-the-vpn-gateway-with-the-as-number"></a>2. hozza létre a VPN-átjárót az AS-számmal
-Hozza létre a TestVNet1 virtuális hálózati átjáróját. A BGP egy Route-alapú VPN-átjárót, valamint az-ASN paramétert is megköveteli a TestVNet1-hez tartozó ASN (AS-szám) beállításához. Ha nem állítja be az ASN paramétert, a rendszer az ASN 65515-et rendeli hozzá. Az átjáró létrehozása akár 30 percet vagy hosszabb időt is igénybe vehet.
+Hozza létre a TestVNet1 virtuális hálózati átjáróját. A BGP egy Route-Based VPN-átjárót, valamint a (z)-ASN paramétert is megköveteli, hogy beállítsa a TestVNet1 ASN (AS Number) értékét. Ha nem állítja be az ASN paramétert, a rendszer az ASN 65515-et rendeli hozzá. Az átjáró létrehozása akár 30 percet vagy hosszabb időt is igénybe vehet.
 
 ```powershell
 New-AzVirtualNetworkGateway -Name $GWName1 -ResourceGroupName $RG1 -Location $Location1 -IpConfigurations $gwipconf1 -GatewayType Vpn -VpnType RouteBased -GatewaySku VpnGw1 -Asn $VNet1ASN
@@ -214,7 +214,7 @@ A kapcsolat néhány percen belül létrejön, és a BGP-társas munkamenet elin
 
 Ez a szakasz a BGP-vel való VNet-VNet, az alábbi ábrán látható módon:
 
-![BGP VNet – VNet](./media/vpn-gateway-bgp-resource-manager-ps/bgp-vnet2vnet.png)
+![A V net és a V közötti hálózati kapcsolatokat bemutató diagram.](./media/vpn-gateway-bgp-resource-manager-ps/bgp-vnet2vnet.png)
 
 Az alábbi utasítások az előző lépésekkel folytatódnak. Be kell fejeznie a TestVNet1 létrehozásához és konfigurálásához, valamint a BGP-vel való VPN Gatewayához szükséges [részt](#enablebgp) . 
 

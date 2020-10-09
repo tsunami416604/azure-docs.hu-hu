@@ -2,14 +2,14 @@
 title: Feladatok végpontok közötti futtatása sablonok használatával
 description: Csak a CLI-parancsokkal hozhat létre készleteket, tölthet fel bemeneti adatokat, feladatokat és kapcsolódó tevékenységeket hozhat létre, és letöltheti az eredményül kapott kimeneti adatokat.
 ms.topic: how-to
-ms.date: 12/07/2018
+ms.date: 10/08/2020
 ms.custom: seodec18, devx-track-azurecli
-ms.openlocfilehash: e9b4930dee1b28bb4ec71690cbfcef88e0365b9e
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 845a32c2feda5a5a3b8d44d237c62db94cae1779
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87494927"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91848721"
 ---
 # <a name="use-azure-batch-cli-templates-and-file-transfer"></a>A CLI-sablonok és a fájlátvitel Azure Batch használata
 
@@ -65,7 +65,7 @@ Azure Batch sablonok hasonlók a Azure Resource Manager-sablonokhoz, a funkciona
 -   **Paraméterek**
 
     -   Tulajdonságok értékének engedélyezése a törzs szakaszban, csak a sablon használatakor szükséges paraméterek értékeit kell megadni. Egy készlet teljes definíciója például elhelyezhető a törzsben, és csak egy paraméter van definiálva; a készlet `poolId` létrehozásához csak egy készlet-azonosító karakterláncot kell megadni.
-        
+
     -   A sablon törzsét valaki a Batch ismeretével és a Batch által futtatandó alkalmazások létrehozásával tudja megtervezni. a sablon használatakor csak a szerző által definiált paraméterek értékeit kell megadni. A nem részletes batch és/vagy Application Knowledge nélküli felhasználók ezért használhatják a sablonokat.
 
 -   **Változók**
@@ -121,7 +121,7 @@ A következő példa egy olyan sablont mutat be, amely létrehozza a Linux rends
             "vmSize": "STANDARD_D3_V2",
             "targetDedicatedNodes": "[parameters('nodeCount')]",
             "enableAutoScale": false,
-            "maxTasksPerNode": 1,
+            "taskSlotsPerNode": 1,
             "packageReferences": [
                 {
                     "type": "aptPackage",
@@ -133,7 +133,7 @@ A következő példa egy olyan sablont mutat be, amely létrehozza a Linux rends
 }
 ```
 
-Ha a sablonfájl nevepool-ffmpeg.js, akkor a következő módon hívja _meg_a sablont:
+Ha a sablonfájl nevepool-ffmpeg.js, akkor a következő módon hívja _ meg_a sablont:
 
 ```azurecli
 az batch pool create --template pool-ffmpeg.json
@@ -152,7 +152,7 @@ A CLI megkéri, hogy adjon meg értékeket a `poolId` és `nodeCount` paraméter
 }
 ```
 
-Ha a paraméterek JSON-fájljának nevepool-parameters.js, akkor a következő módon hívja *meg*a sablont:
+Ha a paraméterek JSON-fájljának nevepool-parameters.js, akkor a következő módon hívja * meg*a sablont:
 
 ```azurecli
 az batch pool create --template pool-ffmpeg.json --parameters pool-parameters.json
@@ -209,7 +209,7 @@ Az alábbi példa egy olyan sablont mutat be, amely létrehoz egy feladatot, ame
             },
             "taskFactory": {
                 "type": "taskPerFile",
-                "source": { 
+                "source": {
                     "fileGroup": "ffmpeg-input"
                 },
                 "repeatTask": {
@@ -242,7 +242,7 @@ Az alábbi példa egy olyan sablont mutat be, amely létrehoz egy feladatot, ame
 }
 ```
 
-Ha a sablonfájl nevejob-ffmpeg.js, akkor a következő módon hívja _meg_a sablont:
+Ha a sablonfájl nevejob-ffmpeg.js, akkor a következő módon hívja _ meg_a sablont:
 
 ```azurecli
 az batch job create --template job-ffmpeg.json
@@ -271,7 +271,7 @@ Egy fájl egy, az Azure Storage-fiókban létrehozott tárolónak felel meg. El�
 A Batch CLI bővítmény olyan parancsokat biztosít, amelyekkel fájlokat tölthet fel az ügyfélről egy adott csoportba, és letöltheti a fájlokat a megadott fájlkiszolgálón egy ügyfélre.
 
 ```azurecli
-az batch file upload --local-path c:\source_videos\*.mp4 
+az batch file upload --local-path c:\source_videos\*.mp4
     --file-group ffmpeg-input
 
 az batch file download --file-group ffmpeg-output --local-path
@@ -286,7 +286,7 @@ A sablon-és fájlátviteli támogatás jelenleg csak az Azure CLI-hez lett hozz
 
 Próbálja ki az Azure CLI batch-bővítményét, és küldjön visszajelzést vagy javaslatokat a jelen cikkhez vagy a [Batch közösségi](https://github.com/Azure/Batch)tárházhoz tartozó megjegyzésekben.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A részletes telepítési és használati dokumentáció, példák és forráskódok az [Azure GitHub](https://github.com/Azure/azure-batch-cli-extensions)-tárházban érhetők el.
 

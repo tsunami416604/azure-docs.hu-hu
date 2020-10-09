@@ -11,19 +11,19 @@ ms.workload: identity
 ms.topic: article
 ms.date: 03/27/2019
 ms.author: jeedes
-ms.openlocfilehash: ee150c2fdeb29dcd01d94a335635db7e3939b59c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 1db1ef3a8fa7de557444c25650410b4e84422be4
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88549313"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91849286"
 ---
 # <a name="tutorial-configure-bonusly-for-automatic-user-provisioning"></a>Oktatóanyag: prémium konfigurálása a felhasználók automatikus kiépítési felállításához
 
 Ennek az oktatóanyagnak a célja, hogy bemutassa a Bonus és Azure Active Directory (Azure AD) szolgáltatásban elvégzendő lépéseket, hogy az Azure AD konfigurálja a felhasználókat és/vagy csoportokat a bónuszok automatikus kiépítéséhez és kiépítéséhez.
 
 > [!NOTE]
-> Ez az oktatóanyag az Azure AD-beli felhasználói kiépítési szolgáltatásra épülő összekötőt ismerteti. A szolgáltatás működésének, működésének és gyakori kérdéseinek részletes ismertetését lásd: a felhasználók üzembe helyezésének [automatizálása és az SaaS-alkalmazások kiépítése Azure Active Directory használatával](../app-provisioning/user-provisioning.md).
+> Ez az oktatóanyag az Azure AD-beli felhasználói kiépítési szolgáltatásra épülő összekötőt ismerteti. A szolgáltatás funkcióival, működésével és a gyakori kérdésekkel kapcsolatos fontos részletekért lásd: [Felhasználók átadásának és megszüntetésének automatizálása a SaaS-alkalmazásokban az Azure Active Directoryval](../app-provisioning/user-provisioning.md).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -89,63 +89,63 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![Az alkalmazások listájában szereplő prémium hivatkozás](common/all-applications.png)
 
-3. Válassza ki a **kiépítés** lapot.
+3. Válassza a **Kiépítés** lapot.
 
-    ![Prémium kiépítés](./media/bonusly-provisioning-tutorial/ProvisioningTab.png)
+    :::image type="content" source="./media/bonusly-provisioning-tutorial/ProvisioningTab.png" alt-text="Képernyőkép a Bonus-kiépítés lapról. A kezelés területen ki van emelve a kiépítés." border="false":::
 
-4. Állítsa a **kiépítési módot** **automatikus**értékre.
+4. Állítsa a **Kiépítési mód** mezőt **Automatikus** értékre.
 
-    ![Prémium kiépítés](./media/bonusly-provisioning-tutorial/ProvisioningCredentials.png)
+    :::image type="content" source="./media/bonusly-provisioning-tutorial/ProvisioningCredentials.png" alt-text="Képernyőkép a Bonus-kiépítés lapról. A kezelés területen ki van emelve a kiépítés." border="false":::
 
 5. A **rendszergazdai hitelesítő adatok** szakaszban adja meg a Bonus-fiók **titkos jogkivonatát** a 6. lépésben leírtak szerint.
 
-    ![Prémium kiépítés](./media/bonusly-provisioning-tutorial/secrettoken.png)
+    :::image type="content" source="./media/bonusly-provisioning-tutorial/secrettoken.png" alt-text="Képernyőkép a Bonus-kiépítés lapról. A kezelés területen ki van emelve a kiépítés." border="false":::
 
 6. A prémium fiók **titkos jogkivonata** a következő helyen található: **Admin > vállalati > integrációk**. Ha a **kódot szeretné használni** , kattintson az **API-> új API-hozzáférési jogkivonat létrehozása** lehetőségre új titkos jogkivonat létrehozásához.
 
-    ![Prémium kiépítés](./media/bonusly-provisioning-tutorial/BonuslyIntegrations.png)
+    :::image type="content" source="./media/bonusly-provisioning-tutorial/BonuslyIntegrations.png" alt-text="Képernyőkép a Bonus-kiépítés lapról. A kezelés területen ki van emelve a kiépítés." border="false":::
 
-    ![Prémium kiépítés](./media/bonusly-provisioning-tutorial/BonsulyRestApi.png)
+    :::image type="content" source="./media/bonusly-provisioning-tutorial/BonsulyRestApi.png" alt-text="Képernyőkép a Bonus-kiépítés lapról. A kezelés területen ki van emelve a kiépítés." border="false":::
 
-    ![Prémium kiépítés](./media/bonusly-provisioning-tutorial/CreateToken.png)
+    :::image type="content" source="./media/bonusly-provisioning-tutorial/CreateToken.png" alt-text="Képernyőkép a Bonus-kiépítés lapról. A kezelés területen ki van emelve a kiépítés." border="false":::
 
 7. A következő képernyőn írja be a hozzáférési jogkivonat nevét a megadott szövegmezőbe, majd nyomja le az API- **kulcs létrehozása**elemet. Az új hozzáférési jogkivonat néhány másodpercig megjelenik egy előugró ablakban.
 
-    ![Prémium kiépítés](./media/bonusly-provisioning-tutorial/Token01.png)
+    :::image type="content" source="./media/bonusly-provisioning-tutorial/Token01.png" alt-text="Képernyőkép a Bonus-kiépítés lapról. A kezelés területen ki van emelve a kiépítés." border="false":::
 
-    ![Prémium kiépítés](./media/bonusly-provisioning-tutorial/Token02.png)
+    :::image type="content" source="./media/bonusly-provisioning-tutorial/Token02.png" alt-text="Képernyőkép a Bonus-kiépítés lapról. A kezelés területen ki van emelve a kiépítés." border="false":::
 
 8. Az 5. lépésben megjelenő mezők kitöltése után kattintson a **kapcsolat tesztelése** elemre annak biztosításához, hogy az Azure ad tud csatlakozni a bónuszokhoz. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a prémium fiók rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
 
-    ![Prémium kiépítés](./media/bonusly-provisioning-tutorial/TestConnection.png)
+    :::image type="content" source="./media/bonusly-provisioning-tutorial/TestConnection.png" alt-text="Képernyőkép a Bonus-kiépítés lapról. A kezelés területen ki van emelve a kiépítés." border="false":::
 
 9. Az **értesítési e-mail** mezőben adja meg egy olyan személy vagy csoport e-mail-címét, akinek meg kell kapnia a kiépítési hibákra vonatkozó értesítéseket, és jelölje be az **e-mail-értesítés küldése hiba**esetén jelölőnégyzetet.
 
-    ![Prémium kiépítés](./media/bonusly-provisioning-tutorial/EmailNotification.png)
+    :::image type="content" source="./media/bonusly-provisioning-tutorial/EmailNotification.png" alt-text="Képernyőkép a Bonus-kiépítés lapról. A kezelés területen ki van emelve a kiépítés." border="false":::
 
 10. Kattintson a **Mentés** gombra.
 
 11. A **leképezések** szakaszban válassza a **Azure Active Directory-felhasználók szinkronizálása bónuszra**lehetőséget.
 
-    ![Prémium kiépítés](./media/bonusly-provisioning-tutorial/UserMappings.png)
+    :::image type="content" source="./media/bonusly-provisioning-tutorial/UserMappings.png" alt-text="Képernyőkép a Bonus-kiépítés lapról. A kezelés területen ki van emelve a kiépítés." border="false":::
 
 12. Tekintse át az Azure AD-ből szinkronizált felhasználói attribútumokat az attribútum- **hozzárendelési** szakaszban. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok használatával a rendszer a frissítési műveletekhez bónuszban lévő felhasználói fiókokat is egyezteti. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
 
-    ![Prémium kiépítés](./media/bonusly-provisioning-tutorial/UserAttributeMapping.png)
+    :::image type="content" source="./media/bonusly-provisioning-tutorial/UserAttributeMapping.png" alt-text="Képernyőkép a Bonus-kiépítés lapról. A kezelés területen ki van emelve a kiépítés." border="false":::
 
-13. A hatóköri szűrők konfigurálásához tekintse meg az alábbi utasításokat a [hatókör szűrője oktatóanyagban](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md).
+13. Hatókörszűrők konfigurálásához tekintse meg a [hatókörszűrővel kapcsolatos oktatóanyagban](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) szereplő következő utasításokat.
 
 14. Ahhoz, hogy az Azure AD-kiépítési szolgáltatás bónuszok **után is engedélyezve** legyen, módosítsa a **kiépítési állapotot** a **Beállítások** szakaszban.
 
-    ![Prémium kiépítés](./media/bonusly-provisioning-tutorial/ProvisioningStatus.png)
+    :::image type="content" source="./media/bonusly-provisioning-tutorial/ProvisioningStatus.png" alt-text="Képernyőkép a Bonus-kiépítés lapról. A kezelés területen ki van emelve a kiépítés." border="false":::
 
 15. Adja meg azokat a felhasználókat és/vagy csoportokat, akiket ki szeretne próbálni a bónuszok kiválasztásához. Ehhez válassza a **Settings (beállítások** ) szakaszban a kívánt értékeket a **hatókörben** .
 
-    ![Prémium kiépítés](./media/bonusly-provisioning-tutorial/ScopeSync.png)
+    :::image type="content" source="./media/bonusly-provisioning-tutorial/ScopeSync.png" alt-text="Képernyőkép a Bonus-kiépítés lapról. A kezelés területen ki van emelve a kiépítés." border="false":::
 
-16. Ha készen áll a létesítésre, kattintson a **Mentés**gombra.
+16. Amikor készen áll az átadásra, kattintson a **Mentés** gombra.
 
-    ![Prémium kiépítés](./media/bonusly-provisioning-tutorial/SaveProvisioning.png)
+    :::image type="content" source="./media/bonusly-provisioning-tutorial/SaveProvisioning.png" alt-text="Képernyőkép a Bonus-kiépítés lapról. A kezelés területen ki van emelve a kiépítés." border="false":::
 
 Ez a művelet elindítja a **Beállítások** szakasz **hatókörében** meghatározott összes felhasználó és/vagy csoport kezdeti szinkronizálását. A kezdeti szinkronizálás hosszabb időt vesz igénybe, mint a későbbi szinkronizálások, amelyek körülbelül 40 percenként történnek, amíg az Azure AD kiépítési szolgáltatás fut. A **szinkronizálás részletei** szakasz segítségével figyelheti a folyamat előrehaladását, és követheti a kiépítési tevékenységek jelentésére mutató hivatkozásokat, amelyek az Azure ad-kiépítési szolgáltatás által a bónuszok után végrehajtott összes műveletet ismertetik.
 
@@ -153,12 +153,12 @@ Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további informáci
 
 ## <a name="additional-resources"></a>További források
 
-* [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+* [Felhasználói fiók átadásának kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>További lépések
 
-* [Megtudhatja, hogyan tekintheti át a naplókat, és hogyan kérhet jelentéseket a kiépítési tevékenységekről](../app-provisioning/check-status-user-account-provisioning.md)
+* [Tudnivalók a naplók áttekintéséről és az átadási tevékenységekkel kapcsolatos jelentések lekéréséről](../app-provisioning/check-status-user-account-provisioning.md)
 
 <!--Image references-->
 [1]: ./media/bonusly-provisioning-tutorial/tutorial_general_01.png

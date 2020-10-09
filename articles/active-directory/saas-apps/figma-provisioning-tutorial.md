@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/12/2019
 ms.author: zhchia
-ms.openlocfilehash: d88b8f2a6cc66e239706677bd1ebfe01bccd49af
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: f5b14ecf061e8f0c53dc1387d1581bc780d190b9
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91322036"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850881"
 ---
 # <a name="tutorial-configure-figma-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés Figma konfigurálása
 
@@ -53,23 +53,23 @@ Az Azure AD-vel való automatikus Figma konfigurálása előtt le kell kérnie n
 
 1. Jelentkezzen be a [Figma felügyeleti konzolra](https://www.Figma.com/). Kattintson a bérlő melletti fogaskerék ikonra.
 
-    ![FigmaFigma – alkalmazott – kiépítés](media/Figma-provisioning-tutorial/image0.png)
+    :::image type="content" source="media/Figma-provisioning-tutorial/image0.png" alt-text="Képernyőkép a Figma felügyeleti konzolról. A D scim-teszt nevű bérlő látható. A bérlő mellett egy fogaskerék ikon van kiemelve." border="false":::
 
 2. Lépjen az **általános > frissítési napló beállításai elemre**.
 
-    ![FigmaFigma – alkalmazott – kiépítés](media/Figma-provisioning-tutorial/figma03.png)
+    :::image type="content" source="media/Figma-provisioning-tutorial/figma03.png" alt-text="Képernyőkép a Figma felügyeleti konzolról. A D scim-teszt nevű bérlő látható. A bérlő mellett egy fogaskerék ikon van kiemelve." border="false":::
 
 3. Másolja a **bérlő azonosítóját**. Ezt az értéket fogja használni a SCIM-végpont URL-címének megadásához **a Figma** alkalmazás létesítés lapján a Azure Portal.
 
-    ![Figma-létrehozási jogkivonat](media/Figma-provisioning-tutorial/figma-tenantid.png)
+    :::image type="content" source="media/Figma-provisioning-tutorial/figma-tenantid.png" alt-text="Képernyőkép a Figma felügyeleti konzolról. A D scim-teszt nevű bérlő látható. A bérlő mellett egy fogaskerék ikon van kiemelve." border="false":::
 
 4. Görgessen le, és kattintson az **API-jogkivonat előállítása**elemre.
 
-    ![Figma-létrehozási jogkivonat](media/Figma-provisioning-tutorial/token.png)
+    :::image type="content" source="media/Figma-provisioning-tutorial/token.png" alt-text="Képernyőkép a Figma felügyeleti konzolról. A D scim-teszt nevű bérlő látható. A bérlő mellett egy fogaskerék ikon van kiemelve." border="false":::
 
 5. Másolja az  **API-jogkivonat** értékét. Ez az érték a Figma alkalmazás üzembe helyezés lapjának **titkos jogkivonat** mezőjében jelenik meg a Azure Portal. 
 
-    ![Figma-létrehozási jogkivonat](media/Figma-provisioning-tutorial/figma04.png)
+    :::image type="content" source="media/Figma-provisioning-tutorial/figma04.png" alt-text="Képernyőkép a Figma felügyeleti konzolról. A D scim-teszt nevű bérlő látható. A bérlő mellett egy fogaskerék ikon van kiemelve." border="false":::
 
 ## <a name="add-figma-from-the-gallery"></a>Figma hozzáadása a gyűjteményből
 

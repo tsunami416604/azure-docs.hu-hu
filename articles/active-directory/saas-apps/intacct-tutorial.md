@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/05/2020
 ms.author: jeedes
-ms.openlocfilehash: 79a77d3c55ee4ac545712329f0054123bec8fcae
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: e01bc36f0f30cec779652a603aaf7bdb496e5190
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88535841"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850574"
 ---
 # <a name="tutorial-integrate-sage-intacct-with-azure-active-directory"></a>Oktatóanyag: a Sage Intacct integrálása Azure Active Directory
 
@@ -62,7 +62,7 @@ Az Azure AD SSO és a Sage Intacct konfigurálásához és teszteléséhez hajts
 1. Az **[Azure ad SSO konfigurálása](#configure-azure-ad-sso)** – a funkció használatának engedélyezése a felhasználók számára.
     1. **[Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user)** – ezzel lehetővé teszi, hogy B. Simon engedélyezze az Azure ad egyszeri bejelentkezést.
     1. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
-2. A **[Sage INTACCT SSO konfigurálása](#configure-sage-intacct-sso)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+2. A **[Sage INTACCT SSO konfigurálása](#configure-sage-intacct-sso)** – az Sign-On beállításainak konfigurálása az alkalmazás oldalán.
     1. **[Hozzon létre Sage Intacct-teszt felhasználót](#create-sage-intacct-test-user)** – hogy rendelkezzen egy, a felhasználó Azure ad-képviseletéhez csatolt B. Simon-beli Intacct.
 6. **[SSO tesztelése](#test-sso)** – annak ellenőrzése, hogy a konfiguráció működik-e.
 
@@ -72,7 +72,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. A [Azure Portal](https://portal.azure.com/)a **bölcs Intacct** alkalmazás-integráció lapon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
 1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
-1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
+1. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
 
    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
@@ -105,7 +105,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     : Kattintson a **Mentés** gombra.
 
-1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg a **tanúsítvány (Base64)** elemet, majd a **Letöltés** gombra kattintva töltse le a tanúsítványt, és mentse a számítógépre.
+1. Az **egyszeres Sign-On beállítása SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg a **tanúsítvány (Base64)** elemet, majd a **Letöltés** gombra kattintva töltse le a tanúsítványt, és mentse a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozása](common/certificatebase64.png)
 
@@ -123,7 +123,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Create** (Létrehozás) gombra.
+   1. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -189,7 +189,7 @@ Ha be szeretné állítani az Azure AD-felhasználók számára, hogy bejelentke
 
 1. A **felhasználói adatok** szakaszban hajtsa végre a következő lépéseket:
 
-    ![Felhasználói adatok](./media/intacct-tutorial/ic790043.png "Felhasználói adatok")
+    ![Képernyőfelvétel: a felhasználói adatok szakasz, ahol megadhatja az ebben a lépésben szereplő információkat.](./media/intacct-tutorial/ic790043.png "Felhasználói adatok")
 
     a. Adja meg a felhasználói **adatok** szakaszban kiépíteni kívánt Azure ad-fiók **felhasználói azonosítóját**, **vezetéknevét** **, utónevét,** **e-mail-címét**, **címét**és **telefonszámát** .
 
@@ -204,7 +204,7 @@ Ha be szeretné állítani az Azure AD-felhasználók számára, hogy bejelentke
 
 1. Kattintson az **egyszeri bejelentkezés** fülre, és győződjön meg arról, hogy az **összevont egyszeri bejelentkezés felhasználói azonosítója** az alábbi képernyőképen, valamint a **forrás attribútum** értéke, amely a `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/nameidentifier` Azure Portal **felhasználói attribútumok** szakaszában van leképezve, a következőnek kell lennie:.
 
-    ![Felhasználói adatok](./media/intacct-tutorial/ic790044.png "Felhasználói adatok")
+    ![Képernyőfelvétel: a felhasználói adatok szakasz, amelyen megadhatja az összevont S S O-felhasználót.](./media/intacct-tutorial/ic790044.png "Felhasználói adatok")
 
 > [!NOTE]
 > Az Azure AD felhasználói fiókjainak kiépítéséhez használhatja a Sage Intacct által biztosított más Sage Intacct felhasználói fiókok létrehozására szolgáló eszközöket vagy API-kat.

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/26/2019
 ms.author: zhchia
-ms.openlocfilehash: 1274679bdd9892e2dc39f3c5e94d8d8d486928b6
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: f87a2347890f8d17e3901c6d8fc168c1d96c7661
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91329193"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91849339"
 ---
 # <a name="tutorial-configure-bitabiz-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés BitaBIZ konfigurálása
 
@@ -54,11 +54,11 @@ Az Azure AD-vel való automatikus BitaBIZ konfigurálása előtt engedélyeznie 
 
 1. Jelentkezzen be a [BitaBIZ felügyeleti konzolra](https://www.bitabiz.com/login?lang=en). Kattintson a **telepítési rendszergazda**elemre.
 
-    ![BitaBIZ felügyeleti konzol](media/bitabiz-provisioning-tutorial/setup-admin.png)
+    :::image type="content" source="media/bitabiz-provisioning-tutorial/setup-admin.png" alt-text="Képernyőkép a BitaBIZ felügyeleti konzolról, a telepítési rendszergazda kiemelve." border="false":::
 
 2.  Navigáljon az **integráció**elemre.
 
-    ![BitaBIZ felügyeleti konzol](media/bitabiz-provisioning-tutorial/integration.png)
+    :::image type="content" source="media/bitabiz-provisioning-tutorial/integration.png" alt-text="Képernyőkép a BitaBIZ felügyeleti konzolról, a telepítési rendszergazda kiemelve." border="false":::
 
 2.  Navigáljon **Microsoft Azure ad üzembe**helyezéshez.  Válassza az **engedélyezve** lehetőséget az automatikus felhasználó-kiépítés lehetőségnél. Másolja az **scim kiépítési végpont URL-címének** és a  **tulajdonosi jogkivonat**értékeit. Ezek az értékek a bérlői URL-cím és a titkos jogkivonat mezőiben lesznek megadva a BitaBIZ alkalmazás kiépítés lapján a Azure Portal.
 

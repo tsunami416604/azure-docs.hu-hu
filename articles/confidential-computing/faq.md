@@ -8,12 +8,12 @@ ms.service: virtual-machines
 ms.subservice: workloads
 ms.date: 4/17/2020
 ms.author: jencook
-ms.openlocfilehash: 519b5b669cfc8140b837743d694184a5cb859f20
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: cf90ff5b94eb03f76dffc8b64dd4d92a44ac20ee
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90987989"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91848908"
 ---
 # <a name="frequently-asked-questions-for-azure-confidential-computing"></a>Gyakran ismételt kérdések az Azure bizalmas számítástechnikai szolgáltatásáról
 
@@ -49,13 +49,17 @@ Győződjön meg arról, hogy egy [elérhető régiót](https://azure.microsoft.
 
 [Hozzon létre egy támogatási kérést a kvóta növeléséhez](../azure-portal/supportability/per-vm-quota-requests.md). Az ingyenes próbaverziós előfizetések esetében nincs kvóta a bizalmas számítástechnikai virtuális gépekhez. 
 
-**Mi a különbség a DCsv2 és a DC sorozatú virtuális gépek között?**
+**Mi a különbség a DCsv2-Series és a DC-Series virtuális gépek között?**
 
-A DC sorozatú virtuális gépek régebbi 6 Magos Intel processzorokon futnak Intel SGX ENKLÁVÉHOZ, és kevesebb teljes memóriával, kevesebb enklávé-gyorsítótárral (EPC) rendelkeznek, és csak két régióban érhetők el (az USA keleti régiójában és Nyugat-Európában Standard_DC2s és Standard_DC4s méretben). A virtuális gépeket nem lehet általánosan elérhetővé tenni, és éles használatra nem ajánlottak. Ezeknek a virtuális gépeknek a üzembe helyezéséhez használja a  [bizalmas számítási DC sorozatú VM [előzetes verzió] Marketplace-](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-azure-compute.confidentialcompute?tab=Overview) példányt.
+DC-Series virtuális gépek régebbi 6 Magos Intel processzorokon futnak az Intel SGX ENKLÁVÉHOZ, és kevesebb teljes memóriával, kevesebb enklávé-gyorsítótárral (EPC) rendelkeznek, és csak két régióban érhetők el (az USA keleti régiójában és Nyugat-Európában Standard_DC2s és Standard_DC4s méretben). A virtuális gépeket nem lehet általánosan elérhetővé tenni, és éles használatra nem ajánlottak. Ezeknek a virtuális gépeknek a üzembe helyezéséhez használja a "  [bizalmas számítási DC-Series VM [előzetes verzió]](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-azure-compute.confidentialcompute?tab=Overview) Marketplace-példányt.
 
 **Globálisan elérhetők a DCsv2 virtuális gépek?**
 
 Nem. Jelenleg ezek a virtuális gépek csak a kiválasztott régiókban érhetők el. A legújabb elérhető régiókat a [termékek régiók szerint lapon](https://azure.microsoft.com/global-infrastructure/services/?products=virtual-machines) találja. 
+
+**A Hyper-Threading szolgáltatás ki van kapcsolva ezeken a gépeken?**
+
+A Hyper-Threading szolgáltatás le van tiltva az összes Azure bizalmas számítástechnikai fürtben.
 
 **Hogyan telepíteni az Open enklávé SDK-t a DCsv2 Virtual Machines szolgáltatásba?**
    

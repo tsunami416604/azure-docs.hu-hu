@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 10/14/2019
 ms.author: Zhchia
-ms.openlocfilehash: 4b318057254688ba3060c825a7926b1c40de437c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 7c81c6145aed5f45849f6f08fdd1136862c3b7d8
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91305015"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850877"
 ---
 # <a name="tutorial-configure-infor-cloudsuite-for-automatic-user-provisioning"></a>Oktatóanyag: az infor-CloudSuite konfigurálása a felhasználók automatikus kiépítési felállításához
 
@@ -68,11 +68,11 @@ Az automatikus felhasználó-kiépítés konfigurálása és engedélyezése el�
     
     ![Infor CloudSuite jelszava](media/infor-cloudsuite-provisioning-tutorial/password.png)
 
-    ![Infor CloudSuite azonosítója](media/infor-cloudsuite-provisioning-tutorial/identifier.png)
+    :::image type="content" source="media/infor-cloudsuite-provisioning-tutorial/identifier.png" alt-text="Képernyőkép az infor CloudSuite felügyeleti konzolról, amely a Kiemelt táblázat sorait jeleníti meg. Ez a sor egy felhasználói azonosítót, jelszót és egy időbélyeget tartalmaz." border="false":::
 
 5. A tulajdonosi jogkivonat létrehozásához másolja a **felhasználói azonosítót** és a **scim jelszavát**. Illessze be őket a Jegyzettömbbe + + kettősponttal elválasztva. A karakterlánc értékének kódolásához navigáljon a **Plugins > MIME-eszközök > Basic64 kódolása**. 
 
-    ![Infor CloudSuite azonosítója](media/infor-cloudsuite-provisioning-tutorial/token.png)
+    :::image type="content" source="media/infor-cloudsuite-provisioning-tutorial/token.png" alt-text="Képernyőkép az infor CloudSuite felügyeleti konzolról, amely a Kiemelt táblázat sorait jeleníti meg. Ez a sor egy felhasználói azonosítót, jelszót és egy időbélyeget tartalmaz." border="false":::
 
 3.  Másolja a tulajdonosi jogkivonatot. Ez az érték a Azure Portalban az infor CloudSuite alkalmazás létesítés lapjának titkos jogkivonat mezőjében lesz megadva.
 

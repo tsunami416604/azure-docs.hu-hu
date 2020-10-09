@@ -2,13 +2,13 @@
 title: Megadott nyilvános IP-címmel rendelkező készlet létrehozása
 description: Megtudhatja, hogyan hozhat létre saját nyilvános IP-címeket használó batch-készletet.
 ms.topic: how-to
-ms.date: 07/20/2020
-ms.openlocfilehash: 158facaf1fd5052c3626f065a69bfbd134ca4c3e
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.date: 10/08/2020
+ms.openlocfilehash: e822311718847e173763847d503335f71457308b
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89146487"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91849328"
 ---
 # <a name="create-an-azure-batch-pool-with-specified-public-ip-addresses"></a>Megadott nyilvános IP-címmel rendelkező Azure Batch-készlet létrehozása
 
@@ -24,7 +24,7 @@ A készletek nyilvános IP-címek nélküli létrehozásával kapcsolatos inform
 
 - **Egy Azure-VNet**. Egy olyan Azure-előfizetésből származó [virtuális hálózatot](batch-virtual-network.md) kell használnia, amelyben létrehozza a készletet és az IP-címeit. Csak Azure Resource Manager-alapú virtuális hálózatok lehet használni. Ügyeljen arra, hogy a VNet megfeleljen az összes [általános követelménynek](batch-virtual-network.md#vnet-requirements).
 
-- **Legalább egy nyilvános Azure IP-cím**. Egy vagy több nyilvános IP-cím létrehozásához használhatja a [Azure Portal](../virtual-network/virtual-network-public-ip-address.md#create-a-public-ip-address), az [Azure parancssori felületét (CLI)](/cli/azure/network/public-ip#az-network-public-ip-create)vagy [Azure PowerShell](/powershell/module/az.network/new-azpublicipaddress). Ügyeljen arra, hogy kövesse az alább felsorolt követelményeket.
+- **Legalább egy nyilvános Azure IP-cím**. Egy vagy több nyilvános IP-cím létrehozásához használhatja a [Azure Portal](../virtual-network/virtual-network-public-ip-address.md#create-a-public-ip-address), az [Azure Command-Line felületét (CLI)](/cli/azure/network/public-ip#az-network-public-ip-create)vagy [Azure PowerShell](/powershell/module/az.network/new-azpublicipaddress). Ügyeljen arra, hogy kövesse az alább felsorolt követelményeket.
 
 > [!NOTE]
 > A Batch automatikusan lefoglalja a nyilvános IP-címeket tartalmazó erőforráscsoport további hálózati erőforrásait. Minden 100 dedikált csomópont esetében a Batch általában egy hálózati biztonsági csoportot (NSG) és egy terheléselosztó-t foglal le. Ezeket az erőforrásokat az előfizetés erőforrás-kvótái korlátozzák. Nagyobb készletek használata esetén előfordulhat, hogy egy vagy több ilyen erőforrás esetében [kvótát](batch-quota-limit.md#increase-a-quota) kell megadnia.
@@ -82,10 +82,10 @@ Kérelem törzse
        "resizeTimeout":"PT15M",
       "targetDedicatedNodes":5,
       "targetLowPriorityNodes":0,
-      "maxTasksPerNode":3,
+      "taskSlotsPerNode":3,
       "taskSchedulingPolicy": {
         "nodeFillType":"spread"
-      }, 
+      },
       "enableAutoScale":false,
       "enableInterNodeCommunication":true,
       "metadata": [ {

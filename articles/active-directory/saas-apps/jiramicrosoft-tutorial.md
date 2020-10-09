@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/11/2019
 ms.author: jeedes
-ms.openlocfilehash: 99f29f884997fbdd4761a5aa2d1f3a8bc15aa797
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.openlocfilehash: d55f461205ceecad098319d7b4b41c175390abfd
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88891606"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850521"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-jira-saml-sso-by-microsoft"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a JIRA SAML SSO-val a Microsoft által
 
@@ -114,7 +114,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
     c. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<domain:port>/plugins/servlet/saml/auth`
 
     > [!NOTE]
-    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és a bejelentkezési URL-címmel. A port nem kötelező, ha az egy elnevezett URL-cím. Ezek az értékek a JIRA beépülő modul konfigurálása során érkeznek, amelyet az oktatóanyag későbbi részében ismertetünk.
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és Sign-On URL-címmel. A port nem kötelező, ha az egy elnevezett URL-cím. Ezek az értékek a JIRA beépülő modul konfigurálása során érkeznek, amelyet az oktatóanyag későbbi részében ismertetünk.
 
 1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a Másolás gombra az **alkalmazás-összevonási metaadatok URL-címének** másolásához és a számítógépre mentéséhez.
 
@@ -130,7 +130,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Create** (Létrehozás) gombra.
+   1. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -156,11 +156,11 @@ Ebben a szakaszban lehetővé teszi, hogy a B. Simon az Azure egyszeri bejelentk
 
 2. Mutasson a fogaskerékre, és kattintson a **bővítmények**elemre.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/jiramicrosoft-tutorial/addon1.png)
+    ![A képernyőképen a beállítások menüből kiválasztott bővítmények láthatók.](./media/jiramicrosoft-tutorial/addon1.png)
 
 3. Töltse le a beépülő modult a [Microsoft letöltőközpontból](https://www.microsoft.com/download/details.aspx?id=56506). Töltse fel manuálisan a Microsoft által biztosított beépülő modult a **feltöltés** menü használatával. A beépülő modul letöltése a [Microsoft szolgáltatási szerződése](https://www.microsoft.com/servicesagreement/)alá tartozik.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/jiramicrosoft-tutorial/addon12.png)
+    ![A képernyőképen a Bővítmények kezelése hivatkozásra kattintva láthatja a bővítmények kezelését.](./media/jiramicrosoft-tutorial/addon12.png)
 
 4. A JIRA fordított proxy forgatókönyvének vagy a terheléselosztó forgatókönyvének futtatásához hajtsa végre a következő lépéseket:
 
@@ -171,19 +171,19 @@ Ebben a szakaszban lehetővé teszi, hogy a B. Simon az Azure egyszeri bejelentk
 
     `scheme="https" proxyName="<subdomain.domain.com>" proxyPort="<proxy_port>" secure="true"`
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/jiramicrosoft-tutorial/reverseproxy1.png)
+    ![Képernyőfelvétel: a Server dot x m l fájl egy szerkesztőben, az új sorral egészült ki.](./media/jiramicrosoft-tutorial/reverseproxy1.png)
 
     b. Az **alap URL-cím** módosítása a **rendszerbeállításokban** a proxy/Load Balancer alapján.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/jiramicrosoft-tutorial/reverseproxy2.png)
+    ![A képernyőképen az adminisztrációs beállítások láthatók, ahol megváltoztathatja a Base U R L-t.](./media/jiramicrosoft-tutorial/reverseproxy2.png)
 
 5. Miután telepítette a beépülő modult, megjelenik a felhasználói bővítmények **kezelése** szakasz a **felhasználó által telepített** bővítmények szakaszában. Az új beépülő modul konfigurálásához kattintson a **Konfigurálás** elemre.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/jiramicrosoft-tutorial/addon14.png)
+    ![A képernyőképen az Azure A D SAML-alapú egyszeri bejelentkezés az JIRA szakaszra, a configure kiválasztott beállítással látható.](./media/jiramicrosoft-tutorial/addon14.png)
 
 6. Hajtsa végre a következő lépéseket a konfiguráció lapon:
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/jiramicrosoft-tutorial/addon54.png)
+    ![A képernyőképen a JIRA konfigurációs oldalának Microsoft Azure Active Directory egyszeri bejelentkezés látható.](./media/jiramicrosoft-tutorial/addon54.png)
 
     > [!TIP]
     > Győződjön meg arról, hogy az alkalmazáshoz csak egy tanúsítvány van hozzárendelve, így nincs hiba a metaadatok feloldásakor. Ha több tanúsítvány is van, a metaadatok feloldásakor a rendszergazda hibaüzenetet kap.
@@ -230,19 +230,19 @@ Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a JI
 
 2. Mutasson a fogaskerékre, és kattintson a **felhasználó-felügyelet**elemre.
 
-    ![Alkalmazott hozzáadása](./media/jiramicrosoft-tutorial/user1.png)
+    ![A képernyőfelvételen a beállítások menüből kiválasztott felhasználói felügyelet látható.](./media/jiramicrosoft-tutorial/user1.png)
 
 3. A rendszer átirányítja a rendszergazdai hozzáférés lapra a **jelszó** megadásához, majd kattintson a **megerősítés** gombra.
 
-    ![Alkalmazott hozzáadása](./media/jiramicrosoft-tutorial/user2.png)
+    ![Képernyőfelvétel: rendszergazdai hozzáférés lap, ahol megadhatja a hitelesítő adatait.](./media/jiramicrosoft-tutorial/user2.png)
 
 4. A **felhasználói kezelés** lap szakaszban kattintson a **felhasználó létrehozása**elemre.
 
-    ![Alkalmazott hozzáadása](./media/jiramicrosoft-tutorial/user3.png) 
+    ![Képernyőfelvétel: a felhasználó-kezelés lap, amelyen létrehozhat felhasználókat.](./media/jiramicrosoft-tutorial/user3.png) 
 
 5. Az **"új felhasználó létrehozása"** párbeszédpanelen hajtsa végre a következő lépéseket:
 
-    ![Alkalmazott hozzáadása](./media/jiramicrosoft-tutorial/user4.png) 
+    ![A képernyőképen az új felhasználó létrehozása párbeszédpanel jelenik meg, amelyen megadhatja az ebben a lépésben szereplő információkat.](./media/jiramicrosoft-tutorial/user4.png) 
 
     a. Az **e-mail cím** szövegmezőbe írja be a felhasználóhoz hasonló e-mail címet B.simon@contoso.com .
 

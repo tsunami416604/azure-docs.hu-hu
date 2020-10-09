@@ -4,12 +4,12 @@ description: Ez a cikk azt ismerteti, hogyan adhat hozzá Microsoft. ServiceBus 
 ms.topic: article
 ms.date: 06/23/2020
 ms.custom: fasttrack-edit
-ms.openlocfilehash: f902c77c3c7e614247abd4f8af50b8ed37b7e574
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.openlocfilehash: 1b62f69bad4484239b3a6c5d6f7ae910fbdef03f
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/04/2020
-ms.locfileid: "87552985"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91843379"
 ---
 # <a name="allow-access-to-azure-service-bus-namespace-from-specific-virtual-networks"></a>Azure Service Bus névtér elérésének engedélyezése adott virtuális hálózatokból
 
@@ -54,6 +54,10 @@ A *virtuális hálózati szabályok* a tűzfal biztonsági funkciója, amely azt
 A Service Bus névterek virtuális hálózathoz való kötése kétlépéses folyamat. Először létre kell hoznia egy **Virtual Network szolgáltatási végpontot** egy Virtual Network alhálózaton, és engedélyeznie kell azt a **Microsoft. ServiceBus** számára a [szolgáltatási végpont áttekintése című][vnet-sep]részben leírtak szerint. A szolgáltatás végpontjának hozzáadása után a Service Bus névteret egy **virtuális hálózati szabállyal**kell kötnie.
 
 A virtuális hálózati szabály a Service Bus névtér egy virtuális hálózati alhálózattal való társítása. Amíg a szabály létezik, az alhálózathoz kötött összes munkaterhelés hozzáférést kap a Service Bus névtérhez. Service Bus maga soha nem hoz létre kimenő kapcsolatokat, nem kell elérnie a hozzáférést, ezért a szabály engedélyezésével soha nem kapnak hozzáférést az alhálózathoz.
+
+> [!NOTE]
+> Ne feledje, hogy a hálózati szolgáltatás végpontja a virtuális hálózaton futó alkalmazásokat biztosít a Service Bus névtérhez való hozzáféréshez. A virtuális hálózat vezérli a végpont elérhetőségét, de nem hajtja végre a műveleteket Service Bus entitásokon (várólisták, témakörök vagy előfizetések). Az Azure Active Directory (Azure AD) használatával engedélyezheti az alkalmazások által a névtérben és az entitásokban elvégezhető műveleteket. További információ: [alkalmazások hitelesítése és engedélyezése az Azure ad-vel Service Bus entitások eléréséhez](authenticate-application.md).
+
 
 ## <a name="use-azure-portal"></a>Az Azure Portal használata
 Ez a szakasz bemutatja, hogyan használható a Azure Portal virtuális hálózati szolgáltatásbeli végpont hozzáadására. A hozzáférés korlátozásához integrálnia kell a virtuális hálózati szolgáltatás végpontját ehhez a Event Hubs névtérhez.

@@ -7,12 +7,12 @@ ms.author: baanders
 ms.date: 3/26/2020
 ms.topic: conceptual
 ms.service: digital-twins
-ms.openlocfilehash: 89013e3b6ec9a0a6112e8b7fdcde4870be331d79
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 72658a97f89b14529e8ccb3639cb1b78f1b92316
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91282306"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91848807"
 ---
 # <a name="query-the-azure-digital-twins-twin-graph"></a>Az Azure Digital Twins Twin gráf lekérdezése
 
@@ -181,7 +181,7 @@ A fenti típusú lekérdezéseket **kombinálhatja** a kombinált operátorok ha
 | Leírás | Lekérdezés |
 | --- | --- |
 | A 123-as *termetű* eszközökön a kezelő szerepkört kiszolgáló MxChip-eszközöket kell visszaadnia. | `SELECT device`<br>`FROM DigitalTwins space`<br>`JOIN device RELATED space.has`<br>`WHERE space.$dtid = 'Room 123'`<br>`AND device.$metadata.model = 'dtmi:contosocom:DigitalTwins:MxChip:3'`<br>`AND has.role = 'Operator'` |
-| Olyan ikrek beszerzése, amelyekben egy nevű kapcsolat *található* egy másik, *ID1* azonosítóval | `SELECT Room`<br>`FROM DIGITIALTWINS Room`<br>`JOIN Thermostat ON Room.Contains`<br>`WHERE Thermostat.$dtId = 'id1'` |
+| Olyan ikrek beszerzése, amelyekben egy nevű kapcsolat *található* egy másik, *ID1* azonosítóval | `SELECT Room`<br>`FROM DIGITALTWINS Room`<br>`JOIN Thermostat RELATED Room.Contains`<br>`WHERE Thermostat.$dtId = 'id1'` |
 | A *floor11* által foglalt Room-modell összes szobájának beolvasása | `SELECT Room`<br>`FROM DIGITALTWINS Floor`<br>`JOIN Room RELATED Floor.Contains`<br>`WHERE Floor.$dtId = 'floor11'`<br>`AND IS_OF_MODEL(Room, 'dtmi:contosocom:DigitalTwins:Room;1')` |
 
 ## <a name="reference-expressions-and-conditions"></a>Hivatkozás: kifejezések és kikötések
@@ -202,7 +202,7 @@ A következő operátorok támogatottak:
 
 A következő típusú ellenőrzési és öntési függvények támogatottak:
 
-| Funkció | Leírás |
+| Függvény | Leírás |
 | -------- | ----------- |
 | IS_DEFINED | Egy logikai értéket ad vissza, amely azt jelzi, hogy a tulajdonsághoz hozzá van-e rendelve érték. Ez csak akkor támogatott, ha az érték egy egyszerű típus. Az egyszerű típusok például a következők: string, Boolean, numerikus vagy `null` . A DateTime, az Objektumtípusok és a tömbök nem támogatottak. |
 | IS_OF_MODEL | Egy logikai értéket ad vissza, amely azt jelzi, hogy a megadott iker megfelel-e a megadott modell típusának. |
@@ -215,7 +215,7 @@ A következő típusú ellenőrzési és öntési függvények támogatottak:
 
 A következő karakterlánc-függvények támogatottak:
 
-| Funkció | Leírás |
+| Függvény | Leírás |
 | -------- | ----------- |
 | STARTSWITH (x, y) | Olyan logikai érték beolvasása, amely azt jelzi, hogy az első karakterlánc-kifejezés a másodikval kezdődik-e. |
 | ENDSWITH (x, y) | Egy olyan logikai érték beolvasása, amely azt jelzi, hogy az első karakterlánc kifejezése a másodperctel végződik-e |

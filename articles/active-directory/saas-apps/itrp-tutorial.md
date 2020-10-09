@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
-ms.openlocfilehash: d7a7c4f7d9a9ba2ef574519a41aae3dd6e28e4fb
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: a49edf738586dce190fa90f7349f2c9b01e2050d
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88552798"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850370"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-itrp"></a>Oktatóanyag: Azure Active Directory integráció a ITRP
 
@@ -92,9 +92,9 @@ Az Azure AD egyszeri bejelentkezés ITRP való konfigurálásához hajtsa végre
 
     ![Egyszeri bejelentkezési módszer kiválasztása](common/select-saml-option.png)
 
-3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon a **Szerkesztés** ikonra kattintva nyissa meg az **alapszintű SAML-konfiguráció** párbeszédpanelt:
+3. Az **egyszeres Sign-On beállítása az SAML-vel** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához:
 
-    ![Szerkesztés ikon](common/edit-urls.png)
+    ![Képernyőfelvétel: az egyszeri Sign-On beállítása az SAML-oldallal lapon a Szerkesztés ikon kiválasztva.](common/edit-urls.png)
 
 4. Az **alapszintű SAML-konfiguráció** párbeszédpanelen hajtsa végre a következő lépéseket.
 
@@ -113,7 +113,7 @@ Az Azure AD egyszeri bejelentkezés ITRP való konfigurálásához hajtsa végre
 
 5. Az **SAML aláíró tanúsítvány** szakaszban válassza a **Szerkesztés** ikont az **SAML aláíró tanúsítvány** párbeszédpanel megnyitásához:
 
-    ![Szerkesztés ikon](common/edit-certificate.png)
+    ![Képernyőfelvétel: az SAML aláíró tanúsítvány lapja, amelyen a Szerkesztés ikon van kiválasztva.](common/edit-certificate.png)
 
 6. Az **SAML aláíró tanúsítvány** párbeszédpanelen másolja az **ujjlenyomat** értékét, és mentse azt:
 
@@ -139,13 +139,13 @@ Az Azure AD egyszeri bejelentkezés ITRP való konfigurálásához hajtsa végre
 
 1. A bal oldali panelen válassza az **egyszeri bejelentkezés**lehetőséget:
 
-    ![Egyszeri bejelentkezés kiválasztása](./media/itrp-tutorial/ic775571.png "Egyszeri bejelentkezés kiválasztása")
+    ![Egyszeri bejelentkezés kiválasztása](./media/itrp-tutorial/ic775571.png "Egyetlen Sign-On kiválasztása")
 
 1. Az **egyszeri bejelentkezési** konfiguráció szakaszban hajtsa végre az alábbi lépéseket.
 
-    ![Egyszeri bejelentkezés szakasz](./media/itrp-tutorial/ic775572.png "Egyszeri bejelentkezés szakasz")
+    ![Képernyőfelvétel: az egyszeres Sign-On szakasz, amelyen engedélyezve van a kijelölés.](./media/itrp-tutorial/ic775572.png "Egy Sign-On szakasz")
 
-    ![Egyszeri bejelentkezés szakasz](./media/itrp-tutorial/ic775573.png "Egyszeri bejelentkezés szakasz")
+    ![Képernyőfelvétel: az egyetlen Sign-On szakasz, ahol felveheti az ebben a lépésben ismertetett információkat.](./media/itrp-tutorial/ic775573.png "Egy Sign-On szakasz")
 
     1. Válassza az **Engedélyezve** lehetőséget.
 
@@ -155,7 +155,7 @@ Az Azure AD egyszeri bejelentkezés ITRP való konfigurálásához hajtsa végre
 
     1. A **Tanúsítvány ujjlenyomata** mezőben illessze be a tanúsítvány **ujjlenyomatának** értékét, amelyet a Azure Portal másolt.
 
-    1. Válassza a **Mentés** lehetőséget.
+    1. Kattintson a **Mentés** gombra.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
@@ -233,7 +233,7 @@ Felhasználói fiók létrehozásához hajtsa végre a következő lépéseket:
 
     1. Adja meg a hozzáadni kívánt érvényes Azure AD-fiók nevét és e-mail-címét.
 
-    1. Válassza a **Mentés** lehetőséget.
+    1. Kattintson a **Mentés** gombra.
 
 > [!NOTE]
 > Az Azure AD felhasználói fiókjainak kiépítéséhez a ITRP által biztosított felhasználói fiók-létrehozási eszközt vagy API-t használhatja.

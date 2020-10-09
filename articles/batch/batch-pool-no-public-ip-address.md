@@ -3,15 +3,15 @@ title: Azure Batch-készlet létrehozása nyilvános IP-címek nélkül
 description: Megtudhatja, hogyan hozhat létre nyilvános IP-címek nélküli készletet
 author: pkshultz
 ms.topic: how-to
-ms.date: 10/05/2020
+ms.date: 10/08/2020
 ms.author: peshultz
 ms.custom: references_regions
-ms.openlocfilehash: 3106ceef8bc45d70401265f61bacb17cb0dc7262
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.openlocfilehash: fcc0538dfef1581a244ae5fd9a3515be3470026c
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91743658"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850931"
 ---
 # <a name="create-an-azure-batch-pool-without-public-ip-addresses"></a>Azure Batch-készlet létrehozása nyilvános IP-címek nélkül
 
@@ -31,13 +31,10 @@ Ha korlátozni szeretné ezen csomópontok elérését, és csökkenti a csomóp
 
 - **Hitelesítés**. Ha nyilvános IP-címek nélküli készletet szeretne használni egy [virtuális hálózaton](./batch-virtual-network.md)belül, a Batch-ügyfél API-nak Azure Active Directory (ad) hitelesítést kell használnia. Az Azure AD Azure Batch-támogatásának dokumentációjáért lásd a [Batch szolgáltatás Active Directoryval történő hitelesítésével](batch-aad-auth.md) foglalkozó témakört. Ha nem a virtuális hálózaton belül hozza létre a készletet, akkor az Azure AD-hitelesítés vagy a kulcs alapú hitelesítés használható.
 
-- **Egy Azure-VNet**. Ha [virtuális hálózatban](batch-virtual-network.md)hozza létre a készletet, kövesse ezeket a követelményeket és konfigurációkat. Egy vagy több alhálózattal rendelkező VNet előkészítéséhez használhatja a Azure Portal, Azure PowerShell, az Azure parancssori felületét (CLI) vagy más metódusokat is.
+- **Egy Azure-VNet**. Ha [virtuális hálózatban](batch-virtual-network.md)hozza létre a készletet, kövesse ezeket a követelményeket és konfigurációkat. Egy vagy több alhálózattal rendelkező VNet előkészítéséhez használhatja a Azure Portal, Azure PowerShell, az Azure Command-Line felületét (CLI) vagy más módszert.
   - A virtuális hálózatnak a Batch-fiókkal megegyező előfizetésben és régióban kell lennie.
   - A készlethez meghatározott alhálózatnak elegendő hozzá nem rendelt IP-címmel kell rendelkeznie ahhoz, hogy helyet tudjon adni a készlethez kijelölt számú virtuális gépnek. Ez a szám a készlet `targetDedicatedNodes` és `targetLowPriorityNodes` tulajdonságának összege. Ha az alhálózaton nincs elegendő hozzá nem rendelt IP-cím, akkor a készlet részlegesen lefoglalja a számítási csomópontokat, és átméretezési hiba következik be.
-  - Le kell tiltania a Private link Service és a végpont hálózati házirendjeit. Ezt az Azure CLI használatával végezheti el:
-    ```azurecli
-    az network vnet subnet update --vnet-name <vnetname> -n <subnetname> --disable-private-endpoint-network-policies --disable-private-link-service-network-policies
-    ```
+  - Le kell tiltania a Private link Service és a végpont hálózati házirendjeit. Ezt az Azure CLI használatával végezheti el: ```az network vnet subnet update --vnet-name <vnetname> -n <subnetname> --disable-private-endpoint-network-policies --disable-private-link-service-network-policies```
 
 > [!IMPORTANT]
 > Minden 100 dedikált vagy alacsony prioritású csomópont esetében a Batch egy privát kapcsolati szolgáltatást és egy Load balancert foglal le. Ezekre az erőforrásokra az előfizetésben meghatározott [erőforráskvóták](../azure-resource-manager/management/azure-subscription-service-limits.md) vonatkoznak. Nagyméretű készletek esetén előfordulhat, hogy egy vagy több ilyen erőforráshoz [kvótát kell emelni](batch-quota-limit.md#increase-a-quota) . Emellett nem kell erőforrás-zárolást alkalmazni a Batch által létrehozott összes erőforrásra, mivel ez megakadályozhatja az erőforrások törlését a felhasználó által kezdeményezett műveletek eredményeképpen, például a készlet törlését vagy a nulla értékre való átméretezést.
@@ -50,7 +47,7 @@ Ha korlátozni szeretné ezen csomópontok elérését, és csökkenti a csomóp
 
 ## <a name="create-a-pool-without-public-ip-addresses-in-the-azure-portal"></a>Nyilvános IP-címek nélküli készlet létrehozása a Azure Portal
 
-1. Az Azure portálon lépjen Batch-fiókjára. 
+1. Az Azure portálon lépjen Batch-fiókjára.
 1. A bal oldali **Beállítások** ablakban válassza a **készletek**elemet.
 1. A **készletek** ablakban válassza a **Hozzáadás**lehetőséget.
 1. A **készlet hozzáadása** ablakban válassza ki a használni kívánt beállítást a **rendszerkép típusa** legördülő listából.
@@ -95,7 +92,7 @@ client-request-id: 00000000-0000-0000-0000-000000000000
      "resizeTimeout": "PT15M",
      "targetDedicatedNodes": 5,
      "targetLowPriorityNodes": 0,
-     "maxTasksPerNode": 3,
+     "taskSlotsPerNode": 3,
      "taskSchedulingPolicy": {
           "nodeFillType": "spread"
      },
@@ -116,7 +113,7 @@ Nyilvános IP-címek nélküli készlet esetén a virtuális gépek nem férhetn
 
 A kimenő kapcsolatok egy másik módja a felhasználó által megadott útvonal (UDR) használata. Ez lehetővé teszi, hogy a forgalmat egy olyan proxykiszolgálón keresztül irányítsa, amely nyilvános internet-hozzáféréssel rendelkezik.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [készletek virtuális hálózatban való létrehozásáról](batch-virtual-network.md).
 - Ismerje meg, hogyan [használhatók a privát végpontok a Batch-fiókokkal](private-connectivity.md).

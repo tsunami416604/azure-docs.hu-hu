@@ -1,14 +1,14 @@
 ---
-title: Bevált gyakorlatok
+title: Ajánlott eljárások
 description: Ismerje meg az ajánlott eljárásokat és hasznos tippeket a Azure Batch megoldás fejlesztéséhez.
 ms.date: 08/12/2020
 ms.topic: conceptual
-ms.openlocfilehash: ca6e491586fd653f39da7466ea116109000facd6
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.openlocfilehash: 695f213c0683bd158539b97719f2c2d8c0210edf
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2020
-ms.locfileid: "89146538"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91849489"
 ---
 # <a name="azure-batch-best-practices"></a>Azure Batch ajánlott eljárások
 
@@ -109,7 +109,7 @@ A feladatokat egyedi alapon vagy gyűjteményekben lehet beküldeni. A feladatok
 
 ### <a name="set-max-tasks-per-node-appropriately"></a>Feladatok maximális száma a csomóponton megfelelően
 
-A Batch támogatja a csomópontokon lévő feladatok túllépését (több feladatot futtat, mint a magok). Így biztosíthatja, hogy a feladatok "illeszkedjenek" a készlet csomópontjaihoz. Előfordulhat például, hogy csökkenhet a teljesítmény, ha nyolc olyan feladatot próbál ütemezni, amelynél a CPU-használat 25%-ra van felhasználva egy csomópontra (egy készletben a-ben `maxTasksPerNode = 8` ).
+A Batch támogatja a csomópontokon lévő feladatok túllépését (több feladatot futtat, mint a magok). Így biztosíthatja, hogy a feladatok "illeszkedjenek" a készlet csomópontjaihoz. Előfordulhat például, hogy csökkenhet a teljesítmény, ha nyolc olyan feladatot próbál ütemezni, amelynél a CPU-használat 25%-ra van felhasználva egy csomópontra (egy készletben a-ben `taskSlotsPerNode = 8` ).
 
 ### <a name="design-for-retries-and-re-execution"></a>Újrapróbálkozások és újbóli végrehajtás tervezése
 
@@ -173,7 +173,7 @@ Miután feltöltötte a sablont az új régióba, újra létre kell hoznia a tan
 
 A Resource Managerrel és a sablonokkal kapcsolatos további információkért tekintse meg a rövid útmutató [: Azure Resource Manager sablonok létrehozása és telepítése a Azure Portal használatával](../azure-resource-manager/templates/quickstart-create-templates-use-the-portal.md)című témakört.
 
-## <a name="connectivity"></a>Kapcsolatok
+## <a name="connectivity"></a>Kapcsolat
 
 Tekintse át a következő útmutatást, amikor a Batch-megoldások kapcsolatát fontolgatja.
 
@@ -217,6 +217,6 @@ Azure Batch létrehozza és kezeli a virtuális gépen lévő felhasználókat �
 
 ### <a name="file-cleanup"></a>Fájl karbantartása
 
-A Batch aktívan megpróbálja törölni azt a munkakönyvtárat, amelyen a feladatok futnak, miután a megőrzési idő lejár. A címtáron kívül írt fájlok [a saját felelőssége,](#manage-task-lifetime) hogy elkerülje a lemezterület kitöltését. 
+A Batch aktívan megpróbálja törölni azt a munkakönyvtárat, amelyen a feladatok futnak, miután a megőrzési idő lejár. A címtáron kívül írt fájlok [a saját felelőssége,](#manage-task-lifetime) hogy elkerülje a lemezterület kitöltését.
 
 A munkakönyvtár automatikus tisztítása le lesz tiltva, ha a Windows rendszerű szolgáltatást futtat a startTask Working Directory szolgáltatásból, mert a mappa még használatban van. Ennek hatására csökken a teljesítmény. Ennek a megoldásnak a kijavításához módosítsa a szolgáltatás könyvtárát egy különálló, a Batch által nem kezelt könyvtárba.

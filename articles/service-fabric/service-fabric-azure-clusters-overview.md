@@ -3,16 +3,14 @@ title: Fürtök létrehozása Windows Serveren és Linuxon
 description: Service Fabric-fürtök Windows Serveren és Linuxon futnak. A Windows Servert vagy Linux rendszert futtató bárhonnan telepítheti és futtathatja Service Fabric alkalmazásokat.
 services: service-fabric
 documentationcenter: .net
-author: dkkapur
 ms.topic: conceptual
 ms.date: 02/01/2019
-ms.author: dekapur
-ms.openlocfilehash: 2c0cc1ddc58347933b498b015c562c3822e8a688
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 7446a221d266230b319c808a88ef4fac05e6fff5
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90978710"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91843311"
 ---
 # <a name="overview-of-service-fabric-clusters-on-azure"></a>Az Azure-beli Service Fabric-fürtök áttekintése
 A Service Fabric-fürt olyan virtuális vagy fizikai gépek hálózathoz csatlakoztatott készlete, amelybe a rendszer üzembe helyezi és kezeli a szolgáltatásait. A fürt részét képező számítógépet vagy virtuális gépet fürtcsomópont-csomópontnak nevezzük. A fürtök több ezer csomópontra is méretezhetők. Ha új csomópontokat ad hozzá a fürthöz, Service Fabric a csomópontok számának megnövekedésével kiegyensúlyozza a szolgáltatás partíciójának replikáit és példányait. Az alkalmazások teljes teljesítményének növelése és a memória-hozzáférés csökkentése. Ha a fürt csomópontjait nem használják hatékonyan, csökkentheti a fürt csomópontjainak számát. Service Fabric újra kiegyenlíti a partíciók replikáit és példányait a csomópontok számának csökkenésével, hogy jobban használhassa a hardvert az egyes csomópontokon.
@@ -71,11 +69,11 @@ Az ügyféltanúsítványok mellett Azure Active Directory is konfigurálható �
 További információért olvassa el az [ügyfél és a csomópont közötti biztonság](service-fabric-cluster-security.md#client-to-node-security)
 
 ### <a name="role-based-access-control"></a>Szerepköralapú hozzáférés-vezérlés
-A szerepköralapú Access Control (RBAC) lehetővé teszi a részletes hozzáférés-vezérlések hozzárendelését az Azure-erőforrásokhoz.  Különböző hozzáférési szabályokat rendelhet hozzá az előfizetésekhez, az erőforráscsoportokhöz és az erőforrásokhoz.  A RBAC-szabályok öröklik az erőforrás-hierarchiát, kivéve, ha a felülbírálása alacsonyabb szinten történik.  A HRE bármely felhasználói vagy felhasználói csoportot hozzárendelhet RBAC szabályokkal, így a kijelölt felhasználók és csoportok módosíthatják a fürtöt.  További információért olvassa el az [Azure RBAC áttekintését](../role-based-access-control/overview.md).
+A Role-Based Access Control (RBAC) lehetővé teszi a részletes hozzáférés-vezérlések hozzárendelését az Azure-erőforrásokhoz.  Különböző hozzáférési szabályokat rendelhet hozzá az előfizetésekhez, az erőforráscsoportokhöz és az erőforrásokhoz.  A RBAC-szabályok öröklik az erőforrás-hierarchiát, kivéve, ha a felülbírálása alacsonyabb szinten történik.  A HRE bármely felhasználói vagy felhasználói csoportot hozzárendelhet RBAC szabályokkal, így a kijelölt felhasználók és csoportok módosíthatják a fürtöt.  További információért olvassa el az [Azure RBAC áttekintését](../role-based-access-control/overview.md).
 
 A Service Fabric a hozzáférés-vezérlést is támogatja, hogy korlátozza a hozzáférést bizonyos fürt műveleteihez a különböző felhasználói csoportok esetében. Ez segít a fürt biztonságosabbá tételében. A fürthöz csatlakozó ügyfelek esetében két hozzáférés-vezérlési típus támogatott: rendszergazdai szerepkör és felhasználói szerepkör.  
 
-További információért olvassa el [Service Fabric szerepköralapú Access Control (RBAC)](service-fabric-cluster-security.md#role-based-access-control-rbac)című témakört.
+További információért olvassa el [Service Fabric Role-Based Access Control (RBAC)](service-fabric-cluster-security.md#role-based-access-control-rbac)című témakört.
 
 ### <a name="network-security-groups"></a>Network security groups (Hálózati biztonsági csoportok) 
 Hálózati biztonsági csoportok (NSG) egy alhálózat, virtuális gép vagy adott hálózati adapter bejövő és kimenő forgalmát vezérlik.  Alapértelmezés szerint, ha több virtuális gép kerül ugyanarra a virtuális hálózatra, akkor bármely porton keresztül kommunikálhatnak egymással.  Ha korlátozni szeretné a számítógépek közötti kommunikációt, megadhatja a NSG a hálózat szegmentálásához vagy a virtuális gépek elkülönítéséhez.  Ha egy fürtben több csomópont-típus található, akkor a NSG az alhálózatokra is alkalmazhatja, hogy megakadályozza, hogy a különböző csomópont-típusokhoz tartozó gépek egymással kommunikáljanak egymással.  

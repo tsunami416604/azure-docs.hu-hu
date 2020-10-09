@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2020
 ms.author: memildin
-ms.openlocfilehash: 943aedb34cef8e7db73877c926da81887ca01df2
-ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
+ms.openlocfilehash: b53374bb4af05da8af7525873f0db040f9b7ead3
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/08/2020
-ms.locfileid: "91839499"
+ms.locfileid: "91849656"
 ---
 # <a name="security-alerts---a-reference-guide"></a>Biztonsági riasztások – útmutató
 
@@ -298,12 +298,13 @@ A lap alján található egy táblázat, amely leírja a riasztások szándéká
 | Riasztás                                           | Leírás                                                                                                                                                                                                                                                                                                                                                                                                                                 | Szándék<br>([További információ](#intentions)) | Súlyosság |
 |-------------------------------------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|:----------------------------------:|----------|
 | **Az SQL-injektálás lehetséges biztonsági rése**   | Egy alkalmazás egy hibás SQL-utasítást generált az adatbázisban. Ez az SQL-injektálási támadások lehetséges sebezhetőségét jelezheti. A hibás utasításoknak két lehetséges oka van. Előfordulhat, hogy az alkalmazás kódjában lévő hiba a hibás SQL-utasítást alakította ki. Vagy az alkalmazás kódja vagy tárolt eljárásai nem fertőtlenítik a felhasználói adatbevitelt a hibás SQL-utasítás létrehozásakor, ami kihasználható az SQL-injektáláshoz.   | -                                  | Közepes   |
-| **Bejelentkezés egy ismeretlen rendszerbiztonsági tag által**           | A hozzáférési minta módosult SQL Serverra. Valaki egy szokatlan rendszerbiztonsági tag (felhasználó) használatával jelentkezett be a kiszolgálóra. Bizonyos esetekben a riasztás jogszerű műveleteket észlel (egy új alkalmazást vagy fejlesztői karbantartást). Más esetekben a riasztás rosszindulatú műveletet észlel (egy korábbi alkalmazott vagy külső támadó).                                                                                                    | Kihasználásának                       | Közepes   |
+| **Potenciálisan ártalmas alkalmazás általi bejelentkezés történt**|Egy potenciálisan ártalmas alkalmazás megpróbálta elérni a (z) {Name} SQL Servert.| Előtámadás| Magas     |
 | **Bejelentkezés szokatlan Azure-adatközpontból**    | A hozzáférési minta módosult egy SQL Server, ahol valaki egy szokatlan Azure-adatközpontból jelentkezett be a kiszolgálóra. Bizonyos esetekben a riasztás legitim műveletet (új alkalmazást vagy Azure-szolgáltatást) észlel. Más esetekben a riasztás rosszindulatú műveletet észlel (az Azure-ban megsértett erőforrással működő támadók).                                                                                          | Ellenőrzés                            | Alacsony      |
 | **Bejelentkezés szokatlan helyről**             | A hozzáférési minta módosult SQL Serverre, ahol valaki szokatlan földrajzi helyről jelentkezett be a kiszolgálóra. Bizonyos esetekben a riasztás jogszerű műveleteket észlel (egy új alkalmazást vagy fejlesztői karbantartást). Más esetekben a riasztás rosszindulatú műveletet észlel (egy korábbi alkalmazott vagy külső támadó).                                                                                             | Kihasználásának                       | Közepes   |
+| **Az 60 napon belül nem látott rendszerbiztonsági tag bejelentkezése**           | Az elmúlt 60 napban nem látott elsődleges felhasználó jelentkezett be az adatbázisba. Ha ez az adatbázis új, vagy ez a várt viselkedés az adatbázishoz hozzáférő felhasználók legutóbbi változásai miatt, Security Center a hozzáférési minták jelentős változásait azonosítja, és megkísérli megakadályozni a jövőbeli téves pozitív állapotot.                                                                                                    | Kihasználásának                       | Közepes   |
 | **Lehetséges SQL találgatásos támadási kísérlet**           | Rendellenesen nagy számú sikertelen bejelentkezési kísérlet történt a különböző hitelesítő adatokkal. Bizonyos esetekben a riasztás behatolási teszteket észlel működés közben. Más esetekben a riasztás találgatásos támadásokat észlel.                                                                                                                                                                                                                      | Ellenőrzés                            | Magas     |
 | **Lehetséges SQL-injektálás**                     | Aktív biztonsági rés történt egy azonosított alkalmazásban, amely sebezhető az SQL-injektálással. Ez azt jelenti, hogy a támadó rosszindulatú SQL-utasításokat próbál beszúrni a sebezhető alkalmazás kódjával vagy tárolt eljárásaival.                                                                                                                                                                                                            | -                                  | Magas     |
-| **Szokatlan exportálási hely**                     | Módosult az SQL-importálási és-exportálási művelet exportálási célhelye. Bizonyos esetekben a riasztás legitim változást észlel (új biztonsági mentési célhely). Más esetekben a riasztás rosszindulatú műveletet észlel (a támadó könnyedén exfiltrated az adatfájlokat).                                                                                                                                                          | Kiszűrése                       | Magas     |
+| **Szokatlan exportálási hely**                     | A (z) {SQL Server Name} SQL Server nagy mennyiségű adattal kinyert egy szokatlan helyre. | Kiszűrése                       | Magas     |
 |                                                 |                                                                                                                                                                                                                                                                                                                                                                                                                                             |                                    |          |
 
 
@@ -454,7 +455,7 @@ A Security Center támogatott kill Chain-leképezések a következő táblázatb
 |                         |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    |  |
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A riasztásokkal kapcsolatos további tudnivalókért tekintse meg a következőket:
 
 - [Biztonsági riasztások az Azure Security Centerben](security-center-alerts-overview.md)

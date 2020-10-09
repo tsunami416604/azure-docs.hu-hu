@@ -1,17 +1,17 @@
 ---
 title: Oktatóanyag – Azure Service Fabric Mesh-erőforrások karbantartása
 description: Ez a dokumentum az Azure Service Fabric Mesh-erőforrások eltávolítását ismerteti, hogy a már nem használt erőforrásokért ne kelljen fizetnie.
-author: dkkapur
+author: georgewallace
 ms.topic: tutorial
 ms.date: 09/18/2018
-ms.author: dekapur
+ms.author: gwallace
 ms.custom: mvc, devcenter
-ms.openlocfilehash: b8ce3c795bc9ad212331ce1c1f413fe7fd6da909
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 1d594001340f76c6dde9f3e00de2d76ee4e5104b
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86246749"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91843328"
 ---
 # <a name="tutorial-remove-azure-resources"></a>Oktatóanyag: Azure-erőforrások eltávolítása
 
@@ -55,7 +55,7 @@ Remove-AzureRmResourceGroup -Name sfmeshTutorial1RG
 
 Az **sfmeshTutorial1RG** erőforráscsoportot [a portálról is törölheti](../azure-resource-manager/management/manage-resource-groups-portal.md#delete-resource-groups). 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy közzétette az Azure-ban a Service Fabric Mesh-alkalmazást, próbálkozzon a következőkkel:
 

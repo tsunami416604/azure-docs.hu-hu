@@ -5,16 +5,16 @@ author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.service: storage
 ms.topic: how-to
-ms.date: 10/06/2020
+ms.date: 10/07/2020
 ms.author: normesta
 ms.reviewer: prishet
 ms.custom: devx-track-csharp
-ms.openlocfilehash: f9f0983bdb5e8763d13eeab8ea21bef7fb9ef47f
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.openlocfilehash: cedb6d162829d63aaac1a36b35abee1faeae3f1b
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91803330"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91843396"
 ---
 # <a name="set-access-control-lists-acls-recursively-for-azure-data-lake-storage-gen2"></a>Hozzáférés-vezérlési listák (ACL-ek) rekurzív beállítása Azure Data Lake Storage Gen2
 
@@ -303,14 +303,19 @@ Set-AzDataLakeGen2AclRecursive -Context $ctx -FileSystem $filesystemName -Path $
 
 ```
 
+> [!NOTE]
+> Ha **alapértelmezett** ACL-bejegyzést kíván beállítani, használja a **-defaultscope tulajdonságnak** paramétert a **set-AzDataLakeGen2ItemAclObject** parancs futtatásakor. Például: `$acl = set-AzDataLakeGen2ItemAclObject -AccessControlType user -Permission rwx -DefaultScope`.
+
 ### <a name="net"></a>[.NET](#tab/dotnet)
 
-Az ACL-t rekurzív módon állíthatja be a **DataLakeDirectoryClient. SetAccessControlRecursiveAsync** metódus meghívásával. Adja át ezt a metódust a [PathAccessControlItems](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem) [listájához](/dotnet/api/system.collections.generic.list-1) . Mindegyik [PathAccessControlItems](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem) egy ACL-bejegyzést definiál.
+Az ACL-t rekurzív módon állíthatja be a **DataLakeDirectoryClient. SetAccessControlRecursiveAsync** metódus meghívásával. Adja át ezt a metódust a [PathAccessControlItem](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem) [listájához](/dotnet/api/system.collections.generic.list-1) . Mindegyik [PathAccessControlItem](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem) egy ACL-bejegyzést definiál. 
 
-Ez a példa egy nevű könyvtár ACL-listáját állítja be `my-parent-directory` . Ezek a bejegyzések az olvasási, írási és végrehajtási engedélyeket adják meg a tulajdonos számára, és csak olvasási és végrehajtási engedélyeket biztosítanak a tulajdonos csoportnak, és minden más felhasználónak nincs hozzáférése. Ebben a példában az utolsó ACL-bejegyzés egy adott felhasználót ad a (z) "" XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX "objektumhoz olvasási és végrehajtási engedélyekkel.
+Ha **alapértelmezett** ACL-bejegyzést kíván beállítani, akkor a [PathAccessControlItem](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem) [PathAccessControlItem. defaultscope tulajdonságnak](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem.defaultscope#Azure_Storage_Files_DataLake_Models_PathAccessControlItem_DefaultScope) tulajdonságát állítsa **igaz**értékre. 
+
+Ez a példa egy nevű könyvtár ACL-listáját állítja be `my-parent-directory` . Ez a metódus egy nevű logikai paramétert fogad `isDefaultScope` el, amely megadja, hogy az alapértelmezett ACL-t kell-e beállítani. Ezt a paramétert használja a rendszer a [PathAccessControlItem](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem)konstruktorában. Az ACL bejegyzései az olvasási, írási és végrehajtási engedélyeket biztosítanak a tulajdonosnak a tulajdonos csoport számára, és csak olvasási és végrehajtási engedélyeket biztosítanak, és minden más felhasználónak nincs hozzáférése. Ebben a példában az utolsó ACL-bejegyzés egy adott felhasználót ad a (z) "" XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX "objektumhoz olvasási és végrehajtási engedélyekkel.
 
 ```cs
-public async void SetACLRecursively(DataLakeServiceClient serviceClient)
+public async void SetACLRecursively(DataLakeServiceClient serviceClient, bool isDefaultScope)
 {
     DataLakeDirectoryClient directoryClient =
         serviceClient.GetFileSystemClient("my-container").
@@ -322,18 +327,18 @@ public async void SetACLRecursively(DataLakeServiceClient serviceClient)
         new PathAccessControlItem(AccessControlType.User, 
             RolePermissions.Read | 
             RolePermissions.Write | 
-            RolePermissions.Execute),
+            RolePermissions.Execute, isDefaultScope),
                     
         new PathAccessControlItem(AccessControlType.Group, 
             RolePermissions.Read | 
-            RolePermissions.Execute),
+            RolePermissions.Execute, isDefaultScope),
                     
         new PathAccessControlItem(AccessControlType.Other, 
-            RolePermissions.None),
+            RolePermissions.None, isDefaultScope),
 
         new PathAccessControlItem(AccessControlType.User, 
             RolePermissions.Read | 
-            RolePermissions.Execute, 
+            RolePermissions.Execute, isDefaultScope,
             entityId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"),
     };
 
@@ -347,17 +352,26 @@ public async void SetACLRecursively(DataLakeServiceClient serviceClient)
 
 Az ACL-t rekurzív módon állíthatja be a **DataLakeDirectoryClient.set_access_control_recursive** metódus meghívásával.
 
-Ez a példa egy nevű könyvtár ACL-listáját állítja be `my-parent-directory` . Ezek a bejegyzések az olvasási, írási és végrehajtási engedélyeket adják meg a tulajdonos számára, és csak olvasási és végrehajtási engedélyeket biztosítanak a tulajdonos csoportnak, és minden más felhasználónak nincs hozzáférése. Ebben a példában az utolsó ACL-bejegyzés egy adott felhasználót ad a (z) "" XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX "objektumhoz olvasási és végrehajtási engedélyekkel.
+Ha **alapértelmezett** ACL-bejegyzést kíván beállítani, adja hozzá a karakterláncot `default:` az egyes ACL-bejegyzések karakterláncának elejéhez. 
+
+Ez a példa egy nevű könyvtár ACL-listáját állítja be `my-parent-directory` . 
+
+Ez a metódus egy nevű logikai paramétert fogad `is_default_scope` el, amely megadja, hogy az alapértelmezett ACL-t kell-e beállítani. Ha ez a paraméter `True` , a rendszer az ACL-bejegyzések listáját a sztring elé sorolja `default:` . 
+
+Az ACL bejegyzései az olvasási, írási és végrehajtási engedélyeket biztosítanak a tulajdonosnak a tulajdonos csoport számára, és csak olvasási és végrehajtási engedélyeket biztosítanak, és minden más felhasználónak nincs hozzáférése. Ebben a példában az utolsó ACL-bejegyzés egy adott felhasználót ad a (z) "" XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX "objektumhoz olvasási és végrehajtási engedélyekkel. Ezek a bejegyzések az olvasási, írási és végrehajtási engedélyeket adják meg a tulajdonos számára, és csak olvasási és végrehajtási engedélyeket biztosítanak a tulajdonos csoportnak, és minden más felhasználónak nincs hozzáférése. Ebben a példában az utolsó ACL-bejegyzés egy adott felhasználót ad a (z) "" XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX "objektumhoz olvasási és végrehajtási engedélyekkel.
 
 ```python
-def set_permission_recursively():
+def set_permission_recursively(is_default_scope):
     
     try:
         file_system_client = service_client.get_file_system_client(file_system="my-container")
 
         directory_client = file_system_client.get_directory_client("my-parent-directory")
               
-        acl = 'user::rwx,group::rwx,other::rwx,user:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx:r-x'
+        acl = 'user::rwx,group::rwx,other::rwx,user:4a9028cf-f779-4032-b09d-970ebe3db258:r--'   
+
+        if is_default_scope:
+           acl = 'default:user::rwx,default:group::rwx,default:other::rwx,default:user:4a9028cf-f779-4032-b09d-970ebe3db258:r--'
 
         directory_client.set_access_control_recursive(acl=acl)
         
@@ -392,14 +406,19 @@ Update-AzDataLakeGen2AclRecursive -Context $ctx -FileSystem $filesystemName -Pat
 
 ```
 
+> [!NOTE]
+> Ha frissíteni szeretné az **alapértelmezett** ACL-bejegyzést, használja a **-defaultscope tulajdonságnak** paramétert a **set-AzDataLakeGen2ItemAclObject** parancs futtatásakor. Például: `$acl = set-AzDataLakeGen2ItemAclObject -AccessControlType user -EntityId $userID -Permission rwx -DefaultScope`.
+
 ### <a name="net"></a>[.NET](#tab/dotnet)
 
-Az ACL-t rekurzív módon frissítheti a **DataLakeDirectoryClient. UpdateAccessControlRecursiveAsync** metódus meghívásával. 
+Az ACL-t rekurzív módon frissítheti a **DataLakeDirectoryClient. UpdateAccessControlRecursiveAsync** metódus meghívásával.  Adja át ezt a metódust a [PathAccessControlItem](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem) [listájához](/dotnet/api/system.collections.generic.list-1) . Mindegyik [PathAccessControlItem](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem) egy ACL-bejegyzést definiál. 
 
-Ez a példa egy írási engedéllyel rendelkező ACL-bejegyzést frissít. 
+Ha frissíteni szeretné az **alapértelmezett** ACL-bejegyzést, akkor a [PathAccessControlItem](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem) [PathAccessControlItem. defaultscope tulajdonságnak](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem.defaultscope#Azure_Storage_Files_DataLake_Models_PathAccessControlItem_DefaultScope) tulajdonságát állítsa **igaz**értékre. 
+
+Ez a példa egy írási engedéllyel rendelkező ACL-bejegyzést frissít. Ez a metódus egy nevű logikai paramétert fogad `isDefaultScope` el, amely megadja, hogy frissíteni kell-e az alapértelmezett ACL-t. Ezt a paramétert használja a rendszer a [PathAccessControlItem](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem)konstruktorában.
 
 ```cs
-public async void UpdateACLsRecursively(DataLakeServiceClient serviceClient)
+public async void UpdateACLsRecursively(DataLakeServiceClient serviceClient, bool isDefaultScope)
 {
     DataLakeDirectoryClient directoryClient =
         serviceClient.GetFileSystemClient("my-container").
@@ -411,7 +430,7 @@ public async void UpdateACLsRecursively(DataLakeServiceClient serviceClient)
         new PathAccessControlItem(AccessControlType.User, 
             RolePermissions.Read |
             RolePermissions.Write | 
-            RolePermissions.Execute, 
+            RolePermissions.Execute, isDefaultScope, 
             entityId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"),
     };
 
@@ -423,19 +442,24 @@ public async void UpdateACLsRecursively(DataLakeServiceClient serviceClient)
 
 ### <a name="python"></a>[Python](#tab/python)
 
-Az ACL-t rekurzív módon frissítheti a **DataLakeDirectoryClient.update_access_control_recursive** metódus meghívásával. 
+Az ACL-t rekurzív módon frissítheti a **DataLakeDirectoryClient.update_access_control_recursive** metódus meghívásával. Ha szeretné frissíteni az **alapértelmezett** ACL-bejegyzést, adja hozzá a karakterláncot `default:` az egyes ACL-bejegyzések karakterláncának elejéhez. 
 
-Ez a példa egy írási engedéllyel rendelkező ACL-bejegyzést frissít. 
+Ez a példa egy írási engedéllyel rendelkező ACL-bejegyzést frissít.
+
+Ez a példa egy nevű könyvtár ACL-listáját állítja be `my-parent-directory` . Ez a metódus egy nevű logikai paramétert fogad `is_default_scope` el, amely megadja, hogy frissíteni kell-e az alapértelmezett ACL-t. Ha ez a paraméter `True` , a frissített ACL-bejegyzés a karakterlánc előtt szerepel `default:` .  
 
 ```python
-def update_permission_recursively():
+def update_permission_recursively(is_default_scope):
     
     try:
         file_system_client = service_client.get_file_system_client(file_system="my-container")
 
         directory_client = file_system_client.get_directory_client("my-parent-directory")
-              
-        acl = 'user:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx:rwx'
+
+        acl = 'user:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx:rwx'   
+
+        if is_default_scope:
+           acl = 'default:user:xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx:rwx'
 
         directory_client.update_access_control_recursive(acl=acl)
 
@@ -453,7 +477,7 @@ def update_permission_recursively():
 
 Egy vagy több ACL-bejegyzést rekurzív módon eltávolíthat. Az ACL-bejegyzések eltávolításához hozzon létre egy új ACL-objektumot az ACL-bejegyzés eltávolításához, majd használja ezt az objektumot az ACL eltávolítása műveletben. Ne szerezze be a meglévő ACL-t, csak adja meg az eltávolítandó ACL-bejegyzéseket. 
 
-Ez a szakasz példákat tartalmaz az ACL eltávolítására.
+Ez a szakasz példákat tartalmaz az ACL eltávolítására. 
 
 ### <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
@@ -470,14 +494,19 @@ $acl = Set-AzDataLakeGen2ItemAclObject -AccessControlType user -EntityId $userID
 Remove-AzDataLakeGen2AclRecursive -Context $ctx -FileSystem $filesystemName  -Acl $acl
 ```
 
+> [!NOTE]
+> Ha el szeretné távolítani az **alapértelmezett** ACL-bejegyzést, használja a **-defaultscope tulajdonságnak** paramétert a **set-AzDataLakeGen2ItemAclObject** parancs futtatásakor. Például: `$acl = set-AzDataLakeGen2ItemAclObject -AccessControlType user -EntityId $userID -Permission "---" -DefaultScope`.
+
 ### <a name="net"></a>[.NET](#tab/dotnet)
 
-Távolítsa el az ACL-bejegyzéseket a **DataLakeDirectoryClient. RemoveAccessControlRecursiveAsync** metódus meghívásával. 
+Távolítsa el az ACL-bejegyzéseket a **DataLakeDirectoryClient. RemoveAccessControlRecursiveAsync** metódus meghívásával. Adja át ezt a metódust a [PathAccessControlItem](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem) [listájához](/dotnet/api/system.collections.generic.list-1) . Mindegyik [PathAccessControlItem](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem) egy ACL-bejegyzést definiál. 
 
-Ez a példa egy ACL-bejegyzést távolít el a nevű könyvtár ACL-listájából `my-parent-directory` . 
+Ha el szeretné távolítani az **alapértelmezett** ACL-bejegyzést, akkor a [PathAccessControlItem](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem) [PathAccessControlItem. defaultscope tulajdonságnak](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem.defaultscope#Azure_Storage_Files_DataLake_Models_PathAccessControlItem_DefaultScope) tulajdonságát állítsa **igaz**értékre. 
+
+Ez a példa egy ACL-bejegyzést távolít el a nevű könyvtár ACL-listájából `my-parent-directory` . Ez a metódus egy nevű logikai paramétert fogad `isDefaultScope` el, amely megadja, hogy el kell-e távolítani a bejegyzést az alapértelmezett ACL-ből. Ezt a paramétert használja a rendszer a [PathAccessControlItem](/dotnet/api/azure.storage.files.datalake.models.pathaccesscontrolitem)konstruktorában.
 
 ```cs
-public async void RemoveACLsRecursively(DataLakeServiceClient serviceClient)
+public async void RemoveACLsRecursively(DataLakeServiceClient serviceClient, isDefaultScope)
 {
     DataLakeDirectoryClient directoryClient =
         serviceClient.GetFileSystemClient("my-container").
@@ -486,7 +515,7 @@ public async void RemoveACLsRecursively(DataLakeServiceClient serviceClient)
     List<RemovePathAccessControlItem> accessControlListForRemoval = 
         new List<RemovePathAccessControlItem>()
         {
-            new RemovePathAccessControlItem(AccessControlType.User, 
+            new RemovePathAccessControlItem(AccessControlType.User, isDefaultScope,
             entityId: "xxxxxxxx-xxxx-xxxx-xxxx-xxxxxxxxxxxx"),
         };
 
@@ -498,12 +527,12 @@ public async void RemoveACLsRecursively(DataLakeServiceClient serviceClient)
 
 ### <a name="python"></a>[Python](#tab/python)
 
-Távolítsa el az ACL-bejegyzéseket a **DataLakeDirectoryClient.remove_access_control_recursive** metódus meghívásával. 
+Távolítsa el az ACL-bejegyzéseket a **DataLakeDirectoryClient.remove_access_control_recursive** metódus meghívásával. Ha el szeretné távolítani az **alapértelmezett** ACL-bejegyzést, adja hozzá a karakterláncot az `default:` ACL-bejegyzési karakterlánc elejéhez. 
 
-Ez a példa egy ACL-bejegyzést távolít el a nevű könyvtár ACL-listájából `my-parent-directory` . 
+Ez a példa egy ACL-bejegyzést távolít el a nevű könyvtár ACL-listájából `my-parent-directory` . Ez a metódus egy nevű logikai paramétert fogad `is_default_scope` el, amely megadja, hogy el kell-e távolítani a bejegyzést az alapértelmezett ACL-ből. Ha ez a paraméter `True` , a frissített ACL-bejegyzés a karakterlánc előtt szerepel `default:` . 
 
 ```python
-def remove_permission_recursively():
+def remove_permission_recursively(is_default_scope):
     
     try:
         file_system_client = service_client.get_file_system_client(file_system="my-container")
@@ -511,6 +540,9 @@ def remove_permission_recursively():
         directory_client = file_system_client.get_directory_client("my-parent-directory")
               
         acl = 'user:4a9028cf-f779-4032-b09d-970ebe3db258'
+
+        if is_default_scope:
+           acl = 'default:user:4a9028cf-f779-4032-b09d-970ebe3db258'
 
         directory_client.remove_access_control_recursive(acl=acl)
 

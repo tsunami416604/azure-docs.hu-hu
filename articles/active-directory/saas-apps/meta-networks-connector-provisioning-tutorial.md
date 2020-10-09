@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 10/01/2019
 ms.author: Zhchia
-ms.openlocfilehash: bcddaec1660082c2d3fed42e0c10cbdde987693c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: c43624b57f5a46473e8640200a7284a9fa737790
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91273517"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91849248"
 ---
 # <a name="tutorial-configure-meta-networks-connector-for-automatic-user-provisioning"></a>Oktatóanyag: a meta Networks-összekötő konfigurálása automatikus felhasználók kiépítéséhez
 
@@ -60,7 +60,7 @@ A felhasználók automatikus kiépítésének konfigurálása és engedélyezés
 
 3.  Adja meg az **API-kulcs nevét** és az **API-kulcs leírását**.
 
-    ![Meta Networks-összekötő jogkivonat létrehozása](media/meta-networks-connector-provisioning-tutorial/keyname.png)
+    :::image type="content" source="media/meta-networks-connector-provisioning-tutorial/keyname.png" alt-text="Képernyőkép a meta Networks Connector felügyeleti konzolról, amely a P I kulcs nevét és az Azure A D és a p i kulcsának a P i Key Description értékeit emeli ki." border="false":::
 
 4.  A **csoportok** és **felhasználók** **írási** jogosultságának bekapcsolása.
 
@@ -68,7 +68,7 @@ A felhasználók automatikus kiépítésének konfigurálása és engedélyezés
 
 5.  Kattintson a **Hozzáadás**gombra. Másolja a **titkos kulcsot** , és mentse el, mivel ez az egyetlen időpontig megtekinthető. Ez az érték a Azure Portalban található meta Networks Connector alkalmazás létesítés lapjának titkos jogkivonat mezőjében lesz megadva.
 
-    ![Meta Networks-összekötő jogkivonat létrehozása](media/meta-networks-connector-provisioning-tutorial/token.png)
+    :::image type="content" source="media/meta-networks-connector-provisioning-tutorial/token.png" alt-text="Képernyőkép a meta Networks Connector felügyeleti konzolról, amely a P I kulcs nevét és az Azure A D és a p i kulcsának a P i Key Description értékeit emeli ki." border="false":::
 
 6.  Vegyen fel egy identitásszolgáltató úgy, hogy az **adminisztráció > beállítások > identitásszolgáltató > új létrehozása**elemre navigál.
 

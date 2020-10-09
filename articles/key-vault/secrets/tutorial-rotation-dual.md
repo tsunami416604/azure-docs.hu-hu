@@ -6,16 +6,16 @@ author: msmbaldwin
 manager: rkarlin
 tags: rotation
 ms.service: key-vault
-ms.subservice: general
+ms.subservice: secrets
 ms.topic: tutorial
 ms.date: 06/22/2020
 ms.author: jalichwa
-ms.openlocfilehash: e2729a5dca54bb7e65e9504f89bd203f9928b120
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 5da31d45e068f414c8afa38bcb46cdf1f790a9e5
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91251643"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91843277"
 ---
 # <a name="automate-the-rotation-of-a-secret-for-resources-with-two-sets-of-authentication-credentials"></a>A titkos kulcs rotációjának automatizálása két hitelesítési hitelesítő adattal rendelkező erőforrásokhoz
 
@@ -48,7 +48,7 @@ Ha nem rendelkezik meglévő Key Vault-és Storage-fiókkal, akkor az alábbi te
 1. Válassza a **felülvizsgálat + létrehozás**lehetőséget.
 1. Kattintson a **Létrehozás** elemre.
 
-    ![Hozzon létre egy erőforráscsoportot](../media/secrets/rotation-dual/dual-rotation-1.png)
+    ![Erőforráscsoport létrehozása](../media/secrets/rotation-dual/dual-rotation-1.png)
 
 Most már rendelkezik egy kulcstartóval és két Storage-fiókkal. A telepítőt az Azure CLI-ben ellenőrizheti a következő parancs futtatásával:
 
@@ -205,7 +205,7 @@ az storage account keys list -n akvrotationstorage
 - [Storage-fiók](https://github.com/jlichwa/KeyVault-Rotation-StorageAccountKey-PowerShell)
 - [Redis Cache](https://github.com/jlichwa/KeyVault-Rotation-RedisCacheKey-PowerShell)
 
-## <a name="learn-more"></a>Tudjon meg többet
+## <a name="learn-more"></a>További információ
 - Áttekintés: [Key Vault figyelése Azure Event Grid](../general/event-grid-overview.md)
 - Útmutató: az [első függvény létrehozása a Azure Portalban](../../azure-functions/functions-create-first-azure-function.md)
 - Útmutató: [e-mailek fogadása a Key Vault titkos változásairól](../general/event-grid-logicapps.md)

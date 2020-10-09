@@ -8,18 +8,21 @@ ms.date: 9/11/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.reviewer: baanders
-ms.openlocfilehash: 6726dab6f1037f01eda316968e3c5b503aa9dbfb
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: baf89ec75f844ae1a1f7797d26d2fb04a0d5df34
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91326576"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91849843"
 ---
 # <a name="integrate-with-logic-apps-using-a-custom-connector"></a>Integrálás a Logic Apps használatával egyéni összekötővel
 
 A [Azure Logic apps](../logic-apps/logic-apps-overview.md) egy felhőalapú szolgáltatás, amely segít a munkafolyamatok automatizálásában az alkalmazások és szolgáltatások között. Az Azure digitális Twins API-khoz való Logic Apps csatlakoztatásával az Azure digitális Twins szolgáltatásban és az azokban lévő adatforgalomban is létrehozhat ilyen automatizált folyamatokat.
 
 Az Azure Digital Twins jelenleg nem rendelkezik hitelesített (előre elkészített) összekötővel a Logic Appshoz. Ehelyett a Logic Apps és az Azure Digital Twins használatának jelenlegi folyamata egy [**egyéni Logic apps-összekötő**](../logic-apps/custom-connector-overview.md)létrehozása, amely egy [Egyéni Azure digitális Twins hencegés](https://docs.microsoft.com/samples/azure-samples/digital-twins-custom-swaggers/azure-digital-twins-custom-swaggers/) használatával lett módosítva, hogy működjön a Logic apps.
+
+> [!NOTE]
+> A fent hivatkozott egyéni hencegő mintában a hencegés több verziója található. A legújabb verzió a legutóbbi dátummal rendelkező almappában található, de a mintában szereplő korábbi verziók továbbra is támogatottak.
 
 Ebben a cikkben a [Azure Portal](https://portal.azure.com) használatával **hozzon létre egy egyéni összekötőt** , amely a Logic apps Azure digitális Twins-példánnyal való összekapcsolására használható. Ezután létre fog **hozni egy logikai alkalmazást** , amely ezt a kapcsolatot használja egy példaként, amelyben az időzítő által aktivált események automatikusan frissítik a Twin-et az Azure Digital Twins-példányban. 
 
@@ -90,7 +93,12 @@ Ekkor megjelenik az összekötő üzembe helyezési lapja. Ha befejezte az üzem
 
 Ezután konfigurálja a létrehozott összekötőt az Azure digitális Twins eléréséhez.
 
-Először töltsön le egy egyéni Azure Digital Twins hencegés, amely úgy lett módosítva, hogy működjön a Logic Apps. Töltse le az **Azure Digital Twins egyéni hencegő** mintáját [ebből a hivatkozásból](https://docs.microsoft.com/samples/azure-samples/digital-twins-custom-swaggers/azure-digital-twins-custom-swaggers/) a *zip letöltése* gomb megnyomásával. Navigáljon a letöltött *Azure_Digital_Twins_Custom_Swaggers.zip* mappára, és csomagolja ki. Az oktatóanyaghoz tartozó egyéni hencegés a következő címen található: *Azure_Digital_Twins_Custom_Swaggers\LogicApps\preview\2020-05-31-preview\digitaltwins.js*.
+Először töltsön le egy egyéni Azure Digital Twins hencegés, amely úgy lett módosítva, hogy működjön a Logic Apps. Töltse le az **Azure Digital Twins egyéni hencegő** mintáját [**ebből a hivatkozásból**](https://docs.microsoft.com/samples/azure-samples/digital-twins-custom-swaggers/azure-digital-twins-custom-swaggers/) a *zip letöltése* gomb megnyomásával. Navigáljon a letöltött *Azure_Digital_Twins_Custom_Swaggers.zip* mappára, és csomagolja ki. 
+
+Az oktatóanyaghoz tartozó egyéni hencegés a _**Azure_Digital_Twins_Custom_Swaggers \logicapps**_ mappában található. Ez a mappa a *STABLE* és a *Preview*nevű almappákat tartalmaz, amelyek mindegyike dátum szerint rendezi a hencegés különböző verzióit. A legutóbbi dátummal rendelkező mappa a hencegés legújabb példányát fogja tartalmazni. Bármelyik verziót választja, a hencegő fájl neve _**digitaltwins.json**_.
+
+> [!NOTE]
+> Hacsak nem dolgozik előzetes verziójú szolgáltatással, általánosan ajánlott a hencegés legújabb *stabil* verziójának használata. A hencegés korábbi verziói és előzetes verziói azonban továbbra is támogatottak. 
 
 Ezután nyissa meg az összekötő áttekintés lapját a [Azure Portal](https://portal.azure.com) , és kattintson a *Szerkesztés*elemre.
 

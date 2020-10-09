@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/26/2019
 ms.author: Zhchia
-ms.openlocfilehash: 3f835c021e20edba21583e71c6c1a480eca7fd89
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 45a1ae281a8a1acb1cfd12efe500f5a623033ef3
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91255833"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850039"
 ---
 # <a name="tutorial-configure-oracle-fusion-erp-for-automatic-user-provisioning"></a>Oktatóanyag: az Oracle Fusion ERP konfigurálása a felhasználók automatikus kiépítési felállításához
 
@@ -56,11 +56,11 @@ Mielőtt beállítja az Oracle Fusion ERP-t az Azure AD-vel való automatikus fe
 
 2. Kattintson a bal felső sarokban található navigátorra. Az **eszközök**területen válassza a **biztonsági konzol**lehetőséget.
 
-    ![Oracle Fusion ERP – SCIM hozzáadása](media/oracle-fusion-erp-provisioning-tutorial/login.png)
+    :::image type="content" source="media/oracle-fusion-erp-provisioning-tutorial/login.png" alt-text="Képernyőkép az Oracle Fusion E R P felügyeleti konzoljának navigátor oldaláról. Az eszközök és a biztonsági konzol ki van emelve." border="false":::
 
 3. Navigáljon a **felhasználókhoz**.
     
-    ![Oracle Fusion ERP – SCIM hozzáadása](media/oracle-fusion-erp-provisioning-tutorial/user.png)
+    :::image type="content" source="media/oracle-fusion-erp-provisioning-tutorial/user.png" alt-text="Képernyőkép az Oracle Fusion E R P felügyeleti konzoljának navigátor oldaláról. Az eszközök és a biztonsági konzol ki van emelve." border="false":::
 
 4. Mentse a rendszergazdai felhasználói fiók felhasználónevét és jelszavát, amelyet az Oracle Fusion ERP felügyeleti konzolba való bejelentkezéshez fog használni. Ezeket az értékeket az Oracle Fusion ERP-alkalmazás üzembe helyezés lapjának **rendszergazdai Felhasználónév** és **jelszó** mezőiben kell megadni a Azure Portal.
 
@@ -116,7 +116,7 @@ Ez a szakasz végigvezeti az Azure AD-létesítési szolgáltatás konfigurálá
 
 5. A **rendszergazdai hitelesítő adatok** szakaszban adja `https://ejlv.fa.em2.oraclecloud.com/hcmRestApi/scim/` meg a **bérlői URL-címet**. Adja meg a rendszergazda **felhasználónevét** és jelszavát a korábban lekért rendszergazdai Felhasználónév és **jelszó** mezőkben. Kattintson az Azure AD és az Oracle Fusion ERP közötti **kapcsolat tesztelése** elemre. 
 
-    ![Oracle Fusion ERP – SCIM hozzáadása](media/oracle-fusion-erp-provisioning-tutorial/admin.png)
+    :::image type="content" source="media/oracle-fusion-erp-provisioning-tutorial/admin.png" alt-text="Képernyőkép az Oracle Fusion E R P felügyeleti konzoljának navigátor oldaláról. Az eszközök és a biztonsági konzol ki van emelve." border="false":::
 
 6. Az **értesítési e-mail** mezőben adja meg egy olyan személy vagy csoport e-mail-címét, akinek meg kell kapnia a kiépítési hibákra vonatkozó értesítéseket, és jelölje be a jelölőnégyzetet – **e-mail-értesítés küldése hiba**esetén.
 
@@ -126,11 +126,11 @@ Ez a szakasz végigvezeti az Azure AD-létesítési szolgáltatás konfigurálá
 
 8. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása az Oracle Fusion ERP**-be lehetőséget.
 
-    ![Oracle Fusion ERP – SCIM hozzáadása](media/oracle-fusion-erp-provisioning-tutorial/user-mapping.png)
+    :::image type="content" source="media/oracle-fusion-erp-provisioning-tutorial/user-mapping.png" alt-text="Képernyőkép az Oracle Fusion E R P felügyeleti konzoljának navigátor oldaláról. Az eszközök és a biztonsági konzol ki van emelve." border="false":::
 
 9. Tekintse át az Azure AD-ból az Oracle Fusion ERP-be szinkronizált felhasználói attribútumokat az **attribútum-hozzárendelés** szakaszban. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok az Oracle Fusion ERP felhasználói fiókjainak a frissítési műveletekhez való megfeleltetésére szolgálnak. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
 
-    ![Oracle Fusion ERP – SCIM hozzáadása](media/oracle-fusion-erp-provisioning-tutorial/user-attribute.png)
+    :::image type="content" source="media/oracle-fusion-erp-provisioning-tutorial/user-attribute.png" alt-text="Képernyőkép az Oracle Fusion E R P felügyeleti konzoljának navigátor oldaláról. Az eszközök és a biztonsági konzol ki van emelve." border="false":::
 
 10. A **leképezések** szakaszban válassza a **Azure Active Directory csoportok szinkronizálása Oracle Fusion ERP-** re lehetőséget.
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 01/13/2020
 ms.author: Zhchia
-ms.openlocfilehash: 632330d7c94e145124e202be9050e4e1beeb12b0
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 43d6ac8354e992a87091bc66417f7ca88e784199
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91265459"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850659"
 ---
 # <a name="tutorial-configure-lucidchart-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés LucidChart konfigurálása
 
@@ -49,11 +49,11 @@ Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezi
 
 1. Jelentkezzen be a [LucidChart felügyeleti konzolba](https://www.lucidchart.com). Navigáljon a **Team > alkalmazás-integráció**elemre.
 
-      ![LucidChart scim](./media/lucidchart-provisioning-tutorial/team1.png)
+      :::image type="content" source="./media/lucidchart-provisioning-tutorial/team1.png" alt-text="Képernyőkép a LucidChart felügyeleti konzolról. A csapat menü ki van emelve és meg van nyitva. A rendszergazda területen az alkalmazás integrációja ki van emelve." border="false":::
 
 2. Navigáljon a **scim**.
 
-      ![LucidChart scim](./media/lucidchart-provisioning-tutorial/scim.png)
+      :::image type="content" source="./media/lucidchart-provisioning-tutorial/scim.png" alt-text="Képernyőkép a LucidChart felügyeleti konzolról. A csapat menü ki van emelve és meg van nyitva. A rendszergazda területen az alkalmazás integrációja ki van emelve." border="false":::
 
 3. Görgessen le a **tulajdonosi jogkivonat** és a **LucidChart alap URL-címének**megtekintéséhez. Másolja és mentse a **tulajdonosi jogkivonatot**. Ez az érték a LucidChart alkalmazás üzembe helyezés lapjának **titkos jogkivonat** * mezőjében jelenik meg a Azure Portal. 
 
@@ -121,7 +121,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
    |urn: IETF: params: scim: sémák: bővítmény: Enterprise: 2.0: felhasználó: szervezet|Sztring|
    |urn: IETF: params: scim: sémák: bővítmény: Enterprise: 2.0: felhasználó: employeeNumber|Sztring|
    |urn: IETF: params: scim: sémák: bővítmény: Enterprise: 2.0: User: Manager|Referencia|
-   |urn: IETF: params: scim: sémák: bővítmény: LucidChart: 1.0: felhasználó: canEdit|Logikai|
+   |urn: IETF: params: scim: sémák: bővítmény: LucidChart: 1.0: felhasználó: canEdit|Logikai érték|
 
 10. A **leképezések** szakaszban válassza a **Azure Active Directory csoportok szinkronizálása a LucidChart**lehetőséget.
 

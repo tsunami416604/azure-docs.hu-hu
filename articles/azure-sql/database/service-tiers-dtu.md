@@ -9,14 +9,14 @@ ms.devlang: ''
 ms.topic: conceptual
 author: stevestein
 ms.author: sstein
+ms.date: 10/07/2020
 ms.reviewer: ''
-ms.date: 11/26/2019
-ms.openlocfilehash: ba2170923885eac19af4bfe3ce55ea653371c0e8
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 8ed4edb8739758af057276bd21c4ad62bf9ab974
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91321356"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91848857"
 ---
 # <a name="service-tiers-in-the-dtu-based-purchase-model"></a>A DTU-alapú vásárlási modell szolgáltatásszintjei
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -40,16 +40,21 @@ A szolgáltatási szint kiválasztása elsősorban az üzletmenet folytonossága
 |**Rendelkezésre állási SLA**|99,99%|99,99%|99,99%|
 |**Biztonsági másolatok maximális megőrzése**|7 nap|35 nap|35 nap|
 |**CPU**|Alacsony|Alacsony, közepes és magas|Közepes, magas|
-|**IO-átviteli sebesség (hozzávetőleges)** |1-5 IOPS/DTU| 1-5 IOPS/DTU | 25 IOPS/DTU|
+|**IOPS (hozzávetőleges)**\* |1-5 IOPS/DTU| 1-5 IOPS/DTU | 25 IOPS/DTU|
 |**IO-késés (hozzávetőleges)**|5 MS (olvasás), 10 MS (írás)|5 MS (olvasás), 10 MS (írás)|2 MS (olvasás/írás)|
-|**Oszlopcentrikus indexelése** |N.A.|S3 és újabb verziók|Támogatott|
+|**Oszlopcentrikus indexelése** |N/A|S3 és újabb verziók|Támogatott|
 |**Memóriabeli OLTP**|N.A.|N.A.|Támogatott|
 
+\* Az adatfájlok minden olvasási és írási IOPS, beleértve a háttér i/o-t (ellenőrzőpont és lusta író)
+
 > [!IMPORTANT]
-> Az alapszintű, standard S0, S1 és S2 szolgáltatási szintek kevesebb mint egy virtuális mag (CPU) biztosítanak.  A CPU-igényes számítási feladatokhoz az S3 vagy nagyobb szolgáltatási réteg ajánlott. 
+> Az alapszintű, a S0, az S1 és az S2 szolgáltatási célkitűzések kevesebb mint egy virtuális mag (CPU) biztosítanak.  A CPU-igényes számítási feladatokhoz az S3 vagy újabb szolgáltatási cél javasolt. 
 >
->Az adattárolással kapcsolatban az alapszintű, a standard S0 és az S1 szolgáltatási szint a standard oldal Blobokra kerül. A standard oldal Blobok a merevlemezes (HDD-) alapú tárolóeszközöket használják, és a leghatékonyabb fejlesztéshez, teszteléshez és más, ritkán használt számítási feladatokhoz, amelyek kevésbé érzékenyek a teljesítmény változékonyságára.
+> Az alapszintű, a S0 és az S1 szolgáltatási célkitűzésekben az adatbázisfájlok tárolása az Azure standard Storage-ban történik, amely merevlemez-(HDD-) alapú adathordozót használ. Ezek a szolgáltatási célkitűzések a legjobb fejlesztési, tesztelési és egyéb ritkán használt számítási feladatokhoz ideálisak, amelyek kevésbé érzékenyek a teljesítmény változékonyságára.
 >
+
+> [!TIP]
+> Ha meg szeretné tekinteni egy adatbázis vagy rugalmas készlet tényleges [erőforrás-irányítási](resource-limits-logical-server.md#resource-governance) korlátait, kérdezze le a [sys.dm_user_db_resource_governance](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-user-db-resource-governor-azure-sql-database) nézetet.
 
 > [!NOTE]
 > Az alapszintű szolgáltatási szinten Azure SQL Database ingyenes adatbázist szerezhet be az Azure-ban az ingyenes Azure-fiókkal együtt. További információkért lásd: [felügyelt felhőalapú adatbázis létrehozása az ingyenes Azure-fiókkal](https://azure.microsoft.com/free/services/sql-database/).
@@ -109,7 +114,7 @@ Az adatbázis méretezési tényezőn alapul. A méretezési tényező (SF-ként
 
 A munkaterhelés kilenc tranzakciós típusból áll, ahogy az alábbi táblázatban is látható. Minden tranzakció úgy van kialakítva, hogy kiemelje a rendszerjellemzők egy adott készletét az adatbázismotor és a rendszer hardverén, nagy kontraszttal a többi tranzakciótól. Ezzel a megközelítéssel könnyebben mérhetővé válik a különböző összetevők hatása a teljes teljesítményre. Például a "READ Heavy" tranzakció jelentős számú olvasási műveletet eredményez a lemezről.
 
-| Transaction Type (Tranzakció típusa) | Description |
+| Transaction Type (Tranzakció típusa) | Leírás |
 | --- | --- |
 | A Lite olvasása |Válassza memóriában tárolt; csak olvasható |
 | Adathordozó olvasása |Válassza többnyire a memóriában; csak olvasható |

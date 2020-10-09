@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 06/15/2020
 ms.author: jeedes
-ms.openlocfilehash: 5956623876646d976c2c93b4953adab33e8231b2
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 429820f41025eda262742ac9aec1de3b646b141f
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88535577"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850548"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-intelligencebank"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a IntelligenceBank
 
@@ -111,7 +111,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Create** (Létrehozás) gombra.
+   1. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -137,11 +137,11 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 1. Kattintson a **hitelesítő** elemre, és kattintson az **új hozzáadása** lehetőségre.
 
-    ![IntelligenceBank-konfiguráció](./media/intelligencebank-tutorial/authenticator.PNG)
+    ![A képernyőképen a rendszergazda lap van kiválasztva, az új hozzáadása ikon pedig megjelenik.](./media/intelligencebank-tutorial/authenticator.PNG)
 
 1. Hajtsa végre a következő lépéseket:
 
-    ![IntelligenceBank-konfiguráció](./media/intelligencebank-tutorial/urls.PNG)
+    ![Képernyőfelvétel: azok a mezők, amelyeken az ebben a lépésben megadott adatokat adja meg.](./media/intelligencebank-tutorial/urls.PNG)
 
     a. A **név** szövegmezőbe írja be a nevet (például `azureadsso` ).
 
@@ -165,11 +165,11 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 1. A felhasználó hozzáadásához lépjen a **rendszergazda**  ->  **felhasználók** elemre, és válassza **User**az **új felhasználó hozzáadása ikont** .
 
-    ![IntelligenceBank-konfiguráció](./media/intelligencebank-tutorial/creating-user.PNG)
+    ![A képernyőképen a felhasználók lapon kiválasztott felhasználók ikon látható.](./media/intelligencebank-tutorial/creating-user.PNG)
 
 1. Töltse ki a szükséges mezőket a szervezeti követelményeknek megfelelően, majd kattintson a **Save (Mentés**) gombra.
 
-    ![IntelligenceBank-konfiguráció](./media/intelligencebank-tutorial/creating-user-1.PNG)
+    ![Képernyőfelvétel: az új felhasználó hozzáadása lap, ahol a felhasználói adatokat adja meg.](./media/intelligencebank-tutorial/creating-user-1.PNG)
 
 ## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
 

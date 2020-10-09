@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 07/16/2019
 ms.author: jeedes
-ms.openlocfilehash: 07ac0ac4d7b86b644ca5d1876b1332fee7358cac
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 826ce780fd9196d67adba5bb148a795d3fe4f0f2
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88552601"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850353"
 ---
 # <a name="tutorial-integrate-jfrog-artifactory-with-azure-active-directory"></a>Oktatóanyag: a beli jfrog-Artifactory integrálása Azure Active Directory
 
@@ -61,7 +61,7 @@ Konfigurálja és tesztelje az Azure AD SSO-t a beli jfrog Artifactory egy **B. 
 Az Azure AD SSO beli jfrog-Artifactory való konfigurálásához és teszteléséhez hajtsa végre a következő építőelemeket:
 
 1. Az **[Azure ad SSO konfigurálása](#configure-azure-ad-sso)** – a funkció használatának engedélyezése a felhasználók számára.
-2. **[Beli jfrog-ARTIFACTORY SSO konfigurálása](#configure-jfrog-artifactory-sso)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+2. **[Beli jfrog-ARTIFACTORY SSO konfigurálása](#configure-jfrog-artifactory-sso)** – az egyes Sign-On beállításainak konfigurálása az alkalmazás oldalán.
 3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
 4. **[Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user)** – ezzel lehetővé teszi, hogy B. Simon engedélyezze az Azure ad egyszeri bejelentkezést.
 5. **[Beli jfrog-Artifactory-teszt felhasználó létrehozása](#create-jfrog-artifactory-test-user)** – ha a felhasználó Azure ad-képviseletéhez kapcsolódó B. Simon beli jfrog-Artifactory rendelkezik.
@@ -73,7 +73,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. A [Azure Portal](https://portal.azure.com/) **beli jfrog Artifactory** alkalmazás-integráció lapján keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
 1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
-1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
+1. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
 
    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
@@ -92,21 +92,21 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. A beli jfrog Artifactory alkalmazás egy adott formátumban várja az SAML-jogcímeket, ehhez pedig egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőképen az alapértelmezett attribútumok listája látható. Kattintson a **Szerkesztés** ikonra a felhasználói attribútumok párbeszédpanel megnyitásához.
 
-    ![image](common/edit-attribute.png)
+    ![A képernyőképen a felhasználói attribútumok láthatók a szerkesztési vezérlővel.](common/edit-attribute.png)
 
 1. A fentieken kívül a beli jfrog Artifactory alkalmazás néhány további attribútumot vár, amelyeket az SAML-válaszban vissza kell adni. A **csoport jogcímek (előzetes verzió)** párbeszédpanel **felhasználói attribútumok & jogcímek** szakaszában hajtsa végre a következő lépéseket:
 
     a. Kattintson a **kérelemben visszaadott csoportok**melletti **tollra** .
 
-    ![image](./media/jfrog-artifactory-tutorial/config04.png)
+    ![Képernyőfelvétel: felhasználói attribútumok & jogcímek kijelölése a szerkesztési ikonnal.](./media/jfrog-artifactory-tutorial/config04.png)
 
-    ![image](./media/jfrog-artifactory-tutorial/config05.png)
+    ![Képernyőfelvétel: a Group jogcímek szakasz az összes kiválasztott csoporttal együtt.](./media/jfrog-artifactory-tutorial/config05.png)
 
     b. Válassza az **összes csoport** lehetőséget a választógombok listájáról.
 
     c. Kattintson a **Mentés** gombra.
 
-4. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg a **tanúsítvány (RAW)** elemet, majd a **Letöltés** gombra kattintva töltse le a tanúsítványt, és mentse a számítógépre.
+4. Az **egyszeres Sign-On beállítása SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg a **tanúsítvány (RAW)** elemet, majd a **Letöltés** gombra kattintva töltse le a tanúsítványt, és mentse a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozása](common/certificateraw.png)
 
@@ -128,7 +128,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Create** (Létrehozás) gombra.
+   1. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

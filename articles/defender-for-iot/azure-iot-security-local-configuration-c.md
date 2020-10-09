@@ -13,12 +13,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 07/26/2019
 ms.author: mlottner
-ms.openlocfilehash: 7cc6886b5341d8bc8a82288ad8a2a699381a953c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 46b3009a7a57f726457a767afe501bfb28a06606
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90935297"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91843362"
 ---
 # <a name="understanding-the-localconfigurationjson-file---c-agent"></a>A LocalConfiguration.json fájl ismertetése – C-ügynök
 
@@ -42,7 +42,7 @@ A konfigurációs fájl módosításai az ügynök újraindításakor lépnek é
 | Identitás | "DPS", "SecurityModule", "eszköz" | Hitelesítési identitás – DPS if hitelesítés a DPS-n keresztül történik, SecurityModule, ha a hitelesítés biztonsági modul hitelesítő adataival vagy eszközével történik, ha az eszköz hitelesítő adataival történik a hitelesítés. |
 | AuthenticationMethod | "SasToken", "SelfSignedCertificate" | a hitelesítő felhasználói titok – válassza a SasToken lehetőséget, ha a titok használata szimmetrikus kulcs, válassza az önaláírt tanúsítvány lehetőséget, ha a titok egy önaláírt tanúsítvány  |
 | FilePath | Fájl elérési útja (karakterlánc) | A hitelesítési titkot tartalmazó fájl elérési útja |
-| HostName | sztring | Az Azure IOT hub állomásneve. általában <My-hub>. azure-devices.net |
+| HostName | sztring | Az Azure IoT hub állomásneve. általában <My-hub>. azure-devices.net |
 | DeviceId | sztring | Az eszköz azonosítója (az Azure IoT Hubban regisztrálva) |
 | DPS | JsonObject | DPS-hez kapcsolódó konfigurációk |
 | IDScope | sztring | A DPS azonosító hatóköre |

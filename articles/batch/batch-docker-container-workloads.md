@@ -2,26 +2,28 @@
 title: Tárolókhoz kapcsolódó számítási feladatok
 description: Megtudhatja, hogyan futtathatja és méretezheti az alkalmazásokat a Azure Batch tároló lemezképei között. Hozzon létre egy olyan számítási csomópontok készletét, amelyek támogatják a futó tárolók feladatait.
 ms.topic: how-to
-ms.date: 09/10/2020
+ms.date: 10/06/2020
 ms.custom: seodec18, devx-track-csharp
-ms.openlocfilehash: 0efc63258295ec7a7db20ec97e0ac81bd4c382f7
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.openlocfilehash: 9d8776ba8e683cd14c766fead1e7238a6c24d000
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90018509"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91843447"
 ---
 # <a name="run-container-applications-on-azure-batch"></a>Tároló-alkalmazások futtatása Azure Batch
 
 Azure Batch lehetővé teszi nagy mennyiségű kötegelt számítási feladat futtatását és méretezését az Azure-ban. A Batch-feladatok közvetlenül futtathatók a Batch-készletben lévő virtuális gépeken (csomópontokon), de beállíthat egy batch-készletet is a feladatok Docker-kompatibilis tárolókban való futtatásához a csomópontokon. Ebből a cikkből megtudhatja, hogyan hozhat létre egy olyan számítási csomópontok készletét, amelyek támogatják a futó tárolók feladatait, majd a készleten futtatott tárolók feladatait.
 
-Ismernie kell a tárolók fogalmait, valamint a Batch-készlet és-feladatok létrehozását. A kód példák a Batch .NET és a Python SDK-kat használják. Más batch SDK-kat és eszközöket is használhat, beleértve a Azure Portal, a tárolók számára engedélyezett batch-készletek létrehozását és a tárolók feladatainak futtatását is.
+A kód például a Batch .NET és a Python SDK-kat használja. Más batch SDK-kat és eszközöket is használhat, beleértve a Azure Portal, a tárolók számára engedélyezett batch-készletek létrehozását és a tárolók feladatainak futtatását is.
 
 ## <a name="why-use-containers"></a>Miért érdemes tárolókat használni?
 
 A tárolók használata egyszerű módszert kínál a Batch-feladatok futtatására anélkül, hogy a környezetet és a függőségeket az alkalmazások futtatására kellene kezelnie. A tárolók a különböző környezetekben futtatható, könnyű, hordozható és önmagukban álló egységekként telepítik az alkalmazásokat. Például helyileg hozhat létre és tesztelheti a tárolókat, majd feltöltheti a tároló rendszerképét egy Azure-ban vagy máshol található beállításjegyzékbe. A tároló üzembe helyezési modellje biztosítja, hogy az alkalmazás futtatási környezete mindig megfelelően legyen telepítve és konfigurálva az alkalmazás futtatásához. A Batch tároló-alapú feladatai kihasználhatják a nem tároló jellegű feladatok funkcióit is, beleértve az alkalmazások csomagjait és az erőforrás-fájlok és a kimeneti fájlok kezelését.
 
 ## <a name="prerequisites"></a>Előfeltételek
+
+Ismernie kell a tárolók fogalmait, valamint a Batch-készlet és-feladatok létrehozását.
 
 - **SDK-verziók**: a Batch SDK-k támogatják a tároló lemezképeit a következő verziók szerint:
   - Batch REST API 2017-es verzió -09-01.6.0
@@ -282,6 +284,12 @@ Ha tároló-feladatot szeretne futtatni egy tárolót használó készleten, adj
 - A `ContainerSettings` feladattípusok tulajdonságával konfigurálhatja a tárolóra vonatkozó beállításokat. Ezeket a beállításokat a [TaskContainerSettings](/dotnet/api/microsoft.azure.batch.taskcontainersettings) osztály határozza meg. Vegye figyelembe, hogy a `--rm` tároló beállítás nem igényel további `--runtime` beállítást, mert a Batch által gondoskodik.
 
 - Ha tároló lemezképeken futtat feladatokat, a [Cloud Task](/dotnet/api/microsoft.azure.batch.cloudtask) és a Feladatkezelő [feladat](/dotnet/api/microsoft.azure.batch.cloudjob.jobmanagertask) tároló-beállításokat igényel. Azonban a [Start tevékenység](/dotnet/api/microsoft.azure.batch.starttask), a [feladat-előkészítési feladat](/dotnet/api/microsoft.azure.batch.cloudjob.jobpreparationtask)és a [feladat kiadása feladat](/dotnet/api/microsoft.azure.batch.cloudjob.jobreleasetask) nem igényli a tárolók beállításait (azaz a tároló környezetben vagy közvetlenül a csomóponton futhatnak).
+
+- Windows esetén a feladatokat a [ElevationLevel](/rest/api/batchservice/task/add#elevationlevel) beállítással kell futtatni `admin` . 
+
+- Linux esetén a Batch leképezi a felhasználó/csoport engedélyt a tárolóhoz. Ha a tároló bármelyik mappájához rendszergazdai engedély szükséges, előfordulhat, hogy a feladat futtatásához a rendszergazdai jogosultságszint-emelési szintnek kell futnia. Ezzel biztosíthatja, hogy a Batch a feladat gyökerében fusson a tároló környezetében. Ellenkező esetben előfordulhat, hogy a nem rendszergazda felhasználók nem férhetnek hozzá ezekhez a mappákhoz.
+
+- A GPU-t támogató hardverrel rendelkező tároló készletek esetén a Batch automatikusan engedélyezi a GPU-t a tárolók feladataihoz, így nem kell belefoglalni az `–gpus` argumentumot.
 
 ### <a name="container-task-command-line"></a>Tároló feladat parancssora
 

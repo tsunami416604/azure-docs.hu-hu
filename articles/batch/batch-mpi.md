@@ -2,14 +2,14 @@
 title: Több példányos feladatok használata MPI-alkalmazások futtatásához
 description: Megtudhatja, hogyan hajthat végre Message Passing Interface (MPI) alkalmazásokat a többpéldányos feladattípus használatával Azure Batchban.
 ms.topic: how-to
-ms.date: 03/13/2019
+ms.date: 10/08/2020
 ms.custom: H1Hack27Feb2017, devx-track-csharp
-ms.openlocfilehash: fd39af127d975f085bbd55fe2a21f925b5aae8e6
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 6207fc5295de28d4caf956b74e14f97f1113120c
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88926371"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850625"
 ---
 # <a name="use-multi-instance-tasks-to-run-message-passing-interface-mpi-applications-in-batch"></a>Message Passing Interface-(MPI-) alkalmazások futtatása többpéldányos feladatokkal a Batch szolgáltatásban
 
@@ -39,7 +39,7 @@ Ha többpéldányos beállításokkal rendelkező feladatot küld egy feladathoz
 >
 
 ## <a name="requirements-for-multi-instance-tasks"></a>A többpéldányos feladatokra vonatkozó követelmények
-A többpéldányos feladatok esetében engedélyezni kell a **csomópontok közötti kommunikációt**, és az **egyidejű feladat-végrehajtás le van tiltva**. Az egyidejű feladatok végrehajtásának letiltásához állítsa a [CloudPool. MaxTasksPerComputeNode](/dotnet/api/microsoft.azure.batch.cloudpool) tulajdonságot 1-re.
+A többpéldányos feladatok esetében engedélyezni kell a **csomópontok közötti kommunikációt**, és az **egyidejű feladat-végrehajtás le van tiltva**. Az egyidejű feladatok végrehajtásának letiltásához állítsa a [CloudPool. TaskSlotsPerNode](/dotnet/api/microsoft.azure.batch.cloudpool) tulajdonságot 1-re.
 
 > [!NOTE]
 > A Batch [korlátozza](batch-quota-limit.md#pool-size-limits) a csomópontok közötti kommunikációt engedélyező készlet méretét.
@@ -58,11 +58,11 @@ CloudPool myCloudPool =
 // Multi-instance tasks require inter-node communication, and those nodes
 // must run only one task at a time.
 myCloudPool.InterComputeNodeCommunicationEnabled = true;
-myCloudPool.MaxTasksPerComputeNode = 1;
+myCloudPool.TaskSlotsPerNode = 1;
 ```
 
 > [!NOTE]
-> Ha olyan készletben próbál meg többpéldányos feladatot futtatni, amelyben a csomópontok közötti kommunikáció le van tiltva, vagy ha a *maxTasksPerNode* értéke 1-nél nagyobb, a feladat soha nem lesz ütemezve – határozatlan ideig marad az "aktív" állapotban. 
+> Ha olyan készletben próbál meg többpéldányos feladatot futtatni, amelyben a csomópontok közötti kommunikáció le van tiltva, vagy ha a *taskSlotsPerNode* értéke 1-nél nagyobb, a feladat soha nem lesz ütemezve – határozatlan ideig marad az "aktív" állapotban.
 
 
 ### <a name="use-a-starttask-to-install-mpi"></a>StartTask használata az MPI telepítéséhez
@@ -99,7 +99,7 @@ Keresse meg a "RDMA-kompatibilis" értékkel megadott méreteket a következő c
   * [Virtuális gépek méretei az Azure-ban](../virtual-machines/windows/sizes.md?toc=%2fazure%2fvirtual-machines%2fwindows%2ftoc.json) (Windows)
 
 > [!NOTE]
-> A Linux-alapú [számítási csomópontok](batch-linux-nodes.md)RDMA kihasználásához az **Intel MPI** -t kell használnia a csomópontokon. 
+> A Linux-alapú [számítási csomópontok](batch-linux-nodes.md)RDMA kihasználásához az **Intel MPI** -t kell használnia a csomópontokon.
 >
 
 ## <a name="create-a-multi-instance-task-with-batch-net"></a>Többpéldányos feladat létrehozása a Batch .NET-tel
@@ -316,7 +316,7 @@ Delete pool? [yes] no: yes
 Sample complete, hit ENTER to exit...
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * A Microsoft HPC & Azure Batch csapatának blogja a Azure Batch-alapú [Linux MPI-támogatását][blog_mpi_linux]tárgyalja, és információt tartalmaz a [OpenFOAM][openfoam] a Batch használatával történő használatáról. A [githubon a OpenFOAM-példához][github_mpi]Python-kódrészletek is megtalálhatók.
 * Ismerje meg, hogyan [hozhat létre a Linux számítási csomópontok készleteit](batch-linux-nodes.md) az Azure batch MPI-megoldásokban való használatra.
 

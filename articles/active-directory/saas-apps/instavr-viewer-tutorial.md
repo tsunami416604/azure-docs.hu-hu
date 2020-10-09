@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
-ms.openlocfilehash: ba3c504819eb30da8d21aa47aafc313d16eec51d
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 5271dbc5e571fdc624c6861c8919e11950320507
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88550357"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850642"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-instavr-viewer"></a>Oktatóanyag: Azure Active Directory integráció a InstaVR Viewerrel
 
@@ -74,7 +74,7 @@ Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a kapcs
 Az Azure AD egyszeri bejelentkezés InstaVR-megjelenítővel való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
 
 1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. Az **[InstaVR-megjelenítő egyszeri bejelentkezésének konfigurálása](#configure-instavr-viewer-single-sign-on)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+2. Az **[InstaVR-megjelenítő egyszeri bejelentkezésének konfigurálása](#configure-instavr-viewer-single-sign-on)** – az egyes Sign-On beállítások konfigurálása az alkalmazás oldalán.
 3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
 4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
 5. **[Hozzon létre egy InstaVR Viewer test User](#create-instavr-viewer-test-user)** -t, hogy a Britta Simon partnere legyen a InstaVR-megjelenítőben, amely a felhasználó Azure ad-képviseletéhez van társítva.
@@ -94,7 +94,7 @@ Az Azure AD egyszeri bejelentkezés InstaVR-megjelenítővel való konfigurálá
 
     ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
+3. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
@@ -112,7 +112,7 @@ Az Azure AD egyszeri bejelentkezés InstaVR-megjelenítővel való konfigurálá
     > [!NOTE]
     > Az azonosító értéke nem valódi. Frissítse ezt az értéket az oktatóanyag későbbi részében ismertetett tényleges azonosító értékkel.
 
-5. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** és az **összevonási metaadat fájl** letöltéséhez a megadott beállítások alapján, és mentse a számítógépre.
+5. Az **egyszeres Sign-On beállítása SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** és az **összevonási metaadatok fájljának** a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozása](common/metadata-certificatebase64.png)
 
@@ -126,17 +126,17 @@ Az Azure AD egyszeri bejelentkezés InstaVR-megjelenítővel való konfigurálá
 
     c. Kijelentkezési URL-cím
 
-### <a name="configure-instavr-viewer-single-sign-on"></a>InstaVR-megjelenítő egyszeri bejelentkezésének konfigurálása
+### <a name="configure-instavr-viewer-single-sign-on"></a>A InstaVR Viewer egyetlen Sign-On konfigurálása
 
 1. Nyisson meg egy új böngészőablakot, és jelentkezzen be a InstaVR-megjelenítő vállalati webhelyre rendszergazdaként.
 
 2. Kattintson a **felhasználó ikonra** , és válassza a **fiók**lehetőséget.
 
-    ![InstaVR-megjelenítő konfigurációja](media/instavr-viewer-tutorial/tutorial-instavr-viewer-account.png)
+    ![Képernyőfelvétel: a InstaVR megjelenítője a kiválasztott felhasználóval.](media/instavr-viewer-tutorial/tutorial-instavr-viewer-account.png)
 
 3. Görgessen le az **SAML-hitelesítéshez** , és hajtsa végre a következő lépéseket:
 
-    ![InstaVR-megjelenítő konfigurációja](media/instavr-viewer-tutorial/tutorial-instavr-viewer-configure.png)
+    ![Képernyőfelvétel: az SAML-hitelesítés oldal, ahol megadhatja az ebben a lépésben ismertetett értékeket.](media/instavr-viewer-tutorial/tutorial-instavr-viewer-configure.png)
 
     a. Az **egyszeri bejelentkezés URL-címe** szövegmezőbe illessze be a **bejelentkezési URL-címet** , amelyet a Azure Portal másolt.
 
@@ -173,7 +173,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    d. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -211,15 +211,15 @@ Ebben a szakaszban a Britta Simon nevű felhasználó jön létre a InstaVR View
 
 2. Válassza a **csomag** lehetőséget a bal oldali navigációs panelen, és válassza a **csomag készítése webre**lehetőséget.
 
-    ![InstaVR-megjelenítő konfigurációja](media/instavr-viewer-tutorial/tutorial-instavr-viewer-testing1.png)
+    ![Képernyőfelvétel: a InstaVR megjelenítője céges webhelye a csomag kiválasztása és a csomag webes kiválasztásának tétele.](media/instavr-viewer-tutorial/tutorial-instavr-viewer-testing1.png)
 
 3. Válassza a **Letöltés** lehetőséget.
 
-    ![InstaVR-megjelenítő konfigurációja](media/instavr-viewer-tutorial/tutorial-instavr-viewer-testing2.png)
+    ![A képernyőképen a kiválasztott Letöltés ikon látható.](media/instavr-viewer-tutorial/tutorial-instavr-viewer-testing2.png)
 
 4. Válassza az **üzemeltetett oldal megnyitása** azt követően, hogy a rendszer átirányítja az Azure ad-ba a bejelentkezéshez.
 
-    ![InstaVR-megjelenítő konfigurációja](media/instavr-viewer-tutorial/tutorial-instavr-viewer-testing3.png)
+    ![A képernyőképen a megnyitott tárolt oldal látható.](media/instavr-viewer-tutorial/tutorial-instavr-viewer-testing3.png)
 
 5. Adja meg az Azure ad-beli hitelesítő adatait, hogy sikeresen bejelentkezzen az Azure AD-be az SSO használatával.
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 08/30/2019
 ms.author: Zhchia
-ms.openlocfilehash: 1d3ea609cda37c3bb0de28d8eb1a19944809980d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 78ba57d485f9842ad8531ce22a2b932aa1a1d28b
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91331160"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850421"
 ---
 # <a name="tutorial-configure-foodee-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés Foodee konfigurálása
 
@@ -55,7 +55,7 @@ Mielőtt az Azure AD-vel konfigurálja az automatikus felhasználó-kiépítés 
 
 1. Jelentkezzen be a [Foodee](https://www.food.ee/login/)-be, majd válassza ki a BÉRLŐi azonosítóját.
 
-    ![Foodee](media/Foodee-provisioning-tutorial/tenant.png)
+    :::image type="content" source="media/Foodee-provisioning-tutorial/tenant.png" alt-text="Képernyőkép a Foodee Enterprise Portal főmenüjéről. A menüben látható a bérlői azonosító helyőrzője." border="false":::
 
 1. Az **Enterprise Portal**területen válassza az **egyszeri bejelentkezés**lehetőséget.
 
@@ -63,7 +63,7 @@ Mielőtt az Azure AD-vel konfigurálja az automatikus felhasználó-kiépítés 
 
 1. Másolja az értéket az **API-jogkivonat** mezőbe későbbi használatra. A Foodee alkalmazás **üzembe** helyezés lapjának **titkos jogkivonat** mezőjébe írja be a Azure Portal.
 
-    ![Foodee](media/Foodee-provisioning-tutorial/token.png)
+    :::image type="content" source="media/Foodee-provisioning-tutorial/token.png" alt-text="Képernyőkép a Foodee Enterprise Portal főmenüjéről. A menüben látható a bérlői azonosító helyőrzője." border="false":::
 
 ## <a name="add-foodee-from-the-gallery"></a>Foodee hozzáadása a gyűjteményből
 
@@ -130,20 +130,20 @@ Az Azure AD-beli Foodee automatikus felhasználó-kiépítés beállítása a k�
 
 1. A **leképezések**területen válassza **a Azure Active Directory felhasználók szinkronizálása a Foodee**lehetőséget.
 
-    ![Foodee felhasználói leképezések](media/Foodee-provisioning-tutorial/usermapping.png)
+    :::image type="content" source="media/Foodee-provisioning-tutorial/usermapping.png" alt-text="Képernyőkép a Foodee Enterprise Portal főmenüjéről. A menüben látható a bérlői azonosító helyőrzője." border="false":::
 
 1. Az **attribútumok hozzárendelése**területen tekintse át az Azure ad-ből a Foodee-be szinkronizált felhasználói attribútumokat. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a Foodee *felhasználói fiókjainak* a frissítési műveletekhez való megfeleltetésére szolgálnak. 
 
-    ![Foodee felhasználói leképezések](media/Foodee-provisioning-tutorial/userattribute.png)
+    :::image type="content" source="media/Foodee-provisioning-tutorial/userattribute.png" alt-text="Képernyőkép a Foodee Enterprise Portal főmenüjéről. A menüben látható a bérlői azonosító helyőrzője." border="false":::
 
 1. A módosítások elvégzéséhez válassza a **Mentés**lehetőséget.
 1. A **leképezések**területen válassza **a Azure Active Directory csoportok szinkronizálása a Foodee**lehetőséget.
 
-    ![Foodee felhasználói leképezések](media/Foodee-provisioning-tutorial/groupmapping.png)
+    :::image type="content" source="media/Foodee-provisioning-tutorial/groupmapping.png" alt-text="Képernyőkép a Foodee Enterprise Portal főmenüjéről. A menüben látható a bérlői azonosító helyőrzője." border="false":::
 
 1. Az **attribútumok hozzárendelése**területen tekintse át az Azure ad-ből a Foodee-be szinkronizált felhasználói attribútumokat. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a Foodee tartozó *csoportfiókok* egyeztetésére szolgálnak a frissítési műveletekhez.
 
-    ![Foodee felhasználói leképezések](media/Foodee-provisioning-tutorial/groupattribute.png)
+    :::image type="content" source="media/Foodee-provisioning-tutorial/groupattribute.png" alt-text="Képernyőkép a Foodee Enterprise Portal főmenüjéről. A menüben látható a bérlői azonosító helyőrzője." border="false":::
 
 1. A módosítások elvégzéséhez válassza a **Mentés**lehetőséget.
 1. Adja meg a hatóköri szűrőket. Ha szeretné megtudni, hogyan tekintheti meg a [hatóköri szűrő oktatóanyagát](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md), olvassa el a következő témakört:.

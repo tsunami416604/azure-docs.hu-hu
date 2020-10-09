@@ -7,12 +7,12 @@ ms.date: 9/22/2020
 ms.topic: overview
 ms.service: security-center
 manager: rkarlin
-ms.openlocfilehash: c53f7e712668f32766feaf76d6a08582bda9af22
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: a7026757651d1b0510293101203f41a651c7b851
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91449104"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850965"
 ---
 # <a name="introduction-to-azure-defender-for-app-service"></a>A App Service Azure Defender bemutatása
 
@@ -27,7 +27,7 @@ Az Azure felhőalapú szolgáltatóként való láthatóságának használatáva
 
 |Szempont|Részletek|
 |----|:----|
-|Kiadás állapota:|Előnézet|
+|Kiadás állapota:|Általánosan elérhető (GA)|
 |Árképzési|Az [Azure Defender for app Service](azure-defender.md) számlázása [a díjszabási oldalon](security-center-pricing.md) látható|
 |Támogatott App Service csomagok:|![Igen, ](./media/icons/yes-icon.png) alapszintű, standard, prémium, elkülönített vagy linuxos<br>![Nincs ](./media/icons/no-icon.png) ingyenes, közös vagy felhasználási<br>[További információ a App Service csomagokról](https://azure.microsoft.com/pricing/details/app-service/plans/)|
 |Felhők|![Igen](./media/icons/yes-icon.png) Kereskedelmi felhők<br>![Nem](./media/icons/no-icon.png) Nemzeti/szuverén (US Gov, kínai gov, other gov)|
@@ -58,7 +58,7 @@ A Security Center natív módon van integrálva a App Serviceval, így nincs sz�
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből a cikkből megtudhatta, hogyan App Service Azure Defendert. 
 

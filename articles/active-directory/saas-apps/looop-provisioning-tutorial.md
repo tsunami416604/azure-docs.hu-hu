@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 09/19/2019
 ms.author: Zhchia
-ms.openlocfilehash: b81a0fc81478fb50c356a92371ece2e79ff417ab
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 2f3657feb5a68600e4eb2d7bcaa4891a398c2682
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91333562"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850693"
 ---
 # <a name="tutorial-configure-looop-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés Looop konfigurálása
 
@@ -55,11 +55,11 @@ Az Azure AD-vel való automatikus Looop konfigurálása előtt le kell kérnie n
 
 1. Jelentkezzen be a [Looop felügyeleti konzolra](https://app.looop.co/#/login) , és válassza a **fiók**lehetőséget. A **Fiókbeállítások** területen válassza a **hitelesítés**lehetőséget.
 
-    ![Looop-SCIM hozzáadása](media/looop-provisioning-tutorial/admin.png)
+    :::image type="content" source="media/looop-provisioning-tutorial/admin.png" alt-text="Képernyőkép a Looop felügyeleti konzolról. A fiók lap ki van emelve és meg van nyitva. A Fiókbeállítások területen a hitelesítés ki van emelve." border="false":::
 
 2. Hozzon létre egy új tokent a **scim-integráció** **elemre kattintva.**
 
-    ![Looop-SCIM hozzáadása](media/looop-provisioning-tutorial/resettoken.png)
+    :::image type="content" source="media/looop-provisioning-tutorial/resettoken.png" alt-text="Képernyőkép a Looop felügyeleti konzolról. A fiók lap ki van emelve és meg van nyitva. A Fiókbeállítások területen a hitelesítés ki van emelve." border="false":::
 
 3. Másolja a **scim-végpontot** és a **tokent**. Ezek az értékek a **bérlői URL-cím** és a **titkos jogkivonat** mezőiben lesznek megadva a Looop alkalmazás kiépítés lapján a Azure Portal. 
 

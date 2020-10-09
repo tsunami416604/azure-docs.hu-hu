@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 06/28/2019
 ms.author: zhchia
-ms.openlocfilehash: dee9ca2879d456270cfed667b8a02a6e5c4f100b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 7475ebc6dd51bbc1c30ee22623c7cbda1a5237ab
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91328054"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91848959"
 ---
 # <a name="tutorial-configure-dialpad-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés konfigurálása
 
@@ -54,13 +54,13 @@ Az Azure AD-vel való automatikus felhasználó-kiépítés konfigurálása elő
 
 1. Jelentkezzen be a megadható [felügyeleti konzolra](https://dialpadbeta.com/login) , és válassza a **rendszergazdai beállítások**lehetőséget. Győződjön meg arról, hogy a **vállalatom** ki van választva a legördülő listából. Navigáljon a **hitelesítés > API-kulcsok**elemre.
 
-    ![SCIM hozzáadása](media/dialpad-provisioning-tutorial/dialpad01.png)
+    :::image type="content" source="media/dialpad-provisioning-tutorial/dialpad01.png" alt-text="Képernyőkép a megjelenő felügyeleti konzolról, a beállítások ikon, a cégem, a hitelesítés és A P I kulcsok kiemelése és a vállalatom kijelölése." border="false":::
 
 2. Új kulcs létrehozásához kattintson **a kulcs hozzáadása** és a titkos token tulajdonságainak konfigurálása elemre.
 
-    ![SCIM hozzáadása](media/dialpad-provisioning-tutorial/dialpad02.png)
+    :::image type="content" source="media/dialpad-provisioning-tutorial/dialpad02.png" alt-text="Képernyőkép a megjelenő felügyeleti konzolról, a beállítások ikon, a cégem, a hitelesítés és A P I kulcsok kiemelése és a vállalatom kijelölése." border="false":::
 
-    ![SCIM hozzáadása](media/dialpad-provisioning-tutorial/dialpad03.png)
+    :::image type="content" source="media/dialpad-provisioning-tutorial/dialpad03.png" alt-text="Képernyőkép a megjelenő felügyeleti konzolról, a beállítások ikon, a cégem, a hitelesítés és A P I kulcsok kiemelése és a vállalatom kijelölése." border="false":::
 
 3. Kattintson a **kattintson ide az érték megjelenítése** gombra a legutóbb létrehozott API-kulcshoz, és másolja a megjelenő értéket. Ez az érték a Azure Portalban a kiépítés lapjának **titkos jogkivonat** mezőjében lesz megadva. 
 
@@ -89,19 +89,19 @@ Az Azure AD-vel való automatikus felhasználó-kiépítés konfigurálásához 
 
 5. Nyissa meg az alábbi **URL-címet** egy külön böngészőben. 
 
-    ![SCIM hozzáadása](media/dialpad-provisioning-tutorial/dialpad05.png)
+    :::image type="content" source="media/dialpad-provisioning-tutorial/dialpad05.png" alt-text="Képernyőkép a megjelenő felügyeleti konzolról, a beállítások ikon, a cégem, a hitelesítés és A P I kulcsok kiemelése és a vállalatom kijelölése." border="false":::
 
 6. A jobb felső sarokban válassza a **bejelentkezés > az online kapcsolat használata**lehetőséget.
 
-    ![SCIM hozzáadása](media/dialpad-provisioning-tutorial/dialpad06.png)
+    :::image type="content" source="media/dialpad-provisioning-tutorial/dialpad06.png" alt-text="Képernyőkép a megjelenő felügyeleti konzolról, a beállítások ikon, a cégem, a hitelesítés és A P I kulcsok kiemelése és a vállalatom kijelölése." border="false":::
 
 7. Mivel a OpenIDConnect egy alkalmazás, a Microsoft munkahelyi fiókjával való bejelentkezéshez válassza a megfelelő lehetőséget.
 
-    ![SCIM hozzáadása](media/dialpad-provisioning-tutorial/loginpage.png)
+    :::image type="content" source="media/dialpad-provisioning-tutorial/loginpage.png" alt-text="Képernyőkép a megjelenő felügyeleti konzolról, a beállítások ikon, a cégem, a hitelesítés és A P I kulcsok kiemelése és a vállalatom kijelölése." border="false":::
 
 8. Sikeres hitelesítés után fogadja el a jóváhagyást kérő lapot. Az alkalmazás ezután automatikusan hozzáadódik a bérlőhöz, és a rendszer átirányítja a felhasználói fiókhoz.
 
-    ![SCIM hozzáadása](media/dialpad-provisioning-tutorial/redirect.png)
+    :::image type="content" source="media/dialpad-provisioning-tutorial/redirect.png" alt-text="Képernyőkép a megjelenő felügyeleti konzolról, a beállítások ikon, a cégem, a hitelesítés és A P I kulcsok kiemelése és a vállalatom kijelölése." border="false":::
 
  ## <a name="configure-automatic-user-provisioning-to-dialpad"></a>Az automatikus felhasználó-kiépítés beállítása a kiosztott értékre
 

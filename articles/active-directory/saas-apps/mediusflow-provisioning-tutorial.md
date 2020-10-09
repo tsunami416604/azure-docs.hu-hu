@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 04/30/2020
 ms.author: Zhchia
-ms.openlocfilehash: fae6c9f76f5c502d3a31c76330bd5b348d523e37
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 71dc05e3949c2675be6255723530693304e1aa3e
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91360582"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850081"
 ---
 # <a name="tutorial-configure-mediusflow-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés MediusFlow konfigurálása
 
@@ -62,7 +62,7 @@ https://success.mediusflow.com/documentation/administration_guide/user_login_and
 
 1.  Jelentkezzen be a [MediusFlow felügyeleti konzolra](https://office365.cloudapp.mediusflow.com/) a bérlő azonosítójának megadásával.
 
-    ![Hitelesítés](./media/mediusflow-provisioning-tutorial/1-auth.png)
+    :::image type="content" source="./media/mediusflow-provisioning-tutorial/1-auth.png" alt-text="Képernyőkép a MediusFlow felügyeleti konzolról. A MediusFlow-bérlő neve és a hitelesítés gomb ki van emelve az első integrációs lépésben." border="false":::
 
 2. Ellenőrizze a MediusFlow-vel való kapcsolatokat.
 
@@ -76,35 +76,35 @@ https://success.mediusflow.com/documentation/administration_guide/user_login_and
 
 4. Mentse a konfigurációt.
 
-    ![Hitelesítés](./media/mediusflow-provisioning-tutorial/4-save-config.png)
+    :::image type="content" source="./media/mediusflow-provisioning-tutorial/4-save-config.png" alt-text="Képernyőkép a MediusFlow felügyeleti konzolról. A MediusFlow-bérlő neve és a hitelesítés gomb ki van emelve az első integrációs lépésben." border="false":::
 
 5. Válassza a felhasználó kiépítés lehetőséget, majd kattintson **az OK**gombra.
 
-    ![Hitelesítés](./media/mediusflow-provisioning-tutorial/5-select-user-provisioning.png)
+    :::image type="content" source="./media/mediusflow-provisioning-tutorial/5-select-user-provisioning.png" alt-text="Képernyőkép a MediusFlow felügyeleti konzolról. A MediusFlow-bérlő neve és a hitelesítés gomb ki van emelve az első integrációs lépésben." border="false":::
 
 6. Kattintson a **titkos kulcs előállítása**elemre. Másolja és mentse ezt az értéket. Ez az érték a MediusFLow alkalmazás **üzembe** helyezés lapjának **titkos jogkivonat** mezőjében jelenik meg a Azure Portal.
 
-    ![Hitelesítés](./media/mediusflow-provisioning-tutorial/6-create-secret-1.png)
+    :::image type="content" source="./media/mediusflow-provisioning-tutorial/6-create-secret-1.png" alt-text="Képernyőkép a MediusFlow felügyeleti konzolról. A MediusFlow-bérlő neve és a hitelesítés gomb ki van emelve az első integrációs lépésben." border="false":::
 
 7. Kattintson **az OK gombra**.
 
-    ![Hitelesítés](./media/mediusflow-provisioning-tutorial/7-confirm-secret.png)
+    :::image type="content" source="./media/mediusflow-provisioning-tutorial/7-confirm-secret.png" alt-text="Képernyőkép a MediusFlow felügyeleti konzolról. A MediusFlow-bérlő neve és a hitelesítés gomb ki van emelve az első integrációs lépésben." border="false":::
 
 8. Ahhoz, hogy a felhasználók a szerepkörök, a vállalatok és egyéb általános konfigurációk előre definiált készletével importálva legyenek a MediusFlow-ben, először konfigurálnia kell. Először adja hozzá a konfigurációt az **Új konfiguráció hozzáadása**lehetőségre kattintva.
 
-    ![Konfigurációk felhasználói](./media/mediusflow-provisioning-tutorial/8-configure-user-configuration-1.png)
+    :::image type="content" source="./media/mediusflow-provisioning-tutorial/8-configure-user-configuration-1.png" alt-text="Képernyőkép a MediusFlow felügyeleti konzolról. A MediusFlow-bérlő neve és a hitelesítés gomb ki van emelve az első integrációs lépésben." border="false":::
 
 9. Adja meg a felhasználók alapértelmezett beállításait. Ebben a nézetben az alapértelmezett attribútumot lehet beállítani. Ha a normál beállítások rendben vannak, elég, ha csak egy érvényes vállalat nevét adja meg. Mivel ezek a konfigurációs beállítások beolvasása a Mediusflow-ből történik, először konfigurálni kell őket. További információt a jelen cikk **Előfeltételek** című szakaszában talál.
 
-    ![Konfigurációk felhasználói](./media/mediusflow-provisioning-tutorial/9-configure-user-config-detail-1.png)
+    :::image type="content" source="./media/mediusflow-provisioning-tutorial/9-configure-user-config-detail-1.png" alt-text="Képernyőkép a MediusFlow felügyeleti konzolról. A MediusFlow-bérlő neve és a hitelesítés gomb ki van emelve az első integrációs lépésben." border="false":::
 
 10. A felhasználói konfiguráció mentéséhez kattintson a **Save (Mentés** ) gombra.
 
-    ![Konfigurációk felhasználói](./media/mediusflow-provisioning-tutorial/10-done-1.png)
+    :::image type="content" source="./media/mediusflow-provisioning-tutorial/10-done-1.png" alt-text="Képernyőkép a MediusFlow felügyeleti konzolról. A MediusFlow-bérlő neve és a hitelesítés gomb ki van emelve az első integrációs lépésben." border="false":::
 
 11. A felhasználó kiépítési hivatkozásának beszerzéséhez kattintson az **scim másolása hivatkozásra**. Másolja és mentse ezt az értéket. Ez az érték a MediusFLow alkalmazás **kiépítés** lapjának **bérlői URL-címe** mezőjében szerepel a Azure Portal.
  
-    ![Konfigurációk felhasználói](./media/mediusflow-provisioning-tutorial/11-get-scim-link.png)
+    :::image type="content" source="./media/mediusflow-provisioning-tutorial/11-get-scim-link.png" alt-text="Képernyőkép a MediusFlow felügyeleti konzolról. A MediusFlow-bérlő neve és a hitelesítés gomb ki van emelve az első integrációs lépésben." border="false":::
 
 ## <a name="step-3-add-mediusflow-from-the-azure-ad-application-gallery"></a>3. lépés MediusFlow hozzáadása az Azure AD Application Galleryből
 

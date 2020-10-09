@@ -4,21 +4,21 @@ description: Ismerje meg az Azure Defender for IoT szolgáltatás információin
 services: defender-for-iot
 ms.service: defender-for-iot
 documentationcenter: na
-author: mlottner
+author: elazark
 manager: rkarlin
 editor: ''
 ms.devlang: na
 ms.topic: conceptual
 ms.tgt_pltfrm: na
 ms.workload: na
-ms.date: 07/23/2019
-ms.author: mlottner
-ms.openlocfilehash: 3d26d9e3d686ad7c34e7493dc1413b7a9e7a2f6b
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.date: 10/08/2020
+ms.author: v-ekrieg
+ms.openlocfilehash: 3fc695770350e5a60ae3da9ab1796da5cac99370
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90940980"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91843413"
 ---
 # <a name="azure-defender-for-iot-architecture"></a>Azure Defender a IoT architektúrához
 
@@ -43,11 +43,11 @@ A **beépített** módban a Defender for IoT engedélyezve van, ha úgy dönt, h
 
 ### <a name="enhanced"></a>Továbbfejlesztett
 
-**Továbbfejlesztett** módban, miután bekapcsolta a **biztonsági** beállítást a IoT hub és a Defender telepítését a IoT az eszközökön, az ügynökök gyűjtik, összesítik és elemzik a nyers biztonsági eseményeket az eszközökről. A nyers biztonsági események közé tartozhatnak az IP-kapcsolatok, a folyamatok létrehozása, a felhasználói bejelentkezések és egyéb fontos információk. A IoT-ügynökök védelmezője az események összesítését is kezeli, hogy elkerülje a hálózat magas átviteli sebességét. Az ügynökök nagy mértékben testreszabhatók, így adott feladatokhoz is használhatók, például csak a leggyorsabb SLA-ban, vagy a kiterjedt biztonsági információk és környezetek nagyobb szegmensekre történő elküldésével, a magasabb szolgáltatási költségek elkerülésével.
+**Bővített** módban a IoT hub **biztonsági** beállításának bekapcsolása és a Defender telepítése a IoT az eszközökön, az ügynökök a nyers biztonsági események gyűjtését, összesítését és elemzését végzik az eszközökről. A nyers biztonsági események közé tartozhatnak az IP-kapcsolatok, a folyamatok létrehozása, a felhasználói bejelentkezések és egyéb fontos információk. A IoT-ügynökök védelmezői az események összesítését is kezelik a nagy hálózati átviteli sebesség elkerülése érdekében. Az ügynökök nagy mértékben testreszabhatók, így adott feladatokhoz is használhatók, például csak a leggyorsabb SLA-ban, vagy a kiterjedt biztonsági információk és környezetek nagyobb szegmensekre történő elküldésével, a magasabb szolgáltatási költségek elkerülésével.
 
 ![Defender a IoT architektúrához](./media/architecture/azure-iot-security-architecture.png)
 
-Az eszközök ügynökei és más alkalmazásai az **Azure Security Message SDK** használatával biztonsági információkat küldhetnek az Azure IoT hubba. IoT Hub felveszi ezt az információt, és továbbítja azt a Defender for IoT szolgáltatásnak.
+Az eszközök ügynökei és más alkalmazásai az **Azure Security Message SDK** használatával biztonsági információkat küldhetnek az Azure IoT hubba. IoT Hub beolvassa ezt az információt, és továbbítja azt a Defender for IoT szolgáltatásnak.
 
 Ha a Defender for IoT szolgáltatás engedélyezve van, a továbbított adatokon felül a IoT Hub a Defender által az IoT-hoz történő elemzéshez is küldi a belső adatokat. Ezek az adategységek a Felhőbeli műveleti naplókat, az eszköz identitásait és a hub konfigurációját tartalmazzák. Mindezen információk segítenek létrehozni a Defendert a IoT Analytics-folyamathoz.
 

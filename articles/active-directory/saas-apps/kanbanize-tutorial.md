@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/09/2019
 ms.author: jeedes
-ms.openlocfilehash: 686a186650bfe4066533b0f086c080b5ffb14eb6
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: af68100d0064187931ede43916d1ab3258baea38
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88546831"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850710"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-kanbanize"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Kanbanize
 
@@ -115,7 +115,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Create** (Létrehozás) gombra.
+   1. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -153,15 +153,15 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 5. A menü bal oldalán található adminisztráció panel oldalon kattintson az **integrációk** elemre, majd engedélyezze **az egyszeri bejelentkezést**.
 
-    ![Kanbanize-integrációk](./media/kanbanize-tutorial/tutorial-kanbanize-admin.png)
+    ![A képernyőképen az adminisztráció panel látható integráció kiválasztva.](./media/kanbanize-tutorial/tutorial-kanbanize-admin.png)
 
-6. Az integrációk szakaszban kattintson a **Konfigurálás** elemre az **egyszeri bejelentkezés integrációs** oldalának megnyitásához.
+6. Az integrációk szakaszban kattintson a **Konfigurálás** elemre **egy Sign-On integrációs** oldal megnyitásához.
 
     ![Kanbanize-konfiguráció](./media/kanbanize-tutorial/tutorial-kanbanize-config.png)
 
-7. Az **egyszeri bejelentkezés integrációs** lapján a **konfigurációk**területen hajtsa végre a következő lépéseket:
+7. Az **egyetlen Sign-On integráció** lapon a **konfigurációk**területen hajtsa végre a következő lépéseket:
 
-    ![Kanbanize-integrációk](./media/kanbanize-tutorial/tutorial-kanbanize-save.png)
+    ![Képernyőfelvétel: az egyetlen Sign-On integrációs oldal, ahol megadhatja az ebben a lépésben szereplő értékeket.](./media/kanbanize-tutorial/tutorial-kanbanize-save.png)
 
     a. Az **identitásszolgáltató entitás-azonosító** szövegmezőbe illessze be az **Azure ad-azonosító**értékét, amelyet a Azure Portal másolt.
 

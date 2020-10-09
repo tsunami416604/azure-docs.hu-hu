@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 07/23/2019
 ms.author: Zhchia
-ms.openlocfilehash: e5145aee31b4f82b34f9256257cf6c2951ca24da
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 145793d7e451e7db9598118fb3adbd49d1d9c650
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91256449"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850676"
 ---
 # <a name="tutorial-configure-mindtickle-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés MindTickle konfigurálása
 
@@ -115,11 +115,11 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
 8. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a MindTickle**lehetőséget.
 
-    ![MindTickle felhasználói leképezések](media/mindtickle-provisioning-tutorial/usermapping.png)
+    :::image type="content" source="media/mindtickle-provisioning-tutorial/usermapping.png" alt-text="Képernyőfelvétel a leképezésekről szakasz. A név alatt szinkronizálja Azure Active Directory felhasználókat a MindTickle." border="false":::
 
 9. Tekintse át az Azure AD-ből szinkronizált felhasználói attribútumokat az **attribútum-hozzárendelési** szakaszban található MindTickle. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a MindTickle felhasználói fiókjainak a frissítési műveletekhez való megfeleltetésére szolgálnak. A módosítások elvégzéséhez kattintson a **Save (Mentés** ) gombra.
 
-    ![MindTickle felhasználói leképezések](media/mindtickle-provisioning-tutorial/userattribute.png)
+    :::image type="content" source="media/mindtickle-provisioning-tutorial/userattribute.png" alt-text="Képernyőfelvétel a leképezésekről szakasz. A név alatt szinkronizálja Azure Active Directory felhasználókat a MindTickle." border="false":::
 
 12. Hatókörszűrők konfigurálásához tekintse meg a [hatókörszűrővel kapcsolatos oktatóanyagban](../app-provisioning/define-conditional-rules-for-provisioning-user-accounts.md) szereplő következő utasításokat.
 

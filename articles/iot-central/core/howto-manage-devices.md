@@ -1,28 +1,32 @@
 ---
 title: Az Azure IoT Central alkalmazásban lévő eszközök kezelése | Microsoft Docs
-description: Operátorként megismerheti, hogyan kezelheti az eszközöket az Azure IoT Central alkalmazásban.
-author: sarahhubbard
-ms.author: sahubbar
-ms.date: 12/06/2019
+description: Operátorként megismerheti, hogyan kezelheti az eszközöket az Azure IoT Central alkalmazásban. Ismerje meg, hogyan kezelheti az egyes eszközöket, és hogyan végezheti el az eszközök tömeges importálását és exportálását az alkalmazásban.
+author: dominicbetts
+ms.author: dobett
+ms.date: 10/08/2020
 ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 manager: peterpr
-ms.openlocfilehash: ee9552b251cbc8cca1891de043ee79682e7b2d6c
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.custom: contperfq2
+ms.openlocfilehash: 1782982c75e502ea8df70818a134b5b009188959
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90017098"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850098"
 ---
 # <a name="manage-devices-in-your-azure-iot-central-application"></a>Az Azure IoT Central-alkalmazásban lévő eszközök kezelése
 
 Ez a cikk azt ismerteti, hogyan kezelheti az eszközöket az Azure IoT Central alkalmazásban. Operátorként a következőket teheti:
 
 - Az **eszközök** lapon megtekintheti, hozzáadhatja és törölheti az Azure IoT Central-alkalmazáshoz csatlakoztatott eszközöket.
+- Az eszközök tömeges importálása és exportálása.
 - Naprakész leltárt készíthet az eszközökről.
 - Tartsa naprakészen az eszköz metaadatait úgy, hogy megváltoztatja az eszköz tulajdonságai között tárolt értékeket a nézetekben.
 - Az eszközök viselkedésének szabályozása egy adott eszközre vonatkozó beállítások frissítésével a nézetekben.
+
+Az eszközök egyéni csoportjainak kezeléséről az [oktatóanyag: eszközök használata az eszközök telemetria elemzéséhez](tutorial-use-device-groups.md)című témakörben talál további információt.
 
 ## <a name="view-your-devices"></a>Eszközök megtekintése
 
@@ -35,7 +39,6 @@ Egy adott eszköz megtekintése:
 1. Az **eszközök** lap jobb oldali ablaktábláján megjelenik az adott eszköz sablonjában létrehozott eszközök listája. Válasszon ki egy egyéni eszközt az eszköz adatai lap megjelenítéséhez:
 
     ![Eszköz részletei lap](./media/howto-manage-devices/devicelist.png)
-
 
 ## <a name="add-a-device"></a>Eszköz hozzáadása
 
@@ -82,10 +85,9 @@ Eszközök tömeges regisztrálása az alkalmazásban:
 
     ![Sikeres importálás](./media/howto-manage-devices/bulkimport3a.png)
 
-
 Ha az eszköz importálási művelete meghiúsul, hibaüzenet jelenik meg az eszköz működési paneljén. Egy naplófájl rögzíti az összes hibát, amelyet letöltheti.
 
-**Eszközök áttelepítése sablonba**
+## <a name="migrate-devices-to-a-template"></a>Eszközök migrálása sablonba
 
 Ha az eszközök **minden**eszköz alatt történő importálásával regisztrálja az eszközöket, akkor a rendszer az eszközöket sablon társítása nélkül hozza létre. Az eszközöket hozzá kell rendelni egy sablonhoz az eszköz adatainak és egyéb adatainak megismeréséhez. Kövesse az alábbi lépéseket az eszközök sablonhoz való hozzárendeléséhez:
 
@@ -95,8 +97,7 @@ Ha az eszközök **minden**eszköz alatt történő importálásával regisztrá
 
     ![Nem társított eszközök](./media/howto-manage-devices/unassociateddevices1a.png)
 
-
-1. A rácson lévő szűrő használatával állapítsa meg, hogy az **eszköz sablon** oszlopában szereplő érték "nem társított"-e az eszközökhöz.
+1. A rácson lévő szűrő használatával állapítsa meg, hogy az **eszköz sablonja** oszlopban szereplő érték nem **tartozik** -e egyetlen eszközhöz sem.
 
 1. Válassza ki a sablonnal társítandó eszközöket:
 
@@ -104,11 +105,9 @@ Ha az eszközök **minden**eszköz alatt történő importálásával regisztrá
 
     ![Eszközök hozzárendelése](./media/howto-manage-devices/unassociateddevices2a.png)
 
-
 1. Válassza ki a sablont az elérhető sablonok listájából, majd válassza az **áttelepítés**lehetőséget.
 
 1. A kiválasztott eszközök társítva vannak a választott eszköz sablonnal.
-
 
 ## <a name="export-devices"></a>Eszközök exportálása
 
@@ -124,7 +123,6 @@ Eszközök tömeges exportálása az alkalmazásból:
 
     ![Exportálás](./media/howto-manage-devices/export1a.png)
 
-
 1. Elindul az exportálási folyamat. Az állapotot az eszköz működési paneljén követheti nyomon.
 
 1. Ha az Exportálás befejeződik, megjelenik egy üzenet, amely a generált fájl letöltésére szolgáló hivatkozással együtt jelenik meg.
@@ -132,7 +130,6 @@ Eszközök tömeges exportálása az alkalmazásból:
 1. A fájl **letöltése** hivatkozásra kattintva letöltheti a fájlt a lemez helyi mappájába.
 
     ![Sikeres exportálás](./media/howto-manage-devices/export2a.png)
-
 
 1. Az exportált CSV-fájl a következő oszlopokat tartalmazza: eszköz azonosítója, eszköznév, eszköz kulcsa és X509 tanúsítvány ujjlenyomatai megfelelnek:
 
@@ -159,7 +156,7 @@ Valós vagy szimulált eszköz törlése az Azure IoT Central alkalmazásból:
 
 ## <a name="change-a-property"></a>Tulajdonság módosítása
 
-A felhő tulajdonságai az eszközhöz társított eszköz-metaadatok, például a város és a sorozatszám. Az írható tulajdonságok vezérlik az eszköz viselkedését. Más szóval lehetővé teszik a bemenetek megadását az eszközön.  Az eszköz tulajdonságait az eszköz állítja be, és a IoT Centralon belül csak olvasható. Az eszköz **részletes** nézetében megtekintheti és frissítheti a tulajdonságokat.
+A felhő tulajdonságai az eszközhöz társított eszköz-metaadatok, például a város és a sorozatszám. A felhő tulajdonságai csak a IoT Central alkalmazásban léteznek, és nem szinkronizálhatók az eszközeivel. Az írható tulajdonságok vezérlik az eszköz viselkedését, és lehetővé teszik az eszköz állapotának távoli beállítását, például egy termosztátos eszköz megcélzott hőmérsékletének beállításával.  Az eszköz tulajdonságait az eszköz állítja be, és a IoT Centralon belül csak olvasható. Az eszköz **részletes** nézetében megtekintheti és frissítheti a tulajdonságokat.
 
 1. Válassza az **eszközök** lehetőséget a bal oldali ablaktáblán.
 
@@ -171,12 +168,6 @@ A felhő tulajdonságai az eszközhöz társított eszköz-metaadatok, például
 
 1. Válassza a **Mentés** elemet. Ha az írható tulajdonságokat mentette, az értékeket a rendszer elküldi az eszközre. Amikor az eszköz megerősíti az írható tulajdonság módosítását, az állapot visszakerül a **szinkronizált**értékre. Ha mentett egy Felhőbeli tulajdonságot, az érték frissül.
 
-
 ## <a name="next-steps"></a>Következő lépések
 
-Most, hogy megismerte, hogyan felügyelheti az eszközöket az Azure IoT Central alkalmazásban, itt látható a következő lépés:
-
-> [!div class="nextstepaction"]
-> [Az erőforráscsoportok használata](tutorial-use-device-groups.md)
-
-<!-- Next how-tos in the sequence -->
+Most, hogy megismerte, hogyan kezelheti az eszközöket az Azure IoT Central alkalmazásban, a javasolt következő lépés az, hogy megtudja, hogyan[konfigurálhatja az eszközök szabályait](howto-configure-rules.md) .

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/09/2020
 ms.author: jeedes
-ms.openlocfilehash: c988168f5d56fd7dcf8142a9f1e68af2defdcfc7
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 2e8f542f8a734f5bd6592ebc743b30676dd61f07
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88552968"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850547"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-invision"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a InVision
 
@@ -107,7 +107,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Create** (Létrehozás) gombra.
+   1. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -133,15 +133,15 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 1. Kattintson a **csapat** elemre, és válassza a **Beállítások**lehetőséget.
 
-    ![InVision-konfiguráció](./media/invision-tutorial/config1.png)
+    ![Képernyőfelvétel: a csapat lap a kiválasztott beállításokkal.](./media/invision-tutorial/config1.png)
 
 1. Görgessen le az **egyszeri bejelentkezéshez** , majd kattintson a **módosítás**gombra.
 
-    ![InVision-konfiguráció](./media/invision-tutorial/config3.png)
+    ![A képernyőképen az egyszeri bejelentkezés módosítása gomb látható.](./media/invision-tutorial/config3.png)
 
 1. Az **egyszeri bejelentkezés** oldalon hajtsa végre a következő lépéseket:
 
-    ![InVision-konfiguráció](./media/invision-tutorial/config4.png)
+    ![Képernyőfelvétel: az egyszeri bejelentkezési oldal, amelyen megadhatja az ebben a lépésben szereplő értékeket.](./media/invision-tutorial/config4.png)
 
     a. Módosítsa az **egyszeri bejelentkezést a < fióknév minden tagja számára, >** a **be**értékre.
 
@@ -169,19 +169,19 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 1. Kattintson a **csapatra** , és válassza a **személyek**lehetőséget.
 
-    ![InVision-konfiguráció](./media/invision-tutorial/config2.png)
+    ![Képernyőfelvétel: a csapat lap, amelyen a személyek vannak kiválasztva.](./media/invision-tutorial/config2.png)
 
 1. Új felhasználó hozzáadásához kattintson a **+ ikonra** .
 
-    ![InVision-konfiguráció](./media/invision-tutorial/user1.png)
+    ![Képernyőfelvétel: a + ikont jeleníti meg a felhasználó hozzáadásához.](./media/invision-tutorial/user1.png)
 
 1. Adja meg a felhasználó e-mail-címét, és kattintson a **tovább**gombra.
 
-    ![InVision-konfiguráció](./media/invision-tutorial/user2.png)
+    ![A képernyőképen a meghívása párbeszédpanel jelenik meg, ahol megadhatja a címeket.](./media/invision-tutorial/user2.png)
 
 1. Az e-mail-cím ellenőrzése után kattintson a **meghívás**elemre.
 
-    ![InVision-konfiguráció](./media/invision-tutorial/user3.png)
+    ![A képernyőképen megjelenik a meghívás párbeszédpanel, ahol a meghívás lehetőségre kattintva folytathatja a folytatást.](./media/invision-tutorial/user3.png)
 
 ## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése
 

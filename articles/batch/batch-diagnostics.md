@@ -2,22 +2,22 @@
 title: Metrikák, riasztások és diagnosztikai naplók
 description: A diagnosztikai napló eseményeinek rögzítése és elemzése Azure Batch fiók erőforrásaihoz, például a készletekhez és a feladatokhoz.
 ms.topic: how-to
-ms.date: 05/29/2020
+ms.date: 10/08/2020
 ms.custom: seodec18
-ms.openlocfilehash: abf9ef53d3f2e3ffeffabfe9b7c77dc5c5debec3
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.openlocfilehash: 265149e8d3cd775974ec690ebffbce92a1b82b2e
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
-ms.locfileid: "86145102"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91848687"
 ---
 # <a name="batch-metrics-alerts-and-logs-for-diagnostic-evaluation-and-monitoring"></a>Batch-metrikák, riasztások és naplók a diagnosztika kiértékeléséhez és figyeléséhez
- 
+
 Ez a cikk ismerteti, hogyan figyelheti a Batch-fiókokat a [Azure monitor](../azure-monitor/overview.md)szolgáltatásainak használatával. A Azure Monitor a Batch-fiók erőforrásaihoz tartozó [mérőszámokat](../azure-monitor/platform/data-platform-metrics.md) és [diagnosztikai naplókat](../azure-monitor/platform/platform-logs-overview.md) gyűjt. Gyűjtsön és fogyasszon el különböző módon ezeket az adatokat a Batch-fiók figyeléséhez és a problémák diagnosztizálásához. A [metrikai riasztásokat](../azure-monitor/platform/alerts-overview.md) úgy is konfigurálhatja, hogy értesítést kapjon, ha egy metrika eléri a megadott értéket.
 
 ## <a name="batch-metrics"></a>Batch-metrikák
 
-A metrikák Azure-telemetria adatok (más néven teljesítményszámlálók), amelyeket az Azure-erőforrások bocsátanak ki, és amelyeket a Azure Monitor szolgáltatás használ. A Batch-fiókokban lévő mérőszámok például a készlet-létrehozási események, az alacsony prioritású csomópontok száma, valamint a feladat teljes eseményei.
+A metrikák Azure-telemetria adatok (más néven teljesítményszámlálók), amelyeket az Azure-erőforrások bocsátanak ki, és amelyeket a Azure Monitor szolgáltatás használ. A Batch-fiókokban lévő mérőszámok például a készlet létrehozása események, Low-Priority csomópontok száma, valamint a feladat teljes eseményei.
 
 Tekintse meg a [támogatott batch-metrikák listáját](../azure-monitor/platform/metrics-supported.md#microsoftbatchbatchaccounts).
 
@@ -34,7 +34,7 @@ A Azure Portal a fiók **Áttekintés** lapja alapértelmezés szerint a fő cso
 Az összes batch-fiók metrikájának megtekintése a Azure Portalban:
 
 1. A Azure Portal válassza a **minden szolgáltatás**  >  **Batch-fiókok**lehetőséget, majd válassza ki a Batch-fiók nevét.
-2. A **figyelés**területen válassza a **metrikák**lehetőséget.
+2. A **Figyelés** alatt kattintson a **Metrikák** elemre.
 3. Válassza a **metrika hozzáadása** lehetőséget, majd válasszon ki egy mérőszámot a legördülő listából.
 4. Válasszon **összesítési** lehetőséget a metrika számára. A Count-alapú metrikák (például a "dedikált mag darabszáma" vagy az "alacsony prioritású csomópontok száma") esetében az **átlagos** összesítést kell használni. Eseményvezérelt metrikák esetén (például "a készlet átméretezése kész események") használja a **Count**összesítést.
 
@@ -57,7 +57,7 @@ A közel valós idejű *metrikai riasztásokat* úgy állíthatja be, hogy egy a
 
 Az egyetlen adatpontra kiváltott riasztások nem ajánlottak, mivel a metrikák a rendelésen kívüli kézbesítés, az adatvesztés és/vagy az ismétlődések hatálya alá esnek. A riasztások létrehozásakor küszöbértékeket használhat a következetlenségek kiszámításához.
 
-Előfordulhat például, hogy egy metrikus riasztást szeretne beállítani, ha az alacsony prioritású alapszám egy bizonyos szintre esik, így beállíthatja a készletek összeállítását. A legjobb eredmények érdekében állítson be egy 10 vagy több percet, ahol a riasztások akkor aktiválódnak, ha az átlagos alacsony prioritású alapértékek a teljes időszak küszöbértéke alá csökkennek. Ez több időt is lehetővé tesz a mérőszámok összesítésére, így pontosabb eredményeket érhet el. 
+Előfordulhat például, hogy egy metrikus riasztást szeretne beállítani, ha az alacsony prioritású alapszám egy bizonyos szintre esik, így beállíthatja a készletek összeállítását. A legjobb eredmények érdekében állítson be egy 10 vagy több percet, ahol a riasztások akkor aktiválódnak, ha az átlagos alacsony prioritású alapértékek a teljes időszak küszöbértéke alá csökkennek. Ez több időt is lehetővé tesz a mérőszámok összesítésére, így pontosabb eredményeket érhet el.
 
 Metrikai riasztás konfigurálása a Azure Portalban:
 
@@ -87,11 +87,11 @@ Gyakori forgatókönyv egy Azure Storage-fiók kiválasztása a napló célhelyk
 
 Másik lehetőségként a következőket teheti:
 
-- A Batch diagnosztikai napló eseményeinek továbbítása egy [Azure Event hub](../event-hubs/event-hubs-about.md)-ba. A Event Hubs másodpercenként több millió eseményt képes befogadni, amelyet később bármilyen valós idejű elemzési szolgáltató használatával átalakíthat és tárolhat. 
+- A Batch diagnosztikai napló eseményeinek továbbítása egy [Azure Event hub](../event-hubs/event-hubs-about.md)-ba. A Event Hubs másodpercenként több millió eseményt képes befogadni, amelyet később bármilyen valós idejű elemzési szolgáltató használatával átalakíthat és tárolhat.
 - Diagnosztikai naplók küldése [Azure monitor naplókba](../azure-monitor/log-query/log-query-overview.md), ahol elemezheti őket, vagy exportálhatja őket elemzésre Power bi vagy Excelben.
 
 > [!NOTE]
-> Az Azure-szolgáltatásokkal további költségek is felmerülhetnek a diagnosztikai naplózási információk tárolásához vagy feldolgozásához. 
+> Az Azure-szolgáltatásokkal további költségek is felmerülhetnek a diagnosztikai naplózási információk tárolásához vagy feldolgozásához.
 
 ### <a name="enable-collection-of-batch-diagnostic-logs"></a>Batch diagnosztikai naplók gyűjtésének engedélyezése
 
@@ -155,7 +155,7 @@ Azure Batch a szolgáltatás naplóit, ha összegyűjtöttük, az adott batch-er
     },
     "resizeTimeout": "300000",
     "targetDedicatedComputeNodes": 2,
-    "maxTasksPerNode": 1,
+    "taskSlotsPerNode": 1,
     "vmFillType": "Spread",
     "enableAutoscale": false,
     "enableInterNodeCommunication": false,
@@ -170,11 +170,13 @@ A Batch szolgáltatás által kibocsátott szolgáltatás-naplózási események
 - [Készlet törlése kész](batch-pool-delete-complete-event.md)
 - [Készlet átméretezésének kezdete](batch-pool-resize-start-event.md)
 - [A készlet átméretezése befejeződött](batch-pool-resize-complete-event.md)
+- [Készlet-méretezés](batch-pool-autoscale-event.md)
 - [Feladat indítása](batch-task-start-event.md)
 - [A feladat befejeződött](batch-task-complete-event.md)
 - [Sikertelen feladat](batch-task-fail-event.md)
+- [Sikertelen feladat-ütemterv](batch-task-schedule-fail-event.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Megismerheti a Batch-megoldások fejlesztéséhez rendelkezésre álló [Batch API-kat és eszközöket](batch-apis-tools.md).
 - További információ a [Batch-megoldások figyeléséről](monitoring-overview.md).

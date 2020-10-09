@@ -5,14 +5,14 @@ services: firewall
 author: vhorne
 ms.service: firewall
 ms.topic: conceptual
-ms.date: 09/28/2020
+ms.date: 10/08/2020
 ms.author: victorh
-ms.openlocfilehash: 16e128fd61c8b0aeae017e5298ae1d8aed6e97e9
-ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
+ms.openlocfilehash: 7429be4430b2b520fb2a66b6b2c0dd138af8e501
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91408507"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850591"
 ---
 # <a name="azure-firewall-features"></a>Az Azure Firewall funkciói
 
@@ -24,7 +24,7 @@ Azure Firewall a következő funkciókat tartalmazza:
 
 - [Beépített magas rendelkezésre állás](#built-in-high-availability)
 - [Rendelkezésre állási zónák](#availability-zones)
-- [Korlátlan felhőalapú skálázhatóság](#unrestricted-cloud-scalability)
+- [Korlátlan Felhőbeli méretezhetőség](#unrestricted-cloud-scalability)
 - [Alkalmazások teljes tartománynevére vonatkozó szűrési szabályok](#application-fqdn-filtering-rules)
 - [Hálózati forgalomra vonatkozó szűrési szabályok](#network-traffic-filtering-rules)
 - [FQDN-címkék](#fqdn-tags)
@@ -33,7 +33,7 @@ Azure Firewall a következő funkciókat tartalmazza:
 - [Kimenő SNAT-támogatás](#outbound-snat-support)
 - [Bejövő DNAT-támogatás](#inbound-dnat-support)
 - [Több nyilvános IP-cím](#multiple-public-ip-addresses)
-- [Azure Monitor-naplózás](#azure-monitor-logging)
+- [Azure Monitor naplózás](#azure-monitor-logging)
 - [Alagúthasználat kényszerítése](#forced-tunneling)
 - [Tanúsítványok](#certifications)
 
@@ -101,7 +101,11 @@ Ez a következő forgatókönyveket teszi lehetővé:
 
 ## <a name="azure-monitor-logging"></a>Azure Monitor-naplózás
 
-A rendszer minden eseményt integrál a Azure Monitorba, így lehetővé teszi a naplók archiválását egy Storage-fiókba, az események továbbítását az Event hub-ba, vagy elküldheti őket Azure Monitor naplókba. További információ: [oktatóanyag: Azure Firewall-naplók és-metrikák figyelése](tutorial-diagnostics.md).
+A rendszer minden eseményt integrál a Azure Monitorba, így lehetővé teszi a naplók archiválását egy Storage-fiókba, az események továbbítását az Event hub-ba, vagy elküldheti őket Azure Monitor naplókba. Azure Monitor naplózási minták esetében lásd: [Azure monitor naplók a Azure Firewall](log-analytics-samples.md).
+
+További információ: [oktatóanyag: Azure Firewall-naplók és-metrikák figyelése](tutorial-diagnostics.md). 
+
+Azure Firewall munkafüzet rugalmas vásznon biztosít Azure Firewall adatelemzéshez. A szolgáltatással gazdag vizuális jelentéseket hozhat létre a Azure Portalon belül. További információ: [naplók figyelése Azure Firewall munkafüzet használatával](firewall-workbook.md).
 
 ## <a name="forced-tunneling"></a>Alagúthasználat kényszerítése
 

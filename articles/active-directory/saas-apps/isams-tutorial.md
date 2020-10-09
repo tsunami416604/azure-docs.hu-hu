@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 08/04/2020
 ms.author: jeedes
-ms.openlocfilehash: e0226392ff96c6dc10cbd729135a15c066378f68
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 5486752c8a1e36eba047ffd4d82b10cddfc771a1
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88552723"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850036"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-isams"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció az iSAMs szolgáltatással
 
@@ -105,7 +105,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Create** (Létrehozás) gombra.
+   1. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -132,16 +132,16 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure-beli egys
 1. Navigáljon a vezérlőpulthoz, és nyissa meg a **hitelesítési** modult.
 1. A jobb oldali menüben válassza az identitás- **szolgáltatók** elemet.
 
-    ![Konfiguráció](./media/isams-tutorial/click-identity-provider.png)
+    ![A képernyőképen Active Directory konfiguráció a kiválasztott Identity Providers beállítással látható.](./media/isams-tutorial/click-identity-provider.png)
 
 1. Válassza a **szolgáltató hozzáadása** lehetőséget
 
-    ![Konfiguráció](./media/isams-tutorial/add-identity-provider.png)
+    ![Képernyőfelvétel: az identitás-szolgáltatók kijelölése a szolgáltatók hozzáadása lehetőséggel.](./media/isams-tutorial/add-identity-provider.png)
 
 
 1. Hajtsa végre a következő lépéseket a következő oldalon:
 
-    ![Konfiguráció](./media/isams-tutorial/configure-isams.png)
+    ![Képernyőfelvétel: az Identity Providers varázsló, amelyen elvégezheti az ismertetett lépéseket.](./media/isams-tutorial/configure-isams.png)
 
     a. A **név** szövegmezőben adjon meg egy érvényes nevet, például: `Saml2 Azure` . Ez a név fog megjelenni a bejelentkezési oldalon.
 
@@ -159,12 +159,12 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure-beli egys
 
 2.  Lépjen a **Vezérlőpult kezdőlap**  ->  **biztonsági & engedélyek**  ->  **felhasználói fiókok**  ->  **felhasználói beállítások & feladatok**  ->  **felhasználói tulajdonságok módosítása** elemre.
 
-    ![Felhasználó tesztelése](./media/isams-tutorial/modify-user-properties.png)
+    ![Képernyőfelvétel: a felhasználói fiókok lap, amelyen a felhasználói tulajdonságok módosítva beállítás látható.](./media/isams-tutorial/modify-user-properties.png)
 
 
 3. Az eredményül kapott előugró ablakban válassza ki a **fiók adatai** lapot, és módosítsa az **engedélyt** az újonnan létrehozott identitás-szolgáltatóra.
 
-    ![Felhasználó tesztelése](./media/isams-tutorial/account-details.png)
+    ![A képernyőképen a fiók adatai szerepelnek az engedélyezés értékével.](./media/isams-tutorial/account-details.png)
 
 4. Kattintson a **mentés & Bezárás**gombra.
 

@@ -2,17 +2,17 @@
 title: Oktatóanyag – a Node.js Azure Batch ügyféloldali kódtár használata
 description: Megismerheti az Azure Batch alapvető fogalmait, és létrehozhat egy egyszerű megoldást a Node.js használatával.
 ms.topic: tutorial
-ms.date: 05/22/2017
-ms.openlocfilehash: 4cecd25346d868dfb27deb9f768342ab2e72ade9
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.date: 10/08/2020
+ms.openlocfilehash: 33ca65421802cdbe31497f3a19ba5992961daa12
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
-ms.locfileid: "83780176"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850608"
 ---
 # <a name="get-started-with-batch-sdk-for-nodejs"></a>Ismerkedés a Node.js-hez készült Batch SDK-val
 
-Ebben a cikkben megismerheti a Batch-ügyfelek kiépítésének alapjait Node.js-ben, az [Azure Batch Node.js SDK](/javascript/api/overview/azure/batch) használatával. Részletes, lépésekre osztott módon ismerkedhet meg a Batch-alkalmazásokhoz tartozó forgatókönyvekkel és azok a Node.js-ügyfél használatával történő beállításával.  
+Ebben a cikkben megismerheti a Batch-ügyfelek kiépítésének alapjait Node.js-ben, az [Azure Batch Node.js SDK](/javascript/api/overview/azure/batch) használatával. Részletes, lépésekre osztott módon ismerkedhet meg a Batch-alkalmazásokhoz tartozó forgatókönyvekkel és azok a Node.js-ügyfél használatával történő beállításával.
 
 ## <a name="prerequisites"></a>Előfeltételek
 Ez a cikk a Node.js és a Linux gyakorlati ismeretét feltételezi. Azt is feltételezi, hogy rendelkezik egy, a Batch- és Storage-szolgáltatások létrehozásához szükséges hozzáférési jogosultságokkal ellátott Azure-fiókkal.
@@ -174,7 +174,7 @@ var cloudPool = batch_client.pool.get(poolid,function(error,result,request,respo
         {
             if(error.statusCode==404)
             {
-                console.log("Pool not found yet returned 404...");    
+                console.log("Pool not found yet returned 404...");
 
             }
             else
@@ -241,7 +241,7 @@ Az alábbiakban a pool.get függvény által visszaadott objektumra láthat pél
   targetDedicated: 4,
   enableAutoScale: false,
   enableInterNodeCommunication: false,
-  maxTasksPerNode: 1,
+  taskSlotsPerNode: 1,
   taskSchedulingPolicy: { nodeFillType: 'Spread' } }
 ```
 
@@ -252,7 +252,7 @@ Az Azure Batch-feladatok hasonló feladatok logikai csoportjai. Ebben az esetben
 E feladatok párhuzamosan futtathatók és több csomóponton üzembe helyezhetők, a vezénylésüket az Azure Batch-szolgáltatás végzi.
 
 > [!Tip]
-> A [maxTasksPerNode](https://azure.github.io/azure-sdk-for-node/azure-batch/latest/Pool.html#add) tulajdonság segítségével az egyetlen csomóponton egyidejűleg futtatható feladatok maximális száma adható meg.
+> A [taskSlotsPerNode](https://azure.github.io/azure-sdk-for-node/azure-batch/latest/Pool.html#add) tulajdonság segítségével megadhatja, hogy legfeljebb hány feladat futhat egyszerre egyetlen csomóponton.
 >
 >
 
@@ -317,7 +317,7 @@ Feltételezve, hogy négy tárolóval („con1”, „con2”, „con3”, „co
 ```nodejs
 // storing container names in an array
 var container_list = ["con1","con2","con3","con4"]
-    container_list.forEach(function(val,index){           
+    container_list.forEach(function(val,index){
 
            var container_name = val;
            var taskID = container_name + "_process";
@@ -325,7 +325,7 @@ var container_list = ["con1","con2","con3","con4"]
            var task = batch_client.task.add(poolid,task_config,function(error,result){
                 if(error != null)
                 {
-                    console.log(error.response);     
+                    console.log(error.response);
                 }
                 else
                 {
@@ -339,11 +339,11 @@ var container_list = ["con1","con2","con3","con4"]
     });
 ```
 
-A kód több tevékenységet ad hozzá a készlethez. Minden egyes tevékenység a létrehozott virtuális gépek készletének egyik csomópontján lesz végrehajtva. Ha a tevékenységek száma meghaladja az adott készletben lévő virtuális gépek számát vagy a maxTasksPerNode tulajdonság értékét, a rendszer a csomópont elérhetővé válásáig várakoztatja a tevékenységeket. Ennek vezénylését az Azure Batch automatikusan elvégzi.
+A kód több tevékenységet ad hozzá a készlethez. Minden egyes tevékenység a létrehozott virtuális gépek készletének egyik csomópontján lesz végrehajtva. Ha a feladatok száma meghaladja a készletben lévő virtuális gépek számát vagy a taskSlotsPerNode tulajdonságot, a feladatok megvárnak, amíg elérhetővé nem válik egy csomópont. Ennek vezénylését az Azure Batch automatikusan elvégzi.
 
 A portálon részletesen megtekinthetők a tevékenységek és a feladatok állapotai. Használhatja az Azure Node SDK listázási és lekérési funkcióit is. Részletes információkat a dokumentáció [hivatkozását](https://azure.github.io/azure-sdk-for-node/azure-batch/latest/Job.html) megnyitva talál.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerje meg a [Batch szolgáltatás munkafolyamatát és az elsődleges erőforrásokat](batch-service-workflow-features.md) , például a készleteket, a csomópontokat, a feladatokat és a feladatokat.
 - A Batch API megismeréséhez lásd a [Batch – Node.js-referenciát](/javascript/api/overview/azure/batch).

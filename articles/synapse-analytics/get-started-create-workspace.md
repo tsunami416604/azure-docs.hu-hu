@@ -9,12 +9,12 @@ ms.reviewer: jrasnick
 ms.service: synapse-analytics
 ms.topic: tutorial
 ms.date: 10/07/2020
-ms.openlocfilehash: d3a5f2bd4bf536c1bc5b3723b9b612beef6a647c
-ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
+ms.openlocfilehash: d74c3e42317b954a510f3276db38c0dcdf5e2362
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91812318"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850379"
 ---
 # <a name="creating-a-synapse-workspace"></a>Szinapszis-munkaterület létrehozása
 
@@ -29,8 +29,9 @@ Az oktatóanyag lépéseinek elvégzéséhez hozzáféréssel kell rendelkeznie 
 1. Nyissa meg a [Azure Portal](https://portal.azure.com), és a legfelső szintű keresés a **szinapszisban**.
 1. A keresési eredmények között, a **szolgáltatások**területen válassza az **Azure szinapszis Analytics (munkaterületek előzetes verzió)** lehetőséget.
 1. Munkaterület létrehozásához válassza a **Hozzáadás** lehetőséget.
-1. Az **alapismeretek**területen adja meg a kötelező mezőket, és válassza ki a munkaterület nevét. Ebben az oktatóanyagban a **sajátmunkaterület**-t fogjuk használni.
-1. Munkaterület létrehozásához ADLSGEN2-fiókra van szükség. A legegyszerűbb lehetőség, hogy újat hozzon létre. Ha újra szeretné használni a meglévőket, néhány további konfigurálást is végre kell hajtania. 
+1. Az **alapvető beállítások**területen adja meg a kívánt **előfizetést**, **erőforráscsoportot**, **régiót**, majd válassza ki a munkaterület nevét. Ebben az oktatóanyagban a **sajátmunkaterület**-t fogjuk használni.
+1. Munkaterület létrehozásához szükség van egy ADLSGEN2-fiókra és egy tárolóra a fiókban. A legegyszerűbb lehetőség, hogy újat hozzon létre. Ha újra szeretné használni a meglévőket, néhány további konfigurálást is végre kell hajtania. 
+    1. A szinapszis munkaterület ezt a tárolót fogja használni a Spark-naplók és a Spark-táblákra vonatkozó adattárolás alapértelmezett helyeként.
 1. 1. lehetőség új ADLSGEN2-fiók létrehozása 
     1. Navigáljon a **2. generációs Data Lake Storage kiválasztásához**. 
     1. Kattintson az **új létrehozása** elemre, és nevezze el **contosolake**.
@@ -116,7 +117,7 @@ Konfigurálja a Storage-fiókhoz való hozzáférést a munkaterületről. Előf
 1. Rendelje hozzá a következő szerepköröket, vagy győződjön meg arról, hogy már hozzá van rendelve. Ugyanazt a nevet használjuk a munkaterület-identitáshoz és a munkaterület nevéhez.
     * A Storage- **blob adatközreműködői** szerepköréhez a Storage-fiókban rendeljen **sajátmunkaterület** a munkaterület-identitáshoz.
     * Rendelje hozzá a **sajátmunkaterület** a munkaterület neveként.
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 
 ## <a name="next-steps"></a>Következő lépések

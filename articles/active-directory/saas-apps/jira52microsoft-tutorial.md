@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/22/2019
 ms.author: jeedes
-ms.openlocfilehash: e0198fdcfea1656e3aec5179358e69fb6fb55723
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 331d9df6059c8af54857d05d2d6373e48e127eac
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88547532"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91850846"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-jira-saml-sso-by-microsoft-v52"></a>Oktatóanyag: Azure Active Directory integráció a JIRA SAML SSO-val a Microsofttal (V 5.2)
 
@@ -30,7 +30,7 @@ A JIRA SAML SSO Microsoft (V 5.2) és az Azure AD integrálásával a következ�
 Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
 Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
-## <a name="description"></a>Description
+## <a name="description"></a>Leírás
 
 Az egyszeri bejelentkezés engedélyezéséhez használja a Microsoft Azure Active Directory-fiókját a Atlassian JIRA-kiszolgálóval. Így az összes céges felhasználó használhatja az Azure AD hitelesítő adatait a JIRA alkalmazásba való bejelentkezéshez. Ez a beépülő modul SAML 2,0-et használ a összevonáshoz.
 
@@ -99,7 +99,7 @@ Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a kapcs
 Az Azure AD egyszeri bejelentkezés konfigurálásához és teszteléséhez a Microsoft által létrehozott SAML SSO-JIRA (V 5.2) a következő építőelemeket kell végrehajtania:
 
 1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. A **[JIRA SAML SSO konfigurálása a Microsoft (v 5.2) egyszeri bejelentkezéssel](#configure-jira-saml-sso-by-microsoft-v52-single-sign-on)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+2. A **[JIRA SAML SSO konfigurálása a Microsoft (v 5.2) egyszeri bejelentkezéssel](#configure-jira-saml-sso-by-microsoft-v52-single-sign-on)** – az alkalmazás oldalának egyetlen Sign-On beállításainak konfigurálása.
 3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
 4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
 5. **[Hozzon létre JIRA SAML SSO-t a Microsoft (v 5.2) használatával](#create-jira-saml-sso-by-microsoft-v52-test-user)** , hogy a Microsoft (v 5.2) a felhasználó Azure ad-képviseletéhez kapcsolódó Britta Simon partnere legyen.
@@ -119,7 +119,7 @@ Az Azure AD egyszeri bejelentkezésének konfigurálása a JIRA SAML SSO haszná
 
     ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
+3. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
@@ -134,35 +134,35 @@ Az Azure AD egyszeri bejelentkezésének konfigurálása a JIRA SAML SSO haszná
     c. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<domain:port>/plugins/servlet/saml/auth`
 
     > [!NOTE]
-    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és a bejelentkezési URL-címmel. A port nem kötelező, ha az egy elnevezett URL-cím. Ezek az értékek a JIRA beépülő modul konfigurálása során érkeznek, amelyet az oktatóanyag későbbi részében ismertetünk.
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és Sign-On URL-címmel. A port nem kötelező, ha az egy elnevezett URL-cím. Ezek az értékek a JIRA beépülő modul konfigurálása során érkeznek, amelyet az oktatóanyag későbbi részében ismertetünk.
 
-5. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a Másolás gombra az **alkalmazás-összevonási metaadatok URL-címének** másolásához és a számítógépre mentéséhez.
+5. Az **egyszeres Sign-On beállítása az SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a Másolás gombra az **alkalmazás-összevonási metaadatok URL-címének** másolásához és a számítógépre mentéséhez.
 
     ![A tanúsítvány letöltési hivatkozása](common/copy-metadataurl.png)
 
-### <a name="configure-jira-saml-sso-by-microsoft-v52-single-sign-on"></a>JIRA SAML SSO konfigurálása a Microsoft (V 5.2) egyszeri bejelentkezéssel
+### <a name="configure-jira-saml-sso-by-microsoft-v52-single-sign-on"></a>JIRA SAML SSO konfigurálása a Microsofttól (V 5.2) egy Sign-On
 
 1. Egy másik böngészőablakban jelentkezzen be rendszergazdaként a JIRA-példányba.
 
 2. Mutasson a fogaskerékre, és kattintson a **bővítmények**elemre.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/jira52microsoft-tutorial/addon1.png)
+    ![A képernyőképen a beállítások menüből kiválasztott bővítmények láthatók.](./media/jira52microsoft-tutorial/addon1.png)
 
 3. A Bővítmények lap beállítások területén kattintson a **Bővítmények kezelése**elemre.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/jira52microsoft-tutorial/addon7.png)
+    ![A képernyőképen a Bővítmények lapon kiválasztott bővítmények kezelése látható.](./media/jira52microsoft-tutorial/addon7.png)
 
 4. Töltse le a beépülő modult a [Microsoft letöltőközpontból](https://www.microsoft.com/download/details.aspx?id=56521). Töltse fel manuálisan a Microsoft által biztosított beépülő modult a **feltöltés** menü használatával. A beépülő modul letöltése a [Microsoft szolgáltatási szerződése](https://www.microsoft.com/servicesagreement/)alá tartozik.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/jira52microsoft-tutorial/addon12.png)
+    ![A képernyőképen a Bővítmények kezelése hivatkozásra kattintva láthatja a bővítmények kezelését.](./media/jira52microsoft-tutorial/addon12.png)
 
 5. A beépülő modul telepítése után a **felhasználó által telepített** bővítmények szakaszban jelenik meg. Az új beépülő modul konfigurálásához kattintson a **Konfigurálás** elemre.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/jira52microsoft-tutorial/addon13.png)
+    ![A képernyőképen az Azure A D SAML-alapú egyszeri bejelentkezés az JIRA szakaszra, a configure kiválasztott beállítással látható.](./media/jira52microsoft-tutorial/addon13.png)
 
 6. Hajtsa végre a következő lépéseket a konfiguráció lapon:
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/jira52microsoft-tutorial/addon52.png)
+    ![A képernyőképen a Microsoft JIRA S S O-összekötő konfigurációs lapja látható.](./media/jira52microsoft-tutorial/addon52.png)
 
     > [!TIP]
     > Győződjön meg arról, hogy az alkalmazáshoz csak egy tanúsítvány van hozzárendelve, így nincs hiba a metaadatok feloldásakor. Ha több tanúsítvány is van, a metaadatok feloldásakor a rendszergazda hibaüzenetet kap.
@@ -213,7 +213,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    d. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -251,19 +251,19 @@ Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a he
 
 2. Mutasson a fogaskerékre, és kattintson a **felhasználó-felügyelet**elemre.
 
-    ![Alkalmazott hozzáadása](./media/jira52microsoft-tutorial/user1.png)
+    ![A képernyőfelvételen a beállítások menüből kiválasztott felhasználói felügyelet látható.](./media/jira52microsoft-tutorial/user1.png)
 
 3. A rendszer átirányítja a rendszergazdai hozzáférés lapra a **jelszó** megadásához, majd kattintson a **megerősítés** gombra.
 
-    ![Alkalmazott hozzáadása](./media/jira52microsoft-tutorial/user2.png)
+    ![Képernyőfelvétel: rendszergazdai hozzáférés lap, ahol megadhatja a hitelesítő adatait.](./media/jira52microsoft-tutorial/user2.png)
 
 4. A **felhasználói kezelés** lap szakaszban kattintson a **felhasználó létrehozása**elemre.
 
-    ![Alkalmazott hozzáadása](./media/jira52microsoft-tutorial/user3.png) 
+    ![Képernyőfelvétel: a felhasználó-kezelés lap, amelyen létrehozhat felhasználókat.](./media/jira52microsoft-tutorial/user3.png) 
 
 5. Az **"új felhasználó létrehozása"** párbeszédpanelen hajtsa végre a következő lépéseket:
 
-    ![Alkalmazott hozzáadása](./media/jira52microsoft-tutorial/user4.png)
+    ![A képernyőképen az új felhasználó létrehozása párbeszédpanel jelenik meg, amelyen megadhatja az ebben a lépésben szereplő információkat.](./media/jira52microsoft-tutorial/user4.png)
 
     a. Az **e-mail cím** szövegmezőbe írja be a felhasználóhoz hasonló e-mail címet Brittasimon@contoso.com .
 

@@ -13,15 +13,15 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 03/11/2020
 ms.author: memildin
-ms.openlocfilehash: 4b47646e2f051a8fbfefbc36aa879bb80e9eca68
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: e6bb3389fe035b1ccfbefaca788a40530581ac7a
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91439021"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91851056"
 ---
 # <a name="adaptive-network-hardening-in-azure-security-center"></a>Adaptív hálózati megerősítés Azure Security Center
-Ismerje meg, hogyan konfigurálhatja az adaptív hálózatok megerősítését Azure Security Centerban.
+Ismerje meg, hogyan konfigurálhatja az adaptív hálózatok megerősítését Security Centerban.
 
 ## <a name="availability"></a>Rendelkezésre állás
 |Szempont|Részletek|
@@ -37,20 +37,22 @@ Ismerje meg, hogyan konfigurálhatja az adaptív hálózatok megerősítését A
 
 Az adaptív hálózat megerősítése ajánlásokat biztosít a NSG-szabályok további megerősítéséhez. Egy gépi tanulási algoritmust használ, amely a tényleges forgalom, az ismert megbízható konfiguráció, a veszélyforrások felderítése és más, a biztonsággal kapcsolatos mutatók szempontjából tényezőket tartalmaz, és javaslatokat tesz arra, hogy csak adott IP-/port-rekordok származó forgalmat engedélyezzen.
 
-Tegyük fel például, hogy a meglévő NSG-szabály a 22-es porton engedélyezi a 140.20.30.10/24 forgalmat. Az adaptív hálózat megerősítő javaslata az elemzés alapján szűkíti a tartományt, és engedélyezi a forgalmat a 140.23.30.10/29 – amely egy szűkebb IP-címtartomány, és letiltja az adott portra irányuló összes más forgalmat.
+Tegyük fel például, hogy a meglévő NSG-szabály a 22-es porton engedélyezi a 140.20.30.10/24 forgalmat. A forgalom elemzése alapján az adaptív hálózat megerősítése javaslatot tehet a tartomány szűkítéséhez a 140.23.30.10/29-től érkező forgalom engedélyezéséhez, és az adott portra irányuló összes egyéb forgalom megtagadását.
 
->[!TIP]
+>[!Note]
 > Az adaptív hálózati korlátozási javaslatok csak a következő konkrét portokon támogatottak (UDP és TCP esetén egyaránt): 13, 17, 19, 22, 23, 53, 69, 81, 111, 119, 123, 135, 137, 138, 139, 161, 162, 389, 445, 512, 514, 593, 636, 873, 1433, 1434, 1900, 2049, 2301, 2323, 2381, 3268, 3306, 3389, 4333, 5353 , 6379, 7000, 7001, 7199, 8081, 8089, 8545, 9042, 9160, 9300, 11211, 16379, 26379, 27017, 37215
 
 
-![Hálózati megerősítő nézet](./media/security-center-adaptive-network-hardening/traffic-hardening.png)
+## <a name="view-and-manage-hardening-alerts-and-rules"></a>Megerősítő riasztások és szabályok megtekintése és kezelése
 
+1. A Security Center menüjében nyissa meg az **Azure Defender** irányítópultját, és válassza ki az adaptív hálózat megerősítő csempéjét (1), vagy az adaptív hálózat megerősítéséhez (2) kapcsolódó bepillantást az adattábla elemre. 
 
+    :::image type="content" source="./media/security-center-adaptive-network-hardening/traffic-hardening.png" alt-text="Az adaptív hálózat megerősítő eszközeinek elérése" lightbox="./media/security-center-adaptive-network-hardening/traffic-hardening.png":::
 
+    > [!TIP]
+    > Az Áttekintés panelen látható, hogy a virtuális gépek hány százalékát védi az adaptív hálózat megerősítése. 
 
-## <a name="view-adaptive-network-hardening-alerts-and-rules"></a>Adaptív hálózat megerősítő riasztások és szabályok megtekintése
-
-1. A Security Center területen válassza a **hálózatkezelés**  ->  **adaptív hálózat megerősítése**lehetőséget. A hálózati virtuális gépek három külön lapon vannak felsorolva:
+1. Az adaptív hálózat korlátozási javaslatainak részletes oldalát alkalmazni kell az **internetre irányuló virtuális gépekre** vonatkozó ajánlásban, amely három lapra van csoportosítva:
    * Nem megfelelő **erőforrások**: azok a virtuális gépek, amelyeken jelenleg az adaptív hálózat megerősítő algoritmusának futtatásával aktiválva vannak javaslatok és riasztások. 
    * **Kifogástalan erőforrások**: riasztások nélküli virtuális gépek és javaslatok.
    * Nem **vizsgált erőforrások**: a következő okok egyike miatt nem futtathatók az adaptív hálózati kötési algoritmust használó virtuális gépek:
@@ -58,33 +60,28 @@ Tegyük fel például, hogy a meglévő NSG-szabály a 22-es porton engedélyezi
       * **Nem áll rendelkezésre elegendő mennyiségű adatok**: a pontos forgalom-megerősítési javaslatok létrehozásához Security Center legalább 30 napos forgalmi adatokat igényel.
       * A **virtuális gépet az Azure Defender nem védi**: csak az [Azure Defender által a kiszolgálókhoz](defender-for-servers-introduction.md) védett virtuális gépek jogosultak erre a szolgáltatásra.
 
-     ![sérült erőforrások](./media/security-center-adaptive-network-hardening/unhealthy-resources.png)
+    :::image type="content" source="./media/security-center-adaptive-network-hardening/recommendation-details-page.png" alt-text="Az adaptív hálózat megerősítő eszközeinek elérése":::
 
-2. A nem megfelelő **állapotú erőforrások** lapon válasszon ki egy virtuális gépet a riasztások megtekintéséhez, és a javasolt korlátozási szabályokat alkalmazza.
+1. A nem megfelelő **állapotú erőforrások** lapon válasszon ki egy virtuális gépet a riasztások megtekintéséhez, és a javasolt korlátozási szabályokat alkalmazza.
 
-    ![riasztások megerősítése](./media/security-center-adaptive-network-hardening/anh-recommendation-rules.png)
+    - A **szabályok** lap felsorolja azokat a szabályokat, amelyekkel az adaptív hálózat megerősítő javasolja a hozzáadását
+    - A **riasztások** lapon láthatók azok a riasztások, amelyek a forgalom miatt keletkeztek, az erőforrás felé áramlanak, amely nem az ajánlott szabályokban engedélyezett IP-tartományon belül van.
 
+1. Szükség esetén szerkessze a szabályokat:
 
-## <a name="review-and-apply-adaptive-network-hardening-recommended-rules"></a>Adaptív hálózatra vonatkozó, javasolt szabályok áttekintése és alkalmazása
-
-1. A nem kifogástalan **erőforrások** lapon válasszon ki egy virtuális gépet. A riasztások és az ajánlott megerősítő szabályok szerepelnek a felsorolásban.
-
-     ![Szabályok megerősítése](./media/security-center-adaptive-network-hardening/hardening-alerts.png)
-
-   > [!NOTE]
-   > A **szabályok** lap felsorolja azokat a szabályokat, amelyekkel az adaptív hálózat megerősítő javasolja a hozzáadását. A **riasztások** lapon láthatók azok a riasztások, amelyek a forgalom miatt keletkeztek, az erőforrás felé áramlanak, amely nem az ajánlott szabályokban engedélyezett IP-tartományon belül van.
-
-2. Ha módosítani szeretné egy szabály egyes paramétereit, módosíthatja azt a [szabály módosítása](#modify-rule)című részben leírtak szerint.
-   > [!NOTE]
-   > [Törölhet](#delete-rule) vagy [hozzáadhat](#add-rule) egy szabályt is.
+    - [Szabály módosítása](#modify-rule)
+    - [Szabály törlése](#delete-rule) 
+    - [A szabály beállítása](#add-rule)
 
 3. Válassza ki a NSG alkalmazni kívánt szabályokat, majd kattintson a **kikényszerítés**gombra.
 
+    > [!TIP]
+    > Ha az engedélyezett forrás IP-címtartományok "None"-ként jelennek meg, az azt jelenti, hogy az ajánlott szabály egy *megtagadási* szabály, ellenkező esetben ez egy *engedélyezési* szabály.
+
+    :::image type="content" source="./media/security-center-adaptive-network-hardening/hardening-alerts.png" alt-text="Az adaptív hálózat megerősítő eszközeinek elérése":::
+
       > [!NOTE]
       > A kényszerített szabályok hozzáadódnak a virtuális gépet védő NSG (ok) hoz. (A virtuális gépet egy hálózati adapterhez társított NSG, vagy a virtuális gépet tartalmazó alhálózattal, vagy mindkettővel védeni lehet.)
-
-    ![szabályok betartatása](./media/security-center-adaptive-network-hardening/enforce-hard-rule2.png)
-
 
 ### <a name="modify-a-rule"></a>Szabály <a name ="modify-rule"> </a> módosítása
 

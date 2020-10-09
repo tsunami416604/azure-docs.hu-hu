@@ -2,14 +2,14 @@
 title: Számítási csomópontok automatikus méretezése egy Azure Batch-készletben
 description: A készletben lévő számítási csomópontok számának dinamikus beállításához engedélyezze a Felhőbeli készlet automatikus méretezését.
 ms.topic: how-to
-ms.date: 07/27/2020
+ms.date: 10/08/2020
 ms.custom: H1Hack27Feb2017, fasttrack-edit, devx-track-csharp
-ms.openlocfilehash: e3e7a354e015ffa8a6164de59edcf572ab773319
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.openlocfilehash: 5774acbfc035ab61267dddb31b01b0e82689f690
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
-ms.locfileid: "88932321"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91849792"
 ---
 # <a name="create-an-automatic-formula-for-scaling-compute-nodes-in-a-batch-pool"></a>Automatikus képlet létrehozása a számítási csomópontok méretezéséhez egy batch-készletben
 
@@ -163,7 +163,7 @@ Az autoskálázási képletek a következő típusokat támogatják:
   - TimeInterval_Week
   - TimeInterval_Year
 
-## <a name="operations"></a>Üzemeltetés
+## <a name="operations"></a>Műveletek
 
 Ezek a műveletek az előző szakaszban felsorolt típusoknál engedélyezettek.
 
@@ -255,7 +255,7 @@ Képletek definiálásakor az erőforrás és a tevékenység mérőszámait is 
       <li>$NetworkOutBytes</li></ul></p>
   </tr>
   <tr>
-    <td><b>Tevékenység</b></td>
+    <td><b>Feladat</b></td>
     <td><p>A tevékenységek mérőszámai a feladatok állapotán alapulnak, például az aktív, a függőben lévő és a befejezett műveletekkel. A következő, szolgáltatás által definiált változók hasznosak lehetnek a készletre vonatkozó méretek végrehajtásához a tevékenységek metrikái alapján:</p>
     <p><ul>
       <li>$ActiveTasks</li>
@@ -281,7 +281,7 @@ $CPUPercent.GetSample(TimeInterval_Minute * 5)
 
 A következő módszerek használhatók a szolgáltatás által definiált változókra vonatkozó mintaadatok beszerzéséhez.
 
-| Módszer | Leírás |
+| Metódus | Leírás |
 | --- | --- |
 | GetSample() |A `GetSample()` metódus adatmintákból álló vektort ad vissza.<br/><br/>A minta a metrikák adataihoz tartozó 30 másodperc. Más szóval a mintákat 30 másodpercenként szerzi be a rendszer. De ahogy az alábbiakban is látható, a rendszer a mintavétel begyűjtésének és a képletek számára elérhetővé tételének késleltetését jelzi. Így az adott időszakra vonatkozóan nem minden minta lehet egy képlet alapján kiértékelésre.<ul><li>`doubleVec GetSample(double count)`: Meghatározza, hogy a rendszer hány mintát kapjon a legutóbbi összegyűjtött mintákból. `GetSample(1)` az utolsó elérhető mintát adja vissza. A hasonló mérőszámok esetében `$CPUPercent` azonban `GetSample(1)` nem ajánlott használni, mert a minta gyűjtése nem lehetséges. *when* Lehet, hogy a közelmúltban vagy a rendszerproblémák miatt sokkal régebbi lehet. Ilyen esetekben jobb, ha az alább látható időintervallumot használja.<li>`doubleVec GetSample((timestamp or timeinterval) startTime [, double samplePercent])`: Meghatározza a mintaadatok gyűjtésének időkeretét. Azt is meghatározza, hogy a minták hány százalékát kell elérhetőnek lennie a kért időkeretben. Például a `$CPUPercent.GetSample(TimeInterval_Minute * 10)` 20 mintát kell visszaadnia, ha az elmúlt 10 percben az összes minta megtalálható az `CPUPercent` előzményekben. Ha a korábbi előzmények nem voltak elérhetők, csak 18 mintát ad vissza. Ebben az esetben `$CPUPercent.GetSample(TimeInterval_Minute * 10, 95)` sikertelen lesz, mert a minták csak 90%-a érhető el, de `$CPUPercent.GetSample(TimeInterval_Minute * 10, 80)` sikeres volt.<li>`doubleVec GetSample((timestamp or timeinterval) startTime, (timestamp or timeinterval) endTime [, double samplePercent])`: Az adatgyűjtés időkeretét adja meg a kezdési és befejezési időponttal együtt. A fentiekben leírtaknak megfelelően a rendszer a mintavétel begyűjtése és a képletek elérhetővé válása között eltelt időt vesz igénybe. Ezt a késleltetést a metódus használatakor érdemes figyelembe venni `GetSample` . Lásd `GetSamplePercent` alább. |
 | GetSamplePeriod() |Egy korábbi mintaadatok-készletben szereplő minták időszakát adja vissza. |
@@ -648,6 +648,24 @@ Result:
 Error:
 ```
 
+## <a name="get-autoscale-run-history-using-pool-autoscale-events"></a>Az autoskálázás futtatási előzményeinek beolvasása a készlet autoskálázási eseményeivel
+Az automatikus skálázási előzményeket a [PoolAutoScaleEvent](batch-pool-autoscale-event.md)lekérdezésével is megtekintheti. Ezt az eseményt a Batch szolgáltatás bocsátja ki, amely rögzíti az autoscale Formula kiértékelésének és végrehajtásának minden előfordulását, ami hasznos lehet a lehetséges problémák elhárításához.
+
+Példa a PoolAutoScaleEvent:
+```json
+{
+    "id": "poolId",
+    "timestamp": "2020-09-21T23:41:36.750Z",
+    "formula": "...",
+    "results": "$TargetDedicatedNodes=10;$NodeDeallocationOption=requeue;$curTime=2016-10-14T18:36:43.282Z;$isWeekday=1;$isWorkingWeekdayHour=0;$workHours=0",
+    "error": {
+        "code": "",
+        "message": "",
+        "values": []
+    }
+}
+```
+
 ## <a name="example-autoscale-formulas"></a>Példa az autoskálázási képletekre
 
 Nézzük meg néhány képletet, amelyek különböző módszereket mutatnak be a készletben lévő számítási erőforrások mennyiségének módosítására.
@@ -691,7 +709,7 @@ $NodeDeallocationOption = taskcompletion;
 
 ### <a name="example-3-accounting-for-parallel-tasks"></a>3. példa: párhuzamos feladatok könyvelése
 
-Ez a C#-példa a feladatok száma alapján módosítja a készlet méretét. Ez a képlet a készlethez beállított [MaxTasksPerComputeNode](/dotnet/api/microsoft.azure.batch.cloudpool.maxtaskspercomputenode) értéket is figyelembe veszi. Ez a megközelítés olyan helyzetekben hasznos, amikor engedélyezve van a [párhuzamos feladatok végrehajtása](batch-parallel-node-tasks.md) a készleten.
+Ez a C#-példa a feladatok száma alapján módosítja a készlet méretét. Ez a képlet a készlethez beállított [TaskSlotsPerNode](/dotnet/api/microsoft.azure.batch.cloudpool.taskslotspernode) értéket is figyelembe veszi. Ez a megközelítés olyan helyzetekben hasznos, amikor engedélyezve van a [párhuzamos feladatok végrehajtása](batch-parallel-node-tasks.md) a készleten.
 
 ```csharp
 // Determine whether 70 percent of the samples have been recorded in the past
@@ -699,7 +717,7 @@ Ez a C#-példa a feladatok száma alapján módosítja a készlet méretét. Ez 
 $samples = $ActiveTasks.GetSamplePercent(TimeInterval_Minute * 15);
 $tasks = $samples < 70 ? max(0,$ActiveTasks.GetSample(1)) : max( $ActiveTasks.GetSample(1),avg($ActiveTasks.GetSample(TimeInterval_Minute * 15)));
 // Set the number of nodes to add to one-fourth the number of active tasks
-// (theMaxTasksPerComputeNode property on this pool is set to 4, adjust
+// (the TaskSlotsPerNode property on this pool is set to 4, adjust
 // this number for your use case)
 $cores = $TargetDedicatedNodes * 4;
 $extraVMs = (($tasks - $cores) + 3) / 4;
@@ -736,7 +754,7 @@ string formula = string.Format(@"
     ", now, 4);
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Megtudhatja, hogyan [hajthat végre egyszerre több feladatot a készlet számítási csomópontjain](batch-parallel-node-tasks.md). Az automatikus skálázással együtt az egyes munkaterhelések esetében csökkentheti a feladatok időtartamát, így pénzt takaríthat meg.
 - Megtudhatja, hogyan lehet [hatékonyan lekérdezni a Azure batch szolgáltatást](batch-efficient-list-queries.md) a további hatékonyság érdekében.
