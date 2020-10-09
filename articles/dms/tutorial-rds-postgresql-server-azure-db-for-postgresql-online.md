@@ -13,10 +13,10 @@ ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 04/11/2020
 ms.openlocfilehash: 627c03409b0808ff2bcdbb24e961800e944dcfc8
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91291299"
 ---
 # <a name="tutorial-migrate-rds-postgresql-to-azure-db-for-postgresql-online-using-dms"></a>Oktatóanyag: az RDS PostgreSQL átmigrálása az Azure DB for PostgreSQL online-ba a DMS használatával
@@ -65,7 +65,7 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
 2. A fő felhasználónevet használva kapcsolódjon a forráshoz Azure Database Migration Service. Ha a fő felhasználói fióktól eltérő fiókot használ, a fióknak a rds_superuser szerepkörrel és a rds_replication szerepkörrel kell rendelkeznie. A rds_replication szerepkör a logikai tárolóhelyek kezeléséhez és az adatstreamek logikai tárolóhelyek használatával történő továbbításához biztosít engedélyeket.
 3. Hozzon létre egy új paraméter-csoportot a következő konfigurációval:
 
-    a. Állítsa az RDS. logical_replication paramétert az DB-paraméter csoportjába az 1 értékre.
+    a. Állítsa a rds.logical_replication paramétert az DB paraméter csoportjában az 1 értékre.
 
     b. max_wal_senders = [egyidejű feladatok száma] – a max_wal_senders paraméter a futtatott egyidejű feladatok számát állítja be, 10 feladatot ajánl fel.
 
@@ -100,7 +100,7 @@ Az oktatóanyag elvégzéséhez a következőkre lesz szüksége:
     psql -h hostname -U db_username -d db_name < your_schema.sql
     ```
 
-    Példa:
+    Például:
 
     ```
     psql -h mypgserver-20170401.postgres.database.azure.com  -U postgres -d dvdrental < dvdrentalSchema.sql
@@ -267,7 +267,7 @@ A kezdeti teljes terhelés befejezése után az adatbázisok **készen**állnak 
 
 A rendszer most befejezte az RDS PostgreSQL helyszíni példányának Azure Database for PostgreSQL való online áttelepítését.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Az Azure Database Migration Service szolgáltatással kapcsolatos tudnivalók: [Mi az Azure Database Migration Service?](https://docs.microsoft.com/azure/dms/dms-overview).
 * További információ a Azure Database for PostgreSQLről: mi a [Azure Database for PostgreSQL?](https://docs.microsoft.com/azure/postgresql/overview).

@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 10/09/2019
 ms.author: pabouwer
 ms.openlocfilehash: 3181be62a14ec1b3450bd181172b5323ca176427
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77593767"
 ---
 # <a name="linkerd"></a>Linkerd
@@ -44,7 +44,7 @@ A következő architektúra-diagram azt mutatja be, hogy az adatsíkon és a vez
 Fontos megérteni és figyelembe venni a következő területeket a számítási feladatok Linkerd kiértékelése során:
 
 - [Tervezési alapelvek](#design-principles)
-- [Képességek](#capabilities)
+- [Funkciók](#capabilities)
 - [Forgatókönyvek](#scenarios)
 
 
@@ -59,7 +59,7 @@ A következő tervezési alapelvek a Linkerd-projektet [ismertetik][design-princ
 - **Csak munka** – ne szakítsa meg a meglévő alkalmazásokat, és ne igényeljen összetett konfigurációt.
 
 
-### <a name="capabilities"></a>Képességek
+### <a name="capabilities"></a>Funkciók
 
 A Linkerd a következő funkciókat biztosítja:
 

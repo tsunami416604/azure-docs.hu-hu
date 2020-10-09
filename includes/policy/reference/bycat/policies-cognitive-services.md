@@ -6,13 +6,13 @@ ms.date: 10/07/2020
 ms.author: dacoulte
 ms.custom: generated
 ms.openlocfilehash: 91c12c497c69781c4d51ff13f638db0811d45566
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91821007"
 ---
-|Name (Név)<br /><sub>(Azure Portal)</sub> |Leírás |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
+|Név<br /><sub>(Azure Portal)</sub> |Leírás |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[Cognitive Services fiókoknak engedélyeznie kell az adattitkosítást](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F2bdd0062-9d75-436e-89df-487dd8e4b3c7) |Ez a házirend minden olyan Cognitive Services-fiókot naplóz, amely nem használja az adattitkosítást. A tárterülettel rendelkező minden Cognitive Services-fiók esetében engedélyezze az adattitkosítást az ügyfél által felügyelt vagy a Microsoft által felügyelt kulccsal. |Naplózás, megtagadás, letiltva |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Cognitive%20Services/CognitiveServices_Encryption_Audit.json) |
 |[Cognitive Services fiókoknak engedélyeznie kell az adattitkosítást az ügyfél által felügyelt kulccsal](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F67121cc7-ff39-4ab8-b7e3-95b84dab487d) |Az ügyfél által felügyelt kulcsok fokozott adatvédelmet biztosítanak azáltal, hogy lehetővé teszi a titkosítási kulcsok kezelését a Cognitive Services tárolt adataihoz. Ez gyakran szükséges a megfelelőségi követelmények teljesítéséhez. |Naplózás, megtagadás, letiltva |[1.0.1](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Cognitive%20Services/CognitiveServices_CustomerManagedKey_Audit.json) |

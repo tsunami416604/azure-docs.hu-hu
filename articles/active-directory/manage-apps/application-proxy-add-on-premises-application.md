@@ -12,10 +12,10 @@ ms.date: 10/24/2019
 ms.author: kenwith
 ms.reviewer: japere
 ms.openlocfilehash: 7d94b8604b2f947463dd760ca7baf25f19a15a26
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88642146"
 ---
 # <a name="tutorial-add-an-on-premises-application-for-remote-access-through-application-proxy-in-azure-active-directory"></a>Oktatóanyag: helyi alkalmazás hozzáadása a távoli eléréshez az alkalmazásproxy használatával Azure Active Directory
@@ -199,13 +199,13 @@ Most, hogy előkészítette a környezetet, és telepített egy összekötőt, k
     | Mező | Leírás |
     | :---- | :---------- |
     | **Háttérbeli alkalmazások időtúllépése** | Csak akkor állítsa be **ezt az értéket** , ha az alkalmazása lassú a hitelesítéshez és a kapcsolódáshoz. Alapértelmezés szerint a háttérbeli alkalmazás időkorlátja 85 másodpercnél hosszabb. Ha hosszú értékre van állítva, a háttérbeli időtúllépés 180 másodpercre nő. |
-    | **Csak HTTP-cookie használata** | Állítsa ezt az értéket **Igen** értékre, ha az alkalmazásproxy-cookie-k tartalmazzák a HTTPOnly jelzőt a http-válasz fejlécében. Távoli asztali szolgáltatások használata esetén a **nem**értékre állítsa ezt az értéket.|
+    | **HTTP-Only cookie használata** | Állítsa ezt az értéket **Igen** értékre, ha az alkalmazásproxy-cookie-k tartalmazzák a HTTPOnly jelzőt a http-válasz fejlécében. Távoli asztali szolgáltatások használata esetén a **nem**értékre állítsa ezt az értéket.|
     | **Biztonságos cookie használata**| Állítsa **Igen** értékre a cookie-k biztonságos csatornán keresztüli továbbításához, például egy titkosított HTTPS-kéréshez.
     | **Állandó cookie használata**| Ezt az **értéket ne értékre állítsa.** Csak ezt a beállítást használja olyan alkalmazásokhoz, amelyek nem oszthatnak meg sütiket a folyamatok között. A cookie-beállításokkal kapcsolatos további információkért lásd: [cookie-beállítások a helyszíni alkalmazások eléréséhez Azure Active Directoryban](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-configure-cookie-settings).
     | **URL-címek lefordítása a fejlécekben** | Tartsa meg ezt az értéket **Igen** , kivéve, ha az alkalmazásnak a hitelesítési kérelemben az eredeti állomásfejléc-fejlécet kellett volna megadnia. |
     | **URL-címek fordítása az alkalmazás törzsében** | Ezt az értéket ne **csak akkor tartsa meg, ha** hardcoded HTML-hivatkozásokat más helyszíni alkalmazásokhoz, és ne használjon egyéni tartományokat. További információ: [a fordítás összekapcsolása az alkalmazásproxy szolgáltatással](application-proxy-configure-hard-coded-link-translation.md).<br><br>Ezt az értéket állítsa **Igen** értékre, ha azt tervezi, hogy Microsoft Cloud app Security (MCAS) használatával figyeli az alkalmazást. További információ: [valós idejű alkalmazás-hozzáférés figyelésének konfigurálása Microsoft Cloud app Security és Azure Active Directory](application-proxy-integrate-with-microsoft-cloud-application-security.md). |
 
-7. Válassza a **Hozzáadás** elemet.
+7. Válassza a **Hozzáadás** lehetőséget.
 
 ## <a name="test-the-application"></a>Az alkalmazás tesztelése
 
@@ -238,7 +238,7 @@ Hibaelhárítás: az [alkalmazásproxy problémáinak elhárítása és a hibaü
 
 Ha már nincs rá szükség, törölje az ebben az oktatóanyagban létrehozott erőforrásokat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban előkészítette a helyszíni környezetet, hogy működjön az Application proxyval, majd telepítse és regisztrálja az alkalmazásproxy-összekötőt. Ezután hozzáadott egy alkalmazást az Azure AD-bérlőhöz. Ellenőrizte, hogy egy felhasználó Azure AD-fiókkal tud-e bejelentkezni az alkalmazásba.
 

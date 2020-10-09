@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/04/2019
 ms.author: jeedes
 ms.openlocfilehash: 6c209d59e3e0552db5d7e7dd64af2ce5d233881a
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91826295"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-easyterritory"></a>Oktatóanyag: Azure Active Directory integráció a EasyTerritory
@@ -73,7 +73,7 @@ Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a EasyT
 Az Azure AD egyszeri bejelentkezés EasyTerritory való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
 
 1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. **[EasyTerritory egyszeri bejelentkezés konfigurálása](#configure-easyterritory-single-sign-on)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+2. **[EasyTerritory egyszeri bejelentkezés konfigurálása](#configure-easyterritory-single-sign-on)** – az egyes Sign-On beállítások konfigurálása az alkalmazás oldalán.
 3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
 4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
 5. **[Hozzon létre EasyTerritory-teszt felhasználót](#create-easyterritory-test-user)** – hogy a EasyTerritory Britta, a felhasználó Azure ad-képviseletéhez kapcsolódó partnerrel rendelkezzen.
@@ -93,7 +93,7 @@ Az Azure AD egyszeri bejelentkezés EasyTerritory való konfigurálásához hajt
 
     ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
+3. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
@@ -114,7 +114,7 @@ Az Azure AD egyszeri bejelentkezés EasyTerritory való konfigurálásához hajt
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és a bejelentkezési URL-címmel. Az értékek lekéréséhez forduljon a EasyTerritory ügyfélszolgálati [csapatához](mailto:sales@easyterritory.com) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-6. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
+6. Az **egyszeres Sign-On beállítása SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozása](common/metadataxml.png)
 
@@ -128,7 +128,7 @@ Az Azure AD egyszeri bejelentkezés EasyTerritory való konfigurálásához hajt
 
     c. Kijelentkezési URL-cím
 
-### <a name="configure-easyterritory-single-sign-on"></a>EasyTerritory egyszeri bejelentkezés konfigurálása
+### <a name="configure-easyterritory-single-sign-on"></a>EasyTerritory egyetlen Sign-On konfigurálása
 
 Ha az egyszeri bejelentkezést szeretné konfigurálni a **EasyTerritory** oldalon, el kell küldenie a letöltött **összevonási metaadatokat tartalmazó XML-fájlt** és a megfelelő másolt url-címeket a Azure Portal a [EasyTerritory támogatási csapatának](mailto:sales@easyterritory.com). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
 

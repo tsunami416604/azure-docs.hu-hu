@@ -8,10 +8,10 @@ ms.date: 05/13/2019
 ms.author: byvinyal
 ms.custom: seodec18
 ms.openlocfilehash: f1ca4958fe2608d0c040ef5b93827a7e71a4151c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74672350"
 ---
 # <a name="high-density-hosting-on-azure-app-service-using-per-app-scaling"></a>Nagy sűrűségű üzemeltetés Azure App Service alkalmazáson belüli skálázással
@@ -65,7 +65,7 @@ Set-AzWebApp $newapp
 ```
 
 > [!IMPORTANT]
-> `$newapp.SiteConfig.NumberOfWorkers`eltér a következőtől: `$newapp.MaxNumberOfWorkers` . Az alkalmazáson belüli méretezés az `$newapp.SiteConfig.NumberOfWorkers` alkalmazás méretezési jellemzőinek meghatározására használja.
+> `$newapp.SiteConfig.NumberOfWorkers` eltér a következőtől: `$newapp.MaxNumberOfWorkers` . Az alkalmazáson belüli méretezés az `$newapp.SiteConfig.NumberOfWorkers` alkalmazás méretezési jellemzőinek meghatározására használja.
 
 ## <a name="per-app-scaling-using-azure-resource-manager"></a>Alkalmazáson belüli méretezés Azure Resource Manager használatával
 

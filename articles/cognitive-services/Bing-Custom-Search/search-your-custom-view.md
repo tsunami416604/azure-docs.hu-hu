@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 02/03/2020
 ms.author: aahi
 ms.openlocfilehash: f00ffee47e3eb6366d632d8b6ee9beb01f048442
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "76983112"
 ---
 # <a name="call-your-bing-custom-search-instance-from-the-portal"></a>A Bing Custom Search-példány meghívása a portálról
@@ -42,7 +42,7 @@ Ha **további paraméterekre** kattint, a következő paramétereket mutatja be:
 
 |Paraméter  |Leírás  |
 |---------|---------|
-|Biztonságos Keresés     | A felnőtt tartalmak weblapjainak szűrésére szolgáló szűrő. Csak a web, a képek, a videó és a futtatott felhasználói felületi végpontok számára érhető el. Vegye figyelembe, hogy a Bing egyéni Video Search csak két `moderate` értéket `strict`támogat: és.        |
+|Biztonságos Keresés     | A felnőtt tartalmak weblapjainak szűrésére szolgáló szűrő. Csak a web, a képek, a videó és a futtatott felhasználói felületi végpontok számára érhető el. Vegye figyelembe, hogy a Bing egyéni Video Search csak két értéket támogat: `moderate` és `strict` .        |
 |Felhasználói felület nyelve    | A felhasználói felületi karakterláncokhoz használt nyelv. Ha például az üzemeltetett felhasználói felületen engedélyezi a képeket és a videókat, a **kép** és a **videó** lapok a megadott nyelvet használják.        |
 |Darabszám     | A válaszban visszaadni kívánt keresési eredmények száma. Csak webes, képi és videós végpontok esetén érhető el.         |
 |Eltolás    | A kihagyni kívánt keresési eredmények száma az eredmények visszaadása előtt. Csak webes, képi és videós végpontok esetén érhető el.        |

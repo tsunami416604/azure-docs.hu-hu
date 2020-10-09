@@ -13,10 +13,10 @@ ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 08/04/2020
 ms.openlocfilehash: 745ea7dd8b3ee74c46d4c50a872dc4995d298142
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91291163"
 ---
 # <a name="tutorial-migrate-sql-server-to-an-azure-sql-managed-instance-online-using-dms"></a>Oktatóanyag: SQL Server migrálása Azure SQL felügyelt példányra online a DMS használatával
@@ -270,7 +270,7 @@ Miután a teljes adatbázis biztonsági mentését visszaállította az SQL fel�
 
     ![Az átállás befejeződött](media/tutorial-sql-server-to-managed-instance-online/dms-cutover-complete.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ha egy oktatóanyag azt mutatja be, hogyan lehet áttelepíteni egy adatbázist az SQL felügyelt példányára a T-SQL Restore paranccsal, tekintse meg a [biztonsági mentés visszaállítása SQL felügyelt példányra a Restore paranccsal](../sql-database/sql-database-managed-instance-restore-from-backup-tutorial.md)című témakört.
 * További információ az SQL felügyelt példányáról: [Mi az SQL felügyelt példánya](../azure-sql/managed-instance/sql-managed-instance-paas-overview.md).

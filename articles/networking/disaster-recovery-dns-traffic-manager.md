@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 06/08/2018
 ms.author: kumud
 ms.openlocfilehash: 6eab1803bf5adab42be87b5f8567682c6d75947e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74483533"
 ---
 # <a name="disaster-recovery-using-azure-dns-and-traffic-manager"></a>Vészhelyreállítás az Azure DNS-sel és a Traffic Managerrel
@@ -51,7 +51,7 @@ További információ a feladatátvételről és a magas rendelkezésre állásr
 ## <a name="planning-your-disaster-recovery-architecture"></a>A vész-helyreállítási architektúra megtervezése
 
 A vész-helyreállítási architektúra beállítása két technikai szempontot jelent:
--  Üzembe helyezési mechanizmus használatával replikálhatja a példányokat, az adatforrásokat és a konfigurációkat az elsődleges és a készenléti környezetek között. Ezt a típusú vész-helyreállítási típust natív módon teheti meg az Azure site-Recovery segítségével, Microsoft Azure partneri készülékeken/szolgáltatásokon, például a Veritas vagy a NetApp használatával. 
+-  Üzembe helyezési mechanizmus használatával replikálhatja a példányokat, az adatforrásokat és a konfigurációkat az elsődleges és a készenléti környezetek között. Ezt a típusú vész-helyreállítási típust natív módon teheti meg az Azure Site-Recovery Microsoft Azure partneri készülékeken/szolgáltatásokon, például a Veritas vagy a NetApp-n keresztül. 
 - Megoldás fejlesztése az elsődleges helyről a készenléti helyre irányuló hálózati/webes forgalom átirányításához. A vész-helyreállítási típus Azure DNS, Azure Traffic Manager (DNS) vagy harmadik féltől származó globális terheléselosztó használatával érhető el.
 
 Ez a cikk a hálózati és webes forgalom átirányításán keresztüli megközelítésekre korlátozódik. A Azure Site Recovery beállítására vonatkozó utasításokért lásd: [Azure site Recovery dokumentáció](https://docs.microsoft.com/azure/site-recovery/).

@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: e0707f9a7694741f54771699f5aeb3b452b11b8c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85319720"
 ---
 # <a name="data-factory-scheduling-and-execution"></a>Data Factory ütemezés és végrehajtás
@@ -25,7 +25,7 @@ ms.locfileid: "85319720"
 Ez a cikk ismerteti az Azure Data Factory-alkalmazásmodell ütemezési és végrehajtási aspektusait. Ez a cikk azt feltételezi, hogy tisztában van a Data Factory az alkalmazás modelljével kapcsolatos fogalmak, például a tevékenységek, a folyamatok, a társított szolgáltatások és az adatkészletek alapjaival. A Azure Data Factory alapvető fogalmait a következő cikkekben találja:
 
 * [A Data Factory bemutatása](data-factory-introduction.md)
-* [Pipelines](data-factory-create-pipelines.md)
+* [Folyamatok](data-factory-create-pipelines.md)
 * [Adatkészletek](data-factory-create-datasets.md) 
 
 ## <a name="start-and-end-times-of-pipeline"></a>A folyamat kezdő és befejező időpontja
@@ -184,11 +184,11 @@ A következő táblázat a **rendelkezésre állási** szakaszban használható 
 
 | Tulajdonság | Leírás | Kötelező | Alapértelmezett |
 | --- | --- | --- | --- |
-| frequency |Megadja az adatkészlet-szelet gyártásának időegységét.<br/><br/><b>Támogatott gyakoriság</b>: perc, óra, nap, hét, hónap |Yes |NA |
-| interval |A gyakoriság szorzóját adja meg<br/><br/>A "Frequency x Interval" érték határozza meg, hogy milyen gyakran történjen a szelet előállítása.<br/><br/>Ha az adatkészletet óránként kell darabolni, a <b>gyakoriságot</b> <b>óra</b>értékre kell állítani, és az <b>intervallumot</b> <b>1-re</b>kell állítania.<br/><br/><b>Megjegyzés</b>: Ha a gyakoriságot percben adja meg, azt javasoljuk, hogy az intervallumot 15-nél kevesebbre állítsa be |Yes |NA |
-| stílus |Megadja, hogy a szelet az intervallum elején/végén legyen-e előkészítve.<ul><li>StartOfInterval</li><li>EndOfInterval</li></ul><br/><br/>Ha a gyakoriság értéke hónap, és a Style EndOfInterval értékre van állítva, a szelet a hónap utolsó napján jön létre. Ha a stílus StartOfInterval értékre van állítva, a szelet a hónap első napján jön létre.<br/><br/>Ha a gyakoriság beállítása nap, a stílus pedig EndOfInterval, a szelet a nap utolsó órájában jön létre.<br/><br/>Ha a gyakoriság értéke óra, és a stílus értéke EndOfInterval, a szelet az óra végén jön létre. A szeletek esetében például 1 – 2 PM-időszak esetén a SZELET 2 ÓRAKOR jön létre. |No |EndOfInterval |
-| anchorDateTime |Meghatározza a ütemező által az adatkészlet-szeletek határainak kiszámításához használt abszolút pozíciót. <br/><br/><b>Megjegyzés</b>: Ha a AnchorDateTime olyan részek vannak, amelyek részletesebbek, mint a gyakoriság, akkor a rendszer figyelmen kívül hagyja a további szemcsés részeket. <br/><br/>Ha például az <b>intervallum</b> <b>óránként</b> (Frequency: Hour és Interval: 1), a <b>AnchorDateTime</b> pedig <b>perc és másodperc</b>értéket tartalmaz, a rendszer figyelmen kívül hagyja a AnchorDateTime <b>perc és másodperc</b> részét. |No |01/01/0001 |
-| offset |TimeSpan, amely az összes adatkészlet összes szeletének kezdetét és végét eltolja. <br/><br/><b>Megjegyzés</b>: Ha a anchorDateTime és az eltolás is meg van adva, az eredmény a kombinált eltolás. |No |NA |
+| frequency |Megadja az adatkészlet-szelet gyártásának időegységét.<br/><br/><b>Támogatott gyakoriság</b>: perc, óra, nap, hét, hónap |Igen |NA |
+| interval |A gyakoriság szorzóját adja meg<br/><br/>A "Frequency x Interval" érték határozza meg, hogy milyen gyakran történjen a szelet előállítása.<br/><br/>Ha az adatkészletet óránként kell darabolni, a <b>gyakoriságot</b> <b>óra</b>értékre kell állítani, és az <b>intervallumot</b> <b>1-re</b>kell állítania.<br/><br/><b>Megjegyzés</b>: Ha a gyakoriságot percben adja meg, azt javasoljuk, hogy az intervallumot 15-nél kevesebbre állítsa be |Igen |NA |
+| stílus |Megadja, hogy a szelet az intervallum elején/végén legyen-e előkészítve.<ul><li>StartOfInterval</li><li>EndOfInterval</li></ul><br/><br/>Ha a gyakoriság értéke hónap, és a Style EndOfInterval értékre van állítva, a szelet a hónap utolsó napján jön létre. Ha a stílus StartOfInterval értékre van állítva, a szelet a hónap első napján jön létre.<br/><br/>Ha a gyakoriság beállítása nap, a stílus pedig EndOfInterval, a szelet a nap utolsó órájában jön létre.<br/><br/>Ha a gyakoriság értéke óra, és a stílus értéke EndOfInterval, a szelet az óra végén jön létre. A szeletek esetében például 1 – 2 PM-időszak esetén a SZELET 2 ÓRAKOR jön létre. |Nem |EndOfInterval |
+| anchorDateTime |Meghatározza a ütemező által az adatkészlet-szeletek határainak kiszámításához használt abszolút pozíciót. <br/><br/><b>Megjegyzés</b>: Ha a AnchorDateTime olyan részek vannak, amelyek részletesebbek, mint a gyakoriság, akkor a rendszer figyelmen kívül hagyja a további szemcsés részeket. <br/><br/>Ha például az <b>intervallum</b> <b>óránként</b> (Frequency: Hour és Interval: 1), a <b>AnchorDateTime</b> pedig <b>perc és másodperc</b>értéket tartalmaz, a rendszer figyelmen kívül hagyja a AnchorDateTime <b>perc és másodperc</b> részét. |Nem |01/01/0001 |
+| offset |TimeSpan, amely az összes adatkészlet összes szeletének kezdetét és végét eltolja. <br/><br/><b>Megjegyzés</b>: Ha a anchorDateTime és az eltolás is meg van adva, az eredmény a kombinált eltolás. |Nem |NA |
 
 ### <a name="offset-example"></a>eltolási példa
 Alapértelmezés szerint a napi ( `"frequency": "Day", "interval": 1` ) szeletek a 12 UTC időpontnál (éjfélkor) kezdődnek. Ha a kezdési időpontot 6 UTC-időre szeretné használni, állítsa be az eltolást az alábbi kódrészletben látható módon: 
@@ -230,10 +230,10 @@ Az adatkészlet rendelkezhet egy olyan érvényesítési házirenddel, amely meg
 
 Az adatkészlet definíciójának **szabályzat** szakasza meghatározza azokat a feltételeket vagy feltételt, amelyeknek az adatkészlet-szeleteknek teljesíteniük kell. A következő táblázat a **szabályzat** szakaszban használható tulajdonságokat ismerteti:
 
-| Házirend neve | Description | Alkalmazva erre | Kötelező | Alapértelmezett |
+| Házirend neve | Leírás | Alkalmazva erre | Kötelező | Alapértelmezett |
 | --- | --- | --- | --- | --- |
-| minimumSizeMB | Ellenőrzi, hogy egy **Azure-blobban** lévő adat megfelel-e a minimális méretre vonatkozó követelményeknek (megabájtban). |Azure-blob |No |NA |
-| minimumRows | Ellenőrzi, hogy a **Azure SQL Database** vagy az **Azure táblában** lévő adatmennyiség tartalmazza-e a sorok minimális számát. |<ul><li>Azure SQL Database</li><li>Azure-tábla</li></ul> |No |NA |
+| minimumSizeMB | Ellenőrzi, hogy egy **Azure-blobban** lévő adat megfelel-e a minimális méretre vonatkozó követelményeknek (megabájtban). |Azure-blob |Nem |NA |
+| minimumRows | Ellenőrzi, hogy a **Azure SQL Database** vagy az **Azure táblában** lévő adatmennyiség tartalmazza-e a sorok minimális számát. |<ul><li>Azure SQL Database</li><li>Azure-tábla</li></ul> |Nem |NA |
 
 #### <a name="examples"></a>Példák
 **minimumSizeMB:**
@@ -266,7 +266,7 @@ További információt ezekről a tulajdonságokról és példákról az [adatk�
 ## <a name="activity-policies"></a>Tevékenység-szabályzatok
 A házirendek hatással vannak egy tevékenység futásidejű viselkedésére, különösen akkor, ha egy tábla szeletét dolgozzák fel. A részleteket a következő táblázat tartalmazza.
 
-| Tulajdonság | Megengedett értékek | Alapértelmezett érték | Description |
+| Tulajdonság | Megengedett értékek | Alapértelmezett érték | Leírás |
 | --- | --- | --- | --- |
 | Egyidejűség |Egész szám <br/><br/>Maximális érték: 10 |1 |A tevékenység egyidejű végrehajtásának száma.<br/><br/>Meghatározza, hogy hány párhuzamos tevékenység-végrehajtás történhet a különböző szeleteken. Ha például egy tevékenységnek az elérhető adatmennyiség nagy készletén kell haladnia, a nagyobb párhuzamossági érték felgyorsítja az adatfeldolgozást. |
 | executionPriorityOrder |NewestFirst<br/><br/>OldestFirst |OldestFirst |Meghatározza a feldolgozás alatt álló adatszeletek sorrendjét.<br/><br/>Ha például 2 szelete van (egy 16:00-kor történik, egy másik pedig 5 órakor), és mindkettő függőben van. Ha úgy állítja be a executionPriorityOrder, hogy a NewestFirst, a szeletet 5 ÓRAKOR dolgozza fel a rendszer. Hasonlóképpen, ha úgy állítja be a executionPriorityORder, hogy a OldestFIrst legyen, akkor a szelet 4 ÓRAKOR lesz feldolgozva. |

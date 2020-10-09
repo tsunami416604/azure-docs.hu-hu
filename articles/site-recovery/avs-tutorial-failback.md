@@ -9,10 +9,10 @@ ms.date: 09/30/2020
 ms.author: harshacs
 ms.custom: MVC
 ms.openlocfilehash: fb14e647d3444f2f0d0cb86901f93582a18848f5
-ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91814570"
 ---
 # <a name="fail-back-vms-to-azure-vmware-solution-private-cloud"></a>Virtuális gépek feladatátvétele az Azure VMware-megoldás saját felhőbe
@@ -61,7 +61,7 @@ A feladat-visszavétel véglegesítése után a rendszer törli az Azure-beli vi
 > [!NOTE]
 > Az Azure VMware-megoldás virtuális gépe elindítása után akár 15 percet is igénybe vehet, amíg az ügynök vissza nem regisztrálja a konfigurációs kiszolgálót. Ebben az időszakban az ismételt védelem meghiúsul, és egy hibaüzenetet ad vissza, amely azt jelzi, hogy az ügynök nincs telepítve. Ha ez történik, várjon néhány percet, és állítsa be újra a védelemmel.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az ismételt védelem befejezése után az Azure VMware megoldás virtuális gépe replikálódik az Azure-ba. Igény szerint [egy másik feladatátvételt is futtathat](avs-tutorial-failover.md) az Azure-ban.
 

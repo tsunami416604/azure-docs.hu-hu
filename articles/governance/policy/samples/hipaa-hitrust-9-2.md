@@ -5,10 +5,10 @@ ms.date: 10/07/2020
 ms.topic: sample
 ms.custom: generated
 ms.openlocfilehash: 9f3dcdb14ce3d2a9d8353f87a2233fca1c3c8a47
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91822566"
 ---
 # <a name="details-of-the-hipaa-hitrust-92-regulatory-compliance-built-in-initiative"></a>A HIPAA HITRUST 9,2 szabályozási megfelelőségi beépített kezdeményezés részletei
@@ -90,7 +90,7 @@ Ez a beépített kezdeményezés a [HIPAA HITRUST 9,2 Blueprint minta](../../blu
 
 |Name (Név)<br /><sub>(Azure Portal)</sub> |Leírás |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
 |---|---|---|---|
-|[Szerepköralapú Access Control (RBAC) használata szükséges a Kubernetes-szolgáltatásokban](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fac4a19c2-fa67-49b4-8ae5-0b2e78c49457) |Ha részletes szűrést szeretne biztosítani a felhasználók által végrehajtható műveletekhez, használja a szerepköralapú Access Control (RBAC) a Kubernetes Service-fürtök engedélyeinek kezeléséhez és a vonatkozó engedélyezési házirendek konfigurálásához. |Naplózás, letiltva |[1.0.2](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_EnableRBAC_KubernetesService_Audit.json) |
+|[Szerepköralapú Access Control (RBAC) használata szükséges a Kubernetes-szolgáltatásokban](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fac4a19c2-fa67-49b4-8ae5-0b2e78c49457) |Ha részletes szűrést szeretne biztosítani a felhasználók által végrehajtható műveletekhez, használja a Role-Based Access Control (RBAC) a Kubernetes Service-fürtök engedélyeinek kezeléséhez és a vonatkozó engedélyezési házirendek konfigurálásához. |Naplózás, letiltva |[1.0.2](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_EnableRBAC_KubernetesService_Audit.json) |
 
 ### <a name="the-access-control-system-for-the-system-components-storing-processing-or-transmitting-covered-information-is-set-with-a-default-quotdeny-allquot-setting"></a>A kezelt információk tárolására, feldolgozására vagy továbbítására szolgáló rendszerösszetevők hozzáférés-vezérlési rendszerét alapértelmezett megtagadás értékre állítja be a rendszer &quot; &quot; .
 
@@ -122,7 +122,7 @@ Ez a beépített kezdeményezés a [HIPAA HITRUST 9,2 Blueprint minta](../../blu
 
 |Name (Név)<br /><sub>(Azure Portal)</sub> |Leírás |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
 |---|---|---|---|
-|[Szerepköralapú Access Control (RBAC) használata szükséges a Kubernetes-szolgáltatásokban](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fac4a19c2-fa67-49b4-8ae5-0b2e78c49457) |Ha részletes szűrést szeretne biztosítani a felhasználók által végrehajtható műveletekhez, használja a szerepköralapú Access Control (RBAC) a Kubernetes Service-fürtök engedélyeinek kezeléséhez és a vonatkozó engedélyezési házirendek konfigurálásához. |Naplózás, letiltva |[1.0.2](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_EnableRBAC_KubernetesService_Audit.json) |
+|[Szerepköralapú Access Control (RBAC) használata szükséges a Kubernetes-szolgáltatásokban](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fac4a19c2-fa67-49b4-8ae5-0b2e78c49457) |Ha részletes szűrést szeretne biztosítani a felhasználók által végrehajtható műveletekhez, használja a Role-Based Access Control (RBAC) a Kubernetes Service-fürtök engedélyeinek kezeléséhez és a vonatkozó engedélyezési házirendek konfigurálásához. |Naplózás, letiltva |[1.0.2](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_EnableRBAC_KubernetesService_Audit.json) |
 
 ### <a name="contractors-are-provided-with-minimal-system-and-physical-access-only-after-the-organization-assesses-the-contractors-ability-to-comply-with-its-security-requirements-and-the-contractor-agrees-to-comply"></a>A vállalkozók minimális rendszer-és fizikai hozzáféréssel rendelkeznek, csak azt követően, hogy a szervezet felméri az ajánlattevő azon képességét, hogy megfeleljen a biztonsági követelményeinek, és az ajánlattevő beleegyezik abba.
 
@@ -798,7 +798,7 @@ Ez a beépített kezdeményezés a [HIPAA HITRUST 9,2 Blueprint minta](../../blu
 
 |Name (Név)<br /><sub>(Azure Portal)</sub> |Leírás |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
 |---|---|---|---|
-|[Szerepköralapú Access Control (RBAC) használata szükséges a Kubernetes-szolgáltatásokban](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fac4a19c2-fa67-49b4-8ae5-0b2e78c49457) |Ha részletes szűrést szeretne biztosítani a felhasználók által végrehajtható műveletekhez, használja a szerepköralapú Access Control (RBAC) a Kubernetes Service-fürtök engedélyeinek kezeléséhez és a vonatkozó engedélyezési házirendek konfigurálásához. |Naplózás, letiltva |[1.0.2](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_EnableRBAC_KubernetesService_Audit.json) |
+|[Szerepköralapú Access Control (RBAC) használata szükséges a Kubernetes-szolgáltatásokban](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fac4a19c2-fa67-49b4-8ae5-0b2e78c49457) |Ha részletes szűrést szeretne biztosítani a felhasználók által végrehajtható műveletekhez, használja a Role-Based Access Control (RBAC) a Kubernetes Service-fürtök engedélyeinek kezeléséhez és a vonatkozó engedélyezési házirendek konfigurálásához. |Naplózás, letiltva |[1.0.2](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Security%20Center/ASC_EnableRBAC_KubernetesService_Audit.json) |
 
 ### <a name="no-single-person-is-able-to-access-modify-or-use-information-systems-without-authorization-or-detection"></a>Egyetlen személy sem férhet hozzá, nem módosíthatja és nem használhatja az információs rendszereket hitelesítés vagy észlelés nélkül.
 
@@ -1565,7 +1565,7 @@ Ez a beépített kezdeményezés a [HIPAA HITRUST 9,2 Blueprint minta](../../blu
 > [!NOTE]
 > Az adott Azure Policy-definíciók rendelkezésre állása Azure Government és más nemzeti felhőkben is változhat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További cikkek a Azure Policyról:
 

@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 10/21/2019
 ms.openlocfilehash: ff21b059e712489c1914b2d12c6aa6a3d78d66d3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74792164"
 ---
 # <a name="validate-xml-for-b2b-enterprise-integration-in-azure-logic-apps-with-enterprise-integration-pack"></a>XML-ellenőrzés nagyvállalati integráció esetében az Azure Logic Appsben az Enterprise Integration Pack csomaggal
@@ -31,7 +31,7 @@ Gyakran B2B-forgatókönyvekben a szerződésben szereplő kereskedelmi partnere
 
 1. A [Azure Portalban](https://portal.azure.com)nyissa meg a logikai alkalmazást a Logic app Designerben.
 
-1. Ha üres logikai alkalmazással rendelkezik, a Logic app Designerben, a keresőmezőbe írja be szűrőként a kifejezést, `HTTP request` majd válassza ki a **http-kérelem fogadásának időpontját** . Ellenkező esetben folytassa a következő lépéssel.
+1. Ha üres logikai alkalmazással rendelkezik, a Logic app Designerben, a keresőmezőbe írja be szűrőként a kifejezést, `HTTP request` majd válassza ki a **http-kérelem fogadásának időpontját** . Ha nem, folytassa a következő lépéssel.
 
 1. A munkafolyamat utolsó lépése alatt válassza az **új lépés**lehetőséget.
 

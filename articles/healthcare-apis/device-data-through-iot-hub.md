@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 08/03/2020
 ms.author: punagpal
 ms.openlocfilehash: 3b2e4a1ae5ff43283893b286dafb38491a1181b4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91308224"
 ---
 # <a name="tutorial-receive-device-data-through-azure-iot-hub"></a>Oktatóanyag: eszközre vonatkozó adatfogadás az Azure IoT Hub
@@ -48,10 +48,10 @@ Ez a lépés egy olyan végpontot határoz meg, amelybe a IoT Hub átirányítja
 
 Itt látható a végpont létrehozásához a paranccsal használandó paraméterek listája:
 
-|PowerShell-paraméter|CLI-paraméter|Description|
+|PowerShell-paraméter|CLI-paraméter|Leírás|
 |---|---|---|
 |ResourceGroupName|resource-group|Az IoT Hub erőforrás erőforráscsoport-neve.|
-|Name|hub neve|A IoT Hub erőforrás neve.|
+|Név|hub neve|A IoT Hub erőforrás neve.|
 |Végpontneve|végpont neve|Használjon olyan nevet, amelyet hozzá szeretne rendelni a létrehozandó végponthoz.|
 |EndpointType|végpont típusa|Annak a végpontnak a típusa, amelyhez IoT Hub csatlakoznia kell. Használja a "EventHub" konstans értékét a PowerShell és a "EventHub" számára a CLI-hez.|
 |EndpointResourceGroup|végpont – erőforrás-csoport|Erőforráscsoport neve az Azure IoT-összekötőhöz a FHIR Azure API-hoz a FHIR-erőforráshoz. Ezt az értéket a FHIR készült Azure API áttekintés lapján érheti el.|
@@ -63,10 +63,10 @@ Ez a lépés egy üzenet útvonalát határozza meg a fent létrehozott végpont
 
 Az üzenet útvonalának hozzáadásához a paranccsal használható paramétereket a következő lista tartalmazza:
 
-|PowerShell-paraméter|CLI-paraméter|Description|
+|PowerShell-paraméter|CLI-paraméter|Leírás|
 |---|---|---|
 |ResourceGroupName|g|Az IoT Hub erőforrás erőforráscsoport-neve.|
-|Name|hub neve|A IoT Hub erőforrás neve.|
+|Név|hub neve|A IoT Hub erőforrás neve.|
 |Végpontneve|végpont neve|A fent létrehozott végpont neve.|
 |Z|útvonal neve|A létrehozandó üzenet-útvonalhoz hozzárendelni kívánt név.|
 |Forrás|forrás típusa|A végpontnak küldendő adattípusok. Használja a "DeviceMessages" konstans értékét a PowerShell és a "DeviceMessages" számára a CLI-hez.|
@@ -99,7 +99,7 @@ Az Azure IoT Connector által létrehozott FHIR-megfigyelési erőforrás (oka) 
 > Győződjön meg arról, hogy a felhasználó megfelelő hozzáféréssel rendelkezik az Azure API-hoz a FHIR adatsíkon. Az [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](configure-azure-rbac.md) használatával rendelje hozzá a szükséges adatsíkok-szerepköröket.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a rövid útmutatóban beállíthatja, hogy az Azure IoT Hub átirányítsa az eszközöket az Azure IoT Connectorba a FHIR számára. Válasszon az alábbi lépések közül, ha többet szeretne megtudni a FHIR készült Azure IoT Connectorról:
 

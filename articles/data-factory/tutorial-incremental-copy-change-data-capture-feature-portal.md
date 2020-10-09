@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.custom: ''
 ms.date: 05/04/2020
 ms.openlocfilehash: 06dd55ce400667939fca4b0f48159f8b7dde66c6
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91825152"
 ---
 # <a name="incrementally-load-data-from-azure-sql-managed-instance-to-azure-storage-using-change-data-capture-cdc"></a>Adatok növekményes betöltése az Azure SQL felügyelt példányairól az Azure Storage-ba az adatváltozások rögzítése (CDC) használatával
@@ -409,7 +409,7 @@ A második fájl az `raw` nevű tároló `customers/incremental/YYYY/MM/DD` mapp
 ![Kimeneti fájl növekményes másolásból](media/tutorial-incremental-copy-change-data-capture-feature-portal/incremental-copy-pipeline-run.png)
  
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Folytassa a következő oktatóanyaggal, amely azt ismerteti, hogyan másolhat új és módosított fájlokat csak a LastModifiedDate alapján:
 
 > [!div class="nextstepaction"]

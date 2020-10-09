@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 12/07/2018
 ms.author: azfuncdf
 ms.openlocfilehash: ed92156df9d8e1e07b56cea4b1e64edee11d68d9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77562122"
 ---
 # <a name="monitor-scenario-in-durable-functions---weather-watcher-sample"></a>Figyelő forgatókönyv Durable Functions-Weather Watcher minta
@@ -17,7 +17,7 @@ A figyelő minta egy munkafolyamatban egy rugalmas *ismétlődő* folyamatra uta
 
 [!INCLUDE [durable-functions-prerequisites](../../../includes/durable-functions-prerequisites.md)]
 
-## <a name="scenario-overview"></a>Forgatókönyv áttekintése
+## <a name="scenario-overview"></a>A forgatókönyv áttekintése
 
 Ez a minta figyeli a hely aktuális időjárási feltételeit, és SMS-ben figyelmezteti a felhasználót, amikor az égbolt törölve van. Egy normál időzítő által aktivált függvény használatával ellenőrizhető az időjárási idő, és riasztásokat küldhet. Az ezzel a módszerrel kapcsolatos probléma azonban az **élettartam kezelése**. Ha csak egy riasztást kell elküldeni, a figyelőnek le kell tiltania magát a törlési idő észlelése után. A figyelési minta az egyéb előnyök mellett saját végrehajtást is elvégezheti:
 

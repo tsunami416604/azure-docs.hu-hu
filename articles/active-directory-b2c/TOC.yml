@@ -256,6 +256,12 @@
               href: configure-tokens-custom-policy.md
             - name: Munkamenet viselkedésének konfigurálása
               href: session-behavior-custom-policy.md
+        - name: API-összekötők
+          items:
+            - name: Áttekintés
+              href: api-connectors-overview.md
+            - name: API-összekötő hozzáadása
+              href: add-api-connector.md
         - name: Külső identitásszolgáltatói jogkivonat átadása
           href: idp-pass-through-custom.md
         - name: Adaptív élmény

@@ -11,19 +11,19 @@ ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: aahi
 ms.openlocfilehash: 03ec22caedd4e317b9e1fe781dc3d983febc7a6d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74072786"
 ---
 # <a name="custom-search"></a>Egyéni keresés
 A Bing Custom Search szolgáltatással személyre szabott keresési funkciókat hozhat létre olyan témakörökhöz kapcsolódóan, amelyek jelentőséggel bírnak az Ön számára. A felhasználók az érdeklődési körükhöz igazított keresési eredményeket látnak ahelyett, hogy több oldalnyi irreleváns találatot kellene átnézniük.
 
 ## <a name="custom-search-endpoint"></a>Egyéni keresési végpont
-Ha a Bing Custom Search API használatával szeretne eredményeket kapni, küldjön `GET` egy kérelmet a következő végpontnak. A fejlécek és az URL-paraméterek használatával további specifikációkat határozhat meg.
+Ha a Bing Custom Search API használatával szeretne eredményeket kapni, küldjön egy `GET` kérelmet a következő végpontnak. A fejlécek és az URL-paraméterek használatával további specifikációkat határozhat meg.
 
-Endpoint (végpont): a keresési javaslatokat adja vissza JSON-eredményekként, amelyek a felhasználó `?q=""`által definiált bemenetre vonatkoznak.
+Endpoint (végpont): a keresési javaslatokat adja vissza JSON-eredményekként, amelyek a felhasználó által definiált bemenetre vonatkoznak `?q=""` .
 ```  
  GET https://api.cognitive.microsoft.com/bingcustomsearch/v7.0/search  
 ```

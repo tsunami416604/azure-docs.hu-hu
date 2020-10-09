@@ -12,10 +12,10 @@ ms.date: 10/01/2017
 ms.author: abnarain
 robots: noindex
 ms.openlocfilehash: 5d83f05c16004edc3ad4842b7e4e9d4b9babe577
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85319067"
 ---
 # <a name="troubleshoot-issues-with-using-data-management-gateway"></a>Az adatkezelési átjáró használata közben felmerülő hibák elhárítása
@@ -35,7 +35,7 @@ Ez a hibaüzenet akkor jelenik meg, amikor egy átjárót telepít és regisztr�
 #### <a name="cause"></a>Ok
 A gép, amelyre telepíteni kívánja az átjárót, hálózati probléma miatt nem tudta letölteni a legújabb átjáró telepítési fájlját a letöltőközpontból.
 
-#### <a name="resolution"></a>Megoldás:
+#### <a name="resolution"></a>Feloldás
 Ellenőrizze a tűzfal proxykiszolgáló-beállításait, hogy a beállítások letiltják-e a számítógép hálózati csatlakozását a [letöltőközpontból](https://download.microsoft.com/), és ennek megfelelően frissíti a beállításokat.
 
 Azt is megteheti, hogy [a letöltőközpontból](https://www.microsoft.com/download/details.aspx?id=39717) letölti a legújabb átjáró telepítési fájlját más olyan gépeken, amelyek hozzáférnek a letöltőközpontból. Ezután a telepítőfájlt átmásolhatja az átjárót futtató számítógépre, és manuálisan futtathatja az átjáró telepítéséhez és frissítéséhez.
@@ -48,7 +48,7 @@ Ez a hiba akkor jelenik meg, ha egy átjáró telepítésére van szüksége, ha
 #### <a name="cause"></a>Ok
 Már telepítve van egy átjáró a gépen.
 
-#### <a name="resolution"></a>Megoldás:
+#### <a name="resolution"></a>Feloldás
 Távolítsa el a gépen a meglévő átjárót, majd kattintson a **telepítés közvetlenül erre a számítógépre** hivatkozásra.
 
 ### <a name="3-problem"></a>3. probléma
@@ -63,7 +63,7 @@ Ez az üzenet a következő okok egyike miatt jelenhet meg:
 * Az átjáró kulcsa érvénytelenítve.
 * Az átjáró kulcsa újra lett generált a portálról.  
 
-#### <a name="resolution"></a>Megoldás:
+#### <a name="resolution"></a>Feloldás
 Ellenőrizze, hogy a megfelelő átjáró-kulcsot használja-e a portálon. Ha szükséges, állítson be egy kulcsot, és használja a kulcsot az átjáró regisztrálásához.
 
 ### <a name="4-problem"></a>4. probléma
@@ -78,7 +78,7 @@ Az átjáró regisztrálásakor a következő hibaüzenet jelenhet meg:
 #### <a name="cause"></a>Ok
 A bemeneti átjáró kulcsának tartalma vagy formátuma helytelen. Ennek egyik oka az lehet, hogy csak a kulcs egy részét másolta a portálról, vagy érvénytelen kulcsot használ.
 
-#### <a name="resolution"></a>Megoldás:
+#### <a name="resolution"></a>Feloldás
 Egy átjáró kulcsának létrehozása a portálon, és a másolás gombbal másolja a teljes kulcsot. Ezután illessze be ebbe az ablakba az átjáró regisztrálásához.
 
 ### <a name="5-problem"></a>5. probléma
@@ -91,7 +91,7 @@ Az átjáró regisztrálásakor a következő hibaüzenet jelenhet meg:
 #### <a name="cause"></a>Ok
 Az átjáró kulcsa újra lett előkészítve, vagy az átjáró törlődött a Azure Portalban. Akkor is előfordulhat, ha a adatkezelés-átjáró telepítése nem legújabb.
 
-#### <a name="resolution"></a>Megoldás:
+#### <a name="resolution"></a>Feloldás
 Ellenőrizze, hogy a legújabb verzió-e a adatkezelés-átjáró telepítése, a legújabb verziót találja a Microsoft [letöltőközpontból](https://go.microsoft.com/fwlink/p/?LinkId=271260).
 
 Ha a telepítés folyamatban van/a legfrissebb, és az átjáró továbbra is létezik a portálon, akkor a Azure Portalban adja újra az átjáró kulcsát, és a másolás gombbal másolja a teljes kulcsot, majd illessze be az ablakba az átjáró regisztrálásához. Ellenkező esetben hozza létre újra az átjárót, és kezdje újra.
@@ -106,7 +106,7 @@ Az átjáró regisztrálásakor a következő hibaüzenet jelenhet meg:
 #### <a name="cause"></a>Ok
 Ez a hiba akkor fordulhat elő, ha az átjárót törölték, vagy a társított átjáró kulcsát újragenerálták.
 
-#### <a name="resolution"></a>Megoldás:
+#### <a name="resolution"></a>Feloldás
 Ha az átjárót törölték, hozza létre újra az átjárót a portálról, kattintson a **regisztráció**elemre, másolja a kulcsot a portálról, illessze be, majd próbálja meg regisztrálni az átjárót.
 
 Ha az átjáró még létezik, de a kulcsa újra lett generált, akkor az új kulccsal regisztrálja az átjárót. Ha nem rendelkezik a kulccsal, újra létrehozza a kulcsot a portálról.
@@ -123,7 +123,7 @@ Az átjáró korábban már regisztrálva van más gépeken. Egy átjáró kezde
 
 Ha egy másik gazdagépen állítja vissza az átjárót, a regisztrációs varázsló arra kéri a tanúsítványt, hogy fejtse vissza a tanúsítvánnyal korábban titkosított hitelesítő adatokat.  A tanúsítvány nélkül az új átjáró nem tudja visszafejteni a hitelesítő adatokat, és az új átjáróhoz társított későbbi másolási tevékenységek végrehajtása sikertelen lesz.  
 
-#### <a name="resolution"></a>Megoldás:
+#### <a name="resolution"></a>Feloldás
 Ha a hitelesítő adatokat az eredeti átjárót tartalmazó gépről exportálta a adatkezelés Gateway Configuration Manager **Beállítások** lapján az **Exportálás** gombra kattintva, használja a tanúsítványt.
 
 Az átjáró helyreállításakor ezt a szakaszt nem lehet kihagyni. Ha a tanúsítvány hiányzik, törölnie kell az átjárót a portálról, és újra létre kell hoznia egy új átjárót.  Továbbá frissítse az átjáróhoz kapcsolódó összes társított szolgáltatást a hitelesítő adataik újbóli megadásával.
@@ -136,7 +136,7 @@ Előfordulhat, hogy a következő hibaüzenet jelenik meg.
 #### <a name="cause"></a>Ok
 Ez a hiba akkor fordul elő, ha az átjáró olyan környezetben van, amelyhez HTTP-proxy szükséges az internetes erőforrásokhoz való hozzáféréshez, vagy a proxy hitelesítési jelszava megváltozik, de az átjáróban nem frissül.
 
-#### <a name="resolution"></a>Megoldás:
+#### <a name="resolution"></a>Feloldás
 Kövesse a jelen cikk proxykiszolgáló-megfontolások című szakaszának utasításait, és konfigurálja a proxybeállításokat adatkezelés átjáró Configuration Manager.
 
 ## <a name="gateway-is-online-with-limited-functionality"></a>Az átjáró korlátozott funkcionalitással van online állapotban
@@ -151,7 +151,7 @@ A következő okok egyike miatt az átjáró állapota online állapotú, korlá
 
 Ha az átjáró korlátozott funkcionalitású online állapotban van, előfordulhat, hogy nem tudja használni a Data Factory másolás varázslót, hogy adatfolyamatokat hozzon létre a helyszíni adattárakba vagy azokból történő adatmásoláshoz. Megkerülő megoldásként használhatja Data Factory szerkesztőt a portálon, a Visual Studióban vagy a Azure PowerShellban.
 
-#### <a name="resolution"></a>Megoldás:
+#### <a name="resolution"></a>Feloldás
 A probléma megoldása (korlátozott funkcionalitással rendelkező online) attól függ, hogy az átjáró nem tud-e kapcsolódni a Cloud Service-hez vagy más módszerhez. A következő szakaszokban ismertetjük ezeket a megoldásokat.
 
 ### <a name="2-problem"></a>2. probléma
@@ -164,7 +164,7 @@ A következő hiba jelenik meg.
 #### <a name="cause"></a>Ok
 Az átjáró nem tud csatlakozni a felhőalapú szolgáltatáshoz Service Buson keresztül.
 
-#### <a name="resolution"></a>Megoldás:
+#### <a name="resolution"></a>Feloldás
 Kövesse az alábbi lépéseket az átjáró újbóli letöltéséhez:
 
 1. Engedélyezze az IP-címek kimenő szabályait az átjárót és a vállalati tűzfalat. Az IP-címek a Windows-eseménynaplóból (azonosító = = 401) találhatók: kísérlet történt egy szoftvercsatorna elérésére olyan módon, hogy a hozzáférési engedélyeik XX-ös verziójában tiltottak. XX. XX. XX: 9350.
@@ -179,7 +179,7 @@ A következő hiba jelenik meg.
 #### <a name="cause"></a>Ok
 Átmeneti hiba történt a hálózati kapcsolatban.
 
-#### <a name="resolution"></a>Megoldás:
+#### <a name="resolution"></a>Feloldás
 Kövesse az alábbi lépéseket az átjáró újbóli letöltéséhez:
 
 1. Várjon néhány percet, és a rendszer automatikusan helyreállítja a kapcsolatot, ha a hiba megszűnik.
@@ -200,7 +200,7 @@ Lehetséges, hogy a TLS/SSL-tanúsítvány megszakadt az átjáró gépen. Az á
 
  `Unable to get the gateway settings from cloud service. Check the gateway key and the network connection. (Certificate with thumbprint cannot be loaded.)`
 
-#### <a name="resolution"></a>Megoldás:
+#### <a name="resolution"></a>Feloldás
 A probléma megoldásához kövesse az alábbi lépéseket:
 
 1. Adatkezelés átjáró Configuration Manager elindítása.
@@ -221,7 +221,7 @@ A folyamatnak a portálon való beállítása után a következő "UserErrorFail
 #### <a name="cause"></a>Ok
 Ez különböző okok miatt fordulhat elő, és ennek megfelelően változik a mérséklés.
 
-#### <a name="resolution"></a>Megoldás:
+#### <a name="resolution"></a>Feloldás
 Az SQL-adatbázishoz való csatlakozás előtt engedélyezze a kimenő TCP-kapcsolatok TCP/1433-kapcsolaton keresztüli portját a adatkezelés átjáró-ügyfél oldalán.
 
 Ha a céladatbázis Azure SQL Databaseban található, ellenőrizze az Azure-beli tűzfal-beállítások SQL Serverét is.

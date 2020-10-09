@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 08/07/2020
 ms.author: jeedes
 ms.openlocfilehash: b26ee6d6e82903a3dad91ae931885f62daf5d15b
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91821180"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-github"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a GitHubtal
@@ -93,7 +93,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     ![A "szerkesztés" ikonnal jelölt "felhasználói attribútumok" szakaszt megjelenítő képernyőkép.](common/edit-attribute.png)
 
-6. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállítások alapján, és mentse a számítógépre.
+6. Az **egyszeres Sign-On beállítása az SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállítások alapján, és mentse azt a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozása](common/certificatebase64.png)
 

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/19/2019
 ms.author: jeedes
 ms.openlocfilehash: 3d0cc72cbaad802ee1e5baad60d632d9d3385ce1
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88552764"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-itslearning"></a>Oktatóanyag: Azure Active Directory integráció a itslearning
@@ -73,7 +73,7 @@ Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a itsle
 Az Azure AD egyszeri bejelentkezés itslearning való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
 
 1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. **[Itslearning egyszeri bejelentkezés konfigurálása](#configure-itslearning-single-sign-on)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+2. **[Itslearning egyszeri bejelentkezés konfigurálása](#configure-itslearning-single-sign-on)** – az egyes Sign-On beállítások konfigurálása az alkalmazás oldalán.
 3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
 4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
 5. **[Hozzon létre itslearning-teszt felhasználót](#create-itslearning-test-user)** – hogy a itslearning Britta, a felhasználó Azure ad-képviseletéhez kapcsolódó partnerrel rendelkezzen.
@@ -93,7 +93,7 @@ Az Azure AD egyszeri bejelentkezés itslearning való konfigurálásához hajtsa
 
     ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
+3. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
@@ -110,7 +110,7 @@ Az Azure AD egyszeri bejelentkezés itslearning való konfigurálásához hajtsa
 
     b. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet: `urn:mace:saml2v2.no:services:com.itslearning`
 
-5. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
+5. Az **egyszeres Sign-On beállítása SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozása](common/metadataxml.png)
 
@@ -124,7 +124,7 @@ Az Azure AD egyszeri bejelentkezés itslearning való konfigurálásához hajtsa
 
     c. Kijelentkezési URL-cím
 
-### <a name="configure-itslearning-single-sign-on"></a>Itslearning egyszeri bejelentkezés konfigurálása
+### <a name="configure-itslearning-single-sign-on"></a>Itslearning egyetlen Sign-On konfigurálása
 
 Ha az egyszeri bejelentkezést szeretné konfigurálni a **itslearning** oldalon, el kell küldenie a letöltött **összevonási metaadatokat tartalmazó XML-fájlt** és a megfelelő másolt url-címeket a Azure Portal a [itslearning támogatási csapatának](mailto:support@itslearning.com). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
 
@@ -150,7 +150,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    d. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

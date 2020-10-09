@@ -11,10 +11,10 @@ ms.author: jopapa
 ms.custom: seodec18, devx-track-js
 ms.reviewer: sngun
 ms.openlocfilehash: c16d7ccba24680604bc7f083f7242edd53abe102
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91282901"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---build-the-ui-with-angular"></a>Szögletes alkalmazás létrehozása Azure Cosmos DB API-MongoDB – a felhasználói felület felépítése szögletes
@@ -62,7 +62,7 @@ Ennek a résznek a megkezdése előtt mindenképp végezze el az oktatóanyag [2
 
 4. Ugyanebben a mappában nyissa meg az **app.module.ts** fájlt, és láthatja, hogy a rendszer felvette a `HeroesComponent` összetevőt a deklarációk közé az 5. sorban, valamint a 10. sorba is importálta.
 
-    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part3/app-module-file.png" alt-text="Az app-module.ts fájl megnyitása":::
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part3/app-module-file.png" alt-text="A hero összetevő telepítése":::
 
 5. Lépjen vissza a **heroes.component.html** fájlra, és másolja be ezt a kódot. A `<div>` tároló tárolja a teljes oldalt. A tárolóban a fő képek egy listája található, amelyeket létre kell hoznia, hogy amikor majd azokra kattint, akkor a felhasználói felületen kijelölhesse és szerkeszthesse, illetve törölhesse azokat. Ezután a HTML-ben némi stíluskezelést hajtunk végre, amely azt mutatja majd, hogy melyik elem lett kijelölve. Emellett van egy szerkesztési terület, ahol felvehetők az új fő képek vagy szerkeszthetők a meglévők. 
 
@@ -394,7 +394,7 @@ Most, hogy megvagyunk az összetevővel, hogy jelenítjük meg azt a képernyőn
 
 5. Kattintson a `Hero` kifejezésre, és a Visual Studio egy villanykörte ikont jelenít meg a kódblokk bal oldalán. 
 
-    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part3/light-bulb.png" alt-text="Villanykörte a Visual Studio Code-ban":::
+    :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part3/light-bulb.png" alt-text="A hero összetevő telepítése":::
 
 6. Kattintson a villanykörtére, majd a **Fő kép importálása az „/app/hero” fájlból** vagy a **Fő kép importálása a „./hero” fájlból** lehetőségre. (Az üzenet a konfigurációtól függően változik.)
 
@@ -490,9 +490,9 @@ Most, hogy megvagyunk az összetevővel, hogy jelenítjük meg azt a képernyőn
 
 3. Nyisson meg egy webböngészőt, és lépjen a **localhost:3000** helyre, ahol megtekintheti a helyileg futó alkalmazást.
 
-     :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part3/azure-cosmos-db-mongodb-mean-app.png" alt-text="Helyileg futó főképalkalmazás":::
+     :::image type="content" source="./media/tutorial-develop-mongodb-nodejs-part3/azure-cosmos-db-mongodb-mean-app.png" alt-text="A hero összetevő telepítése":::
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az oktatóanyagnak ebben a részében a következőket hajtotta végre:
 

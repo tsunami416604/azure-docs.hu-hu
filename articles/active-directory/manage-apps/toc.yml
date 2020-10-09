@@ -110,18 +110,26 @@
   items:
     - name: Felhasználók hozzárendelése és alkalmazások hozzáférésének kezelése
       items:
-        - name: Felhasználói beleegyezés konfigurálása
-          href: configure-user-consent.md
-        - name: Hozzájárulás-kérések kezelése és értékelése
-          href: manage-consent-requests.md
-        - name: Bérlőszintű rendszergazdai hozzájárulás megadása
-          href: grant-admin-consent.md
-        - name: Rendszergazdai beleegyezés konfigurálásának munkafolyamata (előzetes verzió)
-          href: configure-admin-consent-workflow.md
+        - name: Hozzájárulás és engedélyek
+          items:
+            - name: Felhasználói beleegyezés konfigurálása
+              href: configure-user-consent.md
+            - name: Csoporttulajdonosi hozzájárulás konfigurálása
+              href: configure-user-consent-groups.md
+            - name: Engedélyosztályozások konfigurálása
+              href: configure-permission-classifications.md
+            - name: Alkalmazás-hozzájárulási szabályzatok kezelése
+              href: manage-app-consent-policies.md
+            - name: Rendszergazdai beleegyezés konfigurálásának munkafolyamata (előzetes verzió)
+              href: configure-admin-consent-workflow.md
+            - name: Hozzájárulás-kérések kezelése és értékelése
+              href: manage-consent-requests.md
+            - name: Bérlőszintű rendszergazdai hozzájárulás megadása
+              href: grant-admin-consent.md
+            - name: Az alkalmazásoknak megadott engedélyek áttekintése
+              href: manage-application-permissions.md
         - name: Alkalmazás felhasználó-hozzárendelésének kezelése
           href: assign-user-or-group-access-portal.md
-        - name: Az alkalmazásoknak megadott engedélyek áttekintése
-          href: manage-application-permissions.md
         - name: Gyűjtemények létrehozása a Saját alkalmazások területen
           href: access-panel-collections.md
         - name: Az önkiszolgáló alkalmazás-hozzáférés használata

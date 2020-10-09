@@ -4,10 +4,10 @@ description: Ebből az oktatóanyagból megtudhatja, hogyan használhatja a Live
 ms.topic: tutorial
 ms.date: 09/08/2020
 ms.openlocfilehash: cad96847d6fbf682f1d694b0c8c255b3725e96d1
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91824122"
 ---
 # <a name="analyze-live-video-with-computer-vision-for-spatial-analysis-preview"></a>Élő videó elemzése a Computer Vision for térbeli Analysis (előzetes verzió)
@@ -51,7 +51,7 @@ Az alábbiak a térbeli elemzési modul élő video Analytics-modulhoz való csa
 > [!div class="mx-imgBorder"]
 > :::image type="content" source="./media/spatial-analysis-tutorial/overview.png" alt-text="Térbeli elemzés – áttekintés":::
  
-Ez az ábra az oktatóanyagban szereplő jelek folyamatát mutatja be. Az [Edge-modulok](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) egy valós idejű Streaming Protocol-(RTSP-) kiszolgálót üzemeltető IP-kamerát szimulálnak. Az [RTSP-forrás](media-graph-concept.md#rtsp-source) csomópontja lekéri a videó csatornáját a kiszolgálóról, és a képkockákat a [frame rate szűrő processzor](media-graph-concept.md#frame-rate-filter-processor) -csomópontjára küldi. Ez a processzor korlátozza a MediaGraphCognitiveServicesVisionExtension processzor-csomópontot elérő video stream képkockasebességét.
+Ez az ábra az oktatóanyagban szereplő jelek folyamatát mutatja be. Az [Edge-modul](https://github.com/Azure/live-video-analytics/tree/master/utilities/rtspsim-live555) szimulál egy Real-Time Streaming Protocol-(RTSP-) kiszolgálót futtató IP-kamerát. Az [RTSP-forrás](media-graph-concept.md#rtsp-source) csomópontja lekéri a videó csatornáját a kiszolgálóról, és a képkockákat a [frame rate szűrő processzor](media-graph-concept.md#frame-rate-filter-processor) -csomópontjára küldi. Ez a processzor korlátozza a MediaGraphCognitiveServicesVisionExtension processzor-csomópontot elérő video stream képkockasebességét.
 
 A MediaGraphCognitiveServicesVisionExtension csomópont egy proxy szerepét játssza le. A képkockákat a megadott képtípusra konvertálja. Ezt követően továbbítja a rendszerképet a **megosztott memórián** keresztül egy másik peremhálózati modulhoz, amely egy gRPC-végpont MÖGÖTTi AI-műveleteket futtat. Ebben a példában ez a peremhálózati modul a térbeli elemzési modul. A MediaGraphCognitiveServicesVisionExtension processzor csomópontja két dolgot tesz:
 
@@ -359,7 +359,7 @@ Minta kimenete a personZoneEvent (a cognitiveservices. vízió. spatialanalysis-
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Próbálkozzon a modul által kínált különböző műveletekkel, `spatialAnalysis` például a **personCount** és a **personDistance** . ehhez a telepítési jegyzékfájl Graph csomópontjában az "enabled" jelzőt kell bekapcsolni.
 >[!Tip]

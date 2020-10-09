@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 10/10/2019
 ms.author: damendo
 ms.openlocfilehash: b48aab918b477f5c689a50ca476b0b1336642f0f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77471856"
 ---
 # <a name="frequently-asked-questions-faq-about-azure-network-watcher"></a>Gyakran ismételt kérdések (GYIK) az Azure Network Watcher
@@ -106,5 +106,5 @@ A NSG-folyamatok további konfigurációk nélkül kompatibilisek a szolgáltat�
 ### <a name="what-is-the-difference-between-flow-logs-versions-1--2"></a>Mi a különbség a flow-naplók között 1 & 2 verzió között?
 A flow-naplók 2. verziója bevezeti a *folyamat állapotának* fogalmát & tárolja a bájtok és a továbbított csomagok adatait. [További információk](https://docs.microsoft.com/azure/network-watcher/network-watcher-nsg-flow-logging-overview#log-file).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
  - Néhány oktatóanyagért tekintse át a [dokumentáció áttekintését ismertető oldalt](https://docs.microsoft.com/azure/network-watcher/) , amellyel elsajátíthatja a Network Watcher.

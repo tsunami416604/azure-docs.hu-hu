@@ -13,10 +13,10 @@ ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 tag: azure-synapse
 ms.openlocfilehash: 29709dc03ee3a06bdf2aec2587909a08ee13504e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85206730"
 ---
 # <a name="authenticate-to-azure-synapse-analytics"></a>Hitelesítés az Azure szinapszis Analytics szolgáltatásban
@@ -76,7 +76,7 @@ Azure Active Directory hitelesítés konfigurálásához kövesse az alábbi lé
 5. Tárolt adatbázis-felhasználók létrehozása az adatbázisban az Azure AD-identitásokhoz rendelve
 6. Kapcsolódás az SQL-készlethez az Azure AD-identitások használatával
 
-Jelenleg Azure Active Directory felhasználók nem jelennek meg a SSDT-Object Explorerokban. Megkerülő megoldásként tekintse meg a [sys. database_principals](/sql/relational-databases/system-catalog-views/sys-database-principals-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)felhasználóit.
+Jelenleg Azure Active Directory felhasználók nem jelennek meg a SSDT-Object Explorerokban. Áthidaló megoldásként tekintse meg [sys.database_principals](/sql/relational-databases/system-catalog-views/sys-database-principals-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)felhasználóit.
 
 ### <a name="find-the-details"></a>A részletek megkeresése
 

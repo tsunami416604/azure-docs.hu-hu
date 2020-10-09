@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev
 ms.openlocfilehash: 4810de772e44be22ee5bd4a9fb6ef0ef756e62f4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77085212"
 ---
 # <a name="how-to-configure-msal-for-ios-and-macos-to-use-different-identity-providers"></a>Útmutató: az iOS-és macOS-MSAL konfigurálása különböző identitás-szolgáltatók használatához
@@ -26,7 +26,7 @@ Ebből a cikkből megtudhatja, hogyan konfigurálhatja az iOS és macOS rendszer
 
 ## <a name="default-authority-configuration"></a>Alapértelmezett szolgáltató konfigurációja
 
-`MSALPublicClientApplication`a az alapértelmezett szolgáltatói URL-címével van konfigurálva `https://login.microsoftonline.com/common` , amely a legtöbb Azure Active Directory (HRE) forgatókönyvhöz megfelelő. Hacsak nem végez speciális forgatókönyveket, például a nemzeti felhőket, vagy a B2C-vel dolgozik, nem kell módosítania.
+`MSALPublicClientApplication` a az alapértelmezett szolgáltatói URL-címével van konfigurálva `https://login.microsoftonline.com/common` , amely a legtöbb Azure Active Directory (HRE) forgatókönyvhöz megfelelő. Hacsak nem végez speciális forgatókönyveket, például a nemzeti felhőket, vagy a B2C-vel dolgozik, nem kell módosítania.
 
 > [!NOTE]
 > A Active Directory összevonási szolgáltatások (AD FS) as Identity Provider (ADFS) szolgáltatással való modern hitelesítés nem támogatott (lásd: [ADFS for Developers](https://docs.microsoft.com/windows-server/identity/ad-fs/overview/ad-fs-openid-connect-oauth-flows-scenarios) for details). Az ADFS-t az összevonás támogatja.
@@ -240,11 +240,11 @@ A következő alosztályai a `MSALAuthority` -től függően a szolgáltatótól
 
 ### <a name="msalaadauthority"></a>MSALAADAuthority
 
-`MSALAADAuthority`HRE-szolgáltatót jelöl. A szolgáltatói URL-címnek a következő formátumban kell lennie, ahol a `<port>` nem kötelező:`https://<host>:<port>/<tenant>`
+`MSALAADAuthority` HRE-szolgáltatót jelöl. A szolgáltatói URL-címnek a következő formátumban kell lennie, ahol a `<port>` nem kötelező: `https://<host>:<port>/<tenant>`
 
 ### <a name="msalb2cauthority"></a>MSALB2CAuthority
 
-`MSALB2CAuthority`a B2C-hatóságot jelöli. Alapértelmezés szerint a B2C-szolgáltatói URL-címnek a következő formátumban kell lennie, ahol a `<port>` nem kötelező: `https://<host>:<port>/tfp/<tenant>/<policy>` . A MSAL azonban más, tetszőleges B2C-szolgáltatói formátumokat is támogat.
+`MSALB2CAuthority` a B2C-hatóságot jelöli. Alapértelmezés szerint a B2C-szolgáltatói URL-címnek a következő formátumban kell lennie, ahol a `<port>` nem kötelező: `https://<host>:<port>/tfp/<tenant>/<policy>` . A MSAL azonban más, tetszőleges B2C-szolgáltatói formátumokat is támogat.
 
 ## <a name="next-steps"></a>További lépések
 

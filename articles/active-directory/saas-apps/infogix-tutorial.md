@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
 ms.openlocfilehash: 0f4874a16e12c5c9e7e5a0fd9858d3e42f2bb1cd
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91821276"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-infogix-data3sixty-govern"></a>Oktatóanyag: Azure Active Directory integráció a Infogix Data3Sixty szabályozásával
@@ -74,7 +74,7 @@ Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a Infog
 Az Azure AD egyszeri bejelentkezés konfigurálásához és teszteléséhez a Infogix Data3Sixty-szabályozással a következő építőelemeket kell végrehajtania:
 
 1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. **[Konfigurálja az Infogix Data3Sixty az egyszeri bejelentkezés szabályozására](#configure-infogix-data3sixty-govern-single-sign-on)** – az egyszeri bejelentkezési beállítások konfigurálásához az alkalmazás oldalán.
+2. **[Konfigurálja az Infogix Data3Sixty az egyszeri bejelentkezés szabályozására](#configure-infogix-data3sixty-govern-single-sign-on)** – az alkalmazás oldalán lévő Sign-On beállítások konfigurálásához.
 3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
 4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
 5. Infogix-Data3Sixty-vezérlési **[szabály létrehozása](#create-infogix-data3sixty-govern-test-user)** – a Britta Simon-nek a Infogix Data3Sixty szabályozza, amely a felhasználó Azure ad-beli képviseletéhez van társítva.
@@ -94,7 +94,7 @@ Ha az Azure AD egyszeri bejelentkezést az Infogix Data3Sixty szabályozza, a k�
 
     ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
+3. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
@@ -113,15 +113,15 @@ Ha az Azure AD egyszeri bejelentkezést az Infogix Data3Sixty szabályozza, a k�
     A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:  `https://<subdomain>.data3sixty.com`
 
     > [!NOTE]
-    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges válasz URL-címmel és a bejelentkezési URL-címmel. Vegye fel a kapcsolatot a [Infogix Data3Sixty, és szabályozza az ügyfelek támogatási csapatát](mailto:data3sixtysupport@infogix.com) az értékek beszerzéséhez. Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges válasz URL-címével és Sign-On URL-címmel. Vegye fel a kapcsolatot a [Infogix Data3Sixty, és szabályozza az ügyfelek támogatási csapatát](mailto:data3sixtysupport@infogix.com) az értékek beszerzéséhez. Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-6. Az Infogix Data3Sixty szabályozza az alkalmazás egy adott formátumban várja az SAML-állításokat. Konfigurálja a következő jogcímeket ehhez az alkalmazáshoz. Az attribútumok értékeit az alkalmazás-integráció lapon, a **felhasználói attribútumok** szakaszban kezelheti. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** gombra a **felhasználói attribútumok** párbeszédpanel megnyitásához.
+6. Az Infogix Data3Sixty szabályozza az alkalmazás egy adott formátumban várja az SAML-állításokat. Konfigurálja a következő jogcímeket ehhez az alkalmazáshoz. Az attribútumok értékeit az alkalmazás-integráció lapon, a **felhasználói attribútumok** szakaszban kezelheti. Az **egyszeres Sign-On beállítása az SAML-vel** lapon kattintson a **Szerkesztés** gombra a **felhasználói attribútumok** párbeszédpanel megnyitásához.
 
     ![A képernyőképen a szerkesztési ikonnal jelölt felhasználói attribútumok láthatók.](common/edit-attribute.png)
 
 7. A **felhasználó attribútumai** párbeszédpanel **felhasználói jogcímek** szakaszában szerkessze a jogcímeket a **Szerkesztés ikon** használatával, vagy adja hozzá a jogcímeket az **új jogcím hozzáadása** paranccsal az SAML-token attribútum konfigurálásához a fenti képen látható módon, és hajtsa végre a következő lépéseket:
 
-    | Name (Név) | Forrás attribútum|
+    | Név | Forrás attribútum|
     | -----------| -------------- |
     | FirstName  | User. givenName |
     | LastName   | felhasználó. vezetéknév |
@@ -145,7 +145,7 @@ Ha az Azure AD egyszeri bejelentkezést az Infogix Data3Sixty szabályozza, a k�
 
     : Kattintson a **Mentés** gombra.
 
-8. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (RAW)** letöltéséhez a megadott beállítások alapján, és mentse a számítógépre.
+8. Az **egyszeres Sign-On beállítása az SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (RAW)** letöltéséhez a megadott beállítások alapján, és mentse azt a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozása](common/certificateraw.png)
 
@@ -159,7 +159,7 @@ Ha az Azure AD egyszeri bejelentkezést az Infogix Data3Sixty szabályozza, a k�
 
     c. Kijelentkezési URL-cím
 
-### <a name="configure-infogix-data3sixty-govern-single-sign-on"></a>Az egyszeri bejelentkezést szabályozó Infogix Data3Sixty konfigurálása
+### <a name="configure-infogix-data3sixty-govern-single-sign-on"></a>Infogix-Data3Sixty konfigurálása egyetlen Sign-On
 
 Ha az **Infogix-Data3Sixty az irányítás** oldalon szeretné konfigurálni az egyszeri bejelentkezést, el kell küldenie a letöltött **tanúsítványt (RAW)** és a megfelelő másolt url-címeket a Azure Portalról a [Infogix Data3Sixty a támogatási csapatra](mailto:data3sixtysupport@infogix.com). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
 

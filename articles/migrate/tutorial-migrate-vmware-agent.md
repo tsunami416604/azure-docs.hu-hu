@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 06/09/2020
 ms.custom: MVC
 ms.openlocfilehash: f437c0f3b9f786863d3b58f10d1a7384b0f1e8ba
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91296144"
 ---
 # <a name="migrate-vmware-vms-to-azure-agent-based"></a>VMware virtuális gépek migrálása az Azure-ba (ügynök-alapú)
@@ -100,7 +100,7 @@ A mobilitási szolgáltatásnak telepítve kell lennie a replikálni kívánt g�
 Készítse elő a fiókot az alábbiak szerint:
 
 1. Készítsen elő egy tartományi vagy helyi fiókot, amely rendelkezik a virtuális gépre való telepítéshez szükséges engedélyekkel.
-2. Windows rendszerű virtuális gépek esetén, ha nem használ tartományi fiókot, tiltsa le a távoli felhasználói hozzáférés-vezérlést a helyi gépen a **LOCALACCOUNTTOKENFILTERPOLICY**DWORD-bejegyzés hozzáadásával a beállításjegyzékben, a **HKEY_LOCAL_MACHINE \software\microsoft\windows\currentversion\policies\system**
+2. Windows rendszerű virtuális gépek esetén, ha nem használ tartományi fiókot, tiltsa le a távoli felhasználói hozzáférés-vezérlést a helyi gépen a **LOCALACCOUNTTOKENFILTERPOLICY**DWORD-bejegyzés hozzáadásával, a beállításjegyzékben a **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System**
 3. Linux rendszerű virtuális gépek esetében készítse elő a root fiókot a forrás Linux-kiszolgálón.
 
 
@@ -387,8 +387,8 @@ Miután ellenőrizte, hogy a teszt áttelepítése a várt módon működik-e, �
     - Hajtson végre minden áttelepítés utáni módosítást az alkalmazáson (például adatbázis-kapcsolati sztringek frissítése és webes kiszolgálók konfigurálása).
     - Végezze el a végső alkalmazás- és áttelepítés-elfogadás teszteket az Azure-on jelenleg futó alkalmazásoknál.
 - Üzletmenet-folytonosság/vész-helyreállítás
-    - Biztonságba helyezheti az adatokat, ha biztonsági másolatot készít az Azure virtuális gépekről az Azure Backup szolgáltatással. [További információ](../backup/quick-backup-vm-portal.md).
-    - Biztosíthatja a számítási feladatok folyamatos futtatását és rendelkezésre állását, ha az Azure virtuális gépeket egy másodlagos régióba replikálja a Site Recovery használatával. [További információ](../site-recovery/azure-to-azure-tutorial-enable-replication.md).
+    - Biztonságba helyezheti az adatokat, ha biztonsági másolatot készít az Azure virtuális gépekről az Azure Backup szolgáltatással. [További információk](../backup/quick-backup-vm-portal.md).
+    - Biztosíthatja a számítási feladatok folyamatos futtatását és rendelkezésre állását, ha az Azure virtuális gépeket egy másodlagos régióba replikálja a Site Recovery használatával. [További információk](../site-recovery/azure-to-azure-tutorial-enable-replication.md).
 - A biztonság fokozása érdekében:
     - Zárolja és korlátozza a bejövő adatforgalom elérését [Azure Security Center – igény szerinti felügyelettel](../security-center/security-center-just-in-time.md).
     - Korlátozza a forgalmat felügyeleti végpontokra [hálózati biztonsági csoportok](../virtual-network/security-overview.md) használatával.
@@ -400,6 +400,6 @@ Miután ellenőrizte, hogy a teszt áttelepítése a várt módon működik-e, �
 
 
 
- ## <a name="next-steps"></a>Következő lépések
+ ## <a name="next-steps"></a>További lépések
 
 Vizsgálja meg a [felhőalapú migrációs utat](/azure/architecture/cloud-adoption/getting-started/migrate) az Azure Cloud bevezetési keretrendszerében.

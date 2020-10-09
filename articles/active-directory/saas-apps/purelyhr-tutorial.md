@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 10/14/2019
 ms.author: jeedes
 ms.openlocfilehash: 48db08f856407b2ceba32798ed0e39eab967b72d
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88553308"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-purelyhr"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a PurelyHR
@@ -85,7 +85,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
     A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:  `https://<companyID>.purelyhr.com/sso-initiate`
 
     > [!NOTE]
-    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges válasz URL-címmel és a bejelentkezési URL-címmel. Az értékek lekéréséhez forduljon a PurelyHR ügyfélszolgálati [csapatához](https://support.purelyhr.com/) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges válasz URL-címével és Sign-On URL-címmel. Az értékek lekéréséhez forduljon a PurelyHR ügyfélszolgálati [csapatához](https://support.purelyhr.com/) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
 1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg a **tanúsítvány (Base64)** elemet, majd a **Letöltés** gombra kattintva töltse le a tanúsítványt, és mentse a számítógépre.
 
@@ -105,7 +105,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Create** (Létrehozás) gombra.
+   1. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -141,7 +141,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 1. Illessze be a mezőkben szereplő értékeket az alább leírtak szerint:
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/purelyhr-tutorial/purelyhr-dashboard-sso-settings.png)  
+    ![Egyetlen Sign-On konfigurálása](./media/purelyhr-tutorial/purelyhr-dashboard-sso-settings.png)  
 
     a. Nyissa meg a Jegyzettömbben Azure Portal letöltött **tanúsítványt (Bas64)** , és másolja a tanúsítvány értékét. Illessze be a másolt értéket az **X. 509-tanúsítvány** mezőbe.
 

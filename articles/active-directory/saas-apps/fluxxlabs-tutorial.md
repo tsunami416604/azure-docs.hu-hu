@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 05/21/2020
 ms.author: jeedes
 ms.openlocfilehash: 00cf3e33c87255485f7ea73526e474b0d941124b
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91826379"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-fluxx-labs"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Fluxx Labs szolgáltatással
@@ -76,7 +76,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon hajtsa végre a következő lépéseket:
+1. Az **egyszeri Sign-On beállítása az SAML-vel** lapon hajtsa végre a következő lépéseket:
 
     a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával:
 
@@ -155,7 +155,7 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 
     c. A **visszahívási útvonal** szövegmezőbe írja be a következőt: **/Auth/SAML/callback**.
 
-    d. Adja meg a válasz URL-címét **(az egyszeri bejelentkezési URL** -cím) szövegmezőbe írja be az Azure Portalban megadott **Válasz URL** -címet.
+    d. Az **állítás a fogyasztói szolgáltatás URL-címe (egy Sign-On URL-cím)** szövegmezőbe írja be a **Válasz URL-címét** , amelyet a Azure Portal megadott.
 
     e. A **célközönség (SP-entitás azonosítója)** szövegmezőbe írja be az **azonosító** értékét, amelyet a Azure Portal megadott.
 

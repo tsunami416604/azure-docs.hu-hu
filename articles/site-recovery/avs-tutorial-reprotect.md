@@ -9,10 +9,10 @@ ms.date: 09/30/2020
 ms.author: harshacs
 ms.custom: MVC
 ms.openlocfilehash: 80ff2f3f3d5fdcf61770889dcdaaf075941b90ff
-ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91814572"
 ---
 # <a name="reprotect-from-azure-to-azure-vmware-solution-private-cloud"></a>Ismételt védelem az Azure-ból az Azure VMware-megoldás saját felhőbe
@@ -75,7 +75,7 @@ A következőképpen engedélyezheti az ismételt védelmet:
     - Az ismételt védelem befejeződése után ne kapcsolja be az Azure VMware megoldás virtuális gépet.
    
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ha bármilyen problémába ütközik, tekintse át a [hibaelhárítási cikket](vmware-azure-troubleshoot-failback-reprotect.md).
 - Az Azure-beli virtuális gépek védelme után elvégezheti a feladat- [visszavétel futtatását](avs-tutorial-failback.md). A feladat-visszavétel leállítja az Azure-beli virtuális gépet, és elindítja az Azure VMware megoldás virtuális gépet. Némi állásidőt vár az alkalmazáshoz, és ennek megfelelően kiválaszthatja a feladat-visszavételi időt.

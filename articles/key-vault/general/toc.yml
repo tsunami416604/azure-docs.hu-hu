@@ -106,6 +106,8 @@
       items:
         - name: Az Azure Key Vault fejlesztői útmutatója
           href: developers-guide.md
+        - name: Az Azure Resource Manager használata a Key Vault üzembe helyezéséhez
+          href: vault-create-template.md
         - name: Webalkalmazás titkos kulcsának mentése
           href: vs-secure-secret-appsettings.md
         - name: Szolgáltatások közötti hitelesítés a .NET-tel

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 06/26/2018
 ms.author: rosh
 ms.openlocfilehash: 25bcdb89002fec4f9b67b091996d7bf80bcf21c8
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74326722"
 ---
 # <a name="sending-and-using-bing-local-business-search-api-queries-and-responses"></a>Bing helyi üzleti keresési API-lekérdezések és válaszok küldése és használata
@@ -23,7 +23,7 @@ Helyi eredményeket kaphat a Bing helyi üzleti keresési API-ból, ha keresési
 
 ## <a name="creating-a-request"></a>Kérelem létrehozása
 
-Ha kérést szeretne küldeni a Bing local Business Search API-nak, fűzze hozzá a keresési `q=` kifejezést a paraméterhez, mielőtt hozzáadja azt az API-végponthoz, és tartalmazza a `Ocp-Apim-Subscription-Key` fejlécet is. Például:
+Ha kérést szeretne küldeni a Bing local Business Search API-nak, fűzze hozzá a keresési kifejezést a `q=` paraméterhez, mielőtt hozzáadja azt az API-végponthoz, és tartalmazza a `Ocp-Apim-Subscription-Key` fejlécet is. Például:
 
 `https://api.cognitive.microsoft.com/bing/localbusinesses/v7.0/search?q=restaurant+in+Bellevue`
 
@@ -37,7 +37,7 @@ https://api.cognitive.microsoft.com/bing/v7.0/localbusinesses/search[?q][&localC
 
 ## <a name="using-responses"></a>Válaszok használata
 
-A Bing helyi üzleti keresési API-ból származó JSON- `SearchResponse` válaszok egy objektumot tartalmaznak. Az API a megfelelő keresési eredményeket fogja visszaadni `places` a mezőben. Ha nem található eredmény, a `places` program nem fogja tartalmazni a választ.
+A Bing helyi üzleti keresési API-ból származó JSON-válaszok egy `SearchResponse` objektumot tartalmaznak. Az API a megfelelő keresési eredményeket fogja visszaadni a `places` mezőben. Ha nem található eredmény, a `places` program nem fogja tartalmazni a választ.
 
 [!INCLUDE [cognitive-services-bing-url-note](../../../includes/cognitive-services-bing-url-note.md)]
 
@@ -61,7 +61,7 @@ Az API által visszaadott JSON-eredmények a következő attribútumokat tartalm
 * entityPresentationInfo
 * georedundáns
 * id
-* név
+* name
 * routeablePoint
 * telefonon
 * url
@@ -74,7 +74,7 @@ A fejlécekkel, paraméterekkel, piaci kódokkal, válasz objektumokkal, hibákk
 
 ## <a name="example-json-response"></a>Példa JSON-válaszra
 
-A következő JSON-válasz a lekérdezés `?q=restaurant+in+Bellevue`által megadott keresési eredményeket tartalmazza.
+A következő JSON-válasz a lekérdezés által megadott keresési eredményeket tartalmazza `?q=restaurant+in+Bellevue` .
 
 ```json
 Vary: Accept-Encoding

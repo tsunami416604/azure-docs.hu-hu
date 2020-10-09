@@ -8,10 +8,10 @@ ms.topic: guide
 ms.date: 10/16/2019
 ms.author: mebeatty
 ms.openlocfilehash: a4a5b058666fab3e9048a7d92726dccd1360ff37
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74184259"
 ---
 # <a name="azure-internet-analyzer-faq-preview"></a>Azure Internet Analyzer – gyakori kérdések (előzetes verzió)
@@ -78,7 +78,7 @@ Az előzetes verzióban az alábbi előre konfigurált végpontok érhetők el:
     * Az Egyesült Királyság nyugati régiója  
     * Nyugat-Európa
     * USA nyugati régiója
-    * USA nyugati régiója, 2.
+    * USA 2. nyugati régiója
 * **Több Azure-régió kombinációja**
     * USA keleti régiója, Dél-Brazília
     * USA keleti régiója, Kelet-Ázsia

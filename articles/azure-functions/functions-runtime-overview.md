@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: anwestg
 ms.openlocfilehash: ab04aa4ca7f54e8de120d078a313c3096a350aa5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74226632"
 ---
 # <a name="azure-functions-runtime-overview-preview"></a>Azure Functions-futtatókörnyezet áttekintése (előzetes verzió)
@@ -43,7 +43,7 @@ A Azure Functions feldolgozói szerepkörök Windows-tárolókban vannak telepí
 
 A Azure Functions-futtatókörnyezet első lépéseihez rendelkeznie kell egy, a SQL Server-példányhoz hozzáféréssel rendelkező Windows Server 2016 vagy Windows 10 alkotói frissítéssel rendelkező géppel.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A [Azure functions-futtatókörnyezet előzetes](https://aka.ms/azafrdoc) verziójának telepítése
 

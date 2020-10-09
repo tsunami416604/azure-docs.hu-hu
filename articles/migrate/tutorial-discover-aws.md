@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: mvc
 ms.openlocfilehash: e48d123a9317d35cd2bb8e38a29d23cae3b75eb8
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91275455"
 ---
 # <a name="tutorial-discover-aws-instances-with-server-assessment"></a>Oktatóanyag: AWS-példányok felderítése kiszolgáló-értékeléssel
@@ -169,7 +169,7 @@ A telepítő parancsfájl a következő műveleteket végzi el:
 
 - Ügynököket és webalkalmazásokat telepít a fizikai kiszolgálók felderítéséhez és értékeléséhez.
 - Telepítse a Windows-szerepköröket, beleértve a Windows aktiválási szolgáltatást, az IIS-t és a PowerShell ISE-t.
-- Töltse le és telepítse az IIS újraírható modulját. [További információ](https://www.microsoft.com/download/details.aspx?id=7435).
+- Töltse le és telepítse az IIS újraírható modulját. [További információk](https://www.microsoft.com/download/details.aspx?id=7435).
 - Frissíti a (HKLM) beállításkulcsot a Azure Migrate állandó beállítási részleteivel.
 - A következő fájlokat hozza létre az elérési út alatt:
     - **Konfigurációs fájlok**:%ProgramData%\Microsoft Azure\Config
@@ -258,7 +258,7 @@ A felderítés befejeződése után ellenőrizheti, hogy a kiszolgálók megjele
 1. Nyissa meg az Azure Migrate irányítópultját.
 2. A **Azure Migrate-Servers**  >  **Azure Migrate: kiszolgáló értékelése** lapon kattintson arra az ikonra, amely megjeleníti a **felderített kiszolgálók**darabszámát.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Az Azure-beli virtuális gépekre való Migrálás [fizikai kiszolgálóinak felmérése](tutorial-migrate-aws-virtual-machines.md) .
 - [Tekintse át a](migrate-appliance.md#collected-data---physical) berendezés által a felderítés során gyűjtött adatokat.

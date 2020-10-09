@@ -12,10 +12,10 @@ ms.date: 07/19/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: fb1750996f40db6d76db30cd1c3bc07186660159
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85201854"
 ---
 # <a name="single-page-sign-in-using-the-oauth-20-implicit-flow-in-azure-active-directory-b2c"></a>Egyoldalas bejelentkezés a OAuth 2,0 implicit flow használatával Azure Active Directory B2C
@@ -51,18 +51,18 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 &nonce=12345
 ```
 
-| Paraméter | Kötelező | Description |
+| Paraméter | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-|Bérlő| Yes | A Azure AD B2C bérlő neve|
-|politika| Yes| A futtatandó felhasználói folyamat. Adja meg a Azure AD B2C bérlőben létrehozott felhasználói folyamat nevét. Például: `b2c_1_sign_in` , `b2c_1_sign_up` , vagy `b2c_1_edit_profile` . |
-| client_id | Yes | Az alkalmazáshoz hozzárendelt [Azure Portal](https://portal.azure.com/) alkalmazás azonosítója. |
-| response_type | Yes | Tartalmaznia kell `id_token` az OpenID Connect bejelentkezést. Belefoglalhatja a válasz típusát is `token` . Ha használja `token` , az alkalmazás azonnal kap egy hozzáférési jogkivonatot az engedélyezési végponttól anélkül, hogy egy második kérést kellene benyújtani az engedélyezési végpontnak.  Ha a `token` válasz típusát használja, a `scope` paraméternek tartalmaznia kell egy hatókört, amely megadja, hogy melyik erőforrást kell kibocsátani a jogkivonat számára. |
-| redirect_uri | No | Az alkalmazás átirányítási URI-ja, ahol az alkalmazás elküldhet és fogadhat hitelesítési válaszokat. Pontosan meg kell egyeznie a portálon regisztrált átirányítási URI-k egyikével, azzal a különbséggel, hogy az URL-kódolásnak kell lennie. |
-| response_mode | No | Meghatározza az eredményül kapott jogkivonat az alkalmazásba való visszaküldéséhez használandó módszert.  Implicit folyamatok esetén használja a következőt: `fragment` . |
-| scope | Yes | A hatókörök szóközzel tagolt listája. Egyetlen hatóköri érték azt jelzi, hogy az Azure AD-t mind a kért engedélyek jelentik. A `openid` hatókör a felhasználónak való bejelentkezéshez és az azonosító tokenek formájában kapott információk beszerzéséhez szükséges engedélyt jelöli. A `offline_access` hatókör a Web Apps esetében nem kötelező. Azt jelzi, hogy az alkalmazásnak frissítési jogkivonatra van szüksége az erőforrásokhoz való hosszú élettartamú hozzáféréshez. |
-| state | No | A kérelemben szereplő, a jogkivonat-válaszban is visszaadott érték. A használni kívánt tartalom karakterlánca lehet. A rendszer általában véletlenszerűen generált, egyedi értéket használ, hogy megakadályozza a helyek közötti kérelmek hamisítás elleni támadásait. Az állapot az alkalmazásban a felhasználó állapotára vonatkozó információk kódolására is használatos, mielőtt a hitelesítési kérelem bekövetkezett volna, például a laphoz. |
-| egyszeri | Yes | A kérelemben szereplő, az eredményül kapott azonosító jogkivonatban található (az alkalmazás által generált) érték. Az alkalmazás ezután ellenőrizheti ezt az értéket a jogkivonat-Visszajátszási támadások enyhítése érdekében. Az érték általában egy véletlenszerű, egyedi karakterlánc, amely a kérelem forrásának azonosítására szolgál. |
-| gyors | No | A kötelező felhasználói beavatkozás típusa. Jelenleg az egyetlen érvényes érték a `login` . Ez a paraméter arra kényszeríti a felhasználót, hogy adja meg a kéréshez tartozó hitelesítő adatait. Az egyszeri bejelentkezés nem lép érvénybe. |
+|Bérlő| Igen | A Azure AD B2C bérlő neve|
+|politika| Igen| A futtatandó felhasználói folyamat. Adja meg a Azure AD B2C bérlőben létrehozott felhasználói folyamat nevét. Például: `b2c_1_sign_in` , `b2c_1_sign_up` , vagy `b2c_1_edit_profile` . |
+| client_id | Igen | Az alkalmazáshoz hozzárendelt [Azure Portal](https://portal.azure.com/) alkalmazás azonosítója. |
+| response_type | Igen | Tartalmaznia kell `id_token` az OpenID Connect bejelentkezést. Belefoglalhatja a válasz típusát is `token` . Ha használja `token` , az alkalmazás azonnal kap egy hozzáférési jogkivonatot az engedélyezési végponttól anélkül, hogy egy második kérést kellene benyújtani az engedélyezési végpontnak.  Ha a `token` válasz típusát használja, a `scope` paraméternek tartalmaznia kell egy hatókört, amely megadja, hogy melyik erőforrást kell kibocsátani a jogkivonat számára. |
+| redirect_uri | Nem | Az alkalmazás átirányítási URI-ja, ahol az alkalmazás elküldhet és fogadhat hitelesítési válaszokat. Pontosan meg kell egyeznie a portálon regisztrált átirányítási URI-k egyikével, azzal a különbséggel, hogy az URL-kódolásnak kell lennie. |
+| response_mode | Nem | Meghatározza az eredményül kapott jogkivonat az alkalmazásba való visszaküldéséhez használandó módszert.  Implicit folyamatok esetén használja a következőt: `fragment` . |
+| scope | Igen | A hatókörök szóközzel tagolt listája. Egyetlen hatóköri érték azt jelzi, hogy az Azure AD-t mind a kért engedélyek jelentik. A `openid` hatókör a felhasználónak való bejelentkezéshez és az azonosító tokenek formájában kapott információk beszerzéséhez szükséges engedélyt jelöli. A `offline_access` hatókör a Web Apps esetében nem kötelező. Azt jelzi, hogy az alkalmazásnak frissítési jogkivonatra van szüksége az erőforrásokhoz való hosszú élettartamú hozzáféréshez. |
+| állapot | Nem | A kérelemben szereplő, a jogkivonat-válaszban is visszaadott érték. A használni kívánt tartalom karakterlánca lehet. A rendszer általában véletlenszerűen generált, egyedi értéket használ, hogy megakadályozza a helyek közötti kérelmek hamisítás elleni támadásait. Az állapot az alkalmazásban a felhasználó állapotára vonatkozó információk kódolására is használatos, mielőtt a hitelesítési kérelem bekövetkezett volna, például a laphoz. |
+| egyszeri | Igen | A kérelemben szereplő, az eredményül kapott azonosító jogkivonatban található (az alkalmazás által generált) érték. Az alkalmazás ezután ellenőrizheti ezt az értéket a jogkivonat-Visszajátszási támadások enyhítése érdekében. Az érték általában egy véletlenszerű, egyedi karakterlánc, amely a kérelem forrásának azonosítására szolgál. |
+| gyors | Nem | A kötelező felhasználói beavatkozás típusa. Jelenleg az egyetlen érvényes érték a `login` . Ez a paraméter arra kényszeríti a felhasználót, hogy adja meg a kéréshez tartozó hitelesítő adatait. Az egyszeri bejelentkezés nem lép érvénybe. |
 
 Ekkor a rendszer megkéri a felhasználót, hogy fejezze be a szabályzat munkafolyamatát. Előfordulhat, hogy a felhasználónak meg kell adnia felhasználónevét és jelszavát, be kell jelentkeznie egy közösségi identitással, regisztrálnia kell a címtárban, vagy bármely más lépéssel. A felhasználói műveletek attól függnek, hogy a felhasználói folyamat hogyan van definiálva.
 
@@ -88,7 +88,7 @@ access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q..
 | expires_in | A hozzáférési jogkivonat érvényességének időtartama (másodpercben). |
 | scope | Azok a hatókörök, amelyekhez a jogkivonat érvényes. Hatóköröket is használhat a tokenek későbbi használatra való gyorsítótárazásához. |
 | id_token | Az alkalmazás által kért azonosító jogkivonat. Az azonosító token használatával ellenőrizheti a felhasználó identitását, és megkezdheti a munkamenetet a felhasználóval. Az azonosító jogkivonatokkal és azok tartalmával kapcsolatos további információkért tekintse meg az [Azure ad B2C jogkivonat-referenciát](tokens-overview.md). |
-| state | Ha egy `state` paraméter szerepel a kérelemben, akkor a válaszban ugyanazt az értéket kell megjelennie. Az alkalmazásnak ellenőriznie kell, hogy a `state` kérelemben és a válaszban szereplő értékek azonosak-e. |
+| állapot | Ha egy `state` paraméter szerepel a kérelemben, akkor a válaszban ugyanazt az értéket kell megjelennie. Az alkalmazásnak ellenőriznie kell, hogy a `state` kérelemben és a válaszban szereplő értékek azonosak-e. |
 
 ### <a name="error-response"></a>Hiba válasza
 A rendszer a hibaüzeneteket is elküldheti az átirányítási URI-nak, hogy az alkalmazás megfelelően tudja kezelni őket:
@@ -104,7 +104,7 @@ error=access_denied
 | --------- | ----------- |
 | error | A felmerülő hibák típusának besorolására szolgáló kód. |
 | error_description | Egy adott hibaüzenet, amely segítséget nyújt a hitelesítési hiba kiváltó okának azonosításában. |
-| state | Ha egy `state` paraméter szerepel a kérelemben, akkor a válaszban ugyanazt az értéket kell megjelennie. Az alkalmazásnak ellenőriznie kell, hogy a `state` kérelemben és a válaszban szereplő értékek azonosak-e.|
+| állapot | Ha egy `state` paraméter szerepel a kérelemben, akkor a válaszban ugyanazt az értéket kell megjelennie. Az alkalmazásnak ellenőriznie kell, hogy a `state` kérelemben és a válaszban szereplő értékek azonosak-e.|
 
 ## <a name="validate-the-id-token"></a>AZONOSÍTÓ jogkivonat ellenőrzése
 
@@ -164,7 +164,7 @@ client_id=90c0fe63-bcf2-44d5-8fb7-b8bbc0b29dc6
 &prompt=none
 ```
 
-| Paraméter | Kötelező? | Description |
+| Paraméter | Kötelező? | Leírás |
 | --- | --- | --- |
 |Bérlő| Kötelező | A Azure AD B2C bérlő neve|
 politika| Kötelező| A futtatandó felhasználói folyamat. Adja meg a Azure AD B2C bérlőben létrehozott felhasználói folyamat nevét. Például: `b2c_1_sign_in` , `b2c_1_sign_up` , vagy `b2c_1_edit_profile` . |
@@ -173,7 +173,7 @@ politika| Kötelező| A futtatandó felhasználói folyamat. Adja meg a Azure AD
 | redirect_uri |Ajánlott |Az alkalmazás átirányítási URI-ja, ahol az alkalmazás elküldhet és fogadhat hitelesítési válaszokat. Pontosan egyeznie kell a portálon regisztrált átirányítási URI-k egyikével, azzal a különbséggel, hogy az URL-kódolású. |
 | scope |Kötelező |A hatókörök szóközzel tagolt listája.  A jogkivonatok beolvasásához adja meg a kívánt erőforráshoz szükséges összes hatókört. |
 | response_mode |Ajánlott |Meghatározza az eredményül kapott jogkivonat az alkalmazásba való visszaküldéséhez használt módszert. Implicit folyamat esetén használja a következőt: `fragment` . Két másik mód is megadható, `query` és `form_post` nem használható az implicit folyamat során. |
-| state |Ajánlott |A jogkivonat-válaszban visszaadott kérelemben szereplő érték.  A használni kívánt tartalom karakterlánca lehet.  A rendszer általában véletlenszerűen generált, egyedi értéket használ, hogy megakadályozza a helyek közötti kérelmek hamisítás elleni támadásait.  Az állapot az alkalmazásban a felhasználó állapotára vonatkozó információk kódolására is használatos, mielőtt a hitelesítési kérelem bekövetkezett volna. Például a lap vagy a felhasználó megtekinthető. |
+| állapot |Ajánlott |A jogkivonat-válaszban visszaadott kérelemben szereplő érték.  A használni kívánt tartalom karakterlánca lehet.  A rendszer általában véletlenszerűen generált, egyedi értéket használ, hogy megakadályozza a helyek közötti kérelmek hamisítás elleni támadásait.  Az állapot az alkalmazásban a felhasználó állapotára vonatkozó információk kódolására is használatos, mielőtt a hitelesítési kérelem bekövetkezett volna. Például a lap vagy a felhasználó megtekinthető. |
 | egyszeri |Kötelező |Az alkalmazás által generált kérelemben szereplő érték, amely az eredményül kapott azonosító jogkivonat jogcímként szerepel.  Az alkalmazás ezután ellenőrizheti ezt az értéket a jogkivonat-Visszajátszási támadások enyhítése érdekében. Az érték általában egy véletlenszerű, egyedi karakterlánc, amely azonosítja a kérelem forrását. |
 | gyors |Kötelező |Ha egy rejtett iframe-ben szeretné frissíteni és lekérni a jogkivonatokat, a használatával `prompt=none` Győződjön meg arról, hogy az IFRAME nem ragadt meg a bejelentkezési oldalon, és azonnal visszaadja. |
 | login_hint |Kötelező |A rejtett iframe-ben lévő tokenek frissítéséhez és lekéréséhez adja meg a felhasználó felhasználónevét, hogy megkülönböztesse az adott időpontban a felhasználó által esetlegesen használt munkameneteket. A felhasználónevet kinyerheti egy korábbi bejelentkezésből a `preferred_username` jogcím használatával (a hatókör a `profile` jogcím fogadásához szükséges `preferred_username` ). |
@@ -197,7 +197,7 @@ access_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik5HVEZ2ZEstZnl0aEV1Q..
 | --- | --- |
 | access_token |Az alkalmazás által kért jogkivonat. |
 | token_type |A jogkivonat típusa mindig a tulajdonos lesz. |
-| state |Ha egy `state` paraméter szerepel a kérelemben, akkor a válaszban ugyanazt az értéket kell megjelennie. Az alkalmazásnak ellenőriznie kell, hogy a `state` kérelemben és a válaszban szereplő értékek azonosak-e. |
+| állapot |Ha egy `state` paraméter szerepel a kérelemben, akkor a válaszban ugyanazt az értéket kell megjelennie. Az alkalmazásnak ellenőriznie kell, hogy a `state` kérelemben és a válaszban szereplő értékek azonosak-e. |
 | expires_in |A hozzáférési jogkivonat érvényességi ideje (másodpercben). |
 | scope |Azok a hatókörök, amelyekre érvényes a hozzáférési jogkivonat. |
 
@@ -229,12 +229,12 @@ Egyszerűen átirányíthatja a felhasználót az `end_session_endpoint` [azonos
 GET https://{tenant}.b2clogin.com/{tenant}.onmicrosoft.com/{policy}/oauth2/v2.0/logout?post_logout_redirect_uri=https%3A%2F%2Faadb2cplayground.azurewebsites.net%2F
 ```
 
-| Paraméter | Kötelező | Description |
+| Paraméter | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| Bérlő | Yes | A Azure AD B2C bérlő neve |
-| politika | Yes | Az alkalmazásból a felhasználó aláírásához használni kívánt felhasználói folyamat. |
-| post_logout_redirect_uri | No | Az URL-cím, amelyet a felhasználónak át kell irányítani a sikeres kijelentkezés után. Ha nem tartalmazza, a Azure AD B2C általános üzenetet jelenít meg a felhasználó számára. |
-| state | No | Ha egy `state` paraméter szerepel a kérelemben, akkor a válaszban ugyanazt az értéket kell megjelennie. Az alkalmazásnak ellenőriznie kell, hogy a `state` kérelemben és a válaszban szereplő értékek azonosak-e. |
+| Bérlő | Igen | A Azure AD B2C bérlő neve |
+| politika | Igen | Az alkalmazásból a felhasználó aláírásához használni kívánt felhasználói folyamat. |
+| post_logout_redirect_uri | Nem | Az URL-cím, amelyet a felhasználónak át kell irányítani a sikeres kijelentkezés után. Ha nem tartalmazza, a Azure AD B2C általános üzenetet jelenít meg a felhasználó számára. |
+| állapot | Nem | Ha egy `state` paraméter szerepel a kérelemben, akkor a válaszban ugyanazt az értéket kell megjelennie. Az alkalmazásnak ellenőriznie kell, hogy a `state` kérelemben és a válaszban szereplő értékek azonosak-e. |
 
 
 > [!NOTE]

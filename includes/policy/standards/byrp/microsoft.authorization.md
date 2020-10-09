@@ -6,10 +6,10 @@ ms.date: 10/07/2020
 ms.author: dacoulte
 ms.custom: generated
 ms.openlocfilehash: ba20a64c6eca4f98cd871f50078512d79952b75f
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91819850"
 ---
 ## <a name="azure-security-benchmark"></a>Azure-biztonsági teljesítményteszt
@@ -50,5 +50,5 @@ További információ erről a megfelelőségi szabványról: [NIST SP 800-53 R4
 
 |Tartomány |Vezérlő azonosítója |Vezérlő címe |Szabályzat<br /><sub>(Azure Portal)</sub> |Házirend verziója<br /><sub>GitHub</sub>  |
 |---|---|---|---|---|
-|Hozzáférés-vezérlés |AC-2 (7) |Fiókkezelés \| szerepköralapú sémái |[Egyéni RBAC-szabályok használatának naplózása](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa451c1ef-c6ca-483d-87ed-f49761e3ffb5) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/General/Subscription_AuditCustomRBACRoles_Audit.json) |
+|Hozzáférés-vezérlés |AC-2 (7) |Fiókkezelés \| Role-Based sémák |[Egyéni RBAC-szabályok használatának naplózása](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Fa451c1ef-c6ca-483d-87ed-f49761e3ffb5) |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/General/Subscription_AuditCustomRBACRoles_Audit.json) |
 

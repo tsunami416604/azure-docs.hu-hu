@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: vinigam
 ms.openlocfilehash: ccfbb92c27e4508595f19c2ea6900730cde609b9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74666375"
 ---
 # <a name="schema-and-data-aggregation-in-traffic-analytics"></a>Sémák és adatösszesítések Traffic Analytics
@@ -176,5 +176,5 @@ Alább láthatók a séma mezői és azok
 1. Ismeretlen – a folyamatokban lévő IP-címek egyikét nem lehet leképezni az Azure-beli ügyfél-topológiával, valamint a helyszínen (hely).
 1. Egyes mezők neve a következővel van hozzáfűzve: \_ s vagy \_ d. Ezek nem jelentik a forrás és a cél jelölését, hanem az adattípusokat, illetve a decimális karakterláncot.
 
-### <a name="next-steps"></a>Következő lépések
+### <a name="next-steps"></a>További lépések
 A gyakori kérdésekre adott válaszokért lásd: [Traffic Analytics – gyakori](traffic-analytics-faq.md) kérdések a funkciók részleteiről: [Traffic Analytics – dokumentáció](traffic-analytics.md)

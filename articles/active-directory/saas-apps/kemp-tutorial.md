@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 07/28/2020
 ms.author: jeedes
 ms.openlocfilehash: 68869d464df01d3cc89493c64d66511b4a6f369d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91300006"
 ---
 # <a name="tutorial-azure-active-directory-sso-integration-with-kemp-loadmaster-azure-ad-integration"></a>Oktatóanyag: Azure Active Directory SSO-integráció a Kemp LoadMaster Azure AD-integrációval
@@ -113,7 +113,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás** lehetőségre.
+   1. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -336,7 +336,7 @@ Nyissa meg a Kemp LoadMaster Azure AD-integrációs webkonzolját > Virtual Serv
 
 a. Navigáljon a kiszolgálóoldali egyszeri bejelentkezési konfigurációkhoz.
 
-b. Írja be a nevet az új kiszolgálóoldali konfiguráció hozzáadása területen, majd kattintson a Hozzáadás gombra.
+b. Írja be a nevet az új Server-Side konfiguráció hozzáadása területen, majd kattintson a Hozzáadás gombra.
 
 c. Válassza a Kerberos által korlátozott delegálás lehetőséget a hitelesítési protokollban.
 
@@ -368,7 +368,7 @@ b. Kattintson az ESP-beállítások elemre.
     
 c. A kiszolgálói hitelesítési mód területen válassza a KCD lehetőséget.
         
-d. A kiszolgálóoldali konfiguráció területen válassza ki a korábban létrehozott kiszolgálóoldali profilt.
+d. A Server-Side konfigurálása területen válassza ki a korábban létrehozott kiszolgálóoldali profilt.
 
 ### <a name="create-kemp-loadmaster-azure-ad-integration-test-user"></a>Az Azure AD integrációs teszt felhasználójának létrehozása a Kemp LoadMaster
 

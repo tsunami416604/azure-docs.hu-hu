@@ -6,13 +6,13 @@ ms.date: 10/07/2020
 ms.author: dacoulte
 ms.custom: generated
 ms.openlocfilehash: ad4c93967b49d5c9290968d5f9d3da7cde1e87ce
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91820670"
 ---
-|Name (Név)<br /><sub>(Azure Portal)</sub> |Leírás |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
+|Név<br /><sub>(Azure Portal)</sub> |Leírás |Hatás (ok) |Verzió<br /><sub>GitHub</sub> |
 |---|---|---|---|
 |[Egyéni IPsec/IKE-szabályzatot kell alkalmazni az összes Azure Virtual Network Gateway-kapcsolatra](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2F50b83b09-03da-41c1-b656-c293c914862b) |Ez a szabályzat biztosítja, hogy az összes Azure Virtual Network Gateway-kapcsolat egyéni Internet Protocol biztonsági (IPSec)/internetkapcsolat (IKE) házirendet használjon. Támogatott algoritmusok és fő erősségek – [https://aka.ms/AA62kb0](https://aka.ms/AA62kb0) |Naplózás, letiltva |[1.0.0](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/VPNGateways_CustomIpSecPolicies_Audit.json) |
 |[Az összes internetes forgalmat az üzembe helyezett Azure Firewall keresztül kell átirányítani](https://portal.azure.com/#blade/Microsoft_Azure_Policy/PolicyDetailBlade/definitionId/%2Fproviders%2FMicrosoft.Authorization%2FpolicyDefinitions%2Ffc5e4038-4584-4632-8c85-c0448d374b2c) |Azure Security Center azonosította, hogy egyes alhálózatok nem védik a következő generációs tűzfallal. Az alhálózatok elleni védelem a lehetséges fenyegetésekkel szemben, ha korlátozza a hozzáférést Azure Firewall vagy egy támogatott következő generációs tűzfallal |AuditIfNotExists, letiltva |[3.0.0 – előzetes verzió](https://github.com/Azure/azure-policy/blob/master/built-in-policies/policyDefinitions/Network/ASC_All_Internet_traffic_should_be_routed_via_Azure_Firewall.json) |

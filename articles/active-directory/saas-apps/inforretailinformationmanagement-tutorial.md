@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: jeedes
 ms.openlocfilehash: 1a98bec006a1bbb755a0c310b8e0409302c45198
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91819186"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-infor-retail--information-management"></a>Oktatóanyag: Azure Active Directory integráció az infor retailtel – Information Management
@@ -73,7 +73,7 @@ Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a kapcs
 Az Azure AD egyszeri bejelentkezés az infor Retail – Information Management szolgáltatással való konfigurálásához és teszteléséhez a következő építőelemeket kell elvégeznie:
 
 1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. Az **[infor kiskereskedelmi – Information Management egyszeri bejelentkezés konfigurálása](#configure-infor-retail--information-management-single-sign-on)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+2. Az **[infor Retails – Information Management egyszeri bejelentkezés konfigurálása](#configure-infor-retail--information-management-single-sign-on)** – az egyes Sign-On beállítások konfigurálása az alkalmazás oldalán.
 3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
 4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
 5. **[Infor Retail-Information Management-teszt felhasználó létrehozása](#create-infor-retail--information-management-test-user)** – hogy a Britta Simon-t az infor Retail – Information Management szolgáltatásban, amely a felhasználó Azure ad-képviseletéhez kapcsolódik.
@@ -93,7 +93,7 @@ Az Azure AD egyszeri bejelentkezés az infor retailtel – Information Managemen
 
     ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
+3. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
@@ -119,7 +119,7 @@ Az Azure AD egyszeri bejelentkezés az infor retailtel – Information Managemen
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és a bejelentkezési URL-címmel. Vegye fel a kapcsolatot az [infor Retail – Information Management-ügyfél támogatási csapatával](mailto:innovate@infor.com) , és szerezze be ezeket az értékeket. Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-6. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
+6. Az **egyszeres Sign-On beállítása SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozása](common/metadataxml.png)
 
@@ -133,7 +133,7 @@ Az Azure AD egyszeri bejelentkezés az infor retailtel – Information Managemen
 
     c. Kijelentkezési URL-cím
 
-### <a name="configure-infor-retail--information-management-single-sign-on"></a>Az infor-kereskedelem konfigurálása – Information Management egyszeri bejelentkezés
+### <a name="configure-infor-retail--information-management-single-sign-on"></a>Az infor-kereskedelem konfigurálása – egyetlen Sign-On
 
 Ha egyszeri bejelentkezést szeretne konfigurálni az **infor Retail – Information Management** oldalon, el kell küldenie a letöltött **METAADATOKat tartalmazó XML** -fájlt és a megfelelő másolt url-címeket a Azure Portalról az [infor retails – Information Management támogatási csapatához](mailto:innovate@infor.com). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
 

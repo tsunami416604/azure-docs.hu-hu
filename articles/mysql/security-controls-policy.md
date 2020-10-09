@@ -8,10 +8,10 @@ ms.author: andrela
 ms.service: mysql
 ms.custom: subject-policy-compliancecontrols
 ms.openlocfilehash: 39ed26bdbc18b5e6fb0b9f6f1158e83c86194ac1
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91816252"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-database-for-mysql"></a>Azure Policy szabályozási megfelelőségi szabályozása Azure Database for MySQL
@@ -22,7 +22,7 @@ A [Azure Policy szabályozási megfelelősége](../governance/policy/concepts/re
 
 [!INCLUDE [azure-policy-compliancecontrols-mysql](../../includes/policy/standards/byrp/microsoft.dbformysql.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ a [Azure Policy szabályozási megfelelőségről](../governance/policy/concepts/regulatory-compliance.md).
 - A beépített elemek megtekintése az [Azure Policy GitHub-adattárában](https://github.com/Azure/azure-policy).

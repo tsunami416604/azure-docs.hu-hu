@@ -11,15 +11,15 @@ ms.date: 11/04/2019
 ms.author: martinle
 ms.reviewer: igorstan
 ms.openlocfilehash: cde6cb514b6f87315400b3c40d8b86bcb7ff0adb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85210966"
 ---
 # <a name="azure-synapse-analytics-formerly-sql-dw-architecture"></a>Azure szinapszis Analytics (korábban SQL DW) architektúrája
 
-Az Azure Synapse egy korlátok nélküli elemzőszolgáltatás, amely egyesíti a vállalati adattárházakat és a Big Data-elemzéseket. Lehetővé teszi, hogy saját tetszőleges módon kérje le az adatokat, kiszolgáló nélküli igény szerinti vagy kiosztott erőforrásokkal, nagy mennyiségben. Az Azure szinapszis az azonnali BI-és gépi tanulási igényekhez kapcsolódóan egységes felhasználói élményt nyújt az adatgyűjtéshez, előkészítéséhez, kezeléséhez és kiszolgálásához.
+Az Azure Synapse egy korlátok nélküli elemzőszolgáltatás, amely egyesíti a vállalati adattárházakat és a Big Data-elemzéseket. Lehetővé teszi, hogy saját tetszőleges módon kérje le az adatokat, kiszolgáló nélküli igény szerinti vagy kiosztott erőforrásokkal, nagy mennyiségben. Az Azure Synapse egységes felületen egyesíti ezt a két területet az adatok betöltéséhez, előkészítéséhez, kezeléséhez és azonnali szolgáltatásához az üzleti intelligencia és gépi tanulási igények szerint.
 
  Az Azure szinapszis négy összetevőből áll:
 
@@ -48,7 +48,7 @@ A leválasztott tárolással és számítással a szinapszis SQL-készlet haszn�
 - A tárolási igényektől függetlenül a számítási kapacitás egymástól függetlenül méretezhető.
 - Az adatok áthelyezése nélkül növelheti vagy csökkentheti a számítási teljesítményt egy SQL-készleten (adatraktáron) belül.
 - Szüneteltetheti a számítási kapacitást az adatok megőrzésével, hogy csak a tárterületért kelljen fizetnie.
-- A működési időn belül folytatni tudja a számítási kapacitást.
+- Működési időben újra aktiválhatja a számítási kapacitást.
 
 ### <a name="azure-storage"></a>Azure Storage
 
@@ -66,7 +66,7 @@ A vezérlő csomópont az architektúra agya. Ez az az előtérbeli rendszer, am
 
 A számítási csomópontok biztosítják a számítási teljesítményt. A disztribúciók a számítási csomópontokat dolgozzák fel feldolgozásra. A további számítási erőforrásokért a disztribúciók újraképezhetők a rendelkezésre álló számítási csomópontokra. A számítási csomópontok száma 1 és 60 közötti tartományba esik, és a szinapszis SQL szolgáltatási szintje határozza meg.
 
-Minden számítási csomóponthoz tartozik egy csomópont-azonosító, amely a rendszernézetekben látható. A számítási csomópont AZONOSÍTÓját úgy tekintheti meg, hogy megkeresi a rendszernézetek node_id oszlopát, amelynek neve a sys. pdw_nodes kezdetű. A rendszernézetek listáját a következő témakörben tekintheti meg: [MPP rendszernézetek](/sql/relational-databases/system-catalog-views/sql-data-warehouse-and-parallel-data-warehouse-catalog-views?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
+Minden számítási csomóponthoz tartozik egy csomópont-azonosító, amely a rendszernézetekben látható. A számítási csomópont AZONOSÍTÓját úgy tekintheti meg, hogy megkeresi a node_id oszlopot a rendszernézetekben, amelyek nevei a sys.pdw_nodeskal kezdődnek. A rendszernézetek listáját a következő témakörben tekintheti meg: [MPP rendszernézetek](/sql/relational-databases/system-catalog-views/sql-data-warehouse-and-parallel-data-warehouse-catalog-views?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest).
 
 ### <a name="data-movement-service"></a>Adatáthelyezési szolgáltatás
 
@@ -74,7 +74,7 @@ Az adatátviteli szolgáltatás (DMS) az adatátviteli technológia, amely koord
 
 ## <a name="distributions"></a>Disztribúciók
 
-A elosztás a tárolás és az elosztott adatokon futtatott párhuzamos lekérdezések feldolgozásának alapegysége. Ha a szinapszis SQL egy lekérdezést futtat, a munka 60 kisebb, párhuzamosan futó lekérdezésekre oszlik.
+Az elosztás a tárolás és az elosztott adatokon futtatott párhuzamos lekérdezések feldolgozásának alapegysége. Ha a szinapszis SQL egy lekérdezést futtat, a munka 60 kisebb, párhuzamosan futó lekérdezésekre oszlik.
 
 Az 60-es kisebb lekérdezések az egyik adateloszláson futnak. Minden számítási csomópont egy vagy több 60-disztribúciót kezel. A maximális számítási erőforrásokkal rendelkező SQL-készletekhez számítási csomópontok egyetlen eloszlással rendelkeznek. A minimális számítási erőforrásokkal rendelkező SQL-készletek egy számítási csomóponton lévő összes disztribúcióval rendelkeznek.  
 

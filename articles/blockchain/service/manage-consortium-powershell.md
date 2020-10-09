@@ -5,10 +5,10 @@ ms.date: 10/14/2019
 ms.topic: how-to
 ms.reviewer: zeyadr
 ms.openlocfilehash: d40e55f177bda9edb40383b6e2c61c32633cd005
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85211340"
 ---
 # <a name="manage-consortium-members-in-azure-blockchain-service-using-powershell"></a>A konzorcium tagjainak kezelése az Azure Blockchain szolgáltatásban a PowerShell használatával
@@ -77,7 +77,7 @@ A Azure Portal többi értékének megkeresése:
 
 A hálózati és az intelligens szerződési parancsmagokkal kapcsolatot létesíthet a blockchain-végpontnak a konzorciumok felügyeletével kapcsolatos intelligens szerződésekkel.
 
-### <a name="import-consortiummanagementcontracts"></a>Importálás – ConsortiumManagementContracts
+### <a name="import-consortiummanagementcontracts"></a>Import-ConsortiumManagementContracts
 
 Ezzel a parancsmaggal csatlakozhat a konzorciumi felügyelet intelligens szerződésekhez. Ezek a szerződések a tagok a konzorciumon belüli felügyeletére és betartatására szolgálnak.
 
@@ -85,8 +85,8 @@ Ezzel a parancsmaggal csatlakozhat a konzorciumi felügyelet intelligens szerző
 
 | Paraméter | Leírás | Kötelező |
 |-----------|-------------|:--------:|
-| RootContractAddress | A konzorcium-felügyeleti intelligens szerződések fő szerződési címe | Yes |
-| Web3Client | A New-Web3Connection beszerzett Web3Client objektum | Yes |
+| RootContractAddress | A konzorcium-felügyeleti intelligens szerződések fő szerződési címe | Igen |
+| Web3Client | New-Web3Connectionból beszerzett Web3Client objektum | Igen |
 
 #### <a name="example"></a>Példa
 
@@ -94,7 +94,7 @@ Ezzel a parancsmaggal csatlakozhat a konzorciumi felügyelet intelligens szerző
 Import-ConsortiumManagementContracts -RootContractAddress '<RootContract address>'  -Web3Client $Connection
 ```
 
-### <a name="import-web3account"></a>Importálás – Web3Account
+### <a name="import-web3account"></a>Import-Web3Account
 
 Ezzel a parancsmaggal hozhat létre egy objektumot, amely a távoli csomópont felügyeleti fiókjához tartozó információkat tárolja.
 
@@ -102,8 +102,8 @@ Ezzel a parancsmaggal hozhat létre egy objektumot, amely a távoli csomópont f
 
 | Paraméter | Leírás | Kötelező |
 |-----------|-------------|:--------:|
-| ManagedAccountAddress | Blockchain-tag fiókjának címe | Yes |
-| ManagedAccountPassword | Fiók címe jelszó | Yes |
+| ManagedAccountAddress | Blockchain-tag fiókjának címe | Igen |
+| ManagedAccountPassword | Fiók címe jelszó | Igen |
 
 #### <a name="example"></a>Példa
 
@@ -111,7 +111,7 @@ Ezzel a parancsmaggal hozhat létre egy objektumot, amely a távoli csomópont f
 Import-Web3Account -ManagedAccountAddress '<Member account address>'  -ManagedAccountPassword '<Member account password>'
 ```
 
-### <a name="new-web3connection"></a>Új – Web3Connection
+### <a name="new-web3connection"></a>New-Web3Connection
 
 Ezzel a parancsmaggal kapcsolatot létesíthet egy tranzakciós csomópont RPC-végpontján.
 
@@ -119,7 +119,7 @@ Ezzel a parancsmaggal kapcsolatot létesíthet egy tranzakciós csomópont RPC-v
 
 | Paraméter | Leírás | Kötelező |
 |-----------|-------------|:--------:|
-| RemoteRPCEndpoint | Blockchain-tag végpontjának címe | Yes |
+| RemoteRPCEndpoint | Blockchain-tag végpontjának címe | Igen |
 
 #### <a name="example"></a>Példa
 
@@ -139,9 +139,9 @@ Ezzel a parancsmaggal szerezheti be a tagok adatait, vagy listázhatja a konzorc
 
 | Paraméter | Leírás | Kötelező |
 |-----------|-------------|:--------:|
-| Name | Annak a Blockchain-szolgáltatásnak a neve, amelyről adatokat szeretne lekérdezni. Név megadásakor a rendszer a tag adatait adja vissza. Egy név kihagyása esetén a a konzorcium összes tagjának listáját adja vissza. | No |
-| Tagok | Import-ConsortiumManagementContracts által beszerzett tagok objektum | Yes |
-| Web3Client | A New-Web3Connection beszerzett Web3Client objektum | Yes |
+| Név | Annak a Blockchain-szolgáltatásnak a neve, amelyről adatokat szeretne lekérdezni. Név megadásakor a rendszer a tag adatait adja vissza. Egy név kihagyása esetén a a konzorcium összes tagjának listáját adja vissza. | Nem |
+| Tagok | Import-ConsortiumManagementContractsból beszerzett tagok objektum | Igen |
+| Web3Client | New-Web3Connectionból beszerzett Web3Client objektum | Igen |
 
 #### <a name="example"></a>Példa
 
@@ -170,10 +170,10 @@ Ezzel a parancsmaggal eltávolíthat egy blockchain tagot.
 
 | Paraméter | Leírás | Kötelező |
 |-----------|-------------|:--------:|
-| Name | Eltávolítandó tag neve | Yes |
-| Tagok | Import-ConsortiumManagementContracts által beszerzett tagok objektum | Yes |
-| Web3Account | Import-Web3Account által beszerzett Web3Account objektum | Yes |
-| Web3Client | A New-Web3Connection beszerzett Web3Client objektum | Yes |
+| Név | Eltávolítandó tag neve | Igen |
+| Tagok | Import-ConsortiumManagementContractsból beszerzett tagok objektum | Igen |
+| Web3Account | Import-Web3Accountból beszerzett Web3Account objektum | Igen |
+| Web3Client | New-Web3Connectionból beszerzett Web3Client objektum | Igen |
 
 #### <a name="example"></a>Példa
 
@@ -196,12 +196,12 @@ Set-BlockchainMember -Name <String> [-DisplayName <String>] [-AccountAddress <St
 
 | Paraméter | Leírás | Kötelező |
 |-----------|-------------|:--------:|
-| Name | A blockchain-tag neve | Yes |
-| DisplayName | Új megjelenítendő név | No |
-| AccountAddress | Fiók címe | No |
-| Tagok | Import-ConsortiumManagementContracts által beszerzett tagok objektum | Yes |
-| Web3Account | Import-Web3Account által beszerzett Web3Account objektum | Yes |
-| Web3Client |  A New-Web3Connection beszerzett Web3Client objektum| Yes |
+| Név | A blockchain-tag neve | Igen |
+| DisplayName | Új megjelenítendő név | Nem |
+| AccountAddress | Fiók címe | Nem |
+| Tagok | Import-ConsortiumManagementContractsból beszerzett tagok objektum | Igen |
+| Web3Account | Import-Web3Accountból beszerzett Web3Account objektum | Igen |
+| Web3Client |  New-Web3Connectionból beszerzett Web3Client objektum| Igen |
 
 #### <a name="example"></a>Példa
 
@@ -215,7 +215,7 @@ $ContractConnection | Set-BlockchainMember -Name <Member Name> -DisplayName <Dis
 
 A konzorciumi tagok meghívójának kezelési parancsmagokkal felügyelheti a konzorcium tagjainak meghívóit. Az elérhető műveletek a konzorciumi szerepkörtől függenek.
 
-### <a name="new-blockchainmemberinvitation"></a>Új – BlockchainMemberInvitation
+### <a name="new-blockchainmemberinvitation"></a>New-BlockchainMemberInvitation
 
 Ezzel a parancsmaggal meghívhatja az új tagokat a konzorciumba.
 
@@ -226,11 +226,11 @@ New-BlockchainMemberInvitation -SubscriptionId <String> -Role <String> -Members 
 
 | Paraméter | Leírás | Kötelező |
 |-----------|-------------|:--------:|
-| SubscriptionId | A meghívni kívánt tag Azure-előfizetési azonosítója | Yes |
-| Szerepkör | A konzorcium szerepköre. Az értékek lehetnek rendszergazda vagy felhasználó. A rendszergazda a konzorcium rendszergazdai szerepköre. A felhasználó a konzorciumi tag szerepkör. | Yes |
-| Tagok | Import-ConsortiumManagementContracts által beszerzett tagok objektum | Yes |
-| Web3Account | Import-Web3Account által beszerzett Web3Account objektum | Yes |
-| Web3Client | A New-Web3Connection beszerzett Web3Client objektum | Yes |
+| SubscriptionId | A meghívni kívánt tag Azure-előfizetési azonosítója | Igen |
+| Szerepkör | A konzorcium szerepköre. Az értékek lehetnek rendszergazda vagy felhasználó. A rendszergazda a konzorcium rendszergazdai szerepköre. A felhasználó a konzorciumi tag szerepkör. | Igen |
+| Tagok | Import-ConsortiumManagementContractsból beszerzett tagok objektum | Igen |
+| Web3Account | Import-Web3Accountból beszerzett Web3Account objektum | Igen |
+| Web3Client | New-Web3Connectionból beszerzett Web3Client objektum | Igen |
 
 #### <a name="example"></a>Példa
 
@@ -248,9 +248,9 @@ Ezzel a parancsmaggal lekérdezheti vagy listázhatja a konzorciumi tag Meghív�
 
 | Paraméter | Leírás | Kötelező |
 |-----------|-------------|:--------:|
-| SubscriptionId | A meghívni kívánt tag Azure-előfizetés azonosítója. Ha az előfizetés-azonosító van megadva, az előfizetés-azonosító meghívásának részleteit adja vissza. Ha az előfizetés-azonosító ki van hagyva, az összes tag meghívásának listáját adja vissza. | No |
-| Tagok | Import-ConsortiumManagementContracts által beszerzett tagok objektum | Yes |
-| Web3Client | A New-Web3Connection beszerzett Web3Client objektum | Yes |
+| SubscriptionId | A meghívni kívánt tag Azure-előfizetés azonosítója. Ha az előfizetés-azonosító van megadva, az előfizetés-azonosító meghívásának részleteit adja vissza. Ha az előfizetés-azonosító ki van hagyva, az összes tag meghívásának listáját adja vissza. | Nem |
+| Tagok | Import-ConsortiumManagementContractsból beszerzett tagok objektum | Igen |
+| Web3Client | New-Web3Connectionból beszerzett Web3Client objektum | Igen |
 
 #### <a name="example"></a>Példa
 
@@ -279,10 +279,10 @@ Remove-BlockchainMemberInvitation -SubscriptionId <String> -Members <IContract> 
 
 | Paraméter | Leírás | Kötelező |
 |-----------|-------------|:--------:|
-| SubscriptionId | A visszavonni kívánt tag Azure-előfizetési azonosítója | Yes |
-| Tagok | Import-ConsortiumManagementContracts által beszerzett tagok objektum | Yes |
-| Web3Account | Import-Web3Account által beszerzett Web3Account objektum | Yes |
-| Web3Client | A New-Web3Connection beszerzett Web3Client objektum | Yes |
+| SubscriptionId | A visszavonni kívánt tag Azure-előfizetési azonosítója | Igen |
+| Tagok | Import-ConsortiumManagementContractsból beszerzett tagok objektum | Igen |
+| Web3Account | Import-Web3Accountból beszerzett Web3Account objektum | Igen |
+| Web3Client | New-Web3Connectionból beszerzett Web3Client objektum | Igen |
 
 #### <a name="example"></a>Példa
 
@@ -303,11 +303,11 @@ Set-BlockchainMemberInvitation -SubscriptionId <String> -Role <String> -Members 
 
 | Paraméter | Leírás | Kötelező |
 |-----------|-------------|:--------:|
-| SubscriptionId | A meghívni kívánt tag Azure-előfizetési azonosítója | Yes |
-| Szerepkör | Új konzorciumi szerepkör a meghívóhoz. Az értékek lehetnek **felhasználó** vagy **rendszergazda**. | Yes |
-| Tagok |  Import-ConsortiumManagementContracts által beszerzett tagok objektum | Yes |
-| Web3Account | Import-Web3Account által beszerzett Web3Account objektum | Yes |
-| Web3Client | A New-Web3Connection beszerzett Web3Client objektum | Yes |
+| SubscriptionId | A meghívni kívánt tag Azure-előfizetési azonosítója | Igen |
+| Szerepkör | Új konzorciumi szerepkör a meghívóhoz. Az értékek lehetnek **felhasználó** vagy **rendszergazda**. | Igen |
+| Tagok |  Import-ConsortiumManagementContractsból beszerzett tagok objektum | Igen |
+| Web3Account | Import-Web3Accountból beszerzett Web3Account objektum | Igen |
+| Web3Client | New-Web3Connectionból beszerzett Web3Client objektum | Igen |
 
 #### <a name="example"></a>Példa
 

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 09/10/2019
 ms.author: jeedes
 ms.openlocfilehash: d39f46469d80b3e2d7bf361bd349a39afb16bd2d
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91826182"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-hightail"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a hightail
@@ -93,7 +93,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. A fentiek mellett a hightail alkalmazás néhány további attribútumot vár az SAML-válaszban, amelyek alább láthatók. Ezek az attribútumok előre fel vannak töltve, de a követelményeinek megfelelően áttekintheti őket.
 
-    | Name (Név) | Forrás attribútum|
+    | Név | Forrás attribútum|
     | -------- |-------- |
     | FirstName | User. givenName |
     | LastName | felhasználó. vezetéknév |

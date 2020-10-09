@@ -12,10 +12,10 @@ ms.reviewer: sgilley
 ms.date: 03/05/2020
 ms.custom: seodec18
 ms.openlocfilehash: 10cf06a829b991bfe15d7b24c4fc61d0fe22eaaf
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88653715"
 ---
 # <a name="explore-azure-machine-learning-with-jupyter-notebooks"></a>A Azure Machine Learning megismerése Jupyter notebookokkal
@@ -49,7 +49,7 @@ Ezek az utasítások a gyors üzembe helyezési és oktatóanyag-jegyzetfüzetek
 <a name="dsvm"></a>
 ## <a name="get-samples-on-dsvm"></a>Minták beolvasása a DSVM
 
-A Data Science Virtual Machine (DSVM) egy testreszabott virtuálisgép-rendszerkép, amely kifejezetten az adatelemzéshez készült. Ha [létrehoz egy DSVM](how-to-configure-environment.md#dsvm), az SDK és a notebook-kiszolgáló telepítve van és konfigurálva van. Azonban továbbra is létre kell hoznia egy munkaterületet, és el kell végeznie a minta tárház klónozását.
+A Data Science Virtual Machine (DSVM) egy testreszabott virtuálisgép-lemezkép, amely kifejezetten adatelemzéshez készült. Ha [létrehoz egy DSVM](how-to-configure-environment.md#dsvm), az SDK és a notebook-kiszolgáló telepítve van és konfigurálva van. Azonban továbbra is létre kell hoznia egy munkaterületet, és el kell végeznie a minta tárház klónozását.
 
 [!INCLUDE [aml-dsvm-server](../../includes/aml-dsvm-server.md)]
 

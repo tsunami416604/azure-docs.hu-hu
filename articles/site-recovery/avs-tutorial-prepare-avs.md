@@ -9,10 +9,10 @@ ms.date: 09/29/2020
 ms.author: harshacs
 ms.custom: MVC
 ms.openlocfilehash: 9b04faf6797d04404dc0c5d617af2fd62a68c49a
-ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91814579"
 ---
 # <a name="prepare-azure-vmware-solution-servers-for-disaster-recovery-to-azure"></a>Azure VMware-megoldási kiszolgálók előkészítése az Azure-ba való vész-helyreállításhoz
@@ -114,7 +114,7 @@ Ha azt tervezi, hogy visszaadja az Azure VMware-megoldás felhőjét, a feladat-
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 > [!div class="nextstepaction"]
 > [Vész-helyreállítás beállítása](avs-tutorial-replication.md)
 - Ha több virtuális gépet replikál, [hajtsa végre a kapacitás megtervezését](site-recovery-deployment-planner.md).

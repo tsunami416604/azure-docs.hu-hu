@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.date: 2/5/2020
 ms.author: ramamill
 ms.openlocfilehash: f24d321e882024d324435498adf11694037547f7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77252227"
 ---
 # <a name="automate-mobility-service-installation"></a>A mobilitási szolgáltatás telepítésének automatizálása
@@ -77,7 +77,7 @@ A következő táblázat összefoglalja a mobilitási szolgáltatás üzembe hel
 
 1. Másolja a telepítési fájlokat a hálózati megosztásba:
 
-   - Windows esetén másolja _Microsoft-ASR_UA_version_Windows_GA_date_Release.exet_ a _MobSvcWindows_.
+   - Windows esetén másolja _Microsoft-ASR_UA_version_Windows_GA_date_Release.exet _ a _MobSvcWindows_.
    - Linux esetén másolja a következő fájlokat a _MobSvcLinux_:
      - _Microsoft-ASR_UARHEL6 -64release. tar. gz_
      - _Microsoft-ASR_UARHEL7 -64release. tar. gz_
@@ -354,7 +354,7 @@ cd /tmp
 
     **Paraméter** | **Windows-érték** | **Linux-érték**
     --- | --- | ---
-    **Name (Név)** | Microsoft Azure mobilitási szolgáltatás telepítése (Windows) | Telepítse a Microsoft Azure mobilitási szolgáltatást (Linux).
+    **Név** | Microsoft Azure mobilitási szolgáltatás telepítése (Windows) | Telepítse a Microsoft Azure mobilitási szolgáltatást (Linux).
     **Parancssor** | install.bat | ./install_linux. sh
     **A program futtatható** | Annak megadása, hogy van-e bejelentkezett felhasználó | Annak megadása, hogy van-e bejelentkezett felhasználó
     **Egyéb paraméterek** | Alapértelmezett beállítás használata | Alapértelmezett beállítás használata
@@ -364,7 +364,7 @@ cd /tmp
 1. A **standard program követelményeinek megadása**területen hajtsa végre a következő feladatokat:
 
    - Windows rendszerű gépek esetén válassza **ezt a programot csak a megadott platformokon lehet futtatni**. Ezután válassza ki a [támogatott Windows operációs rendszereket](vmware-physical-azure-support-matrix.md#replicated-machines) , és kattintson a **Tovább gombra**.
-   - Linux rendszerű gépek esetén válassza **a program bármely platformon futtatható**lehetőséget. Ezután válassza a **tovább**lehetőséget.
+   - Linux rendszerű gépek esetén válassza **a program bármely platformon futtatható**lehetőséget. Ezután kattintson a **Tovább** gombra.
 
 1. Fejezze be a varázsló futtatását.
 

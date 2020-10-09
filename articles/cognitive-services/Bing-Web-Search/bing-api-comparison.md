@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/12/2019
 ms.author: aahi
 ms.openlocfilehash: 82b1f13562a49284059c25bcbd39a33daf949dcc
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74775540"
 ---
 # <a name="what-are-the-bing-search-apis"></a>Mi a Bing Search API-k?
@@ -50,7 +50,7 @@ A következő Bing Search API-k segítségével javíthatja a keresési élmény
 
 | API | Leírás |
 | -- | -- |
-| [Bing – Automatikus kiegészítés](../Bing-Autosuggest/get-suggested-search-terms.md) | A javasolt keresések valós idejű visszaadásával javíthatja az alkalmazás keresési élményét a Bing Autosuggest API.  |
+| [Bing Autosuggest](../Bing-Autosuggest/get-suggested-search-terms.md) | A javasolt keresések valós idejű visszaadásával javíthatja az alkalmazás keresési élményét a Bing Autosuggest API.  |
 | [Bing-statisztika](bing-web-stats.md) | A Bing Statistics az alkalmazás által használt Bing Search API-k elemzését biztosítja. A rendelkezésre álló elemzések közé tartozik például a hívási kötet, a leggyakoribb lekérdezési karakterláncok és a földrajzi eloszlás. |
 
 ## <a name="next-steps"></a>További lépések

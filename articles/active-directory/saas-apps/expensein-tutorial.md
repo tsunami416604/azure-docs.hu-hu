@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 07/17/2020
 ms.author: jeedes
 ms.openlocfilehash: ccdfddd3ea76eddea2ab672fe07a092c9b1f1b62
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91817063"
 ---
 # <a name="tutorial-integrate-expensein-with-azure-active-directory"></a>Oktatóanyag: a ExpenseIn és a Azure Active Directory integrálása
@@ -72,7 +72,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. A [Azure Portal](https://portal.azure.com/) **ExpenseIn** alkalmazás-integráció lapján keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
 1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
-1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
+1. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
 
    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
@@ -82,7 +82,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     A **bejelentkezési URL** szövegmezőbe írja be a következő URL-címet:  `https://app.expensein.com/saml`
 
-1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a Másolás gombra az **alkalmazás-összevonási metaadatok URL-címének** másolásához, majd kattintson a **Letöltés** gombra a **tanúsítvány** letöltéséhez, és mentse a számítógépre.
+1. Az **egyszeres Sign-On beállítása az SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a Másolás gombra az **alkalmazás-összevonási metaadatok URL-címének** másolásához, majd kattintson a **Letöltés** gombra a **tanúsítvány** letöltéséhez, és mentse azt a számítógépre.
 
    ![A tanúsítvány letöltési hivatkozása](./media/expensein-tutorial/copy-metdataurl-certificate.png)
 
@@ -135,7 +135,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 1. Kattintson a **rendszergazda** elemre az oldal tetején, majd navigáljon az **egyszeri bejelentkezéshez** , és kattintson a **szolgáltató hozzáadása**parancsra.
 
-     ![Képernyőfelvétel: a "rendszergazda" lap és az "egyszeri bejelentkezési szolgáltatók" lap és a "szolgáltató hozzáadása" lehetőség van kiválasztva.](./media/expenseIn-tutorial/config01.png)
+     ![A "rendszergazda" lapot és az "egyszeres Sign-On szolgáltatók" lapot és a "szolgáltató hozzáadása" elemet megjelenítő képernyőkép.](./media/expenseIn-tutorial/config01.png)
 
 1. Az **új identitás-szolgáltató** előugró ablakában hajtsa végre a következő lépéseket:
 

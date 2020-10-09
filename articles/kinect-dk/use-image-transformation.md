@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 06/26/2019
 keywords: Kinect, Azure, szenzor, SDK, koordináta rendszer, kalibrálás, projekt, nem projekt, átalakítás, RGB-d, pont felhő
 ms.openlocfilehash: df7f2aa13c0e9c0241494e96e720b30f3ff1d8a5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85277266"
 ---
 # <a name="use-azure-kinect-sensor-sdk-image-transformations"></a>Az Azure Kinect Sensor SDK-rendszerkép átalakításának használata
@@ -38,7 +38,7 @@ https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_ga7
 
    ![Rendszerkép átalakítása](./media/how-to-guides/image-transformation.png)
 
-#### <a name="implementation"></a>Megvalósítás
+#### <a name="implementation"></a>Implementálás
 
  Ez az átalakítási függvény sokkal összetettebb, mint a [k4a_calibration_2d_to_2d ()](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_ga3b6bf6dedbfe67468e2f895dcce68ed4.html#ga3b6bf6dedbfe67468e2f895dcce68ed4) meghívása minden képponthoz. A háromszög alakú rácsvonalat a színkamera geometriájában a mélységi kamera geometriájában adja vissza. A háromszög háló használatával elkerülhető, hogy a lyukak az átalakított mélységű ábrán legyenek generálva. A Z-Buffer biztosítja, hogy az elzáródások megfelelően legyenek kezelve. Alapértelmezés szerint a GPU-gyorsítás engedélyezve van ehhez a függvényhez.
 
@@ -52,7 +52,7 @@ https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_ga7
 
  A [k4a_transformation_depth_image_to_color_camera_custom ()](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_gac00dd00e7612a86382e3d0a130f276bb.html#gac00dd00e7612a86382e3d0a130f276bb) függvény átalakítja a mélységi térképet és egy egyéni rendszerképet a részletes kamera szemszögéből a színes kamera szempontjából. [K4a_transformation_depth_image_to_color_camera ()](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_gafacffb5f781a9c2df30d4a16241cd514.html#gafacffb5f781a9c2df30d4a16241cd514)bővítményként ez a függvény úgy lett kialakítva, hogy egy megfelelő egyéni rendszerképet hozzon létre, amelyhez az egyes képpontok megfelelnek a színkamera megfelelő képpont-koordinátáinak az átalakított mélységi képhez.
 
-#### <a name="implementation"></a>Megvalósítás
+#### <a name="implementation"></a>Implementálás
 
  Ez a transzformációs függvény ugyanúgy állítja elő az átalakított képet, ahogy [k4a_transformation_depth_image_to_color_camera ()](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_gafacffb5f781a9c2df30d4a16241cd514.html#gafacffb5f781a9c2df30d4a16241cd514). Az egyéni rendszerkép átalakításához a függvény a lineáris interpoláció vagy a legközelebbi szomszéd interpoláció használatával biztosít lehetőségeket. A lineáris interpoláció használatával új értékeket hozhat létre az átalakított egyéni rendszerképben. A legközelebbi szomszédos interpoláció használata megakadályozza, hogy az eredeti rendszerképben lévő értékek ne jelenjenek meg a kimeneti képen, de a rendszer kevésbé zökkenőmentes képet eredményez. Az egyéni rendszerképnek egy 8 vagy 16 bites csatornának kell lennie. Alapértelmezés szerint a GPU-gyorsítás engedélyezve van ehhez a függvényhez.
 
@@ -66,13 +66,13 @@ https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_ga7
 
  A [k4a_transformation_color_image_to_depth_camera ()](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_gaf3a941f07bb0185cd7a72699a648fc29.html#gaf3a941f07bb0185cd7a72699a648fc29) függvény átalakítja a színképet a színkamera nézőpontból a részletes kamera szempontjából (lásd a fenti ábrát). Az RGB-D rendszerképek előállítására is használható.
 
-#### <a name="implementation"></a>Megvalósítás
+#### <a name="implementation"></a>Implementálás
 
  A mélységi Térkép minden képpontjában a függvény a képpont mélységi értékével számítja ki a megfelelő alképpont-koordinátákat a színes képen. Ezután megkeresjük a színértéket ebben a koordinátaban a színes képen. A bilineáris interpolációt a színes képen kell elvégezni a színértéknek az alképpont pontosságnál való beszerzéséhez. Egy olyan képpont, amely nem rendelkezik hozzá tartozó mélységi olvasással, a kimeneti képen egy BGRA értékhez van rendelve `[0,0,0,0]` . Alapértelmezés szerint a GPU-gyorsítás engedélyezve van ehhez a függvényhez. Mivel ez a módszer lyukakat hoz létre az átalakított színben, és nem kezeli az elzáródásokat, javasoljuk, hogy használja a [k4a_transformation_depth_image_to_color_camera ()](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_gafacffb5f781a9c2df30d4a16241cd514.html#gafacffb5f781a9c2df30d4a16241cd514) függvényt.
 
 #### <a name="parameters"></a>Paraméterek
 
-A bemeneti paraméterek az átalakítási fogópontok, a mélységi képek és a színes képek. A mélységi és Színképek felbontásának meg kell egyeznie az átalakítási leíró létrehozásakor megadott depth_mode és color_resolutionval. A kimenet egy átalakított színes rendszerkép, amelyet a felhasználónak kell kiosztania a [k4a_image_create ()](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_ga859554581bb97a620ff8e92a893e71ef.html#ga859554581bb97a620ff8e92a893e71ef)hívásával. Az átalakított színes kép felbontásának meg kell egyeznie az átalakítási leíró létrehozásakor megadott depth_resolution. A kimeneti rendszerkép a BGRA jelölő négy 8 bites értéket tárolja minden képponthoz. Ezért a rendszerkép lépése a következő: ```width * 4 * sizeof(uint8_t)``` . Az adatsorrend képpont-összekapcsolású, azaz kék érték – képpont 0, zöld érték – képpont 0, piros érték – képpont 0, alfa érték – képpont 0, kék érték – képpont 1 stb.
+A bemeneti paraméterek az átalakítási fogópontok, a mélységi képek és a színes képek. A mélységi és Színképek felbontásának meg kell egyeznie az átalakítási leíró létrehozásakor megadott depth_mode és color_resolutionval. A kimenet egy átalakított színes rendszerkép, amelyet a felhasználónak kell kiosztania a [k4a_image_create ()](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_ga859554581bb97a620ff8e92a893e71ef.html#ga859554581bb97a620ff8e92a893e71ef)hívásával. Az átalakított színes kép felbontásának meg kell egyeznie az átalakítási leíró létrehozásakor megadott depth_resolution. A kimeneti rendszerkép a BGRA jelölő 4 8 bites értékeket tárolja minden képponthoz. Ezért a rendszerkép lépése a következő: ```width * 4 * sizeof(uint8_t)``` . Az adatsorrend képpont-összekapcsolású, azaz kék érték – képpont 0, zöld érték – képpont 0, piros érték – képpont 0, alfa érték – képpont 0, kék érték – képpont 1 stb.
 
 ### <a name="k4a_transformation_depth_image_to_point_cloud"></a>k4a_transformation_depth_image_to_point_cloud
 
@@ -80,7 +80,7 @@ A bemeneti paraméterek az átalakítási fogópontok, a mélységi képek és a
 
 A [k4a_transformation_depth_image_to_point_cloud ()](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_ga7385eb4beb9d8892e8a88cf4feb3be70.html#ga7385eb4beb9d8892e8a88cf4feb3be70) függvény egy kamera 2D mélységi térképét átalakítja egy 3D-s felhőbe az azonos kamera koordináta-rendszerében. A kamera így a mélységi vagy a színes kamera lehet.
 
-#### <a name="implementation"></a>Megvalósítás
+#### <a name="implementation"></a>Implementálás
 
  A függvény a [k4a_calibration_2d_to_2d ()](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_ga3b6bf6dedbfe67468e2f895dcce68ed4.html#ga3b6bf6dedbfe67468e2f895dcce68ed4) minden képponthoz való futtatásának egyenértékű eredményét biztosítja, de a számítási hatékonysága hatékonyabb. [K4a_transformation_create ()](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_ga853a1a5b6d521bbdf523a69e890c4f10.html#ga853a1a5b6d521bbdf523a69e890c4f10)hívásakor a rendszer előre kiszámít egy úgynevezett XY keresési táblázatot, amely az x és az y méretezési tényezőt tárolja minden képponthoz. [K4a_transformation_depth_image_to_point_cloud ()](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_ga7385eb4beb9d8892e8a88cf4feb3be70.html#ga7385eb4beb9d8892e8a88cf4feb3be70)hívásakor egy képpont 3D x-koordinátákat kapunk, ha a képpont x méretezési tényezőjét a képpont Z-koordináta értékének szorzatával kapjuk meg. A 3D Y-koordináta Analogously az y méretezési faktorral történő szorzással számítjuk ki. Az SDK [gyors pontszerű Felhőbeli példája](https://github.com/Microsoft/Azure-Kinect-Sensor-SDK/tree/develop/examples/fastpointcloud) azt mutatja be, hogyan történik az XY tábla kiszámítása. A felhasználók követhetik a példában szereplő kódot a függvény saját verziójának megvalósításához, például a GPU-folyamat felgyorsításához.
 

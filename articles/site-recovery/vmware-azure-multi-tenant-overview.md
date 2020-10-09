@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: mayg
 ms.openlocfilehash: 840049265d3b6e4d2fddd794646bfd5691aab9a1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74083991"
 ---
 # <a name="overview-of-multi-tenant-support-for-vmware-disaster-recovery-to-azure-with-csp"></a>Több-bérlős támogatás a VMware vész-helyreállításhoz az Azure-ban a CSP használatával – áttekintés
@@ -91,7 +91,7 @@ Konfigurálja a konfigurációs kiszolgálót egy olyan fiókkal, amelyhez hozz�
 
 >| Objektum | Szerepkör | Megjegyzések |
 >| --- | --- | --- |
->| vCenter | Csak olvasható | Csak a különböző objektumok kezeléséhez szükséges vCenter-hozzáférés engedélyezésére van szükség. Ezt az engedélyt akkor távolíthatja el, ha a fiókot soha nem fogja megadni a bérlőnek, vagy semmilyen felügyeleti művelethez nem használja a vCenter. |
+>| vCenter | Read-Only | Csak a különböző objektumok kezeléséhez szükséges vCenter-hozzáférés engedélyezésére van szükség. Ezt az engedélyt akkor távolíthatja el, ha a fiókot soha nem fogja megadni a bérlőnek, vagy semmilyen felügyeleti művelethez nem használja a vCenter. |
 >| Adatközpont | Azure_Site_Recovery |  |
 >| Gazdagép és gazda fürt | Azure_Site_Recovery | Gondoskodjon arról, hogy a hozzáférés az objektum szintjén legyen, így csak az elérhető gazdagépek rendelkeznek a feladatátvétel előtt és a feladat-visszavétel után. |
 >| Adattár-és adattár-fürt | Azure_Site_Recovery | Ugyanaz, mint az előző. |

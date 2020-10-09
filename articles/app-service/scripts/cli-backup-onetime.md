@@ -10,10 +10,10 @@ ms.author: msangapu
 ms.reviewer: cephalin
 ms.custom: mvc, seodec18
 ms.openlocfilehash: b0fdb3e7bbf2fa2482fbff78bdf1f143ca7656fd
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88962765"
 ---
 # <a name="back-up-an-app-using-cli"></a>Alkalmazás biztonsági mentése a parancssori felületről
@@ -47,7 +47,7 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 | [`az webapp config backup create`](/cli/azure/webapp/config/backup?view=azure-cli-latest#az-webapp-config-backup-create) | Biztonsági másolatot készít egy App Service alkalmazásról. |
 | [`az webapp config backup list`](/cli/azure/webapp/config/backup?view=azure-cli-latest#az-webapp-config-backup-list) | Lekéri egy App Service alkalmazás biztonsági másolatainak listáját. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](/cli/azure).
 

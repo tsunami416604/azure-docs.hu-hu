@@ -12,10 +12,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e771a988faca98d009b97b1e705ddac7110a255f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91266496"
 ---
 # <a name="pilot-cloud-provisioning-for-an-existing-synced-ad-forest"></a>Kísérleti felhőalapú jogosultságkiosztás meglévő, szinkronizált AD-erdő esetén 
@@ -50,8 +50,8 @@ Legalább az [Azure ad-csatlakozási](https://www.microsoft.com/download/details
 Azure AD Connect szinkronizálás szinkronizálja a helyszíni címtárban bekövetkező változásokat egy ütemező használatával. Egyéni szabályok módosításához és hozzáadásához le szeretné tiltani az ütemező szolgáltatást, hogy a szinkronizálások ne fussanak, amíg éppen dolgozik.  Ehhez a következő lépések szükségesek:
 
 1.  Azure AD Connect Sync alkalmazást futtató kiszolgálón nyissa meg a PowerShellt rendszergazdai jogosultságokkal.
-2.  Futtassa az `Stop-ADSyncSyncCycle` parancsot.  Nyomja meg az ENTER billentyűt.
-3.  Futtassa az `Set-ADSyncScheduler -SyncCycleEnabled $false` parancsot.
+2.  A `Stop-ADSyncSyncCycle` parancs futtatása.  Nyomja meg az ENTER billentyűt.
+3.  A `Set-ADSyncScheduler -SyncCycleEnabled $false` parancs futtatása.
 
 >[!NOTE] 
 >Ha Azure AD Connect szinkronizáláshoz saját egyéni ütemező alkalmazást futtat, tiltsa le az ütemező szolgáltatást. 
@@ -223,7 +223,7 @@ Miután meggyőződött róla, hogy a kísérleti szervezeti egység felhasznál
  10. A **konfigurálásra kész** képernyőn kattintson a **Konfigurálás**elemre.
  11. A befejezést követően kattintson a **Kilépés**gombra. 
 
-## <a name="next-steps"></a>Következő lépések 
+## <a name="next-steps"></a>További lépések 
 
 - [Mi az az üzembe helyezés?](what-is-provisioning.md)
 - [Mi az az Azure AD Connect felhőalapú jogosultságkiosztás?](what-is-cloud-provisioning.md)

@@ -12,17 +12,17 @@ ms.date: 03/05/2020
 ms.author: aahi
 ms.custom: devx-track-js
 ms.openlocfilehash: 58bbda6d3b02042c6e512e03e108cd69fbd7ed51
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91277325"
 ---
 # <a name="tutorial-single-page-web-app"></a>Oktatóanyag: Egyoldalas webalkalmazás
 
 A Bing Entity Search API-val *entitásokról* és *helyekről* kereshet információkat a weben. Egy adott lekérdezésben kérheti a helyeket, az entitásokat vagy mindkettőt. A helyek és entitások definícióját az alábbiakban találja.
 
-| Eredmény | Description |
+| Eredmény | Leírás |
 |-|-|
 |Entitások|Ismert személyek, helyek és dolgok, amelyeket/akiket név alapján talál meg|
 |Helyek|Éttermek, szállodák és egyéb helyi vállalkozások, amelyeket név *vagy* típus alapján talál meg (olasz éttermek)|
@@ -142,7 +142,7 @@ A `<body>` HTML-címke tartalmaz egy `onload` attribútumot, amely a lap betölt
 
 A HTML-űrlap a következő vezérlőket tartalmazza:
 
-| Vezérlés | Description |
+| Vezérlés | Leírás |
 |-|-|
 |`where`|Legördülő menü a kereséshez használt piac (hely és nyelv) kiválasztásához.|
 |`query`|Szövegmező a keresőkifejezések megadásához.|
@@ -556,7 +556,7 @@ cors-proxy-server
 
 Ne zárja be a parancsablakot, amíg használja az oktatóalkalmazást; az ablak bezárása leállítja a proxyt. A bővíthető HTTP-fejlécek szakaszában, a keresési eredmények alatt, most már az `X-MSEdge-ClientID` fejléc is megjelenik, és ellenőrizheti, hogy ugyanaz a fejléc szerepel-e minden kérésnél.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Bing Entity Search API-referencia](//docs.microsoft.com/rest/api/cognitiveservices/bing-entities-api-v7-reference)

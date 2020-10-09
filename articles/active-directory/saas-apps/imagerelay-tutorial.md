@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: jeedes
 ms.openlocfilehash: 0c32dbdafe8d2681d341cb7f2ee6f0ce45123cab
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91826394"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-image-relay"></a>Oktatóanyag: Azure Active Directory integráció a rendszerkép-továbbítóval
@@ -73,7 +73,7 @@ Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a rends
 Az Azure AD egyszeri bejelentkezés a rendszerkép-továbbítóval való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
 
 1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. A **[képtovábbító egyszeri bejelentkezésének konfigurálása](#configure-image-relay-single-sign-on)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+2. A **[rendszerkép-továbbító egyszeri bejelentkezésének konfigurálása](#configure-image-relay-single-sign-on)** – az alkalmazás oldalának egyetlen Sign-On beállításainak konfigurálása.
 3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
 4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
 5. **[Rendszerkép-továbbítási teszt felhasználó létrehozása](#create-image-relay-test-user)** – a Britta Simon-nek a felhasználó Azure ad-képviseletéhez kapcsolódó képtovábbítási partnere.
@@ -93,7 +93,7 @@ Az Azure AD egyszeri bejelentkezés a képtovábbítóval való konfigurálásá
 
     ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
+3. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
@@ -108,7 +108,7 @@ Az Azure AD egyszeri bejelentkezés a képtovábbítóval való konfigurálásá
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel és azonosítóval. Az értékek beszerzéséhez forduljon a [rendszerkép-továbbító ügyfél-támogatási csapatához](http://support.imagerelay.com/) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-4. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállítások alapján, és mentse a számítógépre.
+4. Az **egyszeres Sign-On beállítása az SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállítások alapján, és mentse azt a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozása](common/certificatebase64.png)
 
@@ -122,7 +122,7 @@ Az Azure AD egyszeri bejelentkezés a képtovábbítóval való konfigurálásá
 
     c. Kijelentkezési URL-cím
 
-### <a name="configure-image-relay-single-sign-on"></a>A rendszerkép-továbbító egyszeri bejelentkezésének konfigurálása
+### <a name="configure-image-relay-single-sign-on"></a>A rendszerkép-továbbító egyetlen Sign-On konfigurálása
 
 1. Egy másik böngészőablakban jelentkezzen be a rendszerkép-továbbító vállalati webhelyre rendszergazdaként.
 

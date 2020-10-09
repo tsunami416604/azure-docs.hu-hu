@@ -12,10 +12,10 @@ ms.author: rortloff
 ms.reviewer: jrasnick
 ms.custom: azure-synapse
 ms.openlocfilehash: a9ebee68c7abd90f5fb3345eec1ee929fc30ca20
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85212309"
 ---
 # <a name="azure-synapse-analytics-workload-group-isolation"></a>Az Azure szinapszis Analytics munkaterhelési csoport elkülönítése
@@ -50,14 +50,14 @@ A felhasználóknak kerülniük kell a 100%-os munkaterhelés-elkülönítést k
 
 ## <a name="workload-containment"></a>Munkaterhelés-tárolás
 
-A munkaterhelés-tárolás a munkaterhelés-csoport által felhasználható erőforrások mennyiségének korlátozására utal.  A munkaterhelés-tárolás úgy érhető el, hogy a CAP_PERCENTAGE_RESOURCE paramétert a MUNKATERHELÉS- [csoport létrehozása](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) szintaxisban kevesebb mint 100 értékre konfigurálja.  Vegye figyelembe azt a forgatókönyvet, hogy a felhasználóknak olvasási hozzáféréssel kell rendelkezniük a rendszerhez, hogy a mi-if elemzést alkalmi lekérdezések használatával futtassák.  Az ilyen típusú kérelmek negatív hatással lehetnek a rendszeren futó egyéb munkaterhelésekre.  A tároló konfigurálása biztosítja, hogy az erőforrások mennyisége korlátozott legyen.
+A munkaterhelés-tárolás a munkaterhelés-csoport által felhasználható erőforrások mennyiségének korlátozására utal.  A munkaterhelés-tárolás úgy érhető el, hogy a CAP_PERCENTAGE_RESOURCE paramétert a MUNKATERHELÉS- [csoport létrehozása](/sql/t-sql/statements/create-workload-group-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest)  szintaxisban kevesebb mint 100 értékre konfigurálja.  Vegye figyelembe azt a forgatókönyvet, hogy a felhasználóknak olvasási hozzáféréssel kell rendelkezniük a rendszerhez, hogy a mi-if elemzést alkalmi lekérdezések használatával futtassák.  Az ilyen típusú kérelmek negatív hatással lehetnek a rendszeren futó egyéb munkaterhelésekre.  A tároló konfigurálása biztosítja, hogy az erőforrások mennyisége korlátozott legyen.
 
 A munkaterhelés-tárolás konfigurálása implicit módon meghatározza a maximális párhuzamossági szintet.  Ha egy CAP_PERCENTAGE_RESOURCE 60%-ra van beállítva, és egy REQUEST_MIN_RESOURCE_GRANT_PERCENT 1%-ra van beállítva, a munkaterhelés-csoport számára legfeljebb 60-párhuzamossági szint adható meg.  Vegye figyelembe az alábbi módszert a maximális párhuzamosság meghatározásához:
 
 [Egyidejűség maximális száma] = [ `CAP_PERCENTAGE_RESOURCE` ]/[ `REQUEST_MIN_RESOURCE_GRANT_PERCENT` ]
 
 > [!NOTE]
-> A munkaterhelési csoport tényleges CAP_PERCENTAGE_RESOURCEa nem éri el a 100%-ot, ha a munkaterhelési csoportok a nullánál nagyobb mértékben jönnek létre MIN_PERCENTAGE_RESOURCE.  Lásd: [sys. dm_workload_management_workload_groups_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-workload-management-workload-group-stats-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) a tényleges futtatókörnyezeti értékekhez.
+> A munkaterhelési csoport tényleges CAP_PERCENTAGE_RESOURCEa nem éri el a 100%-ot, ha a munkaterhelési csoportok a nullánál nagyobb mértékben jönnek létre MIN_PERCENTAGE_RESOURCE.  Lásd: [sys.dm_workload_management_workload_groups_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-workload-management-workload-group-stats-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) a tényleges futtatókörnyezeti értékekhez.
 
 ## <a name="resources-per-request-definition"></a>Erőforrások/kérelmek definíciója
 
@@ -71,7 +71,7 @@ Az erőforrás-osztály kiválasztásához hasonlóan a REQUEST_MIN_RESOURCE_GRA
 Ha a REQUEST_MAX_RESOURCE_GRANT_PERCENTt a REQUEST_MIN_RESOURCE_GRANT_PERCENTnál nagyobb értékre konfigurálja, a rendszer igény szerint több erőforrást foglal le.  A kérés ütemezése során a rendszer meghatározza a kérelem tényleges erőforrás-elosztását, amely REQUEST_MIN_RESOURCE_GRANT_PERCENT és REQUEST_MAX_RESOURCE_GRANT_PERCENT között van, a megosztott készletben lévő erőforrások rendelkezésre állása és a rendszer aktuális terhelése alapján.  Az erőforrásoknak léteznie kell az erőforrások [megosztott készletében](#shared-pool-resources) , ha a lekérdezés ütemezve van.  
 
 > [!NOTE]
-> REQUEST_MIN_RESOURCE_GRANT_PERCENT és REQUEST_MAX_RESOURCE_GRANT_PERCENT érvényes értékekkel rendelkeznek, amelyek az érvényes MIN_PERCENTAGE_RESOURCE és CAP_PERCENTAGE_RESOURCE értéktől függenek.  Lásd: [sys. dm_workload_management_workload_groups_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-workload-management-workload-group-stats-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) a tényleges futtatókörnyezeti értékekhez.
+> REQUEST_MIN_RESOURCE_GRANT_PERCENT és REQUEST_MAX_RESOURCE_GRANT_PERCENT érvényes értékekkel rendelkeznek, amelyek az érvényes MIN_PERCENTAGE_RESOURCE és CAP_PERCENTAGE_RESOURCE értéktől függenek.  Lásd: [sys.dm_workload_management_workload_groups_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-workload-management-workload-group-stats-transact-sql?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json&view=azure-sqldw-latest) a tényleges futtatókörnyezeti értékekhez.
 
 ## <a name="execution-rules"></a>Végrehajtási szabályok
 

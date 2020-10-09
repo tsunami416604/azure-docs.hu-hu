@@ -8,10 +8,10 @@ ms.author: kumud
 ms.service: virtual-network
 ms.custom: subject-policy-compliancecontrols
 ms.openlocfilehash: 4d3f07f63a60983ec8d7f84881a57986d77a4ec6
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91825103"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-virtual-network"></a>Azure Policy az Azure-ra vonatkozó szabályozási megfelelőségi szabályozások Virtual Network
@@ -22,7 +22,7 @@ A [Azure Policy szabályozási megfelelősége](../governance/policy/concepts/re
 
 [!INCLUDE [azure-policy-compliancecontrols-vnet](../../includes/policy/standards/byrp/microsoft.network.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ a [Azure Policy szabályozási megfelelőségről](../governance/policy/concepts/regulatory-compliance.md).
 - A beépített elemek megtekintése az [Azure Policy GitHub-adattárában](https://github.com/Azure/azure-policy).

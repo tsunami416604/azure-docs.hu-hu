@@ -13,10 +13,10 @@ ms.custom: seo-lt-2019, devx-track-azurecli
 ms.topic: tutorial
 ms.date: 04/11/2020
 ms.openlocfilehash: fa457bf930978965b7ad37ea032e6517bda2e9d0
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91291197"
 ---
 # <a name="tutorial-migrate-postgresql-to-azure-db-for-postgresql-online-using-dms-via-the-azure-cli"></a>Oktatóanyag: a PostgreSQL migrálása az Azure DB for PostgreSQL online-ba a DMS használatával az Azure CLI-n keresztül
@@ -108,7 +108,7 @@ Ahhoz, hogy az összes adatbázis-objektumot táblasémaként, indexekként és 
     psql -h hostname -U db_username -d db_name < your_schema.sql 
     ```
 
-    Példa:
+    Például:
 
     ```
     psql -h mypgserver-20170401.postgres.database.azure.com  -U postgres -d dvdrental < dvdrentalSchema.sql
@@ -230,7 +230,7 @@ Ahhoz, hogy az összes adatbázis-objektumot táblasémaként, indexekként és 
     az network nic list -g <ResourceGroupName>--query '[].ipConfigurations | [].privateIpAddress'
     ```
 
-    Példa:
+    Például:
 
     ```azurecli
     az network nic list -g PostgresDemo --query '[].ipConfigurations | [].privateIpAddress'
@@ -476,7 +476,7 @@ Annak érdekében, hogy az összes adat szerepeljen, ellenőrizze a forrás- és
     az dms project task cutover -h
     ```
 
-    Példa:
+    Például:
 
     ```azurecli
     az dms project task cutover --service-name PostgresCLI --project-name PGMigration --resource-group PostgresDemo --name Runnowtask  --object-name Inventory
@@ -524,7 +524,7 @@ Ha valamelyik DMS-feladat, -projekt vagy -szolgáltatás megszakítására vagy 
     az dms delete -g ProgresDemo -n PostgresCLI
      ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Az Azure Database for PostgreSQL-be történő online migrálás végrehajtásakor felmerülő ismert hibákhoz és korlátozásokhoz kapcsolódó információk: [Az Azure Database for PostgreSQL online migrálásával kapcsolatos ismert hibák és kerülő megoldások](known-issues-azure-postgresql-online.md).
 * Az Azure Database Migration Service szolgáltatással kapcsolatos tudnivalók: [Mi az Azure Database Migration Service?](https://docs.microsoft.com/azure/dms/dms-overview).

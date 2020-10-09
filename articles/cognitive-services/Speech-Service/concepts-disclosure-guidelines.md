@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 12/03/2019
 ms.author: angle
 ms.openlocfilehash: fe38c6b7cfb1abbaf3f1079dd8bff66b51b98091
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74776385"
 ---
 # <a name="disclosure-design-guidelines"></a>Közzététel-tervezési irányelvek
@@ -56,9 +56,9 @@ A hangélmények kialakítására vonatkozó tervezési útmutatót figyelembe v
 3. [**Mikor kell kimutatni**](concepts-disclosure-patterns.md#when-to-disclose): az optimális pillanatot a felhasználói útvonalon való közzétételhez
 
 ## <a name="disclosure-assessment"></a>Közzétételi felmérés
-Vegye figyelembe, hogy a felhasználók az interakcióval és a környezettel kapcsolatban&#39; elvárásaikat. Ha a kontextus egyértelművé teszi, hogy a szintetikus hang &quot;beszél,&quot; a közzététel minimális, pillanatnyi vagy szükségtelen lehet. A közzétételt befolyásoló fő típusok közé tartozik a person Type, a forgatókönyv típusa és a kitettség szintje. Emellett segít megfontolni, hogy kik is figyelnek.
+Vegye figyelembe, hogy a felhasználók az interakcióval és a környezettel kapcsolatban&#39; elvárásaikat. Ha a kontextus egyértelművé teszi, hogy a szintetikus hang &quot; beszél, a &quot; Közzététel minimális, pillanatnyi vagy szükségtelen lehet. A közzétételt befolyásoló fő típusok közé tartozik a person Type, a forgatókönyv típusa és a kitettség szintje. Emellett segít megfontolni, hogy kik is figyelnek.
 
-### <a name="understand-context"></a>Kontextus ismertetése
+### <a name="understand-context"></a>A környezet szerepének megismerése
 
 Ez a munkalap a szintetikus hangélmény kontextusának meghatározására használható. Ezt a következő lépésben fogja alkalmazni, ahol meghatározhatja a közzétételi szintet.
 

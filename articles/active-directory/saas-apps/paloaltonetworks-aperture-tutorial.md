@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: jeedes
 ms.openlocfilehash: d7f0ca619c990d2a42c31df82ee9f90bd7ea230b
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91801834"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-palo-alto-networks---aperture"></a>Oktatóanyag: Azure Active Directory a Palo Alto Networks – blende integrációval
@@ -61,7 +61,7 @@ Az Azure AD egyszeri bejelentkezés a Palo Alto Networks-Aperture használatáva
 1. Az **[Azure ad SSO konfigurálása](#configure-azure-ad-sso)** – a funkció használatának engedélyezése a felhasználók számára.
     * **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
     * **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
-2. A **[Palo Alto Networks-blende SSO konfigurálása](#configure-palo-alto-networks---aperture-sso)** – az alkalmazás oldalának egyszeri bejelentkezési beállításainak konfigurálása.
+2. A **[Palo Alto Networks-blende SSO konfigurálása](#configure-palo-alto-networks---aperture-sso)** – az alkalmazás oldalának egyetlen Sign-On beállításainak konfigurálása.
     * A **[Palo Alto Networks-blende test User](#create-palo-alto-networks---aperture-test-user)** -, hogy a Britta Simon a Palo Alto Networks-Aperture, amely a felhasználó Azure ad-képviseletéhez kapcsolódik.
 3. **[SSO tesztelése](#test-sso)** – annak ellenőrzése, hogy a konfiguráció működik-e.
 
@@ -92,7 +92,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és a bejelentkezési URL-címmel. A következő értékek beszerzéséhez vegye fel a kapcsolatot a [Palo Alto Networks-blende ügyfélszolgálati csapatával](https://live.paloaltonetworks.com/t5/custom/page/page-id/Support) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-6. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállítások alapján, és mentse a számítógépre.
+6. Az **egyszeres Sign-On beállítása az SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállítások alapján, és mentse azt a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozása](common/certificatebase64.png)
 

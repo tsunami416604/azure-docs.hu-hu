@@ -13,10 +13,10 @@ ms.date: 08/06/2020
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40, devx-track-js
 ms.openlocfilehash: 027305d953a24de17e62aa74b33b72494b03e652
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91825908"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>Oktatóanyag: bejelentkezés a felhasználókba és a Microsoft Graph API meghívása egy JavaScript egyoldalas alkalmazásból (SPA)
@@ -275,7 +275,7 @@ A hitelesítés további folytatása előtt regisztrálja alkalmazását **Azure
 1. Az alkalmazás **áttekintése** lapon jegyezze fel az **alkalmazás (ügyfél) azonosítójának** értékét későbbi használatra.
 1. Ez a rövid útmutató az [implicit engedélyezési folyamat](v2-oauth2-implicit-grant-flow.md) engedélyezését igényli. A regisztrált alkalmazás bal oldali ablaktábláján válassza a **hitelesítés**lehetőséget.
 1. A **Speciális beállítások**területén az **implicit engedélyezés**területen jelölje be az **azonosító tokenek** és a **hozzáférési tokenek** jelölőnégyzetet. Az azonosító jogkivonatok és hozzáférési tokenek megadása kötelező, mert az alkalmazásnak be kell jelentkeznie a felhasználókba, és hívnia kell egy API-t.
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 > ### <a name="set-a-redirect-url-for-nodejs"></a>Átirányítási URL-cím beállítása Node.jshoz
 >
@@ -507,7 +507,7 @@ A Microsoft Graph API-nak a felhasználónak *. Read* hatókörrel kell rendelke
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az egyoldalas alkalmazások (SPA) fejlesztése a Microsoft Identity platformon, a több részből álló forgatókönyvek sorozatában.
 

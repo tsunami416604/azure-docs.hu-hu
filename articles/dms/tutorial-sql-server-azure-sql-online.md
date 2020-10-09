@@ -13,10 +13,10 @@ ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 01/21/2020
 ms.openlocfilehash: 88aaa9ccf3d0c1319637036373463e2a93ccb649
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91291316"
 ---
 # <a name="tutorial-migrate-sql-server-to-a-single-database-or-pooled-database-in-azure-sql-database-online-using-dms"></a>Oktatóanyag: SQL Server migrálása önálló adatbázisba vagy készletezett adatbázisba Azure SQL Database online-ban a DMS használatával
@@ -341,7 +341,7 @@ Az első teljes betöltés elkészültével az adatbázisok **Átállásra kész
 
     ![Tevékenység állapota: Befejezve](media/tutorial-sql-server-to-azure-sql-online/dms-activity-completed.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ a Azure SQL Database való online áttelepítéssel kapcsolatos ismert problémákról és korlátozásokról: [Azure SQL Database online áttelepítéssel kapcsolatos ismert problémák és megkerülő megoldások](known-issues-azure-sql-online.md).
 - Az Azure Database Migration Service szolgáltatással kapcsolatos tudnivalók: [Mi az Azure Database Migration Service?](https://docs.microsoft.com/azure/dms/dms-overview).

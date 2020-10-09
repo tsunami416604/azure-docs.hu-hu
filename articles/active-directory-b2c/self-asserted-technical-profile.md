@@ -12,10 +12,10 @@ ms.date: 03/26/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 84e92cbac064106ca95277288eb773e311798930
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85203452"
 ---
 # <a name="define-a-self-asserted-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>Önérvényesített technikai profil definiálása egy Azure Active Directory B2C egyéni házirendben
@@ -26,7 +26,7 @@ Az Azure Active Directory B2C (Azure AD B2C) összes olyan interakciója, ahol a
 
 ## <a name="protocol"></a>Protokoll
 
-A **protokoll** elem **Name** attribútumát be kell állítani `Proprietary` . A **kezelő** attribútumnak tartalmaznia kell a Azure ad B2C által használt protokollkezelő-szerelvény teljes nevét, amelyet a rendszer az önellenőrzéshez használ:`Web.TPEngine.Providers.SelfAssertedAttributeProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`
+A **protokoll** elem **Name** attribútumát be kell állítani `Proprietary` . A **kezelő** attribútumnak tartalmaznia kell a Azure ad B2C által használt protokollkezelő-szerelvény teljes nevét, amelyet a rendszer az önellenőrzéshez használ: `Web.TPEngine.Providers.SelfAssertedAttributeProvider, Web.TPEngine, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null`
 
 Az alábbi példa egy önérvényesített technikai profilt mutat be az e-mailek regisztrálásához:
 
@@ -191,18 +191,18 @@ Az üzleti logikával meghívhat egy REST API technikai profilt, felülírhatja 
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| Setting. operatingMode <sup>1</sup>| No | A bejelentkezési oldalon ez a tulajdonság szabályozza a Felhasználónév mező viselkedését, például a bemeneti ellenőrzés és a hibaüzenetek értékét. Várt értékek: `Username` vagy `Email` .  |
-| AllowGenerationOfClaimsWithNullValues| No| Egy NULL értékű jogcím létrehozását teszi lehetővé. Ha például a felhasználó nem jelöli be a jelölőnégyzetet.|
-| ContentDefinitionReferenceId | Yes | Az ehhez a technikai profilhoz társított [tartalom-definíció](contentdefinitions.md) azonosítója. |
-| EnforceEmailVerification | No | A regisztrációhoz vagy a profil szerkesztéséhez érvényesíti az e-mailek ellenőrzését. Lehetséges értékek: `true` (alapértelmezett) vagy `false` . |
-| Setting. retryLimit | No | Meghatározza, hogy a felhasználók hányszor próbálják meg megadni az érvényesítési technikai profilban ellenőrzött adatmennyiséget. Egy felhasználó például megpróbál egy olyan fiókkal regisztrálni, amely már létezik, és megtartja a próbálkozást, amíg el nem éri a korlátot.
-| <sup>1</sup> . SignUpTarget| No | A regisztrációs cél Exchange-azonosítója. Amikor a felhasználó a feliratkozás gombra kattint, Azure AD B2C végrehajtja a megadott Exchange-azonosítót. |
-| Setting. showCancelButton | No | Megjeleníti a Mégse gombot. Lehetséges értékek: `true` (alapértelmezett), vagy`false` |
-| Setting. showContinueButton | No | Megjeleníti a folytatás gombot. Lehetséges értékek: `true` (alapértelmezett), vagy`false` |
-| Setting. showSignupLink <sup>2</sup>| No | Megjeleníti a regisztrációs gombot. Lehetséges értékek: `true` (alapértelmezett), vagy`false` |
-| Setting. forgotPasswordLinkLocation <sup>2</sup>| No| Az elfelejtett jelszó hivatkozását jeleníti meg. Lehetséges értékek: `AfterInput` (alapértelmezett) a hivatkozás megjelenik az oldal alján, vagy `None` eltávolítja az elfelejtett jelszó hivatkozást.|
-| Setting. enableRememberMe <sup>2</sup>| No| Megjeleníti a [bejelentkezett marad](custom-policy-keep-me-signed-in.md) jelölőnégyzetet. Lehetséges értékek: `true` , vagy `false` (alapértelmezett). |
-| IncludeClaimResolvingInClaimsHandling  | No | A bemeneti és a kimeneti jogcímek esetén megadja, hogy a [jogcímek feloldása](claim-resolver-overview.md) szerepel-e a technikai profilban. Lehetséges értékek: `true` , vagy `false`   (alapértelmezett). Ha a technikai profilban a jogcím-feloldót szeretné használni, állítsa be a következőt: `true` . |
+| Setting. operatingMode <sup>1</sup>| Nem | A bejelentkezési oldalon ez a tulajdonság szabályozza a Felhasználónév mező viselkedését, például a bemeneti ellenőrzés és a hibaüzenetek értékét. Várt értékek: `Username` vagy `Email` .  |
+| AllowGenerationOfClaimsWithNullValues| Nem| Egy NULL értékű jogcím létrehozását teszi lehetővé. Ha például a felhasználó nem jelöli be a jelölőnégyzetet.|
+| ContentDefinitionReferenceId | Igen | Az ehhez a technikai profilhoz társított [tartalom-definíció](contentdefinitions.md) azonosítója. |
+| EnforceEmailVerification | Nem | A regisztrációhoz vagy a profil szerkesztéséhez érvényesíti az e-mailek ellenőrzését. Lehetséges értékek: `true` (alapértelmezett) vagy `false` . |
+| Setting. retryLimit | Nem | Meghatározza, hogy a felhasználók hányszor próbálják meg megadni az érvényesítési technikai profilban ellenőrzött adatmennyiséget. Egy felhasználó például megpróbál egy olyan fiókkal regisztrálni, amely már létezik, és megtartja a próbálkozást, amíg el nem éri a korlátot.
+| <sup>1</sup> . SignUpTarget| Nem | A regisztrációs cél Exchange-azonosítója. Amikor a felhasználó a feliratkozás gombra kattint, Azure AD B2C végrehajtja a megadott Exchange-azonosítót. |
+| Setting. showCancelButton | Nem | Megjeleníti a Mégse gombot. Lehetséges értékek: `true` (alapértelmezett), vagy `false` |
+| Setting. showContinueButton | Nem | Megjeleníti a folytatás gombot. Lehetséges értékek: `true` (alapértelmezett), vagy `false` |
+| Setting. showSignupLink <sup>2</sup>| Nem | Megjeleníti a regisztrációs gombot. Lehetséges értékek: `true` (alapértelmezett), vagy `false` |
+| Setting. forgotPasswordLinkLocation <sup>2</sup>| Nem| Az elfelejtett jelszó hivatkozását jeleníti meg. Lehetséges értékek: `AfterInput` (alapértelmezett) a hivatkozás megjelenik az oldal alján, vagy `None` eltávolítja az elfelejtett jelszó hivatkozást.|
+| Setting. enableRememberMe <sup>2</sup>| Nem| Megjeleníti a [bejelentkezett marad](custom-policy-keep-me-signed-in.md) jelölőnégyzetet. Lehetséges értékek: `true` , vagy `false` (alapértelmezett). |
+| IncludeClaimResolvingInClaimsHandling  | Nem | A bemeneti és a kimeneti jogcímek esetén megadja, hogy a [jogcímek feloldása](claim-resolver-overview.md) szerepel-e a technikai profilban. Lehetséges értékek: `true` , vagy `false`   (alapértelmezett). Ha a technikai profilban a jogcím-feloldót szeretné használni, állítsa be a következőt: `true` . |
 
 Megjegyzések:
 1. Elérhető a Content definition [DataUri](contentdefinitions.md#datauri) típusa `unifiedssp` vagy `unifiedssd` .

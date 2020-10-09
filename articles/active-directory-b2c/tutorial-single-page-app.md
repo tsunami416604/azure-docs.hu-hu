@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.service: active-directory
 ms.subservice: B2C
 ms.openlocfilehash: 42c2ca777a999a4d4387646110ed88af84631183
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91258912"
 ---
 # <a name="tutorial-enable-authentication-in-a-single-page-application-with-azure-ad-b2c"></a>Oktatóanyag: hitelesítés engedélyezése egyoldalas alkalmazásban Azure AD B2C
@@ -150,13 +150,13 @@ Ez a minta alkalmazás támogatja a regisztrációt, a bejelentkezést és a jel
 
     Érvényes e-mail-címet használjon, és ellenőrizze az ellenőrző kód használatával. Állítson be egy jelszót. Adja meg a kért attribútumokhoz tartozó értékeket.
 
-    :::image type="content" source="media/tutorial-single-page-app/user-flow-sign-up-workflow-01.png" alt-text="Azure AD B2C felhasználói folyamat által megjelenített regisztrációs oldal":::
+    :::image type="content" source="media/tutorial-single-page-app/user-flow-sign-up-workflow-01.png" alt-text="A helyileg futó egylapos alkalmazást megjelenítő webböngésző":::
 
 1. A **Létrehozás** gombra kattintva helyi fiókot hozhat létre a Azure ad B2C könyvtárban.
 
 A **Létrehozás**gombra kattintva az alkalmazás megjeleníti a bejelentkezett felhasználó nevét.
 
-:::image type="content" source="media/tutorial-single-page-app/web-app-spa-02-logged-in.png" alt-text="Webböngésző, amely egy egyoldalas alkalmazást mutat be a bejelentkezett felhasználóval":::
+:::image type="content" source="media/tutorial-single-page-app/web-app-spa-02-logged-in.png" alt-text="A helyileg futó egylapos alkalmazást megjelenítő webböngésző":::
 
 Ha tesztelni szeretné a bejelentkezést, kattintson a **kijelentkezés** gombra, majd válassza a **Bejelentkezés** lehetőséget, és jelentkezzen be a regisztráció során megadott e-mail-címmel és jelszóval.
 
@@ -168,7 +168,7 @@ Ezen a ponton az alkalmazás továbbra is megpróbál kommunikálni a bemutató 
 
 A védett API engedélyezéséhez lépjen a sorozat következő oktatóanyagára (lásd a [következő lépések](#next-steps) szakaszt).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban egy egyoldalas alkalmazást konfigurált a Azure AD B2C-bérlő felhasználói folyamatával való együttműködéshez a regisztrálási és bejelentkezési képesség biztosításához. A következő lépéseket végezte el:
 

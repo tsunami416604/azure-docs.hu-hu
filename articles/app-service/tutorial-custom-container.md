@@ -8,10 +8,10 @@ keywords: Azure app Service, webalkalmazás, Linux, Windows, Docker, tároló
 ms.custom: devx-track-csharp, mvc, seodec18, devx-track-python
 zone_pivot_groups: app-service-containers-windows-linux
 ms.openlocfilehash: f4b2aea0a6782b5484b2f6d15066d71990348596
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91312056"
 ---
 # <a name="migrate-custom-software-to-azure-app-service-using-a-custom-container"></a>Egyéni szoftver migrálása Azure App Service egyéni tároló használatával
@@ -64,7 +64,7 @@ Az alkalmazás nem futtatható az App Service tesztkörnyezetben, mert egy telep
 
 A Megoldáskezelőben kattintson jobb gombbal a **CustomFontSample** projektre, és válassza az **Add** > **Container Orchestration Support** (Hozzáadás > Container Orchestration Support) lehetőséget.
 
-:::image type="content" source="media/tutorial-custom-container/enable-container-orchestration.png" alt-text="Képernyőkép a Megoldáskezelő ablakról, amely a CustomFontSample projektet, a hozzáadást és a tároló Orchestrator támogató menüelemeket mutatja.":::
+:::image type="content" source="media/tutorial-custom-container/enable-container-orchestration.png" alt-text="Az alapértelmezett böngészőben megjelenített alkalmazást ábrázoló képernyőkép.":::
 
 Válassza a **Docker-összeállítás**  >  **OK**elemet.
 
@@ -98,13 +98,13 @@ Az [Azure Container Registry](../container-registry/index.yml) képes tárolni a
 
 A Megoldáskezelőben kattintson jobb gombbal a **CustomFontSample** projektre, majd válassza a **Publish** (Közzététel) lehetőséget.
 
-:::image type="content" source="media/tutorial-custom-container/open-publish-wizard.png" alt-text="Képernyőfelvétel a CustomFontSample-projektről és a közzétenni kívánt Megoldáskezelőról.":::
+:::image type="content" source="media/tutorial-custom-container/open-publish-wizard.png" alt-text="Az alapértelmezett böngészőben megjelenített alkalmazást ábrázoló képernyőkép.":::
 
 ### <a name="create-registry-and-publish"></a>Beállításjegyzék létrehozása és közzététele
 
 A Közzétételi varázslóban válassza a **Container Registry**  >  **új Azure Container Registry**  >  **Közzététel**lehetőséget.
 
-:::image type="content" source="media/tutorial-custom-container/create-registry.png" alt-text="A közzétételi varázsló képernyőképe, amelyen Container Registry, új Azure Container Registry létrehozása és a közzététel gomb van kiválasztva.":::
+:::image type="content" source="media/tutorial-custom-container/create-registry.png" alt-text="Az alapértelmezett böngészőben megjelenített alkalmazást ábrázoló képernyőkép.":::
 
 ### <a name="sign-in-with-azure-account"></a>Bejelentkezés az Azure-fiók használatával
 
@@ -342,7 +342,7 @@ ENTRYPOINT ["init.sh"]
 
 [!INCLUDE [Try Cloud Shell](../../includes/cloud-shell-try-it.md)]
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Ebben a szakaszban és a következő lépésekben olyan erőforrásokat kell kiépíteni az Azure-ban, amelyeken leküldi a lemezképet, majd üzembe helyezi a tárolót Azure App Service. Először hozzon létre egy erőforráscsoportot, amelyben az összes erőforrást össze szeretné gyűjteni.
 
@@ -620,7 +620,7 @@ az group delete --name AppSvc-DockerTutorial-rg
 
 ::: zone-end
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az alábbiak elvégzését ismerte meg:
 

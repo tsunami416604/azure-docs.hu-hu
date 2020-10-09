@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 10/06/2020
 ms.author: cherylmc
 ms.openlocfilehash: 84f8563a6b03f10f4cbc647426c350d9fac52780
-ms.sourcegitcommit: 5abc3919a6b99547f8077ce86a168524b2aca350
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91812684"
 ---
 # <a name="tutorial-create-a-user-vpn-connection-using-azure-virtual-wan"></a>Oktatóanyag: felhasználói VPN-kapcsolat létrehozása az Azure Virtual WAN használatával
@@ -80,6 +80,6 @@ Ha már nincs szükség ezekre az erőforrásokra, a [Remove-AzureRmResourceGrou
 Remove-AzResourceGroup -Name myResourceGroup -Force
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A Virtual WAN-nal kapcsolatos további információkért lásd a [Virtual WAN áttekintő](virtual-wan-about.md) lapját.

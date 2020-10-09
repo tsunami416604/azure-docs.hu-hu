@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 07/08/2019
 ms.author: aahi
 ms.openlocfilehash: 630b86f55a537d109c851cb585cfccc34d229f83
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74110638"
 ---
 # <a name="resize-and-crop-thumbnail-images"></a>Miniatűr képek átméretezése és körülvágása
@@ -31,13 +31,13 @@ Ha megjeleníti a miniatűrök egy részhalmazát, adjon meg egy lehetőséget a
 
 ## <a name="resize-a-thumbnail"></a>Miniatűr átméretezése 
 
-A miniatűr átméretezéséhez a Bing javasolja, hogy a miniatűr URL `w` -címében csak `h` egy (szélesség) vagy (magasság) lekérdezési paramétert határozzon meg. Csak a magasság vagy a szélesség meghatározása lehetővé teszi, hogy a Bing fenntartsa a rendszerkép eredeti aspektusát. Itt adhatja meg a szélességet és a magasságot képpontban megadva. 
+A miniatűr átméretezéséhez a Bing javasolja, hogy `w` `h` a miniatűr URL-címében csak egy (szélesség) vagy (magasság) lekérdezési paramétert határozzon meg. Csak a magasság vagy a szélesség meghatározása lehetővé teszi, hogy a Bing fenntartsa a rendszerkép eredeti aspektusát. Itt adhatja meg a szélességet és a magasságot képpontban megadva. 
 
 Ha például az eredeti miniatűr a 480x620:
 
 `https://<host>/th?id=JN.5l3yzwy%2f%2fHj59U6XhssIQ&pid=Api&w=480&h=620`
 
-Ha csökkenteni szeretné a méretét, állítsa a `w` paramétert egy új értékre (például `336`), és távolítsa el a `h` paramétert:
+Ha csökkenteni szeretné a méretét, állítsa a `w` paramétert egy új értékre (például `336` ), és távolítsa el a `h`  paramétert:
 
 `https://<host>/th?id=JN.5l3yzwy%2f%2fHj59U6XhssIQ&pid=Api&w=336`
 
@@ -57,30 +57,30 @@ Ha olyan dimenziókat ad meg, amelyek nagyobbak, mint a rendszerkép eredeti sz�
 
 ## <a name="request-different-thumbnail-sizes"></a>Különböző miniatűr méretek kérése
 
-Ha más miniatűr képméretet szeretne kérni, távolítsa el az összes lekérdezési paramétert a miniatűr `id` URL `pid` -címéből, kivéve a és a paramétereket. Ezután adja hozzá a `&w` (szélesség) vagy `&h` a (magasság) lekérdezési paramétert a kívánt képmérethez képpontban, de ne mindkettőt. A Bing a kép eredeti oldalarányát fogja fenntartani. 
+Ha más miniatűr képméretet szeretne kérni, távolítsa el az összes lekérdezési paramétert a miniatűr URL-címéből, kivéve a `id` és a `pid` paramétereket. Ezután adja hozzá a `&w` (szélesség) vagy a `&h` (magasság) lekérdezési paramétert a kívánt képmérethez képpontban, de ne mindkettőt. A Bing a kép eredeti oldalarányát fogja fenntartani. 
 
 A fenti URL-cím által a 165 képpont értékre megadott képek szélességének növeléséhez használja a következő URL-címet:
 
 `https://<host>/th?id=AMMS_92772df988...&w=165&pid=16.1`
 
-Ha a rendszerkép eredeti méreténél nagyobb méretű képet kér, a Bing szükség szerint fehér margót hoz létre a rendszerkép körül. Ha például a rendszerkép eredeti mérete 474x316, és a 500 értékre van `&w` állítva, a Bing egy 500x333-képet ad vissza. Ennek a képnek 8,5 képpont fehér kitöltése lesz a felső és az alsó szélen, a bal és a jobb szélen pedig 13 képpont kitöltéssel.
+Ha a rendszerkép eredeti méreténél nagyobb méretű képet kér, a Bing szükség szerint fehér margót hoz létre a rendszerkép körül. Ha például a rendszerkép eredeti mérete 474x316, és a 500 értékre van állítva `&w` , a Bing egy 500x333-képet ad vissza. Ennek a képnek 8,5 képpont fehér kitöltése lesz a felső és az alsó szélen, a bal és a jobb szélen pedig 13 képpont kitöltéssel.
 
-Ha meg szeretné akadályozni, hogy a Bing ne adjon hozzá fehér kitöltést, ha a kért méret nagyobb, `&p` mint a rendszerkép eredeti mérete, állítsa 0-ra a lekérdezési paramétert. Ha például belefoglalja a `&p=0` paramétert a fenti URL-címre, a Bing a 500x333-rendszerkép helyett egy 474x316-képet ad vissza:
+Ha meg szeretné akadályozni, hogy a Bing ne adjon hozzá fehér kitöltést, ha a kért méret nagyobb, mint a rendszerkép eredeti mérete, állítsa `&p` 0-ra a lekérdezési paramétert. Ha például belefoglalja a `&p=0` paramétert a fenti URL-címre, a Bing a 500x333-rendszerkép helyett egy 474x316-képet ad vissza:
 
 `https://<host>/th?id=AMMS_92772df988...&w=500&p=0&pid=16.1`
 
-Ha a és `&h` a `&w` lekérdezési paramétereket is megadja, a Bing megtartja a kép méretarányát, és szükség esetén fehér kitöltés hozzáadását teszi szükségessé. Ha például a rendszerkép eredeti mérete 474x316, és a szélességi és a magassági paramétereket a 200x200 (`&w=200&h=200`) értékre állítja, a Bing egy olyan képet ad vissza, amely a felső és az alsó 33 képpontos fehér kitöltést tartalmaz. Ha a lekérdezési `&p` paramétert is tartalmazza, a Bing egy 200x134-képet ad vissza.
+Ha `&w` `&h` a és a lekérdezési paramétereket is megadja, a Bing megtartja a kép méretarányát, és szükség esetén fehér kitöltés hozzáadását teszi szükségessé. Ha például a rendszerkép eredeti mérete 474x316, és a szélességi és a magassági paramétereket a 200x200 () értékre állítja `&w=200&h=200` , a Bing egy olyan képet ad vissza, amely a felső és az alsó 33 képpontos fehér kitöltést tartalmaz. Ha a `&p` lekérdezési paramétert is tartalmazza, a Bing egy 200x134-képet ad vissza.
 
 ## <a name="crop-a-thumbnail"></a>Miniatűr körülvágása 
 
 Egy kép körülvágásához adja meg a `c` (Crop) lekérdezési paramétert. A következő értékeket használhatja:
   
-- `4`&mdash; Vak arány  
-- `7`&mdash; Intelligens arány  
+- `4`&mdash;Vak arány  
+- `7`&mdash;Intelligens arány  
 
 ### <a name="smart-ratio-cropping"></a>Intelligens oldalarány levágása
 
-Ha intelligens oldalarány-levágást kér (a `c` paraméter értékének beállításával `7`), a Bing egy képet fog kivenni a régiójának közepéről, a kép méretarányának megtartása mellett. Az érdeklődési régió a Bing által a legtöbb importálási rész részét képező rendszerkép területe. A következő példa egy érdekes régiót mutat be.  
+Ha intelligens oldalarány-levágást kér (a paraméter értékének beállításával `c` `7` ), a Bing egy képet fog kivenni a régiójának közepéről, a kép méretarányának megtartása mellett. Az érdeklődési régió a Bing által a legtöbb importálási rész részét képező rendszerkép területe. A következő példa egy érdekes régiót mutat be.  
   
 ![Érdekes régió](./media/resize-crop/bing-resize-crop-regionofinterest.png)
 
@@ -103,10 +103,10 @@ Ha a Bing nem tudja meghatározni a rendszerkép régióját, a szolgáltatás a
 
 ### <a name="blind-ratio-cropping"></a>Vak arányok levágása
 
-Ha a vak arány levágását kéri (a `c` paraméter értékének beállításával `4`), a Bing a következő szabályok használatával vágja le a rendszerképet.  
+Ha a vak arány levágását kéri (a paraméter értékének beállításával `c` `4` ), a Bing a következő szabályok használatával vágja le a rendszerképet.  
   
-- Ha `(Original Image Width / Original Image Height) < (Requested Image Width / Requested Image Height)`a kép a bal felső sarokban található, és a lemez alul van levágva.  
-- Ha `(Original Image Width / Original Image Height) > (Requested Image Width / Requested Image Height)`a rendszer a képet a középpontból méri, a kép a bal és a jobb oldalon van.  
+- Ha `(Original Image Width / Original Image Height) < (Requested Image Width / Requested Image Height)` a kép a bal felső sarokban található, és a lemez alul van levágva.  
+- Ha `(Original Image Width / Original Image Height) > (Requested Image Width / Requested Image Height)` a rendszer a képet a középpontból méri, a kép a bal és a jobb oldalon van.  
 
 Az alábbi képen egy 225x300 álló portré látható.  
   
