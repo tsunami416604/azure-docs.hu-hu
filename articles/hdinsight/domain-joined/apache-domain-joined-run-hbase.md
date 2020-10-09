@@ -8,10 +8,10 @@ ms.reviewer: jasonh
 ms.topic: tutorial
 ms.date: 09/04/2019
 ms.openlocfilehash: 89e9faeb3c67d0fd0c57adea3a3f69ec5438e3a0
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "73044647"
 ---
 # <a name="tutorial-configure-apache-hbase-policies-in-hdinsight-with-enterprise-security-package"></a>Oktatóanyag: Apache HBase-házirendek konfigurálása a HDInsight-ben Enterprise Security Package
@@ -108,7 +108,7 @@ Hozzon létre egy Ranger-szabályzatot **sales_user1** és **marketing_user1hoz*
    |**Beállítás**  |**Ajánlott érték**  |
    |---------|---------|
    |Házirend neve  |  sales_customers_name_contact   |
-   |HBase táblázat   |  Az ügyfelek |
+   |HBase táblázat   |  Ügyfelek |
    |HBase oszlop – család   |  Név, kapcsolattartó |
    |HBase oszlop   |  * |
    |Csoport kiválasztása  | |
@@ -132,7 +132,7 @@ Hozzon létre egy Ranger-szabályzatot **sales_user1** és **marketing_user1hoz*
    |**Beállítás**  |**Ajánlott érték**  |
    |---------|---------|
    |Házirend neve  |  marketing_customers_contact   |
-   |HBase táblázat   |  Az ügyfelek |
+   |HBase táblázat   |  Ügyfelek |
    |HBase oszlop – család   |  Kapcsolattartó |
    |HBase oszlop   |  * |
    |Csoport kiválasztása  | |
@@ -239,9 +239,9 @@ Ha nem folytatja az alkalmazás használatát, törölje a létrehozott HBase-f�
 2. A felső **keresőmezőbe** írja be a **HDInsight**kifejezést. 
 1. Válassza ki a **HDInsight-fürtök** elemet a **szolgáltatások**területen.
 1. A megjelenő HDInsight-fürtök listájában kattintson a **...** elemre az oktatóanyaghoz létrehozott fürt mellett. 
-1. Kattintson a **Törlés** gombra. Kattintson az **Igen**gombra.
+1. Kattintson a **Törlés** gombra. Kattintson a **Yes** (Igen) gombra.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Az Apache HBase első lépései](../hbase/apache-hbase-tutorial-get-started-linux.md)

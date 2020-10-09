@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 9/25/2018
 ms.author: rohink
 ms.openlocfilehash: 2b122a34cfd382a58f7680743d3a1cb1ae598fd1
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "76939250"
 ---
 # <a name="tutorial-create-an-alias-record-to-refer-to-a-zone-resource-record"></a>Oktatóanyag: Hozzon létre egy aliasrekordot a zónában lévő erőforrásrekordra való hivatkozáshoz
@@ -44,7 +44,7 @@ Aliasrekord létrehozása, amely egy erőforrásrekordra mutat a zónában.
 3. A **Név** szövegmezőbe írja be a **kiszolgáló** nevet.
 4. A **Típus** számára válassza az **A** értéket.
 5. Az **IP-CÍM** szövegmezőbe írja be a **10.10.10.10** címet.
-6. Kattintson az **OK** gombra.
+6. Válassza az **OK** lehetőséget.
 
 ### <a name="create-the-alias-record"></a>Az aliasrekord létrehozása
 1. Válassza ki az Azure DNS-zónát a zóna megnyitásához.
@@ -53,7 +53,7 @@ Aliasrekord létrehozása, amely egy erőforrásrekordra mutat a zónában.
 4. A **Típus** számára válassza az **A** értéket.
 5. Az **Aliasrekord-halmaz** jelölőnégyzetben válassza az **Igen** elemet. Ezután válassza a **Zónarekordhalmaz** lehetőséget.
 6. A **Zóna-rekordhalmaz** beállításaként, jelölje be a **kiszolgáló** rekordot.
-7. Kattintson az **OK** gombra.
+7. Válassza az **OK** lehetőséget.
 
 ## <a name="test-the-alias-record"></a>Az aliasrekord tesztelése
 
@@ -67,7 +67,7 @@ Aliasrekord létrehozása, amely egy erőforrásrekordra mutat a zónában.
 Ha már nincs szüksége a jelen oktatóanyagban létrehozott erőforrásokra, törölheti a zónában lévő **kiszolgáló** és **teszt** erőforrásrekordokat.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban létrehozott egy aliasrekordot, amely a zónában található egyik erőforrásrekordra hivatkozik. Az Azure DNS és a webalkalmazások részletesebb megismeréséhez folytassa a webalkalmazásokról szóló oktatóanyaggal.
 

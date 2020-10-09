@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.service: iot-central
 services: iot-central
 ms.openlocfilehash: 763fb82e0725e5a98112af3a79856c3703a5c2c3
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77016085"
 ---
 # <a name="connected-waste-monitoring-reference-architecture"></a>Az összekapcsolt hulladékmonitorozás referenciaarchitektúrája 
@@ -48,7 +48,7 @@ Kiterjesztheti a IoT alkalmazást IoT Central és opcionálisan:
 ## <a name="business-applications"></a>Üzleti alkalmazások 
 A IoT-adatmennyiség használatával számos üzleti alkalmazást lehet kiszolgálni a hulladékkezelési segédprogramban. Ha szeretné megtudni, hogyan csatlakoztathatja a IoT Central csatlakoztatott hulladékgazdálkodási alkalmazást a Field Services szolgáltatással, kövesse a [Dynamics 365 Field Services integrálásával](./how-to-configure-connected-field-services.md) kapcsolatos oktatóanyagot. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Megtudhatja, hogyan [hozhat létre csatlakoztatott hulladékgazdálkodási](./tutorial-connected-waste-management.md) IoT Central alkalmazást
 * További információ a [IoT Central Government-sablonokról](./overview-iot-central-government.md)
 * További információ a IoT Centralről: [IoT Central áttekintése](https://docs.microsoft.com/azure/iot-central/core/overview-iot-central)

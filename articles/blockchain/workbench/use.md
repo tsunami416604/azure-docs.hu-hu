@@ -5,10 +5,10 @@ ms.date: 10/14/2019
 ms.topic: tutorial
 ms.reviewer: brendal
 ms.openlocfilehash: 5761bf1294691c2d50e0e389fe69ec286df4a06c
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74324042"
 ---
 # <a name="tutorial-using-applications-in-azure-blockchain-workbench"></a>Oktatóanyag: alkalmazások használata az Azure Blockchain Workbenchben
@@ -61,11 +61,11 @@ Attól függően, hogy a szerződés milyen állapotban van, a tagok elvégezhet
 
     ![Szerződés részletei](./media/use/contract-details.png)
 
-    | Section  | Description  |
+    | Section  | Leírás  |
     |---------|---------|
     | status | A szerződés szakaszain belüli aktuális folyamat felsorolása |
     | Részletek | A szerződés aktuális értékei |
-    | Műveletek | Az utolsó művelet részletei |
+    | Művelet | Az utolsó művelet részletei |
     | Tevékenység | A szerződés tranzakciós előzményei |
     
 3. A **művelet** szakaszban válassza a **művelet elvégzése**lehetőséget.
@@ -81,7 +81,7 @@ Attól függően, hogy a szerződés milyen állapotban van, a tagok elvégezhet
 
 7. A művelet végrehajtásához válassza a **művelet elvégzése** lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Azure Blockchain Workbench-alkalmazás verziószámozása](version-app.md)

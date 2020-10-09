@@ -6,9 +6,9 @@
       tocHref: /azure/hdinsight/
       topicHref: /azure/hdinsight/index
       items:
-        - name: HBase
+        - name: A HBase
           tocHref: /azure/hdinsight/hadoop/
           topicHref: /azure/hdinsight/hbase/index
-        - name: HBase
+        - name: A HBase
           tocHref: /azure/hdinsight/domain-joined/
           topicHref: /azure/hdinsight/hbase/index

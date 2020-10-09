@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: cynthn
 ms.openlocfilehash: 76a080d40721fa78ad703f77f6dbe7a3363ab77e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "68857399"
 ---
 ## <a name="install-wordpress"></a>A WordPress telepítése
@@ -85,6 +85,6 @@ sudo ln -s /usr/share/wordpress /var/www/html/wordpress
 sudo mv /etc/wordpress/config-localhost.php /etc/wordpress/config-default.php
 ```
 
-Most végezze el a WordPress beállítását, és tegye közzé a platformon. Nyissa meg a böngészőt, és lépjen a `http://yourPublicIPAddress/wordpress` webhelyre. Helyettesítse be a virtuális gép nyilvános IP-címét. Ennek a képen láthatóhoz hasonlóan kell kinéznie.
+Most végezze el a WordPress beállítását, és tegye közzé a platformon. Nyisson meg egy böngészőt, és ugorjon a `http://yourPublicIPAddress/wordpress` címre. Helyettesítse be a virtuális gép nyilvános IP-címét. Ennek a képen láthatóhoz hasonlóan kell kinéznie.
 
 ![A WordPress telepítési oldala](./media/virtual-machines-linux-tutorial-wordpress/wordpressstartpage.png)

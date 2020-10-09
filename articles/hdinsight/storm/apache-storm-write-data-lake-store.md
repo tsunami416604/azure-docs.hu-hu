@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: tutorial
 ms.date: 06/24/2019
 ms.openlocfilehash: 579163180f6c7ba19927ca66d20bd92d1b2de52e
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "73241213"
 ---
 # <a name="tutorial-write-to-apache-hadoop-hdfs-from-apache-storm-on-azure-hdinsight"></a>Oktatóanyag: írás Apache Hadoop HDFS az Azure HDInsight Apache Stormból
@@ -117,7 +117,7 @@ Alapértelmezés szerint a Storm on HDInsight nem tartalmazza az `HdfsBolt` Azur
 |Parancsfájl típusa |– Egyéni|
 |Bash-parancsfájl URI-ja |`https://hdiconfigactions.blob.core.windows.net/linuxstormextlibv01/stormextlib.sh`|
 |Csomópont típusa (i) |Nimbus, felügyelő|
-|Paraméterek |Nincsenek|
+|Paraméterek |Nincs|
 
 További információ a parancsfájlnak a fürthöz való használatáról: [HDInsight-fürtök testreszabása parancsfájl-műveletek dokumentum használatával](./../hdinsight-hadoop-customize-cluster-linux.md) .
 
@@ -209,7 +209,7 @@ Az erőforráscsoport eltávolítása az Azure Portallal:
 2. Keresse meg a törölni kívánt erőforráscsoportot, és kattintson a jobb gombbal a lista jobb oldalán lévő __Továbbiak__ gombra (...).
 3. Válassza az __Erőforráscsoport törlése__ elemet, és erősítse meg a választását.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebből az oktatóanyagból megtudhatta, hogyan használhatja a Apache Stormt a Apache Storm által a HDInsight-ben használt HDFS-kompatibilis tárolóba való íráshoz.
 

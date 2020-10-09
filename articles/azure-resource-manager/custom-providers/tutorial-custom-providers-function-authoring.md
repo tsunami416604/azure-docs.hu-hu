@@ -6,10 +6,10 @@ ms.topic: tutorial
 ms.date: 06/19/2019
 ms.author: jobreen
 ms.openlocfilehash: d7f6c51211ce0572797ade659b9316003502da1f
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75650022"
 ---
 # <a name="author-a-restful-endpoint-for-custom-providers"></a>REST-végpont létrehozása egyéni szolgáltatók számára
@@ -43,7 +43,7 @@ X-MS-CustomProviders-RequestPath: /subscriptions/{subscriptionId}/resourceGroups
 
 A példa `x-ms-customproviders-requestpath` fejléce alapján az alábbi táblázatban látható módon hozhatja létre a *partitionKey* és a *rowKey* paramétereket a tárolóhoz:
 
-Paraméter | Sablon | Description
+Paraméter | Sablon | Leírás
 ---|---|---
 *partitionKey* | `{subscriptionId}:{resourceGroupName}:{resourceProviderName}` | A *partitionKey* paraméter határozza meg az adatparticionálás módját. Általában az egyéni szolgáltatói példány particionálja az adathalmazt.
 *rowKey* | `{myResourceType}:{myResourceName}` | A *rowKey* paraméter az adat egyedi azonosítóját adja meg. Általában az azonosító az erőforrás neve.
@@ -134,7 +134,7 @@ public static async Task<HttpResponseMessage> CreateCustomResource(HttpRequestMe
 
 A **CreateCustomResource** metódus frissíti a bejövő kérelmet, hogy tartalmazza az Azure-specifikus mezők **azonosítóját**, **nevét**és **típusát**. Ezek a mezők az Azure-szolgáltatások által használt legfelső szintű tulajdonságok. Lehetővé teszik, hogy az egyéni szolgáltató együttműködik más szolgáltatásokkal, például Azure Policyokkal, Azure Resource Manager sablonokkal és az Azure-tevékenység naplóval.
 
-Tulajdonság | Példa | Description
+Tulajdonság | Példa | Leírás
 ---|---|---
 **név** | {myCustomResourceName} | Az egyéni erőforrás neve
 **típusa** | Microsoft. CustomProviders/resourceProviders/{resourceTypeName} | Az erőforrás típusú névtér
@@ -368,6 +368,6 @@ using Newtonsoft.Json.Linq;
 
 Ha az oktatóanyag bármely pontján elvész, megtalálhatja a teljes kód mintát az [egyéni szolgáltató C# Rest-végpont-referenciájában](./reference-custom-providers-csharp-endpoint.md). A Function alkalmazás befejezése után mentse a Function app URL-címét. A függvény alkalmazás a későbbi oktatóanyagokban aktiválható.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben egy REST-végpontot készített egy Azure-beli egyéni szolgáltatói végponttal való együttműködéshez. Ha meg szeretné tudni, hogyan hozhat létre egyéni szolgáltatót, ugorjon a cikk [oktatóanyag: egyéni szolgáltató létrehozása](./tutorial-custom-providers-create.md)című témakörre.

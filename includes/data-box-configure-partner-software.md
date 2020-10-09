@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 11/20/2018
 ms.author: alkohli
 ms.openlocfilehash: cbf6d01925e1924bc5f3c7f1e99840d479fef296
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "67179785"
 ---
 Konfigurálja a partneri szoftvert az ügyfélhez való kapcsolódáshoz. A partneri szoftverhez való kapcsolódáshoz általában az alábbi információkra van szüksége (amelyek az előző lépésben a helyi webes felhasználói felület **Kapcsolódás és másolás** lapján gyűltek össze):
 
-- Storage account name (Tárfiók neve)
+- Tárfiók neve
 - Hozzáférési kulcs
 - Blob-szolgáltatásvégpont
  

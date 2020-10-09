@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 10/16/2019
 ms.author: mebeatty
 ms.openlocfilehash: 64bbed9b558d4c20889b28a5247e2113d20daa77
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "73501770"
 ---
 # <a name="create-an-internet-analyzer-test-using-portal-preview"></a>Internet Analyzer-teszt létrehozása a Portal használatával (előzetes verzió)
@@ -72,7 +72,7 @@ Az alapszintű lépések végrehajtásának előfeltétele egy teszt konfigurál
 
 A tesztek elindításához a JavaScript-ügyfelet be kell ágyazni a webalkalmazásba. Legalább egy teszt konfigurálását követően kattintson a **felülvizsgálat + létrehozás**gombra, lépjen a **Beállítások > konfiguráció**elemre, és másolja a JavaScript-ügyfelet. A konkrét utasítások az [Internet Analyzer-ügyfél beágyazása](internet-analyzer-embed-client.md) oldalon találhatók.  
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Az [Internet Analyzer gyakori kérdéseinek](internet-analyzer-faq.md) beolvasása
 * További információ az [Internet Analyzer-ügyfél](internet-analyzer-embed-client.md) beágyazásáról és az [Egyéni végpontok](internet-analyzer-custom-endpoint.md)létrehozásáról.

@@ -7,10 +7,10 @@ ms.service: fxt-edge-filer
 ms.topic: tutorial
 ms.date: 07/01/2019
 ms.openlocfilehash: 7c77e25d0dcabc49f2e6672645c6bc41e8662ec8
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75551029"
 ---
 # <a name="tutorial-install-azure-fxt-edge-filer"></a>Oktatóanyag: az Azure FXT Edge Filer telepítése 
@@ -219,7 +219,7 @@ Az előlap eltávolítása:
    
    ![Az elõlap bal oldalán lévő kiadás gombot, és azt, hogy miként távolítható el a bal oldali kifelé húzva](media/fxt-install/remove-bezel-edited-600.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az eszköz kicsomagolása és rögzítése után folytassa a telepítést a hálózati kábelek csatlakoztatásával és az Azure FXT Edge Filer csatlakoztatásával.
 

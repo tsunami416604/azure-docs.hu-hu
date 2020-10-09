@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 965c420fa29c4cf82517148c01e17d6d7dd6ea97
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74106503"
 ---
 # <a name="tutorial-an-end-to-end-solution-using-azure-machine-learning-and-iot-edge"></a>Oktatóanyag: teljes körű megoldás Azure Machine Learning és IoT Edge használatával
@@ -34,7 +34,7 @@ Mindkét esetben az olvasó (k) elérésének elősegítése érdekében az okta
 
 ## <a name="use-case-predictive-maintenance"></a>Használati eset: prediktív karbantartás
 
-Ezt a forgatókönyvet a 2008-es, a PHM08-konferencián bemutatott használati esetünk alapján ismertetjük. A cél a turbofan-RUL hátralévő hasznos élettartamának előrejelzése. Ezeket az adatmennyiségeket C-MAPS, a MAPSs (moduláris Aero-meghajtórendszer-szimuláció) szoftver kereskedelmi verziója hozta létre. Ez a szoftver rugalmas turbofan motor-szimulációs környezetet biztosít az állapot, a vezérlés és a motor paramétereinek megfelelő szimulálása érdekében.
+Ezt a forgatókönyvet a 2008-es, a PHM08-konferencián bemutatott használati esetünk alapján ismertetjük. A cél a turbofan-RUL hátralévő hasznos élettartamának előrejelzése. Ezek az adatmennyiségek a C-MAPS használatával lettek létrehozva, a MAPSs (moduláris Aero-Propulsion rendszer-szimulációs) szoftver kereskedelmi verziója. Ez a szoftver rugalmas turbofan motor-szimulációs környezetet biztosít az állapot, a vezérlés és a motor paramétereinek megfelelő szimulálása érdekében.
 
 Az oktatóanyagban használt adatok a [Turbofan motor degradációs szimulációs adatkészletből](https://ti.arc.nasa.gov/tech/dash/groups/pcoe/prognostic-data-repository/#turbofan)származnak.
 
@@ -92,7 +92,7 @@ Ebben a dokumentumban a következő eszközkészleteket használjuk:
 
 Természetesen vannak más elérhető lehetőségek is. Bizonyos helyzetekben például a IoT Central a IoT-eszközökből származó kezdeti betanítási adatok rögzítésére szolgáló, kód nélküli Alternatív megoldásként használható.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez az oktatóanyag a következő szakaszokra oszlik:
 

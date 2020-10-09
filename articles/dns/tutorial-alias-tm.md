@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 9/25/2018
 ms.author: rohink
 ms.openlocfilehash: 4bdfc950cc1277809811dc2c548a57cc2138a8e4
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77149949"
 ---
 # <a name="tutorial-configure-an-alias-record-to-support-apex-domain-names-with-traffic-manager"></a>Oktatóanyag: aliasrekord konfigurálása a hogy, támogassa a legfelső szintű tartományneveket a Traffic Managerrel 
@@ -88,7 +88,7 @@ Ismételje meg az eljárást az IIS **Web-02** virtuális gépen való telepít�
 3. Kattintson a **Létrehozás** gombra.
 4. Az üzembe helyezés befejezése után válassza az **Erőforrás megnyitása** elemet.
 5. A Traffic Manager-profillap **Beállítások** területén válassza a **Végpontok** elemet.
-6. Válassza a **Hozzáadás** elemet.
+6. Válassza a **Hozzáadás** lehetőséget.
 7. A **Típus** értékeként válassza a **Külső végpont** lehetőséget, és a **Név** mezőbe írja be az **EP-Web01** értéket.
 8. A **Teljes tartománynév (FQDN) vagy IP-cím** szövegmezőbe írja be a **Web-01-ip** IP-címét, amelyet korábban feljegyzett.
 9. Válassza ki ugyanazt a **helyet**, mint a többi erőforrásnál, majd válassza az **OK** elemet.
@@ -117,7 +117,7 @@ Hozzon létre egy aliasrekordot, amely a Traffic Manager-profilra mutat.
 
 Ha már nincs szüksége a jelen oktatóanyagban létrehozott erőforrásokra, törölheti az **RG-DNS-Alias-TM** erőforráscsoportot.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban létrehozott egy aliasrekordot, hogy a legfelső szintű tartománynevet használhassa egy Traffic Manager-profilra való hivatkozáshoz. Az Azure DNS és a webalkalmazások részletesebb megismeréséhez folytassa a webalkalmazásokról szóló oktatóanyaggal.
 

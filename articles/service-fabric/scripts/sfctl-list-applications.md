@@ -15,10 +15,10 @@ ms.date: 04/13/2018
 ms.author: atsenthi
 ms.custom: ''
 ms.openlocfilehash: 41685e53eb0915f54bdc2d678191e5b767990dde
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75610267"
 ---
 # <a name="list-applications-running-in-a-service-fabric-cluster"></a>Service Fabric-fürtön futó alkalmazások listázása
@@ -31,7 +31,7 @@ Ez a példaszkript egy Service Fabric-fürthöz csatlakozik, és az összes üze
 
 [!code-sh[main](../../../cli_scripts/service-fabric/list-application/list-application.sh "List provisioned applications from a cluster")]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ: [A Service Fabric parancssori felületének dokumentációja](../service-fabric-cli.md).
 

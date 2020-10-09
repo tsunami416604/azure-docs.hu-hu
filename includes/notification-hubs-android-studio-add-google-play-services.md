@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: notification-hubs
 author: spelluru
 ms.service: notification-hubs
@@ -9,10 +9,10 @@ ms.date: 02/05/2019
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: cd202c98ed605209f5600965ecdb6c0b4c03c17e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "67509100"
 ---
 1. A Android Studio területen válassza a menü **eszközök** elemét, majd válassza az **SDK-kezelő**elemet. 
@@ -27,7 +27,7 @@ ms.locfileid: "67509100"
     ![Android SDK-kezelő – kiválasztott Google Play-szolgáltatások](./media/notification-hubs-android-studio-add-google-play-services/google-play-services-selected.png)
 3. Ha megjelenik a **módosítás megerősítése** párbeszédpanel, kattintson az **OK gombra**. Az összetevő-telepítő telepíti a kért összetevőket. Az összetevők telepítése után válassza a **Befejezés** lehetőséget.
 4. Az **új projektek beállításainak** bezárásához kattintson **az OK gombra** .  
-5. Nyissa meg a Build. gradle fájlt az **alkalmazás** könyvtárában, majd adja hozzá a következő `dependencies`sort a elemhez. 
+5. Nyissa meg a Build. gradle fájlt az **alkalmazás** könyvtárában, majd adja hozzá a következő sort a elemhez `dependencies` . 
 
     ```gradle
     implementation 'com.google.android.gms:play-services-gcm:16.0.0'
@@ -35,7 +35,7 @@ ms.locfileid: "67509100"
 5. Kattintson a **szinkronizálás most** ikonra az eszköztáron.
 
     ![Szinkronizálás a Gradle](./media/notification-hubs-android-studio-add-google-play-services/gradle-sync.png)
-1. Nyissa meg a AndroidManifest. xml fájlt, majd adja hozzá a következő címkét az *alkalmazás* címkéjéhez.
+1. Nyissa meg a AndroidManifest.xml fájlt, majd adja hozzá a következő címkét az *alkalmazás* címkéjéhez.
 
     ```xml
     <meta-data android:name="com.google.android.gms.version"

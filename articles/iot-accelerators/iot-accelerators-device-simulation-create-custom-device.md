@@ -10,10 +10,10 @@ ms.custom: mvc
 ms.date: 10/25/2018
 ms.author: troyhop
 ms.openlocfilehash: 302b863e7ad7d6df286adf53342356f279ab92d2
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "61450546"
 ---
 # <a name="tutorial-create-a-custom-simulated-device"></a>Oktatóanyag: Egyéni szimulált eszköz létrehozása
@@ -64,14 +64,14 @@ Adja meg az alábbi adatokat az űrlapon:
 | ------------------- | ---------------------------------------------------- |
 | Eszközmodell neve   | Hűtő                                         |
 | Modell leírása   | Hőmérséklet- és páratartalom-érzékelőkkel rendelkező hűtő |
-| Verzió             | 1,0                                                  |
+| Verzió             | 1.0                                                  |
 
 > [!NOTE]
 > Az eszközmodell nevének egyedinek kell lennie.
 
 Kattintson az **+ Adatpont hozzáadása** elemre a hőmérséklet- és páratartalom-adatpontok hozzáadásához az alábbi értékekkel:
 
-| Adatpont          | Működés        | Minimális érték | Maximális érték | Unit (Egység) |
+| Adatpont          | Működés        | Minimális érték | Maximális érték | Egység |
 | ------------------- | --------------- | --------- | --------- | ---- |
 | Hőmérséklet         | Véletlenszerű          | -50       | 100       | F    |
 | Páratartalom            | Véletlenszerű          | 0         | 100       | %    |
@@ -96,7 +96,7 @@ Bármelyik egyéni eszközmodellt törölheti. Egy eszközmodell törléséhez j
 
 ![Eszközmodell törlése](media/iot-accelerators-device-simulation-create-custom-device/deletedevice.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban megismerte, hogyan hozhat létre, klónozhat és törölhet egyéni eszközmodelleket. Az eszközmodellekkel kapcsolatos további információkért tekintse meg az alábbi útmutatót:
 

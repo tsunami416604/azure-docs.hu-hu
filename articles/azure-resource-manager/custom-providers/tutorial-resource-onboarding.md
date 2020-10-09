@@ -6,10 +6,10 @@ ms.author: jobreen
 author: jjbfour
 ms.date: 09/17/2019
 ms.openlocfilehash: 22d1dcd997a4ddb94aba184c5dace4c00509054d
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75649938"
 ---
 # <a name="tutorial-resource-onboarding-with-azure-custom-providers"></a>Oktatóanyag: erőforrás-előkészítés az Azure egyéni szolgáltatókkal
@@ -235,13 +235,13 @@ A sablon első része az egyéni szolgáltatói infrastruktúrát telepíti. Ez 
 
 8. Adja meg a kötelező mezők beállításait, majd válassza ki az előfizetést és az erőforráscsoportot. Az **egyéni erőforrás-szolgáltató azonosítója** mezőt üresen hagyhatja.
 
-   | Beállítás neve | Kötelező? | Description |
+   | Beállítás neve | Kötelező? | Leírás |
    | ------------ | -------- | ----------- |
    | Hely | Igen | A sablon erőforrásainak helye. |
-   | Logikai alkalmazás neve | No | A logikai alkalmazás neve. |
-   | Egyéni erőforrás-szolgáltató neve | No | Az egyéni erőforrás-szolgáltató neve. |
-   | Egyéni erőforrás-szolgáltató azonosítója | No | Egy meglévő egyéni erőforrás-szolgáltató, amely támogatja a társítási erőforrást. Ha itt értéket ad meg, a rendszer kihagyja a logikai alkalmazást és az egyéni szolgáltató üzembe helyezését. |
-   | Társítás neve | No | A társítási erőforrás neve. |
+   | Logikai alkalmazás neve | Nem | A logikai alkalmazás neve. |
+   | Egyéni erőforrás-szolgáltató neve | Nem | Az egyéni erőforrás-szolgáltató neve. |
+   | Egyéni erőforrás-szolgáltató azonosítója | Nem | Egy meglévő egyéni erőforrás-szolgáltató, amely támogatja a társítási erőforrást. Ha itt értéket ad meg, a rendszer kihagyja a logikai alkalmazást és az egyéni szolgáltató üzembe helyezését. |
+   | Társítás neve | Nem | A társítási erőforrás neve. |
 
    Minta paramétereinek:
 
