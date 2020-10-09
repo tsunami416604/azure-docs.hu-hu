@@ -1,5 +1,5 @@
 ---
-title: Régió rendelkezésre állása és az adattárolás
+title: Regionális elérhetőség és adattárolási hely
 titleSuffix: Azure AD B2C
 description: A régió rendelkezésre állása, az adatok tartózkodási helye és a Azure Active Directory B2C előzetes verziójú Bérlővel kapcsolatos információk.
 services: active-directory-b2c
@@ -12,12 +12,12 @@ ms.date: 06/06/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.custom: references_regions
-ms.openlocfilehash: bb9c6dbf9984ec81fbd4b93a61552211928d0f0e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f8c6f7daecd38babaa4f2961d04a6cd4c3b4dbed
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85388714"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91840557"
 ---
 # <a name="azure-active-directory-b2c-region-availability--data-residency"></a>Azure Active Directory B2C: régió rendelkezésre állása & adattárolás
 
@@ -45,15 +45,15 @@ Az adattárolást a [Azure ad B2C bérlő létrehozásakor](tutorial-create-tena
 
 A következő országok/régiók adatai találhatók a **Egyesült Államokban** :
 
-> Egyesült Államok, Kanada, Costa Rica, Dominikai Köztársaság, Salvador, Guatemala, Mexikó, Panama, Puerto Rico és Trinidad & Tobago
+> Egyesült Államok (USA), Kanada (CA), Costa Rica (CR), Dominikai Köztársaság (DO), Salvador (SV), Guatemala (GT), Mexikó (MX), Panama (PA), Puerto Rico (PR) és Trinidad & Tobago (TT)
 
 **Európában** az alábbi országok és régiók adatai találhatók:
 
-> Algéria, Ausztria, Azerbajdzsán, Bahrein, Fehéroroszország, Belgium, Bulgária, Horvátország, Ciprus, Cseh Köztársaság, Dánia, Egyiptom, Észtország, Finnország, Franciaország, Németország, Görögország, Magyarország, Izland, Írország, Izrael, Olaszország, Jordánia Kazahsztán, Kenya, Kuvait, Lettország, Libanon, Liechtenstein, Litvánia, Luxemburg, Észak-Macedónia, Málta, Montenegró, Marokkó, Hollandia, Nigéria, Norvégia, Omán, Pakisztán, Lengyelország, Portugália, Katar, Románia, Oroszország, Szaúd-Arábia, Szerbia, Szlovákia, Szlovénia, Dél-Afrika, Spanyolország, Svédország, Svájc, Tunézia, Törökország, Ukrajna, Egyesült Arab Emírségek és Egyesült Királyság.
+> Algéria (DZ), Ausztria (AT), Azerbajdzsán (AZ), Bahrein (BH), Fehéroroszország (BY), Belgium (BE), Bulgária (BG), Horvátország (HR), Ciprus (CY), Cseh Köztársaság (CZ), Dánia (Dánia), Egyiptom (EG), Észtország (EE), Finnország (FT), Franciaország (FR), Németország (DE), Görögország (GR), Magyarország (HU), Izland (IS), Írország (IE), Izrael (IL), Olaszország (IT), Jordánia (JO), Kazahsztán (KZ), Kenya (KE), Kuvait (KW), Lettország (LV), Libanon (LB), Liechtenstein (LI), Litvánia (LT) , Luxembourg (LU), Észak-Macedónia (ML), Málta (MT), Montenegró (i), Marokkó (MA), Hollandia (NL), Nigéria (NG), Norvégia (NO), Omán (OM), Pakisztán (PK), Lengyelország (com), Portugália (PT), Katar (QA), Románia (RO), Oroszország (RU), Szaúd-Arábia (SA), Szerbia (RS), Szlovákia (SK), Szlovénia (ST), Dél-Afrika (ZA), Spanyolország (ES), Svédország (SE), Svájc (CH), Tunézia (TN), Törökország (TR), Ukrajna (UA), Egyesült Arab Emírségek (AE) és Egyesült Királyság (GB)
 
 A következő országok/régiók esetében **Ázsia és a csendes-óceáni térség** az adat:
 
-> Afganisztán, Hongkong KKT, India, Indonézia, Japán, Korea, Malajzia, Fülöp-szigetek, Szingapúr, Sri Lanka, Tajvan és Thaiföld.
+> Afganisztán (AF), Hongkong KKT (HK), India (IN), Indonézia (ID), Japán (JP), Korea (KR), Malajzia (MY), Fülöp-szigetek (PH), Szingapúr (SG), Srí Lanka (LK), Tajvan (TW) és Thaiföld (TH).
 
 A következő országok/régiók a listához való felvételük folyamatban van. Egyelőre továbbra is használhatja a Azure AD B2Ct a fenti országok/régiók bármelyikének kiválasztásával.
 

@@ -7,12 +7,12 @@ ms.service: iot-central
 ms.subservice: iot-central-retail
 ms.topic: tutorial
 ms.date: 01/09/2020
-ms.openlocfilehash: 28afa98313ef1c9577e90ed161a1d20cbf5faf75
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: d6b5d337090ebd664e855be47128e76d3c61e151
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91440207"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91840438"
 ---
 # <a name="tutorial-deploy-and-walk-through-a-micro-fulfillment-center-application-template"></a>Oktatóanyag: üzembe helyezés és útmutató a Micro-teljesítési központ alkalmazás sablonja
 
@@ -90,10 +90,10 @@ Ha nem folytatja az alkalmazás használatát, törölje az alkalmazás sablonj�
 
 ![Képernyőkép a Micro-beteljesülés központ Alkalmazásbeállítások oldaláról](./media/tutorial-micro-fulfillment-center-app/delete.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ
 > [!div class="nextstepaction"]
 > [Micro-teljesítési központ megoldási architektúrája](./architecture-micro-fulfillment-center.md)
 * További információ az [Azure IoT Central kiskereskedelmi sablonjairól](./overview-iot-central-retail.md)
-* További információ az [Azure IoT Central – áttekintés](../preview/overview-iot-central.md)
+* További információ az [Azure IoT Central](../preview/overview-iot-central.md)

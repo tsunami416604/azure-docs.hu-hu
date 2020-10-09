@@ -1,19 +1,19 @@
 ---
 title: DDL-műveletek a Azure Cosmos DB Cassandra API a Sparkból
 description: Ebből a cikkből megtudhatja, hogyan helyezheti el a Azure Cosmos DB Cassandra API a Sparkból a webtárhely és a táblázat DDL
-author: kanshiG
-ms.author: govindk
+author: TheovanKraay
+ms.author: thvankra
 ms.reviewer: sngun
 ms.service: cosmos-db
 ms.subservice: cosmosdb-cassandra
 ms.topic: how-to
-ms.date: 09/24/2018
-ms.openlocfilehash: 30cac5894998ca2bb9c37217820e1000ed97ba5d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.date: 10/07/2020
+ms.openlocfilehash: 589114fa004c8b4479e1a14c5a99161dd972c5bf
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85260560"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91841101"
 ---
 # <a name="ddl-operations-in-azure-cosmos-db-cassandra-api-from-spark"></a>DDL-műveletek a Azure Cosmos DB Cassandra API a Sparkból
 
@@ -92,8 +92,7 @@ DESCRIBE keyspaces;
 ### <a name="create-a-table"></a>Tábla létrehozása
 
 ```scala
-val cdbConnector = CassandraConnector(sc)
-cdbConnector.withSessionDo(session => session.execute("CREATE TABLE IF NOT EXISTS books_ks.books(book_id TEXT PRIMARY KEY,book_author TEXT, book_name TEXT,book_pub_year INT,book_price FLOAT) WITH cosmosdb_provisioned_throughput=4000 , WITH default_time_to_live=630720000;"))
+cdbConnector.withSessionDo(session => session.execute("CREATE TABLE IF NOT EXISTS books_ks1.books(book_id TEXT,book_author TEXT, book_name TEXT,book_pub_year INT,book_price FLOAT, PRIMARY KEY(book_id,book_pub_year)) WITH cosmosdb_provisioned_throughput=4000 , WITH default_time_to_live=630720000;"))
 ```
 
 #### <a name="validate-in-cqlsh"></a>Érvényesítés a cqlsh
@@ -136,13 +135,13 @@ USE books_ks;
 DESCRIBE tables;
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A térköz és a tábla létrehozása után folytassa a következő cikkekkel a SZIFILISZi műveletekhez és egyebekhez:
  
 * [Műveletek létrehozása/beszúrása](cassandra-spark-create-ops.md)  
 * [Olvasási műveletek](cassandra-spark-read-ops.md)  
 * [Upsert-műveletek](cassandra-spark-upsert-ops.md)  
-* [Műveletek törlése](cassandra-spark-delete-ops.md)  
+* [Törlési műveletek](cassandra-spark-delete-ops.md)  
 * [Összesítési műveletek](cassandra-spark-aggregation-ops.md)  
 * [Táblázatos másolási műveletek](cassandra-spark-table-copy-ops.md)  

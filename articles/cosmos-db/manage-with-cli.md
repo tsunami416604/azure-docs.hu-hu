@@ -1,25 +1,25 @@
 ---
-title: Azure Cosmos DB erőforrások kezelése az Azure CLI-vel
-description: Az Azure CLI használatával kezelheti Azure Cosmos DB-fiókját, adatbázisát és tárolóit.
+title: Azure Cosmos DB Core (SQL) API-erőforrások kezelése az Azure CLI-vel
+description: Azure Cosmos DB Core (SQL) API-erőforrások kezelése az Azure CLI-vel.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 07/29/2020
+ms.date: 10/07/2020
 ms.author: mjbrown
-ms.openlocfilehash: c8726801e8becd6533ae5fec099d6c535b63261a
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.openlocfilehash: dce041a46f173216844322b5a8985acbdfb86f26
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91767551"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91840591"
 ---
-# <a name="manage-azure-cosmos-resources-using-azure-cli"></a>Azure Cosmos-erőforrások kezelése az Azure CLI-vel
+# <a name="manage-azure-cosmos-core-sql-api-resources-using-azure-cli"></a>Azure Cosmos Core-(SQL-) API-erőforrások kezelése az Azure CLI-vel
 
 Az alábbi útmutató az Azure Cosmos DB-fiókok, -adatbázisok és -tárolók felügyeletének Azure CLI-vel történő automatizálásához használható általános parancsokat ismerteti. Az összes Azure Cosmos DB CLI-parancsra vonatkozó hivatkozási lapok az [Azure CLI-referenciában](https://docs.microsoft.com/cli/azure/cosmosdb)érhetők el. Az [Azure CLI-mintákban](cli-samples.md)további példákat is találhat Azure Cosmos DBhoz, beleértve Cosmos db fiókok, adatbázisok és tárolók létrehozását és kezelését a MongoDB, a Gremlin, a Cassandra és a Table APIhoz.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez a témakörhöz az Azure CLI 2.9.1 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](/cli/azure/install-azure-cli).
+Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez a témakörhöz az Azure CLI 2.12.1 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](/cli/azure/install-azure-cli).
 
 > [!IMPORTANT]
 > Azure Cosmos DB erőforrásokat nem lehet átnevezni, mivel ez megsérti, hogyan működik az Azure Resource Manager erőforrás-URI-k.
@@ -214,8 +214,9 @@ A következő szakaszban bemutatjuk, hogyan kezelheti a Azure Cosmos DB-adatbáz
 
 * [Adatbázis létrehozása](#create-a-database)
 * [Megosztott átviteli sebességgel rendelkező adatbázis létrehozása](#create-a-database-with-shared-throughput)
+* [Adatbázis migrálása az átméretezési sebességre](#migrate-a-database-to-autoscale-throughput)
 * [Adatbázis átviteli sebességének módosítása](#change-database-throughput)
-* [Egy adatbázis zárolásának kezelése](#manage-lock-on-a-database)
+* [Adatbázis törlésének megakadályozása](#prevent-a-database-from-being-deleted)
 
 ### <a name="create-a-database"></a>Adatbázis létrehozása
 
@@ -249,6 +250,29 @@ az cosmosdb sql database create \
     --throughput $throughput
 ```
 
+### <a name="migrate-a-database-to-autoscale-throughput"></a>Adatbázis migrálása az átméretezési sebességre
+
+```azurecli-interactive
+resourceGroupName='MyResourceGroup'
+accountName='mycosmosaccount'
+databaseName='database1'
+
+# Migrate to autoscale throughput
+az cosmosdb sql database throughput migrate \
+    -a $accountName \
+    -g $resourceGroupName \
+    -n $databaseName \
+    -t 'autoscale'
+
+# Read the new autoscale max throughput
+az cosmosdb sql database throughput show \
+    -g $resourceGroupName \
+    -a $accountName \
+    -n $databaseName \
+    --query resource.autoscaleSettings.maxThroughput \
+    -o tsv
+```
+
 ### <a name="change-database-throughput"></a>Adatbázis átviteli sebességének módosítása
 
 Egy Cosmos-adatbázis átviteli sebességének növelése 1000 RU/s használatával.
@@ -275,14 +299,14 @@ az cosmosdb sql database throughput update \
     --throughput $newRU
 ```
 
-### <a name="manage-lock-on-a-database"></a>Adatbázis zárolásának kezelése
+### <a name="prevent-a-database-from-being-deleted"></a>Adatbázis törlésének megakadályozása
 
-Helyezzen törlési zárolást egy adatbázisra. Ha többet szeretne megtudni a lásd: az SDK-k [módosításának megakadályozása](role-based-access-control.md#prevent-sdk-changes).
+Az adatbázis törlésének megakadályozása érdekében helyezzen el egy Azure-erőforrást törlő zárolást. Ez a funkció megköveteli, hogy a Cosmos-fiókot a adatsík SDK-k módosítsák. További információ: az SDK-k [változásainak megakadályozása](role-based-access-control.md#prevent-sdk-changes). Az Azure-erőforrások zárolása azt is megakadályozhatja, hogy az erőforrást egy zárolási típus megadásával is meg lehessen változtatni `ReadOnly` . A Cosmos-adatbázisok esetében az átviteli sebesség módosításának megakadályozása érdekében használható.
 
 ```azurecli-interactive
 resourceGroupName='myResourceGroup'
-accountName='my-cosmos-account'
-databaseName='myDatabase'
+accountName='mycosmosaccount'
+databaseName='database1'
 
 lockType='CanNotDelete' # CanNotDelete or ReadOnly
 databaseParent="databaseAccounts/$accountName"
@@ -315,7 +339,8 @@ Az alábbi részben bemutatjuk, hogyan kezelheti a Azure Cosmos DB tárolót, be
 * [Hozzon létre egy olyan tárolót, amelynek ÉLETTARTAMa engedélyezve van](#create-a-container-with-ttl)
 * [Egyéni index-házirenddel rendelkező tároló létrehozása](#create-a-container-with-a-custom-index-policy)
 * [Tároló átviteli sebességének módosítása](#change-container-throughput)
-* [Tárolók zárolásának kezelése](#manage-lock-on-a-container)
+* [Tároló migrálása az átméretezési átviteli sebességre](#migrate-a-container-to-autoscale-throughput)
+* [Tároló törlésének megakadályozása](#prevent-a-container-from-being-deleted)
 
 ### <a name="create-a-container"></a>Tároló létrehozása
 
@@ -454,15 +479,41 @@ az cosmosdb sql container throughput update \
     --throughput $newRU
 ```
 
-### <a name="manage-lock-on-a-container"></a>Tároló zárolásának kezelése
+### <a name="migrate-a-container-to-autoscale-throughput"></a>Tároló migrálása az átméretezési átviteli sebességre
 
-Helyezzen törlési zárolást egy tárolón. Ha többet szeretne megtudni a lásd: az SDK-k [módosításának megakadályozása](role-based-access-control.md#prevent-sdk-changes).
+```azurecli-interactive
+resourceGroupName='MyResourceGroup'
+accountName='mycosmosaccount'
+databaseName='database1'
+containerName='container1'
+
+# Migrate to autoscale throughput
+az cosmosdb sql container throughput migrate \
+    -a $accountName \
+    -g $resourceGroupName \
+    -d $databaseName \
+    -n $containerName \
+    -t 'autoscale'
+
+# Read the new autoscale max throughput
+az cosmosdb sql container throughput show \
+    -g $resourceGroupName \
+    -a $accountName \
+    -d $databaseName \
+    -n $containerName \
+    --query resource.autoscaleSettings.maxThroughput \
+    -o tsv
+```
+
+### <a name="prevent-a-container-from-being-deleted"></a>Tároló törlésének megakadályozása
+
+Egy tárolóban lévő Azure-erőforrás törlési zárolásával megakadályozható a törlés. Ez a funkció megköveteli, hogy a Cosmos-fiókot a adatsík SDK-k módosítsák. További információ: az SDK-k [változásainak megakadályozása](role-based-access-control.md#prevent-sdk-changes). Az Azure-erőforrások zárolása azt is megakadályozhatja, hogy az erőforrást egy zárolási típus megadásával is meg lehessen változtatni `ReadOnly` . A Cosmos-tárolók esetében ez felhasználható az átviteli sebesség vagy bármely más tulajdonság módosításának megakadályozására.
 
 ```azurecli-interactive
 resourceGroupName='myResourceGroup'
-accountName='my-cosmos-account'
-databaseName='myDatabase'
-containerName='myContainer'
+accountName='mycosmosaccount'
+databaseName='database1'
+containerName='container1'
 
 lockType='CanNotDelete' # CanNotDelete or ReadOnly
 databaseParent="databaseAccounts/$accountName"
@@ -491,6 +542,6 @@ az lock delete --ids $lockid
 
 Az Azure CLI-vel kapcsolatos további információkért lásd:
 
-- [Telepítse az Azure CLI-t](/cli/azure/install-azure-cli)
-- [Azure CLI-dokumentáció](https://docs.microsoft.com/cli/azure/cosmosdb)
-- [További Azure CLI-minták a Azure Cosmos DB](cli-samples.md)
+* [Telepítse az Azure CLI-t](/cli/azure/install-azure-cli)
+* [Azure CLI-dokumentáció](https://docs.microsoft.com/cli/azure/cosmosdb)
+* [További Azure CLI-minták a Azure Cosmos DB](cli-samples.md)

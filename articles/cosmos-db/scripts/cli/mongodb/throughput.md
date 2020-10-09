@@ -1,30 +1,30 @@
 ---
-title: Az MongoDB API-hoz készült RU/s frissítése Azure Cosmos DB
-description: Az MongoDB API-hoz készült RU/s frissítése Azure Cosmos DB
+title: Azure CLI-parancsfájlok átviteli sebesség (RU/s) műveletekhez Azure Cosmos DB API MongoDB-erőforrásokhoz
+description: Azure CLI-parancsfájlok átviteli sebesség (RU/s) műveletekhez Azure Cosmos DB API MongoDB-erőforrásokhoz
 author: markjbrown
 ms.author: mjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-mongo
 ms.topic: sample
-ms.date: 07/29/2020
-ms.openlocfilehash: 6f3bd23f11abf0e72dc4b7affe54ada42e0cf712
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.date: 10/07/2020
+ms.openlocfilehash: 785f77df117b8072f6b8970287f4051795d07167
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2020
-ms.locfileid: "87432178"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91838625"
 ---
-# <a name="update-rus-for-a-database-and-collection-for-mongodb-api-for-azure-cosmos-db-using-azure-cli"></a>A MongoDB API-hoz készült RU/s frissítése az Azure CLI-vel való Azure Cosmos DBhoz
+# <a name="throughput-rus-operations-with-azure-cli-for-a-database-or-graph-for-azure-cosmos-db-api-for-mongodb"></a>Átviteli sebesség (RU/s) műveletek az Azure CLI-vel a MongoDB Azure Cosmos DB API-hoz készült adatbázisok vagy diagramok esetében
 
 [!INCLUDE [cloud-shell-try-it.md](../../../../../includes/cloud-shell-try-it.md)]
 
-Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez a témakörhöz az Azure CLI 2.9.1 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](/cli/azure/install-azure-cli).
+Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez a témakörhöz az Azure CLI 2.12.1 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](/cli/azure/install-azure-cli).
 
 ## <a name="sample-script"></a>Példaszkript
 
-Ez a szkript létrehoz egy megosztott átviteli sebességgel rendelkező adatbázist, valamint egy, a MongoDB API számára Azure Cosmos DB dedikált átviteli sebességgel rendelkező gyűjteményt, majd frissíti az adatátviteli sebességet az adatbázis és a gyűjtemény számára is.
+Ez a szkript létrehoz egy MongoDB-adatbázist, amely megosztott átviteli sebességgel és gyűjteménysel rendelkezik dedikált átviteli sebességgel, majd frissíti az átviteli sebességet is. A szkript ezután áttelepíti a standard-ról az autoskálázási átviteli sebességre, majd beolvassa az átviteli sebesség értékét az áttelepítés után.
 
-[!code-azurecli-interactive[main](../../../../../cli_scripts/cosmosdb/mongodb/throughput.sh "Update RU/s for an Azure Cosmos DB MongoDB API database and collection.")]
+[!code-azurecli-interactive[main](../../../../../cli_scripts/cosmosdb/mongodb/throughput.sh "Throughput operations for Azure Cosmos DB API for MongoDB.")]
 
 ## <a name="clean-up-deployment"></a>Az üzemelő példány eltávolítása
 
@@ -46,6 +46,8 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 | [az cosmosdb mongodb Collection Create](/cli/azure/cosmosdb/mongodb/collection#az-cosmosdb-mongodb-collection-create) | Létrehoz egy Azure Cosmos MongoDB API-gyűjteményt. |
 | [az cosmosdb mongodb Database átviteli sebességének frissítése](/cli/azure/cosmosdb/mongodb/database/throughput#az-cosmosdb-mongodb-database-throughput-update) | Az RUs frissítése Azure Cosmos MongoDB API-adatbázishoz. |
 | [az cosmosdb mongodb Collection átviteli sebességének frissítése](/cli/azure/cosmosdb/mongodb/collection/throughput#az-cosmosdb-mongodb-collection-throughput-update) | Az RUs frissítése Azure Cosmos MongoDB API-gyűjteményhez. |
+| [az cosmosdb mongodb Database átviteli sebesség migrálása](/cli/azure/cosmosdb/mongodb/database/throughput#az-cosmosdb-mongodb-database-throughput-migrate) | Egy adatbázis átviteli sebességének átmigrálása. |
+| [az cosmosdb mongodb Collection átviteli sebességének migrálása](/cli/azure/cosmosdb/mongodb/collection/throughput#az-cosmosdb-mongodb-collection-throughput-migrate) | Egy gyűjtemény átviteli sebességének migrálása. |
 | [az group delete](/cli/azure/resource#az-resource-delete) | Töröl egy erőforráscsoportot az összes beágyazott erőforrással együtt. |
 
 ## <a name="next-steps"></a>Következő lépések

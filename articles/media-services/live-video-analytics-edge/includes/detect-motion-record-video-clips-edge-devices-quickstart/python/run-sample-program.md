@@ -1,54 +1,21 @@
 ---
-ms.openlocfilehash: 93c88f34e32e2057efd3eae25b1f41f58b948575
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: f5e180cb85e65cf832ffe0a3746e25790644e1ba
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88682408"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91829272"
 ---
-1. Indítsa el a hibakeresési munkamenetet az F5 billentyű kiválasztásával. A **Terminálablak** kinyomtat néhány üzenetet.
-1. A kód *operations.js* a közvetlen metódusokat hívja `GraphTopologyList` meg `GraphInstanceList` . Ha az előző rövid útmutatók után törölte az erőforrásokat, akkor ez a folyamat üres listát ad vissza, majd szünetelteti. Nyomja meg az Enter billentyűt.
-    
-    ```
-    --------------------------------------------------------------------------
-    Executing operation GraphTopologyList
-    -----------------------  Request: GraphTopologyList  --------------------------------------------------
-    {
-      "@apiVersion": "1.0"
-    }
-    ---------------  Response: GraphTopologyList - Status: 200  ---------------
-    {
-      "value": []
-    }
-    --------------------------------------------------------------------------
-    Executing operation WaitForInput
-    Press Enter to continue
-    ```
-  
-  A **terminál** ablak a közvetlen metódusok következő készletét jeleníti meg:  
-  
-  * A következőt `GraphTopologySet` használó hívás `topologyUrl` 
-  * A `GraphInstanceSet` következő törzset használó hívás:
-  
-  ```
-  {
-    "@apiVersion": "1.0",
-    "name": "Sample-Graph",
-    "properties": {
-      "topologyName": "EVRToFilesOnMotionDetection",
-      "description": "Sample graph description",
-      "parameters": [
-        {
-          "name": "rtspUrl",
-          "value": "rtsp://rtspsim:554/media/lots_015.mkv"
-        },
-        {
-          "name": "rtspUserName",
-          "value": "testuser"
-        },
-        {
-          "name": "rtspPassword",
-          "value": "testpassword"
+1. A Visual Studio Code-ban nyissa meg a **bővítmények** lapot (vagy nyomja le a CTRL + SHIFT + X billentyűkombinációt), és keressen rá az Azure IoT hubra.
+1. Kattintson a jobb gombbal, és válassza a **bővítmény beállításai**lehetőséget.
+
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="../../../media/run-program/extensions-tab.png" alt-text="Bővítmény beállításai&quot;:::
+1. Keresse meg és engedélyezze a &quot;részletes üzenet megjelenítése" lehetőséget.
+
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="../../../media/run-program/show-verbose-message.png" alt-text="Bővítmény beállításai&quot;:::
+1. Keresse meg és engedélyezze a &quot;részletes üzenet megjelenítése"
         }
       ]
     }

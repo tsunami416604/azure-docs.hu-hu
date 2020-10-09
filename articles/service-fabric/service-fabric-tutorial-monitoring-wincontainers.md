@@ -3,18 +3,17 @@ title: Windows-tárolók figyelése és diagnosztizálása
 description: Ebben az oktatóanyagban Azure Monitor naplókat konfigurál az Service Fabric Azure-beli Windows-tárolók figyelésére és diagnosztizálására.
 ms.topic: tutorial
 ms.date: 07/22/2019
-ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 6a3a5211864c4cbadc03bbc77bfef2204f6c2ccf
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: cf14cce631a505a951ec4d9c0955431b9a98527e
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86244803"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91840676"
 ---
 # <a name="tutorial-monitor-windows-containers-on-service-fabric-using-azure-monitor-logs"></a>Oktatóanyag: Windows-tárolók figyelése Service Fabric Azure Monitor naplók használatával
 
-Ez az oktatóanyag harmadik része, amely végigvezeti Azure Monitor naplók beállításán, hogy figyelje a Windows-tárolókat a Service Fabric.
+Ez az oktatóanyag harmadik része, amely végigvezeti a Azure Monitor naplók konfigurálásán, hogy figyelje a Windows-tárolókat Service Fabricn.
 
 Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
@@ -186,19 +185,17 @@ A tárolómegoldások beállításához a munkaterületen keresse meg a *Tárol�
 
 ![Tárolómegoldások hozzáadása](./media/service-fabric-tutorial-monitoring-wincontainers/containers-solution.png)
 
-Ha a rendszer kéri a *log Analytics munkaterületet*, válassza ki az erőforráscsoporthoz létrehozott munkaterületet, majd kattintson a **Létrehozás**gombra. Ezzel hozzáad egy *tárolómonitorozási megoldást* a munkaterülethez, ami miatt a sablon által üzembe helyezett Log Analytics-ügynök automatikusan elkezdi Docker-naplók és -statisztikák gyűjtését. 
+Ha a rendszer kéri a *log Analytics munkaterületet*, válassza ki az erőforráscsoporthoz létrehozott munkaterületet, és válassza a **Létrehozás**lehetőséget. Ezzel hozzáadja a *tároló-figyelési megoldást* a munkaterülethez, és elindítja a sablon által központilag telepített log Analytics-ügynököt a Docker-naplók és-statisztikák gyűjtésének megkezdéséhez.
 
-Lépjen vissza az *erőforráscsoporthoz*, ahol meg kell jelennie az újonnan hozzáadott monitorozási megoldásnak. Ha a megoldásra kattint, a kezdőlapon meg kell jelennie, hogy hány tárolórendszerképet futtat.
+Lépjen vissza az *erőforráscsoporthoz*, ahol meg kell jelennie az újonnan hozzáadott monitorozási megoldásnak. Ha kijelöli, a kezdőlapon meg kell jeleníteni a futtatott tároló-lemezképek számát.
 
-*Az oktatóanyag [második részéből](service-fabric-host-app-in-a-container.md) származó fabrikam tároló 5 példányát futtattam*.
+*Vegye figyelembe, hogy a fabrikam-tároló öt példánya futott az oktatóanyag [második részében](service-fabric-host-app-in-a-container.md)*
 
 ![Tárolómegoldás kezdőlapja](./media/service-fabric-tutorial-monitoring-wincontainers/solution-landing.png)
 
-Ha a **Container monitor megoldásra** kattint, a rendszer egy részletesebb irányítópultra helyezi át, amely lehetővé teszi több panel görgetését, valamint a lekérdezések futtatását Azure monitor naplókban.
+A **Container monitor megoldás** kiválasztásával részletesebb irányítópultot tekinthet meg, amely lehetővé teszi több panel görgetését, valamint a lekérdezések futtatását Azure monitor naplókban.
 
-*Vegye figyelembe, hogy 2017 szeptemberétől kezdve a megoldás folyamatosan frissül – hagyja figyelmen kívül a Kubernetes-eseményekkel kapcsolatos esetleges hibákat. Dolgozunk azon, hogy több vezérlőt integráljunk ugyanabba a megoldásba.*
-
-Mivel az ügynök Docker-naplókat vesz fel, alapértelmezés szerint az *stdout* és az *stderr* jelenik meg. Ha jobbra görget, láthatja a tárolórendszerkép leltárát, állapotát, metrikáit, valamint példákat olyan lekérdezésekre, amelyeket több információt tartalmazó adatok eléréséhez futtathat.
+Mivel az ügynök Docker-naplókat vesz fel, alapértelmezés szerint az *stdout* és az *stderr* jelenik meg. Ha vízszintesen görget, a rendszer a tároló képleltára, az állapot, a metrikák és a példaként szolgáló lekérdezéseket fogja látni, amelyek segítségével további hasznos adatokat érhet el.
 
 ![Tárolómegoldás irányítópultja](./media/service-fabric-tutorial-monitoring-wincontainers/container-metrics.png)
 
@@ -208,12 +205,12 @@ Ha bármelyik panelre kattint, a megjelenített értéket generáló Kusto-leké
 
 ## <a name="configure-log-analytics-agent-to-pick-up-performance-counters"></a>A Log Analytics-ügynök konfigurálása teljesítményszámlálók felvételéhez
 
-Az Log Analytics ügynök használatának egy másik előnye, hogy módosítania kell a log Analytics felhasználói felületén keresztül felvenni kívánt teljesítményszámlálókat, nem kell konfigurálnia az Azure Diagnostics-ügynököt, és minden alkalommal el kell végeznie a Resource Manager-sablonokon alapuló frissítést. Ehhez a tárolómonitorozási (vagy Service Fabric-) megoldás kezdőlapján kattintson az **OMS-munkaterület** lehetőségre.
+Az Log Analytics ügynök használatának egy másik előnye, hogy módosítania kell a log Analytics felhasználói felületén keresztül felvenni kívánt teljesítményszámlálókat, nem kell konfigurálnia az Azure Diagnostics-ügynököt, és minden alkalommal el kell végeznie a Resource Manager-sablonokon alapuló frissítést. Ehhez válassza a **OMS munkaterület** elemet a tároló-figyelési (vagy Service Fabric) megoldás kezdőlapján.
 
 Ekkor megnyílik a Log Analytics-munkaterület, ahol megtekintheti a megoldásokat, létrehozhat egyéni irányítópultokat, és konfigurálhatja a Log Analytics-ügynököt. 
-* Kattintson a **Speciális beállítások** elemre a Speciális beállítások menü megnyitásához.
-* Kattintson a **csatlakoztatott források**  >  **Windows-kiszolgálók** elemre annak ellenőrzéséhez, hogy *5 Windows rendszerű számítógép*van-e csatlakoztatva.
-* Kattintson a **adat**  >  **Windows-teljesítményszámlálók** lehetőségre az új teljesítményszámlálók kereséséhez és hozzáadásához. Itt megtekintheti az összegyűjteni kívánt teljesítményszámlálók Azure Monitor naplóiból származó javaslatok listáját, valamint az egyéb számlálók keresésének lehetőségét is. Ellenőrizze, hogy **Processzor(_Total)\% A processzor kihasználtsága** és a **Memória(*)\Rendelkezésre álló memória (megabájt)** számlálók össze vannak-e gyűjtve.
+* Válassza a **Speciális beállítások** lehetőséget a speciális beállítások menü megnyitásához.
+* Válassza a **csatlakoztatott források**  >  **Windows-kiszolgálók** lehetőséget, hogy ellenőrizze, hogy van-e *5 Windows rendszerű számítógép csatlakoztatva*.
+* Az **Data**  >  új teljesítményszámlálók kereséséhez és hozzáadásához válassza az**adatwindows** -teljesítményszámlálók lehetőséget. Itt megtekintheti az összegyűjteni kívánt teljesítményszámlálók Azure Monitor naplóiból származó javaslatok listáját, valamint az egyéb számlálók keresésének lehetőségét is. Ellenőrizze, hogy **Processzor(_Total)\% A processzor kihasználtsága** és a **Memória(*)\Rendelkezésre álló memória (megabájt)** számlálók össze vannak-e gyűjtve.
 
 Néhány perc múlva **frissítse** a Tárolómonitorozási megoldást, és ezután látnia kell, ahogy érkeznek a *Számítógép teljesítményére* vonatkozó adatok. Ez segít megérteni, hogyan használja a rendszer az erőforrásokat. Ezeket a metrikákat a fürt méretezésére vonatkozó, megfelelő döntések meghozásához is használhatja, vagy annak megerősítéséhez, hogy a fürt a vártnak megfelelően osztja el a terhelést.
 
@@ -230,9 +227,9 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 > * Log Analytics-munkaterület használata a tárolók és csomópontok naplóinak megtekintéséhez és lekérdezéséhez
 > * A Log Analytics-ügynök konfigurálása tároló- és csomópontmetrikák felvételéhez
 
-Most, hogy beállította a tárolóba helyezett alkalmazás monitorozását, megpróbálkozhat a következőkkel:
+Most, hogy konfigurálta a tároló alkalmazás figyelését, próbálkozzon az alábbiakkal:
 
-* Állítson be Azure Monitor naplókat egy Linux-fürthöz, a fentiekhez hasonló lépéseket követve. Hivatkozzon [erre a sablonra](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Ubuntu-1-NodeType-Secure-OMS) a módosítások a Resource Manager-sablonban történő elvégzéséhez.
+* A Linux-fürtök Azure Monitor naplófájljainak konfigurálása az oktatóanyaghoz hasonló lépéseket követve. Hivatkozzon [erre a sablonra](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/5-VM-Ubuntu-1-NodeType-Secure-OMS) a módosítások a Resource Manager-sablonban történő elvégzéséhez.
 * Konfigurálja Azure Monitor naplókat az [automatizált riasztások](../azure-monitor/platform/alerts-overview.md) beállításához az észlelés és a diagnosztika támogatásához.
 * Tekintse meg a Service Fabric a fürthöz konfigurálható, [ajánlott teljesítményszámlálókat](service-fabric-diagnostics-event-generation-perf.md) tartalmazó listáját.
 * Ismerkedjen meg az Azure Monitor naplók részeként kínált [naplóbeli keresési és lekérdezési](../azure-monitor/log-query/log-query-overview.md) funkciókkal.

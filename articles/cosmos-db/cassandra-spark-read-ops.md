@@ -10,12 +10,12 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: how-to
 ms.date: 06/02/2020
 ms.custom: seodec18
-ms.openlocfilehash: 4ecb7758ee5f58345fccc2c490cee4d23043a20c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 68a64ad1ddb955ccebdcddca996959f1bb5f932b
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85257414"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91840955"
 ---
 # <a name="read-data-from-azure-cosmos-db-cassandra-api-tables-using-spark"></a>Adatok beolvasása Azure Cosmos DB Cassandra API-táblákból a Spark használatával
 
@@ -86,17 +86,10 @@ readBooksDF.show
 Leküldheti a predikátumokat az adatbázisba, hogy jobban optimalizált Spark-lekérdezéseket lehessen. A predikátum olyan feltétel, amely igaz vagy hamis értéket ad vissza, általában a WHERE záradékban található. Egy predikátum leküldésével szűri az adatokat az adatbázis-lekérdezésben, csökkentve az adatbázisból beolvasott bejegyzések számát, és javítja a lekérdezési teljesítményt. Alapértelmezés szerint a Spark adatkészlet API automatikusan leküldi az érvényes WHERE záradékot az adatbázisba. 
 
 ```scala
-val readBooksDF = spark
-  .read
-  .format("org.apache.spark.sql.cassandra")
-  .options(Map( "table" -> "books", "keyspace" -> "books_ks"))
-  .load
-  .select("book_name","book_author", "book_pub_year")
-  .filter("book_pub_year > 1891")
-//.filter("book_name IN ('A sign of four','A study in scarlet')")
-//.filter("book_name='A sign of four' OR book_name='A study in scarlet'")
-//.filter("book_author='Arthur Conan Doyle' AND book_pub_year=1890")
-//.filter("book_pub_year=1903")  
+val df = spark.read.cassandraFormat("books", "books_ks").load
+df.explain
+val dfWithPushdown = df.filter(df("book_pub_year") > 1891)
+dfWithPushdown.explain
 
 readBooksDF.printSchema
 readBooksDF.explain
@@ -140,12 +133,12 @@ spark
 select * from books_vw where book_pub_year > 1891
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az alábbi cikkek a Spark Azure Cosmos DB Cassandra API való használatáról tartalmaznak további cikkeket:
  
  * [Upsert-műveletek](cassandra-spark-upsert-ops.md)
- * [Műveletek törlése](cassandra-spark-delete-ops.md)
+ * [Törlési műveletek](cassandra-spark-delete-ops.md)
  * [Összesítési műveletek](cassandra-spark-aggregation-ops.md)
  * [Táblázatos másolási műveletek](cassandra-spark-table-copy-ops.md)
 

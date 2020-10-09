@@ -6,12 +6,12 @@ ms.author: cauribeg
 ms.service: cache
 ms.topic: conceptual
 ms.date: 09/22/2020
-ms.openlocfilehash: 4ab754cacc85bc9e7c7b850270df37290ad399b6
-ms.sourcegitcommit: b4f303f59bb04e3bae0739761a0eb7e974745bb7
+ms.openlocfilehash: e2c071ff9cf020f99e990e670cfb29cca3c1ebbc
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/02/2020
-ms.locfileid: "91650161"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91838653"
 ---
 # <a name="azure-cache-for-redis-with-azure-private-link-public-preview"></a>Azure cache a Redis az Azure Private linkkel (nyilvános előzetes verzió)
 Ebből a cikkből megtudhatja, hogyan hozhat létre egy virtuális hálózatot és egy Azure cache-t a Redis-példányhoz egy privát végponttal a Azure Portal használatával. Azt is megtudhatja, hogyan adhat hozzá privát végpontot egy meglévő Azure cache-hez a Redis-példányhoz.
@@ -22,9 +22,8 @@ Az Azure Private Endpoint egy olyan hálózati adapter, amely az Azure-beli priv
 * Azure-előfizetés – [hozzon létre egyet ingyen](https://azure.microsoft.com/free/)
 
 > [!NOTE]
-> Ez a szolgáltatás jelenleg nyilvános előzetes verzióban érhető el a korlátozott régiókban. Ha nem szeretne privát végpontot létrehozni, [lépjen kapcsolatba velünk](mailto:azurecache@microsoft.com). A privát végpontok használatához a Redis-példányhoz tartozó Azure cache-t a 2020. július 28-ig kell létrehozni.
+> A privát végpontok használatához a Redis-példányhoz tartozó Azure cache-t a 2020. július 28-ig kell létrehozni.
 >
-> A nyilvános előzetes verzióval rendelkező régiók jelenleg a következőket használhatják: USA nyugati középső régiója, Észak-Európa, USA nyugati régiója, USA 2. nyugati régiója, USA keleti régiója, USA 2. keleti régiója, USA középső régiója, USA déli középső régiója, Kelet-Ausztrália, Kelet-Japán, nyugat-európa, Nyugat-Európa, Kelet-Ázsia Egyesült Királyság nyugati régiója Egyesült Királyság déli régiója Nyugat-Svájc Észak-Svájc , Dél-Afrika, Észak-Franciaország, Dél-Franciaország, Közép-Kanada, Kelet-Kanada, Közép-Kanada, Észak-Németország, Középnyugat-Németország, Ausztrália középső régiója, Nyugat-India, Dél-India, Kelet-Ausztrália, Délkelet-Brazília, Dél-Brazília és Dél-Brazília.
 >
 
 ## <a name="create-a-private-endpoint-with-a-new-azure-cache-for-redis-instance"></a>Privát végpont létrehozása új Azure cache-sel a Redis-példányhoz 

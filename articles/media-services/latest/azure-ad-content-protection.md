@@ -13,12 +13,12 @@ ms.topic: tutorial
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-js
-ms.openlocfilehash: 71bfff1b2ef75a13a3898d2fd9760dd60b83e3a5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: a6f1a5b532ba3d8d5ce24d6f9856d86719d35c6f
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91318313"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91839537"
 ---
 # <a name="tutorial-end-to-end-content-protection-using-azure-ad"></a>Oktatóanyag: végpontok közötti tartalomvédelem az Azure AD használatával
 
@@ -77,7 +77,7 @@ Nem kötelező, de javasoljuk, hogy Ismerje meg a következő fogalmakat az okta
 
 Néhány kihívás az alrendszer megtervezése során jelenik meg. Több mozgó részből áll, az ügyfélalkalmazások megkötései, valamint az Azure AD-kulcs rolloverje hat hetente történik.
 
-Az oktatóanyagban használt egyoldalas alkalmazás (SPA) figyelembe veszi a hitelesítési követelményekkel és a következő korlátozásokkal kapcsolatos kihívásokat. A következőket használja:
+Az oktatóanyagban használt Single-Page alkalmazás (SPA) figyelembe veszi a hitelesítési követelményekkel és az azt követő korlátozásokkal kapcsolatos kihívásokat. A következőket használja:
 
 * Az Azure ad v2-végpontok, mint az Azure AD fejlesztői platform (v1-végpontok) a Microsoft Identity platformra (v2-végpontokra) változnak.
 * Az engedélyezési kód folyamata, mert a OAuth 2 implicit engedélyezési folyamat elavult.
@@ -129,11 +129,11 @@ A bejelentkezés, a jogkivonat beszerzése, a jogkivonat-megújítás és a jogk
 
 A JWT-tokenek elemzésére szolgáló képernyő (access_token vagy id_token):
 
-![JWT-tokenek elemzésére szolgáló képernyő](media/aad-ams-content-protection/parsing-jwt-tokens.png)
+![A J W T-tokenek elemzését bemutató képernyőkép.](media/aad-ams-content-protection/parsing-jwt-tokens.png)
 
 A védett tartalom tesztelésére szolgáló képernyő a DRM/AES vs streaming protokollok és a tároló formátumának különböző kombinációjával:
 
-![JWT-tokenek elemzésére szolgáló képernyő](media/aad-ams-content-protection/testing-protected-content.png)
+![Képernyőkép a védett tartalom teszteléséről, amely a D R M különböző kombinációit vagy az E-k és A tárolók közötti adatátviteli protokollokat](media/aad-ams-content-protection/testing-protected-content.png)
 -->
 
 <!-- You can see a hosted version of the sample at [https://aka.ms/ott](https://aka.ms/ott)-->
@@ -313,7 +313,7 @@ Ha egy másik IDE/webplatformot és/vagy egy webkiszolgálót, például a fejle
 
 Most, hogy elvégezte az oktatóanyagot, és rendelkezik egy működő alrendszerrel, a következő felhasználói forgatókönyvekhez is kipróbálhatja a módosítást:
 
-### <a name="role-based-access-control-rbac-for-license-delivery-via-azure-ad-group-membership"></a>Szerepköralapú Access Control (RBAC) az Azure AD-csoporttagság használatával történő licenc-kézbesítéshez
+### <a name="role-based-access-control-rbac-for-license-delivery-via-azure-ad-group-membership"></a>Role-Based Access Control (RBAC) az Azure AD-csoporttagság használatával történő licenc-kézbesítéshez
 
 Eddig a rendszer lehetővé teszi minden olyan felhasználó számára, aki bejelentkezhet egy érvényes licenc beszerzéséhez és a védett tartalom lejátszásához.
 

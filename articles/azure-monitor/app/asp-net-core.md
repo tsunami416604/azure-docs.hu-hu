@@ -4,12 +4,12 @@ description: ASP.NET Core webalkalmazások figyelése a rendelkezésre állás, 
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 04/30/2020
-ms.openlocfilehash: eae6117f82f3bb138edb6cea23a2c052e19fb0cf
-ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
+ms.openlocfilehash: cb192aa44e9e2ab8578881494852ddd41ae9094d
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91803591"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91839010"
 ---
 # <a name="application-insights-for-aspnet-core-applications"></a>Application Insights ASP.NET Core alkalmazásokhoz
 
@@ -134,7 +134,7 @@ Az [élő metrikák](./live-stream.md) segítségével gyorsan ellenőrizheti, h
 
 ### <a name="ilogger-logs"></a>ILogger-naplók
 
-`ILogger`A súlyosság vagy a nagyobb arány használatával kibocsátott naplók `Warning` automatikusan rögzítésre kerülnek. A [ILogger-dokumentumok](ilogger.md#control-logging-level) követésével testreszabhatja, hogy a Application Insights mely naplózási szinteket rögzíti.
+A `ILogger` súlyosság és a fenti súlyosságon keresztül kibocsátott naplók `Warning` automatikusan rögzítésre kerülnek. A [ILogger-dokumentumok](ilogger.md#control-logging-level) követésével testreszabhatja, hogy a Application Insights mely naplózási szinteket rögzíti.
 
 ### <a name="dependencies"></a>Függőségek
 
@@ -397,7 +397,7 @@ Emellett, ha [itt](#enable-application-insights-server-side-telemetry-visual-stu
 
 ### <a name="how-can-i-track-telemetry-thats-not-automatically-collected"></a>Hogyan követhetem nyomon az automatikusan összegyűjtött telemetria?
 
-Szerezzen be egy példányt a `TelemetryClient` konstruktor injekció használatával, és hívja meg a szükséges `TrackXXX()` metódust. Nem javasoljuk, hogy új `TelemetryClient` példányokat hozzon létre egy ASP.net Core alkalmazásban. Az egy példánya `TelemetryClient` már regisztrálva van a `DependencyInjection` tárolóban, amely a `TelemetryConfiguration` többi telemetria együtt osztozik. Az új `TelemetryClient` példányok létrehozása csak akkor javasolt, ha olyan konfigurációra van szükség, amely eltér a többi telemetria.
+Szerezzen be egy példányt a `TelemetryClient` konstruktor injekció használatával, és hívja meg a szükséges `TrackXXX()` metódust. Nem javasoljuk, hogy új `TelemetryClient` vagy `TelemetryConfiguration` példányokat hozzon létre egy ASP.net Core alkalmazásban. Az egy példánya `TelemetryClient` már regisztrálva van a `DependencyInjection` tárolóban, amely a `TelemetryConfiguration` többi telemetria együtt osztozik. Az új `TelemetryClient` példányok létrehozása csak akkor javasolt, ha olyan konfigurációra van szükség, amely eltér a többi telemetria.
 
 Az alábbi példa azt szemlélteti, hogyan követhet nyomon a vezérlő további telemetria.
 
@@ -423,6 +423,40 @@ public class HomeController : Controller
 ```
 
 További információ a Application Insightsban található egyéni adatjelentésekről: [Application Insights egyéni metrikák API-referencia](./api-custom-events-metrics.md). Hasonló módszer használható egyéni metrikák küldésére Application Insights a [GETMETRIC API](./get-metric.md)használatával.
+
+### <a name="how-do-i-customize-ilogger-logs-collection"></a>Hogyan testreszabja a ILogger-naplók gyűjteményét?
+
+Alapértelmezés szerint a rendszer csak a súlyossági és a feletti naplókat rögzíti `Warning` automatikusan. Ennek a viselkedésnek a megváltoztatásához explicit módon bírálja felül a szolgáltató naplózási konfigurációját az `ApplicationInsights` alább látható módon.
+A következő konfiguráció lehetővé teszi, hogy a ApplicationInsights az összes súlyossági naplót rögzítse `Information` .
+
+```json
+{
+  "Logging": {
+    "LogLevel": {
+      "Default": "Warning"
+    },
+    "ApplicationInsights": {
+      "LogLevel": {
+        "Default": "Information"
+      }
+    }
+  }
+}
+```
+
+Fontos megjegyezni, hogy a következő nem eredményezi a ApplicationInsights-szolgáltató számára a `Information` naplók rögzítését. Ennek az az oka, hogy az SDK egy alapértelmezett naplózási szűrőt ad hozzá, `ApplicationInsights` amely arra utasítja a rögzítést, hogy csak a `Warning` és annál újabb Emiatt explicit felülbírálásra van szükség a ApplicationInsights.
+
+```json
+{
+  "Logging": {
+    "LogLevel": {
+      "Default": "Information"
+    }
+  }
+}
+```
+
+További információ a [ILogger-konfigurációról](ilogger.md#control-logging-level).
 
 ### <a name="some-visual-studio-templates-used-the-useapplicationinsights-extension-method-on-iwebhostbuilder-to-enable-application-insights-is-this-usage-still-valid"></a>Egyes Visual Studio-sablonok a IWebHostBuilder UseApplicationInsights () bővítményi metódusát használták a Application Insights engedélyezéséhez. Még érvényes ez a használat?
 
@@ -477,11 +511,11 @@ Ehhez az SDK `HttpContext` -hoz szükséges, ezért nem működik semmilyen nem 
 
 ## <a name="open-source-sdk"></a>Nyílt forráskódú SDK
 
-* [Olvassa el és járuljon hozzá a kódhoz](https://github.com/microsoft/ApplicationInsights-dotnet#recent-updates).
+* [Olvassa el és járuljon hozzá a kódhoz](https://github.com/microsoft/ApplicationInsights-dotnet).
 
 A legújabb frissítések és hibajavítások [olvassa el a kibocsátási megjegyzéseket](./release-notes.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Fedezze fel a felhasználói folyamatokat](./usage-flows.md) , hogy megtudja, hogyan navigálnak a felhasználók az alkalmazáson keresztül.
 * [Egy pillanatkép-gyűjtemény konfigurálásával](./snapshot-debugger.md) megtekintheti a forráskód és a változók állapotát a kivétel pillanatában.

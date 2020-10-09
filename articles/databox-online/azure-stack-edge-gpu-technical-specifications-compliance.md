@@ -6,14 +6,14 @@ author: alkohli
 ms.service: databox
 ms.subservice: edge
 ms.topic: conceptual
-ms.date: 08/26/2020
+ms.date: 10/07/2020
 ms.author: alkohli
-ms.openlocfilehash: b0eaa9778480a6a767a4b37bd92a395d2b1ee6cb
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: 225cb9a31b73f330d8b4ed5790caacc4fa729477
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90899036"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91839945"
 ---
 # <a name="technical-specifications-and-compliance-for-azure-stack-edge-pro-with-gpu"></a>A GPU-val Azure Stack Edge Pro műszaki specifikációi és megfelelőségi követelményei 
 
@@ -47,7 +47,7 @@ Az Azure Stack Edge Pro-eszköz két 100-240 V-os tápegységgel (PSUs) rendelke
 | Maximális kimeneti teljesítmény    | 750 W                     |
 | Frequency               | 50/60 Hz                   |
 | Feszültség-tartomány kiválasztása | Automatikus hatókör: 100-240 V AC |
-| Gyors csatlakoztatás           | Yes                        |
+| Gyors csatlakoztatás           | Igen                        |
 
 
 ## <a name="network-interface-specifications"></a>Hálózati adapterek specifikációi
@@ -67,7 +67,7 @@ A Mellanox kártya részletei:
 
 | Paraméter           | Leírás                 |
 |-------------------------|----------------------------|
-| Modellezés    | ConnectX®-4 LX EN hálózati csatolókártya                      |
+| Modell    | ConnectX®-4 LX EN hálózati csatolókártya                      |
 | Modell leírása               | 25GbE Dual-port SFP28; PCIe 3.0 x8; ROHS R6                    |
 | Eszköz részének száma (R640) | MCX4121A – ACAT  |
 | PSID (R640)           | MT_2420110034                         |
@@ -79,20 +79,20 @@ A hálózati kártyák által támogatott kábelek, kapcsolók és adóvevők te
 
 ## <a name="storage-specifications"></a>Tárolási specifikációk
 
-Az Azure Stack Edge Pro-eszközök öt 2,5 "NVMe DC SSD-P4610 rendelkeznek, amelyek mindegyike 1,6 TB kapacitással rendelkezik. A rendszerindító meghajtó 240 GB SATA SSD. Az eszköz teljes felhasználható kapacitása körülbelül 8,28 TB. A következő táblázat felsorolja az eszköz tárolókapacitását.
+Az Azure Stack Edge Pro-eszközök öt 2,5 "NVMe DC SSD-P4610 rendelkeznek, amelyek mindegyike 1,6 TB kapacitással rendelkezik. A rendszerindító meghajtó 240 GB SATA SSD. Az eszköz teljes felhasználható kapacitása körülbelül 4,19 TB. A következő táblázat felsorolja az eszköz tárolókapacitását.
 
 |     Specifikáció                          |     Érték             |
 |--------------------------------------------|-----------------------|
-|    Rendszerindítási SATA SSD-meghajtók (SSD)      |    1                  |
 |    SSD-NVMe száma                     |    5                  |
-|    Rendszerindítási SSD-kapacitás                       |    240 GB             |
 |    Egyetlen NVMe SSD-kapacitás                |    1,6 TB             |
-|    Teljes kapacitás                          |    8,28 TB            |
-|    Teljes felhasználható kapacitás *                  |    ~ 7,95 TB          |
+|    Rendszerindítási SATA SSD-meghajtók (SSD)      |    1                  |
+|    Rendszerindítási SSD-kapacitás                       |    240 GB             |
+|    Teljes kapacitás                          |    8,0 TB             |
+|    Teljes felhasználható kapacitás *                  |    ~ 4,19 TB          |
 |    SAS-vezérlő                          |    HBA330 12 GB/s     |
 
 
-**Bizonyos területek belső használatra vannak fenntartva.*
+**A paritásos rugalmasság és a belső használatra való tárterület megőrzése után.*
 
 <!--Remove based on feedback from Ravi
 ## Other hardware specifications

@@ -1,17 +1,17 @@
 ---
 title: Átjáró konfigurálása a kérelmek továbbításához
 description: Megtudhatja, hogyan konfigurálhatja az átjárót, amely a Service Fabric rácsvonalon futó alkalmazás (ok) bejövő forgalmát kezeli.
-author: dkkapur
+author: georgewallace
 ms.topic: conceptual
 ms.date: 11/28/2018
-ms.author: dekapur
+ms.author: gwallace
 ms.custom: mvc, devcenter
-ms.openlocfilehash: ec408403d4baa0f211c6bfe867a15c96513693cb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: aa3ac9d8835cd17387346bb29b3e7c30f286cd1f
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75461950"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91839724"
 ---
 # <a name="configure-a-gateway-resource-to-route-requests"></a>Átjáró erőforrásának konfigurálása a kérelmek továbbításához
 
@@ -26,11 +26,11 @@ Mivel az átjáró-erőforrás hidat szolgál az alkalmazás hálózata és a m�
 ### <a name="gateway-resource-metadata"></a>Átjáró erőforrás-metaadatai
 
 Az átjáró a következő metaadatokkal van deklarálva:
-* `apiVersion`-a következőre kell állítani: "2018-09-01-Preview" (vagy újabb, a jövőben)
-* `name`– az átjáró sztring-neve
-* `type`-"Microsoft. ServiceFabricMesh/Gateways"
-* `location`-be kell állítani az alkalmazás/hálózat helyét; általában az üzemelő példányban található Location paraméterre mutató hivatkozás lesz.
-* `dependsOn`– az a hálózat, amelyhez ez az átjáró a bejövő forgalom pontként fog szolgálni
+* `apiVersion` -a következőre kell állítani: "2018-09-01-Preview" (vagy újabb, a jövőben)
+* `name` – az átjáró sztring-neve
+* `type` -"Microsoft. ServiceFabricMesh/Gateways"
+* `location` -be kell állítani az alkalmazás/hálózat helyét; általában az üzemelő példányban található Location paraméterre mutató hivatkozás lesz.
+* `dependsOn` – az a hálózat, amelyhez ez az átjáró a bejövő forgalom pontként fog szolgálni
 
 A következőképpen néz ki egy Azure Resource Manager (JSON) telepítési sablon: 
 
@@ -79,9 +79,9 @@ Az útválasztási szabályok a portszám alapján vannak megadva. Az egyes bej�
 #### <a name="tcp-routing-rules"></a>TCP-útválasztási szabályok 
 
 A TCP-útválasztási szabályok a következő tulajdonságokből állnak: 
-* `name`-hivatkozás arra a szabályra, amely bármilyen tetszőleges sztring lehet 
-* `port`-a bejövő kérelmek figyelésének portja 
-* `destination`-a végpont specifikációja, amely tartalmazza a, a `applicationName` `serviceName` és a `endpointName` rendszerét, ahol a kérelmeket át kell irányítani a következőre:
+* `name` -hivatkozás arra a szabályra, amely bármilyen tetszőleges sztring lehet 
+* `port` -a bejövő kérelmek figyelésének portja 
+* `destination` -a végpont specifikációja, amely tartalmazza a, a `applicationName` `serviceName` és a `endpointName` rendszerét, ahol a kérelmeket át kell irányítani a következőre:
 
 Íme egy példa a TCP-útválasztási szabályra:
 
@@ -106,14 +106,14 @@ A TCP-útválasztási szabályok a következő tulajdonságokből állnak:
 #### <a name="http-routing-rules"></a>HTTP-útválasztási szabályok 
 
 A HTTP-útválasztási szabályok a következő tulajdonságokből állnak: 
-* `name`-hivatkozás arra a szabályra, amely bármilyen tetszőleges sztring lehet 
-* `port`-a bejövő kérelmek figyelésének portja 
-* `hosts`– a fent megadott porton a különböző gazdagépekre érkező kérésekre vonatkozó szabályzatok tömbje. A gazdagépek azon alkalmazások és szolgáltatások összessége, amelyek futhatnak a hálózaton, és képesek a bejövő kérések, például egy webalkalmazás kiszolgálására. A gazdagép-házirendeket a rendszer sorrendben értelmezi, ezért a következőt kell létrehoznia a specificitás csökkenő szintjein.
-    * `name`– annak a gazdagépnek a DNS-neve, amelyre a következő útválasztási szabályok vannak megadva. A "*" használata itt az összes gazdagép útválasztási szabályait hozza létre.
-    * `routes`– az adott gazdagéphez tartozó szabályzatok tömbje
-        * `match`-az ehhez a szabályhoz tartozó bejövő kérelmek struktúrájának megadása, a következők alapján:`path`
-            * `path`-tartalmaz egy `value` (bejövő URI-t), `rewrite` (hogyan szeretné továbbítani a kérést) és a `type` (jelenleg csak "előtag" lehet)
-            * `header`– a fejlécek azon értékeinek opcionális tömbje, amelyek egyeznek a kérelem fejlécében szereplő értékekkel, ha a kérelem megfelel az elérésiút-specifikációnak (fenti).
+* `name` -hivatkozás arra a szabályra, amely bármilyen tetszőleges sztring lehet 
+* `port` -a bejövő kérelmek figyelésének portja 
+* `hosts` – a fent megadott porton a különböző gazdagépekre érkező kérésekre vonatkozó szabályzatok tömbje. A gazdagépek azon alkalmazások és szolgáltatások összessége, amelyek futhatnak a hálózaton, és képesek a bejövő kérések, például egy webalkalmazás kiszolgálására. A gazdagép-házirendeket a rendszer sorrendben értelmezi, ezért a következőt kell létrehoznia a specificitás csökkenő szintjein.
+    * `name` – annak a gazdagépnek a DNS-neve, amelyre a következő útválasztási szabályok vannak megadva. A "*" használata itt az összes gazdagép útválasztási szabályait hozza létre.
+    * `routes` – az adott gazdagéphez tartozó szabályzatok tömbje
+        * `match` -az ehhez a szabályhoz tartozó bejövő kérelmek struktúrájának megadása, a következők alapján: `path`
+            * `path` -tartalmaz egy `value` (bejövő URI-t), `rewrite` (hogyan szeretné továbbítani a kérést) és a `type` (jelenleg csak "előtag" lehet)
+            * `header` – a fejlécek azon értékeinek opcionális tömbje, amelyek egyeznek a kérelem fejlécében szereplő értékekkel, ha a kérelem megfelel az elérésiút-specifikációnak (fenti).
               * mindegyik bejegyzés tartalmazza `name` (a megegyező fejléc karakterlánc-nevét), a (a `value` kérelem fejlécének karakterlánc-értékét), a `type` (jelenleg csak "pontos" lehet)
         * `destination`-Ha a kérelem megfelel, a rendszer átirányítja erre a célhelyre, amely az a `applicationName` , a és a használatával van megadva. `serviceName``endpointName`
 
@@ -222,5 +222,5 @@ Ez az átjáró egy "meshAppLinux" nevű Linux-alkalmazáshoz van konfigurálva,
 * a " \<IPAddress> : 80/helloWorld/ \<request\> " érték azt eredményezi, hogy a kérelem a HelloWorldService "helloWorldListener" felé irányul. 
 * " \<IPAddress> : 80/Counter/ \<request\> " érték esetén a rendszer egy kérelmet küld a counterService lévő "counterListener" utasításnak. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * A [bejövő minták](https://github.com/Azure-Samples/service-fabric-mesh/tree/2018-09-01-preview/templates/ingress) üzembe helyezése az átjárók működés közbeni megtekintéséhez

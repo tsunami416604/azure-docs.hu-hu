@@ -1,17 +1,15 @@
 ---
 title: Alkalmazás telepítése önálló fürtre
 description: Ebből az oktatóanyagból megtudhatja, hogyan telepíthet alkalmazást önálló Service Fabric-fürtre.
-author: dkkapur
 ms.topic: tutorial
 ms.date: 07/22/2019
-ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: 8dd47d27f928cb33e5a2bbc3ba9a6ab2bc044852
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 0b35bd02af5e1c90cac2e94d31dfca2344f3cc85
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86245381"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91840625"
 ---
 # <a name="tutorial-deploy-an-application-on-your-service-fabric-standalone-cluster"></a>Oktatóanyag: Alkalmazás üzembe helyezése a különálló Service Fabric-fürtön
 
@@ -19,7 +17,7 @@ Az önálló Service Fabric-fürtök lehetővé teszik, hogy kiválassza a sajá
 
 Ez az oktatóanyag egy sorozat harmadik része.  Service Fabric önálló fürtök lehetővé teszi, hogy kiválassza a saját környezetét, és hozzon létre egy fürtöt a "bármely operációs rendszer, bármilyen felhő" megközelítés részeként a Service Fabric használatával. Ez az oktatóanyag bemutatja, hogyan hozhatja létre az önálló fürt futtatásához szükséges AWS-infrastruktúrát.
 
-A sorozat harmadik részében az alábbiakkal fog megismerkedni:
+Ebből a cikkből megtudhatja, hogyan végezheti el a következőket:
 
 > [!div class="checklist"]
 > * A mintaalkalmazás letöltése
@@ -52,15 +50,15 @@ Az alkalmazás letöltése után telepítheti azt a fürtön, közvetlenül a Vi
 
 4. A Megoldáskezelőben kattintson a jobb gombbal a `Voting` alkalmazásra, és válassza a **Közzététel** lehetőséget.
 
-5. Kattintson a **Kapcsolati végpont** legördülő menüjére, és írja be a fürtben lévő egyik csomópont DNS-nevét.  Például: `ec2-34-215-183-77.us-west-2.compute.amazonaws.com:19000`. Vegye figyelembe, hogy az Azure-ban a teljes tartománynév (FQDN) nem lesz automatikusan megadva, de [a virtuális gép áttekintő oldalán egyszerűen beállítható.](../virtual-machines/linux/portal-create-fqdn.md)
+5. Kattintson a **Kapcsolati végpont** legördülő menüjére, és írja be a fürtben lévő egyik csomópont DNS-nevét.  Például: `ec2-34-215-183-77.us-west-2.compute.amazonaws.com:19000`. Az Azure-ban a teljes tartománynév (FQDN) nincs automatikusan megadva, de egyszerűen [beállítható a virtuális gép áttekintése lapon.](../virtual-machines/linux/portal-create-fqdn.md)
 
 6. Nyissa meg az előnyben részesített böngészőt, és adja meg a fürt címét (a kapcsolati végpontot; ez az alkalmazás a 8080-as porton van üzembe helyezve; például: ec2-34-215-183-77.us-west-2.compute.amazonaws.com:8080).
 
     ![A fürttől érkező API-válasz](./media/service-fabric-tutorial-standalone-cluster/deployed-app.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-A sorozat harmadik részében megismerte, hogyan helyezhet üzembe egy alkalmazást a fürtön:
+Ebben a cikkben megtanulta, hogyan helyezhet üzembe egy alkalmazást a fürtön:
 
 > [!div class="checklist"]
 > * A mintaalkalmazás letöltése

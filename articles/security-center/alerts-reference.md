@@ -12,12 +12,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 10/01/2020
 ms.author: memildin
-ms.openlocfilehash: 257c6f30709448da2f6067cec226bc810d0ffe53
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 943aedb34cef8e7db73877c926da81887ca01df2
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91826145"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91839499"
 ---
 # <a name="security-alerts---a-reference-guide"></a>Biztonsági riasztások – útmutató
 
@@ -112,7 +112,6 @@ A lap alján található egy táblázat, amely leírja a riasztások szándéká
 |**Gyanús folyamat neve észlelve [többször is látható]**|A (z)% {feltört gazdagépen levő gazdagép adatainak elemzése olyan folyamatot észlelt, amelynek a neve gyanús, például egy ismert támadó eszköznek, vagy egy olyan támadó eszközöknek, amely olyan támadási eszközöket mutat be, amelyek az egyszerű észlelés során próbálnak elrejteni. Ez a folyamat lehet legitim tevékenység, vagy jelezhető, hogy az egyik gép sérült. Ez a viselkedés [x] időpontot észlelt a mai napon a következő gépeken: [Machine Names]|-|Közepes|
 |**Gyanús folyamat neve észlelve**|A (z)% {feltört gazdagépen levő gazdagép adatainak elemzése olyan folyamatot észlelt, amelynek a neve gyanús, például egy ismert támadó eszköznek, vagy egy olyan támadó eszközöknek, amely olyan támadási eszközöket mutat be, amelyek az egyszerű észlelés során próbálnak elrejteni. Ez a folyamat lehet legitim tevékenység, vagy jelezhető, hogy az egyik gép sérült.|-|Közepes|
 |**Gyanús folyamat megszakítása**|A gazdagépek adatai elemzésekor a rendszer gyanús folyamat-megszakítást jelez a (z)% {Machine Name} alkalmazásban. A (z)% {BEGIN} és a (z)% {End} között a (z)% {NumberOfCommands} folyamatokat öltek meg.|-|Alacsony|
-|**Gyanús rendszerfájl-végrehajtás**|A gazdagép adatainak elemzése olyan végrehajtható fájlt észlelt a (z)% {feltört gazdagépen, amely szokatlan helyről fut. Ez a végrehajtható fájl lehet legitim tevékenység, vagy egy feltört gazdagép jele.|-|Magas|
 |**A gyanús rendszerfolyamat végre lett hajtva**|A rendszer a (z)% {Process Name} rendszerfolyamatot rendellenes környezetben észlelte. A kártevők gyakran ezt a folyamatot használják a kártékony tevékenység maszkolására.|-|Magas|
 |**A rendszer gyanús névvel ellátott folyamatot észlelt**|A gazdagép adatainak elemzése a (z)% {feltört gazdagépen} egy olyan folyamatot észlelt, amelynek a neve nagyon hasonlít a nagyon gyakori futtatási folyamattól (% {a folyamat nevéhez hasonlóan). Habár ez a folyamat olyan jóindulatú támadók számára ismert, hogy a rosszindulatú eszközeiket a megbízható folyamatok nevéhez hasonlítják, néha egyszerű megjelenítéssel kell elrejteni.|-|Közepes|
 |**Szokatlan folyamat-végrehajtás észlelhető**|A (z)% {feltört gazdagépen levő gazdagép adatainak elemzése során a rendszer szokatlannak találta a (z)% {User Name} folyamat végrehajtását. A (z)% {User Name} fiókok, például a (z)% {Felhasználónév} általában korlátozott számú műveletet hajtanak végre, a végrehajtást úgy állapították meg, hogy nem a karakter, és a gyanús|-|Magas|

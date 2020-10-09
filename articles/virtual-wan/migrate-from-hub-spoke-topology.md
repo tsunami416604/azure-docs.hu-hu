@@ -7,12 +7,12 @@ ms.service: virtual-wan
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.author: cherylmc
-ms.openlocfilehash: e6078ffcaaf98702bf809dfeb435cdaa0f9b5701
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: e602905b461e370189cefed706ddc3a47e0199fe
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91777190"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91839639"
 ---
 # <a name="migrate-to-azure-virtual-wan"></a>Migrálás az Azure Virtual WAN-ba
 
@@ -110,10 +110,6 @@ Helyezzen üzembe egy virtuális WAN-hubot minden régióban. Állítsa be a vir
 
 Kapcsolja össze a virtuális WAN-hubot a meglévő ExpressRoute-áramkörökkel, és állítsa be a helyek közötti VPN-eket az interneten keresztül bármely távoli ág számára.
 
-> [!NOTE]
-> A virtuális WAN-hubhoz való kapcsolódáshoz a Express Routes-áramköröket prémium SKU-típusra kell frissíteni.
->
-
 :::image type="content" source="./media/migrate-from-hub-spoke-topology/figure3.png" alt-text="hub és küllő":::
 **3. ábra: az ügyfél által felügyelt központ és küllő a virtuális WAN-Migrálás**
 
@@ -190,7 +186,7 @@ A 2. elérési út a ExpressRoute csatlakoztatott európai HQ és a Dél-Kelet-�
 
 A forgalom a következőképpen lesz átirányítva:
 
-* Az Európai HQ a prémium szintű ExpressRoute áramkörön keresztül csatlakozik a Nyugat-európai Virtual WAN hub-hoz.
+* Az Európai HQ a ExpressRoute áramkörön keresztül csatlakozik a Nyugat-európai Virtual WAN hub-hoz.
 
 * A virtuális WAN hub – hub globális kapcsolat lehetővé teszi a forgalom átvitelét a távoli régióba csatlakoztatott VNet.
 

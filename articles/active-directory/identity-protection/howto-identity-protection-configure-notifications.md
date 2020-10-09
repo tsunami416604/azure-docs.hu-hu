@@ -5,18 +5,18 @@ services: active-directory
 ms.service: active-directory
 ms.subservice: identity-protection
 ms.topic: how-to
-ms.date: 06/05/2020
+ms.date: 10/07/2020
 ms.author: joflore
 author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 291afbdd902c7563e47595132d56b354dab28a3a
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.openlocfilehash: 71c786aaecd3ab2f18f242cea2f5c45838f9ecf3
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
-ms.locfileid: "88950391"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91839347"
 ---
 # <a name="azure-active-directory-identity-protection-notifications"></a>Értesítések Azure Active Directory Identity Protection
 
@@ -44,8 +44,8 @@ Az e-mailek túlterhelésének megakadályozása érdekében egy 5 másodperces 
 Rendszergazdaként a következőket állíthatja be:
 
 - **Az e-mailek generációját kiváltó felhasználói kockázati szint** alapértelmezés szerint a kockázati szint "magas" kockázatra van állítva.
-- **Az e-mail címzettjei** – alapértelmezés szerint a címzettek az összes globális rendszergazdát tartalmazzák. A globális rendszergazdák további globális rendszergazdákat, biztonsági rendszergazdákat és biztonsági olvasókat is hozzáadhatnak címzettként.
-   - Opcionálisan **további e-maileket is hozzáadhat a riasztási értesítések fogadásához** . Ez a funkció előzetes verzió, és a felhasználók által definiált felhasználóknak rendelkezniük kell a megfelelő engedélyekkel a csatolt jelentések megtekintéséhez a Azure Portal.
+- A rendszer automatikusan hozzáadja az e- **mailek címzettjeit** a globális rendszergazda, a biztonsági rendszergazda vagy a biztonsági olvasó szerepkör felhasználói számára a listához. Megpróbáljuk elküldeni az e-maileket az egyes szerepkörök első 20 tagjának. Ha egy felhasználó regisztrálva van a PIM-ban, hogy az egyik ilyen szerepkört igény szerint emeljen, akkor csak akkor kapják meg az e **-maileket, ha azok az e-mail elküldésekor megemelve lesznek**.
+   - Opcionálisan **hozzáadhat egyéni e-maileket itt** definiált felhasználóknak a megfelelő engedélyekkel kell rendelkezniük a csatolt jelentések megtekintéséhez a Azure Portal.
 
 Konfigurálja a veszélyeztetett felhasználókat a **Azure Portal** **Azure Active Directory**  >  **biztonsági**  >  **identitások védelme**a  >  **veszélyeztetett felhasználók által észlelt riasztások**területen.
 
@@ -60,7 +60,7 @@ A következőket tartalmazza:
 
 ![Heti kivonatoló e-mail](./media/howto-identity-protection-configure-notifications/weekly-digest-email.png)
 
-Alapértelmezés szerint a címzettek a globális rendszergazdákat is tartalmazzák. A globális rendszergazdák további globális rendszergazdákat, biztonsági rendszergazdákat és biztonsági olvasókat is hozzáadhatnak címzettként.
+A globális rendszergazda, a biztonsági rendszergazda vagy a biztonsági olvasó szerepkör felhasználói automatikusan hozzáadódnak a listához. Megpróbáljuk elküldeni az e-maileket az egyes szerepkörök első 20 tagjának. Ha egy felhasználó regisztrálva van a PIM-ben, hogy az egyik ilyen szerepkört igény szerint emeljen, akkor csak akkor kapják meg az e **-maileket, ha az e-mailek elküldésekor megemelve lesznek** .
 
 ### <a name="configure-weekly-digest-email"></a>Heti kivonatoló e-mail konfigurálása
 

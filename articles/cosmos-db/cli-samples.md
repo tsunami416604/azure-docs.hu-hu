@@ -5,15 +5,15 @@ author: markjbrown
 ms.service: cosmos-db
 ms.subservice: cosmosdb-sql
 ms.topic: sample
-ms.date: 07/29/2020
+ms.date: 10/07/2020
 ms.author: mjbrown
 ms.custom: devx-track-azurecli
-ms.openlocfilehash: 954215f04525e850151fdad93af6e7272b41b3df
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.openlocfilehash: 58460dffad3d44090644a544f4082b7727ece3f2
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
-ms.locfileid: "87498463"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91840336"
 ---
 # <a name="azure-cli-samples-for-azure-cosmos-db"></a>Azure CLI-minták az Azure Cosmos DB-hez
 
@@ -40,7 +40,7 @@ Ezek a minták az összes Azure Cosmos DB API-ra érvényesek
 |---|---|
 | [Azure Cosmos-fiók,-adatbázis és-tároló létrehozása](scripts/cli/sql/create.md?toc=%2fcli%2fazure%2ftoc.json)| Létrehoz egy Azure Cosmos DB fiókot, adatbázist és tárolót a Core (SQL) API-hoz. |
 | [Azure Cosmos-fiók,-adatbázis és-tároló létrehozása az autoscale](scripts/cli/sql/autoscale.md?toc=%2fcli%2fazure%2ftoc.json)| Létrehoz egy Azure Cosmos DB fiókot, adatbázist és tárolót az autoscale for Core (SQL) API-val. |
-| [Átviteli sebesség módosítása](scripts/cli/sql/throughput.md?toc=%2fcli%2fazure%2ftoc.json) | Az RU/s frissítése egy adatbázison és tárolón.|
+| [Átviteli sebességi műveletek](scripts/cli/sql/throughput.md?toc=%2fcli%2fazure%2ftoc.json) | Olvashatja, frissítheti és áttelepítheti az alapszintű és a standard szintű átviteli sebességet egy adatbázison és tárolón.|
 | [Erőforrások zárolásának törlése a törlésből](scripts/cli/sql/lock.md?toc=%2fcli%2fazure%2ftoc.json)| Az erőforrások törlésének megakadályozása az erőforrás-zárolásokkal.|
 |||
 
@@ -50,7 +50,7 @@ Ezek a minták az összes Azure Cosmos DB API-ra érvényesek
 |---|---|
 | [Azure Cosmos-fiók, adatbázis és gyűjtemény létrehozása](scripts/cli/mongodb/create.md?toc=%2fcli%2fazure%2ftoc.json)| Létrehoz egy Azure Cosmos DB fiókot, adatbázist és gyűjteményt a MongoDB API-hoz. |
 | [Hozzon létre egy Azure Cosmos-fiókot, az adatbázist az autoscale és két gyűjtemény közös átviteli sebességgel](scripts/cli/mongodb/autoscale.md?toc=%2fcli%2fazure%2ftoc.json)| Létrehoz egy Azure Cosmos DB fiókot, az adatbázist az autoscale és két gyűjtemény közös átviteli sebességgel a MongoDB API-hoz. |
-| [Átviteli sebesség módosítása](scripts/cli/mongodb/throughput.md?toc=%2fcli%2fazure%2ftoc.json) | Az RU/s frissítése egy adatbázison és gyűjteményen.|
+| [Átviteli sebességi műveletek](scripts/cli/mongodb/throughput.md?toc=%2fcli%2fazure%2ftoc.json) | Olvashatja, frissítheti és áttelepítheti az alapszintű és a standard szintű átviteli sebességet egy adatbázison és gyűjteményen.|
 | [Erőforrások zárolásának törlése a törlésből](scripts/cli/mongodb/lock.md?toc=%2fcli%2fazure%2ftoc.json)| Az erőforrások törlésének megakadályozása az erőforrás-zárolásokkal.|
 |||
 
@@ -60,7 +60,7 @@ Ezek a minták az összes Azure Cosmos DB API-ra érvényesek
 |---|---|
 | [Azure Cosmos-fiók, térköz és tábla létrehozása](scripts/cli/cassandra/create.md?toc=%2fcli%2fazure%2ftoc.json)| Létrehoz egy Azure Cosmos DB fiókot, a térközt és a Cassandra API táblát. |
 | [Azure Cosmos-fiók,-térköz és-tábla létrehozása az autoscale paranccsal](scripts/cli/cassandra/autoscale.md?toc=%2fcli%2fazure%2ftoc.json)| Létrehoz egy Azure Cosmos DB fiókot, egy térközt és egy táblázatot, amely automatikusan méretezhető a Cassandra APIhoz. |
-| [Átviteli sebesség módosítása](scripts/cli/cassandra/throughput.md?toc=%2fcli%2fazure%2ftoc.json) | Az RU/s frissítése a szóköz és a tábla alapján.|
+| [Átviteli sebességi műveletek](scripts/cli/cassandra/throughput.md?toc=%2fcli%2fazure%2ftoc.json) | Olvashatja, frissítheti és áttelepítheti az autoscale és a standard átviteli sebesség közötti térközt és táblázatot.|
 | [Erőforrások zárolásának törlése a törlésből](scripts/cli/cassandra/lock.md?toc=%2fcli%2fazure%2ftoc.json)| Az erőforrások törlésének megakadályozása az erőforrás-zárolásokkal.|
 |||
 
@@ -70,7 +70,7 @@ Ezek a minták az összes Azure Cosmos DB API-ra érvényesek
 |---|---|
 | [Azure Cosmos-fiók, adatbázis és gráf létrehozása](scripts/cli/gremlin/create.md?toc=%2fcli%2fazure%2ftoc.json)| Létrehoz egy Azure Cosmos DB fiókot, adatbázist és gráfot a Gremlin API-hoz. |
 | [Azure Cosmos-fiók, adatbázis és gráf létrehozása az autoscalevel](scripts/cli/gremlin/autoscale.md?toc=%2fcli%2fazure%2ftoc.json)| Létrehoz egy Azure Cosmos DB fiókot, adatbázist és gráfot a Gremlin API-hoz. |
-| [Átviteli sebesség módosítása](scripts/cli/gremlin/throughput.md?toc=%2fcli%2fazure%2ftoc.json) | Az RU/s frissítése egy adatbázison és gráfon.|
+| [Átviteli sebességi műveletek](scripts/cli/gremlin/throughput.md?toc=%2fcli%2fazure%2ftoc.json) | Olvashatja, frissítheti és áttelepítheti az autoscale és a standard átviteli sebességét egy adatbázison és gráfon.|
 | [Erőforrások zárolásának törlése a törlésből](scripts/cli/gremlin/lock.md?toc=%2fcli%2fazure%2ftoc.json)| Az erőforrások törlésének megakadályozása az erőforrás-zárolásokkal.|
 |||
 
@@ -80,6 +80,6 @@ Ezek a minták az összes Azure Cosmos DB API-ra érvényesek
 |---|---|
 | [Azure Cosmos-fiók és-tábla létrehozása](scripts/cli/table/create.md?toc=%2fcli%2fazure%2ftoc.json)| Létrehoz egy Azure Cosmos DB fiókot és táblát a Table APIhoz. |
 | [Azure Cosmos-fiók és-tábla létrehozása az autoscale paranccsal](scripts/cli/table/autoscale.md?toc=%2fcli%2fazure%2ftoc.json)| Létrehoz egy Azure Cosmos DB fiókot és táblát, amely automatikusan méretezhető a Table APIhoz. |
-| [Átviteli sebesség módosítása](scripts/cli/table/throughput.md?toc=%2fcli%2fazure%2ftoc.json) | Az RU/s frissítése egy táblán.|
+| [Átviteli sebességi műveletek](scripts/cli/table/throughput.md?toc=%2fcli%2fazure%2ftoc.json) | Olvashatja, frissítheti és áttelepítheti az alapszintű és a standard szintű adatátviteli sebességet egy táblán.|
 | [Erőforrások zárolásának törlése a törlésből](scripts/cli/table/lock.md?toc=%2fcli%2fazure%2ftoc.json)| Az erőforrások törlésének megakadályozása az erőforrás-zárolásokkal.|
 |||

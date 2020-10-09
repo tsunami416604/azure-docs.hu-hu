@@ -4,12 +4,12 @@ description: Konfigurálhatja a helyszíni vagy az Azure-ban üzemeltetett ASP.N
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.custom: contperfq1
-ms.openlocfilehash: 5f52f1febcc69723dae76e31d17b5a9a7e8c67bb
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.openlocfilehash: 861a9f53c2f149268e06005053206a7411e842f8
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91616754"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91838942"
 ---
 # <a name="configure-application-insights-for-your-aspnet-website"></a>Application Insights konfigurálása a ASP.NET webhelye számára
 
@@ -350,7 +350,13 @@ A kódrészletet manuálisan is hozzáadhatja az egyes HTML-lapok fejlécéhez, 
 
 A Visual Studio 2019 aktuális verziójának ismert hibája, hogy a rendszerállapot-kulcs felhasználói titokban való tárolása során a rendszer megszakította a .NET-keretrendszer alapú alkalmazások működését, és a kulcsot végső soron be kell hardcoded a applicationinsights.config fájlba a hiba megkerülése érdekében. Ez a cikk úgy lett kialakítva, hogy a probléma teljes mértékben elkerülhető legyen, ha nem használ felhasználói titkokat.  
 
-## <a name="next-steps"></a>További lépések
+## <a name="open-source-sdk"></a>Nyílt forráskódú SDK
+
+* [Olvassa el és járuljon hozzá a kódhoz](https://github.com/microsoft/ApplicationInsights-dotnet).
+
+A legújabb frissítések és hibajavítások [olvassa el a kibocsátási megjegyzéseket](./release-notes.md).
+
+## <a name="next-steps"></a>Következő lépések
 
 * Szintetikus tranzakciók hozzáadásával tesztelheti, hogy a webhely elérhető-e a világ minden tájáról a [rendelkezésre állás monitorozásával](monitor-web-app-availability.md).
 * [Konfigurálja a mintavételezést](sampling.md) a telemetria-forgalom csökkentése és az adattárolási költségek csökkentése érdekében.

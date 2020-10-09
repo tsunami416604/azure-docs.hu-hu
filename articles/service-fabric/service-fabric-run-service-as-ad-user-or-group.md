@@ -1,16 +1,14 @@
 ---
 title: Azure Service Fabric-szolgáltatás futtatása AD-felhasználóként vagy-csoportként
 description: Megtudhatja, hogyan futtathat egy szolgáltatást Active Directory felhasználóként vagy csoportként egy Service Fabric Windows önálló fürtön.
-author: dkkapur
 ms.topic: conceptual
 ms.date: 03/29/2018
-ms.author: dekapur
-ms.openlocfilehash: d440aadb66562e32331c9725a9367c12440a315d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: d4a7afc2ddb0f39014a7cf0fd006d7fe23673a95
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75464244"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91840727"
 ---
 # <a name="run-a-service-as-an-active-directory-user-or-group"></a>Szolgáltatás futtatása Active Directory felhasználóként vagy csoportként
 Egy Windows Server önálló fürtön futtathatja a szolgáltatást Active Directory felhasználóként vagy csoportként egy futtató házirend használatával.  Alapértelmezés szerint Service Fabric alkalmazások azon a fiókon futnak, amelyen a Fabric.exe folyamat fut. Az alkalmazások különböző fiókokban való futtatása, még egy megosztott környezetben is, biztonságosabbá teszi őket egymástól. Vegye figyelembe, hogy ez Active Directory a helyi tartományon belül, és nem Azure Active Directory (Azure AD).  A szolgáltatásokat [csoportosan felügyelt szolgáltatásfiókként (gMSA)](service-fabric-run-service-as-gmsa.md)is futtathatja.

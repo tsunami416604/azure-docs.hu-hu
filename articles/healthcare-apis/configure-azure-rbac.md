@@ -8,12 +8,12 @@ ms.topic: reference
 ms.date: 03/15/2020
 ms.author: matjazl
 ms.reviewer: dseven
-ms.openlocfilehash: c4a78168f2759f9d7bb9e50165b8cf03c71ecab5
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.openlocfilehash: 1df2d112814c93261c364883f4b834e0bdb657bb
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87845937"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91839911"
 ---
 # <a name="configure-azure-rbac-for-fhir"></a>Az Azure-RBAC konfigurálása a FHIR 
 
@@ -31,11 +31,11 @@ A **szolgáltatót** az előfizetéshez társított Azure Active Directory-bérl
 
 Ahhoz, hogy a felhasználók, az egyszerű szolgáltatások vagy a csoportok hozzáférhessenek a FHIR-adatsíkon, kattintson a **hozzáférés-vezérlés (iam)**, majd a **szerepkör-hozzárendelések** elemre, és kattintson a **+ Hozzáadás**gombra:
 
-:::image type="content" source="media/rbac/add-azure-rbac-role-assignment.png" alt-text="Azure-szerepkör-hozzárendelés hozzáadása":::
+:::image type="content" source="media/rbac/add-azure-rbac-role-assignment.png" alt-text="Azure RBAC mód megerősítése":::
 
 A **szerepkör** kiválasztása területen keresse meg a FHIR adatsíkjahoz tartozó beépített szerepkörök egyikét:
 
-:::image type="content" source="media/rbac/built-in-fhir-data-roles.png" alt-text="Beépített FHIR-adatszerepkörök":::
+:::image type="content" source="media/rbac/built-in-fhir-data-roles.png" alt-text="Azure RBAC mód megerősítése":::
 
 A következők közül választhat:
 
@@ -57,4 +57,4 @@ A FHIR készült Azure API akár 5 percig is gyorsítótárazza a döntéseket. 
 Ebből a cikkből megtudhatta, hogyan rendelhet Azure-szerepköröket a FHIR adatsíkon. További információ a FHIR készült Azure API további beállításairól:
  
 >[!div class="nextstepaction"]
->[További beállítások Azure API a FHIR-hez](azure-api-for-fhir-additional-settings.md)
+>[További beállítások a FHIR készült Azure API-hoz](azure-api-for-fhir-additional-settings.md)

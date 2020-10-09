@@ -1,63 +1,23 @@
 ---
-ms.openlocfilehash: ed7be82146f38cc7ae57fd863bb0c1b8e6910fd2
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 2349939d4997ddc57d0c0c56a21eeec0357bf0ec
+ms.sourcegitcommit: 23aa0cf152b8f04a294c3fca56f7ae3ba562d272
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88691023"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91828821"
 ---
 A mintakód futtatásához kövesse az alábbi lépéseket:
 
-1. A Visual Studio Code-ban lépjen a *src/Cloud-to-Device-Console-app/operations.js*elemre.
-1. A **GraphTopologySet** csomóponton ellenőrizze, hogy a következő érték jelenik-e meg:
+1. A Visual Studio Code-ban nyissa meg a **bővítmények** lapot (vagy nyomja le a CTRL + SHIFT + X billentyűkombinációt), és keressen rá az Azure IoT hubra.
+1. Kattintson a jobb gombbal, és válassza a **bővítmény beállításai**lehetőséget.
 
-    `"topologyUrl" : "https://raw.githubusercontent.com/Azure/live-video-analytics/master/MediaGraph/topologies/motion-detection/topology.json"`
-1. A **GraphInstanceSet** és a **GraphTopologyDelete**  csomóponton győződjön meg arról, hogy a `topologyName` `name` Graph-topológia tulajdonságának értéke megegyezik a következővel:
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="../../../media/run-program/extensions-tab.png" alt-text="Bővítmény beállításai&quot;:::
+1. Keresse meg és engedélyezze a &quot;részletes üzenet megjelenítése" lehetőséget.
 
-    `"topologyName" : "MotionDetection"`
-    
-1. Indítsa el a hibakeresési munkamenetet az F5 billentyű kiválasztásával. A **terminál** ablakban néhány üzenet jelenik meg.
-1. A fájl *operations.js* a és a hívásával elindul `GraphTopologyList` `GraphInstanceList` . Ha az előző rövid útmutatók befejezése után törölte az erőforrásokat, akkor ez a folyamat üres listát ad vissza, majd szünetelteti. A folytatáshoz válassza az ENTER billentyűt.
-
-    ```
-    --------------------------------------------------------------------------
-    Executing operation GraphTopologyList
-    -----------------------  Request: GraphTopologyList  --------------------------------------------------
-    {
-        "@apiVersion": "1.0"
-    }
-    ---------------  Response: GraphTopologyList - Status: 200  ---------------
-    {
-        "value": []
-    }
-    --------------------------------------------------------------------------
-    Executing operation WaitForInput
-    Press Enter to continue
-    ```
-    
-    A **terminál** ablak a közvetlen metódusok következő készletét jeleníti meg:
-     * `GraphTopologySet`Az előzőt használó hívás`topologyUrl`
-     * A `GraphInstanceSet` következő törzset használó hívás:
-         
-    ```
-    {
-      "@apiVersion": "1.0",
-      "name": "Sample-Graph",
-      "properties": {
-        "topologyName": "MotionDetection",
-        "description": "Sample graph description",
-        "parameters": [
-          {
-            "name": "rtspUrl",
-            "value": "rtsp://rtspsim:554/media/camera-300s.mkv"
-          },
-          {
-            "name": "rtspUserName",
-            "value": "testuser"
-          },
-          {
-            "name": "rtspPassword",
-            "value": "testpassword"
+    > [!div class="mx-imgBorder"]
+    > :::image type="content" source="../../../media/run-program/show-verbose-message.png" alt-text="Bővítmény beállításai&quot;:::
+1. Keresse meg és engedélyezze a &quot;részletes üzenet megjelenítése"
           }
         ]
       }

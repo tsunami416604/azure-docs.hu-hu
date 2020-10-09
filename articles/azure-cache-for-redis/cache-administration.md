@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/05/2017
 ms.author: yegu
-ms.openlocfilehash: c9da97607961a7d701851c6892393cdf537b9a32
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.openlocfilehash: 156dfd1d9553e369357eb68225e722222a59d847
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
-ms.locfileid: "88008032"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91838670"
 ---
 # <a name="how-to-administer-azure-cache-for-redis"></a>Az Azure cache felügyelete a Redis-hez
 Ez a témakör azt ismerteti, hogyan hajtható végre olyan adminisztrációs feladatok, mint például a Redis-példányok Azure cache-re való [újraindítása](#reboot) és a [frissítések ütemezése](#schedule-updates) .
@@ -21,11 +21,11 @@ Ez a témakör azt ismerteti, hogyan hajtható végre olyan adminisztrációs fe
 ## <a name="reboot"></a>Újraindítás
 Az **Újraindítás** panel lehetővé teszi a gyorsítótár egy vagy több csomópontjának újraindítását. Ez az újraindítási funkció lehetővé teszi az alkalmazás rugalmasságának tesztelését, ha hiba történt a gyorsítótár-csomópontok meghibásodása esetén.
 
-![Újraindítás](./media/cache-administration/redis-cache-administration-reboot.png)
+![Képernyőkép, amely kiemeli az újraindítás menüpontot.](./media/cache-administration/redis-cache-administration-reboot.png)
 
 Válassza ki az újraindítani kívánt csomópontokat, majd kattintson az **Újraindítás**gombra.
 
-![Újraindítás](./media/cache-administration/redis-cache-reboot.png)
+![Képernyőkép, amely megjeleníti, hogy mely csomópontokat lehet újraindítani.](./media/cache-administration/redis-cache-reboot.png)
 
 Ha olyan prémium szintű gyorsítótárral rendelkezik, amelyen engedélyezve van a fürtözés, kiválaszthatja, hogy a gyorsítótár mely szegmensei induljon újra.
 
@@ -97,7 +97,7 @@ Igen, a következő PowerShell-parancsmagokkal kezelheti az ütemezett frissít�
 * [Új – AzRedisCacheScheduleEntry](/powershell/module/az.rediscache/new-azrediscachescheduleentry)
 * [Remove-AzRedisCachePatchSchedule](/powershell/module/az.rediscache/remove-azrediscachepatchschedule)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információ az Azure cache Redis szolgáltatásairól.
 
 * [Azure cache a Redis szolgáltatási szintjeihez](cache-overview.md#service-tiers)

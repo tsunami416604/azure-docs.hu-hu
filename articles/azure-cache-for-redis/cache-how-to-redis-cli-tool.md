@@ -6,12 +6,12 @@ ms.author: yegu
 ms.service: cache
 ms.topic: conceptual
 ms.date: 03/22/2018
-ms.openlocfilehash: bd2da798cae92a7e47bd879b69dd108618463402
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e8a3183e1fcac3f1a71d07835cacc37c2f57fb06
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "81010766"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91839044"
 ---
 # <a name="how-to-use-the-redis-command-line-tool-with-azure-cache-for-redis"></a>A Redis parancssori eszköz használata az Azure cache használatával a Redis
 
@@ -50,7 +50,7 @@ Az Azure cache for Redis esetében a rendszer alapértelmezés szerint csak a TL
 
     Az aktuális konfigurációs fájl megnyitásához a stunnel-napló ablak menüjében **kattintson a konfiguráció**  >  **szerkesztése konfiguráció** elemre.
 
-    Adja hozzá a következő bejegyzést a *redis-cli.exehoz* a **szolgáltatási definíciók** szakaszban. Szúrja be a tényleges gyorsítótár nevét a helyére `yourcachename` . 
+    Adja hozzá a következő bejegyzést a *redis-cli.exehoz * a **szolgáltatási definíciók** szakaszban. Szúrja be a tényleges gyorsítótár nevét a helyére `yourcachename` . 
 
     ```
     [redis-cli]
@@ -72,7 +72,7 @@ A stunnel használatakor futtassa *redis-cli.exe*, és csak a *portot*, a *hozz�
 redis-cli.exe -p 6380 -a YourAccessKey
 ```
 
-![stunnel és Redis – parancssori felület](media/cache-how-to-redis-cli-tool/cache-redis-cli-stunnel.png)
+![Képernyőkép, amely azt mutatja, hogy a gyorsítótárhoz való kapcsolódás sikeres.](media/cache-how-to-redis-cli-tool/cache-redis-cli-stunnel.png)
 
 Ha tesztelési gyorsítótárat használ a nem **biztonságos** TLS-porthoz, futtassa `redis-cli.exe` és adja át az *állomásnevet*, a *portot*és a *hozzáférési kulcsot* (elsődleges vagy másodlagos) a tesztelési gyorsítótárhoz való csatlakozáshoz.
 
@@ -85,7 +85,7 @@ redis-cli.exe -h yourcachename.redis.cache.windows.net -p 6379 -a YourAccessKey
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a Redis- [konzolnak](cache-configure.md#redis-console) a parancsok kiküldéséhez való használatáról.
 

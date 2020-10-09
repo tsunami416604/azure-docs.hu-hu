@@ -1,16 +1,16 @@
 ---
 title: Meglévő .NET-alkalmazás tárolóba helyezése Service Fabric Mesh számára
 description: Adja hozzá Service Fabric Mesh-tárolók előkészítésének támogatását a teljes .NET-keretrendszert használó ASP.NET és konzolos projektekhez.
-author: dkkapur
-ms.author: dekapur
+author: georgewallace
+ms.author: gwallace
 ms.date: 11/08/2018
 ms.topic: conceptual
-ms.openlocfilehash: d67ea5bb7df5910ec87e69adf3c414c303bf0182
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: a995f30872216a8b704d3d1714bbece4bb8271f8
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75462051"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91840064"
 ---
 # <a name="containerize-an-existing-net-app-for-service-fabric-mesh"></a>Meglévő .NET-alkalmazás tárolóba helyezése Service Fabric Mesh számára
 
@@ -65,6 +65,6 @@ Miután hozzáadta a Container-előkészítési támogatást az alkalmazáshoz, 
 
 Most már közzéteheti az alkalmazást az Azure Service Fabric Mesh szolgáltatásban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse meg, hogyan tehet közzé egy alkalmazást a Service Fabric Meshban: [oktatóanyag – Service Fabric Mesh-alkalmazás üzembe helyezése](service-fabric-mesh-tutorial-deploy-service-fabric-mesh-app.md)

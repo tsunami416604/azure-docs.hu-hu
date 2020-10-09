@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: genemi
 ms.date: 01/25/2019
-ms.openlocfilehash: 94f54e02de1b61cb05b4e41bb4c40118299cf20f
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.openlocfilehash: 487b668d9a3d934220fecf5c0896f7ef492c6775
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91618641"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91840489"
 ---
 # <a name="how-to-use-batching-to-improve-azure-sql-database-and-azure-sql-managed-instance-application-performance"></a>A kötegelt feldolgozás használata az Azure SQL Database és az Azure SQL felügyelt példányok alkalmazásának teljesítményének növeléséhez
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
@@ -99,7 +99,7 @@ Az alábbi táblázat néhány alkalmi tesztelési eredményt mutat be. A teszte
 
 **A helyszínen az Azure-** ba:
 
-| Üzemeltetés | Nincs tranzakció (MS) | Tranzakció (MS) |
+| Műveletek | Nincs tranzakció (MS) | Tranzakció (MS) |
 | --- | --- | --- |
 | 1 |130 |402 |
 | 10 |1208 |1226 |
@@ -108,7 +108,7 @@ Az alábbi táblázat néhány alkalmi tesztelési eredményt mutat be. A teszte
 
 **Azure-ról Azure-ra (azonos adatközpont)**:
 
-| Üzemeltetés | Nincs tranzakció (MS) | Tranzakció (MS) |
+| Műveletek | Nincs tranzakció (MS) | Tranzakció (MS) |
 | --- | --- | --- |
 | 1 |21 |26 |
 | 10 |220 |56 |
@@ -195,7 +195,7 @@ A legtöbb esetben a tábla értékű paraméterek egyenértékű vagy jobb telj
 
 A következő táblázat a tábla értékű paraméterek ezredmásodpercben történő használatára ad hoc tesztelési eredményeket mutat be.
 
-| Üzemeltetés | Helyszíni – Azure (MS) | Azure-beli azonos adatközpont (MS) |
+| Műveletek | Helyszíni – Azure (MS) | Azure-beli azonos adatközpont (MS) |
 | --- | --- | --- |
 | 1 |124 |32 |
 | 10 |131 |25 |
@@ -229,11 +229,11 @@ using (SqlConnection connection = new SqlConnection(CloudConfigurationManager.Ge
 }
 ```
 
-Vannak olyan esetek, amikor a tömeges másolás előnyben részesített a tábla értékű paramétereknél. Tekintse meg a tábla értékű paraméterek összehasonlító táblázatát, illetve a BULK INSERT műveleteket a [táblázat értékű paraméterek](/sql/relational-databases/tables/use-table-valued-parameters-database-engine)című cikkben.
+Vannak olyan esetek, amikor a tömeges másolás előnyben részesített a tábla értékű paramétereknél. Tekintse meg az Table-Valued paraméterek összehasonlító táblázatát, illetve BULK INSERT műveleteket a [táblázat értékű paraméterek](/sql/relational-databases/tables/use-table-valued-parameters-database-engine)című cikkben.
 
 A következő ad hoc tesztelési eredmények a **SqlBulkCopy** -ben történő kötegelt feldolgozás teljesítményét mutatják be ezredmásodpercben.
 
-| Üzemeltetés | Helyszíni – Azure (MS) | Azure-beli azonos adatközpont (MS) |
+| Műveletek | Helyszíni – Azure (MS) | Azure-beli azonos adatközpont (MS) |
 | --- | --- | --- |
 | 1 |433 |57 |
 | 10 |441 |32 |
@@ -276,7 +276,7 @@ Ez a példa az alapvető koncepció megjelenítését szemlélteti. Egy reálisa
 
 A következő ad hoc teszt eredményei az ilyen típusú INSERT utasítás teljesítményét mutatják be ezredmásodpercben.
 
-| Üzemeltetés | Tábla értékű paraméterek (MS) | Egyszeres utasítás beszúrása (MS) |
+| Műveletek | Tábla értékű paraméterek (MS) | Egyszeres utasítás beszúrása (MS) |
 | --- | --- | --- |
 | 1 |32 |20 |
 | 10 |30 |25 |
@@ -291,9 +291,9 @@ Ez a megközelítés valamivel gyorsabb lehet a 100-nál kisebb kötegek esetéb
 
 A **DataAdapter** osztály lehetővé teszi az **adatkészlet** -objektumok módosítását, majd a módosítások beszúrási, frissítési és törlési műveletként való elküldését. Ha a **DataAdapter** ilyen módon használja, fontos megjegyezni, hogy minden egyes művelethez külön hívásokat kell végezni. A teljesítmény javításához használja a **UpdateBatchSize** tulajdonságot azon műveletek számához, amelyeket egyszerre kell kötegbe állítani. További információ: batch- [műveletek végrehajtása a DataAdapters használatával](/dotnet/framework/data/adonet/performing-batch-operations-using-dataadapters).
 
-### <a name="entity-framework"></a>Entitás-keretrendszer
+### <a name="entity-framework"></a>Entity Framework
 
-A [Entity Framework 6](https://github.com/dotnet/ef6) mostantól támogatja a kötegelt feldolgozást.
+A [Entity Framework Core](https://docs.microsoft.com/ef/efcore-and-ef6/#saving-data) támogatja a kötegelt feldolgozást.
 
 ### <a name="xml"></a>XML
 
@@ -666,6 +666,6 @@ Az alábbi lista összefoglalja a cikkben tárgyalt kötegelt javaslatokat:
 * Kerülje az egyetlen táblán működő kötegek párhuzamos végrehajtását egyetlen adatbázisban. Ha úgy dönt, hogy egyetlen köteget oszt szét több munkavégző szál között, futtasson teszteket a szálak ideális számának megállapításához. Egy meghatározatlan küszöbérték után több szál csökkenti a teljesítményt, és nem növeli.
 * További forgatókönyvek esetén érdemes lehet a méret és az idő pufferelését figyelembe venni a Batch-feladatok végrehajtásához.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez a cikk arra összpontosít, hogy miként javítható az alkalmazások teljesítménye és méretezhetősége az adatbázis-létrehozással kapcsolatos tervezési és kódolási technikákban. Ez azonban csak egy tényező a teljes stratégiában. A teljesítmény és a méretezhetőség javítása érdekében tekintse meg az [adatbázis teljesítményével kapcsolatos útmutatást](database/performance-guidance.md) , valamint [a rugalmas készletek árának és teljesítményének szempontjait](database/elastic-pool-overview.md).

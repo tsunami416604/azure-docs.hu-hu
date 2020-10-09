@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 08/22/2017
 ms.author: yegu
-ms.openlocfilehash: 1fb05b52bbe3e8f544b17537ef9070e5b2b0b77b
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.openlocfilehash: 81a65c088fd83ce179f67edd1ecdb96149dd1614
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91460169"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91840251"
 ---
 # <a name="how-to-configure-azure-cache-for-redis"></a>Az Azure cache konfigurálása a Redis-hez
 Ez a témakör az Azure cache Redis-példányok számára elérhető konfigurációkat ismerteti. Ez a témakör az Azure cache alapértelmezett Redis-kiszolgáló-konfigurációját is ismerteti Redis-példányok esetén.
@@ -169,11 +169,11 @@ További információ: [Redis](https://redis.io/topics/notifications). A mintak�
 ## <a name="azure-cache-for-redis-advisor"></a>Azure cache a Redis Advisorhoz
 Az **Azure cache for Redis Advisor** panel a gyorsítótárra vonatkozó javaslatokat jeleníti meg. A normál működés során nem jelenik meg javaslat.
 
-![Javaslatok](./media/cache-configure/redis-cache-no-recommendations.png)
+![Képernyőkép, amely a javaslatok megjelenítésének helyét mutatja.](./media/cache-configure/redis-cache-no-recommendations.png)
 
 Ha a gyorsítótár műveletei (például a nagy memóriahasználat, a hálózati sávszélesség vagy a kiszolgáló terhelése) során bármilyen feltétel fordul elő, a rendszer riasztást jelenít meg az **Azure cache Redis** paneljén.
 
-![Javaslatok](./media/cache-configure/redis-cache-recommendations-alert.png)
+![Képernyőkép, amely megjeleníti, hogy a riasztások hol jelennek meg az Azure cache for Redis szakaszban.](./media/cache-configure/redis-cache-recommendations-alert.png)
 
 További információt a **javaslatok** panelen találhat.
 
@@ -314,7 +314,7 @@ Az **Újraindítás** panel lehetővé teszi a gyorsítótár csomópontjainak �
 
 Ha olyan prémium szintű gyorsítótárral rendelkezik, amelyen engedélyezve van a fürtözés, kiválaszthatja, hogy a gyorsítótár mely szegmensei induljon újra.
 
-![Újraindítás](./media/cache-configure/redis-cache-reboot-cluster.png)
+![Képernyőkép: Itt adhatja meg, hogy a gyorsítótár mely szegmensei legyenek újraindításra.](./media/cache-configure/redis-cache-reboot-cluster.png)
 
 A gyorsítótár egy vagy több csomópontjának újraindításához válassza ki a kívánt csomópontokat, majd kattintson az **Újraindítás**gombra. Ha olyan prémium szintű gyorsítótárral rendelkezik, amelyen engedélyezve van a fürtözés, válassza ki az újraindítani kívánt szegmens (eke) t, majd kattintson az **Újraindítás**gombra. Néhány perc elteltével a kiválasztott csomópont (ok) újraindul, és néhány perc múlva újra online állapotba kerül.
 
@@ -474,11 +474,11 @@ A Redis-példányok számára a **Redis-konzol**segítségével biztonságosan a
 
 A Redis-konzol eléréséhez kattintson a **konzol** elemre az **Azure cache for Redis** panelben.
 
-![Redis-konzol](./media/cache-configure/redis-console-menu.png)
+![Képernyőkép, amely kiemeli a konzol gombját.](./media/cache-configure/redis-console-menu.png)
 
 Ha parancsokat szeretne kiadni a gyorsítótár-példányon, írja be a kívánt parancsot a konzolba.
 
-![Redis-konzol](./media/cache-configure/redis-console.png)
+![A képernyőfelvétel thas a Redis-konzolt a bemeneti paranccsal és az eredményekkel jeleníti meg.](./media/cache-configure/redis-console.png)
 
 
 ### <a name="using-the-redis-console-with-a-premium-clustered-cache"></a>A Redis-konzol használata prémium szintű fürtözött gyorsítótárral
@@ -504,5 +504,5 @@ A gyorsítótárat áthelyezheti egy új előfizetésre az **Áthelyezés**gombr
 
 További információ az erőforrások egyik erőforráscsoporthoz egy másikra való áthelyezéséről, illetve az egyik előfizetésről a másikra: [erőforrások áthelyezése új erőforrás-csoportba vagy előfizetésbe](../azure-resource-manager/management/move-resource-group-and-subscription.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * További információ a Redis-parancsok használatáról: [Hogyan futtathatók a Redis parancsok?](cache-development-faq.md#how-can-i-run-redis-commands)

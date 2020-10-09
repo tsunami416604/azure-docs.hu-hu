@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: 6e8e6feb064a5d26eb6cb72b521d3f9df0380086
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: fc62c87fd12457c60d3eb26cba6814aa1df76f87
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91360106"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91839214"
 ---
 # <a name="send-custom-commands-activity-to-client-application"></a>Egyéni parancsok tevékenység küldése ügyfélalkalmazás számára
 
@@ -154,7 +154,7 @@ connector.ActivityReceived += async (sender, activityReceivedEventArgs) =>
 1. Mondja a következőt: `turn on the tv`
 1. A TV vizualizációs állapotának "on" értékre kell váltania
    > [!div class="mx-imgBorder"]
-   > ![Tevékenység-adattartalom küldése](media/custom-commands/send-activity-to-client-turn-on-tv.png)
+   > ![Képernyőkép, amely azt mutatja, hogy a T V vizualizációs állapota most már be van kapcsolva.](media/custom-commands/send-activity-to-client-turn-on-tv.png)
 
 ## <a name="next-steps"></a>Következő lépések
 

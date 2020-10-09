@@ -1,16 +1,16 @@
 ---
 title: Az Azure Service Fabric Mesh áttekintése
 description: Az Azure Service Fabric Mesh bemutatása. A Service Fabric Mesh használatával anélkül helyezheti üzembe és skálázhatja az alkalmazást, hogy aggódnia kellene az alkalmazás infrastrukturális igényei miatt.
-author: dkkapur
-ms.author: dekapur
+author: georgewallace
+ms.author: gwallace
 ms.date: 10/1/2018
 ms.topic: overview
-ms.openlocfilehash: b7061a178a3f5a9d126afab3fc1f9aa77d5cc050
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 32e855ef1580dd065ee681e635994064a9038f77
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "87927028"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91840268"
 ---
 # <a name="what-is-service-fabric-mesh"></a>Mi a Service Fabric Mesh?
 
@@ -60,7 +60,7 @@ A Service Fabric Mesh használatával a következőket teheti:
 - [Rendelkezésre állási zónák](../availability-zones/az-overview.md) és több régió között helyezhet üzembe alkalmazásokat a földrajzi megbízhatóság érdekében.
 - Az Azure által nyújtott összes biztonsági és megfelelőségi szolgáltatást használhatja.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Csupán néhány lépést kell elvégezni a mintaprojekt Visual Studióval való üzembe helyezéséhez. További információért lásd: [ASP.NET Core-webhely létrehozása](service-fabric-mesh-quickstart-dotnet-core.md). 
 

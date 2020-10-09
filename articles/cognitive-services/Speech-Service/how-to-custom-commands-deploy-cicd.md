@@ -10,14 +10,14 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: f4dde6831902c0d15d5f985208e382963125d200
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.openlocfilehash: bd1ab5110313380c90e71ed161935c7274a845b7
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
-ms.locfileid: "85307723"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91839248"
 ---
-# <a name="continuous-deployment-with-azure-devops"></a>Folyamatos üzembe helyezés az Azure DevOps
+# <a name="continuous-deployment-with-azure-devops"></a>Folyamatos üzembe helyezés az Azure DevOps használatával
 
 Ebből a cikkből megtudhatja, hogyan állíthatja be a folyamatos üzembe helyezést az egyéni parancsok alkalmazásaihoz. A CI/CD-munkafolyamatot támogató parancsfájlok elérhetők Önnek.
 
@@ -72,7 +72,7 @@ A szkriptek a [Cognitive Services Voice Assistant – Custom parancsokban](https
 1. Vegye figyelembe, hogy ezek a parancsfájlok feltételezik, hogy a régiót használja `westus2` , ha ez nem így van, akkor a feladatok argumentumait ennek megfelelően frissíti.
 
     > [!div class="mx-imgBorder"]
-    > ![Tevékenység-adattartalom küldése](media/custom-commands/cicd-new-pipeline-yaml.png)
+    > ![Képernyőkép, amely kiemeli a régió értékét az argumentumokban.](media/custom-commands/cicd-new-pipeline-yaml.png)
 
 1. A "Mentés és Futtatás" gombon nyissa meg a legördülő menüt, és kattintson a "Mentés" gombra.
 
@@ -88,7 +88,7 @@ A szkriptek a [Cognitive Services Voice Assistant – Custom parancsokban](https
     | SourceAppId | A fejlesztői alkalmazás azonosítója |
     | TargetAppId | A GYÁRTÁSIRENDELÉS-alkalmazás azonosítója |
     | SubscriptionKey | Mindkét alkalmazáshoz használt előfizetési kulcs |
-    | Kulturális környezet | Az alkalmazások kultúrája (pl. en-US) |
+    | Kultúra | Az alkalmazások kultúrája (pl. en-US) |
 
     > [!div class="mx-imgBorder"]
     > ![Tevékenység-adattartalom küldése](media/custom-commands/cicd-edit-pipeline-variables.png)
@@ -163,12 +163,12 @@ A szkriptek a [Cognitive Services Voice Assistant – Custom parancsokban](https
     | ------- | --------------- | ----------- |
     | TargetAppId | A GYÁRTÁSIRENDELÉS-alkalmazás azonosítója |
     | SubscriptionKey | Mindkét alkalmazáshoz használt előfizetési kulcs |
-    | Kulturális környezet | Az alkalmazások kultúrája (pl. en-US) |
+    | Kultúra | Az alkalmazások kultúrája (pl. en-US) |
 
 1. Kattintson a Futtatás elemre, majd kattintson a "Job" (Futtatás) elemre.
     A következőt tartalmazó feladatok listája jelenik meg: "alkalmazás importálása" & "betanítás és alkalmazás közzététele"
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Minták megtekintése a GitHubon](https://aka.ms/speech/cc-samples)

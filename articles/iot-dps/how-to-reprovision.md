@@ -7,12 +7,12 @@ ms.date: 04/04/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 0ded494debab19daa15a953715b1ab7b0b10ad18
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e5cc5b557aa4dff793f7e87093eeb65028da4f8c
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74974904"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91839792"
 ---
 # <a name="how-to-reprovision-devices"></a>Eszközök újraépítése
 
@@ -75,7 +75,7 @@ Az alábbi lépéseket követve konfigurálhatja egy eszköz regisztrálásának
 
 4. A **Mentés** gombra kattintva engedélyezheti az eszköz újraépítését a módosítások alapján.
 
-    ![Regisztráció kiosztási szabályzatának kiválasztása](./media/how-to-reprovision/reprovisioning-policy.png)
+    ![Képernyőkép, amely kiemeli az elvégzett módosításokat és a Mentés gombot.](./media/how-to-reprovision/reprovisioning-policy.png)
 
 
 
@@ -90,7 +90,7 @@ A beléptetési bejegyzés újraépítési szabályzata határozza meg, hogy az 
 Például a kiépítési kérelmek egy eszközről történő küldésének kódja a rendszerindítási folyamat során: [szimulált eszköz automatikus kiépítés](quick-create-simulated-device.md).
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ: [IoT hub eszköz](concepts-device-reprovision.md) újraépítése 
 - További részletekért lásd: [az előzőleg automatikusan kiépített eszközök](how-to-unprovision-devices.md) kiépítése. 

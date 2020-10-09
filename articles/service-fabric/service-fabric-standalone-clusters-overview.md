@@ -1,16 +1,14 @@
 ---
 title: Önálló Service Fabric-fürtök áttekintése
 description: A Service Fabric-fürtök Windows Serveren és Linuxon futnak, ami azt jelenti, hogy a Windows Servert vagy Linuxot futtató bárhonnan telepítheti és futtathatja Service Fabric alkalmazásokat.
-author: dkkapur
 ms.topic: conceptual
 ms.date: 02/01/2019
-ms.author: dekapur
-ms.openlocfilehash: 6abe6fca77251a16bcb7663a5192f46fef3476b0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: c57d1ef6db295400ad986adadb804fb942a723e5
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85080672"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91841067"
 ---
 # <a name="overview-of-service-fabric-standalone-clusters"></a>Önálló fürtök Service Fabric áttekintése
 
@@ -70,7 +68,7 @@ Létrehozhat fürtöket a virtuális gépeken vagy az ezeket az operációs rend
 * Windows Server 2016 
 * Windows Server 2019
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ az önálló fürtök [biztonságossá](service-fabric-cluster-security.md)tételéről, [méretezéséről](service-fabric-cluster-scaling-standalone.md)és [frissítéséről](service-fabric-cluster-upgrade-standalone.md) .
 

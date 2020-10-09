@@ -1,22 +1,22 @@
 ---
-title: Azure Cosmos DB létrehozása és kezelése a PowerShell használatával
-description: Azure PowerShell kezelheti Azure Cosmos-fiókjait, adatbázisait, tárolóit és átviteli sebességét.
+title: Azure Cosmos DB Core (SQL) API-erőforrások kezelése a PowerShell használatával
+description: Azure Cosmos DB Core (SQL) API-erőforrások kezelése a PowerShell használatával.
 author: markjbrown
 ms.service: cosmos-db
 ms.topic: how-to
-ms.date: 09/18/2020
+ms.date: 10/07/2020
 ms.author: mjbrown
 ms.custom: seodec18
-ms.openlocfilehash: 77c91d96beb2722b7fce54be8a1db32d66be6196
-ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
+ms.openlocfilehash: 652c546c5a38543e89f7a3b5ab8bc036c8d80911
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91767541"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91840880"
 ---
-# <a name="manage-azure-cosmos-db-sql-api-resources-using-powershell"></a>Azure Cosmos DB SQL API-erőforrások kezelése a PowerShell használatával
+# <a name="manage-azure-cosmos-db-core-sql-api-resources-using-powershell"></a>Azure Cosmos DB Core (SQL) API-erőforrások kezelése a PowerShell használatával
 
-Az alábbi útmutatóban megismerheti, hogyan szkriptelheti és automatizálhatja az Azure Cosmos DB-erőforrások (például a fiókok, az adatbázisok, a tárolók és az átviteli sebesség) felügyeletét a PowerShell használatával.
+Az alábbi útmutató ismerteti, hogyan használható a PowerShell a Azure Cosmos DB Core (SQL) API-erőforrások (például a Cosmos-fiók, az adatbázis, a tároló és az átviteli sebesség) felügyeletére és automatizálására.
 
 > [!NOTE]
 > A cikkben szereplő minták az [az. CosmosDB](/powershell/module/az.cosmosdb) felügyeleti parancsmagokat használják. A legújabb változásokért tekintse meg az az [. CosmosDB](/powershell/module/az.cosmosdb) API-referenciát ismertető oldalt.
@@ -169,6 +169,7 @@ Update-AzCosmosDBAccountRegion `
 Write-Host "Update-AzCosmosDBAccountRegion returns before the region update is complete."
 Write-Host "Check account in Azure portal or using Get-AzCosmosDBAccount for region status."
 ```
+
 ### <a name="enable-multiple-write-regions-for-an-azure-cosmos-account"></a><a id="multi-region-writes"></a> Több írási régió engedélyezése Azure Cosmos-fiókhoz
 
 ```azurepowershell-interactive
@@ -352,6 +353,7 @@ A következő szakaszban bemutatjuk, hogyan kezelheti a Azure Cosmos DB-adatbáz
 * [Létrehoz egy Azure Cosmos DB-adatbázist](#create-db)
 * [Megosztott átviteli sebességgel rendelkező Azure Cosmos DB-adatbázis létrehozása](#create-db-ru)
 * [Azure Cosmos DB adatbázis átviteli sebességének beolvasása](#get-db-ru)
+* [Adatbázis átviteli sebességének átmigrálása az autoscalere](#migrate-db-ru)
 * [Egy fiók összes Azure Cosmos DB adatbázisának listázása](#list-db)
 * [Egyetlen Azure Cosmos DB adatbázis beolvasása](#get-db)
 * [Azure Cosmos DB-adatbázis törlése](#delete-db)
@@ -397,6 +399,20 @@ Get-AzCosmosDBSqlDatabaseThroughput `
     -ResourceGroupName $resourceGroupName `
     -AccountName $accountName `
     -Name $databaseName
+```
+
+## <a name="migrate-database-throughput-to-autoscale"></a><a id="migrate-db-ru"></a>Adatbázis átviteli sebességének átmigrálása az autoscalere
+
+```azurepowershell-interactive
+$resourceGroupName = "myResourceGroup"
+$accountName = "mycosmosaccount"
+$databaseName = "myDatabase"
+
+Invoke-AzCosmosDBSqlDatabaseThroughputMigration `
+    -ResourceGroupName $resourceGroupName `
+    -AccountName $accountName `
+    -Name $databaseName `
+    -ThroughputType Autoscale
 ```
 
 ### <a name="get-all-azure-cosmos-db-databases-in-an-account"></a><a id="list-db"></a>Összes Azure Cosmos DB adatbázis beolvasása egy fiókban
@@ -480,6 +496,7 @@ Az alábbi részben bemutatjuk, hogyan kezelheti a Azure Cosmos DB tárolót, be
 * [Azure Cosmos DB tároló létrehozása az autoscale paranccsal](#create-container-autoscale)
 * [Azure Cosmos DB tároló létrehozása nagyméretű partíciós kulccsal](#create-container-big-pk)
 * [Azure Cosmos DB tároló átviteli sebességének beolvasása](#get-container-ru)
+* [Tároló átviteli sebességének átmigrálása az autoscalere](#migrate-container-ru)
 * [Azure Cosmos DB-tároló létrehozása egyéni indexeléssel](#create-container-custom-index)
 * [Kikapcsolt indexeléssel rendelkező Azure Cosmos DB-tároló létrehozása](#create-container-no-index)
 * [Egyedi kulccsal és TTL-vel rendelkező Azure Cosmos DB-tároló létrehozása](#create-container-unique-key-ttl)
@@ -565,6 +582,22 @@ Get-AzCosmosDBSqlContainerThroughput `
     -AccountName $accountName `
     -DatabaseName $databaseName `
     -Name $containerName
+```
+
+### <a name="migrate-container-throughput-to-autoscale"></a><a id="migrate-container-ru"></a>Tároló átviteli sebességének átmigrálása az autoscalere
+
+```azurepowershell-interactive
+$resourceGroupName = "myResourceGroup"
+$accountName = "mycosmosaccount"
+$databaseName = "myDatabase"
+$containerName = "myContainer"
+
+Invoke-AzCosmosDBSqlContainerThroughputMigration `
+    -ResourceGroupName $resourceGroupName `
+    -AccountName $accountName `
+    -DatabaseName $databaseName `
+    -Name $containerName `
+    -ThroughputType Autoscale
 ```
 
 ### <a name="create-an-azure-cosmos-db-container-with-custom-index-policy"></a><a id="create-container-custom-index"></a>Egyéni index-házirenddel rendelkező Azure Cosmos DB-tároló létrehozása

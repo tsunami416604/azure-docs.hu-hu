@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 03/06/2019
 ms.author: yegu
-ms.openlocfilehash: 6203c230f7ca27b1d4b48e9f56a7f46cd5a5ce78
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: f6ac02f0bcd9becf5dd1ffcd600f78b848b47cda
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91825323"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91839690"
 ---
 # <a name="how-to-set-up-geo-replication-for-azure-cache-for-redis"></a>Az Azure cache geo-replikációjának beállítása a Redis
 
@@ -73,7 +73,7 @@ A földrajzi replikálás konfigurálása után a következő korlátozások von
 
     A csatolási állapotot az **Áttekintés** panelen is megtekintheti az elsődleges és másodlagos gyorsítótárak esetében is.
 
-    ![Gyorsítótár állapota](./media/cache-how-to-geo-replication/cache-geo-location-link-status.png)
+    ![Képernyőfelvétel: az elsődleges és másodlagos gyorsítótárak csatolási állapotának megtekintése.](./media/cache-how-to-geo-replication/cache-geo-location-link-status.png)
 
     A replikálási folyamat befejeződése után a **hivatkozás állapota** **sikeresre**változik.
 

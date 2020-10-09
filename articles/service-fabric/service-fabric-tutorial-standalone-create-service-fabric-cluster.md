@@ -1,17 +1,15 @@
 ---
 title: Service Fabric önálló ügyfél telepítése
-description: Ez az oktatóanyag ismerteti, hogyan telepítheti az önálló Service Fabric-ügyfelet az előző oktatóanyagcikkben létrehozott fürtön.
-author: dkkapur
+description: Ebből az oktatóanyagból megtudhatja, hogyan telepítheti az önálló Service Fabric-ügyfelet a fürtön.
 ms.topic: tutorial
 ms.date: 07/22/2019
-ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: bbaf7dfc546c739dfb858be7ef8372eccf60111b
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: ae0b343be986f4d8d5176c1f39eef6b23ca81278
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "75613941"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91840642"
 ---
 # <a name="tutorial-install-and-create-service-fabric-cluster"></a>Oktatóanyag: Service Fabric-fürt telepítése és létrehozása
 
@@ -19,7 +17,7 @@ Az önálló Service Fabric-fürtök lehetővé teszik, hogy kiválassza a sajá
 
 Ez az oktatóanyag egy sorozat második része. Ez az oktatóanyag végigvezeti az önálló Service Fabric-fürt létrehozásának lépésein.
 
-A sorozat második részében az alábbiakkal fog megismerkedni:
+Ebből a cikkből megtudhatja, hogyan végezheti el a következőket:
 
 > [!div class="checklist"]
 > * Az önálló Service Fabric-csomag letöltése és telepítése
@@ -38,7 +36,7 @@ További információ a [telepítőcsomag tartalmáról](service-fabric-cluster-
 
 Egy három csomópontos Windows-fürtöt hoz létre, ezért módosítania kell a `ClusterConfig.Unsecure.MultiMachine.json` fájlt.
 
-Ezután frissítse a három a fájlban a 8., 15. és 22. sorokban lévő ipAddress sorokat az egyes példányok IP-címére.
+Ezután frissítse a fájlokban előforduló három IP-címet a 8., 15. és 22. sorban az egyes példányok IP-címeire.
 
 A csomópontok a frissítésük után a következőképpen jelennek meg:
 
@@ -77,7 +75,7 @@ cd .\Desktop\Microsoft.Azure.ServiceFabric.WindowsServer.6.2.274.9494\
 .\TestConfiguration.ps1 -ClusterConfigFilePath .\ClusterConfig.Unsecure.MultiMachine.json
 ```
 
-Az alábbihoz hasonló kimenet jelenik meg. Az alsó „Sikerült” mezőt `True` értékkel adja vissza a rendszer, az épségtesztek sikerültek, és a fürt üzembe helyezhetőnek tűnik a bemeneti konfiguráció alapján.
+Az alábbi példához hasonló kimenetnek kell megjelennie. Az alsó „Sikerült” mezőt `True` értékkel adja vissza a rendszer, az épségtesztek sikerültek, és a fürt üzembe helyezhetőnek tűnik a bemeneti konfiguráció alapján.
 
 ```powershell
 Trace folder already exists. Traces will be written to existing trace folder: C:\Users\Administrator\Desktop\Microsoft.Azure.ServiceFabric.WindowsServer.6.2.274.9494\DeploymentTraces
@@ -101,7 +99,7 @@ Passed                     : True
 
 ## <a name="create-the-cluster"></a>A fürt létrehozása
 
-Miután sikeresen ellenőrizte a fürtkonfigurációt, a *CreateServiceFabricCluster.ps1* szkript futtatásával helyezze üzembe a Service Fabric-fürtöt a konfigurációs fájlban szereplő virtuális gépeken.
+Miután sikeresen ellenőrizte a fürt konfigurációját, futtassa a *CreateServiceFabricCluster.ps1* parancsfájlt, hogy a Service Fabric-fürtöt a konfigurációs fájlban lévő virtuális gépekre telepítse.
 
 ```powershell
 .\CreateServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.Unsecure.MultiMachine.json -AcceptEULA
@@ -118,7 +116,7 @@ Your cluster is successfully created! You can connect and manage your cluster us
 >
 >
 
-### <a name="bring-up-service-fabric-explorer"></a>A Service Fabric Explorer megnyitása
+### <a name="open-service-fabric-explorer"></a>Service Fabric Explorer megnyitása
 
 Most már csatlakozhat a fürthöz Service Fabric Explorer vagy közvetlenül az egyik számítógépről a http: \/ /localhost: 19080/Explorer/index.html vagy távolról a http: \/ /< *IPAddressofaMachine*>:19080/Explorer/index.html használatával.
 
@@ -128,7 +126,7 @@ Az üzleti igényei változásával hozzáadhat vagy eltávolíthat csomópontok
 
 ## <a name="next-steps"></a>Következő lépések
 
-A sorozat második részében megismerkedett a nagy mennyiségű véletlenszerű adat tárfiókba történő párhuzamos feltöltésével, többek között a következőkkel:
+Ebben a cikkben megtanulta, hogyan tölthet fel párhuzamosan nagy mennyiségű véletlenszerű információt egy Storage-fiókba, például:
 
 > [!div class="checklist"]
 > * Kapcsolati sztring konfigurálása

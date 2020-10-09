@@ -1,16 +1,14 @@
 ---
 title: Azure Service Fabric állapot-nyilvántartó Reliable Services diagnosztika
 description: Az Azure állapot-nyilvántartó Reliable Services diagnosztikai funkciója Service Fabric
-author: dkkapur
 ms.topic: conceptual
 ms.date: 8/24/2018
-ms.author: dekapur
-ms.openlocfilehash: 92fd8dbd1afbd2bdcabbaebbd5dc056d912ae118
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 5a3831dd4f8d5402980fac3daf8c35d9884c852d
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86253116"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91840761"
 ---
 # <a name="diagnostic-functionality-for-stateful-reliable-services"></a>A Stateful Reliable Services diagnosztikai funkciói
 Az Azure Service Fabric állapot-nyilvántartó Reliable Services StatefulServiceBase osztály a szolgáltatás hibakereséséhez használható [EventSource](/dotnet/api/system.diagnostics.tracing.eventsource?view=netcore-3.1) -eseményeket bocsát ki, betekintést nyújt a futtatókörnyezet működéséhez, és segít a hibaelhárításban.
@@ -89,7 +87,7 @@ A következő számláló-példány neve általában a kategóriához tartozó s
 
 `00d0126d-3e36-4d68-98da-cc4f7195d85e:131652217797162571:142652217797162571_1337_urn:MyReliableDictionary/dataStore`
 
-Az előző példában a `00d0126d-3e36-4d68-98da-cc4f7195d85e` Service Fabric partíció azonosítójának karakterlánc-ábrázolása, `131652217797162571` a replika azonosítója, az `142652217797162571` állami szolgáltató azonosítója, és `1337` a teljesítményszámláló-példány megkülönböztethető. `urn:MyReliableDictionary/dataStore`annak az állami szolgáltatónak a neve, amely a nevű gyűjteményhez tartozó adattárolást tárolja `urn:MyReliableDictionary` .
+Az előző példában a `00d0126d-3e36-4d68-98da-cc4f7195d85e` Service Fabric partíció azonosítójának karakterlánc-ábrázolása, `131652217797162571` a replika azonosítója, az `142652217797162571` állami szolgáltató azonosítója, és `1337` a teljesítményszámláló-példány megkülönböztethető. `urn:MyReliableDictionary/dataStore` annak az állami szolgáltatónak a neve, amely a nevű gyűjteményhez tartozó adattárolást tárolja `urn:MyReliableDictionary` .
 
 ### <a name="transactional-replicator-performance-counters"></a>Tranzakciós replikáló teljesítményszámlálók
 
