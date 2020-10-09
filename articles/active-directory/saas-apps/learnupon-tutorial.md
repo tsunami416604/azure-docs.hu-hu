@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 9541f2c5f8ee1aac45b6f659547a3ee34c093181
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 47ecf00b608121271e98ca5abbbd5e69ca811fd2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88535135"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91858234"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-learnupon"></a>Oktatóanyag: Azure Active Directory integráció a LearnUpon
 
@@ -77,7 +77,7 @@ Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a Learn
 Az Azure AD egyszeri bejelentkezés LearnUpon való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
 
 1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. **[LearnUpon egyszeri bejelentkezés konfigurálása](#configure-learnupon-single-sign-on)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+2. **[LearnUpon egyszeri bejelentkezés konfigurálása](#configure-learnupon-single-sign-on)** – az egyes Sign-On beállítások konfigurálása az alkalmazás oldalán.
 3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
 4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
 5. **[Hozzon létre LearnUpon-teszt felhasználót](#create-learnupon-test-user)** – hogy a LearnUpon Britta, a felhasználó Azure ad-képviseletéhez kapcsolódó partnerrel rendelkezzen.
@@ -97,7 +97,7 @@ Az Azure AD egyszeri bejelentkezés LearnUpon való konfigurálásához hajtsa v
 
     ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
+3. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
@@ -110,7 +110,7 @@ Az Azure AD egyszeri bejelentkezés LearnUpon való konfigurálásához hajtsa v
     > [!NOTE]
     > Az érték nem valódi. Frissítse az értéket a tényleges válasz URL-címével. Az érték beszerzéséhez forduljon a LearnUpon ügyfélszolgálati [csapatához](https://www.learnupon.com/features/support/) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-5. Az **egyszeri bejelentkezés az SAML-vel** lapon keresse meg az **ujjlenyomatot** – a rendszer hozzáadja a LearnUpon SAML-beállításokhoz.
+5. Az **egyszeri Sign-On beállítása az SAML-vel** lapon keresse meg az **ujjlenyomatot** – a rendszer hozzáadja a LearnUpon SAML-beállításokhoz.
 
     ![A tanúsítvány letöltési hivatkozása](common/certificateraw.png)
 
@@ -124,21 +124,21 @@ Az Azure AD egyszeri bejelentkezés LearnUpon való konfigurálásához hajtsa v
 
     c. Kijelentkezési URL-cím
 
-### <a name="configure-learnupon-single-sign-on"></a>LearnUpon egyszeri bejelentkezés konfigurálása
+### <a name="configure-learnupon-single-sign-on"></a>LearnUpon egyetlen Sign-On konfigurálása
 
 1. Nyisson meg egy másik böngésző-példányt, és jelentkezzen be a LearnUpon-be egy rendszergazdai fiókkal.
 
 1. Kattintson a **Beállítások** fülre.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/learnupon-tutorial/tutorial_learnupon_06.png)
+    ![Képernyőfelvétel: a beállítások lap.](./media/learnupon-tutorial/tutorial_learnupon_06.png)
 
 1. Kattintson az **egyszeri bejelentkezés – SAML**elemre, majd kattintson az **általános beállítások** elemre az SAML-beállítások konfigurálásához.
    
-    ![Egyszeri bejelentkezés konfigurálása](./media/learnupon-tutorial/tutorial_learnupon_07.png) 
+    ![Képernyőfelvétel: egyszeri bejelentkezés – az SAML kiválasztott általános beállításokkal.](./media/learnupon-tutorial/tutorial_learnupon_07.png) 
 
 1. Az **általános beállítások** szakaszban hajtsa végre a következő lépéseket:
    
-    ![Egyszeri bejelentkezés konfigurálása](./media/learnupon-tutorial/tutorial_learnupon_08.png)  
+    ![Képernyőfelvétel: az általános beállítások szakasz, ahol megadhatja a leírt értékeket.](./media/learnupon-tutorial/tutorial_learnupon_08.png)  
   
     a. Válassza az **Engedélyezve** lehetőséget.
 
@@ -158,7 +158,7 @@ Az Azure AD egyszeri bejelentkezés LearnUpon való konfigurálásához hajtsa v
 
 1. Kattintson a **felhasználói beállítások**elemre, majd hajtsa végre a következő lépéseket:
 
-     ![Egyszeri bejelentkezés konfigurálása](./media/learnupon-tutorial/tutorial_learnupon_11.png)  
+     ![Képernyőfelvétel: a felhasználói beállítások szakasz, ahol megadhatja a leírt értékeket.](./media/learnupon-tutorial/tutorial_learnupon_11.png)  
 
     a. Az **Utónév formázása** szövegmezőbe írja be azt az értéket, amely megadja, hogy hol található az SAML-azonosító a felhasználók FirstName-ben – például: `http://schemas.xmlsoap.org/ws/2005/05/identity/claims/givenname` .
   
@@ -186,7 +186,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    d. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

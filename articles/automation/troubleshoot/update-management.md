@@ -2,15 +2,15 @@
 title: Azure Automation Update Management problémák elhárítása
 description: Ez a cikk azt ismerteti, hogyan lehet elhárítani a Azure Automation Update Managementekkel kapcsolatos problémákat.
 services: automation
-ms.date: 09/25/2020
+ms.date: 09/30/2020
 ms.topic: conceptual
 ms.service: automation
-ms.openlocfilehash: 9f832b45b3aca11fb96a56643f2cce0228adf8ac
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: c70d164325f536187c5ce99419bb41daaa9b1e88
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91713499"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91858404"
 ---
 # <a name="troubleshoot-update-management-issues"></a>Az Update Management hibáinak elhárítása
 
@@ -57,27 +57,25 @@ A régi frissítések egy olyan Automation-fióknál jelennek meg, amely hiányz
 
 ### <a name="cause"></a>Ok
 
-A felülírt frissítések nem megfelelően vannak jelezve, hogy ne legyenek alkalmazhatók.
+A felülírt frissítések nem lesznek elutasítva a Windows Server Update Services (WSUS) szolgáltatásban, hogy ne legyenek alkalmazhatók.
 
 ### <a name="resolution"></a>Feloldás
 
-Ha a felváltott frissítés 100%-os lesz, a frissítés jóváhagyási állapotát a következőre kell módosítani: `Declined` . Az összes frissítés jóváhagyási állapotának módosítása:
+Ha a felváltott frissítés 100%-os lesz, akkor a WSUS-ben módosítania kell a frissítés jóváhagyási állapotát `Declined` . Az összes frissítés jóváhagyási állapotának módosítása:
 
 1. Az Automation-fiókban válassza a **Update Management** lehetőséget a gép állapotának megtekintéséhez. Lásd: [frissítési felmérések megtekintése](../update-management/update-mgmt-view-update-assessments.md).
 
 2. Ellenőrizze a felülírt frissítést, és győződjön meg arról, hogy az 100%-os nem alkalmazható.
 
-3. A frissítés elutasításának megjelölése, ha kérdése van a frissítéssel kapcsolatban.
+3. A WSUS-kiszolgálón, amelyen a gépek jelentést készítenek, [elutasítja a frissítést](/windows-server/administration/windows-server-update-services/manage/updates-operations#declining-updates).
 
 4. Válassza a **számítógépek** lehetőséget, és a **megfelelőség** oszlopban ellenőrizze, hogy a megfelelőségi ellenőrzés ki van-e kényszerítve. Lásd: [virtuális gépek frissítéseinek kezelése](../update-management/update-mgmt-manage-updates-for-vm.md).
 
 5. Ismételje meg a fenti lépéseket a többi felülírt frissítésnél.
 
-6. Futtassa a Lemezkarbantartó varázslót, hogy törölje a fájlokat a visszautasított frissítésekről. 
+6. Windows Server Update Services (WSUS) esetében törölje az összes felülírt frissítést az infrastruktúra frissítéséhez a WSUS- [kiszolgáló karbantartása varázsló](/windows-server/administration/windows-server-update-services/manage/the-server-cleanup-wizard)segítségével.
 
-7. Windows Server Update Services (WSUS) esetében manuálisan törölje az összes felülírt frissítést az infrastruktúra frissítéséhez.
-
-8. Ismételje meg az eljárást rendszeresen a megjelenítési probléma kijavításához, és csökkentse az Update Management által használt lemezterület méretét.
+7. Ismételje meg az eljárást rendszeresen a megjelenítési probléma kijavításához, és csökkentse az Update Management által használt lemezterület méretét.
 
 ## <a name="scenario-machines-dont-show-up-in-the-portal-under-update-management"></a><a name="nologs"></a>Forgatókönyv: a gépek nem jelennek meg a portálon Update Management
 

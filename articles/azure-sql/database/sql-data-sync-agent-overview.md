@@ -11,12 +11,12 @@ author: stevestein
 ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/20/2018
-ms.openlocfilehash: 74fc317dbb97c14c27e6355e100a6e6b5e767363
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: e91fd0d94d6f6d87b5e554e27bf9c2a2ba6ccabd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91333018"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91858472"
 ---
 # <a name="data-sync-agent-for-sql-data-sync"></a>SQL-adatszinkronizálás adatszinkronizálási ügynök
 [!INCLUDE[appliesto-sqldb](../includes/appliesto-sqldb.md)]
@@ -28,7 +28,7 @@ Az Azure-beli SQL-adatszinkronizálás adatszinkronizálási ügynökének telep
 
 ## <a name="download-and-install"></a>Letöltés és telepítés
 
-Az adatszinkronizálási ügynök letöltéséhez nyissa meg a [SQL-adatszinkronizálás Agent ügynököt](https://www.microsoft.com/download/details.aspx?id=27693).
+Az adatszinkronizálási ügynök letöltéséhez nyissa meg a [SQL-adatszinkronizálás Agent ügynököt](https://www.microsoft.com/download/details.aspx?id=27693). Az adatszinkronizálási ügynök frissítéséhez telepítse az ügynököt a régi ügynökével megegyező helyre, és felülírja az eredetit.
 
 ### <a name="install-silently"></a>Csendes telepítés
 
@@ -315,7 +315,7 @@ SqlDataSyncAgentCommand.exe -action "updatecredential" -serverName localhost -da
 SqlDataSyncAgentCommand.exe -action "updatecredential" -serverName localhost -databaseName testdb -authentication windows -encryption true
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A SQL-adatszinkronizálásról további információt a következő cikkekben talál:
 
