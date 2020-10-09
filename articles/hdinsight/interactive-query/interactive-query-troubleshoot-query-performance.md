@@ -8,10 +8,10 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 07/30/2019
 ms.openlocfilehash: 8bd20849b15f8c8d5a14653f702f78c6404d82e5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75895127"
 ---
 # <a name="scenario-poor-performance-in-apache-hive-llap-queries-in-azure-hdinsight"></a>Forgatókönyv: gyenge teljesítmény Apache Hive LLAP-lekérdezésekben az Azure HDInsight
@@ -26,7 +26,7 @@ Az alapértelmezett fürtkonfiguráció nincsenek megfelelően hangolva a szám�
 
 Ez különféle okok miatt fordulhat elő.
 
-## <a name="resolution"></a>Megoldás:
+## <a name="resolution"></a>Feloldás
 
 A LLAP illesztéseket és összesítéseket érintő lekérdezésekre van optimalizálva. A következőhöz hasonló lekérdezések nem jól teljesítenek interaktív kaptár-fürtben:
 

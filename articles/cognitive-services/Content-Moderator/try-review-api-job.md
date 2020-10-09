@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 10/24/2019
 ms.author: pafarley
 ms.openlocfilehash: 83ee8e0c0583cba72da8702e196f0f38128f8d8a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "72935941"
 ---
 # <a name="define-and-use-moderation-jobs-rest"></a>Moderálási feladatok definiálása és használata (REST)
@@ -45,13 +45,13 @@ A REST-hívás létrehozásához adja meg a következő értékeket:
 
 ### <a name="fill-in-the-request-body"></a>Töltse ki a kérelem törzsét
 
-A REST-hívás törzse egy mezőt, **ContentValue**tartalmaz. Illessze be a RAW Text (szöveg) szöveget, ha moderálást használ, vagy adjon meg egy képet vagy videó URL-címet, ha a rendszer a képet vagy a videót is kihasználja. A következő minta képurl-címet használhatja:[https://moderatorsampleimages.blob.core.windows.net/samples/sample2.jpg](https://moderatorsampleimages.blob.core.windows.net/samples/sample2.jpg)
+A REST-hívás törzse egy mezőt, **ContentValue**tartalmaz. Illessze be a RAW Text (szöveg) szöveget, ha moderálást használ, vagy adjon meg egy képet vagy videó URL-címet, ha a rendszer a képet vagy a videót is kihasználja. A következő minta képurl-címet használhatja: [https://moderatorsampleimages.blob.core.windows.net/samples/sample2.jpg](https://moderatorsampleimages.blob.core.windows.net/samples/sample2.jpg)
 
 ![Feladatok – konzol lekérdezési paramétereinek, fejléceknek és kérelem törzsének létrehozása](images/job-api-console-inputs.PNG)
 
-### <a name="submit-your-request"></a>Kérelem elküldése
+### <a name="submit-your-request"></a>A kérés elküldése
 
-Válassza a **Küldés**lehetőséget. Ha a művelet sikeres, a **Válasz állapota** `200 OK`, a **válasz tartalma** mező pedig a feladatokhoz tartozó azonosítót jeleníti meg. Másolja ezt az azonosítót a következő lépésekben való használatra.
+Válassza a **Küldés** lehetőséget. Ha a művelet sikeres, a **Válasz állapota** `200 OK` , a **válasz tartalma** mező pedig a feladatokhoz tartozó azonosítót jeleníti meg. Másolja ezt az azonosítót a következő lépésekben való használatra.
 
 ![Felülvizsgálat – a konzol válaszának létrehozása mező megjeleníti a felülvizsgálati azonosítót](images/test-drive-job-3.PNG)
 
@@ -61,7 +61,7 @@ Egy futó vagy Befejezett feladatok állapotának és részleteinek beszerzésé
 
 ![Feladatokhoz tartozó régió kiválasztása](images/test-drive-region.png)
 
-Adja meg a REST-hívás paramétereit a fenti szakaszban leírtak szerint. Ebben a lépésben a **JobId** a feladatokhoz kapott egyedi azonosító sztring. Válassza a **Küldés**lehetőséget. Ha a művelet sikeres, a **Válasz állapota** `200 OK`, a **válasz tartalma** pedig JSON formátumban jeleníti meg a feladatot, a következőhöz hasonlóan:
+Adja meg a REST-hívás paramétereit a fenti szakaszban leírtak szerint. Ebben a lépésben a **JobId** a feladatokhoz kapott egyedi azonosító sztring. Válassza a **Küldés** lehetőséget. Ha a művelet sikeres, a **Válasz állapota** `200 OK` , a **válasz tartalma** pedig JSON formátumban jeleníti meg a feladatot, a következőhöz hasonlóan:
 
 ```json
 {  
@@ -115,7 +115,7 @@ Adja meg a REST-hívás paramétereit a fenti szakaszban leírtak szerint. Ebben
 
 ### <a name="examine-the-new-reviews"></a>Vizsgálja meg az új felülvizsgálat (oka) t
 
-Ha a tartalmi feladatokban felülvizsgálatot eredményezett, azt a [felülvizsgálati eszközben](https://contentmoderator.cognitive.microsoft.com)tekintheti meg. Válassza a**Image**/**képszöveg** **Review** > /**Videójának** áttekintése (a használt tartalomtól függően) lehetőséget. A tartalomnak meg kell jelennie, és készen kell állnia az emberi felülvizsgálatra. Miután egy emberi moderátor áttekinti az automatikusan hozzárendelt címkéket és az előrejelzési adatokat, és elküld egy végső moderálási döntést, a feladatok API elküldi az összes információt a kijelölt visszahívási végpont végpontjának.
+Ha a tartalmi feladatokban felülvizsgálatot eredményezett, azt a [felülvizsgálati eszközben](https://contentmoderator.cognitive.microsoft.com)tekintheti meg. Válassza **Review**  >  **Image** / a**képszöveg** / **Videójának** áttekintése (a használt tartalomtól függően) lehetőséget. A tartalomnak meg kell jelennie, és készen kell állnia az emberi felülvizsgálatra. Miután egy emberi moderátor áttekinti az automatikusan hozzárendelt címkéket és az előrejelzési adatokat, és elküld egy végső moderálási döntést, a feladatok API elküldi az összes információt a kijelölt visszahívási végpont végpontjának.
 
 ## <a name="next-steps"></a>További lépések
 

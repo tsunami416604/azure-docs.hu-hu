@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
 ms.openlocfilehash: 8a8a9587fd50b63dc862f8b74bc99548699fa6e2
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91760665"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clickup-productivity-platform"></a>Oktatóanyag: Azure Active Directory integráció a ClickUp hatékonyságnövelő platformmal
@@ -73,7 +73,7 @@ Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a Click
 Az Azure AD egyszeri bejelentkezés ClickUp hatékonyságnövelő platformmal való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
 
 1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. A **[ClickUp hatékonyságnövelő platform egyszeri bejelentkezésének konfigurálása](#configure-clickup-productivity-platform-single-sign-on)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+2. A **[ClickUp hatékonyságnövelő platform egyszeri bejelentkezésének konfigurálása](#configure-clickup-productivity-platform-single-sign-on)** – az egyes Sign-On beállítások konfigurálása az alkalmazás oldalán.
 3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
 4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
 5. **[Hozzon létre ClickUp hatékonyságnövelő platform-tesztelési felhasználót](#create-clickup-productivity-platform-test-user)** – hogy a Britta Simon partnere legyen a ClickUp hatékonyságnövelő platformon, amely a felhasználó Azure ad-beli képviseletéhez van társítva.
@@ -93,7 +93,7 @@ Az Azure AD egyszeri bejelentkezés ClickUp hatékonyságnövelő platformmal va
 
     ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
+3. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
@@ -108,11 +108,11 @@ Az Azure AD egyszeri bejelentkezés ClickUp hatékonyságnövelő platformmal va
     > [!NOTE]
     > Az azonosító értéke nem valódi. Frissítse ezt az értéket a tényleges azonosítóval, amelyet az oktatóanyag későbbi részében ismertetünk.
 
-5. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a Másolás gombra az **alkalmazás-összevonási metaadatok URL-címének** másolásához és a számítógépre mentéséhez.
+5. Az **egyszeres Sign-On beállítása az SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a Másolás gombra az **alkalmazás-összevonási metaadatok URL-címének** másolásához és a számítógépre mentéséhez.
 
     ![A tanúsítvány letöltési hivatkozása](common/copy-metadataurl.png)
 
-### <a name="configure-clickup-productivity-platform-single-sign-on"></a>A ClickUp hatékonyságnövelő platform egyszeri bejelentkezésének konfigurálása
+### <a name="configure-clickup-productivity-platform-single-sign-on"></a>A ClickUp hatékonyságnövelő platform egyetlen Sign-Onának konfigurálása
 
 1. Egy másik böngészőablakban jelentkezzen be a ClickUp hatékonyságnövelő platform-bérlőre rendszergazdaként.
 
@@ -122,7 +122,7 @@ Az Azure AD egyszeri bejelentkezés ClickUp hatékonyságnövelő platformmal va
 
     ![A képernyőfelvételen a beállítások láthatók.](./media/clickup-productivity-platform-tutorial/configure1.png)
 
-3. Válassza a **Microsoft**lehetőséget az egyszeri bejelentkezés (SSO) szolgáltató alatt.
+3. Válassza a **Microsoft**lehetőséget az egyszeri Sign-On (SSO) szolgáltató alatt.
 
     ![A képernyőképen a Microsoft által kiválasztott hitelesítési ablaktábla látható.](./media/clickup-productivity-platform-tutorial/configure2.png)
 
@@ -161,7 +161,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    d. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

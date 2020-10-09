@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 12/27/2018
 ms.author: sutalasi
 ms.openlocfilehash: 3edd182e335bc679d95d7be64f45b617a9f54c1a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "73663167"
 ---
 # <a name="test-results-for-hyper-v-replication-to-a-secondary-site"></a>A Hyper-V replikálásának tesztelési eredményei másodlagos helyre
@@ -150,7 +150,7 @@ Az eredmények egyértelműen azt mutatják, hogy Site Recovery, a Hyper-V repli
 | SQL Server |51 |1 |4 |167 |10 |
 | Exchange Server |71 |1 |4 |552 |10 |
 | Fájlkiszolgáló |50 |1 |2 |552 |22 |
-| VDI |149 |.5 |1 |80 |6 |
+| Virtuális asztali infrastruktúra (VDI) |149 |.5 |1 |80 |6 |
 | Webkiszolgáló |149 |.5 |1 |80 |6 |
 | ÖSSZESEN |470 | | |96,83 TB |4108 |
 
@@ -161,10 +161,10 @@ Az eredmények egyértelműen azt mutatják, hogy Site Recovery, a Hyper-V repli
 
 | Elsődleges VMM-felhő | Védett virtuális gépek | Replikálás gyakorisága | További helyreállítási pontok |
 | --- | --- | --- | --- |
-| PrimaryCloudRpo15m |142 |15 perc |None |
-| PrimaryCloudRpo30s |47 |30 másodperc |None |
+| PrimaryCloudRpo15m |142 |15 perc |Nincsenek |
+| PrimaryCloudRpo30s |47 |30 másodperc |Nincsenek |
 | PrimaryCloudRpo30sArp1 |47 |30 másodperc |1 |
-| PrimaryCloudRpo5m |235 |5 perc |None |
+| PrimaryCloudRpo5m |235 |5 perc |Nincsenek |
 
 ### <a name="performance-metrics"></a>Teljesítmény-mérőszámok
 

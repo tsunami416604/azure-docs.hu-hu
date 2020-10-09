@@ -8,10 +8,10 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 07/30/2019
 ms.openlocfilehash: 8a9c7ed9f6b5b8ec89bfca6dd59034b11f05f9a3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75895166"
 ---
 # <a name="scenario-reducer-is-slow-in-azure-hdinsight"></a>Forgatókönyv: a redukáló lassú az Azure HDInsight
@@ -32,7 +32,7 @@ Ha a bemeneti táblában lévő partíciók kevesebbek (kevesebb mint 10), így 
 
 A érték azt `true` indokolja, hogy a partíciók száma nagyobb legyen, és az adatmennyiség ne legyen elferdítve. Ebben az esetben a térképi fázis eredményét úgy kell kiírni, hogy az egyes partíciókat egyetlen redukáló kezelje, ami a későbbi lekérdezési teljesítményt eredményezi.
 
-## <a name="resolution"></a>Megoldás:
+## <a name="resolution"></a>Feloldás
 
 1. Próbálja megismételni az adatparticionálást több partícióra való normalizálás érdekében.
 

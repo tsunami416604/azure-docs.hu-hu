@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: MVC
 ms.openlocfilehash: 01db7128cd990098caa25ba2cd79f2f2a2b28d78
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90108770"
 ---
 # <a name="tutorial-assess-vmware-vms-for-migration-to-azure-vms"></a>Oktatóanyag: VMware virtuális gépek felmérése Azure-beli virtuális gépekre való áttelepítéshez
@@ -26,7 +26,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!NOTE]
 > Az oktatóanyagok a forgatókönyvek kipróbálásának leggyorsabb útvonalát mutatják be, és az alapértelmezett beállításokat használják, ahol lehetséges. 
 
-Ha nem rendelkezik Azure-előfizetéssel, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/).
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/), mielőtt hozzákezd.
 
 
 ## <a name="prerequisites"></a>Előfeltételek
@@ -44,8 +44,8 @@ Döntse el, hogy szeretne-e értékelést használni a méretezési feltételek 
 
 **Értékelés** | **Részletek** | **Ajánlás**
 --- | --- | ---
-**Helyszíni** | Értékelés a számítógép konfigurációs adatok/metaadatok alapján.  | Az ajánlott Azure-beli virtuálisgép-méret a helyszíni virtuális gép méretétől függ.<br/><br> Az ajánlott Azure-lemez típusa azon alapul, hogy mit választott ki az értékelés tárolási típusa beállításban.
-**Teljesítmény-alapú** | Az összegyűjtött dinamikus teljesítményadatok alapján történő Értékelés. | Az ajánlott Azure-beli virtuális gépek mérete a processzor-és memóriahasználat adatain alapul.<br/><br/> Az ajánlott lemez típusa a helyszíni lemezek IOPS és átviteli sebessége alapján történik.
+**Módosítás nélküli helyszíni** | Értékelés a számítógép konfigurációs adatok/metaadatok alapján.  | Az ajánlott Azure-beli virtuálisgép-méret a helyszíni virtuális gép méretétől függ.<br/><br> Az ajánlott Azure-lemez típusa azon alapul, hogy mit választott ki az értékelés tárolási típusa beállításban.
+**Teljesítményalapú** | Az összegyűjtött dinamikus teljesítményadatok alapján történő Értékelés. | Az ajánlott Azure-beli virtuális gépek mérete a processzor-és memóriahasználat adatain alapul.<br/><br/> Az ajánlott lemez típusa a helyszíni lemezek IOPS és átviteli sebessége alapján történik.
 
 
 ## <a name="run-an-assessment"></a>Értékelés futtatása
@@ -80,7 +80,7 @@ Az értékelést a következőképpen futtathatja:
         - Másik lehetőségként válassza ki azt a tárolási típust, amelyet a virtuális géphez szeretne használni a Migrálás során.
     - A **fenntartott példányok**területen válassza ki, hogy a virtuális gép tartalék példányait szeretné-e használni az áttelepítéskor.
         - Ha fenntartott példány használatát választja, a "**kedvezmény (%)** vagy a **virtuális gép üzemidő**nem adható meg. 
-        - [További információ](https://aka.ms/azurereservedinstances).
+        - [További információk](https://aka.ms/azurereservedinstances).
  7. **Virtuális gép mérete**:
  
     - A **méretezési feltétel**területen válassza ki, hogy szeretné-e alapozni az értékelést a számítógép konfigurációs adatai/metaadatai vagy a teljesítmény-alapú adatok alapján. Ha teljesítményadatokat használ:
@@ -105,7 +105,7 @@ Az értékelést a következőképpen futtathatja:
 
 9. Ha módosítja a módosításokat, kattintson a **Save (Mentés** ) gombra.
 
-    ![Értékelés tulajdonságai](./media/tutorial-assess-vmware-azure-vm/assessment-properties.png)
+    ![Kiértékelés tulajdonságai](./media/tutorial-assess-vmware-azure-vm/assessment-properties.png)
 
 10. A **kiszolgálók értékelése**területen kattintson a **tovább**gombra.
 11. Az **értékelendő gépek kiválasztása**területen válassza az **új létrehozása**elemet, és adja meg a csoportnév nevet. 
@@ -125,14 +125,14 @@ Az értékelés a következőket írja le:
 
 - **Azure-készültség**: azt, hogy a virtuális gépek alkalmasak-e az Azure-ba való áttelepítésre.
 - **Havi költségbecslés**: a virtuális gépek Azure-ban való futtatásának becsült havi számítási és tárolási költségei.
-- **Havi tárolási költségek becslése**: a lemezes tárolás becsült költségei az áttelepítés után.
+- **Havi tárolási költségek becslése**: A lemezes tárolás becsült költségei a migrálás után.
 
 Értékelés megtekintése:
 
 1. A **kiszolgálók**  >  **Azure Migrate: kiszolgáló értékelése**területen kattintson az **értékelések**melletti számra.
-2. Az **értékelések**területen válasszon ki egy értékelést a megnyitásához. Példa (csak becslések és költségek például): 
+2. Az **Értékelések** területen válasszon ki egy kiértékelést a megnyitáshoz. Példa (csak becslések és költségek például): 
 
-    ![Értékelés összegzése](./media/tutorial-assess-vmware-azure-vm/assessment-summary.png)
+    ![Kiértékelés összegzése](./media/tutorial-assess-vmware-azure-vm/assessment-summary.png)
 
 3. Tekintse át az értékelés összegzését. Szerkesztheti az értékelési tulajdonságokat is, vagy újraszámíthatja az értékelést.
  
@@ -146,7 +146,7 @@ Az értékelés a következőket írja le:
     - **Nem áll készen az Azure-ra: a**problémákat és a javasolt szervizelést jeleníti meg.
     - **Felkészültségi ismeretlen**: akkor használatos, ha az adatelérhetőségi problémák miatt Azure Migrate nem tudja felmérni a készültséget.
 
-3. Válasszon ki egy **Azure-készültségi** állapotot. Megtekintheti a VM-készültség részleteit. A virtuális gép részleteit is megtekintheti, beleértve a számítási, tárolási és hálózati beállításokat.
+3. Válasszon ki egy **Azure-kompatibilitási** állapotot. Megtekintheti a VM-készültség részleteit. A virtuális gép részleteit is megtekintheti, beleértve a számítási, tárolási és hálózati beállításokat.
 
 ### <a name="review-cost-estimates"></a>Költségbecslések áttekintése
 
@@ -155,7 +155,7 @@ Az értékelés összegzése az Azure-ban futó virtuális gépek becsült szám
 1. Tekintse át a havi teljes költséget. A költségek összesítése az összes virtuális gép számára történik a vizsgált csoportban.
 
     - A költségbecslés a gép, a lemezek és a hozzá tartozó tulajdonságok méretére vonatkozó javaslatok alapján történik.
-    - A számítási és tárolási költségek becsült havi költségei láthatók.
+    - A becsült havi számítási és tárolási költségek jelennek meg.
     - A költségbecslés a helyszíni virtuális gépek Azure-beli virtuális gépeken való futtatására szolgál. A becslés nem veszi figyelembe a Pásti vagy az SaaS költségeit.
 
 2. Tekintse át a havi tárolási költségeket. A nézet a kiértékelt csoport összesített tárolási költségeit jeleníti meg, a különböző típusú tárolási lemezek felosztásával. 
@@ -184,7 +184,7 @@ A megbízhatósági minősítések a következők.
 
 [További](concepts-assessment-calculation.md#confidence-ratings-performance-based) információ a megbízhatósági minősítésekről.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A [függőségi leképezést](concepts-dependency-visualization.md)használó számítógép-függőségek keresése.
 - [Ügynök](how-to-create-group-machine-dependencies-agentless.md) [nélküli vagy ügynök-alapú](how-to-create-group-machine-dependencies.md) függőség leképezésének beállítása.

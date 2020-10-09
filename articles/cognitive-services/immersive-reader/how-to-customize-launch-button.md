@@ -1,5 +1,5 @@
 ---
-title: A megölelő olvasó gomb testreszabása
+title: A Modern olvasó gombjának testreszabása
 titleSuffix: Azure Cognitive Services
 description: Ez a cikk bemutatja, hogyan szabhatja testre a teljes olvasót indító gombot.
 services: cognitive-services
@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/14/2020
 ms.author: metan
 ms.openlocfilehash: 6461cc60a237cf834226b07db5e1ea6fbbea7a92
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75946209"
 ---
 # <a name="how-to-customize-the-immersive-reader-button"></a>A megölelő olvasó gomb testreszabása
@@ -31,7 +31,7 @@ A lebilincselő olvasó SDK alapértelmezett stílust biztosít a magával ragad
 
 ## <a name="customize-the-button-style"></a>A gomb stílusának testreszabása
 
-A gomb `data-button-style` stílusának beállításához használja az attribútumot. A megengedett értékek `icon` `text`:, és `iconAndText`. Az alapértelmezett érték `icon`.
+A `data-button-style` gomb stílusának beállításához használja az attribútumot. A megengedett értékek: `icon` , `text` és `iconAndText` . Az alapértelmezett érték `icon`.
 
 ### <a name="icon-button"></a>Ikon gomb
 
@@ -73,7 +73,7 @@ Konfigurálja a gomb nyelvét és az ALT szövegét az `data-locale` attribútum
 
 ## <a name="customize-the-size-of-the-icon"></a>Az ikon méretének testreszabása
 
-A lebilincselő olvasó ikonjának mérete az `data-icon-px-size` attribútum használatával konfigurálható. Ezzel beállítja az ikon méretét képpontban megadva. Az alapértelmezett méret a 20px.
+A lebilincselő olvasó ikonjának mérete az attribútum használatával konfigurálható `data-icon-px-size` . Ezzel beállítja az ikon méretét képpontban megadva. Az alapértelmezett méret a 20px.
 
 ```html
 <div class='immersive-reader-button' data-icon-px-size='50'></div>

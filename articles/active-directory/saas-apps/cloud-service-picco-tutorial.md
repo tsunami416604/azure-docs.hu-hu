@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/21/2018
 ms.author: jeedes
 ms.openlocfilehash: 0b6f8abb4d447ab17bb3114d05b7d74c0fce891e
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88551827"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cloud-service-picco"></a>Oktatóanyag: Azure Active Directory integráció a Cloud Service PICCO
@@ -74,7 +74,7 @@ Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a Cloud
 Az Azure AD egyszeri bejelentkezés a Cloud Service PICCO való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
 
 1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. A **[felhőalapú szolgáltatás PICCO egyszeri bejelentkezés beállítása](#configure-cloud-service-picco-single-sign-on)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+2. A **[Cloud Service PICCO egyszeri bejelentkezés beállítása](#configure-cloud-service-picco-single-sign-on)** – az alkalmazás oldalának egyetlen Sign-On beállításának konfigurálása.
 3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
 4. **[Cloud Service-PICCO-teszt felhasználó létrehozása](#create-cloud-service-picco-test-user)** – a Britta Simon-hoz tartozó, a Cloud Service PICCO lévő, a felhasználó Azure ad-képviseletéhez kapcsolódó partneri kapcsolattal rendelkezhet.
 5. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
@@ -94,7 +94,7 @@ Az Azure AD egyszeri bejelentkezés a Cloud Service PICCO való konfigurálásá
 
     ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
+3. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
@@ -109,13 +109,13 @@ Az Azure AD egyszeri bejelentkezés a Cloud Service PICCO való konfigurálásá
     c. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<SUB DOMAIN>.cloudservicepicco.com/app`
 
     > [!NOTE]
-    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel, azonosítóval és válasz URL-címmel. Vegye fel a kapcsolatot a [Cloud Service PICCO ügyfél-támogatási csapatával](mailto:picco.support@est.fujitsu.com) , és szerezze be ezeket az értékeket. Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges Sign-On URL-címmel, azonosítóval és válasz URL-címmel. Vegye fel a kapcsolatot a [Cloud Service PICCO ügyfél-támogatási csapatával](mailto:picco.support@est.fujitsu.com) , és szerezze be ezeket az értékeket. Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-4. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a Másolás gombra az **alkalmazás-összevonási metaadatok URL-címének** másolásához és a számítógépre mentéséhez.
+4. Az **egyszeres Sign-On beállítása az SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a Másolás gombra az **alkalmazás-összevonási metaadatok URL-címének** másolásához és a számítógépre mentéséhez.
 
     ![A tanúsítvány letöltési hivatkozása](common/copy-metadataurl.png)
 
-### <a name="configure-cloud-service-picco-single-sign-on"></a>A Cloud Service PICCO egyszeri bejelentkezésének konfigurálása
+### <a name="configure-cloud-service-picco-single-sign-on"></a>A Cloud Service PICCO konfigurálása egyetlen Sign-On
 
 Ha az egyszeri bejelentkezést szeretné konfigurálni a **Cloud Service PICCO** oldalon, el kell küldenie az **alkalmazás-összevonási metaadatok URL-címét** a [Cloud Service PICCO támogatási csapatának](mailto:picco.support@est.fujitsu.com). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
 
@@ -142,7 +142,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    d. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

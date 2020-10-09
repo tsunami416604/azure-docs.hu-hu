@@ -10,10 +10,10 @@ ms.custom: hdinsightactive
 ms.topic: conceptual
 ms.date: 10/09/2019
 ms.openlocfilehash: a21e8d6c76c93b3084619c09f6a7664a25c1929c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "73682212"
 ---
 # <a name="selecting-the-right-vm-size-for-your-azure-hdinsight-cluster"></a>A virtuális gép megfelelő méretének kiválasztása az Azure HDInsight-fürthöz
@@ -38,12 +38,12 @@ A virtuális gép méretét és típusát a CPU feldolgozási teljesítmény, a 
 
 Az Azure-beli virtuálisgép-családok különböző használati esetekre vannak optimalizálva. Az alábbi táblázatban megtalálja a legnépszerűbb használati eseteket és a nekik megfelelő virtuálisgép-családokat.
 
-| Típus                     | Méretek           |    Description       |
+| Típus                     | Méretek           |    Leírás       |
 |--------------------------|-------------------|------------------------------------------------------------------------------------------------------------------------------------|
 | [Belépési szint](../virtual-machines/linux/sizes-general.md)          | A, Av2  | A CPU-teljesítmény és a memória-konfigurációk a legmegfelelőbbek a belépési szintű munkaterhelésekhez, például a fejlesztéshez és a teszteléshez. Ezek gazdaságos, és alacsony díjszabású lehetőséget biztosítanak az Azure megkezdésére. |
 | [Általános célú](../virtual-machines/linux/sizes-general.md)          | D, DSv2, Dv2  | Kiegyensúlyozott processzor-memória arány. Ideális választások a teszteléshez és a fejlesztéshez, a kicsi és közepes adatbázisokhoz, illetve az alacsony és közepes forgalmú webkiszolgálókhoz. |
-| [Számításra optimalizált](../virtual-machines/linux/sizes-compute.md)        | F           | Magas processzor-memória arány. Jó a közepes forgalmú webkiszolgálók, a hálózati berendezések, a kötegelt folyamatok és az alkalmazáskiszolgáló számára.        |
-| [Memóriaoptimalizált](../virtual-machines/linux/sizes-memory.md)         | Esv3, Ev3  | Magas memória-CPU arány. Ideális választások a relációs adatbázisok kiszolgálóihoz, a közepes és nagy gyorsítótárakhoz, valamint a memóriában végzett elemzésekhez.                 |
+| [Számításoptimalizált](../virtual-machines/linux/sizes-compute.md)        | F           | Magas processzor-memória arány. Jó a közepes forgalmú webkiszolgálók, a hálózati berendezések, a kötegelt folyamatok és az alkalmazáskiszolgáló számára.        |
+| [Memóriaoptimalizált](../virtual-machines/linux/sizes-memory.md)         | Esv3, Ev3  | Magas memória-processzor arány. Ideális választás a relációs adatbázisok kiszolgálóihoz, a közepes és nagy gyorsítótárakhoz, valamint a memóriában végzett elemzésekhez.                 |
 
 - A HDInsight által támogatott régiókban elérhető virtuálisgép-példányok díjszabásával kapcsolatos információkért lásd: [HDInsight díjszabása](https://azure.microsoft.com/pricing/details/hdinsight/).
 
@@ -58,7 +58,7 @@ A következő táblázat a Fsv2-sorozatú virtuális gépekkel létrehozható f�
 | Spark | Mind | F4 és újabb verziók | nem | nem |
 | Hadoop | Mind | F4 és újabb verziók | nem | nem |
 | Kafka | Mind | F4 és újabb verziók | nem | nem |
-| HBase | Mind | F4 és újabb verziók | nem | nem |
+| A HBase | Mind | F4 és újabb verziók | nem | nem |
 | LLAP | tiltva | nem | nem | nem |
 | Storm | tiltva | nem | nem | nem |
 | ML szolgáltatás | CSAK A HDI 3,6 | F4 és újabb verziók | nem | nem |
@@ -74,4 +74,4 @@ A virtuális gépek és a fürtök méretének összehasonlításával kapcsolat
 ## <a name="next-steps"></a>További lépések
 
 - [Az Azure HDInsight által támogatott csomópont-konfigurációk](hdinsight-supported-node-configuration.md)
-- [A Linux rendszerű virtuális gépek méretei az Azure-ban](../virtual-machines/linux/sizes.md)
+- [Linuxos virtuális gépek méretei az Azure-ban](../virtual-machines/linux/sizes.md)

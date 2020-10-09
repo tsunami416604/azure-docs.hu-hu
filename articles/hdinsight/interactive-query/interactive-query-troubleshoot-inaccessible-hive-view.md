@@ -8,10 +8,10 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 07/30/2019
 ms.openlocfilehash: 6e000d31ffbacd7cb716bd59dde4f935638b0810
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75895191"
 ---
 # <a name="scenario-apache-hive-fails-to-establish-a-connection-to-apache-zookeeper-in-azure-hdinsight"></a>Forgatókönyv: Apache Hive nem tud kapcsolatot létesíteni az Apache Zookeeper az Azure HDInsight
@@ -30,7 +30,7 @@ ERROR [Curator-Framework-0]: curator.ConnectionState (ConnectionState.java:check
 
 Előfordulhat, hogy a kaptár nem tud kapcsolatot létesíteni a Zookeeper-vel, ami megakadályozza a kaptár nézet indítását.
 
-## <a name="resolution"></a>Megoldás:
+## <a name="resolution"></a>Feloldás
 
 1. Győződjön meg arról, hogy a Zookeeper szolgáltatás kifogástalan állapotban van.
 

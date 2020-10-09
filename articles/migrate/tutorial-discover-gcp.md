@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: mvc
 ms.openlocfilehash: c445bc06983aeb72d13f2bea5e2f39e73374d93a
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91716599"
 ---
 # <a name="tutorial-discover-google-cloud-platform-gcp-instances-with-server-assessment"></a>Oktatóanyag: Google Cloud Platform-(GCP-) példányok felderítése kiszolgáló-értékeléssel
@@ -17,7 +17,7 @@ Az Azure-ba való Migrálás részeként felderítheti a kiszolgálókat az ért
 
 Ebből az oktatóanyagból megtudhatja, hogyan derítheti fel Google Cloud Platform (GCP) példányokat a Azure Migrate: Server Assessment Tool eszközzel, egy könnyű Azure Migrate berendezéssel. Üzembe helyezi a készüléket egy GCP virtuálisgép-példányon, hogy folyamatosan felderítse a gép és a teljesítmény metaadatait.
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Hozzon létre egy Azure-fiókot.

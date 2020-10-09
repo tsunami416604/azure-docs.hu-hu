@@ -13,10 +13,10 @@ ms.topic: tutorial
 ms.date: 09/24/2020
 ms.author: duau
 ms.openlocfilehash: a161bc14e8f7628e04673700ca6d90ebc3e8f648
-ms.sourcegitcommit: 638f326d02d108cf7e62e996adef32f2b2896fd5
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91729168"
 ---
 # <a name="tutorial-add-a-custom-domain-to-your-front-door"></a>Oktatóanyag: Egyéni tartomány hozzáadása a Front Doorhoz
@@ -24,7 +24,7 @@ Ebből az oktatóanyagból elsajátíthatja, hogyan adhat hozzá egyéni tartom�
 
 Miután létrehozta a bejárati ajtót, az alapértelmezett előtér-gazdagép, amely a (z) altartománya `azurefd.net` , az URL-cím tartalmazza a háttérbeli tartalomnak a háttérből alapértelmezés szerint történő kézbesítéséhez (például https: \/ /contoso-frontend.azurefd.net/activeusers.htm). A kényelmes használat érdekében az Azure Front Door lehetőséget ad arra, hogy egyéni tartományt társítson az alapértelmezett gazdagéphez. Ezzel a lehetőséggel a tartalom továbbításakor az egyéni tartomány neve lesz az URL-címben a Front Door tulajdonában lévő tartománynév helyett (például https:\//www.contoso.com/photo.png). 
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
 > - CNAME DNS-rekord létrehozása.
 > - Az egyéni tartomány társítása a Front Doorral.
@@ -97,7 +97,7 @@ Példaképp a GoDaddy tartományregisztráló eljárása a következő:
 
     - TTL: hagyjon *egy órát* .
 
-6. Válassza a **Mentés** lehetőséget.
+6. Kattintson a **Mentés** gombra.
  
     A CNAME bejegyzést a rendszer a DNS-rekordok táblázatához adja.
 
@@ -178,7 +178,7 @@ Példaképp a GoDaddy tartományregisztráló eljárása a következő:
 
     - TTL: hagyjon *egy órát* .
 
-6. Válassza a **Mentés** lehetőséget.
+6. Kattintson a **Mentés** gombra.
  
     A CNAME bejegyzést a rendszer a DNS-rekordok táblázatához adja.
 

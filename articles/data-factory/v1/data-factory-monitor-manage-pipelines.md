@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/30/2018
 ms.openlocfilehash: 44aadecfa80524345932c03abb51e8ebd040a902
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "73666969"
 ---
 # <a name="monitor-and-manage-azure-data-factory-pipelines-by-using-the-azure-portal-and-powershell"></a>Azure Data Factory folyamatok monitorozása és kezelése a Azure Portal és a PowerShell használatával
@@ -87,10 +87,10 @@ Az adat-előállítóban található adatkészlet-szeletek a következő állapo
 
 <table>
 <tr>
-    <th align="left">Állapot</th><th align="left">Alállapotot</th><th align="left">Description</th>
+    <th align="left">Állam</th><th align="left">Alállapotot</th><th align="left">Leírás</th>
 </tr>
 <tr>
-    <td rowspan="8">Várakozás</td><td>ScheduleTime</td><td>A szelet futtatásához szükséges idő.</td>
+    <td rowspan="8">Várakozó</td><td>ScheduleTime</td><td>A szelet futtatásához szükséges idő.</td>
 </tr>
 <tr>
 <td>DatasetDependencies</td><td>A felsőbb rétegbeli függőségek nem állnak készen.</td>
@@ -108,7 +108,7 @@ Az adat-előállítóban található adatkészlet-szeletek a következő állapo
 <td>Ismét</td><td>A tevékenység végrehajtásának újrapróbálása folyamatban van.</td>
 </tr>
 <tr>
-<td>Ellenőrzés</td><td>Az érvényesítés még nincs elindítva.</td>
+<td>Érvényesítés</td><td>Az érvényesítés még nincs elindítva.</td>
 </tr>
 <tr>
 <td>ValidationRetry</td><td>Az érvényesítés az újrapróbálkozásra vár.</td>
@@ -127,7 +127,7 @@ Az adat-előállítóban található adatkészlet-szeletek a következő állapo
 <td>Megszakítva</td><td>A szeletet a felhasználói művelet megszakította.</td>
 </tr>
 <tr>
-<td>Ellenőrzés</td><td>Az érvényesítés sikertelen volt.</td>
+<td>Érvényesítés</td><td>Az érvényesítés sikertelen volt.</td>
 </tr>
 <tr>
 <td>-</td><td>A szelet létrehozása és/vagy ellenőrzése nem sikerült.</td>
@@ -135,10 +135,10 @@ Az adat-előállítóban található adatkészlet-szeletek a következő állapo
 <td>Kész</td><td>-</td><td>A szelet készen áll a felhasználásra.</td>
 </tr>
 <tr>
-<td>Kimarad</td><td>None</td><td>A szelet feldolgozása nem történik meg.</td>
+<td>Kimarad</td><td>Nincsenek</td><td>A szelet feldolgozása nem történik meg.</td>
 </tr>
 <tr>
-<td>None</td><td>-</td><td>Egy olyan szelet, amely más állapottal is létezik, de alaphelyzetbe lett állítva.</td>
+<td>Nincsenek</td><td>-</td><td>Egy olyan szelet, amely más állapottal is létezik, de alaphelyzetbe lett állítva.</td>
 </tr>
 </table>
 
@@ -290,7 +290,7 @@ Abban az esetben, ha a szelet házirend-meghibásodás miatt sikertelen volt (p�
 ### <a name="use-azure-powershell"></a>Azure PowerShell használatával
 A hibákat a **set-AzDataFactorySliceStatus** parancsmag használatával futtathatja újra. A parancsmag szintaxisát és egyéb részleteit lásd a [set-AzDataFactorySliceStatus](https://docs.microsoft.com/powershell/module/az.datafactory/set-azdatafactoryslicestatus) témakörben.
 
-**Példa:**
+**Példa**
 
 A következő példa a "DAWikiAggregatedData" tábla összes szeletének állapotát a "Waiting" értékre állítja a "WikiADF" Azure-beli adat-előállítóban.
 

@@ -8,10 +8,10 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 03/09/2020
 ms.openlocfilehash: a0e75957a0ab49394dab56f2b7fb847dee4b43cb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81413681"
 ---
 # <a name="flatten-transformation-in-mapping-data-flow"></a>Átalakítás összeolvasztása a leképezési adatfolyamban
@@ -68,7 +68,7 @@ Tekintse meg a következő JSON-objektumot az alábbi példákban a lelapul áta
 
 | Legördülő | Legördülő gyökér | Vetület |
 | --------- | ----------- | ---------- |
-| termékek. ügyfelek | None | name <br> ügyfél = termékek. ügyfél |
+| termékek. ügyfelek | Nincsenek | name <br> ügyfél = termékek. ügyfél |
 
 #### <a name="output"></a>Kimenet
 
@@ -86,7 +86,7 @@ Tekintse meg a következő JSON-objektumot az alábbi példákban a lelapul áta
 
 | Legördülő | Legördülő gyökér | Vetület |
 | --------- | ----------- | ---------- |
-| áruk. Orders. szállított. orderItems | None | name <br> Rendeléskód = termékek. Orders. Rendeléskód <br> itemName = termékek. Orders. szállított. orderItems. itemName <br> itemQty = termékek. Orders. szállított. orderItems. itemQty <br> hely = hely |
+| áruk. Orders. szállított. orderItems | Nincsenek | name <br> Rendeléskód = termékek. Orders. Rendeléskód <br> itemName = termékek. Orders. szállított. orderItems. itemName <br> itemQty = termékek. Orders. szállított. orderItems. itemQty <br> hely = hely |
 
 #### <a name="output"></a>Kimenet
 

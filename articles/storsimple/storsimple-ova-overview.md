@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 07/25/2019
 ms.author: alkohli
 ms.openlocfilehash: 32781a83aec996b23f161f5fe695f39a0de38685
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "76273871"
 ---
 # <a name="introduction-to-the-storsimple-virtual-array"></a>A StorSimple virtuális tömb bemutatása
@@ -45,7 +45,7 @@ A következő táblázat összefoglalja a StorSimple virtuális tömb fontos fun
 | Támogatás |A szállító által támogatott virtualizációs infrastruktúra |
 | Teljesítmény |Az alapul szolgáló infrastruktúrától függ |
 | Adatmobilitás |Visszaállítható ugyanarra az eszközre, vagy az elemszintű helyreállítást (fájlkiszolgáló) |
-| Tárolási rétegek |Helyi hypervisor tároló és felhő |
+| Tárolási szintek |Helyi hypervisor tároló és felhő |
 | Megosztás mérete |Rétegű: legfeljebb 20 TB; helyileg rögzítve: legfeljebb 2 TB |
 | Kötet mérete |Rétegű: 500 GB – 5 TB; helyileg rögzített: 50 GB – 200 GB <br> A többszintes kötetek maximális helyi foglalása 200 GB. |
 | Pillanatképek |Összeomlás-konzisztens |
@@ -71,8 +71,8 @@ Az alábbi táblázat a támogatott StorSimple-számítási feladatok összefogl
 
 |Forgatókönyv     |Számítási feladat     |Támogatott      |Korlátozások               | Alkalmazható verziók|
 |-------------|-------------|---------------|---------------------------|--------------------|
-|Távoli iroda/fiókiroda (ROBO)  |Fájlmegosztás     |Yes      |Lásd: [a fájlkiszolgáló maximális korlátai](storsimple-ova-limits.md).<br></br>Tekintse [meg a támogatott SMB-verziók rendszerkövetelményeit](storsimple-ova-system-requirements.md).| Az összes verzió     |
-|Felhőbeli archiválás  |Archiválási fájlmegosztás     |Yes      |Lásd: [a fájlkiszolgáló maximális korlátai](storsimple-ova-limits.md).<br></br>Tekintse [meg a támogatott SMB-verziók rendszerkövetelményeit](storsimple-ova-system-requirements.md).| Az összes verzió     |
+|Távoli iroda/fiókiroda (ROBO)  |Fájlmegosztás     |Igen      |Lásd: [a fájlkiszolgáló maximális korlátai](storsimple-ova-limits.md).<br></br>Tekintse [meg a támogatott SMB-verziók rendszerkövetelményeit](storsimple-ova-system-requirements.md).| Az összes verzió     |
+|Felhőbeli archiválás  |Archiválási fájlmegosztás     |Igen      |Lásd: [a fájlkiszolgáló maximális korlátai](storsimple-ova-limits.md).<br></br>Tekintse [meg a támogatott SMB-verziók rendszerkövetelményeit](storsimple-ova-system-requirements.md).| Az összes verzió     |
 
 A StorSimple Virtual Array a ritkán használt adatokhoz ajánlott. Míg a virtuális tömb helyi gyorsítótárral rendelkezik a teljesítmény növelése érdekében, a felhasználóknak feltételezni kell, hogy az eszköz-szolgáltatások fájljai a legalacsonyabb tárolási szinten (a felhőben) találhatók. Minden egyes virtuális tömb körülbelül 100 Mbps sebességgel tud írni és olvasni az Azure Storage-ba. Ez a hivatkozás az eszközre érkező összes kérelem között megoszlik, és az alábbi ábrán látható módon szűk keresztmetszetet jelenthet.
 

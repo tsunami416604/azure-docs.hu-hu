@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 10/05/2020
 ms.author: pafarley
 ms.openlocfilehash: 478f7b7671a71d0d1f1f56c5d1d9889db81f7d37
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91760195"
 ---
 # <a name="tutorial-moderate-facebook-posts-and-commands-with-azure-content-moderator"></a>Oktatóanyag: mérsékelt Facebook-bejegyzések és-parancsok az Azure Content Moderator
@@ -87,7 +87,7 @@ Jelentkezzen be a [Azure Portalba](https://portal.azure.com/) , és kövesse az 
 
     1. Kattintson a **http-triggert**tartalmazó csempére.
     1. Adja meg az **FBListener** nevet. Az **Engedélyszint** mező értéke legyen **Függvény**.
-    1. Kattintson a **Create** (Létrehozás) gombra.
+    1. Kattintson a **Létrehozás** elemre.
     1. Cserélje le a **Run. CSX** tartalmát a **FbListener/Run. CSX** tartalmára.
 
     [!code-csharp[FBListener: csx file](~/samples-fbPageModeration/FbListener/run.csx?range=1-154)]
@@ -157,7 +157,7 @@ Jelentkezzen be a [Azure Portalba](https://portal.azure.com/) , és kövesse az 
 
 A megoldás a Facebook-oldalon közzétett összes képet és szöveget elküldi a Content Moderatornek. Ezután meghívja a korábban konfigurált munkafolyamatokat. A munkafolyamatokban definiált feltételeknek nem megfelelő tartalom a felülvizsgálati eszközön belüli felülvizsgálatokra lesz átadva. A tartalom többi része automatikusan közzé lesz téve.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban egy olyan programot állít be, amely a termékek rendszerképeinek elemzésére szolgál, és lehetővé teszi a felülvizsgálati csapat számára, hogy megalapozott döntéseket hozhasson a tartalom moderálásával kapcsolatban. Következő lépésként tekintse meg a képek moderálásának részleteit.
 

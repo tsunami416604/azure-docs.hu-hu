@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/27/2018
 ms.author: jeedes
 ms.openlocfilehash: 4aec6f266d7559656bca848801df54c83949e925
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91741242"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-saml-sso-for-bitbucket-by-resolution-gmbh"></a>Oktatóanyag: Azure Active Directory integráció az SAML SSO-nal a bitbucket by Solution GmbH által
@@ -75,7 +75,7 @@ Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a kapcs
 Az Azure AD egyszeri bejelentkezés SAML SSO-vel történő konfigurálásához és teszteléséhez a bitbucket by Solution GmbH esetében el kell végeznie a következő építőelemeket:
 
 1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. **[Konfigurálja az SAML SSO-t a bitbucket által a feloldási GmbH egyszeri bejelentkezéssel](#configure-saml-sso-for-bitbucket-by-resolution-gmbh-single-sign-on)** , hogy az egyszeri bejelentkezési beállításokat konfigurálja az alkalmazás oldalán.
+2. **[Konfigurálja az SAML SSO-t a bitbucket által a Resolution GmbH egyszeri bejelentkezéssel](#configure-saml-sso-for-bitbucket-by-resolution-gmbh-single-sign-on)** , amely az alkalmazás oldalának egyetlen Sign-On beállításait konfigurálja.
 3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
 4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
 5. **[SAML SSO létrehozása a bitbucket által a megoldáshoz használt felhasználó](#create-saml-sso-for-bitbucket-by-resolution-gmbh-test-user)** számára – a felhasználó Azure ad-beli Britta kapcsolódó, az SAML SSO-ban található, a bitbucket-hez készült "
@@ -95,7 +95,7 @@ Az Azure AD egyszeri bejelentkezés SAML SSO-vel való konfigurálásához a bit
 
     ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
+3. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
@@ -116,11 +116,11 @@ Az Azure AD egyszeri bejelentkezés SAML SSO-vel való konfigurálásához a bit
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és a bejelentkezési URL-címmel. Vegye fel a kapcsolatot az [SAML SSO-vel a bitbucket by Solution GmbH ügyfélszolgálati csapatával](https://marketplace.atlassian.com/apps/1217045/saml-single-sign-on-sso-bitbucket?hosting=server&tab=support) az értékek beszerzéséhez. Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-5. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
+5. Az **egyszeres Sign-On beállítása SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozása](common/metadataxml.png)
 
-### <a name="configure-saml-sso-for-bitbucket-by-resolution-gmbh-single-sign-on"></a>SAML SSO konfigurálása a bitbucket megoldáshoz az egyszeri bejelentkezéssel
+### <a name="configure-saml-sso-for-bitbucket-by-resolution-gmbh-single-sign-on"></a>Az SAML SSO konfigurálása a bitbucket által a Solution GmbH egyetlen Sign-On
 
 1. Jelentkezzen be az SAML SSO-ra a bitbucket által a megoldási GmbH céges webhelyre rendszergazdaként.
 

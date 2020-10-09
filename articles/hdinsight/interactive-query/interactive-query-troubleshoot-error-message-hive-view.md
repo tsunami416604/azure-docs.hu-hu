@@ -8,10 +8,10 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 07/30/2019
 ms.openlocfilehash: 5aa03ac3537783daef87c9e7cb7d4ec58988ea9e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75895220"
 ---
 # <a name="scenario-query-error-message-not-displayed-in-apache-hive-view-in-azure-hdinsight"></a>Forgatókönyv: a lekérdezési hibaüzenet nem jelenik meg Apache Hive nézetben az Azure HDInsight
@@ -30,7 +30,7 @@ A Apache Hive View lekérdezési hibaüzenet a következőhöz hasonló módon f
 
 Időnként előfordulhat, hogy a lekérdezési hiba hibaüzenete túl nagy a struktúra nézet főoldalán való megjelenítéshez.
 
-## <a name="resolution"></a>Megoldás:
+## <a name="resolution"></a>Feloldás
 
 Tekintse meg az értesítések lapot a Hive_view jobb felső sarkában, és tekintse meg a teljes stacktrace és-hibaüzenetet.
 

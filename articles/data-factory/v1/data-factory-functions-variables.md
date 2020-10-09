@@ -11,10 +11,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: 9acc369e24d1bac92dea3fb6ae391a410e5f6c3d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "73667654"
 ---
 # <a name="azure-data-factory---functions-and-system-variables"></a>Azure Data Factory – functions és System változók
@@ -25,7 +25,7 @@ Ez a cikk a Azure Data Factory által támogatott függvényekről és változó
 
 ## <a name="data-factory-system-variables"></a>Rendszerváltozók Data Factory
 
-| Változó neve | Description | Objektum hatóköre | JSON-hatókör és-használati esetek |
+| Változó neve | Leírás | Objektum hatóköre | JSON-hatókör és-használati esetek |
 | --- | --- | --- | --- |
 | WindowStart |Az aktuális tevékenység futtatási ablakának időintervallumának kezdete |tevékenység |<ol><li>Az adatkijelölési lekérdezések meghatározása. Lásd az [adattovábbítási tevékenységekről](data-factory-data-movement-activities.md) szóló cikkben hivatkozott összekötő cikkeket.</li> |
 | WindowEnd |Az aktuális tevékenység futtatási időszakának vége |tevékenység |ugyanaz, mint a WindowStart. |
@@ -75,7 +75,7 @@ Tekintse meg az [Egyéni dátum-és időformátum-karakterláncok](https://msdn.
 ### <a name="functions"></a>Functions
 A következő táblázatok a Azure Data Factory összes funkcióját felsorolják:
 
-| Kategória | Függvény | Paraméterek | Description |
+| Kategória | Függvény | Paraméterek | Leírás |
 | --- | --- | --- | --- |
 | Idő |AddHours (X, Y) |X: dátum és idő <br/><br/>Y: int |Y óra beadása a megadott időponthoz X. <br/><br/>Például: `9/5/2013 12:00:00 PM + 2 hours = 9/5/2013 2:00:00 PM` |
 | Idő |AddMinutes (X, Y) |X: dátum és idő <br/><br/>Y: int |Y percet vesz fel X-re.<br/><br/>Például: `9/15/2013 12: 00:00 PM + 15 minutes = 9/15/2013 12: 15:00 PM` |

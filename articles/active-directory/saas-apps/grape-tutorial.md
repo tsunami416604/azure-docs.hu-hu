@@ -1,5 +1,5 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory integráció a GRA-PE-vel | Microsoft Docs'
+title: 'Oktatóanyag: Azure Active Directory integráció a Gra-Petal | Microsoft Docs'
 description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és a GRA-PE között.
 services: active-directory
 author: jeevansd
@@ -12,19 +12,19 @@ ms.topic: tutorial
 ms.date: 02/18/2019
 ms.author: jeedes
 ms.openlocfilehash: 99357c01774ef10d9c759df89b94c538abc720f3
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88551560"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-gra-pe"></a>Oktatóanyag: Azure Active Directory integráció a GRA-PE-vel
+# <a name="tutorial-azure-active-directory-integration-with-gra-pe"></a>Oktatóanyag: Azure Active Directory integráció a Gra-Pe
 
-Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a GRA-PE-t Azure Active Directory (Azure AD) használatával.
-A GRA-PE és az Azure AD integrálásával a következő előnyöket nyújtja:
+Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a Gra-Pet Azure Active Directory (Azure AD) használatával.
+A Gra-Pe az Azure AD-vel való integrálása a következő előnyöket biztosítja:
 
 * Az Azure AD-ben beállíthatja, hogy ki férhet hozzá a GRA-PE-hez.
-* Lehetővé teheti a felhasználók számára, hogy automatikusan bejelentkezzenek a GRA-PE (egyszeri bejelentkezés) Azure AD-fiókjával.
+* Engedélyezheti a felhasználók számára, hogy automatikusan bejelentkezzenek a Gra-Peba (egyszeri bejelentkezés) az Azure AD-fiókjával.
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
 Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
@@ -35,19 +35,19 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 Az Azure AD-integráció GRA-PE-vel való konfigurálásához a következő elemek szükségesek:
 
 * Egy Azure AD-előfizetés. Ha még nem rendelkezik Azure AD-környezettel, [itt](https://azure.microsoft.com/pricing/free-trial/) kérhet egy hónapos próbaverziót
-* GRA-PE egyszeri bejelentkezésre alkalmas előfizetés
+* Gra-Pe egyszeri bejelentkezésre engedélyezett előfizetés
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
 Ebben az oktatóanyagban egy tesztkörnyezetben konfigurálja és teszteli az Azure AD egyszeri bejelentkezést.
 
-* A GRA-PE támogatja az **SP** által kezdeményezett SSO-t
+* Gra-Pe támogatja az **SP** által KEZDEMÉNYEZett SSO-t
 
-## <a name="adding-gra-pe-from-the-gallery"></a>GRA-PE hozzáadása a gyűjteményből
+## <a name="adding-gra-pe-from-the-gallery"></a>Gra-Pe hozzáadása a gyűjteményből
 
-A GRA-PE Azure AD-be való integrálásának konfigurálásához hozzá kell adnia a GRA-PE elemet a katalógusból a felügyelt SaaS-alkalmazások listájához.
+Gra-Pe az Azure AD-be való integrálásának konfigurálásához hozzá kell adnia Gra-Pe a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-**A GRA-PE a katalógusból való hozzáadásához hajtsa végre a következő lépéseket:**
+**Ha Gra-Pe szeretne hozzáadni a katalógusból, hajtsa végre a következő lépéseket:**
 
 1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen kattintson **Azure Active Directory** ikonra.
 
@@ -63,20 +63,20 @@ A GRA-PE Azure AD-be való integrálásának konfigurálásához hozzá kell adn
 
 4. A keresőmezőbe írja be a **GRA-PE**kifejezést, válassza a **GRA-PE** elemet az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
-     ![GRA-PE az eredmények listájában](common/search-new-app.png)
+     ![Gra-Pe az eredmények listájában](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezést a GRA-PE-vel konfigurálja és teszteli a **Britta Simon**nevű teszt felhasználó alapján.
-Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a GRA-PE-ben lévő kapcsolódó felhasználó közötti kapcsolat létesítésére van szükség.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezés konfigurálását és tesztelését Gra-Pe a **Britta Simon**nevű tesztelési felhasználó alapján.
+Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a Gra-Pe kapcsolódó felhasználó közötti kapcsolat létesítésére van szükség.
 
 Az Azure AD egyszeri bejelentkezés a GRA-PE-vel való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
 
 1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. A **[GRA-PE egyszeri bejelentkezés konfigurálása](#configure-gra-pe-single-sign-on)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+2. **[Gra-Pe egyszeri bejelentkezés konfigurálása](#configure-gra-pe-single-sign-on)** – az egyes Sign-On beállításainak konfigurálása az alkalmazás oldalán.
 3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
 4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
-5. **[GRA-PE tesztelési felhasználó létrehozása](#create-gra-pe-test-user)** – a Britta Simon-nek a felhasználó Azure ad-képviseletéhez kapcsolódó, a GRA-PE-ben lévő partnere.
+5. **[Hozzon létre Gra-Pe test User](#create-gra-pe-test-user)** -t, hogy a Britta Simon partnere legyen a Gra-Pe, amely a felhasználó Azure ad-képviseletéhez van csatolva.
 6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)** – annak ellenőrzéséhez, hogy a konfiguráció működik-e.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
@@ -93,17 +93,17 @@ Az Azure AD egyszeri bejelentkezés GRA-PE-vel való konfigurálásához hajtsa 
 
     ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
+3. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
 4. Az **alapszintű SAML-konfiguráció** szakaszban hajtsa végre a következő lépéseket:
 
-    ![GRA-PE tartomány és URL-címek egyszeri bejelentkezési adatai](common/sp-signonurl.png)
+    ![A tartomány és az URL-címek egyszeri bejelentkezési adatainak Gra-Pe](common/sp-signonurl.png)
 
     A **bejelentkezési URL** szövegmezőbe írja be a következő URL-címet:  `https://btm.tts.co.jp/portal/apl/SSOLogin.aspx`
 
-5. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállítások alapján, és mentse a számítógépre.
+5. Az **egyszeres Sign-On beállítása az SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállítások alapján, és mentse azt a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozása](common/certificatebase64.png)
 
@@ -117,7 +117,7 @@ Az Azure AD egyszeri bejelentkezés GRA-PE-vel való konfigurálásához hajtsa 
 
     c. Kijelentkezési URL-cím
 
-### <a name="configure-gra-pe-single-sign-on"></a>A GRA-PE egyszeri bejelentkezés konfigurálása
+### <a name="configure-gra-pe-single-sign-on"></a>Gra-Pe egyetlen Sign-On konfigurálása
 
 Ha az egyszeri bejelentkezést a **GRA-PE** oldalon szeretné beállítani, el kell küldenie a letöltött **tanúsítványt (Base64)** és a megfelelő másolt url-címeket a Azure Portalról a [GRA-PE támogatási csapatba](https://www.toppantravel.com/inquiry/). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
 
@@ -144,7 +144,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    d. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -156,7 +156,7 @@ Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egysz
 
 2. Az alkalmazások listában válassza a **GRA-PE**elemet.
 
-    ![A GRA-PE hivatkozás az alkalmazások listájában](common/all-applications.png)
+    ![Az alkalmazások lista Gra-Pe hivatkozása](common/all-applications.png)
 
 3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
 
@@ -172,15 +172,15 @@ Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egysz
 
 7. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
-### <a name="create-gra-pe-test-user"></a>GRA-PE tesztelési felhasználó létrehozása
+### <a name="create-gra-pe-test-user"></a>Gra-Pe tesztelési felhasználó létrehozása
 
-Ebben a szakaszban egy Britta Simon nevű felhasználót hoz létre a GRA-PE-ben. A GRA- [PE támogatási csapattal](https://www.toppantravel.com/inquiry/) felveheti a felhasználókat a GRA-PE platformba. Az egyszeri bejelentkezés használata előtt létre kell hozni és aktiválni kell a felhasználókat.
+Ebben a szakaszban egy Britta Simon nevű felhasználót hoz létre a GRA-PE-ben. A [GRA-PE támogatási csapattal](https://www.toppantravel.com/inquiry/) felveheti a felhasználókat a Gra-Pe platformon. Az egyszeri bejelentkezés használata előtt létre kell hozni és aktiválni kell a felhasználókat.
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 
 Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
 
-Amikor a hozzáférési panelen a GRA-PE csempére kattint, automatikusan be kell jelentkeznie a GRA-PE-be, amelyhez be kell állítania az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Ha a hozzáférési panelen a Gra-Pe csempére kattint, automatikusan be kell jelentkeznie arra a Gra-Pera, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>További források
 

@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 08/01/2019
 ms.author: jingwang
 ms.openlocfilehash: 0eb4d37342685c13027a69bb6cb85f618fa63f20
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81410216"
 ---
 # <a name="copy-data-from-web-table-by-using-azure-data-factory"></a>Adatok másolása webes táblából Azure Data Factory használatával
@@ -64,7 +64,7 @@ A webes tábla társított szolgáltatása a következő tulajdonságokat támog
 | authenticationType | Az engedélyezett érték: **Anonymous**. |Igen |
 | Connectvia tulajdonsággal | Az adattárhoz való kapcsolódáshoz használt [Integration Runtime](concepts-integration-runtime.md) . A saját üzemeltetésű Integration Runtime az [Előfeltételek](#prerequisites)szakaszban említettek szerint kell megadni. |Igen |
 
-**Példa:**
+**Példa**
 
 ```json
 {
@@ -95,7 +95,7 @@ Ha adatokat szeretne másolni a webtáblából, állítsa be az adatkészlet Typ
 | path |A táblázatot tartalmazó erőforrás relatív URL-címe. |Nem. Ha nincs megadva az elérési út, a rendszer csak a társított szolgáltatás definíciójában megadott URL-címet használja. |
 | index |Az erőforrásban található tábla indexe A HTML-lapokban található táblázat indexének beolvasásához szükséges lépésekért lásd: [index beolvasása egy html-oldalon](#get-index-of-a-table-in-an-html-page) . |Igen |
 
-**Példa:**
+**Példa**
 
 ```json
 {
@@ -123,7 +123,7 @@ A tevékenységek definiálásához elérhető csoportok és tulajdonságok telj
 
 Az adatok webtáblából való másolásához a másolási tevékenységben állítsa be a forrás típusát a **Websource**értékre, a további tulajdonságok nem támogatottak.
 
-**Példa:**
+**Példa**
 
 ```json
 "activities":[
@@ -166,7 +166,7 @@ Egy olyan tábla indexének lekéréséhez, amelyet az [adatkészlet tulajdonsá
 
     ![Webes párbeszédpanelen](./media/copy-data-from-web-table/FromWeb-DialogBox.png)
 
-    Az ebben a példában használt URL-cím:https://en.wikipedia.org/wiki/AFI%27s_100_Years...100_Movies
+    Az ebben a példában használt URL-cím: https://en.wikipedia.org/wiki/AFI%27s_100_Years...100_Movies
 4. Ha a **webes tartalom elérése** párbeszédpanel jelenik meg, válassza ki a **megfelelő URL-címet**, a **hitelesítést**, majd kattintson a **Kapcsolódás**elemre.
 
    ![Hozzáférés a webes tartalomhoz párbeszédpanel](./media/copy-data-from-web-table/AccessWebContentDialog.png)

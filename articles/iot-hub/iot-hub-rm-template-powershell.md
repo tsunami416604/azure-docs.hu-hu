@@ -9,10 +9,10 @@ services: iot-hub
 ms.topic: conceptual
 ms.date: 04/02/2019
 ms.openlocfilehash: a1f878361a96c5584f43b31135d79ff799f66efa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75976626"
 ---
 # <a name="create-an-iot-hub-using-azure-resource-manager-template-powershell"></a>IoT hub létrehozása Azure Resource Manager sablon használatával (PowerShell)
@@ -21,15 +21,15 @@ ms.locfileid: "75976626"
 
 Megtudhatja, hogyan hozhat létre egy IoT Hub és egy fogyasztói csoportot egy Azure Resource Manager sablon használatával. A Resource Manager-sablonok JSON-fájlok, melyek az adott megoldáshoz telepítendő erőforrásokat határozzák meg. További információ a Resource Manager-sablonok fejlesztéséről: [Azure Resource Manager dokumentáció](https://docs.microsoft.com/azure/azure-resource-manager/).
 
-Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) .
+Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/) a feladatok megkezdése előtt.
 
-## <a name="create-an-iot-hub"></a>IoT Hub létrehozása
+## <a name="create-an-iot-hub"></a>IoT-központ létrehozása
 
 Az ebben a rövid útmutatóban használt Resource Manager-sablon az [Azure Gyorsindítás sablonjaiból](https://azure.microsoft.com/resources/templates/101-iothub-with-consumergroup-create/)származik. A sablon egy másolata:
 
 [!code-json[iothub-creation](~/quickstart-templates/101-iothub-with-consumergroup-create/azuredeploy.json)]
 
-A sablon létrehoz egy Azure IOT hubot három végponttal (eventhub, felhőből eszközre és üzenetküldéssel) és egy fogyasztói csoporttal. További sablon-példákat az [Azure Gyorsindítás sablonjai](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Devices&pageNumber=1&sort=Popular)című témakörben talál. Az IOT hub-sablon sémája [itt](https://docs.microsoft.com/azure/templates/microsoft.devices/iothub-allversions)található.
+A sablon létrehoz egy Azure IOT hubot három végponttal (eventhub, felhőből eszközre és üzenetküldéssel) és egy fogyasztói csoporttal. További sablon-példákat az [Azure Gyorsindítás sablonjai](https://azure.microsoft.com/resources/templates/?resourceType=Microsoft.Devices&pageNumber=1&sort=Popular)című témakörben talál. Az IOT hub-sablon sémája  [itt](https://docs.microsoft.com/azure/templates/microsoft.devices/iothub-allversions)található.
 
 A sablonok üzembe helyezésének számos módja van.  Ebben az oktatóanyagban Azure PowerShell használ.
 

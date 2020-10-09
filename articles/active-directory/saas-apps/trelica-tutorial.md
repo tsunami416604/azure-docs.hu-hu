@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 05/06/2020
 ms.author: jeedes
 ms.openlocfilehash: dcc304febe6fcebe3aba3047d1773e695b80f9e2
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88551938"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-trelica"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Trelica
@@ -77,7 +77,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO-t a Azure Portal
 1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
 1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfigurációhoz** tartozó ceruza ikonra a beállítások szerkesztéséhez.
 
-   ![Az egyszeri bejelentkezés SAML-oldallal való beállítása az alapszintű SAML-konfigurációhoz tartozó ceruza ikonnal](common/edit-urls.png)
+   ![Az egyszeri Sign-On beállítása az SAML-oldallal lapon az alapszintű SAML-konfigurációhoz tartozó ceruza ikont kiemelve](common/edit-urls.png)
 
 1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon adja meg a következő értékeket:
 
@@ -102,7 +102,7 @@ Ebben a szakaszban egy B. Simon nevű teszt felhasználót hoz létre a Azure Po
 1. A képernyő felső részén válassza az **új felhasználó**lehetőséget.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A név mezőbe írja be a **B. Simon** **nevet** .
-   1. A **Felhasználónév** mezőbe írja be a **B. Simon@**_cégestartomány_**.** _bővítmény_. Például: B.Simon@contoso.com.
+   1. A **Felhasználónév** mezőbe írja be **B.Simon@**_cégestartomány_**.** _bővítmény_. Például: B.Simon@contoso.com.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
    1. Kattintson a **Létrehozás** gombra.
 

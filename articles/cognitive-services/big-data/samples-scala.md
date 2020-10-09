@@ -9,10 +9,10 @@ ms.topic: sample
 ms.date: 07/06/2020
 ms.author: marhamil
 ms.openlocfilehash: 4546ef03c82f19d188a71a86f6964ca87c0f834e
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90524963"
 ---
 # <a name="quick-examples"></a>Gyors példák
@@ -237,7 +237,7 @@ display(anamolyDetector.transform(df).select("timestamp", "value", "anomalies.is
 
 ### <a name="expected-result"></a>Várt eredmény
 
-| időbélyeg            |   Érték | isAnomaly   |
+| időbélyeg            |   érték | isAnomaly   |
 |:---------------------|--------:|:------------|
 | 1972-01-01T00:00:00Z |     826 | Hamis       |
 | 1972-02-01T00:00:00Z |     799 | Hamis       |

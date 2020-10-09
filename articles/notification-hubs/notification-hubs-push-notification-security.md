@@ -17,10 +17,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 09/23/2019
 ms.openlocfilehash: b871775bc7a6d795e86147ae9cffa27bdd2f3348
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "76263761"
 ---
 # <a name="notification-hubs-security"></a>Notification Hubs biztonság
@@ -48,7 +48,7 @@ A **figyelési** hozzáféréssel rendelkező kulcs lehetővé teszi, hogy az ü
 
 A többi entitáshoz hasonlóan a Notification hub műveletei három biztonsági jogcím esetében is engedélyezettek: **figyelés**, **Küldés**és **felügyelet**.
 
-| Jogcím   | Description                                          | Engedélyezett műveletek |
+| Jogcím   | Leírás                                          | Engedélyezett műveletek |
 | ------- | ---------------------------------------------------- | ------------------ |
 | Figyelés  | Egyszeri regisztrációk létrehozása/frissítése, olvasása és törlése | Regisztráció létrehozása/frissítése<br><br>Regisztráció beolvasása<br><br>Egy leíró összes regisztrációjának olvasása<br><br>Regisztráció törlése |
 | Küldés    | Üzenetek küldése az értesítési központnak                | Üzenet küldése |
@@ -65,10 +65,10 @@ Névtér szintű műveletekhez használja a névtér szintű hozzáférési ház
 Új biztonsági jogcím létrehozásához vagy a meglévő SAS-kulcsok megtekintéséhez tegye a következőket:
 
 1. Jelentkezzen be az Azure portálra.
-2. Válassza az **Összes erőforrás** elemet.
+2. Válassza a **Minden erőforrás** elemet.
 3. Válassza ki az értesítési központ nevét, amelyhez létre kívánja hozni a jogcímet, vagy tekintse meg az SAS-kulcsot.
 4. A bal oldali menüben válassza a **hozzáférési szabályzatok**lehetőséget.
-5. Új biztonsági jogcím létrehozásához válassza az **új szabályzat** lehetőséget. Adja meg a szabályzat nevét, és válassza ki a megadni kívánt engedélyeket. Ezután kattintson az **OK** gombra.
+5. Új biztonsági jogcím létrehozásához válassza az **új szabályzat** lehetőséget. Adja meg a szabályzat nevét, és válassza ki a megadni kívánt engedélyeket. Ezután válassza az **OK** gombot.
 6. A hozzáférési házirendek ablakban megjelenik a teljes kapcsolati karakterlánc (az új SAS-kulccsal együtt). Ezt a karakterláncot a vágólapra másolhatja későbbi használatra.
 
 Ha az SAS-kulcsot egy adott szabályzatból szeretné kibontani, kattintson a kívánt SAS-kulcsot tartalmazó házirend melletti **Másolás** gombra. Illessze be ezt az értéket egy ideiglenes helyre, majd másolja a kapcsolatok karakterlánc SAS-kulcs részét. Ez a példa egy **mytestnamespace1**nevű Notification Hubs névteret és egy **policy2**nevű szabályzatot használ. Az SAS-kulcs a karakterlánc végén található, a **SharedAccessKey**által megadott érték:

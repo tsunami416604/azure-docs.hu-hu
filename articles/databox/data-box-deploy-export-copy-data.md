@@ -9,12 +9,12 @@ ms.topic: tutorial
 ms.date: 07/10/2020
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: 1d39b29ba340b34d6f0add8ff5da473408bd6360
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 204e89bdf8c660a7e96438f8cb3b8a18aeaec306
+ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259125"
+ms.lasthandoff: 10/05/2020
+ms.locfileid: "91742383"
 ---
 # <a name="tutorial-copy-data-from-azure-data-box-via-smb-preview"></a>Oktatóanyag: Adatok másolása az Azure Data Boxból SMB-n keresztül (Előzetes verzió)
 
@@ -50,7 +50,7 @@ Ha Windows Server rendszerű gazdagépet használ, kövesse az alábbi lépések
 
 1. Az első lépés a hitelesítés elvégzése, majd a munkamenet elindítása. Lépjen a **Connect and copy** (Kapcsolódás és másolás) elemre. Válassza a **Hitelesítő adatok beszerzése** lehetőséget a tárfiókhoz társított megosztások hitelesítő adatainak eléréséhez. 
 
-    ![Megosztások hitelesítő adatainak beszerzése 1](media/data-box-deploy-export-copy-data/get-share-credentials-1.png)
+    ![Megosztások hitelesítő adatainak beszerzése](media/data-box-deploy-export-copy-data/get-share-credentials-1.png)
 
 2. Az Access share and copy data (Megosztási és másolási adatok másolása) párbeszédpanelen másolja ki a megosztásnak megfelelő **Username** (Felhasználónév) és **Password** (Jelszó) értékeket. Kattintson az **OK** gombra.
     
@@ -75,7 +75,7 @@ Ha Windows Server rendszerű gazdagépet használ, kövesse az alábbi lépések
 
 4. Nyomja le a Windows + R billentyűkombinációt. A **Futtatás** ablakban adja meg a következőt: `\\<device IP address>`. Kattintson az **OK** gombra a Fájlkezelő megnyitásához.
     
-    ![Kapcsolódás a megosztáshoz a Fájlkezelővel 2](media/data-box-deploy-export-copy-data/connect-shares-file-explorer-1.png)
+    ![Kapcsolódás a megosztáshoz a Fájlkezelővel](media/data-box-deploy-export-copy-data/connect-shares-file-explorer-1.png)
 
     A megosztásoknak ezután mappaként kell megjelenniük.
     

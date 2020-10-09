@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 10/04/2018
 ms.author: tomfitz
 ms.openlocfilehash: afe78dd00ecebdc54b6d73c4c8324729e117d95b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75651747"
 ---
 # <a name="monitor-a-deployed-instance-of-a-managed-application"></a>Felügyelt alkalmazás telepített példányának figyelése
@@ -22,7 +22,7 @@ Miután üzembe helyezett egy felügyelt alkalmazást az Azure-előfizetésében
 
    ![Felügyelt alkalmazás kiválasztása](./media/monitor-managed-application-portal/select-managed-application.png)
 
-1. Válassza a **Resource Health**lehetőséget.
+1. Válassza az **Erőforrás-állapot** lehetőséget.
 
    ![Erőforrás állapotának kiválasztása](./media/monitor-managed-application-portal/select-resource-health.png)
 

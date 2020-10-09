@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/02/2019
 ms.author: jeedes
 ms.openlocfilehash: bfc370dbe1f44f353df4140de7a6136de9360423
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91760111"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ceridian-dayforce-hcm"></a>Oktatóanyag: Azure Active Directory integráció a Ceridian Dayforce HCM-vel
@@ -73,7 +73,7 @@ Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a kapcs
 Az Azure AD egyszeri bejelentkezés az Ceridian Dayforce HCM használatával történő konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
 
 1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. Az **[Ceridian DAYFORCE HCM egyszeri bejelentkezés konfigurálása](#configure-ceridian-dayforce-hcm-single-sign-on)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+2. **[Konfigurálja az Ceridian DAYFORCE HCM egyszeri bejelentkezést](#configure-ceridian-dayforce-hcm-single-sign-on)** – az alkalmazás oldalának egyetlen Sign-On beállításainak konfigurálásához.
 3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
 4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
 5. **[Hozzon létre Ceridian DAYFORCE HCM-teszt felhasználót](#create-ceridian-dayforce-hcm-test-user)** – hogy rendelkezzen a felhasználó Azure ad-képviseletéhez kapcsolódó, a CERIDIAN Dayforce HCM-beli Britta Simon-ügyféllel.
@@ -93,7 +93,7 @@ Az Azure AD egyszeri bejelentkezés az Ceridian Dayforce HCM-vel való konfigur�
 
     ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
+3. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
@@ -123,15 +123,15 @@ Az Azure AD egyszeri bejelentkezés az Ceridian Dayforce HCM-vel való konfigur�
     | Teszteléshez | `https://fs-test.dayforcehcm.com/sp/ACS.saml2` |
 
     > [!NOTE]
-    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel, azonosítóval és válasz URL-címmel. Vegye fel a kapcsolatot a [Ceridian DAYFORCE HCM ügyfélszolgálati csapatával](https://www.ceridian.com/support) az értékek beszerzéséhez. Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges Sign-On URL-címmel, azonosítóval és válasz URL-címmel. Vegye fel a kapcsolatot a [Ceridian DAYFORCE HCM ügyfélszolgálati csapatával](https://www.ceridian.com/support) az értékek beszerzéséhez. Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-5. A Ceridian Dayforce HCM alkalmazás meghatározott formátumban várja az SAML-kijelentéseket. Konfigurálja a következő jogcímeket ehhez az alkalmazáshoz. Az attribútumok értékeit az alkalmazás-integráció lapon, a **felhasználói attribútumok** szakaszban kezelheti. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** gombra a **felhasználói attribútumok** párbeszédpanel megnyitásához.
+5. A Ceridian Dayforce HCM alkalmazás meghatározott formátumban várja az SAML-kijelentéseket. Konfigurálja a következő jogcímeket ehhez az alkalmazáshoz. Az attribútumok értékeit az alkalmazás-integráció lapon, a **felhasználói attribútumok** szakaszban kezelheti. Az **egyszeres Sign-On beállítása az SAML-vel** lapon kattintson a **Szerkesztés** gombra a **felhasználói attribútumok** párbeszédpanel megnyitásához.
 
     ![A képernyőképen a szerkesztési ikonnal jelölt felhasználói attribútumok láthatók.](common/edit-attribute.png)
 
 6. A **felhasználó attribútumai** párbeszédpanel **felhasználói jogcímek** szakaszában konfigurálja az SAML-jogkivonat attribútumot a fenti képen látható módon, és hajtsa végre a következő lépéseket:
     
-    | Name (Név) | Forrás attribútum|
+    | Név | Forrás attribútum|
     | ---------| --------- |
     | name  | User. extensionattribute2 |
 
@@ -153,7 +153,7 @@ Az Azure AD egyszeri bejelentkezés az Ceridian Dayforce HCM-vel való konfigur�
 
     : Kattintson a **Mentés** gombra.
 
-7. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **metaadatok XML** -fájljának a megadott beállítások alapján történő letöltéséhez, és mentse azt a számítógépre.
+7. Az **egyszeres Sign-On beállítása az SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** lehetőségre a **metaadatok XML** -fájljának a megadott beállítások alapján történő letöltéséhez, és mentse azt a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozása](common/metadataxml.png)
 
@@ -167,7 +167,7 @@ Az Azure AD egyszeri bejelentkezés az Ceridian Dayforce HCM-vel való konfigur�
 
     c. Kijelentkezési URL-cím
 
-### <a name="configure-ceridian-dayforce-hcm-single-sign-on"></a>Az Ceridian Dayforce HCM egyszeri bejelentkezés konfigurálása
+### <a name="configure-ceridian-dayforce-hcm-single-sign-on"></a>A Ceridian Dayforce HCM beállítása egyetlen Sign-On
 
 Ha az egyszeri bejelentkezést az **Ceridian DAYFORCE HCM** oldalon szeretné konfigurálni, akkor a letöltött **METAADATOKat tartalmazó XML** -fájlt és a megfelelő másolt URL-címeket el kell küldenie a Azure Portalból a [Ceridian Dayforce HCM támogatási csapatának](https://www.ceridian.com/support). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
 
@@ -194,7 +194,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    d. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

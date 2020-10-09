@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 07/16/2020
 ms.author: jeedes
 ms.openlocfilehash: 37ed9bb09b6b15af0c32f489cbc3c02ec27c2827
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89461952"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-cloud-academy---sso"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses integráció a Cloud Academy-vel – SSO
@@ -74,13 +74,13 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO-t a Azure Portal
 
 1. A [Azure Portal](https://portal.azure.com/)a **Cloud Academy-SSO** Application Integration oldalon, a **kezelés** szakaszban válassza az **egyszeri bejelentkezés**lehetőséget.
 1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
-1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon válassza az **alapszintű SAML-konfigurációhoz** tartozó ceruza gombot a beállítások szerkesztéséhez:
+1. Az **egyszeri Sign-On beállítása az SAML-vel** lapon válassza az **ALAPszintű SAML-konfigurációhoz** tartozó ceruza gombot a beállítások szerkesztéséhez:
 
    ![Képernyőkép, amely az alapszintű SAML-konfiguráció szerkesztésére szolgáló ceruza gombot mutatja.](common/edit-urls.png)
 
 1. Az **alapszintű SAML-konfiguráció** szakasz **bejelentkezési URL-címe** mezőjébe írja be a következőt: `https://cloudacademy.com/login/enterprise/` .
 
-1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon az **SAML aláíró tanúsítvány** szakaszban válassza a másolás gombot az **alkalmazás-összevonási metaadatok URL-címének**másolásához. Mentse az URL-címet.
+1. Az **egyszeres Sign-On beállítása SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban válassza a másolás gombot az **alkalmazás-összevonási metaadatok URL-címének**másolásához. Mentse az URL-címet.
 
     ![Képernyőkép, amely az alkalmazás-összevonási metaadatok URL-címéhez tartozó másolás gombot jeleníti meg.](common/copy-metadataurl.png)
 

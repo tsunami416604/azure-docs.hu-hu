@@ -8,10 +8,10 @@ ms.reviewer: estfan, logicappspm
 ms.topic: article
 ms.date: 08/19/2018
 ms.openlocfilehash: 6fc0833f70e3e9cd98100f193b52e5a1bfa4d651
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75666669"
 ---
 # <a name="exchange-edi-messages-as-batches-or-groups-between-trading-partners-in-azure-logic-apps"></a>Exchange EDI-üzenetek kötegként vagy a kereskedelmi partnerek közötti csoportok között Azure Logic Apps
@@ -70,8 +70,8 @@ Ehhez a Batch-fogadóhoz meg kell adnia a Batch-módot, a nevet, a kiadási felt
    | **Köteg neve** | TestBatch | Csak **beágyazott** batch-módban érhető el | 
    | **Kiadási feltételek** | Üzenetek száma alapján, ütemterv alapján | Csak **beágyazott** batch-módban érhető el | 
    | **Üzenetek száma** | 10 | Csak az **üzenetek számán alapuló** kiadási feltételekkel érhető el | 
-   | **Időköz** | 10 | Csak a **Schedule-alapú** kiadási feltételekkel érhető el | 
-   | **Gyakoriság** | minute | Csak a **Schedule-alapú** kiadási feltételekkel érhető el | 
+   | **Intervallum** | 10 | Csak a **Schedule-alapú** kiadási feltételekkel érhető el | 
+   | **Gyakoriság** | perc | Csak a **Schedule-alapú** kiadási feltételekkel érhető el | 
    ||| 
 
    ![Batch-trigger részleteinek megadása](./media/logic-apps-scenario-EDI-send-batch-messages/batch-receiver-release-criteria.png)

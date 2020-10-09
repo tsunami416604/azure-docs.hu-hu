@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/09/2019
 ms.openlocfilehash: ee2e59e794cf34a8fd5043a56867a81c2537f1ae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81415312"
 ---
 # <a name="azure-function-activity-in-azure-data-factory"></a>Az Azure Function tevékenység Azure Data Factory
@@ -30,7 +30,7 @@ A szolgáltatás nyolc perces bevezetéséhez és bemutatásához tekintse meg a
 
 Az Azure-függvény visszatérési típusának érvényesnek kell lennie `JObject` . (Ne feledje, hogy [JArray](https://www.newtonsoft.com/json/help/html/T_Newtonsoft_Json_Linq_JArray.htm) a JArray *nem* `JObject` .) Bármely visszatérési típus, amely nem `JObject` sikerül, és a felhasználói hiba miatti *válasz tartalma nem érvényes JObject*.
 
-| **Tulajdonság** | **Leírás** | **Szükséges** |
+| **Tulajdonság** | **Leírás** | **Kötelező** |
 | --- | --- | --- |
 | típus   | A Type tulajdonságot a következőre kell beállítani: **AzureFunction** | igen |
 | function alkalmazás URL-címe | Az Azure-függvényalkalmazás URL-címe. Formátum: `https://<accountname>.azurewebsites.net` . Ez az URL-cím az **URL-** cím szakaszban található, amikor a függvényalkalmazás megtekinti a Azure Portal  | igen |
@@ -39,7 +39,7 @@ Az Azure-függvény visszatérési típusának érvényesnek kell lennie `JObjec
 
 ## <a name="azure-function-activity"></a>Azure Function tevékenység
 
-| **Tulajdonság**  | **Leírás** | **Megengedett értékek** | **Szükséges** |
+| **Tulajdonság**  | **Leírás** | **Megengedett értékek** | **Kötelező** |
 | --- | --- | --- | --- |
 | name  | A folyamatban szereplő tevékenység neve  | Sztring | igen |
 | típus  | A tevékenység típusa "AzureFunctionActivity". | Sztring | igen |
@@ -54,7 +54,7 @@ Tekintse meg a kérelem hasznos adatainak sémáját a [kérelmek hasznos adata
 
 ## <a name="routing-and-queries"></a>Útválasztás és lekérdezések
 
-Az Azure Function tevékenység támogatja az **útválasztást**. Ha például az Azure-függvény rendelkezik végponttal `https://functionAPP.azurewebsites.net/api/<functionName>/<value>?code=<secret>` , akkor az `functionName` Azure Function tevékenységben való használathoz `<functionName>/<value>` . Ezt a függvényt parametrizálja, hogy a kívánt `functionName` futtatókörnyezet elérhető legyen.
+Az Azure Function tevékenység támogatja az **útválasztást**. Ha például az Azure-függvény rendelkezik végponttal  `https://functionAPP.azurewebsites.net/api/<functionName>/<value>?code=<secret>` , akkor az `functionName` Azure Function tevékenységben való használathoz `<functionName>/<value>` . Ezt a függvényt parametrizálja, hogy a kívánt `functionName` futtatókörnyezet elérhető legyen.
 
 Az Azure Function tevékenység is támogatja a **lekérdezéseket**. A lekérdezésnek a részeként szerepelnie kell `functionName` . Ha például a függvény neve `HttpTriggerCSharp` és a felvenni kívánt lekérdezés `name=hello` , akkor az az `functionName` Azure Function tevékenységben a következőként hozható létre: `HttpTriggerCSharp?name=hello` . Ez a függvény konfigurálható úgy, hogy az érték a futásidőben is meghatározható legyen.
 

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/13/2017
 ms.author: alkohli
 ms.openlocfilehash: 4fed65e12a166c046a0c63d7c4849f86805bbe9c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "76275173"
 ---
 # <a name="storsimple-8000-series-update-5-release-notes"></a>StorSimple 8000 sorozat Update 5 kibocsátási megjegyzések
@@ -44,9 +44,9 @@ Az 5. frissítés az alábbi főbb javításokat és hibajavításokat tartalmaz
 
 Az alábbi táblázat az 5. frissítésben rögzített problémák összegzését tartalmazza.
 
-| No | Szolgáltatás | Probléma | A fizikai eszközre vonatkozik | A virtuális eszközre vonatkozik |
+| Nem | Funkció | Probléma | A fizikai eszközre vonatkozik | A virtuális eszközre vonatkozik |
 | --- | --- | --- | --- | --- |
-| 1 |Windows PowerShell – távelérés |Az előző kiadásban a felhasználó hibaüzenetet kap, amikor távoli kapcsolatot próbál létesíteni a StorSimple Cloud Appliance a Windows PowerShell használatával. Ezt a problémát a jelen kiadásban a gyökér okozta és javítottuk. |Nem |Yes |
+| 1 |Windows PowerShell – távelérés |Az előző kiadásban a felhasználó hibaüzenetet kap, amikor távoli kapcsolatot próbál létesíteni a StorSimple Cloud Appliance a Windows PowerShell használatával. Ezt a problémát a jelen kiadásban a gyökér okozta és javítottuk. |Nem |Igen |
 | 2 |Sávszélesség-sablonok |A korábbi kiadásokban probléma merült fel olyan sávszélesség-sablonokkal, amelyek alacsonyabb sávszélességet eredményeztek, mint amit az eszközhöz konfiguráltak. Ez a probléma ebben a kiadásban van feloldva. |Igen |Igen |
 | 3 |Feladatátvétel |Ha a korábbi kiadásban nagy mennyiségű kötettel rendelkező eszközt hajtottak végre a 4. frissítést futtató másik eszközre, a folyamat sikertelen lesz, amikor megpróbálja alkalmazni a hozzáférés-vezérlési rekordokat. Ez a probléma ebben a kiadásban van kijavítva. |Igen |Igen |
 

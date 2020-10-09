@@ -4,16 +4,16 @@ description: Kövesse nyomon az Azure-ügyfelekkel való együttműködéseket a
 author: dhirajgandhi
 ms.reviewer: dhgandhi
 ms.author: banders
-ms.date: 07/24/2020
+ms.date: 10/05/2020
 ms.service: cost-management-billing
 ms.subservice: billing
 ms.topic: how-to
-ms.openlocfilehash: 03953e210f1c4caf1541db272ce4c02c271dafaa
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: f030a9e75507063e104e0bae0ca5654bd3528bac
+ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91371830"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91772719"
 ---
 # <a name="link-a-partner-id-to-your-azure-accounts"></a>Partnerazonosítók csatolása az Azure-fiókhoz
 
@@ -43,7 +43,7 @@ Amikor hozzáfér az ügyfelek erőforrásaihoz, az Azure Portalt, a PowerShellt
 
 2. Jelentkezzen be az Azure portálra.
 
-3. Adja meg a Microsoft-partnerazonosítót. A partnerazonosító megegyezik szervezet [Microsoft Partner Network](https://partner.microsoft.com/)-azonosítójával.
+3. Adja meg a Microsoft-partnerazonosítót. A partnerazonosító megegyezik szervezet [Microsoft Partner Network](https://partner.microsoft.com/)-azonosítójával. Ügyeljen arra, hogy a partnerprofilon szereplő **társított MPN-azonosítót** használja.
 
    ![A Csatolás partnerazonosítóhoz funkciót megjelenítő képernyőkép](./media/link-partner-id/link-partner-id01.png)
 
@@ -61,7 +61,8 @@ Amikor hozzáfér az ügyfelek erőforrásaihoz, az Azure Portalt, a PowerShellt
     C:\> Connect-AzAccount -TenantId XXXXXXXX-XXXX-XXXX-XXXX-XXXXXXXXXXXX
    ```
 
-3. Csatolás az új partnerazonosítóhoz. A partnerazonosító megegyezik szervezet [Microsoft Partner Network](https://partner.microsoft.com/)-azonosítójával.
+3. Csatolás az új partnerazonosítóhoz. A partnerazonosító megegyezik szervezet [Microsoft Partner Network](https://partner.microsoft.com/)-azonosítójával. Ügyeljen arra, hogy a partnerprofilon szereplő **társított MPN-azonosítót** használja.
+
 
     ```azurepowershell-interactive
     C:\> new-AzManagementPartner -PartnerId 12345
@@ -141,7 +142,7 @@ A hivatkozás a felhasználói fiók szintjéhez kapcsolódik. Csak Ön szerkesz
 
 **Melyik MPN-azonosítót kell használnom, ha a vállalat többel is rendelkezik?**
 
-A partnerazonosító csatolásához a partneri hely fiókjait és a hozzájuk tartozó MPN-azonosítókat kell használnia.  További tudnivalók a [partnerfiókokról](https://docs.microsoft.com/partner-center/account-structure)
+Ügyeljen arra, hogy a partnerprofilban szereplő **társított MPN-azonosítót** használja.
 
 **Hol találhatok befolyásolt bevételjelentést a csatolt partnerazonosítóhoz?**
 

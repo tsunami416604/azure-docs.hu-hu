@@ -11,10 +11,10 @@ ms.date: 08/11/2020
 ms.author: sudbalas
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 05ff5d2f7ff87d2ce58f135330487f746cc5c1c7
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90528363"
 ---
 # <a name="how-to-use-key-vault-soft-delete-with-powershell"></a>A Key Vault helyreállítható törlés funkciójának használata PowerShell-lel
@@ -41,7 +41,7 @@ A PowerShell-hez Key Vault konkrét referenciáért lásd: [Azure Key Vault Powe
 
 A Key Vault műveleteket a szerepköralapú hozzáférés-vezérlési (RBAC) engedélyekkel külön kezelik a következők szerint:
 
-| Művelet | Description | Felhasználói engedély |
+| Művelet | Leírás | Felhasználói engedély |
 |:--|:--|:--|
 |Lista|Felsorolja a törölt kulcstartókat.|Microsoft. kulcstartó/deletedVaults/olvasás|
 |Helyreállítás|Visszaállítja a törölt kulcstartót.|Microsoft. kulcstartó/tárolók/írás|

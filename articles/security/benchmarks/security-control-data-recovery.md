@@ -8,10 +8,10 @@ ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: 4f3e8540902809f951a441aa2fe8d00026c44d82
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81408596"
 ---
 # <a name="security-control-data-recovery"></a>Biztonsági ellenőrzés: Adathelyreállítás
@@ -32,7 +32,7 @@ Engedélyezze Azure Backup és konfigurálja a biztonsági mentési forrást (Az
 
 | Azure-azonosító | CIS-azonosítók | Felelősséget |
 |--|--|--|
-| 9,2 | 10.2 | Ügyfél |
+| 9,2 | 10,2 | Ügyfél |
 
 Engedélyezze Azure Backup és a célként megadott virtuális gép (ek) et, valamint a kívánt gyakoriságot és megőrzési időt. Ügyfél által felügyelt kulcsok biztonsági mentése Azure Key Vaulton belül.
 
@@ -56,19 +56,19 @@ Győződjön meg arról, hogy a Azure Backupon belül rendszeresen végezhető e
 
 | Azure-azonosító | CIS-azonosítók | Felelősséget |
 |--|--|--|
-| 9.4 verzió | 10,4 | Ügyfél |
+| 9,4 | 10,4 | Ügyfél |
 
 Helyszíni biztonsági mentéshez az inaktív állapotú adatokat védő titkosítás használható az Azure-ra irányuló biztonsági mentés során megadott jelszóval. Azure-beli virtuális gépek esetén a rendszer Storage Service Encryption (SSE) használatával titkosítja az inaktív adatokat. Szerepköralapú hozzáférés-vezérlés használatával biztosíthatja a biztonsági mentéseket és az ügyfelek által felügyelt kulcsokat.  
 
-A kulcsok véletlen vagy rosszindulatú Törlés elleni védelme érdekében engedélyezze a Key Vault a védelem törlését és kiürítését.  Ha az Azure Storage-t használja a biztonsági másolatok tárolásához, a Soft delete lehetővé teszi az adatok mentését és helyreállítását a Blobok vagy blob-Pillanatképek törlésekor. 
+A kulcsok véletlen vagy rosszindulatú törléssel szembeni védelme érdekében engedélyezze Soft-Delete és törölje a védelmet a Key Vaultban.  Ha az Azure Storage-t használja a biztonsági másolatok tárolásához, a Soft delete lehetővé teszi az adatok mentését és helyreállítását a Blobok vagy blob-Pillanatképek törlésekor. 
 
 - [Az Azure RBAC ismertetése](https://docs.microsoft.com/azure/role-based-access-control/overview)
 
-- [A helyreállítható törlés és a védelem engedélyezése a Key Vaultban](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+- [A Soft-Delete engedélyezése és a védelem kiürítése Key Vault](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
 
 - [Az Azure Storage-blobok helyreállítható törlése](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
 
 
 ## <a name="next-steps"></a>További lépések
 
-- Tekintse meg a következő biztonsági vezérlőt: [incidens válasza](security-control-incident-response.md)
+- Tekintse meg a következő biztonsági vezérlőt:  [incidens válasza](security-control-incident-response.md)

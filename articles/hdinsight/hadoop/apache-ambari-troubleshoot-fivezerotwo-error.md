@@ -8,10 +8,10 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/05/2019
 ms.openlocfilehash: 2b17c2488e47148e8845433f9c7613e1127fbffa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75895758"
 ---
 # <a name="scenario-apache-ambari-ui-502-error-in-azure-hdinsight"></a>Forgatókönyv: Apache Ambari UI 502 hiba az Azure HDInsight
@@ -26,7 +26,7 @@ Amikor megpróbál hozzáférni az Apache Ambari felhasználói felületéhez a 
 
 Általánosságban a HTTP 502 állapotkód azt jelenti, hogy a Ambari-kiszolgáló nem fut megfelelően az aktív átjárócsomóponthoz. Néhány lehetséges kiváltó oka van.
 
-## <a name="resolution"></a>Megoldás:
+## <a name="resolution"></a>Feloldás
 
 A legtöbb esetben a probléma enyhítése érdekében újraindíthatja az aktív átjárócsomóponthoz. Vagy válasszon nagyobb méretű virtuálisgép-méretet a átjárócsomóponthoz.
 

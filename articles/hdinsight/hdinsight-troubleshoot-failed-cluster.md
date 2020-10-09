@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: troubleshooting
 ms.date: 08/15/2019
 ms.openlocfilehash: be991b63784a2c72a51bfbdc8506f3b4695ed6c7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75895317"
 ---
 # <a name="troubleshoot-a-slow-or-failing-job-on-a-hdinsight-cluster"></a>Egy HDInsight-fürt lassú vagy meghibásodott feladatának hibaelhárítása
@@ -63,7 +63,7 @@ az hdinsight list --resource-group <ResourceGroup>
 az hdinsight show --resource-group <ResourceGroup> --name <ClusterName>
 ```
 
-Egy másik lehetőség a PowerShell használata. További információ: [Apache Hadoop-fürtök kezelése a HDInsight-ben Azure PowerShell](hdinsight-administer-use-powershell.md).
+Egy másik lehetőség a PowerShell használata. További információ:  [Apache Hadoop-fürtök kezelése a HDInsight-ben Azure PowerShell](hdinsight-administer-use-powershell.md).
 
 ## <a name="step-2-validate-the-hdinsight-cluster-environment"></a>2. lépés: a HDInsight-fürt környezetének ellenőrzése
 
@@ -148,7 +148,7 @@ A következő szakaszok a Webhcaten időtúllépésének lehetséges okait ismer
 
 ##### <a name="webhcat-level-timeout"></a>Webhcaten-szint időtúllépése
 
-Ha a Webhcaten terhelés alatt van, és több mint 10 nyitott szoftvercsatorna van, akkor hosszabb időt vesz igénybe az új szoftvercsatorna-kapcsolatok létrehozása, ami időtúllépést okozhat. A Webhcaten és onnan érkező hálózati kapcsolatok listázásához használja `netstat` az aktuális aktív átjárócsomóponthoz:
+Ha a Webhcaten terhelés alatt van, és több mint 10 nyitott szoftvercsatorna van, akkor hosszabb időt vesz igénybe az új szoftvercsatorna-kapcsolatok létrehozása, ami időtúllépést okozhat. A Webhcaten és onnan érkező hálózati kapcsolatok listázásához használja `netstat`  az aktuális aktív átjárócsomóponthoz:
 
 ```bash
 netstat | grep 30111
@@ -202,11 +202,11 @@ A problémák diagnosztizálásához:
 
     Előfordulhatnak olyan esetek, amikor a Webhcaten folytatott interakciók sikeresek, de a feladatok meghiúsulnak.
 
-    A Templeton a-ben gyűjti a Feladatkezelő kimenetét `stderr` `statusdir` , ami gyakran hasznos a hibaelhárításhoz. `stderr`a tényleges lekérdezés fonal-alkalmazási azonosítóját tartalmazza.
+    A Templeton a-ben gyűjti a Feladatkezelő kimenetét `stderr` `statusdir` , ami gyakran hasznos a hibaelhárításhoz. `stderr` a tényleges lekérdezés fonal-alkalmazási azonosítóját tartalmazza.
 
 ## <a name="step-4-review-the-environment-stack-and-versions"></a>4. lépés: a környezeti verem és a verziók áttekintése
 
-A Ambari felhasználói felületi **verem és verziója** lapon információkat biztosít a fürtszolgáltatás-konfigurációról és a szolgáltatás korábbi verzióiról.  A Hadoop nem megfelelő verziója lehet a fürt meghibásodásának oka.  A Ambari felhasználói felületén válassza a **rendszergazda** menüt, majd a **Stacks és a Versions**elemet.  A szolgáltatás verziószámával kapcsolatos információk megtekintéséhez válassza a **verziók** fület a lapon:
+A Ambari felhasználói felületi **verem és verziója** lapon információkat biztosít a fürtszolgáltatás-konfigurációról és a szolgáltatás korábbi verzióiról.  A Hadoop nem megfelelő verziója lehet a fürt meghibásodásának oka.  A Ambari felhasználói felületén válassza a **rendszergazda** menüt, majd a  **Stacks és a Versions**elemet.  A szolgáltatás verziószámával kapcsolatos információk megtekintéséhez válassza a **verziók** fület a lapon:
 
 ![Apache Ambari stack és verziók](./media/hdinsight-troubleshoot-failed-cluster/ambari-stack-versions.png)
 

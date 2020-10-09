@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/21/2020
 ms.author: jeedes
 ms.openlocfilehash: f2a6598cc28c39719d73be333bd74c24fce9371b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88551896"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-trend-micro-web-security-tmws"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Trend Micro Web Security (TMWS) szolgáltatással
@@ -72,7 +72,7 @@ A következő lépésekkel engedélyezheti az Azure AD SSO használatát a Azure
 
 1. A [Azure Portal](https://portal.azure.com/)a **Trend Micro Web Security (TMWS)** alkalmazás-integráció lapján, a **kezelés** szakaszban válassza az **egyszeri bejelentkezés**lehetőséget.
 1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
-1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon válassza az **alapszintű SAML-konfigurációhoz** tartozó toll gombot a beállítások szerkesztéséhez:
+1. Az **egyszeri Sign-On beállítása az SAML-vel** lapon válassza az **ALAPszintű SAML-konfigurációhoz** tartozó toll gombot a beállítások szerkesztéséhez:
 
    ![Az alapszintű SAML-konfigurációs beállítások szerkesztése](common/edit-urls.png)
 
@@ -95,7 +95,7 @@ A következő lépésekkel engedélyezheti az Azure AD SSO használatát a Azure
 
 1. Az előző képernyőképen lévő attribútumok mellett a TMWS két további attribútumot vár az SAML-válaszban. Ezek az attribútumok az alábbi táblázatban láthatók. Az attribútumok előre ki vannak töltve, de megváltoztathatók a követelmények teljesítése érdekében.
     
-    | Name | Forrás attribútum|
+    | Név | Forrás attribútum|
     | --------------- | --------- |
     | sAMAccountName | User. onpremisessamaccountname |
     | uPN | User. userPrincipalName |
@@ -206,7 +206,7 @@ A következő lépések végrehajtásával konfigurálhatja a TMWS SSO-t az alka
 
     e. Kattintson a **kapcsolat tesztelése** elemre annak ellenőrzéséhez, hogy az Azure ad szolgáltatás sikeresen csatlakoztatva van-e.
     
-    f. Válassza a **Mentés** lehetőséget.
+    f. Kattintson a **Mentés** gombra.
  
  > [!NOTE]
  > A TMWS Azure AD-vel való konfigurálásával kapcsolatos további információkért lásd: [Az Azure ad-beállítások konfigurálása a TMWS-on](https://docs.trendmicro.com/en-us/enterprise/trend-micro-web-security-online-help/administration_001/directory-services/azure-active-directo/configuring-azure-ad.aspx).

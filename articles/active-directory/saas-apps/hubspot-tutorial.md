@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
 ms.openlocfilehash: 51e27526b10bcdd74d6e2bffb8bf620d7b022aac
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88551457"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hubspot"></a>Oktatóanyag: Azure Active Directory integráció a HubSpot
@@ -95,7 +95,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezést konfigurálja a Azure Po
 
     ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-1. Az **egyszeri bejelentkezés az SAML-vel** panelen való beállítása lapon válassza a **Szerkesztés** (a ceruza ikon) lehetőséget az **alapszintű SAML-konfiguráció** panel megnyitásához.
+1. Az **egyszeri Sign-On beállítása az SAML-vel** panelen válassza a **Szerkesztés** (a ceruza ikon) lehetőséget az **alapszintű SAML-konfiguráció** panel megnyitásához.
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
@@ -118,7 +118,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezést konfigurálja a Azure Po
 
     ![A további URL-címek beállítása lehetőség](common/metadata-upload-additional-signon.png)
 
-1. Az **egyszeri bejelentkezés SAML-panelen való beállításához** az **SAML aláíró tanúsítvány** szakaszban válassza a **Letöltés** a tanúsítvány mellett **(Base64)** elemet. A követelmények alapján válasszon egy letöltési lehetőséget. Mentse a tanúsítványt a számítógépére.
+1. Az **egyszeri Sign-On beállítása az SAML** -panellel panelen az **SAML aláíró tanúsítvány** szakaszban válassza a **Letöltés** a **tanúsítvány mellett (Base64)** elemet. A követelmények alapján válasszon egy letöltési lehetőséget. Mentse a tanúsítványt a számítógépére.
 
     ![A tanúsítvány (Base64) letöltési lehetősége](common/certificatebase64.png)
 
@@ -154,7 +154,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezést konfigurálja a Azure Po
 
     1. A HubSpot-ben az azonosító **szolgáltató azonosítója vagy a kiállító URL-címe** mezőben illessze be a Azure Portalba másolt **Azure ad-azonosító** értékét.
 
-    1. A HubSpot-ben az **identitás-szolgáltató egyszeri bejelentkezési URL-címe** mezőben illessze be a Azure Portalba másolt **bejelentkezési URL-cím** értékét.
+    1. A HubSpot-ben az **identitás-szolgáltató egyetlen Sign-On URL-címe** mezőben illessze be a Azure Portalba másolt **bejelentkezési URL-cím** értékét.
 
     1. A Windows Jegyzettömb alkalmazásban nyissa meg a letöltött tanúsítvány (Base64) fájlt. Válassza ki és másolja ki a fájl tartalmát. Ezután a HubSpot illessze be az **X. 509-tanúsítvány** mezőbe.
 

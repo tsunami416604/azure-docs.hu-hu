@@ -9,10 +9,10 @@ ms.reviewer: jasonh
 ms.topic: troubleshooting
 ms.date: 08/15/2019
 ms.openlocfilehash: 02247adb9852a72b386feb2ef0924b0f1b3d6277
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75895234"
 ---
 # <a name="troubleshoot-apache-hive-by-using-azure-hdinsight"></a>Az Apache Hive hibaelhárítása az Azure HDInsighttal
@@ -41,7 +41,7 @@ Ismerkedjen meg a legfontosabb kérdésekkel és azok megoldásával, amikor az 
 
 A megoldás lépéseiben szereplő kód azt feltételezi, hogy az új fürtön lévő adatelérési utak megegyeznek a régi fürtön lévő adatelérési utakkal. Ha az adatelérési utak eltérnek, manuálisan szerkesztheti a létrehozott `alltables.sql` fájlt, hogy az tükrözze a módosításokat.
 
-### <a name="additional-reading"></a>További olvasnivaló
+### <a name="additional-reading"></a>További információ
 
 - [Kapcsolódás HDInsight-fürthöz SSH használatával](hdinsight-hadoop-linux-use-ssh-unix.md)
 
@@ -69,7 +69,7 @@ A megoldás lépéseiben szereplő kód azt feltételezi, hogy az új fürtön l
    /var/log/hive/hiveserver2.log
    ```
 
-### <a name="additional-reading"></a>További olvasnivaló
+### <a name="additional-reading"></a>További információ
 
 - [Kapcsolódás HDInsight-fürthöz SSH használatával](hdinsight-hadoop-linux-use-ssh-unix.md)
 
@@ -95,7 +95,7 @@ A megoldás lépéseiben szereplő kód azt feltételezi, hogy az új fürtön l
    hive -hiveconf hive.root.logger=ALL,console
    ```
 
-### <a name="additional-reading"></a>További olvasnivaló
+### <a name="additional-reading"></a>További információ
 
 - [Struktúra konfigurációjának tulajdonságai](https://cwiki.apache.org/confluence/display/Hive/Configuration+Properties)
 
@@ -132,7 +132,7 @@ A megoldás lépéseiben szereplő kód azt feltételezi, hogy az új fürtön l
     - **TaskConcurrencyAnalyzer**: a feladat egyidejűségi adatainak nyomtatása egy Dag-ben
     - **VertexLevelCriticalPathAnalyzer**: megkeresi a kritikus elérési utat a vertex szinten egy Dag-ben
 
-### <a name="additional-reading"></a>További olvasnivaló
+### <a name="additional-reading"></a>További információ
 
 - [Kapcsolódás HDInsight-fürthöz SSH használatával](hdinsight-hadoop-linux-use-ssh-unix.md)
 
@@ -157,7 +157,7 @@ Kétféle módon gyűjthetjük össze a TEZ DAG-adatokat:
   3. Válassza ki a megtekinteni kívánt DAG-t.
   4. Válassza **az adatletöltés**lehetőséget.
 
-### <a name="additional-reading"></a><a name="additional-reading-end"></a>További olvasnivaló
+### <a name="additional-reading"></a><a name="additional-reading-end"></a>További információ
 
 [Kapcsolódás HDInsight-fürthöz SSH használatával](hdinsight-hadoop-linux-use-ssh-unix.md)
 

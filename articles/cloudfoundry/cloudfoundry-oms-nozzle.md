@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 07/22/2017
 ms.author: ningk
 ms.openlocfilehash: bf6691310ec964a1d6293f3a60c151e3d6f8e641
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "76277357"
 ---
 # <a name="deploy-azure-log-analytics-nozzle-for-cloud-foundry-system-monitoring"></a>Azure Log Analytics-szívófej üzembe helyezése Cloud Foundry rendszer-figyeléshez
@@ -193,7 +193,7 @@ A *"Cloud Foundry. omsview"* a Cloud Foundry OMS View sablon előzetes verziója
 
 [Létrehozhatók a riasztások](https://docs.microsoft.com/azure/log-analytics/log-analytics-alerts), és igény szerint testre szabhatók a lekérdezések és a küszöbértékek. A következő ajánlott riasztások:
 
-| Keresési lekérdezés                                                                  | Riasztás előállítása a következő alapján | Description                                                                       |
+| Keresési lekérdezés                                                                  | Riasztás előállítása a következő alapján | Leírás                                                                       |
 | ----------------------------------------------------------------------------- | ----------------------- | --------------------------------------------------------------------------------- |
 | Type = CF_ValueMetric_CL Origin_s = BBS Name_s = "tartomány. CF-apps"                   | Találatok száma < 1   | **BBS. Domain.cf – az alkalmazások** azt jelzik, hogy a CF-apps tartomány naprakész-e. Ez azt jelenti, hogy a Cloud Controller által benyújtott CF-alkalmazások szinkronizálása a BBS-be történik. LRPsDesired (Diego – kívánt AIs) a végrehajtáshoz. Nem érkezett adat: a CF-apps tartomány nem naprakész a megadott időablakban. |
 | Type = CF_ValueMetric_CL Origin_s = rep Name_s = UnhealthyCell Value_d>1            | Találatok száma > 0   | Diego-sejtek esetén a 0 a kifogástalan állapotot jelenti, az 1 pedig sérült. Állítsa be a riasztást, ha a megadott időtartományban több nem kifogástalan állapotú Diego-cella észlelhető. |

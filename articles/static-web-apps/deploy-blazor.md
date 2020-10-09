@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: cshoe
 ms.openlocfilehash: 60e62228e33d2d86bb407e45802f5c0621a94049
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91761090"
 ---
 # <a name="tutorial-building-a-static-web-app-with-blazor-in-azure-static-web-apps"></a>Oktatóanyag: statikus Webalkalmazás létrehozása az Azure statikus Web Apps villámgyors szolgáltatásával
@@ -103,7 +103,7 @@ Miután bejelentkezett a GitHubba, adja meg a tárház adatait.
 
     - Válassza a **Blazer** elemet a _Build alapkészletek_ legördülő menüből, és tartsa meg az összes alapértelmezett értéket.
 
-1. Válassza az **Áttekintés + létrehozás** lehetőséget.
+1. Válassza a **Felülvizsgálat + létrehozás** lehetőséget.
 
     :::image type="content" source="media/deploy-blazor/review-create.png" alt-text="A Blazer-alkalmazás befejezése":::
 
@@ -139,7 +139,7 @@ Ha nem folytatja az alkalmazás használatát, az alábbi lépésekkel törölhe
 1. Válassza a **Törlés** gombot
 1. Válassza az **Igen** lehetőséget a törlési művelet megerősítéséhez
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Hitelesítés és engedélyezés](./authentication-authorization.md)

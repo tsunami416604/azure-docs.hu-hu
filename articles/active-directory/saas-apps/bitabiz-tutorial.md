@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/06/2019
 ms.author: jeedes
 ms.openlocfilehash: 729427dac174037c8750af7ab0f6cb17fa4d4c1e
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91741470"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bitabiz"></a>Oktatóanyag: Azure Active Directory integráció a BitaBIZ
@@ -73,7 +73,7 @@ Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a BitaB
 Az Azure AD egyszeri bejelentkezés BitaBIZ való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
 
 1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. **[BitaBIZ egyszeri bejelentkezés konfigurálása](#configure-bitabiz-single-sign-on)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+2. **[BitaBIZ egyszeri bejelentkezés konfigurálása](#configure-bitabiz-single-sign-on)** – az egyes Sign-On beállítások konfigurálása az alkalmazás oldalán.
 3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
 4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
 5. **[Hozzon létre BitaBIZ-teszt felhasználót](#create-bitabiz-test-user)** – hogy a BitaBIZ Britta, a felhasználó Azure ad-képviseletéhez kapcsolódó partnerrel rendelkezzen.
@@ -93,7 +93,7 @@ Az Azure AD egyszeri bejelentkezés BitaBIZ való konfigurálásához hajtsa vé
 
     ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
+3. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
@@ -112,7 +112,7 @@ Az Azure AD egyszeri bejelentkezés BitaBIZ való konfigurálásához hajtsa vé
 
     A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet:  `https://www.bitabiz.com/dashboard`
 
-6. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállítások alapján, és mentse a számítógépre.
+6. Az **egyszeres Sign-On beállítása az SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállítások alapján, és mentse azt a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozása](common/certificatebase64.png)
 
@@ -126,7 +126,7 @@ Az Azure AD egyszeri bejelentkezés BitaBIZ való konfigurálásához hajtsa vé
 
     c. Kijelentkezési URL-cím
 
-### <a name="configure-bitabiz-single-sign-on"></a>BitaBIZ egyszeri bejelentkezés konfigurálása
+### <a name="configure-bitabiz-single-sign-on"></a>BitaBIZ egyetlen Sign-On konfigurálása
 
 1. Egy másik böngészőablakban jelentkezzen be rendszergazdaként a BitaBIZ-bérlőbe.
 
@@ -144,7 +144,7 @@ Az Azure AD egyszeri bejelentkezés BitaBIZ való konfigurálásához hajtsa vé
 
     a. Másolja az értéket az **entitás-azonosítóból ("azonosító" az Azure ad-ben)** szövegmezőbe, és illessze be az **azonosító** szövegmezőbe az **alapszintű SAML-konfiguráció** szakaszának Azure Portal. 
 
-    b. Az **Azure ad egyszeri bejelentkezési szolgáltatás URL-címe** szövegmezőbe illessze be a **bejelentkezési URL**-címet, amelyet a Azure Portalból másolt.
+    b. Az **Azure ad Single Sign-On szolgáltatás URL-címe** szövegmezőbe illessze be a **bejelentkezési URL-címet**, amelyet a Azure Portalból másolt.
 
     c. Az **Azure ad SAML-entitás azonosítója** szövegmezőbe illessze be az **Azure ad-azonosítót**, amelyet a Azure Portalból másolt.
 

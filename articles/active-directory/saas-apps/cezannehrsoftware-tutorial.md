@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/12/2019
 ms.author: jeedes
 ms.openlocfilehash: b5739ea49bb9f5823538e9a41660a572a3cede04
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91760724"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cezanne-hr-software"></a>Oktatóanyag: Azure Active Directory integráció a Cezanne HR szoftverrel
@@ -73,7 +73,7 @@ Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a Cezan
 Az Azure AD egyszeri bejelentkezés az Cezanne HR szoftverrel való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
 
 1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. A **[CEZANNE HR szoftver egyszeri bejelentkezésének konfigurálása](#configure-cezanne-hr-software-single-sign-on)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+2. A **[CEZANNE HR szoftver egyszeri bejelentkezésének konfigurálása](#configure-cezanne-hr-software-single-sign-on)** – az Sign-On beállításainak konfigurálása az alkalmazás oldalán.
 3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
 4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
 5. A **[CEZANNE HR szoftver tesztelési felhasználójának létrehozása](#create-cezanne-hr-software-test-user)** – ha a Cezanne HR szoftverben a felhasználó Azure ad-Britta csatolt, Simon-t tartalmazó partnere van.
@@ -93,7 +93,7 @@ Az Azure AD egyszeri bejelentkezés az Cezanne HR szoftverrel való konfigurál�
 
     ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
+3. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
@@ -108,9 +108,9 @@ Az Azure AD egyszeri bejelentkezés az Cezanne HR szoftverrel való konfigurál�
     c. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://w3.cezanneondemand.com:443/cezanneondemand/-/<tenantidentifier>/Saml/samlp`
     
     > [!NOTE]
-    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel és a válasz URL-címével. Az értékek megszerzéséhez lépjen kapcsolatba a [CEZANNE HR szoftverekkel](https://cezannehr.com/services/support/) foglalkozó ügyfélszolgálatával.
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges Sign-On URL-címmel és a válasz URL-címével. Az értékek megszerzéséhez lépjen kapcsolatba a [CEZANNE HR szoftverekkel](https://cezannehr.com/services/support/) foglalkozó ügyfélszolgálatával.
 
-5. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállítások alapján, és mentse a számítógépre.
+5. Az **egyszeres Sign-On beállítása az SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállítások alapján, és mentse azt a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozása](common/certificatebase64.png)
 
@@ -124,15 +124,15 @@ Az Azure AD egyszeri bejelentkezés az Cezanne HR szoftverrel való konfigurál�
 
     c. Kijelentkezési URL-cím
 
-### <a name="configure-cezanne-hr-software-single-sign-on"></a>A Cezanne HR szoftver egyszeri bejelentkezésének konfigurálása
+### <a name="configure-cezanne-hr-software-single-sign-on"></a>Cezanne HR szoftver konfigurálása – egyetlen Sign-On
 
 1. Egy másik böngészőablakban jelentkezzen be rendszergazdaként a Cezanne HR-szoftverek bérlője számára.
 
-2. A bal oldali navigációs panelen kattintson a **rendszer beállítása**elemre. Lépjen a **biztonsági beállítások**menüpontra. Ezután navigáljon az **egyszeri bejelentkezési konfigurációhoz**.
+2. A bal oldali navigációs panelen kattintson a **rendszer beállítása**elemre. Lépjen a **biztonsági beállítások**menüpontra. Ezután navigáljon az **egyszeres Sign-On konfigurációhoz**.
 
-    ![Képernyőfelvétel: a Cezanne H R szoftver bérlője, amelyen a biztonsági beállítások és az egyszeri bejelentkezési konfiguráció van kiválasztva.](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_000.png)
+    ![Képernyőfelvétel: a Cezanne H R szoftver bérlője a biztonsági beállításokkal és az egyszeres Sign-On konfigurációval van kiválasztva.](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_000.png)
 
-3. A **felhasználók bejelentkezésének engedélyezése a következő egyszeri bejelentkezés (SSO) használatával** lapon jelölje be az **SAML 2,0** jelölőnégyzetet, és válassza a **Speciális konfiguráció** lehetőséget.
+3. A **felhasználók bejelentkezésének engedélyezése a következő egyszeri Sign-On (SSO) szolgáltatás** paneljén jelölje be az **SAML 2,0** jelölőnégyzetet, és válassza a **Speciális konfiguráció** lehetőséget.
 
     ![A képernyőfelvételen a felhasználók engedélyezése ablaktábla SAML 2,0 és speciális konfiguráció van kiválasztva.](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_001.png)
 
@@ -185,7 +185,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    d. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -251,7 +251,7 @@ Ahhoz, hogy az Azure AD-felhasználók bejelentkezzenek a Cezanne HR-szoftverbe,
 
 5. Navigáljon az **egyszeri bejelentkezés** lapra, és válassza az **új hozzáadása** lehetőséget az **SAML 2,0 azonosítók** területen.
 
-    ![Képernyőfelvétel: az egyszeri bejelentkezés lap, amelyen kiválaszthatja az új hozzáadása lehetőséget.](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_008.png "Felhasználó")
+    ![Képernyőfelvétel: az egyetlen Sign-On lap, amelyen kiválaszthatja az új hozzáadása lehetőséget.](./media/cezannehrsoftware-tutorial/tutorial_cezannehrsoftware_008.png "Felhasználó")
 
 6. Válassza ki **az identitás-** szolgáltatót, és a **felhasználói azonosító**szövegmezőben adja meg a Britta Simon-fiók e-mail-címét.
 

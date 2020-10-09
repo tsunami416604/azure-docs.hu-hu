@@ -6,15 +6,15 @@ author: alkohli
 ms.service: databox
 ms.subservice: pod
 ms.topic: tutorial
-ms.date: 09/03/2019
+ms.date: 09/29/2019
 ms.author: alkohli
 ms.localizationpriority: high
-ms.openlocfilehash: a0622c7556896b7ae7201ffa3a7ecac8de1106a4
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.openlocfilehash: fcdc5d0e7254b8e491285baae6c2a1bc6979e437
+ms.sourcegitcommit: d9ba60f15aa6eafc3c5ae8d592bacaf21d97a871
 ms.translationtype: HT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
-ms.locfileid: "88053541"
+ms.lasthandoff: 10/06/2020
+ms.locfileid: "91766317"
 ---
 ::: zone target="docs"
 
@@ -72,11 +72,11 @@ Ha Windows Server rendszerű gazdagépet használ, kövesse az alábbi lépések
 
 1. Az első lépés a hitelesítés elvégzése, majd a munkamenet elindítása. Lépjen a **Connect and copy** (Kapcsolódás és másolás) elemre. Kattintson az **SMB** elemre a tárfiókhoz társított megosztások hozzáférési hitelesítő adatainak lekéréséhez. 
 
-    ![Megosztások hitelesítő adatainak beszerzése 1](media/data-box-deploy-copy-data/get-share-credentials1.png)
+    ![Megosztások hitelesítő adatainak beszerzése SMB-megosztásokhoz](media/data-box-deploy-copy-data/get-share-credentials1.png)
 
 2. Az Access share and copy data (Megosztási és másolási adatok másolása) párbeszédpanelen másolja ki a megosztásnak megfelelő **Username** (Felhasználónév) és **Password** (Jelszó) értékeket. Kattintson az **OK** gombra.
     
-    ![Megosztások hitelesítő adatainak beszerzése 1](media/data-box-deploy-copy-data/get-share-credentials2.png)
+    ![Felhasználónév és jelszó beszerzése egy megosztáshoz](media/data-box-deploy-copy-data/get-share-credentials2.png)
 
 3. A tárfiókjához (a következő példában *utsac1*) társított megosztások gazdagépről történő eléréséhez nyisson meg egy parancsablakot. A parancssorba írja be a következőt:
 
@@ -97,11 +97,11 @@ Ha Windows Server rendszerű gazdagépet használ, kövesse az alábbi lépések
 
 4. Nyomja le a Windows + R billentyűkombinációt. A **Futtatás** ablakban adja meg a következőt: `\\<device IP address>`. Kattintson az **OK** gombra a Fájlkezelő megnyitásához.
     
-    ![Kapcsolódás a megosztáshoz a Fájlkezelővel 2](media/data-box-deploy-copy-data/connect-shares-file-explorer1.png)
+    ![Kapcsolódás a megosztáshoz a Fájlkezelővel](media/data-box-deploy-copy-data/connect-shares-file-explorer1.png)
 
     A megosztásoknak ezután mappaként kell megjelenniük.
     
-    ![Kapcsolódás a megosztáshoz a Fájlkezelővel 2](media/data-box-deploy-copy-data/connect-shares-file-explorer2.png)
+    ![A Fájlkezelőben látható megosztások](media/data-box-deploy-copy-data/connect-shares-file-explorer2.png)
 
     **Mindig hozzon létre egy mappát azokhoz a fájlokhoz, amelyeket másolni szeretne a megosztás alatt, majd másolja a fájlokat a létrehozott mappába**. A blokkblob- és lapblobmegosztások alatt létrehozott mappa azt a tárolót jelöli, amelybe a rendszer feltölti az adatokat blobokként. Nem másolhat fájlokat közvetlenül a tárfiók *gyökér*mappájába.
     
@@ -116,7 +116,7 @@ sudo mount -t nfs -o vers=2.1 10.126.76.138:/utSAC1_202006051000_BlockBlob /home
 A Data Box-megosztásokhoz történő csatlakozás után a következő lépés az adatok másolása. Az adatok másolásának megkezdése előtt tekintse át a következőket:
 
 * Ügyeljen rá, hogy az adatokat a helyes adatformátumnak megfelelő megosztásokba másolja. A blokkblobadatokat például másolja a blokkbloboknak fenntartott megosztásba. Másolja a VHD-kat a lapblobba. Ha az adatok formátuma nem egyezik a megfelelő megosztástípussal, akkor egy későbbi lépés során az Azure-ba történő adatfeltöltés sikertelen lesz.
-* Az adatok másolása közben győződjön meg arról, hogy az adatok mérete megfelel az [Azure Storage és a Data Box korlátaival](data-box-limits.md) foglalkozó cikkben ismertetett méretkorlátoknak.
+* Az adatok másolása közben győződjön meg arról, hogy az adatok mérete megfelel az [Azure-tárfiók korlátaival](data-box-limits.md#azure-storage-account-size-limits) foglalkozó cikkben ismertetett méretkorlátoknak.
 * Ha a Data Box által éppen feltöltés alatt álló adatokat egyidejűleg egy másik alkalmazás is feltölti a Data Boxon kívül, ez a feltöltési feladatok meghiúsulásához és az adatok meghibásodásához vezethet.
 * A következő megoldást javasoljuk:
   * Ne használjon egyidejűleg SMB-t és NFS-t.
@@ -225,15 +225,15 @@ A Robocopy-paranccsal kapcsolatos további információért lásd [a Robocopyt �
 
 Ha hiba lép fel a másolási folyamat során, megjelenik erről egy értesítés.
 
-![Csatlakozás és másolás oldal hibáinak letöltése és megtekintése](media/data-box-deploy-copy-data/view-errors-1.png)
+![A másolással kapcsolatos hibaüzenet a Csatlakozás és másolás oldalon](media/data-box-deploy-copy-data/view-errors-1.png)
 
 Válassza a **Hibalista letöltése** lehetőséget.
 
-![Csatlakozás és másolás oldal hibáinak letöltése és megtekintése](media/data-box-deploy-copy-data/view-errors-2.png)
+![Csatlakozás és másolás oldal hibáinak letöltése és megtekintése 2](media/data-box-deploy-copy-data/view-errors-2.png)
 
 Nyissa meg a listát a hiba részleteinek megtekintéséhez, majd kattintson a megoldás URL-címére az ajánlott megoldás megtekintéséhez.
 
-![Csatlakozás és másolás oldal hibáinak letöltése és megtekintése](media/data-box-deploy-copy-data/view-errors-3.png)
+![Csatlakozás és másolás oldal hibáinak letöltése és megtekintése 3](media/data-box-deploy-copy-data/view-errors-3.png)
 
 További információkért lásd: [Az adatok Data Boxra másolása során készült hibanaplók megtekintése](data-box-logs.md#view-error-log-during-data-copy). Az adatok másolása során felmerülő hibák részletes listájáért tekintse meg a [Data Box-problémák elhárításával](data-box-troubleshoot.md) kapcsolatos cikket.
 
