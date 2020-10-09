@@ -8,22 +8,22 @@ ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
 ms.openlocfilehash: 5e0533a44db269229b2f26fa8d2f2b4f84f4d0b4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85125463"
 ---
 # <a name="autoscale-your-aks-pods-using-application-gateway-metrics-beta"></a>AK-hüvelyek autoskálázása Application Gateway metrikák (bétaverzió) használatával
 
 Ahogy a bejövő forgalom megnövekszik, elengedhetetlen az alkalmazások vertikális felskálázása az igények alapján.
 
-Az alábbi oktatóanyagban azt ismertetjük, hogyan használható a Application Gateway `AvgRequestCountPerHealthyHost` mérőszáma az alkalmazás vertikális felskálázásához. `AvgRequestCountPerHealthyHost`egy adott háttérbeli készletre és háttérbeli HTTP-beállítási kombinációra küldött átlagos kérelmeket méri.
+Az alábbi oktatóanyagban azt ismertetjük, hogyan használható a Application Gateway `AvgRequestCountPerHealthyHost` mérőszáma az alkalmazás vertikális felskálázásához. `AvgRequestCountPerHealthyHost` egy adott háttérbeli készletre és háttérbeli HTTP-beállítási kombinációra küldött átlagos kérelmeket méri.
 
 A következő két összetevőt fogjuk használni:
 
-* [`Azure Kubernetes Metric Adapter`](https://github.com/Azure/azure-k8s-metrics-adapter)– A metrika-adapter használatával tesz elérhetővé Application Gateway metrikákat a metrikai kiszolgálón. Az Azure Kubernetes metrika-adapter egy nyílt forráskódú projekt az Azure-ban, amely a Application Gateway beáramló vezérlőhöz hasonlóan működik. 
-* [`Horizontal Pod Autoscaler`](https://docs.microsoft.com/azure/aks/concepts-scale#horizontal-pod-autoscaler)– A HPA használatával Application Gateway metrikákat használhat, és megcélozhatja a skálázási üzembe helyezést.
+* [`Azure Kubernetes Metric Adapter`](https://github.com/Azure/azure-k8s-metrics-adapter) – A metrika-adapter használatával tesz elérhetővé Application Gateway metrikákat a metrikai kiszolgálón. Az Azure Kubernetes metrika-adapter egy nyílt forráskódú projekt az Azure-ban, amely a Application Gateway beáramló vezérlőhöz hasonlóan működik. 
+* [`Horizontal Pod Autoscaler`](https://docs.microsoft.com/azure/aks/concepts-scale#horizontal-pod-autoscaler) – A HPA használatával Application Gateway metrikákat használhat, és megcélozhatja a skálázási üzembe helyezést.
 
 ## <a name="setting-up-azure-kubernetes-metric-adapter"></a>Az Azure Kubernetes metrikus adapter beállítása
 

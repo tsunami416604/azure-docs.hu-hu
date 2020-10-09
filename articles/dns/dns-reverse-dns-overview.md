@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 05/29/2017
 ms.author: rohink
 ms.openlocfilehash: bf3da62e989f0e029efdc8e9c70f5f45e0ddd765
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "76932294"
 ---
 # <a name="overview-of-reverse-dns-and-support-in-azure"></a>A fordított DNS és a támogatás áttekintése az Azure-ban
@@ -87,7 +87,7 @@ A "192.0.2.129" IP-cím fordított megkeresése egy "129.2.0.192.in-addr. arpa" 
 
 ### <a name="ipv6"></a>IPv6
 
-Egy IPv6-névkeresési zóna nevének a következő formátumúnak kell lennie:`<IPv6 network prefix in reverse order>.ip6.arpa`
+Egy IPv6-névkeresési zóna nevének a következő formátumúnak kell lennie: `<IPv6 network prefix in reverse order>.ip6.arpa`
 
 Például:. Ha fordított zónát hoz létre a 2001: DB8:1000: ABDC::/64 előtaggal rendelkező gazdagépek rekordjainak tárolására, a zóna neve a cím hálózati előtagjának elkülönítésével jön létre (2001: DB8: ABDC::). Ezután bontsa ki az IPv6-hálózati előtagot a [nulla tömörítés](https://technet.microsoft.com/library/cc781672(v=ws.10).aspx)eltávolításához, ha az IPv6-cím előtagjának lerövidítését használta (2001:0db8: ABDC: 0000::). Megfordíthatja a sorrendet, ha az előtagban lévő összes hexadecimális szám között elválasztó pontot használ a fordított hálózati előtag ( `0.0.0.0.c.d.b.a.8.b.d.0.1.0.0.2` ) létrehozásához és az utótag hozzáadásához `.ip6.arpa` .
 

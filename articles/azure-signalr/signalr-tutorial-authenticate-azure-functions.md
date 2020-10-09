@@ -8,10 +8,10 @@ ms.date: 03/01/2019
 ms.author: zhshang
 ms.custom: devx-track-js
 ms.openlocfilehash: e0bb4df611c6a9cfecf0aadbdfc3a577243856ba
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91327618"
 ---
 # <a name="tutorial-azure-signalr-service-authentication-with-azure-functions"></a>Oktatóanyag: Azure SignalR Service-hitelesítés az Azure Functions segítségével
@@ -52,20 +52,20 @@ Azure Functions-alkalmazását helyileg fogja összeállítani és tesztelni. Az
 
 1. Az új Azure-erőforrások létrehozásához kattintson az **erőforrás létrehozása** ( **+** ) gombra.
 
-1. Keresse meg és válassza ki a **SignalR Service** elemet. Kattintson a **Létrehozás** lehetőségre.
+1. Keresse meg és válassza ki a **SignalR Service** elemet. Kattintson a **Létrehozás** elemre.
 
     ![Új SignalR Service](media/signalr-tutorial-authenticate-azure-functions/signalr-quickstart-new.png)
 
 1. Adja meg a következő információkat:
 
-    | Name | Érték |
+    | Név | Érték |
     |---|---|
     | Erőforrás neve | A SignalR Service-példány egyedi neve |
     | Erőforráscsoport | Új erőforráscsoport létrehozása egyedi névvel |
     | Hely | Válasszon ki egy Önhöz közel eső helyet |
     | Tarifacsomag | Ingyenes |
 
-1. Kattintson a **Létrehozás** lehetőségre.
+1. Kattintson a **Létrehozás** elemre.
 
 1. A példány üzembe helyezése után nyissa meg a portálon, és keresse meg a beállítások lapot. Módosítsa a szolgáltatás mód beállítását *kiszolgáló*nélkülire.
 
@@ -327,7 +327,7 @@ Az Azure-ban futó Function alkalmazásnak Azure Storage-fiókra van szüksége.
 
 1. Adja meg a következő információkat:
 
-    | Name | Érték |
+    | Név | Érték |
     |---|---|
     | Előfizetés | Válassza ki a Signaler Service-példányt tartalmazó előfizetést. |
     | Erőforráscsoport | Azonos erőforráscsoport kiválasztása |
@@ -461,7 +461,7 @@ A webalkalmazást az Azure Blob Storage statikuswebhely-szolgáltatásával fogj
 
 1. Írja be a következő értékeket:
 
-    | Name | Érték |
+    | Név | Érték |
     |---|---|
     | Előfizetés | Az előfizetés kiválasztása |
     | Tárfiók | Válassza ki a korábban létrehozott Storage-fiókot |
@@ -509,7 +509,7 @@ Ha törölni szeretné a jelen oktatóanyag elvégzése során létrehozott erő
 
 [Problémák léptek fel? Tudassa velünk.](https://aka.ms/asrs/qsauth)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebből az oktatóanyagból elsajátította, hogyan használható az Azure Functions az Azure SignalR Service szolgáltatással. További információkat is találhat arról, hogyan lehet valós idejű, kiszolgáló nélküli alkalmazásokat létrehozni az Azure Functions SignalR Service-kötéseivel.
 

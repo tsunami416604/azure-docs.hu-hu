@@ -11,10 +11,10 @@ ms.topic: how-to
 ms.date: 06/02/2020
 ms.author: sebansal
 ms.openlocfilehash: 01383acad9f221e376f814ecf99794eb0431d0cd
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88588925"
 ---
 # <a name="integrating-key-vault-with-digicert-certificate-authority"></a>A Key Vault integrálása a DigiCert hitelesítésszolgáltatóval
@@ -61,7 +61,7 @@ A fenti információknak a DigiCert CertCentral-fiókból való összegyűjtése
     -   **Fiókazonosító**: adja meg a DigiCert CertCentral-FIÓKjának azonosítóját
     -   **Fiók jelszava**: adja meg a DigiCert CertCentral-fiókjában létrehozott API-kulcsot
     -   **Szervezet azonosítója**: adja meg a DigiCert CertCentral-fiókból összegyűjtött OrgID 
-    -   Kattintson a **Create** (Létrehozás) gombra.
+    -   Kattintson a **Létrehozás** elemre.
    
 6.  Látni fogja, hogy a DigicertCA már hozzá lett adva a hitelesítésszolgáltatók listájában.
 

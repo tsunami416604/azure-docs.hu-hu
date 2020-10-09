@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/12/2019
 ms.author: jeedes
 ms.openlocfilehash: 199a443bf2f0c674f85fec0ecfd0083c92f17fe4
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88555212"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-fidelity-netbenefits"></a>Oktatóanyag: Azure Active Directory integráció a hűség NetBenefits
@@ -75,7 +75,7 @@ Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a kapcs
 Az Azure AD egyszeri bejelentkezés megbízhatósági NetBenefits való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
 
 1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. A **[hűség NetBenefits egyszeri bejelentkezés konfigurálása](#configure-fidelity-netbenefits-single-sign-on)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+2. A **[hűség NetBenefits egyszeri bejelentkezés konfigurálása](#configure-fidelity-netbenefits-single-sign-on)** – az alkalmazás oldalának Sign-On beállításainak konfigurálása.
 3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
 4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
 5. **[Hozzon létre hűség NetBenefits teszt felhasználót](#create-fidelity-netbenefits-test-user)** – hogy a Britta Simon és a hűség NetBenefits is rendelkezzen, amely a felhasználó Azure ad-képviseletéhez van társítva.
@@ -95,11 +95,11 @@ Az Azure AD egyszeri bejelentkezés megbízhatósági NetBenefits való konfigur
 
     ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
+3. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-4. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon hajtsa végre a következő lépéseket:
+4. Az **egyszeri Sign-On beállítása az SAML-vel** lapon hajtsa végre a következő lépéseket:
 
     ![A hűség NetBenefits tartomány és URL-címek egyszeri bejelentkezési adatai](common/idp-intiated.png)
 
@@ -118,7 +118,7 @@ Az Azure AD egyszeri bejelentkezés megbízhatósági NetBenefits való konfigur
     >[!Note]
     >A megbízhatósági NetBenefits támogatja a statikus és a dinamikus összevonást. A statikus beállítás azt jelenti, hogy az SAML-alapú felhasználói kiépítés és a dinamikus adatszolgáltatások használata az igény szerinti felhasználói üzembe helyezést is támogatja. A JIT-alapú kiépítési ügyfeleknél néhány további jogcímet kell hozzáadnia az Azure AD-ben, például a felhasználó születésnapját stb. Ezeket az adatokat a hozzárendelt hűség- **ügyfél Service Manager** adja meg, és engedélyezni kell ezt a dinamikus összevonást a példányhoz.
 
-6. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
+6. Az **egyszeres Sign-On beállítása SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozása](common/metadataxml.png)
 
@@ -132,7 +132,7 @@ Az Azure AD egyszeri bejelentkezés megbízhatósági NetBenefits való konfigur
 
     c. Kijelentkezési URL-cím
 
-### <a name="configure-fidelity-netbenefits-single-sign-on"></a>A hűség NetBenefits egyszeri bejelentkezés konfigurálása
+### <a name="configure-fidelity-netbenefits-single-sign-on"></a>A hűség NetBenefits egyetlen Sign-On konfigurálása
 
 Az egyszeri bejelentkezés a **hűség NetBenefits** oldalon való konfigurálásához el kell küldenie a letöltött **összevonási metaadatokat tartalmazó XML-fájlt** és a megfelelő másolt url-címeket a Azure Portal a [hűség NetBenefits támogató csapatnak](mailto:SSOMaintenance@fmr.com). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
 
@@ -159,7 +159,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    d. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

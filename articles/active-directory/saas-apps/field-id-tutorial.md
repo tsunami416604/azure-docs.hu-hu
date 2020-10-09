@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 05/28/2020
 ms.author: jeedes
 ms.openlocfilehash: a9ace754a75d63bc24bea91dd6c88a3d004fd0eb
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88555091"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-field-id"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezés (SSO) integrációja a mező azonosítójával
@@ -74,7 +74,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
 1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon válassza az **ALAPszintű SAML-konfigurációhoz** tartozó ceruza ikont a beállítások szerkesztéséhez.
 
-   ![Képernyőfelvétel az egyszeri bejelentkezés SAML-oldallal való beállításáról: a ceruza ikon kiemelve](common/edit-urls.png)
+   ![Képernyőfelvétel egy Sign-On SAML-oldallal való beállításáról, a ceruza ikon kiemelve](common/edit-urls.png)
 
 1. Az **alapszintű SAML-konfiguráció** szakaszban hajtsa végre a következő lépéseket:
 

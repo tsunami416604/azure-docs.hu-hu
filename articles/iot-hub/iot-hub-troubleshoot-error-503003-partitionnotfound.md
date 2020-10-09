@@ -9,17 +9,17 @@ ms.topic: troubleshooting
 ms.date: 01/30/2020
 ms.author: jlian
 ms.openlocfilehash: 438476171597c44dcc54d85bf1140f0a52bb2e58
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "76960658"
 ---
 # <a name="503003-partitionnotfound"></a>503003 PartitionNotFound
 
 Ez a cikk a **503003 PartitionNotFound** -hibák okait és megoldásait ismerteti.
 
-## <a name="symptoms"></a>Probléma
+## <a name="symptoms"></a>Hibajelenségek
 
 A IoT Hub kérelmek sikertelenek, a **503003**-es PartitionNotFound hiba miatt.
 

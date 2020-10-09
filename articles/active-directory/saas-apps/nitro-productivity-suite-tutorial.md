@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/02/2020
 ms.author: jeedes
 ms.openlocfilehash: b67e280824c5e2336aa79e14d3e09d3a670118a5
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88554331"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-nitro-productivity-suite"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a nitro hatékonyságnövelő csomaggal
@@ -93,9 +93,9 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
     d. Válassza az **egyszeri bejelentkezés engedélyezése**lehetőséget.
 
 
-1. Lépjen vissza az [Azure Portalra](https://portal.azure.com/). Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon válassza az **ALAPszintű SAML-konfigurációhoz** tartozó ceruza ikont a beállítások szerkesztéséhez.
+1. Lépjen vissza az [Azure Portalra](https://portal.azure.com/). Az **egyszeri Sign-On beállítása az SAML-vel** lapon válassza az **ALAPszintű SAML-konfigurációhoz** tartozó ceruza ikont a beállítások szerkesztéséhez.
 
-   ![Képernyőfelvétel: egyszeri bejelentkezés beállítása SAML-oldallal – kiemelve a ceruza ikonnal](common/edit-urls.png)
+   ![Képernyőfelvétel az egyszeri Sign-On az SAML-oldallal való beállításáról, a ceruza ikon kiemelve](common/edit-urls.png)
 
 1. Az **alapszintű SAML-konfiguráció** szakaszban, ha az alkalmazást **identitásszolgáltató** kezdeményezett módban szeretné konfigurálni, adja meg a következő mezők értékeit:
 
@@ -107,7 +107,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet:  `https://sso.gonitro.com/login`
 
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 1. A nitro Productivity Suite-alkalmazás azt várja, hogy az SAML-állítások megadott formátumban legyenek, így egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőképen az alapértelmezett attribútumok listája látható.
 
@@ -115,7 +115,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. Az előző attribútumok mellett a nitro Productivity Suite alkalmazás néhány további attribútumot vár, amelyeket vissza kell adni az SAML-válaszban. Ezek az attribútumok előre ki vannak töltve, de a követelmények szerint áttekinthetők.
     
-    | Name  |  Forrás attribútum|
+    | Név  |  Forrás attribútum|
     | ---------------| --------------- |
     | employeeNumber |  User. ObjectId |
 

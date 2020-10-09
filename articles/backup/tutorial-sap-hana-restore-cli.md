@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 12/4/2019
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 0e524bfe090f0d67b76c13e876f44e83986aeb9e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91334803"
 ---
 # <a name="tutorial-restore-sap-hana-databases-in-an-azure-vm-using-azure-cli"></a>Oktatóanyag: SAP HANA-adatbázisok visszaállítása Azure-beli virtuális gépen az Azure CLI használatával
@@ -344,7 +344,7 @@ Helyezze át ezeket a visszaállított fájlokat arra a SAP HANA kiszolgálóra,
         * `<LogFilesDir>` – a napló biztonsági másolatait tartalmazó mappa
         * `<BackupIdFromJsonFile>`– a **3. lépésben** kinyert **biztonsági másolat azonosítója**
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ha meg szeretné tudni, hogyan kezelheti SAP HANA az Azure CLI használatával biztonsági mentést tartalmazó adatbázisokat, folytassa a [SAP HANA-adatbázis kezelése az Azure virtuális gépen a parancssori felület használatával](tutorial-sap-hana-backup-cli.md) című oktatóanyagot.
 

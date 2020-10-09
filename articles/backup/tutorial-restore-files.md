@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 01/31/2019
 ms.custom: mvc
 ms.openlocfilehash: 6684e8717bad47248b539ecf70d135a46f459a4e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91324984"
 ---
 # <a name="restore-files-to-a-virtual-machine-in-azure"></a>Fájlok visszaállítása Azure-beli virtuális gépekre
@@ -192,7 +192,7 @@ Most, hogy a helyreállítási szkript a virtuális gépre van másolva, csatlak
         --rp-name myRecoveryPointName
     ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban egy helyreállítási pontot csatlakoztatott egy virtuális géphez, és visszaállította egy webkiszolgáló fájljait. Megtanulta végrehajtani az alábbi műveleteket:
 

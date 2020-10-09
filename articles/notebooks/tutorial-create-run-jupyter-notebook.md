@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 01/11/2019
 ms.custom: devx-track-python
 ms.openlocfilehash: cb8be1618de7e95a7096e4ea9dec78bf4aa277f6
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88589251"
 ---
 # <a name="tutorial-create-and-run-a-jupyter-notebook-with-python"></a>Oktatóanyag: Jupyter Notebook létrehozása és futtatása Python-val
@@ -114,7 +114,7 @@ A notebookon belül mindig használhat olyan parancsokat, mint a `!pip install` 
 1. Az első legördülő menüben (a művelet) a **környezet beállítása lépésnél**válassza a **Requirements.txt**lehetőséget.
 1. A második legördülő menüben (a fájl neve) válassza a *requirements.txt* (a létrehozott fájl) lehetőséget.
 1. A harmadik legördülő vezérlőben (a Python verziója) válassza a **python 3,6**-es verzióját.
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 ![A Project Settings környezet lapja requirements.txt fájlt ad meg](media/tutorial/tutorial-requirements-txt.png)
 

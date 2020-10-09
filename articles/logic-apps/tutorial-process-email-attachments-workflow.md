@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.custom: mvc, devx-track-csharp
 ms.date: 02/27/2020
 ms.openlocfilehash: 38b4713383368f0c64983738f2ed65f60edb9e67
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91334089"
 ---
 # <a name="tutorial-automate-tasks-to-process-emails-by-using-azure-logic-apps-azure-functions-and-azure-storage"></a>Oktatóanyag: feladatok automatizálása az e-mailek feldolgozásához Azure Logic Apps, Azure Functions és Azure Storage használatával
@@ -278,8 +278,8 @@ Ezután adjon hozzá egy [eseményindítót](../logic-apps/logic-apps-overview.m
       | Beállítás | Érték | Leírás |
       | ------- | ----- | ----------- |
       | **Mappa** | Beérkezett üzenetek | Az ellenőrizni kívánt e-mail-mappa |
-      | **Melléklettel rendelkezik** | Yes | Csak a melléklettel rendelkező e-mailek beolvasása. <p>**Megjegyzés:** Az eseményindító nem törli az e-maileket a fiókból, csak ellenőrzi az új üzeneteket, és feldolgozza azokat, amelyek megfelelnek a tárgyszűrőnek. |
-      | **Mellékletek is** | Yes | A mellékletek egyszerű ellenőrzése helyett azok lekérése bemenetként a munkafolyamathoz. |
+      | **Melléklettel rendelkezik** | Igen | Csak a melléklettel rendelkező e-mailek beolvasása. <p>**Megjegyzés:** Az eseményindító nem törli az e-maileket a fiókból, csak ellenőrzi az új üzeneteket, és feldolgozza azokat, amelyek megfelelnek a tárgyszűrőnek. |
+      | **Mellékletek is** | Igen | A mellékletek egyszerű ellenőrzése helyett azok lekérése bemenetként a munkafolyamathoz. |
       | **Intervallum** | 1 | Az ellenőrzések között kivárt intervallumok száma |
       | **Gyakoriság** | Minute | Az ellenőrzések közötti intervallumok időegysége |
       ||||
@@ -440,7 +440,7 @@ Ezután adjon hozzá egy műveletet, amely egy blobot hoz létre a tárolóban a
    | Beállítás | Érték | Leírás |
    | ------- | ----- | ----------- |
    | **Kapcsolat neve** | AttachmentStorageConnection | A kapcsolat leíró neve |
-   | **Storage-fiók** | attachmentstorageacct | A mellékletek mentéséhez korábban létrehozott tárfiók neve |
+   | **Tárfiók** | attachmentstorageacct | A mellékletek mentéséhez korábban létrehozott tárfiók neve |
    ||||
 
 1. Nevezze át a **Blob létrehozása** műveletet a következő leírással: `Create blob for email body`
@@ -682,7 +682,7 @@ Ha már nincs szükség erre a mintára, törölje a logikai alkalmazást és a 
 
 1. Amikor megjelenik a megerősítő ablaktábla, adja meg az erőforráscsoport nevét, és válassza a **Törlés**lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az oktatóanyagban létrehoztunk egy logikai alkalmazást e-mail mellékletek, feldolgozására és tárolására Azure-szolgáltatások, például az Azure Storage és az Azure Functions integrálásával. Most megismerkedhet a logikai alkalmazások létrehozásához használható egyéb összekötőkkel.
 

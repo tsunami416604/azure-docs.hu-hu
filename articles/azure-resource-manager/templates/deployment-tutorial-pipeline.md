@@ -5,10 +5,10 @@ ms.date: 08/24/2020
 ms.topic: tutorial
 ms.author: jgao
 ms.openlocfilehash: 433811cb632aae0d7370fc8e401c01fe36621a5b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91333237"
 ---
 # <a name="tutorial-continuous-integration-of-azure-resource-manager-templates-with-azure-pipelines"></a>Oktatóanyag: Azure Resource Manager-sablonok folyamatos integrálása az Azure-folyamatokkal
@@ -239,7 +239,7 @@ Ha már nincs szükség az Azure-erőforrásokra, törölje az üzembe helyezett
 
 Előfordulhat, hogy törölni szeretné a GitHub-tárházat és az Azure DevOps-projektet is.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Gratulálunk, befejezte ezt a Resource Manager-sablon üzembe helyezését ismertető oktatóanyagot. Tudassa velünk, ha megjegyzésekkel és javaslatokkal rendelkezik a visszajelzések szakaszban. Köszönjük!
 Készen áll a sablonokkal kapcsolatos speciális fogalmak beugrására. A következő oktatóanyag részletesen ismerteti a sablon-referenciák dokumentációjának használatát, amely segítséget nyújt a telepítendő erőforrások definiálásához.

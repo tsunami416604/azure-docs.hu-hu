@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/03/2020
 ms.author: jeedes
 ms.openlocfilehash: 170997099f1194bbc75d6d61a7c29fc1d18b462a
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88552216"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-sap-qualtrics"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció az SAP Qualtrics
@@ -75,7 +75,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
 1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon válassza az **ALAPszintű SAML-konfigurációhoz** tartozó ceruza ikont a beállítások szerkesztéséhez.
 
-   ![Képernyőfelvétel: egyszeri bejelentkezés beállítása SAML-oldallal – kiemelve a ceruza ikonnal](common/edit-urls.png)
+   ![Képernyőfelvétel az egyszeri Sign-On az SAML-oldallal való beállításáról, a ceruza ikon kiemelve](common/edit-urls.png)
 
 1. Ha az **identitásszolgáltató** által kezdeményezett módban szeretné konfigurálni az alkalmazást, akkor adja meg a következő mezők értékeit az **egyszeri bejelentkezés az SAML-vel** lapon:
     

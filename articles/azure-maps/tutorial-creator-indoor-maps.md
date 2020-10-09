@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 731ffe02b16fe832bb5feba34973ca81bf941646
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91371422"
 ---
 # <a name="tutorial-use-creator-to-create-indoor-maps"></a>Oktatóanyag: beltéri térképek létrehozása a Creator használatával
@@ -406,7 +406,7 @@ A szolgáltatások [beolvasása API](https://docs.microsoft.com/rest/api/maps/fe
 
 Ha többet szeretne megtudni a jelen cikkben tárgyalt különböző Azure Maps létrehozó szolgáltatásokról, tekintse meg a [Creator beltéri térképeket](creator-indoor-maps.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A beltéri térképek modul használatának megismeréséhez tekintse meg a következőt:
 

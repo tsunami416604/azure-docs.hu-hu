@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/10/2019
 ms.author: jeedes
 ms.openlocfilehash: 57445d1010e9775e3a1735fd64722c44db8e0a4e
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88546591"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-talentlms"></a>Oktatóanyag: Azure Active Directory integráció a TalentLMS
@@ -73,7 +73,7 @@ Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a Talen
 Az Azure AD egyszeri bejelentkezés TalentLMS való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
 
 1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. **[TalentLMS egyszeri bejelentkezés konfigurálása](#configure-talentlms-single-sign-on)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+2. **[TalentLMS egyszeri bejelentkezés konfigurálása](#configure-talentlms-single-sign-on)** – az egyes Sign-On beállítások konfigurálása az alkalmazás oldalán.
 3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
 4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
 5. **[Hozzon létre TalentLMS-teszt felhasználót](#create-talentlms-test-user)** – hogy a TalentLMS Britta, a felhasználó Azure ad-képviseletéhez kapcsolódó partnerrel rendelkezzen.
@@ -93,7 +93,7 @@ Az Azure AD egyszeri bejelentkezés TalentLMS való konfigurálásához hajtsa v
 
     ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
+3. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
@@ -126,7 +126,7 @@ Az Azure AD egyszeri bejelentkezés TalentLMS való konfigurálásához hajtsa v
 
     c. Kijelentkezési URL-cím
 
-### <a name="configure-talentlms-single-sign-on"></a>TalentLMS egyszeri bejelentkezés konfigurálása
+### <a name="configure-talentlms-single-sign-on"></a>TalentLMS egyetlen Sign-On konfigurálása
 
 1. Egy másik böngészőablakban jelentkezzen be a TalentLMS vállalati webhelyre rendszergazdaként.
 
@@ -134,9 +134,9 @@ Az Azure AD egyszeri bejelentkezés TalentLMS való konfigurálásához hajtsa v
 
     ![Fiók & beállításai](./media/talentlms-tutorial/IC777296.png "Fiók & beállításai")
 
-1. Kattintson az **egyszeri bejelentkezés (SSO)** elemre,
+1. Kattintson az **egyszeri Sign-On (SSO)** elemre,
 
-1. Az egyszeri bejelentkezés szakaszban hajtsa végre a következő lépéseket:
+1. Az egyszeres Sign-On szakaszban hajtsa végre a következő lépéseket:
 
     ![Egyszeri bejelentkezés](./media/talentlms-tutorial/IC777297.png "Egyszeri bejelentkezés")
 
@@ -184,7 +184,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    d. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

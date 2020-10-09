@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 10/17/2019
 ms.author: jeedes
 ms.openlocfilehash: 81dc3a4f55b214ea6ca7ad0388e57f4b4fdc7124
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88546474"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-textmagic"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a TextMagic
@@ -90,7 +90,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. A fentiek mellett a TextMagic alkalmazás néhány további attribútumot vár az SAML-válaszban, amelyek alább láthatók. Ezek az attribútumok előre is fel vannak töltve, de a követelménynek megfelelően áttekintheti őket.
 
-    | Name |   Forrás attribútum| Névtér  |
+    | Név |   Forrás attribútum| Névtér  |
     | --------------- | --------------- | --------------- |
     | cég | felhasználó. cégnév | http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
     | firstName               | User. givenName |  http://schemas.xmlsoap.org/ws/2005/05/identity/claims |
@@ -115,7 +115,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Create** (Létrehozás) gombra.
+   1. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -151,7 +151,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
     ![TextMagic-konfiguráció](./media/textmagic-tutorial/config1.png)
 
-5. Kattintson az **egyszeri bejelentkezés (SSO)** lapra, és töltse ki a következő mezőket:  
+5. Kattintson az **egyszeres Sign-On (SSO)** lapra, és adja meg a következő mezőket:  
 
     ![TextMagic-konfiguráció](./media/textmagic-tutorial/config2.png)
 

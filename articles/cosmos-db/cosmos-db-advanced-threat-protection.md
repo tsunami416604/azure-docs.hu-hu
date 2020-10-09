@@ -9,17 +9,17 @@ ms.author: memildin
 author: memildin
 manager: rkarlin
 ms.openlocfilehash: 0affd1660a88421f6df24bc5ef2e00497dae32a5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85119270"
 ---
 # <a name="advanced-threat-protection-for-azure-cosmos-db-preview"></a>A Azure Cosmos DB komplex veszélyforrások elleni védelme (előzetes verzió)
 
 A Azure Cosmos DB komplex veszélyforrások elleni védelme további biztonsági intelligenciát biztosít, amely szokatlan és potenciálisan ártalmas kísérleteket észlel Azure Cosmos DB fiókok eléréséhez vagy kihasználásához. Ez a védelmi réteg lehetővé teszi a fenyegetések kezelésére, akár biztonsági szakértő nélkül, akár a központi biztonsági figyelő rendszerekkel való integrációhoz.
 
-A biztonsági riasztások akkor lépnek életbe, ha a tevékenységben anomáliák vannak. Ezek a biztonsági riasztások integrálva vannak [Azure Security Centerekkel](https://azure.microsoft.com/services/security-center/), és e-mailben is elküldjük az előfizetés-rendszergazdáknak, a gyanús tevékenységek részleteivel és a fenyegetések kivizsgálásával és szervizelésével kapcsolatos ajánlásokkal együtt.
+A biztonsági riasztások akkor lépnek életbe, ha a tevékenységben anomáliák vannak. Ezek a biztonsági riasztások integrálva vannak  [Azure Security Centerekkel](https://azure.microsoft.com/services/security-center/), és e-mailben is elküldjük az előfizetés-rendszergazdáknak, a gyanús tevékenységek részleteivel és a fenyegetések kivizsgálásával és szervizelésével kapcsolatos ajánlásokkal együtt.
 
 > [!NOTE]
 >
@@ -44,7 +44,7 @@ A komplex veszélyforrások elleni védelem a következő szakaszokban ismertete
 
 ### <a name="portal"></a>[Portál](#tab/azure-portal)
 
-1. Indítsa el a Azure Portal a következő helyen: [https://portal.azure.com](https://portal.azure.com/) .
+1. Indítsa el a Azure Portal a következő helyen:  [https://portal.azure.com](https://portal.azure.com/) .
 
 2. A Azure Cosmos DB fiók **Beállítások** menüjében válassza a **fokozott biztonság**lehetőséget.
 
@@ -81,16 +81,16 @@ A Cosmos DB a komplex veszélyforrások elleni védelem engedélyezéséhez hasz
 
 1. Indítsa el az Azure **Policy-fogalommeghatározások** lapot, és keressen rá a Cosmos db házirend komplex **veszélyforrások elleni védelmének üzembe helyezése** lehetőségre.
 
-    :::image type="content" source="./media/cosmos-db-advanced-threat-protection/cosmos-db.png" alt-text="Keresési szabályzat"::: 
+    :::image type="content" source="./media/cosmos-db-advanced-threat-protection/cosmos-db.png" alt-text="ATP beállítása"::: 
 
 1. Kattintson a komplex **veszélyforrások elleni védelem telepítése CosmosDB** házirendre, majd kattintson a **hozzárendelés**elemre.
 
-    :::image type="content" source="./media/cosmos-db-advanced-threat-protection/cosmos-db-atp-policy.png" alt-text="Előfizetés vagy csoport kiválasztása":::
+    :::image type="content" source="./media/cosmos-db-advanced-threat-protection/cosmos-db-atp-policy.png" alt-text="ATP beállítása":::
 
 
 1. A **hatókör** mezőben kattintson a három pontra, válasszon ki egy Azure-előfizetést vagy erőforráscsoportot, majd kattintson a **kiválasztás**elemre.
 
-    :::image type="content" source="./media/cosmos-db-advanced-threat-protection/cosmos-db-atp-details.png" alt-text="Házirend-definíciók lap":::
+    :::image type="content" source="./media/cosmos-db-advanced-threat-protection/cosmos-db-atp-details.png" alt-text="ATP beállítása":::
 
 
 1. Adja meg a többi paramétert, majd kattintson a **hozzárendelés**elemre.
@@ -104,11 +104,11 @@ Ha Azure Cosmos DB tevékenység anomália történik, a rendszer egy biztonság
 
  Azure Security Center az aktuális [biztonsági riasztásokat](../security-center/security-center-alerts-overview.md)áttekintheti és kezelheti.  Kattintson egy adott riasztásra [Security Center](https://ms.portal.azure.com/#blade/Microsoft_Azure_Security/SecurityMenuBlade/0) a lehetséges okok és az ajánlott műveletek megtekintéséhez és a lehetséges fenyegetések enyhítéséhez. Az alábbi képen egy példa látható a Security Centerban megadott riasztási adatokra.
 
- :::image type="content" source="./media/cosmos-db-advanced-threat-protection/cosmos-db-alert-details.png" alt-text="Fenyegetés részletei":::
+ :::image type="content" source="./media/cosmos-db-advanced-threat-protection/cosmos-db-alert-details.png" alt-text="ATP beállítása":::
 
 A rendszer a riasztás részleteivel és a javasolt műveletekkel kapcsolatos e-mail-értesítést is küld. Az alábbi képen egy riasztási e-mail látható.
 
- :::image type="content" source="./media/cosmos-db-advanced-threat-protection/cosmos-db-alert.png" alt-text="Riasztás részletei":::
+ :::image type="content" source="./media/cosmos-db-advanced-threat-protection/cosmos-db-alert.png" alt-text="ATP beállítása":::
 
 ## <a name="cosmos-db-atp-alerts"></a>ATP-riasztások Cosmos DB
 

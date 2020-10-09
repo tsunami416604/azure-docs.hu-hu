@@ -12,10 +12,10 @@ ms.reviewer: sgilley
 ms.date: 09/15/2020
 ms.custom: devx-track-python
 ms.openlocfilehash: f5c2690ea97136c2b7887a8450c2788e3902d4e3
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91369960"
 ---
 # <a name="tutorial-train-your-first-machine-learning-model-part-3-of-4"></a>Oktatóanyag: az első gépi tanulási modell betanítása (4. rész)
@@ -402,7 +402,7 @@ Ez alkalommal, amikor felkeresi a stúdiót, ugorjon a **metrikák** lapra, ahol
 
 :::image type="content" source="media/tutorial-1st-experiment-sdk-train/logging-metrics.png" alt-text="A metrikák lapon megjelenő adatvesztési gráf":::
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a munkamenetben egy alapszintű "Helló világból" frissítünk. parancsfájlt egy reálisabb betanítási parancsfájlhoz, amely egy adott Python-környezet futtatásához szükséges. Megismerte, hogyan végezheti el a helyi Conda-környezetet a felhőben Azure Machine Learning környezettel. Végül azt is láttuk, hogy a kódok néhány sorában hogyan naplózhatja a mérőszámokat Azure Machine Learningba.
 

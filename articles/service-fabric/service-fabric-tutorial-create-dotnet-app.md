@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 07/10/2019
 ms.custom: mvc, devx-track-js, devx-track-csharp
 ms.openlocfilehash: e9014f2f5e4d0149d1b0c37c9dbf007358242189
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91326371"
 ---
 # <a name="tutorial-create-and-deploy-an-application-with-an-aspnet-core-web-api-front-end-service-and-a-stateful-back-end-service"></a>Oktatóanyag: Alkalmazás létrehozása és üzembe helyezése egy ASP.NET Core Web API kezelőfelületi szolgáltatás és egy állapotalapú háttérszolgáltatás segítségével
@@ -630,7 +630,7 @@ Ha szeretné megtekinteni, hogy mi történik a kódban, hajtsa végre a követk
 
 A hibakeresési munkamenet leállításához nyomja le a **Shift+F5** billentyűkombinációt.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az oktatóanyag jelen részében megismerkedhetett a következőkkel:
 

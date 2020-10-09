@@ -4,10 +4,10 @@ description: Ebben az oktatóanyagban egy labort hoz létre Azure DevTest Labs a
 ms.topic: tutorial
 ms.date: 06/26/2020
 ms.openlocfilehash: 4b59edd4ab1204d6683cf95a02070d10b1abe061
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91324280"
 ---
 # <a name="tutorial-set-up-a-lab-by-using-azure-devtest-labs"></a>Oktatóanyag: Tesztkörnyezet létrehozása az Azure DevTest Labs szolgáltatással
@@ -98,7 +98,7 @@ A következő oktatóanyag azt mutatja be, hogyan foglalhatják le a tesztkörny
     ![Laboratóriumi erőforráscsoport](./media/tutorial-create-custom-lab/lab-resource-group.png)
 1. Ismételje meg ezeket a lépéseket a `<your resource group name><random numbers>` nevű, az Ön számára létrehozott további erőforráscsoport esetében. Például: `splab3988722144001`. A virtuális gépek ebben az erőforráscsoportban jönnek létre, és nem abban, amelyben a tesztkörnyezet található. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebben az oktatóanyagban létrehozott egy tesztkörnyezetet egy virtuális géppel, és egy felhasználónak hozzáférést biztosított a tesztkörnyezethez. Ha meg szeretné tudni, tesztkörnyezet-felhasználóként hogyan érheti el a tesztkörnyezetet, folytassa a következő oktatóanyaggal:
 
 > [!div class="nextstepaction"]

@@ -6,10 +6,10 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 05/08/2020
 ms.openlocfilehash: 01262ee0271849793c4393b1ea8e18c4179ad4e0
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91334726"
 ---
 # <a name="tutorial-extract-structured-data-from-user-utterance-with-machine-learning-entities-in-language-understanding-luis"></a>Oktatóanyag: strukturált adatok kinyerése a felhasználóktól a gépi tanulási entitásokkal Language Understanding (LUIS)
@@ -304,7 +304,7 @@ Ahhoz, hogy LUIS-előrejelzéseket kaphasson egy csevegőrobotban vagy más ügy
 * [Közzétételi útmutató](luis-how-to-publish-app.md)
 * [Tesztelés a LUIS portálon](luis-interactive-test.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban az alkalmazás egy gépi tanulási entitás használatával keresi meg a felhasználó teljes részletességét, és Kinyeri a részleteket ebből a részletekből. A gépi tanulási entitás segítségével elvégezheti az entitás részleteit.
 

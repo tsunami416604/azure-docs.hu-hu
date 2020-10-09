@@ -11,10 +11,10 @@ ms.author: jopapa
 ms.custom: seodec18, devx-track-js
 ms.reviewer: sngun
 ms.openlocfilehash: bd2b28b516f0043bb64e175bfa901557cdb78de4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91334412"
 ---
 # <a name="create-an-angular-app-with-azure-cosmos-dbs-api-for-mongodb---use-mongoose-to-connect-to-cosmos-db"></a>Szögletes alkalmazás létrehozása Azure Cosmos DB API-jával a MongoDB-hoz való kapcsolódáshoz a mongúz használatával Cosmos DB
@@ -246,7 +246,7 @@ Ha már nincs szüksége az erőforrásokra, törölheti az erőforráscsoportot
  1. Válassza az **Erőforráscsoport törlése** elemet.
  1. Erősítse meg a törölni kívánt erőforráscsoport nevét, majd válassza a **Törlés**lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Folytassa az oktatóanyag 6. részével, hogy hozzáadja a post, Put és DELETE függvényeket az alkalmazáshoz:
 

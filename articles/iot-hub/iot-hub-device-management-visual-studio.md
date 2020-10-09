@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 08/20/2019
 ms.author: xshi
 ms.openlocfilehash: 6fe5a45dda6632c56b3c6714827950e25e7d26af
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "73953187"
 ---
 # <a name="use-cloud-explorer-for-visual-studio-for-azure-iot-hub-device-management"></a>A Cloud Explorer használata az Azure-hoz készült Visual Studio IoT Hub-eszközök kezeléséhez
@@ -22,7 +22,7 @@ A [Cloud Explorer](https://marketplace.visualstudio.com/items?itemName=ms-azuret
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
-| Felügyeleti lehetőség          | Tevékenység                    |
+| Felügyeleti lehetőség          | Feladat                    |
 |----------------------------|--------------------------------|
 | Közvetlen metódusok             | Hajtson végre olyan eszközt, amely elindítja vagy leállítja az üzenetek küldését vagy az eszköz újraindítását.                                        |
 | Írásvédett eszköz – Twin           | Egy eszköz jelentett állapotának beolvasása. Az eszköz például azt jelenti, hogy a LED azonnal villog.                                    |
@@ -41,7 +41,7 @@ Ebből a cikkből megtudhatja, hogyan használhatja a Cloud Explorer for Visual 
 
 Ebből a cikkből megtudhatja, hogyan futtathatja a Cloud Explorer for Visual Studio alkalmazást különböző felügyeleti lehetőségekkel.
 
-## <a name="what-you-need"></a>Mi szükséges
+## <a name="what-you-need"></a>Amire szükség lesz
 
 A következő előfeltételek szükségesek:
 

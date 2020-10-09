@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 12/4/2019
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: f11e01c6af18cac956d58b9c692d7b57c8fe653a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91324960"
 ---
 # <a name="tutorial-back-up-sap-hana-databases-in-an-azure-vm-using-azure-cli"></a>Oktatóanyag: SAP HANA-adatbázisok biztonsági mentése Azure-beli virtuális gépen az Azure CLI használatával
@@ -50,7 +50,7 @@ az backup vault create --resource-group saphanaResourceGroup \
     --location westus2
 ```
 
-A Recovery Services-tároló alapértelmezés szerint georedundáns tárolásra van beállítva. A Geo-redundáns tárolás biztosítja, hogy a biztonsági mentési adatok egy olyan másodlagos Azure-régióba replikálódnak, amely több száz kilométerre van az elsődleges régiótól. Ha módosítani kell a tárolási redundancia beállítást, használja az az [Backup Vault Backup-Properties set](/cli/azure/backup/vault/backup-properties#az-backup-vault-backup-properties-set) parancsmagot.
+A Recovery Services-tároló alapértelmezés szerint georedundáns tárolásra van beállítva. Geo-Redundant Storage biztosítja a biztonsági mentési adatok replikálását egy olyan másodlagos Azure-régióba, amely több száz kilométerre van az elsődleges régiótól. Ha módosítani kell a tárolási redundancia beállítást, használja az az [Backup Vault Backup-Properties set](/cli/azure/backup/vault/backup-properties#az-backup-vault-backup-properties-set) parancsmagot.
 
 ```azurecli
 az backup vault backup-properties set \
@@ -180,7 +180,7 @@ A válasz megadja a feladatnév nevét. Ez a feladatnév használható a feladat
 >
 > Az Azure Backup jelenleg nem támogatja a növekményes biztonsági mentéseket.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ha meg szeretné tudni, hogyan állíthatja vissza SAP HANA adatbázist az Azure virtuális gépen a parancssori felület használatával, folytassa az Oktatóanyaggal – [SAP HANA adatbázis visszaállítása az Azure virtuális gépen a CLI használatával](tutorial-sap-hana-restore-cli.md)
 

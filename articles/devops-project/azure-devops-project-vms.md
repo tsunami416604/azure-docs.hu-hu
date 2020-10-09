@@ -12,7 +12,7 @@ ms.openlocfilehash: ce11fe5b65cd49cc880713eb4e47b081b6f3b44f
 ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91855973"
 ---
 # <a name="tutorial-deploy-your-aspnet-app-to-azure-virtual-machines-by-using-azure-devops-starter"></a>Oktatóanyag: a ASP.NET-alkalmazás üzembe helyezése az Azure Virtual Machines szolgáltatásban az Azure DevOps Starter használatával

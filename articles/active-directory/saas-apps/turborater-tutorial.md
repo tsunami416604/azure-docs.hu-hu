@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 3/8/2019
 ms.author: jeedes
 ms.openlocfilehash: 0c22993baa6a9095bddba67bdc9d18a40021db6c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88546389"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-turborater"></a>Oktatóanyag: Azure Active Directory integráció a TurboRater
@@ -91,7 +91,7 @@ Az Azure AD egyszeri bejelentkezés TurboRater való konfigurálásához hajtsa 
 
     ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon válassza a **Szerkesztés** (a ceruza ikon) lehetőséget az **alapszintű SAML-konfiguráció** panel megnyitásához.
+1. Az **egyszeres Sign-On beállítása az SAML-vel** lapon válassza a **Szerkesztés** (a ceruza ikon) lehetőséget az **alapszintű SAML-konfiguráció** panel megnyitásához.
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
@@ -113,7 +113,7 @@ Az Azure AD egyszeri bejelentkezés TurboRater való konfigurálásához hajtsa 
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosító és válasz URL-címmel. Az értékek beszerzéséhez forduljon a [TurboRater támogatási csapatához](https://www.getitc.com/support). A Azure Portal **alapszintű SAML-konfiguráció** paneljén látható mintázatokat is megtekintheti.
 
-1. Az **egyszeri bejelentkezés SAML-panelen való beállításához** az **SAML aláíró tanúsítvány** szakaszban válassza a **Letöltés** lehetőséget, hogy letöltse az **összevonási metaadatok XML-** fájlját a megadott beállításokból, és mentse a számítógépre.
+1. Az **egyszeri Sign-On beállítása az SAML** -panellel lapon az **SAML aláíró tanúsítvány** szakaszban válassza a **Letöltés** lehetőséget, hogy letöltse az **összevonási metaadatok XML-** fájlját a megadott beállításokból, és mentse a számítógépre.
 
     ![Az összevonási metaadatok XML-letöltési lehetősége](common/metadataxml.png)
 

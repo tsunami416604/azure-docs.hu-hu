@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/22/2019
 ms.author: jeedes
 ms.openlocfilehash: d45a3ddda44922c70080a09447866a9a4c6997a7
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88554413"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-cloud-management-portal-for-microsoft-azure"></a>Oktatóanyag: Azure Active Directory a Cloud felügyeleti portál integrációja Microsoft Azure
@@ -73,7 +73,7 @@ Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a Felh�
 Az Azure AD egyszeri bejelentkezés konfigurálásához és teszteléséhez a Cloud felügyeleti portál for Microsoft Azure esetében a következő építőelemeket kell végrehajtania:
 
 1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. A **[felhőalapú felügyeleti portál konfigurálása Microsoft Azure egyszeri bejelentkezéshez](#configure-cloud-management-portal-for-microsoft-azure-single-sign-on)** – az alkalmazás oldalának egyszeri bejelentkezési beállításainak konfigurálása.
+2. A **[felhőalapú felügyeleti portál konfigurálása Microsoft Azure egyszeri bejelentkezéshez](#configure-cloud-management-portal-for-microsoft-azure-single-sign-on)** – az egyes Sign-On beállítások az alkalmazás oldalán konfigurálhatók.
 3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
 4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
 5. **[Felhőbeli felügyeleti portál létrehozása a Microsoft Azure teszteléséhez](#create-cloud-management-portal-for-microsoft-azure-test-user)** , hogy a Britta Simon a felhőben felügyeleti portál a felhasználó Azure ad-képviseletéhez kapcsolódó Microsoft Azure.
@@ -93,7 +93,7 @@ Ha az Azure AD egyszeri bejelentkezést a felhőalapú felügyeleti portál a Mi
 
     ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
+3. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
@@ -124,9 +124,9 @@ Ha az Azure AD egyszeri bejelentkezést a felhőalapú felügyeleti portál a Mi
     ```
 
     > [!NOTE]
-    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel, azonosítóval és válasz URL-címmel. Vegye fel [a kapcsolatot a Cloud felügyeleti portál a Microsoft Azure ügyfél-támogatási csapattal](mailto:jczernuszka@newsignature.com) az értékek beszerzéséhez. Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges Sign-On URL-címmel, azonosítóval és válasz URL-címmel. Vegye fel [a kapcsolatot a Cloud felügyeleti portál a Microsoft Azure ügyfél-támogatási csapattal](mailto:jczernuszka@newsignature.com) az értékek beszerzéséhez. Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-5. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállítások alapján, és mentse a számítógépre.
+5. Az **egyszeres Sign-On beállítása az SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállítások alapján, és mentse azt a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozása](common/certificatebase64.png)
 
@@ -140,7 +140,7 @@ Ha az Azure AD egyszeri bejelentkezést a felhőalapú felügyeleti portál a Mi
 
     c. Kijelentkezési URL-cím
 
-### <a name="configure-cloud-management-portal-for-microsoft-azure-single-sign-on"></a>Felhőalapú felügyeleti portál konfigurálása Microsoft Azure egyszeri bejelentkezéshez
+### <a name="configure-cloud-management-portal-for-microsoft-azure-single-sign-on"></a>A felhőalapú felügyeleti portál konfigurálása Microsoft Azure egyetlen Sign-On
 
 Ha az egyszeri bejelentkezést szeretné konfigurálni a **felhőbeli felügyeleti portál Microsoft Azure** oldalon, akkor a letöltött **tanúsítványt (Base64)** és a megfelelő másolt URL-címeket el kell küldenie a Azure Portalről a [felhőbe felügyeleti portál Microsoft Azure támogatási csapatnak](mailto:jczernuszka@newsignature.com). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
 
@@ -167,7 +167,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    d. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

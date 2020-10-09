@@ -10,10 +10,10 @@ ms.date: 03/24/2020
 author: mlearned
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 3277fefb5615fd492b2859b741ef8e6f991eaf23
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91355474"
 ---
 # <a name="deploy-to-azure-functions-with-devops-starter"></a>Üzembe helyezés Azure Functions a DevOps Starter használatával
@@ -154,7 +154,7 @@ Most már készen áll az alkalmazásban lévő csapattal való együttműködé
 
 A létrehozott kapcsolódó erőforrásokat törölheti, ha már nincs rájuk szükség. Használja a **delete** funkciót a DevOps Starter irányítópultján.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A csapat igényeihez igazodva módosíthatja ezt a buildet és a kiadási folyamatokat. Ezt a CI-/CD-mintát egyéb folyamatok sablonjaként is használhatja. Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 

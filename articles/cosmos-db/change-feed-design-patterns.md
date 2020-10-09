@@ -7,10 +7,10 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 04/08/2020
 ms.openlocfilehash: 6101e80131aca94e44bb4e85ee51fe607f47c10f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85118950"
 ---
 # <a name="change-feed-design-patterns-in-azure-cosmos-db"></a>A hírcsatorna kialakítási mintáinak módosítása Azure Cosmos DB
@@ -38,7 +38,7 @@ Az értesítéseket szelektíven is elindíthatja, vagy megadhatja az API-nak ad
 A Azure Cosmos DB változási csatornával valós idejű adatfolyam-feldolgozást lehet használni a IoT vagy a valós idejű elemzési feldolgozáshoz az operatív adatműveletekben.
 Előfordulhat például, hogy az eszközökről, érzékelőkről, infrastruktúrából és alkalmazásokból fogadja és tárolja az események adatait, és valós időben dolgozza fel ezeket az eseményeket a [Spark](../hdinsight/spark/apache-spark-overview.md)használatával. Az alábbi képen látható, hogyan valósítható meg a lambda architektúra a Azure Cosmos DB használatával a Change feeden keresztül:
 
-:::image type="content" source="./media/change-feed/lambda.png" alt-text="Azure Cosmos DB-alapú lambda-folyamat a betöltéshez és a lekérdezéshez" border="false":::
+:::image type="content" source="./media/change-feed/lambda.png" alt-text="A Azure Cosmos DB változási csatornájának használata valós idejű elemzési és eseményvezérelt számítástechnikai forgatókönyvekhez" border="false":::
 
 Sok esetben a stream-feldolgozási implementációk először nagy mennyiségű bejövő adatsort kapnak egy ideiglenes üzenetsor-várólistába, például az Azure Event hub-ba vagy a Apache Kafkaba. A változási hírcsatorna nagyszerű alternatíva, mivel Azure Cosmos DB az adatfeldolgozás tartós, alacsony olvasási és írási késéssel való ellátásának lehetősége. Az üzenet-várólista Azure Cosmos DB változásának előnyei a következők:
 

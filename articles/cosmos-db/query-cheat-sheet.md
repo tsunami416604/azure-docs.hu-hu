@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 05/28/2019
 ms.author: sngun
 ms.openlocfilehash: fb080858ff6be98846c542844810cf976eb3f264
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85117981"
 ---
 # <a name="azure-cosmos-db-query-cheat-sheets"></a>Azure Cosmos DB lekérdezési Cheat Sheets
@@ -28,7 +28,7 @@ Töltse le a [Azure Cosmos db Letter méretű lekérdezési Cheat-lapokat](https
 ## <a name="oversized-cheat-sheets"></a>Túlméretezett Cheat lapok
 Töltse le az [Azure Cosmos db a3 méretű lekérdezési Cheat-lapokat](https://go.microsoft.com/fwlink/?linkid=870413) , ha plotter vagy nagyméretű nyomtató használatával szeretne nyomtatni az a3 méretű papíron (11,7 "x 16,5").
 
-:::image type="content" source="./media/query-cheat-sheet/azure-cosmos-db-cheat-sheet-a3.png" alt-text="Azure Cosmos DB lekérdezési Cheat Sheets – a3 méretű, SQL API, JavaScript, MongoDB, Gremlin és Table API lekérdezések és függvények" border="false":::
+:::image type="content" source="./media/query-cheat-sheet/azure-cosmos-db-cheat-sheet-a3.png" alt-text="Azure Cosmos DB lekérdezési Cheat Sheets – Letter méretű, SQL API, JavaScript, MongoDB, Gremlin és Table API lekérdezések és függvények" border="false":::
 
 ## <a name="next-steps"></a>További lépések
 További segítséget a lekérdezések írásához a következő cikkekben talál:

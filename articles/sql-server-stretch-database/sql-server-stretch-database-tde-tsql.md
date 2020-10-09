@@ -15,15 +15,15 @@ ms.reviewer: jroth
 manager: jroth
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 6f1f5f55348069dbfe11b4d5857d93f8ba8c9b19
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74033958"
 ---
 # <a name="enable-transparent-data-encryption-tde-for-stretch-database-on-azure-transact-sql"></a>Transzparens adattitkosítás (TDE) engedélyezése az Azure-beli Stretch Database (Transact-SQL)
 > [!div class="op_single_selector"]
-> * [Azure Portalra](sql-server-stretch-database-encryption-tde.md)
+> * [Azure Portal](sql-server-stretch-database-encryption-tde.md)
 > * [TSQL](sql-server-stretch-database-tde-tsql.md)
 >
 >

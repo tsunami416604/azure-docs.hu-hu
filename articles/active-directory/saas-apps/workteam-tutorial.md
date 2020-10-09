@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 09/19/2019
 ms.author: jeedes
 ms.openlocfilehash: c95fceaa90ca379519379d37c19fb15dcd1de321
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88546350"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-workteam"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Workteam
@@ -99,7 +99,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Create** (Létrehozás) gombra.
+   1. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -145,7 +145,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
     a. Válassza ki az **SAML-identitásszolgáltató** az **ad Azure**-ban.
 
-    b. Az **SAML egyszeri bejelentkezési szolgáltatás URL-címe** szövegmezőbe illessze be a **bejelentkezési URL**-cím értékét, amelyet a Azure Portal másolt.
+    b. Az **SAML-Sign-On szolgáltatás URL-címe** szövegmezőbe illessze be a **bejelentkezési URL-cím**értékét, amelyet a Azure Portalból másolt.
 
     c. Az **SAML-entitás azonosítója** szövegmezőbe illessze be a Azure Portalból másolt **Azure ad-azonosító**értékét.
 

@@ -6,10 +6,10 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 07/06/2020
 ms.openlocfilehash: 9814304aed4d7a5f307fb2179491b0fa9635fd68
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91324654"
 ---
 # <a name="tutorial-add-common-pattern-template-utterance-formats-to-improve-predictions"></a>Oktatóanyag: általános minta sablon-megadási formátumok hozzáadása az előrejelzések tökéletesítéséhez
@@ -217,7 +217,7 @@ Ahhoz, hogy egy minta kimondható legyen, _először_ a Kimondás alá tartozó 
 
 **Habár a minták lehetővé teszik, hogy kevesebb kimondottszöveg-példát adjunk meg, ha a rendszer nem észleli az entitásokat, akkor a mintát nem lehet megfeleltetni.**
 
-### <a name="add-the-patterns-for-the-orgchart-manager-intent"></a>A szervezeti diagram – Manager leképezés mintáinak hozzáadása
+### <a name="add-the-patterns-for-the-orgchart-manager-intent"></a>A OrgChart-Manager szándék mintázatának hozzáadása
 
 1. A felső menüben válassza a **Build** (Létrehozás) elemet.
 
@@ -535,7 +535,7 @@ Ez az oktatóanyag olyan mintákat vett fel, amelyek segítségével a LUIS elő
 
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 
 > [!div class="nextstepaction"]

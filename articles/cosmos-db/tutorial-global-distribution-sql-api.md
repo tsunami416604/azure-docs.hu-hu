@@ -9,10 +9,10 @@ ms.date: 11/05/2019
 ms.reviewer: sngun
 ms.custom: devx-track-python, devx-track-js, devx-track-csharp
 ms.openlocfilehash: ebb6bdf6e5072d1024ba7abcd1db1cf7bebfcd3d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91334378"
 ---
 # <a name="tutorial-set-up-azure-cosmos-db-global-distribution-using-the-sql-api"></a>Oktatóanyag: Azure Cosmos DB globális terjesztés beállítása az SQL API használatával
@@ -226,7 +226,7 @@ Ha az írási régió az ügyfél kezdeti felderítési fázisa után változik,
 
 Ezzel el is végezte az oktatóanyagot. Ha meg szeretné ismerni, hogyan kezelheti a globálisan replikált fiók konzisztenciáját, olvassa el a [Konzisztenciaszintek az Azure Cosmos DB-ben](consistency-levels.md) című cikket. További információ a globális adatbázis-replikáció működéséről az Azure Cosmos DB szolgáltatásban: [Globális adatterjesztés az Azure Cosmos DB-vel](distribute-data-globally.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban a következőket hajtotta végre:
 

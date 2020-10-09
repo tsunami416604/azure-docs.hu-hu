@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: 1c8135f39517a5983f700c35f08a5c0749113450
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88552237"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-skills-base"></a>Oktatóanyag: Azure Active Directory a képességek alapszintű integrációja
@@ -77,7 +77,7 @@ Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a kapcs
 Az Azure AD-alapú egyszeri bejelentkezés konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
 
 1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. A **[szaktudás alapszintű egyszeri bejelentkezés konfigurálása](#configure-skills-base-single-sign-on)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+2. A **[szaktudás alapszintű egyszeri bejelentkezés konfigurálása](#configure-skills-base-single-sign-on)** – az egyes Sign-On beállításainak konfigurálása az alkalmazás oldalán.
 3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
 4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
 5. **[Hozzon létre szaktudást alapszintű tesztelési felhasználóként](#create-skills-base-test-user)** , hogy a Britta Simon-hoz tartozó, a felhasználó Azure ad-képviseletéhez kapcsolódó Tudásbázisban legyen.
@@ -97,7 +97,7 @@ Az Azure AD-alapú egyszeri bejelentkezés a következő lépésekkel konfigurá
 
     ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
+3. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
@@ -108,9 +108,9 @@ Az Azure AD-alapú egyszeri bejelentkezés a következő lépésekkel konfigurá
     A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:  `https://app.skills-base.com/o/<customer-unique-key>`
 
     > [!NOTE]
-    > A bejelentkezési URL-címet a képességek alapalkalmazásból szerezheti be. Jelentkezzen be rendszergazdaként, és lépjen a rendszergazda – > beállítások – > példány részletei – > parancsikon hivatkozására. Másolja a bejelentkezési URL-címet, és illessze be a fenti szövegmezőbe.
+    > A Sign-On URL-címet a képességek alapalkalmazásból töltheti le. Jelentkezzen be rendszergazdaként, és lépjen a rendszergazda – > beállítások – > példány részletei – > parancsikon hivatkozására. Másolja a Sign-On URL-címet, és illessze be a fenti szövegmezőbe.
 
-5. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
+5. Az **egyszeres Sign-On beállítása SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozása](common/metadataxml.png)
 
@@ -124,7 +124,7 @@ Az Azure AD-alapú egyszeri bejelentkezés a következő lépésekkel konfigurá
 
     c. Kijelentkezési URL-cím
 
-### <a name="configure-skills-base-single-sign-on"></a>A szaktudás alapszintű egyszeri bejelentkezés konfigurálása
+### <a name="configure-skills-base-single-sign-on"></a>A szaktudás alapszintű Sign-On konfigurálása
 
 1. Egy másik böngészőablakban jelentkezzen be a szakemberekbe biztonsági rendszergazdaként.
 
@@ -132,7 +132,7 @@ Az Azure AD-alapú egyszeri bejelentkezés a következő lépésekkel konfigurá
 
     ![A rendszergazda](./media/skillsbase-tutorial/tutorial_skillsbase_auth.png)
 
-3. A **hitelesítés** lapon válassza az egyszeri bejelentkezés **SAML 2**-ként lehetőséget.
+3. A **hitelesítés** lapon válasszon ki egy Sign-On **SAML 2**néven.
 
     ![Az egyetlen](./media/skillsbase-tutorial/tutorial_skillsbase_single.png)
 
@@ -170,7 +170,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    d. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

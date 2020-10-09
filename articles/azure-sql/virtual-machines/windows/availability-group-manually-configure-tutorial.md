@@ -15,10 +15,10 @@ ms.date: 08/30/2018
 ms.author: mathoma
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 30c7d525f821b828dcc4c389c32a27123b79a56b
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91360922"
 ---
 # <a name="tutorial-configure-a-sql-server-availability-group-on-azure-virtual-machines-manually"></a>Oktatóanyag: SQL Server rendelkezésre állási csoport konfigurálása az Azure Virtual Machines-on manuálisan
@@ -301,7 +301,7 @@ Most már készen áll a rendelkezésre állási csoport konfigurálására a k�
 
    ![Új rendelkezésre állási csoport varázsló, replikák megadása](./media/availability-group-manually-configure-tutorial/62-newagaddreplica.png)
 
-5. Megjelenik a **Kapcsolódás a kiszolgálóhoz** párbeszédpanel. Írja be a **kiszolgáló neve**mezőbe a második kiszolgáló nevét. Válassza a **Kapcsolódás** lehetőséget.
+5. Megjelenik a **Kapcsolódás a kiszolgálóhoz** párbeszédpanel. Írja be a **kiszolgáló neve**mezőbe a második kiszolgáló nevét. Kattintson a **Csatlakozás** gombra.
 
    A **replikák megadására** szolgáló lapon a második kiszolgáló jelenik meg a **rendelkezésre állási replikák**területen. Konfigurálja a replikákat az alábbiak szerint.
 
@@ -538,6 +538,6 @@ Az SQLCMD-kapcsolat automatikusan csatlakozik a SQL Server-példányhoz, amely a
 > Győződjön meg arról, hogy a megadott port meg van nyitva a tűzfalon mindkét SQL Server-kiszolgálón. Mindkét kiszolgálónak szüksége van egy bejövő szabályra a használt TCP-porthoz. További információ: [Tűzfalszabály hozzáadása vagy szerkesztése](https://technet.microsoft.com/library/cc753558.aspx).
 >
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Adjon hozzá egy IP-címet egy terheléselosztó számára egy második rendelkezésre állási csoport számára](availability-group-listener-powershell-configure.md#Add-IP).

@@ -8,10 +8,10 @@ ms.date: 03/19/2020
 ms.author: brendm
 ms.custom: devx-track-java
 ms.openlocfilehash: 5892fd732a1e66b2b7dd4c1031cabfcbcc768c6d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91326150"
 ---
 # <a name="map-an-existing-custom-domain-to-azure-spring-cloud"></a>Meglévő egyéni tartomány leképezése az Azure Spring Cloud-ra
@@ -38,7 +38,7 @@ A tanúsítvány feltöltése a Key vaultba:
 1. A **tanúsítvány létrehozása** párbeszédpanel **tanúsítvány létrehozása módjában**válassza a lehetőséget `Import` .
 1. A **tanúsítványfájl feltöltése**területen navigáljon a tanúsítvány helyére, és jelölje ki.
 1. A **jelszó**területen adja meg a tanúsítvány titkos kulcsát.
-1. Kattintson a **Létrehozás** lehetőségre.
+1. Kattintson a **Létrehozás** elemre.
 
     ![1. tanúsítvány importálása](./media/custom-dns-tutorial/import-certificate-a.png)
 
@@ -50,7 +50,7 @@ Azure Spring Cloud-hozzáférés biztosítása a Key vaulthoz a tanúsítvány i
 
 | Titkos engedély | Tanúsítvány engedélye | Rendszerbiztonsági tag kiválasztása |
 |--|--|--|
-| Beolvasás, Listázás | Beolvasás, Listázás | Azure Spring Cloud domain – felügyelet |
+| Beolvasás, Listázás | Beolvasás, Listázás | Azure Spring Cloud Domain-Management |
 
 ![2. tanúsítvány importálása](./media/custom-dns-tutorial/import-certificate-b.png)
 

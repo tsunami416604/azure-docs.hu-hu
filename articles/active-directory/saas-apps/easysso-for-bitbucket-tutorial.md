@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 05/18/2020
 ms.author: jeedes
 ms.openlocfilehash: bd15798e9b642f3abc617c0fa224c530d90b5dd6
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88555564"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-easysso-for-bitbucket"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció az EasySSO for BitBucket
@@ -76,7 +76,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
 1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon válassza az **ALAPszintű SAML-konfigurációhoz** tartozó ceruza ikont a beállítások szerkesztéséhez.
 
-   ![Képernyőfelvétel: egyszeri bejelentkezés beállítása SAML-oldallal – kiemelve a ceruza ikonnal](common/edit-urls.png)
+   ![Képernyőfelvétel az egyszeri Sign-On az SAML-oldallal való beállításáról, a ceruza ikon kiemelve](common/edit-urls.png)
 
 1. Az **alapszintű SAML-konfiguráció** szakaszban, ha az alkalmazást **identitásszolgáltató** kezdeményezett módban szeretné konfigurálni, adja meg a következő mezők értékeit:
 
@@ -97,7 +97,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. A BitBucket alkalmazás EasySSO Emellett néhány további attribútumot is vár az SAML-válaszban. A következő táblázat ezeket mutatja be. Ezek az attribútumok előre fel vannak töltve, de a követelmények szerint áttekinthetők.
     
-    | Name | Forrás attribútum|
+    | Név | Forrás attribútum|
     | ---------------| --------- |
     | urn: OID: 0.9.2342.19200300.100.1.1 | User. userPrincipalName |
     | urn: OID: 0.9.2342.19200300.100.1.3 | User. mail |

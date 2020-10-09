@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: wanl
 ms.openlocfilehash: 55482457058d01162116494b637661db40010a50
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85132008"
 ---
 # <a name="resource-logs-for-azure-signalr-service"></a>Az Azure Signaler szolgáltatás erőforrás-naplói
@@ -68,7 +68,7 @@ Az Archive log JSON-karakterláncok az alábbi táblázatokban felsorolt elemeke
 
 **Formátum**
 
-Name | Description
+Név | Leírás
 ------- | -------
 time | Napló eseményének időpontja
 szint | Naplózási esemény szintje
@@ -81,10 +81,10 @@ properties | A naplózási eseményhez kapcsolódó részletes tulajdonságok. T
 
 **Tulajdonságok tábla**
 
-Name | Description
+Név | Leírás
 ------- | -------
 típus | A naplózási esemény típusa Jelenleg az Azure Signaler szolgáltatással való kapcsolattal kapcsolatos információkat biztosítunk. Csak `ConnectivityLogs` a típus érhető el
-gyűjtemény | A naplózási esemény gyűjteménye. Az engedélyezett értékek a következők: `Connection` , `Authorization` és`Throttling`
+gyűjtemény | A naplózási esemény gyűjteménye. Az engedélyezett értékek a következők: `Connection` , `Authorization` és `Throttling`
 connectionId | A kapcsolatok identitása
 transportType | A kapcsolatok átvitelének típusa. Az engedélyezett értékek a következők: `Websockets` \| `ServerSentEvents` \|`LongPolling`
 connectionType | A hálózat típusa. Az engedélyezett értékek a következők: `Server` \| `Client` . `Server`: a kiszolgáló oldaláról történő kapcsolatfelvétel; `Client`: Kapcsolatfelvétel az ügyfél oldaláról
@@ -128,10 +128,10 @@ Az erőforrás-naplók megtekintéséhez kövesse az alábbi lépéseket:
 
 Az archiválási napló oszlopai a következő táblázatban felsorolt elemeket tartalmazzák:
 
-Name | Description
+Név | Leírás
 ------- | ------- 
 TimeGenerated | Napló eseményének időpontja
-Gyűjtemény | A naplózási esemény gyűjteménye. Az engedélyezett értékek a következők: `Connection` , `Authorization` és`Throttling`
+Gyűjtemény | A naplózási esemény gyűjteménye. Az engedélyezett értékek a következők: `Connection` , `Authorization` és `Throttling`
 OperationName | Az esemény műveleti neve
 Hely | Az Azure Signaler szolgáltatás helye
 Szint | Naplózási esemény szintje
@@ -162,7 +162,7 @@ A és a közötti különbség a `ConnectionAborted` `ConnectionEnded` `Connecti
 
 A megszakítás okai a következő táblázatban láthatók:
 
-Ok | Description
+Ok | Leírás
 ------- | ------- 
 A kapcsolatok száma eléri a korlátot | A kapcsolatok száma eléri a jelenlegi árszint korlátját. A szolgáltatási egység vertikális felskálázása
 Az alkalmazáskiszolgáló lezárta a kapcsolatokat | Az App Server elindítja az abortuszt. A várt abortusznak számít

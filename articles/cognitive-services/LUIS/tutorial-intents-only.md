@@ -6,10 +6,10 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 05/05/2020
 ms.openlocfilehash: c4a564834166686e8280f1117269742b489fc62c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91334752"
 ---
 # <a name="tutorial-build-a-luis-app-to-determine-user-intentions"></a>Oktatóanyag: LUIS-alkalmazás létrehozása a felhasználói szándékok meghatározásához
@@ -34,7 +34,7 @@ Az alkalmazás célja a társalgási, természetes nyelvű szöveg szándékána
 
 Ezek különféle **szándékokként** vannak csoportosítva.
 
-|Szándék|Rendeltetés|
+|Szándék|Cél|
 |--|--|
 |`ModifyOrder`|Határozza meg a felhasználó pizzájának sorrendjét.|
 |`Greeting`|Kezdje el a bot-beszélgetést.|
@@ -196,7 +196,7 @@ Miután a LUIS visszaadja a JSON-választ, a LUIS nem foglalkozik tovább a kér
 * [Azure-robot](https://docs.microsoft.com/azure/bot-service/?view=azure-bot-service-4.0)
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Felbomló entitás hozzáadása az alkalmazáshoz](tutorial-machine-learned-entity.md)

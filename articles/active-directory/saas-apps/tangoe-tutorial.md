@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/10/2019
 ms.author: jeedes
 ms.openlocfilehash: 4e28ac5180a58dbcb2c24f40dab3b73cbeb31a4a
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88546605"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-tangoe-command-premium-mobile"></a>Oktatóanyag: Azure Active Directory integráció a Tango Command Premium Mobile szolgáltatással
@@ -73,7 +73,7 @@ Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a Tango
 Az Azure AD egyszeri bejelentkezés a Tango Command Premium Mobile használatával történő konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
 
 1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. A **[Tango Premium Mobile egyszeri bejelentkezés beállítása](#configure-tangoe-command-premium-mobile-single-sign-on)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+2. A **[Tango Premium Mobile egyszeri bejelentkezés konfigurálásával](#configure-tangoe-command-premium-mobile-single-sign-on)** konfigurálhatja az egyes Sign-On beállításokat az alkalmazás oldalán.
 3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
 4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
 5. **[Hozzon létre egy prémium szintű mobil tesztet használó Tango-paranccsal](#create-tangoe-command-premium-mobile-test-user)** , hogy a Britta Simon a Tangos Command Premium Mobile-ban, amely a felhasználó Azure ad-képviseletéhez van társítva.
@@ -93,7 +93,7 @@ Az Azure AD egyszeri bejelentkezés a Tango Command Premium Mobile használatáv
 
     ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
+3. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
@@ -108,7 +108,7 @@ Az Azure AD egyszeri bejelentkezés a Tango Command Premium Mobile használatáv
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel és a válasz URL-címével. Az értékek beszerzéséhez forduljon a [prémium szintű Mobile Client ügyfélszolgálati csapatához](https://www.tangoe.com/contact-us/) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-5. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
+5. Az **egyszeres Sign-On beállítása SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozása](common/metadataxml.png)
 
@@ -122,7 +122,7 @@ Az Azure AD egyszeri bejelentkezés a Tango Command Premium Mobile használatáv
 
     c. Kijelentkezési URL-cím
 
-### <a name="configure-tangoe-command-premium-mobile-single-sign-on"></a>A Tango Premium Mobile egyszeri bejelentkezés konfigurálása
+### <a name="configure-tangoe-command-premium-mobile-single-sign-on"></a>A Tango Premium Mobile Single Sign-On konfigurálása
 
 Az egyszeri bejelentkezés a **Tango Command Premium Mobile** oldalon való konfigurálásához el kell küldenie a letöltött **összevonási METAADATOKat tartalmazó XML** -fájlt és a megfelelő másolt URL-címeket Azure Portalról a [prémium szintű mobil támogatási csapatnak](https://www.tangoe.com/contact-us/). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
 
@@ -148,7 +148,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    d. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

@@ -7,10 +7,10 @@ ms.subservice: language-understanding
 ms.topic: tutorial
 ms.date: 07/02/2020
 ms.openlocfilehash: b8f8fa2cd3c9c22187bb95c55d9de2abb2e8caec
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91324637"
 ---
 # <a name="tutorial-fix-unsure-predictions-by-reviewing-endpoint-utterances"></a>Oktatóanyag: a nem biztos előrejelzések kijavítása a végpontok hosszúságú kimondott szöveg áttekintésével
@@ -84,7 +84,7 @@ Tekintse át a végpont hosszúságú kimondott szöveg a megfelelően igazítot
 
 1. A portál **Létrehozás** szakaszában válassza a bal oldali navigációs sávon a **végpont hosszúságú kimondott szöveg áttekintése** elemet. A lista az **ApplyForJob** szándék szerint van szűrve.
 
-    :::image type="content" source="./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-entity-view.png" alt-text="A bal oldali navigációs sávon a végpontok hosszúságú kimondott szöveg áttekintése gomb képernyőképe.":::
+    :::image type="content" source="./media/luis-tutorial-review-endpoint-utterances/review-endpoint-utterances-with-entity-view.png" alt-text="Váltás a verziók lapról a szándékok lapra.":::
 
     Ez a Kimondás `I'm looking for a job with Natural Language Processing` nem a megfelelő szándékú, _GetJobInformation_. A két szándékban a feladatok neveinek és műveleteinek hasonlósága miatt _ApplyForJob_ .
 
@@ -222,7 +222,7 @@ Néhány végponti kimondott szöveg magas előrejelzési pontszámmal szerepel 
 
 [!INCLUDE [LUIS How to clean up resources](../../../includes/cognitive-services-luis-tutorial-how-to-clean-up-resources.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az oktatóanyag során áttekintette a LUIS számára ismeretlen végponton elküldött kimondott szöveget. Miután ezek a kimondott szövegek ellenőrizve lettek, és át lettek helyezve a megfelelő szándékhoz kimondott példaszövegként, a LUIS javítja az előrejelzés pontosságát.
 

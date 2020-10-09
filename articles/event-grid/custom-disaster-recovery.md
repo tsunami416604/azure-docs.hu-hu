@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 07/07/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: e37cb6a0679ee2e249de4ed8fa31c40d5082ea4a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91324127"
 ---
 # <a name="build-your-own-disaster-recovery-for-custom-topics-in-event-grid"></a>Hozzon létre saját vész-helyreállítást a Event Grid egyéni témaköreihez
@@ -204,7 +204,7 @@ A mintát többféleképpen is kiterjesztheti igényei alapján. Nagy mennyiség
 
 Hasonlóképpen érdemes lehet megvalósítani a feladat-visszavétel logikáját az adott igények alapján. Ha a legközelebbi adatközpontba való közzététel kritikus fontosságú a késés csökkentése érdekében, rendszeres időközönként lekérdezheti egy olyan témakör Health API-ját, amely feladatátvételt végez. Ha ismét Kifogástalan állapotba kerül, biztos lehet benne, hogy a szorosabb adatközpontba történő feladat-visszavétel biztonságos.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ismerje meg, hogyan [fogadhat eseményeket egy http-végponton](./receive-events.md)
 - Ismerje meg, hogyan [irányíthatja az eseményeket hibrid kapcsolatok](./custom-event-to-hybrid-connection.md)

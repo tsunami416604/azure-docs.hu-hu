@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.openlocfilehash: 0454ffc1ed68056b2aedc10a6e904a9a934ab223
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91333494"
 ---
 # <a name="tutorial-configure-zscaler-zscloud-for-automatic-user-provisioning"></a>Oktatóanyag: a Zscaler-ZSCloud konfigurálása a felhasználók automatikus kiépítési felállításához
@@ -102,7 +102,7 @@ Ez a szakasz végigvezeti az Azure AD-kiépítési szolgáltatás konfigurálás
 
     ![SAML-ablak konfigurálása](./media/zscaler-zscloud-provisioning-tutorial/secrettoken2.png)
 
-    Jelölje be az **scim létesítésének engedélyezése** jelölőnégyzetet, és másolja ki az **alap URL-címet** és a **tulajdonosi jogkivonatot**, majd mentse a beállításokat. A Azure Portal illessze be az **alap URL-címet** a **bérlői URL-cím** mezőbe és a **tulajdonos** tokenjét a **titkos jogkivonat** mezőbe.
+    Válassza az **SCIM-Based kiépítés engedélyezése** lehetőséget, és másolja ki az **alap URL-címet** és a **tulajdonosi jogkivonatot**, majd mentse a beállításokat. A Azure Portal illessze be az **alap URL-címet** a **bérlői URL-cím** mezőbe és a **tulajdonos** tokenjét a **titkos jogkivonat** mezőbe.
 
 7. A **bérlői URL-cím** és a **titkos jogkivonat** mezőiben szereplő értékek megadása után válassza a **kapcsolat tesztelése** lehetőséget, hogy az Azure ad képes legyen csatlakozni a Zscaler-ZSCloud. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a Zscaler ZSCloud-fiókja rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
 

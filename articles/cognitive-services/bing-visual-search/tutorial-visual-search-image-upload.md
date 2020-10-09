@@ -12,10 +12,10 @@ ms.date: 03/31/2020
 ms.author: scottwhi
 ms.custom: devx-track-js
 ms.openlocfilehash: d5dc762499342f0004073fb6c240c98c4ac2bc09
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91334565"
 ---
 # <a name="tutorial-upload-images-to-the-bing-visual-search-api"></a>Oktatóanyag: lemezképek feltöltése a Bing Visual Search APIba
@@ -771,7 +771,7 @@ Adja hozzá a következő `<style>` szakaszt a `<head>` címkéhez a weblap elre
         </style>
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 >[!div class="nextstepaction"]
 > [Oktatóanyag: hasonló rendszerképek keresése az előző keresésekben a ImageInsightsToken használatával](./tutorial-visual-search-insights-token.md)

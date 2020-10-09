@@ -12,10 +12,10 @@ ms.date: 03/27/2020
 ms.author: aahi
 ms.custom: devx-track-js
 ms.openlocfilehash: 28f7d279d1328ff750bf7095f32fbf3ff65e591b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91324522"
 ---
 # <a name="tutorial-create-a-visual-search-single-page-web-app"></a>Oktatóanyag: Visual Search egyoldalas Webalkalmazás létrehozása
@@ -121,7 +121,7 @@ Adja hozzá a következő HTML-kódot a 601. sorban. Ez a jelölő kód egy elem
 
 A rendelkezésre álló új JavaScript-kódok és HTML-elemek segítségével a keresési eredmények egy **hasonló keresése** hivatkozással jelennek meg. Kattintson a hivatkozásra a kiválasztott képhez hasonló képeket tartalmazó **Hasonló** szakasz feltöltéséhez. Lehetséges, hogy ki kell bontania a **Hasonló** szakaszt a képek megjelenítéséhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Oktatóanyag: kép körülvágása a C Bing Visual Search SDK-val #](tutorial-visual-search-crop-area-results.md)

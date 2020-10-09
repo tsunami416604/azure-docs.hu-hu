@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/23/2020
 ms.openlocfilehash: adcdafbc07fa0a8cc6970ab227b52aee798b084f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "76776234"
 ---
 # <a name="scenario-cluster-creation-fails-with-domainnotfound-error-in-azure-hdinsight"></a>Forgatókönyv: a fürt létrehozása DomainNotFound hibával meghiúsul az Azure HDInsight
@@ -26,7 +26,7 @@ A HDI Secure (Enterprise Security Package) fürt létrehozása nem sikerül, `Do
 
 Helytelen DNS-beállítások.
 
-## <a name="resolution"></a>Megoldás:
+## <a name="resolution"></a>Feloldás
 
 A tartományhoz csatlakoztatott fürtök telepítésekor a HDI létrehoz egy belső felhasználónevet és egy jelszót a HRE DS-ben (minden fürthöz), és az összes fürtcsomópont ehhez a tartományhoz csatlakozik. A tartományhoz való csatlakozás a Samba-eszközök használatával valósítható meg. Győződjön meg arról, hogy teljesülnek az alábbi előfeltételek:
 

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/01/2019
 ms.author: jeedes
 ms.openlocfilehash: 522de4f3e9d82be91290fef7ea900998cb4d1d8f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88555042"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-firmplay---employee-advocacy-for-recruiting"></a>Oktatóanyag: Azure Active Directory integráció a FirmPlay-vel – alkalmazottak érdekképviselete a toborzáshoz
@@ -73,7 +73,7 @@ Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a FirmP
 Az Azure AD egyszeri bejelentkezés konfigurálásához és teszteléséhez a FirmPlay-alkalmazottak érdekképviseleti szolgálatában a következő építőelemeket kell végrehajtania:
 
 1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. **[FirmPlay konfigurálása – alkalmazottak érdekképviselete az egyszeri](#configure-firmplay---employee-advocacy-for-recruiting-single-sign-on)** bejelentkezéshez – az alkalmazás oldalán az egyszeri bejelentkezés beállításainak konfigurálása.
+2. **[FirmPlay konfigurálása – az egyszeri bejelentkezés toborzása](#configure-firmplay---employee-advocacy-for-recruiting-single-sign-on)** – az alkalmazás oldalának Sign-On beállításainak konfigurálása.
 3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
 4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
 5. **[FirmPlay létrehozása – alkalmazotti érdekképviselet a tesztelési felhasználó toborzásához](#create-firmplay---employee-advocacy-for-recruiting-test-user)** – a Britta Simon-hez tartozó, a FirmPlay-munkatársak érdekképviselete a felhasználók Azure ad-képviseletéhez kapcsolódó toborzáshoz.
@@ -93,7 +93,7 @@ Az Azure AD egyszeri bejelentkezésének és a FirmPlay-alkalmazottak Érdekkép
 
     ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
+3. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
@@ -104,9 +104,9 @@ Az Azure AD egyszeri bejelentkezésének és a FirmPlay-alkalmazottak Érdekkép
     A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:  `https://<your-subdomain>.firmplay.com/`
 
     > [!NOTE]
-    > Az érték nem valódi. Frissítse az értéket a tényleges bejelentkezési URL-címmel. Vegye fel a kapcsolatot a [FirmPlay – alkalmazottak érdekképviselete az ügyfél-támogatási csoport toborzásához](mailto:engineering@firmplay.com) az érték beszerzéséhez. Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
+    > Az érték nem valódi. Frissítse az értéket a tényleges Sign-On URL-címmel. Vegye fel a kapcsolatot a [FirmPlay – alkalmazottak érdekképviselete az ügyfél-támogatási csoport toborzásához](mailto:engineering@firmplay.com) az érték beszerzéséhez. Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-5. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállítások alapján, és mentse a számítógépre.
+5. Az **egyszeres Sign-On beállítása az SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállítások alapján, és mentse azt a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozása](common/certificatebase64.png)
 
@@ -120,7 +120,7 @@ Az Azure AD egyszeri bejelentkezésének és a FirmPlay-alkalmazottak Érdekkép
 
     c. Kijelentkezési URL-cím
 
-### <a name="configure-firmplay---employee-advocacy-for-recruiting-single-sign-on"></a>FirmPlay konfigurálása – alkalmazottak érdekképviselete az egyszeri bejelentkezés toborzásához
+### <a name="configure-firmplay---employee-advocacy-for-recruiting-single-sign-on"></a>FirmPlay konfigurálása – alkalmazottak érdekképviselete egyetlen Sign-On felvételéhez
 
 Ha egyszeri bejelentkezést szeretne beállítani a **FirmPlay – alkalmazottak érdekképviselete a toborzáshoz** , el kell küldenie a letöltött **tanúsítványt (Base64)** és a megfelelő másolt url-címeket a Azure Portal [FirmPlay – a támogatási csapat toborzásához](mailto:engineering@firmplay.com). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
 
@@ -146,7 +146,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    d. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

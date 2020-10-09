@@ -7,10 +7,10 @@ ms.topic: tutorial
 ms.date: 06/23/2020
 ms.custom: devx-track-js
 ms.openlocfilehash: d6ef0b0d437674d78064e6c5c5a91e1b2b89074a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91324671"
 ---
 # <a name="tutorial-use-a-web-app-bot-enabled-with-language-understanding-in-nodejs"></a>Oktatóanyag: Language Understanding használatával engedélyezett webalkalmazás-robot használata Node.js
@@ -77,7 +77,7 @@ A bot Service létrehozási folyamata egy új LUIS-alkalmazást is létrehoz a s
 |Repülőjegy|`Travel to Paris`|
 |Mégse|`bye`|
 |GetWeather|`what's the weather like?`|
-|Nincsenek|Az app tartományán kívül bármi.|
+|Nincs|Az app tartományán kívül bármi.|
 
 ## <a name="test-the-bot-in-web-chat"></a>A robot tesztelése a webes csevegésben
 
@@ -390,7 +390,7 @@ Kérdezze meg a robotot a könyv repülési szándékáról.
 
 [!INCLUDE [Bot Information](../../../includes/cognitive-services-qnamaker-luis-bot-info.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További [mintákat](https://github.com/microsoft/botframework-solutions) tekinthet meg a társalgási robotokkal.
 

@@ -11,10 +11,10 @@ ms.date: 05/06/2020
 ms.author: mbaldwin
 ms.custom: devx-track-csharp
 ms.openlocfilehash: e537bb74655bce5c8438e22fb9b990b72eab73d7
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91336683"
 ---
 # <a name="tutorial-use-a-managed-identity-to-connect-key-vault-to-an-azure-web-app-with-net"></a>Oktatóanyag: felügyelt identitás használata a Key Vault Azure-webalkalmazáshoz való összekapcsolásához a .NET használatával
@@ -31,7 +31,7 @@ Az oktatóanyag elvégzéséhez:
 * A [.net Core 3,1 SDK vagy újabb verzió](https://dotnet.microsoft.com/download/dotnet-core/3.1).
 * [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) vagy [Azure PowerShell](/powershell/azure/)
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Az erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. Hozzon létre egy erőforráscsoportot, amely a Key vaultot és a webalkalmazást is felkészíti az az [Group Create](/cli/azure/group?view=azure-cli-latest#az-group-create) paranccsal:
 
@@ -81,7 +81,7 @@ dotnet run
 
 Nyisson meg egy webböngészőt, majd keresse fel az alkalmazást a következő címen: `http://localhost:5000`.
 
-Ekkor megjelenik a **"Helló világ!" alkalmazás** üzenet az oldalon megjelenő minta alkalmazásból.
+Ekkor megjelenik a **„Helló világ!” alkalmazás** üzenet az oldalon megjelenő minta alkalmazásból.
 
 ### <a name="initialize-the-git-repository"></a>A git-Tárház inicializálása
 
@@ -229,7 +229,7 @@ Tallózással keresse meg (vagy frissítse) a központilag telepített alkalmaz�
 http://<your-webapp-name>.azurewebsites.net
 ```
 
-Megjelenik a ""Helló világ!"alkalmazás!" a meglátogatás során korábban megjelenő üzenet `http://localhost:5000` .
+Megjelenik a "„Helló világ!” alkalmazás!" a meglátogatás során korábban megjelenő üzenet `http://localhost:5000` .
 
 ## <a name="create-and-assign-a-managed-identity"></a>Felügyelt identitás létrehozása és társítása
 
@@ -323,9 +323,9 @@ git push azure master
 http://<your-webapp-name>.azurewebsites.net
 ```
 
-A **"Helló világ!" alkalmazás**megkezdése előtt látnia kell a titkos kulcs értékét: **sikeres!**
+A **„Helló világ!” alkalmazás**megkezdése előtt látnia kell a titkos kulcs értékét: **sikeres!**
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ az [Azure-erőforrások felügyelt identitásáról](../../active-directory/managed-identities-azure-resources/overview.md)
 - További információ a [app Service felügyelt identitásáról](../../app-service/overview-managed-identity.md?tabs=dotnet)

@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 12/4/2019
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: 22ff95fe5261a839927aa6ad8123ba370710f178
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91323090"
 ---
 # <a name="tutorial-manage-sap-hana-databases-in-an-azure-vm-using-azure-cli"></a>Oktatóanyag: SAP HANA-adatbázisok kezelése Azure-beli virtuális gépen az Azure CLI használatával
@@ -196,7 +196,7 @@ b2a7f108-1020-4529-870f-6c4c43e2bb9e  saphanaResourceGroup
 
 A művelet állapotának megtekintéséhez használja az az [Backup Job show](/cli/azure/backup/job#az-backup-job-show) parancsmagot.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Az Azure-beli virtuális gépen futó SAP HANA adatbázisok biztonsági mentéséről a Azure Portal használatával a [biztonsági mentés SAP HANA-adatbázisok Azure virtuális gépeken](./backup-azure-sap-hana-database.md) című témakörben olvashat.
 

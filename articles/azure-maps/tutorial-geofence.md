@@ -10,10 +10,10 @@ services: azure-maps
 manager: philmea
 ms.custom: mvc
 ms.openlocfilehash: 7a0c39b6d2369a1279fee3905083f0660a4aabb8
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91335194"
 ---
 # <a name="tutorial-set-up-a-geofence-by-using-azure-maps"></a>Oktatóanyag: Geokerítés beállítása az Azure Maps használatával
@@ -209,19 +209,19 @@ Ezután két [logikai alkalmazás](https://docs.microsoft.com/azure/event-grid/h
 
 7. Válasszon ki egy trigger típust. Görgessen le a **Start with a Common trigger** szakaszhoz. Válassza ki **a HTTP-kérelem fogadásának időpontját**.
 
-     :::image type="content" source="./media/tutorial-geofence/logic-app-trigger.png" alt-text="Képernyőkép a logikai alkalmazás HTTP-triggerének létrehozásáról.":::
+     :::image type="content" source="./media/tutorial-geofence/logic-app-trigger.png" alt-text="Képernyőkép a logikai alkalmazás létrehozásáról.":::
 
 8. A Logic app Designer jobb felső sarkában válassza a **Mentés**lehetőséget. A **http post URL-cím** automatikusan létrejön. Mentse az URL-címet. Egy esemény-végpont létrehozásához a következő szakaszban szüksége lesz rá.
 
-    :::image type="content" source="./media/tutorial-geofence/logic-app-httprequest.png" alt-text="Képernyőkép a Logic app HTTP-kérelem URL-címéről és a JSON-ról.":::
+    :::image type="content" source="./media/tutorial-geofence/logic-app-httprequest.png" alt-text="Képernyőkép a logikai alkalmazás létrehozásáról.":::
 
 9. Válassza az **+ új lépés**lehetőséget. Most válasszon egy műveletet. Írja be `outlook.com email` a keresőmezőbe a kifejezést. A **műveletek** listában görgessen le, és válassza az **E-mail küldése (v2)** lehetőséget.
   
-    :::image type="content" source="./media/tutorial-geofence/logic-app-designer.png" alt-text="Képernyőkép a Logic app Designer létrehozásáról.":::
+    :::image type="content" source="./media/tutorial-geofence/logic-app-designer.png" alt-text="Képernyőkép a logikai alkalmazás létrehozásáról.":::
 
 10. Jelentkezzen be az Outlook-fiókjába. Ügyeljen arra, hogy az **Igen** lehetőség kiválasztásával engedélyezze a logikai alkalmazás számára a fiók elérését. Adja meg az e-mailek küldésére szolgáló mezőket.
 
-    :::image type="content" source="./media/tutorial-geofence/logic-app-email.png" alt-text="Képernyőkép a logikai alkalmazás e-mail-küldési lépésének létrehozásáról.":::
+    :::image type="content" source="./media/tutorial-geofence/logic-app-email.png" alt-text="Képernyőkép a logikai alkalmazás létrehozásáról.":::
 
     >[!TIP]
     > Az `geometryId` `deviceId` e-mail-értesítésekben a GeoJSON (például vagy) kérhető le. A Logic Apps konfigurálható úgy, hogy beolvassa a Event Grid által eljuttatott fájlokat. Az események e-mail-értesítésekbe való felhasználása és a Logic Apps konfigurálásával kapcsolatos információkért lásd [: oktatóanyag: e-mail-értesítések küldése az Azure IoT hub eseményekről Event Grid és Logic Apps használatával](https://docs.microsoft.com/azure/event-grid/publish-iot-hub-events-to-logic-apps).
@@ -238,11 +238,11 @@ A következő lépések bemutatják, hogyan hozhat létre esemény-előfizetést
 
 1. Nyissa meg Azure Maps-fiókját. Az irányítópulton válassza az **előfizetések**lehetőséget. Válassza ki az előfizetés nevét, majd válassza az **események** lehetőséget a beállítások menüből.
 
-    :::image type="content" source="./media/tutorial-geofence/events-tab.png" alt-text="Képernyőkép a Azure Maps-fiók eseményeiről.":::
+    :::image type="content" source="./media/tutorial-geofence/events-tab.png" alt-text="Képernyőkép a logikai alkalmazás létrehozásáról.":::
 
 2. Esemény-előfizetés létrehozásához válassza az események lap **+ esemény előfizetése** elemét.
 
-    :::image type="content" source="./media/tutorial-geofence/create-event-subscription.png" alt-text="Képernyőkép Azure Maps esemény-előfizetés létrehozásáról.":::
+    :::image type="content" source="./media/tutorial-geofence/create-event-subscription.png" alt-text="Képernyőkép a logikai alkalmazás létrehozásáról.":::
 
 3. Az **esemény-előfizetés létrehozása** lapon adja meg a következő értékeket:
     * Az esemény-előfizetés **neve** .
@@ -252,7 +252,7 @@ A következő lépések bemutatják, hogyan hozhat létre esemény-előfizetést
     * A **végpont típusa**beállításnál válassza a lehetőséget `Web Hook` .
     * A **végpont**esetében másolja a logikai alkalmazáshoz az előző szakaszban létrehozott végponthoz tartozó http-post URL-címet. Ha elfelejtette menteni, visszatérhet a Logic app Designerbe, és átmásolhatja a HTTP-trigger lépésből.
 
-    :::image type="content" source="./media/tutorial-geofence/events-subscription.png" alt-text="Képernyőkép a Azure Maps Events-előfizetés részleteiről.":::
+    :::image type="content" source="./media/tutorial-geofence/events-subscription.png" alt-text="Képernyőkép a logikai alkalmazás létrehozásáról.":::
 
 4. Kattintson a **Létrehozás** gombra.
 
@@ -472,7 +472,7 @@ Az előző GeoJSON-válaszban a berendezés kilépett a fő hely geokerítésen.
 
 Az [e-mailes értesítéseket Event Grid és Logic apps is elküldheti](https://docs.microsoft.com/azure/event-grid/publish-iot-hub-events-to-logic-apps) , és a Event Grid a Azure Maps használatával megtekintheti [a támogatott események kezelőit](https://docs.microsoft.com/azure/event-grid/event-handlers) .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Tartalomtípusok kezelése Azure Logic Appsban](https://docs.microsoft.com/azure/logic-apps/logic-apps-content-type)

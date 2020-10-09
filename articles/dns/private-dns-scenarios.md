@@ -8,13 +8,13 @@ ms.topic: article
 ms.date: 10/05/2019
 ms.author: rohink
 ms.openlocfilehash: ab850adb2e9a25778d5f44ba711eb0762fe562c8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "76939343"
 ---
-# <a name="azure-dns-private-zones-scenarios"></a>Azure DNS privát zónák forgatókönyvei
+# <a name="azure-dns-private-zones-scenarios"></a>Az Azure DNS privát zónák forgatókönyvei
 
 Azure DNS Private Zones a névfeloldást a virtuális hálózaton belül, valamint a virtuális hálózatok között. Ebben a cikkben megvizsgáljuk azokat a gyakori forgatókönyveket, amelyeket a funkció használatával lehet megvalósítani.
 
@@ -37,7 +37,7 @@ Az alábbi ábrán a forgatókönyv egy egyszerű verziója látható, ahol csak
 
 ![Több virtuális hálózati megoldás](./media/private-dns-scenarios/multi-vnet-resolution.png)
 
-## <a name="scenario-split-horizon-functionality"></a>Forgatókönyv: felosztott horizontú funkció
+## <a name="scenario-split-horizon-functionality"></a>Forgatókönyv: Split-Horizon funkció
 
 Ebben a forgatókönyvben olyan használati esettel rendelkezik, amelyben eltérő DNS-feloldási viselkedést kíván megvalósítani attól függően, hogy az ügyfél hol ül (az Azure-ban vagy az interneten), ugyanarra a DNS-zónára. Előfordulhat például, hogy az alkalmazás olyan magán-és nyilvános verziója van, amely különböző funkciókkal vagy viselkedéssel rendelkezik, de mindkét verzióhoz ugyanazt a tartománynevet kívánja használni. Ez a forgatókönyv egy nyilvános DNS-zóna és egy azonos nevű privát zóna létrehozásával valósítható meg Azure DNS.
 

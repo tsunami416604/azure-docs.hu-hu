@@ -11,10 +11,10 @@ ms.topic: how-to
 ms.date: 08/12/2019
 ms.author: sudbalas
 ms.openlocfilehash: a1c07432dcf90759662e8f4aaedc760abd18157c
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88585933"
 ---
 # <a name="azure-key-vault-backup"></a>Azure Key Vault biztonsági mentés
@@ -84,7 +84,7 @@ Az ebben a szakaszban ismertetett lépéseket követve biztonsági másolatot k�
     ![Képernyőfelvétel: a biztonsági mentés visszaállításának helye a kulcstartóban.](../media/backup-4.png)
     
 5. Lépjen arra a helyre, ahol a titkosított blobot tárolta.
-6. Kattintson az **OK** gombra.
+6. Válassza az **OK** lehetőséget.
 
 ## <a name="back-up-and-restore-from-the-azure-cli"></a>Biztonsági mentés és visszaállítás az Azure CLI-vel
 

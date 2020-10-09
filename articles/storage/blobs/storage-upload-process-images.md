@@ -10,10 +10,10 @@ ms.author: mhopkins
 ms.reviewer: dineshm
 ms.custom: devx-track-js, devx-track-csharp
 ms.openlocfilehash: 7446e9391b39d068cef4cda2fea7817a63b6f99a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91323549"
 ---
 # <a name="tutorial-upload-image-data-in-the-cloud-with-azure-storage"></a>Oktatóanyag: képadatok feltöltése a felhőbe az Azure Storage szolgáltatással
@@ -49,7 +49,7 @@ Az oktatóanyag elvégzéséhez szüksége lesz egy Azure-előfizetésre. Mielő
 
 A parancssori felület helyi telepítéséhez és használatához futtassa az Azure CLI 2.0.4 vagy újabb verzióját. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, olvassa el [az Azure CLI telepítését](/cli/azure/install-azure-cli) ismertető cikket. 
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group) paranccsal. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat.  
 
@@ -276,7 +276,7 @@ public static async Task<bool> UploadFileToStorage(Stream fileStream, string fil
 
 Az előző feladatban használt osztályok és módszerek a következők:
 
-| Osztály | Metódus |
+| Osztály | Módszer |
 |-------|--------|
 | [URI](/dotnet/api/system.uri) | [URI-konstruktor](/dotnet/api/system.uri.-ctor) |
 | [StorageSharedKeyCredential](/dotnet/api/azure.storage.storagesharedkeycredential) | [StorageSharedKeyCredential (karakterlánc, karakterlánc) konstruktor](/dotnet/api/azure.storage.storagesharedkeycredential.-ctor) |
@@ -425,7 +425,7 @@ A sorozat második részében automatizálja a miniatűr képek létrehozását,
 
 Engedélyezheti Content Delivery Network (CDN) számára a tartalom gyorsítótárazását az Azure Storage-fiókból. További információ: [Azure Storage-fiók integrálása Azure CDNokkal](../../cdn/cdn-create-a-storage-account-with-cdn.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A sorozat első részében megtanulta, hogyan konfigurálhat egy webalkalmazást a tárterülettel való interakcióhoz.
 

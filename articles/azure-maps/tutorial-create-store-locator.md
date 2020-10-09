@@ -10,10 +10,10 @@ services: azure-maps
 manager: timlt
 ms.custom: mvc, devx-track-js
 ms.openlocfilehash: 9c2160a241243b59ca7adda99fe2100d416c55be
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91335262"
 ---
 # <a name="tutorial-create-a-store-locator-by-using-azure-maps"></a>Oktatóanyag: tároló-lokátor létrehozása Azure Maps használatával
@@ -78,7 +78,7 @@ Az alábbi észrevételeket követve megtekintheti az adatképernyőképet:
 
 * A helyadatok tárolása a **AddressLine**, a **város**, az **önkormányzat** (megye), a **AdminDivision** (állam/tartomány), az **Irányítószám** (postai kód) és az **ország** oszlopai alapján történik.  
 * A **szélesség** és **hosszúság** oszlop az egyes contoso Coffee Coffee Shop-helyek koordinátáit tartalmazza. Ha nem rendelkezik koordináta-információkkal, a Azure Maps keresési szolgáltatásaival meghatározhatja a hely koordinátáit.
-* Néhány további oszlop a kávézókkal kapcsolatos metaadatokat tartalmaz: egy telefonszámot, egy logikai oszlopot, valamint a nyitó és a záró időpontot 24 órás formátumban. A logikai oszlopok a Wi-Fi és a kerekesszékes hozzáférhetőség számára készültek. Létrehozhat saját oszlopokat is, amelyek a tartózkodási hely adataihoz kapcsolódó metaadatokat tartalmaznak.
+* Néhány további oszlop a kávézókkal kapcsolatos metaadatokat tartalmaz: egy telefonszámot, egy logikai oszlopot, valamint a nyitó és a záró időpontot 24 órás formátumban. A logikai oszlopok a Wi-Fi és a kerekesszékes kisegítő lehetőségek. Létrehozhat saját oszlopokat is, amelyek a tartózkodási hely adataihoz kapcsolódó metaadatokat tartalmaznak.
 
 > [!NOTE]
 > Azure Maps megjeleníti az adatokat a gömb Mercator-kivetítés "EPSG: 3857" elemben, de a WGS84 datumt használó "EPSG: 4325" adatokat olvas be.
@@ -936,7 +936,7 @@ Ebben az oktatóanyagban megtanulta, hogyan hozhat létre egy alapszintű tárol
 
 Megtekintheti a [teljes forráskódot](https://github.com/Azure-Samples/AzureMapsCodeSamples/tree/master/AzureMapsCodeSamples/Tutorials/Simple%20Store%20Locator), [megtekintheti az élő mintát](https://azuremapscodesamples.azurewebsites.net/index.html?sample=Simple%20Store%20Locator) , és további információkat tudhat meg a Azure Maps lefedettségéről és képességeiről a [nagyítási szintek és a csempék rácsának](zoom-levels-and-tile-grid.md)használatával. Az üzleti logikára [vonatkozó adatvezérelt stílusú kifejezéseket is használhat](data-driven-style-expressions-web-sdk.md) .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További példakódok és az interaktív kódolási felület bemutatása:
 

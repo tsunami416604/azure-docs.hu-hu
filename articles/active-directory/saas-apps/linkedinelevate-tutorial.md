@@ -15,7 +15,7 @@ ms.openlocfilehash: 5dcd705719510cce3a113c5b0fdc46d016313b6d
 ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91856409"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-linkedin-elevate"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a LinkedIn emelt szintű szolgáltatással
@@ -96,7 +96,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. A fentieken kívül a LinkedIn jogosultságszint-emelési alkalmazás néhány további attribútumot vár az SAML-válaszokban, amelyek alább láthatók. Ezek az attribútumok előre is fel vannak töltve, de a követelménynek megfelelően áttekintheti őket.
 
-    | Név | Forrás attribútum|
+    | Name (Név) | Forrás attribútum|
     | -------| -------------|
     | Részleg | felhasználó. részleg |
 

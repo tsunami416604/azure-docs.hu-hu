@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 643010ef1f6e941a57673a711e1871aafd1e341d
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91361908"
 ---
 # <a name="tutorial-configure-the-log-analytics-wizard"></a>Oktatóanyag: a log Analytics varázsló konfigurálása
@@ -268,7 +268,7 @@ Ez az eljárás bemutatja, hogyan küldhet riasztásokat a breakglass-fiók hasz
 
     3. Kattintson a **Felülvizsgálat + létrehozás** elemre. 
 
-    4. Kattintson a **Létrehozás** lehetőségre.
+    4. Kattintson a **Létrehozás** elemre.
 
 
 15. A **művelet testreszabása**területen hajtsa végre a következő lépéseket:
@@ -392,7 +392,7 @@ Ez az eljárás bemutatja, hogyan adhat hozzá egy lekérdezést egy meglévő m
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A következő cikkből megtudhatja, hogyan kezelheti az eszközök identitásait a Azure Portal használatával.
 > [!div class="nextstepaction"]

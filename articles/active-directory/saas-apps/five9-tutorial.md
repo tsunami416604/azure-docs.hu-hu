@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/04/2019
 ms.author: jeedes
 ms.openlocfilehash: 2ab03aecf8226662eeb03a5bb3f8adc85013375d
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88555059"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-five9-plus-adapter-cti-contact-center-agents"></a>Oktatóanyag: Azure Active Directory integráció a Five9 Plus adapterrel (CTI, Contact Center Agents)
@@ -73,7 +73,7 @@ Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a Five9
 Az Azure AD egyszeri bejelentkezés konfigurálásához és teszteléséhez a Five9 Plus adapterrel (CTI, Contact Center Agents) a következő építőelemeket kell végrehajtania:
 
 1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. **[Konfigurálja az Five9 Plus adaptert (CTI, Contact Center Agents) egyszeri bejelentkezés](#configure-five9-plus-adapter-cti-contact-center-agents-single-sign-on)** – az egyszeri bejelentkezés beállításainak konfigurálásához az alkalmazás oldalán.
+2. **[Konfigurálja az Five9 Plus adaptert (CTI, Contact Center Agents) egyszeri bejelentkezés](#configure-five9-plus-adapter-cti-contact-center-agents-single-sign-on)** – az alkalmazás oldalának egyetlen Sign-On beállításainak konfigurálásához.
 3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
 4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
 5. **[Five9 Plus-adapter (CTI, Contact Center-ügynökök) létrehozása – tesztelje a felhasználót](#create-five9-plus-adapter-cti-contact-center-agents-test-user)** – hogy a felhasználó Azure ad-Britta kapcsolódó Five9 és-adapter (CTI, Contact Center Agents) partnere legyen.
@@ -93,11 +93,11 @@ Az Azure AD egyszeri bejelentkezés Five9 Plus-adapterrel (CTI, Contact Center A
 
     ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
+3. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-4. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon hajtsa végre a következő lépéseket:
+4. Az **egyszeri Sign-On beállítása az SAML-vel** lapon hajtsa végre a következő lépéseket:
 
     ![Five9 Plus-adapter (CTI, Contact Center-ügynökök) tartomány és URL-címek egyszeri bejelentkezési adatai](common/idp-intiated.png)
 
@@ -117,7 +117,7 @@ Az Azure AD egyszeri bejelentkezés Five9 Plus-adapterrel (CTI, Contact Center A
     | A "Five9 Plus adapter for zendesk" kifejezésre | `https://app.five9.com/appsvcs/saml/SSO/alias/zd` |
     | "Az ügynök asztali eszközkészletének" Five9 Plus adapteréhez | `https://app.five9.com/appsvcs/saml/SSO/alias/adt` |
 
-6. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállítások alapján, és mentse a számítógépre.
+6. Az **egyszeres Sign-On beállítása az SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállítások alapján, és mentse azt a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozása](common/certificatebase64.png)
 
@@ -131,7 +131,7 @@ Az Azure AD egyszeri bejelentkezés Five9 Plus-adapterrel (CTI, Contact Center A
 
     c. Kijelentkezési URL-cím
 
-### <a name="configure-five9-plus-adapter-cti-contact-center-agents-single-sign-on"></a>Five9 plusz adapter (CTI, Contact Center-ügynökök) konfigurálása egyszeri bejelentkezéshez
+### <a name="configure-five9-plus-adapter-cti-contact-center-agents-single-sign-on"></a>Five9 plusz adapter (CTI, Contact Center Agents) konfigurálása egyetlen Sign-On
 
 1. Ha be szeretné állítani az egyszeri bejelentkezést a **Five9 Plus-adapteren (CTI, Contact Center-ügynökök)** , el kell küldenie a letöltött **tanúsítványt (Base64)** és a megfelelő másolt URL-t (ka) t a [Five9 Plus adapter (CTI, Contact Center Agents) támogatási csapatának](https://www.five9.com/about/contact). Emellett az SSO további konfigurálásához kövesse az alábbi lépéseket az adapternek megfelelően:
 
@@ -163,7 +163,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    d. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

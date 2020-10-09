@@ -9,10 +9,10 @@ ms.date: 05/08/2020
 ms.author: chnwamba
 ms.custom: devx-track-js
 ms.openlocfilehash: bc11dd6113bbf5b07e19b83735c83e4895e4a796
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91323596"
 ---
 # <a name="deploy-server-rendered-nuxtjs-websites-on-azure-static-web-apps-preview"></a>Kiszolgáló által megjelenített Nuxt.js webhelyek üzembe helyezése az Azure statikus Web Apps előzetes verziójában
@@ -62,7 +62,7 @@ Beállíthat egy új Nuxt.js projektet a használatával `create-nuxt-app` . Új
 
 Ha a keretrendszerre vagy a könyvtárra kattint, megjelenik a kijelölt elem részleteit tartalmazó oldal:
 
-:::image type="content" source="media/deploy-nuxtjs/start-nuxtjs-details.png" alt-text="Részletek lap":::
+:::image type="content" source="media/deploy-nuxtjs/start-nuxtjs-details.png" alt-text="Nuxt.js alkalmazás elindítása":::
 
 ## <a name="generate-a-static-website-from-nuxtjs-build"></a>Statikus webhely létrehozása Nuxt.js buildből
 
@@ -130,7 +130,7 @@ Az alábbi lépések bemutatják, hogyan lehet összekapcsolni a GitHubra lekül
 1. A *régió* legördülő menüben válassza ki az Önhöz legközelebb eső régiót.
 1. Válassza az **ingyenes** lehetőséget az SKU legördülő menüből.
 
-   :::image type="content" source="media/deploy-nuxtjs/create-static-web-app.png" alt-text="Statikus Webalkalmazás létrehozása":::
+   :::image type="content" source="media/deploy-nuxtjs/create-static-web-app.png" alt-text="Nuxt.js alkalmazás elindítása":::
 
 ### <a name="add-a-github-repository"></a>GitHub-adattár hozzáadása
 
@@ -141,7 +141,7 @@ Az új statikus Web Apps fióknak hozzá kell férnie a tárházhoz a Nuxt.js al
 1. Keresse meg és válassza ki a korábban létrehozott adattár nevét.
 1. Válassza a **főkiszolgáló** elemet a *ág* legördülő menüből.
 
-   :::image type="content" source="media/deploy-nuxtjs/connect-github.png" alt-text="A GitHub csatlakoztatása":::
+   :::image type="content" source="media/deploy-nuxtjs/connect-github.png" alt-text="Nuxt.js alkalmazás elindítása":::
 
 ### <a name="configure-the-build-process"></a>A létrehozási folyamat konfigurálása
 
@@ -149,7 +149,7 @@ Az Azure statikus Web Apps úgy lett felépítve, hogy automatikusan végezze el
 
 1. A statikus kimeneti mappa konfigurálásához kattintson a **build (létrehozás** ) lapra.
 
-      :::image type="content" source="media/deploy-nuxtjs/build-tab.png" alt-text="Build lap":::
+      :::image type="content" source="media/deploy-nuxtjs/build-tab.png" alt-text="Nuxt.js alkalmazás elindítása":::
 
 1. Írja be a **dist** értéket az alkalmazás-összetevők *helye* szövegmezőbe.
 
@@ -178,7 +178,7 @@ Térjen vissza a terminálhoz, és futtassa a következő parancsot `git pull or
 
 Navigáljon az újonnan telepített webhelyre, és kattintson az egyik keretrendszer vagy könyvtár emblémára. A Részletek lap beszerzése helyett egy 404-es hibaüzenet jelenik meg.
 
-:::image type="content" source="media/deploy-nuxtjs/404-in-production.png" alt-text="404 dinamikus útvonalakon":::
+:::image type="content" source="media/deploy-nuxtjs/404-in-production.png" alt-text="Nuxt.js alkalmazás elindítása":::
 
 Ennek az az oka, Nuxt.js a statikus helyet generálta, csak a kezdőlapon. A Nuxt.js minden lapozófájlhoz egyenértékű statikus fájlokat tud előállítani `.html` `.vue` , de kivétel történt. 
 
@@ -215,7 +215,7 @@ Ha az oldal egy dinamikus lap, például `_id.vue` nem rendelkezik elegendő inf
 
 2. Küldje le az új módosításokat a GitHub-tárházba, és várjon néhány percet, amíg a GitHub-műveletek újra felépítik a helyet. A Build befejezése után a 404-es hiba eltűnik.
 
-   :::image type="content" source="media/deploy-nuxtjs/404-in-production-fixed.png" alt-text="404 a dinamikus útvonalakon kijavítva":::
+   :::image type="content" source="media/deploy-nuxtjs/404-in-production-fixed.png" alt-text="Nuxt.js alkalmazás elindítása":::
 
 > [!div class="nextstepaction"]
 > [Egyéni tartomány beállítása](custom-domain.md)

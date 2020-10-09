@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/31/2018
 ms.author: jeedes
 ms.openlocfilehash: 45ad613fd250f905dd1cd5e14b5c8aeb42896a51
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88554643"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mobileiron"></a>Oktatóanyag: Azure Active Directory integráció a MobileIron
@@ -73,7 +73,7 @@ Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a Mobil
 Az Azure AD egyszeri bejelentkezés MobileIron való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
 
 1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. **[MobileIron egyszeri bejelentkezés konfigurálása](#configure-mobileiron-single-sign-on)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+2. **[MobileIron egyszeri bejelentkezés konfigurálása](#configure-mobileiron-single-sign-on)** – az egyes Sign-On beállítások konfigurálása az alkalmazás oldalán.
 3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
 4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
 5. **[Hozzon létre MobileIron-teszt felhasználót](#create-mobileiron-test-user)** – hogy a MobileIron Britta, a felhasználó Azure ad-képviseletéhez kapcsolódó partnerrel rendelkezzen.
@@ -93,7 +93,7 @@ Az Azure AD egyszeri bejelentkezés MobileIron való konfigurálásához hajtsa 
 
     ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
+3. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
@@ -112,27 +112,27 @@ Az Azure AD egyszeri bejelentkezés MobileIron való konfigurálásához hajtsa 
     A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:  `https://<host>.mobileiron.com/user/login.html`
 
     > [!NOTE]
-    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és a bejelentkezési URL-címmel. A kulcs és a gazdagép értékét a MobileIron felügyeleti portálján érheti el, amelyet később az oktatóanyagban talál.
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és Sign-On URL-címmel. A kulcs és a gazdagép értékét a MobileIron felügyeleti portálján érheti el, amelyet később az oktatóanyagban talál.
 
-5. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
+5. Az **egyszeres Sign-On beállítása SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozása](common/metadataxml.png)
 
-### <a name="configure-mobileiron-single-sign-on"></a>MobileIron egyszeri bejelentkezés konfigurálása
+### <a name="configure-mobileiron-single-sign-on"></a>MobileIron egyetlen Sign-On konfigurálása
 
 1. Egy másik böngészőablakban jelentkezzen be a MobileIron vállalati webhelyre rendszergazdaként.
 
 2. Nyissa meg a **rendszergazdai**  >  **identitást** , és válassza a **HRE** lehetőséget a **Felhőbeli identitásszolgáltató beállítás** mezőjében.
 
-    ![Egyszeri bejelentkezés rendszergazdai gombjának konfigurálása](./media/mobileiron-tutorial/tutorial_mobileiron_admin.png)
+    ![Egyetlen Sign-On rendszergazdai gomb konfigurálása](./media/mobileiron-tutorial/tutorial_mobileiron_admin.png)
 
 3. Másolja ki a **kulcs** és a **gazdagép** értékeit, és illessze be őket az **alapszintű SAML-konfigurációs** szakasz url-címeinek befejezéséhez Azure Portal.
 
-    ![Egyszeri bejelentkezés rendszergazdai gombjának konfigurálása](./media/mobileiron-tutorial/key.png)
+    ![Egyetlen Sign-On rendszergazdai gomb konfigurálása](./media/mobileiron-tutorial/key.png)
 
 4. A **metaadatok exportálása a HRE és az Importálás a MobileIron felhőbe mezőben** kattintson a **fájl kiválasztása** lehetőségre a letöltött metaadatoknak a Azure Portalból való feltöltéséhez. Kattintson a **kész** gombra a feltöltés után.
 
-    ![Egyszeri bejelentkezési rendszergazdai metaadatok konfigurálása gomb](./media/mobileiron-tutorial/tutorial_mobileiron_adminmetadata.png)
+    ![Egyetlen Sign-On rendszergazdai metaadatok konfigurálása gomb](./media/mobileiron-tutorial/tutorial_mobileiron_adminmetadata.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása 
 
@@ -157,7 +157,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    d. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -196,11 +196,11 @@ MobileIron esetén a kiépítés manuális feladat.
 
 1. Lépjen a **felhasználók** elemre, **Add**és kattintson az  >  **egyetlen felhasználó**hozzáadása lehetőségre.
 
-    ![Egyszeri bejelentkezési felhasználó beállítása gomb](./media/mobileiron-tutorial/tutorial_mobileiron_user.png)
+    ![Egyetlen Sign-On felhasználó beállítása gomb](./media/mobileiron-tutorial/tutorial_mobileiron_user.png)
 
 1. Az **"egyetlen felhasználó"** párbeszédpanelen hajtsa végre a következő lépéseket:
 
-    ![Egyszeri bejelentkezés felhasználói Hozzáadás gombjának konfigurálása](./media/mobileiron-tutorial/tutorial_mobileiron_useradd.png)
+    ![Egyetlen Sign-On felhasználó hozzáadása gomb konfigurálása](./media/mobileiron-tutorial/tutorial_mobileiron_useradd.png)
 
     a. Az **E-mail cím** szövegmezőbe írja be a felhasználóhoz hasonló e-mail címet brittasimon@contoso.com .
 

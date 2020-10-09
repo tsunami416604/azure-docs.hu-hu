@@ -10,10 +10,10 @@ services: azure-maps
 manager: philmea
 ms.custom: mvc, devx-track-python
 ms.openlocfilehash: 28fcdc992f98ff380467718314148984559a7fee
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91335228"
 ---
 # <a name="tutorial-route-electric-vehicles-by-using-azure-notebooks-python"></a>Oktatóanyag: elektromos járművek átirányítása Azure Notebooks használatával (Python)
@@ -399,7 +399,7 @@ Az oktatóanyagban használt Azure Maps API-k megismeréséhez tekintse meg a k�
 * [Útvonal irányának beolvasása](https://docs.microsoft.com/rest/api/maps/route/getroutedirections)
 * [Azure Maps REST API-k](https://docs.microsoft.com/azure/azure-maps/consumption-model)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a Azure Notebooksről:
 

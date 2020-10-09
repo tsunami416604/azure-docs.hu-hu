@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/16/2019
 ms.author: jeedes
 ms.openlocfilehash: 291aa831279abdedb20196cd9af9ba49ac20d340
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88552057"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-taskize-connect"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Taskize-csatlakozással
@@ -93,7 +93,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. A fentieken kívül az Taskize-összekötő alkalmazás néhány további attribútumot vár az SAML-válaszokban, amelyek alább láthatók. Ezek az attribútumok előre is fel vannak töltve, de a követelménynek megfelelően áttekintheti őket.
 
-    | Name | Forrás attribútum|
+    | Név | Forrás attribútum|
     | ------------------- | -------------------- |    
     | urn: OID: 0.9.2342.19200300.100.1.3 | User. userPrincipalName |
 
@@ -115,7 +115,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Create** (Létrehozás) gombra.
+   1. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
