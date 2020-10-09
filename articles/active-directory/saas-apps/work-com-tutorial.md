@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/03/2019
 ms.author: jeedes
 ms.openlocfilehash: 5fe8697327203a84f91b42e8742db75150b6cb19
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88541449"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workcom"></a>Oktatóanyag: Azure Active Directory integráció a Work.com
@@ -73,7 +73,7 @@ Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a Work.
 Az Azure AD egyszeri bejelentkezés Work.com való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
 
 1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. **[Work.com egyszeri bejelentkezés konfigurálása](#configure-workcom-single-sign-on)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+2. **[Work.com egyszeri bejelentkezés konfigurálása](#configure-workcom-single-sign-on)** – az egyes Sign-On beállítások konfigurálása az alkalmazás oldalán.
 3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
 4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
 5. **[Hozzon létre Work.com-teszt felhasználót](#create-workcom-test-user)** – hogy a Work.com Britta, a felhasználó Azure ad-képviseletéhez kapcsolódó partnerrel rendelkezzen.
@@ -96,7 +96,7 @@ Az Azure AD egyszeri bejelentkezés Work.com való konfigurálásához hajtsa v�
 
     ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
+3. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
@@ -107,9 +107,9 @@ Az Azure AD egyszeri bejelentkezés Work.com való konfigurálásához hajtsa v�
     A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:  `http://<companyname>.my.salesforce.com`
 
     > [!NOTE]
-    > Az érték nem valódi. Frissítse az értéket a tényleges bejelentkezési URL-címmel. Az érték beszerzéséhez forduljon a Work.com ügyfélszolgálati [csapatához](https://help.salesforce.com/articleView?id=000159855&type=3) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
+    > Az érték nem valódi. Frissítse az értéket a tényleges Sign-On URL-címmel. Az érték beszerzéséhez forduljon a Work.com ügyfélszolgálati [csapatához](https://help.salesforce.com/articleView?id=000159855&type=3) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-5. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállítások alapján, és mentse a számítógépre.
+5. Az **egyszeres Sign-On beállítása az SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállítások alapján, és mentse azt a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozása](common/certificatebase64.png)
 
@@ -123,7 +123,7 @@ Az Azure AD egyszeri bejelentkezés Work.com való konfigurálásához hajtsa v�
 
     c. Kijelentkezési URL-cím
 
-### <a name="configure-workcom-single-sign-on"></a>Work.com egyszeri bejelentkezés konfigurálása
+### <a name="configure-workcom-single-sign-on"></a>Work.com egyetlen Sign-On konfigurálása
 
 1. Jelentkezzen be rendszergazdaként a Work.com-bérlőbe.
 
@@ -145,11 +145,11 @@ Az Azure AD egyszeri bejelentkezés Work.com való konfigurálásához hajtsa v�
     
     ![Beállítás](./media/work-com-tutorial/ic794108.png "Telepítés")
 
-7. Bontsa ki a **biztonsági vezérlők** menüt, majd kattintson az **egyszeri bejelentkezés beállításai**elemre.
+7. Bontsa ki a **biztonsági vezérlők** menüt, majd kattintson az **egyszeres Sign-On beállítások**elemre.
     
-    ![Egyszeri bejelentkezési beállítások](./media/work-com-tutorial/ic794113.png "Egyszeri bejelentkezési beállítások")
+    ![Egyszeres Sign-On beállítások](./media/work-com-tutorial/ic794113.png "Egyszeres Sign-On beállítások")
 
-8. Az **egyszeri bejelentkezési beállítások** párbeszédpanelen hajtsa végre a következő lépéseket:
+8. Az **egyszeres Sign-On beállítások** párbeszédpanelen hajtsa végre a következő lépéseket:
     
     ![SAML engedélyezve](./media/work-com-tutorial/ic781026.png "SAML engedélyezve")
     
@@ -157,9 +157,9 @@ Az Azure AD egyszeri bejelentkezés Work.com való konfigurálásához hajtsa v�
     
     b. Kattintson az **új**gombra.
 
-9. Az **SAML egyszeri bejelentkezés beállításai** szakaszban hajtsa végre a következő lépéseket:
+9. Az **SAML-Sign-On beállításai** szakaszban hajtsa végre a következő lépéseket:
     
-    ![SAML egyszeri bejelentkezés beállítása](./media/work-com-tutorial/ic794114.png "SAML egyszeri bejelentkezés beállítása")
+    ![SAML egyszeri Sign-On beállítás](./media/work-com-tutorial/ic794114.png "SAML egyszeri Sign-On beállítás")
     
     a. A **név** szövegmezőbe írja be a konfiguráció nevét.  
        
@@ -218,7 +218,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    d. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

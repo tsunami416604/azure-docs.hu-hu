@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/10/2019
 ms.author: jeedes
 ms.openlocfilehash: 6797d169dbdfdd63ae9cc96ac9fed133bc8d1adc
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88544474"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-concur-travel-and-expense"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a egyetértett utazással és költségekkel
@@ -34,7 +34,7 @@ Első lépésként a következő elemeket kell megadnia:
 
 * Egy Azure AD-előfizetés. Ha nem rendelkezik előfizetéssel, [ingyenes fiókot](https://azure.microsoft.com/free/)kérhet.
 * Egyetért az utazási és a költségek előfizetésével.
-* A "céges rendszergazda" szerepkör az Ön által birtokolt felhasználói fiókban. Tesztelheti, hogy rendelkezik-e a megfelelő hozzáféréssel, ha a megtartja az [egyszeri bejelentkezés önkiszolgáló eszközét](https://www.concursolutions.com/nui/authadmin/ssoadmin). Ha nem rendelkezik hozzáféréssel, lépjen kapcsolatba a partneri támogatással vagy a megvalósítás projekt kezelőjével. 
+* A "céges rendszergazda" szerepkör az Ön által birtokolt felhasználói fiókban. Ellenőrizheti, hogy rendelkezik-e a megfelelő hozzáféréssel az [SSO Self-Service eszköztől](https://www.concursolutions.com/nui/authadmin/ssoadmin). Ha nem rendelkezik hozzáféréssel, lépjen kapcsolatba a partneri támogatással vagy a megvalósítás projekt kezelőjével. 
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
@@ -85,7 +85,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
     > [!NOTE]
     > Az azonosító (Entity ID) és a válasz URL-címe (a fogyasztói szolgáltatás URL-címe) a régióra jellemző. Válasszon a saját egyetértő entitás adatközpontja alapján. Ha nem ismeri az Ön egyetértő entitásának adatközpontját, vegye fel a kapcsolatot a egyetértek támogatási szolgálatával. 
 
-5. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon a beállítások szerkesztéséhez kattintson a Szerkesztés/toll ikonra a **felhasználói attribútumhoz** . Az egyedi felhasználói azonosítónak meg kell egyeznie a felhasználók login_idával. A **User. userPrincipalName** általában módosítania kell a User. **mail**.
+5. Az **egyszeri Sign-On beállítása az SAML-vel** lapon a beállítások szerkesztéséhez kattintson a Szerkesztés/toll ikonra a **felhasználói attribútumhoz** . Az egyedi felhasználói azonosítónak meg kell egyeznie a felhasználók login_idával. A **User. userPrincipalName** általában módosítania kell a User. **mail**.
 
     ![Felhasználói attribútum szerkesztése](common/edit-attribute.png)
 
@@ -103,7 +103,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Create** (Létrehozás) gombra.
+   1. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -125,7 +125,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 ## <a name="configure-concur-travel-and-expense-sso"></a>A "egyetértő" utazás és a költségek egyszeri bejelentkezésének konfigurálása
 
-1. Ha be szeretné állítani az egyszeri bejelentkezést a **egyetértő utazás és a költség** oldalon, fel kell töltenie a letöltött **összevonási metaadatokat tartalmazó XML-fájlt** , hogy az [SSO önkiszolgáló eszközre](https://www.concursolutions.com/nui/authadmin/ssoadmin) lépjen, és a "vállalati rendszergazda" szerepkörrel rendelkező fiókkal jelentkezzen be. 
+1. Ha be szeretné állítani az egyszeri bejelentkezést a **egyetértő utazásra és a költségekre** , fel kell töltenie a letöltött **összevonási metaadatok XML-fájlját** az [SSO Self-Service eszköznek](https://www.concursolutions.com/nui/authadmin/ssoadmin) való belépéshez és a "vállalati rendszergazda" szerepkörrel rendelkező fiókkal való bejelentkezéshez. 
 
 1. Kattintson a **Hozzáadás** parancsra.
 1. Adja meg a identitásszolgáltató egyéni nevét, például: "Azure AD (US)". 
@@ -149,7 +149,7 @@ A megtagadott mobil egyszeri bejelentkezés engedélyezéséhez meg kell adnia a
 1. **Felhasználói hozzáférési URL-cím** másolása és az URL-cím megadása a támogatás megadásához
 
 > [!NOTE]
-> Az egyszeri bejelentkezés konfigurálására szolgáló önkiszolgáló beállítás nem érhető el, ezért az összevont támogatási csapattal együttműködve engedélyezheti a mobil egyszeri bejelentkezést. 
+> Self-Service az SSO konfigurálására szolgáló beállítás nem érhető el, ezért a bevonási támogatással rendelkező csapattal dolgozhat a mobil egyszeri bejelentkezés engedélyezésével. 
 
 ## <a name="test-sso"></a>Egyszeri bejelentkezés tesztelése 
 

@@ -13,10 +13,10 @@ ms.date: 03/04/2019
 ms.author: scottwhi
 ms.custom: seodec2018
 ms.openlocfilehash: 2936b94d7ba791b1a4e5a9b95aca3ca3ecdb5904
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "66383434"
 ---
 # <a name="get-trending-images-from-the-web"></a>Trendek a webes képekből
@@ -88,9 +88,9 @@ A válasz egy olyan [TrendingImages](https://docs.microsoft.com/rest/api/cogniti
 }  
 ```  
 
-Minden csempe tartalmaz egy képet és egy lehetőséget a kapcsolódó képek beolvasásához. A kapcsolódó rendszerképek lekéréséhez a lekérdezést `text` használhatja a [Image Search API](./search-the-web.md) meghívásához és a kapcsolódó rendszerképek megjelenítéséhez. A-ben `webSearchUrl` az URL-cím használatával a felhasználót a Bing képkeresés eredményeinek oldalára is felhasználhatja, amely tartalmazza a kapcsolódó képeket.
+Minden csempe tartalmaz egy képet és egy lehetőséget a kapcsolódó képek beolvasásához. A kapcsolódó rendszerképek lekéréséhez a lekérdezést használhatja a `text` [Image Search API](./search-the-web.md) meghívásához és a kapcsolódó rendszerképek megjelenítéséhez. A-ben az URL-cím használatával a `webSearchUrl` felhasználót a Bing képkeresés eredményeinek oldalára is felhasználhatja, amely tartalmazza a kapcsolódó képeket.
 
-Ha a kapcsolódó rendszerképek beolvasásához a Image Search API-t hívja meg, állítsa be az [ID](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#id) lekérdezési `id` paramétert a mezőben lévő azonosítóra. Az azonosító megadásával biztosíthatja, hogy a válasz tartalmazza a képet (ez az első kép a válaszban) és a kapcsolódó képeket. Emellett állítsa a [q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference) lekérdezési paramétert az `query` objektum `text` mezőjében szereplő szövegre.
+Ha a kapcsolódó rendszerképek beolvasásához a Image Search API-t hívja meg, állítsa be az [ID](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#id) lekérdezési paramétert a mezőben lévő azonosítóra `id` . Az azonosító megadásával biztosíthatja, hogy a válasz tartalmazza a képet (ez az első kép a válaszban) és a kapcsolódó képeket. Emellett állítsa a [q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference) lekérdezési paramétert az `query` objektum mezőjében szereplő szövegre `text` .
 
 Az alábbi példa bemutatja, hogyan használható a rendszerkép-azonosító a Mr. Smith kapcsolódó képeinek beolvasására az előző trend images API-válaszban.
 

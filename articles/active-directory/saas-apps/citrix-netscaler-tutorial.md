@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/27/2020
 ms.author: jeedes
 ms.openlocfilehash: 4ff6154e17408b9e2daaf3c81321ae31693de3aa
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88544604"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-citrix-netscaler-kerberos-based-authentication"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses integráció a Citrix NetScaler (Kerberos-alapú hitelesítés)
@@ -91,7 +91,7 @@ Ha az Azure AD SSO-t a Azure Portal használatával szeretné engedélyezni, haj
 
 1. Az **egyszeri bejelentkezési módszer kiválasztása** panelen válassza az **SAML**lehetőséget.
 
-1. Az **egyszeri bejelentkezés az SAML-vel** panelen való beállítása lapon válassza a toll **szerkesztése** ikont az **alapszintű SAML-konfigurációhoz** a beállítások szerkesztéséhez.
+1. Az **egyszeri Sign-On beállítása az SAML-vel** panelen válassza a toll **szerkesztése** ikont az **alapszintű SAML-konfigurációhoz** a beállítások szerkesztéséhez.
 
    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
@@ -109,7 +109,7 @@ Ha az Azure AD SSO-t a Azure Portal használatával szeretné engedélyezni, haj
     > * Az ebben a szakaszban használt URL-címek nem valós értékek. Frissítse ezeket az értékeket az azonosító, a válasz URL-cím és a bejelentkezési URL-cím tényleges értékeivel. Az értékek lekéréséhez forduljon a [Citrix NetScaler ügyfél-támogatási csapatához](https://www.citrix.com/contact/technical-support.html) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
     > * Az egyszeri bejelentkezés beállításához az URL-címeknek elérhetőnek kell lenniük a nyilvános webhelyekről. Engedélyeznie kell a tűzfalat vagy más biztonsági beállításokat a Citrix NetScaler oldalon ahhoz, hogy enble az Azure AD-t, hogy elküldhesse a tokent a konfigurált URL-címen.
 
-1. Az **egyszeri bejelentkezés SAML-panelen való beállításához** az **SAML aláíró tanúsítvány** szakaszban az **alkalmazás-összevonási metaadatok URL-címéhez**másolja ki az URL-címet, és mentse azt a Jegyzettömbben.
+1. Az **egyszeri Sign-On beállítása az SAML-vel** panelen az **SAML aláíró tanúsítvány** szakaszban az **alkalmazás-összevonás metaadatainak URL-címéhez**másolja ki az URL-címet, és mentse azt a Jegyzettömbben.
 
     ![A tanúsítvány letöltési hivatkozása](common/certificatebase64.png)
 
@@ -171,7 +171,7 @@ Virtuális kiszolgáló létrehozása:
 
 1. Válassza a **Traffic Management**  >  **terheléselosztási**  >  **szolgáltatások**lehetőséget.
     
-1. Válassza a **Hozzáadás** elemet.
+1. Válassza a **Hozzáadás** lehetőséget.
 
     ![Citrix NetScaler Configuration-Services ablaktábla](./media/citrix-netscaler-tutorial/web01.png)
 
@@ -188,7 +188,7 @@ A terheléselosztó konfigurálása:
 
 1. Nyissa meg a **Traffic Management**  >  **terheléselosztási**  >  **virtuális kiszolgálókat**.
 
-1. Válassza a **Hozzáadás** elemet.
+1. Válassza a **Hozzáadás** lehetőséget.
 
 1. Állítsa be az alábbi értékeket a következő képernyőképen leírtak szerint:
 
@@ -197,7 +197,7 @@ A terheléselosztó konfigurálása:
     * **IP-cím**
     * **Port**
 
-1. Kattintson az **OK** gombra.
+1. Válassza az **OK** lehetőséget.
 
     ![Citrix NetScaler-konfiguráció – alapszintű beállítások panel](./media/citrix-netscaler-tutorial/load01.png)
 
@@ -235,7 +235,7 @@ Hitelesítési házirend létrehozása:
 
 1. Válassza a **Biztonság**  >  **AAA – alkalmazás forgalmi**  >  **szabályzatok**  >  **hitelesítési**  >  **hitelesítési szabályzatok**lehetőséget.
 
-1. Válassza a **Hozzáadás** elemet.
+1. Válassza a **Hozzáadás** lehetőséget.
 
 1. A **hitelesítési házirend létrehozása** panelen adja meg vagy válassza ki a következő értékeket:
 
@@ -279,9 +279,9 @@ Hitelesítési virtuális kiszolgáló létrehozása:
 
     1. A **protokoll**területen válassza az **SSL**lehetőséget.
 
-    1. Kattintson az **OK** gombra.
+    1. Válassza az **OK** lehetőséget.
     
-1. Válassza a **Folytatás**lehetőséget.
+1. Válassza a **Folytatás** lehetőséget.
 
 ### <a name="configure-the-authentication-virtual-server-to-use-azure-ad"></a>A hitelesítési virtuális kiszolgáló konfigurálása az Azure AD használatára
 
@@ -360,7 +360,7 @@ A Citrix NetScaler AAA KCD fiók konfigurálása:
 
     * Jelölje be a **delegált felhasználó jelszava** jelölőnégyzetet, majd írja be és erősítse meg a jelszót.
 
-1. Kattintson az **OK** gombra.
+1. Válassza az **OK** lehetőséget.
  
     ![Citrix NetScaler konfiguráció – KCD-fiók konfigurálása panel](./media/citrix-netscaler-tutorial/kerberos03.png)
 
@@ -372,7 +372,7 @@ A Citrix forgalmi házirend és a forgalmi profil konfigurálása:
 
 1.  Válassza a **forgalmi profilok**lehetőséget.
 
-1.  Válassza a **Hozzáadás** elemet.
+1.  Válassza a **Hozzáadás** lehetőséget.
 
 1.  A forgalmi profil konfigurálásához adja meg vagy válassza ki a következő értékeket.
 
@@ -382,13 +382,13 @@ A Citrix forgalmi házirend és a forgalmi profil konfigurálása:
 
     * **KCD fiók**: válassza ki az előző szakaszban létrehozott KCD-fiókot.
 
-1. Kattintson az **OK** gombra.
+1. Válassza az **OK** lehetőséget.
 
     ![Citrix NetScaler konfiguráció – forgalmi profil konfigurálása panel](./media/citrix-netscaler-tutorial/kerberos04.png)
  
 1.  Válassza a **forgalmi szabályzat**lehetőséget.
 
-1.  Válassza a **Hozzáadás** elemet.
+1.  Válassza a **Hozzáadás** lehetőséget.
 
 1.  A forgalmi szabályzatok konfigurálásához adja meg vagy válassza ki a következő értékeket:
 
@@ -398,7 +398,7 @@ A Citrix forgalmi házirend és a forgalmi profil konfigurálása:
 
     * **Kifejezés**: adja meg az **igaz**értéket.
 
-1. Kattintson az **OK** gombra.
+1. Válassza az **OK** lehetőséget.
 
     ![Citrix NetScaler konfiguráció – forgalmi szabályzat konfigurálása panel](./media/citrix-netscaler-tutorial/kerberos05.png)
 

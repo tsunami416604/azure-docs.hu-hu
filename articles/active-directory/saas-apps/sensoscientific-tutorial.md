@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/10/2019
 ms.author: jeedes
 ms.openlocfilehash: 61807f90caad9e6be2a25e54dcaa837595afc729
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88543168"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sensoscientific-wireless-temperature-monitoring-system"></a>Oktatóanyag: Azure Active Directory integráció a SensoScientific vezeték nélküli hőmérséklet-figyelési rendszerrel
@@ -73,7 +73,7 @@ Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a Senso
 Az Azure AD egyszeri bejelentkezés SensoScientific vezeték nélküli hőmérséklet-figyelési rendszerrel való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
 
 1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. Az **[SensoScientific vezeték nélküli hőmérséklet-figyelési rendszer egyszeri bejelentkezésének konfigurálása](#configure-sensoscientific-wireless-temperature-monitoring-system-single-sign-on)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+2. Az **[SensoScientific vezeték nélküli hőmérséklet-figyelési rendszer egyszeri bejelentkezésének konfigurálása](#configure-sensoscientific-wireless-temperature-monitoring-system-single-sign-on)** – az Sign-On beállításainak konfigurálása az alkalmazás oldalán.
 3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
 4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
 5. **[Hozzon létre SensoScientific vezeték nélküli hőmérséklet-figyelési Rendszerteszt felhasználót](#create-sensoscientific-wireless-temperature-monitoring-system-test-user)** – hogy rendelkezzen a SensoScientific vezeték nélküli hőmérséklet-figyelési rendszer Britta, amely a felhasználó Azure ad-beli képviseletéhez van társítva.
@@ -93,7 +93,7 @@ Az Azure AD egyszeri bejelentkezés SensoScientific vezeték nélküli hőmérs�
 
     ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
+3. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
@@ -101,7 +101,7 @@ Az Azure AD egyszeri bejelentkezés SensoScientific vezeték nélküli hőmérs�
 
     ![SensoScientific vezeték nélküli hőmérséklet-figyelési rendszer tartománya és URL-címek egyszeri bejelentkezési adatai](common/preintegrated.png)
 
-5. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállítások alapján, és mentse a számítógépre.
+5. Az **egyszeres Sign-On beállítása az SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállítások alapján, és mentse azt a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozása](common/certificatebase64.png)
 
@@ -115,21 +115,21 @@ Az Azure AD egyszeri bejelentkezés SensoScientific vezeték nélküli hőmérs�
 
     c. Kijelentkezési URL-cím
 
-### <a name="configure-sensoscientific-wireless-temperature-monitoring-system-single-sign-on"></a>SensoScientific vezeték nélküli hőmérséklet-figyelési rendszer egyszeri bejelentkezésének konfigurálása
+### <a name="configure-sensoscientific-wireless-temperature-monitoring-system-single-sign-on"></a>A SensoScientific vezeték nélküli hőmérséklet-figyelési rendszerének konfigurálása egyetlen Sign-On
 
 1. Jelentkezzen be a SensoScientific vezeték nélküli hőmérséklet-figyelési rendszeralkalmazásba rendszergazdaként.
 
 1. A felső navigációs menüben kattintson a **konfiguráció** **elemre** , és **az egyszeri bejelentkezés** lehetőségre kattintva nyissa meg az egyszeri bejelentkezés beállításait, és hajtsa végre a következő lépéseket:
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/sensoscientific-tutorial/tutorial_sensoscientificwtms_admin.png)
+    ![Egyetlen Sign-On konfigurálása](./media/sensoscientific-tutorial/tutorial_sensoscientificwtms_admin.png)
 
     a. Válassza ki a **kiállító nevét** Azure ad-ként.
 
     b. A **kiállító URL-címe** szövegmezőbe illessze be a Azure Portalból másolt **Azure ad-azonosítót** .
 
-    c. Az **egyszeri bejelentkezési szolgáltatás URL-címe** szövegmezőbe illessze be azt a **bejelentkezési URL-címet** , amelyet a Azure Portalból másolt.
+    c. Az **egyszeres Sign-On szolgáltatás URL-címe** szövegmezőbe illessze be azt a **bejelentkezési URL-címet** , amelyet a Azure Portalból másolt.
 
-    d. Az egyszeri kijelentkezési **szolgáltatás URL-címe** szövegmezőbe illessze be a Azure Portalból másolt **KIJELENTKEZÉSI URL-címet** .
+    d. Az **egyszeres Sign-Out szolgáltatás URL-címe** szövegmezőbe illessze be azt a **KIJELENTKEZÉSI URL-címet** , amelyet a Azure Portalból másolt.
 
     e. Tallózzon a Azure Portal letöltött tanúsítványon, és töltse fel ide.
 
@@ -157,7 +157,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    d. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

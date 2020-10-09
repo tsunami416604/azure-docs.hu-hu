@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/03/2018
 ms.author: jeedes
 ms.openlocfilehash: 44077c2685ce78b7ba1ea140a34dd75dcf5c7c46
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88543465"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-saml-sso-for-jira-by-resolution-gmbh"></a>Oktatóanyag: Azure Active Directory integráció az SAML SSO-nal a JIRA by Solution GmbH által
@@ -73,7 +73,7 @@ Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a kapcs
 Az egyszeri bejelentkezés konfigurálásához és teszteléséhez végre kell hajtania a következő lépéseket:
 
 1. **[Az Azure ad Enterprise alkalmazás konfigurálása egyszeri bejelentkezéshez](#configure-the-azure-ad-enterprise-application-for-single-sign-on)** – konfigurálja az Azure ad Enterprise alkalmazást az egyszeri bejelentkezéshez
-2. **[Konfigurálja az JIRA-példány SAML SSO beépülő modulját](#configure-the-saml-sso-plugin-of-your-jira-instance)** – konfigurálja az egyszeri bejelentkezési beállításokat az alkalmazás oldalán.
+2. **[Konfigurálja az JIRA-példány SAML SSO beépülő modulját](#configure-the-saml-sso-plugin-of-your-jira-instance)** – konfigurálja az egyes Sign-On beállításokat az alkalmazás oldalán.
 3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – tesztelési felhasználó létrehozása az Azure ad-ben.
 1. **[Az Azure ad-tesztkörnyezet kiosztása](#assign-the-azure-ad-test-user)** – lehetővé teszi, hogy a felhasználó az egyszeri bejelentkezést használja az Azure oldalon.
 1. **[A JIRA-felhasználó létrehozása](#create-the-test-user-also-in-jira)** a JIRA-ben az Azure ad-tesztkörnyezet felhasználói számára.
@@ -114,7 +114,7 @@ A következő lépések végrehajtásával konfigurálhatja az egyszeri bejelent
     > [!NOTE]
     > Az azonosító, a válasz URL-cím és a bejelentkezési URL-cím helyére írja **\<server-base-url>** be az JIRA-példány alap URL-címét. Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti. Ha problémája van, vegye fel velünk a kapcsolatot az [SAML SSO-val a JIRA by Solution GmbH ügyfélszolgálati csapatával](https://www.resolution.de/go/support).
 
-4. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon az **SAML aláíró tanúsítvány** szakaszban töltse le az **összevonási metaadatok XML-fájlját** , és mentse a számítógépre.
+4. Az **egyszeres Sign-On beállítása SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban töltse le az **összevonási metaadatok XML-fájlját** , és mentse a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozása](common/metadataxml.png)
 
@@ -124,37 +124,37 @@ A következő lépések végrehajtásával konfigurálhatja az egyszeri bejelent
 
 2. Vigye a kurzort a jobb oldalon található fogaskerék fölé, majd kattintson az **Alkalmazások kezelése**lehetőségre.
     
-    ![Egyszeri bejelentkezés konfigurálása](./media/samlssojira-tutorial/addon1.png)
+    ![Egyetlen Sign-On konfigurálása](./media/samlssojira-tutorial/addon1.png)
 
 3. Ha a rendszer átirányítja a rendszergazdai hozzáférés lapra, adja meg a **jelszót** , és kattintson a **Confirm (megerősítés** ) gombra.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/samlssojira-tutorial/addon2.png)
+    ![Egyetlen Sign-On konfigurálása](./media/samlssojira-tutorial/addon2.png)
 
 4. A JIRA általában átirányítja Önt a Atlassian Marketplace-re. Ha nem, kattintson az **új alkalmazások keresése** elemre a bal oldali panelen. Keressen **SAML egyszeri bejelentkezést (SSO) a JIRA** , és kattintson a **telepítés** gombra az SAML beépülő modul telepítéséhez.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/samlssojira-tutorial/store.png)
+    ![Egyetlen Sign-On konfigurálása](./media/samlssojira-tutorial/store.png)
 
 5. A beépülő modul telepítése megkezdődik. Ha elkészült, kattintson a **Bezárás** gombra.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/samlssojira-tutorial/store-2.png)
+    ![Egyetlen Sign-On konfigurálása](./media/samlssojira-tutorial/store-2.png)
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/samlssojira-tutorial/store-3.png)
+    ![Egyetlen Sign-On konfigurálása](./media/samlssojira-tutorial/store-3.png)
 
 6. Ezután kattintson a **kezelés**elemre.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/samlssojira-tutorial/store-4.png)
+    ![Egyetlen Sign-On konfigurálása](./media/samlssojira-tutorial/store-4.png)
     
 8. Ezt követően kattintson a **configure (Konfigurálás** ) elemre az imént telepített beépülő modul konfigurálásához.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/samlssojira-tutorial/store-5.png)
+    ![Egyetlen Sign-On konfigurálása](./media/samlssojira-tutorial/store-5.png)
 
 9. Az **SAML SingleSignon beépülő modul konfigurálása** varázslóban kattintson az **új identitásszolgáltató hozzáadása** lehetőségre az Azure ad új identitás-szolgáltatóként való konfigurálásához.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/samlssojira-tutorial/addon4.png) 
+    ![Egyetlen Sign-On konfigurálása](./media/samlssojira-tutorial/addon4.png) 
 
 10. Az **SAML-azonosító kiválasztása** lapon hajtsa végre a következő lépéseket:
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/samlssojira-tutorial/addon5a.png)
+    ![Egyetlen Sign-On konfigurálása](./media/samlssojira-tutorial/addon5a.png)
  
     a. Állítsa be az **Azure ad** -t identitásszolgáltató típusként.
     
@@ -166,11 +166,11 @@ A következő lépések végrehajtásával konfigurálhatja az egyszeri bejelent
     
 11. Az **identitás-szolgáltató konfigurációja** lapon kattintson a **tovább**gombra.
  
-    ![Egyszeri bejelentkezés konfigurálása](./media/samlssojira-tutorial/addon5b.png)
+    ![Egyetlen Sign-On konfigurálása](./media/samlssojira-tutorial/addon5b.png)
 
 12. Az **SAML-identitásszolgáltató metaadatainak importálása** oldalon hajtsa végre a következő lépéseket:
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/samlssojira-tutorial/addon5c.png)
+    ![Egyetlen Sign-On konfigurálása](./media/samlssojira-tutorial/addon5c.png)
 
     a. Kattintson a **metaadatok XML-fájljának kiválasztása** gombra, és válassza ki a letöltött **összevonási METAADATOKAT tartalmazó XML-** fájlt.
 
@@ -182,19 +182,19 @@ A következő lépések végrehajtásával konfigurálhatja az egyszeri bejelent
     
 13. A **felhasználói azonosító attribútum és átalakítás** lapon kattintson a **tovább** gombra.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/samlssojira-tutorial/addon5d.png)
+    ![Egyetlen Sign-On konfigurálása](./media/samlssojira-tutorial/addon5d.png)
     
 14. A beállítások mentéséhez kattintson a **felhasználó létrehozása és frissítése** lapon a **Mentés &** elemre.
     
-    ![Egyszeri bejelentkezés konfigurálása](./media/samlssojira-tutorial/addon6a.png)
+    ![Egyetlen Sign-On konfigurálása](./media/samlssojira-tutorial/addon6a.png)
     
 15. A **beállítások tesztelése** lapon kattintson a **teszt kihagyása & a manuális konfigurálás** lehetőségre a felhasználói teszt azonnali kihagyása érdekében. Ez a következő szakaszban lesz elvégezve, és néhány beállítást igényel a Azure Portal.
     
-    ![Egyszeri bejelentkezés konfigurálása](./media/samlssojira-tutorial/addon6b.png)
+    ![Egyetlen Sign-On konfigurálása](./media/samlssojira-tutorial/addon6b.png)
     
 16. A figyelmeztetés kihagyásához kattintson **az OK** gombra.
     
-    ![Egyszeri bejelentkezés konfigurálása](./media/samlssojira-tutorial/addon6c.png)
+    ![Egyetlen Sign-On konfigurálása](./media/samlssojira-tutorial/addon6c.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
@@ -218,7 +218,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    d. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

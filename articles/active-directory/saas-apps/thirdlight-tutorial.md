@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
 ms.openlocfilehash: 3193df0848c0d67935faa0020465e79bd50e2151
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88544978"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-thirdlight"></a>Oktatóanyag: Azure Active Directory integráció a ThirdLight
@@ -91,7 +91,7 @@ Az Azure AD egyszeri bejelentkezés ThirdLight való konfigurálásához hajtsa 
 
     ![Egyszeri bejelentkezési módszer kiválasztása](common/select-saml-option.png)
 
-3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon a **Szerkesztés** ikonra kattintva nyissa meg az **alapszintű SAML-konfiguráció** párbeszédpanelt:
+3. Az **egyszeres Sign-On beállítása az SAML-vel** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához:
 
     ![Szerkesztés ikon](common/edit-urls.png)
 
@@ -110,7 +110,7 @@ Az Azure AD egyszeri bejelentkezés ThirdLight való konfigurálásához hajtsa 
        > [!NOTE]
        > Ezek az értékek helyőrzők. A tényleges bejelentkezési URL-címet és azonosítót kell használnia. Az értékek lekéréséhez lépjen kapcsolatba a [ThirdLight támogatási csoportjával](https://www.thirdlight.com/support) . A Azure Portal az **alapszintű SAML-konfiguráció** párbeszédpanelen látható mintázatokat is megtekintheti.
 
-5. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban válassza ki a **letöltési** hivatkozást az **összevonási metaadatok XML-** fájlja mellett, a követelmények szerint, és mentse a fájlt a számítógépre:
+5. Az **egyszeres Sign-On beállítása az SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban válassza ki a **letöltési** hivatkozást az **összevonási metaadatok XML-** fájlja mellett, a követelmények szerint, és mentse a fájlt a számítógépre:
 
     ![Tanúsítvány letöltési hivatkozása](common/metadataxml.png)
 
@@ -130,7 +130,7 @@ Az Azure AD egyszeri bejelentkezés ThirdLight való konfigurálásához hajtsa 
 
 1. Nyissa meg a **konfigurációs**  >  **rendszerfelügyelet**  >  **egy saml2**:
 
-    ![Rendszerfelügyeleti webszolgáltatások](./media/thirdlight-tutorial/ic805843.png "Rendszerfelügyeleti webszolgáltatások")
+    ![Rendszerfelügyelet](./media/thirdlight-tutorial/ic805843.png "Rendszerfelügyelet")
 
 1. A egy SAML2-konfiguráció szakaszban hajtsa végre a következő lépéseket.
   

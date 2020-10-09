@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 08/22/2018
 ms.custom: mvc
 ms.openlocfilehash: d2990b5950cf8812367c3a59c6cace39e4085e2a
-ms.sourcegitcommit: 64ad2c8effa70506591b88abaa8836d64621e166
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/17/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88261905"
 ---
 # <a name="back-up-windows-server-to-azure"></a>Windows Server biztonsági mentése az Azure-ba
@@ -104,7 +104,7 @@ A Microsoft Azure Recovery Services-ügynökkel ütemezheti a Windows Server Azu
 
 3. A **tovább** gombra kattintva navigáljon az **elemek kijelölése a biztonsági mentéshez** lapon.
 
-4. Válassza az **elemek hozzáadása** lehetőséget, majd a megnyíló párbeszédpanelen válassza ki a **rendszerállapotot** és a biztonsági mentéshez használni kívánt fájlokat vagy mappákat. Ez után válassza az **OK** gombot.
+4. Válassza az **elemek hozzáadása** lehetőséget, majd a megnyíló párbeszédpanelen válassza ki a **rendszerállapotot** és a biztonsági mentéshez használni kívánt fájlokat vagy mappákat. Ezután válassza az **OK** gombot.
 
 5. Kattintson a **Tovább** gombra.
 

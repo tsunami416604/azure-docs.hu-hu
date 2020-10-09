@@ -18,10 +18,10 @@ ms.author: billmath
 ms.custom: seohack1
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 056d0caf2bfc6e99d5d659a2561bc41844feb79a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "64918778"
 ---
 # <a name="plan-for-enhancing-data-security-through-a-strong-identity-solution"></a>Tervezze meg az adatok biztonságának növelését erős identitási megoldáson keresztül
@@ -73,7 +73,7 @@ Az eszköz és az adatközpont, illetve az eszköz és a felhő közötti adatá
 * A Felhőbeli Identitáskezelés megtartja a (adatközpontok közötti és az adatközpontokon belüli) és a címtáron belüli adatforgalmat?
 
 ## <a name="compliance"></a>Megfelelőség
-A szabályozások, törvények és szabályozások megfelelőségi követelményei a vállalat által birtokolt iparágtól függően változhatnak. A nagy mértékben szabályozott iparágakban lévő vállalatoknak a megfelelőségi problémákkal kapcsolatos, identitás-felügyeleti problémákra van szükségük. Az olyan szabályozások, mint például a Sarbanes-Oxley (SOX), az egészségbiztosítási hordozhatóság és az elszámoltathatósági törvény (HIPAA), a gramm-bemosódás-Bliley törvény (GLBA) és a Payment Card Industry adatbiztonsági szabványa (PCI DSS) szigorú az identitás és a hozzáférés tekintetében. A vállalat által elfogadott hibrid identitási megoldásnak rendelkeznie kell olyan alapvető képességekkel, amelyek eleget tesznek egy vagy több ilyen előírás követelményeinek. Ezen a területen győződjön meg arról, hogy a következő kérdéseket kéri:
+A szabályozások, törvények és szabályozások megfelelőségi követelményei a vállalat által birtokolt iparágtól függően változhatnak. A nagy mértékben szabályozott iparágakban lévő vállalatoknak a megfelelőségi problémákkal kapcsolatos, identitás-felügyeleti problémákra van szükségük. A szabályozások, mint például a Sarbanes-Oxley (SOX), az egészségbiztosítási hordozhatóság és az elszámoltathatósági törvény (HIPAA), a gramm-bemosódás-Bliley törvény (GLBA) és a Payment Card Industry adatbiztonsági szabványa (PCI DSS) szigorú az identitás és a hozzáférés tekintetében. A vállalat által elfogadott hibrid identitási megoldásnak rendelkeznie kell olyan alapvető képességekkel, amelyek eleget tesznek egy vagy több ilyen előírás követelményeinek. Ezen a területen győződjön meg arról, hogy a következő kérdéseket kéri:
 
 * A hibrid identitási megoldás megfelel a vállalatra vonatkozó szabályozási követelményeknek?
 * A Hybrid Identity megoldás beépített 

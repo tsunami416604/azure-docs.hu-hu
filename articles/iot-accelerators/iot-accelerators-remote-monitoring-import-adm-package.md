@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 11/29/2018
 ms.topic: conceptual
 ms.openlocfilehash: 8100914e9a1d1489cb80de55a689e17f6d28a941
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "61443334"
 ---
 # <a name="import-an-automatic-device-management-package-into-your-remote-monitoring-solution-accelerator"></a>Automatikus Eszközkezelő csomag importálása a távoli figyelési megoldás-gyorsító eszközbe
@@ -47,7 +47,7 @@ Most már rendelkezik egy olyan fájllal, amely tartalmazza az automatikus eszk�
 
 Az alábbi lépéseket követve importálhat egy automatikus eszközkezelés konfigurációt csomagként a megoldásba:
 
-1. Navigáljon a távoli figyelés webes felhasználói felületének **csomagok** lapjára: ![ csomagok lap](media/iot-accelerators-remote-monitoring-import-adm-package/packagepage.png)
+1. Navigáljon a távoli figyelés webes felhasználói felületének **csomagok** lapjára:  ![ csomagok lap](media/iot-accelerators-remote-monitoring-import-adm-package/packagepage.png)
 
 1. Kattintson az **+ új csomag**elemre, válassza a **konfiguráció** lehetőséget a csomag típusaként, majd kattintson a **Tallózás** gombra, és válassza ki a **configuration.js** az előző szakaszban mentett fájlon:
 

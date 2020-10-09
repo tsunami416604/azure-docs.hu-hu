@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/05/2019
 ms.author: jeedes
 ms.openlocfilehash: 7fffe58dfdb63da28edc19c19b56b576f4fbadd3
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88544043"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-moxtra"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Moxtra
@@ -89,7 +89,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. A fentieken kívül a Moxtra alkalmazás néhány további attribútumot vár, amelyeket az SAML-válaszban vissza kell adni. A felhasználó attribútumai párbeszédpanel felhasználói jogcímek szakaszában a következő lépésekkel adja hozzá az SAML-jogkivonat attribútumát az alábbi táblázatban látható módon:
 
-    | Name | Forrás attribútum|
+    | Név | Forrás attribútum|
     | ------------------- | -------------------- |    
     | FirstName | User. givenName |
     | LastName | felhasználó. vezetéknév |
@@ -130,7 +130,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Create** (Létrehozás) gombra.
+   1. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -156,11 +156,11 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 2. A bal oldali eszköztáron kattintson a **felügyeleti konzol > SAML egyszeri bejelentkezés**elemre, majd az **új**elemre.
    
-    ![Egyszeri bejelentkezés konfigurálása](./media/moxtra-tutorial/tutorial_moxtra_06.png) 
+    ![Egyetlen Sign-On konfigurálása](./media/moxtra-tutorial/tutorial_moxtra_06.png) 
 
 3. Az **SAML** oldalon hajtsa végre a következő lépéseket:
    
-    ![Egyszeri bejelentkezés konfigurálása](./media/moxtra-tutorial/tutorial_moxtra_08.png)   
+    ![Egyetlen Sign-On konfigurálása](./media/moxtra-tutorial/tutorial_moxtra_08.png)   
  
     a. A **név** szövegmezőbe írja be a konfiguráció nevét (pl.: *SAML*). 
   
@@ -191,7 +191,7 @@ Ennek a szakasznak a célja egy B. Simon nevű felhasználó létrehozása a Mox
 
 1. A bal oldali eszköztáron kattintson a **felügyeleti konzol > felhasználói kezelés**, majd a **felhasználó hozzáadása**elemre.
    
-    ![Egyszeri bejelentkezés konfigurálása](./media/moxtra-tutorial/tutorial_moxtra_10.png) 
+    ![Egyetlen Sign-On konfigurálása](./media/moxtra-tutorial/tutorial_moxtra_10.png) 
 
 1. A **felhasználó hozzáadása** párbeszédpanelen hajtsa végre a következő lépéseket:
   

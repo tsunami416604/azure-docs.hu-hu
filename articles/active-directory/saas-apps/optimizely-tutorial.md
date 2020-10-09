@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
 ms.openlocfilehash: 4564019f540d0dd08c8e0b2827b4a6b7df9c2cf0
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88543992"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-optimizely"></a>Oktatóanyag: Azure Active Directory integráció az optimalizálással
@@ -73,7 +73,7 @@ Az egyszeri bejelentkezés működéséhez szükség van egy Azure AD-felhaszná
 Az Azure AD egyszeri bejelentkezés optimalizálással történő konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
 
 1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. Az **[optimalizált egyszeri bejelentkezés konfigurálása](#configure-optimizely-single-sign-on)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+2. Az **[optimalizált egyszeri bejelentkezés konfigurálása](#configure-optimizely-single-sign-on)** – az egyes Sign-On beállítások konfigurálása az alkalmazás oldalán.
 3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
 4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
 5. **[Optimalizálással tesztelheti a felhasználót](#create-optimizely-test-user)** , hogy a Britta Simon-nek a felhasználó Azure ad-képviseletéhez kapcsolódó, optimalizálás alatt álló partnere legyen.
@@ -93,7 +93,7 @@ Az Azure AD egyszeri bejelentkezés optimalizálással történő konfigurálás
 
     ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
+3. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
@@ -114,7 +114,7 @@ Az Azure AD egyszeri bejelentkezés optimalizálással történő konfigurálás
 
 6. A fentieken kívül az alkalmazás optimalizálása néhány további attribútumot vár az SAML-válaszban. A **felhasználó attribútumai** párbeszédpanel **felhasználói jogcímek** szakaszában a következő lépésekkel adja hozzá az SAML-jogkivonat attribútumát az alábbi táblázatban látható módon:
 
-    | Name | Forrás attribútum |
+    | Név | Forrás attribútum |
     | ---------------| --------------- |
     | e-mail | User. mail |
     
@@ -136,7 +136,7 @@ Az Azure AD egyszeri bejelentkezés optimalizálással történő konfigurálás
 
     : Kattintson a **Mentés** gombra.
 
-4. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállítások alapján, és mentse a számítógépre.
+4. Az **egyszeres Sign-On beállítása az SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállítások alapján, és mentse azt a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozása](common/certificatebase64.png)
 
@@ -150,7 +150,7 @@ Az Azure AD egyszeri bejelentkezés optimalizálással történő konfigurálás
 
     c. Kijelentkezési URL-cím
 
-### <a name="configure-optimizely-single-sign-on"></a>Az optimalizált egyszeri bejelentkezés konfigurálása
+### <a name="configure-optimizely-single-sign-on"></a>Optimalizált egyszeri Sign-On konfigurálása
 
 1. Az egyszeri bejelentkezés **optimalizálási** oldalon való konfigurálásához lépjen kapcsolatba az optimalizálási fiók kezelőjével, és adja meg a letöltött **tanúsítvány (Base64)** és a megfelelő másolt URL-címeket.
 
@@ -164,11 +164,11 @@ Az Azure AD egyszeri bejelentkezés optimalizálással történő konfigurálás
 
 4. Kattintson a jobb felső sarokban a fiók nevére, majd a **Fiókbeállítások**lehetőségre.
 
-    ![Azure AD egyszeri bejelentkezés](./media/optimizely-tutorial/tutorial_optimizely_09.png)
+    ![Azure AD – egyetlen Sign-On](./media/optimizely-tutorial/tutorial_optimizely_09.png)
 
 5. A fiók lapon jelölje be az egyszeri bejelentkezés **engedélyezése** jelölőnégyzetet az **Áttekintés** szakaszban.
   
-    ![Azure AD egyszeri bejelentkezés](./media/optimizely-tutorial/tutorial_optimizely_10.png)
+    ![Azure AD – egyetlen Sign-On](./media/optimizely-tutorial/tutorial_optimizely_10.png)
 
 6. Kattintson a **Mentés** gombra.
 
@@ -195,7 +195,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    d. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

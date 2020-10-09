@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 03/17/2019
 ms.author: scottwhi
 ms.openlocfilehash: 677f6089f649aae720a6303a7e1512e3c7ebeca7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "66390122"
 ---
 # <a name="how-to-use-ranking-to-display-bing-web-search-api-results"></a>A rangsor használata Bing Web Search API eredmények megjelenítéséhez  
@@ -24,13 +24,13 @@ Minden keresési válasz tartalmaz egy [RankingResponse](https://docs.microsoft.
 
 Az egyes csoportokon (fővonalon vagy oldalsávon) belül az [Items](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#rankinggroup-items) Array azonosítja azt a sorrendet, amelyben a tartalomnak szerepelnie kell. Az egyes elemek a következő két módszert biztosítják az eredmény azonosítására a válaszon belül.  
 
--   `answerType`és `resultIndex` – a `answerType` mező azonosítja a választ (például a weboldalt vagy híreket) `resultIndex` , és a válaszon belül azonosítja az eredményeket (például egy újságcikket). Az index nulla alapú.  
+-   `answerType` és `resultIndex` – a `answerType` mező azonosítja a választ (például a weboldalt vagy híreket), és `resultIndex` a válaszon belül azonosítja az eredményeket (például egy újságcikket). Az index nulla alapú.  
 
--   `value`– A `value` mező olyan azonosítót tartalmaz, amely a válasz vagy eredmény azonosítójának felel meg a válaszon belül. Vagy a válasz vagy az eredmény tartalmazza az azonosítót, de nem mindkettőt.  
+-   `value` – A `value` mező olyan azonosítót tartalmaz, amely a válasz vagy eredmény azonosítójának felel meg a válaszon belül. Vagy a válasz vagy az eredmény tartalmazza az azonosítót, de nem mindkettőt.  
 
-Az azonosító használata egyszerűbb, mert csak a válasz AZONOSÍTÓjának vagy az egyik eredményének kell megegyeznie. Ha egy válasz objektum tartalmaz egy `id` mezőt, a válasz összes eredményét együtt jeleníti meg. Ha például az `News` objektum tartalmazza a `id` mezőt, az összes újságcikk együtt jelenjen meg. Ha az `News` objektum nem tartalmazza a `id` mezőt, akkor minden újságcikk tartalmaz egy `id` mezőt, és a rangsorolási válasz összekeveri a híreket más válaszok eredményeivel.  
+Az azonosító használata egyszerűbb, mert csak a válasz AZONOSÍTÓjának vagy az egyik eredményének kell megegyeznie. Ha egy válasz objektum tartalmaz egy `id` mezőt, a válasz összes eredményét együtt jeleníti meg. Ha például az `News` objektum tartalmazza a `id` mezőt, az összes újságcikk együtt jelenjen meg. Ha az `News` objektum nem tartalmazza a `id` mezőt, akkor minden újságcikk tartalmaz egy mezőt, `id` és a rangsorolási válasz összekeveri a híreket más válaszok eredményeivel.  
 
-A `answerType` és `resultIndex` a használata valamivel bonyolultabb. `answerType` A segítségével azonosíthatja a megjelenítendő eredményeket tartalmazó választ. `resultIndex` Ezután a válasz eredményei alapján indexelheti az eredményt, hogy megjelenjen az eredmény. (Az `answerType` érték a mező neve a [SearchResponse](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#searchresponse) objektumban.) Ha azt szeretné, hogy a válasz összes eredménye együtt jelenjen meg, a rangsorolási válasz elem nem tartalmazza `resultIndex` a mezőt.  
+A és a használata `answerType` `resultIndex` valamivel bonyolultabb. A segítségével `answerType` azonosíthatja a megjelenítendő eredményeket tartalmazó választ. Ezután a `resultIndex` Válasz eredményei alapján indexelheti az eredményt, hogy megjelenjen az eredmény. (Az `answerType` érték a mező neve a [SearchResponse](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-web-api-v7-reference#searchresponse) objektumban.) Ha azt szeretné, hogy a válasz összes eredménye együtt jelenjen meg, a rangsorolási válasz elem nem tartalmazza a `resultIndex` mezőt.  
 
 ## <a name="ranking-response-example"></a>Rangsorolási válasz példája
 

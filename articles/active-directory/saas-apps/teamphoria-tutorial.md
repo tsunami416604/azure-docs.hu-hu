@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 10/09/2019
 ms.author: jeedes
 ms.openlocfilehash: 30971c9c5280bfba37f46aaab0aaf2c2506502c0
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88542343"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-teamphoria"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Teamphoria
@@ -80,7 +80,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
     A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:  `https://<sub-domain>.teamphoria.com/login`
 
     > [!NOTE]
-    > Az érték nem valódi. Frissítse az értéket a tényleges bejelentkezési URL-címmel. Az érték beszerzéséhez forduljon a Teamphoria ügyfélszolgálati [csapatához](https://www.teamphoria.com/) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
+    > Az érték nem valódi. Frissítse az értéket a tényleges Sign-On URL-címmel. Az érték beszerzéséhez forduljon a Teamphoria ügyfélszolgálati [csapatához](https://www.teamphoria.com/) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
 1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg a **tanúsítvány (Base64)** elemet, majd a **Letöltés** gombra kattintva töltse le a tanúsítványt, és mentse a számítógépre.
 
@@ -100,7 +100,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Create** (Létrehozás) gombra.
+   1. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -134,15 +134,15 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 4. A bal oldali eszköztáron kattintson a **rendszergazdai beállítások** lehetőségre, majd a konfigurálás lapon az **egyszeri bejelentkezés** elemre kattintva nyissa meg az egyszeri bejelentkezés konfigurációs ablakát.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/teamphoria-tutorial/admin_sso_configure.png)
+    ![Egyetlen Sign-On konfigurálása](./media/teamphoria-tutorial/admin_sso_configure.png)
 
 5. Kattintson a jobb felső sarokban található **új identitás-szolgáltató hozzáadása** lehetőségre, hogy megnyissa az SSO beállításainak hozzáadására szolgáló űrlapot.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/teamphoria-tutorial/add_new_identity_provider.png)
+    ![Egyetlen Sign-On konfigurálása](./media/teamphoria-tutorial/add_new_identity_provider.png)
 
 6. Adja meg a részleteket a mezőkben az alább leírtak szerint:
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/teamphoria-tutorial/Teamphoria_sso_save.png)
+    ![Egyetlen Sign-On konfigurálása](./media/teamphoria-tutorial/Teamphoria_sso_save.png)
 
     a. **Megjelenítendő név**: adja meg a beépülő modul megjelenítendő nevét a rendszergazda lapon.
 

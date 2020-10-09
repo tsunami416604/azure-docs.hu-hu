@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 11/20/2018
 ms.topic: conceptual
 ms.openlocfilehash: 1bd08596a30db7322a72b4269fddfe0b9df19119
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "61447173"
 ---
 # <a name="remote-monitoring-architectural-choices"></a>Távoli monitorozási architektúra lehetőségei
@@ -59,7 +59,7 @@ A IoT-eszközök kapcsolatához a következőket használhatja:
 
 Az adatfolyam-feldolgozáshoz a távoli figyelési megoldás Azure Stream Analytics használ az összetett szabályok feldolgozásához. Ha egyszerűbb szabályokat szeretne használni, az egyszerű szabályok feldolgozását támogató egyéni webszolgáltatás van, bár ez a beállítás nem része a beépített telepítésnek. A hivatkozási architektúra az egyszerű szabályok feldolgozásához és az összetett szabályok feldolgozásához Azure Stream Analytics Azure Functions használatát javasolja.
 
-### <a name="storage"></a>Tárolás
+### <a name="storage"></a>Storage
 
 A tároláshoz a távoli figyelési megoldás gyorsító Azure Time Series Insights és Azure Cosmos DB is használ. A Azure Time Series Insights a csatlakoztatott eszközökről IoT Hubről érkező üzeneteket tárolja. A megoldás-gyorsító az összes többi tárterület, például a hűtőházi tárolás, a szabályok definíciói, a riasztások és a konfigurációs beállítások Azure Cosmos DB használja.
 

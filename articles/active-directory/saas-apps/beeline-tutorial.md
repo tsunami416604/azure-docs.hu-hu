@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/06/2019
 ms.author: jeedes
 ms.openlocfilehash: 571ab3c3943faf6ef5cbccb401a5416c327e3975
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88537804"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-beeline"></a>Oktatóanyag: Azure Active Directory integráció a beelintel
@@ -73,7 +73,7 @@ Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a kapcs
 Az Azure AD egyszeri bejelentkezés a beelintel való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
 
 1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. **[Konfigurálja a Beeline egyszeri bejelentkezést](#configure-beeline-single-sign-on)** az alkalmazás oldalának egyszeri bejelentkezési beállításainak konfigurálásához.
+2. A **[Beeline egyszeri bejelentkezés konfigurálása](#configure-beeline-single-sign-on)** – az egyes Sign-On beállítások konfigurálása az alkalmazás oldalán.
 3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
 4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
 5. **[Hozza létre a Beeline test User](#create-beeline-test-user)** -t, hogy a Beeline-ben található, a felhasználó Azure ad-Britta kapcsolódó tagja legyen.
@@ -93,11 +93,11 @@ Az Azure AD egyszeri bejelentkezés bekapcsolásával történő konfigurálás�
 
     ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
+3. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-4. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon hajtsa végre a következő lépéseket:
+4. Az **egyszeri Sign-On beállítása az SAML-vel** lapon hajtsa végre a következő lépéseket:
 
     ![A tartomány és az URL-címek egyszeri bejelentkezési adatainak Beeline](common/idp-intiated.png)
 
@@ -116,7 +116,7 @@ Az Azure AD egyszeri bejelentkezés bekapcsolásával történő konfigurálás�
 
     ![image](common/edit-attribute.png)
 
-6. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
+6. Az **egyszeres Sign-On beállítása SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozása](common/metadataxml.png)
 
@@ -125,7 +125,7 @@ Az Azure AD egyszeri bejelentkezés bekapcsolásával történő konfigurálás�
     ![Felhasználói hozzáférési URL-cím másolása](media/beeline-tutorial/client-access-url.png)
 
 
-### <a name="configure-beeline-single-sign-on"></a>Beeline egyszeri bejelentkezés konfigurálása
+### <a name="configure-beeline-single-sign-on"></a>A Beeline egyetlen Sign-On konfigurálása
 
 Az egyszeri bejelentkezés konfigurálásához el kell **Beeline** küldenie a letöltött **összevonási metaadatokat tartalmazó XML-fájlt** és a felhasználói hozzáférési URL-címet a Azure Portal tulajdonságaiból a [támogatási csoportba](https://www.beeline.com/support-beeline/). A metaadatok és a felhasználói hozzáférési URL-cím megkövetelése, hogy az SAML SSO-kapcsolat megfelelően legyen konfigurálva mindkét oldalon.
 
@@ -152,7 +152,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    d. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
