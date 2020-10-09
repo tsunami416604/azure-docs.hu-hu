@@ -3,12 +3,12 @@ title: Azure Service Fabric üzembe helyezés a PowerShell-lel
 description: Ismerje meg, hogyan távolíthat el és helyezhet üzembe alkalmazásokat az Azure Service Fabricban, és hogyan hajthatja végre ezeket a műveleteket a PowerShellben.
 ms.topic: conceptual
 ms.date: 01/19/2018
-ms.openlocfilehash: 3a6f5411c30087e15d1164cd02d4e6eb66566388
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.openlocfilehash: 8bc4557c5d0d59330c7e91a4b3fdce83cfbf334c
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91611452"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91827420"
 ---
 # <a name="deploy-and-remove-applications-using-powershell"></a>Alkalmazások telepítése és eltávolítása a PowerShell használatával
 
@@ -100,7 +100,7 @@ C:\USERS\USER\DOCUMENTS\VISUAL STUDIO 2015\PROJECTS\MYAPPLICATION\MYAPPLICATION\
 ```
 
 Ha az alkalmazáscsomag nagyméretű és/vagy sok fájllal rendelkezik, [tömörítheti](service-fabric-package-apps.md#compress-a-package)is. A tömörítés csökkenti a méretet és a fájlok számát.
-A mellékhatás az, hogy az alkalmazás típusának regisztrálása és regisztrációjának megszüntetése gyorsabb. A feltöltési idő jelenleg lassabb lehet, különösen akkor, ha a csomag tömörítésének idejét is tartalmazza. 
+Ez gyorsabb regisztrálást és az alkalmazás típusának regisztrációját eredményezi. A feltöltési idő jelenleg lassabb lehet, különösen akkor, ha a csomag tömörítésének idejét is tartalmazza. 
 
 A csomagok tömörítéséhez használja ugyanazt a [copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) parancsot. A tömörítés elkülöníthető a feltöltéstől, a `SkipCopy` jelző használatával vagy a feltöltési művelettel. Tömörített csomag tömörítésének alkalmazása nem-op.
 Tömörített csomag kibontásához használja ugyanazt a [copy-ServiceFabricApplicationPackage](/powershell/module/servicefabric/copy-servicefabricapplicationpackage?view=azureservicefabricps) parancsot a `UncompressPackage` kapcsolóval.
@@ -390,7 +390,7 @@ Status                 : Available
 DefaultParameters      : { "Stateless1_InstanceCount" = "-1" }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Alkalmazás becsomagolása](service-fabric-package-apps.md)
 

@@ -2,18 +2,17 @@
 title: Oktatóanyag – új szabályzat-hozzárendelés Azure Portal
 description: Ebben az oktatóanyagban a Azure Portal használatával hoz létre egy Azure Policy-hozzárendelést a nem megfelelő erőforrások azonosításához.
 ms.topic: tutorial
-ms.date: 09/23/2020
-ms.openlocfilehash: fbfe7090db1b4e1a8f802b30fdf749466ea26f1f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.date: 10/07/2020
+ms.openlocfilehash: 9a07e490525ce532f8f843b30b3b83715e65ce3c
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91321866"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826601"
 ---
 # <a name="tutorial-create-a-policy-assignment-to-identify-non-compliant-resources"></a>Oktatóanyag: szabályzat-hozzárendelés létrehozása a nem megfelelő erőforrások azonosításához
 
-Az Azure-ral való megfelelőség megértéséhez szükséges első lépés a saját erőforrásai állapotának megállapítása.
-Ebből az oktatóanyagból megtudhatja, hogyan hozhat létre egy szabályzat-hozzárendelést az Azure arc-kompatibilis kiszolgálók gépek azonosításához, és hogy azonosítsa azokat a gépeket, amelyek nem rendelkeznek az Azure arc-kompatibilis gépekre telepített Log Analytics ügynökkel.
+Az Azure-ral való megfelelőség megértéséhez szükséges első lépés a saját erőforrásai állapotának megállapítása. Azure Policy támogatja az ív-kompatibilis kiszolgáló állapotának naplózását a vendég-konfigurációs házirendekkel. A vendég-konfigurációs házirendek nem alkalmaznak konfigurációkat, csak a számítógépen lévő beállításokat naplózzák. Ez az oktatóanyag végigvezeti a szabályzatok létrehozásának és hozzárendelésének folyamatán, és azonosítja, hogy az ív használatára képes kiszolgálók közül melyeken nincs telepítve a Log Analytics ügynök.
 
 A folyamat végén sikeresen azonosíthatja azokat a gépeket, amelyeken nincs telepítve a Log Analytics ügynök a Windows vagy a Linux rendszerhez. Ezek a szabályzat-hozzárendelés szempontjából _nem megfelelőnek_ minősülnek.
 
@@ -23,7 +22,7 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány
 
 ## <a name="create-a-policy-assignment"></a>Szabályzat-hozzárendelés létrehozása
 
-Ebben az oktatóanyagban létrehoz egy szabályzat-hozzárendelést, és hozzárendeli _azokat a naplózási virtuális gépeket, amelyek nem használják a felügyelt lemezek_ házirend-definícióját.
+Ebben az oktatóanyagban létrehoz egy szabályzat-hozzárendelést, és hozzárendeli az _ \[ előzetes verziót]: log Analytics ügynöknek telepítve kell lennie a Linux Azure_ -beli arc-számítógépek házirend-definíciójában.
 
 1. Indítsa el az Azure Policy szolgáltatást az Azure Portalon. Ehhez kattintson a **Minden szolgáltatás** elemre, majd keresse meg, és válassza ki a **Szabályzat** elemet.
 
@@ -31,11 +30,11 @@ Ebben az oktatóanyagban létrehoz egy szabályzat-hozzárendelést, és hozzár
 
 1. Válassza ki a **Hozzárendelések** elemet az Azure Policy oldal bal oldalán. A hozzárendelés egy olyan szabályzat, amely egy adott hatókörön belül érvényes.
 
-   :::image type="content" source="./media/tutorial-assign-policy-portal/select-assignment.png" alt-text="Hozzárendelések lap kiválasztása a házirend áttekintő oldaláról" border="false":::
+   :::image type="content" source="./media/tutorial-assign-policy-portal/select-assignment.png" alt-text="Szabályzat keresése az összes szolgáltatásban" border="false":::
 
 1. Válassza a **Szabályzat hozzárendelése** lehetőséget a **Szabályzat – Hozzárendelések** oldal tetején.
 
-   :::image type="content" source="./media/tutorial-assign-policy-portal/select-assign-policy.png" alt-text="Házirend-definíció hozzárendelése a hozzárendelések lapról" border="false":::
+   :::image type="content" source="./media/tutorial-assign-policy-portal/select-assign-policy.png" alt-text="Szabályzat keresése az összes szolgáltatásban" border="false":::
 
 1. A **Szabályzat hozzárendelése** oldalon a **Hatókör** kiválasztásához kattintson a három pontra, majd válasszon felügyeleti csoportot vagy előfizetést. Ha szeretne, válasszon erőforráscsoportot. A hatókör határozza meg, hogy a szabályzat-hozzárendelés milyen erőforrások vagy erőforráscsoportok esetében lesz kényszerítve. Ezután kattintson a **Kiválasztás** gombra a **Hatókör** oldal alján.
 
@@ -53,7 +52,7 @@ Ebben az oktatóanyagban létrehoz egy szabályzat-hozzárendelést, és hozzár
 
 1. Tekintse meg az előzetes verziót a szabályzat-definíciók listájában _ \[ : log Analytics ügynöknek telepítve kell lennie a Windows Azure arc-gépek_ definíciójában, ha engedélyezte az arc-kompatibilis kiszolgálók ügynököt egy Windows-alapú gépen. A Linux-alapú gépek esetében keresse meg a megfelelő _ \[ előzetes verziót]: log Analytics ügynöknek telepítve kell lennie a Linux Azure_ -beli ív-számítógép házirendjének definíciójában. Kattintson a szabályzatra, majd kattintson a **Kiválasztás** elemre.
 
-   :::image type="content" source="./media/tutorial-assign-policy-portal/select-available-definition.png" alt-text="A megfelelő szabályzatdefiníció megtalálása" border="false":::
+   :::image type="content" source="./media/tutorial-assign-policy-portal/select-available-definition.png" alt-text="Szabályzat keresése az összes szolgáltatásban" border="false":::
 
 1. A **Hozzárendelés neve** mező automatikusan kitöltődik a kiválasztott szabályzat nevével, de megadhat más nevet is. Ebben a példában az _ \[ előnézet]: log Analytics ügynököt telepíteni kell a Windows Azure arc-gépekre vagy előzetes verzióra_ _ \[ ]: log Analytics ügynöknek telepítve kell lennie a Linux Azure_ -beli arc-számítógépeken attól függően, hogy melyiket választotta. Ha szeretné hozzáadhat egy **Leírást**. A leírás a szabályzat-hozzárendeléssel kapcsolatos információkat adja meg.
    A **Hozzárendelte** mező automatikusan ki lesz töltve az alapján, hogy ki van bejelentkezve. Ennek a mezőnek a kitöltése nem kötelező, tehát megadhatók egyedi értékek.
@@ -68,7 +67,7 @@ Most már készen áll a nem megfelelő erőforrások azonosítására a környe
 
 A lap bal oldalán kattintson a **megfelelőség** elemre. Ezután keresse meg az ** \[ előzetes verziót]: log Analytics ügynököt telepíteni kell a Windows Azure arc-gépekre vagy az előzetes verzióra** ** \[ ]: log Analytics ügynöknek telepítve kell lennie a létrehozott Linux Azure arc Machines** -szabályzat-hozzárendelésen.
 
-:::image type="content" source="./media/tutorial-assign-policy-portal/policy-compliance.png" alt-text="Megfelelőségi részletek a szabályzat megfelelőségi lapján" border="false":::
+:::image type="content" source="./media/tutorial-assign-policy-portal/policy-compliance.png" alt-text="Szabályzat keresése az összes szolgáltatásban" border="false":::
 
 Ha vannak olyan meglévő erőforrások, amelyek nem felelnek meg az új hozzárendelésnek, akkor a **nem megfelelő erőforrások**alatt jelennek meg.
 
@@ -92,7 +91,7 @@ A létrehozott hozzárendelés eltávolításához kövesse az alábbi lépések
 
 1. Kattintson a jobb gombbal a szabályzat-hozzárendelésre, és válassza a **hozzárendelés törlése**lehetőséget.
 
-   :::image type="content" source="./media/tutorial-assign-policy-portal/delete-assignment.png" alt-text="Hozzárendelés törlése a megfelelőség lapról" border="false":::
+   :::image type="content" source="./media/tutorial-assign-policy-portal/delete-assignment.png" alt-text="Szabályzat keresése az összes szolgáltatásban" border="false":::
 
 ## <a name="next-steps"></a>Következő lépések
 

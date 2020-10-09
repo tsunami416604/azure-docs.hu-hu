@@ -7,12 +7,12 @@ ms.author: lagayhar
 ms.date: 06/07/2019
 ms.reviewer: sergkanz
 ms.custom: devx-track-python, devx-track-csharp
-ms.openlocfilehash: fd9299d49f42eb021d64ae25447fd13e7378ff3f
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 53ce3764d074388213a3a4be08502b09743e28cb
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91447864"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91827619"
 ---
 # <a name="telemetry-correlation-in-application-insights"></a>Telemetria korreláció a Application Insightsban
 
@@ -46,7 +46,7 @@ Az eredményül kapott telemetria a következő lekérdezés futtatásával elem
 
 Az eredmények között vegye figyelembe, hogy az összes telemetria-elem megosztja a gyökeret `operation_Id` . Ha a lapon Ajax-hívás történik, a rendszer új egyedi azonosítót ( `qJSXU` ) rendel a függőségi telemetria, és az OLDALMEGTEKINTÉS azonosítóját használja `operation_ParentId` . A kiszolgálói kérelem ezután az Ajax ID-t használja `operation_ParentId` .
 
-| itemType   | név                      | ID           | operation_ParentId | operation_Id |
+| itemType   | name                      | ID (Azonosító)           | operation_ParentId | operation_Id |
 |------------|---------------------------|--------------|--------------------|--------------|
 | oldalmegtekintést   | Stock lap                |              | STYz               | STYz         |
 | függőségi | /Home/Stock beolvasása           | qJSXU        | STYz               | STYz         |
@@ -74,71 +74,17 @@ A Application Insights a korrelációs HTTP protokoll [bővítményét](https://
 A [W3C nyomkövetési környezet](https://w3c.github.io/trace-context/) és a Application Insights adatmodellek leképezése a következő módon történik:
 
 | Application Insights                   | W3C nyomkövetési környezet –                                      |
-|------------------------------------    |-------------------------------------------------    |
-| `Request`, `PageView`                  | `SpanKind` kiszolgáló, ha szinkron; `SpanKind` a fogyasztó, ha aszinkron                    |
-| `Dependency`                           | `SpanKind` az ügyfél, ha szinkron; `SpanKind` a gyártó, ha aszinkron                   |
-| `Id``Request`és`Dependency`     | `SpanId`                                            |
-| `Operation_Id`                         | `TraceId`                                           |
-| `Operation_ParentId`                   | `SpanId` a span szülő-tartománya. Ha ez egy gyökérszintű tartomány, akkor ennek a mezőnek üresnek kell lennie.     |
+|------------------------------------    |-------------------------------------------------|
+| `Id``Request`és`Dependency`     | [szülő-azonosító](https://w3c.github.io/trace-context/#parent-id)                                     |
+| `Operation_Id`                         | [nyomkövetési azonosító](https://w3c.github.io/trace-context/#trace-id)                                           |
+| `Operation_ParentId`                   | a span szülő-tartományának [szülő-azonosítója](https://w3c.github.io/trace-context/#parent-id) . Ha ez egy gyökérszintű tartomány, akkor ennek a mezőnek üresnek kell lennie.     |
+
 
 További információ: [Application Insights telemetria adatmodell](../../azure-monitor/app/data-model.md).
 
-### <a name="enable-w3c-distributed-tracing-support-for-classic-aspnet-apps"></a>A W3C elosztott nyomkövetési támogatásának engedélyezése klasszikus ASP.NET-alkalmazásokhoz
- 
-  > [!NOTE]
-  >  A és a rendszertől kezdve `Microsoft.ApplicationInsights.Web` `Microsoft.ApplicationInsights.DependencyCollector` nincs szükség konfigurációra.
+### <a name="enable-w3c-distributed-tracing-support-for-net-apps"></a>A W3C elosztott nyomkövetési támogatásának engedélyezése a .NET-alkalmazások számára
 
-A W3C nyomkövetési környezet támogatása visszamenőlegesen kompatibilis módon valósítható meg. A korreláció várhatóan az SDK korábbi verzióival (W3C-támogatás nélkül) működő alkalmazásokkal fog működni.
-
-Ha továbbra is az örökölt protokollt szeretné használni `Request-Id` , letilthatja a nyomkövetési környezetet a következő konfiguráció használatával:
-
-```csharp
-  Activity.DefaultIdFormat = ActivityIdFormat.Hierarchical;
-  Activity.ForceDefaultIdFormat = true;
-```
-
-Ha az SDK egy régebbi verzióját futtatja, javasoljuk, hogy frissítse, vagy alkalmazza a következő konfigurációt a nyomkövetési környezet engedélyezéséhez.
-Ez a funkció a és a `Microsoft.ApplicationInsights.Web` `Microsoft.ApplicationInsights.DependencyCollector` csomagokban érhető el, a 2.8.0-béta verziótól kezdődően.
-Alapértelmezés szerint le van tiltva. Az engedélyezéséhez végezze el a következő módosításokat `ApplicationInsights.config` :
-
-- `RequestTrackingTelemetryModule`A területen adja hozzá az `EnableW3CHeadersExtraction` elemet, és állítsa be a értékét a következőre: `true` .
-- `DependencyTrackingTelemetryModule`A területen adja hozzá az `EnableW3CHeadersInjection` elemet, és állítsa be a értékét a következőre: `true` .
-- Hozzáadás `W3COperationCorrelationTelemetryInitializer` a területen `TelemetryInitializers` . Ez a következő példához hasonlóan fog kinézni:
-
-```xml
-<TelemetryInitializers>
-  <Add Type="Microsoft.ApplicationInsights.Extensibility.W3C.W3COperationCorrelationTelemetryInitializer, Microsoft.ApplicationInsights"/>
-   ...
-</TelemetryInitializers>
-```
-
-### <a name="enable-w3c-distributed-tracing-support-for-aspnet-core-apps"></a>A W3C elosztott nyomkövetési támogatásának engedélyezése ASP.NET Core alkalmazások számára
-
- > [!NOTE]
-  > A `Microsoft.ApplicationInsights.AspNetCore` 2.8.0 verziótól kezdődően nincs szükség konfigurációra.
- 
-A W3C nyomkövetési környezet támogatása visszamenőlegesen kompatibilis módon valósítható meg. A korreláció várhatóan az SDK korábbi verzióival (W3C-támogatás nélkül) működő alkalmazásokkal fog működni.
-
-Ha továbbra is az örökölt protokollt szeretné használni `Request-Id` , letilthatja a nyomkövetési környezetet a következő konfiguráció használatával:
-
-```csharp
-  Activity.DefaultIdFormat = ActivityIdFormat.Hierarchical;
-  Activity.ForceDefaultIdFormat = true;
-```
-
-Ha az SDK egy régebbi verzióját futtatja, javasoljuk, hogy frissítse, vagy alkalmazza a következő konfigurációt a nyomkövetési környezet engedélyezéséhez.
-
-Ez a szolgáltatás a `Microsoft.ApplicationInsights.AspNetCore` 2.5.0-béta és a `Microsoft.ApplicationInsights.DependencyCollector` 2.8.0-bétaverzió verzióban érhető el.
-Alapértelmezés szerint le van tiltva. Az engedélyezéséhez állítsa a következőre `ApplicationInsightsServiceOptions.RequestCollectionOptions.EnableW3CDistributedTracing` `true` :
-
-```csharp
-public void ConfigureServices(IServiceCollection services)
-{
-    services.AddApplicationInsightsTelemetry(o => 
-        o.RequestCollectionOptions.EnableW3CDistributedTracing = true );
-    // ....
-}
-```
+A W3C nyomkövetési környezet –-alapú elosztott nyomkövetés alapértelmezés szerint engedélyezve van minden legújabb .NET-keretrendszerben/. NET Core SDK-ban, valamint visszamenőleges kompatibilitással az örökölt Request-ID protokollal.
 
 ### <a name="enable-w3c-distributed-tracing-support-for-java-apps"></a>A W3C elosztott nyomkövetési támogatásának engedélyezése Java-alkalmazásokhoz
 
@@ -304,24 +250,9 @@ A naplózási adatai a használatával exportálhatók `AzureLogHandler` . Tová
 
 ## <a name="telemetry-correlation-in-net"></a>Telemetria korreláció a .NET-ben
 
-Az idő múlásával a .NET számos módszert definiált a telemetria és diagnosztikai naplók összekapcsolásához:
+A .NET-futtatókörnyezet támogatott a [tevékenység](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md) -és [DiagnosticSource](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/DiagnosticSourceUsersGuide.md) segítségével
 
-- `System.Diagnostics.CorrelationManager` lehetővé teszi a [LogicalOperationStack és a tevékenységazonosító](/dotnet/api/system.diagnostics.correlationmanager?view=netcore-3.1)nyomon követését.
-- `System.Diagnostics.Tracing.EventSource` és Windows esemény-nyomkövetés (ETW) határozza meg a [SetCurrentThreadActivityId](/dotnet/api/system.diagnostics.tracing.eventsource.setcurrentthreadactivityid?view=netcore-3.1#overloads) metódust.
-- `ILogger` a [naplózási hatóköröket](/aspnet/core/fundamentals/logging#log-scopes)használja.
-- A Windows Communication Foundation (WCF) és a HTTP-átvitel "aktuális" kontextus-propagálást használ.
-
-Ezek a módszerek azonban nem engedélyezték az automatikus elosztott nyomkövetés támogatását. `DiagnosticSource` támogatja az automatikus gépek közötti korrelációt. A .NET-kódtárak támogatják `DiagnosticSource` és engedélyezik a korrelációs környezet automatikus, a szállításon keresztüli propagálását, például a http-t.
-
-A [tevékenység felhasználói útmutatója](https://github.com/dotnet/runtime/blob/master/src/libraries/System.Diagnostics.DiagnosticSource/src/ActivityUserGuide.md) `DiagnosticSource` ismerteti a tevékenységek követésének alapjait.
-
-A ASP.NET Core 2,0 támogatja a HTTP-fejlécek kinyerését és az új tevékenységek indítását.
-
-`System.Net.Http.HttpClient`a 4.1.0 verziótól kezdődően a a korrelációs HTTP-fejlécek automatikus befecskendezését és a HTTP-hívások tevékenységként való nyomon követését támogatja.
-
-Létezik egy új HTTP-modul, a [Microsoft. AspNet. TelemetryCorrelation](https://www.nuget.org/packages/Microsoft.AspNet.TelemetryCorrelation/)a klasszikus ASP.net. Ez a modul telemetria korrelációt valósít meg a használatával `DiagnosticSource` . Elindít egy tevékenységet a bejövő kérelmek fejlécei alapján. Emellett a kérelmek feldolgozásának különböző szakaszaiból is összefügg a telemetria, még akkor is, ha a Internet Information Services (IIS) feldolgozásának minden fázisa egy másik felügyelt szálon fut.
-
-Az Application Insights SDK, a 2.4.0-béta verziótól kezdődően, a telemetria és az `DiagnosticSource` `Activity` aktuális tevékenységhez társítja az adatokat.
+A Application Insights .NET SDK a `DiagnosticSource` telemetria-t használja, és `Activity` összegyűjti és korrelálja.
 
 <a name="java-correlation"></a>
 ## <a name="telemetry-correlation-in-java"></a>Telemetria korreláció a javában
@@ -368,7 +299,7 @@ A [Java-ügynök](./java-in-process-agent.md) , valamint a [Java SDK](../../azur
 
   A Spring boot Starter automatikusan hozzárendeli `cloudRoleName` a `spring.application.name` tulajdonsághoz megadott értéket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Egyéni telemetria](../../azure-monitor/app/api-custom-events-metrics.md)írása.
 - A ASP.NET Core-és ASP.NET speciális korrelációs forgatókönyvei: [Egyéni műveletek nyomon követése](custom-operations-tracking.md).

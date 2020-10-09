@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 06/26/2020
 ms.author: cynthn
 ms.reviewer: jagaveer
-ms.openlocfilehash: 165a2c6221c8d3c14f71134deef962d0859bb438
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 9a06dea64ffb348477308979fa07c0e2ce822b0c
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816711"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91825401"
 ---
 # <a name="deploy-spot-vms-using-the-azure-cli"></a>Helyszíni virtuális gépek üzembe helyezése az Azure CLI használatával
 
@@ -64,8 +64,25 @@ az vm list \
    --output table
 ```
 
+## <a name="simulate-an-eviction"></a>Kizárás szimulálása
+
+A Direktszínű virtuális gépek [kizárását szimulálhatja](/rest/api/compute/virtualmachines/simulateeviction) , így tesztelheti, hogy az alkalmazás milyen jól fogja kizárni a hirtelen kizárást. 
+
+Cserélje le a következőt az adataira: 
+
+- `subscriptionId`
+- `resourceGroupName`
+- `vmName`
+
+
+```http
+POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/simulateEviction?api-version=2020-06-01
+```
+
 **Következő lépések**
 
-[Azure PowerShell](../windows/spot-powershell.md), [portál](../windows/spot-portal.md)vagy [sablon](spot-template.md)használatával is létrehozhat egy helyszíni virtuális gépet.
+[Azure PowerShell](../windows/spot-powershell.md), [portál](../spot-portal.md)vagy [sablon](spot-template.md)használatával is létrehozhat egy helyszíni virtuális gépet.
+
+Az aktuális díjszabási információkat az [Azure kiskereskedelmi díjszabás API](/rest/api/cost-management/retail-prices/azure-retail-prices) használatával kérdezheti le a helyszíni díjszabással kapcsolatban. A `meterName` és `skuName` mindkettő tartalmazni fogja `Spot` .
 
 Ha hibát tapasztal, tekintse meg a [hibakódokat](../error-codes-spot.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

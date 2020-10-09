@@ -7,13 +7,13 @@ ms.service: azure-resource-manager
 ms.topic: quickstart
 ms.custom: subject-armqs
 ms.author: danlep
-ms.date: 05/26/2020
-ms.openlocfilehash: 2cfce37ff63a8321f40843ced2a7b786bcfc013e
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.date: 10/06/2020
+ms.openlocfilehash: 97b556e0329644b973def8333ddb5e70e370b0bc
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88649601"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826983"
 ---
 # <a name="quickstart-create-a-geo-replicated-container-registry-by-using-an-arm-template"></a>Gyors útmutató: földrajzilag replikált tároló-beállításjegyzék létrehozása ARM-sablon használatával
 
@@ -48,19 +48,22 @@ További Azure Container Registry-sablonok a gyorsindítási [sablonok](https://
 
     [![Üzembe helyezés az Azure-ban](../media/template-deployments/deploy-to-azure.svg)](https://portal.azure.com/#create/Microsoft.Template/uri/https%3A%2F%2Fraw.githubusercontent.com%2FAzure%2Fazure-quickstart-templates%2Fmaster%2F101-container-registry-geo-replication%2Fazuredeploy.json)
 
- 2. Válassza ki vagy adja meg a következő értékeket.
+ 1. Válassza ki vagy adja meg a következő értékeket.
 
     * **Előfizetés**: válasszon ki egy Azure-előfizetést.
     * **Erőforráscsoport**: válassza az **új létrehozása**lehetőséget, adjon meg egy egyedi nevet az erőforráscsoport számára, majd kattintson **az OK gombra**.
-    * **Hely**: válasszon egy helyet az erőforráscsoportnak. Példa: **USA középső**régiója.
+    * **Régió**: válassza ki az erőforráscsoport helyét. Példa: **USA középső**régiója.
     * **ACR neve**: fogadja el a beállításjegyzék generált nevét, vagy adjon meg egy nevet. Globálisan egyedinek kell lennie.
+    * **ACR rendszergazda felhasználó engedélyezve**: fogadja el az alapértelmezett értéket.
     * **Hely**: fogadja el a beállításjegyzék Kezdőlap replikájának létrehozott helyét, vagy adjon meg egy helyet, például az **USA középső**régióját. 
+    * **ACR SKU**: fogadja el az alapértelmezett értéket.
     * **ACR-replika helye**: adjon meg egy helyet a beállításjegyzék-replika számára a régió rövid nevének használatával. Ettől eltérőnek kell lennie a Kezdőlap beállításjegyzékének helyétől. Példa: **westeurope**.
-    * **Elfogadom a fenti feltételeket és kikötéseket**: Select.
 
         :::image type="content" source="media/container-registry-get-started-geo-replication-template/template-properties.png" alt-text="Sablon tulajdonságai":::
 
- 3. Ha elfogadja a használati feltételeket, válassza a **vásárlás**lehetőséget. A beállításjegyzék sikeres létrehozása után értesítést kap:
+1. Válassza a **felülvizsgálat + létrehozás**lehetőséget, majd tekintse át a használati feltételeket. Ha elfogadja, válassza a **Létrehozás**lehetőséget.
+
+1. A beállításjegyzék sikeres létrehozása után értesítést kap:
 
      :::image type="content" source="media/container-registry-get-started-geo-replication-template/deployment-notification.png" alt-text="Sablon tulajdonságai":::
 
@@ -84,7 +87,9 @@ A tároló-beállításjegyzék tulajdonságainak áttekintéséhez használja a
 
 Ha már nincs szüksége rájuk, törölje az erőforráscsoportot, a beállításjegyzéket és a beállításjegyzék-replikát. Ehhez nyissa meg a Azure Portal, válassza ki a beállításjegyzéket tartalmazó erőforráscsoportot, majd válassza az **erőforráscsoport törlése**lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+:::image type="content" source="media/container-registry-get-started-geo-replication-template/delete-resource-group.png" alt-text="Sablon tulajdonságai":::
+
+## <a name="next-steps"></a>Következő lépések
 
 Ebben a rövid útmutatóban létrehozott egy Azure Container Registry egy ARM-sablonnal, és konfigurált egy beállításjegyzék-replikát egy másik helyen. Folytassa a Azure Container Registry oktatóanyagokkal, és tekintse meg az ACR mélyebb megjelenését.
 

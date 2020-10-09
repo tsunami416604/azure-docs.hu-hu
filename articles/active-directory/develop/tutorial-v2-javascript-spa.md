@@ -12,12 +12,12 @@ ms.workload: identity
 ms.date: 08/06/2020
 ms.author: nacanuma
 ms.custom: aaddev, identityplatformtop40, devx-track-js
-ms.openlocfilehash: 2cfc0324a06b4d950fc289b9c8ef033e77ffa53f
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: 027305d953a24de17e62aa74b33b72494b03e652
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91627907"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91825908"
 ---
 # <a name="tutorial-sign-in-users-and-call-the-microsoft-graph-api-from-a-javascript-single-page-application-spa"></a>Oktatóanyag: bejelentkezés a felhasználókba és a Microsoft Graph API meghívása egy JavaScript egyoldalas alkalmazásból (SPA)
 
@@ -72,7 +72,7 @@ Győződjön meg arról, hogy telepítve van [Node.js](https://nodejs.org/en/dow
    npm install morgan --save
    ```
 
-1. Most hozzon létre egy nevű. js fájlt `index.js` , majd adja hozzá a következő kódot:
+1. Most hozzon létre egy nevű. js fájlt `server.js` , majd adja hozzá a következő kódot:
 
    ```JavaScript
    const express = require('express');
@@ -279,7 +279,7 @@ A hitelesítés további folytatása előtt regisztrálja alkalmazását **Azure
 
 > ### <a name="set-a-redirect-url-for-nodejs"></a>Átirányítási URL-cím beállítása Node.jshoz
 >
-> Node.js esetében beállíthatja a webkiszolgáló-portot a *index.js* fájlban. Ez az oktatóanyag a 3000-es portot használja, de bármilyen más elérhető portot is használhat.
+> Node.js esetében beállíthatja a webkiszolgáló-portot a *server.js* fájlban. Ez az oktatóanyag a 3000-es portot használja, de bármilyen más elérhető portot is használhat.
 >
 > Ha egy átirányítási URL-címet szeretne beállítani az alkalmazás regisztrációs adatai között, váltson vissza az **alkalmazás regisztrációja** ablaktáblára, és tegye a következők egyikét:
 >
@@ -507,9 +507,10 @@ A Microsoft Graph API-nak a felhasználónak *. Read* hatókörrel kell rendelke
 
 [!INCLUDE [Help and support](../../../includes/active-directory-develop-help-support-include.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az egyoldalas alkalmazások (SPA) fejlesztése a Microsoft Identity platformon, a több részből álló forgatókönyvek sorozatában.
 
 > [!div class="nextstepaction"]
 > [Forgatókönyv: egyoldalas alkalmazás](scenario-spa-overview.md)
+

@@ -8,12 +8,12 @@ ms.topic: how-to
 ms.date: 06/26/2020
 ms.author: cynthn
 ms.reviewer: jagaveer
-ms.openlocfilehash: 8bcf90368e8d43dce2d10fa3744024bcbc7e4b52
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 44d23710db169fa27aaba8928d421918bef93fec
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88816541"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91825126"
 ---
 # <a name="deploy-spot-vms-using-azure-powershell"></a>Helyszíni virtuális gépek üzembe helyezése Azure PowerShell használatával
 
@@ -73,8 +73,25 @@ Get-AzVM -ResourceGroupName $resourceGroup | `
    Select-Object Name,@{Name="maxPrice"; Expression={$_.BillingProfile.MaxPrice}}
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="simulate-an-eviction"></a>Kizárás szimulálása
 
-Helyszíni virtuális gépet az [Azure CLI](../linux/spot-cli.md)-vel, a [portálral](spot-portal.md) vagy a [sablonnal](../linux/spot-template.md)is létrehozhat.
+A Direktszínű virtuális gépek [kizárását szimulálhatja](/rest/api/compute/virtualmachines/simulateeviction) , így tesztelheti, hogy az alkalmazás milyen jól fogja kizárni a hirtelen kizárást. 
+
+Cserélje le a következőt az adataira: 
+
+- `subscriptionId`
+- `resourceGroupName`
+- `vmName`
+
+
+```http
+POST https://management.azure.com/subscriptions/{subscriptionId}/resourceGroups/{resourceGroupName}/providers/Microsoft.Compute/virtualMachines/{vmName}/simulateEviction?api-version=2020-06-01
+```
+
+## <a name="next-steps"></a>Következő lépések
+
+Helyszíni virtuális gépet az [Azure CLI](../linux/spot-cli.md)-vel, a [portálral](../spot-portal.md) vagy a [sablonnal](../linux/spot-template.md)is létrehozhat.
+
+Az aktuális díjszabási információkat az [Azure kiskereskedelmi díjszabás API](/rest/api/cost-management/retail-prices/azure-retail-prices) használatával kérdezheti le a helyszíni díjszabással kapcsolatban. A `meterName` és `skuName` mindkettő tartalmazni fogja `Spot` .
 
 Ha hibát tapasztal, tekintse meg a [hibakódokat](../error-codes-spot.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json).

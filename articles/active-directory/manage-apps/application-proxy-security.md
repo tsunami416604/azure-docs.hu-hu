@@ -16,12 +16,12 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 7f34355f790b56c43c2e9fae7ce23b6344b4739d
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: e8051621cf05b0f8c387c41cf0b95bb32e15e667
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91362146"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91825895"
 ---
 # <a name="security-considerations-for-accessing-apps-remotely-with-azure-ad-application-proxy"></a>Az alkalmazások távoli Azure-AD Application Proxy való elérésének biztonsági szempontjai
 
@@ -83,7 +83,7 @@ Az Azure AD Application Proxy által közzétett alkalmazások biztonságának j
 
 #### <a name="azure-ddos-protection-service"></a>Azure DDoS Protection szolgáltatás
 
-Az Application proxyn keresztül közzétett alkalmazások védve vannak az elosztott szolgáltatásmegtagadási (DDoS) támadások ellen. Az Azure **DDoS Protection** szolgáltatás az Azure platformmal biztosít védelmet az Azure-erőforrások számára a szolgáltatásmegtagadási támadások ellen. Az alapszintű szolgáltatási szint automatikusan engedélyezve van, **így a forgalom** folyamatos figyelését és a gyakori hálózati szintű támadások valós idejű enyhítését teszi lehetővé. Részletekért lásd: [Azure DDoS Protection standard Overview](https://docs.microsoft.com/azure/virtual-network/ddos-protection-overview).
+Az Application proxyn keresztül közzétett alkalmazások védve vannak az elosztott szolgáltatásmegtagadási (DDoS) támadások ellen. Ezt a védelmet a Microsoft felügyeli, és minden adatközpontban automatikusan engedélyezve van. Az Azure DDoS Protection szolgáltatás mindig a forgalom figyelését és a gyakori hálózati szintű támadások valós idejű enyhítését biztosítja. 
 
 ## <a name="under-the-hood"></a>technikai részletek
 

@@ -8,12 +8,12 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/27/2020
-ms.openlocfilehash: d850bcf2ffbd3867ab28d7dee54df3f8b427fd6e
-ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
+ms.openlocfilehash: 22f524ed4f01ad5b3be110008a82cd31c5c476c5
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2020
-ms.locfileid: "91404745"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91827861"
 ---
 # <a name="source-transformation-in-mapping-data-flow"></a>Forrás-átalakítás a leképezési adatfolyamban 
 
@@ -57,7 +57,9 @@ Az Azure Data Factorynek több mint [90 natív összekötőhöz](connector-overv
 
 ## <a name="source-settings"></a>Forrásbeállítások
 
-Miután hozzáadta a forrást, konfigurálja a **beállításokat a forrás beállításai** lapon. Itt kiválaszthatja vagy létrehozhatja a forrásként szolgáló adatkészletet. Kiválaszthatja az adataihoz tartozó séma-és mintavételi beállításokat is.
+Miután hozzáadta a forrást, konfigurálja a **beállításokat a forrás beállításai** lapon. Itt kiválaszthatja vagy létrehozhatja a forrásként szolgáló adatkészletet. Kiválaszthatja az adataihoz tartozó séma-és mintavételi beállításokat is. 
+
+Az adatkészlet paramétereinek fejlesztési értékei konfigurálhatók a [hibakeresési beállításokban](concepts-data-flow-debug-mode.md) (a hibakeresési módot kötelező bekapcsolni).
 
 ![Forrás beállításai lap](media/data-flow/source1.png "Forrás beállításai lap")
 

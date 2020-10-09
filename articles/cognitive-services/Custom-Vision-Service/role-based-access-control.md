@@ -10,12 +10,12 @@ ms.subservice: custom-vision
 ms.topic: conceptual
 ms.date: 09/11/2020
 ms.author: pafarley
-ms.openlocfilehash: fc536b3b0c7af113919f274fc4bdd5fad63cbd06
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.openlocfilehash: 4eea87d7b5ef543551b789ddc6b045358fa98631
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2020
-ms.locfileid: "90057186"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826941"
 ---
 # <a name="role-based-access-control"></a>Szerepköralapú hozzáférés-vezérlés
 
@@ -43,8 +43,8 @@ A következő táblázat segítségével meghatározhatja a Custom Vision erőfo
 
 |Szerepkör  |Engedélyek  |
 |---------|---------|
-|`Cognitive Service Custom Vision Contributor`     | Teljes hozzáférés a projektekhez, beleértve a projektek létrehozását, szerkesztését és törlését.        |
-|`Cognitive Service Custom Vision Trainer`     | Teljes hozzáférés, kivéve a projekt létrehozását vagy törlését. Az oktatók megtekinthetik és szerkeszthetik a projekteket és betanítják, közzétehetik, közzétehetik vagy exportálhatjuk a modelleket.        |
-|`Cognitive Service Custom Vision Labeler`     | A betanítási lemezképek feltöltésére, szerkesztésére és törlésére, valamint címkék létrehozására, hozzáadására, eltávolítására és törlésére képes. A címkéző megtekinthetik a projekteket, de nem frissíthetik a betanítási képeket és címkéket.         |
-|`Cognitive Service Custom Vision Deployment`     | A modellek közzétételének, közzétételének visszavonásának vagy exportálásának lehetősége. Az üzembe helyezések megtekinthetik a projekteket, de nem frissíthetik a projektet, a betanítási képeket vagy a címkéket.        |
-|`Cognitive Service Custom Vision Reader`     | A projektek megtekintésének lehetősége. Az olvasók nem végezhetnek változást.        |
+|`Cognitive Services Custom Vision Contributor`     | Teljes hozzáférés a projektekhez, beleértve a projektek létrehozását, szerkesztését és törlését.        |
+|`Cognitive Services Custom Vision Trainer`     | Teljes hozzáférés, kivéve a projekt létrehozását vagy törlését. Az oktatók megtekinthetik és szerkeszthetik a projekteket és betanítják, közzétehetik, közzétehetik vagy exportálhatjuk a modelleket.        |
+|`Cognitive Services Custom Vision Labeler`     | A betanítási lemezképek feltöltésére, szerkesztésére és törlésére, valamint címkék létrehozására, hozzáadására, eltávolítására és törlésére képes. A címkéző megtekinthetik a projekteket, de nem frissíthetik a betanítási képeket és címkéket.         |
+|`Cognitive Services Custom Vision Deployment`     | A modellek közzétételének, közzétételének visszavonásának vagy exportálásának lehetősége. Az üzembe helyezések megtekinthetik a projekteket, de nem frissíthetik a projektet, a betanítási képeket vagy a címkéket.        |
+|`Cognitive Services Custom Vision Reader`     | A projektek megtekintésének lehetősége. Az olvasók nem végezhetnek változást.        |

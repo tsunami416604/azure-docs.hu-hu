@@ -6,12 +6,12 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 03/06/2019
 ms.author: yegu
-ms.openlocfilehash: e4739c0c550988e1639e89a647815e5dd86b17b7
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.openlocfilehash: 6203c230f7ca27b1d4b48e9f56a7f46cd5a5ce78
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91461342"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91825323"
 ---
 # <a name="how-to-set-up-geo-replication-for-azure-cache-for-redis"></a>Az Azure cache geo-replikációjának beállítása a Redis
 
@@ -111,6 +111,7 @@ A földrajzi replikálás konfigurálása után a következő korlátozások von
 - [Miért sikertelen a művelet, amikor megpróbáltam törölni a csatolt gyorsítótárat?](#why-did-the-operation-fail-when-i-tried-to-delete-my-linked-cache)
 - [Milyen régiót használhatok a másodlagos csatolt gyorsítótárhoz?](#what-region-should-i-use-for-my-secondary-linked-cache)
 - [Hogyan működik a feladatátvétel a másodlagos csatolt gyorsítótárral?](#how-does-failing-over-to-the-secondary-linked-cache-work)
+- [Konfigurálható a tűzfal a Geo-replikációval?](#can-i-configure-a-firewall-with-geo-replication)
 
 ### <a name="can-i-use-geo-replication-with-a-standard-or-basic-tier-cache"></a>Használhatom a Geo-replikációt standard vagy alapszintű gyorsítótárral?
 
@@ -185,7 +186,12 @@ Az Azure-régiók közötti automatikus feladatátvétel nem támogatott a föld
 
 Az ügyfél által kezdeményezett feladatátvétel elindításához először a gyorsítótárak leválasztása szükséges. Ezután módosítsa a Redis-ügyfelet a (korábban csatolt) másodlagos gyorsítótár kapcsolati végpontjának használatára. Ha a két gyorsítótár le van csatolva, a másodlagos gyorsítótár egy normál olvasási írási gyorsítótárba kerül, és közvetlenül a Redis-ügyfelektől fogadja a kéréseket.
 
-## <a name="next-steps"></a>További lépések
+### <a name="can-i-configure-a-firewall-with-geo-replication"></a>Beállíthat egy tűzfalat a Geo-replikációval?
+
+Igen, konfigurálhat egy [tűzfalat](https://docs.microsoft.com/azure/azure-cache-for-redis/cache-configure#firewall) a Geo-replikálás használatával. Ahhoz, hogy a Geo-replikáció egy tűzfal mellett működjön, győződjön meg arról, hogy a másodlagos gyorsítótár IP-címe hozzá van adva az elsődleges gyorsítótár tűzfalszabályok számára.
+
+## <a name="next-steps"></a>Következő lépések
+
 További információ az Azure cache Redis szolgáltatásairól.
 
 * [Azure cache a Redis szolgáltatási szintjeihez](cache-overview.md#service-tiers)

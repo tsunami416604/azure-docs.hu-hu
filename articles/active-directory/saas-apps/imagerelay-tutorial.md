@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: jeedes
-ms.openlocfilehash: ec0cc88122521a5f59da45107956b4f25156b02f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 0c32dbdafe8d2681d341cb7f2ee6f0ce45123cab
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88545250"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826394"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-image-relay"></a>Oktatóanyag: Azure Active Directory integráció a rendszerkép-továbbítóval
 
@@ -128,27 +128,27 @@ Az Azure AD egyszeri bejelentkezés a képtovábbítóval való konfigurálásá
 
 2. A felső eszköztáron kattintson a **felhasználók & engedélyek** munkaterhelésre.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/imagerelay-tutorial/tutorial_imagerelay_06.png) 
+    ![A képernyőképen a felhasználók & az eszköztárból kiválasztott engedélyek láthatók.](./media/imagerelay-tutorial/tutorial_imagerelay_06.png) 
 
 3. Kattintson az **új engedély létrehozása**lehetőségre.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/imagerelay-tutorial/tutorial_imagerelay_08.png)
+    ![A képernyőképen egy szövegmező jelenik meg az engedély címének megadásához, valamint az engedély típusának kiválasztásához.](./media/imagerelay-tutorial/tutorial_imagerelay_08.png)
 
 4. Az **egyszeri bejelentkezés beállításai** munkaterhelésen jelölje be az **Ez a csoport csak egyszeri bejelentkezéssel** bejelentkezhet jelölőnégyzetet, majd kattintson a **Mentés**gombra.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/imagerelay-tutorial/tutorial_imagerelay_09.png) 
+    ![A képernyőképen az egyszeri bejelentkezés beállításai láthatók, ahol kiválaszthatja a lehetőséget.](./media/imagerelay-tutorial/tutorial_imagerelay_09.png) 
 
 5. Lépjen a **Fiókbeállítások**menüpontra.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/imagerelay-tutorial/tutorial_imagerelay_10.png) 
+    ![Képernyőfelvétel: a Fiókbeállítások eszköztár lehetőség.](./media/imagerelay-tutorial/tutorial_imagerelay_10.png) 
 
 6. Ugrás az **egyszeri bejelentkezés beállításainak** munkaterhelésére.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/imagerelay-tutorial/tutorial_imagerelay_11.png)
+    ![A képernyőképen az egyszeri bejelentkezés beállításai menüpont látható.](./media/imagerelay-tutorial/tutorial_imagerelay_11.png)
 
 7. Az **SAML-beállítások** párbeszédpanelen hajtsa végre a következő lépéseket:
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/imagerelay-tutorial/tutorial_imagerelay_12.png)
+    ![Képernyőfelvétel: az SAML-beállítások párbeszédpanel, amelyen megadhatja az adatokat.](./media/imagerelay-tutorial/tutorial_imagerelay_12.png)
 
     a. A **bejelentkezési URL** szövegmezőbe illessze be a Azure Portalból másolt **bejelentkezési URL-cím** értékét.
 
@@ -160,19 +160,19 @@ Az Azure AD egyszeri bejelentkezés a képtovábbítóval való konfigurálásá
 
     e. Az **x. 509 tanúsítvány**alatt kattintson a **tanúsítvány frissítése**elemre.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/imagerelay-tutorial/tutorial_imagerelay_17.png)
+    ![A képernyőképen a tanúsítvány frissítésének lehetősége látható.](./media/imagerelay-tutorial/tutorial_imagerelay_17.png)
 
     f. Nyissa meg a letöltött tanúsítványt a Jegyzettömbben, másolja a tartalmat, majd illessze be az **x. 509 tanúsítvány** szövegmezőbe.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/imagerelay-tutorial/tutorial_imagerelay_18.png)
+    ![A képernyőképen az x dot 509 tanúsítvány látható.](./media/imagerelay-tutorial/tutorial_imagerelay_18.png)
 
     : Az igény szerinti **felhasználó üzembe** helyezése szakaszban válassza az igény szerinti **felhasználó üzembe**helyezésének engedélyezése lehetőséget.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/imagerelay-tutorial/tutorial_imagerelay_19.png)
+    ![A képernyőképen az igény szerinti felhasználó kiépítési szakasza látható, a vezérlő engedélyezése beállítással.](./media/imagerelay-tutorial/tutorial_imagerelay_19.png)
 
     h. Válassza ki az engedélyezési csoportot (például az **egyszeri bejelentkezés alapszintű**), amely csak egyszeri bejelentkezéssel jelentkezhet be.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/imagerelay-tutorial/tutorial_imagerelay_20.png)
+    ![Képernyőfelvétel: az igény szerinti felhasználó kiépítési szakasza, amely alapszintű.](./media/imagerelay-tutorial/tutorial_imagerelay_20.png)
 
     i. Kattintson a **Mentés** gombra.
 
@@ -199,7 +199,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    d. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -237,13 +237,13 @@ Ennek a szakasznak a célja, hogy létrehozzon egy Britta Simon nevű felhaszná
 
 2. Lépjen a **felhasználók & engedélyek**     elemre, és válassza az **SSO-felhasználó létrehozása**lehetőséget.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/imagerelay-tutorial/tutorial_imagerelay_21.png) 
+    ![Képernyőfelvétel: a menüből kiválasztott Create S S O-felhasználó.](./media/imagerelay-tutorial/tutorial_imagerelay_21.png) 
 
 3. Adja meg a kiépíteni kívánt felhasználó **e-mail-címét** **, utónevét,** **vezetéknevét**és **vállalatát** , és válassza ki az engedély csoportot (például: SSO Basic), amely az a csoport, amely csak egyszeri bejelentkezéssel tud bejelentkezni.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/imagerelay-tutorial/tutorial_imagerelay_22.png)
+    ![Képernyőkép: az S S O-felhasználó létrehozása lap, ahol megadhatja a szükséges információkat.](./media/imagerelay-tutorial/tutorial_imagerelay_22.png)
 
-4. Kattintson a **Create** (Létrehozás) gombra.
+4. Kattintson a **Létrehozás** elemre.
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése
 

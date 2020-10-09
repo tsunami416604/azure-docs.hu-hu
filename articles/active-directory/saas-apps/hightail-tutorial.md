@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/10/2019
 ms.author: jeedes
-ms.openlocfilehash: 0348e5c773f37606a3975a8e62e556bef291a758
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.openlocfilehash: d39f46469d80b3e2d7bf361bd349a39afb16bd2d
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
-ms.locfileid: "89297291"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826182"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-hightail"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a hightail
 
@@ -93,7 +93,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. A fentiek mellett a hightail alkalmazás néhány további attribútumot vár az SAML-válaszban, amelyek alább láthatók. Ezek az attribútumok előre fel vannak töltve, de a követelményeinek megfelelően áttekintheti őket.
 
-    | Name | Forrás attribútum|
+    | Name (Név) | Forrás attribútum|
     | -------- |-------- |
     | FirstName | User. givenName |
     | LastName | felhasználó. vezetéknév |
@@ -121,7 +121,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás** lehetőségre.
+   1. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -155,15 +155,15 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 1. Kattintson a lap jobb felső sarkában található **felhasználó ikonra** . 
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/hightail-tutorial/configure1.png)
+    ![A képernyőképen a felhasználó ikon látható.](./media/hightail-tutorial/configure1.png)
 
 1. Kattintson a **felügyeleti konzol megtekintése** fülre.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/hightail-tutorial/configure2.png)
+    ![Képernyőfelvétel: a felügyeleti konzol megtekintése gomb a felhasználó számára.](./media/hightail-tutorial/configure2.png)
 
 1. A felső menüben kattintson az **SAML** lapra, és hajtsa végre a következő lépéseket:
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/hightail-tutorial/configure3.png)
+    ![Képernyőfelvétel: az SAML lap, amelyen megadhatja a login U R L és SAML tanúsítványát.](./media/hightail-tutorial/configure3.png)
 
     a. A **bejelentkezési URL** szövegmezőbe illessze be a Azure Portalból másolt **bejelentkezési URL-cím** értékét.
 
@@ -186,7 +186,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszt
 
 Ha a hozzáférési panelen a hightail csempére kattint, automatikusan be kell jelentkeznie arra a hightail, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="additional-resources"></a>További erőforrások
+## <a name="additional-resources"></a>További források
 
 - [ Az SaaS-alkalmazások Azure Active Directory-nal való integrálásával kapcsolatos oktatóanyagok listája ](https://docs.microsoft.com/azure/active-directory/active-directory-saas-tutorial-list)
 

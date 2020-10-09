@@ -11,12 +11,12 @@ author: MicrosoftGuyJFlo
 manager: daveba
 ms.reviewer: spunukol
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 9b327e388366fe3129695a5c1780600e5903508a
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.openlocfilehash: ea5d24fd36e668fc52a8b5c9a20472c42ef3c420
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2020
-ms.locfileid: "90705537"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91825965"
 ---
 # <a name="how-to-manage-stale-devices-in-azure-ad"></a>Útmutató: elavult eszközök kezelése az Azure AD-ben
 
@@ -163,9 +163,9 @@ A konfigurálást követően a Windows 10-es eszközök BitLocker-kulcsai az esz
 ### <a name="why-should-i-worry-about-windows-autopilot-devices"></a>Miért érdemes aggódni a Windows Autopilot-eszközökről?
 
 Ha olyan Azure AD-eszközt töröl, amely egy Windows Autopilot-objektumhoz van társítva, akkor a következő három forgatókönyv fordulhat elő, ha az eszközt a jövőben újra felhasználják:
-- A Windows Autopilot-alapú, felhasználó által vezérelt központi telepítések a fehér kesztyű használata nélkül új Azure AD-eszközt hoznak létre, de nem lesznek felcímkézve a ZTDID.
+- A Windows Autopilot-alapú, felhasználó által vezérelt központi telepítések előzetes kiépítés nélkül, új Azure AD-eszköz jön létre, de nem lesz felcímkézve a ZTDID.
 - A Windows Autopilot öntelepítő üzemmódú telepítései sikertelenek lesznek, mert az Azure AD-eszközök nem találhatók.  (Ez egy biztonsági mechanizmus, amely gondoskodik arról, hogy a "nem megfelelő" eszközök ne csatlakozzanak az Azure AD-hez hitelesítő adatok nélkül.) A hiba ZTDID-eltérést jelez.
-- A Windows Autopilot-alapú, fehér kesztyűs telepítései sikertelenek lesznek, mert a társított Azure AD-eszköz nem található. (A színfalak mögött a fehér kesztyű üzembe helyezése ugyanazt a saját üzembe helyezési módot használja, így ugyanazokat a biztonsági mechanizmusokat érvényesítik.)
+- A Windows Autopilot-alapú előtelepítési környezetek nem fognak működni, mert egy kapcsolódó Azure AD-eszköz nem található. (A színfalak mögött a telepítés előtti üzembe helyezések ugyanazt a saját üzembe helyezési módot használják, így ugyanazokat a biztonsági mechanizmusokat érvényesítik.)
 
 ### <a name="how-do-i-know-all-the-type-of-devices-joined"></a>Honnan tudhatom meg, hogy milyen típusú eszközök vannak csatlakoztatva?
 
@@ -179,6 +179,6 @@ Meghiúsul minden hitelesítés, amelynek keretében az eszköz végezné a hite
 - **Azure AD-hez csatlakoztatott eszköz** – A felhasználók nem használhatják az eszközt bejelentkezésre. 
 - **Mobileszközök** – a felhasználó nem férhet hozzá az Azure ad-erőforrásokhoz, például a Microsoft 365hoz. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információk az eszközök Azure Portalon végzett felügyeletéről: [Eszközfelügyelet az Azure Portalon](device-management-azure-portal.md).

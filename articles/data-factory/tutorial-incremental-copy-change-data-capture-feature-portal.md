@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: tutorial
 ms.custom: ''
 ms.date: 05/04/2020
-ms.openlocfilehash: 6e41109c65a047990577d1f2c77bdcd5219b6ed3
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 06dd55ce400667939fca4b0f48159f8b7dde66c6
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91537456"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91825152"
 ---
 # <a name="incrementally-load-data-from-azure-sql-managed-instance-to-azure-storage-using-change-data-capture-cdc"></a>Adatok növekményes betöltése az Azure SQL felügyelt példányairól az Azure Storage-ba az adatváltozások rögzítése (CDC) használatával
 
@@ -124,7 +124,7 @@ Ha nem rendelkezik Azure-előfizetéssel, első lépésként mindössze néhány
     Az erőforráscsoportokkal kapcsolatos információkért tekintse meg a [Using resource groups to manage your Azure resources](../azure-resource-manager/management/overview.md) (Erőforráscsoportok használata az Azure-erőforrások kezeléséhez) című cikket.  
 5. Válassza ki a Data Factory **helyét**. A legördülő listán csak a támogatott helyek jelennek meg. Az adat-előállítók által használt adattárak (Azure Storage, Azure SQL Database stb.) és számítási erőforrások (HDInsight stb.) más régiókban is lehetnek.
 6. Válassza ki a **git engedélyezése**lehetőséget.     
-7. Kattintson a **Létrehozás** lehetőségre.
+7. Kattintson a **Létrehozás** elemre.
 8. Miután az üzembe helyezés befejeződött, kattintson az **Ugrás erőforrásra** elemre.
 
    ![A képernyőképen egy üzenet jelenik meg, amely szerint a telepítés befejeződött, és az erőforráshoz való ugrás lehetősége.](./media/tutorial-incremental-copy-change-data-capture-feature-portal/data-factory-deploy-complete.png)
@@ -318,7 +318,7 @@ Ebben a lépésben egy kieséses ablakos triggert hoz létre, amely rendszeres i
     SET @begin_time = ''',pipeline().parameters.triggerStartTime,''';
     SET @end_time = ''',pipeline().parameters.triggerEndTime,''';
     SET @from_lsn = sys.fn_cdc_map_time_to_lsn(''smallest greater than or equal'', @begin_time);
-    SET @to_lsn = sys.fn_cdc_map_time_to_lsn(''largest less than or equal'', @end_time);
+    SET @to_lsn = sys.fn_cdc_map_time_to_lsn(''largest less than'', @end_time);
     SELECT count(1) changecount FROM cdc.fn_cdc_get_all_changes_dbo_customers(@from_lsn, @to_lsn, ''all'')')
     ```
 
@@ -328,7 +328,7 @@ Ebben a lépésben egy kieséses ablakos triggert hoz létre, amely rendszeres i
     SET @begin_time = ''',pipeline().parameters.triggerStartTime,''';
     SET @end_time = ''',pipeline().parameters.triggerEndTime,''';
     SET @from_lsn = sys.fn_cdc_map_time_to_lsn(''smallest greater than or equal'', @begin_time);
-    SET @to_lsn = sys.fn_cdc_map_time_to_lsn(''largest less than or equal'', @end_time);
+    SET @to_lsn = sys.fn_cdc_map_time_to_lsn(''largest less than'', @end_time);
     SELECT * FROM cdc.fn_cdc_get_all_changes_dbo_customers(@from_lsn, @to_lsn, ''all'')')
     ```
 4. Kattintson a **másolási** tevékenység **mosogató** fülére, majd kattintson a **Megnyitás** gombra az adatkészlet tulajdonságainak szerkesztéséhez. Kattintson a **Parameters (paraméterek** ) fülre, és adjon hozzá egy új, **triggerStart** nevű paramétert.    
@@ -409,7 +409,7 @@ A második fájl az `raw` nevű tároló `customers/incremental/YYYY/MM/DD` mapp
 ![Kimeneti fájl növekményes másolásból](media/tutorial-incremental-copy-change-data-capture-feature-portal/incremental-copy-pipeline-run.png)
  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Folytassa a következő oktatóanyaggal, amely azt ismerteti, hogyan másolhat új és módosított fájlokat csak a LastModifiedDate alapján:
 
 > [!div class="nextstepaction"]

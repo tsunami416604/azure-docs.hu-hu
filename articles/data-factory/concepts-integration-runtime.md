@@ -11,12 +11,12 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 07/14/2020
-ms.openlocfilehash: 03b8deaa700d15a20571a8ec5f389c252c32eed2
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.openlocfilehash: b899485589f19a5b74d6d22b4e5dae5fbf3ff604
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89485719"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91827523"
 ---
 # <a name="integration-runtime-in-azure-data-factory"></a>Integrációs modul az Azure Data Factoryban 
 
@@ -69,7 +69,7 @@ Az Azure-beli integrációs modul biztosítja a natív számítást az adatok fe
 
 A tevékenység elküldése egy könnyű művelet, amellyel a tevékenység átirányítható a cél számítási szolgáltatásba, így nincs szükség a forgatókönyv számítási méretének skálázására.
 
-A Azure IR létrehozásával és konfigurálásával kapcsolatos további információkért Azure IR létrehozásával és konfigurálásával kapcsolatban a útmutatók útmutatójában olvashat. 
+Azure IR létrehozásával és konfigurálásával kapcsolatos információkért lásd: [Azure Integration Runtime létrehozása és konfigurálása](create-azure-integration-runtime.md). 
 
 > [!NOTE] 
 > Az Azure Integration Runtime az adatfolyam-futtatókörnyezethez kapcsolódó tulajdonságokkal rendelkezik, amely meghatározza a mögöttes számítási infrastruktúrát, amely az adatfolyamatok futtatására szolgál. 

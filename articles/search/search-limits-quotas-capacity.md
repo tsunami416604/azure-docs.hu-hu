@@ -7,13 +7,13 @@ author: HeidiSteen
 ms.author: heidist
 ms.service: cognitive-search
 ms.topic: conceptual
-ms.date: 08/21/2020
-ms.openlocfilehash: b541af5351a0dd98e782c584d869de0d98445b74
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.date: 10/07/2020
+ms.openlocfilehash: 570481eab44c64db3ec3f513281badd124a2bbdc
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2020
-ms.locfileid: "89462513"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91825485"
 ---
 # <a name="service-limits-in-azure-cognitive-search"></a>Az Azure Cognitive Search szolgáltatási korlátai
 
@@ -50,7 +50,7 @@ A tárolás, a munkaterhelések és az indexek és egyéb objektumok mennyiség�
 
 <sup>1</sup> a december 2017-ig létrehozott alapszintű szolgáltatások alacsonyabb korláttal rendelkeznek (15 helyett 5) az indexeken. Az alapszintű csomag az egyetlen olyan SKU, amelynek alsó korlátja a 100 mező/index.
 
-<sup>2</sup> a nagy számú, összetett gyűjteményekbe tartozó elem jelenleg magas tárterület-kihasználtságot okoz. Ez egy ismert probléma. Addig is az 3000-os korlát minden szolgáltatási szinten biztonságos felső határ. Ez a korlát csak olyan indexelési műveletekre érvényes, amelyek a legkorábbi általánosan elérhető (GA) API-verziót használják, amely a komplex típusú mezőket ( `2019-05-06` ) támogatja. Ha nem szeretné megszakítani a korábbi előzetes verziójú API-verziókat használó ügyfeleket (amelyek támogatják az összetett típusú mezőket), a rendszer nem érvényesíti ezt a korlátot az előzetes verziójú API-verziókat használó indexelési műveletekhez. Vegye figyelembe, hogy az előzetes verziójú API-verziók nem használhatók éles környezetekben való használatra, ezért javasoljuk, hogy az ügyfelek a legújabb GA API-verzióra lépjenek.
+<sup>2</sup> egy felső korlát létezik az elemekhez, mert nagy mennyiségű, magas tárterület-kihasználtságot okoz. Egy összetett gyűjtemény egy eleme a gyűjtemény tagjaként van definiálva. Tegyük fel például, hogy egy [szállodai dokumentum egy Rooms Complex-gyűjteménysel van ellátva](search-howto-complex-data-types.md#indexing-complex-types), a szobák gyűjtemény minden helyisége elemnek minősül. Az indexelés során az indexelési motor a teljes dokumentumon belül legfeljebb 3000 elemet tud biztonságosan feldolgozni. [Ez a korlát](search-api-migration.md#upgrade-to-2019-05-06) a ben jelent meg, `api-version=2019-05-06` és csak az összetett gyűjteményekre vonatkozik, nem karakterlánc-gyűjteményekbe vagy összetett mezőkbe.
 
 <a name="document-limits"></a>
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
-ms.openlocfilehash: 7dd13df6222f6441b7edb2bd9a789c1f102168d7
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 596a6657018658d2d00abe7f221ffae9a6730a7a
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88554969"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826455"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-flatter-files"></a>Oktatóanyag: Azure Active Directory-integráció a laposabb fájlokkal
 
@@ -121,11 +121,11 @@ Az Azure AD egyszeri bejelentkezés laposabb fájlokkal történő konfigurálá
 
 2. Kattintson az **irányítópult**elemre. 
    
-    ![Egyszeri bejelentkezés konfigurálása](./media/flatter-files-tutorial/tutorial_flatter_files_05.png)  
+    ![Képernyőfelvétel: az "irányítópult" elem van kiválasztva a "laposabb fájlok" alkalmazásban.](./media/flatter-files-tutorial/tutorial_flatter_files_05.png)  
 
 3. Kattintson a **Beállítások**elemre, majd hajtsa végre a következő lépéseket a **vállalat** lapon: 
    
-    ![Egyszeri bejelentkezés konfigurálása](./media/flatter-files-tutorial/tutorial_flatter_files_06.png)  
+    ![A "céges" fület, amely a "t L 2,0 a hitelesítéshez", a "t. m.](./media/flatter-files-tutorial/tutorial_flatter_files_06.png)  
     
     a. **A hitelesítéshez válassza az SAML 2,0 használata**lehetőséget.
     
@@ -169,7 +169,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    d. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -207,7 +207,7 @@ A szakasz célja, hogy létrehozzon egy Britta Simon nevű felhasználót a lapo
 
 2. A bal oldali navigációs ablaktáblán kattintson a **Beállítások**elemre, majd kattintson a **felhasználók** fülre.
    
-    ![Laposabb fájlok felhasználójának létrehozása](./media/flatter-files-tutorial/tutorial_flatter_files_09.png)
+    ![Képernyőkép, amely a "beállítások" lapot jeleníti meg a "felhasználók" lapon kiválasztva.](./media/flatter-files-tutorial/tutorial_flatter_files_09.png)
 
 3. Kattintson az **Add User** (Felhasználó hozzáadása) elemre. 
 

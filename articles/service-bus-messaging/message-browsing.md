@@ -3,12 +3,12 @@ title: Azure Service Bus – üzenetek tallózása
 description: A Tallózás és betekintés Service Bus üzenetek lehetővé teszik, hogy egy Azure Service Bus ügyfél enumerálja az üzenetsor vagy előfizetés összes üzenetét.
 ms.topic: article
 ms.date: 06/23/2020
-ms.openlocfilehash: 0f2d4ed1225aef4c28a5f3d841669c2e3122ba10
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 6e50fc737f6c81c07854ff07d8cc64061306749b
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85341242"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91827449"
 ---
 # <a name="message-browsing"></a>Üzenetek tallózása
 
@@ -30,9 +30,9 @@ Ha többször is meghívják, a betekintés metódus a várólista vagy az előf
 
 A [PeekBatch](/dotnet/api/microsoft.servicebus.messaging.queueclient.peekbatch#Microsoft_ServiceBus_Messaging_QueueClient_PeekBatch_System_Int32_) több üzenetet kér le, és visszaadja őket enumerálásként. Ha nem áll rendelkezésre üzenet, a számbavételi objektum üres, nem null értékű.
 
-Azt is megteheti, hogy túlterheli a metódust egy olyan [sorszám](/dotnet/api/microsoft.azure.servicebus.message.systempropertiescollection.sequencenumber#Microsoft_Azure_ServiceBus_Message_SystemPropertiesCollection_SequenceNumber) , amelyen el szeretné indítani, majd a paraméter nélküli metódus túlterhelésének meghívásával adja meg a további enumerálást. A **PeekBatch** függvények egyenértékűek, de egyszerre lekérik az üzenetek készletét.
+A metódus túlterhelését is használhatja egy olyan [sorszám](/dotnet/api/microsoft.azure.servicebus.message.systempropertiescollection.sequencenumber#Microsoft_Azure_ServiceBus_Message_SystemPropertiesCollection_SequenceNumber) , amelyen el szeretné indítani a metódust, majd a paraméter nélküli metódus túlterhelésének meghívásával további enumerálást készíthet. A **PeekBatch** függvények egyenértékűek, de egyszerre lekérik az üzenetek készletét.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Service Bus üzenetkezeléssel kapcsolatos további tudnivalókért tekintse meg a következő témaköröket:
 

@@ -3,12 +3,12 @@ title: Ismerkedés a Live Video Analytics szolgáltatással IoT Edge-Azure-ban
 description: Ez a rövid útmutató bemutatja, hogyan kezdheti el a IoT Edge Live Video Analytics szolgáltatást. Ismerje meg, hogyan derítheti fel a mozgást egy élő videó streamben.
 ms.topic: quickstart
 ms.date: 04/27/2020
-ms.openlocfilehash: 9cf574cba023c9eb5a44999b3aa04f6c1e626ed1
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: 4975223255cb92c85c3117dbd44a64916054b590
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91773396"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91825927"
 ---
 # <a name="quickstart-get-started---live-video-analytics-on-iot-edge"></a>Gyors útmutató: első lépések – élő videó-elemzés IoT Edge
 
@@ -80,7 +80,7 @@ Kövesse ezeket az utasításokat az IoT hubhoz való kapcsolódáshoz az Azure 
 
     > [!div class="mx-imgBorder"]
     > :::image type="content" source="./media/run-program/show-verbose-message.png" alt-text="Élő videó-elemzés a mozgásészlelés alapján":::
-1. <!--In Visual Studio Code-->Válassza a **View**  >  **Explorer**lehetőséget. Vagy válassza a CTRL + SHIFT + E billentyűkombinációt.
+1. Válassza a **View**  >  **Explorer**lehetőséget. Vagy válassza a CTRL + SHIFT + E billentyűkombinációt.
 1. Az **Explorer** lap bal alsó sarkában válassza az **Azure IoT hub**elemet.
 1. A helyi menü megjelenítéséhez kattintson a **További beállítások** ikonra. Ezután válassza a **IoT hub a kapcsolatok karakterláncának beállítása**lehetőséget.
 1. Amikor megjelenik egy beviteli mező, adja meg IoT Hub kapcsolódási karakterláncát. Cloud Shell a (z) *~/clouddrive/lva-sample/appsettings.js*.

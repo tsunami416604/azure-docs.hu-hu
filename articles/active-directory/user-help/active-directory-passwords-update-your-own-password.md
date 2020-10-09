@@ -11,12 +11,12 @@ ms.subservice: user-help
 ms.topic: end-user-help
 ms.date: 09/10/2020
 ms.author: curtand
-ms.openlocfilehash: c2bf4d5facc96a0876d4321a61ed6f414dfd78da
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.openlocfilehash: c47d573dab3e72a956f6f0b9d09a1dafadf0225c
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2020
-ms.locfileid: "90029545"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91827775"
 ---
 # <a name="reset-your-work-or-school-password-using-security-info"></a>Munkahelyi vagy iskolai jelszavának alaphelyzetbe állítása biztonsági adatok használatával
 
@@ -69,7 +69,7 @@ Ha nem fér hozzá a Azure Active Directory (Azure AD) fiókhoz, annak oka az le
 
     3. Írja be és erősítse meg az új jelszót, majd kattintson a **Befejezés gombra**.
 
-- **A jelszó alaphelyzetbe állítása telefonszám használatával.** Szöveges üzenetet küld a korábban a biztonsági adatokban beállított telefonszámra. Ha a rendszergazda bekapcsolta a biztonsági adatokkal kapcsolatos élményt, további információt talál a telefonszám beállítása a [biztonsági adatok beállítása telefonhívás (előzetes verzió)](security-info-setup-phone-number.md) című cikkben. Ha még nem használja a biztonsági adatokat, további információt talál a telefonos [fiók beállítása kétlépéses ellenőrzéshez](multi-factor-authentication-end-user-first-time.md) című cikkben.
+- **A jelszó alaphelyzetbe állítása telefonszám használatával.** Elhelyez egy automatikus hanghívást a korábban a biztonsági adatokban beállított telefonszámon. Ha a rendszergazda bekapcsolta a biztonsági adatokkal kapcsolatos élményt, további információt talál a telefonszám beállítása a [biztonsági adatok beállítása telefonhívás (előzetes verzió)](security-info-setup-phone-number.md) című cikkben. Ha még nem használja a biztonsági adatokat, további információt talál a telefonos [fiók beállítása kétlépéses ellenőrzéshez](multi-factor-authentication-end-user-first-time.md) című cikkben.
 
     1. Válassza a **mobil telefon hívása**lehetőséget, adja meg a telefonszámát, majd válassza a **hívás**lehetőséget.
 
@@ -155,7 +155,7 @@ Ha a rendszergazda bekapcsolta a funkciót, megtekintheti a **jelszó alaphelyze
 
 Íme néhány gyakori hiba eset és megoldásuk:
 
-|Probléma|Description|Megoldás|
+|Probléma|Leírás|Megoldás|
 | --- | --- | --- |
 |Ha megpróbálom módosítani a jelszavam, hibaüzenetet kapok. |A jelszó olyan szót, kifejezést vagy mintázatot tartalmaz, amely könnyen kitalálhatja a jelszavát.| Próbálkozzon újra egy erősebb jelszó használatával.|
 |A felhasználói azonosító megadását követően egy, a "forduljon a rendszergazdához" nevű oldalra ugorjon.|A Microsoft azt állapította meg, hogy a felhasználói fiók jelszavát a rendszergazda felügyeli a helyszíni környezetben. Ennek eredményeképpen nem állíthatja alaphelyzetbe a jelszavát a "nem lehet hozzáférni a fiókhoz" hivatkozással. |További segítségért forduljon a rendszergazdához.|

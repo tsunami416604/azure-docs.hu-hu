@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
-ms.openlocfilehash: c14d70f7489115b980479e7225cc3b47f80b3f2f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 64156741437a6805b7060d2aaa67b8de5b4aad13
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88554962"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826439"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-flock"></a>Oktatóanyag: Azure Active Directory-integráció a Flocktal
 
@@ -128,7 +128,7 @@ Az Azure AD egyszeri bejelentkezés Flock használatával történő konfigurál
 
 2. Válassza a **hitelesítés** fület a bal oldali navigációs panelen, majd válassza az **SAML-hitelesítés**lehetőséget.
 
-    ![Flock-konfiguráció](./media/flock-tutorial/configure1.png)
+    ![A "hitelesítés" fület a "S A M L hitelesítés" beállítással ábrázoló képernyőkép.](./media/flock-tutorial/configure1.png)
 
 3. Az **SAML hitelesítés** szakaszban hajtsa végre a következő lépéseket:
 
@@ -165,7 +165,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    d. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -203,11 +203,11 @@ Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a ny
 
 2. A bal oldali navigációs panelen kattintson a **csoport kezelése** lehetőségre.
 
-    ![Alkalmazott hozzáadása](./media/flock-tutorial/user1.png)
+    ![Képernyőkép, amely megjeleníti a "csapat kezelése" lehetőséget.](./media/flock-tutorial/user1.png)
 
 3. Kattintson a **tag hozzáadása** fülre, majd válassza a **csoporttagok**lehetőséget.
 
-    ![Alkalmazott hozzáadása](./media/flock-tutorial/user2.png)
+    ![Képernyőkép, amely a "tag hozzáadása" és a "csoporttagok" lehetőséget jeleníti meg.](./media/flock-tutorial/user2.png)
 
 4. Adja meg a felhasználó e-mail-címét, például a **Brittasimon \@ contoso.com** , majd kattintson a **felhasználók hozzáadása**elemre.
 

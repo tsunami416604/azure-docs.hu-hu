@@ -14,12 +14,12 @@ ms.date: 08/16/2018
 ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 00257dc549754f7466fdf1dd2d0293de944b0944
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 4410708905610562feb15804277021950eb1edeb
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91287032"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826525"
 ---
 # <a name="tutorial-federate-a-single-ad-forest-environment-to-the-cloud"></a>Oktatóanyag: egyetlen AD-erdős környezet összevonása a felhőbe
 
@@ -87,7 +87,7 @@ A virtuális gép létrehozásának befejezéséhez be kell fejeznie az operáci
 4. A Windows Server Start up képernyőn válassza ki a nyelvet, és kattintson a **tovább**gombra.
 5. Kattintson a **Telepítés most**lehetőségre.
 6. Adja meg a licenckulcs, és kattintson a **tovább**gombra.
-7. Jelölje be a * * Elfogadom a licencfeltételeket, majd kattintson a **tovább**gombra.
+7. Győződjön **meg arról, hogy elfogadom a licencfeltételeket** , és kattintson a **tovább**gombra.
 8. Válassza az **Egyéni: csak a Windows telepítése (speciális) lehetőséget.**
 9. Kattintson a **tovább** gombra
 10. Miután a telepítés befejeződött, indítsa újra a virtuális gépet, jelentkezzen be, és futtassa a Windows-frissítéseket, hogy a virtuális gép a legnaprakészebb legyen.  Telepítse a legújabb frissítéseket.
@@ -287,7 +287,7 @@ Most ellenőrizzük, hogy a helyszíni címtárban található felhasználók sz
 
 Ezzel sikeresen beállított egy hibrid identitási környezetet, amellyel tesztelheti és megismerheti az Azure által kínált lehetőségeket.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Hardver és előfeltételek](how-to-connect-install-prerequisites.md) 
 - [Testreszabott beállítások](how-to-connect-install-custom.md)

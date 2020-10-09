@@ -14,14 +14,14 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/04/2020
 ms.author: yelevin
-ms.openlocfilehash: 8d8f1343d92f66dc464ab7064949bbabb813268e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 3f59fea9f6d96f6e259a47c75bcfb0fd0be76d34
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83798536"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826562"
 ---
-# <a name="tutorial-visualize-and-monitor-your-data"></a>Oktatóanyag: az adatai megjelenítése és figyelése
+# <a name="tutorial-visualize-and-monitor-your-data"></a>Oktatóanyag: Az adatok megjelenítése és figyelése
 
 
 
@@ -44,19 +44,19 @@ Ez az oktatóanyag segítséget nyújt az Azure Sentinelben tárolt adatai megje
 
 1. Nyissa meg a **munkafüzetek** elemet, majd válassza a **sablonok** lehetőséget az Azure Sentinel beépített munkafüzetek teljes listájának megtekintéséhez. Ha szeretné megtekinteni, hogy mely információkra van szüksége a csatlakoztatott adattípusokhoz, az egyes munkafüzetek **kötelező adattípusok** mezője a zöld pipa melletti adattípust sorolja fel, ha már továbbít releváns adatokat az Azure Sentinel szolgáltatásnak.
   ![Ugrás a munkafüzetekhez](./media/tutorial-monitor-data/access-workbooks.png)
-1. Kattintson a **munkafüzet megtekintése** elemre az adatokkal feltöltött sablon megtekintéséhez.
+1. A sablon **megtekintése** elemre kattintva megtekintheti az adataival feltöltött sablont.
   
 1. A munkafüzet szerkesztéséhez válassza a **Mentés**lehetőséget, majd válassza ki azt a helyet, ahová menteni szeretné a sablon JSON-fájlját. 
 
    > [!NOTE]
-   > Ez létrehoz egy Azure-erőforrást a megfelelő sablon alapján, és maga menti a sablon JSON-fájlját, és nem az adatokat.
+   > Ez létrehoz egy Azure-erőforrást a megfelelő sablon alapján, és elmenti a munkafüzet JSON-fájlját, és nem az adatokat.
 
 
-1. Válassza a **munkafüzet megtekintése**lehetőséget. Ezután kattintson a felül található **Szerkesztés** gombra. Most már szerkesztheti a munkafüzetet, és igényei szerint testre is szabhatja. A munkafüzet testreszabásával kapcsolatos további információkért lásd: [interaktív jelentések létrehozása Azure monitor-munkafüzetek](../azure-monitor/platform/workbooks-overview.md)használatával.
+1. Válassza a **mentett munkafüzet megtekintése**lehetőséget. Ezután kattintson a felül található **Szerkesztés** gombra. Most már szerkesztheti a munkafüzetet, és igényei szerint testre is szabhatja. A munkafüzet testreszabásával kapcsolatos további információkért lásd: [interaktív jelentések létrehozása Azure monitor-munkafüzetek](../azure-monitor/platform/workbooks-overview.md)használatával.
 ![munkafüzetek megtekintése](./media/tutorial-monitor-data/workbook-graph.png)
 1. A módosítások elvégzése után mentheti a munkafüzetet. 
 
-1. A munkafüzet klónozása is megtehető: válassza a **Szerkesztés** , majd a **Mentés másként**lehetőséget, hogy egy másik névvel mentse azt az előfizetéshez és az erőforráscsoporthoz. Ezek a munkafüzetek a **saját munkafüzetek** lapon jelennek meg.
+1. A munkafüzet klónozása is megtehető: válassza a **Szerkesztés** , majd a **Mentés másként**lehetőséget, hogy egy másik névvel mentse azt az előfizetéshez és az erőforráscsoporthoz. Ezek a klónozott munkafüzetek a **saját munkafüzetek** lapon jelennek meg.
 
 
 ## <a name="create-new-workbook"></a>Új munkafüzet létrehozása
@@ -66,9 +66,9 @@ Ez az oktatóanyag segítséget nyújt az Azure Sentinelben tárolt adatai megje
 
 1. A munkafüzet szerkesztéséhez válassza a **Szerkesztés**lehetőséget, majd szükség szerint adja hozzá a szöveget, a lekérdezéseket és a paramétereket. A munkafüzet testreszabásával kapcsolatos további információkért lásd: [interaktív jelentések létrehozása Azure monitor-munkafüzetek](../azure-monitor/platform/workbooks-overview.md)használatával. 
 
-1. Lekérdezés létrehozásakor állítsa be az **adatforrás** **naplókat**, az **Erőforrás típusa** pedig **log Analytics** , majd válassza ki a megfelelő munkaterületet (ka) t. 
+1. Lekérdezés létrehozásakor győződjön meg arról, hogy az **adatforrás** **naplók** és **erőforrástípus** értékre **log Analytics**van állítva, majd válassza ki a megfelelő munkaterületet (ka) t. 
 
-1. Miután létrehozta a munkafüzetet, mentse a munkafüzetet, és mentse azt az Azure Sentinel munkaterület előfizetés és erőforráscsoport területén.
+1. A munkafüzet létrehozása után mentse a munkafüzetet, és győződjön meg róla, hogy az Azure Sentinel-munkaterület előfizetés és erőforráscsoport területén menti.
 
 1. Ha azt szeretné, hogy a szervezeten belül mások is használhassák a munkafüzetet, a **Mentés** lehetőség alatt válassza a **megosztott jelentések**lehetőséget. Ha azt szeretné, hogy ez a munkafüzet csak Ön számára legyen elérhető, válassza **a saját jelentések**lehetőséget.
 
@@ -79,15 +79,13 @@ Ez az oktatóanyag segítséget nyújt az Azure Sentinelben tárolt adatai megje
 
 ## <a name="how-to-delete-workbooks"></a>Munkafüzetek törlése
 
-Az Azure Sentinel-sablonból létrehozott munkafüzetek törölhetők. 
-
-Testreszabott munkafüzet törléséhez a munkafüzetek lapon válassza ki a törölni kívánt mentett munkafüzetet, és válassza a **Törlés**lehetőséget. Ezzel törli a mentett munkafüzetet.
+Mentett munkafüzet (mentett sablon vagy testreszabott munkafüzet) törléséhez a munkafüzetek lapon válassza ki a törölni kívánt mentett munkafüzetet, és válassza a **Törlés**lehetőséget. Ezzel törli a mentett munkafüzetet.
 
 > [!NOTE]
-> Ezzel eltávolítja az erőforrást, valamint a sablonon végrehajtott módosításokat is. Az eredeti sablon továbbra is elérhető marad.
+> Ezzel eltávolítja a munkafüzet-erőforrást, valamint a sablonon végrehajtott módosításokat. Az eredeti sablon továbbra is elérhető marad.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ebben az oktatóanyagban megtanulta, hogyan tekintheti meg adatait az Azure Sentinelben.
+Ebben az oktatóanyagban megtanulta, hogyan jelenítheti meg adatait az Azure Sentinelben az Azure-munkafüzetek használatával.
 
 A fenyegetésekre adott válaszok automatizálásával kapcsolatos további információkért lásd: [automatizált veszélyforrásokkal kapcsolatos válaszok beállítása az Azure sentinelben](tutorial-respond-threats-playbook.md).

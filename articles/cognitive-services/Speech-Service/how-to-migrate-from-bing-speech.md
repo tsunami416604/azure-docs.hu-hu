@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 04/03/2020
 ms.author: nitinme
-ms.openlocfilehash: 43679c52727f8cc84c7292592b68dddae7f1ea68
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: 81c4c26f252cdd9eb302a7f8f362c8bf52e48629
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91362078"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91825590"
 ---
 # <a name="migrate-from-bing-speech-to-the-speech-service"></a>Áttelepítés Bing Speechról a beszédfelismerési szolgáltatásba
 
@@ -25,9 +25,9 @@ Ez a cikk a Bing Speech API-k és a beszédfelismerési szolgáltatás közötti
 
 Egyetlen Speech Service-előfizetési kulcs biztosítja az alábbi funkciók elérését. Mindegyik funkció forgalmi díját külön állapítjuk meg, így csak a használt funkciókért kell fizetnie.
 
-* [Beszéd – szöveg](speech-to-text.md)
+* [Diktálás](speech-to-text.md)
 * [Egyéni beszédfelismerés](https://cris.ai)
-* [Szöveg – beszéd](text-to-speech.md)
+* [Szövegfelolvasás](text-to-speech.md)
 * [Egyéni szövegfelolvasási hangok](how-to-customize-voice-font.md)
 * [Tolmácsolás](speech-translation.md) (nem tartalmaz [szövegfordítást](../translator/translator-info-overview.md))
 
@@ -37,13 +37,13 @@ A [SPEECH SDK](speech-sdk.md) a Bing Speech ügyféloldali kódtárak funkcioná
 
 A beszédfelismerési szolgáltatás nagymértékben hasonló a Bing Speechhoz, a következő eltérésekkel.
 
-| Funkció | Bing – Beszédfelismerés | Speech szolgáltatás | Részletek |
+| Szolgáltatás | Bing – Beszédfelismerés | Speech szolgáltatás | Részletek |
 |--|--|--|--|
 | C# SDK | :heavy_check_mark: | :heavy_check_mark: | A Speech Service támogatja a Windows 10, a Univerzális Windows-platform (UWP) és a .NET Standard 2,0. |
 | C++ SDK | : heavy_minus_sign: | :heavy_check_mark: | A Speech Service támogatja a Windowst és a Linuxot. |
 | Java SDK | :heavy_check_mark: | :heavy_check_mark: | A beszédfelismerési szolgáltatás támogatja az androidos és a beszédfelismerési eszközöket. |
-| Folyamatos beszédfelismerés | 10 perc | Korlátlan (SDK-val) | A Bing Speech és a Speech Service-WebSockets protokollok másodpercenként akár 10 percet is igénybe vehetnek. A beszédfelismerési SDK azonban automatikusan újrakapcsolódik az időtúllépéssel vagy a kapcsolat bontásával. |
-| Részleges vagy ideiglenes eredmények | :heavy_check_mark: | :heavy_check_mark: | WebSockets protokollal vagy SDK-val. |
+| Folyamatos beszédfelismerés | 10 perc | Korlátlan | A Speech SDK támogatja a korlátlan folyamatos felismerést, és automatikusan újrakapcsolódik az időtúllépés vagy a kapcsolat bontása után. |
+| Részleges vagy ideiglenes eredmények | :heavy_check_mark: | :heavy_check_mark: | Támogatott a Speech SDK-val. |
 | Egyéni beszédfelismerési modellek | :heavy_check_mark: | :heavy_check_mark: | Bing Speech külön Custom Speech-előfizetést igényel. |
 | Egyéni hangbetűkészletek | :heavy_check_mark: | :heavy_check_mark: | Bing Speech külön egyéni hangalapú előfizetést igényel. |
 | 24 kHz-es hangok | : heavy_minus_sign: | :heavy_check_mark: |
@@ -53,7 +53,7 @@ A beszédfelismerési szolgáltatás nagymértékben hasonló a Bing Speechhoz, 
 | Felismerési mód | Manuális végponti URI-n keresztül | Automatikus | A beszédfelismerési mód nem érhető el a Speech szolgáltatásban. |
 | Végpont helye | Globális | Regionális | A regionális végpontok javítják a késést. |
 | REST API-k | :heavy_check_mark: | :heavy_check_mark: | A beszédfelismerési szolgáltatás REST API-jai kompatibilisek Bing Speech (eltérő végponttal). A REST API-k szöveg-beszéd és korlátozott beszéd-szöveg funkciókat támogatnak. |
-| WebSocket-protokollok | :heavy_check_mark: | :heavy_check_mark: | A Speech Service WebSockets API kompatibilis a Bing Speech (különböző végponttal). Ha lehetséges, telepítse át a Speech SDK-ba, hogy leegyszerűsítse a kódot. |
+| WebSocket-protokollok | :heavy_check_mark: | : heavy_minus_sign: | A Speech SDK absztrakt webes szoftvercsatorna-kapcsolatai olyan funkciókat foglalnak magukban, amelyek állandó kapcsolatot igényelnek a szolgáltatással, így a továbbiakban nem támogatott a manuális előfizetés. |
 | Szolgáltatások közötti API-hívások | :heavy_check_mark: | : heavy_minus_sign: | Bing Speech biztosítva a C# szolgáltatási könyvtáron keresztül. |
 | Nyílt forráskódú SDK | :heavy_check_mark: | : heavy_minus_sign: |
 
@@ -65,13 +65,9 @@ Ha Ön vagy a szervezete olyan fejlesztést vagy éles környezetben futó alkal
 
 A beszédfelismerési szolgáltatás [REST API](rest-apis.md) -jai kompatibilisek a Bing Speech API-kkal. Ha jelenleg a Bing Speech REST API-kat használja, csak a REST-végpontot kell módosítania, és váltania kell egy Speech Service-előfizetési kulcsra.
 
-A beszédfelismerési szolgáltatás WebSockets protokolljai a Bing Speech által használtkkal is kompatibilisek. Javasoljuk, hogy az új fejlesztéshez használja a Speech SDK-t WebSocket helyett. Érdemes áttelepíteni a meglévő kódot az SDK-ba is. A REST API-khoz hasonlóan azonban a Bing Speech websocketeken keresztül használó meglévő kódok csak a végpont és a frissített kulcs módosítását igénylik.
-
 Ha egy Bing Speech ügyféloldali függvénytárat használ egy adott programozási nyelvhez, a [SPEECH SDK](speech-sdk.md) -ba való Migrálás megköveteli az alkalmazás módosítását, mivel az API különbözik. A beszédfelismerési SDK lehetővé teszi a kód egyszerűbb használatát, miközben az új funkciókhoz is hozzáférést biztosít. A Speech SDK számos programozási nyelven elérhető. Az API-k minden platformon hasonlóak, és megkönnyítik a többplatformos fejlesztést.
 
 A beszédfelismerési szolgáltatás nem biztosít globális végpontot. Állapítsa meg, hogy az alkalmazás hatékonyan működik-e, ha egyetlen regionális végpontot használ az összes adatforgalmához. Ha nem, a leghatékonyabb végpont meghatározásához használja a térinformatikat. Minden használt régióban külön Speech Service-előfizetésre van szükség.
-
-Ha az alkalmazás hosszú élettartamú kapcsolatokat használ, és nem használhat elérhető SDK-t, használhat WebSockets-kapcsolatot. A 10 perces időtúllépési korlátot a megfelelő időpontokban történő újrakapcsolattal kezelheti.
 
 Ismerkedés a Speech SDK-val:
 
@@ -88,9 +84,11 @@ A Speech Service, az SDK és az API támogatásához látogasson el a Speech Ser
 ## <a name="next-steps"></a>Következő lépések
 
 * [Próbálja ki ingyenesen a Speech szolgáltatást](overview.md#try-the-speech-service-for-free)
-* [Gyors útmutató: beszédfelismerés felismerése UWP-alkalmazásban a Speech SDK használatával](~/articles/cognitive-services/Speech-Service/quickstarts/speech-to-text-from-microphone.md?pivots=programming-language-csharp&tabs=uwp)
+* [A diktálás használatának első lépései](get-started-speech-to-text.md)
+* [Ismerkedés a szövegfelolvasással](get-started-text-to-speech.md)
 
 ## <a name="see-also"></a>Lásd még
+
 * [Beszédfelismerési szolgáltatás kibocsátási megjegyzései](releasenotes.md)
 * [Mi a beszédfelismerési szolgáltatás?](overview.md)
 * [A Speech Service és a Speech SDK dokumentációja](speech-sdk.md#get-the-speech-sdk)

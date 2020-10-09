@@ -12,12 +12,12 @@ ms.devlang: PHP
 ms.topic: article
 ms.date: 11/25/2014
 ms.author: gwallace
-ms.openlocfilehash: c29e0f687e36eb679875ea7899aa1a0cd91bd122
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.openlocfilehash: 2ce0e34032d8f0d07af3a7dcd3c47558814be7bd
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
-ms.locfileid: "86169493"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826821"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-php"></a>A Twilio használata a hang-és SMS-funkciókhoz a PHP-ben
 Ez az útmutató bemutatja, hogyan hajthat végre általános programozási feladatokat az Azure Twilio API szolgáltatásával. A tárgyalt forgatókönyvek közé tartozik a telefonhívás kezdeményezése és egy rövid üzenetküldési szolgáltatás (SMS) üzenet küldése. A Twilio és a hang-és SMS-alkalmazások alkalmazásokban való használatáról további információt a [következő lépések](#NextSteps) című szakaszban talál.
@@ -56,7 +56,7 @@ A következő lista az Twilio-műveletek listáját tartalmazza. Ismerje meg a t
 ### <a name="twiml"></a><a id="TwiML"></a>TwiML
 A TwiML XML-alapú utasításokat tartalmaz a Twilio műveletek alapján, amelyek tájékoztatják a Twilio, hogy hogyan dolgozzák fel a hívást vagy az SMS-t.
 
-Példaként a következő TwiML konvertálja a szöveget **"Helló világ!" alkalmazás** beszédre.
+Példaként a következő TwiML konvertálja a szöveget **„Helló világ!” alkalmazás** beszédre.
 
 ```xml
 <?xml version="1.0" encoding="UTF-8" ?>
@@ -98,7 +98,7 @@ A PHP-hez készült Twilio-könyvtár telepítését követően hozzáadhat egy 
 require_once 'Services/Twilio.php';
 ```
 
-További információ: [https://github.com/twilio/twilio-php/blob/master/README.md][twilio_github_readme] .
+További információ: [https://github.com/twilio/twilio-php/blob/master/README.md][twilio_github_readme].
 
 ## <a name="how-to-make-an-outgoing-call"></a><a id="howto_make_call"></a>Útmutató: kimenő hívás létrehozása
 Az alábbiakban bemutatjuk, hogyan lehet kimenő hívást kezdeményezni a **Services_Twilio** osztály használatával. Ez a kód egy Twilio által biztosított helyet is használ a Twilio Markup Language (TwiML) válaszának visszaadásához. Helyettesítse be a **Feladó** és **a** telefonszám értékeit, és győződjön meg arról, hogy a kód futtatása előtt ellenőrizze a Twilio **-** fiók telefonszámát.
@@ -146,7 +146,7 @@ catch (Exception $e)
 
 Ahogy említettük, ez a kód egy Twilio által biztosított helyet használ a TwiML válasz visszaadásához. Ehelyett használhatja a saját webhelyét, hogy megadja a TwiML választ; További információkért lásd: [TwiML-válaszok megadása a saját webhelyéről](#howto_provide_twiml_responses).
 
-* **Megjegyzés**: a TLS/SSL-tanúsítvány érvényesítési hibáinak elhárításához lásd:[http://readthedocs.org/docs/twilio-php/en/latest/usage/rest.html][ssl_validation] 
+* **Megjegyzés**: a TLS/SSL-tanúsítvány érvényesítési hibáinak elhárításához lásd: [https://www.twilio.com/docs/api/errors][ssl_validation] 
 
 ## <a name="how-to-send-an-sms-message"></a><a id="howto_send_sms"></a>Útmutató: SMS-üzenet küldése
 A következő bemutatja, hogyan küldhet SMS-üzenetet a **Services_Twilio** osztály használatával. Az SMS **-** üzenetek küldéséhez a Twilio által biztosított próbaverziót adja meg. A számot a kód futtatása előtt ellenőrizni kell a Twilio **-** fiókhoz.
@@ -186,7 +186,7 @@ Amikor az alkalmazás kezdeményez egy hívást a Twilio API-hoz, a Twilio egy o
 
 Ahelyett, hogy a Twilio által megadott URL-címet kellene megadnia, létrehozhat egy saját helyet, amely visszaadja a HTTP-válaszokat. A helyet bármilyen nyelven létrehozhatja, amely az XML-válaszokat adja vissza; Ez a témakör feltételezi, hogy a PHP-t fogja használni a TwiML létrehozásához.
 
-A következő PHP-oldal egy TwiML választ eredményez, amely a hívás **"Helló világ!" alkalmazásét** mondja.
+A következő PHP-oldal egy TwiML választ eredményez, amely a hívás **„Helló világ!” alkalmazásét** mondja.
 
 ```xml
 <?php    
@@ -210,7 +210,7 @@ print $response;
 
 További információ a TwiML: [https://www.twilio.com/docs/api/twiml][twiml_reference] . 
 
-Miután beállította a PHP-oldalát, hogy TwiML válaszokat adjon meg, használja a PHP-oldal URL-címét a metódusnak átadott URL-címként `Services_Twilio->account->calls->create` . Ha például egy **MyTwiML** nevű webalkalmazást helyez üzembe egy Azure által üzemeltetett szolgáltatásban, és a php-oldal neve **MyTwiML. php**, az URL-cím átadható **Services_Twilio->Account->calls->Create** as the következő példában látható módon:
+Miután beállította a PHP-oldalát, hogy TwiML válaszokat adjon meg, használja a PHP-oldal URL-címét a metódusnak átadott URL-címként  `Services_Twilio->account->calls->create`  . Ha például egy **MyTwiML** nevű webalkalmazást helyez üzembe egy Azure által üzemeltetett szolgáltatásban, és a php-oldal neve **MyTwiML. php**, az URL-cím átadható  **Services_Twilio->Account->calls->Create**  as the következő példában látható módon:
 
 ```php
 require_once 'Services/Twilio.php';

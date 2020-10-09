@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
-ms.openlocfilehash: b7aaaa589b92814694bee2838332f6823b3351de
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 137a077ac73b5dd5ca9c68c6be2b30beb8e92ce0
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88521875"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826231"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-hosted-graphite"></a>Oktatóanyag: Azure Active Directory-integráció az üzemeltetett grafittal
 
@@ -100,7 +100,7 @@ Az Azure AD egyszeri bejelentkezés üzemeltetett grafittal való konfigurálás
 
 4. Az **alapszintű SAML-konfiguráció** szakaszban, ha az alkalmazást **identitásszolgáltató** kezdeményezett módban szeretné konfigurálni, hajtsa végre a következő lépéseket:
 
-    ![Üzemeltetett grafit tartomány és URL-címek egyszeri bejelentkezési adatai](common/idp-intiated.png)
+    ![A képernyőfelvételen az alapszintű SAML-konfiguráció látható, ahol megadható az azonosító, a válasz U R L, majd a Mentés elemre.](common/idp-intiated.png)
 
     a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://www.hostedgraphite.com/metadata/<user id>`
 
@@ -108,7 +108,7 @@ Az Azure AD egyszeri bejelentkezés üzemeltetett grafittal való konfigurálás
 
 5. Kattintson a **további URL-címek beállítása** elemre, és hajtsa végre a következő lépést, ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni:
 
-    ![Üzemeltetett grafit tartomány és URL-címek egyszeri bejelentkezési adatai](common/metadata-upload-additional-signon.png)
+    ![Képernyőfelvétel: további U R ls beállítása, ahol megadhatja a bejelentkezést az U R L-ben.](common/metadata-upload-additional-signon.png)
 
     A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:  `https://www.hostedgraphite.com/login/saml/<user id>/`
 
@@ -135,23 +135,23 @@ Az Azure AD egyszeri bejelentkezés üzemeltetett grafittal való konfigurálás
 
 2. Nyissa meg az **SAML-beállítások lapot** az oldalsávon (**Access-> SAML-beállítás**).
 
-    ![Egyszeri bejelentkezés konfigurálása az alkalmazás oldalán](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_000.png)
+    ![A képernyőfelvételen a kiválasztott SAML-beállításhoz tartozó hozzáférési menü látható.](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_000.png)
 
 3. Erősítse meg, hogy ezek az URL-címek egyeznek a Azure Portal **alapszintű SAML-konfiguráció** szakaszának konfigurálásával.
 
-    ![Egyszeri bejelentkezés konfigurálása az alkalmazás oldalán](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_001.png)
+    ![A képernyőfelvétel alapszintű SAML-konfigurációját mutatja be.](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_001.png)
 
 4. Az  **entitás vagy a kiállító azonosítója** és az **egyszeri bejelentkezés bejelentkezési URL-címe** szövegmezőben illessze be az **Azure ad-azonosító** és a **bejelentkezési url-cím** értékét, amelyet a Azure Portal másolt.
 
-    ![Egyszeri bejelentkezés konfigurálása az alkalmazás oldalán](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_002.png)
+    ![A képernyőképen az Identitáskezelő bejegyzései láthatók.](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_002.png)
 
 5. Válassza az **írásvédett** lehetőséget **alapértelmezett felhasználói szerepkörként**.
 
-    ![Egyszeri bejelentkezés konfigurálása az alkalmazás oldalán](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_004.png)
+    ![A képernyőképen az alapértelmezett felhasználói szerepkör látható, amely csak olvasható.](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_004.png)
 
 6. Nyissa meg az alap-64 kódolású tanúsítványt a Jegyzettömbben, Azure Portal letöltve, másolja ki a tartalmat a vágólapra, majd illessze be az **X. 509 tanúsítvány** szövegmezőbe.
 
-    ![Egyszeri bejelentkezés konfigurálása az alkalmazás oldalán](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_005.png)
+    ![A képernyőképen az X dot 509 tanúsítvány látható.](./media/hostedgraphite-tutorial/tutorial_hostedgraphite_005.png)
 
 7. Kattintson a **Save (Mentés** ) gombra.
 
@@ -178,7 +178,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    d. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

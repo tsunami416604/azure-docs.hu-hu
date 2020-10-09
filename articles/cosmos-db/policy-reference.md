@@ -1,18 +1,18 @@
 ---
 title: A Azure Cosmos DB beépített szabályzat-definíciói
 description: A Azure Cosmos DB Azure Policy beépített szabályzat-definícióit sorolja fel. Ezek a beépített szabályzat-definíciók közös megközelítéseket biztosítanak az Azure-erőforrások kezeléséhez.
-ms.date: 09/16/2020
+ms.date: 10/07/2020
 ms.topic: reference
 author: SnehaGunda
 ms.author: sngun
 ms.service: cosmos-db
 ms.custom: subject-policy-reference
-ms.openlocfilehash: 7e74002363ff8b238ca4d2b614901f64656ceae4
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 4083280484c5fe157f94a9561f7e4b7df1bcf55a
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90978942"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91827556"
 ---
 # <a name="azure-policy-built-in-definitions-for-azure-cosmos-db"></a>A Azure Cosmos DB beépített definíciói Azure Policy
 

@@ -3,14 +3,14 @@ title: Üzembe helyezés dedikált gazdagépen
 description: Dedikált gazdagép használata a Azure Container Instances számítási feladatokhoz való valódi gazda szintű elkülönítés érdekében
 ms.topic: article
 ms.date: 01/17/2020
-author: dkkapur
-ms.author: dekapur
-ms.openlocfilehash: e9d7e2a706f65b5f2948a24400aa63ba39350661
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+author: macolso
+ms.author: macolso
+ms.openlocfilehash: 967d2da61ffdfa9d1723bcab589deb2277d4041e
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86259639"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91825617"
 ---
 # <a name="deploy-on-dedicated-hosts"></a>Üzembe helyezés dedikált gazdagépeken
 
@@ -31,8 +31,8 @@ A dedikált SKU megfelelő olyan tároló-munkaterhelésekhez, amelyek a fizikai
 Az API 2019-12-01-es verziójától kezdve a `sku` központi telepítési sablon tároló csoport tulajdonságai szakaszában található egy tulajdonság, amely egy ACI-telepítéshez szükséges. Jelenleg ezt a tulajdonságot használhatja egy Azure Resource Manager központi telepítési sablonhoz az ACI-hoz. További információ az ACI-erőforrások üzembe helyezéséről a sablonnal az [oktatóanyagban: többtárolós csoport üzembe helyezése Resource Manager-sablonnal](./container-instances-multi-container-group.md). 
 
 A `sku` tulajdonság értéke a következő értékek egyike lehet:
-* `Standard`– a standard ACI üzembe helyezési lehetőség, amely továbbra is garantálja a hypervisor szintű biztonságot 
-* `Dedicated`-a számítási feladatok szintjének elkülönítése dedikált fizikai gazdagépekkel a tároló csoport számára
+* `Standard` – a standard ACI üzembe helyezési lehetőség, amely továbbra is garantálja a hypervisor szintű biztonságot 
+* `Dedicated` -a számítási feladatok szintjének elkülönítése dedikált fizikai gazdagépekkel a tároló csoport számára
 
 ## <a name="modify-your-json-deployment-template"></a>A JSON-telepítési sablon módosítása
 

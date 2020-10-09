@@ -5,15 +5,15 @@ author: cynthn
 ms.service: virtual-machines
 ms.workload: infrastructure-services
 ms.topic: how-to
-ms.date: 07/20/2020
+ms.date: 10/05/2020
 ms.author: cynthn
 ms.reviewer: jagaveer
-ms.openlocfilehash: c0b8f395dde1d94c4c1efa32a2f78707d1456d88
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.openlocfilehash: 66d62cde9ea17e73f561dfbce94eb3d3e7175b6d
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "88817787"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91827825"
 ---
 # <a name="use-spot-vms-in-azure"></a>Helyszíni virtuális gépek használata az Azure-ban
 
@@ -67,8 +67,22 @@ Jelenleg a következő [típusú ajánlatok](https://azure.microsoft.com/support
 
 A helyszíni virtuális gépek díjszabása a régió és az SKU alapján változó. További információ: virtuális gépek díjszabása [Linux](https://azure.microsoft.com/pricing/details/virtual-machines/linux/) és [Windows rendszerekhez](https://azure.microsoft.com/pricing/details/virtual-machines/windows/). 
 
+A díjszabással kapcsolatos információkat az [Azure kiskereskedelmi díjszabás API](/rest/api/cost-management/retail-prices/azure-retail-prices) használatával kérdezheti le a helyszíni díjszabással kapcsolatos információk lekérdezéséhez. A `meterName` és `skuName` mindkettő tartalmazni fogja `Spot` .
 
 A változó díjszabással maximális árat állíthat be az USA dollárban (USD), legfeljebb 5 tizedesjegyet használva. Az érték például a `0.98765` maximális díj $0,98765 USD/óra. Ha a maximális árat állítja be `-1` , a virtuális gép ára nem kerül kizárásra. A virtuális gép ára a jelenlegi díj vagy a standard virtuális gép díjszabása, amely soha nem kevesebb, amíg rendelkezésre áll a kapacitás és a kvóta.
+
+## <a name="pricing-and-eviction-history"></a>Díjszabás és kizárási előzmények
+
+A portálon megtekintheti a korábbi díjszabást és a kizárási arányt egy adott régióban. Válassza ki a **díjszabási előzmények megtekintése lehetőséget, és hasonlítsa össze az árakat a közeli régiókban** , hogy megtekintse az adott méretű díjszabási táblázatot vagy grafikont.  A következő képek díjszabási és kizárási díjai csak példák. 
+
+**Diagram**:
+
+:::image type="content" source="./media/spot-chart.png" alt-text="Képernyőkép a régió lehetőségeiről a díjszabási és a kizárási arány diagramként való különbségével.":::
+
+**Tábla**:
+
+:::image type="content" source="./media/spot-table.png" alt-text="Képernyőkép a régió lehetőségeiről a díjszabási és a kizárási arány diagramként való különbségével.":::
+
 
 
 ##  <a name="frequently-asked-questions"></a>Gyakori kérdések
@@ -97,8 +111,8 @@ A változó díjszabással maximális árat állíthat be az USA dollárban (USD
 
 **A:** A kérdését a következő címen teheti közzé és címkézheti `azure-spot` : [Q&a](https://docs.microsoft.com/answers/topics/azure-spot.html). 
 
-## <a name="next-steps"></a>További lépések
-Helyszíni virtuális gépek üzembe helyezéséhez használja a [CLI](./linux/spot-cli.md)-t, a [portált](./windows/spot-portal.md), az [ARM-sablont](./linux/spot-template.md)vagy a [PowerShellt](./windows/spot-powershell.md) .
+## <a name="next-steps"></a>Következő lépések
+Helyszíni virtuális gépek üzembe helyezéséhez használja a [CLI](./linux/spot-cli.md)-t, a [portált](spot-portal.md), az [ARM-sablont](./linux/spot-template.md)vagy a [PowerShellt](./windows/spot-powershell.md) .
 
 Helyszíni virtuálisgép-példányokkal is üzembe helyezhetők a [méretezési csoport](../virtual-machine-scale-sets/use-spot.md).
 

@@ -5,12 +5,12 @@ ms.devlang: Java
 ms.topic: quickstart
 ms.date: 06/23/2020
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
-ms.openlocfilehash: 5447bea686db48157c721978f5510cd80e0924c6
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 8883b5959cc4c67d34efc3c9da7788f03fc6c9af
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "88065794"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91825200"
 ---
 # <a name="quickstart-use-azure-service-bus-queues-with-java-to-send-and-receive-messages"></a>Gyors útmutató: Azure Service Bus-várólisták használata a Javával üzenetek küldéséhez és fogadásához
 
@@ -65,7 +65,7 @@ public void run() throws Exception {
     // Create a QueueClient instance and then asynchronously send messages.
     // Close the sender once the send operation is complete.
     QueueClient sendClient = new QueueClient(new ConnectionStringBuilder(ConnectionString, QueueName), ReceiveMode.PEEKLOCK);
-    this.sendMessageAsync(sendClient).thenRunAsync(() -> sendClient.closeAsync());
+    this.sendMessagesAsync(sendClient).thenRunAsync(() -> sendClient.closeAsync());
 
     sendClient.close();
 }
@@ -181,7 +181,7 @@ Abban az esetben, ha az alkalmazás az üzenet feldolgozása után összeomlik, 
 > [!NOTE]
 > [Service Bus Explorerrel](https://github.com/paolosalvatori/ServiceBusExplorer/)kezelheti Service Bus erőforrásait. A Service Bus Explorer lehetővé teszi a felhasználók számára, hogy egy Service Bus névtérhez kapcsolódjanak, és egyszerű módon felügyelhetik az üzenetkezelési entitásokat. Az eszköz olyan speciális funkciókat biztosít, mint az importálási/exportálási funkció, illetve a témakör, a várólisták, az előfizetések, a Relay-szolgáltatások, az értesítési központok és az események hubok. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Most, hogy megismerte Service Bus várólisták alapjait, további információt a [várólisták, témakörök és előfizetések][Queues, topics, and subscriptions] című témakörben talál.
 
 További információ: [Java fejlesztői központ](https://azure.microsoft.com/develop/java/).

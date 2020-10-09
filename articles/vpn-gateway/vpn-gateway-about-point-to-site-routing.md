@@ -5,14 +5,14 @@ services: vpn-gateway
 author: cherylmc
 ms.service: vpn-gateway
 ms.topic: article
-ms.date: 09/03/2020
+ms.date: 10/07/2020
 ms.author: cherylmc
-ms.openlocfilehash: 1e88afd91c0e0b344cc0eb8d82b637a88d5a1656
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 0b9b8ba555cddd56c49c750709e69ec180291c95
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91447974"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91827195"
 ---
 # <a name="about-point-to-site-vpn-routing"></a>Tudnivalók a pont–hely VPN-útválasztásról
 
@@ -32,7 +32,7 @@ Ebben a cikkben számos különböző diagram szerepel. Mindegyik szakasz egy m�
 
 Ebben a példában a pont – hely VPN Gateway-kapcsolat olyan VNet vonatkozik, amely nincs csatlakoztatva, vagy más virtuális hálózattal (VNet1) van társítva. Ebben a példában az ügyfelek hozzáférhetnek a VNet1.
 
-![elkülönített VNet-Útválasztás](./media/vpn-gateway-about-point-to-site-routing/1.jpg "elkülönített VNet-Útválasztás")
+:::image type="content" source="./media/vpn-gateway-about-point-to-site-routing/isolated.jpg" alt-text="Elkülönített VNet-Útválasztás" lightbox="./media/vpn-gateway-about-point-to-site-routing/isolated.jpg":::
 
 ### <a name="address-space"></a>Címtér
 
@@ -56,7 +56,7 @@ Ebben a példában a pont – hely VPN Gateway-kapcsolat a VNet1. A VNet1 a VNet
 
 A Windowst használó ügyfelek közvetlenül hozzáférhetnek a virtuális hálózatok, de a VPN-ügyfelet újra le kell tölteni, ha a VNet vagy a hálózati topológia bármilyen módosítást végez. A nem Windows rendszerű ügyfelek közvetlenül is hozzáférhetnek a virtuális hálózatok. A hozzáférés nem tranzitív, és csak a közvetlenül összetartozó virtuális hálózatok korlátozódik.
 
-![több társas virtuális hálózatok](./media/vpn-gateway-about-point-to-site-routing/2.jpg "több társas virtuális hálózatok")
+:::image type="content" source="./media/vpn-gateway-about-point-to-site-routing/multiple.jpg" alt-text="Elkülönített VNet-Útválasztás" lightbox="./media/vpn-gateway-about-point-to-site-routing/multiple.jpg":::
 
 ### <a name="address-space"></a>Címterület:
 
@@ -86,7 +86,7 @@ Ebben a példában a pont – hely VPN Gateway-kapcsolat a VNet1. A VNet1 helyek
 
 A Windows vagy más támogatott operációs rendszert használó ügyfelek csak a VNet1 férhetnek hozzá. További virtuális hálózatok eléréséhez a BGP-t kell használni.
 
-![több virtuális hálózatok és S2S](./media/vpn-gateway-about-point-to-site-routing/3.jpg "több virtuális hálózatok és S2S")
+:::image type="content" source="./media/vpn-gateway-about-point-to-site-routing/multiple-s2s.jpg" alt-text="Elkülönített VNet-Útválasztás" lightbox="./media/vpn-gateway-about-point-to-site-routing/multiple-s2s.jpg":::
 
 ### <a name="address-space"></a>Címtér
 
@@ -114,7 +114,7 @@ Ebben a példában a pont – hely VPN Gateway-kapcsolat a VNet1. A VNet1 helyek
 
 A Windows vagy más támogatott operációs rendszert használó ügyfelek hozzáférhetnek a két hálózat közötti pont-pont típusú VPN-kapcsolattal összekapcsolt összes virtuális hálózatok, de a csatlakoztatott virtuális hálózatok útvonalakat manuálisan kell hozzáadni a Windows-ügyfelekhez.
 
-![több virtuális hálózatok és S2S (BGP)](./media/vpn-gateway-about-point-to-site-routing/4.jpg "több virtuális hálózatok és S2S BGP")
+:::image type="content" source="./media/vpn-gateway-about-point-to-site-routing/multiple-bgp.jpg" alt-text="Elkülönített VNet-Útválasztás" lightbox="./media/vpn-gateway-about-point-to-site-routing/multiple-bgp.jpg":::
 
 ### <a name="address-space"></a>Címtér
 
@@ -142,7 +142,7 @@ Ebben a példában a pont – hely VPN Gateway-kapcsolat a VNet1. A VNet1 nincs 
 
 A Windows és a nem Windows rendszerű ügyfelek csak a VNet1 férhetnek hozzá.
 
-![Útválasztás VNet és fiókirodával](./media/vpn-gateway-about-point-to-site-routing/5.jpg "Útválasztás VNet és fiókirodával")
+:::image type="content" source="./media/vpn-gateway-about-point-to-site-routing/branch-office.jpg" alt-text="Elkülönített VNet-Útválasztás" lightbox="./media/vpn-gateway-about-point-to-site-routing/branch-office.jpg":::
 
 ### <a name="address-space"></a>Címtér
 
@@ -168,7 +168,7 @@ Ebben a példában a pont – hely VPN Gateway-kapcsolat a VNet1. A VNet1 nincs 
 
 A Windows-ügyfelek elérhetik a VNet és a fiókirodát (hely1), de a hely1 útvonalakat manuálisan kell hozzáadni az ügyfélhez. A nem Windows rendszerű ügyfelek hozzáférhetnek a VNet és a helyszíni fiókirodához is.
 
-![egy VNet és egy fiókiroda (BGP)](./media/vpn-gateway-about-point-to-site-routing/6.jpg "egy VNet és egy fiókiroda")
+:::image type="content" source="./media/vpn-gateway-about-point-to-site-routing/branch-bgp.jpg" alt-text="Elkülönített VNet-Útválasztás" lightbox="./media/vpn-gateway-about-point-to-site-routing/branch-bgp.jpg":::
 
 ### <a name="address-space"></a>Címtér
 
@@ -195,7 +195,7 @@ Ebben a példában a pont – hely VPN Gateway-kapcsolat a VNet1. A VNet1 helyek
 
 Minden ügyfél csak a VNet1 fér hozzá.
 
-![Diagram, amely egy több VNet S2S és egy fiókirodát mutat be.](./media/vpn-gateway-about-point-to-site-routing/7.jpg "Multi-VNet S2S és fiókirodák")
+:::image type="content" source="./media/vpn-gateway-about-point-to-site-routing/multi-branch.jpg" alt-text="Elkülönített VNet-Útválasztás" lightbox="./media/vpn-gateway-about-point-to-site-routing/multi-branch.jpg":::
 
 ### <a name="address-space"></a>Címtér
 
@@ -225,7 +225,7 @@ Ebben a példában a pont – hely VPN Gateway-kapcsolat a VNet1. A VNet1 helyek
 
 A Windowst használó ügyfelek hozzáférhetnek a helyek közötti VPN-kapcsolattal összekapcsolt virtuális hálózatok és webhelyekhez, de a VNet2, a VNet3 és a hely1 útvonalakat manuálisan kell hozzáadni az ügyfélhez. A nem Windows rendszerű ügyfelek a két hálózat közötti pont-pont típusú VPN-kapcsolaton keresztül csatlakoztatott virtuális hálózatok és webhelyeket nem manuális beavatkozás nélkül érhetik el. A hozzáférés tranzitív, és az ügyfelek hozzáférhetnek az erőforrásokhoz az összes csatlakoztatott virtuális hálózatok és telephelyen (helyszíni).
 
-![Multi-VNet S2S és fiókirodák](./media/vpn-gateway-about-point-to-site-routing/8.jpg "Multi-VNet S2S és fiókirodák")
+:::image type="content" source="./media/vpn-gateway-about-point-to-site-routing/multi-branch-bgp.jpg" alt-text="Elkülönített VNet-Útválasztás" lightbox="./media/vpn-gateway-about-point-to-site-routing/multi-branch-bgp.jpg":::
 
 ### <a name="address-space"></a>Címtér
 
@@ -249,6 +249,6 @@ A Windowst használó ügyfelek hozzáférhetnek a helyek közötti VPN-kapcsola
 
 * A nem Windows rendszerű ügyfelek hozzáférhetnek a VNet1, a Vnet2, a VNet3 és a hely1.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A P2S VPN létrehozásának megkezdéséhez tekintse meg [a P2S VPN létrehozása a Azure Portal használatával](vpn-gateway-howto-point-to-site-resource-manager-portal.md) című témakört.

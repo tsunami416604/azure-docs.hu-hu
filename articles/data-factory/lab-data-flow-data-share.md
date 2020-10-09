@@ -7,12 +7,12 @@ ms.service: data-factory
 ms.topic: tutorial
 ms.custom: seo-lt-2019
 ms.date: 01/08/2020
-ms.openlocfilehash: c43cac4d599753ecc3486ef7b86aa54b5697b0f6
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.openlocfilehash: db5384f843173bdc795fba64f277ff8bf85dc4f5
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
-ms.locfileid: "89435643"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91827142"
 ---
 # <a name="data-integration-using-azure-data-factory-and-azure-data-share"></a>Adatintegráció a Azure Data Factory és az Azure-adatmegosztás használatával
 
@@ -105,7 +105,7 @@ A hibakeresés bekapcsolásához kattintson a Factory felső sávján találhat�
 
 ## <a name="ingest-data-using-the-copy-activity"></a>Adatbevitel a másolási tevékenység használatával
 
-Ebben a szakaszban egy másolási tevékenységgel rendelkező folyamatot fog létrehozni, amely egy Azure SQL-ADATBÁZISból egy táblázatot tölt be egy ADLS Gen2 Storage-fiókba. Megtudhatja, hogyan adhat hozzá egy folyamatot, konfigurálhat egy adatkészletet, és hogyan végezhet hibakeresést az ADF UX használatával. Az ebben a szakaszban használt konfigurációs minta a kapcsolódó adattárakból a fájl alapú adattárba való másolásra is alkalmazható.
+Ebben a szakaszban egy másolási tevékenységgel rendelkező folyamatot fog létrehozni, amely egy Azure SQL-ADATBÁZISból egy táblázatot tölt be egy ADLS Gen2 Storage-fiókba. Megtudhatja, hogyan adhat hozzá egy folyamatot, konfigurálhat egy adatkészletet, és hogyan végezhet hibakeresést az ADF UX használatával. Az ebben a szakaszban használt konfigurációs minta alkalmazható a kapcsolódó adattárból a fájl alapú adattárba történő másolásra.
 
 Azure Data Factory egy folyamat olyan tevékenységek logikai csoportosítása, amelyek együttesen végeznek feladatokat. A tevékenységek határozzák meg az adatokon végrehajtandó műveletet. Egy adatkészlet a társított szolgáltatásban használni kívánt adatokat mutat.
 
@@ -336,7 +336,7 @@ Ha létrehozta az adatmegosztást, akkor a kalapot vált, és az *adatfogyasztó
 
     ![Megosztás részletei](media/lab-data-flow-data-share/ads-details.png)
 
-1. Válassza a **Folytatás**lehetőséget. 
+1. Válassza a **Folytatás** lehetőséget. 
 
 1. Válassza az **adatkészletek hozzáadása** lehetőséget 
 

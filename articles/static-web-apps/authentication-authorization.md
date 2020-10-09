@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: cshoe
-ms.openlocfilehash: 4c72a80b164e8ca1dd649503dcb968efd92be797
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: e95cd313d341844eabf4f5c5feae8a8ca3dc9c2e
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "85297069"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826543"
 ---
 # <a name="authentication-and-authorization-for-azure-static-web-apps-preview"></a>Az Azure Static Web Apps előzetes verziójának hitelesítése és engedélyezése
 
@@ -57,9 +57,9 @@ A meghívások egyediek az egyes engedélyezési szolgáltatók számára, ezér
 | ---------------------- | ----------------- |
 | Azure Active Directory | e-mail-cím;     |
 | Facebook               | e-mail-cím;     |
-| GitHub                 | felhasználónév          |
+| GitHub                 | username          |
 | Google<sup>1</sup>     | e-mail-cím;     |
-| Twitter                | felhasználónév          |
+| Twitter                | username          |
 
 1. Navigáljon a [Azure Portal](https://portal.azure.com)statikus Web Apps erőforrásához.
 1. A _Beállítások_területen kattintson a **szerepkör-kezelés**elemre.
@@ -197,7 +197,7 @@ A szolgáltató letiltásához [útválasztási szabályokat](routes.md) hozhat 
 
 Az általános korlátozásokról és korlátozásokról a [kvóták című cikkben](quotas.md) olvashat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Hozzáférés a felhasználói hitelesítéshez és az engedélyezési információhoz](user-information.md)

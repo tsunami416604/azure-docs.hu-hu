@@ -12,12 +12,12 @@ manager: daveba
 ms.reviewer: sandeo
 ms.custom: references_regions
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 84e692540d376c95a4a981249eba42060ed4ab80
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 27ffc176fc890d90e4201069ec1728eed69d4011
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91287100"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826662"
 ---
 # <a name="sign-in-to-windows-virtual-machine-in-azure-using-azure-active-directory-authentication-preview"></a>Bejelentkezés az Azure-beli Windows rendszerű virtuális gépre Azure Active Directory hitelesítéssel (előzetes verzió)
 
@@ -191,7 +191,7 @@ az role assignment create \
 
 Az Azure-RBAC az Azure-előfizetési erőforrásokhoz való hozzáférés kezeléséhez való használatáról a következő cikkekben talál további információt:
 
-- [Azure-beli szerepkör-hozzárendelések hozzáadása vagy eltávolítása az Azure CLI-vel](../../role-based-access-control/role-assignments-cli.md)
+- [Azure-beli szerepkör-hozzárendelés hozzáadása vagy eltávolítása az Azure CLI használatával](../../role-based-access-control/role-assignments-cli.md)
 - [Azure-beli szerepkör-hozzárendelés hozzáadása vagy eltávolítása az Azure Portal használatával](../../role-based-access-control/role-assignments-portal.md)
 - [Azure-beli szerepkör-hozzárendelések hozzáadása vagy eltávolítása Azure PowerShell használatával](../../role-based-access-control/role-assignments-powershell.md).
 
@@ -236,7 +236,7 @@ A AADLoginForWindows-bővítményt sikeresen kell telepíteni ahhoz, hogy a virt
 
    > [!NOTE]
    > Ha a bővítmény a kezdeti hiba után újraindul, a rendszer a központi telepítési hibát tartalmazó naplót CommandExecution_YYYYMMDDHHMMSSSSS. log néven menti. "
-1. Nyisson meg egy parancssort a virtuális gépen, és ellenőrizze ezeket a lekérdezéseket az Azure-gazdagépen futó Instance Metadata Service (IMDS) végponton:
+1. Nyisson meg egy PowerShell-parancssort a virtuális gépen, és ellenőrizze ezeket a lekérdezéseket az Azure-gazdagépen futó Instance Metadata Service (IMDS) végponton:
 
    | Futtatandó parancs | Várt kimenet |
    | --- | --- |

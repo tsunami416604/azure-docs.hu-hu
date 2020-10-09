@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/31/2020
 ms.author: jeedes
-ms.openlocfilehash: 8abf36e79f83c69dd927acd21c5c8652122fc82d
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 6050b9f4a14f39245c7424f47dae081e9efc6ff1
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544077"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826130"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-hive"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a kaptárral
 
@@ -97,7 +97,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. A fentieken kívül a kaptár alkalmazás néhány további attribútumot vár az SAML-válaszban, amelyek alább láthatók. Ezek az attribútumok előre fel vannak töltve, de a követelményeinek megfelelően áttekintheti őket.
 
-    | Name | Forrás attribútum|
+    | Name (Név) | Forrás attribútum|
     | ------------ | --------- |
     | firstName | User. givenName |
     | lastName | felhasználó. vezetéknév |
@@ -121,7 +121,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Create** (Létrehozás) gombra.
+   1. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -147,11 +147,11 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 1. Kattintson a **felhasználói profilra** , és kattintson **a munkaterületre**.
 
-    ![Struktúra konfigurációja](./media/hive-tutorial/configure1.png)
+    ![Képernyőfelvétel: a struktúra webhelye a menüből kiválasztott munkaterületre mutat.](./media/hive-tutorial/configure1.png)
 
 1. Kattintson a **hitelesítés** elemre, és hajtsa végre a következő lépéseket:
 
-    ![Struktúra konfigurációja](./media/hive-tutorial/configure2.png)
+    ![Képernyőfelvétel: az Auth oldal, ahol a leírt feladatok láthatók.](./media/hive-tutorial/configure2.png)
 
     a. Másolja **a munkaterület-azonosítót** , és fűzze hozzá a **Bejelentkezés URL** -címéhez és a  **Válasz url-címéhez** a Azure Portal **alapszintű SAML-konfiguráció szakaszában** .
 

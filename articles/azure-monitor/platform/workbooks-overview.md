@@ -8,16 +8,16 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/23/2020
 ms.author: mbullwin
-ms.openlocfilehash: d6ac552640b4a557c51b674624e6a4493241e0ed
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: e8ce4feaec6571adfb15f5928a6eb7c910173353
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90977571"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91825778"
 ---
 # <a name="azure-monitor-workbooks"></a>Munkafüzetek Azure Monitor
 
-A munkafüzetek rugalmas vásznat biztosítanak az adatelemzéshez és a Azure Portalon belüli Rich vizualizációs jelentések létrehozásához. Lehetővé teszik, hogy több adatforrásra koppintson az Azure-ból, és egyesítse azokat egységes interaktív környezetekben. 
+A munkafüzetek Azure Portalon belül kínálnak rugalmas vásznat az adatelemzéshez és a részletgazdag vizuális jelentések létrehozásához. Lehetővé teszik, hogy több adatforrásra koppintson az Azure-ból, és egyesítse azokat egységes interaktív környezetekben. 
 
 Íme egy videós bemutató a munkafüzetek létrehozásához.
 
@@ -25,16 +25,16 @@ A munkafüzetek rugalmas vásznat biztosítanak az adatelemzéshez és a Azure P
 
 ## <a name="data-sources"></a>Adatforrások
 
-A munkafüzetek több forrásból származó adatok lekérdezésére is képesek az Azure-ban. A munkafüzetek szerzője átalakíthatja ezeket az adatokat, hogy betekintést nyújtson az alapul szolgáló összetevők rendelkezésre állásával, teljesítményével, kihasználtságával és általános állapotával. A virtuális gépekről származó teljesítményadatokat például a magas CPU-vagy alacsony memória-példányok azonosítására, valamint az eredmények egy interaktív jelentésben lévő rácsként való megjelenítésére lehet elemezni.
+A munkafüzetek több Azure-on belüli adatforrásból képesek adatokat lekérdezni. A munkafüzetek készítői ezeket az adatokat átalakítva megállapításokat tehetnek a mögöttes összetevők rendelkezésre állásáról, teljesítményéről, használatáról és általános állapotáról. A virtuális gépekről származó teljesítményadatokat például a magas CPU-vagy alacsony memória-példányok azonosítására, valamint az eredmények egy interaktív jelentésben lévő rácsként való megjelenítésére lehet elemezni.
   
-A munkafüzetek valódi ereje azonban a különböző forrásokból származó adatok egyetlen jelentésen belüli egyesítésének lehetősége. Ez lehetővé teszi az összetett erőforrás-nézetek létrehozását, illetve az erőforrások közötti összekapcsolást, amely lehetővé teszi, hogy a gazdagabb adatmennyiség és az egyéb módon lehetetlenné válik.
+A munkafüzet legnagyobb előnye azonban az a képesség, hogy különálló forrásokból származó adatokat kombinálnak egyetlen jelentésben. Ez lehetővé teszi az összetett erőforrás-nézetek létrehozását, illetve az erőforrások közötti összekapcsolást, amely lehetővé teszi, hogy a gazdagabb adatmennyiség és az egyéb módon lehetetlenné válik.
 
 A munkafüzetek jelenleg a következő adatforrásokkal kompatibilisek:
 
 * [Naplók](workbooks-data-sources.md#logs)
 * [Metrikák](workbooks-data-sources.md#metrics)
 * [Azure Resource Graph](workbooks-data-sources.md#azure-resource-graph)
-* [Riasztások (előnézet)](workbooks-data-sources.md#alerts-preview)
+* [Riasztások (előzetes verzió)](workbooks-data-sources.md#alerts-preview)
 * [Munkaterhelés állapota](workbooks-data-sources.md#workload-health)
 * [Azure Resource Health](workbooks-data-sources.md#azure-resource-health)
 * [Azure Data Explorer](workbooks-data-sources.md#azure-data-explorer)

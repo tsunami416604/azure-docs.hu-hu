@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/05/2019
 ms.author: jeedes
-ms.openlocfilehash: abd6382a9bf07f198e0344b8730c585cff0f96ca
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 987a8676fa9f738b788b183a1f3d964c0d0b88ad
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88544282"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826797"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ekincare"></a>Oktatóanyag: Azure Active Directory integráció a eKincare
 
@@ -112,11 +112,11 @@ Az Azure AD egyszeri bejelentkezés eKincare való konfigurálásához hajtsa v�
 
 5. a eKincare alkalmazás megadott formátumban várja az SAML-kijelentéseket. Konfigurálja a következő jogcímeket ehhez az alkalmazáshoz. Az attribútumok értékeit az alkalmazás-integráció lapon, a **felhasználói attribútumok** szakaszban kezelheti. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** gombra a **felhasználói attribútumok** párbeszédpanel megnyitásához.
 
-    ![image](common/edit-attribute.png)
+    ![A "felhasználó attribútumai" párbeszédpanelt a "szerkesztés" gomb kiválasztásával ábrázoló képernyőkép.](common/edit-attribute.png)
 
 6. A **felhasználó attribútumai** párbeszédpanel **felhasználói jogcímek** szakaszában szerkessze a jogcímeket a **Szerkesztés ikon** használatával, vagy adja hozzá a jogcímeket az **új jogcím hozzáadása** paranccsal az SAML-token attribútum konfigurálásához a fenti képen látható módon, és hajtsa végre a következő lépéseket: 
 
-    | Name | Forrás attribútum |
+    | Name (Név) | Forrás attribútum |
     | ---------------| --------------- |    
     | Alkalmazottkód | *User. extensionAttribute1* |
     | organizationid | *"uniquevalue"* |
@@ -124,7 +124,7 @@ Az Azure AD egyszeri bejelentkezés eKincare való konfigurálásához hajtsa v�
     
     a. Kattintson az **új jogcím hozzáadása** elemre a **felhasználói jogcímek kezelése** párbeszédpanel megnyitásához.
 
-    ![image](common/new-save-attribute.png)
+    ![Képernyőkép, amely a "felhasználói jogcímek" párbeszédpanelt mutatja az "új jogcím hozzáadása" és a "Mentés" gomb kiválasztásával.](common/new-save-attribute.png)
 
     ![image](common/new-attribute-details.png)
 
@@ -181,7 +181,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    d. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

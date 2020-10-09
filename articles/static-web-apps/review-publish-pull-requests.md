@@ -7,12 +7,12 @@ ms.service: static-web-apps
 ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: yolasors
-ms.openlocfilehash: 61c5917c1e4cb9dbf96e90af9a30777ea7c2e66c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f8f2e352ae458e3e2825c9701437ea652ba07375
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "83597029"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91825667"
 ---
 # <a name="review-pull-requests-in-pre-production-environments-in-azure-static-web-apps-preview"></a>Lekéréses kérelmek áttekintése éles üzem előtti környezetekben az Azure Static Web Apps előzetes verziójában
 
@@ -51,11 +51,11 @@ Kezdje azzal, hogy megváltoztatja a tárházat. Ezt közvetlenül a GitHubon v�
 
 1. Lépjen az _alkalmazás_ mappájába, és módosítsa a szöveges tartalmakat. Megváltoztathatja például a címet vagy a bekezdést. Ha megtalálta a szerkeszteni kívánt fájlt, kattintson a **Szerkesztés** gombra a módosítás végrehajtásához.
 
-    :::image type="content" source="./media/review-publish-pull-requests/edit-file.png" alt-text="Fájl szerkesztése gomb a GitHub felületen":::
+    :::image type="content" source="./media/review-publish-pull-requests/edit-file.png" alt-text="Új ág létrehozása a GitHub Interface használatával":::
 
 1. A módosítások elvégzése után kattintson a **módosítások** elvégzése gombra, hogy véglegesítse a módosításokat a fiókirodában.
 
-    :::image type="content" source="./media/review-publish-pull-requests/commit-changes.png" alt-text="Módosítások véglegesítve gomb a GitHub felületen":::
+    :::image type="content" source="./media/review-publish-pull-requests/commit-changes.png" alt-text="Új ág létrehozása a GitHub Interface használatával":::
 
 ## <a name="create-a-pull-request"></a>Lekéréses kérelem létrehozása
 
@@ -63,13 +63,13 @@ Ezután hozzon létre egy lekéréses kérelmet ebből a változásból.
 
 1. Nyissa meg a projekt **pull-kérelmek** lapját a githubon:
 
-    :::image type="content" source="./media/review-publish-pull-requests/tab.png" alt-text="Lekérési kérelem lapja egy GitHub-tárházban":::
+    :::image type="content" source="./media/review-publish-pull-requests/tab.png" alt-text="Új ág létrehozása a GitHub Interface használatával":::
 
 1. Kattintson az ág **& pull-kérésének összevetése** gombra.
 
 1. Igény szerint kitöltheti a módosításokat, majd kattintson a **pull-kérelem létrehozása**lehetőségre.
 
-    :::image type="content" source="./media/review-publish-pull-requests/open.png" alt-text="Lekéréses kérelem létrehozása a GitHubon":::
+    :::image type="content" source="./media/review-publish-pull-requests/open.png" alt-text="Új ág létrehozása a GitHub Interface használatával":::
 
 Szükség esetén megtekintheti a véleményezőket, és megjegyzéseket fűzhet hozzájuk.
 
@@ -80,9 +80,9 @@ Szükség esetén megtekintheti a véleményezőket, és megjegyzéseket fűzhet
 
 A lekéréses kérelem létrehozása után a [GitHub-műveletek](https://github.com/features/actions) üzembe helyezési munkafolyamata fut, és üzembe helyezi a módosításokat egy üzem előtti környezetben.
 
-Miután a munkafolyamat befejezte az alkalmazás létrehozását és üzembe helyezését, a GitHub-robot hozzáadja a lekéréses kérelemhez egy megjegyzést, amely tartalmazza az üzem előtti környezet URL-címét. Erre a hivatkozásra kattintva megtekintheti a szakaszos módosításokat.
+Miután a munkafolyamat befejezte az alkalmazás létrehozását és üzembe helyezését, a GitHub-robot hozzáadja a lekéréses kérelemhez egy megjegyzést, amely tartalmazza az üzem előtti környezet URL-címét. Erre a hivatkozásra kattintva megtekintheti az előkészített módosításokat.
 
-:::image type="content" source="./media/review-publish-pull-requests/bot-comment.png" alt-text="Lekéréses kérelem megjegyzése az üzem előtti URL-címmel":::
+:::image type="content" source="./media/review-publish-pull-requests/bot-comment.png" alt-text="Új ág létrehozása a GitHub Interface használatával":::
 
 Kattintson a generált URL-címre a módosítások megtekintéséhez.
 
@@ -96,9 +96,7 @@ A módosítások jóváhagyása után a lekéréses kérelem egyesítésével k�
 
 Kattintson a **lekéréses kérelem egyesítése**lehetőségre:
 
-:::image type="content" source="./media/review-publish-pull-requests/merge.png" alt-text="Lekérési kérelem egyesítése gomb a GitHub felületen":::
-
-Az egyesítéssel átmásolja a módosításokat a követett ág (a "éles" ág) számára. Ezután az üzembe helyezési munkafolyamat elindul a követett ág esetében, és a módosítások az alkalmazás újraépítése után élőben jelennek meg.
+:::image type="content" source="./media/review-publish-pull-requests/merge.png" alt-text="Új ág létrehozása a GitHub Interface használatával" ág) számára. Ezután az üzembe helyezési munkafolyamat elindul a követett ág esetében, és a módosítások az alkalmazás újraépítése után élőben jelennek meg.
 
 Az éles környezetben lévő változások ellenőrzéséhez nyissa meg az éles URL-címet a webhely élő verziójának betöltéséhez.
 
@@ -111,7 +109,7 @@ Az alkalmazás szakaszos verziói jelenleg nyilvánosan elérhetők az URL-címm
 
 A statikus Web Apps üzembe helyezett alkalmazások számára elérhető üzem előtti környezetek száma a használt SKU-szinttől függ. Az ingyenes szinten például az éles környezet mellett 1 üzem előtti környezet is lehet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Egyéni tartomány beállítása](custom-domain.md)

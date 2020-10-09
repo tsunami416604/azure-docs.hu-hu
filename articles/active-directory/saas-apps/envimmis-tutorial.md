@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 02/06/2019
 ms.author: jeedes
-ms.openlocfilehash: aababc6ffd84540b99ba68f6bbb449d2aa78ed4b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 1eb408025a45f09a6bdb854f4379a560842ef2d7
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88551744"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826279"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-envi-mmis"></a>Oktatóanyag: Azure Active Directory integráció a ENVI MMIS
 
@@ -99,7 +99,7 @@ Az Azure AD egyszeri bejelentkezés ENVI-MMIS való konfigurálásához hajtsa v
 
 4. Az **alapszintű SAML-konfiguráció** szakaszban, ha az alkalmazást **identitásszolgáltató** kezdeményezett módban szeretné konfigurálni, hajtsa végre a következő lépéseket:
 
-    ![ENVI MMIS tartomány és URL-címek egyszeri bejelentkezési adatai](common/idp-intiated.png)
+    ![Képernyőkép, amely az "alapszintű S L konfiguráció" kifejezést jeleníti meg az "azonosító", "válasz U R L" és "Mentés" gomb kiemelésével.](common/idp-intiated.png)
 
     a. Az **azonosító** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://www.<CUSTOMER DOMAIN>.com/Account`
 
@@ -134,23 +134,23 @@ Az Azure AD egyszeri bejelentkezés ENVI-MMIS való konfigurálásához hajtsa v
 
 2. Kattintson a **saját tartomány** fülre.
 
-    ![Egyszeri bejelentkezéses mentés beállítása gomb](./media/envimmis-tutorial/configure1.png)
+    ![A "saját tartomány" beállítással rendelkező "felhasználó" menüt megjelenítő képernyőkép.](./media/envimmis-tutorial/configure1.png)
 
 3. Kattintson a **Szerkesztés** gombra.
 
-    ![Egyszeri bejelentkezéses mentés beállítása gomb](./media/envimmis-tutorial/configure2.png)
+    ![Képernyőkép, amely megjeleníti a "szerkesztés" gombot.](./media/envimmis-tutorial/configure2.png)
 
 4. Jelölje be a **távoli hitelesítés használata** jelölőnégyzetet, majd válassza a **http-átirányítás** lehetőséget a **Hitelesítés típusa** legördülő listából.
 
-    ![Egyszeri bejelentkezéses mentés beállítása gomb](./media/envimmis-tutorial/configure3.png)
+    ![A "Remote Authentication" (távoli hitelesítés használata) és a "H T t P-átirányítás" beállítású "Részletek" lapot megjelenítő képernyőkép.](./media/envimmis-tutorial/configure3.png)
 
 5. Válassza az **erőforrások** fület, majd kattintson a **metaadatok feltöltése**elemre.
 
-    ![Egyszeri bejelentkezéses mentés beállítása gomb](./media/envimmis-tutorial/configure4.png)
+    ![Képernyőkép, amely az "erőforrások" fület jeleníti meg a "metaadatok feltöltése" művelet kiválasztásával.](./media/envimmis-tutorial/configure4.png)
 
 6. A **metaadatok feltöltése** előugró ablakban végezze el a következő lépéseket:
 
-    ![Egyszeri bejelentkezéses mentés beállítása gomb](./media/envimmis-tutorial/configure5.png)
+    ![Képernyőfelvétel: "a metaadatok feltöltése" felugró ablak a "fájl" lehetőség kiválasztásával, valamint a "fájl kiválasztása" ikon és az "OK" gomb kiemelve.](./media/envimmis-tutorial/configure5.png)
 
     a. Válassza a **fájl** lehetőséget a **feltöltésből** a legördülő listából.
 
@@ -185,7 +185,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    d. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -223,11 +223,11 @@ Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a EN
 
 2. Kattintson a **felhasználói lista** fülre.
 
-    ![Alkalmazott hozzáadása](./media/envimmis-tutorial/user1.png)
+    ![Képernyőkép, amely a "felhasználó" menüt jeleníti meg a "felhasználói lista" lehetőség kiválasztásával.](./media/envimmis-tutorial/user1.png)
 
 3. Kattintson a **felhasználó hozzáadása** gombra.
 
-    ![Alkalmazott hozzáadása](./media/envimmis-tutorial/user2.png)
+    ![A "felhasználók" szakaszt tartalmazó képernyőkép, amely a "felhasználó hozzáadása" gomb kiválasztásával jelenik meg.](./media/envimmis-tutorial/user2.png)
 
 4. A **felhasználó hozzáadása** szakaszban hajtsa végre a következő lépéseket:
 

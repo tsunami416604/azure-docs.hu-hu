@@ -12,18 +12,20 @@ ms.tgt_pltfrm: na
 ms.workload: infrastructure-services
 ms.date: 09/27/2020
 ms.author: duau
-ms.openlocfilehash: bf0d802dc4ea4d18122a12b107dfb0cc0af80d63
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: e5b8e5059d4d7df8d7061698ea29d7a6785236f9
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91773450"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91825641"
 ---
 # <a name="what-is-azure-front-door"></a>Mi az az Azure Front Door?
 
 Az Azure bejárati ajtó egy globális, méretezhető belépési pont, amely a Microsoft globális peremhálózati hálózatát használja gyors, biztonságos és széles körben méretezhető webalkalmazások létrehozásához. A bejárati ajtóval a globális fogyasztói és nagyvállalati alkalmazásokat robusztus, nagy teljesítményű, személyre szabott modern alkalmazásokkal alakíthatja át, amelyek az Azure-on keresztül globális közönséget érnek el.
 
-:::image type="content" source="media/front-door-overview/front-door-visual-diagram.png#center" alt-text="Bejárati ajtó architektúrája":::
+<p align="center">
+  <img src="./media/front-door-overview/front-door-visual-diagram.png" alt="Front Door architecture" width="600" title="Azure Front Door">
+</p>
 
 A bejárati ajtó a 7. réteg (HTTP/HTTPS-réteg) használatával működik, és a Split TCP-t és a Microsoft globális hálózatát használja a globális kapcsolatok javítása érdekében. Az útválasztási módszer alapján gondoskodhat arról, hogy a bevezető ajtó átirányítsa az ügyfelek kérelmeit a leggyorsabb és leginkább elérhető alkalmazás-háttérbe. Az alkalmazás-háttérrendszer egy, az Azure-on kívül vagy belül üzemeltetett, internetkapcsolattal rendelkező szolgáltatás. A bejárati ajtó számos [forgalom-útválasztási módszert](front-door-routing-methods.md) és [háttérbeli állapot-figyelési lehetőséget](front-door-health-probes.md) biztosít különböző alkalmazási igényeknek és automatikus feladatátvételi forgatókönyveknek megfelelően. A [Traffic Managerhoz](../traffic-manager/traffic-manager-overview.md)hasonlóan a bejárati ajtó is rugalmasan működik a hibáknál, beleértve a teljes Azure-régió meghibásodásait is.
 

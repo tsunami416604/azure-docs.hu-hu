@@ -5,12 +5,12 @@ ms.assetid: 6223b6bd-84ec-48df-943f-461d84605694
 ms.topic: article
 ms.date: 10/16/2019
 ms.custom: seodec18
-ms.openlocfilehash: f239122f7178dbc244c8dc23f3f7e7647f7330da
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.openlocfilehash: 933ac96d0cf98e0068575e5a70b0f42a157eb611
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91539078"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91827466"
 ---
 # <a name="back-up-your-app-in-azure"></a>Adatok biztonsági mentése az Azure-ban
 A [Azure app Service](overview.md) biztonsági mentési és visszaállítási funkciója lehetővé teszi, hogy egyszerűen hozza létre az alkalmazások biztonsági másolatait manuálisan vagy ütemezés szerint. Beállíthatja, hogy a biztonsági másolatok határozatlan ideig maradjanak. Az alkalmazást visszaállíthatja egy korábbi állapot pillanatképére a meglévő alkalmazás felülírásával vagy egy másik alkalmazásra való visszaállítással.
@@ -92,7 +92,7 @@ A biztonsági mentési funkció a következő adatbázis-megoldásokat támogatj
 
     A biztonsági mentési folyamat során állapotjelző üzenet jelenik meg.
 
-A Storage-fiók és a tároló konfigurálása után bármikor kezdeményezheti a manuális biztonsági mentést.
+A Storage-fiók és a tároló konfigurálása után bármikor kezdeményezheti a manuális biztonsági mentést. A manuális biztonsági mentések határozatlan ideig megmaradnak.
 
 <a name="automatedbackups"></a>
 
@@ -168,5 +168,5 @@ Példákat a következő témakörben talál:
 
 <a name="nextsteps"></a>
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az alkalmazások biztonsági másolatból való visszaállításáról az [alkalmazás visszaállítása az Azure-ban](web-sites-restore.md)című témakörben olvashat bővebben.

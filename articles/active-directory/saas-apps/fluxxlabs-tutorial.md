@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/21/2020
 ms.author: jeedes
-ms.openlocfilehash: 756bbaab1cbf359def01e371e4370607bee67ce3
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 00cf3e33c87255485f7ea73526e474b0d941124b
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88554861"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826379"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-fluxx-labs"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Fluxx Labs szolgáltatással
 
@@ -113,7 +113,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Create** (Létrehozás) gombra.
+   1. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -139,15 +139,15 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 
 2. Válassza a **rendszergazda** lehetőséget a **Beállítások** szakaszban.
 
-    ![Fluxx Labs-konfiguráció](./media/fluxxlabs-tutorial/config1.png)
+    ![A "rendszergazda" beállítású "beállítások" szakaszt bemutató képernyőkép.](./media/fluxxlabs-tutorial/config1.png)
 
 3. A felügyeleti panelen válassza a **beépülő modulok**  >  **integrációk** elemet, majd válassza az **SAML SSO-(letiltva) lehetőséget.**
 
-    ![Fluxx Labs-konfiguráció](./media/fluxxlabs-tutorial/config2.png)
+    ![Képernyőkép, amely az "integrációk" fület jeleníti meg "S A M L S s O-(letiltva)" jelöléssel.](./media/fluxxlabs-tutorial/config2.png)
 
 4. Az attribútum szakaszban hajtsa végre a következő lépéseket:
 
-    ![Fluxx Labs-konfiguráció](./media/fluxxlabs-tutorial/config3.png)
+    ![Képernyőkép, amely az "attribútumok" szakaszt "S A M L S O" értékkel jelölte meg, a mezőkben megadott értékek és a "Mentés" gomb kiválasztásával jelenik meg.](./media/fluxxlabs-tutorial/config3.png)
 
     a. Jelölje be az **SAML SSO** jelölőnégyzetet.
 
@@ -180,11 +180,11 @@ Annak engedélyezéséhez, hogy az Azure AD-felhasználók bejelentkezzenek a Fl
 
 2. Kattintson a lent látható **ikonra**.
 
-    ![Fluxx Labs-konfiguráció](./media/fluxxlabs-tutorial/config6.png)
+    ![Képernyőkép: az irányítópult üres részében kiválasztott "plusz" ikonnal rendelkező rendszergazdai beállítások megjelenítése.](./media/fluxxlabs-tutorial/config6.png)
 
 3. Az irányítópulton kattintson az alábbi megjelenő ikonra az **új személyek** kártya megnyitásához.
 
-    ![Fluxx Labs-konfiguráció](./media/fluxxlabs-tutorial/config4.png)
+    ![Képernyőkép, amely a "felhasználók" ikon melletti "plusz" ikonra kattintva megjeleníti a "kapcsolat kezelése" menüt.](./media/fluxxlabs-tutorial/config4.png)
 
 4. Az **új személyek** szakaszban hajtsa végre a következő lépéseket:
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 05/14/2019
 ms.author: jeedes
-ms.openlocfilehash: 219dd6e4a8f04da8b28a28e5473394f0721e4013
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: 03b8110db94a08f44035e75371fd7641fcd91626
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88545206"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826352"
 ---
 # <a name="tutorial-integrate-ilms-with-azure-active-directory"></a>Oktatóanyag: a iLMS és a Azure Active Directory integrálása
 
@@ -90,7 +90,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. A fentieken kívül a iLMS alkalmazás néhány további attribútumot vár, amelyeket az SAML-válaszban vissza kell adni. A **felhasználó attribútumai** párbeszédpanel **felhasználói jogcímek** szakaszában a következő lépésekkel adja hozzá az SAML-jogkivonat attribútumát az alábbi táblázatban látható módon:
 
-    | Name | Forrás attribútum|
+    | Name (Név) | Forrás attribútum|
     | --------|------------- |
     | osztály | felhasználó. részleg |
     | régió | felhasználó. állapot |
@@ -130,29 +130,29 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 2. Kattintson az **SSO: SAML** lehetőségre a **Beállítások** lapon az SAML-beállítások megnyitásához, és hajtsa végre a következő lépéseket:
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/ilms-tutorial/1.png)
+    ![A képernyőképen az I L M S beállítások lap látható, ahol kiválaszthatja az S S O: SAML elemet.](./media/ilms-tutorial/1.png)
 
 3. Bontsa ki a **szolgáltató szakaszt, és másolja az** **azonosító** és a **végpont (URL)** értéket.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/ilms-tutorial/2.png) 
+    ![A képernyőfelvételen az SAML-beállítások láthatók, ahol az értékek beszerezhetők.](./media/ilms-tutorial/2.png) 
 
 4. Az **identitás-szolgáltató** szakaszban kattintson a **Metaadatok importálása**elemre.
 
 5. Válassza ki a Azure Portalból letöltött **összevonási metaadat** -fájlt az **SAML aláíró tanúsítvány** szakaszból.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/ilms-tutorial/tutorial_ilms_ssoconfig1.png)
+    ![Képernyőfelvétel: SAML-beállítások, ahol kiválaszthatja a metaadat-fájlt.](./media/ilms-tutorial/tutorial_ilms_ssoconfig1.png)
 
 6. Ha engedélyezni szeretné a JIT-kiépítés használatát iLMS-fiókok létrehozásához a nem felismerhető felhasználók számára, kövesse az alábbi lépéseket:
 
     a. Keresse meg a nem **ismert felhasználói fiók létrehozását**.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/ilms-tutorial/tutorial_ilms_ssoconfig2.png)
+    ![Képernyőfelvétel: az ismeretlen felhasználói fiók létrehozása lehetőség.](./media/ilms-tutorial/tutorial_ilms_ssoconfig2.png)
 
     b. Képezze le az attribútumokat az Azure AD-ben a iLMS attribútumaival. Az attribútum oszlopban adja meg az attribútumok nevét vagy az alapértelmezett értéket.
 
     c. Lépjen az **üzleti szabályok** lapra, és hajtsa végre a következő lépéseket:
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/ilms-tutorial/5.png)
+    ![A képernyőképen az üzleti szabályok beállításai láthatók, ahol megadhatja az ebben a lépésben szereplő információkat.](./media/ilms-tutorial/5.png)
 
     d. Az egyszeri bejelentkezés időpontjában még nem létező régiók, osztályok és részlegek létrehozásához keresse fel a nem **ismert régiók, osztályok és részlegek** létrehozását.
 
@@ -164,7 +164,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 7. A beállítások mentéséhez kattintson a **Save (Mentés** ) gombra.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/ilms-tutorial/save.png)
+    ![A képernyőképen a Mentés gomb látható.](./media/ilms-tutorial/save.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
@@ -176,7 +176,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Britta Simon nev�
    1. A **Név** mezőbe írja a következőt: `Britta Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `BrittaSimon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Create** (Létrehozás) gombra.
+   1. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -206,11 +206,11 @@ Ha manuálisan kell létrehoznia egy felhasználót, kövesse az alábbi lépés
 
 2. Kattintson a **felhasználó regisztrálása** elemre a **felhasználók** lapon a **felhasználó regisztrálása** lap megnyitásához.
 
-   ![Alkalmazott hozzáadása](./media/ilms-tutorial/3.png)
+   ![A képernyőképen az I L M S beállítások lap látható, ahol kiválaszthatja a felhasználó regisztrálása lehetőséget.](./media/ilms-tutorial/3.png)
 
 3. A **felhasználó regisztrálása** lapon hajtsa végre a következő lépéseket.
 
-    ![Alkalmazott hozzáadása](./media/ilms-tutorial/create_testuser_add.png)
+    ![Képernyőfelvétel: a felhasználó regisztrálása oldal, ahol a megadott adatokat adja meg.](./media/ilms-tutorial/create_testuser_add.png)
 
     a. Az **Utónév** szövegmezőbe írja be az utónév nevét (például Britta).
 

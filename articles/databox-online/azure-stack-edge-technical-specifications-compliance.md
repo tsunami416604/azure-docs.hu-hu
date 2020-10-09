@@ -8,12 +8,12 @@ ms.subservice: edge
 ms.topic: article
 ms.date: 03/02/2020
 ms.author: alkohli
-ms.openlocfilehash: 91aa386311452ae08ead2b8eac9005b2c730f3f3
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.openlocfilehash: c177de3a862370f4d1daa19c6560950b66b18352
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90883446"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826838"
 ---
 # <a name="azure-stack-edge-pro-technical-specifications"></a>Azure Stack Edge Pro technikai specifikációi
 
@@ -25,8 +25,8 @@ Az Azure Stack Edge Pro-eszköz a következő specifikációkkal rendelkezik a s
 
 | Specifikáció           | Érték                  |
 |-------------------------|----------------------------|
-| CPU    | 2 X 10 mag CPU                     |
-| Memória              | 128 GB RAM                  |
+| CPU    | 2 X 10 mag CPU Intel Xeon Silver 4114 2.2 G                    |
+| Memória              | 128 GB RAM (8x 16GB RDIMM)                 |
 
 ## <a name="fpga-specifications"></a>FPGA-specifikációk
 
@@ -45,7 +45,7 @@ Az Azure Stack Edge Pro-eszköz két 100-240 V-os tápegységgel (PSUs) rendelke
 | Maximális kimeneti teljesítmény    | 750 W                     |
 | Frequency               | 50/60 Hz                   |
 | Feszültség-tartomány kiválasztása | Automatikus hatókör: 100-240 V AC |
-| Gyors csatlakoztatás           | Yes                        |
+| Gyors csatlakoztatás           | Igen                        |
 
 ### <a name="azure-stack-edge-pro-power-cord-specifications-by-region"></a>Azure Stack Edge Pro tápkábel-specifikációk régiónként
 
@@ -63,6 +63,15 @@ Azure Stack Edge Pro-eszközének 6 hálózati adaptere van, a PORT1-PORT6.
 | Specifikáció           | Leírás                 |
 |-------------------------|----------------------------|
 |  Hálózati adapterek    | 2 db 1 GbE sávszélességű illesztő – 1 a kezeléshez, a felhasználó által nem konfigurálható, a kezdeti beállításhoz való. A másik felület a felhasználó által konfigurálható, adatátvitelre használható, és alapértelmezés szerint a DHCP. <br>2 db 25 GbE sávszélességű illesztő – 10 GbE sávszélességű illesztőként is üzemelnek. Az adatillesztők a felhasználó által megadott konfigurációja DHCP (alapértelmezett) vagy statikus lehet. <br> 2 db 25 GbE sávszélességű illesztő – Az adatillesztők a felhasználó által megadott konfigurációja DHCP (alapértelmezett) vagy statikus lehet.                  |
+
+A használt hálózati adapterek a következők: 
+
+| Specifikáció           | Leírás                 |
+|-------------------------|----------------------------|
+|Hálózati lánya kártya (rNDC) |QLogic FastLinQ 41264 Dual port 25GbE SFP +, Dual port 1 GbE, rNDC|
+|PCI hálózati adapter |QLogic FastLinQ 41262 Zwei-portok 25Gbit/s SFP28 adapter|
+
+Tekintse meg a kompatibilis Gigabit Interface Converter (GBIC) hardveres kompatibilitási listáját az Intel QLogic. A Gigabit Interface Converter (GBIC) nem szerepel az Azure Stack Edge kézbesítésében. 
 
 ## <a name="storage-specifications"></a>Tárolási specifikációk
 

@@ -10,12 +10,12 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 06/29/2020
 ms.author: mbullwin
-ms.openlocfilehash: f27771291d95770a693fa56041f7dce3de459d13
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.openlocfilehash: bbd231ca527b4c01509230e839b97187de29febd
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
-ms.locfileid: "87081423"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91825738"
 ---
 # <a name="azure-monitor-workbooks-data-sources"></a>Azure Monitor munkafüzetek adatforrásai
 
@@ -109,9 +109,8 @@ Ha nem szeretne automatikusan hívásokat kezdeményezni a nem megbízható gazd
 > [!NOTE]
 > Ne írjon semmilyen titkot a következő mezők egyikéhez sem (,, `headers` `parameters` `body` , `url` ), mert a munkafüzet összes felhasználója számára láthatóvá válik.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Ismerkedjen](workbooks-visualizations.md) meg a munkafüzetek számos gazdag vizualizációs lehetőségével.
 * A munkafüzet erőforrásaihoz való hozzáférés [szabályozása](workbooks-access-control.md) és megosztása.
 * [Log Analytics lekérdezés-optimalizálási tippek](../log-query/query-optimization.md)
-* 

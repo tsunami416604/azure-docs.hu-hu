@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 09/17/2019
 ms.author: jeedes
-ms.openlocfilehash: 22225d9810c7b913505cb003a1ed2ce8f1a144e1
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: b22bf4ee3ff830a80ee97851f08173257697c50d
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88555335"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826495"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-evernote"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció az Evernote-val
 
@@ -92,7 +92,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 7. Az **aláírási** beállítások módosításához kattintson a **Szerkesztés** gombra az **SAML-aláíró tanúsítvány** párbeszédpanel megnyitásához.
 
-    ![image](common/edit-certificate.png) 
+    ![A "szerkesztés" gomb kiválasztásával megjelenített "S A M L aláíró tanúsítvány" párbeszédpanelt megjelenítő képernyőkép.](common/edit-certificate.png) 
 
     ![image](./media/evernote-tutorial/samlassertion.png)
 
@@ -114,7 +114,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Create** (Létrehozás) gombra.
+   1. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -181,7 +181,7 @@ Az Evernote esetében a kiépítés manuális feladat.
 
 3. A **"felügyeleti konzol"** területen lépjen a **"felhasználók hozzáadása"** elemre.
 
-    ![Add-tesztfelhasználó](./media/evernote-tutorial/create_aaduser_0001.png)
+    ![A "felhasználók" menüt tartalmazó képernyőkép, amely a "felhasználók hozzáadása" elemet mutatja.](./media/evernote-tutorial/create_aaduser_0001.png)
 
 4. **Adja hozzá a csoporttagokat** az **e-mail** szövegmezőbe, írja be a felhasználói fiók e-mail-címét, és kattintson a meghívás elemre **.**
 

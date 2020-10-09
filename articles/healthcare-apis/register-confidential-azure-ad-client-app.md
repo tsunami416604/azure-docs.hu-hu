@@ -8,12 +8,12 @@ ms.subservice: fhir
 ms.topic: conceptual
 ms.date: 02/07/2019
 ms.author: matjazl
-ms.openlocfilehash: e74271119b581b2bb291b1a9ddd74ad0781855e6
-ms.sourcegitcommit: d479ad7ae4b6c2c416049cb0e0221ce15470acf6
+ms.openlocfilehash: 8021fb3fa9f11ef895569f48a2ae21b3f7adcd36
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
-ms.locfileid: "91629135"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826227"
 ---
 # <a name="register-a-confidential-client-application-in-azure-active-directory"></a>Bizalmas ügyfélalkalmazás regisztrálása a Azure Active Directoryban
 
@@ -50,7 +50,7 @@ Most, hogy regisztrálta az alkalmazását, ki kell választania, hogy mely API-
 
 1. Válassza **az engedély hozzáadása**lehetőséget.
 
-    Ha az Azure API-t használja a FHIR-hez, az Azure Healthcare API-kat a **saját szervezetem által használt API**- **k alapján kell** megkeresnie. 
+    Ha az Azure API-t használja a FHIR-hez, az Azure Healthcare API-kat a **saját szervezetem által használt API**- **k alapján kell** megkeresnie. Ha már [telepítette az Azure API-t a FHIR-hez](fhir-paas-powershell-quickstart.md), csak ezt fogja tudni megkeresni.
 
     Ha más erőforrás-alkalmazásra hivatkozik, válassza ki a korábban a **saját API**-k alatt létrehozott [FHIR API Resource Application-regisztrációt](register-resource-azure-ad-client-app.md) .
 
@@ -73,11 +73,9 @@ Most, hogy regisztrálta az alkalmazását, ki kell választania, hogy mely API-
 
 3. A létrehozást követően csak egyszer fog megjelenni a portálon. Jegyezze fel, és tárolja biztonságosan.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-Ebben a cikkben megtanulta, hogyan regisztrálhat egy bizalmas ügyfélalkalmazás Azure Active Directoryban. Most már készen áll a [FHIR készült Azure API](fhir-paas-powershell-quickstart.md)üzembe helyezésére.
-
-Miután telepítette az Azure API-t a FHIR-hez, tekintse át a további elérhető beállításokat.
+Ebben a cikkben megtanulta, hogyan regisztrálhat egy bizalmas ügyfélalkalmazás Azure Active Directoryban. Ezután a Poster használatával férhet hozzá a FHIR-kiszolgálóhoz
  
 >[!div class="nextstepaction"]
->[Az Azure API for FHIR üzembe helyezése](fhir-paas-powershell-quickstart.md)
+>[Az Azure API elérése a Poster FHIR](access-fhir-postman-tutorial.md)

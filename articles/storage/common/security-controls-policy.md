@@ -1,18 +1,18 @@
 ---
 title: Az Azure Storage szolgáltatásra vonatkozó megfelelőségi szabályozás Azure Policy
 description: Felsorolja Azure Policy az Azure Storage-hoz elérhető megfelelőségi szabályozásokat. Ezek a beépített szabályzat-definíciók közös megközelítéseket biztosítanak az Azure-erőforrások megfelelőségének kezeléséhez.
-ms.date: 09/16/2020
+ms.date: 10/07/2020
 ms.topic: sample
 author: twooley
 ms.author: twooley
 ms.service: storage
 ms.custom: subject-policy-compliancecontrols
-ms.openlocfilehash: 3a460fbd24604da876d84d29a77c9e2791950fdb
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.openlocfilehash: 78f9ac377f1931117f1001d284526a343ca6d966
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
-ms.locfileid: "90971062"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91825857"
 ---
 # <a name="azure-policy-regulatory-compliance-controls-for-azure-storage"></a>Az Azure Storage szolgáltatásra vonatkozó megfelelőségi szabályozás Azure Policy
 

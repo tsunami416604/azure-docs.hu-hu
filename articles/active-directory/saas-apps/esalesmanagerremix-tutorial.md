@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: article
 ms.date: 06/12/2018
 ms.author: jeedes
-ms.openlocfilehash: dd5a200d1c17f0417b2ee88f7f905ee6de3cfe62
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.openlocfilehash: efcf634c9f34fd2b479140af800bb650f66bd821
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88555389"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91826755"
 ---
 # <a name="integrate-azure-active-directory-with-e-sales-manager-remix"></a>Azure Active Directory integrálása az E Sales Manager remixekkel
 
@@ -121,7 +121,7 @@ Engedélyezze az Azure AD egyszeri bejelentkezést a Azure Portalban, és konfig
 
 1. Az **e Sales Manager Remix-konfiguráció**területén válassza az **e Sales Manager-remixek konfigurálása**lehetőséget.
 
-    ![E Sales Manager Remix-konfiguráció](./media/esalesmanagerremix-tutorial/tutorial_esalesmanagerremix_configure.png) 
+    ![Képernyőfelvétel: az "E Sales Manager Remix Configuration" szakasz "az E Sales Manager remixek konfigurálása" című részében látható.](./media/esalesmanagerremix-tutorial/tutorial_esalesmanagerremix_configure.png) 
 
     Megnyílik a **bejelentkezés beállítása** ablak.
 
@@ -253,7 +253,7 @@ Ebben a szakaszban az E Sales Manager Remixekhez való hozzáférés biztosítá
 
 1. A **felhasználók és csoportok** ablak **felhasználók** listájában válassza a **Britta Simon**elemet.
 
-1. Kattintson a **kiválasztás** gombra.
+1. Kattintson a **Kiválasztás** gombra.
 
 1. A **hozzárendelés hozzáadása** ablakban válassza a **hozzárendelés**lehetőséget.
     

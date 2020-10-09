@@ -3,12 +3,13 @@ title: Windowsos asztali alkalmazások használatának és teljesítményének f
 description: A windowsos asztali alkalmazások használatát és teljesítményét az Application Insights segítségével elemezheti.
 ms.topic: conceptual
 ms.date: 06/11/2020
-ms.openlocfilehash: 17613fc6cea24643c2b88182e7e56a1d216b2da8
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.custom: fasttrack-edit
+ms.openlocfilehash: 1aa1e8a9e7ccbbc90a961ebf47224f59f8a9e9fe
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
-ms.locfileid: "87323417"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91827865"
 ---
 # <a name="monitoring-usage-and-performance-in-classic-windows-desktop-apps"></a>Klasszikus windowsos asztali alkalmazások használatának és teljesítményének figyelése
 
@@ -20,7 +21,7 @@ A helyszínen, az Azure-ban és más felhőben üzemeltetett alkalmazások is ki
 3. A Visual Studióban szerkessze az alkalmazási projekt NuGet-csomagjait, és vegye fel a Microsoft.ApplicationInsights.WindowsServer csomagot. (Vagy válassza a Microsoft. ApplicationInsights lehetőséget, ha csak az alap API-t szeretné használni, a standard szintű telemetria-gyűjtési modulok nélkül.)
 4. Állítsa be a kialakítási kulcsot a kódban:
    
-    `TelemetryConfiguration.Active.InstrumentationKey = "` *az Ön kulcsa* `";`
+    `TelemetryConfiguration.Active.InstrumentationKey = "`*a kulcs*`";`
    
     vagy az ApplicationInsights.config fájlban (ha telepítette valamelyik normál telemetriai csomagot):
    
@@ -53,10 +54,8 @@ using Microsoft.ApplicationInsights;
             ...
         }
 
-        protected override void OnClosing(System.ComponentModel.CancelEventArgs e)
+        protected override void OnFormClosing(System.Windows.Forms.FormClosingEventArgs e)
         {
-            e.Cancel = true;
-
             if (tc != null)
             {
                 tc.Flush(); // only for desktop apps
@@ -64,9 +63,10 @@ using Microsoft.ApplicationInsights;
                 // Allow time for flushing:
                 System.Threading.Thread.Sleep(1000);
             }
-            base.OnClosing(e);
+            base.OnFormClosing(e);
         }
-
+        
+        ...
 ```
 
 ## <a name="override-storage-of-computer-name"></a>Számítógépnév tárolójának felülbírálása
@@ -174,7 +174,7 @@ namespace WindowsFormsApp2
 > [!NOTE]
 > Bár a fentiekben leírtak szerint technikailag használhatja a telemetria-processzort, még akkor is, ha az [örökölt Enterprise (node) díjszabási](./pricing.md#legacy-enterprise-per-node-pricing-tier)szinten van, ez a túlszámlázás lehetséges lehetőségét eredményezi, mert a csomópontok díjszabása nem képes megfelelően megkülönböztetni a csomópontokat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Irányítópult létrehozása](./overview-dashboard.md)
 * [Diagnosztikai keresés](./diagnostic-search.md)
 * [Metrikák böngészése](../platform/metrics-charts.md)

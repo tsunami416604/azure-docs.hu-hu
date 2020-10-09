@@ -9,17 +9,17 @@ ms.service: active-directory
 ms.topic: how-to
 ms.subservice: users-groups-roles
 ms.workload: identity
-ms.date: 09/22/2020
+ms.date: 10/07/2020
 ms.author: curtand
 ms.reviewer: anandy
 ms.custom: oldportal;it-pro;
 ms.collection: M365-identity-device-management
-ms.openlocfilehash: 8d22ec2219a86b8445931350b616dd76d0a22ec5
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.openlocfilehash: 133ea21bf7a7c1df0fccaeacce7d7a29199c033d
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91439809"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91827694"
 ---
 # <a name="add-and-manage-groups-in-administrative-units-in-azure-active-directory"></a>Csoportok hozzáadása és kezelése felügyeleti egységekben Azure Active Directory
 
@@ -101,6 +101,7 @@ Get-AzureADGroup -ObjectId $member.ObjectId
 }
 }
 ```
+
 ### <a name="microsoft-graph"></a>Microsoft Graph
 
 ```http
@@ -136,13 +137,20 @@ https://graph.microsoft.com/v1.0/groups/<group-id>/memberOf/$/Microsoft.Graph.Ad
 
 A Azure Portal két módon távolíthatja el a csoportot egy felügyeleti egységből.
 
-Nyissa meg az **Azure ad**  >  -**csoportokat** , és nyissa meg a felügyeleti egységből eltávolítani kívánt csoport profilját. Válassza a **felügyeleti egységek** lehetőséget a bal oldali panelen az összes olyan felügyeleti egység listázásához, ahol a csoport tagja. Válassza ki azt a felügyeleti egységet, amelyből el szeretné távolítani a csoportot, majd válassza az **Eltávolítás a felügyeleti egységből**lehetőséget.
+- Eltávolítás egy csoportból – áttekintés
 
-![Csoport eltávolítása felügyeleti egységből](./media/roles-admin-units-add-manage-groups/group-au-remove.png)
+  1. Nyissa meg az **Azure ad**  >  -**csoportokat** , és nyissa meg a felügyeleti egységből eltávolítani kívánt csoport profilját.
+  1. Válassza a **felügyeleti egységek** lehetőséget a bal oldali panelen az összes olyan felügyeleti egység listázásához, ahol a csoport tagja. Válassza ki azt a felügyeleti egységet, amelyből el szeretné távolítani a csoportot, majd válassza az **Eltávolítás a felügyeleti egységből**lehetőséget.
 
-Másik lehetőségként megnyithatja az **Azure ad**  >  **felügyeleti egységeket** , és kiválaszthatja azt a felügyeleti egységet, amelyben a csoport tagja. Válassza a **csoportok** lehetőséget a bal oldali panelen a tagok listájának listázásához. Válassza ki a felügyeleti egységből eltávolítani kívánt csoportot, majd válassza a **csoportok eltávolítása**lehetőséget.
+    ![Csoport eltávolítása felügyeleti egységből](./media/roles-admin-units-add-manage-groups/group-au-remove.png)
 
-![Felügyeleti egységben lévő csoportok listázása](./media/roles-admin-units-add-manage-groups/list-groups-in-admin-units.png)
+- Eltávolítás felügyeleti egységből
+
+  1. Nyissa meg az **Azure ad**  >  **felügyeleti egységeket** , és válassza ki azt a felügyeleti egységet, amelyben a csoport tagja.
+  1. Válassza a **csoportok** lehetőséget a bal oldali panelen a tagok listájának listázásához.
+  1. Válassza ki a felügyeleti egységből eltávolítani kívánt csoportot, majd válassza a **csoportok eltávolítása**lehetőséget.
+
+    ![Felügyeleti egységben lévő csoportok listázása](./media/roles-admin-units-add-manage-groups/list-groups-in-admin-units.png)
 
 ### <a name="powershell"></a>PowerShell
 

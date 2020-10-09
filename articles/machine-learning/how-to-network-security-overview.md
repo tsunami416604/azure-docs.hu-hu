@@ -11,12 +11,12 @@ author: peterclu
 ms.date: 10/06/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python, references_regions, contperfq1
-ms.openlocfilehash: 7bc56f6296bf41933348fad9ea4aeb640b9afbf0
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.openlocfilehash: d08c1d23539c817792415d359b8e1cbb3979ca40
+ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2020
-ms.locfileid: "91776017"
+ms.lasthandoff: 10/07/2020
+ms.locfileid: "91825504"
 ---
 # <a name="virtual-network-isolation-and-privacy-overview"></a>Virtual Network elkülönítés és Adatvédelem – áttekintés
 
@@ -158,6 +158,12 @@ Ha egy VNet belül szeretné engedélyezni a teljes Studio-funkciókat, tekintse
 Konfigurálja a tűzfalat a Azure Machine Learning munkaterület erőforrásaihoz és a nyilvános internethez való hozzáférés szabályozásához. A Azure Firewall javasoljuk, hogy a hálózat védelme érdekében más tűzfalakat is használni tudjon. Ha kérdése van a tűzfalon keresztüli kommunikáció engedélyezésével kapcsolatban, tekintse meg az Ön által használt tűzfal dokumentációját.
 
 További információ a tűzfal beállításairól: [munkaterület használata tűzfal mögött](how-to-access-azureml-behind-firewall.md).
+
+## <a name="custom-dns"></a>Egyéni DNS
+
+Ha egyéni DNS-megoldást kell használnia a virtuális hálózatához, hozzá kell adnia a munkaterülethez tartozó gazdagép-rekordokat.
+
+További információ a szükséges tartománynévekről és IP-címekről: [munkaterület használata egyéni DNS-kiszolgálóval](how-to-custom-dns.md).
 
 ## <a name="next-steps"></a>Következő lépések
 
