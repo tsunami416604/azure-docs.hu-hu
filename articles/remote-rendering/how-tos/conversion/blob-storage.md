@@ -6,10 +6,10 @@ ms.author: jakras
 ms.date: 02/04/2020
 ms.topic: how-to
 ms.openlocfilehash: 6f0605077bd131c54f27e3bf46240331557fd92e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80681648"
 ---
 # <a name="use-azure-blob-storage-for-model-conversion"></a>Modellek átalakítása az Azure Blob Storage használatával
@@ -27,7 +27,7 @@ A [modell-átalakítási](model-conversion.md) szolgáltatáshoz hozzáférésse
 
 A Storage-fiók és a blob-tárolók létrehozása a következő eszközök egyikével végezhető el:
 
-- [Azure Portalra](https://portal.azure.com)
+- [Azure Portal](https://portal.azure.com)
 - [az Command Line](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
 - [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/)
 - SDK-k (C#, Python...)

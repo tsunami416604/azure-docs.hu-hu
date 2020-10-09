@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 03/20/2017
 ms.author: duau
 ms.openlocfilehash: dff7d4ec02c5a17b51d73b9d81f93984b95a7d22
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89401350"
 ---
 # <a name="tutorial-configure-the-weighted-traffic-routing-method-in-traffic-manager"></a>Oktatóanyag: a súlyozott forgalom útválasztási módszerének konfigurálása Traffic Manager
@@ -44,7 +44,7 @@ A közös forgalom-útválasztási módszer minta az azonos végpontok készlet�
 
 ![Súlyozott forgalom-útválasztási módszer konfigurálása Traffic Manager használatával][1]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ismerje meg a [prioritási forgalom útválasztási módszerét](traffic-manager-configure-priority-routing-method.md).
 - A [teljesítmény-forgalom útválasztási módszerének](traffic-manager-configure-performance-routing-method.md)megismerése.

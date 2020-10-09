@@ -10,10 +10,10 @@ ms.reviewer: klam, estfan
 ms.topic: conceptual
 ms.date: 08/18/2016
 ms.openlocfilehash: 100be6a4376883a4f2a91b1efd172242c1d19e19
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80878391"
 ---
 # <a name="concepts-terminology-and-entities-in-azure-scheduler"></a>Az Azure Scheduler alapfogalmai, terminológiája és entitásai
@@ -27,7 +27,7 @@ ms.locfileid: "80878391"
 
 Az Azure Scheduler REST API az alábbi fő entitásokat (más néven erőforrásokat) használja:
 
-| Entitás | Description |
+| Entitás | Leírás |
 |--------|-------------|
 | **Feladat** | Egyedi, ismétlődő műveletet definiál, egyszerű vagy összetett végrehajtási stratégiákkal. A műveletek HTTP-hez, Storage-üzenetsorhoz, Service Bus-üzenetsorhoz vagy Service Bushoz kapcsolódó témakörkéréseket tartalmazhatnak. | 
 | **Feladatgyűjtemény** | Feladatok egy csoportját tartalmazza, valamint a gyűjteményben lévő feladatok által közösen használt beállításokat, kvótákat és szabályozásokat tartja karban. Azure-előfizetés tulajdonosaként létrehozhat feladatgyűjteményeket és csoportfeladatokat használat vagy alkalmazáshatárok alapján. A feladatgyűjtemények a következő attribútumokkal rendelkeznek: <p>– Egyetlen régióra vannak korlátozva. <br>– Lehetővé teszik a kvóták kényszerítését, így a gyűjtemények összes feladatának használatát korlátozhatja. <br>– Példák a kvótákra: MaxJobs, MaxRecurrence. | 
@@ -38,7 +38,7 @@ Az Azure Scheduler REST API az alábbi fő entitásokat (más néven erőforrás
 
 A magasabb szinteken a Scheduler REST API ezeket a műveleteket teszi elérhetővé az entitáskezeléshez.
 
-### <a name="job-management"></a>Feladatkezelés
+### <a name="job-management"></a>Feladatkezelése
 
 Feladatok létrehozására és szerkesztésére szolgáló műveleteket támogat. Az összes feladatnak egy létező feladatgyűjteményhez kell tartoznia, így nem történhet implicit létrehozás. További információ: [Scheduler REST API – Feladatok](https://docs.microsoft.com/rest/api/scheduler/jobs). A következő műveletek URI-címe:
 
@@ -84,13 +84,13 @@ A feladat olyan, a rendszer által biztosított adatokat is tartalmaz, mint a k�
 
 | Elem | Kötelező | Leírás | 
 |---------|----------|-------------| 
-| [**startTime**](#start-time) | No | A feladat kezdési ideje időzóna-eltolódással [ISO 8601 formátumban](https://en.wikipedia.org/wiki/ISO_8601) | 
-| [**művelet**](#action) | Yes | Az elsődleges művelet részletei, amelyek **errorAction** objektumot tartalmazhatnak | 
-| [**errorAction**](#error-action) | No | Az elsődleges művelet meghiúsulása esetén futó másodlagos művelet részletei |
-| [**megismétlődésének**](#recurrence) | No | Egy ismétlődő feladat részletei, például a gyakoriság és az időköz | 
-| [**retryPolicy**](#retry-policy) | No | A művelet újrapróbálására vonatkozó szabályok | 
-| [**állapot**](#state) | Yes | A feladat aktuális állapotának részletei |
-| [**állapota**](#status) | Yes | A feladat jelenlegi állapotának részletei, amelyeket a szolgáltatás vezérel |
+| [**startTime**](#start-time) | Nem | A feladat kezdési ideje időzóna-eltolódással [ISO 8601 formátumban](https://en.wikipedia.org/wiki/ISO_8601) | 
+| [**művelet**](#action) | Igen | Az elsődleges művelet részletei, amelyek **errorAction** objektumot tartalmazhatnak | 
+| [**errorAction**](#error-action) | Nem | Az elsődleges művelet meghiúsulása esetén futó másodlagos művelet részletei |
+| [**megismétlődésének**](#recurrence) | Nem | Egy ismétlődő feladat részletei, például a gyakoriság és az időköz | 
+| [**retryPolicy**](#retry-policy) | Nem | A művelet újrapróbálására vonatkozó szabályok | 
+| [**állapot**](#state) | Igen | A feladat aktuális állapotának részletei |
+| [**állapota**](#status) | Igen | A feladat jelenlegi állapotának részletei, amelyeket a szolgáltatás vezérel |
 ||||
 
 Íme, egy példa egy HTTP-művelet átfogó feladatdefiníciójára, amelyhez a későbbi szakaszok részletesebb elemleírásokat is tartalmaznak: 
@@ -148,7 +148,7 @@ A **startTime** objektumban megadhatja a kezdési időpontot és az időzóna-el
 
 <a name="action"></a>
 
-## <a name="action"></a>action
+## <a name="action"></a>művelet
 
 A Scheduler-feladat egy elsődleges **action** műveletet futtat a megadott ütemezés szerint. A Scheduler a HTTP-, a Storage-üzenetsor-, a Service Bus üzenetsor- és a Service Bus-alapú témakörműveleteket támogatja. Ha az elsődleges **action** művelet meghiúsul, a Scheduler egy másodlagos [**errorAction**](#erroraction) műveletet futtathat, amely kezeli a hibát. Az **action** objektum a következő elemeket ismerteti:
 
@@ -246,18 +246,18 @@ Egy feladat akkor ismétlődik, ha annak JSON-definíciója tartalmazza a **recu
 },
 ```
 
-| Tulajdonság | Kötelező | Érték | Description | 
+| Tulajdonság | Kötelező | Érték | Leírás | 
 |----------|----------|-------|-------------| 
-| **frekvencia** | Igen, a **recurrence** használatakor | Percenként, óránként, naponta, hetente, havonta, évente | Az előfordulások közötti időegység | 
-| **interval** | No | 1 és 1000 között, a szélsőértékeket is beleértve | Pozitív egész szám, amely a **frequency** gyakoriságérték alapján meghatározza az egyes előfordulások közötti időegységek számát | 
-| **menetrend** | No | Változó | Összetettebb és speciális ütemezések részletei. Lásd: **hours**, **minutes**, **weekDays**, **months** és **monthDays** (órák, percek, munkanapok, hónapok és hónap adott napjai) | 
-| **óra** | No | 1–24 | A feladat futtatásának időpontját meghatározó órajelek | 
-| **perc** | No | 0 – 59 | A feladat futtatásának időpontját meghatározó percjelek | 
-| **months** | No | 1–12 | A feladat futtatásának időpontját meghatározó hónapok | 
-| **monthDays** | No | Változó | A feladat futtatásának időpontját meghatározó hónap napjai | 
-| **weekDays** | No | „Monday”, „Tuesday”, „Wednesday”, „Thursday”, „Friday”, „Saturday”, „Sunday” (Hétfő, Kedd, Szerda, Csütörtök, Péntek, Szombat, Vasárnap) | A feladat futtatásának időpontját meghatározó hét napjai | 
-| **száma** | No | <*nEz egy*> | Az ismétlődések száma. Az alapértelmezett beállítás a végtelen ismétlődés. Nem használhatja egyszerre a **count** és az **endTime** elemeket, így ilyen esetekben mindig az elsőként lefutó szabály érvényesül. | 
-| **endTime** | No | <*nEz egy*> | Az ismétlődés befejezésének dátuma és ideje. Az alapértelmezett beállítás a végtelen ismétlődés. Nem használhatja egyszerre a **count** és az **endTime** elemeket, így ilyen esetekben mindig az elsőként lefutó szabály érvényesül. | 
+| **frequency** | Igen, a **recurrence** használatakor | Percenként, óránként, naponta, hetente, havonta, évente | Az előfordulások közötti időegység | 
+| **interval** | Nem | 1 és 1000 között, a szélsőértékeket is beleértve | Pozitív egész szám, amely a **frequency** gyakoriságérték alapján meghatározza az egyes előfordulások közötti időegységek számát | 
+| **menetrend** | Nem | Változó | Összetettebb és speciális ütemezések részletei. Lásd: **hours**, **minutes**, **weekDays**, **months** és **monthDays** (órák, percek, munkanapok, hónapok és hónap adott napjai) | 
+| **óra** | Nem | 1–24 | A feladat futtatásának időpontját meghatározó órajelek | 
+| **perc** | Nem | 0 – 59 | A feladat futtatásának időpontját meghatározó percjelek | 
+| **hónapok** | Nem | 1–12 | A feladat futtatásának időpontját meghatározó hónapok | 
+| **monthDays** | Nem | Változó | A feladat futtatásának időpontját meghatározó hónap napjai | 
+| **weekDays** | Nem | „Monday”, „Tuesday”, „Wednesday”, „Thursday”, „Friday”, „Saturday”, „Sunday” (Hétfő, Kedd, Szerda, Csütörtök, Péntek, Szombat, Vasárnap) | A feladat futtatásának időpontját meghatározó hét napjai | 
+| **száma** | Nem | <*nEz egy*> | Az ismétlődések száma. Az alapértelmezett beállítás a végtelen ismétlődés. Nem használhatja egyszerre a **count** és az **endTime** elemeket, így ilyen esetekben mindig az elsőként lefutó szabály érvényesül. | 
+| **endTime** | Nem | <*nEz egy*> | Az ismétlődés befejezésének dátuma és ideje. Az alapértelmezett beállítás a végtelen ismétlődés. Nem használhatja egyszerre a **count** és az **endTime** elemeket, így ilyen esetekben mindig az elsőként lefutó szabály érvényesül. | 
 ||||
 
 További információ az elemekről: [Komplex ütemezések és speciális ismétlődések létrehozása](../scheduler/scheduler-advanced-complexity.md).
@@ -276,18 +276,18 @@ Arra az esetre, ha a Scheduler-feladat hibába ütközik, beállíthat egy újra
 },
 ```
 
-| Tulajdonság | Kötelező | Érték | Description | 
+| Tulajdonság | Kötelező | Érték | Leírás | 
 |----------|----------|-------|-------------| 
-| **retryType** | Yes | **Fixed**, **None** | Azt határozza meg, hogy megad-e egy újrapróbálkozási szabályzatot (**fixed** – rögzített) vagy sem (**none** – nincs). | 
-| **retryInterval** | No | PT30S | Megadja az újrapróbálkozások gyakoriságát [ISO 8601 formátumban](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations). A minimális érték 15 másodperc, a maximális érték pedig 18 hónap. | 
-| **retryCount** | No | 4 | Megszabja az újrapróbálkozási kísérletek számát. A maximális érték 20. | 
+| **retryType** | Igen | **Fixed**, **None** | Azt határozza meg, hogy megad-e egy újrapróbálkozási szabályzatot (**fixed** – rögzített) vagy sem (**none** – nincs). | 
+| **retryInterval** | Nem | PT30S | Megadja az újrapróbálkozások gyakoriságát [ISO 8601 formátumban](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations). A minimális érték 15 másodperc, a maximális érték pedig 18 hónap. | 
+| **retryCount** | Nem | 4 | Megszabja az újrapróbálkozási kísérletek számát. A maximális érték 20. | 
 ||||
 
 További információ: [Magas rendelkezésre állás és megbízhatóság](../scheduler/scheduler-high-availability-reliability.md).
 
 <a name="status"></a>
 
-## <a name="state"></a>state
+## <a name="state"></a>állapot
 
 A feladatok állapota a következő lehet: **Enabled** (Engedélyezve), **Disabled** (Letiltva), **Completed** (Befejezve) vagy **Faulted** (Hibás), például: 
 

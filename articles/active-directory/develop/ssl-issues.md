@@ -13,10 +13,10 @@ ms.date: 08/28/2019
 ms.author: marsma
 ms.custom: aaddev
 ms.openlocfilehash: 1507231c3ab395319d5ce95ec06dbb592c324aa6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80881077"
 ---
 # <a name="how-to-troubleshoot-msal-for-ios-and-macos-tlsssl-issues"></a>Útmutató: az iOS-és macOS-alapú TLS/SSL-problémák MSAL hibaelhárítása
@@ -41,7 +41,7 @@ Az SHA-1 kivonatokat használó tanúsítványok ismert biztonsági réseket tar
 
 ## <a name="captive-portals"></a>Fogságban lévő portálok
 
-A céges portál egy weblapot jelenít meg a felhasználónak, amikor először fér hozzá egy Wi-Fi-hálózathoz, és még nem kapott hozzáférést ehhez a hálózathoz. Elfogja az internetes forgalmat, amíg a felhasználó nem teljesíti a portál követelményeit. Hálózati hibák, mert a felhasználó nem tud csatlakozni a hálózati erőforrásokhoz, amíg a felhasználó nem csatlakozik a portálon.
+A céges portál egy weblapot jelenít meg a felhasználónak, amikor először fér hozzá egy Wi-Fi hálózathoz, és még nem kapott hozzáférést ehhez a hálózathoz. Elfogja az internetes forgalmat, amíg a felhasználó nem teljesíti a portál követelményeit. Hálózati hibák, mert a felhasználó nem tud csatlakozni a hálózati erőforrásokhoz, amíg a felhasználó nem csatlakozik a portálon.
 
 ## <a name="next-steps"></a>További lépések
 

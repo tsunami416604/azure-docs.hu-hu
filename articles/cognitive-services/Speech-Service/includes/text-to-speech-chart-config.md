@@ -11,32 +11,32 @@ ms.topic: include
 ms.date: 04/01/2020
 ms.author: aahi
 ms.openlocfilehash: 22168974ab8b285413b4fa6e947c05f65a73ae12
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80874344"
 ---
 ### <a name="text-to-speech-sub-chart-chartstexttospeech"></a>Szöveg-beszéd (Aldiagram: diagramok/textToSpeech)
 
-Az "esernyő" diagram felülbírálásához adja hozzá az előtagot `textToSpeech.` bármelyik paraméterhez, hogy pontosabb legyen. Például felülbírálja a megfelelő paramétert például `textToSpeech.numberOfConcurrentRequest` : felülbírálások. `numberOfConcurrentRequest`
+Az "esernyő" diagram felülbírálásához adja hozzá az előtagot `textToSpeech.` bármelyik paraméterhez, hogy pontosabb legyen. Például felülbírálja a megfelelő paramétert például: felülbírálások `textToSpeech.numberOfConcurrentRequest` `numberOfConcurrentRequest` .
 
 |Paraméter|Leírás|Alapértelmezett|
 | -- | -- | -- |
 | `enabled` | Azt jelzi, hogy engedélyezve van-e a **szöveg-beszéd** szolgáltatás. | `false` |
 | `numberOfConcurrentRequest` | A **szöveg-beszéd** típusú szolgáltatás egyidejű kérelmeinek száma. Ez a diagram automatikusan kiszámítja a processzor-és memória-erőforrásokat ezen érték alapján. | `2` |
-| `optimizeForTurboMode`| Azt határozza meg, hogy a szolgáltatásnak szöveges fájlok használatával kell-e optimalizálnia a szövegbevitelt. Ha `true`ez a diagram több CPU-erőforrást fog kiosztani a szolgáltatás számára. | `false` |
+| `optimizeForTurboMode`| Azt határozza meg, hogy a szolgáltatásnak szöveges fájlok használatával kell-e optimalizálnia a szövegbevitelt. Ha `true` Ez a diagram több CPU-erőforrást fog kiosztani a szolgáltatás számára. | `false` |
 | `image.registry`| A **szöveg-beszéd** Docker-rendszerkép beállításjegyzéke. | `containerpreview.azurecr.io` |
 | `image.repository` | A **szöveg-beszéd** Docker-rendszerkép tárháza. | `microsoft/cognitive-services-text-to-speech` |
 | `image.tag` | A **szöveg és a beszéd** Docker-rendszerkép címkéje. | `latest` |
 | `image.pullSecrets` | A **szöveg-beszéd** Docker-rendszerkép kihúzásának képtitka. | |
-| `image.pullByHash`| Azt jelzi, hogy a Docker-rendszerképet kivonattal húzta-e. `image.hash` Ha `true`kötelező megadni. | `false` |
-| `image.hash`| A **szöveg-beszéd** Docker-rendszerkép kivonata. Csak akkor használatos, ha `image.pullByHash: true`.  | |
-| `image.args.eula`szükséges | Azt jelzi, hogy elfogadta a licencet. Az egyetlen érvényes érték a`accept` | |
-| `image.args.billing`szükséges | A számlázási végpont URI-ja a Azure Portal beszédének áttekintése oldalon érhető el. | |
-| `image.args.apikey`szükséges | A számlázási információk nyomon követésére szolgál. ||
+| `image.pullByHash`| Azt jelzi, hogy a Docker-rendszerképet kivonattal húzta-e. Ha `true` `image.hash` kötelező megadni. | `false` |
+| `image.hash`| A **szöveg-beszéd** Docker-rendszerkép kivonata. Csak akkor használatos, ha `image.pullByHash: true` .  | |
+| `image.args.eula` szükséges | Azt jelzi, hogy elfogadta a licencet. Az egyetlen érvényes érték a `accept` | |
+| `image.args.billing` szükséges | A számlázási végpont URI-ja a Azure Portal beszédének áttekintése oldalon érhető el. | |
+| `image.args.apikey` szükséges | A számlázási információk nyomon követésére szolgál. ||
 | `service.type` | A **szöveg-beszéd** típusú szolgáltatás Kubernetes. További részletekért tekintse meg a [Kubernetes-szolgáltatások típusaival kapcsolatos útmutatót](https://kubernetes.io/docs/concepts/services-networking/service/) , és ellenőrizze a felhőalapú szolgáltatók támogatását. | `LoadBalancer` |
 | `service.port`|  A **szöveg-beszéd** típusú szolgáltatás portja. | `80` |
 | `service.annotations` | A szolgáltatás metaadatainak **szöveg-beszéd** típusú megjegyzései A jegyzetek a kulcs érték párok. <br>`annotations:`<br>&nbsp;&nbsp;`some/annotation1: value1`<br>&nbsp;&nbsp;`some/annotation2: value2` | |
-| `service.autoScaler.enabled` | Azt jelzi, hogy engedélyezve van-e a [horizontális Pod automéretező](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/) . Ha `true`a, `text-to-speech-autoscaler` a a Kubernetes-fürtben lesz telepítve. | `true` |
-| `service.podDisruption.enabled` | Azt jelzi, hogy engedélyezve van-e a [Pod-megszakadási költségvetés](https://kubernetes.io/docs/concepts/workloads/pods/disruptions/) . Ha `true`a, `text-to-speech-poddisruptionbudget` a a Kubernetes-fürtben lesz telepítve. | `true` |
+| `service.autoScaler.enabled` | Azt jelzi, hogy engedélyezve van-e a [horizontális Pod automéretező](https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/) . Ha `true` a, a a `text-to-speech-autoscaler` Kubernetes-fürtben lesz telepítve. | `true` |
+| `service.podDisruption.enabled` | Azt jelzi, hogy engedélyezve van-e a [Pod-megszakadási költségvetés](https://kubernetes.io/docs/concepts/workloads/pods/disruptions/) . Ha `true` a, a a `text-to-speech-poddisruptionbudget` Kubernetes-fürtben lesz telepítve. | `true` |

@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: ''
 ms.custom: aaddev
 ms.openlocfilehash: 25389348476552298ddb947ccb59acb8b3d5bc57
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80881248"
 ---
 # <a name="how-to-configure-sso-on-macos-and-ios"></a>Útmutató: az SSO konfigurálása macOS és iOS rendszeren
@@ -67,9 +67,9 @@ Ahhoz, hogy a Microsoft Identity platform tudja, mely alkalmazások oszthatják 
 
 A Microsoft Identity platform azt mutatja be, hogy az azonos alkalmazás-azonosítót használó alkalmazások **átirányítási URI**-k. Az egyes alkalmazások több átirányítási URI-t is regisztrálhatnak a bevezetési portálon. A csomag minden alkalmazásának egy másik átirányítási URI-ja lesz. Például:
 
-App1 átirányítási URI:`msauth.com.contoso.mytestapp1://auth`  
-App2 átirányítási URI:`msauth.com.contoso.mytestapp2://auth`  
-App3 átirányítási URI:`msauth.com.contoso.mytestapp3://auth`  
+App1 átirányítási URI: `msauth.com.contoso.mytestapp1://auth`  
+App2 átirányítási URI: `msauth.com.contoso.mytestapp2://auth`  
+App3 átirányítási URI: `msauth.com.contoso.mytestapp3://auth`  
 
 > [!IMPORTANT]
 > Az átirányítási URI-k formátumának kompatibilisnek kell lennie a MSAL által támogatott formátummal, amely a [MSAL átirányítási URI-formátumának követelményeiben](redirect-uris-ios.md#msal-redirect-uri-format-requirements)van dokumentálva.
@@ -97,8 +97,8 @@ Ha helyesen állította be a jogosultságokat, egy olyan fájlt fog látni `enti
 #### <a name="add-a-new-keychain-group"></a>Új kulcstartó-csoport hozzáadása
 
 Vegyen fel egy új kulcstartó-csoportot a projekt **képességeibe**. A kulcstartó csoportnak a következőket kell tennie:
-* `com.microsoft.adalcache`iOS rendszeren 
-* `com.microsoft.identity.universalstorage`macOS rendszeren.
+* `com.microsoft.adalcache` iOS rendszeren 
+* `com.microsoft.identity.universalstorage` macOS rendszeren.
 
 ![kulcstartó – példa](media/single-sign-on-macos-ios/keychain-example.png)
 

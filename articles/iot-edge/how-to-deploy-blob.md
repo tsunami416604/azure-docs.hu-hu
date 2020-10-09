@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 ms.reviewer: arduppal
 ms.openlocfilehash: da163e902d06bd98ac47a24256cb809cb222173b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80804622"
 ---
 # <a name="deploy-the-azure-blob-storage-on-iot-edge-module-to-your-device"></a>Az Azure Blob Storage az IoT Edge-ben modul üzembe helyezése az eszközön
@@ -47,12 +47,12 @@ Az üzembe helyezési jegyzék egy JSON-dokumentum, amely leírja, hogy mely mod
 
    Példák:
   
-   - **IoT Edge modul neve**:`azureblobstorageoniotedge`
-   - **Rendszerkép URI-ja**:`mcr.microsoft.com/azure-blob-storage:latest`
+   - **IoT Edge modul neve**: `azureblobstorageoniotedge`
+   - **Rendszerkép URI-ja**: `mcr.microsoft.com/azure-blob-storage:latest`
 
    ![Modul Twin beállításai](./media/how-to-deploy-blob/addmodule-tab1.png)
 
-   Ne válassza a **Hozzáadás** lehetőséget, amíg meg nem adta a **modul beállításai**, a tároló- **létrehozási beállítások**és a **modul Twin-beállítások** lapjait a jelen eljárásban leírtak szerint.
+   Ne válassza a **Hozzáadás** lehetőséget, amíg meg nem adta a **modul beállításai**, a tároló- **létrehozási beállítások**és a  **modul Twin-beállítások** lapjait a jelen eljárásban leírtak szerint.
 
    > [!IMPORTANT]
    > A Azure IoT Edge a kis-és nagybetűk megkülönböztetése, ha a modulokra irányuló hívásokat végez, és a Storage SDK is alapértelmezés szerint kisbetűs. Bár az [Azure Marketplace](how-to-deploy-modules-portal.md#deploy-modules-from-azure-marketplace) -en a modul neve **AzureBlobStorageonIoTEdge**, a név kisbetűsre való módosítása segít biztosítani, hogy az Azure Blob Storage IoT Edge modulban való kapcsolatai ne legyenek megszakítva.
@@ -89,7 +89,7 @@ Az üzembe helyezési jegyzék egy JSON-dokumentum, amely leírja, hogy mely mod
    - Cserélje le `<storage mount>` at a tároló operációs rendszerének megfelelően. Adja meg egy [kötet](https://docs.docker.com/storage/volumes/) nevét vagy egy meglévő könyvtár abszolút elérési útját a IoT Edge eszközön, ahol a blob-modul tárolja az adatait. A Storage-csatlakoztatás leképezi az eszközön az Ön által megadott helyet a modul egy készletének megfelelő helyére.
 
      - Linux-tárolók esetén a formátum a következő ** \<your storage path or volume> :/blobroot**. Például:
-         - a [Volume Mount](https://docs.docker.com/storage/volumes/)használata:`my-volume:/blobroot`
+         - a [Volume Mount](https://docs.docker.com/storage/volumes/)használata: `my-volume:/blobroot`
          - [kötési csatlakoztatás](https://docs.docker.com/storage/bind-mounts/)használata: `/srv/containerdata:/blobroot` . Ügyeljen arra, hogy a címtár- [hozzáférés biztosítása a tároló felhasználójának](how-to-store-data-blob.md#granting-directory-access-to-container-user-on-linux) lépéseit kövesse.
      - Windows-tárolók esetén a formátum a következő ** \<your storage path or volume> : C:/BlobRoot**. Például:
          - a [Volume Mount](https://docs.docker.com/storage/volumes/)használata: `my-volume:C:/BlobRoot` .
@@ -128,7 +128,7 @@ Az üzembe helyezési jegyzék egy JSON-dokumentum, amely leírja, hogy mely mod
 
    További információ a deviceToCloudUploadProperties és a deviceAutoDeleteProperties konfigurálásáról a modul üzembe helyezése után: [a különálló modul szerkesztése](https://github.com/Microsoft/vscode-azure-iot-toolkit/wiki/Edit-Module-Twin). A kívánt tulajdonságokkal kapcsolatos további információkért lásd: a [kívánt tulajdonságok megadása vagy frissítése](module-composition.md#define-or-update-desired-properties).
 
-6. Válassza a **Hozzáadás** elemet.
+6. Válassza a **Hozzáadás** lehetőséget.
 
 7. Válassza a **Tovább: útvonalak** szakaszt az útvonalak szakaszhoz.
 
@@ -165,7 +165,7 @@ A Azure IoT Edge a Visual Studio Code-ban biztosít sablonokat, amelyek segíten
 
    | Mező | Érték |
    | ----- | ----- |
-   | Select folder (Mappa kiválasztása) | Válassza ki a helyet a fejlesztői gépen a Visual Studio Code-hoz a megoldás fájljainak létrehozásához. |
+   | Mappa kiválasztása | Válassza ki a helyet a fejlesztői gépen a Visual Studio Code-hoz a megoldás fájljainak létrehozásához. |
    | Provide a solution name (Megoldásnév megadása) | Adjon meg egy leíró nevet a megoldáshoz, vagy fogadja el az alapértelmezett **EdgeSolution**. |
    | Select module template (Modulsablon kiválasztása) | Válasszon egy **meglévő modult (adja meg a teljes képet URL-címet)**. |
    | Provide a module name (Modulnév megadása) | Adjon meg egy teljes kisbetűs nevet a modulhoz, például **azureblobstorageoniotedge**.<br/><br/>Fontos, hogy a IoT Edge modul Azure Blob Storage kisbetűs nevét használja. A IoT Edge a kis-és nagybetűk megkülönböztetésére szolgál, ha a modulokra hivatkozik, és a Storage SDK alapértelmezett értéke kisbetűs. |
@@ -201,7 +201,7 @@ A Azure IoT Edge a Visual Studio Code-ban biztosít sablonokat, amelyek segíten
 1. Cserélje le `<storage mount>` at a tároló operációs rendszerének megfelelően. Adja meg egy [kötet](https://docs.docker.com/storage/volumes/) nevét vagy a IoT Edge eszköz egyik könyvtárának abszolút elérési útját, amelyen a blob-modul adatait tárolni szeretné. A Storage-csatlakoztatás leképezi az eszközön az Ön által megadott helyet a modul egy készletének megfelelő helyére.  
 
      - Linux-tárolók esetén a formátum a következő ** \<your storage path or volume> :/blobroot**. Például:
-         - a [Volume Mount](https://docs.docker.com/storage/volumes/)használata:`my-volume:/blobroot`
+         - a [Volume Mount](https://docs.docker.com/storage/volumes/)használata: `my-volume:/blobroot`
          - [kötési csatlakoztatás](https://docs.docker.com/storage/bind-mounts/)használata: `/srv/containerdata:/blobroot` . Ügyeljen arra, hogy a címtár- [hozzáférés biztosítása a tároló felhasználójának](how-to-store-data-blob.md#granting-directory-access-to-container-user-on-linux) lépéseit kövesse.
      - Windows-tárolók esetén a formátum a következő ** \<your storage path or volume> : C:/BlobRoot**. Példa:
          - a [Volume Mount](https://docs.docker.com/storage/volumes/)használata: `my-volume:C:/BlobRoot` .
@@ -242,7 +242,7 @@ A Azure IoT Edge a Visual Studio Code-ban biztosít sablonokat, amelyek segíten
 
 1. Mentse a *deployment.template.json* fájlt.
 
-1. Kattintson a jobb gombbal **adeployment.template.js** elemre, majd válassza a **IoT Edge üzembe helyezési jegyzék előállítása**lehetőséget.
+1. Kattintson a jobb gombbal ** adeployment.template.js** elemre, majd válassza a **IoT Edge üzembe helyezési jegyzék előállítása**lehetőséget.
 
 1. A Visual Studio Code megtekinti a *deployment.template.jsban* megadott adatokat, és felhasználja egy új központi telepítési jegyzékfájl létrehozásához. Az üzembe helyezési jegyzék a megoldás munkaterületének új **konfigurációs** mappájában jön létre. Ha ezt a fájlt elvégezte, kövesse a Azure IoT Edge- [modulok üzembe helyezése a Visual Studio Code](how-to-deploy-modules-vscode.md) -ban vagy a [Azure IoT Edge modulok üzembe helyezése az Azure CLI 2,0-vel](how-to-deploy-modules-cli.md)című témakör lépéseit.
 

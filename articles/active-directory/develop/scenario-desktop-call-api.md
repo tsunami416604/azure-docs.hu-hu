@@ -12,10 +12,10 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 753892790a6f6b898b48d955e6806837967f3e92
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80882964"
 ---
 # <a name="desktop-app-that-calls-web-apis-call-a-web-api"></a>Webes API-kat meghívó asztali alkalmazás: webes API meghívása
@@ -64,7 +64,7 @@ JSONObject responseObject = HttpClientHelper.processResponse(responseCode, respo
 
 ## <a name="call-a-web-api-in-msal-for-ios-and-macos"></a>Webes API meghívása iOS és macOS rendszerű MSAL
 
-A jogkivonatok beszerzésének módszerei egy objektumot adnak vissza `MSALResult` . `MSALResult`egy olyan `accessToken` tulajdonság közzététele, amely a webes API-k meghívására használható. A védett webes API-hoz való hozzáférés meghívása előtt adjon hozzá egy hozzáférési jogkivonatot a HTTP-engedélyezési fejléchez.
+A jogkivonatok beszerzésének módszerei egy objektumot adnak vissza `MSALResult` . `MSALResult` egy olyan `accessToken` tulajdonság közzététele, amely a webes API-k meghívására használható. A védett webes API-hoz való hozzáférés meghívása előtt adjon hozzá egy hozzáférési jogkivonatot a HTTP-engedélyezési fejléchez.
 
 Objective-C:
 
@@ -130,4 +130,4 @@ catch(MsalUiRequiredException ex)
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Áthelyezés éles környezetbe](scenario-desktop-production.md)
+> [Átállás éles üzemre](scenario-desktop-production.md)

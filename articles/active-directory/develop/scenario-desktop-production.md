@@ -12,10 +12,10 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: ea564eb69f102d8e548bf8ae9a626598fa264cd4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80882879"
 ---
 # <a name="desktop-app-that-calls-web-apis-move-to-production"></a>Webes API-kat meghívó asztali alkalmazás: áthelyezés éles környezetbe
@@ -35,8 +35,8 @@ A Microsoft Identity platform (v 2.0) végpontján egyszerre több erőforrásho
 
 Előfordulhat például, hogy két erőforrással rendelkezik, amelyek mindegyike két hatókörrel rendelkezik:
 
-- `https://mytenant.onmicrosoft.com/customerapi`a hatókörökkel `customer.read` és`customer.write`
-- `https://mytenant.onmicrosoft.com/vendorapi`a hatókörökkel `vendor.read` és`vendor.write`
+- `https://mytenant.onmicrosoft.com/customerapi` a hatókörökkel `customer.read` és `customer.write`
+- `https://mytenant.onmicrosoft.com/vendorapi` a hatókörökkel `vendor.read` és `vendor.write`
 
 Ebben a példában a `.WithAdditionalPromptToConsent` paraméterrel rendelkező módosítót használja `extraScopesToConsent` .
 

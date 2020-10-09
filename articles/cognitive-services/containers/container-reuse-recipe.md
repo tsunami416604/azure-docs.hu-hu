@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
 ms.openlocfilehash: 7380ff58d033a68565de7e419ff318f7bdec121d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80875078"
 ---
 # <a name="create-containers-for-reuse"></a>Tárolók létrehozása újbóli felhasználáshoz
@@ -29,28 +29,28 @@ A `docker run` jelen dokumentumban szereplő példák egy `^` sor folytatási ka
 
 * Ne módosítsa az argumentumok sorrendjét, hacsak nem ismeri a Docker-tárolókat.
 * Ha a Windows rendszertől eltérő operációs rendszert használ, vagy a Windows-konzoltól eltérő konzolt használ, használja a megfelelő konzolt/terminált, a csatlakoztatások mappa szintaxisát, valamint a konzol és a rendszer vonal folytatási karakterét.  Mivel a Cognitive Services tároló egy Linux operációs rendszer, a cél csatlakoztatása a Linux-stílusú mappa szintaxisát használja.
-* `docker run`a következő példák a `c:` meghajtón lévő könyvtárat használják, hogy elkerülje az engedélyek ütközését a Windowson. Ha egy adott könyvtárat kell használnia bemeneti könyvtárként, előfordulhat, hogy meg kell adnia a Docker szolgáltatás engedélyét.
+* `docker run` a következő példák a meghajtón lévő könyvtárat használják `c:` , hogy elkerülje az engedélyek ütközését a Windowson. Ha egy adott könyvtárat kell használnia bemeneti könyvtárként, előfordulhat, hogy meg kell adnia a Docker szolgáltatás engedélyét.
 
 ## <a name="store-no-configuration-settings-in-image"></a>A rendszerkép nem tárolja a konfigurációs beállításokat
 
-Az egyes `docker run` szolgáltatásokra vonatkozó példák nem tárolnak konfigurációs beállításokat a tárolóban. Amikor a tárolót egy konzolról vagy egy beállításjegyzék-szolgáltatásból indítja el, ezeket a konfigurációs beállításokat át kell adni. A privát beállításjegyzék-tároló konfigurációs helyet biztosít a beállításoknak a alkalmazásban való átadásához.
+Az `docker run` egyes szolgáltatásokra vonatkozó példák nem tárolnak konfigurációs beállításokat a tárolóban. Amikor a tárolót egy konzolról vagy egy beállításjegyzék-szolgáltatásból indítja el, ezeket a konfigurációs beállításokat át kell adni. A privát beállításjegyzék-tároló konfigurációs helyet biztosít a beállításoknak a alkalmazásban való átadásához.
 
 ## <a name="reuse-recipe-store-all-configuration-settings-with-container"></a>Recept újrafelhasználása: az összes konfigurációs beállítás tárolása tárolóval
 
-Az összes konfigurációs beállítás tárolásához hozzon létre egy `Dockerfile` -t ezekkel a beállításokkal.
+Az összes konfigurációs beállítás tárolásához hozzon létre egy- `Dockerfile` t ezekkel a beállításokkal.
 
 Az ezzel a módszerrel kapcsolatos problémák:
 
 * Az új tároló külön névvel és címkével rendelkezik az eredeti tárolóban.
 * Ezeknek a beállításoknak a módosításához módosítania kell a Docker értékeit, újra kell építenie a rendszerképet, és újra közzé kell tennie a beállításjegyzékben.
 * Ha valaki hozzáfér a tároló-beállításjegyzékhez vagy a helyi gazdagéphez, akkor futtathatja a tárolót, és használhatja a Cognitive Services-végpontokat.
-* Ha a kognitív szolgáltatás nem igényel bemeneti csatlakoztatásokat, ne adja hozzá `COPY` a sorokat a Docker.
+* Ha a kognitív szolgáltatás nem igényel bemeneti csatlakoztatásokat, ne adja hozzá a `COPY` sorokat a Docker.
 
 Hozzon létre Docker, húzza a használni kívánt meglévő Cognitive Services-tárolóból, majd a tároló által igényelt információk beállításához és lekéréséhez használja a Docker Docker-parancsait.
 
 Példa:
 
-* Beállítja a számlázási végpontot `{BILLING_ENDPOINT}` a gazdagép környezeti kulcsának használatával `ENV`.
+* Beállítja a számlázási végpontot `{BILLING_ENDPOINT}` a gazdagép környezeti kulcsának használatával `ENV` .
 * Beállítja a számlázási API-kulcsot `{ENDPOINT_KEY}` a gazdagép környezeti kulcsáról a "env" használatával.
 
 ### <a name="reuse-recipe-store-billing-settings-with-container"></a>Recept újrafelhasználása: számlázási beállítások tárolása tárolóval
@@ -70,9 +70,9 @@ Igény szerint hozza létre és futtassa a tárolót [helyileg](#how-to-use-cont
 
 Ez a példa bemutatja, hogyan használhatók a Language Understanding, hogyan mentheti a számlázást és a modelleket a Docker.
 
-* Az Language Understanding (LUIS) modell fájljának másolása a gazdagép fájlrendszeréről a használatával `COPY`.
-* A LUIS-tároló több modellt is támogat. Ha az összes modell ugyanabban a mappában van tárolva, csak egy `COPY` utasítást kell megadnia.
-* Futtassa a Docker-fájlt a modell bemeneti könyvtárának relatív szülőjének. Az alábbi példához futtassa a `docker build` és `docker run` a parancsot a relatív szülőtől. `/input` A `COPY` parancs `/input` első értéke a gazdaszámítógép könyvtára. A második `/input` a tároló könyvtára.
+* Az Language Understanding (LUIS) modell fájljának másolása a gazdagép fájlrendszeréről a használatával `COPY` .
+* A LUIS-tároló több modellt is támogat. Ha az összes modell ugyanabban a mappában van tárolva, csak egy utasítást kell megadnia `COPY` .
+* Futtassa a Docker-fájlt a modell bemeneti könyvtárának relatív szülőjének. Az alábbi példához futtassa a `docker build` és a `docker run` parancsot a relatív szülőtől `/input` . A `/input` `COPY` parancs első értéke a gazdaszámítógép könyvtára. A második a `/input` tároló könyvtára.
 
 ```Dockerfile
 FROM <container-registry>/<cognitive-service-container-name>:<tag>
@@ -86,13 +86,13 @@ Igény szerint hozza létre és futtassa a tárolót [helyileg](#how-to-use-cont
 
 ## <a name="how-to-use-container-on-your-local-host"></a>A tároló használata a helyi gazdagépen
 
-A Docker-fájl létrehozásához cserélje `<your-image-name>` le a nevet a rendszerkép új nevére, majd használja a következőt:
+A Docker-fájl létrehozásához cserélje le a `<your-image-name>` nevet a rendszerkép új nevére, majd használja a következőt:
 
 ```console
 docker build -t <your-image-name> .
 ```
 
-A rendszerkép futtatásához és a tároló leállításakor (`--rm`) való eltávolításához:
+A rendszerkép futtatásához és a tároló leállításakor () való eltávolításához `--rm` :
 
 ```console
 docker run --rm <your-image-name>
@@ -102,13 +102,13 @@ docker run --rm <your-image-name>
 
 Az alábbi lépéseket követve használhatja a Docker, és elhelyezheti az új rendszerképet a privát tároló beállításjegyzékében.  
 
-1. Hozzon `Dockerfile` létre egy szöveget az újrahasznosítási receptből. A `Dockerfile` nem rendelkezik bővítménysel.
+1. Hozzon létre egy `Dockerfile` szöveget az újrahasznosítási receptből. A `Dockerfile` nem rendelkezik bővítménysel.
 
 1. A szögletes zárójelben lévő összes értéket cserélje le a saját értékeire.
 
-1. A következő parancs használatával hozza létre a fájlt egy rendszerképre a parancssorban vagy a terminálon. Cserélje le az értékeket a szögletes zárójelben `<>`, a saját tároló nevével és címkéjével együtt.  
+1. A következő parancs használatával hozza létre a fájlt egy rendszerképre a parancssorban vagy a terminálon. Cserélje le az értékeket a szögletes zárójelben, a `<>` saját tároló nevével és címkéjével együtt.  
 
-    A címke lehetőség, `-t`amely a tárolóban megváltoztatott adatok hozzáadását teszi lehetővé. A tároló neve például `modified-LUIS` azt jelzi, hogy az eredeti tároló rétegben van. A címke neve jelzi `with-billing-and-model` , hogy a Language UNDERSTANDING (Luis) tároló hogyan lett módosítva.
+    A címke lehetőség, amely a `-t` tárolóban megváltoztatott adatok hozzáadását teszi lehetővé. A tároló neve például `modified-LUIS` azt jelzi, hogy az eredeti tároló rétegben van. A címke neve `with-billing-and-model` jelzi, hogy a Language Understanding (Luis) tároló hogyan lett módosítva.
 
     ```Bash
     docker build -t <your-new-container-name>:<your-new-tag-name> .
@@ -122,7 +122,7 @@ Az alábbi lépéseket követve használhatja a Docker, és elhelyezheti az új 
 
 1. Jelentkezzen be a privát beállításjegyzékbe az Azure CLI-vel egy konzolról.
 
-    A szögletes zárójelben `<my-registry>`lévő értékeket cserélje le a saját beállításjegyzékbeli nevére.  
+    A szögletes zárójelben lévő értékeket cserélje le a `<my-registry>` saját beállításjegyzékbeli nevére.  
 
     ```azurecli
     az acr login --name <my-registry>
@@ -134,7 +134,7 @@ Az alábbi lépéseket követve használhatja a Docker, és elhelyezheti az új 
     docker login <my-registry>.azurecr.io
     ```
 
-1. Címkézze fel a tárolót a privát beállításjegyzék helyén. A szögletes zárójelben `<my-registry>`lévő értékeket cserélje le a saját beállításjegyzékbeli nevére. 
+1. Címkézze fel a tárolót a privát beállításjegyzék helyén. A szögletes zárójelben lévő értékeket cserélje le a `<my-registry>` saját beállításjegyzékbeli nevére. 
 
     ```Bash
     docker tag <your-new-container-name>:<your-new-tag-name> <my-registry>.azurecr.io/<your-new-container-name-in-registry>:<your-new-tag-name>

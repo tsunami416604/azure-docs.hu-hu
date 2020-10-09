@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 10/29/2018
 ms.author: terrylan
 ms.openlocfilehash: 496ee1bc97f6b72e09a62ae3491af7ccc7328583
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80811105"
 ---
 # <a name="azure-network-security-overview"></a>Az Azure hálózati biztonság áttekintése
@@ -46,7 +46,7 @@ Az Azure megköveteli, hogy a virtuális gépek egy Azure-Virtual Network kapcso
 
 További információ:
 
-* [Virtual Network – áttekintés](../../virtual-network/virtual-networks-overview.md)
+* [A virtuális hálózat áttekintése](../../virtual-network/virtual-networks-overview.md)
 
 ## <a name="network-access-control"></a>Hálózati hozzáférés-vezérlés
 
@@ -210,7 +210,7 @@ További információ:
 
 * [VNet-VNet közötti kapcsolatok konfigurálása Azure Resource Manager és a PowerShell használatával](../../vpn-gateway/vpn-gateway-vnet-vnet-rm-ps.md)
 
-A virtuális hálózatok összekapcsolásának másik módja a [VNET](../../virtual-network/virtual-network-peering-overview.md). Ez a funkció lehetővé teszi két Azure-hálózat összekapcsolását, hogy a közöttük zajló kommunikáció a Microsoft gerinc-infrastruktúrán keresztül történjen anélkül, hogy az interneten keresztül kellene történnie. A VNET-társítás két virtuális hálózatok tud összekötni ugyanazon a régión belül vagy két virtuális hálózatok az Azure-régiók között. A NSG használható a különböző alhálózatok vagy rendszerek közötti kapcsolatok korlátozására.
+A virtuális hálózatok összekapcsolásának másik módja a  [VNET](../../virtual-network/virtual-network-peering-overview.md). Ez a funkció lehetővé teszi két Azure-hálózat összekapcsolását, hogy a közöttük zajló kommunikáció a Microsoft gerinc-infrastruktúrán keresztül történjen anélkül, hogy az interneten keresztül kellene történnie. A VNET-társítás két virtuális hálózatok tud összekötni ugyanazon a régión belül vagy két virtuális hálózatok az Azure-régiók között. A NSG használható a különböző alhálózatok vagy rendszerek közötti kapcsolatok korlátozására.
 
 ## <a name="availability"></a>Rendelkezésre állás
 
@@ -265,7 +265,7 @@ Az Azure-ban a globális terheléselosztás előnyeit az Azure Traffic Manager s
 
 További információ:
 
-* [Mi az a Traffic Manager?](../../traffic-manager/traffic-manager-overview.md)
+* [A Traffic Manager ismertetése](../../traffic-manager/traffic-manager-overview.md)
 
 ## <a name="name-resolution"></a>Névfeloldás
 
@@ -283,7 +283,7 @@ Belső névfeloldás esetén két lehetőség közül választhat:
 
 További információ:
 
-* [Virtual Network – áttekintés](../../virtual-network/virtual-networks-overview.md)
+* [A virtuális hálózat áttekintése](../../virtual-network/virtual-networks-overview.md)
 * [Virtuális hálózat által használt DNS-kiszolgálók kezelése](../../virtual-network/manage-virtual-network.md#change-dns-servers)
 
 A külső névfeloldáshoz két lehetőség közül választhat:

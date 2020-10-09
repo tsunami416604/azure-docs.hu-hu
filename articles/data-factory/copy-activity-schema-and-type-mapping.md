@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 06/22/2020
 ms.author: jingwang
 ms.openlocfilehash: b48fb28a56cdc1c836233cd2bd03a1f9e750a0a7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85249652"
 ---
 # <a name="schema-and-data-type-mapping-in-copy-activity"></a>Séma-és adattípus-leképezés a másolási tevékenységben
@@ -49,18 +49,18 @@ A leképezést konfigurálhatja Data Factory authoring UI-> másolási tevékeny
 
 | Tulajdonság | Leírás                                                  | Kötelező |
 | -------- | ------------------------------------------------------------ | -------- |
-| name     | A forrás vagy a fogadó oszlop/mező neve. A táblázatos forrás és a fogadó esetében alkalmazható. | Yes      |
-| sorszámok  | Oszlop indexe Kezdés: 1. <br>Alkalmazva és kötelező, ha a tagolt szöveg fejléc nélkül van használatban. | No       |
-| path     | Az egyes mezőkhöz tartozó JSON-elérésiút-kifejezés kibontása vagy leképezése. Hierarchikus forrásra és fogadóra vonatkozik, például Cosmos DB, MongoDB vagy REST-összekötők.<br>A root objektum alatti mezők esetében a JSON elérési útja a root karakterrel kezdődik `$` ; a tulajdonság által választott tömbben lévő mezők esetében a `collectionReference` JSON-útvonal a tömb elemtől kezdve nem `$` . | No       |
-| típus     | Data Factory a forrás vagy a fogadó oszlop közbenső adattípusa. Általánosságban elmondható, hogy nem kell megadnia vagy módosítania ezt a tulajdonságot. További információ az [adattípus-hozzárendelésről](#data-type-mapping). | No       |
-| kulturális környezet  | A forrás vagy a fogadó oszlop kulturális környezete. Akkor alkalmazza, ha a típus értéke `Datetime` vagy `Datetimeoffset` . A mező alapértelmezett értéke: `en-us`.<br>Általánosságban elmondható, hogy nem kell megadnia vagy módosítania ezt a tulajdonságot. További információ az [adattípus-hozzárendelésről](#data-type-mapping). | No       |
-| formátumban   | A Type vagy a típushoz használandó formázó sztring `Datetime` `Datetimeoffset` . A DateTime formátumának formázásához tekintse meg az [Egyéni dátum-és időformátumot ismertető karakterláncot](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings) . Általánosságban elmondható, hogy nem kell megadnia vagy módosítania ezt a tulajdonságot. További információ az [adattípus-hozzárendelésről](#data-type-mapping). | No       |
+| name     | A forrás vagy a fogadó oszlop/mező neve. A táblázatos forrás és a fogadó esetében alkalmazható. | Igen      |
+| sorszámok  | Oszlop indexe Kezdés: 1. <br>Alkalmazva és kötelező, ha a tagolt szöveg fejléc nélkül van használatban. | Nem       |
+| path     | Az egyes mezőkhöz tartozó JSON-elérésiút-kifejezés kibontása vagy leképezése. Hierarchikus forrásra és fogadóra vonatkozik, például Cosmos DB, MongoDB vagy REST-összekötők.<br>A root objektum alatti mezők esetében a JSON elérési útja a root karakterrel kezdődik `$` ; a tulajdonság által választott tömbben lévő mezők esetében a `collectionReference` JSON-útvonal a tömb elemtől kezdve nem `$` . | Nem       |
+| típus     | Data Factory a forrás vagy a fogadó oszlop közbenső adattípusa. Általánosságban elmondható, hogy nem kell megadnia vagy módosítania ezt a tulajdonságot. További információ az [adattípus-hozzárendelésről](#data-type-mapping). | Nem       |
+| kulturális környezet  | A forrás vagy a fogadó oszlop kulturális környezete. Akkor alkalmazza, ha a típus értéke `Datetime` vagy `Datetimeoffset` . A mező alapértelmezett értéke: `en-us`.<br>Általánosságban elmondható, hogy nem kell megadnia vagy módosítania ezt a tulajdonságot. További információ az [adattípus-hozzárendelésről](#data-type-mapping). | Nem       |
+| formátumban   | A Type vagy a típushoz használandó formázó sztring `Datetime` `Datetimeoffset` . A DateTime formátumának formázásához tekintse meg az [Egyéni dátum-és időformátumot ismertető karakterláncot](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings) . Általánosságban elmondható, hogy nem kell megadnia vagy módosítania ezt a tulajdonságot. További információ az [adattípus-hozzárendelésről](#data-type-mapping). | Nem       |
 
 A következő tulajdonságokat támogatja a (z) `translator` mellett `mappings` :
 
 | Tulajdonság            | Leírás                                                  | Kötelező |
 | ------------------- | ------------------------------------------------------------ | -------- |
-| collectionReference | Az adatok hierarchikus forrásból való másolása, például Cosmos DB, MongoDB vagy REST-összekötők esetén alkalmazható.<br>Ha szeretné megismételni és kinyerni a **tömbben** lévő objektumokból származó adatmennyiséget ugyanazzal a mintával, és soronként konvertálja az objektumokat, akkor a tömb JSON-elérési útját kell megadnia. | No       |
+| collectionReference | Az adatok hierarchikus forrásból való másolása, például Cosmos DB, MongoDB vagy REST-összekötők esetén alkalmazható.<br>Ha szeretné megismételni és kinyerni a **tömbben** lévő objektumokból származó adatmennyiséget ugyanazzal a mintával, és soronként konvertálja az objektumokat, akkor a tömb JSON-elérési útját kell megadnia. | Nem       |
 
 #### <a name="tabular-source-to-tabular-sink"></a>Táblázatos forrás – táblázatos fogadó
 
@@ -283,12 +283,12 @@ A másolási tevékenység jelenleg a következő közbenső adattípusokat tám
 
 A következő adattípus-átalakítások támogatottak a forrás és a fogadó közti közbenső típusok között.
 
-| Source\Sink | Logikai | Bájtos tömb | Decimal | Dátum/idő <small>(1)</small> | Lebegőpontos pont <small>(2)</small> | GUID | Egész szám <small>(3)</small> | Sztring | időtartam |
+| Source\Sink | Logikai érték | Bájtos tömb | Tizedesjegy | Dátum/idő <small>(1)</small> | Lebegőpontos pont <small>(2)</small> | GUID | Egész szám <small>(3)</small> | Sztring | időtartam |
 | ----------- | ------- | ---------- | ------- | ---------------------------- | ------------------------------ | ---- | -------------------------- | ------ | -------- |
-| Logikai     | ✓       |            | ✓       |                              | ✓                              |      | ✓                          | ✓      |          |
+| Logikai érték     | ✓       |            | ✓       |                              | ✓                              |      | ✓                          | ✓      |          |
 | Bájtos tömb  |         | ✓          |         |                              |                                |      |                            | ✓      |          |
 | Dátum/idő   |         |            |         | ✓                            |                                |      |                            | ✓      |          |
-| Decimal     | ✓       |            | ✓       |                              | ✓                              |      | ✓                          | ✓      |          |
+| Tizedesjegy     | ✓       |            | ✓       |                              | ✓                              |      | ✓                          | ✓      |          |
 | Lebegőpontos | ✓       |            | ✓       |                              | ✓                              |      | ✓                          | ✓      |          |
 | GUID        |         |            |         |                              |                                | ✓    |                            | ✓      |          |
 | Egész szám     | ✓       |            | ✓       |                              | ✓                              |      | ✓                          | ✓      |          |
@@ -309,17 +309,17 @@ Az adattípusok átalakításának másolási tevékenységében a következő t
 
 | Tulajdonság                         | Leírás                                                  | Kötelező |
 | -------------------------------- | ------------------------------------------------------------ | -------- |
-| typeConversion                   | Engedélyezze az új adattípus-átalakítási élményt. <br>Az alapértelmezett érték a visszafelé való kompatibilitás miatt hamis.<br><br>Az Data Factory authoring felhasználói felületen, a 2020-es év végén létrehozott másolási tevékenységek esetében az adattípusok konverziója alapértelmezés szerint engedélyezve van a legjobb megoldáshoz, és a következő típus-átalakítási beállítások jelennek meg a másolási tevékenység-> leképezés lapon a megfelelő forgatókönyvek esetében. <br>A folyamat programozott létrehozásához explicit módon be kell állítania a `typeConversion` tulajdonságot True értékre, hogy engedélyezze azt.<br>A szolgáltatás kiadása előtt létrehozott meglévő másolási tevékenységek esetében nem fog megjelenni a konvertálási beállítások a Data Factory szerzői felhasználói felületen a visszamenőleges kompatibilitás érdekében. | No       |
-| typeConversionSettings           | Átalakítási beállítások típusú csoport. Alkalmazza, ha a értékre `typeConversion` van állítva `true` . A következő tulajdonságok a csoport alatt találhatók. | No       |
-| *Alatt`typeConversionSettings`* |                                                              |          |
-| allowDataTruncation              | Adatcsonkítás engedélyezése, ha a forrásadatok konvertálása a másolás során eltérő típussal történik, például decimálisról egészre, a DatetimeOffset és a DateTime értékre. <br>Az alapértelmezett érték true (igaz). | No       |
-| treatBooleanAsNumber             | A logikai értékek számként való kezelése, például igaz, mint 1.<br>Az alapértelmezett érték false (hamis). | No       |
-| dateTimeFormat                   | Formázhatja a karakterláncot, ha a dátumok közötti konverzió időzóna-eltolás és karakterláncok nélkül, például: `yyyy-MM-dd HH:mm:ss.fff` .  Részletes információkért tekintse meg az [Egyéni dátum-és időformátum-karakterláncot](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings) . | No       |
-| dateTimeOffsetFormat             | Formázhatja a karakterláncot, ha az időzóna-eltolással és a karakterláncokkal, például: `yyyy-MM-dd HH:mm:ss.fff zzz` .  Részletes információkért tekintse meg az [Egyéni dátum-és időformátum-karakterláncot](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings) . | No       |
-| timeSpanFormat                   | Formázhatja a karakterláncot az időszakok és karakterláncok közötti átalakításkor, például: `dd\.hh\:mm` . Részletes információkért tekintse meg az [Egyéni TimeSpan formázási karakterláncokat](https://docs.microsoft.com/dotnet/standard/base-types/custom-timespan-format-strings) . | No       |
-| kulturális környezet                          | A típusok konvertálásakor használandó kulturális információk (például `en-us` vagy `fr-fr` ). | No       |
+| typeConversion                   | Engedélyezze az új adattípus-átalakítási élményt. <br>Az alapértelmezett érték a visszafelé való kompatibilitás miatt hamis.<br><br>Az Data Factory authoring felhasználói felületen, a 2020-es év végén létrehozott másolási tevékenységek esetében az adattípusok konverziója alapértelmezés szerint engedélyezve van a legjobb megoldáshoz, és a következő típus-átalakítási beállítások jelennek meg a másolási tevékenység-> leképezés lapon a megfelelő forgatókönyvek esetében. <br>A folyamat programozott létrehozásához explicit módon be kell állítania a `typeConversion` tulajdonságot True értékre, hogy engedélyezze azt.<br>A szolgáltatás kiadása előtt létrehozott meglévő másolási tevékenységek esetében nem fog megjelenni a konvertálási beállítások a Data Factory szerzői felhasználói felületen a visszamenőleges kompatibilitás érdekében. | Nem       |
+| typeConversionSettings           | Átalakítási beállítások típusú csoport. Alkalmazza, ha a értékre `typeConversion` van állítva `true` . A következő tulajdonságok a csoport alatt találhatók. | Nem       |
+| *Alatt `typeConversionSettings`* |                                                              |          |
+| allowDataTruncation              | Adatcsonkítás engedélyezése, ha a forrásadatok konvertálása a másolás során eltérő típussal történik, például decimálisról egészre, a DatetimeOffset és a DateTime értékre. <br>Az alapértelmezett érték true (igaz). | Nem       |
+| treatBooleanAsNumber             | A logikai értékek számként való kezelése, például igaz, mint 1.<br>Az alapértelmezett érték false (hamis). | Nem       |
+| dateTimeFormat                   | Formázhatja a karakterláncot, ha a dátumok közötti konverzió időzóna-eltolás és karakterláncok nélkül, például: `yyyy-MM-dd HH:mm:ss.fff` .  Részletes információkért tekintse meg az [Egyéni dátum-és időformátum-karakterláncot](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings) . | Nem       |
+| dateTimeOffsetFormat             | Formázhatja a karakterláncot, ha az időzóna-eltolással és a karakterláncokkal, például: `yyyy-MM-dd HH:mm:ss.fff zzz` .  Részletes információkért tekintse meg az [Egyéni dátum-és időformátum-karakterláncot](https://docs.microsoft.com/dotnet/standard/base-types/custom-date-and-time-format-strings) . | Nem       |
+| timeSpanFormat                   | Formázhatja a karakterláncot az időszakok és karakterláncok közötti átalakításkor, például: `dd\.hh\:mm` . Részletes információkért tekintse meg az [Egyéni TimeSpan formázási karakterláncokat](https://docs.microsoft.com/dotnet/standard/base-types/custom-timespan-format-strings) . | Nem       |
+| kulturális környezet                          | A típusok konvertálásakor használandó kulturális információk (például `en-us` vagy `fr-fr` ). | Nem       |
 
-**Példa:**
+**Példa**
 
 ```json
 {
@@ -454,9 +454,9 @@ Megadhatja a másolási tevékenység-> `translator`  ->  `schemaMapping` a hier
 
 | Tulajdonság            | Leírás                                                  | Kötelező |
 | :------------------ | :----------------------------------------------------------- | :------- |
-| típus                | A másolási tevékenység fordítójának Type tulajdonságát a következőre kell beállítani: **TabularTranslator** | Yes      |
-| schemaMapping       | Kulcs-érték párok gyűjteménye, amely a **forrás oldalról a fogadó oldalra való**leképezési kapcsolatot jelöli.<br/>- **Kulcs:** a forrást jelöli. **Táblázatos forrás**esetén adja meg az oszlop nevét az adatkészlet struktúrájában definiált módon. **hierarchikus forrás**esetén adja meg a JSON-elérésiút-kifejezést az egyes mezők kinyeréséhez és leképezéséhez.<br>- **Érték:** a fogadót jelöli. **Táblázatos**fogadó esetén adja meg az oszlop nevét az adatkészlet struktúrájában definiált módon. **hierarchikus**fogadó esetén adja meg a JSON-elérésiút-kifejezést az egyes mezők kinyeréséhez és leképezéséhez. <br>Hierarchikus adat esetén a gyökér objektum alatti mezők esetében a JSON-útvonal a root $; karakterrel kezdődik. a tulajdonság által választott tömbben lévő mezők esetében `collectionReference` a JSON-útvonal a tömb elemből indul el. | Yes      |
-| collectionReference | Ha szeretné megismételni és kinyerni a **tömbben** lévő objektumokból származó adatmennyiséget ugyanazzal a mintával, és soronként konvertálja az objektumokat, akkor a tömb JSON-elérési útját kell megadnia. Ez a tulajdonság csak akkor támogatott, ha a hierarchikus adatforrás a forrás. | No       |
+| típus                | A másolási tevékenység fordítójának Type tulajdonságát a következőre kell beállítani: **TabularTranslator** | Igen      |
+| schemaMapping       | Kulcs-érték párok gyűjteménye, amely a **forrás oldalról a fogadó oldalra való**leképezési kapcsolatot jelöli.<br/>- **Kulcs:** a forrást jelöli. **Táblázatos forrás**esetén adja meg az oszlop nevét az adatkészlet struktúrájában definiált módon. **hierarchikus forrás**esetén adja meg a JSON-elérésiút-kifejezést az egyes mezők kinyeréséhez és leképezéséhez.<br>- **Érték:** a fogadót jelöli. **Táblázatos**fogadó esetén adja meg az oszlop nevét az adatkészlet struktúrájában definiált módon. **hierarchikus**fogadó esetén adja meg a JSON-elérésiút-kifejezést az egyes mezők kinyeréséhez és leképezéséhez. <br>Hierarchikus adat esetén a gyökér objektum alatti mezők esetében a JSON-útvonal a root $; karakterrel kezdődik. a tulajdonság által választott tömbben lévő mezők esetében `collectionReference` a JSON-útvonal a tömb elemből indul el. | Igen      |
+| collectionReference | Ha szeretné megismételni és kinyerni a **tömbben** lévő objektumokból származó adatmennyiséget ugyanazzal a mintával, és soronként konvertálja az objektumokat, akkor a tömb JSON-elérési útját kell megadnia. Ez a tulajdonság csak akkor támogatott, ha a hierarchikus adatforrás a forrás. | Nem       |
 
 **Példa: másolás a MongoDB-ből az Oracle-be:**
 
@@ -526,4 +526,4 @@ Konfigurálja a séma-leképezési szabályt a következő másolási tevékenys
 ## <a name="next-steps"></a>További lépések
 Lásd a másolási tevékenység egyéb cikkeit:
 
-- [Másolási tevékenység – áttekintés](copy-activity-overview.md)
+- [Másolási tevékenység áttekintése](copy-activity-overview.md)

@@ -11,10 +11,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 4ec7f4242e5046e90fdf0eb8c6c0579f402e4f55
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "76721353"
 ---
 # <a name="team-data-science-process-group-manager-tasks"></a>Csoportos adatelemzési folyamat csoport-kezelő feladatai
@@ -188,7 +188,7 @@ Először másolja vagy *klónozása* a tárházat a helyi gépre.
    
 1. Váltson a létrehozott könyvtárba.
    
-1. A git Bashben futtassa a parancsot.`git clone <clone URL>.`
+1. A git Bashben futtassa a parancsot. `git clone <clone URL>.`
    
    Például az alábbi parancsok egyike klónozott a **GroupUtilities** -tárházat a helyi számítógép *GroupCommon* könyvtárába. 
    

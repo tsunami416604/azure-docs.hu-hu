@@ -4,16 +4,16 @@ description: Elemzi az Azure által kínált két típusú várólista közötti
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: a64000741de68518dd459b105a093ccf4cb6ab7b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85337646"
 ---
 # <a name="storage-queues-and-service-bus-queues---compared-and-contrasted"></a>Tárolási várólisták és Service Bus várólisták – összehasonlítás és kontrasztos
 Ez a cikk a Microsoft Azure jelenleg a következő két típusú várólista közötti különbségeket és hasonlóságokat elemzi: Storage Queues és Service Bus Queues. Ezen információk használatával összehasonlíthatja és megtekintheti a megfelelő technológiákat, és megtudhatja, hogy melyik megoldás felel meg legjobban az igényeinek.
 
-## <a name="introduction"></a>Introduction (Bevezetés)
+## <a name="introduction"></a>Bevezetés
 Az Azure két típusú várólista-mechanizmust támogat: a **tárolási várólistákat** és a **Service Bus várólistákat**.
 
 Az [Azure Storage](https://azure.microsoft.com/services/storage/) -infrastruktúra részét képező **tárolási várólisták**egy egyszerű REST-alapú Get/Put/Peek felületet biztosítanak, amely megbízható, állandó üzenetküldést tesz lehetővé a szolgáltatások között és azok között.
@@ -41,7 +41,7 @@ Megoldás-építészként/fejlesztőként érdemes **megfontolni Service Bus vá
 * Azt szeretné, hogy az alkalmazás párhuzamos, hosszan futó adatfolyamként dolgozza fel az üzeneteket (az üzenetek az üzenetben található [munkamenet](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage.sessionid) -tulajdonsággal vannak társítva). Ebben a modellben a felhasználó alkalmazás minden csomópontja verseng a streamek számára, az üzenetek helyett. Ha egy adatfolyamot egy felhasználó csomóponthoz adnak, a csomópont a tranzakciók használatával megvizsgálhatja az alkalmazás-adatfolyam állapotát.
 * A megoldás tranzakciós viselkedést és atomi kezelést igényel, ha több üzenetet küld vagy fogad egy várólistából.
 * Az alkalmazás kezeli az 64 KB-nál nagyobb méretű üzeneteket, de a 256 KB-os korlátot valószínűleg nem fogja megközelíteni.
-* A szerepkör-alapú hozzáférési modellnek a várólistákhoz való biztosításához, valamint a küldők és a fogadók számára a különböző jogokkal/engedélyekkel kell foglalkoznia. További információért tekintse át a következő cikkeket:
+* A szerepkör-alapú hozzáférési modellnek a várólistákhoz való biztosításához, valamint a küldők és a fogadók számára a különböző jogokkal/engedélyekkel kell foglalkoznia. További információkért tekintse át a következő cikkeket:
     - [Hitelesítés felügyelt identitásokkal](service-bus-managed-service-identity.md)
     - [Hitelesítés egy alkalmazásból](authenticate-application.md)
 * Az üzenetsor mérete nem nő 80 GB-nál nagyobbra.

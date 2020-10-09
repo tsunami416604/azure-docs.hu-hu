@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
 ms.openlocfilehash: 48a9856c58a815eabcc0b105efcd548e66ddd552
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80874211"
 ---
 # <a name="configure-language-understanding-docker-containers"></a>Language Understanding Docker-tárolók konfigurálása 
@@ -26,7 +26,7 @@ A **Language Understanding** (Luis) tároló futásidejű környezete a `docker 
 
 Ez a tároló a következő konfigurációs beállításokat tartalmaz:
 
-|Kötelező|Beállítás|Cél|
+|Kötelező|Beállítás|Rendeltetés|
 |--|--|--|
 |Igen|[ApiKey](#apikey-setting)|A számlázási információk nyomon követésére szolgál.|
 |Nem|[ApplicationInsights](#applicationinsights-setting)|Lehetővé teszi az [Azure Application Insights](https://docs.microsoft.com/azure/application-insights) telemetria támogatásának hozzáadását a tárolóhoz.|
@@ -34,15 +34,15 @@ Ez a tároló a következő konfigurációs beállításokat tartalmaz:
 |Igen|[EULA](#eula-setting)| Azt jelzi, hogy elfogadta a tároló licencét.|
 |Nem|[Fluentd](#fluentd-settings)|Írási napló és opcionálisan metrikus adatok egy Fluent-kiszolgáló számára.|
 |Nem|[Http-proxy](#http-proxy-credentials-settings)|HTTP-proxy konfigurálása kimenő kérések készítéséhez.|
-|Nem|[Naplózás](#logging-settings)|ASP.NET Core naplózási támogatást biztosít a tárolóhoz. |
+|Nem|[Logging](#logging-settings)|ASP.NET Core naplózási támogatást biztosít a tárolóhoz. |
 |Igen|[Tartók](#mount-settings)|Adatok olvasása és írása a gazdagépről a tárolóba és a tárolóból a gazdagépre.|
 
 > [!IMPORTANT]
-> A [`ApiKey`](#apikey-setting), [`Billing`](#billing-setting)a és [`Eula`](#eula-setting) a beállításokat együtt használják, és mindhárom esetben érvényes értékeket kell megadnia. Ellenkező esetben a tároló nem indul el. A tárolók létrehozásához szükséges konfigurációs beállításokkal kapcsolatos további információkért lásd: [számlázás](luis-container-howto.md#billing).
+> A [`ApiKey`](#apikey-setting) , a [`Billing`](#billing-setting) és a [`Eula`](#eula-setting) beállítások együtt használhatók, és mindhárom esetben érvényes értékeket kell megadnia, máskülönben a tároló nem indul el. A tárolók létrehozásához szükséges konfigurációs beállításokkal kapcsolatos további információkért lásd: [számlázás](luis-container-howto.md#billing).
 
 ## <a name="apikey-setting"></a>ApiKey-beállítás
 
-A `ApiKey` beállítás megadja a tároló számlázási adatainak nyomon követéséhez használt Azure-erőforrás kulcsát. Meg kell adnia egy értéket a ApiKey, és az értéknek érvényes kulcsnak kell lennie _Cognitive Services_ a [`Billing`](#billing-setting) konfigurációs beállításhoz megadott Cognitive Services erőforráshoz.
+A `ApiKey` beállítás megadja a tároló számlázási adatainak nyomon követéséhez használt Azure-erőforrás kulcsát. Meg kell adnia egy értéket a ApiKey, és az értéknek érvényes kulcsnak kell lennie a konfigurációs beállításhoz megadott _Cognitive Services_ erőforráshoz [`Billing`](#billing-setting) .
 
 Ez a beállítás a következő helyeken érhető el:
 
@@ -61,10 +61,10 @@ A `Billing` beállítás határozza meg az Azure-beli _Cognitive Services_ erőf
 
 Ez a beállítás a következő helyeken érhető el:
 
-* Azure Portal: **Cognitive Services** áttekintés, címkézett`Endpoint`
+* Azure Portal: **Cognitive Services** áttekintés, címkézett `Endpoint`
 * LUIS Portal: **kulcsok és végponti beállítások** lap a végpont URI részeként.
 
-| Kötelező | Name (Név) | Adattípus | Leírás |
+| Kötelező | Név | Adattípus | Leírás |
 |----------|------|-----------|-------------|
 | Igen      | `Billing` | sztring | Számlázási végpont URI-ja. A számlázási URI beszerzésével kapcsolatos további információkért lásd: a [szükséges paraméterek összegyűjtése](luis-container-howto.md#gathering-required-parameters). További információk és a regionális végpontok teljes listája: [Cognitive Services egyéni altartománynevei nevei](../cognitive-services-custom-subdomains.md). |
 
@@ -94,7 +94,7 @@ A gazdagép csatlakoztatási helyének pontos szintaxisa a gazda operációs ren
 
 A következő táblázat a támogatott beállításokat ismerteti.
 
-|Kötelező| Name (Név) | Adattípus | Leírás |
+|Kötelező| Név | Adattípus | Leírás |
 |-------|------|-----------|-------------|
 |Igen| `Input` | Sztring | A bemeneti csatlakoztatás célja. Az alapértelmezett érték `/input`. Ez a LUIS-csomag fájljainak helye. <br><br>Példa:<br>`--mount type=bind,src=c:\input,target=/input`|
 |Nem| `Output` | Sztring | A kimeneti csatlakoztatás célja. Az alapértelmezett érték `/output`. Ez a naplók helye. Ide tartozik a LUIS-lekérdezési naplók és a tároló-naplók. <br><br>Példa:<br>`--mount type=bind,src=c:\output,target=/output`|
@@ -103,21 +103,21 @@ A következő táblázat a támogatott beállításokat ismerteti.
 
 Az alábbi példák a konfigurációs beállítások segítségével szemléltetik a parancsok írását és használatát `docker run` .  A rendszer futtatása után a tároló továbbra is futni fog, amíg [le nem állítja](luis-container-howto.md#stop-the-container) .
 
-* Ezek a példák a `C:` meghajtón lévő könyvtárat használják, hogy elkerüljék az engedélyek ütközését a Windowson. Ha egy adott könyvtárat kell használnia bemeneti könyvtárként, előfordulhat, hogy meg kell adnia a Docker szolgáltatás engedélyét. 
+* Ezek a példák a meghajtón lévő könyvtárat használják `C:` , hogy elkerüljék az engedélyek ütközését a Windowson. Ha egy adott könyvtárat kell használnia bemeneti könyvtárként, előfordulhat, hogy meg kell adnia a Docker szolgáltatás engedélyét. 
 * Ne módosítsa az argumentumok sorrendjét, hacsak nem ismeri a Docker-tárolókat.
-* Ha más operációs rendszert használ, használja a megfelelő konzolt/terminált, a csatlakoztatások mappájának szintaxisát, valamint a rendszer vonal folytatási karakterét. Ezek a példák egy sor folytatási karakterrel `^`rendelkező Windows-konzolt feltételeznek. Mivel a tároló egy Linux operációs rendszer, a cél csatlakoztatása a Linux-stílusú mappa szintaxisát használja.
+* Ha más operációs rendszert használ, használja a megfelelő konzolt/terminált, a csatlakoztatások mappájának szintaxisát, valamint a rendszer vonal folytatási karakterét. Ezek a példák egy sor folytatási karakterrel rendelkező Windows-konzolt feltételeznek `^` . Mivel a tároló egy Linux operációs rendszer, a cél csatlakoztatása a Linux-stílusú mappa szintaxisát használja.
 
 Cserélje le a {_argument_name_} értéket a saját értékeire:
 
 | Helyőrző | Érték | Formátum vagy példa |
 |-------------|-------|---|
-| **{API_KEY}** | Az `LUIS` erőforrás Endpoint kulcsa az Azure `LUIS` Keys oldalon. | `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx` |
+| **{API_KEY}** | Az erőforrás Endpoint kulcsa az `LUIS` Azure `LUIS` Keys oldalon. | `xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx` |
 | **{ENDPOINT_URI}** | A számlázási végpont értéke elérhető az Azure `LUIS` Áttekintés oldalán.| Lásd az explicit példákhoz [szükséges paraméterek összegyűjtését](luis-container-howto.md#gathering-required-parameters) ismertető témakört. |
 
 [!INCLUDE [subdomains-note](../../../includes/cognitive-services-custom-subdomains-note.md)]
 
 > [!IMPORTANT]
-> A `Eula`tároló `Billing`futtatásához `ApiKey` meg kell adni a, a és a beállításokat. Ellenkező esetben a tároló nem indul el. További információ: [számlázás](luis-container-howto.md#billing).
+> A `Eula` , a `Billing` és a `ApiKey` beállításokat meg kell adni a tároló futtatásához; egyéb esetben a tároló nem indul el. További információ: [számlázás](luis-container-howto.md#billing).
 > A ApiKey értéke a LUIS portál kulcsok és végpontok lapjának **kulcsa** , és az Azure `Cognitive Services` Resource Keys oldalon is elérhető. 
 
 ### <a name="basic-example"></a>Alapszintű példa
@@ -151,7 +151,7 @@ InstrumentationKey={INSTRUMENTATION_KEY}
 
 ### <a name="logging-example"></a>Példa naplózásra 
 
-A következő parancs beállítja a naplózási szintet `Logging:Console:LogLevel`, hogy a naplózási szintet állítsa [`Information`](https://msdn.microsoft.com)be. 
+A következő parancs beállítja a naplózási szintet, `Logging:Console:LogLevel` hogy a naplózási szintet állítsa be [`Information`](https://msdn.microsoft.com) . 
 
 ```console
 docker run --rm -it -p 5000:5000 --memory 6g --cpus 2 ^

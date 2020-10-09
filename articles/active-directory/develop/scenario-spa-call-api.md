@@ -12,10 +12,10 @@ ms.date: 05/06/2019
 ms.author: ryanwi
 ms.custom: aaddev
 ms.openlocfilehash: 5b70b109f43e80fc3ec68f52aef2dba6823033bb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80882131"
 ---
 # <a name="single-page-application-call-a-web-api"></a>Egyoldalas alkalmazás: webes API meghívása
@@ -53,4 +53,4 @@ A MSAL szögletes burkolója kihasználja a HTTP-Interceptor előnyeit, hogy a h
 ## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Áthelyezés éles környezetbe](scenario-spa-production.md)
+> [Átállás éles üzemre](scenario-spa-production.md)

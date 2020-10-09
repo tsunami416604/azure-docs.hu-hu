@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: f1e861bf9c6cc2a485ac9f153a0c932ec2e6fbb2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85318909"
 ---
 # <a name="azure-data-factory---samples"></a>Azure Data Factory – minták
@@ -26,7 +26,7 @@ ms.locfileid: "85318909"
 ## <a name="samples-on-github"></a>Példák a GitHubon
 A [GitHub Azure-DataFactory adattár](https://github.com/azure/azure-datafactory) számos olyan mintát tartalmaz, amelyek segítségével gyorsan felgyorsítható a Azure Data Factory szolgáltatás (vagy) a parancsfájlok módosítása és használata a saját alkalmazásokban. A Samples\JSON mappa a gyakori forgatókönyvek JSON-kódrészleteit tartalmazza.
 
-| Sample | Description |
+| Sample | Leírás |
 |:--- |:--- |
 | [ADF-útmutató](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/ADFWalkthrough) |Ez a példa egy teljes körű útmutatót biztosít a naplófájlok feldolgozásához a Azure Data Factory használatával az adatoknak a naplófájlokban való bekapcsolásához. <br/><br/>Ebben az útmutatóban a Data Factory folyamat adatnaplókat gyűjt, feldolgozza és gazdagítja a naplókból származó adatokat, és átalakítja az adatokat, hogy kiértékelje a közelmúltban elindított marketingkampány hatékonyságát. |
 | [JSON-minták](https://github.com/Azure/Azure-DataFactory/tree/master/SamplesV1/JSON) |Ez a példa JSON-példákat biztosít a gyakori forgatókönyvekhez. |
@@ -46,7 +46,7 @@ A [GitHub Azure-DataFactory adattár](https://github.com/azure/azure-datafactory
 ## <a name="azure-resource-manager-templates"></a>Azure Resource Manager-sablonok
 A Data Factory a GitHubon a következő Azure Resource Manager sablonokat találhatja meg.
 
-| Sablon | Description |
+| Sablon | Leírás |
 | --- | --- |
 | [Másolás az Azure Blob Storageból a Azure SQL Databaseba](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-blob-to-sql-copy) |A sablon üzembe helyezése egy Azure-beli adatelőállítót hoz létre egy olyan folyamattal, amely átmásolja a megadott Azure Blob Storage-ból származó adatok Azure SQL Database |
 | [Másolás a Salesforce-ből az Azure-ba Blob Storage](https://github.com/Azure/azure-quickstart-templates/tree/master/101-data-factory-salesforce-to-blob-copy) |A sablon üzembe helyezése egy Azure-beli adatelőállítót hoz létre egy olyan folyamattal, amely átmásolja a megadott Salesforce-fiókból az Azure Blob Storage-ba. |

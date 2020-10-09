@@ -13,10 +13,10 @@ ms.author: shoatman
 ms.custom: aaddev
 ms.reviewer: shoatman
 ms.openlocfilehash: 89a383aabf3487a0938604bc28ddb06c0541d13e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80881350"
 ---
 # <a name="single-and-multiple-account-public-client-apps"></a>Egy-és több fiók nyilvános ügyfélalkalmazások
@@ -25,7 +25,7 @@ Ez a cikk segítséget nyújt az egy-és többfiókos nyilvános ügyfélprogram
 
 A Azure Active Directory Authentication Library (ADAL) a kiszolgálót modellezi.  A Microsoft Authentication Library (MSAL) Ehelyett az ügyfélalkalmazás modelljét használja.  Az Android-alkalmazások többsége nyilvános ügyfélnek számít. A nyilvános ügyfél olyan alkalmazás, amely nem tudja biztonságosan megőrizni a titkos kulcsot.  
 
-A MSAL az API felületét arra specializálódja, hogy `PublicClientApplication` leegyszerűsítse és tisztázza az alkalmazások fejlesztési élményét, amely egyszerre csak egy fiókot használhat. `PublicClientApplication`a és a alosztálya `SingleAccountPublicClientApplication` `MultipleAccountPublicClientApplication` .  Az alábbi ábrán az osztályok közötti kapcsolat látható.
+A MSAL az API felületét arra specializálódja, hogy `PublicClientApplication` leegyszerűsítse és tisztázza az alkalmazások fejlesztési élményét, amely egyszerre csak egy fiókot használhat. `PublicClientApplication` a és a alosztálya `SingleAccountPublicClientApplication` `MultipleAccountPublicClientApplication` .  Az alábbi ábrán az osztályok közötti kapcsolat látható.
 
 ![SingleAccountPublicClientApplication UML-osztály diagramja](./media/single-multi-account/single-and-multiple-account.png)
 
@@ -35,14 +35,14 @@ A `SingleAccountPublicClientApplication` osztály lehetővé teszi, hogy olyan M
 
 - A MSAL nyomon követi a jelenleg bejelentkezett fiókot.
   - Ha az alkalmazás egy közvetítőt használ (az alapértelmezett Azure Portal az alkalmazás regisztrációja során), és olyan eszközre van telepítve, amelyen a közvetítő található, akkor a MSAL ellenőrzi, hogy a fiók továbbra is elérhető-e az eszközön.
-- `signIn`lehetővé teszi a fiók explicit módon történő beadását, és a kérelmektől függetlenül.
-- `acquireTokenSilent`nincs szükség fiók paraméterre.  Ha megadta a fiókot, és az Ön által megadott fiók nem egyezik meg a MSAL által követett aktuális fiókkal, a `MsalClientException` rendszer kidobja.
-- `acquireToken`nem engedélyezi a felhasználó számára a fiókok váltását. Ha a felhasználó egy másik fiókra próbál váltani, kivétel keletkezik.
-- `getCurrentAccount`egy eredmény objektumot ad vissza, amely a következőket biztosítja:
+- `signIn` lehetővé teszi a fiók explicit módon történő beadását, és a kérelmektől függetlenül.
+- `acquireTokenSilent` nincs szükség fiók paraméterre.  Ha megadta a fiókot, és az Ön által megadott fiók nem egyezik meg a MSAL által követett aktuális fiókkal, a `MsalClientException` rendszer kidobja.
+- `acquireToken` nem engedélyezi a felhasználó számára a fiókok váltását. Ha a felhasználó egy másik fiókra próbál váltani, kivétel keletkezik.
+- `getCurrentAccount` egy eredmény objektumot ad vissza, amely a következőket biztosítja:
   - Logikai érték, amely azt jelzi, hogy a fiók módosult-e. Előfordulhat például, hogy egy fiók az eszközről való eltávolításának eredményeképpen módosul.
   - A korábbi fiók. Ez akkor lehet hasznos, ha a fiókot eltávolítja az eszközről, vagy amikor új fiók van bejelentkezve.
   - A currentAccount.
-- `signOut`eltávolítja az ügyfélhez társított jogkivonatokat az eszközről.  
+- `signOut` eltávolítja az ügyfélhez társított jogkivonatokat az eszközről.  
 
 Ha egy androidos hitelesítési közvetítő, például Microsoft Authenticator vagy Intune Céges portál telepítve van az eszközön, és az alkalmazás a közvetítő használatára van konfigurálva, akkor `signOut` nem távolítja el a fiókot az eszközről.
 

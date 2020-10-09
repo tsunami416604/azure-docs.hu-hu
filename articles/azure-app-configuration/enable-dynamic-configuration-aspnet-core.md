@@ -16,10 +16,10 @@ ms.date: 02/24/2019
 ms.author: lcozzens
 ms.custom: devx-track-csharp, mvc
 ms.openlocfilehash: b0435daee7f5bbd1435d5e69fc32f27c21e5e4a3
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89300289"
 ---
 # <a name="tutorial-use-dynamic-configuration-in-an-aspnet-core-app"></a>Oktatóanyag: dinamikus konfiguráció használata egy ASP.NET Core alkalmazásban
@@ -54,7 +54,7 @@ A *Sentinel-kulcs* egy speciális kulcs, amelyet a rendszer a konfiguráció meg
 
 1. A Azure Portal válassza a **Configuration Explorer > > kulcs-érték létrehozása**lehetőséget.
 1. A **Key (kulcs**) mezőbe írja be az *TestApp: Settings: Sentinel*értéket. Az **érték**mezőben adja meg az 1 értéket. Hagyja üresen a **címke** és a **tartalom típusát** .
-1. Válassza az **Alkalmaz** lehetőséget.
+1. Kattintson az **Alkalmaz** gombra.
 
 > [!NOTE]
 > Ha nem használ Sentinel-kulcsot, manuálisan kell regisztrálnia minden megtekinteni kívánt kulcsot.

@@ -8,10 +8,10 @@ ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: Azure, Kinect, SDK, frissítés letöltése, legújabb, elérhető, telepítés, törzs, nyomon követés
 ms.openlocfilehash: e3f8233d208e2a45c1af9a52a76b6064b15bfe4b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85277584"
 ---
 # <a name="download-azure-kinect-body-tracking-sdk"></a>Az Azure Kinect Body Tracking SDK letöltése
@@ -110,8 +110,8 @@ Ha a parancs sikeres, az SDK készen áll a használatra.
 * [A változás megszakítása] Visszaminősítette az SDK-függőséget a CUDA 10,0-re (a CUDA 10,1-ből). A ONNX Runtime hivatalosan csak a CUDA 10,0-es verzióját támogatja.
 * [A változás megszakítása] A Tensorflow futtatókörnyezet helyett a ONNX futtatókörnyezetre vált. Csökkenti az első keret indításának időpontját és a memóriahasználat használatát. Emellett csökkenti az SDK bináris méretét is.
 * [API-változás] Átnevezve erre `k4abt_tracker_queue_capture()``k4abt_tracker_enqueue_capture()`
-* [API-változás] `k4abt_frame_get_body()`Két különálló függvénybe tört: `k4abt_frame_get_body_skeleton()` és `k4abt_frame_get_body_id()` . Most lekérdezheti a törzs AZONOSÍTÓját anélkül, hogy mindig a teljes csontváz-struktúrát másolja.
-* [API-változás] Hozzáadott `k4abt_frame_get_timestamp_usec()` függvény, amely leegyszerűsíti a felhasználók számára a törzsi keret időbélyegének lekérdezéséhez szükséges lépéseket.
+* [API-változás] `k4abt_frame_get_body()` Két különálló függvénybe tört: `k4abt_frame_get_body_skeleton()` és `k4abt_frame_get_body_id()` . Most lekérdezheti a törzs AZONOSÍTÓját anélkül, hogy mindig a teljes csontváz-struktúrát másolja.
+* [API-változás] Hozzáadott  `k4abt_frame_get_timestamp_usec()` függvény, amely leegyszerűsíti a felhasználók számára a törzsi keret időbélyegének lekérdezéséhez szükséges lépéseket.
 * A Body Tracking algoritmus pontosságának növelése és a megbízhatóság nyomon követése
 
 ## <a name="next-steps"></a>További lépések

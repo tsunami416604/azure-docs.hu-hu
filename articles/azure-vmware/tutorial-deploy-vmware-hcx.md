@@ -4,13 +4,13 @@ description: Ismerje meg, hogyan telepítheti és konfigurálhatja a VMware HCX-
 ms.topic: tutorial
 ms.date: 10/02/2020
 ms.openlocfilehash: 69832d1537f0f1be95d3283f543ef6e54187b58d
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91583347"
 ---
-# <a name="deploy-and-configure-vmware-hcx"></a>VMware HCX üzembe helyezése és konfigurálása
+# <a name="deploy-and-configure-vmware-hcx"></a>A VMware HCX üzembe helyezése és konfigurálása
 
 Ebből a cikkből megtudhatja, hogyan helyezhet üzembe és konfigurálhat VMware-HCX az Azure VMWare-megoldás privát felhője számára. A VMware HCX lehetővé teszi a VMware-alapú számítási feladatok áttelepítését az Azure VMware-megoldásba és más csatlakoztatott webhelyekre különböző áttelepítési típusok használatával.
 

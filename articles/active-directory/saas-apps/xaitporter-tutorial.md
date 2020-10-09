@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 05/03/2019
 ms.author: jeedes
 ms.openlocfilehash: 80900f8a63d29e8c36ec190945efc3c44f713a3f
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89296855"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-xaitporter"></a>Oktatóanyag: Azure Active Directory integráció a XaitPorter
@@ -73,7 +73,7 @@ Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a XaitP
 Az Azure AD egyszeri bejelentkezés XaitPorter való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
 
 1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. **[XaitPorter egyszeri bejelentkezés konfigurálása](#configure-xaitporter-single-sign-on)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+2. **[XaitPorter egyszeri bejelentkezés konfigurálása](#configure-xaitporter-single-sign-on)** – az egyes Sign-On beállítások konfigurálása az alkalmazás oldalán.
 3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
 4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
 5. **[Hozzon létre XaitPorter-teszt felhasználót](#create-xaitporter-test-user)** – hogy a XaitPorter Britta, a felhasználó Azure ad-képviseletéhez kapcsolódó partnerrel rendelkezzen.
@@ -93,7 +93,7 @@ Az Azure AD egyszeri bejelentkezés XaitPorter való konfigurálásához hajtsa 
 
     ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
+3. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
@@ -108,13 +108,13 @@ Az Azure AD egyszeri bejelentkezés XaitPorter való konfigurálásához hajtsa 
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel és azonosítóval. Az értékek lekéréséhez forduljon a XaitPorter ügyfélszolgálati [csapatához](https://www.xait.com/support/) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-5. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a Másolás gombra az **alkalmazás-összevonási metaadatok URL-címének** másolásához és a számítógépre mentéséhez.
+5. Az **egyszeres Sign-On beállítása az SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a Másolás gombra az **alkalmazás-összevonási metaadatok URL-címének** másolásához és a számítógépre mentéséhez.
 
     ![A tanúsítvány letöltési hivatkozása](common/copy-metadataurl.png)
 
 6. Adja meg az **IP-címet** vagy az **alkalmazás-összevonási metaadatok URL** -címét a [SmartRecruiters támogatási csapatának](https://www.smartrecruiters.com/about-us/contact-us/), hogy a XaitPorter biztosítani tudja, hogy az IP-cím elérhető legyen a XaitPorter-példányon a jóváhagyott lista konfigurálásával. 
 
-### <a name="configure-xaitporter-single-sign-on"></a>XaitPorter egyszeri bejelentkezés konfigurálása
+### <a name="configure-xaitporter-single-sign-on"></a>XaitPorter egyetlen Sign-On konfigurálása
 
 1. A XaitPorter belüli konfiguráció automatizálásához telepítenie kell az **alkalmazások biztonságos bejelentkezési böngésző bővítményét** **a bővítmény telepítése**lehetőségre kattintva.
 
@@ -128,17 +128,17 @@ Az Azure AD egyszeri bejelentkezés XaitPorter való konfigurálásához hajtsa 
 
 4. Kattintson a **rendszergazda**elemre.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/xaitporter-tutorial/user1.png)
+    ![Egyetlen Sign-On konfigurálása](./media/xaitporter-tutorial/user1.png)
 
 5. Válassza az **egyszeri bejelentkezés kezelése** lehetőséget a **Rendszerbeállítás** legördülő listából.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/xaitporter-tutorial/user2.png)
+    ![Egyetlen Sign-On konfigurálása](./media/xaitporter-tutorial/user2.png)
 
 6. Az **egyszeri bejelentkezés kezelése** szakaszban hajtsa végre a következő lépéseket:
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/xaitporter-tutorial/user3.png)
+    ![Egyetlen Sign-On konfigurálása](./media/xaitporter-tutorial/user3.png)
 
-    a. Jelölje be **az egyszeri bejelentkezéses hitelesítés engedélyezése**jelölőnégyzetet.
+    a. Jelölje be az **egyszeri Sign-On hitelesítés engedélyezése**jelölőnégyzetet.
 
     b. Az **Identity Provider beállításai** szövegmezőbe illessze be az **alkalmazás-összevonási metaadatok URL-címét** , amelyet a Azure Portal másolt, majd kattintson a **beolvasás**elemre.
 
@@ -168,7 +168,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** lehetőségre.
+    d. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

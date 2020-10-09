@@ -11,10 +11,10 @@ ms.workload: infrastructure-services
 ms.date: 7/16/2020
 ms.author: jonbeck
 ms.openlocfilehash: 3f35d39634470ccacffa4d35c272a82725e9001c
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89087904"
 ---
 # <a name="tutorial-creating-a-new-child-dns-zone"></a>Oktatóanyag: új gyermek DNS-zóna létrehozása
@@ -40,7 +40,7 @@ Ebben az oktatóanyagban a contoso.com fogja használni a szülőtartomány neve
 ## <a name="sign-in-to-azure-portal"></a>Bejelentkezés az Azure portálra
 
 Jelentkezzen be az [Azure Portalra](https://portal.azure.com/) az Azure-fiókjával.
-Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy ingyenes fiókot a feladatok megkezdése előtt.
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy ingyenes fiókot, mielőtt hozzákezd.
 
 Kétféle módon hozhatja létre a gyermek DNS-zónáját.
 1.  A "DNS-zóna létrehozása" portálon.
@@ -74,14 +74,14 @@ Létrehozhat egy új alárendelt DNS-zónát is, és delegálhatja azt a szülő
 1.  A Azure Portal az **összes erőforrás**területen nyissa meg a *contoso.com* DNS-zónát a **MyResourceGroup** erőforráscsoporthoz. Megadhatja a *contoso.com* a **szűrés név szerint** mezőben, hogy könnyebben megtalálja.
 1.  A DNS-zónák áttekintése lapon válassza a **+ gyermek zóna** gombot.
 
-      :::image type="content" source="./media/dns-delegate-domain-azure-dns/create-child-zone-inline.png" alt-text="Képernyőfelvétel – alárendelt zóna gombja" border="true" lightbox="./media/dns-delegate-domain-azure-dns/create-child-zone-expanded.png":::
+      :::image type="content" source="./media/dns-delegate-domain-azure-dns/create-child-zone-inline.png" alt-text="A DNS-zóna létrehozása lap képernyőképe." border="true" lightbox="./media/dns-delegate-domain-azure-dns/create-child-zone-expanded.png":::
 
 1.  Ekkor megnyílik a DNS-zóna létrehozása lap. A gyermek zóna beállítás már be van jelölve, és a szülő zóna előfizetése és a fölérendelt zóna már fel van töltve ezen a lapon.
 1.  Adja meg a nevet *gyermekként* ebben az oktatóanyagban. Figyelje meg, hogy a szülő DNS-zóna neve contoso.com automatikusan előtagként lesz hozzáadva a névben.
 1.  Válassza a **Next (tovább** ) gombot, majd a **következőt: felülvizsgálat + létrehozás**.
 1.  A **felülvizsgálat + létrehozás** lapon tekintse át az összegzést, javítsa ki az érvényesítési hibákat, majd válassza a **Létrehozás**lehetőséget.
 
-    :::image type="content" source="./media/dns-delegate-domain-azure-dns/create-dns-zone-child-inline.png" alt-text="Képernyőkép a kijelölt gyermek zónáról" border="true"  lightbox="./media/dns-delegate-domain-azure-dns/create-dns-zone-child-expanded.png":::
+    :::image type="content" source="./media/dns-delegate-domain-azure-dns/create-dns-zone-child-inline.png" alt-text="A DNS-zóna létrehozása lap képernyőképe." border="true"  lightbox="./media/dns-delegate-domain-azure-dns/create-dns-zone-child-expanded.png":::
 ## <a name="verify-child-dns-zone"></a>Gyermek DNS-zóna ellenőrzése
 Most, hogy létrehozta a *subdomain.contoso.com* új alárendelt DNS-zónáját. Annak ellenőrzéséhez, hogy a delegálás megfelelően történt-e, ellenőrizze, hogy a alárendelt zónához tartozó névkiszolgáló-(NS-) rekordok szerepelnek-e a szülő zónában az alább leírtak szerint.  
 
@@ -90,7 +90,7 @@ Most, hogy létrehozta a *subdomain.contoso.com* új alárendelt DNS-zónáját.
 1.  A Azure Portal az **összes erőforrás**területen nyissa meg a *subdomain.contoso.com* DNS-zónát a **MyResourceGroup** erőforráscsoporthoz. Megadhatja a *subdomain.contoso.com* a **szűrés név szerint** mezőben, hogy könnyebben megtalálja.
 1.  Kérje le a névszervereket a DNS-zóna áttekintő oldaláról. Ebben a példában a contoso.com a *ns1-08.Azure-DNS.com, a ns2-08.Azure-DNS.net, a ns3-08.Azure-DNS.org*és a *ns4-08.Azure-DNS.info*névvel rendelkező kiszolgálók vannak hozzárendelve:
 
-      :::image type="content" source="./media/dns-delegate-domain-azure-dns/create-child-zone-ns-inline.png" alt-text="A gyermek zóna névszerverek képernyőképe" border="true" lightbox="./media/dns-delegate-domain-azure-dns/create-child-zone-ns-expanded.png":::
+      :::image type="content" source="./media/dns-delegate-domain-azure-dns/create-child-zone-ns-inline.png" alt-text="A DNS-zóna létrehozása lap képernyőképe." border="true" lightbox="./media/dns-delegate-domain-azure-dns/create-child-zone-ns-expanded.png":::
 **Ellenőrizze az NS-rekordot a szülő DNS-zónában:**
 
 Most ebben a lépésben a szülő DNS-zónát *contoso.com* , és megvizsgáljuk, hogy létrejött-e az NS Record set bejegyzése a gyermek zónákhoz tartozó névszerverek számára.
@@ -99,13 +99,13 @@ Most ebben a lépésben a szülő DNS-zónát *contoso.com* , és megvizsgáljuk
 1.  A *contoso.com* DNS-zónák áttekintése lapon keresse meg a rekordhalmazokat.
 1.  Az NS és a name altartomány típusú rekordtípusok már a szülő DNS-zónában lettek létrehozva. Keresse meg a rekord értékeit a fenti lépésben a gyermek DNS-zónából beolvasott névszerverek listájához hasonló módon.
 
-     :::image type="content" source="./media/dns-delegate-domain-azure-dns/create-child-zone-ns-validate-inline.png" alt-text="Képernyőkép a gyermek-zónához tartozó névszerverek ellenőrzéséről" border="true" lightbox="./media/dns-delegate-domain-azure-dns/create-child-zone-ns-validate-expanded.png":::
+     :::image type="content" source="./media/dns-delegate-domain-azure-dns/create-child-zone-ns-validate-inline.png" alt-text="A DNS-zóna létrehozása lap képernyőképe." border="true" lightbox="./media/dns-delegate-domain-azure-dns/create-child-zone-ns-validate-expanded.png":::
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 Ha már nincs szüksége az oktatóanyagban létrehozott erőforrásokra, távolítsa el őket a **MyResourceGroup** -erőforráscsoport törlésével. Nyissa meg a **MyResourceGroup** erőforráscsoportot, majd válassza az **erőforráscsoport törlése**elemet.
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
-> [Az Azure DNS Private Zones forgatókönyvei](private-dns-scenarios.md)
+> [Azure DNS Private Zones forgatókönyvek](private-dns-scenarios.md)

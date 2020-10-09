@@ -8,17 +8,17 @@ ms.topic: conceptual
 ms.date: 11/13/2019
 ms.author: chenyl
 ms.openlocfilehash: a76c9aaabf984723e2b60a7cd42425c9b29c916a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "76710829"
 ---
 # <a name="how-to-send-events-from-azure-signalr-service-to-event-grid"></a>Események küldése az Azure SignalR Service-ből az Event Gridbe
 
 A Azure Event Grid egy teljes körűen felügyelt esemény-útválasztási szolgáltatás, amely a pub-sub modell használatával egységes esemény-felhasználást biztosít. Ebben az útmutatóban az Azure CLI használatával hozzon létre egy Azure Signaler szolgáltatást, fizessen elő a kapcsolódási eseményekre, majd helyezzen üzembe egy minta webalkalmazást az események fogadásához. Végezetül kapcsolódhat és leválaszthat, és megtekintheti az esemény hasznos adatait a minta alkalmazásban.
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot][azure-account].
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot][azure-account], mielőtt hozzákezd.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 

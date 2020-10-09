@@ -12,10 +12,10 @@ ms.date: 08/20/2019
 ms.author: negoe
 ms.custom: aaddev
 ms.openlocfilehash: eeba01a609a1a21ed564c0b9cb78a28a4ad5c95a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80882318"
 ---
 # <a name="single-page-application-acquire-a-token-to-call-an-api"></a>Egyoldalas alkalmazás: token beszerzése egy API meghívásához
@@ -24,8 +24,8 @@ A MSAL.js az API-k jogkivonatok beszerzésének mintája, ha először egy csend
 
 Az Azure AD-ba érkező csendes jogkivonat-kérések sikertelenek lehetnek olyan okokból, mint a lejárt Azure AD-munkamenet vagy a jelszó módosítása. Ebben az esetben meghívhatja az egyik interaktív metódust (amely felszólítja a felhasználót) a tokenek beszerzésére:
 
-* [Előugró ablak](#acquire-a-token-with-a-pop-up-window), a használatával`acquireTokenPopup`
-* [Átirányítás](#acquire-a-token-with-a-redirect)a használatával`acquireTokenRedirect`
+* [Előugró ablak](#acquire-a-token-with-a-pop-up-window), a használatával `acquireTokenPopup`
+* [Átirányítás](#acquire-a-token-with-a-redirect)a használatával `acquireTokenRedirect`
 
 ## <a name="choose-between-a-pop-up-or-redirect-experience"></a>Válasszon egy előugró vagy átirányítási élmény közül
 
@@ -70,7 +70,7 @@ userAgentApplication.acquireTokenSilent(accessTokenRequest).then(function(access
 
 A MSAL szögletes burkolója biztosítja a HTTP Interceptor-t, amely a hozzáférési jogkivonatokat csendes üzemmódban automatikusan beszerzi, és csatolja őket a HTTP-kérésekhez API-khoz.
 
-A konfigurációs beállításban megadhatja az API-k hatóköreit `protectedResourceMap` . `MsalInterceptor`a a jogkivonatok automatikus beszerzése után fogja kérni ezeket a hatóköröket.
+A konfigurációs beállításban megadhatja az API-k hatóköreit `protectedResourceMap` . `MsalInterceptor` a a jogkivonatok automatikus beszerzése után fogja kérni ezeket a hatóköröket.
 
 ```javascript
 // app.module.ts

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 11/05/2019
 ms.author: jhakulin
 ms.openlocfilehash: d35c02386b7bcb18781dcbd8c209da43d590868c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "76169525"
 ---
 # <a name="support-and-help-options"></a>Támogatási és súgólehetőségek
@@ -101,7 +101,7 @@ Az SDK melyik verzióját használja.
 
 Stack Overflow a fejlesztéssel kapcsolatos kérdések előnyben részesített csatornája. A Közösség tagjai és a Microsoft csapattagok közvetlenül részt vesznek a problémák megoldásában.
 
-Ha nem talál választ a problémára a keresésen keresztül, küldjön új kérdést stack overflow a címkék [ \[Microsoft-kognitív\]\[\]beszéd](https://stackoverflow.com/questions/tagged/microsoft-cognitive+speech)használatával.
+Ha nem talál választ a problémára a keresésen keresztül, küldjön új kérdést Stack Overflow a címkék [ \[ Microsoft-kognitív \] \[ beszéd \] ](https://stackoverflow.com/questions/tagged/microsoft-cognitive+speech)használatával.
 
 > [!TIP]
 > A Stack Overflow következő bejegyzései a kérdések és a forráskód hozzáadására vonatkozó tippeket tartalmaznak. Az irányelvek követésével növelheti az esélyeket, hogy a Közösség tagjai gyorsan felmérjék és reagálnak a kérdéseire:  

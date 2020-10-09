@@ -10,10 +10,10 @@ ms.topic: how-to
 ms.date: 05/23/2019
 ms.reviewer: sngun
 ms.openlocfilehash: 50a9d5e3d3bbb608160ee160c5f1aede8f70e530
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85262667"
 ---
 # <a name="secure-azure-cosmos-keys-using-azure-key-vault"></a>Azure Cosmos-kulcsok védelme az Azure Key Vaulttal 
@@ -70,11 +70,11 @@ A következő lépések szükségesek a Key Vault Azure Cosmos DB elérési kulc
 
 5. Az alkalmazás telepítése után. A Azure Portal navigáljon az üzembe helyezett webalkalmazáshoz, és kapcsolja be az alkalmazás **felügyelt szolgáltatás identitását** .  
 
-   :::image type="content" source="./media/access-secrets-from-keyvault/turn-on-managed-service-identity.png" alt-text="Felügyelt szolgáltatás identitása":::
+   :::image type="content" source="./media/access-secrets-from-keyvault/turn-on-managed-service-identity.png" alt-text="Titkos kulcs létrehozása":::
 
 Ha most futtatja az alkalmazást, a következő hibaüzenet jelenik meg, mivel nem kapott engedélyt az alkalmazásra Key Vault.
 
-:::image type="content" source="./media/access-secrets-from-keyvault/app-deployed-without-access.png" alt-text="Az alkalmazás hozzáférés nélkül lett üzembe helyezve":::
+:::image type="content" source="./media/access-secrets-from-keyvault/app-deployed-without-access.png" alt-text="Titkos kulcs létrehozása":::
 
 ## <a name="register-the-application--grant-permissions-to-read-the-key-vault"></a>Regisztrálja az alkalmazást & engedélyt ad a Key Vault olvasásához
 
@@ -84,11 +84,11 @@ Ebben a szakaszban regisztrálnia kell az alkalmazást Azure Active Directory, �
 
 2. Nyissa meg a **hozzáférési házirendeket**, válassza az **+ új** keresés a telepített webalkalmazásban lehetőséget, válassza az engedélyek lehetőséget, majd kattintson **az OK gombra**.  
 
-   :::image type="content" source="./media/access-secrets-from-keyvault/add-access-policy.png" alt-text="Hozzáférési szabályzat hozzáadása":::
+   :::image type="content" source="./media/access-secrets-from-keyvault/add-access-policy.png" alt-text="Titkos kulcs létrehozása":::
 
 Most, ha futtatja az alkalmazást, elolvashatja a titkos kulcsot Key Vaultról.
 
-:::image type="content" source="./media/access-secrets-from-keyvault/app-deployed-with-access.png" alt-text="Titkos kulccsal üzembe helyezett alkalmazás":::
+:::image type="content" source="./media/access-secrets-from-keyvault/app-deployed-with-access.png" alt-text="Titkos kulcs létrehozása":::
  
 Hasonlóképpen hozzáadhat egy felhasználót is a kulcstartó eléréséhez. A **hozzáférési szabályzatok** kiválasztásával, majd az alkalmazás Visual studióból való futtatásához szükséges összes engedély megadásával saját magának kell felvennie a Key Vault. Ha az alkalmazás az asztalról fut, az identitást veszi igénybe.
 

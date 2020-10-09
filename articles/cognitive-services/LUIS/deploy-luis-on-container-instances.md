@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/07/2020
 ms.author: aahi
 ms.openlocfilehash: 08af17106846a0f5f7a0ccc2b01da1b2e15c1143
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80879206"
 ---
 # <a name="deploy-the-language-understanding-luis-container-to-azure-container-instances"></a>A Language Understanding (LUIS) tároló üzembe helyezése az Azure Container instances szolgáltatásban
@@ -29,11 +29,11 @@ Megtudhatja, hogyan helyezheti üzembe a Cognitive Services [Luis](luis-containe
 
 ## <a name="create-an-azure-file-share"></a>Azure-fájlmegosztás létrehozása
 
-A LUIS-tárolóhoz `.gz` szükség van egy, futásidőben lekért modellel. A tárolónak képesnek kell lennie arra, hogy elérje a modell fájlját a Container példányból származó mennyiségi csatlakoztatáson keresztül. Az Azure-fájlmegosztás létrehozásával kapcsolatos információkért lásd: [fájlmegosztás létrehozása](../../storage/files/storage-how-to-create-file-share.md). Jegyezze fel az Azure Storage-fiók nevét, kulcsát és a fájlmegosztás nevét, mert később szüksége lesz rájuk.
+A LUIS-tárolóhoz szükség van egy, `.gz` futásidőben lekért modellel. A tárolónak képesnek kell lennie arra, hogy elérje a modell fájlját a Container példányból származó mennyiségi csatlakoztatáson keresztül. Az Azure-fájlmegosztás létrehozásával kapcsolatos információkért lásd: [fájlmegosztás létrehozása](../../storage/files/storage-how-to-create-file-share.md). Jegyezze fel az Azure Storage-fiók nevét, kulcsát és a fájlmegosztás nevét, mert később szüksége lesz rájuk.
 
 ### <a name="export-and-upload-packaged-luis-app"></a>Csomagolt LUIS-alkalmazás exportálása és feltöltése
 
-A LUIS-modell (csomagolt alkalmazás) Azure-fájlmegosztásba való feltöltéséhez <a href="luis-container-howto.md#export-packaged-app-from-luis" target="_blank" rel="noopener">először <span class="docon docon-navigate-external x-hidden-focus"> </span>exportálnia kell azt a Luis-portálról </a>. A Azure Portal navigáljon a Storage-fiók erőforrás **Áttekintés** lapjára, és válassza a **fájlmegosztás**lehetőséget. Válassza ki a közelmúltban létrehozott fájlmegosztás nevét, majd kattintson a **feltöltés** gombra.
+A LUIS-modell (csomagolt alkalmazás) Azure-fájlmegosztásba való feltöltéséhez <a href="luis-container-howto.md#export-packaged-app-from-luis" target="_blank" rel="noopener">először <span class="docon docon-navigate-external x-hidden-focus"></span> exportálnia kell azt a Luis-portálról </a>. A Azure Portal navigáljon a Storage-fiók erőforrás **Áttekintés** lapjára, és válassza a **fájlmegosztás**lehetőséget. Válassza ki a közelmúltban létrehozott fájlmegosztás nevét, majd kattintson a **feltöltés** gombra.
 
 > [!div class="mx-imgBorder"]
 > ![Feltöltés a fájlmegosztásba](media/luis-how-to-deploy-to-aci/upload-file-share.png)

@@ -8,10 +8,10 @@ ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: Kinect, Azure, szenzor, SDK, részletes kamera, TOF, alapelvek, teljesítmény, érvénytelenítés
 ms.openlocfilehash: 4bb1c3b79862b918870cff786042d9b4c66270d1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85277262"
 ---
 # <a name="azure-kinect-dk-coordinate-systems"></a>Azure Kinect DK koordináta-rendszerek
@@ -48,6 +48,6 @@ A giroszkóp forrása megegyezik a `[0,0,0]` mélységi kamera forrásával. A g
 
 ![IMU koordináta-rendszere](./media/concepts/concepts-coordinate-systems/coordinate-systems-gyroscope.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [További tudnivalók az Azure Kinect Sensor SDK-ról](about-sensor-sdk.md)

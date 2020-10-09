@@ -14,10 +14,10 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 6c8c93c8721527d506847e394a02fc4eb5a98c47
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85248360"
 ---
 # <a name="tutorial-copy-data-from-blob-storage-to-sql-database-using-data-factory"></a>Oktatóanyag: adatok másolása Blob Storageról SQL Databasera a Data Factory használatával
@@ -85,7 +85,7 @@ Győződjön **meg** arról, hogy az **Azure-szolgáltatások hozzáférésének
 ## <a name="prepare-blob-storage-and-sql-database"></a>Blob Storage és SQL Database előkészítése
 Most készítse elő az Azure Blob Storage-t, és Azure SQL Database az oktatóanyaghoz az alábbi lépések végrehajtásával:  
 
-1. Indítsa el a Jegyzettömböt. Másolja a következő szöveget, és mentse **emp.txtként** a merevlemez **C:\ADFGetStarted** mappájába.
+1. Indítsa el a Jegyzettömböt. Másolja a következő szöveget, és mentse **emp.txtként ** a merevlemez **C:\ADFGetStarted** mappájába.
 
     ```
     John, Doe
@@ -111,7 +111,7 @@ Most készítse elő az Azure Blob Storage-t, és Azure SQL Database az oktatóa
 
     Ha az ügyfél nem fér hozzá a logikai SQL-kiszolgálóhoz, úgy kell beállítania a tűzfalat, hogy engedélyezze a hozzáférést a gépről (IP-cím). A kiszolgáló tűzfalának konfigurálásához szükséges lépéseket [ebben a cikkben](../../sql-database/sql-database-configure-firewall-settings.md) találja.
 
-## <a name="create-a-data-factory"></a>Data factory létrehozása
+## <a name="create-a-data-factory"></a>Adat-előállító létrehozása
 Végrehajtotta az előfeltételeket. A következő módszerek egyikével hozhat létre egy adatelőállítót: Az oktatóanyag elvégzéséhez kattintson a felül lévő legördülő lista egyik lehetőségére, vagy az alábbi hivatkozásokra.     
 
 * [Másolás varázsló](data-factory-copy-data-wizard-tutorial.md)

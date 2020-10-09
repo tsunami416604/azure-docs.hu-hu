@@ -10,10 +10,10 @@ ms.service: genomics
 ms.topic: troubleshooting
 ms.date: 12/07/2017
 ms.openlocfilehash: e8806bc4f761214e6740a22093b7e18030fdf881
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "76986036"
 ---
 # <a name="microsoft-genomics-common-questions"></a>Microsoft Genomics: gyakori kérdések
@@ -25,7 +25,7 @@ Ez a cikk a Microsoft Genomicshöz kapcsolódó leggyakoribb lekérdezéseket so
 A Microsoft Genomics szolgáltatás config.txt fájljában válassza ki a process_name `gatk4` . Vegye figyelembe, hogy a számlázás a szokásos számlázási díjszabás szerint történik.
 
 ## <a name="how-do-i-enable-output-compression"></a>Hogyan engedélyezi a kimeneti tömörítést?
-A kimeneti vcf vagy gvcf nem kötelező argumentumot használva tömörítheti a kimeneti tömörítést. Ez egyenértékű a (z `-bgzip` `-tabix` ) (vcf vagy gvcf) kimenettel folytatott futtatással, a `.gz` (bgzip output) és a `.tbi` (tabix output) fájlok létrehozásához. `bgzip`tömöríti a vcf vagy a gvcf fájlt, és `tabix` létrehoz egy indexet a tömörített fájlhoz. Az argumentum egy logikai érték, amely alapértelmezés szerint a `false` vcf kimenethez van beállítva, és `true` alapértelmezés szerint a gcvf kimenete. A parancssorban való használathoz adja meg `-bz` vagy `--bgzip-output` a `true` (z) (bgzip és tabix futtatása) vagy `false` . Ha ezt az argumentumot a config.txt fájlban szeretné használni, adja hozzá `bgzip_output: true` vagy a `bgzip_output: false` fájlt a fájlhoz.
+A kimeneti vcf vagy gvcf nem kötelező argumentumot használva tömörítheti a kimeneti tömörítést. Ez egyenértékű a (z `-bgzip` `-tabix` ) (vcf vagy gvcf) kimenettel folytatott futtatással, a `.gz` (bgzip output) és a `.tbi` (tabix output) fájlok létrehozásához. `bgzip` tömöríti a vcf vagy a gvcf fájlt, és `tabix` létrehoz egy indexet a tömörített fájlhoz. Az argumentum egy logikai érték, amely alapértelmezés szerint a `false` vcf kimenethez van beállítva, és `true` alapértelmezés szerint a gcvf kimenete. A parancssorban való használathoz adja meg `-bz` vagy `--bgzip-output` a `true` (z) (bgzip és tabix futtatása) vagy `false` . Ha ezt az argumentumot a config.txt fájlban szeretné használni, adja hozzá `bgzip_output: true` vagy a `bgzip_output: false` fájlt a fájlhoz.
 
 ## <a name="what-is-the-sla-for-microsoft-genomics"></a>Mi a Microsoft Genomics SLA-ja?
 Garantáljuk, hogy az idő Microsoft Genomics szolgáltatásának 99,9%-a elérhetővé válik a munkafolyamat API-kéréseinek fogadásához. További információ: [SLA](https://azure.microsoft.com/support/legal/sla/genomics/v1_0/).
@@ -63,7 +63,7 @@ A Storage-fiók kulcsa rövid távú hozzáférési jogkivonatok létrehozásár
 
 A következő hivatkozások támogatottak:
 
- |Hivatkozás              | Érték`-pa/--process-args` |
+ |Referencia              | Érték `-pa/--process-args` |
  |:-------------         |:-------------                 |
  |b37                    | `R=b37m1`                     |
  |hg38                   | `R=hg38m1`                    |      
