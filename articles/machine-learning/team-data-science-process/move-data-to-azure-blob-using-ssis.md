@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: ad87272749011c81c1040825da3f3c53858a55bd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85322869"
 ---
 # <a name="move-data-to-or-from-azure-blob-storage-using-ssis-connectors"></a>Adatok áthelyezése az Azure Blob Storageba vagy az SSIS-összekötők használatával
@@ -64,7 +64,7 @@ Ha a helyszíni rendszerről az Azure Blob Storage-ba helyezi át az adatok áth
 
 A tevékenység által használt paraméterek a következők:
 
-| Mező | Description |
+| Mező | Leírás |
 | --- | --- |
 | **AzureStorageConnection** |Megad egy meglévő Azure Storage-Csatlakozáskezelőt, vagy létrehoz egy újat, amely egy olyan Azure Storage-fiókra hivatkozik, amely a blob-fájlok tárolási helyét mutat. |
 | **BlobContainer** |Annak a blob-tárolónak a nevét adja meg, amely blobként tárolja a feltöltött fájlokat. |
@@ -81,7 +81,7 @@ A tevékenység által használt paraméterek a következők:
 ## <a name="download-data-from-azure-blob-storage"></a>Adatok letöltése az Azure Blob Storage-ból
 Az Azure Blob Storage-ból a helyszíni SSIS-be történő adatletöltéshez használja az [Azure Blob letöltési feladatának](https://msdn.microsoft.com/library/mt146779.aspx)egy példányát.
 
-## <a name="more-advanced-ssis-azure-scenarios"></a>Fejlettebb SSIS – Azure-forgatókönyvek
+## <a name="more-advanced-ssis-azure-scenarios"></a>Fejlettebb SSIS-Azure forgatókönyvek
 A SSIS szolgáltatás csomagja lehetővé teszi, hogy a csomagolási feladatok együttesen kezeljék az összetettebb folyamatokat. A blob-adatokat például közvetlenül egy HDInsight-fürtbe lehet etetni, amelynek kimenetét vissza lehet tölteni egy blobba, majd a helyszíni tárolóba. A SSIS további SSIS-összekötők használatával futtathat kaptár-és Pig-feladatokat egy HDInsight-fürtön:
 
 * Ha SSIS-alapú Azure HDInsight-fürtön szeretné futtatni a kaptár-parancsfájlt, használja az [Azure HDInsight kaptár feladatot](https://msdn.microsoft.com/library/mt146771.aspx).

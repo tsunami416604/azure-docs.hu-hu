@@ -8,10 +8,10 @@ ms.date: 03/23/2020
 author: timsander1
 ms.author: tisande
 ms.openlocfilehash: 657f3cf204411bd51541437f05ff13a3f9b929c0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85263041"
 ---
 # <a name="use-robo-3t-with-azure-cosmos-dbs-api-for-mongodb"></a>Robo 3T használata a MongoDB-hez készült Azure Cosmos DB API-hoz
@@ -37,14 +37,14 @@ Az alábbi lépések végrehajtásával adhatja hozzá Cosmos-fiókját a Robo 3
 
 4. A **kapcsolatbeállítások** ablakban válasszon egy nevet. Ezután keresse meg a **gazdagépet** és a **portot** az 1. lépésben megadott elérhetőségi adatokból, és adja meg őket a **címe** és a **port**mezőbe.
 
-    :::image type="content" source="./media/mongodb-robomongo/manageconnections.png" alt-text="Képernyőkép a Robomongo kapcsolatok kezeléséről":::
+    :::image type="content" source="./media/mongodb-robomongo/manageconnections.png" alt-text="Képernyőfelvétel a kapcsolatok sztring panelről":::
 5. A **hitelesítés** lapon kattintson a **hitelesítés elvégzése**lehetőségre. Ezután adja meg az adatbázisát (az alapértelmezett *rendszergazda*), a **felhasználónevet** és a **jelszót**.
 Az 1. lépésben a **Felhasználónév** és a **jelszó** is megtalálható a kapcsolatok adatai között.
 
-    :::image type="content" source="./media/mongodb-robomongo/authentication.png" alt-text="Képernyőkép a Robomongo-hitelesítés lapról":::
+    :::image type="content" source="./media/mongodb-robomongo/authentication.png" alt-text="Képernyőfelvétel a kapcsolatok sztring panelről":::
 6. Az **SSL** lapon jelölje be az **SSL protokoll használata**lehetőséget, majd módosítsa a **hitelesítési módszert** **önaláírt tanúsítványra**.
 
-    :::image type="content" source="./media/mongodb-robomongo/SSL.png" alt-text="A Robomongo SSL lapjának képernyőképe":::
+    :::image type="content" source="./media/mongodb-robomongo/SSL.png" alt-text="Képernyőfelvétel a kapcsolatok sztring panelről":::
 7. Végül kattintson a **test (tesztelés** ) elemre annak ellenőrzéséhez, hogy tud-e csatlakozni, majd **mentse**.
 
 ## <a name="next-steps"></a>További lépések

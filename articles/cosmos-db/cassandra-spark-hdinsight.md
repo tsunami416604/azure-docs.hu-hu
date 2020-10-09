@@ -9,15 +9,15 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: how-to
 ms.date: 09/24/2018
 ms.openlocfilehash: 4848bdceef084d587c839f2af93d1ff5a43c850b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85260573"
 ---
 # <a name="access-azure-cosmos-db-cassandra-api-from-spark-on-yarn-with-hdinsight"></a>Hozzáférés Azure Cosmos DB Cassandra API a Sparkból a HDInsight-mel
 
-Ez a cikk bemutatja, hogyan érheti el Azure Cosmos DB Cassandra API a Sparkból a HDInsight-Sparkból a Spark-shellből. A HDInsight a Microsoft Hortonworks Hadoop, amely az Azure-on található, és a HDFS számos különböző, többek között a [Spark](../hdinsight/spark/apache-spark-overview.md)használatát is lehetővé teszi.  Habár a jelen dokumentumban szereplő tartalom a HDInsight-Spark-ra hivatkozik, minden Hadoop-eloszlásra érvényes.  
+Ez a cikk azt ismerteti, hogyan érheti el Azure Cosmos DB Cassandra API a Sparkból a FONALból a Spark-Shell HDInsight-Spark használatával. A HDInsight a Microsoft Hortonworks Hadoop, amely az Azure-on található, és a HDFS számos különböző, többek között a [Spark](../hdinsight/spark/apache-spark-overview.md)használatát is lehetővé teszi.  Habár a jelen dokumentumban szereplő tartalom a HDInsight-Spark-ra hivatkozik, minden Hadoop-eloszlásra érvényes.  
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -114,7 +114,7 @@ A Spark Shell tesztelési/feltárási célokra szolgál.
 
 ## <a name="access-azure-cosmos-db-cassandra-api-from-jupyter-notebooks"></a>Hozzáférés Azure Cosmos DB Cassandra API Jupyter-jegyzetfüzetből
 
-A HDInsight-Spark a Zeppelin és a Jupyter notebook-szolgáltatásokkal is rendelkezik. Ezek mind a web-alapú notebook-környezetek, amelyek támogatják a Scalat és a Pythont. A notebookok hasznosak az interaktív felderítő elemzésekhez és az együttműködéshez, de nem jelentenek operatív/éles folyamatokat.
+A HDInsight-Spark a Zeppelin és a Jupyter notebook Services szolgáltatással érhető el. Ezek mind a web-alapú notebook-környezetek, amelyek támogatják a Scalat és a Pythont. A notebookok hasznosak az interaktív felderítő elemzésekhez és az együttműködéshez, de nem jelentenek operatív/éles folyamatokat.
 
 A következő Jupyter-jegyzetfüzeteket feltöltheti a HDInsight Spark-fürtbe, és kész mintákat készíthet a Azure Cosmos DB Cassandra API való munkához. Tekintse át az első jegyzetfüzetet `1.0-ReadMe.ipynb` , és tekintse át a Spark szolgáltatás konfigurációját a Azure Cosmos DB Cassandra APIhoz való csatlakozáshoz.
 

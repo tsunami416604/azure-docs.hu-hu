@@ -11,10 +11,10 @@ ms.service: genomics
 ms.topic: conceptual
 ms.date: 05/23/2018
 ms.openlocfilehash: ddfe8b6010ddc241364ccf7b2d4f5f648bd3ce0e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "72248595"
 ---
 # <a name="how-to-contact-microsoft-genomics-for-support"></a>Kapcsolatfelvétel a támogatási szolgálattal Microsoft Genomics
@@ -32,7 +32,7 @@ Ezután válassza a elemet `New support request` .
 
 ![Új támogatási kérelem](./media/file-support-ticket/new-support-request.png "Új támogatási kérelem") 
 
-Töltse ki a `Basics` , beleértve a `Issue type` és a `Subscription` . Válassza ki a probléma legjelentősebb `Issue type` kérdését, az alábbi képen látható példaként pedig ki `Technical` van választva. Ügyeljen arra, hogy `Microsoft Genomics` a megfelelő szolgáltatásként legyen kiválasztva.  `Microsoft Genomics`a kategória alatt jelenik meg `Intelligence and Analytics` .   A kiválasztás után `Microsoft Genomics` a rendszer megkéri, hogy adja meg a `Support plan` típusát is.
+Töltse ki a `Basics` , beleértve a `Issue type` és a `Subscription` . Válassza ki a probléma legjelentősebb `Issue type` kérdését, az alábbi képen látható példaként pedig ki `Technical` van választva. Ügyeljen arra, hogy `Microsoft Genomics` a megfelelő szolgáltatásként legyen kiválasztva.  `Microsoft Genomics` a kategória alatt jelenik meg `Intelligence and Analytics` .   A kiválasztás után `Microsoft Genomics` a rendszer megkéri, hogy adja meg a `Support plan` típusát is.
 
 ![Support request alapjai](./media/file-support-ticket/support-request-basics.png "Support request alapjai")
 

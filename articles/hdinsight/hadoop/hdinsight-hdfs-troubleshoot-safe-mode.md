@@ -8,10 +8,10 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/14/2019
 ms.openlocfilehash: 4d19a05129970b26ca1af20263fbfe93a0053c7d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75894189"
 ---
 # <a name="scenario-local-hdfs-stuck-in-safe-mode-on-azure-hdinsight-cluster"></a>Forgatókönyv: az Azure HDInsight-fürtön biztonságos módban ragadt helyi HDFS
@@ -36,7 +36,7 @@ mkdir: Cannot create directory /temp. Name node is in safe mode.
 
 A HDInsight-fürtöt az alábbi néhány csomópontra csökkentették, vagy a csomópontok száma közel van a HDFS replikálási tényezőhöz.
 
-## <a name="resolution"></a>Megoldás:
+## <a name="resolution"></a>Feloldás
 
 1. Jelentés a HDInsight-fürt HDFS állapotáról a következő paranccsal:
 

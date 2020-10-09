@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 07/21/2020
 ms.author: jeedes
 ms.openlocfilehash: 2a50d7b037cec2c10f83fdbbd875f80513c00a6d
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88517059"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-blogin"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a BlogIn
@@ -97,7 +97,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. A fentiek mellett a BlogIn alkalmazás néhány további attribútumot vár az SAML-válaszban, amelyek alább láthatók. Ezek az attribútumok előre fel vannak töltve, de a követelményeinek megfelelően áttekintheti őket.
     
-    | Name | Forrás attribútum |
+    | Név | Forrás attribútum |
     | ------ | --------- |
     | cím |User. beosztás |
     
@@ -116,7 +116,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Create** (Létrehozás) gombra.
+   1. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -141,7 +141,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 Ha be szeretné állítani az egyszeri bejelentkezést a **BlogIn** oldalon, jelentkezzen be a BlogIn-fiókjába, és kövesse az alábbi lépéseket:
 
 1. Válassza a **Beállítások**  >  **felhasználói hitelesítés**  >  **SSO & felhasználó kiépítés konfigurálása**lehetőséget.
-2. A következő képernyőn módosítsa az egyszeri bejelentkezés állapotát **a** be értékre, és válasszon egy egyéni nevet a bejelentkezési képernyőn megjelenő egyszeri bejelentkezéshez.
+2. A következő képernyőn módosítsa az egyetlen Sign-On állapotot **a be** értékre, és válassza ki a bejelentkezési képernyőn megjelenő egyszeri bejelentkezéses bejelentkezési gomb egyéni nevét.
 
 3. Ha mentette az **alkalmazás-összevonási metaadatok URL-címét** az előző szakasz utolsó lépéseként, válassza a konfigurációs módszer **metaadat-URL-címét** , és illessze be az alkalmazás- **összevonási metaadatok URL-** címét a metaadatok URL-címe mezőbe. Ellenkező esetben módosítsa a konfigurációs módszert **manuálisra**, manuálisan töltse fel az **Identity Provider egyszeri bejelentkezési URL-címét (bejelentkezési URL-címét)** és az **identitás-szolgáltató kiállítóját (Entity ID)**, és töltse fel az Azure ad-ből kapott **tanúsítványt (Base64)**   .
 

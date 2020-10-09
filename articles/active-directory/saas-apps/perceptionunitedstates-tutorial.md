@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
 ms.openlocfilehash: ed2f2cd9fc10017619937cfd6b5644934f7631f1
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88553951"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-perception-united-states-non-ultipro"></a>Oktatóanyag: Azure Active Directory integráció az észlelési Egyesült Államok (nem UltiPro)
@@ -73,7 +73,7 @@ Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és az ész
 Az Azure AD egyszeri bejelentkezés és az észlelési Egyesült Államok (nem UltiPro) konfigurálásához és teszteléséhez a következő építőelemeket kell elvégeznie:
 
 1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. Az **[észlelési Egyesült Államok konfigurálása (nem UltiPro) egyszeri bejelentkezés](#configure-perception-united-states-non-ultipro-single-sign-on)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+2. Az **[észlelési Egyesült Államok konfigurálása (nem UltiPro) egyszeri bejelentkezés](#configure-perception-united-states-non-ultipro-single-sign-on)** – az egyes Sign-On beállításainak konfigurálása az alkalmazás oldalán.
 3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
 4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
 5. **[Hozzon létre egy észlelési Egyesült Államok (nem UltiPro) tesztelési felhasználót](#create-perception-united-states-non-ultipro-test-user)** – hogy rendelkezzen egy, a felhasználó Azure ad-képviseletéhez kapcsolódó, az észlelési Egyesült Államok (nem UltiPro).
@@ -93,11 +93,11 @@ Az Azure AD egyszeri bejelentkezés és az észlelési Egyesült Államok (nem U
 
     ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
+3. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-4. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon hajtsa végre a következő lépéseket:
+4. Az **egyszeri Sign-On beállítása az SAML-vel** lapon hajtsa végre a következő lépéseket:
 
     ![Észlelési Egyesült Államok (nem UltiPro) tartomány és URL-címek egyszeri bejelentkezési adatai](common/idp-intiated.png)
 
@@ -113,7 +113,7 @@ Az Azure AD egyszeri bejelentkezés és az észlelési Egyesült Államok (nem U
     
     e. Illessze be a fenti értéket a **Válasz URL-címe** szövegmezőbe.
 
-5. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
+5. Az **egyszeres Sign-On beállítása SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozása](common/metadataxml.png)
 
@@ -127,7 +127,7 @@ Az Azure AD egyszeri bejelentkezés és az észlelési Egyesült Államok (nem U
 
     c. Kijelentkezési URL-cím   
 
-### <a name="configure-perception-united-states-non-ultipro-single-sign-on"></a>Észlelési Egyesült Államok konfigurálása (nem UltiPro) egyszeri bejelentkezés
+### <a name="configure-perception-united-states-non-ultipro-single-sign-on"></a>Észlelési Egyesült Államok konfigurálása (nem UltiPro) egyetlen Sign-On
 
 1. Egy másik böngészőablakban jelentkezzen be az észlelési Egyesült Államok (nem UltiPro) vállalati webhelyre rendszergazdaként.
 
@@ -143,7 +143,7 @@ Az Azure AD egyszeri bejelentkezés és az észlelési Egyesült Államok (nem U
     
     b. A **fiók neve** szövegmezőbe írja be a **fiók**nevét.
 
-    c. Az **alapértelmezett válasz – e-mail** szövegmezőbe írja be az érvényes **e-mailt**.
+    c. Az **alapértelmezett Reply-To e-mail** szövegmezőbe írja be az érvényes **e-mailt**.
 
     d. Válassza ki az **SSO-identitás szolgáltatóját** **SAML 2,0**-ként.
 
@@ -185,7 +185,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    d. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

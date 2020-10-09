@@ -8,10 +8,10 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/08/2019
 ms.openlocfilehash: ffec5cb4b1d36a2a2a7ca3ae7bbc40e20e075d4b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75887274"
 ---
 # <a name="scenario-hdp-upgrade-causes-no-data-in-apache-phoenix-views-in-azure-hdinsight"></a>Forgatókönyv: a HDP frissítése nem okoz semmilyen adatApache Phoenix-nézetet az Azure HDInsight
@@ -26,7 +26,7 @@ Egy Apache Phoenix nézet nem tartalmaz dátumot a HDP 2,4-ről a HDP 2,5-re val
 
 A nézetekhez tartozó index tábla (a nézet összes indexét egyetlen fizikai Apache HBase-táblázat tárolja) a frissítés során a rendszer csonkolja.
 
-## <a name="resolution"></a>Megoldás:
+## <a name="resolution"></a>Feloldás
 
 A frissítés után dobja el és hozza létre újból az összes nézet indexét.
 

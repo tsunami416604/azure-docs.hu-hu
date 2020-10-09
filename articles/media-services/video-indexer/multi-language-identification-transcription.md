@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 09/01/2019
 ms.author: juliako
 ms.openlocfilehash: f0dede42891069bb5d01ddc33f3797c20c5493d7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "72968743"
 ---
 # <a name="automatically-identify-and-transcribe-multi-language-content-preview"></a>Többnyelvű tartalom automatikus azonosítása és átírása (előzetes verzió)
@@ -23,7 +23,7 @@ A Video Indexer támogatja az automatikus nyelvi azonosítást és a többször�
 
 ## <a name="choosing-multilingual-identification-on-indexing-with-portal"></a>Többnyelvű azonosítás kiválasztása az indexeléshez a portálon
 
-A videó feltöltésekor és indexelése során a **többnyelvű észlelést** is választhatja. Azt is megteheti, hogy a videó újbóli indexelése során kiválaszthatja a **többnyelvű észlelést** is. Az alábbi lépések az újraindexelést ismertetik:
+A videó feltöltésekor és indexelése során a **többnyelvű észlelést** is választhatja. Azt is megteheti, hogy a videó újbóli indexelése során kiválaszthatja a **többnyelvű észlelést**  is. Az alábbi lépések az újraindexelést ismertetik:
 
 1. Nyissa meg a [Video Indexer](https://vi.microsoft.com/) webhelyét, és jelentkezzen be.
 1. Nyissa meg a **könyvtár** lapot, és vigye a kurzort az újraindexelni kívánt videó nevére. 

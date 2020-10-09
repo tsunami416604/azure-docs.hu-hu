@@ -15,13 +15,13 @@ ms.topic: conceptual
 ms.date: 01/10/2020
 ms.author: b-juche
 ms.openlocfilehash: aca6899da3c92cca0fd8564da5ec3d1679eb2579
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75890984"
 ---
-# <a name="azure-netapp-files-videos"></a>Azure NetApp Files videók
+# <a name="azure-netapp-files-videos"></a>Azure NetApp Files-videók
 Ez a cikk a Azure NetApp Files használatának részletes tárgyalásait tartalmazó videókra mutató hivatkozásokat tartalmaz. 
 
 Több videó is rendelkezésre áll, amelyekkel többet is megtudhat a Azure NetApp Files:  

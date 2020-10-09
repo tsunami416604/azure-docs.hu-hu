@@ -8,10 +8,10 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/13/2019
 ms.openlocfilehash: 21269f7d5a9ec832a49a613351702dd24be156af
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75894163"
 ---
 # <a name="unable-to-access-data-lake-storage-files-in-azure-hdinsight"></a>Nem lehet hozzáférni Data Lake Storage-fájlokhoz az Azure HDInsight
@@ -30,7 +30,7 @@ LISTSTATUS failed with error 0x83090aa2 (Forbidden. ACL verification failed. Eit
 
 Előfordulhat, hogy a felhasználó visszavonta az egyszerű szolgáltatásnév (SP) engedélyeit a fájlokon vagy mappákon.
 
-### <a name="resolution"></a>Megoldás:
+### <a name="resolution"></a>Feloldás
 
 1. Győződjön meg arról, hogy az SP "x" engedélyekkel rendelkezik az elérési út mentén való bejáráshoz. További információ: [engedélyek](https://hdinsight.github.io/ClusterCRUD/ADLS/adls-create-permission-setup.html). Példa a DFS-parancsra a Data Lake Storage-fiókban található fájlokhoz vagy mappákhoz való hozzáférés vizsgálatához:
 
@@ -99,7 +99,7 @@ Előfordulhat, hogy a szolgáltatásnév eléréséhez megadott tanúsítvány �
     Error: java.lang.IllegalArgumentException: Token Refresh failed - Received invalid http response: 500, text = Response{protocol=http/1.1, code=500, message=Internal Server Error, url=http://clustername.hmssomerandomstringc.cx.internal.cloudapp.net:909/api/oauthtoken}
     ```
 
-### <a name="resolution"></a>Megoldás:
+### <a name="resolution"></a>Feloldás
 
 Hozzon létre egy új tanúsítványt, vagy rendeljen hozzá meglévő tanúsítványt a következő PowerShell-parancsfájl használatával:
 

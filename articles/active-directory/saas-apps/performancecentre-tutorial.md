@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
 ms.openlocfilehash: d0a19a95a0a0d2353070068b2113e11efe471ccc
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88553973"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-performancecentre"></a>Oktatóanyag: Azure Active Directory integráció a PerformanceCentre
@@ -73,7 +73,7 @@ Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a Perfo
 Az Azure AD egyszeri bejelentkezés PerformanceCentre való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
 
 1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. **[PerformanceCentre egyszeri bejelentkezés konfigurálása](#configure-performancecentre-single-sign-on)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+2. **[PerformanceCentre egyszeri bejelentkezés konfigurálása](#configure-performancecentre-single-sign-on)** – az egyes Sign-On beállítások konfigurálása az alkalmazás oldalán.
 3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
 4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
 5. **[Hozzon létre PerformanceCentre-teszt felhasználót](#create-performancecentre-test-user)** – hogy a PerformanceCentre Britta, a felhasználó Azure ad-képviseletéhez kapcsolódó partnerrel rendelkezzen.
@@ -93,7 +93,7 @@ Az Azure AD egyszeri bejelentkezés PerformanceCentre való konfigurálásához 
 
     ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
+3. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
@@ -108,7 +108,7 @@ Az Azure AD egyszeri bejelentkezés PerformanceCentre való konfigurálásához 
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel és azonosítóval. Az értékek lekéréséhez forduljon a PerformanceCentre ügyfélszolgálati [csapatához](https://www.performio.co/contact-us) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-4. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
+4. Az **egyszeres Sign-On beállítása SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozása](common/metadataxml.png)
 
@@ -122,29 +122,29 @@ Az Azure AD egyszeri bejelentkezés PerformanceCentre való konfigurálásához 
 
     c. Kijelentkezési URL-cím
 
-### <a name="configure-performancecentre-single-sign-on"></a>PerformanceCentre egyszeri bejelentkezés konfigurálása
+### <a name="configure-performancecentre-single-sign-on"></a>PerformanceCentre egyetlen Sign-On konfigurálása
 
 1. Jelentkezzen be a **PerformanceCentre** vállalati webhelyre rendszergazdaként.
 
 2. A bal oldali lapon kattintson a **Konfigurálás**elemre.
    
-    ![Azure AD egyszeri bejelentkezés][10]
+    ![Azure AD – egyetlen Sign-On][10]
 
 3. A bal oldali lapon kattintson a **vegyes**elemre, majd az **egyszeri bejelentkezés**lehetőségre.
    
-    ![Azure AD egyszeri bejelentkezés][11]
+    ![Azure AD – egyetlen Sign-On][11]
 
 4. A **protokoll**mezőben válassza az **SAML**lehetőséget.
    
-    ![Azure AD egyszeri bejelentkezés][12]
+    ![Azure AD – egyetlen Sign-On][12]
 
 5. Nyissa meg a letöltött metaadat-fájlt a Jegyzettömbben, másolja be a tartalmat, illessze be az **Identity Provider metaadatok** szövegmezőbe, majd kattintson a **Mentés**gombra.
    
-    ![Azure AD egyszeri bejelentkezés][13]
+    ![Azure AD – egyetlen Sign-On][13]
 
 6. Ellenőrizze, hogy helyesek-e az **entitás alap URL-címe** és az **entitás-azonosító URL-címe** .
     
-     ![Azure AD egyszeri bejelentkezés][14]
+     ![Azure AD – egyetlen Sign-On][14]
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása 
 
@@ -169,7 +169,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    d. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

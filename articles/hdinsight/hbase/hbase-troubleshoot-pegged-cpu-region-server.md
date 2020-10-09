@@ -8,10 +8,10 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/01/2019
 ms.openlocfilehash: 16c994029e91d743f1c2a7e2eab51eb86fc378e8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75887308"
 ---
 # <a name="scenario-pegged-cpu-on-region-server-in-apache-hbase-cluster-in-azure-hdinsight"></a>Forgatókönyv: rögzített CPU a régió-kiszolgálón az Apache HBase-fürtben az Azure HDInsight
@@ -26,7 +26,7 @@ Az Apache HBase-régió kiszolgálói folyamata a 200%-os CPU-hoz közeledik, am
 
 Ha a HBase-fürt v 3.4-es verzióját futtatja, lehetséges, hogy a JDK-t a 1.7.0 _151 verziójára való frissítés okozta. A megjelenő tünet a régió kiszolgálója, amely a következőhöz közeledik: 200% CPU (annak ellenőrzéséhez, hogy ez a parancs fut-e `top` . ha van olyan folyamat, amely az 200%-os CPU-hoz csatlakozik, kérje le a PID-t, és ellenőrizze, hogy fut-e a régió kiszolgáló `ps -aux | grep`
 
-## <a name="resolution"></a>Megoldás:
+## <a name="resolution"></a>Feloldás
 
 1. Telepítse a jdk 1,8-et a fürt összes csomópontján az alábbiak szerint:
 

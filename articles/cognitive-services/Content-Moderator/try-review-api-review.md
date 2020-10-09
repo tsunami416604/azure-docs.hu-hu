@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/18/2019
 ms.author: pafarley
 ms.openlocfilehash: a9726e41a84926d00d48b51e31f534a3d8c2fe0c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "72757142"
 ---
 # <a name="create-human-reviews-rest"></a>Emberi értékelések létrehozása (REST)
@@ -127,15 +127,15 @@ Az alapértelmezett kérelem törzse példákat mutat be a létrehozható külö
 ]
 ```
 
-### <a name="submit-your-request"></a>Kérelem elküldése
+### <a name="submit-your-request"></a>A kérés elküldése
   
-Válassza a **Küldés**lehetőséget. Ha a művelet sikeres, a **Válasz állapota** `200 OK`, a **válasz tartalma** mező pedig a felülvizsgálat azonosítóját jeleníti meg. Másolja ezt az azonosítót a következő lépésekben való használatra.
+Válassza a **Küldés** lehetőséget. Ha a művelet sikeres, a **Válasz állapota** `200 OK` , a **válasz tartalma** mező pedig a felülvizsgálat azonosítóját jeleníti meg. Másolja ezt az azonosítót a következő lépésekben való használatra.
 
 ![Felülvizsgálat – a konzol válaszának létrehozása mező megjeleníti a felülvizsgálati azonosítót](images/test-drive-review-2.PNG)
 
 ### <a name="examine-the-new-review"></a>Vizsgálja meg az új felülvizsgálatot
 
-A [felülvizsgálati eszközben](https://contentmoderator.cognitive.microsoft.com)válassza a**Image**/**képszöveg**/**videó** **ellenőrzése** > lehetőséget (a használt tartalomtól függően). A feltöltött tartalomnak szerepelnie kell az emberi felülvizsgálatra készen.
+A [felülvizsgálati eszközben](https://contentmoderator.cognitive.microsoft.com)válassza a **Review**  >  **Image** / **képszöveg** / **videó** ellenőrzése lehetőséget (a használt tartalomtól függően). A feltöltött tartalomnak szerepelnie kell az emberi felülvizsgálatra készen.
 
 ![A Soccer Ball-eszköz képének áttekintése](images/test-drive-review-5.PNG)
 
@@ -149,7 +149,7 @@ Adja meg a REST-hívás paramétereit a fenti szakaszban leírtak szerint. Ebben
 
 ![Ellenőrzés – a konzol létrehozási eredményeinek létrehozása](images/test-drive-review-3.PNG)
   
-Válassza a **Küldés**lehetőséget. Ha a művelet sikeres, a **Válasz állapota** `200 OK`, a **válasz tartalma** pedig JSON formátumban jeleníti meg a felülvizsgálati adatokat, például a következőkhöz:
+Válassza a **Küldés** lehetőséget. Ha a művelet sikeres, a **Válasz állapota** `200 OK` , a **válasz tartalma** pedig JSON formátumban jeleníti meg a felülvizsgálati adatokat, például a következőkhöz:
 
 ```json
 {  

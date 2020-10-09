@@ -1,16 +1,16 @@
 ---
-title: Mi az az Azure Relay? | Microsoft Docs
+title: Mi az Azure Relay? | Microsoft Docs
 description: Ez a cikk az Azure Relay szolgáltatásról nyújt áttekintést, amely a vállalati hálózaton futó, helyszíni szolgáltatásokat használó felhőalkalmazások fejlesztését teszi lehetővé anélkül, hogy meg kellene nyitni egy tűzfalkapcsolatot, vagy zavaró módosításokat kellene végrehajtani a hálózati infrastruktúrán.
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.openlocfilehash: 0c9a67bcad47ad2e7284bcf6e70914d2ffb06a8c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85322638"
 ---
-# <a name="what-is-azure-relay"></a>Mi az az Azure Relay?
+# <a name="what-is-azure-relay"></a>Mi az Azure Relay?
 Az Azure Relay szolgáltatás biztonságosan lehetővé teszi a vállalati hálózaton futó szolgáltatások közzétételét a nyilvános felhőben. Ezt úgy teheti meg, hogy nem nyit meg egy portot a tűzfalon, vagy zavaró módosításokat végez a vállalati hálózati infrastruktúrában. 
 
 A Relay szolgáltatás az alábbi, helyszíni szolgáltatások és felhőben vagy más helyszíni környezetben futtatott alkalmazások közötti forgatókönyveket támogatja. 

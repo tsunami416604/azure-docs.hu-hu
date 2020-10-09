@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 09/24/2019
 ms.openlocfilehash: 93698fadcecf190dd8bbc24a9d03978899d3c5e9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75887155"
 ---
 # <a name="troubleshoot-apache-hbase-performance-issues-on-azure-hdinsight"></a>Az Apache HBase teljesítményproblémáinak elhárítása az Azure HDInsightban
@@ -55,9 +55,9 @@ Ha olyan viszonyítási pontokat használ, mint például a Yahoo! A teljesítm�
 
 Ha a lekérdezések hirtelen megkezdése sokkal rosszabb, mint korábban, ellenőrizze a lehetséges hibákat az alkalmazás kódjában. Hirtelen nagy mennyiségű érvénytelen adattal generál? Ha igen, növelheti az olvasási késéseket.
 
-## <a name="migration-issues"></a>Áttelepítési problémák
+## <a name="migration-issues"></a>Migrálási problémák
 
-Ha az Azure HDInsight-ba végez áttelepítést, győződjön meg arról, hogy a Migrálás szisztematikusan és pontosan, lehetőleg automatizáláson keresztül történik. Kerülje a manuális áttelepítést. Ellenőrizze a következőket:
+Ha az Azure HDInsight-ba végez áttelepítést, győződjön meg arról, hogy a Migrálás szisztematikusan és pontosan, lehetőleg automatizáláson keresztül történik. Kerülje a manuális áttelepítést. Ügyeljen a következőkre:
 
 - A tábla attribútumai pontosan települnek át. Az attribútumok tartalmazhatnak tömörítést, virágzási szűrőket stb.
 
@@ -110,7 +110,7 @@ Az alábbiakban néhány, az általunk hangolt paraméterek közül néhányat i
 
 A következő további paramétereket érdemes megfontolni a hangoláshoz:
 
-- `Hbase.rs.cacheblocksonwrite`– Alapértelmezés szerint a HDI esetében ez a beállítás **igaz**értékre van állítva.
+- `Hbase.rs.cacheblocksonwrite` – Alapértelmezés szerint a HDI esetében ez a beállítás **igaz**értékre van állítva.
 
 - Beállítások, amelyek lehetővé teszik a kisebb tömörítés késleltetését később.
 

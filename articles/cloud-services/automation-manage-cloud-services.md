@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 06/20/2016
 ms.author: timlt
 ms.openlocfilehash: 482fcf7d100a90d9527f510382c5dafb4f67adfa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "72439075"
 ---
 # <a name="managing-azure-cloud-services-using-azure-automation"></a>Az Azure Cloud Services kezelése Azure Automation használatával
@@ -35,7 +35,7 @@ Néhány példa a Azure Automation használatára az Azure Cloud Services kezel�
 * [Felhőalapú szolgáltatás folyamatos üzembe helyezése, amikor a cscfg vagy a cspkg frissül az Azure Blob Storage-ban](https://gallery.technet.microsoft.com/scriptcenter/Continuous-Deployment-of-A-eeebf3a6)
 * [Cloud Service-példányok újraindítása párhuzamosan, egyszerre egy frissítési tartomány](https://gallery.technet.microsoft.com/scriptcenter/Reboot-Cloud-Service-PaaS-b337a06d)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Most, hogy megismerte a Azure Automation alapjait és az Azure Cloud Services felügyeletének módját, az alábbi hivatkozásokat követve további információkat tudhat meg a Azure Automationról.
 
 * [Az Azure Automation áttekintése](../automation/automation-intro.md)

@@ -8,17 +8,17 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/08/2019
 ms.openlocfilehash: fa02ac0dfe229f3e82d1c1c62d83ca06a81efca6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75887325"
 ---
 # <a name="scenario-hbase-hbck-command-returns-inconsistencies-in-azure-hdinsight"></a>Forgatókönyv: `hbase hbck` a parancs inkonzisztencia-értéket ad vissza az Azure HDInsight
 
 Ez a cikk az Azure HDInsight-fürtökkel való interakció során felmerülő problémák hibaelhárítási lépéseit és lehetséges megoldásait ismerteti.
 
-## <a name="issue-region-is-not-in-hbasemeta"></a>Probléma: a régió nincs a (z)`hbase:meta`
+## <a name="issue-region-is-not-in-hbasemeta"></a>Probléma: a régió nincs a (z) `hbase:meta`
 
 Az XXX régiója a HDFS-on, de nem szerepel a `hbase:meta` régióban, vagy nincs telepítve egyetlen régió-kiszolgálón sem.
 
@@ -26,7 +26,7 @@ Az XXX régiója a HDFS-on, de nem szerepel a `hbase:meta` régióban, vagy ninc
 
 Változik.
 
-### <a name="resolution"></a>Megoldás:
+### <a name="resolution"></a>Feloldás
 
 1. Javítsa ki a meta-táblázatot a futtatásával:
 
@@ -49,7 +49,7 @@ A (z) xxx régió nincs telepítve egyetlen RegionServer sem. Ez azt jelenti, ho
 
 Változik.
 
-### <a name="resolution"></a>Megoldás:
+### <a name="resolution"></a>Feloldás
 
 Régiók online állapotba helyezése a futtatásával:
 
@@ -65,7 +65,7 @@ hbase hbck -ignorePreCheckPermission –fixAssignment
 
 Változik.
 
-### <a name="resolution"></a>Megoldás:
+### <a name="resolution"></a>Feloldás
 
 Egyesítse az átfedésben lévő régiókat manuálisan. Nyissa meg a HBase HMaster webes felület tábla szakaszát, és válassza ki a tábla hivatkozást, amely a probléma. Ekkor megjelenik a táblázathoz tartozó egyes régiók indítási kulcs/vége kulcsa. Ezután egyesítse az átfedésben lévő régiókat. A HBase-rendszerhéjban tegye a t `merge_region 'xxxxxxxx','yyyyyyy', true` . Például:
 
@@ -81,7 +81,7 @@ Ebben az esetben egyesíteni kell a régiót és a RegionC, és a régiót ugyan
 
 ---
 
-## <a name="issue-cant-load-regioninfo"></a>Probléma: nem tölthető be`.regioninfo`
+## <a name="issue-cant-load-regioninfo"></a>Probléma: nem tölthető be `.regioninfo`
 
 Nem tölthető be `.regioninfo` a régió `/hbase/data/default/tablex/regiony` .
 
@@ -89,7 +89,7 @@ Nem tölthető be `.regioninfo` a régió `/hbase/data/default/tablex/regiony` .
 
 Ez valószínűleg a régió részleges törlése miatt RegionServer összeomlik vagy a virtuális gép újraindításakor. Az Azure Storage jelenleg egy egyszerű blob-fájlrendszer, és néhány fájl művelete nem atomi.
 
-### <a name="resolution"></a>Megoldás:
+### <a name="resolution"></a>Feloldás
 
 A fennmaradó fájlok és mappák manuális törlése:
 

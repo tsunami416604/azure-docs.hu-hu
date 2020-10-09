@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.date: 10/30/2018
 ms.author: genli
 ms.openlocfilehash: 82054099a5a496e99c49135ab98ee1163af19784
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75862560"
 ---
 # <a name="troubleshooting-azure-site-to-site-vpn-disconnects-intermittently"></a>Hibaelhárítás: Az Azure-beli helyek közötti VPN-kapcsolat időnként megszakad
@@ -42,7 +42,7 @@ Az Azure-beli virtuális hálózati átjáró típusának ellenõrzése:
 1. Győződjön meg arról, hogy a virtuális hálózat, az alhálózatok és a **helyi hálózati átjáró** definíciójának tartománya Microsoft Azure azonos a helyszíni VPN-eszköz konfigurációjával.
 2. Ellenőrizze, hogy a biztonsági társítás beállításai egyeznek-e.
 
-### <a name="step-3-check-for-user-defined-routes-or-network-security-groups-on-gateway-subnet"></a>3. lépés: a felhasználó által megadott útvonalak vagy hálózati biztonsági csoportok keresése az átjáró alhálózatán
+### <a name="step-3-check-for-user-defined-routes-or-network-security-groups-on-gateway-subnet"></a>3. lépés: User-Defined útvonalak vagy hálózati biztonsági csoportok keresése az átjáró alhálózatán
 
 Az átjáró-alhálózat felhasználó által megadott útvonala korlátozhatja a forgalmat, és engedélyezheti a többi forgalmat. Így úgy tűnik, hogy a VPN-kapcsolat nem megbízható a forgalom számára, és mások számára is jó. 
 

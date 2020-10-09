@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/01/2019
 ms.author: jeedes
 ms.openlocfilehash: deb64aa0c344e818b5fd85ca1a161293fd35d6f6
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88553987"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-percolate"></a>Oktatóanyag: Azure Active Directory integráció a átszivárog
@@ -93,7 +93,7 @@ Az Azure AD egyszeri bejelentkezés átszivárog való konfigurálásához hajts
 
     ![Egyszeri bejelentkezési módszer kiválasztása](common/select-saml-option.png)
 
-3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon a **Szerkesztés** ikonra kattintva nyissa meg az **alapszintű SAML-konfiguráció** párbeszédpanelt:
+3. Az **egyszeres Sign-On beállítása az SAML-vel** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához:
 
     ![Szerkesztés ikon](common/edit-urls.png)
 
@@ -104,7 +104,7 @@ Az Azure AD egyszeri bejelentkezés átszivárog való konfigurálásához hajts
 5. Ha az alkalmazást SP-kezdeményezésű módban szeretné konfigurálni, válassza a **további URL-címek beállítása** lehetőséget, majd a **bejelentkezési URL-cím** mezőbe írja be a következőt **https://percolate.com/app/login** :
 
    ![Átszivárog tartomány és URL-címek egyszeri bejelentkezési adatai](common/metadata-upload-additional-signon.png)
-6. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon az **SAML aláíró tanúsítvány** szakaszban válassza a **Másolás** ikont az **alkalmazás-összevonási metaadatok URL-címének**másolásához. Mentse ezt az URL-címet.
+6. Az **egyszeres Sign-On beállítása SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban válassza a **Másolás** ikont az **alkalmazás-összevonási metaadatok URL-címének**másolásához. Mentse ezt az URL-címet.
 
     ![Az alkalmazás-összevonás metaadat-URL-címének másolása](common/copy-metadataurl.png)
 
@@ -144,7 +144,7 @@ Az Azure AD egyszeri bejelentkezés átszivárog való konfigurálásához hajts
 
     1. Az **SSO automatikus kiépítés engedélyezése** listában válassza a **nem**lehetőséget.
 
-    1. Válassza a **Mentés** lehetőséget.
+    1. Kattintson a **Mentés** gombra.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 

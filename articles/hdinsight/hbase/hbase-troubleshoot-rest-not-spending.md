@@ -8,10 +8,10 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/01/2019
 ms.openlocfilehash: 49b547829a369ea6df35e2f1c2f7d60458e41040
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75887172"
 ---
 # <a name="scenario-apache-hbase-rest-not-responding-to-requests-in-azure-hdinsight"></a>Forgatókönyv: az Apache HBase REST nem válaszol a kérelmekre az Azure HDInsight
@@ -31,7 +31,7 @@ System.Net.WebException : Unable to connect to the remote server --->
 System.Net.Sockets.SocketException : A connection attempt failed because the connected party did not properly respond after a period of time, or established connection failed because connected host has failed to respond 10.0.0.19:8090
 ```
 
-## <a name="resolution"></a>Megoldás:
+## <a name="resolution"></a>Feloldás
 
 Indítsa újra a HBase REST-et az alábbi parancs használatával, miután SSH a gazdagépre. Parancsfájl-műveletek használatával a szolgáltatás újraindítását is elvégezheti az összes munkavégző csomóponton:
 

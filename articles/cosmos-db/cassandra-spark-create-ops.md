@@ -9,10 +9,10 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: how-to
 ms.date: 09/24/2018
 ms.openlocfilehash: 56899b7d81f17e678026b1aad7f3e2d9f8b9b0b0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85260524"
 ---
 # <a name="createinsert-data-into-azure-cosmos-db-cassandra-api-from-spark"></a>Adatok létrehozása/beillesztése a Spark Azure Cosmos DB Cassandra APIba
@@ -140,7 +140,7 @@ Az adatoknak a Azure Cosmos DB Cassandra API táblázatba való beszúrása utá
  
 * [Olvasási műveletek](cassandra-spark-read-ops.md)
 * [Upsert-műveletek](cassandra-spark-upsert-ops.md)
-* [Műveletek törlése](cassandra-spark-delete-ops.md)
+* [Törlési műveletek](cassandra-spark-delete-ops.md)
 * [Összesítési műveletek](cassandra-spark-aggregation-ops.md)
 * [Táblázatos másolási műveletek](cassandra-spark-table-copy-ops.md)
 

@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 01/19/2018
 ms.author: jingwang
 ms.openlocfilehash: ab3b5c2ba892205f87235f7f0ce009719016622d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85322127"
 ---
 # <a name="invoke-an-ssis-package-using-stored-procedure-activity-in-azure-data-factory"></a>SSIS-csomag meghívása tárolt eljárási tevékenység használatával Azure Data Factory
@@ -41,10 +41,10 @@ Ebben a szakaszban a Azure PowerShell használatával hozzon létre egy Data Fac
 
 Telepítse a legújabb Azure PowerShell modulokat a [Azure PowerShell telepítésére és konfigurálására](/powershell/azure/install-az-ps)vonatkozó utasításokat követve.
 
-### <a name="create-a-data-factory"></a>Data factory létrehozása
+### <a name="create-a-data-factory"></a>Adat-előállító létrehozása
 Az alábbi eljárás egy adatelőállító létrehozásának lépéseit ismerteti. A folyamat egy tárolt eljárási tevékenységgel rendelkező folyamatot hoz létre ebben az adatgyárban. A tárolt eljárási tevékenység végrehajt egy tárolt eljárást a SSISDB-adatbázisban a SSIS-csomag futtatásához.
 
-1. Adjon meg egy olyan változót, amelyet később a PowerShell-parancsokban az erőforráscsoport neveként fog használni. Másolja az alábbi parancsszöveget a PowerShellbe, adja meg az [Azure-erőforráscsoport](../../azure-resource-manager/management/overview.md) nevét idézőjelek között, majd futtassa a parancsot. Példa: `"adfrg"`. 
+1. Adjon meg egy olyan változót, amelyet később a PowerShell-parancsokban az erőforráscsoport neveként fog használni. Másolja az alábbi parancsszöveget a PowerShellbe, adja meg az [Azure-erőforráscsoport](../../azure-resource-manager/management/overview.md) nevét idézőjelek között, majd futtassa a parancsot. Például: `"adfrg"`. 
    
      ```powershell
     $resourceGroupName = "ADFTutorialResourceGroup";

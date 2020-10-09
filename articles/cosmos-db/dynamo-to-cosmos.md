@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 04/29/2020
 ms.author: mansha
 ms.openlocfilehash: cfdeda8ac3957da272ab4c47fb93930c826d55aa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85261868"
 ---
 # <a name="migrate-your-application-from-amazon-dynamodb-to-azure-cosmos-db"></a>Telepítse át az alkalmazást az Amazon DynamoDB-ból Azure Cosmos DB
@@ -23,12 +23,12 @@ A Azure Cosmos DB és a DynamoDB között a következők a legfontosabb fogalmi 
 
 |  DynamoDB | Azure Cosmos DB  |
 |---|---|
-|Nem értelmezhető|  Adatbázis |
+|Nem alkalmazható|  Adatbázis |
 |Táblázat      |  Gyűjtemény |
-|  Item |  Dokumentum |
+|  Elem |  Dokumentum |
 |Attribútum|Mező|
 |Másodlagos index|Másodlagos index|
-|Elsődleges kulcs – partíciós kulcs|Partíciós kulcs|
+|Elsődleges kulcs – partíciós kulcs|Partíciókulcs|
 |Elsődleges kulcs – rendezési kulcs| Nem kötelező |
 |Adatfolyam|ChangeFeed|
 |Számítási egység írása|Kérési egység (rugalmas, olvasásra és írásra is használható)|
@@ -389,7 +389,7 @@ A fenti példában szereplő dokumentumok gyűjteménye a következőket eredmé
 - típus biztonságos
 - Adjon meg egy természetes lekérdezési lehetőséget.
 
-### <a name="update-an-item"></a>Egy tétel frissítése
+### <a name="update-an-item"></a>Elem módosítása
 
 **DynamoDB**: a cikk frissítése az Amazon DynamoDB:
 
@@ -517,7 +517,7 @@ await cosmosDatabase.DeleteAsync();
 
 Amint láthatja, a Azure Cosmos DB támogatja a természetes lekérdezéseket (SQL), a műveletek aszinkron és sokkal egyszerűbbek. Az összetett kódot egyszerűen áttelepítheti Azure Cosmos DBre, ami egyszerűbbé válik az áttelepítés után.
 
-### <a name="next-steps"></a>Következő lépések
+### <a name="next-steps"></a>További lépések
 
 - Tudnivalók a [teljesítmény optimalizálásáról](performance-tips.md).
 - Tudnivalók az [olvasási és írási optimalizálásról](key-value-store-cost.md)

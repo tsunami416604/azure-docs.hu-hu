@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/21/2019
 ms.author: jeedes
 ms.openlocfilehash: ca0bfcb0c90142924285215c427a7071297be730
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88553913"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-periscope-data"></a>Oktatóanyag: Azure Active Directory integráció a periszkóp-szolgáltatásokkal
@@ -73,7 +73,7 @@ Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a kapcs
 Az Azure AD egyszeri bejelentkezés periszkóp-alapú használatával történő konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
 
 1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. **[Periszkóp-alapú egyszeri bejelentkezés konfigurálása](#configure-periscope-data-single-sign-on)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+2. **[Periszkóp-alapú egyszeri bejelentkezés konfigurálása](#configure-periscope-data-single-sign-on)** – az egyes Sign-On beállítások konfigurálása az alkalmazás oldalán.
 3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
 4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
 5. **[Periszkóp-adattesztelési felhasználó létrehozása](#create-periscope-data-test-user)** – ha a periszkóp-ben a felhasználó Azure ad-képviseletéhez kapcsolódó Britta Simon-beli partnere van.
@@ -93,7 +93,7 @@ Az Azure AD egyszeri bejelentkezés periszkóp-adatokkal való konfigurálásáh
 
     ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
+3. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
@@ -113,11 +113,11 @@ Az Azure AD egyszeri bejelentkezés periszkóp-adatokkal való konfigurálásáh
     > [!NOTE]
     > A bejelentkezési URL-cím értéke nem valós. Frissítse az értékeket a tényleges bejelentkezési URL-címmel. Ha ezt az értéket és az azonosító értékét szeretné megkapni, lépjen kapcsolatba a [periszkóp-adatügyfél támogatási csoportjával](mailto:support@periscopedata.com) , **amelyet az oktatóanyag későbbi részében** talál. Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-5. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a Másolás gombra az **alkalmazás-összevonási metaadatok URL-címének** másolásához és a számítógépre mentéséhez.
+5. Az **egyszeres Sign-On beállítása az SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a Másolás gombra az **alkalmazás-összevonási metaadatok URL-címének** másolásához és a számítógépre mentéséhez.
 
     ![A tanúsítvány letöltési hivatkozása](common/copy-metadataurl.png)
 
-### <a name="configure-periscope-data-single-sign-on"></a>Periszkóp-alapú egyszeri bejelentkezés konfigurálása
+### <a name="configure-periscope-data-single-sign-on"></a>Periszkóp-adatSign-On konfigurálása
 
 1. Egy másik böngészőablakban jelentkezzen be a periszkóp-be rendszergazdaként.
 
@@ -168,7 +168,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    d. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

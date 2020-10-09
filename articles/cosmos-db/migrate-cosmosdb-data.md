@@ -8,10 +8,10 @@ ms.subservice: cosmosdb-sql
 ms.topic: how-to
 ms.date: 10/23/2019
 ms.openlocfilehash: 1e48b2ff6e469a5f792b64c20631e4bd64fb9fd7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85263544"
 ---
 # <a name="migrate-hundreds-of-terabytes-of-data-into-azure-cosmos-db"></a>Több száz terabájtnyi adat migrálása az Azure Cosmos DB-be 
@@ -145,7 +145,7 @@ Az áttelepítés befejezése után ellenőrizheti, hogy a dokumentumok száma A
 ## <a name="contact-the-azure-cosmos-db-team"></a>Kapcsolatfelvétel a Azure Cosmos DB csapattal
 Bár a nagy méretű adathalmazok sikeres áttelepítésére a nagyméretű adatkészletek Azure Cosmos DB, a nagyméretű áttelepítések esetében azt javasoljuk, hogy az adatmodellezés és az általános architektúra-felülvizsgálat ellenőrzéséhez a Azure Cosmos DB termék csapatát is el kell érnie. Az adatkészletek és a számítási feladatok alapján a termék csapata más teljesítményre és költséghatékonyságra is utalhat, amelyek alkalmazhatók az Ön számára. Ha a nagyléptékű áttelepítéssel kapcsolatos segítségért szeretne segítséget nyújtani a Azure Cosmos DB csapatának, nyisson meg egy támogatási jegyet az "általános tanácsadó" probléma típusa és a "nagy (TB +) Migrálás" problémás altípuson az alábbi ábrán látható módon.
 
-:::image type="content" source="./media/migrate-cosmosdb-data/supporttopic.png" alt-text="Áttelepítési támogatás témakör":::
+:::image type="content" source="./media/migrate-cosmosdb-data/supporttopic.png" alt-text="Áttelepítési eszköz beállítása":::
 
 
 ## <a name="next-steps"></a>További lépések

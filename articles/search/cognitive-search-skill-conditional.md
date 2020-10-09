@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: b5f1fc7f877854dd06fbbe09ff82e47208fa12d0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "72792051"
 ---
 # <a name="conditional-cognitive-skill"></a>Feltételes kognitív képességek
@@ -85,7 +85,7 @@ Mivel a feltételes képesség támogatja a kiértékelést, ezt kisebb átalak�
 ## <a name="skill-inputs"></a>Szaktudás bemenetei
 A bemenetek megkülönböztetik a kis-és nagybetűket.
 
-| Bevitel   | Leírás |
+| Input (Bemenet)   | Leírás |
 |-------------|-------------|
 | feltétel   | Ez a bemenet egy [kiértékelt mező](#evaluated-fields) , amely az értékelendő feltételt jelöli. Ezt az állapotot egy logikai értékre (*true* vagy *false*) kell kiértékelni.   <br/>  Példák: <br/> "= true" <br/> "= $ (/Document/Language) = =" FR " <br/> "= $ (/Document/Pages/ \* /Language) = = $ (/Document/expectedLanguage)" <br/> |
 | whenTrue    | Ez a bemenet egy [kiértékelt mező](#evaluated-fields) , amely a visszatérési értéket jelöli, ha a feltétel *igaz*értékre van kiértékelve. Az állandó sztringeket szimpla idézőjelek ("és") szerint kell megadni. <br/>Mintavételezési értékek: <br/> "=" szerződés ""<br/>"= $ (/document/contractType)" <br/> "= $ (/Document/Entities/ \* )" <br/> |

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 10/23/2019
 ms.author: jeedes
 ms.openlocfilehash: ae8a1fa68e61e160ce08b93bf66776a050b45613
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88554164"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-officespace-software"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a OfficeSpace szoftverrel
@@ -95,7 +95,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. A fentieken kívül a OfficeSpace-alkalmazás néhány további attribútumot vár az SAML-válaszokban, amelyek alább láthatók. Ezek az attribútumok előre is fel vannak töltve, de a követelménynek megfelelően áttekintheti őket.
 
-    | Name | Forrás attribútum|
+    | Név | Forrás attribútum|
     | ---------------| --------------- |
     | e-mail | User. mail |
     | name | felhasználó. DisplayName |
@@ -124,7 +124,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Create** (Létrehozás) gombra.
+   1. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -150,15 +150,15 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 2. Válassza a **Beállítások** , majd az **Összekötők**lehetőséget.
 
-    ![Egyszeri bejelentkezés konfigurálása az alkalmazás oldalán](./media/officespace-tutorial/tutorial_officespace_002.png)
+    ![Egyetlen Sign-On konfigurálása az alkalmazás oldalán](./media/officespace-tutorial/tutorial_officespace_002.png)
 
 3. Kattintson az **SAML-hitelesítés**elemre.
 
-    ![Egyszeri bejelentkezés konfigurálása az alkalmazás oldalán](./media/officespace-tutorial/tutorial_officespace_003.png)
+    ![Egyetlen Sign-On konfigurálása az alkalmazás oldalán](./media/officespace-tutorial/tutorial_officespace_003.png)
 
 4. Az **SAML hitelesítés** szakaszban hajtsa végre a következő lépéseket:
 
-    ![Egyszeri bejelentkezés konfigurálása az alkalmazás oldalán](./media/officespace-tutorial/tutorial_officespace_004.png)
+    ![Egyetlen Sign-On konfigurálása az alkalmazás oldalán](./media/officespace-tutorial/tutorial_officespace_004.png)
 
     a. A **kijelentkezési szolgáltató URL-címe** szövegmezőbe illessze be azt a **KIJELENTKEZÉSI URL-címet** , amelyet a Azure Portalból másolt.
 

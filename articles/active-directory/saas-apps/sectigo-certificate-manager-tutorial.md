@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/15/2019
 ms.author: jeedes
 ms.openlocfilehash: d68e5335fff0341d8808e581061519977e1bb517
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88543278"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sectigo-certificate-manager"></a>Oktatóanyag: Azure Active Directory integráció a Sectigo tanúsítványkezelővel
@@ -95,7 +95,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezést konfigurálja a Sectigo 
 
     ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-1. Az **egyszeri bejelentkezés az SAML-vel** panelen való beállítása lapon válassza a **Szerkesztés** (a ceruza ikon) lehetőséget az **alapszintű SAML-konfiguráció** panel megnyitásához.
+1. Az **egyszeri Sign-On beállítása az SAML-vel** panelen válassza a **Szerkesztés** (a ceruza ikon) lehetőséget az **alapszintű SAML-konfiguráció** panel megnyitásához.
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
@@ -125,7 +125,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezést konfigurálja a Sectigo 
 
       ![Sectigo tanúsítványkezelő tartomány és URL-címek egyszeri bejelentkezési adatai](common/both-signonurl.png)
 
-1. Az **egyszeri bejelentkezés SAML-panelen való beállításához** az **SAML aláíró tanúsítvány** szakaszban válassza a **Letöltés** a tanúsítvány mellett **(Base64)** elemet. A követelmények alapján válasszon egy letöltési lehetőséget. Mentse a tanúsítványt a számítógépére.
+1. Az **egyszeri Sign-On beállítása az SAML** -panellel panelen az **SAML aláíró tanúsítvány** szakaszban válassza a **Letöltés** a **tanúsítvány mellett (Base64)** elemet. A követelmények alapján válasszon egy letöltési lehetőséget. Mentse a tanúsítványt a számítógépére.
 
     ![A tanúsítvány (Base64) letöltési lehetősége](common/certificatebase64.png)
 

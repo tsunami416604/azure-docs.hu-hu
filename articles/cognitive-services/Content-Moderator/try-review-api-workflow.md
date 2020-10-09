@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: pafarley
 ms.openlocfilehash: 3e58be4b94457d95d28cf6528b9151e4be1802cf
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "72754183"
 ---
 # <a name="define-and-use-moderation-workflows-rest"></a>Moderálási munkafolyamatok definiálása és használata (REST)
@@ -43,7 +43,7 @@ Adja meg a **Team**, a **Workflowname**és a **OCP-APIM-Subscription-Key**érté
 
 ### <a name="enter-a-workflow-definition"></a>Munkafolyamat-definíció megadása
 
-1. A **kérelem törzse** mező szerkesztésével adja meg a JSON-kérést a **Leírás** és a `Image` **típus** részleteivel (vagy `Text`).
+1. A **kérelem törzse** mező szerkesztésével adja meg a JSON-kérést a **Leírás** és a **típus** részleteivel ( `Image` vagy `Text` ).
 2. A **kifejezés**mezőben másolja az alapértelmezett munkafolyamat JSON-kifejezését. A végső JSON-sztringnek így kell kinéznie:
 
 ```json
@@ -78,13 +78,13 @@ Adja meg a **Team**, a **Workflowname**és a **OCP-APIM-Subscription-Key**érté
 > [!NOTE]
 > Az API használatával egyszerű, összetett és akár beágyazott kifejezéseket is meghatározhat munkafolyamataihoz. A [munkafolyamat-létrehozási vagy frissítési](https://westus2.dev.cognitive.microsoft.com/docs/services/580519463f9b070e5c591178/operations/5813b46b3f9b0711b43c4c59) dokumentáció példákat tartalmaz összetettebb logikára.
 
-### <a name="submit-your-request"></a>Kérelem elküldése
+### <a name="submit-your-request"></a>A kérés elküldése
   
-Válassza a **Küldés**lehetőséget. Ha a művelet sikeres, a **Válasz állapota** `200 OK`, a **válasz tartalma** mező pedig megjelenik `true`.
+Válassza a **Küldés** lehetőséget. Ha a művelet sikeres, a **Válasz állapota** `200 OK` , a **válasz tartalma** mező pedig megjelenik `true` .
 
 ### <a name="examine-the-new-workflow"></a>Vizsgálja meg az új munkafolyamatot
 
-A [felülvizsgálati eszközben](https://contentmoderator.cognitive.microsoft.com/)válassza a **Beállítások** > **munkafolyamatok**lehetőséget. Az új munkafolyamatnak meg kell jelennie a listában.
+A [felülvizsgálati eszközben](https://contentmoderator.cognitive.microsoft.com/)válassza a **Beállítások**  >  **munkafolyamatok**lehetőséget. Az új munkafolyamatnak meg kell jelennie a listában.
 
 ![A munkafolyamatok listájának áttekintése](images/workflow-console-new-workflow.PNG)
 
@@ -102,7 +102,7 @@ Adja meg a REST-hívás paramétereit a fenti szakaszban leírtak szerint. Győz
 
 ![Lekérdezési paraméterek és fejlécek lekérése](images/workflow-get-default.PNG)
 
-Válassza a **Küldés**lehetőséget. Ha a művelet sikeres, a **Válasz állapota** `200 OK`, a **Válasz tartalmának** mezője pedig JSON formátumban jeleníti meg a munkafolyamatot, a következőhöz hasonlóan:
+Válassza a **Küldés** lehetőséget. Ha a művelet sikeres, a **Válasz állapota** `200 OK` , a **Válasz tartalmának** mezője pedig JSON formátumban jeleníti meg a munkafolyamatot, a következőhöz hasonlóan:
 
 ```json
 {

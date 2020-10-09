@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: ee00425da89391e5228f2d48b49ca85426066f1e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85299007"
 ---
 # <a name="update-the-iot-edge-security-daemon-and-runtime"></a>Az IoT Edge biztonsági démon és futtatókörnyezet frissítése
@@ -106,7 +106,7 @@ Windows-eszközökön a PowerShell-parancsfájl használatával frissítse a biz
 . {Invoke-WebRequest -useb aka.ms/iotedge-win} | Invoke-Expression; Update-IoTEdge -ContainerOs <Windows or Linux>
 ```
 
-Az Update-IoTEdge parancs futtatása eltávolítja és frissíti a biztonsági démont az eszközről, valamint a két futásidejű tároló lemezképét. A config. YAML fájlt a rendszer az eszközön tárolja, valamint a Moby Container Engine-ből származó adatokkal (ha Windows-tárolókat használ). A konfigurációs adatok megőrzése azt jelenti, hogy a frissítési folyamat során nem kell megadnia a kapcsolódási karakterlánc vagy az eszköz kiépítési szolgáltatásának adatait az eszközhöz.
+A Update-IoTEdge parancs futtatása eltávolítja és frissíti a biztonsági démont az eszközről, valamint a két futásidejű tároló lemezképét. A config. YAML fájlt a rendszer az eszközön tárolja, valamint a Moby Container Engine-ből származó adatokkal (ha Windows-tárolókat használ). A konfigurációs adatok megőrzése azt jelenti, hogy a frissítési folyamat során nem kell megadnia a kapcsolódási karakterlánc vagy az eszköz kiépítési szolgáltatásának adatait az eszközhöz.
 
 Ha a biztonsági démon egy adott verziójára szeretne frissíteni, keresse meg a célként használni kívánt verziót [IoT Edge kiadásokból](https://github.com/Azure/azure-iotedge/releases). Ebben a verzióban töltse le a **Microsoft-Azure-IoTEdge.cab** fájlt. Ezután a paraméter használatával `-OfflineInstallationPath` mutasson a helyi fájl helyére. Például:
 
@@ -194,7 +194,7 @@ A IoT Edge-eszközök frissítésére két összetevő használható:
 
 3. Ha a letöltött. cab-fájlhoz architektúra utótag tartozik, nevezze át a fájlt csak **Microsoft-Azure-IoTEdge.cab**.
 
-4. Ha offline összetevőkkel szeretné frissíteni a frissítést, a [dot forrás](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_scripts?view=powershell-7#script-scope-and-dot-sourcing) a PowerShell-parancsfájl helyi példányát adja meg. Ezután használja a `-OfflineInstallationPath` paramétert a parancs részeként, `Update-IoTEdge` és adja meg a fájl könyvtárának abszolút elérési útját. Példa:
+4. Ha offline összetevőkkel szeretné frissíteni a frissítést, a [dot forrás](https://docs.microsoft.com/powershell/module/microsoft.powershell.core/about/about_scripts?view=powershell-7#script-scope-and-dot-sourcing) a PowerShell-parancsfájl helyi példányát adja meg. Ezután használja a `-OfflineInstallationPath` paramétert a parancs részeként, `Update-IoTEdge` és adja meg a fájl könyvtárának abszolút elérési útját. Például:
 
    ```powershell
    . <path>\IoTEdgeSecurityDaemon.ps1

@@ -4,10 +4,10 @@ description: Ismerteti, hogyan lehet egy erőforrást egy másik erőforrástól
 ms.topic: conceptual
 ms.date: 12/03/2019
 ms.openlocfilehash: 84cea915565ec6ac9872681e1d4173abacb46ac4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85255211"
 ---
 # <a name="define-the-order-for-deploying-resources-in-arm-templates"></a>Erőforrások üzembe helyezési sorrendjének meghatározása ARM-sablonokban
@@ -140,7 +140,7 @@ További információért lásd a [Reference függvényt](template-functions-res
 
 A Resource Manager körkörös függőségeket azonosít a sablon érvényesítése során. Ha olyan hibaüzenetet kap, amely szerint a körkörös függőség létezik, értékelje ki a sablont, és ellenőrizze, hogy nincs-e szükség függőségre, és hogy el lehet-e távolítani. Ha a függőségek eltávolítása nem működik, elkerülheti a körkörös függőségeket úgy, hogy áthelyez néhány központi telepítési műveletet a körkörös függőséggel rendelkező erőforrások után üzembe helyezett alárendelt erőforrásokra. Tegyük fel például, hogy két virtuális gépet telepít, de tulajdonságokat kell megadnia, amelyek a másikra hivatkoznak. Ezeket a következő sorrendben helyezheti üzembe:
 
-1. VM1
+1. vm1
 2. VM2
 3. A VM1 bővítmény a VM1 és a VM2 függvénytől függ. A bővítmény beállítja azokat az értékeket a VM1, amelyeket a VM2-ből kap.
 4. A VM2 bővítmény a VM1 és a VM2 függvénytől függ. A bővítmény beállítja azokat az értékeket a VM2, amelyeket a VM1-ből kap.

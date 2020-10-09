@@ -8,10 +8,10 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/16/2019
 ms.openlocfilehash: 5604b42e1611830f3aaea9ae180cdb8142ab0942
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75887189"
 ---
 # <a name="scenario-timeouts-with-hbase-hbck-command-in-azure-hdinsight"></a>Forgatókönyv: időtúllépés a "hbase hbck" paranccsal az Azure HDInsight
@@ -26,7 +26,7 @@ Időtúllépéseket észlel a `hbase hbck` régió-hozzárendelések kijavítás
 
 Ha a parancs használatakor időtúllépési problémák merülhetnek fel, lehetséges `hbck` , hogy több régió "átmenetes" állapotban van hosszú ideig. Ezeket a régiókat kapcsolat nélküli üzemmódban láthatja a HBase Master felhasználói felületen. Mivel nagy számú régiót próbálnak áttérni, HBase Master lehet, hogy időtúllépés történt, és nem lehet ismét online állapotba hozni ezeket a régiókat.
 
-## <a name="resolution"></a>Megoldás:
+## <a name="resolution"></a>Feloldás
 
 1. Jelentkezzen be a HDInsight HBase-fürtbe SSH használatával.
 

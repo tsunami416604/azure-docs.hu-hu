@@ -11,13 +11,13 @@ ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
 ms.openlocfilehash: 0cbc57922b31f1b3879bb2cad8a988a1ba4cc368
-ms.sourcegitcommit: 4042aa8c67afd72823fc412f19c356f2ba0ab554
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85307832"
 ---
-# <a name="add-language-generation-templates-for-speech-responses"></a>Nyelvi létrehozási sablonok hozzáadása a beszédfelismerési válaszokhoz
+# <a name="add-language-generation-templates-for-speech-responses"></a>Nyelvlétrehozási sablonok hozzáadása Speech-válaszokhoz
 
 Ebből a cikkből megtudhatja, hogyan használhatja a nyelvi létrehozási sablonokat egyéni parancsokkal. A nyelvi létrehozási sablonok lehetővé teszik az ügyfélnek küldött válaszok testreszabását, és a válaszok eltérésének bevezetését. A nyelvi létrehozás testreszabását az alábbiak érhetik el:
 
@@ -64,7 +64,7 @@ Módosítsa a **TurnOnOff** parancsot új paraméter hozzáadásához a követke
 
 | Beállítás            | Ajánlott érték       | 
 | ------------------ | --------------------- | 
-| Name               | `SubjectContext`         | 
+| Név               | `SubjectContext`         | 
 | Globális          | nincs bejelölve             | 
 | Kötelező           | nincs bejelölve               | 
 | Típus               | Sztring                |
@@ -97,7 +97,7 @@ Az alábbiak szerint **tanítsa** be és **tesztelje** alkalmazását. Figyelje 
 * Bemenet: a helyiségek fényének kikapcsolása
 * Kimenet: ok, a helyiség fényének kikapcsolása
 
-## <a name="use-custom-voice"></a>Egyéni hang használata
+## <a name="use-custom-voice"></a>A Custom Voice használata
 
 Az egyéni parancsok válaszának egy másik módja az egyéni kimeneti hang kiválasztása. Az alábbi lépések végrehajtásával válthat az alapértelmezett hang egyéni hangra.
 

@@ -8,10 +8,10 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/08/2019
 ms.openlocfilehash: a7af6407191577112f936bfb9048985e85c868ea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75887223"
 ---
 # <a name="scenario-storage-exception-after-connection-reset-in-azure-hdinsight"></a>Forgatókönyv: tárolási kivétel az Azure HDInsight-beli kapcsolatok visszaállítása után
@@ -28,7 +28,7 @@ Egy tábla csonkítása során probléma merült fel a tárolási kapcsolatban. 
 
 Bár a tárolóban nem található a mappa nevű blob `/hbase/data/default/ThatTable` . A WASB illesztőprogramja megtalálta a fenti blob-fájl létezését, és nem teszi lehetővé, hogy a létrehozott Blobok létre legyenek hozva `/hbase/data/default/ThatTable` , mert feltételezte, hogy a szülő mappák is megtalálhatók, így a tábla létrehozása sikertelen lesz.
 
-## <a name="resolution"></a>Megoldás:
+## <a name="resolution"></a>Feloldás
 
 1. Az Apache Ambari felhasználói felületén indítsa újra az aktív HMaster. Ez lehetővé teszi, hogy a két készenléti HMaster az aktív legyen, és az új aktív HMaster újra betölti a metaadatok táblázatának adatait. Így nem fogja látni a `already-deleted` táblázatot a HMaster felhasználói felületén.
 

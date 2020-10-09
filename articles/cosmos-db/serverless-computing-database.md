@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 07/17/2019
 ms.author: sngun
 ms.openlocfilehash: d6399da204ba930fad2dd3656d27a807a83b1b13
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85263260"
 ---
 # <a name="serverless-database-computing-using-azure-cosmos-db-and-azure-functions"></a>Kiszolgáló nélküli adatbázis-számítástechnika Azure Cosmos DB és Azure Functions használatával
@@ -61,7 +61,7 @@ A IoT implementációjában egy függvényt hívhat meg, ha az ellenőrzési mot
 
 Az alábbi képen az trigger Azure Portal írt kód látható.
 
-:::image type="content" source="./media/serverless-computing-database/cosmos-db-trigger-portal.png" alt-text="Hozzon létre egy Azure Functions triggert a Cosmos DBhoz a Azure Portal":::
+:::image type="content" source="./media/serverless-computing-database/cosmos-db-trigger-portal.png" alt-text="Azure Cosmos DB és Azure Functions integrálás":::
 
 ### <a name="financial-use-case---timer-trigger-and-input-binding"></a>Pénzügyi használati eset – időzítő trigger és bemeneti kötés
 
@@ -75,9 +75,9 @@ A pénzügyi megvalósításokban meghívhat egy függvényt, ha a bankszámla e
 
 Az alábbi képek a forgatókönyvben szereplő kódot mutatják a Azure Portal.
 
-:::image type="content" source="./media/serverless-computing-database/cosmos-db-functions-financial-trigger.png" alt-text="Egy pénzügyi forgatókönyvhöz tartozó időzítő-triggerIndex.js fájlja":::
+:::image type="content" source="./media/serverless-computing-database/cosmos-db-functions-financial-trigger.png" alt-text="Azure Cosmos DB és Azure Functions integrálás":::
 
-:::image type="content" source="./media/serverless-computing-database/azure-function-cosmos-db-trigger-run.png" alt-text="A. CSX fájl futtatása időzítő triggerhez pénzügyi forgatókönyv esetén":::
+:::image type="content" source="./media/serverless-computing-database/azure-function-cosmos-db-trigger-run.png" alt-text="Azure Cosmos DB és Azure Functions integrálás":::
 
 ### <a name="gaming-use-case---azure-functions-trigger-and-output-binding-for-cosmos-db"></a>Játék használati eset – Azure Functions trigger és kimeneti kötés a Cosmos DB 
 

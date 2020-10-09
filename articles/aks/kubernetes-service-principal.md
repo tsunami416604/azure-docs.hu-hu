@@ -5,10 +5,10 @@ services: container-service
 ms.topic: conceptual
 ms.date: 06/16/2020
 ms.openlocfilehash: 7f62c7dc7aacf9be4a59498aa5c556e9991ad578
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85298548"
 ---
 # <a name="service-principals-with-azure-kubernetes-service-aks"></a>Szolgáltatásnevek és az Azure Kubernetes Service (AKS)
@@ -135,7 +135,7 @@ AKS és Azure AD szolgáltatásnevek használata esetén vegye figyelembe a köv
 - Alapértelmezés szerint az egyszerű szolgáltatás hitelesítő adatai egy évig érvényesek. Bármikor [frissítheti vagy elforgathatja a szolgáltatás egyszerű hitelesítő adatait][update-credentials] .
 - Minden egyszerű szolgáltatás társítva van egy Azure AD-alkalmazáshoz. A Kubernetes-fürthöz tartozó egyszerű szolgáltatás társítható bármely érvényes Azure AD-alkalmazás nevével (például: *https://www.contoso.org/example* ). Az alkalmazás URL-címének nem szükséges valódi végpontnak lennie.
 - Amikor megadja a szolgáltatásnév **Client ID-ját** (Ügyfél-azonosítóját), használja az `appId` értékét.
-- A Kubernetes-fürt ügynök csomópontjának virtuális gépei esetében az egyszerű szolgáltatás hitelesítő adatai a fájlban tárolódnak.`/etc/kubernetes/azure.json`
+- A Kubernetes-fürt ügynök csomópontjának virtuális gépei esetében az egyszerű szolgáltatás hitelesítő adatai a fájlban tárolódnak. `/etc/kubernetes/azure.json`
 - Ha az [az aks create][az-aks-create] parancsot használja a szolgáltatásnév automatikus létrehozásához, a szolgáltatásnév hitelesítő adatai a `~/.azure/aksServicePrincipal.json` fájlba lesznek írva azon a gépen, amelyen a parancsot futtatta.
 - Ha nem adott meg konkrét szolgáltatásnevet a további AK CLI-parancsokban, a rendszer az alapértelmezett egyszerű szolgáltatást `~/.azure/aksServicePrincipal.json` használja.  
 - Szükség esetén eltávolíthatja a fájl aksServicePrincipal.jsis, és az AK létrehoz egy új szolgáltatásnevet.

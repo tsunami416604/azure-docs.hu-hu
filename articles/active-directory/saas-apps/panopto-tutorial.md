@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/17/2019
 ms.author: jeedes
 ms.openlocfilehash: aa7a93776d5dfd1d8ad60a08c2df2d773fb1ec21
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88553995"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-panopto"></a>Oktatóanyag: Azure Active Directory integráció a Panopto
@@ -75,7 +75,7 @@ Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a Panop
 Az Azure AD egyszeri bejelentkezés Panopto való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
 
 1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. **[Panopto egyszeri bejelentkezés konfigurálása](#configure-panopto-single-sign-on)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+2. **[Panopto egyszeri bejelentkezés konfigurálása](#configure-panopto-single-sign-on)** – az egyes Sign-On beállítások konfigurálása az alkalmazás oldalán.
 3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
 4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
 5. **[Hozzon létre Panopto-teszt felhasználót](#create-panopto-test-user)** – hogy a Panopto Britta, a felhasználó Azure ad-képviseletéhez kapcsolódó partnerrel rendelkezzen.
@@ -95,7 +95,7 @@ Az Azure AD egyszeri bejelentkezés Panopto való konfigurálásához hajtsa vé
 
     ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
+3. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
@@ -106,9 +106,9 @@ Az Azure AD egyszeri bejelentkezés Panopto való konfigurálásához hajtsa vé
     A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:  `https://<tenant-name>.panopto.com`
 
     > [!NOTE]
-    > Az érték nem valódi. Frissítse az értéket a tényleges bejelentkezési URL-címmel. Az érték beszerzéséhez forduljon a Panopto ügyfélszolgálati [csapatához](mailto:support@panopto.com) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
+    > Az érték nem valódi. Frissítse az értéket a tényleges Sign-On URL-címmel. Az érték beszerzéséhez forduljon a Panopto ügyfélszolgálati [csapatához](mailto:support@panopto.com) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-5. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
+5. Az **egyszeres Sign-On beállítása SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozása](common/metadataxml.png)
 
@@ -122,7 +122,7 @@ Az Azure AD egyszeri bejelentkezés Panopto való konfigurálásához hajtsa vé
 
     c. Kijelentkezési URL-cím
 
-### <a name="configure-panopto-single-sign-on"></a>Panopto egyszeri bejelentkezés konfigurálása
+### <a name="configure-panopto-single-sign-on"></a>Panopto egyetlen Sign-On konfigurálása
 
 1. Egy másik böngészőablakban jelentkezzen be a Panopto vállalati webhelyre rendszergazdaként.
 
@@ -175,7 +175,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    d. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

@@ -11,10 +11,10 @@ ms.date: 09/25/2019
 ms.subservice: hybrid
 ms.author: billmath
 ms.openlocfilehash: bc159452c81a673ca4a7ed46aa7eff19fd9209eb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "73176025"
 ---
 # <a name="understanding-azure-ad-connect-14xxx-and-device-disappearance"></a>Az Azure AD Connect 1.4. xx. x és az eszközön való megjelenés ismertetése
@@ -30,19 +30,19 @@ Azure AD Connect a felhőbe csak a hibrid Azure AD JOIN által konfigurált, meg
 
 A Azure AD Connect ezen verziója csak a hibrid Azure AD-hez csatlakoztatott Windows 10-es eszközök szinkronizálását hajtja végre. Az Azure AD JOIN-specifikus userCertificate nem rendelkező Windows 10-es eszközök el lesznek távolítva az Azure AD-ből.
 
-## <a name="down-level-windows-devices"></a>Régebbi verziójú Windows-eszközök
+## <a name="down-level-windows-devices"></a>Windows-eszközök Down-Level
 Azure AD Connect soha ne legyenek szinkronizálva a [Windows rendszerű eszközök](../devices/hybrid-azuread-join-plan.md#windows-down-level-devices). Az Azure AD-ben korábban szinkronizált eszközök már nem megfelelően lesznek törölve az Azure AD-ből. Ha Azure AD Connect a [régebbi Windows-eszközök](../devices/hybrid-azuread-join-plan.md#windows-down-level-devices)törlését kísérli meg, akkor az eszköz nem a [Microsoft Workplace JOIN által a nem Windows 10 rendszerű számítógépek MSI-hez](https://www.microsoft.com/download/details.aspx?id=53554) készült, és a többi Azure ad-szolgáltatás nem tudja használni.
 
 Előfordulhat, hogy néhány ügyfélnek újra kell látogatnia a [hibrid Azure Active Directory csatlakoztatásának megtervezése](../devices/hybrid-azuread-join-plan.md) a Windows-eszközök megfelelő regisztrálásához, és biztosítania kell, hogy az ilyen eszközök teljes mértékben részt vegyenek az eszköz alapú feltételes hozzáférésben. 
 
 ## <a name="how-can-i-verify-which-devices-are-deleted-with-this-update"></a>Hogyan tudom ellenőrizni, hogy mely eszközök törlődnek ezzel a frissítéssel?
 
-A következő PowerShell-parancsfájl használatával ellenőrizheti, hogy mely eszközök törlődnek:https://gallery.technet.microsoft.com/scriptcenter/Export-Hybrid-Azure-AD-f8e51436
+A következő PowerShell-parancsfájl használatával ellenőrizheti, hogy mely eszközök törlődnek: https://gallery.technet.microsoft.com/scriptcenter/Export-Hybrid-Azure-AD-f8e51436
 
 Ez a szkript jelentést készít a Active Directory számítógép-objektumokban tárolt tanúsítványokról, pontosabban a hibrid Azure AD JOIN szolgáltatás által kiállított tanúsítványokról.
 Ellenőrzi az AD-ben található számítógép-objektum UserCertificate tulajdonságában lévő tanúsítványokat, és minden nem lejárt tanúsítvány esetében ellenőrzi, hogy a tanúsítvány ki lett-e adva a hibrid Azure AD JOIN szolgáltatáshoz (azaz a tulajdonos neve megegyezik a CN = {ObjectGUID} értékkel).
 Mielőtt a Azure AD Connect az Azure AD-vel szinkronizálja azokat a számítógépeket, amelyek legalább egy érvényes tanúsítványt tartalmaznak, de a Azure AD Connect 1,4-es verziótól kezdődően a szinkronizációs motor képes azonosítani a hibrid Azure AD JOIN-tanúsítványokat, és "cloudfilter" a számítógép-objektumot az Azure AD-be való szinkronizálással, hacsak nincs érvényes hibrid Azure AD JOIN tanúsítvány.
 Azok az Azure AD-eszközök, amelyek már szinkronizálva lettek az Active Directoryval, de nem rendelkeznek érvényes hibrid Azure AD JOIN tanúsítvánnyal, a Szinkronizáló motor törli a (CloudFiltered = TRUE) értéket.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - [Azure AD Connect korábbi verziók](reference-connect-version-history.md)

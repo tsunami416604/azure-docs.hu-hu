@@ -11,10 +11,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: d099d7c233c3f4b5e65bfdb7d4b875a0e4098499
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75864281"
 ---
 # <a name="tasks-for-the-team-lead-on-a-team-data-science-process-team"></a>A Team adatelemzési folyamatának csapatával kapcsolatos feladatok
@@ -91,7 +91,7 @@ Különálló projekt létrehozása a csapat számára:
    
 1. A **projekt létrehozása** párbeszédpanelen adja meg a csoport nevét (például *MyTeam*) a **projekt neve**alatt, majd válassza a **speciális**lehetőséget. 
    
-1. A **verziókövetés**területen válassza a **git**lehetőséget, majd a **munkaelemek feldolgozása**területen válassza az **agilis**lehetőséget. Ezután kattintson a **Létrehozás** elemre. 
+1. A **verziókövetés**területen válassza a **git**lehetőséget, majd a **munkaelemek feldolgozása**területen válassza az **agilis**lehetőséget. Ezután válassza a **Létrehozás** elemet. 
    
    ![Projekt létrehozása](./media/team-lead-tasks/team-leads-3-create-new-team-2.png)
    
@@ -142,7 +142,7 @@ A csapat adattárainak feltöltése a Group Manager által beállított közös 
    
 1. A **git-tárház importálása** párbeszédpanelen válassza a **git** lehetőséget a **forrás típusaként**, majd adja meg a csoport általános sablonjának URL-címét a **klónozott URL-cím**alatt. Az URL-cím *https: \/ / \<server name> / \<organization name> /_git \<repository name> /*. Például: *https: \/ /dev.Azure.com/DataScienceUnit/GroupCommon/_git/GroupProjectTemplate*. 
    
-1. Kattintson az **Importálás** gombra. A Group template-tárház tartalmát a rendszer importálja a Team template adattárba. 
+1. Válassza az **Importálás** lehetőséget. A Group template-tárház tartalmát a rendszer importálja a Team template adattárba. 
    
    ![Csoport általános sablonjának importálása adattár](./media/team-lead-tasks/import-repo-2.png)
    

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: jeedes
 ms.openlocfilehash: 49dd333454f0eb92f5fb0dddc40390ec1baa91c5
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88525496"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-silkroad-life-suite"></a>Oktatóanyag: Azure Active Directory integráció a SilkRoad Life Suite-nal
@@ -73,7 +73,7 @@ Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a SilkR
 Az Azure AD egyszeri bejelentkezés a SilkRoad Life Suite szolgáltatással való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
 
 1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. A **[Silkroad Life Suite egyszeri bejelentkezésének konfigurálása](#configure-silkroad-life-suite-single-sign-on)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+2. A **[Silkroad Life Suite egyszeri bejelentkezésének konfigurálása](#configure-silkroad-life-suite-single-sign-on)** – az egyes Sign-On beállítások konfigurálása az alkalmazás oldalán.
 3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
 4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
 5. A **[Silkroad Life Suite-teszt felhasználójának létrehozása](#create-silkroad-life-suite-test-user)** – a Britta Simon a Silkroad Life Suite-ban található, a felhasználó Azure ad-képviseletéhez kapcsolódó partnere.
@@ -93,7 +93,7 @@ Az Azure AD egyszeri bejelentkezés a SilkRoad Life Suite szolgáltatással val�
 
     ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
+3. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
@@ -136,9 +136,9 @@ Az Azure AD egyszeri bejelentkezés a SilkRoad Life Suite szolgáltatással val�
     - `https://<subdomain>.silkroad.com/Authentication/`
 
     > [!NOTE]
-    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel, azonosítóval és válasz URL-címmel. Az értékek beszerzéséhez lépjen kapcsolatba a [Silkroad Life Suite](https://www.silkroad.com/locations/) ügyfélszolgálatával. Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges Sign-On URL-címmel, azonosítóval és válasz URL-címmel. Az értékek beszerzéséhez lépjen kapcsolatba a [Silkroad Life Suite](https://www.silkroad.com/locations/) ügyfélszolgálatával. Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-6. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
+6. Az **egyszeres Sign-On beállítása SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozása](common/metadataxml.png)
 
@@ -152,7 +152,7 @@ Az Azure AD egyszeri bejelentkezés a SilkRoad Life Suite szolgáltatással val�
 
     c. Kijelentkezési URL-cím
 
-### <a name="configure-silkroad-life-suite-single-sign-on"></a>A SilkRoad Life Suite egyszeri bejelentkezésének konfigurálása
+### <a name="configure-silkroad-life-suite-single-sign-on"></a>A SilkRoad Life Suite egyetlen Sign-On konfigurálása
 
 1. Jelentkezzen be a SilkRoad céges webhelyre rendszergazdaként.
 
@@ -161,23 +161,23 @@ Az Azure AD egyszeri bejelentkezés a SilkRoad Life Suite szolgáltatással val�
 
 1. Nyissa meg a **szolgáltatót**, majd kattintson az **összevonás részletei**elemre.
 
-    ![Azure AD egyszeri bejelentkezés](./media/silkroad-life-suite-tutorial/tutorial_silkroad_06.png)
+    ![Azure AD – egyetlen Sign-On](./media/silkroad-life-suite-tutorial/tutorial_silkroad_06.png)
 
 1. Kattintson az **összevonási metaadatok letöltése**elemre, majd mentse a metaadat-fájlt a számítógépen. A letöltött összevonási metaadatokat **szolgáltatói metaadat fájlként** használhatja a Azure Portal **ALAPszintű SAML-konfiguráció** szakaszában.
 
-    ![Azure AD egyszeri bejelentkezés](./media/silkroad-life-suite-tutorial/tutorial_silkroad_07.png)
+    ![Azure AD – egyetlen Sign-On](./media/silkroad-life-suite-tutorial/tutorial_silkroad_07.png)
 
 1. A **Silkroad** -alkalmazásban kattintson a **hitelesítési források**elemre.
 
-    ![Azure AD egyszeri bejelentkezés](./media/silkroad-life-suite-tutorial/tutorial_silkroad_08.png) 
+    ![Azure AD – egyetlen Sign-On](./media/silkroad-life-suite-tutorial/tutorial_silkroad_08.png) 
 
 1. Kattintson a **hitelesítési forrás hozzáadása**lehetőségre.
 
-    ![Azure AD egyszeri bejelentkezés](./media/silkroad-life-suite-tutorial/tutorial_silkroad_09.png)
+    ![Azure AD – egyetlen Sign-On](./media/silkroad-life-suite-tutorial/tutorial_silkroad_09.png)
 
 1. A **hitelesítési forrás hozzáadása** szakaszban hajtsa végre a következő lépéseket:
 
-    ![Azure AD egyszeri bejelentkezés](./media/silkroad-life-suite-tutorial/tutorial_silkroad_10.png)
+    ![Azure AD – egyetlen Sign-On](./media/silkroad-life-suite-tutorial/tutorial_silkroad_10.png)
   
     a. A **2. lehetőség – metaadat-fájl**területen kattintson a **Tallózás** gombra a letöltött metaadat-fájl Azure Portal való feltöltéséhez.
   
@@ -185,11 +185,11 @@ Az Azure AD egyszeri bejelentkezés a SilkRoad Life Suite szolgáltatással val�
 
 1. A **hitelesítési források** szakaszban kattintson a **Szerkesztés**elemre.
 
-    ![Azure AD egyszeri bejelentkezés](./media/silkroad-life-suite-tutorial/tutorial_silkroad_11.png)
+    ![Azure AD – egyetlen Sign-On](./media/silkroad-life-suite-tutorial/tutorial_silkroad_11.png)
 
 1. A **hitelesítési forrás szerkesztése** párbeszédpanelen hajtsa végre a következő lépéseket:
 
-    ![Azure AD egyszeri bejelentkezés](./media/silkroad-life-suite-tutorial/tutorial_silkroad_12.png)
+    ![Azure AD – egyetlen Sign-On](./media/silkroad-life-suite-tutorial/tutorial_silkroad_12.png)
 
     a. Ha **engedélyezve van**, válassza az **Igen**lehetőséget.
 
@@ -209,7 +209,7 @@ Az Azure AD egyszeri bejelentkezés a SilkRoad Life Suite szolgáltatással val�
 
 1. Tiltsa le az összes többi hitelesítési forrást.
 
-    ![Azure AD egyszeri bejelentkezés](./media/silkroad-life-suite-tutorial/tutorial_silkroad_13.png)
+    ![Azure AD – egyetlen Sign-On](./media/silkroad-life-suite-tutorial/tutorial_silkroad_13.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 
@@ -234,7 +234,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    d. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

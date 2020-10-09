@@ -9,10 +9,10 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: how-to
 ms.date: 09/24/2018
 ms.openlocfilehash: 30bd3187973de204f27a3be3862351550d6a56f6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85260474"
 ---
 # <a name="access-azure-cosmos-db-cassandra-api-data-from-azure-databricks"></a>Azure Cosmos DB Cassandra API adatok elérése a Azure Databricks
@@ -47,7 +47,7 @@ Ez a cikk részletesen ismerteti, hogyan workwith Azure Cosmos DB Cassandra API 
 
 * **Cassandra Spark-összekötő:** – Azure Cosmos db Cassandra API a Spark-nal való integrálásához csatolni kell a Cassandra-összekötőt a Azure Databricks-fürthöz. A fürt csatolása:
 
-  * Tekintse át a Databricks futásidejű verzióját, a Spark verzióját. Ezután keresse meg a Cassandra Spark-összekötővel kompatibilis [Maven-koordinátákat](https://mvnrepository.com/artifact/com.datastax.spark/spark-cassandra-connector) , és csatolja azt a fürthöz. Az összekötő függvénytár fürthöz csatolásához tekintse meg a ["Maven-csomag vagy Spark-csomag feltöltése"](https://docs.databricks.com/user-guide/libraries.html) című cikket. Például a Maven koordinálása a "Databricks Runtime Version 4,3", a "Spark 2.3.1" és a "Scala 2,11"`spark-cassandra-connector_2.11-2.3.1`
+  * Tekintse át a Databricks futásidejű verzióját, a Spark verzióját. Ezután keresse meg a Cassandra Spark-összekötővel kompatibilis [Maven-koordinátákat](https://mvnrepository.com/artifact/com.datastax.spark/spark-cassandra-connector) , és csatolja azt a fürthöz. Az összekötő függvénytár fürthöz csatolásához tekintse meg a ["Maven-csomag vagy Spark-csomag feltöltése"](https://docs.databricks.com/user-guide/libraries.html) című cikket. Például a Maven koordinálása a "Databricks Runtime Version 4,3", a "Spark 2.3.1" és a "Scala 2,11" `spark-cassandra-connector_2.11-2.3.1`
 
 * **Cassandra API-specifikus függvénytár Azure Cosmos db:** – az újrapróbálkozási szabályzatnak a Cassandra Spark-összekötőről a Azure Cosmos db Cassandra API való konfigurálásához egyéni csatlakozási gyár szükséges. Adja hozzá a `com.microsoft.azure.cosmosdb:azure-cosmos-cassandra-spark-helper:1.0.0` [Maven koordinátáit](https://search.maven.org/artifact/com.microsoft.azure.cosmosdb/azure-cosmos-cassandra-spark-helper/1.0.0/jar) , hogy csatolja a tárat a fürthöz.
 

@@ -13,10 +13,10 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: cf731b09115558fc4280fe322d7e952ccb420c03
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85254871"
 ---
 # <a name="copy-data-to-and-from-azure-sql-database-using-azure-data-factory"></a>Adatok másolása Azure SQL Databaseba és onnan a Azure Data Factory használatával
@@ -64,8 +64,8 @@ Az Azure SQL társított szolgáltatás összekapcsolja Azure SQL Database adata
 
 | Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
-| típus |A Type tulajdonságot a következőre kell beállítani: **AzureSqlDatabase** |Yes |
-| connectionString |A connectionString tulajdonsághoz Azure SQL Database-példányhoz való kapcsolódáshoz szükséges adatok megadása. Csak az alapszintű hitelesítés támogatott. |Yes |
+| típus |A Type tulajdonságot a következőre kell beállítani: **AzureSqlDatabase** |Igen |
+| connectionString |A connectionString tulajdonsághoz Azure SQL Database-példányhoz való kapcsolódáshoz szükséges adatok megadása. Csak az alapszintű hitelesítés támogatott. |Igen |
 
 > [!IMPORTANT]
 > Konfigurálja [Azure SQL Database tűzfalat](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure) úgy, hogy az adatbázis-kiszolgáló [engedélyezze az Azure-szolgáltatások számára a kiszolgáló elérését](https://msdn.microsoft.com/library/azure/ee621782.aspx#ConnectingFromAzure). Emellett, ha az Azure-on kívülről Azure SQL Databasera másol adatokat, beleértve a helyszíni adatforrások és a (z) adatokat a Factory Gateway használatával, konfigurálja a megfelelő IP-címtartományt azon számítógép számára, amely adatokat küld a Azure SQL Databasenak.
@@ -79,7 +79,7 @@ A typeProperties szakasz különbözik az egyes adatkészletek típusaitól, és
 
 | Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
-| tableName |Azon Azure SQL Database-példányban található tábla vagy nézet neve, amelyre a társított szolgáltatás hivatkozik. |Yes |
+| tableName |Azon Azure SQL Database-példányban található tábla vagy nézet neve, amelyre a társított szolgáltatás hivatkozik. |Igen |
 
 ## <a name="copy-activity-properties"></a>Másolási tevékenység tulajdonságai
 A tevékenységek definiálásához elérhető & tulajdonságok teljes listáját a [folyamatok létrehozása](data-factory-create-pipelines.md) című cikkben találja. A tulajdonságok, például a név, a leírás, a bemeneti és a kimeneti táblák, valamint a szabályzatok minden típusú tevékenységhez elérhetők.
@@ -96,9 +96,9 @@ A másolási tevékenységben, ha a forrás **SqlSource**típusú, a következő
 
 | Tulajdonság | Leírás | Megengedett értékek | Kötelező |
 | --- | --- | --- | --- |
-| sqlReaderQuery |Az egyéni lekérdezés használatával olvashatja el az adatolvasást. |SQL-lekérdezési karakterlánc. Példa: `select * from MyTable`. |No |
-| sqlReaderStoredProcedureName |Azon tárolt eljárás neve, amely beolvassa az adatokat a forrás táblából. |A tárolt eljárás neve. Az utolsó SQL-utasításnak SELECT utasításnak kell lennie a tárolt eljárásban. |No |
-| storedProcedureParameters |A tárolt eljárás paraméterei. |Név/érték párok. A paraméterek nevének és burkolatának meg kell egyeznie a tárolt eljárás paramétereinek nevével és házával. |No |
+| sqlReaderQuery |Az egyéni lekérdezés használatával olvashatja el az adatolvasást. |SQL-lekérdezési karakterlánc. Példa: `select * from MyTable`. |Nem |
+| sqlReaderStoredProcedureName |Azon tárolt eljárás neve, amely beolvassa az adatokat a forrás táblából. |A tárolt eljárás neve. Az utolsó SQL-utasításnak SELECT utasításnak kell lennie a tárolt eljárásban. |Nem |
+| storedProcedureParameters |A tárolt eljárás paraméterei. |Név/érték párok. A paraméterek nevének és burkolatának meg kell egyeznie a tárolt eljárás paramétereinek nevével és házával. |Nem |
 
 Ha a **sqlReaderQuery** meg van adva a SqlSource, a másolási tevékenység lefuttatja ezt a lekérdezést a Azure SQL Database forráson az adatkéréshez. Azt is megteheti, hogy megadhat egy tárolt eljárást a **sqlReaderStoredProcedureName** és a **storedProcedureParameters** megadásával (ha a tárolt eljárás paraméterekkel rendelkezik).
 
@@ -146,13 +146,13 @@ A **SqlSink** a következő tulajdonságokat támogatja:
 
 | Tulajdonság | Leírás | Megengedett értékek | Kötelező |
 | --- | --- | --- | --- |
-| writeBatchTimeout |Várakozási idő a kötegelt beszúrási művelet befejezéséhez, mielőtt időtúllépés történt. |időtartomány<br/><br/> Például: "00:30:00" (30 perc). |No |
+| writeBatchTimeout |Várakozási idő a kötegelt beszúrási művelet befejezéséhez, mielőtt időtúllépés történt. |időtartomány<br/><br/> Például: "00:30:00" (30 perc). |Nem |
 | writeBatchSize |Beilleszti az adatmennyiséget az SQL-táblába, ha a puffer mérete eléri a writeBatchSize. |Egész szám (sorok száma) |Nem (alapértelmezett: 10000) |
-| sqlWriterCleanupScript |A másolási tevékenységre vonatkozó lekérdezés megadása úgy, hogy egy adott szeletből származó adatmennyiséget takarítson meg. További információ: [ismételhető másolás](#repeatable-copy). |Egy lekérdezési utasítás. |No |
-| sliceIdentifierColumnName |Adja meg a másolási tevékenység oszlopának nevét, amely automatikusan generált szelet-azonosítóval kitöltésre kerül, amely egy adott szelet adatának az újrafuttatáskor való kitakarítására szolgál. További információ: [ismételhető másolás](#repeatable-copy). |A bináris adattípusú oszlop neve (32). |No |
-| sqlWriterStoredProcedureName |A tárolt eljárás neve, amely meghatározza, hogy a forrásadatok hogyan alkalmazhatók a célként megadott táblába, például a saját üzleti logikával történő upsert vagy átalakításra. <br/><br/>Figyelje meg, hogy ez a tárolt eljárás batch-ként lesz **meghívva**. Ha olyan műveletet szeretne végrehajtani, amely csak egyszer fut, és nem rendelkezik a forrásadatok végrehajtásával, például törlés/csonkítása, használja a `sqlWriterCleanupScript` tulajdonságot. |A tárolt eljárás neve. |No |
-| storedProcedureParameters |A tárolt eljárás paraméterei. |Név/érték párok. A paraméterek nevének és burkolatának meg kell egyeznie a tárolt eljárás paramétereinek nevével és házával. |No |
-| sqlWriterTableType |Adja meg a tárolt eljárásban használni kívánt táblanév nevét. A másolási tevékenység lehetővé teszi az áthelyezett adatáthelyezést egy ideiglenes táblában, amely ebben a táblázatban szerepel. A tárolt eljárási kód ezután egyesítheti a meglévő adattal másolható adatmásolási műveleteket. |Egy tábla típusának neve. |No |
+| sqlWriterCleanupScript |A másolási tevékenységre vonatkozó lekérdezés megadása úgy, hogy egy adott szeletből származó adatmennyiséget takarítson meg. További információ: [ismételhető másolás](#repeatable-copy). |Egy lekérdezési utasítás. |Nem |
+| sliceIdentifierColumnName |Adja meg a másolási tevékenység oszlopának nevét, amely automatikusan generált szelet-azonosítóval kitöltésre kerül, amely egy adott szelet adatának az újrafuttatáskor való kitakarítására szolgál. További információ: [ismételhető másolás](#repeatable-copy). |A bináris adattípusú oszlop neve (32). |Nem |
+| sqlWriterStoredProcedureName |A tárolt eljárás neve, amely meghatározza, hogy a forrásadatok hogyan alkalmazhatók a célként megadott táblába, például a saját üzleti logikával történő upsert vagy átalakításra. <br/><br/>Figyelje meg, hogy ez a tárolt eljárás batch-ként lesz **meghívva**. Ha olyan műveletet szeretne végrehajtani, amely csak egyszer fut, és nem rendelkezik a forrásadatok végrehajtásával, például törlés/csonkítása, használja a `sqlWriterCleanupScript` tulajdonságot. |A tárolt eljárás neve. |Nem |
+| storedProcedureParameters |A tárolt eljárás paraméterei. |Név/érték párok. A paraméterek nevének és burkolatának meg kell egyeznie a tárolt eljárás paramétereinek nevével és házával. |Nem |
+| sqlWriterTableType |Adja meg a tárolt eljárásban használni kívánt táblanév nevét. A másolási tevékenység lehetővé teszi az áthelyezett adatáthelyezést egy ideiglenes táblában, amely ebben a táblázatban szerepel. A tárolt eljárási kód ezután egyesítheti a meglévő adattal másolható adatmásolási műveleteket. |Egy tábla típusának neve. |Nem |
 
 #### <a name="sqlsink-example"></a>SqlSink példa
 
@@ -362,7 +362,7 @@ A folyamat egy másolási tevékenységet tartalmaz, amely a bemeneti és a kime
 ```
 A példában a **sqlReaderQuery** meg van adva a SqlSource. A másolási tevékenység ezt a lekérdezést a Azure SQL Database forráson futtatja az adatlekérdezéshez. Azt is megteheti, hogy megadhat egy tárolt eljárást a **sqlReaderStoredProcedureName** és a **storedProcedureParameters** megadásával (ha a tárolt eljárás paraméterekkel rendelkezik).
 
-Ha nem ad meg sqlReaderQuery vagy sqlReaderStoredProcedureName, a JSON-adatkészlet szerkezet szakaszában definiált oszlopok a Azure SQL Databaseon futtatandó lekérdezés létrehozásához használatosak. Példa: `select column1, column2 from mytable`. Ha az adatkészlet definíciója nem rendelkezik a struktúrával, az összes oszlop ki lesz választva a táblából.
+Ha nem ad meg sqlReaderQuery vagy sqlReaderStoredProcedureName, a JSON-adatkészlet szerkezet szakaszában definiált oszlopok a Azure SQL Databaseon futtatandó lekérdezés létrehozásához használatosak. Például: `select column1, column2 from mytable`. Ha az adatkészlet definíciója nem rendelkezik a struktúrával, az összes oszlop ki lesz választva a táblából.
 
 A SqlSource és a BlobSink által támogatott tulajdonságok listájának megtekintéséhez tekintse meg az [SQL-forrás](#sqlsource) szakaszt és a [BlobSink](data-factory-azure-blob-connector.md#copy-activity-properties) .
 
@@ -638,27 +638,27 @@ Az adatok Azure SQL Databaseba való áthelyezésekor a rendszer a következő l
 | --- | --- |
 | bigint |Int64 |
 | binary |Bájt [] |
-| bit |Logikai |
+| bit |Logikai érték |
 | char |Karakterlánc, char [] |
 | dátum |DateTime |
 | Datetime |DateTime |
 | datetime2 |DateTime |
 | DateTimeOffset |DateTimeOffset |
-| Decimal |Decimal |
+| Tizedesjegy |Tizedesjegy |
 | FILESTREAM attribútum (varbinary (max)) |Bájt [] |
-| Float |Double |
+| Lebegőpontos értékek |Dupla |
 | image |Bájt [] |
 | int |Int32 |
-| pénzt |Decimal |
+| pénzt |Tizedesjegy |
 | NCHAR |Karakterlánc, char [] |
 | ntext |Karakterlánc, char [] |
-| numerikus |Decimal |
+| numerikus |Tizedesjegy |
 | nvarchar |Karakterlánc, char [] |
-| valós szám |Egyszeres |
+| valós szám |Egyirányú |
 | ROWVERSION |Bájt [] |
 | idő adattípusúra |DateTime |
 | smallint |Int16 |
-| túlcsordulási |Decimal |
+| túlcsordulási |Tizedesjegy |
 | sql_variant |Objektum |
 | szöveg |Karakterlánc, char [] |
 | time |időtartam |

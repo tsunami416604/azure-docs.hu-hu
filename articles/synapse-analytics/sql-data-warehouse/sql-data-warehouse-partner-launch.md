@@ -12,10 +12,10 @@ ms.author: procha
 ms.reviewer: mabasile
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 43008d33d8d50911c2c97516cb7896b0d3975b06
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85299041"
 ---
 # <a name="azure-synapse-analytics-launch-partners"></a>Azure szinapszis Analytics – partnerek indítása
@@ -23,7 +23,7 @@ ms.locfileid: "85299041"
 Az Azure szinapszis Analytics partnerei olyan mély integrációs eszközöket biztosítanak, & az iparágban történő kézbesítési szakértelmet, hogy ügyfeleink felgyorsítsák a digitális átalakítást a felhőalapú méretezési elemzésekkel Tekintse meg a következő partnereink ajánlatait, akik támogatják a nyilvános előzetes kiadást a május 19-én a közösségi erősítéssel, workshopokkal és ajánlatokkal.
 
 ## <a name="our-public-preview-launch-partners"></a>Nyilvános előzetes indítási partnereink
-| Partner | Description | Webhely/termék hivatkozása |
+| Partner | Leírás | Webhely/termék hivatkozása |
 | ------- | ----------- | -------------------- |
 | ![Accenture](./media/sql-data-warehouse-partner-public-preview/accenture-logo.png) |**Accenture**<br>A 45000 + dedikált szakemberek, a Accenture Microsoft üzleti csoport – a Avanade által működtetett – segítségével a vállalatok a digitális zavarás korában is fejlődnek.|[Partner oldal](https://www.accenture.com/us-en/services/microsoft-index)<br>|
 | ![Adatis](./media/sql-data-warehouse-partner-public-preview/adatis-logo.png) |**Adatis**<br>A Adatis olyan szolgáltatásokat kínál, amelyek speciális adatelemzési, adatstratégiai és tanácsadói szolgáltatások, világszínvonalú kézbesítés és felügyelt szolgáltatások számára specializáltak. |[Partner oldal](https://adatis.co.uk/)<br> |
@@ -41,6 +41,6 @@ Az Azure szinapszis Analytics partnerei olyan mély integrációs eszközöket b
 | ![SqlDBM](./media/sql-data-warehouse-partner-data-management/sqldbm-logo.png) |**SqlDBM**<br>A SqlDBM egy felhőalapú adatmodellezési eszköz, amely egyszerű és kényelmes megoldást kínál az adatbázis bármely böngészőn belüli fejlesztésére. A szükséges adatbázis-szabályok és objektumok, például az adatbázis-kulcsok, a sémák, az indexek, az oszlopok megkötései és a kapcsolatok beépítése. |[Termék lap](http://sqldbm.com/)<br>[Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/sqldbm1583438206845.sqldbm-data-modeling-tool?tab=Overview)<br>|
 | ![Tehetség](./media/sql-data-warehouse-partner-data-integration/talend_logo.png) |**Tehetség-felhő**<br>A tehetség Cloud egy nagyvállalati adatintegrációs platform, amely a felhőben vagy a helyszínen lévő összes adatkapcsolathoz, hozzáféréshez és átalakításhoz biztosít hozzáférést. Ez egy szolgáltatásként nyújtott integrációs platform (iPaaS), amely széles körű kapcsolódást, beépített adatminőséget és natív támogatást nyújt a legújabb big data és felhőalapú technológiákhoz. |[Termék lap](https://www.talend.com/)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/marketplace/apps/talend.talendremoteengine?source=datamarket&tab=Overview) |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ha többet szeretne megtudni más partnereinkről, tekintse meg az [üzleti intelligencia partnereket](sql-data-warehouse-partner-business-intelligence.md), [az adatintegrációs partnereket](sql-data-warehouse-partner-data-integration.md), a [adatkezelés partnereket](sql-data-warehouse-partner-data-management.md), valamint [Machine learning & AI-partnereket](sql-data-warehouse-partner-machine-learning-ai.md).
 

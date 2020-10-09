@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/03/2019
 ms.author: jeedes
 ms.openlocfilehash: 543085eaea993f6e464a501ffc93befd7589a009
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88554128"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pagedna"></a>Oktatóanyag: Azure Active Directory integráció a PageDNA
@@ -95,7 +95,7 @@ Az Azure AD egyszeri bejelentkezés PageDNA való konfigurálásához hajtsa vé
 
     ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-1. Az **egyszeri bejelentkezés az SAML-vel** panelen való beállítása lapon válassza a **Szerkesztés** (a ceruza ikon) lehetőséget az **alapszintű SAML-konfiguráció** panel megnyitásához.
+1. Az **egyszeri Sign-On beállítása az SAML-vel** panelen válassza a **Szerkesztés** (a ceruza ikon) lehetőséget az **alapszintű SAML-konfiguráció** panel megnyitásához.
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
@@ -122,7 +122,7 @@ Az Azure AD egyszeri bejelentkezés PageDNA való konfigurálásához hajtsa vé
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel és azonosítóval. Az értékek beszerzéséhez forduljon a [PageDNA támogatási csapatához](mailto:success@pagedna.com). A Azure Portal **alapszintű SAML-konfiguráció** paneljén látható mintázatokat is megtekintheti.
 
-1. Az **egyszeri bejelentkezés SAML-panelen való beállításához** az **SAML aláíró tanúsítvány** szakaszban válassza a **Letöltés** lehetőséget a **tanúsítvány (RAW)** letöltéséhez a megadott beállítások közül, és mentse a számítógépre.
+1. Az **egyszeri Sign-On az SAML-panellel beállításnál** az **SAML aláíró tanúsítvány** szakaszban válassza a **Letöltés** lehetőséget a **tanúsítvány (RAW)** letöltéséhez a megadott beállítások közül, és mentse a számítógépre.
 
     ![A tanúsítvány (RAW) letöltési lehetősége](common/certificateraw.png)
 

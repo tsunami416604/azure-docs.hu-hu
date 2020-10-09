@@ -8,10 +8,10 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/14/2019
 ms.openlocfilehash: b886f51bcb2bb7308c49c76563dcb70148bbc583
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75887291"
 ---
 # <a name="scenario-apache-phoenix-connectivity-issues-in-azure-hdinsight"></a>Forgatókönyv: Apache Phoenix kapcsolódási problémák az Azure HDInsight
@@ -26,7 +26,7 @@ Nem lehet csatlakozni az Apache HBase a Apache Phoenix használatával. Az okok 
 
 Az aktív Zookeeper csomópontjának helytelen IP-címe.
 
-### <a name="resolution"></a>Megoldás:
+### <a name="resolution"></a>Feloldás
 
 Az aktív Zookeeper csomópontjának IP-címe a Ambari felhasználói felületén azonosítható a **HBase**  >  **Quick Links**  >  **ZK (aktív)**  >  **Zookeeper-információ**hivatkozásait követve. Szükség szerint javítsa ki az IP-címet.
 
@@ -46,7 +46,7 @@ A parancs futtatásakor a `count 'SYSTEM.CATALOG'` következőhöz hasonló hiba
 ERROR: org.apache.hadoop.hbase.NotServingRegionException: Region SYSTEM.CATALOG,,1485464083256.c0568c94033870c517ed36c45da98129. is not online on 10.2.0.5,16020,1489466172189)
 ```
 
-### <a name="resolution"></a>Megoldás:
+### <a name="resolution"></a>Feloldás
 
 Az Apache Ambari felhasználói felületén hajtsa végre a következő lépéseket a HMaster szolgáltatás újraindításához az összes ZooKeeper-csomóponton:
 

@@ -4,10 +4,10 @@ description: Ez a cikk bemutatja, hogyan dolgozhatja fel az Azure Event hub adat
 ms.date: 06/23/2020
 ms.topic: article
 ms.openlocfilehash: 2db4fba59a1a06a24ee2939c51ecdf65aa06cef3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85312895"
 ---
 # <a name="process-data-from-your-event-hub-using-azure-stream-analytics"></a>Az Event hub adatainak feldolgozása Azure Stream Analytics használatával 
@@ -44,7 +44,7 @@ Az Azure Event Hubs és a Azure Stream Analytics integráció legfőbb előnyei:
     - A bejövő adatértékeket táblázatos formátumban vagy nyers formátumban is megtekintheti. 
     - Ha a megjelenített adatai nem aktuálisak, válassza a **frissítés** lehetőséget a legújabb események megtekintéséhez. 
 
-        Íme egy példa a **táblázat formátumára**: ![ a táblázat formátumát eredményezi.](./media/process-data-azure-stream-analytics/snapshot-results.png)
+        Íme egy példa a **táblázat formátumára**:   ![ a táblázat formátumát eredményezi.](./media/process-data-azure-stream-analytics/snapshot-results.png)
 
         Íme egy példa a **nyers formátumban**tárolt adatmennyiségre: 
 

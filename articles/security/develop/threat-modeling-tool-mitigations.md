@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 08/17/2017
 ms.author: rodsan
 ms.openlocfilehash: 748d10b994080b667885e5d0d5f4d688269e86ab
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "68728036"
 ---
 # <a name="microsoft-threat-modeling-tool-mitigations"></a>Microsoft Threat Modeling Tool enyhítések
@@ -32,7 +32,7 @@ Látogasson el a **[Threat Modeling toolra](threat-modeling-tool.md)** , és kez
 
 A Threat Modeling Tool enyhítése a webalkalmazás biztonsági keretének megfelelően van kategorizálva, amely a következőkből áll:
 
-| Kategória | Description |
+| Kategória | Leírás |
 | -------- | ----------- |
 | **[Naplózás és naplózás](threat-modeling-tool-auditing-and-logging.md)** | Kinek és Mikor? A naplózás és a naplózás arra utal, hogy az alkalmazás hogyan rögzíti a biztonsággal kapcsolatos eseményeket |
 | **[Hitelesítés](threat-modeling-tool-authentication.md)** | hogy vagy? A hitelesítés az a folyamat, amelyben egy entitás igazolja egy másik entitás identitását, jellemzően hitelesítő adatokkal, például felhasználónévvel és jelszóval. |

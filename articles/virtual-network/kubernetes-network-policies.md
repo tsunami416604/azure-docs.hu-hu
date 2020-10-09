@@ -17,10 +17,10 @@ ms.date: 9/25/2018
 ms.author: aanandr
 ms.custom: ''
 ms.openlocfilehash: 5a6da7e65a9a3e962a2df37b062792fbb990d04d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "73159695"
 ---
 # <a name="azure-kubernetes-network-policies-overview"></a>Az Azure Kubernetes hálózati szabályzatainak áttekintése
@@ -32,13 +32,13 @@ A hálózati házirendek a hüvelyek számára biztosítanak olyan mikro-szegmen
 Az Azure hálózati házirendjei együtt működnek az Azure CNI, amely VNet-integrációt biztosít a tárolók számára. Jelenleg csak Linux-csomópontokon támogatott. A implementálja a Linux IP-táblázat szabályait a megadott házirendek alapján, hogy kikényszerítse a forgalom szűrését.
 
 ## <a name="planning-security-for-your-kubernetes-cluster"></a>A Kubernetes-fürt biztonságának megtervezése
-A fürt biztonságának megvalósításakor használjon hálózati biztonsági csoportokat (NSG-ket) az észak-déli forgalom szűrésére, azaz a fürt alhálózatára beérkező és onnan kilépő forgalomra, valamint a Kubernetes hálózati házirendeket használni a kelet-nyugati forgalomhoz, azaz a fürtben található hüvelyek közötti forgalmat.
+A fürt biztonságának megvalósításakor hálózati biztonsági csoportok (NSG-EK) használatával szűrheti North-South forgalmat, azaz a fürt alhálózatára beérkező és onnan távozó forgalmat, valamint a East-West forgalomra vonatkozó Kubernetes hálózati házirendeket, azaz a fürtben lévő hüvelyek közötti forgalmat.
 
 ## <a name="using-azure-kubernetes-network-policies"></a>Az Azure Kubernetes hálózati házirendjeinek használata
 Az Azure hálózati házirendjei a következő módokon használhatók a hüvelyek mikro-szegmentálásának biztosítására.
 
 ### <a name="acs-engine"></a>ACS-motor
-Az ACS-Engine egy olyan eszköz, amely Azure Resource Manager sablont hoz létre egy Kubernetes-fürt Azure-beli üzembe helyezéséhez. A fürtkonfiguráció egy JSON-fájlban van meghatározva, amelyet a sablon létrehozásakor a rendszer továbbít az eszköznek. A támogatott fürtbeállítások teljes listájával és a beállítások leírásával kapcsolatos további részletekért tekintse meg a Microsoft Azure Container Service Engine – Fürtdefiníció című részt.
+ACS-Engine egy olyan eszköz, amely egy Azure Resource Manager sablont hoz létre egy Kubernetes-fürt Azure-beli telepítéséhez. A fürtkonfiguráció egy JSON-fájlban van meghatározva, amelyet a sablon létrehozásakor a rendszer továbbít az eszköznek. A támogatott fürtbeállítások teljes listájával és a beállítások leírásával kapcsolatos további részletekért tekintse meg a Microsoft Azure Container Service Engine – Fürtdefiníció című részt.
 
 Ha az ACS-Engine használatával telepített fürtökön szeretné engedélyezni a házirendeket, akkor a fürt definíciós fájljában válassza a networkPolicy beállítás értékét az "Azure" értékre.
 
