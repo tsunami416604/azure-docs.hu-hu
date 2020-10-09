@@ -8,10 +8,10 @@ ms.date: 02/20/2018
 ms.author: rogarana
 ms.subservice: blobs
 ms.openlocfilehash: cfc3c445595bec046de4256a57d566067fe3d29e
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82692442"
 ---
 # <a name="verify-throughput-and-latency-metrics-for-a-storage-account"></a>Átviteli sebességgel és késéssel kapcsolatos mérőszámok ellenőrzése tárfiókok esetében
@@ -36,7 +36,7 @@ A **METRIKA** területen válassza ki a következő táblázatban található m�
 
 Az alábbi mérőszámok segítségével képet kaphat az alkalmazás késésével és átviteli sebességével kapcsolatban. A portálon konfigurált mérőszámok egyperces átlagértékek. Ha egy tranzakció egy percen belül fejeződött be, akkor a percben megadott érték az átlag felére csökken. Az alkalmazásban a fel- és letöltési műveletek időzítve vannak, és a rendszer a kimenetek között megjeleníti a fájlok fel- és letöltéséhez szükséges tényleges időt. Ezek az információk és a portál mérőszámai együttesen teljes körűen értelmezhetővé teszik az átviteli sebességet.
 
-|Metrika|Definíció|
+|Metrika|Meghatározás|
 |---|---|
 |**Sikeres kérések végpontok közötti késése**|A tárolási szolgáltatás vagy a megadott API-művelet számára elküldött sikeres kérések végpontok közötti késésének átlaga. Ez az érték magában foglalja a kérelem elolvasásához, a válasz elküldéséhez és a válasz visszaigazolásának fogadásához az Azure Storage számára szükséges feldolgozási időt.|
 |**Sikerességi kiszolgáló késése**|Az Azure Storage által sikeresen feldolgozott kérések átlagos feldolgozási ideje. Ez az érték nem tartalmazza a SuccessE2ELatency paraméterben megadott hálózati késleltetést. |
@@ -62,7 +62,7 @@ A [Dimenziók](../common/monitor-storage-reference.md?toc=%2fazure%2fstorage%2fb
 
 Ha már nincs rá szükség, törölje az erőforráscsoportot, a virtuális gépet és az összes kapcsolódó erőforrást. Ehhez válassza ki a virtuális gép erőforráscsoportját, és kattintson a Törlés elemre.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A sorozat negyedik részében megismerkedett a példamegoldáshoz tartozó mérőszámok megtekintésével, például a következőkkel:
 

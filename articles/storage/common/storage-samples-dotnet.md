@@ -8,10 +8,10 @@ ms.service: storage
 ms.subservice: common
 ms.topic: sample
 ms.openlocfilehash: f02c08e752575dd1f57ce91dfc3145b69e3a2fd2
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81010494"
 ---
 # <a name="azure-storage-samples-using-v12-net-client-libraries"></a>Azure Storage-minták a V12 .NET ügyféloldali kódtárak használatával
@@ -329,7 +329,7 @@ A következő útmutatókból megtudhatja, hogyan telepítheti az Azure Storage 
 * [Első lépések az Azure Table Service-ben a .NET-ben](../../cosmos-db/tutorial-develop-table-dotnet.md)
 * [Első lépések az Azure file Service-ben a .NET-ben](../files/storage-dotnet-how-to-use-files.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a mintákról más nyelveken:
 

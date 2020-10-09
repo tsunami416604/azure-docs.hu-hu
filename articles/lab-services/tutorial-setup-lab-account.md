@@ -4,10 +4,10 @@ description: Ismerje meg, hogyan állíthat be labor-fiókot Azure Lab Servicesk
 ms.topic: tutorial
 ms.date: 06/26/2020
 ms.openlocfilehash: fba4dbc5386407bd796606d86a5b7bdc7c10fd61
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85445066"
 ---
 # <a name="tutorial-set-up-a-lab-account-with-azure-lab-services"></a>Oktatóanyag: Tesztkörnyezetfiók beállítása az Azure Lab Services szolgáltatással
@@ -38,7 +38,7 @@ A következő lépések bemutatják, hogyan használhatja az Azure Portalt teszt
     4. A **hely**mezőben válasszon ki egy helyet vagy régiót, amelyben létre kívánja hozni a labor-fiókot. 
 
         ![Lab-fiók – alapismeretek lap](./media/tutorial-setup-lab-account/lab-account-basics-page.png)
-    5. Válassza az **Áttekintés + létrehozás** lehetőséget.
+    5. Válassza a **Felülvizsgálat + létrehozás** lehetőséget.
     6. Tekintse át az összegzést, és válassza a **Létrehozás**lehetőséget. 
 
         ![Felülvizsgálat + létrehozás – > létrehozás](./media/tutorial-setup-lab-account/create-button.png)    

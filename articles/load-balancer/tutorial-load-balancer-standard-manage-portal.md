@@ -16,10 +16,10 @@ ms.date: 03/11/2019
 ms.author: allensu
 ms.custom: seodec18
 ms.openlocfilehash: 8961a50490bdbf8b456e87e1c00577c2c8afd050
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80240358"
 ---
 # <a name="tutorial-load-balance-internet-traffic-to-vms-using-the-azure-portal"></a>Oktatóanyag: a virtuális gépek internetes forgalmának terheléselosztása a Azure Portal használatával
@@ -51,10 +51,10 @@ Ebben a szakaszban egy olyan standard Load Balancer hoz létre, amely a virtuál
     | ---                     | ---                                                |
     | Előfizetés               | Válassza ki előfizetését.    |    
     | Erőforráscsoport         | Válassza az **új létrehozása** lehetőséget, és írja be a *myresourcegroupslb erőforráscsoportban* szöveget a szövegmezőbe.|
-    | Name                   | *myLoadBalancer*                                   |
+    | Név                   | *myLoadBalancer*                                   |
     | Region         | Válassza a **Nyugat-Európa** régiót.                                        |
     | Típus          | Válassza a **Nyilvános** lehetőséget.                                        |
-    | Termékváltozat           | Válassza a **standard**lehetőséget.                          |
+    | SKU           | Válassza a **standard**lehetőséget.                          |
     | Nyilvános IP-cím | Válassza az **Új létrehozása** lehetőséget. |
     | Nyilvános IP-cím              | Írja be a *myPublicIP* szöveget a szövegmezőbe.   |
     |A rendelkezésre állási zóna| Válassza ki a **felesleges zónát**.    |
@@ -91,7 +91,7 @@ Ha engedélyezni szeretné a Load Balancer számára az alkalmazás állapotána
     | Időköz | A mintavételi kísérletek közötti időtartam másodpercben megadott számú **intervallumában** adja meg a *15* értéket. |
     | Nem kifogástalan állapot küszöbértéke | Válassza a *2* értéket a nem megfelelő **állapotú küszöbértékek** vagy egymást követő mintavételi hibák számának megadásához, amelyeknek a virtuális gép nem megfelelő állapotba kell kerülnie.|
     
-4. Kattintson az **OK** gombra.
+4. Válassza az **OK** lehetőséget.
 
 ### <a name="create-a-load-balancer-rule"></a>Terheléselosztási szabály létrehozása
 
@@ -160,7 +160,7 @@ A standard Load Balancer csak a standard IP-címmel rendelkező virtuális gépe
         - A terheléselosztási **Beállítások** **között a terheléselosztási beállítások területen**válassza az **Azure Load Balancer**elemet.
         - A **Load Balancer kiválasztásához** *myLoadBalancer*. 
 1. Válassza a **kezelés** lapot, vagy válassza a **következő**  >  **kezelés**lehetőséget. A **figyelés**területen **kapcsolja ki**a **rendszerindítási diagnosztika** beállítást. 
-1. Válassza az **Áttekintés + létrehozás** lehetőséget.   
+1. Válassza a **Felülvizsgálat + létrehozás** lehetőséget.   
 1. Tekintse át a beállításokat, majd kattintson a **Létrehozás**gombra.
 1. A lépéseket követve hozzon létre két további virtuális gépet – *myVM2* és *MYVM3*, standard SKU nyilvános IP-címmel a **2** . és **3** . **rendelkezésre állási zónában** , és az összes többi beállítás ugyanaz, mint a *myVM1*.  
 
@@ -179,7 +179,7 @@ Ebben a szakaszban egy hálózati biztonsági csoportra vonatkozó szabályt hoz
     - **Prioritás**: *100*
     - Név: *myHTTPRule*
     - *Http engedélyezése* – Leírás
-4. Válassza a **Hozzáadás** elemet.
+4. Válassza a **Hozzáadás** lehetőséget.
 
 ### <a name="install-iis-on-vms"></a>Az IIS telepítése virtuális gépekre
 
@@ -241,7 +241,7 @@ Ha vissza szeretné adni a *myVM1* a háttér-készlethez, hajtsa végre a köve
 
 Ha már nincs rájuk szükség, törölje az erőforráscsoportot, Load Balancer és az összes kapcsolódó erőforrást. Ehhez válassza ki a Load Balancer tartalmazó *myResouceGroupSLB* erőforráscsoportot, majd válassza a  **Törlés**lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban létrehozott egy standard Load Balancer, csatlakoztatott virtuális gépeket, konfigurálta az Load Balancer forgalmi szabályt, az állapot-mintavételt, majd tesztelte a Load Balancer. Emellett eltávolított egy virtuális gépet az elosztott terhelésű készletből, és hozzáadta a virtuális gépet a háttércímkészlethez. Ha bővebb információra van szüksége az Azure Load Balancerrel kapcsolatban, folytassa az Azure Load Balancerről szóló oktatóanyagokkal.
 

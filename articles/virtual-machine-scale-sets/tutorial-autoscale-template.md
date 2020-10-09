@@ -10,10 +10,10 @@ ms.date: 03/27/2018
 ms.reviewer: avverma
 ms.custom: avverma
 ms.openlocfilehash: fae86e13be624d7a5304aa04b82432e1163b1244
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84629555"
 ---
 # <a name="tutorial-automatically-scale-a-virtual-machine-scale-set-with-an-azure-template"></a>Oktatóanyag: Virtuálisgép-méretezési csoport automatikus méretezése Azure-sablonnal
@@ -68,13 +68,13 @@ Ez a szabály az alábbi paramétereket tartalmazza:
 |-------------------|---------------------------------------------------------------------------------------------------------------------|-----------------|
 | *metricName*      | A méretezési csoporthoz tartozó műveletek monitorozásának és alkalmazásának teljesítménymutatója.                                                   | Százalékos processzorhasználat  |
 | *timeGrain*       | Az elemzendő metrikák gyűjtési gyakorisága.                                                                   | 1 perc        |
-| *timeAggregation* | Meghatározza, hogy az összegyűjtött metrikák hogyan legyenek összesítve az elemzéshez.                                                | Average         |
+| *timeAggregation* | Meghatározza, hogy az összegyűjtött metrikák hogyan legyenek összesítve az elemzéshez.                                                | Átlag         |
 | *timeWindow*      | A mérőszám és a küszöbértékek összehasonlítása előtt monitorozott időtartam.                                   | 5 perc       |
 | *üzemeltető*        | A metrikaadatok és a küszöbérték összehasonlításához használt operátor.                                                     | Nagyobb, mint    |
 | *küszöb*       | Az érték, amely esetén az automatikus skálázási szabály aktivál egy műveletet.                                                      | 70%             |
 | *irányba*       | Meghatározza, hogy a méretezési csoport a szabály alkalmazásakor horizontálisan le- vagy fel legyen skálázva.                                              | Növelés        |
 | *típusa*            | Azt jelöli, hogy a virtuálisgép-példányok számát egy megadott értékre kell módosítani.                                    | Darabszám megváltoztatása    |
-| *érték*           | Hány virtuálisgép-példány legyen horizontálisan le- vagy felskálázva a szabály alkalmazásakor.                                             | 3               |
+| *value*           | Hány virtuálisgép-példány legyen horizontálisan le- vagy felskálázva a szabály alkalmazásakor.                                             | 3               |
 | *cooldown*        | Mennyi idő teljen el a szabály újbóli alkalmazása előtt, hogy az automatikus skálázási műveletek kifejthessék a hatásukat. | 5 perc       |
 
 Az alábbi szabály lesz hozzáadva az előző szakaszban található *Microsoft.insights/autoscalesettings* erőforrás-szolgáltató profil szakaszához:

@@ -13,10 +13,10 @@ ms.custom: seo-lt-2019
 ms.date: 05/28/2020
 ms.author: jingwang
 ms.openlocfilehash: 16b5eeb33f8be07d6257d8d7957ea2526ab9d3f1
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85253964"
 ---
 # <a name="copy-data-from-azure-blob-storage-to-a-database-in-azure-sql-database-by-using-azure-data-factory"></a>Adatok másolása az Azure Blob Storage-ból egy Azure SQL Database-adatbázisba Azure Data Factory használatával
@@ -127,7 +127,7 @@ Ebben az oktatóanyagban először létrehozzuk a folyamatot. Ezután társítot
 >Ebben az oktatóanyagban a *fiók kulcsát* használja a forrás adattároló hitelesítési típusaként, de más támogatott hitelesítési módszereket is választhat: *sas URI*,*egyszerű szolgáltatásnév* és *felügyelt identitás* , ha szükséges. A részletekért tekintse meg a [cikk](https://docs.microsoft.com/azure/data-factory/connector-azure-blob-storage#linked-service-properties) megfelelő részeit.
 >Az adattárak titkos kulcsainak biztonságos tárolásához ajánlott egy Azure Key Vault is használni. A részletes illusztrációkat [ebben a cikkben](https://docs.microsoft.com/azure/data-factory/store-credentials-in-key-vault) találja.
 
-1. Lépjen a **forrás** lapra. Válassza az **+ új** lehetőséget a forrás adatkészlet létrehozásához.
+1. Nyissa meg a **forrás** lapot. Forrás adatkészlet létrehozásához válassza az **+ új** lehetőséget.
 
 1. Az **új adatkészlet** párbeszédpanelen válassza az **Azure Blob Storage**lehetőséget, majd kattintson a **Folytatás**gombra. A forrásadatok egy Blob Storage-ban vannak, tehát forrásadatkészletként az **Azure Blob Storage**-ot válassza.
 
@@ -141,7 +141,7 @@ Ebben az oktatóanyagban először létrehozzuk a folyamatot. Ezután társítot
 
 1. Keresse meg a **adftutorial/input** mappát, válassza ki a **emp.txt** fájlt, majd kattintson az **OK gombra**.
 
-1. Kattintson az **OK** gombra. Automatikusan megnyitja a folyamat lapot. A **forrás** lapon ellenőrizze, hogy a **sourceblobdataset lehetőség** van-e kiválasztva. A lapon lévő adatok előnézetének megtekintéséhez válassza az **Adatok előnézete** elemet.
+1. Válassza az **OK** lehetőséget. Automatikusan megnyitja a folyamat lapot. A **forrás** lapon ellenőrizze, hogy a **sourceblobdataset lehetőség** van-e kiválasztva. A lapon lévő adatok előnézetének megtekintéséhez válassza az **Adatok előnézete** elemet.
 
     ![Forrásadatkészlet](./media/tutorial-copy-data-portal/source-dataset-selected.png)
 
@@ -174,7 +174,7 @@ Ebben az oktatóanyagban először létrehozzuk a folyamatot. Ezután társítot
 
     ![Új társított szolgáltatás mentése](./media/tutorial-copy-data-portal/new-azure-sql-linked-service-window.png)
 
-1. Automatikusan megnyitja a **tulajdonságok beállítása** párbeszédpanelt. A **Tábla** területen válassza a **[dbo].[emp]** elemet. Ez után válassza az **OK** gombot.
+1. Automatikusan megnyitja a **tulajdonságok beállítása** párbeszédpanelt. A **Tábla** területen válassza a **[dbo].[emp]** elemet. Ezután válassza az **OK** gombot.
 
 1. Lépjen a folyamatot tartalmazó lapra, és győződjön meg arról, hogy a **Fogadóadattár** mezőben az **OutputSqlDataset** érték van kiválasztva.
 
@@ -232,11 +232,11 @@ Ebben az ütemezésben egy ütemezési eseményindítót fog létrehozni a folya
 
     e. Frissítse a **befejezési időt** , hogy az aktuális dátum és idő pár perccel korábbi legyen. Az eseményindító csak a módosítások közzététele után lesz aktív. Ha úgy állítja be, hogy csak néhány percre van beállítva, és nem teszi közzé azt, akkor nem jelenik meg a trigger futtatása.
 
-    f. Kattintson az **OK** gombra.
+    f. Válassza az **OK** lehetőséget.
 
     : Az **aktivált** beállításnál válassza az **Igen**lehetőséget.
 
-    h. Kattintson az **OK** gombra.
+    h. Válassza az **OK** lehetőséget.
 
     > [!IMPORTANT]
     > Minden egyes folyamatfuttatásnak van bizonyos költségvonzata, ezért a befejezés időpontját ezt figyelembe véve adja meg.

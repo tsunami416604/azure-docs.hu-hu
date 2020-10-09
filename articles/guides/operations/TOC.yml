@@ -1,14 +1,14 @@
 - name: Azure informatikai dolgozóknak
   items:
-    - name: Bevezetés az Azure használatába
+    - name: Az Azure használatának első lépései
       href: azure-operations-guide.md
-    - name: Gyors útmutatók
+    - name: Rövid útmutatók
       items:
-        - name: Virtuális gépek
+        - name: Virtual Machines
           items:
             - name: Windows Virtual Machines
               href: ../../virtual-machines/windows/quick-create-portal.md?toc=%2fazure%2fguides%2foperations%2ftoc.json
-            - name: Linux rendszerű virtuális gépek
+            - name: Linux Virtual Machines
               href: ../../virtual-machines/linux/quick-create-portal.md?toc=%2fazure%2fguides%2foperations%2ftoc.json
         - name: Virtuális hálózatok
           items:
@@ -30,9 +30,9 @@
           items:
             - name: Azure-beli virtuális gép replikálása másik Azure-régióba
               href: ../../site-recovery/azure-to-azure-quickstart.md
-    - name: oktatóanyagokat
+    - name: Oktatóanyagok
       items:
-        - name: Virtuális gépek
+        - name: Virtual Machines
           items:
             - name: Windows rendszerű virtuális gépek létrehozása és kezelése
               href: ../../virtual-machines/windows/tutorial-manage-vm.md?toc=%2fazure%2fguides%2foperations%2ftoc.json
@@ -60,4 +60,4 @@
           href: 'https://azure.microsoft.com/pricing/calculator/'
         - name: A Microsoft Azure Portal áttekintése
           href: 'https://azure.microsoft.com/documentation/articles/azure-portal-overview/'
-    - name: Referencia
+    - name: Hivatkozások

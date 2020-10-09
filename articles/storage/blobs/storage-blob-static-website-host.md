@@ -9,10 +9,10 @@ ms.date: 1/22/2020
 ms.author: normesta
 ms.reviewer: dineshm
 ms.openlocfilehash: 03850315a05f569d2c6ba9405b6ec38bb6b1305d
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "78330395"
 ---
 <!---Customer intent: I want to host files for a static website in Blob storage and access the website from an Azure endpoint.--->
@@ -25,7 +25,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 
 > [!div class="checklist"]
 > * Statikus webhely üzemeltetésének konfigurálása
-> * "Helló világ!" alkalmazás webhely üzembe helyezése
+> * „Helló világ!” alkalmazás webhely üzembe helyezése
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -61,9 +61,9 @@ Első lépésként konfigurálja a Storage-fiókot egy statikus webhely üzemelt
 
     ![Statikus webhely üzemeltetésének engedélyezése Storage-fiókhoz](media/storage-blob-static-website-host/enable-static-website-hosting.png)
 
-## <a name="deploy-a-hello-world-website"></a>"Helló világ!" alkalmazás webhely üzembe helyezése
+## <a name="deploy-a-hello-world-website"></a>„Helló világ!” alkalmazás webhely üzembe helyezése
 
-Ezután hozzon létre egy "Helló világ!" alkalmazás weblapot a Visual Studio Code-ban, és telepítse azt az Azure Storage-fiókjában üzemeltetett statikus webhelyre.
+Ezután hozzon létre egy „Helló világ!” alkalmazás weblapot a Visual Studio Code-ban, és telepítse azt az Azure Storage-fiókjában üzemeltetett statikus webhelyre.
 
 1. Hozzon létre egy *mywebsite* nevű üres mappát a helyi fájlrendszerben. 
 1. Indítsa el a Visual Studio Code-ot, és nyissa meg az imént létrehozott mappát az **Explorer** paneljén.
@@ -95,7 +95,7 @@ A Visual Studio Code ekkor feltölti a fájlokat a webes végpontba, és megjele
 
 Sikeresen elvégezte az oktatóanyagot, és üzembe helyezett egy statikus webhelyet az Azure-ban.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebből az oktatóanyagból megtudhatta, hogyan konfigurálhatja az Azure Storage-fiókját a statikus webhelyek üzemeltetéséhez, és hogyan hozhat létre és helyezhet üzembe statikus webhelyeket egy Azure-végponton.
 

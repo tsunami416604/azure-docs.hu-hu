@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.custom: hdinsightactive,mvc,seoapr2020
 ms.date: 04/21/2020
 ms.openlocfilehash: 4eb10298ac683c991835f86582d82fb952b314b2
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82195111"
 ---
 # <a name="tutorial-analyze-apache-spark-data-using-power-bi-in-hdinsight"></a>Oktatóanyag: Apache Spark-adatelemzés a HDInsight Power BI használatával
@@ -83,7 +83,7 @@ A Spark használatba vételének első lépései a csatlakozás a fürthöz a Po
 
 4. Adja meg a fürt URL-címét (az űrlapon `mysparkcluster.azurehdinsight.net` ) a **kiszolgáló** szövegmezőben.
 
-5. Az **adatkapcsolati mód**területen válassza a **DirectQuery**lehetőséget. Ez után válassza az **OK** gombot.
+5. Az **adatkapcsolati mód**területen válassza a **DirectQuery**lehetőséget. Ezután válassza az **OK** gombot.
 
     A Sparkkal bármelyik adatkapcsolati módot használhatja. A DirectQuery használatakor a módosítások anélkül jelennek meg a jelentésekben, hogy a teljes adatkészletet frissíteni kellene. Ha importálja az adatokat, a módosítások megtekintéséhez frissítenie kell az adatkészletet. További információ a DirectQuery használatának módjáról és idejéről: [DirectQuery használata a Power BI-ban](https://powerbi.microsoft.com/documentation/powerbi-desktop-directquery-about/).
 
@@ -175,7 +175,7 @@ Az oktatóanyag befejezése után érdemes törölni a fürtöt. A HDInsight az 
 
 Fürt törléséhez tekintse [meg a HDInsight-fürt törlése a böngészőben, a PowerShell vagy az Azure CLI használatával](../hdinsight-delete-cluster.md)című témakört.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebből az oktatóanyagból megtudhatta, hogyan jelenítheti meg a Microsoft Power BIt az Azure HDInsight lévő Apache Spark-fürtökben lévő információk megjelenítéséhez. A következő cikkből megtudhatja, hogyan hozhat létre gépi tanulási alkalmazást.
 

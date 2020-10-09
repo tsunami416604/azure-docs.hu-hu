@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 02/24/2020
 ms.author: allensu
 ms.openlocfilehash: d798725892a9586c17cd7023863fe5cf7df05cb6
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84417837"
 ---
 # <a name="tutorial-create-a-nat-gateway-using-the-azure-portal-and-test-the-nat-service"></a>Oktatóanyag: NAT-átjáró létrehozása a Azure Portal használatával és a NAT szolgáltatás tesztelése
@@ -83,7 +83,7 @@ Azt is megteheti, hogy nyilvános IP-cím nélkül hozza létre ezt a virtuális
 
 4. A felügyelet **lap** **figyelés**területén a **rendszerindítási diagnosztika** beállítása **kikapcsolva**értékre.
 
-5. Válassza az **Áttekintés + létrehozás** lehetőséget.
+5. Válassza a **Felülvizsgálat + létrehozás** lehetőséget.
 
 6. Tekintse át a beállításokat, és kattintson a **Létrehozás**gombra.
 
@@ -104,7 +104,7 @@ Ez a szakasz részletesen ismerteti, hogyan hozhatja létre és konfigurálhatja
     | Beállítás | Érték |
     | ------- | ----- |
     | IP-verzió | Válassza az **IPv4** lehetőséget.
-    | Termékváltozat | Válassza a **standard**lehetőséget.
+    | SKU | Válassza a **standard**lehetőséget.
     | Név | Adja meg a **myPublicIPsource**. |
     | Előfizetés | Válassza ki előfizetését.|
     | Erőforráscsoport | Válassza a **myResourceGroupNAT**lehetőséget. |
@@ -147,7 +147,7 @@ Ez a szakasz részletesen ismerteti, hogyan hozhatja létre és konfigurálhatja
    - **Virtual Network**: válassza a **myResourceGroupNAT**  >  **myVnetsource**elemet.
    - **Alhálózat neve**: válassza a **mySubnetsource**melletti jelölőnégyzetet.
 
-5. Válassza az **Áttekintés + létrehozás** lehetőséget.
+5. Válassza a **Felülvizsgálat + létrehozás** lehetőséget.
 
 6. Tekintse át a beállításokat, majd kattintson a **Létrehozás**gombra.
 
@@ -200,7 +200,7 @@ Ebben a szakaszban le kell cserélnie a következő paramétereket a lépésekbe
 
 4. A felügyelet **lap** **figyelés**területén a **rendszerindítási diagnosztika** beállítása **kikapcsolva**értékre.
 
-5. Válassza az **Áttekintés + létrehozás** lehetőséget.
+5. Válassza a **Felülvizsgálat + létrehozás** lehetőséget.
 
 6. Tekintse át a beállításokat, majd kattintson a **Létrehozás**gombra.
 

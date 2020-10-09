@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: tutorial
 ms.date: 05/19/2020
 ms.openlocfilehash: d2780b3456a802904800b894f6849544cfee4e61
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85105934"
 ---
 # <a name="tutorial-configure-apache-kafka-policies-in-hdinsight-with-enterprise-security-package-preview"></a>Oktatóanyag: Apache Kafka szabályzatok konfigurálása a HDInsight-ben Enterprise Security Package (előzetes verzió)
@@ -142,7 +142,7 @@ A beállított Ranger-szabályzatok alapján a **sales_user** képes létrehozni
 3. Kövesse az oktatóanyagban **a példa készítése és üzembe helyezése című** témakör 3. lépését [: a Apache Kafka producer és a fogyasztói API](../kafka/apache-kafka-producer-consumer-api.md#build-and-deploy-the-example) -k segítségével biztosíthatja, hogy a `kafka-producer-consumer.jar` **sales_user**is elérhető legyen.
 
    > [!NOTE]  
-   > Ebben az oktatóanyagban használja a Kafka-producer-Consumer. jar fájlt a "DomainJoined-producer-Consumer" projektben (nem az a gyártó – fogyasztói projekt, amely a nem tartományhoz csatlakoztatott forgatókönyvek esetében).
+   > Ebben az oktatóanyagban használja az Kafka-producer-Consumer. jar fájlt a "DomainJoined-producer-Consumer" projektben (nem a Producer-Consumer projekt alatt, amely nem tartományhoz csatlakoztatott forgatókönyvek esetén).
 
 4. **sales_user1** `salesevents` A következő parancs végrehajtásával ellenőrizze, hogy a sales_user1 tud-e előállítani a témakörbe:
 
@@ -222,10 +222,10 @@ Ha nem folytatja az alkalmazás használatát, törölje a létrehozott Kafka-f�
 1. A felső **keresőmezőbe** írja be a **HDInsight**kifejezést.
 1. Válassza ki a **HDInsight-fürtök** elemet a **szolgáltatások**területen.
 1. A megjelenő HDInsight-fürtök listájában kattintson a **...** elemre az oktatóanyaghoz létrehozott fürt mellett. 
-1. Kattintson a **Törlés** gombra. Kattintson az **Igen**gombra.
+1. Kattintson a **Törlés** gombra. Kattintson a **Yes** (Igen) gombra.
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
-Ha a Kafka-producer-Consumer. jar nem működik tartományhoz csatlakozó fürtben, győződjön meg arról, hogy a Kafka-producer-Consumer. jar fájlt használja a "DomainJoined-producer-Consumer" projektben (nem pedig a nem tartományhoz csatlakoztatott forgatókönyvek esetében).
+Ha a Kafka-producer-Consumer. jar nem működik tartományhoz csatlakozó fürtben, győződjön meg arról, hogy a Kafka-producer-Consumer. jar fájlt használja a "DomainJoined-producer-Consumer" projektben (nem Producer-Consumer a tartományhoz csatlakoztatott forgatókönyvek esetében).
 
 ## <a name="next-steps"></a>További lépések
 

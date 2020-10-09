@@ -23,7 +23,7 @@
       href: iot-accelerators-device-simulation-overview.md
     - name: Prediktív karbantartás
       href: iot-accelerators-predictive-walkthrough.md
-- name: Gyors útmutatók
+- name: Rövid útmutatók
   expanded: true
   items:
     - name: Távoli monitorozási megoldás kipróbálása
@@ -34,7 +34,7 @@
       href: quickstart-device-simulation-deploy.md
     - name: Prediktív karbantartási megoldás kipróbálása
       href: quickstart-predictive-maintenance-deploy.md
-- name: oktatóanyagokat
+- name: Oktatóanyagok
   items:
     - name: Távoli figyelés
       items:
@@ -203,7 +203,7 @@
       items:
         - name: IoT Hub
           href: /azure/iot-hub
-        - name: IoT Hub eszközkiépítési szolgáltatás
+        - name: IoT Hub Device Provisioning Service
           href: /azure/iot-dps
         - name: IoT-központ
           href: 'https://docs.microsoft.com/microsoft-iot-central/'
@@ -220,9 +220,9 @@
     - name: Azure IoT SDK-k
       items:
         - name: IoT szolgáltatásoldali SDK-k
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks'
+          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-service-sdks
         - name: IoT eszközoldali SDK-k
-          href: '/azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks'
+          href: /azure/iot-hub/iot-hub-devguide-sdks#azure-iot-device-sdks
     - name: Távoli figyelés
       items:
         - name: Fejlesztői referencia-útmutató (.NET)

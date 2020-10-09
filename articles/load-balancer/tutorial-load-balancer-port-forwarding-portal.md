@@ -16,10 +16,10 @@ ms.date: 02/26/2019
 ms.author: allensu
 ms.custom: seodec18
 ms.openlocfilehash: dcb151c8be0ab3a2393d0659b75985a92ac60507
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82207887"
 ---
 # <a name="tutorial-configure-port-forwarding-in-azure-load-balancer-using-the-portal"></a>Oktatóanyag: Port továbbításának konfigurálása Azure Load Balancer a portál használatával
@@ -51,10 +51,10 @@ Először hozzon létre egy nyilvános standard Load balancert, amely képes ell
     | ---                     | ---                                                |
     | Előfizetés               | Válassza ki előfizetését.    |    
     | Erőforráscsoport         | Válassza az **új létrehozása** lehetőséget, és írja be a *myresourcegrouplb erőforráscsoportban* szöveget a szövegmezőbe.|
-    | Name                   | *myLoadBalancer*                                   |
+    | Név                   | *myLoadBalancer*                                   |
     | Region         | Válassza a **Nyugat-Európa** régiót.                                        |
     | Típus          | Válassza a **Nyilvános** lehetőséget.                                        |
-    | Termékváltozat           | Válassza a **standard**lehetőséget.                          |
+    | SKU           | Válassza a **standard**lehetőséget.                          |
     | Nyilvános IP-cím | Válassza az **Új létrehozása** lehetőséget. |
     | Nyilvános IP-cím              | Írja be a *myPublicIP* szöveget a szövegmezőbe.   |
     |A rendelkezésre állási zóna| Válassza ki a **felesleges zónát**.    |
@@ -121,7 +121,7 @@ Ebben a szakaszban le kell cserélnie a következő paramétereket a lépésekbe
    
 1. Válassza a **kezelés** lapot, vagy válassza a **következő**  >  **kezelés**lehetőséget. A **figyelés**területen **kapcsolja ki**a **rendszerindítási diagnosztika** beállítást.
    
-1. Válassza az **Áttekintés + létrehozás** lehetőséget.
+1. Válassza a **Felülvizsgálat + létrehozás** lehetőséget.
    
 1. Tekintse át a beállításokat, és ha az érvényesítés sikeres, válassza a **Létrehozás**lehetőséget. 
 
@@ -153,7 +153,7 @@ Hozzon létre egy hálózati biztonsági csoport (NSG) szabályt a virtuális g�
    - **Név**: írja be a *: myhttprule*nevet. 
    - **Leírás**: írja be a *http engedélyezése lehetőséget*. 
    
-1. Válassza a **Hozzáadás** elemet. 
+1. Válassza a **Hozzáadás** lehetőséget. 
    
    ![NSG-szabály létrehozása](./media/tutorial-load-balancer-port-forwarding-portal/8-load-balancer-nsg-rules.png)
    
@@ -196,7 +196,7 @@ Ha engedélyezni szeretné a terheléselosztó számára a virtuális gép álla
    - **Időköz**: Type *15*. Az intervallum a mintavételi kísérletek között eltelt másodpercek száma.
    - Nem megfelelő **állapot küszöbértéke**: Type *2*. Ez az érték azon egymást követő mintavételi hibák száma, amelyek a virtuális gép nem megfelelő állapotának tekintendők.
    
-1. Kattintson az **OK** gombra.
+1. Válassza az **OK** lehetőséget.
    
    ![Mintavétel hozzáadása](./media/tutorial-load-balancer-port-forwarding-portal/4-load-balancer-probes.png)
 
@@ -219,7 +219,7 @@ A **MyLoadBalancerRule** nevű terheléselosztó-szabály a 80-es portot figyeli
    - **Háttér-készlet**: válassza a **MyBackendPool**lehetőséget.
    - **Állapot**-mintavétel: válassza a **MyHealthProbe**lehetőséget. 
    
-1. Kattintson az **OK** gombra.
+1. Válassza az **OK** lehetőséget.
    
    ![Terheléselosztási szabály hozzáadása](./media/tutorial-load-balancer-port-forwarding-portal/5-load-balancing-rules.png)
 
@@ -240,7 +240,7 @@ Hozzon létre egy terheléselosztó bejövő hálózati címfordítási (NAT-) s
    - **Port leképezése**: válassza az **Egyéni**lehetőséget.
    - **Célport: Type** *3389*.
    
-1. Kattintson az **OK** gombra.
+1. Válassza az **OK** lehetőséget.
    
 1. Ismételje meg a lépéseket egy *MyNATRuleVM2*nevű bejövő NAT-szabály hozzáadásához a következő **Port**használatával: *4222* és **cél virtuális gép**: **MyVM2**.
 
@@ -296,7 +296,7 @@ A PowerShell használatával telepítse az IIS-t, és cserélje le az alapértel
    
 1. Illessze be vagy írja be a terheléselosztó nyilvános IP-címét (*40.67.218.235*) az Internet böngésző címsorába. 
    
-   Megjelenik a testreszabott IIS-webkiszolgáló alapértelmezett lapja a böngészőben. Az üzenet beolvassa **"Helló világ!" alkalmazás a MyVM1-ból**, vagy **"Helló világ!" alkalmazás a MyVM2**.
+   Megjelenik a testreszabott IIS-webkiszolgáló alapértelmezett lapja a böngészőben. Az üzenet beolvassa **„Helló világ!” alkalmazás a MyVM1-ból**, vagy **„Helló világ!” alkalmazás a MyVM2**.
    
    ![Új IIS alapértelmezett lap](./media/tutorial-load-balancer-port-forwarding-portal/9-load-balancer-test.png) 
    
@@ -333,7 +333,7 @@ Az RDP-kapcsolat sikeres, mert a bejövő NAT-szabály a 4222-es **MyNATRuleVM2*
 
 A terheléselosztó és az összes kapcsolódó erőforrás törléséhez, ha már nincs szüksége rájuk, nyissa meg a **myresourcegrouplb erőforráscsoportban** erőforráscsoportot, és válassza az **erőforráscsoport törlése**elemet.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban létrehozott egy standard nyilvános Load balancert. Létrehozta és konfigurálta a hálózati erőforrásokat, a háttér-kiszolgálókat, az állapot-mintavételt és a terheléselosztó szabályait. Telepítette az IIS-t a háttérbeli virtuális gépeken, és a terheléselosztó nyilvános IP-címét használta a terheléselosztó teszteléséhez. A terheléselosztó megadott portjáról egy háttérbeli virtuális gép portjára állíthatja be és tesztelte a port továbbítását. 
 

@@ -11,10 +11,10 @@ author: nabhishek
 ms.author: abnarain
 manager: anandsub
 ms.openlocfilehash: 5b0bcdd66e17fb93a560b6073c13e3170e3ab37b
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81409258"
 ---
 # <a name="transform-data-in-the-cloud-by-using-a-spark-activity-in-azure-data-factory"></a>Adatátalakítás a felhőben egy Spark-tevékenység az Azure Data Factoryban való használatával
@@ -214,7 +214,7 @@ Válassza az **aktiválás hozzáadása** lehetőséget az eszköztáron, majd v
 
 ## <a name="monitor-the-pipeline-run"></a>A folyamat futásának monitorozása
 
-1. Váltson a **figyelés** lapra. Ellenőrizze, hogy megjelenik-e a folyamat futása. Egy Spark-fürt létrehozása nagyjából 20 percet vesz igénybe. 
+1. Váltson a **figyelés** lapra. Győződjön meg arról, hogy a folyamat futása megjelenik. Egy Spark-fürt létrehozása nagyjából 20 percet vesz igénybe. 
    
 1. Rendszeres időközönként kattintson a **Frissítés** gombra a folyamat futási állapotának ellenőrzéséhez. 
 
@@ -243,7 +243,7 @@ A fájlban a bemeneti szövegfájl összes szavának szerepelnie kell, valamint 
 (u'file', 1)
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A mintában szereplő folyamat egy Spark-tevékenységgel és egy igény szerinti HDInsight társított szolgáltatással alakítja át az adatokat. Megtanulta végrehajtani az alábbi műveleteket: 
 
 > [!div class="checklist"]

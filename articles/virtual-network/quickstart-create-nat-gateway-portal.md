@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 02/24/2020
 ms.author: allensu
 ms.openlocfilehash: 5010dc08b695a0376ace5dde935c63caf0c39633
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84711408"
 ---
 # <a name="tutorial-create-a-nat-gateway-using-the-azure-portal"></a>Oktatóanyag: NAT-átjáró létrehozása a Azure Portal használatával
@@ -75,7 +75,7 @@ Most létrehozunk egy virtuális gépet a NAT szolgáltatás használatához. Ez
 
 4. A felügyelet **lap** **figyelés**területén a **rendszerindítási diagnosztika** beállítása **kikapcsolva**értékre.
 
-5. Válassza az **Áttekintés + létrehozás** lehetőséget. 
+5. Válassza a **Felülvizsgálat + létrehozás** lehetőséget. 
 
 6. Tekintse át a beállításokat, és kattintson a **Létrehozás**gombra.
 
@@ -96,7 +96,7 @@ Ez a szakasz részletesen ismerteti, hogyan hozhatja létre és konfigurálhatja
     | Beállítás | Érték |
     | ------- | ----- |
     | IP-verzió | Válassza az **IPv4** lehetőséget.
-    | Termékváltozat | Válassza a **standard**lehetőséget.
+    | SKU | Válassza a **standard**lehetőséget.
     | Név | Adja meg a **myPublicIP**. |
     | Előfizetés | Válassza ki előfizetését.|
     | Erőforráscsoport | Válassza a **myResourceGroupNAT**lehetőséget. |
@@ -139,7 +139,7 @@ Ez a szakasz részletesen ismerteti, hogyan hozhatja létre és konfigurálhatja
    - **Virtual Network**: válassza a **myResourceGroupNAT**  >  **myVnet**elemet.
    - **Alhálózat neve**: válassza a **mySubnet**melletti jelölőnégyzetet.
 
-5. Válassza az **Áttekintés + létrehozás** lehetőséget.
+5. Válassza a **Felülvizsgálat + létrehozás** lehetőséget.
 
 6. Tekintse át a beállításokat, majd kattintson a **Létrehozás**gombra.
 

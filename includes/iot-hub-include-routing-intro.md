@@ -9,10 +9,10 @@ ms.date: 03/05/2019
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: 552a40be0c069d1002ebc7ea4dafe0d6f93a5755
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85128181"
 ---
 Az [üzenet-útválasztás](../articles/iot-hub/iot-hub-devguide-messages-d2c.md) lehetővé teszi az telemetria-adatok küldését a IoT-eszközökről a beépített Event hub-kompatibilis végpontokra vagy egyéni végpontokra, például a blob Storage-ba, a Service Bus várólistákra, a Service Bus témakörökre és a Event Hubs. Az egyéni üzenet-útválasztás konfigurálásához [útválasztási lekérdezéseket](../articles/iot-hub/iot-hub-devguide-routing-query-syntax.md) kell létrehoznia az adott feltételnek megfelelő útvonal testreszabásához. A beállítás után az IoT Hub automatikusan a végpontokhoz irányítja át a bejövő adatokat. Ha egy üzenet nem egyezik a megadott útválasztási lekérdezések egyikével sem, a rendszer az alapértelmezett végpontra irányítja át.
@@ -39,7 +39,7 @@ Az oktatóanyag 1. és 2. részének végrehajtásához hajtsa végre a követke
 ## <a name="prerequisites"></a>Előfeltételek
 
 * Az oktatóanyag 1. részében:
-  - Rendelkeznie kell egy Azure-előfizetéssel. Ha nem rendelkezik Azure-előfizetéssel, létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt nekikezdene a feladatok elvégzésének.
+  - Rendelkeznie kell egy Azure-előfizetéssel. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
 * Az oktatóanyag 2. részében:
   - El kell végeznie az oktatóanyag 1. részét, és az erőforrások továbbra is elérhetők maradnak.

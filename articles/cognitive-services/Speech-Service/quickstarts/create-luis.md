@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 06/25/2020
 ms.author: trbye
 ms.openlocfilehash: c4195ff1b81097a3620f68939f32147a26e16d60
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85391604"
 ---
 # <a name="quickstart-getting-a-luis-endpoint-key"></a>Gyors útmutató: LUIS Endpoint kulcs beszerzése
@@ -31,7 +31,7 @@ A LUIS integrálható a Speech Service szolgáltatással a beszédből való sz�
 
 A LUIS háromféle kulcsot használ:
 
-|Kulcs típusa|Rendeltetés|
+|Kulcs típusa|Cél|
 |--------|-------|
 |Tartalomkészítés|Lehetővé teszi a LUIS-alkalmazások programozott módon történő létrehozását és módosítását|
 |Kezdő|Lehetővé teszi a LUIS-alkalmazás tesztelését csak szöveg használatával|

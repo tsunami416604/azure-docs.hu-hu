@@ -14,10 +14,10 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 71b5b3f24b60796cf839b8920de8eae424ea3809
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85254361"
 ---
 # <a name="tutorial-create-a-data-factory-pipeline-that-moves-data-by-using-azure-powershell"></a>Oktatóanyag: Data Factory-folyamat létrehozása adatok áthelyezéséhez az Azure PowerShell használatával
@@ -162,7 +162,7 @@ Ebben a lépésben társítja az Azure Storage-fiókot az adat-előállítójáh
      }
     ``` 
 1. Az **Azure PowerShellben** váltson az **ADFGetStartedPSH** mappára.
-1. Futtassa a **New-AzDataFactoryLinkedService** parancsmagot a társított szolgáltatás létrehozásához: **AzureStorageLinkedService**. Ez a parancsmag és az oktatóanyagban használt többi Data Factory-parancsmag megköveteli a **ResourceGroupName** és a **DataFactoryName** paraméterek értékének megadását. Azt is megteheti, hogy a New-AzDataFactory parancsmag által visszaadott DataFactory objektumot a ResourceGroupName és a DataFactoryName beírása nélkül adja át a parancsmagok minden egyes futtatásakor. 
+1. Futtassa a **New-AzDataFactoryLinkedService** parancsmagot a társított szolgáltatás létrehozásához: **AzureStorageLinkedService**. Ez a parancsmag és az oktatóanyagban használt többi Data Factory-parancsmag megköveteli a **ResourceGroupName** és a **DataFactoryName** paraméterek értékének megadását. Azt is megteheti, hogy átadja a New-AzDataFactory parancsmag által visszaadott DataFactory objektumot anélkül, hogy minden alkalommal be kellene írnia a ResourceGroupName és a DataFactoryName-parancsmagot. 
 
     ```powershell
     New-AzDataFactoryLinkedService $df -File .\AzureStorageLinkedService.json
