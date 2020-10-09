@@ -11,17 +11,17 @@ ms.topic: conceptual
 ms.date: 02/20/2019
 ms.author: aahi
 ms.openlocfilehash: 5ffd9f05bb429ba611a08d7985dbc9d509a9df0c
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "66390168"
 ---
 # <a name="language-and-region-support-for-bing-spell-check-api"></a>A Bing Spell Check API nyelvi és területi támogatása
 
 Ezeket a nyelveket a Bing Spell Check API támogatja (csak a `spell` módban).
 
-Kérjük, vegye figyelembe, hogy ha más nyelvet szeretne `en-US`dolgozni, `mkt` a t be kell állítani `Accept-Language` , `setLang` vagy vagy be kell állítani, mivel [Spell Check API v7-hivatkozás](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)
+Kérjük, vegye figyelembe, hogy ha más nyelvet szeretne dolgozni `en-US` , a `mkt` t be kell állítani, `Accept-Language` vagy vagy be kell állítani, `setLang` mivel [Spell Check API v7-hivatkozás](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-spell-check-api-v7-reference)
 
 | Nyelv    | Nyelvkód |
 |:----------- |:-------------:|

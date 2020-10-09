@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: 71150ea5ba7d6f25b07a9afaa1f1dc60adcb3e24
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88518657"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-skydesk-email"></a>Oktatóanyag: Azure Active Directory integráció a SkyDesk e-mail-címmel
@@ -73,7 +73,7 @@ Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a SkyDe
 Az Azure AD egyszeri bejelentkezés az SkyDesk e-mailben való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
 
 1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. **[SkyDesk e-mailes egyszeri bejelentkezés konfigurálása](#configure-skydesk-email-single-sign-on)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+2. **[SkyDesk e-mailes egyszeri bejelentkezés konfigurálása](#configure-skydesk-email-single-sign-on)** – az egyes Sign-On beállítások konfigurálása az alkalmazás oldalán.
 3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
 4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
 5. **[SkyDesk-alapú e-mail-tesztelési felhasználó létrehozása](#create-skydesk-email-test-user)** – a SkyDesk e-mail-címével, amely a felhasználó Azure ad-Britta van társítva.
@@ -93,7 +93,7 @@ Az Azure AD egyszeri bejelentkezés az SkyDesk e-mailben való konfigurálásáh
 
     ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
+3. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
@@ -104,9 +104,9 @@ Az Azure AD egyszeri bejelentkezés az SkyDesk e-mailben való konfigurálásáh
     A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:  `https://mail.skydesk.jp/portal/<companyname>`
 
     > [!NOTE]
-    > Az érték nem valódi. Frissítse az értéket a tényleges bejelentkezési URL-címmel. Az érték beszerzéséhez lépjen kapcsolatba a [SkyDesk E-mail ügyfélprogram ügyfélszolgálatával](https://www.skydesk.jp/apps/support/) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
+    > Az érték nem valódi. Frissítse az értéket a tényleges Sign-On URL-címmel. Az érték beszerzéséhez lépjen kapcsolatba a [SkyDesk E-mail ügyfélprogram ügyfélszolgálatával](https://www.skydesk.jp/apps/support/) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-5. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállítások alapján, és mentse a számítógépre.
+5. Az **egyszeres Sign-On beállítása az SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállítások alapján, és mentse azt a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozása](common/certificatebase64.png)
 
@@ -120,38 +120,38 @@ Az Azure AD egyszeri bejelentkezés az SkyDesk e-mailben való konfigurálásáh
 
     c. Kijelentkezési URL-cím
 
-### <a name="configure-skydesk-email-single-sign-on"></a>SkyDesk E-mail egyszeri bejelentkezés konfigurálása
+### <a name="configure-skydesk-email-single-sign-on"></a>SkyDesk e-mailes Sign-On konfigurálása
 
 1. Egy másik böngészőben jelentkezzen be a SkyDesk e-mail-fiókjába rendszergazdaként.
 
 1. A felső menüben kattintson a **telepítés**elemre, majd válassza a **szervezeti**elemet.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/skydeskemail-tutorial/tutorial_skydeskemail_51.png)
+    ![Egyetlen Sign-On konfigurálása](./media/skydeskemail-tutorial/tutorial_skydeskemail_51.png)
   
 1. Kattintson a **tartományok** elemre a bal oldali panelen.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/skydeskemail-tutorial/tutorial_skydeskemail_53.png)
+    ![Egyetlen Sign-On konfigurálása](./media/skydeskemail-tutorial/tutorial_skydeskemail_53.png)
 
 1. Kattintson a **tartomány hozzáadása**lehetőségre.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/skydeskemail-tutorial/tutorial_skydeskemail_54.png)
+    ![Egyetlen Sign-On konfigurálása](./media/skydeskemail-tutorial/tutorial_skydeskemail_54.png)
 
 1. Adja meg a tartomány nevét, majd ellenőrizze a tartományt.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/skydeskemail-tutorial/tutorial_skydeskemail_55.png)
+    ![Egyetlen Sign-On konfigurálása](./media/skydeskemail-tutorial/tutorial_skydeskemail_55.png)
 
 1. Kattintson az **SAML-hitelesítés** elemre a bal oldali panelen.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/skydeskemail-tutorial/tutorial_skydeskemail_52.png)
+    ![Egyetlen Sign-On konfigurálása](./media/skydeskemail-tutorial/tutorial_skydeskemail_52.png)
 
 1. Az **SAML-hitelesítés** párbeszédpanelen hajtsa végre a következő lépéseket:
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/skydeskemail-tutorial/tutorial_skydeskemail_56.png)
+    ![Egyetlen Sign-On konfigurálása](./media/skydeskemail-tutorial/tutorial_skydeskemail_56.png)
 
     > [!NOTE]
     > Az SAML-alapú hitelesítés használatához ellenőriznie kell a **tartomány** vagy a **portál URL-címének** beállítását. Megadhatja a portál URL-címét az egyedi névvel.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/skydeskemail-tutorial/tutorial_skydeskemail_57.png)
+    ![Egyetlen Sign-On konfigurálása](./media/skydeskemail-tutorial/tutorial_skydeskemail_57.png)
 
     a. A **bejelentkezési URL** szövegmezőbe illessze be a **bejelentkezési URL-címet**, amelyet a Azure Portalból másolt.
 
@@ -188,7 +188,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    d. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -222,7 +222,7 @@ Ebben a szakaszban egy Britta Simon nevű felhasználót hoz létre a SkyDesk e-
 
 Kattintson a SkyDesk e-mailben a bal oldali panelen a **felhasználói hozzáférés** elemre, majd írja be a felhasználónevét.
 
-![Egyszeri bejelentkezés konfigurálása](./media/skydeskemail-tutorial/tutorial_skydeskemail_58.png)
+![Egyetlen Sign-On konfigurálása](./media/skydeskemail-tutorial/tutorial_skydeskemail_58.png)
 
 > [!NOTE]
 > Ha tömeges felhasználókat kell létrehoznia, lépjen kapcsolatba a [SkyDesk E-mail ügyfélprogram ügyfélszolgálatával](https://www.skydesk.jp/apps/support/).

@@ -1,6 +1,6 @@
 ---
-title: 'Oktatóanyag: Azure Active Directory integráció magyarázaton alapuló naplózási rendszerrel | Microsoft Docs'
-description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést a Azure Active Directory és a magyarázat-alapú naplózási rendszer között.
+title: 'Oktatóanyag: Azure Active Directory integráció Explanation-Based auditálási rendszerrel | Microsoft Docs'
+description: Megtudhatja, hogyan konfigurálhat egyszeri bejelentkezést Azure Active Directory és Explanation-Based naplózási rendszer között.
 services: active-directory
 author: jeevansd
 manager: CelesteDG
@@ -12,19 +12,19 @@ ms.topic: tutorial
 ms.date: 02/27/2019
 ms.author: jeedes
 ms.openlocfilehash: 68f163442c3e13c822b6f4dfa987d0eb26ccafe3
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88519718"
 ---
-# <a name="tutorial-azure-active-directory-integration-with-explanation-based-auditing-system"></a>Oktatóanyag: Azure Active Directory integráció magyarázat-alapú naplózási rendszerrel
+# <a name="tutorial-azure-active-directory-integration-with-explanation-based-auditing-system"></a>Oktatóanyag: Azure Active Directory integráció Explanation-Based auditálási rendszerrel
 
-Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja a magyarázaton alapuló naplózási rendszert Azure Active Directory (Azure AD) használatával.
-A magyarázaton alapuló naplózási rendszer az Azure AD-vel való integrálása a következő előnyöket biztosítja:
+Ebből az oktatóanyagból megtudhatja, hogyan integrálhatja Explanation-Based naplózási rendszereket Azure Active Directory (Azure AD) használatával.
+Az Explanation-Based naplózási rendszerek Azure AD-vel való integrálása a következő előnyöket biztosítja:
 
-* Az Azure AD-ben ellenőrizheti, hogy ki férhet hozzá a magyarázat-alapú naplózási rendszerhez.
-* Lehetővé teheti a felhasználók számára, hogy automatikusan bejelentkezzenek a magyarázat-alapú naplózási rendszerbe (egyszeri bejelentkezés) az Azure AD-fiókkal.
+* Az Azure AD-ben beállíthatja, hogy ki férhet hozzá Explanation-Based naplózási rendszerrel.
+* Engedélyezheti a felhasználók számára, hogy automatikusan bejelentkezzenek Explanation-Based naplózási rendszerbe (egyszeri bejelentkezés) az Azure AD-fiókjával.
 * A fiókokat egyetlen központi helyen kezelheti – a Azure Portal.
 
 Ha többet szeretne megtudni az Azure AD-vel való SaaS-alkalmazások integrálásáról, tekintse [meg a mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés a Azure Active Directorykal](https://docs.microsoft.com/azure/active-directory/active-directory-appssoaccess-whatis)című témakört.
@@ -32,24 +32,24 @@ Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](h
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az Azure AD-integráció magyarázat-alapú naplózási rendszerrel való konfigurálásához a következő elemek szükségesek:
+Az Azure AD-integráció Explanation-Based naplózási rendszerrel való konfigurálásához a következő elemek szükségesek:
 
 * Egy Azure AD-előfizetés. Ha még nem rendelkezik Azure AD-környezettel, [itt](https://azure.microsoft.com/pricing/free-trial/) kérhet egy hónapos próbaverziót
-* Magyarázat-alapú naplózási rendszer egyszeri bejelentkezésre alkalmas előfizetése
+* Explanation-Based naplózási rendszer egyszeri bejelentkezésre engedélyezett előfizetése
 
 ## <a name="scenario-description"></a>Forgatókönyv leírása
 
 Ebben az oktatóanyagban egy tesztkörnyezetben konfigurálja és teszteli az Azure AD egyszeri bejelentkezést.
 
-* A magyarázaton alapuló naplózási rendszer támogatja az **SP** által KEZDEMÉNYEZett SSO-t
+* Explanation-Based naplózási rendszerek támogatják az **SP** által KEZDEMÉNYEZett SSO-t
 
-* A magyarázaton alapuló naplózási rendszer támogatja **a** felhasználók igény szerinti üzembe helyezését 
+* Explanation-Based naplózási rendszer támogatja **az igény** szerinti felhasználói üzembe helyezést 
 
-## <a name="adding-explanation-based-auditing-system-from-the-gallery"></a>Magyarázaton alapuló naplózási rendszer hozzáadása a katalógusból
+## <a name="adding-explanation-based-auditing-system-from-the-gallery"></a>Explanation-Based naplózási rendszer hozzáadása a katalógusból
 
-A magyarázaton alapuló naplózási rendszer Azure AD-be való integrálásának konfigurálásához magyarázat-alapú naplózási rendszert kell hozzáadnia a katalógusból a felügyelt SaaS-alkalmazások listájára.
+Explanation-Based naplózási rendszer Azure AD-ba való integrálásának konfigurálásához hozzá kell adnia Explanation-Based naplózási rendszert a katalógusból a felügyelt SaaS-alkalmazások listájához.
 
-**Ha magyarázat-alapú naplózási rendszert szeretne hozzáadni a katalógusból, hajtsa végre a következő lépéseket:**
+**Explanation-Based naplózási rendszer a katalógusból való hozzáadásához hajtsa végre a következő lépéseket:**
 
 1. A **[Azure Portal](https://portal.azure.com)** a bal oldali navigációs panelen kattintson **Azure Active Directory** ikonra.
 
@@ -65,27 +65,27 @@ A magyarázaton alapuló naplózási rendszer Azure AD-be való integrálásána
 
 4. A keresőmezőbe írja be a **magyarázat-alapú naplózási rendszert**, válassza a **magyarázat-alapú naplózási rendszer** elemet az eredmény panelen, majd kattintson a **Hozzáadás** gombra az alkalmazás hozzáadásához.
 
-     ![Magyarázat-alapú naplózási rendszer az eredmények listájában](common/search-new-app.png)
+     ![Explanation-Based naplózási rendszerek az eredmények listájában](common/search-new-app.png)
 
 ## <a name="configure-and-test-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása és tesztelése
 
-Ebben a szakaszban az Azure AD egyszeri bejelentkezést kell konfigurálnia és tesztelni a magyarázaton alapuló naplózási rendszerrel egy **Britta Simon**nevű teszt felhasználó alapján.
-Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a kapcsolódó felhasználó közötti kapcsolatra van szükség a magyarázaton alapuló naplózási rendszeren.
+Ebben a szakaszban az Azure AD egyszeri bejelentkezést konfigurálhatja és tesztelheti Explanation-Based auditálási rendszerrel egy **Britta Simon**nevű teszt felhasználó alapján.
+Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a kapcsolódó felhasználó közötti kapcsolatra van szükség a Explanation-Based naplózási rendszeren.
 
-Az Azure AD egyszeri bejelentkezés a magyarázaton alapuló naplózási rendszerrel való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
+Az Azure AD egyszeri bejelentkezés Explanation-Based naplózási rendszerrel való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
 
 1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. A **[magyarázaton alapuló naplózási rendszer egyszeri bejelentkezésének konfigurálása](#configure-explanation-based-auditing-system-single-sign-on)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+2. **[Konfigurálja Explanation-Based naplózási rendszer egyszeri bejelentkezését](#configure-explanation-based-auditing-system-single-sign-on)** – az alkalmazás oldalának egyetlen Sign-On beállításainak konfigurálásához.
 3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
 4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
-5. **[Magyarázat-alapú naplózási Rendszerteszt-felhasználó létrehozása](#create-explanation-based-auditing-system-test-user)** – hogy a Britta Simon a felhasználó Azure ad-képviseletéhez kapcsolódó magyarázat-alapú naplózási rendszeren legyen.
+5. **[Hozzon létre Explanation-Based naplózási Rendszerteszt felhasználót](#create-explanation-based-auditing-system-test-user)** – hogy a Britta Simon partnere legyen a Explanation-Based auditálási rendszeren, amely a felhasználó Azure ad-beli képviseletéhez van társítva.
 6. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)** – annak ellenőrzéséhez, hogy a konfiguráció működik-e.
 
 ### <a name="configure-azure-ad-single-sign-on"></a>Az Azure AD egyszeri bejelentkezés konfigurálása
 
 Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure Portal.
 
-Az Azure AD egyszeri bejelentkezés magyarázat-alapú naplózási rendszerrel való konfigurálásához hajtsa végre a következő lépéseket:
+Az Azure AD egyszeri bejelentkezés Explanation-Based naplózási rendszerrel való konfigurálásához hajtsa végre a következő lépéseket:
 
 1. A [Azure Portal](https://portal.azure.com/)a **magyarázat-alapú naplózási** rendszeralkalmazás-integráció lapon válassza az **egyszeri bejelentkezés**lehetőséget.
 
@@ -95,21 +95,21 @@ Az Azure AD egyszeri bejelentkezés magyarázat-alapú naplózási rendszerrel v
 
     ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
+3. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
 4. Az **alapszintű SAML-konfiguráció** szakaszban hajtsa végre a következő lépéseket:
 
-    ![Magyarázaton alapuló naplózási rendszer tartománya és URL-címek egyszeri bejelentkezési adatai](common/sp-signonurl.png)
+    ![Explanation-Based naplózási rendszer tartománya és URL-címek egyszeri bejelentkezési adatai](common/sp-signonurl.png)
 
     A **bejelentkezési URL** szövegmezőbe írja be a következő URL-címet:  `https://ebas.maizeanalytics.com`
 
-5. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a Másolás gombra az **alkalmazás-összevonási metaadatok URL-címének** másolásához és a számítógépre mentéséhez.
+5. Az **egyszeres Sign-On beállítása az SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a Másolás gombra az **alkalmazás-összevonási metaadatok URL-címének** másolásához és a számítógépre mentéséhez.
 
     ![A tanúsítvány letöltési hivatkozása](common/copy-metadataurl.png)
 
-### <a name="configure-explanation-based-auditing-system-single-sign-on"></a>A magyarázaton alapuló naplózási rendszer egyszeri bejelentkezésének konfigurálása
+### <a name="configure-explanation-based-auditing-system-single-sign-on"></a>Explanation-Based naplózási rendszerek konfigurálása egyetlen Sign-On
 
 Ha az egyszeri bejelentkezést a **magyarázaton alapuló naplózási rendszerre** szeretné beállítani, akkor az **alkalmazás-összevonási metaadatok URL-címét** el kell küldenie a [magyarázat-alapú naplózási rendszer támogatási csapatának](mailto:support@maizeanalytics.com). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
 
@@ -136,11 +136,11 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    d. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
-Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egyszeri bejelentkezést a magyarázat-alapú naplózási rendszer elérésének biztosításával.
+Ebben a szakaszban a Britta Simon az Azure egyszeri bejelentkezés használatára teszi lehetővé, hogy hozzáférést biztosítson Explanation-Based naplózási rendszerhez.
 
 1. A Azure Portal válassza a **vállalati alkalmazások**lehetőséget, válassza a **minden alkalmazás**lehetőséget, majd válassza a **magyarázat-alapú naplózási rendszer**lehetőséget.
 
@@ -148,7 +148,7 @@ Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egysz
 
 2. Az alkalmazások listában válassza a **magyarázat-alapú naplózási rendszer**elemet.
 
-    ![A magyarázaton alapuló naplózási rendszer hivatkozása az alkalmazások listájában](common/all-applications.png)
+    ![Az Explanation-Based naplózási rendszerhivatkozás az alkalmazások listájában](common/all-applications.png)
 
 3. A bal oldali menüben válassza a **felhasználók és csoportok**lehetőséget.
 
@@ -164,15 +164,15 @@ Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egysz
 
 7. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
-### <a name="create-explanation-based-auditing-system-test-user"></a>Magyarázat-alapú naplózási rendszer tesztelési felhasználójának létrehozása
+### <a name="create-explanation-based-auditing-system-test-user"></a>Explanation-Based naplózási rendszer tesztelése felhasználó létrehozása
 
-Ebben a szakaszban egy Britta Simon nevű felhasználó jön létre a magyarázat-alapú naplózási rendszeren. A magyarázaton alapuló naplózási rendszer támogatja az igény szerinti felhasználói üzembe helyezést, amely alapértelmezés szerint engedélyezve van. Ez a szakasz nem tartalmaz műveleti elemeket. Ha egy felhasználó még nem létezik a magyarázaton alapuló naplózási rendszeren, akkor a hitelesítés után létrejön egy újat.
+Ebben a szakaszban egy Britta Simon nevű felhasználó jön létre Explanation-Based naplózási rendszeren. Explanation-Based naplózási rendszer támogatja az igény szerinti felhasználói üzembe helyezést, amely alapértelmezés szerint engedélyezve van. Ez a szakasz nem tartalmaz műveleti elemeket. Ha egy felhasználó még nem létezik a Explanation-Based naplózási rendszeren, akkor a hitelesítés után létrejön egy újat.
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 
 Ebben a szakaszban az Azure AD egyszeri bejelentkezési konfigurációját teszteli a hozzáférési panel használatával.
 
-Ha a hozzáférési panelen a magyarázaton alapuló naplózási rendszer csempére kattint, automatikusan be kell jelentkeznie arra a magyarázat-alapú naplózási rendszerre, amelyhez be kell állítania az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
+Ha a hozzáférési panelen a Explanation-Based naplózási rendszer csempére kattint, automatikusan be kell jelentkeznie a Explanation-Based naplózási rendszerbe, amelyhez be kell állítania az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 ## <a name="additional-resources"></a>További források
 

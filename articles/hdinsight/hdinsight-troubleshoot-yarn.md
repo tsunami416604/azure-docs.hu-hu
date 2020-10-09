@@ -8,11 +8,11 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 08/15/2019
 ms.openlocfilehash: f0c7b966b9fa7580809d2df0f4d05a7146ca0fd1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79272200"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91871966"
 ---
 # <a name="troubleshoot-apache-hadoop-yarn-by-using-azure-hdinsight"></a>Az Apache Hadoop YARN hibaelhárítása az Azure HDInsighttal
 
@@ -26,7 +26,7 @@ A következő lépések végrehajtásával hozzon létre egy új Ambari-váróli
 
 Ebben a példában két meglévő várólista (**alapértelmezett** és **thriftsvr**) is módosul 50%-os kapacitásról 25%-ra, ami az új üzenetsor (Spark) 50%-os kapacitását adja meg.
 
-| Várólista | Kapacitás | Maximális kapacitás |
+| Üzenetsor | Kapacitás | Maximális kapacitás |
 | --- | --- | --- |
 | alapértelmezett | 25% | 50% |
 | thrftsvr | 25% | 50% |
@@ -58,7 +58,7 @@ Ebben a példában két meglévő várólista (**alapértelmezett** és **thrift
 
 Ezek a változások azonnal láthatók a fonal-ütemező felhasználói felületén.
 
-### <a name="additional-reading"></a>További olvasnivaló
+### <a name="additional-reading"></a>További információ
 
 - [Apache Hadoop fonal CapacityScheduler](https://hadoop.apache.org/docs/r2.7.2/hadoop-yarn/hadoop-yarn-site/CapacityScheduler.html)
 
@@ -129,7 +129,7 @@ Ezek a változások azonnal láthatók a fonal-ütemező felhasználói felület
 
     Ez a parancs létrehoz egy containerlogs.txt nevű naplófájlt.
 
-### <a name="additional-reading"></a><a name="additional-reading-2"></a>További olvasnivaló
+### <a name="additional-reading"></a><a name="additional-reading-2"></a>További információ
 
 - [Kapcsolódás HDInsight (Apache Hadoop) SSH használatával](https://docs.microsoft.com/azure/hdinsight/hdinsight-hadoop-linux-use-ssh-unix)
 - [A fonal-fogalmak és-alkalmazások Apache Hadoop](https://hadoop.apache.org/docs/r2.7.4/hadoop-yarn/hadoop-yarn-site/WritingYarnApplications.html#Concepts_and_Flow)

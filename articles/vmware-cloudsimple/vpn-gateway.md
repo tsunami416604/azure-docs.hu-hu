@@ -9,11 +9,11 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: a8b7e238333196381524d189904871fe5933c906
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79279493"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91872000"
 ---
 # <a name="set-up-vpn-gateways-on-cloudsimple-network"></a>VPN-átjárók beállítása a CloudSimple hálózaton
 
@@ -103,7 +103,7 @@ Egy pont – hely típusú VPN-átjáró lehetővé teszi az új felhasználók 
 
     * Az **automatikus hozzáadási** beállítások az átjáróhoz tartozó globális házirendet határozzák meg. A beállítások az aktuális átjáróra érvényesek. A beállítások felülbírálása a **Select** területen lehetséges.
     * Válassza a **felügyeleti VLAN-ok vagy a privát felhők alhálózatok hozzáadása**lehetőséget. 
-    * A felhasználó által definiált VLAN-ok/alhálózatok hozzáadásához kattintson a **felhasználó által definiált VLAN-ok/alhálózatok hozzáadása**lehetőségre.
+    * A felhasználó által definiált VLAN-ok/alhálózatok hozzáadásához kattintson a  **felhasználó által definiált VLAN-ok/alhálózatok hozzáadása**lehetőségre.
     * A beállítások **kiválasztása** felülbírálja a globális beállításokat az **automatikus Hozzáadás**területen.
 
 7. A beállítások áttekintéséhez kattintson a **tovább** gombra. A módosítások elvégzéséhez kattintson a Szerkesztés ikonra.

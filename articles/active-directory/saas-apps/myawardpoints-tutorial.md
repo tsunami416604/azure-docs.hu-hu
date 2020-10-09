@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/01/2019
 ms.author: jeedes
 ms.openlocfilehash: 06104964c06b0853498a7de272a62d2913b10be6
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88518640"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-my-award-points-top-subtop-team"></a>Oktatóanyag: Azure Active Directory integráció a saját Award-pontokkal Top sub/Top-csapattal
@@ -73,7 +73,7 @@ Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a kapcs
 Ha az Azure AD egyszeri bejelentkezést a saját díjjal kapcsolatos első Al/Top-csapattal szeretné konfigurálni és tesztelni, akkor a következő építőelemeket kell elvégeznie:
 
 1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. **Adja meg a saját beléptetési pontok Top sub/Top csapatának egyszeri bejelentkezését** – az egyszeri bejelentkezési beállítások konfigurálásához az alkalmazás oldalán.
+2. **Adja meg a saját díjazott pontok első sub/Top csapatának egyszeri bejelentkezését** – az alkalmazás oldalának egyetlen Sign-On beállításainak konfigurálásához.
 3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
 4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
 5. **Hozzon létre saját Award-pontok Top sub/Top Team test User** – to have a Britta Simon a saját Award pont első alcsoportja, amely a felhasználó Azure ad-képviseletéhez van társítva.
@@ -93,7 +93,7 @@ Ha az Azure AD egyszeri bejelentkezést szeretné konfigurálni a saját díjazo
 
     ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
+3. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
@@ -106,7 +106,7 @@ Ha az Azure AD egyszeri bejelentkezést szeretné konfigurálni a saját díjazo
     > [!NOTE]
     > Az érték nem valódi. Az `<Azure AD Identifier>` oktatóanyag későbbi lépéseiben az értéket fogja kapni.
 
-5. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
+5. Az **egyszeres Sign-On beállítása SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozása](common/metadataxml.png)
 
@@ -123,7 +123,7 @@ Ha az Azure AD egyszeri bejelentkezést szeretné konfigurálni a saját díjazo
     >[!NOTE]
     >Fűzze hozzá a másolt Azure AD-azonosító értékét a bejelentkezési URL-cím helyére a `<Azure AD Identifier>` Azure Portal **alapszintű SAML-konfiguráció** szakaszában.
 
-### <a name="configure-my-award-points-top-subtop-team-single-sign-on"></a>Saját díjazottak beállítása az első sub/Top Team egyszeri bejelentkezéshez
+### <a name="configure-my-award-points-top-subtop-team-single-sign-on"></a>Saját Award-pontok első alcsoportjának vagy első csapatának beállítása egyetlen Sign-On
 
 Ha be szeretné állítani az egyszeri bejelentkezést a **díjazott pontok legfelső vagy felső csapatának** oldalára, el kell küldenie a letöltött **összevonási metaadatokat tartalmazó XML-fájlt** és a megfelelő másolt url-címeket a Azure Portalról a saját díjjal foglalkozó csapatának [első sub/Top csapata támogatási](mailto:myawardpoints@biworldwide.com)csoportjához. Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
 
@@ -150,7 +150,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    d. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

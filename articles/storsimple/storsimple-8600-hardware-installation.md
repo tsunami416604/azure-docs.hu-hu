@@ -8,11 +8,11 @@ ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: 8d118e71b29b54b034788c37916091ad8f8b996f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79254754"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91871813"
 ---
 # <a name="unpack-rack-mount-and-cable-your-storsimple-8600-device"></a>A StorSimple 8600-eszköz kicsomagolása, rack-csatlakoztatása és kábele
 
@@ -42,7 +42,7 @@ Ezután végezze el az alábbi lépéseket az eszköz kicsomagolásához.
    
     **A tárolóeszköz kicsomagolt nézete**
    
-   | Címke | Description |
+   | Címke | Leírás |
    | --- | --- |
    |   1 |Csomagolási mező |
    |   2 |SAS-kábelek (a tartozékok és kábelek tálcájában) |
@@ -106,7 +106,7 @@ A rendszer a 19 hüvelykes rack kabinet használva biztosítja a csatlakoztatás
    
     **Vasúti diaképek csatlakoztatása a ház oldalaihoz**
    
-   | Címke | Description |
+   | Címke | Leírás |
    | --- | --- |
    |  1 |M 3x4 gomb – Head csavarok |
    |  2 |Alváz-diák |
@@ -119,7 +119,7 @@ A rendszer a 19 hüvelykes rack kabinet használva biztosítja a csatlakoztatás
    
     **Vasúti szerelvények csatlakoztatása a rackhez**
    
-   | Címke | Description |
+   | Címke | Leírás |
    | --- | --- |
    |   1 |Befogó csavar |
    |   2 |Szögletes furatos elülső állvány utáni csavar |
@@ -145,7 +145,7 @@ Az imént telepített rack Rails használatával hajtsa végre a következő lé
    
     **A karima-sapkák telepítése**
    
-   | Címke | Description |
+   | Címke | Leírás |
    | --- | --- |
    |   1 |Rögzítési csavar |
 
@@ -192,13 +192,13 @@ Az eszköz aktív-készenléti konfigurációban van: bármikor, az egyik vezér
 A redundáns vezérlő feladatátvételének támogatásához a következő lépésekben látható módon csatlakoztassa az eszköz hálózatát.
 
 #### <a name="to-cable-for-network-connection"></a>Hálózati kapcsolatok kábele
-1. Az eszköz hat hálózati csatolóval rendelkezik minden vezérlőn: négy 1 GB/s 2 10 GB/s Ethernet port. Az eszköz hátlapján található adatportok azonosításához tekintse meg az alábbi ábrát.
+1. Az eszköz hat hálózati csatolóval rendelkezik az egyes vezérlőkön: 4 1 Gbps és 2 10 Gbps Ethernet port. Az eszköz hátlapján található adatportok azonosításához tekintse meg az alábbi ábrát.
    
      ![8600-eszköz hátlapja](./media/storsimple-8600-hardware-installation/HCSBackplaneof2UDevicewithPortsLabeled.jpg)
    
     **Az eszköz hátoldala, amely az adatportokat mutatja**
    
-   | Címke | Description |
+   | Címke | Leírás |
    | --- | --- |
    |   0, 1, 4, 5 |1 GbE hálózati adapterek |
    |   2, 3 |10 GbE hálózati adapter |
@@ -209,17 +209,17 @@ A redundáns vezérlő feladatátvételének támogatásához a következő lép
 
 **Az eszköz hálózati kábelezései**
 
-| Címke | Description |
+| Címke | Leírás |
 | --- | --- |
 | A |Helyi Internet-hozzáféréssel rendelkező LAN |
 | B |Vezérlő 0 |
-| C# |PCM 0 |
-| D |Vezérlő 1 |
+| C |PCM 0 |
+| T |Vezérlő 1 |
 | E |PCM 1 |
 | F |EBOD vezérlő 0 |
 | G |1. EBOD-vezérlő |
 | H, I |Gazdagépek (például fájlkiszolgálók) |
-| 0-5 |Hálózati illesztők |
+| 0-5 |Hálózati adapterek |
 | 6 |Elsődleges ház |
 | 7 |EBOD ház |
 

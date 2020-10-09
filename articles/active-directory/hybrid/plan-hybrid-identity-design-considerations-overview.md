@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e7f8dd49f3668b8f68753681123a04d21edac46c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "60381463"
 ---
 # <a name="azure-active-directory-hybrid-identity-design-considerations"></a>Azure Active Directory hibrid identitáskezelés – kialakítási szempontok
@@ -42,7 +42,7 @@ A hibrid identitás kialakításával kapcsolatos megfontolások a következő k
 ## <a name="how-can-this-guide-help-you"></a>Miben segít ez az útmutató?
 Ebből az útmutatóból megtudhatja, hogyan tervezhet olyan hibrid identitási megoldást, amely képes a felhőalapú Identitáskezelés-felügyeleti rendszer integrálására a jelenlegi helyszíni identitás-megoldással. 
 
-Az alábbi ábra egy olyan hibrid identitási megoldást mutat be, amely lehetővé teszi a rendszergazdák számára, hogy a helyi Windows Server-Active Directory megoldással integrálják az Microsoft Azure Active Directory, hogy lehetővé tegyék az egyszeri bejelentkezést (SSO) a felhőben és a helyszínen található alkalmazások számára.
+Az alábbi ábra egy olyan hibrid identitási megoldást mutat be, amely lehetővé teszi a rendszergazdák számára, hogy a helyi Windows Server-Active Directory megoldását Microsoft Azure Active Directory, hogy a felhasználók a felhőben és a helyszínen található alkalmazások egyetlen Sign-On (SSO) használatát engedélyezzék.
 
 ![Példa](media/plan-hybrid-identity-design-considerations/hybridID-example.png)
 
@@ -63,6 +63,6 @@ A követelményeknek leginkább megfelelő kialakítást csak akkor kell megism�
 | Az adatbiztonság növelésének megtervezése erős identitású megoldáson keresztül |[Adatvédelmi követelmények meghatározása](plan-hybrid-identity-design-considerations-dataprotection-requirements.md) <br> [A tartalomkezeléshez kapcsolódó követelmények meghatározása](plan-hybrid-identity-design-considerations-contentmgt-requirements.md)<br> [A hozzáférés-vezérlésre vonatkozó követelmények meghatározása](plan-hybrid-identity-design-considerations-accesscontrol-requirements.md)<br> [Az incidensmegoldáshoz kapcsolódó követelmények meghatározása](plan-hybrid-identity-design-considerations-incident-response-requirements.md) <br> [Adatvédelmi stratégia definiálása](plan-hybrid-identity-design-considerations-data-protection-strategy.md) |
 | A hibrid identitáskezelés életciklusának megtervezése |[Hibrid Identitáskezelés kezelési feladatainak meghatározása](plan-hybrid-identity-design-considerations-hybrid-id-management-tasks.md) <br> [Szinkronizálás kezelése](plan-hybrid-identity-design-considerations-hybrid-id-management-tasks.md)<br> [A hibrid Identitáskezelés bevezetési stratégiájának meghatározása](plan-hybrid-identity-design-considerations-lifecycle-adoption-strategy.md) |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [Identitáshoz kapcsolódó követelmények meghatározása](plan-hybrid-identity-design-considerations-business-needs.md)
 

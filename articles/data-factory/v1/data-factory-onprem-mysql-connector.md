@@ -13,11 +13,11 @@ ms.date: 06/06/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 90fccba016a3db9ff85f8ec7c8fd426ef3c896a2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79281287"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91872102"
 ---
 # <a name="move-data-from-mysql-using-azure-data-factory"></a>Adatok áthelyezése a MySQL-ből Azure Data Factory használatával
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
@@ -67,14 +67,14 @@ A következő táblázat a MySQL-hez társított szolgáltatáshoz tartozó JSON
 
 | Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
-| típus |A Type tulajdonságot a következőre kell beállítani: **OnPremisesMySql** |Yes |
-| kiszolgáló |A MySQL-kiszolgáló neve. |Yes |
-| adatbázis |A MySQL-adatbázis neve. |Yes |
-| séma |A séma neve az adatbázisban. |No |
-| authenticationType |A MySQL-adatbázishoz való kapcsolódáshoz használt hitelesítés típusa. A lehetséges értékek a következők: `Basic` . |Yes |
-| userName (Felhasználónév) |Adja meg a MySQL-adatbázishoz való kapcsolódáshoz használandó felhasználónevet. |Yes |
-| jelszó |Adja meg a megadott felhasználói fiók jelszavát. |Yes |
-| Átjáró neve |Annak az átjárónak a neve, amelyet a Data Factory szolgáltatásnak használnia kell a helyszíni MySQL-adatbázishoz való kapcsolódáshoz. |Yes |
+| típus |A Type tulajdonságot a következőre kell beállítani: **OnPremisesMySql** |Igen |
+| kiszolgáló |A MySQL-kiszolgáló neve. |Igen |
+| adatbázis |A MySQL-adatbázis neve. |Igen |
+| schema |A séma neve az adatbázisban. |Nem |
+| authenticationType |A MySQL-adatbázishoz való kapcsolódáshoz használt hitelesítés típusa. A lehetséges értékek a következők: `Basic` . |Igen |
+| userName (Felhasználónév) |Adja meg a MySQL-adatbázishoz való kapcsolódáshoz használandó felhasználónevet. |Igen |
+| jelszó |Adja meg a megadott felhasználói fiók jelszavát. |Igen |
+| Átjáró neve |Annak az átjárónak a neve, amelyet a Data Factory szolgáltatásnak használnia kell a helyszíni MySQL-adatbázishoz való kapcsolódáshoz. |Igen |
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
 Az adatkészletek definiálásához rendelkezésre álló & tulajdonságok teljes listáját az [adatkészletek létrehozása](data-factory-create-datasets.md) című cikkben találja. Az adathalmazok (például a struktúra, a rendelkezésre állás és a szabályzat) minden adatkészlet esetében hasonlóak (például az Azure SQL, az Azure Blob, az Azure Table stb.).
@@ -300,19 +300,19 @@ Az adatok MySQL-re való áthelyezésekor a következő leképezések használat
 
 | MySQL-adatbázis típusa | .NET-keretrendszer típusa |
 | --- | --- |
-| bigint aláíratlan |Decimal |
+| bigint aláíratlan |Tizedesjegy |
 | bigint |Int64 |
-| bit |Decimal |
+| bit |Tizedesjegy |
 | blob |Bájt [] |
-| logikai |Logikai |
+| logikai |Logikai érték |
 | char |Sztring |
 | dátum |Datetime |
 | dátum/idő |Datetime |
-| tizedes tört |Decimal |
-| dupla pontosság |Double |
-| double |Double |
+| tizedes tört |Tizedesjegy |
+| dupla pontosság |Dupla |
+| double |Dupla |
 | Enum |Sztring |
-| lebegőpontos |Egyszeres |
+| float |Egyirányú |
 | int előjel nélküli |Int64 |
 | int |Int32 |
 | egész szám előjel nélküli |Int64 |
@@ -325,8 +325,8 @@ Az adatok MySQL-re való áthelyezésekor a következő leképezések használat
 | mediumint aláíratlan |Int64 |
 | mediumint |Int32 |
 | mediumtext |Sztring |
-| numerikus |Decimal |
-| valós szám |Double |
+| numerikus |Tizedesjegy |
+| valós szám |Dupla |
 | halmaz |Sztring |
 | smallint aláíratlan |Int32 |
 | smallint |Int16 |

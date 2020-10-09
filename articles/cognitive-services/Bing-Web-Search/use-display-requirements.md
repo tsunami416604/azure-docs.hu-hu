@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: aahi
 ms.openlocfilehash: 5575668f164b97142e7c4b2ddb2608c3173426a6
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "60499885"
 ---
 # <a name="bing-search-api-use-and-display-requirements"></a>Bing Search API – követelmények használata és megjelenítése
@@ -27,17 +27,17 @@ Ezek a használati és megjelenítési követelmények érvényesek a tartalom �
 - Bing – Hírkeresés
 - Bing – Videokeresés
 - Bing vizuális keresés
-- Bing – Internetes keresés
+- Bing Web Search
 - Bing – Helyesírás-ellenőrzés
 - Bing – Automatikus kiegészítés
 
-## <a name="definitions"></a>Meghatározások
+## <a name="definitions"></a>Definíciók
 
 
-|Időtartam  |Leírás  |
+|Időszak  |Leírás  |
 |---------|---------|
 |Válasz     | A válaszban visszaadott eredmények kategóriája. A Bing Web Search API válasza például tartalmazhat válaszokat a weblapok eredményei, a képek, a videók, a vizualizáció és a hírek kategóriába. |
-|Válasz     | Minden, a keresési API-ra irányuló hívásra válaszként kapott válasz és kapcsolódó érték. |
+|Reagálás     | Minden, a keresési API-ra irányuló hívásra válaszként kapott válasz és kapcsolódó érték. |
 |Eredmény    | Egy adott válaszban található információ. Az egyetlen újságcikkhez kapcsolódó adathalmaz például a hírek válaszának eredménye. |
 |Keresési API-k    | együttesen a Bing Custom Search, Entity Search, Image Search, News Search, Video Search, Visual Search, helyi üzleti keresés és Web Search API-k. |
 

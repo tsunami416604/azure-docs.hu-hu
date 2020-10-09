@@ -11,11 +11,11 @@ ms.topic: conceptual
 ms.date: 03/14/2019
 ms.author: pafarley
 ms.openlocfilehash: 1aba86efb9ea76fbf060e80b47f9f2f6cdf8ee71
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
-ms.locfileid: "79221149"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91872051"
 ---
 # <a name="content-moderation-reviews-workflows-and-jobs"></a>Tartalom-moderálási felülvizsgálatok, munkafolyamatok és feladatok
 
@@ -35,7 +35,7 @@ A munkafolyamat egy felhőalapú, testreszabott szűrő a tartalomhoz. A munkafo
 
 ### <a name="view-workflows"></a>Munkafolyamatok megtekintése
 
-A meglévő munkafolyamatok megtekintéséhez nyissa meg a [felülvizsgálati eszközt](https://contentmoderator.cognitive.microsoft.com/) , és válassza a **Beállítások** > **munkafolyamatok**lehetőséget.
+A meglévő munkafolyamatok megtekintéséhez nyissa meg a [felülvizsgálati eszközt](https://contentmoderator.cognitive.microsoft.com/) , és válassza a **Beállítások**  >  **munkafolyamatok**lehetőséget.
 
 ![Alapértelmezett munkafolyamat](images/default-workflow-listed.PNG)
 

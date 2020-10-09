@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.openlocfilehash: 5ea6af370221ade23b8fd96d7ee0bb58b964459b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88522521"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-alcumus-info-exchange"></a>Oktatóanyag: Azure Active Directory integráció a Alcumus info Exchange szolgáltatással
@@ -73,7 +73,7 @@ Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a Alcum
 Az Azure AD egyszeri bejelentkezés konfigurálásához és teszteléséhez a Alcumus info Exchange használatával el kell végeznie a következő építőelemeket:
 
 1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. A **[Alcumus-adatok Exchange-alapú egyszeri bejelentkezésének konfigurálása](#configure-alcumus-info-exchange-single-sign-on)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+2. Az **[Alcumus-adatok Exchange-alapú egyszeri bejelentkezésének konfigurálása](#configure-alcumus-info-exchange-single-sign-on)** – az alkalmazás oldalán lévő Sign-On beállításainak konfigurálása.
 3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
 4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
 5. **[Alcumus-információ Exchange-tesztelési felhasználó létrehozása](#create-alcumus-info-exchange-test-user)** – a Alcumus info Exchange Britta, amely a felhasználó Azure ad-képviseletéhez kapcsolódik.
@@ -93,11 +93,11 @@ Az Azure AD egyszeri bejelentkezés az Alcumus info Exchange használatával tö
 
     ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
+3. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-4. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon hajtsa végre a következő lépéseket:
+4. Az **egyszeri Sign-On beállítása az SAML-vel** lapon hajtsa végre a következő lépéseket:
 
     ![Alcumus info Exchange-tartomány és URL-címek egyszeri bejelentkezési adatai](common/idp-intiated.png)
 
@@ -108,7 +108,7 @@ Az Azure AD egyszeri bejelentkezés az Alcumus info Exchange használatával tö
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosító és válasz URL-címmel. Az értékek beszerzéséhez lépjen kapcsolatba a [Alcumus info Exchange-ügyfél támogatási csapatával](mailto:helpdesk@alcumusgroup.com) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-5. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
+5. Az **egyszeres Sign-On beállítása SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozása](common/metadataxml.png)
 
@@ -122,7 +122,7 @@ Az Azure AD egyszeri bejelentkezés az Alcumus info Exchange használatával tö
 
     c. Kijelentkezési URL-cím
 
-### <a name="configure-alcumus-info-exchange-single-sign-on"></a>Alcumus-adatok Exchange-alapú egyszeri bejelentkezésének konfigurálása
+### <a name="configure-alcumus-info-exchange-single-sign-on"></a>Alcumus-adatok Exchange-Sign-On konfigurálása
 
 Ha egyszeri bejelentkezést szeretne konfigurálni a **Alcumus info Exchange** oldalon, el kell küldenie a letöltött **összevonási metaadatokat tartalmazó XML-fájlt** és a megfelelő másolt url-címeket a Azure Portal a [Alcumus info Exchange támogatási csapatának](mailto:helpdesk@alcumusgroup.com). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
 
@@ -149,7 +149,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    d. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
