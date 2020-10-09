@@ -1,16 +1,14 @@
 ---
 title: Önálló fürt üzembe helyezésének előkészítése
 description: A környezet előkészítéséhez és a fürtkonfiguráció létrehozásához kapcsolódó dokumentáció, amely az éles számítási feladatok kezelésére szolgáló fürt üzembe helyezése előtt megfontolandó.
-author: dkkapur
 ms.topic: conceptual
 ms.date: 9/11/2018
-ms.author: dekapur
-ms.openlocfilehash: 6b07e3fe14478cf45df2f02378da4e83853cf9ea
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 9e5ad37d803b2042fd57b0a325570e69d7b73038
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86261045"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91842954"
 ---
 # <a name="plan-and-prepare-your-service-fabric-standalone-cluster-deployment"></a>A Service Fabric önálló fürt üzembe helyezésének megtervezése és előkészítése
 

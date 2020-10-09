@@ -7,12 +7,12 @@ ms.reviewer: logicappspm
 ms.topic: tutorial
 ms.custom: mvc
 ms.date: 09/30/2020
-ms.openlocfilehash: 3bf4ad12bab3e71675ff35203bf69526b3b8614f
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: aad271875abb9024a1ecc7f45018c04d8c79ce95
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91574731"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91842563"
 ---
 # <a name="tutorial-create-schedule-based-and-recurring-automation-workflows-with-azure-logic-apps"></a>Oktatóanyag: ütemezett és ismétlődő automatizálási munkafolyamatok létrehozása Azure Logic Apps
 
@@ -360,20 +360,20 @@ A logikai alkalmazás továbbra is fut, amíg le nem tiltja vagy nem törli az a
 
 1. A Azure Portal keresési mezőjébe írja be a létrehozott erőforráscsoport nevét. Az eredmények között az **erőforráscsoportok**területen válassza ki az erőforráscsoportot.
 
-   Ez a példa létrehozta a nevű erőforráscsoportot `LA-TravelTime-RG` . 
+   Ez a példa létrehozta a nevű erőforráscsoportot `LA-TravelTime-RG` .
 
    ![A "La-Travel-Time-RG" beírt és * * LA-TravelTime-RG * * elemet megjelenítő képernyőkép.](./media/tutorial-build-scheduled-recurring-logic-app-workflow/find-resource-group.png)
 
    > [!TIP]
    > Ha az Azure kezdőlapján megjelenik az erőforráscsoport a **legutóbbi erőforrások**területen, akkor a kezdőlapon kiválaszthatja a csoportot.
 
-1. Az erőforráscsoport menüben válassza az **Áttekintés** lehetőséget. Az **Áttekintés** ablaktábla eszköztárán válassza az **erőforráscsoport törlése**elemet. 
+1. Az erőforráscsoport menüben válassza az **Áttekintés** lehetőséget. Az **Áttekintés** ablaktábla eszköztárán válassza az **erőforráscsoport törlése**elemet.
 
    ![Képernyőfelvétel: az erőforráscsoport "áttekintés" panelje, valamint a panel eszköztárán az "erőforráscsoport törlése" lehetőség van kiválasztva.](./media/tutorial-build-scheduled-recurring-logic-app-workflow/delete-resource-group.png)
 
-1. A megerősítő ablaktáblán adja meg az erőforráscsoport nevét, majd válassza a **Törlés**lehetőséget.
+1. A megjelenő megerősítő panelen adja meg az erőforráscsoport nevét, majd válassza a **Törlés**lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban létrehozott egy logikai alkalmazást, amely egy megadott ütemterv (hétköznap reggel) alapján ellenőrzi a forgalmat, és végrehajtja a műveletet (e-mailt küld), ha az utazási idő meghaladja a megadott korlátot. Ebből a témakörből megtudhatja, hogyan hozhat létre olyan logikai alkalmazást, amely levelezési listákat küld a jóváhagyásra az Azure-szolgáltatások, a Microsoft-szolgáltatások és más szolgáltatott szoftveres (SaaS) alkalmazások integrálásával.
 

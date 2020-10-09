@@ -6,16 +6,83 @@ ms.topic: overview
 author: bwren
 ms.author: bwren
 ms.date: 07/08/2020
-ms.openlocfilehash: d82e9244152f1ecb78b062b4b1dbf02c45c505a1
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 6722b88947fda8f1a09e540d69c4a8bec74143df
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91325657"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91842665"
 ---
 # <a name="whats-new-in-azure-monitor-documentation"></a>Az Azure Monitor dokumentációjának újdonságai
 
 Ez a cikk felsorolja Azure Monitor új vagy jelentős mértékben frissített cikkeket. A rendszer minden hónap első hetében frissíti az előző hónapból származó cikkek frissítéseinek befoglalásával.
+
+## <a name="september-2020"></a>2020. szeptember
+
+### <a name="general"></a>Általános kérdések
+- [Azure monitor GYIK](faq.md) – további szakasz a OpenTelemetry.
+
+### <a name="agents"></a>Ügynökök
+- [Azure monitor ügynök áttekintése](platform/azure-monitor-agent-overview.md) – az új ügynökre való áttéréshez szükséges döntési tényezők.
+- [Az Azure monitoring Agent áttekintése – a](platform/agents-overview.md) Windows 10 támogatása.
+
+### <a name="alerts"></a>Riasztások
+- [Log-riasztás létrehozása Azure Resource Manager sablonnal](platform/alerts-log-create-templates.md) – új cikk.
+- [Hibaelhárítás az Azure metrikus riasztások](platform/alerts-troubleshoot-metric.md) számára – az ARM-sablon exportálása a metrika riasztási szabályhoz című szakasza.
+
+### <a name="application-insights"></a>Application Insights
+- [Hozzon létre egy új Azure Monitor Application Insights munkaterület-alapú erőforrás](app/create-workspace-resource.md) -eltávolított előnézet megjelölését.
+- [Adatmegőrzés és tárolás az Azure Application Insightsban](app/data-retention-privacy.md) – további információ a Mac és a Linux adatvesztés elleni védelemhez szükséges új támogatásról.
+- [Application Insights – az](app/eventcounters.md) alapértelmezés szerint gyűjtött számlálók megjegyzése.
+- [A naplózási és az előre összesített mérőszámok az Azure-ban Application Insights](app/pre-aggregated-metrics-log-metrics.md) – előzetes megjelöléssel eltávolítva.
+- [Azure Monitor Application Insights klasszikus erőforrás migrálása munkaterület-alapú erőforrásba](app/convert-classic-resource.md) – új cikk.
+- [Java-alkalmazások figyelése bármilyen környezetben – Azure Monitor Application Insights](app/java-in-process-agent.md) – az ügynök új előzetes verziójának frissítése.
+- [Webalkalmazás-elemzések beállítása a ASP.net-hez az Azure Application Insightsban](app/asp-net.md) – cikk újraírása.
+- [Telemetria csatornák Az Azure Application Insightsban](app/telemetry-channels.md) – további információ a Mac és a Linux adatvesztés elleni védelemhez szükséges új támogatásról.
+- Az [Azure Application Insights Snapshot Debugger](app/snapshot-debugger-troubleshoot.md) – SSL-című szakasz hibaelhárítása Snapshot Debugger.
+- [Alkalmazás-változási elemzés használata a Azure monitorban webalkalmazási problémák kereséséhez](app/change-analysis.md) – a virtuális gép és a tevékenység naplójának hozzáadása.
+
+
+### <a name="containers"></a>Containers
+- Az [Azure arc-kompatibilis Kubernetes-fürt konfigurálása az Azure monitor for containers](insights/container-insights-enable-arc-enabled-clusters.md) szolgáltatással – további útmutatást nyújt az egyszerű szolgáltatásnév használatával történő figyelés engedélyezéséhez.
+- [Üzembe helyezés & hPa-metrikák Azure monitor for containers](insights/container-insights-deployment-hpa-metrics.md) – új cikk.
+
+### <a name="insights-and-solutions"></a>Bepillantást és megoldásokat
+- [Az Azure cache](insights/redis-cache-insights-overview.md) -hez készült Azure monitor Redis – eltávolított előnézet megjelölése.
+- [Azure monitor hálózatok számára (előzetes verzió) – a](insights/network-insights-overview.md) kapcsolat és a forgalom további részei.
+- [It-szolgáltatásmenedzsmenti csatoló – biztonságos exportálás Azure monitor](platform/it-service-management-connector-secure-webhook-connections.md) – új cikk.
+- [IT-szolgáltatásmenedzsmenti csatoló Azure monitor](platform/itsmc-connections.md) -Megjegyzés a Cherwell és az ITSM-integrációk terén.
+- [Key Vault figyelése Azure Monitor Key Vault](insights/key-vault-insights-overview.md) -eltávolított előnézet megjelöléssel.
+
+### <a name="logs"></a>Naplók
+- [Lekérdezések naplózása Azure monitor log lekérdezésekben](log-query/query-audit.md) – új cikk.
+- [Azure monitor ügyfél által felügyelt kulcshoz](platform/customer-managed-keys.md) hozzáadott ügyfél-kulcstároló.
+- [Azure monitor naplók dedikált fürtök](log-query/logs-dedicated-clusters.md) – új cikk.
+- [A Azure monitor naplók üzembe helyezésének megtervezése – a](platform/design-logs-deployment.md) méretezési és a betöltési mennyiségre vonatkozó korlátozás szakasz frissítése.
+- [A lekérdezés hatókörének naplózása Azure Monitor log Analytics](log-query/scope.md) -a alkalmazásban a munkaterület-alapú alkalmazások belefoglalása.
+- [Naplók Azure monitor-a](platform/data-platform-logs.md) munkaterület-alapú alkalmazásokat tartalmazó frissítések.
+- [A Azure monitor rekordok szabványos oszlopai – a](platform/log-standard-columns.md) frissítések, amelyek munkaterületen alapuló alkalmazásokat tartalmaznak.
+- [Azure monitor szolgáltatás korlátai](service-limits.md) – a felhasználói lekérdezések szabályozásának frissített korlátai.
+- [Az ügyfél által felügyelt Storage-fiókok használata Azure Monitor log Analyticsban – a](platform/private-storage.md) cikk átírása megtörténik.
+- Az [Azure log Analytics-ben tárolt adatok megtekintése és elemzése](log-query/logs-structure.md) – a frissítések a munkaterület-alapú alkalmazások belefoglalásához szükségesek.
+
+
+### <a name="platform-logs"></a>Platformnaplók
+- [Azure Activity log esemény sémája – Azure monitor](platform/activity-log-schema.md) – súlyossági szintek hozzáadása.
+- [Resource Manager-sablonok – minták a diagnosztikai beállításokhoz](samples/resource-manager-diagnostic-settings.md) – az Azure Storage-fiókhoz hozzáadott minta.
+
+### <a name="visualizations"></a>Vizualizációk
+- [Azure monitor munkafüzet-diagram vizualizációi](platform/workbooks-chart-visualizations.md) – új cikk.
+- [Azure monitor munkafüzet összetett sávjának renderelése](platform/workbooks-composite-bar.md) – új cikk.
+- [Azure monitor munkafüzet Graph vizualizációk](platform/workbooks-graph-visualizations.md) – új cikk.
+- [Azure monitor munkafüzet Grid vizualizációk](platform/workbooks-grid-visualizations.md) – új cikk.
+- [Azure monitor munkafüzet mézes fésű vizualizációk](platform/workbooks-honey-comb.md) – új cikk.
+- [Azure monitor munkafüzet szövegének vizualizációi](platform/workbooks-text-visualizations.md) – új cikk.
+- [Azure monitor munkafüzet csempe vizualizációk](platform/workbooks-tile-visualizations.md) – új cikk.
+- [Azure monitor munkafüzet favizualizációi](platform/workbooks-tree-visualizations.md) – új cikk.
+
+
+
 
 ## <a name="august-2020"></a>2020. augusztus
 
@@ -616,6 +683,6 @@ Több cikk is frissült a tartalom átszervezésének részeként a platform nap
 - [Erőforrás-naplók összegyűjtése Azure-erőforrásokból és Azure monitor](learn/tutorial-resource-logs.md) -új cikk elemzése.
 - [Azure-erőforrás figyelése Azure monitor](learn/quick-monitor-azure-resource.md) -új cikkel.
    
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ha szeretne hozzájárulni Azure Monitor dokumentációhoz, tekintse meg a [docs közreműködői útmutatóját](/contribute/).

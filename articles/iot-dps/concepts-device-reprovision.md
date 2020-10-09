@@ -7,12 +7,12 @@ ms.date: 04/04/2019
 ms.topic: conceptual
 ms.service: iot-dps
 services: iot-dps
-ms.openlocfilehash: 2bf369b784cddf307abc59d2b8766fc8a87e0985
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9653a584382584d982c55008a6e8547de28691b7
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "74975346"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91842852"
 ---
 # <a name="iot-hub-device-reprovisioning-concepts"></a>A IoT Hub eszköz újraépítésével kapcsolatos fogalmak
 
@@ -32,7 +32,7 @@ Az eszközök kiépítési szolgáltatáson belüli támogatásának újraépít
 
 Az eszköz állapotával kapcsolatos adatmennyiség az [eszköz Twin](../iot-hub/iot-hub-devguide-device-twins.md) és az eszköz képességeiből tevődik össze. Ezeket az adatkészleteket az eszköz kiépítési szolgáltatásának példánya és a IoT hub tárolja, amelyhez az eszköz hozzá van rendelve.
 
-![Kiépítés az eszköz kiépítési szolgáltatásával](./media/concepts-device-reprovisioning/dps-provisioning.png)
+![Diagram, amely bemutatja, hogyan működik a kiépítés az eszköz kiépítési szolgáltatásával.](./media/concepts-device-reprovisioning/dps-provisioning.png)
 
 Ha egy eszközt először kiépít egy eszköz kiépítési szolgáltatásának példányával, a következő lépéseket kell végrehajtani:
 
@@ -52,13 +52,13 @@ A forgatókönyvtől függően az eszköz általában egy kérést küld egy ki�
 
 * **Adatok újbóli kiépítése és áttelepítése**: Ez a szabályzat az új beléptetési bejegyzések alapértelmezett értéke. Ez a szabályzat akkor lép működésbe, ha a beléptetési bejegyzéshez társított eszközök új kérelmet küldenek be (1). A beléptetési bejegyzés konfigurációjától függően előfordulhat, hogy az eszköz máshoz van rendelve egy másik IoT hubhoz. Ha az eszköz megváltoztatja a IoT hubokat, a rendszer eltávolítja az eszköz regisztrációját a kezdeti IoT hubhoz. A rendszer az adott kezdeti IoT hub frissített Eszközállapot-információit áttelepíti az új IoT hubhoz (2). Az áttelepítés során a rendszer az eszköz állapotát **hozzárendelésként**fogja jelenteni.
 
-    ![Kiépítés az eszköz kiépítési szolgáltatásával](./media/concepts-device-reprovisioning/dps-reprovisioning-migrate.png)
+    ![Diagram, amely azt mutatja, hogy egy házirend akkor lép működésbe, amikor a beléptetési bejegyzéshez társított eszközök új kérelmet küldenek.](./media/concepts-device-reprovisioning/dps-reprovisioning-migrate.png)
 
 * A **kezdeti konfiguráció újbóli létrehozása és alaphelyzetbe állítása**: Ez a házirend akkor lép működésbe, ha a beléptetési bejegyzéshez társított eszközök beküldenek egy új létesítési kérelmet (1). A beléptetési bejegyzés konfigurációjától függően előfordulhat, hogy az eszköz máshoz van rendelve egy másik IoT hubhoz. Ha az eszköz megváltoztatja a IoT hubokat, a rendszer eltávolítja az eszköz regisztrációját a kezdeti IoT hubhoz. A kiépítési szolgáltatás példánya által az eszköz kiosztásakor kapott kezdeti konfigurációs információk az új IoT hub (2) számára lettek kiépítve. Az áttelepítés során a rendszer az eszköz állapotát **hozzárendelésként**fogja jelenteni.
 
     Ezt a házirendet gyakran használják a gyári beállítások visszaállítására az IoT-hubok módosítása nélkül.
 
-    ![Kiépítés az eszköz kiépítési szolgáltatásával](./media/concepts-device-reprovisioning/dps-reprovisioning-reset.png)
+    ![Diagram, amely bemutatja, hogyan hajt végre egy házirend a beléptetési bejegyzéshez társított eszközök új létesítési kérelem elküldésekor.](./media/concepts-device-reprovisioning/dps-reprovisioning-reset.png)
 
 * **Soha ne telepítse újra**: az eszközt soha nem rendeli hozzá másik hubhoz. Ez a szabályzat a visszamenőleges kompatibilitás kezelésére szolgál.
 
@@ -87,6 +87,6 @@ A következő táblázat az API-verziókat mutatja be, mielőtt elérhetővé te
 > [!NOTE]
 > Ezek az értékek és hivatkozások valószínűleg változnak. Ez csak egy helyőrző, amely meghatározza, hogy a verziók hogyan határozhatók meg egy ügyfél és a várt verziók alapján.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Eszközök újraépítése](how-to-reprovision.md)

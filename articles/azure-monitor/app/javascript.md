@@ -4,12 +4,12 @@ description: Megtekintheti az oldal nézetét és a munkamenetek számát, a web
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.custom: devx-track-js
-ms.openlocfilehash: ddbdeaed1cf3f69c20c272ea3e9dde405119bc24
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 5a90f0b4223d69ccb6c4def871eb9d5bf5fbc2e8
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91328904"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91841441"
 ---
 # <a name="application-insights-for-web-pages"></a>Application Insights weblapokhoz
 
@@ -104,10 +104,10 @@ Az egyes konfigurációs beállítások egy új sorban jelennek meg, ha nem szer
 
 Az elérhető konfigurációs lehetőségek a következők 
 
-| Név | Típus | Description
+| Név | Típus | Leírás
 |------|------|----------------
 | src | karakterlánc **[kötelező]** | Az a teljes URL-cím, ahová be kell tölteni az SDK-t. Ezt az értéket egy dinamikusan hozzáadott parancsfájl vagy címke "src" attribútumához használja a rendszer &lt; &gt; . Használhatja a nyilvános CDN-helyet vagy a saját privát üzemeltetését.
-| név | karakterlánc *[nem kötelező]* | A inicializált SDK globális neve, alapértelmezett érték: `appInsights` . Így ```window.appInsights``` a inicializált példányra mutató hivatkozás lesz. Megjegyzés: Ha egy név értéket ad meg, vagy egy korábbi példányt rendel hozzá (a globális név appInsightsSDK), akkor ez a name érték a globális névtérben is definiálva lesz ```window.appInsightsSDK=<name value>``` , ezt az SDK inicializálási kódja megköveteli, hogy a rendszer inicializálja és frissítse a megfelelő kódrészletet és proxy metódusokat.
+| name | karakterlánc *[nem kötelező]* | A inicializált SDK globális neve, alapértelmezett érték: `appInsights` . Így ```window.appInsights``` a inicializált példányra mutató hivatkozás lesz. Megjegyzés: Ha egy név értéket ad meg, vagy egy korábbi példányt rendel hozzá (a globális név appInsightsSDK), akkor ez a name érték a globális névtérben is definiálva lesz ```window.appInsightsSDK=<name value>``` , ezt az SDK inicializálási kódja megköveteli, hogy a rendszer inicializálja és frissítse a megfelelő kódrészletet és proxy metódusokat.
 | ld | szám az MS-ban *[opcionális]* | Meghatározza azt a betöltési késleltetést, ameddig a rendszer megpróbálja betölteni az SDK-t. Az alapértelmezett érték a 0ms, és minden negatív érték azonnal hozzáad egy szkript címkét &lt; a &gt; lap főrégiójához, amely letiltja az oldal betöltési eseményét, amíg a parancsfájl be nem töltődik (vagy sikertelen).
 | useXhr | logikai érték *[opcionális]* | Ez a beállítás csak jelentési SDK-betöltési hibák esetén használatos. A jelentéskészítés először a beolvasást () fogja használni, ha elérhető, majd a tartalék x/óra értékre állítja be ezt az értéket, csak a beolvasás ellenőrzését. Ezt az értéket csak akkor kell használni, ha az alkalmazás olyan környezetben van használatban, amelyben a fetch nem fogja elküldeni a sikertelen események eseményeit.
 | crossOrigin | karakterlánc *[nem kötelező]* | Ennek a beállításnak a megadásával az SDK letöltéséhez hozzáadott parancsfájl-címke tartalmazza a crossOrigin attribútumot a karakterlánc értékkel. Ha nincs definiálva (az alapértelmezett) nincs crossOrigin attribútum hozzáadva. Az ajánlott értékek nincsenek definiálva (az alapértelmezett érték); ""; vagy a "névtelen" (az összes érvényes értéknél lásd a [HTML-attribútumot: `crossorigin` ](https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/crossorigin) dokumentáció)
@@ -153,7 +153,7 @@ appInsights.trackTrace({message: 'this message will not be sent'}); // Not sent
 ## <a name="configuration"></a>Konfiguráció
 A legtöbb konfigurációs mező neve úgy van elnevezve, hogy a hamis értékre legyenek kiválasztva. Az összes mező megadása nem kötelező, kivéve a következőt: `instrumentationKey` .
 
-| Name | Alapértelmezett | Description |
+| Name (Név) | Alapértelmezett | Leírás |
 |------|---------|-------------|
 | instrumentationKey | null | **Kötelező**<br>A Azure Portaltól beszerzett kialakítási kulcs. |
 | accountId | null | Egy nem kötelező fiókazonosító, ha az alkalmazás a felhasználókat fiókokba csoportosítja. Nincsenek szóközök, vesszők, pontosvesszők, egyenlők vagy függőleges sávok |
@@ -218,7 +218,7 @@ A beállítás szerint `autoTrackPageVisitTime: true` a felhasználó által az 
 |---------------|
 | [React](javascript-react-plugin.md)|
 | [React Native](javascript-react-native-plugin.md)|
-| [Angular](https://github.com/microsoft/ApplicationInsights-JS/tree/master/extensions/applicationinsights-angularplugin-js) |
+| [Angular](javascript-angular-plugin.md) |
 
 ## <a name="correlation"></a>Korreláció
 

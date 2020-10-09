@@ -15,12 +15,12 @@ ms.date: 03/14/2019
 ms.author: willzhan
 ms.reviewer: kilroyh;yanmf;juliako
 ms.custom: devx-track-csharp
-ms.openlocfilehash: e7e63225df4e337a93912bf1e1c17eb61a6cc9e0
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.openlocfilehash: b98b66d8f0350c32e89d62d776ee1288d9271712
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
-ms.locfileid: "89258605"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91841152"
 ---
 # <a name="design-of-a-content-protection-system-with-access-control-using-azure-media-services"></a>Hozzáférés-vezérlést használó tartalomkezelő rendszer tervezése Azure Media Services
 
@@ -64,7 +64,7 @@ A következő táblázat összefoglalja az egyes DRM által támogatott natív p
 | **Ügyfélplatform** | **Natív DRM-támogatás** | **Böngésző/alkalmazás** | **Folyamatos átviteli formátumok** |
 | --- | --- | --- | --- |
 | **Intelligens TV-k, kezelő STBs, OTT STBs** |PlayReady elsősorban és/vagy Widevine, és/vagy egyéb |Linux, Opera, WebKit, egyéb |Különböző formátumok |
-| **Windows 10-es eszközök (Windows PC, Windows Tablet, Windows Phone-telefon, Xbox)** |PlayReady |Microsoft Edge/IE11/EME<br/><br/><br/>Universal Windows Platform |DASH (a HLS esetében a PlayReady nem támogatott)<br/><br/>DASH, Smooth Streaming (a HLS esetében a PlayReady nem támogatott) |
+| **Windows 10-es eszközök (Windows PC, Windows Tablet, Windows Phone-telefon, Xbox)** |PlayReady |Microsoft Edge/IE11/EME<br/><br/><br/>Univerzális Windows-platform |DASH (a HLS esetében a PlayReady nem támogatott)<br/><br/>DASH, Smooth Streaming (a HLS esetében a PlayReady nem támogatott) |
 | **Android-eszközök (telefon, Tablet, TV)** |Widevine |Chrome/EME |KÖTŐJEL, HLS |
 | **iOS (iPhone, iPad), OS X-ügyfelek és Apple TV** |FairPlay |Safari 8 +/EME |HLS |
 
@@ -157,7 +157,7 @@ A következő táblázat a leképezést mutatja be.
 | **DRM-védelem munkafolyamata** |Media Services dinamikus védelem |
 | **DRM-licenckézbesítés** |* Media Services licenc kézbesítése (PlayReady, Widevine, FairPlay) <br/>* Axinom-licenckiszolgáló <br/>* Egyéni PlayReady-licenckiszolgáló |
 | **Származási** |Media Services streaming végpont |
-| **Kulcskezelő** |A hivatkozás megvalósításához nem szükséges |
+| **Kulcskezelés** |A hivatkozás megvalósításához nem szükséges |
 | **Tartalomkezelés** |C# konzolos alkalmazás |
 
 Más szóval a IDENTITÁSSZOLGÁLTATÓ és az STS is az Azure AD-vel együtt használható. A lejátszóhoz a [Azure Media Player API](https://amp.azure.net/libs/amp/latest/docs/) használatos. Mind a Media Services, mind a Media Player támogatja a DASH és a CENC-et több DRM-mel.
@@ -206,11 +206,11 @@ A megvalósítás a következő lépéseket tartalmazza:
 
 7. Hozzon létre egy ASP.NET MVC-alkalmazást a videolejátszó üzemeltetéséhez. Ez a ASP.NET-alkalmazás az Azure AD-Bérlővel szembeni felhasználói hitelesítéssel van védve. A megfelelő jogcímeket a felhasználói hitelesítés után kapott hozzáférési jogkivonatok tartalmazzák. Ehhez a lépéshez az OpenID Connect API használatát javasoljuk. Telepítse az alábbi NuGet-csomagokat:
 
-   * Telepítse a Microsoft. Azure. ActiveDirectory. GraphClient csomagot.
-   * Telepítse a Microsoft. Owin. Security. OpenIdConnect csomagot.
+   * Install-Package Microsoft. Azure. ActiveDirectory. GraphClient
+   * Install-Package Microsoft. Owin. Security. OpenIdConnect
    * Install-Package Microsoft. Owin. Security. cookie-k
    * Install-Package Microsoft.Owin.Host.SystemWeb
-   * Telepítse a Microsoft. IdentityModel. clients. ActiveDirectory csomagot.
+   * Install-Package Microsoft. IdentityModel. clients. ActiveDirectory
 
 8. Hozzon létre egy lejátszót a [Azure Media Player API](https://amp.azure.net/libs/amp/latest/docs/)használatával. A [Azure Media Player PROTECTIONINFO API](https://amp.azure.net/libs/amp/latest/docs/) segítségével meghatározhatja, hogy melyik DRM-technológiát használja a különböző DRM-platformokon.
 
@@ -421,11 +421,11 @@ A következő Képernyőképek a különböző tartományi fiókok által haszn�
 
 **Egyéni Azure ad-bérlői tartományi fiók**: az egyéni Azure ad-bérlői tartomány testreszabott bejelentkezési lapja.
 
-![Egyéni Azure AD-bérlői tartományi fiók](./media/media-services-cenc-with-multidrm-access-control/media-services-ad-tenant-domain1.png)
+![Képernyőkép, amely az egyéni Azure A D bérlői tartomány testreszabott bejelentkezési oldalát jeleníti meg.](./media/media-services-cenc-with-multidrm-access-control/media-services-ad-tenant-domain1.png)
 
 **Microsoft tartományi fiók intelligens kártyával**: a Microsoft vállalat által a kétfaktoros hitelesítéssel testreszabott bejelentkezési oldal.
 
-![Egyéni Azure AD-bérlői tartományi fiók](./media/media-services-cenc-with-multidrm-access-control/media-services-ad-tenant-domain2.png)
+![Képernyőfelvétel: a Microsoft vállalati I T által testreszabott bejelentkezési oldal a kétfaktoros hitelesítéssel.](./media/media-services-cenc-with-multidrm-access-control/media-services-ad-tenant-domain2.png)
 
 **Microsoft-fiók**: a Microsoft-fiók bejelentkezési lapja a felhasználók számára.
 

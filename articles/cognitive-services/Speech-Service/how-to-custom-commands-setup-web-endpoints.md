@@ -10,12 +10,12 @@ ms.subservice: speech-service
 ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: xiaojul
-ms.openlocfilehash: 1b7b5e209329bd5dc4c95f81f61fecf48fb74e40
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.openlocfilehash: e64c5ddfafb8bc8e9041e6d6b3e473a9a20565ed
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91362110"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91843124"
 ---
 # <a name="set-up-web-endpoints"></a>Webes végpontok beállítása
 
@@ -79,7 +79,7 @@ Ebből a cikkből megismerheti, hogyan állíthat be webes végpontokat Custom C
     Az **Egyszerű szerkesztőben** adja meg a következőt: `{SubjectDevice} is {OnOff}`.
    
    > [!div class="mx-imgBorder"]
-   > ![Webes végpontok hívása művelet siker esetén](media/custom-commands/setup-web-endpoint-edit-action-on-success-send-response.png)
+   > ![Képernyőkép, amely megjeleníti a végrehajtáskor végrehajtandó sikeres művelet képernyőjét.](media/custom-commands/setup-web-endpoint-edit-action-on-success-send-response.png)
 
    | Beállítás | Ajánlott érték | Leírás |
    | ------- | --------------- | ----------- |
@@ -107,7 +107,7 @@ Ebből a cikkből megismerheti, hogyan állíthat be webes végpontokat Custom C
 - Válasz Siker esetén\
 Mentés, betanítás és tesztelés
    > [!div class="mx-imgBorder"]
-   > ![Webes végpontok hívása művelet siker esetén](media/custom-commands/setup-web-endpoint-on-success-response.png)
+   > ![Képernyőkép, amely megjeleníti a sikerre adott választ.](media/custom-commands/setup-web-endpoint-on-success-response.png)
 - Válasz Hiba esetén\
 Egy lekérdezési paraméter eltávolítása, mentés, betanítás és tesztelés
    > [!div class="mx-imgBorder"]

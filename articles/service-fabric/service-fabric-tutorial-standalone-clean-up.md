@@ -1,31 +1,29 @@
 ---
 title: Önálló fürt tisztítása
-description: Ebből az oktatóanyagból megtudhatja, hogyan távolíthatja el az AWS-t vagy az Azure-erőforrásokat az önálló Service Fabric-fürtben.
-author: dkkapur
+description: Ebből az oktatóanyagból megtudhatja, hogyan törölhet AWS-vagy Azure-erőforrásokat az önálló Service Fabric-fürthöz.
 ms.topic: tutorial
 ms.date: 07/22/2019
-ms.author: dekapur
 ms.custom: mvc
-ms.openlocfilehash: bfb23ca5f5eb9540491fbd05efdfd6997db15e6b
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.openlocfilehash: 0d46e9068a311594f779411c3ccee2b408febb3f
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
-ms.locfileid: "75639020"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91842886"
 ---
 # <a name="tutorial-clean-up-your-standalone-cluster"></a>Oktatóanyag: Az önálló fürt törlése
 
-Az önálló Service Fabric-fürtök lehetővé teszik, hogy kiválassza a saját környezetét, és hogy a Service Fabric „bármely operációs rendszer, bármilyen felhő” módszerével hozzon létre egy fürtöt. Ebben az oktatóanyag-sorozatban létre fog hozni egy AWS-ben vagy az Azure-ban üzemeltetett önálló fürtöt, és telepítenie kell egy alkalmazást.
+Service Fabric önálló fürtökben lehetősége van a saját környezetének kiválasztására Service Fabric üzemeltetéséhez. Ebben az oktatóanyag-sorozatban létre fog hozni egy AWS-ben vagy az Azure-ban üzemeltetett önálló fürtöt, és üzembe helyezhet egy alkalmazást.
 
-Ez az oktatóanyag egy sorozat negyedik része. Az oktatóanyag ezen része bemutatja, hogyan távolíthatja el a Service Fabric-fürt üzemeltetéséhez létrehozott AWS-vagy Azure-erőforrásokat.
+Ez az oktatóanyag egy sorozat negyedik része. Az oktatóanyag ezen része bemutatja, hogyan törölheti a Service Fabric-fürt üzemeltetéséhez létrehozott AWS-vagy Azure-erőforrásokat.
 
-A sorozat negyedik részében az alábbiakkal fog megismerkedni:
+Ebből a cikkből megtudhatja, hogy:
 
 > [!div class="checklist"]
-> * A Service Fabric-fürt törlése
-> * AWS-vagy Azure-erőforrások tisztítása
+> * Service Fabric-fürt eltávolítása
+> * AWS-vagy Azure-erőforrások törlése
 
-## <a name="clean-up-service-fabric-cluster"></a>A Service Fabric-fürt törlése
+## <a name="remove-a-service-fabric-cluster"></a>Service Fabric-fürt eltávolítása
 
 1. Az RDP-t a virtuális géphez, amelyet a Service Fabric telepítéséhez használt.
 2. Nyissa meg a PowerShellt.
@@ -36,7 +34,7 @@ A sorozat negyedik részében az alábbiakkal fog megismerkedni:
   .\RemoveServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.Unsecure.MultiMachine.json
   ```
 
-5. `Y`Ha a rendszer kéri, adja meg, hogy sikeres volt-e a kimenet, a saját IP-címei pedig az alábbi módon lesznek helyettesítve:
+5. Ha a rendszer kéri, adja meg az értéket `Y` . Ha a művelet sikeres volt, a kimenet a következőhöz hasonlóan fog kinézni (saját IP-címekkel):
 
   ```powershell
   Best Practices Analyzer completed successfully.
@@ -49,23 +47,23 @@ A sorozat negyedik részében az alábbiakkal fog megismerkedni:
   The cluster is successfully removed.
   ```
 
-## <a name="clean-up-aws-resources"></a>Az AWS-erőforrások törlése
+## <a name="delete-aws-resources"></a>AWS-erőforrások törlése
 
 1. Jelentkezzen be az AWS-fiókjába.
 2. Lépjen az EC2 konzolra.
 3. Válassza ki az oktatóanyag első részében létrehozott csomópontokat.
-4. Kattintson a **műveletek**  >  **példány állapotának**  >  **megszakítása**elemre.
+4. Válassza a **műveletek**  >  **példány állapotának**  >  **leállítása**lehetőséget.
 
-## <a name="clean-up-azure-resources"></a>Azure-erőforrások karbantartása
+## <a name="delete-azure-resources"></a>Azure-erőforrások törlése
 
-1. Jelentkezzen be az Azure Portalra.
+1. Jelentkezzen be az Azure portálra.
 2. Lépjen a **Virtual Machines** szakaszra.
 3. Jelölje be az oktatóanyag első részében létrehozott három csomópont jelölőnégyzeteit.
-4. Kattintson a **Törlés**gombra.
+4. Válassza a **Törlés** elemet.
 
 ## <a name="next-steps"></a>Következő lépések
 
-A sorozat negyedik részében megismerte, hogyan törölheti az előző lépésekben létrehozott erőforrásokat.
+Ebben az oktatóanyagban megtanulta, hogyan törölheti az előző lépésekben létrehozott erőforrásokat.
 
 > [!div class="checklist"]
 > * Az erőforrások törlése

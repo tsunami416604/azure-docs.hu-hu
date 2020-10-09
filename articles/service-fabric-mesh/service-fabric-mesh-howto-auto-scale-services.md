@@ -1,17 +1,17 @@
 ---
 title: Az Azure Service Fabric Mesh szolgáltatásban futó alkalmazások automatikus méretezése
 description: Megtudhatja, hogyan konfigurálhat automatikusan méretezhető házirendeket egy Service Fabric Mesh-alkalmazás szolgáltatásaihoz.
-author: dkkapur
+author: georgewallace
 ms.topic: conceptual
 ms.date: 12/07/2018
-ms.author: dekapur
+ms.author: gwallace
 ms.custom: mvc, devcenter
-ms.openlocfilehash: fb72806dd7ba838ba7170bda409715bc074e1d99
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: f65fcfa76069a3de37fd3a76e38e38fba40e04ac
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75461972"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91843056"
 ---
 # <a name="create-autoscale-policies-for-a-service-fabric-mesh-application"></a>Service Fabric Mesh-alkalmazáshoz tartozó autoskálázási szabályzatok létrehozása
 Az alkalmazások Service Fabric Meshba való üzembe helyezésének egyik fő előnye, hogy könnyedén méretezheti vagy kibővítheti szolgáltatásait. Ezt a szolgáltatások különböző terhelésének kezelésére, illetve a rendelkezésre állás javítására kell használni. A szolgáltatásokat manuálisan vagy akár ki is méretezheti, vagy beállíthatja az automatikus skálázási házirendeket.
@@ -114,5 +114,5 @@ application:
           ...
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Útmutató a [szolgáltatások manuális méretezéséhez](service-fabric-mesh-tutorial-template-scale-services.md)

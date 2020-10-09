@@ -11,13 +11,13 @@ ms.topic: conceptual
 ms.date: 09/23/2020
 ms.author: ryanwi
 ms.reviewer: hirsin, jesakowi, jmprieur, marsma
-ms.custom: aaddev, fasttrack-edit, contperfq1
-ms.openlocfilehash: 2ac23e16dd294f6a17fbc891eb87889760724f36
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.custom: aaddev, fasttrack-edit, contperfq1, identityplatformtop40
+ms.openlocfilehash: 79475414f6785474596beae208fefae81a673dea
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
-ms.locfileid: "91461257"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91842682"
 ---
 # <a name="permissions-and-consent-in-the-microsoft-identity-platform-endpoint"></a>Engedélyek és hozzájárulás a Microsoft-identitásplatform végpontján
 
@@ -322,7 +322,7 @@ Egyes erőforrás-URI-k záró perjeltel rendelkeznek ( `https://contoso.com/` e
 
 Ha Ön vagy az alkalmazás felhasználóinak váratlan hibába ütközik a beleegyező folyamat során, tekintse meg ezt a cikket a hibaelhárítási lépésekhez: [váratlan hiba történt az alkalmazáshoz való beleegyező művelet végrehajtásakor](../manage-apps/application-sign-in-unexpected-user-consent-error.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [AZONOSÍTÓ tokenek | Microsoft Identity platform](id-tokens.md)
 * [Hozzáférési tokenek | Microsoft Identity platform](access-tokens.md)

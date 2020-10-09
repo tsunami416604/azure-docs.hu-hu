@@ -1,17 +1,17 @@
 ---
 title: Az Azure Service Fabric hálózatkezelés bemutatása
 description: Ismerje meg a hálózatokat, az átjárókat és az intelligens forgalom útválasztását Service Fabric Meshban.
-author: dkkapur
+author: georgewallace
 ms.topic: conceptual
 ms.date: 11/26/2018
-ms.author: dekapur
+ms.author: gwallace
 ms.custom: mvc, devcenter
-ms.openlocfilehash: dc793e2991783cc9b7b46d92fcc8e0267feb529b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 372e8a46bfe588aa22b0f3be0ef8ae442fa342e2
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75459139"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91842699"
 ---
 # <a name="introduction-to-networking-in-service-fabric-mesh-applications"></a>Service Fabric Mesh-alkalmazások hálózatkezelésének bemutatása
 Ez a cikk a terheléselosztó különböző típusait ismerteti, az átjárók hogyan kötik össze a hálózatot az alkalmazásaival más hálózatokkal, valamint azt, hogy a forgalom hogyan legyen átirányítva az alkalmazások szolgáltatásai között.
@@ -34,7 +34,7 @@ A hálózati erőforrás létrehozásakor a rendszer `ingressConfig` egy nyilvá
 
 Egy rácsvonal-alkalmazás létrehozásakor egy meglévő hálózati erőforrásra kell hivatkoznia. Új nyilvános portok adhatók hozzá, vagy a meglévő portok eltávolíthatók a bejövő konfigurációból. Egy hálózati erőforrás törlése sikertelen lesz, ha egy alkalmazás-erőforrás hivatkozik rá. Az alkalmazás törlésekor a hálózati erőforrás el lesz távolítva.
 
-## <a name="next-steps"></a>További lépések 
+## <a name="next-steps"></a>Következő lépések 
 Ha többet szeretne megtudni a Service Fabric Meshról, olvassa el az áttekintést:
 - [Service Fabric Mesh – áttekintés](service-fabric-mesh-overview.md)
 

@@ -1,17 +1,17 @@
 ---
 title: Azure Files alapú kötet használata Service Fabric Mesh-alkalmazásban
 description: Megtudhatja, hogyan tárolhatja az állapotot egy Azure Service Fabric Mesh alkalmazásban, ha egy Azure Files-alapú kötetet csatlakoztat egy szolgáltatáson belül az Azure CLI használatával.
-author: dkkapur
+author: georgewallace
 ms.topic: conceptual
 ms.date: 11/21/2018
-ms.author: dekapur
+ms.author: gwallace
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 54edc242260479a8f48cc4aae91845041fc2d376
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 01cee3dc3f6b67aba1e6f8455ed7b538a44fc6f7
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86260107"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91842787"
 ---
 # <a name="mount-an-azure-files-based-volume-in-a-service-fabric-mesh-application"></a>Azure Files-alapú kötet csatlakoztatása egy Service Fabric Mesh-alkalmazásban 
 
@@ -21,7 +21,7 @@ Ha kötetet szeretne csatlakoztatni egy szolgáltatásban, hozzon létre egy kö
 
 ## <a name="prerequisites"></a>Előfeltételek
 > [!NOTE]
-> **Ismert probléma az üzembe helyezéssel a Windows RS5 fejlesztői gépen:** A New-SmbGlobalMapping PowerShell-parancsmaggal nyitott hiba található a RS5 Windows rendszerű gépeken, amelyek meggátolják a Azurefile-kötetek csatlakoztatását. Az alábbi példa olyan hibát észlel, amely akkor fordul elő, ha a AzureFile-alapú kötetet a helyi fejlesztési gépre csatlakoztatja.
+> **Ismert probléma az üzembe helyezéssel a Windows RS5 fejlesztői gépen:** A PowerShell-parancsmaggal New-SmbGlobalMapping a RS5 Windows rendszerű gépeken, amelyek meggátolják a Azurefile-kötetek csatlakoztatását. Az alábbi példa olyan hibát észlel, amely akkor fordul elő, ha a AzureFile-alapú kötetet a helyi fejlesztési gépre csatlakoztatja.
 ```
 Error event: SourceId='System.Hosting', Property='CodePackageActivation:counterService:EntryPoint:131884291000691067'.
 There was an error during CodePackage activation.System.Fabric.FabricException (-2147017731)
@@ -75,9 +75,9 @@ az storage account keys list --account-name <storageAccountName> --query "[?keyN
 ```
 
 Ezeket az értékeket a [Azure Portal](https://portal.azure.com)is megtalálhatja:
-* `<storageAccountName>`– A **Storage-fiókok**területen a fájlmegosztás létrehozásához használt Storage-fiók neve.
-* `<storageAccountKey>`– Válassza ki a Storage-fiókot a **Storage-fiókok** területen, majd válassza a **hozzáférési kulcsok** lehetőséget, és használja a **key1**alatti értéket.
-* `<fileShareName>`– Válassza ki a Storage-fiókot a **Storage-fiókok** területen, majd válassza a **fájlok**lehetőséget. A használandó név a létrehozott fájlmegosztás neve.
+* `<storageAccountName>` – A **Storage-fiókok**területen a fájlmegosztás létrehozásához használt Storage-fiók neve.
+* `<storageAccountKey>` – Válassza ki a Storage-fiókot a **Storage-fiókok** területen, majd válassza a **hozzáférési kulcsok** lehetőséget, és használja a **key1**alatti értéket.
+* `<fileShareName>` – Válassza ki a Storage-fiókot a  **Storage-fiókok** területen, majd válassza a **fájlok**lehetőséget. A használandó név a létrehozott fájlmegosztás neve.
 
 ## <a name="declare-a-volume-resource-and-update-the-service-resource-json"></a>Mennyiségi erőforrás deklarálása és a szolgáltatási erőforrás (JSON) frissítése
 
@@ -85,7 +85,7 @@ Paraméterek hozzáadása az `<fileShareName>` `<storageAccountName>` `<storageA
 
 Hozzon létre egy kötet-erőforrást az alkalmazás-erőforrás társaként. Adja meg a nevet és a szolgáltatót ("SFAzureFile") a Azure Files-alapú kötet használatára). A alkalmazásban `azureFileParameters` határozza meg az `<fileShareName>` `<storageAccountName>` `<storageAccountKey>` előző lépésben megtalált, és értékek paramétereit.
 
-Ha a kötetet a szolgáltatásban szeretné csatlakoztatni, vegyen fel egy `volumeRefs` `codePackages` elemet a szolgáltatás eleméhez.  `name`a kötet erőforrás-azonosítója (vagy a kötet erőforrásának telepítési sablon paramétere), valamint a Volume. YAML fájlban deklarált kötet neve.  `destinationPath`a a helyi könyvtár, amelyhez a kötet csatlakoztatva lesz.
+Ha a kötetet a szolgáltatásban szeretné csatlakoztatni, vegyen fel egy `volumeRefs` `codePackages` elemet a szolgáltatás eleméhez.  `name` a kötet erőforrás-azonosítója (vagy a kötet erőforrásának telepítési sablon paramétere), valamint a Volume. YAML fájlban deklarált kötet neve.  `destinationPath` a a helyi könyvtár, amelyhez a kötet csatlakoztatva lesz.
 
 ```json
 {
@@ -210,7 +210,7 @@ volume:
         accountKey: <storageAccountKey>
 ```
 
-Frissítse a Service *. YAML* fájlt a szolgáltatás *erőforrásainak* könyvtárában a kötet a szolgáltatásban való csatlakoztatásához.  Adja hozzá az `volumeRefs` elemet a `codePackages` elemhez.  `name`a kötet erőforrás-azonosítója (vagy a kötet erőforrásának telepítési sablon paramétere), valamint a Volume. YAML fájlban deklarált kötet neve.  `destinationPath`a a helyi könyvtár, amelyhez a kötet csatlakoztatva lesz.
+Frissítse a Service *. YAML* fájlt a szolgáltatás *erőforrásainak* könyvtárában a kötet a szolgáltatásban való csatlakoztatásához.  Adja hozzá az `volumeRefs` elemet a `codePackages` elemhez.  `name` a kötet erőforrás-azonosítója (vagy a kötet erőforrásának telepítési sablon paramétere), valamint a Volume. YAML fájlban deklarált kötet neve.  `destinationPath` a a helyi könyvtár, amelyhez a kötet csatlakoztatva lesz.
 
 ```yaml
 ## Service definition ##

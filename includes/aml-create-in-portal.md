@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: machine-learning
 author: sdgilley
 ms.service: machine-learning
@@ -9,18 +9,18 @@ manager: cgronlund
 ms.custom: include file
 ms.topic: include
 ms.date: 11/04/2019
-ms.openlocfilehash: 8ccd3e6129f4a061eacf83a1f4e70174c697480f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.openlocfilehash: f5f132d257e30cd8f4fa1153087bf0df2f0f5b2c
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/28/2020
-ms.locfileid: "73633673"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91841846"
 ---
-1. Az Azure-előfizetéséhez tartozó hitelesítő adatokkal jelentkezzen be [Azure Portalba](https://portal.azure.com/) .
+1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com/) az Azure-előfizetéséhez tartozó hitelesítő adatok használatával.
 
 1. A Azure Portal bal felső sarkában válassza az **+ erőforrás létrehozása**lehetőséget.
 
-    ![Új erőforrás létrehozása](media/aml-create-in-portal/create-workspace.gif)
+    ![Az erőforrás létrehozása lehetőséget megjelenítő képernyőkép.](media/aml-create-in-portal/create-workspace.gif)
 
 1. A keresősáv használatával megkeresheti **Machine learning**.
 
@@ -30,20 +30,20 @@ ms.locfileid: "73633673"
 
 1. Adja meg az alábbi adatokat az új munkaterület konfigurálásához:
 
-   Mező|Leírás 
+   Mező|Leírás
    ---|---
-   Munkaterület neve |Adjon meg egy egyedi nevet, amely azonosítja a munkaterületet. Ebben a példában a **docs-ws-** t használjuk. A névnek egyedinek kell lennie az erőforráscsoport között. Használjon könnyen felhívható nevet, és a mások által létrehozott munkaterületek megkülönböztetését.  
+   Munkaterület neve |Adjon meg egy egyedi nevet, amely azonosítja a munkaterületet. Ebben a példában a **docs-ws-** t használjuk. A névnek egyedinek kell lennie az erőforráscsoport között. Használjon könnyen felhívható nevet, és a mások által létrehozott munkaterületek megkülönböztetését.
    Előfizetés |Válassza ki a használni kívánt Azure-előfizetést.
-   Erőforráscsoport | Az előfizetés valamelyik meglévő erőforráscsoportját használja, vagy adjon meg egy nevet új erőforráscsoport létrehozásához. Egy erőforráscsoport kapcsolódó erőforrásokat tárol egy Azure-megoldáshoz. Ebben a példában a **docs-pénzmosást**használjuk. 
+   Erőforráscsoport | Használjon egy meglévő erőforráscsoportot az előfizetésben, vagy adjon meg egy nevet egy új erőforráscsoport létrehozásához. Egy erőforráscsoport kapcsolódó erőforrásokat tárol egy Azure-megoldáshoz. Ebben a példában a **docs-pénzmosást**használjuk. 
    Hely | Válassza ki a felhasználókhoz legközelebb eső helyet, valamint az adatforrásokat a munkaterület létrehozásához.
-   Munkaterület kiadása | Válassza az **alapszintű** lehetőséget az oktatóanyag munkaterület-típusaként. A munkaterület típusa (alapszintű & Enterprise) meghatározza azokat a szolgáltatásokat, amelyekhez hozzáférésre és díjszabásra van szükség. Az oktatóanyagban szereplő összes adat egy alapszintű vagy egy vállalati munkaterülettel végezhető el.
+   Munkaterület kiadása | Válassza az **alapszintű** lehetőséget az oktatóanyag munkaterület-típusaként. A munkaterület típusa határozza meg azokat a szolgáltatásokat, amelyekhez hozzáférésre és díjszabásra van szüksége. Az oktatóanyagban szereplő összes adat egy alapszintű vagy egy vállalati munkaterülettel végezhető el.
 
-1. Miután befejezte a munkaterület konfigurálását, válassza a **felülvizsgálat + létrehozás**lehetőséget. 
+1. Miután befejezte a munkaterület konfigurálását, válassza a **felülvizsgálat + létrehozás**lehetőséget.
 
-   > [!Warning] 
+   > [!Warning]
    > Több percet is igénybe vehet, hogy a munkaterületet a felhőben hozza létre.
 
-   Ha a folyamat elkészült, megjelenik egy központi telepítés sikerességét jelző üzenet. 
+   Ha a folyamat elkészült, megjelenik egy központi telepítés sikerességét jelző üzenet.
  
  1. Az új munkaterület megtekintéséhez válassza az **Ugrás erőforráshoz**lehetőséget.
 

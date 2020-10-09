@@ -7,14 +7,14 @@ ms.workload: infrastructure
 ms.topic: how-to
 ms.date: 09/09/2020
 ms.author: manayar
-ms.openlocfilehash: 47ac9fa91f391442691661a3ba03dd1f0d918601
-ms.sourcegitcommit: 5d7f8c57eaae91f7d9cf1f4da059006521ed4f9f
+ms.openlocfilehash: 0a777b9008864368a6d1731cae0374e55a4c585f
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
-ms.locfileid: "89669058"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91842869"
 ---
-# <a name="preview-automatic-vm-guest-patching-for-windows-vms-in-azure"></a>Előzetes verzió: az Azure-beli Windows rendszerű virtuális gépekhez készült automatikus virtuális gép vendégének javítása
+# <a name="preview-automatic-vm-guest-patching-for-windows-vms-in-azure"></a>Előzetes verzió: Automatikus virtuálisgép-vendég-javítás konfigurálása windowsos virtuális gépek esetében az Azure-ban
 
 A virtuális gépek automatikus telepítésének engedélyezése a Windows-alapú virtuális gépeken a biztonsági megfelelőség megőrzése érdekében biztonságosan és automatikusan javítja a virtuális gépeket.
 
@@ -162,7 +162,7 @@ Ha a szolgáltatás regisztrálva van az előfizetéséhez, végezze el a belép
 ```azurecli-interactive
 az provider register --namespace Microsoft.Compute
 ```
-## <a name="enable-automatic-vm-guest-patching"></a>Automatikus VM-vendég javításának engedélyezése
+## <a name="enable-automatic-vm-guest-patching"></a>Automatikus virtuálisgép-vendég-javítás engedélyezése
 Ha engedélyezni szeretné az automatikus virtuális gép vendégének javítását, győződjön meg arról, hogy a *osProfile. windowsConfiguration. enableAutomaticUpdates* tulajdonság értéke *true (igaz* ) a virtuálisgép-sablon definíciójában. Ez a tulajdonság csak akkor állítható be, amikor létrehozza a virtuális gépet.
 
 ### <a name="rest-api"></a>REST API
@@ -251,8 +251,10 @@ A virtuális gép javításának telepítési eredményeit a szakasz alatt tekin
 ## <a name="on-demand-patch-assessment"></a>Igény szerinti javítás értékelése
 Ha az automatikus virtuális gép vendégének javítása már engedélyezve van a virtuális gépen, a virtuális gép időszakos javítási értékelését a virtuális gép futási ideje alatt végezheti el. Ez a folyamat automatikusan történik, és a legújabb értékelés eredményei áttekinthetők a virtuális gép példányának nézetében, a jelen dokumentum korábbi részében leírtak szerint. Bármikor elindíthat egy igény szerinti javítási értékelést is a virtuális géphez. A javítás értékelése eltarthat néhány percig, és a legújabb értékelés állapota frissül a virtuális gép példányának nézetében.
 
+Az előzetes verzió funkciójának engedélyezéséhez egyszeri bejelentkezésre van szükség a *InGuestPatchVMPreview* szolgáltatás előfizetéséhez. Az igény szerinti javítás értékelése funkció előzetes verziójának engedélyezése a korábban ismertetett [előzetes engedélyezési folyamat](automatic-vm-guest-patching.md#requirements-for-enabling-automatic-vm-guest-patching) után engedélyezhető a virtuális gép vendégének javításához.
+
 > [!NOTE]
->Az igény szerinti javítás értékelése nem aktiválja automatikusan a javítást. A virtuális gép értékelése és a rájuk vonatkozó javítások csak a virtuális gép leállási ideje alatt települnek, a jelen dokumentumban korábban ismertetett rendelkezésre állási – első javítási folyamat után.
+>Az igény szerinti javítás kiértékelése nem aktiválja automatikusan a javítás telepítését. A virtuális gép értékelése és a rájuk vonatkozó javítások csak a virtuális gép leállási ideje alatt települnek, a jelen dokumentumban korábban ismertetett rendelkezésre állási – első javítási folyamat után.
 
 ### <a name="rest-api"></a>REST API
 ```

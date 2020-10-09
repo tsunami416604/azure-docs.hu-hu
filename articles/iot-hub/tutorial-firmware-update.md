@@ -14,12 +14,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 - devx-track-js
-ms.openlocfilehash: fe6c7f10ce64e25f46444cd2db8b67aab4ae2135
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: 304ded466aeb734388c13b87331eb4813e850e56
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91308282"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91842818"
 ---
 # <a name="tutorial-implement-a-device-firmware-update-process"></a>Oktatóanyag: Eszközök belsővezérlőprogram-frissítési folyamatának implementálása
 
@@ -184,7 +184,7 @@ A következő képernyőkép a szimulálteszköz-alkalmazás kimenetét mutatja,
 
 A következő képernyőkép a háttéralkalmazás kimenetét mutatja, és kiemeli, hogyan hozza létre a konfigurációt a belső vezérlőprogram kívánt tulajdonságainak frissítéséhez:
 
-![Háttéralkalmazás](./media/tutorial-firmware-update/BackEnd1.png)
+![Képernyőkép, amely a háttérbeli alkalmazás kimenetét jeleníti meg.](./media/tutorial-firmware-update/BackEnd1.png)
 
 A következő képernyőkép a háttéralkalmazás kimenetét mutatja, és kiemeli, hogyan monitorozza a belsővezérlőprogram-frissítési mérőszámokat a szimulált eszközről:
 

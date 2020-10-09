@@ -14,12 +14,12 @@ ms.custom:
 - 'Role: Cloud Development'
 - 'Role: IoT Device'
 - devx-track-js
-ms.openlocfilehash: 0aee3fef5c2b9e7e1d8cdd8c3d27192b17161351
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: aecf5c8b71f23e3d51c755c86ec0122d6da05f21
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91251881"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91842767"
 ---
 <!-- **TODO** Update publish config with repo paths before publishing! -->
 
@@ -191,11 +191,11 @@ node ServiceClient.js "{your service connection string}"
 
 A következő képernyőkép bemutatja a szimulálteszköz-alkalmazás kimenetét, a kiemelt rész pedig arra vonatkozik, hogyan frissíti a **maxTemperature** kívánt tulajdonságot. Látható, hogy a legfelső szintű kezelő és az időjárási összetevő (climate component) egyaránt fut:
 
-![Szimulált eszköz](./media/tutorial-device-twins/SimulatedDevice1.png)
+![Képernyőkép, amely bemutatja, hogyan futnak a legfelső szintű kezelő és a klíma-összetevő kezelői.](./media/tutorial-device-twins/SimulatedDevice1.png)
 
 A következő képernyőkép bemutatja a háttéralkalmazás kimenetét, a kiemelt rész pedig arra vonatkozik, hogyan küld frissítést a **maxTemperature** kívánt tulajdonságnak:
 
-![Háttéralkalmazás](./media/tutorial-device-twins/BackEnd1.png)
+![Képernyőkép, amely megjeleníti a háttérbeli alkalmazás kimenetét, és kiemeli, hogyan küld egy frissítést.](./media/tutorial-device-twins/BackEnd1.png)
 
 ## <a name="receive-state-information"></a>Állapotinformáció fogadása
 

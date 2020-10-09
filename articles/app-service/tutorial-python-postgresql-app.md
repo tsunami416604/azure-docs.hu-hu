@@ -11,12 +11,12 @@ ms.custom:
 - cli-validate
 - devx-track-python
 - devx-track-azurecli
-ms.openlocfilehash: a630387a41b6def67141a423249c3347ff034e2e
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.openlocfilehash: 023d5e13efc19fdf097ac06d61c3300805d3b28e
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91369620"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91842648"
 ---
 # <a name="tutorial-deploy-a-django-web-app-with-postgresql-in-azure-app-service"></a>Oktatóanyag: Django-webalkalmazás üzembe helyezése a PostgreSQL-sel Azure App Service
 
@@ -134,7 +134,7 @@ Ha a `az` parancs nem ismerhető fel, győződjön meg arról, hogy az Azure CLI
 Ezután hozza létre a postgres-adatbázist az Azure-ban a [`az postgres up`](/cli/azure/ext/db-up/postgres#ext-db-up-az-postgres-up) paranccsal:
 
 ```azurecli
-az postgres up --resource-group DjangoPostgres-tutorial-rg --location westus2 --sku-name B_Gen5_1 --server-name <postgre-server-name> --database-name pollsdb --admin-user <admin-username> --admin-password <admin-password> --ssl-enforcement Enabled
+az postgres up --resource-group DjangoPostgres-tutorial-rg --location westus2 --sku-name B_Gen5_1 --server-name <postgres-server-name> --database-name pollsdb --admin-user <admin-username> --admin-password <admin-password> --ssl-enforcement Enabled
 ```
 
 - Cserélje le az értékét az *\<postgres-server-name>* összes Azure-beli egyedi névre (a kiszolgálói végpont `https://<postgres-server-name>.postgres.database.azure.com` ). A megfelelő minta a vállalat nevének és egy másik egyedi érték kombinációjának használata.
@@ -144,9 +144,9 @@ az postgres up --resource-group DjangoPostgres-tutorial-rg --location westus2 --
 Ez a parancs a következő műveleteket hajtja végre, ami eltarthat néhány percig:
 
 - Hozzon létre egy nevű [erőforráscsoportot](../azure-resource-manager/management/overview.md#terminology) `DjangoPostgres-tutorial-rg` , ha még nem létezik.
-- Hozzon létre egy postgres-kiszolgálót.
-- Hozzon létre egy alapértelmezett rendszergazdai fiókot egyedi felhasználónévvel és jelszóval. (A saját hitelesítő adatainak megadásához használja `--admin-user` a `--admin-password` parancsot a és argumentumokkal `az postgres up` .)
-- Hozzon létre egy `pollsdb` adatbázist.
+- Hozzon létre egy nevű postgres-kiszolgálót az `--server-name` argumentum alapján.
+- Hozzon létre egy rendszergazdai fiókot a `--admin-user` és az `--admin-password` argumentumok használatával. Ezeket az argumentumokat kihagyva engedélyezheti, hogy a parancs egyedi hitelesítő adatokat állítson elő Önnek.
+- Hozzon létre egy `pollsdb` adatbázist az argumentum nevével `--database-name` .
 - Engedélyezze a hozzáférést a helyi IP-címről.
 - Az Azure-szolgáltatásokból való hozzáférés engedélyezése.
 - Hozzon létre egy adatbázis-felhasználót, amely hozzáfér az `pollsdb` adatbázishoz.
@@ -210,10 +210,22 @@ az webapp config appsettings set --settings DJANGO_ENV="production" DBHOST="<pos
 ```
 
 - Cserélje le a *\<postgres-server-name>* nevet a paranccsal korábban használt névre `az postgres up` .
-- Cserélje le a *\<username>* és a *\<password>* kapcsolót arra a hitelesítő adatokra, amelyet a parancs is létrehoz. Az `DBUSER` argumentumnak az űrlapon kell lennie `<username>@<postgres-server-name>` .
+- Cserélje *\<username>* le *\<password>* a és a kapcsolót a korábbi `az postgres up` paranccsal (vagy az `az postgres up` Ön által létrehozott) rendszergazdai hitelesítő adatokkal. Az `DBUSER` argumentumnak az űrlapon kell lennie `<username>@<postgres-server-name>` .
 - Az erőforráscsoport és az alkalmazás neve a *. Azure/config* fájl gyorsítótárazott értékeiből származik.
 - A parancs a (z),,, `DJANGO_ENV` `DBHOST` `DBNAME` `DBUSER` és `DBPASS` az alkalmazás kódjának megfelelően hozza létre a beállításokat.
 - A Python-kódban ezeket a beállításokat környezeti változókként, például a következő utasításokkal érheti el `os.environ.get('DJANGO_ENV')` . További információ: [hozzáférés környezeti változókhoz](configure-language-python.md#access-environment-variables).
+
+#### <a name="verify-the-dbuser-setting"></a>A DBUSER-beállítás ellenőrzése
+
+Fontos, hogy a `DBUSER` beállítás az űrlap legyen `<username>@<postgres-server-name>` .
+
+A beállítás ellenőrzéséhez futtassa a parancsot, `az webapp config app settings list` és tekintse meg az `DBUSER` eredmények értékét:
+
+```azurecli
+az webapp config app settings list
+```
+
+Ha ki kell javítania az értéket, futtassa a parancsot a `az webapp config appsettings set --settings DBUSER="<username>@<postgres-server-name>"` `<username>@<postgres-server-name>` megfelelő nevek helyett.
 
 [Problémák léptek fel? Tudassa velünk.](https://aka.ms/DjangoCLITutorialHelp)
 
@@ -230,6 +242,8 @@ A Django-adatbázis áttelepítése biztosítja, hogy az Azure Database-ben tal�
     Cserélje le a `<app-name>` nevet a parancsban korábban használt névre `az webapp up` .
 
     MacOS és Linux rendszeren egy SSH-munkamenethez is csatlakozhat a [`az webapp ssh`](/cli/azure/webapp?view=azure-cli-latest&preserve-view=true#az_webapp_ssh) paranccsal.
+
+    Ha nem tud csatlakozni az SSH-munkamenethez, akkor maga az alkalmazás nem indult el. [A részletekért olvassa el a diagnosztikai naplókat](#stream-diagnostic-logs) . Ha például még nem hozta létre az alkalmazáshoz szükséges beállításokat az előző szakaszban, a naplók jelzik majd `KeyError: 'DBNAME'` .
 
 1. Az SSH-munkamenetben futtassa a következő parancsokat (a **CTRL** + **SHIFT**V használatával is beilleszthet parancsokat + **V**):
 
@@ -249,7 +263,9 @@ A Django-adatbázis áttelepítése biztosítja, hogy az Azure Database-ben tal�
     # Create the super user (follow prompts)
     python manage.py createsuperuser
     ```
-    
+
+1. Ha a következő hibaüzenet jelenik meg: "a felhasználónévnek <username@hostname> formátumúnak kell lennie." az adatbázis-áttelepítés futtatásakor tekintse meg [a DBUSER-beállítás ellenőrzése](#verify-the-dbuser-setting)című témakört.
+
 1. A `createsuperuser` parancs a rendszergazdai hitelesítő adatok megadását kéri. Ebben az oktatóanyagban használja az alapértelmezett felhasználónevet `root` , nyomja le az **ENTER** billentyűt az e-mail-címre, hogy üresen hagyja, és adja meg a `Pollsdb1` jelszót.
 
 1. Ha hibaüzenet jelenik meg, hogy az adatbázis zárolva van, ellenőrizze, hogy az előző szakaszban futtatta-e a `az webapp settings` parancsot. Ezen beállítások nélkül az áttelepíthető parancs nem tud kommunikálni az adatbázissal, ami a hibát eredményezi.
@@ -259,6 +275,12 @@ A Django-adatbázis áttelepítése biztosítja, hogy az Azure Database-ben tal�
 ### <a name="create-a-poll-question-in-the-app"></a>Lekérdezési kérdés létrehozása az alkalmazásban
 
 1. A böngészőben nyissa meg az URL-címet `http://<app-name>.azurewebsites.net` . Az alkalmazásnak meg kell jelennie a "nincs elérhető lekérdezés" üzenetnek, mert az adatbázisban még nincsenek adott lekérdezések.
+
+    Ha az "alkalmazáshiba" üzenet jelenik meg, akkor valószínű, hogy az előző lépésben nem hozta létre a szükséges beállításokat, [konfigurálja a környezeti változókat az adatbázishoz való kapcsolódáshoz](#configure-environment-variables-to-connect-the-database). A `az webapp config appsettings list` beállítások megadásához futtassa a parancsot. [A diagnosztikai naplókban](#stream-diagnostic-logs) is megtekintheti az alkalmazások indításakor megadott hibákat. Ha például nem hozta létre a beállításokat, a naplók a következő hibaüzenetet fogják látni: `KeyError: 'DBNAME'` .
+
+    Ha a következő hibaüzenet jelenik meg: "érvénytelen Felhasználónév van megadva. Ellenőrizze a felhasználónevet, és próbálkozzon újra a kapcsolatban. A felhasználónévnek formátumúnak kell lennie <username@hostname> . "lásd: [a DBUSER beállítás ellenőrzése](#verify-the-dbuser-setting).
+
+    Miután frissítette a beállításokat a hibák kijavítása érdekében, adjon egy percet az alkalmazásnak, majd frissítse a böngészőt.
 
 1. Nyissa meg a következő címet: `http://<app-name>.azurewebsites.net/admin`. Jelentkezzen be a rendszergazdai hitelesítő adatokkal az előző szakaszban ( `root` és `Pollsdb1` ). A **lekérdezések**területen válassza a **Hozzáadás** a **kérdések** mellett lehetőséget, és hozzon létre egy lekérdezési kérdést néhány lehetőséggel.
 

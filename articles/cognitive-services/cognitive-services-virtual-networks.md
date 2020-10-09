@@ -3,18 +3,18 @@ title: Virtuális hálózatok
 titleSuffix: Azure Cognitive Services
 description: A Cognitive Services-erőforrások rétegzett hálózati biztonságának konfigurálása.
 services: cognitive-services
-author: IEvangelist
+author: aahill
 manager: nitinme
 ms.service: cognitive-services
 ms.topic: conceptual
-ms.date: 05/26/2020
-ms.author: dapine
-ms.openlocfilehash: 808d42c821272882bbf0e01a36e49f7f10b30efa
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.date: 10/07/2020
+ms.author: aahi
+ms.openlocfilehash: d320fcd0b7f9666da39dd1208efd9cdec04ad6b5
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
-ms.locfileid: "88505027"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91843141"
 ---
 # <a name="configure-azure-cognitive-services-virtual-networks"></a>Az Azure Cognitive Services virtuális hálózatainak konfigurálása
 
@@ -40,40 +40,29 @@ A hálózati szabályok érvénybe léptetése az Azure Cognitive Services össz
 
 ## <a name="supported-regions-and-service-offerings"></a>Támogatott régiók és szolgáltatási ajánlatok
 
-A virtuális hálózatok (virtuális hálózatok) támogatottak azokon a [régiókban, ahol elérhetők a Cognitive Services](https://azure.microsoft.com/global-infrastructure/services/). Ha a kognitív szolgáltatás nem szerepel a listáján, a virtuális hálózatok jelenleg nem támogatottak.
+A virtuális hálózatok (virtuális hálózatok) támogatottak azokon a [régiókban, ahol elérhetők a Cognitive Services](https://azure.microsoft.com/global-infrastructure/services/). Cognitive Services támogatja a hálózati szabályok konfigurálásához szükséges szolgáltatási címkéket. Az alább felsorolt szolgáltatások a **CognitiveServicesManagement** szolgáltatás címkéjén találhatók.
 
 > [!div class="checklist"]
-> * [Anomáliadetektor](./anomaly-detector/index.yml)
-> * [Computer Vision](./computer-vision/index.yml)
-> * [Content Moderator](./content-moderator/index.yml)
-> * [Custom Vision](./custom-vision-service/index.yml)
-> * [Face](./face/index.yml)
-> * [Form Recognizer](./form-recognizer/index.yml)
-> * [Language Understanding](./luis/index.yml)
-> * [Personalizer](./personalizer/index.yml)
-> * [Text Analytics](./text-analytics/index.yml)
-> * [QnA Maker](./qnamaker/index.yml)
-> * [Translator Text](https://docs.microsoft.com/azure/cognitive-services/translator/reference/v3-0-reference#virtual-network-support)
-> * [Modern olvasó](./immersive-reader/index.yml)
+> * Anomáliadetektor
+> * Számítógépes látástechnológia
+> * Content Moderator
+> * Custom Vision
+> * Arcfelismerés
+> * Form Recognizer
+> * Language Understanding (LUIS)
+> * Personalizer
+> * Szövegelemzés
+> * QnA Maker
+> * Translator Text
+> * Modern olvasó
 
-## <a name="service-tags"></a>Szolgáltatáscímkék
+> [!NOTE]
+> Ha LUIS-t használ, a **CognitiveServicesManagement** címke csak az SDK-val vagy a REST API használatával használhatja a szolgáltatást. A LUIS-portál virtuális hálózatról való eléréséhez és használatához a következő címkéket kell használnia:  
+> * **AzureResourceManager** 
+> * **CognitiveServicesManagement**
+> * **AzureActiveDirectory**
+> * **AzureFrontDoor. frontend**
 
-Cognitive Services támogatja a hálózati szabályok konfigurálásához szükséges szolgáltatási címkéket. Az alább felsorolt szolgáltatások a **CognitiveServicesManagement** szolgáltatás címkéjén találhatók.
-
-> [!div class="checklist"]
-> * [Anomáliadetektor](./anomaly-detector/index.yml)
-> * [Computer Vision](./computer-vision/index.yml)
-> * [Content Moderator](./content-moderator/index.yml)
-> * [Custom Vision](./custom-vision-service/index.yml)
-> * [Face](./face/index.yml)
-> * [Form Recognizer](./form-recognizer/index.yml)
-> * [Language Understanding (LUIS)](./luis/index.yml)
-> * [Personalizer](./personalizer/index.yml)
-> * [Text Analytics](./text-analytics/index.yml)
-> * [QnA Maker](./qnamaker/index.yml)
-> * [Translator](./translator/index.yml)
-> * [Beszédfelismerési szolgáltatás](./speech-service/index.yml)
-> * [Modern olvasó](./immersive-reader/index.yml)
 
 ## <a name="change-the-default-network-access-rule"></a>Az alapértelmezett hálózati hozzáférési szabály módosítása
 
@@ -550,7 +539,7 @@ A saját DNS-kiszolgáló magánhálózati végpontok támogatására való konf
 
 A díjszabással kapcsolatos információkért lásd: az [Azure Private link díjszabása](https://azure.microsoft.com/pricing/details/private-link).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ismerkedjen meg a különböző [Azure-Cognitive Servicesokkal](welcome.md)
 * További információ az [Azure Virtual Network Service-végpontokról](../virtual-network/virtual-network-service-endpoints-overview.md)

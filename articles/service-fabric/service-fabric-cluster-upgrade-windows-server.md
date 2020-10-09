@@ -1,16 +1,14 @@
 ---
 title: Önálló fürt verziójának frissítése
 description: Frissítse az önálló Service Fabric-fürtöt futtató Azure Service Fabric-kódot.
-author: dkkapur
 ms.topic: conceptual
 ms.date: 11/09/2018
-ms.author: dekapur
-ms.openlocfilehash: 31712ce4f661b13802d9a0f2d798c1fe87fdebf3
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 5831fcffe718e4966c3444a29d35c5bbd55e5f57
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86261007"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91842937"
 ---
 # <a name="upgrade-the-service-fabric-version-that-runs-on-your-cluster"></a>A fürtön futó Service Fabric verziójának frissítése 
 
@@ -81,7 +79,7 @@ Amikor megjelenik a fürt állapota figyelmeztetés, frissítse a fürtöt:
     Get-ServiceFabricClusterUpgrade
     ```
 
-    Ha a fürt állapot-házirendjei nem teljesülnek, a rendszer visszaállítja a frissítést. A Start-ServiceFabricClusterUpgrade parancshoz tartozó egyéni állapot-szabályzatok megadásához tekintse meg a [Start-ServiceFabricClusterUpgrade](/powershell/module/servicefabric/start-servicefabricclusterupgrade)dokumentációját.
+    Ha a fürt állapot-házirendjei nem teljesülnek, a rendszer visszaállítja a frissítést. Az Start-ServiceFabricClusterUpgrade parancshoz tartozó egyéni állapotházirendek megadásához tekintse meg a [Start-ServiceFabricClusterUpgrade](/powershell/module/servicefabric/start-servicefabricclusterupgrade)dokumentációját.
 
     A visszaállítást eredményező problémák kijavítása után indítsa újra a frissítést az előzőekben ismertetett lépéseket követve.
 
@@ -155,7 +153,7 @@ A használat részleteiért tekintse meg a [Start-ServiceFabricClusterConfigurat
     Get-ServiceFabricClusterUpgrade
     ```
 
-    Ha a fürt állapot-házirendjei nem teljesülnek, a rendszer visszaállítja a frissítést. A Start-ServiceFabricClusterUpgrade parancshoz tartozó egyéni állapot-szabályzatok megadásához tekintse meg a [Start-ServiceFabricClusterUpgrade](/powershell/module/servicefabric/start-servicefabricclusterupgrade)dokumentációját.
+    Ha a fürt állapot-házirendjei nem teljesülnek, a rendszer visszaállítja a frissítést. Az Start-ServiceFabricClusterUpgrade parancshoz tartozó egyéni állapotházirendek megadásához tekintse meg a [Start-ServiceFabricClusterUpgrade](/powershell/module/servicefabric/start-servicefabricclusterupgrade)dokumentációját.
 
     A visszaállítást eredményező problémák kijavítása után indítsa újra a frissítést az előzőekben ismertetett lépéseket követve.
 

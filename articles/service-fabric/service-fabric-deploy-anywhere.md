@@ -1,17 +1,15 @@
 ---
 title: Az Azure és az önálló Service Fabric-fürtök áttekintése
 description: Service Fabric-fürtöket a Windows Servert vagy Linuxot futtató virtuális gépeken és számítógépeken is létrehozhat. Ez azt jelenti, hogy minden olyan környezetben telepítheti és futtathatja Service Fabric alkalmazást, ahol a Windows Server vagy Linux rendszerű számítógépek, amelyek egymáshoz kapcsolódnak – helyszíni, Microsoft Azure vagy bármilyen felhőalapú szolgáltatóval.
-author: dkkapur
 ms.topic: conceptual
 ms.date: 01/07/2020
-ms.author: dekapur
 ms.custom: sfrev
-ms.openlocfilehash: a3627effe10039ded5007f9dd060bf1865929040
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 8313d75bb6398bbe614c6f56b494079548c99954
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "75751146"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91842597"
 ---
 # <a name="comparing-azure-and-standalone-service-fabric-clusters-on-windows-server-and-linux"></a>Az Azure és az önálló Service Fabric-fürtök összehasonlítása Windows Serveren és Linuxon
 
@@ -28,7 +26,7 @@ Az Azure-ban integrációt biztosítunk más Azure-funkciókkal és-szolgáltat�
 * **Fürt Service Fabric Azure-erőforrásként** A Service Fabric-fürt egy Azure-erőforrás, így modellezheti, mint az Azure más erőforrásait.
 * **Integráció az Azure-infrastruktúrával** Az alkalmazások rendelkezésre állásának és megbízhatóságának javítása érdekében Service Fabric koordinálja az operációs rendszer, a hálózat és az egyéb verziófrissítések alapjául szolgáló Azure-infrastruktúrát.  
 * **Diagnosztika:** Az Azure-ban integrációt biztosítunk az Azure Diagnostics szolgáltatással és Azure Monitor naplókkal.
-* **Automatikus méretezés:** Az Azure-beli fürtök esetében a virtuálisgép-méretezési készletek miatt beépített automatikus skálázási funkciókat biztosítunk. A helyszíni és más felhőalapú környezetekben saját automatikus méretezési funkciót kell létrehoznia, vagy manuálisan kell méreteznie azokat az API-k használatával, amelyek Service Fabric teszik lehetővé a fürtök méretezését.
+* Automatikus **skálázás:** Az Azure-beli fürtökhöz beépített automatikus skálázási funkciókat biztosítunk a virtuálisgép-méretezési csoportokon keresztül. A helyszíni és más felhőalapú környezetekben saját automatikus skálázási funkciót kell létrehoznia, vagy manuálisan kell méreteznie azokat az API-k használatával, amelyek Service Fabric teszik lehetővé a fürtök méretezését.
 
 ## <a name="benefits-of-standalone-clusters"></a>Az önálló fürtök előnyei
 
@@ -39,7 +37,7 @@ Az Azure-ban integrációt biztosítunk más Azure-funkciókkal és-szolgáltat�
 * A széles körű ügyfél-elérhetőséget az üzemeltetési környezet megkötései kötik.
 * Egy további megbízhatósági réteg és a széleskörű leállások elleni védelem is létezik, mivel a szolgáltatásokat áthelyezheti egy másik központi telepítési környezetbe, ha egy adatközpont vagy egy felhőalapú szolgáltató áramszünet miatt megtalálhatók.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Tekintse át az [Azure](service-fabric-azure-clusters-overview.md) -beli Service Fabric-fürtök áttekintését
 * Tekintse át [Service Fabric önálló fürtök](service-fabric-standalone-clusters-overview.md) áttekintését

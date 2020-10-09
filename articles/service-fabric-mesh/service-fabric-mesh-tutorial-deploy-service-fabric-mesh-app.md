@@ -1,17 +1,17 @@
 ---
 title: Oktatóanyag – Service Fabric Mesh-alkalmazás üzembe helyezése
 description: Ismerje meg, hogyan tehet közzé egy háttér-webszolgáltatással kommunikáló ASP.NET Core webhelyet tartalmazó Azure Service Mesh-alkalmazást a Visual Studióval.
-author: dkkapur
+author: georgewallace
 ms.topic: tutorial
 ms.date: 09/18/2018
-ms.author: dekapur
+ms.author: gwallace
 ms.custom: mvc, devcenter
-ms.openlocfilehash: 3f0dca5aa9e430fa21d09509121a7ad26feda446
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: 6305bdd8c892bb0323cd4f7dc61b7ad22652ed73
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86261330"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91842733"
 ---
 # <a name="tutorial-deploy-a-service-fabric-mesh-application"></a>Oktatóanyag: Service Fabric Mesh-alkalmazás üzembe helyezése
 
@@ -51,7 +51,7 @@ git clone https://github.com/azure-samples/service-fabric-mesh
 
 Az alkalmazás a `src\todolistapp` könyvtárban található.
 
-## <a name="publish-to-azure"></a>Közzététel az Azure platformon
+## <a name="publish-to-azure"></a>Közzététel az Azure-ban
 
 A Service Fabric Mesh-projekt Azure-on történő közzétételéhez a Visual Studióban kattintson a jobb gombbal a **todolistapp** elemre, és válassza a **Közzététel...** lehetőséget.
 
@@ -127,7 +127,7 @@ Az „app list” paranccsal lekérheti az előfizetéséhez üzembe helyezett a
 az mesh app list --output table
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az oktatóanyag jelen részében megismerkedhetett a következőkkel:
 > [!div class="checklist"]

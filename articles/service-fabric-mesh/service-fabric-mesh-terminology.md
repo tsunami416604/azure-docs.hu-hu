@@ -1,16 +1,16 @@
 ---
 title: Az Azure Service Fabric Mesh terminológiája
 description: Ez a cikk részletesen ismerteti az Azure Service Fabric Mesh által használt terminológiát, amely segít jobban megérteni a dokumentációban használt feltételeket.
-author: dkkapur
-ms.author: dekapur
+author: georgewallace
+ms.author: gwallace
 ms.date: 11/28/2018
 ms.topic: conceptual
-ms.openlocfilehash: fcd17c64ac41056420a22e328d13862e52bd99bd
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.openlocfilehash: d82df6ee598664c2b85cfa82395ac66f3865cf7f
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
-ms.locfileid: "86246724"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91843006"
 ---
 # <a name="service-fabric-mesh-terminology"></a>Service Fabric Mesh-terminológia
 

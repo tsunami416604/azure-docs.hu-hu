@@ -14,12 +14,12 @@ ms.tgt_pltfrm: na
 ms.workload: na
 ms.date: 05/04/2020
 ms.author: yelevin
-ms.openlocfilehash: 3f59fea9f6d96f6e259a47c75bcfb0fd0be76d34
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.openlocfilehash: 63a9a6dc9f052c01a7440f616f0baeaab083ad73
+ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2020
-ms.locfileid: "91826562"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91843073"
 ---
 # <a name="tutorial-visualize-and-monitor-your-data"></a>Oktatóanyag: Az adatok megjelenítése és figyelése
 
@@ -62,7 +62,7 @@ Ez az oktatóanyag segítséget nyújt az Azure Sentinelben tárolt adatai megje
 ## <a name="create-new-workbook"></a>Új munkafüzet létrehozása
 
 1. Nyissa meg a **munkafüzetek** elemet, majd válassza a **munkafüzet hozzáadása** lehetőséget, hogy új munkafüzetet hozzon létre a semmiből.
-  ![Ugrás a munkafüzetekhez](./media/tutorial-monitor-data/create-workbook.png)
+  ![Képernyőkép, amely az új munkafüzet képernyőjét jeleníti meg.](./media/tutorial-monitor-data/create-workbook.png)
 
 1. A munkafüzet szerkesztéséhez válassza a **Szerkesztés**lehetőséget, majd szükség szerint adja hozzá a szöveget, a lekérdezéseket és a paramétereket. A munkafüzet testreszabásával kapcsolatos további információkért lásd: [interaktív jelentések létrehozása Azure monitor-munkafüzetek](../azure-monitor/platform/workbooks-overview.md)használatával. 
 
@@ -72,7 +72,7 @@ Ez az oktatóanyag segítséget nyújt az Azure Sentinelben tárolt adatai megje
 
 1. Ha azt szeretné, hogy a szervezeten belül mások is használhassák a munkafüzetet, a **Mentés** lehetőség alatt válassza a **megosztott jelentések**lehetőséget. Ha azt szeretné, hogy ez a munkafüzet csak Ön számára legyen elérhető, válassza **a saját jelentések**lehetőséget.
 
-1. A munkaterületen lévő munkafüzetek **közötti váltáshoz** ![ a munkafüzetek felső ablaktábláján válassza a váltás a munkafüzetben lehetőséget ](./media/tutorial-monitor-data/switch.png) . A jobb oldalon megnyíló ablakban váltson a munkafüzetek között.
+1. A munkaterületen lévő munkafüzetek közötti váltáshoz válassza a **Megnyitás** ![ ikont a munkafüzet megnyitásához. ](./media/tutorial-monitor-data/switch.png) bármelyik munkafüzet felső ablaktábláján. A jobb oldalon megnyíló ablakban váltson a munkafüzetek között.
 
    ![Munkafüzetek váltása](./media/tutorial-monitor-data/switch-workbooks.png)
 
