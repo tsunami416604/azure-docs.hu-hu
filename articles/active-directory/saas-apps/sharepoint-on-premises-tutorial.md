@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: jeedes
 ms.openlocfilehash: a3a5834cd63351b9bf61dc97c8d6e14d430b6284
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90979708"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-sharepoint-on-premises"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses integráció a helyi SharePoint-környezettel
@@ -89,7 +89,7 @@ Az Azure AD SSO konfigurálása a helyszíni SharePoint szolgáltatással:
 
 1. Az **egyszeri bejelentkezési módszer kiválasztása** párbeszédpanelen válassza ki az **SAML** -módot az egyszeri bejelentkezés engedélyezéséhez.
  
-1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon válassza a **Szerkesztés** ikont az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
+1. Az **egyszeres Sign-On beállítása az SAML-vel** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
 1. Az **alapszintű SAML-konfiguráció** szakaszban kövesse az alábbi lépéseket:
 
@@ -105,7 +105,7 @@ Az Azure AD SSO konfigurálása a helyszíni SharePoint szolgáltatással:
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel, azonosítóval és válasz URL-címmel.
 
-1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban válassza a **Letöltés** lehetőséget a **tanúsítvány (Base64)** letöltéséhez a megadott beállítások alapján, és mentse azt a számítógépre.
+1. Az **egyszeres Sign-On beállítása az SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban válassza a **Letöltés** lehetőséget a **tanúsítvány (Base64)** letöltéséhez a megadott beállítások alapján, és mentse azt a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozása](./media/sharepoint-on-premises-tutorial/certificatebase64.png)
 
@@ -216,7 +216,7 @@ Ahhoz, hogy Azure AD-alapú biztonsági csoportokat rendeljen a SharePointhoz a 
 
 1. A Azure Portal válassza a **Azure Active Directory**  >  **vállalati alkalmazások**lehetőséget. Válassza ki a korábban létrehozott vállalati alkalmazás nevét, és válassza az **egyszeri bejelentkezés**lehetőséget.
 
-1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon szerkessze a **felhasználói attribútumok & jogcímek** szakaszt.
+1. Az **egyszeri Sign-On beállítása az SAML-vel** lapon szerkessze a **felhasználói attribútumok & jogcímek** szakaszt.
 
 1. Válassza **a csoport hozzáadása**lehetőséget.
 
@@ -236,7 +236,7 @@ A SharePoint-webhelyét konzisztens módon is megadhatja a vendég fiókhoz, miv
 
 1. A Azure Portal válassza a **Azure Active Directory**  >  **vállalati alkalmazások**lehetőséget. Válassza ki a korábban létrehozott vállalati alkalmazás nevét, és válassza az **egyszeri bejelentkezés**lehetőséget.
 
-1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon szerkessze a **felhasználói attribútumok & jogcímek** szakaszt.
+1. Az **egyszeri Sign-On beállítása az SAML-vel** lapon szerkessze a **felhasználói attribútumok & jogcímek** szakaszt.
 
 1. A **szükséges jogcím** zónában válassza az **egyedi felhasználói azonosító (név azonosítója)** elemet.
 
@@ -267,7 +267,7 @@ A konfiguráció egyetlen webalkalmazás esetében működik, de további konfig
 
 1. A Azure Portal válassza a **Azure Active Directory**  >  **vállalati alkalmazások**lehetőséget. Válassza ki a korábban létrehozott vállalati alkalmazás nevét, és válassza az **egyszeri bejelentkezés**lehetőséget.
 
-1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon szerkessze az **alapszintű SAML-konfigurációt**.
+1. Az **egyszeri Sign-On beállítása az SAML-vel** lapon szerkessze az **alapszintű SAML-konfigurációt**.
 
     ![Alapszintű SAML-konfiguráció](./media/sharepoint-on-premises-tutorial/add-reply-url.png)
 
@@ -285,6 +285,6 @@ A konfiguráció egyetlen webalkalmazás esetében működik, de további konfig
 
 Előfordulhat, hogy más forgatókönyvek is vannak, amelyekben a belső felhasználók számára hozzáférést kíván biztosítani a SharePoint helyszíni példányához. Ebben az esetben telepítenie kell Microsoft Azure Active Directory Connect a helyszíni felhasználók Azure AD-vel való szinkronizálásának engedélyezéséhez. Ezt a telepítést egy másik cikkben tárgyaljuk.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A helyszíni SharePoint konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezete bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Ismerje meg, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)

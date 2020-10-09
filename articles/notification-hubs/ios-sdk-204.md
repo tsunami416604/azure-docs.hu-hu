@@ -9,10 +9,10 @@ ms.service: notification-hubs
 ms.reviewer: thsomasu
 ms.lastreviewed: 06/01/2020
 ms.openlocfilehash: ffa562a734e0e6f898aaff89622362080bf1a053
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91318194"
 ---
 # <a name="tutorial-send-push-notifications-to-ios-apps-using-azure-notification-hubs-version-204"></a>Oktatóanyag: leküldéses értesítések küldése iOS-alkalmazásokba az Azure Notification Hubs (2.0.4 verzió) használatával
@@ -53,30 +53,11 @@ Mielőtt továbblépne, mindenképpen tekintse át az [Azure Notification Hubs i
 
    Ha nem jelenik meg az Xcode-ban létrehozott új létesítési profil, frissítse az aláíró identitása profiljait. Kattintson a menüsávban a **Xcode**elemre, kattintson a beállítások elemre,   kattintson a **Preferences** **fiók**   fülre, kattintson a **részletek megtekintése**   gombra, kattintson az aláíró identitására, majd kattintson a jobb alsó sarokban található frissítés gombra.
 
-   :::image type="content" source="media/ios-sdk/image2.png" alt-text="Részletek megtekintése":::
+   :::image type="content" source="media/ios-sdk/image2.png" alt-text="Sablon kiválasztása":::
 
 4. Az **aláírási & képességek**   lapon válassza a **+ képesség**lehetőséget. Az engedélyezéséhez kattintson duplán a **leküldéses értesítések**elemre   .
 
-   :::image type="content" source="media/ios-sdk/image3.png" alt-text="Képesség":::
-
-5. Adja hozzá az Azure Notification Hubs SDK-modulokat.
-
-   Az Azure Notification Hubs SDK-t integrálhatja az alkalmazásba a [Cocoapods](https://cocoapods.org/)használatával,   vagy manuálisan is hozzáadhatja a bináris fájlokat a projekthez.
-
-   - Integráció a Cocoapods-on keresztül: adja hozzá a következő függőségeket a cocoapods, hogy tartalmazza az Azure Notification Hubs SDK-t az alkalmazásban:
-
-      ```ruby
-      pod 'AzureNotificationHubs-iOS'
-      ```
-
-      - Futtassa a pod installt az újonnan definiált Pod telepítéséhez, és nyissa meg a. xcworkspace.
-
-         Ha olyan hibaüzenetet lát, amely **nem találja a AzureNotificationHubs-iOS-hez készült specifikációt** a pod telepítés futtatása közben, futtassa a parancsot a `pod repo update` Cocoapods-tárház legújabb hüvelyének beszerzéséhez, majd futtassa a pod install parancsot.
-
-   - Integráció a Carthage használatával: adja hozzá a következő függőségeket a Cartfile, hogy tartalmazza az Azure Notification Hubs SDK-t az alkalmazásban:
-
-      ```ruby
-      github "Azure/azure-notificationhubs-ios"
+   :::image type="content" source="media/ios-sdk/image3.png" alt-text="Sablon kiválasztása"
       ```
 
       - Következő lépésként frissítse a Build függőségeit:
@@ -93,7 +74,7 @@ Mielőtt továbblépne, mindenképpen tekintse át az [Azure Notification Hubs i
 
         - A Xcode-ben kattintson a jobb gombbal a projektre, majd kattintson a **fájlok hozzáadása**   lehetőségre, hogy hozzáadja a **WindowsAzureMessaging. Framework**   mappát a Xcode-projekthez. Válassza a **Beállítások lehetőséget**   , és szükség esetén győződjön meg az **elemek másolásáról**   , majd kattintson a **Hozzáadás**gombra.
 
-          :::image type="content" source="media/ios-sdk/image4.png" alt-text="Keretrendszer hozzáadása":::
+          :::image type="content" source="media/ios-sdk/image4.png" alt-text="Sablon kiválasztása":::
 
 6. Vegyen fel egy új header-fájlt a projekt **állandók. h**nevű fájljába. Ehhez kattintson a jobb gombbal a projekt nevére, és válassza az **új fájl.**.. lehetőséget. Ezután válassza ki a **fejléc fájlt**. Ez a fájl tárolja az állandókat az értesítési központhoz. Ezután válassza a **tovább**lehetőséget. Nevezze el a fájl **állandóit. h**.
 
@@ -110,13 +91,7 @@ Mielőtt továbblépne, mindenképpen tekintse át az [Azure Notification Hubs i
 
 8. Adja hozzá a Konstanss. h implementációs fájlt. Ehhez kattintson a jobb gombbal a projekt nevére, és válassza az **új fájl.**.. lehetőséget. Válassza ki a **Objective-C fájlt**, majd kattintson a **tovább**gombra. Nevezze el a fájl **állandóit. m**.
 
-   :::image type="content" source="media/ios-sdk/image5.png" alt-text="Implementációs fájl hozzáadása":::
-
-9. Nyissa meg az **állandók. m**   fájlt, és cserélje le a tartalmát a következő kódra. Cserélje le a szöveges literál helyőrzőket  `NotificationHubConnectionString`   és  `NotificationHubConnectionString`   a hub nevét, valamint a **DefaultListenSharedAccessSignature**a portálról korábban beszerzett módon:
-
-   ```objc
-   #import <Foundation/Foundation.h>
-   #import "Constants.h"
+   :::image type="content" source="media/ios-sdk/image5.png" alt-text="Sablon kiválasztása"
 
    NSString* const NHInfoConnectionString = @"NotificationHubConnectionString";
    NSString* const NHInfoHubName = @"NotificationHubName";NSString* const NHUserDefaultTags = @"notification_tags";
@@ -450,7 +425,7 @@ Mielőtt továbblépne, mindenképpen tekintse át az [Azure Notification Hubs i
 
 A Azure Portal a **küldési teszt**lehetőséggel tesztelheti az alkalmazásban az értesítéseket    [Azure portal](https://portal.azure.com/). A parancs egy leküldéses tesztértesítést küld az eszközre.
 
-:::image type="content" source="media/ios-sdk/image6.png" alt-text="Küldési teszt":::
+:::image type="content" source="media/ios-sdk/image6.png" alt-text="Sablon kiválasztása":::
 
 A leküldéses értesítések küldése általában olyan háttérszolgáltatásokon keresztül történik egy kompatibilis könyvtár használatával, mint a Mobile Apps vagy az ASP.NET. Ha egy könyvtár nem érhető el a háttérrendszer számára, akkor a REST API közvetlenül is használhatja az értesítési üzenetek küldéséhez.
 
@@ -467,15 +442,15 @@ A leküldéses értesítések iOS rendszeren történő teszteléséhez üzembe 
 
 1. Futtassa az alkalmazást, és ellenőrizze, hogy a regisztráció sikeres-e, majd nyomja meg **az OK**gombot.
 
-   :::image type="content" source="media/ios-sdk/image7.png" alt-text="Regisztrálja":::
+   :::image type="content" source="media/ios-sdk/image7.png" alt-text="Sablon kiválasztása":::
 
 2. Következő lépésként küldjön egy leküldéses értesítést a [Azure Portalról](https://portal.azure.com/)az előző szakaszban leírtak szerint.
 
 3. A rendszer elküldi a leküldéses értesítést minden olyan eszköznek, amely regisztrálva van az értesítéseknek a megadott értesítési központból való fogadásához.
 
-   :::image type="content" source="media/ios-sdk/image8.png" alt-text="Teszt küldése":::
+   :::image type="content" source="media/ios-sdk/image8.png" alt-text="Sablon kiválasztása":::
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az egyszerű példában leküldéses értesítéseket küld a regisztrált iOS-eszközökre. Ha szeretné megtudni, hogyan küldhet leküldéses értesítéseket adott iOS-eszközökre, folytassa a következő oktatóanyaggal:
 

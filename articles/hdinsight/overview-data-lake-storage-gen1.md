@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: seoapr2020
 ms.date: 04/21/2020
 ms.openlocfilehash: 947dd125cf9c5f5874eed380b3d69cff11509e31
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82187245"
 ---
 # <a name="azure-data-lake-storage-gen1-overview-in-hdinsight"></a>A HDInsight Azure Data Lake Storage Gen1 áttekintése
@@ -83,6 +83,6 @@ A Data Lake Storage Gen1 lévő adatok elérésével kapcsolatos további inform
 
 ## <a name="next-steps"></a>További lépések
 
-* [Bevezetés a Azure Data Lake Storage Gen2ba](../storage/blobs/data-lake-storage-introduction.md)
+* [Az Azure Data Lake Storage Gen2 bemutatása](../storage/blobs/data-lake-storage-introduction.md)
 * [A Microsoft Azure Storage bemutatása](../storage/common/storage-introduction.md)
 * [Az Azure Data Lake Storage Gen2 áttekintése](./overview-data-lake-storage-gen2.md)

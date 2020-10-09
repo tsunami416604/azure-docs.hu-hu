@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/30/2020
 ms.author: jeedes
 ms.openlocfilehash: 3b4102b4e8dcbd5aa04e354cec0ab91bf139572c
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88553478"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-nintex-promapp"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Nintex-Promapp
@@ -120,7 +120,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Create** (Létrehozás) gombra.
+   1. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -158,7 +158,7 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 
     1. Illessze be a Azure Portalból másolt **bejelentkezési URL-címet** az **SSO-login URL-cím** mezőbe.
 
-    1. Az **egyszeri bejelentkezés – egyszeri bejelentkezési mód** listán válassza a nem **kötelező**lehetőséget. Válassza a **Mentés** lehetőséget.
+    1. Az **egyszeri bejelentkezés – egyszeri bejelentkezési mód** listán válassza a nem **kötelező**lehetőséget. Kattintson a **Mentés** gombra.
 
        > [!NOTE]
        > A választható mód csak tesztelésre szolgál. Miután elégedett a konfigurációval, válassza a **kötelező** lehetőséget az egyszeri bejelentkezéses **bejelentkezési mód** listában, hogy az összes felhasználóra kikényszerítse az Azure ad-hitelesítést.

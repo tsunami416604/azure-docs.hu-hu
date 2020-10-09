@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 05/27/2019
 ms.author: jeedes
 ms.openlocfilehash: 2e355241191a4bdcab12c7c0b6527706b044a70c
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91714470"
 ---
 # <a name="tutorial-integrate-appraisd-with-azure-active-directory"></a>Oktatóanyag: az értékelés integrálása a Azure Active Directory
@@ -69,7 +69,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. A [Azure Portal](https://portal.azure.com/)a **kiértékelt** alkalmazás-integráció lapon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
 1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
-1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
+1. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson az **ALAPszintű SAML-konfiguráció** szerkesztés/toll ikonjára a beállítások szerkesztéséhez.
 
    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
@@ -88,7 +88,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     ![Képernyőfelvétel: a felhasználói attribútumok ablaktábla, ahol a Szerkesztés ikon ki van emelve.](common/edit-attribute.png)
 
-1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg a **tanúsítvány (Base64)** elemet, majd a **Letöltés** gombra kattintva töltse le a tanúsítványt, és mentse a számítógépre.
+1. Az **egyszeres Sign-On beállítása SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg a **tanúsítvány (Base64)** elemet, majd a **Letöltés** gombra kattintva töltse le a tanúsítványt, és mentse a számítógépre.
 
    ![A tanúsítvány letöltési hivatkozása](common/certificatebase64.png)
 
@@ -116,9 +116,9 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     ![A képernyőfelvételen az SAML egyszeri bejelentkezés lehetőségre Kiemelt konfigurációs beállítások láthatók.](./media/appraisd-tutorial/tutorial_appraisd_single.png)
 
-6. Az **SAML 2,0 egyszeri bejelentkezés konfigurálása** lapon hajtsa végre a következő lépéseket:
+6. Az **SAML 2,0 Single Sign-On Configuration** lapon hajtsa végre a következő lépéseket:
 
-    ![A képernyőfelvételen az SAML 2,0 egyszeri bejelentkezés konfigurációs oldala látható, ahol szerkesztheti az alapértelmezett továbbítási állapotot és a szolgáltatás által kezdeményezett bejelentkezést. U R L.](./media/appraisd-tutorial/tutorial_appraisd_saml.png)
+    ![A képernyőfelvételen az SAML 2,0-alapú Sign-On konfigurációs oldal látható, ahol szerkesztheti az alapértelmezett Relay-állapotot és a szolgáltatás által kezdeményezett bejelentkezés U R L-t.](./media/appraisd-tutorial/tutorial_appraisd_saml.png)
 
     a. Másolja az **alapértelmezett Relay State** értéket, és illessze be a **továbbítási állapot** szövegmezőbe a Azure Portal **alapszintű SAML-konfigurációjában** .
 
@@ -128,7 +128,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     ![Képernyőfelvétel: a felhasználók azonosítására szolgáló hely, ahol megadhatja a lépés értékeit.](./media/appraisd-tutorial/tutorial_appraisd_identifying.png)
 
-    a. Az **identitás-szolgáltató egyszeri bejelentkezési URL-címe** szövegmezőbe illessze be a **bejelentkezési URL-címet**, amelyet a Azure Portal másolt, majd kattintson a Save ( **Mentés**) gombra.
+    a. Az **Identitáskezelő egyetlen Sign-On URL-címe** szövegmezőbe illessze be a **bejelentkezési URL-címet**, amelyet a Azure Portalból másolt, majd kattintson a Save ( **Mentés**) gombra.
 
     b. Az **Identity Provider kiállító URL-címe** szövegmezőbe illessze be az **Azure ad-azonosító**értékét, amelyet a Azure Portal másolt, majd kattintson a Save ( **Mentés**) gombra.
 

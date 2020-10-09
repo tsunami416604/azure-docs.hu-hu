@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 07/27/2020
 ms.author: sudbalas
 ms.openlocfilehash: 0e811cc219002c034afb968be760ce2c249b08f3
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91825257"
 ---
 # <a name="soft-delete-will-be-enabled-on-all-key-vaults"></a>A Soft-delete minden kulcstartón engedélyezve lesz.
@@ -102,7 +102,7 @@ Ha egy felhasználó véletlenül töröl egy kulcstartót vagy titkos kulcsot, 
 
 ### <a name="how-do-i-find-out-if-i-need-to-take-action"></a>Hogyan megtudni, ha lépéseket kell tenniük?
 
-Kövesse az "eljárás a kulcstartók naplózására" című szakaszban ismertetett lépéseket, és ellenőrizze, hogy a Soft delete be van-e kapcsolva. A módosítás hatással van minden olyan kulcstartóra, amely nem rendelkezik a helyreállítható törléssel. A naplózást segítő további eszközök hamarosan elérhetők lesznek, és ez a dokumentum frissül.
+Kövesse az "eljárás a kulcstartók naplózásához" című szakaszban ismertetett lépéseket annak ellenőrzéséhez, hogy Soft-Delete be van-e kapcsolva. A módosítás hatással van minden olyan kulcstartóra, amely nem rendelkezik a helyreállítható törléssel. A naplózást segítő további eszközök hamarosan elérhetők lesznek, és ez a dokumentum frissül.
 
 ### <a name="what-action-do-i-need-to-take"></a>Milyen műveleteket kell elvégeznie?
 
@@ -116,7 +116,7 @@ A rendszer az év végéig bekapcsolja az összes kulcstartót a Soft delete has
 
 Ha nem hajt végre semmilyen műveletet, a rendszer az év végén automatikusan bekapcsolja az összes kulcstartót. Ez ütközési hibákhoz vezethet, ha egy Key Vault-objektumot próbál törölni, és újból létrehozza azt ugyanazzal a névvel anélkül, hogy előbb törölje azt a helyreállított állapotból. Ennek hatására előfordulhat, hogy az alkalmazások vagy az Automation meghibásodik.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Lépjen kapcsolatba velünk a változással kapcsolatos bármilyen kérdéssel [akvsoftdelete@microsoft.com](mailto:akvsoftdelete@microsoft.com) .
 - A [Soft-delete áttekintésének](soft-delete-overview.md) beolvasása

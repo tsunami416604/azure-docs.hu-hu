@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
 ms.openlocfilehash: 1ab404b838af65dcb75395dfeee1ca0553e497a1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "67179789"
 ---
 ## <a name="specifying-structure-definition-for-rectangular-datasets"></a>A négyszögletű adatkészletek szerkezeti definíciójának megadása
@@ -18,10 +18,10 @@ Minden oszlop a következő tulajdonságokat tartalmazza:
 
 | Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
-| name |Az oszlop neve. |Yes |
-| típus |Az oszlop adattípusa. A típussal kapcsolatos információk megadásával kapcsolatos további részletekért tekintse meg az alábbi típusú konverziók szakaszt. |No |
-| kulturális környezet |A típus megadásakor használandó .NET-alapú kulturális környezet, valamint a (m) típusú .net-típus datetime vagy DateTimeOffset. Az alapértelmezett érték az "en-us". |No |
-| formátumban |A típus megadásakor használandó formázó karakterlánc, a típusa pedig a következő: dátum/idő vagy DateTimeOffset. |No |
+| name |Az oszlop neve. |Igen |
+| típus |Az oszlop adattípusa. A típussal kapcsolatos információk megadásával kapcsolatos további részletekért tekintse meg az alábbi típusú konverziók szakaszt. |Nem |
+| kulturális környezet |A típus megadásakor használandó .NET-alapú kulturális környezet, valamint a (m) típusú .net-típus datetime vagy DateTimeOffset. Az alapértelmezett érték az "en-us". |Nem |
+| formátumban |A típus megadásakor használandó formázó karakterlánc, a típusa pedig a következő: dátum/idő vagy DateTimeOffset. |Nem |
 
 Az alábbi minta egy olyan tábla JSON-szakaszát mutatja be, amelyben három oszlop felhasználóazonosító, név és lastlogindate található.
 
@@ -39,7 +39,7 @@ Az alábbi útmutatást követve megtekintheti, hogy mikor szerepeljen a "Struct
 * Az adatsémát és az adatokat tartalmazó **strukturált adatforrások esetében** (például SQL Server, Oracle, Azure Table stb.) a "Structure" (struktúra) szakaszt csak akkor kell megadnia, ha az adott forrásoldali oszlopok oszlopait a fogadó adott oszlopaihoz szeretné rendelni, és a nevük nem azonos (lásd az alábbi részleteket az oszlop-hozzárendelés szakaszban). 
   
     A fentiekben leírtak szerint a típus információi nem kötelezőek a "Structure" (struktúra) szakaszban. A strukturált források esetében az adattárban az adatkészlet definíciójának részeként az adatok már elérhetők, ezért nem szabad beírnia a típus adatait, ha a "Structure" (struktúra) szakaszt is tartalmazza.
-* **Az olvasási adatforrásokra (kifejezetten az Azure blobra) vonatkozó séma esetében** dönthet úgy, hogy az adatokat a séma vagy az adatok beírása nélkül tárolja. Az ilyen típusú adatforrások esetében a "Structure" kifejezést kell tartalmaznia a következő két esetben:
+* **Az olvasási adatforrásokra (kifejezetten az Azure blobra) vonatkozó séma esetében**  dönthet úgy, hogy az adatokat a séma vagy az adatok beírása nélkül tárolja. Az ilyen típusú adatforrások esetében a "Structure" kifejezést kell tartalmaznia a következő két esetben:
   * Oszlop-hozzárendelést szeretne végezni.
   * Ha az adatkészlet egy másolási tevékenység forrása, akkor megadhatja a "Structure" típusú adatokat, és a adat-előállító ezt a típusú információt fogja használni a fogadó natív típusainak átalakításához. További információért lásd az [adatok áthelyezése az Azure-ba és az Azure-blobból](../articles/data-factory/v1/data-factory-azure-blob-connector.md) című cikket.
 
@@ -49,9 +49,9 @@ A adat-előállító a következő CLS-kompatibilis .NET-alapú típusú érték
 * Int16
 * Int32 
 * Int64
-* Egyszeres
-* Double
-* Decimal
+* Egyirányú
+* Dupla
+* Tizedesjegy
 * Bájt []
 * Logikai
 * Sztring 

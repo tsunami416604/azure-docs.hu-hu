@@ -9,16 +9,16 @@ ms.topic: reference
 author: likebupt
 ms.author: keli19
 ms.date: 09/09/2019
-ms.openlocfilehash: 2e44a4861e2522b766aab9c7151d76c471dd2d8c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.openlocfilehash: 9a195497b4376633bd3c767d7d0ea029109fdf9d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "76314538"
 ---
 # <a name="apply-sql-transformation"></a>SQL-átalakítás alkalmazása
 
-Ez a cikk a Azure Machine Learning Designer (előzetes verzió) modulját ismerteti.
+Ez a cikk a Azure Machine Learning Designer modulját ismerteti.
 
 Az SQL-transzformációs modul alkalmazásával a következőket végezheti el:
   
@@ -53,7 +53,7 @@ Bár az SQLite az ANSI SQL standard nagy részét is támogatja, nem tartalmazza
   
 - A SQLite az értékek dinamikus beírását használja ahelyett, hogy egy típust egy oszlophoz társítson, mint a legtöbb kapcsolódó adatbázis-rendszerben. Ez gyenge módon van beírva, és lehetővé teszi az implicit típus-átalakítást.  
   
-- `LEFT OUTER JOIN`implementálva van, de nem `RIGHT OUTER JOIN` vagy `FULL OUTER JOIN` .  
+- `LEFT OUTER JOIN` implementálva van, de nem `RIGHT OUTER JOIN` vagy `FULL OUTER JOIN` .  
 
 - `RENAME TABLE` `ADD COLUMN` A paranccsal és a utasításokkal is használható `ALTER TABLE` , de más záradékok nem támogatottak, például: `DROP COLUMN` , `ALTER COLUMN` és `ADD CONSTRAINT` .  
   

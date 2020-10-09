@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 02/18/2020
 ms.openlocfilehash: 979535b1f9a237f6975908178fb1e5ed819181b0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82233465"
 ---
 # <a name="send-data-from-windows-azure-diagnostics-extension-to-azure-event-hubs"></a>Adatok küldése a Windows Azure Diagnostics bővítményből az Azure-Event Hubs
@@ -38,7 +38,7 @@ Azure Diagnostics mindig naplókat és mérőszámokat küld egy Azure Storage-f
 
 | Tulajdonság | Leírás |
 |:---|:---|
-| Name | A fogadó leíró neve. A konfigurációban a fogadóba küldendő adatforrások megadására szolgál. |
+| Name (Név) | A fogadó leíró neve. A konfigurációban a fogadóba küldendő adatforrások megadására szolgál. |
 | URL-cím  | Az Event hub URL-címe a következő formában: Form \<event-hubs-namespace\> . servicebus.Windows.net/ \<event-hub-name\> .          |
 | SharedAccessKeyName | Olyan megosztott hozzáférési szabályzat neve, amely legalább a **küldő** szolgáltatóval rendelkezik. |
 | SharedAccessKey     | Az Event hub közös hozzáférési házirendjéből származó elsődleges vagy másodlagos kulcs. |

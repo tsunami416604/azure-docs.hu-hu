@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 1127a470a48660ffffa892d24c9f2991ec64c8e6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "76716682"
 ---
 # <a name="feature-selection-in-the-team-data-science-process-tdsp"></a>Funkcióválasztás a csoportos adatelemzési folyamatban (TDSP)
@@ -44,7 +44,7 @@ Azure Machine Learning Studio a funkciók kiválasztásához modulok vannak mega
 
 Vegyük például a [Filter-alapú funkciók kiválasztási][filter-based-feature-selection] moduljának használatát. A kényelmes használat érdekében folytassa a Text Mining példa használatát. Tegyük fel, hogy egy regressziós modellt szeretne létrehozni a 256-szolgáltatások egy készletének létrehozása után a [szolgáltatás kivonatolási][feature-hashing] modulján keresztül, és a válasz változó a "Col1", amely az 1 és 5 közötti könyv-felülvizsgálati minősítéseket tartalmazza. A "szolgáltatás pontozási metódusa" beállítás "Pearson korreláció" értékre állításával a "cél oszlop" "Col1", a "kívánt funkciók száma" pedig 50-re van állítva. Ezt követően a modul [Filter-alapú funkciója][filter-based-feature-selection] a 50 funkciókat tartalmazó adatkészletet hoz létre, amely a "Col1" célként megadott attribútummal együtt. Az alábbi ábra a kísérlet folyamatát és a bemeneti paramétereket mutatja be:
 
-![Filter-alapú szolgáltatás kiválasztási moduljának tulajdonságai](./media/select-features/feature-Selection1.png)
+![Filter-Based funkció kiválasztási moduljának tulajdonságai](./media/select-features/feature-Selection1.png)
 
 A következő ábra az eredményül kapott adatkészleteket mutatja be:
 

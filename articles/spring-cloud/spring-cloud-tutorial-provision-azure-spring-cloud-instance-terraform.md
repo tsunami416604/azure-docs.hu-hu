@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 06/26/2020
 ms.custom: devx-track-java
 ms.openlocfilehash: 4ef08ea03cab711901225cab227a0f5f84055d7a
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90906820"
 ---
 # <a name="tutorial-provision-an-azure-spring-cloud-instance-with-terraform"></a>Oktatóanyag: Azure Spring Cloud-példány kiépítése a Terraform
@@ -167,7 +167,7 @@ Futtassa az [Terraform Destroy](https://www.terraform.io/docs/commands/destroy.h
 terraform destroy -auto-approve
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Terraform telepítése és konfigurálása Azure-erőforrások](https://docs.microsoft.com/azure/developer/terraform/getting-started-cloud-shell)kiépítéséhez.

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/16/2019
 ms.author: jeedes
 ms.openlocfilehash: 21899ab40836b8ad083c0f005d43084c65c1b6fa
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91759951"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-clear-review"></a>Oktatóanyag: Azure Active Directory integráció egyértelmű áttekintéssel
@@ -76,7 +76,7 @@ Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a kapcs
 Az Azure AD egyszeri bejelentkezés az egyértelmű áttekintéssel való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
 
 1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. Az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán a **[Clear Review szolgáltatás egyszeri bejelentkezésének konfigurálásával](#configure-clear-review-single-sign-on)** .
+2. Az **[egyszeri bejelentkezés törlésének beállítása](#configure-clear-review-single-sign-on)** – az Sign-On beállításainak konfigurálása az alkalmazás oldalán.
 3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
 4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
 5. **[Törlési teszt felhasználó törlése](#create-clear-review-test-user)** – a Britta Simon-nek a felhasználó Azure ad-képviseletéhez kapcsolódó egyértelmű áttekintése.
@@ -96,7 +96,7 @@ Ha az Azure AD egyszeri bejelentkezését egyértelmű áttekintéssel szeretné
 
     ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
+3. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
@@ -133,7 +133,7 @@ Ha az Azure AD egyszeri bejelentkezését egyértelmű áttekintéssel szeretné
 
     c. Kattintson a **Mentés** gombra.
 
-8. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállítások alapján, és mentse a számítógépre.
+8. Az **egyszeres Sign-On beállítása az SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállítások alapján, és mentse azt a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozása](common/certificatebase64.png)
 
@@ -147,7 +147,7 @@ Ha az Azure AD egyszeri bejelentkezését egyértelmű áttekintéssel szeretné
 
     c. Kijelentkezési URL-cím
 
-### <a name="configure-clear-review-single-sign-on"></a>Az egyszeri bejelentkezés törlésének beállítása
+### <a name="configure-clear-review-single-sign-on"></a>Az egyszeri Sign-On egyértelmű ellenőrzésének konfigurálása
 
 1. Ha az egyszeri bejelentkezést az **egyértelmű felülvizsgálati** oldalon szeretné beállítani, nyissa meg a **törlési** portált rendszergazdai hitelesítő adatokkal.
 
@@ -155,13 +155,13 @@ Ha az Azure AD egyszeri bejelentkezését egyértelmű áttekintéssel szeretné
 
     ![Képernyőfelvétel: a Clear felülvizsgálati portál és a rendszergazda kijelölése.](./media/clearreview-tutorial/tutorial_clearreview_app_admin1.png)
 
-3. Az oldal alján található **integrációk** szakaszban kattintson az **egyszeri bejelentkezés beállításaitól**jobbra található **módosítás** gombra.
+3. Az oldal alján található **integrációk** szakaszban kattintson az **egyes Sign-On beállításoktól**jobbra található **módosítás** gombra.
 
-    ![A képernyőképen az egyszeri bejelentkezés módosítása gomb látható.](./media/clearreview-tutorial/tutorial_clearreview_app_admin2.png)
+    ![A képernyőképen az egyetlen Sign-On módosítás gomb látható.](./media/clearreview-tutorial/tutorial_clearreview_app_admin2.png)
 
-4. Hajtsa végre az alábbi lépéseket az **egyszeri bejelentkezési beállítások** oldalon
+4. Hajtsa végre az alábbi lépéseket **egy Sign-On beállítások** lapon
 
-    ![Képernyőfelvétel: az egyszeri bejelentkezési beállítások oldal, amelyen megadhatja az ebben a lépésben szereplő információkat.](./media/clearreview-tutorial/tutorial_clearreview_app_admin3.png)
+    ![Képernyőfelvétel: az egyetlen Sign-On beállítások oldal, ahol megadhatja az ebben a lépésben szereplő információkat.](./media/clearreview-tutorial/tutorial_clearreview_app_admin3.png)
 
     a. A **kiállító URL-címe** szövegmezőbe illessze be a Azure Portalból másolt **Azure ad-azonosító** értékét.
 
@@ -196,7 +196,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    d. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

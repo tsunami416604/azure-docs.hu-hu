@@ -10,10 +10,10 @@ ms.date: 08/11/2020
 ms.author: rosouz
 ms.custom: devx-track-python
 ms.openlocfilehash: a0db0ff7db8f0bf5b036e40080ee7ff8eac62b63
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91322682"
 ---
 # <a name="azure-cosmos-db-python-examples"></a>Azure Cosmos DB Python-példák
@@ -54,11 +54,11 @@ A [database_management.](https://github.com/Azure/azure-sdk-for-python/blob/mast
 
 | Feladat | API-referencia |
 | --- | --- |
-| [Adatbázis létrehozása](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/database_management.py#L48-L56) |CosmosClient. create_database|
-| [Adatbázis beolvasása azonosító alapján](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/database_management.py#L59-L67) |CosmosClient. get_database_client|
-| [Adatbázisok lekérdezése](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/database_management.py#L32-L67) |CosmosClient. query_databases|
-| [Fiók adatbázisainak felsorolása](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/database_management.py#L70-L81) |CosmosClient. list_databases|
-| [Adatbázis törlése](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/database_management.py#L84-L93) |CosmosClient. delete_database|
+| [Adatbázis létrehozása](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/database_management.py#L48-L56) |CosmosClient.create_database|
+| [Adatbázis beolvasása azonosító alapján](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/database_management.py#L59-L67) |CosmosClient.get_database_client|
+| [Adatbázisok lekérdezése](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/database_management.py#L32-L67) |CosmosClient.query_databases|
+| [Fiók adatbázisainak felsorolása](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/database_management.py#L70-L81) |CosmosClient.list_databases|
+| [Adatbázis törlése](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/database_management.py#L84-L93) |CosmosClient.delete_database|
 
 ## <a name="container-examples"></a>Példák tárolókra
 
@@ -66,12 +66,12 @@ A [container_management.](https://github.com/Azure/azure-sdk-for-python/blob/mas
 
 | Feladat | API-referencia |
 | --- | --- |
-| [Tároló lekérdezése](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/container_management.py#L51-L66) |adatbázis. query_containers |
-| [Tároló létrehozása](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/container_management.py#L69-L163) |adatbázis. create_container |
-| [Egy adatbázis összes tárolójának listázása](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/container_management.py#L206-L217) |adatbázis. list_containers |
-| [Tároló beszerzése azonosító alapján](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/container_management.py#L195-L203) |adatbázis. get_container_client |
-| [Tároló kiépített átviteli sebességének kezelése](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/container_management.py#L166-L192) |Container. read_offer, tároló. replace_throughput|
-| [Tároló törlése](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/container_management.py#L220-L229) |adatbázis. delete_container |
+| [Tároló lekérdezése](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/container_management.py#L51-L66) |database.query_containers |
+| [Tároló létrehozása](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/container_management.py#L69-L163) |database.create_container |
+| [Egy adatbázis összes tárolójának listázása](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/container_management.py#L206-L217) |database.list_containers |
+| [Tároló beszerzése azonosító alapján](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/container_management.py#L195-L203) |database.get_container_client |
+| [Tároló kiépített átviteli sebességének kezelése](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/container_management.py#L166-L192) |container.read_offer, container.replace_throughput|
+| [Tároló törlése](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/container_management.py#L220-L229) |database.delete_container |
 
 ## <a name="item-examples"></a>Példák elemekre
 
@@ -79,14 +79,14 @@ A [item_management.](https://github.com/Azure/azure-sdk-for-python/blob/master/s
 
 | Feladat | API-referencia |
 | --- | --- |
-| [Elemek létrehozása egy tárolóban](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/document_management.py#L26-L38) |tároló. create_item |
-| [Elemek olvasása azonosító alapján](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/document_management.py#L41-L49) |tároló. read_item |
-| [Egy tároló összes elemének olvasása](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/document_management.py#L52-L63) |tároló. read_all_items |
-| [Egy tétel lekérdezése az azonosító alapján](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/document_management.py#L66-L78) |tároló. query_items |
-| [Elem cseréje](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/document_management.py#L81-L88) |tároló. replace_items |
-| [Upsert egy elemmel](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/document_management.py#L91-L98) |tároló. upsert_item |
-| [Elem törlése](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/document_management.py#L101-L106) |tároló. delete_item |
-| [Tárolóban lévő elemek módosítási csatornájának beolvasása](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/change_feed_management.py) |tároló. query_items_change_feed |
+| [Elemek létrehozása egy tárolóban](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/document_management.py#L26-L38) |container.create_item |
+| [Elemek olvasása azonosító alapján](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/document_management.py#L41-L49) |container.read_item |
+| [Egy tároló összes elemének olvasása](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/document_management.py#L52-L63) |container.read_all_items |
+| [Egy tétel lekérdezése az azonosító alapján](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/document_management.py#L66-L78) |container.query_items |
+| [Elem cseréje](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/document_management.py#L81-L88) |container.replace_items |
+| [Upsert egy elemmel](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/document_management.py#L91-L98) |container.upsert_item |
+| [Elem törlése](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/document_management.py#L101-L106) |container.delete_item |
+| [Tárolóban lévő elemek módosítási csatornájának beolvasása](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/change_feed_management.py) |container.query_items_change_feed |
 
 ## <a name="indexing-examples"></a>Indexelési példák
 
@@ -98,5 +98,5 @@ A [index_management.](https://github.com/Azure/azure-sdk-for-python/blob/master/
 | [Manuális indexelés használata adott elemek indexeléséhez](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/index_management.py#L204-L263) | dokumentumok. IndexingDirective. include |
 | [Elérési utak kizárása az indexelésből](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/index_management.py#L266-L336) |A tulajdonságban kizárandó elérési utak megadása `IndexingPolicy` |
 | [Tartományindexek használata sztringeken](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/index_management.py#L401-L485) | Az indexelési szabályzat definiálása a karakterlánc adattípusú tartomány-indexekkel. `'kind': documents.IndexKind.Range`, `'dataType': documents.DataType.String`|
-| [Indexátalakítás végrehajtása](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/index_management.py#L488-L544) |Database. replace_container (a frissített indexelési házirend használata)|
+| [Indexátalakítás végrehajtása](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/index_management.py#L488-L544) |database.replace_container (használja a frissített indexelési házirendet)|
 | [Vizsgálatok használata, ha csak a kivonatoló index létezik az elérési úton](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/cosmos/azure-cosmos/samples/index_management.py#L339-L398) | a `enable_scan_in_query=True` és az `enable_cross_partition_query=True` elemek lekérdezésének beállítása |

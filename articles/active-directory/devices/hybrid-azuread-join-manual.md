@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6c062b907f1e8a8e0541db0d69c6e24901f3145f
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89268553"
 ---
 # <a name="tutorial-configure-hybrid-azure-active-directory-joined-devices-manually"></a>Oktatóanyag: Az Azure Active Directoryhoz csatlakoztatott hibrid eszközök manuális konfigurálása
@@ -179,7 +179,7 @@ Az összevont Azure AD-konfigurációban az eszközök AD FS vagy egy Microsoft-
 
 A Windows jelenlegi eszközei a helyi összevonási szolgáltatás által üzemeltetett aktív WS-Trust végpontra (1,3 vagy 2005 verzió) integrált Windows-hitelesítéssel végzik a hitelesítést.
 
-AD FS használatakor engedélyeznie kell a következő WS-Trust végpontokat:
+AD FS használatakor engedélyeznie kell a következő WS-Trust-végpontokat
 - `/adfs/services/trust/2005/windowstransport`
 - `/adfs/services/trust/13/windowstransport`
 - `/adfs/services/trust/2005/usernamemixed`
@@ -188,10 +188,10 @@ AD FS használatakor engedélyeznie kell a következő WS-Trust végpontokat:
 - `/adfs/services/trust/13/certificatemixed`
 
 > [!WARNING]
-> Az **ADFS/Services/Trust/2005/windowstransport** és az **ADFS/Services/Trust/13/windowstransport** egyaránt engedélyezve kell lennie csak intranetes végpontok számára, és a webalkalmazás-proxyn keresztül nem szabad az extranetes végpontok számára elérhetővé tenni. Ha többet szeretne megtudni a WS-Trust Windows-végpontok letiltásáról, tekintse meg a következőt: [ws-Trust Windows-végpontok letiltása a proxyn](/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet). Láthatja, hogy mely végpontok vannak engedélyezve a AD FS felügyeleti konzolon a **szolgáltatási**  >  **végpontok**alatt.
+> Az **ADFS/Services/Trust/2005/windowstransport** és az **ADFS/Services/Trust/13/windowstransport** egyaránt engedélyezve kell lennie csak intranetes végpontok számára, és a webalkalmazás-proxyn keresztül nem szabad az extranetes végpontok számára elérhetővé tenni. Ha többet szeretne megtudni a WS-Trust Windows-végpontok letiltásáról, tekintse meg [a WS-Trust Windows-végpontok letiltása a proxyn](/windows-server/identity/ad-fs/deployment/best-practices-securing-ad-fs#disable-ws-trust-windows-endpoints-on-the-proxy-ie-from-extranet)című témakört. Láthatja, hogy mely végpontok vannak engedélyezve a AD FS felügyeleti konzolon a **szolgáltatási**  >  **végpontok**alatt.
 
 > [!NOTE]
->Ha nincs AD FS a helyszíni összevonási szolgáltatásként, kövesse a gyártó utasításait, és győződjön meg róla, hogy támogatják a WS-Trust 1,3 vagy 2005 végpontokat, és hogy ezeket a metaadatok Exchange-fájlján (MEX) keresztül teszik közzé.
+>Ha nem rendelkezik AD FS a helyszíni összevonási szolgáltatásként, kövesse a gyártó utasításait, és győződjön meg arról, hogy támogatják WS-Trust 1,3 vagy 2005 végpontot, és hogy ezek a metaadatok Exchange-fájlján (MEX) keresztül lesznek közzétéve.
 
 Az eszközök regisztrációjának befejezéséhez a következő jogcímeknek léteznie kell az Azure DRS által fogadott jogkivonatban. Az Azure DRS egy eszköz-objektumot hoz létre az Azure AD-ben néhány ilyen információval. Azure AD Connect ezt az információt használja az újonnan létrehozott eszköz objektum és a helyszíni számítógépfiók hozzárendeléséhez.
 

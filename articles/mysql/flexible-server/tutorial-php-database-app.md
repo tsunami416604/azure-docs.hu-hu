@@ -9,10 +9,10 @@ ms.devlang: php
 ms.date: 9/21/2020
 ms.custom: mvc
 ms.openlocfilehash: 1bad9a7da6f0604f910ce1095b734043be8cf3c3
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90946599"
 ---
 # <a name="tutorial-build-a-php-laravel-and-mysql-flexible-server-preview-app-in-azure-app-service"></a>Oktatóanyag: PHP (Laravel) és MySQL rugalmas kiszolgálói (előzetes verzió) alkalmazás létrehozása Azure App Service
@@ -134,7 +134,7 @@ php artisan serve
 
 Egy böngészőben nyissa meg a `http://localhost:8000` oldalt. Vegyen fel néhány feladatot az oldalon.
 
-:::image type="content" source="media/tutorial-php-database-app/mysql-connect-success.png" alt-text="A PHP sikeresen csatlakozik a MySQL-hez":::
+:::image type="content" source="media/tutorial-php-database-app/mysql-connect-success.png" alt-text="PHP-alapú webalkalmazás az Azure-ban rugalmas kiszolgálóval":::
 
 A PHP leállításához írja be a `Ctrl + C` billentyűparancsot a terminálon.
 
@@ -257,7 +257,7 @@ Nyissa meg a `http://localhost:8000` címet. Ha az oldal hiba nélkül betölt, 
 
 Vegyen fel néhány feladatot az oldalon.
 
-:::image type="content" source="media/tutorial-php-database-app/mysql-connect-success.png" alt-text="A PHP sikeresen csatlakozik az Azure Database for MySQL-hez":::
+:::image type="content" source="media/tutorial-php-database-app/mysql-connect-success.png" alt-text="PHP-alapú webalkalmazás az Azure-ban rugalmas kiszolgálóval":::
 
 A PHP leállításához írja be a `Ctrl + C` billentyűparancsot a terminálon.
 
@@ -414,7 +414,7 @@ remote: Running deployment command...
 
 Egy böngészőben keresse fel az `http://<app-name>.azurewebsites.net` címet, és vegyen fel néhány feladatot a listára.
 
-:::image type="content" source="media/tutorial-php-database-app/php-mysql-in-azure.png" alt-text="PHP-alapú webalkalmazás az Azure-ban":::
+:::image type="content" source="media/tutorial-php-database-app/php-mysql-in-azure.png" alt-text="PHP-alapú webalkalmazás az Azure-ban rugalmas kiszolgálóval":::
 
 Gratulálunk, egy adatvezérelt PHP-alkalmazást futtat az Azure App Service-ben.
 
@@ -534,7 +534,7 @@ php artisan serve
 
 A feladat állapotváltozásának megtekintéséhez nyissa meg a `http://localhost:8000` címet, és jelölje be a jelölőnégyzetet.
 
-:::image type="content" source="media/tutorial-php-database-app/complete-checkbox.png" alt-text="A feladathoz hozzáadott jelölőnégyzet":::
+:::image type="content" source="media/tutorial-php-database-app/complete-checkbox.png" alt-text="PHP-alapú webalkalmazás az Azure-ban rugalmas kiszolgálóval":::
 
 A PHP leállításához írja be a `Ctrl + C` billentyűparancsot a terminálon.
 
@@ -556,7 +556,7 @@ git push azure master
 
 A `git push` befejezését követően navigáljon az Azure-alkalmazáshoz, és tesztelje az új funkciókat.
 
-:::image type="content" source="media/tutorial-php-database-app/complete-checkbox-published.png" alt-text="Az Azure-ban közzétett modell- és adatbázis-módosítások":::
+:::image type="content" source="media/tutorial-php-database-app/complete-checkbox-published.png" alt-text="PHP-alapú webalkalmazás az Azure-ban rugalmas kiszolgálóval":::
 
 Ha felvett feladatokat, azok megmaradnak az adatbázisban. Az adatséma frissítései érintetlenül hagyják a meglévő adatokat.
 
@@ -569,7 +569,7 @@ az group delete --name myResourceGroup
 
 <a name="next"></a>
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Erőforrások kezelése Azure Portal](https://docs.microsoft.com/azure/azure-resource-manager/management/manage-resources-portal) <br/>

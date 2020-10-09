@@ -11,10 +11,10 @@ ms.workload: genomics
 ms.topic: troubleshooting
 ms.date: 10/29/2018
 ms.openlocfilehash: c508c10d619cde1a16d89b446c5cfd1a3ce81daf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82100906"
 ---
 # <a name="troubleshooting-guide"></a>Hibaelhárítási útmutató
@@ -26,10 +26,10 @@ ms.locfileid: "82100906"
 
 A munkafolyamathoz társított hibaüzeneteket a következő módszerekkel érheti el:
 
-1. A parancssor használata és a beírása`msgen status`
+1. A parancssor használata és a beírása  `msgen status`
 2. standardoutput.txt tartalmának vizsgálata.
 
-### <a name="1-using-the-command-line-msgen-status"></a>1. a parancssor használata`msgen status`
+### <a name="1-using-the-command-line-msgen-status"></a>1. a parancssor használata `msgen status`
 
 ```bash
 msgen status -u URL -k KEY -w ID 
@@ -82,7 +82,7 @@ msgen status -w 1001 -f "config.txt"
 ```
 
 ### <a name="2--examine-the-contents-of-standardoutputtxt"></a>2. a standardoutput.txt tartalmának vizsgálata 
-Keresse meg a kérdéses munkafolyamat kimeneti tárolóját. A MSGEN `[workflowfilename].logs.zip` minden munkafolyamat-végrehajtás után létrehoz egy mappát. Bontsa ki a mappát a tartalmának megtekintéséhez:
+Keresse meg a kérdéses munkafolyamat kimeneti tárolóját. A MSGEN   `[workflowfilename].logs.zip` minden munkafolyamat-végrehajtás után létrehoz egy mappát. Bontsa ki a mappát a tartalmának megtekintéséhez:
 
 * outputFileList.txt – a munkafolyamat során létrehozott kimeneti fájlok listája
 * standarderror.txt – ez a fájl üres.

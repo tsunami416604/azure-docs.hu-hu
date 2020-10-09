@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 04/06/2020
 ms.custom: devx-track-java
 ms.openlocfilehash: fa66f17c6f96ac7f70188c5a28c0b180ed2f03e0
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90906878"
 ---
 # <a name="use-circuit-breaker-dashboard-with-azure-spring-cloud"></a>Az áramkör-megszakító irányítópultjának használata az Azure Spring Cloud használatával
@@ -81,7 +81,7 @@ A Hystrix metrikái streamek is elérhetők innen: `test-endpoint` . Háttérbel
 
 Webalkalmazásként a Hystrix irányítópultjának kell működnie `test-endpoint` . Ha nem működik megfelelően, két ok lehet: először a (z) vagy a `test-endpoint` (z) alapurl-címének módosítása a `/ to /<APP-NAME>/<DEPLOYMENT-NAME>` (z) vagy a másodperc alapján, a webalkalmazás a statikus erőforrás abszolút elérési útját használja. A működésének megkezdéséhez `test-endpoint` Előfordulhat, hogy manuálisan kell szerkesztenie az <base> előtér-fájlokat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Szolgáltatási példány kiépítése az Azure CLI-ben](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart-launch-app-cli#provision-a-service-instance-on-the-azure-cli)
 * [Java Spring-alkalmazás előkészítése az Azure Spring Cloud üzembe helyezéséhez](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-tutorial-prepare-app-deployment)
 ::: zone-end

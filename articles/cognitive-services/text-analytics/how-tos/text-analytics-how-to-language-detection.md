@@ -11,10 +11,10 @@ ms.topic: sample
 ms.date: 05/13/2020
 ms.author: aahi
 ms.openlocfilehash: b5936d68ba98054eb6d98860c6edfaf12d6736d8
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91710125"
 ---
 # <a name="example-detect-language-with-text-analytics"></a>Példa: nyelv felismerése Text Analytics
@@ -157,7 +157,7 @@ Bizonyos esetekben nehéz lehet nyelveket egyértelműsítse a bemenet alapján.
 
 Előfordulhat például, hogy a "Impossible" kifejezés az angol és a francia nyelvre is vonatkozik, és ha korlátozott kontextusban van megadva, a válasz az "USA" ország-/régió-emlékeztetőn fog alapulni. Ha ismert, hogy a szöveg eredete Franciaország, ez megadható tippként.
 
-**Bevitel**
+**Input (Bemenet)**
 
 ```json
     {
@@ -226,7 +226,7 @@ Ha az analizátor nem tudja elemezni a bemenetet, a függvény visszaadja `(Unkn
 
 Az ugyanabban a dokumentumban található vegyes nyelvi tartalom a tartalom legnagyobb ábrázolását, de alacsonyabb pozitív minősítéssel rendelkező nyelvet ad vissza. A minősítés az értékelés marginális erősségét tükrözi. A következő példában a bemeneti adat angol, német és francia nyelv kombinációja. Az elemző minden szegmensben megszámolja a karakterek számát az uralkodó nyelv meghatározásához.
 
-**Bevitel**
+**Input (Bemenet)**
 
 ```json
     {

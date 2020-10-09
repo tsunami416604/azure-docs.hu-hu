@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/22/2020
 ms.openlocfilehash: 7fd287377a82caeaecea264f0165d12ced57f5cd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "76722836"
 ---
 # <a name="scenario-apache-ambari-directory-alerts-in-azure-hdinsight"></a>Forgatókönyv: Apache Ambari Directory-riasztások az Azure HDInsight
@@ -31,7 +31,7 @@ Az Apache Ambari az alábbihoz hasonló hibákat kap:
 
 Az érintett munkavégző csomópont (ok) ból a Ambari-riasztásból említett könyvtárak hiányoznak.
 
-## <a name="resolution"></a>Megoldás:
+## <a name="resolution"></a>Feloldás
 
 Manuálisan hozza létre a hiányzó könyvtárakat az érintett munkavégző csomópont (ok) hoz.
 

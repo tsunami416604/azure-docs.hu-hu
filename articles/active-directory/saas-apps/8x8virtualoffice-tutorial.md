@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/20/2020
 ms.author: jeedes
 ms.openlocfilehash: 5f7e85cc37d5a899681b5dd1466c216f1be39a61
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91708798"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-8x8"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a 8x8
@@ -153,7 +153,7 @@ Az oktatóanyag következő része attól függ, hogy milyen típusú előfizet�
 
     ![Képernyőfelvétel: az egyszeri bejelentkezés (SSO) és a Microsoft Azure AD lehetőségek.](./media/8x8virtualoffice-tutorial/configure2.png)
 
-1. Másolja ki a három URL-címet és az aláírási tanúsítványt az Azure AD-beli **SAML-alapú egyszeri bejelentkezés beállítása** a 8x8 CONFIGURATION Manager **Microsoft Azure ad SAML-beállítások** szakaszában.
+1. Másolja ki a három URL-címet és az aláíró tanúsítványt az Azure AD-ben az **egyszeri Sign-On beállítása az SAML** -lapra az 8x8 CONFIGURATION Manager **Microsoft Azure ad SAML-beállítások** szakaszában.
 
     ![8x8 Configuration Manager](./media/8x8virtualoffice-tutorial/configure3.png)
 

@@ -11,10 +11,10 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: 7b3dcfc51df7f0fe4291e9c5babccc1444ad32e9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81730755"
 ---
 # <a name="communicate-with-your-iot-hub-by-using-the-amqp-protocol"></a>Kommunikáció az IoT hub használatával a AMQP protokoll segítségével
@@ -29,7 +29,7 @@ Ha a AMQP használatával szeretne csatlakozni egy IoT hubhoz, az ügyfél haszn
 
 A szolgáltatás ügyfelének a következő információkat kell megadnia:
 
-| Információ | Érték |
+| Tájékoztatás | Érték |
 |-------------|--------------|
 | IoT hub-állomásnév | `<iot-hub-name>.azure-devices.net` |
 | Kulcs neve | `service` |
@@ -68,7 +68,7 @@ receive_client = uamqp.ReceiveClient(uri, debug=True)
 
 A szolgáltatás és az IoT hub, valamint az eszköz és az IoT hub között a felhőből az eszközre irányuló üzenetváltásról további információt a [felhőből az eszközre irányuló üzenetek küldése az IoT hubhoz](iot-hub-devguide-messages-c2d.md)című témakörben talál. A szolgáltatás-ügyfél két hivatkozást használ az üzenetek küldésére és visszajelzések fogadására a korábban elküldött üzenetekről az eszközökről, az alábbi táblázatban leírtak szerint:
 
-| Létrehozó | Hivatkozás típusa | Hivatkozás elérési útja | Description |
+| Létrehozó | Hivatkozás típusa | Hivatkozás elérési útja | Leírás |
 |------------|-----------|-----------|-------------|
 | Szolgáltatás | Feladó hivatkozása | `/messages/devicebound` | Az eszközökre szánt, felhőből eszközre irányuló üzeneteket a szolgáltatás elküldi erre a hivatkozásra. A hivatkozáson keresztül küldött üzeneteknek a `To` tulajdonsága a cél eszköz fogadó hivatkozásának elérési útjára van beállítva `/devices/<deviceID>/messages/devicebound` . |
 | Szolgáltatás | Fogadó hivatkozása | `/messages/serviceBound/feedback` | Az ezen a hivatkozáson keresztül fogadott eszközökről érkező, a küldéssel, elutasítással és törléssel kapcsolatos visszajelzési üzenetek. További információ a visszajelzési üzenetekről: a [felhőből az eszközre irányuló üzenetek küldése az IoT hub-ból](./iot-hub-devguide-messages-c2d.md#message-feedback). |
@@ -225,7 +225,7 @@ Ha a AMQP használatával szeretne csatlakozni egy IoT hubhoz, az eszköz haszn�
 
 Az eszköz ügyfelének a következő információkat kell megadnia:
 
-| Információ | Érték |
+| Tájékoztatás | Érték |
 |-------------|--------------|
 | IoT hub-állomásnév | `<iot-hub-name>.azure-devices.net` |
 | Hozzáférési kulcs | Az eszközhöz társított elsődleges vagy másodlagos kulcs |
@@ -262,7 +262,7 @@ send_client = uamqp.SendClient(uri, debug=True)
 
 A következő hivatkozás elérési útjai támogatottak az eszköz műveleteiként:
 
-| Létrehozó | Hivatkozás típusa | Hivatkozás elérési útja | Description |
+| Létrehozó | Hivatkozás típusa | Hivatkozás elérési útja | Leírás |
 |------------|-----------|-----------|-------------|
 | Eszközök | Fogadó hivatkozása | `/devices/<deviceID>/messages/devicebound` | Az eszközökre szánt, felhőből az eszközre irányuló üzenetek fogadása ezen a hivatkozáson keresztül történik minden céleszköz esetében. |
 | Eszközök | Feladó hivatkozása | `/devices/<deviceID>/messages/events` | Az eszközről a felhőbe küldött üzenetek küldése ezen a hivatkozáson keresztül történik. |

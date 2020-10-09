@@ -12,10 +12,10 @@ ms.custom:
 - device-developer
 - iot-edge
 ms.openlocfilehash: 9b4bb462c94ab5a59dbd9d8fdd4cf619e311df56
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90987012"
 ---
 # <a name="tutorial-add-an-azure-iot-edge-device-to-your-azure-iot-central-application"></a>Oktatóanyag: Azure IoT Edge-eszköz hozzáadása az Azure IoT Central-alkalmazáshoz
@@ -37,7 +37,7 @@ Fejezze be az [Azure IoT Central-alkalmazás létrehozása](./quick-deploy-iot-c
 
 Az oktatóanyag lépéseinek elvégzéséhez aktív Azure-előfizetésre van szükség.
 
-Ha nem rendelkezik Azure-előfizetéssel, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
 Töltse le a IoT Edge manifest-fájlt a GitHubról. Kattintson a jobb gombbal a következő hivatkozásra, majd válassza a **hivatkozás mentése másként**: [EnvironmentalSensorManifest.jsbekapcsolva](https://raw.githubusercontent.com/Azure-Samples/iot-central-docs-samples/master/iotedge/EnvironmentalSensorManifest.json) lehetőséget.
 
@@ -99,7 +99,7 @@ A telemetria-definíciók hozzáadása az eszköz sablonhoz:
 
 A **kezelés** felület mostantól tartalmazza a **gép**-, a **környezeti**és a **timeCreated** telemetria-típusokat:
 
-:::image type="content" source="media/tutorial-add-edge-as-leaf-device/manage-interface.png" alt-text="Felület gépi és környezeti telemetria-típusokkal":::
+:::image type="content" source="media/tutorial-add-edge-as-leaf-device/manage-interface.png" alt-text="IoT Edge jegyzékfájlból létrehozott eszköz sablonja":::
 
 ### <a name="add-views-to-template"></a>Nézetek hozzáadása a sablonhoz
 
@@ -115,7 +115,7 @@ Az eszköz sablonja még nem rendelkezik olyan nézettel, amely lehetővé teszi
 
 1. Válassza a **Mentés** lehetőséget a **nézet mentéséhez IoT Edge eszköz telemetria** nézetét.
 
-:::image type="content" source="media/tutorial-add-edge-as-leaf-device/template-telemetry-view.png" alt-text="Eszköz sablonja telemetria nézettel":::
+:::image type="content" source="media/tutorial-add-edge-as-leaf-device/template-telemetry-view.png" alt-text="IoT Edge jegyzékfájlból létrehozott eszköz sablonja":::
 
 ### <a name="publish-the-template"></a>A sablon közzététele
 
@@ -123,7 +123,7 @@ Ahhoz, hogy hozzáadjon egy olyan eszközt, amely a **környezeti érzékelők p
 
 Navigáljon a **környezeti érzékelő Edge-eszköz** sablonhoz, és válassza a **Közzététel**lehetőséget. Az **eszköz sablonjának közzététele az alkalmazás** panelen válassza a **Közzététel** lehetőséget a sablon közzétételéhez:
 
-:::image type="content" source="media/tutorial-add-edge-as-leaf-device/publish-template.png" alt-text="Az eszközsablon közzététele":::
+:::image type="content" source="media/tutorial-add-edge-as-leaf-device/publish-template.png" alt-text="IoT Edge jegyzékfájlból létrehozott eszköz sablonja":::
 
 ## <a name="add-iot-edge-device"></a>IoT Edge eszköz hozzáadása
 
@@ -135,7 +135,7 @@ Most, hogy közzétette a **környezeti érzékelők peremhálózati eszközéne
 
 Most már rendelkezik egy új, **regisztrált**állapottal rendelkező eszközzel:
 
-:::image type="content" source="media/tutorial-add-edge-as-leaf-device/new-device.png" alt-text="Új, regisztrált eszköz":::
+:::image type="content" source="media/tutorial-add-edge-as-leaf-device/new-device.png" alt-text="IoT Edge jegyzékfájlból létrehozott eszköz sablonja":::
 
 ### <a name="get-the-device-credentials"></a>Az eszköz hitelesítő adatainak beolvasása
 
@@ -143,7 +143,7 @@ Amikor az oktatóanyag későbbi részében telepíti a IoT Edge eszközt, szük
 
 1. Az **eszköz** lapon válassza ki a létrehozott eszközt.
 
-1. Válassza a **Kapcsolódás** lehetőséget.
+1. Kattintson a **Csatlakozás** gombra.
 
 1. Az **eszköz-kapcsolatok** lapon jegyezze fel az **azonosító hatókörét**, az **eszköz azonosítóját**és az **elsődleges kulcsot**. Ezeket az értékeket később használhatja.
 
@@ -181,7 +181,7 @@ Az **Egyéni telepítés** lapon:
 
 1. Tekintse át a beállításokat, majd válassza a **Létrehozás**lehetőséget:
 
-    :::image type="content" source="media/tutorial-add-edge-as-leaf-device/vm-deployment.png" alt-text="IoT Edge virtuális gép létrehozása":::
+    :::image type="content" source="media/tutorial-add-edge-as-leaf-device/vm-deployment.png" alt-text="IoT Edge jegyzékfájlból létrehozott eszköz sablonja":::
 
 A telepítés elvégzése néhány percet vesz igénybe. Az üzembe helyezés befejezésekor navigáljon a Azure Portal **középső szélű RG** erőforráscsoporthoz.
 
@@ -269,15 +269,15 @@ A virtuális gépen IoT Edge konfigurálásához a DPS használatával regisztr�
 
 A szimulált IoT Edge eszköz mostantól fut a virtuális gépen. A IoT Central alkalmazásban az eszköz állapota most az **eszközök** lapon lett **kiépítve** :
 
-:::image type="content" source="media/tutorial-add-edge-as-leaf-device/provisioned-device.png" alt-text="Kiépített IoT Edge eszköz":::
+:::image type="content" source="media/tutorial-add-edge-as-leaf-device/provisioned-device.png" alt-text="IoT Edge jegyzékfájlból létrehozott eszköz sablonja":::
 
 A telemetria a **IoT Edge eszköz telemetria megtekintése** lapon tekintheti meg az eszközön:
 
-:::image type="content" source="media/tutorial-add-edge-as-leaf-device/device-telemetry-view.png" alt-text="Eszköz telemetria":::
+:::image type="content" source="media/tutorial-add-edge-as-leaf-device/device-telemetry-view.png" alt-text="IoT Edge jegyzékfájlból létrehozott eszköz sablonja":::
 
 A **modulok** lap az eszközön lévő IoT Edge-modulok állapotát jeleníti meg:
 
-:::image type="content" source="media/tutorial-add-edge-as-leaf-device/edge-module-status.png" alt-text="Eszköz moduljának állapota":::
+:::image type="content" source="media/tutorial-add-edge-as-leaf-device/edge-module-status.png" alt-text="IoT Edge jegyzékfájlból létrehozott eszköz sablonja":::
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
@@ -291,7 +291,7 @@ Most, hogy megtanulta, hogyan használhatja és felügyelheti IoT Edge eszközei
 > [!div class="nextstepaction"]
 > [Az eszközök telemetria elemzése az eszközök csoportjaival](./tutorial-use-device-groups.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy megtanulta, hogyan dolgozhat és kezelhet IoT Edge-eszközöket IoT Centralban, a következő lépés az, hogy olvassa el a következőket:
 

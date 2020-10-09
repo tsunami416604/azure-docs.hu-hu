@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 09/11/2020
 ms.author: jeedes
 ms.openlocfilehash: c46565f7eaa060a060183cf321bb1df1903b945c
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91000784"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-pulse-secure-pcs"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Pulse Secure PC-vel
@@ -104,7 +104,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás** lehetőségre.
+   1. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -162,7 +162,7 @@ Hajtsa végre a következő lépéseket a következő oldalon:
 
     d. Válassza ki az Azure AD-entitás azonosítójának értékét az **Identity Provider entitás-azonosító legördülő listából**.
 
-    e. Válassza az Azure AD bejelentkezési URL-cím értéket az **identitás-szolgáltató egyszeri bejelentkezési szolgáltatás URL-címének legördülő listából**.
+    e. Válassza az Azure AD bejelentkezési URL-cím értéket az **Identitáskezelő egyetlen Sign-On szolgáltatás URL-címe legördülő listából**.
 
     f. Az **egyszeri kijelentkezés** nem kötelező beállítás. Ha ez a beállítás be van jelölve, a rendszer a kijelentkezés után új hitelesítést kér. Ha ez a beállítás nincs bejelölve, és nem zárta be a böngészőt, akkor a hitelesítés nélkül újra csatlakozhat.
 
@@ -186,7 +186,7 @@ Ebben a szakaszban a következő lehetőségekkel tesztelheti az Azure AD egysze
 
 3. Használhatja a Microsoft Access panelt. Ha a hozzáférési panelen a Pulse Secure számítógépek csempére kattint, a rendszer átirányítja a Pulse Secure PC bejelentkezési URL-címére. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A Pulse Secure PC-k konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezete bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).
 

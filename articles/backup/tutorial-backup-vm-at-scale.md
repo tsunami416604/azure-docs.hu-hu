@@ -5,10 +5,10 @@ ms.date: 07/26/2020
 ms.topic: tutorial
 ms.custom: mvc
 ms.openlocfilehash: a9517ffc1e37d50f7c0e57b9ed53fb8bcf55fd70
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89180575"
 ---
 # <a name="use-azure-portal-to-back-up-multiple-virtual-machines"></a>Több virtuális gép biztonsági mentése az Azure Portalon
@@ -30,17 +30,17 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
 A helyreállítási tár tartalmazza a biztonsági mentési adatokat és a védett virtuális gépekre vonatkozó biztonsági mentési szabályzatot. A virtuális gépek biztonsági mentése egy helyi folyamat. Nem lehet biztonsági mentést készíteni egy virtuális gépről egyik helyről a Recovery Services-tárolóra egy másik helyen. Ezért minden olyan Azure-helyen, ahol biztonsági mentésre szoruló virtuális gépek vannak, legalább egy helyreállítási tárnak kell lennie.
 
-1. A bal oldali menüben válassza a **minden szolgáltatás**lehetőséget.
+1. A bal oldali menüben válassza a **Minden szolgáltatás** lehetőséget.
 
-    ![Minden szolgáltatás kiválasztása](./media/tutorial-backup-vm-at-scale/click-all-services.png)
+    ![Válassza a Minden szolgáltatás elemet](./media/tutorial-backup-vm-at-scale/click-all-services.png)
 
-1. A **minden szolgáltatás** párbeszédpanelen írja be a *Recovery Services*értéket. Az erőforrás-szűrők listája a bemenet alapján. Az erőforrások listájában válassza a **Recovery Services**-tárolók lehetőséget.
+1. A **Minden szolgáltatás** párbeszédpanelen írja be a következőt: *Recovery Services*. A rendszer a megadott kulcsszavak alapján szűri az erőforrások listáját. Az erőforrások listájából válassza a **Recovery Services-tárolók** elemet.
 
-    ![Adja meg és válassza ki Recovery Services tárolókat](./media/tutorial-backup-vm-at-scale/all-services.png)
+    ![Recovery Services-tárolók megadása és kiválasztása](./media/tutorial-backup-vm-at-scale/all-services.png)
 
     Megjelenik az előfizetésben található Recovery Services-tárolók listája.
 
-1. A **Recovery Services** -tárolók irányítópultján válassza a **Hozzáadás**lehetőséget.
+1. A **Recovery Services-tárolók** irányítópultján kattintson a **Hozzáadás** elemre.
 
     ![Recovery Services-tároló hozzáadása](./media/tutorial-backup-vm-at-scale/add-button-create-vault.png)
 
@@ -55,13 +55,13 @@ A helyreállítási tár tartalmazza a biztonsági mentési adatokat és a véde
 
     A helyreállítási tárnak ugyanazon a helyen kell lennie, mint a virtuális gépeknek, amelyeknek védelmet biztosít. Ha több régióban rendelkezik virtuális gépekkel, minden régióban hozzon létre egy Recovery Services-tárolót. Ez az oktatóanyag egy Recovery Services-tárolót hoz létre *Nyugat-Európában* , mert ott jött létre a *myVM* (a gyors üzembe helyezéssel létrehozott virtuális gép).
 
-1. Ha készen áll az Recovery Services-tároló létrehozására, válassza a **Létrehozás**lehetőséget.
+1. Amikor készen áll a Recovery Services-tároló létrehozására, válassza a **Létrehozás** elemet.
 
-    ![A Recovery Services-tároló létrehozása](./media/tutorial-backup-vm-at-scale/click-create-button.png)
+    ![Recovery Services-tároló létrehozása](./media/tutorial-backup-vm-at-scale/click-create-button.png)
 
-1. A Recovery Services-tároló létrehozása eltarthat egy ideig. Figyelje az **értesítéseket** a portál jobb felső sarkában található értesítések területről. A tároló létrehozása után a Recovery Services-tárolók listájában látható. Ha nem látja a tárolót, válassza a **frissítés**lehetőséget.
+1. A Recovery Services-tároló létrehozása eltarthat egy ideig. Figyelje az állapotértesítéseket a portál jobb felső sarkában található **Értesítések** területen. Miután a tároló létrejött, megjelenik a Recovery Services-tárolók listájában. Ha nem látja a tárat, válassza a **Frissítés** lehetőséget.
 
-     ![A Backup-tárolók listájának frissítése](./media/tutorial-backup-vm-at-scale/refresh-button.png)
+     ![Biztonsági mentési tárak listájának frissítése](./media/tutorial-backup-vm-at-scale/refresh-button.png)
 
 A létrehozott helyreállítási tárak alapértelmezés szerint georedundáns tárolással rendelkeznek. Az adatok rugalmassága érdekében a georedundáns tárolás többször replikálja az adatokat két Azure-régió között.
 

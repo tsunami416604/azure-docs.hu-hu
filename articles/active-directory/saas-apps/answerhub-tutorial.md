@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/17/2019
 ms.author: jeedes
 ms.openlocfilehash: 69ebc238d36223a4287ae1de668f60f9c2db014a
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91713590"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-answerhub"></a>Oktatóanyag: Azure Active Directory integráció a AnswerHub
@@ -93,9 +93,9 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezést állítja be a Azure Por
 
     ![Egyszeri bejelentkezés – metódus kiválasztása párbeszédpanel](common/select-saml-option.png)
 
-3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon válassza a Szerkesztés ikont az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
+3. Az **egyszeres Sign-On beállítása az SAML-vel** lapon kattintson a Szerkesztés ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
-    ![Egyszeri bejelentkezés beállítása SAML-oldallal](common/edit-urls.png)
+    ![Egyszeri Sign-On beállítása SAML-oldallal](common/edit-urls.png)
 
 4. Az **alapszintű SAML-konfiguráció** szakaszban hajtsa végre a következő lépéseket:
 
@@ -108,7 +108,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezést állítja be a Azure Por
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel és azonosítóval. Az értékek lekéréséhez lépjen kapcsolatba a [AnswerHub támogatási csoportjával](mailto:success@answerhub.com) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-5. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban válassza a **tanúsítvány (Base64)** melletti **letöltési** hivatkozást, és az igényeinek megfelelő beállítást, és mentse a tanúsítványt a számítógépre.
+5. Az **egyszeres Sign-On beállítása az SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban válassza a **tanúsítvány (Base64)** melletti **letöltési** hivatkozást, és az igényeinek megfelelő beállítást, és mentse a tanúsítványt a számítógépre.
 
     ![Tanúsítvány letöltési hivatkozása](common/certificatebase64.png)
 
@@ -156,7 +156,7 @@ Ebben a szakaszban a AnswerHub való egyszeri bejelentkezést állíthatja be.
 
     a. Nyissa meg a Jegyzettömbben a Azure Portal letöltött Base64 kódolású tanúsítványt, másolja a tartalmát, majd illessze be a tartalmat a **identitásszolgáltató nyilvános kulcs (X509 formátum)** mezőbe.
   
-    b. Válassza a **Mentés** lehetőséget.
+    b. Kattintson a **Mentés** gombra.
 
 6. A **identitásszolgáltató-konfiguráció** lapon válassza a **Mentés** újra lehetőséget.
 

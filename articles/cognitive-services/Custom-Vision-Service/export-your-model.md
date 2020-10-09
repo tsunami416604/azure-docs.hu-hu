@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/21/2019
 ms.author: pafarley
 ms.openlocfilehash: be28a10f8a96d21d64d08cfacee4543c065168ae
-ms.sourcegitcommit: b56226271541e1393a4b85d23c07fd495a4f644d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85391757"
 ---
 # <a name="export-your-model-for-use-with-mobile-devices"></a>A modell exportálása mobileszközökön való használatra
@@ -73,7 +73,7 @@ A modell átképzés utáni exportálásához kövesse az alábbi lépéseket:
 
 1. Válassza ki a kívánt exportálási formátumot, majd válassza az __Exportálás__ lehetőséget a modell letöltéséhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Integrálja az exportált modellt egy alkalmazásba az alábbi cikkek vagy minták egyikének feltárásával:
 

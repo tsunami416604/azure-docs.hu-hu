@@ -12,10 +12,10 @@ ms.date: 03/17/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: dbeb2540084fad2cfab3ce360dd15b60a75e5e59
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85389326"
 ---
 # <a name="azure-active-directory-b2c-enable-custom-attributes-in-a-custom-profile-policy"></a>Azure Active Directory B2C: egyéni attribútumok engedélyezése egyéni profil házirendben
@@ -50,14 +50,14 @@ A használati feltételek *kiterjesztésének tulajdonsága*, az *egyéni attrib
 1. Válassza ki a **címtár + előfizetés** szűrőt a felső menüben, majd válassza ki azt a könyvtárat, amely a Azure ad B2C bérlőjét tartalmazza.
 1. A bal oldali menüben válassza a **Azure ad B2C**lehetőséget. Vagy válassza a **minden szolgáltatás** lehetőséget, és keresse meg, majd válassza a **Azure ad B2C**lehetőséget.
 1. Válassza a **Alkalmazásregisztrációk**lehetőséget, majd válassza **a minden alkalmazás**lehetőséget.
-1. Válassza ki az `b2c-extensions-app. Do not modify. Used by AADB2C for storing user data.` alkalmazást.
+1. Válassza ki a `b2c-extensions-app. Do not modify. Used by AADB2C for storing user data.` alkalmazást.
 1. Másolja a következő azonosítókat a vágólapra, és mentse őket:
-    * **Alkalmazás azonosítója**. Példa: `11111111-1111-1111-1111-111111111111`.
+    * **Alkalmazásazonosító**. Példa: `11111111-1111-1111-1111-111111111111`.
     * **Objektumazonosító**. Példa: `22222222-2222-2222-2222-222222222222`.
 
 ## <a name="modify-your-custom-policy"></a>Egyéni szabályzat módosítása
 
-Ha egyéni attribútumokat kíván engedélyezni a házirendben, adja meg az **alkalmazás azonosítóját** és az Application **Object ID** -t a HRE-Common Technical profil metaadatokban. A *HRE-Common* Technical profil az alapszintű [Azure Active Directory](active-directory-technical-profile.md) technikai profilban található, és támogatást nyújt az Azure ad-felhasználók felügyeletéhez. A többi Azure AD technikai profil tartalmazza a HRE, amely a konfigurációját használja. Bírálja felül a HRE-közös technikai profilt a bővítmény fájljában.
+A házirendben szereplő egyéni attribútumok engedélyezéséhez adja meg az **alkalmazás azonosítóját** és az ALKALMAZÁSOBJEKTUM- **azonosítót** a AAD-Common technikai profil metaadataiban. A *HRE-Common* Technical profil az alapszintű [Azure Active Directory](active-directory-technical-profile.md) technikai profilban található, és támogatást nyújt az Azure ad-felhasználók felügyeletéhez. A többi Azure AD technikai profil tartalmazza a konfigurációjának kihasználása AAD-Common. Bírálja felül az AAD-Common technikai profilt a kiterjesztési fájlban.
 
 1. Nyissa meg a szabályzat Extensions (bővítmények) fájlját. Például: <em>`SocialAndLocalAccounts/`**`TrustFrameworkExtensions.xml`**</em> .
 1. Keresse meg a ClaimsProviders elemet. Adjon hozzá egy új ClaimsProvider a ClaimsProviders elemhez.
@@ -96,7 +96,7 @@ Ugyanazok a bővítmény-attribútumok vannak megosztva a beépített és az egy
 
 Ezeket az attribútumokat az egyéni szabályzatok használata előtt vagy után is létrehozhatja a portál felhasználói felületén. A [Azure Active Directory B2C egyéni attribútumainak definiálásához](user-flow-custom-attributes.md)kövesse az útmutatást. Amikor **loyaltyId** hoz létre a portálon, az alábbiak szerint kell megadnia:
 
-|Name     |Használatban |
+|Név     |Használatban |
 |---------|---------|
 |`extension_loyaltyId`  | Egyéni szabályzat|
 |`extension_<b2c-extensions-app-guid>_loyaltyId`  | [Microsoft Graph API](manage-user-accounts-graph-api.md)|

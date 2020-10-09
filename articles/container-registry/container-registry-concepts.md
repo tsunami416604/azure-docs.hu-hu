@@ -4,17 +4,17 @@ description: Bevezetés az Azure Container-nyilvántartások,-adattárak és-tá
 ms.topic: article
 ms.date: 06/16/2020
 ms.openlocfilehash: f3a3e2a00b4fb35f9e9dd1415d5c197aef0d39b0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85390448"
 ---
 # <a name="about-registries-repositories-and-images"></a>A jegyzékek, adattárak és lemezképek
 
 Ez a cikk bemutatja a tároló-beállításjegyzékek,-adattárak és-tárolók, valamint a kapcsolódó összetevők főbb fogalmait. 
 
-## <a name="registry"></a>Registry
+## <a name="registry"></a>Regisztrációs adatbázis
 
 A tároló- *beállításjegyzék* egy olyan szolgáltatás, amely tárolói lemezképeket tárol és terjeszt. A Docker hub egy nyilvános tároló-nyilvántartó, amely támogatja a nyílt forráskódú közösségét, és általános katalógusként szolgál a lemezképek számára. Azure Container Registry lehetővé teszi a felhasználók számára, hogy a rendszerképek közvetlen vezérlésével, integrált hitelesítéssel, [geo-replikálással](container-registry-geo-replication.md) támogatják a globális elosztást és a megbízhatóságot a hálózattal szoros üzembe helyezések, a [virtuális hálózat és a tűzfal konfigurációja](container-registry-vnet.md), a [címkék zárolása](container-registry-image-lock.md)és számos más továbbfejlesztett funkció között. 
 

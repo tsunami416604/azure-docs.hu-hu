@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: b4595a63613afa3c6fef2fa2a85647d8b70b1388
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81534465"
 ---
 # <a name="application-configuration-options"></a>Alkalmazás konfigurációs beállításai
@@ -79,9 +79,9 @@ A kódban a MSAL használatával a célközönséget a következő értékek egy
   - Egy egybérlős alkalmazáshoz tartozó GUID (az Azure AD-példány azonosítója)
   - Az Azure AD-példányhoz társított tartománynév (egybérlős alkalmazások esetén is)
 - A következő helyőrzők egyike a bérlői AZONOSÍTÓnak az Azure AD-szolgáltató célközönségének enumerálása helyett:
-    - `organizations`több-bérlős alkalmazások esetén
-    - `consumers`csak a személyes fiókjaik bejelentkezni a felhasználókba
-    - `common`Bejelentkezés a felhasználók munkahelyi és iskolai fiókjaival vagy személyes Microsoft-fiókjaival
+    - `organizations` több-bérlős alkalmazások esetén
+    - `consumers` csak a személyes fiókjaik bejelentkezni a felhasználókba
+    - `common` Bejelentkezés a felhasználók munkahelyi és iskolai fiókjaival vagy személyes Microsoft-fiókjaival
 
 Ha az Azure AD-szolgáltatót és a bérlői azonosítót is megadja, a MSAL értelmes kivételt fog kiváltani.
 
@@ -122,8 +122,8 @@ Ha Ön a MSAL-t használó nyilvános ügyfélalkalmazás-fejlesztő:
 
 Felülbírálhatja az átirányítási URI-t a `RedirectUri` tulajdonság használatával (például brókerek használata esetén). Íme néhány példa a forgatókönyv átirányítási URI-azonosítóra:
 
-- `RedirectUriOnAndroid`= "msauth-5a434691-CCB2-4fd1-b97b-b64bcfbc03fc://com.microsoft.Identity.Client.Sample";
-- `RedirectUriOnIos`= $ "msauth. {Bundle. ID}://auth ";
+- `RedirectUriOnAndroid` = "msauth-5a434691-CCB2-4fd1-b97b-b64bcfbc03fc://com.microsoft.Identity.Client.Sample";
+- `RedirectUriOnIos` = $ "msauth. {Bundle. ID}://auth ";
 
 További iOS-részletekért lásd: [Microsoft Authenticatort használó iOS-alkalmazások migrálása a ADAL.net-ből a MSAL.net](msal-net-migration-ios-broker.md) és [az iOS](https://github.com/AzureAD/microsoft-authentication-library-for-dotnet/wiki/Leveraging-the-broker-on-iOS)-es bróker kihasználása.
 További Android-részletekért lásd: felügyelt [hitelesítés az Androidban](brokered-auth.md).

@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 07/22/2020
 ms.custom: devx-track-java
 ms.openlocfilehash: 5ca0c498e9fd03ce6397824465f9e1e006eeccc1
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90905384"
 ---
 # <a name="tutorial-set-up-autoscale-for-microservice-applications"></a>Oktatóanyag: a Service-alkalmazások autoskálázásának beállítása
@@ -24,7 +24,7 @@ Az autoscale az Azure Spring Cloud beépített funkciója, amely segítséget ny
 
 Az alábbi eljárások követéséhez a következőkre lesz szüksége:
 
-* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 * Egy üzembe helyezett Azure Spring Cloud Service-példány. Az első lépésekhez kövesse az [alkalmazások Azure CLI-n keresztüli üzembe helyezésével](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-quickstart-launch-app-cli) foglalkozó rövid útmutatót.
 * Legalább egy alkalmazás már létre van hozva a szolgáltatási példányban.
 
@@ -68,7 +68,7 @@ Az Azure CLI használatával is beállíthatja az autoskálázási módokat.  Az
 
 Ha az alapszintű csomaggal rendelkezik, és egy vagy több ilyen korláttal van korlátozva, a standard szintre válthat. Ehhez nyissa meg az **árképzési** szint menüt úgy, hogy először kiválasztja a *standard* szintű oszlopot, és a **frissítés** gombra kattint.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Az autoskálázás áttekintése Microsoft Azure](https://docs.microsoft.com/azure/azure-monitor/platform/autoscale-overview)
 * [Az Azure CLI figyelésének autoskálázása](https://docs.microsoft.com/cli/azure/monitor/autoscale?view=azure-cli-latest&preserve-view=true)

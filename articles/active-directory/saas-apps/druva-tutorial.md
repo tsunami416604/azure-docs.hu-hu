@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/06/2020
 ms.author: jeedes
 ms.openlocfilehash: 401b1ef4e057d145574c0a8fcbfce8c9f586c266
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91775065"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-druva"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Druva
@@ -93,7 +93,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. A fentiek mellett a Druva alkalmazás néhány további attribútumot vár az SAML-válaszban, amelyek alább láthatók. Ezek az attribútumok előre fel vannak töltve, de a követelményeinek megfelelően áttekintheti őket.
 
-    | Name (Név) | Forrás attribútum|
+    | Név | Forrás attribútum|
     | ------------------- | -------------------- |
     | emailAddress | User. e-mail |
     | druva_auth_token | A DCP felügyeleti konzolról generált SSO-token idézőjelek nélkül.  Például: X-XXXXX-XXXX-S-A-M-P-L-E + TXOXKXEXNX =. Az Azure automatikusan hozzáadja az idézőjeleket az Auth-jogkivonat köré. |
@@ -116,7 +116,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Create** (Létrehozás) gombra.
+   1. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -146,18 +146,18 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 1. Az **egyszeri bejelentkezés** lapon kattintson a **Szerkesztés**elemre.
 
-    ![Képernyőfelvétel: a "szerkesztés" gomb kiválasztásával megjelenítheti a "hozzáférési beállítások – egyszeri bejelentkezés" lapot.](./media/druva-tutorial/ic795092.png "Egyszeri bejelentkezési beállítások")
+    ![Képernyőfelvétel: a "szerkesztés" gomb kiválasztásával megjelenítheti a "hozzáférési beállítások – egyszeri bejelentkezés" lapot.](./media/druva-tutorial/ic795092.png "Egyszeres Sign-On beállítások")
 
-1. Az **egyszeri bejelentkezési beállítások szerkesztése** oldalon hajtsa végre a következő lépéseket:
+1. Az **egyedi Sign-On beállításainak szerkesztése** oldalon hajtsa végre a következő lépéseket:
 
-    ![Egyszeri bejelentkezési beállítások](./media/druva-tutorial/ic795095.png "Egyszeri bejelentkezési beállítások")
+    ![Egyszeres Sign-On beállítások](./media/druva-tutorial/ic795095.png "Egyszeres Sign-On beállítások")
 
     1. Az **azonosító szolgáltató bejelentkezési URL-címe** szövegmezőben illessze be a **bejelentkezési URL-cím**értékét, amelyet a Azure Portal másolt.
 
     1. Nyissa meg a Base-64 kódolású tanúsítványt a Jegyzettömbben, másolja a vágólapra a tartalmát, majd illessze be az azonosító- **szolgáltatói tanúsítvány** szövegmezőbe.
 
        > [!NOTE]
-       > Ha engedélyezni szeretné az egyszeri bejelentkezést a rendszergazdák számára, válassza a **rendszergazdák jelentkezzen be a Druva felhőbe SSO-szolgáltatón keresztül** , és **engedélyezze a Failsafe hozzáférést a Druva Cloud Administrators (ajánlott)** jelölőnégyzetekhez. A Druva azt javasolja, hogy engedélyezze a **Failsafe a rendszergazdák számára** , hogy a identitásszolgáltató meghibásodása esetén hozzáférhessenek a DCP-konzolhoz. Azt is lehetővé teszi, hogy a rendszergazdák az SSO és a DCP jelszót is használják a DCP-konzol eléréséhez.
+       > Az egyszeri Sign-On rendszergazdák számára történő engedélyezéséhez válassza a **rendszergazdák bejelentkezés a Druva felhőbe SSO-szolgáltató használatával** lehetőséget, és **engedélyezze a Failsafe hozzáférést a Druva Cloud Administrators (ajánlott)** jelölőnégyzetekhez. A Druva azt javasolja, hogy engedélyezze a **Failsafe a rendszergazdák számára** , hogy a identitásszolgáltató meghibásodása esetén hozzáférhessenek a DCP-konzolhoz. Azt is lehetővé teszi, hogy a rendszergazdák az SSO és a DCP jelszót is használják a DCP-konzol eléréséhez.
 
     1. Kattintson a **Mentés** gombra. Ez lehetővé teszi a Druva Cloud platformhoz való hozzáférést az SSO használatával.
 

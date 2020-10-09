@@ -6,10 +6,10 @@ ms.subservice: qna-maker
 ms.topic: tutorial
 ms.date: 05/26/2020
 ms.openlocfilehash: ac406761abf922ff5f0d86eacd3e419c374ce096
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91776765"
 ---
 # <a name="quickstart-test-knowledge-base-with-batch-questions-and-expected-answers"></a>Gyors útmutató: Tudásbázis tesztelése batch-kérdésekkel és várt válaszokkal
@@ -201,7 +201,7 @@ Ha nem fogja tovább használni ezt a tudásbázist, törölje a tudásbázist a
 1. A QnA Maker portálon válassza a **saját Tudásbázis** lehetőséget a felső menüben.
 1. A tudásbázisok listájában válassza a **Törlés** ikont a rövid útmutató tudásbázisának sorában.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [QnA Maker (V4) REST API-referencia](https://go.microsoft.com/fwlink/?linkid=2092179)

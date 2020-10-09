@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 09/15/2020
 ms.author: mbaldwin
 ms.openlocfilehash: 22abd38ead1257b49eeae98acfcd74349f563811
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91000693"
 ---
 # <a name="managed-hsm-logging"></a>Felügyelt HSM-naplózás 
@@ -146,7 +146,7 @@ A következő táblázat a mezőneveket és a leírásokat tartalmazza:
 
 A felügyelt HSM **AuditEvent** -naplók áttekintéséhez használhatja a Azure monitor-naplók Key Vault megoldását is. Azure Monitor naplókban a naplók segítségével elemezheti az adatokat, és lekérheti a szükséges információkat. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ismerje meg a felügyelt HSM üzembe helyezésének és használatának [ajánlott eljárásait](best-practices.md)
 - Tudnivalók a felügyelt HSM [biztonsági mentéséről és visszaállításáról](backup-restore.md)

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 11/19/2019
 ms.author: kgremban
 ms.openlocfilehash: 23fbbd87230ea0a0147dc9d90c77729f4d531e98
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "76511144"
 ---
 # <a name="connect-modbus-tcp-devices-through-an-iot-edge-device-gateway"></a>Modbus TCP-eszközök csatlakoztatása IoT Edge Device Gateway-átjárón keresztül
@@ -51,7 +51,7 @@ Ez a szakasz végigvezeti a Microsoft minta-Modbus moduljának a IoT Edge eszkö
 
    1. Kattintson a legördülő **listára** , és válassza a **piactér modul**elemet.
    2. Keresse meg `Modbus` és válassza ki a **Modbus TCP-modult** a Microsoft által.
-   3. A modul automatikusan konfigurálva van a IoT Hubhoz, és megjelenik a IoT Edge modulok listájában. Az útvonalak is automatikusan konfigurálva vannak. Válassza az **Áttekintés + létrehozás** lehetőséget.
+   3. A modul automatikusan konfigurálva van a IoT Hubhoz, és megjelenik a IoT Edge modulok listájában. Az útvonalak is automatikusan konfigurálva vannak. Válassza a **Felülvizsgálat + létrehozás** lehetőséget.
    4. Tekintse át a központi telepítési jegyzéket, és válassza a **Létrehozás**lehetőséget.
 
 5. Válassza ki a Modbus modult, `ModbusTCPModule` majd a listából, és válassza ki a **modul Twin beállítások** lapot. A modulhoz tartozó, dupla kívánt tulajdonságok esetében a szükséges JSON automatikusan ki van töltve.

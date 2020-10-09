@@ -7,10 +7,10 @@ ms.date: 02/12/2020
 ms.topic: sample
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: fbac172952c9feea92341dbc028567235b9250bc
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89075273"
 ---
 # <a name="example-powershell-scripts"></a>PowerShell-példaszkriptek
@@ -273,7 +273,7 @@ A konverzió állapotát a következő paranccsal kérheti le:
 
 `-Poll`A paranccsal megvárhatja, amíg a konverzió megtörténik, vagy hiba történt.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Gyors útmutató: modell megjelenítése egységgel](../quickstarts/render-model.md)
 - [Gyors útmutató: modell átalakítása renderelésre](../quickstarts/convert-model.md)
