@@ -8,10 +8,10 @@ ms.custom:
 - seodec18
 - fasttrack-edit
 ms.openlocfilehash: b6aad323c0d6fa8f59c9fad203640c477b162503
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80519964"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-facebook-login"></a>A App Service vagy Azure Functions alkalmazás konfigurálása Facebook-Bejelentkezés használatára
@@ -80,4 +80,4 @@ Most már készen áll a Facebook használatára a hitelesítéshez az alkalmaz�
 [Facebook-fejlesztők]: https://go.microsoft.com/fwlink/p/?LinkId=268286
 [facebook.com]: https://go.microsoft.com/fwlink/p/?LinkId=268285
 [Get started with authentication]: /en-us/develop/mobile/tutorials/get-started-with-users-dotnet/
-[Azure Portalra]: https://portal.azure.com/
+[Azure Portal]: https://portal.azure.com/

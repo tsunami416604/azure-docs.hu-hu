@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 51e1fd18b52d7e215ba43be540156199fb41778e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "67179153"
 ---
 #### <a name="to-attach-the-sas-cables"></a>SAS-kábelek csatolása
@@ -18,7 +18,7 @@ ms.locfileid: "67179153"
    
     **Az elsődleges és a EBOD-házak háttérbeli nézete**
    
-   | Címke | Description |
+   | Címke | Leírás |
    |:--- |:--- |
    | 1 |Elsődleges ház |
    | 2 |EBOD ház |
@@ -28,7 +28,7 @@ ms.locfileid: "67179153"
    
     **Sorozatszám-matrica helye**
    
-   | Címke | Description |
+   | Címke | Leírás |
    |:--- |:--- |
    | 1 |A ház füle |
 3. A megadott SAS-kábelek használatával a következő módon csatlakoztathatja a EBOD-bekerítést az elsődleges házba:
@@ -41,7 +41,7 @@ ms.locfileid: "67179153"
       
       **SAS kábelezés**
       
-      | Címke | Description |
+      | Címke | Leírás |
       |:--- |:--- |
       | A |Elsődleges ház |
       | B |EBOD ház |

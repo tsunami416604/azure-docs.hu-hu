@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 08/25/2020
 ms.custom: mvc, seodec18
 ms.openlocfilehash: 6a74f105525ec8ce28559b47ed4fc9624f518a06
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89488337"
 ---
 # <a name="tutorial-map-an-existing-custom-dns-name-to-azure-app-service"></a>Oktatóanyag: meglévő egyéni DNS-név leképezése Azure App Service
@@ -83,7 +83,7 @@ Megjelenik az App Service-alkalmazás felügyeleti oldala.
 
 1. Válassza ki bármelyik nem ingyenes szintet (**D1**, **B1**, **B2**, **B3**, vagy a **Production** kategória bármelyik szintje). További beállításokért válassza a **További beállítások megjelenítése**lehetőséget.
 
-1. Válassza az **Alkalmaz** lehetőséget.
+1. Kattintson az **Alkalmaz** gombra.
 
    ![A díjszabási szintet bemutató képernyőkép.](./media/app-service-web-tutorial-custom-domain/choose-pricing-tier.png)
 

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 09/01/2020
 ms.author: jeedes
 ms.openlocfilehash: fa8b150e7b5e1bd5bfc5e05b3b00a13522b52f87
-ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89500855"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-rsa-archer-suite"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció az RSA Archer Suite-vel
@@ -100,7 +100,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
     | PhoneNumber | User. telephoneNumber |
     | City | User. City |
     | Irányítószám | User. irányítószám |
-    | Állapot | felhasználó. állapot |
+    | Állam | felhasználó. állapot |
     | Utca | User. streetAddress |
 
 1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg az **összevonási metaadatok XML-fájlját** , és válassza a **Letöltés** lehetőséget a tanúsítvány letöltéséhez és a számítógépre mentéséhez.
@@ -121,7 +121,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás** lehetőségre.
+   1. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -143,7 +143,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
     ![Az RSA Archer Suite SSO konfigurálása](./media/rsa-archer-suite-tutorial/configuring-saml-sso.png)
 
-    a. Nyissa meg az **egyszeri bejelentkezés** lapot, és válassza az **SAML** lehetőséget **a** legördülő menüből.
+    a. Nyissa meg az **egyszeri bejelentkezés** lapot, és válassza ki az **SAML** -t **egyetlen Sign-On módban** a legördülő listából.
 
     b. Jelölje be a **manuális Mellőzés engedélyezése** jelölőnégyzetet.
 
@@ -153,7 +153,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
     e. Kattintson a **kiválasztás** gombra, és töltse fel a letöltött **összevonási metaadatok XML-** fájlját a Azure Portalból.
 
-    f. **Mentse** az egyszeri bejelentkezési beállításokat. 
+    f. **Mentse** az egyetlen Sign-On beállításait. 
 
 ### <a name="create-rsa-archer-suite-test-user"></a>RSA Archer Suite-teszt felhasználó létrehozása
 

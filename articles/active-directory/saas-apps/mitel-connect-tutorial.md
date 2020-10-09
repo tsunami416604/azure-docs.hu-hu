@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 07/31/2020
 ms.author: jeedes
 ms.openlocfilehash: 63f1d1d40d8aff21641f3fa4ee10a289de40800d
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88552602"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mitel-micloud-connect-or-cloudlink-platform"></a>Oktatóanyag: Azure Active Directory integráció a Mitel MiCloud csatlakozással vagy a CloudLink platformmal
@@ -104,11 +104,11 @@ A MiCloud az Azure AD-vel való összekapcsolásának konfigurálásához a lege
 
     1. Az **egyszeri bejelentkezéstől**jobbra válassza az **aktiválás** vagy a **Beállítások**lehetőséget.
     
-    Megjelenik az egyszeri bejelentkezési beállítások összekapcsolása párbeszédpanel.
+    Megjelenik az önálló Sign-On-beállítások összekötése párbeszédpanel.
     
 3. Jelölje be az **egyszeri bejelentkezés engedélyezése** jelölőnégyzetet.
     
-    ![Képernyőfelvétel: az egyszeri bejelentkezés engedélyezése jelölőnégyzet bejelölésével megtekintheti a Mitel-kapcsolat egyszeri bejelentkezési beállításait tartalmazó lapot.](./media/mitel-connect-tutorial/mitel-connect-enable.png)
+    ![Képernyőfelvétel: az egyetlen Sign-On engedélyezése jelölőnégyzet bejelölésével megjelenítheti a Mitel-összekapcsolási Sign-On beállításait tartalmazó lapot.](./media/mitel-connect-tutorial/mitel-connect-enable.png)
 
 4. A Azure Portal válassza a **Szerkesztés** ikont az **alapszintű SAML-konfiguráció** szakaszban.
    
@@ -148,7 +148,7 @@ A MiCloud az Azure AD-vel való összekapcsolásának konfigurálásához a lege
          
          ![image](./media/mitel-connect-tutorial/mitel-azure-set-up-connect.png)
 
-12. Válassza a **Mentés** lehetőséget az **egyszeri bejelentkezési beállítások összekapcsolása** párbeszédpanelen a Mitel-fiók portálon.
+12. Válassza a **Mentés** lehetőséget a Mitel-fiók portálon az **egyszeres Sign-On beállítások összekapcsolása** párbeszédpanelen.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása 
 

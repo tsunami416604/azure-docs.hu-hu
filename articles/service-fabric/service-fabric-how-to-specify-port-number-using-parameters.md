@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 12/06/2017
 ms.author: mikhegn
 ms.openlocfilehash: a53626b8fd362397ba89df30b099fa3c9ff7b0a2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75609859"
 ---
 # <a name="how-to-specify-the-port-number-of-a-service-using-parameters-in-service-fabric"></a>Szolgáltatás portszámának megadása a Service Fabric paramétereinek használatával
@@ -40,7 +40,7 @@ Ebben a példában a asp.net Core webes API portszámát paraméterrel állítha
       </ServiceManifestImport>
     ```
 
-1. A `Endpoint` elemben mostantól felülbírálhat bármely attribútumot egy paraméter használatával. Ebben a példában a `Port` szögletes zárójelek használatával adja meg és állítja be a paraméter nevét – például:`[MyWebAPI_PortNumber]`
+1. A `Endpoint` elemben mostantól felülbírálhat bármely attribútumot egy paraméter használatával. Ebben a példában a `Port` szögletes zárójelek használatával adja meg és állítja be a paraméter nevét – például: `[MyWebAPI_PortNumber]`
 
     ```xml
       <ServiceManifestImport>
@@ -62,7 +62,7 @@ Ebben a példában a asp.net Core webes API portszámát paraméterrel állítha
       </Parameters>
     ```
 
-1. És Definiáljon egy`DefaultValue`
+1. És Definiáljon egy `DefaultValue`
 
     ```xml
       <Parameters>

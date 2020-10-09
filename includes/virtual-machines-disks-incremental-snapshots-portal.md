@@ -9,10 +9,10 @@ ms.date: 04/02/2020
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: de0cf260207747f4acb02a377819a13de8b8ba22
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80628431"
 ---
 [!INCLUDE [virtual-machines-disks-incremental-snapshots-description](virtual-machines-disks-incremental-snapshots-description.md)]
@@ -35,11 +35,11 @@ ms.locfileid: "80628431"
 1. Válassza ki a használni kívánt erőforráscsoportot, és adjon meg egy nevet.
 1. Válassza a **növekményes** lehetőséget, és válassza a **felülvizsgálat + létrehozás** lehetőséget
 
-    :::image type="content" source="media/virtual-machines-disks-incremental-snapshots-portal/incremental-snapshot-create-snapshot-blade.png" alt-text="Képernyőkép. Hozzon létre egy pillanatkép panelt, töltse ki a nevet, majd válassza a növekményes lehetőséget, majd hozza létre a pillanatképet.":::
+    :::image type="content" source="media/virtual-machines-disks-incremental-snapshots-portal/incremental-snapshot-create-snapshot-blade.png" alt-text="Képernyőkép. A lemez paneljén, a * * + pillanatkép létrehozása * * elem kiemelve, ahogy ezt ki kell választania.":::
 
 1. Kattintson a **Létrehozás** elemre.
 
-    :::image type="content" source="media/virtual-machines-disks-incremental-snapshots-portal/create-incremental-snapshot-validation.png" alt-text="Képernyőkép. A pillanatkép érvényesítési lapja, erősítse meg a beállításokat, majd hozza létre a pillanatképet.":::
+    :::image type="content" source="media/virtual-machines-disks-incremental-snapshots-portal/create-incremental-snapshot-validation.png" alt-text="Képernyőkép. A lemez paneljén, a * * + pillanatkép létrehozása * * elem kiemelve, ahogy ezt ki kell választania.":::
 
 ## <a name="next-steps"></a>További lépések
 

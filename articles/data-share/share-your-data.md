@@ -7,13 +7,13 @@ ms.service: data-share
 ms.topic: tutorial
 ms.date: 08/28/2020
 ms.openlocfilehash: 5aa760c661fd596c55693edd537ca7820c7d7f58
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89489901"
 ---
-# <a name="tutorial-share-data-using-azure-data-share"></a>Oktatóanyag: adatmegosztás az Azure-adatmegosztás használatával  
+# <a name="tutorial-share-data-using-azure-data-share"></a>Oktatóanyag: Adatok megosztása az Azure Data Share-rel  
 
 Ebből az oktatóanyagból megtudhatja, hogyan állíthat be új Azure-adatmegosztást, és hogyan oszthatja meg adatait az Azure-szervezeten kívüli ügyfelekkel és partnerekkel. 
 
@@ -34,14 +34,14 @@ Ebből az oktatóanyagból az alábbiakat sajátíthatja el:
 ### <a name="share-from-a-storage-account"></a>Megosztás egy Storage-fiókból:
 
 * Azure Storage-fiók: Ha még nem rendelkezik ilyennel, létrehozhat egy [Azure Storage-fiókot](https://docs.microsoft.com/azure/storage/common/storage-quickstart-create-account)
-* A Storage-fiókba való írásra vonatkozó engedély, amely megtalálható a *Microsoft. Storage/storageAccounts/Write*szolgáltatásban. Ez az engedély a közreműködő szerepkörben található.
-* Jogosultság a szerepkör-hozzárendelés hozzáadásához a Storage-fiókhoz, amely megtalálható a *Microsoft. Authorization/szerepkör-hozzárendelésekben/írásban*. Ez az engedély létezik a tulajdonosi szerepkörben. 
+* A Storage-fiókba való írásra vonatkozó engedély, amely megtalálható a *Microsoft. Storage/storageAccounts/Write*szolgáltatásban. Ez az engedély a Közreműködő szerepkör részét képezi.
+* Jogosultság a szerepkör-hozzárendelés hozzáadásához a Storage-fiókhoz, amely megtalálható a *Microsoft. Authorization/szerepkör-hozzárendelésekben/írásban*. Ez az engedély a Tulajdonos szerepkör részét képezi. 
 
 
 ### <a name="share-from-a-sql-based-source"></a>Megosztás SQL-alapú forrásból:
 
 * Egy Azure SQL Database vagy Azure szinapszis Analytics (korábban SQL Data Warehouse) a megosztani kívánt táblázatokkal és nézetekkel.
-* A *Microsoft. SQL/Servers/Databases/Write*adatbázisban található SQL Server-adatbázisba való írásra vonatkozó engedély. Ez az engedély a közreműködő szerepkörben található.
+* A *Microsoft. SQL/Servers/Databases/Write*adatbázisban található SQL Server-adatbázisba való írásra vonatkozó engedély. Ez az engedély a Közreműködő szerepkör részét képezi.
 * Az adatraktár eléréséhez szükséges engedély. Ezt a következő lépések végrehajtásával teheti meg: 
     1. Állítsa be saját magát az SQL Server Azure Active Directory-rendszergazdájaként.
     1. Kapcsolódjon a Azure SQL Database/adattárházhoz Azure Active Directory használatával.
@@ -62,8 +62,8 @@ Ebből az oktatóanyagból az alábbiakat sajátíthatja el:
 
 ### <a name="share-from-azure-data-explorer"></a>Megosztás az Azure Data Explorerből
 * Egy Azure Adatkezelő-fürt, amelynek adatbázisait meg szeretné osztani.
-* Engedély az Azure Adatkezelő-fürtbe való írásra, amely megtalálható a *Microsoft. Kusto/fürtök/írás*szolgáltatásban. Ez az engedély a közreműködő szerepkörben található.
-* Jogosultság a szerepkör-hozzárendelés hozzáadásához az Azure Adatkezelő-fürthöz, amely megtalálható a *Microsoft. Authorization/szerepkör-hozzárendelésekben/írásban*. Ez az engedély létezik a tulajdonosi szerepkörben.
+* Engedély az Azure Adatkezelő-fürtbe való írásra, amely megtalálható a *Microsoft. Kusto/fürtök/írás*szolgáltatásban. Ez az engedély a Közreműködő szerepkör részét képezi.
+* Jogosultság a szerepkör-hozzárendelés hozzáadásához az Azure Adatkezelő-fürthöz, amely megtalálható a *Microsoft. Authorization/szerepkör-hozzárendelésekben/írásban*. Ez az engedély a Tulajdonos szerepkör részét képezi.
 
 ## <a name="sign-in-to-the-azure-portal"></a>Jelentkezzen be az Azure Portalra
 
@@ -86,7 +86,7 @@ Azure-beli adatmegosztási erőforrás létrehozása Azure-erőforráscsoporthoz
     | Előfizetés | Az Ön előfizetése | Válassza ki az adatmegosztási fiókhoz használni kívánt Azure-előfizetést.|
     | Erőforráscsoport | *teszt – erőforrás-csoport* | Használjon meglévő erőforráscsoportot, vagy hozzon létre egy új erőforráscsoportot. |
     | Hely | *USA 2. keleti régiója* | Válassza ki az adatmegosztási fiókhoz tartozó régiót.
-    | Name | *datashareaccount* | Adja meg az adatmegosztási fiók nevét. |
+    | Név | *datashareaccount* | Adja meg az adatmegosztási fiók nevét. |
     | | |
 
 1. Válassza a **felülvizsgálat + létrehozás**, majd a **Létrehozás** lehetőséget az adatmegosztási fiók kiépítéséhez. Az új adatmegosztási fiók üzembe helyezése általában körülbelül 2 percet vesz igénybe. 
@@ -107,7 +107,7 @@ Azure-beli adatmegosztási erőforrás létrehozása Azure-erőforráscsoporthoz
 
     ![EnterShareDetails](./media/enter-share-details.png "Adja meg a megosztás részleteit") 
 
-1. Válassza a **Folytatás**lehetőséget.
+1. Válassza a **Folytatás** lehetőséget.
 
 1. Az adatkészletek megosztáshoz való hozzáadásához válassza az **adatkészletek hozzáadása**elemet. 
 
@@ -125,7 +125,7 @@ Azure-beli adatmegosztási erőforrás létrehozása Azure-erőforráscsoporthoz
 
     ![AddRecipients](./media/add-recipient.png "Címzettek hozzáadása") 
 
-1. Válassza a **Folytatás**lehetőséget.
+1. Válassza a **Folytatás** lehetőséget.
 
 1. Ha kiválasztotta a pillanatkép-megosztás típusát, beállíthatja a pillanatkép-ütemtervet, hogy az adatokra vonatkozó frissítéseket biztosítson az adatfogyasztónak. 
 
@@ -133,7 +133,7 @@ Azure-beli adatmegosztási erőforrás létrehozása Azure-erőforráscsoporthoz
 
 1. Válassza ki a kezdési időt és az ismétlődési időközt. 
 
-1. Válassza a **Folytatás**lehetőséget.
+1. Válassza a **Folytatás** lehetőséget.
 
 1. A felülvizsgálat + létrehozás lapon tekintse át a csomag tartalmát, a beállításokat, a címzetteket és a szinkronizálási beállításokat. Kattintson a **Létrehozás** gombra.
 

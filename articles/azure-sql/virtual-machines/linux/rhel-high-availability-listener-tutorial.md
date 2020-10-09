@@ -9,10 +9,10 @@ ms.author: vanto
 ms.reviewer: jroth
 ms.date: 03/11/2020
 ms.openlocfilehash: 01501b99d5d7c42af98d0397cf6ff8cbca14b07b
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89485801"
 ---
 # <a name="tutorial-configure-an-availability-group-listener-for-sql-server-on-rhel-virtual-machines-in-azure"></a>Oktatóanyag: rendelkezésre állási csoport figyelője SQL Server RHEL virtuális gépek Azure-ban való konfigurálásához
@@ -136,7 +136,7 @@ A terheléselosztási szabályok azt konfigurálhatják, hogy a terheléseloszt�
    | **Üresjárati időkorlát (perc)** |*4* |
    | **Lebegőpontos IP-cím (közvetlen kiszolgáló visszaadása)** |**Engedélyezve** |
 
-   :::image type="content" source="media/rhel-high-availability-listener-tutorial/add-load-balancing-rule.png" alt-text="Terheléselosztási szabály hozzáadása":::
+   :::image type="content" source="media/rhel-high-availability-listener-tutorial/add-load-balancing-rule.png" alt-text="Háttér-készlet hozzáadása":::
 
 4. Kattintson az **OK** gombra. 
 5. Az Azure konfigurálja a terheléselosztási szabályt. A terheléselosztó most úgy van konfigurálva, hogy átirányítsa a forgalmat a rendelkezésre állási csoport figyelőjét futtató SQL Server-példányra. 

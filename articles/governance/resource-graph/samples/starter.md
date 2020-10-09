@@ -4,10 +4,10 @@ description: Az Azure Resource Graph használatával néhány kezdő lekérdezé
 ms.date: 07/14/2020
 ms.topic: sample
 ms.openlocfilehash: 778e8bb7715f1eda1587ff79c4c9a99b69ab4e70
-ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89425262"
 ---
 # <a name="starter-resource-graph-query-samples"></a>A Starter Resource Graph lekérdezési mintái
@@ -33,7 +33,7 @@ A következő alapszintű lekérdezéseken vezetjük végig:
 - [Költségmegtakarítás összegzése Azure Advisor](#advisor-savings)
 - [A vendég-konfigurációs házirendek hatókörében lévő gépek száma](#count-gcmachines)
 
-Ha nem rendelkezik Azure-előfizetéssel, létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free), mielőtt nekikezdene a feladatok elvégzésének.
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free), mielőtt hozzákezd.
 
 ## <a name="language-support"></a>Nyelvi támogatás
 
@@ -640,7 +640,7 @@ Search-AzGraph -Query "GuestConfigurationResources | extend vmid = split(propert
 
 ---
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ a [lekérdezési nyelvről](../concepts/query-language.md).
 - További információ az [erőforrások feltárásáról](../concepts/explore-resources.md).

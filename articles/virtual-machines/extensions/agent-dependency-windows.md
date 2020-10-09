@@ -15,11 +15,11 @@ ms.workload: infrastructure-services
 ms.date: 03/29/2019
 ms.author: magoedte
 ms.openlocfilehash: 27d43af2d5860d287d8b5914379747ae528db34b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
-ms.locfileid: "79250672"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91871864"
 ---
 # <a name="azure-monitor-dependency-virtual-machine-extension-for-windows"></a>A Windows-függőség virtuálisgép-bővítményének Azure Monitor
 
@@ -71,7 +71,7 @@ A következő JSON az Azure-beli virtuális gép függőségi ügynökének sém
 
 ### <a name="property-values"></a>Tulajdonságértékek
 
-| Name | Érték/példa |
+| Név | Érték/példa |
 | ---- | ---- |
 | apiVersion | 2015-01-01 |
 | közzétevő | Microsoft. Azure. monitoring. DependencyAgent |
@@ -125,7 +125,7 @@ Ha a bővítmény JSON-fájlját a sablon gyökerében helyezi el, az erőforrá
 }
 ```
 
-## <a name="powershell-deployment"></a>PowerShell-telepítés
+## <a name="powershell-deployment"></a>A PowerShell telepítése
 
 A `Set-AzVMExtension` parancs használatával telepítheti a függőségi ügynök virtuálisgép-bővítményét egy meglévő virtuális gépre. A parancs futtatása előtt a nyilvános és a privát konfigurációkat egy PowerShell-kivonatoló táblában kell tárolni.
 

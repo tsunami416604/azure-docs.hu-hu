@@ -5,10 +5,10 @@ ms.date: 03/26/2020
 ms.topic: conceptual
 ms.reviewer: janders
 ms.openlocfilehash: 4a98e5ea025894303bc5c77bba0c6154a08315f2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80348381"
 ---
 # <a name="azure-blockchain-service-development-overview"></a>Az Azure Blockchain Service Development áttekintése
@@ -41,7 +41,7 @@ További információ: gyors útmutató [: a geth használata Azure Blockchain s
 
 ## <a name="ethereum-quorum-private-transactions"></a>Ethereum kvórum – privát tranzakciók
 
-A kvórum egy Ethereum elosztott Főkönyv protokoll, amely tranzakciós plusz szerződéses adatvédelmet és új konszenzusi mechanizmusokat is alkalmaz. A go-Ethereum többek között a következők:
+A kvórum egy Ethereum elosztott Főkönyv protokoll, amely tranzakciós plusz szerződéses adatvédelmet és új konszenzusi mechanizmusokat is alkalmaz. A legfontosabb fejlesztések Go-Ethereum többek között:
 
 * **Adatvédelem** – a kvórum az állami és a magánjellegű állapot elkülönítésével támogatja a privát tranzakciókat és a privát szerződéseket, és a személyes adatoknak a hálózati résztvevők felé irányított továbbítására szolgáló, társ-társ titkosítású üzenetváltást használ.
 * **Alternatív konszenzusi mechanizmusok** – nem szükségesek a működést igazoló vagy a bizonyítékokra vonatkozó konszenzus az engedéllyel rendelkező hálózatokhoz. A kvórum több konszenzusos mechanizmust kínál, amelyek olyan konzorciumi láncok számára lettek kialakítva, mint például a TUTAJ és a IBFT.Az Azure Blockchain Service a IBFT konszenzusi mechanizmust használja.

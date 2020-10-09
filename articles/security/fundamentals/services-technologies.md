@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 1/29/2019
 ms.author: terrylan
 ms.openlocfilehash: 83548063a796401792bd19e7ec27be36a0efa4e4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80549209"
 ---
 # <a name="security-services-and-technologies-available-on-azure"></a>Az Azure-ban elérhető biztonsági szolgáltatások és technológiák
@@ -35,7 +35,7 @@ Ez a lista idővel megváltozik és növekedni fog, ugyanúgy, mint az Azure. Ü
 |--------|--------|
 |[Azure &nbsp; Security &nbsp; Center](/azure/security-center/security-center-intro)| Felhőalapú munkaterhelés-védelmi megoldás, amely biztonsági felügyeletet és komplex veszélyforrások elleni védelmet biztosít a hibrid Felhőbeli munkaterhelések között.|
 |[Azure Key Vault](/azure/key-vault/key-vault-overview)| Biztonságos titkos kulcsok tárolása a jelszavakhoz, a kapcsolati karakterláncokhoz és az alkalmazások működésének megőrzéséhez szükséges egyéb információkhoz. |
-|[Azure Monitor-naplók](/azure/log-analytics/log-analytics-overview)|Egy figyelési szolgáltatás, amely telemetria és más adatokat gyűjt, valamint egy lekérdezési nyelvet és analitikai motort biztosít az alkalmazások és erőforrások működési elemzéséhez. Önállóan vagy más szolgáltatásokkal, például Security Center használható. |
+|[Naplók Azure Monitor](/azure/log-analytics/log-analytics-overview)|Egy figyelési szolgáltatás, amely telemetria és más adatokat gyűjt, valamint egy lekérdezési nyelvet és analitikai motort biztosít az alkalmazások és erőforrások működési elemzéséhez. Önállóan vagy más szolgáltatásokkal, például Security Center használható. |
 |[Azure dev/test Labs](/azure/lab-services/devtest-lab-overview)|Egy olyan szolgáltatás, amely segít a fejlesztőknek és a tesztelőknek gyorsan létrehozni az Azure-beli környezeteket, miközben minimalizálja a hulladékot és szabályozza a költségeket.  |
 
 <!---|[Azure&nbsp;Disk&nbsp;Encryption](/azure/azure-security-disk-encryption-overview)| THIS WILL GO TO THE NEW OVERVIEW TOPIC MEGHAN STEWART IS WRITING|--->
@@ -45,7 +45,7 @@ Ez a lista idővel megváltozik és növekedni fog, ugyanúgy, mint az Azure. Ü
 |------|--------|
 | [Azure &nbsp; Storage &nbsp; szolgáltatás &nbsp; titkosítása](/azure/storage/common/storage-service-encryption)|Egy biztonsági funkció, amely automatikusan titkosítja az adatait az Azure Storage-ban.   |
 |[StorSimple titkosított hibrid tárolás](/azure/storsimple/storsimple-ova-overview)| Integrált tárolási megoldás, amely a helyszíni eszközök és az Azure Cloud Storage közötti tárolási feladatokat kezeli.|
-|[Azure ügyféloldali titkosítás](/azure/storage/common/storage-client-side-encryption)| Ügyféloldali titkosítási megoldás, amely az Azure Storage-ba való feltöltés előtt titkosítja az ügyfélalkalmazások adatain belüli adattitkosítást. a letöltése közben visszafejti az adatvesztést is. |
+|[Azure Client-Side titkosítás](/azure/storage/common/storage-client-side-encryption)| Ügyféloldali titkosítási megoldás, amely az Azure Storage-ba való feltöltés előtt titkosítja az ügyfélalkalmazások adatain belüli adattitkosítást. a letöltése közben visszafejti az adatvesztést is. |
 | [Azure Storage – közös hozzáférésű aláírások](/azure/storage/common/storage-dotnet-shared-access-signature-part-1)|A közös hozzáférésű aláírások delegált hozzáférést biztosítanak a Storage-fiók erőforrásaihoz.  |
 |[Azure Storage-fiók kulcsainak](/azure/storage/common/storage-create-storage-account)| Hozzáférés-vezérlési módszer az Azure Storage-hoz, amelyet a rendszer a Storage-fiók elérésekor hitelesítésre használ. |
 |[Azure-fájlmegosztás SMB 3,0 titkosítással](/azure/storage/files/storage-files-introduction)|Olyan hálózati biztonsági technológia, amely lehetővé teszi az automatikus hálózati titkosítást a Server Message Block (SMB) fájlmegosztás protokollja számára. |
@@ -79,7 +79,7 @@ Ez a lista idővel megváltozik és növekedni fog, ugyanúgy, mint az Azure. Ü
 | [Azure &nbsp; Backup](/azure/backup/backup-introduction-to-azure-backup)| Azure-alapú szolgáltatás, amely az Azure-felhőben tárolt adatbiztonsági mentésére és helyreállítására szolgál. |
 | [Azure &nbsp; site &nbsp; Recovery](/azure/site-recovery/site-recovery-overview)|Egy online szolgáltatás, amely a fizikai és virtuális gépeken futó munkaterheléseket replikálja egy elsődleges helyről egy másodlagos helyre, hogy a meghibásodás után engedélyezze a szolgáltatások helyreállítását. |
 
-## <a name="networking"></a>Hálózatkezelés
+## <a name="networking"></a>Hálózat
 |Szolgáltatás|Leírás|
 |------|--------|
 | [Hálózati &nbsp; biztonsági &nbsp; csoportok](/azure/virtual-network/virtual-networks-nsg)| Egy 5 rekordos hálózati hozzáférés-vezérlési funkció, amely lehetővé teszi vagy megtagadja a döntéseket.  |

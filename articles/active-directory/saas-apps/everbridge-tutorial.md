@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/18/2019
 ms.author: jeedes
 ms.openlocfilehash: 1da2fd879dbeac1836469d46567566769f6163a2
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88555399"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-everbridge"></a>Oktatóanyag: Azure Active Directory integráció a Everbridge
@@ -93,7 +93,7 @@ Az Azure AD egyszeri bejelentkezés Everbridge való konfigurálásához kövess
 
     ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon válassza a **Szerkesztés** lehetőséget az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
+3. Az **egyszeres Sign-On beállítása az SAML-vel** lapon válassza a **Szerkesztés** lehetőséget az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
@@ -130,7 +130,7 @@ Az Azure AD egyszeri bejelentkezés Everbridge való konfigurálásához kövess
      > [!NOTE]
      > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével, és jelentkezzen be az URL-címek értékeire. Az értékek beszerzéséhez forduljon a [Everbridge támogatási csapatához](mailto:support@everbridge.com). A Azure Portal az **alapszintű SAML-konfiguráció** szakaszának mintázatait is megtekintheti.
 
-6. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon az **SAML aláíró tanúsítvány** szakaszban válassza a **Letöltés** lehetőséget az **összevonási metaadatok XML-fájljának**letöltéséhez. Mentse a számítógépére.
+6. Az **egyszeres Sign-On beállítása SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban válassza a **Letöltés** lehetőséget az **összevonási metaadatok XML-fájljának**letöltéséhez. Mentse a számítógépére.
 
     ![Tanúsítvány letöltési hivatkozása](common/metadataxml.png)
 
@@ -164,7 +164,7 @@ Ha az egyszeri bejelentkezést a **Everbridge** **Everbridge Manager portál** a
    
      f. A **szolgáltató által kezdeményezett kérelem kötése**beállításnál válassza a **http-átirányítás**lehetőséget.
 
-     : Válassza a **Mentés** lehetőséget.
+     : Kattintson a **Mentés** gombra.
 
 ### <a name="configure-everbridge-as-everbridge-member-portal-single-sign-on"></a>Everbridge konfigurálása Everbridge-tag portál egyszeri bejelentkezéshez
 

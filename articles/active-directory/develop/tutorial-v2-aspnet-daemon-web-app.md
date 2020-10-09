@@ -13,10 +13,10 @@ ms.date: 12/10/2019
 ms.author: jmprieur
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started, languages:ASP.NET
 ms.openlocfilehash: 72b72959f7b5c89bfad4495c8534de5dfaaefe8b
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91611095"
 ---
 # <a name="tutorial-build-a-multi-tenant-daemon-that-uses-the-microsoft-identity-platform"></a>Oktatóanyag: a Microsoft Identity platformot használó több-bérlős démon létrehozása
@@ -37,7 +37,7 @@ Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [in
 - Egy Azure AD-bérlő. További információ: [Azure ad-bérlő beszerzése](quickstart-create-new-tenant.md).
 - Egy vagy több felhasználói fiók az Azure AD-bérlőben. Ez a minta nem fog működni Microsoft-fiók. Ha bejelentkezett a [Azure Portalba](https://portal.azure.com) egy Microsoft-fiók, és még soha nem hozott létre felhasználói fiókot a címtárban, tegye meg most.
 
-## <a name="scenario"></a>Használati eset
+## <a name="scenario"></a>Forgatókönyv
 
 Az alkalmazás ASP.NET MVC-alkalmazásként van felépítve. A OWIN OpenID Connect middleware használatával jelentkezik be a felhasználókba.
 
@@ -112,7 +112,7 @@ Ha nem kívánja használni az automatizálást, kövesse az alábbi részben is
 1. Az alkalmazás oldalainak listájában válassza a **Hitelesítés** elemet. Ezután:
    - A **Speciális beállítások** szakaszban állítsa be a **KIJELENTKEZÉSI URL-címet** a következőre: **https://localhost:44316/Account/EndSession** .
    - A **Speciális beállítások**  >  **implicit támogatás** szakaszban válassza a **hozzáférési jogkivonatok** és **azonosító tokenek**elemet. Ez a minta megköveteli, hogy az [implicit engedélyezési folyamat](v2-oauth2-implicit-grant-flow.md) engedélyezze a bejelentkezést a felhasználó felé, és hívjon fel egy API-t.
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 1. A **tanúsítványok & titkok** oldal **ügyfél-titkok** szakaszában válassza az **új ügyfél titka**elemet. Ezután:
 
    1. Adja meg a kulcs leírását (például: **alkalmazás titka**),
@@ -222,7 +222,7 @@ A projekt webalkalmazás-és webes API-projektekkel rendelkezik. Az Azure-webhel
 1. Válassza a **Konfigurálás** lehetőséget.
 1. A **kapcsolat** lapon frissítse a cél URL-címet úgy, hogy a "https"-t használja. Használja például a következőt: `https://dotnet-web-daemon-v2-contoso.azurewebsites.net` . Kattintson a **Tovább** gombra.
 1. A **Beállítások** lapon győződjön meg arról, hogy a **szervezeti hitelesítés engedélyezése** jelölőnégyzet nincs bejelölve.
-1. Válassza a **Mentés** lehetőséget. Válassza a fő képernyő **Közzététel** elemét.
+1. Kattintson a **Mentés** gombra. Válassza a fő képernyő **Közzététel** elemét.
 
 A Visual Studio közzéteszi a projektet, és automatikusan megnyit egy böngészőt a projekt URL-címére. Ha megjelenik a projekt alapértelmezett weboldala, a kiadvány sikeres volt.
 

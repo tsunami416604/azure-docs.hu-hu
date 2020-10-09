@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6f3b5af972ad6dd15b7c992d5e264ede97bd1dde
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80653636"
 ---
 # <a name="azure-multi-factor-authentication-user-data-collection"></a>Azure Multi-Factor Authentication felhasználói adatgyűjtés
@@ -30,7 +30,7 @@ Az MFA-kiszolgáló, az NPS-bővítmény és a Windows Server 2016 Azure MFA AD 
 
 Hitelesítési kísérletek (jelentéskészítéshez és hibaelhárításhoz használatos):
 
-- Időbélyeg
+- Timestamp
 - Felhasználónév
 - Utónév
 - Vezetéknév
@@ -70,8 +70,8 @@ Hitelesítési kísérletek (jelentéskészítéshez és hibaelhárításhoz has
 
 Aktiválások (a Microsoft Authenticator Mobile alkalmazásban lévő fiók aktiválását kísérli meg):
 - Felhasználónév
-- Account Name
-- Időbélyeg
+- Fiók neve
+- Timestamp
 - Aktivációs kód eredményének beolvasása
 - Sikeres aktiválás
 - Aktiválási hiba

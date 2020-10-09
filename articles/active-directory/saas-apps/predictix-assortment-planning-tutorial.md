@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/25/2019
 ms.author: jeedes
 ms.openlocfilehash: 5b7ec1843d279e8c0477ed1c7754746d4f3044ad
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88553645"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-predictix-assortment-planning"></a>Oktatóanyag: Azure Active Directory integráció a Predictix-választék tervezésével
@@ -92,7 +92,7 @@ Az Azure AD egyszeri bejelentkezés Predictix-szortimenttel való konfigurálás
 
     ![Egyszeri bejelentkezési módszer kiválasztása](common/select-saml-option.png)
 
-3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon a **Szerkesztés** ikonra kattintva nyissa meg az **alapszintű SAML-konfiguráció** párbeszédpanelt:
+3. Az **egyszeres Sign-On beállítása az SAML-vel** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához:
 
     ![Szerkesztés ikon](common/edit-urls.png)
 
@@ -117,7 +117,7 @@ Az Azure AD egyszeri bejelentkezés Predictix-szortimenttel való konfigurálás
     > [!NOTE]
     > Ezek az értékek helyőrzők. A tényleges bejelentkezési URL-címet és azonosítót kell használnia. Az értékek lekéréséhez lépjen kapcsolatba a [Predictix-választék tervezési támogatási csapatával](https://www.infor.com/support) . A Azure Portal az **alapszintű SAML-konfiguráció** párbeszédpanelen látható mintázatokat is megtekintheti.
 
-5. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban válassza a **tanúsítvány (Base64)** melletti **letöltési** hivatkozást, és az igényeinek megfelelő beállítást, és mentse a tanúsítványt a számítógépre:
+5. Az **egyszeres Sign-On beállítása az SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban válassza a **tanúsítvány (Base64)** melletti **letöltési** hivatkozást, és az igényeinek megfelelő beállítást, és mentse a tanúsítványt a számítógépre:
 
     ![Tanúsítvány letöltési hivatkozása](common/certificatebase64.png)
 

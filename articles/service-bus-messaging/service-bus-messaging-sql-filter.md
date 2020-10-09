@@ -4,10 +4,10 @@ description: Ez a cikk a SQLFilter nyelvtani adatait ismerteti. A SqlFilter az S
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 8412dea583ae119b30976e53d4751411b45339a4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85341599"
 ---
 # <a name="sqlfilter-syntax"></a>SQLFilter-szintaxis
@@ -49,7 +49,7 @@ A *SqlFilter* objektum a [SqlFilter osztály](/dotnet/api/microsoft.servicebus.m
   
 ## <a name="arguments"></a>Argumentumok  
   
--   `<scope>`egy opcionális karakterlánc, amely a hatókörét jelzi `<property_name>` . Az érvényes értékek a következők: `sys` vagy `user` . Az `sys` érték azt a rendszerhatókört jelöli, ahol a a `<property_name>` [BrokeredMessage osztály](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)egy nyilvános tulajdonságának neve. `user`Megadja a felhasználói hatókört, ahol a a `<property_name>` [BrokeredMessage osztály](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) szótárának kulcsa. `user`a hatókör az alapértelmezett hatókör, ha nincs `<scope>` megadva.  
+-   `<scope>` egy opcionális karakterlánc, amely a hatókörét jelzi `<property_name>` . Az érvényes értékek a következők: `sys` vagy `user` . Az `sys` érték azt a rendszerhatókört jelöli, ahol a a `<property_name>` [BrokeredMessage osztály](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage)egy nyilvános tulajdonságának neve. `user` Megadja a felhasználói hatókört, ahol a a `<property_name>` [BrokeredMessage osztály](/dotnet/api/microsoft.servicebus.messaging.brokeredmessage) szótárának kulcsa. `user` a hatókör az alapértelmezett hatókör, ha nincs `<scope>` megadva.  
   
 ## <a name="remarks"></a>Megjegyzések
 
@@ -69,7 +69,7 @@ Egy nem létező rendszertulajdonság elérésére tett kísérlet hibát jelez,
   
 ### <a name="arguments"></a>Argumentumok  
 
- `<regular_identifier>`a következő reguláris kifejezéssel jelölt karakterlánc:  
+ `<regular_identifier>` a következő reguláris kifejezéssel jelölt karakterlánc:  
   
 ```  
 [[:IsLetter:]][_[:IsLetter:][:IsDigit:]]*  
@@ -77,13 +77,13 @@ Egy nem létező rendszertulajdonság elérésére tett kísérlet hibát jelez,
   
 Ez a nyelvtan olyan karakterláncot jelent, amely betűvel kezdődik, és egy vagy több aláhúzás/levél/számjegy követi.  
   
-`[:IsLetter:]`olyan Unicode-karakter, amely Unicode betűként van kategorizálva. `System.Char.IsLetter(c)`a értéket adja vissza `true` `c` , ha az egy Unicode betű.  
+`[:IsLetter:]` olyan Unicode-karakter, amely Unicode betűként van kategorizálva. `System.Char.IsLetter(c)` a értéket adja vissza `true` `c` , ha az egy Unicode betű.  
   
-`[:IsDigit:]`olyan Unicode-karakter, amely decimális számjegyként van kategorizálva. `System.Char.IsDigit(c)`a értéket adja vissza `true` `c` , ha az egy Unicode számjegy.  
+`[:IsDigit:]` olyan Unicode-karakter, amely decimális számjegyként van kategorizálva. `System.Char.IsDigit(c)` a értéket adja vissza `true` `c` , ha az egy Unicode számjegy.  
   
 A `<regular_identifier>` nem lehet foglalt kulcsszó.  
   
-`<delimited_identifier>`a bal/jobb oldali szögletes zárójelek ([]) közé zárt karakterlánc. A jobb oldali szögletes zárójel két jobb oldali szögletes zárójelként jelenik meg. Az alábbi példák a következőkre mutatnak `<delimited_identifier>` :  
+`<delimited_identifier>` a bal/jobb oldali szögletes zárójelek ([]) közé zárt karakterlánc. A jobb oldali szögletes zárójel két jobb oldali szögletes zárójelként jelenik meg. Az alábbi példák a következőkre mutatnak `<delimited_identifier>` :  
   
 ```  
 [Property With Space]  
@@ -91,7 +91,7 @@ A `<regular_identifier>` nem lehet foglalt kulcsszó.
   
 ```  
   
-`<quoted_identifier>`minden olyan karakterlánc, amely dupla idézőjelekkel van ellátva. Az azonosító dupla idézőjele két idézőjel. Az idézőjelek használata nem ajánlott, mert könnyen összetéveszthető karakterlánc-konstanssal. Ha lehetséges, használjon tagolt azonosítót. Az alábbi példa a következőket szemlélteti `<quoted_identifier>` :  
+`<quoted_identifier>` minden olyan karakterlánc, amely dupla idézőjelekkel van ellátva. Az azonosító dupla idézőjele két idézőjel. Az idézőjelek használata nem ajánlott, mert könnyen összetéveszthető karakterlánc-konstanssal. Ha lehetséges, használjon tagolt azonosítót. Az alábbi példa a következőket szemlélteti `<quoted_identifier>` :  
   
 ```  
 "Contoso & Northwind"  
@@ -106,7 +106,7 @@ A `<regular_identifier>` nem lehet foglalt kulcsszó.
   
 ### <a name="remarks"></a>Megjegyzések
   
-`<pattern>`karakterláncként kiértékelt kifejezésnek kell lennie. A rendszer mintaként használja a hasonló operátorhoz.      A következő helyettesítő karaktereket tartalmazhatja:  
+`<pattern>` karakterláncként kiértékelt kifejezésnek kell lennie. A rendszer mintaként használja a hasonló operátorhoz.      A következő helyettesítő karaktereket tartalmazhatja:  
   
 -   `%`: Nulla vagy több karakterből álló karakterlánc.  
   
@@ -121,7 +121,7 @@ A `<regular_identifier>` nem lehet foglalt kulcsszó.
   
 ### <a name="remarks"></a>Megjegyzések  
 
-`<escape_char>`egy olyan kifejezésnek kell lennie, amely 1. hosszúságú sztringként van kiértékelve. A hasonló operátorhoz tartozó Escape-karakterként használható.  
+`<escape_char>` egy olyan kifejezésnek kell lennie, amely 1. hosszúságú sztringként van kiértékelve. A hasonló operátorhoz tartozó Escape-karakterként használható.  
   
  Például a `property LIKE 'ABC\%' ESCAPE '\'` egyezés `ABC%` helyett a karakterrel kezdődő sztring szerepel `ABC` .  
   
@@ -134,7 +134,7 @@ A `<regular_identifier>` nem lehet foglalt kulcsszó.
   
 ### <a name="arguments"></a>Argumentumok  
   
--   `<integer_constant>`egy olyan számsorozat, amely nem idézőjelek közé esik, és nem tartalmaz decimális pontokat. Az értékeket belsőleg tárolja a rendszer `System.Int64` , és ugyanazt a tartományt követi.  
+-   `<integer_constant>` egy olyan számsorozat, amely nem idézőjelek közé esik, és nem tartalmaz decimális pontokat. Az értékeket belsőleg tárolja a rendszer `System.Int64` , és ugyanazt a tartományt követi.  
   
      Ilyenek például a hosszú állandók:  
   
@@ -143,7 +143,7 @@ A `<regular_identifier>` nem lehet foglalt kulcsszó.
     2  
     ```  
   
--   `<decimal_constant>`egy olyan számokból álló karakterlánc, amely nem idézőjelek közé esik, és tizedes pontot tartalmaz. Az értékeket belsőleg tárolja a rendszer `System.Double` , és kövesse ugyanazt a tartományt/pontosságot.  
+-   `<decimal_constant>` egy olyan számokból álló karakterlánc, amely nem idézőjelek közé esik, és tizedes pontot tartalmaz. Az értékeket belsőleg tárolja a rendszer `System.Double` , és kövesse ugyanazt a tartományt/pontosságot.  
   
      Egy későbbi verzióban ezt a számot egy másik adattípusban tárolhatja a pontos számú szemantika támogatásához, ezért nem szabad az alapul szolgáló adattípusra támaszkodni `System.Double` `<decimal_constant>` .  
   
@@ -154,7 +154,7 @@ A `<regular_identifier>` nem lehet foglalt kulcsszó.
     2.0  
     ```  
   
--   `<approximate_number_constant>`egy tudományos jelöléssel írt szám. Az értékeket belsőleg tárolja a rendszer `System.Double` , és kövesse ugyanazt a tartományt/pontosságot. Az alábbi példákban megközelítheti a szám konstansait:  
+-   `<approximate_number_constant>` egy tudományos jelöléssel írt szám. Az értékeket belsőleg tárolja a rendszer `System.Double` , és kövesse ugyanazt a tartományt/pontosságot. Az alábbi példákban megközelítheti a szám konstansait:  
   
     ```  
     101.5E5  
@@ -182,7 +182,7 @@ A logikai konstansokat a **true** vagy a **false**kulcsszó jelöli. Az értéke
 
 A karakterlánc-konstansok szimpla idézőjelek közé vannak lefoglalva, és tartalmaznak bármilyen érvényes Unicode-karaktert. Egy karakterlánc-konstansba ágyazott idézőjelek két szimpla idézőjelet jelölnek.  
   
-## <a name="function"></a>A  függvény  
+## <a name="function"></a>függvény  
   
 ```  
 <function> :=  
@@ -208,7 +208,7 @@ Vegye figyelembe a következő [SqlFilter](/dotnet/api/microsoft.servicebus.mess
   
     Vegye figyelembe a következő `IS [NOT] NULL` szemantikai lépéseket:  
   
-    -   `property IS NULL`a kiértékelése úgy történik, mintha `true` a tulajdonság nem létezik, vagy a tulajdonság értéke `null` .  
+    -   `property IS NULL` a kiértékelése úgy történik, mintha `true` a tulajdonság nem létezik, vagy a tulajdonság értéke `null` .  
   
 ### <a name="property-evaluation-semantics"></a>Tulajdonság-értékelési szemantika  
   

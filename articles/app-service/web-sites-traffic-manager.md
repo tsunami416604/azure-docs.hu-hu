@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 02/25/2016
 ms.custom: seodec18
 ms.openlocfilehash: 040f84288c66f4506919e775b9ea41324b617cfa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80437903"
 ---
 # <a name="controlling-azure-app-service-traffic-with-azure-traffic-manager"></a>Azure App Service forgalom szabályozása az Azure-Traffic Manager
@@ -45,7 +45,7 @@ Az Azure Traffic Manager az Azure-ban való használatakor vegye figyelembe a k�
 * Csak standard vagy prémium módban lévő alkalmazásokat adhat hozzá egy Azure Traffic Manager-profilhoz.
 * Az alkalmazások Traffic Manager profilba való felvételével az alkalmazás újraindul.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az Azure Traffic Manager fogalmi és technikai áttekintését lásd: [Traffic Manager áttekintése](../traffic-manager/traffic-manager-overview.md).
 
 

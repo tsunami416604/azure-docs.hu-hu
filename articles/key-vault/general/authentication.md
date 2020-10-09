@@ -1,5 +1,5 @@
 ---
-title: Hitelesítés Azure Key Vault
+title: Hitelesítés az Azure Key Vaulttal
 description: Útmutató a Azure Key Vault való hitelesítéshez
 author: ShaneBala-keyvault
 ms.author: sudbalas
@@ -8,13 +8,13 @@ ms.service: key-vault
 ms.subservice: general
 ms.topic: how-to
 ms.openlocfilehash: d247e657e93afd0c43ecee1154c542398304d8dd
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89481375"
 ---
-# <a name="authenticate-to-azure-key-vault"></a>Hitelesítés Azure Key Vault
+# <a name="authenticate-to-azure-key-vault"></a>Hitelesítés az Azure Key Vaulttal
 
 Azure Key Vault lehetővé teszi a titkok tárolását és a terjesztésük irányítását egy központi, biztonságos Felhőbeli tárházban, amely szükségtelenné teszi a hitelesítő adatok tárolását az alkalmazásokban. Az alkalmazásoknak csak a Key Vault futtatásával kell hitelesíteniük a titkok eléréséhez.
 
@@ -62,7 +62,7 @@ Key Vault két külön engedélyezési szinttel működik:
 
     Key Vault jelenleg támogatja a [közreműködő](/azure/role-based-access-control/built-in-roles#key-vault-contributor) szerepkört, amely lehetővé teszi a felügyeleti műveleteket Key Vault erőforrásokon. Számos más szerepkör jelenleg előzetes verzióban érhető el. Egyéni szerepköröket is létrehozhat az [Azure Custom roles](/azure/role-based-access-control/custom-roles)című témakörben leírtak szerint.
 
-    A szerepkörökkel kapcsolatos általános információkért lásd: [Mi az az Azure szerepköralapú Access Control (RBAC)?](/azure/role-based-access-control/overview).
+    A szerepkörökkel kapcsolatos általános információkért lásd: [Mi az Azure Role-Based Access Control (RBAC)?](/azure/role-based-access-control/overview)
 
 
 > [!IMPORTANT]
@@ -125,4 +125,4 @@ Az alábbi táblázat különböző cikkekre mutat, amelyek bemutatják, hogyan 
 - [Key Vault hozzáférési szabályzat hibaelhárítása](troubleshooting-access-issues.md)
 - [Key Vault REST API hibakódok](rest-error-codes.md)
 - [Key Vault fejlesztői útmutató](developers-guide.md)
-- [Mi az Azure szerepköralapú Access Control (RBAC)?](/azure/role-based-access-control/overview)
+- [Mi az Azure Role-Based Access Control (RBAC)?](/azure/role-based-access-control/overview)

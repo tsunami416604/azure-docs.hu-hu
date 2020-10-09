@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/31/2018
 ms.author: jeedes
 ms.openlocfilehash: c3cebb7a63dd26f4dfb1fa46cb3b31a8b149da1d
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88553430"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-proofpoint-on-demand"></a>Oktatóanyag: Azure Active Directory integráció az igény szerinti Proofpoint
@@ -76,7 +76,7 @@ Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a Proof
 Az Azure AD egyszeri bejelentkezés az igény szerinti Proofpoint való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
 
 1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. **[Proofpoint konfigurálása igény szerinti egyszeri bejelentkezéshez](#configure-proofpoint-on-demand-single-sign-on)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+2. **[Proofpoint konfigurálása igény szerinti egyszeri bejelentkezéshez](#configure-proofpoint-on-demand-single-sign-on)** – az alkalmazás oldalának egyetlen Sign-On beállításának konfigurálása.
 3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
 4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
 5. **[Proofpoint létrehozása igény szerinti tesztelési felhasználóval](#create-proofpoint-on-demand-test-user)** – a Britta Simon-nek a Proofpoint-on keresztüli, a felhasználó Azure ad-képviseletéhez kapcsolódó igény szerint.
@@ -96,7 +96,7 @@ Az Azure AD egyszeri bejelentkezés igény szerinti Proofpoint való konfigurál
 
     ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
+3. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
@@ -111,9 +111,9 @@ Az Azure AD egyszeri bejelentkezés igény szerinti Proofpoint való konfigurál
     c. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<hostname>.pphosted.com:portnumber/v1/samlauth/samlconsumer`
 
     > [!NOTE]
-    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel, azonosítóval és válasz URL-címmel. Vegye fel a kapcsolatot [a Proofpoint on demand ügyfél-támogatási csapatával](https://www.proofpoint.com/us/support-services) az értékek beszerzéséhez. Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges Sign-On URL-címmel, azonosítóval és válasz URL-címmel. Vegye fel a kapcsolatot [a Proofpoint on demand ügyfél-támogatási csapatával](https://www.proofpoint.com/us/support-services) az értékek beszerzéséhez. Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-5. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállítások alapján, és mentse a számítógépre.
+5. Az **egyszeres Sign-On beállítása az SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállítások alapján, és mentse azt a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozása](common/certificatebase64.png)
 
@@ -127,7 +127,7 @@ Az Azure AD egyszeri bejelentkezés igény szerinti Proofpoint való konfigurál
 
     c. Kijelentkezési URL-cím
 
-### <a name="configure-proofpoint-on-demand-single-sign-on"></a>Igény szerinti egyszeri bejelentkezés Proofpoint konfigurálása
+### <a name="configure-proofpoint-on-demand-single-sign-on"></a>Az igény szerinti Proofpoint konfigurálása egyszeri Sign-On
 
 Az egyszeri bejelentkezés **igény szerinti Proofpoint** való konfigurálásához el kell küldenie a letöltött **tanúsítványt (Base64)** és a megfelelő másolt url-címeket a Azure Portalról a [Proofpoint on demand ügyfélszolgálati csapatának](https://www.proofpoint.com/us/support-services). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
 
@@ -154,7 +154,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    d. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

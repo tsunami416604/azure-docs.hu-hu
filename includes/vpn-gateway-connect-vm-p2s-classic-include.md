@@ -9,10 +9,10 @@ ms.date: 12/06/2018
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 6d0737a7300b2a6025f776c1ed65a05cacf2141a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "67178985"
 ---
 Hozzon létre egy Távoli asztali kapcsolat a VNet üzembe helyezett virtuális géphez való kapcsolódáshoz. A virtuális géphez való kapcsolódás legjobb módja, ha a számítógép neve helyett a magánhálózati IP-címével csatlakozik. Így teszteli, hogy tud-e csatlakozni, hogy a névfeloldás megfelelően van-e konfigurálva. 

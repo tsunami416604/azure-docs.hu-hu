@@ -8,10 +8,10 @@ ms.date: 04/16/2019
 ms.author: sideeksh
 ms.custom: MVC
 ms.openlocfilehash: a76ebf95b92b6e1251a04daa9ffb48a9abe15b50
-ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89425347"
 ---
 # <a name="move-azure-vms-between-azure-government-and-public-regions"></a>Azure-beli virtuális gépek áthelyezése Azure Government- és nyilvános régiók között 
@@ -78,7 +78,7 @@ Hozzon létre egy [Azure Storage-fiókot](../storage/common/storage-account-crea
 A mobilitási szolgáltatást minden replikálni kívánt kiszolgálón telepíteni kell. A Site Recovery automatikusan telepíti ezt a szolgáltatást, amikor engedélyezi a replikációt a kiszolgálón. Az automatikus telepítéshez elő kell készítenie egy fiókot, amelyet Site Recovery fog használni a kiszolgálóhoz való hozzáféréshez.
 
 - Tartományi vagy helyi fiókot is használhat
-- Windows rendszerű virtuális gépek esetén, ha nem használ tartományi fiókot, tiltsa le a távoli felhasználói hozzáférés-vezérlést a helyi gépen. Ehhez a regisztrálás **HKEY_LOCAL_MACHINE \software\microsoft\windows\currentversion\policies\system**területen adja hozzá a DWORD bejegyzés **LocalAccountTokenFilterPolicy**, amelynek értéke 1.
+- Windows rendszerű virtuális gépek esetén, ha nem használ tartományi fiókot, tiltsa le a távoli felhasználói hozzáférés-vezérlést a helyi gépen. Ehhez a Register ( **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System**) területen adja hozzá a DWORD bejegyzés **LocalAccountTokenFilterPolicy**, amelynek értéke 1.
 - A beállítás parancssori felületről való letiltásához írja be a következőt a beállításjegyzékbe:       ``REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1.``
 - Linux esetén a fióknak a forrás Linux-kiszolgáló gyökerének kell lennie.
 
@@ -245,7 +245,7 @@ Ha nem tervezi a forrás-erőforrások újrafelhasználását, folytassa a köve
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban egy Azure-beli virtuális gépet egy másik Azure-régióba helyezett át. Most már beállíthatja az áthelyezett virtuális gép vész-helyreállítását.
 

@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 05/29/2020
 ms.author: ambapat
 ms.openlocfilehash: 1869ec9b617a7451ec42fa9d092ea3bb5834f9e8
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88585474"
 ---
 # <a name="import-hsm-protected-keys-to-key-vault-byok"></a>HSM-védelemmel ellátott kulcsok importálása a Key Vaultba (BYOK)
@@ -60,7 +60,7 @@ A következő táblázat a BYOK használatának előfeltételeit sorolja fel Azu
 |---|---|---|---|
 |nCipher|Gyártó<br/>HSM szolgáltatásként|<ul><li>HSM nShield családja</li><li>nShield szolgáltatásként</ul>|[nCipher új BYOK-eszköz és-dokumentáció](https://www.ncipher.com/products/key-management/cloud-microsoft-azure)|
 |Thales|Gyártó|<ul><li>Luna HSM 7 család belső vezérlőprogram 7,3-es vagy újabb verziójával</li></ul>| [Luna BYOK eszköz és dokumentáció](https://supportportal.thalesgroup.com/csm?id=kb_article_view&sys_kb_id=3892db6ddb8fc45005c9143b0b961987&sysparm_article=KB0021016)|
-|Fortanix|Gyártó<br/>HSM szolgáltatásként|<ul><li>A kulcskezelő szolgáltatás (SDKMS) önvédelme</li><li>Equinix SmartKey</li></ul>|[SDKMS-kulcsok exportálása a BYOK a felhőalapú szolgáltatók számára – Azure Key Vault](https://support.fortanix.com/hc/en-us/articles/360040071192-Exporting-SDKMS-keys-to-Cloud-Providers-for-BYOK-Azure-Key-Vault)|
+|Fortanix|Gyártó<br/>HSM szolgáltatásként|<ul><li>Self-Defending kulcskezelő szolgáltatás (SDKMS)</li><li>Equinix SmartKey</li></ul>|[SDKMS-kulcsok exportálása a BYOK a felhőalapú szolgáltatók számára – Azure Key Vault](https://support.fortanix.com/hc/en-us/articles/360040071192-Exporting-SDKMS-keys-to-Cloud-Providers-for-BYOK-Azure-Key-Vault)|
 |Marvell|Gyártó|Az összes LiquidSecurity-HSM a<ul><li>Belső vezérlőprogram verziója 2.0.4 vagy újabb</li><li>Belső vezérlőprogram 3,2-es vagy újabb verziója</li></ul>|[Marvell BYOK eszköz és dokumentáció](https://www.marvell.com/products/security-solutions/nitrox-hs-adapters/exporting-marvell-hsm-keys-to-cloud-azure-key-vault.html)|
 |Cryptomathic|ISV (Enterprise Key Management System)|Több HSM-márka és-modell, beleértve a következőket is<ul><li>nCipher</li><li>Thales</li><li>Utimaco</li></ul>[Részletekért lásd a Cryptomathic-webhelyet](https://www.cryptomathic.com/azurebyok)|[Cryptomathic BYOK eszköz és dokumentáció](https://www.cryptomathic.com/azurebyok)|
 
@@ -68,7 +68,7 @@ A következő táblázat a BYOK használatának előfeltételeit sorolja fel Azu
 
 ## <a name="supported-key-types"></a>Támogatott kulcstípusok
 
-|Kulcs neve|Kulcs típusa|Kulcs mérete|Forrás|Description|
+|Kulcs neve|Kulcs típusa|Kulcs mérete|Forrás|Leírás|
 |---|---|---|---|---|
 |Key Exchange-kulcs (KEK)|RSA| 2 048 bites<br />3 072 bites<br />4 096 bites|Azure Key Vault HSM|HSM-alapú RSA-kulcspár generálása Azure Key Vault|
 |Célként megadott kulcs|RSA|2 048 bites<br />3 072 bites<br />4 096 bites|Szállítói HSM|A Azure Key Vault HSM-re továbbítandó kulcs|

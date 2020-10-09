@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: swmachan
 ms.openlocfilehash: 7ebfe766e6362a3f62e70db8bf2dcae370aceee3
-ms.sourcegitcommit: fc718cc1078594819e8ed640b6ee4bef39e91f7f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83996159"
 ---
 # <a name="add-profanity-filtering-with-the-translator"></a>Káromkodás-szűrés hozzáadása a fordítóval
@@ -26,7 +26,7 @@ Ha nem szeretné megtekinteni a káromkodást a fordításban, akkor is, ha a fo
 A translate () metódus a "Options" paramétert veszi fel, amely tartalmazza az új "ProfanityAction" elemet. A ProfanityAction elfogadott értékei a következők: "nincs művelet", "megjelölt" és "törölve".
 
 ## <a name="accepted-values-of-profanityaction-and-examples"></a>ProfanityAction és példák elfogadott értékei
-|ProfanityAction érték | Műveletek | Példa: forrás – Japán | Példa: cél-angol|
+|ProfanityAction érték | Művelet | Példa: forrás – Japán | Példa: cél-angol|
 | :---|:---|:---|:---|
 | NoAction | Default (Alapértelmezett): Ugyanaz, mint a beállítás beállítása. A káromkodás a forrás és a cél között halad át. | 彼は変態です 。 | Egy bunkó. |
 | Megjelölve | A profán szavakat XML-címkék veszik körül.. \<profanity> . \</profanity> | 彼は変態です 。 | Egy \<profanity> bunkó \</profanity> . |

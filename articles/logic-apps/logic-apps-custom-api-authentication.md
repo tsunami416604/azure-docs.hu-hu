@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 09/22/2017
 ms.openlocfilehash: 5e0dcd478c6eb6696a0e07d35d4dccddac68ac1c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80656232"
 ---
 # <a name="increase-security-for-calls-to-custom-apis-from-azure-logic-apps"></a>A Azure Logic Apps egyéni API-khoz érkező hívások biztonságának fokozása
@@ -142,7 +142,7 @@ Most meg kell keresnie a webalkalmazáshoz vagy API-alkalmazáshoz társított a
 
 4. A **kiállító URL-címe**területen másolja és mentse a 3. rész GUID azonosítóját. Ezt a GUID-t a webalkalmazás vagy az API-alkalmazás telepítési sablonjában is használhatja, ha szükséges.
 
-   Ez a GUID az adott bérlő GUID-azonosítója ("bérlői azonosító"), és ebben az URL-ben kell megjelennie:`https://sts.windows.net/{GUID}`
+   Ez a GUID az adott bérlő GUID-azonosítója ("bérlői azonosító"), és ebben az URL-ben kell megjelennie: `https://sts.windows.net/{GUID}`
 
 5. A módosítások mentése nélkül zárjuk be a **Azure Active Directory beállítások** lapot.
 
@@ -199,11 +199,11 @@ Nyissa meg a logikai alkalmazás definícióját a kód nézetben, nyissa meg a 
 
 | Tulajdonság | Kötelező | Leírás | 
 | -------- | -------- | ----------- | 
-| Bérlő | Yes | Az Azure AD-bérlő GUID azonosítója | 
-| célközönség | Yes | Az elérni kívánt cél erőforrás GUID azonosítója, amely a webalkalmazás vagy API-alkalmazás alkalmazás-identitásának ügyfél-azonosítója | 
-| ügyfél-azonosító | Yes | A hozzáférést kérő ügyfél GUID azonosítója, amely a logikai alkalmazás alkalmazás-identitásának ügyfél-azonosítója | 
-| titkos kód | Yes | A hozzáférési jogkivonatot kérő ügyfélhez tartozó alkalmazás identitásának kulcsa vagy jelszava | 
-| típus | Yes | A hitelesítési típus. A ActiveDirectoryOAuth-hitelesítés esetében az érték a következő: `ActiveDirectoryOAuth` . | 
+| Bérlő | Igen | Az Azure AD-bérlő GUID azonosítója | 
+| célközönség | Igen | Az elérni kívánt cél erőforrás GUID azonosítója, amely a webalkalmazás vagy API-alkalmazás alkalmazás-identitásának ügyfél-azonosítója | 
+| ügyfél-azonosító | Igen | A hozzáférést kérő ügyfél GUID azonosítója, amely a logikai alkalmazás alkalmazás-identitásának ügyfél-azonosítója | 
+| titkos kód | Igen | A hozzáférési jogkivonatot kérő ügyfélhez tartozó alkalmazás identitásának kulcsa vagy jelszava | 
+| típus | Igen | A hitelesítési típus. A ActiveDirectoryOAuth-hitelesítés esetében az érték a következő: `ActiveDirectoryOAuth` . | 
 |||| 
 
 Például:
@@ -250,9 +250,9 @@ Az **Engedélyezés** szakaszban adja meg a következő tulajdonságokat:
 
 | Tulajdonság | Kötelező | Leírás |
 | -------- | -------- | ----------- |
-| `type` | Yes | A hitelesítési típus. A TLS/SSL-Ügyféltanúsítványok esetében az értéknek a következőnek kell lennie: `ClientCertificate` . |
-| `password` | No | Az ügyféltanúsítvány eléréséhez használt jelszó (PFX-fájl) |
-| `pfx` | Yes | Az ügyféltanúsítvány Base64 kódolású tartalma (PFX-fájl) |
+| `type` | Igen | A hitelesítési típus. A TLS/SSL-Ügyféltanúsítványok esetében az értéknek a következőnek kell lennie: `ClientCertificate` . |
+| `password` | Nem | Az ügyféltanúsítvány eléréséhez használt jelszó (PFX-fájl) |
+| `pfx` | Igen | Az ügyféltanúsítvány Base64 kódolású tartalma (PFX-fájl) |
 ||||
 
 <a name="basic"></a>
@@ -273,9 +273,9 @@ Az **Engedélyezés** szakaszban adja meg a következő tulajdonságokat:
 
 | Tulajdonság | Kötelező | Leírás | 
 | -------- | -------- | ----------- | 
-| típus | Yes | A használni kívánt hitelesítési típus. Alapszintű hitelesítés esetén az értéknek a következőnek kell lennie: `Basic` . | 
-| felhasználónév | Yes | A hitelesítéshez használni kívánt Felhasználónév | 
-| jelszó | Yes | A hitelesítéshez használni kívánt jelszó | 
+| típus | Igen | A használni kívánt hitelesítési típus. Alapszintű hitelesítés esetén az értéknek a következőnek kell lennie: `Basic` . | 
+| username | Igen | A hitelesítéshez használni kívánt Felhasználónév | 
+| jelszó | Igen | A hitelesítéshez használni kívánt jelszó | 
 |||| 
 
 <a name="azure-ad-code"></a>

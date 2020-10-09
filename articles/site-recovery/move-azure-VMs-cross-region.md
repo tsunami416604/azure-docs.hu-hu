@@ -9,10 +9,10 @@ ms.date: 01/28/2019
 ms.author: sideeksh
 ms.custom: MVC
 ms.openlocfilehash: 11767e7369648ad2f4dec4480fbad0f6218446fb
-ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89425415"
 ---
 # <a name="move-azure-vms-to-another-azure-region"></a>Azure-beli virtuális gépek áthelyezése másik Azure-régióba
@@ -143,7 +143,7 @@ Ha nem tervezi a forrás-erőforrások újrafelhasználását, kövesse az aláb
 1. Törölje a forrásként szolgáló [virtuális gépek előkészítésének](#prepare-the-source-vms)4. lépésében felsorolt összes releváns hálózati erőforrást.
 2. Törölje a megfelelő Storage-fiókot a forrás régióban.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban megtanulta, hogyan helyezhet át Azure-beli virtuális gépeket egy másik Azure-régióba. Most már konfigurálhatja a vész-helyreállítást ezekhez a virtuális gépekhez.
 

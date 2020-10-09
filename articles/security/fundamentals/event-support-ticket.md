@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/13/2017
 ms.author: terrylan
 ms.openlocfilehash: fc5899fe5aca4bbaa9250cf41b240816e2cbedb0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80548589"
 ---
 # <a name="how-to-log-a-security-event-support-ticket"></a>Útmutató a biztonsági eseményekről szóló támogatási jegyek naplózásához
@@ -43,7 +43,7 @@ ms.locfileid: "80548589"
     - Ha kommunikálni szeretne velünk a problémával kapcsolatban, használja a megerősítő számot minden levelezésben.
     - Bármikor megtekintheti a probléma előrehaladását.
 
-5. Mi történik a következő lépésekkel? A probléma és a súlyosság függvényében a következő lépések hajthatók végre:
+5. És az után? A probléma és a súlyosság függvényében a következő lépések hajthatók végre:
 
     - Az értékelésünk eredményét tájékoztatjuk Önnek. Az eredménytől függően törölheti vagy megkérheti az ajánlat módosítását. Ebben az esetben Önnel együttműködve biztosítjuk, hogy az érintett ügyfelek megszakadását a lehető legkisebbre csökkentse.
     - Együttműködünk Önnel, hogy enyhítse az incidensek és a biztonsági rések hatását a kölcsönös ügyfeleink számára.

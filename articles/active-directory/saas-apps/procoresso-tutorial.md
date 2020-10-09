@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/03/2019
 ms.author: jeedes
 ms.openlocfilehash: e0a8e6786dbce1015d587cf8015e3624c97a5817
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88553614"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-procore-sso"></a>Oktatóanyag: Azure Active Directory integráció a beépített SSO-val
@@ -73,7 +73,7 @@ Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a kapcs
 Az Azure AD egyszeri bejelentkezés a következő építőelemeket kell végrehajtania és tesztelni:
 
 1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. A **[alapszintű SSO egyszeri bejelentkezésének konfigurálása](#configure-procore-sso-single-sign-on)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+2. A **[alapszintű SSO egyszeri bejelentkezésének konfigurálása](#configure-procore-sso-single-sign-on)** – az egyes Sign-On beállítások konfigurálása az alkalmazás oldalán.
 3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
 4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
 5. **[Hozzon létre egy alapszintű SSO-tesztet használó felhasználót](#create-procore-sso-test-user)** – hogy rendelkezzen a Britta Simon-nek a felhasználó Azure ad-képviseletéhez kapcsolódó, a Core SSO-ben.
@@ -93,7 +93,7 @@ Az Azure AD egyszeri bejelentkezéses egyszeri bejelentkezéssel való konfigur�
 
     ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
+3. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
@@ -101,7 +101,7 @@ Az Azure AD egyszeri bejelentkezéses egyszeri bejelentkezéssel való konfigur�
 
     ![Alapszintű SSO-tartomány és URL-címek egyszeri bejelentkezési adatai](common/preintegrated.png)
 
-5. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
+5. Az **egyszeres Sign-On beállítása SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozása](common/metadataxml.png)
 
@@ -115,17 +115,17 @@ Az Azure AD egyszeri bejelentkezéses egyszeri bejelentkezéssel való konfigur�
 
     c. Kijelentkezési URL-cím
 
-### <a name="configure-procore-sso-single-sign-on"></a>A beépített egyszeri bejelentkezés egyszeri bejelentkezésének konfigurálása
+### <a name="configure-procore-sso-single-sign-on"></a>Alapszintű egyszeri bejelentkezés egyszeri Sign-On konfigurálása
 
 1. Ha az egyszeri bejelentkezést **az egyszeri bejelentkezési oldalon szeretné** konfigurálni, jelentkezzen be a főkiszolgálói webhelyre rendszergazdaként.
 
 2. Az eszközkészlet legördülő menüben kattintson a **rendszergazda** elemre az SSO-beállítások lap megnyitásához.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/procoresso-tutorial/procore_tool_admin.png)
+    ![Egyetlen Sign-On konfigurálása](./media/procoresso-tutorial/procore_tool_admin.png)
 
 3. Illessze be a mezőkben szereplő értékeket az alább leírtak szerint:
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/procoresso-tutorial/procore_setting_admin.png)  
+    ![Egyetlen Sign-On konfigurálása](./media/procoresso-tutorial/procore_setting_admin.png)  
 
     a. Az **egyszeri bejelentkezés kiállítójának URL-címe** szövegmezőbe illessze be a Azure Portalból másolt **Azure ad-azonosító** értékét.
 
@@ -159,7 +159,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    d. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -195,11 +195,11 @@ Az alábbi lépések végrehajtásával hozzon létre egy alapszintű, egyszeri 
 
 2. Az eszközkészlet legördülő menüjében kattintson a **könyvtár** elemre a vállalati könyvtár lap megnyitásához.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/procoresso-tutorial/Procore_sso_directory.png)
+    ![Egyetlen Sign-On konfigurálása](./media/procoresso-tutorial/Procore_sso_directory.png)
 
 3. Kattintson a **személy hozzáadása** lehetőségre az űrlap megnyitásához, és adja meg a következő beállítások végrehajtását –
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/procoresso-tutorial/Procore_user_add.png)
+    ![Egyetlen Sign-On konfigurálása](./media/procoresso-tutorial/Procore_user_add.png)
 
     a. Az **Utónév** szövegmezőbe írja be a felhasználó vezetéknevét (például **Britta**).
 
@@ -209,15 +209,15 @@ Az alábbi lépések végrehajtásával hozzon létre egy alapszintű, egyszeri 
 
     d. Válasszon **engedélyt** sablonként az **alkalmazási engedély sablonnal később**.
 
-    e. Kattintson a **Create** (Létrehozás) gombra.
+    e. Kattintson a **Létrehozás** elemre.
 
 4. Keresse meg és frissítse az újonnan hozzáadott partner adatait.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/procoresso-tutorial/Procore_user_check.png)
+    ![Egyetlen Sign-On konfigurálása](./media/procoresso-tutorial/Procore_user_check.png)
 
 5. A felhasználó regisztrációjának befejezéséhez kattintson a **Mentés gombra, és küldje el a meghívót** (ha meg kell adni az e-mail meghívását), vagy **mentenie** kell a (Save közvetlenül)
     
-    ![Egyszeri bejelentkezés konfigurálása](./media/procoresso-tutorial/Procore_user_save.png)
+    ![Egyetlen Sign-On konfigurálása](./media/procoresso-tutorial/Procore_user_save.png)
 
 ### <a name="test-single-sign-on"></a>Az egyszeri bejelentkezés tesztelése 
 

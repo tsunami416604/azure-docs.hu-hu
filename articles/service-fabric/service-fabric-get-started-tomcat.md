@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 6/08/2018
 ms.author: pepogors
 ms.openlocfilehash: 1a699f3b35970270a9800162a6d8717682a168ae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75614417"
 ---
 # <a name="create-service-fabric-container-running-apache-tomcat-server-on-linux"></a>Apache Tomcat Servert futtató Service Fabric tároló létrehozása Linux rendszeren
@@ -75,15 +75,15 @@ Az ebben a szakaszban ismertetett lépésekkel egy Apache Tomcat-rendszerkép é
    docker run -itd --name tomcat-site -p 8080:8080 tomcattest.
    ```
    
-   * `--name`nevezze el a tárolót, így az azonosítója helyett egy rövid nevet használva hivatkozhat rá.
-   * `-p`Megadja a tároló és a gazda operációs rendszer közötti port-hozzárendelést. 
+   * `--name` nevezze el a tárolót, így az azonosítója helyett egy rövid nevet használva hivatkozhat rá.
+   * `-p` Megadja a tároló és a gazda operációs rendszer közötti port-hozzárendelést. 
 
    > [!Note]
    > A paraméterrel megnyitott portnak annak `-p` a portnak kell lennie, amelyen a Tomcat-alkalmazás megfigyeli a kérelmeket. Az aktuális példában egy összekötő van konfigurálva a *ApacheTomcat/conf/server.xml* FÁJLBAN a HTTP-kérések 8080-es portjának figyeléséhez. Ez a port a gazdagép 8080-es portjára van leképezve. 
 
    A többi paraméterrel kapcsolatos további tudnivalókért tekintse meg a [Docker-futtatási dokumentációt](https://docs.docker.com/engine/reference/commandline/run/).
 
-1. A tároló teszteléséhez nyisson meg egy böngészőt, és adja meg a következő URL-címek egyikét. Ekkor megjelenik a ""Helló világ!"alkalmazás!" egy változata. üdvözlő képernyő minden URL-címhez.
+1. A tároló teszteléséhez nyisson meg egy böngészőt, és adja meg a következő URL-címek egyikét. Ekkor megjelenik a "„Helló világ!” alkalmazás!" egy változata. üdvözlő képernyő minden URL-címhez.
 
    - `http://localhost:8080/hello` 
    - `http://localhost:8080/hello/sayhello` 
@@ -209,7 +209,7 @@ Most, hogy leküldte a Tomcat-lemezképet egy tároló-beállításjegyzékbe, l
    ![Service Fabric Explorer](./media/service-fabric-get-started-tomcat/service-fabric-explorer.png)
 
 
-1. Ha a Tomcat-kiszolgálón szeretné elérni az alkalmazást, nyisson meg egy böngészőablakot, és adja meg a következő URL-címek bármelyikét. Ha központilag telepítette a helyi fürtöt, használja a *localhost* elemet a *PublicIPorFQDN*. Ekkor megjelenik a ""Helló világ!"alkalmazás!" egy változata. üdvözlő képernyő minden URL-címhez.
+1. Ha a Tomcat-kiszolgálón szeretné elérni az alkalmazást, nyisson meg egy böngészőablakot, és adja meg a következő URL-címek bármelyikét. Ha központilag telepítette a helyi fürtöt, használja a *localhost* elemet a *PublicIPorFQDN*. Ekkor megjelenik a "„Helló világ!” alkalmazás!" egy változata. üdvözlő képernyő minden URL-címhez.
 
    * http://PublicIPorFQDN:8080/hello  
    * http://PublicIPorFQDN:8080/hello/sayhello

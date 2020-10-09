@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 04/02/2019
 ms.author: wesmc
 ms.openlocfilehash: 498a7ee28b9404d0733e4615f4df635a8c904b51
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "67178928"
 ---
 ### <a name="cacheskuname"></a>cacheSKUName
@@ -83,10 +83,10 @@ Az értékek a következő gyorsítótár-méreteknek felelnek meg:
 
 | Érték | Alapszintű és standard<br>gyorsítótár mérete | Prémium<br>gyorsítótár mérete |
 | :---: | :------------------------------: | :-------------------: |
-| 0     | 250 MB (alapértelmezett)                 | n.a.                   |
+| 0     | 250 MB (alapértelmezett)                 | n/a                   |
 | 1     | 1 GB                             | 6 GB (alapértelmezett)        |
 | 2     | 2,5 GB                           | 13 GB                 |
 | 3     | 6 GB                             | 26 GB                 |
 | 4     | 13 GB                            | 53 GB                 |
 | 5     | 26 GB                            | 120 GB                |
-| 6     | 53 GB                            | n.a.                   |
+| 6     | 53 GB                            | n/a                   |

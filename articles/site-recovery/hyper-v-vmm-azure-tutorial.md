@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 03/19/2020
 ms.custom: MVC
 ms.openlocfilehash: c806f968bc6530879f64ddbf6fd4c7d45aa7a8d3
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89442820"
 ---
 # <a name="set-up-disaster-recovery-of-on-premises-hyper-v-vms-in-vmm-clouds-to-azure"></a>VMM-felhőkben található, Hyper-V rendszerű helyszíni virtuális gépek Azure-ba történő vészhelyreállításának beállítása
@@ -42,7 +42,7 @@ Ez az oktatóanyag feltételezi, hogy már végrehajtotta a következő oktatóa
     1. **Hová szeretné replikálni a gépeket**, válassza ki **Az Azure-t**.
     1. **Virtualizáltak a gépek?**, válassza **az igen, a Hyper-V**lehetőséget.
     1. A **System Center VMM használja a Hyper-V-gazdagépek felügyeletére?**, válassza az **Igen**lehetőséget.
-1. Kattintson az **OK** gombra.
+1. Válassza az **OK** lehetőséget.
 
    ![Replikációs cél](./media/hyper-v-vmm-azure-tutorial/replication-goal.png)
 
@@ -132,7 +132,7 @@ Site Recovery ellenőrzi, hogy van-e egy vagy több kompatibilis Azure Storage-f
 
    A **Védelem engedélyezése** művelet előrehaladását a **Feladatok** > **Site Recovery-feladatok** menüpontban követheti nyomon. A **védelem véglegesítése** művelet befejezése után a kezdeti replikálás befejeződött, és a virtuális gép készen áll a feladatátvételre.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Vészhelyreállítási próba végrehajtása](tutorial-dr-drill-azure.md)

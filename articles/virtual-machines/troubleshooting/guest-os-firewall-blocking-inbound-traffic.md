@@ -15,17 +15,17 @@ ms.devlang: azurecli
 ms.date: 11/22/2018
 ms.author: delhan
 ms.openlocfilehash: 1b80fc997a4b3d2b472717b1ec2f379a4e958d8c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80422559"
 ---
 # <a name="azure-vm-guest-os-firewall-is-blocking-inbound-traffic"></a>Az Azure-beli virtuális gép vendég operációs rendszerének tűzfala blokkolja a bejövő forgalmat
 
 Ez a cikk azt ismerteti, hogyan lehet kijavítani a Távoli asztal portál (RDP) problémát, amely akkor fordul elő, ha a vendég operációs rendszer tűzfala blokkolja a bejövő forgalmat.
 
-## <a name="symptoms"></a>Probléma
+## <a name="symptoms"></a>Hibajelenségek
 
 Azure-beli virtuális géphez (VM) való kapcsolódáshoz nem használható RDP-kapcsolat. A rendszerindítási diagnosztika – > képernyőképen látható, hogy az operációs rendszer teljes mértékben be van töltve az üdvözlőképernyőn (Ctrl + Alt + Del).
 
@@ -142,7 +142,7 @@ Kapcsolódjon a [soros konzolhoz, és nyisson meg egy PowerShell-példányt](ser
 
 #### <a name="mitigation-1"></a>1. enyhítés
 
-Lásd: a [Tűzfalszabály letiltása egy vendég operációs rendszeren](enable-disable-firewall-rule-guest-os.md).
+Tekintse [meg, hogyan Enable-Disable egy tűzfalszabály egy vendég operációs rendszeren](enable-disable-firewall-rule-guest-os.md).
 
 #### <a name="mitigation-2"></a>2. mérséklés
 

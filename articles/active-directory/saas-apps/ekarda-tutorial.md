@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 06/15/2020
 ms.author: jeedes
 ms.openlocfilehash: cfd7a007c8f26a96d929026e231cb412cdc70279
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89440864"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-ekarda"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a ekarda
@@ -76,9 +76,9 @@ Az Azure AD SSO engedélyezéséhez kövesse az Azure Portal alábbi lépéseit:
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 1. A **ekarda** alkalmazás-integráció lapon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
 1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
-1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon válassza a ceruza ikont az **alapszintű SAML konfigurációs** beállítások szerkesztéséhez.
+1. Az **egyszeres Sign-On beállítása az SAML-vel** lapon válassza a ceruza ikont az **alapszintű SAML-konfigurációs** beállítások szerkesztéséhez.
 
-   ![Képernyőfelvétel az egyszeri bejelentkezés SAML-oldallal való beállításáról: a ceruza ikon kiemelve.](common/edit-urls.png)
+   ![Képernyőfelvétel: egyszeres Sign-On beállítása SAML-oldallal, a ceruza ikon kiemelve.](common/edit-urls.png)
 
 1. Az **alapszintű SAML-konfiguráció** szakaszban, ha a **szolgáltatói metaadatokat tartalmazó fájlt**látja, kövesse az alábbi lépéseket:
     1. Válassza a **metaadat-fájl feltöltése**lehetőséget.
@@ -100,13 +100,13 @@ Az Azure AD SSO engedélyezéséhez kövesse az Azure Portal alábbi lépéseit:
     > [!NOTE]
     > Az előző két lépés értékei nem valósak. Frissítse őket a tényleges azonosítóval, a válasz URL-címével és a bejelentkezési URL-címek értékével. Az értékek lekéréséhez forduljon a ekarda ügyfélszolgálati [csapatához](mailto:contact@ekarda.com) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon az **SAML aláíró tanúsítvány** szakaszban válassza a **Letöltés** lehetőséget a **tanúsítvány (Base64)** mentéséhez a számítógépen.
+1. Az **egyszeres Sign-On beállítása SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban válassza a **Letöltés** lehetőséget a **tanúsítvány (Base64)** mentéséhez a számítógépen.
 
-    ![Képernyőfelvétel az egyszeri bejelentkezés az SAML-vel való beállításáról című részben, a Base64 tanúsítványra Kiemelt letöltési hivatkozással.](common/certificatebase64.png)
+    ![Képernyőfelvétel az egyszeri Sign-On beállítása az SAML-vel lapon – a Base64-tanúsítványra Kiemelt letöltési hivatkozással.](common/certificatebase64.png)
 
 1. A **Ekarda beállítása** szakaszban másolja a megfelelő URL-címeket a követelmények alapján.
 
-    ![Képernyőkép az egyszeri bejelentkezés beállítása az SAML-vel lapon az ekarda beállítása című szakaszban, az URL-másolási hivatkozások kiemelve.](common/copy-configuration-urls.png)
+    ![Képernyőfelvétel az egyszeri Sign-On beállítása az SAML-vel lapon – az URL-címek ekarda beállítása című rész.](common/copy-configuration-urls.png)
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 

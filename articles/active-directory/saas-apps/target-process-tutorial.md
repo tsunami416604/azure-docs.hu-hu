@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: d5b0be147b8aa25e6c737d423eaf4a8a23cde083
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88546525"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-targetprocess"></a>Oktatóanyag: Azure Active Directory integráció a TargetProcess
@@ -74,7 +74,7 @@ Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a Targe
 Az Azure AD egyszeri bejelentkezés TargetProcess való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
 
 1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. **[TargetProcess egyszeri bejelentkezés konfigurálása](#configure-targetprocess-single-sign-on)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+2. **[TargetProcess egyszeri bejelentkezés konfigurálása](#configure-targetprocess-single-sign-on)** – az egyes Sign-On beállítások konfigurálása az alkalmazás oldalán.
 3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
 4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
 5. **[Hozzon létre TargetProcess-teszt felhasználót](#create-targetprocess-test-user)** – hogy a TargetProcess Britta, a felhasználó Azure ad-képviseletéhez kapcsolódó partnerrel rendelkezzen.
@@ -94,7 +94,7 @@ Az Azure AD egyszeri bejelentkezés TargetProcess való konfigurálásához hajt
 
     ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
+3. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
@@ -109,7 +109,7 @@ Az Azure AD egyszeri bejelentkezés TargetProcess való konfigurálásához hajt
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel és azonosítóval. Az értékek lekéréséhez forduljon a TargetProcess ügyfélszolgálati [csapatához](mailto:support@targetprocess.com) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-5. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállítások alapján, és mentse a számítógépre.
+5. Az **egyszeres Sign-On beállítása az SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállítások alapján, és mentse azt a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozása](common/certificatebase64.png)
 
@@ -123,7 +123,7 @@ Az Azure AD egyszeri bejelentkezés TargetProcess való konfigurálásához hajt
 
     c. Kijelentkezési URL-cím
 
-### <a name="configure-targetprocess-single-sign-on"></a>TargetProcess egyszeri bejelentkezés konfigurálása
+### <a name="configure-targetprocess-single-sign-on"></a>TargetProcess egyetlen Sign-On konfigurálása
 
 1. A **TargetProcess**belüli konfiguráció automatizálásához telepítenie kell az **alkalmazások biztonságos bejelentkezési böngésző bővítményét** **a bővítmény telepítése**lehetőségre kattintva.
 
@@ -147,11 +147,11 @@ Az Azure AD egyszeri bejelentkezés TargetProcess való konfigurálásához hajt
 
 1. Kattintson az **egyszeri bejelentkezés** fülre.
 
-    ![kattintson az egyszeri bejelentkezés elemre.](./media/target-process-tutorial/tutorial_target_process_07.png)
+    ![kattintson az egyszeres Sign-On](./media/target-process-tutorial/tutorial_target_process_07.png)
 
 1. Az egyszeri bejelentkezés beállításai párbeszédpanelen hajtsa végre a következő lépéseket:
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/target-process-tutorial/tutorial_target_process_08.png)
+    ![Egyetlen Sign-On konfigurálása](./media/target-process-tutorial/tutorial_target_process_08.png)
 
     a. Kattintson az **egyszeri bejelentkezés engedélyezése**lehetőségre.
 
@@ -186,7 +186,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    d. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 09/30/2020
 ms.custom: seodec18
 ms.openlocfilehash: 79a4fc048b8301d67206bf28b571f88f9e5ad024
-ms.sourcegitcommit: ffa7a269177ea3c9dcefd1dea18ccb6a87c03b70
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91597668"
 ---
 # <a name="tutorial-set-up-an-azure-time-series-insights-gen2-environment"></a>Oktatóanyag: Azure Time Series Insights Gen2-környezet beállítása
@@ -84,7 +84,7 @@ Ez a szakasz azt ismerteti, hogyan hozható létre Azure Time Series Insights Ge
 
 1. Az **Time Series Insights környezet létrehozása** ablaktábla **alapok** lapján adja meg a következő paramétereket:
 
-    | Paraméter | Műveletek |
+    | Paraméter | Művelet |
     | --- | ---|
     | **Környezet neve** | Adjon egyedi nevet a Azure Time Series Insights Gen2-környezetnek. |
     | **Előfizetés** | Adja meg azt az előfizetést, amelyben létre szeretné hozni a Azure Time Series Insights Gen2-környezetet. Az ajánlott eljárás az, hogy ugyanazt az előfizetést használja, mint az eszköz-szimulátor által létrehozott többi IoT-erőforrást. |
@@ -107,7 +107,7 @@ Ez a szakasz azt ismerteti, hogyan hozható létre Azure Time Series Insights Ge
 
 1. Az **eseményforrás** lapon adja meg a következő paramétereket:
 
-   | Paraméter | Műveletek |
+   | Paraméter | Művelet |
    | --- | --- |
    | **Létrehoz egy eseményforrás?** | Válassza az **Igen** lehetőséget.|
    | **Név** | Adjon meg egyedi értéket az eseményforrás neveként. |
@@ -161,7 +161,7 @@ Most, hogy üzembe helyezte a Azure Time Series Insights Gen2-környezetét, meg
 
     1. A **szimulációs beállítások** oldal betöltése után adja meg a szükséges paramétereket.
 
-        | Paraméter | Műveletek |
+        | Paraméter | Művelet |
         | --- | --- |
         | **Név** | Adjon egyedi nevet a szimulátornak. |
         | **Leírás** | Adjon meg egy definíciót. |
@@ -183,7 +183,7 @@ Ebben a szakaszban az idősorozat-adatokra vonatkozó alapszintű elemzéseket a
 
     [![A Azure Time Series Insights Gen2 Explorer URL-címe.](media/v2-update-provision/tsi-select-explorer-url.png)](media/v2-update-provision/tsi-select-explorer-url.png#lightbox)
 
-1. A Azure Time Series Insights Gen2 Explorerben megjelenik a képernyő felső részén átívelő sáv. Ez a rendelkezésre állási választó. Győződjön meg arról, hogy legalább két 2 m van kiválasztva, és ha szükséges, bontsa ki az időkeretet úgy, hogy kiválasztja és húzza a választót a bal és a jobb oldalra.
+1. A Azure Time Series Insights Gen2 Explorerben megjelenik a képernyő felső részén átívelő sáv. Ez a rendelkezésre állási választó. Győződjön meg arról, hogy legalább 2 2 m van kiválasztva, és szükség esetén bontsa ki az időkeretet úgy, hogy kijelöli és húzza a választót a bal és a jobb oldalon.
 
 1. Az **Idősorozat-példányok** a bal oldalon lesznek megjelenítve.
 
@@ -217,7 +217,7 @@ Ebben a szakaszban egy modellt alkalmaz az adatai struktúrájára. A modell elv
 
 1. Adja meg a következő paramétereket:
 
-    | Paraméter | Műveletek |
+    | Paraméter | Művelet |
     | --- | ---|
     | **Név** | **Lift** megadása |
     | **Leírás** | Adja meg a **lift típus definícióját** |
@@ -226,7 +226,7 @@ Ebben a szakaszban egy modellt alkalmaz az adatai struktúrájára. A modell elv
 
     1. Válassza a **+ változó hozzáadása** lehetőséget, és adja meg a következő értékeket a felvonó első változójának. Összesen három változót fog létrehozni.
 
-        | Paraméter | Műveletek |
+        | Paraméter | Művelet |
         | --- | --- |
         | **Név** | Adja meg az **AVG hőmérsékletet**. |
         | **Erőforrás** | **Numerikus** elem kiválasztása |
@@ -235,7 +235,7 @@ Ebben a szakaszban egy modellt alkalmaz az adatai struktúrájára. A modell elv
 
     1. Kattintson az **Alkalmaz** gombra. Ezután adja meg ismét a **változót** , és állítsa be a következő értékeket:
 
-        | Paraméter | Műveletek |
+        | Paraméter | Művelet |
         | --- | --- |
         | **Név** | Adja meg az **AVG Vibration**értéket. |
         | **Erőforrás** | **Numerikus** elem kiválasztása |
@@ -244,18 +244,18 @@ Ebben a szakaszban egy modellt alkalmaz az adatai struktúrájára. A modell elv
 
     1. Kattintson az **Alkalmaz** gombra. Ezután adja meg ismét a **változót** , és állítsa be a következő értékeket a harmadik és a végső változóhoz:
 
-        | Paraméter | Műveletek |
+        | Paraméter | Művelet |
         | --- | --- |
         | **Név** | Adja meg a **padlót**. |
         | **Erőforrás** | **Kategorikus** kijelölése |
         | **Érték** | Válasszon az előre beállított lehetőség közül: válassza a **padló (Double)** lehetőséget. <br /> Megjegyzés: az **értékek** automatikus kitöltését eltarthat néhány percig, miután Azure Time Series Insights Gen2 megkezdi az események fogadását.|
-        | **Kategóriákat** | <span style="text-decoration: underline">Címke</span>   -  <span style="text-decoration: underline">Értékek</span> <br /> Alsó: 1, 2, 3, 4 <br /> Középső: 5, 6, 7, 8, 9 <br /> Felső: 10, 11, 12, 13, 14, 15 |
+        | **Kategóriák** | <span style="text-decoration: underline">Címke</span>   -  <span style="text-decoration: underline">Értékek</span> <br /> Alsó: 1, 2, 3, 4 <br /> Középső: 5, 6, 7, 8, 9 <br /> Felső: 10, 11, 12, 13, 14, 15 |
         | **Alapértelmezett kategória** | **Ismeretlen** megadása |
 
         [![Adja meg a típus változóit.](media/v2-update-provision/tsi-add-type-variables.png)](media/v2-update-provision/tsi-add-type-variables.png#lightbox)
 
     1. Kattintson az **Alkalmaz** gombra. 
-    1. Válassza a **Mentés** lehetőséget. A rendszer három változót hoz létre és jelenít meg.
+    1. Kattintson a **Mentés** gombra. A rendszer három változót hoz létre és jelenít meg.
 
         [![A típus hozzáadását követően tekintse át a modellt a modell nézetben.](media/v2-update-provision/tsi-add-type-and-view.png)](media/v2-update-provision/tsi-add-type-and-view.png#lightbox)
 
@@ -263,12 +263,12 @@ Ebben a szakaszban egy modellt alkalmaz az adatai struktúrájára. A modell elv
 
    1. A **hierarchia szerkesztése** panelen állítsa be a következő paramétereket:
 
-        | Paraméter | Műveletek |
+        | Paraméter | Művelet |
         | --- | ---|
         | **Név** | Adja meg a **hely hierarchiáját**. |
         |**Szintek**| Adja meg az **országot** az első szint neveként <br /> Válassza a **+ szint hozzáadása** lehetőséget <br /> Adja meg a második szint **városát** , majd válassza a **+ szint hozzáadása** elemet. <br /> A harmadik és utolsó szint neveként adja meg a **Building** nevet |
 
-   1. Válassza a **Mentés** lehetőséget.
+   1. Kattintson a **Mentés** gombra.
 
         [![Az új hierarchia megjelenítése a modell nézetben.](media/v2-update-provision/tsi-add-hierarchy-and-view.png)](media/v2-update-provision/tsi-add-hierarchy-and-view.png#lightbox)
 
@@ -276,7 +276,7 @@ Ebben a szakaszban egy modellt alkalmaz az adatai struktúrájára. A modell elv
 
     1. A jobb szélen lévő **műveletek** területen kattintson a ceruza ikonra az első példány szerkesztéséhez a következő értékekkel:
 
-        | Paraméter | Műveletek |
+        | Paraméter | Művelet |
         | --- | --- |
         | **Típus** | Válassza a **lift**lehetőséget. |
         | **Név** | **1. felvonó** megadása|
@@ -284,20 +284,20 @@ Ebben a szakaszban egy modellt alkalmaz az adatai struktúrájára. A modell elv
 
     1. Lépjen a **példány mezőire** , és adja meg a következő értékeket:
 
-        | Paraméter | Műveletek |
+        | Paraméter | Művelet |
         | --- | --- |
         | **Hierarchiák** | **Hely hierarchiájának** kiválasztása |
         | **Ország** | **USA** megadása |
         | **City** | **Seattle** megadása |
         | **Létrehozása** | Adja meg a **térközt** |
 
-    1. Válassza a **Mentés** lehetőséget.
+    1. Kattintson a **Mentés** gombra.
 
 1. Ismételje meg az előző lépést a másik két példánnyal a következő értékek használatakor:
 
     **2. lift esetén:**
 
-    | Paraméter | Műveletek |
+    | Paraméter | Művelet |
     | --- | --- |
     | **Típus** | Válassza a **lift**lehetőséget. |
     | **Név** | **2. felvonó** megadása|
@@ -309,7 +309,7 @@ Ebben a szakaszban egy modellt alkalmaz az adatai struktúrájára. A modell elv
 
     **3. felvonó esetén:**
 
-    | Paraméter | Műveletek |
+    | Paraméter | Művelet |
     | --- | --- |
     | **Típus** | Válassza a **lift**lehetőséget. |
     | **Név** | **3. felvonó** megadása|

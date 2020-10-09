@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: 560c9c177bfa693580979101e5b9343fcff7fe40
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "67179315"
 ---
 ### <a name="install-maintenance-mode-updates-via-windows-powershell-for-storsimple"></a>Karbantartási mód frissítéseinek telepítése Windows PowerShell StorSimple-bővítménye használatával
@@ -43,7 +43,7 @@ Amikor karbantartási mód frissítéseit alkalmazza a StorSimple-eszközre, az 
 
     `Get-HcsFirmwareVersion`
    
-    A várt lemez belső vezérlőprogram-verziói a következők:`XMGJ, XGEG, KZ50, F6C2, VR08, N003, 0107`
+    A várt lemez belső vezérlőprogram-verziói a következők:  `XMGJ, XGEG, KZ50, F6C2, VR08, N003, 0107`
 
 6. Lépjen ki a karbantartási módból. Írja be az alábbi parancsot minden eszköz-vezérlőhöz:
 

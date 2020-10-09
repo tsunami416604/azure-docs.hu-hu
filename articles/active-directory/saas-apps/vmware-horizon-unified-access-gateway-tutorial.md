@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 09/02/2020
 ms.author: jeedes
 ms.openlocfilehash: 9e9d98e8b68b4e01d7e8f19e7c7d89a88d9bf69f
-ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89500865"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-vmware-horizon---unified-access-gateway"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a VMware Horizon-Unified Access Gateway használatával
@@ -61,7 +61,7 @@ Az Azure AD SSO és a VMware Horizon-Unified Access Gateway konfigurálásához 
     1. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
     1. **[Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user)** – ezzel lehetővé teszi, hogy B. Simon engedélyezze az Azure ad egyszeri bejelentkezést.
 1. A **[VMware Horizon-Unified Access Gateway SSO konfigurálása](#configure-vmware-horizon-unified-access-gateway-sso)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
-    1. **[VMware Horizon-Unified Access Gateway tesztelési felhasználó létrehozása](#create-vmware-horizon-unified-access-gateway-test-user)** – ha a "B. Simon" partnere a VMware Horizon-Unified Access gatewayben, amely a felhasználó Azure ad-képviseletéhez van társítva.
+    1. **[Vmware Horizon-Unified Access Gateway-tesztkörnyezet létrehozása](#create-vmware-horizon-unified-access-gateway-test-user)** – ha a "B. Simon" párja van a VMware horizonton – egyesített hozzáférési átjáró, amely a felhasználó Azure ad-képviseletéhez van társítva.
 1. **[SSO tesztelése](#test-sso)** – annak ellenőrzése, hogy a konfiguráció működik-e.
 
 ## <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
@@ -105,7 +105,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás** lehetőségre.
+   1. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -123,7 +123,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 Ha egyszeri bejelentkezést szeretne konfigurálni a **VMware Horizon-Unified Access Gateway** oldalon, el kell küldenie a letöltött **összevonási METAADATOKat tartalmazó XML** -fájlt és a megfelelő másolt url-címeket a Azure Portalról a [VMware Horizon-Unified Access Gateway támogatási csapatának](mailto:support@vmware.com). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
 
-### <a name="create-vmware-horizon-unified-access-gateway-test-user"></a>VMware Horizon – Unified Access Gateway tesztelési felhasználó létrehozása
+### <a name="create-vmware-horizon-unified-access-gateway-test-user"></a>VMware Horizon-Unified hozzáférési átjáró tesztelési felhasználójának létrehozása
 
 Ebben a szakaszban egy B. Simon nevű felhasználót hoz létre a VMware Horizon-Unified Access Gateway-ben. A [VMware Horizon-Unified Access Gateway támogatási csapatának](mailto:support@vmware.com) használata a felhasználók hozzáadásához a VMware Horizon-Unified Access Gateway platformon. Az egyszeri bejelentkezés használata előtt létre kell hozni és aktiválni kell a felhasználókat.
 

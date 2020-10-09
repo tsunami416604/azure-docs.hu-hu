@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 06/10/2020
 ms.author: jeedes
 ms.openlocfilehash: fda55400b2b0c8b6f00cb08f2a5e8de9b9b4e866
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88553257"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-pymetrics"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a pymetrics
@@ -94,7 +94,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. A pymetrics alkalmazás egy adott formátumban várja az SAML-jogcímeket, ehhez pedig egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi táblázat az alapértelmezett attribútumok listáját tartalmazza. Ezek az attribútumok előre ki vannak töltve, de a követelményeinek megfelelően áttekinthetők.
     
-    | Name | Forrás attribútum|
+    | Név | Forrás attribútum|
     | --------------- | --------- |
     | UserFirstName | User. givenName |
     | UserLastName | felhasználó. vezetéknév |
@@ -117,7 +117,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Create** (Létrehozás) gombra.
+   1. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 03/11/2020
 ms.author: sunasing
 ms.openlocfilehash: f717903b3f953e04c793092c86802f2006de7e82
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80349802"
 ---
 # <a name="query-ingested-telemetry-data"></a>Feldolgozott telemetria-adatok lekérdezése
@@ -42,7 +42,7 @@ Kövesse a következő lépéseket a betöltött érzékelő telemetria-adatok l
 > [!NOTE]
 > Az érdekelt érzékelő objektum **azonosítója** és **sensorModelId** .
 
-2. Hozzon végre egy GET/{ID}/SensorModel API-t a **sensorModelId** az 1. lépésben feljegyzett módon. Az "érzékelő modell" az érzékelőből származó betöltött telemetria kapcsolatos összes metaadatot és részletet tartalmaz. Például az érzékelő **modell** objektumon belül az érzékelő **mértéke** az érzékelő által küldött és a milyen típusokra és egységekre vonatkozó adatokkal rendelkezik. Példa:
+2. Hozzon végre egy GET/{ID}/SensorModel API-t a **sensorModelId** az 1. lépésben feljegyzett módon. Az "érzékelő modell" az érzékelőből származó betöltött telemetria kapcsolatos összes metaadatot és részletet tartalmaz. Például az érzékelő **modell** objektumon belül az érzékelő **mértéke** az érzékelő által küldött és a milyen típusokra és egységekre vonatkozó adatokkal rendelkezik. Például:
 
   ```json
   {

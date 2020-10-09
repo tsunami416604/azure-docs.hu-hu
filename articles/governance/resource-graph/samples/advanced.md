@@ -4,10 +4,10 @@ description: Az Azure Resource Graph használatával speciális lekérdezéseket
 ms.date: 08/13/2020
 ms.topic: sample
 ms.openlocfilehash: 8463880189a76f299ce5552fff2b7bccddfa8dec
-ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89425294"
 ---
 # <a name="advanced-resource-graph-query-samples"></a>Speciális Resource Graph lekérdezési minták
@@ -34,7 +34,7 @@ A következő speciális lekérdezéseken vezetjük végig:
 - [A vendég konfiguráció-hozzárendelési jelentések részleteinek lekérdezése](#query-gcreports)
 - [Az összes ok megkeresése, ha a gép nem felel meg a vendég konfigurációs hozzárendeléseinek](#query-gcmachinedetails)
 
-Ha nem rendelkezik Azure-előfizetéssel, létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free), mielőtt nekikezdene a feladatok elvégzésének.
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free), mielőtt hozzákezd.
 
 ## <a name="language-support"></a>Nyelvi támogatás
 
@@ -703,7 +703,7 @@ Search-AzGraph -Query "GuestConfigurationResources | where properties.compliance
 
 - Azure Portal: <a href="https://portal.azure.com/?feature.customportal=false#blade/HubsExtension/ArgQueryBlade/query/GuestConfigurationResources%20%7C%20where%20properties.complianceStatus%20%3D%3D%20'NonCompliant'%20%7C%20extend%20vmid%20%3D%20split(properties.targetResourceId%2C'%2F')%20%7C%20mvexpand%20properties.latestAssignmentReport.resources%20%7C%20mvexpand%20properties_latestAssignmentReport_resources.reasons%20%7C%20extend%20machine%20%3D%20tostring(vmid%5B(-1)%5D)%20%7C%20where%20machine%20%3D%3D%20'MACHINENAME'%20%7C%20project%20phrase%20%3D%20tostring(properties_latestAssignmentReport_resources_reasons.phrase)%2C%20resource%20%3D%20tostring(properties_latestAssignmentReport_resources.resourceId)%2C%20name%2C%20machine%2C%20resourceGroup%2C%20subscriptionId" target="_blank">Portal.Azure.com <span class="docon docon-navigate-external x-hidden-focus"></span> </a>
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Tekintse meg az [alapszintű lekérdezések](starter.md)mintáit.
 - További információ a [lekérdezési nyelvről](../concepts/query-language.md).
