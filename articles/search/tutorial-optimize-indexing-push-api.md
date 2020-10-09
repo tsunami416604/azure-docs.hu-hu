@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.date: 08/21/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: cb012fcc701e9dd18dbe1db5304807b4d96c2a86
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91757792"
 ---
 # <a name="tutorial-optimize-indexing-with-the-push-api"></a>Oktatóanyag: indexelés optimalizálása a leküldéses API-val
@@ -387,7 +387,7 @@ Ha a saját előfizetésében dolgozik, a projekt végén érdemes lehet eltávo
 
 A bal oldali navigációs panelen a **minden erőforrás** vagy **erőforráscsoport** hivatkozás használatával megkeresheti és kezelheti az erőforrásokat a portálon.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy már ismeri az adatfeldolgozási koncepciót, ismerkedjen meg közelebbről a Lucene lekérdezési architektúrával, és hogy a teljes szöveges keresés hogyan működik az Azure Cognitive Searchban.
 

@@ -10,10 +10,10 @@ ms.author: aashishb
 author: aashishb
 ms.date: 03/05/2020
 ms.openlocfilehash: eb4f46322bec57fb4412d3ddebb345640556ca5c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "78399111"
 ---
 # <a name="monitoring-azure-machine-learning"></a>Figyelés Azure Machine Learning
@@ -62,7 +62,7 @@ Azure Machine Learning riasztásait a **Azure monitor** menüből származó **r
 
 A következő táblázat a Azure Machine Learning vonatkozó gyakori és javasolt metrikai szabályokat sorolja fel:
 
-| Riasztástípus | Állapot | Description |
+| Riasztástípus | Condition (Állapot) | Leírás |
 |:---|:---|:---|
 | Modell-üzembehelyezés sikertelen | Összesítés típusa: Total, operátor: nagyobb, mint, küszöbérték: 0 | Ha egy vagy több modell telepítése meghiúsult |
 | Kvóta kihasználtsága (%) | Összesítés típusa: átlag, operátor: nagyobb, mint, küszöbérték: 90| Ha a kvóta kihasználtsági aránya nagyobb, mint 90% |
@@ -85,7 +85,7 @@ A diagnosztikai beállítások létrehozásával kapcsolatos további informáci
 
 A következő naplókat konfigurálhatja Azure Machine Learninghoz:
 
-| Kategória | Description |
+| Kategória | Leírás |
 |:---|:---|
 | AmlComputeClusterEvent | Azure Machine Learning számítási fürtök eseményei. |
 | AmlComputeClusterNodeEvent | Azure Machine Learning számítási fürt csomópontjain belüli események. |

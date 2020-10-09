@@ -9,10 +9,10 @@ ms.reviewer: mamccrea
 ms.custom: mvc, devx-track-js
 ms.date: 06/16/2020
 ms.openlocfilehash: 7df244ee024b0d67ba678e296b882fbb08c3e16b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91317718"
 ---
 # <a name="javascript-user-defined-functions-in-azure-stream-analytics"></a>Felhasználó által definiált JavaScript-függvények Azure Stream Analytics
@@ -186,7 +186,7 @@ FROM
     input A
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [UDF Machine Learning](https://docs.microsoft.com/azure/stream-analytics/machine-learning-udf)
 * [C# UDF](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-edge-csharp-udf-methods)

@@ -10,10 +10,10 @@ services: azure-maps
 manager: cpendle
 ms.custom: devx-track-js
 ms.openlocfilehash: 3414f50d6d0fc4983b7a05226a2f768e7ead81dd
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91319673"
 ---
 # <a name="migrate-a-web-app-from-google-maps"></a>Webalkalmazás migrálása a Google Maps szolgáltatásból
@@ -1011,7 +1011,7 @@ Adatforrásban lévő adatforrások hozzáadása és kezelése. Az adatforrások
 
 Ha a fürtözés engedélyezve van, akkor az adatforrás fürtözött és nem fürtözött adatpontokat küld a renderelési rétegeknek. Az adatforrás több száz ezer adatpont fürtözésére képes. A fürtözött adatpontok a következő tulajdonságokkal rendelkeznek:
 
-| Tulajdonság neve             | Típus    | Description   |
+| Tulajdonság neve             | Típus    | Leírás   |
 |---------------------------|---------|---------------|
 | `cluster`                 | boolean | Azt jelzi, hogy a szolgáltatás egy fürtöt jelöl-e. |
 | `cluster_id`              | sztring  | A fürt egyedi azonosítója, amely használható az adatforrással `getClusterExpansionZoom` , `getClusterChildren` és `getClusterLeaves` metódusokkal. |
@@ -1020,7 +1020,7 @@ Ha a fürtözés engedélyezve van, akkor az adatforrás fürtözött és nem f�
 
 Az `DataSource` osztály a következő segítő függvényt használja a fürttel kapcsolatos további információk eléréséhez a használatával `cluster_id` .
 
-| Metódus | Visszatérési típus | Description |
+| Metódus | Visszatérési típus | Leírás |
 |--------|-------------|-------------|
 | `getClusterChildren(clusterId: number)` | &lt;A tömb &lt; funkcióinak &lt; geometriája, bármilyen &gt; \| alakzat&gt;&gt; | A következő nagyítási szinten kéri le a megadott fürt gyermekeit. Ezek a gyerekek az alakzatok és alfürtek kombinációja lehet. Az alfürtek a ClusteredProperties megfelelő tulajdonságokkal rendelkező funkciók lesznek. |
 | `getClusterExpansionZoom(clusterId: number)` | Ígéret &lt; száma&gt; | Kiszámítja azt a nagyítási szintet, amelynél a fürt megkezdi a kibővítését vagy szétbontását. |
@@ -1504,7 +1504,7 @@ Használja az `atlas.layer.ImageLayer` osztályt a georeferens képek átfedés�
 
 ### <a name="add-kml-data-to-the-map"></a>KML-adatértékek hozzáadása a térképhez
 
-Az Azure és a Google Maps egyaránt képes a KML-, KMZ-és GeoRSS-adathalmazok importálására és megjelenítésére a térképen. A Azure Maps támogatja a GPX, a GML, a térbeli CSV-fájlok, a GeoJSON, a jól ismert szövegek (WKT), a webes leképezési szolgáltatások (WMS), a webes leképezési szolgáltatások (WMTS) és a webes szolgáltatások (WFS) használatát is. Azure Maps a fájlokat helyileg beolvassa a memóriába, és a legtöbb esetben sokkal nagyobb KML-fájlokat kezelhet. 
+Az Azure és a Google Maps egyaránt képes a KML-, KMZ-és GeoRSS-adathalmazok importálására és megjelenítésére a térképen. A Azure Maps támogatja a GPX, a GML, a térbeli CSV-fájlok, a GeoJSON, a jól ismert szövegek (WKT), a Web-Mapping szolgáltatások (WMS), a Web-Mapping csempe-szolgáltatások (WMTS) és a web feature Services (WFS) használatát is. Azure Maps a fájlokat helyileg beolvassa a memóriába, és a legtöbb esetben sokkal nagyobb KML-fájlokat kezelhet. 
 
 #### <a name="before-google-maps"></a>Előtte: Google Maps
 

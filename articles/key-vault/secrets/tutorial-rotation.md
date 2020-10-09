@@ -12,10 +12,10 @@ ms.date: 01/26/2020
 ms.author: mbaldwin
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 661622b296a7a81a8d4c203e86a7c8d61c386e5e
-ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91843226"
 ---
 # <a name="automate-the-rotation-of-a-secret-for-resources-that-use-one-set-of-authentication-credentials"></a>A titkos kód elforgatásának automatizálása a hitelesítő adatok egy készletét használó erőforrásokhoz
@@ -244,7 +244,7 @@ https://akvrotation-app.azurewebsites.net/
 
 Amikor az alkalmazás megnyílik a böngészőben, látni fogja a **generált titkos értéket** , és egy **adatbázishoz kapcsolódó** , *igaz*értéket.
 
-## <a name="learn-more"></a>További információ
+## <a name="learn-more"></a>Tudjon meg többet
 
 - Oktatóanyag: [az erőforrások rotációja két hitelesítő adatokkal](tutorial-rotation-dual.md)
 - Áttekintés: [Key Vault figyelése Azure Event Grid](../general/event-grid-overview.md)

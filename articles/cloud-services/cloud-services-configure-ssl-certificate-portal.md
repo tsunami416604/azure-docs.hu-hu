@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 05/26/2017
 ms.author: tagore
 ms.openlocfilehash: c69b74cf91d8e097f8ad8a9ba2a16f3375f483ae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82024846"
 ---
 # <a name="configuring-tls-for-an-application-in-azure"></a>TLS konfigurálása alkalmazáshoz az Azure-ban
@@ -76,7 +76,7 @@ Az alkalmazást a tanúsítvány használatára kell konfigurálni, és hozzá k
 
    Az engedélyek ( `permissionLevel` attribútumok) a következő értékek egyikére állíthatók be:
 
-   | Engedély értéke | Description |
+   | Engedély értéke | Leírás |
    | --- | --- |
    | limitedOrElevated |**(Alapértelmezett)** Az összes szerepkör-folyamat hozzáfér a titkos kulcshoz. |
    | emelt szintű |Csak emelt szintű folyamatok férhetnek hozzá a titkos kulcshoz. |
@@ -166,7 +166,7 @@ Most, hogy üzembe helyezése az Azure-ban működik, HTTPS használatával csat
    ![Webhely előzetes verziója](media/cloud-services-configure-ssl-certificate-portal/show-site.png)
 
    > [!TIP]
-   > Ha éles üzembe helyezés helyett a TLS-t szeretné használni átmeneti üzembe helyezéshez, először meg kell határoznia az átmeneti üzembe helyezéshez használt URL-címet. Miután telepítette a felhőalapú szolgáltatást, az átmeneti környezet URL-címét a **központi telepítési azonosító** GUID azonosítója határozza meg ebben a formátumban:`https://deployment-id.cloudapp.net/`  
+   > Ha éles üzembe helyezés helyett a TLS-t szeretné használni átmeneti üzembe helyezéshez, először meg kell határoznia az átmeneti üzembe helyezéshez használt URL-címet. Miután telepítette a felhőalapú szolgáltatást, az átmeneti környezet URL-címét a **központi telepítési azonosító** GUID azonosítója határozza meg ebben a formátumban: `https://deployment-id.cloudapp.net/`  
    >
    > Hozzon létre egy common name (CN) nevű tanúsítványt a GUID-alapú URL-címmel (például **328187776e774ceda8fc57609d404462.cloudapp.net**). A portál használatával adja hozzá a tanúsítványt a szakaszos felhőalapú szolgáltatáshoz. Ezután adja hozzá a tanúsítvány adatait a CSDEF és a CSCFG-fájlokhoz, csomagolja ki az alkalmazást, és frissítse a szakaszos üzembe helyezést az új csomag használatára.
    >

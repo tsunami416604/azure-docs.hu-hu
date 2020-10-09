@@ -19,10 +19,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: e91d250b8cc9b80f2c97910c7fa972af32fa9104
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88998339"
 ---
 # <a name="tutorial-send-push-notifications-to-windows-phone-apps-using-notification-hubs"></a>Oktatóanyag: leküldéses értesítések küldése Windows Phone-telefon alkalmazásoknak Notification Hubs használatával
@@ -152,7 +152,7 @@ Ebben a szakaszban egy új Windows Phone-alkalmazást hoz létre, amely regisztr
 
     ![Értesítés a Windows Phone-eszközön](./media/notification-hubs-windows-phone-get-started/notification-on-windows-phone.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az egyszerű példában leküldéses értesítéseket küldött az összes Windows Phone 8 rendszerű eszközre. Ha szeretné megtudni, hogy hogyan küldhet leküldéses értesítéseket adott eszközökre, lépjen tovább a következő oktatóanyagra:
 

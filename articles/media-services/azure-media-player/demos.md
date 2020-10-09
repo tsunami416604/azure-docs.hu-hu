@@ -7,10 +7,10 @@ ms.service: media-services
 ms.topic: article
 ms.date: 04/24/2020
 ms.openlocfilehash: 584748b23f526e6f03b543b8298927e3f202f743
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82139302"
 ---
 # <a name="azure-media-player-demos"></a>Azure Media Player-bemutatók
@@ -24,16 +24,16 @@ Az alábbi lista a Azure Media Player bemutatóinak hivatkozásait tartalmazza. 
 | Alapszintű |
 | Forrás beállítása | [Dinamikus](https://amp.azure.net/libs/amp/latest/samples/dynamic_setsource.html) | [Statikus](https://amp.azure.net/libs/amp/latest/samples/videotag_setsource.html) |Nem védett tartalom lejátszása.|
 | Szolgáltatások |
-| VOD ad-Beszúrás – nagy méretű | [Dinamikus](https://amp.azure.net/libs/amp/latest/samples/dynamic_vast_ads_vod.html) | N.A. | Helyezzen be a nagy számú előre középre és post-roll-hirdetéseket egy VOD-eszközbe. |
-| Lejátszás sebessége | [Dinamikus](https://amp.azure.net/libs/amp/latest/samples/dynamic_playback_speed.html)| N.A. | Lehetővé teszi a nézők számára a videó megtekintését a következő helyen:. |
+| VOD ad-Beszúrás – nagy méretű | [Dinamikus](https://amp.azure.net/libs/amp/latest/samples/dynamic_vast_ads_vod.html) | N/A | Helyezzen be a nagy számú előre középre és post-roll-hirdetéseket egy VOD-eszközbe. |
+| Lejátszás sebessége | [Dinamikus](https://amp.azure.net/libs/amp/latest/samples/dynamic_playback_speed.html)| N/A | Lehetővé teszi a nézők számára a videó megtekintését a következő helyen:. |
 | AMP flush-felszín | [Dinamikus](https://amp.azure.net/libs/amp/latest/samples/dynamic_flush_skin.html) | [Statikus](https://amp.azure.net/libs/amp/latest/samples/videotag_flush_skin.html) | Engedélyezi az új AMP Skin használatát. **Megjegyzés:** Az AMP flush csak a 2.1.0 + AMP verziókban támogatott |
 | Feliratok és feliratok | [Dinamikus](https://amp.azure.net/libs/amp/latest/samples/dynamic_webvtt.html) | [Statikus](https://amp.azure.net/libs/amp/latest/samples/videotag_webvtt.html) | Lejátszás WebVTT feliratokkal.
-| Élő CEA 708 feliratok | [Dinamikus](https://amp.azure.net/libs/amp/latest/samples/dynamic_live_captions.html) | N.A. | Lejátszás élő CEA 708 bejövő feliratokkal, a feliratokkal balra igazított feliratok. |
+| Élő CEA 708 feliratok | [Dinamikus](https://amp.azure.net/libs/amp/latest/samples/dynamic_live_captions.html) | N/A | Lejátszás élő CEA 708 bejövő feliratokkal, a feliratokkal balra igazított feliratok. |
 | Folyamatos tartalék továbbítás | [Dinamikus](https://amp.azure.net/libs/amp/latest/samples/dynamic_progressiveFallback.html) | [Statikus](https://amp.azure.net/libs/amp/latest/samples/videotag_progressiveFallback.html) | Az adaptív lejátszás alapszintű beállítása, ha a folyamatos átvitel nem támogatott a platformon. |
 | Progresszív videó MP4 | [Dinamikus](https://amp.azure.net/libs/amp/latest/samples/dynamic_progressiveVideo.html) | [Statikus](https://amp.azure.net/libs/amp/latest/samples/videotag_progressiveVideo.html) | Progresszív hang MP4 lejátszása. |
 | Progresszív hang MP3 | [Dinamikus](https://amp.azure.net/libs/amp/latest/samples/dynamic_progressiveAudio.html) | [Statikus](https://amp.azure.net/libs/amp/latest/samples/videotag_progressiveAudio.html) | Progresszív hang MP3 lejátszása. |
-| DD + | [Dinamikus](https://amp.azure.net/libs/amp/latest/samples/dynamic_dolbyDigitalPlus.html) | N.A. | Tartalom lejátszása a DD + hangal. |
-| Beállítások |
+| DD + | [Dinamikus](https://amp.azure.net/libs/amp/latest/samples/dynamic_dolbyDigitalPlus.html) | N/A | Tartalom lejátszása a DD + hangal. |
+| Lehetőségek |
 | Heurisztikus profil | [Dinamikus](https://amp.azure.net/libs/amp/latest/samples/dynamic_heuristicsProfile.html) | [Statikus](https://amp.azure.net/libs/amp/latest/samples/videotag_heuristicsProfile.html) | A heurisztikus profil módosítása |
 | Honosítás | [Dinamikus](https://amp.azure.net/libs/amp/latest/samples/dynamic_localization.html) | [Statikus](https://amp.azure.net/libs/amp/latest/samples/videotag_localization.html) |
 Honosítás beállítása |
@@ -41,9 +41,9 @@ Honosítás beállítása |
 Az alapértelmezett felszín hangsávok menüjének megjelenítésére szolgáló beállítások. |
 | Billentyűparancsok | [Dinamikus](https://amp.azure.net/libs/amp/latest/samples/dynamic_hotKeys.html) | [Statikus](https://amp.azure.net/libs/amp/latest/samples/videotag_hotKeys.html) | Ez a minta bemutatja, hogyan konfigurálhatja, hogy mely gyorsbillentyűk engedélyezettek a lejátszóban |
 | Események, naplózás és diagnosztika |
-| Események regisztrálása | [Dinamikus](https://amp.azure.net/libs/amp/latest/samples/dynamic_registerEvents.html) | N.A. | Lejátszás az Event Listeners szolgáltatással. |
+| Események regisztrálása | [Dinamikus](https://amp.azure.net/libs/amp/latest/samples/dynamic_registerEvents.html) | N/A | Lejátszás az Event Listeners szolgáltatással. |
 | Naplózás | [Dinamikus](https://amp.azure.net/libs/amp/latest/samples/dynamic_logging.html) | [Statikus](https://amp.azure.net/libs/amp/latest/samples/videotag_logging.html) | A részletes naplózás bekapcsolása a konzolra. |
-| Diagnosztika | [Dinamikus](https://amp.azure.net/libs/amp/latest/samples/dynamic_diagnostics.html) | N.A. | Diagnosztikai adatbázis beolvasása. Ez a minta csak bizonyos technológiákon működik. |
+| Diagnosztika | [Dinamikus](https://amp.azure.net/libs/amp/latest/samples/dynamic_diagnostics.html) | N/A | Diagnosztikai adatbázis beolvasása. Ez a minta csak bizonyos technológiákon működik. |
 | AES |
 | AES nincs token | [Dinamikus](https://amp.azure.net/libs/amp/latest/samples/dynamic_aes_notoken.html) | [Statikus](https://amp.azure.net/libs/amp/latest/samples/videotag_aes_notoken.html) | Nem token nélküli AES-tartalom lejátszása. |
 | AES-token | [Dinamikus](https://amp.azure.net/libs/amp/latest/samples/dynamic_aes_token.html) | [Statikus](https://amp.azure.net/libs/amp/latest/samples/videotag_aes_token.html) | AES-tartalom lejátszása tokenrel. |
@@ -61,9 +61,9 @@ Az alapértelmezett felszín hangsávok menüjének megjelenítésére szolgál�
 | MPEG-DASH kizárása a UrlRewriter | [Dinamikus](https://amp.azure.net/libs/amp/latest/samples/dynamic_forceNoDash.html) | [Statikus](https://amp.azure.net/libs/amp/latest/samples/videotag_forceNoDash.html) | A nem védett tartalmak lejátszása csak a Smooth és a HLS protokollok használatával. |
 | Több kézbesítési házirend | [Dinamikus](https://amp.azure.net/libs/amp/latest/samples/dynamic_multipleDeliveryPolicy.html) | [Statikus](https://amp.azure.net/libs/amp/latest/samples/videotag_multipleDeliveryPolicy.html) | A forrás beállítása több kézbesítési házirenddel rendelkező tartalommal Azure Media Services |
 | Programozott módon kiválasztása |
-| Szöveg nyomon követésének kiválasztása | [Dinamikus](https://amp.azure.net/libs/amp/latest/samples/dynamic_selectTextTrack.html) | N.A. | Válasszon egy WebVTT a követés listából. |
-| Bitráta kiválasztása | [Dinamikus](https://amp.azure.net/libs/amp/latest/samples/dynamic_selectBitrate.html) | N.A. | A bitráták listájából válassza ki a bitrátát. Ez a minta csak bizonyos technológiákon működik. |
-| Hangstream kiválasztása | [Dinamikus](https://amp.azure.net/libs/amp/latest/samples/dynamic_selectAudioStream.html) | N.A. | Egy hangstream kiválasztása az elérhető hangstreamek listájából. Ez a minta csak bizonyos technológiákon működik. |
+| Szöveg nyomon követésének kiválasztása | [Dinamikus](https://amp.azure.net/libs/amp/latest/samples/dynamic_selectTextTrack.html) | N/A | Válasszon egy WebVTT a követés listából. |
+| Bitráta kiválasztása | [Dinamikus](https://amp.azure.net/libs/amp/latest/samples/dynamic_selectBitrate.html) | N/A | A bitráták listájából válassza ki a bitrátát. Ez a minta csak bizonyos technológiákon működik. |
+| Hangstream kiválasztása | [Dinamikus](https://amp.azure.net/libs/amp/latest/samples/dynamic_selectAudioStream.html) | N/A | Egy hangstream kiválasztása az elérhető hangstreamek listájából. Ez a minta csak bizonyos technológiákon működik. |
 
 ## <a name="next-steps"></a>További lépések
 

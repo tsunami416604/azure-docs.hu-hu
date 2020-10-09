@@ -12,17 +12,17 @@ manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7c840df2c53554519f62a3d1d7a7d8b305187ffb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81450938"
 ---
 # <a name="troubleshooting-combined-security-information-registration"></a>A kombinált biztonsági információk regisztrációjának hibaelhárítása
 
 A cikkben található információk arra szolgálnak, hogy miként lehet a felhasználók által a kombinált regisztrációs élményben jelentett problémákkal kapcsolatos hibaelhárítást végző rendszergazdákat irányítani.
 
-## <a name="audit-logs"></a>Auditnaplók
+## <a name="audit-logs"></a>Naplók
 
 A kombinált regisztrációhoz naplózott események az Azure AD-naplók hitelesítési módszerek kategóriájában találhatók.
 
@@ -30,16 +30,16 @@ A kombinált regisztrációhoz naplózott események az Azure AD-naplók hiteles
 
 A következő táblázat felsorolja a kombinált regisztráció által generált összes naplózási eseményt:
 
-| Tevékenység | Állapot | Ok | Leírás |
+| Tevékenység | status | Ok | Leírás |
 | --- | --- | --- | --- |
-| A felhasználó az összes szükséges biztonsági adatot regisztrálta | Sikeres | A felhasználó regisztrálta az összes szükséges biztonsági adatot. | Ez az esemény akkor következik be, amikor egy felhasználó sikeresen befejezte a regisztrációt.|
+| A felhasználó az összes szükséges biztonsági adatot regisztrálta | Success | A felhasználó regisztrálta az összes szükséges biztonsági adatot. | Ez az esemény akkor következik be, amikor egy felhasználó sikeresen befejezte a regisztrációt.|
 | A felhasználó az összes szükséges biztonsági adatot regisztrálta | Hiba | A felhasználó megszakította a biztonsági adatok regisztrálását. | Ez az esemény akkor következik be, amikor egy felhasználó megszakítja a regisztrációt a megszakítási módból.|
-| Felhasználó által regisztrált biztonsági adatok | Sikeres | Felhasználó által regisztrált *metódus*. | Ez az esemény akkor következik be, amikor egy felhasználó egy egyéni metódust regisztrál. A *metódus* lehet hitelesítő alkalmazás, telefon, E-mail, biztonsági kérdés, alkalmazás jelszava, alternatív telefon stb.| 
-| A felhasználó által felülvizsgált biztonsági információ | Sikeres | A felhasználó sikeresen áttekintette a biztonsági adatokat. | Ez az esemény akkor következik be, amikor a felhasználó a biztonsági adatok áttekintése oldalon kiválasztja a **megfelelőt** .|
+| Felhasználó által regisztrált biztonsági adatok | Success | Felhasználó által regisztrált *metódus*. | Ez az esemény akkor következik be, amikor egy felhasználó egy egyéni metódust regisztrál. A *metódus* lehet hitelesítő alkalmazás, telefon, E-mail, biztonsági kérdés, alkalmazás jelszava, alternatív telefon stb.| 
+| A felhasználó által felülvizsgált biztonsági információ | Success | A felhasználó sikeresen áttekintette a biztonsági adatokat. | Ez az esemény akkor következik be, amikor a felhasználó a biztonsági adatok áttekintése oldalon kiválasztja a **megfelelőt** .|
 | A felhasználó által felülvizsgált biztonsági információ | Hiba | A felhasználó nem tudta áttekinteni a biztonsági adatokat. | Ez az esemény akkor következik be, amikor a felhasználó a biztonsági adatok áttekintése lapon kiválasztja a **megfelelőt** , de a háttér nem működik.|
-| A felhasználó törölte a biztonsági adatokat | Sikeres | Felhasználó által törölt *metódus*. | Ez az esemény akkor következik be, amikor egy felhasználó töröl egy egyéni metódust. A *metódus* lehet hitelesítő alkalmazás, telefon, E-mail, biztonsági kérdés, alkalmazás jelszava, alternatív telefon stb.|
+| A felhasználó törölte a biztonsági adatokat | Success | Felhasználó által törölt *metódus*. | Ez az esemény akkor következik be, amikor egy felhasználó töröl egy egyéni metódust. A *metódus* lehet hitelesítő alkalmazás, telefon, E-mail, biztonsági kérdés, alkalmazás jelszava, alternatív telefon stb.|
 | A felhasználó törölte a biztonsági adatokat | Hiba | A felhasználó nem tudta törölni a *metódust*. | Ez az esemény akkor következik be, amikor egy felhasználó megpróbál törölni egy metódust, de a kísérlet valamilyen okból meghiúsul. A *metódus* lehet hitelesítő alkalmazás, telefon, E-mail, biztonsági kérdés, alkalmazás jelszava, alternatív telefon stb.|
-| A felhasználó módosította az alapértelmezett biztonsági adatokat | Sikeres | A felhasználó megváltoztatta a *metódus*alapértelmezett biztonsági adatait. | Ez az esemény akkor következik be, amikor a felhasználó megváltoztatja az alapértelmezett metódust. A *metódus* lehet a hitelesítő alkalmazás értesítése, a saját hitelesítő alkalmazásból vagy tokenből származó kód, a Call + X xxxxxxxxxx, a szöveg a kód + x XXXXXXXXX, és így tovább.|
+| A felhasználó módosította az alapértelmezett biztonsági adatokat | Success | A felhasználó megváltoztatta a *metódus*alapértelmezett biztonsági adatait. | Ez az esemény akkor következik be, amikor a felhasználó megváltoztatja az alapértelmezett metódust. A *metódus* lehet a hitelesítő alkalmazás értesítése, a saját hitelesítő alkalmazásból vagy tokenből származó kód, a Call + X xxxxxxxxxx, a szöveg a kód + x XXXXXXXXX, és így tovább.|
 | A felhasználó módosította az alapértelmezett biztonsági adatokat | Hiba | A felhasználó nem tudta módosítani az alapértelmezett biztonsági adatokat a *metódushoz*. | Ez az esemény akkor következik be, amikor egy felhasználó megpróbálja módosítani az alapértelmezett metódust, de a kísérlet valamilyen okból meghiúsul. A *metódus* lehet a hitelesítő alkalmazás értesítése, a saját hitelesítő alkalmazásból vagy tokenből származó kód, a Call + X xxxxxxxxxx, a szöveg a kód + x XXXXXXXXX, és így tovább.|
 
 ## <a name="troubleshooting-interrupt-mode"></a>Megszakítási mód hibaelhárítása

@@ -4,13 +4,13 @@ description: A Azure Resource Manager-sablonok deklaratív JSON-szintaxisát ism
 ms.topic: conceptual
 ms.date: 03/17/2020
 ms.openlocfilehash: baddedae1b918502e579d2ed230e0779960f45e7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82203828"
 ---
-# <a name="syntax-and-expressions-in-azure-resource-manager-templates"></a>Szintaxis és kifejezések a Azure Resource Manager-sablonokban
+# <a name="syntax-and-expressions-in-azure-resource-manager-templates"></a>Az Azure Resource Manager-sablonok szintaxisa és kifejezései
 
 A sablon alapszintű szintaxisa a JSON. A kifejezésekkel azonban a sablonban elérhető JSON-értékeket is kiterjesztheti.  A kifejezések szögletes zárójellel kezdődnek és végződnek: `[` és `]`. A kifejezés értékét a rendszer a sablon üzembe helyezésekor értékeli ki. A kifejezés lehet sztring, egész szám, logikai érték, tömb vagy objektum.
 

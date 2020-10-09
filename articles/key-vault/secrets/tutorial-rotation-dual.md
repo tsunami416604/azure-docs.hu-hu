@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 06/22/2020
 ms.author: jalichwa
 ms.openlocfilehash: 5da31d45e068f414c8afa38bcb46cdf1f790a9e5
-ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91843277"
 ---
 # <a name="automate-the-rotation-of-a-secret-for-resources-with-two-sets-of-authentication-credentials"></a>A titkos kulcs rotációjának automatizálása két hitelesítési hitelesítő adattal rendelkező erőforrásokhoz
@@ -202,10 +202,10 @@ az storage account keys list -n akvrotationstorage
 
 ## <a name="available-key-vault-dual-credential-rotation-functions"></a>Elérhető Key Vault kettős hitelesítő adatok elforgatási funkciói
 
-- [Storage-fiók](https://github.com/jlichwa/KeyVault-Rotation-StorageAccountKey-PowerShell)
+- [Tárfiók](https://github.com/jlichwa/KeyVault-Rotation-StorageAccountKey-PowerShell)
 - [Redis Cache](https://github.com/jlichwa/KeyVault-Rotation-RedisCacheKey-PowerShell)
 
-## <a name="learn-more"></a>További információ
+## <a name="learn-more"></a>Tudjon meg többet
 - Áttekintés: [Key Vault figyelése Azure Event Grid](../general/event-grid-overview.md)
 - Útmutató: az [első függvény létrehozása a Azure Portalban](../../azure-functions/functions-create-first-azure-function.md)
 - Útmutató: [e-mailek fogadása a Key Vault titkos változásairól](../general/event-grid-logicapps.md)

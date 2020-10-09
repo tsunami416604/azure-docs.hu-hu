@@ -6,10 +6,10 @@ ms.topic: tutorial
 ms.date: 10/08/2020
 ms.custom: mvc
 ms.openlocfilehash: 3ce4cff94bb565ce3dd9bc4e9307a2b21c4c0ac5
-ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91851135"
 ---
 # <a name="tutorial-run-a-parallel-r-simulation-with-azure-batch"></a>Oktatóanyag: párhuzamos R-szimuláció futtatása az Azure Batch segítségével
@@ -250,7 +250,7 @@ Miután a feladat befejeződött, automatikusan törlődik. Ha a fürtre már ni
 stopCluster(cluster)
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebben az oktatóanyagban a következőket sajátította el:
 
 > [!div class="checklist"]

@@ -13,7 +13,7 @@ ms.openlocfilehash: 76b50e2812be79a374143010e0c0212ca1b97f84
 ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91856255"
 ---
 # <a name="tutorial-develop-a-c-iot-edge-module-for-linux-devices"></a>Oktatóanyag: C IoT Edge modul fejlesztése Linux rendszerű eszközökhöz

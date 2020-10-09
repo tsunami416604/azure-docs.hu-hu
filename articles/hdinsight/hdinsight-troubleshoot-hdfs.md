@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.date: 04/27/2020
 ms.custom: seodec18
 ms.openlocfilehash: 6de9e31c3e79f6d704ef8b4749d41329dcc0bddb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82190680"
 ---
 # <a name="troubleshoot-apache-hadoop-hdfs-by-using-azure-hdinsight"></a>Az Apache Hadoop HDFS hibaelhárítása az Azure HDInsighttal
@@ -104,7 +104,7 @@ Caused by: com.microsoft.azure.storage.StorageException: The request body is too
 
 Az Azure Storage-ba való íráskor a HDInsight-fürtök HBase alapértelmezett értéke 256 KB. Habár HBase API-k vagy REST API-k esetében is működik, hibaüzenetet eredményez a `hadoop` vagy a `hdfs dfs` parancssori segédeszközök használatakor.
 
-### <a name="resolution"></a>Megoldás:
+### <a name="resolution"></a>Feloldás
 
 `fs.azure.write.request.size`Nagyobb blokk méretének megadásához használja a következőt:. Ezt a módosítást használhatja használati alapon a (z `-D` ) paraméter használatával. A következő parancs egy példa erre a paraméterre a `hadoop` parancs használatával:
 

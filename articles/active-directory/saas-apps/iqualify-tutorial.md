@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/14/2019
 ms.author: jeedes
 ms.openlocfilehash: 8ecf37f9aa8a378e37e01cf6218f0f69e4e3bd7d
-ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91849584"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-iqualify-lms"></a>Oktatóanyag: Azure Active Directory Integration with iQualify LMS
@@ -133,7 +133,7 @@ Az Azure AD egyszeri bejelentkezés az iQualify LMS-sel való konfigurálásáho
 
 7. A **felhasználó attribútumai** párbeszédpanel **felhasználói jogcímek** szakaszában szerkessze a jogcímeket a **Szerkesztés ikon** használatával, vagy adja hozzá a jogcímeket az **új jogcím hozzáadása** paranccsal az SAML-token attribútum konfigurálásához a fenti képen látható módon, és hajtsa végre a következő lépéseket:
 
-    | Name (Név) | Forrás attribútum|
+    | Név | Forrás attribútum|
     | --- | --- |
     | e-mail | User. userPrincipalName |
     | first_name | User. givenName |

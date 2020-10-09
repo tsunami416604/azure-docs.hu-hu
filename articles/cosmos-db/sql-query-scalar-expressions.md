@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 05/17/2019
 ms.author: mjbrown
 ms.openlocfilehash: f8c98915ad3b682af00492acc7bc51672ec874a8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74870734"
 ---
 # <a name="scalar-expressions-in-azure-cosmos-db-sql-queries"></a>Skaláris kifejezések a Azure Cosmos DB SQL-lekérdezésekben
@@ -141,6 +141,6 @@ Az eredmény a következő:
 
 ## <a name="next-steps"></a>További lépések
 
-- [Bevezetés a Azure Cosmos DBba](introduction.md)
+- [Az Azure Cosmos DB bemutatása](introduction.md)
 - [.NET-minták Azure Cosmos DB](https://github.com/Azure/azure-cosmos-dotnet-v3)
 - [Segédlekérdezések](sql-query-subquery.md)

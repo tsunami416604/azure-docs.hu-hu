@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.custom: mvc
 ms.date: 09/30/2020
 ms.openlocfilehash: aad271875abb9024a1ecc7f45018c04d8c79ce95
-ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91842563"
 ---
 # <a name="tutorial-create-schedule-based-and-recurring-automation-workflows-with-azure-logic-apps"></a>Oktatóanyag: ütemezett és ismétlődő automatizálási munkafolyamatok létrehozása Azure Logic Apps
@@ -373,7 +373,7 @@ A logikai alkalmazás továbbra is fut, amíg le nem tiltja vagy nem törli az a
 
 1. A megjelenő megerősítő panelen adja meg az erőforráscsoport nevét, majd válassza a **Törlés**lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban létrehozott egy logikai alkalmazást, amely egy megadott ütemterv (hétköznap reggel) alapján ellenőrzi a forgalmat, és végrehajtja a műveletet (e-mailt küld), ha az utazási idő meghaladja a megadott korlátot. Ebből a témakörből megtudhatja, hogyan hozhat létre olyan logikai alkalmazást, amely levelezési listákat küld a jóváhagyásra az Azure-szolgáltatások, a Microsoft-szolgáltatások és más szolgáltatott szoftveres (SaaS) alkalmazások integrálásával.
 

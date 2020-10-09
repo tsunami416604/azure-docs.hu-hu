@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.custom: seo-dt-2019
 ms.date: 01/22/2018
 ms.openlocfilehash: 267c82981ca91dc8fd437222c80368b5ab6f4a46
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91320863"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-powershell"></a>Adatok növekményes betöltése Azure SQL Databaseról az Azure Blob Storage-ba a PowerShell használatával
@@ -720,7 +720,7 @@ Az oktatóanyag során egy olyan folyamatot fogunk létrehozni, amelyben két ke
     data_source_table | 2017-09-07 09:01:00.000
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az oktatóanyagban az alábbi lépéseket hajtotta végre:
 
 > [!div class="checklist"]

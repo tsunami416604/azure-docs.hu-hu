@@ -8,10 +8,10 @@ ms.author: nisgoel
 ms.reviewer: jasonh
 ms.date: 03/05/2020
 ms.openlocfilehash: d843b942702d335065a5f3798572e34c71b4cd0e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "78943966"
 ---
 # <a name="scenario-apache-hive-logs-are-filling-up-the-disk-space-on-the-head-nodes-in-azure-hdinsight"></a>Forgatókönyv: Apache Hive naplók kitöltik a lemezterületet az Azure HDInsight lévő fő csomópontokon
@@ -37,7 +37,7 @@ ambari_agent - HostCheckReportFileHandler.py - [54697] - ambari_agent.HostCheckR
 
 A speciális kaptár-log4j konfigurációk esetében a *log4j. Append. RFA. MaxBackupIndex* paraméter nincs megadva. A naplófájlok végtelen generációját okozza.
 
-## <a name="resolution"></a>Megoldás:
+## <a name="resolution"></a>Feloldás
 
 1. A Ambari-portálon navigáljon a kaptár összetevő összefoglalásához, és kattintson a `Configs` Tab gombra.
 

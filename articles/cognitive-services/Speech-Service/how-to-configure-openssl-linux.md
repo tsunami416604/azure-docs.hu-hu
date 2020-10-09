@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/16/2020
 ms.author: jhakulin
 ms.openlocfilehash: 42960c25c4124203b64646fdc5cbca833b246e21
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81683164"
 ---
 # <a name="configure-openssl-for-linux"></a>Linuxos OpenSSL konfigurálása
@@ -31,22 +31,22 @@ Az Ubuntu/Debian-alapú rendszerek kimenetének a következőnek kell lennie:
 OPENSSLDIR: "/usr/lib/ssl"
 ```
 
-Győződjön meg arról, `certs` hogy a OPENSSLDIR alatt van-e alkönyvtár. A fenti példában lenne `/usr/lib/ssl/certs`.
+Győződjön meg arról, hogy a OPENSSLDIR alatt van-e `certs` alkönyvtár. A fenti példában lenne `/usr/lib/ssl/certs` .
 
 * Ha van, `/usr/lib/ssl/certs` és számos egyéni tanúsítványfájl tartalmaz ( `.crt` vagy `.pem` kiterjesztéssel), nincs szükség további műveletekre.
 
-* Ha a OPENSSLDIR valami más, `/usr/lib/ssl` mint a és/vagy a több különálló fájl helyett egyetlen tanúsítványfájl-fájl, meg kell adnia egy megfelelő SSL környezeti változót, hogy jelezze, hol találhatók a tanúsítványok.
+* Ha a OPENSSLDIR valami más, mint a `/usr/lib/ssl` és/vagy a több különálló fájl helyett egyetlen tanúsítványfájl-fájl, meg kell adnia egy megfelelő SSL környezeti változót, hogy jelezze, hol találhatók a tanúsítványok.
 
 ## <a name="examples"></a>Példák
 
-- A `/opt/ssl`OPENSSLDIR. `certs` Van több vagy `.crt` `.pem` több fájllal rendelkező alkönyvtár.
-Állítsa be a `SSL_CERT_DIR` környezeti változót `/opt/ssl/certs` úgy, hogy a Speech SDK-t használó program futtatása előtt mutasson. Például:
+- A OPENSSLDIR `/opt/ssl` . Van `certs` több vagy több fájllal rendelkező alkönyvtár `.crt` `.pem` .
+Állítsa be a környezeti változót `SSL_CERT_DIR` úgy, hogy a `/opt/ssl/certs` Speech SDK-t használó program futtatása előtt mutasson. Például:
 ```bash
 export SSL_CERT_DIR=/opt/ssl/certs
 ```
 
-- A OPENSSLDIR `/etc/pki/tls` (például RHEL/CentOS-alapú rendszereken). `certs` Van alkönyvtár egy tanúsítványfájl-fájllal, például `ca-bundle.crt`:.
-A Speech SDK `SSL_CERT_FILE` -t használó program futtatása előtt állítsa be a környezeti változót úgy, hogy az adott fájlban mutasson. Például:
+- A OPENSSLDIR `/etc/pki/tls` (például RHEL/CentOS-alapú rendszereken). Van `certs` alkönyvtár egy tanúsítványfájl-fájllal, például: `ca-bundle.crt` .
+`SSL_CERT_FILE`A SPEECH SDK-t használó program futtatása előtt állítsa be a környezeti változót úgy, hogy az adott fájlban mutasson. Például:
 ```bash
 export SSL_CERT_FILE=/etc/pki/tls/certs/ca-bundle.crt
 ```

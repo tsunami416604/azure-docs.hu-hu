@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
 ms.openlocfilehash: 64156741437a6805b7060d2aaa67b8de5b4aad13
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91826439"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-flock"></a>Oktatóanyag: Azure Active Directory-integráció a Flocktal
@@ -73,7 +73,7 @@ Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a Flock
 Az Azure AD egyszeri bejelentkezés Flock használatával történő konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
 
 1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. A **[Flock egyszeri bejelentkezésének konfigurálása](#configure-flock-single-sign-on)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+2. A **[Flock egyszeri bejelentkezésének konfigurálása](#configure-flock-single-sign-on)** – az egyes Sign-On beállítások konfigurálása az alkalmazás oldalán.
 3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
 4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
 5. **[Hozzon létre egy Flock-teszt felhasználót](#create-flock-test-user)** – hogy rendelkezzen egy, a felhasználó Azure ad-képviseletéhez kapcsolódó Britta Simon-beli partnerével.
@@ -93,7 +93,7 @@ Az Azure AD egyszeri bejelentkezés Flock használatával történő konfigurál
 
     ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
+3. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
@@ -108,7 +108,7 @@ Az Azure AD egyszeri bejelentkezés Flock használatával történő konfigurál
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel és azonosítóval. Az értékek megszerzéséhez lépjen kapcsolatba a [Flock-ügyfél támogatási csoportjával](mailto:support@flock.com) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-4. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállítások alapján, és mentse a számítógépre.
+4. Az **egyszeres Sign-On beállítása az SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállítások alapján, és mentse azt a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozása](common/certificatebase64.png)
 
@@ -122,7 +122,7 @@ Az Azure AD egyszeri bejelentkezés Flock használatával történő konfigurál
 
     c. Kijelentkezési URL-cím
 
-### <a name="configure-flock-single-sign-on"></a>A Flock egyszeri bejelentkezésének konfigurálása
+### <a name="configure-flock-single-sign-on"></a>A Flock-Sign-On konfigurálása
 
 1. Egy másik böngészőablakban jelentkezzen be a Flock vállalati webhelyre rendszergazdaként.
 

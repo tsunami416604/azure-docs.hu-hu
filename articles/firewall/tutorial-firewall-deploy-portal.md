@@ -9,10 +9,10 @@ ms.date: 07/15/2020
 ms.author: victorh
 ms.custom: mvc
 ms.openlocfilehash: d6f72231e84650a17850932979b43c21dd045f30
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89069323"
 ---
 # <a name="tutorial-deploy-and-configure-azure-firewall-using-the-azure-portal"></a>Oktatóanyag: Az Azure Firewall üzembe helyezése és konfigurálása az Azure Portalon
@@ -61,7 +61,7 @@ Először is hozzon létre egy erőforráscsoportot, amely a tűzfal üzembe hel
 Az erőforráscsoport tartalmazza az oktatóanyag összes erőforrását.
 
 1. Jelentkezzen be az Azure Portalra a [https://portal.azure.com](https://portal.azure.com) webhelyen.
-2. A Azure Portal menüben válassza az **erőforráscsoportok** lehetőséget, vagy keresse meg és válassza ki az *erőforráscsoportok* lehetőséget bármely oldalon. Ezután válassza a **Hozzáadás**lehetőséget.
+2. A Azure Portal menüben válassza az **erőforráscsoportok** lehetőséget, vagy keresse meg és válassza ki az *erőforráscsoportok* lehetőséget bármely oldalon. Ezután válassza a **Hozzáadás** elemet.
 3. Az **erőforráscsoport neve**mezőbe írja be a *test-FW-RG*értéket.
 4. Az **Előfizetés** beállításnál válassza ki az előfizetését.
 5. Az **Erőforráscsoport helye** beállításnál válasszon ki egy helyet. Az összes létrehozott erőforrásnak azonos helyen kell lennie.
@@ -141,7 +141,7 @@ Helyezze üzembe a tűzfalat a virtuális hálózaton.
    |Válasszon egy virtuális hálózatot     |**Meglévő használata**: **test-FW-vn**|
    |Nyilvános IP-cím     |**Új hozzáadása**<br>**Név**:  **FW-pip**|
 
-5. Válassza a **Felülvizsgálat és létrehozás** lehetőséget.
+5. Válassza a **Felülvizsgálat + létrehozás** lehetőséget.
 6. Tekintse át az összegzést, majd válassza a **Létrehozás** lehetőséget a tűzfal létrehozásához.
 
    Az üzembe helyezés néhány percet vesz igénybe.
@@ -165,7 +165,7 @@ A **Workload-SN** alhálózatot konfigurálja úgy, hogy a kimenő alapértelmez
 11. Válassza a **Virtual Network**  >  **test-FW-vn**elemet.
 12. **Alhálózat**esetében válassza a **munkaterhelés-SN**lehetőséget. Győződjön meg arról, hogy csak a **munkaterhelés-SN** alhálózatot választotta ehhez az útvonalhoz, ellenkező esetben a tűzfal nem fog megfelelően működni.
 
-13. Kattintson az **OK** gombra.
+13. Válassza az **OK** lehetőséget.
 14. Válassza az **útvonalak** lehetőséget, majd válassza a **Hozzáadás**lehetőséget.
 15. Az **útvonal neve**mezőbe írja be a következőt: **FW-DG**.
 16. A **Címelőtag** mezőbe írja be a következőt: **0.0.0.0/0**.
@@ -173,7 +173,7 @@ A **Workload-SN** alhálózatot konfigurálja úgy, hogy a kimenő alapértelmez
 
     Az Azure Firewall valójában egy felügyelt szolgáltatás, de ebben a helyzetben a virtuális berendezés beállítás is használható.
 18. A **Következő ugrás címe** mezőbe írja be a tűzfal magánhálózati IP-címét, amelyet korábban feljegyzett.
-19. Kattintson az **OK** gombra.
+19. Válassza az **OK** lehetőséget.
 
 ## <a name="configure-an-application-rule"></a>Alkalmazásszabály konfigurálása
 
@@ -217,7 +217,7 @@ Ez az a hálózatszabály, amely lehetővé teszi a kimenő hozzáférést két 
 
 ## <a name="configure-a-dnat-rule"></a>DNAT-szabály konfigurálása
 
-Ez a szabály lehetővé teszi egy távoli asztal összekapcsolását az SRV-Work virtuális géppel a tűzfalon keresztül.
+Ez a szabály lehetővé teszi egy távoli asztal összekapcsolását a Srv-Work virtuális géppel a tűzfalon keresztül.
 
 1. Válassza ki a **NAT-szabály gyűjtemény** fület.
 2. Válassza a **NAT-szabálygyűjtemény hozzáadása**lehetőséget.
@@ -269,7 +269,7 @@ Most ellenőrizte, hogy a tűzfalszabályok működnek-e:
 
 A tűzfalhoz kapcsolódó erőforrásokat a következő oktatóanyagban is használhatja, vagy ha már nincs rá szükség, törölje a **Test-FW-RG** erőforráscsoportot, és vele együtt a tűzfalhoz kapcsolódó összes erőforrást.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Oktatóanyag: Az Azure Firewall naplóinak monitorozása](./tutorial-diagnostics.md)

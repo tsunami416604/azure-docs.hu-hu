@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 01/04/2019
 ms.author: junhan
 ms.openlocfilehash: d85e0e967dd802a77ccbc11b884d7a9f2891524d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81688094"
 ---
 # <a name="use-azure-iot-tools-for-visual-studio-code-for-azure-iot-hub-device-management"></a>A Visual Studio Code-hoz készült Azure IoT Tools használata az Azure IoT Hub-eszközök felügyeletéhez
@@ -22,7 +22,7 @@ Az [Azure IoT Tools](https://marketplace.visualstudio.com/items?itemName=vsciot-
 
 [!INCLUDE [iot-hub-basic](../../includes/iot-hub-basic-whole.md)]
 
-| Felügyeleti lehetőség          | Tevékenység                    |
+| Felügyeleti lehetőség          | Feladat                    |
 |----------------------------|--------------------------------|
 | Közvetlen metódusok             | Hajtson végre olyan eszközt, amely elindítja vagy leállítja az üzenetek küldését vagy az eszköz újraindítását.                                        |
 | Írásvédett eszköz – Twin           | Egy eszköz jelentett állapotának beolvasása. Az eszköz például azt jelenti, hogy a LED azonnal villog.                                    |
@@ -43,7 +43,7 @@ Megismerheti a Visual Studio Code-hoz készült Azure IoT Tools használatát a 
 
 A Visual Studio Code-hoz készült Azure IoT Tools futtatása különböző felügyeleti lehetőségekkel.
 
-## <a name="what-you-need"></a>Mi szükséges
+## <a name="what-you-need"></a>Amire szükség lesz
 
 * Aktív Azure-előfizetés.
 * Az előfizetéshez tartozó Azure IoT hub.

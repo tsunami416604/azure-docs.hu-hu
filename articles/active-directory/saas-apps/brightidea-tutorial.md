@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/23/2019
 ms.author: jeedes
 ms.openlocfilehash: 75e4937966c549c4d815a8776c70aa6366abe3e0
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91740795"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-brightidea"></a>Oktatóanyag: Azure Active Directory integráció a Brightidea
@@ -76,7 +76,7 @@ Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a Brigh
 Az Azure AD egyszeri bejelentkezés Brightidea való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
 
 1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. **[Brightidea egyszeri bejelentkezés konfigurálása](#configure-brightidea-single-sign-on)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+2. **[Brightidea egyszeri bejelentkezés konfigurálása](#configure-brightidea-single-sign-on)** – az egyes Sign-On beállítások konfigurálása az alkalmazás oldalán.
 3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
 4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
 5. **[Hozzon létre Brightidea-teszt felhasználót](#create-brightidea-test-user)** – hogy a Brightidea Britta, a felhasználó Azure ad-képviseletéhez kapcsolódó partnerrel rendelkezzen.
@@ -96,7 +96,7 @@ Az Azure AD egyszeri bejelentkezés Brightidea való konfigurálásához hajtsa 
 
     ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
+3. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
@@ -123,7 +123,7 @@ Az Azure AD egyszeri bejelentkezés Brightidea való konfigurálásához hajtsa 
 
     A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:  `https://<SUBDOMAIN>.brightidea.com`
 
-4. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
+4. Az **egyszeri Sign-On beállítása az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozása](common/metadataxml.png)
 
@@ -137,7 +137,7 @@ Az Azure AD egyszeri bejelentkezés Brightidea való konfigurálásához hajtsa 
 
     c. Kijelentkezési URL-cím
 
-### <a name="configure-brightidea-single-sign-on"></a>Brightidea egyszeri bejelentkezés konfigurálása
+### <a name="configure-brightidea-single-sign-on"></a>Brightidea egyetlen Sign-On konfigurálása
 
 1. Egy másik böngészőablakban jelentkezzen be a Brightidea-be a rendszergazdai hitelesítő adatok használatával.
 

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/06/2020
 ms.author: shono
 ms.openlocfilehash: 1fb30cc0634224213dc9a188a16902e07d379904
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82127770"
 ---
 # <a name="select-a-domain-for-a-custom-vision-project"></a>Tartomány kiválasztása Custom Vision projekthez
@@ -23,17 +23,17 @@ A Custom Vision projekt Beállítások paneljén kiválaszthatja a projekt tarto
 
 ## <a name="image-classification"></a>Képbesorolás
 
-|Domain|Cél|
+|Tartomány|Cél|
 |---|---|
 |__Általános__| A képbesorolási feladatok széles körére optimalizált. Ha a többi tartomány egyike sem megfelelő, vagy nem biztos benne, hogy melyik tartományt szeretné kiválasztani, válassza ki az általános tartományt.|
 |__Élelmiszer__|Az ételek fényképeihez optimalizált, ahogy azt egy étterem menüjében láthatja. Ha egyéni gyümölcsökből vagy zöldségekből származó fényképeket szeretne osztályozni, használja az élelmiszer-tartományt.|
-|__Arcrész__|Felismerhető tereptárgyak számára optimalizált, természetes és mesterséges is. Ez a tartomány akkor működik a legjobban, ha a tereptárgy jól látható a fényképben. Ez a tartomány akkor is működik, ha a tereptárgyat az előttük lévő személyek kis mértékben akadályozzák.|
-|__Kiskereskedelem__|A vásárlási katalógusban vagy a vásárlási webhelyen található rendszerképekre optimalizált. Ha a ruhák, nadrágok és ingek között nagy pontosságú osztályozást szeretne, használja ezt a tartományt.|
+|__Arcrészek__|Felismerhető tereptárgyak számára optimalizált, természetes és mesterséges is. Ez a tartomány akkor működik a legjobban, ha a tereptárgy jól látható a fényképben. Ez a tartomány akkor is működik, ha a tereptárgyat az előttük lévő személyek kis mértékben akadályozzák.|
+|__Retail__|A vásárlási katalógusban vagy a vásárlási webhelyen található rendszerképekre optimalizált. Ha a ruhák, nadrágok és ingek között nagy pontosságú osztályozást szeretne, használja ezt a tartományt.|
 |__Kompakt tartományok__| Az Edge-eszközök valós idejű besorolásának korlátaira optimalizált.|
 
 ## <a name="object-detection"></a>Objektumészlelés
 
-|Domain|Cél|
+|Tartomány|Cél|
 |---|---|
 |__Általános__| Az objektum-észlelési feladatok széles körére optimalizált. Ha a többi tartomány egyike sem megfelelő, vagy nem biztos benne, hogy melyik tartományt szeretné kiválasztani, válassza ki az általános tartományt.|
 |__Embléma__|A képeken található márka emblémák keresésére optimalizált.|
@@ -42,12 +42,12 @@ A Custom Vision projekt Beállítások paneljén kiválaszthatja a projekt tarto
 
 ## <a name="compact-domains"></a>Kompakt tartományok
 
-A kompakt tartományok által generált modellek helyileg is futtathatók. A modell teljesítménye a kiválasztott tartománytól függ. Az alábbi táblázatban bejelentjük a modell méretét és következtetéseit az Intel Desktop CPU-ban és az NVidia GPU \[1\]-ben. 
+A kompakt tartományok által generált modellek helyileg is futtathatók. A modell teljesítménye a kiválasztott tartománytól függ. Az alábbi táblázatban bejelentjük a modell méretét és következtetéseit az Intel Desktop CPU-ban és az NVidia GPU \[ 1-ben \] . 
 
 > [!NOTE]
 > Ezek a számok nem tartalmazzák az előfeldolgozást és a utófeldolgozó időt.
 
-|Tevékenység|Domain|Modell mérete|CPU-következtetési idő|GPU-következtetési idő|
+|Feladat|Tartomány|Modell mérete|CPU-következtetési idő|GPU-következtetési idő|
 |---|---|---|---|---|
 |Osztályozás|General (compact) (Általános (kompakt))|5 MB|13 MS|5 MS|
 |Objektumészlelés|General (compact) (Általános (kompakt))|45 MB|35 MS|5 MS|
@@ -70,4 +70,4 @@ Az _általános_ _, a_ _tereptárgyak_és a _kiskereskedelmi_ célokra szolgál�
 >[!IMPORTANT]
 >Nincs garancia arra, hogy az exportált modellek pontosan ugyanazt eredményezik, mint az előrejelzési API a felhőben. A futó platform enyhe eltérése vagy az előfeldolgozás megvalósítása nagyobb különbséget eredményezhet a modell kimenetében. Az előfeldolgozási logika részleteiért tekintse meg ezt a [dokumentumot](quickstarts/image-classification.md).
 
-\[1\] Intel Xeon E5 – 2690 CPU és NVIDIA Tesla M60
+\[1 \] Intel Xeon E5 – 2690 CPU és NVIDIA Tesla M60

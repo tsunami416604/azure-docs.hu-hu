@@ -9,10 +9,10 @@ ms.devlang: php
 ms.topic: sample
 ms.date: 07/23/2020
 ms.openlocfilehash: 26381d03598485598f0f72242862edd191e9bd30
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91318755"
 ---
 # <a name="how-to-use-azure-storage-table-service-or-the-azure-cosmos-db-table-api-from-php"></a>Az Azure Table Storage szolgáltatás és az Azure Cosmos DB Table API használata a PHP segítségével
@@ -516,7 +516,7 @@ catch(ServiceException $e){
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy megismerte az Azure Table Service és az Azure Cosmos DB alapjait, az alábbi hivatkozásokra kattintva tudhat meg többet.
 

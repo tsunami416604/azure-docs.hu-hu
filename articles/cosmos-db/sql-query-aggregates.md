@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 03/16/2020
 ms.author: tisande
 ms.openlocfilehash: 24acd1e9c13320244ff4c27abd13abeda6f70b2b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "79464461"
 ---
 # <a name="aggregate-functions-in-azure-cosmos-db"></a>Összesítő függvények a Azure Cosmos DBban
@@ -82,6 +82,6 @@ Ezek az összesített rendszerfunkciók kihasználják a [tartomány indexét](i
 
 ## <a name="next-steps"></a>További lépések
 
-- [Bevezetés a Azure Cosmos DBba](introduction.md)
+- [Az Azure Cosmos DB bemutatása](introduction.md)
 - [Rendszerfüggvények](sql-query-system-functions.md)
 - [Felhasználó által definiált függvények](sql-query-udfs.md)

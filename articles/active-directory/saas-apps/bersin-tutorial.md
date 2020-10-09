@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/19/2019
 ms.author: jeedes
 ms.openlocfilehash: c032d8a5dc6cbfe181dccc6c7b4fd1db35a9a3a9
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91741474"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bersin"></a>Oktatóanyag: Azure Active Directory integráció a Bersin
@@ -72,7 +72,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezést konfigurálhatja és tes
 Az Azure AD egyszeri bejelentkezés Bersin való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
 
 1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. **[Bersin egyszeri bejelentkezés konfigurálása](#configure-bersin-single-sign-on)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+2. **[Bersin egyszeri bejelentkezés konfigurálása](#configure-bersin-single-sign-on)** – az egyes Sign-On beállítások konfigurálása az alkalmazás oldalán.
 3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
 4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
 5. **[Hozzon létre Bersin-teszt felhasználót](#create-bersin-test-user)** – hogy a Bersin Britta, a felhasználó Azure ad-képviseletéhez kapcsolódó partnerrel rendelkezzen.
@@ -92,7 +92,7 @@ Az Azure AD egyszeri bejelentkezés Bersin való konfigurálásához hajtsa vég
 
     ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
+3. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
@@ -112,7 +112,7 @@ Az Azure AD egyszeri bejelentkezés Bersin való konfigurálásához hajtsa vég
 
     A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:  `https://www.bersin.com/Login.aspx`
 
-6. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
+6. Az **egyszeres Sign-On beállítása SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozása](common/metadataxml.png)
 
@@ -126,7 +126,7 @@ Az Azure AD egyszeri bejelentkezés Bersin való konfigurálásához hajtsa vég
 
     c. Kijelentkezési URL-cím
 
-### <a name="configure-bersin-single-sign-on"></a>Bersin egyszeri bejelentkezés konfigurálása
+### <a name="configure-bersin-single-sign-on"></a>Bersin egyetlen Sign-On konfigurálása
 
 Ha az egyszeri bejelentkezést szeretné konfigurálni a **Bersin** oldalon, küldje el a letöltött **összevonási metaadatokat tartalmazó XML-fájlt** és a megfelelő másolt url-címeket a Azure Portalról a [Bersin támogatási csapatához](mailto:ramansabde@gmail.com). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
 

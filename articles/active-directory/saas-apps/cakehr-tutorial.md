@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 10/16/2019
 ms.author: jeedes
 ms.openlocfilehash: 8464d8918ccb6351de06dcba9a355e93c2cd97cd
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91740343"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-cakehr"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a CakeHR
@@ -84,7 +84,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
     b. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<yourcakedomain>.cake.hr/services/saml/consume`
     > [!NOTE]
-    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel és a válasz URL-címével. Az értékek lekéréséhez forduljon a CakeHR ügyfélszolgálati [csapatához](mailto:info@cake.hr) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges Sign-On URL-címmel és a válasz URL-címével. Az értékek lekéréséhez forduljon a CakeHR ügyfélszolgálati [csapatához](mailto:info@cake.hr) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
 1. Az **SAML aláíró tanúsítvány** szakaszban kattintson a **Szerkesztés** gombra az **SAML aláíró tanúsítvány** párbeszédpanel megnyitásához.
 

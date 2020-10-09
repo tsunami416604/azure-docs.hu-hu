@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/07/2019
 ms.author: mbaldwin
 ms.openlocfilehash: 02e13ce81ed2f11c0bb69015a4864c4a1ad55593
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81430967"
 ---
 # <a name="monitor-and-manage-certificate-creation"></a>Tanúsítvány-létrehozás monitorozása és kezelése
@@ -58,7 +58,7 @@ A következő példákban egy "mydigicert" nevű objektumra van szükség ahhoz,
 }
 ```
 
-### <a name="response"></a>Válasz
+### <a name="response"></a>Reagálás
 
 ```
 StatusCode: 202, ReasonPhrase: 'Accepted'
@@ -84,16 +84,16 @@ Location: “https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api
 |GET|`https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}`|
 
 ### <a name="request"></a>Kérés
-GET`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"`
+GET `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"`
 
 VAGY
 
-GET`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"`
+GET `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"`
 
 > [!NOTE]
 > Ha *request_id* van megadva a lekérdezésben, úgy viselkedik, mint egy szűrő. Ha a lekérdezésben és a függőben lévő objektumban lévő *request_id* eltérnek, a rendszer a 404-es HTTP-állapotkódot adja vissza.
 
-### <a name="response"></a>Válasz
+### <a name="response"></a>Reagálás
 
 ```
 StatusCode: 200, ReasonPhrase: 'OK'
@@ -119,13 +119,13 @@ StatusCode: 200, ReasonPhrase: 'OK'
 |------------|-----------------|
 |GET|`https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}`|
 
-GET`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"`
+GET `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"`
 
 VAGY
 
-GET`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"`
+GET `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"`
 
-### <a name="response"></a>Válasz
+### <a name="response"></a>Reagálás
 
 ```
 StatusCode: 200, ReasonPhrase: 'OK'
@@ -151,13 +151,13 @@ StatusCode: 200, ReasonPhrase: 'OK'
 |------------|-----------------|
 |GET|`https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}`|
 
-GET`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"`
+GET `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"`
 
 VAGY
 
-GET`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"`
+GET `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"`
 
-### <a name="response"></a>Válasz
+### <a name="response"></a>Reagálás
 
 ```
 StatusCode: 200, ReasonPhrase: 'OK'
@@ -190,13 +190,13 @@ Egy függő objektumot törölheti vagy felülírhat egy létrehozási/importál
 |GET|`https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}`|
 
 ### <a name="request"></a>Kérés
-GET`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"`
+GET `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"`
 
 VAGY
 
-GET`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"`
+GET `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"`
 
-### <a name="response"></a>Válasz
+### <a name="response"></a>Reagálás
 
 ```
 StatusCode: 404, ReasonPhrase: 'Not Found'
@@ -242,7 +242,7 @@ Ha egy függőben lévő kérelem állapota "Inprogress", a létrehozás (és az
 }
 ```
 
-### <a name="response"></a>Válasz
+### <a name="response"></a>Reagálás
 
 ```
 StatusCode: 409, ReasonPhrase: 'Conflict'
@@ -273,7 +273,7 @@ Ha a x509-tanúsítvány létrehozására irányuló kérelem valamilyen okból 
 
 ```
 
-### <a name="response"></a>Válasz
+### <a name="response"></a>Reagálás
 
 ```json
 StatusCode: 403, ReasonPhrase: 'Forbidden'
@@ -294,11 +294,11 @@ Csak törlésre lehet szükség. Egy kérelem vagy nem törölhető. Ha egy kér
 |JAVÍTÁS|`https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}`|
 
 ### <a name="request"></a>Kérés
-JAVÍTÁS`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"`
+JAVÍTÁS `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"`
 
 VAGY
 
-JAVÍTÁS`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"`
+JAVÍTÁS `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"`
 
 ```json
 {
@@ -307,7 +307,7 @@ JAVÍTÁS`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api
 
 ```
 
-### <a name="response"></a>Válasz
+### <a name="response"></a>Reagálás
 
 ```
 StatusCode: 200, ReasonPhrase: 'OK'
@@ -334,13 +334,13 @@ StatusCode: 200, ReasonPhrase: 'OK'
 |DELETE|`https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}`|
 
 ### <a name="request"></a>Kérés
-TÖRLÉSE`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"`
+TÖRLÉSE `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}&request_id=a76827a18b63421c917da80f28e9913d"`
 
 VAGY
 
-TÖRLÉSE`“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"`
+TÖRLÉSE `“https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api-version={api-version}"`
 
-### <a name="response"></a>Válasz
+### <a name="response"></a>Reagálás
 
 ```
 StatusCode: 200, ReasonPhrase: 'OK'
@@ -379,7 +379,7 @@ Létrehozhat egy tetszőleges HITELESÍTÉSSZOLGÁLTATÓval kiadott tanúsítvá
 
 ```
 
-### <a name="response"></a>Válasz
+### <a name="response"></a>Reagálás
 
 ```
 StatusCode: 202, ReasonPhrase: 'Accepted'
@@ -414,9 +414,9 @@ Location: “https://mykeyvault.vault.azure.net/certificates/mycert1/pending?api
 
 |Elem neve|Kötelező|Típus|Verzió|Leírás|
 |------------------|--------------|----------|-------------|-----------------|
-|x5c|Igen|tömb|\<introducing version>|X509-tanúsítványlánc alap 64 sztring tömbként.|
+|x5c|Igen|array|\<introducing version>|X509-tanúsítványlánc alap 64 sztring tömbként.|
 
-### <a name="response"></a>Válasz
+### <a name="response"></a>Reagálás
 
 ```
 StatusCode: 201, ReasonPhrase: 'Created'

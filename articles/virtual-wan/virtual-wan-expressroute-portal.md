@@ -9,10 +9,10 @@ ms.date: 10/07/2020
 ms.author: cherylmc
 Customer intent: As someone with a networking background, I want to connect my corporate on-premises network(s) to my VNets using Virtual WAN and ExpressRoute.
 ms.openlocfilehash: 50b86c4c86391b6ffdee18cdadbdddbdff8642a8
-ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91841135"
 ---
 # <a name="tutorial-create-an-expressroute-association-using-azure-virtual-wan"></a>Oktatóanyag: ExpressRoute-társítás létrehozása az Azure Virtual WAN használatával
@@ -153,6 +153,6 @@ Ha szeretné, hogy az Azure-beli virtuális központ meghirdesse az alapértelme
 
    ![Alapértelmezett útvonal propagálása](./media/virtual-wan-expressroute-portal/defaultroute2.png "Alapértelmezett útvonal propagálása")
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A Virtual WAN-nal kapcsolatos további információkért lásd a [Virtual WAN áttekintő](virtual-wan-about.md) lapját.

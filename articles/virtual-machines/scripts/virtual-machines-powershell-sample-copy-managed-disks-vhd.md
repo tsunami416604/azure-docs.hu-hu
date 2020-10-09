@@ -14,10 +14,10 @@ ms.workload: infrastructure
 ms.date: 09/17/2018
 ms.author: ramankum
 ms.openlocfilehash: d76fda02f94f85126214de27d88079977824098d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91320132"
 ---
 # <a name="exportcopy-the-vhd-of-a-managed-disk-to-a-storage-account-in-different-region-with-powershell-windows"></a>Felügyelt lemez virtuális merevlemezének exportálása/másolása egy másik régióban lévő Storage-fiókba a PowerShell (Windows) használatával
@@ -45,7 +45,7 @@ A szkript a következő parancsokat használja egy felügyelt lemez SAS URI-azon
 | [New-AzureStorageContext](/powershell/module/azure.storage/new-azurestoragecontext) | Létrehozza egy tárfiókkörnyezetet a fióknév és -kulcs használatával. Ennek a környezetnek a használatával olvasási/írási műveletek hajthatók végre a tárfiókon. |
 | [Start-AzureStorageBlobCopy](/powershell/module/azure.storage/start-azurestorageblobcopy) | Másolatot készít egy pillanatkép mögöttes VHD-fájljáról egy tárfiókba |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Felügyelt lemez létrehozása VHD-ből](virtual-machines-windows-powershell-sample-create-managed-disk-from-vhd.md?toc=%2fpowershell%2fmodule%2ftoc.json)
 

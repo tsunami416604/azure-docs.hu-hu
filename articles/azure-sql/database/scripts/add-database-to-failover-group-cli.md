@@ -12,10 +12,10 @@ ms.author: mathoma
 ms.reviewer: sstein
 ms.date: 07/16/2019
 ms.openlocfilehash: 48f82dcc1fa9e1f6843df4e89daca6a01c57ed63
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91321448"
 ---
 # <a name="use-the-azure-cli-to-add-a-database-to-a-failover-group"></a>Adatbázis hozzáadása feladatátvételi csoporthoz az Azure CLI használatával
@@ -59,7 +59,7 @@ A szkript a következő parancsokat használja. A táblázatban lévő összes p
 | [az SQL db](/cli/azure/sql/db) | Adatbázis-parancsok. |
 | [az SQL feladatátvétel-csoport](/cli/azure/sql/failover-group) | Feladatátvételi csoport parancsai. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Azure CLI-vel kapcsolatos további információért lásd az [Azure CLI dokumentációját](/cli/azure).
 

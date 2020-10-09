@@ -12,10 +12,10 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: ac681bb13ccea49c7a2f566a6fcdb6adb8cec5bb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81683744"
 ---
 # <a name="understand-the-device-model-schema"></a>Az eszközmodell sémájának megismerése
@@ -71,7 +71,7 @@ A [devicemodels mappában](https://github.com/Azure/device-simulation-dotnet/tre
 
 A következő táblázat a legfelső szintű sémák bejegyzéseit ismerteti:
 
-| Séma bejegyzése | Description |
+| Séma bejegyzése | Leírás |
 | -- | --- |
 | `SchemaVersion` | A séma verziószáma mindig a `1.0.0` fájl formátumára vonatkozik. |
 | `Id` | Az eszköz modelljéhez tartozó egyedi azonosító. |
@@ -88,8 +88,8 @@ A `Simulation` szakaszban megadhatja a szimulált eszköz belső állapotát. Az
 
 Az eszköz állapotának definíciója két elemet tartalmaz:
 
-* `InitialState`meghatározza az eszköz állapot objektumának összes tulajdonságának kezdeti értékeit.
-* `Script`egy ütemezett JavaScript-fájlt azonosít, amely frissíti az eszköz állapotát. Ezt a parancsfájlt használhatja az eszköz által eljuttatott telemetria-értékek véletlenszerű megadására.
+* `InitialState` meghatározza az eszköz állapot objektumának összes tulajdonságának kezdeti értékeit.
+* `Script` egy ütemezett JavaScript-fájlt azonosít, amely frissíti az eszköz állapotát. Ezt a parancsfájlt használhatja az eszköz által eljuttatott telemetria-értékek véletlenszerű megadására.
 
 További információ az eszköz állapot objektumát frissítő JavaScript-fájlról: [az eszköz modellje működésének megismerése](../../articles/iot-accelerators/iot-accelerators-device-simulation-advanced-device.md).
 
@@ -158,9 +158,9 @@ Az alábbi példa egy JSON telemetria üzenetet küld 10 másodpercenként a `fl
 ]
 ```
 
-`MessageTemplate`meghatározza a szimulált eszköz által küldött JSON-üzenet szerkezetét. A helyőrzői a következő `MessageTemplate` szintaxist használják, ahol az az `${NAME}` `NAME` [eszköz állapot objektumának](#simulation)egyik kulcsa. A sztringeket idézőjelbe kell állítani, a számoknak nem kell szerepelniük.
+`MessageTemplate` meghatározza a szimulált eszköz által küldött JSON-üzenet szerkezetét. A helyőrzői a következő `MessageTemplate` szintaxist használják, ahol az az `${NAME}` `NAME` [eszköz állapot objektumának](#simulation)egyik kulcsa. A sztringeket idézőjelbe kell állítani, a számoknak nem kell szerepelniük.
 
-`MessageSchema`meghatározza a szimulált eszköz által küldött üzenet sémáját. Az üzenet sémája IoT Hub is közzé van téve, hogy a háttérbeli alkalmazások újra felhasználhassa az adatokat a bejövő telemetria értelmezéséhez.
+`MessageSchema` meghatározza a szimulált eszköz által küldött üzenet sémáját. Az üzenet sémája IoT Hub is közzé van téve, hogy a háttérbeli alkalmazások újra felhasználhassa az adatokat a bejövő telemetria értelmezéséhez.
 
 Jelenleg csak a JSON-üzenetek sémái használhatók. A sémában felsorolt mezők a következő típusokból állhatnak:
 
@@ -169,7 +169,7 @@ Jelenleg csak a JSON-üzenetek sémái használhatók. A sémában felsorolt mez
 * Szöveg
 * Logikai
 * Egész szám
-* Double
+* Dupla
 * DateTime
 
 Ha a telemetria üzeneteket különböző időközönként szeretné elküldeni, adjon hozzá több telemetria-típust a `Telemetry` tömbhöz. Az alábbi példa 10 másodpercenként küld hőmérséklet-és páratartalom-adatokat, valamint a fény állapotát percenként:

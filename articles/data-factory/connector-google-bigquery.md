@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/04/2019
 ms.openlocfilehash: 6751f64706444176f0df8f8fc0c6132e76b39b2d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81417321"
 ---
 # <a name="copy-data-from-google-bigquery-by-using-azure-data-factory"></a>Adatok másolása a Google BigQuery a Azure Data Factory használatával
@@ -38,7 +38,7 @@ A Data Factory egy beépített illesztőprogramot biztosít a kapcsolat engedél
 >[!NOTE]
 >Ez a Google BigQuery-összekötő a BigQuery API-kra épül. Ügyeljen arra, hogy a BigQuery korlátozza a bejövő kérések maximális számát, és a megfelelő kvótákat a projekten kívüli alapon kényszeríti ki, a [kvóták & korlátozások – API-kérelmek](https://cloud.google.com/bigquery/quotas#api_requests)esetében. Győződjön meg arról, hogy nem indít túl sok egyidejű kérelmet a fiókhoz.
 
-## <a name="get-started"></a>Első lépések
+## <a name="get-started"></a>Bevezetés
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -66,7 +66,7 @@ A Google BigQuery társított szolgáltatás a következő tulajdonságokat tám
 | clientSecret | A frissítési jogkivonat létrehozásához használt alkalmazás titka. Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). | Nem |
 | refreshToken | A Google által a BigQuery való hozzáférés engedélyezéséhez használt frissítési jogkivonat. Ismerje meg, hogyan [szerezhet be egyet a OAuth 2,0 hozzáférési jogkivonatok](https://developers.google.com/identity/protocols/OAuth2WebServer#obtainingaccesstokens) és [a közösségi blog](https://jpd.ms/getting-your-bigquery-refresh-token-for-azure-datafactory-f884ff815a59)beszerzéséhez. Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). | Nem |
 
-**Példa:**
+**Példa**
 
 ```json
 {
@@ -103,7 +103,7 @@ A Google BigQuery társított szolgáltatás a következő tulajdonságokat tám
 | trustedCertPath | A. PEM fájl teljes elérési útja, amely a kiszolgáló hitelesítéséhez használt megbízható HITELESÍTÉSSZOLGÁLTATÓI tanúsítványokat tartalmazza a TLS-kapcsolaton keresztül. Ez a tulajdonság csak akkor állítható be, ha a TLS-t saját üzemeltetésű Integration Runtime használja. Az alapértelmezett érték a hitesítésszolgáltatói. PEM fájl, amelyet az Integration Runtime telepített.  | Nem |
 | useSystemTrustStore | Megadja, hogy a rendszer a rendszermegbízhatósági tárolóból vagy egy megadott. PEM fájlból kíván-e HITELESÍTÉSSZOLGÁLTATÓI tanúsítványt használni. Az alapértelmezett érték: **hamis**.  | Nem |
 
-**Példa:**
+**Példa**
 
 ```json
 {
@@ -168,7 +168,7 @@ Az adatok Google BigQuery való másolásához állítsa a forrás típusát a m
 | típus | A másolási tevékenység forrásának Type tulajdonságát **GoogleBigQuerySource**értékre kell állítani. | Igen |
 | lekérdezés | Az egyéni SQL-lekérdezés használatával olvassa be az adatolvasást. Például: `"SELECT * FROM MyTable"`. | Nem (ha meg van adva a "táblanév" az adatkészletben) |
 
-**Példa:**
+**Példa**
 
 ```json
 "activities":[

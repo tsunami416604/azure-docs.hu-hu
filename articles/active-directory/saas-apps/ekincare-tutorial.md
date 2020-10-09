@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/05/2019
 ms.author: jeedes
 ms.openlocfilehash: 987a8676fa9f738b788b183a1f3d964c0d0b88ad
-ms.sourcegitcommit: d2222681e14700bdd65baef97de223fa91c22c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91826797"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-ekincare"></a>Oktatóanyag: Azure Active Directory integráció a eKincare
@@ -75,7 +75,7 @@ Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a eKinc
 Az Azure AD egyszeri bejelentkezés eKincare való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
 
 1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. **[EKincare egyszeri bejelentkezés konfigurálása](#configure-ekincare-single-sign-on)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+2. **[EKincare egyszeri bejelentkezés konfigurálása](#configure-ekincare-single-sign-on)** – az egyes Sign-On beállítások konfigurálása az alkalmazás oldalán.
 3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
 4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
 5. **[Hozzon létre eKincare-teszt felhasználót](#create-ekincare-test-user)** – hogy a eKincare Britta, a felhasználó Azure ad-képviseletéhez kapcsolódó partnerrel rendelkezzen.
@@ -95,11 +95,11 @@ Az Azure AD egyszeri bejelentkezés eKincare való konfigurálásához hajtsa v�
 
     ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
+3. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-4. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon hajtsa végre a következő lépéseket:
+4. Az **egyszeri Sign-On beállítása az SAML-vel** lapon hajtsa végre a következő lépéseket:
 
     ![eKincare tartomány és URL-címek egyszeri bejelentkezési adatai](common/idp-intiated.png)
 
@@ -110,13 +110,13 @@ Az Azure AD egyszeri bejelentkezés eKincare való konfigurálásához hajtsa v�
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosító és válasz URL-címmel. Az értékek lekéréséhez forduljon a EKincare ügyfélszolgálati [csapatához](mailto:tech@ekincare.com) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-5. a eKincare alkalmazás megadott formátumban várja az SAML-kijelentéseket. Konfigurálja a következő jogcímeket ehhez az alkalmazáshoz. Az attribútumok értékeit az alkalmazás-integráció lapon, a **felhasználói attribútumok** szakaszban kezelheti. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** gombra a **felhasználói attribútumok** párbeszédpanel megnyitásához.
+5. a eKincare alkalmazás megadott formátumban várja az SAML-kijelentéseket. Konfigurálja a következő jogcímeket ehhez az alkalmazáshoz. Az attribútumok értékeit az alkalmazás-integráció lapon, a **felhasználói attribútumok** szakaszban kezelheti. Az **egyszeres Sign-On beállítása az SAML-vel** lapon kattintson a **Szerkesztés** gombra a **felhasználói attribútumok** párbeszédpanel megnyitásához.
 
     ![A "felhasználó attribútumai" párbeszédpanelt a "szerkesztés" gomb kiválasztásával ábrázoló képernyőkép.](common/edit-attribute.png)
 
 6. A **felhasználó attribútumai** párbeszédpanel **felhasználói jogcímek** szakaszában szerkessze a jogcímeket a **Szerkesztés ikon** használatával, vagy adja hozzá a jogcímeket az **új jogcím hozzáadása** paranccsal az SAML-token attribútum konfigurálásához a fenti képen látható módon, és hajtsa végre a következő lépéseket: 
 
-    | Name (Név) | Forrás attribútum |
+    | Név | Forrás attribútum |
     | ---------------| --------------- |    
     | Alkalmazottkód | *User. extensionAttribute1* |
     | organizationid | *"uniquevalue"* |
@@ -140,7 +140,7 @@ Az Azure AD egyszeri bejelentkezés eKincare való konfigurálásához hajtsa v�
 
     : Kattintson a **Mentés** gombra.
 
-7. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
+7. Az **egyszeres Sign-On beállítása SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozása](common/metadataxml.png)
 
@@ -154,7 +154,7 @@ Az Azure AD egyszeri bejelentkezés eKincare való konfigurálásához hajtsa v�
 
     c. Kijelentkezési URL-cím
 
-### <a name="configure-ekincare-single-sign-on"></a>EKincare egyszeri bejelentkezés konfigurálása
+### <a name="configure-ekincare-single-sign-on"></a>EKincare egyetlen Sign-On konfigurálása
 
 Ha az egyszeri bejelentkezést szeretné konfigurálni a **eKincare** oldalon, el kell küldenie a letöltött **összevonási metaadatokat tartalmazó XML-fájlt** és a megfelelő másolt url-címeket a Azure Portal a [eKincare támogatási csapatának](mailto:tech@ekincare.com). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
 

@@ -10,10 +10,10 @@ ms.date: 05/08/2020
 ms.author: sngun
 ms.custom: devx-track-dotnet
 ms.openlocfilehash: 6772150338dd0d172f2f100c2aa8cae7175b18d6
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89051294"
 ---
 # <a name="tutorial-develop-an-aspnet-core-mvc-web-application-with-azure-cosmos-db-by-using-net-sdk"></a>Oktatóanyag: ASP.NET Core MVC-webalkalmazás fejlesztése a Azure Cosmos DB a .NET SDK használatával
@@ -71,7 +71,7 @@ A következő szakaszban új ASP.NET Core MVC-alkalmazást hoz létre.
 
 1. A **create a New Project (új projekt létrehozása**) területen keresse meg és válassza ki **ASP.net Core webalkalmazást** a C# nyelvhez. A folytatáshoz válassza a **Tovább** gombot.
 
-   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-new-project-dialog.png" alt-text="Új ASP.NET Core webalkalmazás-projekt létrehozása":::
+   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-new-project-dialog.png" alt-text="Képernyőkép az oktatóanyag által létrehozott teendők listája MVC-webalkalmazásról – ASP NET Core MVC oktatóanyag lépésről lépésre":::
 
 1. Az **új projekt konfigurálása**lapon nevezze el a Project *Todo* nevet, és válassza a **Létrehozás**lehetőséget.
 
@@ -87,9 +87,9 @@ Most, hogy rendelkezünk a megoldáshoz szükséges ASP.NET Core MVC Framework-k
 
 1. **Megoldáskezelő**kattintson a jobb gombbal a projektre, és válassza a **NuGet-csomagok kezelése**lehetőséget.
 
-1. A **NuGet csomagkezelő eszközben**keresse meg és válassza ki a **Microsoft. Azure. Cosmos**elemet. Válassza a **Telepítés** lehetőséget.
+1. A **NuGet csomagkezelő eszközben**keresse meg és válassza ki a **Microsoft. Azure. Cosmos**elemet. Válassza a **Telepítés** gombot.
 
-   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-nuget.png" alt-text="NuGet-csomag telepítése":::
+   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-nuget.png" alt-text="Képernyőkép az oktatóanyag által létrehozott teendők listája MVC-webalkalmazásról – ASP NET Core MVC oktatóanyag lépésről lépésre":::
 
    A Visual Studio letölti és telepíti a Azure Cosmos DB csomagot és annak függőségeit.
 
@@ -137,9 +137,9 @@ Ezután adja hozzá a következő nézeteket.
    * A **sablon**lapon válassza a **Létrehozás**lehetőséget.
    * A **modell osztályban**válassza az **elem (teendők) elemet. Modellek)**.
    * Válassza **az elrendezés használata lapot** , és írja be a *~/views/Shared/_Layout. cshtml*értéket.
-   * Válassza a **Hozzáadás** elemet.
+   * Válassza a **Hozzáadás** lehetőséget.
 
-   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-add-mvc-view.png" alt-text="Az MVC nézet hozzáadása párbeszédpanelt ábrázoló képernyőkép":::
+   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-add-mvc-view.png" alt-text="Képernyőkép az oktatóanyag által létrehozott teendők listája MVC-webalkalmazásról – ASP NET Core MVC oktatóanyag lépésről lépésre":::
 
 1. Ezután válassza a **Hozzáadás** lehetőséget, és hagyja, hogy a Visual Studio új sablon nézetet hozzon létre. Cserélje le a generált fájlban lévő kódot a következő tartalomra:
 
@@ -155,7 +155,7 @@ Ezután adja hozzá a következő nézeteket.
    * A **sablon** mezőben válassza a **Törlés**lehetőséget.
    * A **Model class** (Modellosztály) mezőben válassza ki az **Item (todo.Models)** elemet.
    * Válassza **az elrendezés használata lapot** , és írja be a *~/views/Shared/_Layout. cshtml*értéket.
-   * Válassza a **Hozzáadás** elemet.
+   * Válassza a **Hozzáadás** lehetőséget.
 
 1. Ezután válassza a **Hozzáadás** lehetőséget, és hagyja, hogy a Visual Studio új sablon nézetet hozzon létre. Cserélje le a generált fájlban lévő kódot a következő tartalomra:
 
@@ -186,7 +186,7 @@ Ezután adja hozzá a következő nézeteket.
    * A **Template** (Sablon) mezőben válassza az **Edit** (Szerkesztés) elemet.
    * A **Model class** (Modellosztály) mezőben válassza ki az **Item (todo.Models)** elemet.
    * Válassza **az elrendezés használata lapot** , és írja be a *~/views/Shared/_Layout. cshtml*értéket.
-   * Válassza a **Hozzáadás** elemet.
+   * Válassza a **Hozzáadás** lehetőséget.
 
 1. Ezután válassza a **Hozzáadás** lehetőséget, és hagyja, hogy a Visual Studio új sablon nézetet hozzon létre. Cserélje le a generált fájlban lévő kódot a következő tartalomra:
 
@@ -204,7 +204,7 @@ Végül pedig vegyen fel egy nézetet az összes elem beolvasásához a követke
    * A **Template** (Sablon) mezőben válassza a **List** (Lista) elemet.
    * A **Model class** (Modellosztály) mezőben válassza ki az **Item (todo.Models)** elemet.
    * Válassza **az elrendezés használata lapot** , és írja be a *~/views/Shared/_Layout. cshtml*értéket.
-   * Válassza a **Hozzáadás** elemet.
+   * Válassza a **Hozzáadás** lehetőséget.
 
 1. Ezután válassza a **Hozzáadás** lehetőséget, és hagyja, hogy a Visual Studio új sablon nézetet hozzon létre. Cserélje le a generált fájlban lévő kódot a következő tartalomra:
 
@@ -262,7 +262,7 @@ Először egy olyan osztályt fogunk felvenni, amely tartalmazza a Azure Cosmos 
 
 1. Az **állvány hozzáadása**területen válassza az **MVC vezérlő – üres** lehetőséget, majd válassza a **Hozzáadás**lehetőséget.
 
-   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-controller-add-scaffold.png" alt-text="MVC-vezérlő kiválasztása – üres a hozzáadási állványban":::
+   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-controller-add-scaffold.png" alt-text="Képernyőkép az oktatóanyag által létrehozott teendők listája MVC-webalkalmazásról – ASP NET Core MVC oktatóanyag lépésről lépésre":::
 
 1. Nevezze el az új vezérlő *ItemController*.
 
@@ -280,7 +280,7 @@ Az alkalmazás helyi számítógépen való teszteléséhez kövesse az alábbi 
 
 1. Nyomja le az F5 billentyűt a Visual Studióban az alkalmazás hibakeresési módban való létrehozásához. Ennek fel kell építenie az alkalmazást és el kell indítania egy böngészőt a korábban látott üres rácsoldallal:
 
-   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-create-an-item-a.png" alt-text="Az oktatóanyag által létrehozott teendők listázása webalkalmazás képernyőképe":::
+   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-create-an-item-a.png" alt-text="Képernyőkép az oktatóanyag által létrehozott teendők listája MVC-webalkalmazásról – ASP NET Core MVC oktatóanyag lépésről lépésre":::
    
    Ha az alkalmazás Ehelyett megnyílik a kezdőlapra, fűzze hozzá `/Item` az URL-címhez.
 
@@ -288,11 +288,11 @@ Az alkalmazás helyi számítógépen való teszteléséhez kövesse az alábbi 
 
 1. Kattintson a **Létrehozás** gombra. Az alkalmazás visszaküldi az **index** nézetet, és az elem megjelenik a listában. Több elemet is hozzáadhat a **Tennivalók** listájához.
 
-    :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-create-an-item.png" alt-text="Képernyőfelvétel az index nézetről":::
+    :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-create-an-item.png" alt-text="Képernyőkép az oktatóanyag által létrehozott teendők listája MVC-webalkalmazásról – ASP NET Core MVC oktatóanyag lépésről lépésre":::
   
 1. Válassza a lista **elem** melletti **Szerkesztés** lehetőséget. Az alkalmazás megnyitja a **szerkesztési** nézetet, ahol frissítheti az objektum bármely tulajdonságát, beleértve a **befejezett** jelzőt is. Ha a **kész** lehetőséget választja, és a **Mentés**gombra kattint, az alkalmazás a listában befejezettként jeleníti meg az **elemet** .
 
-   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-completed-item.png" alt-text="Képernyőfelvétel az index nézetről a befejezett négyzet bejelölve":::
+   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-completed-item.png" alt-text="Képernyőkép az oktatóanyag által létrehozott teendők listája MVC-webalkalmazásról – ASP NET Core MVC oktatóanyag lépésről lépésre":::
 
 1. Ellenőrizze a Azure Cosmos DB szolgáltatásban található adatállapotot a [Cosmos Explorer](https://cosmos.azure.com) vagy a Azure Cosmos DB Emulator adatkezelő használatával.
 
@@ -312,7 +312,7 @@ Most, hogy a teljes alkalmazás megfelelően működik az Azure Cosmos DB-adatb�
 
 1. Keresse meg a profilt, majd kattintson **az OK gombra**. Ezután keresse meg a szükséges Azure App Service, és kattintson **az OK gombra**.
 
-   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-app-service-2019.png" alt-text="A Visual Studio App Service párbeszédpanelje":::
+   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-app-service-2019.png" alt-text="Képernyőkép az oktatóanyag által létrehozott teendők listája MVC-webalkalmazásról – ASP NET Core MVC oktatóanyag lépésről lépésre":::
 
 Egy másik lehetőség egy új profil létrehozása:
 
@@ -324,16 +324,16 @@ Egy másik lehetőség egy új profil létrehozása:
 
 1. A **app Service**mezőben adja meg a webalkalmazás nevét és a megfelelő előfizetést, erőforráscsoportot és üzemeltetési csomagot, majd válassza a **Létrehozás**lehetőséget.
 
-   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-create-app-service-2019.png" alt-text="A Visual Studio App Service létrehozása párbeszédpanelje":::
+   :::image type="content" source="./media/sql-api-dotnet-application/asp-net-mvc-tutorial-create-app-service-2019.png" alt-text="Képernyőkép az oktatóanyag által létrehozott teendők listája MVC-webalkalmazásról – ASP NET Core MVC oktatóanyag lépésről lépésre":::
 
 Néhány másodpercen belül a Visual Studio közzéteszi a webalkalmazást, és elindít egy böngészőt, amelyen megtekintheti az Azure-ban futó projektet.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban megtanulta, hogyan hozhat létre egy ASP.NET Core MVC-webalkalmazást. Az alkalmazás elérheti Azure Cosmos DB tárolt adatait. Most már folytathatja ezeket az erőforrásokat:
 
 * [Particionálás az Azure Cosmos DB-ben](./partitioning-overview.md)
-* [SQL-lekérdezések – első lépések](./how-to-sql-query.md)
+* [Bevezetés az SQL-lekérdezések használatába](./how-to-sql-query.md)
 * [Adatok modellezése és particionálása az Azure Cosmos DB-ben való életből vett példa használatával](./how-to-model-partition-example.md)
 
 [Visual Studio Express]: https://www.visualstudio.com/products/visual-studio-express-vs.aspx

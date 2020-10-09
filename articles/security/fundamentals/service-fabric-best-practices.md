@@ -8,10 +8,10 @@ ms.subservice: security-fundamentals
 ms.topic: article
 ms.date: 01/16/2019
 ms.openlocfilehash: 4548bf77c01194802c2e6203bcbf9fbd240370a2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81461650"
 ---
 # <a name="azure-service-fabric-security-best-practices"></a>Az Azure Service Fabric ajánlott biztonsági eljárásai
@@ -60,7 +60,7 @@ A fürt biztonságának különböző technológiákkal történő megvalósít�
 -   Csomópontok közötti biztonság: Ez a forgatókönyv biztosítja a virtuális gépek és a fürtben lévő számítógépek közötti kommunikációt. Ez a biztonsági mód biztosítja, hogy csak azok a számítógépek tárolhatnak alkalmazásokat és szolgáltatásokat a fürtben, amelyek jogosultak a fürthöz való csatlakozásra.
 Ebben az esetben az Azure-on futó fürtök vagy a Windows rendszeren futó önálló fürtök a Windows Server rendszerű számítógépek [tanúsítvány](../../service-fabric/service-fabric-windows-cluster-x509-security.md) -vagy [Windows-biztonsági](../../service-fabric/service-fabric-windows-cluster-windows-security.md) szolgáltatását használhatják.
 -   Ügyfél és csomópont közötti biztonság: Ez a forgatókönyv a Service Fabric-ügyfél és a fürt egyes csomópontjai közötti kommunikációt biztosítja.
--   Szerepköralapú Access Control (RBAC): Ez a forgatókönyv különálló identitásokat (tanúsítványokat, Azure AD-t stb.) használ a fürthöz hozzáférő minden rendszergazda és felhasználói ügyfél szerepkörhöz. A szerepkör-identitásokat a fürt létrehozásakor kell megadnia.
+-   Role-Based Access Control (RBAC): Ez a forgatókönyv különálló identitásokat (tanúsítványokat, Azure AD-t stb.) használ a fürthöz hozzáférő minden rendszergazda és felhasználói ügyfél szerepkörhöz. A szerepkör-identitásokat a fürt létrehozásakor kell megadnia.
 
 >[!NOTE]
 >**Biztonsági javaslat Azure-fürtökhöz:** Az Azure AD biztonsági szolgáltatásával hitelesítheti az ügyfeleket és a tanúsítványokat a csomópontok közötti biztonság érdekében.

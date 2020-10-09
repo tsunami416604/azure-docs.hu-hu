@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 3/11/2019
 ms.author: rohink
 ms.openlocfilehash: cc36eca0b39db5188be7a63ffb148cc0f4cf30bf
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91252874"
 ---
 # <a name="tutorial-create-dns-records-in-a-custom-domain-for-a-web-app"></a>Oktatóanyag: Webalkalmazások DNS-rekordjainak létrehozása egyéni tartományban 
@@ -184,7 +184,7 @@ Mindkét URL-cím esetében ugyanannak az oldalnak kell megjelennie. Például:
 
 Ha már nincs szüksége a jelen oktatóanyagban létrehozott erőforrásokra, törölheti a **myresourcegroup** erőforráscsoportot.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ismerje meg az Azure DNS Private Zones létrehozására szolgáló eljárást.
 

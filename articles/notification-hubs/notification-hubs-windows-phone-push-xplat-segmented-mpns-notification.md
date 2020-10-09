@@ -18,10 +18,10 @@ ms.author: sethm
 ms.reviewer: jowargo
 ms.lastreviewed: 01/04/2019
 ms.openlocfilehash: 67700ec643a27f8ae5c581fe9de8e3295a1925e5
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88998237"
 ---
 # <a name="tutorial-send-push-notifications-to-specific-windows-phones-using-azure-notification-hubs"></a>Oktatóanyag: leküldéses értesítések küldése adott Windows Phone-telefonokra az Azure Notification Hubs
@@ -308,7 +308,7 @@ Az alkalmazás ezzel elkészült, és képes egy kategóriakészlet tárolásár
 
     ![Értesítési üzenet][3]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban elsajátította, hogy hogyan küldhet leküldéses értesítéseket olyan adott eszközökre, amelyek a regisztrációjukhoz társított címkékkel rendelkeznek. Ha szeretné megtudni, hogy hogyan küldhet értesítéseket adott felhasználóknak, akik egyszerre akár több eszközt is használhatnak, lépjen tovább a következő oktatóanyagra: 
 

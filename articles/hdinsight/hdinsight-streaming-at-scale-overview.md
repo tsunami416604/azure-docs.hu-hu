@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 12/17/2019
 ms.openlocfilehash: 006310f1a0efa69881bbe6d6ea4403b9c50402e6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75435395"
 ---
 # <a name="streaming-at-scale-in-hdinsight"></a>Ipari léptékű streamelés a HDInsightban
@@ -35,7 +35,7 @@ A Apache Storm egy elosztott, hibatűrő, nyílt forráskódú számítási rend
 
 További információ: [What is Apache Storm on Azure HDInsight?](storm/apache-storm-overview.md).
 
-## <a name="spark-streaming"></a>Spark streaming
+## <a name="spark-streaming"></a>Spark Streaming
 
 A Spark streaming egy Spark-bővítmény, amely lehetővé teszi, hogy ugyanazt a kódot használja, amelyet a kötegelt feldolgozáshoz használ. Egyszerre egyesítheti a Batch és az interaktív lekérdezéseket is ugyanabban az alkalmazásban. A Stormtől eltérően a Spark streaming pontosan egyszer dolgozza fel a szemantikai folyamatokat. Ha a [Kafka Direct API](https://spark.apache.org/docs/latest/streaming-kafka-integration.html)-val együtt használja, amely biztosítja, hogy az összes Kafka-adattal pontosan egyszer érkeznek meg a Spark streaming, a teljes körű garanciák elérését is lehetővé teszi. A Spark streaming erősségei közé tartoznak a hibatűrő képességei, így gyorsan helyreállítható a hibás csomópontok, ha több csomópont van használatban a fürtön belül.
 
@@ -49,7 +49,7 @@ A technológiák leválasztása számos előnnyel jár. Például a Kafka egy es
 
 ### <a name="scale-the-stream-buffering-layer"></a>Az adatfolyam-pufferelés rétegének méretezése
 
-Az adatfolyam-pufferelési technológiák Event Hubs és a Kafka is használja a partíciókat és a fogyasztókat. A bemeneti átviteli sebesség méretezése a partíciók számának és a partíciók hozzáadásának növelését teszi lehetővé. Event Hubs a partíciók száma nem módosítható az üzembe helyezés után, ezért fontos, hogy a célként megadott méretezéssel kezdődjön. A Kafka használatával [partíciókat is hozzáadhat](https://kafka.apache.org/documentation.html#basic_ops_cluster_expansion), még akkor is, ha a Kafka adatfeldolgozást végez. A Kafka eszköz lehetővé teszi a partíciók újbóli hozzárendelését `kafka-reassign-partitions.sh` . A HDInsight egy [partíciós replika-átegyenlítő eszközt](https://github.com/hdinsight/hdinsight-kafka-tools)biztosít `rebalance_rackaware.py` . Ez a kiegyenlítő eszköz úgy hívja `kafka-reassign-partitions.sh` meg az eszközt, hogy az egyes replikák külön tartalék tartományba és frissítési tartományba tartoznak, így a Kafka rack tisztában lesz, és növeli a hibatűrést.
+Az adatfolyam-pufferelési technológiák Event Hubs és a Kafka is használja a partíciókat és a fogyasztókat. A bemeneti átviteli sebesség méretezése a partíciók számának és a partíciók hozzáadásának növelését teszi lehetővé. Event Hubs a partíciók száma nem módosítható az üzembe helyezés után, ezért fontos, hogy a célként megadott méretezéssel kezdődjön. A Kafka használatával [partíciókat is hozzáadhat](https://kafka.apache.org/documentation.html#basic_ops_cluster_expansion), még akkor is, ha a Kafka adatfeldolgozást végez. A Kafka eszköz lehetővé teszi a partíciók újbóli hozzárendelését  `kafka-reassign-partitions.sh` . A HDInsight egy [partíciós replika-átegyenlítő eszközt](https://github.com/hdinsight/hdinsight-kafka-tools)biztosít  `rebalance_rackaware.py` . Ez a kiegyenlítő eszköz úgy hívja `kafka-reassign-partitions.sh` meg az eszközt, hogy az egyes replikák külön tartalék tartományba és frissítési tartományba tartoznak, így a Kafka rack tisztában lesz, és növeli a hibatűrést.
 
 ### <a name="scale-the-stream-processing-layer"></a>Az adatfolyam feldolgozási rétegének méretezése
 

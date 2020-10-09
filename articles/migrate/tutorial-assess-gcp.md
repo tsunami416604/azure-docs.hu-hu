@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: MVC
 ms.openlocfilehash: adf936d6d1b99bf81a8c055237ca597020452bd7
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91716586"
 ---
 # <a name="tutorial-assess-google-cloud-platform-gcp-vm-instances-for-migration-to-azure"></a>Oktatóanyag: Google Cloud Platform (GCP) virtuálisgép-példányok értékelése az Azure-ba való áttelepítéshez
@@ -17,7 +17,7 @@ Az Azure-ba való Migrálás részeként felméri a helyszíni számítási fela
 
 Ez a cikk bemutatja, hogyan értékelheti Google Cloud Platform (GCP) virtuálisgép-példányait az Azure-ba való áttelepítéshez a Azure Migrate: Server Assessment Tool használatával.
 
-Az oktatóanyag a következőket ismerteti:
+Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!div class="checklist"]
 - Értékelés futtatása a számítógép metaadatai és konfigurációs adatai alapján.
 - Értékelés futtatása a teljesítményadatok alapján.

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 02/15/2018
 ms.author: damaerte
 ms.openlocfilehash: 092dccab82326bb9983f11ff64fe50aee7b1084d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74951479"
 ---
 # <a name="limitations-of-azure-cloud-shell"></a>Azure Cloud Shell korlátozásai
@@ -63,11 +63,11 @@ A. bashrc vagy a PowerShell $PROFILE fájljának szerkesztésekor körültekint�
 
 ## <a name="powershell-limitations"></a>PowerShell-korlátozások
 
-### <a name="azuread-module-name"></a>`AzureAD`modul neve
+### <a name="azuread-module-name"></a>`AzureAD` modul neve
 
 A `AzureAD` modul neve jelenleg a `AzureAD.Standard.Preview` modulban ugyanazokat a funkciókat biztosítja.
 
-### <a name="sqlserver-module-functionality"></a>`SqlServer`modul funkciói
+### <a name="sqlserver-module-functionality"></a>`SqlServer` modul funkciói
 
 A `SqlServer` Cloud Shell részét képező modul csak a PowerShell Core támogatásának előzetes kiadását támogatja. Különösen a `Invoke-SqlCmd` még nem érhető el.
 

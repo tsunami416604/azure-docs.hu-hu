@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 06/09/2020
 ms.author: jeedes
 ms.openlocfilehash: 43189d40c57ce6c300904207edc35011b0581ecc
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91740448"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-bluejeans-for-azure-ad"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a BlueJeans for Azure AD-vel
@@ -93,7 +93,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
     a. A **Válasz URL-címe** szövegmezőbe írja be az URL-címet: `https://bluejeans.com/sso/saml2/`
 
     > [!NOTE]
-    > A bejelentkezési URL-cím értéke nem valós. Frissítse az értéket a tényleges bejelentkezési URL-címmel. Az érték beszerzéséhez lépjen kapcsolatba az [Azure ad-ügyfél támogatási csapatának BlueJeans](https://support.bluejeans.com/contact) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
+    > A Sign-On URL-cím értéke nem valódi. Frissítse az értéket a tényleges Sign-On URL-címmel. Az érték beszerzéséhez lépjen kapcsolatba az [Azure ad-ügyfél támogatási csapatának BlueJeans](https://support.bluejeans.com/contact) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
 1. A BlueJeans alkalmazás egy adott formátumban várja az SAML-jogcímeket, ehhez pedig egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőképen az alapértelmezett attribútumok listája látható.
 

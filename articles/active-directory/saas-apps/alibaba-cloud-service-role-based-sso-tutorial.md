@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 09/13/2019
 ms.author: jeedes
 ms.openlocfilehash: 4ffaad77a34be66d06f8f0033731d0496e444e52
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91715880"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-alibaba-cloud-service-role-based-sso"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció az Alibaba Cloud Service-szel (szerepköralapú SSO)
@@ -65,8 +65,8 @@ Az Azure AD SSO és az Alibaba Cloud Service (szerepköralapú SSO) konfigurál�
 1. Az **[Azure ad SSO konfigurálása](#configure-azure-ad-sso)** – a funkció használatának engedélyezése a felhasználók számára.
     1. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
     1. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
-2. **[Szerepköralapú egyszeri bejelentkezés konfigurálása az Alibaba Cloud Service-ben](#configure-role-based-single-sign-on-in-alibaba-cloud-service)** – lehetővé teszi a felhasználók számára a funkció használatát.
-    1. Az **[Alibaba Cloud Service (SZEREPKÖRALAPÚ SSO) egyszeri bejelentkezés konfigurálása](#configure-alibaba-cloud-service-role-based-sso-sso)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+2. **[Role-Based egyetlen Sign-On konfigurálása az Alibaba Cloud Service-ben](#configure-role-based-single-sign-on-in-alibaba-cloud-service)** – lehetővé teszi a felhasználók számára a funkció használatát.
+    1. Az **[Alibaba Cloud Service (SZEREPKÖRALAPÚ SSO) egyszeri bejelentkezésének konfigurálása](#configure-alibaba-cloud-service-role-based-sso-sso)** – az egyes Sign-On beállítások konfigurálása az alkalmazás oldalán.
     1. **[Hozzon létre Alibaba Cloud Service-t (SZEREPKÖRALAPÚ SSO](#create-alibaba-cloud-service-role-based-sso-test-user)** -t), hogy az a felhasználó Azure ad-beli képviseletéhez kapcsolódó, az Alibaba Cloud Service-ben (szerepköralapú SSO) található Britta Simon-ügyféllel rendelkezzen.
 3. **[Egyszeri egyszeri bejelentkezés tesztelése](#test-sso)** – annak ellenőrzése, hogy a konfiguráció működik-e.
 
@@ -132,7 +132,7 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 
 1. A **felhasználók és csoportok** lapon válassza a U2 lehetőséget a felhasználók listából, majd kattintson a **kiválasztás**gombra. Ezután kattintson a **hozzárendelés**elemre.
 
-    ![A képernyőképen az Alibaba Hozzáadás-hozzárendelés panelje látható, és nincs kiválasztva felhasználó és csoport.](./media/alibaba-cloud-service-role-based-sso-tutorial/test01.png)
+    ![Képernyőfelvétel: az Alibaba Add-Assignment panelje, amely nincs kiválasztva felhasználó és csoport.](./media/alibaba-cloud-service-role-based-sso-tutorial/test01.png)
 
 1. Tekintse meg a hozzárendelt szerepkört és az Alibaba Cloud Service (szerepköralapú SSO) tesztelését.
 
@@ -141,7 +141,7 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
     >[!NOTE]
     >Miután hozzárendelte a felhasználót (U2), a létrehozott szerepkör automatikusan csatolva lesz a felhasználóhoz. Ha több szerepkört hozott létre, szükség szerint csatolja a megfelelő szerepkört a felhasználóhoz. Ha a szerepköralapú egyszeri bejelentkezést több Alibaba Felhőbeli fiókkal szeretné megvalósítani az Azure AD-ből, ismételje meg a fenti lépéseket.
 
-## <a name="configure-role-based-single-sign-on-in-alibaba-cloud-service"></a>Szerepköralapú egyszeri bejelentkezés konfigurálása az Alibaba Cloud Service-ben
+## <a name="configure-role-based-single-sign-on-in-alibaba-cloud-service"></a>Role-Based egyetlen Sign-On konfigurálása az Alibaba Cloud Service-ben
 
 1. Jelentkezzen be az Alibaba Cloud [RAM-konzolra](https://account.alibabacloud.com/login/login.htm?oauth_callback=https%3A%2F%2Fram.console.aliyun.com%2F%3Fspm%3Da2c63.p38356.879954.8.7d904e167h6Yg9) a Account1 használatával.
 

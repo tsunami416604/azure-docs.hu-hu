@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 08/21/2018
 ms.openlocfilehash: c76ab145fd2fdd077075b345ecac9c6a473f2369
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75365189"
 ---
 # <a name="sql-to-azure-monitor-log-query-cheat-sheet"></a>SQL – Azure Monitor log Query – Cheat Adatlap 
@@ -19,7 +19,7 @@ Az alábbi táblázat segíti a felhasználókat, akik ismerik az SQL-t, hogy me
 
 ## <a name="sql-to-azure-monitor"></a>SQL – Azure Monitor
 
-Description                             |SQL-lekérdezés                                                                                          |Azure Monitor napló lekérdezése
+Leírás                             |SQL-lekérdezés                                                                                          |Azure Monitor napló lekérdezése
 ----------------------------------------|---------------------------------------------------------------------------------------------------|----------------------------------------
 Összes adatok kijelölése egy táblából            |`SELECT * FROM dependencies`                                                                       |<code>dependencies</code>
 Adott oszlopok kiválasztása egy táblából    |`SELECT name, resultCode FROM dependencies`                                                        |<code>dependencies <br>&#124; project name, resultCode</code>

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/14/2020
 ms.author: jeedes
 ms.openlocfilehash: 82fced2d504af1823b3e6e1561ee875067a962c5
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91741397"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-beekeeper-azure-ad-sso"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a méhész Azure AD SSO-val

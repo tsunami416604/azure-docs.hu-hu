@@ -11,10 +11,10 @@ ms.author: sgilley
 ms.date: 02/10/2020
 ms.custom: devx-track-python
 ms.openlocfilehash: df8e4c2728bd7487520164553d26dfd42e38b647
-ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91841848"
 ---
 # <a name="tutorial-get-started-with-azure-machine-learning-in-jupyter-notebooks"></a>Oktatóanyag: első lépések a Azure Machine Learning Jupyter-jegyzetfüzetekben
@@ -103,7 +103,7 @@ Hajtsa végre a következő kísérlet beállítását, és futtassa a lépések
 
 Ha egyéni widgetekkel rendelkezik, vagy szívesebben szeretné használni a Jupyter vagy a JupyterLab, válassza a jobb szélen a **Jupyter** legördülő listát. Ezután válassza a **Jupyter** vagy a **JupyterLab**lehetőséget. Megnyílik az új böngészőablak.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy beállította a fejlesztési környezetet, folytassa a modell betanítását Jupyter Notebook.
 

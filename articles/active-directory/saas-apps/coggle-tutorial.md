@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 06/30/2020
 ms.author: jeedes
 ms.openlocfilehash: 08a9cbadb86f59cca1f361dc66ee03a300f91968
-ms.sourcegitcommit: 6a4687b86b7aabaeb6aacdfa6c2a1229073254de
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91759527"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-coggle"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Coggle
@@ -120,7 +120,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Create** (Létrehozás) gombra.
+   1. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

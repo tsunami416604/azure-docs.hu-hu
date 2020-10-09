@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/06/2019
 ms.author: jeedes
 ms.openlocfilehash: 0465d6219f9c9d13b4dd3321beb90af524cade36
-ms.sourcegitcommit: a07a01afc9bffa0582519b57aa4967d27adcf91a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91741565"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-bime"></a>Oktatóanyag: Azure Active Directory integráció a Bime
@@ -73,7 +73,7 @@ Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a Bime 
 Az Azure AD egyszeri bejelentkezés Bime való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
 
 1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. **[Bime egyszeri bejelentkezés konfigurálása](#configure-bime-single-sign-on)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+2. **[Bime egyszeri bejelentkezés konfigurálása](#configure-bime-single-sign-on)** – az egyes Sign-On beállítások konfigurálása az alkalmazás oldalán.
 3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
 4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
 5. **[Hozzon létre Bime-teszt felhasználót](#create-bime-test-user)** – hogy a Bime Britta, a felhasználó Azure ad-képviseletéhez kapcsolódó partnerrel rendelkezzen.
@@ -93,7 +93,7 @@ Az Azure AD egyszeri bejelentkezés Bime való konfigurálásához hajtsa végre
 
     ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
+3. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
@@ -126,7 +126,7 @@ Az Azure AD egyszeri bejelentkezés Bime való konfigurálásához hajtsa végre
 
     c. Kijelentkezési URL-cím
 
-### <a name="configure-bime-single-sign-on"></a>Bime egyszeri bejelentkezés konfigurálása
+### <a name="configure-bime-single-sign-on"></a>Bime egyetlen Sign-On konfigurálása
 
 1. Egy másik böngészőablakban jelentkezzen be a Bime vállalati webhelyre rendszergazdaként.
 
@@ -136,7 +136,7 @@ Az Azure AD egyszeri bejelentkezés Bime való konfigurálásához hajtsa végre
 
 3. A fiók konfigurációja lapon hajtsa végre a következő lépéseket:
   
-    ![Egyszeri bejelentkezés konfigurálása](./media/bime-tutorial/ic775559.png "Egyszeri bejelentkezés konfigurálása")
+    ![Egyszeri bejelentkezés konfigurálása](./media/bime-tutorial/ic775559.png "Egyetlen Sign-On konfigurálása")
 
     a. Válassza az **SAML-hitelesítés engedélyezése**lehetőséget.
 

@@ -10,10 +10,10 @@ ms.date: 09/06/2016
 ms.author: robinsh
 ms.custom: amqp
 ms.openlocfilehash: d4916d651638f0d1dbb4f10e0e0732f5c330d300
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81767014"
 ---
 # <a name="azure-iot-device-sdk-for-c--more-about-serializer"></a>A C-hez készült Azure IoT Device SDK – további információ a szerializáló szolgáltatásról
@@ -65,17 +65,17 @@ Ez a minta nem mutatja be az SDK által támogatott további adattípusokat. A k
 
 A következő adattípusok támogatottak a **szerializáló** függvénytárral létrehozott modellekben:
 
-| Típus | Description |
+| Típus | Leírás |
 | --- | --- |
 | double |dupla pontosságú lebegőpontos szám |
 | int |32 bites egész szám |
-| lebegőpontos |egyszeres pontosságú lebegőpontos szám |
+| float |egyszeres pontosságú lebegőpontos szám |
 | hosszú |hosszú egész szám |
 | int8 \_ t |8 bites egész szám |
 | Int16 \_ t |16 bites egész szám |
 | \_t t |32 bites egész szám |
 | Int64 \_ t |64 bites egész szám |
-| logikai |logikai |
+| logikai |boolean |
 | ASCII \_ karakteres \_ PTR |ASCII-karakterlánc |
 | EDM \_ dátum és \_ idő \_ eltolása |dátum és idő eltolása |
 | EDM \_ GUID |GUID |

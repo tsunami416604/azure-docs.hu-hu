@@ -12,10 +12,10 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: 4c7382f84522333b6aae0d79941aae8f2147a12f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81729147"
 ---
 # <a name="azure-iot-hub-pricing-information"></a>Az Azure IoT Hub díjszabási információi
@@ -45,7 +45,7 @@ Az [Azure IoT hub díjszabása](https://azure.microsoft.com/pricing/details/iot-
 
 ## <a name="example-1"></a>Példa #1
 
-Egy eszköz percenként egy 1 KB-os, az eszközről a felhőbe küldött üzenetet küld IoT Hubra, amelyet aztán a Azure Stream Analytics olvas. A megoldás háttérbe állítása 10 percenként meghívja a (512 bájtos adattartalommal rendelkező) metódust az eszközön egy adott művelet elindításához. Az eszköz 200 bájtos eredménnyel válaszol a metódusra.
+Egy eszköz percenként 1 1 KB-os eszközről a felhőbe küldött üzenetet küld IoT Hubra, amelyet aztán a Azure Stream Analytics olvas. A megoldás háttérbe állítása 10 percenként meghívja a (512 bájtos adattartalommal rendelkező) metódust az eszközön egy adott művelet elindításához. Az eszköz 200 bájtos eredménnyel válaszol a metódusra.
 
 Az eszköz a következőket használja:
 

@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: jingwang
 ms.openlocfilehash: f2d10a6150a6e6957b303ca391c97e166342111c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81417249"
 ---
 # <a name="copy-data-from-hbase-using-azure-data-factory"></a>Adatok másolása a HBase a Azure Data Factory használatával 
@@ -55,7 +55,7 @@ A HBase társított szolgáltatás a következő tulajdonságokat támogatja:
 | port | Az a TCP-port, amelyet a HBase-példány az ügyfélkapcsolatok figyelésére használ. Az alapértelmezett érték a 9090. Ha csatlakozik az Azure Hdinsight-hoz, a 443-as portot kell megadnia. | Nem |
 | httpPath | A HBase-kiszolgálónak megfelelő részleges URL-cím, például a `/hbaserest0` hdinsight-fürt használata esetén. | Nem |
 | authenticationType | A HBase-kiszolgálóhoz való kapcsolódáshoz használt hitelesítési módszer. <br/>Az engedélyezett értékek: **Névtelen**, **alapszintű** | Igen |
-| felhasználónév | A HBase-példányhoz való kapcsolódáshoz használt Felhasználónév.  | Nem |
+| username | A HBase-példányhoz való kapcsolódáshoz használt Felhasználónév.  | Nem |
 | jelszó | A felhasználónévnek megfelelő jelszó. Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). | Nem |
 | enableSsl | Megadja, hogy a kiszolgálóval létesített kapcsolatok titkosítva vannak-e a TLS protokollal. Az alapértelmezett érték a hamis.  | Nem |
 | trustedCertPath | A megbízható HITELESÍTÉSSZOLGÁLTATÓI tanúsítványokat tartalmazó. PEM fájl teljes elérési útja a kiszolgáló TLS-kapcsolaton keresztüli ellenőrzéséhez. Ez a tulajdonság csak akkor állítható be, ha a TLS-t saját üzemeltetésű IR-vel használja. Az alapértelmezett érték az IR-vel telepített hitesítésszolgáltatói. PEM fájl.  | Nem |
@@ -162,9 +162,9 @@ Az adatok HBase való másolásához állítsa a forrás típusát a másolás t
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
 | típus | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **HBaseSource** | Igen |
-| lekérdezés | Az egyéni SQL-lekérdezés használatával olvassa be az adatolvasást. Példa: `"SELECT * FROM MyTable"`. | Nem (ha meg van adva a "táblanév" az adatkészletben) |
+| lekérdezés | Az egyéni SQL-lekérdezés használatával olvassa be az adatolvasást. Például: `"SELECT * FROM MyTable"`. | Nem (ha meg van adva a "táblanév" az adatkészletben) |
 
-**Példa:**
+**Példa**
 
 ```json
 "activities":[

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 05/07/2020
 ms.author: jeedes
 ms.openlocfilehash: cb052f4ce962b1757f47f64e3f26fa5db2a731fa
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88999614"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-tableau-server"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a tabló-kiszolgálóval
@@ -105,7 +105,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Create** (Létrehozás) gombra.
+   1. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -131,11 +131,11 @@ Ebben a szakaszban a B. Simon számára engedélyezi az Azure egyszeri bejelentk
 
 2. A **konfiguráció** lapon válassza a **felhasználói identitás & hozzáférés**lehetőséget, majd válassza a **hitelesítési** módszer lapot.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/tableauserver-tutorial/tutorial-tableauserver-auth.png)
+    ![Egyetlen Sign-On konfigurálása](./media/tableauserver-tutorial/tutorial-tableauserver-auth.png)
 
 3. A **konfiguráció** lapon hajtsa végre a következő lépéseket:
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/tableauserver-tutorial/tutorial-tableauserver-config.png)
+    ![Egyetlen Sign-On konfigurálása](./media/tableauserver-tutorial/tutorial-tableauserver-config.png)
 
     a. A **hitelesítési módszer**beállításnál válassza az SAML lehetőséget.
 
