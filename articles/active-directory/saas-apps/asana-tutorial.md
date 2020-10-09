@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/31/2018
 ms.author: jeedes
 ms.openlocfilehash: dd2c02f25584fd32acd32277a1dd2300c6a98e73
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88549534"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-asana"></a>Oktatóanyag: Azure Active Directory integráció
@@ -75,7 +75,7 @@ Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a köve
 Az Azure AD egyszeri bejelentkezés a következő építőelemek használatával konfigurálható és tesztelhető:
 
 1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. Ha az egyszeri bejelentkezés beállításait szeretné konfigurálni az alkalmazás oldalán, konfigurálja a (z) **[egyszeri bejelentkezést](#configure-asana-single-sign-on)** .
+2. Az **[egyszeri bejelentkezés konfigurálása](#configure-asana-single-sign-on)** – az Sign-On beállításainak konfigurálása az alkalmazás oldalán.
 3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
 4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
 5. A felhasználók Azure AD-beli képviseletéhez kapcsolódó, a Britta Simon-t tartalmazó partneri kapcsolat **[létrehozása](#create-asana-test-user)** a felhasználó számára.
@@ -95,7 +95,7 @@ Az Azure AD-beli egyszeri bejelentkezés a következő lépések végrehajtásá
 
     ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
+3. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
@@ -107,7 +107,7 @@ Az Azure AD-beli egyszeri bejelentkezés a következő lépések végrehajtásá
 
     b. Az **azonosító (entitás azonosítója)** szövegmezőbe írja be az URL-címet: `https://app.asana.com/`
 
-5. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállítások alapján, és mentse a számítógépre.
+5. Az **egyszeres Sign-On beállítása az SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállítások alapján, és mentse azt a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozása](common/certificatebase64.png)
 
@@ -121,7 +121,7 @@ Az Azure AD-beli egyszeri bejelentkezés a következő lépések végrehajtásá
 
     c. Kijelentkezési URL-cím
 
-### <a name="configure-asana-single-sign-on"></a>Az egyszeri bejelentkezés konfigurálása
+### <a name="configure-asana-single-sign-on"></a>Egy Sign-On
 
 1. Egy másik böngészőablakban jelentkezzen be a-ba. Az egyszeri bejelentkezés a következőben való konfigurálásához a képernyő jobb felső sarkában lévő munkaterület nevére kattintva nyissa meg a munkaterület beállításait. Ezután kattintson a ** \<your workspace name\> Beállítások**elemre.
 
@@ -129,7 +129,7 @@ Az Azure AD-beli egyszeri bejelentkezés a következő lépések végrehajtásá
 
 2. A **szervezeti beállítások** ablakban kattintson az **Adminisztráció**elemre. Ezután kattintson a **tagoknak az SAML használatával történő bejelentkezéshez** az egyszeri bejelentkezés konfigurációjának engedélyezéséhez. A hajtsa végre a következő lépéseket:
 
-    ![Az egyszeri bejelentkezés szervezeti beállításainak konfigurálása](./media/asana-tutorial/tutorial_asana_10.png)  
+    ![Önálló Sign-On szervezeti beállítások konfigurálása](./media/asana-tutorial/tutorial_asana_10.png)  
 
     a. A bejelentkezési **oldal URL-címe** szövegmezőbe illessze be a **bejelentkezési URL-címet**.
 
@@ -160,7 +160,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    d. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

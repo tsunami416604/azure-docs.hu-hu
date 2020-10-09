@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: aahi
 ms.openlocfilehash: 309bbca762149f8804742d9ef02d4c3e8dfcdc6b
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "67542766"
 ---
 # <a name="get-images-from-the-web-with-the-bing-image-search-api"></a>Képek letöltése a webről a Bing Image Search API
@@ -31,7 +31,7 @@ X-MSEdge-ClientID: <blobFromPriorResponseGoesHere>
 Host: api.cognitive.microsoft.com
 ```
 
-Használja az URL-kódolású keresési kifejezés [q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#query) Query paraméterét. Ha például a *vitorlás mentőcsónakokra*adja meg, akkor `q` a `sailing+dinghies` következőre `sailing%20dinghies`: vagy.
+Használja az URL-kódolású keresési kifejezés [q](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#query) Query paraméterét. Ha például a *vitorlás mentőcsónakokra*adja meg, akkor a következőre: `q` `sailing+dinghies` vagy `sailing%20dinghies` .
 
 > [!IMPORTANT]
 > * Az összes kérelmet egy-kiszolgálóról kell elvégezni, nem pedig az ügyféltől.
@@ -46,7 +46,7 @@ GET https://api.cognitive.microsoft.com/bing/v7.0/images/search?q=sailing+dinghi
 ```
 
 > [!NOTE]
-> Az `site:` operátort használó lekérdezésekre adott válaszok a [safeSearch](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#safesearch) beállítástól függetlenül is tartalmazhatnak felnőtt tartalmat. Csak akkor `site:` használja, ha ismeri a tartalmat a tartományban.
+> Az operátort használó lekérdezésekre adott válaszok a `site:` [safeSearch](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#safesearch) beállítástól függetlenül is tartalmazhatnak felnőtt tartalmat. Csak akkor használja `site:` , ha ismeri a tartalmat a tartományban.
 
 ## <a name="filter-images"></a>Képek szűrése
 

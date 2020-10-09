@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 09/21/2016
 ms.author: alkohli
 ms.openlocfilehash: 7fafe177ea0c6c618dc4ab0727ba14c83cbb0102
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "68965017"
 ---
 # <a name="supported-hardware-for-the-10-gbe-network-interfaces-on-your-storsimple-device"></a>A StorSimple-eszköz 10 GbE hálózati adapterének támogatott hardverei
@@ -73,7 +73,7 @@ A Mellanox a következő kisméretű (SFP) adóvevők, kábelek és kapcsolók t
 ### <a name="cables-and-modules-supported-by-mellanox"></a>A Mellanox által támogatott kábelek és modulok
 A következő táblázat felsorolja a Mellanox által támogatott kábeleket és modulokat. Ezeket a Microsoft nem tesztelte, de valószínűleg működik a StorSimple-eszközzel.
 
-| S. Nem. | Sebesség | Modell | Description | Gyártó |
+| S. Nem. | Sebesség | Modell | Leírás | Gyártó |
 | --- | --- | --- | --- | --- |
 | 1. |10 GbE |CAB-SFP-SFP-1M |passzív réz kábel SFP + 10 GB/s 1M |Arista |
 | 2. |10 GbE |CAB-SFP-SFP-2M |passzív réz kábel SFP + 10 GB/s 2m |Arista |
@@ -114,10 +114,10 @@ A következő táblázat felsorolja a Mellanox által támogatott kábeleket és
 ### <a name="switches-supported-by-mellanox"></a>A Mellanox által támogatott kapcsolók
 A következő táblázat felsorolja a Mellanox által támogatott kapcsolókat. Ezeket a Microsoft nem tesztelte, de valószínűleg működik a StorSimple-eszközzel.
 
-| S. Nem. | Sebesség | Modell | Description | Gyártó |
+| S. Nem. | Sebesség | Modell | Leírás | Gyártó |
 | --- | --- | --- | --- | --- |
 | 1. |10 GbE |516733 – B21 |HP-előgörbe 6120XG 10 GbE Ethernet panel kapcsoló |HP |
-| 2. |10 GbE |538113 – B21 |HP 10 GbE áteresztő modul (PTM) |HP |
+| 2. |10 GbE |538113 – B21 |HP 10 GbE Pass-Through modul (PTM) |HP |
 | 3. |10 GbE |EN4093 |IBM PureFlex System Fabric EN4093 10 Gigabit skálázható kapcsoló modul |IBM |
 | 4. |1 GbE |3020 |Cisco Catalyst 3020 1 GbE kapcsoló panel |Cisco |
 | 5. |1 GbE |3020X |Cisco Catalyst 3020X 1 GbE kapcsoló panelje |Cisco |

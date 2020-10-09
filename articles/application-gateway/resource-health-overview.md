@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 7/9/2019
 ms.author: victorh
 ms.openlocfilehash: db29551a8150b70e797d45fe659482470c8aca2a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "67659501"
 ---
 # <a name="azure-application-gateway-resource-health-overview"></a>Az Azure Application Gateway Resource Health áttekintése
@@ -35,7 +35,7 @@ A **rendelkezésre álló** állapot azt jelenti, hogy a szolgáltatás nem ész
 
 A nem **elérhető** állapot azt jelenti, hogy a szolgáltatás egy folyamatos platformot észlelt, vagy nem platformos eseményt észlelt az átjáró állapotának hatására.
 
-### <a name="platform-events"></a>Platform eseményei
+### <a name="platform-events"></a>Platformesemények
 
 A platform eseményeire az Azure-infrastruktúra több összetevője is aktiválódik. Ezek közé tartoznak az ütemezett műveletek (például a tervezett karbantartás) és a váratlan incidensek (például egy nem tervezett gazdagép újraindítása).
 

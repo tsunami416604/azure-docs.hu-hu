@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/17/2018
 ms.author: jeedes
 ms.openlocfilehash: c2738e1a6168440adee79ebaa599a313600153a4
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88546763"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-sap-cloud-platform"></a>Oktatóanyag: Azure Active Directory integráció az SAP Cloud platformmal
@@ -79,7 +79,7 @@ Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és az SAP 
 Az Azure AD egyszeri bejelentkezés SAP Cloud platformmal való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
 
 1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. Az **[SAP Cloud platform egyszeri bejelentkezésének konfigurálása](#configure-sap-cloud-platform-single-sign-on)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+2. Az **[SAP Cloud platform egyszeri bejelentkezésének konfigurálása](#configure-sap-cloud-platform-single-sign-on)** – az egyes Sign-On beállítások konfigurálása az alkalmazás oldalán.
 3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
 4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
 5. **[SAP Cloud platform tesztelési felhasználó létrehozása](#create-sap-cloud-platform-test-user)** – a Britta Simon-nek az SAP Cloud platformon, amely a felhasználó Azure ad-képviseletéhez van társítva.
@@ -99,7 +99,7 @@ Az Azure AD egyszeri bejelentkezés SAP Cloud platformon történő konfigurál�
 
     ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
+3. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
@@ -134,13 +134,13 @@ Az Azure AD egyszeri bejelentkezés SAP Cloud platformon történő konfigurál�
     - `https://<subdomain>.dispatcher.hana.ondemand.com/<instancename>`
 
     > [!NOTE] 
-    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel, azonosítóval és válasz URL-címmel. A bejelentkezési URL-cím és az azonosító megszerzéséhez lépjen kapcsolatba az [SAP Cloud platform ügyfél-támogatási csapatával](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/5dd739823b824b539eee47b7860a00be.html) . A válasz URL-címe a megbízhatósági kezelés szakaszból szerezhető be, amelyet az oktatóanyag későbbi részében ismertetünk.
+    > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges Sign-On URL-címmel, azonosítóval és válasz URL-címmel. Vegye fel a kapcsolatot az [SAP Cloud platform ügyfél-támogatási csapatával](https://help.sap.com/viewer/65de2977205c403bbc107264b8eccf4b/Cloud/5dd739823b824b539eee47b7860a00be.html) Sign-On URL-cím és azonosító beszerzéséhez. A válasz URL-címe a megbízhatósági kezelés szakaszból szerezhető be, amelyet az oktatóanyag későbbi részében ismertetünk.
     > 
-4. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
+4. Az **egyszeres Sign-On beállítása SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozása](common/metadataxml.png)
 
-### <a name="configure-sap-cloud-platform-single-sign-on"></a>Az SAP Cloud platform egyszeri bejelentkezésének konfigurálása
+### <a name="configure-sap-cloud-platform-single-sign-on"></a>Az SAP Cloud platform egyetlen Sign-On konfigurálása
 
 1. Egy másik böngészőablakban jelentkezzen be az SAP Cloud platform pilótafülkére `https://account.<landscape host>.ondemand.com/cockpit` (például: https://account.hanatrial.ondemand.com/cockpit) ).
 
@@ -199,7 +199,7 @@ Az Azure AD egyszeri bejelentkezés SAP Cloud platformon történő konfigurál�
     
     ![Attribútumok](./media/sap-hana-cloud-platform-tutorial/ic790804.png "Attribútumok") 
 
-    a. Kattintson az **Érvényesítés-alapú attribútum hozzáadása**elemre, majd adja hozzá a következő kivezetés-alapú attribútumokat:
+    a. Kattintson a **Assertion-Based attribútum hozzáadása**lehetőségre, majd adja hozzá a következő kijelentési attribútumokat:
        
     | Érvényesítési attribútum | Elsődleges attribútum |
     | --- | --- |
@@ -248,7 +248,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    d. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

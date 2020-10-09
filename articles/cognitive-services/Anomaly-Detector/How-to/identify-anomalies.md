@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 10/01/2019
 ms.author: aahi
 ms.openlocfilehash: ca93de71f64efaf21c78b37b9c9aee193d13b28d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "71840222"
 ---
 # <a name="how-to-use-the-anomaly-detector-api-on-your-time-series-data"></a>Útmutató: a rendellenesség-Kiderítő API használata az idősorozat-adatain  
@@ -26,7 +26,7 @@ Az [anomália-érzékelő API](https://westus2.dev.cognitive.microsoft.com/docs/
 Az anomália detektor API az észlelési módokat biztosítja: a Batch és a streaming.
 
 > [!NOTE]
-> A következő kérelem URL-címeit össze kell kapcsolni az előfizetéséhez tartozó megfelelő végponttal. Például:`https://<your-custom-subdomain>.api.cognitive.microsoft.com/anomalydetector/v1.0/timeseries/entire/detect`
+> A következő kérelem URL-címeit össze kell kapcsolni az előfizetéséhez tartozó megfelelő végponttal. Például: `https://<your-custom-subdomain>.api.cognitive.microsoft.com/anomalydetector/v1.0/timeseries/entire/detect`
 
 
 ### <a name="batch-detection"></a>Kötegelt észlelés
@@ -47,7 +47,7 @@ Az új adatpontok létrehozásakor az adatok valós időben figyelhetők. A rend
 
 ## <a name="adjusting-lower-and-upper-anomaly-detection-boundaries"></a>Alsó és felső anomáliák észlelési határainak módosítása
 
-Alapértelmezés szerint a rendszer a, `expectedValue` `upperMargin`és `lowerMargin`a használatával számítja ki a anomáliák észlelésének alsó és felső határát. Ha eltérő határokra van szüksége, javasoljuk, hogy `marginScale` `upperMargin` alkalmazzon `lowerMargin`a vagy a rendszerre. A határok kiszámítása a következőképpen történik:
+Alapértelmezés szerint a rendszer a, és a használatával számítja ki a anomáliák észlelésének alsó és felső határát `expectedValue` `upperMargin` `lowerMargin` . Ha eltérő határokra van szüksége, javasoljuk, hogy alkalmazzon a vagy a rendszerre `marginScale` `upperMargin` `lowerMargin` . A határok kiszámítása a következőképpen történik:
 
 |Határ  |Számítás  |
 |---------|---------|
@@ -68,7 +68,7 @@ Az alábbi példákban egy anomália-detektor API-nak a különböző érzékeny
 
 ![85 érzékenység](../media/sensitivity_85.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Mi az az Anomaly Detector API?](../overview.md)
 * [Gyors útmutató: az idősoros adataiban észlelt rendellenességek észlelése az anomália-detektor használatával REST API](../quickstarts/detect-data-anomalies-csharp.md)

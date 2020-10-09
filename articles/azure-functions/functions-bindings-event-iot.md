@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 02/21/2020
 ms.author: cshoe
 ms.openlocfilehash: 1c25543b16c3486a8f6a445427346382faaaa09a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77586129"
 ---
 # <a name="azure-iot-hub-bindings-for-azure-functions"></a>Az Azure IoT Hub-kötések Azure Functions
@@ -19,7 +19,7 @@ Ez a cikk azt ismerteti, hogyan használhatók a IoT Hubhoz Azure Functions köt
 > [!IMPORTANT]
 > Míg az alábbi mintakód-minták az Event hub API-t használják, a megadott szintaxis IoT Hub függvények esetében alkalmazható.
 
-| Műveletek | Típus |
+| Művelet | Típus |
 |--------|------|
 | Válaszadás az IoT hub Event streambe küldött eseményekre. | [Eseményindító](./functions-bindings-event-iot-trigger.md) |
 | Események írása egy IoT-esemény streambe | [Kimeneti kötés](./functions-bindings-event-iot-output.md) |

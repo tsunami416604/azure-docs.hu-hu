@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 07/29/2020
 ms.author: jeedes
 ms.openlocfilehash: 4e23c8a8497459ce7cb3cab3d1469359f80ad846
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88550773"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-github-enterprise-cloud---enterprise-account"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a GitHub Enterprise Cloud-Enterprise-fiókkal
@@ -64,8 +64,8 @@ Az Azure AD SSO a GitHub Enterprise Cloud-Enterprise-fiókkal való konfigurál�
 1. Az **[Azure ad SSO konfigurálása](#configure-azure-ad-sso)** – a funkció használatának engedélyezése a felhasználók számára.
     1. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez B. Simon használatával.
     1. **[Rendelje hozzá az Azure ad-teszt felhasználót](#assign-the-azure-ad-test-user)** – ezzel lehetővé teszi, hogy B. Simon engedélyezze az Azure ad egyszeri bejelentkezést.
-1. A **[GitHub Enterprise Cloud-Enterprise Account SSO konfigurálása](#configure-github-enterprise-cloud-enterprise-account-sso)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
-    1. **[GitHub Enterprise Cloud-Enterprise Account test User](#create-github-enterprise-cloud-enterprise-account-test-user)** -to have a B. Simon a GitHub Enterprise Cloud-Enterprise fiók, amely a felhasználó Azure ad-képviseletéhez kapcsolódik.
+1. A **[GitHub Enterprise Cloud-Enterprise fiókjának egyszeri bejelentkezésének beállítása](#configure-github-enterprise-cloud-enterprise-account-sso)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+    1. **[GitHub enterprise Cloud-Enterprise felhasználói fiók tesztelése](#create-github-enterprise-cloud-enterprise-account-test-user)** – a felhasználó Azure ad-képviseletéhez kapcsolódó B. Simon-partneri kapcsolattal rendelkezik a GitHub Enterprise Cloud-Enterprise fiókjában.
 1. **[SSO tesztelése](#test-sso)** – annak ellenőrzése, hogy a konfiguráció működik-e.
 
 ## <a name="configure-azure-ad-sso"></a>Az Azure AD SSO konfigurálása
@@ -109,7 +109,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Create** (Létrehozás) gombra.
+   1. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -129,11 +129,11 @@ Ebben a szakaszban lehetővé teszi, hogy a B. Simon az Azure egyszeri bejelentk
 1. Ha az SAML-állításban bármilyen szerepkörre számíthat, a **szerepkör kiválasztása** párbeszédpanelen válassza ki a megfelelő szerepkört a felhasználó számára a listából, majd kattintson a képernyő alján található **kiválasztás** gombra.
 1. A **hozzárendelés hozzáadása** párbeszédpanelen kattintson a **hozzárendelés** gombra.
 
-## <a name="configure-github-enterprise-cloud-enterprise-account-sso"></a>A GitHub Enterprise Cloud-Enterprise Account SSO konfigurálása
+## <a name="configure-github-enterprise-cloud-enterprise-account-sso"></a>GitHub Enterprise Cloud-Enterprise fiók egyszeri bejelentkezésének konfigurálása
 
 Ha egyszeri bejelentkezést szeretne beállítani a **GitHub Enterprise Cloud-Enterprise fiók** oldalon, el kell küldenie a letöltött **tanúsítványt (Base64)** és a megfelelő másolt url-címeket a Azure Portalról a [GitHub Enterprise Cloud-Enterprise-fiók támogatási csapatához](mailto:support@github.com). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
 
-### <a name="create-github-enterprise-cloud-enterprise-account-test-user"></a>GitHub Enterprise Cloud-Enterprise Account test User létrehozása
+### <a name="create-github-enterprise-cloud-enterprise-account-test-user"></a>GitHub Enterprise Cloud-Enterprise fiók tesztelési felhasználójának létrehozása
 
 Ebben a szakaszban egy B. Simon nevű felhasználó jön létre a GitHub Enterprise Cloud-Enterprise fiókban. A GitHub Enterprise Cloud-Enterprise fiók támogatja az igény szerinti felhasználói üzembe helyezést, amely alapértelmezés szerint engedélyezve van. Ez a szakasz nem tartalmaz műveleti elemeket. Ha egy felhasználó még nem létezik a GitHub Enterprise Cloud-Enterprise fiókjában, akkor a hitelesítés után létrejön egy újat.
 

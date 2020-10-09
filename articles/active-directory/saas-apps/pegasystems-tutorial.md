@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
 ms.openlocfilehash: 3dd09770ef5f747f008090368c35b1f274374c5f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88549075"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-pega-systems"></a>Oktatóanyag: Azure Active Directory integráció Pega rendszerekkel
@@ -93,7 +93,7 @@ Az Azure AD egyszeri bejelentkezés Pega-rendszerekkel való konfigurálásához
 
     ![Egyszeri bejelentkezési módszer kiválasztása](common/select-saml-option.png)
 
-3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon a **Szerkesztés** ikonra kattintva nyissa meg az **alapszintű SAML-konfiguráció** párbeszédpanelt:
+3. Az **egyszeres Sign-On beállítása az SAML-vel** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához:
 
     ![Szerkesztés ikon](common/edit-urls.png)
 
@@ -156,9 +156,9 @@ Az Azure AD egyszeri bejelentkezés Pega-rendszerekkel való konfigurálásához
 
     1. Kattintson az **OK** gombra.
 
-    1. Válassza a **Mentés** lehetőséget.
+    1. Kattintson a **Mentés** gombra.
 
-8. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban válassza ki az **összevonási metaadatok XML-fájlja**melletti **letöltési** hivatkozást, a követelmények szerint, majd mentse a tanúsítványt a számítógépen:
+8. Az **egyszeres Sign-On beállítása az SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban válassza ki a **letöltési** hivatkozást az **összevonási metaadatok XML-fájlja**mellett, a követelmények szerint, és mentse a tanúsítványt a számítógépen:
 
     ![Tanúsítvány letöltési hivatkozása](common/metadataxml.png)
 
@@ -210,7 +210,7 @@ Az Azure AD egyszeri bejelentkezés Pega-rendszerekkel való konfigurálásához
 
     1. Jelölje be a **kérelmek aláírásának letiltása**jelölőnégyzetet.
 
-7. Válassza a **Mentés** lehetőséget.
+7. Kattintson a **Mentés** gombra.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 

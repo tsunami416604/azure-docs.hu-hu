@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/12/2020
 ms.author: jeedes
 ms.openlocfilehash: 10773a2a379291fa861dbb2adfdda2ba3f63117f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88550639"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-mind-tools-toolkit"></a>Oktatóanyag: Azure Active Directory integráció az elme Tools Toolkit használatával
@@ -81,16 +81,16 @@ Ebben a szakaszban a következő lépéseket követve konfigurálja az Azure AD 
 
     ![Az egyszeri bejelentkezési módszer kiválasztása párbeszédpanel, amely az SAML-ra van kijelölve](common/select-saml-option.png)
 
-1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon válassza az **ALAPszintű SAML-konfigurációhoz** tartozó ceruza ikont a beállítások szerkesztéséhez.
+1. Az **egyszeri Sign-On beállítása az SAML-vel** lapon válassza az **ALAPszintű SAML-konfigurációhoz** tartozó ceruza ikont a beállítások szerkesztéséhez.
 
-    ![Az egyszeri bejelentkezés SAML-oldallal való beállítása az alapszintű SAML-konfigurációhoz tartozó ceruza ikonnal](common/edit-urls.png)
+    ![Az egyszeri Sign-On beállítása az SAML-oldallal lapon az alapszintű SAML-konfigurációhoz tartozó ceruza ikont kiemelve](common/edit-urls.png)
 
 1. Az **alapszintű SAML-konfiguráció** szakasz **bejelentkezési URL-címe** mezőjébe írja be a mintát tartalmazó URL-címet `https://app.goodpractice.net/#/<subscriptionUrl>/s/<locationId>` .
 
     > [!NOTE]
     > A **bejelentkezési URL-cím** értéke nem valódi. Frissítse az értéket a tényleges bejelentkezési URL-címmel. Az érték beszerzéséhez vegye fel a kapcsolatot az [elme Tools Toolkit ügyfél-támogatási csapatával](mailto:support@goodpractice.com) .
 
-1. Az **egyszeri bejelentkezés SAML-vel** lapon válassza az **SAML aláíró tanúsítvány** szakaszát. Az **összevonási metaadatok XML-fájljának**jobb oldalán válassza a **Letöltés** lehetőséget az XML-szöveg letöltéséhez, és mentse a számítógépre. Az XML-tartalom a kiválasztott beállításoktól függ.
+1. Az **egyszeri Sign-On az SAML-vel** lapon lépjen az **SAML-aláíró tanúsítvány** szakaszra. Az **összevonási metaadatok XML-fájljának**jobb oldalán válassza a **Letöltés** lehetőséget az XML-szöveg letöltéséhez, és mentse a számítógépre. Az XML-tartalom a kiválasztott beállításoktól függ.
 
     ![Az SAML aláíró tanúsítvány szakasza az összevonási metaadatok XML-fájlja mellett Kiemelt letöltéssel](common/metadataxml.png)
 
@@ -112,7 +112,7 @@ Ebben a szakaszban egy B. Simon nevű teszt felhasználót hoz létre a Azure Po
 1. A képernyő felső részén válassza az **új felhasználó**lehetőséget.
 1. A **felhasználó** tulajdonságaiban hajtsa végre az alábbi lépéseket:
    1. A név mezőbe írja be a **B. Simon** **nevet** .  
-   1. A **Felhasználónév** mezőbe írja be a **B. Simon@**_cégestartomány_**.** _bővítmény_. Például: B.Simon@contoso.com.
+   1. A **Felhasználónév** mezőbe írja be **B.Simon@**_cégestartomány_**.** _bővítmény_. Például: B.Simon@contoso.com.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
    1. Kattintson a **Létrehozás** gombra.
 

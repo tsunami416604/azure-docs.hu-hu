@@ -13,10 +13,10 @@ ms.custom: seodec18
 ms.date: 03/27/2019
 ms.author: mbaldwin
 ms.openlocfilehash: d83d688707baf6098d63dfde9b4181eb04fb9729
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "70881008"
 ---
 # <a name="azure-dedicated-hsm-supportability"></a>Azure dedikált HSM-támogatás
@@ -47,7 +47,7 @@ A Gemalto az [ügyfélszolgálati portálon](https://supportportal.gemalto.com/c
 
 ### <a name="support"></a>Támogatás
 
-A dedikált HSM-szolgáltatás részeként a HSM használatával kapcsolatban felmerülő bármilyen szoftver szintű probléma vagy kérdés, amely közvetlenül a Gemalto-támogatásra vonatkozik. A Gemalto az összes fent felsorolt szoftver-összetevőt és a kiépítés utáni egyéni HSM-beállításokat fogja kezelni. További információ: [Gemalto Customer Support Portal](https://supportportal.gemalto.com/csm/).
+A dedikált HSM-szolgáltatás részeként a HSM használatával kapcsolatban felmerülő bármilyen szoftver szintű probléma vagy kérdés, amely közvetlenül a Gemalto-támogatásra vonatkozik. A Gemalto az összes fent felsorolt szoftver-összetevőt és a kiépítés utáni egyéni HSM-beállításokat fogja kezelni. További információ:  [Gemalto Customer Support Portal](https://supportportal.gemalto.com/csm/).
 
 ### <a name="consulting-services"></a>Tanácsadói szolgáltatások
 

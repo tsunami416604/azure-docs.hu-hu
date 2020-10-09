@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/15/2019
 ms.author: damaerte
 ms.openlocfilehash: 3435d958049012750e775e2a17f43f463a0cc358
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "70860324"
 ---
 # <a name="using-the-azure-cloud-shell-window"></a>A Azure Cloud Shell ablak használata
@@ -44,7 +44,7 @@ Kattintson a Beállítások ikonra az ablak bal felső részén, majd vigye a ku
 Kattintson a Beállítások ikonra az ablak bal felső részén, majd vigye a kurzort a "betűkészlet" lehetőség fölé, és válassza ki a kívánt betűtípust.  A kiválasztás a munkamenetek között marad.
 ![Betűtípus](media/using-the-shell-window/text-font.png)
 
-## <a name="upload-and-download-files"></a>Fájlok fel- és letöltése
+## <a name="upload-and-download-files"></a>Fájlok feltöltése és letöltése
 Kattintson a fájlok feltöltése/letöltése ikonra az ablak bal felső részén, majd válassza a feltöltés vagy a letöltés lehetőséget.  
 ![Fájlok feltöltése/letöltése](media/using-the-shell-window/uploaddownload.png)
 * Fájlok feltöltéséhez az előugró ablakban keresse meg a fájlt a helyi számítógépen, válassza ki a kívánt fájlt, majd kattintson a Megnyitás gombra.  A rendszer feltölti a fájlt a `/home/user` könyvtárba.
@@ -66,7 +66,7 @@ Kattintson az ablak bal felső részén található webes előnézet ikonra, vá
 ![Webes előnézet](media/using-the-shell-window/preview.png)  
 <br>
 ![Port konfigurálása](media/using-the-shell-window/preview-configure.png)  
-Kattintson a webes előnézet ikonra az ablak bal felső részén, majd válassza az "előnézet port..." lehetőséget. egy új lapon lévő nyitott port előnézetének megtekintéséhez kattintson az ablak bal felső részén található webes előnézet ikonra, majd válassza a "Port lezárása..." lehetőséget. a nyitott port bezárásához.  
+Kattintson a webes előnézet ikonra az ablak bal felső részén, majd válassza az "előnézet port..." lehetőséget. egy új lapon lévő nyitott port előnézete. Kattintson a webes előnézet ikonra az ablak bal felső részén, majd válassza a "Port lezárása..." lehetőséget. a nyitott port bezárásához.  
 ![Előnézet/Bezárás port](media/using-the-shell-window/preview-options.png)
 
 ## <a name="minimize--maximize-cloud-shell-window"></a>& maximalizálása Cloud Shell ablak méretének csökkentése

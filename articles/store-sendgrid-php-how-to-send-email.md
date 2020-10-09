@@ -16,10 +16,10 @@ ms.date: 10/30/2014
 ms.author: erikre
 ms.reviewer: elmer.thomas@sendgrid.com; erika.berkland@sendgrid.com; vibhork; matt.bernier@sendgrid.com
 ms.openlocfilehash: b3a9fee09d1eac6fb4d716af83c348cb2c21f7a9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "67870917"
 ---
 # <a name="how-to-use-the-sendgrid-email-service-from-php"></a>A SendGrid E-mail szolgáltatás használata a PHP-ből
@@ -37,7 +37,7 @@ A SendGrid egy [felhőalapú e-mail-szolgáltatás] , amely megbízható [tranza
 * Ügyfelekkel kapcsolatos kérdések továbbítása
 * Az alkalmazás e-mail-értesítései
 
-További információ: [https://sendgrid.com][https://sendgrid.com] .
+További információ: [https://sendgrid.com][https://sendgrid.com].
 
 ## <a name="create-a-sendgrid-account"></a>SendGrid-fiók létrehozása
 
@@ -406,13 +406,13 @@ php composer.phar require sendgrid/sendgrid 2.1.1
  print_r($response);
  ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Most, hogy megismerte a SendGrid E-mail szolgáltatás alapjait, kövesse az alábbi hivatkozásokat további információért.
 
-* SendGrid dokumentációja:<https://sendgrid.com/docs>
-* SendGrid PHP-könyvtár:<https://github.com/sendgrid/sendgrid-php>
-* SendGrid Speciális ajánlat az Azure-ügyfelek számára:<https://sendgrid.com/windowsazure.html>
+* SendGrid dokumentációja: <https://sendgrid.com/docs>
+* SendGrid PHP-könyvtár: <https://github.com/sendgrid/sendgrid-php>
+* SendGrid Speciális ajánlat az Azure-ügyfelek számára: <https://sendgrid.com/windowsazure.html>
 
 További információ: a [php fejlesztői központ](https://azure.microsoft.com/develop/php/)is.
 

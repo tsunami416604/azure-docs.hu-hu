@@ -9,10 +9,10 @@ ms.service: web-application-firewall
 ms.date: 11/14/2019
 ms.author: victorh
 ms.openlocfilehash: bfa6690c636e15fa933f50698cd81359600b5c05
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77368304"
 ---
 # <a name="create-and-use-web-application-firewall-v2-custom-rules-on-application-gateway"></a>Webalkalmazási tűzfal v2 egyéni szabályainak létrehozása és használata Application Gateway
@@ -28,7 +28,7 @@ Ez a cikk néhány példát mutat be a v2-WAF létrehozásához és használatá
 
 ## <a name="example-1"></a>1\. példa
 
-Tudja, hogy van egy *evilbot* nevű robot, amelyet le szeretne tiltani a webhely bejárásával. Ebben az esetben letiltja a felhasználói ügynök *evilbot* a kérések fejlécében.
+Tudja, hogy van egy *evilbot* nevű robot, amelyet le szeretne tiltani a webhely bejárásával. Ebben az esetben a kérések fejlécében a User-Agent *evilbot* fogja letiltani.
 
 Logic: p
 
@@ -225,11 +225,11 @@ Itt látható a megfelelő JSON:
   }
 ```
 
-Megfelelő CRS-szabály:`SecRule REMOTE_ADDR "@ipMatch 192.168.5.0/24" "id:7001,deny"`
+Megfelelő CRS-szabály: `SecRule REMOTE_ADDR "@ipMatch 192.168.5.0/24" "id:7001,deny"`
 
 ## <a name="example-4"></a>4. példa
 
-Ebben a példában le szeretné tiltani a felhasználói ügynök *evilbot*, valamint a 192.168.5.0/24 tartomány forgalmát. Ennek elvégzéséhez két különálló egyeztetési feltételt hozhat létre, és mindkettőt ugyanabban a szabályban helyezheti el. Ez biztosítja, hogy ha a felhasználó-ügynök fejlécben **és** a 192.168.5.0/24 tartományba tartozó IP-címek mindkét *evilbot* egyeztetve vannak, akkor a rendszer letiltja a kérést.
+Ebben a példában szeretné letiltani User-Agent *evilbot*, és a 192.168.5.0/24 tartományon belüli forgalmat. Ennek elvégzéséhez két különálló egyeztetési feltételt hozhat létre, és mindkettőt ugyanabban a szabályban helyezheti el. Ez gondoskodik arról, hogy ha a User-Agent fejlécben **és** az IP-címekben is szerepelnek a 192.168.5.0/24 tartomány *evilbot* , a rendszer letiltja a kérést.
 
 Logic: p **és** q
 

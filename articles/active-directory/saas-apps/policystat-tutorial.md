@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
 ms.openlocfilehash: 212bd1bc0b15ad985fc8037e99876d78132b2c22
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88547936"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-policystat"></a>Oktatóanyag: Azure Active Directory integráció a PolicyStat
@@ -78,7 +78,7 @@ Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a Polic
 Az Azure AD egyszeri bejelentkezés PolicyStat való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
 
 1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. **[PolicyStat egyszeri bejelentkezés konfigurálása](#configure-policystat-single-sign-on)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+2. **[PolicyStat egyszeri bejelentkezés konfigurálása](#configure-policystat-single-sign-on)** – az egyes Sign-On beállítások konfigurálása az alkalmazás oldalán.
 3. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
 4. **[Hozzon létre PolicyStat-teszt felhasználót](#create-policystat-test-user)** – hogy a PolicyStat Britta, a felhasználó Azure ad-képviseletéhez kapcsolódó partnerrel rendelkezzen.
 5. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)** – annak ellenőrzéséhez, hogy a konfiguráció működik-e.
@@ -97,7 +97,7 @@ Az Azure AD egyszeri bejelentkezés PolicyStat való konfigurálásához hajtsa 
 
     ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
+3. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
@@ -112,7 +112,7 @@ Az Azure AD egyszeri bejelentkezés PolicyStat való konfigurálásához hajtsa 
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges bejelentkezési URL-címmel és azonosítóval. Az értékek lekéréséhez forduljon a PolicyStat ügyfélszolgálati [csapatához](http://www.policystat.com/support/) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-4. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
+4. Az **egyszeres Sign-On beállítása SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozása](common/metadataxml.png)
 
@@ -122,7 +122,7 @@ Az Azure AD egyszeri bejelentkezés PolicyStat való konfigurálásához hajtsa 
 
 6. A fentieken kívül a PolicyStat alkalmazás néhány további attribútumot vár, amelyeket az SAML-válaszban vissza kell adni. A **felhasználó attribútumai** párbeszédpanel **felhasználói jogcímek** szakaszában a következő lépésekkel adja hozzá az SAML-jogkivonat attribútumát az alábbi táblázatban látható módon:
 
-    | Name | Forrás attribútum |
+    | Név | Forrás attribútum |
     |------------------- | -------------------- |
     | UID | ExtractMailPrefix ([mail]) |
 
@@ -154,17 +154,17 @@ Az Azure AD egyszeri bejelentkezés PolicyStat való konfigurálásához hajtsa 
 
     c. Kijelentkezési URL-cím
 
-### <a name="configure-policystat-single-sign-on"></a>PolicyStat egyszeri bejelentkezés konfigurálása
+### <a name="configure-policystat-single-sign-on"></a>PolicyStat egyetlen Sign-On konfigurálása
 
 1. Egy másik böngészőablakban jelentkezzen be a PolicyStat vállalati webhelyre rendszergazdaként.
 
-2. Kattintson a **felügyelet lapra, majd a bal** oldali navigációs ablaktáblán kattintson az **egyszeri bejelentkezés konfigurálása** elemre.
+2. Kattintson a **felügyelet lapra,** majd kattintson az **egyszeres Sign-On konfiguráció** elemre a bal oldali navigációs ablaktáblán.
    
     ![Rendszergazdai menü](./media/policystat-tutorial/ic808633.png "Rendszergazdai menü")
 
 3. Kattintson a **identitásszolgáltató-metaadatokra**, majd a **identitásszolgáltató-metaadatok** szakaszban hajtsa végre a következő lépéseket:
    
-    ![Egyszeri bejelentkezés konfigurálása](./media/policystat-tutorial/ic808636.png "Egyszeri bejelentkezés konfigurálása")
+    ![Egy Sign-On konfiguráció](./media/policystat-tutorial/ic808636.png "Egy Sign-On konfiguráció")
    
     a. Nyissa meg a letöltött metaadat-fájlt, másolja a tartalmat, majd illessze be a **saját identitás-szolgáltató metaadatok** szövegmezőbe.
 
@@ -184,7 +184,7 @@ Az Azure AD egyszeri bejelentkezés PolicyStat való konfigurálásához hajtsa 
 
 5. A **telepítés** szakaszban válassza az **egyszeri bejelentkezéses integráció engedélyezése**lehetőséget.
    
-    ![Egyszeri bejelentkezés konfigurálása](./media/policystat-tutorial/ic808634.png "Egyszeri bejelentkezés konfigurálása")
+    ![Egy Sign-On konfiguráció](./media/policystat-tutorial/ic808634.png "Egy Sign-On konfiguráció")
 
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása

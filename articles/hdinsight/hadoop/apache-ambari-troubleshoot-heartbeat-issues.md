@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 02/06/2020
 ms.openlocfilehash: ab88f65d535be2aef5f0b26fa1171c03276466e8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77057073"
 ---
 # <a name="apache-ambari-heartbeat-issues-in-azure-hdinsight"></a>Az Apache Ambari szívveréssel kapcsolatos problémái az Azure HDInsightban
@@ -28,7 +28,7 @@ A Ambari-ügynök magas CPU-kihasználtsággal rendelkezik, ami a Ambari felhasz
 
 A különböző ambari hibák miatt előfordulhat, hogy a ambari-ügynöknek magas (100) százalékos CPU-kihasználtsága lehet.
 
-### <a name="resolution"></a>Megoldás:
+### <a name="resolution"></a>Feloldás
 
 1. Azonosítsa a ambari-ügynök folyamat-AZONOSÍTÓját (PID):
 
@@ -67,7 +67,7 @@ A Ambari-ügynök nem indult el, amely a Ambari felhasználói felületén riasz
 
 A riasztások oka a Ambari-ügynök nem fut.
 
-### <a name="resolution"></a>Megoldás:
+### <a name="resolution"></a>Feloldás
 
 1. Ambari-ügynök állapotának megerősítése:
 
@@ -93,7 +93,7 @@ A Ambari szívverés ügynöke megszakadt.
 
 A OMS-naplók nagy CPU-kihasználtságot okoznak.
 
-### <a name="resolution"></a>Megoldás:
+### <a name="resolution"></a>Feloldás
 
 * Tiltsa le Azure Monitor naplózást a [disable-AzHDInsightMonitoring PowerShell-](https://docs.microsoft.com/powershell/module/az.hdinsight/disable-azhdinsightmonitoring) parancsmag használatával.
 * A `mdsd.warn` naplófájl törlése

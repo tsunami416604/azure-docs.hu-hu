@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/20/2019
 ms.author: jeedes
 ms.openlocfilehash: 17c9672663cae4df7eacb72779e6caf6476e3d24
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88550482"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-insideview"></a>Oktatóanyag: Azure Active Directory integráció a InsideView
@@ -92,7 +92,7 @@ Az Azure AD egyszeri bejelentkezés InsideView való konfigurálásához hajtsa 
 
     ![Egyszeri bejelentkezési módszer kiválasztása](common/select-saml-option.png)
 
-3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon a **Szerkesztés** ikonra kattintva nyissa meg az **alapszintű SAML-konfiguráció** párbeszédpanelt:
+3. Az **egyszeres Sign-On beállítása az SAML-vel** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához:
 
     ![Szerkesztés ikon](common/edit-urls.png)
 
@@ -107,7 +107,7 @@ Az Azure AD egyszeri bejelentkezés InsideView való konfigurálásához hajtsa 
     > [!NOTE]
     > Ez az érték helyőrző. A tényleges válasz URL-címét kell használnia. Az érték beszerzéséhez lépjen kapcsolatba a [InsideView támogatási csapatával](mailto:support@insideview.com) . A Azure Portal az **alapszintű SAML-konfiguráció** párbeszédpanelen látható mintázatokat is megtekintheti.
 
-5. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban válassza ki a **tanúsítvány (RAW)** melletti **letöltési** hivatkozást, és adja meg a szükséges követelményeket, és mentse a tanúsítványt a számítógépre:
+5. Az **egyszeres Sign-On beállítása az SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban válassza ki a **tanúsítvány (RAW)** melletti **letöltési** hivatkozást a követelmények alapján, és mentse a tanúsítványt a számítógépre:
 
     ![Tanúsítvány letöltési hivatkozása](common/certificateraw.png)
 
@@ -147,7 +147,7 @@ Az Azure AD egyszeri bejelentkezés InsideView való konfigurálásához hajtsa 
 
     1. A **CRM-LastName leképezése** mezőbe írja be a értéket **`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/surname`** .  
 
-    1. Válassza a **Mentés** lehetőséget.
+    1. Kattintson a **Mentés** gombra.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 

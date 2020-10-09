@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/15/2019
 ms.author: jeedes
 ms.openlocfilehash: 235010cbcdde326cf17643cec81f3b6fcb1eea59
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88548769"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rolepoint"></a>Oktatóanyag: Azure Active Directory integráció a RolePoint
@@ -92,7 +92,7 @@ Az Azure AD egyszeri bejelentkezés RolePoint való konfigurálásához hajtsa v
 
     ![Egyszeri bejelentkezési módszer kiválasztása](common/select-saml-option.png)
 
-3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon a **Szerkesztés** ikonra kattintva nyissa meg az **alapszintű SAML-konfiguráció** párbeszédpanelt:
+3. Az **egyszeres Sign-On beállítása az SAML-vel** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához:
 
     ![Szerkesztés ikon](common/edit-urls.png)
 
@@ -111,7 +111,7 @@ Az Azure AD egyszeri bejelentkezés RolePoint való konfigurálásához hajtsa v
     > [!NOTE]
     > Ezek az értékek helyőrzők. A tényleges bejelentkezési URL-címet és azonosítót kell használnia. Javasoljuk, hogy egyedi karakterláncot használjon az azonosítóban. Az értékek lekéréséhez forduljon a [RolePoint támogatási csapatához](mailto:info@rolepoint.com) . A Azure Portal az **alapszintű SAML-konfiguráció** párbeszédpanelen látható mintázatokat is megtekintheti.
 
-5. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban válassza ki a **letöltési** hivatkozást az **összevonási metaadatok XML-** fájlja mellett, a követelmények szerint, és mentse a fájlt a számítógépre.
+5. Az **egyszeres Sign-On beállítása az SAML** használatával lapon az SAML- **aláíró tanúsítvány** szakaszban válassza ki az **összevonási metaadatok XML**-fájlja melletti **letöltési** hivatkozást, a követelmények szerint, és mentse a fájlt a számítógépre.
 
     ![Tanúsítvány letöltési hivatkozása](common/metadataxml.png)
 

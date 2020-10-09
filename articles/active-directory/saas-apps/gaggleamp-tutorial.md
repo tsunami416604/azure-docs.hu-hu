@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/18/2019
 ms.author: jeedes
 ms.openlocfilehash: 7293430968d82fbf9a5efd370f3e0a3ca85842a2
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88550901"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-gaggleamp"></a>Oktatóanyag: Azure Active Directory integráció a GaggleAMP
@@ -75,7 +75,7 @@ Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a Gaggl
 Az Azure AD egyszeri bejelentkezés GaggleAMP való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
 
 1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. **[GaggleAMP egyszeri bejelentkezés konfigurálása](#configure-gaggleamp-single-sign-on)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+2. **[GaggleAMP egyszeri bejelentkezés konfigurálása](#configure-gaggleamp-single-sign-on)** – az egyes Sign-On beállítások konfigurálása az alkalmazás oldalán.
 3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
 4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
 5. **[Hozzon létre GaggleAMP-teszt felhasználót](#create-gaggleamp-test-user)** – hogy a GaggleAMP Britta, a felhasználó Azure ad-képviseletéhez kapcsolódó partnerrel rendelkezzen.
@@ -95,7 +95,7 @@ Az Azure AD egyszeri bejelentkezés GaggleAMP való konfigurálásához hajtsa v
 
     ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
+3. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
@@ -114,7 +114,7 @@ Az Azure AD egyszeri bejelentkezés GaggleAMP való konfigurálásához hajtsa v
     > [!NOTE]
     > Az érték nem valódi. Frissítse az értéket a tényleges bejelentkezési URL-címmel. Az érték beszerzéséhez forduljon a GaggleAMP ügyfélszolgálati [csapatához](mailto:sales@gaggleamp.com) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-6. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállítások alapján, és mentse a számítógépre.
+6. Az **egyszeres Sign-On beállítása az SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállítások alapján, és mentse azt a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozása](common/certificatebase64.png)
 
@@ -128,19 +128,19 @@ Az Azure AD egyszeri bejelentkezés GaggleAMP való konfigurálásához hajtsa v
 
     c. Kijelentkezési URL-cím
 
-### <a name="configure-gaggleamp-single-sign-on"></a>GaggleAMP egyszeri bejelentkezés konfigurálása
+### <a name="configure-gaggleamp-single-sign-on"></a>GaggleAMP egyetlen Sign-On konfigurálása
 
 1. Egy másik böngésző-példányban navigáljon a gágog-támogatási csapat által létrehozott SAML SSO-oldalra (például: *https://accounts.gaggleamp.com/saml_configurations/oXH8sQcP79dOzgFPqrMTyw/edit* ).
 
 2. Az **SAML SSO** -oldalon hajtsa végre a következő lépéseket:  
    
-    ![GaggleAMP egyszeri bejelentkezés](./media/gaggleamp-tutorial/tutorial_gaggleamp_06.png)
+    ![GaggleAMP egyetlen Sign-On](./media/gaggleamp-tutorial/tutorial_gaggleamp_06.png)
 
     a. Válasszon **másik** formát az **identitás-szolgáltató** legördülő menüjében.
     
     b. Az **Identity Provider kiállító** szövegmezőben illessze be a Azure Portalból másolt **Azure ad-azonosító** értékét.
     
-    c. Az **identitás-szolgáltató egyszeri bejelentkezési URL-címe** szövegmezőbe illessze be azt a **bejelentkezési URL-címet** , amelyet a Azure Portalból másolt.
+    c. Az **identitás-szolgáltató egyetlen Sign-On URL-címe** szövegmezőbe illessze be a **bejelentkezési URL-cím** értékét, amelyet a Azure Portalból másolt.
     
     d. Nyissa meg a letöltött **tanúsítvány (Base64)** fájlt a Jegyzettömbben, másolja a vágólapra a tartalmát, majd illessze be az **X. 509 tanúsítvány** szövegmezőbe.
     
@@ -169,7 +169,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    d. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/26/2019
 ms.author: aahi
 ms.openlocfilehash: 9407f2fc9375765efb6eb9688b3ebfeef24ba90a
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "67721621"
 ---
 # <a name="best-practices-for-using-the-anomaly-detector-api"></a>Ajánlott eljárások az anomália-detektor API használatához
@@ -93,9 +93,9 @@ Az anomália-detektor API a legjobban egy egyenletesen elosztott idősorozaton m
 
 Ha tudja, hogy az idősorozat-adatok szezonális mintázattal rendelkeznek (amely rendszeres időközönként történik), akkor javíthatja a pontosságot és az API-válaszidőt. 
 
-A JSON- `period` kérés összeállításakor megadható, hogy a rendszer akár 50%-kal is csökkentheti a rendellenességek észlelésének késleltetését. A `period` egy egész szám, amely azt határozza meg, hogy az idősorozat hány adatpontja veszi át a mintát. A napi egy adatponttal rendelkező idősorozatok például `period` a következők `7`lehetnek:, és egy adott időponttal rendelkező idősorozat (ugyanazzal a heti mintával). `period` `7*24` Ha nem biztos benne, hogy az adatai mintáik, nem kell megadnia ezt a paramétert.
+A `period` JSON-kérés összeállításakor megadható, hogy a rendszer akár 50%-kal is csökkentheti a rendellenességek észlelésének késleltetését. A egy `period` egész szám, amely azt határozza meg, hogy az idősorozat hány adatpontja veszi át a mintát. A napi egy adatponttal rendelkező idősorozatok például a következők lehetnek: `period` , `7` és egy adott időponttal rendelkező idősorozat (ugyanazzal a heti mintával) `period`  `7*24` . Ha nem biztos benne, hogy az adatai mintáik, nem kell megadnia ezt a paramétert.
 
-A legjobb eredmények érdekében 4 `period`értékű adatpontot adjon meg, és egy másikat. Például a fentiekben leírtak szerint óránkénti adatbevitel esetén a kérelem törzsében (`7 * 24 * 4 + 1`) 673 adatpontot kell megadni.
+A legjobb eredmények érdekében 4 `period` értékű adatpontot adjon meg, és egy másikat. Például a fentiekben leírtak szerint óránkénti adatbevitel esetén a kérelem törzsében () 673 adatpontot kell megadni `7 * 24 * 4 + 1` .
 
 ### <a name="sampling-data-for-real-time-monitoring"></a>Mintavételezési adatgyűjtés a valós idejű figyeléshez
 
