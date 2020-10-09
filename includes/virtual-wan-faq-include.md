@@ -8,13 +8,17 @@ ms.topic: include
 ms.date: 09/02/2020
 ms.author: cherylmc
 ms.custom: include file
-ms.openlocfilehash: 2519baa01fa9d8a13dd2e7855f9da3ec7f9093f9
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 6fac71572446a80ff00368991d6cb80c572864ac
+ms.sourcegitcommit: efaf52fb860b744b458295a4009c017e5317be50
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "89570020"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91859692"
 ---
+### <a name="is-azure-virtual-wan-in-ga"></a>Az Azure Virtual WAN a GA-ban található?
+
+Igen, az Azure Virtual WAN általánosan elérhető (GA). A virtuális WAN azonban számos funkciót és forgatókönyvet tartalmaz. A virtuális WAN-on belül olyan funkciók vagy forgatókönyvek találhatók, amelyekben a Microsoft az előnézet címkét alkalmazza. Ezekben az esetekben az adott funkció vagy maga a forgatókönyv előzetes verzióban érhető el. Ha nem használ konkrét előzetes verziójú szolgáltatást, a rendszer a normál GA-támogatást alkalmazza. Az előzetes verzió támogatásával kapcsolatos további információkért tekintse meg a [Microsoft Azure-előnézetek kiegészítő használati feltételeit](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
+
 ### <a name="does-the-user-need-to-have-hub-and-spoke-with-sd-wanvpn-devices-to-use-azure-virtual-wan"></a>Szükség van a felhasználónak a hub és az SD-WAN/VPN-eszközök használatára az Azure Virtual WAN használatához?
 
 A Virtual WAN számos funkciót kínál az olyan üvegek számára, mint például a hely/helyek közötti VPN-kapcsolat, a felhasználó/P2S kapcsolat, a ExpressRoute-kapcsolat, a Virtual Network kapcsolat, a VPN-ExpressRoute összekapcsolása, a VNet-VNet tranzitív kapcsolat, a központosított útválasztás, a Azure Firewall és a tűzfal-kezelő biztonság, a monitorozás, a ExpressRoute-titkosítás és sok más képesség. A virtuális WAN használatának megkezdéséhez nem szükséges az összes ilyen használati eset. Első lépésként csak egy használati esetet érhet el. A virtuális WAN-architektúra egy olyan sugaras és küllős architektúra, amely az ágak (VPN/SD-WAN-eszközök), a felhasználók (Azure VPN-ügyfelek, openVPN vagy IKEv2-ügyfelek), a ExpressRoute-áramkörök, a virtuális hálózatok pedig küllőként szolgálnak a virtuális központ (ok) hoz. Az összes hub egy szabványos virtuális WAN-kapcsolaton keresztül csatlakozik a teljes hálóhoz, így a felhasználó könnyedén használhatja a Microsoft-gerincet bármilyen (küllős) kapcsolathoz. A hub és az SD-WAN/VPN-eszközök használata esetén a felhasználók manuálisan is beállíthatják az Azure-beli virtuális WAN-portálon, vagy a virtuális WAN-partner CPE (SD-WAN/VPN) használatával állíthatnak be kapcsolatot az Azure-ral. A virtuális WAN-partnerek automatizálást biztosítanak a kapcsolódáshoz, amely lehetővé teszi az eszköz adatainak az Azure-ba való exportálását, az Azure-konfiguráció letöltését és az Azure Virtual WAN hub-kapcsolat létesítését. Pont – hely/felhasználó VPN-kapcsolat esetén az [Azure VPN Client](https://go.microsoft.com/fwlink/?linkid=2117554), az OpenVPN vagy a IKEv2-ügyfél támogatott. 

@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: include
 ms.date: 09/17/2020
 ms.author: pafarley
-ms.openlocfilehash: 382a04021053bef0b5d3378231e38453885b0ef2
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 1154bf3ddde67ba5074517ab4f96ed6764edf6a5
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91322963"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91859641"
 ---
 Ismerkedjen meg az arc-felismeréssel a Face ügyféloldali kódtár for go használatával. Az alábbi lépéseket követve telepítheti a csomagot, és kipróbálhatja az alapszintű feladatokhoz tartozó példa kódját. A Face szolgáltatás hozzáférést biztosít a speciális algoritmusokhoz a képeken található emberi arcok észleléséhez és felismeréséhez.
 
@@ -24,7 +24,6 @@ A következőhöz való ugráshoz használja a Face Service ügyféloldali függ
 * [Hasonló arcok keresése](#find-similar-faces)
 * [Személy csoport létrehozása és betanítása](#create-and-train-a-person-group)
 * [Arc azonosítása](#identify-a-face)
-* [Pillanatkép készítése az adatok áttelepítéséhez](#take-a-snapshot-for-data-migration)
 
 [Dokumentáció](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face)  |  [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-go/tree/master/services/cognitiveservices/v1.0/face)  |  [SDK letöltése](https://github.com/Azure/azure-sdk-for-go)
 
@@ -109,7 +108,6 @@ Ezek a kódrészletek bemutatják, hogyan végezheti el az alapszintű feladatok
 * [Hasonló arcok keresése](#find-similar-faces)
 * [Személy csoport létrehozása és betanítása](#create-and-train-a-person-group)
 * [Arc azonosítása](#identify-a-face)
-* [Pillanatkép készítése az adatok áttelepítéséhez](#take-a-snapshot-for-data-migration)
 
 ## <a name="authenticate-the-client"></a>Az ügyfél hitelesítése
 
@@ -246,53 +244,6 @@ A következő kód összehasonlítja az egyes forrás-lemezképeket a célként 
 
 [!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_ver)]
 
-
-## <a name="take-a-snapshot-for-data-migration"></a>Pillanatkép készítése az adatok áttelepítéséhez
-
-A pillanatképek funkció lehetővé teszi a mentett Arcfelismerés, például a betanított **PersonGroup**áthelyezését egy másik Azure Cognitive Services Face-előfizetésbe. Használhatja ezt a funkciót, ha például egy ingyenes előfizetéssel létrehozott egy **PersonGroup** objektumot, és most szeretné áttelepíteni egy fizetős előfizetésre. A pillanatképek szolgáltatás széles körű áttekintéséhez tekintse [meg az Arcfelismerés áttelepítését](../../Face-API-How-to-Topics/how-to-migrate-face-data.md) ismertető cikket.
-
-Ebben a példában a [személy csoport létrehozása és betanítása](#create-and-train-a-person-group)során létrehozott **PersonGroup** telepíti át. Először hajtsa végre az adott szakaszt, vagy használjon saját Face adatszerkezet (eke) t.
-
-### <a name="set-up-target-subscription"></a>Cél-előfizetés beállítása
-
-Először is rendelkeznie kell egy másik Azure-előfizetéssel, egy Face erőforrással. Ezt úgy teheti meg, hogy megismétli a [beállítás](#setting-up) szakasz lépéseit. 
-
-Ezután hozza létre a következő változókat a **Main** metódus teteje közelében. Emellett új környezeti változókat is létre kell hoznia az Azure-fiók előfizetés-AZONOSÍTÓJÁRA, valamint az új (cél) fiók kulcsát, végpontját és előfizetési AZONOSÍTÓját.
-
-[!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_target_client)]
-
-Ezután helyezze el az előfizetés-azonosító értékét egy tömbbe a következő lépésekhez.
-
-[!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_snap_target_id)]
-
-### <a name="authenticate-target-client"></a>A célként megadott ügyfél hitelesítése
-
-A szkript későbbi részében mentse az eredeti ügyfél-objektumot a forrás-ügyfélként, majd hitelesítse az új ügyfél-objektumot a cél előfizetéséhez. 
-
-[!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_snap_target_auth)]
-
-### <a name="take-a-snapshot"></a>Pillanatkép készítése
-
-A következő lépés a pillanatkép elkészítése a **[Take](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#SnapshotClient.Take)** használatával, amely az eredeti előfizetés adatait egy ideiglenes Felhőbeli helyre menti. Ez a metódus egy azonosítót ad vissza, amelyet a művelet állapotának lekérdezéséhez használ.
-
-[!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_snap_take)]
-
-Ezután kérdezze le az azonosítót, amíg a művelet be nem fejeződik.
-
-[!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_snap_query)]
-
-### <a name="apply-the-snapshot"></a>A pillanatkép alkalmazása
-
-Az **[alkalmazás](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#SnapshotClient.Apply)** művelettel írhatja be az újonnan feltöltött arc adatait a cél előfizetésbe. Ez a metódus egy azonosítót is visszaad.
-
-[!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_snap_apply)]
-
-Ismételje meg az azonosító lekérdezését egészen addig, amíg a művelet be nem fejeződik.
-
-[!code-go[](~/cognitive-services-quickstart-code/go/Face/FaceQuickstart.go?name=snippet_snap_apply_query)]
-
-Miután elvégezte ezeket a lépéseket, elérheti a Face adatok szerkezeteit az új (cél) előfizetésből.
-
 ## <a name="run-the-application"></a>Az alkalmazás futtatása
 
 Futtassa az Arcfelismerés alkalmazást az alkalmazás könyvtárából az `go run <app-name>` paranccsal.
@@ -308,7 +259,7 @@ Ha Cognitive Services-előfizetést szeretne törölni, törölheti az erőforr�
 * [Portál](../../../cognitive-services-apis-create-account.md#clean-up-resources)
 * [Azure CLI](../../../cognitive-services-apis-create-account-cli.md#clean-up-resources)
 
-Ha ebben a rövid útmutatóban létrehozott egy **PersonGroup** , és törölni szeretné, hívja meg a **[delete](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#PersonGroupClient.Delete)** metódust. Ha ebben a rövid útmutatóban az adatok áttelepítve lettek a pillanatkép-szolgáltatással, törölnie kell a megcélzott előfizetésbe mentett **PersonGroup** is.
+Ha ebben a rövid útmutatóban létrehozott egy **PersonGroup** , és törölni szeretné, hívja meg a **[delete](https://godoc.org/github.com/Azure/azure-sdk-for-go/services/cognitiveservices/v1.0/face#PersonGroupClient.Delete)** metódust.
 
 ## <a name="next-steps"></a>További lépések
 

@@ -9,12 +9,12 @@ ms.subservice: face-api
 ms.topic: include
 ms.date: 09/17/2020
 ms.author: pafarley
-ms.openlocfilehash: 80255790129468857e1115f3034516f04bc86d26
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 6ef0791eeec169bb925b8f667523203beaacdd2c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91322961"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91859631"
 ---
 Ismerkedés az Arcfelismerés szolgáltatással a .NET-hez készült Face ügyféloldali kódtár használatával. Az alábbi lépéseket követve telepítheti a csomagot, és kipróbálhatja az alapszintű feladatokhoz tartozó példa kódját. A Face szolgáltatás hozzáférést biztosít a speciális algoritmusokhoz a képeken található emberi arcok észleléséhez és felismeréséhez.
 
@@ -24,7 +24,6 @@ A .NET-hez készült Face ügyféloldali kódtár a következőhöz használhat�
 * [Hasonló arcok keresése](#find-similar-faces)
 * [Személy csoport létrehozása és betanítása](#create-and-train-a-person-group)
 * [Arc azonosítása](#identify-a-face)
-* [Pillanatkép készítése az adatok áttelepítéséhez](#take-a-snapshot-for-data-migration)
 
 [Dokumentáció](https://docs.microsoft.com/dotnet/api/overview/azure/cognitiveservices/client/faceapi?view=azure-dotnet)  |  [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-net/tree/master/sdk/cognitiveservices/Vision.Face)  |  [Csomag (NuGet)](https://www.nuget.org/packages/Microsoft.Azure.CognitiveServices.Vision.Face/2.6.0-preview.1)  |  [Példák](https://docs.microsoft.com/samples/browse/?products=azure&term=face)
 
@@ -106,8 +105,6 @@ Az alábbi kódrészletek azt mutatják be, hogyan végezheti el a következő f
 * [Hasonló arcok keresése](#find-similar-faces)
 * [Személy csoport létrehozása és betanítása](#create-and-train-a-person-group)
 * [Arc azonosítása](#identify-a-face)
-* [Pillanatkép készítése az adatok áttelepítéséhez](#take-a-snapshot-for-data-migration)
-
 
 ## <a name="authenticate-the-client"></a>Az ügyfél hitelesítése
 
@@ -216,56 +213,6 @@ A következő kódrészlet meghívja a **IdentifyAsync** műveletet, és kiírja
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_identify)]
 
-## <a name="take-a-snapshot-for-data-migration"></a>Pillanatkép készítése az adatok áttelepítéséhez
-
-A pillanatképek funkció lehetővé teszi a mentett Arcfelismerés, például a betanított **PersonGroup**áthelyezését egy másik Azure Cognitive Services Face-előfizetésbe. Érdemes lehet ezt a funkciót használni, ha például egy ingyenes előfizetés használatával létrehozott egy **PersonGroup** objektumot, és szeretné áttelepíteni egy fizetős előfizetésre. A pillanatképek funkció áttekintését lásd: [az arc-információk migrálása](../../Face-API-How-to-Topics/how-to-migrate-face-data.md) .
-
-Ebben a példában a [személy csoport létrehozása és betanítása](#create-and-train-a-person-group)során létrehozott **PersonGroup** kell áttelepítenie. Először hajtsa végre az adott szakaszt, vagy hozzon létre egy saját Face adatszerkezetet az áttelepítéshez.
-
-### <a name="set-up-target-subscription"></a>Cél-előfizetés beállítása
-
-Először is rendelkeznie kell egy másik Azure-előfizetéssel, egy Face erőforrással. ezt a [beállítás](#setting-up) szakasz lépéseit követve teheti meg. 
-
-Ezután adja meg a következő változókat a `Main` program metódusában. Új környezeti változókat kell létrehoznia az Azure-fiók előfizetés-AZONOSÍTÓJÁRA, valamint az új (cél) fiók kulcsát, végpontját és előfizetési AZONOSÍTÓját. 
-
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_snapshot_vars)]
-
-Ebben a példában deklaráljon egy változót az **PersonGroup** &mdash; új előfizetéshez tartozó objektum PersonGroup azonosítójának, amelyet az adatai másolásához fog másolni.
-
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_snapshot_vars)]
-
-### <a name="authenticate-target-client"></a>A célként megadott ügyfél hitelesítése
-
-Ezután adja hozzá a kódot a másodlagos arc-előfizetés hitelesítéséhez.
-
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_snapshot_client)]
-
-### <a name="use-a-snapshot"></a>Pillanatkép használata
-
-A pillanatképek további műveleteinek egy aszinkron metóduson belül kell megvalósulnia. 
-
-1. Első lépésként **készítse el a** pillanatképet, amely az eredeti előfizetése adatait egy ideiglenes Felhőbeli helyre menti. Ez a metódus egy azonosítót ad vissza, amelyet a művelet állapotának lekérdezéséhez használ.
-
-    [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_snapshot_take)]
-
-1. Ezután kérdezze le az azonosítót, amíg a művelet be nem fejeződik.
-
-    [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_snapshot_take_wait)]
-
-1. Ezután az **alkalmazás** művelet használatával írja a Face-adatait a cél előfizetésbe. Ez a metódus egy azonosító értéket is visszaad.
-
-    [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_snapshot_apply)]
-
-1. Ismét kérdezze le az új azonosítót, amíg a művelet be nem fejeződik.
-
-    [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_snapshot_apply)]
-
-1. Végül fejezze be a try/catch blokkot, és fejezze be a metódust.
-
-    [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_snapshot_trycatch)]
-
-Ezen a ponton az új **PersonGroup** -objektumnak ugyanazokkal az adatokkal kell rendelkeznie, mint az eredetinek, és elérhetőnek kell lennie az új (cél) Azure Face-előfizetésből.
-
 ## <a name="run-the-application"></a>Az alkalmazás futtatása
 
 Futtassa az Arcfelismerés alkalmazást az alkalmazás könyvtárából az `dotnet run` paranccsal.
@@ -288,10 +235,6 @@ Ha ebben a rövid útmutatóban létrehozott egy **PersonGroup** , és törölni
 Adja meg a törlési módszert a következő kóddal:
 
 [!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_deletepersongroup)]
-
-Ha ezen a rövid útmutatóban a pillanatkép-szolgáltatás használatával áttelepítette az adatáttelepítést, akkor a cél előfizetésbe mentett **PersonGroup** is törölnie kell.
-
-[!code-csharp[](~/cognitive-services-quickstart-code/dotnet/Face/FaceQuickstart.cs?name=snippet_target_persongroup_delete)]
 
 ## <a name="next-steps"></a>További lépések
 

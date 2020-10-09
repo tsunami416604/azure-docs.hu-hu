@@ -1,20 +1,20 @@
 ---
 title: Face Python ügyféloldali kódtár – rövid útmutató
-description: Használja a Face ügyféloldali kódtárat a Pythonhoz az arcok észleléséhez, hasonló kereséséhez (képek kereséséhez), az arcok azonosításához (arc-felismerési keresés) és az arc-adatok átmásolásához.
+description: Használja a Face ügyféloldali kódtárat a Pythonhoz az arcok észleléséhez, hasonló kereséséhez (képek kereséséhez) és az arcok azonosításához (arc-felismerési keresés).
 services: cognitive-services
 author: PatrickFarley
 manager: nitinme
 ms.service: cognitive-services
 ms.subservice: face-api
 ms.topic: include
-ms.date: 09/17/2020
+ms.date: 10/07/2020
 ms.author: pafarley
-ms.openlocfilehash: f746a61850567014ce216c47df472d035f1ae123
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.openlocfilehash: 587e702f5c74149542e2fffcf7891b7ea41f4202
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
-ms.locfileid: "91322962"
+ms.lasthandoff: 10/08/2020
+ms.locfileid: "91859630"
 ---
 Ismerkedés az Arcfelismerés a Pythonhoz készült Face ügyféloldali kódtár használatával. Az alábbi lépéseket követve telepítheti a csomagot, és kipróbálhatja az alapszintű feladatokhoz tartozó példa kódját. A Face szolgáltatás hozzáférést biztosít a speciális algoritmusokhoz a képeken található emberi arcok észleléséhez és felismeréséhez.
 
@@ -25,7 +25,6 @@ A Pythonhoz készült Face ügyféloldali kódtár a következőre használható
 * Személy csoport létrehozása és betanítása
 * Arc azonosítása
 * Arcok ellenőrzése
-* Pillanatkép készítése az adatok áttelepítéséhez
 
 [Dokumentáció](https://docs.microsoft.com/python/api/azure-cognitiveservices-vision-face/?view=azure-python)  |  [Könyvtár forráskódja](https://github.com/Azure/azure-sdk-for-python/tree/master/sdk/cognitiveservices/azure-cognitiveservices-vision-face)  |  [Csomag (PiPy)](https://pypi.org/project/azure-cognitiveservices-vision-face/)  |  [Példák](https://docs.microsoft.com/samples/browse/?products=azure&term=face)
 
@@ -85,7 +84,6 @@ Ezek a kódrészletek azt mutatják be, hogyan végezheti el a következő felad
 * [Személy csoport létrehozása és betanítása](#create-and-train-a-person-group)
 * [Arc azonosítása](#identify-a-face)
 * [Arcok ellenőrzése](#verify-faces)
-* [Pillanatkép készítése az adatok áttelepítéséhez](#take-a-snapshot-for-data-migration)
 
 ## <a name="authenticate-the-client"></a>Az ügyfél hitelesítése
 
@@ -207,52 +205,6 @@ A következő kód összehasonlítja az egyes forrás-lemezképeket a célként 
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_verify)]
 
-## <a name="take-a-snapshot-for-data-migration"></a>Pillanatkép készítése az adatok áttelepítéséhez
-
-A pillanatképek funkció lehetővé teszi a mentett Arcfelismerés, például a betanított **PersonGroup**áthelyezését egy másik Azure Cognitive Services Face-előfizetésbe. Érdemes lehet ezt a funkciót használni, ha például egy ingyenes előfizetéssel létrehozott egy **PersonGroup** objektumot, és most át szeretné telepíteni egy fizetős előfizetésre. A pillanatképek szolgáltatás széles körű áttekintéséhez tekintse [meg az Arcfelismerés áttelepítését](../../Face-API-How-to-Topics/how-to-migrate-face-data.md) ismertető cikket.
-
-Ebben a példában a [személy csoport létrehozása és betanítása](#create-and-train-a-person-group)során létrehozott **PersonGroup** kell áttelepítenie. Először hajtsa végre az adott szakaszt, vagy használjon saját Face adatszerkezet (eke) t.
-
-### <a name="set-up-target-subscription"></a>Cél-előfizetés beállítása
-
-Először is rendelkeznie kell egy másik Azure-előfizetéssel, egy Face erőforrással. ezt a [beállítás](#setting-up) szakasz lépéseit követve teheti meg. 
-
-Ezután hozza létre a következő változókat a parancsfájl teteje közelében. Emellett új környezeti változókat is létre kell hoznia az Azure-fiók előfizetés-AZONOSÍTÓJÁRA, valamint az új (cél) fiók kulcsát, végpontját és előfizetési AZONOSÍTÓját. 
-
-[!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_snapshotvars)]
-
-### <a name="authenticate-target-client"></a>A célként megadott ügyfél hitelesítése
-
-A parancsfájlban később mentse a jelenlegi ügyfél-objektumot a forrás-ügyfélként, majd hitelesítse a cél előfizetéséhez tartozó új ügyfél-objektumot. 
-
-[!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_snapshot_auth)]
-
-### <a name="use-a-snapshot"></a>Pillanatkép használata
-
-A pillanatképek többi művelete egy aszinkron függvényen belül történik. 
-
-1. Első lépésként **készítse el a** pillanatképet, amely az eredeti előfizetése adatait egy ideiglenes Felhőbeli helyre menti. Ez a metódus egy azonosítót ad vissza, amelyet a művelet állapotának lekérdezéséhez használ.
-
-    [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_snapshot_take)]
-
-1. Ezután kérdezze le az azonosítót, amíg a művelet be nem fejeződik.
-
-    [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_snapshot_wait)]
-
-    Ez a kód a függvény használatát végzi `wait_for_operation` el, amelyet külön kell meghatároznia:
-
-    [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_waitforop)]
-
-1. Térjen vissza az aszinkron függvényhez. Az **Apply** művelet használatával írja be az arc adatait a cél előfizetésbe. Ez a metódus egy azonosítót is visszaad.
-
-    [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_snapshot_apply)]
-
-1. Ismét a függvény használatával `wait_for_operation` kérdezheti le az azonosítót, amíg a művelet be nem fejeződik.
-
-    [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_snapshot_wait2)]
-
-Miután elvégezte ezeket a lépéseket, elérheti a Face adatok szerkezeteit az új (cél) előfizetésből.
-
 ## <a name="run-the-application"></a>Az alkalmazás futtatása
 
 Futtassa az Arcfelismerés alkalmazást az alkalmazás könyvtárából az `python` paranccsal.
@@ -271,10 +223,6 @@ Ha Cognitive Services-előfizetést szeretne törölni, törölheti az erőforr�
 Ha ebben a rövid útmutatóban létrehozott egy **PersonGroup** , és törölni szeretné, futtassa a következő kódot a parancsfájlban:
 
 [!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_deletegroup)]
-
-Ha ebben a rövid útmutatóban az adatok áttelepítve lettek a pillanatkép-szolgáltatással, törölnie kell a megcélzott előfizetésbe mentett **PersonGroup** is.
-
-[!code-python[](~/cognitive-services-quickstart-code/python/Face/FaceQuickstart.py?name=snippet_deletetargetgroup)]
 
 ## <a name="next-steps"></a>További lépések
 
