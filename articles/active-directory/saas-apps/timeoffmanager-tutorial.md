@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 12/10/2019
 ms.author: jeedes
 ms.openlocfilehash: 59eb2e320a828b644af6f740cf9f8381370a0dda
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88527281"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-timeoffmanager"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a TimeOffManager
@@ -96,7 +96,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. A fentiek mellett a TimeOffManager alkalmazás néhány további attribútumot vár az SAML-válaszban, amelyek alább láthatók. Ezek az attribútumok előre is fel vannak töltve, de a követelménynek megfelelően áttekintheti őket.
 
-    | Name | Forrás attribútum|
+    | Név | Forrás attribútum|
     | --- | --- |
     | FirstName |User. givenName |
     | LastName |Felhasználó. vezetéknév |
@@ -120,7 +120,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Create** (Létrehozás) gombra.
+   1. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -144,13 +144,13 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 1. Egy másik böngészőablakban jelentkezzen be a TimeOffManager vállalati webhelyre rendszergazdaként.
 
-2. Lépjen a **fiók \> fiók beállításai \> egyszeri bejelentkezési beállítások**menüpontra.
+2. Válassza a **fiókbeállítások \> \> Sign-On beállítások lehetőséget**.
    
-    ![Egyszeri bejelentkezési beállítások](./media/timeoffmanager-tutorial/ic795917.png "Egyszeri bejelentkezési beállítások")
+    ![Egyszeres Sign-On beállítások](./media/timeoffmanager-tutorial/ic795917.png "Egyszeres Sign-On beállítások")
 
-3. Az **egyszeri bejelentkezés beállításai** szakaszban hajtsa végre a következő lépéseket:
+3. Az **egyszeres Sign-On beállítások** szakaszban hajtsa végre a következő lépéseket:
    
-    ![Egyszeri bejelentkezési beállítások](./media/timeoffmanager-tutorial/ic795918.png "Egyszeri bejelentkezési beállítások")
+    ![Egyszeres Sign-On beállítások](./media/timeoffmanager-tutorial/ic795918.png "Egyszeres Sign-On beállítások")
    
     a. Nyissa meg a Base-64 kódolású tanúsítványt a Jegyzettömbben, másolja vágólapra a tartalmát, majd illessze be a teljes tanúsítványt **X. 509 tanúsítvány** szövegmezőbe.
    
@@ -168,7 +168,7 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 4. Az **egyszeri bejelentkezés beállításai** lapon másolja ki az **állítási szolgáltatás URL-címének** értékét, és illessze be a **Válasz URL-cím** szövegmezőbe a Azure Portal **alapszintű SAML-konfiguráció** szakaszában. 
 
-      ![Egyszeri bejelentkezési beállítások](./media/timeoffmanager-tutorial/ic795915.png "Egyszeri bejelentkezési beállítások")
+      ![Egyszeres Sign-On beállítások](./media/timeoffmanager-tutorial/ic795915.png "Egyszeres Sign-On beállítások")
 
 ### <a name="create-timeoffmanager-test-user"></a>TimeOffManager-tesztelési felhasználó létrehozása
 

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
 ms.openlocfilehash: 8908b411155cbe3d4b2f3677d2305b2872574014
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88532027"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-vibe-hcm"></a>Oktatóanyag: Azure Active Directory integráció a Vibe HCM-vel
@@ -73,7 +73,7 @@ Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a Vibe 
 Az Azure AD egyszeri bejelentkezés a Vibe HCM használatával történő konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
 
 1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. **[Állítsa be a Vibe HCM egyszeri bejelentkezést](#configure-vibe-hcm-single-sign-on)** az alkalmazás oldalán az egyszeri bejelentkezés beállításainak konfigurálásához.
+2. **[Állítsa be a Vibe HCM egyszeri bejelentkezést](#configure-vibe-hcm-single-sign-on)** az alkalmazás oldalának egyetlen Sign-On beállításainak konfigurálásához.
 3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
 4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
 5. **[Hozzon létre egy Vibe HCM-teszt felhasználót](#create-vibe-hcm-test-user)** – hogy rendelkezzen egy, a felhasználó Azure ad-Britta kapcsolódó, a Vibe HCM-ben található, a Vibe HCM-ben.
@@ -93,7 +93,7 @@ Az Azure AD egyszeri bejelentkezés a Vibe HCM használatával történő konfig
 
     ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
+3. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
@@ -110,11 +110,11 @@ Az Azure AD egyszeri bejelentkezés a Vibe HCM használatával történő konfig
     > [!NOTE]
     > Az érték nem valódi. Frissítse az értéket a tényleges bejelentkezési URL-címmel. Az érték beszerzéséhez forduljon a [Vibe HCM ügyfél-támogatási csapatához](mailto:support@vibehcm.com) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-6. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a Másolás gombra az **alkalmazás-összevonási metaadatok URL-címének** másolásához és a számítógépre mentéséhez.
+6. Az **egyszeres Sign-On beállítása az SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a Másolás gombra az **alkalmazás-összevonási metaadatok URL-címének** másolásához és a számítógépre mentéséhez.
 
     ![A tanúsítvány letöltési hivatkozása](common/copy-metadataurl.png)
 
-### <a name="configure-vibe-hcm-single-sign-on"></a>A Vibe HCM egyszeri bejelentkezés konfigurálása
+### <a name="configure-vibe-hcm-single-sign-on"></a>A Vibe HCM egyetlen Sign-On konfigurálása
 
 Az egyszeri bejelentkezés a **Vibe HCM** oldalán való konfigurálásához el kell küldenie az **alkalmazás-összevonási metaadatok URL-címét** a [Vibe HCM támogatási csapatának](mailto:support@vibehcm.com). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
 
@@ -140,7 +140,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    d. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

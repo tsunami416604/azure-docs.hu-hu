@@ -11,19 +11,19 @@ ms.topic: conceptual
 ms.date: 03/04/2019
 ms.author: aahi
 ms.openlocfilehash: ca3821b6088e45730334d1b0971e270b1d86dfce
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "68881927"
 ---
 # <a name="language-and-region-support-for-the-bing-image-search-api"></a>A Bing Image Search API nyelvi és területi támogatása
 
 Az Bing Image Search API több mint három tucat országot/régiót támogat, több mint egy nyelvet. A lekérdezéssel rendelkező ország/régió megadásával elsődlegesen az adott országban vagy régióban lévő érdekeltségek alapján pontosíthatja a keresési eredményeket. Emellett az eredmények a Bingre mutató hivatkozásokat is tartalmazhatnak, és ezek a hivatkozások a megadott ország/régiók vagy nyelv alapján lokalizálják a Bing felhasználói élményt.
 
-Az ország/régió és a nyelv megadásához állítsa `mkt` be a (piaci) lekérdezési paramétert az alábbi **piacok** táblából származó kódra. A piac egy országot/régiót és nyelvet is meghatároz. Ha a felhasználó egy másik nyelven szeretné megtekinteni a megjelenítendő szöveget, állítsa `setLang` a lekérdezési paramétert a megfelelő nyelvi kódra.
+Az ország/régió és a nyelv megadásához állítsa be a `mkt` (piaci) lekérdezési paramétert az alábbi **piacok** táblából származó kódra. A piac egy országot/régiót és nyelvet is meghatároz. Ha a felhasználó egy másik nyelven szeretné megtekinteni a megjelenítendő szöveget, állítsa `setLang` a lekérdezési paramétert a megfelelő nyelvi kódra.
 
-Azt is megteheti, hogy a `cc` lekérdezési paraméterrel megadhatja az országot/régiót. Ha országot vagy régiót ad meg, meg kell adnia egy vagy több nyelvi kódot is a `Accept-Language` HTTP-fejléc használatával. A támogatott nyelvek ország/régió szerint változnak; a piacok táblában minden országhoz/régióhoz meg vannak adva.
+Azt is megteheti, hogy a lekérdezési paraméterrel megadhatja az országot/régiót `cc` . Ha országot vagy régiót ad meg, meg kell adnia egy vagy több nyelvi kódot is a `Accept-Language` http-fejléc használatával. A támogatott nyelvek ország/régió szerint változnak; a piacok táblában minden országhoz/régióhoz meg vannak adva.
 
 > [!NOTE]
 > A trend images API jelenleg csak a következő piacokat támogatja:
@@ -34,7 +34,7 @@ Azt is megteheti, hogy a `cc` lekérdezési paraméterrel megadhatja az országo
 
 ## <a name="countriesregions"></a>Országok/régiók
 
-|Ország/régió|Kód|
+|Ország/régió|Code|
 |-------|----|
 |Argentína|AR|
 |Ausztrália|AU|

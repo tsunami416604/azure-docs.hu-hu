@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 02/01/2019
 ms.author: aahi
 ms.openlocfilehash: 110cef117683b20170649a231226c8193496edf3
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "68423920"
 ---
 # <a name="using-ranking-to-display-entity-search-results"></a>Rangsorolás használata az entitások keresési eredményeinek megjelenítéséhez  
@@ -26,10 +26,10 @@ Az [Items](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7
 
 |Mező | Leírás  |
 |---------|---------|
-|`answerType` és `resultIndex` | `answerType`azonosítja a választ (vagy az entitást vagy a `resultIndex` helyet), és azonosítja a válaszon belüli eredményt (például egy entitást). Az index 0 karakternél kezdődik.|
-|`value`    | `value`Egy olyan azonosítót tartalmaz, amely a válasz vagy eredmény AZONOSÍTÓjának felel meg a válaszon belül. Vagy a válasz vagy az eredmény tartalmazza az azonosítót, de nem mindkettőt. |
+|`answerType` és `resultIndex` | `answerType` azonosítja a választ (vagy az entitást vagy a helyet), és `resultIndex` azonosítja a válaszon belüli eredményt (például egy entitást). Az index 0 karakternél kezdődik.|
+|`value`    | `value` Egy olyan azonosítót tartalmaz, amely a válasz vagy eredmény AZONOSÍTÓjának felel meg a válaszon belül. Vagy a válasz vagy az eredmény tartalmazza az azonosítót, de nem mindkettőt. |
   
-A `answerType` és `resultIndex` a két lépésből álló folyamat. Először a használatával `answerType` azonosíthatja a megjelenítendő eredményeket tartalmazó választ. Ezután a `resultIndex` paranccsal indexelheti a válasz eredményét, hogy megjelenjen az eredmény. (Az `answerType` érték a mező neve a [SearchResponse](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#searchresponse) objektumban.) Ha azt szeretné, hogy a válasz összes eredménye együtt jelenjen meg, a rangsorolási válasz elem nem tartalmazza `resultIndex` a mezőt.
+A `answerType` és a `resultIndex` két lépésből álló folyamat. Először a használatával `answerType` azonosíthatja a megjelenítendő eredményeket tartalmazó választ. Ezután `resultIndex` a paranccsal indexelheti a válasz eredményét, hogy megjelenjen az eredmény. (Az `answerType` érték a mező neve a [SearchResponse](https://docs.microsoft.com/rest/api/cognitiveservices/bing-web-api-v7-reference#searchresponse) objektumban.) Ha azt szeretné, hogy a válasz összes eredménye együtt jelenjen meg, a rangsorolási válasz elem nem tartalmazza a `resultIndex` mezőt.
 
 Az azonosító használatához meg kell egyeznie a rangsor azonosítójának és a válasz AZONOSÍTÓjának, vagy az egyik eredményének. Ha egy válasz objektum tartalmaz egy `id` mezőt, a válasz összes eredményét együtt jeleníti meg. Ha például az `Entities` objektum tartalmazza a `id` mezőt, az összes entitást együtt jeleníti meg. Ha az `Entities` objektum nem tartalmazza a `id` mezőt, akkor minden entitás tartalmaz egy `id` mezőt, és a rangsorolási válasz összekeveri az entitásokat a helyek eredményeivel.  
   

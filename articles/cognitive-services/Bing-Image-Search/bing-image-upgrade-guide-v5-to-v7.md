@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 02/12/2019
 ms.author: scottwhi
 ms.openlocfilehash: c4c6b95996206cfb38ea3f77b89c3ebe3c2c0026
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "68883494"
 ---
 # <a name="bing-image-search-api-v7-upgrade-guide"></a>Bing Image Search API v7 frissítési útmutató
@@ -26,25 +26,25 @@ Ez a frissítési útmutató a Bing Image Search API 5. és 7. verziójának vá
 
 ### <a name="endpoints"></a>Végpontok
 
-- A végpont verziószáma a V5 verzióról a v7-re változott. Például https:\//API.Cognitive.microsoft.com/Bing/\*\*v 7.0 * */images/Search.
+- A végpont verziószáma a V5 verzióról a v7-re változott. Például https: \/ /API.Cognitive.microsoft.com/Bing/ \* \* v 7.0 * */images/Search.
 
 ### <a name="error-response-objects-and-error-codes"></a>Hibás objektumok és hibakódok
 
-- Az összes sikertelen kérelemnek tartalmaznia kell `ErrorResponse` egy objektumot a válasz törzsében.
+- Az összes sikertelen kérelemnek tartalmaznia kell egy `ErrorResponse` objektumot a válasz törzsében.
 
 - A következő mezőket adta hozzá az `Error` objektumhoz.  
   - `subCode`&mdash;A hibakódot különálló gyűjtőbe particionálja, ha lehetséges
-  - `moreDetails`&mdash;További információ a `message` mezőben leírt hibáról
+  - `moreDetails`&mdash;További információ a mezőben leírt hibáról `message`
 
 
-- Az V5-hibakódokat a következő lehetséges `code` és `subCode` értékekkel cserélte le.
+- Az V5-hibakódokat a következő lehetséges `code` és értékekkel cserélte le `subCode` .
 
-|Kód|Alkód|Leírás
+|Code|Alkód|Leírás
 |-|-|-
 |ServerError|UnexpectedError<br/>ResourceError<br/>Nincs implementálva|A Bing visszaadja a ServerError, ha az alkódok bármely feltétele teljesül. A válasz tartalmazza ezeket a hibákat, ha a HTTP-állapotkód 500.
 |InvalidRequest|ParameterMissing<br/>ParameterInvalidValue<br/>HttpNotAllowed<br/>Blokkolva|A Bing visszaadja a InvalidRequest, ha a kérelem bármely része érvénytelen. Például hiányzik egy kötelező paraméter, vagy a paraméter értéke érvénytelen.<br/><br/>Ha a hiba ParameterMissing vagy ParameterInvalidValue, a HTTP-állapotkód 400.<br/><br/>Ha a hiba HttpNotAllowed, a 410-es HTTP-állapotkód.
 |RateLimitExceeded||A Bing visszaadja a RateLimitExceeded, amikor a másodpercenkénti lekérdezések (QPS) vagy a havi lekérdezés (QPM) kvóta meghaladja a kvótát.<br/><br/>A Bing a 429-as HTTP-állapotkódot adja vissza, ha túllépte a QPS és a 403 értéket, ha túllépte a QPM.
-|InvalidAuthorization|AuthorizationMissing<br/>AuthorizationRedundancy|A Bing visszaadja a InvalidAuthorization, ha a Bing nem tudja hitelesíteni a hívót. Például hiányzik a `Ocp-Apim-Subscription-Key` fejléc, vagy az előfizetési kulcs érvénytelen.<br/><br/>A redundancia akkor fordul elő, ha egynél több hitelesítési módszert ad meg.<br/><br/>Ha a hiba InvalidAuthorization, a HTTP-állapotkód 401.
+|InvalidAuthorization|AuthorizationMissing<br/>AuthorizationRedundancy|A Bing visszaadja a InvalidAuthorization, ha a Bing nem tudja hitelesíteni a hívót. Például `Ocp-Apim-Subscription-Key` hiányzik a fejléc, vagy az előfizetési kulcs érvénytelen.<br/><br/>A redundancia akkor fordul elő, ha egynél több hitelesítési módszert ad meg.<br/><br/>Ha a hiba InvalidAuthorization, a HTTP-állapotkód 401.
 |InsufficientAuthorization|AuthorizationDisabled<br/>AuthorizationExpired|A Bing visszaadja a InsufficientAuthorization, ha a hívónak nincs engedélye az erőforrás elérésére. Ez akkor fordulhat elő, ha az előfizetési kulcs le van tiltva vagy lejárt. <br/><br/>Ha a hiba InsufficientAuthorization, a HTTP-állapotkód 403.
 
 - A következő leképezi az előző hibakódokat az új kódokra. Ha az V5-hibakódok függőségét vette igénybe, frissítse a kódját ennek megfelelően.
@@ -56,7 +56,7 @@ RequestParameterInvalidValue|InvalidRequest.ParameterInvalidValue
 ResourceAccessDenied|InsufficientAuthorization
 ExceededVolume|RateLimitExceeded
 ExceededQpsLimit|RateLimitExceeded
-Letiltva|InsufficientAuthorization.AuthorizationDisabled
+Disabled (Letiltva)|InsufficientAuthorization.AuthorizationDisabled
 UnexpectedError|ServerError. UnexpectedError
 DataSourceErrors|ServerError. ResourceError
 AuthorizationMissing|InvalidAuthorization.AuthorizationMissing
@@ -83,17 +83,17 @@ Blokkolva|InvalidRequest. Blocked
 
 ### <a name="image-insights-changes"></a>Képelemzési változások
 
-- Átnevezte a `annotations` [ImagesInsights](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imageinsightsresponse) mezőjét a következőre: `imageTags`.  
+- Átnevezte a `annotations` [ImagesInsights](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imageinsightsresponse) mezőjét a következőre: `imageTags` .  
 
 - Átnevezte a `AnnotationModule` [ImageTagsModule](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imagetagsmodule)objektumot.  
 
 - Átnevezte az `Annotation` objektumot a [címkére](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#tag), és eltávolította a `confidence` mezőt.  
 
-- Átnevezte a `insightsSourcesSummary` [rendszerkép](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#image) objektum mezőjét a következőre `insightsMetadata`:.  
+- Átnevezte a `insightsSourcesSummary` [rendszerkép](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#image) objektum mezőjét a következőre: `insightsMetadata` .  
 
 - Átnevezte a `InsightsSourcesSummary` [InsightsMetadata](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#insightsmetadata)objektumot.  
 
-- A `https://api.cognitive.microsoft.com/bing/v7.0/images/details` végpont hozzáadva. Ezzel a végponttal az/images/Search végpont helyett képelemzéseket kérhet. Lásd: [Képelemzések](./image-insights.md).
+- A végpont hozzáadva `https://api.cognitive.microsoft.com/bing/v7.0/images/details` . Ezzel a végponttal az/images/Search végpont helyett képelemzéseket kérhet. Lásd: [Képelemzések](./image-insights.md).
 
 - A következő lekérdezési paraméterek mostantól csak a `/images/details` végpontnál érvényesek.  
 
@@ -110,29 +110,29 @@ Blokkolva|InvalidRequest. Blocked
 
 - Módosította a következő mezők adattípusait a [ImageInsights](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imageinsights) objektumban.  
 
-    -   Módosította a `relatedCollections` mező típusát a `ImageGallery[]` [RelatedCollectionsModule](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#relatedcollectionsmodule)értékre.  
+    -   Módosította a mező típusát a `relatedCollections` `ImageGallery[]` [RelatedCollectionsModule](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#relatedcollectionsmodule)értékre.  
 
-    -   Módosította a `pagesIncluding` mező típusát a `Image[]` [ImagesModule](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imagesmodule)értékre.  
+    -   Módosította a mező típusát a `pagesIncluding` `Image[]` [ImagesModule](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imagesmodule)értékre.  
 
-    -   Módosította a `relatedSearches` mező típusát a `Query[]` [RelatedSearchesModule](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#relatedsearchesmodule)értékre.  
+    -   Módosította a mező típusát a `relatedSearches` `Query[]` [RelatedSearchesModule](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#relatedsearchesmodule)értékre.  
 
-    -   Módosította a `recipes` mező típusát a `Recipe[]` [RecipesModule](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#recipesmodule)értékre.  
+    -   Módosította a mező típusát a `recipes` `Recipe[]` [RecipesModule](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#recipesmodule)értékre.  
 
-    -   Módosította a `visuallySimilarImages` mező típusát a `Image[]` [ImagesModule](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imagesmodule)értékre.  
+    -   Módosította a mező típusát a `visuallySimilarImages` `Image[]` [ImagesModule](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imagesmodule)értékre.  
 
-    -   Módosította a `visuallySimilarProducts` mező típusát a `ProductSummaryImage[]` [ImagesModule](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imagesmodule)értékre.  
+    -   Módosította a mező típusát a `visuallySimilarProducts` `ProductSummaryImage[]` [ImagesModule](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imagesmodule)értékre.  
 
     -   Eltávolította az `ProductSummaryImage` objektumot, és áthelyezte a termékkel kapcsolatos mezőket a [rendszerkép](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#image) objektumba. Az `Image` objektum csak akkor tartalmazza a termékkel kapcsolatos mezőket, ha a képet egy képelemzési válaszban szereplő, hasonló termékek részeként jeleníti meg.  
 
-    -   Módosította a `recognizedEntityGroups` mező típusát a `RecognizedEntityGroup[]` [RecognizedEntitiesModule](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#recognizedentitiesmodule)értékre.  
+    -   Módosította a mező típusát a `recognizedEntityGroups` `RecognizedEntityGroup[]` [RecognizedEntitiesModule](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#recognizedentitiesmodule)értékre.  
 
--   `categoryClassification` Átnevezte a [ImageInsights](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imageinsightsresponse) mezőjét `annotations`, és módosította a típusát. `AnnotationsModule`  
+-   Átnevezte a `categoryClassification` [ImageInsights](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imageinsightsresponse) mezőjét `annotations` , és módosította a típusát `AnnotationsModule` .  
 
 ### <a name="images-answer"></a>A képek válasza
 
 -   Eltávolította a displayShoppingSourcesBadges és a displayRecipeSourcesBadges mezőket a [képekből](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#images).  
 
--   Átnevezte a `nextOffsetAddCount` [képek](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#images) mezőjét a következőre: `nextOffset`. Az eltolás használatának módja is megváltozott. Korábban az [eltolás](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#offset) lekérdezési paraméter `nextOffsetAddCount` értékét az előző eltolási értékre és az eredményben szereplő rendszerképek számára kell beállítani. Most az `nextOffset` értékre `offset` kell állítani.  
+-   Átnevezte a `nextOffsetAddCount` [képek](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#images) mezőjét a következőre: `nextOffset` . Az eltolás használatának módja is megváltozott. Korábban az [eltolás](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#offset) lekérdezési paraméter `nextOffsetAddCount` értékét az előző eltolási értékre és az eredményben szereplő rendszerképek számára kell beállítani. Most `offset` az értékre kell állítani `nextOffset` .  
 
 
 ## <a name="non-breaking-changes"></a>Nem törhető változások
@@ -149,8 +149,8 @@ Blokkolva|InvalidRequest. Blocked
 
 ### <a name="object-changes"></a>Objektum változásai
 
-- Hozzáadta `description` a `lastUpdated` és a mezőket az [ajánlat](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#offer) objektumhoz.  
+- Hozzáadta a `description` és a `lastUpdated` mezőket az [ajánlat](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#offer) objektumhoz.  
 
-- Hozzáadta `name` a mezőt a [ImageGallery](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imagegallery) objektumhoz.  
+- Hozzáadta a `name` mezőt a [ImageGallery](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#imagegallery) objektumhoz.  
 
 - Hozzáadva `similarTerms` a [képek](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-images-api-v7-reference#images) objektumhoz. Ez a mező a felhasználó lekérdezési karakterláncához hasonló kifejezések listáját tartalmazza.  

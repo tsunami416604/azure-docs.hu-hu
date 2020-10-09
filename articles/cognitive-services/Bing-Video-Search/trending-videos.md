@@ -11,17 +11,17 @@ ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: scottwhi
 ms.openlocfilehash: ea6f79bf6c305ecc07b3e684ede15ad439039e7e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "68500609"
 ---
 # <a name="get-trending-videos-with-the-bing-video-search-api"></a>Trendek a Bing Video Search API 
 
 A Bing Video Search API lehetővé teszi, hogy megkeresse a mai trendek videóit a weben és különböző kategóriákban. 
 
-## <a name="get-request"></a>Kérelem kérése
+## <a name="get-request"></a>GET kérés
 
 A következő GET kérelem elküldésével megtekintheti a mai trendek videóit a Bing Video Search APIból:  
   

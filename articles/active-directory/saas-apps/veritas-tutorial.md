@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/28/2019
 ms.author: jeedes
 ms.openlocfilehash: cdb3f30813d2650737cfa43507cef2b1d456573d
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88532534"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-veritas-enterprise-vaultcloud-sso"></a>Oktatóanyag: Azure Active Directory a Veritas Enterprise Vaulttal való integrációt. Felhőbeli egyszeri bejelentkezés
@@ -73,7 +73,7 @@ Az egyszeri bejelentkezés működéséhez egy Azure AD-felhasználó és a Veri
 Az Azure AD egyszeri bejelentkezésének konfigurálásához és teszteléséhez a Veritas Enterprise Vault használatával. felhőalapú egyszeri bejelentkezés esetén a következő építőelemeket kell végrehajtania:
 
 1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. A **[Veritas Enterprise Vault konfigurálása. FELHŐALAPÚ SSO egyszeri bejelentkezés](#configure-veritas-enterprise-vaultcloud-sso-single-sign-on)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+2. A **[Veritas Enterprise Vault konfigurálása. FELHŐALAPÚ SSO egyszeri bejelentkezés](#configure-veritas-enterprise-vaultcloud-sso-single-sign-on)** – az egyes Sign-On beállítások konfigurálása az alkalmazás oldalán.
 3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
 4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
 5. A **[Veritas Enterprise Vault létrehozása. Felhőbeli SSO-teszt felhasználó](#create-veritas-enterprise-vaultcloud-sso-test-user)** – a Britta Simon partnere a Veritas Enterprise vaultban. felhőalapú egyszeri bejelentkezés, amely a felhasználó Azure ad-beli képviseletéhez van társítva.
@@ -93,7 +93,7 @@ Az Azure AD egyszeri bejelentkezés a Veritas Enterprise Vaulttal való konfigur
 
     ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
+3. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
@@ -120,9 +120,9 @@ Az Azure AD egyszeri bejelentkezés a Veritas Enterprise Vaulttal való konfigur
     | Ázsia és a Csendes-óceáni térség| `https://auth.syd.archivecloud.net`|
 
     > [!NOTE]
-    > Ez az érték nem valós. Frissítse ezt az értéket a tényleges bejelentkezési URL-címmel. Az érték beszerzéséhez forduljon a [Veritas Enterprise vaulthoz. FELHŐALAPÚ SSO-ügyfél támogatási csapata](https://www.veritas.com/support/.html) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
+    > Ez az érték nem valós. Frissítse ezt az értéket a tényleges Sign-On URL-címmel. Az érték beszerzéséhez forduljon a [Veritas Enterprise vaulthoz. FELHŐALAPÚ SSO-ügyfél támogatási csapata](https://www.veritas.com/support/.html) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-5. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállítások alapján, és mentse a számítógépre.
+5. Az **egyszeres Sign-On beállítása az SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállítások alapján, és mentse azt a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozása](common/certificatebase64.png)
 
@@ -136,7 +136,7 @@ Az Azure AD egyszeri bejelentkezés a Veritas Enterprise Vaulttal való konfigur
 
     c. Kijelentkezési URL-cím
 
-### <a name="configure-veritas-enterprise-vaultcloud-sso-single-sign-on"></a>A Veritas Enterprise Vault konfigurálása. felhőalapú egyszeri bejelentkezéses egyszeri bejelentkezés
+### <a name="configure-veritas-enterprise-vaultcloud-sso-single-sign-on"></a>A Veritas Enterprise Vault konfigurálása. felhőalapú egyszeri bejelentkezés – egyetlen Sign-On
 
 Az egyszeri bejelentkezés a **Veritas Enterprise vaultban való konfigurálásához. a Felhőbeli SSO** oldalon el kell küldenie a letöltött **tanúsítványt (Base64)** és a megfelelő másolt url-címeket az Azure Portalról a [Veritas Enterprise Vaultba. Felhőbeli SSO-támogatási csapat](https://www.veritas.com/support/.html). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
 
@@ -162,7 +162,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    d. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/24/2019
 ms.author: jeedes
 ms.openlocfilehash: f342371ec065c4fb60c492c4354c6f8c717c9bb8
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88546009"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-beta"></a>Oktatóanyag: Azure Active Directory integráció a Zscaler Betatal
@@ -94,7 +94,7 @@ Az Azure AD egyszeri bejelentkezés a Zscaler Beta használatával történő ko
 
     ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon válassza a **Szerkesztés** lehetőséget az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
+3. Az **egyszeres Sign-On beállítása az SAML-vel** lapon válassza a **Szerkesztés** lehetőséget az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
@@ -113,7 +113,7 @@ Az Azure AD egyszeri bejelentkezés a Zscaler Beta használatával történő ko
 
 6. A Zscaler Beta alkalmazás néhány további attribútumot vár, amelyeket az SAML-válaszban vissza kell adni. Az alábbi táblázatban látható módon adja hozzá az SAML-jogkivonat attribútumot a felhasználói **jogcímek** szakaszban, a **felhasználói attribútumok** párbeszédpanelen.
     
-    | Name | Forrás attribútum | 
+    | Név | Forrás attribútum | 
     | ---------------| --------------- |
     | memberOf  | User. assignedroles |
 
@@ -131,14 +131,14 @@ Az Azure AD egyszeri bejelentkezés a Zscaler Beta használatával történő ko
 
     e. A **forrás attribútum** listáról adja meg az adott sorhoz megjelenő attribútum értékét.
 
-    f. Kattintson az **OK** gombra.
+    f. Válassza az **OK** lehetőséget.
 
-    : Válassza a **Mentés** lehetőséget.
+    : Kattintson a **Mentés** gombra.
 
     > [!NOTE]
     > A szerepkörök az Azure AD-ben való konfigurálásával kapcsolatos további információkért lásd: [a szerepkör-jogcím konfigurálása](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-app-role-management).
 
-7. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon az **SAML aláíró tanúsítvány** szakaszban válassza a **Letöltés** lehetőséget a tanúsítvány letöltéséhez **(Base64)**. Mentse a számítógépére.
+7. Az **egyszeres Sign-On beállítása SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban válassza a **Letöltés** elemet a tanúsítvány letöltéséhez **(Base64)**. Mentse a számítógépére.
 
     ![Tanúsítvány letöltési hivatkozása](common/certificatebase64.png)
 
@@ -188,7 +188,7 @@ Az Azure AD egyszeri bejelentkezés a Zscaler Beta használatával történő ko
 
     : A részleg **neve attribútum** mezőben adja meg a **részleg** értéket, ha engedélyezni szeretné a részleg attribútumainak SAML-kiépítését.
 
-    h. Válassza a **Mentés** lehetőséget.
+    h. Kattintson a **Mentés** gombra.
 
 6. A **felhasználói hitelesítés konfigurálása** párbeszédpanelen kövesse az alábbi lépéseket:
 

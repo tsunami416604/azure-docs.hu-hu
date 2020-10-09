@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/15/2019
 ms.author: jeedes
 ms.openlocfilehash: 1a7931f524d7f6cb1f98a582bed65c4dd06f9c58
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88523864"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-webmethods-integration-suite"></a>Oktatóanyag: Azure Active Directory integráció a webMethods Integration Suite szolgáltatással
@@ -75,7 +75,7 @@ Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a webMe
 Az Azure AD egyszeri bejelentkezés webMethods Integration Suite-nal történő konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
 
 1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. A **[webMethods Integration Suite egyszeri bejelentkezésének konfigurálása](#configure-webmethods-integration-suite-single-sign-on)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+2. **[Webmetódusok integrációs csomagjának egyszeri bejelentkezésének beállítása](#configure-webmethods-integration-suite-single-sign-on)** – az alkalmazás oldalának egyetlen Sign-On beállításainak konfigurálása.
 3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
 4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
 5. **[WebMethods Integration Suite-tesztkörnyezet létrehozása](#create-webmethods-integration-suite-test-user)** – ha a Britta Simon-t a webMethods Integration Suite-ban szeretné létrehozni, amely a felhasználó Azure ad-képviseletéhez van társítva.
@@ -95,7 +95,7 @@ Ha az Azure AD egyszeri bejelentkezést a webMethods Integration Suite szolgált
 
     ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
+3. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
@@ -158,7 +158,7 @@ Ha az Azure AD egyszeri bejelentkezést a webMethods Integration Suite szolgált
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és a bejelentkezési URL-címmel. Vegye fel a kapcsolatot a [webMethods Integration Suite ügyfél-támogatási csapatával](https://empower.softwareag.com/) , és szerezze be ezeket az értékeket. Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-6. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
+6. Az **egyszeres Sign-On beállítása SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozása](common/metadataxml.png)
 
@@ -172,7 +172,7 @@ Ha az Azure AD egyszeri bejelentkezést a webMethods Integration Suite szolgált
 
     c. Kijelentkezési URL-cím
 
-### <a name="configure-webmethods-integration-suite-single-sign-on"></a>Webmetódusok integrációs csomagjának egyszeri bejelentkezésének konfigurálása
+### <a name="configure-webmethods-integration-suite-single-sign-on"></a>WebMethods Integration Suite – egyetlen Sign-On konfigurálása
 
 Ha be szeretné állítani az egyszeri bejelentkezést a **webMethods Integration Suite** oldalon, el kell küldenie a letöltött **összevonási metaadatokat tartalmazó XML-fájlt** és a megfelelő másolt url-címeket a Azure Portal [webMethods Integration Suite támogatási csapatának](https://empower.softwareag.com/). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
 
@@ -199,7 +199,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    d. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

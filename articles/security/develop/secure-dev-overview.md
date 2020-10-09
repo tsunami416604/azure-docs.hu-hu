@@ -14,10 +14,10 @@ ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.openlocfilehash: c4314a0dcbbcb907ef4d6de0a2788cf04dfe1641
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "68934872"
 ---
 # <a name="secure-development-best-practices-on-azure"></a>Biztonságos fejlesztés – ajánlott eljárások az Azure-ban
@@ -41,15 +41,15 @@ A Microsoft [biztonsági fejlesztési életciklus (SDL)](https://msdn.microsoft.
 
 Az SDL-fázisok a következők:
 
-  - Képzés
+  - Oktatás
   - Követelmények
   - Tervezés
-  - Megvalósítás
+  - Implementálás
   - Ellenőrzés
   - Kiadás
-  - Válasz
+  - Reagálás
 
-![Biztonságfejlesztési életciklus](./media/secure-dev-overview/01-sdl-phase.png)
+![Biztonságos fejlesztési életciklus](./media/secure-dev-overview/01-sdl-phase.png)
 
 Ezekben a cikkekben az SDL fázisokat a tervezés, fejlesztés és üzembe helyezés témakörbe csoportosítjuk.
 
@@ -59,7 +59,7 @@ A szervezet olyan formális alkalmazás-biztonsági programmal rendelkezhet, ame
 
 Tisztában vagyunk azzal, hogy számos olvasó nem rendelkezhet biztonsági vagy megfelelőségi csapattal a részvételhez. Ezek a cikkek segítséget nyújtanak az SDL egyes fázisaiban megfontolandó biztonsági kérdések és döntések meghozatalában.
 
-## <a name="resources"></a>Erőforrások
+## <a name="resources"></a>További források
 
 A következő források segítségével többet tudhat meg a biztonságos alkalmazások fejlesztéséről és az Azure-beli alkalmazások biztonságossá tételéről:
 

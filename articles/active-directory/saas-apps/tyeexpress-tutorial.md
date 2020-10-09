@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/07/2019
 ms.author: jeedes
 ms.openlocfilehash: 5a601b7ec7e2615053203e23ea61fc6d2efc85bf
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88533503"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-te-express"></a>Oktatóanyag: Azure Active Directory integráció a T&E Expressrel
@@ -73,7 +73,7 @@ Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a T&E e
 Az Azure AD egyszeri bejelentkezés a T&E Express használatával történő konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
 
 1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. A **[T&E Express egyszeri bejelentkezés konfigurálása](#configure-te-express-single-sign-on)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+2. A **[T&E Express egyszeri bejelentkezés konfigurálásával](#configure-te-express-single-sign-on)** konfigurálhatja az egyes Sign-On beállításokat az alkalmazás oldalán.
 3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
 4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
 5. **[Hozzon létre t&E Express test felhasználóval](#create-te-express-test-user)** , hogy a t&E Express-ben a felhasználó Azure ad-beli képviseletéhez kapcsolódó Britta Simon-e.
@@ -93,11 +93,11 @@ Ha az Azure AD egyszeri bejelentkezést a T&E Express használatával szeretné 
 
     ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
+3. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
-4. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon hajtsa végre a következő lépéseket:
+4. Az **egyszeri Sign-On beállítása az SAML-vel** lapon hajtsa végre a következő lépéseket:
 
     ![T&E expressz tartomány és URL-címek egyszeri bejelentkezési adatai](common/idp-intiated.png)
 
@@ -108,7 +108,7 @@ Ha az Azure AD egyszeri bejelentkezést a T&E Express használatával szeretné 
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosító és válasz URL-címmel. Itt javasoljuk, hogy a karakterlánc egyedi értékét használja az azonosítóban. Az értékek beszerzéséhez vegye fel a kapcsolatot a [T&E Express ügyfél-támogatási csapatával](https://www.tyeexpress.com/contacto.aspx) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-5. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
+5. Az **egyszeres Sign-On beállítása SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozása](common/metadataxml.png)
 
@@ -122,17 +122,17 @@ Ha az Azure AD egyszeri bejelentkezést a T&E Express használatával szeretné 
 
     c. Kijelentkezési URL-cím
 
-### <a name="configure-te-express-single-sign-on"></a>T&E Express egyszeri bejelentkezés konfigurálása
+### <a name="configure-te-express-single-sign-on"></a>T&E Express egyetlen Sign-On konfigurálása
 
 1. Ha az egyszeri bejelentkezést a **t&E Express** oldalon szeretné konfigurálni, jelentkezzen be a t&E Express alkalmazásba anélkül, hogy SAML egyszeri bejelentkezést kellene használnia a rendszergazdai hitelesítő adatokkal.
 
 1. A **rendszergazda** lapon kattintson az SAML- **tartomány** elemre az SAML-beállítások lap megnyitásához.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/tyeexpress-tutorial/tye-SAML.png)
+    ![Egyetlen Sign-On konfigurálása](./media/tyeexpress-tutorial/tye-SAML.png)
 
 1. Válassza az **Activar (aktiválás)** lehetőséget a **nem** értékről si-re **(igen)**. Az **Identitáskezelés metaadatainak** szövegmezőbe illessze be a metaadatokat tartalmazó XML-fájlt, amelyet a Azure Portal letöltött.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/tyeexpress-tutorial/tyeAdmin.png)
+    ![Egyetlen Sign-On konfigurálása](./media/tyeexpress-tutorial/tyeAdmin.png)
 
 1. A beállítások mentéséhez kattintson a **Guarda (Mentés)** gombra.
 
@@ -159,7 +159,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    d. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

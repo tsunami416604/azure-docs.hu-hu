@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/27/2020
 ms.author: jeedes
 ms.openlocfilehash: 649396b81402e9229eb9ea2c627b60f249f8c601
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88530307"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-integration-with-catchpoint"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses integráció a Catchpoint
@@ -74,7 +74,7 @@ Az Azure AD SSO engedélyezéséhez kövesse az Azure Portal alábbi lépéseit:
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 1. A **Catchpoint** alkalmazás-integráció lapon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
 1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
-1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon válassza a toll ikont az **alapszintű SAML-konfigurációs** beállítások szerkesztéséhez.
+1. Az **egyszeri Sign-On beállítása az SAML-vel** lapon válassza a toll ikont az **alapszintű SAML-konfigurációs** beállítások szerkesztéséhez.
 
    ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
@@ -87,26 +87,26 @@ Az Azure AD SSO engedélyezéséhez kövesse az Azure Portal alábbi lépéseit:
 
 1. A Catchpoint alkalmazás megadott formátumban várja az SAML-kijelentéseket. Egyéni attribútum-hozzárendelések hozzáadása az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi táblázat az alapértelmezett attribútumok listáját tartalmazza:
 
-    | Name | Forrás attribútum|
+    | Név | Forrás attribútum|
     | ------------ | --------- |
     | GivenName | User. givenneame |
     | vezetéknév; | felhasználó. vezetéknév |
     | EmailAddress | User. mail |
-    | Name | User. userPrincipalName |
+    | Név | User. userPrincipalName |
     | Egyedi felhasználói azonosító | User. userPrincipalName |
 
     ![Felhasználói attribútumok & jogcímek listája képernyőkép](common/default-attributes.png)
 
 1. Emellett a Catchpoint alkalmazás egy másik attribútumot vár, amelyet egy SAML-válaszban kell átadni. Lásd az alábbi táblázatot. Ez az attribútum előre fel van töltve, de a követelményeinek megfelelően áttekintheti és frissítheti azt.
 
-    | Name | Forrás attribútum|
+    | Név | Forrás attribútum|
     | ------------ | --------- |
     | névtér | User. assignedrole |
 
     > [!NOTE]
     > A `namespace` jogcímet a fiók nevével kell leképezni. Ennek a fióknak a nevét az Azure AD-ben az SAML-válaszban visszaadott szerepkörrel kell beállítani. Az Azure AD szerepköreivel kapcsolatos további információkért lásd: a [vállalati alkalmazások SAML-jogkivonatában kiadott szerepkör-jogcím konfigurálása](https://docs.microsoft.com/azure/active-directory/develop/active-directory-enterprise-app-role-management).
 
-1. Lépjen az **egyszeri bejelentkezés beállítása SAML-** lapra. Az **SAML aláíró tanúsítvány** szakaszban keresse meg a **tanúsítvány (Base64)** szakaszt. A **Letöltés** gombra kattintva mentse a tanúsítványt a számítógépre.
+1. Nyissa **meg az egyszeri Sign-On beállítása SAML** -oldallal című lapot. Az **SAML aláíró tanúsítvány** szakaszban keresse meg a **tanúsítvány (Base64)** szakaszt. A **Letöltés** gombra kattintva mentse a tanúsítványt a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozása](common/certificatebase64.png)
 
@@ -165,7 +165,7 @@ Ebben a szakaszban engedélyezi a B. Simon számára az Azure egyszeri bejelentk
 
    Az **összevonás metaadatait tartalmazó XML-fájlt** is feltöltheti a **metaadatok feltöltése** lehetőség kiválasztásával.
 
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 ### <a name="create-a-catchpoint-test-user"></a>Catchpoint-teszt felhasználó létrehozása
 

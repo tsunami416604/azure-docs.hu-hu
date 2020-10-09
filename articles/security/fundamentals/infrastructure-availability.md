@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 04/28/2019
 ms.author: terrylan
 ms.openlocfilehash: c50c4faf47caf0a7519d61fdc8989ec9fd809d78
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "68727218"
 ---
 # <a name="azure-infrastructure-availability"></a>Azure-infrastruktúra rendelkezésre állása
@@ -37,7 +37,7 @@ A Microsoft biztosítja a magas rendelkezésre állást a fejlett monitorozási 
 ## <a name="disaster-recovery"></a>Vészhelyreállítás
 Az Azure két helyen tartja az adatvédelmet. Megadhatja a biztonsági mentési hely helyét. Az Azure mindkét helyen folyamatosan három kifogástalan adatreplikát tart fenn az adataiban.
 
-## <a name="database-availability"></a>Adatbázis rendelkezésre állása
+## <a name="database-availability"></a>Adatbázisok rendelkezésre állása
 Az Azure biztosítja, hogy az adatbázisok elérhetők legyenek az Internet-átjárón keresztül a tartós adatbázisok rendelkezésre állásával. A monitorozás az aktív adatbázisok állapotát és állapotát öt percenként méri.
 
 ## <a name="storage-availability"></a>Tárterület rendelkezésre állása

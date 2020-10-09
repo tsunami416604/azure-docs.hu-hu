@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/31/2019
 ms.author: scottwhi
 ms.openlocfilehash: 7683930af1de0fc4e4d112c1e559358d5d5d5609
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "68500600"
 ---
 # <a name="get-insights-about-a-video"></a>Videókra vonatkozó információk lekérése
@@ -34,7 +34,7 @@ A Bing Video Search API által visszaadott összes videó tartalmaz egy videó-a
     ],
 ```
 
-Ezt követően küldjön egy GET-kérést a videó részleteit tartalmazó végpontra az AZONOSÍTÓval. Állítsa az [ID](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#id) lekérdezési paramétert `videoId` a tokenre. A lekérdezni kívánt adatfelismerések megadásához állítsa be a [modulok](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#modulesrequested) lekérdezési paraméterét. Az összes bepillantást az összes értékre `modules` állíthatja. A válasz tartalmazza az összes kért bepillantást, ha van ilyen.
+Ezt követően küldjön egy GET-kérést a videó részleteit tartalmazó végpontra az AZONOSÍTÓval. Állítsa az [ID](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#id) lekérdezési paramétert a `videoId` tokenre. A lekérdezni kívánt adatfelismerések megadásához állítsa be a [modulok](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#modulesrequested) lekérdezési paraméterét. Az összes bepillantást az összes értékre állíthatja `modules` . A válasz tartalmazza az összes kért bepillantást, ha van ilyen.
 
 ```cURL
 GET https://api.cognitive.microsoft.com/bing/v7.0/videos/details?q=sailiing+dinghies&id=6DB795E11A6E3CBAAD636DB795E11A6E3CBAAD63&modules=All&mkt=en-us HTTP/1.1  
@@ -48,7 +48,7 @@ Host: api.cognitive.microsoft.com
 
 ## <a name="getting-related-videos-insights"></a>Kapcsolódó videó-felismerések beolvasása  
 
-A megadott videóhoz kapcsolódó videók beszerzéséhez állítsa a [modulok](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#modulesrequested) lekérdezési paraméterét a `RelatedVideos`következőre:.
+A megadott videóhoz kapcsolódó videók beszerzéséhez állítsa a [modulok](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#modulesrequested) lekérdezési paraméterét a következőre: `RelatedVideos` .
   
 ```cURL  
 GET https://api.cognitive.microsoft.com/bing/v7.0/videos/details?q=sailiing+dinghies&id=6DB795E11A6E3CBAAD636DB795E11A6E3CBAAD63&modules=RelatedVideos&mkt=en-us HTTP/1.1  

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/14/2019
 ms.author: jeedes
 ms.openlocfilehash: 6732857e278285071c9d36c629920ad9e67368f2
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88528542"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rfpio"></a>Oktatóanyag: Azure Active Directory integráció a RFPIO
@@ -73,7 +73,7 @@ Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a RFPIO
 Az Azure AD egyszeri bejelentkezés RFPIO való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
 
 1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. **[RFPIO egyszeri bejelentkezés konfigurálása](#configure-rfpio-single-sign-on)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+2. **[RFPIO egyszeri bejelentkezés konfigurálása](#configure-rfpio-single-sign-on)** – az egyes Sign-On beállítások konfigurálása az alkalmazás oldalán.
 3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
 4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
 5. **[Hozzon létre RFPIO-teszt felhasználót](#create-rfpio-test-user)** – hogy a RFPIO Britta, a felhasználó Azure ad-képviseletéhez kapcsolódó partnerrel rendelkezzen.
@@ -93,7 +93,7 @@ Az Azure AD egyszeri bejelentkezés RFPIO való konfigurálásához hajtsa végr
 
     ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
+3. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
@@ -118,7 +118,7 @@ Az Azure AD egyszeri bejelentkezés RFPIO való konfigurálásához hajtsa végr
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval és a bejelentkezési URL-címmel. Az értékek lekéréséhez forduljon a RFPIO ügyfélszolgálati [csapatához](https://www.rfpio.com/contact/) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-6. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
+6. Az **egyszeres Sign-On beállítása SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozása](common/metadataxml.png)
 
@@ -132,36 +132,36 @@ Az Azure AD egyszeri bejelentkezés RFPIO való konfigurálásához hajtsa végr
 
     c. Kijelentkezési URL-cím
 
-### <a name="configure-rfpio-single-sign-on"></a>RFPIO egyszeri bejelentkezés konfigurálása
+### <a name="configure-rfpio-single-sign-on"></a>RFPIO egyetlen Sign-On konfigurálása
 
 1. Egy másik böngészőablakban jelentkezzen be rendszergazdaként a **RFPIO** webhelyre.
 
 1. Kattintson a bal alsó sarokban lévő legördülő menüre.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/rfpio-tutorial/app1.png)
+    ![Egyetlen Sign-On konfigurálása](./media/rfpio-tutorial/app1.png)
 
 1. Kattintson a **szervezeti beállítások**elemre. 
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/rfpio-tutorial/app2.png)
+    ![Egyetlen Sign-On konfigurálása](./media/rfpio-tutorial/app2.png)
 
 1. Kattintson a **funkciók & az integráció**elemre.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/rfpio-tutorial/app4.png)
+    ![Egyetlen Sign-On konfigurálása](./media/rfpio-tutorial/app4.png)
 
 1. Az **SAML SSO-konfigurációban** kattintson a **Szerkesztés**elemre.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/rfpio-tutorial/app3.png)
+    ![Egyetlen Sign-On konfigurálása](./media/rfpio-tutorial/app3.png)
 
 1. Ebben a szakaszban a következő műveleteket hajtja végre:
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/rfpio-tutorial/app5.png)
+    ![Egyetlen Sign-On konfigurálása](./media/rfpio-tutorial/app5.png)
     
     a. Másolja ki a **letöltött metaadatok XML-fájljának** tartalmát, és illessze be az **identitás konfigurációja** mezőbe.
 
     > [!NOTE]
     >A letöltött **összevonási metaadatok** tartalmának másolása a **Jegyzettömb + +** vagy a megfelelő **XML-szerkesztő**használatával végezhető el.
 
-    b. Kattintson a **Validate** (Érvényesítés) elemre.
+    b. Kattintson az **Érvényesítés**elemre.
 
     c. Az **Érvényesítés**gombra kattintás után fordítsa át az **SAML (engedélyezve) beállítást a következőre** :.
 
@@ -189,7 +189,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    d. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -223,23 +223,23 @@ Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egysz
 
 1. Kattintson a bal alsó sarokban lévő legördülő menüre.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/rfpio-tutorial/app1.png)
+    ![Egyetlen Sign-On konfigurálása](./media/rfpio-tutorial/app1.png)
 
 1. Kattintson a **szervezeti beállítások**elemre. 
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/rfpio-tutorial/app2.png)
+    ![Egyetlen Sign-On konfigurálása](./media/rfpio-tutorial/app2.png)
 
 1. Kattintson a **csapattagok**lehetőségre.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/rfpio-tutorial/app6.png)
+    ![Egyetlen Sign-On konfigurálása](./media/rfpio-tutorial/app6.png)
 
 1. Kattintson a **Tagok hozzáadása**lehetőségre.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/rfpio-tutorial/app7.png)
+    ![Egyetlen Sign-On konfigurálása](./media/rfpio-tutorial/app7.png)
 
 1. Az **új tagok hozzáadása** szakaszban. Hajtsa végre a következő műveleteket:
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/rfpio-tutorial/app8.png)
+    ![Egyetlen Sign-On konfigurálása](./media/rfpio-tutorial/app8.png)
 
     a. Adja meg az **e-mail címet** az **adja meg egy e-mailt** soronként mezőben.
 

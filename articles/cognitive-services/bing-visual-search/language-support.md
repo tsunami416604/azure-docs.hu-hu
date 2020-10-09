@@ -11,19 +11,19 @@ ms.topic: conceptual
 ms.date: 09/25/2018
 ms.author: scottwhi
 ms.openlocfilehash: b17341bc234ff3dfecc2c6dcd84ef77116a95d61
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "68883547"
 ---
 # <a name="language-and-region-support-for-the-bing-visual-search-api"></a>A Bing Visual Search API nyelvi és területi támogatása
 
 Bing Visual Search API több mint három tucat országot/régiót támogat, több mint egy nyelvet. Minden kérelemnek tartalmaznia kell a felhasználó országát/régióját és a választott nyelvet. A felhasználó piacának ismerete segít a Bingnek a megfelelő eredmények visszaküldésében. Ha nem ad meg országot/régiót és nyelvet, a Bing a legmegfelelőbb módon határozza meg a felhasználó országát/régióját és nyelvét. Mivel az eredmények a Bingre mutató hivatkozásokat is tartalmazhatnak, az ország/régió és a nyelv ismerete előnyben részesített honosított Bing felhasználói élményt biztosíthat, ha a felhasználó a Bing hivatkozásokra kattint.
 
-Az ország/régió és a nyelv megadásához állítsa `mkt` be a (piaci) lekérdezési paramétert az alábbi **piacok** táblából származó kódra. A piac egy országot/régiót és nyelvet is meghatároz. Ha a felhasználó egy másik nyelven szeretné megtekinteni a megjelenítendő szöveget, állítsa `setLang` a lekérdezési paramétert a megfelelő nyelvi kódra.
+Az ország/régió és a nyelv megadásához állítsa be a `mkt` (piaci) lekérdezési paramétert az alábbi **piacok** táblából származó kódra. A piac egy országot/régiót és nyelvet is meghatároz. Ha a felhasználó egy másik nyelven szeretné megtekinteni a megjelenítendő szöveget, állítsa `setLang` a lekérdezési paramétert a megfelelő nyelvi kódra.
 
-Azt is megteheti, hogy a `cc` lekérdezési paraméterrel megadhatja az országot/régiót. Ha országot vagy régiót ad meg, meg kell adnia egy vagy több nyelvi kódot is a `Accept-Language` HTTP-fejléc használatával. A támogatott nyelvek ország/régió szerint változnak; Ezek az egyes országok számára a piacok táblában vannak megadva.
+Azt is megteheti, hogy a lekérdezési paraméterrel megadhatja az országot/régiót `cc` . Ha országot vagy régiót ad meg, meg kell adnia egy vagy több nyelvi kódot is a `Accept-Language` http-fejléc használatával. A támogatott nyelvek ország/régió szerint változnak; Ezek az egyes országok számára a piacok táblában vannak megadva.
 
 
 
@@ -36,7 +36,7 @@ Azt is megteheti, hogy a `cc` lekérdezési paraméterrel megadhatja az országo
 
 ## <a name="countriesregions"></a>Országok/régiók
 
-|Ország/régió|Kód|
+|Ország/régió|Code|
 |-------|----|
 |Argentína|AR|
 |Ausztrália|AU|

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/20/2019
 ms.author: jeedes
 ms.openlocfilehash: 149de1f104d7005ea382decd93dd5f61a1fffe0a
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88529219"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-chronicx"></a>Oktatóanyag: Azure Active Directory integráció a ChronicX®
@@ -74,7 +74,7 @@ Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a Chron
 Az Azure AD egyszeri bejelentkezés konfigurálásához és teszteléséhez a ChronicX® használatával a következő építőelemeket kell végrehajtania:
 
 1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. A **[ChronicX konfigurálása® egyszeri bejelentkezéssel](#configure-chronicx-single-sign-on)** – az alkalmazás oldalának egyszeri bejelentkezési beállításainak konfigurálása.
+2. A **[ChronicX konfigurálása® egyszeri bejelentkezéssel](#configure-chronicx-single-sign-on)** – az egyes Sign-On beállítások konfigurálása az alkalmazás oldalán.
 3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
 4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
 5. **[Hozzon létre ChronicX® tesztelési felhasználóval](#create-chronicx-test-user)** , hogy a ChronicX-® a felhasználó Azure ad-képviseletéhez kapcsolódó Britta.
@@ -94,7 +94,7 @@ Ha az Azure AD egyszeri bejelentkezést az ChronicX® segítségével szeretné 
 
     ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
+3. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
@@ -107,9 +107,9 @@ Ha az Azure AD egyszeri bejelentkezést az ChronicX® segítségével szeretné 
     b. Az **azonosító (Entity ID)** szövegmezőbe írja be az URL-címet: `ups.chronicx.com`
 
     > [!NOTE]
-    >A bejelentkezési URL-cím értéke nem valós. Frissítse az értéket a tényleges bejelentkezési URL-címmel. Az érték beszerzéséhez vegye fel a kapcsolatot a [ChronicX® ügyfél-támogatási csapatával](https://www.casebank.com/contact-us/) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
+    >A bejelentkezési URL-cím értéke nem valós. Frissítse az értéket a tényleges Sign-On URL-címmel. Az érték beszerzéséhez vegye fel a kapcsolatot a [ChronicX® ügyfél-támogatási csapatával](https://www.casebank.com/contact-us/) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-5. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
+5. Az **egyszeres Sign-On beállítása SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra az **összevonási metaadatok XML-** fájljának a megadott beállítások alapján történő letöltéséhez, és mentse a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozása](common/metadataxml.png)
 
@@ -123,7 +123,7 @@ Ha az Azure AD egyszeri bejelentkezést az ChronicX® segítségével szeretné 
 
     c. Kijelentkezési URL-cím
 
-### <a name="configure-chronicx-single-sign-on"></a>ChronicX egyszeri bejelentkezés konfigurálása
+### <a name="configure-chronicx-single-sign-on"></a>ChronicX egyetlen Sign-On konfigurálása
 
 Ha az egyszeri bejelentkezést a **ChronicX®** oldalon szeretné konfigurálni, akkor a letöltött **összevonási metaadatokat tartalmazó XML-fájlt** és a megfelelő másolt URL-címeket el kell küldenie a Azure Portalból a [ChronicX® támogatási csapatának](https://www.casebank.com/contact-us/). Ezt a beállítást úgy állították be, hogy az SAML SSO-kapcsolatok mindkét oldalon helyesen legyenek beállítva.
 
@@ -150,7 +150,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    d. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

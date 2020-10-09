@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/29/2019
 ms.author: jeedes
 ms.openlocfilehash: 3313e923bbe5218a965c58d2faee810182c00aa6
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88532725"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-uservoice"></a>Oktatóanyag: Azure Active Directory integráció a UserVoice
@@ -73,7 +73,7 @@ Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a UserV
 Az Azure AD egyszeri bejelentkezés UserVoice való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
 
 1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. **[UserVoice egyszeri bejelentkezés konfigurálása](#configure-uservoice-single-sign-on)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+2. **[UserVoice egyszeri bejelentkezés konfigurálása](#configure-uservoice-single-sign-on)** – az egyes Sign-On beállítások konfigurálása az alkalmazás oldalán.
 3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
 4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
 5. **[Hozzon létre UserVoice-teszt felhasználót](#create-uservoice-test-user)** – hogy a UserVoice Britta, a felhasználó Azure ad-képviseletéhez kapcsolódó partnerrel rendelkezzen.
@@ -93,7 +93,7 @@ Az Azure AD egyszeri bejelentkezés UserVoice való konfigurálásához hajtsa v
 
     ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
+3. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
@@ -126,7 +126,7 @@ Az Azure AD egyszeri bejelentkezés UserVoice való konfigurálásához hajtsa v
 
     c. Kijelentkezési URL-cím
 
-### <a name="configure-uservoice-single-sign-on"></a>UserVoice egyszeri bejelentkezés konfigurálása
+### <a name="configure-uservoice-single-sign-on"></a>UserVoice egyetlen Sign-On konfigurálása
 
 1. Egy másik böngészőablakban jelentkezzen be a UserVoice vállalati webhelyre rendszergazdaként.
 
@@ -142,11 +142,11 @@ Az Azure AD egyszeri bejelentkezés UserVoice való konfigurálásához hajtsa v
    
     ![Felhasználói hitelesítés szerkesztése](./media/uservoice-tutorial/ic777521.png "Felhasználói hitelesítés szerkesztése")
    
-    a. Kattintson az **egyszeri bejelentkezés (SSO)** elemre.
+    a. Kattintson az **egyszeri Sign-On (SSO)** lehetőségre.
  
     b. Illessze be a **bejelentkezési URL-címet** , amelyet a Azure Portal másolt az **egyszeri bejelentkezéses távoli bejelentkezési** szövegmezőbe.
 
-    c. Illessze be a **kijelentkezési URL-címet** , amelyet a Azure Portal az **egyszeri bejelentkezéses távoli bejelentkezési szövegmezőbe**másolt.
+    c. Illessze be a **kijelentkezési URL-címet** , amelyet a Azure Portal az **egyszeri bejelentkezéses távoli Sign-Out szövegmezőbe**másolt.
  
     d. Illessze be a Azure Portalba másolt **ujjlenyomat** -értéket az **aktuális tanúsítvány SHA1 ujjlenyomat** szövegmezőbe.
     
@@ -174,7 +174,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    d. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

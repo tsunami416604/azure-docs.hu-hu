@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: raynew
 ms.openlocfilehash: aa9d776df50306ab1705426c923413b5a5d545a5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "68717350"
 ---
 # <a name="monitor-site-recovery"></a>A Site Recovery monitorozása
@@ -46,12 +46,12 @@ Mielőtt elkezdené, érdemes áttekinteni a [gyakori figyelési kérdéseket](m
 
 A **replikált elemekben**figyelje a tárolóban lévő összes olyan gép állapotát, amelyen engedélyezve van a replikáció.
 
-**Állapot** | **Részletek**
+**Állam** | **Részletek**
 --- | ---
 Kifogástalan | A replikáció általában folyamatban van. A rendszer nem észlel hibát vagy figyelmeztetési tüneteket.
 Figyelmeztetés | A rendszer egy vagy több olyan figyelmeztetési tünetet észlel, amely hatással lehet a replikációra.
 Kritikus | Egy vagy több kritikus replikációs hiba tünetei észlelhetők.<br/><br/> Ezek a hibák általában a replikálás során beragadtak, vagy az adatváltozási sebességnek megfelelően nem haladnak előre.
-Nem értelmezhető | Azok a kiszolgálók, amelyeknek jelenleg nem várható a replikálásuk. Ilyenek lehetnek a feladatátvétel alatt álló gépek.
+Nem alkalmazható | Azok a kiszolgálók, amelyeknek jelenleg nem várható a replikálásuk. Ilyenek lehetnek a feladatátvétel alatt álló gépek.
 
 ## <a name="monitor-test-failovers"></a>Feladatátvételi teszt figyelése
 
@@ -60,11 +60,11 @@ A **feladatátvételi teszt sikeressége**során figyelje a tárolóban lévő g
 - Javasoljuk, hogy hat havonta legalább egyszer futtasson feladatátvételi tesztet a replikált gépeken. Ez a módszer azt vizsgálja, hogy a feladatátvétel a várt módon működik-e, az éles környezet megszakítása nélkül. 
 - A feladatátvételi teszt csak akkor tekinthető sikeresnek, ha a feladatátvétel és feladatátvétel utáni karbantartás sikeresen befejeződött.
 
-**Állapot** | **Részletek**
+**Állam** | **Részletek**
 --- | ---
 Tesztelés javasolt | Azok a gépek, amelyeknek nincs feladatátvételi tesztje, mivel a védelem engedélyezve volt.
 Sikeresen elvégezve | Gépek sikeres feladatátvételi teszttel.
-Nem értelmezhető | Azok a gépek, amelyek jelenleg nem jogosultak feladatátvételi tesztre. A feladatátvételt nem igénylő gépek például a kezdeti replikálási/tesztelési feladatátvétel/feladatátvétel folyamatban van.
+Nem alkalmazható | Azok a gépek, amelyek jelenleg nem jogosultak feladatátvételi tesztre. A feladatátvételt nem igénylő gépek például a kezdeti replikálási/tesztelési feladatátvétel/feladatátvétel folyamatban van.
 
 ## <a name="monitor-configuration-issues"></a>Konfigurációs problémák figyelése
 
@@ -73,7 +73,7 @@ Nem értelmezhető | Azok a gépek, amelyek jelenleg nem jogosultak feladatátv�
 - A konfigurációs problémákat (kivéve a szoftverfrissítés rendelkezésre állását) egy periodikus érvényesítő művelet észleli, amely alapértelmezés szerint 12 óránként fut. Az érvényesítési művelet azonnal futtatható, ha a frissítés ikonra kattint a **konfigurációs problémák** szakasz fejléce mellett.
 - A hivatkozásokra kattintva további részleteket tudhat meg. Az egyes gépeket érintő problémák esetén kattintson a **szükséges figyelmet** a **cél konfigurációk** oszlopban. A részletek közé tartoznak a szervizeléssel kapcsolatos javaslatok.
 
-**Állapot** | **Részletek**
+**Állam** | **Részletek**
 --- | ---
 Hiányzó konfigurációk | Hiányzik egy szükséges beállítás, például egy helyreállítási hálózat vagy egy erőforráscsoport.
 Hiányzó erőforrások | Egy megadott erőforrás nem található, vagy nem érhető el az előfizetésben. Az erőforrás például törölve lett vagy át lett telepítve. A figyelt erőforrások közé tartozik a célként megadott erőforráscsoport, a cél VNet/alhálózat, a napló/cél Storage-fiók, a cél rendelkezésre állási csoport, a célként megadott IP-cím.
@@ -107,14 +107,14 @@ Az **infrastruktúra nézetben**figyelje a replikációban részt vevő infrastr
 - Az infrastruktúra nézet összes funkciójának használatához az ezen összetevőkhöz tartozó [22-es kumulatív frissítést](https://support.microsoft.com/help/4072852) kell futtatnia.
 - Az infrastruktúra nézet használatához válassza ki a megfelelő replikációs forgatókönyvet a környezetében. További részletekért tekintse meg a nézet részletezését. A következő táblázat bemutatja, hogy mely forgatókönyvek jelennek meg.
 
-    **Forgatókönyv** | **Állapot**  | **Elérhető a nézet?**
+    **Forgatókönyv** | **Állam**  | **Elérhető a nézet?**
     --- |--- | ---
-    **Replikáció a helyszíni helyek között** | Minden állam | No 
-    **Azure-beli virtuális gépek Azure-régiók közötti replikációja**  | Replikáció engedélyezve/kezdeti replikálás folyamatban | Yes
-    **Azure-beli virtuális gépek Azure-régiók közötti replikációja** | Feladatátvétel/feladat-visszavétel | No   
-    **VMware–Azure replikálás** | Replikáció engedélyezve/kezdeti replikálás folyamatban | Yes     
-    **VMware–Azure replikálás** | Feladatátvétel/feladatátvétel meghiúsult | No      
-    **Hyper-V–Azure replikálás** | Feladatátvétel/feladatátvétel meghiúsult | No
+    **Replikáció a helyszíni helyek között** | Minden állam | Nem 
+    **Azure-beli virtuális gépek Azure-régiók közötti replikációja**  | Replikáció engedélyezve/kezdeti replikálás folyamatban | Igen
+    **Azure-beli virtuális gépek Azure-régiók közötti replikációja** | Feladatátvétel/feladat-visszavétel | Nem   
+    **VMware–Azure replikálás** | Replikáció engedélyezve/kezdeti replikálás folyamatban | Igen     
+    **VMware–Azure replikálás** | Feladatátvétel/feladatátvétel meghiúsult | Nem      
+    **Hyper-V–Azure replikálás** | Feladatátvétel/feladatátvétel meghiúsult | Nem
 
 - Egy replikáló gép infrastruktúra-nézetének megtekintéséhez a tároló menüjében kattintson a **replikált elemek**elemre, és válasszon egy kiszolgálót.  
 

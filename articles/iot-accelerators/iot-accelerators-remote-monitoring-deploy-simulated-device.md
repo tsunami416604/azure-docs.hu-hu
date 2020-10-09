@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 08/15/2018
 ms.topic: conceptual
 ms.openlocfilehash: 7cbab38db859935c9f4490d79a131d6c9a7e302b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "66427564"
 ---
 # <a name="deploy-a-new-simulated-device"></a>Új szimulált eszköz üzembe helyezése
@@ -136,7 +136,7 @@ Mostantól használhatja az egyéni eszközöket a távoli figyelési megoldásb
 
 1. Az irányítópult használatával megtekintheti az eszközök telemetria, és meghívhatja az eszköz metódusait.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha azt tervezi, hogy további felfedezést szeretne, hagyja üzembe a távoli figyelési megoldáshoz tartozó gyorssegédet.
 

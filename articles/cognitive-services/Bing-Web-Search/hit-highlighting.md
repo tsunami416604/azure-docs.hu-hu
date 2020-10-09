@@ -12,21 +12,21 @@ ms.topic: conceptual
 ms.date: 07/30/2019
 ms.author: scottwhi
 ms.openlocfilehash: a6d394fec6e7cf0a230f61ad05c236a1f84dad9d
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "68854012"
 ---
 # <a name="using-decoration-markers-to-highlight-text"></a>A dekorációs jelölők használata a szöveg kiemeléséhez
 
-A Bing támogatja a találatok kiemelését, amelyek bizonyos válaszok megjelenítési karakterláncában a lekérdezési kifejezéseket (vagy a Bing által megtalált egyéb kifejezéseket) jelölik. Előfordulhat például, hogy egy weblap `name`eredményének `displayUrl`, és `snippet` mezőinek megjelölése megjelölt lekérdezési feltételeket tartalmaz. 
+A Bing támogatja a találatok kiemelését, amelyek bizonyos válaszok megjelenítési karakterláncában a lekérdezési kifejezéseket (vagy a Bing által megtalált egyéb kifejezéseket) jelölik. Előfordulhat például, hogy egy weblap eredményének `name` , `displayUrl` és `snippet` mezőinek megjelölése megjelölt lekérdezési feltételeket tartalmaz. 
 
-Alapértelmezés szerint a Bing nem tartalmazza a megjelenítési karakterláncok kiemelését jelölőket. A jelölők engedélyezéséhez foglalja bele a `textDecorations` lekérdezési paramétert a kérelembe, és `true`állítsa be a következőre:.
+Alapértelmezés szerint a Bing nem tartalmazza a megjelenítési karakterláncok kiemelését jelölőket. A jelölők engedélyezéséhez foglalja bele a `textDecorations` lekérdezési paramétert a kérelembe, és állítsa be a következőre: `true` .
 
 ## <a name="hit-highlighting-example"></a>Találatok kiemelése példa
 
-Az alábbi példa egy webes eredményt mutat be `Sailing Dinghy`. A Bing a lekérdezési kifejezés kezdetét és végét a E000 és a E001 Unicode-karakterek használatával jelölte meg.
+Az alábbi példa egy webes eredményt mutat be `Sailing Dinghy` . A Bing a lekérdezési kifejezés kezdetét és végét a E000 és a E001 Unicode-karakterek használatával jelölte meg.
   
 ![Találatok kiemelése](./media/cognitive-services-bing-web-api/bing-hit-highlighting.png) 
 
@@ -43,19 +43,19 @@ A Bing lehetővé teszi, hogy Unicode-karaktereket vagy HTML-címkéket jelölő
 
 ## <a name="additional-text-decorations"></a>További szöveg-kitüntetések
 
-A Bing számos különböző szöveget is visszaadhat. A `Computation` válasz tartalmazhat például alszkriptet jelölőket a lekérdezési kifejezéshez `log(2)` a `expression` mezőben.
+A Bing számos különböző szöveget is visszaadhat. A `Computation` Válasz tartalmazhat például alszkriptet jelölőket a lekérdezési kifejezéshez `log(2)` a `expression` mezőben.
 
 ![számítási jelölők](./media/cognitive-services-bing-web-api/bing-markers-computation.png) 
 
-Ha a kérelem nem adott meg kitüntetéseket `expression` , a mező `log10(2)`a következőt fogja tartalmazni:. 
+Ha a kérelem nem adott meg kitüntetéseket, a `expression` mező a következőt fogja tartalmazni: `log10(2)` . 
 
-Ha `textDecorations` a `true`a, a Bing az alábbi jelölőket is tartalmazhatja a válaszok megjelenítési karakterláncában. Ha nincs megfelelő HTML-címke, a táblázatcella üres.
+Ha `textDecorations` a a `true` , a Bing az alábbi jelölőket is tartalmazhatja a válaszok megjelenítési karakterláncában. Ha nincs megfelelő HTML-címke, a táblázatcella üres.
 
 |Unicode|HTML|Leírás
 |-|-|-
 |U + E000|\<b>|A lekérdezési időszak elejét jelöli (találatok kiemelése)
 |U + E001|\</b>|A lekérdezési kifejezés végét jelöli
-|U + E002|\<>|A dőlt tartalom elejét jelöli 
+|U + E002|\<i>|A dőlt tartalom elejét jelöli 
 |U + E003|\</i>|A dőlt tartalom végét jelöli
 |U + E004|\<br/>|Sortörést jelöl
 |U + E005||Egy telefonszám elejét jelöli
@@ -63,18 +63,18 @@ Ha `textDecorations` a `true`a, a Bing az alábbi jelölőket is tartalmazhatja 
 |U + E007||A címek kezdetét jelöli.
 |U + E008||A címek végét jelöli
 |U + E009|\&nbsp;|Nem feltört helyet jelöl
-|U + E00C|\<erős>|Félkövér tartalom kezdetét jelöli.
-|U + E00D|\</Strong>|A félkövér tartalom végét jelöli
+|U + E00C|\<strong>|Félkövér tartalom kezdetét jelöli.
+|U + E00D|\</strong>|A félkövér tartalom végét jelöli
 |U + E00E||Azon tartalom kezdetének jelzése, amelynek a hátterének világosabbnak kell lennie, mint a környező háttérnek
 |U + E00F||Azon tartalom végét jelöli, amelynek a hátterének világosabbnak kell lennie, mint a környező háttérnek
 |U + E010||Azon tartalom kezdetét jelöli, amelynek a hátterének sötétebbnek kell lennie, mint a környező háttérnek
 |U + E011||Azon tartalom végét jelzi, amelynek a hátterének sötétebbnek kell lennie, mint a környező háttérnek
 |U + E012|\<del>|A tartalom elejének megjelölését jelzi
 |U + E013|\</del>|A tartalom azon végét jelöli, amelyet át kell húzni
-|U + E016|\<Sub>|Az alszkript tartalmának elejét jelöli
-|U + E017|\</Sub>|Az alszkript tartalmának végét jelöli
-|U + E018|\<Sup>|A felső indexű tartalom elejét jelöli
-|U + E019|\</Sup>|A felső szintű tartalom végét jelöli
+|U + E016|\<sub>|Az alszkript tartalmának elejét jelöli
+|U + E017|\</sub>|Az alszkript tartalmának végét jelöli
+|U + E018|\<sup>|A felső indexű tartalom elejét jelöli
+|U + E019|\</sup>|A felső szintű tartalom végét jelöli
 
 ## <a name="next-steps"></a>További lépések
 

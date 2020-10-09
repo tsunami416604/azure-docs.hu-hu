@@ -14,10 +14,10 @@ ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.openlocfilehash: dfe4f09d00a5629249a3041946190f56e83c3480
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "68934889"
 ---
 # <a name="deploy-secure-applications-on-azure"></a>Biztonságos alkalmazások üzembe helyezése az Azure-ban
@@ -26,7 +26,7 @@ Ebben a cikkben bemutatjuk azokat a biztonsági tevékenységeket és ellenőrz�
 Ebben a cikkben a következő SDL-fázisokat tárgyaljuk:
 
 - Kiadás
-- Válasz
+- Reagálás
 
 ## <a name="release"></a>Kiadás
 A kiadási fázis fókusza egy projekt nyilvános kiadásra való használatra kész.
@@ -54,7 +54,7 @@ Az összes elvégzett biztonsági tevékenység szándékos áttekintése segít
 
 A szoftverek kiadása előtti minősítéssel biztosítható, hogy a biztonsági és adatvédelmi követelmények teljesüljenek. A kiadás utáni karbantartási feladatok elvégzéséhez elengedhetetlen az összes releváns adat archiválása. Az archiválás emellett segít csökkenteni a tartós szoftverfejlesztés kapcsán felmerülő hosszú távú költségeket.
 
-## <a name="response"></a>Válasz
+## <a name="response"></a>Reagálás
 A kiadás utáni fázis középpontja a fejlesztői csapat számára, amely képes és elérhető, hogy megfelelően reagáljon a feltörekvő szoftveres fenyegetések és biztonsági rések jelentéseire.
 
 ### <a name="execute-the-incident-response-plan"></a>Az incidensre adott válasz tervének végrehajtása

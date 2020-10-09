@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 04/24/2019
 ms.author: jeedes
 ms.openlocfilehash: 21a6d6f728b11c3dee166921538bb844d1e72f70
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88545804"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-zscaler-zscloud"></a>Oktatóanyag: Azure Active Directory integráció a Zscaler ZSCloud
@@ -75,7 +75,7 @@ Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a Zscal
 Az Azure AD egyszeri bejelentkezés Zscaler-ZSCloud való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
 
 1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. **[Zscaler ZSCloud egyszeri bejelentkezés konfigurálása](#configure-zscaler-zscloud-single-sign-on)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+2. Az **[Zscaler ZSCloud-alapú egyszeri bejelentkezés konfigurálása](#configure-zscaler-zscloud-single-sign-on)** – az egyes Sign-On beállításainak konfigurálása az alkalmazás oldalán.
 3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
 4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
 5. **[Zscaler-ZSCloud-teszt felhasználó létrehozása](#create-zscaler-zscloud-test-user)** – a Britta Simon-nek a felhasználó Azure ad-képviseletéhez kapcsolódó Zscaler-ZSCloud.
@@ -95,7 +95,7 @@ Az Azure AD egyszeri bejelentkezés Zscaler-ZSCloud való konfigurálásához ha
 
     ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
+3. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
@@ -106,7 +106,7 @@ Az Azure AD egyszeri bejelentkezés Zscaler-ZSCloud való konfigurálásához ha
     A **bejelentkezési URL** szövegmezőbe írja be a felhasználók által a ZScaler ZSCloud alkalmazásba való bejelentkezéshez használt URL-címet.
 
     > [!NOTE]
-    > Frissítenie kell az értéket a tényleges bejelentkezési URL-címmel. Az érték beszerzéséhez forduljon a Zscaler ZSCloud-ügyfélszolgálati [csapatához](https://help.zscaler.com/) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
+    > Frissítenie kell az értéket a tényleges Sign-On URL-címmel. Az érték beszerzéséhez forduljon a Zscaler ZSCloud-ügyfélszolgálati [csapatához](https://help.zscaler.com/) . Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
 5. A Zscaler ZSCloud-alkalmazás egy adott formátumban várja az SAML-jogcímeket, ehhez pedig egyéni attribútum-hozzárendeléseket kell hozzáadnia az SAML-jogkivonat attribútumainak konfigurációjához. Az alábbi képernyőképen az alapértelmezett attribútumok listája látható. Kattintson a **Szerkesztés** ikonra a **felhasználói attribútumok** párbeszédpanel megnyitásához.
 
@@ -114,7 +114,7 @@ Az Azure AD egyszeri bejelentkezés Zscaler-ZSCloud való konfigurálásához ha
 
 6. A fentieken kívül a Zscaler ZSCloud alkalmazás néhány további attribútumot vár, amelyeket az SAML-válaszban vissza kell adni. A **felhasználó attribútumai** párbeszédpanel **felhasználói jogcímek** szakaszában a következő lépésekkel adja hozzá az SAML-jogkivonat attribútumát az alábbi táblázatban látható módon:
     
-    | Name | Forrás attribútum |
+    | Név | Forrás attribútum |
     | ---------| ------------ |
     | memberOf     | User. assignedroles |
 
@@ -137,7 +137,7 @@ Az Azure AD egyszeri bejelentkezés Zscaler-ZSCloud való konfigurálásához ha
     > [!NOTE]
     > [Ide kattintva](https://docs.microsoft.com/azure/active-directory/active-directory-enterprise-app-role-management) megtudhatja, hogyan konfigurálhatja a szerepkört az Azure ad-ben
 
-7. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállítások alapján, és mentse a számítógépre.
+7. Az **egyszeres Sign-On beállítása az SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállítások alapján, és mentse azt a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozása](common/certificatebase64.png)
 
@@ -151,7 +151,7 @@ Az Azure AD egyszeri bejelentkezés Zscaler-ZSCloud való konfigurálásához ha
 
     c. Kijelentkezési URL-cím
 
-### <a name="configure-zscaler-zscloud-single-sign-on"></a>Zscaler-ZSCloud egyszeri bejelentkezés konfigurálása
+### <a name="configure-zscaler-zscloud-single-sign-on"></a>Zscaler-ZSCloud konfigurálása egyetlen Sign-On
 
 1. A Zscaler-ZSCloud belüli konfiguráció automatizálásához telepítenie kell az **alkalmazások biztonságos bejelentkezési böngésző bővítményét** **a bővítmény telepítése**lehetőségre kattintva.
 
@@ -252,7 +252,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    d. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

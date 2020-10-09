@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 3/11/2019
 ms.author: jeedes
 ms.openlocfilehash: bfbecc71638e6feaaf29809f09dda752dd29b2ae
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88526540"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-workspot-control"></a>Oktatóanyag: Azure Active Directory integráció a Workspot-vezérlővel
@@ -94,7 +94,7 @@ Az Azure AD egyszeri bejelentkezés Workspot-vezérlővel való konfigurálásá
 
     ![Válassza ki az egyszeri bejelentkezés kiválasztási módszerét ablakban](common/select-saml-option.png)
 
-3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon válassza a **Szerkesztés** (ceruza) ikont az **alapszintű SAML-konfiguráció**eléréséhez.
+3. Az **egyszeri Sign-On beállítása az SAML-vel** lapon válassza a **Szerkesztés** (ceruza) ikont az **alapszintű SAML-konfiguráció**eléréséhez.
 
     ![Szerkesztés ikon kiemelve az "alapszintű SAML-konfiguráció"](common/edit-urls.png)
 
@@ -118,7 +118,7 @@ Az Azure AD egyszeri bejelentkezés Workspot-vezérlővel való konfigurálásá
     > [!NOTE]
     > Ezek az értékek nem valósak. Cserélje le ezeket az értékeket a tényleges azonosítóra, a válasz URL-címére és a bejelentkezési URL-címre. Az értékek lekéréséhez lépjen kapcsolatba a [Workspot-vezérlő](mailto:support@workspot.com) ügyfélszolgálatával. Vagy a Azure Portal **alapszintű SAML-konfiguráció** szakaszának mintázatait is megtekintheti.
 
-6. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban válassza a **Letöltés** lehetőséget a **tanúsítvány (Base64)** letöltéséhez az elérhető lehetőségek közül a követelmények szerint. Mentse a számítógépére.
+6. Az **egyszeres Sign-On beállítása SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban válassza a **Letöltés** lehetőséget a **tanúsítvány (Base64)** letöltéséhez az elérhető lehetőségek közül a követelmények szerint. Mentse a számítógépére.
 
     ![A tanúsítvány (Base64) letöltési hivatkozása](common/certificatebase64.png)
 
@@ -152,7 +152,7 @@ Az Azure AD egyszeri bejelentkezés Workspot-vezérlővel való konfigurálásá
 
     1. Válassza ki a **fájl frissítése** elemet az X. 509 tanúsítványba való feltöltéshez a Azure Portal által letöltött base-64 kódolású tanúsítványt.
 
-    1. Válassza a **Mentés** lehetőséget.
+    1. Kattintson a **Mentés** gombra.
 
 ### <a name="create-an-azure-ad-test-user"></a>Azure AD-tesztkörnyezet létrehozása
 

@@ -12,10 +12,10 @@ ms.date: 03/11/2018
 ms.author: pafarley
 ms.custom: seodec18
 ms.openlocfilehash: 4874910f37b49990a659b48af0cf27921c3fcd5e
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "68945234"
 ---
 # <a name="generating-smart-cropped-thumbnails-with-computer-vision"></a>Intelligens vágású miniatűrök létrehozása Computer Vision
@@ -24,7 +24,7 @@ A miniatűr a képek csökkentett méretű ábrázolása. A miniatűröket a ké
 
 A Computer Vision miniatűr létrehozási algoritmus a következőképpen működik:
 
-1. Távolítsa el az elemeket a rendszerképből, és azonosítsa _area of interest_&mdash;annak a képnek a területét, amelyben a fő objektum (ok) megjelenik.
+1. Távolítsa el az elemeket a rendszerképből, és azonosítsa _annak a_ &mdash; képnek a területét, amelyben a fő objektum (ok) megjelenik.
 1. A kép levágása az azonosított _terület_alapján.
 1. Módosítsa a méretarányt úgy, hogy az illeszkedjen a cél miniatűr méreteihez.
 
