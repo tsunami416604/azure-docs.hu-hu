@@ -15,10 +15,10 @@ ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3179bb294678ee030218e67dafa1c69dcf5d77a0
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90056268"
 ---
 # <a name="assign-sensitivity-labels-to-microsoft-365-groups-in-azure-active-directory"></a>Érzékenységi címkék kiosztása Microsoft 365 csoportokhoz Azure Active Directory
@@ -114,7 +114,7 @@ Az érzékenységi címke beállítás csak akkor jelenik meg a csoportok eseté
 
 1. A címkék az Azure AD-szervezet Microsoft 365 megfelelőségi központjában jelennek meg.
 1. A szolgáltatás engedélyezve van, a EnableMIPLabels értéke TRUE (igaz) értékre van állítva az Azure AD PowerShell-modulból.
-1. A lables szinkronizálva vannak az Azure AD-val az EXECUTE-AzureAdLabelSync parancsmaggal a biztonsági & megfelelőségi PowerShell-moduljában.
+1. A lables szinkronizálva vannak az Azure AD-val a Execute-AzureAdLabelSync parancsmaggal a biztonsági & megfelelőségi PowerShell moduljában.
 1. A csoport Microsoft 365 csoport.
 1. A szervezet aktív prémium szintű Azure Active Directory P1 licenccel rendelkezik.
 1. A jelenlegi bejelentkezett felhasználónak megfelelő jogosultsága van a címkék hozzárendeléséhez. A felhasználónak globális rendszergazdának, csoport rendszergazdának vagy a csoport tulajdonosának kell lennie.
@@ -136,7 +136,7 @@ A címkék bármikor felcserélhetők, ha ugyanazokat a lépéseket használják
 1. Válassza a **csoportok**lehetőséget.
 1. A **minden csoport** lapon válassza ki a címkézni kívánt csoportot.
 1. A kiválasztott csoport lapon válassza a **Tulajdonságok** lehetőséget, és válasszon egy új érzékenységi címkét a listából.
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 ### <a name="group-setting-changes-to-published-labels-are-not-updated-on-the-groups"></a>A csoportok a közzétett címkékre vonatkozó módosításait nem frissítik a csoportokon
 

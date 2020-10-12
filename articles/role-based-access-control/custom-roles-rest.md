@@ -16,10 +16,10 @@ ms.date: 03/19/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: b459f44308827308c28687db3c3fc33df470ea8d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84790188"
 ---
 # <a name="create-or-update-azure-custom-roles-using-the-rest-api"></a>Egyéni Azure-szerepkörök létrehozása vagy frissítése a REST API használatával
@@ -44,7 +44,7 @@ A címtárban lévő összes egyéni szerepkör listázásához használja a [sz
 1. Cserélje le a *{Filter}* értéket a szerepkör típusára.
 
     > [!div class="mx-tableFixed"]
-    > | Szűrés | Description |
+    > | Szűrő | Leírás |
     > | --- | --- |
     > | `$filter=type+eq+'CustomRole'` | Szűrés a CustomRole típusa alapján |
 
@@ -71,7 +71,7 @@ Egy hatókörben lévő egyéni szerepkörök listázásához használja a [szer
 1. Cserélje le a *{Filter}* értéket a szerepkör típusára.
 
     > [!div class="mx-tableFixed"]
-    > | Szűrés | Description |
+    > | Szűrő | Leírás |
     > | --- | --- |
     > | `$filter=type+eq+'CustomRole'` | Szűrés a CustomRole típusa alapján |
 
@@ -98,9 +98,9 @@ Ha a megjelenített nevével szeretne információt kapni egy egyéni szerepkör
 1. Cserélje le a *{Filter}* helyére a szerepkör megjelenített nevét.
 
     > [!div class="mx-tableFixed"]
-    > | Szűrés | Description |
+    > | Szűrő | Leírás |
     > | --- | --- |
-    > | `$filter=roleName+eq+'{roleDisplayName}'` | Használja a szerepkör pontos megjelenítendő neve URL-kódolású formáját. Például:`$filter=roleName+eq+'Virtual%20Machine%20Contributor'` |
+    > | `$filter=roleName+eq+'{roleDisplayName}'` | Használja a szerepkör pontos megjelenítendő neve URL-kódolású formáját. Például: `$filter=roleName+eq+'Virtual%20Machine%20Contributor'` |
 
 ## <a name="list-a-custom-role-definition-by-id"></a>Egyéni szerepkör-definíció listázása azonosító alapján
 
@@ -132,7 +132,7 @@ Egyéni szerepkör létrehozásához használja a [szerepkör-definíciókat –
 
 1. Tekintse át azon [erőforrás-szolgáltatói műveletek](resource-provider-operations.md) listáját, amelyek elérhetők az egyéni szerepkör engedélyeinek létrehozásához.
 
-1. Egy GUID-eszköz használatával állítson be egy egyedi azonosítót, amelyet a rendszer az egyéni szerepkör-azonosítóhoz fog használni. Az azonosító formátuma:`00000000-0000-0000-0000-000000000000`
+1. Egy GUID-eszköz használatával állítson be egy egyedi azonosítót, amelyet a rendszer az egyéni szerepkör-azonosítóhoz fog használni. Az azonosító formátuma: `00000000-0000-0000-0000-000000000000`
 
 1. Kezdje a következő kéréssel és szövegtörzstel:
 
@@ -341,5 +341,5 @@ Egyéni szerepkör törléséhez használja a [szerepkör-definíciókat – tö
 ## <a name="next-steps"></a>További lépések
 
 - [Egyéni Azure-szerepkörök](custom-roles.md)
-- [Azure-beli szerepkör-hozzárendelések hozzáadása vagy eltávolítása a REST API használatával](role-assignments-rest.md)
-- [Azure REST API-referenciák](/rest/api/azure/)
+- [Azure-beli szerepkör-hozzárendelés hozzáadása vagy eltávolítása a REST API használatával](role-assignments-rest.md)
+- [Azure REST API-referencia](/rest/api/azure/)

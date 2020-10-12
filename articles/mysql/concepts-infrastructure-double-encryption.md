@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 6/30/2020
 ms.openlocfilehash: c087d5eea88a3329d5486afdd2158e80f7ebf778
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91531026"
 ---
 # <a name="azure-database-for-mysql-infrastructure-double-encryption"></a>Azure Database for MySQL infrastruktúra kettős titkosítása
@@ -71,6 +71,6 @@ Azure Database for MySQL esetében a szolgáltatás által felügyelt kulccsal t
     > - A fent felsorolt régiókban létrehozott összes **új** MySQL-kiszolgáló támogatja az ügyfél-kezelő kulcsaival való adattitkosítást is. Ebben az esetben az időponthoz tartozó visszaállítás (PITR) vagy az olvasási replikák használatával létrehozott kiszolgálók nem minősülnek "új" értéknek.
     > - Annak ellenőrzéséhez, hogy a kiépített kiszolgáló legfeljebb 16 TB-ot támogat-e, nyissa meg az árképzési rétegek panelt a portálon, és ellenőrizze, hogy a tárolási csúszka akár 16 TB-ra is áthelyezhető-e. Ha a csúszkát legfeljebb 4 TB-ra tudja mozgatni, előfordulhat, hogy a kiszolgáló nem támogatja a titkosítást az ügyfél által felügyelt kulcsokkal. az adatai azonban mindig a szolgáltatás által felügyelt kulcsokkal vannak titkosítva. AskAzureDBforMySQL@service.microsoft.comHa bármilyen kérdése van, lépjen kapcsolatba.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg, hogyan [állíthatja be az infrastruktúra kettős titkosítását a MySQL](howto-double-encryption.md)-hez készült Azure Database-hez.

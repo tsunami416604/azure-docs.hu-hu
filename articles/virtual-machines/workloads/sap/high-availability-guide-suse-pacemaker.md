@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 08/04/2020
 ms.author: radeltch
 ms.openlocfilehash: 6d61bd2c45cc1ba9cd9494750b793d7321288224
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87797746"
 ---
 # <a name="setting-up-pacemaker-on-suse-linux-enterprise-server-in-azure"></a>A pacemaker beállítása SUSE Linux Enterprise Server az Azure-ban
@@ -419,7 +419,7 @@ A következő elemek a **[a]** előtaggal vannak ellátva, amelyek az összes cs
    </code></pre>
 
    >[!IMPORTANT]
-   > A csomagok **kerítésének** telepített verziójának legalább **4.4.0** kell lennie ahhoz, hogy kihasználhassa az Azure kerítés ügynökének gyorsabb feladatátvételi idejét, ha a fürtcsomópontok bekerítése szükséges. Javasoljuk, hogy frissítse a csomagot, ha alacsonyabb verziójú verziót futtat.  
+   > A csomagok **kerítésének** telepített verziójának legalább **4.4.0**  kell lennie ahhoz, hogy kihasználhassa az Azure kerítés ügynökének gyorsabb feladatátvételi idejét, ha a fürtcsomópontok bekerítése szükséges. Javasoljuk, hogy frissítse a csomagot, ha alacsonyabb verziójú verziót futtat.  
 
 
 1. **[A]** az Azure Python SDK telepítése 
@@ -679,12 +679,12 @@ sudo crm configure property maintenance-mode=false
 
    > [!NOTE]
    > Miután konfigurálta a pacemaker erőforrásait az Azure-Events Agent szolgáltatáshoz, amikor a fürtöt karbantartási módba vagy kifelé helyezi, a következőhöz hasonló figyelmeztető üzenetek jelenhetnek meg:  
-     Figyelmeztetés: CIB-bootstrap-Options: ismeretlen "hostName_ <strong>állomásnév</strong>" attribútum  
+     Figyelmeztetés: CIB-bootstrap-Options: ismeretlen "hostName_ <strong> állomásnév</strong>" attribútum  
      Figyelmeztetés: CIB-bootstrap-Options: ismeretlen "Azure-events_globalPullState" attribútum  
      Figyelmeztetés: CIB-bootstrap-Options: ismeretlen "hostName_ <strong>állomásnév</strong>" attribútum  
    > Ezek a figyelmeztető üzenetek figyelmen kívül hagyhatók.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Azure Virtual Machines az SAP tervezéséhez és megvalósításához][planning-guide]
 * [Azure Virtual Machines üzembe helyezés az SAP-ban][deployment-guide]

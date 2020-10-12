@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 08/12/2020
 ms.author: radeltch
 ms.openlocfilehash: cd974377637f535383c4e099ac408bea88f887a4
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88853116"
 ---
 # <a name="high-availability-for-sap-netweaver-on-azure-vms-on-windows-with-azure-netapp-filessmb-for-sap-applications"></a>Magas rendelkezésre állás a Windows rendszerű Azure-beli virtuális gépeken futó SAP NetWeaver számára az SAP-alkalmazások Azure NetApp Files (SMB) szolgáltatásával
@@ -143,7 +143,7 @@ Az SAP-től a következő szoftverekre van szüksége:
 
 ### <a name="install-an-ascsscs-instance-on-the-first-ascsscs-cluster-node"></a>Telepítsen egy ASCS-/SCS-példányt az első ASCS/SCS-fürtcsomóponton
 
-1. Telepítsen egy SAP ASCS/SCS-példányt az első fürtcsomóponton. Indítsa el az SAP SWPM telepítési eszközét, majd keresse meg a következőt: **termék**  >  **adatbázis-kezelője** > telepítés > Application Server ABAP (vagy Java) > magas rendelkezésre állású rendszer > ASCS/SCS-példány > első fürtcsomópont.  
+1. Telepítsen egy SAP ASCS/SCS-példányt az első fürtcsomóponton. Indítsa el az SAP SWPM telepítési eszközét, majd keresse meg a következőt: **termék**  >  **adatbázis-kezelője** > telepítés > Application Server ABAP (vagy Java) > High-Availability System > ASCS/SCS instance > első fürtcsomópont.  
 
 2. Válassza ki a **fájlmegosztás fürtöt** a SWPM-ben.  
 3. Ha a rendszer a **rendszerszintű SAP Rendszerfürt paramétereinek**megadását kéri, adja meg a korábban **fájlmegosztási állomásnévként**létrehozott Azure NetApp Files SMB-megosztás állomásnevét.  Ebben a példában az SMB-megosztás állomásneve a következő: **anfsmb-9562**. 
@@ -158,7 +158,7 @@ Az SAP-től a következő szoftverekre van szüksége:
 
 ### <a name="install-an-ascsscs-instance-on-the-second-ascsscs-cluster-node"></a>ASCS-/SCS-példány telepítése a második ASCS/SCS-fürtön
 
-1. Telepítsen egy SAP ASCS/SCS-példányt a második fürtcsomóponton. Indítsa el az SAP SWPM telepítési eszközét, majd navigáljon a **termék**-  >  **adatbázis-kezelő** > telepítés > Application Server ABAP (vagy Java) > magas rendelkezésre állású rendszer > ASCS/SCS-példány > további fürtcsomópont.  
+1. Telepítsen egy SAP ASCS/SCS-példányt a második fürtcsomóponton. Indítsa el az SAP SWPM telepítési eszközét, majd navigáljon a **termék**-  >  **adatbázis-kezelő** > telepítés > Application Server ABAP (vagy Java) > High-Availability System > ASCS/SCS instance > további fürtcsomópont.  
 
 ### <a name="install-a-dbms-instance-and-sap-application-servers"></a>Adatbázis-kezelő példány és SAP-alkalmazáskiszolgáló telepítése
 
@@ -189,7 +189,7 @@ Ebben a tesztelési forgatókönyvben a fürtcsomópont sapascs1 az A csomópont
 ![3. ábra: a zárolási bejegyzés megőrzése a feladatátvételi teszt után](./media/virtual-machines-shared-sap-high-availability-guide/high-availability-windows-azure-netapp-files-smb-figure-3.png)  
 
 További információ: a [sorba helyezni-feladatátvétel hibaelhárítása a ASCS-ben az ERS szolgáltatással](https://wiki.scn.sap.com/wiki/display/SI/Troubleshooting+for+Enqueue+Failover+in+ASCS+with+ERS)
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Azure Virtual Machines az SAP tervezéséhez és megvalósításához][planning-guide]
 * [Azure Virtual Machines üzembe helyezés az SAP-ban][deployment-guide]

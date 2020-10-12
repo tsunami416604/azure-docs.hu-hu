@@ -9,10 +9,10 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 02/10/2020
 ms.openlocfilehash: 5569e7e3a33c4f1bbbd3214e742b0cb889c65e31
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86040775"
 ---
 # <a name="real-time-twitter-sentiment-analysis-in-azure-stream-analytics"></a>Valós idejű Twitter-hangulatelemzés az Azure Stream Analytics szolgáltatásban
@@ -60,7 +60,7 @@ Ebben a szakaszban létrehoz egy Event hub-névteret, és hozzáad egy Event hub
 
 6. Nevezze el az új Event hub *socialtwitter-eh*nevet. Más nevet is használhat. Ha így tesz, jegyezze fel, mert később szüksége lesz erre a névre. Az Event hub egyéb beállításait nem kell beállítania.
  
-7. Válassza a **Létrehozás** lehetőséget.
+7. Kattintson a **Létrehozás** gombra.
 
 ### <a name="grant-access-to-the-event-hub"></a>Hozzáférés biztosítása az Event hub számára
 
@@ -75,7 +75,7 @@ Ahhoz, hogy egy folyamat adatküldést küldjön egy Event hubhoz, az Event hub-
 
 3.  A hozzáférési házirend lapon válassza a **+ Hozzáadás**lehetőséget. Ezután írja be a *socialtwitter-hozzáférés* **nevet a szabályzat neveként** , és jelölje be a **kezelés** jelölőnégyzetet.
  
-4.  Válassza a **Létrehozás** lehetőséget.
+4.  Kattintson a **Létrehozás** gombra.
 
 5.  Miután telepítette a házirendet, válassza ki a szabályzatot a megosztott hozzáférési házirendek listájából.
 
@@ -148,7 +148,7 @@ Most, hogy a tweet-események valós időben áramlanak a Twitterről, beállít
 
     Érdemes a feladatot és az Event hub-t ugyanabban a régióban elhelyezni a legjobb teljesítmény érdekében, és így nem kell fizetnie a régiók közötti adatátvitel során.
 
-3. Válassza a **Létrehozás** lehetőséget. Ezután navigáljon a feladatokhoz, amikor a telepítés befejeződött.
+3. Kattintson a **Létrehozás** gombra. Ezután navigáljon a feladatokhoz, amikor a telepítés befejeződött.
 
 ## <a name="specify-the-job-input"></a>Adja meg a feladatok bemenetét
 

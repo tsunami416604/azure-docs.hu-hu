@@ -8,10 +8,10 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 06/03/2020
 ms.openlocfilehash: 07cbb28b98fcbac1932424c1c72f388813ec2400
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86037562"
 ---
 # <a name="autoscale-stream-analytics-jobs-using-azure-automation"></a>Stream Analytics feladatok autoskálázása Azure Automation használatával
@@ -29,7 +29,7 @@ Mielőtt megkezdené az automatikus skálázás konfigurálását a feladatokhoz
 ### <a name="configure-variables"></a>Változók konfigurálása
 Adja hozzá a következő változókat a Azure Automation fiókban. Ezeket a változókat a következő lépésekben ismertetett runbookok fogja használni a rendszer.
 
-| Name | Típus | Érték |
+| Név | Típus | Érték |
 | --- | --- | --- |
 | **jobName** | Sztring | Az átméretezni kívánt Stream Analytics-feladatok neve. |
 | **resourceGroupName** | Sztring | Azon erőforráscsoport neve, amelyben a feladattípus található. |
@@ -43,7 +43,7 @@ Adja hozzá a következő változókat a Azure Automation fiókban. Ezeket a vá
 
 ### <a name="create-runbooks"></a>Runbookok létrehozása
 A következő lépés az, hogy két PowerShell-runbookok hozzon létre. Az egyik a vertikális felskálázáshoz, a másik pedig a skálázási műveletekhez.
-1. A Azure Automation-fiókjában lépjen a **runbookok** alatt a **folyamat automatizálása** területen, majd válassza a **Runbook létrehozása**lehetőséget.
+1. A Azure Automation-fiókjában lépjen a **runbookok** alatt a **folyamat automatizálása**  területen, majd válassza a **Runbook létrehozása**lehetőséget.
 2. Nevezze el az első runbook- *ScaleUpRunbook* , a típust pedig a PowerShell értékre. Használja a GitHubon elérhető [ScaleUpRunbook PowerShell-szkriptet](https://github.com/Azure/azure-stream-analytics/blob/master/Autoscale/ScaleUpRunbook.ps1) . Mentse és tegye közzé.
 3. Hozzon létre egy *ScaleDownRunbook* nevű másik Runbook a PowerShell típussal. Használja a GitHubon elérhető [ScaleDownRunbook PowerShell-szkriptet](https://github.com/Azure/azure-stream-analytics/blob/master/Autoscale/ScaleDownRunbook.ps1) . Mentse és tegye közzé.
 

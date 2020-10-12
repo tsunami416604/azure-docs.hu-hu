@@ -7,10 +7,10 @@ ms.date: 08/11/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 058c5778c116a9e8368049bf30046aa6b7634163
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88121119"
 ---
 # <a name="windows-virtual-desktop-faq"></a>Windows Virtual Desktop – gyakori kérdések
@@ -23,7 +23,7 @@ Ha gazdagép-készleteket és egyéb objektumokat szeretne létrehozni, hozzá k
 
 Ahhoz, hogy a felhasználók vagy felhasználói csoportok számára alkalmazás-csoportokat lehessen közzétenni, hozzá kell rendelnie a felhasználói hozzáférés rendszergazdai szerepkört egy alkalmazás-csoporthoz.
 
-Ha korlátozni szeretné, hogy a rendszergazda csak a felhasználói munkameneteket kezelje, például üzeneteket küldjön a felhasználóknak, kijelentkezzen a felhasználókat, és így tovább, létrehozhat egyéni szerepköröket is. Például:
+Ha korlátozni szeretné, hogy a rendszergazda csak a felhasználói munkameneteket kezelje, például üzeneteket küldjön a felhasználóknak, kijelentkezzen a felhasználókat, és így tovább, létrehozhat egyéni szerepköröket is. Példa:
 
 ```powershell
 "actions": [
@@ -58,7 +58,7 @@ A munkaterületeknek az alkalmazás csoportjaival megegyező helyen kell lenniü
 
 PowerShell-parancsmag futtatásakor csak az erőforrás neve és helye jelenik meg.
 
-Például:
+Példa:
 
 ```powershell
 Get-AzWvdHostPool -Name 0224hp -ResourceGroupName 0224rg
@@ -70,7 +70,7 @@ westus   0224hp Microsoft.DesktopVirtualization/hostpools
 
 Az összes erőforrás tulajdonságainak megtekintéséhez adja hozzá a vagy a parancsot `format-list` `fl` a parancsmag végéhez.
 
-Például:
+Példa:
 
 ```powershell
 Get-AzWvdHostPool -Name 0224hp -ResourceGroupName 0224rg |fl
@@ -78,7 +78,7 @@ Get-AzWvdHostPool -Name 0224hp -ResourceGroupName 0224rg |fl
 
 Adott tulajdonságok megjelenítéséhez adja hozzá a megadott tulajdonságokat a vagy a után `format-list` `fl` .
 
-Például:
+Példa:
 
 ```powershell
 Get-AzWvdHostPool -Name demohp -ResourceGroupName 0414rg |fl CustomRdpProperty

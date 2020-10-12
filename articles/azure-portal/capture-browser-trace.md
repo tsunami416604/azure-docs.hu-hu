@@ -10,10 +10,10 @@ ms.topic: troubleshooting
 ms.service: azure-portal
 manager: mtillman
 ms.openlocfilehash: dba321d055e64d62ca91f95461c3299bee5f90d2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83714219"
 ---
 # <a name="capture-a-browser-trace-for-troubleshooting"></a>Böngésző-nyomkövetés rögzítése hibaelhárításhoz
@@ -60,7 +60,7 @@ A Google Chrome és a Microsoft Edge (Chromium) egyaránt a [Chromium nyílt for
 
 1. Állítsa le a lépések rögzítőjét, és mentse a rögzítést.
 
-1. A böngésző fejlesztői eszközök paneljén válassza a **konzol** fület. kattintson a jobb gombbal az egyik üzenetre, majd válassza a **Mentés másként...** lehetőséget, és mentse a konzol kimenetét egy szövegfájlba.
+1. A böngésző fejlesztői eszközök ablaktábláján kattintson a **konzol** fülre. Kattintson a jobb gombbal az egyik üzenetre, majd válassza a **Mentés másként...** lehetőséget, majd mentse a konzol kimenetét egy szövegfájlba.
 
     ![A konzol kimenetének képernyőképe](media/capture-browser-trace/chromium-console-select.png)
 
@@ -202,7 +202,7 @@ A következő lépések bemutatják, hogyan használhatja a fejlesztői eszköz�
 
 1. Állítsa le a Windows vagy a képernyő rögzítését a Mac számítógépen, és mentse a rögzítést.
 
-1. A böngésző fejlesztői eszközök paneljén válassza a **konzol** fület. kattintson a jobb gombbal az egyik üzenetre, majd válassza a **látható üzenet exportálása a**következőre lehetőséget, és mentse a konzol kimenetét egy szövegfájlba.
+1. A böngésző fejlesztői eszközök ablaktábláján kattintson a **konzol** fülre. Kattintson a jobb gombbal az egyik üzenetre, majd válassza a **látható üzenet exportálása a**következőre lehetőséget, majd mentse a konzol kimenetét egy szövegfájlba.
 
     ![A konzol kimenetének képernyőképe](media/capture-browser-trace/firefox-console-select.png)
 

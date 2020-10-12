@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 06/24/2020
 ms.author: zarhoads
 ms.openlocfilehash: d05d0166724e586fa79e58e2e74fb583b45d0cc6
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88852875"
 ---
 # <a name="install-existing-applications-with-helm-in-azure-kubernetes-service-aks"></a>Meglévő alkalmazások telepítése a Helm szolgáltatással az Azure Kubernetes Service-ben (ak)
@@ -212,7 +212,7 @@ release "my-nginx-ingress" uninstalled
 További információ a Kubernetes-alkalmazások Helmtel történő kezeléséről: a Helm dokumentációja.
 
 > [!div class="nextstepaction"]
-> [A Helm dokumentációja][helm-documentation]
+> [Helm-dokumentáció][helm-documentation]
 
 <!-- LINKS - external -->
 [helm]: https://github.com/kubernetes/helm/

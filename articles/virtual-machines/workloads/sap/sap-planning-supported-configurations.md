@@ -17,10 +17,10 @@ ms.date: 03/11/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: ad1567a3a6cba2c2fbc519ffe5d384aba25ab51d
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88648989"
 ---
 # <a name="sap-workload-on-azure-virtual-machine-supported-scenarios"></a>SAP-tevékenységprofil az Azure-beli virtuális gépek támogatott forgatókönyveiben
@@ -102,7 +102,7 @@ Azure-beli virtuális gépek esetén a következő magas rendelkezésre állás�
 - SAP HANA kibővíthető n + m konfigurációk a SUSE és a Red Hat [Azure NetApp Files](https://azure.microsoft.com/services/netapp/) használatával. A részleteket a következő cikkekben találja:
     - [SAP HANA kibővíthető rendszer üzembe helyezése készenléti csomóponttal Azure-beli virtuális gépeken Azure NetApp Files használatával SUSE Linux Enterprise Server}](./sap-hana-scale-out-standby-netapp-files-suse.md)
     - [SAP HANA kibővíthető rendszer üzembe helyezése készenléti csomóponttal Azure-beli virtuális gépeken Azure NetApp Files használatával Red Hat Enterprise Linux](./sap-hana-scale-out-standby-netapp-files-rhel.md)
-- A Windows kibővíthető Fájlszolgáltatások alapján SQL Server feladatátvevő fürt. Bár az éles rendszerekre vonatkozó javaslat a fürtözés helyett a SQL Server always on használata. A SQL Server always on jobb rendelkezésre állást biztosít a különálló tárolók használatával. A részleteket a cikk ismerteti: 
+- SQL Server feladatátvevő fürt a Windows Scale-Out file Services alapján. Bár az éles rendszerekre vonatkozó javaslat a fürtözés helyett a SQL Server always on használata. A SQL Server always on jobb rendelkezésre állást biztosít a különálló tárolók használatával. A részleteket a cikk ismerteti: 
     - [SQL Server feladatátvevő fürt példányának konfigurálása Azure-beli virtuális gépeken](../../../azure-sql/virtual-machines/windows/failover-cluster-instance-storage-spaces-direct-manually-configure.md)
 - A SQL Server always on az Azure-beli SQL Server Windows operációs rendszerét támogatja. Ez az Azure-beli éles SQL Server-példányok alapértelmezett ajánlása. A részleteket az alábbi cikkekben ismertetjük:
     - [SQL Server always on rendelkezésre állási csoportok bemutatása az Azure Virtual Machines](../../../azure-sql/virtual-machines/windows/availability-group-overview.md)szolgáltatásban.
@@ -303,7 +303,7 @@ Olyan forgatókönyv (ek), amelyek nem teszteltek, ezért nem rendelkezik a haso
 - Azure Site Recovery az adatbázis-kezelő rétegbeli virtuális gépek replikálását. Ennek eredményeképpen javasoljuk, hogy az adatbázis natív aszinkron replikálási funkcióját kihasználva potenciális vész-helyreállítási konfigurációt lehessen használni
  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az [Azure Virtual Machines tervezésének és megvalósításának](./planning-guide.md) következő lépéseinek elolvasása az SAP NetWeaver-ban
 
 

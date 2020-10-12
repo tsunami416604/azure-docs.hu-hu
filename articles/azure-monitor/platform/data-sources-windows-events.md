@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
 ms.openlocfilehash: aa34196233ce4037ef6fa49b782b9aa958f7632d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87075248"
 ---
 # <a name="windows-event-log-data-sources-in-azure-monitor"></a>Windows Eseménynapló-adatforrások a Azure Monitor-ban
@@ -50,7 +50,7 @@ A Windows-események rekordjainak típusa **esemény** , és a tulajdonságok a 
 | EventLevelName |Az esemény súlyossága szöveges formában. |
 | EventLog |Annak az Eseménynaplónak a neve, amelyből az eseményt gyűjtötték. |
 | ParameterXml |Az esemény paramétereinek értékei XML formátumban. |
-| ManagementGroupName |System Center Operations Manager ügynökök felügyeleti csoportjának neve.  Más ügynökök esetében ez az érték`AOI-<workspace ID>` |
+| ManagementGroupName |System Center Operations Manager ügynökök felügyeleti csoportjának neve.  Más ügynökök esetében ez az érték `AOI-<workspace ID>` |
 | RenderedDescription |Esemény leírása paraméter-értékekkel |
 | Forrás |Az esemény forrása. |
 | SourceSystem |Az a típusú ügynök, amelyből az eseményt gyűjtötték. <br> OpsManager – Windows-ügynök, közvetlen kapcsolat vagy Operations Manager felügyelt <br> Linux – minden Linux-ügynök  <br> AzureStorage – Azure Diagnostics |
@@ -60,7 +60,7 @@ A Windows-események rekordjainak típusa **esemény** , és a tulajdonságok a 
 ## <a name="log-queries-with-windows-events"></a>Lekérdezések naplózása Windows-eseményekkel
 Az alábbi táblázat a Windows-események rekordjait lekérő lekérdezések különböző példáit ismerteti.
 
-| Lekérdezés | Description |
+| Lekérdezés | Leírás |
 |:---|:---|
 | Esemény |Minden Windows-esemény. |
 | Az Event &#124;, ahol a EventLevelName = = "Error" |Minden Windows-esemény, amelynek súlyossága a hiba. |

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 04/23/2020
 ms.reviewer: sngun
 ms.openlocfilehash: 0a79f6883a150cb95724a7be30dcbd2e8e03f01f
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91396076"
 ---
 # <a name="how-to-choose-the-right-consistency-level-for-your-azure-cosmos-db-application"></a>Hogyan válassza ki a megfelelő konzisztencia-szintet a Azure Cosmos DB alkalmazáshoz? 
@@ -56,7 +56,7 @@ Ha az Azure Cosmos-fiókja nem az erős konzisztencia mellett van konfigurálva,
 
 A valószínűséggel határos elavulás azt mutatja, hogy a végleges konzisztencia milyen módon lehetséges. Ez a mérőszám betekintést nyújt abba, hogy milyen gyakran lehet erősebb konzisztencia, mint az Azure Cosmos-fiókjában jelenleg konfigurált konzisztencia-szint. Más szóval az írási és olvasási régiók kombinációjának nagy mértékben konzisztens olvasásának valószínűsége (ezredmásodpercben mérve) látható.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információk a konzisztencia-szintekről a következő cikkekben olvashatók:
 

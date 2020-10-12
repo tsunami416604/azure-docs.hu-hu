@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 10/02/2019
 ms.author: TomSh
 ms.openlocfilehash: 36673533fbbfc913f742a32bd20cde2b238e2143
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91397232"
 ---
 # <a name="azure-best-practices-for-network-security"></a>Az Azure ajánlott hálózati biztonsági eljárásai
@@ -209,5 +209,5 @@ A szolgáltatásvégpontok az alábbi előnyöket nyújtják:
 
 Ha többet szeretne megtudni a szolgáltatási végpontokról, valamint azokról az Azure-szolgáltatásokról és-régiókról, amelyek a szolgáltatás-végpontok számára elérhetők, tekintse meg a [virtuális hálózati szolgáltatás végpontok](../../virtual-network/virtual-network-service-endpoints-overview.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az Azure-beli felhőalapú megoldások tervezésekor, üzembe helyezése és kezelése során ajánlott biztonsági eljárásokat az [Azure biztonsági eljárásaival és modelljeivel](best-practices-and-patterns.md) foglalkozó témakörben talál.

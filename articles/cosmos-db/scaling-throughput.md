@@ -8,10 +8,10 @@ ms.date: 12/02/2019
 ms.author: sngun
 ms.reviewer: sngun
 ms.openlocfilehash: 94b5b3d2ab1f576f87ead23b389252ec96a20f11
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91397351"
 ---
 # <a name="how-does-azure-cosmos-db-globally-scale-the-provisioned-throughput"></a>Hogyan Azure Cosmos DB a kiosztott átviteli sebesség globális skálázása?
@@ -36,7 +36,7 @@ Feltételezve, hogy egy Cosmos-tároló *"R"* RUs-vel van konfigurálva, és a C
 
 Az Ön által választott [konzisztencia-modell](consistency-levels.md) az átviteli sebességet is befolyásolja. Körülbelül 2x olvasási sebességet érhet el a nyugodtabb konzisztencia-szintek (például *munkamenet*, *konzisztens előtag* és *végleges* konzisztencia) tekintetében az erősebb konzisztencia-szintekhez képest (például *kötött* elavulás vagy *erős* konzisztencia).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Következő lépésként megtudhatja, hogyan konfigurálhatja az átviteli sebességet egy tárolón vagy adatbázisban:
 

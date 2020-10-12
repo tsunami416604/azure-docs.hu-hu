@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 08/13/2020
 ms.author: mbaldwin
 ms.openlocfilehash: ec81a8f7f9d9f45f1d068a415a599ce30a0d4581
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91397249"
 ---
 # <a name="azure-data-encryption-at-rest"></a>Inaktív adatok titkosítása az Azure-ban
@@ -107,7 +107,7 @@ A Managed Disks, a pillanatképek és a képek a szolgáltatás által felügyel
 
 #### <a name="custom-encryption-at-rest"></a>Egyéni titkosítás nyugalmi állapotban
 
-Azt javasoljuk, hogy ha lehetséges, a IaaS alkalmazások Azure Disk Encryption és titkosítást használjanak a felhasznált Azure-szolgáltatások által biztosított Rest-beállításokban. Bizonyos esetekben – például a szabálytalan titkosítási követelmények vagy a nem Azure-alapú tárolás – esetében előfordulhat, hogy egy IaaS-alkalmazás fejlesztője maga is implementálja a titkosítást. A IaaS-megoldások fejlesztői a bizonyos Azure-összetevők kihasználása révén jobban integrálhatók az Azure felügyeleti és vevői elvárásaival. Konkrétan a fejlesztőknek az Azure Key Vault szolgáltatást kell használniuk a biztonságos kulcstároló biztosításához, valamint az ügyfeleket a legtöbb Azure platform-szolgáltatáshoz tartozó konzisztens felügyeleti lehetőségekkel. Emellett az egyéni megoldásoknak az Azure által felügyelt szolgáltatásbeli identitásokkal kell rendelkezniük, hogy a szolgáltatásfiókok hozzáférjenek a titkosítási kulcsokhoz. A Azure Key Vault-és felügyelt szolgáltatásbeli identitásokkal kapcsolatos fejlesztői információkért tekintse meg a megfelelő SDK-kat.
+Azt javasoljuk, hogy ha lehetséges, a IaaS alkalmazások Azure Disk Encryption és titkosítást használjanak a felhasznált Azure-szolgáltatások által biztosított Rest-beállításokban. Bizonyos esetekben – például a szabálytalan titkosítási követelmények vagy a nem Azure-alapú tárolás – esetében előfordulhat, hogy egy IaaS-alkalmazás fejlesztője maga is implementálja a titkosítást. A IaaS-megoldások fejlesztői a bizonyos Azure-összetevők kihasználása révén jobban integrálhatók az Azure felügyeleti és vevői elvárásaival. Konkrétan a fejlesztőknek az Azure Key Vault szolgáltatást kell használniuk a biztonságos kulcstároló biztosításához, valamint az ügyfeleket a legtöbb Azure platform-szolgáltatáshoz tartozó konzisztens felügyeleti lehetőségekkel. Emellett az egyéni megoldások Azure-Managed szolgáltatás-identitások használatával engedélyezhetik a szolgáltatásfiókok számára a titkosítási kulcsok elérését. A Azure Key Vault-és felügyelt szolgáltatásbeli identitásokkal kapcsolatos fejlesztői információkért tekintse meg a megfelelő SDK-kat.
 
 ## <a name="azure-resource-providers-encryption-model-support"></a>Azure Resource Providers titkosítási modell támogatása
 
@@ -136,7 +136,7 @@ A Azure SQL Database-adat ügyféloldali titkosítása támogatott a [Always enc
 
 Az Azure-szolgáltatásokon belül tárolt ügyféladatok védelme kiemelkedő fontosságú a Microsoft számára. Az összes Azure-beli üzemeltetett szolgáltatás elkötelezett amellett, hogy titkosítást biztosítson a REST-beállításokban. Az Azure-szolgáltatások a szolgáltatás által felügyelt kulcsokat, az ügyfél által felügyelt kulcsokat vagy az ügyféloldali titkosítást támogatják. Az Azure-szolgáltatások széles körben javítják a titkosítást a REST rendelkezésre állása során, és az új lehetőségek az előzetes verzióra és az általános elérhetőségre vannak tervezve a következő hónapokban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A szolgáltatás által felügyelt kulcsokkal és az ügyfél által felügyelt kulcsokkal kapcsolatos további tudnivalókért tekintse meg az [adattitkosítási modelleket](encryption-models.md) .
 - Ismerje meg, hogyan használja az Azure a [kettős titkosítást](double-encryption.md) az adattitkosítással kapcsolatos fenyegetések enyhítésére.

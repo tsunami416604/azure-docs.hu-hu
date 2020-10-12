@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 03/04/2019
 ms.openlocfilehash: ef34dbfd3af326dbf2d82e09a4c5c8c8e4a91a84
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87319796"
 ---
 # <a name="log-analytics-data-security"></a>Adatbiztonság Log Analytics
@@ -73,7 +73,7 @@ A következő táblázat példákat mutat be az adattípusokra:
 | Esemény |Napszállta, EventOriginalID, BaseManagedEntityInternalId, RuleId, PublisherId, közzétevő neve, FullNumber, szám, kategória, ChannelLevel, LoggingComputer, EventData, EventParameters, TimeGenerated, TimeAdded <br>**Megjegyzés:** Ha egyéni mezőkkel rendelkező eseményeket ír a Windows-eseménynaplóba, Log Analytics gyűjti őket. |
 | Metaadatok |Basemanagedentityid azonosító eltérése, ObjectStatus, OrganizationalUnit, ActiveDirectoryObjectSid, PhysicalProcessors, NetworkName, Ip_cím, ForestDNSName, NetbiosComputerName, VirtualMachineName, LastInventoryDate, HostServerNameIsVirtualMachine, IP-cím, NetbiosDomainName, LogicalProcessors, DNSName, DisplayName, DomainDnsName, ActiveDirectorySite, egyszerű név, OffsetInMinuteFromGreenwichTime |
 | Teljesítmény |ObjectName, CounterName, PerfmonInstanceName, PerformanceDataId, PerformanceSourceInternalID, SampleValue, TimeSampled, TimeAdded |
-| Állapot |StateChangeEventId, StateId, NewHealthState, OldHealthState, Context, TimeGenerated, TimeAdded, StateId2, Basemanagedentityid azonosító eltérése, MonitorId, HealthState, LastModified, LastGreenAlertGenerated, DatabaseTimeModified |
+| Állam |StateChangeEventId, StateId, NewHealthState, OldHealthState, Context, TimeGenerated, TimeAdded, StateId2, Basemanagedentityid azonosító eltérése, MonitorId, HealthState, LastModified, LastGreenAlertGenerated, DatabaseTimeModified |
 
 ## <a name="physical-security"></a>Fizikai biztonság
 A Log Analytics szolgáltatást a Microsoft munkatársai felügyelik, és minden tevékenység naplózva van és naplózható. Log Analytics Azure-szolgáltatásként működik, és megfelel az Azure megfelelőségi és biztonsági követelményeinek. Az Azure-eszközök fizikai biztonságával kapcsolatos részleteket a [Microsoft Azure biztonsági áttekintés](https://download.microsoft.com/download/6/0/2/6028B1AE-4AEE-46CE-9187-641DA97FC1EE/Windows%20Azure%20Security%20Overview%20v1.01.pdf)18. oldalán tekintheti meg. A biztonságos területekre vonatkozó fizikai hozzáférési jogok egy munkanapon belül megváltoznak mindazok számára, akik már nem felelnek meg a Log Analytics szolgáltatásért, beleértve az átvitelt és a megszüntetést is. A [Microsoft adatközpontokban](https://azure.microsoft.com/global-infrastructure/)használt globális fizikai infrastruktúráról olvashat.

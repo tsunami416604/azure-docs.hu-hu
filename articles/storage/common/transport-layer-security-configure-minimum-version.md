@@ -11,10 +11,10 @@ ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: common
 ms.openlocfilehash: 4c88791815d248cc20546d7942e7b0f107071186
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90018577"
 ---
 # <a name="enforce-a-minimum-required-version-of-transport-layer-security-tls-for-requests-to-a-storage-account"></a>Transport Layer Security (TLS) minimálisan szükséges verziójának kikényszerítés a Storage-fiókra irányuló kérelmekhez
@@ -69,7 +69,7 @@ StorageBlobLogs
 
 Az eredmények a TLS egyes verzióira vonatkozó kérelmek számának számát mutatják:
 
-:::image type="content" source="media/transport-layer-security-configure-minimum-version/log-analytics-query-version.png" alt-text="Képernyőfelvétel a log Analytics-lekérdezés eredményeiről a TLS-verzió visszaküldéséhez":::
+:::image type="content" source="media/transport-layer-security-configure-minimum-version/log-analytics-query-version.png" alt-text="A naplózási kérelmek diagnosztikai beállításainak létrehozását bemutató képernyőkép":::
 
 ### <a name="query-logged-requests-by-caller-ip-address-and-user-agent-header"></a>Naplózott kérelmek lekérdezése a hívó IP-címe és a felhasználói ügynök fejléce alapján
 
@@ -104,7 +104,7 @@ Ha egy meglévő Storage-fiók minimális TLS-verzióját szeretné konfiguráln
 1. Válassza ki a **konfigurációs** beállítást.
 1. A **TLS minimális verziója**területen a legördülő listából válassza ki az ebben a Storage-fiókban található adatok eléréséhez szükséges TLS minimális verzióját az alábbi ábrán látható módon.
 
-    :::image type="content" source="media/transport-layer-security-configure-minimum-version/configure-minimum-version-portal.png" alt-text="A TLS minimális verziójának konfigurálását bemutató képernyőkép a Azure Portal":::
+    :::image type="content" source="media/transport-layer-security-configure-minimum-version/configure-minimum-version-portal.png" alt-text="A naplózási kérelmek diagnosztikai beállításainak létrehozását bemutató képernyőkép":::
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -307,7 +307,7 @@ Ha meg szeretné tekinteni a megfelelőségi jelentést a Azure Portalban, köve
 1. Szűrje az eredményeket az előző lépésben létrehozott szabályzat-hozzárendelés nevére. A jelentés azt jeleníti meg, hogy hány erőforrás felel meg a szabályzatnak.
 1. További részletekért tekintse meg a jelentés részletezését, beleértve a nem megfelelő tárolási fiókok listáját.
 
-    :::image type="content" source="media/transport-layer-security-configure-minimum-version/compliance-report-policy-portal.png" alt-text="A minimális TLS-verzióra vonatkozó naplózási szabályzat megfelelőségi jelentését bemutató képernyőkép":::
+    :::image type="content" source="media/transport-layer-security-configure-minimum-version/compliance-report-policy-portal.png" alt-text="A naplózási kérelmek diagnosztikai beállításainak létrehozását bemutató képernyőkép":::
 
 ## <a name="use-azure-policy-to-enforce-the-minimum-tls-version"></a>Azure Policy használata a TLS minimális verziójának betartatásához
 
@@ -343,7 +343,7 @@ Miután létrehozta a szabályzatot a megtagadási hatállyal, és hozzárendeli
 
 Az alábbi képen látható az a hiba, amely akkor fordul elő, ha olyan Storage-fiókot próbál létrehozni, amely a TLS 1,0-as minimális TLS-verzióra van beállítva (ez az alapértelmezett érték egy új fiók esetében), ha egy megtagadási hatással rendelkező szabályzat megköveteli, hogy a TLS 1,2-es minimális TLS-verzió legyen beállítva.
 
-:::image type="content" source="media/transport-layer-security-configure-minimum-version/deny-policy-error.png" alt-text="A házirend megsértése esetén a Storage-fiók létrehozásakor előforduló hibát ábrázoló képernyőkép":::
+:::image type="content" source="media/transport-layer-security-configure-minimum-version/deny-policy-error.png" alt-text="A naplózási kérelmek diagnosztikai beállításainak létrehozását bemutató képernyőkép":::
 
 ## <a name="network-considerations"></a>Hálózati szempontok
 

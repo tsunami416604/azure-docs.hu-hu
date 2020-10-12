@@ -1,5 +1,5 @@
 ---
-title: A kulcs-értékekhez tartozó JSON-tartalom típusának használata
+title: JSON tartalomtípus használata kulcsértékekhez
 titleSuffix: Azure App Configuration
 description: Megtudhatja, hogyan használhatja a kulcs-értékekhez a JSON-tartalom típusát
 services: azure-app-configuration
@@ -11,10 +11,10 @@ ms.topic: how-to
 ms.date: 08/03/2020
 ms.author: avgupta
 ms.openlocfilehash: 725beb50e55852e35ee4434539ff158f082059df
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88122009"
 ---
 # <a name="leverage-content-type-to-store-json-key-values-in-app-configuration"></a>A tartalom típusának kihasználása JSON-kulcsok tárolásához az alkalmazás konfigurációjában
@@ -189,7 +189,7 @@ Ha az SDK-t vagy REST API használja az alkalmazás konfigurációjában találh
 
 [!INCLUDE [azure-app-configuration-cleanup](../../includes/azure-app-configuration-cleanup.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy már tudja, hogyan dolgozhat a JSON-kulcsokkal az alkalmazás konfigurációs tárolójában, hozzon létre egy alkalmazást a következő kulcs-értékek fogyasztásához:
 

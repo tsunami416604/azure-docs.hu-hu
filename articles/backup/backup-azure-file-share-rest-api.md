@@ -4,10 +4,10 @@ description: Ismerje meg, hogyan használhatja a REST API az Azure-fájlmegoszt�
 ms.topic: conceptual
 ms.date: 02/16/2020
 ms.openlocfilehash: 8d2d8ed88da133986540a293185c8e37000ab87b
-ms.sourcegitcommit: ac7ae29773faaa6b1f7836868565517cd48561b2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88824865"
 ---
 # <a name="backup-azure-file-share-using-azure-backup-via-rest-api"></a>Azure-fájlmegosztás biztonsági mentése a Azure Backup használatával REST API-n keresztül
@@ -421,7 +421,7 @@ x-ms-routing-request-id  : CENTRALUSEUAP:20200127T105412Z:b55527fa-f473-4f09-b16
 Date : Mon, 27 Jan 2020 10:54:12 GMT
 ```
 
-Ezután kövesse az eredményül kapott műveletet a Location fejléc vagy az Azure-AsyncOperation fejléc használatával egy  *Get* paranccsal.
+Ezután kövesse az eredményül kapott műveletet a Location fejléc vagy a Azure-AsyncOperation fejléc használatával egy  *Get* paranccsal.
 
 ```http
 GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupOperations/c3a52d1d-0853-4211-8141-477c65740264?api-version=2016-12-01
@@ -516,7 +516,7 @@ Miután elküldte a *post* -kérést egy igény szerinti biztonsági mentéshez,
 'Content-Length': '0'
 ```
 
-Ezután kövesse az eredményül kapott műveletet a Location fejléc vagy az Azure-AsyncOperation fejléc használatával egy  *Get* paranccsal.
+Ezután kövesse az eredményül kapott műveletet a Location fejléc vagy a Azure-AsyncOperation fejléc használatával egy  *Get* paranccsal.
 
 ```http
 GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/azurefiles/providers/Microsoft.RecoveryServices/vaults/azurefilesvault/backupOperations/dc62d524-427a-4093-968d-e951c0a0726e?api-version=2016-12-01
@@ -542,6 +542,6 @@ A művelet befejezése után a 200 (OK) értéket adja vissza az eredményül ka
 
 Mivel a biztonsági mentési feladat hosszú ideig futó művelet, azt a [feladatok figyelése REST API dokumentum használatával](./backup-azure-arm-userestapi-managejobs.md#tracking-the-job)című részben leírtak szerint kell követni.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ismerje meg, hogyan [állíthatja vissza az Azure-fájlmegosztást a REST API használatával](restore-azure-file-share-rest-api.md).

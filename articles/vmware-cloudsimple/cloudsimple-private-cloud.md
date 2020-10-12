@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: e2096e8c0ebfb233c7449510bf0bc8e80b56231e
-ms.sourcegitcommit: a2a7746c858eec0f7e93b50a1758a6278504977e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/12/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88140717"
 ---
 # <a name="cloudsimple-private-cloud-overview"></a>CloudSimple – a privát felhő áttekintése
@@ -30,7 +30,7 @@ A CloudSimple a Felhőbeli fogyasztási modellek előnyeit kihasználva csökken
 A CloudSimple teljes mértékben kompatibilis az alábbiakkal:
 
 * Meglévő eszközök
-* Ismereteit
+* Szakértelem
 * Folyamatok
 
 Ez a kompatibilitási funkció lehetővé teszi, hogy a csapatok az Azure-felhőben kezeljék a munkaterheléseket, anélkül, hogy megzavarják az ilyen típusú szabályzatokat:

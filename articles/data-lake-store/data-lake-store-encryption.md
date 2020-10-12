@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 03/26/2018
 ms.author: yagupta
 ms.openlocfilehash: a187b31657ec2a67c306d817a75150d19a5cf9b6
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86497182"
 ---
 # <a name="encryption-of-data-in-azure-data-lake-storage-gen1"></a>Azure Data Lake Storage Gen1ban lévő adattitkosítás
@@ -78,7 +78,7 @@ Az adattitkosítás során háromféle kulcsot használunk. A következő tábl�
 |-----------------------|--------------|-----------------|----------------------------------------------|------------|---------------------------------------------------------------------------------------------------------|
 | Titkosítási főkulcs | MEK          | Egy Data Lake Storage Gen1 fiók | Key Vault                              | Aszimmetrikus | Data Lake Storage Gen1 vagy Ön által felügyelhető.                                                              |
 | Adattitkosítási kulcs   | DEK          | Egy Data Lake Storage Gen1 fiók | A Data Lake Storage Gen1 szolgáltatás által felügyelt állandó tárterület | Szimmetrikus  | A DEK titkosítását a MEK végzi. A szolgáltatás a titkosított DEK-et tárolja az állandó adathordozón. |
-| Blokktitkosítási kulcs  | BEK          | Egy adatblokk | Egyik sem                                         | Szimmetrikus  | A blokktitkosítási kulcsot az adattitkosítási kulcsból és az adatblokkból származtatjuk.                                                      |
+| Blokktitkosítási kulcs  | BEK          | Egy adatblokk | Nincs                                         | Szimmetrikus  | A blokktitkosítási kulcsot az adattitkosítási kulcsból és az adatblokkból származtatjuk.                                                      |
 
 Az alapelveket a következő ábra mutatja be:
 

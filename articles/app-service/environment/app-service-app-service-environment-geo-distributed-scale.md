@@ -8,10 +8,10 @@ ms.date: 09/07/2016
 ms.author: stefsch
 ms.custom: seodec18, references_regions
 ms.openlocfilehash: 004b32118521f72c5b59ad7bab2d4e41244b85c4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85833604"
 ---
 # <a name="geo-distributed-scale-with-app-service-environments"></a>Földrajzi alapú méretezés App Service-környezetekkel
@@ -42,7 +42,7 @@ Mielőtt kiépít egy elosztott alkalmazás-lábnyomot, a rendszer segít néhá
 * **Traffic Manager tartomány:** Adja meg a tartománynevet [Azure Traffic Manager-profil][AzureTrafficManagerProfile]létrehozásakor.  Ezt a nevet a rendszer a *trafficmanager.net* utótaggal kombinálva regisztrálja Traffic Manager által felügyelt tartományi bejegyzést.  A minta alkalmazás esetében a választott név a *skálázható – a bemutató*.  Ennek eredményeképpen a Traffic Manager által felügyelt teljes tartománynév *Scalable-ASE-demo.trafficmanager.net*.
 * **Az alkalmazás helyigényének méretezésére szolgáló stratégia:**  Az alkalmazási lábnyom több App Service környezetbe kerül elosztásra egyetlen régióban?  Több régió?  Mindkét megközelítés kombinációja és megfeleltetése?  Az ügyfelek forgalmának helyétől, valamint az alkalmazás által támogatott háttérrendszer-infrastruktúrák teljes skálájának kihasználása.  Például egy 100%-os állapot nélküli alkalmazás esetében az alkalmazások nagymértékben méretezhetők az egyes Azure-régiók számos App Service környezetének kombinációjával, és a számos Azure-régióban üzembe helyezett App Service környezetek szorzatával.  A 15 és a globális Azure-régiók közül választhatnak, így az ügyfelek valóban az egész világra kiterjedő, Hyper-Scale alkalmazási lábnyomot hozhatnak létre.  A cikkhez használt minta alkalmazáshoz három App Service környezet lett létrehozva egyetlen Azure-régióban (az USA déli középső régiója).
 * **A app Service környezetek elnevezési konvenciója:**  Minden App Service Environment egyedi nevet igényel.  Egy vagy két App Service környezeten kívül hasznos lehet elnevezési konvenciója az egyes App Service Environment azonosításához.  A minta alkalmazás esetében egyszerű elnevezési konvenciót használtak.  A három App Service környezet neve *fe1ase*, *fe2ase*és *fe3ase*.
-* **Az alkalmazások elnevezési konvenciója:**  Mivel az alkalmazás több példánya is telepítve lesz, a központilag telepített alkalmazás minden példányához nevet kell megadni.  App Service környezetek egyik kevéssé ismert funkciója, hogy ugyanazt az alkalmazást több App Service környezetben is használhatja.  Mivel minden App Service Environment egyedi tartományi utótaggal rendelkezik, a fejlesztők úgy dönthetnek, hogy ugyanazt az alkalmazást használják az egyes környezetekben.  Előfordulhat például, hogy egy fejlesztőnek a következőképpen kell megneveznie az alkalmazásokat: *MyApp.Foo1.p.azurewebsites.net*, *MyApp.Foo2.p.azurewebsites.net*, *MyApp.Foo3.p.azurewebsites.net*stb.  A minta alkalmazás esetében azonban minden alkalmazás példányának egyedi neve is van.  Az *webfrontend1*, a *webfrontend2*és a *webfrontend3*használt alkalmazás-példányok nevei.
+* **Az alkalmazások elnevezési konvenciója:**  Mivel az alkalmazás több példánya is telepítve lesz, a központilag telepített alkalmazás minden példányához nevet kell megadni.  App Service környezetek egyik kevéssé ismert funkciója, hogy ugyanazt az alkalmazást több App Service környezetben is használhatja.  Mivel minden App Service Environment egyedi tartományi utótaggal rendelkezik, a fejlesztők úgy dönthetnek, hogy ugyanazt az alkalmazást használják az egyes környezetekben.  Előfordulhat például, hogy egy fejlesztőnek a következőképpen kell megneveznie az alkalmazásokat:  *MyApp.Foo1.p.azurewebsites.net*, *MyApp.Foo2.p.azurewebsites.net*, *MyApp.Foo3.p.azurewebsites.net*stb.  A minta alkalmazás esetében azonban minden alkalmazás példányának egyedi neve is van.  Az *webfrontend1*, a *webfrontend2*és a *webfrontend3*használt alkalmazás-példányok nevei.
 
 ## <a name="setting-up-the-traffic-manager-profile"></a>A Traffic Manager profil beállítása
 Ha egy alkalmazás több példánya is telepítve van több App Service környezetbe, az egyes alkalmazás-példányok regisztrálva lehetnek a Traffic Managerban.  A minta alkalmazás esetében Traffic Manager profilra van szükség ahhoz, hogy a *Scalable-ASE-demo.trafficmanager.net* az ügyfeleket a következő telepített alkalmazás-példányok bármelyikére tudja irányítani:
@@ -100,7 +100,7 @@ Az egyéni tartományok Azure App Service alkalmazásokkal való regisztrálás�
 ## <a name="trying-out-the-distributed-topology"></a>Az elosztott topológia kipróbálása
 A Traffic Manager és a DNS konfigurációjának végeredménye az, hogy a kérelmek a `www.scalableasedemo.com` következő sorozatot követik majd át:
 
-1. Egy böngésző vagy eszköz DNS-keresést végez a következőhöz:`www.scalableasedemo.com`
+1. Egy böngésző vagy eszköz DNS-keresést végez a következőhöz: `www.scalableasedemo.com`
 2. A tartományregisztrálónál lévő CNAME bejegyzés a DNS-címkeresés átirányítását okozza az Azure Traffic Manager.
 3. A rendszer DNS-keresést végez az Azure Traffic Manager DNS-kiszolgálók egyikének *Scalable-ASE-demo.trafficmanager.net* .
 4. A *TrafficRoutingMethod* paraméterben korábban meghatározott terheléselosztási házirend alapján Traffic Manager kiválasztja az egyik konfigurált végpontot. Ezután visszaadja a végpont teljes tartománynevét a böngészőnek vagy az eszköznek.

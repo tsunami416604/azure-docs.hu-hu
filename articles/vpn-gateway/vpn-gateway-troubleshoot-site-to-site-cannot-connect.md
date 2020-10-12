@@ -8,10 +8,10 @@ ms.topic: troubleshooting
 ms.date: 09/16/2019
 ms.author: genli
 ms.openlocfilehash: 09056846ee3e531724f597ee35f92d812ce2c335
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86037834"
 ---
 # <a name="troubleshooting-an-azure-site-to-site-vpn-connection-cannot-connect-and-stops-working"></a>Hibaelhárítás: az Azure-helyek közötti VPN-kapcsolat nem tud csatlakozni, és leáll
@@ -28,7 +28,7 @@ A probléma megoldásához először próbálja meg [alaphelyzetbe állítani az
 
 Keresse meg az Azure VPN Gateway típusát.
 
-1. Lépjen a [Azure Portal](https://portal.azure.com).
+1. Nyissa meg az [Azure Portalt](https://portal.azure.com).
 
 2. A típussal kapcsolatos információkért tekintse meg a VPN Gateway **Áttekintés** lapját.
     
@@ -46,7 +46,7 @@ Hasonlítsa össze a helyszíni VPN-eszköz megosztott kulcsát az Azure Virtual
 
 Az Azure VPN-kapcsolat megosztott kulcsának megtekintéséhez használja az alábbi módszerek egyikét:
 
-**Azure Portalra**
+**Azure Portal**
 
 1. Lépjen a létrehozott VPN Gateway-helyek közötti kapcsolathoz.
 
@@ -75,7 +75,7 @@ Get-AzureVNetGatewayKey -VNetName -LocalNetworkSiteName
 -   Az Azure-beli **helyi hálózati átjáró** objektum IP-definíciójának meg kell egyeznie a helyszíni eszköz IP-címével.
 -   A helyszíni eszközön beállított Azure Gateway IP-definíciónak meg kell egyeznie az Azure Gateway IP-címével.
 
-### <a name="step-4-check-udr-and-nsgs-on-the-gateway-subnet"></a>4. lépés A UDR és a NSG megtekintése az átjáró alhálózatán
+### <a name="step-4-check-udr-and-nsgs-on-the-gateway-subnet"></a>4. lépés: A UDR és a NSG megtekintése az átjáró alhálózatán
 
 Ellenőrizze és távolítsa el a felhasználó által megadott útválasztást (UDR) vagy hálózati biztonsági csoportokat (NSG) az átjáró alhálózatán, majd tesztelje az eredményt. Ha a probléma megoldódott, ellenőrizze a UDR vagy NSG alkalmazott beállításokat.
 

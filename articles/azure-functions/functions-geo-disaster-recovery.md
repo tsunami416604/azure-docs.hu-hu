@@ -5,10 +5,10 @@ ms.assetid: 9058fb2f-8a93-4036-a921-97a0772f503c
 ms.topic: conceptual
 ms.date: 08/29/2019
 ms.openlocfilehash: 446a76b823ce3592a83d0c2f898041951361b47e
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86506281"
 ---
 # <a name="azure-functions-geo-disaster-recovery"></a>Azure Functions geo-vész-helyreállítás
@@ -52,7 +52,7 @@ A feladatátvétel előtt a megosztott aliasnak küldött közzétevők átirán
 
 A feladatátvételsel kapcsolatos tudnivalókat és szempontokat a [Service Bus](../service-bus-messaging/service-bus-geo-dr.md) és az [Event hubok](../event-hubs/event-hubs-geo-dr.md)című témakörben olvashatja.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Azure-beli bejárati ajtó létrehozása](../frontdoor/quickstart-create-front-door.md)
 * [Event Hubs feladatátvételi megfontolások](../event-hubs/event-hubs-geo-dr.md#considerations)

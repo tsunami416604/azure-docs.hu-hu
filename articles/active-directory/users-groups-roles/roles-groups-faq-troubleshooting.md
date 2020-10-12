@@ -14,10 +14,10 @@ ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7acbb9aa443cde8df7016d3f2a38d58002b98dcd
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91317395"
 ---
 # <a name="troubleshooting-roles-assigned-to-cloud-groups"></a>A felhőbeli csoportokhoz hozzárendelt szerepkörökkel kapcsolatos hibák elhárítása
@@ -53,8 +53,8 @@ ms.locfileid: "91317395"
 
 Azure AD-címtárbeli szerepkör | Jogosultsági felügyeleti szerepkör | Hozzáadhat biztonsági csoportot\* | Hozzáadhat Microsoft 365 csoportot\* | Hozzáadhat alkalmazást | Hozzáadhat SharePoint Online-webhelyet
 ----------------------- | --------------------------- | ----------------------- | ------------------------- | ----------- |  -----------------------------
-Globális rendszergazda | n.a. | ✔️ | ✔️ | ✔️  | ✔️
-Felhasználói rendszergazda  | n.a.  | ✔️  | ✔️  | ✔️
+Globális rendszergazda | n/a | ✔️ | ✔️ | ✔️  | ✔️
+Felhasználói rendszergazda  | n/a  | ✔️  | ✔️  | ✔️
 Intune-rendszergazda | Katalógus tulajdonosa | ✔️  | ✔️  | &nbsp;  | &nbsp;
 Exchange-rendszergazda  | Katalógus tulajdonosa  | &nbsp; | ✔️  | &nbsp;  | &nbsp;
 Teams szolgáltatás rendszergazdája | Katalógus tulajdonosa  | &nbsp; | ✔️  | &nbsp;  | &nbsp;

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/16/2019
 ms.author: sumi
 ms.openlocfilehash: a6bbb2abe24eba96fd2c55b7aaf15ccd8ae33530
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87760947"
 ---
 # <a name="what-is-azure-private-link-service"></a>Mi az az Azure Private link Service?
@@ -91,7 +91,7 @@ Az alias három részből áll: *előtag*. *GUID azonosító*. *Utótag*
 - A GUID-t a platform biztosítja. Ez segít a név globálisan egyedivé tételében. 
 - Az utótagot az Azure: *region*. Azure. privatelinkservice fűzi hozzá 
 
-Teljes alias: *előtag*. {GUID}. *régió*. Azure. privatelinkservice  
+Teljes alias:  *előtag*. {GUID}. *régió*. Azure. privatelinkservice  
 
 ## <a name="control-service-exposure"></a>Vezérlési szolgáltatás expozíciója
 
@@ -128,6 +128,6 @@ A Private link Service használatának ismert korlátai a következők:
 - Csak az IPv4-forgalmat támogatja
 - Csak a TCP-forgalmat támogatja
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [Privát kapcsolati szolgáltatás létrehozása Azure PowerShell használatával](create-private-link-service-powershell.md)
 - [Privát kapcsolati szolgáltatás létrehozása az Azure CLI-vel](create-private-link-service-cli.md)

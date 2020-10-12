@@ -8,10 +8,10 @@ ms.author: danil
 ms.date: 09/19/2020
 ms.reviewer: carlrab
 ms.openlocfilehash: 0015138f4da9f66e2f9148e468dd1b5543ae0c4b
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91397079"
 ---
 # <a name="monitor-azure-sql-database-using-azure-sql-analytics-preview"></a>Azure SQL Database figyelése Azure SQL Analytics használatával (előzetes verzió)
@@ -34,10 +34,10 @@ A Azure SQL Analytics egy Felhőbeli figyelési megoldás, amely támogatja az �
 | Összekapcsolt forrás | Támogatott | Leírás |
 | --- | --- | --- |
 | [Diagnosztikai beállítások](../platform/diagnostic-settings.md) | **Igen** | Az Azure metrika és a naplózási adatok közvetlenül az Azure-ban érkeznek Azure Monitor naplókra. |
-| [Azure Storage-fiók](../platform/resource-logs.md#send-to-log-analytics-workspace) | No | Azure Monitor nem olvassa be a Storage-fiók adatait. |
-| [Windows-ügynökök](../platform/agent-windows.md) | No | Azure SQL Analytics nem használja a közvetlen Windows-ügynököket. |
-| [Linux-ügynökök](../learn/quick-collect-linux-computer.md) | No | Azure SQL Analytics nem használja a közvetlen Linux-ügynököket. |
-| [System Center Operations Manage felügyeleti csoport](../platform/om-agents.md) | No | A Azure SQL Analytics nem használja közvetlen kapcsolódást a Operations Manager ügynöktől a Azure Monitor. |
+| [Azure Storage-fiók](../platform/resource-logs.md#send-to-log-analytics-workspace) | Nem | Azure Monitor nem olvassa be a Storage-fiók adatait. |
+| [Windows-ügynökök](../platform/agent-windows.md) | Nem | Azure SQL Analytics nem használja a közvetlen Windows-ügynököket. |
+| [Linux-ügynökök](../learn/quick-collect-linux-computer.md) | Nem | Azure SQL Analytics nem használja a közvetlen Linux-ügynököket. |
+| [System Center Operations Manage felügyeleti csoport](../platform/om-agents.md) | Nem | A Azure SQL Analytics nem használja közvetlen kapcsolódást a Operations Manager ügynöktől a Azure Monitor. |
 
 ## <a name="azure-sql-analytics-options"></a>Azure SQL Analytics beállítások
 
@@ -295,7 +295,7 @@ AzureDiagnostics
 
 Míg a Azure SQL Analytics ingyenesen használható, a diagnosztika telemetria az egyes hónapokban lefoglalt ingyenes adatfeldolgozási egységeken felüli felhasználást lásd: [log Analytics díjszabása](https://azure.microsoft.com/pricing/details/monitor). Az adatfeldolgozás ingyenes egysége lehetővé teszi, hogy minden hónapban több adatbázis ingyenes figyelése legyen elérhető. Nagyobb mennyiségű aktív adatbázis több adatot és üresjárati adatbázist is felhasznál. A Azure SQL Analytics navigációs menüjében a OMS munkaterület elem kiválasztásával, majd a használat és a becsült költségek lehetőség kiválasztásával egyszerűen figyelheti az adatok betöltésének felhasználását Azure SQL Analytics.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A Azure Monitorban található [naplók](../log-query/log-query-overview.md) használatával részletes Azure SQL-információk jeleníthetők meg.
 - [Saját irányítópultokat hozhat létre](../learn/tutorial-logs-dashboards.md) , amelyek az Azure SQL-adatait jelenítik meg.

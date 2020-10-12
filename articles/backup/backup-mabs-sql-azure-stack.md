@@ -4,10 +4,10 @@ description: Ebből a cikkből megtudhatja, hogyan konfigurálhatja Microsoft Az
 ms.topic: conceptual
 ms.date: 06/08/2018
 ms.openlocfilehash: 80de7913b010fca69c3703e423109f2ede653590
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91332814"
 ---
 # <a name="back-up-sql-server-on-azure-stack"></a>SQL Server biztonsági mentése Azure Stack
@@ -76,7 +76,7 @@ Az Azure-ba való SQL Server adatbázis biztonsági mentésének és az Azure-ba
 
     ![Adatvédelmi módszer – rövid távú lemez & online Azure](./media/backup-azure-backup-sql/pg-name.png)
 
-6. A **rövid távú célok megadása képernyőn adja meg** a szükséges bemeneteket a lemezre történő biztonsági mentési pontok létrehozásához, majd kattintson a **tovább**gombra.
+6. A **Short-Term célok megadása** képernyőn adja meg a szükséges bemeneteket a lemezre történő biztonsági mentési pontok létrehozásához, majd kattintson a **tovább**gombra.
 
     A példában a **megőrzési** időtartam **5 nap**, a **szinkronizálás gyakorisága** **15 percenként**történik, ami a biztonsági mentés gyakorisága. Az **expressz teljes biztonsági mentés** **8:00 P. M**értékre van állítva.
 
@@ -134,7 +134,7 @@ Az Azure-ba való SQL Server adatbázis biztonsági mentésének és az Azure-ba
 
 14. Ha áttekinti a szabályzat részleteit az **Összefoglalás** képernyőn, válassza a **csoport létrehozása** lehetőséget a munkafolyamat befejezéséhez. Válassza a **Bezárás** lehetőséget, és figyelje a feladatok előrehaladását a figyelés munkaterületen.
 
-    ![A védelmi csoport létrehozása folyamatban van](./media/backup-azure-backup-sql/pg-summary.png)
+    ![Védelmi csoport létrehozása In-Progress](./media/backup-azure-backup-sql/pg-summary.png)
 
 ## <a name="on-demand-backup-of-a-sql-server-database"></a>SQL Server-adatbázis igény szerinti biztonsági mentése
 

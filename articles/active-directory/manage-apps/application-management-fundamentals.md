@@ -17,10 +17,10 @@ ms.subservice: app-mgmt
 ms.author: kenwith
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d32728c1f388e9013b922d1f60d30e65d350bbc1
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88642435"
 ---
 # <a name="application-management-best-practices"></a>Alkalmazások kezelése – ajánlott eljárások
@@ -28,7 +28,7 @@ ms.locfileid: "88642435"
 Ez a cikk ajánlásokat és ajánlott eljárásokat tartalmaz az alkalmazások Azure Active Directory (Azure AD) való kezeléséhez, az automatikus kiépítéssel és a helyszíni alkalmazások alkalmazás-proxyval való közzétételével.
 
 ## <a name="cloud-app-and-single-sign-on-recommendations"></a>A Cloud app és az egyszeri bejelentkezés javaslatai
-| Javaslat | Megjegyzések |
+| Ajánlás | Megjegyzések |
 | --- | --- |
 | Az Azure AD Application Gallery for Apps szolgáltatás megtekintése  | Az Azure AD olyan katalógussal rendelkezik, amely több ezer előre integrált alkalmazást tartalmaz, amelyek engedélyezve vannak a vállalati egyszeri bejelentkezéssel (SSO). Az alkalmazásspecifikus beállítási útmutatóért tekintse meg az [SaaS-alkalmazás oktatóanyagok listáját](https://azure.microsoft.com/documentation/articles/active-directory-saas-tutorial-list/).  | 
 | Összevont SAML-alapú egyszeri bejelentkezés használata  | Ha egy alkalmazás támogatja azt, akkor használjon összevont, SAML-alapú egyszeri bejelentkezést az Azure AD-vel a jelszó-alapú egyszeri bejelentkezés és az ADFS helyett.  | 
@@ -39,7 +39,7 @@ Ez a cikk ajánlásokat és ajánlott eljárásokat tartalmaz az alkalmazások A
 | A tanúsítványok kezelésére szolgáló folyamat létrehozása | Az aláíró tanúsítvány maximális élettartama három év. A tanúsítvány lejárata miatti leállások megelőzése vagy csökkentése érdekében a szerepkörök és e-mailek terjesztési listáit használva ellenőrizze, hogy a tanúsítványokkal kapcsolatos módosítási értesítések szorosan megfigyelhetők-e. |
 
 ## <a name="provisioning-recommendations"></a>Kiépítési javaslatok
-| Javaslat | Megjegyzések |
+| Ajánlás | Megjegyzések |
 | --- | --- |
 | Oktatóanyagok használata a felhőalapú alkalmazásokkal való kiépítés beállításához | Tekintse meg az [SaaS-alkalmazás oktatóanyagok listáját](https://azure.microsoft.com/documentation/articles/active-directory-saas-tutorial-list/) , amely részletes útmutatást nyújt a hozzáadni kívánt Gallery-alkalmazás kiépítés konfigurálásához. |
 | A kiépítési naplók (előzetes verzió) használata az állapot figyeléséhez | A [kiépítési naplók](../reports-monitoring/concept-provisioning-logs.md?context=azure/active-directory/manage-apps/context/manage-apps-context) részletezik a kiépítési szolgáltatás által végrehajtott összes műveletet, beleértve az egyes felhasználók állapotát is. |
@@ -47,7 +47,7 @@ Ez a cikk ajánlásokat és ajánlott eljárásokat tartalmaz az alkalmazások A
 
 
 ## <a name="application-proxy-recommendations"></a>Alkalmazásproxy-javaslatok
-| Javaslat | Megjegyzések |
+| Ajánlás | Megjegyzések |
 | --- | --- |
 | Alkalmazásproxy használata a belső erőforrásokhoz való távoli hozzáféréshez | Az alkalmazásproxy használata ajánlott a távoli felhasználók számára a belső erőforrásokhoz való hozzáféréshez, a VPN-vagy fordított proxy igényének megadásához. Nem a vállalati hálózaton belüli erőforrásokhoz való hozzáférésre szolgál, mert ez késést eredményezhet.
 | Egyéni tartományok használata | Egyéni tartományokat állíthat be az alkalmazásaihoz (lásd: [Egyéni tartományok konfigurálása](application-proxy-configure-custom-domain.md)), hogy a felhasználók és az alkalmazások közötti URL-címek a hálózaton belül vagy kívül is működjenek. Emellett a saját védjegyeit is szabályozhatja, és testre szabhatja az URL-címeket.  Egyéni tartománynevek használata esetén tervezze meg a nem a Microsofttól származó megbízható hitelesítésszolgáltatótól származó nyilvános tanúsítvány beolvasását. Az Azure Application proxy támogatja a standard, ([helyettesítő karakter](application-proxy-wildcard.md)) vagy a San-alapú tanúsítványokat. (Lásd: [alkalmazásproxy megtervezése](application-proxy-deployment-plan.md).) |

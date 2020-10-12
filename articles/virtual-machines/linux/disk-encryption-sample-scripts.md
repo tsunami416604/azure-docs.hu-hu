@@ -9,10 +9,10 @@ ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18, devx-track-azurepowershell
 ms.openlocfilehash: dcfae72d5f15399dc4c759ab859ad8059134f11d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91279790"
 ---
 # <a name="azure-disk-encryption-sample-scripts-for-linux-vms"></a>A Linux rendszerű virtuális gépekre Azure Disk Encryption minta szkriptek
@@ -108,7 +108,7 @@ A következő táblázat a PowerShell-parancsfájlban használható paraméterek
 
 5. A [következő szakaszban](#monitoring-os-encryption-progress)található utasítások alapján rendszeres időközönként figyelje a titkosítás előrehaladását.
 
-6. Miután a Get-AzVmDiskEncryptionStatus megjeleníti a "VMRestartPending" kifejezést, indítsa újra a virtuális gépet a bejelentkezéshez vagy a portál, a PowerShell vagy a CLI használatával.
+6. Miután Get-AzVmDiskEncryptionStatus megjeleníti a "VMRestartPending" kifejezést, indítsa újra a virtuális gépet úgy, hogy bejelentkezik rá, vagy a portál, a PowerShell vagy a parancssori felület használatával.
     ```powershell
     C:\> Get-AzVmDiskEncryptionStatus  -ResourceGroupName $ResourceGroupName -VMName $VMName
     -ExtensionName $ExtensionName
@@ -401,7 +401,7 @@ A titkosítás az Azure-ban való működésének konfigurálásához hajtsa vé
     ![CentOS 7 telepítő – a/usr/sbin/Dracut-f-v futtatása](./media/disk-encryption/centos-encrypt-fig5.png)
 
 ## <a name="upload-encrypted-vhd-to-an-azure-storage-account"></a>Titkosított virtuális merevlemez feltöltése Azure Storage-fiókba
-A DM-Crypt titkosítás engedélyezése után a helyi titkosított VHD-t fel kell tölteni a Storage-fiókjába.
+DM-Crypt titkosítás engedélyezése után a helyi titkosított virtuális merevlemezt fel kell tölteni a Storage-fiókjába.
 ```powershell
     Add-AzVhd [-Destination] <Uri> [-LocalFilePath] <FileInfo> [[-NumberOfUploaderThreads] <Int32> ] [[-BaseImageUriToPatch] <Uri> ] [[-OverWrite]] [ <CommonParameters>]
 ```

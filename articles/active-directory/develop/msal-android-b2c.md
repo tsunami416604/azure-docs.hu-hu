@@ -14,10 +14,10 @@ ms.author: brianmel
 ms.reviewer: rapong
 ms.custom: aaddev
 ms.openlocfilehash: 0ad5fab685757d2efd91cd1df0e48a5f1258d17e
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88119878"
 ---
 # <a name="use-msal-for-android-with-b2c"></a>Az Android rendszerhez készült MSAL használata B2C-vel
@@ -30,9 +30,9 @@ Az Android rendszerhez készült MSAL-ben a B2C-szabályzatok (felhasználói ú
 
 Olyan B2C-alkalmazás, amely két házirenddel rendelkezik:
 - Regisztráció/bejelentkezés
-    * Úgynevezett`B2C_1_SISOPolicy`
+    * Úgynevezett `B2C_1_SISOPolicy`
 - Profil szerkesztése
-    * Úgynevezett`B2C_1_EditProfile`
+    * Úgynevezett `B2C_1_EditProfile`
 
 Az alkalmazás konfigurációs fájlja kettőt deklarál `authorities` . Egyet az egyes szabályzatokhoz. Az `type` egyes hatóságok tulajdonsága `B2C` .
 
@@ -54,11 +54,11 @@ Az alkalmazás konfigurációs fájlja kettőt deklarál `authorities` . Egyet a
 }
 ```
 
-A `redirect_uri` -t regisztrálni kell az alkalmazás konfigurációjában, valamint a-ben az `AndroidManifest.xml` átirányítás támogatásához az [engedélyezési kód engedélyezése folyamat](../../active-directory-b2c/authorization-code-flow.md)során.
+A `redirect_uri` -t regisztrálni kell az alkalmazás konfigurációjában, valamint a-ben az  `AndroidManifest.xml` átirányítás támogatásához az [engedélyezési kód engedélyezése folyamat](../../active-directory-b2c/authorization-code-flow.md)során.
 
 ## <a name="initialize-ipublicclientapplication"></a>IPublicClientApplication inicializálása
 
-`IPublicClientApplication`a egy gyári metódussal jön létre, amely lehetővé teszi az alkalmazás konfigurációjának aszinkron elemzését.
+`IPublicClientApplication` a egy gyári metódussal jön létre, amely lehetővé teszi az alkalmazás konfigurációjának aszinkron elemzését.
 
 ```java
 PublicClientApplication.createMultipleAccountPublicClientApplication(
@@ -139,7 +139,7 @@ pca.acquireTokenSilentAsync(parameters);
 
 ## <a name="specify-a-policy"></a>Házirend meghatározása
 
-Mivel a B2C-szabályzatok külön hatóságokként jelennek meg, az alapértelmezetttől eltérő házirendet nem kell megadnia egy `fromAuthority` záradék létrehozásával `acquireToken` vagy paraméterekkel való megadásával `acquireTokenSilent` .  Például:
+Mivel a B2C-szabályzatok külön hatóságokként jelennek meg, az alapértelmezetttől eltérő házirendet nem kell megadnia egy `fromAuthority` záradék létrehozásával `acquireToken` vagy paraméterekkel való megadásával `acquireTokenSilent` .  Példa:
 
 ```java
 AcquireTokenParameters parameters = new AcquireTokenParameters.Builder()
@@ -235,8 +235,8 @@ A B2C az egyes szabályzatokat külön szolgáltatóként kezeli. Így a hozzáf
 
 Mindegyik szabályzat `IAccount` minden felhasználóhoz hozzáadja a gyorsítótárat. Ha egy felhasználó bejelentkezik egy alkalmazásba, és két házirendet hív meg, akkor két `IAccount` OK lesz. Ha el szeretné távolítani ezt a felhasználót a gyorsítótárból, minden szabályzatot meg kell hívnia `removeAccount()` .
 
-Amikor megújítja a Szabályzathoz tartozó jogkivonatokat `acquireTokenSilent` , megadhatja, `IAccount` hogy a szabályzat korábbi hívásai milyen értéket adtak vissza `AcquireTokenSilentParameters` . Egy másik házirend által visszaadott fiók megadása hibát eredményez.
+Amikor megújítja a Szabályzathoz tartozó jogkivonatokat `acquireTokenSilent` , megadhatja, `IAccount` hogy a szabályzat korábbi hívásai milyen értéket adtak vissza  `AcquireTokenSilentParameters` . Egy másik házirend által visszaadott fiók megadása hibát eredményez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a Azure Active Directory B2Cról (Azure AD B2C) a [mi Azure Active Directory B2C?](../../active-directory-b2c/overview.md)

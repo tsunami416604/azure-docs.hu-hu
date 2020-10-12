@@ -14,10 +14,10 @@ ms.author: nacanuma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 5d91514af9aea3dd7ea13b94681fbb27c53772fe
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88120898"
 ---
 # <a name="differences-between-msal-js-and-adal-js"></a>A MSAL JS és a ADAL JS közötti különbségek
@@ -44,7 +44,7 @@ Azonban továbbra is ADAL.js kell használnia, ha az alkalmazásnak a [Active Di
 
 * A tokenek csendes beszerzésének és megújításának módszere a felhasználók értesítése nélkül `acquireToken` ADAL.js. A MSAL.js a metódus neve, `acquireTokenSilent` hogy a funkció ennél több leíró jellegű legyen.
 
-### <a name="authority-value-common"></a>Hitelesítésszolgáltató értéke`common`
+### <a name="authority-value-common"></a>Hitelesítésszolgáltató értéke `common`
 
 A 2.0-s verzióban a szolgáltató használatával a `https://login.microsoftonline.com/common` felhasználók bármely Azure ad-fiókkal bejelentkezhetnek (bármely szervezet esetében).
 
@@ -73,7 +73,7 @@ A 2.0-s verziójában a `https://login.microsoftonline.com/common` szolgáltató
 
 * Dinamikus hatókörök a növekményes belehozatalhoz.
 
-    Ha a 1.0-s verzióval hoz létre alkalmazásokat, regisztrálnia kell az alkalmazás által a bejelentkezéskor a felhasználó számára szükséges engedélyek (statikus hatókörök) teljes készletét. A 2.0-s verzióban a hatókör paraméterrel kérheti le az engedélyeket a kívánt időpontban. Ezeket dinamikus hatóköröknek nevezzük. Ez lehetővé teszi, hogy a felhasználó növekményes beleegyezett a hatókörökbe. Tehát ha az elején csak azt szeretné, hogy a felhasználó bejelentkezzen az alkalmazásba, és nincs szüksége semmilyen hozzáférésre, ezt megteheti. Ha később szükség van a felhasználó naptárának olvasására, a acquireToken metódusokban kérheti le a naptár hatókörét, és beolvashatja a felhasználó belefoglalását. Például:
+    Ha a 1.0-s verzióval hoz létre alkalmazásokat, regisztrálnia kell az alkalmazás által a bejelentkezéskor a felhasználó számára szükséges engedélyek (statikus hatókörök) teljes készletét. A 2.0-s verzióban a hatókör paraméterrel kérheti le az engedélyeket a kívánt időpontban. Ezeket dinamikus hatóköröknek nevezzük. Ez lehetővé teszi, hogy a felhasználó növekményes beleegyezett a hatókörökbe. Tehát ha az elején csak azt szeretné, hogy a felhasználó bejelentkezzen az alkalmazásba, és nincs szüksége semmilyen hozzáférésre, ezt megteheti. Ha később szükség van a felhasználó naptárának olvasására, a acquireToken metódusokban kérheti le a naptár hatókörét, és beolvashatja a felhasználó belefoglalását. Példa:
 
     ```javascript
     var request = {
@@ -85,7 +85,7 @@ A 2.0-s verziójában a `https://login.microsoftonline.com/common` szolgáltató
 
 * Hatókörök a V 1.0 API-khoz
 
-    Ha MSAL.js használatával állítanak be tokeneket a V 1.0 API-khoz, az API-hoz regisztrált összes statikus hatókört az `.default` API hatókörként való hozzáfűzésével kérheti le. Például:
+    Ha MSAL.js használatával állítanak be tokeneket a V 1.0 API-khoz, az API-hoz regisztrált összes statikus hatókört az `.default` API hatókörként való hozzáfűzésével kérheti le. Példa:
 
     ```javascript
     var request = {
@@ -95,5 +95,5 @@ A 2.0-s verziójában a `https://login.microsoftonline.com/common` szolgáltató
     acquireTokenPopup(request);
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 További információkért tekintse meg a [1.0-s és a 2.0-s verzió összehasonlítását](../azuread-dev/azure-ad-endpoint-comparison.md)ismertető témakört.

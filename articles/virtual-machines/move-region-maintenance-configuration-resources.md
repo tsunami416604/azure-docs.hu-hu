@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 03/04/2020
 ms.author: shants
 ms.openlocfilehash: 38532fba2be1fedd275ed2e7f9dfc1bf5752499d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86501653"
 ---
 # <a name="move-resources-in-a-maintenance-control-configuration-to-another-region"></a>Erőforrások áthelyezése egy karbantartási vezérlő konfigurációjában egy másik régióba
@@ -32,7 +32,7 @@ Mielőtt megkezdené a karbantartási vezérlő konfigurációjával kapcsolatos
 - Egy erőforrás konfigurációinak beolvasása során:
     - Győződjön meg arról, hogy a fiók előfizetés-AZONOSÍTÓját használja, nem pedig az Azure dedikált gazdagép-AZONOSÍTÓját.
     - CLI: a--output Table paraméter csak olvashatóként használható, és törölhető vagy módosítható.
-    - PowerShell: a Format – Table Name paraméter csak olvashatóként használható, és törölhető vagy módosítható.
+    - PowerShell: a Format-Table Name paraméter csak olvashatóságra szolgál, és törölhető vagy módosítható.
     - Ha a PowerShellt használja, hibaüzenet jelenik meg, ha olyan erőforrás konfigurációit próbál meg kilistázni, amely nem rendelkezik társított konfigurációval. A hiba a következőhöz hasonló lesz: "a művelet meghiúsult állapottal:" nem található ". Részletek: 404 ügyfél-hiba: nem található az URL-címhez.
 
     
@@ -91,6 +91,6 @@ Ellenőrizze az új régióban lévő erőforrásokat, és ellenőrizze az új r
 Az áthelyezést követően érdemes törölni az áthelyezett erőforrásokat a forrás régióban.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Kövesse [ezeket az utasításokat](move-region-maintenance-configuration.md) , ha a karbantartási konfigurációkat át kell helyeznie. 

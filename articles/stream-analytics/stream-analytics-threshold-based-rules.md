@@ -7,10 +7,10 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 04/30/2018
 ms.openlocfilehash: 215835bf7f1e6676adba6541da70dcb86fc3500c
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86039041"
 ---
 # <a name="process-configurable-threshold-based-rules-in-azure-stream-analytics"></a>Konfigurálható küszöbérték-alapú szabályok feldolgozása Azure Stream Analytics
@@ -137,7 +137,7 @@ Ez a példa JSON-adatok a fenti adatfolyam-lekérdezésben használt **mérősz�
 - Az 1 perces TimeSpan az érték három példát mutat be `T14:50` . 
 - Mindhárom `deviceId` érték megegyezik `978648` .
 - A CPU-metrika értékei különbözőek lehetnek az egyes eseményeken (, `98` `95` `80` ). Csak az első két példa esemény haladja meg a szabályban megállapított CPU riasztási szabályt.
-- A riasztási szabály includeDim mezőjében a 2. kulcs szerepel. A Példaban szereplő események neve a megfelelő kulcs 2 mezőben található `NodeName` . A három példa eseményeinek értéke `N024` : `N024` , és `N014` . A kimenetben csak a csomópont jelenik meg, `N024` mint az egyetlen olyan adat, amely megfelel a magas CPU riasztási feltételeinek. `N014`nem felel meg a magas CPU-küszöbértéknek.
+- A riasztási szabály includeDim mezőjében a 2. kulcs szerepel. A Példaban szereplő események neve a megfelelő kulcs 2 mezőben található `NodeName` . A három példa eseményeinek értéke `N024` : `N024` , és `N014` . A kimenetben csak a csomópont jelenik meg, `N024` mint az egyetlen olyan adat, amely megfelel a magas CPU riasztási feltételeinek. `N014` nem felel meg a magas CPU-küszöbértéknek.
 - A riasztási szabály `filter` csak a 2. számú kulcson van konfigurálva, amely a `cluster` minta események mezőjének felel meg. A három példa eseményeinek mindegyike értékkel rendelkezik `C1` , és megfelel a szűrési feltételeknek.
 
 ```json

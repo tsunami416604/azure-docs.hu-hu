@@ -7,16 +7,16 @@ ms.author: cweining
 ms.date: 08/06/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: 9d9cc377ead0c297e8334d34255bd2c7c7cd39fc
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86499409"
 ---
 # <a name="configure-application-insights-profiler"></a>Application Insights Profiler konfigurálása
 
 ## <a name="updated-profiler-agent"></a>Frissített Profiler-ügynök
-Az trigger funkciói csak a Profiler-ügynök 2,6-es vagy újabb verziójával működnek. Ha Azure App Service futtat, akkor az ügynök automatikusan frissül. Megtekintheti, hogy az ügynök melyik verzióját futtatja, ha a webhely kudu URL-címét használja, és hozzáfűzi a \DiagnosticServices a végéhez, a következőhöz hasonló módon: `https://yourwebsite.scm.azurewebsites.net/diagnosticservices` . A Application Insights Profiler Webjobs 2,6-es vagy újabb verziójúnak kell lennie. A webalkalmazás újraindításával kényszerítheti a frissítést. 
+Az trigger funkciói csak a Profiler-ügynök 2,6-es vagy újabb verziójával működnek. Ha Azure App Service futtat, akkor az ügynök automatikusan frissül. Megtekintheti, hogy az ügynök melyik verzióját futtatja, ha a webhely kudu URL-címét használja, és hozzáfűzi a \DiagnosticServices a végéhez, a következőhöz hasonló módon:  `https://yourwebsite.scm.azurewebsites.net/diagnosticservices` . A Application Insights Profiler Webjobs 2,6-es vagy újabb verziójúnak kell lennie. A webalkalmazás újraindításával kényszerítheti a frissítést. 
 
 Ha a Profilert egy virtuális gépen vagy egy felhőalapú szolgáltatáson futtatja, akkor a Windows Azure Diagnostics (WAD) bővítmény 16.0.4 vagy újabb verzióját kell telepítenie. A WAD verziójának ellenőrzéséhez jelentkezzen be a virtuális gépre, és tekintse meg a következő könyvtárat: C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics\1.16.0.4. A könyvtár neve a telepített WAD verziója. Az Azure-beli virtuálisgép-ügynök automatikusan frissíti a WAD-t, ha új verzió érhető el.
 
@@ -32,7 +32,7 @@ Ekkor megnyílik egy oldal, amely így néz ki:
 
 A **Application Insights Profiler konfigurálása** lapon a következő funkciók szerepelnek:
 
-| Funkció | Leírás |
+| Szolgáltatás | Leírás |
 |-|-|
 Profil most | A profilkészítési munkamenetek elindítása minden olyan alkalmazáshoz, amely a Application Insights ezen példányához van csatolva.
 Triggerek | Lehetővé teszi olyan eseményindítók konfigurálását, amelyek a Profiler futtatását okozzák. 
@@ -68,7 +68,7 @@ Farkas | Az egyes kérelmekhez csatolt Nyomkövetések száma.
 CPU % | A Profiler futása közben használt CPU százaléka.
 Memória | A Profiler futása közben használt memória százalékos aránya.
 
-## <a name="use-web-performance-tests-to-generate-traffic-to-your-application"></a><a id="profileondemand"></a>Webes teljesítmény-tesztek használata az alkalmazáshoz való adatforgalom létrehozásához
+## <a name="use-web-performance-tests-to-generate-traffic-to-your-application"></a><a id="profileondemand"></a> Webes teljesítmény-tesztek használata az alkalmazáshoz való adatforgalom létrehozásához
 
 A Profilert manuálisan is aktiválhatja egyetlen kattintással. Tegyük fel, hogy webes teljesítmény-tesztet futtat. A nyomkövetési szolgáltatással megismerheti, hogy a webalkalmazás hogyan fut a betöltés alatt. A nyomon követés a Nyomkövetések rögzítésekor döntő fontosságú, mert tudja, hogy mikor fog futni a terhelési teszt. Előfordulhat azonban, hogy a véletlenszerű Mintavételezési időköz kimarad.
 
@@ -105,7 +105,7 @@ Ha a webalkalmazás már rendelkezik bejövő forgalommal, vagy ha csak manuáli
 
 Miután a Profiler befejezte a futtatást, kövesse az értesítésen megjelenő utasításokat a teljesítmény panelre való ugráshoz és a Nyomkövetések megtekintéséhez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [A Profiler engedélyezése és a Nyomkövetések megtekintése](profiler-overview.md?toc=/azure/azure-monitor/toc.json)
 
 [profiler-on-demand]: ./media/profiler-settings/Profiler-on-demand.png

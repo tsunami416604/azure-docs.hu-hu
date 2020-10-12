@@ -5,10 +5,10 @@ services: container-service
 ms.topic: conceptual
 ms.date: 02/28/2019
 ms.openlocfilehash: 1a14615e96d5be4fbc8994073d66677997281131
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86499885"
 ---
 # <a name="scaling-options-for-applications-in-azure-kubernetes-service-aks"></a>Alkalmazásskálázási beállítások az Azure Kubernetes Service-ben (AKS)
@@ -30,7 +30,7 @@ A csomópontok skálázásakor a Kubernetes API meghívja a megfelelő Azure sz�
 
 A hüvelyek és a csomópontok manuális méretezésének megkezdéséhez lásd: [alkalmazások méretezése az AK-ban][aks-scale].
 
-## <a name="horizontal-pod-autoscaler"></a>Vízszintes hüvely – autoskálázás
+## <a name="horizontal-pod-autoscaler"></a>A podok automatikus horizontális skálázási eszköze
 
 A Kubernetes a vízszintes Pod automéretezőt (HPA) használja az erőforrás-igény figyelésére és a replikák számának automatikus méretezésére. Alapértelmezés szerint a vízszintes hüvely autoskálázása 30 másodpercenként ellenőrzi a metrikák API-t a replikák számának szükséges változásaihoz. Ha módosításokra van szükség, a replikák száma ennek megfelelően növekszik vagy csökken. A horizontális Pod autoscaleer olyan AK-fürtökkel működik, amelyek a metrikák kiszolgálóját telepítették a Kubernetes 1.8 +-hoz.
 
@@ -86,7 +86,7 @@ Az alkalmazás nem igényel módosítást virtuális csomópontok használatáho
 
 A virtuális csomópontok egy további alhálózatra vannak telepítve, ugyanabban a virtuális hálózatban, mint az AK-fürt. Ez a virtuális hálózati konfiguráció lehetővé teszi az ACI és az AK közötti adatforgalom védelmét. Az AK-fürtökhöz hasonlóan az ACI-példányok egy biztonságos, logikai számítási erőforrás, amely más felhasználóktól el van különítve.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az alkalmazások méretezésének megkezdéséhez először kövesse a gyors üzembe helyezési lehetőséget, és [hozzon létre egy AK-fürtöt az Azure CLI][aks-quickstart]használatával. Ezután megkezdheti az alkalmazások manuális vagy automatikus méretezését az AK-fürtben:
 
