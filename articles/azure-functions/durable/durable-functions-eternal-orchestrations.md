@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 07/14/2020
 ms.author: azfuncdf
 ms.openlocfilehash: 34c70f4305ebb2c45757d982ab558aea6450003f
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86506366"
 ---
 # <a name="eternal-orchestrations-in-durable-functions-azure-functions"></a>Örök összeszerelések Durable Functionsban (Azure Functions)
@@ -156,7 +156,7 @@ Ha egy Orchestrator függvénynek végül végre kell hajtania a műveletet, akk
 
 Ha egy Orchestrator-függvény végtelen ciklusban van, és le kell állítani, a `TerminateAsync` beállítás leállításához használja a (.net), `terminate` (JavaScript) vagy `terminate` a ( [orchestration client binding](durable-functions-bindings.md#orchestration-client) Python) metódust. További információ: [példányok kezelése](durable-functions-instance-management.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Ismerje meg, hogyan valósítható meg az Egypéldányos előkészítés](durable-functions-singletons.md)

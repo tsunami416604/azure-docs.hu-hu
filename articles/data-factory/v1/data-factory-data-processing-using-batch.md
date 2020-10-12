@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 01/10/2018
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 3d0e608e1afae77afd44d7351b7c3f1f269bd8a8
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88998080"
 ---
 # <a name="process-large-scale-datasets-by-using-data-factory-and-batch"></a>Nagyméretű adatkészletek feldolgozása Data Factory és batch használatával
@@ -965,7 +965,7 @@ Az adatfeldolgozást követően online eszközökkel, például Power BI haszná
 * [Power BIban lévő Adatfrissítés](https://powerbi.microsoft.com/documentation/powerbi-refresh-data/)
 * [Azure és Power BI: alapszintű áttekintés](https://powerbi.microsoft.com/documentation/powerbi-azure-and-power-bi/)
 
-## <a name="references"></a>Referencia
+## <a name="references"></a>Hivatkozások
 * [Azure Data Factory](https://azure.microsoft.com/documentation/services/data-factory/)
 
   * [A Data Factory szolgáltatás bemutatása](data-factory-introduction.md)

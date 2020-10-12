@@ -12,10 +12,10 @@ ms.author: bonova
 ms.reviewer: sstein
 ms.date: 09/25/2018
 ms.openlocfilehash: 1d68163a9fba3ba3bcd4c0c0f3fb5f442296e781
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91619389"
 ---
 # <a name="manage-historical-data-in-temporal-tables-with-retention-policy"></a>A múltbeli adatok kezelése adatmegőrzési házirenddel rendelkező időbeli táblákban
@@ -120,7 +120,7 @@ A sortárindex létrehozását fürtözött indextel rendelkező táblák törl�
 
 Fontos megjegyezni, hogy a Azure SQL Database és az Azure SQL felügyelt példányai által létrehozott alapértelmezett előzményi táblázat már tartalmaz fürtözött indexet, amely megfelel az adatmegőrzési házirendnek. Ha véges megőrzési időtartamon belül megpróbálja eltávolítani az adott indexet egy táblán, a művelet a következő hibával meghiúsul:
 
-*Msg 13766, 16. szint, 1 <br> </br> . állapot nem lehet eldobni a (z) "WebsiteUserInfoHistory. IX_WebsiteUserInfoHistory" fürtözött indexet, mert az elavult adattisztításhoz használatos. Ha el szeretné dobni ezt az indexet, érdemes megfontolnia, hogy a rendszer a megfelelő rendszerverzióval ellátott ideiglenes táblázaton HISTORY_RETENTION_PERIOD a végtelen értékre.*
+*Msg 13766, 16. szint, 1. állapot <br> </br> nem tudja eldobni a (z) "WebsiteUserInfoHistory.IX_WebsiteUserInfoHistory" fürtözött indexet, mert az elavult adattisztításhoz használatos. Ha el szeretné dobni ezt az indexet, érdemes megfontolnia, hogy a rendszer a megfelelő rendszerverzióval ellátott ideiglenes táblázaton HISTORY_RETENTION_PERIOD a végtelen értékre.*
 
 A fürtözött oszlopcentrikus index tisztítása optimálisan működik, ha a korábbi sorok bekerülnek a növekvő sorrendbe (az időszak végéig elrendezett oszlop szerint rendezve), ami mindig az a helyzet, amikor az előzmények táblát kizárólag a SYSTEM_VERSIONIOING mechanizmus tölti fel. Ha az előzmények tábla sorait nem az időszak vége oszlop szerint rendezi a rendszer (ez lehet az eset, ha áttelepítette a meglévő korábbi adatmennyiségeket), akkor az optimális teljesítmény elérése érdekében újra létre kell hoznia egy fürtözött oszlopcentrikus indexet a B-Tree sortárindex létrehozását indexen felül.
 
@@ -179,7 +179,7 @@ ALTER DATABASE <myDB>
 SET TEMPORAL_HISTORY_RETENTION  ON
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha szeretné megtudni, hogyan használhatók az időbeli táblázatok az alkalmazásokban, tekintse meg [első lépések az időbeli táblázatokkal](../temporal-tables.md).
 

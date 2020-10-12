@@ -4,10 +4,10 @@ description: Ez a cikk a virtuális gépek Microsoft Azure Backup Server (MABS) 
 ms.topic: conceptual
 ms.date: 07/18/2019
 ms.openlocfilehash: fc4e34e11e2474521082b1c23f600e9a5ca7a9fe
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89377998"
 ---
 # <a name="back-up-hyper-v-virtual-machines-with-azure-backup-server"></a>Hyper-V rendszerű virtuális gépek biztonsági mentése Azure Backup Server
@@ -84,7 +84,7 @@ A Hyper-V virtuális gépek MABS történő biztonsági mentésének előfeltét
 
 5. Az **Adatvédelmi módszer kiválasztása** oldalon adja meg a védelmi csoport nevét. Válassza ki a **Rövid távú védelmet szeretnék a következő használatával: Lemez** elemet, és válassza az **Online védelmet szeretnék** beállítást, ha az Azure Backup szolgáltatás segítségével szeretné az Azure-ba menteni az adatok biztonsági másolatát.
 
-6. A **rövid távú célok megőrzési időtartamának megadása**  >  területen határozza meg, hogy mennyi ideig kívánja megőrizni a lemezes adattárolási**tartományt**. A **szinkronizálás gyakorisága**mezőben adja meg, hogy milyen gyakran fusson a növekményes biztonsági másolatok. A növekményes biztonsági mentések időközeinek megadása helyett azt is megteheti, hogy engedélyezi a **Csak helyreállítási pont létrehozása előtt** beállítást. Ha ez a beállítás engedélyezve van, a MABS expressz teljes biztonsági mentést futtat az egyes ütemezett helyreállítási pontok előtt.
+6. A **Short-Term célok**  >  **megőrzési tartományának**megadása területen válassza ki, hogy mennyi ideig kívánja megőrizni a lemezes adattárolást. A **szinkronizálás gyakorisága**mezőben adja meg, hogy milyen gyakran fusson a növekményes biztonsági másolatok. A növekményes biztonsági mentések időközeinek megadása helyett azt is megteheti, hogy engedélyezi a **Csak helyreállítási pont létrehozása előtt** beállítást. Ha ez a beállítás engedélyezve van, a MABS expressz teljes biztonsági mentést futtat az egyes ütemezett helyreállítási pontok előtt.
 
     > [!NOTE]
     >

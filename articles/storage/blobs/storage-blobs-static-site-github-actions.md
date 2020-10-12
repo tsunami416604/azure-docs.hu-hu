@@ -1,5 +1,5 @@
 ---
-title: Statikus helyek üzembe helyezése az Azure Storage-ban GitHub-műveletek használatával
+title: A GitHub Actions használata statikus hely üzembe helyezéséhez az Azure Storage-ben
 description: Azure Storage – statikus webhely üzemeltetése GitHub-műveletekkel
 author: juliakm
 ms.service: storage
@@ -10,10 +10,10 @@ ms.date: 09/11/2020
 ms.subservice: blobs
 ms.custom: devx-track-javascript, github-actions-azure
 ms.openlocfilehash: 919fa0d7b6dff0361e4439b442bcfe9648ed8677
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91776391"
 ---
 # <a name="set-up-a-github-actions-workflow-to-deploy-your-static-website-in-azure-storage"></a>GitHub-műveletek munkafolyamatának beállítása a statikus webhely üzembe helyezéséhez az Azure Storage-ban
@@ -65,7 +65,7 @@ A fenti példában cserélje le a helyőrzőket az előfizetés-AZONOSÍTÓra é
 
 1. Illessze be a teljes JSON-kimenetet az Azure CLI-parancsból a titok érték mezőjébe. Adja meg a titkot a nevet, például: `AZURE_CREDENTIALS` .
 
-    Amikor később konfigurálja a munkafolyamat-fájlt, az `creds` Azure bejelentkezési művelethez tartozó titkos kulcsot használja. Például:
+    Amikor később konfigurálja a munkafolyamat-fájlt, az `creds` Azure bejelentkezési művelethez tartozó titkos kulcsot használja. Példa:
 
     ```yaml
     - uses: azure/login@v1

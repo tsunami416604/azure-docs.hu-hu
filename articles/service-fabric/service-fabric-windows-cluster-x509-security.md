@@ -4,10 +4,10 @@ description: Biztonságos kommunikáció egy Azure Service Fabric önálló vagy
 ms.topic: conceptual
 ms.date: 10/15/2017
 ms.openlocfilehash: 18af6fd79e03cd67e77ed4d0d4b3b6291f90301d
-ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91841288"
 ---
 # <a name="secure-a-standalone-cluster-on-windows-by-using-x509-certificates"></a>Önálló fürt biztonságossá tétele Windows rendszeren X. 509 tanúsítványok használatával
@@ -348,7 +348,7 @@ Miután konfigurálta a ClusterConfig.X509.MultiMachine.jsbiztonsági szakaszát
 .\CreateServiceFabricCluster.ps1 -ClusterConfigFilePath .\ClusterConfig.X509.MultiMachine.json
 ```
 
-Miután sikeresen futtatta a biztonságos önálló Windows-fürtöt, és beállította a hitelesített ügyfeleket a kapcsolódáshoz, kövesse a [Kapcsolódás fürthöz a PowerShell használatával](service-fabric-connect-to-secure-cluster.md#connect-to-a-cluster-using-powershell) való kapcsolódáshoz című szakaszt. Például:
+Miután sikeresen futtatta a biztonságos önálló Windows-fürtöt, és beállította a hitelesített ügyfeleket a kapcsolódáshoz, kövesse a [Kapcsolódás fürthöz a PowerShell használatával](service-fabric-connect-to-secure-cluster.md#connect-to-a-cluster-using-powershell) való kapcsolódáshoz című szakaszt. Példa:
 
 ```powershell
 $ConnectArgs = @{  ConnectionEndpoint = '10.7.0.5:19000';  X509Credential = $True;  StoreLocation = 'LocalMachine';  StoreName = "MY";  ServerCertThumbprint = "057b9544a6f2733e0c8d3a60013a58948213f551";  FindType = 'FindByThumbprint';  FindValue = "057b9544a6f2733e0c8d3a60013a58948213f551"   }

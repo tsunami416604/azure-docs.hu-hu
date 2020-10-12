@@ -12,10 +12,10 @@ ms.author: bonova
 ms.reviewer: sstein
 ms.date: 06/26/2019
 ms.openlocfilehash: ea037d12417c8fad9d80b77df69285ed2c8df31b
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91618658"
 ---
 # <a name="getting-started-with-temporal-tables-in-azure-sql-database-and-azure-sql-managed-instance"></a>Első lépések a Azure SQL Database és az Azure SQL felügyelt példányainak időbeli tábláival
@@ -42,7 +42,7 @@ Attól függően, hogy új fejlesztést vagy meglévő alkalmazást frissít, id
 
 ### <a name="create-new-table"></a>Új tábla létrehozása
 
-A SSMS Object Explorer helyi menüje "új rendszerverzióval ellátott tábla" elemére kattintva nyissa meg a lekérdezési szerkesztőt egy időbeli táblázat sablonjának használatával, majd használja az "adja meg a sablon paramétereinek értékét" (CTRL + SHIFT + M) a sablon feltöltéséhez:
+A SSMS Object Explorer helyi menü "új System-Versioned táblázat" parancsával nyissa meg a lekérdezési szerkesztőt egy időbeli táblázat sablonjának használatával, majd használja az "adja meg a sablon paramétereinek értékét" (CTRL + SHIFT + M) a sablon feltöltéséhez:
 
 ![SSMSNewTable](./media/temporal-tables/AzureTemporal2.png)
 
@@ -198,7 +198,7 @@ A rendszerverzióval ellátott időszakos táblázatok esetében az előzmények
 - [Tábla particionálása](/sql/relational-databases/tables/manage-retention-of-historical-data-in-system-versioned-temporal-tables#using-table-partitioning-approach)
 - [Egyéni karbantartási parancsfájl](/sql/relational-databases/tables/manage-retention-of-historical-data-in-system-versioned-temporal-tables#using-custom-cleanup-script-approach)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az időbeli táblázatokkal kapcsolatos további információkért lásd: [ideiglenes táblák](/sql/relational-databases/tables/temporal-tables)megtekintése.
 - Látogasson el a Channel 9 csatornára, hogy meghallgassa az [ügyfél időbeli megvalósításának sikertörténetét](https://channel9.msdn.com/Blogs/jsturtevant/Azure-SQL-Temporal-Tables-with-RockStep-Solutions) , és figyelje az [élő időbeli bemutatót](https://channel9.msdn.com/Shows/Data-Exposed/Temporal-in-SQL-Server-2016).

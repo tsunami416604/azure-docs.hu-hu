@@ -9,10 +9,10 @@ ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
 ms.openlocfilehash: 4b533fa23d3c128b5f9f75737fb88d39aec94905
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88950068"
 ---
 # <a name="creating-and-configuring-a-key-vault-for-azure-disk-encryption-with-azure-ad-previous-release-for-linux-vms"></a>Kulcstartó létrehozása és konfigurálása a Azure Disk Encryptionhoz az Azure AD-vel (előző kiadás) Linux rendszerű virtuális gépekhez
@@ -129,7 +129,7 @@ A használati portál lépéseivel [létrehozhat egy Azure Active Directory alka
 3. [Kérje le az alkalmazás azonosítóját és a hitelesítési kulcsot](../../active-directory/develop/howto-create-service-principal-portal.md#get-tenant-and-app-id-values-for-signing-in). 
      - A hitelesítési kulcs az ügyfél titka, és a set-AzVMDiskEncryptionExtension AadClientSecret használatos. 
         - A hitelesítési kulcsot az alkalmazás hitelesítő adatként használja az Azure AD-be való bejelentkezéshez. A Azure Portalban a titkos kulcs neve kulcsok, de a kulcstartók nem állnak kapcsolatban. A titkos kulcs megfelelő védelme. 
-     - Az alkalmazás AZONOSÍTÓját később a set-AzVMDiskEncryptionExtension AadClientId fogja használni a set-AzKeyVaultAccessPolicy ServicePrincipalName. 
+     - Az alkalmazás AZONOSÍTÓját később a Set-AzVMDiskEncryptionExtension AadClientId fogja használni, és a set-AzKeyVaultAccessPolicy ServicePrincipalName. 
 
 ## <a name="set-the-key-vault-access-policy-for-the-azure-ad-app"></a><a name="bkmk_KVAP"></a> A Key Vault hozzáférési szabályzatának beállítása az Azure AD-alkalmazáshoz
 Ha a titkosítási titkokat egy megadott Key Vault szeretné írni, Azure Disk Encryption a Azure Active Directory alkalmazás ügyfél-AZONOSÍTÓját és az ügyfél titkát kell megadnia, amely jogosult a titkos kódok írásához Key Vault. 
@@ -460,6 +460,6 @@ Ha tanúsítványalapú hitelesítést szeretne használni, és a titkosítási 
 ```
 
  
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Azure Disk Encryption engedélyezése az Azure AD-vel Linux rendszerű virtuális gépeken (korábbi kiadás)](disk-encryption-linux-aad.md)

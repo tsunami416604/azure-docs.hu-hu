@@ -16,10 +16,10 @@ ms.date: 09/20/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: f953d87c53bc13af623c2bfd49ceb953280f8f2a
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91540710"
 ---
 # <a name="azure-virtual-machines-oracle-dbms-deployment-for-sap-workload"></a>Azure Virtual Machines Oracle adatbázis-kezelő üzembe helyezése SAP-munkaterheléshez
@@ -376,10 +376,10 @@ A minimális konfiguráció a következő:
 
 | Összetevő | Lemez | Gyorsítótárazás | Storage-készlet |
 | --- | ---| --- | --- |
-| \oracle \<SID> \origlogaA & mirrlogB | Prémium vagy Ultra Disk | Nincsenek | Nem szükséges |
-| \oracle \<SID> \origlogaB & mirrlogA | Prémium vagy Ultra Disk | Nincsenek | Nem szükséges |
+| \oracle \<SID> \origlogaA & mirrlogB | Prémium vagy Ultra Disk | Nincs | Nem szükséges |
+| \oracle \<SID> \origlogaB & mirrlogA | Prémium vagy Ultra Disk | Nincs | Nem szükséges |
 | \oracle \<SID> \sapdata1... n | Prémium vagy Ultra Disk | Csak olvasható | Prémium szintű használatra is használható |
-| \oracle \<SID> \oraarch | Standard | Nincsenek | Nem szükséges |
+| \oracle \<SID> \oraarch | Standard | Nincs | Nem szükséges |
 | Oracle Home, `saptrace` ,... | OPERÁCIÓSRENDSZER-lemez (prémium) | | Nem szükséges |
 
 
@@ -389,13 +389,13 @@ A teljesítmény konfigurációja a következő:
 
 | Összetevő | Lemez | Gyorsítótárazás | Storage-készlet |
 | --- | ---| --- | --- |
-| \oracle \<SID> \origlogaA | Prémium vagy Ultra Disk | Nincsenek | Prémium szintű használatra is használható  |
-| \oracle \<SID> \origlogaB | Prémium vagy Ultra Disk | Nincsenek | Prémium szintű használatra is használható |
-| \oracle \<SID> \mirrlogAB | Prémium vagy Ultra Disk | Nincsenek | Prémium szintű használatra is használható |
-| \oracle \<SID> \mirrlogBA | Prémium vagy Ultra Disk | Nincsenek | Prémium szintű használatra is használható |
+| \oracle \<SID> \origlogaA | Prémium vagy Ultra Disk | Nincs | Prémium szintű használatra is használható  |
+| \oracle \<SID> \origlogaB | Prémium vagy Ultra Disk | Nincs | Prémium szintű használatra is használható |
+| \oracle \<SID> \mirrlogAB | Prémium vagy Ultra Disk | Nincs | Prémium szintű használatra is használható |
+| \oracle \<SID> \mirrlogBA | Prémium vagy Ultra Disk | Nincs | Prémium szintű használatra is használható |
 | \oracle \<SID> \sapdata1... n | Prémium vagy Ultra Disk | Csak olvasható | Prémium szintű ajánlott  |
-| \oracle\SID\sapdata (n + 1) * | Prémium vagy Ultra Disk | Nincsenek | Prémium szintű használatra is használható |
-| \oracle \<SID> \oraarch * | Prémium vagy Ultra Disk | Nincsenek | Nem szükséges |
+| \oracle\SID\sapdata (n + 1) * | Prémium vagy Ultra Disk | Nincs | Prémium szintű használatra is használható |
+| \oracle \<SID> \oraarch * | Prémium vagy Ultra Disk | Nincs | Nem szükséges |
 | Oracle Home, `saptrace` ,... | OPERÁCIÓSRENDSZER-lemez (prémium) | Nem szükséges |
 
 * (n + 1): üzemeltetési rendszerek, TEMP és visszavonás tablespaces. A rendszer és a visszavonási eszközök I/O-mintája eltér más, az alkalmazásadatok futtatására szolgáló tablespace-modelltől. A rendszer teljesítményének és az tablespace-EK visszavonásának legjobb lehetősége a gyorsítótárazás.
@@ -416,7 +416,7 @@ Az alkalmazással konzisztens virtuális gépek biztonsági mentésének futtat�
 
 
 ### <a name="high-availability"></a>Magas rendelkezésre állás
-A magas rendelkezésre állás és a vész-helyreállítási célú Oracle-adatőr támogatott. Ha automatikus feladatátvételt szeretne elérni az adatvédelemben, a gyors indítási feladatátvételt (FSFA) kell használnia. A megfigyelő (FSFA) elindítja a feladatátvételt. Ha nem használja a FSFA-t, akkor csak manuális feladatátvételi konfigurációt használhat.
+A magas rendelkezésre állás és a vész-helyreállítási célú Oracle-adatőr támogatott. Az automatikus feladatátvétel eléréséhez az adatvédelemben Fast-Start feladatátvételt (FSFA) kell használnia. A megfigyelő (FSFA) elindítja a feladatátvételt. Ha nem használja a FSFA-t, akkor csak manuális feladatátvételi konfigurációt használhat.
 
 Az Azure-beli Oracle-adatbázisok vész-helyreállításával kapcsolatos további információkért lásd: vész- [helyreállítás egy Oracle Database 12c-adatbázishoz egy Azure-környezetben](../oracle/oracle-disaster-recovery.md).
 
@@ -468,10 +468,10 @@ Minimális konfiguráció:
 
 | Összetevő | Lemez | Gyorsítótárazás | Csíkot |
 | --- | ---| --- | --- |
-| /Oracle/ \<SID> /origlogaA & mirrlogB | Prémium vagy Ultra Disk | Nincsenek | Nem szükséges |
-| /Oracle/ \<SID> /origlogaB & mirrlogA | Prémium vagy Ultra Disk | Nincsenek | Nem szükséges |
+| /Oracle/ \<SID> /origlogaA & mirrlogB | Prémium vagy Ultra Disk | Nincs | Nem szükséges |
+| /Oracle/ \<SID> /origlogaB & mirrlogA | Prémium vagy Ultra Disk | Nincs | Nem szükséges |
 | /Oracle/ \<SID> /sapdata1... n | Prémium vagy Ultra Disk | Csak olvasható | Prémium szintű használatra is használható |
-| /Oracle/ \<SID> /oraarch | Standard | Nincsenek | Nem szükséges |
+| /Oracle/ \<SID> /oraarch | Standard | Nincs | Nem szükséges |
 | Oracle Home, `saptrace` ,... | OPERÁCIÓSRENDSZER-lemez (prémium) | | Nem szükséges |
 
 * Kiszerelés: LVM Stripe vagy MDADM a RAID0 használatával
@@ -482,13 +482,13 @@ Teljesítmény konfigurációja:
 
 | Összetevő | Lemez | Gyorsítótárazás | Csíkot |
 | --- | ---| --- | --- |
-| /Oracle/ \<SID> /origlogaA | Prémium vagy Ultra Disk | Nincsenek | Prémium szintű használatra is használható  |
-| /Oracle/ \<SID> /origlogaB | Prémium vagy Ultra Disk | Nincsenek | Prémium szintű használatra is használható |
-| /Oracle/ \<SID> /mirrlogAB | Prémium vagy Ultra Disk | Nincsenek | Prémium szintű használatra is használható |
-| /Oracle/ \<SID> /mirrlogBA | Prémium vagy Ultra Disk | Nincsenek | Prémium szintű használatra is használható |
+| /Oracle/ \<SID> /origlogaA | Prémium vagy Ultra Disk | Nincs | Prémium szintű használatra is használható  |
+| /Oracle/ \<SID> /origlogaB | Prémium vagy Ultra Disk | Nincs | Prémium szintű használatra is használható |
+| /Oracle/ \<SID> /mirrlogAB | Prémium vagy Ultra Disk | Nincs | Prémium szintű használatra is használható |
+| /Oracle/ \<SID> /mirrlogBA | Prémium vagy Ultra Disk | Nincs | Prémium szintű használatra is használható |
 | /Oracle/ \<SID> /sapdata1... n | Prémium vagy Ultra Disk | Csak olvasható | Prémium szintű ajánlott  |
-| /Oracle/ \<SID> /sapdata (n + 1) * | Prémium vagy Ultra Disk | Nincsenek | Prémium szintű használatra is használható |
-| /Oracle/ \<SID> /oraarch * | Prémium vagy Ultra Disk | Nincsenek | Nem szükséges |
+| /Oracle/ \<SID> /sapdata (n + 1) * | Prémium vagy Ultra Disk | Nincs | Prémium szintű használatra is használható |
+| /Oracle/ \<SID> /oraarch * | Prémium vagy Ultra Disk | Nincs | Nem szükséges |
 | Oracle Home, `saptrace` ,... | OPERÁCIÓSRENDSZER-lemez (prémium) | Nem szükséges |
 
 * Kiszerelés: LVM Stripe vagy MDADM a RAID0 használatával
@@ -511,7 +511,7 @@ A biztonsági mentési/visszaállítási funkciók esetében az SAP BR * Tools f
 Az Oracle-adatbázisok biztonsági mentésére és helyreállítására szolgáló Azure Backup és Recovery Services használatával kapcsolatos további információkért lásd: [Oracle Database 12c-adatbázis biztonsági mentése és helyreállítása Azure Linux rendszerű virtuális gépen](../oracle/oracle-backup-recovery.md).
 
 ### <a name="high-availability"></a>Magas rendelkezésre állás
-A magas rendelkezésre állás és a vész-helyreállítási célú Oracle-adatőr támogatott. Ha automatikus feladatátvételt szeretne elérni az adatvédelemben, a gyors indítási feladatátvételt (FSFA) kell használnia. A megfigyelő funkció (FSFA) elindítja a feladatátvételt. Ha nem használja a FSFA-t, akkor csak manuális feladatátvételi konfigurációt használhat. További információ: Oracle- [Adatvédelem megvalósítása Azure Linux rendszerű virtuális gépen](../oracle/configure-oracle-dataguard.md).
+A magas rendelkezésre állás és a vész-helyreállítási célú Oracle-adatőr támogatott. Az automatikus feladatátvétel az adatvédelemben való eléréséhez Fast-Start feladatátvételt (FSFA) kell használnia. A megfigyelő funkció (FSFA) elindítja a feladatátvételt. Ha nem használja a FSFA-t, akkor csak manuális feladatátvételi konfigurációt használhat. További információ: Oracle- [Adatvédelem megvalósítása Azure Linux rendszerű virtuális gépen](../oracle/configure-oracle-dataguard.md).
 
 
 Az Azure-beli Oracle-adatbázisok vész-helyreállítási szempontjait az Azure- [környezetben egy Oracle Database 12c-adatbázis vész-helyreállítását](../oracle/oracle-disaster-recovery.md)ismertető cikk ismerteti.
@@ -527,7 +527,7 @@ sudo curl -so /etc/udev/rules.d/68-azure-sriov-nm-unmanaged.rules https://raw.gi
 </code></pre>
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A cikk elolvasása 
 
 - [Az Azure Virtual Machines adatbázis-kezelő üzembe helyezésének szempontjai az SAP-munkaterheléshez](dbms_guide_general.md)

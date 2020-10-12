@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/17/2020
 ms.openlocfilehash: acacf617d3f1d9ab891d08b32fc2dfb14deb64a4
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91540523"
 ---
 # <a name="pii-detection-cognitive-skill"></a>Személyes adatok észlelése – kognitív képességek
@@ -138,7 +138,7 @@ Ha a szöveg 50 000 karakternél nagyobb, akkor csak az első 50 000 karakter le
 
 Ha a szakértelem figyelmeztetést ad vissza, `maskedText` Előfordulhat, hogy a kimenet üres, ami hatással lehet a kimenetre várható alsóbb rétegbeli képességekre. Ezért mindenképpen vizsgálja meg a hiányzó kimenettel kapcsolatos összes figyelmeztetést a készségkészlet-definíció írásakor.
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 + [Beépített képességek](cognitive-search-predefined-skills.md)
 + [Készségkészlet definiálása](cognitive-search-defining-skillset.md)

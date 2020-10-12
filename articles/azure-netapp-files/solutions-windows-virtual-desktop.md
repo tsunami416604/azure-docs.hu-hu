@@ -15,13 +15,13 @@ ms.topic: conceptual
 ms.date: 08/13/2020
 ms.author: b-juche
 ms.openlocfilehash: a003090fd610f2ac75895cccbf97750adbd4cfcd
-ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88258331"
 ---
-# <a name="benefits-of-using-azure-netapp-files-with-windows-virtual-desktop"></a>A Azure NetApp Files használatának előnyei a Windows virtuális asztallal 
+# <a name="benefits-of-using-azure-netapp-files-with-windows-virtual-desktop"></a>Az Azure NetApp Files és a Windows Virtual Desktop használatának előnyei 
 
 Ez a cikk gyakorlati útmutatást nyújt a Windows rendszerű virtuális asztalok (WVD) Azure NetApp Files használatával történő üzembe helyezéséhez.
 
@@ -54,6 +54,6 @@ A személyes asztali forgatókönyvekben az alábbi ábra az általános célú 
 
 Ha ehhez hasonló POD-alapú architektúrát hoz létre, a bejelentkezéshez fontos, hogy a felhasználók mindig megtalálják a felhasználói profiljaikat. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Megoldásarchitektúrák az Azure NetApp Filesszal](azure-netapp-files-solution-architectures.md)

@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 03/09/2018
 ms.author: mimckitt
 ms.openlocfilehash: c7852bd1b6d93357c1c9127686d1edbb5c702a3c
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88701501"
 ---
 # <a name="constrained-vcpu-capable-vm-sizes"></a>Korlátozott vCPU képességgel rendelkező VM-méretek
@@ -24,7 +24,7 @@ A virtuális gép jelenlegi Standard_GS5 mérete például a következő: 32 vCP
 A SQL Server vagy Oracle esetében felszámított licencelési díjak az új vCPU-számra vannak korlátozva, és más termékeket az új vCPU száma alapján kell fizetni. Ennek eredményeképpen 50% – 75% növekszik a virtuálisgép-specifikációk aktív (számlázható) vCPU arányában. Ezek az új virtuálisgép-méretek lehetővé teszik az ügyfelek számára, hogy ugyanazt a memóriát, tárterületet és I/O-sávszélességet használják, miközben optimalizálja a szoftver licencelési költségeit. Jelenleg a számítási díj, amely magában foglalja az operációs rendszer licencelését, ugyanaz marad, mint az eredeti méret. További információ: Azure-beli [virtuális gépek méretei a költséghatékony adatbázis](https://azure.microsoft.com/blog/announcing-new-azure-vm-sizes-for-more-cost-effective-database-workloads/)-számítási feladatokhoz.
 
 
-| Név                | vCPU | Jellemzők           |
+| Name (Név)                | vCPU | Jellemzők           |
 |---------------------|------|-----------------|
 | Standard_M8 – 2ms     | 2    | Ugyanaz, mint a M8ms    |
 | Standard_M8 – 4ms     | 4    | Ugyanaz, mint a M8ms    |

@@ -11,10 +11,10 @@ ms.topic: how-to
 ms.workload: big-data
 ms.date: 07/03/2018
 ms.openlocfilehash: 24f1156fa4a97adb500033034bc7396fd1badbeb
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87125734"
 ---
 # <a name="run-u-sql-scripts-on-your-local-machine"></a>U-SQL-parancsfájlok futtatása a helyi gépen
@@ -27,7 +27,7 @@ A következő diagramon a helyi Futtatás összetevői láthatók, valamint hogy
 
 |Összetevő|Helyi futtatás|Felhőbeli Futtatás|
 |---------|---------|---------|
-|Tárolás|Helyi adatgyökér mappa|Alapértelmezett Azure Data Lake Store fiók|
+|Storage|Helyi adatgyökér mappa|Alapértelmezett Azure Data Lake Store fiók|
 |Compute|U-SQL helyi futtatási motor|Azure Data Lake Analytics szolgáltatás|
 |Környezet futtatása|Munkahelyi könyvtár a helyi gépen|Azure Data Lake Analytics fürt|
 

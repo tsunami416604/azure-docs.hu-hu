@@ -15,10 +15,10 @@ ms.date: 12/09/2019
 ms.author: madsd
 ms.custom: seodec18
 ms.openlocfilehash: fdb502685259a5e12bf0182c36aa6c73ec7c1dd5
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88958933"
 ---
 # <a name="application-gateway-integration-with-service-endpoints"></a>Application Gateway integráció a szolgáltatási végpontokkal
@@ -83,7 +83,7 @@ Ha egyéni hozzáférési korlátozásokat szeretne beállítani az SCM-helyhez,
 az webapp config access-restriction add --resource-group myRG --name myWebApp --scm-site --rule-name KudoAccess --priority 200 --ip-address 208.130.0.0/16
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További információ a App Service Environmentről: [app Service Environment dokumentáció](/azure/app-service/environment).
 
 A webalkalmazás további védelme érdekében a Application Gateway webalkalmazási tűzfallal kapcsolatos információk az [Azure webalkalmazási tűzfal dokumentációjában](../../web-application-firewall/ag/ag-overview.md)találhatók.

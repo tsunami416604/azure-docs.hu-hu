@@ -10,10 +10,10 @@ ms.topic: how-to
 ms.date: 05/27/2020
 ms.author: pafarley
 ms.openlocfilehash: ac934f88d00521b13fd2b134c80f19656c63117b
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88718815"
 ---
 # <a name="back-up-and-recover-your-form-recognizer-models"></a>Az űrlap-felismerő modelljeinek biztonsági mentése és helyreállítása
@@ -82,7 +82,7 @@ A kérelem törzsének a következő formátumúnak kell lennie. Meg kell adnia 
 > [!NOTE]
 > A copy API transzparens módon támogatja a [AEK/CMK](https://msazure.visualstudio.com/Cognitive%20Services/_wiki/wikis/Cognitive%20Services.wiki/52146/Customer-Managed-Keys) funkciót. Ez nem igényel különleges kezelést, azonban ha egy titkosítatlan erőforrás között másol egy titkosított erőforrásra, a kérelem fejlécét is meg kell adnia `x-ms-forms-copy-degrade: true` . Ha nem tartalmazza ezt a fejlécet, a másolási művelet sikertelen lesz, és az a értéket adja vissza `DataProtectionTransformServiceError` .
 
-Választ kap egy `202\Accepted` műveleti hely fejlécére. Ez az érték az az URL-cím, amelyet a művelet előrehaladásának nyomon követéséhez fog használni. Másolja a következő lépéshez egy ideiglenes helyre.
+Egy `202\Accepted` Operation-Location fejlécből választ kaphat. Ez az érték az az URL-cím, amelyet a művelet előrehaladásának nyomon követéséhez fog használni. Másolja a következő lépéshez egy ideiglenes helyre.
 
 ```
 HTTP/1.1 202 Accepted

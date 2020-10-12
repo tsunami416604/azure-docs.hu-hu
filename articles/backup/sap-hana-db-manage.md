@@ -4,10 +4,10 @@ description: Ebből a cikkből megtudhatja, hogyan kezelheti és figyelheti az A
 ms.topic: conceptual
 ms.date: 11/12/2019
 ms.openlocfilehash: e257aa7771f6f76a4d53f16255c2f3cbb80c8967
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89377454"
 ---
 # <a name="manage-and-monitor-backed-up-sap-hana-databases"></a>Biztonsági másolattal rendelkező SAP HANA-adatbázisok kezelése és monitorozása
@@ -57,7 +57,7 @@ A figyeléssel kapcsolatos további információkért tekintse meg [a Azure Port
 
 A Azure Backup egy biztonsági másolattal rendelkező SAP HANA adatbázis felügyeletét teszi egyszerűbbé az általa támogatott felügyeleti műveletek sokaságával. A következő szakaszokban részletesebben ismertetjük ezeket a műveleteket.
 
-### <a name="run-an-on-demand-backup"></a>Igény szerinti biztonsági mentés futtatása
+### <a name="run-an-on-demand-backup"></a>Igény szerinti biztonsági mentések futtatása
 
 A biztonsági mentések a szabályzat ütemezésével összhangban futnak. Az igény szerinti biztonsági mentést az alábbi módon futtathatja:
 

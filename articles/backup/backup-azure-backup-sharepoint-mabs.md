@@ -4,10 +4,10 @@ description: A SharePoint-adatai biztonsági mentését és visszaállítását 
 ms.topic: conceptual
 ms.date: 04/26/2020
 ms.openlocfilehash: 837aabf739431eebaa6406770620329fe6345eb7
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89375397"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure-with-mabs"></a>SharePoint-farm biztonsági mentése az Azure-ba a MABS használatával
@@ -217,7 +217,7 @@ A következő példában a SharePoint- *elem helyreállítása* véletlenül tö
     ![MABS SharePoint-Protection13](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection15.png)
 5. Ezen a ponton kövesse a cikkben korábban ismertetett helyreállítási lépéseket a SharePoint tartalmi adatbázis lemezről történő helyreállításához.
 
-## <a name="switching-the-front-end-web-server"></a>Az előtér-webkiszolgáló váltása
+## <a name="switching-the-front-end-web-server"></a>A Front-End webkiszolgáló váltása
 
 Ha több előtér-webkiszolgálóval rendelkezik, és át szeretné váltani a MABS által a farm védeleméhez használt kiszolgálót, kövesse az alábbi utasításokat:
 

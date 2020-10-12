@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: swmachan
 ms.openlocfilehash: a9050b85c974a3c04ca717e8fe3d5188c1bf7a40
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88244312"
 ---
 # <a name="how-to-sign-up-for-translator"></a>Regisztráció a Translatorre
@@ -53,7 +53,7 @@ A Microsoft Translator általában lehetővé teszi az első néhány kérelem t
 
 ## <a name="pricing-options"></a>Árképzési lehetőségek
 
-- [Translator](https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/)
+- [Fordító](https://azure.microsoft.com/pricing/details/cognitive-services/translator-text-api/)
 
 ## <a name="customization"></a>Testreszabás
 

@@ -10,10 +10,10 @@ ms.date: 07/11/2018
 ms.author: rogarana
 ms.subservice: disks
 ms.openlocfilehash: 6374108247b9bfb950c42495b13b501ded8a02d2
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89317995"
 ---
 # <a name="create-a-snapshot-using-the-portal-or-azure-cli"></a>Pillanatkép létrehozása a portál vagy az Azure CLI használatával
@@ -65,7 +65,7 @@ az snapshot list \
 5. Válasszon ki egy meglévő erőforráscsoportot, vagy írja be egy új nevet. 
 7. A **forrásoldali lemez**lapon válassza ki a felügyelt lemezt a pillanatképhez.
 8. Válassza ki a pillanatkép tárolására használni kívánt **fiókot** . A **standard HDD** csak akkor használja, ha nagy teljesítményű SSD-meghajtón tárolja.
-9. Kattintson a **Létrehozás** gombra.
+9. Kattintson a **Létrehozás** lehetőségre.
 
 
 ## <a name="next-steps"></a>Következő lépések

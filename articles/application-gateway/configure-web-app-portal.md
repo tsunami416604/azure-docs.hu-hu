@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 09/23/2020
 ms.author: victorh
 ms.openlocfilehash: df92e08e91761d77c606ccb5389eee7dc219c101
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91323376"
 ---
 # <a name="configure-app-service-with-application-gateway"></a>App Service konfigurálása Application Gateway
@@ -56,7 +56,7 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 3. Az **állomásnév felülbírálása**területen válassza **az állomásnév kiválasztása a háttérbeli célként**lehetőséget.
 4. Kattintson a **Mentés** gombra.
 
-   :::image type="content" source="./media/configure-web-app-portal/http-settings.png" alt-text="Állomásnév kiválasztása a háttérbeli http-beállításokból":::
+   :::image type="content" source="./media/configure-web-app-portal/http-settings.png" alt-text="App Service-háttérrendszer":::
 
 ## <a name="additional-configuration-in-case-of-redirection-to-app-services-relative-path"></a>További konfiguráció az App Service relatív elérési útjára történő átirányítás esetén
 

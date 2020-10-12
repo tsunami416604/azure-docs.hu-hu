@@ -8,13 +8,13 @@ ms.date: 08/13/2020
 ms.topic: troubleshooting
 ms.service: iot-central
 ms.openlocfilehash: 2bf48b6808fccb1f4344e66a2b8f1fc2d4c52ef6
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89322449"
 ---
-# <a name="troubleshoot-why-data-from-your-devices-isnt-showing-up-in-azure-iot-central"></a>Az eszközön lévő adatok nem jelennek meg az Azure IoT Central
+# <a name="troubleshoot-why-data-from-your-devices-isnt-showing-up-in-azure-iot-central"></a>Az eszközön lévő adatok nem jelennek meg az Azure IoT Centralban hiba elhárítása
 
 Ebből a dokumentumból megtudhatja, hogy az eszköz fejlesztői miért nem jelennek meg az alkalmazásban, hogy az eszközök milyen adatokat küldenek IoT Centralnak.
 
@@ -129,9 +129,9 @@ https://aka.ms/iotcentral-docs-dps-SAS",
 }
 ```
 
-| Eszköz kiépítési állapota | Description | Lehetséges enyhítés |
+| Eszköz kiépítési állapota | Leírás | Lehetséges enyhítés |
 | - | - | - |
-| Kiépítve | Nincs azonnal felismerhető probléma. | N/A |
+| Kiépítve | Nincs azonnal felismerhető probléma. | N.A. |
 | Regisztrálva | Az eszköz még nem csatlakozott IoT Centralhoz. | A kapcsolódási problémák ellenőrzése az eszköz naplófájljaiban. |
 | Blokkolva | Az eszköz nem csatlakozik IoT Centralhoz. | Az eszköz le van tiltva a IoT Central alkalmazáshoz való csatlakozáskor. Oldja fel az eszköz zárolását IoT Central, majd próbálkozzon újra. További információ: [eszközök letiltása](concepts-get-connected.md#device-status-values). |
 | Jóvá nem hagyott | Az eszköz nincs jóváhagyva. | Az eszköz nincs jóváhagyva a IoT Central alkalmazáshoz való kapcsolódáshoz. Hagyja jóvá IoT Central az eszközt, és próbálkozzon újra. További információ: [eszközök jóváhagyása](concepts-get-connected.md#connect-without-registering-devices) |
@@ -149,7 +149,7 @@ Az alábbi táblázatokban a gyakori hibakódok és a kockázatcsökkentő lehet
 
 Ha a hitelesítési folyamattal kapcsolatos problémákat látja:
 
-| Hibakód | Description | Lehetséges enyhítés |
+| Hibakód | Leírás | Lehetséges enyhítés |
 | - | - | - |
 | 400 | A kérelem törzse érvénytelen. Például nem lehet elemezni, vagy az objektumot nem lehet érvényesíteni. | Győződjön meg arról, hogy a megfelelő kérés törzsét küldi el az igazolási folyamat részeként, vagy használjon egy eszköz SDK-t. |
 | 401 | Az engedélyezési jogkivonat nem érvényesíthető. Például lejárt vagy nem vonatkozik a kérelem URI-ra. Ezt a hibakódot a rendszer a TPM-igazolási folyamat részeként is visszaadja az eszközöknek. | Győződjön meg arról, hogy az eszköz rendelkezik a megfelelő hitelesítő adatokkal. |

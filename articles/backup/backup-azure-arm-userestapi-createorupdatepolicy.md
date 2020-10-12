@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 08/21/2018
 ms.assetid: 5ffc4115-0ae5-4b85-a18c-8a942f6d4870
 ms.openlocfilehash: e4e6f5b5cf28c3830a91a494ea60680eee1546f6
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89179606"
 ---
 # <a name="create-azure-recovery-services-backup-policies-using-rest-api"></a>Azure Recovery Services biztonsági mentési szabályzatok létrehozása REST API használatával
@@ -29,7 +29,7 @@ A `{policyName}` és az `{vaultName}` URI-ban van megadva. A kérés törzsében
 
 Ha például az Azure virtuális gép biztonsági mentésére vonatkozó szabályzatot szeretne létrehozni, az alábbiakban a kérelem törzsének összetevői láthatók.
 
-|Név  |Kötelező  |Típus  |Leírás  |
+|Name (Név)  |Kötelező  |Típus  |Leírás  |
 |---------|---------|---------|---------|
 |properties     |   Igaz      |  ProtectionPolicy:[AzureIaaSVMProtectionPolicy](/rest/api/backup/protectionpolicies/createorupdate#azureiaasvmprotectionpolicy)      | ProtectionPolicyResource tulajdonságai        |
 |tags     |         | Objektum        |  Erőforráscímkék       |
@@ -164,7 +164,7 @@ Location: https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000
 X-Powered-By: ASP.NET
 ```
 
-Ezután nyomon követheti az eredményül kapott műveletet a Location fejléc vagy az Azure-AsyncOperation fejléc használatával egy egyszerű *Get* paranccsal.
+Ezután nyomon követheti az eredményül kapott műveletet a Location fejléc vagy a Azure-AsyncOperation fejléc használatával egy egyszerű *Get* paranccsal.
 
 ```http
 GET https://management.azure.com/Subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/SwaggerTestRg/providers/Microsoft.RecoveryServices/vaults/testVault/backupPolicies/testPolicy1/operationResults/00000000-0000-0000-0000-000000000000?api-version=2019-05-13
@@ -260,7 +260,7 @@ A művelet befejezése után a 200 (OK) értéket adja vissza a válasz törzsé
 
 Ha egy házirend már használatban van egy elem védelmére, a házirendben szereplő összes frissítés az összes kapcsolódó elem [védelmét is módosítja](backup-azure-arm-userestapi-backupazurevms.md#changing-the-policy-of-protection) .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Védelem engedélyezése a nem védett Azure](backup-azure-arm-userestapi-backupazurevms.md)-beli virtuális gépek számára.
 

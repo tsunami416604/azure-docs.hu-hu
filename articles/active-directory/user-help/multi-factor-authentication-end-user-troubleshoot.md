@@ -14,10 +14,10 @@ ms.author: curtand
 ms.reviewer: kexia
 metadata ms.custom: contperfq1
 ms.openlocfilehash: 3d95ad4aa100b0a185bde015dfe34d747fc77ec9
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89322602"
 ---
 # <a name="common-problems-with-two-factor-verification-and-your-work-or-school-account"></a>A kétfaktoros hitelesítéssel és a munkahelyi vagy iskolai fiókkal kapcsolatos gyakori problémák
@@ -109,7 +109,7 @@ Nem kötelező lépések:
 
 ## <a name="im-having-problems-signing-in-on-my-mobile-device-while-traveling"></a>Problémák léptek fel a mobil eszközön való bejelentkezés közben
 
-Előfordulhat, hogy a mobileszköz-alapú ellenőrzési módszer (például szöveges üzenetküldés) használata még nehezebbé válik, miközben nemzetközi helyen dolgozik. Azt is megteheti, hogy a mobileszköz barangoló díjat von maga után. Ebben az esetben javasoljuk, hogy a Microsoft Authenticator alkalmazást használja, és a Wi-Fi gyors elérésű helyhez kapcsolódjon. A Microsoft Authenticator alkalmazás mobileszközön való beállításával kapcsolatos további információkért tekintse meg a [Microsoft Authenticator alkalmazás letöltése és telepítése](user-help-auth-app-download-install.md) című cikket.
+Előfordulhat, hogy a mobileszköz-alapú ellenőrzési módszer (például szöveges üzenetküldés) használata még nehezebbé válik, miközben nemzetközi helyen dolgozik. Azt is megteheti, hogy a mobileszköz barangoló díjat von maga után. Ebben az esetben javasoljuk, hogy a Microsoft Authenticator alkalmazást használja a Wi-Fi gyors elérésére szolgáló lehetőséggel. A Microsoft Authenticator alkalmazás mobileszközön való beállításával kapcsolatos további információkért tekintse meg a [Microsoft Authenticator alkalmazás letöltése és telepítése](user-help-auth-app-download-install.md) című cikket.
 
 ## <a name="i-cant-get-my-app-passwords-to-work"></a>Nem tudom beolvasni az alkalmazás jelszavait
 

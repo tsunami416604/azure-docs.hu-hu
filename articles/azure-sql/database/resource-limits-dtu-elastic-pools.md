@@ -12,10 +12,10 @@ ms.author: sachinp
 ms.reviewer: sstein
 ms.date: 07/28/2020
 ms.openlocfilehash: 72d50cadcc9b0f913c66f00ebc16d5e12a39de70
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91619100"
 ---
 # <a name="resources-limits-for-elastic-pools-using-the-dtu-purchasing-model"></a>A rugalmas készletek DTU beszerzési modell használatával történő korlátozása
@@ -51,7 +51,7 @@ Az azonos számú DTU esetében a rugalmas készlethez megadott erőforrások t�
 |:---|---:|---:|---:| ---: | ---: | ---: | ---: | ---: |
 | Foglalt tárterület/készlet (GB) | 5 | 10 | 20 | 29 | 39 | 78 | 117 | 156 |
 | Maximális tárterület készletenként (GB) | 5 | 10 | 20 | 29 | 39 | 78 | 117 | 156 |
-| Memóriában tárolt OLTP-tárolók maximális száma (GB) | N.A. | N.A. | N.A. | N.A. | N.A. | N.A. | N.A. | N.A. |
+| In-Memory OLTP maximális száma (GB) | N.A. | N.A. | N.A. | N.A. | N.A. | N.A. | N.A. | N.A. |
 | Adatbázisok maximális száma <sup>1</sup> . készletben | 100 | 200 | 500 | 500 | 500 | 500 | 500 | 500 |
 | Egyidejű feldolgozók (kérelmek) maximális száma a <sup>2</sup> . készletben | 100 | 200 | 400 | 600 | 800 | 1600 | 2400 | 3200 |
 | Egyidejű munkamenetek maximális száma/készlet <sup>2</sup> | 30000 | 30000 | 30000 | 30000 |30000 | 30000 | 30000 | 30000 |
@@ -70,7 +70,7 @@ Az azonos számú DTU esetében a rugalmas készlethez megadott erőforrások t�
 |:---|---:|---:|---:| ---: | ---: | ---: |
 | Készletbe foglalt tárterület (GB) <sup>1</sup> | 50 | 100 | 200 | 300 | 400 | 800 |
 | Maximális tárterület készletenként (GB) | 500 | 750 | 1024 | 1280 | 1536 | 2048 |
-| Memóriában tárolt OLTP-tárolók maximális száma (GB) | N.A. | N.A. | N.A. | N.A. | N.A. | N.A. |
+| In-Memory OLTP maximális száma (GB) | N.A. | N.A. | N.A. | N.A. | N.A. | N.A. |
 | Adatbázisok maximális száma ( <sup>2</sup> . készlet) | 100 | 200 | 500 | 500 | 500 | 500 |
 | Egyidejű feldolgozók (kérelmek) maximális száma a <sup>3</sup> . készletben | 100 | 200 | 400 | 600 | 800 | 1600 |
 | Egyidejű munkamenetek maximális száma ( <sup>3</sup> ) | 30000 | 30000 | 30000 | 30000 | 30000 | 30000 |
@@ -91,7 +91,7 @@ Az azonos számú DTU esetében a rugalmas készlethez megadott erőforrások t�
 |:---|---:|---:|---:| ---: | ---: |
 | Készletbe foglalt tárterület (GB) <sup>1</sup> | 1200 | 1600 | 2000 | 2500 | 3000 |
 | Maximális tárterület készletenként (GB) | 2560 | 3072 | 3584 | 4096 | 4096 |
-| Memóriában tárolt OLTP-tárolók maximális száma (GB) | N.A. | N.A. | N.A. | N.A. | N.A. |
+| In-Memory OLTP maximális száma (GB) | N.A. | N.A. | N.A. | N.A. | N.A. |
 | Adatbázisok maximális száma ( <sup>2</sup> . készlet) | 500 | 500 | 500 | 500 | 500 |
 | Egyidejű feldolgozók (kérelmek) maximális száma a <sup>3</sup> . készletben | 2400 | 3200 | 4000 | 5000 | 6000 |
 | Egyidejű munkamenetek maximális száma ( <sup>3</sup> ) | 30000 | 30000 | 30000 | 30000 | 30000 |
@@ -112,7 +112,7 @@ Az azonos számú DTU esetében a rugalmas készlethez megadott erőforrások t�
 |:---|---:|---:|---:| ---: | ---: |
 | Készletbe foglalt tárterület (GB) <sup>1</sup> | 250 | 500 | 750 | 1024 | 1536 |
 | Maximális tárterület készletenként (GB) | 1024 | 1024 | 1024 | 1024 | 1536 |
-| Memóriában tárolt OLTP-tárolók maximális száma (GB) | 1 | 2 | 4 | 10 | 12 |
+| In-Memory OLTP maximális száma (GB) | 1 | 2 | 4 | 10 | 12 |
 | Adatbázisok maximális száma ( <sup>2</sup> . készlet) | 50 | 100 | 100 | 100 | 100 |
 | Egyidejű feldolgozók maximális száma (kérelem) <sup>3</sup> | 200 | 400 | 800 | 1600 | 2400 |
 | Egyidejű munkamenetek maximális száma ( <sup>3</sup> ) | 30000 | 30000 | 30000 | 30000 | 30000 |
@@ -133,7 +133,7 @@ Az azonos számú DTU esetében a rugalmas készlethez megadott erőforrások t�
 |:---|---:|---:|---:| ---: | ---: |
 | Készletbe foglalt tárterület (GB) <sup>1</sup> | 2048 | 2560 | 3072 | 3548 | 4096 |
 | Maximális tárterület készletenként (GB) | 2048 | 2560 | 3072 | 3548 | 4096|
-| Memóriában tárolt OLTP-tárolók maximális száma (GB) | 16 | 20 | 24 | 28 | 32 |
+| In-Memory OLTP maximális száma (GB) | 16 | 20 | 24 | 28 | 32 |
 | Adatbázisok maximális száma ( <sup>2</sup> . készlet) | 100 | 100 | 100 | 100 | 100 |
 | Egyidejű feldolgozók (kérelmek) maximális száma a <sup>3</sup> . készletben | 3200 | 4000 | 4800 | 5600 | 6400 |
 | Egyidejű munkamenetek maximális száma ( <sup>3</sup> ) | 30000 | 30000 | 30000 | 30000 | 30000 |
@@ -167,7 +167,7 @@ A következő táblázat a készletezett adatbázisok tulajdonságait ismerteti.
 | Tárterület maximális száma adatbázison |A felhasználó által a készletben lévő adatbázis számára beállított maximális adatbázis-méret. A készletezett adatbázisok azonban megosztják a lefoglalt készlet tárterületét. Még akkor is, ha az *adatbázis* teljes tárterülete úgy van beállítva, hogy nagyobb legyen, mint a *készlet*teljes rendelkezésre álló tárolóhelye, az összes adatbázis által ténylegesen felhasznált terület teljes mérete nem haladhatja meg a rendelkezésre álló készlet korlátját. Az adatbázisok maximális mérete az adatfájlok maximális méretére vonatkozik, de nem tartalmazza a naplófájlok által használt területet. |
 |||
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Egyetlen adatbázis virtuális mag erőforrás-korlátaival kapcsolatban lásd: [önálló adatbázisok erőforrás-korlátai a virtuális mag beszerzési modell használatával](resource-limits-vcore-single-databases.md)
 * Egyetlen adatbázis DTU erőforrás-korlátaival kapcsolatban lásd: [önálló adatbázisok erőforrás-korlátai a DTU beszerzési modell használatával](resource-limits-dtu-single-databases.md)

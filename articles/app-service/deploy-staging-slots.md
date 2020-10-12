@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 04/30/2020
 ms.custom: fasttrack-edit
 ms.openlocfilehash: b12b85a2248d7709066ba3218327e0a5d52a0192
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88962162"
 ---
 # <a name="set-up-staging-environments-in-azure-app-service"></a>Átmeneti környezetek beállítása az Azure App Service-ben
@@ -238,7 +238,7 @@ A termelési forgalom automatikus irányítása:
 
 1. Nyissa meg az alkalmazás erőforrás-lapját, és válassza az **üzembe helyezési**pontok lehetőséget.
 
-2. Az átirányítani kívánt tárolóhely **%** oszlopában meg kell adni a százalékos értéket (0 és 100 között), hogy az összes átirányítani kívánt forgalom mennyiségét képviseljék. Válassza a **Mentés** lehetőséget.
+2. Az átirányítani kívánt tárolóhely **%** oszlopában meg kell adni a százalékos értéket (0 és 100 között), hogy az összes átirányítani kívánt forgalom mennyiségét képviseljék. Kattintson a **Mentés** gombra.
 
     ![Forgalmi arány beállítása](./media/web-sites-staged-publishing/RouteTraffic.png)
 

@@ -7,10 +7,10 @@ ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 0152dc5102fd3f77418448234cab1234d25b97c6
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88008151"
 ---
 # <a name="delegated-access-in-windows-virtual-desktop-classic"></a>Delegált hozzáférés a Windows Virtual Desktopban (klasszikus)
@@ -64,7 +64,7 @@ Az alapszintű három parancsmagot a következő paraméterekkel módosíthatja:
 * **SignInName**: a felhasználó e-mail-címe vagy egyszerű felhasználóneve.
 * **TenantName**: a távoli asztal bérlő neve.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az egyes szerepkörök által használható PowerShell-parancsmagok teljes listájáért tekintse meg a [PowerShell-referenciát](/powershell/windows-virtual-desktop/overview).
 

@@ -8,10 +8,10 @@ ms.date: 07/29/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: ee332eb7dea86e07c2d8f9b75a0e152dc7482a41
-ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87438821"
 ---
 # <a name="connecting-to-on-premises-data-sources-with-on-premises-data-gateway"></a>Csatlakozás helyszíni adatforrásokhoz helyszíni adatátjáróval
@@ -58,11 +58,11 @@ Javasoljuk, hogy az Azure Gateway-erőforrást ugyanabban az előfizetésben hoz
 
 Az átjáró kimenő kapcsolatot hoz létre az Azure Service Bus felé. A következő kimenő portokon kommunikál: TCP 443 (alapméretezett), 5671, 5672, 9350–9354.  Az átjáró nem igényel bejövő portokat.
 
-Előfordulhat, hogy az adatterületének IP-címeit is meg kell adnia a tűzfalon. [A Microsoft Azure Datacenter IP-címlistáját innen töltheti le](https://www.microsoft.com/download/details.aspx?id=56519). A listát hetente frissítjük. Az Azure Datacenter listájában szereplő IP-címek a CIDR-jelölésrendszer használatával vannak megadva. További információ: osztály nélküli [tartományok közötti útválasztás](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing).
+Előfordulhat, hogy az adatterületének IP-címeit is meg kell adnia a tűzfalon. [A Microsoft Azure Datacenter IP-címlistáját innen töltheti le](https://www.microsoft.com/download/details.aspx?id=56519). A listát hetente frissítjük. Az Azure Datacenter listájában szereplő IP-címek a CIDR-jelölésrendszer használatával vannak megadva. További információ: osztály nélküli [Inter-Domain útválasztás](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing).
 
 A következő az átjáró által használt teljes tartománynevek.
 
-| Tartománynevek | Kimenő portok | Description |
+| Tartománynevek | Kimenő portok | Leírás |
 | --- | --- | --- |
 | *.powerbi.com |80 |A telepítő letöltéséhez használt HTTP-cím. |
 | *.powerbi.com |443 |HTTPS |
@@ -87,7 +87,7 @@ Az átjárót úgy kényszerítheti, hogy a közvetlen TCP helyett HTTPS haszná
 </setting>
 ```
 
-## <a name="next-steps"></a>Következő lépések 
+## <a name="next-steps"></a>További lépések 
 
 A következő cikkek tartalmazzák a helyszíni adatátjáró általános tartalmát, amely az átjáró által támogatott összes szolgáltatásra vonatkozik:
 

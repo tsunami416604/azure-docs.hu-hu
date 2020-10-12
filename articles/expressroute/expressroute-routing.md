@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/19/2019
 ms.author: duau
 ms.openlocfilehash: 5b7af755c9843456c25c8d18b78be48d83b96acd
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89569611"
 ---
 # <a name="expressroute-routing-requirements"></a>Az ExpressRoute útválasztási követelményei
@@ -218,7 +218,7 @@ A Microsoft által hirdetett összes útvonal a megfelelő közösségértéket 
 ### <a name="service-to-bgp-community-value"></a>Szolgáltatás a BGP közösségi értékre
 A fentiek mellett a Microsoft a kapcsolódó szolgáltatások alapján is címkével látja el az előtagokat. Ez csak a Microsoft társviszony-létesítésre vonatkozik. Az alábbi táblázat a szolgáltatások BGP-közösségértékre való leképezéseit tartalmazza. A "Get-AzBgpServiceCommunity" parancsmagot futtathatja a legfrissebb értékek teljes listájához.
 
-| **Szolgáltatás** | **BGP-közösségérték** |
+| **Service** | **BGP-közösségérték** |
 | --- | --- |
 | Exchange Online\*\* | 12076:5010 |
 | SharePoint Online\*\* | 12076:5020 |

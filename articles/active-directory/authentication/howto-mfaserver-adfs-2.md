@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d5bcb63a325ca6bbf464faf9c5f9934879ccf9a3
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88949660"
 ---
 # <a name="configure-azure-multi-factor-authentication-server-to-work-with-ad-fs-20"></a>Azure Multi-Factor Authentication-kiszolgáló konfigurálása az AD FS 2.0-val való használathoz
@@ -45,10 +45,10 @@ Az AD FS 2.0 proxyval való védelméhez telepítse az Azure Multi-Factor Authe
 
    ![MFA-kiszolgáló IIS-hitelesítési ablaka](./media/howto-mfaserver-adfs-2/setup1.png)
 
-4. A Felhasználónév, jelszó és tartomány változók automatikus észleléséhez adja meg a bejelentkezési URL-címet (például `https://sso.contoso.com/adfs/ls` ) az űrlapalapú webhely automatikus konfigurálása párbeszédpanelen, majd kattintson **az OK**gombra.
+4. A Felhasználónév, jelszó és tartomány változók automatikus észleléséhez adja meg a bejelentkezési URL-címet (például `https://sso.contoso.com/adfs/ls` ) az Form-Based webhely automatikus konfigurálása párbeszédpanelen, majd kattintson az **OK**gombra.
 5. Jelölje be a **Require Azure Multi-Factor Authentication user match** (Azure Multi-Factor Authentication felhasználói egyezés megkövetelése) jelölőnégyzetet, ha az összes felhasználót importálta vagy importálni fogja a kiszolgálóra, és kétlépéses hitelesítést alkalmaz rajtuk. Ha jelentős számú felhasználó még nincs importálva a kiszolgálóra és/vagy mentesülni fog a kétlépéses hitelesítés alól, ne jelölje be a jelölőnégyzetet.
 6. Ha az oldal változóit nem lehet automatikusan észlelni, kattintson a **megadás manuálisan..** . gombra. gombra az Űrlapalapú webhely automatikus konfigurálása párbeszédpanelen.
-7. Az űrlapalapú webhely hozzáadása párbeszédpanelen adja meg a beküldési URL-cím mezőben a AD FS bejelentkezési oldal URL-címét (például `https://sso.contoso.com/adfs/ls` ), és adja meg az alkalmazás nevét (nem kötelező). Az alkalmazásnév az Azure Multi-Factor Authentication-jelentésekben jelenik meg, illetve megjelenhet az SMS-es vagy mobilalkalmazásos hitelesítési üzenetekben.
+7. A Form-Based webhely hozzáadása párbeszédpanelen adja meg a beküldési URL-cím mezőben a AD FS bejelentkezési oldal URL-címét (például `https://sso.contoso.com/adfs/ls` ), és adja meg az alkalmazás nevét (nem kötelező). Az alkalmazásnév az Azure Multi-Factor Authentication-jelentésekben jelenik meg, illetve megjelenhet az SMS-es vagy mobilalkalmazásos hitelesítési üzenetekben.
 8. Adja meg a kérelem formátumát **post vagy Get**értékre.
 9. Adja meg a Felhasználónév változót (ctl00$ContentPlaceHolder1$UsernameTextBox) és a Jelszó változót (ctl00$ContentPlaceHolder1$PasswordTextBox). Ha az űrlapalapú bejelentkezési oldalon egy tartomány szövegmező jelenik meg, írja be a Tartomány változót is. A bejelentkezési lapon megjelenő beviteli mezők nevének a megtekintéséhez nyissa meg a bejelentkezési lapot egy webböngészőben, majd a kattintson a jobb gombbal a **Forrás megtekintése** parancsra.
 10. Jelölje be a **Require Azure Multi-Factor Authentication user match** (Azure Multi-Factor Authentication felhasználói egyezés megkövetelése) jelölőnégyzetet, ha az összes felhasználót importálta vagy importálni fogja a kiszolgálóra, és kétlépéses hitelesítést alkalmaz rajtuk. Ha jelentős számú felhasználó még nincs importálva a kiszolgálóra és/vagy mentesülni fog a kétlépéses hitelesítés alól, ne jelölje be a jelölőnégyzetet.
@@ -61,7 +61,7 @@ Az AD FS 2.0 proxyval való védelméhez telepítse az Azure Multi-Factor Authe
     - Sikeres hitelesítések gyorsítótárazása a webhelyre cookie-k használatával
     - Az elsődleges hitelesítő adatok hitelesítési módjának kiválasztása
 
-12. Mivel az AD FS-proxykiszolgáló valószínűleg nem fog a tartományhoz csatlakozni, valószínűleg LDAP-vel fog csatlakozni a tartományvezérlőhöz a felhasználó importálásához és előhitelesítéséhez. A speciális űrlapalapú webhely párbeszédpanelen kattintson az **elsődleges hitelesítés** fülre, és válassza az **LDAP-kötés** lehetőséget az előhitelesítés hitelesítési típusaként.
+12. Mivel az AD FS-proxykiszolgáló valószínűleg nem fog a tartományhoz csatlakozni, valószínűleg LDAP-vel fog csatlakozni a tartományvezérlőhöz a felhasználó importálásához és előhitelesítéséhez. A speciális Form-Based webhely párbeszédpanelen kattintson az **elsődleges hitelesítés** fülre, és válassza az **LDAP-kötés** lehetőséget az előhitelesítés hitelesítési típusaként.
 13. Amikor végzett, kattintson az **OK** gombra, hogy visszatérjen az Űrlapalapú webhely hozzáadása párbeszédpanelre.
 14. A párbeszédpanel bezárásához kattintson az **OK** gombra.
 15. Miután a rendszer észlelte vagy megadta az URL-címet és az oldal változóit, a webhely adatai megjelennek az Űrlapalapú panelen.

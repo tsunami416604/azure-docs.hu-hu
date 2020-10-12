@@ -8,10 +8,10 @@ ms.date: 07/01/2016
 ms.author: dariac
 ms.custom: seodec18
 ms.openlocfilehash: 0a25ae41a5f4ed73148f629799ca4865d756a769
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88962451"
 ---
 # <a name="best-practices-for-azure-app-service"></a>Gyakorlati tanácsok az Azure App Service-hez
@@ -37,7 +37,7 @@ A "állapot nélküli" és "állapot nélküli" alkalmazásokkal kapcsolatos tov
 A kimenő TCP-kapcsolatok kimerítésének gyakori oka az ügyféloldali kódtárak használata, amelyek nem használhatók a TCP-kapcsolatok újrafelhasználására, vagy ha egy magasabb szintű protokoll, például a HTTP-Keep-Alive nincs használatban. Tekintse át a App Service-csomag alkalmazásai által hivatkozott könyvtárak dokumentációját, hogy a rendszer konfigurálja vagy hozzáférjen a kódban a kimenő kapcsolatok hatékony újrafelhasználásához. A kapcsolatok kiszivárgásának elkerülése érdekében kövesse a könyvtár dokumentációját is a megfelelő létrehozáshoz és felszabadításhoz, illetve a karbantartáshoz. Amíg az ügyfél-kódtárak vizsgálata folyamatban van, a hatás a több példányra történő horizontális felskálázással enyhíthető lehet.
 
 ### <a name="nodejs-and-outgoing-http-requests"></a>Node.js és kimenő HTTP-kérelmek
-A Node.js és számos kimenő HTTP-kérelem használatakor fontos a HTTP-Keep-Alive kezelése. A [agentkeepalive](https://www.npmjs.com/package/agentkeepalive) `npm` csomag használatával egyszerűbbé teheti a kódot.
+Node.js és számos kimenő HTTP-kérelem használata esetén fontos a HTTP-Keep-Alive kezelése. A [agentkeepalive](https://www.npmjs.com/package/agentkeepalive) `npm` csomag használatával egyszerűbbé teheti a kódot.
 
 Mindig kezelje a `http` választ, még akkor is, ha nem tesz semmit a kezelőben. Ha nem megfelelően kezeli a választ, az alkalmazás elakad, mert nem érhető el több szoftvercsatorna.
 
@@ -66,7 +66,7 @@ Ha a biztonsági mentési hibák történnek, tekintse át a legutóbbi eredmén
 Azure App Service Node.js alkalmazások alapértelmezett konfigurációja a leggyakoribb alkalmazások igényeinek legmegfelelőbb. Ha a Node.js-alkalmazás konfigurációja kihasználhatja a személyre szabott finomhangolást, hogy javítsa a teljesítményt vagy optimalizálja a CPU/memória/hálózati erőforrások erőforrás-felhasználását, tekintse [meg az ajánlott eljárásokat és a hibaelhárítási útmutatót a Node-alkalmazásokhoz a Azure app Service](app-service-web-nodejs-best-practices-and-troubleshoot-guide.md) Ez a cikk ismerteti azokat a iisnode-beállításokat, amelyeket a Node.js alkalmazásához konfigurálnia kell, ismerteti az alkalmazás által megtekinthető különböző forgatókönyveket vagy problémákat, és bemutatja, hogyan kezelheti ezeket a problémákat.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az ajánlott eljárásokkal kapcsolatos további információkért látogasson el a [app Service Diagnostics](./overview-diagnostics.md) webhelyre, ahol az erőforrásra vonatkozó, gyakorlatban alkalmazható ajánlott eljárásokat talál.
 
 - Navigáljon a webalkalmazáshoz a [Azure Portal](https://portal.azure.com).
