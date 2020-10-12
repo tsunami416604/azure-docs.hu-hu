@@ -1,7 +1,7 @@
 ---
 title: Tartalom továbbítása CDN-integrációval
 titleSuffix: Azure Media Services
-description: Ismerje meg, hogyan közvetítheti a tartalmat a CDN-integrációval, valamint a beolvasást és a forrás-assziszt CDN-kiküldést.
+description: Ismerje meg, hogyan közvetítheti a tartalmat a CDN-integrációval, valamint előzetes beolvasással és Origin-Assist CDN-előhívásokkal.
 services: media-services
 documentationcenter: ''
 author: IngridAtMicrosoft
@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.openlocfilehash: e1ea0a43783fb7abdc17655e3a3431d125d426f8
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89291279"
 ---
 # <a name="stream-content-with-cdn-integration"></a>Tartalom továbbítása CDN-integrációval
@@ -67,7 +67,7 @@ A Azure Media Services integrációja Azure CDN-mel a Verizon standard streaming
 
 Megadhatja, hogy a DNS-módosítás egy streaming végponton történt-e (a forgalom a Azure CDNra van irányítva) a használatával <https://www.digwebinterface.com> . Ha a azureedge.net tartományneveket lát az eredmények között, a forgalom most a CDN-re mutat.
 
-## <a name="origin-assist-cdn-prefetch"></a>Forrás – Assist CDN – prefektus
+## <a name="origin-assist-cdn-prefetch"></a>Origin-Assist CDN-Prefetch
 
 A CDN-gyorsítótárazás egy reaktív folyamat. Ha a CDN megjósolhatja a következő objektum kérését, a CDN proaktív módon kérheti le és gyorsítótárazza a következő objektumot. Ezzel a folyamattal elérheti az objektumok összes (vagy legtöbb) gyorsítótár-találatát, ami javítja a teljesítményt.
 
@@ -125,11 +125,11 @@ A `Origin-Assist CDN-Prefetch` szolgáltatás a következő folyamatos átviteli
 
     Nem, CDN – a prefektus csak az ügyfél által kezdeményezett kérelem/válasz után hajtható végre. CDN – a prefektust soha nem indítják el, hogy elkerülje a Meghívási ciklust.
 
-* A forrás-assziszt CDN-szolgáltatás mindig be van kapcsolva? Hogyan lehet be-és kikapcsolni?
+* Mindig Origin-Assist CDN-Prefetch funkció? Hogyan lehet be-és kikapcsolni?
 
     Ez a szolgáltatás alapértelmezés szerint ki van kapcsolva. Az ügyfeleknek be kell kapcsolniuk a Akamai API-n keresztül.
 
-* Élő közvetítés esetén mi történne a forrás-assziszttal, ha a következő szegmens vagy töredék még nem érhető el?
+* Élő közvetítés esetén mi történne Origin-Assist, ha a következő szegmens vagy töredék még nem érhető el?
 
     Ebben az esetben a Media Services a forrás nem fog megjelenni a `CDN-Origin-Assist-Prefetch-Path` fejlécben, és nem kerül sor a CDN-megadásra.
 

@@ -11,10 +11,10 @@ ms.workload: iaas-sql-server
 ms.author: mathoma
 ms.reviewer: jroth
 ms.openlocfilehash: e1a9d2722987464b1bb3c8b1489a2d1258a41d15
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91273083"
 ---
 # <a name="provision-a-linux-virtual-machine-running-sql-server-in-the-azure-portal"></a>SQL Server-t futtató linuxos virtuális gép kiépítése a Azure Portal
@@ -97,7 +97,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
     * **Vendég konfigurációja**
     * **Címkék**
 
-1. Válassza az **Áttekintés + létrehozás** lehetőséget.
+1. Válassza a **Felülvizsgálat + létrehozás** lehetőséget.
 1. A **felülvizsgálat + létrehozás** ablaktáblán válassza a **Létrehozás**lehetőséget.
 
 ## <a name="connect-to-the-linux-vm"></a><a id="connect"></a> Kapcsolódás a Linux rendszerű virtuális géphez
@@ -192,7 +192,7 @@ Ez az oktatóanyag egy Red Hat Enterprise Linux (RHEL) rendszerű virtuális gé
    sudo firewall-cmd --reload
    ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy van egy SQL Server 2017-es virtuális gépe az Azure-ban, helyileg csatlakozhat az **sqlcmd** használatával, és Transact-SQL-lekérdezéseket futtathat.
 

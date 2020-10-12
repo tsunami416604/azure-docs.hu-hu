@@ -6,10 +6,10 @@ ms.author: yalavi
 ms.topic: conceptual
 ms.date: 02/16/2020
 ms.openlocfilehash: 1d21c7ed93ac2ce2ab61282707d57fbf43e0b71a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81261074"
 ---
 # <a name="metric-alerts-with-dynamic-thresholds-in-azure-monitor"></a>Metrikus riasztások dinamikus küszöbértékekkel Azure Monitor
@@ -127,7 +127,7 @@ A következő elemek ajánlott eljárások arra vonatkozóan, hogyan konfigurál
 
 8. A metrika diagram a legutóbbi adatok alapján jeleníti meg a számított küszöbértékeket.
 
-9. Kattintson a **Done** (Kész) gombra.
+9. Kattintson a **Kész** gombra.
 
 10. Adja meg a **riasztás részleteit** , például a **riasztási szabály nevét**, **leírását**és **súlyosságát**.
 
@@ -162,7 +162,7 @@ A következő elemek ajánlott eljárások arra vonatkozóan, hogyan konfigurál
 
 8. A metrika diagram a legutóbbi adatok alapján jeleníti meg a számított küszöbértékeket.
 
-9. Kattintson a **Done** (Kész) gombra.
+9. Kattintson a **Kész** gombra.
 
 10. Adja meg a **riasztás részleteit** , például a **riasztási szabály nevét**, **leírását**és **súlyosságát**.
 

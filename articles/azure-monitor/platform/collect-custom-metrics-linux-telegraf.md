@@ -8,10 +8,10 @@ ms.date: 09/24/2018
 ms.author: ancav
 ms.subservice: metrics
 ms.openlocfilehash: b80f27e490dd3b1890eab7740fb4650ba4280abb
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88207795"
 ---
 # <a name="collect-custom-metrics-for-a-linux-vm-with-the-influxdata-telegraf-agent"></a>Egyéni metrikák gyűjtése Linux rendszerű virtuális gépekhez a InfluxData-ben-Graf ügynökkel
@@ -44,7 +44,7 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. Adja meg a virtuális gép nevét, például **MyTelegrafVM**.  
 1. Hagyja meg a lemez típusát **SSD**-ként. Ezután adjon meg egy **felhasználónevet**, például: **azureuser**. 
 1. A **Hitelesítés típusa**mezőben válassza a **jelszó**lehetőséget. Ezután adjon meg egy jelszót, amelyet később az SSH-ba fog használni a virtuális gépen. 
-1. **Új erőforráscsoport létrehozásához**válassza az elemet. Ezután adjon meg egy nevet, például **myResourceGroup**. Válassza ki a **helyet**. Ez után válassza az **OK** gombot. 
+1. **Új erőforráscsoport létrehozásához**válassza az elemet. Ezután adjon meg egy nevet, például **myResourceGroup**. Válassza ki a **helyet**. Ezután válassza az **OK** gombot. 
 
     ![Ubuntu rendszerű virtuális gép létrehozása](./media/collect-custom-metrics-linux-telegraf/create-vm.png)
 
@@ -58,7 +58,7 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
 1. A virtuális gép rögzítve lesz az Azure Portal irányítópultján. Az üzembe helyezés befejeződése után a virtuális gép összegzése automatikusan megnyílik. 
 
-1. A virtuális gép ablaktáblán navigáljon az **Identity (identitás** ) lapra. Ellenőrizze, hogy a virtuális gépnek van **-e beállítva**rendszerhez rendelt identitása. 
+1. A virtuális gép ablaktáblán navigáljon az **Identity (identitás** ) lapra. Győződjön **meg**arról, hogy a virtuális gépnek van-e beállítva a rendszerhez rendelt identitás. 
  
     ![A Graf VM-identitás előzetes verziója](./media/collect-custom-metrics-linux-telegraf/connect-to-VM.png)
  
@@ -135,5 +135,5 @@ Emellett ebben az útmutatóban a (z)-ben a (z)-ben a (z)-ben a (z)-ügynök üz
 
 Ha már nincs rájuk szükség, törölheti az erőforráscsoportot, a virtuális gépet és az összes kapcsolódó erőforrást. Ehhez válassza ki a virtuális géphez tartozó erőforráscsoportot, és válassza a **Törlés**lehetőséget. Ezután erősítse meg a törölni kívánt erőforráscsoport nevét. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - További információ az [Egyéni metrikákkal](metrics-custom-overview.md)kapcsolatban.

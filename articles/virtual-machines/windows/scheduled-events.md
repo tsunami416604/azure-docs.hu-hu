@@ -10,10 +10,10 @@ ms.author: ericrad
 ms.reviwer: mimckitt
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 41e8f6f3e3562654edcc4ba347abe57e300af511
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89074225"
 ---
 # <a name="azure-metadata-service-scheduled-events-for-windows-vms"></a>Azure Metadata Service: Scheduled Events a Windows rendszerű virtuális gépekhez
@@ -74,12 +74,12 @@ A Scheduled Events szolgáltatás verziója. A verziók megadása kötelező; a 
 
 | Verzió | Kiadás típusa | Régiók | Kibocsátási megjegyzések | 
 | - | - | - | - | 
-| 2019-08-01 | Általános elérhetőség | Összes | <li> EventSource-támogatás hozzáadva |
-| 2019-04-01 | Általános elérhetőség | Összes | <li> Az esemény leírásának támogatása hozzáadva |
-| 2019-01-01 | Általános elérhetőség | Összes | <li> A virtuálisgép-méretezési csoportok támogatásának támogatása a EventType leállításához |
-| 2017-11-01 | Általános elérhetőség | Összes | <li> A (z) megelőzik helyszíni VM-kilakoltatás EventType támogatása<br> | 
-| 2017-08-01 | Általános elérhetőség | Összes | <li> Eltávolított előtagértéke aláhúzás a IaaS virtuális gépek erőforrásainak neveiből<br><li>Metaadatok fejlécére vonatkozó követelmények kényszerítve az összes kérelemhez | 
-| 2017-03-01 | Előnézet | Összes | <li>Kezdeti kiadás |
+| 2019-08-01 | Általános elérhetőség | Mind | <li> EventSource-támogatás hozzáadva |
+| 2019-04-01 | Általános elérhetőség | Mind | <li> Az esemény leírásának támogatása hozzáadva |
+| 2019-01-01 | Általános elérhetőség | Mind | <li> A virtuálisgép-méretezési csoportok támogatásának támogatása a EventType leállításához |
+| 2017-11-01 | Általános elérhetőség | Mind | <li> A (z) megelőzik helyszíni VM-kilakoltatás EventType támogatása<br> | 
+| 2017-08-01 | Általános elérhetőség | Mind | <li> Eltávolított előtagértéke aláhúzás a IaaS virtuális gépek erőforrásainak neveiből<br><li>Metaadatok fejlécére vonatkozó követelmények kényszerítve az összes kérelemhez | 
+| 2017-03-01 | Előnézet | Mind | <li>Kezdeti kiadás |
 
 
 > [!NOTE] 

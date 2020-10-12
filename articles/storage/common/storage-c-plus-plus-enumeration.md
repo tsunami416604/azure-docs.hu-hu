@@ -9,10 +9,10 @@ ms.subservice: common
 ms.topic: how-to
 ms.reviewer: dineshm
 ms.openlocfilehash: b9ae42bb29d1273e4f0f9c25803e8cc97b56ad95
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89462411"
 ---
 # <a name="list-azure-storage-resources-in-c"></a>Azure Storage-erőforrások listázása C++ nyelven
@@ -34,7 +34,7 @@ Ezek a módszerek különböző túlterhelések használatával jelennek meg a k
 
 ## <a name="asynchronous-versus-synchronous"></a>Aszinkron és szinkron
 
-Mivel a C++-os Storage ügyféloldali kódtára a [C++ Rest-könyvtárra](https://github.com/Microsoft/cpprestsdk)épül, a [pplx:: Task](https://microsoft.github.io/cpprestsdk/classpplx_1_1task.html)használatával a következő módon támogatjuk az aszinkron műveleteket. Például:
+Mivel a C++-os Storage ügyféloldali kódtára a [C++ Rest-könyvtárra](https://github.com/Microsoft/cpprestsdk)épül, a [pplx:: Task](https://microsoft.github.io/cpprestsdk/classpplx_1_1task.html)használatával a következő módon támogatjuk az aszinkron műveleteket. Példa:
 
 ```cpp
 pplx::task<list_blob_item_segment> list_blobs_segmented_async(continuation_token& token) const;

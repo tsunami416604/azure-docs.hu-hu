@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive, devx-track-python
 ms.date: 03/04/2020
 ms.openlocfilehash: ca5bff7f8a14efc0916210296048e3731aec5a59
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87873466"
 ---
 # <a name="connect-to-apache-kafka-on-hdinsight-through-an-azure-virtual-network"></a>Csatlakozás az Apache Kafkához HDInsight-on egy Azure-beli virtuális hálózaton keresztül
@@ -58,7 +58,7 @@ A HDInsight nem teszi lehetővé a közvetlen kapcsolódást a Kafka-hez a nyilv
 
 A virtuális hálózat HDInsight használatával kapcsolatos további információkért lásd: [virtuális hálózat megtervezése Azure HDInsight-fürtökhöz](../hdinsight-plan-virtual-network-deployment.md).
 
-## <a name="connect-to-apache-kafka-from-an-on-premises-network"></a><a id="on-premises"></a>Kapcsolódás Apache Kafka helyszíni hálózatról
+## <a name="connect-to-apache-kafka-from-an-on-premises-network"></a><a id="on-premises"></a> Kapcsolódás Apache Kafka helyszíni hálózatról
 
 A helyszíni hálózattal kommunikáló Kafka-fürt létrehozásához kövesse a [HDInsight összekapcsolása](./../connect-on-premises-network.md) a helyszíni hálózati dokumentumhoz című témakör lépéseit.
 
@@ -74,7 +74,7 @@ Ezek a lépések a következő konfigurációt hozzanak létre:
 
 Annak ellenőrzéséhez, hogy a Kafka-ügyfél tud-e csatlakozni a fürthöz a helyszíni környezetből, hajtsa végre a [példa: Python-ügyfél](#python-client) című szakasz lépéseit.
 
-## <a name="connect-to-apache-kafka-with-a-vpn-client"></a><a id="vpnclient"></a>Csatlakozás Apache Kafka VPN-ügyféllel
+## <a name="connect-to-apache-kafka-with-a-vpn-client"></a><a id="vpnclient"></a> Csatlakozás Apache Kafka VPN-ügyféllel
 
 A jelen szakaszban ismertetett lépések segítségével hozza létre a következő konfigurációt:
 
@@ -290,7 +290,7 @@ Alapértelmezés szerint az Apache Zookeeper a Kafka-ügynökök tartománynevé
 
 A VPN-átjáróhoz való csatlakozáshoz használja a [pont – hely kapcsolati dokumentum konfigurálása](../../vpn-gateway/vpn-gateway-howto-point-to-site-rm-ps.md#connect) a __Csatlakozás az Azure-hoz__ című szakaszát.
 
-## <a name="example-python-client"></a><a id="python-client"></a>Példa: Python-ügyfél
+## <a name="example-python-client"></a><a id="python-client"></a> Példa: Python-ügyfél
 
 A Kafka-kapcsolat ellenőrzéséhez kövesse az alábbi lépéseket egy Python-gyártó és-fogyasztó létrehozásához és futtatásához:
 

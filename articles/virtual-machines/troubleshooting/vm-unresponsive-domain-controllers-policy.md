@@ -1,5 +1,5 @@
 ---
-title: A virtuális gép nem válaszol az Alapértelmezett tartományvezérlői házirend alkalmazása során
+title: A virtuális gép nem válaszol az alapértelmezett tartományvezérlő-szabályzat alkalmazása közben
 titlesuffix: Azure Virtual Machines
 description: Ez a cikk olyan problémák megoldását ismerteti, amelyekben az Alapértelmezett tartományvezérlői házirend megakadályozza az Azure-beli virtuális gépek indítását.
 services: virtual-machines-windows, azure-resource-manager
@@ -16,13 +16,13 @@ ms.topic: troubleshooting
 ms.date: 09/08/2020
 ms.author: v-miegge
 ms.openlocfilehash: 53e1daca47a2917a19cbc30db5348e4fcc06b325
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90039075"
 ---
-# <a name="vm-is-unresponsive-while-applying-default-domain-controllers-policy"></a>A virtuális gép nem válaszol az Alapértelmezett tartományvezérlői házirend alkalmazása során
+# <a name="vm-is-unresponsive-while-applying-default-domain-controllers-policy"></a>A virtuális gép nem válaszol az alapértelmezett tartományvezérlő-szabályzat alkalmazása közben
 
 Ez a cikk olyan problémák megoldását ismerteti, amelyekben az Alapértelmezett tartományvezérlői házirend megakadályozza egy Azure-beli virtuális gép (VM) indítását.
 

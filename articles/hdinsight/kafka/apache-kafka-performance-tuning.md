@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 12/19/2019
 ms.openlocfilehash: 752068af531c4a0ecc832d266f88105c14452ecb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75494922"
 ---
 # <a name="performance-optimization-for-apache-kafka-hdinsight-clusters"></a>Apache Kafka HDInsight-fürtök teljesítményoptimalizálása
@@ -50,7 +50,7 @@ A gyártó által megkövetelt `acks` konfiguráció határozza meg, hogy a part
 
 A Kafka-gyártó konfigurálható úgy, hogy tömörítse az üzeneteket, mielőtt elküldené őket a brókereknek. A `compression.type` beállítás határozza meg a használni kívánt tömörítési kodeket. A támogatott tömörítési kodekek a következők: "gzip", "Snappy" és "lz4". A tömörítés hasznos lehet, és figyelembe kell venni a lemez kapacitásának korlátozását.
 
-A két leggyakrabban használt tömörítési kodek, `gzip` a `snappy` pedig `gzip` nagyobb tömörítési aránnyal rendelkezik, ami nagyobb CPU-terhelést eredményez. A `snappy` kodek kevesebb tömörítést biztosít kevesebb CPU-terheléssel. Eldöntheti, hogy melyik kodeket szeretné használni a Broker Disk vagy a producer CPU korlátozásai alapján. `gzip`a legfeljebb ötször képes tömöríteni az adatokra `snappy` .
+A két leggyakrabban használt tömörítési kodek, `gzip` a `snappy` pedig `gzip` nagyobb tömörítési aránnyal rendelkezik, ami nagyobb CPU-terhelést eredményez. A `snappy` kodek kevesebb tömörítést biztosít kevesebb CPU-terheléssel. Eldöntheti, hogy melyik kodeket szeretné használni a Broker Disk vagy a producer CPU korlátozásai alapján. `gzip` a legfeljebb ötször képes tömöríteni az adatokra `snappy` .
 
 Az adattömörítés használatával növelheti a lemezen tárolható rekordok számát. Emellett növelheti a CPU-terhelést azokban az esetekben, amikor a gyártó és a közvetítő által használt tömörítési formátumok között eltérés tapasztalható. mivel a feldolgozás előtt az adatoknak tömörítettnek kell lenniük a küldés előtt, majd ki kell tömöríteni őket.
 

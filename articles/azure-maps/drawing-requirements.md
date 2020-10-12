@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philMea
 ms.openlocfilehash: 1f25aadf716b7768b6122a4fb165466aef7f8a16
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90053392"
 ---
 # <a name="drawing-package-requirements"></a>Rajzolási csomag követelményei
@@ -36,7 +36,7 @@ Az egyszerű hivatkozáshoz itt talál néhány olyan kifejezést és definíci�
 | Réteg | Egy AutoCAD DWG-réteg.|
 | Szint | Egy épület területe egy beállított jogosultságszint-emeléssel. Például egy épület padlója. |
 | Xref  |Egy AutoCAD DWG fájlformátumban (. DWG) található fájl, amely külső hivatkozásként van csatolva az elsődleges rajzhoz.  |
-| Jellemző | Egy olyan objektum, amely a geometriát további metaadat-információkkal ötvözi. |
+| Szolgáltatás | Egy olyan objektum, amely a geometriát további metaadat-információkkal ötvözi. |
 | Szolgáltatási osztályok | A funkciók közös tervrajza. Egy *egység* például egy szolgáltatás osztály, az *Office* pedig egy szolgáltatás. |
 
 ## <a name="drawing-package-structure"></a>Rajzolási csomag szerkezete
@@ -82,7 +82,7 @@ Az alábbi táblázat az egyes rétegekhez tartozó támogatott entitások típu
 | Réteg | Entitástípusok | Szolgáltatások |
 | :----- | :-------------------| :-------
 | [Külső](#exterior-layer) | Sokszög, vonallánc (lezárt), kör | Szintek
-| [Unit (Egység)](#unit-layer) |  Sokszög, vonallánc (lezárt), kör | Vertikális behatolások, egységek
+| [Egység](#unit-layer) |  Sokszög, vonallánc (lezárt), kör | Vertikális behatolások, egységek
 | [Fal](#wall-layer)  | Sokszög, vonallánc (lezárt), kör | Nem alkalmazható. További információért lásd a [fal réteget](#wall-layer).
 | [Ajtó](#door-layer) | Sokszög, vonallánc, vonal, CircularArc, kör | Nyílások
 | [Zóna](#zone-layer) | Sokszög, vonallánc (lezárt), kör | Zóna
@@ -188,7 +188,7 @@ A következő részek részletezik az egyes objektumok követelményeit.
 
 ### `directoryInfo`
 
-| Tulajdonság  | Típus | Kötelező | Description |
+| Tulajdonság  | Típus | Kötelező | Leírás |
 |-----------|------|----------|-------------|
 | `name`      | sztring | true   |  Az építési név. |
 | `streetAddress`|    sztring |    hamis    | Az építési címe. |
@@ -209,7 +209,7 @@ A következő részek részletezik az egyes objektumok követelményeit.
 
 Az `buildingLevels` objektum az épületek szintjeinek JSON-tömbjét tartalmazza.
 
-| Tulajdonság  | Típus | Kötelező | Description |
+| Tulajdonság  | Típus | Kötelező | Leírás |
 |-----------|------|----------|-------------|
 |`levelName`    |sztring    |true |    Leíró szint neve. Például: Floor 1, lobby, Blue parkoló vagy alagsor.|
 |`ordinal` | egész szám |    true | Meghatározza a szintek függőleges sorrendjét. Minden létesítménynek 0 sorszámú szinten kell lennie. |
@@ -241,7 +241,7 @@ Az `buildingLevels` objektum az épületek szintjeinek JSON-tömbjét tartalmazz
 
 Az `unitProperties` objektum az egység tulajdonságainak JSON-tömbjét tartalmazza.
 
-| Tulajdonság  | Típus | Kötelező | Description |
+| Tulajdonság  | Típus | Kötelező | Leírás |
 |-----------|------|----------|-------------|
 |`unitName`    |sztring    |true    |A rekorddal társítandó egység neve `unitProperty` . Ez a rekord csak akkor érvényes, ha a rétegekben címkével egyező címke `unitName` található `unitLabel` . |
 |`categoryName`|    sztring|    hamis    |Kategória neve A kategóriák teljes listájáért tekintse meg a [kategóriákat](https://aka.ms/pa-indoor-spacecategories). |

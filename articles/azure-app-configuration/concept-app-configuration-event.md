@@ -8,10 +8,10 @@ ms.date: 02/20/2020
 ms.topic: article
 ms.service: azure-app-configuration
 ms.openlocfilehash: ae3417f991c0d810d8946cdaf358218ebbe4f6a5
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88590030"
 ---
 # <a name="reacting-to-azure-app-configuration-events"></a>Az Azure-alkalmazás konfigurációs eseményeire való reagálás
@@ -29,7 +29,7 @@ Tekintse át az [Azure-alkalmazás konfigurációs eseményeinek átirányítás
 ## <a name="available-azure-app-configuration-events"></a>Elérhető Azure-alkalmazás konfigurációs eseményei
 Az Event Grid [esemény-előfizetések](../event-grid/concepts.md#event-subscriptions) használatával irányítja az esemény-üzeneteket az előfizetőknek. Az Azure-alkalmazás konfigurációs esemény-előfizetései két típusú eseményt tartalmazhatnak:  
 
-> |Esemény neve|Description|
+> |Esemény neve|Leírás|
 > |----------|-----------|
 > |`Microsoft.AppConfiguration.KeyValueModified`|Kulcs-érték létrehozásakor vagy cseréjekor|
 > |`Microsoft.AppConfiguration.KeyValueDeleted`|Kulcs-érték törlése után|
@@ -37,10 +37,10 @@ Az Event Grid [esemény-előfizetések](../event-grid/concepts.md#event-subscrip
 ## <a name="event-schema"></a>Eseményséma
 Az Azure-alkalmazás konfigurációs eseményei tartalmazzák az adatok változásaira való válaszadáshoz szükséges összes információt. Azonosíthatja az alkalmazás konfigurációs eseményeit, mert a eventType tulajdonság a "Microsoft. AppConfiguration" karakterlánccal kezdődik. Event Grid esemény tulajdonságainak használatáról további információt [Event Grid Event Schema](../event-grid/event-schema.md)dokumentációban olvashat.  
 
-> |Tulajdonság|Típus|Description|
+> |Tulajdonság|Típus|Leírás|
 > |-------------------|------------------------|-----------------------------------------------------------------------|
 > |témakör|sztring|Az eseményt kibocsátó alkalmazás-konfiguráció teljes Azure Resource Manager azonosítója.|
-> |tárgy|sztring|Az esemény tárgyát képező kulcs-érték URI-ja.|
+> |tulajdonos|sztring|Az esemény tárgyát képező kulcs-érték URI-ja.|
 > |eventTime|sztring|Az esemény létrehozásának dátuma és időpontja ISO 8601 formátumban.|
 > |eventType|sztring|"Microsoft. AppConfiguration. KeyValueModified" vagy "Microsoft. AppConfiguration. KeyValueDeleted".|
 > |Id|sztring|Az esemény egyedi azonosítója.|

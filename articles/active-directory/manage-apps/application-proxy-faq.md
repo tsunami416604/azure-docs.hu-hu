@@ -12,10 +12,10 @@ ms.date: 07/23/2020
 ms.author: kenwith
 ms.reviewer: japere
 ms.openlocfilehash: edf51dad768e8d8b5ea5dc6c1eff88f43f0f6b70
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88589163"
 ---
 # <a name="active-directory-azure-ad-application-proxy-frequently-asked-questions"></a>Active Directory-(Azure AD-) alkalmazásproxy – gyakori kérdések
@@ -141,7 +141,7 @@ Nem, ez a forgatókönyv nem támogatott, mert az alkalmazásproxy leállítja a
 
 Tekintse át a [Távoli asztal közzététele az Azure ad Application proxy](application-proxy-integrate-with-remote-desktop-services.md)-ban című témakört.
 
-### <a name="can-i-use-kerberos-constrained-delegation-single-sign-on---windows-integrated-authentication-in-the-remote-desktop-gateway-publishing-scenario"></a>Használhatom a Kerberos által korlátozott delegálást (egyszeri bejelentkezés – integrált Windows-hitelesítés) a Távoli asztali átjáró közzétételi forgatókönyvben?
+### <a name="can-i-use-kerberos-constrained-delegation-single-sign-on---windows-integrated-authentication-in-the-remote-desktop-gateway-publishing-scenario"></a>Használhatom a Kerberos által korlátozott delegálást (egy Sign-On – integrált Windows-hitelesítés) a Távoli asztali átjáró közzétételi forgatókönyvben?
 
 Nem, ez a forgatókönyv nem támogatott.  
 

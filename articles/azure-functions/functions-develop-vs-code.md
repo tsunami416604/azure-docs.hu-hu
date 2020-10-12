@@ -1,17 +1,17 @@
 ---
-title: Azure Functions fejlesztése a Visual Studio Code használatával
+title: Az Azure Functions fejlesztése a Visual Studio Code használatával
 description: Megtudhatja, hogyan fejlesztheti és tesztelheti Azure Functions a Visual Studio Code-hoz készült Azure Functions bővítménnyel.
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 08/21/2019
 ms.openlocfilehash: 610c80dc5552eae4f2ad8442fa11b85f2eab35eb
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88206741"
 ---
-# <a name="develop-azure-functions-by-using-visual-studio-code"></a>Azure Functions fejlesztése a Visual Studio Code használatával
+# <a name="develop-azure-functions-by-using-visual-studio-code"></a>Az Azure Functions fejlesztése a Visual Studio Code használatával
 
 A [Visual Studio Code Azure functions-bővítménye] lehetővé teszi a függvények helyi fejlesztését és üzembe helyezését az Azure-ban. Ha ez a felhasználói élmény Azure Functions, akkor a [Azure functions bevezetésével](functions-overview.md)többet is megtudhat.
 
@@ -410,7 +410,7 @@ A fenti lépések elvégzése után a mögöttes alapeszközökre irányuló hí
 
 A Azure Functions bővítmény egy hasznos grafikus felületet biztosít az Azure-beli Function apps-alkalmazásokkal való interakcióhoz. Ugyanez a funkció a Command paletta (F1) parancsként is elérhető. Ezek a Azure Functions parancsok elérhetők:
 
-|Azure Functions parancs  | Description  |
+|Azure Functions parancs  | Leírás  |
 |---------|---------|
 |**Új beállítások hozzáadása**  |  Létrehoz egy új Alkalmazásbeállítás-beállítást az Azure-ban. További információ: [Alkalmazásbeállítások közzététele](#publish-application-settings). Előfordulhat, hogy a [beállítást a helyi beállításokra is le kell töltenie](#download-settings-from-azure). |
 | **Központi telepítési forrás konfigurálása** | A Function alkalmazást az Azure-ban csatlakoztatja egy helyi git-tárházhoz. További információ: [Azure functions folyamatos üzembe helyezése](functions-continuous-deployment.md). |
@@ -431,7 +431,7 @@ A Azure Functions bővítmény egy hasznos grafikus felületet biztosít az Azur
 | **Azure Functions Core Tools telepítése vagy frissítése** | A [Azure functions Core Tools]telepítése vagy frissítése, amely a függvények helyi futtatására szolgál. |
 | **Ismételt üzembe helyezés**  | Lehetővé teszi, hogy egy csatlakoztatott git-tárházból újratelepítse a projektfájlok egy adott üzembe helyezését az Azure-ban. Ha újra közzé szeretné tenni a helyi frissítéseket a Visual Studio Code-ból, [tegye közzé újra a projektet](#republish-project-files). |
 | **Beállítások átnevezése** | Megváltoztatja egy meglévő Function app-beállítás kulcsának nevét az Azure-ban. Ez a parancs nem érinti a local.settings.jsfájljának beállításait. Miután átnevezte az Azure-beli beállításokat, [töltse le ezeket a módosításokat a helyi projektbe](#download-settings-from-azure). |
-| **Újraindítás** | Újraindítja a Function alkalmazást az Azure-ban. A frissítések telepítése a Function alkalmazást is újraindítja. |
+| **Indítsa újra** | Újraindítja a Function alkalmazást az Azure-ban. A frissítések telepítése a Function alkalmazást is újraindítja. |
 | **AzureWebJobsStorage beállítása**| Az Alkalmazásbeállítás értékének beállítása `AzureWebJobsStorage` . Ezt a beállítást a Azure Functions kötelező megadni. Akkor van beállítva, amikor egy Function-alkalmazás létrejön az Azure-ban. |
 | **Kezdés** | Elindít egy leállított Function alkalmazást az Azure-ban. |
 | **Adatfolyam-naplók indítása** | Elindítja az Azure-beli Function alkalmazás adatfolyam-naplóit. Ha a naplózási információkat közel valós időben kell megtekinteni, használja az Azure-ban a távoli hibaelhárítás során használt adatfolyam-naplókat. További információ: [streaming logs](#streaming-logs). |

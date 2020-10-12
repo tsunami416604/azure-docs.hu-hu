@@ -16,10 +16,10 @@ ms.date: 09/20/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 56a7b91327e84ca36e6ec6e4b15f594dbc61830e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91274299"
 ---
 # <a name="sql-server-azure-virtual-machines-dbms-deployment-for-sap-netweaver"></a>SQL Server Azure Virtual Machines adatbázis-kezelő rendszerbe állítás az SAP NetWeaver számára
@@ -404,7 +404,7 @@ Több lehetősége van a manuális biztonsági mentések végrehajtására:
 
 1. A hagyományos SQL Server biztonsági mentések elvégzése közvetlenül csatlakoztatott Azure-lemezekre. Ennek a módszernek az az előnye, hogy a biztonsági másolatok gyorsan elérhetők a rendszer frissítéseihez, és új rendszerek készíthetők a meglévő SAP-rendszerek példányaiként.
 2.  A SQL Server 2012 CU4 és újabb rendszerű adatbázisok biztonsági mentését végezheti el az Azure Storage URL-címére.
-3.  Fájl – pillanatképes biztonsági másolatok az Azure Blob Storageban található adatbázisfájlok számára. Ez a módszer csak akkor működik, ha a SQL Server adatai és naplófájljai az Azure Blob Storage-ban találhatók
+3.  File-Snapshot az Azure-Blob Storage adatbázisfájlok biztonsági másolatait. Ez a módszer csak akkor működik, ha a SQL Server adatai és naplófájljai az Azure Blob Storage-ban találhatók
 
 Az első módszer jól ismert, és számos esetben alkalmazható a helyszíni világban is. A feladat azonban a hosszú távú biztonsági mentés helyének megoldására is elhagyható. Mivel nem szeretné, hogy a biztonsági másolatok 30 vagy több napig maradjanak a helyileg csatlakoztatott Azure-tárolóban, Azure Backup-szolgáltatásokat vagy más, harmadik féltől származó biztonsági mentési/helyreállítási eszközt kell használnia, amely magában foglalja a biztonsági mentések hozzáférését és adatmegőrzési felügyeletét. Emellett egy nagyméretű fájlkiszolgáló is kiépíthető az Azure-ban a Windows Storage Spaces használatával.
 
@@ -464,7 +464,7 @@ Latin1-General, binary code point comparison sort for Unicode Data, SQL Server S
 
 Ha az eredmény eltérő, állítsa le az SAP telepítését, és vizsgálja meg, miért nem a várt módon működik a telepítési parancs. Az SAP NetWeaver-alkalmazások üzembe helyezése SQL Server példányra, amely a fent említettnél több SQL Server kódlap használata esetén **nem** támogatott.
 
-## <a name="sql-server-high-availability-for-sap-in-azure"></a>SQL Server magas rendelkezésre állás az SAP számára az Azure-ban
+## <a name="sql-server-high-availability-for-sap-in-azure"></a>SQL Server High-Availability az Azure-beli SAP-ban
 Az SAP-ben az Azure IaaS üzemelő SQL Server használatával számos különböző lehetőség közül választhat az adatbázis-kezelő réteg elérhetővé tételéhez. Az Azure [Virtual Machines adatbázis-kezelő üzembe helyezése az SAP](dbms_guide_general.md) számítási feladatokhoz című témakörben leírtaknak megfelelően az Azure különböző, az Azure-beli rendelkezésre állási csoportokban üzembe helyezett virtuális gépeket és több virtuális gépet is tartalmaz. Feltételezi, hogy az Azure-beli rendelkezésre állási csoportokban üzemelő éles környezetekben való üzembe helyezéshez szükséges idő Ilyen esetben legalább két virtuális gépet kell üzembe helyeznie egy ilyen rendelkezésre állási csoporton belül. Egy virtuális gép az aktív SQL Server példányt fogja futtatni. A másik virtuális gép a passzív példányt fogja futtatni
 
 ### <a name="sql-server-clustering-using-windows-scale-out-file-server-or-azure-shared-disk"></a>Fürtözés SQL Server a Windows kibővíthető fájlkiszolgáló vagy az Azure megosztott lemez használatával
@@ -484,7 +484,7 @@ A SQL Server log szállítási funkciót alig használták az Azure-ban, hogy ma
 ### <a name="database-mirroring"></a>Adatbázis-tükrözés
 Az SAP által támogatott adatbázis-tükrözés (lásd: [965908]-es SAP-Megjegyzés) a feladatátvételi partner definiálására támaszkodik az SAP-kapcsolati karakterláncban. A létesítmények közötti esetekben feltételezzük, hogy a két virtuális gép ugyanabban a tartományban van, és a felhasználói környezet, amelyben a két SQL Server példány egy tartományi felhasználó alatt fut, valamint megfelelő jogosultságokkal rendelkezik a két SQL Server érintett példányban. Ezért az Azure-beli adatbázis-tükrözés beállítása nem különbözik egy tipikus helyszíni beállítás/konfiguráció között.
 
-A csak felhőalapú központi telepítések esetében a legegyszerűbb módszer az, ha egy másik tartományi beállítással rendelkezik az Azure-ban, hogy az adatbázis-kezelő virtuális gépek (és ideális dedikált SAP virtuális gépek) egy tartományon belül legyenek.
+Cloud-Only üzemelő példányok esetében a legegyszerűbb módszer egy másik tartomány beállítása az Azure-ban, hogy az adatbázis-kezelő virtuális gépek (és ideális dedikált SAP virtuális gépek) egy tartományon belül legyenek.
 
 Ha egy tartomány nem lehetséges, akkor az adatbázis-tükrözési végpontokhoz is használhat tanúsítványokat az itt leírtak szerint: <https://docs.microsoft.com/sql/database-engine/database-mirroring/use-certificates-for-a-database-mirroring-endpoint-transact-sql>
 

@@ -4,10 +4,10 @@ description: Ez a cikk azt ismerteti, hogyan engedélyezhető a lemez titkosít�
 ms.topic: article
 ms.date: 03/22/2019
 ms.openlocfilehash: c600d822d20b0e5a0ca613935b1dfa4be838fcec
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "78252813"
 ---
 # <a name="enable-disk-encryption-for-azure-service-fabric-cluster-nodes-in-linux"></a>Lemez titkosításának engedélyezése az Azure Service Fabric-fürtcsomópontok számára Linux rendszerben 
@@ -59,7 +59,7 @@ A virtuálisgép-méretezési csoport lemez-titkosítási előnézete önregiszt
 | ------------- |-------------| ------------|
 | Get-AzVmssDiskEncryptionStatus   | 1.0.0 vagy újabb | Az.Compute |
 | Get-AzVmssVMDiskEncryptionStatus   | 1.0.0 vagy újabb | Az.Compute |
-| AzVmssDiskEncryption letiltása   | 1.0.0 vagy újabb | Az.Compute |
+| Disable-AzVmssDiskEncryption   | 1.0.0 vagy újabb | Az.Compute |
 | Get-AzVmssDiskEncryption   | 1.0.0 vagy újabb | Az.Compute |
 | Get-AzVmssVMDiskEncryption   | 1.0.0 vagy újabb | Az.Compute |
 | Set-AzVmssDiskEncryptionExtension   | 1.0.0 vagy újabb | Az.Compute |

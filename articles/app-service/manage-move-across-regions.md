@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.date: 02/27/2020
 ms.custom: subject-moving-resources
 ms.openlocfilehash: 87a2da31802a8b6858e875c23ef1dbd2d6d006bc
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86524854"
 ---
 # <a name="move-an-app-service-resource-to-another-region"></a>App Service erőforrás áthelyezése másik régióba
@@ -106,6 +106,6 @@ Bizonyos erőforrások, például az importált tanúsítványok vagy a hibrid k
 
 A forrásoldali alkalmazás és App Service terv törlése. [A nem ingyenes csomagban lévő App Service terv díjat számít fel, még akkor is, ha nem fut alkalmazás.](app-service-plan-manage.md#delete-an-app-service-plan)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Alkalmazások klónozásának Azure App Service a PowerShell használatával](app-service-web-app-cloning.md)

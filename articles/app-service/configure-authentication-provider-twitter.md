@@ -8,10 +8,10 @@ ms.custom:
 - seodec18
 - fasttrack-edit
 ms.openlocfilehash: 11c913b12b4dcb7d2a5ffa532064b347b82904ef
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80519911"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-twitter-login"></a>A App Service vagy Azure Functions alkalmazás konfigurálása a Twitter-bejelentkezés használatára
@@ -43,7 +43,7 @@ A cikkben ismertetett eljárás végrehajtásához olyan Twitter-fiókra van sz�
 1. Válassza a **Beállítások**  >  **hitelesítés/engedélyezés**lehetőséget, és győződjön meg arról, hogy a **app Service hitelesítés** **be van kapcsolva**.
 1. Válassza a **Twitter**lehetőséget.
 1. Illessze be a `API key` `API secret key` korábban beszerzett értékeket.
-1. Válassza az **OK** lehetőséget.
+1. Kattintson az **OK** gombra.
 
    ![Képernyőkép a Mobile App Twitter-beállításairól][1]
 
@@ -58,7 +58,7 @@ A cikkben ismertetett eljárás végrehajtásához olyan Twitter-fiókra van sz�
 
 Most már készen áll a Twitter használatára a hitelesítéshez az alkalmazásban.
 
-## <a name="next-steps"></a><a name="related-content"> </a>További lépések
+## <a name="next-steps"></a><a name="related-content"> </a>Következő lépések
 
 [!INCLUDE [app-service-mobile-related-content-get-started-users](../../includes/app-service-mobile-related-content-get-started-users.md)]
 
@@ -71,5 +71,5 @@ Most már készen áll a Twitter használatára a hitelesítéshez az alkalmazá
 
 [Twitter-fejlesztők]: https://go.microsoft.com/fwlink/p/?LinkId=268300
 [twitter.com]: https://go.microsoft.com/fwlink/p/?LinkID=268287
-[Azure Portalra]: https://portal.azure.com/
+[Azure Portal]: https://portal.azure.com/
 [xamarin]: ../app-services-mobile-app-xamarin-ios-get-started-users.md

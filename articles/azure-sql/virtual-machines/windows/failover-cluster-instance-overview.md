@@ -13,10 +13,10 @@ ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
 ms.openlocfilehash: a8bfa91ac9b70c0ff4f461bd9e10899d1170b24d
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91272514"
 ---
 # <a name="failover-cluster-instances-with-sql-server-on-azure-virtual-machines"></a>Feladatátvevő fürt példányai SQL Server az Azure-ban Virtual Machines
@@ -40,7 +40,7 @@ A feladatátvevő fürtök példányai az Azure-SQL Serverokkal Virtual Machines
 További információ: az [Azure-beli SQL Server virtuális gépekkel kapcsolatos ajánlott eljárások](hadr-cluster-best-practices.md#quorum). 
 
 
-## <a name="storage"></a>Tárolás
+## <a name="storage"></a>Storage
 
 A hagyományos helyszíni fürtözött környezetekben a Windows feladatátvevő fürt a Tárolóhálózati (SAN) tárolót használja, amelyet mindkét csomópont a megosztott tárolóként is elérhet. SQL Server fájlok vannak tárolva a megosztott tárolóban, és csak az aktív csomópont fér hozzá egyszerre a fájlokhoz. 
 
@@ -48,8 +48,8 @@ Az Azure-beli virtuális gépeken SQL Server különböző lehetőségeket kín�
 
 ||[Azure megosztott lemezek](../../../virtual-machines/windows/disks-shared.md)|[Prémium fájlmegosztás](../../../storage/files/storage-how-to-create-premium-fileshare.md) |[Közvetlen tárolóhelyek (S2D)](/windows-server/storage/storage-spaces/storage-spaces-direct-overview)|
 |---------|---------|---------|---------|
-|**Operációs rendszer minimális verziója**| Összes |Windows Server 2012|Windows Server 2016|
-|**Minimális SQL Server-verzió**|Összes|SQL Server 2012|SQL Server 2016|
+|**Operációs rendszer minimális verziója**| Mind |Windows Server 2012|Windows Server 2016|
+|**Minimális SQL Server-verzió**|Mind|SQL Server 2012|SQL Server 2016|
 |**Támogatott virtuális gépek rendelkezésre állása** |Rendelkezésre állási csoportok Proximity elhelyezési csoportokkal |Rendelkezésre állási készletek és rendelkezésre állási zónák|Rendelkezésre állási csoportok |
 |**A FileStream támogatása**|Igen|Nem|Igen |
 |**Azure BLOB-gyorsítótár**|Nem|Nem|Igen|
@@ -163,7 +163,7 @@ Az Azure Virtual Machines az MSDTC nem támogatott a Windows Server 2016-es vagy
 - Az alapszintű Load Balancer nem kezeli az RPC-portokat.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse át a [fürt konfigurációjának ajánlott eljárásait](hadr-cluster-best-practices.md), majd [készítse elő a SQL Server VMt a következőre:](failover-cluster-instance-prepare-vm.md). 
 

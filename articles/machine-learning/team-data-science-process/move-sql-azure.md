@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 1f1120c78ef2a634c079705c85170d9742eabd1f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87087424"
 ---
 # <a name="move-data-to-an-azure-sql-database-for-azure-machine-learning"></a>Adatok áthelyezése egy Azure SQL-adatbázisba az Azure Machine Learning számára
@@ -43,13 +43,13 @@ Az itt leírt eljárásokhoz a következők szükségesek:
 
 Az itt ismertetett eljárásokat a saját adataihoz igazíthatja, vagy a New York-i taxi adatkészletének használatával követheti a leírt lépéseket. Ha fel szeretné tölteni a New York-i taxi-adatkészletet a SQL Server-adatbázisába, kövesse az [adatok tömeges importálása SQL Server-adatbázisba](sql-walkthrough.md#dbload)című szakaszban ismertetett eljárást.
 
-## <a name="moving-data-from-a-flat-file-source-to-an-azure-sql-database"></a><a name="file-to-azure-sql-database"></a>Adatok áthelyezése egy egyszerű fájlból a Azure SQL Databaseba
+## <a name="moving-data-from-a-flat-file-source-to-an-azure-sql-database"></a><a name="file-to-azure-sql-database"></a> Adatok áthelyezése egy egyszerű fájlból a Azure SQL Databaseba
 Az egyszerű fájlokban (CSV vagy TSV formátumú) tárolt adat áthelyezhető egy Azure SQL Databaseba egy tömeges INSERT SQL-lekérdezés használatával.
 
-### <a name="bulk-insert-sql-query"></a><a name="bulk-insert-sql-query"></a>SQL-lekérdezés tömeges beszúrása
+### <a name="bulk-insert-sql-query"></a><a name="bulk-insert-sql-query"></a> SQL-lekérdezés tömeges beszúrása
 A tömeges beszúrási SQL-lekérdezést használó eljárás lépései hasonlóak az Azure-beli virtuális gépeken SQL Server az adatok egy sima fájlból való áthelyezéséhez. További részletek: [SQL-lekérdezés tömeges beszúrása](move-sql-server-virtual-machine.md#insert-tables-bulkquery).
 
-## <a name="moving-data-from-sql-server-to-an-azure-sql-database"></a><a name="sql-on-prem-to-sazure-sql-database"></a>Adatok áthelyezése SQL Serverból egy Azure SQL Databaseba
+## <a name="moving-data-from-sql-server-to-an-azure-sql-database"></a><a name="sql-on-prem-to-sazure-sql-database"></a> Adatok áthelyezése SQL Serverból egy Azure SQL Databaseba
 Ha a forrásadatok tárolása SQL Server történik, számos lehetőség áll rendelkezésre az adatAzure SQL Databaseba való áthelyezésre:
 
 1. [Exportálás az egyszerű fájlba](#export-flat-file)

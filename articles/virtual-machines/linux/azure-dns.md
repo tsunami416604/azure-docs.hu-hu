@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 10/19/2016
 ms.author: rclaus
 ms.openlocfilehash: aa007888c68df41242f937e1062a90ec1b7fc3ce
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87372824"
 ---
 # <a name="dns-name-resolution-options-for-linux-virtual-machines-in-azure"></a>DNS-névfeloldási lehetőségek Linux rendszerű virtuális gépekhez az Azure-ban
@@ -29,7 +29,7 @@ Az alábbi táblázat a forgatókönyveket és a hozzájuk tartozó névfeloldá
 | Névfeloldás a különböző virtuális hálózatokban lévő szerepkör-példányok vagy virtuális gépek között |Ügyfél által felügyelt DNS-kiszolgálók, amelyek a virtuális hálózatok közötti lekérdezéseket továbbítják az Azure (DNS-proxy) általi feloldáshoz. Lásd: [névfeloldás a saját DNS-kiszolgáló használatával](#name-resolution-using-your-own-dns-server). |Csak FQDN |
 | Helyszíni számítógépek és szolgáltatások neveinek feloldása szerepkör-példányokból vagy virtuális gépekből az Azure-ban |Ügyfél által felügyelt DNS-kiszolgálók (például helyszíni tartományvezérlő, helyi írásvédett tartományvezérlő vagy a zónaletöltés használatával szinkronizált másodlagos DNS-kiszolgáló). Lásd: [névfeloldás a saját DNS-kiszolgáló használatával](#name-resolution-using-your-own-dns-server). |Csak FQDN |
 | Azure-beli gazdagépek feloldása helyszíni számítógépekről |Továbbítja a lekérdezéseket egy ügyfél által felügyelt DNS-proxykiszolgálóhoz a megfelelő virtuális hálózaton. A proxykiszolgáló lekérdezéseket továbbít az Azure-nak a feloldáshoz. Lásd: [névfeloldás a saját DNS-kiszolgáló használatával](#name-resolution-using-your-own-dns-server). |Csak FQDN |
-| Fordított DNS belső IP-címekhez |[Névfeloldás saját DNS-kiszolgáló használatával](#name-resolution-using-your-own-dns-server) |n.a. |
+| Fordított DNS belső IP-címekhez |[Névfeloldás saját DNS-kiszolgáló használatával](#name-resolution-using-your-own-dns-server) |n/a |
 
 ## <a name="name-resolution-that-azure-provides"></a>Az Azure által biztosított névfeloldás
 A nyilvános DNS-nevek feloldásával együtt az Azure belső névfeloldást biztosít a virtuális gépek és az azonos virtuális hálózatban lévő szerepkör-példányok számára. A Azure Resource Manageron alapuló virtuális hálózatok esetében a DNS-utótag konzisztens a virtuális hálózaton belül; a teljes tartománynév nem szükséges. A DNS-neveket mindkét hálózati adapterhez (NIC) és virtuális géphez is hozzá lehet rendelni. Bár az Azure által biztosított névfeloldás nem igényel konfigurálást, az összes telepítési forgatókönyv esetében nem megfelelő választás az előző táblázatban látható módon.

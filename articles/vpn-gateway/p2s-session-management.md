@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/23/2020
 ms.author: cherylmc
 ms.openlocfilehash: 2f2184507e17e3ecae40bb33be4202c183d32b77
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91274233"
 ---
 # <a name="point-to-site-vpn-session-management"></a>Pont – hely típusú VPN-munkamenetek kezelése
@@ -44,7 +44,7 @@ Munkamenet megtekintése és leválasztása a PowerShell használatával:
    ```
 1. Másolja ki a leválasztani kívánt munkamenet **VpnConnectionId** .
 
-   :::image type="content" source="./media/p2s-session-management/powershell.png" alt-text="PowerShell-példa":::
+   :::image type="content" source="./media/p2s-session-management/powershell.png" alt-text="Példa portálra":::
 1. A munkamenet leválasztásához futtassa a következő parancsot:
 
    ```azurepowershell-interactive

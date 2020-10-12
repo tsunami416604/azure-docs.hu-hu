@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 08/30/2019
 ms.author: wolfma
 ms.openlocfilehash: c7332177795a45331749225e0f3dc3856e28a6a2
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "71327064"
 ---
 A Windows-fejlesztéshez készült Visual Studio-projekt létrehozásához létre kell hoznia a projektet, be kell állítania a Visual studiót a .NET Desktop-fejlesztéshez, telepítenie kell a Speech SDK-t, és ki kell választania a cél architektúrát.
@@ -25,7 +25,7 @@ A kezdéshez hozza létre a projektet a Visual Studióban, és győződjön meg 
 
 1. Az **új projekt konfigurálása** ablakban írja be a *HelloWorld* nevet a **projekt neve**mezőbe, válassza ki vagy hozza létre a könyvtár elérési útját a **helyen**, majd válassza a **Létrehozás**lehetőséget.
 
-1. A Visual Studio menüsávban válassza az **eszközök** > **beolvasása eszközök és szolgáltatások**elemet, amely megnyitja a Visual Studio telepítőjét, és megjeleníti a **módosítás** párbeszédpanelt.
+1. A Visual Studio menüsávban válassza az **eszközök**  >  **beolvasása eszközök és szolgáltatások**elemet, amely megnyitja a Visual Studio telepítőjét, és megjeleníti a **módosítás** párbeszédpanelt.
 
 1. Győződjön meg arról, hogy elérhető-e a **.net Desktop fejlesztői** munkaterhelése. Ha a munkaterhelés még nincs telepítve, jelölje be a jelölőnégyzetet, majd kattintson a **módosítás** gombra a telepítés elindításához. A letöltése és telepítése néhány percet is igénybe vehet.
 
@@ -61,7 +61,7 @@ A következő lépés a [SPEECH SDK NuGet-csomag](https://aka.ms/csspeech/nuget)
 
 A konzol alkalmazás létrehozásához és futtatásához hozzon létre egy, a számítógép architektúrájának megfelelő platform-konfigurációt.
 
-1. A menüsávban válassza a **Build** > **Configuration Manager**elemet. Megjelenik a **Configuration Manager** párbeszédpanel.
+1. A menüsávban válassza a **Build**  >  **Configuration Manager**elemet. Megjelenik a **Configuration Manager** párbeszédpanel.
 
    ![Configuration Manager párbeszédpanel](../articles/cognitive-services/speech-service/media/sdk/vs-configuration-manager-dialog-box.png)
 

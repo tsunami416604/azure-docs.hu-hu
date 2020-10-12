@@ -1,5 +1,5 @@
 ---
-title: SAP HANA kibővíthető HSR-pacemaker az Azure-beli virtuális gépek SLES kapcsolatos hibaelhárítási felskálázással | Microsoft Docs
+title: Az Azure-beli virtuális gépekkel kapcsolatos SLES SAP HANA kibővíthető HSR-Pacemaker Microsoft Docs
 description: Útmutató az Azure Virtual Machines szolgáltatásban futó SLES 12 SP3 rendszerű, összetett SAP HANA kibővíthető magas rendelkezésre állási konfigurációjának vizsgálatához és hibakereséséhez SAP HANA rendszerreplikáció (HSR) és a pacemaker alapján
 services: virtual-machines-linux
 documentationcenter: ''
@@ -13,10 +13,10 @@ ms.workload: infrastructure
 ms.date: 09/24/2018
 ms.author: hermannd
 ms.openlocfilehash: 5c3a24bc9d754a15a0b372667fbcd689365a9aec
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87088308"
 ---
 # <a name="verify-and-troubleshoot-sap-hana-scale-out-high-availability-setup-on-sles-12-sp3"></a>A kibővíthető magas rendelkezésre állású telepítés ellenőrzése és SAP HANA megoldása a SLES 12 SP3 rendszeren 
@@ -40,7 +40,7 @@ Ebből a cikkből megtudhatja, hogy az Azure Virtual Machines (VM) szolgáltatá
 
 ## <a name="important-notes"></a>Fontos megjegyzések
 
-A SAP HANA SAP HANA rendszer-replikációval és a pacemakerrel együtt végzett összes tesztelés csak SAP HANA 2,0-es verzióval történt. Az operációs rendszer verziószáma SUSE Linux Enterprise Server 12 SP3 az SAP-alkalmazásokhoz. A SAPHanaSR-horizontális felskálázás (SUSE) legújabb RPM-csomagja a pacemaker-fürt beállítására szolgál.
+A SAP HANA SAP HANA rendszer-replikációval és a pacemakerrel együtt végzett összes tesztelés csak SAP HANA 2,0-es verzióval történt. Az operációs rendszer verziószáma SUSE Linux Enterprise Server 12 SP3 az SAP-alkalmazásokhoz. A pacemaker-fürt beállításához a legújabb RPM-csomagot, SAPHanaSR-ScaleOut a SUSE-től kezdve használták.
 A SUSE közzétette a [teljesítményre optimalizált telepítő részletes leírását][sles-hana-scale-out-ha-paper].
 
 SAP HANA kibővíthető virtuálisgép-típusok esetén tekintse meg a [SAP HANA Certified IaaS könyvtárat][sap-hana-iaas-list].

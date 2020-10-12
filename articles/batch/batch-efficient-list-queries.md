@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.date: 06/18/2020
 ms.custom: seodec18, devx-track-csharp
 ms.openlocfilehash: 3a767cc8ae3c8c48e1e40e0735c33fa807ba0015
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88933514"
 ---
 # <a name="create-queries-to-list-batch-resources-efficiently"></a>Lekérdezések létrehozása a Batch-erőforrások hatékony listázásához
@@ -55,7 +55,7 @@ Ebben a példában, ha több ezer feladat van a feladatban, a második lekérdez
 
 A [Batch .net](/dotnet/api/microsoft.azure.batch) és a [Batch Rest](/rest/api/batchservice/) API-k lehetővé teszik a listában visszaadott elemek számának, valamint a visszaadott adatok mennyiségének csökkentését. Ehhez adja meg a **szűrés**, a **kiválasztás**és a **karakterláncok kibontása** a listák lekérdezésének végrehajtásakor lehetőséget.
 
-### <a name="filter"></a>Szűrés
+### <a name="filter"></a>Szűrő
 
 A szűrő sztring egy kifejezés, amely csökkenti a visszaadott elemek számát. Például csak a feladat futási feladatait listázhatja, vagy csak azokat a számítási csomópontokat listázhatja, amelyek készen állnak a feladatok futtatására.
 
@@ -63,7 +63,7 @@ A szűrő sztring egy vagy több kifejezésből áll, és egy olyan kifejezésse
 
 Ez a példa szűrő sztring csak a futó "render" feladatokat sorolja fel: `(state eq 'running') and startswith(id, 'renderTask')` .
 
-### <a name="select"></a>Válassza ezt:
+### <a name="select"></a>Kiválasztás
 
 A Select sztring korlátozza az egyes elemekhez visszaadott tulajdonságértékek értékét. Megadhatja a vesszővel tagolt tulajdonságok nevét, és csak ezek a tulajdonságértékek lesznek visszaadva a lekérdezés eredményeiben lévő elemekhez. Megadhatja a lekérdezni kívánt entitás típusának bármelyik tulajdonságát.
 
@@ -238,7 +238,7 @@ internal static ODATADetailLevel OnlyChangedAfter(DateTime time)
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Megtudhatja, hogyan [maximalizálhatja Azure batch számítási erőforrások használatát egyidejű csomópont-feladatokkal](batch-parallel-node-tasks.md). A munkaterhelések bizonyos típusai kihasználhatják a párhuzamos feladatok végrehajtását nagyobb (de kevesebb) számítási csomóponton. Tekintse meg a [példában szereplő példát](batch-parallel-node-tasks.md#example-scenario) az adott forgatókönyv részleteinek megtekintéséhez.
 - Megtudhatja, hogyan [figyelheti a Batch-megoldásokat a feladatok és a csomópontok állapot szerinti számlálásával](batch-get-resource-counts.md)

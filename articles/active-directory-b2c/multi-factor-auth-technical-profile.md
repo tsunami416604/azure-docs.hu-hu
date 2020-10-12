@@ -12,10 +12,10 @@ ms.date: 03/26/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 71040f831ed7a64f2bc7be7f3a75218976fc2559
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85385943"
 ---
 # <a name="define-an-azure-mfa-technical-profile-in-an-azure-ad-b2c-custom-policy"></a>Azure MFA technikai profil definiálása egy Azure AD B2C egyéni szabályzatban
@@ -59,10 +59,10 @@ A **szabályzattípushoz** elem tartalmazza az Azure MFA számára küldendő jo
 
 | ClaimReferenceId | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| userPrincipalName | Yes | A telefonszámot birtokló felhasználó azonosítója. |
-| Telefonszám | Yes | Az SMS-kód küldésére szolgáló telefonszám. |
-| companyName | No |A vállalat neve az SMS-ben. Ha nincs megadva, a rendszer az alkalmazás nevét használja. |
-| területi beállítás | No | Az SMS területi beállítása. Ha nincs megadva, a rendszer a felhasználó böngésző területi beállítását használja. |
+| userPrincipalName | Igen | A telefonszámot birtokló felhasználó azonosítója. |
+| Telefonszám | Igen | Az SMS-kód küldésére szolgáló telefonszám. |
+| companyName | Nem |A vállalat neve az SMS-ben. Ha nincs megadva, a rendszer az alkalmazás nevét használja. |
+| területi beállítás | Nem | Az SMS területi beállítása. Ha nincs megadva, a rendszer a felhasználó böngésző területi beállítását használja. |
 
 A **InputClaimsTransformations** elem olyan **InputClaimsTransformation** -elemek gyűjteményét is tartalmazhatja, amelyek a bemeneti jogcímek módosítására vagy újak előállítására szolgálnak az Azure MFA szolgáltatásba való küldés előtt.
 
@@ -76,7 +76,7 @@ A **OutputClaimsTransformations** elem olyan **OutputClaimsTransformation** -ele
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| Művelet | Yes | **OneWaySMS**kell lennie.  |
+| Művelet | Igen | **OneWaySMS**kell lennie.  |
 
 #### <a name="ui-elements"></a>Felhasználói felület elemei
 
@@ -84,10 +84,10 @@ A következő metaadatokkal konfigurálhatja az SMS-hibák küldésekor megjelen
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| UserMessageIfCouldntSendSms | No | Felhasználói hibaüzenet, ha a megadott telefonszám nem fogad SMS-üzenetet. |
-| UserMessageIfInvalidFormat | No | Felhasználói hibaüzenet, ha a megadott telefonszám nem érvényes telefonszám. |
-| UserMessageIfServerError | No | Felhasználói hibaüzenet, ha a kiszolgáló belső hibát észlelt. |
-| UserMessageIfThrottled| No | Felhasználói hibaüzenet, ha a kérelem szabályozása megtörtént.|
+| UserMessageIfCouldntSendSms | Nem | Felhasználói hibaüzenet, ha a megadott telefonszám nem fogad SMS-üzenetet. |
+| UserMessageIfInvalidFormat | Nem | Felhasználói hibaüzenet, ha a megadott telefonszám nem érvényes telefonszám. |
+| UserMessageIfServerError | Nem | Felhasználói hibaüzenet, ha a kiszolgáló belső hibát észlelt. |
+| UserMessageIfThrottled| Nem | Felhasználói hibaüzenet, ha a kérelem szabályozása megtörtént.|
 
 ### <a name="example-send-an-sms"></a>Példa: SMS küldése
 
@@ -121,8 +121,8 @@ A **szabályzattípushoz** elem tartalmazza az Azure MFA számára küldendő jo
 
 | ClaimReferenceId | Kötelező | Leírás |
 | --------- | -------- | ----------- | ----------- |
-| Telefonszám| Yes | Ugyanazt a telefonszámot használja, mint korábban a kód elküldéséhez. A rendszer a telefonos ellenőrzési munkamenetek megkeresésére is használatos. |
-| verificationCode  | Yes | A felhasználó által ellenőrizendő ellenőrző kód |
+| Telefonszám| Igen | Ugyanazt a telefonszámot használja, mint korábban a kód elküldéséhez. A rendszer a telefonos ellenőrzési munkamenetek megkeresésére is használatos. |
+| verificationCode  | Igen | A felhasználó által ellenőrizendő ellenőrző kód |
 
 A **InputClaimsTransformations** elem olyan **InputClaimsTransformation** -elemek gyűjteményét is tartalmazhatja, amelyek a bemeneti jogcímek módosítására vagy újak létrehozására szolgálnak az Azure MFA szolgáltatás meghívása előtt.
 
@@ -136,7 +136,7 @@ A **OutputClaimsTransformations** elem olyan **OutputClaimsTransformation** -ele
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| Művelet | Yes | **Ellenőrizni** kell |
+| Művelet | Igen | **Ellenőrizni** kell |
 
 #### <a name="ui-elements"></a>Felhasználói felület elemei
 
@@ -144,10 +144,10 @@ A következő metaadatokkal konfigurálhatja a kód-ellenőrzési hiba esetén m
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| UserMessageIfMaxAllowedCodeRetryReached| No | Felhasználói hibaüzenet, ha a felhasználó túl sokszor próbált meg ellenőrző kódot. |
-| UserMessageIfServerError | No | Felhasználói hibaüzenet, ha a kiszolgáló belső hibát észlelt. |
-| UserMessageIfThrottled| No | Felhasználói hibaüzenet, ha a kérelem szabályozása megtörtént.|
-| UserMessageIfWrongCodeEntered| No| Felhasználói hibaüzenet, ha az ellenőrzéshez megadott kód nem megfelelő.|
+| UserMessageIfMaxAllowedCodeRetryReached| Nem | Felhasználói hibaüzenet, ha a felhasználó túl sokszor próbált meg ellenőrző kódot. |
+| UserMessageIfServerError | Nem | Felhasználói hibaüzenet, ha a kiszolgáló belső hibát észlelt. |
+| UserMessageIfThrottled| Nem | Felhasználói hibaüzenet, ha a kérelem szabályozása megtörtént.|
+| UserMessageIfWrongCodeEntered| Nem| Felhasználói hibaüzenet, ha az ellenőrzéshez megadott kód nem megfelelő.|
 
 ### <a name="example-verify-a-code"></a>Példa: kód ellenőrzése
 

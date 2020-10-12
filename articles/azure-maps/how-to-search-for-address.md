@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 2a322de383194f131395629d33456d7561397eb9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91310985"
 ---
 # <a name="search-for-a-location-using-azure-maps-search-services"></a>Hely keresése Azure Maps Search Services használatával
@@ -95,7 +95,7 @@ Ebben a példában a alkalmazásban a teljes világ keresésére használjuk a f
 
 4. Az alapértelmezett viselkedés a teljes világon való keresés, ami felesleges eredményeket ad vissza. Ezután a pizzát csak a Egyesült Államok fogjuk keresni. Adja hozzá a `countrySet` kulcsot a **Paraméterek** szakaszhoz, és állítsa be a értékét a következőre: `US` . A `countrySet` kulcs beállítása, hogy az `US` eredményeket a Egyesült Államokhoz kösse.
 
-    :::image type="content" source="./media/how-to-search-for-address/search-fuzzy-country.png" alt-text="Pizza keresése a Egyesült Államokban":::
+    :::image type="content" source="./media/how-to-search-for-address/search-fuzzy-country.png" alt-text="Keresés a címben":::
 
     Az eredmények mostantól az országkód szerint vannak kötve, és a lekérdezés a Egyesült Államok pizzás éttermeit adja vissza.
 
@@ -143,13 +143,13 @@ Ebben a példában az elérhető választható paraméterek közül néhányat v
     | returnRoadUse | true | A következő címen adja vissza a közúti használat típusait:. Az összes lehetséges közúti használati típushoz lásd: [országúti használat típusai](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse#uri-parameters).|
     | returnMatchType | true| A egyezés típusát adja vissza. A lehetséges értékekért lásd: [keresési eredmények fordított címe](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse#searchaddressreverseresult)
 
-   :::image type="content" source="./media/how-to-search-for-address/search-reverse.png" alt-text="Keresés fordított.":::
+   :::image type="content" source="./media/how-to-search-for-address/search-reverse.png" alt-text="Keresés a címben":::
 
 5. Kattintson a **Küldés**gombra, és tekintse át a válasz törzsét.
 
 6. Ezután adja hozzá a `entityType` kulcsot, és állítsa be a értékét a következőre: `Municipality` . A `entityType` kulcs felülbírálja a `returnMatchType` kulcsot az előző lépésben. Emellett el kell távolítani `returnSpeedLimit` a-t és a-t is, `returnRoadUse` mivel adatokat kérnek a településről.  Az összes lehetséges entitás típusával kapcsolatban lásd: [entitások típusai](https://docs.microsoft.com/rest/api/maps/search/getsearchaddressreverse#entitytype).
 
-    :::image type="content" source="./media/how-to-search-for-address/search-reverse-entity-type.png" alt-text="Keresés fordított entityType.":::
+    :::image type="content" source="./media/how-to-search-for-address/search-reverse-entity-type.png" alt-text="Keresés a címben":::
 
 7. Kattintson a **Küldés** gombra. Hasonlítsa össze az eredményeket az 5. lépésben visszaadott eredményekkel.  Mivel a kért entitás típusa már megtörtént `municipality` , a válasz nem tartalmazza az utca címe információit. Emellett a visszaadott `geometryId` érték a határ sokszög kérésére is használható Azure Maps Get [Search sokszög API](https://docs.microsoft.com/rest/api/maps/search/getsearchpolygon)-val.
 
@@ -168,7 +168,7 @@ Ebben a példában a címek koordinátái alapján keresünk egy kereszt utcát.
    https://atlas.microsoft.com/search/address/reverse/crossstreet/json?&api-version=1.0&subscription-key={Azure-Maps-Primary-Subscription-key}&language=en-US&query=47.591180,-122.332700
     ```
 
-    :::image type="content" source="./media/how-to-search-for-address/search-address-cross.png" alt-text="Keresés a Cross Streeten.":::
+    :::image type="content" source="./media/how-to-search-for-address/search-address-cross.png" alt-text="Keresés a címben":::
   
 3. Kattintson a **Küldés**gombra, és tekintse át a válasz törzsét. Figyelje meg, hogy a válasz tartalmazza a `crossStreet` értékét `Occidental Avenue South` .
 

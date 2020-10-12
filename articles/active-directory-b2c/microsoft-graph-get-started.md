@@ -12,10 +12,10 @@ ms.date: 02/14/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: d95b45b9be0893282a532bae9ec0278c3a141686
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85385926"
 ---
 # <a name="manage-azure-ad-b2c-with-microsoft-graph"></a>Azure AD B2C kezelése Microsoft Graph
@@ -53,7 +53,7 @@ Mielőtt a parancsfájlok és az alkalmazások kommunikálhatnak a [Microsoft Gr
 1. Adja meg az alkalmazás **nevét** . Például: *managementapp1*.
 1. **Csak a szervezeti címtárban**válassza a fiókok elemet.
 1. Az **engedélyek**területen törölje a *rendszergazdai jóváhagyás megadása az OpenID-hez és a offline_access engedélyekhez* jelölőnégyzet jelölését.
-1. Kattintson a **Register** (Regisztrálás) elemre.
+1. Válassza a **Regisztráció** lehetőséget.
 1. Jegyezze fel az alkalmazás – áttekintés oldalon megjelenő **alkalmazást (ügyfél-azonosítót)** . Ezt az értéket egy későbbi lépésben kell használni.
 
 ### <a name="grant-api-access"></a>API-hozzáférés biztosítása
@@ -80,7 +80,7 @@ Ha az alkalmazásnak vagy a parancsfájlnak törölnie kell a felhasználókat, 
 1. Válassza ki a **felhasználói rendszergazda** szerepkört.
 1. Válassza a **hozzárendelések hozzáadása**lehetőséget.
 1. A **kijelölés** szövegmezőbe írja be a korábban regisztrált alkalmazás nevét, például *managementapp1*. Válassza ki az alkalmazást, amikor megjelenik a keresési eredmények között.
-1. Válassza a **Hozzáadás** elemet. Az engedélyek teljes propagálása eltarthat néhány percig.
+1. Válassza a **Hozzáadás** lehetőséget. Az engedélyek teljes propagálása eltarthat néhány percig.
 
 ## <a name="next-steps"></a>További lépések
 Most, hogy regisztrálta a felügyeleti alkalmazást, és megadta a szükséges engedélyeket, az alkalmazásai és szolgáltatásai (például az Azure-folyamatok) használhatják a hitelesítő adatait és a Microsoft Graph API-val való interakcióra vonatkozó engedélyeket. 

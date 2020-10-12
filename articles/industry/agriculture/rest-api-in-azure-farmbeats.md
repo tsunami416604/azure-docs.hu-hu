@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: sunasing
 ms.openlocfilehash: f15bee7e802b04d04a3c87d7f84fc975b88bf260
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86536572"
 ---
 # <a name="azure-farmbeats-apis"></a>Azure FarmBeats API-k
@@ -71,7 +71,7 @@ Az Azure FarmBeats Datahub API-hívásakor a leggyakoribb kérések fejléceit k
 **Fejléc** | **Leírás és példa**
 --- | ---
 Content-Type  | A kérelem formátuma (Content-Type: Application/ <format> ). Az Azure FarmBeats Datahub API-k formátuma a következő: JSON. Content-Type: Application/JSON
-Engedélyezés  | Meghatározza az API-hívások létrehozásához szükséges hozzáférési jogkivonatot. Engedélyezés: tulajdonos <hozzáférés-token>
+Engedélyezés  | Meghatározza az API-hívások létrehozásához szükséges hozzáférési jogkivonatot. Engedélyezés: tulajdonos <Access-Token>
 Elfogadás | A válasz formátuma. Az Azure FarmBeats Datahub API-k formátuma a következő: JSON. Elfogadás: alkalmazás/JSON
 
 ### <a name="api-requests"></a>API-kérelmek

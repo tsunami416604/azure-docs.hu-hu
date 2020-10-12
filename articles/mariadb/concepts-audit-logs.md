@@ -7,10 +7,10 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 6/24/2020
 ms.openlocfilehash: 7c9d59eee1e1ce69394301023b108952eaf46790
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85362424"
 ---
 # <a name="audit-logs-in-azure-database-for-mariadb"></a>Naplók naplózása Azure Database for MariaDB
@@ -31,7 +31,7 @@ Az egyéb paraméterek a következők:
 - `audit_log_exclude_users`: A MariaDB a naplózásból kizárandó felhasználókat. Legfeljebb négy felhasználó számára teszi lehetővé. A paraméter maximális hossza 256 karakter.
 
 > [!Note]
-> `audit_log_include_users`magasabb prioritással rendelkezik `audit_log_exclude_users` . Ha például `audit_log_include_users`  =  `demouser` `audit_log_exclude_users`  =  `demouser` a és a, a felhasználó belekerül a naplóba, mert `audit_log_include_users` magasabb prioritással rendelkezik.
+> `audit_log_include_users` magasabb prioritással rendelkezik `audit_log_exclude_users` . Ha például `audit_log_include_users`  =  `demouser` `audit_log_exclude_users`  =  `demouser` a és a, a felhasználó belekerül a naplóba, mert `audit_log_include_users` magasabb prioritással rendelkezik.
 
 | **Esemény** | **Leírás** |
 |---|---|
@@ -59,10 +59,10 @@ A következő szakaszok azt írják le, hogy milyen kimenetet MariaDB a naplók 
 | `TenantId` | A bérlő azonosítója |
 | `SourceSystem` | `Azure` |
 | `TimeGenerated [UTC]` | A napló UTC-ben való rögzítésének időbélyegzője |
-| `Type` | A napló típusa. Mindig`AzureDiagnostics` |
+| `Type` | A napló típusa. Mindig `AzureDiagnostics` |
 | `SubscriptionId` | Annak az előfizetésnek a GUID azonosítója, amelyhez a kiszolgáló tartozik |
 | `ResourceGroup` | Azon erőforráscsoport neve, amelyhez a kiszolgáló tartozik |
-| `ResourceProvider` | Az erőforrás-szolgáltató neve. Mindig`MICROSOFT.DBFORMARIADB` |
+| `ResourceProvider` | Az erőforrás-szolgáltató neve. Mindig `MICROSOFT.DBFORMARIADB` |
 | `ResourceType` | `Servers` |
 | `ResourceId` | Erőforrás URI-ja |
 | `Resource` | A kiszolgáló neve |
@@ -89,10 +89,10 @@ Az alábbi séma az általános, a DML_SELECT, a DML_NONSELECT, a DML, a DDL, a 
 | `TenantId` | A bérlő azonosítója |
 | `SourceSystem` | `Azure` |
 | `TimeGenerated [UTC]` | A napló UTC-ben való rögzítésének időbélyegzője |
-| `Type` | A napló típusa. Mindig`AzureDiagnostics` |
+| `Type` | A napló típusa. Mindig `AzureDiagnostics` |
 | `SubscriptionId` | Annak az előfizetésnek a GUID azonosítója, amelyhez a kiszolgáló tartozik |
 | `ResourceGroup` | Azon erőforráscsoport neve, amelyhez a kiszolgáló tartozik |
-| `ResourceProvider` | Az erőforrás-szolgáltató neve. Mindig`MICROSOFT.DBFORMARIADB` |
+| `ResourceProvider` | Az erőforrás-szolgáltató neve. Mindig `MICROSOFT.DBFORMARIADB` |
 | `ResourceType` | `Servers` |
 | `ResourceId` | Erőforrás URI-ja |
 | `Resource` | A kiszolgáló neve |
@@ -102,7 +102,7 @@ Az alábbi séma az általános, a DML_SELECT, a DML_NONSELECT, a DML, a DDL, a 
 | `event_class_s` | `general_log` |
 | `event_subclass_s` | `LOG`, `ERROR`, `RESULT` |
 | `event_time` | Lekérdezés kezdő másodperce a UNIX időbélyegzőben |
-| `error_code_d` | Hibakód, ha a lekérdezés nem sikerült. `0`nem jelent hibát |
+| `error_code_d` | Hibakód, ha a lekérdezés nem sikerült. `0` nem jelent hibát |
 | `thread_id_d` | A lekérdezést futtató szál azonosítója |
 | `host_s` | Blank |
 | `ip_s` | Az MariaDB-hez csatlakozó ügyfél IP-címe |

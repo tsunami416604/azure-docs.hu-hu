@@ -4,10 +4,10 @@ description: Engedélyezze az automatikus kiosztást a névtéren az átviteli e
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 1be564472011622b71b3066495748dfdbe6cc791
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86537241"
 ---
 # <a name="automatically-scale-up-azure-event-hubs-throughput-units"></a>Az Azure Event Hubs átviteli egységek automatikus méretezése
@@ -110,7 +110,7 @@ Engedélyezheti az automatikus kiépítést Azure Resource Manager sablon közpo
 A teljes sablonhoz lásd: [Event Hubs névtér létrehozása és a kikapcsolt sablon engedélyezése](https://github.com/Azure/azure-quickstart-templates/tree/master/201-eventhubs-create-namespace-and-enable-inflate) a githubon.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az alábbi webhelyeken további információt talál az Event Hubsról:
 

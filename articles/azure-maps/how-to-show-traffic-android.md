@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 93cabb566db02de7ef991fe9cdd293f8c399c3a3
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91272956"
 ---
 # <a name="show-traffic-data-on-the-map-using-azure-maps-android-sdk"></a>Forgalmi adatok megjelenítése a térképen Azure Maps Android SDK használatával
@@ -57,7 +57,7 @@ Az alábbi kódrészlettel állíthatja be a forgalmi folyamatra vonatkozó adat
 | :-- | :-- |
 | Forgalomáramlási. NONE | Nem jeleníti meg a forgalmi adatokat a térképen |
 | Forgalomáramlási. relatív | Az út szabad áramlási sebességéhez viszonyított forgalmi adatokat jeleníti meg |
-| Forgalomáramlási. RELATIVE_DELAY | A várt átlagos késésnél lassabb területeket jelenít meg. |
+| TrafficFlow.RELATIVE_DELAY | A várt átlagos késésnél lassabb területeket jelenít meg. |
 | Forgalomáramlási. ABSOLUTE | Az összes jármű teljes sebességét jeleníti meg az úton |
 
 ```java

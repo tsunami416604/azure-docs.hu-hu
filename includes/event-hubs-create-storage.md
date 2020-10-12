@@ -9,10 +9,10 @@ ms.date: 10/16/2018
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: bf107da82fb3f772a341e70ce472f08ea674a450
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75692576"
 ---
 ### <a name="create-a-storage-account-for-event-processor-host"></a>Tárfiók létrehozása az Event Processor Host számára
@@ -32,7 +32,7 @@ Az Event Processor Host egy intelligens ügynök, amely leegyszerűsíti az esem
    2. Válasszon ki egy Azure- **előfizetést** , amely az Event hub-t tartalmazza.
    3. Válassza ki vagy hozza létre az Event hub-t tartalmazó **erőforráscsoportot** .
    4. Válasszon egy **helyet** , amelyben létre kívánja hozni az erőforrást. 
-   5. Válassza az **Áttekintés + létrehozás** lehetőséget.
+   5. Válassza a **Felülvizsgálat + létrehozás** lehetőséget.
    
         ![Felülvizsgálat + létrehozás, Storage-fiók létrehozása, Microsoft Azure Portal](./media/event-hubs-create-storage/review-create.png)
 

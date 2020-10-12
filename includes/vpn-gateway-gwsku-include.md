@@ -9,10 +9,10 @@ ms.date: 11/12/2019
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: 8087025810214f3edbb74e628698eb69558f3500
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74085245"
 ---
 Egy virtuális hálózati átjáró létrehozásakor meg kell adni a használni kívánt termékváltozatot. Válassza ki a számítási feladatok, az átviteli sebesség, a funkciók és a szolgáltatói szerződés igényeinek megfelelő termékváltozatot. A Azure Availability Zones virtuális hálózati átjárói SKU-ban tekintse meg a [Azure Availability Zones Gateway SKU](../articles/vpn-gateway/about-zone-redundant-vnet-gateways.md)-ket.
@@ -41,11 +41,11 @@ Az új VPN Gateway SKU-ra egyszerűsíti az átjárók által kínált szolgált
 
 ( \* \* ) Az alapszintű SKU egy ÖRÖKÖLt SKU-nak minősül. Az alapszintű SKU bizonyos szolgáltatási korlátozásokkal rendelkezik. Alapszintű SKU-t használó átjárót nem lehet átméretezni az új átjárók egyikére, ehelyett egy új SKU-ra kell váltania, amely magában foglalja a VPN-átjáró törlését és újbóli létrehozását.
 
-###  <a name="gateway-skus---production-vs-dev-test-workloads"></a><a name="workloads"></a>Gateway SKU-gyártás és fejlesztési-tesztelési feladatok
+###  <a name="gateway-skus---production-vs-dev-test-workloads"></a><a name="workloads"></a>Gateway SKU-gyártás és Dev-Test számítási feladatok
 
 A szolgáltatói szerződések és a szolgáltatáskészletek eltérései miatt az alábbi termékváltozatokat javasoljuk termelés vs. dev-test környezetekhez:
 
-| **Munkaterhelés**                       | **Termékváltozatok**               |
+| **Számítási feladat**                       | **Termékváltozatok**               |
 | ---                                | ---                    |
 | **Termelés, kritikus fontosságú számítási feladatok** | Az összes Generation1 és Generation2 SKU, kivéve az alapszintű |
 | **Dev-test vagy a koncepció igazolása**   | Alapszintű (* *)                 |

@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 06/29/2018
 ms.author: pepogors
 ms.openlocfilehash: 1d7478e6b81ef2c53ca6194197336e91d3ff250b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75614523"
 ---
 # <a name="develop-c-service-fabric-applications-with-visual-studio-code"></a>C# Service Fabric-alkalmazások fejlesztése a Visual Studio Code-ban
@@ -85,7 +85,7 @@ Ha a VS Code alkalmazásban hibakeresést végez, az alkalmazásnak helyi fürt�
 
 Töréspont és hibakeresés beállításához hajtsa végre a következő lépéseket:
 1. Az Intézőben nyissa meg a */src/CounterServiceApplication/CounterService/CounterService.cs* fájlt, és állítson be egy töréspontot a 62. sorban a `RunAsync` metóduson belül.
-3. A VS Code-ban a hibakereső nézet megnyitásához kattintson a **tevékenység sávján** található hibakeresés ikonra. Kattintson a fogaskerék ikonra a hibakereső nézet tetején, és válassza a **.net Core** elemet a legördülő menüből. Megnyílik a launch.jsfájl. Ezt a fájlt lezárhatja. Most meg kell jelennie a konfigurációs beállításoknak a Futtatás gomb melletti hibakeresési konfigurációs menüben (zöld nyíl).
+3. A VS Code-ban a hibakereső nézet megnyitásához kattintson a **tevékenység sávján** található hibakeresés ikonra. Kattintson a fogaskerék ikonra a hibakereső nézet tetején, és válassza a **.net Core** elemet a legördülő menüből. Megnyílik a launch.jsfájl. Bezárhatja ezt a fájlt. Most meg kell jelennie a konfigurációs beállításoknak a Futtatás gomb melletti hibakeresési konfigurációs menüben (zöld nyíl).
 
    ![Hibakeresés ikon a VS Code munkaterületen](./media/service-fabric-develop-csharp-applications-with-vs-code/debug-icon-workspace.png)
 
