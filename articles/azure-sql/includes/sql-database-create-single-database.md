@@ -7,10 +7,10 @@ ms.date: 03/10/2020
 ms.author: mathoma
 ms.reviewer: vanto
 ms.openlocfilehash: ad6e444f9672fbe521e9c6963649d250830154d8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84046137"
 ---
 Ebben a lépésben létrehoz egy [logikai SQL-kiszolgálót](../database/logical-servers.md) és egy AdventureWorksLT-mintát használó [önálló adatbázist](../database/single-database-overview.md) . Az adatbázist Azure Portal menük és képernyők használatával, vagy az Azure Cloud Shell Azure CLI-vagy PowerShell-parancsfájllal is létrehozhatja.
@@ -28,7 +28,7 @@ Erőforráscsoport, kiszolgáló és önálló adatbázis létrehozása a Azure 
    ![Hozzáadás az Azure SQL-hez](./media/sql-database-create-single-database/sqldbportal.png)
 
 1. Az **SQL központi telepítési lehetőség kiválasztása** lapon válassza az **SQL-adatbázisok** csempét az **Erőforrás típusa**területen található **önálló adatbázis** elemre. A különböző adatbázisokkal kapcsolatos további információkat a **Részletek megjelenítése**lehetőség kiválasztásával tekintheti meg.
-1. Válassza a **Létrehozás** lehetőséget.
+1. Kattintson a **Létrehozás** gombra.
 
    ![Önálló adatbázis létrehozása](./media/sql-database-create-single-database/create-single-database.png)
 
@@ -41,7 +41,7 @@ Erőforráscsoport, kiszolgáló és önálló adatbázis létrehozása a Azure 
    - **Password (jelszó**): adjon meg egy jelszót, amely megfelel a követelményeknek, majd írja be újra a **Jelszó megerősítése** mezőbe.
    - **Hely**: legördülő lista, válasszon egy helyet, például **(USA) az USA keleti**régióját.
 
-   Válassza az **OK** lehetőséget.
+   Kattintson az **OK** gombra.
 
    ![Új kiszolgáló](./media/sql-database-create-single-database/new-server.png)
 
@@ -235,7 +235,7 @@ A következő PowerShell-kód egy Azure-erőforráscsoportot, egy kiszolgálót,
 
 Az előző kód ezeket a PowerShell-parancsmagokat használja:
 
-| Parancs | Megjegyzések |
+| Parancs | Jegyzetek |
 |---|---|
 | [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup) | Létrehoz egy erőforráscsoportot, amely az összes erőforrást tárolja. |
 | [Új – AzSqlServer](/powershell/module/az.sql/new-azsqlserver) | Adatbázisokat és rugalmas készleteket futtató kiszolgálót hoz létre. |

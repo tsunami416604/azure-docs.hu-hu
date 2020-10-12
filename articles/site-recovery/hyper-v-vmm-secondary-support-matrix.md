@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/06/2019
 ms.author: raynew
 ms.openlocfilehash: af7baf413c9054ef3e5bf527851ac06c113cdce7
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86131174"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-hyper-v-vms-to-a-secondary-site"></a>Támogatási mátrix Hyper-V virtuális gépek másodlagos helyre történő vészhelyreállításához
@@ -70,7 +70,7 @@ Vendég virtuális gép – több hálózati adapter | Igen
 
 **Storage (gazdagép)** | **Támogatott**
 --- | --- 
-NFS | N.A.
+NFS | N/A
 SMB 3.0 |  Igen
 SAN (ISCSI) | Igen
 Több elérési út (MPIO) | Igen
@@ -79,15 +79,15 @@ Több elérési út (MPIO) | Igen
 
 **Konfigurálás** | **Támogatott**
 --- | --- | 
-VMDK |  N.A.
+VMDK |  N/A
 VHD/VHDX | Igen (legfeljebb 16 lemez)
 2. generációs VM | Igen
 Megosztott fürtözött lemez | Nem
 Titkosított lemez | Nem
-UEFI| N.A.
+UEFI| N/A
 NFS | Nem
 SMB 3.0 | Nem
-RDM | N.A.
+RDM | N/A
 Lemez > 1 TB | Igen
 Kötet szalagos lemezzel > 1 TB<br/><br/> LVM | Igen
 Tárolóhelyek | Igen
@@ -95,7 +95,7 @@ Lemez gyors hozzáadása/eltávolítása | Nem
 Lemez kizárása | Igen
 Több elérési út (MPIO) | Igen
 
-## <a name="vaults"></a>Tárolók
+## <a name="vaults"></a>Kulcstartók
 
 **Művelet** | **Támogatott**
 --- | --- 
@@ -106,12 +106,12 @@ Tárterület, hálózat, Azure-beli virtuális gépek áthelyezése az erőforr�
 
 A szolgáltató koordinálja a VMM-kiszolgálók közötti kommunikációt. 
 
-**Legújabb** | **Frissítések**
+**Legutóbbi** | **Frissítések**
 --- | --- 
 5.1.19 ([elérhető a portálról](https://aka.ms/downloaddra) | [Legújabb funkciók és javítások](https://support.microsoft.com/kb/3155002)
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [VMM-felhőkben lévő Hyper-V virtuális gépek replikálása másodlagos helyre](./hyper-v-vmm-disaster-recovery.md)

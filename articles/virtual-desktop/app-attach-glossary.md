@@ -9,10 +9,10 @@ ms.date: 08/17/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: f3cc8495f673c8b428aa9e6ace2747a70c5b0847
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88556287"
 ---
 # <a name="msix-app-attach-glossary"></a>MSIX-alkalmazás szószedetének csatolása
@@ -106,7 +106,7 @@ A leválasztás értesíti az operációs rendszert arról, hogy egy jelenleg ne
 
 . A CIM a kompozit képfájlok rendszeréhez (CimFS) társított új fájlkiterjesztés. A CIM-fájlok csatlakoztatása és leválasztása gyorsabb a VHD-fájlokban. A CIM a VHD-nél kevesebb PROCESSZORt és memóriát is felhasznál.
 
-A következő táblázat a VHD-k és a CimFS közötti teljesítmény-összehasonlítás. Ezek a számok egy DSv4-gépen futtatott, 800 MB-os fájlokkal futtatott teszt eredményei.
+A következő táblázat a VHD-k és a CimFS közötti teljesítmény-összehasonlítás. Ezek a számok egy DSv4-gépen futtatott, 500 300 MB-os fájlokkal futtatott teszt eredményei.
 
 |  Jellemzők                          | VHD                    | CimFS   |
 |---------------------------------|--------------------------|-----------|
@@ -115,7 +115,7 @@ A következő táblázat a VHD-k és a CimFS közötti teljesítmény-összehaso
 | Memóriahasználat | 6% (8 GB)                      | 2% (8 GB)       |
 | PROCESSZOR (szám-tüske)          | Többszöri maxed | Nincs hatás |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni az MSIX alkalmazáshoz, tekintse át az [áttekintést](what-is-app-attach.md) és a [gyakori kérdéseket](app-attach-faq.md). Ellenkező esetben Ismerkedjen [meg az alkalmazások csatlakoztatásának beállítása](app-attach.md)című lépéssel.
 

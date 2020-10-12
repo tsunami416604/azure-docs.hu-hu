@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 04/03/2017
 ms.subservice: alerts
 ms.openlocfilehash: 47ed723ecfc544673ac8aa6374c27ae5a7cf166b
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87852106"
 ---
 # <a name="call-a-webhook-with-a-classic-metric-alert-in-azure-monitor"></a>Webhook meghívása klasszikus metrikai riasztással Azure Monitor
@@ -72,7 +72,7 @@ A POST művelet a következő JSON-adattartalmat és sémát tartalmazza az öss
 ```
 
 
-| Mező | Kötelező | Rögzített értékek halmaza | Megjegyzések |
+| Mező | Kötelező | Rögzített értékek halmaza | Jegyzetek |
 |:--- |:--- |:--- |:--- |
 | status |Y |Aktiválva, megoldva |A riasztás állapota a beállított feltételek alapján. |
 | összefüggésben |Y | |A riasztás kontextusa. |

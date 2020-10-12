@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 10/03/2017
 ms.author: alkohli
 ms.openlocfilehash: 4a53dd803b22899b7dd15db0aa1ff411641a11dc
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88183258"
 ---
 # <a name="use-azure-resource-manager-sdk-based-scripts-to-manage-storsimple-devices"></a>Azure Resource Manager SDK-alapú parancsfájlok használata a StorSimple-eszközök kezeléséhez
@@ -25,7 +25,7 @@ A különböző StorSimple-feladatok automatizálásához a következő minta-pa
 
 #### <a name="table-of-azure-resource-manager-sdk-based-sample-scripts"></a>Azure Resource Manager SDK-alapú minta-parancsfájlok táblázata
 
-| Azure Resource Manager parancsfájl                    | Description                                                                                                                                                                                                       |
+| Azure Resource Manager parancsfájl                    | Leírás                                                                                                                                                                                                       |
 |--------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | [Authorize-ServiceEncryptionRollover.ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Authorize-ServiceEncryptionRollover.ps1)          | Ezzel a szkripttel engedélyezheti a StorSimple-eszköz számára a szolgáltatás adattitkosítási kulcsának módosítását.                                                                                                           |
 | [Create-StorSimpleCloudAppliance.ps1](https://raw.githubusercontent.com/anoobbacker/storsimpledevicemgmttools/master/Create-StorSimpleCloudAppliance.ps1)              | Ez a szkript 8010 vagy 8020 StorSimple Cloud Appliance hoz létre. A felhőalapú berendezés ezután konfigurálható és regisztrálható a StorSimple Data Manager szolgáltatásban.                                                       |
@@ -97,7 +97,7 @@ Az ebben a példában használt parancsfájl felsorolja a StorSimple-eszközön 
 
     ```
 
-### <a name="sample-output"></a>Példa kimenet
+### <a name="sample-output"></a>Példakimenet
 
 A minta parancsfájl futtatásakor a következő kimenet jelenik meg. A kimenet tartalmazza az összes olyan feladatot, amely a 2017. szeptember 25-én elindított regisztrált eszközön futott, és 2017. október 2-án fejeződött be.
 

@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: virtual-machines
 author: ayshakeen
 ms.service: virtual-machines
@@ -9,10 +9,10 @@ ms.date: 09/18/2019
 ms.author: azcspmt;ayshak;cynthn
 ms.custom: include file
 ms.openlocfilehash: 4f6a6dd28662c98c89dad39da3fd5c967f227dc3
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87084049"
 ---
 Az Azure-beli számítások olyan virtuálisgép-méreteket biztosítanak, amelyek egy adott hardvereszközhöz vannak elkülönítve, és egyetlen ügyfélhez vannak hozzárendelve. Az elkülönített méretek élőak és működnek az adott hardveres generáción, és a hardveres generáció kivonásakor elavulttá válik.
@@ -41,7 +41,7 @@ Mivel az elkülönített virtuálisgép-méretek hardveres korlátok, az Azure a
 | Standard_DS15_v2<sup>1</sup> | Május 15., 2020 |
 | Standard_D15_v2<sup>1</sup>  | Május 15., 2020 |
 
-<sup>1</sup> a Standard_DS15_v2 és Standard_D15_v2 elkülönítési program részleteit lásd: gyakori kérdések
+<sup>1</sup>  a Standard_DS15_v2 és Standard_D15_v2 elkülönítési program részleteit lásd: gyakori kérdések
 
 
 ## <a name="faq"></a>GYIK
@@ -62,7 +62,7 @@ Mivel az elkülönített virtuálisgép-méretek hardveres korlátok, az Azure a
  
 ### <a name="q-what-are-the-milestones-for-d15_v2-or-ds15_v2-isolation-retirement"></a>K: milyen mérföldkövek vannak a D15_v2 vagy DS15_v2 elkülönítésének megszüntetéséhez? 
 **A**: 
-| Dátum | Műveletek | 
+| Dátum | Művelet | 
 | --- | --- |
 | 2019. november 18. | D/DS15i_v2 rendelkezésre állása (TB, 1 éves RI) |
 | Május 14., 2020  | Az elmúlt nap, hogy megvásárolja a D/DS15i_v2 1 éves RI | 

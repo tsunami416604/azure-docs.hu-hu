@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
 ms.openlocfilehash: a2115e9c1601c86cce8857c10baf12b91cc2b997
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75482568"
 ---
 # <a name="generate-soil-moisture-heatmap"></a>Talaj nedvesség-hő előállítása
@@ -87,7 +87,7 @@ Ehhez a következő lépések szükségesek:
 2. Ha a feladatok állapota **sikeres**, válassza a menü **térképek** elemét.
 3. Keresse meg a térképen a következő formátumban: <talaj-moisture_MyFarm_YYYY-hh-nn>.
 4. Válasszon ki egy térképet a **Name (név** ) oszlopban, megjelenik egy előugró ablak, amely a kiválasztott Térkép előnézetét jeleníti meg.
-5. Válassza a **Download** (Letöltés) lehetőséget. A Térkép le van töltve, és a számítógép helyi mappájába lesz tárolva.
+5. Válassza a **Letöltés** lehetőséget. A Térkép le van töltve, és a számítógép helyi mappájába lesz tárolva.
 
     ![A Project Farm veri](./media/get-sensor-data-from-sensor-partner/download-soil-moisture-map-1.png)
 

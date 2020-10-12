@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: jingwang
 ms.openlocfilehash: 10121243961d4c81ecc67d7453019c26743fe610
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87845765"
 ---
 # <a name="copy-data-from-an-odata-source-by-using-azure-data-factory"></a>Adatok másolása OData-forrásból Azure Data Factory használatával
@@ -291,9 +291,9 @@ Amikor OData másol az adatokból, a következő leképezések használatosak a 
 | Edm.Boolean | Logikai |
 | EDM. byte | Bájt [] |
 | EDM. DateTime | DateTime |
-| EDM. decimális | Decimal |
+| EDM. decimális | Tizedesjegy |
 | Edm.Double | Dupla |
-| EDM. Single | Egyszeres |
+| EDM. Single | Egyirányú |
 | EDM. GUID | Guid |
 | EDM. Int16 | Int16 |
 | Edm.Int32 | Int32 |

@@ -7,10 +7,10 @@ ms.date: 07/29/2020
 ms.author: hazeng
 ms.custom: devx-track-python
 ms.openlocfilehash: 9b9f5d389eda5d74e7e78cfcfa9a46fba7276cbd
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87846037"
 ---
 # <a name="troubleshoot-python-errors-in-azure-functions"></a>Python-hibák elhárítása Azure Functions
@@ -95,7 +95,7 @@ Nyissa meg a `requirements.txt` szövegszerkesztőben, és keresse meg a csomago
 
 A `Module Not Found` hiba akkor fordulhat elő, ha Windows vagy MacOS rendszert használ a helyi fejlesztéshez. A csomagot azonban nem lehet importálni a Azure Functionson, amely Linux-t használ futásidőben. Ezt valószínűleg a használatával lehet a `pip freeze` virtuális környezetnek a Windows vagy MacOS rendszerű gépről requirements.txtba exportálni a projekt inicializálásakor.
 
-Lásd: [a csomag helyettesítése az egyenértékű](#replace-the-package-with-equivalents) vagy a [kézműves requirements.txtával](#handcraft-requirementstxt) .
+Lásd: [a csomag helyettesítése az egyenértékű](#replace-the-package-with-equivalents) vagy a [kézműves requirements.txtával ](#handcraft-requirementstxt) .
 
 ### <a name="mitigate-modulenotfounderror"></a>ModuleNotFoundError enyhítése
 
@@ -165,9 +165,9 @@ Ha x64-es operációs rendszert használ, győződjön meg róla, hogy a Python 
 
 A Python-értelmező bitszáma az alábbi parancsokkal tekintheti meg:
 
-Windows PowerShellben:`py -c 'import platform; print(platform.architecture()[0])'`
+Windows PowerShellben: `py -c 'import platform; print(platform.architecture()[0])'`
 
-UNIX-szerű rendszerhéj esetén:`python3 -c 'import platform; print(platform.architecture()[0])'`
+UNIX-szerű rendszerhéj esetén: `python3 -c 'import platform; print(platform.architecture()[0])'`
 
 Ha nem egyeznek a Python tolmács bitszáma és az operációs rendszer architektúrája között, töltsön le egy megfelelő Python-tolmácsot a [Python Software Foundation](https://python.org/downloads/release)szolgáltatásból.
 

@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 02/13/2018
 ms.author: apimpm
 ms.openlocfilehash: 92e032eb104835788f515cc7800fe5dacfa8adaa
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88566131"
 ---
 # <a name="how-to-manage-user-accounts-in-azure-api-management"></a>Felhasználói fiókok kezelése az Azure API Managementben
@@ -70,7 +70,7 @@ Egy felhasználó letiltásához kövesse az alábbi lépéseket.
 
 A felhasználói fiókokkal való programozott munkához tekintse meg a felhasználói entitás dokumentációját a [API Management REST API](/rest/api/apimanagement/) -referenciában. A felhasználói fiók jelszavának egy adott értékre való visszaállításához használhatja a [felhasználó frissítése](/rest/api/apimanagement/apimanagementrest/azure-api-management-rest-api-user-entity#UpdateUser) műveletet, és megadhatja a kívánt jelszót.
 
-## <a name="next-steps"></a><a name="next-steps"> </a>További lépések
+## <a name="next-steps"></a><a name="next-steps"> </a>Következő lépések
 A fejlesztői fiók létrehozása után hozzárendelheti a szerepkörökhöz, és előfizethet a termékekre és API-kra. További információ: [csoportok létrehozása és használata][How to create and use groups].
 
 [api-management-management-console]: ./media/api-management-howto-create-or-invite-developers/api-management-management-console.png

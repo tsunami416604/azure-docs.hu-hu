@@ -1,6 +1,6 @@
 ---
-title: Okta-alapú egyszeri bejelentkezési adatkapcsolatok összekapcsolása az Azure Sentinel szolgáltatással | Microsoft Docs
-description: Ismerje meg, hogyan csatlakoztathatók a okta-alapú egyszeri bejelentkezések az Azure Sentinel szolgáltatáshoz.
+title: Okta-Sign-On-adatkapcsolat összekötése az Azure Sentinel szolgáltatással | Microsoft Docs
+description: Ismerje meg, hogyan csatlakoztathatók a okta-Sign-Oni az Azure Sentinel szolgáltatáshoz.
 services: sentinel
 documentationcenter: na
 author: yelevin
@@ -15,26 +15,26 @@ ms.workload: na
 ms.date: 07/17/2020
 ms.author: yelevin
 ms.openlocfilehash: 05a9b8009d896a2ee87df3e1c4493d249a887566
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87083922"
 ---
-# <a name="connect-your-okta-single-sign-on-to-azure-sentinel-with-azure-function"></a>A okta-alapú egyszeri bejelentkezés és az Azure Sentinel összekapcsolása az Azure-függvénnyel
+# <a name="connect-your-okta-single-sign-on-to-azure-sentinel-with-azure-function"></a>Az okta egyetlen Sign-On összekötése az Azure Sentinel szolgáltatással az Azure Function használatával
 
 > [!IMPORTANT]
-> Az Azure Sentinel okta egyszeri bejelentkezési adatösszekötője jelenleg nyilvános előzetes verzióban érhető el.
+> A okta Single Sign-On adatösszekötő az Azure Sentinel szolgáltatásban jelenleg nyilvános előzetes verzióban érhető el.
 > Ez a szolgáltatás szolgáltatói szerződés nélkül érhető el, és éles számítási feladatokhoz nem ajánlott. Előfordulhat, hogy néhány funkció nem támogatott, vagy korlátozott képességekkel rendelkezik. További információ: a [Microsoft Azure előzetes verziójának kiegészítő használati feltételei](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Az okta egyszeri bejelentkezési (SSO) összekötővel könnyedén csatlakoztathatja az [okta egyszeri bejelentkezési (SSO)](https://www.okta.com/products/single-sign-on/) biztonsági megoldásának naplóit az Azure Sentinel használatával, megtekintheti az irányítópultokat, egyéni riasztásokat hozhat létre, és javíthatja a vizsgálatot. A okta-alapú egyszeri bejelentkezés és az Azure Sentinel közötti integráció a Azure Functions használatával kéri le a naplózási adataikat a REST API használatával.
+Az okta Single Sign-On (SSO) összekötővel könnyedén csatlakoztathatja az összes [Sign-On okta-alapú (SSO)](https://www.okta.com/products/single-sign-on/) biztonsági megoldás naplóit az Azure Sentinel használatával, megtekintheti az irányítópultokat, egyéni riasztásokat hozhat létre, és javíthatja a vizsgálatot. A okta Single Sign-On és az Azure Sentinel közötti integráció lehetővé teszi, hogy a Azure Functions REST API használatával lekérje a naplózási adataikat.
 
 > [!NOTE]
 > Az Azure Sentinel-t futtató munkaterület földrajzi helye tárolja az adatmennyiséget.
 
-## <a name="configure-and-connect-okta-single-sign-on"></a>Okta-alapú egyszeri bejelentkezés konfigurálása és összekapcsolása
+## <a name="configure-and-connect-okta-single-sign-on"></a>Okta egyetlen Sign-On konfigurálása és összekapcsolása
 
-A Azure Functions az eseményeket és naplókat közvetlenül az okta egyszeri bejelentkezéssel integrálhatja és lehívhatja, és továbbíthatja őket az Azure Sentinel szolgáltatásba.
+Azure Functions az eseményeket és naplókat közvetlenül az okta egyetlen Sign-On integrálhatja és lehívhatja, és továbbíthatja őket az Azure Sentinel szolgáltatásba.
 
 1. Az Azure Sentinel portálon kattintson az **adatösszekötők** lehetőségre, és válassza az **okta egyszeri bejelentkezés** összekötőt.
 
@@ -52,7 +52,7 @@ Akár 20 percet is igénybe vehet, amíg a naplók meg nem kezdődnek a Log Anal
 
 ## <a name="next-steps"></a>További lépések
 
-Ebből a dokumentumból megtudhatta, hogyan csatlakoztatható az okta egyszeri bejelentkezés az Azure Sentinelhez az Azure Function Apps használatával. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
+Ebből a dokumentumból megtudhatta, hogyan csatlakoztatható az okta egyetlen Sign-On az Azure Sentinelhez az Azure Function Apps használatával. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 
 - Ismerje meg, hogyan tekintheti meg [az adatait, és hogyan érheti el a potenciális fenyegetéseket](quickstart-get-visibility.md).
 - Ismerje meg [a fenyegetések észlelését az Azure sentinelben](tutorial-detect-threats-built-in.md).

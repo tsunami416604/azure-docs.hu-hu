@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 03/16/2020
 ms.author: sagupt
 ms.openlocfilehash: e446fca11e029e28e44ada884efd071f3142514c
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86518079"
 ---
 # <a name="configure-periodic-summary-for-recommendations"></a>Javaslatok rendszeres összegzésének konfigurálása
@@ -51,10 +51,10 @@ Az **ajánlási kivonat** létrehozásának lépései a következők:
 * **6. lépés:** Ebben az utolsó szakaszban a **kivonatoló adatokhoz**nevet és állapotot rendelhet a javaslat kivonatához. A beállítás befejezéséhez nyomja meg az **ajánlás létrehozása kivonatot** .
    ![Javaslatok kivonatának teljes létrehozása](./media/digest-4.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Advisor ajánlásaival kapcsolatos további információkért lásd:
-* [Bevezetés a Azure Advisorba](advisor-overview.md)
+* [Az Azure Advisor bemutatása](advisor-overview.md)
 * [Bevezetés az Advisor használatába](advisor-get-started.md)
 * [Advisor – Cost-javaslatok](advisor-cost-recommendations.md)
 * [Az Advisor teljesítményével kapcsolatos javaslatok](advisor-performance-recommendations.md)

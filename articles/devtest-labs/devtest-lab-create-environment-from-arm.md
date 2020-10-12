@@ -4,10 +4,10 @@ description: Megtudhatja, hogyan hozhat létre több virtuális gépre kiterjed�
 ms.topic: article
 ms.date: 08/12/2020
 ms.openlocfilehash: 97659d4ab95fdbe75460161d0ceed71a1cb5cf82
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88182408"
 ---
 # <a name="create-multi-vm-environments-and-paas-resources-with-azure-resource-manager-templates"></a>Több virtuális gépes környezet és PaaS-erőforrás létrehozása Azure Resource Manager-sablonokkal
@@ -85,7 +85,7 @@ A tárház létrehozása és konfigurálása után a Azure Portal a következő 
      - Ha szeretné lekérni a tokent a githubról, a profil alatt válassza a **Beállítások**  >  **fejlesztői beállítások**  >  **személyes hozzáférési jogkivonatok**lehetőséget.
    - **Mappa elérési útjai**: adja meg az összetevő-definíciók vagy a Azure Resource Manager-sablon definíciói számára a git-klón URI-hoz viszonyított mappa elérési útját.
 
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
    ![Új tárház hozzáadása](./media/devtest-lab-create-environment-from-arm/repo-values.png)
 

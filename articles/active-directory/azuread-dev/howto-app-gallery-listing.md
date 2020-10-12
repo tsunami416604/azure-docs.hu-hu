@@ -14,10 +14,10 @@ ms.reviewer: jeedes
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: 40d299049a0a1bbff81c412a5beb84f28e64ff46
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90706302"
 ---
 # <a name="list-your-application-in-the-azure-active-directory-application-gallery"></a>Az alkalmazás szerepeltetése az Azure Active Directory alkalmazáskatalógusában
@@ -101,7 +101,7 @@ Egy alkalmazás az Azure AD-katalógusban való listázásához először meg ke
 
 - **Saml 2,0** vagy **ws-fed**: Ha az alkalmazás támogatja az SAML 2,0-et, akkor közvetlenül is integrálhatja azt egy Azure ad-Bérlővel az [egyéni alkalmazások hozzáadásához szükséges utasítások](../manage-apps/view-applications-portal.md)követésével.
 
-  ![SAML 2,0 vagy WS-fed alkalmazás listázása a katalógusban](./media/howto-app-gallery-listing/saml.png)
+  ![SAML 2,0-vagy WS-Fed-alkalmazás listázása a katalógusban](./media/howto-app-gallery-listing/saml.png)
 
   * Ha az **saml 2,0** vagy a **ws-fed**használatával szeretné felvenni az alkalmazást a katalógusba, válassza az **SAML 2.0/ws-fed** lehetőséget, amint az látható.
 
@@ -146,7 +146,7 @@ Az ügyfél által kért alkalmazások folyamata.
 
 ## <a name="timelines"></a>Idősorok
 
-Az SAML 2,0 vagy WS-fed alkalmazás a katalógusban való listázásának ütemterve 7 – 10 munkanap.
+Az SAML 2,0 vagy WS-Fed alkalmazás a katalógusban való listázásának ütemterve 7 – 10 munkanap.
 
   ![Az SAML-alkalmazások katalógusban való listázásának ütemterve](./media/howto-app-gallery-listing/timeline.png)
 

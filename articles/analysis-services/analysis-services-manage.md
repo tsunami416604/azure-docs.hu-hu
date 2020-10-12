@@ -8,10 +8,10 @@ ms.date: 10/28/2019
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: a5dce5b53df817bd365d4ce9670ffd556ce365f7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84015502"
 ---
 # <a name="manage-analysis-services"></a>Az Analysis Services felügyelete
@@ -22,10 +22,10 @@ Miután létrehozott egy Analysis Services-kiszolgálót az Azure-ban, lehet, ho
 
 ![A kiszolgáló nevének lekérése az Azure-ban](./media/analysis-services-manage/aas-manage-portal.png)
 
-## <a name="sql-server-management-studio"></a>SQL Server Management Studio
+## <a name="sql-server-management-studio"></a>Az SQL Server Management Studio
 Az Azure-kiszolgálóhoz való csatlakozás ugyanúgy történik, mint a saját szervezetében lévő kiszolgálói példányokhoz való csatlakozáshoz. A SSMS számos olyan feladatot hajthat végre, mint például az adatok feldolgozása vagy a feldolgozási parancsfájl létrehozása, a Szerepkörök kezelése és a PowerShell használata.
   
-![SQL Server Management Studio](./media/analysis-services-manage/aas-manage-ssms.png)
+![Az SQL Server Management Studio](./media/analysis-services-manage/aas-manage-ssms.png)
 
 ### <a name="download-and-install-ssms"></a>Az SSMS letöltése és telepítése
 Győződjön meg arról, hogy a legújabb funkciókat és a legsimább felhasználói élményt használja a Azure Analysis Services-kiszolgálóhoz való kapcsolódáskor. a SSMS legújabb verzióját kell használnia. 

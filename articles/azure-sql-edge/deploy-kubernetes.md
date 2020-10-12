@@ -10,10 +10,10 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/22/2020
 ms.openlocfilehash: 16ad757fc00439bb390a7e0dea902901c468dd1c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90946516"
 ---
 # <a name="deploy-an-azure-sql-edge-container-in-kubernetes"></a>Azure SQL Edge-tároló üzembe helyezése a Kubernetes-ben
@@ -316,7 +316,7 @@ Ebben az oktatóanyagban megtanulta, hogyan helyezhet üzembe Azure SQL Edge-tá
 > * Kapcsolódjon az Azure SQL Edge Management studióhoz (SSMS)
 > * A hiba és a helyreállítás ellenőrzése
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Bevezetés a Kubernetes használatába](https://docs.microsoft.com/azure/aks/intro-kubernetes)
 - [Machine learning és mesterséges intelligencia a ONNX az SQL Edge-ben](onnx-overview.md).

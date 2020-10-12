@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 07/17/2020
 ms.author: yelevin
 ms.openlocfilehash: 7670d00a2dd25961a51d18c50c102e0f92b30975
-ms.sourcegitcommit: 37afde27ac137ab2e675b2b0492559287822fded
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88566148"
 ---
 # <a name="collect-data-from-linux-based-sources-using-syslog"></a>Adatok gyűjtése Linux-alapú forrásokból a syslog használatával
@@ -77,7 +77,7 @@ További információ: [syslog-adatforrások Azure monitorban](../azure-monitor/
 
 1. Ha hozzáadta az összes figyelni kívánt létesítményt, és kiigazította az egyes súlyossági beállításokat, jelölje be az **alábbi konfiguráció alkalmazása a saját gépekre**jelölőnégyzetet.
 
-1. Válassza a **Mentés** lehetőséget. 
+1. Kattintson a **Mentés** gombra. 
 
 1. Győződjön meg arról, hogy a virtuális gépen vagy berendezésen a megadott létesítményeket küldi el.
 
@@ -113,7 +113,7 @@ Az Azure Sentinel gépi tanulást (ML) alkalmazhat a syslog-adatokra a rendellen
  
 Az észleléshez a syslog-adatösszekötő adott konfigurációja szükséges: 
 
-1. Az előző eljárás 5. lépésében ellenőrizze, hogy az **Auth** és a **authpriv** is ki van-e választva a figyeléshez. Tartsa meg a súlyossági beállítások alapértelmezett beállításait, hogy azok mind ki legyenek választva. Például:
+1. Az előző eljárás 5. lépésében ellenőrizze, hogy az **Auth** és a **authpriv** is ki van-e választva a figyeléshez. Tartsa meg a súlyossági beállítások alapértelmezett beállításait, hogy azok mind ki legyenek választva. Példa:
     
     > [!div class="mx-imgBorder"]
     > ![A rendellenes SSH bejelentkezési észleléshez szükséges szolgáltatások](./media/connect-syslog/facilities-ssh-detection.png)
@@ -130,7 +130,7 @@ Az észleléshez a syslog-adatösszekötő adott konfigurációja szükséges:
     
     Ha az eredményül kapott darabszám nagyobb nullánál, a syslog-adatok alkalmasak a rendellenes SSH-bejelentkezések észlelésére. Ezt az észlelést az **Analytics**-  >   **szabály sablonjai**  >  **(előzetes verzió) rendellenes SSH-bejelentkezések észlelésével**engedélyezheti.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebből a dokumentumból megtudhatta, hogyan kapcsolódhat a syslog helyszíni készülékekhez az Azure Sentinel szolgáltatáshoz. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 - Ismerje meg, hogyan tekintheti meg [az adatait, és hogyan érheti el a potenciális fenyegetéseket](quickstart-get-visibility.md).
 - Ismerje meg [a fenyegetések észlelését az Azure sentinelben](tutorial-detect-threats-built-in.md).

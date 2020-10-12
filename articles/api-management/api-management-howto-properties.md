@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 01/08/2020
 ms.author: apimpm
 ms.openlocfilehash: 3f317276ae92e6121d519553b7883677dab89705
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87852191"
 ---
 # <a name="how-to-use-named-values-in-azure-api-management-policies"></a>Nevesített értékek használata az Azure API Management-házirendekben
@@ -36,7 +36,7 @@ Minden API Management Service-példányhoz kulcs/érték párok gyűjteménye ta
 
 A nevesített értékek literál karakterláncokat és [házirend-kifejezéseket](./api-management-policy-expressions.md)tartalmazhatnak. Az értéke például `Expression` egy olyan házirend-kifejezés, amely az aktuális dátumot és időpontot tartalmazó karakterláncot ad vissza. A megnevezett érték `Credential` titkosként van megjelölve, ezért az értéke alapértelmezés szerint nem jelenik meg.
 
-| Név       | Érték                      | Titkos | Címkék          |
+| Name (Név)       | Érték                      | Titkos | Címkék          |
 | ---------- | -------------------------- | ------ | ------------- |
 | Érték      | 42                         | Hamis  | létfontosságú számok |
 | Hitelesítő adat | ••••••••••••••••••••••     | Igaz   | biztonság      |
@@ -84,7 +84,7 @@ Ha megnevezett értéket szeretne használni egy szabályzatban, helyezze a nev�
 
 Ebben a példában `ContosoHeader` a rendszer a szabályzat fejlécének neveként használja `set-header` , és `ContosoHeaderValue` a fejléc értékeként használja. Ha ezt a házirendet az API Management-átjáróra vonatkozó kérelem vagy válasz alapján értékeli ki, a `{{ContosoHeader}}` `{{ContosoHeaderValue}}` rendszer a megfelelő értékekkel helyettesíti a szabályzatot.
 
-Az elnevezett értékek teljes attribútumként vagy elemként használhatók, ahogy az az előző példában is látható, de az alábbi példában látható módon egy literális kifejezés egy részébe is beilleszthető vagy kombinálható:`<set-header name = "CustomHeader{{ContosoHeader}}" ...>`
+Az elnevezett értékek teljes attribútumként vagy elemként használhatók, ahogy az az előző példában is látható, de az alábbi példában látható módon egy literális kifejezés egy részébe is beilleszthető vagy kombinálható: `<set-header name = "CustomHeader{{ContosoHeader}}" ...>`
 
 A nevesített értékek házirend-kifejezéseket is tartalmazhatnak. A következő példában a `ExpressionProperty` használatban van.
 

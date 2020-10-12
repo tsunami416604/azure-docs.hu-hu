@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: juliako
 ms.openlocfilehash: 065cb4daa9501ee658d364dad43b9e03798e4083
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "67179533"
 ---
 A feladat létrehoz egy JSON kimeneti fájlt, amely az észlelt és nyomon követett arcokhoz tartozó metaadatokat tartalmaz. A metaadatok tartalmazzák az arcok helyét jelző koordinátákat, valamint az adott személy nyomon követését jelző Arcfelismerés-számot. A Face ID-számok olyan körülmények között állnak alaphelyzetbe, amikor az elülső arc elveszett vagy átfedésben van a keretben, így egyes személyek több azonosítót kapnak.
@@ -17,7 +17,7 @@ A kimeneti JSON a következő elemeket tartalmazza:
 
 ### <a name="root-json-elements"></a>Gyökér JSON-elemek
 
-| Elem | Description |
+| Elem | Leírás |
 | --- | --- |
 | version |Ez a videó API verziójára vonatkozik. |
 | időskála |A videó másodpercenkénti száma. |
@@ -28,7 +28,7 @@ A kimeneti JSON a következő elemeket tartalmazza:
 
 ### <a name="fragments-json-elements"></a>Töredékek JSON-elemek
 
-|Elem|Description|
+|Elem|Leírás|
 |---|---|
 | start |Az első esemény kezdő időpontja "ketyeg". |
 | duration |A töredék hossza "ketyeg". |

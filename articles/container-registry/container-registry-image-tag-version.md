@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 07/10/2019
 ms.author: stevelas
 ms.openlocfilehash: b483317960409fe1fbea181706f12375606fe659
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75445736"
 ---
 # <a name="recommendations-for-tagging-and-versioning-container-images"></a>A tároló lemezképének címkézésére és verziószámozására vonatkozó javaslatok
@@ -29,7 +29,7 @@ A *stabil címkék* azt jelentik, hogy egy fejlesztő vagy egy összeállítási
 
 A Framework Team-hajók 1,0-es verzióval rendelkeznek. Tudják, hogy frissítéseket küldenek, beleértve a kisebb frissítéseket is. Egy adott fő-és alverzióhoz tartozó stabil címkék támogatásához két stabil címkével rendelkeznek.
 
-* `:1`– a főverzió stabil címkéje. `1`a "legújabb" vagy "legújabb" 1. * verziót jelöli.
+* `:1` – a főverzió stabil címkéje. `1` a "legújabb" vagy "legújabb" 1. * verziót jelöli.
 * `:1.0`– az 1,0-es verzió stabil címkéje, amely lehetővé teszi a fejlesztők számára, hogy a 1,0-es frissítésekhez kapcsolódjanak, és ne legyenek továbbítva a 1,1-ra a kiadáskor.
 
 A csapat a `:latest` címkét is használja, amely a legújabb stabil címkére mutat, függetlenül attól, hogy milyen a jelenlegi főverzió.
@@ -49,7 +49,7 @@ Ha egy stabil címkével rendelkező képet frissít, a korábban címkézett Re
 Az egyedi címkézés egyszerűen azt jelenti, hogy a beállításjegyzékbe leküldött összes rendszerkép egyedi címkével rendelkezik. A címkék nem lesznek újra felhasználva. Az egyedi címkék létrehozásához több minta is készíthető, többek között a következők:
 
 * **Dátum-idő bélyegző** – ez a megközelítés meglehetősen gyakori, mivel a rendszerkép létrehozásakor egyértelműen megtudhatja, hogy mikor készült. De hogyan lehet összekapcsolni a Build-rendszerrel? Meg kell keresnie az adott időpontban befejezett buildet? Milyen időzóna van? Az összes Build rendszerét UTC-re kalibrálták?
-* **Git-véglegesítés** – ez a megközelítés csak az alapszintű rendszerkép frissítéseinek támogatásának megkezdése után működik. Ha egy alaprendszerkép frissítése történik, a Build rendszer a korábbi buildtel megegyező git-véglegesítés után indul el. Az alaprendszerkép azonban új tartalommal rendelkezik. Általánosságban elmondható, hogy a git-véglegesítés egy *félig*stabil címkét biztosít.
+* **Git-véglegesítés**  – ez a megközelítés csak az alapszintű rendszerkép frissítéseinek támogatásának megkezdése után működik. Ha egy alaprendszerkép frissítése történik, a Build rendszer a korábbi buildtel megegyező git-véglegesítés után indul el. Az alaprendszerkép azonban új tartalommal rendelkezik. Általánosságban elmondható, hogy a git-véglegesítés egy *félig*stabil címkét biztosít.
 * **Manifest Digest** – a tároló-beállításjegyzékbe leküldött összes tároló-rendszerkép egy jegyzékfájlhoz van társítva, amely egyedi SHA-256 kivonattal vagy kivonattal van azonosítva. Míg egyedi, a kivonat hosszú, nehezen olvasható és nem korrelál a Build-környezettel.
 * **Build azonosítója** – ez a lehetőség lehet a legjobb megoldás, mivel ez valószínűleg növekményes, és lehetővé teszi, hogy az összes összetevő és napló megtalálásához visszakapcsolja az adott buildet. A manifest-kivonatokhoz hasonlóan előfordulhat, hogy az embernek nem kell elolvasnia a problémát.
 

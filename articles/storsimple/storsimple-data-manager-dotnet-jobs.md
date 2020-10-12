@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 01/16/2018
 ms.author: alkohli
 ms.openlocfilehash: e34701640de24a4c3c13f8d10073b4392af2f28a
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88183648"
 ---
 # <a name="use-the-net-sdk-to-initiate-data-transformation"></a>A .NET SDK használata adatátalakítás kezdeményezéséhez
@@ -36,7 +36,7 @@ Mielőtt elkezdené, győződjön meg arról, hogy rendelkezik az alábbiakkal:
     - Azure PowerShell. [Töltse le az Azure PowerShellt](https://azure.microsoft.com/documentation/articles/powershell-install-configure/).
 *   Egy adott erőforráscsoport StorSimple Data Manager megfelelően konfigurált feladatdefiníció.
 *   Az összes szükséges DLL-fájl. Töltse le ezeket a DLL-eket a [GitHub-adattárból](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/tree/master/Data_Manager_Job_Run/dlls).
-*   [`Get-ConfigurationParams.ps1`](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/blob/master/Data_Manager_Job_Run/Get-ConfigurationParams.ps1)szkript a GitHub-adattárból.
+*   [`Get-ConfigurationParams.ps1`](https://github.com/Azure-Samples/storsimple-dotnet-data-manager-get-started/blob/master/Data_Manager_Job_Run/Get-ConfigurationParams.ps1) szkript a GitHub-adattárból.
 
 ## <a name="step-by-step-procedure"></a>Lépésről lépésre haladó eljárás
 
