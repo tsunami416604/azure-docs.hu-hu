@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 03/19/2020
 ms.author: juergent
 ms.openlocfilehash: f2a62cb08fcce6597f02c080231f5e1808794054
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88509960"
 ---
 # <a name="installation-of-sap-hana-on-azure-virtual-machines"></a>SAP HANA telepítése Azure-beli virtuális gépeken
@@ -61,7 +61,7 @@ Ebben a fázisban végig kell haladnia a virtuális gép (ek) üzembe helyezés�
 3. Alkalmazza a legújabb javításokat az operációs rendszerre a virtuális gép üzembe helyezése és regisztrálása után. Regisztrálva van a saját előfizetésében. Ha olyan rendszerképet választ, amely tartalmazza az operációs rendszer támogatását, akkor a virtuális gépnek már elérhetőnek kell lennie a javításokhoz. 
 4. Alkalmazza a SAP HANAhoz szükséges dallamokat. Ezek a dallamok a következő SAP-támogatási megjegyzésekben szerepelnek:
 
-    - [SAP-támogatás Megjegyzés #2694118 – Red Hat Enterprise Linux HA Azure-beli bővítmény](https://launchpad.support.sap.com/#/notes/2694118)
+    - [SAP-támogatás Megjegyzés #2694118 – Red Hat Enterprise Linux HA Add-On az Azure-ban](https://launchpad.support.sap.com/#/notes/2694118)
     - [SAP-támogatás Megjegyzés #1984787 – SUSE LINUX Enterprise Server 12: telepítési megjegyzések](https://launchpad.support.sap.com/#/notes/1984787) 
     - [SAP-támogatás Megjegyzés #2578899-SUSE Linux Enterprise Server 15: telepítési Megjegyzés](https://launchpad.support.sap.com/#/notes/2578899)
     - [SAP-támogatás Megjegyzés #2002167-Red Hat Enterprise Linux 7. x: telepítés és frissítés](https://launchpad.support.sap.com/#/notes/0002002167)
@@ -72,7 +72,7 @@ Ebben a fázisban végig kell haladnia a virtuális gép (ek) üzembe helyezés�
     -  [SAP-támogatás Megjegyzés #2382421 – a hálózati konfiguráció optimalizálása a HANA-és az operációs rendszer szintjén](https://launchpad.support.sap.com/#/notes/2382421)
 
 1. Válassza ki SAP HANA Azure Storage-típusát. Ebben a lépésben a SAP HANA telepítésének tárolási elrendezését kell eldöntenie. A csatlakoztatott Azure-lemezeket vagy a natív Azure NFS-megosztásokat fogja használni. Az Azure-beli tárolási típusok, amelyek használhatók, illetve különböző Azure-beli tárolási típusok kombinációi, [SAP HANA Azure-beli virtuális gépek tárolási konfigurációjában](./hana-vm-operations-storage.md)vannak dokumentálva. Végezze el a kiindulási pontként dokumentált konfigurációkat. A nem éles rendszerek esetében előfordulhat, hogy az alacsonyabb átviteli sebesség vagy a IOPS konfigurálható. Éles környezetben előfordulhat, hogy egy kicsit nagyobb átviteli sebességet és IOPS kell konfigurálnia.
-2. Az M-sorozatos vagy a Mv2-sorozatú virtuális gépek használatakor győződjön meg arról, hogy az [Azure írásgyorsító](../../how-to-enable-write-accelerator.md) -t konfigurálta az adatbázis-kezelői tranzakciós naplókat tartalmazó kötetekhez, vagy a naplókat. Vegye figyelembe a írásgyorsító korlátozásait dokumentált módon.
+2. Az M-sorozat vagy a Mv2-Series virtuális gépek használata esetén győződjön meg arról, hogy konfigurálta az [Azure-írásgyorsító](../../how-to-enable-write-accelerator.md) az adatbázis-kezelői tranzakciós naplókat tartalmazó kötetek számára, illetve az Ismétlési naplókat. Vegye figyelembe a írásgyorsító korlátozásait dokumentált módon.
 2. Győződjön meg arról, hogy az [Azure gyorsított hálózatkezelés](https://azure.microsoft.com/blog/maximize-your-vm-s-performance-with-accelerated-networking-now-generally-available-for-both-windows-and-linux/) engedélyezve van-e az üzembe helyezett virtuális gépeken.
 
 > [!NOTE]
@@ -97,7 +97,7 @@ Az Azure-beli virtuális gépeken SAP HANA adatbázisok biztonsági mentésével
 * [Az Azure-beli SAP HANA biztonsági mentési útmutatója Virtual Machines](./sap-hana-backup-guide.md)
 * [SAP HANA Azure Backup a fájl szintjén](./sap-hana-backup-file-level.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Olvassa el a dokumentációt:
 
 - [SAP HANA infrastruktúrakonfigurációk és -műveletek az Azure-ban](./hana-vm-operations.md)

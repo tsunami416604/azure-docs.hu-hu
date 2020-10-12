@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 09/22/2019
 ms.openlocfilehash: 1dbbdde03d1c24882be298d8c81362744debeecf
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91704939"
 ---
 # <a name="create-users-in-azure-database-for-postgresql---single-server"></a>Felhasználók létrehozása Azure Database for PostgreSQL – egyetlen kiszolgálón
@@ -70,7 +70,7 @@ A kiszolgáló-rendszergazdai felhasználói fiókkal további felhasználókat 
    GRANT CONNECT ON DATABASE <newdb> TO <db_user>;
    ```
 
-4. Rendszergazdai fiók használata esetén előfordulhat, hogy további jogosultságokat kell megadnia az objektumok biztonságossá tételéhez az adatbázisban. Az adatbázis-szerepkörökkel és a jogosultságokkal kapcsolatos további részletekért tekintse meg a [PostgreSQL dokumentációját](https://www.postgresql.org/docs/current/static/ddl-priv.html) . Például:
+4. Rendszergazdai fiók használata esetén előfordulhat, hogy további jogosultságokat kell megadnia az objektumok biztonságossá tételéhez az adatbázisban. Az adatbázis-szerepkörökkel és a jogosultságokkal kapcsolatos további részletekért tekintse meg a [PostgreSQL dokumentációját](https://www.postgresql.org/docs/current/static/ddl-priv.html) . Példa:
 
    ```sql
    GRANT ALL PRIVILEGES ON DATABASE <newdb> TO <db_user>;

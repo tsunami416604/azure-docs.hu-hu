@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 09/24/2020
 ms.author: aahi
 ms.openlocfilehash: d6820e890607ff16230ecf48e8318e6d1119a3a2
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91707506"
 ---
 # <a name="how-to-use-named-entity-recognition-in-text-analytics"></a>Elnevezett entitások felismerésének használata a Text Analyticsban
@@ -34,7 +34,7 @@ Az elnevezett entitások felismerése lehetővé teszi a különböző entitáso
 
 [!INCLUDE [v3 region availability](../includes/v3-region-availability.md)]
 
-| Funkció                                                         | V 3.0 | V 3.1 – előzetes verzió. 2 |
+| Szolgáltatás                                                         | V 3.0 | V 3.1 – előzetes verzió. 2 |
 |-----------------------------------------------------------------|--------|----------|
 | Egyszeri és batch-kérelmek módszerei                          | X      | X        |
 | Bővített entitások felismerése több kategória között           | X      | X        |
@@ -286,7 +286,7 @@ Példa a választ hivatkozó entitásra:
 ---
 
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 
 Ebben a cikkben megtanulta az entitások összekapcsolásával kapcsolatos fogalmakat és munkafolyamatokat a Cognitive Services Text Analytics használatával. Összegezve:
 

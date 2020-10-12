@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 09/27/2020
 ms.author: jingwang
 ms.openlocfilehash: 13a0966413519e56199cfce150d9dd7973d634ec
-ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91404721"
 ---
 # <a name="parquet-format-in-azure-data-factory"></a>A parketta formátuma Azure Data Factory
@@ -29,9 +29,9 @@ Az adatkészletek definiálásához rendelkezésre álló csoportok és tulajdon
 
 | Tulajdonság         | Leírás                                                  | Kötelező |
 | ---------------- | ------------------------------------------------------------ | -------- |
-| típus             | Az adatkészlet Type tulajdonságát a **Parquet**értékre kell beállítani. | Yes      |
-| location         | A fájl (ok) helyének beállításai. Minden fájl alapú összekötőhöz tartozik a saját hely típusa és a támogatott tulajdonságai `location` . **Tekintse meg a részleteket az összekötő cikk-> adatkészlet tulajdonságai szakaszban**. | Yes      |
-| compressionCodec | A Parquet-fájlokba való íráskor használandó tömörítési kodek. A Parquet-fájlokból való olvasáskor az adat-előállítók automatikusan meghatározzák a tömörítési kodeket a fájl metaadatai alapján.<br>A támogatott típusok a következők: "**none**", "**gzip**", "**Snappy**" (alapértelmezett) és "**LZO**". Megjegyzés: a másolási tevékenység jelenleg nem támogatja a LZO a parketta-fájlok olvasása/írása közben. | No       |
+| típus             | Az adatkészlet Type tulajdonságát a **Parquet**értékre kell beállítani. | Igen      |
+| location         | A fájl (ok) helyének beállításai. Minden fájl alapú összekötőhöz tartozik a saját hely típusa és a támogatott tulajdonságai `location` . **Tekintse meg a részleteket az összekötő cikk-> adatkészlet tulajdonságai szakaszban**. | Igen      |
+| compressionCodec | A Parquet-fájlokba való íráskor használandó tömörítési kodek. A Parquet-fájlokból való olvasáskor az adat-előállítók automatikusan meghatározzák a tömörítési kodeket a fájl metaadatai alapján.<br>A támogatott típusok a következők: "**none**", "**gzip**", "**Snappy**" (alapértelmezett) és "**LZO**". Megjegyzés: a másolási tevékenység jelenleg nem támogatja a LZO a parketta-fájlok olvasása/írása közben. | Nem       |
 
 > [!NOTE]
 > A Parquet-fájlok nem támogatják a szóközöket az oszlop nevében.
@@ -70,8 +70,8 @@ A másolási tevékenység *** \* forrása \* *** szakaszban a következő tulaj
 
 | Tulajdonság      | Leírás                                                  | Kötelező |
 | ------------- | ------------------------------------------------------------ | -------- |
-| típus          | A másolási tevékenység forrásának Type tulajdonságát **ParquetSource**értékre kell állítani. | Yes      |
-| storeSettings | Az adattárakból származó adatok beolvasására szolgáló tulajdonságok csoportja. A fájl alapú összekötők a saját támogatott olvasási beállításaival rendelkeznek `storeSettings` . **Tekintse meg a részleteket az összekötőről szóló cikk – > másolási tevékenység tulajdonságai szakaszban**. | No       |
+| típus          | A másolási tevékenység forrásának Type tulajdonságát **ParquetSource**értékre kell állítani. | Igen      |
+| storeSettings | Az adattárakból származó adatok beolvasására szolgáló tulajdonságok csoportja. A fájl alapú összekötők a saját támogatott olvasási beállításaival rendelkeznek `storeSettings` . **Tekintse meg a részleteket az összekötőről szóló cikk – > másolási tevékenység tulajdonságai szakaszban**. | Nem       |
 
 ### <a name="parquet-as-sink"></a>Parketta mint fogadó
 
@@ -79,17 +79,17 @@ A másolási *** \* \* tevékenység*** fogadója szakaszban a következő tulaj
 
 | Tulajdonság      | Leírás                                                  | Kötelező |
 | ------------- | ------------------------------------------------------------ | -------- |
-| típus          | A másolási tevékenység fogadójának Type tulajdonságát **ParquetSink**értékre kell állítani. | Yes      |
-| formatSettings | Tulajdonságok csoportja. Tekintse meg a **parketta írási beállítások** táblázatát alább. |    No      |
-| storeSettings | Az adattárakba való adatíráshoz szükséges tulajdonságok csoportja. A fájl alapú összekötők a saját támogatott írási beállításaival rendelkeznek `storeSettings` . **Tekintse meg a részleteket az összekötőről szóló cikk – > másolási tevékenység tulajdonságai szakaszban**. | No       |
+| típus          | A másolási tevékenység fogadójának Type tulajdonságát **ParquetSink**értékre kell állítani. | Igen      |
+| formatSettings | Tulajdonságok csoportja. Tekintse meg a **parketta írási beállítások** táblázatát alább. |    Nem      |
+| storeSettings | Az adattárakba való adatíráshoz szükséges tulajdonságok csoportja. A fájl alapú összekötők a saját támogatott írási beállításaival rendelkeznek `storeSettings` . **Tekintse meg a részleteket az összekötőről szóló cikk – > másolási tevékenység tulajdonságai szakaszban**. | Nem       |
 
 Támogatott **parketta írási beállításai** a alatt `formatSettings` :
 
 | Tulajdonság      | Leírás                                                  | Kötelező                                              |
 | ------------- | ------------------------------------------------------------ | ----------------------------------------------------- |
-| típus          | A formatSettings típusát **ParquetWriteSettings**értékre kell beállítani. | Yes                                                   |
-| maxRowsPerFile | Az Adatmappában való íráskor több fájl írására is választhatja, és a fájlok maximális számát is megadhatja.  | No |
-| fileNamePrefix | `maxRowsPerFile`A konfigurálásakor alkalmazható.<br> Adja meg a fájlnév előtagját, ha több fájlra ír be adatírást, ami a következő mintának eredményezte: `<fileNamePrefix>_00000.<fileExtension>` . Ha nincs megadva, a rendszer automatikusan létrehozza a fájlnév-előtagot. Ez a tulajdonság nem érvényes, ha a forrás fájl-vagy [partíciós](copy-activity-performance-features.md)tárolásra képes adattár.  | No |
+| típus          | A formatSettings típusát **ParquetWriteSettings**értékre kell beállítani. | Igen                                                   |
+| maxRowsPerFile | Az Adatmappában való íráskor több fájl írására is választhatja, és a fájlok maximális számát is megadhatja.  | Nem |
+| fileNamePrefix | `maxRowsPerFile`A konfigurálásakor alkalmazható.<br> Adja meg a fájlnév előtagját, ha több fájlra ír be adatírást, ami a következő mintának eredményezte: `<fileNamePrefix>_00000.<fileExtension>` . Ha nincs megadva, a rendszer automatikusan létrehozza a fájlnév-előtagot. Ez a tulajdonság nem érvényes, ha a forrás fájl-vagy [partíciós](copy-activity-performance-features.md)tárolásra képes adattár.  | Nem |
 
 ## <a name="mapping-data-flow-properties"></a>Adatfolyam-tulajdonságok leképezése
 

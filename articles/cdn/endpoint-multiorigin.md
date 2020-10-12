@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 9/06/2020
 ms.author: allensu
 ms.openlocfilehash: f9293206526778f8c3de8a368a1916a2cb3f88c2
-ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89504673"
 ---
 # <a name="azure-cdn-endpoint-multi-origin-preview"></a>Azure CDN Endpoint multi-Origin (előzetes verzió)
@@ -42,7 +42,7 @@ Ha több kezdőpontot választ egy Azure CDN végponton belül, a redundancia a 
 
 4. A többszörös származás engedélyezéséhez szükség van legalább egy származási csoportra. Válassza ki a **Forrás létrehozása csoportot**:
 
-    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-2.png" alt-text="Forrás beállításai" border="true":::
+    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-2.png" alt-text="CDN-végpont" border="true":::
 
 5. A **forrás csoport hozzáadása** konfiguráció területen adja meg vagy válassza ki a következő adatokat:
 
@@ -56,21 +56,21 @@ Ha több kezdőpontot választ egy Azure CDN végponton belül, a redundancia a 
    | Mintavételi módszer      | Válassza a **fej** vagy a **beolvasás**lehetőséget.                                           |
    | Alapértelmezett Origó | Válassza ki az alapértelmezett origóként beállítani kívánt mezőt.
     
-   :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-3.png" alt-text="Forrás csoport hozzáadása" border="true":::
+   :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-3.png" alt-text="CDN-végpont" border="true":::
 
-6. Válassza a **Hozzáadás** elemet.
+6. Válassza a **Hozzáadás** lehetőséget.
 
 ## <a name="add-multiple-origins"></a>Több eredet hozzáadása
 
 1. A végpont forrás beállításainál válassza a **+ Forrás létrehozása**elemet:
 
-    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-5.png" alt-text="Forrás létrehozása" border="true":::
+    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-5.png" alt-text="CDN-végpont" border="true":::
 
 2. Adja meg vagy válassza ki az alábbi adatokat a **forrás hozzáadása** konfigurációban:
 
    | Beállítás           | Érték                                                                 |
    |-------------------|-----------------------------------------------------------------------|
-   | Név        | Adja meg a forrás nevét.        |
+   | Name (Név)        | Adja meg a forrás nevét.        |
    | Forrás típusa | Válassza a **Storage**, a **Cloud Service**, a **Web App**vagy az **Egyéni forrás**lehetőséget.                                   |
    | Forrás gazdaneve        | Válassza ki vagy adja meg a forrás állomásnevét.  A legördülő lista felsorolja az előző beállításban megadott típusú összes rendelkezésre álló forrást. Ha az **Egyéni forrás** lehetőséget választotta a forrás típusaként, adja meg az ügyfél-forráskiszolgáló tartományát. |
    | Forrás állomásfejléce    | Adja meg az egyes kérésekhez küldendő Azure CDN, vagy hagyja meg az alapértelmezett értéket.                        |
@@ -82,15 +82,15 @@ Ha több kezdőpontot választ egy Azure CDN végponton belül, a redundancia a 
     > [!NOTE]
     > Ha egy forrást egy Origin csoporton belül hoznak létre, azt prioritásnak és súlyozásnak kell megfelelnie. Ha egy származási csoportnak csak egy forrása van, akkor az alapértelmezett prioritás és a súlyozás értéke 1. Ha a forrás kifogástalan, a rendszer átirányítja a forgalmat a legmagasabb prioritási állapotba. Ha a forrás megállapítása nem kifogástalan állapotú, akkor a kapcsolatok a prioritás sorrendjében egy másik forráshoz lesznek kiválasztva. Ha két eredet azonos prioritással rendelkezik, akkor a forgalom elosztása a forráshoz megadott súlyozás szerint történik. 
 
-    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-6.png" alt-text="További forrás hozzáadása" border="true":::
+    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-6.png" alt-text="CDN-végpont" border="true":::
 
-3. Válassza a **Hozzáadás** elemet.
+3. Válassza a **Hozzáadás** lehetőséget.
 
 4. Válassza a **forrás beállítása** lehetőséget a forrás elérési útjának az összes eredethez beállításához:
 
-    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-7.png" alt-text="Forrás elérési útjának konfigurálása" border="true":::
+    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-7.png" alt-text="CDN-végpont" border="true":::
 
-5. Válassza az **OK** lehetőséget.
+5. Kattintson az **OK** gombra.
 
 ## <a name="configure-origins-and-origin-group-settings"></a>Az Origins és a származási csoport beállításainak konfigurálása
 
@@ -98,27 +98,27 @@ Ha több eredete és a származási csoport is van, hozzáadhat vagy eltávolít
 
 1. Az Azure CDN végpont forrás beállításainál válassza ki a konfigurálni kívánt származási csoport nevét:
 
-    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-8.png" alt-text="Az Origins és a származási csoport beállításainak konfigurálása" border="true":::
+    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-8.png" alt-text="CDN-végpont" border="true":::
 
 2. A **frissítés forrása csoportban**válassza a **+ forrás kiválasztása**lehetőséget:
 
-    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-9.png" alt-text="Frissítési forrás csoport" border="true":::
+    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-9.png" alt-text="CDN-végpont" border="true":::
 
 4. Válassza ki a csoportba felvenni kívánt forrást a legördülő mezőben, majd kattintson az **OK gombra**.
 
 5. Győződjön meg arról, hogy a forrás hozzá lett adva a csoporthoz, majd válassza a **Mentés**lehetőséget:
 
-    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-10.png" alt-text="A csoportba felvett további forrás ellenőrzése" border="true":::
+    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-10.png" alt-text="CDN-végpont" border="true":::
 
 ## <a name="remove-origin-from-origin-group"></a>Forrás eltávolítása a forrás csoportjából
 
 1. Az Azure CDN végpont forrás beállításainál válassza ki a forrás csoport nevét:
 
-    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-8.png" alt-text="Forrás eltávolítása a csoportból" border="true":::
+    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-8.png" alt-text="CDN-végpont" border="true":::
 
 2. Ha el szeretne távolítani egy forrást a forrás csoportból, jelölje be a forrás melletti Kuka ikont, majd válassza a **Mentés**lehetőséget:
 
-    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-11.png" alt-text="A Origin csoport törlési forrásának frissítése" border="true":::
+    :::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-11.png" alt-text="CDN-végpont" border="true":::
 
 ## <a name="override-origin-group-with-rules-engine"></a>A forrás csoport felülbírálása a szabályok motorral
 
@@ -128,7 +128,7 @@ A forgalom elosztása egy másik csoportba a kérelem URL-címe alapján.
 
 1. A CDN-végponton válassza a **szabályok motor** elemet a **Beállítások**területen:
 
-:::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-12.png" alt-text="Szabályok motorja" border="true":::
+:::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-12.png" alt-text="CDN-végpont" border="true":::
 
 2. Válassza a **+ szabály hozzáadása**elemet.
 
@@ -144,7 +144,7 @@ A forgalom elosztása egy másik csoportba a kérelem URL-címe alapján.
 
 8. A **forrás csoportban**válassza ki a forrás csoportot a legördülő listából.
 
-:::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-13.png" alt-text="Szabályok motorjának feltételei" border="true":::
+:::image type="content" source="./media/endpoint-multiorigin/endpoint-multiorigin-13.png" alt-text="CDN-végpont" border="true":::
 
 Az összes bejövő kérelem esetén, ha az URL-cím **/images**tartalmaz, akkor a kérés a művelet szakaszban **(myorigingroup)** lesz hozzárendelve a forrás csoportjához. 
 

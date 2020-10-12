@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 08/26/2020
 ms.author: alkohli
 ms.openlocfilehash: 4bc598080b96886e6734ac3709761465a1a28d49
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90899531"
 ---
 # <a name="use-iot-edge-module-to-run-a-kubernetes-stateless-application-on-your-azure-stack-edge-pro-gpu-device"></a>IoT Edge modul használata Kubernetes állapot nélküli alkalmazások futtatásához az Azure Stack Edge Pro GPU-eszközön
@@ -78,7 +78,7 @@ A következő lépésekkel adhat hozzá egy webkiszolgáló-modult az Azure Stac
 
         ![A port adatainak meghatározása IoT Edge egyéni modul panelen](media/azure-stack-edge-gpu-deploy-stateless-application-iot-edge-module/verify-module-status-1.png)
 
-    4. Válassza az **Áttekintés + létrehozás** lehetőséget. Tekintse át a modul részleteit, és válassza a **Létrehozás**lehetőséget.
+    4. Válassza a **Felülvizsgálat + létrehozás** lehetőséget. Tekintse át a modul részleteit, és válassza a **Létrehozás**lehetőséget.
 
 ## <a name="verify-module-access"></a>Modul-hozzáférés ellenőrzése
 

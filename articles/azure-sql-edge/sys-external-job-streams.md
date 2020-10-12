@@ -1,7 +1,7 @@
 ---
-title: sys. external_job_streams (Transact-SQL) – Azure SQL Edge
-description: Tudnivalók a sys. external_job_streams használatáról az Azure SQL Edge-ben
-keywords: sys. external_job_streams, SQL Edge
+title: sys.external_job_streams (Transact-SQL) – Azure SQL Edge
+description: Tudnivalók a sys.external_job_streams használatáról az Azure SQL Edge-ben
+keywords: sys.external_job_streams, SQL Edge
 services: sql-edge
 ms.service: sql-edge
 ms.topic: reference
@@ -10,10 +10,10 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2019
 ms.openlocfilehash: 35010d3aba7f6d5ee3185291c917ff7726ba8bd7
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90900350"
 ---
 # <a name="sysexternal_job_streams-transact-sql"></a>sys.external_job_streams (Transact-SQL)
@@ -22,8 +22,8 @@ Egy olyan sort ad vissza, amely a külső adatfolyam-feladathoz hozzárendelt be
 
 |Oszlop neve|Adattípus|Leírás|  
 |-----------------|---------------|-----------------|
-|**job_id**|**int**| A folyamatos átviteli feladattípushoz tartozó objektum-azonosító szám. Ez az oszlop a sys. external_streaming_jobs object_id oszlopát képezi le.|
-|**stream_id**|**int**| Az adatfolyam-objektumhoz tartozó objektum-azonosító szám. Ez az oszlop a sys. external_streams object_id oszlopát képezi le. |
+|**job_id**|**int**| A folyamatos átviteli feladattípushoz tartozó objektum-azonosító szám. Ez az oszlop a sys.external_streaming_jobs object_id oszlopát képezi le.|
+|**stream_id**|**int**| Az adatfolyam-objektumhoz tartozó objektum-azonosító szám. Ez az oszlop a sys.external_streams object_id oszlopát képezi le. |
 |**is_input**|**bit**| 1 Ha a Stream-objektum bemenetet használ a folyamatos átviteli feladathoz, ellenkező esetben 0.|
 |**is_output**|**bit**| 1 Ha a Stream objektum kimenetet használ a folyamatos átviteli feladatokhoz, ellenkező esetben 0.|
 

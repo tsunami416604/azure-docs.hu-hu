@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: virtual-machines
 author: albecker1
 ms.service: virtual-machines
@@ -9,13 +9,13 @@ ms.date: 04/27/2020
 ms.author: albecker1
 ms.custom: include file
 ms.openlocfilehash: cc0dd5e76227c0814659b74afc2ac46c8ca4de73
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87102713"
 ---
-## <a name="common-scenarios"></a>Gyakori forgatókönyvek
+## <a name="common-scenarios"></a>Gyakori helyzetek
 A következő forgatókönyvek nagy mértékben kihasználhatják a betörést:
 - A **rendszerindítási időpontok javítása** – a betörést követően a példány jelentősen gyorsabb ütemben fog indulni. A Premium-kompatibilis virtuális gépek alapértelmezett operációsrendszer-lemeze például a P4-lemez, amely legfeljebb 120 IOPS és 25 MB/s kiépített teljesítményű. A Betöréssel a P4 akár 3500 IOPS-t és 170 MB/s-ot is biztosít, ami lehetővé teszi a rendszerindítási időt a 6X felgyorsításához.
 - **Kötegelt feladatok feldolgozása** – egyes alkalmazások számítási feladatai ciklikus jellegűek, és az idő nagy részében alapvető teljesítményt igényelnek, és rövid időn belül nagyobb teljesítményt igényelnek. Erre példa egy olyan könyvelési program, amely naponta dolgozza fel a tranzakciókat, amelyek kis mennyiségű lemezterületet igényelnek. A hónap végén a olyan jelentések egyeztetését végzi el, amelyek sokkal nagyobb mennyiségű lemezes forgalmat igényelnek.

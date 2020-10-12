@@ -8,10 +8,10 @@ ms.date: 08/15/2017
 ms.author: luywang
 ms.subservice: disks
 ms.openlocfilehash: 203176c4c7ffed95cb4f1616f29f3953fcc0afc5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91320098"
 ---
 # <a name="migrate-to-premium-storage-by-using-azure-site-recovery"></a>Migrálás Premium Storagere Azure Site Recovery használatával
@@ -160,7 +160,7 @@ Annak ellenőrzéséhez, hogy a konfigurációs kiszolgáló sikeresen hozzá va
    4. A 3. lépésben adja hozzá a védett virtuális gépeket IP-cím szerint. (Szükség lehet egy belső IP-cím megkeresésére.)
    5. A 4. lépésben konfigurálja a tulajdonságokat úgy, hogy kiválasztja a korábban a Process Serveren beállított fiókokat.
    6. Az 5. lépésben válassza ki azt a replikációs házirendet, amelyet korábban a "5. lépés: replikációs beállítások beállítása" című témakörben hozott létre.
-   7. Válassza az **OK** lehetőséget.
+   7. Kattintson az **OK** gombra.
 
    > [!NOTE]
    > Ha egy Azure-beli virtuális gép fel van foglalva és újra elindult, nincs garancia arra, hogy ugyanazt az IP-címet kapja. Ha a konfigurációs kiszolgáló vagy folyamat kiszolgálójának vagy a védett Azure-beli virtuális gépeknek az IP-címe megváltozik, előfordulhat, hogy az ebben a forgatókönyvben lévő replikáció nem fog megfelelően működni.

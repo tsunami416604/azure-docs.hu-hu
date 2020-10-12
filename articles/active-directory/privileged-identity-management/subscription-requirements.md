@@ -18,10 +18,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 74c9cd1c55f1b0dde173a7ffbeac92e5518db81e
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88005803"
 ---
 # <a name="license-requirements-to-use-privileged-identity-management"></a>A Privileged Identity Management használatára vonatkozó licencfeltételek
@@ -52,7 +52,7 @@ További információ a licencekről: [licencek kiosztása vagy eltávolítása 
 
 Íme néhány példa a licencekre, amelyek segítségével meghatározhatja a szükséges licencek számát.
 
-| Eset | Számítás | Licencek száma |
+| Forgatókönyv | Számítás | Licencek száma |
 | --- | --- | --- |
 | A Woodgrove Bank 10 rendszergazdával rendelkezik különböző részlegek és 2 globális rendszergazda számára, amelyek a PIM-t konfigurálja és kezelik. Így öt rendszergazda jogosult. | Öt licenc a jogosult rendszergazdák számára | 5 |
 | A Graphic Design Institute 25 rendszergazdával rendelkezik, amelyből 14 felügyeli a PIM-t. A szerepkör-aktiválás jóváhagyást igényel, és a szervezeten belül három különböző felhasználó is jóváhagyhatja az aktiválásokat. | 14 licenc a jogosult szerepkörökhöz + három jóváhagyó | 17 |
@@ -68,7 +68,7 @@ Ha egy prémium szintű Azure AD P2, EMS E5 vagy próbaverziós licenc lejár, P
 - Az Azure AD-szerepkörök folyamatos hozzáférési felülvizsgálatai megszűnnek, és Privileged Identity Management a konfigurációs beállítások törlődnek.
 - Privileged Identity Management többé nem fog e-maileket küldeni a szerepkör-hozzárendelés változásairól.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [A Privileged Identity Management üzembe helyezése](pim-deployment-plan.md)
 - [A Privileged Identity Management használatának első lépései](pim-getting-started.md)

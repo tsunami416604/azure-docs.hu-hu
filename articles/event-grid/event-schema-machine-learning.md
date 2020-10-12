@@ -4,10 +4,10 @@ description: A Machine Learning-munkaterület eseményekhez megadott tulajdonsá
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: fb8cd76829622962b642580bbda7f2a655604c2f
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87458042"
 ---
 # <a name="azure-machine-learning-as-an-event-grid-source"></a>Azure Machine Learning Event Grid forrásként
@@ -186,7 +186,7 @@ Ez a szakasz egy példát mutat be, hogy az egyes események milyen módon nézn
 
 Egy esemény a következő legfelső szintű adattal rendelkezik:
 
-| Tulajdonság | Típus | Description |
+| Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
 | témakör | sztring | Az eseményforrás teljes erőforrás-elérési útja. Ez a mező nem írható. Az értéket az Event Grid adja meg. |
 | tárgy | sztring | Az esemény tárgyra mutató, a közzétevő által megadott elérési út. |
@@ -201,7 +201,7 @@ Az adatobjektum minden eseménytípus esetében a következő tulajdonságokkal 
 
 ### <a name="microsoftmachinelearningservicesmodelregistered"></a>Microsoft. MachineLearningServices. ModelRegistered
 
-| Tulajdonság | Típus | Description |
+| Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
 | Modellnév | sztring | A regisztrált modell neve. |
 | ModelVersion | sztring | A regisztrált modell verziója. |
@@ -210,7 +210,7 @@ Az adatobjektum minden eseménytípus esetében a következő tulajdonságokkal 
 
 ### <a name="microsoftmachinelearningservicesmodeldeployed"></a>Microsoft. MachineLearningServices. ModelDeployed
 
-| Tulajdonság | Típus | Description |
+| Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
 | ServiceName | sztring | A telepített szolgáltatás neve. |
 | ServiceComputeType | sztring | A központilag telepített szolgáltatás számítási típusa (pl. ACI, ak). |
@@ -220,7 +220,7 @@ Az adatobjektum minden eseménytípus esetében a következő tulajdonságokkal 
 
 ### <a name="microsoftmachinelearningservicesruncompleted"></a>Microsoft. MachineLearningServices. RunCompleted
 
-| Tulajdonság | Típus | Description |
+| Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
 | experimentId | sztring | Annak a kísérletnek az azonosítója, amelyhez a Futtatás tartozik. |
 | experimentName | sztring | Annak a kísérletnek a neve, amelyhez a Futtatás tartozik. |
@@ -231,7 +231,7 @@ Az adatobjektum minden eseménytípus esetében a következő tulajdonságokkal 
 
 ### <a name="microsoftmachinelearningservicesdatasetdriftdetected"></a>Microsoft. MachineLearningServices. DatasetDriftDetected
 
-| Tulajdonság | Típus | Description |
+| Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
 | DataDriftId | sztring | Az eseményt kiváltó adatdrift-figyelő azonosítója. |
 | DataDriftName | sztring | Az eseményt kiváltó adatdrift-figyelő neve. |
@@ -244,7 +244,7 @@ Az adatobjektum minden eseménytípus esetében a következő tulajdonságokkal 
 
 ### <a name="microsoftmachinelearningservicesrunstatuschanged"></a>Microsoft. MachineLearningServices. RunStatusChanged
 
-| Tulajdonság | Típus | Description |
+| Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
 | experimentId | sztring | Annak a kísérletnek az azonosítója, amelyhez a Futtatás tartozik. |
 | experimentName | sztring | Annak a kísérletnek a neve, amelyhez a Futtatás tartozik. |

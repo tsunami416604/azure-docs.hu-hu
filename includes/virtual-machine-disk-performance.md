@@ -9,10 +9,10 @@ ms.date: 09/25/2020
 ms.author: albecker1
 ms.custom: include file
 ms.openlocfilehash: 9f5a1010959658e75dcc809b2ee1d6d9222af056
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91540010"
 ---
 Ez a cikk segít a lemezek teljesítményének és működésének tisztázásában az Azure Virtual Machines és az Azure-lemezek kombinálásával. Azt is leírja, hogyan diagnosztizálhatja a lemez i/o-sebességének szűk keresztmetszeteit, és hogy milyen módosításokat végezhet a teljesítmény optimalizálása érdekében.

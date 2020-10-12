@@ -13,10 +13,10 @@ ms.date: 09/25/2020
 ms.author: jmprieur
 ms.custom: aaddev, devx-track-python
 ms.openlocfilehash: c8d68a17b3b991b88e02cf056dcb46da2debfa71
-ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91403194"
 ---
 # <a name="a-web-app-that-calls-web-apis-code-configuration"></a>Webes API-kat meghívó webalkalmazás: kód konfigurálása
@@ -175,7 +175,7 @@ Ha a Microsoft Graphtól eltérő webes API-t szeretne meghívni, a *Microsoft. 
    }
    ```
 
-### <a name="summary"></a>Összefoglalás
+### <a name="summary"></a>Összegzés
 
 A webes API-khoz hasonlóan különböző jogkivonat-gyorsítótár-implementációkat is választhat. Részletekért lásd: [Microsoft. Identity. Web-token cache szerializálás](https://aka.ms/ms-id-web/token-cache-serialization) a githubon.
 
@@ -515,7 +515,7 @@ def _build_msal_app(cache=None):
 
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ezen a ponton, amikor a felhasználó bejelentkezik, a rendszer a jogkivonat-gyorsítótárban tárolja a tokent. Lássuk, hogyan használják majd a webalkalmazás más részeiben.
 

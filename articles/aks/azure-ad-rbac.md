@@ -6,10 +6,10 @@ services: container-service
 ms.topic: article
 ms.date: 07/21/2020
 ms.openlocfilehash: 2845a091c8a89f22e8892141dd2dad26d6049447
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88006842"
 ---
 # <a name="control-access-to-cluster-resources-using-role-based-access-control-and-azure-active-directory-identities-in-azure-kubernetes-service"></a>A fürterőforrások hozzáférésének szabályozása szerepköralapú hozzáférés-vezérléssel és Azure Active Directory identitásokkal az Azure Kubernetes szolgáltatásban
@@ -164,7 +164,7 @@ Ezután szerezze be a *appdev* -csoport erőforrás-azonosítóját az az [ad Gr
 az ad group show --group appdev --query objectId -o tsv
 ```
 
-Most hozzon létre egy RoleBinding a *appdev* csoport számára, hogy a korábban létrehozott szerepkört használja a névtér-hozzáféréshez. Hozzon létre egy nevű fájlt `rolebinding-dev-namespace.yaml` , és illessze be a következő YAML-jegyzékbe. Az utolsó sorban cserélje le az *groupObjectId* -t az előző parancsban szereplő csoport objektum-azonosító kimenetére:
+Most hozzon létre egy RoleBinding a *appdev* csoport számára, hogy a korábban létrehozott szerepkört használja a névtér-hozzáféréshez. Hozzon létre egy nevű fájlt `rolebinding-dev-namespace.yaml` , és illessze be a következő YAML-jegyzékbe. Az utolsó sorban cserélje le az *groupObjectId*  -t az előző parancsban szereplő csoport objektum-azonosító kimenetére:
 
 ```yaml
 kind: RoleBinding
@@ -229,7 +229,7 @@ Szerezze be a *opssre* -csoport erőforrás-azonosítóját az az [ad Group show
 az ad group show --group opssre --query objectId -o tsv
 ```
 
-Hozzon létre egy RoleBinding ahhoz a *opssre* -csoporthoz, amely a korábban létrehozott szerepkört használja a névtér-hozzáféréshez. Hozzon létre egy nevű fájlt `rolebinding-sre-namespace.yaml` , és illessze be a következő YAML-jegyzékbe. Az utolsó sorban cserélje le az *groupObjectId* -t az előző parancsban szereplő csoport objektum-azonosító kimenetére:
+Hozzon létre egy RoleBinding ahhoz a *opssre* -csoporthoz, amely a korábban létrehozott szerepkört használja a névtér-hozzáféréshez. Hozzon létre egy nevű fájlt `rolebinding-sre-namespace.yaml` , és illessze be a következő YAML-jegyzékbe. Az utolsó sorban cserélje le az *groupObjectId*  -t az előző parancsban szereplő csoport objektum-azonosító kimenetére:
 
 ```yaml
 kind: RoleBinding
@@ -367,7 +367,7 @@ $ kubectl run nginx-sre --image=nginx --namespace dev
 Error from server (Forbidden): pods is forbidden: User "akssre@contoso.com" cannot create pods in the namespace "dev"
 ```
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ebben a cikkben erőforrásokat hozott létre az AK-fürtben, valamint az Azure AD-ben lévő felhasználókat és csoportokat. Az összes erőforrás eltávolításához futtassa a következő parancsokat:
 
@@ -388,7 +388,7 @@ az ad group delete --group appdev
 az ad group delete --group opssre
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a Kubernetes-fürtök védelméről: [a hozzáférési és identitási beállítások az AK-][rbac-authorization]ban.
 

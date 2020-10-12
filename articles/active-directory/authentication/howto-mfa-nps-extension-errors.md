@@ -13,10 +13,10 @@ ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
 ms.openlocfilehash: f991e38c184fe44f63af63809deb14eda22f8f4c
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88716724"
 ---
 # <a name="resolve-error-messages-from-the-nps-extension-for-azure-multi-factor-authentication"></a>Hibaüzenetek által jelzett problémák megszüntetése az Azure Multi-Factor Authentication NPS-bővítményéből
@@ -33,7 +33,7 @@ Ha az Azure Multi-Factor Authentication hálózati házirend-bővítményével k
 | **HTTPS_COMMUNICATION_ERROR** | Az NPS-kiszolgáló nem tud válaszokat kapni az Azure MFA-ból. Győződjön meg arról, hogy a tűzfalak a és a rendszer felé irányuló forgalom kétirányú megnyitása https://adnotifications.windowsazure.com |
 | **HTTP_CONNECT_ERROR** | A hálózati házirend-kiszolgálót futtató kiszolgálón ellenőrizze, hogy elérhető-e a  `https://adnotifications.windowsazure.com` és a `https://login.microsoftonline.com/` . Ha ezek a helyek nem töltődnek be, akkor hárítsa el a kapcsolódást az adott kiszolgálón. |
 | **NPS-bővítmény az Azure MFA-hoz:** <br> A hálózati házirend-kiszolgáló bővítménye az Azure MFA esetében csak a AccessAccept állapotban lévő RADIUS-kérelmek másodlagos hitelesítését hajtja végre. A válasz állapot AccessReject rendelkező felhasználói felhasználónévre vonatkozó kérelem érkezett, figyelmen kívül hagyva a kérést. | Ez a hiba általában egy hitelesítési hibát jelez az AD-ben, illetve azt, hogy az NPS-kiszolgáló nem tud válaszokat kapni az Azure AD-től. Győződjön meg arról, hogy a tűzfalak a `https://adnotifications.windowsazure.com` `https://login.microsoftonline.com` 80-es és a 443-es porton keresztüli és onnan érkező, illetve onnan érkező és onnan érkező forgalom számára vannak Azt is fontos ellenőrizni, hogy a hálózati hozzáférési engedélyek Betárcsázás lapján a beállítás "hozzáférés vezérlése az NPS-hálózati házirend alapján" értékre van-e állítva. Ez a hiba akkor is aktiválható, ha a felhasználóhoz nincs hozzárendelve licenc. |
-| **REGISTRY_CONFIG_ERROR** | Hiányzik egy kulcs az alkalmazás beállításjegyzékében, ennek oka az lehet, hogy a [PowerShell-parancsfájlt](howto-mfa-nps-extension.md#install-the-nps-extension) a telepítés után nem futtatták. A hibaüzenetnek tartalmaznia kell a hiányzó kulcsot. Győződjön meg arról, hogy rendelkezik a kulcs HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\AzureMfa. |
+| **REGISTRY_CONFIG_ERROR** | Hiányzik egy kulcs az alkalmazás beállításjegyzékében, ennek oka az lehet, hogy a [PowerShell-parancsfájlt](howto-mfa-nps-extension.md#install-the-nps-extension) a telepítés után nem futtatták. A hibaüzenetnek tartalmaznia kell a hiányzó kulcsot. Győződjön meg arról, hogy a kulcs a HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureMfa alatt van. |
 | **REQUEST_FORMAT_ERROR** <br> A RADIUS-kérelemből hiányzik a kötelező RADIUS-userName\Identifier attribútum. A hálózati házirend-kiszolgáló RADIUS-kérelmek fogadásának ellenőrzése | Ez a hiba általában egy telepítési problémát tükröz. A hálózati házirend-kiszolgáló bővítményét telepíteni kell a RADIUS-kérelmeket fogadó NPS-kiszolgálókon. Azok a hálózati házirend-kiszolgálók, amelyek függőségként vannak telepítve a RDG és az RRAS szolgáltatáshoz, nem kapják meg a RADIUS-kéréseket. A hálózati házirend-kiszolgáló bővítmény nem működik, ha az ilyen telepítések és hibák miatt nem tudja olvasni a hitelesítési kérelem részleteit. |
 | **REQUEST_MISSING_CODE** | Győződjön meg arról, hogy a hálózati házirend-kiszolgáló és a NAS kiszolgálók közötti jelszó-titkosítási protokoll támogatja a másodlagos hitelesítési módszert, amelyet használ. A **pap** az Azure MFA összes hitelesítési módszerét támogatja a felhőben: telefonhívás, egyirányú szöveges üzenet, Mobile App Notification és Mobile App ellenőrző kód. A **CHAPv2** és az **EAP** támogatja a telefonhívást és a Mobile apps-értesítést. |
 | **USERNAME_CANONICALIZATION_ERROR** | Ellenőrizze, hogy a felhasználó szerepel-e a helyszíni Active Directory-példányban, és hogy a hálózati házirend-kiszolgáló rendelkezik-e jogosultságokkal a címtár eléréséhez. Ha erdők közötti megbízhatósági kapcsolatot használ, további segítségért [forduljon az ügyfélszolgálathoz](#contact-microsoft-support) . |
@@ -107,7 +107,7 @@ Ha további segítségre van szüksége, forduljon a támogatási szakemberekhez
 
 A támogatási diagnosztika hibakeresési naplóinak összegyűjtéséhez kövesse az alábbi lépéseket az NPS-kiszolgálón:
 
-1. Nyissa meg a Beállításszerkesztőt, és tallózással keresse meg HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\AzureMfa set **VERBOSE_LOG** **true** értékre
+1. Nyissa meg a Beállításszerkesztőt, és tallózással keresse meg HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureMfa a **VERBOSE_LOG** beállítása **igaz** értékre
 2. Nyisson meg egy rendszergazdai parancssort, és futtassa a következő parancsokat:
 
    ```
@@ -131,5 +131,5 @@ A támogatási diagnosztika hibakeresési naplóinak összegyűjtéséhez köves
    Start .
    ```
 
-5. Nyissa meg a Beállításszerkesztőt, és keresse meg az HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\AzureMfa beállítása **VERBOSE_LOG** **hamis** értékre
+5. Nyissa meg a Beállításszerkesztőt, és tallózással keresse meg a HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\AzureMfa **VERBOSE_LOG** **hamis** értékre
 6. Zip a C:\NPS mappa tartalmát, és csatolja a tömörített fájlt a támogatási esethez.

@@ -12,10 +12,10 @@ ms.reviewer: ozgun
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 0991992a6138d263dfb4d200c9555a8d53366d70
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90994928"
 ---
 # <a name="configure-encryption-with-customer-managed-keys-stored-in-azure-key-vault"></a>A titkosítás konfigurálása a Azure Key Vaultban tárolt ügyfél által felügyelt kulcsokkal
@@ -157,7 +157,7 @@ az keyvault key create \
 
 ---
 
-## <a name="configure-encryption-with-customer-managed-keys"></a>Titkosítás konfigurálása az ügyfél által felügyelt kulcsokkal
+## <a name="configure-encryption-with-customer-managed-keys"></a>Ügyfél által felügyelt kulcsokkal végzett titkosítás konfigurálása
 
 Ezután konfigurálja az Azure Storage-fiókot úgy, hogy az ügyfél által felügyelt kulcsokat Azure Key Vault használatával használja, majd adja meg a Storage-fiókhoz társítandó kulcsot.
 
@@ -190,7 +190,7 @@ Ha az ügyfél által felügyelt kulcsokat a Azure Portal a kulcs verziójának 
 
 A kulcs megadása után a Azure Portal azt jelzi, hogy a kulcs verziójának automatikus frissítése engedélyezve van, és megjeleníti a jelenleg a titkosításhoz használt kulcs verzióját.
 
-:::image type="content" source="media/customer-managed-keys-configure-key-vault/portal-auto-rotation-enabled.png" alt-text="Képernyőfelvétel, amely az engedélyezett kulcs verziójának automatikus frissítését mutatja":::
+:::image type="content" source="media/customer-managed-keys-configure-key-vault/portal-auto-rotation-enabled.png" alt-text="Képernyőfelvétel, amely bemutatja, hogyan engedélyezhető a kiürítési védelem a kulcstartó létrehozásakor":::
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 

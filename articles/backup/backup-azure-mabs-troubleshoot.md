@@ -5,10 +5,10 @@ ms.reviewer: srinathv
 ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.openlocfilehash: 09e5fe5da7e316257cbbdcb89074fe8a4bc692c0
-ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91403007"
 ---
 # <a name="troubleshoot-azure-backup-server"></a>Az Azure Backup Server hibaelhárítása
@@ -77,7 +77,7 @@ Reg query "HKLM\SOFTWARE\Microsoft\Microsoft Data Protection Manager\Setup"
 
 | Művelet | A hiba részletei | Áthidaló megoldás |
 | --- | --- | --- |
-| Backup | Az online helyreállítási pont létrehozása nem sikerült | **Hibaüzenet**: a Windows Azure Backup ügynök nem tudott pillanatképet készíteni a kijelölt kötetről. <br> **Áthidaló megoldás**: próbálja meg növelni a helyet a replika és a helyreállítási pont kötetén.<br> <br> **Hibaüzenet**: a Windows Azure Backup ügynök nem tud csatlakozni a OBEngine szolgáltatáshoz <br> **Áthidaló megoldás**: Ellenőrizze, hogy a OBEngine létezik-e a számítógépen futó szolgáltatások listájában. Ha a OBEngine szolgáltatás nem fut, használja a "net start OBEngine" parancsot a OBEngine szolgáltatás elindításához. <br> <br> **Hibaüzenet**: nincs beállítva a kiszolgáló titkosítási jelszava. Konfigurálja a titkosítási jelszót. <br> **Áthidaló megoldás**: próbálkozzon titkosítási jelszó konfigurálásával. Ha nem sikerül, hajtsa végre a következő lépéseket: <br> <ol><li>Ellenőrizze, hogy létezik-e a megkarcolt hely. Ez az a hely, amely szerepel a beállításjegyzékben **HKEY_LOCAL_MACHINE \Software\microsoft\windows Azure-Backup\Config**, és a **ScratchLocation** néven is léteznie kell.</li><li> Ha a megjelenő hely létezik, próbálja meg újból regisztrálni a régi jelszó használatával. *Ha titkosítási jelszót állít be, mentse biztonságos helyre.*</li><ol>|
+| Backup | Az online helyreállítási pont létrehozása nem sikerült | **Hibaüzenet**: a Windows Azure Backup ügynök nem tudott pillanatképet készíteni a kijelölt kötetről. <br> **Áthidaló megoldás**: próbálja meg növelni a helyet a replika és a helyreállítási pont kötetén.<br> <br> **Hibaüzenet**: a Windows Azure Backup ügynök nem tud csatlakozni a OBEngine szolgáltatáshoz <br> **Áthidaló megoldás**: Ellenőrizze, hogy a OBEngine létezik-e a számítógépen futó szolgáltatások listájában. Ha a OBEngine szolgáltatás nem fut, használja a "net start OBEngine" parancsot a OBEngine szolgáltatás elindításához. <br> <br> **Hibaüzenet**: nincs beállítva a kiszolgáló titkosítási jelszava. Konfigurálja a titkosítási jelszót. <br> **Áthidaló megoldás**: próbálkozzon titkosítási jelszó konfigurálásával. Ha nem sikerül, hajtsa végre a következő lépéseket: <br> <ol><li>Ellenőrizze, hogy létezik-e a megkarcolt hely. Ez az a hely, amely szerepel a beállításjegyzékben **HKEY_LOCAL_MACHINE\Software\Microsoft\Windows Azure Backup\Configban **, és a név **ScratchLocation** léteznie kell.</li><li> Ha a megjelenő hely létezik, próbálja meg újból regisztrálni a régi jelszó használatával. *Ha titkosítási jelszót állít be, mentse biztonságos helyre.*</li><ol>|
 
 ## <a name="the-original-and-external-dpm-servers-must-be-registered-to-the-same-vault"></a>Az eredeti és a külső DPM-kiszolgálókat ugyanahhoz a tárolóhoz kell regisztrálni
 

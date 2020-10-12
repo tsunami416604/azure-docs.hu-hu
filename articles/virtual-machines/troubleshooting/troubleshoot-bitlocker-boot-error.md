@@ -14,10 +14,10 @@ ms.date: 08/23/2019
 ms.author: genli
 ms.custom: has-adal-ref
 ms.openlocfilehash: ac1105f1fce2ac04abfa8a809161580104952917
-ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91404901"
 ---
 # <a name="bitlocker-boot-errors-on-an-azure-vm"></a>BitLocker rendszerindítási hibák egy Azure-beli virtuális gépen
@@ -287,7 +287,7 @@ Ez a hiba azért fordul elő, mert a ADAL-szerelvények elérési útjai helytel
 
 `Az.Accounts`A megfelelő elérési utat a mappa keresésével is megkeresheti.
 
-**Hiba: a Get-AzKeyVaultSecret vagy a Get-AzKeyVaultSecret nem ismerhető fel a parancsmag neveként**
+**Hiba: Get-AzKeyVaultSecret vagy Get-AzKeyVaultSecret nem ismerhető fel a parancsmag neveként**
 
 Ha a régi AZ PowerShell-modult használja, a és a két parancsot kell módosítania `Get-AzureKeyVaultSecret` `Get-AzureKeyVaultSecret` .
 

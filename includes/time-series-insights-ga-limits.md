@@ -10,10 +10,10 @@ ms.author: dpalled
 manager: diviso
 ms.custom: include file
 ms.openlocfilehash: 1aff5780aa5f4cf21d862a5cee3b140179dac03c
-ms.sourcegitcommit: 56cbd6d97cb52e61ceb6d3894abe1977713354d9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88703142"
 ---
 Az alábbiakban a Azure Time Series Insights Gen1 található főbb korlátokat összegzi.
@@ -37,7 +37,7 @@ Az S1 és az S2 SKU beáramlási aránya és kapacitása rugalmasságot biztosí
 
 Az S2 SKU-környezetek havonta több eseményt támogatnak, és lényegesen magasabb beáramlási kapacitással rendelkeznek.
 
-| Termékváltozat  | Események száma havonta  | Események száma percenként | Esemény mérete percenként  |
+| SKU  | Események száma havonta  | Események száma percenként | Esemény mérete percenként  |
 |---------|---------|---------|---------|---------|
 | S1     |   30 000 000   |  720    |  720 KB   |
  |S2     |   300 000 000   | 7 200   | 7 200 KB  |
@@ -46,7 +46,7 @@ Az S2 SKU-környezetek havonta több eseményt támogatnak, és lényegesen maga
 
 A Gen1 tulajdonság korlátai a kiválasztott SKU-környezettől függenek. A megadott esemény tulajdonságai a megfelelő JSON-, CSV-és diagram-oszlopokkal rendelkeznek, amelyek megtekinthetők a [Azure Time Series Insights Explorerben](https://docs.microsoft.com/azure/time-series-insights/time-series-quickstart).
 
-| Termékváltozat | Maximális tulajdonságok |
+| SKU | Maximális tulajdonságok |
 | --- | --- |
 | S1 | 600 tulajdonságok (oszlopok) |
 | S2 | 800 tulajdonságok (oszlopok) |

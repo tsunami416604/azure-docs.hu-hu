@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 1c108c79cafb591dced6f6be0dd5c1b353ddac45
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90086402"
 ---
 # <a name="best-practices-for-azure-maps-route-service"></a>Ajánlott eljárások Azure Maps Route Service-hez
@@ -21,7 +21,7 @@ Azure Maps [Route Service](https://docs.microsoft.com/rest/api/maps/route) Route
 
 > [!div class="checklist"]
 > * Válasszon az útvonalterv API-k és a mátrix-útválasztási API közül
-> * A valós idejű és a korábbi forgalmi adatok alapján megkérheti a korábbi és a várható utazási időt
+> * A korábbi és várható utazási idők kérése valós idejű és korábbi forgalmi adatok alapján
 > * Az útvonal részleteit, például az időt és a távolságot, a teljes útvonal és az útvonal minden egyes szakasza esetén
 > * Kereskedelmi jármű, például egy teherautó kérésének útvonala
 > * Forgalmi információk kérése az útvonalon, például a dzsemek és az autópályadíj-információk
@@ -205,7 +205,7 @@ Ezzel a beállítással az alábbi képen látható módon színezheti a pontoka
 
 ![A térképen megjelenített színes csoportok](media/how-to-use-best-practices-for-routing/show-traffic-sections-img.png)
 
-## <a name="calculate-and-optimize-a-multi-stop-route"></a>Több leállítási útvonal kiszámítása és optimalizálása
+## <a name="calculate-and-optimize-a-multi-stop-route"></a>Több megállóval rendelkező útvonal kiszámítása és optimalizálása
 
 Azure Maps jelenleg két útvonal-optimalizálási formát biztosít:
 
@@ -282,7 +282,7 @@ A Azure Maps web SDK egy [szolgáltatási modult](https://docs.microsoft.com/jav
 További információt a következő témakörben talál:
 
 > [!div class="nextstepaction"]
-> [Azure Maps Route Service](https://docs.microsoft.com/rest/api/maps/route)
+> [Azure Maps Route szolgáltatás](https://docs.microsoft.com/rest/api/maps/route)
 
 > [!div class="nextstepaction"]
 > [A szolgáltatás moduljának használata](https://docs.microsoft.com/azure/azure-maps/how-to-use-services-module)

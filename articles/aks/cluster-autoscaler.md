@@ -5,10 +5,10 @@ services: container-service
 ms.topic: article
 ms.date: 07/18/2019
 ms.openlocfilehash: 9f1dcc64569e9822e3703312740450e2528479dc
-ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88257507"
 ---
 # <a name="automatically-scale-a-cluster-to-meet-application-demands-on-azure-kubernetes-service-aks"></a>Fürt automatikus skálázása az alkalmazás igényeinek kielégítéséhez az Azure Kubernetes Service-ben (AKS)
@@ -159,7 +159,7 @@ az aks update \
   --cluster-autoscaler-profile scan-interval=30s
 ```
 
-Ha a fürtben lévő csomópont-készleteken engedélyezi a fürt autoskálázását, akkor ezek a fürtök a fürt automatikusan méretezhető profilját is használják. Például:
+Ha a fürtben lévő csomópont-készleteken engedélyezi a fürt autoskálázását, akkor ezek a fürtök a fürt automatikusan méretezhető profilját is használják. Példa:
 
 ```azurecli-interactive
 az aks nodepool update \
@@ -176,7 +176,7 @@ az aks nodepool update \
 
 ### <a name="set-the-cluster-autoscaler-profile-when-creating-an-aks-cluster"></a>A fürt autoskálázási profiljának beállítása AK-fürt létrehozásakor
 
-A fürt létrehozásakor a *fürt-autoskálázási profil* paramétert is használhatja. Például:
+A fürt létrehozásakor a *fürt-autoskálázási profil* paramétert is használhatja. Példa:
 
 ```azurecli-interactive
 az aks create \
@@ -276,7 +276,7 @@ az aks nodepool update \
 
 Ha újra engedélyezni szeretné a fürt automéretezőjét egy meglévő fürtön, újra engedélyezheti azt az az [AK nodepool Update][az-aks-nodepool-update] paranccsal, amely a *--enable-cluster-automéretező*, *--min-Count*és *--Max-Count* paramétereket határozza meg.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez a cikk azt mutatja be, hogyan lehet automatikusan méretezni az AK-csomópontok számát. A vízszintes Pod automatikus méretezés használatával automatikusan módosíthatja az alkalmazást futtató hüvelyek számát. A horizontális Pod automéretező használatának lépéseiért lásd: [alkalmazások méretezése az AK-ban][aks-scale-apps].
 

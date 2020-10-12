@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 05/22/2020
 ms.custom: seodec18
 ms.openlocfilehash: 502eb08631223215933b75dca882c12c02d17bd9
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89146402"
 ---
 # <a name="overview-of-batch-apis-and-tools"></a>A Batch API-k és eszközök áttekintése
@@ -43,7 +43,7 @@ Az alkalmazások és szolgáltatások közvetlen REST API-hívásokat hajthatnak
 
 | API | API-referencia | Letöltés | Oktatóanyag | Kódminták | További információ |
 | --- | --- | --- | --- | --- | --- |
-| **Batch REST** |[Azure REST API – docs](/rest/api/batchservice/) |N/A |- |- | [Támogatott verziók](/rest/api/batchservice/batch-service-rest-api-versioning) |
+| **Batch REST** |[Azure REST API – docs](/rest/api/batchservice/) |N.A. |- |- | [Támogatott verziók](/rest/api/batchservice/batch-service-rest-api-versioning) |
 | **Batch .NET** |[Azure SDK for .NET – docs](/dotnet/api/overview/azure/batch) |[NuGet](https://www.nuget.org/packages/Microsoft.Azure.Batch/) |[Oktatóanyag](tutorial-parallel-dotnet.md) |[GitHub](https://github.com/Azure-Samples/azure-batch-samples/tree/master/CSharp) | [Kibocsátási megjegyzések](https://aka.ms/batch-net-dataplane-changelog) |
 | **Batch Python** |[Pythonhoz készült Azure SDK – docs](/python/api/overview/azure/batch/client) |[PyPI](https://pypi.org/project/azure-batch/) |[Oktatóanyag](tutorial-parallel-python.md)|[GitHub](https://github.com/Azure-Samples/azure-batch-samples/tree/master/Python/Batch) | [Olvass el](https://github.com/Azure/azure-sdk-for-python/blob/master/sdk/batch/azure-batch/README.md) |
 | **Batch Node.js** |[Azure SDK a JavaScripthez – docs](/javascript/api/overview/azure/batch/client) |[npm](https://www.npmjs.com/package/azure-batch) |[Oktatóanyag](batch-nodejs-get-started.md) |- | [Olvass el](https://github.com/Azure/azure-sdk-for-node/tree/master/lib/services/batch) |
@@ -77,7 +77,7 @@ Ezek a további eszközök hasznosak lehetnek a Batch-alkalmazások és-szolgál
 - [Azure batch hajógyár](https://github.com/Azure/batch-shipyard): a Batch hajógyár egy olyan eszköz, amellyel a tároló-alapú batch-feldolgozási és HPC-munkaterhelések kiépítése, végrehajtása és monitorozása Azure Batch.
 - [Azure Storage Explorer](https://azure.microsoft.com/features/storage-explorer/): Habár nem szigorúan Azure batch eszköz, a Storage Explorer egy másik értékes eszköz a Batch-megoldások fejlesztése és hibakeresése során.
 
-## <a name="additional-resources"></a>További erőforrások
+## <a name="additional-resources"></a>További források
 
 - További információ a Batch-alkalmazás eseményeinek naplózásáról: [Batch-metrikák, riasztások és naplók a diagnosztika kiértékeléséhez és figyeléséhez](batch-diagnostics.md).
 - A Batch szolgáltatás által kiváltott eseményekkel kapcsolatos információkért lásd: [Batch Analytics](batch-analytics.md).

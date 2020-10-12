@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 06/26/2020
 ms.author: nicolela
 ms.openlocfilehash: abd182339719f19a521feed95f7cfbed6942b3e8
-ms.sourcegitcommit: ada9a4a0f9d5dbb71fc397b60dc66c22cf94a08d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91404782"
 ---
 # <a name="set-up-a-lab-with-gpu-virtual-machines"></a>Tesztkörnyezet beállítása GPU virtuális gépekkel
@@ -28,13 +28,13 @@ Ebben a folyamatban lehetősége van a **vizualizációk** vagy a **számítási
 
 Az alábbi táblázatban leírtak szerint a *számítási* GPU-méret nagy számítási igényű alkalmazások számára készült.  A [természetes nyelvi feldolgozási osztály mély tanulása](./class-type-deep-learning-natural-language-processing.md) például a **kis GPU (számítási)** méretet használja.  A számítási GPU megfelelő az ilyen típusú osztályok számára, mivel a tanulók olyan mély tanulási keretrendszerek és eszközök használatát használják, amelyeket az [Data Science Virtual Machine-rendszerkép](https://azuremarketplace.microsoft.com/marketplace/apps/microsoft-dsvm.ubuntu-1804) biztosít a nagy adatkészletekkel rendelkező mély tanulási modellek betanításához.
 
-| Méret | Cores | RAM | Description | 
+| Méret | Cores | RAM | Leírás | 
 | ---- | ----- | --- | ----------- | 
 | Kis GPU (számítás) | -&nbsp;6 &nbsp; mag<br>-&nbsp;56 &nbsp; GB &nbsp; RAM  | [Standard_NC6](https://docs.microsoft.com/azure/virtual-machines/nc-series) |Ez a méret kiválóan alkalmas olyan nagy számítási igényű alkalmazások számára, mint a mesterséges intelligencia (AI) és a Deep learning. |
 
 A *vizualizációs* GPU-méretek a nagy grafikai igényű alkalmazások számára készültek.  A [SOLIDWORKS mérnöki osztályának típusa](./class-type-solidworks.md) például a **kis GPU (vizualizáció)** méretet mutatja.  A vizualizációs GPU alkalmas az ilyen típusú osztályok számára, mivel a tanulók a SOLIDWORKS 3D számítógépes tervezési (CAD) környezetet használják a Solid Objects modellezéséhez és megjelenítéséhez.
 
-| Méret | Cores | RAM | Description | 
+| Méret | Cores | RAM | Leírás | 
 | ---- | ----- | --- | ----------- | 
 | Kis GPU (vizualizáció) | -&nbsp;6 &nbsp; mag<br>-&nbsp;56 &nbsp; GB &nbsp; RAM  | [Standard_NV6](https://docs.microsoft.com/azure/virtual-machines/nv-series) | Ez a méret a távoli vizualizációk, a folyamatos átvitel, a játékok és az OpenGL-t és a DirectX-t használó keretrendszereket használó kódoláshoz ideális. |
 | Közepes GPU (vizualizáció) | -&nbsp;12 &nbsp; mag<br>-&nbsp;112 &nbsp; GB &nbsp; RAM  | [Standard_NV12](https://docs.microsoft.com/azure/virtual-machines/nv-series?toc=/azure/virtual-machines/linux/toc.json&bc=/azure/virtual-machines/linux/breadcrumb/toc.json) | Ez a méret a távoli vizualizációk, a folyamatos átvitel, a játékok és az OpenGL-t és a DirectX-t használó keretrendszereket használó kódoláshoz ideális. |

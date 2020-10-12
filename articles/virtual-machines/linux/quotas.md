@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 05/31/2018
 ms.author: cynthn
 ms.openlocfilehash: 028da1fa9d2b16b4d87c345d8435c99b565e1774
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88949694"
 ---
 # <a name="check-vcpu-quotas-using-the-azure-cli"></a>VCPU-kvóták keresése az Azure CLI használatával
@@ -62,6 +62,6 @@ A fenntartott VM-példányok, amelyek a virtuális gépek méretének rugalmass�
 
 Ha egy előfizetési RI megvásárlásához kvóta-növelésre van szükség, akkor az előfizetésre vonatkozó [kvóta növelését kérheti](../../azure-portal/supportability/resource-manager-core-quotas-request.md) .
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A számlázással és a kvótákkal kapcsolatos további információkért lásd: [Azure-előfizetések és-szolgáltatások korlátai, kvótái és megkötései](../../azure-resource-manager/management/azure-subscription-service-limits.md?toc=/azure/billing/TOC.json).

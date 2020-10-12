@@ -4,10 +4,10 @@ description: Megtudhatja, hogyan konfigurálhatja a labor által használt Azure
 ms.topic: how-to
 ms.date: 07/29/2020
 ms.openlocfilehash: 3c1d1531084deeabbe9a8d261e93554a2c691eb6
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87433562"
 ---
 # <a name="encrypt-azure-storage-used-by-a-lab-in-azure-devtest-labs"></a>A labor által használt Azure Storage titkosítása Azure DevTest Labs
@@ -28,10 +28,10 @@ A Azure DevTest Labsban létrehozott összes labor egy társított Azure Storage
     :::image type="content" source="./media/encrypt-storage/overview-resource-group-link.png" alt-text="Válassza ki az erőforráscsoportot az Áttekintés oldalon":::
 1. Válassza ki a labor Azure Storage-fiókját. A labor Storage-fiók elnevezési konvenciója a következő: `a<labNameWithoutInvalidCharacters><4-digit number>` . Ha például a labor neve `contosolab` , a Storage-fiók neve lehet `acontosolab7576` . 
 
-    :::image type="content" source="./media/encrypt-storage/select-storage-account.png" alt-text="Válassza ki a Storage-fiókot a tesztkörnyezet erőforráscsoporthoz.":::
+    :::image type="content" source="./media/encrypt-storage/select-storage-account.png" alt-text="Válassza ki az erőforráscsoportot az Áttekintés oldalon":::
 3. A **Storage-fiók** lapon válassza a bal oldali menüben a **Storage Explorer (előzetes verzió)** lehetőséget, majd válassza a blob- **tárolók** lehetőséget a kapcsolódó laborokkal kapcsolatos tartalom megtalálásához. 
 
-   :::image type="content" source="./media/encrypt-storage/storage-explorer.png" alt-text="Storage Explorer (előzetes verzió)" lightbox="./media/encrypt-storage/storage-explorer.png":::
+   :::image type="content" source="./media/encrypt-storage/storage-explorer.png" alt-text="Válassza ki az erőforráscsoportot az Áttekintés oldalon" lightbox="./media/encrypt-storage/storage-explorer.png":::
 
 ## <a name="encrypt-the-lab-storage-account"></a>A labor Storage-fiók titkosítása
 Az Azure Storage automatikusan titkosítja az adatait, ha a felhőben is megmarad. Az Azure Storage-titkosítás védi az adatait, és segít a szervezeti biztonsági és megfelelőségi kötelezettségek teljesítésében. További információ: az [Azure Storage titkosítása inaktív adatokhoz](../storage/common/storage-service-encryption.md).
@@ -98,7 +98,7 @@ A következő szabály például egy 90 napos lejárati szabály beállításár
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A következő cikkekből megtudhatja, hogyan konfigurálhat ügyfél által felügyelt kulcsokat az Azure Storage encryption szolgáltatáshoz: 
 
 - [Azure Portalra](../storage/common/storage-encryption-keys-portal.md)

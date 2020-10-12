@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 06/29/2020
 ms.openlocfilehash: 0eaac8ac65b490e1b8de716d79bd36d2f7a7567c
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91707659"
 ---
 # <a name="move-an-azure-database-for-azure-database-for-postgresql---single-server-to-another-region-by-using-the-azure-portal"></a>Azure-adatbázis áthelyezése Azure Database for PostgreSQL – egyetlen kiszolgáló egy másik régióba a Azure Portal használatával
@@ -33,10 +33,10 @@ Egy Azure Database for PostgreSQL régiók [közötti olvasási replikát](conce
 
 A forráskiszolgáló a Azure Portal használatával történő replikálásához kövesse az alábbi lépéseket: 
 
-1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure Portalon](https://portal.azure.com/).
 1. Válassza ki azt a meglévő Azure Database for PostgreSQL kiszolgálót, amelyet forráskiszolgálóként kíván használni. Ez a művelet megnyitja az **Áttekintés** lapot.
 1. A kiszolgáló menüjében válassza a **replikálás**lehetőséget. Ha az Azure-replikáció támogatásának értéke legalább **replika**, létrehozhat olvasási replikákat. 
-1. Ha az Azure-beli replikálás támogatása nem a legalább **replika**értékre van beállítva, állítsa be. Válassza a **Mentés** lehetőséget.
+1. Ha az Azure-beli replikálás támogatása nem a legalább **replika**értékre van beállítva, állítsa be. Kattintson a **Mentés** gombra.
 1. A módosítás alkalmazásához indítsa újra a kiszolgálót az **Igen**lehetőség kiválasztásával.
 1. A művelet befejezését követően két Azure Portal értesítést fog kapni. A kiszolgálói paraméter frissítése egyetlen értesítéssel történik. A kiszolgáló azonnali újraindítására vonatkozóan egy másik értesítés is van, amely azonnal következik.
 1. Frissítse a Azure Portal lapot a replikálási eszköztár frissítéséhez. Most már létrehozhat olvasási replikákat ehhez a kiszolgálóhoz.

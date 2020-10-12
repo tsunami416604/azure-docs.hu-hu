@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 08/03/2020
 ms.author: alkohli
 ms.openlocfilehash: 7ce49873b4e59bcf474deaea4420f56a72c9c589
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89084274"
 ---
 A virtuális gép mérete határozza meg a virtuális gép számára elérhető számítási erőforrások, például a processzor, a GPU és a memória mennyiségét. A virtuális gépeket a számítási feladatok számára megfelelő virtuálisgép-mérettel kell létrehozni. Annak ellenére, hogy az összes gép ugyanazon a hardveren fut, a gépi méretek eltérő korlátokkal rendelkeznek a lemezes hozzáféréshez, ami segíthet a teljes lemezes hozzáférés kezelésében a virtuális gépeken. Ha a számítási feladatok mennyisége nő, a meglévő virtuális gépet át is lehet méretezni.

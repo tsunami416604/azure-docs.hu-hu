@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: azure-maps
 manager: cpendleton
 ms.openlocfilehash: ec88437a0fad3a6bd94a67a5ef5c75b3e506f9e8
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88006213"
 ---
 # <a name="building-an-accessible-application"></a>Akadálymentes alkalmazás létrehozása
@@ -103,15 +103,15 @@ A Térkép számos billentyűparancsot tartalmaz, amelyek megkönnyítik a Térk
 | Jobbra nyíl | A Térkép jobb 100 képpontban való pásztázása |
 | Lefelé nyíl gomb | A Térkép pásztázása lefelé 100 képpont |
 | Felfelé nyíl gomb | A Térkép pásztázása 100 képpont |
-| `Shift`+ felfelé mutató nyíl | A Térkép szurok növelésének mértéke 10 fokkal |
-| `Shift`+ lefelé mutató nyíl | A térképi szurok csökkentése 10 fokkal |
-| `Shift`+ jobbra mutató nyíl | A Térkép 15 fokos elforgatása jobbra |
-| `Shift`+ balra mutató nyíl | A Térkép 15 fokos elforgatása balra |
+| `Shift` + felfelé mutató nyíl | A Térkép szurok növelésének mértéke 10 fokkal |
+| `Shift` + lefelé mutató nyíl | A térképi szurok csökkentése 10 fokkal |
+| `Shift` + jobbra mutató nyíl | A Térkép 15 fokos elforgatása jobbra |
+| `Shift` + balra mutató nyíl | A Térkép 15 fokos elforgatása balra |
 | Pluszjel ( `+` ) és egyenlőségjel <sup>*</sup> ( `=` ) | Nagyítás |
 | Mínusz jel, kötőjel ( `-` ) vagy <sup>*</sup> aláhúzás ( `_` ) | Kicsinyítés | 
-| `Shift`+ egérrel húzza a térképet a terület rajzolásához | Terület nagyítása |
+| `Shift` + egérrel húzza a térképet a terület rajzolásához | Terület nagyítása |
 
-<sup>*</sup>Ezek a billentyűparancsok általában ugyanazt a kulcsot használják a billentyűzeten. Ezek a parancsikonok a felhasználói élmény javításához lettek hozzáadva. Emellett nem számít, hogy a felhasználó használja-e a SHIFT billentyűt, vagy sem ezekhez a parancsikonokhoz.
+<sup>*</sup> Ezek a billentyűparancsok általában ugyanazt a kulcsot használják a billentyűzeten. Ezek a parancsikonok a felhasználói élmény javításához lettek hozzáadva. Emellett nem számít, hogy a felhasználó használja-e a SHIFT billentyűt, vagy sem ezekhez a parancsikonokhoz.
 
 ## <a name="screen-reader-support"></a>Képernyőolvasó-támogatás
 
@@ -153,7 +153,7 @@ A következő példa egy szimbólum réteget használ a Térkép érdeklődési 
 - Próbálja megnavigálni az alkalmazást a billentyűzet használatával. Győződjön meg arról, hogy a tabulátorok sorrendje logikai.
 - Ha billentyűparancsokat hoz létre, próbálja meg korlátozni két vagy kevesebb kulcsra. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg a web SDK-modulok hozzáférhetőségét.
 

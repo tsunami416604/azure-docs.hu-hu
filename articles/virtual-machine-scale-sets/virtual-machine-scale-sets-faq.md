@@ -10,10 +10,10 @@ ms.date: 06/30/2020
 ms.reviewer: jushiman
 ms.custom: mimckitt
 ms.openlocfilehash: 8170cfcbbf200c6ba5030aff5716f46b537d8c97
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87080471"
 ---
 # <a name="azure-virtual-machine-scale-sets-faqs"></a>Azure Virtual Machine Scale Sets – gyakori kérdések
@@ -224,11 +224,11 @@ Linuxos virtuális gép létrehozásakor egyszerű szövegként is megadhat SSH 
 }
 ```
 
-linuxConfiguration elem neve | Kötelező | Típus | Description
+linuxConfiguration elem neve | Kötelező | Típus | Leírás
 --- | --- | --- | ---
-SSH | No | Gyűjtemény | Megadja egy Linux operációs rendszer SSH-kulcsának konfigurációját
-path | Yes | Sztring | Megadja a Linux-fájl elérési útját, ahol az SSH-kulcsokat vagy a tanúsítványokat kell elhelyezni
-alapértékek | Yes | Sztring | Base64 kódolású nyilvános SSH-kulcsot ad meg
+SSH | Nem | Gyűjtemény | Megadja egy Linux operációs rendszer SSH-kulcsának konfigurációját
+path | Igen | Sztring | Megadja a Linux-fájl elérési útját, ahol az SSH-kulcsokat vagy a tanúsítványokat kell elhelyezni
+alapértékek | Igen | Sztring | Base64 kódolású nyilvános SSH-kulcsot ad meg
 
 Példaként tekintse meg [a 101-VM-Sshkey GitHub](https://github.com/Azure/azure-quickstart-templates/blob/master/101-vm-sshkey/azuredeploy.json)rövid útmutatójának sablonját.
 
@@ -465,7 +465,7 @@ A virtuális gépek jelszava a méretezési csoportokban két fő módon módos�
     Update-AzVmss -ResourceGroupName $vmssResourceGroup -Name $vmssName -VirtualMachineScaleSet $vmss
     ```
 
-## <a name="networking"></a>Hálózatkezelés
+## <a name="networking"></a>Hálózat
 
 ### <a name="is-it-possible-to-assign-a-network-security-group-nsg-to-a-scale-set-so-that-it-applies-to-all-the-vm-nics-in-the-set"></a>Lehet hálózati biztonsági csoportot (NSG) rendelni egy méretezési csoporthoz, hogy az a készlet összes virtuálisgép-hálózati adapterére vonatkozzon?
 

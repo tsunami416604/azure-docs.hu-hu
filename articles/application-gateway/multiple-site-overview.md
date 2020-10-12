@@ -8,17 +8,17 @@ ms.date: 07/20/2020
 ms.author: surmb
 ms.topic: conceptual
 ms.openlocfilehash: 53f6f37454de886934a483b40daad24204958baf
-ms.sourcegitcommit: 5f7b75e32222fe20ac68a053d141a0adbd16b347
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87474325"
 ---
 # <a name="application-gateway-multiple-site-hosting"></a>Application Gateway – több hely üzemeltetése
 
-Több hely üzemeltetése lehetővé teszi több webalkalmazás konfigurálását az Application Gateway ugyanazon portjára. Lehetővé teszi, hogy hatékonyabb topológiát konfiguráljon az üzemelő példányokhoz, ha akár 100 + webhelyet ad hozzá egy Application gatewayhez. Mindegyik webhelyet a saját háttérkészletéhez lehet irányítani. A három tartomány, a contoso.com, a fabrikam.com és a adatum.com például az Application Gateway IP-címére mutatnak. Hozzon létre három többhelyes figyelőt, és konfigurálja az egyes figyelőket a megfelelő port és protokoll beállításhoz. 
+Több hely üzemeltetése lehetővé teszi több webalkalmazás konfigurálását az Application Gateway ugyanazon portjára. Így hatékonyabb topológiát konfigurálhat telepítéseihez, mivel akár 100-nál is több webhelyet adhat hozzá egyetlen alkalmazásátjáróhoz. Mindegyik webhelyet a saját háttérkészletéhez lehet irányítani. Például három tartomány (contoso.com, fabrikam.com és adatum.com) mutat az alkalmazásátjáró IP címére. Létrehozhat három többhelyes figyelőt, és konfigurálhatja az egyes figyelők esetében a megfelelő port- és protokollbeállítást. 
 
-A helyettesítő karakterek nevét többhelyes figyelőben és legfeljebb 5 állomásnévvel is meghatározhatja figyelőként. További információ: [helyettesítő karakterek nevei a figyelőben](#wildcard-host-names-in-listener-preview).
+A helyettesítő karakterrel ellátott gazdaneveket többhelyes figyelőben és figyelőként legfeljebb 5 gazdanévben is meghatározhatja. További információ: [helyettesítő karakterek nevei a figyelőben](#wildcard-host-names-in-listener-preview).
 
 :::image type="content" source="./media/multiple-site-overview/multisite.png" alt-text="Többhelyes Application Gateway":::
 
@@ -35,7 +35,7 @@ Application Gateway lehetővé teszi a gazdagép-alapú útválasztást a többh
 
 Ha helyettesítő karaktert használ az állomásnévben, több állomásnév is megegyező egyetlen figyelőben. Megadhatja például a következőt: `*.contoso.com` `ecom.contoso.com` , `b2b.contoso.com` `customer1.b2b.contoso.com` és így tovább. Az állomásnevek tömbjét használva több állomásnevet is beállíthat egy figyelőhöz, hogy átirányítsa a kéréseket egy háttérbeli készletbe. Egy figyelő például tartalmazhat, `contoso.com, fabrikam.com` amely fogadja a kérelmeket az állomásnevek esetében is.
 
-:::image type="content" source="./media/multiple-site-overview/wildcard-listener-diag.png" alt-text="Helyettesítő karakteres figyelő":::
+:::image type="content" source="./media/multiple-site-overview/wildcard-listener-diag.png" alt-text="Többhelyes Application Gateway":::
 
 >[!NOTE]
 > Ez a funkció előzetes verzióban érhető el, és csak a Application Gateway Standard_v2 és WAF_v2 SKU-ban érhető el. Az előzetes verziókkal kapcsolatos további tudnivalókért tekintse meg [a használati feltételeket itt](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
@@ -50,16 +50,16 @@ Az [Azure CLI](tutorial-multiple-sites-cli.md)-ben a helyett a-t kell használni
 
 ### <a name="allowed-characters-in-the-host-names-field"></a>Engedélyezett karakterek a gazdagép neve mezőben:
 
-* `(A-Z,a-z,0-9)`– alfanumerikus karakterek
-* `-`-kötőjel vagy mínusz
-* `.`– időszak elválasztóként
-*   `*`– a megengedett tartomány több karakterével is megegyező lehet
-*   `?`– az engedélyezett tartományba tartozó egyetlen karakterrel is párosítható
+* `(A-Z,a-z,0-9)` – alfanumerikus karakterek
+* `-` -kötőjel vagy mínusz
+* `.` – időszak elválasztóként
+*   `*` – a megengedett tartomány több karakterével is megegyező lehet
+*   `?` – az engedélyezett tartományba tartozó egyetlen karakterrel is párosítható
 
 ### <a name="conditions-for-using-wildcard-characters-and-multiple-host-names-in-a-listener"></a>Helyettesítő karakterek és több állomásnév használatának feltételei egy figyelőben:
 
 *   Egyetlen figyelőben legfeljebb 5 állomásnév lehet megemlítve
-*   A csillag `*` csak egyszer szerepelhet egy tartományi stílusú név vagy állomásnév összetevőben. Például: component1 *. component2*. component3. `(*.contoso-*.com)`érvényes.
+*   A csillag `*` csak egyszer szerepelhet egy tartományi stílusú név vagy állomásnév összetevőben. Például: component1 *. component2*. component3. `(*.contoso-*.com)` érvényes.
 *   A gazdagép neve legfeljebb két csillaggal rendelkezhet `*` . Például érvényes, `*.contoso.*` és `*.contoso.*.*.com` érvénytelen.
 *   Az állomásnév legfeljebb 4 helyettesítő karakterből állhat. A például `????.contoso.com` `w??.contoso*.edu.*` érvényes, de `????.contoso.*` érvénytelen.
 *   A csillag `*` és a kérdőjel `?` együttes használata az állomásnév ( `*?` vagy) egy összetevőjében `?*` `**` érvénytelen. Például a `*?.contoso.com` és `**.contoso.com` a érvénytelen.

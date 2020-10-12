@@ -7,10 +7,10 @@ ms.date: 05/11/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 31e9b4b065b2acb8378c2eeac332341f48b28165
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88005231"
 ---
 # <a name="session-host-virtual-machine-configuration"></a>Munkamenetgazda virtuális gép konfigurációja
@@ -114,7 +114,7 @@ Kövesse ezeket az utasításokat az összetevők telepítésének megerősíté
 
 Ha a Windows rendszerű virtuális asztali ügynök először van telepítve a munkamenet-gazdagép virtuális gépei számára (manuálisan vagy a Azure Resource Manager sablonon és a PowerShell DSC-n keresztül), akkor egy regisztrációs jogkivonatot biztosít. A következő szakasz a Windows rendszerű virtuális asztali ügynökre és a jogkivonatra vonatkozó hibaelhárítási problémákat ismerteti.
 
-### <a name="error-the-status-filed-in-get-azwvdsessionhost-cmdlet-shows-status-as-unavailable"></a>Hiba: a Get-AzWvdSessionHost parancsmagban bejelentkezett állapot a nem elérhető állapotot jeleníti meg.
+### <a name="error-the-status-filed-in-get-azwvdsessionhost-cmdlet-shows-status-as-unavailable"></a>Hiba: Get-AzWvdSessionHost parancsmagban bejelentkezett állapot nem elérhető állapotot jelenít meg.
 
 > [!div class="mx-imgBorder"]
 > ![A Get-AzWvdSessionHost parancsmag a nem elérhető állapotot jeleníti meg.](media/23b8e5f525bb4e24494ab7f159fa6b62.png)
@@ -140,7 +140,7 @@ Ha a Windows rendszerű virtuális asztali ügynök először van telepítve a m
 2. Új jogkivonat létrehozásához futtassa a **New-AzWvdRegistrationInfo** parancsmagot.
 3. Győződjön meg arról, hogy a *-ExpriationTime* paraméter értéke 3 nap.
 
-### <a name="error-windows-virtual-desktop-agent-isnt-reporting-a-heartbeat-when-running-get-azwvdsessionhost"></a>Hiba: a Windows rendszerű virtuális asztali ügynök nem jelentett szívverést a Get-AzWvdSessionHost futtatásakor
+### <a name="error-windows-virtual-desktop-agent-isnt-reporting-a-heartbeat-when-running-get-azwvdsessionhost"></a>Hiba: a Windows rendszerű virtuális asztali ügynök nem jelentett szívverést Get-AzWvdSessionHost futtatásakor
 
 **1. ok:** A RDAgentBootLoader szolgáltatás le lett állítva.
 
@@ -343,7 +343,7 @@ Ha a felhasználók egy biztonsági hiba miatt nem sikerült csatlakozni a távo
 
 A szabályzattal kapcsolatos további információkért lásd: [bejelentkezés engedélyezése távoli asztali szolgáltatásokon](/windows/security/threat-protection/security-policy-settings/allow-log-on-through-remote-desktop-services).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A Windows rendszerű virtuális asztalok és a eszkalációs sávok hibaelhárításával kapcsolatban lásd: [Hibaelhárítás – áttekintés, visszajelzés és támogatás](troubleshoot-set-up-overview.md).
 - A gazdagépek Windows rendszerű virtuális asztali környezetben való létrehozásakor felmerülő problémák elhárításához tekintse meg a [környezet és az Alkalmazáskészletek létrehozása](troubleshoot-set-up-issues.md)című témakört.

@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 07/20/2020
 ms.author: mbullwin
 ms.openlocfilehash: 33da3cd8a72bb4d93011c348db65c5b4d9e687ed
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87461463"
 ---
 # <a name="interactive-workbooks"></a>Interaktív munkafüzetek
@@ -45,13 +45,13 @@ A felhasználók rendelkezhetnek például egy olyan rácstal, amely megjelenít
     | order by AllRequests desc
     ```
 
-5. `Run query`az eredmények megtekintése
+5. `Run query` az eredmények megtekintése
 6. Válassza a _Speciális beállítások_ ikont a lekérdezés láblécében (az ikon úgy néz ki, mint egy fogaskerék). Ekkor megnyílik a speciális beállítások ablaktábla.
 7. A beállítás bejelölése: `When an item is selected, export a parameter` .
 8. Az Ön által bejelölt beállítás alatt válassza a *paraméter hozzáadása* lehetőséget, és töltse ki az alábbi információk alapján.
-    1. Exportálandó mező:`Request`
-    2. Paraméter neve:`SelectedRequest`
-    3. Alapértelmezett érték:`All requests`
+    1. Exportálandó mező: `Request`
+    2. Paraméter neve: `SelectedRequest`
+    3. Alapértelmezett érték: `All requests`
 9. Mentés kiválasztása
 
     ![Képernyőfelvétel: a speciális szerkesztő, amely a mezők paraméterekként való exportálásának beállításait tartalmazza.](./media/workbooks-interactive/export-parameters-add.png)
@@ -64,7 +64,7 @@ A felhasználók rendelkezhetnek például egy olyan rácstal, amely megjelenít
     | where name == '{SelectedRequest}' or 'All Requests' == '{SelectedRequest}'
     | summarize ['{SelectedRequest}'] = count() by bin(timestamp, 1h)
     ```
-13. `Run query`az eredmények megtekintéséhez.
+13. `Run query` az eredmények megtekintéséhez.
 14. _Vizualizáció_ módosítása a következőre: `Area chart` .
 15. Válassza ki az első rácson kijelölni kívánt sort. Figyelje meg, hogy az alábbi diagramterület a kiválasztott kérelemre szűri a szűrőket.
 
@@ -99,12 +99,12 @@ A munkafüzetek lehetővé teszik, hogy a szerzők interaktivitást adjanak egy 
     | order by Count desc
     ```
 
-5. `Run query`az eredmények megtekintése
+5. `Run query` az eredmények megtekintése
 6. Válassza ki az _oszlop beállításait_ a beállítások ablaktábla megnyitásához.
 7. Az _oszlopok_ szakaszban állítsa be a következőket:
-    1. _Minta_ -oszlop megjelenítő: `Link` , nézet megnyitása: `Cell Details` , hivatkozás címkéje:`Sample`
-    2. _Count_ -Column megjelenítő: `Bar` , színpaletta: `Blue` , minimális érték:`0`
-    3. _Kérelem_ -oszlop megjelenítő:`Automatic`
+    1. _Minta_ -oszlop megjelenítő: `Link` , nézet megnyitása: `Cell Details` , hivatkozás címkéje: `Sample`
+    2. _Count_ -Column megjelenítő: `Bar` , színpaletta: `Blue` , minimális érték: `0`
+    3. _Kérelem_ -oszlop megjelenítő: `Automatic`
     4. A módosítások alkalmazásához kattintson a _Mentés és bezárás_ gombra.
 
     ![Képernyőkép az oszlop beállításai lapról.](./media/workbooks-interactive/column-settings.png)
@@ -118,8 +118,8 @@ A munkafüzetek lehetővé teszik, hogy a szerzők interaktivitást adjanak egy 
 | Művelet csatolása | Művelet kattintáskor |
 |:------------- |:-------------|
 | `Generic Details` | A sortulajdonság-környezet lapon lévő sorok értékeinek megjelenítése |
-| `Cell Details` | Megjeleníti a cella értékét a tulajdonságok rácsának környezete lapon. hasznos, ha a cella tartalmaz olyan dinamikus típust, amely tartalmazza az adatokat (például a JSON-t a kérelem tulajdonságaival, például a hely, a szerepkör-példány stb.). |
-| `Cell Details` | Megjeleníti a cella értékét a tulajdonságok rácsának környezete lapon. hasznos, ha a cella tartalmaz olyan dinamikus típust, amely tartalmazza az adatokat (például a JSON-t a kérelem tulajdonságaival, például a hely, a szerepkör-példány stb.). |
+| `Cell Details` | A cella értékét jeleníti meg a tulajdonságok rácsa lapon. Hasznos, ha a cella tartalmaz egy dinamikus típust (például a JSON-t a kérelem tulajdonságaival, például a helytel, a szerepkör-példánnyal stb.). |
+| `Cell Details` | A cella értékét jeleníti meg a tulajdonságok rácsa lapon. Hasznos, ha a cella tartalmaz egy dinamikus típust (például a JSON-t a kérelem tulajdonságaival, például a helytel, a szerepkör-példánnyal stb.). |
 | `Custom Event Details` | Megnyitja a Application Insights keresés részleteit az egyéni eseményazonosító ( `itemId` ) alapján a cellában. |
 | `* Details` | Az egyéni esemény részleteihez hasonlóan, a függőségek, a kivételek, az oldalletöltések, a kérések és a Nyomkövetések kivételével. |
 | `Custom Event User Flows` | Megnyitja a cellában az egyéni esemény nevében felmutatott Application Insights Felhasználókövetési élményt. |
@@ -137,26 +137,26 @@ A munkafüzet lehetővé teszi, hogy a felhasználók bizonyos vezérlőelemek m
 1. A két interaktív vezérlő beállításához kövesse az [interaktivitás beállítása a rácson sorban kattintson a szakasz elemre](#setting-up-interactivity-on-grid-row-click) .
 2. Új paraméter hozzáadása a tetején:
     1. Név: `ShowDetails`
-    2. Paraméter típusa:`Drop down`
-    3. Szükséges`checked`
-    4. Adatok lekérése:`JSON`
-    5. JSON-bemenet:`["Yes", "No"]`
+    2. Paraméter típusa: `Drop down`
+    3. Szükséges `checked`
+    4. Adatok lekérése: `JSON`
+    5. JSON-bemenet: `["Yes", "No"]`
     6. Mentés a módosítások végrehajtásához.
 
     ![A paraméter hozzáadása gomb kiválasztása után megjelenik a paraméter szerkesztése panel.](./media/workbooks-interactive/edit-parameter.png)
 
-3. Paraméter értékének beállítása`Yes`
+3. Paraméter értékének beállítása `Yes`
 
     ![A kész szerkesztési gomb felett az a legördülő lista, amely lehetővé teszi a paraméter értékének megadását](./media/workbooks-interactive/set-parameter.png)
 
 4. A lekérdezés vezérlőelemben a körzet diagramon válassza a _Speciális beállítások_ ikont (fogaskerék ikon)
-5. A beállítás bejelölése`Make this item conditionally visible`
+5. A beállítás bejelölése `Make this item conditionally visible`
     1. Ez az elem látható, ha a `ShowDetails` paraméter értéke `equals``Yes`
 6. A módosítások _elvégzéséhez válassza a Szerkesztés kész_ lehetőséget.
 7. Olvasási mód beviteléhez válassza a munkafüzet eszköztárának _kész szerkesztés_ elemét.
 8. Állítsa a paraméter értékét a következőre: `ShowDetails` `No` . Figyelje meg, hogy az alábbi diagram eltűnik.
 
-Az alábbi képen látható, hogy hol `ShowDetails` van`Yes`
+Az alábbi képen látható, hogy hol `ShowDetails` van `Yes`
 
 ![A diagram látható feltételes láthatóságát ábrázoló képernyőkép](./media/workbooks-interactive/interactivity-conditional-visibility-visible.png)
 

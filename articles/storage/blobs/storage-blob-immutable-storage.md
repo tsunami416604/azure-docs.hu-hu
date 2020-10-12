@@ -10,10 +10,10 @@ ms.author: tamram
 ms.reviewer: hux
 ms.subservice: blobs
 ms.openlocfilehash: 54014a0d76130b82788a1ae432e42baec28df2c2
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87448343"
 ---
 # <a name="store-business-critical-blob-data-with-immutable-storage"></a>Üzleti szempontból kritikus fontosságú blob-alapú adattárolás tárolása a nem módosítható tárolóval
@@ -108,7 +108,7 @@ A következő táblázat a blob Storage-műveletek azon típusait mutatja be, am
 |---------|---------|---------|---------|
 |A blob tényleges adatmegőrzési időtartama még nem járt le és/vagy jogi célú visszatartás van érvényben     |Nem módosítható: törlés- és írásvédett         | Helyezze az 1<sup>. blobot, helyezze</sup><sup>az 1.</sup>blokkot, az<sup>1</sup>., a tároló törlése, a blob törlése, a blob metaadatainak beállítása, a Put oldal, a blob tulajdonságainak beállítása, a pillanatkép blob, a növekményes másolási blob, a<sup>2</sup> .         |A tároló törlése megtagadva; A Storage-fiók törlése megtagadva         |
 |Lejárt a tényleges megőrzési időköz a blobon, és nincs beállítva jogi fenntartás    |Csak írásvédett (a törlési műveletek engedélyezettek)         |Helyezze az 1<sup>. blobot, helyezze</sup>az 1<sup>., az</sup><sup>1</sup>. blokkot, a blob metaadatainak beállítása, a Put oldal, a blob tulajdonságainak beállítása, a pillanatkép-blob, a növekményes másolási blob, a<sup>2</sup> . Hozzáfűzés         |A tároló törlése megtagadva, ha legalább 1 blob található a védett tárolóban; A Storage-fiók törlése csak a *zárolt* időalapú házirendek esetében megtagadva         |
-|Nincs alkalmazva féreg-szabályzat (nincs időalapú megőrzési idő, és nincs jogi megtartási címke)     |Változtatható         |Nincsenek         |Nincsenek         |
+|Nincs alkalmazva féreg-szabályzat (nincs időalapú megőrzési idő, és nincs jogi megtartási címke)     |Változtatható         |Nincs         |Nincs         |
 
 <sup>1</sup> a blob szolgáltatás lehetővé teszi, hogy ezek a műveletek egyszer új blobot hozzanak létre. Egy nem módosítható tárolóban lévő blob elérési útban lévő összes további felülírási művelet nem engedélyezett.
 

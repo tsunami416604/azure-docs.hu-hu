@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/29/2020
 ms.openlocfilehash: 45b9c158aca85d62b02d65282876d5e40129878f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87081066"
 ---
 # <a name="manage-hdinsight-clusters-by-using-the-apache-ambari-rest-api"></a>HDInsight-fürtök kezelése az Apache Ambari REST API használatával
@@ -214,11 +214,11 @@ $respObj.items.configurations.properties.'fs.defaultFS'
 
 A visszatérési érték az alábbi példák egyikéhez hasonló:
 
-* `wasbs://CONTAINER@ACCOUNTNAME.blob.core.windows.net`– Ez az érték azt jelzi, hogy a fürt egy Azure Storage-fiókot használ az alapértelmezett tárolóhoz. Az `ACCOUNTNAME` érték a Storage-fiók neve. A `CONTAINER` rész a blob tároló neve a Storage-fiókban. A tároló a fürt HDFS-kompatibilis tárterületének gyökere.
+* `wasbs://CONTAINER@ACCOUNTNAME.blob.core.windows.net` – Ez az érték azt jelzi, hogy a fürt egy Azure Storage-fiókot használ az alapértelmezett tárolóhoz. Az `ACCOUNTNAME` érték a Storage-fiók neve. A `CONTAINER` rész a blob tároló neve a Storage-fiókban. A tároló a fürt HDFS-kompatibilis tárterületének gyökere.
 
-* `abfs://CONTAINER@ACCOUNTNAME.dfs.core.windows.net`– Ez az érték azt jelzi, hogy a fürt Azure Data Lake Storage Gen2 használ az alapértelmezett tárolóhoz. A `ACCOUNTNAME` és az `CONTAINER` értékek azonos jelentéssel rendelkeznek, mint a korábban említett Azure Storage-hoz.
+* `abfs://CONTAINER@ACCOUNTNAME.dfs.core.windows.net` – Ez az érték azt jelzi, hogy a fürt Azure Data Lake Storage Gen2 használ az alapértelmezett tárolóhoz. A `ACCOUNTNAME` és az `CONTAINER` értékek azonos jelentéssel rendelkeznek, mint a korábban említett Azure Storage-hoz.
 
-* `adl://home`– Ez az érték azt jelzi, hogy a fürt Azure Data Lake Storage Gen1 használ az alapértelmezett tárolóhoz.
+* `adl://home` – Ez az érték azt jelzi, hogy a fürt Azure Data Lake Storage Gen1 használ az alapértelmezett tárolóhoz.
 
     A Data Lake Storage fiók nevének megkereséséhez használja az alábbi példákat:
 

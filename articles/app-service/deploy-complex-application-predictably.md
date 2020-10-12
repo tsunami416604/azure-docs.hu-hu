@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 01/06/2016
 ms.custom: seodec18
 ms.openlocfilehash: 6c45d2da8658740b5e5e7e3dceb7478ea28d712c
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88962026"
 ---
 # <a name="provision-and-deploy-microservices-predictably-in-azure"></a>Az Azure-ban előre kiépített és üzembe helyezett szolgáltatások üzembe helyezése
@@ -244,7 +244,7 @@ Az utolsó lépést egyszerűen egy PowerShell-parancsmag hajtja végre. Ha szer
 
 Az utolsó parancsmag, `New-AzureResourceGroup` amely az a művelet, amely ténylegesen végrehajtja a műveletet. Mindez azt mutatja meg, hogy az eszközök segítségével viszonylag egyszerű üzembe helyezni a felhőalapú alkalmazást. Minden alkalommal, amikor ugyanazon a sablonon futtatja a parancsmagot ugyanazzal a fájllal, ugyanazt az eredményt fogja kapni.
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 A DevOps-ben az ismételhetőség és a kiszámíthatóság olyan kulcs, amely egy nagy léptékű alkalmazás sikeres üzembe helyezését eredményezi. Ebben az oktatóanyagban egy kétszolgáltatásos alkalmazást helyezett üzembe az Azure-ban egyetlen erőforráscsoportként a Azure Resource Manager sablon használatával. Remélhetőleg megkapta a szükséges tudást ahhoz, hogy megkezdje az alkalmazás átalakítását az Azure-ban egy sablonba, és kiszámítható módon üzembe helyezheti és telepítheti azt. 
 
 <a name="resources"></a>
@@ -257,7 +257,7 @@ A DevOps-ben az ismételhetőség és a kiszámíthatóság olyan kulcs, amely e
 * [Az Azure PowerShell használata az Azure Resource Managerrel](../azure-resource-manager/management/manage-resources-powershell.md)
 * [Erőforráscsoport-telepítések hibaelhárítása Az Azure-ban](../azure-resource-manager/templates/common-deployment-errors.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az ebben a cikkben üzembe helyezett erőforrástípusok JSON-szintaxisáról és tulajdonságairól további információt a következő témakörben talál:
 

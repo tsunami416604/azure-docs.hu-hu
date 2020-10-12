@@ -7,10 +7,10 @@ ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 06/20/2017
 ms.openlocfilehash: 1c054dcfe12ad1d2098fc5352183839704e39330
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87127400"
 ---
 # <a name="extend-u-sql-scripts-with-r-code-in-azure-data-lake-analytics"></a>U-SQL-parancsfájlok kiterjesztése R-kóddal Azure Data Lake Analytics
@@ -92,7 +92,7 @@ DECLARE @PartitionCount int = 10;
 
 * A U-SQL-ből származó karakterlánc-és numerikus oszlopok az R DataFrame és U-SQL [támogatott típusok:,,, `double` `string` `bool` `integer` , `byte` ] között lesznek konvertálva.
 * Az `Factor` adattípus nem támogatott az U-SQL-ben.
-* `byte[]`Base64 kódolású szerializálva kell lennie `string` .
+* `byte[]` Base64 kódolású szerializálva kell lennie `string` .
 * Az u-SQL-karakterláncok az R-kódban szereplő tényezőkre konvertálhatók, ha U-SQL-t hoz létre az R input dataframe, vagy beállítja a csökkentő paramétert `stringsAsFactors: true` .
 
 ### <a name="schemas"></a>Sémák

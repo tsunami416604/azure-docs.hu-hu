@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 07/18/2018
 ms.subservice: alerts
 ms.openlocfilehash: f76d28018fdf55314593dabc44ef1e9a1dab9494
-ms.sourcegitcommit: dc68a2c11bae2e9d57310d39fbed76628233fd7f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91403126"
 ---
 # <a name="how-to-trigger-complex-actions-with-azure-monitor-alerts"></a>Összetett műveletek elindítása Azure Monitor riasztásokkal
@@ -293,7 +293,7 @@ A metrikai riasztások létrehozásának folyamata hasonló a [műveletnapló-ri
 ## <a name="calling-other-applications-besides-microsoft-teams"></a>Más alkalmazások hívása a Microsoft Teams szolgáltatáson kívül
 Logic Apps számos különböző összekötővel rendelkezik, amelyek lehetővé teszik, hogy számos alkalmazás és adatbázis között aktiválja a műveleteket. A Slack, SQL Server, Oracle, Salesforce, csak néhány példa. További információ az összekötők használatáról: [Logic app-összekötők](../../connectors/apis-list.md).  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Tekintse át az Azure-tevékenységek naplójának riasztásait](./alerts-overview.md) , és Ismerje meg, hogyan fogadhat riasztásokat.  
 * Megtudhatja, hogyan [konfigurálhat riasztásokat Azure Service Health értesítés közzétételekor](../../service-health/alerts-activity-log-service-notifications-portal.md).
 * További információ a [műveleti csoportokról](./action-groups.md).

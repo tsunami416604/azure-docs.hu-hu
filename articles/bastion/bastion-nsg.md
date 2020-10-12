@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: charwen
 ms.openlocfilehash: a69aa8d8a6dc324d6fe28219316c36ac2ec816a5
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90987701"
 ---
 # <a name="working-with-nsg-access-and-azure-bastion"></a>A NSG-hozzáférés és az Azure Bastion használata
@@ -42,7 +42,7 @@ Az Azure Bastion üzembe helyezése kifejezetten a ***AzureBastionSubnet***.
    * Forgalom átadása **Az Azure Bastion Control Plan síkja:** A vezérlési sík kapcsolata esetében engedélyezze a 443-es portot a **GatewayManager** szolgáltatás címkéjén. Ez lehetővé teszi, hogy az átjáró-kezelő képes legyen kommunikálni az Azure Bastion-vel.
 
 
-   :::image type="content" source="./media/bastion-nsg/inbound.png" alt-text="Képernyőfelvétel: a bejövő biztonsági szabályok az Azure Bastion-kapcsolathoz.":::
+   :::image type="content" source="./media/bastion-nsg/inbound.png" alt-text="NSG":::
 
 * **Kimenő forgalom:**
 
@@ -50,7 +50,7 @@ Az Azure Bastion üzembe helyezése kifejezetten a ***AzureBastionSubnet***.
    * **Kimenő forgalom az Azure más nyilvános végpontjai felé:** Az Azure Bastion-nek képesnek kell lennie az Azure-on belüli különböző nyilvános végpontokhoz való kapcsolódásra (például diagnosztikai naplók és mérési naplók tárolására). Ezért az Azure Bastion-nek 443-re kell **AzureCloud** a szolgáltatási címkéhez.
 
 
-   :::image type="content" source="./media/bastion-nsg/outbound.png" alt-text="A képernyőképen az Azure Bastion-kapcsolat kimenő biztonsági szabályai láthatók.":::
+   :::image type="content" source="./media/bastion-nsg/outbound.png" alt-text="NSG":::
 
 ### <a name="target-vm-subnet"></a>Cél virtuálisgép-alhálózat
 Ez az az alhálózat, amely az RDP/SSH-t tartalmazó cél virtuális gépet tartalmazza.

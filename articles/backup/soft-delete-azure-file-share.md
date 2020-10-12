@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 02/02/2020
 ms.custom: references_regions
 ms.openlocfilehash: 52a116320e07c25d4ee7f00b8063ca15faeb8560
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89179912"
 ---
 # <a name="accidental-delete-protection-for-azure-file-shares-using-azure-backup"></a>Az Azure-fájlmegosztás véletlen törlésének védelme Azure Backup használatával
@@ -59,6 +59,6 @@ Ha van legalább egy védett fájlmegosztás egy Storage-fiókban, az azt jelent
 
 A regisztráció törlésének időpontjában a Azure Backup ellenőrzi a fájlmegosztás megőrzési időtartamának beállítását, és ha 14 napnál hosszabb vagy 14 napnál kevesebb, akkor a megőrzési időt a következőképpen hagyja. Ha azonban a megőrzés 14 nap, azt úgy tekintjük, hogy Azure Backup engedélyezte, és így letiltjuk a törlést a regisztráció törlése során. Ha meg szeretné szüntetni a Storage-fiók regisztrációját, miközben a megőrzési beállítást is megtartja, akkor a regisztráció törlése után engedélyezze újra a Storage-fiók ablaktáblán. [Erre a hivatkozásra kattintva](../storage/files/storage-files-enable-soft-delete.md?tabs=azure-portal#restore-soft-deleted-file-share) megtekintheti a konfigurációs lépéseket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg, hogyan [készíthet biztonsági mentést az Azure-fájlmegosztás Azure Portal](backup-afs.md)
