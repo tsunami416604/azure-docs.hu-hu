@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 08/03/2020
 ms.author: jingwang
 ms.openlocfilehash: 78e7fc6b2a4c9804fbba60aa9946cc612b494461
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87531285"
 ---
 # <a name="copy-data-from-zoho-using-azure-data-factory-preview"></a>Adatok másolása a Zoho használatával Azure Data Factory (előzetes verzió)
@@ -163,7 +163,7 @@ Az adatok Zoho-ból való másolásához állítsa a forrás típusát a másol�
 | típus | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **ZohoSource** | Igen |
 | lekérdezés | Az egyéni SQL-lekérdezés használatával olvassa be az adatolvasást. Például: `"SELECT * FROM Accounts"`. | Nem (ha meg van adva a "táblanév" az adatkészletben) |
 
-**Például**
+**Példa**
 
 ```json
 "activities":[
@@ -199,5 +199,5 @@ Az adatok Zoho-ból való másolásához állítsa a forrás típusát a másol�
 
 A tulajdonságok részleteinek megismeréséhez tekintse meg a [keresési tevékenységet](control-flow-lookup-activity.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A Azure Data Factory a másolási tevékenység által forrásként és nyelőként támogatott adattárak listáját lásd: [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats).

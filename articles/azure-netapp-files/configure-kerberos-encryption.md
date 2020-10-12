@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 9/29/2020
 ms.author: b-juche
 ms.openlocfilehash: b683719fa2d0c1e7b5333c2ddf9c93f2797ade9b
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91461478"
 ---
 # <a name="configure-nfsv41-kerberos-encryption-for-azure-netapp-files"></a>A NFSv 4.1 Kerberos-titkosítás konfigurálása Azure NetApp Fileshoz
@@ -170,7 +170,7 @@ A krb5p teljesítményére gyakorolt hatás:
     * A teljes véletlenszerű I/O-érték 65%-kal csökkent a tiszta olvasási munkaterhelések esetében, és az általános hatás 43%-ra csökken, mivel a munkaterhelés a tiszta írásra változik. 
     * A metaadatok maximális munkaterhelése 30%-kal csökkent.
 
-## <a name="next-steps"></a>További lépések  
+## <a name="next-steps"></a>Következő lépések  
 
 * [Gyakori kérdések a Azure NetApp Files](azure-netapp-files-faqs.md)
 * [NFS-kötet létrehozása az Azure NetApp Files számára](azure-netapp-files-create-volumes.md)

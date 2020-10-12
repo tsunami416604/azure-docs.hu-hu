@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 07/06/2018
 ms.author: terrylan
 ms.openlocfilehash: b0df14dfcf66f53e01989a27a95afa5e19fcb2fe
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87543639"
 ---
 # <a name="azure-infrastructure-integrity"></a>Azure-infrastruktúra integritása
@@ -55,7 +55,7 @@ Az Azure biztosítja, hogy az összes üzembe helyezett, futó szerepkör (inter
 ### <a name="compute-connectivity"></a>Számítási kapcsolat
 Az Azure biztosítja, hogy a központilag telepített alkalmazás vagy szolgáltatás elérhető legyen a szabványos webalapú protokollokon keresztül. Az internetes webes szerepkörök virtuális példányai külső internetkapcsolattal rendelkeznek, és közvetlenül a webes felhasználók érhetik el. Azon műveletek érzékenységének és integritásának védelme érdekében, amelyeket a feldolgozói szerepkörök a nyilvánosan elérhető webes szerepkörű virtuális példányok nevében végeznek el, a háttér-feldolgozási feldolgozói szerepkörök virtuális példányai külső internetkapcsolattal rendelkeznek, de nem érhetők el közvetlenül a külső webes felhasználók.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ha többet szeretne megtudni arról, hogy a Microsoft Hogyan védi az Azure-infrastruktúrát, olvassa el a következő témakört:
 
 - [Azure-létesítmények,-telephelyek és fizikai biztonság](physical-security.md)

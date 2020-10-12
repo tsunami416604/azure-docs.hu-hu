@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: iot-hub
 ms.service: iot-hub
 author: robinsh
@@ -9,10 +9,10 @@ ms.date: 02/17/2019
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: 7f1f7d6f9ab6036fbcfcd1d19e175302bbd1a2a8
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87298799"
 ---
 ## <a name="customize-and-extend-the-device-management-actions"></a>Az eszközkezelés műveleteinek testreszabása és kiterjesztése
@@ -23,7 +23,7 @@ A IoT-megoldások kiterjeszthetik a definiált eszközkezelés-mintákat, vagy e
 
 Általában úgy konfigurálhatja az eszközöket, hogy a megszakításokat és az állásidőt a lehető legkisebbre csökkentse. Az eszköz-karbantartási időszakok általában azt az időpontot határozzák meg, amikor egy eszköznek frissítenie kell a konfigurációját. A háttérrendszer-megoldások az eszközök Twin kívánt tulajdonságait használva meghatározhatják és aktiválják a szabályzatokat az eszközön, amely lehetővé teszi a karbantartási időszakot. Amikor egy eszköz megkapja a karbantartási időszakra vonatkozó házirendet, az eszköz Twin-objektum jelentett tulajdonságával jelentheti be a szabályzat állapotát. A háttérbeli alkalmazás ezután az eszköz kettős lekérdezéseit használva tanúsítja az eszközök és az egyes szabályzatok megfelelőségét.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban egy közvetlen metódust használt egy távoli újraindítás elindításához az eszközön. A jelentett tulajdonságokat használta a legutóbbi újraindítási idő jelentésére az eszközről, és lekérdezte az eszköz ikerét, hogy felderítse az eszköz legutóbbi újraindításának időpontját a felhőből.
 

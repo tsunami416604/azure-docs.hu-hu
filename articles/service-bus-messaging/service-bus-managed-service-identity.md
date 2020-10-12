@@ -4,10 +4,10 @@ description: Ez a cikk azt ismerteti, hogyan használhatók a felügyelt identit
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 1deb3bdf823f1554e302bb35baabe444223f9008
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88079858"
 ---
 # <a name="authenticate-a-managed-identity-with-azure-active-directory-to-access-azure-service-bus-resources"></a>Felügyelt identitás hitelesítése Azure Active Directory használatával Azure Service Bus erőforrások eléréséhez
@@ -134,7 +134,7 @@ A módosítások elvégzése után tegye közzé és futtassa az alkalmazást. A
 > 
 > - A felügyelt identitások jelenleg nem működnek App Service üzembe helyezési pontokkal.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Service Bus üzenetkezeléssel kapcsolatos további tudnivalókért tekintse meg a következő témaköröket:
 

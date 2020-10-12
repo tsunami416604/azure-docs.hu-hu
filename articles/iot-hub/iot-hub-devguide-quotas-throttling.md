@@ -12,10 +12,10 @@ ms.custom:
 - 'Role: Operations'
 - 'Role: Technical Support'
 ms.openlocfilehash: ec8d277de177942386d9f3becdf329cdff1ca812
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88797802"
 ---
 # <a name="reference---iot-hub-quotas-and-throttling"></a>Hivatkozás – IoT Hub kvóták és szabályozás
@@ -132,7 +132,7 @@ Több IoT Hub egység is befolyásolja a szabályozást a korábban leírtak sze
 
 Ha a művelet késése váratlan növekedést lát, forduljon a [Microsoft ügyfélszolgálatahoz](https://azure.microsoft.com/support/options/).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 IoT Hub szabályozási viselkedés részletes ismertetését a következő blogbejegyzésben találja: [IoT hub szabályozás és Ön](https://azure.microsoft.com/blog/iot-hub-throttling-and-you/).
 

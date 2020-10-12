@@ -4,10 +4,10 @@ description: Ez a cikk az alkalmazások lehetséges Azure Service Bus kimaradás
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 4f3ff89e3ec59ad4445ab0b7ee7eeb45d18fa3b8
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88065624"
 ---
 # <a name="best-practices-for-insulating-applications-against-service-bus-outages-and-disasters"></a>Ajánlott eljárások az alkalmazások elszigeteléséhez a Service Bus leállásaival és katasztrófáival szemben
@@ -19,9 +19,9 @@ A rendszer leállást határoz meg, mert a Azure Service Bus ideiglenes nem érh
 A katasztrófa egy Service Bus skálázási egység vagy adatközpont végleges elvesztéseként van meghatározva. Előfordulhat, hogy az adatközpont újra elérhetővé válik. A katasztrófák általában egy vagy több üzenet vagy más adatbázis elvesztését okozzák. Ilyen katasztrófák például a következők: tűz, árvíz vagy földrengés.
 
 ## <a name="protecting-against-outages-and-disasters---service-bus-premium"></a>Kimaradások és katasztrófák elleni védelem – Service Bus Premium
-A magas rendelkezésre állás és a vész-helyreállítási fogalmak közvetlenül a Azure Service Bus Premium csomagba vannak építve, mindkettő ugyanazon a régión (Availability Zonesn keresztül) és különböző régiókban (a földrajzi katasztrófa utáni helyreállításon keresztül).
+A magas rendelkezésre állást és a vész-helyreállítási fogalmakat közvetlenül a Azure Service Bus Premium szintjére építették, mindkettőt ugyanazon a régión (Availability Zoneson keresztül) és különböző régiókban (Geo-Disaster Recovery használatával).
 
-### <a name="geo-disaster-recovery"></a>Földrajzi katasztrófa utáni helyreállítás
+### <a name="geo-disaster-recovery"></a>Geo-Disaster helyreállítás
 
 A Service Bus Premium a Geo-vész-helyreállítást támogatja a névtér szintjén. További információ: [Azure Service Bus földrajzi katasztrófa utáni helyreállítás](service-bus-geo-dr.md). A csak [prémium SKU](service-bus-premium-messaging.md) -hoz elérhető vész-helyreállítási funkció a metaadatok vész-helyreállítását valósítja meg, és az elsődleges és másodlagos vész-helyreállítási névterekre támaszkodik.
 
@@ -76,7 +76,7 @@ A [Service Bus standard szintű geo-replikáció][Geo-replication with Service B
 
 A szolgáltatás ezután mindkét végponton figyeli a szolgáltatást, és az ügyfél bármelyik végponton keresztül hívhatja a szolgáltatást. Egy ügyfélalkalmazás véletlenszerűen kiválasztja az egyik továbbítót elsődleges végpontként, és elküldi a kérést az aktív végpontnak. Ha a művelet hibakód miatt meghiúsul, ez a hiba azt jelzi, hogy a továbbítási végpont nem érhető el. Az alkalmazás megnyit egy csatornát a biztonsági mentési végponthoz, és újra kiadja a kérést. Ekkor az aktív és a biztonsági mentési végpontok kapcsolói szerepkörök: az ügyfélalkalmazás a régi aktív végpontot tekinti az új biztonsági mentési végpontnak, a régi biztonsági mentési végpont pedig az új aktív végpont lesz. Ha mindkét küldési művelet meghiúsul, a két entitás szerepkörei változatlanok maradnak, és a rendszer hibát ad vissza.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A vész-helyreállítással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 
 * [Azure Service Bus geo-vész-helyreállítás](service-bus-geo-dr.md)

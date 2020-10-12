@@ -4,10 +4,10 @@ description: Az Azure Container Registry, például a hitelesítés, a képküld
 ms.topic: article
 ms.date: 06/01/2020
 ms.openlocfilehash: 63ccb944b9c3de9941acf55ca5ea85fda70a7008
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87553376"
 ---
 # <a name="azure-container-registry-logs-for-diagnostic-evaluation-and-auditing"></a>Azure Container Registry naplók a diagnosztika kiértékeléséhez és a naplózáshoz
@@ -37,7 +37,7 @@ A rendszerképekhez és egyéb összetevőkhöz tartozó adattár-szintű esemé
 
 Az erőforrás-naplók olyan Azure-erőforrások által kibocsátott információkat tartalmaznak, amelyek leírják a belső műveleteket. Az Azure Container Registry esetében a naplók a következő táblázatokban tárolt hitelesítési és adattár-szintű eseményeket tartalmazzák. 
 
-* **ContainerRegistryLoginEvents** – a beállításjegyzék hitelesítési eseményei és állapota, beleértve a bejövő identitást és IP-címet is
+* **ContainerRegistryLoginEvents**  – a beállításjegyzék hitelesítési eseményei és állapota, beleértve a bejövő identitást és IP-címet is
 * **ContainerRegistryRepositoryEvents** – például leküldéses és lekéréses műveletek a beállításjegyzékbeli adattárakban található képekhez és egyéb összetevőkhöz
 * **AzureMetrics**  -  [Tároló beállításjegyzék-metrikák](../azure-monitor/platform/metrics-supported.md#microsoftcontainerregistryregistries) , például összesített leküldéses és lekéréses darabszám.
 

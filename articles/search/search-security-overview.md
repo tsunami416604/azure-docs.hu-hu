@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 08/01/2020
 ms.custom: references_regions
 ms.openlocfilehash: f314394d3a0ac453d525079e096162d8739f67cf
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91314715"
 ---
 # <a name="security-in-azure-cognitive-search---overview"></a>Biztonság az Azure Cognitive Searchban – áttekintés
@@ -40,7 +40,7 @@ Az Azure Cognitive Search a titkosítás a kapcsolatokkal és az átvitelekkel k
 
 A Search szolgáltatás által belsőleg kezelt [adattitkosítási modelleket](../security/fundamentals/encryption-models.md)az alábbi táblázat ismerteti. Bizonyos funkciók, például a Tudásbázis, a növekményes bővítés és az indexelő alapú indexelés, a más Azure-szolgáltatások adatstruktúráinak olvasására vagy írására. Ezek a szolgáltatások az Azure Cognitive Searchtól eltérő titkosítási támogatással rendelkeznek.
 
-| Modellezés | Kulcsok&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Követelmények&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Korlátozások | A következőre érvényes: |
+| Modell | Kulcsok&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Követelmények&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; | Korlátozások | A következőre érvényes: |
 |------------------|-------|-------------|--------------|------------|
 | kiszolgálóoldali titkosítás | Microsoft által felügyelt kulcsok | Nincs (beépített) | Nincs, az összes régióban elérhető minden szinten, a január 24 2018. után létrehozott tartalomhoz. | Tartalom (indexek és szinonima térképek) és definíciók (indexelő, adatforrások, szakértelmével) |
 | kiszolgálóoldali titkosítás | ügyfél által felügyelt kulcsok | Azure Key Vault | Minden régióban elérhető számlázandó szinten, a január 2019. után létrehozott tartalomhoz. | Az adatlemezeken található tartalom (indexek és szinonimák) |
@@ -94,7 +94,7 @@ Minden kérelem esetében hitelesítésre van szükség, amelyben minden kérele
 
 A keresési szolgáltatáshoz való hozzáférés további szabályozásához olyan bejövő tűzfalszabályok hozhatók létre, amelyek lehetővé teszik az adott IP-cím vagy IP-címtartomány elérését. Az összes ügyfélkapcsolatot egy engedélyezett IP-címen keresztül kell elvégezni, vagy a kapcsolat megtagadva.
 
-:::image type="content" source="media/search-security-overview/inbound-firewall-ip-restrictions.png" alt-text="Példa architektúra-diagramra az IP korlátozott hozzáféréshez":::
+:::image type="content" source="media/search-security-overview/inbound-firewall-ip-restrictions.png" alt-text="különböző típusú biztonságot ábrázoló diagram a szolgáltatás minden egyes szintjén":::
 
 A portál használatával [konfigurálhatja a bejövő hozzáférést](service-configure-firewall.md).
 
@@ -106,7 +106,7 @@ Az Azure Cognitive Search [privát végpontja](../private-link/private-endpoint-
 
 A magánhálózati végpont a virtuális hálózati címtartomány IP-címét használja a keresési szolgáltatáshoz való kapcsolódáshoz. Az ügyfél és a keresési szolgáltatás közötti hálózati forgalom áthalad a virtuális hálózaton és a Microsoft gerinc hálózatán található privát kapcsolaton, ami kiküszöböli a nyilvános internetről való kitettséget. A VNET lehetővé teszi az erőforrások, a helyszíni hálózat és az Internet közötti biztonságos kommunikációt.
 
-:::image type="content" source="media/search-security-overview/inbound-private-link-azure-cog-search.png" alt-text="Példa architektúra-diagramra a privát végpontok eléréséhez":::
+:::image type="content" source="media/search-security-overview/inbound-private-link-azure-cog-search.png" alt-text="különböző típusú biztonságot ábrázoló diagram a szolgáltatás minden egyes szintjén":::
 
 Habár ez a megoldás a legbiztonságosabb, a további szolgáltatások használata további költségeket jelent, ezért ügyeljen arra, hogy egyértelművé váljon a kimerülés előtti előnyök. a költségekkel kapcsolatos további információkért tekintse meg a [díjszabási oldalt](https://azure.microsoft.com/pricing/details/private-link/). Ha többet szeretne megtudni arról, hogy ezek az összetevők hogyan működnek együtt, tekintse meg a cikk tetején található videót. A privát végponti beállítás lefedettsége 5:48-kor kezdődik a videóban. A végpont beállításával kapcsolatos útmutatásért lásd: [privát végpont létrehozása az Azure Cognitive Searchhoz](service-create-private-endpoint.md).
 
@@ -126,7 +126,7 @@ Az index és az egyéb objektumok elérésének módja a kérelemben szereplő A
 
 Ha részletes, felhasználónkénti vezérlést igényel a keresési eredmények között, biztonsági szűrőket készíthet a lekérdezésekhez, és visszaküldheti az adott biztonsági identitáshoz társított dokumentumokat. Az előre definiált szerepkörök és szerepkör-hozzárendelések helyett az identitás-alapú hozzáférés-vezérlés olyan *szűrőként* van megvalósítva, amely identitások alapján metszi a dokumentumok és tartalmak keresési eredményeit. Az alábbi táblázat két módszert ismertet a jogosulatlan tartalom keresési eredményeinek kivágására.
 
-| Módszer | Description |
+| Módszer | Leírás |
 |----------|-------------|
 |[Biztonsági körülvágás identitás-szűrők alapján](search-security-trimming-for-azure-search.md)  | Dokumentálja a felhasználói identitás hozzáférés-vezérlésének megvalósításához szükséges alapszintű munkafolyamatot. Ismerteti a biztonsági azonosítók indexbe való hozzáadását, majd a tiltott tartalom eredményének kivágására szolgáló mező szűrését ismerteti. |
 |[Biztonsági kivágás Azure Active Directory identitások alapján](search-security-trimming-for-azure-search-with-aad.md)  | Ez a cikk az előző cikkben található, amely a Azure Active Directory (Azure AD) identitások beolvasásának lépéseit ismerteti az Azure Cloud platform egyik [ingyenes szolgáltatásával](https://azure.microsoft.com/free/) . |

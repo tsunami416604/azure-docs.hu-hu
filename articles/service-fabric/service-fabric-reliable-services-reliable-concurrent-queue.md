@@ -4,10 +4,10 @@ description: A megbízható párhuzamos várólista egy nagy átviteli sebesség
 ms.topic: conceptual
 ms.date: 5/1/2017
 ms.openlocfilehash: 423ef3d1898176d7c25c596ad186a9c000108aa4
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86257438"
 ---
 # <a name="introduction-to-reliableconcurrentqueue-in-azure-service-fabric"></a>Az Azure Service Fabric megbízható párhuzamos várólista bemutatása
@@ -215,7 +215,7 @@ while(!cancellationToken.IsCancellationRequested)
 }
 ```
 
-### <a name="best-effort-notification-based-processing"></a>A legjobb erőfeszítést megkövetelő értesítés-alapú feldolgozás
+### <a name="best-effort-notification-based-processing"></a>Best-Effort Notification-Based feldolgozás
 Egy másik érdekes programozási minta a Count API-t használja. Itt bemutatjuk a várakozási sor legjobb munkafolyamaton alapuló feldolgozását. A várólisták száma sorba helyezni vagy várólista-feladatok szabályozására is használható.  Vegye figyelembe, hogy ahogy az előző példában is, mivel a feldolgozás a tranzakción kívül történik, a feldolgozatlan elemek elvesznek, ha hiba történik a feldolgozás során.
 
 ```
@@ -263,7 +263,7 @@ while(!cancellationToken.IsCancellationRequested)
 }
 ```
 
-### <a name="best-effort-drain"></a>Legjobb teljesítményű Drain
+### <a name="best-effort-drain"></a>Best-Effort Drain
 Az adatstruktúra egyidejű jellegéből adódóan nem garantálható a várólista kiürítése.  Előfordulhat, hogy még akkor is előfordulhat, ha a várólistán nincs felhasználói művelet, mert a TryDequeueAsync egy adott hívása nem ad vissza olyan tételt, amely korábban várólistán lévő és véglegesítve lett.  A várólistán lévő elem garantált, hogy *végül* láthatóvá válik a deüzenetsor számára, de sávon kívüli kommunikációs mechanizmus nélkül, egy független fogyasztó nem tudja, hogy a várólista állandó állapotba került, még akkor is, ha minden termelő le lett állítva, és nem engedélyezett új sorba helyezni művelet. Így a kiürítési művelet az alábbiakban ismertetett legjobb erőfeszítést mutatja.
 
 A felhasználónak le kell állítania az összes további gyártó és fogyasztó feladatát, és várnia kell, amíg a folyamatban lévő tranzakciók véglegesítve vagy megszakítva lettek, mielőtt a rendszer kiüríti a várólistát.  Ha a felhasználó ismeri a várólistában lévő elemek várt számát, beállíthat egy értesítést, amely azt jelzi, hogy az összes elem el lett-e küldve.

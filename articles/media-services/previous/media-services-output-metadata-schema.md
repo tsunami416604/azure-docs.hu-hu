@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: cd81ef78ecc5ef9cea71adb387597681460d50c8
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89261325"
 ---
 # <a name="output-metadata"></a>Kimeneti metaadatok
@@ -103,7 +103,7 @@ Megtalálhatja az XML-példa XML- [példáját](#xml).
 | **FourCC**<br/><br/> Kötelező |**xs: karakterlánc** |Videós kodek FourCC kódja |
 | **Profil** |**xs: karakterlánc** |H264-profil (csak H264-kodekre alkalmazható). |
 | **Szintű** |**xs: karakterlánc** |H264-szint (csak H264-kodekre alkalmazható). |
-| **Szélesség**<br/><br/> minInclusive = "0"<br/><br/> Kötelező |**xs: int** |Kódolt videó szélessége képpontban megadva |
+| **Szélessége**<br/><br/> minInclusive = "0"<br/><br/> Kötelező |**xs: int** |Kódolt videó szélessége képpontban megadva |
 | **Magasság**<br/><br/> minInclusive = "0"<br/><br/> Kötelező |**xs: int** |Kódolt videó magassága képpontban megadva. |
 | **DisplayAspectRatioNumerator**<br/><br/> minInclusive = "0"<br/><br/> Kötelező |**xs: dupla** |Videó megjelenítési oldalarányának számlálója |
 | **DisplayAspectRatioDenominator**<br/><br/> minInclusive = "0"<br/><br/> Kötelező |**xs: dupla** |Videó megjelenítési méretarányának nevezője |
@@ -606,7 +606,7 @@ A következő XML egy példa a kimeneti metaadat fájlra.
 </AssetFiles>  
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>Visszajelzés küldése

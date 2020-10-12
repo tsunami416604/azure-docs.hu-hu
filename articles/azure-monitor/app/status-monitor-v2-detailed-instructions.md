@@ -6,10 +6,10 @@ author: TimothyMothra
 ms.author: tilee
 ms.date: 04/23/2019
 ms.openlocfilehash: a8a27a782d5e05b5febda659009284c22d3608c0
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87318980"
 ---
 # <a name="application-insights-agent-formerly-named-status-monitor-v2-detailed-instructions"></a>Application Insights ügynök (korábbi nevén Állapotmonitor v2): részletes utasítások
@@ -167,7 +167,7 @@ Telepítse a manuálisan letöltött PowerShell-modult egy PowerShell-könyvtár
 További információ: PowerShell- [modul telepítése](/powershell/scripting/developer/module/installing-a-powershell-module).
 
 
-#### <a name="unzip-nupkg-as-a-zip-file-by-using-expand-archive-v1010"></a>Nupkg kibontása zip-fájlként a Expand-Archive (v 1.0.1.0) használatával
+#### <a name="unzip-nupkg-as-a-zip-file-by-using-expand-archive-v1010"></a>Nupkg kicsomagolása zip-fájlként Expand-Archive használatával (v 1.0.1.0)
 
 - Leírás: a Microsoft. PowerShell. Archive (v 1.0.1.0) alapverziója nem tudja kibontani a nupkg-fájlokat. Nevezze át a fájlt a. zip kiterjesztéssel.
 - Hivatkozás: [Expand-Archive](/powershell/module/microsoft.powershell.archive/expand-archive?view=powershell-6).
@@ -181,9 +181,9 @@ További információ: PowerShell- [modul telepítése](/powershell/scripting/de
     Expand-Archive -LiteralPath $pathToZip -DestinationPath $pathInstalledModule
     ```
 
-#### <a name="unzip-nupkg-by-using-expand-archive-v1100"></a>Nupkg kicsomagolása a Expand-Archive (v 1.1.0.0) használatával
+#### <a name="unzip-nupkg-by-using-expand-archive-v1100"></a>Nupkg kicsomagolása Expand-Archive használatával (v 1.1.0.0)
 
-- Leírás: a Expand-Archive aktuális verziójának használatával bontsa ki a nupkg-fájlokat a bővítmény módosítása nélkül.
+- Leírás: a Expand-Archive aktuális verziójának használatával csomagolja ki a nupkg-fájlokat a bővítmény módosítása nélkül.
 - Hivatkozás: [Expand-Archive](/powershell/module/microsoft.powershell.archive/expand-archive?view=powershell-6) és [Microsoft. PowerShell. Archive](https://www.powershellgallery.com/packages/Microsoft.PowerShell.Archive/1.1.0.0).
 - Parancs
 
@@ -227,7 +227,7 @@ A parancsmag használatának részletes ismertetését az [API-referenciában](.
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
  A telemetriai adatok megtekintése:
 

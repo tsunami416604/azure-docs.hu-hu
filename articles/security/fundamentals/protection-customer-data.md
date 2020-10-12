@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 07/10/2020
 ms.author: terrylan
 ms.openlocfilehash: 14589e4efe22d89468b069bf6ff7e3d9babcc714
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87543792"
 ---
 # <a name="azure-customer-data-protection"></a>Azure Customer-adatvédelem   
@@ -70,7 +70,7 @@ Az Azure lehetővé teszi, hogy az ügyfelek exportálják az adatok és a napl�
 ## <a name="electronic-discovery-e-discovery"></a>Elektronikus felderítés (e-Discovery)
 Az Azure-ügyfelek feladata az e-felderítési követelmények teljesítése az Azure-szolgáltatások használata során. Ha az Azure-ügyfeleknek meg kell őrizniük az ügyféladatokat, akkor helyileg is exportálhatunk és menthetik az adatfájlokat. Emellett az ügyfelek az Azure ügyfélszolgálati részlegében is kérhetik az adatok exportálását. Amellett, hogy lehetővé teszi az ügyfelek számára az adatok exportálását, az Azure kiterjedt naplózást és figyelést végez belsőleg.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ha többet szeretne megtudni arról, hogy a Microsoft Hogyan védi az Azure-infrastruktúrát, olvassa el a következő témakört:
 
 - [Azure-létesítmények,-telephelyek és fizikai biztonság](physical-security.md)

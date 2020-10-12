@@ -9,10 +9,10 @@ ms.service: iot-dps
 services: iot-dps
 ms.custom: mvc
 ms.openlocfilehash: 6cca34774038156cfb01e872e751338c1c96efaa
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91316000"
 ---
 # <a name="tutorial-provision-devices-across-load-balanced-iot-hubs"></a>Oktatóanyag: eszközök kiépítése elosztott terhelésű IoT hubok között
@@ -75,7 +75,7 @@ Ez az oktatóanyag bemutatta, hogyan végezheti el az alábbi műveleteket:
 > * A Device Provisioning Service kiosztási szabályzatának beállítása **egyenletes eloszláshoz**
 > * Az új IoT hub csatolása a Device Provisioning Service-hez
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 <!-- Advance to the next tutorial to learn how to 
  Replace this .md

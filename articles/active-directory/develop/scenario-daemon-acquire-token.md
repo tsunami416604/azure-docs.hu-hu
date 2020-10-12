@@ -12,10 +12,10 @@ ms.date: 10/30/2019
 ms.author: jmprieur
 ms.custom: aaddev
 ms.openlocfilehash: 13000c5a61dc2c4d49aa395271beddef64d32245
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88119215"
 ---
 # <a name="daemon-app-that-calls-web-apis---acquire-a-token"></a>Webes API-kat meghívó Daemon-alkalmazás – jogkivonat beszerzése
@@ -202,7 +202,7 @@ További információkért tekintse meg a protokoll dokumentációját: [Microso
 
 ## <a name="application-token-cache"></a>Alkalmazás-jogkivonat gyorsítótára
 
-A MSAL.NET-ben `AcquireTokenForClient` az alkalmazás-jogkivonat gyorsítótárát használja. (Az összes többi AcquireToken*XX* -módszer a felhasználói jogkivonat gyorsítótárát használja.) `AcquireTokenSilent`A hívás előtt ne telefonáljon `AcquireTokenForClient` , mert `AcquireTokenSilent` a a *felhasználói* jogkivonat gyorsítótárát használja. `AcquireTokenForClient`ellenőrzi az *alkalmazás* -jogkivonat gyorsítótárát, és frissíti azt.
+A MSAL.NET-ben `AcquireTokenForClient` az alkalmazás-jogkivonat gyorsítótárát használja. (Az összes többi AcquireToken*XX* -módszer a felhasználói jogkivonat gyorsítótárát használja.) `AcquireTokenSilent` A hívás előtt ne telefonáljon `AcquireTokenForClient` , mert `AcquireTokenSilent` a a *felhasználói* jogkivonat gyorsítótárát használja. `AcquireTokenForClient` ellenőrzi az *alkalmazás* -jogkivonat gyorsítótárát, és frissíti azt.
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 
@@ -229,7 +229,7 @@ Content: {
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 # <a name="net"></a>[.NET](#tab/dotnet)
 

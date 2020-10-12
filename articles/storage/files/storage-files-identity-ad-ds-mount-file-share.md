@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 06/22/2020
 ms.author: rogarana
 ms.openlocfilehash: 9807563c768b82c823ff754aaa679ddc917bf62d
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87535059"
 ---
 # <a name="part-four-mount-a-file-share-from-a-domain-joined-vm"></a>Negyedik rész: fájlmegosztási csatlakoztatása egy tartományhoz csatlakoztatott virtuális gépről
@@ -51,7 +51,7 @@ Ha AD DS hitelesítő adatokkal való csatlakoztatással kapcsolatos problémák
 
 Ha a fájlmegosztás csatlakoztatása sikeres volt, sikeresen engedélyezte és konfigurálta a helyszíni AD DS hitelesítést az Azure-fájlmegosztás számára.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha a AD DSban létrehozott identitás olyan tartományban vagy szervezeti egységben található, amely a jelszó-elforgatást kényszeríti, folytassa a következő cikkel a jelszó frissítésével kapcsolatos utasításokért:
 

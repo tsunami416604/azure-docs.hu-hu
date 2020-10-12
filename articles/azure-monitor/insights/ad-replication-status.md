@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 01/24/2018
 ms.openlocfilehash: c33e9105be1eb080025922ff9e612771a4f021cd
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87318079"
 ---
 # <a name="monitor-active-directory-replication-status-with-azure-monitor"></a>Active Directory replikáció állapotának figyelése Azure Monitor
@@ -41,7 +41,7 @@ Ha nem kívánja közvetlenül csatlakoztatni a tartományvezérlőket a Azure M
 
 1. Győződjön meg arról, hogy a számítógép a AD Replication Status megoldás használatával figyelni kívánt tartomány tagja.
 2. Ha még nincs csatlakoztatva, [csatlakoztassa a Windows rendszerű számítógépet Azure monitor](../platform/om-agents.md) vagy [csatlakoztassa a meglévő Operations Manager-környezettel Azure monitorhoz](../platform/om-agents.md).
-3. A számítógépen állítsa be a következő beállításkulcsot:<br>Kulcs: **HKEY_LOCAL_MACHINE \System\currentcontrolset\services\healthservice\parameters\management csoportok \<ManagementGroupName> \Solutions\ADReplication**<br>Érték: **IsTarget**<br>Érték: **true**
+3. A számítógépen állítsa be a következő beállításkulcsot:<br>Kulcs: **HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\HealthService\Parameters\Management Groups\<ManagementGroupName> \Solutions\ADReplication**<br>Érték: **IsTarget**<br>Érték: **true**
 
    > [!NOTE]
    > Ezek a módosítások addig nem lépnek érvénybe, amíg újra nem indítja a Microsoft monitoring Agent szolgáltatást (HealthService.exe).
@@ -52,9 +52,7 @@ Ha nem kívánja közvetlenül csatlakoztatni a tartományvezérlőket a Azure M
 ## <a name="ad-replication-status-data-collection-details"></a>AD Replication Status adatgyűjtési adatok
 Az alábbi táblázat az adatgyűjtés módszereit és a AD Replication Status adatok gyűjtésének egyéb részleteit mutatja be.
 
-| 
-    platform
-   | Közvetlen ügynök | SCOM-ügynök | Azure Storage | SCOM szükséges? | A felügyeleti csoporton keresztül elküldett SCOM-ügynök | gyűjtés gyakorisága |
+| platform | Közvetlen ügynök | SCOM-ügynök | Azure Storage | SCOM szükséges? | A felügyeleti csoporton keresztül elküldett SCOM-ügynök | gyűjtés gyakorisága |
 | --- | --- | --- | --- | --- | --- | --- |
 | Windows |&#8226; |&#8226; |  |  |&#8226; |minden öt nap |
 

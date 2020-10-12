@@ -12,10 +12,10 @@ ms.topic: end-user-help
 ms.date: 07/29/2020
 ms.author: curtand
 ms.openlocfilehash: 95947a9350f19f0f0ff45b7c65e14729b66f26cf
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88798159"
 ---
 # <a name="what-is-the-my-account-portal"></a>Mi az a Saját fiók portál?
@@ -35,7 +35,7 @@ A fiókom **-portálon** (a https://myaccount.microsoft.com) következő böngé
 >[!Important]
 >Ez a cikk azoknak a felhasználóknak készült, akik a saját fiók portálon szeretnék frissíteni a biztonsági adataikat, az eszköz adatait, a jelszavukat, a csatlakoztatott szervezeteket, a nyelvi beállításokat, az adatvédelmet vagy az előző bejelentkezési adatokat. Ha Ön rendszergazda, aki a hitelesítés és az egyéb Azure Active Directory (Azure AD) funkcióinak bekapcsolását kéri az alkalmazottak és más alkalmazások számára, tekintse meg a [rendszergazdák Azure ad-dokumentációját](../index.yml).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Válassza ki a [biztonsági adatok](./security-info-setup-signin.md) megtekintéséhez vagy kezeléséhez
 

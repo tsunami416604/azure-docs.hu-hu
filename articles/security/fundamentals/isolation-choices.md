@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 10/28/2019
 ms.author: TomSh
 ms.openlocfilehash: 42582c9474647c4c203bd0cafae0be664398ba41
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87533903"
 ---
 # <a name="isolation-in-the-azure-public-cloud"></a>Elkülönítés az Azure nyilvános felhőben
@@ -54,7 +54,7 @@ A címtárban lévő felhasználók, csoportok és alkalmazások kezelhetik az A
 
 - Az Azure AD-felhasználók nem férnek hozzá a fizikai eszközökhöz vagy a helyszínekhez, ezért nem lehetséges, hogy megkerüljék a logikai RBAC szabályzatok által jelzett ellenőrzéseket.
 
-Diagnosztikai és karbantartási igények esetén az igény szerinti jogosultságszint-emelést alkalmazó operatív modell szükséges és használatos. Azure AD Privileged Identity Management (PIM) bevezeti a jogosult rendszergazda fogalmát. A [jogosult rendszergazdáknak](../../active-directory/privileged-identity-management/pim-configure.md) olyan felhasználóknak kell lenniük, akiknek a jogosultsági szintű hozzáférésre van szükségük, de nem minden nap. A szerepkör inaktív, amíg a felhasználónak nincs szüksége a hozzáférésre, majd szükség esetén a felhasználó egy aktiválási folyamat teljesítésével válhat aktív rendszergazdává egy előre meghatározott időtartamra.
+Diagnosztikai és karbantartási igények esetén az igény szerinti jogosultságszint-emelést alkalmazó operatív modell szükséges és használatos. A Azure AD Privileged Identity Management (PIM) bevezeti a jogosult rendszergazda fogalmát. a [jogosult rendszergazdáknak](../../active-directory/privileged-identity-management/pim-configure.md) olyan felhasználóknak kell lenniük, akiknek most, de nem minden nap van szükségük privilegizált hozzáférésre. A szerepkör inaktív, amíg a felhasználónak nincs szüksége a hozzáférésre, majd szükség esetén a felhasználó egy aktiválási folyamat teljesítésével válhat aktív rendszergazdává egy előre meghatározott időtartamra.
 
 ![Azure AD Privileged Identity Management](./media/isolation-choices/azure-isolation-fig2.png)
 

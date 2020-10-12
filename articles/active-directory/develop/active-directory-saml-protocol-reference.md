@@ -1,6 +1,6 @@
 ---
 title: Hogyan használja a Microsoft Identity platform az SAML protokollt
-description: Ez a cikk áttekintést nyújt az egyszeri bejelentkezés és az egyszeri kijelentkezés SAML-profiljairól Azure Active Directory.
+description: Ez a cikk áttekintést nyújt a Azure Active Directory egyetlen Sign-On és egy Sign-Out SAML-profiljairól.
 services: active-directory
 author: kenwith
 manager: CelesteDG
@@ -13,10 +13,10 @@ ms.author: kenwith
 ms.custom: aaddev
 ms.reviewer: paulgarn
 ms.openlocfilehash: 06f80f94be25e42c9e8f0270e6cb15aca086ae18
-ms.sourcegitcommit: 1b2d1755b2bf85f97b27e8fbec2ffc2fcd345120
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87552798"
 ---
 # <a name="how-microsoft-identity-platform-uses-the-saml-protocol"></a>Hogyan használja a Microsoft Identity platform az SAML protokollt
@@ -31,7 +31,7 @@ A Microsoft Identity platform a Cloud Service **metaadat-URI-ját** használja a
 
 Azure Active Directory a bérlő-specifikus és a közös (bérlői független) egyszeri bejelentkezéses és egyszeri kijelentkezési végpontokat teszi elérhetővé. Ezek az URL-címek címezhető helyet jelölnek – nem csupán azonosítók –, így a végpontra léphet a metaadatok olvasásához.
 
-* A bérlő-specifikus végpont a következő helyen található: `https://login.microsoftonline.com/<TenantDomainName>/FederationMetadata/2007-06/FederationMetadata.xml` . A *\<TenantDomainName>* helyőrző egy Azure ad-bérlő regisztrált tartománynevét vagy TenantID GUID azonosítóját jelöli. Az contoso.com-bérlő összevonási metaadatai például a következő helyen találhatóak:https://login.microsoftonline.com/contoso.com/FederationMetadata/2007-06/FederationMetadata.xml
+* A bérlő-specifikus végpont a következő helyen található: `https://login.microsoftonline.com/<TenantDomainName>/FederationMetadata/2007-06/FederationMetadata.xml` . A *\<TenantDomainName>* helyőrző egy Azure ad-bérlő regisztrált tartománynevét vagy TenantID GUID azonosítóját jelöli. Az contoso.com-bérlő összevonási metaadatai például a következő helyen találhatóak: https://login.microsoftonline.com/contoso.com/FederationMetadata/2007-06/FederationMetadata.xml
 
 * A bérlőtől független végpont a következő helyen található: `https://login.microsoftonline.com/common/FederationMetadata/2007-06/FederationMetadata.xml` . Ebben a végpontban az **általános** név a bérlői tartománynév vagy azonosító helyett jelenik meg.
 

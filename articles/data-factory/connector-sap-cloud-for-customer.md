@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 06/12/2020
 ms.openlocfilehash: 3874d3b2b0938b6fd0f763b42ef15f8250b42f1d
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87529619"
 ---
 # <a name="copy-data-from-sap-cloud-for-customer-c4c-using-azure-data-factory"></a>Adatok másolása az SAP Cloud for Customer (C4C) szolgáltatásból Azure Data Factory használatával
@@ -59,7 +59,7 @@ Az SAP Cloud for Customer társított szolgáltatáshoz a következő tulajdons�
 >[!IMPORTANT]
 >Az SAP felhőbe való adatmásoláshoz az ügyfél számára explicit módon [hozzon létre egy Azure IR](create-azure-integration-runtime.md#create-azure-ir) az SAP-felhő közelében az ügyfél számára, és társítsa a társított szolgáltatáshoz a következő példában látható módon:
 
-**Például**
+**Példa**
 
 ```json
 {
@@ -93,7 +93,7 @@ Ha az SAP-felhőből szeretne adatokat másolni az ügyfél számára, állítsa
 | típus | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **SapCloudForCustomerResource** |Igen |
 | path | Az SAP C4C OData entitás elérési útjának megadása. |Igen |
 
-**Például**
+**Példa**
 
 ```json
 {
@@ -126,9 +126,9 @@ Az SAP felhőből az ügyfélnek történő adatmásoláshoz állítsa a forrás
 | lekérdezés | Az adatolvasáshoz válassza az egyéni OData-lekérdezést. | Nem |
 | httpRequestTimeout | A válasz kéréséhez szükséges HTTP-kérelem időkorlátja (a **TimeSpan** érték). Ez az érték a válasz lekérésének időtúllépése, nem pedig a válaszüzenetek olvasásának időtúllépése. Ha nincs megadva, az alapértelmezett érték **00:30:00** (30 perc). | Nem |
 
-Példa lekérdezésre egy adott napra vonatkozó adat lekéréséhez:`"query": "$filter=CreatedOn ge datetimeoffset'2017-07-31T10:02:06.4202620Z' and CreatedOn le datetimeoffset'2017-08-01T10:02:06.4202620Z'"`
+Példa lekérdezésre egy adott napra vonatkozó adat lekéréséhez: `"query": "$filter=CreatedOn ge datetimeoffset'2017-07-31T10:02:06.4202620Z' and CreatedOn le datetimeoffset'2017-08-01T10:02:06.4202620Z'"`
 
-**Például**
+**Példa**
 
 ```json
 "activities":[
@@ -170,7 +170,7 @@ Ha az ügyfél számára szeretne Adatmásolást készíteni az SAP-felhőbe, a 
 | writeBehavior | A művelet írási viselkedése. Lehet "Insert", "Update". | Nem. Alapértelmezett "Beszúrás". |
 | writeBatchSize | Az írási művelet kötegének mérete. A legjobb teljesítmény eléréséhez használt köteg mérete eltérő lehet a különböző táblák vagy kiszolgálók esetében. | Nem. Alapértelmezett 10. |
 
-**Például**
+**Példa**
 
 ```json
 "activities":[
@@ -219,9 +219,9 @@ Az SAP-felhőből az ügyfélnek történő adatmásoláskor a következő leké
 | Edm.Boolean | Logikai |
 | EDM. byte | Bájt [] |
 | EDM. DateTime | DateTime |
-| EDM. decimális | Decimal |
+| EDM. decimális | Tizedesjegy |
 | Edm.Double | Dupla |
-| EDM. Single | Egyszeres |
+| EDM. Single | Egyirányú |
 | EDM. GUID | Guid |
 | EDM. Int16 | Int16 |
 | Edm.Int32 | Int32 |

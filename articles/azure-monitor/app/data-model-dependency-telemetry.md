@@ -5,21 +5,21 @@ ms.topic: conceptual
 ms.date: 04/17/2017
 ms.reviewer: sergkanz
 ms.openlocfilehash: 0f9fc96479569c3411024068ed614d422035ab17
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87315971"
 ---
 # <a name="dependency-telemetry-application-insights-data-model"></a>Függőségi telemetria: Application Insights adatmodell
 
 A függőségi telemetria ( [Application Insights](./app-insights-overview.md)) a figyelt összetevő és egy távoli összetevő, például az SQL vagy egy http-végpont interakcióját jelöli.
 
-## <a name="name"></a>Név
+## <a name="name"></a>Name (Név)
 
 A függőségi hívással kezdeményezett parancs neve. Alacsony kardinális érték. Ilyenek például a tárolt eljárás neve és az URL-cím elérési útja sablon.
 
-## <a name="id"></a>ID
+## <a name="id"></a>ID (Azonosító)
 
 A függőségi hívás példányának azonosítója. A függőségi híváshoz tartozó telemetria-elemmel való korrelációhoz használatos. További információ: [korrelációs](./correlation.md) oldal.
 

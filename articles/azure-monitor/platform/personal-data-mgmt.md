@@ -7,13 +7,13 @@ author: bwren
 ms.author: bwren
 ms.date: 05/18/2018
 ms.openlocfilehash: 64c461c5d3e1bb34f480e5173621f8753eadbbd8
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87318317"
 ---
-# <a name="guidance-for-personal-data-stored-in-log-analytics-and-application-insights"></a>Útmutató a Log Analytics és Application Insights tárolt személyes adatszolgáltatásokhoz
+# <a name="guidance-for-personal-data-stored-in-log-analytics-and-application-insights"></a>A Log Analyticsben és az Application Insightsban tárolt személyes adatokkal kapcsolatos útmutató
 
 Log Analytics egy adattár, ahol a személyes adattárolók valószínűleg megtalálhatók. A Application Insights Log Analytics partícióban tárolja az adattárolást. Ebből a cikkből megtudhatja, hogy a Log Analytics és Application Insights az ilyen jellegű adatmennyiségeket általában megtalálja, valamint az ilyen jellegű adatkezeléshez rendelkezésre álló képességeket.
 
@@ -78,7 +78,7 @@ Ahogy az a [személyes adatok kezelésére vonatkozó stratégia](#strategy-for-
 
 ### <a name="view-and-export"></a>Megtekintés és exportálás
 
-Az adatkérések megtekintésére és exportálására a [log Analytics lekérdezési API](https://dev.loganalytics.io/) -t vagy a [Application INSIGHTS lekérdezési API](https://dev.applicationinsights.io/quickstart) -t kell használni. Ahhoz, hogy a felhasználók számára elérhetővé lehessen tennie az adatalakot, a felhasználónak kell megvalósítania. A [Azure functions](https://azure.microsoft.com/services/functions/) nagyszerű helyet ad az ilyen logika üzemeltetéséhez.
+Az adatkérések megtekintésére és exportálására a [log Analytics lekérdezési API](https://dev.loganalytics.io/) -t vagy a  [Application INSIGHTS lekérdezési API](https://dev.applicationinsights.io/quickstart) -t kell használni. Ahhoz, hogy a felhasználók számára elérhetővé lehessen tennie az adatalakot, a felhasználónak kell megvalósítania. A [Azure functions](https://azure.microsoft.com/services/functions/) nagyszerű helyet ad az ilyen logika üzemeltetéséhez.
 
 > [!IMPORTANT]
 >  Habár a kitisztítási műveletek túlnyomó többsége sokkal gyorsabban teljesíthető, mint az SLA, **a kitisztítási műveletek befejezésére vonatkozó formális SLA-t 30 napon belül állítja be a rendszer** a felhasznált adatplatformra gyakorolt jelentős hatás miatt. Ez egy automatizált folyamat; nem kérhető le a művelet gyorsabb kezelése.

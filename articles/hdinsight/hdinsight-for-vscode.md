@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 04/07/2020
 ms.custom: devx-track-python
 ms.openlocfilehash: bb2fff699b31d8b3b311180c4b85e2bfd1da892c
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91530153"
 ---
 # <a name="use-spark--hive-tools-for-visual-studio-code"></a>A Spark &-struktúra eszközeinek használata a Visual Studio Code-hoz
@@ -331,7 +331,7 @@ A 2. módszer elküld egy fájlt, és megfigyelheti, hogy a `.vscode` rendszer a
 
     **/Batches közzététele** Kérelem törzse
 
-    | név | leírás | típus |
+    | name | leírás | típus |
     | --- | --- | --- |
     | file | A végrehajtandó alkalmazást tartalmazó fájl | Elérési út (kötelező) |
     | proxyUser | A felhasználó megszemélyesítése a feladatok futtatásakor | Sztring |
@@ -347,14 +347,14 @@ A 2. módszer elküld egy fájlt, és megfigyelheti, hogy a `.vscode` rendszer a
     | numExecutors | A munkamenet elindításához szükséges végrehajtók száma | Int |
     | Archívum | A munkamenetben használni kívánt archívumok | Karakterláncok listája |
     | üzenetsor | A beküldeni kívánt FONÁL-várólista neve| Sztring |
-    | név | A munkamenet neve | Sztring |
+    | name | A munkamenet neve | Sztring |
     | conf | Spark-konfiguráció tulajdonságai | Kulcs leképezése = val |
 
     Válasz törzse a létrehozott batch objektum.
 
-    | név | leírás | típus |
+    | name | leírás | típus |
     | --- | ---| --- |
-    | ID | Munkamenet-azonosító | Int |
+    | ID (Azonosító) | Munkamenet-azonosító | Int |
     | appId | A munkamenet alkalmazás-azonosítója | Sztring |
     | alkalmazásadatokat | Részletes alkalmazásadatok | Kulcs leképezése = val |
     | napló | Naplózási sorok | Karakterláncok listája |
@@ -473,6 +473,6 @@ A menüsávban válassza a parancs- **View**  >  **paletta**megtekintése elemet
 
 ![ismert problémák](./media/hdinsight-for-vscode/known-issue.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Spark & kaptár Visual Studio Code-hoz való használatát bemutató videó: [spark &-struktúra a Visual Studio Code](https://go.microsoft.com/fwlink/?linkid=858706)-hoz.

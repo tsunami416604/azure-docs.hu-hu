@@ -11,10 +11,10 @@ ms.author: tamram
 ms.subservice: blobs
 ms.custom: references_regions
 ms.openlocfilehash: 3c6aa408ab3e89c367fca0701773b35fb9b41bb8
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91460798"
 ---
 # <a name="soft-delete-for-containers-preview"></a>Tárolók törlése (előzetes verzió)
@@ -115,7 +115,7 @@ az feature show --namespace Microsoft.Storage --name ContainerSoftDelete
 
 A tárolók törlésének engedélyezése nem díjköteles. A helyreállított törölt tárolókban lévő adatforgalom az aktív adatforgalommal megegyező sebességgel történik.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Tároló helyreállítható törlésének konfigurálása](soft-delete-container-enable.md)
 - [Blobok helyreállítható törlése](soft-delete-blob-overview.md)

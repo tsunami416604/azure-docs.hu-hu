@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 06/26/2020
 ms.author: nicolela
 ms.openlocfilehash: 5511ad5a517bbd320ce3d66de90a8aec084c7e15
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87290735"
 ---
 # <a name="set-up-a-lab-for-engineering-classes-using-solidworks"></a>Tesztkörnyezet beállítása mérnöki osztályokhoz a SOLIDWORKS használatával
@@ -76,7 +76,7 @@ A jelen szakaszban ismertetett lépések bemutatják, hogyan állíthatja be a s
     > [!NOTE]
     > A **kiszolgáló hozzáadása** párbeszédpanelen a rendszer kérni fogja a licenckiszolgáló által használt **portszámot** , valamint a licenckiszolgáló nevét vagy IP-címét.
 
-## <a name="cost"></a>Költség
+## <a name="cost"></a>Költségek
 
 Az osztályra vonatkozó lehetséges költségbecslés. Ez a becslés nem tartalmazza a licenckiszolgáló futtatásának költségeit. 25 tanulós osztályt fogunk használni. 20 órányi ütemezett idő van. Emellett minden tanuló 10 órás kvótát kap a házi feladat vagy az ütemezett osztályon kívüli hozzárendelések számára. A kiválasztott virtuálisgép-méret kisméretű **GPU (vizualizáció)** volt, amely 160 Lab egység.
 

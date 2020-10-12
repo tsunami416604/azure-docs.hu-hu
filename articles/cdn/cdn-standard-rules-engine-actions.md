@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 08/04/2020
 ms.author: allensu
 ms.openlocfilehash: 051737a9f5e0d4092cda26a3f7ce3df1d7f535ef
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87760124"
 ---
 # <a name="actions-in-the-standard-rules-engine-for-azure-cdn"></a>Műveletek a standard szabályok motorban Azure CDN
@@ -48,7 +48,7 @@ Ezzel a művelettel módosíthatja a gyorsítótár-kulcsot a lekérdezési kara
 
 #### <a name="required-fields"></a>Kötelező mezők
 
-Viselkedés | Leírás
+Működés | Leírás
 ---------|------------
 Belefoglalás | Ha ez a beállítás be van jelölve, és a szabály egyezik, a paraméterekben megadott lekérdezési karakterláncok a gyorsítótár kulcsának létrehozásakor is szerepelni tudnak. 
 Minden egyedi URL gyorsítótárazása | Ha ez a beállítás be van jelölve, és a szabály megfelel, minden egyedi URL-cím saját gyorsítótár-kulccsal rendelkezik. 
@@ -89,7 +89,7 @@ Mező | Leírás
 ------|------------
 Típus | Válassza ki a kérelmezőnek visszatérni kívánt választ: talált (302), áthelyezett (301), ideiglenes átirányítás (307) és végleges átirányítás (308).
 Protokoll | Egyeztetési kérelem, HTTP, HTTPS.
-Gazdanév | Válassza ki annak az állomásnak a nevét, amelyre át szeretné irányítani a kérést. Hagyja üresen a bejövő gazdagép megőrzését.
+Hostname (Gazdanév) | Válassza ki annak az állomásnak a nevét, amelyre át szeretné irányítani a kérést. Hagyja üresen a bejövő gazdagép megőrzését.
 Elérési út | Adja meg az átirányításhoz használandó elérési utat. Hagyja üresen a bejövő elérési út megőrzését.  
 Lekérdezési sztring | Adja meg az átirányítás során használt lekérdezési karakterláncot. Hagyja üresen a bejövő lekérdezési karakterlánc megőrzését. 
 Töredék | Adja meg az átirányítás során használandó kódrészletet. Hagyja üresen a bejövő töredék megőrzése érdekében. 
@@ -108,7 +108,7 @@ Forrás mintája | Adja meg a forrás mintát a lecserélni kívánt URL-útvona
 Cél | Adja meg az újraíráshoz használandó célhely elérési útját. A cél elérési útja felülírja a forrás mintát.
 Páratlan elérési út megőrzése | Ha az **Igen**értékre van állítva, a rendszer a forrás minta után hátralévő elérési utat hozzáfűzi az új cél elérési úthoz. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Azure CDN áttekintése](cdn-overview.md)
 - [A Standard szabálymotor referenciája](cdn-standard-rules-engine-reference.md)

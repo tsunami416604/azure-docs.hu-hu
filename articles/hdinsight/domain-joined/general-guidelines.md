@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: conceptual
 ms.date: 02/13/2020
 ms.openlocfilehash: 8d97886232eecc369746e33df484cbfb9d40da72
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87530265"
 ---
 # <a name="enterprise-security-general-information-and-guidelines-in-azure-hdinsight"></a>A vállalati biztonsági általános információk és irányelvek az Azure HDInsight
@@ -95,7 +95,7 @@ Minden fürthöz használjon egy új erőforráscsoportot, hogy a fürt erőforr
 
 * A feltételes hozzáférési szabályzat letiltása az IP-cím alapú házirend használatával. Ehhez engedélyezni kell a szolgáltatási végpontokat azon a virtuális hálózatok, amelyen a fürtök telepítve vannak. Ha olyan külső szolgáltatást használ az MFA-hoz (amely nem HRE), az IP-cím alapú házirend nem fog működni.
 
-* `AllowCloudPasswordValidation`az összevont felhasználók házirendje szükséges. Mivel a HDInsight a felhasználónevet és a jelszót használja közvetlenül az Azure AD-ből származó jogkivonatok beszerzéséhez, ezt a házirendet minden összevont felhasználó számára engedélyezni kell.
+* `AllowCloudPasswordValidation` az összevont felhasználók házirendje szükséges. Mivel a HDInsight a felhasználónevet és a jelszót használja közvetlenül az Azure AD-ből származó jogkivonatok beszerzéséhez, ezt a házirendet minden összevont felhasználó számára engedélyezni kell.
 
 * Engedélyezze a szolgáltatás-végpontokat, ha a megbízható IP-címek használatával feltételes hozzáférést szeretne megkerülni.
 

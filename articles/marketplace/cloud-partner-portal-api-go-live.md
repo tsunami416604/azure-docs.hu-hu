@@ -8,10 +8,10 @@ author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
 ms.openlocfilehash: d612b796f85c9eaab1600c55cde7e79acb49f352
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87292943"
 ---
 # <a name="go-live"></a>Élő indítás
@@ -28,7 +28,7 @@ Ez az API elindítja az alkalmazás éles környezetben való továbbításának
 
 |  **Név**      |   **Leírás**                                                           | **Adattípus** |
 |  --------      |   ---------------                                                           | ------------- |
-| publisherId    | A lekérdezni kívánt ajánlat közzétevő-azonosítója, például:`contoso`       |  Sztring       |
+| publisherId    | A lekérdezni kívánt ajánlat közzétevő-azonosítója, például: `contoso`       |  Sztring       |
 | offerId        | A lekérdezni kívánt ajánlat azonosítója                                   |  Sztring       |
 | api-verzió    | Az API legújabb verziója                                                   |  Dátum         |
 |  |  |  |
@@ -65,7 +65,7 @@ Ez az API elindítja az alkalmazás éles környezetben való továbbításának
 
 | **Kód** |  **Leírás**                                                                        |
 | -------- |  ----------------                                                                        |
-|  202     | `Accepted`– A kérés elfogadása sikeresen megtörtént. A válasz a művelet állapotának nyomon követésére szolgáló helyet tartalmaz. |
-|  400     | `Bad/Malformed request`– További hibaüzenetek találhatók a válasz törzsében. |
-|  404     |  `Not found`– A megadott entitás nem létezik.                                       |
+|  202     | `Accepted` – A kérés elfogadása sikeresen megtörtént. A válasz a művelet állapotának nyomon követésére szolgáló helyet tartalmaz. |
+|  400     | `Bad/Malformed request` – További hibaüzenetek találhatók a válasz törzsében. |
+|  404     |  `Not found` – A megadott entitás nem létezik.                                       |
 |  |  |

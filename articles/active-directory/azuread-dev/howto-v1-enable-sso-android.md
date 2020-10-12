@@ -16,10 +16,10 @@ ms.reviewer: brandwe, jmprieur
 ms.custom: aaddev, devx-track-java
 ROBOTS: NOINDEX
 ms.openlocfilehash: 9d1faf7aed5cf4c4975925c7a56d169dc99a7bd5
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87313591"
 ---
 # <a name="how-to-enable-cross-app-sso-on-android-using-adal"></a>Útmutató: alkalmazások közötti egyszeri bejelentkezés engedélyezése Androidon a ADAL használatával
@@ -39,7 +39,7 @@ Ez az útmutató feltételezi, hogy tudja, hogyan:
 - Az alkalmazás üzembe helyezése az örökölt portálon Azure Active Directory (Azure AD) használatával. További információ: [alkalmazás regisztrálása](../develop/quickstart-register-app.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)
 - Az alkalmazás integrálása az [Azure ad Android SDK](https://github.com/AzureAD/azure-activedirectory-library-for-android)-val.
 
-## <a name="single-sign-on-concepts"></a>Egyszeri bejelentkezési fogalmak
+## <a name="single-sign-on-concepts"></a>Az egyszeri bejelentkezés alapelvei
 
 ### <a name="identity-brokers"></a>Identity Broker
 
@@ -142,6 +142,6 @@ MANAGE_ACCOUNTS
 
 Most az Identity SDK automatikusan megosztja a hitelesítő adatokat az alkalmazásokban, és meghívja a közvetítőt, ha az eszközön van.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Tudnivalók az [egyszeri bejelentkezéses SAML protokollról](../develop/single-sign-on-saml-protocol.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)

@@ -13,10 +13,10 @@ ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.openlocfilehash: f872159e538dc85121a7a6d4d6503fd18a263628
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87543044"
 ---
 # <a name="frequently-asked-questions"></a>Gyakori kérdések
@@ -222,7 +222,7 @@ A C# fordító legújabb verzióinak beszerzéséhez nyissa meg a [Microsoft.net
 
 A DevOps-elemzők létrehozási feladatának le kell kérdezni az MSBuild-napló Azure-beli az MSBuild-Build feladatból. Ha az analizátor feladat közvetlenül az MSBuild feladat után fut, a napló még nem lesz elérhető. Helyezzen el más feladatokat az MSBuild-feladat és a a a a a a a a a a a a a a ( További feladatok például a BinSkim és a kártevők elleni képolvasó.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha további segítségre van szüksége, a Microsoft biztonsági kód elemzésének támogatása hétfőtől péntekig 9:00-tól 5:00-ig, a csendes-óceáni téli időpontig érhető el.
 

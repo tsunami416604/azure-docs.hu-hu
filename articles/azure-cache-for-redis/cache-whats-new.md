@@ -7,10 +7,10 @@ ms.topic: reference
 ms.date: 09/28/2020
 ms.author: yegu
 ms.openlocfilehash: b30e83b89b25e6400b8c7e0419406631fa1edcd0
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91492450"
 ---
 # <a name="whats-new-in-azure-cache-for-redis"></a>Az Azure cache Redis újdonságai
@@ -30,7 +30,7 @@ Várható, hogy a változás nem érinti a legtöbb Azure cache-t a Redis-ügyfe
 
 Az alábbi táblázat a behengerelt tanúsítványokról tartalmaz információkat. Az alkalmazás által használt tanúsítványtól függően előfordulhat, hogy frissítenie kell a Redis-példányhoz tartozó Azure cache-hez való kapcsolódás elvesztésének megakadályozásához.
 
-| HITELESÍTÉSSZOLGÁLTATÓ típusa | Aktuális | Küldés utáni (12. október 2020) | Műveletek |
+| HITELESÍTÉSSZOLGÁLTATÓ típusa | Aktuális | Küldés utáni (12. október 2020) | Művelet |
 | ----- | ----- | ----- | ----- |
 | Gyökér | Ujjlenyomat: d4de20d05e66fc53fe1a50882c78db2852cae474<br><br> Lejárat: hétfő, május 12., 2025, 4:59:00 PM<br><br> Tulajdonos neve:<br> CN = Baltimore CyberTrust gyökér<br> OU = CyberTrust<br> O = Baltimore<br> C = IE | Nem változik | Nincsenek |
 | Intermedierek | Ujjlenyomatai megfelelnek<br> CN = Microsoft IT TLS CA 1<br> Ujjlenyomat: 417e225037fbfaa4f95761d5ae729e1aea7e3a42<br><br> CN = Microsoft IT TLS CA 2<br> Ujjlenyomat: 54d9d20239080c32316ed9ff980a48988f4adf2d<br><br> CN = Microsoft IT TLS CA 4<br> Ujjlenyomat: 8a38755d0996823fe8fa3116a277ce446eac4e99<br><br> CN = Microsoft IT TLS CA 5<br> Ujjlenyomat: Ad898ac73df333eb60ac1f5fc6c4b2219ddb79b7<br><br> Lejárat: péntek, május 20., 2024 5:52:38<br><br> Tulajdonos neve:<br> OU = Microsoft IT<br> O = Microsoft Corporation<br> L = Redmond<br> S = Washington<br> C = USA<br> | Ujjlenyomatai megfelelnek<br> CN = Microsoft RSA TLS CA 01<br> Ujjlenyomat: 703d7a8f0ebf55aaa59f98eaf4a206004eb2516a<br><br> CN = Microsoft RSA TLS CA 02<br> Ujjlenyomat: b0c2d2d13cdd56cdaa6ab6e2c04440be4a429c75<br><br> Lejárat: kedd, október 8, 2024 12:00:00 AM;<br><br> Tulajdonos neve:<br> O = Microsoft Corporation<br> C = USA<br> | Kötelező |
@@ -63,6 +63,6 @@ A köztes tanúsítványok rögzítésének folytatásához adja hozzá a követ
 
 Ha az alkalmazás egy kódban érvényesíti a tanúsítványt, módosítania kell azt az újonnan rögzített tanúsítványok tulajdonságainak (például kiállítóinak, ujjlenyomatának) felismeréséhez. Ennek a további ellenőrzésnek az összes rögzített tanúsítványra ki kell terjednie, hogy a jövőben még nagyobb legyen.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha további kérdése van, vegye fel velünk a kapcsolatot a [támogatási szolgálattal](https://azure.microsoft.com/support/options/).  

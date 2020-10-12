@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 08/09/2019
 ms.author: rohink
 ms.openlocfilehash: 3378036c4800b274d879743abf937c7860e63ded
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82926231"
 ---
 # <a name="azure-dns-alias-records-overview"></a>Az Azure DNS-aliasrekordok áttekintése
@@ -27,7 +27,7 @@ Egy Azure DNS zónában a következő bejegyzéstípusok esetében támogatott a
 > [!NOTE]
 > Ha egy [Azure Traffic Manager-profilra](../traffic-manager/quickstart-create-traffic-manager-profile.md) mutató alias-rekordot szeretne használni az a vagy AAAA bejegyzéstípushoz, meg kell győződnie arról, hogy a Traffic Manager-profil csak [külső végpontokkal](../traffic-manager/traffic-manager-endpoint-types.md#external-endpoints)rendelkezik. Meg kell adnia az IPv4-vagy IPv6-címeket a Traffic Manager külső végpontjai számára. A végpontokban nem használhatók teljes tartománynevek (FQDN-EK). Ideális esetben statikus IP-címeket használjon.
 
-## <a name="capabilities"></a>Képességek
+## <a name="capabilities"></a>Funkciók
 
 - **Mutasson egy nyilvános IP-erőforrásra egy DNS-A/AAAA-rekorddal.** Létrehozhat egy/AAAA-rekordot, és egy alias-rekordot állíthat be úgy, hogy egy nyilvános IP-erőforrásra mutasson (standard vagy alapszintű). A DNS-rekordtípus automatikusan megváltozik, ha a nyilvános IP-cím megváltozik vagy törölve lett. A helytelen IP-címekre mutató DNS-rekordokat nem lehet elkerülni.
 

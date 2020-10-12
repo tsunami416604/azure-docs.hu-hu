@@ -4,10 +4,10 @@ description: Application Insights-SQL-adatbázis folyamatos exportálása a Stre
 ms.topic: conceptual
 ms.date: 09/11/2017
 ms.openlocfilehash: 90aab1794a9b412de2498edcc4d221f4bcc86968
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90979457"
 ---
 # <a name="walkthrough-export-to-sql-from-application-insights-using-stream-analytics"></a>Útmutató: exportálás az SQL rendszerbe Application Insights használatával Stream Analytics
@@ -84,7 +84,7 @@ Győződjön meg arról, hogy a kiszolgáló engedélyezi az Azure-szolgáltatá
 ## <a name="create-a-table-in-azure-sql-database"></a>Tábla létrehozása Azure SQL Databaseban
 Kapcsolódjon az előző szakaszban létrehozott adatbázishoz az előnyben részesített felügyeleti eszközzel. Ebben az útmutatóban a [SQL Server felügyeleti eszközei](/sql/ssms/sql-server-management-studio-ssms?view=sql-server-ver15) (SSMS) használatát fogjuk használni.
 
-![Kapcsolódás az Azure SQL Database-hez](./media/code-sample-export-sql-stream-analytics/31-sql-table.png)
+![Csatlakozás az Azure SQL Database-hez](./media/code-sample-export-sql-stream-analytics/31-sql-table.png)
 
 Hozzon létre egy új lekérdezést, és hajtsa végre a következő T-SQL-T:
 

@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 02/24/2017
 ms.author: cshoe
 ms.openlocfilehash: 2c6efd14bd974de1b01b1725b9810f153df74bf8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85482173"
 ---
 # <a name="azure-cosmos-db-trigger-and-bindings-for-azure-functions-2x-and-higher-overview"></a>Azure Cosmos DB trigger és kötések Azure Functions 2. x és újabb verziókhoz – áttekintés
@@ -20,7 +20,7 @@ ms.locfileid: "85482173"
 
 Ez a cikk azt ismerteti, hogyan használhatók [Azure Cosmos db](../cosmos-db/serverless-computing-database.md) kötések Azure functions 2. x vagy újabb verziókban. Azure Functions támogatja a Azure Cosmos DB trigger-, bemeneti és kimeneti kötéseit.
 
-| Műveletek | Típus |
+| Művelet | Típus |
 |---------|---------|
 | Függvény futtatása Azure Cosmos DB dokumentum létrehozásakor vagy módosításakor | [Eseményindító](./functions-bindings-cosmosdb-v2-trigger.md) |
 | Azure Cosmos DB dokumentum beolvasása | [Bemeneti kötés](./functions-bindings-cosmosdb-v2-input.md) |

@@ -13,10 +13,10 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6dba592417ca07d1858a7942b162b4dfa6a85680
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91273993"
 ---
 # <a name="add-google-as-an-identity-provider-for-b2b-guest-users"></a>Google hozzáadása identitás-szolgáltatóként a B2B vendég felhasználói számára
@@ -126,7 +126,7 @@ A Google összevonási telepítőt törölheti. Ha így tesz, a Google vendég f
 
 ### <a name="to-delete-google-federation-by-using-powershell"></a>Google-összevonás törlése a PowerShell használatával: 
 1. Telepítse az Azure AD PowerShell for Graph modul ([AzureADPreview](https://www.powershellgallery.com/packages/AzureADPreview)) legújabb verzióját.
-2. Futtassa az `Connect-AzureAD` parancsot.  
+2. A `Connect-AzureAD` parancs futtatása.  
 4. A bejelentkezési üzenetben jelentkezzen be a felügyelt globális rendszergazdai fiókkal.  
 5. Írja be a következő parancsot:
 

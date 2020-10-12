@@ -8,10 +8,10 @@ ms.date: 09/09/2019
 ms.author: ancav
 ms.subservice: metrics
 ms.openlocfilehash: 76f73df01b34cb20be48aefa3b5b3a6392a35b8b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87045199"
 ---
 # <a name="send-guest-os-metrics-to-the-azure-monitor-metric-store-by-using-an-azure-resource-manager-template-for-a-windows-virtual-machine-scale-set"></a>Vendég operációs rendszer metrikáinak küldése a Azure Monitor metrika-tárolóba egy Windowsos virtuálisgép-méretezési csoport Azure Resource Manager-sablonjának használatával
@@ -38,9 +38,9 @@ A Azure Diagnostics bővítmény egy **adattároló** nevű funkciót használ a
 ## <a name="author-a-resource-manager-template"></a>Resource Manager-sablon készítése 
 Ebben a példában egy nyilvánosan elérhető [minta sablont](https://github.com/Azure/azure-quickstart-templates/tree/master/201-vmss-windows-autoscale)használhat:  
 
-- **AAzuredeploy.json** egy virtuálisgép-méretezési csoport üzembe helyezéséhez előre konfigurált Resource Manager-sablon.
+- ** AAzuredeploy.json** egy virtuálisgép-méretezési csoport üzembe helyezéséhez előre konfigurált Resource Manager-sablon.
 
-- **AAzuredeploy.parameters.json** paraméter olyan fájl, amely a virtuális géphez beállítani kívánt felhasználónevet és jelszót tárolja. Az üzembe helyezés során a Resource Manager-sablon a fájlban megadott paramétereket használja. 
+- ** AAzuredeploy.parameters.json** paraméter olyan fájl, amely a virtuális géphez beállítani kívánt felhasználónevet és jelszót tárolja. Az üzembe helyezés során a Resource Manager-sablon a fájlban megadott paramétereket használja. 
 
 Töltse le és mentse a fájlokat helyileg. 
 
@@ -271,7 +271,7 @@ A Resource Manager-sablon üzembe helyezéséhez használja a Azure PowerShell:
 
 ## <a name="chart-your-metrics"></a>A metrikák diagramja 
 
-1. Jelentkezzen be az Azure Portalra. 
+1. Jelentkezzen be az Azure portálra. 
 
 1. A bal oldali menüben válassza a **figyelő**elemet. 
 

@@ -14,10 +14,10 @@ ms.date: 11/25/2014
 ms.author: gwallace
 ms.custom: devx-track-java
 ms.openlocfilehash: 9a28677063c6f6dd7bb7bcf6746dbc541308891f
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87305907"
 ---
 # <a name="how-to-make-a-phone-call-using-twilio-in-a-java-application-on-azure"></a>Telefonhívás kezdeményezése a Twilio használatával az Azure-beli Java-alkalmazásokban
@@ -34,7 +34,7 @@ A jelen témakörben található kód használatához a következőket kell tenn
 4. Ha az Eclipse-t használja a Java-alkalmazás létrehozásához, a Twilio JAR-t az alkalmazás telepítési fájljában (WAR) is használja az Eclipse üzembe helyezési szolgáltatásával. Ha nem használja az Eclipse-et a Java-alkalmazás létrehozásához, győződjön meg arról, hogy a Twilio JAR a Java-alkalmazással megegyező Azure-szerepkörbe tartozik, és az alkalmazás osztályának elérési útjába kerül.
 5. Győződjön meg arról, hogy a hitesítésszolgáltatói-tároló tartalmazza a Equifax biztonságos hitelesítésszolgáltató tanúsítványát MD5 ujjlenyomattal 67: CB: 9D: C0:13:24:8A: 82:9B: B2:17:1E: D1:1B: EC: D4 (a sorozatszám 35: DE: F4: CF és az SHA1 ujjlenyomata D2:32:09: AD: 23: d3:14:23:21:74: E4:0D: 7F: 9D: 62:13:97:86:63:3A). Ez a hitelesítésszolgáltató (CA) tanúsítványa a [https://api.twilio.com][twilio_api_service] szolgáltatáshoz, amelyet a rendszer Twilio API-k használatakor hív meg. További információ a HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány JDK CAcert-tárolójához való hozzáadásáról: [tanúsítvány hozzáadása a Java hitelesítésszolgáltatói tanúsítványtárolóhoz][add_ca_cert].
 
-Emellett a ["Helló világ!" alkalmazás alkalmazásnak a Azure Toolkit for Eclipse használatával történő létrehozásával][azure_java_eclipse_hello_world], illetve a Java-alkalmazások Azure-ban való üzemeltetésével kapcsolatos egyéb módszerekkel való ismerete kifejezetten ajánlott.
+Emellett a [„Helló világ!” alkalmazás alkalmazásnak a Azure Toolkit for Eclipse használatával történő létrehozásával][azure_java_eclipse_hello_world], illetve a Java-alkalmazások Azure-ban való üzemeltetésével kapcsolatos egyéb módszerekkel való ismerete kifejezetten ajánlott.
 
 ## <a name="create-a-web-form-for-making-a-call"></a>Webes űrlap létrehozása hívás kezdeményezéséhez
 A következő kód bemutatja, hogyan hozhat létre webes űrlapot a felhasználói adathívások lekéréséhez. Ebben a példában egy új, **TwilioCloud**nevű dinamikus webes projekt lett létrehozva, és **callform.jsa p** JSP-fájlként lett hozzáadva.
@@ -170,7 +170,7 @@ A hívás elvégzése mellett makecall.jsp a Twilio-végpontot, az API-verziót 
 ![Azure-hívási válasz a Twilio és a Java használatával][twilio_java_response]
 
 ## <a name="run-the-application"></a>Az alkalmazás futtatása
-Az alkalmazás futtatásának magas szintű lépései a következők: ezeknek a lépéseknek [a részletei a Azure Toolkit for Eclipse használatával "Helló világ!" alkalmazás alkalmazás létrehozása][azure_java_eclipse_hello_world]című témakörben találhatók.
+Az alkalmazás futtatásának magas szintű lépései a következők: ezeknek a lépéseknek [a részletei a Azure Toolkit for Eclipse használatával „Helló világ!” alkalmazás alkalmazás létrehozása][azure_java_eclipse_hello_world]című témakörben találhatók.
 
 1. Exportálja a TwilioCloud-HÁBORÚt az Azure **AppRoot** mappába. 
 2. Módosítsa a **Startup. cmd** fájlt a TWILIOCLOUD-háború kicsomagolásához.

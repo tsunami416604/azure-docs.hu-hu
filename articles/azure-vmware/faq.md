@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: dikamath
 ms.openlocfilehash: fd0c0158106a24ba12fec42e41df69f246e7f3f5
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91530476"
 ---
 # <a name="frequently-asked-questions-about-azure-vmware-solution"></a>Gyakran ismételt kérdések az Azure VMware-megoldásról
@@ -149,7 +149,7 @@ A Private Cloud szoftvercsomag frissítései a szoftvernek a VMware szoftverből
 
 A privát felhőalapú szoftverek olyan ütemterv szerint frissülnek, amely nyomon követi a VMware-től származó szoftveres csomag kiadását. A saját felhő nem igényel állásidőt a frissítésekhez.
 
-## <a name="connectivity"></a>Kapcsolatok
+## <a name="connectivity"></a>Kapcsolat
 
 #### <a name="what-network-ip-address-planning-is-required-to-incorporate-private-clouds-with-on-premises-environments"></a>Milyen hálózati IP-cím megtervezésére van szükség a privát felhők helyszíni környezetekben való beépítéséhez?
 

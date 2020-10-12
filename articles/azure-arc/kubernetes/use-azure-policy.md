@@ -9,17 +9,17 @@ ms.author: mlearned
 description: A Azure Policy használata a fürt konfigurációjának méretekben történő alkalmazásához
 keywords: Kubernetes, arc, Azure, K8s, tárolók
 ms.openlocfilehash: e4279f3d89376320116067bf191e3196271918ce
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87050046"
 ---
 # <a name="use-azure-policy-to-apply-cluster-configurations-at-scale-preview"></a>A Azure Policy használata a fürtök konfigurációjának alkalmazásához (előzetes verzió)
 
 ## <a name="overview"></a>Áttekintés
 
-A Azure Policy használatával kényszerítheti ki, hogy minden `Microsoft.Kubernetes/connectedclusters` erőforrás vagy git-Ops által engedélyezett `Microsoft.ContainerService/managedClusters` erőforrás külön `Microsoft.KubernetesConfiguration/sourceControlConfigurations` legyen alkalmazva. A Azure Policy használatához válasszon ki egy meglévő szabályzat-definíciót, és hozzon létre egy szabályzat-hozzárendelést. A szabályzat-hozzárendelés létrehozásakor meg kell adni a hozzárendelés hatókörét: ez egy Azure-erőforráscsoport vagy-előfizetés lesz. A létrehozandó paramétereket is megadja `sourceControlConfiguration` . A hozzárendelés létrehozása után a házirend-kezelő a `connectedCluster` `managedCluster` hatókörön belül található összes vagy erőforrást azonosítja, és alkalmazza a `sourceControlConfiguration` -t mindegyikre.
+A Azure Policy használatával kényszerítheti ki, hogy minden `Microsoft.Kubernetes/connectedclusters` erőforrás vagy Git-Ops engedélyezett `Microsoft.ContainerService/managedClusters` erőforrás külön `Microsoft.KubernetesConfiguration/sourceControlConfigurations` legyen alkalmazva. A Azure Policy használatához válasszon ki egy meglévő szabályzat-definíciót, és hozzon létre egy szabályzat-hozzárendelést. A szabályzat-hozzárendelés létrehozásakor meg kell adni a hozzárendelés hatókörét: ez egy Azure-erőforráscsoport vagy-előfizetés lesz. A létrehozandó paramétereket is megadja `sourceControlConfiguration` . A hozzárendelés létrehozása után a házirend-kezelő a `connectedCluster` `managedCluster` hatókörön belül található összes vagy erőforrást azonosítja, és alkalmazza a `sourceControlConfiguration` -t mindegyikre.
 
 Ha több git-adattárakat használ az igazság forrásaként az egyes fürtökhöz (például egy központi IT-/fürt-kezelő és az alkalmazás-munkacsoportokhoz tartozó más adattárakhoz), akkor ezt több házirend-hozzárendelés használatával is engedélyezheti, és minden egyes házirend-hozzárendelés más git-tárház használatára van konfigurálva.
 
@@ -35,12 +35,12 @@ Győződjön meg arról, hogy rendelkezik `Microsoft.Authorization/policyAssignm
 4. Ha ki szeretne zárni minden erőforrást a szabályzat hatóköréről, állítsa be a **kizárásokat**.
 5. Adja meg a szabályzat hozzárendelésének **nevét** és **leírását** , hogy könnyen azonosítható legyen.
 6. Győződjön meg arról, hogy a **házirend-kényszerítés** *engedélyezve*értékre van állítva.
-7. Válassza a **Tovább** lehetőséget.
+7. Kattintson a **Tovább** gombra.
 8. Állítsa be a paraméter értékét, amelyet a rendszer a létrehozásakor használni fog `sourceControlConfiguration` .
-9. Válassza a **Tovább** lehetőséget.
+9. Kattintson a **Tovább** gombra.
 10. **Szervizelési feladat létrehozásának**engedélyezése.
 11. Gondoskodjon róla, hogy a **felügyelt identitás létrehozása jelölőnégyzet be** legyen jelölve, és hogy az identitás **közreműködői** engedélyekkel rendelkezzen. A szükséges engedélyekkel kapcsolatos további információkért tekintse meg [ezt](../../governance/policy/assign-policy-portal.md) a dokumentumot és [a jelen dokumentum megjegyzését](../../governance/policy/how-to/remediate-resources.md) .
-12. Válassza az **Áttekintés + létrehozás** lehetőséget.
+12. Válassza a **Felülvizsgálat + létrehozás** lehetőséget.
 
 A szabályzat-hozzárendelés létrehozása után minden olyan új `connectedCluster` erőforráshoz (vagy `managedCluster` a telepített GitOps-ügynökkel rendelkező erőforráshoz), amely a hozzárendelés hatókörén belül található, a `sourceControlConfiguration` rendszer alkalmazza. Meglévő fürtök esetében manuálisan kell futtatnia egy szervizelési feladatot. A házirend-hozzárendelés érvénybe léptetése általában 10-20 percet vesz igénybe.
 

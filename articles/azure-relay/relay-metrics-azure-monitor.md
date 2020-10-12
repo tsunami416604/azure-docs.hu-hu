@@ -5,10 +5,10 @@ services: service-bus-relay
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 5fcc0f820983da388d808cadf8ce64a555e8ef0a
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87532883"
 ---
 # <a name="azure-relay-metrics-in-azure-monitor"></a>Azure Monitor Azure Relay metrikák 
@@ -50,14 +50,14 @@ Minden metrikai érték Azure Monitor percenként lesz elküldve. Az idő részl
 
 | Metrika neve | Leírás |
 | ------------------- | ----------------- |
-| Figyelőkapcsolatokra – sikeres  | Egy adott időszakban Azure Relay sikeres figyelő-kapcsolatok száma. <br/><br/> Egység: darabszám <br/> Összesítés típusa: összesen <br/> Dimenzió: EntityName|
-|Figyelőkapcsolatokra – vonatkozó ügyfélhibái |A figyelő kapcsolatainak száma a megadott időszakban.<br/><br/> Egység: darabszám <br/> Összesítés típusa: összesen <br/> Dimenzió: EntityName|
-|Figyelőkapcsolatokra – ServerError |A figyelő kapcsolatainak száma a megadott időszakban.<br/><br/> Egység: darabszám <br/> Összesítés típusa: összesen <br/> Dimenzió: EntityName|
-|Feladói kapcsolatokra – sikeres |A megadott időszakban sikeres küldő kapcsolatok száma.<br/><br/> Egység: darabszám <br/> Összesítés típusa: összesen <br/> Dimenzió: EntityName|
-|Feladói kapcsolatokra – vonatkozó ügyfélhibái |Az ügyfél hibáinak száma a küldő kapcsolatain a megadott időszakban.<br/><br/> Egység: darabszám <br/> Összesítés típusa: összesen <br/> Dimenzió: EntityName|
-|Feladói kapcsolatokra – ServerError |A megadott időszakon belül a küldő kapcsolaton futó kiszolgálói hibák száma.<br/><br/> Egység: darabszám <br/> Összesítés típusa: összesen <br/> Dimenzió: EntityName|
-|Figyelőkapcsolatokra – TotalRequests |A figyelő kapcsolatainak teljes száma egy adott időszakban.<br/><br/> Egység: darabszám <br/> Összesítés típusa: összesen <br/> Dimenzió: EntityName|
-|Feladói kapcsolatokra – TotalRequests |A küldők által megadott időszakon keresztül kezdeményezett kapcsolati kérelmek.<br/><br/> Egység: darabszám <br/> Összesítés típusa: összesen <br/> Dimenzió: EntityName|
+| ListenerConnections-Success  | Egy adott időszakban Azure Relay sikeres figyelő-kapcsolatok száma. <br/><br/> Egység: darabszám <br/> Összesítés típusa: összesen <br/> Dimenzió: EntityName|
+|ListenerConnections-ClientError |A figyelő kapcsolatainak száma a megadott időszakban.<br/><br/> Egység: darabszám <br/> Összesítés típusa: összesen <br/> Dimenzió: EntityName|
+|ListenerConnections-ServerError |A figyelő kapcsolatainak száma a megadott időszakban.<br/><br/> Egység: darabszám <br/> Összesítés típusa: összesen <br/> Dimenzió: EntityName|
+|SenderConnections-Success |A megadott időszakban sikeres küldő kapcsolatok száma.<br/><br/> Egység: darabszám <br/> Összesítés típusa: összesen <br/> Dimenzió: EntityName|
+|SenderConnections-ClientError |Az ügyfél hibáinak száma a küldő kapcsolatain a megadott időszakban.<br/><br/> Egység: darabszám <br/> Összesítés típusa: összesen <br/> Dimenzió: EntityName|
+|SenderConnections-ServerError |A megadott időszakon belül a küldő kapcsolaton futó kiszolgálói hibák száma.<br/><br/> Egység: darabszám <br/> Összesítés típusa: összesen <br/> Dimenzió: EntityName|
+|ListenerConnections-TotalRequests |A figyelő kapcsolatainak teljes száma egy adott időszakban.<br/><br/> Egység: darabszám <br/> Összesítés típusa: összesen <br/> Dimenzió: EntityName|
+|SenderConnections-TotalRequests |A küldők által megadott időszakon keresztül kezdeményezett kapcsolati kérelmek.<br/><br/> Egység: darabszám <br/> Összesítés típusa: összesen <br/> Dimenzió: EntityName|
 |Aktív kapcsolatok |Az aktív kapcsolatok száma. Ez az érték egy időponthoz tartozó érték.<br/><br/> Egység: darabszám <br/> Összesítés típusa: összesen <br/> Dimenzió: EntityName|
 |ActiveListeners |Az aktív figyelők száma. Ez az érték egy időponthoz tartozó érték.<br/><br/> Egység: darabszám <br/> Összesítés típusa: összesen <br/> Dimenzió: EntityName|
 |Bontásai |A leválasztott figyelők száma egy adott időszakban.<br/><br/> Egység: bájtok <br/> Összesítés típusa: összesen <br/> Dimenzió: EntityName|

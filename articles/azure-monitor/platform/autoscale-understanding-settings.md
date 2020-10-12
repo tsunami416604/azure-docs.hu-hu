@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 12/18/2017
 ms.subservice: autoscale
 ms.openlocfilehash: 6d6b868f745803263339e6b27e2610aaca8f63fb
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87317467"
 ---
 # <a name="understand-autoscale-settings"></a>Ismerkedés az automatikus méretezési beállításokkal
@@ -87,7 +87,7 @@ Az autoskálázási beállítás sémájának szemléltetéséhez a következő 
 
 | Section | Elem neve | Leírás |
 | --- | --- | --- |
-| Beállítás | ID | Az autoskálázási beállítás erőforrás-azonosítója. Az autoskálázási beállítások egy Azure Resource Manager erőforrás. |
+| Beállítás | ID (Azonosító) | Az autoskálázási beállítás erőforrás-azonosítója. Az autoskálázási beállítások egy Azure Resource Manager erőforrás. |
 | Beállítás | name | Az autoskálázási beállítás neve. |
 | Beállítás | location | Az autoskálázási beállítás helye Ez a hely nem lehet azonos a méretezni kívánt erőforrás helyétől. |
 | properties | targetResourceUri | A méretezni kívánt erőforrás erőforrás-azonosítója. Erőforráshoz csak egy méretezési beállítás adható meg. |
@@ -103,10 +103,10 @@ Az autoskálázási beállítás sémájának szemléltetéséhez a következő 
 | metricTrigger | timeGrain | A metrika mintavételezésének időtartama. Például a **TimeGrain = "PT1M"** érték azt jelenti, hogy a metrikákat 1 percenként kell összesíteni a statisztikai elemben megadott összesítési módszer használatával. |
 | metricTrigger | statisztika | Az összesítési metódus a timeGrain időszakon belül. Például a **statisztika = "Average"** és a **TIMEGRAIN = "PT1M"** érték azt jelenti, hogy a metrikákat 1 percenként kell összesíteni, az átlag kiszámításával. Ez a tulajdonság határozza meg a metrika mintavételezésének módját. |
 | metricTrigger | timeWindow | A metrikák visszakeresésének időtartamát. Például a **timeWindow = "PT10M"** érték azt jelenti, hogy minden alkalommal, amikor az autoscale fut, lekérdezi a metrikákat az elmúlt 10 percben. Az időablak lehetővé teszi, hogy a metrikák normalizálva legyenek, és elkerülhető legyen az átmeneti tüskékre való reagálás. |
-| metricTrigger | timeAggregation | A mintául szolgáló mérőszámok összesítéséhez használt összesítési módszer. Például a **TimeAggregation = "Average"** értéknek összesíteni kell a mintavételezési metrikákat az átlag kiszámításával. Az előző esetben végezze el a TEN 1 perces mintákat, és az átlagot. |
+| metricTrigger | timeAggregation | A mintául szolgáló mérőszámok összesítéséhez használt összesítési módszer. Például a **TimeAggregation = "Average"** értéknek összesíteni kell a mintavételezési metrikákat az átlag kiszámításával. Az előző esetben végezze el az 10 1 perces mintákat, és az átlagot. |
 | szabály | scaleAction | A szabály metricTrigger elindításához végrehajtandó művelet. |
 | scaleAction | irány | "Növelje" a méretezéshez, vagy "csökkentse" a méretezést a alkalmazásban.|
-| scaleAction | value | Mennyit növelheti vagy csökkentheti az erőforrás kapacitását. |
+| scaleAction | érték | Mennyit növelheti vagy csökkentheti az erőforrás kapacitását. |
 | scaleAction | cooldown | Az a várakozási idő, ameddig a méretezési művelet a méretezés előtt újra meg nem telik. Ha például a **cooldown = "PT10M"**, az autoskálázás nem próbálkozik újra a méretezéssel újabb 10 percre. A cooldown a példányok hozzáadását vagy eltávolítását követően a mérőszámok stabilizálását teszi lehetővé. |
 
 ## <a name="autoscale-profiles"></a>Autoskálázási profilok

@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 01/03/2020
 ms.author: jeedes
 ms.openlocfilehash: c8978504244fbf68875ca8cff7a92f042e8e988b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91329516"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-akamai"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a Akamai
@@ -45,7 +45,7 @@ A modern hitelesítési protokollok (például az Open ID csatlakozás, az SAML 
 * VNC (Virtual Network számítástechnika)
 * Névtelen hitelesítés vagy nem beépített hitelesítési alkalmazások
 * NTLM hitelesítési alkalmazások (védelem kettős kéréssel a felhasználó számára)
-* Űrlapalapú alkalmazás (védelem kettős rákérdezéssel a felhasználó számára)
+* Forms-Based alkalmazás (védelem kettős rákérdezéssel a felhasználó számára)
 
 ### <a name="integration-scenarios"></a>Integrációs forgatókönyvek
 
@@ -169,7 +169,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás** lehetőségre.
+   1. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -313,7 +313,7 @@ Kattintson a Mentés gombra, és válassza a hitelesítés lehetőséget.
 
     ![Képernyőkép a Akamai EAA konzol üzembe helyezés lapján az alkalmazás állapota üzenet: "alkalmazás sikeresen telepítve".](./media/header-akamai-tutorial/configure15.png)
 
-1. Végfelhasználói élmény.
+1. End-User felhasználói élmény.
 
     ![Képernyőkép a myapps.microsoft.com megnyitási képernyőjéről, háttérbeli képpel és bejelentkezési párbeszédpanellel.](./media/header-akamai-tutorial/enduser01.png)
 
@@ -363,7 +363,7 @@ Kattintson **a Save (Mentés) gombra, és válassza a speciális beállítások 
 
     ![Képernyőkép a Akamai EAA konzol egyéni HTTP-fejlécek beállításairól a SECRETRDPAPP és a jobb alsó sarokban található mentés és ugrás a telepítéshez gombra kattintva.](./media/header-akamai-tutorial/configure24.png)
 
-1. Végfelhasználói élmény
+1. End-Useri élmény
 
     ![Képernyőkép egy myapps.microsoft.com ablakról, háttérbeli képpel és bejelentkezési párbeszédpanellel.](./media/header-akamai-tutorial/enduser03.png)
 
@@ -429,7 +429,7 @@ Kattintson a Mentés gombra, és lépjen a központi telepítésre
 
     ![Képernyőkép a Akamai EAA konzol üzembe helyezési lapjáról az SSH-SECURE szolgáltatáshoz, amely az alkalmazás központi telepítése gombra mutat.](./media/header-akamai-tutorial/configure32.png)
 
-1. Végfelhasználói élmény
+1. End-Useri élmény
 
     ![Képernyőkép a myapps.microsoft.com ablakos bejelentkezési párbeszédpanelről.](./media/header-akamai-tutorial/enduser03.png)
 

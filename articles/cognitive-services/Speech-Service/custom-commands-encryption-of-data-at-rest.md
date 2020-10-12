@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 07/05/2020
 ms.author: sausin
 ms.openlocfilehash: 83b6e6be8764a86c41bd9156cc96f8a594dbe1e9
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87294307"
 ---
 # <a name="custom-commands-encryption-of-data-at-rest"></a>Custom Commands – Inaktív adatok titkosítása
@@ -25,7 +25,7 @@ Az egyéni parancsok automatikusan titkosítják az adataikat, amikor azok a fel
 > Az egyéni parancsok szolgáltatás nem engedélyezi automatikusan a titkosítást az alkalmazáshoz társított LUIS-erőforrásokhoz. Ha szükséges, engedélyeznie kell a [Luis-erőforrás titkosítását innen.](./../LUIS/luis-encryption-of-data-at-rest.md)
 
 ## <a name="about-cognitive-services-encryption"></a>Tudnivalók a Cognitive Services titkosításról
-Az adattitkosítás és visszafejtés az [FIPS 140-2](https://en.wikipedia.org/wiki/FIPS_140-2) -kompatibilis [256 bites AES-](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) titkosítás használatával történik. A titkosítás és a visszafejtés átlátható, ami azt jelenti, hogy a titkosítás és a hozzáférés felügyelve van. Alapértelmezés szerint az adatai biztonságban vannak, és nem kell módosítania a kódot vagy az alkalmazásokat a titkosítás kihasználása érdekében.
+Az adattitkosítás és visszafejtés az [FIPS 140-2](https://en.wikipedia.org/wiki/FIPS_140-2) -kompatibilis [256 bites AES-](https://en.wikipedia.org/wiki/Advanced_Encryption_Standard) titkosítás használatával történik. A titkosítás és a visszafejtés átlátható, ami azt jelenti, hogy a titkosítás és a hozzáférés felügyelve van. Az adatok alapértelmezés szerint védettek, a titkosítás használatához pedig sem a kódot, sem az alkalmazást nem kell módosítania.
 
 ## <a name="about-encryption-key-management"></a>A titkosítási kulcsok kezelése
 
@@ -33,13 +33,13 @@ Egyéni parancsok használatakor a beszédfelismerési szolgáltatás a követke
 * Konfigurációs JSON az egyéni parancsok alkalmazás mögött
 * LUIS authoring és előrejelzési kulcs
 
-Alapértelmezés szerint az előfizetés a Microsoft által felügyelt titkosítási kulcsokat használja. Az előfizetését azonban a saját titkosítási kulcsaival is kezelheti. Az ügyfél által felügyelt kulcsok (CMK) – más néven saját kulcs használata (BYOK) – nagyobb rugalmasságot biztosítanak a hozzáférés-vezérlések létrehozásához, forgatásához, letiltásához és visszavonásához. Az adatai védelme érdekében használt titkosítási kulcsokat is naplózhatja.
+Alapértelmezés szerint az előfizetés a Microsoft által felügyelt titkosítási kulcsokat használja. Saját előfizetését azonban saját titkosítási kulcsokkal is kezelheti. Az ügyfél által kezelt kulcsok (CMK) használata, amely Bring Your Own Key (BYOK, saját kulcs használata) módszerként is ismert, nagyobb rugalmasságot biztosít a hozzáférés-vezérlők létrehozása, rotálása, letiltása és visszavonása terén. Továbbá az adatok védelméhez használt titkosítási kulcsok naplózására is lehetősége van.
 
 
 > [!IMPORTANT]
 > Az ügyfél által felügyelt kulcsok csak a 2020. június 27. után létrehozott erőforrások. A CMK és a Speech Services használatához létre kell hoznia egy új beszédfelismerési erőforrást. Az erőforrás létrehozása után a Azure Key Vault használatával beállíthatja a felügyelt identitást.
 
-Az ügyfél által felügyelt kulcsok használatának kérelmezéséhez töltse ki és küldje el az ügyfél által felügyelt kulcs kérése űrlapot. Körülbelül 3-5 munkanapot vesz igénybe, hogy visszahallgassa a kérés állapotát. Igénytől függően előfordulhat, hogy egy várólistába helyezi, és a rendszer jóváhagyja a helyet, és elérhetővé válik. Miután jóváhagyta a CMK és a Speech Services használatát, létre kell hoznia egy új Speech-erőforrást a Azure Portal.
+Az ügyfél által felügyelt kulcsok használatának kérelmezéséhez töltse ki és küldje el Customer-Managed Key Request (kérelem) űrlapot. Körülbelül 3-5 munkanapot vesz igénybe, hogy visszahallgassa a kérés állapotát. Igénytől függően előfordulhat, hogy egy várólistába helyezi, és a rendszer jóváhagyja a helyet, és elérhetővé válik. Miután jóváhagyta a CMK és a Speech Services használatát, létre kell hoznia egy új Speech-erőforrást a Azure Portal.
    > [!NOTE]
    > **Az ügyfél által felügyelt kulcsok (CMK) csak egyéni parancsok esetén támogatottak.**
    >
@@ -149,9 +149,9 @@ Ha letiltja az ügyfél által felügyelt kulcsokat, a beszédfelismerési erőf
 1. Navigáljon a beszédfelismerési erőforráshoz, és jelenítse meg a **titkosítási** beállításokat.
 1. Törölje a **saját kulcs használata** beállítás melletti jelölőnégyzet jelölését.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-* [Beszéd ügyfél által felügyelt kulcs kérésének űrlapja](https://aka.ms/cogsvc-cmk)
+* [Beszédfelismerési Customer-Managed kulcs kérésének űrlapja](https://aka.ms/cogsvc-cmk)
 * [További információ a Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)
 * [A felügyelt identitások](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview)
 

@@ -18,10 +18,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a1efafd353bea20ea1ada0b5e92a9e6df00deb78
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91273600"
 ---
 # <a name="azure-ad-connect-accounts-and-permissions"></a>Azure AD Connect: Fiókok és engedélyek
@@ -141,7 +141,7 @@ Emellett meg kell adni a szükséges engedélyeket is. A telepítővarázsló ne
 
 A szükséges engedélyek a választható funkcióktól függenek. Ha több tartománnyal rendelkezik, az engedélyeket az erdő összes tartományához meg kell adni. Ha nem engedélyezi ezen funkciók bármelyikét, az alapértelmezett **tartományi felhasználói** engedélyek elegendőek.
 
-| Funkció | Engedélyek |
+| Szolgáltatás | Engedélyek |
 | --- | --- |
 | MS-DS-ConsistencyGuid funkció |Írási engedélyek a tervezési fogalmakban dokumentált ms-DS-ConsistencyGuid attribútumhoz [– MS-DS-ConsistencyGuid használata sourceAnchor](plan-connect-design-concepts.md#using-ms-ds-consistencyguid-as-sourceanchor). | 
 | Jelszó kivonatának szinkronizálása |<li>Címtárbeli módosítások replikálása</li>  <li>A címtár összes módosításának replikálása |

@@ -15,10 +15,10 @@ ms.reviewer: jesakowi
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: c600e1fddc0089a508ff0cfebbbb3476f3a90008
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88117617"
 ---
 # <a name="permissions-and-consent-in-the-azure-active-directory-v10-endpoint"></a>Engedélyek és belefoglalt engedély a Azure Active Directory v 1.0-végponton
@@ -98,11 +98,11 @@ Az Azure AD-ben lévő alkalmazások a jóváhagyásokra támaszkodnak a szüks�
 - Az erőforrásoknak külön kell meghatározniuk a `Read` és a `ReadWrite` engedélyeket.
 - Az erőforrásoknak `Admin` engedélyekként kell jelölniük az összes olyan engedélyt, amelyek felhasználói határokon keresztül engedélyezik az adatok hozzáférését.
 - Az erőforrásoknak követniük kell a `Subject.Permission[.Modifier]` elnevezési mintát, ahol:
-  - `Subject`megfelel az elérhető adattípusnak
-  - `Permission`megfelel annak a műveletnek, amelyet a felhasználó az adott adatmennyiségre vonatkozóan igénybe vehet
-  - `Modifier`egy másik engedély szakterületének leírására van szükség
+  - `Subject` megfelel az elérhető adattípusnak
+  - `Permission` megfelel annak a műveletnek, amelyet a felhasználó az adott adatmennyiségre vonatkozóan igénybe vehet
+  - `Modifier` egy másik engedély szakterületének leírására van szükség
     
-    Például:
+    Példa:
   - Mail.Read – Lehetővé teszi, hogy a felhasználók elolvassák a leveleket.
   - Mail.ReadWrite – Lehetővé teszi, hogy a felhasználók elolvassák a leveleket és leveleket írjanak.
   - Mail.ReadWrite.All – Lehetővé teszi, hogy egy rendszergazda vagy felhasználó elérje a cégben lévő összes levelet.

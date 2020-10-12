@@ -5,10 +5,10 @@ ms.subservice: ''
 ms.topic: conceptual
 ms.date: 11/19/2018
 ms.openlocfilehash: 38a30f2adc0de7ccb9a9a3a4ba7ed53fd5fda3f7
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87317382"
 ---
 # <a name="azure-monitor-retirement-of-classic-deployment-model-apis-for-metrics-and-autoscale"></a>A klasszikus üzembe helyezési modell API-jai kiAzure Monitor a metrikák és az autoskálázás számára
@@ -31,13 +31,13 @@ Ez a cikk Önre vonatkozik, ha a következő összetevőket használja:
 
 - **Klasszikus automatikus méretezés** – ha a [klasszikus automatikus méretezési beállítások API-kat](/previous-versions/azure/reference/mt348562(v=azure.100)) az egyéni eszközökkel vagy a [klasszikus Azure](https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Monitoring/)-beli elemzések SDK-val hívja meg, váltson a [Resource Manager Azure monitor REST API](/rest/api/monitor/autoscalesettings)használatára.
 
-- **Klasszikus mérőszámok** – ha a [klasszikus REST API](/previous-versions/azure/reference/dn510374(v=azure.100)) -kkal vagy a [klasszikus Azure](https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Monitoring/) -elemzéssel rendelkező, egyéni eszközökről származó mérőszámokat használ, váltson a [Resource Manager Azure monitor REST API](/rest/api/monitor/autoscalesettings)használatára. 
+- **Klasszikus mérőszámok** – ha a [klasszikus REST API](/previous-versions/azure/reference/dn510374(v=azure.100)) -kkal vagy a  [klasszikus Azure](https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Monitoring/) -elemzéssel rendelkező, egyéni eszközökről származó mérőszámokat használ, váltson a [Resource Manager Azure monitor REST API](/rest/api/monitor/autoscalesettings)használatára. 
 
 Ha nem biztos abban, hogy a kód vagy az egyéni eszközök meghívja a klasszikus API-kat, tekintse meg a következőket:
 
 - Tekintse át a kódban vagy eszközben hivatkozott URI-t. A klasszikus API-k az URI-t használják https://management.core.windows.net . A-vel kezdődően a Resource Manager-alapú API-k újabb URI-JÁT kell használnia `https://management.azure.com/` .
 
-- Hasonlítsa össze a szerelvény nevét a gépen. A régi klasszikus szerelvény a következő címen érhető el: https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Monitoring/ .
+- Hasonlítsa össze a szerelvény nevét a gépen. A régi klasszikus szerelvény a következő címen érhető el:  https://www.nuget.org/packages/Microsoft.WindowsAzure.Management.Monitoring/ .
 
 - Ha tanúsítványalapú hitelesítést használ a metrikák vagy az autoscale API-k eléréséhez, klasszikus végpontot és könyvtárat használ. Az újabb Resource Manager API-k Azure Active Directory hitelesítést igényelnek egy egyszerű szolgáltatásnév vagy egy egyszerű felhasználó használatával.
 
@@ -53,7 +53,7 @@ Ha nem biztos abban, hogy a kód vagy az egyéni eszközök meghívja a klasszik
 
 Az autoscale és a metrikák összes meglévő funkciója továbbra is az új API-kon keresztül fog működni.  
 
-Az újabb API-khoz való áttelepítéshez Resource Manager-alapú képességek tartoznak, mint például a konzisztens szerepköralapú Access Control (RBAC) támogatása az összes figyelési szolgáltatásban. A metrikák további funkcióit is megszerezheti: 
+Az újabb API-khoz való áttelepítéshez Resource Manager-alapú képességek tartoznak, mint például a konzisztens Role-Based Access Control (RBAC) támogatása az összes figyelési szolgáltatásban. A metrikák további funkcióit is megszerezheti: 
 
 - méretek támogatása
 - konzisztens 1 perces metrikai részletesség az összes szolgáltatáson belül 
@@ -85,7 +85,7 @@ A rendszer kivonulási értesítést küldött az e-mail-címekre a következő 
 
 Ha kérdése van, lépjen kapcsolatba velünk a következő címen: MonitorClassicAPIhelp@microsoft.com .  
 
-## <a name="references"></a>Referencia
+## <a name="references"></a>Hivatkozások
 
 - [Újabb REST API-k a Azure Monitorhoz](/rest/api/monitor/) 
 - [Újabb Azure Monitor SDK](https://www.nuget.org/packages/Microsoft.Azure.Management.Monitor/)

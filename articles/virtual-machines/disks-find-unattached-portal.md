@@ -8,10 +8,10 @@ ms.date: 06/01/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.openlocfilehash: 6632d65fa07788e35b24c2f957e713f824f6b091
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87542738"
 ---
 # <a name="find-and-delete-unattached-azure-managed-and-unmanaged-disks---azure-portal"></a>Nem csatlakoztatott Azure felügyelt és nem felügyelt lemezek keresése és törlése – Azure Portal
@@ -45,19 +45,19 @@ Ha olyan nem felügyelt lemezekkel rendelkezik, amelyek nem csatlakoznak egy vir
 
     Megjelenik az összes nem felügyelt lemez listája. **-** A **csatolt** oszlophoz tartozó "" nevű lemez nem csatolt lemez.
 
-    :::image type="content" source="media/disks-find-unattached-portal/unmanaged-disk-unattached-attached-to.png" alt-text="Képernyőkép a nem felügyelt lemezek panelről. Az ezen a panelen lévő azon lemezek, amelyek az oszlophoz vannak csatolva, nincsenek csatolva.":::
+    :::image type="content" source="media/disks-find-unattached-portal/unmanaged-disk-unattached-attached-to.png" alt-text="Képernyőkép az egyes felügyelt lemezek panelről. Ez a panel a lemez állapotában nem csatoltként jelenik meg, ha nincs csatlakoztatva. Ezt a lemezt akkor törölheti, ha már nem kell megőriznie az adatvédelmet":::
 
 1. Válassza ki a törölni kívánt, nem csatolt lemezt, amely megjeleníti a lemez paneljét.
 
 1. A lemez paneljén ellenőrizheti, hogy nincs-e csatlakoztatva, mert a **csatolva** marad **-** .
 
-    :::image type="content" source="media/disks-find-unattached-portal/unmanaged-disk-unattached-select-blade.png" alt-text="Képernyőkép az egyes nem felügyelt lemezekről. Ha nincs csatolva, az értékhez csatolva lesz. Ha már nincs szüksége a lemezekre, törölheti azt.":::
+    :::image type="content" source="media/disks-find-unattached-portal/unmanaged-disk-unattached-select-blade.png" alt-text="Képernyőkép az egyes felügyelt lemezek panelről. Ez a panel a lemez állapotában nem csatoltként jelenik meg, ha nincs csatlakoztatva. Ezt a lemezt akkor törölheti, ha már nem kell megőriznie az adatvédelmet":::
 
 1. Válassza a **Törlés** elemet.
 
-    :::image type="content" source="media/disks-find-unattached-portal/delete-unmanaged-disk-unattached.png" alt-text="Képernyőfelvétel egy nem felügyelt különálló lemezről, a törlés kiemelése.":::
+    :::image type="content" source="media/disks-find-unattached-portal/delete-unmanaged-disk-unattached.png" alt-text="Képernyőkép az egyes felügyelt lemezek panelről. Ez a panel a lemez állapotában nem csatoltként jelenik meg, ha nincs csatlakoztatva. Ezt a lemezt akkor törölheti, ha már nem kell megőriznie az adatvédelmet":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha szeretné automatikusan megkeresni és törölni a nem csatlakoztatott Storage-fiókokat, tekintse meg a [CLI](linux/find-unattached-disks.md) -vagy [PowerShell](windows/find-unattached-disks.md) -cikkeket.
 

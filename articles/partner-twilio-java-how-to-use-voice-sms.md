@@ -14,10 +14,10 @@ ms.date: 11/25/2014
 ms.author: gwallace
 ms.custom: devx-track-java
 ms.openlocfilehash: f2f30230418637b53826bd314e395e760db7087f
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87306014"
 ---
 # <a name="how-to-use-twilio-for-voice-and-sms-capabilities-in-java"></a>A Twilio használata a hang-és SMS-funkciókhoz Java-ban
@@ -56,7 +56,7 @@ A következő lista az Twilio-műveletek listáját tartalmazza.
 ### <a name="twiml"></a><a id="TwiML"></a>TwiML
 A TwiML XML-alapú utasításokat tartalmaz a Twilio műveletek alapján, amelyek tájékoztatják a Twilio, hogy hogyan dolgozzák fel a hívást vagy az SMS-t.
 
-Példaként a következő TwiML konvertálja a szöveget **"Helló világ!" alkalmazás!** a beszédhez.
+Példaként a következő TwiML konvertálja a szöveget **„Helló világ!” alkalmazás!** a beszédhez.
 
 ```xml
     <?xml version="1.0" encoding="UTF-8" ?>
@@ -161,7 +161,7 @@ Amikor az alkalmazás kezdeményez egy hívást a Twilio API-ra, például a **C
 
 Ahelyett, hogy a Twilio által megadott URL-címet kellene megadnia, létrehozhat egy saját URL-helyet, amely a HTTP-válaszokat adja vissza. A helyet bármilyen nyelven létrehozhatja, amely a HTTP-válaszokat adja vissza; Ez a témakör feltételezi, hogy az URL-címet egy JSP-lapon fogja üzemeltetni.
 
-A következő JSP-oldal egy TwiML választ eredményez, amely a **"Helló világ!" alkalmazást mondja!** a híváson.
+A következő JSP-oldal egy TwiML választ eredményez, amely a **„Helló világ!” alkalmazást mondja!** a híváson.
 
 ```xml
     <%@ page contentType="text/xml" %>

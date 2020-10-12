@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 05/29/2018
 ms.author: kumud
 ms.openlocfilehash: 8d4e78a90c5b852177c88350422bdd6ce1e398cd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84704947"
 ---
 # <a name="diagnose-a-virtual-machine-network-traffic-filter-problem"></a>Virtuális gép hálózati forgalmának szűrésével kapcsolatos probléma diagnosztizálása
@@ -170,14 +170,14 @@ Függetlenül attól, hogy az Azure [Portal](#diagnose-using-azure-portal), a [P
 
 | Tulajdonság                | Érték                                                                              |
 |---------                |---------                                                                           |
-| Forrás                  | Bármelyik                                                                                |
+| Forrás                  | Bármely                                                                                |
 | Forrásporttartományok      | Bármelyik                                                                                |
 | Cél             | A virtuális gép IP-címe, az IP-címek tartománya vagy az alhálózat összes címe. |
 | Célporttartományok | 80                                                                                 |
 | Protokoll                | TCP                                                                                |
-| Műveletek                  | Engedélyezés                                                                              |
+| Művelet                  | Engedélyezés                                                                              |
 | Prioritás                | 100                                                                                |
-| Name                    | Engedélyezés – HTTP-mind                                                                     |
+| Név                    | Engedélyezés – HTTP-mind                                                                     |
 
 A szabály létrehozása után a 80-es port engedélyezi az internetről érkező bejövő adatokat, mert a szabály prioritása nagyobb, mint az *DenyAllInBound*nevű alapértelmezett biztonsági szabály, amely megtagadja a forgalmat. Útmutató [biztonsági szabályok létrehozásához](manage-network-security-group.md#create-a-security-rule). Ha a hálózati adapterhez és az alhálózathoz is különböző NSG vannak társítva, akkor mindkét NSG ugyanazt a szabályt kell létrehoznia.
 

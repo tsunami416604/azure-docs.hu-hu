@@ -8,10 +8,10 @@ ms.date: 03/17/2017
 ms.reviewer: mbullwin
 ms.custom: vs-azure
 ms.openlocfilehash: 07848d0b1a2677595eba0da53402993103289d4f
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87318164"
 ---
 # <a name="analyzing-trends-in-visual-studio"></a>Trendek elemzése a Visual Studióban
@@ -69,7 +69,7 @@ A vizualizáción látható körök közötti navigáció:
 > 
 > 
 
-## <a name="filter"></a>Szűrés
+## <a name="filter"></a>Szűrő
 Az ablak alján található szűrővezérlőkkel specifikusabb trendeket is feltárhat. Kattintson az alkalmazni kívánt szűrő nevére. Gyorsan válthat különböző szűrők között, így olyan trendeket is feltárhat, amelyek a telemetria egy adott dimenziójában rejtőznek. Ha egy szűrőt alkalmaz egy dimenzióban (például a kivétel típusa), a más dimenziókban lévő szűrők továbbra is rákattintanak, de szürkén jelennek meg. Szűrő eltávolításához kattintson rá újra. Ctrl+kattintással egy dimenzión belül több szűrőt is kijelölhet.
 
 ![Trendszűrők](./media/visual-studio-trends/TrendsFiltering-750.png)

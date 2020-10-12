@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/13/2019
 ms.openlocfilehash: 4b0e18e7bcc85dace93962c557d05d114df215d7
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86082216"
 ---
 # <a name="use-azure-toolkit-for-eclipse-to-create-apache-spark-applications-for-an-hdinsight-cluster"></a>Azure Toolkit for Eclipse használata Apache Spark-alkalmazások HDInsight-fürthöz való létrehozásához
@@ -111,7 +111,7 @@ A Ambari által felügyelt Felhasználónév használatával összekapcsolhatja 
 
 1. Az Eclipse ide munkaterületen válassza a **fájl**  >  **új**  >  **projekt...** lehetőséget.
 
-1. Az **új projekt** varázslóban válassza a **HDInsight Project**  >  **Spark a HDInsight (Scala)** lehetőséget. Ezután válassza a **tovább**lehetőséget.
+1. Az **új projekt** varázslóban válassza a **HDInsight Project**  >  **Spark a HDInsight (Scala)** lehetőséget. Ezután kattintson a **Tovább** gombra.
 
    ![A Spark on HDInsight (Scala) projekt kiválasztása](./media/apache-spark-eclipse-tool-plugin/create-hdi-scala-app-2.png)
 
@@ -128,7 +128,7 @@ A Ambari által felügyelt Felhasználónév használatával összekapcsolhatja 
 
 1. A **Package Explorerben**bontsa ki a korábban létrehozott projektet. Kattintson a jobb gombbal az **src**elemre, majd válassza az **új**  >  **másik.**.. lehetőséget.
 
-1. A **varázsló kiválasztása** párbeszédpanelen válassza a **Scala varázslók**  >  **Scala-objektum**lehetőséget. Ezután válassza a **tovább**lehetőséget.
+1. A **varázsló kiválasztása** párbeszédpanelen válassza a **Scala varázslók**  >  **Scala-objektum**lehetőséget. Ezután kattintson a **Tovább** gombra.
 
    ![Varázsló kiválasztása a Scala-objektum létrehozásához](./media/apache-spark-eclipse-tool-plugin/create-scala-project1.png)
 
@@ -248,7 +248,7 @@ A hiba megoldásához [Winutils.exe](https://github.com/steveloughran/winutils) 
 
 1. Indítsa el az Eclipse-t és hozzon létre egy projektet. Az **új projekt** párbeszédpanelen hajtsa végre a következő beállításokat, majd válassza a **tovább**lehetőséget.
 
-1. Az **új projekt** varázslóban válassza a **HDInsight Project**Spark lehetőséget a  >  **HDInsight helyi futtatási minta (Scala)** elemnél. Ezután válassza a **tovább**lehetőséget.
+1. Az **új projekt** varázslóban válassza a **HDInsight Project**Spark lehetőséget a  >  **HDInsight helyi futtatási minta (Scala)** elemnél. Ezután kattintson a **Tovább** gombra.
 
    ![Az új projekt kiválasztja a varázsló párbeszédpanelt](./media/apache-spark-eclipse-tool-plugin/hdi-spark-app-local-run.png)
 

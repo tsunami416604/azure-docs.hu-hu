@@ -11,10 +11,10 @@ ms.workload: infrastructure-services
 ms.date: 05/15/2018
 ms.author: rohink
 ms.openlocfilehash: 4bf3ee75c9445856fb8a2ce789a3f2f345e720fe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84701664"
 ---
 # <a name="manage-dns-records-and-recordsets-in-azure-dns-using-the-azure-cli"></a>DNS-rekordok és-rekordhalmazok kezelése Azure DNS az Azure CLI használatával
@@ -28,7 +28,7 @@ Ez a cikk bemutatja, hogyan kezelheti a DNS-zónához tartozó DNS-rekordokat a 
 
 A cikkben szereplő példák feltételezik, hogy már [telepítette az Azure CLI-t, bejelentkezett, és létrehozott egy DNS-zónát](dns-operations-dnszones-cli.md).
 
-## <a name="introduction"></a>Introduction (Bevezetés)
+## <a name="introduction"></a>Bevezetés
 
 Mielőtt létrehozná a DNS-rekordokat Azure DNS-ben, tisztában kell lennie azzal, hogyan rendezi az Azure DNS DNS-rekordhalmazokba a DNS-rekordokat.
 
@@ -220,7 +220,7 @@ Az automatikusan létrehozott NS-rekordhalmaz rekordjait nem lehet felvenni, elt
 
 A legtöbb más bejegyzéstípustól eltérően a CNAME-rekordok halmaza csak egyetlen rekordot tartalmazhat.  Ezért az aktuális értéket nem lehet lecserélni új rekord hozzáadásával és a meglévő rekord eltávolításával, a többi bejegyzéstípushoz hasonlóan.
 
-A CNAME rekord módosításához használja a parancsot `az network dns record-set cname set-record` . További segítségért lásd:`az network dns record-set cname set-record --help`
+A CNAME rekord módosításához használja a parancsot `az network dns record-set cname set-record` . További segítségért lásd: `az network dns record-set cname set-record --help`
 
 A példa módosítja a (z) *www* CNAME-rekordot a (z) *contoso.com*, az erőforráscsoport *MyResourceGroup*, hogy a meglévő értéke helyett a "www.fabrikam.net" értékre mutasson:
 

@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 04/15/2020
 ms.author: cshoe
 ms.openlocfilehash: 0361ba7bc67948c25b842a3fb7406d2999fdd725
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91530612"
 ---
 # <a name="azure-functions-deployment-slots"></a>Azure Functions üzembe helyezési pontok
@@ -176,7 +176,7 @@ A tárolóhelyek App Service tervének módosításához kövesse az alábbi lé
 
     :::image type="content" source="./media/functions-deployment-slots/azure-functions-deployment-slots-change-app-service-apply.png" alt-text="A Azure Portal található tárolóhelyek." border="true":::
 
-1. Válassza az **OK** lehetőséget.
+1. Kattintson az **OK** gombra.
 
 ## <a name="limitations"></a>Korlátozások
 
@@ -202,6 +202,6 @@ Az üzembe helyezési pontok két szinten támogatottak:
 | Linux Premium             | Általános elérhetőség  |
 | Linux dedikált           | Általános elérhetőség |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Üzembe helyezési technológiák Azure Functions](./functions-deployment-technologies.md)

@@ -7,10 +7,10 @@ ms.author: tilee
 ms.date: 4/23/2019
 ms.reviewer: mbullwin
 ms.openlocfilehash: 333bba2b1d3cd83457196e38b827daa78199f235
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87033513"
 ---
 # <a name="application-insights-for-azure-functions-supported-features"></a>Azure Functions támogatott funkciók Application Insights
@@ -27,27 +27,27 @@ A Application Insights kompatibilis verzióival kapcsolatos további informáci�
 |-----------------------------------    |---------------    |------------------ |
 | | | | 
 | **Automatikus gyűjtemény**        |                 |                   |               
-| &bull;Kérelmek                     | Igen             | Igen               | 
-| &bull;Kivételek                   | Igen             | Igen               | 
-| &bull;Teljesítményszámlálók         | Igen             | Igen               |
-| &bull;Függőségek                   |                   |                   |               
-| &nbsp;&nbsp;&nbsp;&mdash;HTTP      |                 | Yes               | 
-| &nbsp;&nbsp;&nbsp;&mdash;ServiceBus|                 | Yes               | 
-| &nbsp;&nbsp;&nbsp;&mdash;EventHub  |                 | Yes               | 
-| &nbsp;&nbsp;&nbsp;&mdash;SQL       |                 | Yes               | 
+| &bull; Kérelmek                     | Igen             | Igen               | 
+| &bull; Kivételek                   | Igen             | Igen               | 
+| &bull; Teljesítményszámlálók         | Igen             | Igen               |
+| &bull; Függőségek                   |                   |                   |               
+| &nbsp;&nbsp;&nbsp;&mdash; HTTP      |                 | Igen               | 
+| &nbsp;&nbsp;&nbsp;&mdash; ServiceBus|                 | Igen               | 
+| &nbsp;&nbsp;&nbsp;&mdash; EventHub  |                 | Igen               | 
+| &nbsp;&nbsp;&nbsp;&mdash; SQL       |                 | Igen               | 
 | | | | 
 | **Támogatott funkciók**                |                   |                   |               
-| &bull;QuickPulse/LiveMetrics       | Igen             | Igen               | 
-| &nbsp;&nbsp;&nbsp;&mdash;Biztonságos vezérlési csatorna|                 | Yes               | 
-| &bull;Mintavételi                     | Igen             | Igen               | 
-| &bull;Szívdobbanás                   |                 | Yes               | 
+| &bull; QuickPulse/LiveMetrics       | Igen             | Igen               | 
+| &nbsp;&nbsp;&nbsp;&mdash; Biztonságos vezérlési csatorna|                 | Igen               | 
+| &bull; Mintavételi                     | Igen             | Igen               | 
+| &bull; Szívdobbanás                   |                 | Igen               | 
 | | | | 
-| **korreláció**                       |                   |                   |               
-| &bull;ServiceBus                     |                   | Yes               | 
-| &bull;EventHub                       |                   | Yes               | 
+| **Korreláció**                       |                   |                   |               
+| &bull; ServiceBus                     |                   | Igen               | 
+| &bull; EventHub                       |                   | Igen               | 
 | | | | 
 | **Konfigurálható**                      |                   |                   |           
-| &bull;Teljes mértékben konfigurálható.<br/>Útmutatásért lásd [Azure functions](https://github.com/Microsoft/ApplicationInsights-aspnetcore/issues/759#issuecomment-426687852) .<br/>Az összes beállításhoz lásd: [ASP.net Core](https://github.com/Microsoft/ApplicationInsights-aspnetcore/wiki/Custom-Configuration) .               |                   | Yes                   | 
+| &bull;Teljes mértékben konfigurálható.<br/>Útmutatásért lásd [Azure functions](https://github.com/Microsoft/ApplicationInsights-aspnetcore/issues/759#issuecomment-426687852) .<br/>Az összes beállításhoz lásd: [ASP.net Core](https://github.com/Microsoft/ApplicationInsights-aspnetcore/wiki/Custom-Configuration) .               |                   | Igen                   | 
 
 
 ## <a name="performance-counters"></a>Teljesítményszámlálók
