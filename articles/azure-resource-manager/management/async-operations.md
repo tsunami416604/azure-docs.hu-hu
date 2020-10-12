@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 08/21/2020
 ms.custom: seodec18
 ms.openlocfilehash: e2c5ba137d5277466cf1b382d2b0b1bc02259f00
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88723452"
 ---
 # <a name="track-asynchronous-azure-operations"></a>Aszinkron Azure-műveletek nyomon követése
@@ -40,7 +40,7 @@ Az aszinkron művelet állapotának figyelésére két különböző módszer á
 
 Ha `Azure-AsyncOperation` nem a fejléc értékeinek egyike, akkor keresse meg a következőt:
 
-* `Location` -A művelet befejezését meghatározó URL-cím. Csak akkor használja ezt az értéket, ha az Azure-AsyncOperation nem ad vissza.
+* `Location` -A művelet befejezését meghatározó URL-cím. Csak akkor használja ezt az értéket, ha a Azure-AsyncOperation nem adja vissza.
 * `Retry-After` – Az aszinkron művelet állapotának ellenőrzése előtt megvárni kívánt másodpercek száma.
 
 ## <a name="azure-asyncoperation-request-and-response"></a>Azure-AsyncOperation kérelem és válasz

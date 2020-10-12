@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 07/29/2020
 ms.author: tisande
 ms.openlocfilehash: dd1652781d7eae8beb400c52137a8f16891e2b2a
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87498837"
 ---
 # <a name="operators-in-azure-cosmos-db"></a>A Azure Cosmos DB operátorai
@@ -71,7 +71,7 @@ Azt adja vissza `true` , hogy mindkét kifejezés hol van `true` .
 
 Bármely logikai kifejezés értékének megfordítása.
 
-|  | **NEM** |
+|  | **NOT** |
 | --- | --- |
 | **True** |Hamis |
 | **False** |Igaz |
@@ -83,13 +83,13 @@ A logikai operátorok, `OR` `AND` és `NOT` az alább látható elsőbbségi szi
 
 | **Operátor** | **Prioritás** |
 | --- | --- |
-| **NEM** |1 |
-| **ÉS** |2 |
-| **VAGY** |3 |
+| **NOT** |1 |
+| **AND** |2 |
+| **OR** |3 |
 
 ## <a name="-operator"></a>* operátor
 
-A speciális operátor * a teljes tételt a következőképpen tervezi. Használata esetén az csak az egyetlen tervezett mező lehet. A hasonló lekérdezés `SELECT * FROM Families f` érvényes, de `SELECT VALUE * FROM Families f` `SELECT *, f.id FROM Families f` nem érvényes.
+A speciális operátor * a teljes tételt a következőképpen tervezi. Használata esetén az csak az egyetlen tervezett mező lehet. A hasonló lekérdezés `SELECT * FROM Families f` érvényes, de `SELECT VALUE * FROM Families f`  `SELECT *, f.id FROM Families f` nem érvényes.
 
 ## <a name="-and--operators"></a>? és? operátorok
 

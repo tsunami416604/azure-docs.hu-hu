@@ -9,10 +9,10 @@ ms.topic: tutorial
 ms.date: 03/08/2019
 ms.author: alkohli
 ms.openlocfilehash: 4e54f5254d38bca9c8ff30d5b7cefbe3fde69576
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90904373"
 ---
 # <a name="tutorial-transfer-data-with-azure-data-box-gateway"></a>Oktatóanyag: adatok átvitele Azure Data Box Gateway
@@ -139,7 +139,7 @@ Az Azure Stack Edge Pro-eszközhöz csatlakoztatott Linux-ügyfélen hajtsa vég
 > - A fájlok megosztásból való törlése nem törli a bejegyzéseket a tárfiókból.
 > - Ha az `rsync` Adatmásolást használja, akkor `rsync -a` a beállítás nem támogatott.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban a Data Box Gatewayjel kapcsolatos alábbi témakörökkel ismerkedett meg:
 

@@ -9,10 +9,10 @@ ms.service: iot-central
 services: iot-central
 manager: timlt
 ms.openlocfilehash: dabcadea96f4ced5bdf73a35ef533e6d290595c2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87001876"
 ---
 # <a name="azure-iot-central-customer-data-request-features"></a>Azure IoT Central ügyfél-adatkérés funkciói
@@ -23,7 +23,7 @@ Az Azure IoT Central egy teljes körűen felügyelt, eszközök internetes hál�
 
 ## <a name="identifying-customer-data"></a>Ügyféladatok azonosítása
 
-Azure Active Directory Object-ID azonosítókat használ a felhasználók azonosítására és a szerepkörök hozzárendelésére. Az Azure IoT Central portál a szerepkör-hozzárendelések felhasználói e-mail-címeit jeleníti meg, de csak az Azure Active Directory Object-ID tárolja, az e-mail-címet a rendszer dinamikusan kérdezi le a Azure Active Directory. Az Azure IoT Central-rendszergazdák megtekinthetik, exportálják és törölhetik az alkalmazás felhasználóit egy Azure IoT Central-alkalmazás felhasználói adminisztráció szakaszában.
+Azure Active Directory Object-IDs a felhasználók azonosítására és a szerepkörök hozzárendelésére szolgál. Az Azure IoT Central portál a szerepkör-hozzárendelések felhasználói e-mail-címeit jeleníti meg, de csak az Azure Active Directory Object-ID tárolja, az e-mail-címet a rendszer dinamikusan kérdezi le a Azure Active Directory. Az Azure IoT Central-rendszergazdák megtekinthetik, exportálják és törölhetik az alkalmazás felhasználóit egy Azure IoT Central-alkalmazás felhasználói adminisztráció szakaszában.
 
 Az alkalmazáson belül az e-mail-címek is konfigurálhatók a riasztások fogadására. Ebben az esetben az e-mail-címeket IoT Central tárolja, és az alkalmazáson belüli fiók felügyelete lapon kell felügyelni.
 

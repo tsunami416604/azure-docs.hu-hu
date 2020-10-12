@@ -12,10 +12,10 @@ ms.date: 08/08/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 462e33c836d8ca0a904e8f7b2e833dc7103311fc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85387898"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-wechat-account-using-azure-active-directory-b2c"></a>WeChat-fiókkal történő regisztráció és bejelentkezés beállítása Azure Active Directory B2C
@@ -29,9 +29,9 @@ Ha a WeChat-fiókot Azure Active Directory B2C (Azure AD B2C) identitás-szolgá
 ### <a name="register-a-wechat-application"></a>WeChat-alkalmazás regisztrálása
 
 1. Jelentkezzen be a [https://open.weixin.qq.com/](https://open.weixin.qq.com/) WeChat hitelesítő adataival.
-1. Válassza a**管理中心**(felügyeleti központ) lehetőséget.
+1. Válassza a **管理中心** (felügyeleti központ) lehetőséget.
 1. Új alkalmazás regisztrálásához kövesse az alábbi lépéseket.
-1. Adja meg `https://your-tenant_name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` a**授权回调域**(visszahívási URL-cím). Ha például a bérlő neve contoso, állítsa be az URL-címet a következőre: `https://contoso.b2clogin.com/contoso.onmicrosoft.com/oauth2/authresp` .
+1. Adja meg `https://your-tenant_name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` a **授权回调域** (visszahívási URL-cím). Ha például a bérlő neve contoso, állítsa be az URL-címet a következőre: `https://contoso.b2clogin.com/contoso.onmicrosoft.com/oauth2/authresp` .
 1. Másolja az **alkalmazás azonosítóját** és az **alkalmazás kulcsát**. Ezekre szüksége lesz az identitás-szolgáltatónak a bérlőhöz való hozzáadásához.
 
 ## <a name="configure-wechat-as-an-identity-provider-in-your-tenant"></a>A WeChat konfigurálása identitás-szolgáltatóként a bérlőben
@@ -43,4 +43,4 @@ Ha a WeChat-fiókot Azure Active Directory B2C (Azure AD B2C) identitás-szolgá
 1. Adjon meg egy **nevet**. Például: *WeChat*.
 1. Az **ügyfél-azonosító**mezőben adja meg a korábban létrehozott WeChat-alkalmazás alkalmazás-azonosítóját.
 1. Az **ügyfél titkos**kulcsa mezőben adja meg a rögzített alkalmazás kulcsát.
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.

@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 03/12/2020
 ms.openlocfilehash: 80473aa494b8fbcea5e43870b7717cd3472dd7d1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "79480521"
 ---
 # <a name="disable-monitoring-of-your-vms-in-azure-monitor-for-vms"></a>Virtuális gépek figyelésének letiltása Azure Monitor for VMs
@@ -24,7 +24,7 @@ A Azure Monitor for VMs a következő összetevőkre támaszkodik a felhasznál�
 * Log Analytics munkaterület, amely a virtuális gépek és más források megfigyelési adatait tárolja.
 * A munkaterületen konfigurált teljesítményszámlálók gyűjteménye. A gyűjtemény frissíti a figyelési konfigurációt a munkaterülethez csatlakozó összes virtuális gépen.
 * `VMInsights`, amely a munkaterületen konfigurált figyelési megoldás. Ez a megoldás frissíti a figyelési konfigurációt a munkaterülethez csatlakozó összes virtuális gépen.
-* `MicrosoftMonitoringAgent`és az `DependencyAgent` Azure VM-bővítmények. Ezek a bővítmények adatokat gyűjtenek és küldenek a munkaterületre.
+* `MicrosoftMonitoringAgent` és az `DependencyAgent` Azure VM-bővítmények. Ezek a bővítmények adatokat gyűjtenek és küldenek a munkaterületre.
 
 A virtuális gépek figyelésének letiltására való felkészülés során tartsa szem előtt ezeket a szempontokat:
 

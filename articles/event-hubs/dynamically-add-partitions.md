@@ -4,10 +4,10 @@ description: Ebből a cikkből megtudhatja, hogyan adhat hozzá dinamikusan part
 ms.topic: how-to
 ms.date: 06/23/2020
 ms.openlocfilehash: 4a729147eaa11497c66f82a9764dfee9492786b9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87002539"
 ---
 # <a name="dynamically-add-partitions-to-an-event-hub-apache-kafka-topic-in-azure-event-hubs"></a>Partíciók dinamikus hozzáadása egy Event hub-hoz (Apache Kafka témakörhöz) az Azure-ban Event Hubs
@@ -74,7 +74,7 @@ A Event Hubs három feladói lehetőséget biztosít:
 - **Ciklikus multiplexelés-küldő (alapértelmezett)** – ebben a forgatókönyvben a Event Hubs szolgáltatás az eseményeket a partíciók között kerekíti. Event Hubs szolgáltatás tisztában van a partíciók számának változásaival, és a partíciók számának megváltoztatását másodpercek alatt elküldi az új partícióknak.
 
 ### <a name="receiverconsumer-clients"></a>Fogadó/fogyasztói ügyfelek
-A Event Hubs közvetlen fogadókat és egyszerű fogyasztói kódtárat biztosít az [Event Processor Host (régi SDK)](event-hubs-event-processor-host.md) vagy az [Event Processor (új SDK)](event-processor-balance-partition-load.md)néven.
+A Event Hubs közvetlen fogadókat és egyszerű fogyasztói kódtárat biztosít az [Event Processor Host (régi SDK)](event-hubs-event-processor-host.md)  vagy az [Event Processor (új SDK)](event-processor-balance-partition-load.md)néven.
 
 - **Közvetlen fogadók** – a közvetlen fogadók egy adott partícióra figyeljenek. A futásidejű viselkedés nem befolyásolja a partíciók kiskálázását az Event hub esetében. A közvetlen fogadókat használó alkalmazásnak ügyelnie kell az új partíciók feladására, és ennek megfelelően kell hozzárendelni a fogadókat.
 - **Event Processor Host** – ez az ügyfél nem frissíti automatikusan az entitás metaadatait. Ezért nem kell a partíciók számának növekedését felvennie. Egy esemény-feldolgozó példány újbóli létrehozásakor az entitás metaadatainak beolvasása történik, ami viszont új blobokat hoz létre az újonnan hozzáadott partíciókhoz. A meglévő Blobok nem lesznek érintettek. Az összes Event Processor-példány újraindítása ajánlott annak biztosítására, hogy az összes példány tisztában legyen az újonnan hozzáadott partíciókkal, és a terheléselosztás megfelelően legyen kezelve a felhasználók körében.

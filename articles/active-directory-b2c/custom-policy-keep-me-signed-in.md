@@ -11,10 +11,10 @@ ms.date: 03/26/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: de5dd051804f3a0a7d1b0d32b998262af13e8926
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85389190"
 ---
 # <a name="enable-keep-me-signed-in-kmsi-in-azure-active-directory-b2c"></a>A bejelentkezett (KMSI) Azure Active Directory B2C használatának engedélyezése
@@ -90,9 +90,9 @@ Frissítse a függő entitás (RP) fájlját, amely kezdeményezi a létrehozott
     </UserJourneyBehaviors>
     ```
 
-    - **SessionExpiryType** – azt jelzi, hogyan hosszabbítja meg a munkamenetet a és a által megadott idő szerint `SessionExpiryInSeconds` `KeepAliveInDays` . Az `Rolling` érték (alapértelmezett) azt jelzi, hogy a munkamenet minden alkalommal ki van-e bővítve, amikor a felhasználó végrehajtja a hitelesítést. Az `Absolute` érték azt jelzi, hogy a felhasználónak a megadott időszak után újra hitelesítenie kell magát.
+    - **SessionExpiryType** – azt jelzi, hogyan hosszabbítja meg a munkamenetet a és a által megadott idő szerint `SessionExpiryInSeconds`  `KeepAliveInDays` . Az `Rolling` érték (alapértelmezett) azt jelzi, hogy a munkamenet minden alkalommal ki van-e bővítve, amikor a felhasználó végrehajtja a hitelesítést. Az `Absolute` érték azt jelzi, hogy a felhasználónak a megadott időszak után újra hitelesítenie kell magát.
 
-    - **SessionExpiryInSeconds** – a munkamenet-cookie-k élettartama, ha a *bejelentkezett* üzenet nem engedélyezett, vagy ha a felhasználó nem jelöli be a *Bejelentkezés megtartása*beállítást. A munkamenet lejár `SessionExpiryInSeconds` , vagy a böngésző bezárult.
+    - **SessionExpiryInSeconds**  – a munkamenet-cookie-k élettartama, ha a *bejelentkezett* üzenet nem engedélyezett, vagy ha a felhasználó nem jelöli be a *Bejelentkezés megtartása*beállítást. A munkamenet lejár `SessionExpiryInSeconds` , vagy a böngésző bezárult.
 
     - **KeepAliveInDays** – a munkamenet-cookie-k élettartama, ha be van kapcsolva a *bejelentkezett* üzenet, és a felhasználó kiválasztja a *bejelentkezett lépést*.  Az érték `KeepAliveInDays` elsőbbséget élvez az `SessionExpiryInSeconds` érték felett, és a munkamenet lejárati idejét diktálja. Ha a felhasználó bezárja a böngészőt, és később újra megnyitja, akkor továbbra is csendesen jelentkezhet be, amíg a KeepAliveInDays időszakon belül van.
 

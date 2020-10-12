@@ -12,17 +12,17 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: f46d41c8287d03cbe9582ed560244cbd85cdeeaa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81759591"
 ---
 # <a name="401003-iothubunauthorized"></a>401003 IoTHubUnauthorized
 
 Ez a cikk a **401003 IoTHubUnauthorized** -hibák okait és megoldásait ismerteti.
 
-## <a name="symptoms"></a>Probléma
+## <a name="symptoms"></a>Hibajelenségek
 
 ### <a name="symptom-1"></a>1. tünet
 
@@ -42,7 +42,7 @@ A következő hibaüzenetek egyikével sikertelen IoT Hub kérelmek:
 
 ### <a name="cause-1"></a>1. ok
 
-A MQTT esetében egyes SDK-k az IoT Hub-t használják, hogy kiállítsák a leválasztást, amikor az SAS-token lejár a frissítéshez. Így 
+A MQTT esetében egyes SDK-k az IoT Hub-t használják, hogy kiállítsák a leválasztást, amikor az SAS-token lejár a frissítéshez. Tehát: 
 
 1. Az SAS-token lejár
 1. IoT Hub észleli a lejáratot, és leválasztja az eszközt a **401003 IoTHubUnauthorized**

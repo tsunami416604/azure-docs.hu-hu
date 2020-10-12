@@ -7,10 +7,10 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: a502638744009fc34a7f0a27f8034b89d2c8fa26
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "79527809"
 ---
 # <a name="monitor-azure-database-for-mariadb-performance-with-query-store"></a>A Azure Database for MariaDB teljesítményének figyelése a lekérdezési tárolóval
@@ -112,11 +112,11 @@ A lekérdezési tárolót a következő nézetekkel és függvényekkel tekinthe
 
 A lekérdezések normalizálása úgy történik, hogy a konstansok és konstansok eltávolítása után megvizsgálják a szerkezetét. Ha két lekérdezés megegyezik a literális értékektől, akkor ugyanazzal a kivonattal fog rendelkezni.
 
-### <a name="mysqlquery_store"></a>MySQL. query_store
+### <a name="mysqlquery_store"></a>mysql.query_store
 
 Ez a nézet a lekérdezési tárolóban lévő összes adathalmazt adja vissza. Minden különböző adatbázis-AZONOSÍTÓhoz, felhasználói AZONOSÍTÓhoz és lekérdezési AZONOSÍTÓhoz egy sor van.
 
-| **Name (Név)** | **Adattípus** | **IS_NULLABLE** | **Leírás** |
+| **Név** | **Adattípus** | **IS_NULLABLE** | **Leírás** |
 |---|---|---|---|
 | `schema_name`| varchar (64) | NO | A séma neve |
 | `query_id`| bigint (20) | NO| Az adott lekérdezéshez generált egyedi azonosító, ha ugyanazt a lekérdezést különböző sémában hajtja végre, a rendszer új azonosítót fog generálni. |
@@ -145,11 +145,11 @@ Ez a nézet a lekérdezési tárolóban lévő összes adathalmazt adja vissza. 
 | `first_seen` | időbélyeg| NO| A lekérdezés első előfordulása (UTC) az összesítési ablakban|
 | `last_seen` | időbélyeg| NO| A lekérdezés utolsó előfordulása (UTC) ebben az összesítési ablakban|
 
-### <a name="mysqlquery_store_wait_stats"></a>MySQL. query_store_wait_stats
+### <a name="mysqlquery_store_wait_stats"></a>mysql.query_store_wait_stats
 
 Ez a nézet visszaadja az események várakozási idejének értékét a lekérdezési tárolóban. Minden különböző adatbázis-AZONOSÍTÓhoz, felhasználói AZONOSÍTÓhoz, lekérdezési AZONOSÍTÓhoz és eseményhez egy sor van.
 
-| **Name (Név)**| **Adattípus** | **IS_NULLABLE** | **Leírás** |
+| **Név**| **Adattípus** | **IS_NULLABLE** | **Leírás** |
 |---|---|---|---|
 | `interval_start` | időbélyeg | NO| Az időköz kezdete (15 perces növekmény)|
 | `interval_end` | időbélyeg | NO| Az intervallum vége (15 perces növekmény)|
@@ -163,7 +163,7 @@ Ez a nézet visszaadja az események várakozási idejének értékét a lekérd
 
 ### <a name="functions"></a>Functions
 
-| **Name (Név)**| **Leírás** |
+| **Név**| **Leírás** |
 |---|---|
 | `mysql.az_purge_querystore_data(TIMESTAMP)` | A lekérdezési tár összes adatának kiürítése a megadott időbélyegző előtt |
 | `mysql.az_procedure_purge_querystore_event(TIMESTAMP)` | A várakozási esemény összes adatának törlése a megadott időbélyegző előtt |

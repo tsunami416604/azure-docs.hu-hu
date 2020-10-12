@@ -15,10 +15,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 95f8991d5ba9efb8e3223dd44a8d037acf2de849
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88009562"
 ---
 # <a name="delegate-access-to-privileged-identity-management"></a>Privileged Identity Managementhoz való hozzáférés delegálása
@@ -46,7 +46,7 @@ Győződjön meg arról, hogy mindig van legalább két felhasználó egy kiemel
 
     ![Kiemelt szerepkörű rendszergazda – tagok](./media/pim-how-to-give-access-to-pim/pim-pra-members.png)
 
-1. Válassza a **tag hozzáadása** elemet a **felügyelt Tagok hozzáadása** ablaktábla megnyitásához.
+1. Válassza a **tag hozzáadása**  elemet a **felügyelt Tagok hozzáadása** ablaktábla megnyitásához.
 
 1. Válassza a **Tagok kiválasztása** lehetőséget a **Tagok kiválasztása** panel megnyitásához.
 
@@ -86,6 +86,6 @@ Mielőtt eltávolít valakit a Kiemelt szerepkörű rendszergazda szerepkörből
 
 1. Ha a rendszer arra kéri, hogy erősítse meg, hogy el kívánja távolítani a tagot a szerepkörből, válassza az **Igen**lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [A Privileged Identity Management használatának első lépései](pim-getting-started.md)

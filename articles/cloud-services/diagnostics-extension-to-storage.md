@@ -9,10 +9,10 @@ ms.date: 08/01/2016
 ms.author: bwren
 ms.subservice: diagnostic-extension
 ms.openlocfilehash: 9e16d77c36f382e72d5e9902b07afbbec50b6876
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88723254"
 ---
 # <a name="store-and-view-diagnostic-data-in-azure-storage"></a>Diagnosztikai adatok tárolása és megtekintése az Azure Storage-ban
@@ -33,12 +33,12 @@ A gyűjtött diagnosztikai adatok típusától függően Azure Diagnostics a Blo
 
 | Adatforrás | Tárolási formátum |
 | --- | --- |
-| Azure-naplók |Tábla |
+| Azure-naplók |Táblázat |
 | IIS 7,0-naplók |Blob |
-| Azure Diagnostics-infrastruktúranaplók |Tábla |
+| Azure Diagnostics-infrastruktúranaplók |Táblázat |
 | Sikertelen kérelmek nyomkövetési naplói |Blob |
-| Windows-eseménynaplók |Tábla |
-| Teljesítményszámlálók |Tábla |
+| Windows-eseménynaplók |Táblázat |
+| Teljesítményszámlálók |Táblázat |
 | Összeomlási memóriaképek |Blob |
 | Egyéni hibanaplók |Blob |
 
@@ -77,7 +77,7 @@ Több eszköz is elérhető az adattárolásra a Storage szolgáltatásba való 
 * A [Microsoft Azure Storage Explorer](../vs-azure-tools-storage-manage-with-storage-explorer.md) egy önálló alkalmazás, amely lehetővé teszi az Azure Storage-alapú adattárolást Windows, OSX és Linux rendszeren.
 * Az [azure Management Studio](https://www.cerebrata.com/products/azure-management-studio/introduction) tartalmaz Azure Diagnostics kezelőt, amely lehetővé teszi az Azure-on futó alkalmazások által gyűjtött diagnosztikai adatok megtekintését, letöltését és kezelését.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [A folyamat nyomon követése egy Cloud Services alkalmazásban Azure Diagnostics](../cloud-services/cloud-services-dotnet-diagnostics-trace-flow.md)
 
 

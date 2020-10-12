@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 07/18/2017
 ms.author: tagore
 ms.openlocfilehash: 2549cb0408c9dad3e92f2cec9625757de45a10dc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82086249"
 ---
 # <a name="sizes-for-cloud-services"></a>Méretek Cloud Services
@@ -79,7 +79,7 @@ Az alábbi táblázatokban a méretek és azok kapacitásai láthatóak.
 | Méret            | Processzormagok | Memória: GiB  | Ideiglenes tárolás: GiB       | Hálózati adapterek max. száma/hálózati sávszélesség |
 |---------------- | --------- | ------------ | -------------------- | ---------------------------- |
 | ExtraSmall      | 1         | 0.768        | 20                   | 1/alacsony |
-| Kicsi           | 1         | 1.75         | 225                  | 1/közepes |
+| Kicsi           | 1         | 1,75         | 225                  | 1/közepes |
 | Közepes          | 2         | 3.5          | 490                  | 1/közepes |
 | Nagy           | 4         | 7            | 1000                 | 2/magas |
 | ExtraLarge      | 8         | 14           | 2040                 | 4/magas |

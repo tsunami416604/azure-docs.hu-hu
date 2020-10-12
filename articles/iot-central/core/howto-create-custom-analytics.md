@@ -10,10 +10,10 @@ services: iot-central
 ms.custom: mvc
 manager: philmea
 ms.openlocfilehash: e04da10d71eed3706b87fc728a13927aeae82826
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84660125"
 ---
 # <a name="extend-azure-iot-central-with-custom-analytics-using-azure-databricks"></a>Az Azure IoT Central kiterjesztése egyéni elemzésekkel Azure Databricks használatával
@@ -31,7 +31,7 @@ Ebben a útmutatóban a következőket sajátíthatja el:
 
 A jelen útmutató lépéseinek végrehajtásához aktív Azure-előfizetésre van szükség.
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
 ### <a name="iot-central-application"></a>IoT Central alkalmazás
 
@@ -136,7 +136,7 @@ A fürt létrehozásához használja a következő táblázatban található inf
 | Fürt üzemmód | Standard |
 | Databricks Runtime verziója | 5,5 LTS (Scala 2,11, Spark 2.4.3) |
 | Python-verzió | 3 |
-| Automatikus skálázás engedélyezése | No |
+| Automatikus skálázás engedélyezése | Nem |
 | Megszakítás ennyi perc inaktivitás után | 30 |
 | Feldolgozó típusa | Standard_DS3_v2 |
 | Feldolgozók | 1 |
@@ -158,7 +158,7 @@ A következő lépések bemutatják, hogyan importálhatja a mintát a fürthöz
 
 1. A **könyvtár telepítése** lapon válassza a **Maven** lehetőséget a könyvtár forrásaként.
 
-1. A **koordináták** szövegmezőbe írja be a következő értéket:`com.microsoft.azure:azure-eventhubs-spark_2.11:2.3.10`
+1. A **koordináták** szövegmezőbe írja be a következő értéket: `com.microsoft.azure:azure-eventhubs-spark_2.11:2.3.10`
 
 1. A **telepítés** gombra kattintva telepítheti a tárat a fürtön.
 
@@ -172,7 +172,7 @@ A következő lépésekkel importálhatja a Python-kódot tartalmazó Databricks
 
 1. Navigáljon a **munkaterület** lapra a Databricks-környezetben. Válassza ki a fiók neve melletti legördülő menüt, majd válassza az **Importálás**lehetőséget.
 
-1. Válassza az importálás egy URL-címről lehetőséget, és adja meg a következő címet:[https://github.com/Azure-Samples/iot-central-docs-samples/blob/master/databricks/IoT%20Central%20Analysis.dbc?raw=true](https://github.com/Azure-Samples/iot-central-docs-samples/blob/master/databricks/IoT%20Central%20Analysis.dbc?raw=true)
+1. Válassza az importálás egy URL-címről lehetőséget, és adja meg a következő címet: [https://github.com/Azure-Samples/iot-central-docs-samples/blob/master/databricks/IoT%20Central%20Analysis.dbc?raw=true](https://github.com/Azure-Samples/iot-central-docs-samples/blob/master/databricks/IoT%20Central%20Analysis.dbc?raw=true)
 
 1. A jegyzetfüzet importálásához válassza az **Importálás**lehetőséget.
 

@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 01/13/2020
 ms.author: rohogue
 ms.openlocfilehash: 31d12466186bb7f66197218fbb9675888a35fef3
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/17/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88272773"
 ---
 # <a name="deploy-the-vfxt-cluster"></a>A vFXT-fürt üzembe helyezése
@@ -155,7 +155,7 @@ Az információk megkeresése:
 
    ![kimenetek oldal, amely a SSHSTRING, a RESOURCE_GROUP, a hely, a NETWORK_RESOURCE_GROUP, a hálózat, az ALHÁLÓZAT, a SUBNET_ID, a VSERVER_IPs és a MGMT_IP értékeket mutatja a címkéktől jobbra található mezőkben.](media/avere-vfxt-outputs-values.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy a fürt fut, és ismeri a felügyeleti IP-címét, [kapcsolódjon a fürt konfigurációs eszközéhez](avere-vfxt-cluster-gui.md).
 

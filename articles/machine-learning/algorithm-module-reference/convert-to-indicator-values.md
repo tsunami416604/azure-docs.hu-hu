@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 02/11/2020
 ms.openlocfilehash: f1b194f2c65f95ad4daff0353d05ca589db9ce51
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "79477663"
 ---
 # <a name="convert-to-indicator-values"></a>Átalakítás mutatóértékekké
@@ -49,7 +49,7 @@ Tegyük fel, hogy van egy olyan pontszáma, amely azt jelzi, hogy egy kiszolgál
 | --------- | ------------- |
 | 10301     | Alacsony           |
 | 10302     | Közepes        |
-| 10303     | Magasság          |
+| 10303     | Magas          |
 
 Ha a **konverziót jelző értékekre**alkalmazza, a tervező átalakítja a címkék egyetlen oszlopát több, logikai értékeket tartalmazó oszlopba:  
 
@@ -98,7 +98,7 @@ Ez a szakasz megvalósítási részleteket, tippeket és válaszokat tartalmaz a
 
 -   Csak a kategorikusként megjelölt oszlopok alakíthatók át jelző oszlopokra. Ha a következő hibaüzenet jelenik meg, akkor valószínű, hogy az egyik kiválasztott oszlop nem kategorikus:  
 
-     0056-es hiba: a nevű oszlop \<column name> nem engedélyezett kategóriába tartozik.  
+     0056-es hiba: a nevű oszlop  \<column name> nem engedélyezett kategóriába tartozik.  
 
      Alapértelmezés szerint a legtöbb karakterlánc-oszlop karakterlánc-szolgáltatásként van kezelve, ezért explicit módon meg kell jelölnie azokat kategorikusként a [metaadatok szerkesztése](edit-metadata.md)lehetőség használatával.  
 

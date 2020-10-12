@@ -4,10 +4,10 @@ description: Megtudhatja, hogyan állíthat be egy olyan labort, amely a termés
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 01199e76b7b9cb1a6360b5aba010d0cfd8936c23
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91251456"
 ---
 # <a name="set-up-a-lab-focused-on-deep-learning-in-natural-language-processing-using-azure-lab-services"></a>Tesztkörnyezet létrehozása a természetes nyelvi feldolgozással kapcsolatos mély tanuláshoz Azure Lab Services
@@ -36,7 +36,7 @@ A labor-fiók létrehozása után engedélyezze a következő beállításokat a
 
 A Linux-rendszerképekhez készült Data Science Virtual Machine az ilyen típusú osztályok számára szükséges mély tanulási keretrendszereket és eszközöket biztosít. Ennek eredményeképpen a sablon létrehozása után nem kell további testreszabást végeznie. A tanulók számára közzé lehet tenni. Kattintson a **Közzététel** gombra a sablon lapon a sablonnak a laborba való közzétételéhez.  
 
-## <a name="cost"></a>Költség
+## <a name="cost"></a>Költségek
 Ha a labor költségeit szeretné megbecsülni, a következő példát használhatja: 
 
 Egy 25 tanulós osztály esetében, amely 20 órányi időpontot és 10 órányi kvótát biztosít a munkahelyhez vagy a hozzárendelésekhez, a labor díja 25 diák * (20 + 10) óra * 139 labor egység * 0,01 USD/óra = 1042,5 USD

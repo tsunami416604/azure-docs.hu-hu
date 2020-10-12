@@ -12,10 +12,10 @@ ms.date: 08/08/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 72e4de1473766d50512453ae38b6033ff0c5b73d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85388034"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-google-account-using-azure-active-directory-b2c"></a>Regisztráció és bejelentkezés beállítása Google-fiókkal Azure Active Directory B2C használatával
@@ -33,7 +33,7 @@ Adja meg az alkalmazás **nevét** . Adja meg a *b2clogin.com* a **jogosultságg
 1. Válassza a bal oldali menüben a **hitelesítő adatok** lehetőséget, majd válassza a **hitelesítő adatok létrehozása**  >  **OAuth-ügyfél-azonosító**lehetőséget.
 1. Az **alkalmazás típusa**területen válassza a **webalkalmazás**lehetőséget.
 1. Adja meg az alkalmazás **nevét** , adja meg `https://your-tenant-name.b2clogin.com` a megfelelő **JavaScript-eredetet**, és `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp` a **jóváhagyott átirányítási URI**-k között. Cserélje le a helyére a `your-tenant-name` bérlő nevét. A bérlő nevének megadásakor az összes kisbetűt kell használnia, még akkor is, ha a bérlőt nagybetűvel definiálták Azure AD B2C.
-1. Kattintson a **Létrehozás** lehetőségre.
+1. Kattintson a **Létrehozás** elemre.
 1. Másolja ki az **ügyfél-azonosító** és az **ügyfél titkos kulcsának**értékeit. Mindkettőre szüksége lesz a Google identitás-szolgáltatóként való konfigurálásához a bérlőben. Az **ügyfél titkos kulcsa** fontos biztonsági hitelesítő adat.
 
 ## <a name="configure-a-google-account-as-an-identity-provider"></a>Google-fiók konfigurálása identitás-szolgáltatóként
@@ -45,4 +45,4 @@ Adja meg az alkalmazás **nevét** . Adja meg a *b2clogin.com* a **jogosultságg
 1. Adjon meg egy **nevet**. Például a *Google*.
 1. Az **ügyfél-azonosító**mezőben adja meg a korábban létrehozott Google-alkalmazás ügyfél-azonosítóját.
 1. Az **ügyfél titka**mezőben adja meg a rögzített ügyfél-titkot.
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.

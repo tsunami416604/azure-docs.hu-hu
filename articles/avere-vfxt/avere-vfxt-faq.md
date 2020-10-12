@@ -8,10 +8,10 @@ ms.date: 12/19/2019
 ms.author: rohogue
 ms.custom: references_regions
 ms.openlocfilehash: c6459e2daf17772b28ee53289754deb33b4823ae
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/17/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88272691"
 ---
 # <a name="avere-vfxt-for-azure-faq"></a>Gyakori kérdések az Azure-hoz készült Avere vFXT-ről
@@ -283,7 +283,7 @@ Az Azure-ban nincs további licencelési díj a avere vFXT-fürtök használatá
 
 Nem, a avere vFXT-fürtök "always on" szolgáltatást igényelnek. A fürtök kikapcsolhatók, ha nem szükségesek.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure-hoz készült avere vFXT megismeréséhez olvassa el ezeket a cikkeket a saját rendszer megtervezéséhez és üzembe helyezéséhez:
 

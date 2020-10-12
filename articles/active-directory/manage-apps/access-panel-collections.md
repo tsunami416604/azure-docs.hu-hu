@@ -15,10 +15,10 @@ ms.author: kenwith
 ms.reviewer: kasimpso
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8f520141d36726e94dc8d49d7e5aa95bb35d5484
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85956236"
 ---
 # <a name="create-collections-on-the-my-apps-portal"></a>Gyűjtemények létrehozása a Saját alkalmazások portálon
@@ -57,13 +57,13 @@ Gyűjtemény létrehozásához rendelkeznie kell egy prémium szintű Azure AD P
 
    ![Új gyűjtemény lap](media/acces-panel-collections/new-collection.png)
 
-5. Válassza az **alkalmazások** fület. Válassza az **+ alkalmazás hozzáadása**lehetőséget, majd az **Alkalmazások hozzáadása** oldalon jelölje ki az összes olyan alkalmazást, amelyet hozzá szeretne adni a gyűjteményhez, vagy használja a **keresőmezőt** az alkalmazások kereséséhez.
+5. Válassza az **alkalmazások** fület. Válassza az **+ alkalmazás hozzáadása**lehetőséget, majd az **Alkalmazások hozzáadása** oldalon válassza ki az összes olyan alkalmazást, amelyet hozzá szeretne adni a gyűjteményhez, vagy használja a **keresőmezőt** az alkalmazások kereséséhez.
 
    ![Alkalmazás hozzáadása a gyűjteményhez](media/acces-panel-collections/add-applications.png)
 
 6. Ha elkészült az alkalmazások hozzáadásával, válassza a **Hozzáadás**lehetőséget. Megjelenik a kiválasztott alkalmazások listája. A felfelé mutató nyíl használatával módosíthatja a listában szereplő alkalmazások sorrendjét. Ha lejjebb szeretné helyezni az alkalmazást, vagy törölni szeretné a gyűjteményből, válassza a **továbbiak** menüt (**...**).
 
-7. Válassza a **tulajdonosok** fület. Válassza a **+ felhasználók és csoportok hozzáadása**lehetőséget, majd a **felhasználók és csoportok hozzáadása** lapon válassza ki azokat a felhasználókat vagy csoportokat, amelyekhez hozzá szeretné rendelni a tulajdonost. Ha végzett a felhasználók és csoportok kijelölésével, válassza a **kiválasztás**lehetőséget.
+7. Válassza a **tulajdonosok** lapot. Válassza a **+ felhasználók és csoportok hozzáadása**lehetőséget, majd a **felhasználók és csoportok hozzáadása** lapon válassza ki azokat a felhasználókat vagy csoportokat, amelyekhez hozzá szeretné rendelni a tulajdonost. Ha végzett a felhasználók és csoportok kijelölésével, válassza a **kiválasztás**lehetőséget.
 
 9. Válassza a **felhasználók és csoportok** lapot. Válassza a **+ felhasználók és csoportok hozzáadása**lehetőséget, majd a **felhasználók és csoportok hozzáadása** lapon válassza ki azokat a felhasználókat vagy csoportokat, amelyekhez hozzá szeretné rendelni a gyűjteményt. Vagy használja a **keresőmezőt** a felhasználók vagy csoportok kereséséhez. Ha végzett a felhasználók és csoportok kijelölésével, válassza a **kiválasztás**lehetőséget.
 

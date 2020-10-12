@@ -12,10 +12,10 @@ ms.date: 08/08/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: e07be01a0fb6d74b4dcef5cbc6ec129f95fd2e7d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85387932"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-twitter-account-using-azure-active-directory-b2c"></a>Twitter-fiókkal való regisztráció és bejelentkezés beállítása Azure Active Directory B2C használatával
@@ -25,7 +25,7 @@ ms.locfileid: "85387932"
 Ha a Twittert identitás-szolgáltatóként szeretné használni Azure AD B2Cban, létre kell hoznia egy Twitter-alkalmazást. Ha még nem rendelkezik Twitter-fiókkal, regisztrálhat a következő címen: [https://twitter.com/signup](https://twitter.com/signup) .
 
 1. Jelentkezzen be a [Twitter-fejlesztők](https://developer.twitter.com/en/apps) webhelyére a Twitter-fiókja hitelesítő adataival.
-1. Válassza **az alkalmazás létrehozása**lehetőséget.
+1. Válassza  **az alkalmazás létrehozása**lehetőséget.
 1. Adja meg az alkalmazás **nevét** és **leírását**.
 1. A **webhely URL-címe**mezőbe írja be a értéket `https://your-tenant.b2clogin.com` . Cserélje le a helyére a `your-tenant` bérlő nevét. Például: `https://contosob2c.b2clogin.com`.
 1. A **visszahívás URL-címéhez**írja be a következőt: `https://your-tenant.b2clogin.com/your-tenant.onmicrosoft.com/your-user-flow-Id/oauth1/authresp` . Cserélje le a `your-tenant` nevet a bérlő nevére, a `your-user-flow-Id` felhasználói folyamat azonosítójával együtt. Például: `b2c_1A_signup_signin_twitter`. Az összes kisbetűs betűt kell használnia, ha a bérlő nevét és a felhasználói folyamat azonosítóját akkor is meg kell adnia, ha nagybetűvel vannak meghatározva a Azure AD B2Cban.
@@ -42,4 +42,4 @@ Ha a Twittert identitás-szolgáltatóként szeretné használni Azure AD B2Cban
 1. Adjon meg egy **nevet**. Például: *Twitter*.
 1. Az **ügyfél-azonosító**mezőben adja meg a korábban létrehozott Twitter-alkalmazás fogyasztói API-kulcsát.
 1. Az **ügyfél titkos**kulcsa mezőben adja meg a rögzített fogyasztói API titkos kulcsot.
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.

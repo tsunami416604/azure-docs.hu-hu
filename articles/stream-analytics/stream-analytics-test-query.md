@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 3/6/2020
 ms.custom: seodec18
 ms.openlocfilehash: deaa52494fce387bde2b105de7d34e8a4f0c5c2f
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89612161"
 ---
 # <a name="test-an-azure-stream-analytics-job-in-the-portal"></a>Azure Stream Analytics-feladatok tesztelése a portálon
@@ -23,7 +23,7 @@ A Azure Stream Analytics a feladatok elindítása vagy leállítása nélkül is
 
 Azure Stream Analytics automatikusan beolvassa az eseményeket a folyamatos átviteli bemenetekről. Futtathat lekérdezéseket az alapértelmezett mintán, vagy beállíthatja a minta egy adott időkeretét.
 
-1. Jelentkezzen be az Azure Portalra.
+1. Jelentkezzen be az Azure portálra.
 
 2. Keresse meg és válassza ki a meglévő Stream Analytics feladatot.
 
@@ -71,7 +71,7 @@ Azure Stream Analytics automatikusan beolvassa az eseményeket a folyamatos átv
 
 Az élő adatok helyett helyi fájlokból származó mintaadatok használatával tesztelheti a Azure Stream Analytics lekérdezést.
 
-1. Jelentkezzen be az Azure Portalra.
+1. Jelentkezzen be az Azure portálra.
    
 2. Keresse meg a meglévő Stream Analytics feladatot, és válassza ki.
 
@@ -81,7 +81,7 @@ Az élő adatok helyett helyi fájlokból származó mintaadatok használatával
 
    ![Minta Azure Stream Analytics feltöltése](./media/stream-analytics-test-query/asa-upload-sample-file.png)
 
-5. Töltse fel a helyi fájlt a lekérdezés teszteléséhez. Csak a JSON-, CSV-vagy AVRO-formátumokkal tölthet fel fájlokat. Válassza az **OK** lehetőséget.
+5. Töltse fel a helyi fájlt a lekérdezés teszteléséhez. Csak a JSON-, CSV-vagy AVRO-formátumokkal tölthet fel fájlokat. Kattintson az **OK** gombra.
 
    ![Minta Azure Stream Analytics feltöltése](./media/stream-analytics-test-query/asa-upload-sample-json-file.png)
 

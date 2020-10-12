@@ -10,10 +10,10 @@ ms.date: 08/08/2018
 ms.reviewer: jushiman
 ms.custom: mimckitt
 ms.openlocfilehash: cb4d30a2bb7704ef7d4d4760f3d8cf74788945c2
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89611924"
 ---
 # <a name="create-a-virtual-machine-scale-set-that-uses-availability-zones"></a>Availability Zonest használó virtuálisgép-méretezési csoport létrehozása
@@ -43,7 +43,7 @@ Méretezési csoport központi telepítésekor lehetősége van arra is, hogy re
 
 ### <a name="zone-balancing"></a>Zónák terheléselosztása
 
-Végül a több zónában üzembe helyezett méretezési csoportok esetében lehetősége van arra is, hogy a "legjobb erőkifejtési zóna egyenlege" vagy a "szigorú zónák egyenlege" lehetőséget választja. A méretezési csoport "kiegyensúlyozottnak" minősül, ha minden zónában azonos számú virtuális \\ gép vagy +-1 virtuális gép található a méretezési csoport minden más zónájában. Például:
+Végül a több zónában üzembe helyezett méretezési csoportok esetében lehetősége van arra is, hogy a "legjobb erőkifejtési zóna egyenlege" vagy a "szigorú zónák egyenlege" lehetőséget választja. A méretezési csoport "kiegyensúlyozottnak" minősül, ha minden zónában azonos számú virtuális \\ gép vagy +-1 virtuális gép található a méretezési csoport minden más zónájában. Példa:
 
 - Egy 2 virtuális géppel rendelkező méretezési csoport az 1. zónában, 3 virtuális gép a 2. zónában, a 3. zónában 3 virtuális gép pedig kiegyensúlyozottnak számít. Csak egy, eltérő virtuálisgép-számmal rendelkező zóna van, és csak 1 kisebb, mint a többi zóna. 
 - Egy 1 virtuális géppel rendelkező méretezési csoport az 1. zónában, 3 virtuális gép a 2. zónában és 3 virtuális gép a 3. zónában kiegyensúlyozatlan számít. 1. zóna a 2. és 3. zónánál kevesebb virtuális gépet tartalmaz.
@@ -65,7 +65,7 @@ Availability Zones használatához a méretezési csoportnak egy [támogatott Az
 - [Azure Portal](#use-the-azure-portal)
 - Azure CLI
 - [Azure PowerShell](#use-azure-powershell)
-- [Azure Resource Manager sablonok](#use-azure-resource-manager-templates)
+- [Azure Resource Manager-sablonok](#use-azure-resource-manager-templates)
 
 ## <a name="use-the-azure-portal"></a>Az Azure Portal használata
 
@@ -75,7 +75,7 @@ A rendelkezésre állási zónát használó méretezési csoport létrehozásá
 
 A méretezési csoport és a támogató erőforrások, például az Azure Load Balancer és a nyilvános IP-cím, az Ön által megadott egyetlen zónában jönnek létre.
 
-## <a name="use-the-azure-cli"></a>Az Azure parancssori felületének használata
+## <a name="use-the-azure-cli"></a>Az Azure CLI használata
 
 A rendelkezésre állási zónát használó méretezési csoport létrehozásának folyamata megegyezik az [első lépéseket ismertető cikkben](quick-create-cli.md)részletezett eljárással. A Availability Zones használatához létre kell hoznia a méretezési csoportját egy támogatott Azure-régióban.
 

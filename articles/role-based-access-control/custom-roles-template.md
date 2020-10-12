@@ -11,10 +11,10 @@ ms.workload: identity
 ms.date: 06/25/2020
 ms.author: rolyon
 ms.openlocfilehash: bcf1966ffc326291448cb611d99390fe0d652151
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85392929"
 ---
 # <a name="create-an-azure-custom-role-using-an-azure-resource-manager-template"></a>Egyéni Azure-szerepkör létrehozása Azure Resource Manager sablon használatával
@@ -74,7 +74,7 @@ Az előző sablon üzembe helyezéséhez kövesse az alábbi lépéseket.
 
 1. Adja meg az egyéni szerepkörhöz tartozó műveletek listáját vesszővel tagolt listaként, mint például a *Microsoft. Resources/Resources/READ, Microsoft. Resources/Subscriptions/resourceGroups/Read*.
 
-1. Ha szükséges, nyomja le az ENTER billentyűt a New-AzDeployment parancs futtatásához.
+1. Ha szükséges, nyomja le az ENTER billentyűt az New-AzDeployment parancs futtatásához.
 
     A [New-AzDeployment](/powershell/module/az.resources/new-azdeployment) parancs telepíti a sablont az egyéni szerepkör létrehozásához.
 
@@ -151,7 +151,7 @@ Az alábbi lépéseket követve ellenőrizheti, hogy létrejött-e az egyéni sz
 
    ![Új egyéni szerepkör a Azure Portal](./media/custom-roles-template/custom-role-template-portal.png)
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Az egyéni szerepkör eltávolításához kövesse az alábbi lépéseket.
 

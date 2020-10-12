@@ -7,10 +7,10 @@ ms.date: 02/14/2020
 ms.author: cshoe
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 1dc1198ab9c546ef1defa1891777c4c8081171e9
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85957178"
 ---
 # <a name="azure-event-grid-bindings-for-azure-functions"></a>Azure Functions-kötések Azure Event Grid
@@ -23,7 +23,7 @@ Az *eseménykezelők fogadják* és dolgozzák fel az eseményeket. A Azure Func
 
 Ha szeretné, használhat egy HTTP-triggert Event Grid események kezelésére; Lásd: [események fogadása http-végpontra](../event-grid/receive-events.md). Jelenleg nem használhat Event Grid eseményindítót egy Azure Functions alkalmazáshoz, ha az esemény a [CloudEvents-sémában](../event-grid/cloudevents-schema.md#azure-functions)kerül kézbesítésre. Ehelyett használjon HTTP-triggert.
 
-| Műveletek | Típus |
+| Művelet | Típus |
 |---------|---------|
 | Függvény futtatása egy Event Grid esemény elküldésekor | [Eseményindító](./functions-bindings-event-grid-trigger.md) |
 | Event Grid esemény küldése |[Kimeneti kötés](./functions-bindings-event-grid-output.md) |

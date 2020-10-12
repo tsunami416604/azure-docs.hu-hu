@@ -11,10 +11,10 @@ ms.date: 02/25/2020
 ms.author: lcozzens
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: dc816f54a690a4c72c44d70ecbf2cc0156ac84ed
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87498310"
 ---
 # <a name="route-azure-app-configuration-events-to-a-web-endpoint-with-azure-cli"></a>Azure-alkalmazás konfigurációs eseményeinek átirányítása webes végpontra az Azure CLI-vel
@@ -135,6 +135,6 @@ az group delete --name <resource_group_name>
 
 Most, hogy már tudja, hogyan hozhat létre témaköröket és esemény-előfizetéseket, többet tudhat meg a kulcs-érték eseményekről, és arról, hogy milyen Event Grid segíthet:
 
-- [Reagálás a kulcs-érték eseményekre](concept-app-configuration-event.md)
+- [Key-Value eseményekre való reagálás](concept-app-configuration-event.md)
 - [Bevezetés az Event Grid használatába](../event-grid/overview.md)
 - [Azure Event Grid kezelők](../event-grid/event-handlers.md)

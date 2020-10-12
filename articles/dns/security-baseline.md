@@ -8,10 +8,10 @@ ms.date: 08/25/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: 83cc1b2fd0936d814e4a31714fecfdea7ccce988
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89225666"
 ---
 # <a name="azure-security-baseline-for-azure-dns"></a>Azure DNS Azure biztonsági alapterve
@@ -260,7 +260,7 @@ Ezt a folyamatot leegyszerűsítheti, ha diagnosztikai beállításokat hoz lét
 
 ### <a name="46-use-azure-rbac-to-manage-access-to-resources"></a>4,6: az erőforrásokhoz való hozzáférés kezelése az Azure RBAC
 
-**Útmutató**: az azure szerepköralapú Access Control (Azure RBAC) részletes hozzáférés-kezelést tesz lehetővé az Azure-felhasználók,-csoportok és-erőforrások számára. Az Azure RBAC segítségével megadhatja a felhasználók által igényelt hozzáférési szintet. 
+**Útmutató**: az azure Role-Based Access Control (Azure RBAC) részletes hozzáférés-kezelést tesz lehetővé az Azure-felhasználók,-csoportok és-erőforrások számára. Az Azure RBAC segítségével megadhatja a felhasználók által igényelt hozzáférési szintet. 
 
 A Azure DNSban létezik a DNS-zóna közreműködői szerepköre, valamint a zóna szintje és a Record set szintű Azure-RBAC. Saját egyéni Azure-szerepköröket is létrehozhat, így finomabb szabályozást is biztosíthat.
 

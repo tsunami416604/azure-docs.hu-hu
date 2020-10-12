@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 12/16/2019
 ms.author: juliako
 ms.openlocfilehash: 5b9ec1c04dd90af9d9380a1f4d30386c8f9cc3ed
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "79499668"
 ---
 # <a name="manage-a-video-indexer-account-connected-to-azure"></a>Az Azure-hoz csatlakoztatott Video Indexer-fiók kezelése
@@ -50,18 +50,18 @@ Ha a video Indexer-fiókja csatlakozik az Azure-hoz, a következő dolgokat lát
 
 Ha a fióknak valamilyen módosításra van szüksége, a **Beállítások** lapon láthatja a fiók konfigurációjának megfelelő hibákat és figyelmeztetéseket. Az üzenetek a Azure Portal pontos helyeire mutató hivatkozásokat tartalmaznak, amelyekben módosítani kell a módosításokat. További információ: a következő, [hibákkal és figyelmeztetésekkel](#errors-and-warnings) foglalkozó szakasz.
 
-## <a name="repair-the-connection-to-azure"></a>Az Azure-hoz való kapcsolódás javítása
+## <a name="repair-the-connection-to-azure"></a>Az Azure-ral létesített kapcsolat kijavítása
 
 A [video Indexer](https://www.videoindexer.ai/) lap **kapcsolatok frissítése Azure Media Services** párbeszédpanelén a rendszer megkéri, hogy adja meg a következő beállítások értékeit:
 
-|Beállítás|Description|
+|Beállítás|Leírás|
 |---|---|
 |Azure-előfizetés azonosítója|Az előfizetés-azonosító a Azure Portalból kérhető le. A bal oldali panelen kattintson a **minden szolgáltatás** elemre, és keressen rá az "előfizetések" kifejezésre. Válassza az **előfizetések** lehetőséget, majd válassza ki a kívánt azonosítót az előfizetések listájából.|
 |Azure Media Services erőforráscsoport neve|Azon erőforráscsoport neve, amelyben létrehozta a Media Services fiókot.|
 |Alkalmazásazonosító|Az ehhez a Video Indexer-fiókhoz létrehozott Azure AD-alkalmazás azonosítója (a megadott Media Services fiókhoz tartozó engedélyekkel). <br/><br/>Az alkalmazás AZONOSÍTÓjának beszerzéséhez navigáljon Azure Portal. A Media Services fiók alatt válassza ki a fiókját, és lépjen az **API-hozzáférés**elemre. Válassza a **Kapcsolódás az Media Services API-hoz az egyszerű szolgáltatásnév**  ->  **Azure ad alkalmazás**lehetőséget. Másolja ki a megfelelő paramétereket.|
 |Alkalmazás kulcsa|A fent megadott Media Services-fiókhoz társított Azure AD-alkalmazás kulcsa. <br/><br/>Az alkalmazás kulcsának beszerzéséhez navigáljon Azure Portal. A Media Services fiók alatt válassza ki a fiókját, és lépjen az **API-hozzáférés**elemre. Válassza a **Kapcsolódás az Media Services API-hoz lehetőséget az**  ->  **alkalmazás**-  ->  **tanúsítványok & titkok**kezelése szolgáltatással. Másolja ki a megfelelő paramétereket.|
 
-## <a name="autoscale-reserved-units"></a>Fenntartott egységek méretezése
+## <a name="autoscale-reserved-units"></a>A fenntartott egységek automatikus skálázása
 
 A **Beállítások** lapon állíthatja be a Media szolgáltatás számára fenntartott egységek (ru) automatikus skálázását. Ha a lehetőség **be van kapcsolva**, lefoglalhatja az RUS maximális számát, és biztos lehet benne, hogy a video Indexer automatikusan leállítja/elindítja az RUS-t. Ha ezt a lehetőséget választja, nem számítunk fel extra összeget a tétlen időpontig, de ne várjon, amíg az indexelési feladatok hosszú időt töltenek be, amikor az indexelési terhelés magas.
 
@@ -81,7 +81,7 @@ Ha a fióknak valamilyen módosításra van szüksége, a **Beállítások** lap
 
     Győződjön meg arról, hogy az alapul szolgáló Media Services fiók rendelkezik az alapértelmezett **folyamatos átviteli végponttal** egy elindított állapotban. Ellenkező esetben nem tekintheti meg a videókat ebből a Media Services fiókból vagy Video Indexerból.
 
-* Media szolgáltatás számára fenntartott egységek
+* Fenntartott médiaegységek
 
     A videók indexeléséhez le kell foglalni a Media szolgáltatás számára fenntartott egységeket a Media Service-erőforráshoz. Az optimális indexelési teljesítmény érdekében javasoljuk, hogy legalább 10 S3 fenntartott egységet foglaljon le. A díjszabással kapcsolatos információkért tekintse meg a [Media Services díjszabási](https://azure.microsoft.com/pricing/details/media-services/) oldalának gyakori kérdések című szakaszát.
 

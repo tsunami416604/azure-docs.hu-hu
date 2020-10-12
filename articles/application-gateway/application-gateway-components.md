@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 08/21/2020
 ms.author: surmb
 ms.openlocfilehash: ebd06b0b78ee511dce535ff4220df03087fb6906
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88723316"
 ---
 # <a name="application-gateway-components"></a>Application Gateway-összetevők
@@ -77,7 +77,7 @@ Kétféle figyelő létezik:
 
 A figyelő létrehozása után társítsa azt egy kérelem-útválasztási szabállyal. Ez a szabály határozza meg, hogy a figyelőre érkező kérés hogyan legyen átirányítva a háttérbe. A kérelem útválasztási szabálya tartalmazza az átirányítani kívánt háttér-készletet is, valamint azt a HTTP-beállítást, amelyben a háttér-port, a protokoll stb. szerepel.
 
-## <a name="request-routing-rules"></a>Kérelmek útválasztási szabályai
+## <a name="request-routing-rules"></a>Kérelemirányítási szabályok
 
 A kérelem-útválasztási szabály az Application Gateway egyik fő összetevője, mert meghatározza, hogyan irányíthatja át a forgalmat a figyelőn. A szabály köti a figyelőt, a háttér-kiszolgáló készletet és a háttérbeli HTTP-beállításokat.
 

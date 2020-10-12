@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 1/17/2020
 ms.author: atinb
 ms.openlocfilehash: 0761db6b73c6fcfeb1ef6fda729a68c9644bbc72
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "79479559"
 ---
 # <a name="install-azure-farmbeats"></a>Az Azure FarmBeats telepítése
@@ -32,7 +32,7 @@ Az Azure FarmBeats telepítésekor a következő erőforrások vannak kiépítve
 |---------|---------|
 | Application Insights   |      Datahub & gyorsító      |
 | App Service     |     Datahub & gyorsító     |
-| App Service-csomag   | Datahub & gyorsító  |
+| App Service Plan (App Service-csomag)   | Datahub & gyorsító  |
 | API-kapcsolatok    |  Datahub       |
 | Azure Cache for Redis       | Datahub      |
 | Azure Cosmos DB   |  Datahub       |
@@ -61,7 +61,7 @@ Az Azure FarmBeats jelenleg a következő régiókban támogatja a nyilvános Fe
 - USA keleti régiója
 - USA 2. keleti régiója
 - USA nyugati régiója
-- USA nyugati régiója, 2.
+- USA 2. nyugati régiója
 - Észak-Európa
 - Nyugat-Európa
 - Kelet-Ázsia
@@ -152,7 +152,7 @@ Most már készen áll a FarmBeats telepítésére. A telepítés elindításáh
 
 2. Nyissa meg az Azure Marketplace-t a portálon, és keresse meg az **Azure FarmBeats** a piactéren.
 
-3. Megjelenik egy új ablak, amely áttekintést nyújt az Azure FarmBeats. Válassza a **Létrehozás** lehetőséget.
+3. Megjelenik egy új ablak, amely áttekintést nyújt az Azure FarmBeats. Kattintson a **Létrehozás** gombra.
 
 4. Ekkor megjelenik egy új ablak. A regisztrációs folyamat befejezéséhez válassza ki a megfelelő előfizetést, erőforráscsoportot és helyet, amelyre telepíteni szeretné az Azure-FarmBeats.
 

@@ -12,10 +12,10 @@ ms.date: 04/05/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: d1a771cb13fcfa76449500ad71c67dcf7c446fa4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85388442"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-an-amazon-account-using-azure-active-directory-b2c"></a>Egy Amazon-fiókkal történő regisztráció és bejelentkezés beállítása Azure Active Directory B2C
@@ -26,8 +26,8 @@ Ha az Amazon-fiókot összevont identitás-szolgáltatóként szeretné használ
 
 > [!NOTE]  
 > Használja a következő URL-címeket az alábbi **8. lépésben** , a helyére pedig `your-tenant-name` a bérlő nevét. A bérlő nevének megadásakor használja az összes kisbetűt, még akkor is, ha a bérlő nagybetűvel van definiálva Azure AD B2Cban.
-> - Az **engedélyezett eredetek**mezőben adja meg a következőt:`https://your-tenant-name.b2clogin.com` 
-> - Az **engedélyezett visszatérési URL-címek**esetében adja meg a`https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`
+> - Az **engedélyezett eredetek**mezőben adja meg a következőt: `https://your-tenant-name.b2clogin.com` 
+> - Az **engedélyezett visszatérési URL-címek**esetében adja meg a `https://your-tenant-name.b2clogin.com/your-tenant-name.onmicrosoft.com/oauth2/authresp`
 
 [!INCLUDE [identity-provider-amazon-idp-register.md](../../includes/identity-provider-amazon-idp-register.md)]
 
@@ -40,4 +40,4 @@ Ha az Amazon-fiókot összevont identitás-szolgáltatóként szeretné használ
 1. Adjon meg egy **nevet**. Például: *Amazon*.
 1. Az **ügyfél-azonosító**mezőben adja meg a korábban létrehozott Amazon-alkalmazás ügyfél-azonosítóját.
 1. Az **ügyfél titka**mezőben adja meg a rögzített ügyfél-titkot.
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.

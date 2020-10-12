@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 12/02/2019
 ms.author: v-umha
 ms.openlocfilehash: 6ccc29422c6abf1120d13c05d10125efd0871ca6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "79502065"
 ---
 # <a name="manage-users"></a>Felhasználók kezelése
@@ -78,7 +78,7 @@ A következő lépésekkel adhat hozzá felhasználókat az Azure AD-hoz:
     ![A "minden felhasználó" panel](./media/create-farms-in-azure-farmbeats/manage-users-3.png)
 
 5. Válassza ki az új felhasználó nevét, majd hajtsa végre a szükséges mezőket az adott felhasználó számára.
-6. Válassza a **Létrehozás** lehetőséget.
+6. Kattintson a **Létrehozás** gombra.
 
 Az Azure AD-felhasználók felügyeletével kapcsolatos információkért lásd: [felhasználók hozzáadása vagy törlése az Azure ad-ben](https://docs.microsoft.com/azure/active-directory/fundamentals/add-users-azure-active-directory/).
 

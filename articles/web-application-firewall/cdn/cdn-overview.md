@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: victorh
 ms.openlocfilehash: 6949c1e8f83ebf47878a3d449796ccc03920756a
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89225152"
 ---
 # <a name="azure-web-application-firewall-on-azure-content-delivery-network"></a>Azure webalkalmazási tűzfal az Azure Content Delivery Network
@@ -108,10 +108,10 @@ Az egyéni szabályokat a rendszer mindig alkalmazza az alapértelmezett szabál
 
 Az összes WAF konfigurálhatja és telepítheti a Azure Portal, a REST API-k, a Azure Resource Manager sablonok és a Azure PowerShell használatával.
 
-## <a name="monitoring"></a>Nyomon követés
+## <a name="monitoring"></a>Figyelés
 
 A CDN-vel való WAF figyelése integrálva van Azure Monitor a riasztások nyomon követésére és a forgalmi trendek egyszerű figyelésére.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Oktatóanyag: WAF szabályzat létrehozása Azure CDN a Azure Portal használatával](waf-cdn-create-portal.md)

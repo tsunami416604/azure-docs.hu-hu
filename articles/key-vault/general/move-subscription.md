@@ -12,10 +12,10 @@ ms.date: 05/05/2020
 ms.author: sudbalas
 Customer intent: As a key vault administrator, I want to move my vault to another subscription.
 ms.openlocfilehash: e6ab37539d00b6748d0e63a3f559bf70f493cf42
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89394737"
 ---
 # <a name="moving-an-azure-key-vault-to-another-subscription"></a>Azure Key Vault áthelyezése másik előfizetésre
@@ -72,7 +72,7 @@ Győződjön meg arról, hogy a Azure Portal Azure Policy lapjára mutat, és te
 
 ### <a name="additional-steps-if-you-moved-key-vault-to-a-subscription-in-a-new-tenant"></a>További lépések, ha áthelyezte a Key vaultot egy új bérlőn lévő előfizetésbe
 
-Ha áthelyezte a kulcstartót egy új bérlő egyik előfizetéséhez, manuálisan kell frissítenie a bérlő AZONOSÍTÓját, és el kell távolítania a régi hozzáférési házirendeket. Ezek a lépések a PowerShell és az Azure CLI-ben című témakörben találhatók. Ha a PowerShellt használja, előfordulhat, hogy az alábbiakban ismertetett Clear-AzContext parancsot kell futtatnia, hogy az aktuálisan kiválasztott hatókörön kívül is megjelenjenek az erőforrások. 
+Ha áthelyezte a kulcstartót egy új bérlő egyik előfizetéséhez, manuálisan kell frissítenie a bérlő AZONOSÍTÓját, és el kell távolítania a régi hozzáférési házirendeket. Ezek a lépések a PowerShell és az Azure CLI-ben című témakörben találhatók. Ha a PowerShellt használja, akkor előfordulhat, hogy az alábbi, az aktuálisan kijelölt Hatókörön kívüli erőforrások megtekintését lehetővé tevő Clear-AzContext parancsot kell futtatnia. 
 
 ```azurepowershell
 Select-AzSubscription -SubscriptionId <your-subscriptionId>                # Select your Azure Subscription

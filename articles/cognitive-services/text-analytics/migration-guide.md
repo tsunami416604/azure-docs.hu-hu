@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 06/25/2020
 ms.author: aahi
 ms.openlocfilehash: 12c09ad8e1db3914263fcc864c9c2d09069d63a6
-ms.sourcegitcommit: fdaad48994bdb9e35cdd445c31b4bac0dd006294
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85412583"
 ---
 # <a name="migrate-to-version-3x-of-the-text-analytics-api"></a>Migrálás a Text Analytics API 3. x verziójára
@@ -23,7 +23,7 @@ ms.locfileid: "85412583"
 
 Ha a Text Analytics API 2,1-es verzióját használja, ez a cikk segítséget nyújt az alkalmazás frissítéséhez a 3. x verzió használatára. Az 3,0-es verzió általánosan elérhető, és olyan új funkciókat vezet be, mint az [elnevezett entitás-felismerés](how-tos/text-analytics-how-to-entity-linking.md#named-entity-recognition-versions-and-features) és a [modell verziószámozása](concepts/model-versioning.md). A v 3.1 (v 3.1-preview. x) előzetes verziója is elérhető, amely olyan funkciókat is tartalmaz, mint a [vélemény bányászata](how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features). A v2-ben használt modellek nem kapják meg a jövőbeli frissítéseket. 
 
-#### <a name="sentiment-analysis"></a>[Hangulat elemzése](#tab/sentiment-analysis)
+#### <a name="sentiment-analysis"></a>[Hangulatelemzés](#tab/sentiment-analysis)
 
 ## <a name="feature-changes"></a>Szolgáltatások módosításai 
 
@@ -94,7 +94,7 @@ A Key kifejezés kibontása szolgáltatás nem módosult a v3 verzión kívül.
 
 ### <a name="rest-api"></a>REST API
 
-Ha az alkalmazás a REST API használja, frissítse a kérelem végpontját a v3 végpontra a fő kifejezés kinyeréséhez. Például:`https://<your-custom-subdomain>.api.cognitiveservices.azure.com/text/analytics/v3.0/keyPhrases`
+Ha az alkalmazás a REST API használja, frissítse a kérelem végpontját a v3 végpontra a fő kifejezés kinyeréséhez. Például: `https://<your-custom-subdomain>.api.cognitiveservices.azure.com/text/analytics/v3.0/keyPhrases`
 
 ### <a name="client-libraries"></a>Ügyfélkódtárak
 

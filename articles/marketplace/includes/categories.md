@@ -1,5 +1,5 @@
 ---
-title: fájl belefoglalása
+title: fájlbefoglalás
 description: fájl belefoglalása a kategóriák és alkategóriák listájához
 documentationcenter: partner-center-commercial-marketplace
 ms.service: marketplace
@@ -10,10 +10,10 @@ ms.custom: include file
 author: anbene
 ms.author: mingshen
 ms.openlocfilehash: 763ee108e1e2899bb2268ae5e6236f74a73e4b44
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87498046"
 ---
 | [**Azure Piactér**](https://azuremarketplace.microsoft.com/marketplace/apps)  | [**AppSource**](https://appsource.microsoft.com/marketplace/apps) |
@@ -21,10 +21,10 @@ ms.locfileid: "87498046"
 |**Elemzés** | **Elemzés** |
 | &nbsp;&nbsp;Adatelemzések | &nbsp;&nbsp;Fejlett Analitika  |
 | &nbsp;&nbsp;Adatelemzés |  &nbsp;&nbsp;Vizualizáció & jelentéskészítés |
-| &nbsp;&nbsp;Big-adatmennyiség | **AI + Machine Learning**  |
+| &nbsp;&nbsp;Big-adatmennyiség | **Mesterséges intelligencia és gépi tanulás**  |
 | &nbsp;&nbsp;Prediktív elemzés | &nbsp;&nbsp;AI vállalatoknak |
 | &nbsp;&nbsp;Valós idejű/adatfolyam-elemzés | &nbsp;&nbsp;Bot-alkalmazások |
-| **AI + Machine Learning** | **Együttműködés** |
+| **Mesterséges intelligencia és gépi tanulás** | **Együttműködés** |
 | &nbsp;&nbsp;Bot Service | &nbsp;&nbsp;Kapcsolatfelvétel & személyekkel |
 | &nbsp;&nbsp;Cognitive Services | &nbsp;&nbsp;Értekezletek kezelése |
 | &nbsp;&nbsp;ML szolgáltatás | &nbsp;&nbsp;Hely kialakításának & kezelése |
@@ -78,7 +78,7 @@ ms.locfileid: "87498046"
 | **& diagnosztika figyelése**  | **Műveleti & ellátási lánc** |
 | **Migrálás**  | &nbsp;&nbsp;Eszköz & üzemi felügyelet |
 | &nbsp;&nbsp;Adatáttelepítés | &nbsp;&nbsp;Kereslet-előrejelzés |
-| **Mixed Reality**  | &nbsp;&nbsp;Information Management & kapcsolat |
+| **Vegyes valóság**  | &nbsp;&nbsp;Information Management & kapcsolat |
 | **Hálózat**  | &nbsp;&nbsp;& jelentéskészítés tervezése, beszerzése |
 | &nbsp;&nbsp;Berendezések kezelői | &nbsp;&nbsp;Minőségi & szolgáltatások kezelése |
 | &nbsp;&nbsp;Connectivity | &nbsp;&nbsp;Értékesítési & rendelés kezelése |

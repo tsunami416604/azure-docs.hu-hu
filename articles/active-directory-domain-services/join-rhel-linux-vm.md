@@ -12,10 +12,10 @@ ms.topic: how-to
 ms.date: 07/13/2020
 ms.author: iainfou
 ms.openlocfilehash: f2a6cb422c1133f0ed53d2c1061501a47d9c92f1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87005089"
 ---
 # <a name="join-a-red-hat-enterprise-linux-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain"></a>Red Hat Enterprise Linux virtuális gép csatlakoztatása Azure Active Directory Domain Services felügyelt tartományhoz
@@ -225,7 +225,7 @@ Successfully enrolled machine in realm
 
 Ha a virtuális gép nem tudja sikeresen befejezni a tartományhoz való csatlakozás folyamatát, győződjön meg arról, hogy a virtuális gép hálózati biztonsági csoportja engedélyezi a kimenő Kerberos-forgalmat a 464-as TCP + UDP-porton a felügyelt tartományhoz tartozó virtuális hálózati alhálózatra.
 
-Most ellenőrizze, hogy le tudja-e kérdezni a felhasználói AD-adatokat a`getent`
+Most ellenőrizze, hogy le tudja-e kérdezni a felhasználói AD-adatokat a `getent`
 
 ```console
 sudo getent passwd contosoadmin

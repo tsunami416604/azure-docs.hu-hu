@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 04/06/2020
 ms.author: banders
 ms.openlocfilehash: a527b75d376f05ab6190187b7a03d6da775055ab
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81759285"
 ---
 # <a name="prepay-for-azure-software-plans"></a>Előre fizetés Azure-szoftvercsomagokért
@@ -68,7 +68,7 @@ Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatá
 
 A foglalások kezelésével kapcsolatos információkért lásd: [Azure-foglalások kezelése](../../cost-management-billing/reservations/manage-reserved-vm-instance.md).
 
-További információt a következő cikkekben talál:
+További tudnivalókért olvassa el a következő cikket:
 
 - [Mi az az Azure Reservations?](../../cost-management-billing/reservations/save-compute-costs-reservations.md)
 - [A Reservations kezelése az Azure-ban](../../cost-management-billing/reservations/manage-reserved-vm-instance.md)

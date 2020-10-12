@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 12/13/2017
 ms.author: damendo
 ms.openlocfilehash: 18023f5a5b36dd971080d7a62fdd44698a205bb4
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/17/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88272535"
 ---
 # <a name="read-nsg-flow-logs"></a>NSG-forgalom naplóinak olvasása
@@ -184,7 +184,7 @@ A","1497646742,10.0.0.4,168.62.32.14,44942,443,T,O,A","1497646742,10.0.0.4,52.24
 
 Ez a forgatókönyv egy példa arra, hogyan olvashat be bejegyzéseket a NSG flow-naplókban anélkül, hogy a teljes naplót kellene elemezni. A naplóban lévő új bejegyzéseket a blokk-azonosító használatával vagy a blokk blobban tárolt blokkok hosszának nyomon követésével lehet beolvasni. Ez lehetővé teszi, hogy csak az új bejegyzéseket olvassa.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 
 Látogasson el a [rugalmas verem használatára](network-watcher-visualize-nsg-flow-logs-open-source-tools.md), [használja a Grafana](network-watcher-nsg-grafana.md), és a [Graylog](network-watcher-analyze-nsg-flow-logs-graylog.md) használatával további információkat tudhat meg a NSG-folyamatok megtekintésének módjairól. Itt talál egy nyílt forráskódú Azure-függvényt, amely a Blobok közvetlen felhasználására és különböző log Analytics-felhasználókra való kibocsátására szolgál: az [Azure Network WATCHER NSG flow naplók összekötője](https://github.com/Microsoft/AzureNetworkWatcherNSGFlowLogsConnector).
