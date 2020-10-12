@@ -8,17 +8,17 @@ ms.topic: article
 ms.date: 03/26/2020
 ms.author: tyao
 ms.openlocfilehash: f41dc688996b2431060a3cde209ca1ed4a21fe8c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87005616"
 ---
 # <a name="configure-an-ip-restriction-rule-with-a-web-application-firewall-for-azure-front-door"></a>IP-korlátozási szabály konfigurálása az Azure-hoz készült webalkalmazási tűzfallal
 
 Ez a cikk bemutatja, hogyan konfigurálhat IP-korlátozási szabályokat egy webalkalmazási tűzfalon (WAF) az Azure bejárati ajtóhoz a Azure Portal, az Azure CLI, a Azure PowerShell vagy egy Azure Resource Manager sablon használatával.
 
-Az IP-cím alapú hozzáférés-vezérlési szabály egy egyéni WAF-szabály, amely lehetővé teszi a webalkalmazásokhoz való hozzáférés szabályozását. Ezt úgy végezheti el, hogy az IP-címek listáját vagy az IP-címtartományok osztály nélküli Inter-domain Routing (CIDR) formátumban van megadva.
+Az IP-cím alapú hozzáférés-vezérlési szabály egy egyéni WAF-szabály, amely lehetővé teszi a webalkalmazásokhoz való hozzáférés szabályozását. Ezt úgy végezheti el, hogy az IP-címek és az IP-címtartományok listáját az osztály nélküli Inter-Domain útválasztási (CIDR) formátumban határozza meg.
 
 Alapértelmezés szerint a webalkalmazás elérhető az internetről. Ha szeretné korlátozni az ügyfelek hozzáférését az ismert IP-címek vagy IP-címtartományok listájáról, létrehozhat egy olyan IP-megfeleltetési szabályt, amely az IP-címek listáját tartalmazza egyező értékként, és beállítja az operátort a "not" (tagadás igaz) és a **blokkolt**művelet számára. Az IP-korlátozási szabály alkalmazása után az ezen az engedélyezett listán kívüli címekről származó kérelmek 403-es tiltott választ kapnak.
 
@@ -30,7 +30,7 @@ Hozzon létre egy Azure-beli bejárati profilt a gyors üzembe helyezési útmut
 
 ### <a name="create-a-waf-policy"></a>WAF szabályzat létrehozása
 
-1. A Azure Portal válassza az **erőforrás létrehozása**elemet, írja be a **webalkalmazási tűzfal** kifejezést a keresőmezőbe, majd válassza a **webalkalmazási tűzfal (WAF)** lehetőséget.
+1. A Azure Portal válassza az **erőforrás létrehozása**elemet, írja be a  **webalkalmazási tűzfal** kifejezést a keresőmezőbe, majd válassza a **webalkalmazási tűzfal (WAF)** lehetőséget.
 2. Kattintson a **Létrehozás** gombra.
 3. A **WAF házirend létrehozása** lapon a következő értékekkel fejezheti be az **alapok** lapot:
    
@@ -64,11 +64,11 @@ Hozzon létre egy Azure-beli bejárati profilt a gyors üzembe helyezési útmut
 
    :::image type="content" source="../media/waf-front-door-configure-ip-restriction/custom-rule.png" alt-text="Egyéni szabály":::
 
-   Válassza a **Hozzáadás** elemet.
+   Válassza a **Hozzáadás** lehetőséget.
 6. Válassza a **Tovább: társítás**lehetőséget.
 7. Válassza a előtér- **gazda hozzáadása**lehetőséget.
 8. A előtér- **gazdagéphez**válassza ki a előtér-gazdagépet, és válassza a **Hozzáadás**lehetőséget.
-9. Válassza az **Áttekintés + létrehozás** lehetőséget.
+9. Válassza a **Felülvizsgálat + létrehozás** lehetőséget.
 10. A szabályzat érvényesítése után válassza a **Létrehozás**lehetőséget.
 
 ### <a name="test-your-waf-policy"></a>A WAF szabályzat tesztelése
@@ -76,7 +76,7 @@ Hozzon létre egy Azure-beli bejárati profilt a gyors üzembe helyezési útmut
 1. A WAF házirend üzembe helyezésének befejezése után keresse meg a front Door előtér-gazdagép nevét.
 2. Az egyéni blokk üzenetnek kell megjelennie.
 
-   :::image type="content" source="../media/waf-front-door-configure-ip-restriction/waf-rule-test.png" alt-text="WAF-szabály tesztelése":::
+   :::image type="content" source="../media/waf-front-door-configure-ip-restriction/waf-rule-test.png" alt-text="Egyéni szabály":::
 
    > [!NOTE]
    > Egy magánhálózati IP-címet szándékosan használtak az egyéni szabályban annak biztosítására, hogy a szabály aktiválódik. Tényleges telepítés esetén hozzon létre *engedélyezési* és *megtagadási* szabályokat az adott helyzethez tartozó IP-címek használatával.

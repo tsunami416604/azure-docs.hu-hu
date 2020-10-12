@@ -4,10 +4,10 @@ description: Ismerje meg az Azure VMware-megoldás identitás-és hozzáférési
 ms.topic: conceptual
 ms.date: 05/04/2020
 ms.openlocfilehash: 9d5b7b4c7c2e0d55cffc99a3f371494f40320a16
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88750584"
 ---
 # <a name="azure-vmware-solution-identity-concepts"></a>Az Azure VMware megoldás identitásával kapcsolatos fogalmak
@@ -24,7 +24,7 @@ A CloudAdmin és a CloudGlobalAdmin jogosultság az alábbi táblázatban látha
 
 |  Jogosultság-készlet           | CloudAdmin | CloudGlobalAdmin | Megjegyzés |
 | :---                     |    :---:   |       :---:      |   :--:  |
-|  Riasztások                  | A CloudAdmin-felhasználók riasztási jogosultságokkal rendelkeznek a számítási ResourcePool és a virtuális gépeken.     |          --        |  -- |
+|  Riasztások                  | A CloudAdmin-felhasználók riasztási jogosultságokkal rendelkeznek a Compute-ResourcePool és a virtuális gépek riasztásához.     |          --        |  -- |
 |  Automatikus üzembe helyezés             |  --  |        --        |  A Microsoft üzemelteti a gazdagépek felügyeletét.  |
 |  Tanúsítványok            |  --  |        --       |  A Microsoft végzi a Tanúsítványkezelőt.  |
 |  Tartalomtár         | Egy CloudAdmin-felhasználónak van jogosultsága fájlok létrehozására és használatára a dokumentumtárakban.    |         Engedélyezve az SSO-val.         |  A Microsoft a tartalmi könyvtárban lévő fájlokat a ESXi-gazdagépek számára terjeszti.  |

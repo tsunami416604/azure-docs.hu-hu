@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive
 ms.date: 04/24/2020
 ms.openlocfilehash: 05d057be76a1b468f892b3123080e32a948153ae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82598498"
 ---
 # <a name="manage-apache-hadoop-clusters-in-hdinsight-by-using-the-azure-portal"></a>Apache Hadoop-fürtök kezelése a HDInsight-ben a Azure Portal használatával
@@ -29,13 +29,13 @@ Meglévő Apache Hadoop-fürt a HDInsight-ben.  Lásd: [Linux-alapú fürtök l�
 
 Jelentkezzen be itt: [https://portal.azure.com](https://portal.azure.com).
 
-## <a name="list-and-show-clusters"></a><a name="showClusters"></a>Fürtök listázása és megjelenítése
+## <a name="list-and-show-clusters"></a><a name="showClusters"></a> Fürtök listázása és megjelenítése
 
 A **HDInsight-fürtök** lapon megjelenik a meglévő fürtök listája.  A portálról:
 1. Válassza a **minden szolgáltatás** lehetőséget a bal oldali menüben.
 2. Válassza ki a **HDInsight-fürtöket** az **elemzés**alatt.
 
-## <a name="cluster-home-page"></a><a name="homePage"></a>Fürt kezdőlapja
+## <a name="cluster-home-page"></a><a name="homePage"></a> Fürt kezdőlapja
 
 Válassza ki a fürt nevét a [**HDInsight-fürtök**](#showClusters) lapon.  Ekkor megnyílik az **Áttekintés** nézet, amely az alábbi képhez hasonlóan néz ki:
 
@@ -43,7 +43,7 @@ Válassza ki a fürt nevét a [**HDInsight-fürtök**](#showClusters) lapon.  Ek
 
 **Felső menü:**  
 
-| Item| Leírás |
+| Elem| Leírás |
 |---|---|
 |Áthelyezés|Áthelyezi a fürtöt egy másik erőforráscsoporthoz vagy egy másik előfizetésbe.|
 |Törlés|Törli a fürtöt. |
@@ -53,7 +53,7 @@ Válassza ki a fürt nevét a [**HDInsight-fürtök**](#showClusters) lapon.  Ek
 
   - **Bal felső menü**
 
-    | Item| Leírás |
+    | Elem| Leírás |
     |---|---|
     |Áttekintés|A fürt általános információit tartalmazza.|
     |Tevékenységnapló|Tevékenységek naplóinak megjelenítése és lekérdezése.|
@@ -65,7 +65,7 @@ Válassza ki a fürt nevét a [**HDInsight-fürtök**](#showClusters) lapon.  Ek
 
   - **Beállítások menü**  
 
-    | Item| Leírás |
+    | Elem| Leírás |
     |---|---|
     |Fürt mérete|A fürt munkavégző csomópontjainak megkeresése, növelése és csökkentése. Lásd: [fürtök méretezése](hdinsight-administer-use-portal-linux.md#scale-clusters).|
     |Kvóta korlátai|Az előfizetéshez használt és elérhető magok megjelenítése.|
@@ -82,7 +82,7 @@ Válassza ki a fürt nevét a [**HDInsight-fürtök**](#showClusters) lapon.  Ek
 
   - **Figyelés menü**
 
-    | Item| Leírás |
+    | Elem| Leírás |
     |---|---|
     |Riasztások|A riasztások és műveletek kezelése.|
     |Mérőszámok|A fürt metrikáinak figyelése Azure Monitor naplókban.|
@@ -91,16 +91,16 @@ Válassza ki a fürt nevét a [**HDInsight-fürtök**](#showClusters) lapon.  Ek
 
   - **Támogatás + hibaelhárítás menü**
 
-    | Item| Leírás |
+    | Elem| Leírás |
     |---|---|
     |Erőforrás állapota|Lásd: az [Azure Resource Health áttekintése](../service-health/resource-health-overview.md).|
     |Új támogatási kérelem|Lehetővé teszi, hogy támogatási jegyet hozzon létre a Microsoft támogatási szolgálatával.|
 
-## <a name="cluster-properties"></a><a name="properties"></a>Fürt tulajdonságai
+## <a name="cluster-properties"></a><a name="properties"></a> Fürt tulajdonságai
 
 A [fürt kezdőlapjának](#homePage) **Beállítások** területén válassza a **Tulajdonságok**lehetőséget.
 
-|Item | Leírás |
+|Elem | Leírás |
 |---|---|
 |HOSTNAME|Fürt neve.|
 |FÜRT URL-CÍME|A Ambari webes felületének URL-címe.|
@@ -196,7 +196,7 @@ A [fürt kezdőlapján](#homePage):
 1. Válassza az **SSH + fürt bejelentkezés** lehetőséget a **Beállítások**területen.
 2. Válassza a **hitelesítő adatok visszaállítása**lehetőséget.
 3. Adja meg és erősítse meg az új jelszót a szövegmezőben.
-4. Válassza az **OK** lehetőséget.
+4. Kattintson az **OK** gombra.
 
 A jelszó a fürt összes csomópontján módosul.
 
@@ -228,7 +228,7 @@ A jelszó a fürt összes csomópontján módosul.
    | Mező | Érték |
    | --- | --- |
    | Parancsfájl típusa | Válassza a **-Custom** elemet a legördülő listából.|
-   | Name |"SSH hitelesítő adatok módosítása" |
+   | Name (Név) |"SSH hitelesítő adatok módosítása" |
    | Bash-parancsfájl URI-ja |A changecredentials.sh-fájl URI-ja |
    | Csomópont típusa (i): (Head, Worker, Nimbus, témavezető vagy Zookeeper) |✓ Minden felsorolt csomópont-típushoz |
    | Paraméterek |Adja meg az SSH-felhasználónevet, majd az új jelszót. A Felhasználónév és a jelszó között egy szóköznek kell lennie. |
@@ -266,7 +266,7 @@ A fürt [kezdőlapjának](#homePage) **fürt mérete** csempéje megjeleníti a 
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a cikkben megtanult néhány alapvető felügyeleti funkciót. További információt a következő cikkekben talál:
+Ebben a cikkben megtanult néhány alapvető felügyeleti funkciót. További tudnivalókért olvassa el a következő cikket:
 
 - [HDInsight felügyelete a Azure PowerShell használatával](hdinsight-administer-use-powershell.md)
 - [HDInsight felügyelete az Azure CLI-vel](hdinsight-administer-use-command-line.md)

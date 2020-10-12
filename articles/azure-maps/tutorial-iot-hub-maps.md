@@ -10,10 +10,10 @@ services: azure-maps
 manager: philmea
 ms.custom: mvc
 ms.openlocfilehash: 3eb405783b16d1bb7de27f6638dba394457601c8
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91321832"
 ---
 # <a name="tutorial-implement-iot-spatial-analytics-by-using-azure-maps"></a>Oktatóanyag: a IoT térbeli elemzés megvalósítása Azure Maps használatával
@@ -91,7 +91,7 @@ Az alábbi ábrán a rendszer magas szintű áttekintése látható.
 
 Az alábbi ábra kiemeli a geokerítésen területét. A bérelt autó útvonalát zöld vonallal jelölik.
 
-   :::image type="content" source="./media/tutorial-iot-hub-maps/geofence-route.png" border="false" alt-text="A geokerítésen útvonalat ábrázoló ábra":::
+   :::image type="content" source="./media/tutorial-iot-hub-maps/geofence-route.png" border="false" alt-text="A rendszerek áttekintésének ábrája.":::
 
 ## <a name="create-an-azure-storage-account"></a>Azure-tárfiók létrehozása
 
@@ -103,15 +103,13 @@ Ha sikeresen létrehozta a Storage-fiókját, létre kell hoznia egy tárolót a
 
 1. Lépjen az újonnan létrehozott Storage-fiókra. Az **alapvető** erőforrások szakaszban válassza a **tárolók** hivatkozást.
 
-    :::image type="content" source="./media/tutorial-iot-hub-maps/containers.png" alt-text="Képernyőfelvétel a blob Storage tárolói számára.":::
+    :::image type="content" source="./media/tutorial-iot-hub-maps/containers.png" alt-text="A rendszerek áttekintésének ábrája.":::
 
 2. A bal felső sarokban válassza a **+ tároló**elemet. Megjelenik egy panel a böngésző jobb oldalán. Nevezze el a tároló *contoso-Rental-logs*nevet, és válassza a **Létrehozás**lehetőséget.
 
-     :::image type="content" source="./media/tutorial-iot-hub-maps/container-new.png" alt-text="Képernyőkép a blob-tároló létrehozásáról.":::
+     :::image type="content" source="./media/tutorial-iot-hub-maps/container-new.png" alt-text="A rendszerek áttekintésének ábrája." szakaszban.
 
-3. Nyissa meg a Storage-fiók **hozzáférési kulcsok** paneljét, és másolja ki a **Storage-fiók nevét** és a **kulcs** értékét a **key1** szakaszban. Mindkét értékre szüksége lesz az "Azure-függvény létrehozása és Event Grid előfizetés hozzáadása" szakaszban.
-
-    :::image type="content" source="./media/tutorial-iot-hub-maps/access-keys.png" alt-text="Képernyőkép a Storage-fiók nevének és kulcsának másolásáról.":::
+    :::image type="content" source="./media/tutorial-iot-hub-maps/access-keys.png" alt-text="A rendszerek áttekintésének ábrája.":::
 
 ## <a name="upload-a-geofence"></a>Geokerítésen feltöltése
 
@@ -180,9 +178,9 @@ Most állítsa be az Azure-függvényt.
 
 1. A **függvényalkalmazás** létrehozás lapon nevezze el a Function alkalmazást. Az **erőforráscsoport**területen válassza a **ContosoRental** lehetőséget a legördülő listából. Válassza ki a **.net Core** -t **futtatókörnyezeti veremként**. A lap alján válassza a következő lehetőséget **: >üzemeltetése **.
 
-    :::image type="content" source="./media/tutorial-iot-hub-maps/rental-app.png" alt-text="Képernyőkép a Function-alkalmazás létrehozásáról.":::
+    :::image type="content" source="./media/tutorial-iot-hub-maps/rental-app.png" alt-text="A rendszerek áttekintésének ábrája.":::
 
-1. A **Storage-fiók**területen válassza ki az [Azure Storage-fiók létrehozása](#create-an-azure-storage-account)lapon létrehozott Storage-fiókot. Válassza az **Áttekintés + létrehozás** lehetőséget.
+1. A **Storage-fiók**területen válassza ki az [Azure Storage-fiók létrehozása](#create-an-azure-storage-account)lapon létrehozott Storage-fiókot. Válassza a **Felülvizsgálat + létrehozás** lehetőséget.
 
 1. Tekintse át a Function alkalmazás részleteit, és válassza a **Létrehozás**lehetőséget.
 
@@ -191,13 +189,13 @@ Most állítsa be az Azure-függvényt.
      >[!IMPORTANT]
     > Az **Azure Event hub eseményindítója** és a **Azure Event Grid eseményindító** -sablonjai hasonló névvel rendelkeznek. Győződjön meg arról, hogy a **Azure Event Grid trigger** sablont választotta.
 
-    :::image type="content" source="./media/tutorial-iot-hub-maps/function-create.png" alt-text="Képernyőkép a függvény létrehozásáról.":::
+    :::image type="content" source="./media/tutorial-iot-hub-maps/function-create.png" alt-text="A rendszerek áttekintésének ábrája.":::
 
 1. Adja meg a függvény nevét. Ebben az oktatóanyagban a nevet, a *GetGeoFunction*, de általában bármilyen nevet használhat. Válassza a **létrehozási függvény**lehetőséget.
 
 1. A bal oldali menüben válassza a **kód + teszt** panelt. Másolja és illessze be a [C#-szkriptet](https://github.com/Azure-Samples/iothub-to-azure-maps-geofencing/blob/master/src/Azure%20Function/run.csx) a kód ablakába.
 
-     :::image type="content" source="./media/tutorial-iot-hub-maps/function-code.png" alt-text="Másolási/képernyőkép-kód beillesztése a függvény ablakába.":::
+     :::image type="content" source="./media/tutorial-iot-hub-maps/function-code.png" alt-text="A rendszerek áttekintésének ábrája.":::
 
 1. A C#-kódban cserélje le a következő paramétereket:
     * Cserélje le a **SUBSCRIPTION_KEYt** a Azure Maps fiók elsődleges előfizetési kulcsára.
@@ -206,17 +204,15 @@ Most állítsa be az Azure-függvényt.
 
 1. A bal oldali menüben válassza az **integráció** panelt. Válassza ki **Event Grid triggert** a diagramon. Írja be az trigger nevét, a *eventGridEvent*, majd válassza a **Event Grid előfizetés létrehozása**lehetőséget.
 
-     :::image type="content" source="./media/tutorial-iot-hub-maps/function-integration.png" alt-text="Képernyőkép az esemény-előfizetés hozzáadásáról.":::
-
-1. Adja meg az előfizetés részleteit. Adja meg az esemény-előfizetés nevét. Az **Event Schema**esetében válassza **Event Grid sémát**. A **témakörök típusainál**válassza az **Azure IoT hub-fiókok**lehetőséget. Az **erőforráscsoport**területen válassza ki az oktatóanyag elején létrehozott erőforráscsoportot. Az **erőforrás**mezőben válassza ki az "Azure IoT hub létrehozása" című IoT. A **szűrés eseménytípus**esetében válassza az **eszköz telemetria**lehetőséget.
+     :::image type="content" source="./media/tutorial-iot-hub-maps/function-integration.png" alt-text="A rendszerek áttekintésének ábrája." című IoT. A **szűrés eseménytípus**esetében válassza az **eszköz telemetria**lehetőséget.
 
    Miután kiválasztotta ezeket a beállításokat, a **témakör típusa** módosítás **IoT hubra**. A **Rendszertéma neve**beállításnál használhatja az erőforrás nevét. Végül a **végpont részletei** szakaszban válassza a **végpont kiválasztása**lehetőséget. Fogadja el az összes beállítást, és válassza a **kijelölés megerősítése**lehetőséget.
 
-    :::image type="content" source="./media/tutorial-iot-hub-maps/function-create-event-subscription.png" alt-text="Képernyőkép az esemény-előfizetés létrehozásáról.":::
+    :::image type="content" source="./media/tutorial-iot-hub-maps/function-create-event-subscription.png" alt-text="A rendszerek áttekintésének ábrája.":::
 
 1. Tekintse át a beállításokat. Győződjön meg arról, hogy a végpont a szakasz elején létrehozott függvényt adja meg. Kattintson a **Létrehozás** gombra.
 
-    :::image type="content" source="./media/tutorial-iot-hub-maps/function-create-event-subscription-confirm.png" alt-text="Képernyőkép az esemény-előfizetés létrehozásának megerősítéséről.":::
+    :::image type="content" source="./media/tutorial-iot-hub-maps/function-create-event-subscription-confirm.png" alt-text="A rendszerek áttekintésének ábrája.":::
 
 1. Most visszatért az **trigger szerkesztése** panelre. Kattintson a **Mentés** gombra.
 
@@ -224,11 +220,11 @@ Most állítsa be az Azure-függvényt.
 
 Ha Event Grid-előfizetést ad hozzá az Azure-függvényhez, a rendszer automatikusan létrehoz egy üzenetküldési útvonalat a megadott IoT-központban. Az üzenet-útválasztás lehetővé teszi különböző adattípusok különböző végpontokhoz való továbbítását. Átirányíthatja például az eszköz telemetria-üzeneteit, az eszközök életciklusával kapcsolatos eseményeket és az eszközök kettős változási eseményeit. További információ: [IoT hub üzenet-útválasztás használata](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-messages-d2c).
 
-:::image type="content" source="./media/tutorial-iot-hub-maps/hub-route.png" alt-text="Képernyőkép az IoT hub üzenet-útválasztásáról.":::
+:::image type="content" source="./media/tutorial-iot-hub-maps/hub-route.png" alt-text="A rendszerek áttekintésének ábrája.":::
 
 A példában csak a bérelt autó áthelyezése után szeretne üzeneteket fogadni. Hozzon létre egy útválasztási lekérdezést az események szűréséhez, ahol a `Engine` tulajdonság értéke **"on"**. Útválasztási lekérdezés létrehozásához válassza ki a **RouteToEventGrid** útvonalat, és cserélje le az **útválasztási lekérdezést** a **"motor ="** értékre a következőn: "". Ez után válassza a **Mentés** lehetőséget. Most az IoT hub csak az eszköz telemetria teszi közzé, ahol a motor be van kapcsolva.
 
-:::image type="content" source="./media/tutorial-iot-hub-maps/hub-filter.png" alt-text="Képernyőkép az útválasztási üzenetek szűréséről.":::
+:::image type="content" source="./media/tutorial-iot-hub-maps/hub-filter.png" alt-text="A rendszerek áttekintésének ábrája.":::
 
 >[!TIP]
 >Az eszközről a felhőbe irányuló üzenetek IoT többféleképpen is lekérdezhető. Az üzenet-útválasztási szintaxissal kapcsolatos további információkért lásd: [IoT hub üzenet-útválasztás](https://docs.microsoft.com/azure/iot-hub/iot-hub-devguide-routing-query-syntax).
@@ -256,15 +252,15 @@ Ha az Azure-függvény fut, most telemetria-adatait is elküldheti az IoT hubhoz
 
   A helyi terminálnak az alábbihoz hasonlóan kell kinéznie.
 
-:::image type="content" source="./media/tutorial-iot-hub-maps/terminal.png" alt-text="A terminál kimenetének képernyőképe.":::
+:::image type="content" source="./media/tutorial-iot-hub-maps/terminal.png" alt-text="A rendszerek áttekintésének ábrája.":::
 
 Ha most megnyitja a blob Storage-tárolót, négy blobot láthat a helyekhez, ahol a jármű kívül esik a geokerítésen.
 
-:::image type="content" source="./media/tutorial-iot-hub-maps/blob.png" alt-text="Képernyőkép a tárolóban lévő Blobok megtekintéséről.":::
+:::image type="content" source="./media/tutorial-iot-hub-maps/blob.png" alt-text="A rendszerek áttekintésének ábrája.":::
 
 A következő Térkép a geokerítésen kívüli négy jármű elhelyezési pontját mutatja be. Minden hely naplózása rendszeres időközönként történik.
 
-:::image type="content" source="./media/tutorial-iot-hub-maps/violation-map.png" alt-text="Képernyőkép a szabálysértési térképről.":::
+:::image type="content" source="./media/tutorial-iot-hub-maps/violation-map.png" alt-text="A rendszerek áttekintésének ábrája.":::
 
 ## <a name="explore-azure-maps-and-iot"></a>A Azure Maps és a IoT megismerése
 
@@ -283,7 +279,7 @@ A IoT Azure minősítéssel rendelkező eszközök listájának lekéréséhez l
 
 * [Azure Certified-eszközök](https://catalog.azureiotsolutions.com/)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha többet szeretne megtudni az eszközről a felhőbe irányuló telemetria küldéséről, és fordítva, tekintse meg a következőt:
 

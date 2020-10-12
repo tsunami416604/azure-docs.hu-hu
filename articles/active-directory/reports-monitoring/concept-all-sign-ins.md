@@ -18,10 +18,10 @@ ms.author: markvi
 ms.reviewer: besiler
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e1fc5051a6cc8b8f36a980ff86690ed4f8cbac60
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91344784"
 ---
 # <a name="azure-active-directory-sign-in-activity-reports---preview"></a>Azure Active Directory bejelentkezési tevékenységgel kapcsolatos jelentések – előzetes verzió
@@ -209,7 +209,7 @@ Az adatelemzés egyszerűbbé tétele érdekében a nem interaktív bejelentkez�
 
 - IP-cím
 
-- Állapot
+- status
 
 - Erőforrás-azonosító
 
@@ -247,7 +247,7 @@ Ez a jelentés egy alapértelmezett listanézet, amely a következőket jelenít
 
 - Egyszerű szolgáltatásnév vagy azonosító
 
-- Állapot
+- status
 
 - IP-cím
 
@@ -265,7 +265,7 @@ Annak érdekében, hogy könnyebb legyen megemészteni az egyszerű szolgáltat�
 
 - Egyszerű szolgáltatásnév vagy azonosító
 
-- Állapot
+- status
 
 - IP-cím
 
@@ -312,7 +312,7 @@ Annak érdekében, hogy könnyebb legyen az adatelemzés, az Azure-erőforrások
 
 - Felügyelt identitás neve vagy azonosítója
 
-- Állapot
+- status
 
 - IP-cím
 

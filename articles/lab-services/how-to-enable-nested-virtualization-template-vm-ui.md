@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 06/26/2020
 ms.author: enewman
 ms.openlocfilehash: ad92862c78260e7385168faf794c013e85f66b82
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85445729"
 ---
 # <a name="enable-nested-virtualization-on-a-template-virtual-machine-in-azure-lab-services-manually"></a>Beágyazott virtualizálás engedélyezése sablonbeli virtuális gépen Azure Lab Services manuálisan
@@ -39,7 +39,7 @@ A következő lépések azokat a műveleteket ismertetik, amelyek a Hyper-V Wind
 12. Az **alapértelmezett áruházak** lapon fogadja el az alapértelmezett beállításokat, majd kattintson a **tovább**gombra.
 13. A **telepítendő összetevők megerősítése** lapon válassza a **célkiszolgáló automatikus újraindítása, ha szükséges**lehetőséget.
 14. Amikor megjelenik a **szerepkörök és szolgáltatások hozzáadása varázsló** előugró ablaka, kattintson az **Igen**gombra.
-15. Kattintson a **telepítés**gombra.
+15. Kattintson az **Install** (Telepítés) gombra.
 16. Várjon, amíg a **telepítési folyamat** lap jelzi, hogy a Hyper-V szerepkör befejeződött.  Előfordulhat, hogy a gép a telepítés közepén újraindítható.
 17. Kattintson a **Bezárás** gombra.
 

@@ -14,10 +14,10 @@ ms.date: 06/10/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: aff1c8f68e3950b49a0a1bd8e99020b77e0f2019
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84677304"
 ---
 # <a name="sap-hana-large-instances-storage-architecture"></a>SAP HANA (nagyméretű példányok) tárolási architektúrája
@@ -107,7 +107,7 @@ Több aktív SAP HANA példány is üzemeltethető HANA nagyméretű példány-e
 
 Néhány példa több SAP HANA-példány futtatására a következőhöz hasonló lehet.
 
-| Termékváltozat | Memória mérete | Tárterület mérete | Méretek több adatbázissal |
+| SKU | Memória mérete | Tárterület mérete | Méretek több adatbázissal |
 | --- | --- | --- | --- |
 | S72 | 768 GB | 3 TB | 1x768 – GB HANA-példány<br /> vagy 1x512-GB példány + 1x256-GB példány<br /> vagy 3x256-GB példányok | 
 | S72m | 1,5 TB | 6 TB | 3x512GB HANA-példányok<br />vagy 1x512-GB példány + 1x1-TB példány<br />vagy 6x256-GB példányok<br />vagy 1x 1.5 TB-példány | 

@@ -6,10 +6,10 @@ ms.author: markscu
 ms.date: 08/23/2019
 ms.topic: how-to
 ms.openlocfilehash: 519b357e4e5fde30221f7dc804bb848ecec9704c
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85979917"
 ---
 # <a name="check-for-pool-and-node-errors"></a>Készlet-és csomópont-hibák keresése
@@ -72,7 +72,7 @@ Mi a teendő, ha úgy konfigurálta a csomópontot, hogy várjon a sikeres indí
 
 Az indítási feladat hibáit a legfelső szintű [startTaskInfo](/rest/api/batchservice/computenode/get#starttaskinformation) Node tulajdonság [eredmény](/rest/api/batchservice/computenode/get#taskexecutionresult) -és [failureInfo](/rest/api/batchservice/computenode/get#taskfailureinformation) tulajdonságainak használatával észlelheti.
 
-A sikertelen indítási feladat azt is okozhatja, hogy a Batch beállítsa a csomópont [állapotát](/rest/api/batchservice/computenode/get#computenodestate) , hogy **starttaskfailed** , ha a **waitForSuccess** értéke **true (igaz**).
+A sikertelen indítási feladat azt is okozhatja, hogy a Batch beállítsa a csomópont [állapotát](/rest/api/batchservice/computenode/get#computenodestate) , hogy **starttaskfailed** , ha a  **waitForSuccess** értéke **true (igaz**).
 
 A feladatok elvégzéséhez hasonlóan számos oka lehet az indítási feladat végrehajtása.  A hibák megoldásához keresse meg az stdout, a stderr, valamint a feladatra vonatkozó további naplófájlokat.
 

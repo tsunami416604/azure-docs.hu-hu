@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: victorh
 ms.openlocfilehash: dabe154535d2bd3ae5550d4bbbafa75adc5ae2c0
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91344560"
 ---
 # <a name="monitor-logs-using-azure-firewall-workbook"></a>Naplók figyelése Azure Firewall munkafüzet használatával
@@ -24,7 +24,7 @@ Betekintést nyerhet Azure Firewall eseményekbe, megismerheti az alkalmazás-é
 
 A Kezdés előtt engedélyeznie kell a [diagnosztikai naplózást](firewall-diagnostics.md#enable-diagnostic-logging-through-the-azure-portal) a Azure Portalon. Emellett olvassa el [Azure Firewall naplókat és mérőszámokat](logs-and-metrics.md) a Azure Firewall számára elérhető diagnosztikai naplók és metrikák áttekintéséhez.
 
-## <a name="get-started"></a>Első lépések
+## <a name="get-started"></a>Bevezetés
 
 A munkafüzet üzembe helyezéséhez nyissa meg a [Azure monitor munkafüzetet Azure Firewall](https://github.com/Azure/Azure-Network-Security/tree/master/Azure%20Firewall/Azure%20Monitor%20Workbook) és kövesse az oldalon megjelenő utasításokat. Azure Firewall a munkafüzet több-bérlős, többszörös előfizetések közötti együttműködésre lett tervezve, és több tűzfalon szűrhető.
 
@@ -38,23 +38,23 @@ Az Áttekintés oldalon a munkaterületek, az idő és a tűzfalak közötti sz�
 
 Ez az oldal az IP-címek egyedi forrásait jeleníti meg az idő múlásával, az alkalmazási szabály a használatot, a megtagadott/engedélyezett teljes tartománynevet és a szűrt Az Adatszűrés az IP-cím alapján végezhető el.
 
-:::image type="content" source="./media/firewall-workbook/firewall-workbook-application-rule.png" alt-text="Azure Firewall munkafüzet-alkalmazási szabály naplója":::
+:::image type="content" source="./media/firewall-workbook/firewall-workbook-application-rule.png" alt-text="Azure Firewall munkafüzet áttekintése":::
 
 ## <a name="network-rule-log-statistics"></a>Hálózati szabály naplójának statisztikája
 
 Ezen az oldalon megtekinthető a szabály szerinti művelet – engedélyezés/megtagadás, a célként megadott port IP-címe és a DNAT idő szerint. Szűrés a művelet, a port és a cél típusa szerint is végezhető.
 
-:::image type="content" source="./media/firewall-workbook/firewall-workbook-network-rule.png" alt-text="Azure Firewall munkafüzet hálózati szabályának naplója":::
+:::image type="content" source="./media/firewall-workbook/firewall-workbook-network-rule.png" alt-text="Azure Firewall munkafüzet áttekintése":::
 
 A naplókat a Time-ablak alapján is szűrheti:
 
-:::image type="content" source="./media/firewall-workbook/firewall-workbook-network-rule-time.png" alt-text="Azure Firewall munkafüzet hálózati szabályának naplózási ideje ablak":::
+:::image type="content" source="./media/firewall-workbook/firewall-workbook-network-rule-time.png" alt-text="Azure Firewall munkafüzet áttekintése":::
 
 ## <a name="investigations"></a>Vizsgálatokhoz
 
 Megtekintheti a naplókat, és megismerheti az erőforrást a forrás IP-címe alapján. Olyan információkat kaphat, mint például a virtuális gép neve és a hálózati adapter neve. A naplókból egyszerűen szűrheti az erőforrást.
 
-:::image type="content" source="./media/firewall-workbook/firewall-workbook-investigation.png" alt-text="Azure Firewall munkafüzet vizsgálata":::
+:::image type="content" source="./media/firewall-workbook/firewall-workbook-investigation.png" alt-text="Azure Firewall munkafüzet áttekintése":::
 
 ## <a name="next-steps"></a>Következő lépések
 

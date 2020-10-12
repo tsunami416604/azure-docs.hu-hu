@@ -11,13 +11,13 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.custom: dpalled
 ms.openlocfilehash: c3948a5bdfce583384992fb87bf40e9e7251974d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91344009"
 ---
-# <a name="model-synchronization-between-azure-digital-twins-and-time-series-insights-gen2"></a>Modelles szinkronizálás az Azure Digital Twins és a Time Series Insights Gen2 között
+# <a name="model-synchronization-between-azure-digital-twins-and-time-series-insights-gen2"></a>Modellszinkronizálás az Azure Digital Twins és a Time Series Insights Gen2 között
 
 Ez a cikk azokat az ajánlott eljárásokat és eszközöket ismerteti, amelyekkel az eszköz modelljét az Azure Digital Twins (ADT) modellben fordíthatja át Azure Time Series Insights (ÁME).  Ez a cikk egy kétrészes oktatóanyag-sorozat második része, amely az Azure Digital Twins és a Azure Time Series Insights integrációját ismerteti. Az Azure Digital Twins és a Time Series Insights integrációja lehetővé teszi az archiválást és a digitális ikrek telemetriáiról és számított tulajdonságainak nyomon követését. Ez az oktatóanyag-Sorozat olyan fejlesztők számára készült, akik a Time Series Insights Azure digitális Twins-nal való integrálására törekednek. Az 1. rész ismerteti  [az adatfolyamatok létrehozását, amely az Azure Digital Twins-ból származó tényleges idősorozat-adatokat hozza Time Series Insightsba](https://docs.microsoft.com/azure/digital-twins/how-to-integrate-time-series-insights) , és ez az oktatóanyag-sorozat második része az Azure Digital Twins és a Time Series Insights közötti adatmodell-szinkronizálást ismerteti. Ez az oktatóanyag ismerteti az idősorozat-azonosító (TS ID) elnevezési konvenció kiválasztásának és létrehozásának ajánlott eljárásait, valamint a hierarchiák manuális létrehozását a Time Series-modellben (TSM).
 

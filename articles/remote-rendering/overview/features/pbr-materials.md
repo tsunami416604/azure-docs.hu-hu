@@ -6,10 +6,10 @@ ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: article
 ms.openlocfilehash: a1fedb637bee9d98fb09d8fc3fa133b2992ce86e
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89613674"
 ---
 # <a name="pbr-materials"></a>PBR-anyagok
@@ -76,7 +76,7 @@ A fizikailag vezérelt renderelés lényege, hogy a *BaseColor*, a *fémesség*�
 
 ## <a name="technical-details"></a>Technikai részletek
 
-Az Azure Remote rendering a Cook-Torrance mikro-dimenziós BRDF használja a GGX NDF, a Schlick Fresnel és a GGX Smith korrelált láthatósági kifejezéssel egy Lambert Diffúz kifejezéssel. Ez a modell jelenleg a de facto iparági szabvány. További részletes részletekért tekintse meg a következő cikket: [fizikailag alapú renderelés – Cook Torrance](http://www.codinglabs.net/article_physically_based_rendering_cook_torrance.aspx)
+Az Azure Remote rendering a GGX NDF, a Schlick Fresnel és a GGX Smith korrelált láthatósági kifejezéssel rendelkező BRDF használja Cook-Torrance a Lambert Diffúz kifejezéssel. Ez a modell jelenleg a de facto iparági szabvány. További részletes részletekért tekintse meg a következő cikket: [fizikailag alapú renderelés – Cook Torrance](http://www.codinglabs.net/article_physically_based_rendering_cook_torrance.aspx)
 
  A *ragyogás* pbr modell az Azure Remote rendering-ben használt *fémmentes pbr-* modell alternatívája. Ez a modell az anyagok szélesebb körét reprezentálhatja. Azonban ez drágább, és általában nem működik megfelelően a valós idejű esetekben.
 Nem mindig lehetséges a *ragyogás* -ről a *fémekre* váltani, mivel olyan *(diffúziós, visszaverődési)* érték párokat, amelyek nem alakíthatók át *(BaseColor, fémes)*. A másik irányba történő átalakítás egyszerűbb és pontosabb, mivel az összes *(BaseColor, fémes)* párok jól meghatározott *(diffúz, fényvisszaverődési)* pároknak felelnek meg.

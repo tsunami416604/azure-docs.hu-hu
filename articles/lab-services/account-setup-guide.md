@@ -4,10 +4,10 @@ description: Ez az útmutató segítséget nyújt a rendszergazdáknak az iskol�
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: c186560b27ebcb543a23785dc5fbc556614f64b9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85445423"
 ---
 # <a name="lab-account-setup-guide"></a>Lab-fiók telepítési útmutatója
@@ -70,7 +70,7 @@ Miután megértette a labor-fiókjára vonatkozó követelményeket, készen ál
 
 1. **Hozza létre a labor-fiókját.** Az utasításokért tekintse meg a [labor-fiók létrehozásáról](https://docs.microsoft.com/azure/lab-services/classroom-labs/tutorial-setup-lab-account#create-a-lab-account) szóló oktatóanyagot.
 
-   Labor-fiók létrehozásakor hasznos lehet megtekinteni az érintett Azure-erőforrásokat. További információért tekintse át a következő cikkeket:
+   Labor-fiók létrehozásakor hasznos lehet megtekinteni az érintett Azure-erőforrásokat. További információkért tekintse át a következő cikkeket:
 
    - [Előfizetés](https://docs.microsoft.com/azure/lab-services/classroom-labs/administrator-guide#subscription)
    - [Erőforráscsoport](https://docs.microsoft.com/azure/lab-services/classroom-labs/administrator-guide#resource-group)

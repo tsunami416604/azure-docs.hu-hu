@@ -10,10 +10,10 @@ ms.author: keli19
 ms.custom: previous-author=heatherbshapiro, previous-ms.author=hshapiro
 ms.date: 03/01/2019
 ms.openlocfilehash: 133c7e95e620bfea51d1d6c9f6fd1d2946eeca33
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91344483"
 ---
 # <a name="get-started-with-azure-machine-learning-studio-classic-in-r"></a>Első lépések az Azure Machine Learning Studio (klasszikus) az R-ben
@@ -1280,7 +1280,7 @@ A RStudio jól dokumentálva van. Íme néhány hivatkozás a RStudio dokumentá
 * **R-kód szerkesztése és végrehajtása**: a RStudio integrált környezetet biztosít az r-kód szerkesztéséhez és végrehajtásához. További információ: [kód szerkesztése és végrehajtása](https://support.rstudio.com/hc/articles/200484448-Editing-and-Executing-Code).
 * **Hibakeresés**: a RStudio hatékony hibakeresési képességeket tartalmaz. További információ ezekről a funkciókról: [hibakeresés a RStudio](https://support.rstudio.com/hc/articles/200713843-Debugging-with-RStudio)-mel. A Töréspont hibaelhárítási funkcióiról a [töréspont hibaelhárítása](https://support.rstudio.com/hc/articles/200534337-Breakpoint-Troubleshooting)című témakörben talál további információt.
 
-## <a name="further-reading"></a><a id="appendixb"></a>További olvasnivalók
+## <a name="further-reading"></a><a id="appendixb"></a>További információ
 
 Ez az R-programozási oktatóanyag ismerteti az alapismereteket, amelyekkel a Machine Learning Studio (klasszikus) R nyelvét kell használnia. Ha nem ismeri az R-t, két bevezető érhető el a CRAN-on:
 

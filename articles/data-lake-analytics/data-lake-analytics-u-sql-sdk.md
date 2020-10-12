@@ -8,10 +8,10 @@ ms.reviewer: jasonh
 ms.topic: how-to
 ms.date: 03/01/2017
 ms.openlocfilehash: daf72fcf7baba289b4145d06d878c8a7232f1c6a
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87132415"
 ---
 # <a name="run-and-test-u-sql-with-azure-data-lake-u-sql-sdk"></a>A U-SQL futtatása és tesztelése Azure Data Lake U-SQL SDK-val
@@ -35,7 +35,7 @@ A Data Lake U-SQL SDK a következő függőségeket igényli:
 
     ![A Visual Studio helyi Data Lake eszközei – Windows 10 SDK futtatása](./media/data-lake-analytics-data-lake-tools-local-run/data-lake-tools-for-visual-studio-local-run-windows-10-sdk.png)
 
-  - Telepítse [Data Lake Tools for Visual Studio](https://aka.ms/adltoolsvs)alkalmazást. Az előre csomagolt Visual C++ és Windows SDK fájlok a következő címen találhatók:`C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\Extensions\Microsoft\ADL Tools\X.X.XXXX.X\CppSDK.`
+  - Telepítse [Data Lake Tools for Visual Studio](https://aka.ms/adltoolsvs)alkalmazást. Az előre csomagolt Visual C++ és Windows SDK fájlok a következő címen találhatók: `C:\Program Files (x86)\Microsoft Visual Studio 14.0\Common7\IDE\Extensions\Microsoft\ADL Tools\X.X.XXXX.X\CppSDK.`
 
     Ebben az esetben a U-SQL helyi fordító nem találja a függőségeket automatikusan. Meg kell adnia a CppSDK elérési útját. Másolhatja a fájlokat egy másik helyre, vagy használhatja azt.
 
@@ -64,7 +64,7 @@ A U-SQL-parancsfájlokban relatív elérési utat és helyi abszolút elérési 
 
 Ha a U-SQL-parancsfájlt helyileg futtatja, a rendszer létrehoz egy munkakönyvtárat a fordítás során a jelenlegi futó könyvtár alatt. A fordítási kimeneteken kívül a helyi végrehajtáshoz szükséges futtatókörnyezeti fájlok árnyékolva lesznek a munkakönyvtárba. A munkakönyvtár gyökérkönyvtárának neve "ScopeWorkDir", és a munkakönyvtárban található fájlok a következők:
 
-|Könyvtár/fájl|Könyvtár/fájl|Könyvtár/fájl|Definíció|Description|
+|Könyvtár/fájl|Könyvtár/fájl|Könyvtár/fájl|Definíció|Leírás|
 |--------------|--------------|--------------|----------|-----------|
 |C6A101DDCB470506| | |Futtatókörnyezet-verzió kivonatoló karakterlánca|A helyi végrehajtáshoz szükséges futtatókörnyezeti fájlok árnyékmásolata|
 | |Script_66AE4909AA0ED06C| |Parancsfájl neve + szkript elérési útjának kivonat-karakterlánca|Fordítási kimenetek és végrehajtási lépés naplózása|
@@ -141,7 +141,7 @@ LocalRunHelper run -Script path_to_usql_script.usql [optional_arguments]
 
 A **Futtatás**nem kötelező argumentumai a következők:
 
-|Argumentum|Alapértelmezett érték|Description|
+|Argumentum|Alapértelmezett érték|Leírás|
 |--------|-------------|-----------|
 |– CodeBehind|Hamis|A szkript a. CS kód mögött található.|
 |-CppSDK| |CppSDK könyvtár|
@@ -154,7 +154,7 @@ A **Futtatás**nem kötelező argumentumai a következők:
 |-Részletes|Hamis|Részletes kimenetek megjelenítése futtatókörnyezetből|
 |-WorkDir|Aktuális könyvtár|A fordítóprogram használatának és kimenetének könyvtára|
 |-RunScopeCEP|0|A használandó ScopeCEP mód|
-|-ScopeCEPTempPath|ideiglenes|Az adatfolyam-továbbításhoz használandó ideiglenes útvonal|
+|-ScopeCEPTempPath|temp|Az adatfolyam-továbbításhoz használandó ideiglenes útvonal|
 |-OptFlags| |Az optimalizáló jelzők vesszővel tagolt listája|
 
 Bemutatunk egy példát:
@@ -173,7 +173,7 @@ LocalRunHelper compile -Script path_to_usql_script.usql [optional_arguments]
 
 A **fordítás**nem kötelező argumentumai a következők:
 
-|Argumentum|Description|
+|Argumentum|Leírás|
 |--------|-----------|
 | -CodeBehind [alapértelmezett érték: "false"]|A szkript a. CS kód mögött található.|
 | -CppSDK [alapértelmezett érték: ""]|CppSDK könyvtár|
@@ -218,7 +218,7 @@ LocalRunHelper execute -Algebra path_to_compiled_algebra_file [optional_argument
 
 A **végrehajtás**nem kötelező argumentumai a következők:
 
-|Argumentum|Alapértelmezett érték|Description|
+|Argumentum|Alapértelmezett érték|Leírás|
 |--------|-------------|-----------|
 |– DataRoot | '' |A metaadatok végrehajtásához szükséges adatok gyökerét. Alapértelmezés szerint a **LOCALRUN_DATAROOT** környezeti változót.|
 |-MessageOut | '' |Üzenetek kiírása a konzolon egy fájlba.|
@@ -331,13 +331,13 @@ A LocalRunHelper.exe az U-SQL helyi fordításához, futtatásához stb. program
 
 nyilvános LocalRunHelper ([System. IO. TextWriter messageOutput = null])
 
-|Paraméter|Típus|Description|
+|Paraméter|Típus|Leírás|
 |---------|----|-----------|
 |messageOutput|System. IO. TextWriter|a kimeneti üzenetek esetében állítsa a null értéket a konzol használatához|
 
 ### <a name="properties"></a>Tulajdonságok
 
-|Tulajdonság|Típus|Description|
+|Tulajdonság|Típus|Leírás|
 |--------|----|-----------|
 |AlgebraPath|sztring|Az algebra-fájl elérési útja (az algebra-fájl az egyik fordítási eredmény)|
 |CodeBehindReferences|sztring|Ha a parancsfájl további kódokat tartalmaz a hivatkozások mögött, adja meg a ";" karakterrel elválasztott elérési utakat.|

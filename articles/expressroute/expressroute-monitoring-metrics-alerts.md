@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 08/25/2020
 ms.author: duau
 ms.openlocfilehash: 6f502b8ad8ac268cc937150f4effdf9edf8eef15
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91252629"
 ---
 # <a name="expressroute-monitoring-metrics-and-alerts"></a>Az ExpressRoute monitorozása, mérőszámai és riasztásai
@@ -35,7 +35,7 @@ Ha kijelöl egy mérőszámot, a rendszer az alapértelmezett összesítést alk
 |ARP rendelkezésre állása|Rendelkezésre állás|<ui><li>Társ (elsődleges/másodlagos ExpressRoute útválasztó)</ui></li><ui><li> Egyenrangú típus (privát/nyilvános/Microsoft)</ui></li>|ExpressRoute|
 |BGP rendelkezésre állása|Rendelkezésre állás|<ui><li> Társ (elsődleges/másodlagos ExpressRoute útválasztó)</ui></li><ui><li> Egyenrangú típus</ui></li>|ExpressRoute|
 |BitsInPerSecond|Adatforgalom|<ui><li> Egyenrangúság típusa (ExpressRoute)</ui></li><ui><li>Hivatkozás (ExpressRoute Direct)</ui></li>|<li>ExpressRoute</li><li>ExpressRoute Direct|
-|BitsOutPerSecond|Adatforgalom| <ui><li>Egyenrangúság típusa (ExpressRoute)</ui></li><ui><li> Hivatkozás (ExpressRoute Direct) |<ui><li>ExpressRoute<ui><li>ExpressRoute Direct</ui></li> |
+|BitsOutPerSecond|Adatforgalom| <ui><li>Egyenrangúság típusa (ExpressRoute)</ui></li><ui><li> Hivatkozás (ExpressRoute Direct) |<ui><li>ExpressRoute<ui><li>Közvetlen ExpressRoute</ui></li> |
 |Processzor kihasználtsága|Teljesítmény| <ui><li>Példány</ui></li>|ExpressRoute Virtual Network átjáró|
 |Másodpercenkénti csomagok száma|Teljesítmény| <ui><li>Példány</ui></li>|ExpressRoute Virtual Network átjáró|
 |GlobalReachBitsInPerSecond|Adatforgalom|<ui><li>Egyenrangú áramköri Sgomb (szolgáltatás kulcsa)</ui></li>|Global Reach|
@@ -60,19 +60,19 @@ A mérőszámokat megtekintheti egy adott ExpressRoute-áramkörön található 
 
 A privát, nyilvános és Microsoft-partnerek mérőszámait BITS/másodpercben tekintheti meg.
 
-:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/erpeeringmetrics.jpg" alt-text="metrikák felhasználónként":::
+:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/erpeeringmetrics.jpg" alt-text="áramköri metrikák":::
 
 ### <a name="bgp-availability---split-by-peer"></a>BGP rendelkezésre állása – megosztás társ szerint  
 
 Megtekintheti közel valós idejű rendelkezésre állását a BGP és a társai között (elsődleges és másodlagos ExpressRoute útválasztók). Ez az irányítópult az elsődleges BGP-munkamenetet jeleníti meg a privát partnereknél, a második BGP-munkamenetet pedig a privát társak számára. 
 
-:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/erBgpAvailabilityMetrics.jpg" alt-text="BGP rendelkezésre állása csoportonként":::
+:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/erBgpAvailabilityMetrics.jpg" alt-text="áramköri metrikák":::
 
 ### <a name="arp-availability---split-by-peering"></a>ARP rendelkezésre állása – megosztás társítás szerint  
 
 Megtekintheti a közel valós idejű rendelkezésre állást az [ARP](https://docs.microsoft.com/azure/expressroute/expressroute-troubleshooting-arp-resource-manager) -ben a különböző társítások és társaik (elsődleges és másodlagos ExpressRoute útválasztók) között. Ez az irányítópult a privát társ-összevonási ARP-munkamenetet jeleníti meg mindkét társon, de a Microsoft társközi szolgáltatásban való kitöltését. A rendszer az alapértelmezett összesítést (átlag) használta mindkét társban.  
 
-:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/erArpAvailabilityMetrics.jpg" alt-text="ARP rendelkezésre állása egyenrangúként":::
+:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/erArpAvailabilityMetrics.jpg" alt-text="áramköri metrikák":::
 
 ## <a name="expressroute-direct-metrics"></a>Közvetlen ExpressRoute metrikák
 
@@ -80,37 +80,37 @@ Megtekintheti a közel valós idejű rendelkezésre állást az [ARP](https://do
 
 Megtekintheti a ExpressRoute Direct port pár hivatkozásának rendszergazdai állapotát.
 
-:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/adminstate-per-link.jpg" alt-text="ER Direct rendszergazdai állapot":::
+:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/adminstate-per-link.jpg" alt-text="áramköri metrikák":::
 
 ### <a name="bits-in-per-second---split-by-link"></a>Bitek másodpercenként – felosztás hivatkozás alapján
 
 A biteket másodpercenként megtekintheti a ExpressRoute Direct port pár hivatkozásán keresztül.
 
-:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/bits-in-per-second-per-link.jpg" alt-text="Közvetlen bitek másodpercenkénti száma":::
+:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/bits-in-per-second-per-link.jpg" alt-text="áramköri metrikák":::
 
 ### <a name="bits-out-per-second---split-by-link"></a>Bitek másodpercenkénti felosztása hivatkozás alapján
 
 A másodpercenkénti biteket is megtekintheti a ExpressRoute Direct port pár hivatkozásán keresztül.
 
-:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/bits-out-per-second-per-link.jpg" alt-text="ER Direct bitek másodpercenként":::
+:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/bits-out-per-second-per-link.jpg" alt-text="áramköri metrikák":::
 
 ### <a name="line-protocol---split-by-link"></a>Sor protokoll – felosztás hivatkozás alapján
 
 A ExpressRoute Direct port pár hivatkozásán keresztül megtekintheti a sor protokollját.
 
-:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/line-protocol-per-link.jpg" alt-text="ER Direct Line protokoll":::
+:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/line-protocol-per-link.jpg" alt-text="áramköri metrikák":::
 
 ### <a name="rx-light-level---split-by-link"></a>Rx fényszint-felosztás hivatkozás alapján
 
 Megtekintheti az RX-fény szintjét (a ExpressRoute közvetlen portot **fogadó**fény szintjét) az egyes portokhoz. Az egészséges Rx-fény szintje általában a-10 és 0 km közötti tartományba esik
 
-:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/rxlight-level-per-link.jpg" alt-text="ER Direct line Rx fény szintje":::
+:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/rxlight-level-per-link.jpg" alt-text="áramköri metrikák":::
 
 ### <a name="tx-light-level---split-by-link"></a>TX Light Level-felosztás hivatkozás alapján
 
 Megtekintheti a TX-fény szintjét (a ExpressRoute közvetlen port által **közvetített**fény szintjét) az egyes portokhoz. Az egészséges TX-fény szintje általában a-10 és 0 km közötti tartományba esik
 
-:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/txlight-level-per-link.jpg" alt-text="ER Direct line TX fény szintje":::
+:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/txlight-level-per-link.jpg" alt-text="áramköri metrikák":::
 
 ## <a name="expressroute-virtual-network-gateway-metrics"></a>ExpressRoute Virtual Network átjáró Metrikái
 
@@ -118,42 +118,42 @@ Megtekintheti a TX-fény szintjét (a ExpressRoute közvetlen port által **köz
 
 Megtekintheti az átjáró-példányok CPU-kihasználtságát.
 
-:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/cpu-split.jpg" alt-text="PROCESSZOR felosztása":::
+:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/cpu-split.jpg" alt-text="áramköri metrikák":::
 
 ### <a name="packets-per-second---split-by-instance"></a>Csomagok/másodperc – példány szerint felosztva
 
 Az átjárón másodpercenként megtekintheti a csomagokat.
 
-:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/pps-split.jpg" alt-text="Csomagok másodpercenként – felosztás":::
+:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/pps-split.jpg" alt-text="áramköri metrikák":::
 
 ## <a name="expressroute-gateway-connections-in-bitsseconds"></a>ExpressRoute bit/másodpercben
 
-:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/erconnections.jpg" alt-text="átjáró kapcsolatai":::
+:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/erconnections.jpg" alt-text="áramköri metrikák":::
 
 ## <a name="alerts-for-expressroute-gateway-connections"></a>Riasztások a ExpressRoute-átjáró kapcsolataihoz
 
 1. A riasztások konfigurálásához navigáljon **Azure monitor**, majd válassza a **riasztások**lehetőséget.
 
-   :::image type="content" source="./media/expressroute-monitoring-metrics-alerts/eralertshowto.jpg" alt-text="riasztások":::
+   :::image type="content" source="./media/expressroute-monitoring-metrics-alerts/eralertshowto.jpg" alt-text="áramköri metrikák":::
 2. Kattintson a **+ cél kiválasztása** elemre, és válassza ki a ExpressRoute-átjáróhoz tartozó kapcsolatok erőforrását.
 
-   :::image type="content" source="./media/expressroute-monitoring-metrics-alerts/alerthowto2.jpg" alt-text="cél":::
+   :::image type="content" source="./media/expressroute-monitoring-metrics-alerts/alerthowto2.jpg" alt-text="áramköri metrikák":::
 3. Adja meg a riasztás részleteit.
 
-   :::image type="content" source="./media/expressroute-monitoring-metrics-alerts/alerthowto3.jpg" alt-text="műveleti csoport":::
+   :::image type="content" source="./media/expressroute-monitoring-metrics-alerts/alerthowto3.jpg" alt-text="áramköri metrikák":::
 4. Adja meg és adja hozzá a műveleti csoportot.
 
-   :::image type="content" source="./media/expressroute-monitoring-metrics-alerts/actiongroup.png" alt-text="műveleti csoport hozzáadása":::
+   :::image type="content" source="./media/expressroute-monitoring-metrics-alerts/actiongroup.png" alt-text="áramköri metrikák":::
 
 ## <a name="alerts-based-on-each-peering"></a>Riasztások az egyes társak alapján
 
-:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/basedpeering.jpg" alt-text="minden társ":::
+:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/basedpeering.jpg" alt-text="áramköri metrikák":::
 
 ## <a name="configure-alerts-for-activity-logs-on-circuits"></a>Riasztások konfigurálása a tevékenységi naplókhoz az áramkörön
 
 A **riasztási feltételek**között kiválaszthatja a jel típusa **tevékenység naplóját** , és kiválaszthatja a jelet.
 
-:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/alertshowto6activitylog.jpg" alt-text="Tevékenységnaplók":::
+:::image type="content" source="./media/expressroute-monitoring-metrics-alerts/alertshowto6activitylog.jpg" alt-text="áramköri metrikák":::
 
 ## <a name="additional-metrics-in-log-analytics"></a>További metrikák a Log Analytics
 

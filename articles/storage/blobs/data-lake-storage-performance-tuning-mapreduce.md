@@ -9,10 +9,10 @@ ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
 ms.openlocfilehash: e9d638a7ed17d08b585c71b1dac4a0177f4a2939
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88030520"
 ---
 # <a name="tune-performance-mapreduce-hdinsight--azure-data-lake-storage-gen2"></a>Teljesítmény hangolása: MapReduce, HDInsight & Azure Data Lake Storage Gen2
@@ -65,7 +65,7 @@ Ha üres fürtöt használ, a memória a fürt teljes FONALának memóriája leh
 
 A FONALas tárolók a feladatokhoz rendelkezésre álló Egyidejűség mennyiségét írják le.  A fonal teljes memóriájának és osztásának elvégzése a MapReduce. map. Memory használatával.  
 
-\#of fonal-tárolók = teljes fonal-memória/MapReduce. Térkép. memória
+\# of fonal-tárolók = teljes fonal-memória/MapReduce. Térkép. memória
 
 **5. lépés: állítsa be a MapReduce. job. Maps/MapReduce. job. csökkenti**
 
@@ -93,7 +93,7 @@ A fürt teljes memóriája 8 csomópont * 96GB a D14 = 768GB
 
 **4. lépés: a FONALas tárolók számának kiszámítása**
 
-\#FONALas tárolók esetén = a rendelkezésre álló memória 768GB/3 GB memória = 256
+\# FONALas tárolók esetén = a rendelkezésre álló memória 768GB/3 GB memória = 256
 
 **5. lépés: állítsa be a MapReduce. job. Maps/MapReduce. job. csökkenti**
 

@@ -8,13 +8,13 @@ ms.topic: how-to
 ms.service: virtual-machines
 ms.subservice: disks
 ms.openlocfilehash: 9a6a56491a327d5d4eafc2c05dc2b54b137096b8
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88752057"
 ---
-# <a name="reduce-costs-with-azure-disks-reservation"></a>Csökkentse a költségeket az Azure-lemezek foglalásával
+# <a name="reduce-costs-with-azure-disks-reservation"></a>Költségek csökkentése Azure-beli lemezfoglalással
 
 Mentse a Azure Disk Storage használatot fenntartott kapacitással. Azure Disk Storage a Azure Reserved Virtual Machine Instances összevont foglalások lehetővé teszik a virtuális gép (VM) teljes költségeinek csökkentését. A foglalási kedvezményt a rendszer automatikusan alkalmazza a kijelölt foglalási hatókörben lévő megfelelő lemezekre. Ennek az automatikus alkalmazásnak az alkalmazása miatt nem szükséges foglalást hozzárendelni egy felügyelt lemezhez a kedvezmények beszerzéséhez.
 
@@ -104,4 +104,4 @@ Ha kérdése van vagy segítségre van szüksége, [hozzon létre egy támogatá
 ## <a name="next-steps"></a>További lépések
 
 - [Mi az az Azure Reservations?](../cost-management-billing/reservations/save-compute-costs-reservations.md)
-- [A foglalási kedvezmény Azure Disk Storage-ra való alkalmazásának megismerése](../cost-management-billing/reservations/understand-disk-reservations.md)
+- [Megtudhatja, hogyan alkalmazza a foglalási kedvezményt Azure Disk Storage](../cost-management-billing/reservations/understand-disk-reservations.md)

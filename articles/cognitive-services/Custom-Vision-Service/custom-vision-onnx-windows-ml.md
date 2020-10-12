@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/29/2020
 ms.author: pafarley
 ms.openlocfilehash: d6bcb5485833fbfaa3eb72191ee54b1ee69bab04
-ms.sourcegitcommit: 3abadafcff7f28a83a3462b7630ee3d1e3189a0e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82594295"
 ---
 # <a name="use-an-onnx-model-from-custom-vision-with-windows-ml-preview"></a>Custom Vision ONNX modell használata Windows ML-vel (előzetes verzió)
@@ -53,10 +53,10 @@ Saját rendszerkép-osztályozó modell használatához kövesse az alábbi lép
 1. Nyissa meg a letöltött *. zip* fájlt, és bontsa ki a *Model. Onnx* fájlt. Ez a fájl tartalmazza az osztályozó modellt.
 1. A Visual Studióban lévő Megoldáskezelő kattintson a jobb gombbal az **eszközök** mappára, és válassza a __meglévő elem hozzáadása elemet__. Válassza ki a ONNX-fájlt.
 1. A Megoldáskezelő kattintson a jobb gombbal a ONNX fájlra, és válassza a **Tulajdonságok**lehetőséget. Módosítsa a fájl következő tulajdonságait:
-   * __Művelet__ -> __tartalmának__ létrehozása
-   * __Másolás a kimeneti könyvtárba__ -> __Másolás, ha újabb__
-1. Ezután nyissa meg a _MainPage.XAML.cs_ , és `_ourOnnxFileName` módosítsa az értékét a ONNX-fájl nevére.
-1. A projekt `F5` létrehozásához és futtatásához használja a következőt:.
+   * __Felépítési művelet__  ->  __Tartalom__
+   * __Másolás a kimeneti könyvtárba__  ->  __Másolás, ha újabb__
+1. Ezután nyissa meg a _MainPage.XAML.cs_ , és módosítsa az értékét `_ourOnnxFileName` a ONNX-fájl nevére.
+1. A projekt létrehozásához és futtatásához használja a következőt: `F5` .
 1. Kattintson a gombra az értékelni kívánt kép kiválasztásához.
 
 ## <a name="next-steps"></a>További lépések

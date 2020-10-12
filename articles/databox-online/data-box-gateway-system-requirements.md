@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 05/08/2019
 ms.author: alkohli
 ms.openlocfilehash: aadaedfd2c9ecf544d142e42a0fbeb410324b7d8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82562440"
 ---
 # <a name="azure-data-box-gateway-system-requirements"></a>Rendszerkövetelmények Azure Data Box Gateway
@@ -32,10 +32,10 @@ A Data Box Gateway mögöttes gazdagéprendszer képes a következő erőforrás
 | Specifikációk                                          | Leírás              |
 |---------------------------------------------------------|--------------------------|
 | Virtuális processzorok (magok)   | Minimum 4 |
-| Memory (Memória)  | Minimum 8 GB|
+| Memória  | Minimum 8 GB|
 | Rendelkezésre állás|Egyetlen csomópont|
 | Lemezek| Operációsrendszer-lemez: 250 GB <br> Adatlemez: legalább 2 TB, dinamikusan kiosztott és SSD-másolatokkal kiegészített|
-| Hálózati illesztők|1 vagy több virtuális hálózati adapter|
+| Hálózati adapterek|1 vagy több virtuális hálózati adapter|
 
 
 ## <a name="supported-os-for-clients-connected-to-device"></a>Az eszközhöz csatlakoztatott ügyfelek támogatott operációs rendszere
@@ -48,10 +48,10 @@ A Data Box Gateway mögöttes gazdagéprendszer képes a következő erőforrás
 
 ## <a name="supported-virtualization-platforms-for-device"></a>Az eszköz által támogatott virtualizációs platformok
 
-| **Operációs rendszer/platform**  |**Verziók**   |**Megjegyzések**  |
+| **Operációs rendszer/platform**  |**Versions** (Verziók)   |**Megjegyzések**  |
 |---------|---------|---------|
 |Hyper-V  |  2012 R2 <br> 2016 <br> 2019 |         |
-|VMware ESXi     | 6.0 <br> 6.5 <br> 6.7       |A VMware-eszközök nem támogatottak.         |
+|VMware ESXi     | 6,0 <br> 6.5 <br> 6.7       |A VMware-eszközök nem támogatottak.         |
 
 
 ## <a name="supported-storage-accounts"></a>Támogatott tárfiókok

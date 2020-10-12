@@ -4,10 +4,10 @@ description: A Azure Resource Manager-sablonban a számokkal való munkához has
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.openlocfilehash: 00b44d971a487a0bbec27f3fc2d0746cedd6f874
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84677916"
 ---
 # <a name="numeric-functions-for-arm-templates"></a>ARM-sablonok numerikus függvények
@@ -33,10 +33,10 @@ A két megadott egész szám összegét adja vissza.
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-|operand1 |Yes |int |A hozzáadandó első szám. |
-|operand2 |Yes |int |A hozzáadandó második szám. |
+|operand1 |Igen |int |A hozzáadandó első szám. |
+|operand2 |Igen |int |A hozzáadandó második szám. |
 
 ### <a name="return-value"></a>Visszatérési érték
 
@@ -79,7 +79,7 @@ Az alábbi [sablon](https://github.com/Azure/azure-docs-json-samples/blob/master
 
 Az előző példában az alapértelmezett értékekkel rendelkező kimenet a következő:
 
-| Name | Típus | Érték |
+| Név | Típus | Érték |
 | ---- | ---- | ----- |
 | addResult | Int | 8 |
 
@@ -91,10 +91,10 @@ Egy iterációs hurok indexét adja vissza.
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| loopName | No | sztring | Az iteráció megszerzéséhez használt hurok neve. |
-| offset |No |int |A nulla alapú iterációs értékhez hozzáadandó szám. |
+| loopName | Nem | sztring | Az iteráció megszerzéséhez használt hurok neve. |
+| offset |Nem |int |A nulla alapú iterációs értékhez hozzáadandó szám. |
 
 ### <a name="remarks"></a>Megjegyzések
 
@@ -156,10 +156,10 @@ A két megadott egész szám egészének osztását adja vissza.
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| operand1 |Yes |int |A felosztott szám. |
-| operand2 |Yes |int |A felosztáshoz használt szám. Nem lehet 0. |
+| operand1 |Igen |int |A felosztott szám. |
+| operand2 |Igen |int |A felosztáshoz használt szám. Nem lehet 0. |
 
 ### <a name="return-value"></a>Visszatérési érték
 
@@ -202,11 +202,11 @@ Az alábbi [példában szereplő sablon](https://github.com/Azure/azure-docs-jso
 
 Az előző példában az alapértelmezett értékekkel rendelkező kimenet a következő:
 
-| Name | Típus | Érték |
+| Név | Típus | Érték |
 | ---- | ---- | ----- |
 | divResult | Int | 2 |
 
-## <a name="float"></a>lebegőpontos
+## <a name="float"></a>float
 
 `float(arg1)`
 
@@ -214,9 +214,9 @@ Az értéket egy lebegőpontos számra konvertálja. Ezt a függvényt csak akko
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |karakterlánc vagy int |A lebegőpontos számra konvertálandó érték. |
+| arg1 |Igen |karakterlánc vagy int |A lebegőpontos számra konvertálandó érték. |
 
 ### <a name="return-value"></a>Visszatérési érték
 
@@ -248,9 +248,9 @@ Egy egész számra konvertálja a megadott értéket.
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| valueToConvert |Yes |karakterlánc vagy int |Az egész számra konvertálandó érték. |
+| valueToConvert |Igen |karakterlánc vagy int |Az egész számra konvertálandó érték. |
 
 ### <a name="return-value"></a>Visszatérési érték
 
@@ -283,11 +283,11 @@ A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Az előző példában az alapértelmezett értékekkel rendelkező kimenet a következő:
 
-| Name | Típus | Érték |
+| Név | Típus | Érték |
 | ---- | ---- | ----- |
 | intResult | Int | 4 |
 
-## <a name="max"></a>Max
+## <a name="max"></a>max.
 
 `max (arg1)`
 
@@ -295,9 +295,9 @@ A maximális értéket adja vissza egész számok tömbje vagy az egész számok
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |egész számok tömbje vagy egész számok vesszővel tagolt listája |A gyűjtemény, amely a maximális értéket kapja. |
+| arg1 |Igen |egész számok tömbje vagy egész számok vesszővel tagolt listája |A gyűjtemény, amely a maximális értéket kapja. |
 
 ### <a name="return-value"></a>Visszatérési érték
 
@@ -333,7 +333,7 @@ Az alábbi [példa](https://github.com/Azure/azure-docs-json-samples/blob/master
 
 Az előző példában az alapértelmezett értékekkel rendelkező kimenet a következő:
 
-| Name | Típus | Érték |
+| Név | Típus | Érték |
 | ---- | ---- | ----- |
 | arrayOutput | Int | 5 |
 | intOutput | Int | 5 |
@@ -346,9 +346,9 @@ A minimális értéket adja vissza egész számok tömbje vagy az egész számok
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |egész számok tömbje vagy egész számok vesszővel tagolt listája |A gyűjtemény a minimális érték beolvasásához. |
+| arg1 |Igen |egész számok tömbje vagy egész számok vesszővel tagolt listája |A gyűjtemény a minimális érték beolvasásához. |
 
 ### <a name="return-value"></a>Visszatérési érték
 
@@ -384,7 +384,7 @@ Az alábbi [példa](https://github.com/Azure/azure-docs-json-samples/blob/master
 
 Az előző példában az alapértelmezett értékekkel rendelkező kimenet a következő:
 
-| Name | Típus | Érték |
+| Név | Típus | Érték |
 | ---- | ---- | ----- |
 | arrayOutput | Int | 0 |
 | intOutput | Int | 0 |
@@ -397,10 +397,10 @@ Az egész szám többit adja vissza a két megadott egész szám használatával
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| operand1 |Yes |int |A felosztott szám. |
-| operand2 |Yes |int |A felosztáshoz használt szám nem lehet 0. |
+| operand1 |Igen |int |A felosztott szám. |
+| operand2 |Igen |int |A felosztáshoz használt szám nem lehet 0. |
 
 ### <a name="return-value"></a>Visszatérési érték
 
@@ -443,7 +443,7 @@ A következő [példa](https://github.com/Azure/azure-docs-json-samples/blob/mas
 
 Az előző példában az alapértelmezett értékekkel rendelkező kimenet a következő:
 
-| Name | Típus | Érték |
+| Név | Típus | Érték |
 | ---- | ---- | ----- |
 | modResult | Int | 1 |
 
@@ -455,10 +455,10 @@ A két megadott egész szám szorzását adja vissza.
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| operand1 |Yes |int |A szorzáshoz használandó első szám. |
-| operand2 |Yes |int |A szorzáshoz használt második szám. |
+| operand1 |Igen |int |A szorzáshoz használandó első szám. |
+| operand2 |Igen |int |A szorzáshoz használt második szám. |
 
 ### <a name="return-value"></a>Visszatérési érték
 
@@ -501,7 +501,7 @@ A következő [példában](https://github.com/Azure/azure-docs-json-samples/blob
 
 Az előző példában az alapértelmezett értékekkel rendelkező kimenet a következő:
 
-| Name | Típus | Érték |
+| Név | Típus | Érték |
 | ---- | ---- | ----- |
 | mulResult | Int | 15 |
 
@@ -513,10 +513,10 @@ A két megadott egész szám kivonását adja vissza.
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| operand1 |Yes |int |A következőből kivont szám. |
-| operand2 |Yes |int |A kivonni kívánt szám. |
+| operand1 |Igen |int |A következőből kivont szám. |
+| operand2 |Igen |int |A kivonni kívánt szám. |
 
 ### <a name="return-value"></a>Visszatérési érték
 
@@ -559,7 +559,7 @@ A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Az előző példában az alapértelmezett értékekkel rendelkező kimenet a következő:
 
-| Name | Típus | Érték |
+| Név | Típus | Érték |
 | ---- | ---- | ----- |
 | aleredmény | Int | 4 |
 

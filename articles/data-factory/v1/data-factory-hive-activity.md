@@ -13,10 +13,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: 41f570f93e95e9801b08c06cacc0423b1bf3b8e5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91252783"
 ---
 # <a name="transform-data-using-hive-activity-in-azure-data-factory"></a>Az adatátalakítás a kaptár tevékenységgel Azure Data Factory 
@@ -74,15 +74,15 @@ A Data Factory [folyamat](data-factory-create-pipelines.md) HDInsight-struktúr�
 ## <a name="syntax-details"></a>Szintaxis részletei
 | Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
-| név |A tevékenység neve |Yes |
-| leírás |A tevékenység által használt szöveg leírása |No |
-| típus |HDinsightHive |Yes |
-| bemenetek |A kaptár tevékenység által felhasznált bemenetek |No |
-| kimenetek |A kaptár tevékenység által létrehozott kimenetek |Yes |
-| linkedServiceName |Hivatkozás a Data Factory társított szolgáltatásként regisztrált HDInsight-fürtre |Yes |
-| parancsfájl |A struktúra-parancsfájl beágyazottként való megadásának meghatározása |No |
-| scriptPath |Tárolja a kaptár parancsfájlt egy Azure Blob Storage-tárolóban, és adja meg a fájl elérési útját. Használja a "script" vagy a "scriptPath" tulajdonságot. Mindkettő nem használható együtt. A fájl neve megkülönbözteti a kis-és nagybetűket. |No |
-| meghatározza |Adja meg a paramétereket kulcs/érték párokként a kaptár parancsfájlban a "hiveconf" használatával való hivatkozáshoz. |No |
+| name |A tevékenység neve |Igen |
+| leírás |A tevékenység által használt szöveg leírása |Nem |
+| típus |HDinsightHive |Igen |
+| bemenetek |A kaptár tevékenység által felhasznált bemenetek |Nem |
+| kimenetek |A kaptár tevékenység által létrehozott kimenetek |Igen |
+| linkedServiceName |Hivatkozás a Data Factory társított szolgáltatásként regisztrált HDInsight-fürtre |Igen |
+| parancsfájl |A struktúra-parancsfájl beágyazottként való megadásának meghatározása |Nem |
+| scriptPath |Tárolja a kaptár parancsfájlt egy Azure Blob Storage-tárolóban, és adja meg a fájl elérési útját. Használja a "script" vagy a "scriptPath" tulajdonságot. Mindkettő nem használható együtt. A fájl neve megkülönbözteti a kis-és nagybetűket. |Nem |
+| meghatározza |Adja meg a paramétereket kulcs/érték párokként a kaptár parancsfájlban a "hiveconf" használatával való hivatkozáshoz. |Nem |
 
 ## <a name="example"></a>Példa
 Vegyünk egy példát a game logs analyticsre, ahol a felhasználók által a vállalat által elindított játékokkal töltött idő azonosítására van szükség. 

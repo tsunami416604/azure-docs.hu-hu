@@ -4,10 +4,10 @@ description: Ismerteti a Azure Resource Manager-sablonban a telepítési inform�
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.openlocfilehash: e8240c05cba82d5563c4b327ecbc65a9c358720f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84677814"
 ---
 # <a name="deployment-functions-for-arm-templates"></a>Az ARM-sablonok üzembe helyezési funkciói
@@ -158,7 +158,7 @@ Az előző példa a következő objektumot adja vissza:
 }
 ```
 
-## <a name="environment"></a>environment
+## <a name="environment"></a>környezet
 
 `environment()`
 
@@ -256,7 +256,7 @@ Az előző példa a következő objektumot adja vissza a globális Azure-ba val�
 }
 ```
 
-## <a name="parameters"></a>paraméterek
+## <a name="parameters"></a>parameters
 
 `parameters(parameterName)`
 
@@ -264,9 +264,9 @@ Egy paraméter értékét adja vissza. A megadott paraméter nevét meg kell adn
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| parameterName |Yes |sztring |A visszaadni kívánt paraméter neve. |
+| parameterName |Igen |sztring |A visszaadni kívánt paraméter neve. |
 
 ### <a name="return-value"></a>Visszatérési érték
 
@@ -351,7 +351,7 @@ A következő [példa](https://github.com/Azure/azure-docs-json-samples/blob/mas
 
 Az előző példában az alapértelmezett értékekkel rendelkező kimenet a következő:
 
-| Name | Típus | Érték |
+| Név | Típus | Érték |
 | ---- | ---- | ----- |
 | stringOutput | Sztring | 1. lehetőség |
 | intOutput | Int | 1 |
@@ -369,9 +369,9 @@ A változó értékét adja vissza. A megadott változó nevét meg kell adni a 
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| variableName |Yes |Sztring |A visszaadni kívánt változó neve. |
+| variableName |Igen |Sztring |A visszaadni kívánt változó neve. |
 
 ### <a name="return-value"></a>Visszatérési érték
 
@@ -443,7 +443,7 @@ A következő [példában szereplő sablon](https://github.com/Azure/azure-docs-
 
 Az előző példában az alapértelmezett értékekkel rendelkező kimenet a következő:
 
-| Name | Típus | Érték |
+| Név | Típus | Érték |
 | ---- | ---- | ----- |
 | exampleOutput1 | Sztring | myVariable |
 | exampleOutput2 | Tömb | [1, 2, 3, 4] |

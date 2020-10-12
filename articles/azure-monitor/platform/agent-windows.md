@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 08/03/2020
 ms.openlocfilehash: d283c2b2cdbbeb3ef4bc4e25f4288dfd95158552
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89003371"
 ---
 # <a name="install-log-analytics-agent-on-windows-computers"></a>Log Analytics ügynök telepítése Windows rendszerű számítógépekre
@@ -49,7 +49,7 @@ Lásd: [log Analytics ügynök áttekintése](log-analytics-agent.md#network-req
 ## <a name="configure-agent-to-use-tls-12"></a>Az ügynök konfigurálása a TLS 1,2 használatára
 A [TLS 1,2](/windows-server/security/tls/tls-registry-settings#tls-12) protokoll biztosítja a Windows-ügynök és a log Analytics szolgáltatás közötti kommunikációhoz szükséges adatforgalom biztonságát. Ha alapértelmezés szerint a [tls 1,2 nélküli operációs rendszerre](data-security.md#sending-data-securely-using-tls-12)telepíti a szolgáltatást, akkor az alábbi lépésekkel kell konfigurálnia a TLS 1,2-es verzióit.
 
-1. Keresse meg a következő beállításkulcsot: **HKEY_LOCAL_MACHINE \system\currentcontrolset\control\securityproviders\schannel\protocols**
+1. Keresse meg a következő beállításkulcsot: **HKEY_LOCAL_MACHINE\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols**
 2. Hozzon létre egy alkulcsot a **protokollok** alatt a TLS 1,2 **HKLM\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1,2**
 3. Hozzon létre egy **ügyfél** -alkulcsot a korábban létrehozott TLS 1,2 protokoll verziójának alkulcsában. Például: **HKLM\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2 \ Client**.
 4. Hozza létre a következő DWORD-értékeket a **HKLM\System\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Protocols\TLS 1.2 \ ügyfél**területen:
@@ -59,9 +59,9 @@ A [TLS 1,2](/windows-server/security/tls/tls-registry-settings#tls-12) protokoll
 
 Konfigurálja a .NET-keretrendszer 4,6-es vagy újabb verzióját a biztonságos titkosítás támogatásához, ahogy az alapértelmezés szerint le van tiltva. Az [erős titkosítás](/dotnet/framework/network-programming/tls#schusestrongcrypto) biztonságosabb hálózati protokollokat használ, mint például a TLS 1,2, és blokkolja a nem biztonságos protokollokat. 
 
-1. Keresse meg a következő beállításkulcsot: **HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft \\ . NETFramework\v4.0.30319**.  
+1. Keresse meg a beállításjegyzék következő alkulcsát: **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\\ . NETFramework\v4.0.30319**.  
 2. Hozza létre az **1**értékkel rendelkező **alatt** DWORD értéket.  
-3. Keresse meg a következő beállításkulcsot: **HKEY_LOCAL_MACHINE \software\wow6432node\microsoft \\ . NETFramework\v4.0.30319**.  
+3. Keresse meg a beállításjegyzék következő alkulcsát: **HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\Microsoft\\ . NETFramework\v4.0.30319**.  
 4. Hozza létre az **1**értékkel rendelkező **alatt** DWORD értéket. 
 5. A beállítások érvénybe léptetéséhez indítsa újra a rendszert. 
 
@@ -202,7 +202,7 @@ Az eredményül kapott keresési eredmények között meg kell jelennie a szívv
 
 A Log Analytics ügynökből származó adatok a helyi gépen vannak gyorsítótárazva, a *C:\Program Files\Microsoft monitoring Agent\Agent\Health szolgáltatás állapota* előtt, mielőtt elküldi őket a Azure monitornak. Az ügynök 20 másodpercenként próbálkozik a feltöltéssel. Ha ez nem sikerül, a rendszer az idő múlásával egy exponenciálisan növekvő időtartamot vár. 30 másodpercet vár a második kísérlet előtt, 60 másodpercig a következő, 120 másodperc és így tovább, amíg az újrapróbálkozások száma az újrapróbálkozások között legfeljebb 8,5 óráig tart. Ez a várakozási idő kis mértékben véletlenszerű, így elkerülhető, hogy az összes ügynök egyszerre kísérelje meg a kapcsolódást. A rendszer elveti a legrégebbi adatvesztést, ha eléri a maximális puffert.
 
-Az alapértelmezett gyorsítótár mérete 50 MB, de konfigurálható legalább 5 MB és legfeljebb 1,5 GB között. Ez a beállításkulcs *HKEY_LOCAL_MACHINE \System\currentcontrolset\services\healthservice\parameters\persistence cache*-ben tárolódik. Az érték a lapok számát jelöli 8 KB/oldal alapján.
+Az alapértelmezett gyorsítótár mérete 50 MB, de konfigurálható legalább 5 MB és legfeljebb 1,5 GB között. A *HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\HealthService\Parameters\Persistence Cache Maximum*beállításkulcs tárolja. Az érték a lapok számát jelöli 8 KB/oldal alapján.
 
 
 ## <a name="next-steps"></a>Következő lépések

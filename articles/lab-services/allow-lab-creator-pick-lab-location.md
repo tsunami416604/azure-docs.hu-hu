@@ -4,10 +4,10 @@ description: Ez a cikk azt ismerteti, hogy a labor-fiókok rendszergazdája hogy
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 3b6c2d83414b1abc763755fbf15402b122c2186b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85444199"
 ---
 # <a name="allow-lab-creator-to-pick-location-for-the-lab-in-azure-lab-services"></a>A labor létrehozójának kiválasztási helyének engedélyezése a laborban Azure Lab Services
@@ -57,7 +57,7 @@ Ha a hely korlátozott, alapértelmezés szerint nem jelenik meg a listában. Bo
 
 ![Nem elérhető helyszínek megjelenítése](./media/allow-lab-creator-pick-lab-location/show-unavailable-locations.png)
 
-## <a name="cost"></a>Költségek
+## <a name="cost"></a>Költség
 Korábban a díjszabás a laborhoz választott virtuálisgép-mérettől függ. Az ár most az operációs rendszer (OS), a méret és a hely kombinációján alapul. 
 
 ## <a name="next-steps"></a>További lépések

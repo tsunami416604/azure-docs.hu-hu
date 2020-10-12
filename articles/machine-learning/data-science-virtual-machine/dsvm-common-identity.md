@@ -11,10 +11,10 @@ ms.author: vijetaj
 ms.topic: conceptual
 ms.date: 05/08/2018
 ms.openlocfilehash: 69d6b8abc99863f29f82abcb44e18b426c5a456c
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85959143"
 ---
 # <a name="set-up-a-common-identity-on-a-data-science-virtual-machine"></a>Közös identitás beállítása Data Science Virtual Machine
@@ -55,7 +55,7 @@ Az Azure AD DS segítségével egyszerűen kezelheti az identitásait egy teljes
     
    1. Biztonságosan továbbítsa a generált jelszót az új felhasználónak, hogy be tudja jelentkezni.
 
-1. Hozzon létre egy Azure AD DS-példányt. Kövesse a [Azure Active Directory Domain Services engedélyezése a Azure Portal használatával](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started) (az "példány létrehozása és alapszintű beállítások konfigurálása" című szakaszt). Fontos, hogy frissítse a meglévő felhasználói jelszavakat Active Directoryban, hogy az Azure-AD DS jelszava szinkronizálva legyen. Fontos továbbá, hogy a DNS-t az Azure AD DS-hoz adja hozzá, ahogy az a következő szakaszban is látható: "a mezők befejezése a Azure Portal alapjai ablakban az Azure AD DS-példány létrehozásakor" című részében leírtak szerint.
+1. Hozzon létre egy Azure AD DS-példányt. Kövesse a  [Azure Active Directory Domain Services engedélyezése a Azure Portal használatával](https://docs.microsoft.com/azure/active-directory-domain-services/active-directory-ds-getting-started) (az "példány létrehozása és alapszintű beállítások konfigurálása" című szakaszt). Fontos, hogy frissítse a meglévő felhasználói jelszavakat Active Directoryban, hogy az Azure-AD DS jelszava szinkronizálva legyen. Fontos továbbá, hogy a DNS-t az Azure AD DS-hoz adja hozzá, ahogy az a következő szakaszban is látható: "a mezők befejezése a Azure Portal alapjai ablakban az Azure AD DS-példány létrehozásakor" című részében leírtak szerint.
 
 1. Hozzon létre egy különálló DSVM alhálózatot az előző lépés "virtuális hálózat létrehozása és konfigurálása" szakaszában létrehozott virtuális hálózaton.
 1. Hozzon létre egy vagy több DSVM-példányt a DSVM-alhálózatban.

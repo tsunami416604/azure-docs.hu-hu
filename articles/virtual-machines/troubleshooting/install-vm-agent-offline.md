@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 07/06/2020
 ms.author: genli
 ms.openlocfilehash: 456aa225fa8eed47ca794c54e61b77a30c93fa9a
-ms.sourcegitcommit: 93462ccb4dd178ec81115f50455fbad2fa1d79ce
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85983223"
 ---
 # <a name="install-the-azure-virtual-machine-agent-in-offline-mode"></a>Az Azure-beli virtuális gép ügynökének telepítése kapcsolat nélküli módban 
@@ -62,10 +62,10 @@ A virtuálisgép-ügynök offline módban történő telepítéséhez kövesse a
     1. A \windowsazure mappa átnevezése a \windowsazure.old.
 
     2. Exportálja a következő jegyzékeket:
-        - HKEY_LOCAL_MACHINE \BROKENSYSTEM\ControlSet001\Services\WindowsAzureGuestAgent
-        - HKEY_LOCAL_MACHINE \BROKENSYSTEM\ControlSet001\Services\RdAgent
+        - HKEY_LOCAL_MACHINE\BROKENSYSTEM\ControlSet001\Services\WindowsAzureGuestAgent
+        - HKEY_LOCAL_MACHINE\BROKENSYSTEM\ControlSet001\Services\RdAgent
 
-8.  Használja a hibakereső virtuális gép meglévő fájljait adattárként a virtuálisgép-ügynök telepítéséhez. Hajtsa végre a következő lépéseket:
+8.  Használja a hibakereső virtuális gép meglévő fájljait adattárként a virtuálisgép-ügynök telepítéséhez. Végezze el a következő lépéseket:
 
     1. A hibakereső virtuális gépről exportálja a következő alkulcsokat a beállításjegyzék-formátumban (. reg): 
         - HKEY_LOCAL_MACHINE \SYSTEM\ControlSet001\Services\WindowsAzureGuestAgent

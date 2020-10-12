@@ -15,10 +15,10 @@ ms.topic: troubleshooting
 ms.date: 06/26/2020
 ms.author: v-mibufo
 ms.openlocfilehash: 33b4c59e14301e496d0eddafa7bdfdf201b7aa29
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87005905"
 ---
 # <a name="windows-stop-error---status-no-memory"></a>Windows leállási hiba – „nincs memória” állapot
@@ -143,7 +143,7 @@ A lépések elvégzése előtt hozzon létre egy másolatot a **\Windows\System3
    1. Navigáljon **HKEY_LOCAL_MACHINE >> BROKENSYSTEM >> válassza a lehetőséget**.
    1. A felsorolt kulcsokban jegyezze fel az aktuális adatértéket. Ha például ez az érték **1** vagy **0x00000001 (1)**, akkor a vezérlőelem beállítása ControlSet001 lesz.
 1. Győződjön meg arról a helyről, ahol a lapozófájl-létrehozás konfigurálva van.
-   1. Amíg HKEY_LOCAL_MACHINE \BROKENSYSTEM, bontsa ki a 4. lépésben azonosított ControlSet-számnak megfelelő könyvtárat (például **ControlSet001**).
+   1. HKEY_LOCAL_MACHINE\BROKENSYSTEM alatt bontsa ki a 4. lépésben azonosított ControlSet-számnak megfelelő könyvtárat, például **ControlSet001**.
    1. Navigáljon a **vezérlés >> a munkamenet-kezelő >> a memória kezelése** elemre, és jegyezze fel a **ExistingPageFiles** helyét.
    1. Ennek a kulcsnak az ideiglenes meghajtó alapértelmezett Azure-beli helyén kell lennie. Ha nincs ott, és egy másik helyen lévő VHD-fájl, például az adatlemez-meghajtó vagy az operációsrendszer-meghajtó, akkor azt törölni kell.
    1. Tallózással keresse meg a helyet a Fájlkezelőben, majd törölje a **pagefile.sys** fájlt.

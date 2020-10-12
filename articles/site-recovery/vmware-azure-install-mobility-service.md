@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 03/25/2019
 ms.author: ramamill
 ms.openlocfilehash: 78fddb5b4512883f8e78d6ed53f6e3dbbeba0e4f
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90524997"
 ---
 # <a name="prepare-source-machine-for-push-installation-of-mobility-agent"></a>A forrásoldali gép előkészítése a mobilitási ügynök leküldéses telepítéséhez
@@ -24,7 +24,7 @@ Minden olyan Windows-gépen, amelyet védelemmel szeretne ellátni, tegye a köv
 1. Ellenőrizze, hogy van-e hálózati kapcsolat a számítógép és a folyamat-kiszolgáló között. Ha nem állított be külön folyamat-kiszolgálót, akkor alapértelmezés szerint a konfigurációs kiszolgálón fut.
 1. Hozzon létre egy fiókot, amelyen keresztül a folyamatkiszolgáló hozzáférhet a számítógéphez. A fióknak rendszergazdai jogosultságokkal kell rendelkeznie a helyi vagy a tartományhoz. Ezt a fiókot csak a leküldéses telepítéshez és az ügynök frissítéseihez használhatja.
 2. Ha nem használ tartományi fiókot, tiltsa le a távoli felhasználói hozzáférés-vezérlést a helyi számítógépen a következő módon:
-    - A HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System beállításkulcs alatt adjon hozzá egy új DWORD: **LocalAccountTokenFilterPolicy**. Állítsa az értéket **1-re**.
+    - A HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System beállításkulcs területen adjon hozzá egy új DWORD: **LocalAccountTokenFilterPolicy**. Állítsa az értéket **1-re**.
     -  Ehhez futtassa a következő parancsot a parancssorban:
     
        ```

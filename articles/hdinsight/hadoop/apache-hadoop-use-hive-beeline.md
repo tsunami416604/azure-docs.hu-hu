@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 08/21/2020
 ms.custom: contperfq1
 ms.openlocfilehash: f6d8f804fa26383435d191af27289ffd2ecb3e0b
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88755092"
 ---
 # <a name="use-the-apache-beeline-client-with-apache-hive"></a>Az Apache Beeline-ügyfél használata Apache Hive-val
@@ -107,7 +107,7 @@ Ez a példa a Beeline-ügyfél SSH-kapcsolatban való használatára épül.
 
     Ezek az utasítások a következő műveleteket végzik el:
 
-    |Nyilatkozat |Leírás |
+    |Utasítás |Leírás |
     |---|---|
     |TÁBLÁZAT ELDOBÁSA|Ha a tábla létezik, törölve lett.|
     |KÜLSŐ TÁBLA LÉTREHOZÁSA|Létrehoz egy **külső** táblát a struktúrában. A külső táblák csak a struktúra tábla definícióját tárolják. Az adatmező az eredeti helyen marad.|
@@ -172,7 +172,7 @@ Ez a példa az előző példa folytatását szemlélteti. A következő lépése
 
     Ezek az utasítások a következő műveleteket végzik el:
 
-    |Nyilatkozat |Leírás |
+    |Utasítás |Leírás |
     |---|---|
     |CREATE TABLE, HA NEM LÉTEZIK|Ha a tábla még nem létezik, akkor létrejön. Mivel a **külső** kulcsszó nincs használatban, az utasítás belső táblát hoz létre. A belső táblák a struktúra adattárházában tárolódnak, és a struktúra teljes mértékben felügyeli őket.|
     |ORK-KÉNT TÁROLVA|Az adatok az optimalizált sorok oszlopos (ORK) formátumban vannak tárolva. Az ork formátum a kaptárak adatok tárolására szolgáló, kiválóan optimalizált és hatékony formátum.|

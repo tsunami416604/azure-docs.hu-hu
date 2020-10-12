@@ -12,10 +12,10 @@ ms.date: 09/22/2020
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
 ms.openlocfilehash: c6bcf6f228049c4f5c4d1cd0d22cb69fb9677c1a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91344333"
 ---
 # <a name="track-azure-databricks-ml-experiments-with-mlflow-and-azure-machine-learning-preview"></a>Azure Databricks ML-kísérletek nyomon követése MLflow és Azure Machine Learning (előzetes verzió)
@@ -172,7 +172,7 @@ mlflow.sklearn.log_model(model, artifact_path = "model",
 
 Ha készen áll egy végpont létrehozására az ML-modellekhez. A következőképpen telepítheti a t, 
 
-* Egy Azure Machine Learning kérelem-válasz webszolgáltatás az interaktív pontozáshoz. Ez az üzembe helyezés lehetővé teszi a Azure Machine Learning-modell felügyeletének és az adateltolódás-észlelési képességeknek az éles modellekre való felhasználását és alkalmazását. 
+* Egy Azure Machine Learning Request-Response webszolgáltatás az interaktív pontozáshoz. Ez az üzembe helyezés lehetővé teszi a Azure Machine Learning-modell felügyeletének és az adateltolódás-észlelési képességeknek az éles modellekre való felhasználását és alkalmazását. 
 
 * MLFlow, amely a streaming vagy batch folyamatokban használható Python functions vagy pandák UDF Azure Databricks munkaterületen.
 

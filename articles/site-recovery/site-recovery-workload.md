@@ -4,10 +4,10 @@ description: Azokat a számítási feladatokat ismerteti, amelyeket meg lehet v�
 ms.topic: conceptual
 ms.date: 03/18/2020
 ms.openlocfilehash: 2b901425a0020c0ccc7b834ee36d965910028018
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80062844"
 ---
 # <a name="about-disaster-recovery-for-on-premises-apps"></a>Információk a helyszíni alkalmazások vészhelyreállításáról
@@ -38,7 +38,7 @@ A Site Recovery az alábbi módokon járul hozzá az alkalmazásszintű védelem
 
 A Site Recovery a támogatott gépeken futó bármilyen alkalmazást képes replikálni. A következő táblázatban megadott alkalmazások további teszteléséhez partnereinkkel foglalkozunk.
 
-| **Munkaterhelés** |**Virtuális gépek replikálása az Azure-ba** |**Hyper-V virtuális gépek replikálása másodlagos helyre** | **Hyper-V virtuális gépek replikálása az Azure-ba** | **VMware virtuális gépek replikálása másodlagos helyre** | **VMware virtuális gépek replikálása az Azure-ba** |
+| **Számítási feladat** |**Virtuális gépek replikálása az Azure-ba** |**Hyper-V virtuális gépek replikálása másodlagos helyre** | **Hyper-V virtuális gépek replikálása az Azure-ba** | **VMware virtuális gépek replikálása másodlagos helyre** | **VMware virtuális gépek replikálása az Azure-ba** |
 | --- | --- | --- | --- | --- |---|
 | Active Directory, DNS |Igen |Igen |Igen |Igen |Igen|
 | Webalkalmazások (IIS, SQL) |Igen |Igen |Igen |Igen |Igen|
@@ -50,7 +50,7 @@ A Site Recovery a támogatott gépeken futó bármilyen alkalmazást képes repl
 | Linux (operációs rendszer és alkalmazások) |Igen (tesztelte a Microsoft által) |Igen (tesztelte a Microsoft által) |Igen (tesztelte a Microsoft által) |Igen (tesztelte a Microsoft által) |Igen (tesztelte a Microsoft által)|
 | Dynamics AX |Igen |Igen |Igen |Igen |Igen|
 | Windows fájlkiszolgáló |Igen |Igen |Igen |Igen |Igen|
-| Citrix XenApp és XenDesktop |Igen|N.A. |Igen |N.A. |Igen |
+| Citrix XenApp és XenDesktop |Igen|N/A |Igen |N/A |Igen |
 
 ## <a name="replicate-active-directory-and-dns"></a>Active Directory és DNS replikálása
 
@@ -106,7 +106,7 @@ A Azure Site Recovery a következő szolgáltatásokat lehet replikálni:
 
 A következő táblázat a replikációs beállításokat tartalmazza:
 
-| **Távoli asztali szolgáltatások** |**Virtuális gépek replikálása az Azure-ba** | **Hyper-V virtuális gépek replikálása másodlagos helyre** | **Hyper-V virtuális gépek replikálása az Azure-ba** | **VMware virtuális gépek replikálása másodlagos helyre** | **VMware virtuális gépek replikálása az Azure-ba** | **Fizikai kiszolgálók replikálása egy másodlagos helyre** | **Fizikai kiszolgálók replikálása az Azure-ba** |
+| **RDS** |**Virtuális gépek replikálása az Azure-ba** | **Hyper-V virtuális gépek replikálása másodlagos helyre** | **Hyper-V virtuális gépek replikálása az Azure-ba** | **VMware virtuális gépek replikálása másodlagos helyre** | **VMware virtuális gépek replikálása az Azure-ba** | **Fizikai kiszolgálók replikálása egy másodlagos helyre** | **Fizikai kiszolgálók replikálása az Azure-ba** |
 |---| --- | --- | --- | --- | --- | --- | --- |
 | **Készletbe vont virtuális asztalok (nem felügyelt)** |Nem|Igen |Nem |Igen |Nem |Igen |Nem |
 | **Készletbe vont virtuális asztalok (felügyelt, UPD nélkül)** |Nem|Igen |Nem |Igen |Nem |Igen |Nem |

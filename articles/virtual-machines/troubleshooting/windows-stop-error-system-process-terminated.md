@@ -15,10 +15,10 @@ ms.topic: troubleshooting
 ms.date: 09/21/2020
 ms.author: v-mibufo
 ms.openlocfilehash: b07033f96402edc24edd51de57661603e57472bc
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91344819"
 ---
 # <a name="windows-stop-error---0xc000021a-status-system-process-terminated"></a>Windows Stop Error – 0Xc000021a "jelű állapot rendszerfolyamata megszakítva
@@ -37,7 +37,7 @@ Ha [rendszerindítási diagnosztikát](https://docs.microsoft.com/azure/virtual-
 
 A 0Xc000021a "jelű hiba azt jelenti, **STATUS_SYSTEM_PROCESS_TERMINATED**.
 
-Ez a hiba akkor fordul elő, ha egy kritikus folyamat, például a WinLogon (winlogon.exe) vagy az ügyfél-kiszolgáló futásidejű alrendszere (csrss.exe) meghiúsul. Ha a kernel észleli, hogy valamelyik szolgáltatás leállt, a **leállítási 0xC000021A "jelű** hibát jelez. Ennek a hibának több oka lehet, többek között a következők:
+Ez a hiba akkor fordul elő, ha egy kritikus folyamat, például a WinLogon (winlogon.exe) vagy az ügyfél-kiszolgáló Run-Time alrendszer (csrss.exe) meghiúsul. Ha a kernel észleli, hogy valamelyik szolgáltatás leállt, a **leállítási 0xC000021A "jelű** hibát jelez. Ennek a hibának több oka lehet, többek között a következők:
 
 - Nem egyező rendszerfájlok lettek telepítve.
 - Nem sikerült telepíteni A szervizcsomagot vagy a KB-os frissítést.

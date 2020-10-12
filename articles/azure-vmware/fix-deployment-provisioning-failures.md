@@ -4,10 +4,10 @@ description: Hogyan kérheti le a szükséges információkat az Azure VMware-me
 ms.topic: how-to
 ms.date: 06/09/2020
 ms.openlocfilehash: 63d5440a9e2b15463e465e1d32762889508feca1
-ms.sourcegitcommit: 62717591c3ab871365a783b7221851758f4ec9a4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88752232"
 ---
 # <a name="get-help-with-azure-vmware-solution-deployment-or-provisioning-failures"></a>Segítség kérése az Azure VMware-megoldás üzembe helyezésével vagy a kiépítési hibákkal kapcsolatban
@@ -37,7 +37,7 @@ Ha a hiba az előzetes ellenőrzési fázisokban történik, a privát felhő ü
 
 A hibák részletei a probléma megoldásához is hasznosak lehetnek. Az előző képernyőn válassza a **részletek** (Kiemelt), majd a hibák összefoglalása lehetőséget, ahogy az alábbi képernyőképen is látható.
  
- :::image type="content" source="media/fix-deployment-provisioning-failures/summary-of-errors.png" alt-text="Hibák összefoglalása.":::
+ :::image type="content" source="media/fix-deployment-provisioning-failures/summary-of-errors.png" alt-text="Nem sikerült a saját Felhőbeli üzembe helyezés korrelációs AZONOSÍTÓval.":::
 
 Újból másolja ki és mentse el az összegzést, hogy szerepeljen az SR-ben.
  
@@ -45,15 +45,15 @@ A hibák részletei a probléma megoldásához is hasznosak lehetnek. Az előző
 
 A korábbi üzemelő példányokat, például a sikerteleneket is lekérheti, ha a központi telepítési tevékenység naplójában megkeresi az értesítések ikont.
 
-:::image type="content" source="media/fix-deployment-provisioning-failures/open-notifications.png" alt-text="Nyisson meg értesítéseket.":::
+:::image type="content" source="media/fix-deployment-provisioning-failures/open-notifications.png" alt-text="Nem sikerült a saját Felhőbeli üzembe helyezés korrelációs AZONOSÍTÓval.":::
 
 Az értesítések területen válassza **a tevékenység naplójának további események**elemét.
 
-:::image type="content" source="media/fix-deployment-provisioning-failures/more-events-in-activity-log.png" alt-text="Hivatkozás: további események a tevékenység naplójában.":::
+:::image type="content" source="media/fix-deployment-provisioning-failures/more-events-in-activity-log.png" alt-text="Nem sikerült a saját Felhőbeli üzembe helyezés korrelációs AZONOSÍTÓval.":::
 
 Ezután keressen rá az erőforrás nevére, vagy egy másik, az erőforrás létrehozásakor használt információra, hogy megkeresse a sikertelen üzembe helyezést és a korrelációs AZONOSÍTÓját. Az alábbi példa egy privát felhőalapú erőforrás (pc03) keresési eredményeit jeleníti meg.
  
-:::image type="content" source="media/fix-deployment-provisioning-failures/find-past-deployments.png" alt-text="A korábbi sikertelen Azure VMware megoldás-telepítések keresése.":::
+:::image type="content" source="media/fix-deployment-provisioning-failures/find-past-deployments.png" alt-text="Nem sikerült a saját Felhőbeli üzembe helyezés korrelációs AZONOSÍTÓval.":::
  
 Ha kiválasztja a sikertelen telepítés műveletének nevét, megnyílik egy ablak, amely részleteket tartalmaz. Válassza a JSON fület, és keresse meg a correlationId. Másolás és Belefoglalás az SR-ben. 
  
@@ -63,7 +63,7 @@ Lehet, hogy már rendelkezik saját felhővel, és hiba lép fel, amikor a sajá
 
 Ha privát felhőt tekint meg a portálon, válassza a **kapcsolat > ExpressRoute** elemet, és másolja a **ExpressRoute-azonosítót** a vágólapra.
  
-:::image type="content" source="media/fix-deployment-provisioning-failures/expressroute-id.png" alt-text="Másolja a ExpressRoute-azonosítót a vágólapra."::: 
+:::image type="content" source="media/fix-deployment-provisioning-failures/expressroute-id.png" alt-text="Nem sikerült a saját Felhőbeli üzembe helyezés korrelációs AZONOSÍTÓval."::: 
  
 Illessze be a ExpressRoute-azonosítót az új támogatási kérelem megfelelő mezőjébe. További információkért tekintse [meg a támogatási kérést](#create-your-support-request)a következő szakaszban:.
  
@@ -78,7 +78,7 @@ Az alábbiakban további útmutatást talál az SR Azure-beli VMware-megoldás �
 
 1. Válassza a **Súgó** ikont, majd az **+ új támogatási kérelmet**.
 
-    :::image type="content" source="media/fix-deployment-provisioning-failures/open-sr-on-avs.png" alt-text="ExpressRoute-azonosító gyűjtése az SR-hez.":::
+    :::image type="content" source="media/fix-deployment-provisioning-failures/open-sr-on-avs.png" alt-text="Nem sikerült a saját Felhőbeli üzembe helyezés korrelációs AZONOSÍTÓval.":::
 
 2. Töltse ki az összes kötelező mezőt, majd az **alapok** lapon:
 

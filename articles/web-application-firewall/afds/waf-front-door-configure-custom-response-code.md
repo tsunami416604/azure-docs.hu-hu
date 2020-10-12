@@ -9,10 +9,10 @@ ms.date: 06/10/2020
 ms.author: victorh
 ms.reviewer: tyao
 ms.openlocfilehash: a995460793686d8293d77965e74e2cbf916925a0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87005599"
 ---
 # <a name="configure-a-custom-response-for-azure-web-application-firewall-waf"></a>Egyéni válasz konfigurálása az Azure webalkalmazási tűzfal (WAF) számára
@@ -23,11 +23,13 @@ Ha a WAF egy egyeztetett szabály miatt blokkol egy kérést, alapértelmezés s
 
 A WAF-portálon a "házirend-beállítások" területen konfigurálhatja az egyéni válasz állapotkódot és törzsét.
 
-:::image type="content" source="../media/waf-front-door-configure-custom-response-code/custom-response-settings.png" alt-text="WAF házirend-beállítások":::
+:::image type="content" source="../media/waf-front-door-configure-custom-response-code/custom-response-settings.png" alt-text="WAF házirend-beállítások&quot;:::
 
-A fenti példában megtartottuk a 403-as hibakódot, és egy rövid "Kérjük, vegye fel velünk a kapcsolatot" üzenet jelenik meg az alábbi képen látható módon:
+A fenti példában megtartottuk a 403-as hibakódot, és egy rövid &quot;Kérjük, vegye fel velünk a kapcsolatot" üzenet jelenik meg az alábbi képen látható módon:
 
-:::image type="content" source="../media/waf-front-door-configure-custom-response-code/custom-response.png" alt-text="Egyéni válasz – példa":::
+:::image type="content" source="../media/waf-front-door-configure-custom-response-code/custom-response.png" alt-text="WAF házirend-beállítások&quot;:::
+
+A fenti példában megtartottuk a 403-as hibakódot, és egy rövid &quot;Kérjük, vegye fel velünk a kapcsolatot":::
 
 a (z) {{Azure-ref}} beilleszti az egyedi hivatkozási karakterláncot a válasz törzsében. Az érték megegyezik a és a naplók TrackingReference mezőjével `FrontdoorAccessLog` `FrontdoorWebApplicationFirewallLog` .
 
@@ -56,7 +58,7 @@ Install-Module PowerShellGet -Force -AllowClobber
 Install-Module -Name Az.FrontDoor
 ```
 
-### <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+### <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Az Azure-ban kapcsolódó erőforrásokat oszt ki egy erőforráscsoporthoz. Itt hozzunk létre egy erőforráscsoportot a [New-AzResourceGroup](/powershell/module/Az.resources/new-Azresourcegroup)használatával.
 

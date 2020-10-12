@@ -4,17 +4,17 @@ description: A Azure Resource Manager-sablonban a logikai értékek meghatároz�
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.openlocfilehash: 8fe1c00240fc24c3c1454b118f9e0d9a9d54fe4e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84677389"
 ---
 # <a name="logical-functions-for-arm-templates"></a>Az ARM-sablonok logikai funkciói
 
 A Resource Manager számos funkciót biztosít a Azure Resource Manager-(ARM-) sablonokban való összehasonlításhoz.
 
-* [és](#and)
+* [and](#and)
 * [logikai](#bool)
 * [Ha](#if)
 * [nem](#not)
@@ -28,11 +28,11 @@ Ellenőrzi, hogy az összes paraméter értéke igaz-e.
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |logikai |Az első érték, amely alapján ellenőrizhető, hogy igaz-e. |
-| arg2 |Yes |logikai |A második érték, amely alapján ellenőrizhető, hogy igaz-e. |
-| További argumentumok |No |logikai |További argumentumok, amelyek alapján ellenőrizhető, hogy igazak-e. |
+| arg1 |Igen |boolean |Az első érték, amely alapján ellenőrizhető, hogy igaz-e. |
+| arg2 |Igen |boolean |A második érték, amely alapján ellenőrizhető, hogy igaz-e. |
+| További argumentumok |Nem |boolean |További argumentumok, amelyek alapján ellenőrizhető, hogy igazak-e. |
 
 ### <a name="return-value"></a>Visszatérési érték
 
@@ -66,11 +66,11 @@ A következő [példa](https://github.com/Azure/azure-docs-json-samples/blob/mas
 
 Az előző példa kimenete a következő:
 
-| Name | Típus | Érték |
+| Név | Típus | Érték |
 | ---- | ---- | ----- |
-| andExampleOutput | Logikai | False (Hamis) |
-| orExampleOutput | Logikai | True (Igaz) |
-| notExampleOutput | Logikai | False (Hamis) |
+| andExampleOutput | Logikai | Hamis |
+| orExampleOutput | Logikai | Igaz |
+| notExampleOutput | Logikai | Hamis |
 
 ## <a name="bool"></a>logikai
 
@@ -80,9 +80,9 @@ A paramétert logikai értékre alakítja.
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |karakterlánc vagy int |A logikai értékké konvertálandó érték. |
+| arg1 |Igen |karakterlánc vagy int |A logikai értékké konvertálandó érték. |
 
 ### <a name="return-value"></a>Visszatérési érték
 Az átalakított érték logikai értéke.
@@ -119,12 +119,12 @@ Az alábbi [példa](https://github.com/Azure/azure-docs-json-samples/blob/master
 
 Az előző példában az alapértelmezett értékekkel rendelkező kimenet a következő:
 
-| Name | Típus | Érték |
+| Név | Típus | Érték |
 | ---- | ---- | ----- |
-| trueString | Logikai | True (Igaz) |
-| falseString | Logikai | False (Hamis) |
-| trueInt | Logikai | True (Igaz) |
-| falseInt | Logikai | False (Hamis) |
+| trueString | Logikai | Igaz |
+| falseString | Logikai | Hamis |
+| trueInt | Logikai | Igaz |
+| falseInt | Logikai | Hamis |
 
 ## <a name="if"></a>if
 
@@ -134,11 +134,11 @@ Egy értéket ad vissza, attól függően, hogy a feltétel igaz vagy hamis.
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| feltétel |Yes |logikai |Az érték, amely alapján ellenőrizhető, hogy igaz vagy hamis. |
-| trueValue |Yes | karakterlánc, int, Object vagy Array |A feltétel teljesülésekor visszaadott érték. |
-| falseValue |Yes | karakterlánc, int, Object vagy Array |A feltétel hamis állapotának visszaadására szolgáló érték. |
+| feltétel |Igen |boolean |Az érték, amely alapján ellenőrizhető, hogy igaz vagy hamis. |
+| trueValue |Igen | karakterlánc, int, Object vagy Array |A feltétel teljesülésekor visszaadott érték. |
+| falseValue |Igen | karakterlánc, int, Object vagy Array |A feltétel hamis állapotának visszaadására szolgáló érték. |
 
 ### <a name="return-value"></a>Visszatérési érték
 
@@ -177,7 +177,7 @@ A következő [példa](https://github.com/Azure/azure-docs-json-samples/blob/mas
 
 Az előző példa kimenete a következő:
 
-| Name | Típus | Érték |
+| Név | Típus | Érték |
 | ---- | ---- | ----- |
 | yesOutput | Sztring | igen |
 | nincs kimenet | Sztring | nem |
@@ -239,9 +239,9 @@ Logikai érték konvertálása az ellenkező értékre.
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |logikai |Az átalakítandó érték. |
+| arg1 |Igen |boolean |Az átalakítandó érték. |
 
 ### <a name="return-value"></a>Visszatérési érték
 
@@ -275,11 +275,11 @@ A következő [példa](https://github.com/Azure/azure-docs-json-samples/blob/mas
 
 Az előző példa kimenete a következő:
 
-| Name | Típus | Érték |
+| Név | Típus | Érték |
 | ---- | ---- | ----- |
-| andExampleOutput | Logikai | False (Hamis) |
-| orExampleOutput | Logikai | True (Igaz) |
-| notExampleOutput | Logikai | False (Hamis) |
+| andExampleOutput | Logikai | Hamis |
+| orExampleOutput | Logikai | Igaz |
+| notExampleOutput | Logikai | Hamis |
 
 A következő [példában](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/not-equals.json) a sablon **nem** [egyenlő](template-functions-comparison.md#equals).
 
@@ -300,9 +300,9 @@ A következő [példában](https://github.com/Azure/azure-docs-json-samples/blob
 
 Az előző példa kimenete a következő:
 
-| Name | Típus | Érték |
+| Név | Típus | Érték |
 | ---- | ---- | ----- |
-| checkNotEquals | Logikai | True (Igaz) |
+| checkNotEquals | Logikai | Igaz |
 
 ## <a name="or"></a>vagy
 
@@ -312,11 +312,11 @@ Ellenőrzi, hogy a paraméter értéke igaz-e.
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |logikai |Az első érték, amely alapján ellenőrizhető, hogy igaz-e. |
-| arg2 |Yes |logikai |A második érték, amely alapján ellenőrizhető, hogy igaz-e. |
-| További argumentumok |No |logikai |További argumentumok, amelyek alapján ellenőrizhető, hogy igazak-e. |
+| arg1 |Igen |boolean |Az első érték, amely alapján ellenőrizhető, hogy igaz-e. |
+| arg2 |Igen |boolean |A második érték, amely alapján ellenőrizhető, hogy igaz-e. |
+| További argumentumok |Nem |boolean |További argumentumok, amelyek alapján ellenőrizhető, hogy igazak-e. |
 
 ### <a name="return-value"></a>Visszatérési érték
 
@@ -350,11 +350,11 @@ A következő [példa](https://github.com/Azure/azure-docs-json-samples/blob/mas
 
 Az előző példa kimenete a következő:
 
-| Name | Típus | Érték |
+| Név | Típus | Érték |
 | ---- | ---- | ----- |
-| andExampleOutput | Logikai | False (Hamis) |
-| orExampleOutput | Logikai | True (Igaz) |
-| notExampleOutput | Logikai | False (Hamis) |
+| andExampleOutput | Logikai | Hamis |
+| orExampleOutput | Logikai | Igaz |
+| notExampleOutput | Logikai | Hamis |
 
 ## <a name="next-steps"></a>További lépések
 

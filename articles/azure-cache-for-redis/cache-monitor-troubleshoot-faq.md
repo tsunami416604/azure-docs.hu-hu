@@ -7,10 +7,10 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.openlocfilehash: 2149d069ce9cb0b636e461d19963f413b162bc9d
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88010856"
 ---
 # <a name="azure-cache-for-redis-monitoring-and-troubleshooting-faqs"></a>Azure cache Redis-figyeléshez és hibaelhárításhoz – GYIK
@@ -54,7 +54,7 @@ A gyorsítótár leválasztásának néhány gyakori oka a következő:
     * Ez lehet a Redis-kiszolgáló frissítései vagy az általános virtuális gép karbantartása.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure cache Redis-példányok figyelésével és hibaelhárításával kapcsolatos további információkért lásd: az [Azure cache figyelése a Redis](cache-how-to-monitor.md) és a különböző hibaelhárítási útmutatókhoz.
 
