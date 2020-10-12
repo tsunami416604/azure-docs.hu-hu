@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 01/25/2019
 ms.openlocfilehash: 3307e31935377f55f792e640934e59017c1980c7
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91619617"
 ---
 # <a name="monitor-and-manage-performance-of-sharded-multi-tenant-azure-sql-database-in-a-multi-tenant-saas-app"></a>Több-bérlős SaaS-alkalmazásban lévő többbérlős Azure SQL Databaseek teljesítményének figyelése és kezelése
@@ -76,7 +76,7 @@ A *New-TenantBatch* szkript új bérlőket hoz létre a több-bérlős adatbázi
 
 A *Demo-PerformanceMonitoringAndManagement.ps1* parancsfájl a több-bérlős adatbázison futó számítási feladatok szimulálására szolgál. A terhelés a rendelkezésre álló betöltési forgatókönyvek egyikével jön létre:
 
-| Bemutató | Használati eset |
+| Bemutató | Forgatókönyv |
 |:--|:--|
 | 2 | Normál intenzitású terhelés előállítása (körülbelül 30 DTU) |
 | 3 | Terhelés kiváltása a bérlők száma alapján|
@@ -184,7 +184,7 @@ Mivel a méretezés egy, a felügyeleti API-n keresztül könnyen meghívható f
 
 Ha az összesített bérlői használat kiszámítható használati mintákat követ, a Azure Automation segítségével ütemezhet egy adatbázist egy ütemezett felfelé és lefelé. Tegyük fel például, hogy a 6. és a (z) időpontot lefelé kell méretezni a hétköznapokon, ha tudja, hogy az erőforrásokra vonatkozó követelmények csökkennek.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ezen oktatóanyag segítségével megtanulhatja a következőket:
 

@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.date: 09/28/2020
 ms.custom: references_regions
 ms.openlocfilehash: 7dba3dd1d34421666821c6bc7320ef76ab77bb7f
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91542138"
 ---
 # <a name="use-private-endpoints-with-azure-batch-accounts"></a>Privát végpontok használata Azure Batch-fiókokkal
@@ -103,7 +103,7 @@ A privát batch-fiók létrehozásakor vegye figyelembe a következőket:
 - Ha a Batch-fiók nyilvános hálózati hozzáféréssel lett létrehozva, csak privát hozzáférésre lehet módosítani.
 - A magánhálózati DNS-zónában lévő DNS-rekordokat a rendszer nem távolítja el automatikusan, amikor töröl egy privát végpontot, vagy ha eltávolít egy régiót a Batch-fiókból. A DNS-rekordokat manuálisan kell eltávolítania, mielőtt hozzáad egy, a magánhálózati DNS-zónához társított új privát végpontot. Ha nem törli a DNS-rekordokat, előfordulhat, hogy a rendszer váratlan adatsíkokat észlel, például a privát végpont eltávolítása vagy a régió eltávolítása után hozzáadott régiók számára.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Megtudhatja, hogyan [hozhat létre batch-készleteket virtuális hálózatokban](batch-virtual-network.md).
 - Útmutató a [Batch-készletek nyilvános IP-címek nélküli létrehozásához](batch-pool-no-public-ip-address.md)

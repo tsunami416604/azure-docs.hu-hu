@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.openlocfilehash: 7db9ac0eb624c2732295639d65e0311fcf459f71
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90934928"
 ---
 # <a name="high-availability-concepts-in-azure-database-for-postgresql---flexible-server"></a>Magas rendelkezésre állási fogalmak Azure Database for PostgreSQL – rugalmas kiszolgáló
@@ -18,7 +18,7 @@ ms.locfileid: "90934928"
 > [!IMPORTANT]
 > Azure Database for PostgreSQL – a rugalmas kiszolgáló előzetes verzióban érhető el
 
-Azure Database for PostgreSQL – a rugalmas kiszolgáló magas rendelkezésre állású konfigurációt biztosít, amely automatikus feladatátvételi funkcióval rendelkezik a **zóna redundáns** kiszolgálójának üzembe helyezésével. A zónák redundáns konfigurációjában való üzembe helyezéskor a rugalmas kiszolgáló automatikusan kiépíti és felügyeli a készenléti replikát egy másik rendelkezésre állási zónában. A PostgreSQL streaming Replication használatával a rendszer **szinkron** módban replikálja az adatfájlokat a készenléti replika-kiszolgálóra. 
+Azure Database for PostgreSQL – a rugalmas kiszolgáló magas rendelkezésre állású konfigurációt biztosít, amely automatikus feladatátvételi funkcióval rendelkezik a **zóna redundáns** kiszolgálójának üzembe helyezésével. Amikor zónaredundáns konfigurációban van üzembe helyezve, a rugalmas kiszolgáló automatikusan kiépít és felügyel egy készenléti replikát egy másik rendelkezésreállási zónában. A PostgreSQL streaming Replication használatával a rendszer **szinkron** módban replikálja az adatfájlokat a készenléti replika-kiszolgálóra. 
 
 A zóna redundáns konfigurációja lehetővé teszi az automatikus feladatátvételi képességet, amely nulla adatvesztést biztosít a tervezett események, például a felhasználó által kezdeményezett méretezési számítási művelet, valamint a nem tervezett események (például a mögöttes hardver-és szoftver-hibák, a hálózati hibák és a rendelkezésre állási zónák) során. 
 
@@ -26,7 +26,7 @@ A zóna redundáns konfigurációja lehetővé teszi az automatikus feladatátv�
 
 ## <a name="zone-redundant-high-availability-architecture"></a>Zóna redundáns magas rendelkezésre állású architektúrája
 
-Kiválaszthatja a régiót és a rendelkezésre állási zónát az elsődleges adatbázis-kiszolgáló üzembe helyezéséhez. A készenléti replika kiszolgáló egy másik rendelkezésre állási zónában van kiépítve, amely az elsődleges kiszolgálóval megegyező konfigurációval rendelkezik, beleértve a számítási szintet, a számítási méretet, a tárterület méretét és a hálózati konfigurációt. A tranzakciós naplók szinkron módban vannak replikálva a készenléti replikára a PostgreSQL streaming Replication használatával. Az automatikus biztonsági mentések rendszeres időközönként az elsődleges adatbázis-kiszolgálóról történik, míg a tranzakciós naplókat a rendszer folyamatosan archiválja a tartalék replikából a biztonsági mentési tárolóba. 
+Kiválaszthatja a régiót és rendelkezésreállási zónát, amelyben az elsődleges adatbázis kiszolgálóját üzembe szeretné helyezni. A rendszer kiépít egy készenléti replikát egy másik rendelkezésreállási zónában az elsődleges kiszolgáló konfigurációjával, beleértve a számítási szintet, a számítási méretet, a tárolóméretet és a hálózati konfigurációt. A tranzakciós naplók szinkron módban vannak replikálva a készenléti replikára a PostgreSQL streaming Replication használatával. Az automatikus biztonsági mentések rendszeres időközönként az elsődleges adatbázis-kiszolgálóról történik, míg a tranzakciós naplókat a rendszer folyamatosan archiválja a tartalék replikából a biztonsági mentési tárolóba. 
 
 A magas rendelkezésre állási konfiguráció állapotát folyamatosan figyelik és jelentik a portálon. A zóna redundáns magas rendelkezésre állási állapota az alábbi listában látható:
 
@@ -43,7 +43,7 @@ A magas rendelkezésre állási konfiguráció állapotát folyamatosan figyelik
 
 A PostgreSQL-ügyfélalkalmazások az adatbázis-kiszolgáló neve alapján csatlakoznak az elsődleges kiszolgálóhoz. Az alkalmazás olvasásait a rendszer közvetlenül az elsődleges kiszolgálóról kézbesíti, míg a commit és az írásokat csak akkor erősíti meg az alkalmazás, ha az adatokat az elsődleges kiszolgálón és a készenléti replikán is megőrzi. Ennek a további kerekítési követelménynek köszönhetően az alkalmazások emelt szintű késést várhatnak az írások és a véglegesítés során. A portálon ellenőrizheti a magas rendelkezésre állás állapotát.
 
-:::image type="content" source="./media/business-continuity/concepts-high-availability-steady-state.png" alt-text="zóna redundáns magas rendelkezésre állása – állandósult állapot"::: 
+:::image type="content" source="./media/business-continuity/concepts-high-availability-steady-state.png" alt-text="zóna redundáns magas rendelkezésre állása"::: 
 
 1. Az ügyfelek a rugalmas kiszolgálóhoz csatlakoznak, és írási műveleteket hajtanak végre.
 2. A módosításokat a rendszer a készenléti helyre replikálja.
@@ -64,7 +64,7 @@ Más, felhasználó által kezdeményezett műveletek, például a méretezési 
 
 A nem tervezett leállások közé tartozik például a szoftveres hibák vagy az infrastruktúra-összetevők meghibásodása, ami hatással van az adatbázis elérhetőségére. Ha a figyelési rendszer észleli a kiszolgáló elérhetőségét, a készenléti replikára történő replikáció megszakad, és a készenléti replika aktiválva lesz az elsődleges adatbázis-kiszolgálóként. Az ügyfelek ugyanazzal a kapcsolati karakterlánccal csatlakozhatnak az adatbázis-kiszolgálóhoz, és folytatják a műveleteiket. A teljes feladatátvételi idő várhatóan 60 120s lesz. Azonban attól függően, hogy az elsődleges adatbázis-kiszolgáló milyen tevékenységgel rendelkezik a feladatátvétel során, például a nagy tranzakciókat és a helyreállítási időt, a feladatátvétel hosszabb időt vehet igénybe.
 
-:::image type="content" source="./media/business-continuity/concepts-high-availability-failover-state.png" alt-text="zóna redundáns magas rendelkezésre állása – feladatátvétel"::: 
+:::image type="content" source="./media/business-continuity/concepts-high-availability-failover-state.png" alt-text="zóna redundáns magas rendelkezésre állása"::: 
 
 1. Az elsődleges adatbázis-kiszolgáló nem érhető el, és az ügyfelek elvesztik az adatbázis-kapcsolatot. 
 2. A készenléti kiszolgáló úgy van aktiválva, hogy az új elsődleges kiszolgáló legyen. Az ügyfél ugyanazzal a kapcsolati karakterlánccal csatlakozik az új elsődleges kiszolgálóhoz. Ha az ügyfélalkalmazás ugyanabban a zónában van, mint az elsődleges adatbázis-kiszolgáló, csökkenti a késést, és javítja a teljesítményt.
@@ -111,7 +111,7 @@ A magas rendelkezésre állású rugalmas kiszolgálók esetében a rendszer val
 
 -   Az ügyfél által kezdeményezett felügyeleti feladatok konfigurálása nem ütemezhető a felügyelt karbantartási időszak alatt.
 
--   A tervezett események, például a méretezési számítások és a skálázási tárolók először a készenléti állapotban, majd az elsődleges kiszolgálón történnek. A szolgáltatás feladatátvétele sikertelen. 
+-   A tervezett események, például a számítások méretezése és a tároló méretezése először a készenléti replikán történik meg, majd az elsődleges kiszolgálón. A szolgáltatás feladatátvétele nem történik meg. 
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -1,5 +1,5 @@
 ---
-title: 'Azure AD Connect: zökkenőmentes egyszeri bejelentkezés – gyakori kérdések | Microsoft Docs'
+title: 'Azure AD Connect: zökkenőmentes egyetlen Sign-On – gyakori kérdések | Microsoft Docs'
 description: Válaszok az Azure Active Directory zökkenőmentes egyszeri bejelentkezéssel kapcsolatos gyakori kérdésekre.
 services: active-directory
 keywords: Mi az Azure AD Connect, az Azure AD, az egyszeri bejelentkezéshez szükséges összetevők telepítése Active Directory
@@ -17,15 +17,15 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 3d72b70248e317d1caee4527be38fe304cfe7f16
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89658345"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-frequently-asked-questions"></a>Azure Active Directory zökkenőmentes egyszeri bejelentkezés: gyakori kérdések
 
-Ebben a cikkben a zökkenőmentes egyszeri bejelentkezéssel (a zökkenőmentes SSO-val) kapcsolatos gyakori kérdéseket tárgyaljuk Azure Active Directory. Az új tartalom ellenőrzésének visszatartása.
+Ebben a cikkben a Azure Active Directory zökkenőmentes egyszeri Sign-On (zökkenőmentes SSO) kapcsolatos gyakori kérdéseket tárgyaljuk. Az új tartalom ellenőrzésének visszatartása.
 
 **K: milyen bejelentkezési módszerek használhatók a zökkenőmentes egyszeri bejelentkezéshez**
 

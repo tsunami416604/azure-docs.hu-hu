@@ -14,10 +14,10 @@ ms.author: kenwith
 ms.reviewer: luleon, paulgarn, jeedes
 ms.custom: aaddev
 ms.openlocfilehash: 5de505ff9573fb186ca2bbe4f5bd6783022eb3ef
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89421458"
 ---
 # <a name="how-to-customize-claims-issued-in-the-saml-token-for-enterprise-applications"></a>Útmutató: az SAML-jogkivonatban kiadott jogcímek testreszabása nagyvállalati alkalmazásokhoz
@@ -54,7 +54,7 @@ Ha az SAML-kérelem nem tartalmaz NameIDPolicy-elemet, akkor a Microsoft Identit
 
 A **név-azonosító formátum** legördülő listából választhatja ki az alábbi lehetőségek egyikét.
 
-| NameID formátuma | Description |
+| NameID formátuma | Leírás |
 |---------------|-------------|
 | **Alapértelmezett** | A Microsoft Identity platform az alapértelmezett forrás formátumot fogja használni. |
 | **Állandó** | A Microsoft Identity platform a NameID formátumot fogja használni állandóként. |
@@ -62,7 +62,7 @@ A **név-azonosító formátum** legördülő listából választhatja ki az al�
 | **Meghatározatlan** | A Microsoft Identity platform NameID formátuma nem lesz meghatározva. |
 | **Windows-tartomány minősített neve** | A Microsoft Identity platform NameID formátumban fogja használni a WindowsDomainQualifiedName-t. |
 
-Az átmeneti NameID is támogatott, de nem érhető el a legördülő menüben, és nem konfigurálható az Azure oldalán. További információ a NameIDPolicy attribútumról: [egyszeri bejelentkezéses SAML protokoll](single-sign-on-saml-protocol.md).
+Az átmeneti NameID is támogatott, de nem érhető el a legördülő menüben, és nem konfigurálható az Azure oldalán. További információ a NameIDPolicy attribútumról: [Single Sign-On SAML protokoll](single-sign-on-saml-protocol.md).
 
 ### <a name="attributes"></a>Attribútumok
 

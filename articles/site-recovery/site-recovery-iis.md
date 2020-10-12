@@ -8,13 +8,13 @@ ms.topic: article
 ms.date: 11/27/2018
 ms.author: mayg
 ms.openlocfilehash: 7a4408b54b663b2cd8abc22772ac1b799ea50de0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87083769"
 ---
-# <a name="set-up-disaster-recovery-for-a-multi-tier-iis-based-web-application"></a>Vész-helyreállítás beállítása többrétegű IIS-alapú webalkalmazáshoz
+# <a name="set-up-disaster-recovery-for-a-multi-tier-iis-based-web-application"></a>Többrétegű IIS-alapú webalkalmazás vészhelyreállításának beállítása
 
 Az alkalmazás szoftvere a szervezet üzleti hatékonyságának motorja. Különböző webalkalmazások különböző célokat szolgálhatnak a szervezetekben. Egyes alkalmazások, például a bérszámfejtési feldolgozáshoz, a pénzügyi alkalmazásokhoz és az ügyfelekhez kapcsolódó webhelyekhez használt alkalmazások kritikus fontosságúak lehetnek a szervezet számára. A hatékonyság megromlásának megelőzése érdekében fontos, hogy a szervezet folyamatosan felhasználja ezeket az alkalmazásokat. Még ennél is fontosabb, hogy ezek az alkalmazások folyamatosan elérhetők a szervezet márkájának vagy rendszerképének károsodásának megelőzése érdekében.
 
@@ -62,8 +62,8 @@ Forgatókönyv | Egy másodlagos helyre | Az Azure-ba
 --- | --- | ---
 Hyper-V | Igen | Igen
 VMware | Igen | Igen
-Fizikai kiszolgáló | Nem | Yes
-Azure|NA|Yes
+Fizikai kiszolgáló | Nem | Igen
+Azure|NA|Igen
 
 ## <a name="replicate-virtual-machines"></a>Virtuális gépek replikálása
 

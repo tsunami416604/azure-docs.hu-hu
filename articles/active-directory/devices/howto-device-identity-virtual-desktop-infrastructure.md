@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a9020e364a5c8d7a59dad5549e88036dc9edaad7
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90089666"
 ---
 # <a name="device-identity-and-desktop-virtualization"></a>Eszköz-identitás és asztali virtualizálási
@@ -52,12 +52,12 @@ Mielőtt az eszköz identitásait az Azure AD-ben konfigurálja a VDI-környezet
 |   |   | Windows jelenlegi | Nem állandó | Igen<sup>5</sup> |
 |   |   | Korábbi verziójú Windows | Nem állandó | Igen<sup>6</sup> |
 |   | <sup>4</sup> . felügyelt | Windows jelenlegi és Windows Down-Level | Állandó | Igen |
-|   |   | Windows jelenlegi | Nem állandó | No |
+|   |   | Windows jelenlegi | Nem állandó | Nem |
 |   |   | Korábbi verziójú Windows | Nem állandó | Igen<sup>6</sup> |
-| Azure AD-hez csatlakoztatva | Összevont | Windows jelenlegi | Állandó | No |
-|   |   |   | Nem állandó | No |
-|   | Felügyelt | Windows jelenlegi | Állandó | No |
-|   |   |   | Nem állandó | No |
+| Azure AD-hez csatlakoztatva | Összevont | Windows jelenlegi | Állandó | Nem |
+|   |   |   | Nem állandó | Nem |
+|   | Felügyelt | Windows jelenlegi | Állandó | Nem |
+|   |   |   | Nem állandó | Nem |
 | Az Azure AD-ban regisztrálva | Összevont/felügyelt | Windows jelenlegi/Windows lefelé – szint | Állandó/nem állandó | Nem alkalmazható |
 
 <sup>1</sup> a **Windows jelenlegi** eszközei a Windows 10, a Windows Server 2016 és a Windows Server 2019.

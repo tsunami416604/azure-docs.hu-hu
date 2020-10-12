@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/08/2018
 ms.openlocfilehash: 62f147104cf9e0e1605b02a420cb6d20190361b8
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89657460"
 ---
 # <a name="create-switch-statements-that-run-workflow-actions-based-on-specific-values-in-azure-logic-apps"></a>Munkafolyamat-műveleteket futtató kapcsolói utasítások létrehozása a Azure Logic Apps adott értékei alapján
@@ -63,7 +63,7 @@ Tegyük fel például, hogy egy olyan logikai alkalmazást szeretne, amely kül�
 
 1. Adja hozzá ezeket a műveleteket a megfelelő esetekhez:
 
-   | Esetben # | **SelectedOption** | Műveletek |
+   | Esetben # | **SelectedOption** | Művelet |
    |--------|--------------------|--------|
    | 1. eset | **Jóváhagyás** | Adja hozzá az Outlook **E-mail küldése** műveletet, amely csak akkor küldi el az RSS-elem részleteit, ha a jóváhagyó a **jóváhagyást**választotta. |
    | 2. eset | **Elutasítás** | Adja hozzá az Outlook **E-mail küldése** műveletet az RSS-elem elutasításához szükséges más jóváhagyók értesítéséhez. |
@@ -110,7 +110,7 @@ Most, hogy egy switch utasítás használatával létrehozott egy logikai alkalm
 }
 ```
 
-| Címke | Description |
+| Címke | Leírás |
 |-------|-------------|
 | `"Switch"`         | A Switch utasítás neve, amelyet átnevezni lehet az olvashatóság érdekében |
 | `"type": "Switch"` | Megadja, hogy a művelet egy switch utasítás |

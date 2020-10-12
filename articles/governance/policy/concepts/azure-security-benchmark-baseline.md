@@ -8,10 +8,10 @@ ms.date: 07/02/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: 8b18da5e41e235b560918ad26117a0162078862c
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91540982"
 ---
 # <a name="azure-policy-security-baseline-for-azure-security-benchmark"></a>Az Azure biztonsági teljesítményteszt Azure Policy biztonsági alapterve
@@ -132,7 +132,7 @@ Egy igény szerinti vagy elég hozzáférési megoldást is engedélyezhet [Azur
 
 **Felelősség**: ügyfél
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Lásd az [Azure biztonsági teljesítménytesztét](../../../security/benchmarks/overview.md)
 - További információ az [Azure biztonsági alaptervekről](../../../security/benchmarks/security-baselines-overview.md)

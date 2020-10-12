@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b9a8f572189afaa726f7e01f5e0bbb73340face8
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89657214"
 ---
 # <a name="plan-an-azure-active-directory-self-service-password-reset-deployment"></a>Azure Active Directory önkiszolgáló jelszó-visszaállítás központi telepítésének megtervezése
@@ -56,7 +56,7 @@ A SSPR engedélyezésének fő előnyei a következők:
 
 * **Robusztus naplózás és használat nyomon követése**. Egy szervezet gondoskodhat arról, hogy az üzleti rendszerek biztonságban maradjanak, miközben a felhasználók visszaállítják a saját jelszavukat. A robusztus naplók a jelszó-visszaállítási folyamat egyes lépéseinek információit tartalmazzák. Ezek a naplók egy API-ból érhetők el, és lehetővé teszik a felhasználó számára, hogy az adatok importálását egy biztonsági incidensek és esemény-figyelési (SIEM) rendszerbe.
 
-### <a name="licensing"></a>Licencelés
+### <a name="licensing"></a>Licencek
 
 A Azure Active Directory felhasználónkénti licenccel rendelkezik, azaz minden felhasználónak megfelelő licencre van szüksége az általuk használt funkciókhoz. A SSPR csoportos licencelését javasoljuk. 
 
@@ -154,14 +154,14 @@ A következő beállítások szükségesek a SSPR engedélyezéséhez az ajánlo
 | **SSPR tulajdonságai** | Önkiszolgáló jelszó-visszaállítás engedélyezve | **Kijelölt** csoport a próbaüzem/ **mind** az éles környezethez |
 | **Hitelesítési módszerek** | A regisztráláshoz szükséges hitelesítési módszerek | Az alaphelyzetbe állításhoz mindig 1 nagyobb érték szükséges |
 |   | Az alaphelyzetbe állításhoz szükséges hitelesítési módszerek | Egy vagy kettő |
-| **Regisztráció** | Szükséges a felhasználóknak regisztrálniuk a bejelentkezéskor? | Yes |
+| **Regisztráció** | Szükséges a felhasználóknak regisztrálniuk a bejelentkezéskor? | Igen |
 |   | A napok száma, amely előtt a rendszer kéri a felhasználóktól a hitelesítési adataik ismételt megerősítését | 90 – 180 nap |
-| **Értesítések** | Értesítse a felhasználókat új jelszó kérésekor? | Yes |
-|   | Minden rendszergazda kapjon értesítést, ha más rendszergazdák új jelszót kérnek? | Yes |
-| **Testreszabás** | Segélyszolgálat hivatkozásának testreszabása | Yes |
+| **Értesítések** | Értesítse a felhasználókat új jelszó kérésekor? | Igen |
+|   | Minden rendszergazda kapjon értesítést, ha más rendszergazdák új jelszót kérnek? | Igen |
+| **Testreszabás** | Segélyszolgálat hivatkozásának testreszabása | Igen |
 |   | Egyéni segélyszolgálat e-mail-címe vagy URL-címe | Támogatási webhely vagy e-mail-cím |
-| **Helyszíni integráció** | Jelszavak visszaírása a helyszíni AD-be | Yes |
-|   | Fiók feloldásának engedélyezése a felhasználók számára a jelszó alaphelyzetbe állítása nélkül | Yes |
+| **Helyszíni integráció** | Jelszavak visszaírása a helyszíni AD-be | Igen |
+|   | Fiók feloldásának engedélyezése a felhasználók számára a jelszó alaphelyzetbe állítása nélkül | Igen |
 
 ### <a name="sspr-properties"></a>SSPR tulajdonságai
 
@@ -254,7 +254,7 @@ Habár a SSPR általában nem hoz létre felhasználói problémákat, fontos, h
 
 A támogatási csapat sikerességének engedélyezéséhez a felhasználóktól kapott kérdések alapján hozhat létre GYIK-et. Íme, néhány példa:
 
-| Forgatókönyvek| Description |
+| Forgatókönyvek| Leírás |
 | - | - |
 | A felhasználónak nincs elérhető regisztrált hitelesítési módszere.| A felhasználó megpróbálja alaphelyzetbe állítani a jelszavát, de nem rendelkezik az általuk regisztrált hitelesítési módszerekkel (például a mobil telefonját otthon hagyta, és nem fér hozzá az e-mailekhez) |
 | A felhasználó nem kap szöveget vagy hívást az irodában vagy a mobiltelefonján| A felhasználó szöveges vagy hívási identitást próbál meg ellenőrizni, de nem kap szöveget vagy hívást. |

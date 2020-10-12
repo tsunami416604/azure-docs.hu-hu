@@ -4,10 +4,10 @@ description: A Azure Backup segítségével az Azure import/export szolgáltatá
 ms.topic: conceptual
 ms.date: 06/08/2020
 ms.openlocfilehash: b747fd3c682dc1caf7312ba7279470a1e6b38bd5
-ms.sourcegitcommit: c6b9a46404120ae44c9f3468df14403bcd6686c1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88890093"
 ---
 # <a name="offline-backup-workflow-for-dpm-and-azure-backup-server-previous-versions"></a>DPM és Azure Backup Server offline biztonsági mentési munkafolyamata (korábbi verziók)
@@ -87,7 +87,7 @@ Az offline biztonsági mentési munkafolyamat elindítása előtt győződjön m
 * A *AzureOfflineBackupCertGen.exe* eszköz létrehoz egy *OfflineApplicationParams.xml* fájlt. Másolja ezt a fájlt a kiszolgálóra a MABS vagy a DPM használatával.
 * Telepítse a [legújabb Mars-ügynököt](https://aka.ms/azurebackup_agent) a DPM-példányra vagy a Azure Backup-kiszolgálóra.
 * Regisztrálja a kiszolgálót az Azure-ban.
-* Futtassa a következő parancsot:
+* Futtassa az alábbi parancsot:
 
     ```cmd
     AzureOfflineBackupCertGen.exe AddRegistryEntries SubscriptionId:<subscriptionid> xmlfilepath:<path of the OfflineApplicationParams.xml file>  storageaccountname:<storageaccountname to be used for offline backup>
@@ -99,7 +99,7 @@ Az offline biztonsági mentési munkafolyamat elindítása előtt győződjön m
 
 A következő lépésekkel manuálisan feltöltheti az offline biztonsági mentési tanúsítványt egy korábban létrehozott Azure Active Directory alkalmazásba az offline biztonsági mentéshez.
 
-1. Jelentkezzen be az Azure Portalra.
+1. Jelentkezzen be az Azure portálra.
 1. Nyissa meg **Azure Active Directory**  >  **Alkalmazásregisztrációk**.
 1. A **tulajdonban lévő alkalmazások** lapon keresse meg a megjelenítendő név formátumot tartalmazó alkalmazást `AzureOfflineBackup _<Azure User Id` .
 
@@ -115,7 +115,7 @@ A következő lépésekkel manuálisan feltöltheti az offline biztonsági ment�
     ![A tanúsítvány feltöltése](./media/offline-backup-dpm-mabs-previous-versions/upload-certificate.png)
 
 1. A kiszolgálón nyissa meg a beállításjegyzéket úgy, hogy beírja a **Regedit parancsot** a Futtatás ablakba.
-1. Nyissa meg a beállításjegyzék-bejegyzés *számítógép \ HKEY_LOCAL_MACHINE \Software\microsoft\windows Azure Backup\Config\CloudBackupProvider*.
+1. Lépjen a *Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Config\CloudBackupProvider*beállításjegyzékbeli bejegyzéshez.
 1. Kattintson a jobb gombbal a **CloudBackupProvider**elemre, és adjon hozzá egy új karakterlánc-értéket a névvel `AzureADAppCertThumbprint_<Azure User Id>` .
 
     >[!NOTE]
@@ -124,7 +124,7 @@ A következő lépésekkel manuálisan feltöltheti az offline biztonsági ment�
     >* Az Azure-hoz csatlakoztatott PowerShellben futtassa a `Get-AzureRmADUser -UserPrincipalName "Account Holder's email as appears in the portal"` parancsot.
     >* Nyissa meg a beállításjegyzék elérési útját `Computer\HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\DbgSettings\OnlineBackup; Name: CurrentUserId;` .
 
-1. Kattintson a jobb gombbal az előző lépésben hozzáadott sztringre, majd válassza a **módosítás**lehetőséget. Az érték mezőben adja meg a 7. lépésben exportált tanúsítvány ujjlenyomatát. Ez után válassza az **OK** gombot.
+1. Kattintson a jobb gombbal az előző lépésben hozzáadott sztringre, majd válassza a **módosítás**lehetőséget. Az érték mezőben adja meg a 7. lépésben exportált tanúsítvány ujjlenyomatát. Ezután válassza az **OK** gombot.
 1. Az ujjlenyomat értékének lekéréséhez kattintson duplán a tanúsítványra. Válassza a **részletek** lapot, és görgessen lefelé, amíg meg nem jelenik az ujjlenyomat mező. Válassza az **ujjlenyomat**lehetőséget, és másolja ki az értéket.
 
     ![Érték másolása az ujjlenyomat mezőből](./media/offline-backup-dpm-mabs-previous-versions/thumbprint-field.png)
@@ -183,7 +183,7 @@ A *AzureOfflineBackupDiskPrep* segédprogram a legközelebbi Azure-adatközpontb
      > [!IMPORTANT]
      > Ha a forrásszámítógép egy virtuális gép, akkor a másolási számítógépként egy másik fizikai kiszolgálót vagy ügyfélszámítógépet kell használnia.
 
-1. Nyisson meg egy rendszergazda jogú parancssort a másolási számítógépen a *AzureOfflineBackupDiskPrep* segédprogram címtárával az aktuális könyvtárként. Futtassa a következő parancsot:
+1. Nyisson meg egy rendszergazda jogú parancssort a másolási számítógépen a *AzureOfflineBackupDiskPrep* segédprogram címtárával az aktuális könyvtárként. Futtassa az alábbi parancsot:
 
     `*.\AzureOfflineBackupDiskPrep.exe*   s:<*Staging Location Path*>   [p:<*Path to AzurePublishSettingsFile*>]`
 

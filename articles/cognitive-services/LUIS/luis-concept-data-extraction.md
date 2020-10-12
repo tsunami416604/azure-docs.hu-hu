@@ -6,10 +6,10 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 05/01/2020
 ms.openlocfilehash: 9bcc3d08fa29109cf4178f8eb0c3efe661323ef0
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91541781"
 ---
 # <a name="extract-data-from-utterance-text-with-intents-and-entities"></a>Adatok kinyerése a teljes szövegből szándékok és entitások alapján
@@ -264,6 +264,6 @@ Ha egy szó vagy kifejezés több listával egyezik, a végpont lekérdezése az
 
 A lekérdezéshez `when is the best time to go to red rock?` , és az alkalmazás `red` több listában is szerepel, a Luis felismeri az összes entitást, és az entitások tömbjét adja vissza a JSON-végpont válaszának részeként.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az entitások LUIS-alkalmazáshoz való hozzáadásával kapcsolatos további tudnivalókért tekintse meg az [entitások hozzáadása](luis-how-to-add-entities.md) című témakört.

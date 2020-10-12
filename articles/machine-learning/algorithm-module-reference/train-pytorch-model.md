@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 09/26/2020
 ms.openlocfilehash: 9127df2805a7eef5b119a64fd8d8ccdab52f22f8
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91439097"
 ---
 # <a name="train-pytorch-model"></a>Pytorch-modell betanítása
@@ -66,11 +66,11 @@ A folyamat futásának befejezése után a modell a pontozáshoz való használa
 
 ###  <a name="module-parameters"></a>Modul paramétereinek  
 
-| Name          | Tartomány            | Típus    | Alapértelmezett | Leírás                              |
+| Name (Név)          | Tartomány            | Típus    | Alapértelmezett | Leírás                              |
 | ------------- | ---------------- | ------- | ------- | ---------------------------------------- |
 | Korszakok        | >0               | Egész szám | 5       | A címke vagy eredmény oszlopot tartalmazó oszlop kiválasztása |
 | Köteg mérete    | >0               | Egész szám | 16      | Egy kötegbe tartozó példányok számának betanítása   |
-| Tanulási sebesség | >= Double. Epszilon | Float   | 0,001   | A sztochasztikus gradiens elsüllyedés optimalizálásának kezdeti tanulási díja. |
+| Tanulási sebesség | >= Double. Epszilon | Lebegőpontos értékek   | 0,001   | A sztochasztikus gradiens elsüllyedés optimalizálásának kezdeti tanulási díja. |
 | Véletlenszerű mag   | Bármelyik              | Egész szám | 1       | A modell által használt véletlenszerű számú generátor magja. |
 | Türelem      | >0               | Egész szám | 3       | Hány korszakot kell korán leállítani   |
 

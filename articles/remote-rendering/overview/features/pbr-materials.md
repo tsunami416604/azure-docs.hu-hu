@@ -5,12 +5,12 @@ author: jakrams
 ms.author: jakras
 ms.date: 02/11/2020
 ms.topic: article
-ms.openlocfilehash: a1fedb637bee9d98fb09d8fc3fa133b2992ce86e
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: ad7fc7d9d02cd9a9a6fe74534a7c674fe0ac778d
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "89613674"
+ms.locfileid: "91893254"
 ---
 # <a name="pbr-materials"></a>PBR-anyagok
 
@@ -40,6 +40,8 @@ Ezek a tulajdonságok az összes anyagnál közösek:
 * **useVertexColor:** Ha a háló :::no-loc text="vertex"::: színeket tartalmaz, és ez a beállítás engedélyezve van, a rácsvonalak :::no-loc text="vertex"::: színe megszorozva a *AlbedoColor* és a *albedoMap*. Alapértelmezés szerint a *useVertexColor* le van tiltva.
 
 * **isDoubleSided:** Ha a kétoldalas megjelenítés értéke TRUE (igaz), akkor az ezzel az anyaggal rendelkező háromszögek akkor is jelennek meg, ha a kamera a háttérben néz. A PBR-anyagok megvilágítása is megfelelően van kiszámítva a vissza arcok számára. Alapértelmezés szerint ez a beállítás le van tiltva. Lásd még: [ :::no-loc text="Single-sided"::: renderelés](single-sided-rendering.md).
+
+* **TransparencyWritesDepth:** Ha az TransparencyWritesDepth jelző be van állítva az anyagra, és az anyag átlátszó, akkor az ezt az anyagot használó objektumok is hozzájárulnak a végső mélységi pufferhez. A következő szakaszban tekintse meg a PBR Material Flag *transzparensjét* . A funkció engedélyezése akkor ajánlott, ha a használati esetnek a teljes transzparens jelenetek [kivetítésének valószínűbb késői fázisára](late-stage-reprojection.md) van szüksége. Vegyes átlátszatlan/transzparens jelenetek esetén ez a beállítás nem valószínűsíthető újravetítési viselkedést vagy újravetítési összetevőket vezethet be. Ezért az általános használati eset alapértelmezett és ajánlott beállítása a jelző letiltása. A rendszer a kamerához legközelebb eső objektum képpont mélységi rétegében található írásos mélységi értékeket veszi figyelembe.
 
 ## <a name="pbr-material-properties"></a>PBR-anyagok tulajdonságai
 

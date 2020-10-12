@@ -4,10 +4,10 @@ description: A diagnosztikai és használati adatok exportálása a Microsoft Az
 ms.topic: conceptual
 ms.date: 05/26/2020
 ms.openlocfilehash: f67a5c555c438298cee701ca065aaf8c01c6406e
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87324335"
 ---
 # <a name="export-telemetry-from-application-insights"></a>Telemetria exportálása az Application Insightsból
@@ -36,7 +36,7 @@ A folyamatos exportálás nem **támogatja** a következő Azure Storage-funkci�
 
 * [Azure Data Lake Storage Gen2](../../storage/blobs/data-lake-storage-introduction.md).
 
-## <a name="create-a-continuous-export"></a><a name="setup"></a>Folyamatos exportálás létrehozása
+## <a name="create-a-continuous-export"></a><a name="setup"></a> Folyamatos exportálás létrehozása
 
 1. Az alkalmazás Application Insights erőforrásában a bal oldali konfigurálás területen nyissa meg a folyamatos exportálás elemet, és válassza a **Hozzáadás**lehetőséget:
 
@@ -81,7 +81,7 @@ Az Exportálás végleges leállításához törölje azt. Így nem törli az ad
 ### <a name="cant-add-or-change-an-export"></a>Nem lehet hozzáadni vagy módosítani az exportálást?
 * Az exportálások hozzáadásához vagy módosításához tulajdonosi, közreműködői vagy Application Insights-közreműködői hozzáférési jogosultságra van szüksége. [További információ a szerepkörökről][roles].
 
-## <a name="what-events-do-you-get"></a><a name="analyze"></a>Milyen eseményekhez juthat?
+## <a name="what-events-do-you-get"></a><a name="analyze"></a> Milyen eseményekhez juthat?
 Az exportált adatok az alkalmazásból kapott nyers telemetria, kivéve, ha az ügyfél IP-címéből kiszámított helyadatok hozzáadására kerül sor.
 
 A [mintavétel](./sampling.md) által elvetett adatvesztés nem szerepel az exportált adatsorokban.
@@ -95,7 +95,7 @@ Az adatmennyiség magában foglalja az Ön által beállított [rendelkezésre �
 >
 >
 
-## <a name="inspect-the-data"></a><a name="get"></a>Az adatgyűjtés ellenőrzése
+## <a name="inspect-the-data"></a><a name="get"></a> Az adatgyűjtés ellenőrzése
 A tárolót közvetlenül a portálon ellenőrizheti. Kattintson a bal szélső menü Kezdőlap elemére, ahol az "Azure-szolgáltatások" lehetőséget választja a **Storage-fiókok**elemre, majd válassza ki a Storage-fiók nevét, az Áttekintés lapon a szolgáltatások területen válassza a **Blobok** lehetőséget, végül válassza ki a tároló nevét.
 
 Az Azure Storage a Visual Studióban való vizsgálatához nyissa meg a **nézet**, **Cloud Explorer**lehetőséget. (Ha nem rendelkezik a menüparancsokkal, telepítenie kell az Azure SDK-t: Nyissa meg az **új projekt** párbeszédpanelt, bontsa ki a Visual C#/Cloud elemet, és válassza a **beolvasás Microsoft Azure SDK a .net-hez**lehetőséget.)
@@ -114,10 +114,10 @@ $"{applicationName}_{instrumentationKey}/{type}/{blobDeliveryTimeUtc:yyyy-MM-dd}
 
 Ahol
 
-* `blobCreationTimeUtc`az az idő, amikor a blobot létrehozták a belső átmeneti tárolóban.
-* `blobDeliveryTimeUtc`az az idő, amikor a blobot a rendszer az Exportálás célhelyére másolja
+* `blobCreationTimeUtc` az az idő, amikor a blobot létrehozták a belső átmeneti tárolóban.
+* `blobDeliveryTimeUtc` az az idő, amikor a blobot a rendszer az Exportálás célhelyére másolja
 
-## <a name="data-format"></a><a name="format"></a>Adatformátum
+## <a name="data-format"></a><a name="format"></a> Adatformátum
 * Minden blob egy szövegfájl, amely több "\n"-tagolt sort tartalmaz. Tartalmazza a feldolgozott telemetria körülbelül fél percen belül.
 * Az egyes sorok egy telemetria adatpontot jelölnek, például egy kérés vagy egy oldal nézetet.
 * Minden sor egy formázatlan JSON-dokumentum. Ha meg szeretné tekinteni a sorokat, nyissa meg a blobot a Visual Studióban, és válassza a **Edit**  >  **speciális**  >  **formátumú fájl**szerkesztése elemet:
@@ -197,7 +197,7 @@ Nagyobb lépték esetén vegye fontolóra a [HDInsight](https://azure.microsoft.
   * Emellett a nagy forgalmú alkalmazások esetében további partíciós egységek is le vannak foglalva. Ebben az esetben minden egység percenként hoz létre egy blobot.
 * *Újrageneráltam a kulcsot a tárhelyhez, vagy Megváltoztattam a tároló nevét, és most az exportálás nem működik.*
 
-    Szerkessze az exportálást, és nyissa meg az Exportálás célhelye lapot. hagyja ki ugyanazt a tárolót, mint korábban, majd a megerősítéshez kattintson az OK gombra. Az Exportálás újra fog indulni. Ha a módosítás az elmúlt néhány napon belül volt, nem veszíti el az adatvesztést.
+    Szerkessze az exportálást, és nyissa meg az Exportálás célhelye lapot. Hagyja meg ugyanazt a tárolót, mint korábban, majd a megerősítéshez kattintson az OK gombra. Az Exportálás újra fog indulni. Ha a módosítás az elmúlt néhány napon belül volt, nem veszíti el az adatvesztést.
 * *Szüneteltethető az Exportálás?*
 
     Igen. Kattintson a Letiltás lehetőségre.
