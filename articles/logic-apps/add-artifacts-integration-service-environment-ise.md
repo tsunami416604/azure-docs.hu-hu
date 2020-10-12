@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 02/28/2020
 ms.openlocfilehash: dc4798df05b760074ff06d95d9712204a3cf3e5a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91269743"
 ---
 # <a name="add-resources-to-your-integration-service-environment-ise-in-azure-logic-apps"></a>Erőforrások hozzáadása az integrációs szolgáltatási környezethez (ISE) Azure Logic Apps
@@ -44,10 +44,10 @@ Az integrációs szolgáltatási környezetben (ISE) futó logikai alkalmazások
 
    | Tulajdonság | Kötelező | Leírás |
    |----------|----------|-------------|
-   | **Név** | Yes | A létrehozandó logikai alkalmazás neve |
-   | **Előfizetés** | Yes | A használni kívánt Azure-előfizetés neve |
-   | **Erőforráscsoport** | Yes | A használni kívánt Azure-erőforráscsoport (új vagy meglévő) neve |
-   | **Hely** | Yes | Az **integrációs szolgáltatási környezetek**területen válassza ki a használni kívánt ISE-t, ha még nincs kiválasztva. <p><p> **Fontos**: Ha a logikai alkalmazásokat integrációs fiókkal szeretné használni, mindkettőnek ugyanazt az ISE-t kell használnia. |
+   | **Név** | Igen | A létrehozandó logikai alkalmazás neve |
+   | **Előfizetés** | Igen | A használni kívánt Azure-előfizetés neve |
+   | **Erőforráscsoport** | Igen | A használni kívánt Azure-erőforráscsoport (új vagy meglévő) neve |
+   | **Hely** | Igen | Az **integrációs szolgáltatási környezetek**területen válassza ki a használni kívánt ISE-t, ha még nincs kiválasztva. <p><p> **Fontos**: Ha a logikai alkalmazásokat integrációs fiókkal szeretné használni, mindkettőnek ugyanazt az ISE-t kell használnia. |
    ||||
 
 1. Ha elkészült, válassza a **Létrehozás** lehetőséget.
@@ -76,11 +76,11 @@ ISE-t használó integrációs fiók létrehozásához kövesse az alábbi lép�
 
    | Tulajdonság | Kötelező | Leírás |
    |----------|----------|-------------|
-   | **Név** | Yes | A létrehozni kívánt integrációs fiók neve |
-   | **Előfizetés** | Yes | A használni kívánt Azure-előfizetés neve |
-   | **Erőforráscsoport** | Yes | A használni kívánt Azure-erőforráscsoport (új vagy meglévő) neve |
-   | **Tarifacsomag** | Yes | Az integrációs fiókhoz használandó díjszabási csomag |
-   | **Hely** | Yes | Az **integrációs szolgáltatási környezetek**területen válassza ki ugyanazt az ISE-t, amelyet a Logic apps használ, ha még nincs kiválasztva. <p><p> **Fontos**: Ha az integrációs fiókot logikai alkalmazásokkal szeretné használni, mindkettőnek ugyanazt az ISE-t kell használnia. |
+   | **Név** | Igen | A létrehozni kívánt integrációs fiók neve |
+   | **Előfizetés** | Igen | A használni kívánt Azure-előfizetés neve |
+   | **Erőforráscsoport** | Igen | A használni kívánt Azure-erőforráscsoport (új vagy meglévő) neve |
+   | **Tarifacsomag** | Igen | Az integrációs fiókhoz használandó díjszabási csomag |
+   | **Hely** | Igen | Az **integrációs szolgáltatási környezetek**területen válassza ki ugyanazt az ISE-t, amelyet a Logic apps használ, ha még nincs kiválasztva. <p><p> **Fontos**: Ha az integrációs fiókot logikai alkalmazásokkal szeretné használni, mindkettőnek ugyanazt az ISE-t kell használnia. |
    ||||
 
 1. Ha elkészült, válassza a **Létrehozás** lehetőséget.

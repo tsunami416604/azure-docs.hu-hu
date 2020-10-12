@@ -4,10 +4,10 @@ description: Megtudhatja, hogyan tehet közzé egy felügyelt szolgáltatási aj
 ms.date: 08/18/2020
 ms.topic: how-to
 ms.openlocfilehash: 11fb0073bcc3ba4437f78de8b263d165f0069db8
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88589724"
 ---
 # <a name="publish-a-managed-service-offer-to-azure-marketplace"></a>Felügyelt szolgáltatás ajánlatának közzététele az Azure Marketplace-en
@@ -31,10 +31,10 @@ Az alábbi táblázat segítségével meghatározhatja, hogy az ügyfelek felüg
 |[Partner Center-fiók](../../marketplace/partner-center-portal/create-account.md) szükséges   |Igen         |Nem        |
 |[Silver vagy Gold Cloud Platform kompetencia](/partner-center/learn-about-competencies) vagy [Azure Expert MSP](https://partner.microsoft.com/membership/azure-expert-msp) szükséges      |Igen         |Nem         |
 |Elérhető az új ügyfelek számára az Azure Marketplace-en keresztül     |Igen     |Nem       |
-|Korlátozhatja az ajánlatokat adott ügyfelek számára     |Igen (csak privát ajánlatokkal, amelyek nem használhatók a Cloud Solution Provider (CSP) program viszonteladóján keresztül létesített előfizetésekkel.         |Yes         |
+|Korlátozhatja az ajánlatokat adott ügyfelek számára     |Igen (csak privát ajánlatokkal, amelyek nem használhatók a Cloud Solution Provider (CSP) program viszonteladóján keresztül létesített előfizetésekkel.         |Igen         |
 |Ügyfél-elfogadás szükséges a Azure Portal     |Igen     |Nem   |
 |Az Automation használatával több előfizetést, erőforráscsoportot vagy ügyfelet helyezhet üzembe |Nem     |Igen    |
-|Azonnali hozzáférés az új beépített szerepkörökhöz és az Azure Lighthouse szolgáltatásaihoz     |Nem mindig (általánosan elérhető némi késés után)         |Yes         |
+|Azonnali hozzáférés az új beépített szerepkörökhöz és az Azure Lighthouse szolgáltatásaihoz     |Nem mindig (általánosan elérhető némi késés után)         |Igen         |
 
 ## <a name="create-your-offer"></a>Ajánlat létrehozása
 

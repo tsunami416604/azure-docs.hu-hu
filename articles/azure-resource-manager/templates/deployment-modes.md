@@ -4,10 +4,10 @@ description: Leírja, hogy miként lehet megállapítani, hogy a teljes vagy nö
 ms.topic: conceptual
 ms.date: 07/22/2020
 ms.openlocfilehash: e584acd4af1dc6adb5f5d383acd5d16da0815f32
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87371583"
 ---
 # <a name="azure-resource-manager-deployment-modes"></a>Azure Resource Manager üzembe helyezési módok
@@ -124,7 +124,7 @@ A következő példa egy olyan csatolt sablont mutat be, amely növekményes üz
 ]
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A Resource Manager-sablonok létrehozásával kapcsolatos további információkért lásd: [Azure Resource Manager-sablonok](template-syntax.md)készítése.
 * További információ az erőforrások üzembe helyezéséről: [alkalmazások központi telepítése Azure Resource Manager sablonnal](deploy-powershell.md).

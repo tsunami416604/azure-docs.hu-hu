@@ -6,10 +6,10 @@ manager: rochakm
 ms.topic: how-to
 ms.date: 11/27/2018
 ms.openlocfilehash: 7b4a622de142fd44b64015c8238f44dafc34ce72
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86133707"
 ---
 # <a name="set-up-disaster-recovery-for-a-multi-tier-sap-netweaver-app-deployment"></a>Vész-helyreállítás beállítása többrétegű SAP NetWeaver-alkalmazások telepítéséhez
@@ -117,7 +117,7 @@ Az összes SAP-alkalmazás virtuális gép Azure vész-helyreállítási adatkö
 
 * A SQL Server-on futó adatbázis-rétegek védelméről a következő témakörben talál útmutatást: [SQL Server védelme](site-recovery-sql.md).
 
-## <a name="networking-configuration"></a>Hálózati konfiguráció
+## <a name="networking-configuration"></a>Hálózatkezelési konfiguráció
 
 Ha statikus IP-címet használ, megadhatja azt az IP-címet, amelyet el szeretne végezni a virtuális gépen. Az IP-cím beállításához nyissa meg a **számítási és hálózati beállítások**  >  **hálózati adapter lapot**.
 
@@ -166,6 +166,6 @@ További információ: a [feladatátvétel tesztelése az Azure-ban site Recover
 
 További információ: [feladatátvétel site Recoveryban](site-recovery-failover.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * További információ a vész-helyreállítási megoldás létrehozásáról az SAP NetWeaver-telepítésekhez Site Recovery használatával. Tekintse meg a letölthető tanulmányi [SAP NetWeaver: vész-helyreállítási megoldás létrehozása a site Recovery](https://aka.ms/asr_sap). A tanulmány a különböző SAP-architektúrákkal kapcsolatos ajánlásokat tárgyalja. A támogatott alkalmazások és virtuálisgép-típusok az Azure-beli SAP-ben láthatók. A vész-helyreállítási megoldás tesztelésére is lehetőség van.
 * További információ [más számítási feladatok replikálásáról](site-recovery-workload.md) site Recovery használatával.

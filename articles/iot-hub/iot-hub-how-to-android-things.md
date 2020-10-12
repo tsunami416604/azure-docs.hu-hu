@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 01/30/2019
 ms.author: robinsh
 ms.openlocfilehash: a06583e9aab4b082517d47c1022f7bec5184b9bc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "78673382"
 ---
 # <a name="develop-for-android-things-platform-using-azure-iot-sdks"></a>Fejlesztés az Android-eszközök platformon az Azure IoT SDK-k használatával
@@ -30,7 +30,7 @@ Ez az oktatóanyag azt ismerteti, hogyan lehet az Azure IoT Java SDK használat�
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
-## <a name="create-an-iot-hub"></a>IoT Hub létrehozása
+## <a name="create-an-iot-hub"></a>IoT-központ létrehozása
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
@@ -55,7 +55,7 @@ Az eszköznek regisztrálva kell lennie az IoT Hubbal, hogy csatlakozhasson hozz
     az iot hub device-identity show-connection-string --hub-name YourIoTHubName --device-id MyAndroidThingsDevice --output table
     ```
 
-    Jegyezze fel az eszköz kapcsolati sztringjét, amely a következőképpen néz ki:
+    Jegyezze fel az eszközkapcsolati sztringet, amely az alábbihoz hasonlóan néz ki:
 
    `HostName={YourIoTHubName}.azure-devices.net;DeviceId=MyAndroidThingsDevice;SharedAccessKey={YourSharedAccessKey}`
 
@@ -85,7 +85,7 @@ Az eszköznek regisztrálva kell lennie az IoT Hubbal, hogy csatlakozhasson hozz
 
 7. Az alkalmazás sikeres elindításakor egy, az Android-eszközökön futó alkalmazás is megjelenik. Ez a minta alkalmazás véletlenszerűen generált hőmérséklet-beolvasásokat küld.
 
-## <a name="read-the-telemetry-from-your-hub"></a>Telemetria olvasása a Hubról
+## <a name="read-the-telemetry-from-your-hub"></a>Telemetriai adatok kiolvasása a központból
 
 Az IoT hub segítségével megtekintheti az adatait. Az IoT Hub CLI-bővítmény csatlakozhat a szolgáltatásoldali **Események** végponthoz az IoT Hubon. A bővítmény fogadja az eszközről a felhőbe irányuló üzeneteket, amelyeket a rendszer a szimulált eszközről küld. Az IoT Hub-háttéralkalmazások általában a felhőben futnak, hogy fogadják és feldolgozzák az eszközről a felhőbe küldött üzeneteket.
 
@@ -95,7 +95,7 @@ Futtassa a következő parancsokat az Azure Cloud Shellben úgy, hogy a `YourIoT
 az iot hub monitor-events --device-id MyAndroidThingsDevice --hub-name YourIoTHubName
 ```
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 [!INCLUDE [iot-hub-quickstarts-clean-up-resources](../../includes/iot-hub-quickstarts-clean-up-resources.md)]
 

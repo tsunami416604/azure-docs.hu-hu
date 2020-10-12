@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 02/08/2017
 ms.author: alkohli
 ms.openlocfilehash: dc0cf718ee51e23fb749bdf57d5344977de009d8
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88182221"
 ---
 # <a name="deploy-storsimple-virtual-array-for-cloud-solution-provider-program"></a>A StorSimple Virtual Array üzembe helyezése a Cloud Solution Provider programhoz
@@ -83,7 +83,7 @@ Bizonyos esetekben előfordulhat, hogy van egy meglévő ügyfele, és hozzá ke
                               
 2. A bal oldali ablaktáblán kattintson az **ügyfelek**elemre. Keresse meg vagy Navigáljon arra az ügyfélre, amelyhez előfizetést szeretne hozzáadni. A ![ kibontási pipa ikonra kattintva ](./media/storsimple-partner-csp-deploy/expand_pane_icon.png) kibonthatja az ügyfélhez tartozó vállalat nevét. A Részletek területen kattintson az **előfizetések hozzáadása**lehetőségre.
 
-    ![Az ügyfelek](./media/storsimple-partner-csp-deploy/image10.png)
+    ![Ügyfelek](./media/storsimple-partner-csp-deploy/image10.png)
 
 3. Jelölje be a **Microsoft Azure** az előfizetésben szereplő **legjobb ajánlatokat** , majd kattintson a **Submit (Küldés**) gombra. Ez létrehoz egy új előfizetést.
 

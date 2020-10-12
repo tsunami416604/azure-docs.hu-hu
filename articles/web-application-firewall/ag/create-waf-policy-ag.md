@@ -8,10 +8,10 @@ ms.service: web-application-firewall
 ms.date: 02/08/2020
 ms.author: victorh
 ms.openlocfilehash: 5705eedfb919c792c558384f6309325dcded4b43
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86146599"
 ---
 # <a name="create-web-application-firewall-policies-for-application-gateway"></a>Webalkalmazási tűzfal házirendjeinek létrehozása a Application Gatewayhoz
@@ -51,7 +51,7 @@ Először hozzon létre egy alapszintű WAF szabályzatot egy felügyelt alapér
 
    > [!NOTE]
    > Ha olyan házirendet rendel hozzá a Application Gatewayhoz (vagy figyelőhöz), amely már rendelkezik szabályzattal, a rendszer felülírja az eredeti szabályzatot, és felülírja az új házirendet.
-4. Válassza a **felülvizsgálat + létrehozás**, majd a **Létrehozás**lehetőséget.
+4. Válassza a **Felülvizsgálat + létrehozás**, majd a **Létrehozás** lehetőséget.
 
    ![WAF szabályzat alapjai](../media/create-waf-policy-ag/waf-policy-basics.png)
 

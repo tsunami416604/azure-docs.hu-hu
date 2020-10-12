@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 02/19/2019
 ms.author: cavoeg
 ms.openlocfilehash: cdb73670996341e9219230bb277e087009266f32
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87846020"
 ---
 # <a name="azure-active-directory-identity-configuration-for-azure-api-for-fhir"></a>Az Azure API FHIR-hez Azure Active Directory identitás-konfigurációja
@@ -97,10 +97,10 @@ FHIR-kiszolgáló használatakor a `v1.0` vagy a `v2.0` végpontokat is használ
 
 Az Azure AD dokumentációjának megfelelő fejezetei a következők:
 
-* `v1.0`végpont
+* `v1.0` végpont
     * [Engedélyezési kód folyamata](https://docs.microsoft.com/azure/active-directory/develop/v1-protocols-oauth-code).
     * [Ügyfél-hitelesítő adatok folyamata](https://docs.microsoft.com/azure/active-directory/develop/v1-oauth2-client-creds-grant-flow).
-* `v2.0`végpont
+* `v2.0` végpont
     * [Engedélyezési kód folyamata](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-auth-code-flow).
     * [Ügyfél-hitelesítő adatok folyamata](https://docs.microsoft.com/azure/active-directory/develop/v2-oauth2-client-creds-grant-flow).
 

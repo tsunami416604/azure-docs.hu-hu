@@ -8,10 +8,10 @@ ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
 ms.openlocfilehash: 92333c2528303a6fa53fa30f47def33c33235d39
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86171482"
 ---
 # <a name="persist-state-in-linux"></a>Állapot megőrzése Linuxon
@@ -103,7 +103,7 @@ A Docker-kötetek helyett lehetősége van a gazdagép-mappák csatlakoztatásá
    sudo chown eventgriduser:eventgriduser -hR <your-directory-name-here>
    ```
 
-    Példa:
+    Például:
 
     ```sh
     sudo chown eventgriduser:eventgriduser -hR /myhostdir
@@ -121,7 +121,7 @@ A Docker-kötetek helyett lehetősége van a gazdagép-mappák csatlakoztatásá
     }
     ```
 
-    Példa:
+    Például:
 
     ```json
     {

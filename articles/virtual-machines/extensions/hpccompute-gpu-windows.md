@@ -14,17 +14,17 @@ ms.workload: infrastructure-services
 ms.date: 01/09/2019
 ms.author: akjosh
 ms.openlocfilehash: 4491171062e582db8388c3eff380d67ea1a0c51c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87085656"
 ---
 # <a name="nvidia-gpu-driver-extension-for-windows"></a>NVIDIA GPU illesztőprogram-bővítmény a Windowshoz
 
 ## <a name="overview"></a>Áttekintés
 
-Ez a bővítmény az NVIDIA GPU-illesztőprogramokat telepíti a Windows N sorozatú virtuális gépeken. A virtuálisgép-családtól függően a bővítmény a CUDA vagy a GRID-illesztőprogramokat telepíti. Ha ezt a bővítményt használó NVIDIA-illesztőprogramokat telepít, elfogadja és elfogadja az [NVIDIA végfelhasználói licencszerződés](https://go.microsoft.com/fwlink/?linkid=874330)feltételeit. A telepítési folyamat során a virtuális gép újraindulhat az illesztőprogram telepítésének befejezéséhez.
+Ez a bővítmény az NVIDIA GPU-illesztőprogramokat telepíti a Windows N sorozatú virtuális gépeken. A virtuálisgép-családtól függően a bővítmény a CUDA vagy a GRID-illesztőprogramokat telepíti. Ha ezt a bővítményt használja az NVIDIA-illesztőprogramok telepítésekor, elfogadja és elfogadja az [nvidia End-User licencszerződés](https://go.microsoft.com/fwlink/?linkid=874330)feltételeit. A telepítési folyamat során a virtuális gép újraindulhat az illesztőprogram telepítésének befejezéséhez.
 
 Az illesztőprogramok manuális telepítésére és az aktuálisan támogatott verziókra vonatkozó utasítások [itt](../windows/n-series-driver-setup.md)érhetők el.
 A bővítmény az NVIDIA GPU [-illesztőprogramok Linux N sorozatú virtuális gépeken](hpccompute-gpu-linux.md)történő telepítéséhez is elérhető.
@@ -71,7 +71,7 @@ A következő JSON a bővítmény sémáját jeleníti meg.
 
 ### <a name="properties"></a>Tulajdonságok
 
-| Name | Érték/példa | Adattípus |
+| Name (Név) | Érték/példa | Adattípus |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | dátum |
 | közzétevő | Microsoft. HpcCompute | sztring |

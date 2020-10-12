@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 11/29/2018
 ms.author: isacabe
 ms.openlocfilehash: ed14d4cb79cb5794fa666f1bb96e062d69128d0f
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87337670"
 ---
 # <a name="connect-an-iot-devkit-device-to-the-remote-monitoring-solution-accelerator"></a>IoT fejlesztői készlet-eszköz csatlakoztatása a távoli figyelési megoldáshoz
@@ -77,7 +77,7 @@ A következő lépések végrehajtásával ellenőrizheti, hogy a fejlesztői k�
 
 ### <a name="view-the-telemetry-sent-to-remote-monitoring-solution"></a>A távoli figyelési megoldásnak eljuttatott telemetria megtekintése
 
-Ha a minta alkalmazás fut, a fejlesztői készlet-eszköz Wi-Fi-kapcsolaton keresztül elküldi a telemetria a megoldás-gyorsító felé. A telemetria megtekintéséhez:
+Ha a minta alkalmazás fut, a fejlesztői készlet-eszköz a Wi-Fi a megoldás-gyorsító adatain keresztül küldi el a telemetria. A telemetria megtekintéséhez:
 
 1. Nyissa meg a megoldás irányítópultját, és kattintson a **Device Explorer**elemre.
 

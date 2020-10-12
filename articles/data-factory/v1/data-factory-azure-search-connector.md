@@ -13,10 +13,10 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: f6521efe024ba0ea29ae427aeaf06ca0e5fa8dd7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84194920"
 ---
 # <a name="push-data-to-an-azure-cognitive-search-index-by-using-azure-data-factory"></a>Az adatküldés Azure Cognitive Search indexbe Azure Data Factory használatával
@@ -57,9 +57,9 @@ Az alábbi táblázat az Azure Cognitive Search társított szolgáltatáshoz ta
 
 | Tulajdonság | Leírás | Kötelező |
 | -------- | ----------- | -------- |
-| típus | A Type tulajdonságot a következőre kell beállítani: **AzureSearch**. | Yes |
-| url | A keresési szolgáltatás URL-címe. | Yes |
-| kulcs | A keresési szolgáltatáshoz tartozó rendszergazdai kulcs. | Yes |
+| típus | A Type tulajdonságot a következőre kell beállítani: **AzureSearch**. | Igen |
+| url | A keresési szolgáltatás URL-címe. | Igen |
+| kulcs | A keresési szolgáltatáshoz tartozó rendszergazdai kulcs. | Igen |
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
 
@@ -67,8 +67,8 @@ Az adatkészletek definiálásához elérhető csoportok és tulajdonságok telj
 
 | Tulajdonság | Leírás | Kötelező |
 | -------- | ----------- | -------- |
-| típus | A Type tulajdonságot **AzureSearchIndex**értékre kell beállítani.| Yes |
-| indexName | A keresési index neve. Data Factory nem hozza létre az indexet. Az indexnek léteznie kell az Azure Cognitive Searchban. | Yes |
+| típus | A Type tulajdonságot **AzureSearchIndex**értékre kell beállítani.| Igen |
+| indexName | A keresési index neve. Data Factory nem hozza létre az indexet. Az indexnek léteznie kell az Azure Cognitive Searchban. | Igen |
 
 
 ## <a name="copy-activity-properties"></a>Másolási tevékenység tulajdonságai
@@ -78,8 +78,8 @@ Másolási tevékenység esetén, ha a fogadó típusa **AzureSearchIndexSink**,
 
 | Tulajdonság | Leírás | Megengedett értékek | Kötelező |
 | -------- | ----------- | -------------- | -------- |
-| WriteBehavior | Meghatározza, hogy a rendszer egyesítse vagy lecserélje, ha már létezik dokumentum az indexben. Tekintse meg a [WriteBehavior tulajdonságot](#writebehavior-property).| Egyesítés (alapértelmezett)<br/>Feltöltés| No |
-| WriteBatchSize | Adatok feltöltése a keresési indexbe, ha a puffer mérete eléri a writeBatchSize. A részletekért tekintse meg a [WriteBatchSize tulajdonságot](#writebatchsize-property) . | 1 – 1 000. Az alapértelmezett érték a 1000. | No |
+| WriteBehavior | Meghatározza, hogy a rendszer egyesítse vagy lecserélje, ha már létezik dokumentum az indexben. Tekintse meg a [WriteBehavior tulajdonságot](#writebehavior-property).| Egyesítés (alapértelmezett)<br/>Feltöltés| Nem |
+| WriteBatchSize | Adatok feltöltése a keresési indexbe, ha a puffer mérete eléri a writeBatchSize. A részletekért tekintse meg a [WriteBatchSize tulajdonságot](#writebatchsize-property) . | 1 – 1 000. Az alapértelmezett érték a 1000. | Nem |
 
 ### <a name="writebehavior-property"></a>WriteBehavior tulajdonság
 AzureSearchSink upsert az adatírás során. Más szóval, amikor egy dokumentum írásakor a dokumentum kulcsa már létezik a keresési indexben, az Azure Cognitive Search frissíti a meglévő dokumentumot ahelyett, hogy ütközést kellene eldobnia.
@@ -102,7 +102,7 @@ A következő táblázat meghatározza, hogy az Azure Cognitive Search adattípu
 | Sztring | I |
 | Int32 | I |
 | Int64 | I |
-| Double | I |
+| Dupla | I |
 | Logikai | I |
 | DataTimeOffset | I |
 | Karakterlánc-tömb | N |

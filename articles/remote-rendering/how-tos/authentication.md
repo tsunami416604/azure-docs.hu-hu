@@ -6,10 +6,10 @@ ms.author: flborn
 ms.date: 06/15/2020
 ms.topic: how-to
 ms.openlocfilehash: 8f3b144a7790c3122d59d27183b3037998ddadd1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85565846"
 ---
 # <a name="configure-authentication"></a>A hitelesítés konfigurálása
@@ -48,7 +48,7 @@ A fiók kulcsai a gyors prototípusokhoz ajánlottak, csak a fejlesztés során.
 
  További információkért tekintse meg a következő [oktatóanyagot: az Azure Remote rendering és a Model Storage biztonságossá tétele – Azure Active Directory hitelesítés](../tutorials/unity/security/security.md#azure-active-directory-azure-ad-authentication)
 
-## <a name="role-based-access-control"></a>Szerepköralapú hozzáférés-vezérlés
+## <a name="role-based-access-control"></a>Szerepkör alapú hozzáférés-vezérlés
 
 A szolgáltatáshoz biztosított hozzáférés szintjének szabályozása érdekében a szerepköralapú hozzáférés megadásakor használja az alábbi szerepköröket:
 

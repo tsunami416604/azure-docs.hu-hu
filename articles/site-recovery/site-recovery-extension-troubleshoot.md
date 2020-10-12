@@ -6,13 +6,13 @@ manager: rochakm
 ms.topic: troubleshooting
 ms.date: 11/27/2018
 ms.openlocfilehash: c1915d108bf9465d3e5b8d6a55053b583ee4f580
-ms.sourcegitcommit: faeabfc2fffc33be7de6e1e93271ae214099517f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88184618"
 ---
-# <a name="troubleshoot-azure-vm-extension-issues"></a>Azure-beli virtuálisgép-bővítményekkel kapcsolatos problémák elhárítása
+# <a name="troubleshoot-azure-vm-extension-issues"></a>Azure-beli virtuális gépek bővítményeivel kapcsolatos hibaelhárítás
 
 Ez a cikk hibaelhárítási lépéseket tartalmaz, amelyek segítségével megoldhatja a virtuálisgép-ügynökkel és-bővítménysel kapcsolatos Azure Site Recovery hibákat.
 
@@ -84,12 +84,12 @@ A Linux rendszerű virtuális gépek esetében a legtöbb ügynökkel kapcsolato
    > [!NOTE]
    > Javasoljuk *, hogy csak* terjesztési tárházon keresztül frissítse az ügynököt. Nem javasoljuk, hogy közvetlenül a GitHubról töltse le az ügynököt, és frissítse azt. Ha a disztribúcióhoz tartozó legújabb ügynök nem érhető el, a telepítésével kapcsolatos útmutatásért forduljon az elosztási támogatáshoz. A legutóbbi ügynök kereséséhez nyissa meg a [Windows Azure Linux Agent](https://github.com/Azure/WALinuxAgent/releases) lapot a GitHub-tárházban.
 
-1. A következő parancs futtatásával győződjön meg arról, hogy az Azure-ügynök fut a virtuális gépen:`ps -e`
+1. A következő parancs futtatásával győződjön meg arról, hogy az Azure-ügynök fut a virtuális gépen: `ps -e`
 
    Ha a folyamat nem fut, indítsa újra a következő parancsok használatával:
 
-   - Ubuntu esetén:`service walinuxagent start`
-   - Egyéb disztribúciók esetén:`service waagent start`
+   - Ubuntu esetén: `service walinuxagent start`
+   - Egyéb disztribúciók esetén: `service waagent start`
 
 1. [Konfigurálja az automatikus újraindítási ügynököt](https://github.com/Azure/WALinuxAgent/wiki/Known-Issues#mitigate_agent_crash).
 1. Engedélyezze a virtuális gép védelmét.

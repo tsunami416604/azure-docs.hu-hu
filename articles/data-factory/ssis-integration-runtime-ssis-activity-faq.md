@@ -12,10 +12,10 @@ manager: shwang
 ms.custom: seo-lt-2019
 ms.date: 04/15/2019
 ms.openlocfilehash: 9b331ccee183ec101cf3449f12b4f656a1325819
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84118097"
 ---
 # <a name="troubleshoot-package-execution-in-the-ssis-integration-runtime"></a>A csomagok végrehajtásának megoldása a SSIS Integration Runtime-ban
@@ -76,8 +76,8 @@ Ez a hiba azt jelenti, hogy a helyi lemez a SSIS Integration Runtime csomópontj
     * Ha az Azure file-t használja:
       * A fájl elérési útjának kell kezdődnie \\ \\ \<storage account name\> . file.Core.Windows.net\\\<file share path\>
       * A tartománynak "Azure"-nek kell lennie
-      * A felhasználónevet\<storage account name\>
-      * A jelszónak\<storage access key\>
+      * A felhasználónevet \<storage account name\>
+      * A jelszónak \<storage access key\>
     * Ha a helyszíni fájlt használ, ellenőrizze, hogy a VNet, a csomag-hozzáférési hitelesítő adatok és az engedélyek megfelelően vannak-e konfigurálva, hogy az Azure-SSIS Integration Runtime hozzáférhessen a helyszíni fájlmegosztás eléréséhez.
 
 ### <a name="error-message-the-file-name--specified-in-the-connection-was-not-valid"></a>Hibaüzenet: "a fájl neve"... " a kapcsolatban megadott érték érvénytelen.
@@ -136,36 +136,36 @@ Az egyik lehetséges ok az, hogy a Transport Layer Security (TLS) nem engedélye
 
 ### <a name="error-message-request-staging-task-with-operation-guid--fail-since-error-failed-to-dispatch-staging-operation-with-error-message-microsoftsqlserverintegrationservicesaisagentcoreaisagentexception-failed-to-load-data-proxy"></a>Hibaüzenet: "az előkészítési feladat kérése a műveleti GUID azonosítóval... hiba a hiba óta: sikertelen volt az előkészítési művelet küldése a következő hibaüzenettel: Microsoft. SqlServer. IntegrationServices. AisAgentCore. AisAgentException: nem sikerült betölteni az adatproxyt. "
 
-Győződjön meg arról, hogy az Azure-SSIS Integration Runtime saját üzemeltetésű integrációs modulral van konfigurálva. További részleteket a saját üzemeltetésű integrációs [modul konfigurálása az ADF-ben Azure-SSIS IR proxyként](self-hosted-integration-runtime-proxy-ssis.md)című rész tartalmaz.
+Győződjön meg arról, hogy az Azure-SSIS integrációs modulja Self-Hosted Integration Runtime-nal van konfigurálva. További részletekért lásd: [Self-Hosted IR beállítása proxyként Azure-SSIS IRhoz az ADF-ben](self-hosted-integration-runtime-proxy-ssis.md).
 
 ### <a name="error-message-staging-task-status-failed-staging-task-error-errorcode-2010-errormessage-the-self-hosted-integration-runtime--is-offline"></a>Hibaüzenet: "az előkészítési feladat állapota: sikertelen. Előkészítési feladat hibája: ErrorCode: 2010, ErrorMessage: a saját üzemeltetésű Integration Runtime... offline állapotban van. "
 
-Győződjön meg arról, hogy a saját üzemeltetésű integrációs modul telepítve van és elindult. További részletek a saját üzemeltetésű [integrációs modul létrehozása és konfigurálása](create-self-hosted-integration-runtime.md) című részében találhatók.
+Győződjön meg arról, hogy a Self-Hosted Integration Runtime telepítve van és elindult. További részletek a saját üzemeltetésű [integrációs modul létrehozása és konfigurálása](create-self-hosted-integration-runtime.md) című részében találhatók.
 
 ### <a name="error-message-staging-task-error-errorcode-2906-errormessage-package-execution-failed-output-operationerrormessages-error-the-requested-ole-db-provider--is-not-registered-if-the-64-bit-driver-is-not-installed-run-the-package-in-32-bit-mode"></a>Hibaüzenet: "előkészítési feladat hibája: ErrorCode: 2906, ErrorMessage: a csomag végrehajtása nem sikerült., kimenet: {" OperationErrorMessages ":" hiba: a kért OLE DB szolgáltató... nincs regisztrálva. Ha a 64 bites illesztőprogram nincs telepítve, futtassa a csomagot 32 bites módban... "
 
-Győződjön meg arról, hogy a csomagban lévő OLE DB-összekötők által használt megfelelő szolgáltatót a rendszer megfelelően telepíti a saját üzemeltetésű Integration Runtime Machine gépre. További részleteket a saját üzemeltetésű integrációs [modul konfigurálása az ADF-ben Azure-SSIS IR proxyként](self-hosted-integration-runtime-proxy-ssis.md#prepare-the-self-hosted-ir) című rész tartalmaz.
+Győződjön meg arról, hogy a csomagban lévő OLE DB-összekötők által használt megfelelő szolgáltató megfelelően van-e telepítve Self-Hosted Integration Runtime-gépen. További részletekért lásd: [Self-Hosted IR beállítása proxyként Azure-SSIS IRhoz az ADF-ben](self-hosted-integration-runtime-proxy-ssis.md#prepare-the-self-hosted-ir)
 
 ### <a name="error-message-staging-task-error-errorcode-2906-errormessage-package-execution-failed-output-operationerrormessages-error-systemiofileloadexception-could-not-load-file-or-assembly-microsoftwindowsazurestorage-version-cultureneutral-publickeytoken31bf3856ad364e35-or-one-of-its-dependencies-the-located-assemblys-manifest-definition-does-not-match-the-assembly-reference"></a>Hibaüzenet: "előkészítési feladat hibája: ErrorCode: 2906, ErrorMessage: a csomag végrehajtása nem sikerült., kimenet: {" OperationErrorMessages ":" hiba: System. IO. FileLoadException: nem sikerült betölteni a (z) "Microsoft. WindowsAzure. Storage, Version =..., Culture = semleges, PublicKeyToken = 31bf3856ad364e35" vagy az egyik függőségét. Az elhelyezkedő szerelvény jegyzékfájljának definíciója nem egyezik a szerelvény hivatkozásával. ..."
 
-Az egyik lehetséges ok a saját üzemeltetésű integrációs modul telepítése vagy frissítése nem megfelelő. Javasoljuk, hogy töltse le és telepítse újra a legújabb saját üzemeltetésű integrációs modult. További részletek a saját üzemeltetésű [integrációs modul létrehozása és konfigurálása](create-self-hosted-integration-runtime.md#installation-best-practices) című részében találhatók.
+Az egyik lehetséges ok az Self-Hosted Integration Runtime telepítése vagy frissítése nem megfelelő. Javasoljuk, hogy töltse le és telepítse újra a legújabb saját üzemeltetésű integrációs modult. További részletek a saját üzemeltetésű [integrációs modul létrehozása és konfigurálása](create-self-hosted-integration-runtime.md#installation-best-practices) című részében találhatók.
 
 ### <a name="error-message-a-connection-is-required-when-requesting-metadata-if-you-are-working-offline-uncheck-work-offline-on-the-ssis-menu-to-enable-the-connection"></a>Hibaüzenet: "A metaadatok kérésekor A kapcsolódásra van szükség. Ha offline módban dolgozik, szüntesse meg a kapcsolat nélküli munkát a SSIS menüjében a kapcsolat engedélyezéséhez. "
 
 * Lehetséges ok és javasolt művelet:
-  * Ha a végrehajtási naplóban "az összetevő nem támogatja a Csatlakozáskezelő és a ConnectByProxy értéke true" beállítást, ez azt jelenti, hogy a Csatlakozáskezelő olyan összetevőn van használatban, amely még nem támogatott "ConnectByProxy". A támogatott összetevők a saját üzemeltetésű integrációs [modul konfigurálása az ADF-Azure-SSIS IR proxyként](self-hosted-integration-runtime-proxy-ssis.md#enable-ssis-packages-to-connect-by-proxy) című részében találhatók.
+  * Ha a végrehajtási naplóban "az összetevő nem támogatja a Csatlakozáskezelő és a ConnectByProxy értéke true" beállítást, ez azt jelenti, hogy a Csatlakozáskezelő olyan összetevőn van használatban, amely még nem támogatott "ConnectByProxy". A támogatott összetevők a következő helyen találhatók: [Self-Hosted IR beállítása proxyként Azure-SSIS IRhoz az ADF-ben](self-hosted-integration-runtime-proxy-ssis.md#enable-ssis-packages-to-connect-by-proxy)
   * A végrehajtási napló a SSMS- [jelentésben](https://docs.microsoft.com/sql/integration-services/performance/monitor-running-packages-and-other-operations?view=sql-server-2017#reports) vagy a SSIS-csomag végrehajtási tevékenységében megadott log mappában található.
   * a vNet használható a helyszíni adatkapcsolatok Alternatív megoldásként való elérésére is. További részleteket az [Azure-SSIS integrációs modul csatlakoztatása virtuális hálózathoz](join-azure-ssis-integration-runtime-virtual-network.md) című rész tartalmaz.
 
 ### <a name="error-message-staging-task-status-failed-staging-task-error-errorcode-2906-errormessage-package-execution-failed-output-operationerrormessages-ssis-executor-exit-code--1n-loglocation-ssistelemetryexecutionlog-effectiveintegrationruntime--executionduration--durationinqueue--integrationruntimequeue--"></a>Hibaüzenet: "az előkészítési feladat állapota: sikertelen. Előkészítési feladat hibája: ErrorCode: 2906, ErrorMessage: a csomag végrehajtása nem sikerült., kimenet: {"OperationErrorMessages": "SSIS végrehajtó kilépési kód:-1. \ n", "LogLocation": "... \\ SSISTelemetry \\ ExecutionLog \\ ... "," effectiveIntegrationRuntime ":"... "," executionDuration ":...," durationInQueue ": {" integrationRuntimeQueue ":...}}"
 
-Győződjön meg arról, hogy a Visual C++ futtatókörnyezet telepítve van a saját üzemeltetésű Integration Runtime gépen. További részleteket a saját üzemeltetésű integrációs [modul konfigurálása az ADF-ben Azure-SSIS IR proxyként](self-hosted-integration-runtime-proxy-ssis.md#prepare-the-self-hosted-ir) című rész tartalmaz.
+Győződjön meg arról, hogy a Visual C++ futtatókörnyezet telepítve van Self-Hosted Integration Runtime-gépen. További részletekért lásd: [Self-Hosted IR beállítása proxyként Azure-SSIS IRhoz az ADF-ben](self-hosted-integration-runtime-proxy-ssis.md#prepare-the-self-hosted-ir)
 
 ### <a name="multiple-package-executions-are-triggered-unexpectedly"></a>A csomagok végrehajtásának végrehajtása váratlanul megtörténik
 
 * Lehetséges ok és javasolt művelet:
   * Az ADF tárolt eljárási tevékenység vagy keresési tevékenység a SSIS-csomagok végrehajtásának elindítására szolgál. Előfordulhat, hogy a t-SQL-parancs átmeneti problémát észlelt, és elindítja az újrafuttatást, ami több csomag futtatását okozhatja.
-  * Használja inkább a ExecuteSSISPackage tevékenységet, amely biztosítja, hogy a csomagok végrehajtása ne fusson újra, kivéve, ha a felhasználói újrapróbálkozások száma tevékenységben A részletek a következő címen olvashatók:[https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity)
+  * Használja inkább a ExecuteSSISPackage tevékenységet, amely biztosítja, hogy a csomagok végrehajtása ne fusson újra, kivéve, ha a felhasználói újrapróbálkozások száma tevékenységben A részletek a következő címen olvashatók: [https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity](https://docs.microsoft.com/azure/data-factory/how-to-invoke-ssis-package-ssis-activity)
   * Pontosítsa a t-SQL-parancsot úgy, hogy újra tudja futtatni az ellenőrzést, ha a végrehajtás már aktiválva van.
 
 ### <a name="package-execution-takes-too-long"></a>A csomag végrehajtása túl hosszú időt vesz igénybe

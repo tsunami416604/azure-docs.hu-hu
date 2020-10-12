@@ -5,17 +5,17 @@ ms.date: 06/25/2019
 ms.service: cognitive-services
 ms.topic: include
 ms.openlocfilehash: b08516b35a864eae6d15c4c5c928f0550c64c239
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "67712501"
 ---
 A Fluent egy nyílt forráskódú adatgyűjtő az egyesített naplózáshoz. A `Fluentd` Beállítások kezelik a tároló kapcsolódását egy [Fluent](https://www.fluentd.org) -kiszolgálóval. A tároló tartalmaz egy olyan, a rendszer által használt naplózási szolgáltatót, amely lehetővé teszi a tároló számára a naplók írását, és opcionálisan metrikus adatokat egy Fluent-kiszolgáló számára.
 
 A következő táblázat a szakasz által támogatott konfigurációs beállításokat ismerteti `Fluentd` .
 
-| Name | Adattípus | Leírás |
+| Name (Név) | Adattípus | Leírás |
 |------|-----------|-------------|
 | `Host` | Sztring | A Fluent-kiszolgáló IP-címe vagy DNS-állomásneve. |
 | `Port` | Egész szám | A Fluent-kiszolgáló portja.<br/> Az alapértelmezett érték a 24224. |

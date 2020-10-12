@@ -9,10 +9,10 @@ ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
 ms.openlocfilehash: a1ae0971b016ed226351167cfabfca7d3cafd19f
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87905405"
 ---
 # <a name="optimize-azure-data-lake-storage-gen2-for-performance"></a>Azure Data Lake Storage Gen2 optimalizálása a teljesítményhez
@@ -138,5 +138,5 @@ A fenti általános irányelvek mellett minden alkalmazás különböző paramé
 | [MapReduce a HDInsight](data-lake-storage-performance-tuning-mapreduce.md) | <ul><li>MapReduce. map. Memory</li><li>MapReduce. job. Maps</li><li>MapReduce. csökkentse a memóriát</li><li>MapReduce. job. csökkenti</li></ul> |
 | [Storm on HDInsight](data-lake-storage-performance-tuning-storm.md)| <ul><li>Munkavégző folyamatok száma</li><li>Kiöntő végrehajtó példányainak száma</li><li>A bolt végrehajtó példányainak száma </li><li>Kiöntő feladatok száma</li><li>Bolti feladatok száma</li></ul>|
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 * [A Azure Data Lake Storage Gen2 áttekintése](data-lake-storage-introduction.md)

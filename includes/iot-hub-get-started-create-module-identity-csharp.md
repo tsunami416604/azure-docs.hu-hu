@@ -9,10 +9,10 @@ ms.date: 08/07/2019
 ms.author: menchi
 ms.custom: include file
 ms.openlocfilehash: a5c1ddd085ae65b9920d73f50f993f4646785a69
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "68883738"
 ---
 ## <a name="create-a-module-identity"></a>Modulidentitás létrehozása
@@ -29,7 +29,7 @@ A konzolalkalmazás a futtatásakor egy egyedi azonosítót és kulcsot állít 
 
     ![Adja meg a Visual Studio-megoldás nevét és keretrendszerét](./media/iot-hub-get-started-create-module-identity-csharp/configure-createidentities-project.png)
 
-1. A Visual Studióban nyissa meg az **eszközök**  >  **NuGet csomagkezelő**  >  **NuGet-csomagok kezelése megoldást**. Válassza ki a **Browse** (Tallózás) lapot.
+1. A Visual Studióban nyissa meg az **eszközök**  >  **NuGet csomagkezelő**  >  **NuGet-csomagok kezelése megoldást**. Válassza a **Tallózás** lapot.
 
 1. Keressen rá a **Microsoft. Azure. Devices**kifejezésre. Jelölje ki, majd válassza a **telepítés**lehetőséget.
 

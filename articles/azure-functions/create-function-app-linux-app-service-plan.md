@@ -4,10 +4,10 @@ description: Ismerje meg, hogyan hozhatja létre első Azure-függvényét Linux
 ms.topic: how-to
 ms.date: 04/29/2020
 ms.openlocfilehash: 53edee15d9c9dfa66e57bb1eb03b1d8f66aa1ee2
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90970724"
 ---
 # <a name="create-a-function-app-on-linux-in-an-azure-app-service-plan"></a>Function-alkalmazás létrehozása Linux rendszeren egy Azure App Service tervben
@@ -44,7 +44,7 @@ Rendelkeznie kell egy függvényalkalmazással a függvények Linux rendszerben 
     |**Verzió**| Verziószám | Válassza ki a telepített futtatókörnyezet verzióját.  |
     |**Régió**| Előnyben részesített régió | Válasszon egy Önhöz közeli [régiót](https://azure.microsoft.com/regions/) vagy a funkciókhoz tartozó egyéb szolgáltatások közelében. |
 
-    :::image type="content" source="./media/create-function-app-linux-app-service-plan/function-app-create-basics-linux.png" alt-text="Alapismeretek lap":::
+    :::image type="content" source="./media/create-function-app-linux-app-service-plan/function-app-create-basics-linux.png" alt-text="Függvényalkalmazás létrehozása az Azure Portalon":::
 
 1. Válassza a **Tovább: üzemeltetés**lehetőséget. Az **üzemeltetés** lapon adja meg a következő beállításokat.
 
@@ -54,7 +54,7 @@ Rendelkeznie kell egy függvényalkalmazással a függvények Linux rendszerben 
     |**Operációs rendszer**| **Linux** | Az operációs rendszer előre ki van választva a futásidejű verem kiválasztása alapján, de szükség esetén módosíthatja a beállítást. |
     | **[Felkészülés](../azure-functions/functions-scale.md)** | **Felhasználás (kiszolgáló nélküli)** | Szolgáltatási csomag, amely meghatározza az erőforrások lefoglalását a függvényalkalmazáshoz. Az alapértelmezett **használatalapú csomagban** az erőforrások hozzáadása dinamikusan történik a függvények követelményeinek megfelelően. Ebben a [kiszolgáló](https://azure.microsoft.com/overview/serverless-computing/) nélküli üzemeltetésben csak a függvények futtatásának idejére kell fizetnie. Ha App Service-csomagot használ, foglalkoznia kell a [függvényalkalmazás méretezésével](../azure-functions/functions-scale.md).  |
 
-    :::image type="content" source="./media/create-function-app-linux-app-service-plan/function-app-create-hosting-linux.png" alt-text="Üzemeltetési oldal":::
+    :::image type="content" source="./media/create-function-app-linux-app-service-plan/function-app-create-hosting-linux.png" alt-text="Függvényalkalmazás létrehozása az Azure Portalon":::
 
 1. Válassza a **Tovább: figyelés**lehetőséget. A **figyelés** lapon adja meg a következő beállításokat.
 
@@ -62,7 +62,7 @@ Rendelkeznie kell egy függvényalkalmazással a függvények Linux rendszerben 
     | ------------ | ---------------- | ----------- |
     | **[Application Insights](../azure-functions/functions-monitoring.md)** | **Igen** (alapértelmezett) | Létrehoz egy Application Insights erőforrást ugyanahhoz az *alkalmazáshoz* a legközelebbi támogatott régióban. A beállítás kibontásával vagy az **új létrehozása**lehetőség kiválasztásával módosíthatja a Application Insights nevét, vagy választhat egy másik régiót egy olyan [Azure-földrajzban](https://azure.microsoft.com/global-infrastructure/geographies/) , ahol az adatait tárolni szeretné. |
 
-   :::image type="content" source="./media/create-function-app-linux-app-service-plan/function-app-create-monitoring-linux.png" alt-text="Figyelési oldal":::
+   :::image type="content" source="./media/create-function-app-linux-app-service-plan/function-app-create-monitoring-linux.png" alt-text="Függvényalkalmazás létrehozása az Azure Portalon":::
 
 1. Válassza a **felülvizsgálat + létrehozás** lehetőséget az alkalmazás-konfiguráció kiválasztásának áttekintéséhez.
 

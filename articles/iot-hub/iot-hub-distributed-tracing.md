@@ -14,10 +14,10 @@ ms.custom:
 - fasttrack-edit
 - iot
 ms.openlocfilehash: 3e3dd49c622c1a35571fdb53af470789dc9a26bb
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89462036"
 ---
 # <a name="trace-azure-iot-device-to-cloud-messages-with-distributed-tracing-preview"></a>Azure IoT-eszközről a felhőbe irányuló üzenetek nyomon követése elosztott nyomkövetéssel (előzetes verzió)
@@ -252,7 +252,7 @@ Az elosztott nyomkövetési mintavételi konfiguráció több eszközhöz való 
 | Elem neve | Kötelező | Típus | Leírás |
 |-----------------|----------|---------|-----------------------------------------------------|
 | `sampling_mode` | Igen | Egész szám | A mintavétel be-és kikapcsolása jelenleg két mód értékkel lehetséges. `1` a és a, `2` ki van kapcsolva. |
-| `sampling_rate` | Yes | Egész szám | Ez az érték százalék. Csak `0` a és a közötti értékek `100` engedélyezettek.  |
+| `sampling_rate` | Igen | Egész szám | Ez az érték százalék. Csak `0` a és a közötti értékek `100` engedélyezettek.  |
 
 ## <a name="query-and-visualize"></a>Lekérdezés és megjelenítés
 

@@ -8,10 +8,10 @@ ms.date: 09/01/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: 16ee5fb59741d57f47083a0c5db852872ceb91d0
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89296090"
 ---
 # <a name="azure-security-baseline-for-logic-apps"></a>Logic Apps Azure biztonsági alapterve
@@ -646,7 +646,7 @@ A Microsoft kezeli a Azure Logic Apps alapjául szolgáló infrastruktúrát, é
 
 ### <a name="46-use-role-based-access-control-to-control-access-to-resources"></a>4,6: szerepköralapú hozzáférés-vezérlés használata az erőforrásokhoz való hozzáférés szabályozásához
 
-**Útmutató**: csak meghatározott felhasználók vagy csoportok számára engedélyezheti adott feladatok futtatását, például a Logic apps felügyeletét, szerkesztését és megtekintését. Az engedélyeik szabályozásához használja az Azure szerepköralapú Access Control (RBAC), hogy testreszabott vagy beépített szerepköröket rendeljen az Azure-előfizetése tagjaihoz:
+**Útmutató**: csak meghatározott felhasználók vagy csoportok számára engedélyezheti adott feladatok futtatását, például a Logic apps felügyeletét, szerkesztését és megtekintését. Az engedélyeik szabályozásához használja az Azure Role-Based Access Controlt (RBAC), hogy testreszabott vagy beépített szerepköröket rendeljen az Azure-előfizetése tagjaihoz:
 
 - Logic app közreműködő: lehetővé teszi a logikai alkalmazások kezelését, de nem tudja módosítani őket.
 - Logikai alkalmazás kezelője: lehetővé teszi a Logic apps olvasását, engedélyezését és letiltását, de nem szerkesztheti és nem frissítheti őket.
@@ -1190,13 +1190,13 @@ Tesztelje az ügyfél által felügyelt kulcsok biztonsági mentésének vissza�
 
 Az ügyfél által felügyelt kulcsok biztonsági mentésének biztosítása. Vegye figyelembe, hogy ez csak az Integration Service Environment (ISE) környezetben futó Logic Appsekre vonatkozik.
 
-A kulcsok véletlen vagy rosszindulatú Törlés elleni védelme érdekében engedélyezze a Key Vault a védelem törlését és kiürítését.
+A kulcsok véletlen vagy rosszindulatú törléssel szembeni védelme érdekében engedélyezze Soft-Delete és törölje a védelmet a Key Vaultban.
 
 - [További információ az üzletmenet folytonosságáról és a Azure Logic Apps vész-helyreállításról](business-continuity-disaster-recovery-guidance.md)
 
 - [Ügyfél által felügyelt kulcsok beállítása az integrációs szolgáltatási környezetek (ISEs-EK) Azure Logic Apps-beli inaktív adatok titkosításához](customer-managed-keys-integration-service-environment.md)
 
-- [A helyreállítható törlés és a védelem engedélyezése a Key Vaultban](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+- [A Soft-Delete engedélyezése és a védelem kiürítése Key Vault](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
 
 **Azure Security Center figyelés**: igen
 

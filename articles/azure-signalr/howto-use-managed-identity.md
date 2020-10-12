@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 06/8/2020
 ms.author: chenyl
 ms.openlocfilehash: abe7503e7eb73d533ae901af21de001960173fb0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85559405"
 ---
 # <a name="managed-identities-for-azure-signalr-service"></a>Felügyelt identitások az Azure Signaler szolgáltatáshoz
@@ -44,9 +44,9 @@ A felhasználó által hozzárendelt identitással rendelkező Azure Signaler sz
 
 4. A **felhasználó által hozzárendelt** lapon válassza a **Hozzáadás**lehetőséget.
 
-5. Keresse meg a korábban létrehozott identitást, és válassza ki. Válassza a **Hozzáadás** elemet.
+5. Keresse meg a korábban létrehozott identitást, és válassza ki. Válassza a **Hozzáadás** lehetőséget.
 
-    :::image type="content" source="media/signalr-howto-use-managed-identity/user-identity-portal.png" alt-text="Felhasználó által hozzárendelt identitás hozzáadása a portálon":::
+    :::image type="content" source="media/signalr-howto-use-managed-identity/user-identity-portal.png" alt-text="Rendszerhez rendelt identitás hozzáadása a portálon":::
 
 ## <a name="use-a-managed-identity-in-serverless-scenarios"></a>Felügyelt identitás használata kiszolgáló nélküli forgatókönyvekben
 

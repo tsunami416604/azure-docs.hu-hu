@@ -16,10 +16,10 @@ ms.reviewer: brandwe
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: 08b018082c753b9524cb12a72d637fe5458d9114
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85383699"
 ---
 # <a name="how-to-enable-cross-app-sso-on-ios-using-adal"></a>Útmutató: alkalmazások közötti egyszeri bejelentkezés engedélyezése iOS-en a ADAL használatával
@@ -46,7 +46,7 @@ Ez az útmutató feltételezi, hogy tudja, hogyan:
 * Az alkalmazás kiépítése az Azure AD-hez készült örökölt portálon. További információ: [alkalmazás regisztrálása](../develop/quickstart-register-app.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json)
 * Az alkalmazás integrálása az [Azure ad iOS SDK](https://github.com/AzureAD/azure-activedirectory-library-for-objc)-val.
 
-## <a name="single-sign-on-concepts"></a>Egyszeri bejelentkezési fogalmak
+## <a name="single-sign-on-concepts"></a>Az egyszeri bejelentkezés alapelvei
 
 ### <a name="identity-brokers"></a>Identity Broker
 
@@ -175,11 +175,11 @@ Ahhoz, hogy az Identity platform tudja, hogy a tokenek megoszthatók az alkalmaz
 
 Az átirányítási URI-k lehetővé teszik a különböző alkalmazások azonosítását a Microsoft Identity Service-ben, ha ugyanazt az alkalmazást használják. Az egyes alkalmazások több átirányítási URI-t is regisztrálhatnak a bevezetési portálon. A csomag minden alkalmazásának egy másik átirányítási URI-ja lesz. Példa erre a nézetre:
 
-App1 átirányítási URI:`x-msauth-mytestiosapp://com.myapp.mytestapp`
+App1 átirányítási URI: `x-msauth-mytestiosapp://com.myapp.mytestapp`
 
-App2 átirányítási URI:`x-msauth-mytestiosapp://com.myapp.mytestapp2`
+App2 átirányítási URI: `x-msauth-mytestiosapp://com.myapp.mytestapp2`
 
-App3 átirányítási URI:`x-msauth-mytestiosapp://com.myapp.mytestapp3`
+App3 átirányítási URI: `x-msauth-mytestiosapp://com.myapp.mytestapp3`
 
 ....
 

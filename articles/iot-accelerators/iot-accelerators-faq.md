@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 02/15/2018
 ms.author: dobett
 ms.openlocfilehash: abab80f8c790a170ec30fa228dd86576079a73a0
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89462547"
 ---
 # <a name="frequently-asked-questions-for-iot-solution-accelerators"></a>Gyakran ismételt kérdések az IoT-megoldásgyorsítókról
@@ -46,9 +46,9 @@ Az elmúlt két évben a Felhőbeli architektúra nagy mértékben fejlődött. 
 
 Lásd: [meglévő előfizetés hozzáadása az Azure ad-címtárhoz](../active-directory/fundamentals/active-directory-how-subscriptions-associated-directory.md#to-associate-an-existing-subscription-to-your-azure-ad-directory)
 
-### <a name="i-want-to-change-a-service-administrator-or-co-administrator-when-logged-in-with-an-organizational-account"></a>Meg szeretném változtatni a szolgáltatás-rendszergazdát vagy a társ-rendszergazdát, ha szervezeti fiókkal jelentkeznek be
+### <a name="i-want-to-change-a-service-administrator-or-co-administrator-when-logged-in-with-an-organizational-account"></a>Egy szolgáltatás-rendszergazdát vagy Co-Administrator szeretnék módosítani szervezeti fiókkal való bejelentkezéskor
 
-[Ha szervezeti fiókkal jelentkezik be, tekintse meg a szolgáltatás-rendszergazda és a társ-rendszergazda módosításával foglalkozó](https://azure.microsoft.com/support/changing-service-admin-and-co-admin)cikket.
+[Ha szervezeti fiókkal jelentkezik be](https://azure.microsoft.com/support/changing-service-admin-and-co-admin), tekintse meg a támogatási cikket a szolgáltatás-rendszergazda és a Co-Administrator módosítása című cikkben.
 
 ### <a name="why-am-i-seeing-this-error-your-account-does-not-have-the-proper-permissions-to-create-a-solution-please-check-with-your-account-administrator-or-try-with-a-different-account"></a>Miért jelenik meg ez a hiba? "A fiók nem rendelkezik megfelelő engedélyekkel a megoldás létrehozásához. Érdeklődjön a fiók rendszergazdájánál, vagy próbáljon meg egy másik fiókot. "
 

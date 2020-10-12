@@ -5,15 +5,15 @@ ms.date: 06/25/2019
 ms.service: cognitive-services
 ms.topic: include
 ms.openlocfilehash: 98a0ddd828c3d72fdead0ccc2fb1daabf7548de1
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "67712397"
 ---
 A `Eula` beállítás azt jelzi, hogy elfogadta a tároló licencét. Meg kell adnia egy értéket ehhez a konfigurációs beállításhoz, és az értéket a értékre kell állítani `accept` .
 
-|Kötelező| Name | Adattípus | Leírás |
+|Kötelező| Name (Név) | Adattípus | Leírás |
 |--|------|-----------|-------------|
 |Igen| `Eula` | Sztring | Licenc elfogadása<br><br>Példa:<br>`Eula=accept` |
 

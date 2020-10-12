@@ -11,10 +11,10 @@ ms.subservice: core
 ms.topic: conceptual
 ms.custom: how-to, devx-track-python
 ms.openlocfilehash: b241220168a5cd81ce23be729944df387e87e567
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87844542"
 ---
 # <a name="how-to-deploy-an-encrypted-inferencing-web-service-preview"></a>Titkosított viszonyítási webszolgáltatás üzembe helyezése (előzetes verzió)
@@ -28,7 +28,7 @@ Ebben az útmutatóban Azure Machine Learning szolgáltatást használ a követk
 > * Titkosított viszonyítási webszolgáltatás üzembe helyezése
 > * Tesztelési célú adatfeldolgozás
 > * Titkosított előrejelzések készítése
-> * Erőforrások felszabadítása
+> * Az erőforrások eltávolítása
 
 Az ACI nagyszerű megoldás a modell üzembe helyezési munkafolyamatának tesztelésére és megismerésére. Skálázható termelési környezetek esetén fontolja meg az Azure Kubernetes Service használatát. További információ: [a telepítés és a hol](https://docs.microsoft.com/azure/machine-learning/service/how-to-deploy-and-where).
 
@@ -60,7 +60,7 @@ Jupyter-jegyzetfüzetben
     > [!NOTE]
     > A `encrypted-inference` csomag jelenleg előzetes verzióban érhető el.
 
-    [`encrypted-inference`](https://pypi.org/project/encrypted-inference)a egy olyan függvénytár, amely a [Microsoft Seal](https://github.com/Microsoft/SEAL)alapján titkosított következtetésekhez tartalmaz kötéseket.
+    [`encrypted-inference`](https://pypi.org/project/encrypted-inference) a egy olyan függvénytár, amely a [Microsoft Seal](https://github.com/Microsoft/SEAL)alapján titkosított következtetésekhez tartalmaz kötéseket.
 
     ```python
     !pip install encrypted-inference==0.9
@@ -319,7 +319,7 @@ Titkosított előrejelzések készítése:
     print ( ' Actual Label : ', y_test[sample_index])
     ```
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 A mintában létrehozott webszolgáltatás törlése:
 

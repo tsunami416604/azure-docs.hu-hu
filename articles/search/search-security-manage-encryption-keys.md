@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 08/01/2020
 ms.custom: references_regions
 ms.openlocfilehash: 2dc7458dd905ff84455927c81b4ea93765d4f5cb
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88928819"
 ---
 # <a name="configure-customer-managed-keys-for-data-encryption-in-azure-cognitive-search"></a>Ügyfél által felügyelt kulcsok konfigurálása az adattitkosításhoz az Azure-ban Cognitive Search
@@ -276,7 +276,7 @@ A kulcs rotációja várhatóan az idő múlásával történik. A kulcsok elfor
 
 A keresési szolgáltatás teljesítménybeli okokból akár több óráig is gyorsítótárazza a kulcsot. Ha letiltja vagy törli a kulcsot anélkül, hogy újat kellene benyújtania, a lekérdezések ideiglenesen is működni fognak, amíg a gyorsítótár le nem jár. Ha azonban a keresési szolgáltatás nem tudja visszafejteni a tartalmat, a következő üzenet jelenik meg: "Hozzáférés megtiltva. Lehetséges, hogy a használt lekérdezési kulcsot visszavonták – próbálkozzon újra. " 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha nem ismeri az Azure biztonsági architektúráját, tekintse át az [Azure biztonsági dokumentációját](../security/index.yml), és különösen a következő cikket:
 

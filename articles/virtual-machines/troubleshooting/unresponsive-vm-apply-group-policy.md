@@ -15,23 +15,23 @@ ms.topic: troubleshooting
 ms.date: 05/07/2020
 ms.author: v-mibufo
 ms.openlocfilehash: cbf2fe491e1fe0b553eab04ca7190da0413a3ba6
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86526010"
 ---
 # <a name="vm-is-unresponsive-when-applying-group-policy-local-users-and-groups-policy"></a>A virtuális gép nem válaszol Csoportházirend helyi felhasználók és csoportok házirend alkalmazásakor
 
 Ez a cikk olyan problémák megoldását ismerteti, amelyekben a betöltési képernyő nem válaszol, ha egy Azure-beli virtuális gép (VM) az indításkor alkalmazza a házirendet.
 
-## <a name="symptoms"></a>Probléma
+## <a name="symptoms"></a>Hibajelenségek
 
 Ha [rendszerindítási diagnosztikát](./boot-diagnostics.md) használ a virtuális gép képernyőképének megtekintéséhez, a képernyő betöltődik a következő üzenettel: "csoportházirend helyi felhasználók és csoportok házirend alkalmazása".
 
 :::image type="content" source="media//unresponsive-vm-apply-group-policy/applying-group-policy-1.png" alt-text="Képernyőkép a Csoportházirend helyi felhasználók és csoportok betöltésének alkalmazásáról (Windows Server 2012 R2).":::
 
-:::image type="content" source="media/unresponsive-vm-apply-group-policy/applying-group-policy-2.png" alt-text="Képernyőkép a Csoportházirend helyi felhasználók és csoportok betöltésének alkalmazásáról (Windows Server 2012).":::
+:::image type="content" source="media/unresponsive-vm-apply-group-policy/applying-group-policy-2.png" alt-text="Képernyőkép a Csoportházirend helyi felhasználók és csoportok betöltésének alkalmazásáról (Windows Server 2012 R2).":::
 
 ## <a name="cause"></a>Ok
 
@@ -66,23 +66,7 @@ A problémás szabályzat:
 1. A javítási virtuális gépen nyissa meg a beállításszerkesztőt.
 1. Keresse meg a kulcsot **HKEY_LOCAL_MACHINE** , és válassza a **fájl**  >  **Load struktúra** elemet a menüből.
 
-    :::image type="content" source="media/unresponsive-vm-apply-group-policy/registry.png" alt-text="A képernyőképen a Kiemelt HKEY_LOCAL_MACHINE és a Load kaptárt tartalmazó menü látható.":::
-
-    - A Load kaptár használatával a beállításkulcsok egy offline rendszerből tölthetők be. Ebben az esetben a rendszer a helyreállító virtuális géphez csatolt sérült lemez.
-    - A rendszerszintű beállítások a (z) rendszeren tárolódnak `HKEY_LOCAL_MACHINE` , és a "HKLM" rövidítéssel rövidíthető le.
-1. A csatolt lemezen lépjen a `\windows\system32\config\SOFTWARE` fájlra, és nyissa meg.
-
-    1. Ha a rendszer kéri a név megadását, írja be a következőt: BROKENSOFTWARE.
-    1. A BROKENSOFTWARE betöltésének ellenőrzéséhez bontsa ki **HKEY_LOCAL_MACHINE** és keresse meg a hozzáadott BROKENSOFTWARE kulcsot.
-1. Nyissa meg a BROKENSOFTWARE, és ellenőrizze, hogy létezik-e a CleanupProfile kulcs a betöltött struktúrában.
-
-    1. Ha a kulcs létezik, a CleanupProfile házirend van beállítva. Az érték a napokon mért adatmegőrzési házirendet jelöli. Folytassa a kulcs törlését.
-    1. Ha a kulcs nem létezik, a CleanupProfile házirend nincs beállítva. [Küldjön be egy támogatási jegyet](https://portal.azure.com/?#blade/Microsoft_Azure_Support/HelpAndSupportBlade), beleértve a mellékelt operációsrendszer-lemez Windows-könyvtárában található Memory. dmp fájlt.
-
-1. Törölje a CleanupProfiles kulcsot a következő parancs használatával:
-
-    ```
-    reg delete "HKLM\BROKENSOFTWARE\Policies\Microsoft\Windows\System" /v CleanupProfiles /f
+    :::image type="content" source="media/unresponsive-vm-apply-group-policy/registry.png" alt-text="Képernyőkép a Csoportházirend helyi felhasználók és csoportok betöltésének alkalmazásáról (Windows Server 2012 R2)." /v CleanupProfiles /f
     ```
 1.  Távolítsa el a BROKENSOFTWARE-struktúrát a következő parancs használatával:
 
@@ -148,6 +132,6 @@ Ne használja ezt a házirendet:
 
 `Machine\Admin Templates\System\User Profiles\Delete user profiles older than a specified number of days on system restart`
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha a Windows Update alkalmazása során problémák merülnek fel, tekintse meg [a virtuális gép nem válaszol "C01A001D" hibaüzenettel a Windows Update alkalmazásakor](./unresponsive-vm-apply-windows-update.md).

@@ -8,10 +8,10 @@ ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
 ms.openlocfilehash: 2a7cc864366bd9a35c96dd453c0dc68f77d8abd9
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86171448"
 ---
 # <a name="tutorial-publish-subscribe-to-events-locally"></a>Oktatóanyag: közzététel, előfizetés helyi eseményekre
@@ -54,7 +54,7 @@ Az üzembe helyezési jegyzék egy JSON-dokumentum, amely leírja, hogy mely mod
 1. Adja meg a tároló nevét, képét, tároló-létrehozási beállításait:
 
    * **Név**: eventgridmodule
-   * **Rendszerkép URI-ja**:`mcr.microsoft.com/azure-event-grid/iotedge:latest`
+   * **Rendszerkép URI-ja**: `mcr.microsoft.com/azure-event-grid/iotedge:latest`
    * **Tároló-létrehozási beállítások**:
 
    [!INCLUDE [event-grid-edge-module-version-update](../../../includes/event-grid-edge-module-version-update.md)]
@@ -75,7 +75,7 @@ Az üzembe helyezési jegyzék egy JSON-dokumentum, amely leírja, hogy mely mod
           }
         }
     ```    
- 1. Kattintson a **Mentés** gombra
+ 1. Kattintson a **Mentés** gombra.
  1. Folytassa a következő szakasszal, és vegye fel a Azure Event Grid előfizető modult, mielőtt együtt telepítené őket.
 
     >[!IMPORTANT]
@@ -95,9 +95,9 @@ Ebből a szakaszból megtudhatja, hogyan helyezhet üzembe egy másik IoT modult
 1. Adja meg a tároló nevét, képét és tároló-létrehozási beállításait:
 
    * **Név**: előfizető
-   * **Rendszerkép URI-ja**:`mcr.microsoft.com/azure-event-grid/iotedge-samplesubscriber:latest`
+   * **Rendszerkép URI-ja**: `mcr.microsoft.com/azure-event-grid/iotedge-samplesubscriber:latest`
    * **Tároló-létrehozási beállítások**: nincs
-1. Kattintson a **Mentés** gombra
+1. Kattintson a **Mentés** gombra.
 1. Az útvonalak szakasz folytatásához kattintson a **tovább** gombra.
 
  ### <a name="setup-routes"></a>Telepítési útvonalak

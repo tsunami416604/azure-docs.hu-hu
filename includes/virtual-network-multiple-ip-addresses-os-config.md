@@ -9,10 +9,10 @@ ms.date: 05/10/2019
 ms.author: anavin
 ms.custom: include file
 ms.openlocfilehash: 93caf39216ef0479ec2799267a9ba8181f37f802
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84194220"
 ---
 ## <a name="add-ip-addresses-to-a-vm-operating-system"></a><a name="os-config"></a>IP-címek hozzáadása a virtuális gép operációs rendszeréhez
@@ -138,7 +138,7 @@ ip route add default via 10.0.0.1 dev eth2 table custom
 - Cserélje le:
     - a **10.0.0.5**-öt arra a magánhálózati IP-címre, amelyhez nyilvános IP-cím is tartozik
     - a **10.0.0.1**-et az alapértelmezett átjáróra
-    - **eth2** a másodlagos hálózati adapter nevére</details>
+    - **eth2** a másodlagos hálózati adapter nevére </details>
 
 ### <a name="linux-ubuntu-1804"></a>Linux (Ubuntu 18.04 +)
 <details>
@@ -182,7 +182,7 @@ Az Ubuntu 18,04-es és újabb verziók `netplan` esetében az operációs rendsz
     ```
 
 > [!NOTE]
-> `netplan try`a módosításokat átmenetileg alkalmazza, és 120 másodperc elteltével visszaállítja a módosításokat. Ha a kapcsolat elvesztése megszakad, várjon 120 másodpercet, majd kapcsolódjon újra. Ekkor a rendszer visszaállítja a módosításokat.
+> `netplan try` a módosításokat átmenetileg alkalmazza, és 120 másodperc elteltével visszaállítja a módosításokat. Ha a kapcsolat elvesztése megszakad, várjon 120 másodpercet, majd kapcsolódjon újra. Ekkor a rendszer visszaállítja a módosításokat.
 
 7. Feltéve, hogy nincs probléma a `netplan try` alkalmazásban, alkalmazza a konfigurációs módosításokat:
 
@@ -236,7 +236,7 @@ ip route add default via 10.0.0.1 dev eth2 table custom
 - Cserélje le:
     - a **10.0.0.5**-öt arra a magánhálózati IP-címre, amelyhez nyilvános IP-cím is tartozik
     - a **10.0.0.1**-et az alapértelmezett átjáróra
-    - **eth2** a másodlagos hálózati adapter nevére</details>
+    - **eth2** a másodlagos hálózati adapter nevére </details>
 
 ### <a name="linux-red-hat-centos-and-others"></a>Linux (Red Hat, CentOS és egyebek)
 <details>
@@ -322,4 +322,4 @@ ip route add default via 10.0.0.1 dev eth2 table custom
 - Cserélje le:
     - a **10.0.0.5**-öt arra a magánhálózati IP-címre, amelyhez nyilvános IP-cím is tartozik
     - a **10.0.0.1**-et az alapértelmezett átjáróra
-    - **eth2** a másodlagos hálózati adapter nevére</details>
+    - **eth2** a másodlagos hálózati adapter nevére </details>

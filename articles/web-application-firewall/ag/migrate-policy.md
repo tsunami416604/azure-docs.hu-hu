@@ -8,10 +8,10 @@ ms.service: web-application-firewall
 ms.date: 04/16/2020
 ms.author: ant
 ms.openlocfilehash: eccd6b33353e071a66225279f1f1c150d4bdaafc
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86143848"
 ---
 # <a name="migrate-web-application-firewall-policies-using-azure-powershell"></a>Webalkalmazási tűzfal házirendjeinek migrálása Azure PowerShell használatával
@@ -27,7 +27,7 @@ Az áttelepítési parancsfájl futtatásához kövesse az alábbi lépéseket:
 1. Nyissa meg a következő felhőalapú rendszerhéj-ablakot, vagy nyisson meg egyet a portálon.
 2. Másolja a szkriptet a Cloud Shell ablakába, és futtassa.
 3. A parancsfájl kéri az előfizetés-azonosítót, az erőforráscsoport nevét, annak a Application Gateway a nevét, amelyhez a WAF-konfiguráció társítva van, valamint a létrehozandó új WAF-szabályzat nevét. Ha beírja ezeket a bemeneteket, a szkript lefut, és létrehozza az új WAF-házirendet.
-4. Társítsa az új WAF-házirendet az Application gatewayhez. Nyissa meg a WAF szabályzatot a portálon, és válassza a **társított Application Gateway átjárók** lapot. válassza a **Application Gateway társítása lehetőséget** , majd válassza ki azt a Application Gateway, amelyhez társítani szeretné a WAF-házirendet.
+4. Társítsa az új WAF-házirendet az Application gatewayhez. Nyissa meg a WAF szabályzatot a portálon, és válassza a **társított Application Gateways** fület. Válassza a **Application Gateway hozzárendelése lehetőséget** , majd válassza ki azt a Application Gateway, amelyhez a WAF szabályzatot hozzá szeretné rendelni.
 
 > [!NOTE]
 > A parancsfájl nem végez áttelepítést, ha a következő feltételek teljesülnek:

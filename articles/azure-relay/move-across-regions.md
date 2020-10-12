@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.date: 09/03/2020
 ms.custom: subject-moving-resources
 ms.openlocfilehash: 60a182764639341fcda159356dd9fe6c65cfabd9
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89463606"
 ---
 # <a name="move-an-azure-relay-namespace-to-another-region"></a>Azure Relay névtér áthelyezése egy másik régióba
@@ -39,7 +39,7 @@ Első lépésként exportáljon egy Resource Manager-sablont. Ez a sablon a Azur
 1. Keresse meg a kifejezést `location` , és cserélje le a tulajdonság értékét a régió új nevére. A helykód beszerzéséhez tekintse meg az [Azure-helyek](https://azure.microsoft.com/global-infrastructure/locations/)című témakört. A régió kódja a régió neve, szóközök nélkül, például `West US` egyenlő `westus` .
 1. A **dinamikus WCF-továbbító** erőforrások definícióinak eltávolítása (típus: `Microsoft.Relay/namespaces/WcfRelays` ). A dinamikus WCF-továbbítók olyanok, amelyek **isDynamic** tulajdonsága **true** értékre van állítva a továbbítások **lapon.** A következő példában a **echoservice** egy dinamikus WCF-továbbító, és annak definícióját el kell távolítani a sablonból. 
 
-    :::image type="content" source="./media/move-across-regions/dynamic-relays.png" alt-text="Dinamikus továbbítók":::
+    :::image type="content" source="./media/move-across-regions/dynamic-relays.png" alt-text="Resource Manager-sablon letöltése":::
 
 ## <a name="move"></a>Áthelyezés
 A sablon üzembe helyezésével hozzon létre egy Relay-névteret a célként megadott régióban. 
@@ -47,19 +47,19 @@ A sablon üzembe helyezésével hozzon létre egy Relay-névteret a célként me
 1. A Azure Portal válassza az **erőforrás létrehozása**lehetőséget.
 2. A **Keresés a piactéren**mezőbe írja be a keresett szöveghez tartozó **sablon központi telepítését** , válassza a **template Deployment (az egyéni sablonok használatával történő üzembe helyezés)** lehetőséget, majd nyomja le az **ENTER**billentyűt.
 
-    :::image type="content" source="./media/move-across-regions/new-template-deployment.png" alt-text="Új sablon központi telepítése":::    
+    :::image type="content" source="./media/move-across-regions/new-template-deployment.png" alt-text="Resource Manager-sablon letöltése":::    
 1. A **template Deployment** lapon válassza a **Létrehozás**lehetőséget.
 
-    :::image type="content" source="./media/move-across-regions/template-deployment-create-button.png" alt-text="Új sablon központi telepítése – létrehozás gomb":::        
+    :::image type="content" source="./media/move-across-regions/template-deployment-create-button.png" alt-text="Resource Manager-sablon letöltése":::        
 1. Az **Egyéni telepítés** lapon válassza a **saját sablon létrehozása lehetőséget a szerkesztőben**.
 
-    :::image type="content" source="./media/move-across-regions/build-template-link.png" alt-text="Saját sablon létrehozása a szerkesztőben – hivatkozás":::            
+    :::image type="content" source="./media/move-across-regions/build-template-link.png" alt-text="Resource Manager-sablon letöltése":::            
 1. A **Sablon szerkesztése** lapon válassza a **fájl betöltése** az eszköztáron lehetőséget, majd kövesse az utasításokat az utolsó szakaszban letöltött fájl **template.js** betöltéséhez.
 
-    :::image type="content" source="./media/move-across-regions/select-template.png" alt-text="Sablon kiválasztása":::                
+    :::image type="content" source="./media/move-across-regions/select-template.png" alt-text="Resource Manager-sablon letöltése":::                
 1. A sablon mentéséhez válassza a **Mentés** lehetőséget. 
 
-    :::image type="content" source="./media/move-across-regions/save-template.png" alt-text="Sablon mentése":::                    
+    :::image type="content" source="./media/move-across-regions/save-template.png" alt-text="Resource Manager-sablon letöltése":::                    
 1. Az **Egyéni telepítés** lapon kövesse az alábbi lépéseket: 
     1. Válasszon ki egy Azure- **előfizetést**. 
     2. Válasszon ki egy meglévő **erőforráscsoportot** , vagy hozzon létre egyet. 
@@ -67,16 +67,16 @@ A sablon üzembe helyezésével hozzon létre egy Relay-névteret a célként me
     4. Adja meg **a névtér új nevét**.
     1. Válassza a **Felülvizsgálat + létrehozás** lehetőséget. 
 
-        :::image type="content" source="./media/move-across-regions/deploy-template.png" alt-text="Resource Manager-sablon üzembe helyezése":::
+        :::image type="content" source="./media/move-across-regions/deploy-template.png" alt-text="Resource Manager-sablon letöltése":::
     1. A **felülvizsgálat + létrehozás** oldalon válassza a **Létrehozás** elemet az oldal alján. 
     
 ## <a name="verify"></a>Ellenőrzés
 1. Miután az üzembe helyezés sikeres volt, válassza az **Ugrás az erőforrás-csoportba**lehetőséget.
 
-    :::image type="content" source="./media/move-across-regions/resource-group-navigation-link.png" alt-text="Ugrás az erőforráscsoport hivatkozására":::    
+    :::image type="content" source="./media/move-across-regions/resource-group-navigation-link.png" alt-text="Resource Manager-sablon letöltése":::    
 1. Az **erőforráscsoport** lapon válassza ki a Azure Relay névteret. 
 
-    :::image type="content" source="./media/move-across-regions/select-namespace.png" alt-text="Azure Relay névtér kiválasztása":::    
+    :::image type="content" source="./media/move-across-regions/select-namespace.png" alt-text="Resource Manager-sablon letöltése":::    
 1. A **Azure Relay névtér** lapon válassza a bal oldali menüben a **hibrid kapcsolatok** vagy a **WCF** -továbbító lehetőséget annak ellenőrzéséhez, hogy a hibrid kapcsolatok és a WCF-továbbítók létrejöttek-e. Ha a sablon importálása előtt elfelejtette a dinamikus WCF-továbbítók definícióinak törlését, törölje őket a **WCF** -Továbbítók lapon. A dinamikus WCF-továbbítókat a rendszer automatikusan hozza létre, amikor az ügyfelek csatlakoznak a továbbítási névtérhez. 
 
 ## <a name="discard-or-clean-up"></a>Elvetés vagy felesleges elemek eltávolítása

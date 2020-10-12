@@ -9,13 +9,13 @@ ms.date: 03/03/2020
 ms.author: barbkess
 ms.custom: references_regions
 ms.openlocfilehash: b720d9dd824018d885ccc9860ee9fd8a90a46051
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84194315"
 ---
-# <a name="business-continuity-and-disaster-recovery-bcdr-azure-paired-regions"></a>Üzletmenet-folytonosság és vészhelyreállítás (BCDR): Azure párosított régiók
+# <a name="business-continuity-and-disaster-recovery-bcdr-azure-paired-regions"></a>Üzletmenet-folytonosság és vészhelyreállítás (BCDR): Az Azure párosított régiói
 
 ## <a name="what-are-paired-regions"></a>Mik azok a párosított régiók?
 
@@ -49,7 +49,7 @@ Nem. Az Azure-szolgáltatásokkal az Azure-szolgáltatások rugalmas szolgáltat
 
 | Földrajzi hely | A regionális pár | B regionális pár  |
 |:--- |:--- |:--- |
-| Ázsia – csendes-óceáni térség |Kelet-Ázsia (Hongkong) | Délkelet-Ázsia (Szingapúr) |
+| Asia-Pacific |Kelet-Ázsia (Hongkong) | Délkelet-Ázsia (Szingapúr) |
 | Ausztrália |Kelet-Ausztrália |Délkelet-Ausztrália |
 | Ausztrália |Ausztrália középső régiója |Ausztrália 2. középső régiója |
 | Brazília |Dél-Brazília |USA déli középső régiója |
@@ -66,13 +66,13 @@ Nem. Az Azure-szolgáltatásokkal az Azure-szolgáltatások rugalmas szolgáltat
 | Észak-Amerika |USA keleti régiója |USA nyugati régiója |
 | Észak-Amerika |USA 2. keleti régiója |USA középső régiója |
 | Észak-Amerika |USA északi középső régiója |USA déli középső régiója |
-| Észak-Amerika |USA nyugati régiója, 2. |USA nyugati középső régiója |
+| Észak-Amerika |USA 2. nyugati régiója |USA nyugati középső régiója |
 | Norvégia | Kelet-Norvégia | Norvégia nyugati régiója |
 | Dél-afrikai Köztársaság | Dél-Afrika északi régiója |Dél-Afrika nyugati régiója |
 | Svájc | Észak-Svájc |Nyugat-Svájc |
 | Egyesült Királyság |Az Egyesült Királyság nyugati régiója |Az Egyesült Királyság déli régiója |
 | Egyesült Arab Emírségek | Észak-Egyesült Arab | UAE középső régiója
-| Egyesült Államok védelmi Minisztériuma |US DoD – Kelet |US DoD – Középső régió |
+| Egyesült Államok Védelmi Minisztériuma |US DoD – Kelet |US DoD – Középső régió |
 | Egyesült Államok – Államigazgatás |USA-beli államigazgatás – Arizona |USA-beli államigazgatás – Texas |
 | Egyesült Államok – Államigazgatás |US Gov Iowa |USA-beli államigazgatás – Virginia |
 | Egyesült Államok – Államigazgatás |USA-beli államigazgatás – Virginia |USA-beli államigazgatás – Texas |
@@ -104,7 +104,7 @@ A 2. ábrán említettek szerint.
 
 5. **Fizikai elkülönítés** – ha lehetséges, az Azure legalább 300 mérföld távolságot részesíti előnyben a regionális párokban található adatközpontok között, bár ez nem praktikus vagy lehetséges az összes földrajzi helyen. A fizikai adatközpontok elkülönítése csökkenti a természeti katasztrófák, a zavargások, az áramkimaradások vagy a fizikai hálózatok kimaradásának valószínűségét egyszerre mindkét régióban. Az elkülönítést a földrajz (földrajzi méret, energia/hálózati infrastruktúra rendelkezésre állása, rendeletek stb.) korlátai határozzák meg.  
 
-6. **Platform által biztosított replikáció** – egyes szolgáltatások, például a Geo-redundáns tárolás biztosítanak automatikus replikálást a párosított régióba.
+6. **Platform által biztosított replikálás** – egyes szolgáltatások, például a Geo-Redundant tárolók biztosítják a párosított régióba való automatikus replikálást.
 
 7. **Régió helyreállítási sorrendje** – széles kimaradás esetén az egyik régió helyreállítása minden pár közül rangsorolva van. A párosított régiókban üzembe helyezett alkalmazások esetében az egyik régió garantáltan előnyben részesül a helyreállításkor. Ha egy alkalmazás központi telepítése nem párosított régiók között történik, előfordulhat, hogy a helyreállítás késleltethető – a legrosszabb esetben a kiválasztott régiók az utolsó két helyre állíthatók vissza.
 

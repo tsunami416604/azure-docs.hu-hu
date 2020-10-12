@@ -7,10 +7,10 @@ ms.date: 07/09/2018
 ms.author: cshoe
 ms.custom: devx-track-csharp, H1Hack27Feb2017
 ms.openlocfilehash: 9a3ffeb4ff58cc4af2309268f1a95cd9d354de8b
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88206624"
 ---
 # <a name="twilio-binding-for-azure-functions"></a>Azure Functions Twilio kötése
@@ -327,14 +327,14 @@ Helyezzen [TwilioSmsOutput](/java/api/com.microsoft.azure.functions.annotation.t
 
 Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított kötési konfigurációs tulajdonságokat ismerteti `TwilioSms` .
 
-| v1 function.jsa tulajdonságon | v2 function.jsa tulajdonságon | Attribútum tulajdonsága |Description|
+| v1 function.jsa tulajdonságon | v2 function.jsa tulajdonságon | Attribútum tulajdonsága |Leírás|
 |---------|---------|---------|----------------------|
 |**típusa**|**típusa**| értékre kell állítani `twilioSms` .|
 |**irányba**|**irányba**| értékre kell állítani `out` .|
 |**név**|**név**| A Twilio SMS szöveges üzenethez tartozó Function Code-ban használt változó neve. |
 |**accountSid**|**accountSidSetting**| **AccountSidSetting**| Ezt az értéket egy olyan Alkalmazásbeállítás nevére kell beállítani, amely a Twilio-fiók SID () azonosítóját tartalmazza `TwilioAccountSid` . Ha nincs beállítva, az alapértelmezett alkalmazás-beállítás neve "AzureWebJobsTwilioAccountSid". |
 |**Aad**|**authTokenSetting**|**AuthTokenSetting**| Ezt az értéket egy olyan Alkalmazásbeállítások nevére kell beállítani, amely a Twilio hitelesítési tokent () tárolja `TwilioAccountAuthToken` . Ha nincs beállítva, az alapértelmezett alkalmazás-beállítás neve "AzureWebJobsTwilioAuthToken". |
-|**a következőre:**| N/A – megadás a kódban | **Hogy**| Ez az érték arra a telefonszámra van beállítva, amelyre az SMS-szöveg érkezik.|
+|**hogy**| N/A – megadás a kódban | **Művelet**| Ez az érték arra a telefonszámra van beállítva, amelyre az SMS-szöveg érkezik.|
 |**a**|**a** | **A**| Ez az érték arra a telefonszámra van beállítva, amelyet az SMS-szöveg elküldésére használt.|
 |**törzse**|**törzse** | **Törzs**| Ez az érték használható az SMS szöveges üzenet kódolására, ha nem kell dinamikusan beállítania a függvény kódjában. |  
 

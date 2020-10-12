@@ -10,10 +10,10 @@ ms.topic: how-to
 ms.date: 8/12/2020
 ms.author: JenCook
 ms.openlocfilehash: 235f4eb236e144d41ffb9958b09dab0cf5c269b6
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89462428"
 ---
 # <a name="how-to-run-an-application-with-fortanix-enclave-manager"></a>Útmutató: alkalmazás futtatása a Fortanix enklávé Managerrel 
@@ -28,7 +28,7 @@ A Fortanix egy külső gyártótól származó szoftvergyártó, amely Azure-inf
 
 
 
-Ebből az oktatóanyagból megtudhatja, hogyan alakíthatja át az alkalmazás rendszerképét egy bizalmas, számítási védelemmel ellátott képre. Ez a környezet [Fortanix](https://www.fortanix.com/) szoftvert használ, amely az Azure DCsv2 sorozatú Intel SGX enklávéhoz-kompatibilis virtuális gépekkel rendelkezik. Ez a megoldás a kritikus biztonsági házirendeket, például az identitás-ellenőrzést és az adathozzáférés-vezérlést hangolja össze.
+Ebből az oktatóanyagból megtudhatja, hogyan alakíthatja át az alkalmazás rendszerképét egy bizalmas, számítási védelemmel ellátott képre. Ez a környezet [Fortanix](https://www.fortanix.com/) szoftvert használ, amelyet az Azure DCsv2-Series Intel SGX enklávéhoz-kompatibilis virtuális gépek működtetnek. Ez a megoldás a kritikus biztonsági házirendeket, például az identitás-ellenőrzést és az adathozzáférés-vezérlést hangolja össze.
 
  A Fortanix támogatásához csatlakozzon a [Fortanix Slack közösséghez](https://fortanix.com/community/) , és használja a Channel #enclavemanager.
 
@@ -117,10 +117,10 @@ A Fortanix-csomópontok létrehozásakor a rendszer egy virtuális gépet, egy h
      ![Keresés a piactéren](media/how-to-fortanix-enclave-manager/search-fortanix-marketplace.png)
 1. Válassza a **Letöltés most**lehetőséget, adja meg az adatokat, ha szükséges, majd kattintson a **Folytatás**gombra. A rendszer átirányítja a Azure Portal. 
 1. Válassza a **Létrehozás** lehetőséget a Fortanix bizalmas számítástechnikai csomópont-ügynök üzembe helyezési lapjának megadásához.
-1. Ezen a lapon megadhatja a virtuális gép üzembe helyezéséhez szükséges adatokat. Pontosabban, ez a virtuális gép egy DCsv2 sorozatú, Intel SGX ENKLÁVÉHOZ-kompatibilis virtuális gép az Azure-ban, amelyen telepítve van az Fortanix Node Agent szoftver. A csomópont-ügynök lehetővé teszi, hogy az átalakított rendszerkép biztonságosan fusson az Azure-beli Intel SGX ENKLÁVÉHOZ-csomópontokon.  Válassza ki azt az **előfizetést** és **erőforráscsoportot** , ahol telepíteni szeretné a virtuális gépet és a kapcsolódó erőforrásokat. 
+1. Ezen a lapon megadhatja a virtuális gép üzembe helyezéséhez szükséges adatokat. Pontosabban, ez a virtuális gép egy DCsv2-Series Intel SGX ENKLÁVÉHOZ-kompatibilis virtuális gép az Azure-ban, amelyen telepítve van a Fortanix Node Agent szoftver. A csomópont-ügynök lehetővé teszi, hogy az átalakított rendszerkép biztonságosan fusson az Azure-beli Intel SGX ENKLÁVÉHOZ-csomópontokon.  Válassza ki azt az **előfizetést** és **erőforráscsoportot** , ahol telepíteni szeretné a virtuális gépet és a kapcsolódó erőforrásokat. 
  
     > [!NOTE]
-    > A DCsv2-sorozatú virtuális gépek az Azure-ban való üzembe helyezése megkötést eredményez. Előfordulhat, hogy további magokra vonatkozó kvótát kell igényelnie. További információt az Azure-beli [virtuális gépeken található bizalmas számítástechnikai megoldásokról szóló](https://docs.microsoft.com/azure/confidential-computing/virtual-machine-solutions) témakörben olvashat. 
+    > DCsv2-Series virtuális gépek Azure-ban való telepítésekor megkötések vannak. Előfordulhat, hogy további magokra vonatkozó kvótát kell igényelnie. További információt az Azure-beli [virtuális gépeken található bizalmas számítástechnikai megoldásokról szóló](https://docs.microsoft.com/azure/confidential-computing/virtual-machine-solutions) témakörben olvashat. 
 
 1. Válasszon a rendelkezésre álló régiók közül.
 1. A **csomópont neve** mezőben adja meg a virtuális gép nevét. 

@@ -8,18 +8,18 @@ ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
 ms.openlocfilehash: 64b8956c47cbdbf31bb8253dac0c1e1f12833bf7
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86171771"
 ---
 # <a name="advanced-filtering"></a>Speciális szűrés
 Event Grid lehetővé teszi a JSON-adattartalomban lévő bármely tulajdonsághoz tartozó szűrők megadását. Ezeket a szűrőket `AND` feltételként modellezik, és minden külső feltétel opcionális belső `OR` feltételekkel rendelkezik. Minden `AND` feltétel esetében a következő értékeket kell megadnia:
 
-* `OperatorType`– Az összehasonlítás típusa.
-* `Key`– A szűrő alkalmazásához használt tulajdonság JSON-elérési útja.
-* `Value`– A szűrő futtatására szolgáló hivatkozási érték (vagy) `Values` – azon hivatkozási értékek összessége, amelyeken a szűrő fut.
+* `OperatorType` – Az összehasonlítás típusa.
+* `Key` – A szűrő alkalmazásához használt tulajdonság JSON-elérési útja.
+* `Value` – A szűrő futtatására szolgáló hivatkozási érték (vagy) `Values` – azon hivatkozási értékek összessége, amelyeken a szűrő fut.
 
 ## <a name="json-syntax"></a>JSON-szintaxis
 
@@ -55,7 +55,7 @@ A több értéket támogató operátorok (például,, `NumberIn` `NumberNotIn` `
 > [!CAUTION]
 > A nem operátorok, `NumberNotIn` és a `StringNotIn` mezőben megadott értékeken a és a feltételek szerint viselkednek `Values` .
 >
-> Ezzel a művelettel a szűrő fogadja az összes szűrőt, és legyőzze a szűrés célját.
+> Ha ezt nem teszi meg, a szűrő egy Accept-All szűrőt, és legyőzze a szűrés célját.
 
 ## <a name="floating-point-rounding-behavior"></a>Lebegőpontos kerekítési viselkedés
 
@@ -75,7 +75,7 @@ Event Grid nem rendelkezik speciális jelentéssel a `$` kulcsban szereplő kara
 
 A Event Grid sémában lévő eseményekhez:
 
-* ID
+* ID (Azonosító)
 * Témakör
 * Tárgy
 * EventType

@@ -15,15 +15,15 @@ ms.date: 11/25/2019
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: 9b0df4337a5e5faff3427222fb66caf8e02184a3
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86146665"
 ---
-# <a name="add-or-remove-azure-role-assignments-using-azure-powershell"></a>Azure-beli szerepkör-hozzárendelések hozzáadása vagy eltávolítása Azure PowerShell használatával
+# <a name="add-or-remove-azure-role-assignments-using-azure-powershell"></a>Azure-beli szerepkör-hozzárendelés hozzáadása vagy eltávolítása az Azure PowerShell használatával
 
-[!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control-definition-grant.md)]Ez a cikk a szerepkörök Azure PowerShell használatával történő hozzárendelését ismerteti.
+[!INCLUDE [Azure RBAC definition grant access](../../includes/role-based-access-control-definition-grant.md)] Ez a cikk a szerepkörök Azure PowerShell használatával történő hozzárendelését ismerteti.
 
 [!INCLUDE [az-powershell-update](../../includes/updated-for-az.md)]
 
@@ -31,7 +31,7 @@ ms.locfileid: "86146665"
 
 Szerepkör-hozzárendelések hozzáadásához vagy eltávolításához a következőket kell tennie:
 
-- `Microsoft.Authorization/roleAssignments/write`és `Microsoft.Authorization/roleAssignments/delete` engedélyek, például a [felhasználói hozzáférés rendszergazdája](built-in-roles.md#user-access-administrator) vagy a [tulajdonos](built-in-roles.md#owner)
+- `Microsoft.Authorization/roleAssignments/write` és `Microsoft.Authorization/roleAssignments/delete` engedélyek, például a [felhasználói hozzáférés rendszergazdája](built-in-roles.md#user-access-administrator) vagy a [tulajdonos](built-in-roles.md#owner)
 - [PowerShell Azure Cloud Shell](/azure/cloud-shell/overview) vagy [Azure PowerShell](/powershell/azure/install-az-ps)
 
 ## <a name="get-object-ids"></a>Objektum-azonosítók beolvasása
@@ -47,7 +47,7 @@ Get-AzADUser -StartsWith <string_in_quotes>
 (Get-AzADUser -DisplayName <name_in_quotes>).id
 ```
 
-### <a name="group"></a>Csoport
+### <a name="group"></a>Group
 
 Az Azure AD-csoporthoz tartozó objektumazonosító beszerzéséhez használja a [Get-AzADGroup](/powershell/module/az.resources/get-azadgroup).
 

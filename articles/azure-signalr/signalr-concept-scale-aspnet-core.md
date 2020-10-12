@@ -8,10 +8,10 @@ ms.custom: devx-track-dotnet
 ms.date: 03/01/2019
 ms.author: zhshang
 ms.openlocfilehash: d104e0f1f2c6a978a5fce2c046a36e50a7056970
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88928500"
 ---
 # <a name="scale-aspnet-core-signalr-applications-with-azure-signalr-service"></a>ASP.NET Core SignalR-alkalmazások skálázása az Azure SignalR szolgáltatással
@@ -40,6 +40,6 @@ A másik ok, hogy nem kell ténylegesen üzemeltetnie egy webalkalmazást. Előf
 
 Gyakori, hogy a jelzőt a Redis SQL Server, Azure Service Bus vagy Azure cache használatával méretezheti. Az Azure SignalR szolgáltatás kezeli a skálázási módszert Ön helyett. A teljesítmény és a költségek a módszertől függően változnak, és Önnek nem kell ezekkel a további szolgáltatásokkal foglalkoznia. Mindössze frissítenie kell a szolgáltatás egységeinek számát. Minden egység legfeljebb 1000 ügyfélkapcsolatot támogat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Rövid útmutató: Csevegőszoba létrehozása az Azure SignalRrel](signalr-quickstart-dotnet-core.md)

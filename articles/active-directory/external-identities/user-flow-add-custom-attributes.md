@@ -12,10 +12,10 @@ ms.author: mimart
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a186b682a3a506f0f373776dd66e6592bc6036ad
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87908411"
 ---
 # <a name="define-custom-attributes-for-user-flows-preview"></a>Egyéni attribútumok definiálása felhasználói folyamatokhoz (előzetes verzió)
@@ -25,7 +25,7 @@ ms.locfileid: "87908411"
 
 Az egyes alkalmazásokhoz különböző követelmények vonatkoznak a regisztráció során gyűjteni kívánt információkra. Az Azure AD az attribútumokban tárolt beépített információkkal (például Utónév, vezetéknév, város és irányítószám) rendelkezik. Az Azure AD segítségével kiterjesztheti a vendég fiókokban tárolt attribútumok készletét, ha a külső felhasználó egy felhasználói folyamaton keresztül jelentkezik be.
 
-Létrehozhat egyéni attribútumokat a Azure Portalban, és használhatja azokat az önkiszolgáló bejelentkezési felhasználói folyamatokban. Ezeket az attribútumokat a [Microsoft Graph API](https://docs.microsoft.com/azure/active-directory-b2c/manage-user-accounts-graph-api)használatával is elolvashatja és elvégezheti. Microsoft Graph API támogatja a bővítmény-attribútumokkal rendelkező felhasználók létrehozását és frissítését. A Graph API-bővítmény attribútumai az egyezmény használatával vannak elnevezve `extension_<extensions-app-id>_attributename` . Például:
+Létrehozhat egyéni attribútumokat a Azure Portalban, és használhatja azokat az önkiszolgáló bejelentkezési felhasználói folyamatokban. Ezeket az attribútumokat a [Microsoft Graph API](https://docs.microsoft.com/azure/active-directory-b2c/manage-user-accounts-graph-api)használatával is elolvashatja és elvégezheti. Microsoft Graph API támogatja a bővítmény-attribútumokkal rendelkező felhasználók létrehozását és frissítését. A Graph API-bővítmény attribútumai az egyezmény használatával vannak elnevezve `extension_<extensions-app-id>_attributename` . Példa:
 
 ```JSON
 "extension_831374b3bd5041bfaa54263ec9e050fc_loyaltyNumber": "212342"
@@ -51,7 +51,7 @@ A a `<extensions-app-id>` bérlőre jellemző. Az azonosító megkereséséhez n
 
    ![Attribútum hozzáadása](media/user-flow-add-custom-attributes/add-an-attribute.png)
 
-7. Válassza a **Létrehozás** lehetőséget.
+7. Kattintson a **Létrehozás** gombra.
 
 Az egyéni attribútum már elérhető a felhasználói attribútumok listájában és a felhasználói folyamatokban való használathoz. Egyéni attribútum csak akkor jön létre, amikor az első alkalommal használja a felhasználói folyamatokban, és nem, amikor hozzáadja a felhasználói attribútumok listájához.
 

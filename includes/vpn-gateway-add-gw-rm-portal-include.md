@@ -9,15 +9,15 @@ ms.date: 03/04/2020
 ms.author: cherylmc
 ms.custom: include file
 ms.openlocfilehash: c3c9dbca6a76bf0b10a83087fc31d9fa41c6bd03
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "78331263"
 ---
 1. A [Azure Portal](https://portal.azure.com) menüben válassza az **erőforrás létrehozása**lehetőséget. 
 
-   ![Erőforrás létrehozása a Azure Portalban](./media/vpn-gateway-add-gw-rm-portal-include/azure-portal-create-resource.png)
+   ![Erőforrás létrehozása az Azure Portalon](./media/vpn-gateway-add-gw-rm-portal-include/azure-portal-create-resource.png)
 2. A **Keresés a piactéren** mezőbe írja be a "Virtual Network Gateway" kifejezést. Keresse meg a **virtuális hálózati átjárót** a keresési visszáruban, és válassza ki a bejegyzést. A **virtuális hálózati átjáró** lapon válassza a **Létrehozás**lehetőséget. Ez megnyitja a **Virtuális hálózati átjáró létrehozása** lapot.
 3. Az **alapvető beállítások** lapon adja meg a virtuális hálózati átjáró értékeit.
 
@@ -30,7 +30,7 @@ ms.locfileid: "78331263"
    - **Előfizetés**: válassza ki a legördülő listából használni kívánt előfizetést.
    - **Erőforráscsoport**: ezt a beállítást a rendszer a virtuális hálózat ezen a lapon való kiválasztásakor kitölti.
 
-   **Példány részletei**
+   **Példány adatai**
 
    - **Név**: adjon nevet az átjárónak. Az átjáró nem egyezhet meg az átjáró alhálózatának elnevezésével. Ez a létrehozni kívánt átjáróobjektum neve.
    - **Régió**: válassza ki azt a régiót, amelyben létre kívánja hozni ezt az erőforrást. Az átjáró régiójának meg kell egyeznie a virtuális hálózattal.

@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 12/19/2016
 ms.author: stewu
 ms.openlocfilehash: 71207509f20c80cf85311cba7b647aaca0a49e42
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88192818"
 ---
 # <a name="performance-tuning-guidance-for-storm-on-hdinsight-and-azure-data-lake-storage-gen1"></a>Teljesítmény-finomhangolási útmutató a Storm on HDInsight és Azure Data Lake Storage Gen1
@@ -89,7 +89,7 @@ Az I/O-igényes topológiákban érdemes az egyes csavarokat a saját fájljába
 
 A Storm-ben a kiöntő egy rekordra tart, amíg a bolt kifejezetten nem ismeri el. Ha a bolt beolvasott egy rekordot, de még nem ismerte fel, előfordulhat, hogy a kiöntő nem marad meg Data Lake Storage Gen1 háttérbe. Egy rekord beérkezése után a kiöntő garantálhatja a bolt által biztosított adatmegőrzést, és törölheti a forrásadatokat a forrásból származó adatokból.  
 
-A Data Lake Storage Gen1 legjobb teljesítményéhez a bolt 4 MB-nyi rekordot tartalmaz. Ezután írjon a Data Lake Storage Gen1 háttérként egy 4 MB-os írási értékre. Miután az adatgyűjtés sikeresen megtörtént a tárolóban (a hflush () hívásával), a bolt visszaigazolhatja az kiöntőt. Ez az a példa, amelyet az itt megadott. A hflush () hívásának elvégzése és a rekordok elfogadása előtt is elfogadható, hogy nagyobb számú rekordok tartson fenn. Ez azonban növeli a rekordok azon számát, amelyet a kiöntőnek tárolnia kell, és így növeli a JVM szükséges memória mennyiségét.
+A Data Lake Storage Gen1 legjobb teljesítményéhez a bolt 4 MB-nyi rekordot tartalmaz. Ezután írjon a Data Lake Storage Gen1 háttérként 1 4 MB-os írási értékre. Miután az adatgyűjtés sikeresen megtörtént a tárolóban (a hflush () hívásával), a bolt visszaigazolhatja az kiöntőt. Ez az a példa, amelyet az itt megadott. A hflush () hívásának elvégzése és a rekordok elfogadása előtt is elfogadható, hogy nagyobb számú rekordok tartson fenn. Ez azonban növeli a rekordok azon számát, amelyet a kiöntőnek tárolnia kell, és így növeli a JVM szükséges memória mennyiségét.
 
 > [!NOTE]
 > Előfordulhat, hogy az alkalmazásoknak a rekordok gyakrabban kell megismerniük (4 MB-nál kisebb adatmennyiség esetén) más nem teljesítménybeli okokból. Azonban ez hatással lehet a tárolási háttér I/O-átviteli sebességére. Gondosan mérjük meg ezt a kompromisszumot a bolt I/O-teljesítményével szemben.
@@ -98,7 +98,7 @@ Ha a rekordok bejövő sebessége nem magas, ezért a 4 MB-os puffer hosszú id�
 * Csökkentse a csavarok számát, így kevesebb puffert kell kitölteni.
 * Olyan időalapú vagy Count-alapú szabályzattal rendelkezik, amelyben a hflush () minden x ürítéssel vagy y ezredmásodperctel aktiválódik, és az eddig felhalmozott rekordok visszaigazolja.
 
-Ebben az esetben az átviteli sebesség alacsonyabb, de a lassú események miatt a maximális átviteli sebesség nem a legnagyobb cél. Ezek a megoldások segítenek csökkenteni a rekordnak az áruházba való áthaladásához szükséges teljes időt. Ez akkor fordulhat elő, ha egy valós idejű adatcsatorna esetében is alacsony esemény arányt szeretne használni. Azt is vegye figyelembe, hogy ha a bejövő rekord sebessége alacsony, állítsa be a topológia. Message. timeout_secs paramétert, hogy a rekordok ne legyen időtúllépés, amíg a rendszer pufferelt vagy feldolgozott értéket kap.
+Ebben az esetben az átviteli sebesség alacsonyabb, de a lassú események miatt a maximális átviteli sebesség nem a legnagyobb cél. Ezek a megoldások segítenek csökkenteni a rekordnak az áruházba való áthaladásához szükséges teljes időt. Ez akkor fordulhat elő, ha egy valós idejű adatcsatorna esetében is alacsony esemény arányt szeretne használni. Azt is vegye figyelembe, hogy ha a bejövő rekord sebessége alacsony, állítsa be a topology.message.timeout_secs paramétert, hogy a rekordok ne legyen időtúllépés, amíg a rendszer pufferelt vagy feldolgozott értéket kap.
 
 ## <a name="monitor-your-topology-in-storm"></a>A topológia figyelése a Storm-ben  
 Amíg a topológia fut, nyomon követheti a Storm felhasználói felületén. A következő fő paramétereket tekintheti meg:
