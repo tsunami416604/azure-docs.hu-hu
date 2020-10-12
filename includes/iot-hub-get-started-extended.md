@@ -9,10 +9,10 @@ ms.date: 09/07/2018
 ms.author: dobett
 ms.custom: include file
 ms.openlocfilehash: bd08812f83413a997ce655d68d866b145b20dcef
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75912507"
 ---
 ## <a name="extended-iot-scenarios"></a>Bővített IoT-forgatókönyvek
@@ -26,10 +26,10 @@ Más Azure-szolgáltatásokat és -eszközöket is használhat. Miután csatlako
 | [IoT-eszközök felügyelete](../articles/iot-hub/iot-hub-device-management-iot-toolkit.md)                | VS Code Azure IoT Hub bővítmény|
 | [IoT Hub-üzenetek mentése Azure-tárolóba](../articles/iot-hub/iot-hub-store-data-in-azure-table-storage.md)  | Azure Table Storage                |
 | [Érzékelőadatok megjelenítése](../articles/iot-hub/iot-hub-live-data-visualization-in-power-bi.md)                      | Microsoft Power BI                 |
-| [Érzékelőadatok megjelenítése](../articles/iot-hub/iot-hub-live-data-visualization-in-web-apps.md)                      | Azure Web Apps                     |
+| [Érzékelőadatok megjelenítése](../articles/iot-hub/iot-hub-live-data-visualization-in-web-apps.md)                      | Azure-webalkalmazások                     |
 | [Időjárás-előrejelzés érzékelőadatokkal](../articles/iot-hub/iot-hub-weather-forecast-machine-learning.md)      | Azure Machine Learning             |
 | [Rendellenességek automatikus észlelése és reagálás](../articles/iot-hub/iot-hub-monitoring-notifications-with-azure-logic-apps.md) | Azure Logic Apps                   |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Miután végrehajtotta ezeket az oktatóanyagokat, az IoT Hub képességeiről továbbiakat a [fejlesztői útmutatóból](../articles/iot-hub/iot-hub-devguide.md) tudhat meg. 

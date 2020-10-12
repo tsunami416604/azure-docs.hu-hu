@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 12/09/2019
 ms.author: robinsh
 ms.openlocfilehash: c54853717f7e0b234df013e5aee575682d0d3d97
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75429151"
 ---
 # <a name="how-to-clone-an-azure-iot-hub-to-another-region"></a>Azure IoT hub klónozása egy másik régióba
@@ -107,7 +107,7 @@ Ez a szakasz részletes útmutatást nyújt a központ áttelepítéséhez.
 
 ### <a name="find-the-original-hub-and-export-it-to-a-resource-template"></a>Keresse meg az eredeti hubot, és exportálja egy erőforrás-sablonba.
 
-1. Jelentkezzen be az [Azure Portalon](https://portal.azure.com). 
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com). 
 
 1. Lépjen az **erőforráscsoportok** elemre, és válassza ki azt az erőforráscsoportot, amely az áthelyezni kívánt hubot tartalmazza. Az **erőforrásokra** is rákereshet, és megkeresheti a hubot. Válassza ki a hubot.
 
@@ -347,13 +347,13 @@ Most már rendelkezik egy olyan sablonnal, amely egy olyan új hubot hoz létre,
 
 Hozza létre az új hubot az új helyen a sablon használatával. Ha útválasztási erőforrásokkal rendelkezik, amelyeket át szeretne helyezni, az erőforrásokat az új helyen kell beállítani, és a sablonban szereplő hivatkozások a megfelelő értékre frissülnek. Ha nem helyezi át az útválasztási erőforrásokat, a frissített kulcsokkal rendelkező sablonban kell lenniük.
 
-1. Jelentkezzen be az [Azure Portalon](https://portal.azure.com).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
 1. Válassza az **Erőforrás létrehozása** lehetőséget. 
 
 1. A keresőmezőbe írja be a "sablon központi telepítése" kifejezést, és válassza az ENTER billentyűt.
 
-1. Válassza **a sablon központi telepítése (üzembe helyezés egyéni sablonok használatával)** lehetőséget. Ekkor megjelenik a Template deployment képernyője. Válassza a **Létrehozás** lehetőséget. Ekkor az alábbi képernyő jelenik meg:
+1. Válassza **a sablon központi telepítése (üzembe helyezés egyéni sablonok használatával)** lehetőséget. Ekkor megjelenik a Template deployment képernyője. Kattintson a **Létrehozás** gombra. Ekkor az alábbi képernyő jelenik meg:
 
    ![A saját sablon létrehozásához szükséges parancsot ábrázoló képernyőkép](./media/iot-hub-how-to-clone/iot-hub-custom-deployment.png)
 
@@ -407,7 +407,7 @@ Ha vissza szeretné állítani a módosításokat, az eszközöket az új közpo
 
 Ezzel befejezte a központ és az eszközei áttelepítését. A [tisztítás](#clean-up)lehetőségre ugorhat.
 
-## <a name="using-import-export-to-move-the-devices-to-the-new-hub"></a>Az import-export használata az eszközök új hubhoz való áthelyezéséhez
+## <a name="using-import-export-to-move-the-devices-to-the-new-hub"></a>Az eszközök átmozgatása az új hubhoz a Import-Export használatával
 
 Az alkalmazás a .NET Core-t célozza meg, így azt Windows vagy Linux rendszeren is futtathatja. Letöltheti a mintát, lekérheti a kapcsolódási karakterláncokat, beállíthatja a futtatni kívánt BITS-jelzőket, és futtathatja azt. Ezt a kód megnyitása nélkül is megteheti.
 
@@ -421,7 +421,7 @@ Az alkalmazás a .NET Core-t célozza meg, így azt Windows vagy Linux rendszere
 
    Ennek oka az, hogy a kapcsolódási karakterláncok hosszúak és nem túl nagyok, és nem valószínű, hogy módosítani szeretnék, de előfordulhat, hogy módosítania kell a beállításokat, és többször is futtatnia kell az alkalmazást. Egy környezeti változó értékének módosításához be kell állítani a parancssorablakot és a Visual studiót vagy a VS Code-ot, attól függően, hogy melyik van használatban. 
 
-### <a name="options"></a>Beállítások
+### <a name="options"></a>Lehetőségek
 
 Az alábbi öt lehetőség az alkalmazás futtatásakor adható meg. Ezeket a parancssorba helyezi egy percen belül.
 
@@ -543,7 +543,7 @@ Most már rendelkezik a környezeti változókkal a SET parancsokkal rendelkező
 
 1. Az alkalmazás futtatásához válassza az F5 billentyűt. A futás befejezése után megtekintheti az eredményeket.
 
-### <a name="view-the-results"></a>Eredmények megtekintése 
+### <a name="view-the-results"></a>Az eredmények megtekintése 
 
 Megtekintheti az eszközöket a [Azure Portalban](https://portal.azure.com) , és ellenőrizheti, hogy azok az új helyen találhatók-e.
 
@@ -581,7 +581,7 @@ Az eredmények vizsgálatához módosítsa a IoT-megoldását úgy, hogy az új 
 
 Ha implementálta az útválasztást, ellenőrizze, hogy az üzenetek megfelelően vannak-e irányítva az erőforrásokhoz.
 
-## <a name="clean-up"></a>Tisztítás
+## <a name="clean-up"></a>A feleslegessé vált elemek eltávolítása
 
 Ne törölje a tisztítást, amíg nem biztos benne, hogy az új hub működik, és az eszközök megfelelően működnek. Ha ezt a funkciót használja, ügyeljen arra, hogy tesztelje az útválasztást is. Ha elkészült, törölje a régi erőforrásokat a következő lépések végrehajtásával:
 

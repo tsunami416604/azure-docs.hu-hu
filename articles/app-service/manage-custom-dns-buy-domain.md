@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 11/24/2017
 ms.custom: seodec18
 ms.openlocfilehash: 0111da00962f267387e66978952e8a7c9f5d7308
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90970056"
 ---
 # <a name="buy-a-custom-domain-name-for-azure-app-service"></a>Egyéni tartománynév vásárlása az Azure App Service-hez
@@ -61,7 +61,7 @@ Válassza ki bármelyik nem ingyenes szintet (**D1**, **B1**, **B2**, **B3**, va
 
 Kattintson az **Alkalmaz** gombra.
 
-:::image type="content" source="./media/app-service-web-tutorial-custom-domain/choose-pricing-tier.png" alt-text="Képernyőfelvétel: az éles kategóriába tartozó egyéni tartomány díjszabási szintjei az üzemi lapon, a B1-terv és az alkalmaz gomb kiemelve.":::
+:::image type="content" source="./media/app-service-web-tutorial-custom-domain/choose-pricing-tier.png" alt-text="Képernyőfelvétel: az alkalmazás oldalának bal oldali navigációs menüje, amely felskálázással (App Service terv) van kiválasztva.":::
 
 Amikor megjelenik a következő értesítés, a skálázási művelet befejeződött.
 
@@ -168,7 +168,7 @@ Győződjön meg arról, hogy a megvásárolt tartomány szerepel a **app Servic
 Válassza a **Gazdagépnév hozzáadása** lehetőséget.
 
 ### <a name="configure-hostname"></a>Állomásnév konfigurálása
-Az **állomásnév hozzáadása** párbeszédpanelen írja be a app Service tartomány vagy bármely altartomány teljes tartománynevét. Például:
+Az **állomásnév hozzáadása** párbeszédpanelen írja be a app Service tartomány vagy bármely altartomány teljes tartománynevét. Példa:
 
 - kontoso.net
 - www- \. kontoso.net

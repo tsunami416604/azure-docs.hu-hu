@@ -15,13 +15,13 @@ ms.topic: how-to
 ms.date: 09/16/2020
 ms.author: b-juche
 ms.openlocfilehash: 0904ac36a9453e51dbb1efc50eee2b9bf3c669c7
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90708818"
 ---
-# <a name="delete-replications"></a>Replikálások törlése
+# <a name="delete-replications"></a>Replikációk törlése
 
 A replikálási kapcsolatot a forrás és a cél kötetek között a kötetek replikálásának törlésével állíthatja le. A törlési műveletet a forrás vagy a cél kötetről is végrehajthatja. A törlési művelet csak a replikálás engedélyezését távolítja el; nem távolítja el a forrást vagy a célként megadott kötetet. 
 

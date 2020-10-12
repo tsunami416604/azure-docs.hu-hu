@@ -4,10 +4,10 @@ description: A Azure Resource Manager-sablonban az értékek összehasonlítás�
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.openlocfilehash: 01d66f43cf73dcc9228118db5a9b6149b19ee66d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84677831"
 ---
 # <a name="comparison-functions-for-arm-templates"></a>ARM-sablonok összehasonlító függvények
@@ -29,10 +29,10 @@ A paraméterekből származó első nem null értéket adja vissza. Az üres kar
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |int, string, Array vagy Object |A Null érték tesztelésének első értéke. |
-| További argumentumok |No |int, string, Array vagy Object |A Null érték tesztelésére szolgáló további értékek. |
+| arg1 |Igen |int, string, Array vagy Object |A Null érték tesztelésének első értéke. |
+| További argumentumok |Nem |int, string, Array vagy Object |A Null érték tesztelésére szolgáló további értékek. |
 
 ### <a name="return-value"></a>Visszatérési érték
 
@@ -88,13 +88,13 @@ A következő [példa sablon](https://github.com/Azure/azure-docs-json-samples/b
 
 Az előző példában az alapértelmezett értékekkel rendelkező kimenet a következő:
 
-| Name | Típus | Érték |
+| Név | Típus | Érték |
 | ---- | ---- | ----- |
 | stringOutput | Sztring | alapértelmezett |
 | intOutput | Int | 1 |
 | objectOutput | Objektum | {"első": "default"} |
 | arrayOutput | Tömb |  [1] |
-| emptyOutput | Logikai | True (Igaz) |
+| emptyOutput | Logikai | Igaz |
 
 ## <a name="equals"></a>egyenlő
 
@@ -104,10 +104,10 @@ Ellenőrzi, hogy két érték egyenlő-e egymással.
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |int, string, Array vagy Object |Az egyenlőség keresésének első értéke. |
-| arg2 |Yes |int, string, Array vagy Object |A második érték az egyenlőség kereséséhez. |
+| arg1 |Igen |int, string, Array vagy Object |Az egyenlőség keresésének első értéke. |
+| arg2 |Igen |int, string, Array vagy Object |A második érték az egyenlőség kereséséhez. |
 
 ### <a name="return-value"></a>Visszatérési érték
 
@@ -199,12 +199,12 @@ Az alábbi [példában szereplő sablon](https://github.com/Azure/azure-docs-jso
 
 Az előző példában az alapértelmezett értékekkel rendelkező kimenet a következő:
 
-| Name | Típus | Érték |
+| Név | Típus | Érték |
 | ---- | ---- | ----- |
-| checkInts | Logikai | True (Igaz) |
-| checkStrings | Logikai | True (Igaz) |
-| checkArrays | Logikai | True (Igaz) |
-| checkObjects | Logikai | True (Igaz) |
+| checkInts | Logikai | Igaz |
+| checkStrings | Logikai | Igaz |
+| checkArrays | Logikai | Igaz |
+| checkObjects | Logikai | Igaz |
 
 A következő [példában](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/functions/not-equals.json) a sablon [nem](template-functions-logical.md#not) **egyenlő**.
 
@@ -225,9 +225,9 @@ A következő [példában](https://github.com/Azure/azure-docs-json-samples/blob
 
 Az előző példa kimenete a következő:
 
-| Name | Típus | Érték |
+| Név | Típus | Érték |
 | ---- | ---- | ----- |
-| checkNotEquals | Logikai | True (Igaz) |
+| checkNotEquals | Logikai | Igaz |
 
 ## <a name="greater"></a>greater
 
@@ -237,10 +237,10 @@ Ellenőrzi, hogy az első érték nagyobb-e, mint a második érték.
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |int vagy sztring |A nagyobb összehasonlítás első értéke. |
-| arg2 |Yes |int vagy sztring |A nagyobb összehasonlítás második értéke. |
+| arg1 |Igen |int vagy sztring |A nagyobb összehasonlítás első értéke. |
+| arg2 |Igen |int vagy sztring |A nagyobb összehasonlítás második értéke. |
 
 ### <a name="return-value"></a>Visszatérési érték
 
@@ -289,10 +289,10 @@ Az alábbi [példa sablon](https://github.com/Azure/azure-docs-json-samples/blob
 
 Az előző példában az alapértelmezett értékekkel rendelkező kimenet a következő:
 
-| Name | Típus | Érték |
+| Név | Típus | Érték |
 | ---- | ---- | ----- |
-| checkInts | Logikai | False (Hamis) |
-| checkStrings | Logikai | True (Igaz) |
+| checkInts | Logikai | Hamis |
+| checkStrings | Logikai | Igaz |
 
 ## <a name="greaterorequals"></a>greaterOrEquals
 
@@ -302,10 +302,10 @@ Ellenőrzi, hogy az első érték nagyobb-e vagy egyenlő-e a második értékke
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |int vagy sztring |A nagyobb vagy egyenlő összehasonlítás első értéke. |
-| arg2 |Yes |int vagy sztring |A nagyobb vagy egyenlő összehasonlítás második értéke. |
+| arg1 |Igen |int vagy sztring |A nagyobb vagy egyenlő összehasonlítás első értéke. |
+| arg2 |Igen |int vagy sztring |A nagyobb vagy egyenlő összehasonlítás második értéke. |
 
 ### <a name="return-value"></a>Visszatérési érték
 
@@ -354,10 +354,10 @@ Az alábbi [példában szereplő sablon](https://github.com/Azure/azure-docs-jso
 
 Az előző példában az alapértelmezett értékekkel rendelkező kimenet a következő:
 
-| Name | Típus | Érték |
+| Név | Típus | Érték |
 | ---- | ---- | ----- |
-| checkInts | Logikai | False (Hamis) |
-| checkStrings | Logikai | True (Igaz) |
+| checkInts | Logikai | Hamis |
+| checkStrings | Logikai | Igaz |
 
 ## <a name="less"></a>less
 
@@ -367,10 +367,10 @@ Ellenőrzi, hogy az első érték kisebb-e a második értéknél.
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |int vagy sztring |A kevésbé hasonlítható összehasonlítás első értéke. |
-| arg2 |Yes |int vagy sztring |A kisebb összehasonlítás második értéke. |
+| arg1 |Igen |int vagy sztring |A kevésbé hasonlítható összehasonlítás első értéke. |
+| arg2 |Igen |int vagy sztring |A kisebb összehasonlítás második értéke. |
 
 ### <a name="return-value"></a>Visszatérési érték
 
@@ -419,10 +419,10 @@ Az alábbi [példa sablon](https://github.com/Azure/azure-docs-json-samples/blob
 
 Az előző példában az alapértelmezett értékekkel rendelkező kimenet a következő:
 
-| Name | Típus | Érték |
+| Név | Típus | Érték |
 | ---- | ---- | ----- |
-| checkInts | Logikai | True (Igaz) |
-| checkStrings | Logikai | False (Hamis) |
+| checkInts | Logikai | Igaz |
+| checkStrings | Logikai | Hamis |
 
 ## <a name="lessorequals"></a>lessOrEquals
 
@@ -432,10 +432,10 @@ Ellenőrzi, hogy az első érték kisebb-e vagy egyenlő-e a második értékkel
 
 ### <a name="parameters"></a>Paraméterek
 
-| Paraméter | Kötelező | Típus | Description |
+| Paraméter | Kötelező | Típus | Leírás |
 |:--- |:--- |:--- |:--- |
-| arg1 |Yes |int vagy sztring |A kisebb vagy egyenlő összehasonlítás első értéke. |
-| arg2 |Yes |int vagy sztring |A kisebb vagy egyenlő összehasonlítás második értéke. |
+| arg1 |Igen |int vagy sztring |A kisebb vagy egyenlő összehasonlítás első értéke. |
+| arg2 |Igen |int vagy sztring |A kisebb vagy egyenlő összehasonlítás második értéke. |
 
 ### <a name="return-value"></a>Visszatérési érték
 
@@ -484,10 +484,10 @@ Az alábbi [példa sablon](https://github.com/Azure/azure-docs-json-samples/blob
 
 Az előző példában az alapértelmezett értékekkel rendelkező kimenet a következő:
 
-| Name | Típus | Érték |
+| Név | Típus | Érték |
 | ---- | ---- | ----- |
-| checkInts | Logikai | True (Igaz) |
-| checkStrings | Logikai | False (Hamis) |
+| checkInts | Logikai | Igaz |
+| checkStrings | Logikai | Hamis |
 
 ## <a name="next-steps"></a>További lépések
 

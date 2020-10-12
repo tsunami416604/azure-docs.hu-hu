@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 12/20/2018
 ms.openlocfilehash: fd9bc17db3eccc64f35d7295d57dc120364481dd
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91332984"
 ---
 # <a name="best-practices-for-azure-sql-data-sync"></a>Ajánlott eljárások az Azure SQL Data Synchez 
@@ -41,7 +41,7 @@ Az SQL Data Sync áttekintéséhez tekintse meg a [több felhőalapú és helysz
 
 ### <a name="database-accounts-with-least-required-privileges"></a>A minimálisan szükséges jogosultságokkal rendelkező adatbázis-fiókok
 
--   **Szinkronizálás beállításakor**. Tábla létrehozása/módosítása; Adatbázis módosítása; Eljárás létrehozása; Séma kiválasztása/módosítása; Felhasználó által definiált típus létrehozása
+-   **Szinkronizálás beállításakor**. Tábla létrehozása/módosítása; Adatbázis módosítása; Eljárás létrehozása; Séma kiválasztása/módosítása; Hozzon létre User-Defined típust.
 
 -   **Folyamatos szinkronizáláshoz**. A szinkronizáláshoz kiválasztott táblák kijelölése/beillesztése/frissítése/törlése, valamint a szinkronizálási metaadatok és nyomon követési táblázatok; Végrehajtási engedély a szolgáltatás által létrehozott tárolt eljárásokhoz; Végrehajtási engedély a felhasználó által definiált táblák típusaihoz.
 
@@ -195,7 +195,7 @@ Elavult szinkronizálási csoportok megelőzése:
 
 Bizonyos esetekben előfordulhat, hogy az ügyfél ügynökkel való regisztrációjának törlése miatt a szinkronizálás sikertelen lesz.
 
-#### <a name="scenario"></a>Használati eset
+#### <a name="scenario"></a>Forgatókönyv
 
 1. Az A szinkronizálási csoport egy SQL Database-példány és egy SQL Server-adatbázis használatával lett létrehozva, amely az 1. helyi ügynökhöz van társítva.
 2. Ugyanaz a helyszíni adatbázis regisztrálva van a (z) 2. helyi ügynökkel (ez az ügynök nincs hozzárendelve egyetlen szinkronizálási csoporthoz sem).

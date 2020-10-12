@@ -7,10 +7,10 @@ ms.author: newylie
 ms.date: 06/05/2020
 ms.custom: devx-track-js
 ms.openlocfilehash: 30c7caef4143b1a7cdba959971ff7689f986cb9e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91333256"
 ---
 # <a name="troubleshooting-sdk-load-failure-for-javascript-web-apps"></a>Az SDK betöltési hibáinak elhárítása JavaScript-webalkalmazásokhoz
@@ -64,7 +64,7 @@ Ugyanez igaz akkor is, ha az SDK-t NPM-csomagok megoldáson keresztül használj
 
 [NPM-csomagokat](#use-npm-packages-to-embed-the-application-insight-sdk) is használhat a Application Insights SDK beágyazásához.
 
-Az időszakos hálózati kapcsolódási hibák csökkentése érdekében Implementáljuk a gyorsítótár-vezérlő fejléceket az összes CDN-fájlon, így ha a végfelhasználó böngészője letöltötte az SDK aktuális verzióját, akkor nem kell újra letöltenie, és a böngésző újra felhasználja a korábban beszerzett példányt (lásd: a [gyorsítótárazás működése](../../cdn/cdn-how-caching-works.md)). Ha a gyorsítótárazási ellenőrzés meghiúsul, vagy új kiadás van, akkor a végfelhasználó böngészőjében le kell töltenie a frissített verziót. Így előfordulhat, hogy a _"Noise" ("zaj"_ ) hátterét a sikertelenség ellenőrzése vagy egy ideiglenes tüske okozza, amikor új kiadás történik, és általánosan elérhetővé válik (a CDN-ben üzembe helyezett).
+Az időszakos hálózati csatlakozási hibák csökkentése érdekében minden CDN-fájlon Cache-Control fejléceket hoztunk létre, így ha a végfelhasználó böngészője letöltötte az SDK aktuális verzióját, akkor nem kell újra letöltenie, és a böngésző újra felhasználja a korábban beszerzett példányt (lásd: a [gyorsítótárazás működése](../../cdn/cdn-how-caching-works.md)). Ha a gyorsítótárazási ellenőrzés meghiúsul, vagy új kiadás van, akkor a végfelhasználó böngészőjében le kell töltenie a frissített verziót. Így előfordulhat, hogy a _"Noise" ("zaj"_ ) hátterét a sikertelenség ellenőrzése vagy egy ideiglenes tüske okozza, amikor új kiadás történik, és általánosan elérhetővé válik (a CDN-ben üzembe helyezett).
  
 ## <a name="application-insights-cdn-outage"></a>Application Insights CDN-kimaradás
 

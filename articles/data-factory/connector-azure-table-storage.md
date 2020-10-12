@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/27/2019
 ms.openlocfilehash: 6edd32f8f3579238d1f08f55ce9fb1528fa5d211
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81417481"
 ---
 # <a name="copy-data-to-and-from-azure-table-storage-by-using-azure-data-factory"></a>Adatok másolása az Azure Table Storage-be vagy onnan máshová az Azure Data Factoryvel
@@ -41,7 +41,7 @@ Bármilyen támogatott forrás adattárból másolhat adatokat a Table Storage-b
 
 Pontosabban, ez az Azure Table Connector támogatja az adatok másolását a fiók kulcsa és a szolgáltatás közös hozzáférésű aláírásának hitelesítése használatával.
 
-## <a name="get-started"></a>Első lépések
+## <a name="get-started"></a>Bevezetés
 
 [!INCLUDE [data-factory-v2-connector-get-started](../../includes/data-factory-v2-connector-get-started.md)]
 
@@ -62,7 +62,7 @@ Létrehozhat egy Azure Storage-beli társított szolgáltatást a fiók kulcsa a
 >[!NOTE]
 >Ha a "AzureStorage" típusú társított szolgáltatást használta, akkor továbbra is támogatott, míg a rendszer ezt az új "AzureTableStorage" társított szolgáltatástípus használatát javasolja.
 
-**Példa:**
+**Példa**
 
 ```json
 {
@@ -131,7 +131,7 @@ A közös hozzáférésű aláírás-hitelesítés használatához a következő
 >[!NOTE]
 >Ha a "AzureStorage" típusú társított szolgáltatást használta, akkor továbbra is támogatott, míg a rendszer ezt az új "AzureTableStorage" társított szolgáltatástípus használatát javasolja.
 
-**Példa:**
+**Példa**
 
 ```json
 {
@@ -198,7 +198,7 @@ Az adatok Azure-táblába való másolásához állítsa az adatkészlet Type (t
 | típus | Az adatkészlet Type tulajdonságát **AzureTable**értékre kell állítani. |Igen |
 | tableName |Annak a táblának a neve, amely a társított szolgáltatás által hivatkozott Table Storage-adatbázis példányában található. |Igen |
 
-**Példa:**
+**Példa**
 
 ```json
 {
@@ -272,7 +272,7 @@ Az Azure Table-be való másoláshoz állítsa a fogadó típust a másolás tev
 | writeBatchSize |Adatbeszúrás az Azure Table-be, ha a writeBatchSize vagy a writeBatchTimeout találat.<br/>Az engedélyezett értékek egész szám (sorok száma). |Nem (az alapértelmezett érték 10 000) |
 | writeBatchTimeout |Adatbeszúrás az Azure Table-be, ha a writeBatchSize vagy a writeBatchTimeout találat.<br/>Az engedélyezett értékek a TimeSpan. Ilyen például a "00:20:00" (20 perc). |Nem (az alapértelmezett érték 90 másodperc, a Storage-ügyfél alapértelmezett időtúllépése) |
 
-**Példa:**
+**Példa**
 
 ```json
 "activities":[

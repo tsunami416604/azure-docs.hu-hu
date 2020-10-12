@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 01/07/2019
 ms.reviewer: sergkanz
 ms.openlocfilehash: 7a352f4ce3528d395599a91b53031c74b0873152
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87320561"
 ---
 # <a name="request-telemetry-application-insights-data-model"></a>Kérelem telemetria: Application Insights adatmodell
@@ -17,7 +17,7 @@ A kérelem telemetria eleme ( [Application Insights](./app-insights-overview.md)
 
 A telemetria kérése támogatja a standard bővíthetőségi modellt a Custom és a használatával `properties` `measurements` .
 
-## <a name="name"></a>Név
+## <a name="name"></a>Name (Név)
 
 A kérelem neve a kérelem feldolgozásához a kód elérési útját jelöli. Alacsony kardinális érték a kérelmek jobb csoportosításának lehetővé tételéhez. HTTP-kérelmek esetén a a HTTP-metódust és az URL-cím elérési útját jelöli, mint `GET /values/{id}` a tényleges `id` érték nélkül.
 
@@ -25,7 +25,7 @@ Application Insights web SDK a "as is" nevű kérelem nevét küldi el a Letter 
 
 Maximális hossz: 1024 karakter
 
-## <a name="id"></a>ID
+## <a name="id"></a>ID (Azonosító)
 
 Egy kérelem hívási példányának azonosítója. A kérelem és az egyéb telemetria elemek közötti korrelációhoz használatos. Az AZONOSÍTÓnak globálisan egyedinek kell lennie. További információ: [korrelációs](./correlation.md) oldal.
 

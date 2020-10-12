@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 09/29/2020
 ms.author: alkohli
 ms.openlocfilehash: c43f7ba52ed0f6018ee32583011bb92786708119
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91460475"
 ---
 # <a name="azure-stack-edge-pro-with-gpu-general-availability-ga-release-notes"></a>A Azure Stack Edge Pro és a GPU általánosan elérhető (GA) kibocsátási megjegyzései
@@ -35,7 +35,7 @@ A következő új szolgáltatások érhetők el az Azure Stack Edge 2009 kiadás
 
 Az alábbi táblázat összefoglalja az Azure Stack Edge Pro-eszköz ismert problémáit.
 
-| Nem. | Funkció | Probléma | Áthidaló megoldás/megjegyzések |
+| Nem. | Szolgáltatás | Probléma | Áthidaló megoldás/megjegyzések |
 | --- | --- | --- | --- |
 |**1.**|Előzetes verziójú funkciók |Ebben a kiadásban a következő funkciók érhetők el: helyi Azure Resource Manager, virtuális gépek, Kubernetes, Azure arc-kompatibilis Kubernetes, többfolyamatos szolgáltatás (mp) GPU-hoz – az Azure Stack Edge Pro-eszköz előzetes verziójában érhető el.  |Ezek a funkciók általánosan elérhetők lesznek egy későbbi kiadásban. |
 | **2.** |Azure Stack Edge Pro + Azure SQL | Az SQL Database létrehozásához rendszergazdai hozzáférés szükséges.   |Hajtsa végre az alábbi lépéseket a 1-2. lépés helyett a következőben: [https://docs.microsoft.com/azure/iot-edge/tutorial-store-data-sql-server#create-the-sql-database](https://docs.microsoft.com/azure/iot-edge/tutorial-store-data-sql-server#create-the-sql-database) . <ul><li>Az eszköz helyi felhasználói felületén engedélyezze a számítási felületet. Válassza **a számítási > port # > engedélyezés a számítási > alkalmazáshoz lehetőséget.**</li><li>Letöltés az `sqlcmd` ügyfélgépről https://docs.microsoft.com/sql/tools/sqlcmd-utility </li><li>Kapcsolódjon a számítási felület IP-címéhez (az engedélyezett porthoz), és adjon hozzá egy ", 1401" értéket a cím végéhez.</li><li>A végső parancs a következőképpen fog kinézni: Sqlcmd-S {Interface IP}, 1401-U SA-P "strong! Passw0rd".</li>Ezt követően az aktuális dokumentáció 3-4. lépésének meg kell egyeznie. </li></ul> |
@@ -63,7 +63,7 @@ Az alábbi táblázat összefoglalja az Azure Stack Edge Pro-eszköz ismert prob
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Felkészülés a Azure Stack Edge Pro-eszköz GPU-val való üzembe helyezésére](azure-stack-edge-gpu-deploy-prep.md)
 

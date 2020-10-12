@@ -12,10 +12,10 @@ ms.date: 06/08/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 172824a2215e8a102ad4c284c847072960344549
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88041527"
 ---
 # <a name="define-a-restful-technical-profile-in-an-azure-active-directory-b2c-custom-policy"></a>REST-technikai profil definiálása egy Azure Active Directory B2C egyéni házirendben
@@ -60,7 +60,7 @@ A REST API technikai profil lehetővé teszi, hogy összetett JSON-adattartalmat
 1. Hozzon létre JSON-adattartalmat a [GenerateJson](json-transformations.md) jogcím-átalakításával.
 1. A REST API technikai profilban:
     1. Adjon hozzá egy bemeneti jogcím-átalakítást a jogcím-átalakításra mutató hivatkozással `GenerateJson` .
-    1. A `SendClaimsIn` metaadatok beállításának beállítása`body`
+    1. A `SendClaimsIn` metaadatok beállításának beállítása `body`
     1. Állítsa be a `ClaimUsedForRequestPayload` metaadatok beállítást a JSON-adattartalomot tartalmazó jogcím nevére.
     1. A bemeneti jogcímben adjon hozzá egy hivatkozást a JSON-adattartalomot tartalmazó bemeneti jogcímhez.
 
@@ -261,7 +261,7 @@ public class ResponseContent
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse meg a következő cikkeket a REST-technikai profil használatának példáit illetően:
 

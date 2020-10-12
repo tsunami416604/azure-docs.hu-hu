@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/22/2018
 ms.openlocfilehash: 80644ed2d655544fa176a7be92aec3c01aa3bf14
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75966071"
 ---
 # <a name="tutorial-build-your-first-pipeline-to-transform-data-using-hadoop-cluster"></a>Oktatóanyag: az első folyamat létrehozása az Hadoop-fürtön keresztüli adatátalakításhoz
@@ -82,7 +82,7 @@ Az oktatóanyag megkezdése előtt a következő előfeltételeket kell megadnia
 1. **Azure-előfizetés** – ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy ingyenes próbaverziós fiókot. Az ingyenes [próbaverziós](https://azure.microsoft.com/pricing/free-trial/) fiók beszerzésével kapcsolatos további információkért tekintse meg az ingyenes próbaverziót ismertető cikket.
 2. **Azure Storage** – Azure Storage-fiókot használ az ebben az oktatóanyagban tárolt adattároláshoz. Ha nem rendelkezik Azure Storage-fiókkal, tekintse meg a [Storage-fiók létrehozása](../../storage/common/storage-account-create.md) című cikket. A Storage-fiók létrehozása után jegyezze fel a **fiók nevét** és a **hozzáférési kulcsot**. További információ a Storage-fiók hozzáférési kulcsainak beolvasásáról: a [Storage-fiók hozzáférési kulcsainak kezelése](../../storage/common/storage-account-keys-manage.md).
 3. Töltse le és tekintse át a következő helyen található kaptár-lekérdezési fájlt (**HQL**): [https://adftutorialfiles.blob.core.windows.net/hivetutorial/partitionweblogs.hql](https://adftutorialfiles.blob.core.windows.net/hivetutorial/partitionweblogs.hql) . Ez a lekérdezés átalakítja a bemeneti adatokat a kimeneti adatok előállításához.
-4. Töltse le és tekintse át a következő helyen található minta bemeneti fájlt (**input. log**):[https://adftutorialfiles.blob.core.windows.net/hivetutorial/input.log](https://adftutorialfiles.blob.core.windows.net/hivetutorial/input.log)
+4. Töltse le és tekintse át a következő helyen található minta bemeneti fájlt (**input. log**): [https://adftutorialfiles.blob.core.windows.net/hivetutorial/input.log](https://adftutorialfiles.blob.core.windows.net/hivetutorial/input.log)
 5. Hozzon létre egy **adfgetstarted** nevű BLOB-tárolót az Azure-Blob Storage.
 6. Töltse fel a **partitionweblogs. HQL** fájlt a **adfgetstarted** tároló **parancsfájl** mappájába. Használjon olyan eszközöket, mint például a [Microsoft Azure Storage Explorer](https://storageexplorer.com/).
 7. Töltse fel a **bemeneti. log** fájlt a **adfgetstarted** tároló **inputdata** mappájába.

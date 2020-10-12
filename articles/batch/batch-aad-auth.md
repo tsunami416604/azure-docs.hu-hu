@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.date: 01/28/2020
 ms.custom: has-adal-ref
 ms.openlocfilehash: 19042b4bb0998d104792d7511ab2972299b4f58d
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87533512"
 ---
 # <a name="authenticate-batch-service-solutions-with-active-directory"></a>Batch szolgáltatási megoldások hitelesítése Active Directory
@@ -127,7 +127,7 @@ Az egyszerű szolgáltatással történő hitelesítéshez hozzá kell rendelnie
 1. A Batch-fiók **Beállítások** szakaszában válassza a **Access Control (iam)** lehetőséget.
 1. Válassza ki a **szerepkör-hozzárendelések** lapot.
 1. Válassza a **Szerepkör-hozzárendelés hozzáadása** lehetőséget.
-1. A **szerepkör** legördülő listából válassza ki az alkalmazás *közreműködő* vagy *olvasó* szerepkörét. További információ ezekről a szerepkörökről: [a Azure Portal szerepköralapú Access Control első lépései](../role-based-access-control/overview.md).
+1. A **szerepkör** legördülő listából válassza ki az alkalmazás *közreműködő* vagy *olvasó* szerepkörét. További információ ezekről a szerepkörökről: [Role-Based Access Control első lépései a Azure Portal](../role-based-access-control/overview.md).
 1. A **Select (kiválasztás** ) mezőben adja meg az alkalmazás nevét. Válassza ki az alkalmazást a listából, majd válassza a **Mentés**lehetőséget.
 
 Az alkalmazásnak ekkor meg kell jelennie a hozzáférés-vezérlési beállításaiban egy hozzárendelt Azure-szerepkörrel.

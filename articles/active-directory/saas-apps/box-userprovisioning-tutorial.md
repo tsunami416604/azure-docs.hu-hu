@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 07/20/2020
 ms.author: jeedes
 ms.openlocfilehash: 44f2195fb68b5a17eab3980f72cbc5374e1c033a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91312906"
 ---
 # <a name="tutorial-configure-box-for-automatic-user-provisioning"></a>Oktatóanyag: a felhasználók automatikus üzembe helyezésének beállítása
@@ -79,7 +79,7 @@ Ha az automatikus kiépítés engedélyezve van, akkor a hozzárendelt felhaszn�
  * Ha a csoportosítási objektumok úgy lettek konfigurálva, hogy kiépítve legyenek, akkor a rendszer az összes hozzárendelt csoportot kiépíti a Box-ba, és minden olyan felhasználót, aki ezen csoportok tagjai. A csoport-és felhasználói tagságok megmaradnak a box-ban való íráskor.
 
 > [!TIP] 
-> Azt is megteheti, hogy engedélyezte az SAML-alapú egyszeri bejelentkezést a Box számára, a [Azure Portalban](https://portal.azure.com)megadott utasításokat követve. Az egyszeri bejelentkezés az automatikus kiépítés függetlenül is konfigurálható, bár ez a két funkció egymáshoz tartozik.
+> Azt is megteheti, hogy engedélyezte az SAML-alapú egyszeri Sign-On a Box számára, a [Azure Portalban](https://portal.azure.com)megadott utasításokat követve. Az egyszeri bejelentkezés az automatikus kiépítés függetlenül is konfigurálható, bár ez a két funkció egymáshoz tartozik.
 
 ### <a name="to-configure-automatic-user-account-provisioning"></a>A felhasználói fiókok automatikus üzembe helyezésének konfigurálása:
 

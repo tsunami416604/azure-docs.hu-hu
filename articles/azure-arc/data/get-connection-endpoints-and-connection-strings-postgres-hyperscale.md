@@ -11,10 +11,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: 4087d618209ab4db46f89ef4e6db7ac87ca4cf57
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91331012"
 ---
 # <a name="get-connection-endpoints-and-form-connection-strings-for-your-arc-enabled-postgresql-hyperscale-server-group"></a>Kapcsolatok végpontok és űrlap-kapcsolatok karakterláncok beolvasása az ív használatára képes PostgreSQL nagy kapacitású-kiszolgálócsoport számára
@@ -62,9 +62,9 @@ A következőhöz hasonló kimenetet ad vissza:
 ```
 A következő végpontok használata:
 - A kapcsolati karakterláncok létrehozása és az ügyféleszközök vagy alkalmazások csatlakoztatása
-- A Grafana és a Kibana irányítópultok elérése a böngészőben
+- A Grafana- és Kibana-irányítópultok megnyitása a böngészőben
 
-Használhatja például a _PostgreSQL-példány_ nevű végpontot a psql való kapcsolódáshoz a kiszolgálócsoport számára. Például:
+Használhatja például a _PostgreSQL-példány_ nevű végpontot a psql való kapcsolódáshoz a kiszolgálócsoport számára. Példa:
 ```console
 psql postgresql://postgres:MyPassworkd@12.345.123.456:1234
 psql (10.14 (Ubuntu 10.14-0ubuntu0.18.04.1), server 12.4 (Ubuntu 12.4-1.pgdg16.04+1))

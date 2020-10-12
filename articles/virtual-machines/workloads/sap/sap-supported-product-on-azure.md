@@ -17,10 +17,10 @@ ms.date: 04/21/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 217d5b060ca1b7d32cd334049db9b7c68b7949a0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87065079"
 ---
 # <a name="what-sap-software-is-supported-for-azure-deployments"></a>Milyen SAP-szoftvert támogatnak az Azure-beli üzemelő példányok?
@@ -86,7 +86,7 @@ A megcélzott Azure-infrastruktúrával támogatott adatbázis-kezelői kiadáso
 ## <a name="sap-hana-support"></a>SAP HANA támogatás
 Az Azure-ban két szolgáltatás található, amelyek a HANA-adatbázisok futtatására használhatók:
 
-- Azure-alapú virtuális gépek
+- Azure Virtual Machines
 - [HANA nagyméretű példányai](./hana-overview-architecture.md)
 
 A SAP HANA futtatásához az SAP több és erősebb feltételekkel rendelkezik, és az infrastruktúrának meg kell felelnie, mint a NetWeaver vagy más SAP-alkalmazások és az adatbázis-kezelők futtatása Ennek eredményeképpen kisebb számú Azure-beli virtuális gép felel meg a SAP HANA adatbázis-kezelő rendszer futtatásának. A SAP HANA által támogatott Azure-infrastruktúra listája az úgynevezett [SAP HANA Hardware könyvtárban](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure)található. 
@@ -117,7 +117,7 @@ Az Azure-beli virtuális gépek esetében ezek az SAP-átviteli sebességek az [
 
 Az [SAP-támogatási megjegyzés #1928533](https://launchpad.support.sap.com/#/notes/1928533)a következő megjegyzések érvényesek:
 
-- **Az M-sorozatú Azure-beli virtuális gépek és a Mv2-sorozatú Azure-beli virtuális gépek esetében a különböző minimális operációsrendszer-kiadások érvényesek, mint a többi Azure-** beli A legújabb operációsrendszer-verziókra vonatkozó követelmény azon alapul, hogy a különböző operációs rendszerek gyártóinak az operációs rendszerük által kiadott kiadásaiban az adott Azure-beli virtuálisgép-típusokon futó operációs rendszerek, illetve a virtuális gépekre vonatkozó SAP-munkaterhelések teljesítményének és teljesítményének optimalizálása
+- **Az M-sorozatú Azure-beli virtuális gépek és Mv2-Series Azure-beli virtuális gépek esetében a különböző minimális operációsrendszer-kiadások érvényesek, mint a többi Azure-beli VM** A legújabb operációsrendszer-verziókra vonatkozó követelmény azon alapul, hogy a különböző operációs rendszerek gyártóinak az operációs rendszerük által kiadott kiadásaiban az adott Azure-beli virtuálisgép-típusokon futó operációs rendszerek, illetve a virtuális gépekre vonatkozó SAP-munkaterhelések teljesítményének és teljesítményének optimalizálása
 - Két tábla különböző virtuálisgép-típusokat határoz meg. A második táblázat a kizárólag az Azure standard Storage-t támogató Azure-beli virtuálisgép-típusok SAP átviteli sebességét határozza meg. Az adatbázis-kezelő üzembe helyezése a Megjegyzés második táblájában megadott egységeken nem támogatott.
 
 
@@ -144,5 +144,5 @@ Az SAP Hybris kereskedelmi platformjának támogatása az Azure-ban részletesen
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az [Azure Virtual Machines tervezésének és megvalósításának](./planning-guide.md) következő lépéseinek elolvasása az SAP NetWeaver-ban

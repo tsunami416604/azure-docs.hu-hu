@@ -9,17 +9,17 @@ ms.topic: troubleshooting
 ms.date: 01/30/2020
 ms.author: jlian
 ms.openlocfilehash: f4949816f516c6a6b60cfda0602f458256370d40
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "76960528"
 ---
 # <a name="400027-connectionforcefullyclosedonnewconnection"></a>400027 ConnectionForcefullyClosedOnNewConnection
 
 Ez a cikk a **400027 ConnectionForcefullyClosedOnNewConnection** -hibák okait és megoldásait ismerteti.
 
-## <a name="symptoms"></a>Probléma
+## <a name="symptoms"></a>Hibajelenségek
 
 Az eszközről a felhőbe irányuló kettős művelet (például a Read vagy a patch jelentett tulajdonságai) vagy a közvetlen metódus meghívása meghiúsul a **400027**hibakód esetén.
 

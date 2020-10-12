@@ -5,10 +5,10 @@ ms.date: 06/25/2019
 ms.service: cognitive-services
 ms.topic: include
 ms.openlocfilehash: 873fd8cbc211f098c93b8fb3fbe701e4a34d8487
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "68320518"
 ---
 A `Logging` Beállítások kezelik ASP.net Core naplózási támogatást a tárolóhoz. Ugyanazokat a konfigurációs beállításokat és értékeket használhatja a tárolóhoz, amelyeket egy ASP.NET Core alkalmazáshoz használ. 
@@ -50,7 +50,7 @@ Logging:Console:LogLevel:Default=Debug
 
 A `Disk` naplózási szolgáltató a következő konfigurációs beállításokat támogatja:
 
-| Name | Adattípus | Leírás |
+| Name (Név) | Adattípus | Leírás |
 |------|-----------|-------------|
 | `Format` | Sztring | A naplófájlok kimeneti formátuma.<br/> **Megjegyzés:** Ezt az értéket úgy kell beállítani, hogy `json` engedélyezze a naplózási szolgáltatót. Ha ez az érték meg van adva, anélkül, hogy a kimeneti csatlakoztatást is megadja egy tároló példányának létrehozásakor, hiba történik. |
 | `MaxFileSize` | Egész szám | Egy naplófájl maximális mérete megabájtban (MB). Ha az aktuális naplófájl mérete megfelel vagy meghaladja ezt az értéket, a naplózási szolgáltató elindít egy új naplófájlt. Ha a-1 érték van megadva, a naplófájl méretét csak a kimeneti csatlakoztatáshoz tartozó Maximális fájlméret korlátozza. Az alapértelmezett érték az 1. |

@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: sutalasi
 ms.openlocfilehash: 45921bdf802a649b7b802f44d2842a543e44f02b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84699600"
 ---
-# <a name="configure-and-manage-replication-policies-for-vmware-disaster-recovery"></a>A VMware vész-helyreállítási replikációs szabályzatok konfigurálása és kezelése
+# <a name="configure-and-manage-replication-policies-for-vmware-disaster-recovery"></a>A VMware-vészhelyreállítás replikációs szabályzatainak konfigurálása és kezelése
 
 Ez a cikk azt ismerteti, hogyan konfigurálhat egy replikációs házirendet, ha VMware virtuális gépeket replikál az Azure-ba a [Azure site Recovery](site-recovery-overview.md)használatával.
 
@@ -53,7 +53,7 @@ A szabályzatok a következőképpen szerkeszthetők:
 2. Válassza ki a módosítani kívánt replikációs házirendet.
 3. Kattintson a **beállítások szerkesztése**elemre, és frissítse a RPO küszöbértékét/a helyreállítási pont megőrzési idejét, illetve az alkalmazás-konzisztens Pillanatképek gyakorisága mezőket a szükséges módon.
 4. Ha ki szeretné kapcsolni az alkalmazás-konzisztencia-pontok előállítását, válassza ki a "ki" értéket a mező **alkalmazás-konzisztens pillanatkép gyakoriságának**legördülő menüjében.
-5. Kattintson a **Save** (Mentés) gombra. A szabályzatot 30 – 60 másodperc múlva kell frissíteni.
+5. Kattintson a **Mentés** gombra. A szabályzatot 30 – 60 másodperc múlva kell frissíteni.
 
 
 

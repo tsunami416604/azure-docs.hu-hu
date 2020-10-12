@@ -12,10 +12,10 @@ ms.author: sethm
 ms.reviewer: thsomasu
 ms.lastreviewed: 03/25/2019
 ms.openlocfilehash: 6784331dccd779390ace7dc632d54fe54aedc458
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87760991"
 ---
 # <a name="configure-microsoft-push-notification-service-mpns-settings-in-the-azure-portal"></a>A Microsoft leküldéses értesítési szolgáltatás (MPNS) beállításainak konfigurálása a Azure Portal
@@ -41,9 +41,9 @@ Az alábbi eljárás ismerteti, hogyan konfigurálhatja az értesítési közpon
       * Az eszköztáron válassza a **tanúsítvány feltöltése**lehetőséget.
       * Válassza ki a fájl ikont, majd válassza ki a tanúsítványfájl.
       * Adja meg a tanúsítványhoz tartozó jelszót.
-      * Válassza az **OK** lehetőséget.
+      * Kattintson az **OK** gombra.
       * A **Windows Phone-telefon (MPNS)** lapon válassza a **Mentés**lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az Azure Notification Hubs és a Microsoft leküldéses értesítési szolgáltatás (MPNS) használatával Windows Phone-telefon eszközökre irányuló értesítések küldésével kapcsolatos részletes utasításokért lásd: [leküldéses értesítések küldése Windows Phone-telefon alkalmazásoknak Notification Hubs használatával](notification-hubs-windows-mobile-push-notifications-mpns.md).

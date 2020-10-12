@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: b9e8ffb3173ed0d25599be446611ceca72c2ef82
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89266867"
 ---
 # <a name="change-the-reserved-unit-type"></a>A fenntartott egység típusának módosítása
@@ -62,7 +62,7 @@ A fenntartott egység típusának és a fenntartott egységek számának megvál
    
     Az új fenntartott egységek kiosztása a Mentés gomb megnyomásakor történik.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Tekintse át a Media Services képzési terveket.
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]

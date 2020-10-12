@@ -6,17 +6,17 @@ ms.topic: reference
 ms.date: 02/28/2019
 ms.author: cshoe
 ms.openlocfilehash: 863620ce6f0af33b05ef290ae95ccdc99a53a54d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77523036"
 ---
 # <a name="signalr-service-bindings-for-azure-functions"></a>SignalR-szolgáltatáskötések az Azure Functionshöz
 
 Ez a cikk azt ismerteti, hogyan lehet valós idejű üzeneteket hitelesíteni és elküldeni az [Azure signaler szolgáltatáshoz](https://azure.microsoft.com/services/signalr-service/) csatlakozó ügyfeleknek a signaler szolgáltatás kötéseinek használatával Azure Functionsban. Az Azure Functions támogatja a SignalR-szolgáltatás bemeneti és kimeneti kötéseit.
 
-| Műveletek | Típus |
+| Művelet | Típus |
 |---------|---------|
 | A szolgáltatási végpont URL-címének és hozzáférési jogkivonatának visszaküldése | [Bemeneti kötés](./functions-bindings-signalr-service-input.md) |
 | Szignáló szolgáltatás üzeneteinek küldése |[Kimeneti kötés](./functions-bindings-signalr-service-output.md) |

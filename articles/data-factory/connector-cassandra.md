@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 08/12/2019
 ms.author: jingwang
 ms.openlocfilehash: 4b7fd2de0762de147ad3ceae0d562a1c78b33dc2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81417469"
 ---
 # <a name="copy-data-from-cassandra-using-azure-data-factory"></a>Adatok másolása a Cassandra használatával Azure Data Factory
@@ -66,14 +66,14 @@ A Cassandra társított szolgáltatás a következő tulajdonságokat támogatja
 | gazda |A Cassandra-kiszolgálók egy vagy több IP-címe vagy állomásneve.<br/>Megadhatja az IP-címek vagy állomásnevek vesszővel tagolt listáját, hogy az összes kiszolgálóhoz egyszerre kapcsolódjon. |Igen |
 | port |A Cassandra-kiszolgáló által az ügyfélkapcsolatok figyeléséhez használt TCP-port. |Nem (az alapértelmezett érték 9042) |
 | authenticationType | A Cassandra-adatbázishoz való kapcsolódáshoz használt hitelesítés típusa.<br/>Az engedélyezett értékek: **Basic**és **Anonymous**. |Igen |
-| felhasználónév |Adja meg a felhasználói fiók felhasználónevét. |Igen, ha a authenticationType értéke alapszintű. |
+| username |Adja meg a felhasználói fiók felhasználónevét. |Igen, ha a authenticationType értéke alapszintű. |
 | jelszó |A felhasználói fiók jelszavának megadása. Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). |Igen, ha a authenticationType értéke alapszintű. |
 | Connectvia tulajdonsággal | Az adattárhoz való kapcsolódáshoz használt [Integration Runtime](concepts-integration-runtime.md) . További tudnivalók az [Előfeltételek](#prerequisites) szakaszban olvashatók. Ha nincs megadva, az alapértelmezett Azure Integration Runtime használja. |Nem |
 
 >[!NOTE]
 >Jelenleg nem támogatott a Cassandra-hez való kapcsolódás a TLS használatával.
 
-**Példa:**
+**Példa**
 
 ```json
 {
@@ -109,7 +109,7 @@ Az adatok Cassandra-ből való másolásához állítsa az adatkészlet Type (t�
 | kulcstartomány |A térköz vagy séma neve a Cassandra adatbázisban. |Nem (ha a "CassandraSource" paraméternél "lekérdezés" van megadva) |
 | tableName |A tábla neve a Cassandra adatbázisban. |Nem (ha a "CassandraSource" paraméternél "lekérdezés" van megadva) |
 
-**Példa:**
+**Példa**
 
 ```json
 {
@@ -144,7 +144,7 @@ Az adatok Cassandra-ből való másolásához állítsa a forrás típusát a m�
 | lekérdezés |Az egyéni lekérdezés használatával olvashatja el az adatolvasást. SQL-92 lekérdezés vagy CQL-lekérdezés. Lásd: [CQL-hivatkozás](https://docs.datastax.com/en/cql/3.1/cql/cql_reference/cqlReferenceTOC.html). <br/><br/>SQL-lekérdezés használatakor adja meg a **térköz nevét. a tábla neve** , amely a lekérdezni kívánt táblát jelöli. |Nem (ha meg van adva a "táblanév" és a "szóköz" az adatkészletben). |
 | consistencyLevel |A konzisztencia szintje határozza meg, hogy hány replikának kell válaszolnia egy olvasási kérelemre, mielőtt adatvisszaad az ügyfélalkalmazás számára. Cassandra ellenőrzi a megadott számú replikát az adatolvasási kérelem teljesítéséhez. További részletek: az [adatkonzisztencia konfigurálása](https://docs.datastax.com/en/cassandra/2.1/cassandra/dml/dml_config_consistency_c.html) .<br/><br/>Az engedélyezett értékek: **egy**, **kettő**, **három**, **kvórum**, **mind**, **LOCAL_QUORUM**, **EACH_QUORUM**és **LOCAL_ONE**. |Nem (alapértelmezett érték `ONE` ) |
 
-**Példa:**
+**Példa**
 
 ```json
 "activities":[
@@ -185,10 +185,10 @@ Az adatok Cassandra-ből való másolása során a rendszer a következő lekép
 | ASCII |Sztring |
 | BIGINT |Int64 |
 | BLOB |Bájt [] |
-| LOGIKAI |Logikai |
-| DECIMÁLIS |Decimal |
-| DUPLÁN |Double |
-| FLOAT |Egyszeres |
+| LOGIKAI |Logikai érték |
+| DECIMÁLIS |Tizedesjegy |
+| DUPLÁN |Dupla |
+| FLOAT |Egyirányú |
 | INET |Sztring |
 | INT |Int32 |
 | TEXT |Sztring |
@@ -196,7 +196,7 @@ Az adatok Cassandra-ből való másolása során a rendszer a következő lekép
 | TIMEUUID |Guid |
 | UUID |Guid |
 | VARCHAR |Sztring |
-| VARINT |Decimal |
+| VARINT |Tizedesjegy |
 
 > [!NOTE]
 > A gyűjtési típusok (Térkép, beállítás, lista stb.) esetében tekintse át a következőt: a [Cassandra Collection types használata virtuális tábla használatával](#work-with-collections-using-virtual-table) szakasz.

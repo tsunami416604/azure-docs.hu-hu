@@ -5,10 +5,10 @@ ms.subservice: logs
 ms.topic: reference
 ms.date: 06/03/2020
 ms.openlocfilehash: 81f79b81c03e7996d7f6d45b002d8160740c3c14
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87318300"
 ---
 # <a name="supported-categories-for-azure-resource-logs"></a>Az Azure erőforrás-naplók támogatott kategóriái
@@ -169,7 +169,7 @@ Ha még valami hiányzik, megnyithatja a cikk alján található GitHub-megjegyz
 |dbfs|Databricks fájlrendszer|
 |instancePools|Példányok készletei|
 |feladatok|Databricks-feladatok|
-|notebook|Databricks-jegyzetfüzet|
+|jegyzetfüzet|Databricks-jegyzetfüzet|
 |titkok|Databricks titkai|
 |sqlPermissions|Databricks SQLPermissions|
 |SSH|Databricks SSH|
@@ -255,7 +255,7 @@ Ha még valami hiányzik, megnyithatja a cikk alján található GitHub-megjegyz
 |Checkpoint|Checkpoint|
 |Kapcsolat|Kapcsolat|
 |Hiba|Hiba|
-|HostRegistration|HostRegistration|
+|Gazdagép regisztrációja|Gazdagép regisztrációja|
 |Kezelés|Kezelés|
 
 
@@ -347,7 +347,7 @@ Ha még valami hiányzik, megnyithatja a cikk alján található GitHub-megjegyz
 |---|---|
 |ArchiveLogs|Archiválási naplók|
 |AutoScaleLogs|Naplók automatikus méretezése|
-|CustomerManagedKeyUserLogs|Ügyfél által felügyelt kulcsok naplói|
+|CustomerManagedKeyUserLogs|Customer-Managed kulcsfontosságú naplók|
 |EventHubVNetConnectionEvent|VNet/IP-szűrési kapcsolatok naplófájljai|
 |KafkaCoordinatorLogs|Kafka-koordinátor naplói|
 |KafkaUserErrorLogs|Kafka felhasználói hibák naplói|
@@ -393,7 +393,7 @@ Ha még valami hiányzik, megnyithatja a cikk alján található GitHub-megjegyz
 |Naplózás|Naplózás|
 |Kimenő forgalom|Kimenő forgalom|
 |Bejövő forgalom|Bejövő forgalom|
-|Operatív|Operatív|
+|Működik|Működik|
 |Nyomkövetés|Nyomkövetés|
 |UserDefinedFunction|UserDefinedFunction|
 
@@ -709,7 +709,7 @@ Ha még valami hiányzik, megnyithatja a cikk alján található GitHub-megjegyz
 |ScanLogs|Víruskeresési naplók|
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [További információ az erőforrás-naplókról](./platform-logs-overview.md)
 * [Stream erőforrás-erőforrás naplófájljai **Event Hubs**](./resource-logs.md#send-to-azure-event-hubs)

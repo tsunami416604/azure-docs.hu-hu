@@ -12,10 +12,10 @@ ms.date: 02/26/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: e175a81efc1ab0950c1fda314efb206ff97a2b7f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85385382"
 ---
 # <a name="define-phone-number-claims-transformations-in-azure-ad-b2c"></a>Telefonszám-jogcímek átalakításának meghatározása Azure AD B2C
@@ -30,7 +30,7 @@ Ez a cikk a Azure Active Directory B2C (Azure AD B2C) identitás-keretrendszer s
 
 Az `phoneNumber` adattípust `string` adattípusba alakítja.
 
-| Item | TransformationClaimType | Adattípus | Jegyzetek |
+| Elem | TransformationClaimType | Adattípus | Jegyzetek |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | Telefonszám | Telefonszám |  A ClaimType karakterlánccá alakítja át. |
 | OutputClaim | phoneNumberString | sztring | A jogcím-átalakítás után létrehozott ClaimType meghívása megtörtént. |
@@ -60,7 +60,7 @@ Ebben a példában a értékkel rendelkező cellPhoneNumber jogcím a következ�
 
 Ez a jogcím-átalakítás érvényesíti a telefonszám formátumát. Ha érvényes formátumú, módosítsa az Azure AD B2C által használt szabványos formátumra. Ha a megadott telefonszám formátuma érvénytelen, hibaüzenetet kap.
 
-| Item | TransformationClaimType | Adattípus | Jegyzetek |
+| Elem | TransformationClaimType | Adattípus | Jegyzetek |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | phoneNumberString | sztring |  A telefonszámhoz tartozó karakterlánc-jogcím. A telefonszámnak nemzetközi formátumúnak kell lennie, és meg kell felelnie egy vezető "+" és ország/régió kódnak. Ha a bemeneti jogcímet adja `country` meg, a telefonszám helyi formátumban van megadva (az ország/régió kódja nélkül). |
 | InputClaim | ország | sztring | Választható A ISO3166 formátumú (kétbetűs ISO-3166 ország/régió kódja) típusú telefonszám ország/régió kódjához tartozó jogcíme. |
@@ -115,10 +115,10 @@ A jogcímek átalakítását tartalmazó, az érvényesítési technikai profilt
 
 Ezzel kibontja az ország/régió kódját és a nemzeti számot a bemeneti jogcímen, és opcionálisan kivételt jelez, ha a megadott telefonszám érvénytelen.
 
-| Item | TransformationClaimType | Adattípus | Jegyzetek |
+| Elem | TransformationClaimType | Adattípus | Jegyzetek |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | Telefonszám | sztring | A telefonszám karakterlánc-jogcíme. A telefonszámnak nemzetközi formátumúnak kell lennie, és meg kell felelnie egy vezető "+" és ország/régió kódnak. |
-| InputParameter | throwExceptionOnFailure | logikai | Választható Egy paraméter, amely azt jelzi, hogy a rendszer kivételt jelez-e, ha a telefonszám érvénytelen. Az alapértelmezett érték false (hamis). |
+| InputParameter | throwExceptionOnFailure | boolean | Választható Egy paraméter, amely azt jelzi, hogy a rendszer kivételt jelez-e, ha a telefonszám érvénytelen. Az alapértelmezett érték false (hamis). |
 | InputParameter | countryCodeType | sztring | Választható Egy paraméter, amely az ország/régió kódjának típusát jelzi a kimeneti jogcímek között. Az elérhető értékek a következők: **CallingCode** (egy ország/régió nemzetközi hívási kódja, például + 1) vagy **ISO3166** (kétbetűs ISO-3166 ország/régió kódja). |
 | OutputClaim | nationalNumber | sztring | A telefonszám országos számára vonatkozó jogcímek száma. |
 | OutputClaim | Országhívószám | sztring | A telefonszám ország-/régiókódjának karakterlánc-jogcíme. |

@@ -8,10 +8,10 @@ ms.topic: article
 ms.service: virtual-machines
 ms.subservice: imaging
 ms.openlocfilehash: 58bbe01c8de0bbe606f4fc428032cd213f05d386
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88068241"
 ---
 # <a name="configure-azure-image-builder-service-permissions-using-azure-cli"></a>Az Azure rendszerkép-készítő szolgáltatás engedélyeinek konfigurálása az Azure CLI használatával
@@ -234,8 +234,8 @@ Cserélje le a következő helyőrző beállításokat:
 | \<Storage account container\> | Tárfiók tárolójának neve |
 | \<Subscription ID\> | Azure-előfizetés |
 
-A felhasználó által hozzárendelt felügyelt identitással kapcsolatos további információkért tekintse [meg az egyéni rendszerkép létrehozása, amely egy Azure-felhasználó által hozzárendelt felügyelt identitást használ az Azure Storage-hoz való seemlessly eléréséhez](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts/7_Creating_Custom_Image_using_MSI_to_Access_Storage#create-a-custom-image-that-will-use-an-azure-user-assigned-managed-identity-to-seemlessly-access-files-azure-storage). A rövid útmutató végigvezeti a felhasználó által hozzárendelt felügyelt identitás létrehozásán és konfigurálásán egy Storage-fiók eléréséhez.
+A felhasználó által hozzárendelt felügyelt identitással kapcsolatos további információkért tekintse meg az [Egyéni rendszerkép létrehozása, amely azure User-Assigned felügyelt identitást használ az Azure Storage-hoz való seemlessly eléréséhez](https://github.com/danielsollondon/azvmimagebuilder/tree/master/quickquickstarts/7_Creating_Custom_Image_using_MSI_to_Access_Storage#create-a-custom-image-that-will-use-an-azure-user-assigned-managed-identity-to-seemlessly-access-files-azure-storage). A rövid útmutató végigvezeti a felhasználó által hozzárendelt felügyelt identitás létrehozásán és konfigurálásán egy Storage-fiók eléréséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ: az [Azure rendszerkép-készítő áttekintése](image-builder-overview.md).

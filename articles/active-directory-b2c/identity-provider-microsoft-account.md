@@ -12,10 +12,10 @@ ms.date: 05/12/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: ad4b08a12e63b4ae3eed0eb09e295d9730de97bb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85388000"
 ---
 # <a name="set-up-sign-up-and-sign-in-with-a-microsoft-account-using-azure-active-directory-b2c"></a>Regisztráció és bejelentkezés beállítása Microsoft-fiók használatával Azure Active Directory B2C
@@ -49,4 +49,4 @@ Ha Microsoft-fiók [identitás-szolgáltatóként](openid-connect.md) szeretné 
 1. Adjon meg egy **nevet**. Például: *MSA*.
 1. Az **ügyfél-azonosító**mezőben adja meg a korábban létrehozott Azure ad-alkalmazás alkalmazás-(ügyfél-) azonosítóját.
 1. Az **ügyfél titka**mezőben adja meg a rögzített ügyfél-titkot.
-1. Kattintson a **Mentés** gombra.
+1. Válassza a **Mentés** lehetőséget.

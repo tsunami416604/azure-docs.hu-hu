@@ -11,10 +11,10 @@ ms.date: 08/13/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: c1b51792c86cfce15fa718040dfcbcc13997ee26
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85384957"
 ---
 # <a name="troubleshoot-azure-ad-b2c-custom-policies-and-identity-experience-framework"></a>Az egyéni szabályzatok és az Identity Experience Framework Azure AD B2C hibáinak megoldása
@@ -39,18 +39,18 @@ Az XML-házirend fájljának érvényesítése automatikusan történik a feltö
 
 Gyakori érvényesítési hibák a következők:
 
-> Hiba kódrészlet:`...makes a reference to ClaimType with id "displayName" but neither the policy nor any of its base policies contain such an element`
+> Hiba kódrészlet: `...makes a reference to ClaimType with id "displayName" but neither the policy nor any of its base policies contain such an element`
 
 * Lehet, hogy helytelenül van beállítva a ClaimType értéke, vagy nem létezik a sémában.
 * A ClaimType értékeket meg kell adni a házirendben szereplő fájlok legalább egyikében.
-    Például:`<ClaimType Id="issuerUserId">`
+    Például: `<ClaimType Id="issuerUserId">`
 * Ha a ClaimType definiálva van a bővítmények fájlban, de az alapfájl Kivonatjogcím is használja, akkor az alap fájl feltöltése hibát eredményez.
 
-> Hiba kódrészlet:`...makes a reference to a ClaimsTransformation with id...`
+> Hiba kódrészlet: `...makes a reference to a ClaimsTransformation with id...`
 
 * A hiba oka ugyanaz lehet, mint a ClaimType hiba esetén.
 
-> Hiba kódrészlet:`Reason: User is currently logged as a user of 'yourtenant.onmicrosoft.com' tenant. In order to manage 'yourtenant.onmicrosoft.com', please login as a user of 'yourtenant.onmicrosoft.com' tenant`
+> Hiba kódrészlet: `Reason: User is currently logged as a user of 'yourtenant.onmicrosoft.com' tenant. In order to manage 'yourtenant.onmicrosoft.com', please login as a user of 'yourtenant.onmicrosoft.com' tenant`
 
 * Győződjön meg arról, hogy a és az elemek TenantId értéke `<TrustFrameworkPolicy\>` `<BasePolicy\>` megegyezik a cél Azure ad B2C Bérlővel.
 
