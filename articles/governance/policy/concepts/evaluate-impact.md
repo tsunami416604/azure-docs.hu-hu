@@ -4,10 +4,10 @@ description: Ismerkedjen meg az új házirend-definíció Azure-környezetbe val
 ms.date: 08/17/2020
 ms.topic: conceptual
 ms.openlocfilehash: 243f04cc20e1fb7167306b925a0e494b34cf1267
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88544702"
 ---
 # <a name="evaluate-the-impact-of-a-new-azure-policy-definition"></a>Új Azure Policy definíció hatásának kiértékelése
@@ -65,7 +65,7 @@ A hatókör (szint vagy kizárás) módosításait teljes mértékben ellenőriz
 
 A házirend-definíció megvalósítása és kiosztása nem az utolsó lépés. Folyamatosan figyelheti az erőforrások [megfelelőségi](../how-to/get-compliance-data.md) szintjét az új szabályzat-definícióba, és beállíthatja a megfelelő [Azure monitor riasztásokat és értesítéseket](../../../azure-monitor/platform/alerts-overview.md) a nem megfelelő eszközök azonosításához. Javasoljuk továbbá, hogy a házirend-definíciót és a kapcsolódó hozzárendeléseket ütemezett alapon értékelje ki, hogy ellenőrizze a házirend-definíciót az üzleti szabályzatok és a megfelelőségi igények kielégítése érdekében. Ha már nincs rá szükség, el kell távolítania a házirendeket. A szabályzatoknak időről időre frissíteniük kell a mögöttes Azure-erőforrások alakulását, és hozzá kell adni új tulajdonságokat és képességeket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A szabályzat- [definíciós struktúra](./definition-structure.md)megismerése.
 - A szabályzat- [hozzárendelési struktúra](./assignment-structure.md)megismerése.

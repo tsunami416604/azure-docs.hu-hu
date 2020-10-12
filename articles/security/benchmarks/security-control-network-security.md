@@ -8,10 +8,10 @@ ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: dad01212be3589af7167082ff22c624fa776772a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82193122"
 ---
 # <a name="security-control-network-security"></a>Biztonsági ellenőrzés: hálózati biztonság
@@ -22,7 +22,7 @@ A hálózati biztonsági javaslatok azt határozzák meg, hogy mely hálózati p
 
 | Azure-azonosító | CIS-azonosítók | Felelősséget |
 |--|--|--|
-| 1.1 | 9,2, 9,4, 14,1, 14,2, 14,3 | Ügyfél |
+| 1,1 | 9,2, 9,4, 14,1, 14,2, 14,3 | Ügyfél |
 
 Győződjön meg arról, hogy az összes Virtual Network alhálózati üzemelő példány rendelkezik egy hálózati biztonsági csoporttal, amely az alkalmazás megbízható portjaira és forrásaira jellemző hálózati hozzáférés-vezérléssel rendelkezik. Ha elérhető, privát végpontok használatával gondoskodhat az Azure-szolgáltatások erőforrásainak virtuális hálózatra való védelméről, ha a VNet-identitást kiterjesztjük a szolgáltatásra. Ha a privát végpontok és a privát hivatkozások nem érhetők el, használja a szolgáltatási végpontokat. A szolgáltatásra vonatkozó követelményekért tekintse meg az adott szolgáltatásra vonatkozó biztonsági javaslatot. 
 
@@ -42,7 +42,7 @@ Ha konkrét használati esettel rendelkezik, a követelmények teljesítése Azu
 
 | Azure-azonosító | CIS-azonosítók | Felelősséget |
 |--|--|--|
-| 1.2 | 9,3, 12,2, 12,8 | Ügyfél |
+| 1,2 | 9,3, 12,2, 12,8 | Ügyfél |
 
 Az Azure-ban a hálózati erőforrások biztonságossá tételéhez használja a Azure Security Centert, és kövesse a hálózati védelmi javaslatok című témakört. Engedélyezze a NSG folyamat naplóit, és küldje el a naplókat egy Storage-fiókba a forgalom naplózása érdekében. NSG-naplókat is küldhet egy Log Analytics munkaterületre, és a Traffic Analytics használatával betekintést nyerhet az Azure-Felhőbeli forgalomba. A Traffic Analytics egyes előnyei lehetővé teszi a hálózati tevékenységek megjelenítését és a gyakori pontok azonosítását, a biztonsági fenyegetések azonosítását, a forgalomban rejlő minták értelmezését, valamint a hálózati helytelen konfigurációk meghatározását.
 
@@ -102,7 +102,7 @@ Network Watcher csomagok rögzítésének engedélyezése a rendellenes tevéken
 |--|--|--|
 | 1.6 | 12,6, 12,7 | Ügyfél |
 
-Válasszon ki egy olyan ajánlatot az Azure piactéren, amely támogatja az AZONOSÍTÓk/IP-címek funkciót a hasznos adatok ellenőrzésére szolgáló funkciókkal.  Ha a betörési észlelés és/vagy a tartalom-ellenőrzésen alapuló megelőzés nem követelmény, akkor az Azure Firewall a veszélyforrások felderítésére használható. Azure Firewall fenyegetés intelligencián alapuló szűréssel riasztást kaphat, és megtagadhatja az ismert kártékony IP-címek és tartományok felé irányuló forgalmat. Az IP-címek és tartományok forrása a Microsoft Threat Intelligence-hírcsatorna.
+Válasszon ki egy olyan ajánlatot az Azure piactéren, amely támogatja az AZONOSÍTÓk/IP-címek funkciót a hasznos adatok ellenőrzésére szolgáló funkciókkal.  Ha a betörési észlelés és/vagy a tartalom-ellenőrzésen alapuló megelőzés nem követelmény, akkor az Azure Firewall a veszélyforrások felderítésére használható. Azure Firewall fenyegetés intelligencián alapuló szűréssel riasztást kaphat, és megtagadhatja az ismert kártékony IP-címek és tartományok felé irányuló forgalmat. Az IP-címek és -tartományok forrása a Microsoft veszélyforrás-felderítési hírcsatornája.
 
 Az Ön által választott tűzfal-megoldás üzembe helyezésével azonosíthatja és/vagy megtagadhatja a kártékony forgalmat.
 
@@ -116,7 +116,7 @@ Az Ön által választott tűzfal-megoldás üzembe helyezésével azonosíthatj
 
 | Azure-azonosító | CIS-azonosítók | Felelősséget |
 |--|--|--|
-| 1.7 | 12,9, 12,10 | Ügyfél |
+| 1,7 | 12,9, 12,10 | Ügyfél |
 
 Az Azure Application Gateway üzembe helyezése a megbízható tanúsítványok számára engedélyezett HTTPS/TLS-alapú webalkalmazásokhoz.
 
@@ -144,7 +144,7 @@ Emellett az alkalmazás biztonsági csoportjaival is egyszerűsítheti az össze
 
 | Azure-azonosító | CIS-azonosítók | Felelősséget |
 |--|--|--|
-| 1.9 | 11,1 | Ügyfél |
+| 1,9 | 11,1 | Ügyfél |
 
 A hálózati erőforrások szabványos biztonsági konfigurációinak definiálása és implementálása Azure Policy.
 

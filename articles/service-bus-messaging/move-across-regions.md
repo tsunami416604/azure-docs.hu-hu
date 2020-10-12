@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.date: 06/23/2020
 ms.custom: subject-moving-resources
 ms.openlocfilehash: 573ea96437cf6cb76854ffa417fd3ad3fb86138b
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88861067"
 ---
 # <a name="move-an-azure-service-bus-namespace-to-another-region"></a>Azure Service Bus névtér áthelyezése egy másik régióba
@@ -48,46 +48,46 @@ A sablon üzembe helyezésével hozzon létre egy Service Bus névteret a célk�
 1. A Azure Portal válassza az **erőforrás létrehozása**lehetőséget.
 2. A **Keresés a piactéren**mezőbe írja be a keresett szöveghez tartozó **sablon központi telepítését** , válassza a **template Deployment (az egyéni sablonok használatával történő üzembe helyezés)** lehetőséget, majd nyomja le az **ENTER**billentyűt.
 
-    :::image type="content" source="./media/move-across-regions/new-template-deployment.png" alt-text="Új sablon központi telepítése":::    
+    :::image type="content" source="./media/move-across-regions/new-template-deployment.png" alt-text="Resource Manager-sablon letöltése":::    
 1. A **template Deployment** lapon válassza a **Létrehozás**lehetőséget.
 
-    :::image type="content" source="./media/move-across-regions/template-deployment-create-button.png" alt-text="Új sablon központi telepítése – létrehozás gomb":::        
+    :::image type="content" source="./media/move-across-regions/template-deployment-create-button.png" alt-text="Resource Manager-sablon letöltése":::        
 1. Az **Egyéni telepítés** lapon válassza a **saját sablon létrehozása lehetőséget a szerkesztőben**.
 
-    :::image type="content" source="./media/move-across-regions/build-template-link.png" alt-text="Saját sablon létrehozása a szerkesztőben – hivatkozás":::            
+    :::image type="content" source="./media/move-across-regions/build-template-link.png" alt-text="Resource Manager-sablon letöltése":::            
 1. A **Sablon szerkesztése** lapon válassza a **fájl betöltése** az eszköztáron lehetőséget, majd kövesse az utasításokat az utolsó szakaszban letöltött fájl **template.js** betöltéséhez.
 
-    :::image type="content" source="./media/move-across-regions/select-template.png" alt-text="Sablon kiválasztása":::                
+    :::image type="content" source="./media/move-across-regions/select-template.png" alt-text="Resource Manager-sablon letöltése":::                
 1. A sablon mentéséhez válassza a **Mentés** lehetőséget. 
 
-    :::image type="content" source="./media/move-across-regions/save-template.png" alt-text="Sablon mentése":::                    
+    :::image type="content" source="./media/move-across-regions/save-template.png" alt-text="Resource Manager-sablon letöltése":::                    
 1. Az **Egyéni telepítés** lapon kövesse az alábbi lépéseket: 
     1. Válasszon ki egy Azure- **előfizetést**. 
     2. Válasszon ki egy meglévő **erőforráscsoportot** , vagy hozzon létre egyet. 
     3. Válassza ki a **célhelyet vagy** régiót. Ha kiválasztott egy meglévő erőforráscsoportot, ez a beállítás csak olvasható. 
     4. Adja meg **a névtér új nevét**.
-    1. Válassza az **Áttekintés + létrehozás** lehetőséget. 
+    1. Válassza a **Felülvizsgálat + létrehozás** lehetőséget. 
 
-        :::image type="content" source="./media/move-across-regions/deploy-template.png" alt-text="Resource Manager-sablon üzembe helyezése":::
+        :::image type="content" source="./media/move-across-regions/deploy-template.png" alt-text="Resource Manager-sablon letöltése":::
     1. A **felülvizsgálat + létrehozás** oldalon válassza a **Létrehozás** elemet az oldal alján. 
     
 ## <a name="verify"></a>Ellenőrzés
 1. Miután az üzembe helyezés sikeres volt, válassza az **Ugrás az erőforrás-csoportba**lehetőséget.
 
-    :::image type="content" source="./media/move-across-regions/resource-group-navigation-link.png" alt-text="Ugrás az erőforráscsoport hivatkozására":::    
+    :::image type="content" source="./media/move-across-regions/resource-group-navigation-link.png" alt-text="Resource Manager-sablon letöltése":::    
 1. Az **erőforráscsoport** lapon válassza ki a Service Bus névteret. 
 
-    :::image type="content" source="./media/move-across-regions/select-namespace.png" alt-text="Service Bus névtér kiválasztása":::    
+    :::image type="content" source="./media/move-across-regions/select-namespace.png" alt-text="Resource Manager-sablon letöltése":::    
 1. A **Service Bus névtér** lapon ellenőrizze, hogy látható-e a forrás régiójában lévő várólisták, témakörök és előfizetések. 
     1. A **várólistákat** a jobb oldali ablaktábla alján található névtérben láthatja.         
     
-        :::image type="content" source="./media/move-across-regions/queue-namespace.png" alt-text="A névtérben lévő várólisták":::
+        :::image type="content" source="./media/move-across-regions/queue-namespace.png" alt-text="Resource Manager-sablon letöltése":::
     2. Váltson a **témakörök** lapra a névtérben található témakörök megjelenítéséhez
     
-        :::image type="content" source="./media/move-across-regions/topics-namespace.png" alt-text="A névtér témakörei":::
+        :::image type="content" source="./media/move-across-regions/topics-namespace.png" alt-text="Resource Manager-sablon letöltése":::
     3. Válassza ki a témakört az előfizetések ellenőrzéséhez. 
 
-        :::image type="content" source="./media/move-across-regions/topic-subscriptions.png" alt-text="Témakör-előfizetések":::      
+        :::image type="content" source="./media/move-across-regions/topic-subscriptions.png" alt-text="Resource Manager-sablon letöltése":::      
     
     
 

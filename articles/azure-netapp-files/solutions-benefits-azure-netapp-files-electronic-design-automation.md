@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 04/24/2020
 ms.author: b-juche
 ms.openlocfilehash: fcede16619e8488796adc6f4c60af30643c1aadf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82160153"
 ---
 # <a name="benefits-of-using-azure-netapp-files-for-electronic-design-automation"></a>Az Azure NetApp elektronikus tervautomatizálással való használatának előnyei
@@ -29,7 +29,7 @@ A félvezető-és a chip-kialakítási iparág szempontjából a piacra jutási 
 
 A tesztek három forgatókönyvet tartalmaznak a következő konfigurációkkal. 
 
-|    Eset    |    Kötetek    |    Ügyfelek<br> SLES15 D16s_v3  |
+|    Forgatókönyv    |    Kötetek    |    Ügyfelek<br> SLES15 D16s_v3  |
 |----------------|---------------|--------------------------------|
 |    Eggyel         |    1          |    1                           |
 |    Kettővel         |    6          |    24                          |
@@ -43,7 +43,7 @@ A második és a harmadik forgatókönyv egyetlen Azure NetApp Files végpont ko
 
 A következő táblázat összefoglalja a tesztelési forgatókönyvek eredményeit.
 
-|    Eset       |    I/O-arány<br>  2 MS     |    I/O-arány<br>  a peremen     |    Teljesítmény<br>  2 MS     |    Teljesítmény<br>  a peremen     |
+|    Forgatókönyv       |    I/O-arány<br>  2 MS     |    I/O-arány<br>  a peremen     |    Teljesítmény<br>  2 MS     |    Teljesítmény<br>  a peremen     |
 |-------------------|---------------------------|--------------------------------|-----------------------------|----------------------------------|
 |    1 kötet       |    39 601                 |    49 502                      |    692 MiB/s                 |    866 MiB/s                      |
 |    6 kötet      |    255 613                |    317 000                     |    4 577 MiB/s               |    5 568 MiB/s                    |

@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 09/10/2018
 ms.author: damendo
 ms.openlocfilehash: 28d5ae1451b97c19576baa3f9760b8f784db3175
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84736730"
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-the-portal"></a>A csomagok rögzítésének kezelése az Azure Network Watcher a portál használatával
@@ -67,7 +67,7 @@ Ha hálózati biztonsági csoport van társítva a hálózati adapterhez vagy az
      > [!NOTE]
      > A portok és IP-címek értéke lehet egyetlen érték, egy értéktartomány vagy egy tartomány, például a 80-1024, a porthoz. Tetszőleges számú szűrőt meghatározhat.
 
-4. Válassza az **OK** lehetőséget.
+4. Kattintson az **OK** gombra.
 
 Miután a csomag rögzítésére beállított időkorlát lejárt, a csomagok rögzítése leáll, és áttekinthető. Manuálisan is leállíthatja a csomagok rögzítési munkamenetét.
 

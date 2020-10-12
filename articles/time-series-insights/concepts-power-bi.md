@@ -9,10 +9,10 @@ ms.service: time-series-insights
 ms.topic: conceptual
 ms.date: 09/28/2020
 ms.openlocfilehash: a04712a22536b5811b2465e56995d7b161a15c6b
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91460883"
 ---
 # <a name="connect-azure-time-series-insights-gen-2-to-power-bi"></a>A 2. generációs Azure Time Series Insights összekötése Power BI  
@@ -27,7 +27,7 @@ A Azure Time Series Insights mostantól zökkenőmentesen integrálható a [Powe
 
 > [!VIDEO https://channel9.msdn.com/Shows/Internet-of-Things-Show/Power-BI-integration-with-TSI/player]
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 
    [![Exportálási beállítás a Azure Time Series Insights](./media/concepts-connect-power-bi/tsi-power-bi-export-example.png)](./media/concepts-connect-power-bi/tsi-power-bi-export-example.png#lightbox)
 
@@ -59,7 +59,7 @@ Használja az összekötőt bárhonnan a munkafolyamatban:
 
 A Power BIon belüli speciális lekérdezési és szerkesztési funkciókhoz használja a Power BI Speciális szerkesztő.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Olvassa el [, hogyan csatlakoztatható Time Series Insights a Power BIhoz](./how-to-connect-power-bi.md).
 

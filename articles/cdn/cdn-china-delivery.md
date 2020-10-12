@@ -16,10 +16,10 @@ ms.date: 05/16/2018
 ms.author: allensu
 ms.custom: mvc
 ms.openlocfilehash: fa144c7ebd68e6f5dd192fca83dc6f306d7b8d63
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81254104"
 ---
 # <a name="china-content-delivery-with-azure-cdn"></a>A kínai tartalom kézbesítése Azure CDN
@@ -34,7 +34,7 @@ Azure CDN a Global és a Azure CDN China a következő funkciókat tartalmazza:
 
 - Globális Azure CDN:
 
-     - Portálhttps://portal.azure.com  
+     - Portál https://portal.azure.com  
 
      - A tartalom átvitelét Kínában kívül végzi
 
@@ -44,7 +44,7 @@ Azure CDN a Global és a Azure CDN China a következő funkciókat tartalmazza:
 
 - Azure CDN Kínában:
 
-     - Portálhttps://portal.azure.cn
+     - Portál https://portal.azure.cn
 
      - Elvégzi a tartalom továbbítását Kínában
 

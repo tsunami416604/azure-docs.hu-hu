@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 06/26/2020
 ms.author: enewman
 ms.openlocfilehash: 137959f51b08dceee150962f77110ee2ac1dc193
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85444998"
 ---
 # <a name="setup-a-lab-to-teach-matlab"></a>Tesztkörnyezet beállítása a MATLAB tanításához
@@ -30,7 +30,7 @@ Ha a licenckiszolgáló helyi hálózaton vagy egy Azure-beli magánhálózaton 
 
 ## <a name="lab-configuration"></a>Tesztkörnyezet konfigurációja
 
-A tesztkörnyezet beállításához Azure-előfizetésre van szükség a kezdéshez.  Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/). Az Azure-előfizetés beszerzése után létrehozhat egy új Labor-fiókot Azure Lab Services, vagy használhat meglévő fiókot is.  Új Labor-fiók létrehozásához tekintse meg a [labor-fiók beállítása című oktatóanyagot](tutorial-setup-lab-account.md).
+A tesztkörnyezet beállításához Azure-előfizetésre van szükség a kezdéshez.  Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/), mielőtt hozzákezd. Az Azure-előfizetés beszerzése után létrehozhat egy új Labor-fiókot Azure Lab Services, vagy használhat meglévő fiókot is.  Új Labor-fiók létrehozásához tekintse meg a [labor-fiók beállítása című oktatóanyagot](tutorial-setup-lab-account.md).
 
 Új Labor létrehozásához kövesse [az osztályterem Lab-oktatóanyag beállítása](tutorial-setup-classroom-lab.md)című témakört.  Alkalmazza a következő beállításokat:
 
@@ -69,7 +69,7 @@ A telepítési fájlok letöltéséhez, valamint a licencfájl és a fájl telep
 11. Válassza a **Windows** lehetőséget annak a számítógépnek a platformja, amelyre a MATLAB-t telepíteni fogja.
 12. A **termék kiválasztása** lapon győződjön meg róla, hogy a MATLAB lehetőség van kiválasztva a telepíteni kívánt többi MathWorks-termékkel együtt.
 13. A **kiválasztás és a letöltés megerősítése** lapon kattintson a **Letöltés megkezdése**elemre.  
-14. Várja meg a kiválasztott termékek letöltését.  Kattintson a **Befejezés** gombra.
+14. Várja meg a kiválasztott termékek letöltését.  Kattintson a **Finish** (Befejezés) gombra.
 
 Az ISO-rendszerképet a MathWorks webhelyről is letöltheti.
 
@@ -94,7 +94,7 @@ A fájlok letöltése után a második lépés a telepítő futtatása. A lépé
 9. A **termékek kiválasztása** lapon kattintson a **tovább**gombra.
 10. A **beállítások kiválasztása** lapon kattintson a **tovább**gombra.
 11. A **kijelölések és telepítések megerősítése** lapon kattintson a **telepítés megkezdése**elemre.
-12. A **telepítés kész** lapon ellenőrizze, hogy be van-e JELÖLVE a **MATLAB aktiválása** jelölőnégyzet.  Kattintson a **Befejezés** gombra.
+12. A **telepítés kész** lapon ellenőrizze, hogy be van-e JELÖLVE a **MATLAB aktiválása** jelölőnégyzet.  Kattintson a **Finish** (Befejezés) gombra.
 
 ## <a name="cost-estimate"></a>Költségbecslés
 
@@ -102,7 +102,7 @@ Az osztályra vonatkozó lehetséges költségbecslés.  Ez a becslés nem tarta
 
 Az alábbi példa egy lehetséges költségbecslés erre az osztályra vonatkozóan:
 
-25 tanuló \* (20 ütemezett óra + 10 kvóta óra) \* 55 labor egység \* 0,01 USD/óra = 412,50 USD
+25 tanuló \* (20 ütemezett óra + 10 kvóta óra) \* 55 labor egység \*  0,01 USD/óra = 412,50 USD
 
 >[!IMPORTANT]
 > A költségbecslés csak példaként szolgál.  A díjszabással kapcsolatos aktuális információk: [Azure Lab Services díjszabása](https://azure.microsoft.com/pricing/details/lab-services/).  

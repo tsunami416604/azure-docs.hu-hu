@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 08/14/2020
 ms.author: errobin
 ms.openlocfilehash: 1af3ce7125d30ed0cb9b8ca6b3cb9322dc14c520
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88855249"
 ---
 # <a name="troubleshoot-resource-health-frontend-and-backend-availability-issues"></a>Az erőforrás-állapot, a frontend és a háttérbeli rendelkezésre állási problémák elhárítása 
@@ -57,7 +57,7 @@ Tegyük fel, hogy ellenőrizzük az állapot mintavételi állapotát, és megtu
 
 Ha már elvégezte ezt az ellenőrzőlistát, és még mindig észlelte az állapot-mintavételi hibákat, előfordulhat, hogy ritka platform-problémák léptek fel a mintavételi szolgáltatásban a példányok esetében. Ebben az esetben az Azure visszatért, és automatikusan riasztást küld a csapatnak, hogy gyorsan megoldja az összes platformmal kapcsolatos problémát.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [További információ a Azure Load Balancer Health mintavételről](load-balancer-custom-probe-overview.md)
 * [További információ a Azure Load Balancer mérőszámokról](load-balancer-standard-diagnostics.md)

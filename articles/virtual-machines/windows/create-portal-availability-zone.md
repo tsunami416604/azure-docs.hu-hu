@@ -10,10 +10,10 @@ ms.date: 03/27/2018
 ms.author: cynthn
 ms.custom: ''
 ms.openlocfilehash: 339c093e5444839f9b106cd08980438a864c0474
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87828914"
 ---
 # <a name="create-a-windows-virtual-machine-in-an-availability-zone-with-the-azure-portal"></a>Windows rendszerű virtuális gép létrehozása rendelkezésre állási zónában a Azure Portal
@@ -32,7 +32,7 @@ Jelentkezzen be az Azure Portalra a https://portal.azure.com webhelyen.
 
 2. Válassza a **Számítás**, majd a **Windows Server 2016 Datacenter** elemet. 
 
-3. Adja meg a virtuális gép adatait. Az itt megadott felhasználónévvel és jelszóval bejelentkezhet a virtuális gépbe. A jelszónak legalább 12 karakter hosszúságúnak kell lennie, [az összetettségre vonatkozó követelmények teljesülése mellett](faq.md#what-are-the-password-requirements-when-creating-a-vm). Válasszon olyan helyet, mint az USA 2. keleti régiója, amely támogatja a rendelkezésre állási zónákat. Amikor végzett, kattintson az **OK** gombra.
+3. Adja meg a virtuális gép adatait. Az itt megadott felhasználónévvel és jelszóval bejelentkezhet a virtuális gépbe. A jelszónak legalább 12 karakter hosszúnak kell lennie, és meg kell felelnie a [meghatározott összetettségi követelményeknek](faq.md#what-are-the-password-requirements-when-creating-a-vm). Válasszon olyan helyet, mint az USA 2. keleti régiója, amely támogatja a rendelkezésre állási zónákat. Amikor végzett, kattintson az **OK** gombra.
 
     ![Írja be a virtuális gép alapvető adatait a portálpanelen](./media/create-portal-availability-zone/create-windows-vm-portal-basic-blade.png)
 
@@ -66,6 +66,6 @@ Ezen erőforrások zónájának beállításait a portálon ellenőrizheti.
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből a cikkből megtudhatta, hogyan hozható létre virtuális gép egy rendelkezésre állási zónában. További információ az Azure-beli virtuális gépek [rendelkezésre állásáról](../availability.md) .

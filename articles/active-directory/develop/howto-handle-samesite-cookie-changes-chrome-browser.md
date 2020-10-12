@@ -14,17 +14,17 @@ ms.author: jmprieur
 ms.reviewer: kkrishna
 ms.custom: aaddev
 ms.openlocfilehash: 5742ddf9553c3ac9187dbef93fc7927564cbc095
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88116971"
 ---
 # <a name="handle-samesite-cookie-changes-in-chrome-browser"></a>SameSite-cookie-k változásainak kezelése a Chrome böngészőben
 
 ## <a name="what-is-samesite"></a>Mi az a SameSite?
 
-`SameSite`a egy olyan tulajdonság, amely HTTP-cookie-kon állítható be, hogy megakadályozza a helyek közötti kérelmek hamisításának (CSRF) támadásait a webalkalmazásokban:
+`SameSite` a egy olyan tulajdonság, amely HTTP-cookie-kon állítható be, hogy megakadályozza a helyek közötti kérelmek hamisításának (CSRF) támadásait a webalkalmazásokban:
 
 - Ha a `SameSite` értéke **LAX**, a cookie-t a rendszer ugyanazon a helyen és a más helyekről érkező kérésekre küldött kérelmekben továbbítja. A rendszer nem fogadja el a tartományok közötti GET kérésekben.
 - A **szigorú** érték biztosítja, hogy a cookie-t csak ugyanazon a helyen belül küldje el a rendszer a kérelmekben.
@@ -77,7 +77,7 @@ a SameSite-cookie-k ASP.NET és ASP.NET Core való kezelésével kapcsolatos ré
 
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a SameSite és a webalkalmazási forgatókönyvről:
 

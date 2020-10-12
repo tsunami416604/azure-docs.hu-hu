@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 7cce0a927c2ffd69252a22ea4459f789d22721c2
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86080737"
 ---
 # <a name="create-hive-tables-and-load-data-from-azure-blob-storage"></a>Struktúra-táblák létrehozása és adatok betöltése az Azure Blob Storage
@@ -27,7 +27,7 @@ Ez a cikk feltételezi, hogy rendelkezik a következővel:
 
 * Létrehozott egy Azure Storage-fiókot. Ha útmutatásra van szüksége, tekintse meg [Az Azure Storage-fiókok](../../storage/common/storage-introduction.md)című témakört.
 * Testreszabott Hadoop-fürt kiépítve a HDInsight szolgáltatással.  Ha útmutatásra van szüksége, tekintse meg [a fürtök beállítása a HDInsight-ben](../../hdinsight/hdinsight-hadoop-provision-linux-clusters.md)című témakört.
-* Engedélyezve van a távoli hozzáférés a fürthöz, bejelentkezve, és megnyitotta a Hadoop parancssori konzolt. Ha útmutatásra van szüksége, tekintse meg a [Apache Hadoop-fürtök kezelése](../../hdinsight/hdinsight-administer-use-portal-linux.md)című témakört.
+* Engedélyezve van a távoli hozzáférés a fürthöz, bejelentkezve, és megnyitotta a Hadoop Command-Line-konzolt. Ha útmutatásra van szüksége, tekintse meg a [Apache Hadoop-fürtök kezelése](../../hdinsight/hdinsight-administer-use-portal-linux.md)című témakört.
 
 ## <a name="upload-data-to-azure-blob-storage"></a>Adatok feltöltése az Azure Blob Storage-ba
 Ha létrehozott egy Azure-beli virtuális gépet az Azure-beli [virtuális gépek speciális elemzéshez való beállítása](../../machine-learning/data-science-virtual-machine/overview.md)című témakörben leírtak szerint, a parancsfájlt le kell tölteni a *C: \\ Users \\ \<user name\> \\ Documents \\ adatelemzési parancsfájlok* könyvtárára a virtuális gépen. Ezek a kaptár-lekérdezések csak az Adatséma és az Azure Blob Storage konfigurációjának megadását igénylik a megfelelő mezőkben, hogy készen álljanak a beküldésre.
@@ -86,7 +86,7 @@ hive -S -e "<Hive queries>"
 ```
 
 #### <a name="submit-hive-queries-in-hive-command-console"></a>Kaptár-lekérdezések elküldése a kaptár parancssori konzolon.
-Azt is megteheti, hogy a Hadoop parancssorban futtatja az parancsot `hive` , majd elküldi a kaptár-lekérdezéseket a kaptár parancssori konzolon. Íme egy példa. Ebben a példában a két piros mező kiemeli a kaptár-konzol megadásához használt parancsokat, valamint a kaptár parancssori konzolon küldött struktúra-lekérdezést. A zöld mező kiemeli a kaptár lekérdezés kimenetét.
+Azt is megteheti, hogy a Hadoop parancssorban futtatja az parancsot `hive` , majd elküldi a kaptár-lekérdezéseket a kaptár parancssori konzolon. Például: Ebben a példában a két piros mező kiemeli a kaptár-konzol megadásához használt parancsokat, valamint a kaptár parancssori konzolon küldött struktúra-lekérdezést. A zöld mező kiemeli a kaptár lekérdezés kimenetét.
 
 ![Nyissa meg a kaptár-parancssori konzolt, és írja be a parancsot, és tekintse meg a struktúra lekérdezés](./media/move-hive-tables/run-hive-queries-2.png)
 

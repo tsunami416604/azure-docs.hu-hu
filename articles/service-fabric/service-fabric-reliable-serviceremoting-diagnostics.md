@@ -6,14 +6,14 @@ ms.topic: conceptual
 ms.date: 06/29/2017
 ms.author: pepogors
 ms.openlocfilehash: 89a7a545dd334f892ee27b97995de40d7b6416dc
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86245925"
 ---
 # <a name="diagnostics-and-performance-monitoring-for-reliable-service-remoting"></a>Diagnosztika és Teljesítményfigyelés a megbízható szolgáltatás táveléréséhez
-A megbízható ServiceRemoting futtatókörnyezet [teljesítményszámlálókat](/dotnet/api/system.diagnostics.performancecounter?view=dotnet-plat-ext-3.1)bocsát ki. Ezek betekintést nyújtanak a ServiceRemoting működéséhez, és segítenek a hibaelhárításban és a teljesítmény-figyelésben.
+A megbízható ServiceRemoting futtatókörnyezet  [teljesítményszámlálókat](/dotnet/api/system.diagnostics.performancecounter?view=dotnet-plat-ext-3.1)bocsát ki. Ezek betekintést nyújtanak a ServiceRemoting működéséhez, és segítenek a hibaelhárításban és a teljesítmény-figyelésben.
 
 
 ## <a name="performance-counters"></a>Teljesítményszámlálók

@@ -10,10 +10,10 @@ ms.date: 09/27/2018
 ms.author: cynthn
 ms.custom: legacy
 ms.openlocfilehash: 751fa9f9fe2ba17a982b71a6332be302804f0dcc
-ms.sourcegitcommit: 8a7b82de18d8cba5c2cec078bc921da783a4710e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89047292"
 ---
 # <a name="create-a-managed-image-of-a-generalized-vm-in-azure"></a>Felügyelt rendszerkép létrehozása általánosított Azure-beli virtuális gépből
@@ -85,7 +85,7 @@ A Windows rendszerű virtuális gép általánosításához kövesse az alábbi 
 
 7. Ha azt szeretné, hogy a rendszerképek bármelyik [rendelkezésre állási zónában](../../availability-zones/az-overview.md)használhatók legyenek, válassza **a** be lehetőséget a **zóna rugalmassága**lehetőségnél.
 
-8. A rendszerkép létrehozásához válassza a **Létrehozás** lehetőséget.
+8. A kép létrehozásához válassza a **Létrehozás** lehetőséget.
 
 A rendszerkép létrehozása után **képerőforrásként** megkeresheti az erőforráscsoport erőforrásainak listáját.
 

@@ -4,10 +4,10 @@ description: Megtudhatja, hogyan hozhat létre és helyezhet üzembe egy Service
 ms.topic: conceptual
 ms.date: 04/11/2018
 ms.openlocfilehash: 556d8dee4efd492fa98755f1ffd1cdc1c9887856
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82193649"
 ---
 # <a name="create-your-first-azure-service-fabric-application"></a>Az első Azure Service Fabric-alkalmazás létrehozása
@@ -66,7 +66,7 @@ A Service Fabric Yeoman-sablonok tartalmaznak egy felépítési szkriptet, amely
  ./build.sh
   ```
 
-## <a name="deploy-the-application"></a>Az alkalmazás központi telepítése
+## <a name="deploy-the-application"></a>Az alkalmazás üzembe helyezése
 
 Az alkalmazást a létrehozása után telepítheti a helyi fürtben.
 
@@ -118,7 +118,7 @@ Az aktorprojektek önmagukban nem csinálnak semmit. Egy másik szolgáltatást 
 
 Ha egy másik szolgáltatást szeretne hozzáadni a `yo` használatával már létrehozott alkalmazáshoz, hajtsa végre az alábbi lépéseket:
 1. Lépjen a meglevő alkalmazás gyökérkönyvtárába.  Például `cd ~/YeomanSamples/MyApplication`, ha a `MyApplication` a Yeoman által létrehozott alkalmazás.
-2. Futtassa a `yo azuresfcsharp:AddService` parancsot.
+2. Az `yo azuresfcsharp:AddService` parancs futtatása
 
 ## <a name="next-steps"></a>További lépések
 

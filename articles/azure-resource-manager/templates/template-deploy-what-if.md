@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: tomfitz
 ms.openlocfilehash: 27efe1e03b8a0d373d566106a53a41007731973e
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87810071"
 ---
 # <a name="arm-template-deployment-what-if-operation-preview"></a>ARM-sablon üzembe helyezési művelete (előzetes verzió)
@@ -110,18 +110,18 @@ Resource changes: 1 to modify.
 
 A módosítások előnézetéhez a sablon telepítése előtt használja a [New-AzResourceGroupDeployment](/powershell/module/az.resources/new-azresourcegroupdeployment) vagy a [New-AzSubscriptionDeployment](/powershell/module/az.resources/new-azdeployment). Adja hozzá a `-Whatif` switch paramétert a Deployment parancshoz.
 
-* `New-AzResourceGroupDeployment -Whatif`erőforráscsoport-telepítések esetén
-* `New-AzSubscriptionDeployment -Whatif`és `New-AzDeployment -Whatif` előfizetési szintű központi telepítések esetén
+* `New-AzResourceGroupDeployment -Whatif` erőforráscsoport-telepítések esetén
+* `New-AzSubscriptionDeployment -Whatif` és `New-AzDeployment -Whatif` előfizetési szintű központi telepítések esetén
 
 A `-Confirm` switch paraméterrel megtekintheti a módosításokat, és a rendszer kéri, hogy folytassa a telepítést.
 
-* `New-AzResourceGroupDeployment -Confirm`erőforráscsoport-telepítések esetén
-* `New-AzSubscriptionDeployment -Confirm`és `New-AzDeployment -Confirm` előfizetési szintű központi telepítések esetén
+* `New-AzResourceGroupDeployment -Confirm` erőforráscsoport-telepítések esetén
+* `New-AzSubscriptionDeployment -Confirm` és `New-AzDeployment -Confirm` előfizetési szintű központi telepítések esetén
 
 Az előző parancsok olyan szöveges összegzést adnak vissza, amelyet manuálisan lehet megvizsgálni. Ha olyan objektumot szeretne beolvasni, amelyet programozott módon vizsgálhat a változásokhoz, használja a [Get-AzResourceGroupDeploymentWhatIfResult](/powershell/module/az.resources/get-azresourcegroupdeploymentwhatifresult) vagy a [Get-AzSubscriptionDeploymentWhatIfResult](/powershell/module/az.resources/get-azdeploymentwhatifresult).
 
-* `$results = Get-AzResourceGroupDeploymentWhatIfResult`erőforráscsoport-telepítések esetén
-* `$results = Get-AzSubscriptionDeploymentWhatIfResult`vagy `$results = Get-AzDeploymentWhatIfResult` előfizetési szintű központi telepítések esetén
+* `$results = Get-AzResourceGroupDeploymentWhatIfResult` erőforráscsoport-telepítések esetén
+* `$results = Get-AzSubscriptionDeploymentWhatIfResult` vagy `$results = Get-AzDeploymentWhatIfResult` előfizetési szintű központi telepítések esetén
 
 ### <a name="azure-cli"></a>Azure CLI
 
@@ -421,7 +421,7 @@ Az Azure SDK-k használatával a mi-if művelet is használható.
 
 * .NET esetén használja a [DeploymentWhatIf osztályt](/dotnet/api/microsoft.azure.management.resourcemanager.models.deploymentwhatif?view=azure-dotnet).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ha az előzetes kiadásban helytelen eredményeket észlel, akkor jelentse a hibákat a következő helyen: [https://aka.ms/whatifissues](https://aka.ms/whatifissues) .
 - A sablonok Azure PowerShell használatával történő telepítéséhez lásd: [erőforrások üzembe helyezése ARM-sablonokkal és Azure PowerShell](deploy-powershell.md).

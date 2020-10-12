@@ -14,10 +14,10 @@ ms.author: shoatman
 ms.custom: aaddev, devx-track-java
 ms.reviewer: shoatman
 ms.openlocfilehash: 404ffbc09a69b623a421bd0c01550d72e5c03158
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88115985"
 ---
 # <a name="accounts--tenant-profiles-android"></a>Fiókok és bérlői profilok (Android)
@@ -48,7 +48,7 @@ A Microsoft Identity platform egyik fiókja a következőkből áll:
 - Mivel előfordulhat, hogy egy fiók egy vagy több bérlőn is megtalálható, egy fiók több profillal is rendelkezhet.
 
 > [!NOTE]
-> A MSAL a Microsoft Identity platformon belüli másik bérlőként kezeli a Microsoft-fiók rendszerét (élő, MSA). A Microsoft-fiók bérlő bérlői azonosítója:`9188040d-6c67-4c5b-b112-36a304b66dad`
+> A MSAL a Microsoft Identity platformon belüli másik bérlőként kezeli a Microsoft-fiók rendszerét (élő, MSA). A Microsoft-fiók bérlő bérlői azonosítója: `9188040d-6c67-4c5b-b112-36a304b66dad`
 
 ## <a name="account-overview-diagram"></a>Fiók áttekintése diagram
 
@@ -58,12 +58,12 @@ A fenti ábrán:
 
 - A fiókot `bob@contoso.com` a helyszíni Windows Server Active Directory (a rekord forrása a helyszíni rendszer) hozza létre.
 - A fiókot `tom@live.com` a Microsoft-fiók bérlő hozza létre.
-- `bob@contoso.com`legalább egy erőforráshoz hozzáfér a következő Azure Active Directory bérlők számára:
+- `bob@contoso.com` legalább egy erőforráshoz hozzáfér a következő Azure Active Directory bérlők számára:
   - contoso.com (a rekord Felhőbeli rendszere – a rekord a helyszíni rendszerhez kapcsolódik)
   - fabrikam.com
   - woodgrovebank.com
   - Egy bérlői profil `bob@contoso.com` létezik az egyes bérlők esetében.
-- `tom@live.com`a következő Microsoft-bérlők erőforrásaihoz fér hozzá:
+- `tom@live.com` a következő Microsoft-bérlők erőforrásaihoz fér hozzá:
   - contoso.com
   - fabrikam.com
   - Egy bérlői profil `tom@live.com` létezik az egyes bérlők esetében.
@@ -99,13 +99,13 @@ A hozzáférési token igénylése mellett a MSAL is minden bérlőtől kér azo
 - OpenID
 - profil
 
-Az azonosító jogkivonat a jogcímek listáját tartalmazza. `Claims`a fiókhoz tartozó név/érték párok, és a kérelem elvégzésére szolgálnak.
+Az azonosító jogkivonat a jogcímek listáját tartalmazza. `Claims` a fiókhoz tartozó név/érték párok, és a kérelem elvégzésére szolgálnak.
 
 Ahogy azt korábban említettük, az egyes bérlők, ahol egy fiók létezik, különböző adatokat tárolhatnak a fiókról, többek között a következő attribútumokra: beosztás, iroda helye stb.
 
 Habár egy fiók lehet tag vagy vendég több szervezeten belül, a MSAL nem kérdez le egy szolgáltatást, hogy lekérje azon bérlők listáját, amelyeknek a fiók tagja. Ehelyett a MSAL létrehoz egy listát azokról a bérlők listájáról, amelyeken a fiók szerepel, a jogkivonat-kérelmek eredményeképpen.
 
-A fiók objektumon közzétett jogcímek mindig a fiók "Kezdőlap bérlője"/{Authority} származó jogcímek. Ha ez a fiók nem használ jogkivonatot a saját bérlője számára, a MSAL nem tud jogcímeket biztosítani a fiók objektumon keresztül.  Például:
+A fiók objektumon közzétett jogcímek mindig a fiók "Kezdőlap bérlője"/{Authority} származó jogcímek. Ha ez a fiók nem használ jogkivonatot a saját bérlője számára, a MSAL nem tud jogcímeket biztosítani a fiók objektumon keresztül.  Példa:
 
 ```java
 // Psuedo Code
@@ -125,7 +125,7 @@ String issuer = account.getClaims().get("iss"); // The tenant specific authority
 
 ### <a name="access-tenant-profile-claims"></a>Bérlői profil jogcímeinek elérése
 
-Ha más bérlők által megjelenő fiókhoz szeretne jogcímeket elérni, először be kell állítania a fiók objektumát `IMultiTenantAccount` . Az összes fiók több-bérlő lehet, de a MSAL-n keresztül elérhető bérlői profilok száma attól függ, hogy mely bérlők igényeltek jogkivonatot az aktuális fiók használatával.  Például:
+Ha más bérlők által megjelenő fiókhoz szeretne jogcímeket elérni, először be kell állítania a fiók objektumát `IMultiTenantAccount` . Az összes fiók több-bérlő lehet, de a MSAL-n keresztül elérhető bérlői profilok száma attól függ, hogy mely bérlők igényeltek jogkivonatot az aktuális fiók használatával.  Példa:
 
 ```java
 // Psuedo Code

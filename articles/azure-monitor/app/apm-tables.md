@@ -6,10 +6,10 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/09/2020
 ms.openlocfilehash: 1d7275c928b4d25e200a3a8d3d690c7575c056e7
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87323179"
 ---
 # <a name="workspace-based-resource-changes-preview"></a>Munkaterület-alapú erőforrás-változások (előzetes verzió)
@@ -18,7 +18,7 @@ A [munkaterület-alapú Application Insights erőforrások](create-workspace-res
 
 A munkaterületen alapuló Application Insights erőforrás-adathalmazok egy Log Analytics munkaterületen vannak tárolva, amelyek más megfigyelési és alkalmazásadatok. Ez egyszerűbbé teszi a konfigurációt azáltal, hogy könnyebben elemezheti az adatelemzést több megoldás között, és kihasználhatja a munkaterületek képességeit.
 
-## <a name="table-structure"></a>Tábla szerkezete
+## <a name="table-structure"></a>Táblastruktúra
 
 | Örökölt tábla neve | Új tábla neve | Leírás |
 |:---|:---|:---|
@@ -58,8 +58,8 @@ A legtöbb oszlop neve azonos a különböző nagybetűkkel. Mivel a KQL megkül
 |client_Type|sztring|ClientType|sztring|
 |cloud_RoleInstance|sztring|AppRoleInstance|sztring|
 |cloud_RoleName|sztring|AppRoleName|sztring|
-|customDimensions|dynamic|Tulajdonságok|Dinamikus|
-|customMeasurements|dynamic|Mérések|Dinamikus|
+|customDimensions|dinamikus|Tulajdonságok|Dinamikus|
+|customMeasurements|dinamikus|Mérések|Dinamikus|
 |duration|valós szám|DurationMs|valós szám|
 |`id`|sztring|`Id`|sztring|
 |Rendszerállapotkulcsot|sztring|Rendszerállapotkulcsot|sztring|
@@ -68,7 +68,7 @@ A legtöbb oszlop neve azonos a különböző nagybetűkkel. Mivel a KQL megkül
 |itemType|sztring|Típus|Sztring|
 |location|sztring|Hely|sztring|
 |message|sztring|Üzenet|sztring|
-|name|sztring|Név|sztring|
+|name|sztring|Name (Név)|sztring|
 |operation_Id|sztring|OperationId|sztring|
 |operation_Name|sztring|OperationName|sztring|
 |operation_ParentId|sztring|OperationParentId|sztring|
@@ -102,13 +102,13 @@ A legtöbb oszlop neve azonos a különböző nagybetűkkel. Mivel a KQL megkül
 |client_Type|sztring|ClientType|sztring|
 |cloud_RoleInstance|sztring|AppRoleInstance|sztring|
 |cloud_RoleName|sztring|AppRoleName|sztring|
-|customDimensions|dynamic|Tulajdonságok|Dinamikus|
-|customMeasurements|dynamic|Mérések|Dinamikus|
+|customDimensions|dinamikus|Tulajdonságok|Dinamikus|
+|customMeasurements|dinamikus|Mérések|Dinamikus|
 |Rendszerállapotkulcsot|sztring|Rendszerállapotkulcsot|sztring|
 |itemCount|int|ItemCount|int|
 |elemazonosító|sztring|\_Elemazonosító|sztring|
 |itemType|sztring|Típus|sztring|
-|name|sztring|Név|dátum/idő|
+|name|sztring|Name (Név)|dátum/idő|
 |networkDuration|valós szám|NetworkDurationMs|valós szám|
 |operation_Id|sztring|OperationId|sztring|
 |operation_Name|sztring|OperationName|sztring|
@@ -146,8 +146,8 @@ A legtöbb oszlop neve azonos a különböző nagybetűkkel. Mivel a KQL megkül
 |client_Type|sztring|ClientType|sztring|
 |cloud_RoleInstance|sztring|AppRoleInstance|sztring|
 |cloud_RoleName|sztring|AppRoleName|sztring|
-|customDimensions|dynamic|Tulajdonságok|Dinamikus|
-|customMeasurements|dynamic|Mérések|Dinamikus|
+|customDimensions|dinamikus|Tulajdonságok|Dinamikus|
+|customMeasurements|dinamikus|Mérések|Dinamikus|
 |adatok|sztring|Adatok|sztring|
 |duration|valós szám|DurationMs|valós szám|
 |`id`|sztring|`Id`|sztring|
@@ -155,7 +155,7 @@ A legtöbb oszlop neve azonos a különböző nagybetűkkel. Mivel a KQL megkül
 |itemCount|int|ItemCount|int|
 |elemazonosító|sztring|\_Elemazonosító|sztring|
 |itemType|sztring|Típus|Sztring|
-|name|sztring|Név|sztring|
+|name|sztring|Name (Név)|sztring|
 |operation_Id|sztring|OperationId|sztring|
 |operation_Name|sztring|OperationName|sztring|
 |operation_ParentId|sztring|OperationParentId|sztring|
@@ -191,13 +191,13 @@ A legtöbb oszlop neve azonos a különböző nagybetűkkel. Mivel a KQL megkül
 |client_Type|sztring|ClientType|sztring|
 |cloud_RoleInstance|sztring|AppRoleInstance|sztring|
 |cloud_RoleName|sztring|AppRoleName|sztring|
-|customDimensions|dynamic|Tulajdonságok|Dinamikus|
-|customMeasurements|dynamic|Mérések|Dinamikus|
+|customDimensions|dinamikus|Tulajdonságok|Dinamikus|
+|customMeasurements|dinamikus|Mérések|Dinamikus|
 |Rendszerállapotkulcsot|sztring|Rendszerállapotkulcsot|sztring|
 |itemCount|int|ItemCount|int|
 |elemazonosító|sztring|\_Elemazonosító|sztring|
 |itemType|sztring|Típus|sztring|
-|name|sztring|Név|sztring|
+|name|sztring|Name (Név)|sztring|
 |operation_Id|sztring|OperationId|sztring|
 |operation_Name|sztring|OperationName|sztring|
 |operation_ParentId|sztring|OperationParentId|sztring|
@@ -228,11 +228,11 @@ A legtöbb oszlop neve azonos a különböző nagybetűkkel. Mivel a KQL megkül
 |client_Type|sztring|ClientType|sztring|
 |cloud_RoleInstance|sztring|AppRoleInstance|sztring|
 |cloud_RoleName|sztring|AppRoleName|sztring|
-|customDimensions|dynamic|Tulajdonságok|Dinamikus|
+|customDimensions|dinamikus|Tulajdonságok|Dinamikus|
 |Rendszerállapotkulcsot|sztring|Rendszerállapotkulcsot|sztring|
 |elemazonosító|sztring|\_Elemazonosító|sztring|
 |itemType|sztring|Típus|sztring|
-|name|sztring|Név|sztring|
+|name|sztring|Name (Név)|sztring|
 |operation_Id|sztring|OperationId|sztring|
 |operation_Name|sztring|OperationName|sztring|
 |operation_ParentId|sztring|OperationParentId|sztring|
@@ -243,7 +243,7 @@ A legtöbb oszlop neve azonos a különböző nagybetűkkel. Mivel a KQL megkül
 |user_AccountId|sztring|UserAccountId|sztring|
 |user_AuthenticatedId|sztring|UserAuthenticatedId|sztring|
 |user_Id|sztring|UserId (Felhasználóazonosító)|sztring|
-|value|valós szám|távolítva||
+|érték|valós szám|távolítva||
 |valueCount|int|ValueCount|int|
 |valueMax|valós szám|ValueMax|valós szám|
 |valueMin|valós szám|ValueMin|valós szám|
@@ -269,15 +269,15 @@ A legtöbb oszlop neve azonos a különböző nagybetűkkel. Mivel a KQL megkül
 |client_Type|sztring|ClientType|sztring|
 |cloud_RoleInstance|sztring|AppRoleInstance|sztring|
 |cloud_RoleName|sztring|AppRoleName|sztring|
-|customDimensions|dynamic|Tulajdonságok|Dinamikus|
-|customMeasurements|dynamic|Mérések|Dinamikus|
+|customDimensions|dinamikus|Tulajdonságok|Dinamikus|
+|customMeasurements|dinamikus|Mérések|Dinamikus|
 |duration|valós szám|DurationMs|valós szám|
 |`id`|sztring|`Id`|sztring|
 |Rendszerállapotkulcsot|sztring|Rendszerállapotkulcsot|sztring|
 |itemCount|int|ItemCount|int|
 |elemazonosító|sztring|\_Elemazonosító|sztring|
 |itemType|sztring|Típus|Sztring|
-|name|sztring|Név|sztring|
+|name|sztring|Name (Név)|sztring|
 |operation_Id|sztring|OperationId|sztring|
 |operation_Name|sztring|OperationName|sztring|
 |operation_ParentId|sztring|OperationParentId|sztring|
@@ -312,12 +312,12 @@ A legtöbb oszlop neve azonos a különböző nagybetűkkel. Mivel a KQL megkül
 |cloud_RoleInstance|sztring|AppRoleInstance|sztring|
 |cloud_RoleName|sztring|AppRoleName|sztring|
 |számláló|sztring|távolítva||
-|customDimensions|dynamic|Tulajdonságok|Dinamikus|
+|customDimensions|dinamikus|Tulajdonságok|Dinamikus|
 |Rendszerállapotkulcsot|sztring|Rendszerállapotkulcsot|sztring|
 |például|sztring|Példány|sztring|
 |elemazonosító|sztring|\_Elemazonosító|sztring|
 |itemType|sztring|Típus|sztring|
-|name|sztring|Név|sztring|
+|name|sztring|Name (Név)|sztring|
 |operation_Id|sztring|OperationId|sztring|
 |operation_Name|sztring|OperationName|sztring|
 |operation_ParentId|sztring|OperationParentId|sztring|
@@ -328,7 +328,7 @@ A legtöbb oszlop neve azonos a különböző nagybetűkkel. Mivel a KQL megkül
 |user_AccountId|sztring|UserAccountId|sztring|
 |user_AuthenticatedId|sztring|UserAuthenticatedId|sztring|
 |user_Id|sztring|UserId (Felhasználóazonosító)|sztring|
-|value|valós szám|Érték|valós szám|
+|érték|valós szám|Érték|valós szám|
 
 ### <a name="apprequests"></a>AppRequests
 
@@ -349,15 +349,15 @@ A legtöbb oszlop neve azonos a különböző nagybetűkkel. Mivel a KQL megkül
 |client_Type|sztring|ClientType|sztring|
 |cloud_RoleInstance|sztring|AppRoleInstance|sztring|
 |cloud_RoleName|sztring|AppRoleName|sztring|
-|customDimensions|dynamic|Tulajdonságok|Dinamikus|
-|customMeasurements|dynamic|Mérések|Dinamikus|
+|customDimensions|dinamikus|Tulajdonságok|Dinamikus|
+|customMeasurements|dinamikus|Mérések|Dinamikus|
 |duration|valós szám|DurationMs|Valós|
 |`id`|sztring|`Id`|Sztring|
 |Rendszerállapotkulcsot|sztring|Rendszerállapotkulcsot|sztring|
 |itemCount|int|ItemCount|int|
 |elemazonosító|sztring|\_Elemazonosító|sztring|
 |itemType|sztring|Típus|Sztring|
-|name|sztring|Név|Sztring|
+|name|sztring|Name (Név)|Sztring|
 |operation_Id|sztring|OperationId|sztring|
 |operation_Name|sztring|OperationName|sztring|
 |operation_ParentId|sztring|OperationParentId|sztring|
@@ -394,9 +394,9 @@ A legtöbb oszlop neve azonos a különböző nagybetűkkel. Mivel a KQL megkül
 |client_Type|sztring|ClientType|sztring|
 |cloud_RoleInstance|sztring|AppRoleInstance|sztring|
 |cloud_RoleName|sztring|AppRoleName|sztring|
-|customDimensions|dynamic|Tulajdonságok|dynamic|
-|customMeasurements|dynamic|Mérések|dynamic|
-|Részletek|dynamic|Részletek|dynamic|
+|customDimensions|dinamikus|Tulajdonságok|dinamikus|
+|customMeasurements|dinamikus|Mérések|dinamikus|
+|Részletek|dinamikus|Részletek|dinamikus|
 |handledAt|sztring|HandledAt|sztring|
 |Rendszerállapotkulcsot|sztring|Rendszerállapotkulcsot|sztring|
 |innermostAssembly|sztring|InnermostAssembly|sztring|
@@ -445,8 +445,8 @@ A legtöbb oszlop neve azonos a különböző nagybetűkkel. Mivel a KQL megkül
 |client_Type|sztring|ClientType|sztring|
 |cloud_RoleInstance|sztring|AppRoleInstance|sztring|
 |cloud_RoleName|sztring|AppRoleName|sztring|
-|customDimensions|dynamic|Tulajdonságok|dynamic|
-|customMeasurements|dynamic|Mérések|dynamic|
+|customDimensions|dinamikus|Tulajdonságok|dinamikus|
+|customMeasurements|dinamikus|Mérések|dinamikus|
 |Rendszerállapotkulcsot|sztring|Rendszerállapotkulcsot|sztring|
 |itemCount|int|ItemCount|int|
 |elemazonosító|sztring|\_Elemazonosító|sztring|

@@ -10,10 +10,10 @@ ms.date: 05/06/2020
 ms.reviewer: mimckitt
 ms.custom: mimckitt
 ms.openlocfilehash: a38a715b45ab4d0810862ef4d016e4187ea507ab
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84783044"
 ---
 # <a name="using-application-health-extension-with-virtual-machine-scale-sets"></a>Az Application Health bővítmény használata virtuálisgép-méretezési csoportokkal
@@ -57,20 +57,20 @@ A következő JSON az alkalmazás állapotára szolgáló bővítmény sémájá
 
 ### <a name="property-values"></a>Tulajdonságértékek
 
-| Name | Érték/példa | Adattípus
+| Name (Név) | Érték/példa | Adattípus
 | ---- | ---- | ---- 
 | apiVersion | `2018-10-01` | dátum |
 | közzétevő | `Microsoft.ManagedServices` | sztring |
-| típus | `ApplicationHealthLinux`(Linux), `ApplicationHealthWindows` (Windows) | sztring |
+| típus | `ApplicationHealthLinux` (Linux), `ApplicationHealthWindows` (Windows) | sztring |
 | typeHandlerVersion | `1.0` | int |
 
 ### <a name="settings"></a>Beállítások
 
-| Name | Érték/példa | Adattípus
+| Name (Név) | Érték/példa | Adattípus
 | ---- | ---- | ----
 | protokoll | `http`vagy `https``tcp` | sztring |
 | port | Nem kötelező, ha protokoll `http` vagy `https``tcp` | int |
-| requestPath | Kötelező, ha a protokoll értéke `http` vagy `https` , nem engedélyezett, ha a protokoll`tcp` | sztring |
+| requestPath | Kötelező, ha a protokoll értéke `http` vagy `https` , nem engedélyezett, ha a protokoll `tcp` | sztring |
 
 ## <a name="deploy-the-application-health-extension"></a>Az alkalmazás állapot-kiterjesztésének üzembe helyezése
 Az alábbi példákban több módon is üzembe helyezheti az alkalmazás állapotának kiterjesztését a méretezési csoportokban.
