@@ -9,10 +9,10 @@ ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 747d03b228d41066cfc834b4a9c044b16c767622
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91329363"
 ---
 # <a name="configuring-azure-file-sync-network-endpoints"></a>Az Azure File Sync hálózati végpontjainak konfigurálása
@@ -623,5 +623,5 @@ az resource update \
 ---
 
 ## <a name="see-also"></a>Lásd még
-- [Azure File Sync – üzembe helyezés tervezése](storage-sync-files-planning.md)
+- [Az Azure File Sync üzembe helyezésének megtervezése](storage-sync-files-planning.md)
 - [Azure File Sync – üzembe helyezés](storage-sync-files-deployment-guide.md)

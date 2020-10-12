@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 07/24/2019
 ms.author: erhopf
 ms.openlocfilehash: c7dd916b27cd8005162c09f7e6a090293e336719
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83590638"
 ---
 # <a name="custom-subdomain-names-for-cognitive-services"></a>Cognitive Services egyéni tartománynevei
@@ -91,12 +91,12 @@ Igen. Az Azure Cognitive Services erőforrásaival használható regionális vé
 | | USA nyugati középső régiója | `https://westcentralus.api.cognitive.microsoft.com` |
 | | Nyugat-Európa | `https://westeurope.api.cognitive.microsoft.com` |
 | | USA nyugati régiója | `https://westus.api.cognitive.microsoft.com` |
-| | USA nyugati régiója, 2. | `https://westus2.api.cognitive.microsoft.com` |
+| | USA 2. nyugati régiója | `https://westus2.api.cognitive.microsoft.com` |
 | US Gov | USA-beli államigazgatás – Virginia | `https://virginia.api.cognitive.microsoft.us` |
 | Kína | Kelet-Kína 2 | `https://chinaeast2.api.cognitive.azure.cn` |
 | | Észak-Kína | `https://chinanorth.api.cognitive.azure.cn` |
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 * [Mi a Cognitive Services?](Welcome.md)
 * [Hitelesítés](authentication.md)

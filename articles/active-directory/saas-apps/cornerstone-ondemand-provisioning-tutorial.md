@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.openlocfilehash: 4200bc9879aba5e18282123be03576cc617a5e14
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88549228"
 ---
 # <a name="tutorial-configure-cornerstone-ondemand-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés sarokköve OnDemand konfigurálása
@@ -84,7 +84,7 @@ Az Azure AD-ben az alábbi lépések végrehajtásával konfigurálhatja az auto
 
     ![A OnDemand sarokköve hivatkozás az alkalmazások listájában](common/all-applications.png)
 
-3. Válassza ki a **kiépítés** lapot.
+3. Válassza a **Kiépítés** lapot.
 
     ![OnDemand kiépítés sarokköve](./media/cornerstone-ondemand-provisioning-tutorial/ProvisioningTab.png)
 
@@ -108,7 +108,7 @@ Az Azure AD-ben az alábbi lépések végrehajtásával konfigurálhatja az auto
 
     ![A sarokköve OnDemand értesítő e-mail-címe](./media/cornerstone-ondemand-provisioning-tutorial/EmailNotification.png)
 
-8. Válassza a **Mentés** lehetőséget.
+8. Kattintson a **Mentés** gombra.
 
 9. A **leképezések** szakaszban válassza a **Azure Active Directory felhasználók szinkronizálása a sarokköve OnDemand**lehetőséget.
 
@@ -155,7 +155,7 @@ A sarokköve OnDemand **position** attribútum olyan értéket vár, amely megfe
 
 ## <a name="next-steps"></a>További lépések
 
-* [Megtudhatja, hogyan tekintheti át a naplókat, és hogyan kérhet jelentéseket a kiépítési tevékenységekről](../app-provisioning/check-status-user-account-provisioning.md)
+* [Tudnivalók a naplók áttekintéséről és az átadási tevékenységekkel kapcsolatos jelentések lekéréséről](../app-provisioning/check-status-user-account-provisioning.md)
 
 <!--Image references-->
 [1]: ./media/cornerstone-ondemand-provisioning-tutorial/tutorial_general_01.png

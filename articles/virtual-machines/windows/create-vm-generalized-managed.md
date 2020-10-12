@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/17/2018
 ms.author: cynthn
 ms.openlocfilehash: 2be48025bcf2be8cec63e2a251f034e72c803e88
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87289661"
 ---
 # <a name="create-a-vm-from-a-managed-image"></a>Virtuális gép létrehozása felügyelt rendszerképből
@@ -39,7 +39,7 @@ A PowerShell használatával létrehozhat egy virtuális gépet egy rendszerkép
 
  
 
-A [New-AzVm](/powershell/module/az.compute/new-azvm) egyszerűsített paraméterének csak azt kell megadnia, hogy a virtuális gép rendszerképből való létrehozásához meg kell adnia egy nevet, egy erőforráscsoportot és egy rendszerkép nevét. A New-AzVm a **-Name** paraméter értékét fogja használni az összes automatikusan létrehozott erőforrás neveként. Ebben a példában részletesebb nevet adunk az egyes erőforrásokhoz, de a parancsmag automatikusan létrehozza azokat. Előre is létrehozhat erőforrásokat, például a virtuális hálózatot, és átadhatja az erőforrás nevét a parancsmagnak. A New-AzVm a meglévő erőforrásokat fogja használni, ha azok nevük alapján megtalálják őket.
+A [New-AzVm](/powershell/module/az.compute/new-azvm) egyszerűsített paraméterének csak azt kell megadnia, hogy a virtuális gép rendszerképből való létrehozásához meg kell adnia egy nevet, egy erőforráscsoportot és egy rendszerkép nevét. New-AzVm a **-Name** paraméter értékét fogja használni az összes automatikusan létrehozott erőforrás neveként. Ebben a példában részletesebb nevet adunk az egyes erőforrásokhoz, de a parancsmag automatikusan létrehozza azokat. Előre is létrehozhat erőforrásokat, például a virtuális hálózatot, és átadhatja az erőforrás nevét a parancsmagnak. New-AzVm a meglévő erőforrásokat fogja használni, ha a nevük alapján megtalálják őket.
 
 A következő példa egy *myVMFromImage*nevű virtuális gépet hoz létre a *myResourceGroup* -erőforráscsoporthoz a *myImage*nevű rendszerképből. 
 

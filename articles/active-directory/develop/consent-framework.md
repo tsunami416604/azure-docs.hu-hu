@@ -14,10 +14,10 @@ ms.author: ryanwi
 ms.reviewer: zachowd, lenalepa, jesakowi
 ms.custom: aaddev, has-adal-ref
 ms.openlocfilehash: e9780332ad6279deef63910c7e6ba95e1ccf43bd
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90706132"
 ---
 # <a name="azure-active-directory-consent-framework"></a>Az Azure Active Directory jóváhagyási keretrendszere
@@ -62,7 +62,7 @@ A következő lépések bemutatják, hogyan működik az alkalmazás-fejlesztő 
    > [!IMPORTANT]
    > A explicit beleegyezés megadása az **engedélyek megadása** gomb használata jelenleg szükséges a ADAL.js használó egyoldalas alkalmazásokhoz (Spa). Ellenkező esetben az alkalmazás a hozzáférési jogkivonat kérése esetén meghiúsul.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Ismerje [meg, hogyan alakíthat át egy alkalmazást több-bérlővé](howto-convert-app-to-be-multi-tenant.md)
 * További részletekért tekintse meg, [Hogyan támogatott a hozzájárulás a OAuth 2,0 protokoll-rétegben az engedélyezési kód engedélyezése folyamat során.](../azuread-dev/v1-protocols-oauth-code.md#request-an-authorization-code)

@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/29/2020
 ms.author: aahi
 ms.openlocfilehash: 12f3ce506d8b4588dc9c670e49cabd3bc7767566
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91460271"
 ---
 # <a name="whats-new-in-the-text-analytics-api"></a>A Text Analytics API újdonságai.
@@ -165,7 +165,7 @@ További entitás-típusok mostantól elérhetők az elnevezett entitás-felisme
 
 * A következő általános entitás-típusok felismerése (csak angol nyelven):
     * PersonType
-    * Termék
+    * Product
     * Esemény
     * Geopolitikai entitás (GPE) a hely alatt altípusként
     * Ügyességi
@@ -213,11 +213,11 @@ Támogatja az angol ( `en` ), a japán (), a `ja` kínai egyszerűsített ( `zh-
 > [!div class="nextstepaction"]
 > [További információ a Hangulatelemzés v3-ról](how-tos/text-analytics-how-to-sentiment-analysis.md#sentiment-analysis-versions-and-features)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Mi a Text Analytics API?](overview.md)  
 * [Példa felhasználói forgatókönyvek](text-analytics-user-scenarios.md)
-* [Hangulat elemzése](how-tos/text-analytics-how-to-sentiment-analysis.md)
+* [Hangulatelemzés](how-tos/text-analytics-how-to-sentiment-analysis.md)
 * [Nyelvfelismerés](how-tos/text-analytics-how-to-language-detection.md)
 * [Entitások felismerése](how-tos/text-analytics-how-to-entity-linking.md)
 * [Fő kifejezés kibontása](how-tos/text-analytics-how-to-keyword-extraction.md)

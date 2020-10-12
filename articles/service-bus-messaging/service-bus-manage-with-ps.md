@@ -4,10 +4,10 @@ description: Ez a cikk bemutatja, hogyan hozhat létre és kezelhet Service Bus 
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: b6439deb2b86c2ea5b50fe3bdbad89a0875b2acc
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88065743"
 ---
 # <a name="use-powershell-to-manage-service-bus-resources"></a>Service Bus erőforrások kezelése a PowerShell használatával
@@ -34,11 +34,11 @@ Első lépésként a PowerShell használatával jelentkezzen be az Azure-fiókj�
 
 Service Bus névterek használatakor a [Get-AzServiceBusNamespace](/powershell/module/az.servicebus/get-azservicebusnamespace), a [New-AzServiceBusNamespace](/powershell/module/az.servicebus/new-azservicebusnamespace), a [Remove-AzServiceBusNamespace](/powershell/module/az.servicebus/remove-azservicebusnamespace)és a [set-AzServiceBusNamespace](/powershell/module/az.servicebus/set-azservicebusnamespace) parancsmagot használhatja.
 
-Ez a példa néhány helyi változót hoz létre a parancsfájlban; `$Namespace`és `$Location` .
+Ez a példa néhány helyi változót hoz létre a parancsfájlban; `$Namespace` és `$Location` .
 
-* `$Namespace`annak a Service Bus névtérnek a neve, amellyel dolgozni szeretne.
-* `$Location`azonosítja azt az adatközpontot, amelyben kiépítjük a névteret.
-* `$CurrentNamespace`a lekért (vagy létrehozandó) hivatkozási névteret tárolja.
+* `$Namespace` annak a Service Bus névtérnek a neve, amellyel dolgozni szeretne.
+* `$Location` azonosítja azt az adatközpontot, amelyben kiépítjük a névteret.
+* `$CurrentNamespace` a lekért (vagy létrehozandó) hivatkozási névteret tárolja.
 
 Egy tényleges parancsfájlban, `$Namespace` és `$Location` paraméterként adható át.
 
@@ -151,7 +151,7 @@ Set-AzServiceBusQueue -ResourceGroup $ResGrpName -NamespaceName $Namespace -Queu
 
 Más entitások, például témakörök és előfizetések kiépítéséhez használhatja a [Service Bus PowerShell-modult](/powershell/module/az.servicebus) . Ezek a parancsmagok szintaktikai módon hasonlóak az előző szakaszban bemutatott üzenetsor-létrehozási parancsmagokhoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tekintse meg a teljes Service Bus Resource Manager PowerShell- [modul dokumentációját](/powershell/module/az.servicebus). Ezen az oldalon az összes elérhető parancsmag szerepel.
 - Azure Resource Manager sablonok használatával kapcsolatos információkért tekintse meg [Service Bus erőforrások létrehozása Azure Resource Manager sablonok használatával](service-bus-resource-manager-overview.md)című cikket.

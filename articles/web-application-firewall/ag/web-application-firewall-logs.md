@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 10/25/2019
 ms.author: victorh
 ms.openlocfilehash: a84e48c7fbb6d63a4bf8946b66bd35f354643ccb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84753604"
 ---
 # <a name="resource-logs-for-azure-web-application-firewall"></a>Az Azure webalkalmazási tűzfal erőforrás-naplói
@@ -87,7 +87,7 @@ Az Azure alapértelmezés szerint a tevékenység naplóját hozza létre. A nap
 
 A hozzáférési napló csak akkor jön létre, ha minden Application Gateway példányon engedélyezte az előző lépésekben részletezett módon. Az adatai a naplózás engedélyezésekor megadott Storage-fiókban tárolódnak. A Application Gateway minden hozzáférése JSON formátumban van naplózva, ahogyan az a V1-hez készült következő példában látható:
 
-|Érték  |Description  |
+|Érték  |Leírás  |
 |---------|---------|
 |instanceId     | Application Gateway a kérelmet kézbesítő példány.        |
 |Ügyfélip     | A kérelemből származó IP-cím.        |
@@ -100,7 +100,7 @@ A hozzáférési napló csak akkor jön létre, ha minden Application Gateway p�
 |httpVersion     | A kérelem HTTP-verziója.        |
 |– Fogadott bájtok     | A fogadott csomagok mérete bájtban megadva.        |
 |– Küldött bájtok| Az elküldött csomagok mérete bájtban kifejezve.|
-|Eltelt idő| A kérelem feldolgozására és a hozzá tartozó válasz elküldésekor szükséges időtartam (ezredmásodpercben). Ez a számítás azt az időintervallumot számítja ki, amikor a Application Gateway egy HTTP-kérelem első bájtját kapja meg a válasz küldési műveletének befejezési idejére. Fontos megjegyezni, hogy az idő mező általában magában foglalja azt az időpontot, ameddig a kérelem és a válasz csomagjai a hálózaton keresztül utaznak. |
+|Eltelt idő| A kérelem feldolgozására és a hozzá tartozó válasz elküldésekor szükséges időtartam (ezredmásodpercben). Ez a számítás azt az időintervallumot számítja ki, amikor a Application Gateway egy HTTP-kérelem első bájtját kapja meg a válasz küldési műveletének befejezési idejére. Fontos megjegyezni, hogy a Time-Taken mező általában azt az időpontot tartalmazza, ameddig a kérelem és a válasz csomagjai a hálózaton keresztül utaznak. |
 |sslEnabled| A TLS/SSL protokollt használó háttér-készletekkel folytatott kommunikáció. Az érvényes értékek be-és kikapcsolva.|
 |gazda| Az az állomásnév, amellyel a rendszer elküldte a kérést a háttér-kiszolgálónak. Ha a háttérbeli állomásnév felülbírálva van, akkor ez a név fog megjelenni.|
 |originalHost| Az az állomásnév, amellyel a kérést a Application Gateway fogadta az ügyféltől.|
@@ -131,7 +131,7 @@ A hozzáférési napló csak akkor jön létre, ha minden Application Gateway p�
 ```
 Application Gateway és WAF v2 esetén a naplók valamivel több információt mutatnak be:
 
-|Érték  |Description  |
+|Érték  |Leírás  |
 |---------|---------|
 |instanceId     | Application Gateway a kérelmet kézbesítő példány.        |
 |Ügyfélip     | A kérelemből származó IP-cím.        |
@@ -143,7 +143,7 @@ Application Gateway és WAF v2 esetén a naplók valamivel több információt m
 |httpVersion     | A kérelem HTTP-verziója.        |
 |– Fogadott bájtok     | A fogadott csomagok mérete bájtban megadva.        |
 |– Küldött bájtok| Az elküldött csomagok mérete bájtban kifejezve.|
-|Eltelt idő| A kérelem feldolgozására és a hozzá tartozó válasz elküldésekor szükséges időtartam (ezredmásodpercben). Ez a számítás azt az időintervallumot számítja ki, amikor a Application Gateway egy HTTP-kérelem első bájtját kapja meg a válasz küldési műveletének befejezési idejére. Fontos megjegyezni, hogy az idő mező általában magában foglalja azt az időpontot, ameddig a kérelem és a válasz csomagjai a hálózaton keresztül utaznak. |
+|Eltelt idő| A kérelem feldolgozására és a hozzá tartozó válasz elküldésekor szükséges időtartam (ezredmásodpercben). Ez a számítás azt az időintervallumot számítja ki, amikor a Application Gateway egy HTTP-kérelem első bájtját kapja meg a válasz küldési műveletének befejezési idejére. Fontos megjegyezni, hogy a Time-Taken mező általában azt az időpontot tartalmazza, ameddig a kérelem és a válasz csomagjai a hálózaton keresztül utaznak. |
 |sslEnabled| A TLS-t használó háttér-készletekkel folytatott kommunikáció. Az érvényes értékek be-és kikapcsolva.|
 |sslCipher| A TLS-kommunikációhoz használt titkosító csomag (ha a TLS engedélyezve van).|
 |sslProtocol| Használt TLS protokoll (ha a TLS engedélyezve van).|
@@ -185,13 +185,13 @@ Application Gateway és WAF v2 esetén a naplók valamivel több információt m
 A rendszer csak akkor hozza létre a teljesítményadatokat, ha minden Application Gateway példányon engedélyezte azt az előző lépésekben részletezett módon. Az adatai a naplózás engedélyezésekor megadott Storage-fiókban tárolódnak. A Teljesítménynapló adatai 1 percenként jönnek létre. Csak a v1 SKU esetében érhető el. A v2 SKU esetében használja a teljesítményadatok [mérőszámait](../../application-gateway/application-gateway-metrics.md) . A rendszer naplózza a következő adatnaplókat:
 
 
-|Érték  |Description  |
+|Érték  |Leírás  |
 |---------|---------|
 |instanceId     |  Application Gateway példány, amelynél a teljesítményadatokat generálja a rendszer. A többpéldányos Application Gateway esetében a példányok száma egy sor.        |
 |healthyHostCount     | A háttér-készletben található kifogástalan állapotú gazdagépek száma.        |
 |unHealthyHostCount     | A nem kifogástalan állapotú gazdagépek száma a háttérbeli készletben.        |
 |requestCount     | A kézbesített kérelmek száma.        |
-|késleltetés | A példány és a háttérben futó kérelmek átlagos késése (ezredmásodpercben), amely a kérelmeket szolgálja ki. |
+|késés | A példány és a háttérben futó kérelmek átlagos késése (ezredmásodpercben), amely a kérelmeket szolgálja ki. |
 |failedRequestCount| Sikertelen kérelmek száma.|
 |korlátozások| Átlagos átviteli sebesség az utolsó napló óta, bájt/másodpercben mérve.|
 
@@ -222,7 +222,7 @@ A rendszer csak akkor hozza létre a teljesítményadatokat, ha minden Applicati
 A rendszer csak akkor hozza létre a tűzfal-naplót, ha engedélyezte az összes Application Gateway számára az előző lépésekben részletezett módon. Ehhez a naplóhoz az is szükséges, hogy a webalkalmazási tűzfal konfigurálva legyen egy Application gatewayen. Az adatai a naplózás engedélyezésekor megadott Storage-fiókban tárolódnak. A rendszer naplózza a következő adatnaplókat:
 
 
-|Érték  |Description  |
+|Érték  |Leírás  |
 |---------|---------|
 |instanceId     | Application Gateway a példány, amelyről a rendszer a tűzfalat hozza létre. A többpéldányos Application Gateway esetében a példányok száma egy sor.         |
 |Ügyfélip     |   A kérelemből származó IP-cím.      |
@@ -232,7 +232,7 @@ A rendszer csak akkor hozza létre a tűzfal-naplót, ha engedélyezte az össze
 |ruleSetVersion     | A szabálykészlet verziója használatban van. Az elérhető értékek a következők: 2.2.9 és 3,0.     |
 |ruleId     | Az eseményindító eseményének szabály-azonosítója.        |
 |message     | Felhasználóbarát üzenet az eseményindító eseményhez. További részletek a Részletek szakaszban olvashatók.        |
-|action     |  A kérésen végrehajtott művelet. Az elérhető értékek le vannak tiltva és engedélyezettek.      |
+|művelet     |  A kérésen végrehajtott művelet. Az elérhető értékek le vannak tiltva és engedélyezettek.      |
 |hely     | A hely, amelyhez a napló létrejött. Jelenleg csak a globális érték van felsorolva, mivel a szabályok globálisak.|
 |Részletek     | Az eseményindító esemény részletei.        |
 |részletek. üzenet     | A szabály leírása.        |

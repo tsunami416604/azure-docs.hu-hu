@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 08/11/2020
 ms.subservice: alerts
 ms.openlocfilehash: 7b5332f68bb35e3c9b9ed82bb7bed2908e744e9f
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88065862"
 ---
 # <a name="create-view-and-manage-metric-alerts-using-azure-monitor"></a>Metrikariasztások létrehozása, megtekintése és kezelése az Azure Monitorral
@@ -74,7 +74,7 @@ A metrika riasztási szabályai a riasztások alatt a szabályok kezelése panel
 
 2. Kattintson a **riasztások** elemre, és a **szabályok kezelése** lehetőségre
 
-3. A **szabályok kezelése** panelen megtekintheti az összes riasztási szabályt az előfizetések között. A szabályokat az **erőforráscsoport**, az **Erőforrás típusa**és az **erőforrás**alapján is szűrheti. Ha csak metrikai riasztásokat szeretne látni, válassza a **jel típusa** mérőszámként lehetőséget.
+3. A **szabályok kezelése** panelen megtekintheti az összes riasztási szabályt az előfizetések között. A szabályokat az  **erőforráscsoport**, az **Erőforrás típusa**és az **erőforrás**alapján is szűrheti. Ha csak metrikai riasztásokat szeretne látni, válassza a **jel típusa** mérőszámként lehetőséget.
 
     > [!TIP]
     > A **szabályok kezelése** panelen több riasztási szabályt is kijelölhet, és engedélyezheti vagy tilthatja le őket. Ez akkor lehet hasznos, ha bizonyos cél erőforrásokat a karbantartás alá kell helyezni
@@ -152,7 +152,7 @@ A metrikus riasztási szabályokhoz dedikált PowerShell-parancsmagok érhetők 
 - [Frissítés](/rest/api/monitor/metricalerts/update): metrika riasztási szabályának frissítése.
 - [Törlés](/rest/api/monitor/metricalerts/delete): metrikai riasztási szabály törlése.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Metrikai riasztások létrehozása Azure Resource Manager-sablonok használatával](./alerts-metric-create-templates.md).
 - A [metrikai riasztások működésének megismerése](alerts-metric-overview.md).

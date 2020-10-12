@@ -9,10 +9,10 @@ ms.author: rogarana
 ms.subservice: files
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: c8a1d1c0f8de742bdafa130cce6927a472efd8f7
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91329346"
 ---
 # <a name="use-an-azure-file-share-with-windows"></a>Azure-fájlmegosztás használata Windowson
@@ -65,14 +65,14 @@ A szkript beszerzése:
 
     :::image type="content" source="media/storage-how-to-use-files-windows/select-file-shares.png" alt-text="például":::
 
-1. Válassza a **Kapcsolódás** lehetőséget.
+1. Kattintson a **Csatlakozás** gombra.
 
-    :::image type="content" source="media/storage-how-to-use-files-windows/file-share-connect-icon.png" alt-text="Képernyőfelvétel a fájlmegosztás összekapcsolási ikonjáról.":::
+    :::image type="content" source="media/storage-how-to-use-files-windows/file-share-connect-icon.png" alt-text="például":::
 
 1. Válassza ki a meghajtóbetűjelet, amelyhez a megosztást csatlakoztatni szeretné.
 1. Másolja a megadott parancsfájlt.
 
-    :::image type="content" source="media/storage-how-to-use-files-windows/files-portal-mounting-cmdlet-resize.png" alt-text="Példa szövege":::
+    :::image type="content" source="media/storage-how-to-use-files-windows/files-portal-mounting-cmdlet-resize.png" alt-text="például":::
 
 1. Illessze be a szkriptet arra a gazdagépre, amelyre a fájlmegosztást csatlakoztatni szeretné, majd futtassa.
 

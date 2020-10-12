@@ -9,10 +9,10 @@ ms.author: mbaldwin
 ms.date: 08/06/2019
 ms.custom: seodec18
 ms.openlocfilehash: 951c1fd89f9e943b72c32492ff40dae3bd07bb61
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88794493"
 ---
 # <a name="azure-disk-encryption-scenarios-on-windows-vms"></a>Azure Disk Encryption-forgatókönyvek Windows rendszerű virtuális gépekhez
@@ -44,7 +44,7 @@ Ebben az esetben a titkosítást a Resource Manager-sablon, a PowerShell-parancs
 ### <a name="enable-encryption-on-existing-or-running-vms-with-azure-powershell"></a>Titkosítás engedélyezése meglévő vagy futó virtuális gépeken Azure PowerShell 
 A [set-AzVMDiskEncryptionExtension](/powershell/module/az.compute/set-azvmdiskencryptionextension) parancsmag használatával engedélyezheti a titkosítást egy futó IaaS virtuális gépen az Azure-ban. 
 
--  **Futó virtuális gép titkosítása:** Az alábbi szkript inicializálja a változókat, és futtatja a set-AzVMDiskEncryptionExtension parancsmagot. Az erőforráscsoport, a virtuális gép és a Key Vault már előfeltételként lett létrehozva. Cserélje le az MyKeyVaultResourceGroup, a MyVirtualMachineResourceGroup, a MySecureVM és a MySecureVault értéket az értékekre.
+-  **Futó virtuális gép titkosítása:** Az alábbi szkript inicializálja a változókat, és futtatja a Set-AzVMDiskEncryptionExtension parancsmagot. Az erőforráscsoport, a virtuális gép és a Key Vault már előfeltételként lett létrehozva. Cserélje le az MyKeyVaultResourceGroup, a MyVirtualMachineResourceGroup, a MySecureVM és a MySecureVault értéket az értékekre.
 
      ```azurepowershell
       $KVRGname = 'MyKeyVaultResourceGroup';
@@ -188,11 +188,11 @@ New-AzVM -VM $VirtualMachine -ResourceGroupName "MyVirtualMachineResourceGroup"
 Új lemezt a PowerShell vagy [a Azure Portal](attach-managed-disk-portal.md) [használatával adhat hozzá a Windows rendszerű virtuális](attach-disk-ps.md)gépekhez. 
 
 ### <a name="enable-encryption-on-a-newly-added-disk-with-azure-powershell"></a>A titkosítás engedélyezése egy újonnan hozzáadott lemezen Azure PowerShell
- Amikor a PowerShell használatával titkosít egy új lemezt a Windows rendszerű virtuális gépekhez, meg kell adni egy új sorozatot. A Sequence verziójának egyedinek kell lennie. Az alábbi szkript létrehoz egy GUID azonosítót a Sequence verzióhoz. Bizonyos esetekben előfordulhat, hogy az újonnan hozzáadott adatlemezek automatikusan titkosítva lesznek a Azure Disk Encryption bővítménnyel. Az automatikus titkosítás általában akkor fordul elő, amikor a virtuális gép újraindul, miután az új lemez online állapotba kerül. Ez általában az okozza, hogy az "all" érték van megadva a kötet típusához, amikor a lemez titkosítása korábban futott a virtuális gépen. Ha az automatikus titkosítás egy újonnan hozzáadott adatlemezen történik, javasoljuk, hogy a set-AzVmDiskEncryptionExtension parancsmagot újra futtassa új sorozat-verzióval. Ha az új adatlemez automatikusan titkosítva van, és nem kívánja titkosítani, az összes meghajtót visszafejti, majd újratitkosítja egy új sorozat-verzióval, amely meghatározza a kötet típusának operációs rendszerét. 
+ Amikor a PowerShell használatával titkosít egy új lemezt a Windows rendszerű virtuális gépekhez, meg kell adni egy új sorozatot. A Sequence verziójának egyedinek kell lennie. Az alábbi szkript létrehoz egy GUID azonosítót a Sequence verzióhoz. Bizonyos esetekben előfordulhat, hogy az újonnan hozzáadott adatlemezek automatikusan titkosítva lesznek a Azure Disk Encryption bővítménnyel. Az automatikus titkosítás általában akkor fordul elő, amikor a virtuális gép újraindul, miután az új lemez online állapotba kerül. Ez általában az okozza, hogy az "all" érték van megadva a kötet típusához, amikor a lemez titkosítása korábban futott a virtuális gépen. Ha az automatikus titkosítás egy újonnan hozzáadott adatlemezen történik, javasoljuk, hogy futtassa újra a Set-AzVmDiskEncryptionExtension parancsmagot új sorszámmal. Ha az új adatlemez automatikusan titkosítva van, és nem kívánja titkosítani, az összes meghajtót visszafejti, majd újratitkosítja egy új sorozat-verzióval, amely meghatározza a kötet típusának operációs rendszerét. 
   
  
 
--  **Futó virtuális gép titkosítása:** Az alábbi szkript inicializálja a változókat, és futtatja a set-AzVMDiskEncryptionExtension parancsmagot. Az erőforráscsoport, a virtuális gép és a Key Vault már előfeltételként lett létrehozva. Cserélje le az MyKeyVaultResourceGroup, a MyVirtualMachineResourceGroup, a MySecureVM és a MySecureVault értéket az értékekre. Ez a példa az "all" kifejezést használja a-VolumeType paraméterhez, amely az operációs rendszer és az adatköteteket is tartalmazza. Ha csak az operációs rendszer kötetét szeretné titkosítani, használja az "operációs rendszer" lehetőséget a-VolumeType paraméterhez. 
+-  **Futó virtuális gép titkosítása:** Az alábbi szkript inicializálja a változókat, és futtatja a Set-AzVMDiskEncryptionExtension parancsmagot. Az erőforráscsoport, a virtuális gép és a Key Vault már előfeltételként lett létrehozva. Cserélje le az MyKeyVaultResourceGroup, a MyVirtualMachineResourceGroup, a MySecureVM és a MySecureVault értéket az értékekre. Ez a példa az "all" kifejezést használja a-VolumeType paraméterhez, amely az operációs rendszer és az adatköteteket is tartalmazza. Ha csak az operációs rendszer kötetét szeretné titkosítani, használja az "operációs rendszer" lehetőséget a-VolumeType paraméterhez. 
 
      ```azurepowershell
       $KVRGname = 'MyKeyVaultResourceGroup';
@@ -267,7 +267,7 @@ A Azure Disk Encryption a következő forgatókönyvek, funkciók és technológ
 - Az ADE alkalmazása olyan virtuális gépre, amely kiszolgálóoldali titkosítással titkosított lemezeket tartalmaz [az ügyfél által felügyelt kulcsokkal](disk-encryption.md) (SSE + CMK). Az SSE és a CMK az ADE-sel titkosított virtuális gépek adatlemezére való alkalmazása nem támogatott forgatókönyv is.
 - Az ADE-sel titkosított virtuális gépek áttelepítése, vagy az ADE-sel való titkosítása már **megtörtént,** az [ügyfél által felügyelt kulcsokkal rendelkező kiszolgálóoldali titkosításhoz](disk-encryption.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Azure Disk Encryption áttekintése](disk-encryption-overview.md)
 - [Azure Disk Encryption – mintaszkriptek](disk-encryption-sample-scripts.md)

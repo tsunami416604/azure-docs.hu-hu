@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 04/22/2020
 ms.author: jingwang
 ms.openlocfilehash: c92428666f0766f78475be16416027cdc6e71f20
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85506531"
 ---
 # <a name="copy-data-from-and-to-odbc-data-stores-using-azure-data-factory"></a>Adatok másolása és átmásolása az ODBC-adattárakba Azure Data Factory használatával
@@ -56,13 +56,13 @@ Az ODBC társított szolgáltatás a következő tulajdonságokat támogatja:
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | A Type tulajdonságot a következőre kell beállítani: **ODBC** | Yes |
-| connectionString | A hitelesítő adatok kivételével a kapcsolatok karakterlánca. Megadhatja a kapcsolati karakterláncot, mint például a `"Driver={SQL Server};Server=Server.database.windows.net; Database=TestDatabase;"` (z), vagy használhatja a Integration Runtime gépen beállított rendszeradatforrás-nevet (az adatforrás nevét) a `"DSN=<name of the DSN on IR machine>;"` következővel: (a hitelesítő adatoknak a társított szolgáltatásban való megadása ennek megfelelően történik)<br>A jelszót a Azure Key Vaultban is elhelyezheti, és lekérheti a  `password`   konfigurációt a kapcsolatok karakterláncáról.További részletekért tekintse meg a [hitelesítő adatok tárolása Azure Key Vaultban](store-credentials-in-key-vault.md)című   témakört.| Yes |
-| authenticationType | Az ODBC-adattárhoz való kapcsolódáshoz használt hitelesítés típusa.<br/>Az engedélyezett értékek a következők: **Alapszintű** és **Névtelen**. | Yes |
-| userName (Felhasználónév) | Ha alapszintű hitelesítést használ, adja meg a felhasználónevet. | No |
-| jelszó | Adja meg a felhasználónévhez megadott felhasználói fiókhoz tartozó jelszót. Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). | No |
-| hitelesítő adat | Az illesztőprogram-specifikus tulajdonság-érték formátumban megadott kapcsolati karakterlánc hozzáférési hitelesítő része. Példa: `"RefreshToken=<secret refresh token>;"`. A mező megjelölése SecureString. | No |
-| Connectvia tulajdonsággal | Az adattárhoz való kapcsolódáshoz használt [Integration Runtime](concepts-integration-runtime.md) . A saját üzemeltetésű Integration Runtime az [Előfeltételek](#prerequisites)szakaszban említettek szerint kell megadni. |Yes |
+| típus | A Type tulajdonságot a következőre kell beállítani: **ODBC** | Igen |
+| connectionString | A hitelesítő adatok kivételével a kapcsolatok karakterlánca. Megadhatja a kapcsolati karakterláncot, mint például a `"Driver={SQL Server};Server=Server.database.windows.net; Database=TestDatabase;"` (z), vagy használhatja a Integration Runtime gépen beállított rendszeradatforrás-nevet (az adatforrás nevét) a `"DSN=<name of the DSN on IR machine>;"` következővel: (a hitelesítő adatoknak a társított szolgáltatásban való megadása ennek megfelelően történik)<br>A jelszót a Azure Key Vaultban is elhelyezheti, és lekérheti a  `password`   konfigurációt a kapcsolatok karakterláncáról.További részletekért tekintse meg a [hitelesítő adatok tárolása Azure Key Vaultban](store-credentials-in-key-vault.md)című   témakört.| Igen |
+| authenticationType | Az ODBC-adattárhoz való kapcsolódáshoz használt hitelesítés típusa.<br/>Az engedélyezett értékek a következők: **Alapszintű** és **Névtelen**. | Igen |
+| userName (Felhasználónév) | Ha alapszintű hitelesítést használ, adja meg a felhasználónevet. | Nem |
+| jelszó | Adja meg a felhasználónévhez megadott felhasználói fiókhoz tartozó jelszót. Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). | Nem |
+| hitelesítő adat | Az illesztőprogram-specifikus tulajdonság-érték formátumban megadott kapcsolati karakterlánc hozzáférési hitelesítő része. Példa: `"RefreshToken=<secret refresh token>;"`. A mező megjelölése SecureString. | Nem |
+| Connectvia tulajdonsággal | Az adattárhoz való kapcsolódáshoz használt [Integration Runtime](concepts-integration-runtime.md) . A saját üzemeltetésű Integration Runtime az [Előfeltételek](#prerequisites)szakaszban említettek szerint kell megadni. |Igen |
 
 **1. példa: egyszerű hitelesítés használata**
 
@@ -119,7 +119,7 @@ Az adatok ODBC-kompatibilis adattárba való másolásához a következő tulajd
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **OdbcTable** | Yes |
+| típus | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **OdbcTable** | Igen |
 | tableName | Az ODBC-adattárban található tábla neve. | Nem forrásként (ha a "Query" a tevékenység forrásában van megadva);<br/>Igen a fogadó számára |
 
 **Példa**
@@ -153,10 +153,10 @@ Az adatok ODBC-kompatibilis adattárból történő másolásához a másolási 
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **OdbcSource** | Yes |
-| lekérdezés | Az egyéni SQL-lekérdezés használatával olvassa be az adatolvasást. Példa: `"SELECT * FROM MyTable"`. | Nem (ha meg van adva a "táblanév" az adatkészletben) |
+| típus | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **OdbcSource** | Igen |
+| lekérdezés | Az egyéni SQL-lekérdezés használatával olvassa be az adatolvasást. Például: `"SELECT * FROM MyTable"`. | Nem (ha meg van adva a "táblanév" az adatkészletben) |
 
-**Példa:**
+**Példa**
 
 ```json
 "activities":[
@@ -196,15 +196,15 @@ Az Adatmásolás ODBC-kompatibilis adattárba való másolásához a másolási 
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | A másolási tevékenység fogadójának Type tulajdonságát a következőre kell beállítani: **OdbcSink** | Yes |
-| writeBatchTimeout |Várakozási idő a kötegelt beszúrási művelet befejezéséhez, mielőtt időtúllépés történt.<br/>Az engedélyezett értékek a következők: TimeSpan. Például: "00:30:00" (30 perc). |No |
+| típus | A másolási tevékenység fogadójának Type tulajdonságát a következőre kell beállítani: **OdbcSink** | Igen |
+| writeBatchTimeout |Várakozási idő a kötegelt beszúrási művelet befejezéséhez, mielőtt időtúllépés történt.<br/>Az engedélyezett értékek a következők: TimeSpan. Például: "00:30:00" (30 perc). |Nem |
 | writeBatchSize |Beilleszti az adatmennyiséget az SQL-táblába, ha a puffer mérete eléri a writeBatchSize.<br/>Az engedélyezett értékek: Integer (sorok száma). |Nem (alapértelmezett érték: 0 – automatikusan észlelve) |
-| preCopyScript |Adja meg az SQL-lekérdezést a másolási tevékenység végrehajtásához, mielőtt az egyes futtatásokban az adattárba írja az adattárban. Ezt a tulajdonságot használhatja az előre betöltött adatértékek törléséhez. |No |
+| preCopyScript |Adja meg az SQL-lekérdezést a másolási tevékenység végrehajtásához, mielőtt az egyes futtatásokban az adattárba írja az adattárban. Ezt a tulajdonságot használhatja az előre betöltött adatértékek törléséhez. |Nem |
 
 > [!NOTE]
 > Ha nincs beállítva a "writeBatchSize" (automatikusan észlelt) beállítás, a másolási tevékenység először észleli, hogy az illesztőprogram támogatja-e a Batch-műveleteket, majd állítsa 10000-re, ha nem. Ha a 0 érték helyett explicit módon állítja be a értéket, a másolási tevékenység kiértékeli az értéket, és futás közben meghiúsul, ha az illesztőprogram nem támogatja a Batch-műveleteket.
 
-**Példa:**
+**Példa**
 
 ```json
 "activities":[

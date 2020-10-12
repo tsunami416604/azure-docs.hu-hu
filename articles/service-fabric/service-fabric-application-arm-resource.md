@@ -4,10 +4,10 @@ description: Megtudhatja, hogyan helyezhet üzembe alkalmazásokat és szolgált
 ms.topic: conceptual
 ms.date: 12/06/2017
 ms.openlocfilehash: a849bdff0d2719f02b6b5f2d7159b87ce664c13f
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86256509"
 ---
 # <a name="manage-applications-and-services-as-azure-resource-manager-resources"></a>Alkalmazások és szolgáltatások kezelése Azure Resource Manager erőforrásként
@@ -266,7 +266,7 @@ Ha a fürt már fel van véve, és néhány olyan alkalmazást, amelyet Resource
 > [!NOTE]
 > Ha engedélyezni szeretné, hogy a fürt a nem megfelelő állapotú alkalmazásokat hagyja figyelmen kívül, az ügyfél az "upgradeDescription/healthPolicy" szakaszban megadhatja a "maxPercentUnhealthyApplications: 100" kifejezést. az összes beállítás részletes leírása a [Service fabric REST API a fürt frissítési házirendjének dokumentációjában](/rest/api/servicefabric/sfrp-model-clusterupgradepolicy)található.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A [Service FABRIC parancssori](service-fabric-cli.md) felület vagy a [PowerShell](service-fabric-deploy-remove-applications.md) használatával telepíthet más alkalmazásokat a fürtön. 
 * [A Service Fabric-fürt frissítése](service-fabric-cluster-upgrade.md)

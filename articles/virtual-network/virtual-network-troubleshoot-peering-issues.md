@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 08/28/2019
 ms.author: kaushika
 ms.openlocfilehash: 9685c1739a00788a974c200ddabb8cc975696b62
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83587731"
 ---
 # <a name="troubleshoot-virtual-network-peering-issues"></a>Virtuális hálózatok közötti társviszony-létesítési problémák hibaelhárítása
@@ -127,7 +127,7 @@ A probléma megoldásához:
    1. Indítsa el a hálózati nyomkövetést a cél virtuális gépen. A Windows rendszerben a **netsh**használható. Linux esetén használja a **TCPDump**-t.
    2. Futtassa a **TcpPing** vagy a **PsPing** a FORRÁSRÓL a cél IP-címhez.
 
-      Ez egy példa egy **TcpPing** -parancsra:`tcping64.exe -t <destination VM address> 3389`
+      Ez egy példa egy **TcpPing** -parancsra: `tcping64.exe -t <destination VM address> 3389`
 
    3. A **TcpPing** befejezése után állítsa le a hálózati nyomkövetést a célhelyen.
    4. Ha a csomagok érkeznek a forrásból, nincs hálózati probléma. Vizsgálja meg a virtuálisgép-tűzfalat és a portot figyelő alkalmazást a konfigurációs probléma megkereséséhez.
@@ -216,9 +216,9 @@ A probléma megoldásához:
 1. A webalkalmazásban válassza a **hálózatkezelés**, majd a **VNet-integráció**elemet.
 1. Ellenőrizze, hogy látható-e a távoli virtuális hálózat. Adja meg manuálisan a távoli virtuális hálózati címtartomány (**szinkronizált hálózat** és **útvonalak hozzáadása**).
 
-További információért tekintse át a következő cikkeket:
+További információkért tekintse át a következő cikkeket:
 
-* [Alkalmazás integrálása Azure-beli virtuális hálózattal](https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet)
+* [Alkalmazás integrálása egy Azure-beli virtuális hálózattal](https://docs.microsoft.com/azure/app-service/web-sites-integrate-with-vnet)
 * [Tudnivalók a pont–hely VPN-útválasztásról](https://docs.microsoft.com/azure/vpn-gateway/vpn-gateway-about-point-to-site-routing)
 
 ## <a name="troubleshoot-a-virtual-network-peering-configuration-error-message"></a>Virtuális hálózati társ-beállítási konfigurációs hibaüzenet hibáinak megoldása 

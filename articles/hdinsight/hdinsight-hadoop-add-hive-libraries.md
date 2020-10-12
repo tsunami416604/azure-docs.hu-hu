@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: H1Hack27Feb2017,hdinsightactive
 ms.date: 02/14/2020
 ms.openlocfilehash: c678372fbd54e528a8a16eacc601e815cfd32e58
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86082233"
 ---
 # <a name="add-custom-apache-hive-libraries-when-creating-your-hdinsight-cluster"></a>Egyéni Apache Hive-kódtárak hozzáadása a HDInsight-fürt létrehozásakor
@@ -59,7 +59,7 @@ A cikkben szereplő parancsfájl-művelettel elérhetővé válik a kódtárak h
     |Tulajdonság |Érték |
     |---|---|
     |Parancsfájl típusa|– Egyéni|
-    |Name|Kódtárak |
+    |Name (Név)|Kódtárak |
     |Bash-parancsfájl URI-ja|`https://hdiconfigactions.blob.core.windows.net/linuxsetupcustomhivelibsv01/setup-customhivelibs-v01.sh`|
     |Csomópont típusa (i)|Head, Worker|
     |Paraméterek|Adja meg az WASB-címeket az edényt tartalmazó tároló-és Storage-fiókhoz. Például: `wasbs://libs@mystorage.blob.core.windows.net/`.|

@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 06/26/2020
 ms.author: enewman
 ms.openlocfilehash: 9fc0a965869207ba8d1b4eb6f45e878ae4b93c3a
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88079022"
 ---
 # <a name="set-up-a-lab-to-manage-and-develop-with-sql-server"></a>Tesztkörnyezet beállítása a SQL Server kezeléséhez és fejlesztéséhez
@@ -65,7 +65,7 @@ Most, hogy a dolgok hálózatkezelési oldalát kezelik, lehetővé teszi SQL Se
 24. Kattintson a **Tovább gombra: további beállítások**.
 25. A **meglévő adatértékek használata** beállításnál válassza a **minta**lehetőséget.  Az adatbázis létrehozásakor a AdventureWorksLT-adatbázisból származó adatok lesznek használva.
 26. Kattintson a **Felülvizsgálat + létrehozás** elemre.
-27. Kattintson a **Create** (Létrehozás) gombra.
+27. Kattintson a **Létrehozás** lehetőségre.
 
 Miután a SQL Database üzembe helyezése sikeresen befejeződött, létrehozhatjuk a labort, és telepíthetjük a szoftvereket a tesztkörnyezet-sablon számítógépén.
 
@@ -98,7 +98,7 @@ A [Azure Data Studio](https://github.com/microsoft/azuredatastudio) egy több ad
 4. A **Start menü mappájának kiválasztása** lapon kattintson a **Tovább** gombra.
 5. A **További feladatok kiválasztása** lapon jelölje be az **asztal létrehozása ikont** , ha asztali ikont szeretne használni.  Kattintson a **Tovább** gombra.
 6. A **telepítésre kész lapon**kattintson a **tovább**gombra.
-7. Várjon, amíg a telepítő futni próbál.  Kattintson a **Befejezés** gombra.
+7. Várjon, amíg a telepítő futni próbál.  Kattintson a **Finish** (Befejezés) gombra.
 
 Most, hogy Azure Data Studio telepítve van, állítsuk be a Azure SQL Databasehoz való kapcsolódást.
 
@@ -142,7 +142,7 @@ Az alábbi példa egy lehetséges költségbecslés erre az osztályra vonatkoz�
 >[!IMPORTANT]
 >A költségbecslés csak példaként szolgál. A díjszabással kapcsolatos aktuális információk: [Azure Lab Services díjszabása](https://azure.microsoft.com/pricing/details/lab-services/).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő lépések közösek a laborok beállításához.
 

@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 09/14/2020
 ms.custom: ''
 ms.openlocfilehash: 1e8a5cd856358a0dc3e9c356cb3a55f75db29c86
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90709661"
 ---
 # <a name="tutorial-deploy-a-multi-container-group-using-docker-compose"></a>Oktatóanyag: több tárolós csoport üzembe helyezése a Docker-összeállítás használatával 
@@ -18,7 +18,7 @@ Ebben az oktatóanyagban a [Docker-összeállítást](https://docs.docker.com/co
 Azure Container Instances igény szerint futtathat tárolókat, amikor Felhőbeli natív alkalmazásokat fejleszt a Docker használatával, és zökkenőmentesen szeretne váltani a helyi fejlesztéstől a felhőbe történő üzembe helyezésig. Ezt a funkciót a [Docker és az Azure integrációja](https://docs.docker.com/engine/context/aci-integration/)teszi lehetővé. A natív Docker-parancsokkal [egyetlen tároló-példány](quickstart-docker-cli.md) vagy több tárolós csoport futtatható az Azure-ban.
 
 > [!IMPORTANT]
-> A Azure Container Instances egyik funkciója sem támogatott. Küldjön visszajelzést a Docker-Azure-integrációról azáltal, hogy problémát hoz létre a [Docker ACI Integration](https://github.com/docker/aci-integration-beta) GitHub-tárházban.
+> A Azure Container Instances egyik funkciója sem támogatott. Küldjön visszajelzést a Docker-Azure integrációról azáltal, hogy problémát hoz létre a [Docker ACI Integration](https://github.com/docker/aci-integration-beta) GitHub-tárházban.
 
 > [!TIP]
 > A [Docker-bővítmény a Visual Studio Code](https://aka.ms/VSCodeDocker) -hoz a tárolók, képek és környezetek fejlesztéséhez, futtatásához és kezeléséhez használható integrált felhasználói élmény érdekében.
@@ -212,7 +212,7 @@ azurevotingappredis_azure-vote-front   myregistry.azurecr.io/azure-vote-front   
 
 A futó alkalmazás Felhőbeli megjelenítéséhez adja meg a megjelenített IP-címet egy helyi böngészőben. Ebben a példában írja be a következőt: `52.179.23.131` . A mintaalkalmazás betöltődik az alábbi példában látható módon:
 
-:::image type="content" source="media/tutorial-docker-compose/azure-vote-aci.png" alt-text="Az ACI-beli szavazási alkalmazás képe":::
+:::image type="content" source="media/tutorial-docker-compose/azure-vote-aci.png" alt-text="A szavazási alkalmazás képe":::
 
 Az előtér-tároló naplófájljainak megtekintéséhez futtassa a [Docker logs](https://docs.docker.com/engine/reference/commandline/logs) parancsot. Például:
 
@@ -230,7 +230,7 @@ docker compose down
 
 Ez a parancs törli a tároló csoportot Azure Container Instancesban.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban a Docker-összeállítást használta a többtárolós alkalmazások helyi futtatására a Azure Container Instances-ben való futtatáshoz. Megtanulta végrehajtani az alábbi műveleteket:
 

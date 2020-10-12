@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 11/13/2018
 ms.author: pepogors
 ms.openlocfilehash: f8a9025a50b2815f0e6030e7baf317b261c8c462
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86256344"
 ---
 # <a name="set-up-and-configure-reverse-proxy-in-azure-service-fabric"></a>Fordított proxy beállítása és konfigurálása az Azure-ban Service Fabric
@@ -326,6 +326,6 @@ További információ az Azure-fürtökhöz tartozó Fabric-beállítások friss
 
 A rendszer több háló-beállítást használ a fordított proxy és a szolgáltatások közötti biztonságos kommunikáció kialakításához. Ezen beállítások részletes ismertetését lásd: [Csatlakozás biztonságos szolgáltatáshoz a fordított proxyval](service-fabric-reverseproxy-configure-secure-communication.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [A biztonságos HTTP-szolgáltatás továbbításának beállítása a fordított proxyval](service-fabric-reverseproxy-configure-secure-communication.md)
 * A fordított proxy konfigurációs beállításaival kapcsolatban lásd: [ApplicationGateway/http szakasz, Service Fabric a fürt beállításainak testreszabása](service-fabric-cluster-fabric-settings.md#applicationgatewayhttp).

@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: alkohli
 ms.openlocfilehash: 9ffa35e158d34a1fc6945ee2730dcf136d13edb5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85504338"
 ---
 # <a name="solutions-for-periodic-data-transfer"></a>Időszakos adatátviteli megoldások
@@ -58,9 +58,9 @@ A következő táblázat összefoglalja a főbb képességek különbségeit.
 | Hardver                                      | A hypervisor            | Microsoft által biztosított    | NA                                                            |
 | Kezdeti beállítási erőfeszítés                          | Alacsony (<30 perc.)            | Mérsékelt (~ pár óra) | Nagyméretű (~ nap)                                                 |
 | Adatformátum                                   | Azure-Blobok, Azure Files   | Azure-Blobok, Azure Files | [70 + adatösszekötőt támogat az adattárakhoz és a formátumokhoz](https://docs.microsoft.com/azure/data-factory/copy-activity-overview#supported-data-stores-and-formats)|
-| Adatfeldolgozás előtti                           | No                         | Igen, Edge-számításon keresztül    | Yes                                                           |
-| Helyi gyorsítótár<br>(a helyszíni adattároláshoz)    | Igen                        | Igen                      | No                                                            |
-| Átvitel más felhőkből                    | Nem                         | Nem                       | Yes                                                           |
+| Adatfeldolgozás előtti                           | Nem                         | Igen, Edge-számításon keresztül    | Igen                                                           |
+| Helyi gyorsítótár<br>(a helyszíni adattároláshoz)    | Igen                        | Igen                      | Nem                                                            |
+| Átvitel más felhőkből                    | Nem                         | Nem                       | Igen                                                           |
 | Díjszabás                                       | [Díjszabás](https://azure.microsoft.com/pricing/details/storage/databox/gateway/)                    | [Díjszabás](https://azure.microsoft.com/pricing/details/storage/databox/edge/)                  | [Díjszabás](https://azure.microsoft.com/pricing/details/data-factory/)                                                       |
 
 ## <a name="next-steps"></a>További lépések

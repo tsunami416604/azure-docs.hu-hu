@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 10/14/2019
 ms.author: kumud
 ms.openlocfilehash: c224332eec31b343bdc53564ef4075a0620ac340
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87289576"
 ---
 # <a name="deploy-an-ipv6-dual-stack-application-using-standard-internal-load-balancer-in-azure---powershell-preview"></a>IPv6-alapú kettős stack-alkalmazás üzembe helyezése standard belső Load Balancer az Azure-ban – PowerShell (előzetes verzió)
@@ -62,7 +62,7 @@ A regisztráció befejeződése után futtassa a következő parancsot:
 Register-AzResourceProvider -ProviderNamespace Microsoft.Network
 ```
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 A kettős veremből álló virtuális hálózat létrehozása előtt létre kell hoznia egy erőforráscsoportot a [New-AzResourceGroup](/powershell/module/az.resources/new-azresourcegroup)használatával. A következő példában létrehozunk egy *dsStd_ILB_RG* nevű erőforráscsoportot az *USA keleti* régiójában:
 

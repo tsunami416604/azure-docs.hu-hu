@@ -4,10 +4,10 @@ description: Ismerteti, hogyan lehet erőforrásokat telepíteni a felügyeleti 
 ms.topic: conceptual
 ms.date: 09/24/2020
 ms.openlocfilehash: 23f86d7d0b7e1f882cf3fb74adc484e0fe47db87
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91372425"
 ---
 # <a name="create-resources-at-the-management-group-level"></a>Erőforrások létrehozása a felügyeleti csoport szintjén
@@ -43,7 +43,7 @@ Az előfizetések vagy erőforráscsoportok számára üzembe helyezett beágyaz
 
 Az erőforrások kezeléséhez használja a következőt:
 
-* [Címkék](/azure/templates/microsoft.resources/tags)
+* [tags](/azure/templates/microsoft.resources/tags)
 
 ## <a name="schema"></a>Séma
 

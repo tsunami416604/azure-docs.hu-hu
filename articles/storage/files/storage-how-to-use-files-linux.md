@@ -8,10 +8,10 @@ ms.date: 10/19/2019
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 957e827e621d07ed9b5533a1607f955f05985d9b
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90004782"
 ---
 # <a name="use-azure-files-with-linux"></a>Az Azure Files használata Linux rendszerrel
@@ -250,22 +250,22 @@ A Linux kernel 4,18-es verziótól kezdődően az SMB kernel modul, amely `cifs`
 
 | Disztribúció | Az SMB 1 letiltása |
 |--------------|-------------------|
-| Ubuntu 14.04 – 16.04 | No |
-| Ubuntu 18.04 | Yes |
-| Ubuntu 19.04 + | Yes |
-| Debian 8-9 | No |
-| Debian 10 + | Yes |
-| Fedora 29 + | Yes |
-| CentOS 7 | No | 
-| CentOS 8 + | Yes |
-| Red Hat Enterprise Linux 6. x-7. x | No |
-| Red Hat Enterprise Linux 8 + | Yes |
-| openSUSE LEAP 15,0 | No |
-| openSUSE ugrás 15.1 + | Yes |
-| openSUSE Tumbleweed | Yes |
-| SUSE Linux Enterprise 11. x-12. x | No |
-| SUSE Linux Enterprise 15 | No |
-| SUSE Linux Enterprise 15,1 | No |
+| Ubuntu 14.04 – 16.04 | Nem |
+| Ubuntu 18.04 | Igen |
+| Ubuntu 19.04 + | Igen |
+| Debian 8-9 | Nem |
+| Debian 10 + | Igen |
+| Fedora 29 + | Igen |
+| CentOS 7 | Nem | 
+| CentOS 8 + | Igen |
+| Red Hat Enterprise Linux 6. x-7. x | Nem |
+| Red Hat Enterprise Linux 8 + | Igen |
+| openSUSE LEAP 15,0 | Nem |
+| openSUSE ugrás 15.1 + | Igen |
+| openSUSE Tumbleweed | Igen |
+| SUSE Linux Enterprise 11. x-12. x | Nem |
+| SUSE Linux Enterprise 15 | Nem |
+| SUSE Linux Enterprise 15,1 | Nem |
 
 A következő parancs használatával megtekintheti, hogy a Linux-disztribúciója támogatja-e a `disable_legacy_dialects` modul paraméterét.
 

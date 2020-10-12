@@ -1,5 +1,5 @@
 ---
-title: Azure Maps hosszan futó műveleti API
+title: Azure Maps Long-Running Operation API
 description: Tudnivalók a hosszú ideig futó aszinkron feldolgozásról Azure Maps
 author: anastasia-ms
 ms.author: v-stharr
@@ -10,15 +10,15 @@ services: azure-maps
 manager: philmea
 ms.custom: mvc
 ms.openlocfilehash: 360fc4af688e393bb8639ee773f0bf0de603a425
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83598387"
 ---
-# <a name="creator-long-running-operation-api"></a>Hosszú ideig futó műveleti API Creator
+# <a name="creator-long-running-operation-api"></a>Creator Long-Running Operation API
 
-Azure Maps egyes API-k [aszinkron kérelem-válasz mintát](https://docs.microsoft.com/azure/architecture/patterns/async-request-reply)használnak. Ez a minta lehetővé teszi, hogy a Azure Maps a rendelkezésre álló és a rugalmas szolgáltatásokat biztosítson. Ez a cikk ismerteti az Azure Map adott implementációját a hosszú ideig futó aszinkron háttér-feldolgozáshoz.
+Azure Maps egyes API-k [aszinkron Request-Reply mintát](https://docs.microsoft.com/azure/architecture/patterns/async-request-reply)használnak. Ez a minta lehetővé teszi, hogy a Azure Maps a rendelkezésre álló és a rugalmas szolgáltatásokat biztosítson. Ez a cikk ismerteti az Azure Map adott implementációját a hosszú ideig futó aszinkron háttér-feldolgozáshoz.
 
 ## <a name="submitting-a-request"></a>Kérelem elküldése
 

@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 05/09/2018
 ms.author: damendo
 ms.openlocfilehash: c04da65af27ebd5ac654bc059ae004c157a20f33
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84737529"
 ---
 # <a name="view-the-topology-of-an-azure-virtual-network"></a>Azure-beli virtuális hálózat topológiájának megtekintése
@@ -30,7 +30,7 @@ Az [Azure Portal](#azure-portal), az [Azure CLI](#azure-cli)vagy a [PowerShell](
 
 1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com) egy olyan fiókkal, amely rendelkezik a szükséges [engedélyekkel](required-rbac-permissions.md).
 2. A portál bal felső sarkában válassza a **minden szolgáltatás**lehetőséget.
-3. A **minden szolgáltatás** szűrő mezőbe írja be a *Network Watcher*. Ha megjelenik a **Network Watcher** az eredmények között, jelölje ki.
+3. A **minden szolgáltatás** szűrő mezőbe írja be a *Network Watcher*. Ha **Network Watcher** jelenik meg az eredmények között, válassza ki.
 4. Válassza a **Topológia** lehetőséget. A topológia létrehozásához egy olyan hálózati figyelőre van szükség, amely ugyanabban a régióban található, mint ahol az a virtuális hálózat, amelyhez a topológiát létre kívánja hozni. Ha nincs engedélyezve a hálózati figyelő abban a régióban, amelyben az a virtuális hálózat, amelyhez a topológiát létre szeretné hozni, a hálózati figyelők automatikusan létrejönnek az összes régióban. A hálózati figyelők egy **NetworkWatcherRG**nevű erőforráscsoporthoz jönnek létre.
 5. Válasszon ki egy előfizetést, egy virtuális hálózat erőforráscsoporthoz, amelyben meg szeretné tekinteni a topológiát, majd válassza ki a virtuális hálózatot. Az alábbi ábrán egy *MyVnet*nevű virtuális hálózat topológiája látható a *MyResourceGroup*nevű erőforráscsoport esetében:
 

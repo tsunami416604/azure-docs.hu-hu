@@ -9,13 +9,13 @@ ms.date: 04/08/2019
 ms.author: alkohli
 ms.custom: include file
 ms.openlocfilehash: 7ecc36218df23d81c4646612b5474a1465f428eb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80282477"
 ---
-A FedEx, a UPS vagy a DHL a csomag Azure-adatközpontba való szállítására használható. Ha a FedEx/DHL-től eltérő szolgáltatót szeretne használni, lépjen kapcsolatba Azure Data Box Operations csapatával a következő címen:`adbops@microsoft.com`
+A FedEx, a UPS vagy a DHL a csomag Azure-adatközpontba való szállítására használható. Ha a FedEx/DHL-től eltérő szolgáltatót szeretne használni, lépjen kapcsolatba Azure Data Box Operations csapatával a következő címen: `adbops@microsoft.com`
 
 * Adjon meg egy érvényes FedEx-, UPS-vagy DHL-beli számlaszámot, amelyet a Microsoft a meghajtók visszaszállítására használ majd.
   * Egy FedEx-, UPS-vagy DHL-fiók száma szükséges az USA-beli és az Európai helyekről érkező meghajtók visszaszállításához.

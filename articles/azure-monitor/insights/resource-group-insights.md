@@ -8,10 +8,10 @@ ms.author: daviste
 ms.date: 09/19/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: bf8ea45f37e421d70a68c4a6e138f5203e92d78f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87045768"
 ---
 # <a name="monitor-resource-groups-with-azure-monitor-preview"></a>Erőforráscsoportok figyelése Azure Monitorvel (előzetes verzió)
@@ -20,7 +20,7 @@ A modern alkalmazások gyakran bonyolultak, és számos különálló részből 
 
 ## <a name="access-insights-for-resource-groups"></a>Erőforrás-csoportok elérésének elérése
 
-1. Válassza az **erőforráscsoportok** lehetőséget a bal oldali navigációs sávon.
+1. Válassza az **erőforráscsoportok**  lehetőséget a bal oldali navigációs sávon.
 2. Válasszon ki egy, a felderíteni kívánt erőforráscsoportot. (Ha az előfizetés nagy számú erőforráscsoport-szűrést használ, időnként hasznos lehet.)
 3. Egy erőforráscsoport információinak eléréséhez kattintson az összes erőforráscsoport bal oldali menüjének **elemzése elemére** .
 

@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 12/06/2019
 ms.openlocfilehash: 165b7d00c3cf307e7996e84a35bb2a202f448cc0
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86076878"
 ---
 # <a name="use-apache-sqoop-with-hadoop-in-hdinsight"></a>Apache Sqoop használata a Hadooppal a HDInsightban
@@ -52,7 +52,7 @@ A HDInsight-fürthöz egyes mintaadatok is tartozik. A következő két mintát 
   | deviceplatform |sztring |
   | devicemake |sztring |
   | devicemodel |sztring |
-  | state |sztring |
+  | állapot |sztring |
   | ország |sztring |
   | querydwelltime |double |
   | sessionid |bigint |
@@ -95,11 +95,11 @@ A fürt, az SQL Database és az egyéb objektumok a Azure Portalon keresztül j�
     |Bacpac-fájl neve |Használja az alapértelmezett értéket, ha nem kívánja használni a saját bacpac-fájlját.|
     |Hely |Használja az alapértelmezett értéket.|
 
-    A [logikai SQL-kiszolgáló](../../azure-sql/database/logical-servers.md) neve lesz `<ClusterName>dbserver` . Az adatbázis neve lesz `<ClusterName>db` . A Storage-fiók alapértelmezett neve lesz `e6qhezrh2pdqu` .
+    A [logikai SQL-kiszolgáló](../../azure-sql/database/logical-servers.md) neve lesz  `<ClusterName>dbserver` . Az adatbázis neve lesz `<ClusterName>db` . A Storage-fiók alapértelmezett neve lesz `e6qhezrh2pdqu` .
 
 3. Jelölje be **az Elfogadom a fenti feltételeket és kikötéseket**.
 
-4. Válassza a **Beszerzés** lehetőséget. Egy új csempe jelenik meg, amely a központi telepítés elküldését Template deployment. A fürt és az SQL-adatbázis létrehozása nagyjából 20 percet vesz igénybe.
+4. Válassza a **Vásárlás** lehetőséget. Egy új csempe jelenik meg, amely a központi telepítés elküldését Template deployment. A fürt és az SQL-adatbázis létrehozása nagyjából 20 percet vesz igénybe.
 
 ## <a name="run-sqoop-jobs"></a>Sqoop-feladatok futtatása
 
@@ -118,7 +118,7 @@ A HDInsight számos módszer használatával futtathat Sqoop-feladatokat. A köv
 
 ## <a name="next-steps"></a>További lépések
 
-Most már megtanulta, hogyan használhatja a Sqoop-t. További tudnivalókért lásd:
+Most már megtanulta, hogyan használhatja a Sqoop-t. További információ:
 
 * [Apache Hive használata a HDInsight](../hdinsight-use-hive.md)
 * [Adatok feltöltése a HDInsight-be](../hdinsight-upload-data.md): további módszerek az adatok HDInsight/Azure Blob Storage-ba való feltöltéséhez.

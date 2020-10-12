@@ -4,10 +4,10 @@ description: Az Azure-beli virtuális gépek biztonsági mentését és helyreá
 ms.topic: conceptual
 ms.date: 09/11/2019
 ms.openlocfilehash: 87d655652d0207a50f8980f18d18e76fea0b1e21
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90975105"
 ---
 # <a name="back-up-and-restore-azure-vms-with-powershell"></a>Azure-beli virtuális gépek biztonsági mentése és visszaállítása a PowerShell-lel
@@ -194,7 +194,7 @@ A biztonsági mentési védelmi szabályzat legalább egy adatmegőrzési szabá
 * A [Get-AzRecoveryServicesBackupRetentionPolicyObject](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupretentionpolicyobject) használatával megtekintheti az alapértelmezett adatmegőrzési szabályt.
 * Hasonlóképpen használhatja a [Get-AzRecoveryServicesBackupSchedulePolicyObject-](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupschedulepolicyobject) t az alapértelmezett ütemezett házirend beszerzéséhez.
 * A [New-AzRecoveryServicesBackupProtectionPolicy](/powershell/module/az.recoveryservices/get-azrecoveryservicesbackupprotectionpolicy) parancsmag egy PowerShell-objektumot hoz létre, amely a biztonsági mentési szabályzat adatait tárolja.
-* Az ütemezett és adatmegőrzési házirend objektumai bemenetként használatosak a New-AzRecoveryServicesBackupProtectionPolicy parancsmaghoz.
+* Az ütemezett és adatmegőrzési házirend objektumok a New-AzRecoveryServicesBackupProtectionPolicy parancsmag bemenetként használatosak.
 
 Alapértelmezés szerint a rendszer a kezdési időt határozza meg az ütemezett házirend objektumban. A következő példa használatával módosíthatja a kezdési időt a kívánt kezdési időpontra. A kívánt kezdési időpontnak UTC-ként is kell lennie. Az alábbi példa azt feltételezi, hogy a várt kezdési idő a napi biztonsági mentések 01:00-as UTC-értéke.
 

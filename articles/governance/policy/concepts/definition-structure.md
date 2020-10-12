@@ -4,10 +4,10 @@ description: Leírja, hogyan használhatók a szabályzat-definíciók a szervez
 ms.date: 09/22/2020
 ms.topic: conceptual
 ms.openlocfilehash: f9b64255723c6e53a6d8fe945bf19506ba30644e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91330281"
 ---
 # <a name="azure-policy-definition-structure"></a>Azure szabályzatdefiníciók struktúrája
@@ -696,7 +696,7 @@ Az aliasok listája mindig növekszik. A Azure Policy által jelenleg támogatot
 
 ### <a name="understanding-the--alias"></a>A [*] alias ismertetése
 
-A rendelkezésre álló aliasok közül több olyan verzióval rendelkezik, amely "normál" néven jelenik meg, és egy másik, amely hozzá van **\[\*\]** csatolva. Például:
+A rendelkezésre álló aliasok közül több olyan verzióval rendelkezik, amely "normál" néven jelenik meg, és egy másik, amely hozzá van **\[\*\]** csatolva. Példa:
 
 - `Microsoft.Storage/storageAccounts/networkAcls.ipRules`
 - `Microsoft.Storage/storageAccounts/networkAcls.ipRules[*]`

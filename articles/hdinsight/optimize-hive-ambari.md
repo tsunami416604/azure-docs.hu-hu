@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 05/04/2020
 ms.openlocfilehash: 33c2ee7bc477d3c9d3823642dbdd974650017822
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86084358"
 ---
 # <a name="optimize-apache-hive-with-apache-ambari-in-azure-hdinsight"></a>Apache Hive optimalizálása az Apache Ambari az Azure HDInsight
@@ -134,10 +134,10 @@ A rendelkezésre álló tömörítési típusok a következők:
 
 | Formátum | Eszköz | Algoritmus | Fájlkiterjesztés | Feloszthatók? |
 | --- | --- | --- | --- | --- |
-| Gzip | Gzip | DEFLATE | `.gz` | No |
-| Bzip2 | Bzip2 | Bzip2 |`.bz2` | Yes |
+| Gzip | Gzip | DEFLATE | `.gz` | Nem |
+| Bzip2 | Bzip2 | Bzip2 |`.bz2` | Igen |
 | LZO | `Lzop` | LZO | `.lzo` | Igen, ha indexelve van |
-| Snappy | N.A. | Snappy | Snappy | No |
+| Snappy | N/A | Snappy | Snappy | Nem |
 
 Általános szabály, hogy a tömörítési módszer megosztója fontos, ellenkező esetben a rendszer néhány leképezést hoz létre. Ha a bemeneti adatok szöveg, `bzip2` a legjobb megoldás. Az ork formátum esetében a Snappy a leggyorsabb tömörítési lehetőség.
 
@@ -158,7 +158,7 @@ A rendelkezésre álló tömörítési típusok a következők:
 
     c. A tulajdonság hozzáadása ablakban adja meg `mapred.map.output.compression.codec` a kulcsot és `org.apache.hadoop.io.compress.SnappyCodec` az értéket.
 
-    d. Válassza a **Hozzáadás** elemet.
+    d. Válassza a **Hozzáadás** lehetőséget.
 
     !["Apache Hive egyéni tulajdonság hozzáadása"](./media/optimize-hive-ambari/hive-custom-property.png)
 
@@ -223,7 +223,7 @@ A következő szakaszok a kaptárral kapcsolatos további optimalizálásokat is
 
 A kaptárban az alapértelmezett illesztési típus egy *shuffle illesztés*. A kaptárban a speciális leképezések beolvassák a bemenetet, és egy összekapcsolási kulcs/érték párokat bocsátanak ki egy köztes fájlba. A Hadoop rendezi és egyesíti ezeket a párokat egy véletlenszerű szakaszban. Ez a véletlenszerű szakasz költséges. Ha kiválasztja a megfelelő illesztést az adatai alapján, jelentősen növelheti a teljesítményt.
 
-| Csatlakozás típusa | mikor | Hogyan | Struktúra beállításai | Megjegyzések |
+| Csatlakozás típusa | Mikor | Hogyan | Struktúra beállításai | Megjegyzések |
 | --- | --- | --- | --- | --- |
 | Összekeverhető illesztés | <ul><li>Alapértelmezett választás</li><li>Mindig működik</li></ul> | <ul><li>Olvasás az egyik táblázat részéből</li><li>Az illesztési kulcshoz tartozó gyűjtők és rendezések</li><li>Egy gyűjtőt küld minden egyes csökkentéshez</li><li>A csatlakozás a csökkentés oldalon történik</li></ul> | Nincs szükség jelentős kaptár-beállításra | Minden alkalommal működik |
 | Csatlakoztatás leképezése | <ul><li>Egy tábla fér el a memóriában</li></ul> | <ul><li>Kisméretű tábla beolvasása a memória kivonatának táblájába</li><li>Streamek a nagyméretű fájl részeként</li><li>Az egyes rekordok összekapcsolása a kivonatoló táblából</li><li>Egyedül a Mapper csatlakozik</li></ul> | `hive.auto.confvert.join=true` | Gyors, de korlátozott |

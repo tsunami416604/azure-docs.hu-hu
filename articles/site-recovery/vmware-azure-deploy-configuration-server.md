@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 10/15/2019
 ms.author: ramamill
 ms.openlocfilehash: f6c47d4cbfe6311333d95b07c0553afa2b3bb15c
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87287740"
 ---
 # <a name="deploy-a-configuration-server"></a>Konfigurációs kiszolgáló üzembe helyezése
@@ -42,7 +42,7 @@ A konfigurációs kiszolgáló Azure Site Recovery-szolgáltatásokkal való reg
     - Ellenőrizze, hogy az alkalmazás fejlesztői szerepköre hozzá van-e rendelve a felhasználóhoz. Ha nem, használja ezt az engedélyt használó felhasználót, vagy forduljon [a rendszergazdához, és engedélyezze az engedélyt](../active-directory/fundamentals/active-directory-users-assign-role-azure-portal.md#assign-roles).
     
 2. Ha az alkalmazás fejlesztői szerepköre nem rendelhető hozzá, győződjön meg arról, hogy a **felhasználók regisztrálhatják az alkalmazások** jelölőjét **true (igaz** ) értékre állítva, ha a felhasználó identitást hoz létre. Az engedélyek engedélyezése:
-    - Jelentkezzen be az Azure Portalra.
+    - Jelentkezzen be az Azure portálra.
     - Lépjen **Azure Active Directory**  >  **felhasználói beállítások menüpontra**.
     - A **Alkalmazásregisztrációk**alatt a **felhasználók regisztrálhatják az alkalmazásokat**. Válassza az **Igen**lehetőséget.
 
@@ -111,7 +111,7 @@ Ha további hálózati adaptert szeretne hozzáadni a konfigurációs kiszolgál
 
 ### <a name="configure-settings"></a>Beállítások konfigurálása
 
-1. A konfigurációs kiszolgáló kezelése varázslóban válassza a **kapcsolat beállítása**lehetőséget. A legördülő listából válassza ki azt a hálózati adaptert, amelyet a beépített Process Server használ a mobilitási szolgáltatás felderítéséhez és leküldéses telepítéséhez a forrásoldali gépeken. Ezután válassza ki azt a hálózati adaptert, amelyet a konfigurációs kiszolgáló használ az Azure-hoz való kapcsolódáshoz. Válassza a **Mentés** lehetőséget. Ez a beállítás a konfigurálás után nem módosítható. Ne módosítsa a konfigurációs kiszolgáló IP-címét. Győződjön meg arról, hogy a konfigurációs kiszolgálóhoz rendelt IP-cím statikus IP-cím, nem DHCP-IP-cím.
+1. A konfigurációs kiszolgáló kezelése varázslóban válassza a **kapcsolat beállítása**lehetőséget. A legördülő listából válassza ki azt a hálózati adaptert, amelyet a beépített Process Server használ a mobilitási szolgáltatás felderítéséhez és leküldéses telepítéséhez a forrásoldali gépeken. Ezután válassza ki azt a hálózati adaptert, amelyet a konfigurációs kiszolgáló használ az Azure-hoz való kapcsolódáshoz. Kattintson a **Mentés** gombra. Ez a beállítás a konfigurálás után nem módosítható. Ne módosítsa a konfigurációs kiszolgáló IP-címét. Győződjön meg arról, hogy a konfigurációs kiszolgálóhoz rendelt IP-cím statikus IP-cím, nem DHCP-IP-cím.
 2. A **Recovery Services**-tároló kiválasztása lapon jelentkezzen be a Microsoft Azure a [konfigurációs kiszolgáló regisztrálása a Azure site Recovery Services szolgáltatással](#register-the-configuration-server-with-azure-site-recovery-services)című 6. lépésében használt hitelesítő adatokkal.
 3. Bejelentkezés után válassza ki az Azure-előfizetését, valamint a megfelelő erőforráscsoportot és tárolót.
 

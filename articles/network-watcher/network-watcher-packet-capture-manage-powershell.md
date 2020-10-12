@@ -13,16 +13,16 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: 100a8ed1987b2edbc0aea1708c8a60b48bf391b1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84737920"
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-powershell"></a>A csomagok rögzítésének kezelése az Azure Network Watcher a PowerShell használatával
 
 > [!div class="op_single_selector"]
-> - [Azure Portalra](network-watcher-packet-capture-manage-portal.md)
+> - [Azure Portal](network-watcher-packet-capture-manage-portal.md)
 > - [PowerShell](network-watcher-packet-capture-manage-powershell.md)
 > - [Azure CLI](network-watcher-packet-capture-manage-cli.md)
 > - [Azure REST API](network-watcher-packet-capture-manage-rest.md)
@@ -52,7 +52,7 @@ Ez a cikk feltételezi, hogy rendelkezik a következő erőforrásokkal:
 
 ## <a name="install-vm-extension"></a>Virtuálisgép-bővítmény telepítése
 
-### <a name="step-1"></a>1\. lépés
+### <a name="step-1"></a>1. lépés
 
 ```powershell
 $VM = Get-AzVM -ResourceGroupName testrg -Name VM1
@@ -97,7 +97,7 @@ Az ügynök telepítésének biztosításához futtassa a `Get-AzVMExtension` pa
 Get-AzVMExtension -ResourceGroupName $VM.ResourceGroupName  -VMName $VM.Name -Name $ExtensionName
 ```
 
-Az alábbi példa a futtatási választ szemlélteti`Get-AzVMExtension`
+Az alábbi példa a futtatási választ szemlélteti `Get-AzVMExtension`
 
 ```
 ResourceGroupName       : testrg
@@ -123,7 +123,7 @@ ForceUpdateTag          :
 
 Miután az előző lépések befejeződik, a rendszer telepíti a csomag-rögzítési ügynököt a virtuális gépre.
 
-### <a name="step-1"></a>1\. lépés
+### <a name="step-1"></a>1. lépés
 
 A következő lépés az Network Watcher példány beolvasása. Ezt a változót a `New-AzNetworkWatcherPacketCapture` 4. lépésben megadott parancsmagnak adja át a rendszer.
 
@@ -266,7 +266,7 @@ Remove-AzNetworkWatcherPacketCapture -NetworkWatcher $networkWatcher -PacketCapt
 
 ## <a name="download-a-packet-capture"></a>Csomagok rögzítésének letöltése
 
-A csomag-rögzítési munkamenet befejezése után a rögzítési fájl feltölthető a blob Storage-ba vagy egy helyi fájlba a virtuális gépen. A csomag rögzítésének tárolási helye a munkamenet létrehozásakor van meghatározva. A Storage-fiókba mentett rögzítési fájlok elérésének kényelmes eszköze Microsoft Azure Storage Explorer, amely letölthető innen:https://storageexplorer.com/
+A csomag-rögzítési munkamenet befejezése után a rögzítési fájl feltölthető a blob Storage-ba vagy egy helyi fájlba a virtuális gépen. A csomag rögzítésének tárolási helye a munkamenet létrehozásakor van meghatározva. A Storage-fiókba mentett rögzítési fájlok elérésének kényelmes eszköze Microsoft Azure Storage Explorer, amely letölthető innen:  https://storageexplorer.com/
 
 Ha meg van adva egy Storage-fiók, a rendszer a csomag rögzítési fájljait a következő helyen menti a Storage-fiókba:
 

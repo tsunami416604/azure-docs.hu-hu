@@ -4,10 +4,10 @@ description: Ez a cikk bevezetést nyújt egy Service Fabric alkalmazás frissí
 ms.topic: conceptual
 ms.date: 8/5/2020
 ms.openlocfilehash: cb0c1c0049957244b94b59707b70e47dc53f6c9f
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88067511"
 ---
 # <a name="service-fabric-application-upgrade"></a>Service Fabric alkalmazás frissítése
@@ -75,7 +75,7 @@ A bekezdést követő folyamatábra segít megérteni egy Service Fabric alkalma
 
 ![Service Fabric alkalmazás frissítési folyamata][image]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [Az alkalmazás a Visual Studióval történő frissítése](service-fabric-application-upgrade-tutorial.md) végigvezeti egy alkalmazás frissítésén a Visual Studióval.
 
 [Az alkalmazás PowerShell használatával történő frissítése](service-fabric-application-upgrade-tutorial-powershell.md) végigvezeti az alkalmazás frissítésén a PowerShell használatával.

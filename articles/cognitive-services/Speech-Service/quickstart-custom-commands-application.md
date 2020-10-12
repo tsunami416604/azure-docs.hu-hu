@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
 ms.openlocfilehash: 05b47a786fe845460177b66b5bd54cdb140c246e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87289417"
 ---
 # <a name="create-a-voice-assistant-using-custom-commands"></a>Hangvezérelt asszisztens létrehozása egyéni parancsokkal
@@ -66,7 +66,7 @@ Jelenleg az egyéni parancsok támogatják a következő régiókban létrehozot
     > [!div class="mx-imgBorder"]
     > ![Projekt létrehozása](media/custom-commands/import-project.png)
 
-1.  A **Luis authoring Resource** listán válasszon ki egy authoring-erőforrást. Ha nincsenek érvényes authoring-erőforrások, hozzon létre egyet az **új Luis authoring-erőforrás létrehozása**lehetőség kiválasztásával.
+1.  A **Luis authoring Resource** listán válasszon ki egy authoring-erőforrást. Ha nincsenek érvényes authoring-erőforrások, hozzon létre egyet az  **új Luis authoring-erőforrás létrehozása**lehetőség kiválasztásával.
 
     > [!div class="mx-imgBorder"]
     > ![Erőforrás létrehozása](media/custom-commands/create-new-luis-resource.png)
@@ -101,9 +101,9 @@ Ahhoz, hogy hozzáférhessen az alkalmazáshoz a Speech studión kívül, közz�
 ### <a name="update-prediction-luis-resource"></a>Előrejelzési LUIS-erőforrás frissítése
 
 
-1. Válassza a bal oldali ablaktábla **Beállítások** elemét, majd a középső ablaktáblán válassza a **Luis-erőforrások** lehetőséget.
+1. Válassza a bal oldali ablaktábla **Beállítások** elemét, majd a középső ablaktáblán válassza a  **Luis-erőforrások** lehetőséget.
 1. Válasszon előrejelzési erőforrást, vagy hozzon létre egyet az **új erőforrás létrehozása**lehetőség kiválasztásával.
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
     
     > [!div class="mx-imgBorder"]
     > ![LUIS-erőforrások beállítása](media/custom-commands/set-luis-resources.png)
@@ -113,7 +113,7 @@ Ahhoz, hogy hozzáférhessen az alkalmazáshoz a Speech studión kívül, közz�
 
 ### <a name="publish-the-application"></a>Az alkalmazás közzététele
 
-Válassza a **Közzététel** elemet a jobb oldali ablaktábla tetején. A közzététel befejeződése után új ablak jelenik meg. Jegyezze fel az **alkalmazás azonosítóját** és a **beszédfelismerési erőforrás kulcsának** értékét. Erre a két értékre szüksége lesz ahhoz, hogy hozzáférjen az alkalmazáshoz a Speech studión kívülről.
+Válassza a  **Közzététel** elemet a jobb oldali ablaktábla tetején. A közzététel befejeződése után új ablak jelenik meg. Jegyezze fel az **alkalmazás azonosítóját** és a **beszédfelismerési erőforrás kulcsának** értékét. Erre a két értékre szüksége lesz ahhoz, hogy hozzáférjen az alkalmazáshoz a Speech studión kívülről.
 
 Azt is megteheti, hogy ezeket az értékeket a **Beállítások**  >  **általános** szakaszban is bejelöli.
 

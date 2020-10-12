@@ -4,10 +4,10 @@ description: Ismerje meg, hogyan telepítheti a Microsoft Azure Recovery Service
 ms.topic: conceptual
 ms.date: 03/03/2020
 ms.openlocfilehash: fb59c245c469791233ce973b00426a127b116535
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90975296"
 ---
 # <a name="install-the-azure-backup-mars-agent"></a>A Azure Backup MARS-ügynök telepítése

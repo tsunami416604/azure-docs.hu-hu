@@ -8,10 +8,10 @@ ms.date: 05/06/2019
 ms.author: heidist
 ms.custom: include file
 ms.openlocfilehash: ee430241173a6c19e2a32e176f28411631d9cb19
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80272942"
 ---
 Egy előfizetésen belül több szolgáltatást is létrehozhat. Mindegyiket egy adott rétegben lehet kiépíteni. Csak az egyes szintek által engedélyezett szolgáltatások száma korlátozza. Létrehozhat például akár 12 szolgáltatást az alapszintű szinten, és egy másik 12 szolgáltatást az S1 szinten ugyanazon előfizetés keretében. További információ a rétegek használatáról: [SKU vagy szintű Azure Cognitive Search kiválasztása](../articles/search/search-sku-tier.md).

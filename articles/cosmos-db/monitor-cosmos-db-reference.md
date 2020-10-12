@@ -9,10 +9,10 @@ ms.date: 07/17/2020
 ms.author: bwren
 ms.custom: subject-monitoring
 ms.openlocfilehash: 21e1d93e206751b5a55b0b3549e8bd566612ddbe
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88080453"
 ---
 # <a name="azure-cosmos-db-monitoring-data-reference"></a>Azure Cosmos DB-adatmonitorozási referencia
@@ -28,8 +28,8 @@ A következő táblázat a Azure Cosmos DB erőforrás-naplófájljainak tulajdo
 | **idő** | **TimeGenerated** | A művelet bekövetkeztekor megadott dátum és idő (UTC). |
 | **resourceId** | **Erőforrás** | Az Azure Cosmos DB fiók, amely számára engedélyezve vannak a naplók.|
 | **Kategória** | **Kategória** | A Azure Cosmos DB, a **DataPlaneRequests**, a **MongoRequests**, a **QueryRuntimeStatistics**, a **PartitionKeyStatistics**, a **PartitionKeyRUConsumption**és a **ControlPlaneRequests** a rendelkezésre álló naplózási típusok. |
-| **operationName** | **OperationName** | A művelet neve. A művelet neve lehet:,,,,,,,,, `Create` `Update` ,, `Read` `ReadFeed` `Delete` `Replace` `Execute` `SqlQuery` `Query` `JSQuery` `Head` `HeadFeed` vagy `Upsert` .   |
-| **Tulajdonságok** | n.a. | A mező tartalmát az alábbi sorok írják le. |
+| **operationName** | **OperationName** | A művelet neve. A művelet neve lehet:,,,,,,,,,  `Create` `Update` ,, `Read` `ReadFeed` `Delete` `Replace` `Execute` `SqlQuery` `Query` `JSQuery` `Head` `HeadFeed` vagy `Upsert` .   |
+| **Tulajdonságok** | n/a | A mező tartalmát az alábbi sorok írják le. |
 | **Tevékenységazonosító** | **activityId_g** | A naplózott művelet egyedi GUID azonosítója. |
 | **userAgent** | **userAgent_s** | Az ügyfél felhasználói ügynökét megadó karakterlánc, amelyből a kérést elküldték. A felhasználói ügynök formátuma: `{user agent name}/{version}` .|
 | **requestResourceType** | **requestResourceType_s** | Az elérni kívánt erőforrás típusa. Ez az érték lehet adatbázis, tároló, dokumentum, melléklet, felhasználó, engedély, tárolt eljárás, trigger, felhasználó által definiált függvény vagy ajánlat. |
@@ -55,16 +55,16 @@ Az összes Azure Monitor támogatási metrikájának listáját (beleértve a Az
             
 |Metrika (metrika megjelenítendő neve)|Egység (aggregáció típusa) |Leírás|Dimenziók| Időbeli részletesség| Örökölt metrika leképezése | Használat |
 |---|---|---|---| ---| ---| ---|
-| TotalRequests (összes kérelem) | Darabszám (darabszám) | Benyújtott kérelmek száma| DatabaseName, CollectionName, régió, StatusCode| Összes | TotalRequests, http-2xx, http-3xx, http 400, HTTP 401, belső kiszolgálóhiba, szolgáltatás nem érhető el, szabályozott kérelmek, átlagos kérelmek másodpercenként | Az állapotkód, a tároló percenkénti részletességgel történő figyelésére használatos. Az átlagos kérelmek másodpercenkénti lekéréséhez használja a Count összesítést percek alatt, és ossza meg a 60-as számmal. |
-| MetadataRequests (metaadat-kérelmek) |Darabszám (darabszám) | A metaadat-kérelmek száma. Azure Cosmos DB minden fiókhoz rendszermetaadat-tárolót tart fenn, amely lehetővé teszi a gyűjtemények, adatbázisok stb. és azok konfigurációinak számbavételét díjmentesen. | DatabaseName, CollectionName, régió, StatusCode| Összes| |Metaadat-kérelmek miatti szabályozások figyelésére használatos.|
-| MongoRequests (Mongo kérelmek) | Darabszám (darabszám) | A Mongo kérelmek száma | DatabaseName, CollectionName, régió, CommandName, ErrorCode| Összes |Mongo-lekérdezési kérelmek gyakorisága, a Mongo frissítési kérelmi aránya, a Mongo törlési kérelmi aránya, a Mongo beszúrási kérelmi aránya, a Mongo száma kérelmek aránya| Mongo-kérési hibák figyelésére használatos. |
+| TotalRequests (összes kérelem) | Darabszám (darabszám) | Benyújtott kérelmek száma| DatabaseName, CollectionName, régió, StatusCode| Mind | TotalRequests, http-2xx, http-3xx, http 400, HTTP 401, belső kiszolgálóhiba, szolgáltatás nem érhető el, szabályozott kérelmek, átlagos kérelmek másodpercenként | Az állapotkód, a tároló percenkénti részletességgel történő figyelésére használatos. Az átlagos kérelmek másodpercenkénti lekéréséhez használja a Count összesítést percek alatt, és ossza meg a 60-as számmal. |
+| MetadataRequests (metaadat-kérelmek) |Darabszám (darabszám) | A metaadat-kérelmek száma. Azure Cosmos DB minden fiókhoz rendszermetaadat-tárolót tart fenn, amely lehetővé teszi a gyűjtemények, adatbázisok stb. és azok konfigurációinak számbavételét díjmentesen. | DatabaseName, CollectionName, régió, StatusCode| Mind| |Metaadat-kérelmek miatti szabályozások figyelésére használatos.|
+| MongoRequests (Mongo kérelmek) | Darabszám (darabszám) | A Mongo kérelmek száma | DatabaseName, CollectionName, régió, CommandName, ErrorCode| Mind |Mongo-lekérdezési kérelmek gyakorisága, a Mongo frissítési kérelmi aránya, a Mongo törlési kérelmi aránya, a Mongo beszúrási kérelmi aránya, a Mongo száma kérelmek aránya| Mongo-kérési hibák figyelésére használatos. |
 
 #### <a name="request-unit-metrics"></a>Adategység metrikáinak kérése
 
 |Metrika (metrika megjelenítendő neve)|Egység (aggregáció típusa)|Leírás|Dimenziók| Időbeli részletesség| Örökölt metrika leképezése | Használat |
 |---|---|---|---| ---| ---| ---|
-| MongoRequestCharge (Mongo-kérelem díja) | Darabszám (összesen) |Felhasznált Mongo-kérelmek egységei| DatabaseName, CollectionName, régió, CommandName, ErrorCode| Összes |Mongo-lekérdezési kérelem díja, Mongo frissítési kérelmének díja, Mongo törlési kérelmének díja, Mongo-kérelem díja, Mongo száma kérelmek díja| Egy percen belül figyeli a Mongo-erőforrást.|
-| TotalRequestUnits (összes kérelem egysége)| Darabszám (összesen) | Felhasználható kérési egységek| DatabaseName, CollectionName, régió, StatusCode |Összes| TotalRequestUnits| A teljes RU-használat figyelésére használható percenkénti részletességgel. Ha másodpercenként átlagosan felhasznált RU-t szeretné lekérni, használja a teljes összesítést percenként, és ossza meg a 60-as számmal.|
+| MongoRequestCharge (Mongo-kérelem díja) | Darabszám (összesen) |Felhasznált Mongo-kérelmek egységei| DatabaseName, CollectionName, régió, CommandName, ErrorCode| Mind |Mongo-lekérdezési kérelem díja, Mongo frissítési kérelmének díja, Mongo törlési kérelmének díja, Mongo-kérelem díja, Mongo száma kérelmek díja| Egy percen belül figyeli a Mongo-erőforrást.|
+| TotalRequestUnits (összes kérelem egysége)| Darabszám (összesen) | Felhasználható kérési egységek| DatabaseName, CollectionName, régió, StatusCode |Mind| TotalRequestUnits| A teljes RU-használat figyelésére használható percenkénti részletességgel. Ha másodpercenként átlagosan felhasznált RU-t szeretné lekérni, használja a teljes összesítést percenként, és ossza meg a 60-as számmal.|
 | ProvisionedThroughput (kiépített átviteli sebesség)| Darabszám (maximum) |Kiépített átviteli sebesség a tároló részletessége szerint| DatabaseName, ContainerName| 5 M| | Tárolón kiépített átviteli sebesség figyelésére szolgál.|
 
 #### <a name="storage-metrics"></a>Tárolási metrikák
@@ -81,8 +81,8 @@ Az összes Azure Monitor támogatási metrikájának listáját (beleértve a Az
 
 |Metrika (metrika megjelenítendő neve)|Egység (aggregáció típusa)|Leírás|Dimenziók| Időbeli részletesség| Használat |
 |---|---|---|---| ---| ---|
-| ReplicationLatency (replikációs késés)| Ezredmásodperc (minimum, maximum, átlag) | P99 replikációs késés a forrás-és a célcsoportok között a Geo-kompatibilis fiókhoz| SourceRegion, TargetRegion| Összes | Egy földrajzilag replikált fiók két régiója közötti P99-replikációs késés figyelésére használatos. |
-| Kiszolgálóoldali késés| Ezredmásodperc (átlagos) | A kiszolgáló által a kérelem feldolgozásához szükséges idő. | CollectionName, ConnectionMode, DatabaseName, OperationType, PublicAPIType, régió | Összes | A kérés késésének figyelésére szolgál a Azure Cosmos DB kiszolgálón. |
+| ReplicationLatency (replikációs késés)| Ezredmásodperc (minimum, maximum, átlag) | P99 replikációs késés a forrás-és a célcsoportok között a Geo-kompatibilis fiókhoz| SourceRegion, TargetRegion| Mind | Egy földrajzilag replikált fiók két régiója közötti P99-replikációs késés figyelésére használatos. |
+| Kiszolgálóoldali késés| Ezredmásodperc (átlagos) | A kiszolgáló által a kérelem feldolgozásához szükséges idő. | CollectionName, ConnectionMode, DatabaseName, OperationType, PublicAPIType, régió | Mind | A kérés késésének figyelésére szolgál a Azure Cosmos DB kiszolgálón. |
 
 
 
@@ -97,9 +97,9 @@ Az összes Azure Monitor támogatási metrikájának listáját (beleértve a Az
 
 |Metrika (metrika megjelenítendő neve)|Egység (aggregáció típusa)|Leírás|Dimenziók| Időbeli részletesség| Használat |
 |---|---|---|---| ---| ---|
-| CassandraRequests (Cassandra-kérelmek) | Darabszám (darabszám) | Cassandra API kérelmek száma| DatabaseName, CollectionName, ErrorCode, régió, OperationType, ResourceType| Összes| A Cassandra-kérések figyelésére szolgál percenkénti részletességgel. Az átlagos kérelmek másodpercenkénti lekéréséhez használja a Count összesítést percek alatt, és ossza meg a 60-as számmal.|
-| CassandraRequestCharges (Cassandra-kérelmek díjai) | Darabszám (Sum, min, Max, AVG) | A Cassandra API által felhasznált kérelmek egységei | DatabaseName, CollectionName, régió, OperationType, ResourceType| Összes| Egy Cassandra API fiók által percenként használt RUs figyelésére használatos.|
-| CassandraConnectionClosures (Cassandra-kapcsolatok bezárása) |Darabszám (darabszám) |Lezárt Cassandra-kapcsolatok száma| ClosureReason, régió| Összes | Az ügyfelek és a Azure Cosmos DB Cassandra API közötti kapcsolat figyelésére használatos.|
+| CassandraRequests (Cassandra-kérelmek) | Darabszám (darabszám) | Cassandra API kérelmek száma| DatabaseName, CollectionName, ErrorCode, régió, OperationType, ResourceType| Mind| A Cassandra-kérések figyelésére szolgál percenkénti részletességgel. Az átlagos kérelmek másodpercenkénti lekéréséhez használja a Count összesítést percek alatt, és ossza meg a 60-as számmal.|
+| CassandraRequestCharges (Cassandra-kérelmek díjai) | Darabszám (Sum, min, Max, AVG) | A Cassandra API által felhasznált kérelmek egységei | DatabaseName, CollectionName, régió, OperationType, ResourceType| Mind| Egy Cassandra API fiók által percenként használt RUs figyelésére használatos.|
+| CassandraConnectionClosures (Cassandra-kapcsolatok bezárása) |Darabszám (darabszám) |Lezárt Cassandra-kapcsolatok száma| ClosureReason, régió| Mind | Az ügyfelek és a Azure Cosmos DB Cassandra API közötti kapcsolat figyelésére használatos.|
 
 ## <a name="see-also"></a>Lásd még:
 

@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 02/01/2019
 ms.author: swmachan
 ms.openlocfilehash: 1f4dfc4b80aff01e4b7fe7ebae4850b28cd6a498
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83588598"
 ---
 # <a name="translator-30-languages"></a>Translator 3,0: nyelvek
@@ -67,11 +67,11 @@ A nyelvi erőforrások lekéréséhez nincs szükség hitelesítésre.
 
 Az ügyfél a `scope` lekérdezési paraméter segítségével határozza meg, hogy mely nyelvekhez érdekli a szolgáltatás.
 
-* `scope=translation`olyan nyelveket biztosít, amelyek támogatottak a szövegek egyik nyelvről egy másik nyelvre való fordításához.
+* `scope=translation` olyan nyelveket biztosít, amelyek támogatottak a szövegek egyik nyelvről egy másik nyelvre való fordításához.
 
-* `scope=transliteration`a lehetővé teszi, hogy a szöveg átalakítása egy parancsfájlból egy másik parancsfájlba;
+* `scope=transliteration` a lehetővé teszi, hogy a szöveg átalakítása egy parancsfájlból egy másik parancsfájlba;
 
-* `scope=dictionary`nyelvi párokat biztosít, amelyek esetében az `Dictionary` adatok visszaadása.
+* `scope=dictionary` nyelvi párokat biztosít, amelyek esetében az `Dictionary` adatok visszaadása.
 
 Egy ügyfél egyszerre több csoportot is beolvashat egy vesszővel tagolt nevek megadásával. Például az `scope=translation,transliteration,dictionary` összes csoport támogatott nyelveinek visszaadása.
 
@@ -93,7 +93,7 @@ A sikeres válasz egy JSON-objektum, amely egy tulajdonsággal rendelkezik az eg
 
 Az egyes tulajdonságok értéke a következő.
 
-* `translation`tulajdonság
+* `translation` tulajdonság
 
   A `translation` tulajdonság értéke (kulcs, érték) párok szótára. Az egyes kulcsok a BCP 47 nyelvi címkével rendelkeznek. A kulcs azonosítja azt a nyelvet, amelynek szövegét lefordíthatja vagy lefordíthatja. A kulcshoz társított érték egy JSON-objektum, amely a nyelvet leíró tulajdonságokkal rendelkezik:
 
@@ -119,7 +119,7 @@ Az egyes tulajdonságok értéke a következő.
   }
   ```
 
-* `transliteration`tulajdonság
+* `transliteration` tulajdonság
 
   A `transliteration` tulajdonság értéke (kulcs, érték) párok szótára. Az egyes kulcsok a BCP 47 nyelvi címkével rendelkeznek. A kulcs azonosítja azt a nyelvet, amelynek szövegét át lehet alakítani egy parancsfájlból egy másikra. A kulcshoz társított érték egy JSON-objektum, amely a nyelvet és a támogatott parancsfájlokat leíró tulajdonságokkal rendelkezik:
 
@@ -184,7 +184,7 @@ Az egyes tulajdonságok értéke a következő.
   }
   ```
 
-* `dictionary`tulajdonság
+* `dictionary` tulajdonság
 
   A `dictionary` tulajdonság értéke (kulcs, érték) párok szótára. Az egyes kulcsok a BCP 47 nyelvi címkével rendelkeznek. A kulcs azonosítja azt a nyelvet, amellyel az alternatív fordítások és a háttér-fordítások elérhetők. Az érték egy JSON-objektum, amely leírja a forrás nyelvét és a megcélzott nyelveket az elérhető fordításokkal:
 

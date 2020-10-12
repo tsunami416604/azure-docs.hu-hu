@@ -9,10 +9,10 @@ ms.author: jeffpatt
 ms.subservice: files
 ms.custom: references_regions
 ms.openlocfilehash: 661cfd5bb410a714bc42e0cd9676ac2ec08f8a45
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90708897"
 ---
 # <a name="troubleshoot-azure-nfs-file-shares"></a>Az Azure NFS-fájlmegosztás hibáinak megoldása
@@ -90,7 +90,7 @@ Az alábbi ábra a nyilvános végpontok használatával történő kapcsolódá
     - A privát végponton üzemeltetett virtuális hálózatokkal rendelkező virtuális hálózatok egymáshoz való hozzáférést biztosítanak az NFS-megosztáshoz a társ virtuális hálózatokban lévő ügyfelek számára.
     - A magánhálózati végpontok ExpressRoute, pont – hely és helyek közötti VPN-eket is használhatnak.
 
-:::image type="content" source="media/storage-troubleshooting-files-nfs/connectivity-using-private-endpoints.jpg" alt-text="A privát végpontok kapcsolatának ábrája." lightbox="media/storage-troubleshooting-files-nfs/connectivity-using-private-endpoints.jpg":::
+:::image type="content" source="media/storage-troubleshooting-files-nfs/connectivity-using-private-endpoints.jpg" alt-text="A nyilvános végpont kapcsolatának ábrája." lightbox="media/storage-troubleshooting-files-nfs/connectivity-using-private-endpoints.jpg":::
 
 ### <a name="cause-2-secure-transfer-required-is-enabled"></a>2. ok: a biztonságos átvitelre van szükség
 
@@ -100,7 +100,7 @@ A kettős titkosítás még nem támogatott az NFS-megosztások esetében. Az Az
 
 A Storage-fiók konfiguráció paneljén tiltsa le a biztonságos átvitelt.
 
-:::image type="content" source="media/storage-files-how-to-mount-nfs-shares/storage-account-disable-secure-transfer.png" alt-text="Képernyőfelvétel a Storage-fiók konfigurációja panelről, a biztonságos átvitel letiltása szükséges.":::
+:::image type="content" source="media/storage-files-how-to-mount-nfs-shares/storage-account-disable-secure-transfer.png" alt-text="A nyilvános végpont kapcsolatának ábrája.":::
 
 ### <a name="cause-3-nfs-common-package-is-not-installed"></a>3. ok: az NFS-Common csomag nincs telepítve
 A csatlakoztatási parancs futtatása előtt telepítse a csomagot az alábbi disztribúció-specifikus parancs futtatásával.

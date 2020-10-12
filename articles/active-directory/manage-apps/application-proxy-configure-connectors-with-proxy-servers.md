@@ -13,10 +13,10 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d177dce250d65b4f9d825c9d70916f70c4076d4b
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88077509"
 ---
 # <a name="work-with-existing-on-premises-proxy-servers"></a>Meglévő helyszíni proxykiszolgálók használata
@@ -144,7 +144,7 @@ Egyes környezetekben a háttérbeli alkalmazás felé irányuló kommunikáció
 Ennek engedélyezéséhez kövesse a következő lépéseket:
 
 ### <a name="step-1-add-the-required-registry-value-to-the-server"></a>1. lépés: adja hozzá a szükséges beállításazonosító értékét a kiszolgálóhoz
-1. Ha engedélyezni szeretné az alapértelmezett proxy használatát, adja hozzá a következő beállításértéket (DWORD) `UseDefaultProxyForBackendRequests = 1` a "HKEY_LOCAL_MACHINE \SOFTWARE\MICROSOFT\MICROSOFT HRE app proxy Connector" mappában található összekötő-konfigurációs beállításkulcs-kulcshoz.
+1. Ha engedélyezni szeretné az alapértelmezett proxy használatát, adja hozzá a következő beállításértéket (DWORD) `UseDefaultProxyForBackendRequests = 1` a "HKEY_LOCAL_MACHINE\Software\Microsoft\Microsoft AAD App Proxy Connector" mappában található összekötő-konfigurációs beállításkulcs-kulcshoz.
 
 ### <a name="step-2-configure-the-proxy-server-manually-using-netsh-command"></a>2. lépés: a proxykiszolgáló manuális konfigurálása a netsh parancs használatával
 1.  Engedélyezze, hogy a csoportházirend legyen a számítógép proxybeállításait. Ez a következő címen található: Computer Computer \ Windows-összetevők \ Internet Explorer. Ezt úgy kell beállítani, hogy ezt a házirendet ne kelljen felhasználónkénti értékre beállítani.
@@ -204,7 +204,7 @@ Az előző szűrő csak a HTTPs-kérelmeket és a proxy portra küldött válasz
 
 Ha más válasz kódokat (például 407 vagy 502) lát, ez azt jelenti, hogy a proxy hitelesítést igényel, vagy más okból nem engedélyezi a forgalmat. Ezen a ponton a proxykiszolgálót támogató csapatot kell felvennie.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Az Azure AD Application Proxy-összekötők ismertetése](application-proxy-connectors.md)
 * Ha problémája van az összekötők kapcsolódási problémáinak megoldásával, kérdezze meg a [Microsoft Q&a kérdéses oldalt Azure Active Directory](https://docs.microsoft.com/answers/topics/azure-active-directory.html) vagy hozzon létre egy jegyet a támogatási csapatával.

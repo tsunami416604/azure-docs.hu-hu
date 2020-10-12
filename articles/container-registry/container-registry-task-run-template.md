@@ -4,10 +4,10 @@ description: Az ACR-feladatok futtatásával rendszerképeket hozhat létre Azur
 ms.topic: article
 ms.date: 04/22/2020
 ms.openlocfilehash: 7ad40d2e925d5e1443af9bce4115d45b0e8c06e1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82927768"
 ---
 # <a name="run-acr-tasks-using-resource-manager-templates"></a>ACR-feladatok futtatása Resource Manager-sablonok használatával

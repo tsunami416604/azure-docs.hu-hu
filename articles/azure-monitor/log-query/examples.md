@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 03/16/2020
 ms.openlocfilehash: 736daa8a09a8f08721c7b7d9c20f012f274b384a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87045515"
 ---
 # <a name="azure-monitor-log-query-examples"></a>Példák a Azure Monitor log lekérdezésekre
@@ -200,7 +200,7 @@ Perf
 ## <a name="protection-status"></a>Védelmi állapot
 
 ### <a name="computers-with-non-reporting-protection-status-duration"></a>Nem jelentéskészítési védelmi állapottal rendelkező számítógépek
-Ez a példa azokat a számítógépeket sorolja fel, amelyek védelmi állapota _nem jelentett_ , és az adott állapotban lévő időtartam.
+Ez a példa azokat a számítógépeket sorolja fel, amelyek védelmi állapota _nem jelentett_  , és az adott állapotban lévő időtartam.
 
 ```Kusto
 ProtectionStatus

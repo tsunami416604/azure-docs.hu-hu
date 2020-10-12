@@ -16,10 +16,10 @@ ms.date: 01/12/2018
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 5f32ec82c2b4c6d8b902195782b286cca82befb0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85507636"
 ---
 # <a name="use-storsimple-device-manager-to-manage-alerts-for-the-storsimple-virtual-array"></a>A StorSimple Eszközkezelő használata a StorSimple virtuális tömbhöz tartozó riasztások kezelésére
@@ -72,7 +72,7 @@ Miután engedélyezte az e-mailes értesítést egy virtuális tömbhöz, az ér
 
 A StorSimple Virtual Array számos feltételre reagálva riasztásokat hoz létre. A riasztási feltételek leggyakoribb típusai a következők:
 
-* **Kapcsolódási problémák** – ezek a riasztások akkor fordulnak elő, ha az adatátviteli nehézségek merülnek fel. Kommunikációs problémák léphetnek fel az Azure Storage-fiókba irányuló és onnan érkező adatok átvitele során, vagy a virtuális eszközök és a StorSimple Eszközkezelő szolgáltatás közötti kapcsolat hiánya miatt. A kommunikációs problémák némelyike a legnehezebb megoldás, mert sok meghibásodási pont van. Mindig először ellenőrizze, hogy a hálózati kapcsolat és az Internet-hozzáférés elérhető-e, mielőtt továbblépne a fejlettebb hibaelhárításra. A portok és a tűzfal beállításairól a [StorSimple virtuális tömb rendszerkövetelményei](storsimple-ova-system-requirements.md)című témakörben olvashat bővebben. A hibaelhárítással kapcsolatos segítségért keresse fel a következőt: [Hibaelhárítás a test-kapcsolódási parancsmaggal](storsimple-troubleshoot-deployment.md).
+* **Kapcsolódási problémák** – ezek a riasztások akkor fordulnak elő, ha az adatátviteli nehézségek merülnek fel. Kommunikációs problémák léphetnek fel az Azure Storage-fiókba irányuló és onnan érkező adatok átvitele során, vagy a virtuális eszközök és a StorSimple Eszközkezelő szolgáltatás közötti kapcsolat hiánya miatt. A kommunikációs problémák némelyike a legnehezebb megoldás, mert sok meghibásodási pont van. Mindig először ellenőrizze, hogy a hálózati kapcsolat és az Internet-hozzáférés elérhető-e, mielőtt továbblépne a fejlettebb hibaelhárításra. A portok és a tűzfal beállításairól a [StorSimple virtuális tömb rendszerkövetelményei](storsimple-ova-system-requirements.md)című témakörben olvashat bővebben. A hibaelhárítással kapcsolatos segítségért keresse fel a következőt: [Hibaelhárítás a Test-Connection parancsmaggal](storsimple-troubleshoot-deployment.md).
 * **Teljesítménnyel kapcsolatos problémák** – ezek a riasztások akkor keletkeznek, ha a rendszer nem optimális teljesítményű, például ha nagy terhelés alatt áll.
 
 Emellett előfordulhat, hogy a biztonsággal, a frissítésekkel vagy a feladatok meghibásodásával kapcsolatos riasztások jelennek meg.

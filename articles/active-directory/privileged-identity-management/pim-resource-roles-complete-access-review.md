@@ -16,10 +16,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1601c9fc750df1f8e18bdaa072ede1b5ee164329
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84743813"
 ---
 # <a name="complete-an-access-review-of-azure-resource-roles-in-privileged-identity-management"></a>A Privileged Identity Management Azure Resource szerepköreinek hozzáférési felülvizsgálatának befejezése
@@ -30,7 +30,7 @@ Ha a hozzáférési felülvizsgálati időszak véget ért, vagy miután az öss
 
 ## <a name="manage-access-reviews"></a>Hozzáférési felülvizsgálatok kezelése
 
-1. Lépjen a [Azure Portal](https://portal.azure.com/). Az irányítópulton válassza ki az **Azure Resources** szolgáltatást.
+1. Nyissa meg az [Azure Portalt](https://portal.azure.com/). Az irányítópulton válassza ki az **Azure Resources** szolgáltatást.
 
 2. Válassza ki az erőforrást.
 
@@ -66,7 +66,7 @@ Az **eredmények** lapon megtekintheti és letöltheti a felülvizsgálati eredm
 
 ![A felhasználók, az eredmény, a Reason, a reviewed by, a által alkalmazott eredmények és az eredmény alkalmazása](media/pim-resource-roles-complete-access-review/rbac-access-review-results.png)
 
-## <a name="reviewers"></a>Lektorok
+## <a name="reviewers"></a>Elbírálók
 
 Felülvizsgálók megtekintése és hozzáadása a meglévő hozzáférési felülvizsgálathoz. Visszajelzések elvégzéséhez emlékeztesse a véleményezőket.
 

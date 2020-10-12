@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 09/28/2017
 ms.author: alkohli
 ms.openlocfilehash: 3032585c6f0a5cc6143eee06b12b6def50cd7cd0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80297713"
 ---
 # <a name="storsimple-8000-series-software-high-availability-and-networking-requirements"></a>StorSimple 8000-es sorozatú szoftverek, magas rendelkezésre állás és hálózati követelmények
@@ -41,7 +41,7 @@ A StorSimple-eszközt elérő Storage-ügyfelekre a következő szoftver-követe
 
 | Támogatott operációs rendszerek | Szükséges verzió | További követelmények/megjegyzések |
 | --- | --- | --- |
-| Windows Server |2008 R2 SP1, 2012, 2012 R2, 2016 |A StorSimple iSCSI-kötetek használata csak a következő Windows-lemezeken támogatott:<ul><li>Egyszerű kötet az alapszintű lemezen</li><li>Egyszerű és tükrözött kötet dinamikus lemezen</li></ul>Csak az operációs rendszer natív módon elérhető szoftveres iSCSI-kezdeményezői támogatottak. A hardveres iSCSI-kezdeményezők nem támogatottak.<br></br>A Windows Server 2012 és a 2016 dinamikus kiosztású és ODX funkciók támogatottak, ha StorSimple iSCSI-kötetet használ.<br><br>A StorSimple dinamikusan kiosztott és teljesen kiosztott köteteket hozhat létre. Nem lehet részben kiosztott köteteket létrehozni.<br><br>A dinamikusan kiosztott kötetek újraformázása hosszú időt is igénybe vehet. Javasoljuk, hogy törölje a kötetet, majd az újraformázás helyett hozzon létre egy újat. Ha azonban továbbra is szeretne újraformázni egy kötetet:<ul><li>Futtassa a következő parancsot az újraformázás előtt, hogy elkerülje a lemezterület-visszanyerési késéseket: <br>`fsutil behavior set disabledeletenotify 1`</br></li><li>A formázás befejezése után a következő parancs használatával engedélyezze újra a lemezterület-kinyerést:<br>`fsutil behavior set disabledeletenotify 0`</br></li><li>Alkalmazza a Windows Server 2012 gyorsjavítást a [KB 2878635](https://support.microsoft.com/kb/2870270) -ben leírt módon a Windows Server rendszerű számítógépére.</li></ul></li></ul></ul> Ha StorSimple Snapshot Manager vagy StorSimple-adaptert szeretne konfigurálni a SharePointhoz, lépjen a [választható összetevőkhöz tartozó szoftverekre vonatkozó követelmények](#software-requirements-for-optional-components)közül. |
+| Windows Server |2008 R2 SP1, 2012, 2012 R2, 2016 |A StorSimple iSCSI-kötetek használata csak a következő Windows-lemezeken támogatott:<ul><li>Egyszerű kötet az alapszintű lemezen</li><li>Egyszerű és tükrözött kötet dinamikus lemezen</li></ul>Csak az operációs rendszer natív módon elérhető szoftveres iSCSI-kezdeményezői támogatottak. A hardveres iSCSI-kezdeményezők nem támogatottak.<br></br>A Windows Server 2012 és a 2016 dinamikus kiosztású és ODX funkciók támogatottak, ha StorSimple iSCSI-kötetet használ.<br><br>A StorSimple dinamikusan kiosztott és teljesen kiosztott köteteket hozhat létre. Nem lehet részben kiosztott köteteket létrehozni.<br><br>A dinamikusan kiosztott kötetek újraformázása hosszú időt vehet igénybe. Javasoljuk, hogy az újraformázás helyett törölje a kötetet, majd hozzon létre egy újat. Ha azonban továbbra is szeretne újraformázni egy kötetet:<ul><li>Az újraformázás előtt futtassa az alábbi parancsot, amellyel elkerülheti a terület-visszaigénylés késleltetését:  <br>`fsutil behavior set disabledeletenotify 1`</br></li><li>A formázás végeztével használja az alábbi parancsot a terület-visszaigénylés engedélyezéséhez: <br>`fsutil behavior set disabledeletenotify 0`</br></li><li>Alkalmazza a Windows Server 2012 gyorsjavítást a [KB 2878635](https://support.microsoft.com/kb/2870270) -ben leírt módon a Windows Server rendszerű számítógépére.</li></ul></li></ul></ul> Ha StorSimple Snapshot Manager vagy StorSimple-adaptert szeretne konfigurálni a SharePointhoz, lépjen a [választható összetevőkhöz tartozó szoftverekre vonatkozó követelmények](#software-requirements-for-optional-components)közül. |
 | VMware ESX |5,5 és 6,0 |A VMware vSphere iSCSI-ügyfélként támogatott. A VAAI funkció VMware vSphere StorSimple-eszközökön támogatott. |
 | Linux RHEL/CentOS |5, 6 és 7 |A Linux iSCSI-ügyfelek támogatása az Open-iSCSI-kezdeményezővel 5, 6 és 7 verziót biztosít. |
 | Linux |SUSE Linux 11 | |
@@ -63,7 +63,7 @@ A következő szoftverek követelményei a választható StorSimple-összetevők
 
 A StorSimple-eszköz egy zárolt eszköz. A tűzfalon azonban meg kell nyitni a portokat az iSCSI-, a felhő-és a felügyeleti forgalom engedélyezéséhez. A következő táblázat felsorolja azokat a portokat, amelyeket meg kell nyitni a tűzfalon. A (z) *in* vagy a *bejövő* tábla a bejövő ügyfelek által az eszközhöz való hozzáférést kérő irányt jelöli. A *kimenő vagy kimenő* állapot arra utal, hogy a StorSimple-eszköz hogyan küldi *el az* adatokat külsőleg, az üzembe helyezésen kívül: például az internet felé.
 
-| Portszám:<sup>1, 2</sup> | Be vagy ki | Port hatóköre | Kötelező | Megjegyzések |
+| Portszám:<sup>1, 2</sup> | Be vagy ki | Port hatóköre | Kötelező | Jegyzetek |
 | --- | --- | --- | --- | --- |
 | TCP 80 (HTTP)<sup>3</sup> |Ki |WAN |Nem |<ul><li>A rendszer a kimenő portot használja az internet-hozzáféréshez a frissítések lekéréséhez.</li><li>A kimenő webes proxy a felhasználó által konfigurálható.</li><li>A rendszerfrissítések engedélyezéséhez ezt a portot is meg kell nyitni a vezérlő rögzített IP-címei számára.</li></ul> |
 | TCP 443 (HTTPS)<sup>3</sup> |Ki |WAN |Igen |<ul><li>A kimenő port a felhőben tárolt adatok elérésére szolgál.</li><li>A kimenő webes proxy a felhasználó által konfigurálható.</li><li>A rendszerfrissítések engedélyezéséhez ezt a portot is meg kell nyitni a vezérlő rögzített IP-címei számára.</li><li>Ezt a portot is használja a rendszer az adattárolók begyűjtésére szolgáló vezérlőn is.</li></ul> |
@@ -122,14 +122,14 @@ Javasoljuk, hogy a legtöbb esetben a StorSimple rögzített IP-címek alapján 
 
 Az útválasztási metrika társítva van az interfészekhez és az átjáróhoz, amely az adatokat a megadott hálózatokra irányítja. Az útválasztási metrikát az útválasztási protokoll használja az adott célhelyhez tartozó legjobb elérési út kiszámításához, ha több elérési út is létezik ugyanarra a célhelyre. Minél alacsonyabb az útválasztási metrika, annál magasabb a preferencia.
 
-A StorSimple kontextusában, ha több hálózati adapter és átjáró van konfigurálva a forgalom továbbítására, az útválasztási mérőszámok lejátszásra kerülnek, hogy meghatározzák azt a relatív sorrendet, amelyben a rendszer használni fogja a csatolókat. A felhasználó nem módosíthatja az útválasztási metrikákat. A parancsmag segítségével azonban `Get-HcsRoutingTable` kinyomtathatja az útválasztási táblázatot (és metrikákat) a StorSimple-eszközön. További információ a Get-HcsRoutingTable parancsmagról a [StorSimple-telepítés hibaelhárítása című](storsimple-troubleshoot-deployment.md)témakörben.
+A StorSimple kontextusában, ha több hálózati adapter és átjáró van konfigurálva a forgalom továbbítására, az útválasztási mérőszámok lejátszásra kerülnek, hogy meghatározzák azt a relatív sorrendet, amelyben a rendszer használni fogja a csatolókat. A felhasználó nem módosíthatja az útválasztási metrikákat. A parancsmag segítségével azonban `Get-HcsRoutingTable` kinyomtathatja az útválasztási táblázatot (és metrikákat) a StorSimple-eszközön. További információ a Get-HcsRoutingTable parancsmagról a [StorSimple telepítésének hibaelhárítása című](storsimple-troubleshoot-deployment.md)témakörben.
 
 A 2. frissítéshez és újabb verziókhoz használt útválasztási metrikai algoritmust a következő módon lehet megmagyarázni.
 
 * Előre meghatározott értékek halmaza lett hozzárendelve a hálózati adapterekhez.
 * Vegye fontolóra az alábbi példában szereplő táblázatot a különböző hálózati adapterekhez rendelt értékekkel, ha azok felhőalapú vagy felhőalapú, de konfigurált átjáróval rendelkeznek. Figyelje meg, hogy az itt hozzárendelt értékek csak példa értékeket tartalmaznak.
 
-    | Hálózati illesztő | Felhőben engedélyezve | Felhő – letiltva az átjáróval |
+    | Hálózati adapter | Felhőben engedélyezve | Felhő – letiltva az átjáróval |
     |-----|---------------|---------------------------|
     | 0. adatérték  | 1            | -                        |
     | 1. adatérték  | 2            | 20                       |
@@ -201,9 +201,9 @@ A StorSimple-eszközök közé tartozik a redundáns, lecserélhető vezérlő m
 * Ne távolítsa el egyszerre mindkét vezérlő modult. Ha a vezérlő feladatátvétele folyamatban van, ne állítsa le a készenléti vezérlő modulját, vagy távolítsa el az alvázról.
 * A vezérlő feladatátvétele után várjon legalább öt percet, mielőtt eltávolítja bármelyik vezérlő modult.
 
-#### <a name="network-interfaces"></a>Hálózati illesztők
+#### <a name="network-interfaces"></a>Hálózati adapterek
 
-A StorSimple-vezérlő moduljai négy 1 Gigabit és 2 10 Gigabit Ethernet hálózati adapterrel rendelkeznek.
+A StorSimple-vezérlő moduljai 4 1 Gigabit és 2 10 Gigabit Ethernet hálózati adapterrel rendelkeznek.
 
 * Győződjön meg arról, hogy a vezérlő modulok hálózati kapcsolatai azonosak, és hogy a vezérlő modul felületéhez kapcsolódó hálózati adapterek azonos hálózati konfigurációval rendelkeznek.
 * Ha lehetséges, telepítsen hálózati kapcsolatokat különböző kapcsolókon, hogy a szolgáltatás rendelkezésre állása hálózati eszköz meghibásodása esetén is megtörténjen.

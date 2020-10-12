@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 10/30/2018
 ms.custom: seodec18
 ms.openlocfilehash: 11798db483f0ba370f73340489c17f38c87ede41
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88080198"
 ---
 # <a name="operating-system-functionality-on-azure-app-service"></a>Operációs rendszer funkciójának Azure App Service
@@ -51,7 +51,7 @@ A App Service egy olyan szolgáltatás, amely az Azure Pásti (platform as Servi
 - Olyan alkalmazás-meghajtó, amely kizárólag App Service által használt Azure Package cspkg-fájlokat tartalmaz (és nem érhető el az ügyfelek számára)
 - "User" meghajtó (a C:\ meghajtó), amelynek mérete a virtuális gép méretétől függően változik. 
 
-Fontos, hogy az alkalmazás növekedésével figyelje a lemez kihasználtságát. Ha elérte a lemezkvóta elérését, az hatással lehet az alkalmazására. Például: 
+Fontos, hogy az alkalmazás növekedésével figyelje a lemez kihasználtságát. Ha elérte a lemezkvóta elérését, az hatással lehet az alkalmazására. Példa: 
 
 - Az alkalmazás olyan hibát okozhat, amely nem elegendő helyet jelez a lemezen.
 - Előfordulhat, hogy a kudu-konzolra való tallózáskor lemezhibák jelenhetnek meg.

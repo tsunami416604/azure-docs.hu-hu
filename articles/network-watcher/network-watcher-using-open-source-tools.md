@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: 48501a2796f4d826a20af559058490a14785b53e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84738634"
 ---
 # <a name="visualize-network-traffic-patterns-to-and-from-your-vms-using-open-source-tools"></a>A hálózati forgalom mintáinak megjelenítése a virtuális gépekről és a nyílt forráskódú eszközök használatával
@@ -36,7 +36,7 @@ Az Azure-beli virtuális gépen üzembe helyezett egyszerű webalkalmazások ny�
 ### <a name="install-capanalysis"></a>A CapAnalysis telepítése
 
 A CapAnalysis virtuális gépen való telepítéséhez a hivatalos utasításokat itt tekintheti meg https://www.capanalysis.net/ca/how-to-install-capanalysis .
-Ha távolról szeretné elérni a CapAnalysis, nyissa meg a 9877-es portot a virtuális gépen egy új bejövő biztonsági szabály hozzáadásával. A hálózati biztonsági csoportokban található szabályok létrehozásával kapcsolatos további tudnivalókért tekintse meg a [szabályok létrehozása meglévő NSG](../virtual-network/manage-network-security-group.md#create-a-security-rule)című témakört. A szabály sikeres hozzáadása után hozzáférhet a CapAnalysis-hez`http://<PublicIP>:9877`
+Ha távolról szeretné elérni a CapAnalysis, nyissa meg a 9877-es portot a virtuális gépen egy új bejövő biztonsági szabály hozzáadásával. A hálózati biztonsági csoportokban található szabályok létrehozásával kapcsolatos további tudnivalókért tekintse meg a [szabályok létrehozása meglévő NSG](../virtual-network/manage-network-security-group.md#create-a-security-rule)című témakört. A szabály sikeres hozzáadása után hozzáférhet a CapAnalysis-hez `http://<PublicIP>:9877`
 
 ### <a name="use-azure-network-watcher-to-start-a-packet-capture-session"></a>A csomagok rögzítési munkamenetének elindítása az Azure Network Watcher használatával
 
@@ -47,7 +47,7 @@ A Network Watcher által készített csomagok rögzítését közvetlenül is fe
 
 A CapAnalysis mutató hivatkozás megadásakor ügyeljen arra, hogy egy SAS-tokent Fűzzön hozzá a Storage-blob URL-címéhez.  Ehhez navigáljon a megosztott hozzáférési aláíráshoz a Storage-fiókból, jelölje ki az engedélyezett engedélyeket, majd nyomja le az SAS létrehozása gombot a jogkivonat létrehozásához. Ezután hozzáfűzheti az SAS-tokent a csomag rögzítési tárolójának blob URL-címéhez.
 
-Az eredményül kapott URL-cím a következő URL-címhez hasonlóan fog kinézni:`http:\//storageaccount.blob.core.windows.net/container/location?addSASkeyhere`
+Az eredményül kapott URL-cím a következő URL-címhez hasonlóan fog kinézni: `http:\//storageaccount.blob.core.windows.net/container/location?addSASkeyhere`
 
 
 ### <a name="analyzing-packet-captures"></a>A csomagok rögzítésének elemzése

@@ -12,10 +12,10 @@ ms.date: 07/30/2020
 ms.topic: conceptual
 ms.custom: how-to
 ms.openlocfilehash: bffbf32cf5faa936a00444f1f39facaf226b8ef2
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90885980"
 ---
 # <a name="enable-logging-in-azure-machine-learning-designer-pipelines"></a>Azure Machine Learning Designer-folyamatok naplózásának engedélyezése
@@ -59,7 +59,7 @@ Az alábbi példa bemutatja, hogyan naplózhatja a két betanított modell köze
         return dataframe1,
     ```
     
-Ez a kód a Azure Machine Learning Python SDK-t használja az értékek naplózásához. A Run. get_context () függvényt használja az aktuális Futtatás környezetének lekéréséhez. Ezután a Run. Parent. log () metódussal naplózza az értékeket a környezetbe. A használatával a rendszer az `parent` értékeket a fölérendelt folyamat futtatására használja a modul futtatása helyett.
+Ez a kód a Azure Machine Learning Python SDK-t használja az értékek naplózásához. Run.get_context () használatával kéri le az aktuális Futtatás környezetét. Ezután a Run. Parent. log () metódussal naplózza az értékeket a környezetbe. A használatával a rendszer az `parent` értékeket a fölérendelt folyamat futtatására használja a modul futtatása helyett.
 
 További információ a Python SDK-nak az értékek naplózására való használatáról: [a naplózás engedélyezése az Azure ml betanítási futtatásával](how-to-track-experiments.md).
 

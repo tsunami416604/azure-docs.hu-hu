@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.service: iot-central
 services: iot-central
 ms.openlocfilehash: 554079ddec3332ced2817d18ea55ce1260d68817
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87291619"
 ---
-# <a name="telemetry-property-and-command-payloads"></a>Telemetria, tulajdonság és parancs hasznos adatai
+# <a name="telemetry-property-and-command-payloads"></a>Telemetria, tulajdonságok és parancsok hasznos adatai
 
 _Ez a cikk az eszközök fejlesztőire vonatkozik._
 
@@ -347,7 +347,7 @@ A DCM következő kódrészlete egy telemetria-típus definícióját mutatja `O
 }
 ```
 
-Az eszköz ügyfelének a következő példához hasonló JSON-ként kell elküldenie a telemetria. `DateTime`a típusoknak ISO 8061-kompatibilisnek kell lenniük. A (z) és a (z) és a (z) IoT Central lehetséges értékei a `Property3` következők `0` `1` `Item1` `Item2` `Item3` :
+Az eszköz ügyfelének a következő példához hasonló JSON-ként kell elküldenie a telemetria. `DateTime` a típusoknak ISO 8061-kompatibilisnek kell lenniük. A (z) és a (z) és a (z) IoT Central lehetséges értékei a `Property3` következők `0` `1` `Item1` `Item2` `Item3` :
 
 ```json
 {
@@ -531,7 +531,7 @@ A DCM következő kódrészlete a tulajdonságok típusának definícióját mut
 }
 ```
 
-Az eszköz ügyfelének egy JSON-adattartalmat kell küldenie, amely a következő példához hasonlóan jelenik meg, mint az eszköz Twin-beli jelentett tulajdonsága. `Date`a típusoknak ISO 8061-kompatibilisnek kell lenniük:
+Az eszköz ügyfelének egy JSON-adattartalmat kell küldenie, amely a következő példához hasonlóan jelenik meg, mint az eszköz Twin-beli jelentett tulajdonsága. `Date` a típusoknak ISO 8061-kompatibilisnek kell lenniük:
 
 ```json
 { "DateProperty": "2020-05-17" }
@@ -766,18 +766,18 @@ Ez a szakasz olyan írható tulajdonságokat mutat be, amelyeket az eszköz egy 
 
 IoT Central az eszköztől az írható tulajdonságok frissítéseire választ vár. A válaszüzenetnek tartalmaznia kell a `ac` és a `av` mezőket. A `ad` mező kitöltése nem kötelező. Példákért tekintse meg az alábbi kódrészleteket.
 
-`ac`egy numerikus mező, amely az alábbi táblázatban szereplő értékeket használja:
+`ac` egy numerikus mező, amely az alábbi táblázatban szereplő értékeket használja:
 
 | Érték | Címke | Leírás |
 | ----- | ----- | ----------- |
 | `'ac': 200` | Befejezve | A tulajdonság-módosítási művelet sikeresen befejeződött. |
-| `'ac': 202`vagy`'ac': 201` | Függőben | A tulajdonság-módosítási művelet függőben van vagy folyamatban van |
+| `'ac': 202`  vagy `'ac': 201` | Függőben | A tulajdonság-módosítási művelet függőben van vagy folyamatban van |
 | `'ac': 4xx` | Hiba | A kért tulajdonság módosítása érvénytelen volt, vagy hiba történt. |
 | `'ac': 5xx` | Hiba | Az eszköz váratlan hibát észlelt a kért módosítás feldolgozása során. |
 
-`av`az eszközre eljuttatott verziószám.
+`av` az eszközre eljuttatott verziószám.
 
-`ad`egy paraméter-karakterlánc leírása.
+`ad` egy paraméter-karakterlánc leírása.
 
 A DCM következő kódrészlete egy írható tulajdonság definícióját mutatja `string` be:
 

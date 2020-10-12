@@ -9,10 +9,10 @@ ms.subservice: blobs
 ms.topic: conceptual
 ms.reviewer: clausjor
 ms.openlocfilehash: 569e785cd8fc3ec4bbf9960cef63258e83496847
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91460730"
 ---
 # <a name="azure-blob-storage-hot-cool-and-archive-access-tiers"></a>Azure Blob Storage: A gyakori és ritka elérésű, valamint az archív hozzáférési szintek
@@ -283,7 +283,7 @@ Az Azure Portal, a PowerShell, valamint a parancssori felület eszközei, illetv
 
 Az adattárolás és más korlátok a fiók szintjén vannak megadva, nem pedig hozzáférési szinten. Választhat, hogy az összes korlátot egy vagy mindhárom szinten használja-e. További információ: [a méretezhetőség és a teljesítményre vonatkozó célok a standard szintű Storage-fiókok esetében](../common/scalability-targets-standard-account.md?toc=%2fazure%2fstorage%2fblobs%2ftoc.json).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A GPv2-és blob Storage-fiókok gyors, ritka és archív verzióinak kiértékelése
 

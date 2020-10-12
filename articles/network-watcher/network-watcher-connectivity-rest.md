@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 08/02/2017
 ms.author: kumud
 ms.openlocfilehash: 33a3c41f49833d669fd94ccf1e22afed971e544b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84737971"
 ---
 # <a name="troubleshoot-connections-with-azure-network-watcher-using-the-azure-rest-api"></a>Az Azure Network Watcher-vel való kapcsolatok hibáinak megoldása az Azure-REST API használatával
@@ -130,7 +130,7 @@ Date: Fri, 02 Jun 2017 20:21:16 GMT
 null
 ```
 
-### <a name="response"></a>Válasz
+### <a name="response"></a>Reagálás
 
 A következő válasz az előző példából származik.  Ebben a válaszban az `ConnectionStatus` nem **érhető el**. Láthatja, hogy az összes eljuttatott mintavétel sikertelen volt. A kapcsolat nem sikerült a virtuális berendezésen, mert egy UserRule_Port80 nevű felhasználó konfigurálta, amely a `NetworkSecurityRule` 80-es porton való bejövő forgalom blokkolására van konfigurálva. **UserRule_Port80** Ezek az adatok a kapcsolódási problémák kutatására használhatók.
 
@@ -246,7 +246,7 @@ Date: Fri, 02 Jun 2017 20:26:05 GMT
 null
 ```
 
-### <a name="response"></a>Válasz
+### <a name="response"></a>Reagálás
 
 A következő példában a látható, hogy `connectionStatus` nem **érhető el**. A `hops` részletek között látható, `issues` hogy a forgalom le lett tiltva, mert egy `UserDefinedRoute` .
 
@@ -342,7 +342,7 @@ Date: Fri, 02 Jun 2017 20:31:00 GMT
 null
 ```
 
-### <a name="response"></a>Válasz
+### <a name="response"></a>Reagálás
 
 A következő válaszban láthatja, hogy a `connectionStatus` láthatók **elérhetők**. Ha a csatlakozás sikeres, a késési értékek megadására kerül sor.
 
@@ -429,7 +429,7 @@ Date: Fri, 02 Jun 2017 20:05:03 GMT
 null
 ```
 
-### <a name="response"></a>Válasz
+### <a name="response"></a>Reagálás
 
 A következő példa az előző API-hívás futtatásának válasza. Az ellenőrzések sikeressége esetén a `connectionStatus` tulajdonság **elérhetőként**jelenik meg.  A tárolási blob és a késés eléréséhez szükséges ugrások számával kapcsolatos részletek.
 

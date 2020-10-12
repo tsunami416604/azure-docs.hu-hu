@@ -13,10 +13,10 @@ ms.date: 12/13/2019
 ms.author: kegorman
 ms.custom: ''
 ms.openlocfilehash: 2bbc78f9a5569c8446743980cdea153883c19d4d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91274436"
 ---
 # <a name="reference-architectures-for-oracle-database-enterprise-edition-on-azure"></a>Az Azure-beli Oracle Database Enterprise Edition hivatkozási architektúrái
@@ -71,7 +71,7 @@ Az Oracle-adatvédelem használatakor a másodlagos adatbázist is megnyithatja 
 > Az aktív adatvédelemhez további licencelés szükséges. Ez a licenc a távoli szinkronizálás funkció használatához is szükséges. Lépjen kapcsolatba az Oracle-képviselőjével, és beszéljen a licencelési következményeiről.
 
 #### <a name="oracle-data-guard-with-fsfo"></a>Oracle-adatvédelem a FSFO
-Az Oracle-adatvédelem a gyors indítási Feladatátvételsel (FSFO) további rugalmasságot biztosíthat a közvetítő külön gépen való beállításával. Az adatőr-közvetítő és a másodlagos adatbázis egyaránt futtatja a megfigyelőt, és megfigyelheti az elsődleges adatbázist az állásidőhöz. Ez lehetővé teszi, hogy a redundancia az adatkezelő megfigyelője telepítőben is elérhető legyen. 
+Az Oracle-adatvédelem Fast-Start Feladatátvételsel (FSFO) további rugalmasságot biztosíthat a közvetítő külön gépen való beállításával. Az adatőr-közvetítő és a másodlagos adatbázis egyaránt futtatja a megfigyelőt, és megfigyelheti az elsődleges adatbázist az állásidőhöz. Ez lehetővé teszi, hogy a redundancia az adatkezelő megfigyelője telepítőben is elérhető legyen. 
 
 A Oracle Database 12,2-es vagy újabb verziójának használatával több megfigyelőt is beállíthat egyetlen Oracle-adatőr-átvitelszervező-konfigurációval. Ez a beállítás további rendelkezésre állást biztosít, abban az esetben, ha az egyik megfigyelő és a másodlagos adatbázis leállását tapasztalja. Az adatőr-közvetítő könnyű, és viszonylag kis virtuális gépen is üzemeltethető. Ha többet szeretne megtudni a adatőr-közvetítőről és annak előnyeiről, tekintse meg a jelen témakör [Oracle-dokumentációját](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/dgbkr/oracle-data-guard-broker-concepts.html) .
 
@@ -152,7 +152,7 @@ Az Oracle horizontális felskálázása elsősorban a következő összetevőkb�
 
 - **Globális szolgáltatás** – a globális szolgáltatás hasonló a normál adatbázis-szolgáltatáshoz. Az adatbázis-szolgáltatás összes tulajdonságán kívül a globális szolgáltatás a horizontálisan használt adatbázisokra, például a régiók közötti affinitásra, valamint a szegmens és a replikálási késések tűréshatárára is jellemző tulajdonságokkal rendelkezik. Csak egy globális szolgáltatást kell létrehozni, hogy az adatok beolvasása/írása egy szilánkokra osztott adatbázisba történjen. Ha aktív adatvédelmet használ, és a szegmensek írásvédett replikáit állítja be, létrehozhat egy másik gGobal szolgáltatást a csak olvasható számítási feladatokhoz. Az ügyfél ezeket a globális szolgáltatásokat használhatja az adatbázishoz való kapcsolódáshoz.
 
-- Szegmens **adatbázisok** – a szegmens adatbázisok az Oracle-adatbázisok. Az egyes adatbázisok a gyors indítási feladatátvételt (FSFO) használó Broker-konfigurációban az Oracle-adatőr használatával replikálódnak. Az egyes szegmenseken nem kell beállítania az adatvédelem feladatátvételét és replikálását. Ezt a rendszer automatikusan konfigurálja és telepíti a megosztott adatbázis létrehozásakor. Ha egy adott szegmens meghibásodása meghiúsul, az Oracle-megosztás automatikusan feladatátvételt hajt végre az elsődlegesről a készenléti állapotba.
+- Szegmens **adatbázisok** – a szegmens adatbázisok az Oracle-adatbázisok. Minden adatbázis replikálása az Oracle-adatőr használatával történik egy olyan közvetítői konfigurációban, amelyen engedélyezve van a Fast-Start feladatátvétel (FSFO). Az egyes szegmenseken nem kell beállítania az adatvédelem feladatátvételét és replikálását. Ezt a rendszer automatikusan konfigurálja és telepíti a megosztott adatbázis létrehozásakor. Ha egy adott szegmens meghibásodása meghiúsul, az Oracle-megosztás automatikusan feladatátvételt hajt végre az elsődlegesről a készenléti állapotba.
 
 Az Oracle-alapú többszintű adatbázisok üzembe helyezéséhez és kezeléséhez két interfész használható: Oracle Enterprise Manager Cloud Control GUI és/vagy a `GDSCTL` parancssori segédprogram. A Felhőbeli vezérlés használatával akár a rendelkezésre állás és a teljesítmény különböző szegmenseit is figyelheti. A `GDSCTL DEPLOY` parancs automatikusan létrehozza a szegmenseket és a hozzájuk tartozó figyelőket. Emellett a parancs automatikusan telepíti a rendszerszintű magas rendelkezésre állású, a rendszergazda által megadott replikációs konfigurációt.
 
@@ -232,6 +232,6 @@ Tekintse át a forgatókönyvre vonatkozó alábbi Oracle-hivatkozási cikkeket.
 
 - [Az Oracle-adatvédelem bemutatása](https://docs.oracle.com/en/database/oracle/oracle-database/18/sbydb/introduction-to-oracle-data-guard-concepts.html#GUID-5E73667D-4A56-445E-911F-1E99092DD8D7)
 - [Az Oracle-adatőr-átvitelszervező fogalmai](https://docs.oracle.com/en/database/oracle/oracle-database/12.2/dgbkr/oracle-data-guard-broker-concepts.html)
-- [Az Oracle GoldenGate konfigurálása aktív-aktív magas rendelkezésre álláshoz](https://docs.oracle.com/goldengate/1212/gg-winux/GWUAD/wu_bidirectional.htm#GWUAD282)
+- [Az Oracle-GoldenGate konfigurálása Active-Active magas rendelkezésre álláshoz](https://docs.oracle.com/goldengate/1212/gg-winux/GWUAD/wu_bidirectional.htm#GWUAD282)
 - [Az Oracle horizontális felskálázásának áttekintése](https://docs.oracle.com/en/database/oracle/oracle-database/19/shard/sharding-overview.html)
 - [Oracle Active-adatvédelem – távoli szinkronizálás – nulla adatvesztés bármilyen távolságban](https://www.oracle.com/technetwork/database/availability/farsync-2267608.pdf)

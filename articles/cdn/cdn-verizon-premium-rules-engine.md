@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 05/31/2019
 ms.author: allensu
 ms.openlocfilehash: a49912bc2275e478d657f06587c4ddc830210d3a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87040212"
 ---
 # <a name="override-http-behavior-using-the-azure-cdn-from-verizon-premium-rules-engine"></a>HTTP-viselkedés felülbírálása a Verizon Premium Rules Engine Azure CDN használatával
@@ -22,7 +22,7 @@ ms.locfileid: "87040212"
 
 A Azure CDN Rules Engine lehetővé teszi a HTTP-kérések kezelésének testreszabását. Például letilthatja bizonyos tartalomtípusok kézbesítését, a gyorsítótárazási házirend meghatározását vagy egy HTTP-fejléc módosítását. Ez az oktatóanyag bemutatja, hogyan hozhat létre olyan szabályt, amely megváltoztatja a CDN-eszközök gyorsítótárazási viselkedését. A szabályok motor szintaxisával kapcsolatos további információkért lásd a [Azure CDN Rules Engine-referenciát](cdn-verizon-premium-rules-engine-reference.md).
 
-## <a name="access"></a>Access
+## <a name="access"></a>Hozzáférés
 
 A szabályok motor eléréséhez először a **CDN-profil** oldal tetején lévő **kezelés** elemre kell kiválasztania a Azure CDN felügyeleti oldalának eléréséhez. Attól függően, hogy a végpont a dinamikus hely gyorsítására van-e optimalizálva (DSA), akkor a szabályok motorját a megadott típusú végpontnak megfelelő szabályokkal érheti el:
 
@@ -97,7 +97,7 @@ A szabályok motor eléréséhez először a **CDN-profil** oldal tetején lév�
 
 - [Azure CDN áttekintése](cdn-overview.md)
 - [Szabályok motor referenciája](cdn-verizon-premium-rules-engine-reference.md)
-- [Szabálymotor egyezési feltételei](cdn-verizon-premium-rules-engine-reference-match-conditions.md)
+- [Szabályok motorjának egyeztetési feltételei](cdn-verizon-premium-rules-engine-reference-match-conditions.md)
 - [Szabálymotor feltételes kifejezései](cdn-verizon-premium-rules-engine-reference-conditional-expressions.md)
 - [Szabálymotor funkciói](cdn-verizon-premium-rules-engine-reference-features.md)
 - [Azure Fridays: Azure CDN hatékony új funkciói](https://azure.microsoft.com/documentation/videos/azure-cdns-powerful-new-premium-features/) (videó)

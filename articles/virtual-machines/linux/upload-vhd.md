@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 10/10/2019
 ms.author: cynthn
 ms.openlocfilehash: df2b58e0067932edd9dfa21ee1a6fbb2a5c1fdf7
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87289754"
 ---
 # <a name="create-a-linux-vm-from-a-custom-disk-with-the-azure-cli"></a>Linuxos virtuális gép létrehozása egyéni lemezről az Azure CLI-vel
@@ -69,7 +69,7 @@ Az Azure különböző Linux-disztribúciókat támogat (lásd a [támogatott di
 Tekintse meg a [Linux telepítési megjegyzéseit](create-upload-generic.md#general-linux-installation-notes) is, amelyek az Azure-hoz készült Linux-rendszerképek előkészítésével kapcsolatos általános tippeket mutatnak.
 
 > [!NOTE]
-> Az [Azure platform SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) -ja csak akkor vonatkozik a Linux rendszerű virtuális gépekre, ha az egyik támogatott disztribúció az [Azure által támogatott disztribúciókban](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)a "támogatott verziók" szakaszban megadott konfigurációs részletekkel szerepel.
+> Az [Azure platform SLA](https://azure.microsoft.com/support/legal/sla/virtual-machines/) -ja a Linux rendszerű virtuális gépekre vonatkozik, ha a támogatott disztribúciók egyikét használja a [linux rendszeren a Azure-Endorsed-disztribúciókban](endorsed-distros.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)megadott konfigurációs adatokkal.
 > 
 > 
 

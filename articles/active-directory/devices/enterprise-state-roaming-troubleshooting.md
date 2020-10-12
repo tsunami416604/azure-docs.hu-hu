@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: tanning
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: e427a68751cc348a7b0024fb01402bd15ca87d2a
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90705724"
 ---
 # <a name="troubleshooting-enterprise-state-roaming-settings-in-azure-active-directory"></a>A Azure Active Directory Enterprise State Roaming beállításainak hibaelhárítása
@@ -90,7 +90,7 @@ A speciális hibaelhárításhoz a Eseménynapló segítségével meghatározott
 
 ### <a name="sync-does-not-work-on-devices-that-have-apps-side-loaded-using-mdm-software"></a>A szinkronizálás nem működik olyan eszközökön, amelyeken az alkalmazások MDM szoftverrel vannak betöltve
 
-A Windows 10 évfordulós frissítését (1607-es verzió) futtató eszközöket érinti. Eseménynapló a SettingSync-Azure-naplók alatt a 80070259 6013-as AZONOSÍTÓJÚ eseményazonosító gyakran látható.
+A Windows 10 évfordulós frissítését (1607-es verzió) futtató eszközöket érinti. Az SettingSync-Azure-naplók alatt Eseménynapló a 80070259 6013-as AZONOSÍTÓJÚ eseményazonosító gyakran látható.
 
 **Javasolt művelet**  
 Győződjön meg arról, hogy a Windows 10 v1607-ügyfél rendelkezik a 2016-es kumulatív frissítéssel ([KB3176934](https://support.microsoft.com/kb/3176934) OS Build 14393,82). 
@@ -180,6 +180,6 @@ Eseménynapló a HRE/Operations naplók alatt ez a hiba látható a 1104-as esem
 **Javasolt művelet**  
 Folytassa a felsorolt lépéseket a [KB3196528](https://support.microsoft.com/kb/3196528).  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az áttekintést lásd: a [nagyvállalati állapot barangolása – áttekintés](enterprise-state-roaming-overview.md).

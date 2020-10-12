@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/13/2019
 ms.author: jeedes
 ms.openlocfilehash: 2e3b2ee35352c2af4ae8196ba7c9699da761f83e
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91372493"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-springer-link"></a>Oktatóanyag: Azure Active Directory-integráció a Springer-kapcsolattal
@@ -72,7 +72,7 @@ Ebben a szakaszban az Azure AD egyszeri bejelentkezést és a Springer-hivatkoz�
 Az Azure AD egyszeri bejelentkezés Springer-kapcsolaton keresztüli konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
 
 1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. A **[Springer-kapcsolat egyszeri bejelentkezésének konfigurálása](#configure-springer-link-single-sign-on)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+2. A **[Springer-kapcsolat egyszeri bejelentkezésének konfigurálása](#configure-springer-link-single-sign-on)** – az egyes Sign-On beállítások konfigurálása az alkalmazás oldalán.
 3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
 4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
 5. **[Egyszeri bejelentkezés tesztelése](#test-single-sign-on)** – annak ellenőrzéséhez, hogy a konfiguráció működik-e.
@@ -91,7 +91,7 @@ Az Azure AD egyszeri bejelentkezés Springer-kapcsolaton keresztüli konfigurál
 
     ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
+3. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
@@ -114,13 +114,13 @@ Az Azure AD egyszeri bejelentkezés Springer-kapcsolaton keresztüli konfigurál
     A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet a következő minta használatával:  `https://fsso.springer.com/saml/login?idp=<entityID>&targetUrl=https://link.springer.com`
 
     > [!NOTE]
-    > A bejelentkezési URL-cím értéke nem valós. Frissítse az értéket a tényleges bejelentkezési URL-címmel. `<entityID>` Az Azure AD-azonosító a következő oktatóanyagban ismertetett **Springer-hivatkozás beállítása** szakaszból lett másolva. Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
+    > A bejelentkezési URL-cím értéke nem valós. Frissítse az értéket a tényleges Sign-On URL-címmel. `<entityID>` Az Azure AD-azonosító a következő oktatóanyagban ismertetett **Springer-hivatkozás beállítása** szakaszból lett másolva. Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható mintázatokat is megtekintheti.
 
-6. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a másolás ikonra az **alkalmazás-összevonási metaadatok URL-címének** másolásához és a számítógépre mentéséhez.
+6. Az **egyszeres Sign-On beállítása az SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a másolás ikonra az **alkalmazás-összevonási metaadatok URL-címének** másolásához és a számítógépre mentéséhez.
 
     ![A metaadatok letöltési hivatkozása](common/copy_metadataurl.png)
 
-### <a name="configure-springer-link-single-sign-on"></a>A Springer-hivatkozás egyszeri bejelentkezésének konfigurálása
+### <a name="configure-springer-link-single-sign-on"></a>A Springer összekapcsolási Sign-On konfigurálása
 
 Az egyszeri bejelentkezés a **Springer-hivatkozás** oldalán való konfigurálásához el kell küldenie a másolt **alkalmazás-összevonás metaadat-URL-címét** a [Springer link támogatási csapatának](mailto:onlineservice@springernature.com). A Springer link támogatási csapata ezt az URL-címet használja az SAML SSO-kapcsolat megfelelő beállításához mindkét oldalon.
 
@@ -147,7 +147,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** lehetőségre.
+    d. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 12/27/2019
 ms.openlocfilehash: 1094235f5bc5cc25cf6d8f3762dc242503952de6
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86083797"
 ---
 # <a name="analyze-website-logs-using-a-custom-python-library-with-apache-spark-cluster-on-hdinsight"></a>Webhelyek naplóinak elemzése egyéni Python-kódtár használatával Apache Spark-fürttel a HDInsight-on
@@ -78,7 +78,7 @@ Miután az adatait Apache Hive táblázatként mentette, a következő szakaszba
     sc.addPyFile('wasbs:///HdiSamples/HdiSamples/WebsiteLogSampleData/iislogparser.py')
     ```
 
-1. `iislogparser`egy olyan függvényt ad `parse_log_line` vissza, amely azt adja meg, hogy a `None` naplósor fejléc-e, és az osztály egy példányát adja vissza, `LogLine` Ha egy naplófájlt tartalmaz. A `LogLine` osztály használatával csak a naplósorokat lehet kibontani a RDD:
+1. `iislogparser` egy olyan függvényt ad `parse_log_line` vissza, amely azt adja meg, hogy a `None` naplósor fejléc-e, és az osztály egy példányát adja vissza, `LogLine` Ha egy naplófájlt tartalmaz. A `LogLine` osztály használatával csak a naplósorokat lehet kibontani a RDD:
 
     ```pyspark
     def parse_line(l):

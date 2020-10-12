@@ -4,10 +4,10 @@ description: Ismerje meg, hogyan csatlakoztathatók a környezetek (például Se
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 31f924a4b6d7cbe1b6f71c7e34d43fd9c135bac9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85483771"
 ---
 # <a name="connect-an-environment-to-your-labs-virtual-network-in-azure-devtest-labs"></a>Környezet összekötése a tesztkörnyezet virtuális hálózatával Azure DevTest Labs

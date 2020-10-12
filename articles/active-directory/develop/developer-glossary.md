@@ -13,10 +13,10 @@ ms.author: ryanwi
 ms.custom: aaddev
 ms.reviewer: jmprieur, saeeda, jesakowi, nacanuma
 ms.openlocfilehash: b02329d624eda440230fb99e02e08c841c5580f2
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90705996"
 ---
 # <a name="microsoft-identity-platform-developer-glossary"></a>A Microsoft Identity platform fejlesztői szószedete
@@ -54,7 +54,7 @@ További információ: [alkalmazás-és egyszerű szolgáltatások objektumai][A
 
 Ahhoz, hogy az alkalmazások integrálva legyenek az identitás-és hozzáférés-kezelési funkciókkal az Azure AD-be, regisztrálni kell egy Azure AD- [bérlőben](#tenant). Ha az Azure AD-vel regisztrálja az alkalmazást, az alkalmazáshoz meg kell adnia egy identitás-konfigurációt, amely lehetővé teszi, hogy integrálható legyen az Azure AD-vel és olyan funkciókkal, mint a következők:
 
-* Az egyszeri bejelentkezés robusztus felügyelete az Azure AD Identity Management és az [OpenID Connect][OpenIDConnect] protokoll implementációjának használatával
+* Egy Sign-On robusztus kezelése az Azure AD Identity Management és az [OpenID Connect][OpenIDConnect] protokoll implementációjának használatával
 * A [védett erőforrásokhoz](#resource-server) való felügyelt hozzáférés az [ügyfélalkalmazások](#client-application)által, a OAuth 2,0 [engedélyezési kiszolgálón](#authorization-server) keresztül
 * Engedélyezési [keretrendszer](#consent) a védett erőforrásokhoz való ügyfél-hozzáférés kezeléséhez az erőforrás-tulajdonosi hitelesítés alapján.
 
@@ -220,7 +220,7 @@ Hasonlóan ahhoz, ahogyan egy egyszerű szolgáltatásnév-objektumot használ e
 
 Egy olyan [ügyfélalkalmazás](#client-application) , amely a webkiszolgálón lévő összes kódot végrehajtja, és a hitelesítő adatai biztonságos tárolásával a kiszolgálón a "bizalmas" ügyfélként működhet. További információ: [OAuth2-ügyfelek típusai és profiljai][OAuth2-Client-Types].
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Microsoft Identity [platform fejlesztői útmutatója][AAD-Dev-Guide] az összes Microsoft Identity platform-fejlesztéssel kapcsolatos témakör, beleértve az [alkalmazások integrálásának][AAD-How-To-Integrate] áttekintését és a [Microsoft Identity platform hitelesítésének alapjait, valamint a támogatott hitelesítési forgatókönyveket][AAD-Auth-Scenarios]. A [githubon](https://github.com/azure-samples?utf8=%E2%9C%93&q=active%20directory&type=&language=)megtalálhatja a kód mintáit & oktatóanyagokat is.
 

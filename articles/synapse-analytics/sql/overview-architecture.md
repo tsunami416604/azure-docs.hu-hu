@@ -11,10 +11,10 @@ ms.date: 04/15/2020
 ms.author: martinle
 ms.reviewer: igorstan
 ms.openlocfilehash: 9f2f3eee12bb8741f6d079f6f081a08f4e2db9b5
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87046863"
 ---
 # <a name="azure-synapse-sql-architecture"></a>Azure szinapszis SQL-architektúra 
@@ -69,7 +69,7 @@ Az SQL on-demand szolgáltatásban a DQP motor a vezérlési csomóponton futtat
 
 A számítási csomópontok biztosítják a számítási teljesítményt. 
 
-Az SQL-készletben a disztribúciók a számítási csomópontokat dolgozzák fel feldolgozásra. A további számítási erőforrásokért a készlet újraképezi a disztribúciókat a rendelkezésre álló számítási csomópontokra. A számítási csomópontok száma 1-től 60-ig terjed, és az SQL-készlet szolgáltatási szintje határozza meg. Minden számítási csomóponthoz tartozik egy csomópont-azonosító, amely a rendszernézetekben látható. A számítási csomópont AZONOSÍTÓját úgy tekintheti meg, hogy megkeresi a rendszernézetek node_id oszlopát, amelynek neve a sys. pdw_nodes kezdetű. A rendszernézetek listáját a következő témakörben tekintheti meg: [MPP rendszernézetek](/sql/relational-databases/system-catalog-views/sql-data-warehouse-and-parallel-data-warehouse-catalog-views?view=azure-sqldw-latest).
+Az SQL-készletben a disztribúciók a számítási csomópontokat dolgozzák fel feldolgozásra. A további számítási erőforrásokért a készlet újraképezi a disztribúciókat a rendelkezésre álló számítási csomópontokra. A számítási csomópontok száma 1-től 60-ig terjed, és az SQL-készlet szolgáltatási szintje határozza meg. Minden számítási csomóponthoz tartozik egy csomópont-azonosító, amely a rendszernézetekben látható. A számítási csomópont AZONOSÍTÓját úgy tekintheti meg, hogy megkeresi a node_id oszlopot a rendszernézetekben, amelyek nevei a sys.pdw_nodeskal kezdődnek. A rendszernézetek listáját a következő témakörben tekintheti meg: [MPP rendszernézetek](/sql/relational-databases/system-catalog-views/sql-data-warehouse-and-parallel-data-warehouse-catalog-views?view=azure-sqldw-latest).
 
 Az SQL on-demand szolgáltatásban minden számítási csomóponthoz hozzá kell rendelni egy feladatot, valamint a feladat végrehajtásához szükséges fájlokat. A feladat elosztott lekérdezés-végrehajtási egység, amely ténylegesen a lekérdezés felhasználója számára van elküldve. Az automatikus skálázás érvényes annak biztosítására, hogy elegendő számítási csomópont legyen kihasználva a felhasználói lekérdezés végrehajtásához.
 

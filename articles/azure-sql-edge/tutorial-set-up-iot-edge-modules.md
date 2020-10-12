@@ -10,10 +10,10 @@ ms.author: vakrishn
 ms.reviewer: sourabha, sstein
 ms.date: 09/22/2020
 ms.openlocfilehash: 7b2432fda70e8f9a5fa8bc64ede846d977672e9e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90886479"
 ---
 # <a name="set-up-iot-edge-modules-and-connections"></a>IoT Edge modulok és kapcsolatok beállítása
@@ -44,7 +44,7 @@ Most a IoT Edge modulban meg kell adnia a tároló hitelesítő adatait.
 
    _Mező_|_Érték_
    -------|-------
-   Name|Beállításjegyzék neve
+   Név|Beállításjegyzék neve
    Cím|Bejelentkezési kiszolgáló
    Felhasználónév|Felhasználónév
    Jelszó|Jelszó
@@ -203,6 +203,6 @@ Most a IoT Edge modulban meg kell adnia a tároló hitelesítő adatait.
 
 Ebben az oktatóanyagban központilag telepítettük az adatgenerátor modult és az SQL Edge-modult. Ezután létrehoztunk egy folyamatos átviteli feladatot az adatgenerációs modul által az SQL-hez generált adatok továbbításához. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [ML modell üzembe helyezése az Azure SQL Edge-ben a ONNX használatával](tutorial-run-ml-model-on-sql-edge.md)

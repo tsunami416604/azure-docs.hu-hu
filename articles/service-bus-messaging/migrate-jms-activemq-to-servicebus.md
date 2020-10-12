@@ -15,10 +15,10 @@ ms.date: 07/07/2020
 ms.author: aschhab
 ms.custom: devx-track-java
 ms.openlocfilehash: 1b07faa5b2540aafafc27a51192d824d4445ce35
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88067154"
 ---
 # <a name="migrate-existing-java-message-service-jms-20-applications-from-apache-activemq-to-azure-service-bus"></a>Meglévő Java Message Service (JMS) 2,0-alkalmazások migrálása Apache ActiveMQ-ből Azure Service Bus
@@ -73,7 +73,7 @@ A JMS-alkalmazások írásakor a következő összetevőket és verziókat haszn
 | Összetevő | Verzió |
 |---|---|
 | Java Message Service-(JMS-) API | 1,1 vagy újabb |
-| AMQP protokoll | 1,0 |
+| AMQP protokoll | 1.0 |
 
 ### <a name="ensure-that-amqp-ports-are-open"></a>Győződjön meg arról, hogy a AMQP-portok nyitva vannak
 
@@ -84,7 +84,7 @@ A Service Bus támogatja a AMQP protokollon keresztüli kommunikációt. Erre a 
 
 ### <a name="set-up-enterprise-configurations"></a>Vállalati konfigurációk beállítása
 
-A Service Bus különböző vállalati biztonsági és magas rendelkezésre állású funkciókat tesz lehetővé. További információ: 
+A Service Bus különböző vállalati biztonsági és magas rendelkezésre állású funkciókat tesz lehetővé. További információkért lásd: 
 
   * [Virtuális hálózati szolgáltatásvégpontok](service-bus-service-endpoints.md)
   * [Tűzfal](service-bus-ip-filtering.md)
@@ -116,7 +116,7 @@ A ActiveMQ-leképezésből származó metrikákat összekapcsolhatja, amelyek me
 |Bróker|`CurrentConnectionsCount`|`activeConnections`|
 |Bróker|`EstablishedConnectionsCount`|`activeConnections` + `connectionsClosed`|
 |Bróker|`InactiveDurableTopicSubscribersCount`|Előfizetési metrikák használata|
-|Bróker|`TotalMessageCount`|Üzenetsor/témakör/előfizetés szintjének használata`activeMessages`|
+|Bróker|`TotalMessageCount`|Üzenetsor/témakör/előfizetés szintjének használata `activeMessages`|
 |Üzenetsor/témakör|`EnqueueCount`|`incomingMessages`|
 |Üzenetsor/témakör|`DequeueCount`|`outgoingMessages`|
 |Üzenetsor|`QueueSize`|`sizeBytes`|
@@ -232,7 +232,7 @@ Ezután adja hozzá a Service Bus-specifikus tulajdonságokat a `application.pro
 azure.servicebus.connection-string=Endpoint=myEndpoint;SharedAccessKeyName=mySharedAccessKeyName;SharedAccessKey=mySharedAccessKey
 ```
 
-##### <a name="replace-activemqconnectionfactory-with-servicebusjmsconnectionfactory"></a>Csere `ActiveMQConnectionFactory` erre`ServiceBusJmsConnectionFactory`
+##### <a name="replace-activemqconnectionfactory-with-servicebusjmsconnectionfactory"></a>Csere `ActiveMQConnectionFactory` erre `ServiceBusJmsConnectionFactory`
 
 A következő lépés a példányának cseréje a alkalmazással `ActiveMQConnectionFactory` `ServiceBusJmsConnectionFactory` .
 
@@ -270,7 +270,7 @@ connection.start();
 
 Most, hogy módosította az alkalmazást, hogy megkezdje az üzenetek küldését és fogadását Service Busről, ellenőrizze, hogy a várt módon működik-e. Ha elkészült, folytathatja az alkalmazás-verem pontosítását és korszerűsítését.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A [Azure Service Bus JMS készült Spring boot Starter](/azure/developer/java/spring-framework/configure-spring-boot-starter-java-app-with-azure-service-bus) segítségével zökkenőmentesen integrálhatja Service Bus.
 

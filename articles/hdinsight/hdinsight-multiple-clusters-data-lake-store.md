@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/18/2019
 ms.openlocfilehash: 19c40f2a7609d556448641e78fdeffe83e8660b1
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86083950"
 ---
 # <a name="use-multiple-hdinsight-clusters-with-an-azure-data-lake-storage-account"></a>Több HDInsight-fürt használata Azure Data Lake Storage fiókkal
@@ -34,9 +34,9 @@ Annak engedélyezéséhez, hogy a HDInsight-fürtök hatékonyan használják a 
 
 |Mappa  |Engedélyek  |Tulajdonos felhasználó  |Tulajdonoscsoport  | Megnevezett felhasználó | Elnevezett felhasználói engedélyek | Elnevezett csoport | Névvel ellátott csoport engedélyei |
 |---------|---------|---------|---------|---------|---------|---------|---------|
-|/ | rwxr-x--x  |admin |admin  |Szolgáltatásnév |--x  |FINGRP   |r-x         |
-|/clusters | rwxr-x--x |admin |admin |Szolgáltatásnév |--x  |FINGRP |r-x         |
-|/clusters/finance | rwxr-x--t |admin |FINGRP  |Szolgáltatásnév |rwx  |-  |-     |
+|/ | rwxr-x--x  |felügyelet |felügyelet  |Szolgáltatásnév |--x  |FINGRP   |r-x         |
+|/clusters | rwxr-x--x |felügyelet |felügyelet |Szolgáltatásnév |--x  |FINGRP |r-x         |
+|/clusters/finance | rwxr-x--t |felügyelet |FINGRP  |Szolgáltatásnév |rwx  |-  |-     |
 
 A táblázatban
 
@@ -65,7 +65,7 @@ Javasoljuk, hogy a bemeneti adatokat egy adott feladathoz, a feladatból szárma
 
 Az egy Data Lake Storage-fiókot megosztható fürtök számának korlátja a fürtökön futó munkaterheléstől függ. Ha túl sok fürt vagy nagyon nagy mennyiségű számítási feladat van a Storage-fiókot használó fürtökön, akkor a Storage-fiók bejövő vagy kimenő adatforgalmának szabályozásához vezethet.
 
-## <a name="support-for-default-acls"></a>Alapértelmezett ACL-ek támogatása
+## <a name="support-for-default-acls"></a>Default-ACLs támogatása
 
 Névvel ellátott szolgáltatásnév létrehozásakor (ahogy az a fenti táblázatban is látható) azt javasoljuk, hogy **ne** adja hozzá az alapértelmezett ACL-t a nevesített felhasználóhoz. Megnevezett-felhasználói hozzáférés alapértelmezett ACL-ek használatával történő kiosztása 770 engedélyek hozzárendelését eredményezi a tulajdonos-felhasználó, a tulajdonos és mások számára. Habár ez az alapértelmezett érték 770 nem fogad el engedélyeket a tulajdonosi (7) vagy a tulajdonosi csoport (7) számára, minden engedélyt elvesz mások számára (0). Ez egy adott használati esettel kapcsolatos ismert problémát eredményez, amelyet az [ismert problémák és a megkerülő megoldások](#known-issues-and-workarounds) szakaszban részletesen ismertetünk.
 
