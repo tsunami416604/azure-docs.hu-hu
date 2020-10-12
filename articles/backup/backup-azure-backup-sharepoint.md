@@ -4,10 +4,10 @@ description: Ez a cikk áttekintést nyújt a SharePoint-farmok Azure-ba való D
 ms.topic: conceptual
 ms.date: 03/09/2020
 ms.openlocfilehash: 7661d64e487c8b8badca240852d17bcf736ba8cf
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91254431"
 ---
 # <a name="back-up-a-sharepoint-farm-to-azure-with-dpm"></a>SharePoint-farm biztonsági mentése az Azure-ba a DPM használatával
@@ -69,9 +69,9 @@ A SharePoint-elemek DPM-alapú lemezről történő visszaállításáról a Sha
     ![DPM SharePoint-Protection13](./media/backup-azure-backup-sharepoint/dpm-sharepoint-protection15.png)
 5. Ezen a ponton kövesse a cikkben korábban ismertetett helyreállítási lépéseket a SharePoint tartalmi adatbázis lemezről történő helyreállításához.
 
-## <a name="switching-the-front-end-web-server"></a>Az előtér-webkiszolgáló váltása
+## <a name="switching-the-front-end-web-server"></a>A Front-End webkiszolgáló váltása
 
-Ha több előtér-webkiszolgálóval rendelkezik, és át szeretné váltani a DPM által a farm védeleméhez használt kiszolgálót, kövesse az [előtér-webkiszolgáló váltásának](/system-center/dpm/back-up-sharepoint#switching-the-front-end-web-server)utasításait.
+Ha több előtér-webkiszolgálóval rendelkezik, és át szeretné váltani a DPM által a farm védeleméhez használt kiszolgálót, kövesse az [Front-End webkiszolgáló váltása](/system-center/dpm/back-up-sharepoint#switching-the-front-end-web-server)című témakör útmutatását.
 
 ## <a name="next-steps"></a>Következő lépések
 

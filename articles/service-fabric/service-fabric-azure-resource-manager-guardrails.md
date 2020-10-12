@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 02/13/2020
 ms.author: pepogors
 ms.openlocfilehash: aa1499c57ead28bfcee90a2f224ef9c3bb1d7f58
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86247824"
 ---
 # <a name="service-fabric-guardrails"></a>Service Fabric guardrails 
@@ -81,7 +81,7 @@ Győződjön meg arról, hogy az elsődleges csomópont típusa elegendő Virtua
 * Ha a megbízhatósági szint helytelen, indítson el egy változást a Service Fabric erőforráson, hogy először csökkentse a megbízhatósági szintet, mielőtt elindítja a virtuálisgép-méretezési csoport műveleteit, és várjon, amíg befejeződik.
 * Ha a megbízhatósági szinten bronz van, kövesse az alábbi [lépéseket](./service-fabric-cluster-scale-in-out.md#manually-remove-vms-from-a-node-typevirtual-machine-scale-set) a fürtben való méretezéshez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Fürt létrehozása a Windows Servert futtató virtuális gépeken vagy számítógépeken: [Service Fabric Windows Server-fürt létrehozása](service-fabric-cluster-creation-for-windows-server.md)
 * Fürt létrehozása virtuális gépeken vagy Linuxon futó számítógépeken: [Linux-fürt létrehozása](service-fabric-cluster-creation-via-portal.md)
 * Hibaelhárítási Service Fabric: [útmutatók](https://github.com/Azure/Service-Fabric-Troubleshooting-Guides)

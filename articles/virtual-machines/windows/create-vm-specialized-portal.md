@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 01/18/2019
 ms.author: cynthn
 ms.openlocfilehash: 5a541dce94cc25958e3c3a6a058e015c8c5e3db0
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87283248"
 ---
 # <a name="create-a-vm-from-a-vhd-by-using-the-azure-portal"></a>Virtuális gép létrehozása virtuális merevlemezről a Azure Portal használatával
@@ -71,7 +71,7 @@ Miután a felügyelt lemez virtuális merevlemezét használni szeretné, a virt
 12. Ha a virtuális gép konfigurációja ellenőrzi az ellenőrzést, válassza a **Létrehozás** lehetőséget a telepítés elindításához.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A PowerShell használatával is [feltöltheti a VHD-t az Azure-ba, és létrehozhat egy speciális virtuális gépet](create-vm-specialized.md).
 

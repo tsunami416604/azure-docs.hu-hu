@@ -7,10 +7,10 @@ ms.date: 3/9/2018
 ms.author: masnider
 ms.custom: sfrev
 ms.openlocfilehash: 66fc58941de206d0bff086f44852d0f2a31587f1
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86253082"
 ---
 # <a name="reliable-services-overview"></a>A Reliable Services áttekintése
@@ -104,7 +104,7 @@ Vegye fontolóra Reliable Services API-kat, ha:
 * Az alkalmazásnak meg kell őriznie a változási előzményeket az egysége számára.
 * Harmadik féltől származó, egyéni állami szolgáltatókat szeretne fejleszteni vagy használni.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Reliable Services rövid útmutató](service-fabric-reliable-services-quick-start.md)
 * [Megbízható gyűjtemények](service-fabric-reliable-services-reliable-collections.md)

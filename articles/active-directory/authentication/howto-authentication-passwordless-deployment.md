@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: baselden, librown
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 95f4221b390071ad149699608d3937b9af4e1d5d
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90527003"
 ---
 # <a name="plan-a-passwordless-authentication-deployment-in-azure-active-directory"></a>Jelszóval nem rendelkező hitelesítés központi telepítésének megtervezése Azure Active Directory
@@ -93,7 +93,7 @@ Vegye figyelembe az üzleti igényeket és az egyes hitelesítési módszerek ha
 
 Az alábbi táblázat a projekt során megvalósítandó használati eseteket ismerteti.
 
-| Terület | Description |
+| Terület | Leírás |
 | --- | --- |
 | **Hozzáférés** | A jelszó nélküli bejelentkezés a vállalati hálózaton belüli vagy kívüli vállalati vagy személyes eszközről érhető el. |
 | **Naplózás** | A használati adatok a rendszergazdák számára a közel valós időben történő naplózáshoz érhetők el. <br> A használati adatokat legalább 29 naponta letölti a vállalati rendszerbe, vagy az SIEM eszközt használja. |
@@ -118,7 +118,7 @@ A végfelhasználók felé irányuló kommunikációnak a következő informáci
 - [Regisztrálás a Microsoft Authenticator alkalmazásban](howto-authentication-passwordless-phone.md)
 - [Bejelentkezés telefonnal](../user-help/user-help-auth-app-sign-in.md)
 
-A Microsoft többtényezős hitelesítési [kommunikációs sablonokat](https://aka.ms/mfatemplates), önkiszolgáló jelszó-visszaállítási (SSPR) [kommunikációs sablonokat](https://www.microsoft.com/download/details.aspx?id=56768)és [végfelhasználói dokumentációt](../user-help/security-info-setup-signin.md) biztosít a kommunikáció megtervezéséhez. [https://myprofile.microsoft.com](https://myprofile.microsoft.com/)Az oldalon található **biztonsági információk** hivatkozásaira kattintva a felhasználók közvetlenül regisztrálhatnak.
+A Microsoft többtényezős hitelesítési [kommunikációs sablonokat](https://aka.ms/mfatemplates), Self-Service jelszó-visszaállítási (SSPR) [kommunikációs sablonokat](https://www.microsoft.com/download/details.aspx?id=56768)és a [végfelhasználói dokumentációt](../user-help/security-info-setup-signin.md) biztosít a kommunikáció kialakításához. [https://myprofile.microsoft.com](https://myprofile.microsoft.com/)Az oldalon található **biztonsági információk** hivatkozásaira kattintva a felhasználók közvetlenül regisztrálhatnak.
 
 ### <a name="plan-to-pilot"></a>Tervezés a pilóta számára
 
@@ -292,7 +292,7 @@ Kövesse az alábbi, a választott módszerhez igazított lépéseket.
 
 ### <a name="required-administrative-roles"></a>Szükséges rendszergazdai szerepkörök
 
-| Azure AD-szerepkör | Description |
+| Azure AD-szerepkör | Leírás |
 | --- | --- |
 | Globális rendszergazda|A legkevésbé magas jogosultsági szintű szerepkör lehetővé tenné a közös regisztrációs élmény megvalósítását. |
 | Hitelesítés rendszergazdája | A minimális jogosultsági szintű szerepkör képes a hitelesítési módszerek megvalósítására és kezelésére. |

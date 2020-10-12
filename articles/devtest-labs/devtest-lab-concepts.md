@@ -4,10 +4,10 @@ description: Ismerje meg a DevTest Labs alapfogalmait, és hogy miként könnyí
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 43d62d637686a785cafd29aa311ccf20cb942721
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87283843"
 ---
 # <a name="devtest-labs-concepts"></a>DevTest Labs-fogalmak
@@ -17,7 +17,7 @@ Az alábbi lista a főbb DevTest Labs-fogalmakat és-definíciókat tartalmazza:
 ## <a name="labs"></a>Tesztkörnyezetek
 A labor olyan infrastruktúra, amely magában foglalja az erőforrások egy csoportját, például a Virtual Machines (VM), amely lehetővé teszi, hogy a korlátok és kvóták megadásával hatékonyabban kezelhesse ezeket az erőforrásokat.
 
-## <a name="virtual-machine"></a>virtuális gép
+## <a name="virtual-machine"></a>Virtuális gép
 Az Azure-beli virtuális gépek az Azure által kínált különböző típusú [, igény szerinti, méretezhető számítási erőforrások](/azure/architecture/guide/technology-choices/compute-decision-tree) egyike. Az Azure-beli virtuális gépek lehetővé teszik a virtualizáció rugalmasságát anélkül, hogy az azt futtató fizikai hardvereket kellene vásárolnia és fenntartania, de továbbra is fenn kell tartania a virtuális gépet bizonyos feladatok (például a konfigurálás, a javítás és a rajta futó szoftver telepítése) végrehajtásával.
 
 [Az Azure-beli Windows rendszerű virtuális gépek áttekintése](../virtual-machines/windows/overview.md) információt nyújt arról, hogy mit kell figyelembe vennie a virtuális gép létrehozása előtt, hogyan hozza létre, és hogyan kezelje.

@@ -8,10 +8,10 @@ ms.date: 8/4/2020
 ms.topic: troubleshooting
 ms.service: digital-twins
 ms.openlocfilehash: 084a823571281c91419a56b6212ddf6c44dd80bb
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91322631"
 ---
 # <a name="troubleshooting-azure-digital-twins-metrics"></a>Azure Digital Twins hibaelhárítása: mérőszámok
@@ -34,12 +34,12 @@ A metrikák alapértelmezés szerint engedélyezve vannak. Az Azure digitális T
     
 3. Kiválaszthatja, hogy a metrikák adatait egy Event Hubs-végpontba vagy egy Azure Storage-fiókba küldje el a **diagnosztika beállításainak** kiválasztásával a menüből, majd **adja hozzá a diagnosztikai**beállításokat.
 
-    :::image type="content" source="media/troubleshoot-diagnostics/diagnostic-settings.png" alt-text="A diagnosztikai beállítások lapot és a hozzáadni kívánt gombot ábrázoló képernyőkép":::
+    :::image type="content" source="media/troubleshoot-diagnostics/diagnostic-settings.png" alt-text="Képernyőfelvétel az Azure Digital Twins metrikáinak oldaláról":::
 
     A folyamattal kapcsolatos további információkért lásd [*: Hibaelhárítás: a diagnosztika beállítása*](troubleshoot-diagnostics.md).
 
 4. A metrikák adataira vonatkozó riasztásokat úgy is beállíthatja, hogy a menüben kiválasztja a **riasztások** lehetőséget, majd az **+ új riasztási szabályt**.
-    :::image type="content" source="media/troubleshoot-alerts/alerts-pre.png" alt-text="A riasztások oldal és a hozzáadni kívánt gomb képernyőképe":::
+    :::image type="content" source="media/troubleshoot-alerts/alerts-pre.png" alt-text="Képernyőfelvétel az Azure Digital Twins metrikáinak oldaláról":::
 
     Erről a folyamatról a [*Hibaelhárítás: riasztások beállítása*](troubleshoot-alerts.md)című témakörben olvashat bővebben.
 
@@ -53,7 +53,7 @@ Az alábbi táblázatok ismertetik az egyes Azure Digital Twins-példányok ált
 
 Az API-kérelmekkel rendelkező metrikák:
 
-| Metrika | Metrika megjelenítendő neve | Egység | Összesítés típusa| Description | Dimenziók |
+| Metrika | Metrika megjelenítendő neve | Egység | Összesítés típusa| Leírás | Dimenziók |
 | --- | --- | --- | --- | --- | --- |
 | ApiRequests | API-kérések (előzetes verzió) | Darabszám | Összesen | A digitális ikrek olvasási, írási, törlési és lekérdezési műveleteire vonatkozó API-kérések száma. |  Hitelesítés <br>Művelet <br>Protokoll <br>Állapotkód, <br>Állapotkód osztály, <br>Állapot szövege |
 | ApiRequestsFailureRate | API-kérelmek meghibásodási aránya (előzetes verzió) | Százalék | Átlag | A szolgáltatás által a példányhoz kapott API-kérelmek százalékos aránya (500) a digitális ikrek olvasási, írási, törlési és lekérdezési műveleteinek belső hibája (). | Hitelesítés <br>Művelet <br>Protokoll <br>Állapotkód, <br>Állapotkód osztály, <br>Állapot szövege
@@ -66,7 +66,7 @@ A számlázással elvégezhető mérőszámok:
 >[!NOTE]
 > Az előzetes verzióban **a számlázás nulla**. Habár ezek a metrikák továbbra is megjelennek a választható listán, a rendszer nem alkalmazza az előzetes verzióban, és mindaddig nulla marad, amíg a szolgáltatás az előzetes verziónál nem halad.
 
-| Metrika | Metrika megjelenítendő neve | Egység | Összesítés típusa| Description | Dimenziók |
+| Metrika | Metrika megjelenítendő neve | Egység | Összesítés típusa| Leírás | Dimenziók |
 | --- | --- | --- | --- | --- | --- |
 | BillingApiOperations | Számlázási API-műveletek (előzetes verzió) | Darabszám | Összesen | Az Azure Digital Twins szolgáltatásban végrehajtott API-kérelmek számának számlázási mérőszáma. | Fogyasztásmérő azonosítója |
 | BillingMessagesProcessed | Feldolgozott számlázási üzenetek (előzetes verzió) | Darabszám | Összesen | Számlázási metrika az Azure digitális Twins-ból külső végpontokra küldött üzenetek számának megadásához.<br><br>Ahhoz, hogy csak egyetlen üzenet legyen a számlázási célokra, a hasznos adatok nem lehetnek nagyobbak 1 KB-nál. Az ennél nagyobb hasznos adatok az 1 KB-os növekményekben további üzenetnek számítanak (ezért az 1. és 2. közötti üzenet 2 üzenetnek számít, 2 és 3 KB között 3 üzenet lesz, és így tovább).<br>Ez a korlátozás a válaszokra is vonatkozik – így a válasz törzsében az 1,5 KB értéket visszaadó hívás (például: 2 művelet lesz). | Fogyasztásmérő azonosítója |
@@ -76,7 +76,7 @@ A számlázással elvégezhető mérőszámok:
 
 Adatbevitelsel ellátott mérőszámok:
 
-| Metrika | Metrika megjelenítendő neve | Egység | Összesítés típusa| Description | Dimenziók |
+| Metrika | Metrika megjelenítendő neve | Egység | Összesítés típusa| Leírás | Dimenziók |
 | --- | --- | --- | --- | --- | --- |
 | IngressEvents | Bejövő események (előzetes verzió) | Darabszám | Összesen | A bejövő telemetria események száma az Azure digitális Twins-ban. | Eredmény |
 | IngressEventsFailureRate | Bejövő események meghibásodási aránya (előzetes verzió) | Százalék | Átlag | Azon bejövő telemetria-események százalékos aránya, amelyek esetében a szolgáltatás belső hibát (500) ad vissza. | Eredmény |
@@ -86,7 +86,7 @@ Adatbevitelsel ellátott mérőszámok:
 
 Az útválasztással elvégezhető mérőszámok:
 
-| Metrika | Metrika megjelenítendő neve | Egység | Összesítés típusa| Description | Dimenziók |
+| Metrika | Metrika megjelenítendő neve | Egység | Összesítés típusa| Leírás | Dimenziók |
 | --- | --- | --- | --- | --- | --- |
 | MessagesRouted | Továbbított üzenetek (előzetes verzió) | Darabszám | Összesen | Az Azure-szolgáltatásokhoz (például Event hub, Service Bus vagy Event Grid) továbbított üzenetek száma. | Végpont típusa, <br>Eredmény |
 | RoutingFailureRate | Útválasztási hibák aránya (előzetes verzió) | Százalék | Átlag | Az olyan események százalékos aránya, amelyek az Azure digitális Twins-ból egy Endpoint Azure-szolgáltatásba, például az Event hub-ba, a Service Busba vagy a Event Gridra irányítják a hibát. | Végpont típusa, <br>Eredmény |

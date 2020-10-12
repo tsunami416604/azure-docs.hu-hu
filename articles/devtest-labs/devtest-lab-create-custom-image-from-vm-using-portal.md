@@ -4,10 +4,10 @@ description: Megtudhatja, hogyan hozhat létre egyéni rendszerképet Azure DevT
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: ad45ed6eb7f97e14ec0ca0bb89efb2967c90fc16
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87277027"
 ---
 # <a name="create-a-custom-image-from-a-vm"></a>Egyéni rendszerkép létrehozása virtuális gépből
@@ -33,13 +33,13 @@ Létrehozhat egy egyéni rendszerképet egy kiépített virtuális gépről, maj
     :::image type="content" source="./media/devtest-lab-create-template/create-custom-image.png" alt-text="Egyéni rendszerkép létrehozása menüelem":::
 1. Az **Egyéni rendszerkép** ablaktáblán adja meg az egyéni rendszerkép nevét és leírását. A virtuális gép létrehozásakor ezek az információk jelennek meg az alapok listájában. Az egyéni rendszerkép tartalmazni fogja az operációsrendszer-lemezt és a virtuális géphez csatolt összes adatlemezt.
 
-    :::image type="content" source="./media/devtest-lab-create-template/create-custom-image-blade.png" alt-text="Egyéni rendszerkép létrehozása lap":::
+    :::image type="content" source="./media/devtest-lab-create-template/create-custom-image-blade.png" alt-text="Egyéni rendszerkép létrehozása menüelem":::
 1. Válassza ki, hogy a Sysprep fut-e a virtuális gépen. Ha a Sysprep nem fut a virtuális gépen, adja meg, hogy szeretné-e futtatni a sysprept a virtuális gépen az egyéni rendszerkép létrehozásakor.
 1. Az egyéni rendszerkép létrehozásához kattintson **az OK gombra** .
 
     Néhány perc elteltével létrejön az egyéni rendszerkép, amely a labor Storage-fiókjában tárolódik. Ha egy tesztkörnyezet egy új virtuális gépet szeretne létrehozni, a lemezkép az alaplemezképek listájában érhető el.
 
-    :::image type="content" source="./media/devtest-lab-create-template/custom-image-available-as-base.png" alt-text="az alapképek listájában elérhető egyéni rendszerkép":::
+    :::image type="content" source="./media/devtest-lab-create-template/custom-image-available-as-base.png" alt-text="Egyéni rendszerkép létrehozása menüelem":::
 
 ## <a name="related-blog-posts"></a>Kapcsolódó blogbejegyzések
 

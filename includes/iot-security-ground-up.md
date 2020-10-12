@@ -9,10 +9,10 @@ ms.date: 04/24/2018
 ms.author: robinsh
 ms.custom: include file
 ms.openlocfilehash: 4f7ec9bbf7877d8067b3d8b1566a5cd2c2075281
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86050367"
 ---
 A eszközök internetes hálózata (IoT) egyedi biztonsági, adatvédelmi és megfelelőségi kihívásokat jelent a vállalkozások számára világszerte. A hagyományos számítógépes technológiától eltérően, ahol ezek a problémák a szoftvereket és azok megvalósítását tárgyalják, IoT, hogy mi történik, ha a Cyber és a fizikai világ konvergál. A IoT-megoldások védelme megköveteli az eszközök biztonságos kihelyezését, az eszközök és a felhő közötti biztonságos csatlakozást, valamint a Felhőbeli adatvédelem védelmét a feldolgozás és a tárolás során. Az ilyen funkciókkal való munka azonban erőforrás-korlátozott eszközök, a központi telepítések földrajzi eloszlása és a megoldáson belüli számos eszköz.
@@ -21,7 +21,7 @@ Ez a cikk azt mutatja be, hogy a IoT-megoldás gyorsítása hogyan nyújt bizton
 
 A megoldás-gyorsítók olyan egyedi funkciókat kínálnak, amelyek lehetővé teszik a IoT-eszközökről történő üzembe helyezést, csatlakozást és adattárolást egyszerűen és átlátható módon, valamint a legtöbbet a biztonság érdekében. Ez a cikk a biztonság, az adatvédelem és a megfelelőségi problémák megoldása érdekében megvizsgálja az Azure IoT megoldás-gyorsító biztonsági funkcióit és központi telepítési stratégiáit.
 
-## <a name="introduction"></a>Introduction (Bevezetés)
+## <a name="introduction"></a>Bevezetés
 
 A eszközök internetes hálózata (IoT) a jövő hulláma, amely azonnali és valós lehetőségeket kínál a vállalatok számára a költségek csökkentéséhez, a bevétel növeléséhez és a vállalat átalakításához. Sok vállalat azonban vonakodik üzembe helyezni a IoT a szervezetében a biztonsággal, az adatvédelemmel és a megfelelőséggel kapcsolatos probléma miatt. Fontos szempont a IoT-infrastruktúra egyedisége, amely egyesíti a Cyber-és a fizikai világokat, és összekeveri a két világ különböző kockázatait. A IoT biztonsága az eszközökön futó kódok integritásának biztosítására, az eszközök és a felhasználók hitelesítésének megadására, az eszközök (és az eszközök által létrehozott adatok) törlésére, valamint a számítógépes és fizikai támadások elleni védelemre vonatkozik.
 

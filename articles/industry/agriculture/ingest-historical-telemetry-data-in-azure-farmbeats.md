@@ -7,10 +7,10 @@ ms.date: 11/04/2019
 ms.author: v-umha
 ms.custom: has-adal-ref
 ms.openlocfilehash: 271d3c0ca44c500a6fd8ee50ed5f1698e46cd511
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88510266"
 ---
 # <a name="ingest-historical-telemetry-data"></a>Korábbi telemetriaadatok feldolgozása
@@ -62,13 +62,13 @@ Kövesse az alábbi lépéseket:
     cd
     ```
 
-6. Futtassa az alábbi parancsot: Ezzel összekapcsolja az Azure AD-kérelmekhez használt hitelesített fiókot
+6. Futtassa az alábbi parancsot. Ezzel összekapcsolja az Azure AD-kérelmekhez használt hitelesített fiókot
 
     ```azurepowershell-interactive
     Connect-AzureAD
     ```
 
-7. Futtassa az alábbi parancsot: Ezzel letölt egy parancsfájlt a saját könyvtárába.
+7. Futtassa az alábbi parancsot. Ezzel letölt egy parancsfájlt a saját könyvtárába.
 
     ```azurepowershell-interactive 
 
@@ -193,7 +193,7 @@ access_token = token_response.get('access_token')
 Itt láthatók a leggyakoribb kérelmek fejlécei, amelyeket meg kell adni, amikor API-hívást végez a FarmBeats Datahub:
 
 - **Content-Type**: Application/JSON
-- **Engedélyezés**: tulajdonos <hozzáférés-token>
+- **Engedélyezés**: tulajdonos <Access-Token>
 - **Elfogadás**: alkalmazás/JSON
 
 ### <a name="input-payload-to-create-metadata"></a>A metaadatok létrehozására szolgáló bemeneti adattartalom
@@ -464,6 +464,6 @@ Példa egy telemetria-üzenetre:
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a REST API-alapú integráció részleteiről: [REST API](rest-api-in-azure-farmbeats.md).

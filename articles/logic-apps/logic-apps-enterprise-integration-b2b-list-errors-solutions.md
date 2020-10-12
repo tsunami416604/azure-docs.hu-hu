@@ -9,10 +9,10 @@ ms.reviewer: jonfan, estfan, logicappspm
 ms.topic: article
 ms.date: 06/02/2017
 ms.openlocfilehash: 6400cfe7e524dcc16e08c2bba7dfba4a62d00b2e
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86232559"
 ---
 # <a name="b2b-errors-and-solutions-for-azure-logic-apps"></a>B2B-hibák és-megoldások a Azure Logic Apps
@@ -31,7 +31,7 @@ Ez a cikk segítséget nyújt a Logic Apps B2B forgatókönyvekben előforduló 
 
 **Hiba leírása**: nem található az identitásokkal kapcsolatos megállapodás: "AS2Identity":: "Partner1" and'AS2Identity "::" Partner3 "
 
-**Felhasználói művelet**: érvénytelen AS2-from vagy AS2 – a szerződéshez való konfiguráláshoz. Javítsa ki az AS2-üzenet "AS2-from" vagy "AS2-to" fejléceit, vagy a szerződést, hogy az AS2-azonosítók megfeleljenek az AS2-üzeneteknek a szerződés konfigurációjának megfelelően.
+**Felhasználói művelet**: érvénytelen AS2-From vagy AS2-To van konfigurálva a szerződéshez. Javítsa ki az AS2-üzenet "AS2-from" vagy "AS2-to" fejléceit, vagy a szerződést, hogy az AS2-azonosítók megfeleljenek az AS2-üzeneteknek a szerződés konfigurációjának megfelelően.
 
 ## <a name="as2"></a>AS2
 
@@ -39,7 +39,7 @@ Ez a cikk segítséget nyújt a Logic Apps B2B forgatókönyvekben előforduló 
 
 **Hiba leírása**: érvénytelen AS2-fejlécek. A "AS2-to" vagy az "AS2-from" fejlécek egyike üres.
 
-**Felhasználói művelet**: olyan AS2-üzenet érkezett, amely nem tartalmaz As2-from vagy As2-to vagy both fejléceket. Győződjön meg arról, hogy az AS2-üzenet AS2-from és AS2-to fejlécek, és javítsa azokat a szerződés konfigurálása alapján.
+**Felhasználói művelet**: olyan AS2-üzenet érkezett, amely nem tartalmazott AS2-From vagy AS2-To vagy mindkét fejlécet. Győződjön meg arról, hogy az AS2-üzenet AS2-From és AS2-To fejléceket, és javítsa azokat a szerződés konfigurálása alapján.
 
 ### <a name="missing-as2-message-body-and-headers"></a>Hiányzó AS2-üzenet törzse és fejlécei    
 

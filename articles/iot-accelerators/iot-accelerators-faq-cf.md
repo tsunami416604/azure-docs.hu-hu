@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 12/12/2017
 ms.author: dobett
 ms.openlocfilehash: 0c8739dff39490f14b613af483f769ac031c1bd9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82792377"
 ---
 # <a name="frequently-asked-questions-for-connected-factory-solution-accelerator"></a>Gyakori kérdések a csatlakoztatott Factory megoldás-gyorsító szolgáltatásról
@@ -68,7 +68,7 @@ Ha a www.azureiotsolutions.com-ből telepítette a megoldást, nem tud bejelentk
 1. A használandó Felhasználónév a következő: `docker` .
 1. A használandó jelszó az üzembe helyezéshez használt verziótól függ:
     * A build.ps1 parancsfájllal a 2017. június 1. előtt üzembe helyezett megoldások esetében a jelszó a következő: `Passw0rd` .
-    * A build.ps1 parancsfájllal, a 2017. június 1. után üzembe helyezett megoldások esetében a fájl jelszava található `<name of your deployment>.config.user` . A jelszót a **VmAdminPassword** -beállítás tárolja. A jelszót véletlenszerűen hozza létre a rendszer a telepítés során, kivéve, ha a `build.ps1` parancsfájl paraméterrel adja meg`-VmAdminPassword`
+    * A build.ps1 parancsfájllal, a 2017. június 1. után üzembe helyezett megoldások esetében a fájl jelszava található `<name of your deployment>.config.user` . A jelszót a **VmAdminPassword** -beállítás tárolja. A jelszót véletlenszerűen hozza létre a rendszer a telepítés során, kivéve, ha a `build.ps1` parancsfájl paraméterrel adja meg `-VmAdminPassword`
 
 ### <a name="how-do-i-stop-and-start-all-docker-processes-in-the-simulation-vm"></a>Hogyan állítsa le és indítsa el az összes Docker-folyamatot a szimulációs virtuális gépen?
 
@@ -82,7 +82,7 @@ Ha a www.azureiotsolutions.com-ből telepítette a megoldást, nem tud bejelentk
         export IOTHUB_CONNECTIONSTRING="HostName={yourdeployment}.azure-devices.net;SharedAccessKeyName=iothubowner;SharedAccessKey={your key}"
         ```
 
-    * Futtassa az `./startsimulation` parancsot.
+    * A `./startsimulation` parancs futtatása.
 
 ### <a name="how-do-i-update-the-simulation-in-the-vm"></a>Hogyan frissíteni a szimulációt a virtuális gépen?
 
@@ -186,7 +186,7 @@ Telemetria-adatok küldése nem OPC UA-eszközökről a csatlakoztatott gyárba:
     ]
     ```
 
-1. A formátuma `<timestamp>` :`2017-12-08T19:24:51.886753Z`
+1. A formátuma `<timestamp>` : `2017-12-08T19:24:51.886753Z`
 
 1. Indítsa újra a csatlakoztatott gyári App Service.
 

@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 04/30/2020
 ms.author: apimpm
 ms.openlocfilehash: 3bbfd167e89ae1b5f9b7de1df5fd1cb72c720cb6
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86254528"
 ---
 # <a name="configure-cloud-metrics-and-logs-for-azure-api-management-self-hosted-gateway"></a>Felhőalapú metrikák és naplók konfigurálása az Azure API Management saját üzemeltetésű átjáróhoz
@@ -25,7 +25,7 @@ Ez a cikk részletesen ismerteti a felhőalapú metrikák és naplók konfigurá
 
 A saját üzemeltetésű átjárót egy API Management szolgáltatáshoz kell társítani, és a 443-es porton kimenő TCP/IP-kapcsolatot igényel az Azure-hoz. Az átjáró kihasználja a kimenő kapcsolatokat, hogy telemetria küldjön az Azure-ba, ha erre van konfigurálva. 
 
-## <a name="metrics"></a>Metrikák
+## <a name="metrics"></a>Mérőszámok
 Alapértelmezés szerint a saját üzemeltetésű átjáró a [felhőben](api-management-howto-use-azure-monitor.md)lévő felügyelt átjáróval megegyező számú metrikát bocsát ki [Azure monitoron](https://azure.microsoft.com/services/monitor/)keresztül. 
 
 A szolgáltatás engedélyezhető vagy letiltható az `telemetry.metrics.cloud` átjáró üzembe helyezésének ConfigMap található kulccsal. Alább látható az elérhető konfigurációk részletezése:
@@ -62,7 +62,7 @@ A saját üzemeltetésű átjáró jelenleg nem küld [diagnosztikai naplókat](
 Ha az [Azure Kubernetes szolgáltatásban](https://azure.microsoft.com/services/kubernetes-service/)átjáró van üzembe helyezve, engedélyezheti [Azure monitor a](../azure-monitor/insights/container-insights-overview.md) tárolók számára, hogy begyűjtsön naplókat a tárolóból, és megtekintse őket a log Analyticsban. 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * További információ a saját üzemeltetésű átjáróról: [Azure API Management saját üzemeltetésű átjáró – áttekintés](self-hosted-gateway-overview.md)
 * A [naplók helyi konfigurálásának és](how-to-configure-local-metrics-logs.md) megőrzésének ismertetése

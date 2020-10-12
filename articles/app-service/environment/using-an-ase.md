@@ -8,10 +8,10 @@ ms.date: 5/10/2020
 ms.author: ccompy
 ms.custom: seodec18
 ms.openlocfilehash: ca333115b8a0588f781b93e0d8a9279ab9c7928c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91255162"
 ---
 # <a name="use-an-app-service-environment"></a>App Service-környezet használata
@@ -161,7 +161,7 @@ További változtatások nélkül az internetalapú CI-rendszerek (például a G
 
 Az ILB ASE alkalmazásainak közzétételi végpontjai az ILB ASE létrehozásakor megadott tartományt használják. Megtekintheti az alkalmazás közzétételi profiljában és az alkalmazás portál paneljén (az **Áttekintés**  >  **alapjai** és a **Tulajdonságok**területen is).
 
-## <a name="storage"></a>Tárolás
+## <a name="storage"></a>Storage
 
 A kiegészítő csomag 1 TB tárterülettel rendelkezik a központhoz tartozó összes alkalmazáshoz. Az elkülönített díjszabási SKU-ban App Service csomag 250 GB-os korláttal rendelkezik. Egy előállítók esetében 250 GB tárterület kerül App Service csomagba az 1 TB-os korlátig. Több App Service terv is lehet, mint négy, de az 1 TB-os korláton túl nincs több tárterület.
 
@@ -250,7 +250,7 @@ A bemutató rendszer törlése:
 
     ![Bemutatás törlése][3]
 
-1. Válassza az **OK** lehetőséget.
+1. Kattintson az **OK** gombra.
 
 ## <a name="ase-cli"></a>KIEGÉSZÍTŐ PARANCSSORI FELÜLET
 

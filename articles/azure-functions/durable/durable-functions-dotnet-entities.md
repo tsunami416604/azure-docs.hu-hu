@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 10/06/2019
 ms.author: azfuncdf
 ms.openlocfilehash: d480b8db69b34eda7ca1ea8e1b2755179f9c673f
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88055173"
 ---
 # <a name="developers-guide-to-durable-entities-in-net"></a>Fejlesztői útmutató a tartós entitásokhoz a .NET-ben
@@ -203,7 +203,7 @@ A típusok ellenőrzésének biztosításán kívül a felületek hasznosak lehe
 
 ### <a name="example-client-signals-entity-through-interface"></a>Példa: ügyfél-jeleket kezelő entitás kapcsolaton keresztül
 
-Az ügyfél kódja `SignalEntityAsync<TEntityInterface>` a használatával jeleket küldhet a megvalósítás alatt álló entitásoknak `TEntityInterface` . Például:
+Az ügyfél kódja `SignalEntityAsync<TEntityInterface>` a használatával jeleket küldhet a megvalósítás alatt álló entitásoknak `TEntityInterface` . Példa:
 
 ```csharp
 [FunctionName("DeleteCounter")]
@@ -267,7 +267,7 @@ Néhány további szabályt is érvénybe léptetett:
 * Az entitás-illesztőfelületeknek csak metódusokat kell meghatározniuk.
 * Az entitás-illesztőfelületek nem tartalmazhatnak általános paramétereket.
 * Az entitás-illesztőfelületi metódusok nem rendelkezhetnek egynél több paraméterrel.
-* Az entitás-illesztőfelületi metódusoknak vissza kell térniük `void` , `Task` vagy`Task<T>` 
+* Az entitás-illesztőfelületi metódusoknak vissza kell térniük `void` , `Task` vagy `Task<T>` 
 
 Ha a szabályok bármelyike meg van sértve, a `InvalidOperationException` rendszer futásidőben, amikor a felületet a vagy a típus argumentumként használja `SignalEntity` `CreateProxy` . A kivételt jelző üzenet ismerteti, hogy melyik szabály lett megszakítva.
 
@@ -507,7 +507,7 @@ Végezetül a következő tagok más entitások jelzésére vagy új összehango
 * `SignalEntity(EntityId, operation, input)`: egyirányú üzenet küldése egy entitásnak.
 * `CreateNewOrchestration(orchestratorFunctionName, input)`: elindítja az új előkészítést.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Tudnivalók az entitásokkal kapcsolatos fogalmakról](durable-functions-entities.md)

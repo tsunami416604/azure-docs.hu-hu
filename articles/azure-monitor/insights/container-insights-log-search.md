@@ -4,10 +4,10 @@ description: A tárolók Azure Monitor a metrikákat és a naplózási adatokat 
 ms.topic: conceptual
 ms.date: 06/01/2020
 ms.openlocfilehash: 2f0e9848ffbf7584d75b5e994e49379186a69641
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91254890"
 ---
 # <a name="how-to-query-logs-from-azure-monitor-for-containers"></a>Naplók lekérdezése Azure Monitorról tárolók számára
@@ -47,7 +47,7 @@ A tároló a munkaterületre továbbított kimenetet naplózza STDOUT és STDERR
 
 Gyakran hasznos olyan lekérdezéseket létrehozni, amelyek egy példával vagy kettővel kezdődnek, majd az igényeinek megfelelően módosítják őket. A fejlettebb lekérdezések létrehozásához a következő példa-lekérdezésekkel lehet kísérletezni:
 
-| Lekérdezés | Description | 
+| Lekérdezés | Leírás | 
 |-------|-------------|
 | ContainerInventory<br> &#124; Project számítógép, név, rendszerkép, ImageTag, ContainerState, CreatedTime, StartedTime, FinishedTime<br> &#124; renderelési táblázat | Egy tároló életciklus-információinak listázása| 
 | KubeEvents_CL<br> &#124;, ahol nem (IsEmpty (Namespace_s))<br> &#124; rendezés TimeGenerated desc szerint<br> &#124; renderelési táblázat | Kubernetes események|

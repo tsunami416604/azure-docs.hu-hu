@@ -1,6 +1,6 @@
 ---
 title: Egyéni és Azure-Virtual Machines
-description: Az egyéni adatok és a Cloud-init használatának részletei az Azure Virtual Machines
+description: Az egyéni adatok és a Cloud-Init használatának részletei az Azure-on Virtual Machines
 services: virtual-machines
 author: mimckitt
 ms.service: virtual-machines
@@ -8,13 +8,13 @@ ms.topic: how-to
 ms.date: 03/06/2020
 ms.author: mimckitt
 ms.openlocfilehash: 2924caaac5fb8c512100d9e897f7f153af9a3b3e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87284914"
 ---
-# <a name="custom-data-and-cloud-init-on-azure-virtual-machines"></a>Egyéni és Cloud-init az Azure Virtual Machines
+# <a name="custom-data-and-cloud-init-on-azure-virtual-machines"></a>Egyéni adatkezelés és Cloud-Init az Azure-on Virtual Machines
 
 Előfordulhat, hogy egy parancsfájlt vagy más metaadatokat kell beszúrnia egy Microsoft Azure virtuális gépre a kiépítési időpontban.  Más felhőkben ezt a koncepciót gyakran felhasználói adatként is nevezik.  Microsoft Azure az egyéni adatszolgáltatáshoz hasonló funkciót tartalmaz. 
 

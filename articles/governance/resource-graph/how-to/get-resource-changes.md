@@ -4,10 +4,10 @@ description: Ismerje meg, hogy miként lehet megkeresni egy erőforrás megvált
 ms.date: 08/10/2020
 ms.topic: how-to
 ms.openlocfilehash: 02dfd2b8b66cd09be39a44166a0fd62bb13c8395
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88056567"
 ---
 # <a name="get-resource-changes"></a>Erőforrás-módosítások lekérése
@@ -283,7 +283,7 @@ a **beforeSnapshot** és a **afterSnapshot** mindegyike megadja a pillanatkép k
 
 Az eredmények összehasonlításához használja a **resourceChanges** **Changes** tulajdonságát, vagy értékelje ki a **resourceChangeDetails** egyes Pillanatképek **tartalom** részét a különbség megállapításához. Ha összehasonlítja a pillanatképeket, az **időbélyegző** mindig különbséget mutat a vártnál.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tekintse meg az [alapszintű lekérdezésekben](../samples/starter.md)használt nyelvet.
 - Lásd: speciális alkalmazások a [speciális lekérdezésekben](../samples/advanced.md).

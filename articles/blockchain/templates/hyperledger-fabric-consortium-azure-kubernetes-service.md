@@ -5,10 +5,10 @@ ms.date: 08/06/2020
 ms.topic: how-to
 ms.reviewer: ravastra
 ms.openlocfilehash: 081c7a10ee091f573e8f999c94588ef85c784f74
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89651556"
 ---
 # <a name="deploy-hyperledger-fabric-consortium-on-azure-kubernetes-service"></a>A Hyperledger Fabric Consortium üzembe helyezése az Azure Kubernetes Service-ben
@@ -294,7 +294,7 @@ A társ-szervezet ügyfelétől futtassa a parancsot, hogy a megadott csatornán
 ./azhlf channel setAnchorPeers -c $CHANNEL_NAME -p <anchorPeersList> -o $PEER_ORG_NAME -u $PEER_ADMIN_IDENTITY --ordererOrg $ORDERER_ORG_NAME
 ```
 
-`<anchorPeersList>` egy szóközzel elválasztott lista a társ-csomópontok számára. Például:
+`<anchorPeersList>` egy szóközzel elválasztott lista a társ-csomópontok számára. Példa:
 
   - Állítsa be `<anchorPeersList>` úgy, `"peer1"` hogy csak a peer1 csomópontot adja meg a horgony társként.
   - Állítsa be `<anchorPeersList>` úgy, `"peer1" "peer3"` hogy a peer1 és a peer3 csomópontokat is horgonyként adja meg.
@@ -351,7 +351,7 @@ Adja át a (z) és a (z) és a (z) argumentumok példányának nevét és szók�
 
 A gyűjtemény konfigurációs JSON-fájlját a jelző használatával is átadhatja `--collections-config` . Vagy állítsa be az átmeneti argumentumokat a jelző használatával a `-t` privát tranzakciókhoz használt chaincode-példányok létrehozásakor.
 
-Például:
+Példa:
 
 ```bash
 ./azhlf chaincode instantiate -c $CHANNEL_NAME -n $CC_NAME -v $CC_VERSION -o $ORGNAME -u $USER_IDENTITY --collections-config <collectionsConfigJSONFilePath>

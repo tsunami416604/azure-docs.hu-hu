@@ -9,10 +9,10 @@ ms.reviewer: klam, estfan, logicappspm
 ms.date: 01/11/2020
 ms.topic: article
 ms.openlocfilehash: 73b116117530e5a2103b604efbf757d691006508
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84704522"
 ---
 # <a name="handle-errors-and-exceptions-in-azure-logic-apps"></a>Hibák és kivételek kezelése az Azure Logic Appsben
@@ -27,11 +27,11 @@ A legalapvetőbb kivételek és hibakezelés érdekében az *újrapróbálkozás
 
 Az újrapróbálkozási szabályzatok típusai:
 
-| Típus | Description |
+| Típus | Leírás |
 |------|-------------|
 | **Alapértelmezett** | Ez a szabályzat legfeljebb négy újrapróbálkozást küld el *exponenciálisan növekvő* intervallumokban, amelyek mérete 7,5 másodperc, de 5 – 45 másodpercre van korlátozva. |
 | **Exponenciális időköz**  | Ez a szabályzat egy exponenciálisan növekvő tartományból érkező véletlenszerű intervallumot vár a következő kérelem elküldése előtt. |
-| **Rögzített intervallum**  | Ez a házirend a következő kérelem elküldése előtt megvárja a megadott intervallumot. |
+| **Rögzített időközű**  | Ez a házirend a következő kérelem elküldése előtt megvárja a megadott intervallumot. |
 | **Nincs**  | Ne küldje újra a kérelmet. |
 |||
 
@@ -67,18 +67,18 @@ Vagy manuálisan is megadhatja az újrapróbálkozási házirendet az `inputs` �
 }
 ```
 
-*Szükséges*
+*Kötelező*
 
-| Érték | Típus | Description |
+| Érték | Típus | Leírás |
 |-------|------|-------------|
-| <*újrapróbálkozás – házirend-típus*> | Sztring | A használni kívánt újrapróbálkozási szabályzat típusa: `default` ,,, `none` `fixed` vagy`exponential` |
+| <*újrapróbálkozás – házirend-típus*> | Sztring | A használni kívánt újrapróbálkozási szabályzat típusa: `default` ,,, `none` `fixed` vagy `exponential` |
 | <*újrapróbálkozási időköz*> | Sztring | Az újrapróbálkozási időköz, amelyben az értéknek [ISO 8601 formátumot](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations)kell használnia. Az alapértelmezett minimális időköz, `PT5S` a maximális intervallum `PT1D` . Az exponenciális időközi szabályzat használatakor különböző minimális és maximális értékeket adhat meg. |
 | <*újrapróbálkozás – kísérletek*> | Egész szám | Az újrapróbálkozási kísérletek száma, amelynek 1 és 90 között kell lennie |
 ||||
 
-*Választható*
+*Nem kötelező*
 
-| Érték | Típus | Description |
+| Érték | Típus | Leírás |
 |-------|------|-------------|
 | <*minimális időköz*> | Sztring | Az exponenciális időközi házirend esetében a véletlenszerűen kiválasztott időköz ( [ISO 8601 formátumban](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) ) legkisebb intervalluma |
 | <*maximális időköz*> | Sztring | Az exponenciális időközi házirend esetében a véletlenszerűen kiválasztott időköz ( [ISO 8601 formátumban](https://en.wikipedia.org/wiki/ISO_8601#Combined_date_and_time_representations) ) legnagyobb intervalluma |
@@ -112,11 +112,11 @@ Bár a művelet vagy trigger explicit módon nincs definiálva, az alapértelmez
 }
 ```
 
-### <a name="none"></a>None
+### <a name="none"></a>Nincs
 
 Annak megadásához, hogy a művelet vagy az aktiválás Ne próbálkozzon újra a sikertelen kérelmekkel, állítsa be a <*újrapróbálkozási házirend típusú> a következőre* : `none` .
 
-### <a name="fixed-interval"></a>Rögzített intervallum
+### <a name="fixed-interval"></a>Rögzített időközű
 
 Annak megadásához, hogy a művelet vagy az indítás a következő kérelem elküldése előtt megvárja-e a megadott intervallumot, állítsa be a <*újrapróbálkozási-házirend típusú*> `fixed` .
 
@@ -312,7 +312,7 @@ Az alábbi példát követve részletes magyarázatot talál, amely egy HTTP POS
 
 Íme egy részletes útmutató, amely leírja, hogy mi történik ebben a példában:
 
-1. A "My_Scope" összes műveletének eredményének lekéréséhez a **tömb szűrése** művelet ezt a szűrési kifejezést használja:`@result('My_Scope')`
+1. A "My_Scope" összes műveletének eredményének lekéréséhez a **tömb szűrése** művelet ezt a szűrési kifejezést használja: `@result('My_Scope')`
 
 1. A **szűrő tömb** feltétele bármely olyan `@result()` elem, amely egyenlő állapottal rendelkezik `Failed` . Ez az állapot szűri azt a tömböt, amely az összes művelet eredményét "My_Scope" értékről egy olyan tömbre szűri, amely csak a sikertelen művelet eredményét eredményezi.
 

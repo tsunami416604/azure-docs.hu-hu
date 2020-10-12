@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/17/2019
 ms.openlocfilehash: 1ddf2b6879d8d33f99281daba6fb1040e24a37af
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86078799"
 ---
 # <a name="analyze-application-insights-telemetry-logs-with-apache-spark-on-hdinsight"></a>Application Insights telemetria-naplók elemzése a HDInsight Apache Spark
@@ -31,7 +31,7 @@ A [Visual Studio Application Insights](../../azure-monitor/app/app-insights-over
 
 A következő erőforrásokat használták a dokumentum fejlesztése és tesztelése során:
 
-* Application Insights telemetria az [Application Insights használatára konfiguráltNode.js webalkalmazás](../../azure-monitor/app/nodejs.md)használatával generálták.
+* Application Insights telemetria az [ Application Insights használatára konfiguráltNode.js webalkalmazás](../../azure-monitor/app/nodejs.md)használatával generálták.
 
 * A Linux-alapú Spark on HDInsight-fürt 3,5-es verziója az adatelemzésre szolgál.
 

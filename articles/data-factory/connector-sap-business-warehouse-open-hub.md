@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 06/12/2020
 ms.openlocfilehash: 930c7e7881a00cd0cb1f4abc6b219c0fbdeebac5
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87533410"
 ---
 # <a name="copy-data-from-sap-business-warehouse-via-open-hub-using-azure-data-factory"></a>Adatok másolása az SAP Business Warehouse-ból az Open hub használatával Azure Data Factory
@@ -121,7 +121,7 @@ Az SAP Business Warehouse nyitott hub társított szolgáltatása a következő 
 | jelszó | A felhasználó jelszava. Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). | Igen |
 | Connectvia tulajdonsággal | Az adattárhoz való kapcsolódáshoz használt [Integration Runtime](concepts-integration-runtime.md) . A saját üzemeltetésű Integration Runtime az [Előfeltételek](#prerequisites)szakaszban említettek szerint kell megadni. |Igen |
 
-**Például**
+**Példa**
 
 ```json
 {
@@ -159,7 +159,7 @@ Ha adatokat szeretne másolni a és a rendszerből SAP BW nyitott hubhoz, állí
 
 Ha a beállítást `excludeLastRequest` és `baseRequestId` az adatkészletet választotta, akkor továbbra is támogatott, miközben az új modellt a tevékenység forrásában fogja használni.
 
-**Például**
+**Példa**
 
 ```json
 {
@@ -197,7 +197,7 @@ SAP BW Open hub adatainak másolásához a következő tulajdonságok támogatot
 
 Az adatok betöltésének felgyorsításához beállíthatja, [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) hogy a másolási tevékenység a SAP BW Open hub adatainak párhuzamosan történő betöltéséhez. Ha például a négy értékre van állítva `parallelCopies` , Data Factory egyszerre négy RFC-hívást hajt végre, és mindegyik RFC-hívás lekéri az adatok egy részét a SAP BW Open hub táblából, particionálva a DTP-kérés azonosítója és a csomag azonosítója alapján. Ez akkor érvényes, ha az egyedi DTP-kérések és-csomagok AZONOSÍTÓjának száma nagyobb, mint a értéke `parallelCopies` . Az adatok file-alapú adattárba másolásakor a rendszer úgy is Újrafuttatja, hogy több fájlként is ír egy mappába (csak a mappa nevét adja meg), amely esetben a teljesítmény jobb, mint egyetlen fájlba írás.
 
-**Például**
+**Példa**
 
 ```json
 "activities":[
@@ -241,7 +241,7 @@ SAP BW Open hub adatainak másolása során a rendszer a következő leképezés
 | F (float) | Dupla |
 | D (dátum) | Sztring |
 | T (idő) | Sztring |
-| P (BCD-csomag, pénznem, decimális, mennyiség) | Decimal |
+| P (BCD-csomag, pénznem, decimális, mennyiség) | Tizedesjegy |
 | N (Numc) | Sztring |
 | X (bináris és nyers) | Sztring |
 

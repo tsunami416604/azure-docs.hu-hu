@@ -10,10 +10,10 @@ ms.author: tamram
 ms.subservice: tables
 ms.custom: devx-track-csharp
 ms.openlocfilehash: b200782d10ae3637fcade63feab1e638d40acddb
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89006346"
 ---
 # <a name="table-design-patterns"></a>Táblatervezési minták
@@ -264,7 +264,7 @@ A kapcsolódó adatbázisokban általában az adatok normalizálása a több tá
 ![Részleg entitása és alkalmazotti entitása](media/storage-table-design-guide/storage-table-design-IMAGE16.png)
 
 ### <a name="solution"></a>Megoldás
-Ahelyett, hogy két különálló entitásban tárolja az adatokat, denormalizálja az adatokat, és megtartja a felettes adatainak másolatát a részleg entitásban. Például:  
+Ahelyett, hogy két különálló entitásban tárolja az adatokat, denormalizálja az adatokat, és megtartja a felettes adatainak másolatát a részleg entitásban. Példa:  
 
 ![Részleg entitása](media/storage-table-design-guide/storage-table-design-IMAGE17.png)
 
@@ -742,7 +742,7 @@ Az Table service egy *séma nélküli tábla-* áruház, amely azt jelenti, hogy
 <tr>
 <th>FirstName</th>
 <th>LastName</th>
-<th>Kor</th>
+<th>Életkor</th>
 <th>E-mail</th>
 </tr>
 <tr>
@@ -762,7 +762,7 @@ Az Table service egy *séma nélküli tábla-* áruház, amely azt jelenti, hogy
 <tr>
 <th>FirstName</th>
 <th>LastName</th>
-<th>Kor</th>
+<th>Életkor</th>
 <th>E-mail</th>
 </tr>
 <tr>
@@ -799,7 +799,7 @@ Az Table service egy *séma nélküli tábla-* áruház, amely azt jelenti, hogy
 <tr>
 <th>FirstName</th>
 <th>LastName</th>
-<th>Kor</th>
+<th>Életkor</th>
 <th>E-mail</th>
 </tr>
 <tr>
@@ -835,7 +835,7 @@ Minden entitásnak továbbra is **PartitionKey**, **RowKey**és **timestamp** é
 <th>EntityType</th>
 <th>FirstName</th>
 <th>LastName</th>
-<th>Kor</th>
+<th>Életkor</th>
 <th>E-mail</th>
 </tr>
 <tr>
@@ -857,7 +857,7 @@ Minden entitásnak továbbra is **PartitionKey**, **RowKey**és **timestamp** é
 <th>EntityType</th>
 <th>FirstName</th>
 <th>LastName</th>
-<th>Kor</th>
+<th>Életkor</th>
 <th>E-mail</th>
 </tr>
 <tr>
@@ -898,7 +898,7 @@ Minden entitásnak továbbra is **PartitionKey**, **RowKey**és **timestamp** é
 <th>EntityType</th>
 <th>FirstName</th>
 <th>LastName</th>
-<th>Kor</th>
+<th>Életkor</th>
 <th>E-mail</th>
 </tr>
 <tr>

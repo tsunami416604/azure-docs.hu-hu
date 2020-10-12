@@ -4,10 +4,10 @@ description: Megtudhatja, hogyan alakíthatja át Csoportházirend a Windows Ser
 ms.date: 08/17/2020
 ms.topic: how-to
 ms.openlocfilehash: 58fe4fa3e5056192fa5febe4883a1457d130871b
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88547768"
 ---
 # <a name="how-to-create-guest-configuration-policy-definitions-from-group-policy-baseline-for-windows"></a>Vendég-konfigurációs házirend definícióinak létrehozása a Windows Csoportházirend alapkonfigurációból
@@ -200,7 +200,7 @@ Egy szabályzat-definíció _DeployIfNotExists_ -effektussal való hozzárendel�
    New-AzRoleDefinition -Role $role
    ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tudnivalók a virtuális gépek a [vendég konfigurációjával](../concepts/guest-configuration.md)való naplózásáról.
 - Megtudhatja, hogyan [hozhat létre programozott módon házirendeket](./programmatically-create.md).

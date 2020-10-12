@@ -16,10 +16,10 @@ ms.topic: troubleshooting
 ms.date: 10/18/2019
 ms.author: b-juche
 ms.openlocfilehash: 870caffe2bd286c2eec3390915bc5e64e0103a07
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85483465"
 ---
 # <a name="troubleshoot-azure-netapp-files-resource-provider-errors"></a>Az Azure NetApp Files erőforrás-szolgáltatójának hibaelhárítása 
@@ -126,7 +126,7 @@ Az aláhúzást lecserélheti egy kötőjelre, vagy a szóközök helyett a nagy
 Ez a hiba akkor fordul elő, ha megpróbálja módosítani `FileSystemId` .  A módosítás `FileSystemdId` nem támogatott művelet. 
 
 * Ok:   
-A rendszer a kötet létrehozásakor beállítja a fájlrendszer AZONOSÍTÓját. `FileSystemId`ezt követően nem módosítható.
+A rendszer a kötet létrehozásakor beállítja a fájlrendszer AZONOSÍTÓját. `FileSystemId` ezt követően nem módosítható.
 * Megoldás:   
 Ne szerepeljen a `FileSystemId` javítási és frissítési (Put) kérelemben.  Azt is megteheti, hogy `FileSystemId` ugyanaz a kérelemben.
 
@@ -439,7 +439,7 @@ Nincsenek.  Tekintse meg a fenti megoldást.
 
 ***A denetid nem módosítható.***
 
-Ez a hiba akkor fordul elő, ha a kötet létrehozása után megpróbálja módosítani a módosítást `subnetId` .  `SubnetId`a kötet létrehozásakor be kell állítani, és később nem módosítható.
+Ez a hiba akkor fordul elő, ha a kötet létrehozása után megpróbálja módosítani a módosítást `subnetId` .  `SubnetId` a kötet létrehozásakor be kell állítani, és később nem módosítható.
 
 * Ok:   
 A `subnetId` kötet létrehozása után megpróbálja módosítani a kötetet, amely nem támogatott művelet. 

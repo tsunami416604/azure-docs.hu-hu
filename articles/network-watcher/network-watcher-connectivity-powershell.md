@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 07/11/2017
 ms.author: damendo
 ms.openlocfilehash: aa5d7efed1ce1f41ebb67e2ec377e862ad14ed7a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84725035"
 ---
 # <a name="troubleshoot-connections-with-azure-network-watcher-using-powershell"></a>Az Azure Network Watchersal létesített kapcsolatok hibáinak megoldása a PowerShell használatával
@@ -61,7 +61,7 @@ $networkWatcher = Get-AzNetworkWatcher | Where-Object -Property Location -EQ -Va
 Test-AzNetworkWatcherConnectivity -NetworkWatcher $networkWatcher -SourceId $VM1.Id -DestinationId $VM2.Id -DestinationPort 80
 ```
 
-### <a name="response"></a>Válasz
+### <a name="response"></a>Reagálás
 
 A következő válasz az előző példából származik.  Ebben a válaszban az `ConnectionStatus` nem **érhető el**. Láthatja, hogy az összes eljuttatott mintavétel sikertelen volt. A kapcsolat nem sikerült a virtuális berendezésen, mert egy UserRule_Port80 nevű felhasználó konfigurálta, amely a `NetworkSecurityRule` 80-es porton való bejövő forgalom blokkolására van konfigurálva. **UserRule_Port80** Ezek az adatok a kapcsolódási problémák kutatására használhatók.
 
@@ -152,7 +152,7 @@ $networkWatcher = Get-AzNetworkWatcher | Where-Object -Property Location -EQ -Va
 Test-AzNetworkWatcherConnectivity -NetworkWatcher $networkWatcher -SourceId $VM1.Id -DestinationAddress 13.107.21.200 -DestinationPort 80
 ```
 
-### <a name="response"></a>Válasz
+### <a name="response"></a>Reagálás
 
 A következő példában a látható, hogy `ConnectionStatus` nem **érhető el**. A `Hops` részletek között látható, `Issues` hogy a forgalom le lett tiltva, mert egy `UserDefinedRoute` . 
 
@@ -216,7 +216,7 @@ $networkWatcher = Get-AzNetworkWatcher | Where-Object -Property Location -EQ -Va
 Test-AzNetworkWatcherConnectivity -NetworkWatcher $networkWatcher -SourceId $VM1.Id -DestinationAddress https://bing.com/
 ```
 
-### <a name="response"></a>Válasz
+### <a name="response"></a>Reagálás
 
 A következő válaszban láthatja, hogy a `ConnectionStatus` láthatók **elérhetők**. Ha a csatlakozás sikeres, a késési értékek megadására kerül sor.
 
@@ -268,7 +268,7 @@ $networkWatcher = Get-AzNetworkWatcher | Where-Object -Property Location -EQ -Va
 Test-AzNetworkWatcherConnectivity -NetworkWatcher $networkWatcher -SourceId $VM1.Id -DestinationAddress https://contosostorageexample.blob.core.windows.net/ 
 ```
 
-### <a name="response"></a>Válasz
+### <a name="response"></a>Reagálás
 
 A következő JSON az előző parancsmag futtatásának példája. Mivel a célhely elérhető, a `ConnectionStatus` tulajdonság **elérhetőként**jelenik meg.  A tárolási blob és a késés eléréséhez szükséges ugrások számával kapcsolatos részletek.
 

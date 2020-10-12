@@ -4,10 +4,10 @@ description: Ismerteti Service Fabric alkalmazások fejlesztését, üzembe hely
 ms.topic: conceptual
 ms.date: 1/19/2018
 ms.openlocfilehash: 6a36c97c6f1be96dcb8353e886f2159929e8e794
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86248310"
 ---
 # <a name="service-fabric-application-lifecycle"></a>Az alkalmazások életciklusának Service Fabric
@@ -19,7 +19,7 @@ Más platformokhoz hasonlóan az Azure Service Fabric-alkalmazások általában 
 A szolgáltatási modell szerepkörei a következők:
 
 * **Szolgáltatás fejlesztője**: olyan moduláris és általános szolgáltatásokat fejleszt, amelyek több azonos típusú vagy különböző típusú alkalmazásban is használhatók. Egy üzenetsor-szolgáltatás például egy Ticketing-alkalmazás (helpdesk) vagy egy e-kereskedelmi alkalmazás (bevásárlókosár) létrehozásához használható.
-* **Alkalmazás fejlesztője**: az alkalmazásokat a szolgáltatások egy gyűjteményének integrálásával hozza létre bizonyos konkrét követelmények vagy forgatókönyvek kielégítése érdekében. Egy e-kereskedelmi webhely például a "JSON állapot nélküli kezelőfelület-szolgáltatás", "aukciós állapot-nyilvántartó szolgáltatás" és "üzenetsor-állapot-nyilvántartó szolgáltatás" integrálásával hozhat létre aukciós megoldást.
+* **Alkalmazás fejlesztője**: az alkalmazásokat a szolgáltatások egy gyűjteményének integrálásával hozza létre bizonyos konkrét követelmények vagy forgatókönyvek kielégítése érdekében. Egy e-kereskedelmi webhely például a "JSON állapot nélküli Front-End szolgáltatás", "aukciós állapot-nyilvántartó szolgáltatás" és "üzenetsor-állapot-nyilvántartó szolgáltatás" integrálását is felépítheti egy aukciós megoldás létrehozásához.
 * **Alkalmazás-rendszergazda**: az alkalmazás konfigurációjának (a konfigurációs sablon paramétereinek kitöltése), a központi telepítés (elérhető erőforrások leképezése) és a szolgáltatás minőségének meghozatalát teszi lehetővé. Az alkalmazás rendszergazdája például a nyelv területi beállítását (például az angol nyelvet a japán Egyesült Államok vagy Japán esetében) az alkalmazáshoz. Egy másik telepített alkalmazás különböző beállításokkal rendelkezhet.
 * **Operátor**: alkalmazások telepítése az alkalmazás konfigurációja és az alkalmazás rendszergazdája által meghatározott követelmények alapján. Egy operátor például kiépíti és telepíti az alkalmazást, és gondoskodik arról, hogy az az Azure-ban fusson. A kezelők az alkalmazás állapotával és teljesítményével kapcsolatos információkat figyelik, és szükség szerint karbantartják a fizikai infrastruktúrát.
 
@@ -41,7 +41,7 @@ Tekintse meg az első [lépések a Reliable Actors](service-fabric-reliable-acto
 
 Lásd: [alkalmazás üzembe helyezése](service-fabric-deploy-remove-applications.md) példákhoz.
 
-## <a name="test"></a>Teszt
+## <a name="test"></a>Tesztelés
 1. A helyi fejlesztési fürtre vagy egy tesztelési fürtre történő telepítés után a *szolgáltatás-fejlesztő* a beépített feladatátvételi teszt forgatókönyvet futtatja a [**FailoverTestScenarioParameters**](/dotnet/api/system.fabric.testability.scenario.failovertestscenarioparameters) és a [**FailoverTestScenario**](/dotnet/api/system.fabric.testability.scenario.failovertestscenario) osztályok, vagy a [ **meghívó-ServiceFabricFailoverTestScenario** parancsmag](/powershell/module/servicefabric/invoke-servicefabricfailovertestscenario?view=azureservicefabricps)használatával. A feladatátvételi teszt forgatókönyv a megadott szolgáltatást a fontos átmeneteken és feladatátvételeken keresztül futtatja, így biztosítva, hogy továbbra is elérhető és működőképes legyen.
 2. A *szolgáltatás fejlesztője* ezután futtatja a beépített Chaos-teszt forgatókönyvet a [**ChaosTestScenarioParameters**](/dotnet/api/system.fabric.testability.scenario.chaostestscenarioparameters) és a [**ChaosTestScenario**](/dotnet/api/system.fabric.testability.scenario.chaostestscenario) osztályok, vagy a [ **meghívó-ServiceFabricChaosTestScenario** parancsmag](/powershell/module/servicefabric/invoke-servicefabricchaostestscenario?view=azureservicefabricps)használatával. A káosz tesztelési forgatókönyve véletlenszerűen több csomópont-, kód-és replika-hibát idéz elő a fürtben.
 3. A *szolgáltatás-fejlesztő* a szolgáltatás [és a szolgáltatás közötti kommunikációt](service-fabric-testability-scenarios-service-communication.md) az elsődleges replikákat a fürt körül áthelyező tesztelési forgatókönyvek létrehozásával teszteli.
@@ -77,7 +77,7 @@ Példákért tekintse meg az [alkalmazás verziófrissítését ismertető oktat
 
 Lásd: [alkalmazás üzembe helyezése](service-fabric-deploy-remove-applications.md) példákhoz.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A Service Fabric-alkalmazások és-szolgáltatások fejlesztésével, tesztelésével és kezelésével kapcsolatos további információkért lásd:
 
 * [Reliable Actors](service-fabric-reliable-actors-introduction.md)

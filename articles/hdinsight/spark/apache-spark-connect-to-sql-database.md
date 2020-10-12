@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/20/2020
 ms.openlocfilehash: d979a68f4e3aa0071fb7654647610af1fbf95e90
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86078816"
 ---
 # <a name="use-hdinsight-spark-cluster-to-read-and-write-data-to-azure-sql-database"></a>Az HDInsight Spark-fürt használata az Azure SQL Databaseba való adatolvasásra és írásra
@@ -23,7 +23,7 @@ Megtudhatja, hogyan csatlakoztatható Apache Spark-fürt az Azure HDInsight-ben 
 
 * Azure HDInsight Spark-fürt.  Kövesse az [Apache Spark-fürt létrehozása a HDInsight-ben](apache-spark-jupyter-spark-sql.md)című témakör utasításait.
 
-* az Azure SQL Database-szel szemben. Kövesse az [adatbázis létrehozása Azure SQL Databaseban](../../azure-sql/database/single-database-create-quickstart.md)című témakör utasításait. Győződjön meg arról, hogy létrehoz egy adatbázist a minta **AdventureWorksLT** sémával és az adattal. Győződjön meg arról is, hogy egy kiszolgálói szintű tűzfalszabály létrehozása lehetővé teszi az ügyfél IP-címének elérését az SQL-adatbázishoz. A tűzfalszabály hozzáadására vonatkozó utasítások ugyanabban a cikkben találhatók. Miután létrehozta az SQL-adatbázist, ügyeljen rá, hogy a következő értékeket érdemes megtartania. Szüksége van rájuk, hogy egy Spark-fürtből csatlakozhasson az adatbázishoz.
+* Azure SQL Database. Kövesse az [adatbázis létrehozása Azure SQL Databaseban](../../azure-sql/database/single-database-create-quickstart.md)című témakör utasításait. Győződjön meg arról, hogy létrehoz egy adatbázist a minta **AdventureWorksLT** sémával és az adattal. Győződjön meg arról is, hogy egy kiszolgálói szintű tűzfalszabály létrehozása lehetővé teszi az ügyfél IP-címének elérését az SQL-adatbázishoz. A tűzfalszabály hozzáadására vonatkozó utasítások ugyanabban a cikkben találhatók. Miután létrehozta az SQL-adatbázist, ügyeljen rá, hogy a következő értékeket érdemes megtartania. Szüksége van rájuk, hogy egy Spark-fürtből csatlakozhasson az adatbázishoz.
 
     * A kiszolgáló neve.
     * Az adatbázis neve.

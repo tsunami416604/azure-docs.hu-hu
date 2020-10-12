@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 05/18/2020
 ms.author: mnayak
 ms.openlocfilehash: 2002e4a11a2accbbc639c200372c393b8dc2f228
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84707531"
 ---
 # <a name="configure-routing-preference-for-a-vm-using-azure-powershell"></a>Útválasztási beállítások konfigurálása virtuális géphez Azure PowerShell használatával
@@ -145,7 +145,7 @@ Most már létrehozhatja a virtuális gépet a [New-AzVM](/powershell/module/az.
 
 Ahhoz, hogy az internetről csatlakozhasson a nyilvános IP-címhez, győződjön meg arról, hogy a szükséges portok nyitva vannak minden olyan hálózati biztonsági csoportban, amelyet a hálózati adapterhez, a hálózati adapterhez vagy mindkettőhöz kapcsolódott. A hálózati adapterek és az alhálózatok érvényes biztonsági szabályait a [portál](diagnose-network-traffic-filter-problem.md#diagnose-using-azure-portal), a [CLI](diagnose-network-traffic-filter-problem.md#diagnose-using-azure-cli)vagy a [PowerShell](diagnose-network-traffic-filter-problem.md#diagnose-using-powershell)használatával tekintheti meg.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs rá szükség, használhatja a [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) parancsot az erőforráscsoport, a virtuális gép és az összes kapcsolódó erőforrás eltávolításához.
 

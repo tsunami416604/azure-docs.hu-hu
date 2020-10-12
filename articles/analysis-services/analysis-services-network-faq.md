@@ -8,13 +8,13 @@ ms.date: 05/05/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: b60cf34e8efed2ed63b6e35cfaf7445edb701610
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82838501"
 ---
-# <a name="frequently-asked-questions-about-analysis-services-network-connectivity"></a>Analysis Services hálózati kapcsolattal kapcsolatos gyakori kérdések
+# <a name="frequently-asked-questions-about-analysis-services-network-connectivity"></a>Gyakori kérdések az Analysis Services hálózati kapcsolatról
 
 Ez a cikk a Storage-fiókokhoz, az adatforrásokhoz, a tűzfalakhoz és az IP-címekhez való csatlakozással kapcsolatos gyakori kérdésekre ad választ.
 
@@ -48,4 +48,4 @@ A **Válasz** – Azure Analysis Services nem támogatja a magánhálózati, a v
 
 [Helyszíni adatátjáró telepítése és konfigurálása](analysis-services-gateway-install.md)   
 [Csatlakozás helyszíni adatforrásokhoz helyszíni adatátjáróval](analysis-services-gateway.md)   
-[Átjáró használata adatforrásokhoz Azure-Virtual Network (VNet)](analysis-services-vnet-gateway.md)
+[Átjáró használata az adatforrásokhoz egy Azure-beli virtuális hálózaton (VNeten)](analysis-services-vnet-gateway.md)

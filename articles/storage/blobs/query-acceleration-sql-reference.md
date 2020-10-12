@@ -11,10 +11,10 @@ ms.author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: ereilebr
 ms.openlocfilehash: affddf7367f58107106ae07a07b8baedac73e251
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89659561"
 ---
 # <a name="query-acceleration-sql-language-reference"></a>A lekérdezés gyorsításának SQL nyelvi referenciája
@@ -61,7 +61,7 @@ SELECT sys.split(split_size)FROM BlobStorage
 |FLOAT    |64 bites ("dupla pontosságú") lebegőpontos pont.|
 |KARAKTERLÁNC   |Változó hosszúságú Unicode-karakterlánc.            |
 |IDŐBÉLYEG|Egy adott időpontban.                           |
-|LOGIKAI  |TRUE (igaz) vagy FALSE (hamis).                             |
+|LOGIKAI  |Igaz vagy hamis.                             |
 
 A CSV formátumú adatokból származó értékek olvasásakor az összes érték karakterláncként van beolvasva.  A karakterlánc-értékek a CAST kifejezéseket használó más típusokra is átalakíthatók.  Az értékek implicit módon más típusokra is felhelyezhetők a környezettől függően. További információ: [adattípus-prioritás (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/data-types/data-type-precedence-transact-sql).
 
@@ -91,14 +91,14 @@ A következő szabványos SQL-operátorok támogatottak:
 |[/](https://docs.microsoft.com/sql/t-sql/language-elements/divide-transact-sql)    |Az egyik számot egy másikra (egy aritmetikai osztási operátorra) osztja.|
 |[*](https://docs.microsoft.com/sql/t-sql/language-elements/multiply-transact-sql)    |Két kifejezés (egy aritmetikai szorzási operátor) szorzata.|
 |[%](https://docs.microsoft.com/sql/t-sql/language-elements/modulo-transact-sql)    |Egy szám fennmaradó számát adja vissza egy másikkal osztva.|
-|[ÉS](https://docs.microsoft.com/sql/t-sql/language-elements/bitwise-and-transact-sql)    |Egy bitenkénti logikai és műveletet hajt végre két egész érték között.|
-|[VAGY](https://docs.microsoft.com/sql/t-sql/language-elements/bitwise-or-transact-sql)    |Bitenkénti logikai vagy műveletet hajt végre két megadott egész érték között, a Transact-SQL-utasításokon belüli bináris kifejezésekre lefordítva.|
-|[NEM](https://docs.microsoft.com/sql/t-sql/language-elements/not-transact-sql)    |Egy logikai bemenet megtagadása.|
+|[AND](https://docs.microsoft.com/sql/t-sql/language-elements/bitwise-and-transact-sql)    |Egy bitenkénti logikai és műveletet hajt végre két egész érték között.|
+|[OR](https://docs.microsoft.com/sql/t-sql/language-elements/bitwise-or-transact-sql)    |Bitenkénti logikai vagy műveletet hajt végre két megadott egész érték között, a Transact-SQL-utasításokon belüli bináris kifejezésekre lefordítva.|
+|[NOT](https://docs.microsoft.com/sql/t-sql/language-elements/not-transact-sql)    |Egy logikai bemenet megtagadása.|
 |[CAST](https://docs.microsoft.com/sql/t-sql/functions/cast-and-convert-transact-sql)    |Egy adott adattípusú kifejezést alakít át egy másikra.|
 |[KÖZÖTT](https://docs.microsoft.com/sql/t-sql/language-elements/between-transact-sql)    |Meghatározza a vizsgálandó tartományt.|
 |[A](https://docs.microsoft.com/sql/t-sql/language-elements/in-transact-sql)    |Meghatározza, hogy egy adott érték egyezik-e egy allekérdezés vagy egy lista bármelyik értékével.|
 |[NULLIF](https://docs.microsoft.com/sql/t-sql/language-elements/nullif-transact-sql)    |Null értéket ad vissza, ha a két megadott kifejezés egyenlő.|
-|[ÖSSZEFONÓDIK](https://docs.microsoft.com/sql/t-sql/language-elements/coalesce-transact-sql)    |Kiértékeli az argumentumokat sorrendben, és visszaadja az első olyan kifejezés aktuális értékét, amely kezdetben nem a NULL értékre van kiértékelve.|
+|[COALESCE](https://docs.microsoft.com/sql/t-sql/language-elements/coalesce-transact-sql)    |Kiértékeli az argumentumokat sorrendben, és visszaadja az első olyan kifejezés aktuális értékét, amely kezdetben nem a NULL értékre van kiértékelve.|
 
 Ha az operátor bal és jobb oldalán lévő adattípusok eltérnek, akkor az automatikus konverzió az itt megadott szabályoknak megfelelően lesz elvégezve: [adattípus-prioritás (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/data-types/data-type-precedence-transact-sql).
 
@@ -122,8 +122,8 @@ A lekérdezés gyorsításának SQL-nyelve a következő szabványos SQL-karakte
 |[UPPER](https://docs.microsoft.com/sql/t-sql/functions/upper-transact-sql)    |A kisbetűs karaktereket tartalmazó karakteres kifejezést adja vissza nagybetűvé alakítva.|
 |[SUBSTRING](https://docs.microsoft.com/sql/t-sql/functions/substring-transact-sql)    |Egy karakter, bináris, szöveg vagy képkifejezés egy részét adja vissza SQL Serverban.|
 |[TRIM](https://docs.microsoft.com/sql/t-sql/functions/trim-transact-sql)    |Eltávolítja a szóköz karakter (32) vagy más megadott karaktert a karakterlánc elejéről és végéről.|
-|VEZETŐ    |Description|
-|ZÁRÓ    |Description|
+|VEZETŐ    |Leírás|
+|ZÁRÓ    |Leírás|
 
 Íme néhány példa:
 
@@ -184,7 +184,7 @@ TO_STRING(CAST('1969-07-20T20:18Z' AS TIMESTAMP),  'MMMM d, y')
 
 Ez a táblázat azokat a karakterláncokat ismerteti, amelyeket a függvény kimeneti formátumának megadásához használhat ``TO_STRING`` .
 
-|Formázó sztring    |Kimenet                               |
+|Sztring formátuma    |Kimenet                               |
 |-----------------|-------------------------------------|
 |éé               |Év 2 számjegyű formátumban – 1999 as "99"|
 |é                |Év 4 számjegyű formátumban               |
@@ -200,7 +200,7 @@ Ez a táblázat azokat a karakterláncokat ismerteti, amelyeket a függvény kim
 |óó               |Nulla párnázott óra od nap (01-12)     |
 |H                |Nap órája (0-23)                   |
 |HH               |Nulla párnázott óra (00-23)      |
-|m                |Perc/óra (0-59)                |
+|f                |Perc/óra (0-59)                |
 |hh               |Nulla párnázott perc (00-59)           |
 |s                |Percek másodpercben (0-59)             |
 |mm               |Nulla párnázott másodperc (00-59)          |
@@ -250,7 +250,7 @@ Az ``IS MISSING`` operátor az egyetlen nem szabványos, amelyet a lekérdezés 
 
 ## <a name="table-descriptors"></a>Tábla leírói
 
-CSV-adatként a tábla neve mindig `BlobStorage` .  Például:
+CSV-adatként a tábla neve mindig `BlobStorage` .  Példa:
 
 ```sql
 SELECT * FROM BlobStorage
@@ -302,7 +302,7 @@ SELECT latitude FROM BlobStorage[*].warehouses[*]
 
 A lekérdezés lekérdezi az összes mezőt, de csak a földrajzi szélességet választja.
 
-Ha csak a JSON-objektum értékének elérését szeretné elérni `dimensions` , a lekérdezésben használhatja az adott objektumra vonatkozó hivatkozásokat. Például:
+Ha csak a JSON-objektum értékének elérését szeretné elérni `dimensions` , a lekérdezésben használhatja az adott objektumra vonatkozó hivatkozásokat. Példa:
 
 ```sql
 SELECT length FROM BlobStorage[*].dimensions

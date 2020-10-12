@@ -4,10 +4,10 @@ description: A cikk a Resource Manager-alapú és a klasszikus (vagy szolgáltat
 ms.topic: conceptual
 ms.date: 02/06/2020
 ms.openlocfilehash: d9c1a27efc1f474e25d0ed164d106e8f64ba3e96
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88511405"
 ---
 # <a name="azure-resource-manager-vs-classic-deployment-understand-deployment-models-and-the-state-of-your-resources"></a>Az Azure Resource Manager-alapú és a klasszikus üzemelő példányok: Az üzemi modellek és az erőforrások állapotának ismertetése
@@ -101,7 +101,7 @@ A klasszikus megoldás a virtuális gépek futtatására a következő:
 
 A következő táblázat a Compute, a Network és a Storage erőforrás-szolgáltatók együttműködésének változásait ismerteti:
 
-| Item | Klasszikus | Resource Manager |
+| Elem | Klasszikus | Resource Manager |
 | --- | --- | --- |
 | Felhőszolgáltatás a virtuális gépekhez |A Cloud Service egy tároló volt a virtuális gépekhez, amely platform és a terheléselosztás Rendelkezésre állását is igényelte. |Az új modell használatával a Cloud Service már nem szükséges objektum egy virtuális gép létrehozásához. |
 | Virtuális hálózatok |A virtuális géphez nem szükséges virtuális hálózat. Ha szerepel, a virtuális hálózat nem telepíthető a Resource Managerrel. |A virtuális géphez egy, a Resource Managerrel üzembe helyezett virtuális hálózat szükséges. |
@@ -149,6 +149,6 @@ Az összes már létrehozott automatizálás és szkript továbbra is működik 
 
 Az alapszintű sablonok átfogó készlete [Azure Resource Manager Gyorsindítás sablonokban](https://azure.microsoft.com/documentation/templates/)található.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A sablonok üzembe helyezésével kapcsolatos parancsokért lásd [az alkalmazások Azure Resource Manager-sablonnal történő üzembe helyezését](../templates/deploy-powershell.md) ismertető szakaszt.

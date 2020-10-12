@@ -4,10 +4,10 @@ description: Fordított proxy konfigurálása az Azure Service Fabric-alkalmazá
 ms.topic: conceptual
 ms.date: 08/10/2017
 ms.openlocfilehash: b01ce559b3c790164992d6618149afa9df069466
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86256135"
 ---
 # <a name="connect-to-a-secure-service-with-the-reverse-proxy"></a>Csatlakozás biztonságos szolgáltatáshoz a fordított proxyval
@@ -184,7 +184,7 @@ Ha az ügyfél nem tartalmaz tanúsítványt, a fordított proxy egy üres fejl�
 > A fordított proxy csak továbbítási szolgáltatásként működik. Az ügyfél tanúsítványának érvényesítése nem történik meg.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Állítsa be és konfigurálja a fordított proxyt egy fürtön](service-fabric-reverseproxy-setup.md).
 * Tekintse meg a [fordított proxy konfigurálása a biztonságos szolgáltatásokhoz való csatlakozáshoz](https://github.com/Azure-Samples/service-fabric-cluster-templates/tree/master/Reverse-Proxy-Sample#configure-reverse-proxy-to-connect-to-secure-services) című témakört.
 * Tekintse [meg a githubon](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)található, a szolgáltatások közötti http-kommunikáció példáját.

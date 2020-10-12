@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 9/24/2019
 ms.author: rohink
 ms.openlocfilehash: 9da94f80f9a9c1b3cba7b8e3ac4fef7e717918c9
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88042751"
 ---
 # <a name="what-is-the-autoregistration-feature-of-azure-dns-private-zones"></a>Mi az Azure DNS privát zónák automatikus regisztrálási funkciója
@@ -32,7 +32,7 @@ Az automatikus regisztráció engedélyezése lehetőségre kattintva engedélye
 * A DNS-rekordok csak akkor jönnek létre automatikusan, ha az elsődleges virtuális gép hálózati adaptere DHCP-t használ. Ha statikus IP-címek vannak konfigurálva (például [több IP-cím használatára az Azure-ban](https://docs.microsoft.com/azure/virtual-network/virtual-network-multiple-ip-addresses-portal#os-config)), az automatikus regisztráció nem hoz létre rekordokat az adott virtuális géphez.
 * Az IPv6 (AAAA rekordok) automatikus regisztrálása nem támogatott.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Megtudhatja, hogyan hozhat létre saját zónát Azure DNS a [Azure PowerShell](./private-dns-getstarted-powershell.md) vagy az [Azure CLI](./private-dns-getstarted-cli.md)használatával.
 

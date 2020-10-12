@@ -11,10 +11,10 @@ author: djpmsft
 ms.author: daperlov
 manager: anandsub
 ms.openlocfilehash: 40fa6bce67aa6c5643e4a153da610dce65907b56
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88036351"
 ---
 # <a name="roles-and-permissions-for-azure-data-factory"></a>Szerepkörök és engedélyek az Azure Data Factoryhoz
@@ -59,7 +59,7 @@ Az Azure Repos és a GitHub engedélyei függetlenek Data Factory engedélyeitő
 
 ### <a name="custom-scenarios-and-custom-roles"></a>Egyéni forgatókönyvek és egyéni szerepkörök
 
-Előfordulhat, hogy különböző hozzáférési szinteket kell megadnia a különböző adat-előállító felhasználók számára. Például:
+Előfordulhat, hogy különböző hozzáférési szinteket kell megadnia a különböző adat-előállító felhasználók számára. Példa:
 - Előfordulhat, hogy olyan csoportra van szüksége, amelyben a felhasználók csak egy adott adatelőállítóhoz rendelkeznek engedéllyel.
 - Vagy szükség lehet egy olyan csoportra, amelyben a felhasználók csak egy adatgyárat (vagy gyárakat) tudnak figyelni, de nem módosíthatják azt.
 
@@ -80,7 +80,7 @@ Ezeket az egyéni forgatókönyveket egyéni szerepkörök létrehozásával és
   Ehhez a forgatókönyvhöz két szerepkör-hozzárendelés szükséges.
 
   1. Társítsa a beépített **közreműködő** szerepkört a adat-előállító szintjén.
-  2. Hozzon létre egy egyéni szerepkört az engedéllyel rendelkező **Microsoft. Resources/Deployments/**. Rendelje hozzá ezt az egyéni szerepkört a felhasználóhoz erőforráscsoport szintjén.
+  2. Hozzon létre egy egyéni szerepkört az engedéllyel rendelkező  **Microsoft. Resources/Deployments/**. Rendelje hozzá ezt az egyéni szerepkört a felhasználóhoz erőforráscsoport szintjén.
 
 - Lehetővé teszi, hogy a felhasználó tesztelje a kapcsolatokat egy társított szolgáltatásban, vagy előnézeti adatokat egy adatkészletben
 
@@ -88,9 +88,9 @@ Ezeket az egyéni forgatókönyveket egyéni szerepkörök létrehozásával és
 
 - Lehetővé teheti, hogy a felhasználó frissítsen egy adatgyárat a PowerShellből vagy az SDK-ból, de ne a Azure Portal.
 
-  Rendelje hozzá a beépített **közreműködő** szerepkört a felhasználóhoz tartozó adat-előállító erőforráshoz. Ez a szerepkör lehetővé teszi, hogy a felhasználó láthassa a Azure Portal erőforrásait, de a felhasználó nem férhet hozzá a **Közzététel** és az **összes közzététel** gombhoz.
+  Rendelje hozzá a beépített **közreműködő** szerepkört a felhasználóhoz tartozó adat-előállító erőforráshoz. Ez a szerepkör lehetővé teszi, hogy a felhasználó láthassa a Azure Portal erőforrásait, de a felhasználó nem férhet hozzá a  **Közzététel** és az **összes közzététel** gombhoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ az Azure-beli szerepkörökről – a [szerepkör-definíciók ismertetése](../role-based-access-control/role-definitions.md)
 

@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 426220f38e6ddfaaf8b24bf4f7d34473d881ae56
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86245602"
 ---
 # <a name="sfctl-service"></a>sfctl service
@@ -22,7 +22,7 @@ Szolgáltatás, szolgáltatások típusai és szolgáltatási csomagok létrehoz
 | alkalmazás neve | Lekéri a szolgáltatás Service Fabric alkalmazásának nevét. |
 | kód – csomag listája | Lekérdezi a Service Fabric csomóponton telepített programkódok listáját. |
 | létrehozás | Létrehozza a megadott Service Fabric szolgáltatást. |
-| törlés | Egy meglévő Service Fabric-szolgáltatás törlése. |
+| delete | Egy meglévő Service Fabric-szolgáltatás törlése. |
 | központilag telepített – típus | A Service Fabric-fürt csomópontjain üzembe helyezett alkalmazás megadott szolgáltatástípus információinak beolvasása. |
 | telepített típusok listája | Beolvassa a Service Fabric-fürt csomópontjain központilag telepített alkalmazások szolgáltatás típusaira vonatkozó információkat tartalmazó listát. |
 | leírás | Lekéri egy meglévő Service Fabric szolgáltatás leírását. |
@@ -586,6 +586,6 @@ Frissíti a megadott szolgáltatást az adott frissítés leírása alapján.
 | --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - [Állítsa be](service-fabric-cli.md) a Service Fabric CLI-t.
 - Megtudhatja, hogyan használhatja a Service Fabric CLI-t a [minta-parancsfájlok](./scripts/sfctl-upgrade-application.md)használatával.

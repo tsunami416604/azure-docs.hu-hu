@@ -15,10 +15,10 @@ ms.reviewer: saeeda, sureshja, hirsin
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: 36b39f3706db615e40ebfadebf36be4d8b29c33e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80154729"
 ---
 # <a name="what-is-authentication"></a>Mi a hitelesítés?
@@ -132,7 +132,7 @@ Az Azure AD által kibocsátott egyes jogcímek rövid leírását az alábbi t�
 | Kibocsátás időpontja | A jogkivonat kibocsátásának időpontját rögzíti, amely alapján általában a jogkivonat frissességét szokás elbírálni. |
 | Kiállító | A jogkivonatot kiadó biztonsági jegykiadó szolgáltatást, valamint az Azure AD-bérlőt azonosítja. |
 | Vezetéknév | A felhasználó Azure AD-ben beállított vezetéknevét adja meg. |
-| Name | A jogkivonat alanyát azonosító, ember által olvasható értéket ad meg. |
+| Név | A jogkivonat alanyát azonosító, ember által olvasható értéket ad meg. |
 | Objektumazonosító | Az alany Azure AD-beli megváltoztathatatlan egyedi azonosítóját adja meg. |
 | Szerepkörök | A felhasználónak kiosztott Azure AD-beli alkalmazás-szerepkörök rövid neveit adja meg. |
 | Hatókör | Az ügyfélalkalmazás számára megadott engedélyeket jelzi. |

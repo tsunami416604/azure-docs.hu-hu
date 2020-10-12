@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: juliako
 ms.openlocfilehash: 08ebda8bdd17cc4d620792934e1299365d0ced71
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89257925"
 ---
 # <a name="content-protection-overview"></a>Tartalomvédelem – áttekintés
@@ -113,7 +113,7 @@ A következő szempontokat kell figyelembe venni:
 
 * A Widevine a Google Inc által biztosított szolgáltatás, és a Google, Inc. szolgáltatási és adatvédelmi szabályzatának feltételei vonatkoznak rá.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A következő cikkek a tartalomvédelem megkezdéséhez szükséges lépéseket ismertetik:
 
 * [Védelem a Storage encryption szolgáltatással](media-services-rest-storage-encryption.md)

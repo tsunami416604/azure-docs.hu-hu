@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/03/2020
 ms.openlocfilehash: e9c1651244eecb036ca18ad5dadfe23f48b2bce6
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87529262"
 ---
 # <a name="copy-data-from-quickbooks-online-using-azure-data-factory-preview"></a>Adatok másolása a QuickBooks online-ból Azure Data Factory használatával (előzetes verzió)
@@ -60,7 +60,7 @@ A QuickBooks társított szolgáltatás a következő tulajdonságokat támogatj
 | refreshToken | A QuickBooks-alkalmazáshoz társított OAuth 2,0 frissítési jogkivonat. További információt [itt talál](https://developer.intuit.com/app/developer/qbo/docs/develop/authentication-and-authorization/oauth-2.0#obtain-oauth2-credentials-for-your-app). Megjegyzés: a frissítési token 180 nap után lejár. Az ügyfélnek rendszeresen frissítenie kell a frissítési tokent. <br/>Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md).| Igen |
 | useEncryptedEndpoints | Meghatározza, hogy az adatforrás-végpontok HTTPS protokollal legyenek titkosítva. Az alapértelmezett érték az igaz.  | Nem |
 
-**Például**
+**Példa**
 
 ```json
 {
@@ -128,7 +128,7 @@ Az adatok QuickBooks online-ból való másolásához állítsa a forrás típus
 | típus | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **QuickBooksSource** | Igen |
 | lekérdezés | Az egyéni SQL-lekérdezés használatával olvassa be az adatolvasást. Például: `"SELECT * FROM "Bill" WHERE Id = '123'"`. | Nem (ha meg van adva a "táblanév" az adatkészletben) |
 
-**Például**
+**Példa**
 
 ```json
 "activities":[

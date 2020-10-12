@@ -1,5 +1,5 @@
 ---
-title: Támogatott adattárak az Azure-adatmegosztásban
+title: Az Azure Data Share támogatott adattárai
 description: Ismerje meg az Azure-adatmegosztás használatát támogató adattárakat.
 ms.service: data-share
 author: jifems
@@ -7,13 +7,13 @@ ms.author: jife
 ms.topic: conceptual
 ms.date: 08/14/2020
 ms.openlocfilehash: bb8b13e1141a8cb4610e15ed693e28042dd20d72
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89259013"
 ---
-# <a name="supported-data-stores-in-azure-data-share"></a>Támogatott adattárak az Azure-adatmegosztásban
+# <a name="supported-data-stores-in-azure-data-share"></a>Az Azure Data Share támogatott adattárai
 
 Az Azure-beli adatmegosztás nyitott és rugalmas adatmegosztást biztosít, többek között a különböző adattárakból történő megosztási képességet is beleértve. Az adatszolgáltatók megoszthatnak egy adattárolóból származó adatmegosztást, és az adatok fogyasztóik kiválaszthatják, hogy melyik adattárba fogadják az adatok. 
 
@@ -67,6 +67,6 @@ A megosztott adatbázisok eléréséhez az adatfogyasztónak saját Azure Adatke
 
 A részletekért tekintse [meg az Azure-adatkezelő adatainak megosztása és fogadása](/azure/data-explorer/data-share) című témakört. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az adatmegosztás megkezdésének megismeréséhez folytassa az [adatgyűjtés megosztása](share-your-data.md) című oktatóanyagot.

@@ -10,13 +10,13 @@ ms.date: 06/26/2020
 ms.reviewer: jushiman
 ms.custom: avverma
 ms.openlocfilehash: b5f3305fc5d2595c8b7b08d78ff20edea01c195e
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89229837"
 ---
-# <a name="azure-virtual-machine-scale-set-automatic-os-image-upgrades"></a>Azure virtuálisgép-méretezési csoport automatikus operációsrendszer-rendszerképének frissítése
+# <a name="azure-virtual-machine-scale-set-automatic-os-image-upgrades"></a>Azure-beli virtuálisgép-méretezési csoport operációsrendszer-képének automatikus frissítései
 
 Az operációsrendszer-lemezképek automatikus verziófrissítésének engedélyezése a méretezési csoporton belül a méretezési csoport összes példányához tartozó operációsrendszer-lemez biztonságos és automatikus frissítésével megkönnyíti a frissítés kezelését.
 
@@ -289,7 +289,7 @@ Az az [vmss Rolling-upgrade Start](/cli/azure/vmss/rolling-upgrade#az-vmss-rolli
 az vmss rolling-upgrade start --resource-group "myResourceGroup" --name "myScaleSet" --subscription "subscriptionId"
 ```
 
-## <a name="deploy-with-a-template"></a>Üzembe helyezés sablonnal
+## <a name="deploy-with-a-template"></a>Üzembe helyezés sablon használatával
 
 A sablonok használatával olyan méretezési csoport helyezhető üzembe, amely a támogatott lemezképek (például [Ubuntu 16,04-LTS](https://github.com/Azure/vm-scale-sets/blob/master/preview/upgrade/autoupdate.json)) esetében automatikusan frissíti az operációs rendszer frissítéseit.
 

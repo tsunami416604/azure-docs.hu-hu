@@ -13,10 +13,10 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: b23be9901df7ca435f412d9f49e1a7ad88382ade
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84711918"
 ---
 # <a name="move-data-from-amazon-simple-storage-service-by-using-azure-data-factory"></a>Az Amazon Simple Storage szolgáltatásból származó adatok áthelyezése Azure Data Factory használatával
@@ -34,8 +34,8 @@ Az Amazon S3-ból bármilyen támogatott fogadó adattárba másolhat adatok. A 
 ## <a name="required-permissions"></a>Szükséges engedélyek
 Az Amazon S3-ból származó adatok másolásához győződjön meg arról, hogy a következő engedélyeket kapta:
 
-* `s3:GetObject`és `s3:GetObjectVersion` az Amazon S3 Object műveletekhez.
-* `s3:ListBucket`Amazon S3-gyűjtő műveletekhez. Ha a Data Factory másolás varázslót használja, `s3:ListAllMyBuckets` szintén szükséges.
+* `s3:GetObject` és `s3:GetObjectVersion` az Amazon S3 Object műveletekhez.
+* `s3:ListBucket` Amazon S3-gyűjtő műveletekhez. Ha a Data Factory másolás varázslót használja, `s3:ListAllMyBuckets` szintén szükséges.
 
 Az Amazon S3-engedélyek teljes listájáról az [engedélyek megadása házirendben](https://docs.aws.amazon.com/AmazonS3/latest/dev/using-with-s3-actions.html)című témakörben olvashat bővebben.
 
@@ -64,14 +64,14 @@ A társított szolgáltatás egy adattárhoz csatol egy adattárolót egy adatgy
 
 | Tulajdonság | Leírás | Megengedett értékek | Kötelező |
 | --- | --- | --- | --- |
-| accessKeyID |A titkos elérési kulcs azonosítója. |sztring |Yes |
-| secretAccessKey |Maga a titkos elérési kulcs. |Titkosított titkos karakterlánc |Yes |
+| accessKeyID |A titkos elérési kulcs azonosítója. |sztring |Igen |
+| secretAccessKey |Maga a titkos elérési kulcs. |Titkosított titkos karakterlánc |Igen |
 
 >[!NOTE]
 >Ehhez az összekötőhöz hozzáférési kulcsok szükségesek a IAM-fiókhoz az Amazon S3-ból való adatok másolásához. Az [ideiglenes biztonsági hitelesítő adatok](https://docs.aws.amazon.com/IAM/latest/UserGuide/id_credentials_temp.html) nem támogatottak.
 >
 
-Például:
+Alább bemutatunk egy példát:
 
 ```json
 {
@@ -93,12 +93,12 @@ A struktúra, a rendelkezésre állás és a házirend többek között az össz
 
 | Tulajdonság | Leírás | Megengedett értékek | Kötelező |
 | --- | --- | --- | --- |
-| bucketName |Az S3-gyűjtő neve. |Sztring |Yes |
-| kulcs |Az S3-objektum kulcsa. |Sztring |No |
-| előtag |Az S3-objektum kulcsának előtagja. Azok az objektumok, amelyek esetében ezzel az előtaggal kezdődnek a kulcsok. Csak akkor érvényes, ha a kulcs üres. |Sztring |No |
-| version |Az S3 objektum verziója, ha az S3 Verziószámozás engedélyezve van. |Sztring |No |
-| formátumban | A következő típusú formátumok támogatottak: **Szövegformátum**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. A **Type (típus** ) tulajdonságot állítsa a Format értékre a következő értékek egyikére. További információ: [szöveg formátuma](data-factory-supported-file-and-compression-formats.md#text-format), JSON- [Formátum](data-factory-supported-file-and-compression-formats.md#json-format), [Avro formátum](data-factory-supported-file-and-compression-formats.md#avro-format), [ork-formátum](data-factory-supported-file-and-compression-formats.md#orc-format)és [parketta formátuma](data-factory-supported-file-and-compression-formats.md#parquet-format) . <br><br> Ha fájlokat szeretne másolni a fájl alapú tárolók között (bináris másolás), ugorja át a formátum szakaszt mind a bemeneti, mind a kimeneti adatkészlet-definíciókban. | |No |
-| tömörítés | Adja meg az adattömörítés típusát és szintjét. A támogatott típusok a következők: **gzip**, **deflate**, **BZip2**és **ZipDeflate**. A támogatott szintek a következők: **optimális** és **leggyorsabb**. További információ: [fájl-és Tömörítési formátumok Azure Data Factoryban](data-factory-supported-file-and-compression-formats.md#compression-support). | |No |
+| bucketName |Az S3-gyűjtő neve. |Sztring |Igen |
+| kulcs |Az S3-objektum kulcsa. |Sztring |Nem |
+| előtag |Az S3-objektum kulcsának előtagja. Azok az objektumok, amelyek esetében ezzel az előtaggal kezdődnek a kulcsok. Csak akkor érvényes, ha a kulcs üres. |Sztring |Nem |
+| version |Az S3 objektum verziója, ha az S3 Verziószámozás engedélyezve van. |Sztring |Nem |
+| formátumban | A következő típusú formátumok támogatottak: **Szövegformátum**, **JsonFormat**, **AvroFormat**, **OrcFormat**, **ParquetFormat**. A **Type (típus** ) tulajdonságot állítsa a Format értékre a következő értékek egyikére. További információ: [szöveg formátuma](data-factory-supported-file-and-compression-formats.md#text-format), JSON- [Formátum](data-factory-supported-file-and-compression-formats.md#json-format), [Avro formátum](data-factory-supported-file-and-compression-formats.md#avro-format), [ork-formátum](data-factory-supported-file-and-compression-formats.md#orc-format)és [parketta formátuma](data-factory-supported-file-and-compression-formats.md#parquet-format) . <br><br> Ha fájlokat szeretne másolni a fájl alapú tárolók között (bináris másolás), ugorja át a formátum szakaszt mind a bemeneti, mind a kimeneti adatkészlet-definíciókban. | |Nem |
+| tömörítés | Adja meg az adattömörítés típusát és szintjét. A támogatott típusok a következők: **gzip**, **deflate**, **BZip2**és **ZipDeflate**. A támogatott szintek a következők: **optimális** és **leggyorsabb**. További információ: [fájl-és Tömörítési formátumok Azure Data Factoryban](data-factory-supported-file-and-compression-formats.md#compression-support). | |Nem |
 
 
 > [!NOTE]
@@ -174,7 +174,7 @@ A tevékenységek definiálásához elérhető csoportok és tulajdonságok telj
 
 | Tulajdonság | Leírás | Megengedett értékek | Kötelező |
 | --- | --- | --- | --- |
-| rekurzív |Megadja, hogy a címtárban az S3 objektumok rekurzív listázása megtörténjen-e. |Igaz/hamis |No |
+| rekurzív |Megadja, hogy a címtárban az S3 objektumok rekurzív listázása megtörténjen-e. |Igaz/hamis |Nem |
 
 ## <a name="json-example-copy-data-from-amazon-s3-to-azure-blob-storage"></a>JSON-példa: adatok másolása az Amazon S3-ból az Azure Blob Storage-ba
 Ez a minta bemutatja, hogyan másolhat adatok az Amazon S3-ból egy Azure Blob Storage-ba. Az Adatmásolás azonban közvetlenül a Data Factoryban található másolási tevékenység által [támogatott nyelők](data-factory-data-movement-activities.md#supported-data-stores-and-formats) számára is lehetséges.

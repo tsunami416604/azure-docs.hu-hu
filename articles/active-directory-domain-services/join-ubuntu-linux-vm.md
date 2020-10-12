@@ -13,10 +13,10 @@ ms.date: 07/13/2020
 ms.author: iainfou
 ms.custom: fasttrack-edit
 ms.openlocfilehash: d01d961a5d5b86f74bb785c3fddfa09843aa060c
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87283146"
 ---
 # <a name="join-an-ubuntu-linux-virtual-machine-to-an-azure-active-directory-domain-services-managed-domain"></a>Ubuntu Linux virtuális gép csatlakoztatása Azure Active Directory Domain Services felügyelt tartományhoz
@@ -77,7 +77,7 @@ Ha elkészült, mentse és zárja be a *hosts* fájlt a `:wq` szerkesztő paranc
 
 ## <a name="install-required-packages"></a>Szükséges csomagok telepítése
 
-A virtuális gépnek szüksége van néhány további csomagra a virtuális géphez a felügyelt tartományhoz való csatlakozáshoz. A csomagok telepítéséhez és konfigurálásához frissítse és telepítse a tartományhoz csatlakozó eszközöket a következő használatával:`apt-get`
+A virtuális gépnek szüksége van néhány további csomagra a virtuális géphez a felügyelt tartományhoz való csatlakozáshoz. A csomagok telepítéséhez és konfigurálásához frissítse és telepítse a tartományhoz csatlakozó eszközöket a következő használatával: `apt-get`
 
 A Kerberos telepítésekor a *krb5* csomag minden nagybetűvel kéri a tartománynevet. Ha például a felügyelt tartomány neve *aaddscontoso.com*, adja meg a *AADDSCONTOSO.com* tartományt. A telepítés a `[realm]` és a `[domain_realm]` szakaszt a */etc/krb5.conf állományt* konfigurációs fájlba írja. Győződjön meg arról, hogy a tartomány minden nagybetűvel rendelkezik:
 

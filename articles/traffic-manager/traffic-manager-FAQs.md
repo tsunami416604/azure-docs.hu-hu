@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 02/26/2019
 ms.author: duau
 ms.openlocfilehash: 86758c355566fb67ebd8a606068e2044e0b8bd64
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89400177"
 ---
 # <a name="traffic-manager-frequently-asked-questions-faq"></a>Traffic Manager gyakori kérdések (GYIK)
@@ -112,7 +112,7 @@ Nem, Traffic Manager nem tudja garantálni, hogy a DNS-lekérdezés forrás IP-c
 
 ###  <a name="does-an-endpoint-need-to-be-physically-located-in-the-same-region-as-the-one-it-is-configured-with-for-geographic-routing"></a>A végpontnak fizikailag ugyanabban a régióban kell lennie, mint a földrajzi útválasztáshoz konfiguráltnak?
 
-Nem, a végpont helye nem korlátozza, hogy mely régiók rendelhetők hozzájuk. Az USA – közép-és Azure-régióban található végpontok például az összes indiai felhasználót átirányítják.
+Nem, a végpont helye nem korlátozza, hogy mely régiók rendelhetők hozzájuk. Az US-Central Azure-régióban található végpontok például az összes indiai felhasználót átirányítják.
 
 ### <a name="can-i-assign-geographic-regions-to-endpoints-in-a-profile-that-is-not-configured-to-do-geographic-routing"></a>Rendelhetek földrajzi régiókat olyan profilhoz tartozó végpontokhoz, amely nem a földrajzi útválasztásra van konfigurálva?
 

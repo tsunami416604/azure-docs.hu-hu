@@ -4,10 +4,10 @@ description: Ez a cikk a Azure Service Bus entitások (várólisták, témakör�
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.openlocfilehash: b12f2f294a66159a7035240c361ab93f9f84718e
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88064825"
 ---
 # <a name="authenticate-and-authorize-an-application-with-azure-active-directory-to-access-azure-service-bus-entities"></a>Alkalmazás hitelesítése és engedélyezése Azure Active Directory használatával Azure Service Bus entitások eléréséhez
@@ -149,12 +149,12 @@ A minta futtatása előtt szerkessze a **app.config** fájlt, és a forgatókön
 A konzol alkalmazás futtatásakor a rendszer kéri, hogy válasszon ki egy forgatókönyvet. A szám beírásával és az ENTER billentyű lenyomásával válassza az **interaktív felhasználói bejelentkezés** lehetőséget. Az alkalmazás egy bejelentkezési ablakot jelenít meg, amely kéri a Service Bus elérését, majd a szolgáltatás használatával futtatja a küldési/fogadási forgatókönyvet a bejelentkezési identitás használatával.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - További információ az Azure RBAC: [Mi az az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](../role-based-access-control/overview.md)?
 - Az Azure-beli szerepkör-hozzárendelések Azure PowerShell, az Azure CLI vagy a REST API használatával történő hozzárendeléséről és kezeléséről a következő cikkekben talál további információt:
-    - [Azure-beli szerepkör-hozzárendelések hozzáadása vagy eltávolítása Azure PowerShell használatával](../role-based-access-control/role-assignments-powershell.md)  
-    - [Azure-beli szerepkör-hozzárendelések hozzáadása vagy eltávolítása az Azure CLI-vel](../role-based-access-control/role-assignments-cli.md)
-    - [Azure-beli szerepkör-hozzárendelések hozzáadása vagy eltávolítása a REST API használatával](../role-based-access-control/role-assignments-rest.md)
+    - [Azure-beli szerepkör-hozzárendelés hozzáadása vagy eltávolítása az Azure PowerShell használatával](../role-based-access-control/role-assignments-powershell.md)  
+    - [Azure-beli szerepkör-hozzárendelés hozzáadása vagy eltávolítása az Azure CLI használatával](../role-based-access-control/role-assignments-cli.md)
+    - [Azure-beli szerepkör-hozzárendelés hozzáadása vagy eltávolítása a REST API használatával](../role-based-access-control/role-assignments-rest.md)
     - [Azure-beli szerepkör-hozzárendelések hozzáadása vagy eltávolítása Azure Resource Manager sablonok használatával](../role-based-access-control/role-assignments-template.md)
 
 A Service Bus üzenetkezelésről az alábbi témakörökben találhat további információkat.

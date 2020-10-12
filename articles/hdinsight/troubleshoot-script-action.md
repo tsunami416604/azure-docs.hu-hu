@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.custom: seoapr2020
 ms.date: 04/21/2020
 ms.openlocfilehash: e8585779a263f4ff5dbdd998bbf065c6a4e1acdf
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86079259"
 ---
 # <a name="troubleshoot-script-actions-in-azure-hdinsight"></a>Parancsfájl-műveletek hibakeresése az Azure HDInsight
@@ -47,11 +47,11 @@ Ha a fürt létrehozása parancsfájl hiba miatt meghiúsul, a rendszer a napló
 
     Ebben a könyvtárban a naplók külön vannak rendszerezve a **átjárócsomóponthoz**, a **munkavégző csomópont**és a **Zookeeper csomópont**számára. Lásd az alábbi példákat:
 
-    * **Átjárócsomóponthoz**:`<ACTIVE-HEADNODE-NAME>.cloudapp.net`
+    * **Átjárócsomóponthoz**: `<ACTIVE-HEADNODE-NAME>.cloudapp.net`
 
-    * **Munkavégző csomópont**:`<ACTIVE-WORKERNODE-NAME>.cloudapp.net`
+    * **Munkavégző csomópont**: `<ACTIVE-WORKERNODE-NAME>.cloudapp.net`
 
-    * **Zookeeper csomópont**:`<ACTIVE-ZOOKEEPERNODE-NAME>.cloudapp.net`
+    * **Zookeeper csomópont**: `<ACTIVE-ZOOKEEPERNODE-NAME>.cloudapp.net`
 
 * A rendszer feltölti a megfelelő gazdagép összes **StdOut** -és **stderr** a Storage-fiókba. Minden parancsfájl-művelethez létezik egy **output- \* . txt** és **errors- \* . txt fájl** . A **output-*. txt** fájl a gazdagépen futó parancsfájl URI azonosítóját tartalmazza. A következő szöveg egy példa erre az információra:
 

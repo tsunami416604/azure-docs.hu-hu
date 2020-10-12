@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: sausin
 ms.openlocfilehash: d166257dd28773d89a4f1fd56de3cb1a22242523
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87284166"
 ---
 # <a name="create-application-with-simple-commands"></a>Alkalmazás létrehozása egyszerű parancsokkal
@@ -44,7 +44,7 @@ Az imént létrehozott **Smart-Room-Lite** egyéni parancsok alkalmazásban adjo
 
 1. Hozzon létre egy új parancsot a bal oldali ablaktábla tetején található **új parancs** kiválasztásával. Megnyílik az **új parancssori** ablak.
 1. Adja meg a **Name (név** ) mező értékét **TurnOn**.
-1. Válassza a **Létrehozás** lehetőséget.
+1. Kattintson a **Létrehozás** gombra.
 
 A középső ablaktábla a parancs különböző tulajdonságait listázza. A parancs következő tulajdonságait kell konfigurálnia. A parancsok összes konfigurációs tulajdonságának magyarázatát a [hivatkozások](./custom-commands-references.md)menüpontban találja.
 
@@ -85,7 +85,7 @@ Ezután a parancsnak rendelkeznie kell egy befejezési szabállyal. Ez a szabál
     | ---------- | ---------------------------------------- | -------------------------------------------------- |
     | **Név**       | ConfirmationResponse                  | A szabály célját leíró név          |
     | **Feltételek** | Nincs                                     | Feltételek, amelyek meghatározzák, hogy a szabály futtatható-e    |
-    | **Műveletek**    | Beszédfelismerési válasz küldése > egyszerű szerkesztő > az első változatban >`Ok, turning the tv on` | A szabály feltételének teljesülésekor végrehajtandó művelet |
+    | **Műveletek**    | Beszédfelismerési válasz küldése > egyszerű szerkesztő > az első változatban > `Ok, turning the tv on` | A szabály feltételének teljesülésekor végrehajtandó művelet |
     
 
 
@@ -125,9 +125,9 @@ Ezután szerkessze a meglévő **befejezett** befejezési szabályokat a követk
 
 | Beállítás    | Ajánlott érték                          |
 | ---------- | ---------------------------------------- |
-| Név  | ConfirmationResponse                  |
+| Name (Név)  | ConfirmationResponse                  |
 | Feltételek | Nincs                                     |
-| Műveletek    | Beszédfelismerési válasz küldése > egyszerű szerkesztő > az első változatban >`Ok, setting temperature to 40 degrees` |
+| Műveletek    | Beszédfelismerési válasz küldése > egyszerű szerkesztő > az első változatban > `Ok, setting temperature to 40 degrees` |
 
 A **Mentés** gombra kattintva mentse a parancs összes módosítását.
 

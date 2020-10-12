@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 07/11/2017
 ms.author: damendo
 ms.openlocfilehash: cae3072a3468b232e95d7c1949948b71059695ea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84708943"
 ---
 # <a name="introduction-to-connection-troubleshoot-in-azure-network-watcher"></a>Az Azure-Network Watcher kapcsolódási hibáinak bemutatása
@@ -25,7 +25,7 @@ A Network Watcher kapcsolódási hibáinak elhárítása lehetővé teszi a köz
 > [!IMPORTANT]
 > A kapcsolati hibákhoz az szükséges, hogy a rendszer a virtuálisgép- `AzureNetworkWatcherExtension` bővítményt telepítse. A bővítmény Windows rendszerű virtuális gépen való telepítéséhez látogasson el az [azure Network Watcher Agent virtuálisgép-bővítmény a Windows](../virtual-machines/windows/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json) rendszerhez és a Linux rendszerű virtuális gépekhez látogasson el az [Azure Network Watcher Agent virtuálisgép-bővítménye Linuxra](../virtual-machines/linux/extensions-nwa.md?toc=%2fazure%2fnetwork-watcher%2ftoc.json). A cél végponton nem szükséges a kiterjesztés.
 
-## <a name="response"></a>Válasz
+## <a name="response"></a>Reagálás
 
 A következő táblázat azokat a tulajdonságokat mutatja be, amelyeket a rendszer a kapcsolódási hibák futásának befejeződése után adott vissza.
 
@@ -46,7 +46,7 @@ A következő táblázat azokat a tulajdonságokat mutatja be, amelyeket a rends
 |Ugrások []. Kérdések | A hop-ellenőrzés során észlelt problémák gyűjteménye. Ha nem volt probléma, az érték üres.|
 |Ugrások []. Problémák []. Származási | Az aktuális ugrásban, ahol a probléma történt. Lehetséges értékek:<br/> **Bejövő** – probléma az előző ugrásról az aktuális ugrásra mutató hivatkozáson<br/>**Kimenő** – probléma az aktuális ugrásról a következő ugrásra mutató hivatkozáson<br/>**Helyi** – a probléma az aktuális ugráson van.|
 |Ugrások []. Problémák []. Súlyosság | A probléma súlyossága észlelhető. A lehetséges értékek a **hiba** és a **Figyelmeztetés**. |
-|Ugrások []. Problémák []. Típusa |A talált probléma típusa. Lehetséges értékek: <br/>**CPU**<br/>**Memory (Memória)**<br/>**GuestFirewall**<br/>**DnsResolution**<br/>**NetworkSecurityRule**<br/>**UserDefinedRoute** |
+|Ugrások []. Problémák []. Típusa |A talált probléma típusa. Lehetséges értékek: <br/>**CPU**<br/>**Memória**<br/>**GuestFirewall**<br/>**DnsResolution**<br/>**NetworkSecurityRule**<br/>**UserDefinedRoute** |
 |Ugrások []. Problémák []. Összefüggésben |A hibával kapcsolatos részletek.|
 |Ugrások []. Problémák []. Kontextus []. Key |A kulcs érték pár visszaadott kulcsa.|
 |Ugrások []. Problémák []. Context []. Value |A visszaadott kulcs érték párok értéke.|
@@ -72,10 +72,10 @@ Az alábbi példa egy hop-beli problémát mutat be.
 
 A kapcsolatok hibaelhárítása a kapcsolatban fellépő hibák típusait adja vissza. A következő táblázat felsorolja az aktuálisan visszaadott típusú hibakódokat.
 
-|Típus  |Description  |
+|Típus  |Leírás  |
 |---------|---------|
 |CPU     | Magas CPU-kihasználtság.       |
-|Memory (Memória)     | Nagy memória kihasználtsága.       |
+|Memória     | Nagy memória kihasználtsága.       |
 |GuestFirewall     | A virtuális gép tűzfalának konfigurálása miatt a rendszer blokkolja a forgalmat.        |
 |DNSResolution     | A célcím DNS-feloldása nem sikerült.        |
 |NetworkSecurityRule    | Egy NSG szabály blokkolta a forgalmat (a rendszer visszaadja a szabályt)        |

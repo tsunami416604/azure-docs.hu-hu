@@ -16,10 +16,10 @@ ms.date: 03/14/2019
 ms.author: juliako
 ms.reviewer: cenkdin;anilmur
 ms.openlocfilehash: 7b11d7f577f0a2ceb7284d9f78ccf83a64c72fd3
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89258112"
 ---
 # <a name="use-the-wirecast-encoder-to-send-a-single-bitrate-live-stream"></a>Egyetlen bitráta élő stream küldése a Wirecast Encoder használatával
@@ -113,7 +113,7 @@ Ebben az oktatóanyagban a következő kimeneti beállítások használatosak. A
    * Profil: Main
    * Kulcstartó minden: 60 keret
 
-     **Hang**
+     **Audió**
 
    * Cél átviteli sebessége: 192 kbit/s
    * Mintavételi sebesség: 44,100 kHz
@@ -135,7 +135,7 @@ Ebben az oktatóanyagban a következő kimeneti beállítások használatosak. A
 
     ![wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast5.png)
 
-1. Válassza az **OK** lehetőséget.
+1. Kattintson az **OK** gombra.
 2. A fő **Wirecast** képernyőn ellenőrizze, hogy a videó és hang bemeneti forrásai készen állnak-e, majd kattintson a bal felső sarokban található **stream** elemre.
 
     ![wirecast](./media/media-services-wirecast-live-encoder/media-services-wirecast7.png)

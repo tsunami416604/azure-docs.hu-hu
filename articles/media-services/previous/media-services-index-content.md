@@ -17,10 +17,10 @@ ms.author: juliako
 ms.reviewer: johndeu
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 5665357474b392a413d2b70f9c321b5da3e0bfe5
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89256446"
 ---
 # <a name="indexing-media-files-with-azure-media-indexer"></a>Médiafájlok indexelése Azure Media Indexer
@@ -246,7 +246,7 @@ Ugyanezek a kimenetek (a sikeres feladatok) jönnek létre. Tekintse át a kimen
 ### <a name="task-preset-for-azure-media-indexer"></a><a id="preset"></a> Azure Media Indexer feladatának beállítása
 A Azure Media Indexerból történő feldolgozás testreszabható úgy, hogy a feladattal együtt egy opcionális feladattal is rendelkezik.  Az alábbiakban a konfigurációs XML formátumát ismertetjük.
 
-| Name | Kötelező | Leírás |
+| Name (Név) | Kötelező | Leírás |
 | --- | --- | --- |
 | **bemeneti** |hamis |Az indexelni kívánt adatfájl (ok).</p><p>A Azure Media Indexer a következő médiafájl-formátumokat támogatja: MP4, WMV, MP3, M4A, WMA, AAC, WAV.</p><p>Megadhatja a fájl nevét (ke) t a **bemeneti** elem **Name** vagy **List** attribútumában (az alább látható módon). Ha nem határozza meg, hogy melyik adatfájlt szeretné indexelni, az elsődleges fájl lesz kiválasztva. Ha nincs beállítva elsődleges adatfájl, a bemeneti eszköz első fájlja indexelve lesz.</p><p>Ha explicit módon meg szeretné adni az eszköz fájljának nevét, tegye a következőket:<br/>`<input name="TestFile.wmv">`<br/><br/>Egyszerre több adatfájlt is indexelheti (legfeljebb 10 fájlt). Ehhez tegye a következőket:<br/><br/><ol class="ordered"><li><p>Hozzon létre egy szövegfájlt (manifest-fájlt), és adjon meg egy. lst kiterjesztést. </p></li><li><p>Adja meg a bemeneti objektumban található összes adatfájl nevét ebbe a jegyzékfájlba. </p></li><li><p>Adja hozzá (feltölti) a jegyzékfájlt az objektumhoz.  </p></li><li><p>Adja meg a jegyzékfájl nevét a bemenet List attribútumában.<br/>`<input list="input.lst">`</li></ol><br/><br/>Megjegyzés: Ha 10-nél több fájlt ad hozzá a jegyzékfájlhoz, az indexelési feladat sikertelen lesz az 2006-es hibakód miatt. |
 | **metaadatok** |hamis |A szókincs-átalakításhoz használt megadott adatfájl (ok) metaadatai.  Az indexelő előkészítése hasznos lehet a nem szabványos szókincs-szavak, például a megfelelő főnevek felismerésére.<br/>`<metadata key="..." value="..."/>` <br/><br/>Megadhatja az előre definiált **kulcsok** **értékeit** . Jelenleg a következő kulcsok támogatottak:<br/><br/>"title" és "Description" – a szókincs adaptációja a feladatokhoz használt nyelvi modell finomhangolásához és a beszédfelismerés pontosságának javításához.  Az értékek a mag internetes keresésével keresik a kontextusban releváns szöveges dokumentumokat, a tartalom használatával kiegészítik a belső szótárt az indexelési feladat időtartamára.<br/>`<metadata key="title" value="[Title of the media file]" />`<br/>`<metadata key="description" value="[Description of the media file] />"` |
@@ -255,7 +255,7 @@ A Azure Media Indexerból történő feldolgozás testreszabható úgy, hogy a f
 ### <a name="error-codes"></a><a id="error_codes"></a>Hibakódok
 Hiba esetén Azure Media Indexer a következő hibakódok egyikét kell jelentenie:
 
-| Code | Name | Lehetséges okok |
+| Code | Name (Név) | Lehetséges okok |
 | --- | --- | --- |
 | 2000 |Érvénytelen konfiguráció |Érvénytelen konfiguráció |
 | 2001 |Érvénytelen bemeneti eszközök |Hiányzó bemeneti eszközök vagy üres eszköz. |

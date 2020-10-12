@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 09/28/2020
 ms.author: b-juche
 ms.openlocfilehash: d2abb66684738e97ade2a2e67309a4e7b53c4734
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91442079"
 ---
 # <a name="manage-a-manual-qos-capacity-pool"></a>Manuális QoS-kapacitáskészlet kezelése
@@ -84,7 +84,7 @@ Ha egy kötetet kézi QoS-kapacitású készletben tárol, igény szerint módos
 
     ![QoS átviteli sebességének módosítása](../media/azure-netapp-files/change-qos-throughput.png)
 
-## <a name="next-steps"></a>További lépések  
+## <a name="next-steps"></a>Következő lépések  
 
 * [Kapacitáskészlet beállítása](azure-netapp-files-set-up-capacity-pool.md)
 * [Az Azure NetApp Files metrikái](azure-netapp-files-metrics.md)

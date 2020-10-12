@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: a6664b5a2c0c6b4de2435ee5c8bb29f63560c342
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88037694"
 ---
 # <a name="localization-support-in-azure-maps"></a>Honosítási támogatás Azure Maps
@@ -25,7 +25,7 @@ A Azure Maps ország/régió alapján támogatja a különböző nyelveket és n
 Azure Maps a különböző nyelveken honosítva vannak a szolgáltatásai között. Az alábbi táblázat az egyes szolgáltatásokhoz támogatott nyelvi kódokat tartalmazza.  
   
 
-| ID         | Name                   |  Maps | Keresés | Útválasztás | Időjárás | Forgalmi incidensek | JS Térkép vezérlőelem |
+| ID (Azonosító)         | Name (Név)                   |  Maps | Keresés | Útválasztás | Időjárás | Forgalmi incidensek | JS Térkép vezérlőelem |
 |------------|------------------------|:-----:|:------:|:-------:|:--------:|:-----------------:|:--------------:|
 | AF-ZA      | búr              |       |    ✓   |    ✓    |         |                   |                |
 | ar-SA      | Arab                 |   ✓   |    ✓   |    ✓    |    ✓      |         ✓         |        ✓       |
@@ -74,7 +74,7 @@ Azure Maps a különböző nyelveken honosítva vannak a szolgáltatásai közö
 | Mr-IN      | marathi                 |       |       |         |     ✓    |                   |                |
 | nb-NO      | Norvég (bokmål)       |   ✓   |    ✓   |    ✓    |      ✓   |         ✓         |        ✓       |
 | NGT        | Semleges földelési igazság – hivatalos nyelvek a helyi parancsfájlok minden régiója számára, ha elérhető |   ✓     |        |         |       |        |      ✓          |
-| NGT – Latn   | Semleges földelési igazság – latin exonyms. Ha elérhető, a latin szkriptet fogja használni |   ✓     |        |         |         |                |        ✓         |
+| NGT-Latn   | Semleges földelési igazság – latin exonyms. Ha elérhető, a latin szkriptet fogja használni |   ✓     |        |         |         |                |        ✓         |
 | pl-PL      | Lengyel                 |   ✓   |    ✓   |    ✓    |     ✓    |         ✓         |        ✓       |
 | pt-BR      | Portugál (Brazília)    |   ✓   |    ✓   |    ✓    |      ✓   |                   |        ✓       |
 | pt-PT      | Portugál (Portugália)  |   ✓   |    ✓   |    ✓    |      ✓   |         ✓         |        ✓       |
@@ -147,7 +147,7 @@ Alapértelmezés szerint a View paraméter **egyesített**értékre van állítv
 
 A következő táblázat a támogatott nézeteket tartalmazza.
 
-| Nézet         | Description                            |  Maps | Keresés | JS térképkezelés |
+| Nézet         | Leírás                            |  Maps | Keresés | JS térképkezelés |
 |--------------|----------------------------------------|:-----:|:------:|:--------------:|
 | AE           | Egyesült Arab Emírségek (arab nézet)    |   ✓   |        |     ✓          |
 | AR           | Argentína (argentin nézet)           |   ✓   |    ✓   |     ✓          |

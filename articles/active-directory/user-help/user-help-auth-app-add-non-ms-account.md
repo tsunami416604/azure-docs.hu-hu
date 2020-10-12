@@ -12,10 +12,10 @@ ms.date: 01/24/2019
 ms.author: curtand
 ms.reviewer: olhaun
 ms.openlocfilehash: 04076ed5b91f8e840a084b784477d07eea5adee7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87015970"
 ---
 # <a name="add-non-microsoft-accounts-to-the-microsoft-authenticator-app"></a>Nem Microsoft-fiókok hozzáadása a Microsoft Authenticator alkalmazáshoz
@@ -186,12 +186,12 @@ A kétfaktoros ellenőrzés bekapcsolásával adja hozzá az Amazon-fiókját, m
 
 10. A számítógép **biztonsági mentése ellenőrzési módszer hozzáadása** lapján írja be az Amazon-fiókjához tartozó biztonsági mentési ellenőrzési módszer által megadott hat számjegyű ellenőrző kódot, majd válassza a **kód ellenőrzése és folytatás**lehetőséget.
 
-11. A **majdnem kész** lapon döntse el, hogy megbízható eszközt kíván-e készíteni a számítógépről, majd válassza a **beolvasás lehetőséget. A kétlépéses ellenőrzés bekapcsolása**.
+11. A **majdnem kész** lapon döntse el, hogy megbízható eszközt kíván-e készíteni a számítógépről, majd válassza a **beolvasás lehetőséget. Two-Step ellenőrzés bekapcsolása**.
 
     Megjelenik a **speciális biztonsági beállítások** lap, amely a frissített kétfaktoros ellenőrzés részleteit jeleníti meg.
 
     >[!NOTE]
-    >A kétfaktoros ellenőrzéssel és az Amazon-fiókkal kapcsolatos további információkért lásd: [a kétlépéses ellenőrzés](https://www.amazon.com/gp/help/customer/display.html?nodeId=201596330) és a [Bejelentkezés kétlépéses ellenőrzéssel](https://www.amazon.com/gp/help/customer/display.html?nodeId=201962440)című szakasz.
+    >A kétfaktoros ellenőrzéssel és az Amazon-fiókkal kapcsolatos további információkért tekintse meg a [Two-Step ellenőrzése](https://www.amazon.com/gp/help/customer/display.html?nodeId=201596330) és a [Bejelentkezés Two-Step ellenőrzéssel](https://www.amazon.com/gp/help/customer/display.html?nodeId=201962440)című témakört.
 
 ## <a name="next-steps"></a>További lépések
 

@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/08/2020
 ms.openlocfilehash: 76084a9ddd6842194bb4c6b25d62e62c2ed2d4a8
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89660290"
 ---
 # <a name="adjust-the-capacity-of-an-azure-cognitive-search-service"></a>Azure Cognitive Search-szolgáltatás kapacitásának módosítása
@@ -36,7 +36,7 @@ A kapacitás olyan *keresési egységben* van kifejezve, amely *partíciók* és
 
 Az alábbi ábrán a replikák, a partíciók, a szegmensek és a keresési egységek közötti kapcsolat látható. Ebből a példából kiderül, hogy az egyes indexek hogyan terjednek át egy szolgáltatás négy keresési egységére két replikával és két partícióval. A négy keresési egység az indexnek csak a felét tárolja. A bal oldali oszlopban található keresési egységek a szegmensek első felét tárolják, amely az első partíciót tartalmazza, míg a jobb oldali oszlopban lévők a második partíciót tartalmazó szegmensek második felét tárolják. Mivel két replika létezik, az egyes indexek szegmensének két példánya van. A felső sorban található keresési egységek egyetlen másolatból állnak, amelyek az első replikát alkotják, míg az alsó sorban lévők egy másik példányt tárolnak, amely a második replikát tartalmazza.
 
-:::image type="content" source="media/search-capacity-planning/shards.png" alt-text="A keresési indexek felosztva vannak a partíciók között.":::
+:::image type="content" source="media/search-capacity-planning/shards.png" alt-text="A keresési indexek felosztva vannak a partíciók között.&quot;:::
 
 A fenti diagram csak egy példát mutat be. A partíciók és a replikák számos kombinációja lehetséges, legfeljebb 36 teljes keresési egység.
 
@@ -44,7 +44,7 @@ Cognitive Search a szilánkok kezelése egy implementációs adat és nem konfig
 
 + Rangsorolási rendellenességek: a keresési pontszámok először a szegmens szintjén vannak kiszámítva, majd egyetlen eredményhalmaz szerint összesítve. A szegmens tartalmának jellemzőitől függően előfordulhat, hogy az egyik szegmensből származó egyezések egy másiknál magasabbra vannak sorolva. Ha észreveheti, hogy a keresési eredmények nem intuitív rangsorban jelennek meg, akkor valószínűleg a horizontális skálázás hatása okozza, különösen, ha az indexek kicsik. A rangsorolási rendellenességek elkerülhetők, ha [a teljes indexben globálisan szeretné kiszámítani a pontszámokat](index-similarity-and-scoring.md#scoring-statistics-and-sticky-sessions), de ez a teljesítményre vonatkozó szankciót is eredményez.
 
-+ Automatikus kiegészítési rendellenességek: automatikus lekérdezések, ahol a egyezések egy részben megadott kifejezés első több karakterén történnek, fogadjon egy olyan fuzzy paramétert, amely a helyesírási kis eltéréseket megbocsátja. Az automatikus kiegészítés esetében a zavaros egyezés az aktuális szegmensen belüli kifejezésekre van korlátozva. Ha például egy szegmens "Microsoft" kifejezést tartalmaz, és a "micor" részleges kifejezése van megadva, akkor a keresőmotor a "Microsoft" résznek felel meg a szegmensben, de nem az index fennmaradó részeit tároló más szegmensekben.
++ Automatikus kiegészítési rendellenességek: automatikus lekérdezések, ahol a egyezések egy részben megadott kifejezés első több karakterén történnek, fogadjon egy olyan fuzzy paramétert, amely a helyesírási kis eltéréseket megbocsátja. Az automatikus kiegészítés esetében a zavaros egyezés az aktuális szegmensen belüli kifejezésekre van korlátozva. Ha például egy szegmens &quot;Microsoft&quot; kifejezést tartalmaz, és a &quot;micor&quot; részleges kifejezése van megadva, akkor a keresőmotor a &quot;Microsoft" résznek felel meg a szegmensben, de nem az index fennmaradó részeit tároló más szegmensekben.
 
 ## <a name="when-to-add-nodes"></a>Mikor lehet csomópontokat hozzáadni
 
@@ -102,9 +102,9 @@ A standard és a Storage-alapú optimalizált keresési szolgáltatások a 36-SU
 | **1 replika** |1 SU |2 SU |3 SU |4 SU |6 SU |12 SU |
 | **2 replika** |2 SU |4 SU |6 SU |8 SU |12 SU |24 SU |
 | **3 replika** |3 SU |6 SU |9 SU |12 SU |18 SU |36 SU |
-| **4 replika** |4 SU |8 SU |12 SU |16 SU |24 SU |N/A |
-| **5 replika** |5 SU |10 SU |15 SU |20 SU |30 SU |N/A |
-| **6 replika** |6 SU |12 SU |18 SU |24 SU |36 SU |N/A |
+| **4 replika** |4 SU |8 SU |12 SU |16 SU |24 SU |N.A. |
+| **5 replika** |5 SU |10 SU |15 SU |20 SU |30 SU |N.A. |
+| **6 replika** |6 SU |12 SU |18 SU |24 SU |36 SU |N.A. |
 | **12 replika** |12 SU |24 SU |36 SU |N.A. |N.A. |N.A. |
 
 Az SUs, a díjszabás és a kapacitás részletes ismertetését az Azure webhelyén találja. További információkért tekintse meg a [díjszabás részleteit](https://azure.microsoft.com/pricing/details/search/).

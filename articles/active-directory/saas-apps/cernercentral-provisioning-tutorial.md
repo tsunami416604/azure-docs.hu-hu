@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: arvinh
 ms.openlocfilehash: 58b991f5b229d924bc933ff34987db24bc895e10
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88529865"
 ---
 # <a name="tutorial-configure-cerner-central-for-automatic-user-provisioning"></a>Oktatóanyag: a Cerner központi beállítása a felhasználók automatikus üzembe helyezéséhez
@@ -23,7 +23,7 @@ Ennek az oktatóanyagnak a célja, hogy megmutassa a Cerner Central-ban és az A
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Az oktatóanyagban ismertetett forgatókönyv feltételezi, hogy már rendelkezik a következő elemekkel:
+Az ebben az oktatóanyagban felvázolt forgatókönyv feltételezi, hogy már rendelkezik a következőkkel:
 
 * Egy Azure Active Directory-bérlő
 * A Cerner központi bérlője
@@ -52,7 +52,7 @@ A kiépítési szolgáltatás konfigurálása és engedélyezése előtt döntse
 Ez a szakasz végigvezeti az Azure AD-nek a Cerner Central felhasználói beosztáshoz való csatlakoztatásának folyamatán, a Cerner SCIM felhasználói fiók létesítési API-ját és a kiépítési szolgáltatás konfigurálását a Cerner Central-ban az Azure AD-ben a felhasználók és a csoportok hozzárendelése alapján.
 
 > [!TIP]
-> Dönthet úgy is, hogy engedélyezte az SAML-alapú egyszeri bejelentkezést a Cerner Central számára, a [Azure Portalban](https://portal.azure.com)szereplő utasításokat követve. Az egyszeri bejelentkezés az automatikus kiépítés függetlenül is konfigurálható, bár ez a két szolgáltatás kiegészíti egymást. További információ: a [cerner Central egyszeri bejelentkezési oktatóanyaga](cernercentral-tutorial.md).
+> Azt is megteheti, hogy engedélyezte az SAML-alapú egyszeri Sign-On a Cerner Central számára, a [Azure Portalban](https://portal.azure.com)megadott utasításokat követve. Az egyszeri bejelentkezés az automatikus kiépítés függetlenül is konfigurálható, bár ez a két szolgáltatás kiegészíti egymást. További információ: a [cerner Central egyszeri bejelentkezési oktatóanyaga](cernercentral-tutorial.md).
 
 ### <a name="to-configure-automatic-user-account-provisioning-to-cerner-central-in-azure-ad"></a>A felhasználói fiókok automatikus üzembe helyezésének beállítása a Cerner Central szolgáltatásban az Azure AD-ben:
 
@@ -88,7 +88,7 @@ Ahhoz, hogy felhasználói fiókokat lehessen kiépíteni a Cerner Central szolg
 
 7. Válassza ki a Cerner Central-példányát, majd válassza ki a **kiépítés** lapot.
 
-8. Állítsa a **kiépítési módot** **automatikus**értékre.
+8. Állítsa a **Kiépítési mód** mezőt **Automatikus** értékre.
 
    ![A cerner központi üzembe helyezése](./media/cernercentral-provisioning-tutorial/Cerner.PNG)
 
@@ -108,7 +108,7 @@ Ahhoz, hogy felhasználói fiókokat lehessen kiépíteni a Cerner Central szolg
 
 1. Kattintson a **Mentés** gombra.
 
-1. Az **attribútum-hozzárendelések** szakaszban tekintse át az Azure ad-ből a Cerner Central-be szinkronizálandó felhasználói és csoportosítási attribútumokat. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a cerner Central felhasználói fiókjainak és csoportjainak a frissítési műveletekhez való megfeleltetésére szolgálnak. A módosítások elvégzéséhez kattintson a Save (Mentés) gombra.
+1. Az **attribútum-hozzárendelések** szakaszban tekintse át az Azure ad-ből a Cerner Central-be szinkronizálandó felhasználói és csoportosítási attribútumokat. Az **egyeztetési** tulajdonságokként kiválasztott attribútumok a cerner Central felhasználói fiókjainak és csoportjainak a frissítési műveletekhez való megfeleltetésére szolgálnak. A módosítások véglegesítéséhez válassza a Mentés gombot.
 
 1. Ha engedélyezni szeretné az Azure AD-kiépítési szolgáltatást a Cerner Central számára, módosítsa a **kiépítési állapotot** **a következőre** a **Settings (beállítások** ) szakaszban.
 
@@ -122,7 +122,7 @@ Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további informáci
 
 * [Cerner Central: személyazonossági adatok közzététele az Azure AD-vel](https://wiki.ucern.com/display/public/reference/Publishing+Identity+Data+Using+Azure+AD)
 * [Oktatóanyag: a Cerner Central konfigurálása egyszeri bejelentkezéshez Azure Active Directory](cernercentral-tutorial.md)
-* [Felhasználói fiók üzembe helyezésének kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
+* [Felhasználói fiók átadásának kezelése vállalati alkalmazásokhoz](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)
 
 ## <a name="next-steps"></a>További lépések
