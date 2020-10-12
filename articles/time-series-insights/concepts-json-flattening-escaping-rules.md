@@ -10,10 +10,10 @@ services: time-series-insights
 ms.topic: conceptual
 ms.date: 09/28/2020
 ms.openlocfilehash: a1f633548ed36320f40e485f540923c8e3045a99
-ms.sourcegitcommit: a0c4499034c405ebc576e5e9ebd65084176e51e4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91460866"
 ---
 # <a name="json-flattening-escaping-and-array-handling"></a>JSON-egybesimítás, escape-karaktersorozat és tömbkezelés
@@ -87,7 +87,7 @@ Idősorozat-azonosító az objektum gyökerében és az időbélyegző beágyazv
 **Eredmény a parketta-fájlban:**\
 A fenti konfiguráció és adattartalom három oszlopot és négy eseményt hoz létre
 
-| időbélyeg  | id_string | Values. value_double
+| időbélyeg  | id_string | values.value_double
 | ---- | ---- | ---- |
 | `2020-05-01T00:59:59.000Z` | `caaae533-1d6c-4f58-9b75-da102bcc2c8c`| ``25.6073`` |
 | `2020-05-01T01:00:29.000Z` |`caaae533-1d6c-4f58-9b75-da102bcc2c8c` | ``43.9077`` |
@@ -145,7 +145,7 @@ A fenti konfiguráció és adattartalom három oszlopot és négy eseményt hoz 
 **Eredmény a parketta-fájlban:**\
 A fenti konfiguráció és hasznos adatok négy oszlopot és hat eseményt eredményeznek
 
-| időbélyeg  | plantId_string | telemetria. tagId_string | telemetria. value_double
+| időbélyeg  | plantId_string | telemetry.tagId_string | telemetry.value_double
 | ---- | ---- | ---- | ---- |
 | `2020-01-22T16:38:09Z` | `9336971`| ``100231-A-A6`` |  – 31,149018 |
 | `2020-01-22T16:38:09Z` |`9336971` | ``100231-A-A1`` | 20,560796 |
@@ -182,6 +182,6 @@ A fenti konfiguráció és hasznos adatok három oszlopot és egy eseményt ered
 | ---- | ---- | ---- |
 | `2020-11-01T10:00:00.000Z` | `800500054755`| ``[{"value": 120},{"value":124}]`` |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A környezet [adatátviteli korlátainak](./concepts-streaming-ingress-throughput-limits.md) megismerése

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 07/12/2017
 ms.author: alkohli
 ms.openlocfilehash: c8d8e3b9058b753dc2a6da35878449c94399225e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85508044"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-administer-your-storsimple-device"></a>A StorSimple-eszköz felügyeletéhez használja a StorSimple Eszközkezelő szolgáltatást
@@ -64,7 +64,7 @@ Az egyes munkafolyamatokkal kapcsolatos további információkért kattintson a 
 | Tudnivalók a sávszélesség-sablonokról</br>Sávszélesség-sablon hozzáadása</br>Sávszélesség-sablon szerkesztése</br>Sávszélesség-sablon törlése</br>Alapértelmezett sávszélesség-sablon használata</br>Egy teljes napi sávszélesség-sablon létrehozása, amely egy adott időpontban indul |[Sávszélességsablonok kezelése](storsimple-8000-manage-bandwidth-templates.md) |
 | Hozzáférés-vezérlési rekordok</br>Hozzáférés-vezérlési rekord létrehozása</br>Hozzáférés-vezérlési rekord szerkesztése</br>Hozzáférés-vezérlési rekord törlése |[Hozzáférés-vezérlési rekordok kezelése](storsimple-8000-manage-acrs.md) |
 | Feladatok részleteinek megjelenítése</br>Feladat megszakítása |[Feladatok kezelése](storsimple-8000-manage-jobs-u2.md) |
-| Riasztási értesítések fogadása</br>Riasztások kezelése</br>Riasztások áttekintése |[StorSimple-riasztások megtekintése és kezelése](storsimple-8000-manage-alerts.md) |
+| Riasztási értesítések fogadása</br>Riasztások kezelése</br>Riasztások felülvizsgálata |[StorSimple-riasztások megtekintése és kezelése](storsimple-8000-manage-alerts.md) |
 | Figyelési diagramok létrehozása |[A StorSimple-eszköz figyelése](storsimple-monitor-device.md) |
 | Mennyiségi tároló hozzáadása</br>Mennyiségi tároló módosítása</br>Mennyiségi tároló törlése |[Kötettárolók kezelése](storsimple-8000-manage-volume-containers.md) |
 | Kötet hozzáadása</br>Kötet módosítása</br>Kötet offline állapotba helyezése</br>Kötet törlése</br>Kötet figyelése |[Kötetek kezelése](storsimple-8000-manage-volumes-u2.md) |

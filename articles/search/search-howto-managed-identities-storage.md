@@ -10,13 +10,13 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.openlocfilehash: 770ded494f050631cd1c373f4b3fa5846c65e01a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91275132"
 ---
-# <a name="set-up-a-connection-to-an-azure-storage-account-using-a-managed-identity"></a>Azure Storage-fiókhoz való kapcsolódás beállítása felügyelt identitás használatával
+# <a name="set-up-a-connection-to-an-azure-storage-account-using-a-managed-identity"></a>Azure Storage-tárfiókkal való kapcsolat beállítása felügyelt identitással
 
 Ez a lap leírja, hogyan állíthat be egy Azure Storage-fiókhoz egy indexelő-kapcsolódást egy felügyelt identitás használatával, nem biztosítva hitelesítő adatokat az adatforrás-objektum kapcsolódási karakterláncában.
 

@@ -15,13 +15,13 @@ ms.workload: na
 ms.date: 07/06/2020
 ms.author: yelevin
 ms.openlocfilehash: 5d73337c25c812363b7a542bf42372ca3baa10e8
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88605408"
 ---
-# <a name="tutorial-detect-threats-out-of-the-box"></a>Oktatóanyag: fenyegetések észlelése – beépített
+# <a name="tutorial-detect-threats-out-of-the-box"></a>Oktatóanyag: Használatra kész veszélyforrás-észlelés
 
 
 > [!IMPORTANT]
@@ -65,13 +65,13 @@ A következő sablon típusok érhetők el:
 
 1. Ha beépített sablont szeretne használni, kattintson a sablon nevére, majd kattintson a **szabály létrehozása** gombra a részletek ablaktáblán a sablon alapján létrehozott új aktív szabály létrehozásához. Minden sablon rendelkezik a szükséges adatforrások listájával. A sablon megnyitásakor az adatforrások automatikusan bekerülnek a rendelkezésre állásba. Ha rendelkezésre állási probléma merül fel, előfordulhat, hogy a **szabály létrehozása** gomb le van tiltva, vagy erre figyelmeztető üzenet jelenik meg.
   
-    :::image type="content" source="media/tutorial-detect-built-in/use-built-in-template.png" alt-text="Észlelési szabály előnézet panelje":::
+    :::image type="content" source="media/tutorial-detect-built-in/use-built-in-template.png" alt-text="A fenyegetések felderítése az Azure Sentinel használatával beépített észlelésekkel":::
  
 1. A **szabály létrehozása** gombra kattintva megnyílik a szabály létrehozása varázsló a kiválasztott sablon alapján. Az összes adat kitöltése, valamint az **ütemezett** vagy a **Microsoft biztonsági** sablonjaival testreszabhatja a logikát és az egyéb szabályok beállításait, hogy jobban megfeleljen az igényeinek. Ezt a folyamatot megismételve további szabályokat hozhat létre a beépített sablon alapján. A szabály létrehozása varázsló lépéseinek befejezését követően a sablon alapján elkészült egy szabály létrehozása. Az új szabályok az **aktív szabályok** lapon fognak megjelenni.
 
     További információ a szabályok testreszabásáról a szabály létrehozása varázslóban [: oktatóanyag: egyéni elemzési szabályok létrehozása a fenyegetések észleléséhez](tutorial-detect-threats-custom.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebből az oktatóanyagból megtudhatta, hogyan kezdheti el a fenyegetések észlelését az Azure Sentinel használatával. 
 

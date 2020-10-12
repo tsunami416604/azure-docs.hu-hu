@@ -10,10 +10,10 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 07/27/2020
 ms.openlocfilehash: e28ce4cd46cb802241e02e4060441747389d3989
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90888163"
 ---
 # <a name="create-external-stream-transact-sql"></a>KÜLSŐ STREAM létrehozása (Transact-SQL)
@@ -27,8 +27,8 @@ Az Azure SQL Edge jelenleg csak a következő adatforrásokat támogatja stream-
 | Adatforrás típusa | Input (Bemenet) | Kimenet | Leírás |
 |------------------|-------|--------|------------------|
 | Azure IoT Edge hub | Y | Y | Az adatforrást az adatfolyamok Azure IoT Edge központba való olvasására és írására. További információ: [IoT Edge hub](https://docs.microsoft.com/azure/iot-edge/iot-edge-runtime#iot-edge-hub).|
-| SQL Database | N | I | Adatforrás-kapcsolódás az adatfolyam-adatSQL Databaseba való íráshoz. Az adatbázis lehet egy helyi adatbázis az Azure SQL Edge-ben vagy egy távoli adatbázis SQL Server vagy Azure SQL Database.|
-| Kafka | I | N | Adatforrást egy Kafka-témakörben lévő adatfolyam-adatok olvasásához. A Kafka-támogatás nem érhető el az Azure SQL Edge ARM64 verziójához.|
+| SQL Database | N | Y | Adatforrás-kapcsolódás az adatfolyam-adatSQL Databaseba való íráshoz. Az adatbázis lehet egy helyi adatbázis az Azure SQL Edge-ben vagy egy távoli adatbázis SQL Server vagy Azure SQL Database.|
+| Kafka | Y | N | Adatforrást egy Kafka-témakörben lévő adatfolyam-adatok olvasásához. A Kafka-támogatás nem érhető el az Azure SQL Edge ARM64 verziójához.|
 
 
 
@@ -96,7 +96,7 @@ WITH  ( <with_options> )
 - [FILE_FORMAT](/sql/t-sql/statements/create-external-file-format-transact-sql/)
 - **Hely**: az adatforrásban szereplő tényleges adatok vagy helyek neve. 
    - Az Edge hub vagy a Kafka stream objektumok esetében a Location (hely) megadja az Edge-központ vagy a Kafka-témakör nevét, amelyből olvasni vagy írni kíván.
-   - Az SQL stream-objektumok (SQL Server, Azure SQL Database vagy az Azure SQL Edge) helye a tábla nevét adja meg. Ha az adatfolyam ugyanabban az adatbázisban és sémában jön létre, mint a céltábla, akkor csak a tábla neve elegendő. Ellenkező esetben teljes jogosultsággal kell rendelkeznie (<database_name. schema_name. table_name) a tábla nevét.
+   - Az SQL stream-objektumok (SQL Server, Azure SQL Database vagy az Azure SQL Edge) helye a tábla nevét adja meg. Ha az adatfolyam ugyanabban az adatbázisban és sémában jön létre, mint a céltábla, akkor csak a tábla neve elegendő. Ellenkező esetben teljes jogosultsággal kell rendelkeznie (<adatbázisnév. schema_name. table_name) a tábla nevével.
    - Az Azure Blob Storage Stream objektum helye a blob-tárolón belül használandó elérésiút-mintát jelenti. A szolgáltatással kapcsolatos további információkért lásd: (/articles/stream-Analytics/stream-Analytics-define-outputs.MD # blob-Storage-and-Azure-adat-Lake-Gen2)
 
 - **INPUT_OPTIONS**: beállítások megadása kulcs-érték párokként olyan szolgáltatásokhoz, mint például a Kafka, a IoT Edge hub, amely az adatfolyam-lekérdezések bemenetei

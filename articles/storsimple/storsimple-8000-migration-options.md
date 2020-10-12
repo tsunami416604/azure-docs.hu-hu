@@ -14,10 +14,10 @@ ms.workload: NA
 ms.date: 04/15/2019
 ms.author: alkohli
 ms.openlocfilehash: 181f5433de6653c8b6a2cda085f04e21c64082b9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85514650"
 ---
 # <a name="options-to-migrate-data-from-storsimple-5000-7000-series"></a>Adatmigrálási lehetőségek a StorSimple 5000-7000-es sorozatból 
@@ -63,7 +63,7 @@ További információ [az áttelepítésről az összetartó Adatplatformra](htt
 
 A Nasuni megkönnyíti a StorSimple 5000-7000-ügyfelek számára az Azure-ban való Migrálás és az azokhoz való hozzáférés megtartását.  A Nasuni egy vezető Azure-alapú NAS-tárolási megoldás, amely lehetővé teszi, hogy az ügyfelek a helyszíni megoldásoktól, a felhő gazdaságosságával és a skálázással kapcsolatos teljesítményre és biztonságra számíthatnak.  A nagy teljesítményű fájlok tárolásán, a Nasuni-ben és az Azure-ban a Backup és a DR szolgáltatáson túl, miközben lehetővé teszi az adatok megosztását és kezelését a világ különböző pontjain a központosított file Storage szolgáltatással. 
 
-A Nasuni megkönnyíti a Migrálás megkönnyítését – kezdjen hozzá még ma:https://info.nasuni.com/nasuni-storsimple-migration
+A Nasuni megkönnyíti a Migrálás megkönnyítését – kezdjen hozzá még ma: https://info.nasuni.com/nasuni-storsimple-migration
 
 #### <a name="migrate-to-talon-fast"></a>Migrálás a talonba gyors
 

@@ -9,10 +9,10 @@ ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
 ms.openlocfilehash: 530ae82720e6b4eb6a3e4d1021c0b37b9f4dbf5c
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90707441"
 ---
 # <a name="how-to-mount-an-nfs-file-share"></a>NFS-fájlmegosztás csatlakoztatása
@@ -55,11 +55,11 @@ Az [Azure Files](storage-files-introduction.md) a Microsoft könnyen használhat
 1. Adja meg a használni kívánt csatlakoztatási útvonalat, majd másolja a szkriptet.
 1. Kapcsolódjon az ügyfélhez, és használja a megadott csatlakoztatási parancsfájlt.
 
-    :::image type="content" source="media/storage-files-how-to-create-mount-nfs-shares/mount-nfs-file-share-script.png" alt-text="Képernyőfelvétel a fájlmegosztás összekapcsolási paneljéről":::
+    :::image type="content" source="media/storage-files-how-to-create-mount-nfs-shares/mount-nfs-file-share-script.png" alt-text="Képernyőfelvétel a Storage-fiók konfigurációs képernyőjéről a biztonságos átvitel letiltásával.":::
 
 Ezzel csatlakoztatta az NFS-megosztást.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a Azure Filesről a cikkhez, [Azure Files központi telepítés megtervezéséhez](storage-files-planning.md).
 - Ha problémákat tapasztal, tekintse meg az [Azure NFS-fájlmegosztás hibaelhárítása](storage-troubleshooting-files-nfs.md)című témakört.

@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 01/23/2019
 ms.author: pepogors
 ms.openlocfilehash: c381c6e7d692eda32fea2033779bacddafc267bb
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86253677"
 ---
 # <a name="infrastructure-as-code"></a>Infrastruktúra mint kód
@@ -104,7 +104,7 @@ A virtuális gépek frissítése egy felhasználó által kezdeményezett művel
 ```
 Ha Service Fabric-val automatikus operációsrendszer-frissítést használ, az új operációsrendszer-rendszerkép egyszerre egy frissítési tartományba kerül, hogy fenntartsa a Service Fabric futó szolgáltatások magas rendelkezésre állását. Ha az operációs rendszer automatikus frissítését szeretné használni Service Fabric a fürtöt úgy kell konfigurálni, hogy az ezüst tartóssági szintet vagy ennél nagyobbat használjon.
 
-Győződjön meg arról, hogy a következő beállításkulcs hamis értékre van állítva, hogy a Windows-gazdagépek ne kezdeményezzenek összehangolatlan frissítéseket: HKEY_LOCAL_MACHINE \SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU.
+Győződjön meg arról, hogy a következő beállításkulcs hamis értékre van állítva, hogy a Windows-gazdagépek ne kezdeményezzenek összehangolatlan frissítéseket: HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\Windows\WindowsUpdate\AU.
 
 A következő a számítási virtuálisgép-méretezési csoport Resource Manager-sablonjának tulajdonságai a WindowsUpdate beállításkulcs hamis értékre állításához:
 ```json
@@ -131,7 +131,7 @@ Register-ServiceFabricClusterPackage -Code -CodePackagePath "ServiceFabric.msi"
 Start-ServiceFabricClusterUpgrade -Code -CodePackageVersion <"msi_code_version">
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Fürt létrehozása a Windows Servert futtató virtuális gépeken vagy számítógépeken: [Service Fabric Windows Server-fürt létrehozása](service-fabric-tutorial-create-vnet-and-windows-cluster.md)
 * Fürt létrehozása virtuális gépeken vagy Linuxon futó számítógépeken: [Linux-fürt létrehozása](service-fabric-tutorial-create-vnet-and-linux-cluster.md)

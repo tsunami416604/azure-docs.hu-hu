@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 10/21/2019
 ms.custom: sfrev
 ms.openlocfilehash: 7ad0d4f6d92ba8d85383df281bd14681f43bb6d4
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86258738"
 ---
 # <a name="service-fabric-application-resource-model"></a>Alkalmazás-erőforrás modell Service Fabric
@@ -178,7 +178,7 @@ A Resource Manager alkalmazás-erőforrás modelljével telepített alkalmazás 
     Remove-AzResource  -ResourceId <String> [-Force] [-ApiVersion <String>]
     ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Információk beolvasása az alkalmazás-erőforrás modelljéről:
 

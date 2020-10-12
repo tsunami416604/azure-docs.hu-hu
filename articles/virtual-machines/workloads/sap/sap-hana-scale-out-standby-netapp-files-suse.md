@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 04/24/2020
 ms.author: radeltch
 ms.openlocfilehash: 21d4af6985dbe246e60fe95f8f03de7f8aa0501b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91314062"
 ---
 # <a name="deploy-a-sap-hana-scale-out-system-with-standby-node-on-azure-vms-by-using-azure-netapp-files-on-suse-linux-enterprise-server"></a>SAP HANA kibővíthető rendszer üzembe helyezése készenléti csomóponttal Azure-beli virtuális gépeken Azure NetApp Files használatával SUSE Linux Enterprise Server 
@@ -183,7 +183,7 @@ Az adatokhoz és a naplóhoz szükséges minimális teljesítménybeli követelm
 
 | Kötet | Méret<br>Premium Storagei szintű | Méret<br>Ultra Storage-rétegek | Támogatott NFS-protokoll |
 | --- | --- | --- | --- |
-| /hana/log/ | 4 TiB | 2 tebibájt | v 4.1 |
+| /hana/log/ | 4 TiB | 2 TiB | v 4.1 |
 | /hana/data | 6,3 TiB | 3,2 TiB | v 4.1 |
 | /hana/shared | Max (512 GB, 1xRAM)/4 feldolgozó csomópont | Max (512 GB, 1xRAM)/4 feldolgozó csomópont | v3 vagy v 4.1 |
 
@@ -191,11 +191,11 @@ A cikkben bemutatott elrendezés SAP HANA konfigurációja a Azure NetApp Files 
 
 | Kötet | Méret<br>Ultra Storage-rétegek | Támogatott NFS-protokoll |
 | --- | --- | --- |
-| /hana/log/mnt00001 | 2 tebibájt | v 4.1 |
-| /hana/log/mnt00002 | 2 tebibájt | v 4.1 |
+| /hana/log/mnt00001 | 2 TiB | v 4.1 |
+| /hana/log/mnt00002 | 2 TiB | v 4.1 |
 | /hana/data/mnt00001 | 3,2 TiB | v 4.1 |
 | /hana/data/mnt00002 | 3,2 TiB | v 4.1 |
-| /hana/shared | 2 tebibájt | v3 vagy v 4.1 |
+| /hana/shared | 2 TiB | v3 vagy v 4.1 |
 
 > [!NOTE]
 > Az itt ismertetett Azure NetApp Files méretezési javaslatok célja, hogy megfeleljenek az SAP által az infrastruktúra-szolgáltatók számára javasolt minimális követelményeknek. A valós ügyfelek központi telepítései és számítási feladatainak esetében ezek a méretek nem elégségesek. Ezeket a javaslatokat kiindulási pontként és alkalmazkodva használhatja az adott számítási feladatra vonatkozó követelmények alapján.  

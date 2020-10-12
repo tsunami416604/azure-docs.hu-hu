@@ -4,10 +4,10 @@ description: Megtudhatja, hogyan törölheti és exportálhatja a személyes ada
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 2c44b2f3aa6f2dfad18ed53804842a5dad8bd94a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85483516"
 ---
 # <a name="export-or-delete-personal-data-from-azure-devtest-labs"></a>Személyes adatok exportálása vagy törlése Azure DevTest Labs
@@ -137,7 +137,7 @@ else
 
 A fenti példában a legfontosabb összetevők a következők:
 
-- A meghívó-AzureRmResourceAction parancs.
+- A Invoke-AzureRmResourceAction parancs.
    
     ```
     Invoke-AzureRmResourceAction -Action 'exportLabResourceUsage' -ResourceId $resourceId -Parameters $actionParameters -Force
@@ -151,7 +151,7 @@ Most nézzük meg közelebbről az exportált információkat. Ahogy korábban e
 
 A **virtualmachines.csv** a következő adatoszlopokat tartalmazza:
 
-| Oszlop neve | Description |
+| Oszlop neve | Leírás |
 | ----------- | ----------- | 
 | SubscriptionId | A laborban található előfizetés-azonosító. |
 | LabUId | A labor egyedi GUID azonosítója. |
@@ -160,7 +160,7 @@ A **virtualmachines.csv** a következő adatoszlopokat tartalmazza:
 | ResourceGroupName | A virtuális gépet tartalmazó erőforráscsoport neve | 
 | ResourceId | A virtuális gép teljes erőforrás-azonosítója. |
 | ResourceUId | A virtuális gép GUID azonosítója |
-| Name | A virtuális gép neve. |
+| Name (Név) | A virtuális gép neve. |
 | CreatedTime | A virtuális gép létrehozásának dátuma és időpontja. |
 | DeletedDate | A virtuális gép törlésének dátuma és időpontja. Ha üres, a törlés még nem történt meg. |
 | ResourceOwner | A virtuális gép tulajdonosa. Ha az érték üres, akkor vagy egy lekérhető virtuális gép, vagy egy egyszerű szolgáltatásnév hozza létre. |
@@ -177,9 +177,9 @@ A **virtualmachines.csv** a következő adatoszlopokat tartalmazza:
 | GalleryImageReferenceOsType | A virtuális gép alaprendszerképének operációsrendszer-típusa |
 | CustomImageId | A virtuális gép alapszintű egyéni rendszerképének teljesen minősített azonosítója. |
 
-A **disks.csvban** található adatoszlopok alább láthatók:
+A **disks.csvban ** található adatoszlopok alább láthatók:
 
-| Oszlop neve | Description | 
+| Oszlop neve | Leírás | 
 | ----------- | ----------- | 
 | SubscriptionId | A labort tartalmazó előfizetés azonosítója |
 | LabUId | A tesztkörnyezet GUID azonosítója |
@@ -188,7 +188,7 @@ A **disks.csvban** található adatoszlopok alább láthatók:
 | ResourceGroupName | A labort tartalmazó erőforráscsoport neve | 
 | ResourceId | A virtuális gép teljes erőforrás-azonosítója. |
 | ResourceUId | A virtuális gép GUID azonosítója |
- |Name | A csatolt lemez neve |
+ |Name (Név) | A csatolt lemez neve |
 | CreatedTime |Az adatlemez létrehozásának dátuma és időpontja. |
 | DeletedDate | Az adatlemez törlésének dátuma és időpontja. |
 | ResourceStatus | Az erőforrás állapota. Aktív, ha az erőforrás létezik. Inaktív, törléskor. |

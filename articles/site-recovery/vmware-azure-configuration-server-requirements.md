@@ -9,13 +9,13 @@ ms.topic: article
 ms.date: 09/09/2019
 ms.author: raynew
 ms.openlocfilehash: 0b0942b517c8dc83c048bd1203a58d9861515dfb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84704454"
 ---
-# <a name="configuration-server-requirements-for-vmware-disaster-recovery-to-azure"></a>Az Azure-ba történő VMware vész-helyreállítási konfigurációs kiszolgálói követelmények
+# <a name="configuration-server-requirements-for-vmware-disaster-recovery-to-azure"></a>A VMware Azure-ba történő vészhelyreállításához használt konfigurációs kiszolgálóra vonatkozó követelmények
 
 Ha [Azure site Recoveryt](site-recovery-overview.md) használ a VMWare virtuális gépek és a fizikai kiszolgálók Azure-ba történő helyreállításához, a helyszíni konfigurációs kiszolgálót is üzembe kell helyeznie.
 

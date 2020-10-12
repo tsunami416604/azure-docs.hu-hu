@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 10/30/2018
 ms.author: aagup
 ms.openlocfilehash: 04d8bb4a9f8157a229751d073e8d351f5448fa68
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86247897"
 ---
 # <a name="on-demand-backup-in-azure-service-fabric"></a>Igény szerinti biztonsági mentés az Azure Service Fabric
@@ -181,7 +181,7 @@ Az igény szerinti biztonsági mentési kérelmek a következő állapotokban le
     FailureError            : @{Code=FABRIC_E_TIMEOUT; Message=The request of backup has timed out.}
     ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Az időszakos biztonsági mentési konfiguráció ismertetése](./service-fabric-backuprestoreservice-configure-periodic-backup.md)
 - [BackupRestore REST API referenciája](/rest/api/servicefabric/sfclient-index-backuprestore)

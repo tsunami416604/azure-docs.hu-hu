@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/26/2019
 ms.openlocfilehash: ea7aa7758b5ccf7be02fa8d450ce710dcbef86a4
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86087384"
 ---
 # <a name="use-apache-kafka-on-hdinsight-with-azure-iot-hub"></a>Apache Kafka használata a HDInsight az Azure-ban IoT Hub
@@ -123,7 +123,7 @@ Az alábbi lépésekkel konfigurálhatja a Kafka-t a peremhálózati csomópontr
     |`bootstrap.servers=localhost:9092`|Cserélje le az `localhost:9092` értéket az előző lépésben szereplő Broker-gazdagépekre.|Az Edge-csomópont önálló konfigurációját konfigurálja a Kafka-közvetítők megtalálásához.|
     |`key.converter=org.apache.kafka.connect.json.JsonConverter`|`key.converter=org.apache.kafka.connect.storage.StringConverter`|Ez a módosítás lehetővé teszi, hogy tesztelje a Kafka által tartalmazott konzolos gyártót. Előfordulhat, hogy más gyártók és fogyasztók számára is különböző átalakítók szükségesek. További információ az átalakítók értékének használatáról: [https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md) .|
     |`value.converter=org.apache.kafka.connect.json.JsonConverter`|`value.converter=org.apache.kafka.connect.storage.StringConverter`|Ugyanaz, mint a fenti.|
-    |N.A.|`consumer.max.poll.records=10`|Hozzáadás a fájl végéhez. Ennek a változásnak a célja, hogy megakadályozza a fogadó összekötő időtúllépéseit úgy, hogy egyszerre 10 rekordra korlátozza azt. További információ: [https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md) .|
+    |N/A|`consumer.max.poll.records=10`|Hozzáadás a fájl végéhez. Ennek a változásnak a célja, hogy megakadályozza a fogadó összekötő időtúllépéseit úgy, hogy egyszerre 10 rekordra korlátozza azt. További információ: [https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md](https://github.com/Azure/toketi-kafka-connect-iothub/blob/master/README_Sink.md).|
 
 1. A fájl mentéséhez használja a __CTRL + X billentyűkombinációt__ __, majd__ __írja be__a következőt:.
 

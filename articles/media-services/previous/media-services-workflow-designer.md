@@ -16,10 +16,10 @@ ms.date: 03/20/2019
 ms.author: anilmur
 ms.reviewer: juliako;johndeu
 ms.openlocfilehash: a53027ec1f775c240164f67e7ee0473a44690964
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89262685"
 ---
 # <a name="create-advanced-encoding-workflows-with-workflow-designer"></a>Speciális kódolási munkafolyamatok létrehozása a munkafolyamat-tervezővel
@@ -53,7 +53,7 @@ A következő videók bemutatják, hogyan használhatja a tervezőt.
 1. nap videó:
 
 * A Designer áttekintése
-* Alapszintű munkafolyamatok – ""Helló világ!"alkalmazás"
+* Alapszintű munkafolyamatok – "„Helló világ!” alkalmazás"
 * Több kimeneti MP4-fájl létrehozása Azure Media Services streamingtel való használatra
 
 > [!VIDEO https://channel9.msdn.com/Blogs/Azure/Azure-Premium-Encoder-Workflow-Designer-Training-Videos-Day-1/player]

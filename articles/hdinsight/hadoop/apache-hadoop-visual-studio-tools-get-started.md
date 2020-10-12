@@ -10,10 +10,10 @@ ms.custom: hdinsightactive,hdiseo17may2017,seodec18
 ms.topic: how-to
 ms.date: 04/14/2020
 ms.openlocfilehash: 5fce1a8e2f4dda8ea84cfd66aa9dc13768ab17e7
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86077085"
 ---
 # <a name="use-data-lake-tools-for-visual-studio-to-connect-to-azure-hdinsight-and-run-apache-hive-queries"></a>Data Lake Tools for Visual Studio használata az Azure HDInsight való kapcsolódáshoz és Apache Hive lekérdezések futtatásához
@@ -129,7 +129,7 @@ HDInsight-fürt összekapcsolása:
 
     ![Fürt, HDInsight, Visual Studio csatolása](./media/apache-hadoop-visual-studio-tools-get-started/hdinsight-visual-studio-tools-link-cluster-dialog.png)
 
-3. Válassza a **Befejezés** gombot. Ha a fürt csatolása sikeres, a fürt megjelenik a **HDInsight** csomópont alatt.
+3. Válassza a **Befejezés** lehetőséget. Ha a fürt csatolása sikeres, a fürt megjelenik a **HDInsight** csomópont alatt.
 
 Egy csatolt fürt frissítéséhez kattintson a jobb gombbal a fürtre, és válassza a **Szerkesztés**lehetőséget. Ezután frissítheti a fürt adatait.
 
@@ -314,7 +314,7 @@ Hive-feladatok megtekintése:
 
 2. A **Start** ablakban jelölje be a keresőmezőbe, és írja be a **Pig**kifejezést. Ezután válassza a **Pig-alkalmazás** lehetőséget, majd kattintson a **Tovább gombra**.
 
-3. Az **új projekt konfigurálása** ablakban adja meg a **projekt nevét**, majd válasszon ki vagy hozzon létre egy **helyet** a projekt számára. Ezután kattintson a **Létrehozás** elemre.
+3. Az **új projekt konfigurálása** ablakban adja meg a **projekt nevét**, majd válasszon ki vagy hozzon létre egy **helyet** a projekt számára. Ezután válassza a **Létrehozás** elemet.
 
 4. Az IDE- **megoldáskezelő** ablaktáblán kattintson duplán a **script. Pig** elemre a parancsfájl megnyitásához.
 

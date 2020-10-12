@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 06/05/2020
 ms.author: kegorman
 ms.openlocfilehash: 8f20ad13953e3767e7693733d8c68f3d0aa2057c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91274477"
 ---
 # <a name="overview-of-oracle-applications-and-solutions-on-azure"></a>Az Azure-beli Oracle-alkalmazások és-megoldások áttekintése
@@ -89,9 +89,9 @@ Az Azure-ban olyan egyéni alkalmazásokat is üzembe helyezhet, amelyek a OCI �
 Az Azure-ban futó Oracle-szoftverekkel együtt Oracle Database Cloud Services (autonóm adatbázis, RAC, Exadata, DBaaS, Single node) használható. További információ a [OCI adatbázis-beállításairól](https://docs.cloud.oracle.com/iaas/Content/Database/Concepts/databaseoverview.htm). 
  
 
-## <a name="licensing"></a>Licencelés
+## <a name="licensing"></a>Licencek
 
-Az Oracle-alkalmazások Azure-beli üzembe helyezése a "saját licenc használata" modellen alapul. Feltételezi, hogy Ön megfelelő licenccel rendelkezik az Oracle-szoftverek használatához, valamint arról, hogy az Oracle-vel meglévő támogatási szerződése van érvényben. Az Oracle garantálta a helyszíni Azure-ba történő licenc-mobilitást. Tekintse meg az Oracle-Azure [GYIK](https://www.oracle.com/cloud/technologies/oracle-azure-faq.html)-et.
+Az Oracle-alkalmazások Azure-beli üzembe helyezése a "saját licenc használata" modellen alapul. Feltételezi, hogy Ön megfelelő licenccel rendelkezik az Oracle-szoftverek használatához, valamint arról, hogy az Oracle-vel meglévő támogatási szerződése van érvényben. Az Oracle garantálta a helyszíni Azure-ba történő licenc-mobilitást. Tekintse meg a Oracle-Azure [Gyakori kérdések](https://www.oracle.com/cloud/technologies/oracle-azure-faq.html)című témakört.
 
 ## <a name="next-steps"></a>Következő lépések
 

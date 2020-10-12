@@ -16,10 +16,10 @@ ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: milanga;cenkdin
 ms.openlocfilehash: c68bedb37722fb6a8b7ad9dccdeaaaa4fab9d020
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89264130"
 ---
 # <a name="update-media-services-after-rolling-storage-access-keys"></a>A Media Services frissítése tárelérési kulcsok váltása után
@@ -47,7 +47,7 @@ Media Services a megadott tárolási kulcstól függ. Az eszközök adatfolyamk�
 ## <a name="steps-to-rotate-storage-keys"></a>A tárolási kulcsok elforgatásának lépései 
  
  1. Módosítsa a Storage-fiók elsődleges kulcsát a PowerShell-parancsmag vagy az [Azure](https://portal.azure.com/) Portal használatával.
- 2. Hívja meg a Sync-AzMediaServiceStorageKeys parancsmagot a megfelelő paraméterekkel a Media-fiók kényszerítéséhez a Storage-fiók kulcsainak kiválasztásához
+ 2. A Storage-fiók kulcsainak kiválasztásához hívja meg Sync-AzMediaServiceStorageKeys parancsmagot a megfelelő paraméterekkel.
  
     Az alábbi példa bemutatja, hogyan szinkronizálhat kulcsokat a Storage-fiókokhoz.
   
@@ -55,7 +55,7 @@ Media Services a megadott tárolási kulcstól függ. Az eszközök adatfolyamk�
   
  3. Várjon egy órát. Ellenőrizze, hogy működik-e a folyamatos átviteli forgatókönyvek.
  4. Módosítsa a Storage-fiók másodlagos kulcsát a PowerShell-parancsmag vagy a Azure Portal használatával.
- 5. Hívja meg a Sync-AzMediaServiceStorageKeys PowerShellt a megfelelő paraméterekkel a Media-fiók kényszerítéséhez az új Storage-fiók kulcsainak kiválasztásához. 
+ 5. Az új Storage-fiók kulcsainak kiválasztásához hívja meg a Sync-AzMediaServiceStorageKeys PowerShellt a megfelelő paraméterekkel. 
  6. Várjon egy órát. Ellenőrizze, hogy működik-e a folyamatos átviteli forgatókönyvek.
  
 ### <a name="a-powershell-cmdlet-example"></a>Példa PowerShell-parancsmagra 

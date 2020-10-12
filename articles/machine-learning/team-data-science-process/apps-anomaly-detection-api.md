@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=alokkirpal, previous-ms.author=alok
 ms.openlocfilehash: f3f35bb7002ea976305b31a27fa6efebecf07710
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86087163"
 ---
 # <a name="machine-learning-anomaly-detection-api"></a>Machine Learning rendellenesség-észlelési API
@@ -115,7 +115,7 @@ Az alábbi ábrán egy példa látható a pontszám API által észlelt rendelle
 ### <a name="detectors"></a>Érzékelők
 Az anomáliák észlelése API három széles kategóriában támogatja az érzékelők használatát. Az egyes detektorok megadott bemeneti paramétereinek és kimenetének részletei a következő táblázatban találhatók.
 
-| Detektor kategóriája | Detektor | Description | Bemeneti paraméterek | Kimenetek |
+| Detektor kategóriája | Detektor | Leírás | Bemeneti paraméterek | Kimenetek |
 | --- | --- | --- | --- | --- |
 | Tüske-érzékelők |TSpike-detektor |A tüskék és a dips értékek észlelése az első és a harmadik quartiles alapján |*tspikedetector. érzékenység:* egész értéket vesz igénybe a 1-10 tartományban, alapértelmezett érték: 3; A magasabb értékek több szélsőséges értéket kapnak, így kevésbé érzékenyek |TSpike: bináris értékek – "1", ha a rendszer nyársat/dip-t észlel, máskülönben "0". |
 | Tüske-érzékelők | ZSpike-detektor |A tüskék és a dipsok észlelése attól függően, hogy a datapoints mennyi ideig tartanak |*zspikedetector. érzékenység:* egész értéket kell megtennie a 1-10 tartományban, alapértelmezett érték: 3; A magasabb értékek több szélsőséges értéket kapnak, ami kevésbé érzékeny |ZSpike: bináris értékek – "1", ha a rendszer nyársat/dip-t észlel, máskülönben "0". |
@@ -125,20 +125,20 @@ Az anomáliák észlelése API három széles kategóriában támogatja az érz�
 ### <a name="parameters"></a>Paraméterek
 A bemeneti paraméterekkel kapcsolatos részletesebb információkat az alábbi táblázat tartalmazza:
 
-| Bemeneti paraméterek | Description | Alapértelmezett beállítás | Típus | Érvényes tartomány | Javasolt tartomány |
+| Bemeneti paraméterek | Leírás | Alapértelmezett beállítás | Típus | Érvényes tartomány | Javasolt tartomány |
 | --- | --- | --- | --- | --- | --- |
 | érzékelők. historywindow |A anomália pontszám számításához használt előzmények (adatpontok száma) |500 |egész szám |10-2000 |Idősorozat-függő |
 | érzékelők. spikesdips | Azt határozza meg, hogy csak tüskék, csak dips vagy mindkettő érzékelhető-e |Mindkettő |felsorolt |Mindkettő, tüskék, dips |Mindkettő |
-| bileveldetector. érzékenység |A kétirányú adatváltozási detektor érzékenysége. |3,25 |double |None |3,25-5 (a kisebb értékek nagyobb érzékenységet jelentenek) |
-| trenddetector. érzékenység |A pozitív trend-detektor érzékenysége. |3,25 |double |None |3,25-5 (a kisebb értékek nagyobb érzékenységet jelentenek) |
+| bileveldetector. érzékenység |A kétirányú adatváltozási detektor érzékenysége. |3,25 |double |Nincs |3,25-5 (a kisebb értékek nagyobb érzékenységet jelentenek) |
+| trenddetector. érzékenység |A pozitív trend-detektor érzékenysége. |3,25 |double |Nincs |3,25-5 (a kisebb értékek nagyobb érzékenységet jelentenek) |
 | tspikedetector. érzékenység |TSpike-detektor érzékenysége |3 |egész szám |1-10 |3-5 (a kisebb értékek nagyobb érzékenységet jelentenek) |
 | zspikedetector. érzékenység |ZSpike-detektor érzékenysége |3 |egész szám |1-10 |3-5 (a kisebb értékek nagyobb érzékenységet jelentenek) |
-| utófeldolgozás. tailRows |A kimeneti eredményekben megőrizni kívánt legfrissebb adatpontok száma |0 |egész szám |0 (az összes adatpont megtartása), vagy az eredményekben megtartani kívánt pontok számának meghatározása |N.A. |
+| utófeldolgozás. tailRows |A kimeneti eredményekben megőrizni kívánt legfrissebb adatpontok száma |0 |egész szám |0 (az összes adatpont megtartása), vagy az eredményekben megtartani kívánt pontok számának meghatározása |N/A |
 
 ### <a name="output"></a>Kimenet
 Az API az idősorozat-adatokon futtatja az összes érzékelőt, és minden egyes időpontra vonatkozóan visszaadja a anomália pontszámokat és a bináris csúcs-jelölőket. Az alábbi táblázat az API kimeneteit sorolja fel.
 
-| Kimenetek | Description |
+| Kimenetek | Leírás |
 | --- | --- |
 | Idő |A nyers adatokból, illetve összesített (és/vagy) imputált adatokból származó időbélyegek, ha az Összesítés (és/vagy) hiányzik az adatok imputálási. |
 | Adatok |A nyers adatokból, illetve összesített (és/vagy) imputált adatokból származó értékek, ha az Összesítés (és/vagy) hiányzik az adatok imputálási alkalmazása |
@@ -161,27 +161,27 @@ A szezonális végpontban található érzékelők hasonlók a nem szezonális v
 
 A bemeneti paraméterekkel kapcsolatos részletesebb információkat az alábbi táblázat tartalmazza:
 
-| Bemeneti paraméterek | Description | Alapértelmezett beállítás | Típus | Érvényes tartomány | Javasolt tartomány |
+| Bemeneti paraméterek | Leírás | Alapértelmezett beállítás | Típus | Érvényes tartomány | Javasolt tartomány |
 | --- | --- | --- | --- | --- | --- |
 | előfeldolgozás. aggregationInterval |Összesítési időköz másodpercben a bemeneti idősorozatok összesítéséhez |0 (nem történt összesítés) |egész szám |0: az Összesítés kihagyása, > 0, máskülönben |5 perc – 1 nap, idősorozat-függő |
-| előfeldolgozás. aggregationFunc |Az adatnak a megadott AggregationInterval való összesítéséhez használt függvény |középérték |felsorolt |középérték, összeg, hossz |N.A. |
-| előfeldolgozás. replaceMissing |Hiányzó adatok eltulajdonítása esetén használt értékek |LKV (utolsó ismert érték) |felsorolt |nulla, LKV, Mean |N.A. |
+| előfeldolgozás. aggregationFunc |Az adatnak a megadott AggregationInterval való összesítéséhez használt függvény |középérték |felsorolt |középérték, összeg, hossz |N/A |
+| előfeldolgozás. replaceMissing |Hiányzó adatok eltulajdonítása esetén használt értékek |LKV (utolsó ismert érték) |felsorolt |nulla, LKV, Mean |N/A |
 | érzékelők. historywindow |A anomália pontszám számításához használt előzmények (adatpontok száma) |500 |egész szám |10-2000 |Idősorozat-függő |
 | érzékelők. spikesdips | Azt határozza meg, hogy csak tüskék, csak dips vagy mindkettő érzékelhető-e |Mindkettő |felsorolt |Mindkettő, tüskék, dips |Mindkettő |
-| bileveldetector. érzékenység |A kétirányú adatváltozási detektor érzékenysége. |3,25 |double |None |3,25-5 (a kisebb értékek nagyobb érzékenységet jelentenek) |
-| postrenddetector. érzékenység |A pozitív trend-detektor érzékenysége. |3,25 |double |None |3,25-5 (a kisebb értékek nagyobb érzékenységet jelentenek) |
-| negtrenddetector. érzékenység |A negatív trend detektorának érzékenysége. |3,25 |double |None |3,25-5 (a kisebb értékek nagyobb érzékenységet jelentenek) |
+| bileveldetector. érzékenység |A kétirányú adatváltozási detektor érzékenysége. |3,25 |double |Nincs |3,25-5 (a kisebb értékek nagyobb érzékenységet jelentenek) |
+| postrenddetector. érzékenység |A pozitív trend-detektor érzékenysége. |3,25 |double |Nincs |3,25-5 (a kisebb értékek nagyobb érzékenységet jelentenek) |
+| negtrenddetector. érzékenység |A negatív trend detektorának érzékenysége. |3,25 |double |Nincs |3,25-5 (a kisebb értékek nagyobb érzékenységet jelentenek) |
 | tspikedetector. érzékenység |TSpike-detektor érzékenysége |3 |egész szám |1-10 |3-5 (a kisebb értékek nagyobb érzékenységet jelentenek) |
 | zspikedetector. érzékenység |ZSpike-detektor érzékenysége |3 |egész szám |1-10 |3-5 (a kisebb értékek nagyobb érzékenységet jelentenek) |
-| szezonális. Enable |Azt határozza meg, hogy a szezonális elemzést kell-e elvégezni |igaz |logikai |igaz, hamis |Idősorozat-függő |
+| szezonális. Enable |Azt határozza meg, hogy a szezonális elemzést kell-e elvégezni |true |boolean |igaz, hamis |Idősorozat-függő |
 | szezonális. numSeasonality |Az észlelni kívánt időszakos ciklusok maximális száma |1 |egész szám |1, 2 |1-2 |
-| szezonális. átalakítás |Azt határozza meg, hogy a szezonális (és) trend-összetevőket el kell-e távolítani az anomáliák észlelése előtt |leszezon |felsorolt |nincs, deszezon, deseasontrend |N.A. |
-| utófeldolgozás. tailRows |A kimeneti eredményekben megőrizni kívánt legfrissebb adatpontok száma |0 |egész szám |0 (az összes adatpont megtartása), vagy az eredményekben megtartani kívánt pontok számának meghatározása |N.A. |
+| szezonális. átalakítás |Azt határozza meg, hogy a szezonális (és) trend-összetevőket el kell-e távolítani az anomáliák észlelése előtt |leszezon |felsorolt |nincs, deszezon, deseasontrend |N/A |
+| utófeldolgozás. tailRows |A kimeneti eredményekben megőrizni kívánt legfrissebb adatpontok száma |0 |egész szám |0 (az összes adatpont megtartása), vagy az eredményekben megtartani kívánt pontok számának meghatározása |N/A |
 
 ### <a name="output"></a>Kimenet
 Az API az idősorozat-adatokon futtatja az összes érzékelőt, és minden egyes időpontra vonatkozóan visszaadja a anomália pontszámokat és a bináris csúcs-jelölőket. Az alábbi táblázat az API kimeneteit sorolja fel.
 
-| Kimenetek | Description |
+| Kimenetek | Leírás |
 | --- | --- |
 | Idő |A nyers adatokból, illetve összesített (és/vagy) imputált adatokból származó időbélyegek, ha az Összesítés (és/vagy) hiányzik az adatok imputálási. |
 | OriginalData |A nyers adatokból, illetve összesített (és/vagy) imputált adatokból származó értékek, ha az Összesítés (és/vagy) hiányzik az adatok imputálási alkalmazása |

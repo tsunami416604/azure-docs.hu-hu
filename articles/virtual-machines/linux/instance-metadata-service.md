@@ -12,10 +12,10 @@ ms.date: 04/29/2020
 ms.author: sukumari
 ms.reviewer: azmetadatadev
 ms.openlocfilehash: ea11e2f5f8d89381723011686de9e22639997c01
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90974150"
 ---
 # <a name="azure-instance-metadata-service-imds"></a>Azure Instance Metadata Service (IMDS)
@@ -163,7 +163,7 @@ API | Alapértelmezett adatformátum | Egyéb formátumok
 /instance | json | szöveg
 /scheduledevents | json | Nincs
 
-A nem alapértelmezett válasz formátumának eléréséhez a kérelemben a kért formátumot lekérdezési karakterlánc paraméterként kell megadni. Például:
+A nem alapértelmezett válasz formátumának eléréséhez a kérelemben a kért formátumot lekérdezési karakterlánc paraméterként kell megadni. Példa:
 
 ```bash
 curl -H Metadata:true --noproxy "*" "http://169.254.169.254/metadata/instance?api-version=2017-08-01&format=text"
@@ -244,7 +244,7 @@ azEnvironment | Az Azure-környezet, amelyben a virtuális gép fut | 2018-10-01
 customData | Ez a funkció jelenleg le van tiltva. Ezt a dokumentációt akkor fogjuk frissíteni, amikor elérhetővé válik | 2019-02-01
 isHostCompatibilityLayerVm | Annak azonosítása, hogy a virtuális gép a gazdagép kompatibilitási rétegén fut-e | 2020-06-01
 location | Az Azure-régió, amelyen a virtuális gép fut | 2017-04-02
-név | A virtuális gép neve | 2017-04-02
+name | A virtuális gép neve | 2017-04-02
 offer | A virtuálisgép-lemezképre vonatkozó információkat nyújtja, és csak az Azure rendszerkép-katalógusból üzembe helyezett rendszerképekhez érhető el | 2017-04-02
 osType | Linux vagy Windows | 2017-04-02
 placementGroupId | A virtuálisgép-méretezési [csoport elhelyezési csoportja](../../virtual-machine-scale-sets/virtual-machine-scale-sets-placement-groups.md) | 2017-08-01
@@ -519,7 +519,7 @@ diskSizeGB | A lemez mérete GB-ban
 image   | Forrás felhasználói lemezkép virtuális merevlemeze
 LUN     | A lemez logikai egységének száma
 managedDisk | Felügyelt lemez paramétereinek
-név    | Lemez neve
+name    | Lemez neve
 VHD     | Virtuális merevlemez
 writeAcceleratorEnabled | Azt jelzi, hogy engedélyezve van-e a writeAccelerator a lemezen
 
@@ -534,7 +534,7 @@ diskSizeGB | A lemez mérete GB-ban
 encryptionSettings | A lemez titkosítási beállításai
 image   | Forrás felhasználói lemezkép virtuális merevlemeze
 managedDisk | Felügyelt lemez paramétereinek
-név    | Lemez neve
+name    | Lemez neve
 osType  | A lemezen található operációs rendszer típusa
 VHD     | Virtuális merevlemez
 writeAcceleratorEnabled | Azt jelzi, hogy engedélyezve van-e a writeAccelerator a lemezen
@@ -820,7 +820,7 @@ Ruby          | https://github.com/Microsoft/azureimds/blob/master/IMDSSample.rb
 
 ## <a name="error-and-debugging"></a>Hiba és hibakeresés
 
-Ha nem található adatelem vagy helytelenül formázott kérelem, a Instance Metadata Service szabványos HTTP-hibákat ad vissza. Például:
+Ha nem található adatelem vagy helytelenül formázott kérelem, a Instance Metadata Service szabványos HTTP-hibákat ad vissza. Példa:
 
 HTTP-állapotkód | Ok
 ----------------|-------

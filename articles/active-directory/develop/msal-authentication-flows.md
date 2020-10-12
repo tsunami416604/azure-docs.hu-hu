@@ -13,10 +13,10 @@ ms.date: 07/08/2020
 ms.author: marsma
 ms.reviewer: saeeda
 ms.openlocfilehash: 4a902ed53e92cd073d81626e80bdb3c8629ad072
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89437870"
 ---
 # <a name="authentication-flows"></a>Hitelesítési folyamatok
@@ -136,7 +136,7 @@ A [OAuth 2 implicit engedélyezési](v2-oauth2-implicit-grant-flow.md) folyamat 
 
 Számos modern webalkalmazás a JavaScriptben vagy egy SPA-keretrendszerben (például szögletes, Vue.js és React.js) készült ügyféloldali, egyoldalas alkalmazásokban (SPA) van kialakítva. Ezek az alkalmazások webböngészőben futnak, és különböző hitelesítési jellemzőkkel rendelkeznek, mint a hagyományos kiszolgálóoldali webes alkalmazások. A Microsoft Identity platform lehetővé teszi, hogy az egyoldalas alkalmazások bejelentkezzenek a felhasználókba, és jogkivonatokat kérjenek a háttér-szolgáltatások vagy webes API-k elérésére az implicit engedélyezési folyamat használatával. Az implicit folyamat lehetővé teszi, hogy az alkalmazás azonosító jogkivonatokat kapjon a hitelesített felhasználó képviseletére, valamint a védett API-k meghívásához szükséges jogkivonatok elérésére is.
 
-Ez a hitelesítési folyamat nem tartalmaz olyan alkalmazási helyzeteket, amelyek platformfüggetlen JavaScript-keretrendszereket használnak, például az elektront vagy a reakciót, mivel további képességeket igényelnek a natív platformokkal való interakcióhoz.
+Ez a hitelesítési folyamat nem tartalmaz olyan alkalmazási helyzeteket, amelyek platformfüggetlen JavaScript-keretrendszereket (például Electron vagy React-Native) használnak, mivel további képességeket igényelnek a natív platformokkal való interakcióhoz.
 
 Az implicit folyamat mód használatával kiállított tokenek **hossza korlátozott** , mert az URL-cím szerint (ahol `response_mode` a vagy a vagy a) a böngészőbe visszatérnek `query` `fragment` . Néhány böngésző korlátozza az URL-cím hosszát a böngésző sávján, és nem sikerül, ha túl hosszú. Ezért ezek az implicit flow-tokenek nem tartalmaznak `groups` vagy `wids` jogcímeket.
 

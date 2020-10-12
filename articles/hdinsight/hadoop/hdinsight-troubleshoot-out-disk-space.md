@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 04/30/2020
 ms.openlocfilehash: ead79ca0a37a270f03a305064c80426553db59ca
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82628537"
 ---
 # <a name="scenario-cluster-node-runs-out-of-disk-space-in-azure-hdinsight"></a>Forgatókönyv: a fürtcsomópont elfogyott a lemezterület az Azure HDInsight
@@ -20,7 +20,7 @@ Ez a cikk az Azure HDInsight-fürtökkel való interakció során felmerülő pr
 
 ## <a name="issue"></a>Probléma
 
-Egy feladat meghiúsulhat a következőhöz hasonló hibaüzenettel:`/usr/hdp/2.6.3.2-14/hadoop/libexec/hadoop-config.sh: fork: No space left on device.`
+Egy feladat meghiúsulhat a következőhöz hasonló hibaüzenettel: `/usr/hdp/2.6.3.2-14/hadoop/libexec/hadoop-config.sh: fork: No space left on device.`
 
 Vagy a következőhöz hasonló Apache Ambari-riasztás jelenhet meg: `local-dirs usable space is below configured utilization percentage` .
 
@@ -28,7 +28,7 @@ Vagy a következőhöz hasonló Apache Ambari-riasztás jelenhet meg: `local-dir
 
 Lehetséges, hogy az Apache fonal-alkalmazás gyorsítótára felhasználta az összes rendelkezésre álló lemezterületet. A Spark-alkalmazás valószínűleg nem fog hatékonyan futni.
 
-## <a name="resolution"></a>Megoldás:
+## <a name="resolution"></a>Feloldás
 
 1. A Ambari felhasználói felületének használatával meghatározhatja, hogy melyik csomóponton fogy el a szabad lemezterület.
 

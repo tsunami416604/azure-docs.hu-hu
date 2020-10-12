@@ -8,10 +8,10 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 07/10/2018
 ms.openlocfilehash: aa1d8ff0743399d96436f33426ebc4c4ab4a29f6
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86045637"
 ---
 # <a name="test-stream-analytics-queries-locally-with-visual-studio"></a>A Visual Studióval helyileg tesztelheti Stream Analytics lekérdezéseit
@@ -57,7 +57,7 @@ Vizsgálja meg az eredményeket a helyi mappában.
 ![Helyi mappa eredménye](./media/stream-analytics-vs-tools-local-run/stream-analytics-tools-for-vs-local-run-03.png)
    
 
-### <a name="sample-input"></a>Minta bemenet
+### <a name="sample-input"></a>Példabemenet
 A bemeneti forrásokból is gyűjthet minta bemeneti adatokat egy helyi fájlba. Kattintson a jobb gombbal a bemeneti konfigurációs fájlra, és válassza a **mintaadatok**elemet. 
 
 ![Adatmintavétel](./media/stream-analytics-vs-tools-local-run/stream-analytics-tools-for-vs-sample-data-01.png)

@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 06/28/2020
 ms.author: jingwang
 ms.openlocfilehash: 93f484bd30de1ba0ca0f7aa5db263243bebc5b09
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85508809"
 ---
 # <a name="copy-data-from-and-to-ibm-informix-using-azure-data-factory"></a>Adatok másolása az IBM Informix-ből és-ből a Azure Data Factory használatával
@@ -51,15 +51,15 @@ Az Informix társított szolgáltatás a következő tulajdonságokat támogatja
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | A Type tulajdonságot a következőre kell beállítani: **Informix** | Yes |
-| connectionString | Az ODBC-kapcsolatok karakterlánca a hitelesítő adatok kivételével. Megadhatja a kapcsolati karakterláncot, vagy használhatja a Integration Runtime gépen beállított rendszeradatforrás-nevet (az adatforrás nevét) (ennek megfelelően a társított szolgáltatás hitelesítő adatait is meg kell adnia). <br> A jelszót a Azure Key Vaultban is elhelyezheti, és lekérheti a  `password`   konfigurációt a kapcsolatok karakterláncáról. További részletekért tekintse meg a [hitelesítő adatok tárolása Azure Key Vaultban](store-credentials-in-key-vault.md)című   témakört.| Yes |
-| authenticationType | Az Informix-adattárhoz való kapcsolódáshoz használt hitelesítés típusa.<br/>Az engedélyezett értékek a következők: **Alapszintű** és **Névtelen**. | Yes |
-| userName (Felhasználónév) | Ha alapszintű hitelesítést használ, adja meg a felhasználónevet. | No |
-| jelszó | Adja meg a felhasználónévhez megadott felhasználói fiókhoz tartozó jelszót. Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). | No |
-| hitelesítő adat | Az illesztőprogram-specifikus tulajdonság-érték formátumban megadott kapcsolati karakterlánc hozzáférési hitelesítő része. A mező megjelölése SecureString. | No |
-| Connectvia tulajdonsággal | Az adattárhoz való kapcsolódáshoz használt [Integration Runtime](concepts-integration-runtime.md) . A saját üzemeltetésű Integration Runtime az [Előfeltételek](#prerequisites)szakaszban említettek szerint kell megadni. |Yes |
+| típus | A Type tulajdonságot a következőre kell beállítani: **Informix** | Igen |
+| connectionString | Az ODBC-kapcsolatok karakterlánca a hitelesítő adatok kivételével. Megadhatja a kapcsolati karakterláncot, vagy használhatja a Integration Runtime gépen beállított rendszeradatforrás-nevet (az adatforrás nevét) (ennek megfelelően a társított szolgáltatás hitelesítő adatait is meg kell adnia). <br> A jelszót a Azure Key Vaultban is elhelyezheti, és lekérheti a  `password`   konfigurációt a kapcsolatok karakterláncáról. További részletekért tekintse meg a [hitelesítő adatok tárolása Azure Key Vaultban](store-credentials-in-key-vault.md)című   témakört.| Igen |
+| authenticationType | Az Informix-adattárhoz való kapcsolódáshoz használt hitelesítés típusa.<br/>Az engedélyezett értékek a következők: **Alapszintű** és **Névtelen**. | Igen |
+| userName (Felhasználónév) | Ha alapszintű hitelesítést használ, adja meg a felhasználónevet. | Nem |
+| jelszó | Adja meg a felhasználónévhez megadott felhasználói fiókhoz tartozó jelszót. Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). | Nem |
+| hitelesítő adat | Az illesztőprogram-specifikus tulajdonság-érték formátumban megadott kapcsolati karakterlánc hozzáférési hitelesítő része. A mező megjelölése SecureString. | Nem |
+| Connectvia tulajdonsággal | Az adattárhoz való kapcsolódáshoz használt [Integration Runtime](concepts-integration-runtime.md) . A saját üzemeltetésű Integration Runtime az [Előfeltételek](#prerequisites)szakaszban említettek szerint kell megadni. |Igen |
 
-**Példa:**
+**Példa**
 
 ```json
 {
@@ -91,7 +91,7 @@ Az Informix-ből származó adatok másolásához a következő tulajdonságok t
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **InformixTable** | Yes |
+| típus | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **InformixTable** | Igen |
 | tableName | A tábla neve az Informix-ben. | Nem forrásként (ha a "Query" a tevékenység forrásában van megadva);<br/>Igen a fogadó számára |
 
 **Példa**
@@ -122,10 +122,10 @@ Az Informix-ből származó adatok másolásához a másolási tevékenység **f
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **InformixSource** | Yes |
-| lekérdezés | Az egyéni lekérdezés használatával olvashatja el az adatolvasást. Példa: `"SELECT * FROM MyTable"`. | Nem (ha meg van adva a "táblanév" az adatkészletben) |
+| típus | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **InformixSource** | Igen |
+| lekérdezés | Az egyéni lekérdezés használatával olvashatja el az adatolvasást. Például: `"SELECT * FROM MyTable"`. | Nem (ha meg van adva a "táblanév" az adatkészletben) |
 
-**Példa:**
+**Példa**
 
 ```json
 "activities":[
@@ -163,12 +163,12 @@ Az adattárba másolt adatmásoláshoz a másolási tevékenység fogadója szak
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | A másolási tevékenység fogadójának Type tulajdonságát a következőre kell beállítani: **InformixSink** | Yes |
-| writeBatchTimeout |Várakozási idő a kötegelt beszúrási művelet befejezéséhez, mielőtt időtúllépés történt.<br/>Az engedélyezett értékek a következők: TimeSpan. Például: "00:30:00" (30 perc). |No |
+| típus | A másolási tevékenység fogadójának Type tulajdonságát a következőre kell beállítani: **InformixSink** | Igen |
+| writeBatchTimeout |Várakozási idő a kötegelt beszúrási művelet befejezéséhez, mielőtt időtúllépés történt.<br/>Az engedélyezett értékek a következők: TimeSpan. Például: "00:30:00" (30 perc). |Nem |
 | writeBatchSize |Beilleszti az adatmennyiséget az SQL-táblába, ha a puffer mérete eléri a writeBatchSize.<br/>Az engedélyezett értékek: Integer (sorok száma). |Nem (alapértelmezett érték: 0 – automatikusan észlelve) |
-| preCopyScript |Adja meg az SQL-lekérdezést a másolási tevékenység végrehajtásához, mielőtt az egyes futtatásokban az adattárba írja az adattárban. Ezt a tulajdonságot használhatja az előre betöltött adatértékek törléséhez. |No |
+| preCopyScript |Adja meg az SQL-lekérdezést a másolási tevékenység végrehajtásához, mielőtt az egyes futtatásokban az adattárba írja az adattárban. Ezt a tulajdonságot használhatja az előre betöltött adatértékek törléséhez. |Nem |
 
-**Példa:**
+**Példa**
 
 ```json
 "activities":[

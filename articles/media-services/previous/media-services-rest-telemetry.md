@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 7fec4a958e730c485c998d1f0591b8e4d61df050
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89264198"
 ---
 # <a name="configuring-azure-media-services-telemetry-with-rest"></a>Azure Media Services telemetria konfigurálása REST-tel
@@ -260,7 +260,7 @@ Host: wamsbnp1clus001rest-hs.cloudapp.net
 
 További információ a telemetria-információk használatáról: [ebben a](media-services-telemetry-overview.md) témakörben.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 

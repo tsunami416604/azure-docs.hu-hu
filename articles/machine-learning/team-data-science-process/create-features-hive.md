@@ -12,14 +12,14 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 6261e31fd84b9471fa4ea5d30e1d6a4afbac9115
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86085378"
 ---
 # <a name="create-features-for-data-in-a-hadoop-cluster-using-hive-queries"></a>Hadoop-fürtben lévő adatszolgáltatások létrehozása struktúra-lekérdezések használatával
-Ebből a dokumentumból megtudhatja, hogyan hozhat létre egy Azure HDInsight Hadoop-fürtön tárolt adatszolgáltatásokat a kaptár-lekérdezések használatával. Ezek a kaptár-lekérdezések a beágyazott kaptár felhasználó által definiált függvényeit (UDF), a megadott parancsfájlokat használják.
+Ebből a dokumentumból megtudhatja, hogyan hozhat létre egy Azure HDInsight Hadoop-fürtön tárolt adatszolgáltatásokat a kaptár-lekérdezések használatával. Ezek a kaptár-lekérdezések beágyazott kaptár User-Defined functions (UDF), a megadott parancsfájlokat használják.
 
 A funkciók létrehozásához szükséges műveletek memória-igényesek lehetnek. A kaptár-lekérdezések teljesítménye az ilyen esetekben nagyobb jelentőséggel bír, és bizonyos paraméterek hangolásával javítható. A paraméterek finomhangolását a végső szakaszban tárgyaljuk.
 
@@ -150,10 +150,10 @@ A két GPS-koordináták közötti távolságot kiszámító matematikai egyenle
 
 A kaptár beágyazott UDF teljes listája megtalálható a <a href="https://cwiki.apache.org/confluence/display/Hive/LanguageManual+UDF#LanguageManualUDF-MathematicalFunctions" target="_blank">Apache Hive wiki</a> **beépített függvények** szakaszában.  
 
-## <a name="advanced-topics-tune-hive-parameters-to-improve-query-speed"></a><a name="tuning"></a>Speciális témakörök: a struktúra paramétereinek finomhangolása a lekérdezési sebesség javítása érdekében
+## <a name="advanced-topics-tune-hive-parameters-to-improve-query-speed"></a><a name="tuning"></a> Speciális témakörök: a struktúra paramétereinek finomhangolása a lekérdezési sebesség javítása érdekében
 Előfordulhat, hogy a kaptár-fürt alapértelmezett paraméter-beállításai nem megfelelőek a kaptár-lekérdezésekhez és a lekérdezések által feldolgozott adatmennyiségekhez. Ez a szakasz azokat a paramétereket ismerteti, amelyeket a felhasználók a kaptár-lekérdezések teljesítményének javítására tudnak hangolni. A felhasználóknak az adatfeldolgozási lekérdezések előtt hozzá kell adni a paraméter-hangolási lekérdezéseket.
 
-1. **Java-halom területe**: a nagyméretű adatkészletek csatlakoztatását, illetve a hosszú rekordok feldolgozását végző lekérdezések esetében az egyik gyakori hiba az, hogy kifogyott a **rendelkezésre álló terület** . Ezt a hibát el lehet kerülni a paraméterek *MapReduce. map. Java. dönt* és *MapReduce. Task. IO. sort. MB* és a kívánt értékek megadásával. Például:
+1. **Java-halom területe**: a nagyméretű adatkészletek csatlakoztatását, illetve a hosszú rekordok feldolgozását végző lekérdezések esetében az egyik gyakori hiba az, hogy kifogyott a **rendelkezésre álló terület** . Ezt a hibát el lehet kerülni a paraméterek *MapReduce. map. Java. dönt* és *MapReduce. Task. IO. sort. MB* és a kívánt értékek megadásával. Alább bemutatunk egy példát:
    
     ```hiveql
     set mapreduce.map.java.opts=-Xmx4096m;

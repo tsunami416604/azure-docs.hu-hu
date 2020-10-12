@@ -4,10 +4,10 @@ description: Ismerje meg, hogyan titkosíthatja az alkalmazásadatok adatait az 
 ms.topic: article
 ms.date: 03/06/2020
 ms.openlocfilehash: 62bb1e51bada155b98fe46740662b86b753d44fa
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90978478"
 ---
 # <a name="encryption-at-rest-using-customer-managed-keys"></a>Inaktív adatok titkosítása az ügyfél által felügyelt kulcsok használatával
@@ -99,7 +99,7 @@ Ha a rendszer elforgatja a Storage-fiók SAS-kulcsát, a webalkalmazás már nem
 
 A webalkalmazás hozzáférését visszavonhatja a hely adateléréséhez, ha letiltja a webalkalmazás hozzáférését a Key Vaulthoz. Ehhez távolítsa el a webalkalmazás identitásához tartozó hozzáférési szabályzatot. Ez ugyanaz az identitás, amelyet korábban hozott létre a Key Vault-referenciák konfigurálása során.
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 
 Az alkalmazás fájljai mostantól titkosítva vannak a Storage-fiókban. A webalkalmazás indításakor lekéri a SAS URL-címét a kulcstartóból. Végül a webalkalmazás betölti az alkalmazás fájljait a Storage-fiókból. 
 

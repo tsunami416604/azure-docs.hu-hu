@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/22/2020
 ms.openlocfilehash: 92cc94170a01aceaa3e6bd058f4ae6628db04f18
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87529585"
 ---
 # <a name="copy-data-from-sap-hana-using-azure-data-factory"></a>Adatok másolása SAP HANA használatával Azure Data Factory
@@ -116,7 +116,7 @@ SAP HANA társított szolgáltatás a következő tulajdonságokat támogatja:
 
 Ha SAP HANA társított szolgáltatást használta a következő hasznos adattartalommal, akkor továbbra is támogatott, miközben a rendszer azt javasolja, hogy az új továbbítást használja.
 
-**Például**
+**Példa**
 
 ```json
 {
@@ -150,9 +150,9 @@ Az adatok SAP HANAból történő másolásához a következő tulajdonságok t�
 |:--- |:--- |:--- |
 | típus | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **SapHanaTable** | Igen |
 | schema | A séma neve a SAP HANA adatbázisban. | Nem (ha a "lekérdezés" van megadva a tevékenység forrásában) |
-| table | A SAP HANA adatbázisban található tábla neve. | Nem (ha a "lekérdezés" van megadva a tevékenység forrásában) |
+| tábla | A SAP HANA adatbázisban található tábla neve. | Nem (ha a "lekérdezés" van megadva a tevékenység forrásában) |
 
-**Például**
+**Példa**
 
 ```json
 {
@@ -189,12 +189,12 @@ Az adatok SAP HANAból történő másolásához a másolási tevékenység **fo
 |:--- |:--- |:--- |
 | típus | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **SapHanaSource** | Igen |
 | lekérdezés | Azt az SQL-lekérdezést adja meg, amely az SAP HANA-példányból olvassa be az adatok beolvasását. | Igen |
-| partitionOptions | Meghatározza az adatok SAP HANAból való betöltéséhez használt adatparticionálási beállításokat. További információ a [párhuzamos másolásról SAP HANA](#parallel-copy-from-sap-hana) szakaszból.<br>Értékek engedélyezése: **none**   (alapértelmezett), **PhysicalPartitionsOfTable**, **SapHanaDynamicRange**. További információ a [párhuzamos másolásról SAP HANA](#parallel-copy-from-sap-hana) szakaszból. `PhysicalPartitionsOfTable`csak akkor használható, ha egy tábla adatait másolja, de nem kérdezi le. <br>Ha engedélyezve van egy partíciós beállítás (azaz nem `None` ), akkor a párhuzamossági fok a [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) másolási tevékenység beállításával párhuzamosan töltődik be az adatok SAP HANAból való egyidejű betöltésére. | Hamis |
+| partitionOptions | Meghatározza az adatok SAP HANAból való betöltéséhez használt adatparticionálási beállításokat. További információ a  [párhuzamos másolásról SAP HANA](#parallel-copy-from-sap-hana) szakaszból.<br>Értékek engedélyezése: **none**   (alapértelmezett), **PhysicalPartitionsOfTable**, **SapHanaDynamicRange**. További információ a  [párhuzamos másolásról SAP HANA](#parallel-copy-from-sap-hana) szakaszból. `PhysicalPartitionsOfTable` csak akkor használható, ha egy tábla adatait másolja, de nem kérdezi le. <br>Ha engedélyezve van egy partíciós beállítás (azaz nem `None` ), akkor a párhuzamossági fok a [`parallelCopies`](copy-activity-performance-features.md#parallel-copy) másolási tevékenység beállításával párhuzamosan töltődik be az adatok SAP HANAból való egyidejű betöltésére. | Hamis |
 | partitionSettings | Határozza meg az adatparticionálási beállítások csoportját.<br>Akkor alkalmazza, ha a partíció lehetőség van `SapHanaDynamicRange` . | Hamis |
 | partitionColumnName | Adja meg annak a forrás oszlopnak a nevét, amelyet a partíció a párhuzamos másoláshoz használ majd. Ha nincs megadva, a rendszer automatikusan észleli a tábla indexét vagy elsődleges kulcsát, és a partíció oszlopként használja.<br>Akkor alkalmazza, ha a partíciós beállítás van  `SapHanaDynamicRange` . Ha lekérdezést használ a forrásadatok beolvasásához, akkor a WHERE záradékot kell beolvasnia  `?AdfHanaDynamicRangePartitionCondition` . Tekintse meg a [SAP HANA szakasz párhuzamos másolásának](#parallel-copy-from-sap-hana) példáját. | Igen, ha `SapHanaDynamicRange` partíciót használ. |
 | packetSize | Meghatározza a hálózati csomagok méretét (kilobájtban), hogy több blokkra ossza fel az adatmennyiséget. Ha nagy mennyiségű adattal rendelkezik a másoláshoz, a csomagok méretének növelése a legtöbb esetben növelheti SAP HANA olvasási sebességét. A csomagok méretének beállításakor a teljesítmény tesztelése javasolt. | Nem.<br>Az alapértelmezett érték 2048 (2MB). |
 
-**Például**
+**Példa**
 
 ```json
 "activities":[
@@ -279,16 +279,16 @@ Az adatok SAP HANAból való másolása során a rendszer a következő leképez
 | BOOL               | Bájt                           |
 | CLOB               | Sztring                         |
 | DATE               | DateTime                       |
-| DECIMÁLIS            | Decimal                        |
+| DECIMÁLIS            | Tizedesjegy                        |
 | DUPLÁN             | Dupla                         |
 | FLOAT              | Dupla                         |
 | EGÉSZ SZÁM            | Int32                          |
 | NCLOB              | Sztring                         |
 | NVARCHAR           | Sztring                         |
-| VALÓS SZÁM               | Egyszeres                         |
+| VALÓS SZÁM               | Egyirányú                         |
 | SECONDDATE         | DateTime                       |
 | SHORTTEXT          | Sztring                         |
-| SMALLDECIMAL       | Decimal                        |
+| SMALLDECIMAL       | Tizedesjegy                        |
 | SMALLINT           | Int16                          |
 | STGEOMETRYTYPE     | Bájt []                         |
 | STPOINTTYPE        | Bájt []                         |

@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 04/14/2020
 ms.openlocfilehash: 09fef350a0ff8cc8c2481acd7b8f74cee15d1b9d
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86075552"
 ---
 # <a name="use-ssh-tunneling-to-access-apache-ambari-web-ui-jobhistory-namenode-apache-oozie-and-other-uis"></a>Az Apache Ambari webes felhasználói felületének, a JobHistory, a NameNode, az Apache Oozie és más felületének eléréséhez használja az SSH-bújtatást
@@ -64,16 +64,16 @@ ssh -C2qTnNf -D 9876 sshuser@CLUSTERNAME-ssh.azurehdinsight.net
 
 Ezzel a paranccsal olyan kapcsolat jön létre, amely a 9876-as helyi portra irányítja át a forgalmat az SSH-val a fürtre. A következő lehetőségek közül választhat:
 
-|Beállítás |Description |
+|Beállítás |Leírás |
 |---|---|
 |D 9876|Az a helyi port, amely az alagúton keresztül irányítja a forgalmat.|
-|C#|Tömörítse az összes adatokat, mivel a webes forgalom többnyire szöveg.|
+|C|Tömörítse az összes adatokat, mivel a webes forgalom többnyire szöveg.|
 |2|Az SSH-t csak a 2-es verziójú protokoll kipróbálására kényszeríti.|
 |q|Csendes mód.|
 |T|Tiltsa le a pszeudo-TTY-foglalást, mivel csak egy portot továbbít.|
 |p|Az STDIN olvasásának megakadályozása, mert csak egy port továbbítására van lehetőség.|
 |N|Ne hajtson végre távoli parancsot, mert éppen csak egy portot továbbít.|
-|nő|Futtatás a háttérben.|
+|f|Futtatás a háttérben.|
 
 A parancs befejezése után a rendszer a helyi számítógépen a 9876-es portra eljuttatott forgalmat a fürt fő csomópontjára irányítja.
 
@@ -93,7 +93,7 @@ A [Putty](https://www.chiark.greenend.org.uk/~sgtatham/putty) a Windows rendszer
     |Port|22|
     |Kapcsolattípus|SSH|
 
-1. Válassza a **Mentés** lehetőséget.
+1. Válassza a **Mentés** lehetőséget
 
     ![HDInsight-munkamenet létrehozása](./media/hdinsight-linux-ambari-ssh-tunnel/hdinsight-create-putty-session.png)
 

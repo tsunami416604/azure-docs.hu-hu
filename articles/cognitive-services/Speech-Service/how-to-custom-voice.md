@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: trbye
 ms.openlocfilehash: 272367d5311952b45c73febe0e05b1ec2d225261
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88056686"
 ---
 # <a name="get-started-with-custom-voice"></a>Bevezetés a Custom Voice szolgáltatásba
@@ -67,7 +67,7 @@ Az első projekt létrehozásához válassza a **szöveg – beszéd/egyéni han
 > [!IMPORTANT]
 > Az [Egyéni hangportált](https://aka.ms/custom-voice) nemrég frissítették! Ha korábban létrehozott, modelleket, teszteket és közzétett végpontokat hozott létre a CRIS.ai-portálon vagy API-kkal, létre kell hoznia egy új projektet az új portálon a régi entitásokhoz való kapcsolódáshoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Egyéni hangalapú adatfeldolgozás előkészítése](how-to-custom-voice-prepare-data.md)
 - [Egyéni hang létrehozása](how-to-custom-voice-create-voice.md)

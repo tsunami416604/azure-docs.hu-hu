@@ -16,10 +16,10 @@ ms.date: 03/18/2019
 ms.author: juliako
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 8eb45397b1941b9a6955066c22d6d9d00eeef4c3
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89262090"
 ---
 # <a name="media-services-development-with-net"></a>Media Services fejlesztés .NET-tel
@@ -136,7 +136,7 @@ class Program
     }
  ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most már [csatlakozhat az AMS API-hoz](media-services-use-aad-auth-to-access-ams-api.md) , és megkezdheti a [fejlesztést](media-services-dotnet-get-started.md).
 

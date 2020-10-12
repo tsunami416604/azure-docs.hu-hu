@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 1452f380cec711fb224f532ccb02d11c5bbad697
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86255183"
 ---
 # <a name="application-templates-in-azure-api-management"></a>Alkalmazás-sablonok az Azure API Management
@@ -36,7 +36,7 @@ Az Azure API Management lehetővé teszi a fejlesztői portál oldalai tartalmá
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
   
-##  <a name="application-list"></a><a name="ProductList"></a>Alkalmazások listája  
+##  <a name="application-list"></a><a name="ProductList"></a> Alkalmazások listája  
  Az **alkalmazás-lista** sablon lehetővé teszi a fejlesztői portálon az alkalmazás-lista oldal törzsének testreszabását.  
   
  ![Az alkalmazások listája lap fejlesztői portál sablonjai](./media/api-management-application-templates/APIM-Application-List-Page-Developer-Portal-Templates.png "APIM a fejlesztői portál sablonjait tartalmazó lapján")  
@@ -137,7 +137,7 @@ Az Azure API Management lehetővé teszi a fejlesztői portál oldalai tartalmá
 }  
 ```  
   
-##  <a name="application"></a><a name="Application"></a>Alkalmazás  
+##  <a name="application"></a><a name="Application"></a> Alkalmazás  
  Az **alkalmazás** sablon lehetővé teszi az alkalmazás oldal törzsének testreszabását a fejlesztői portálon.  
   
  ![Alkalmazás oldal fejlesztői portál sablonjai](./media/api-management-application-templates/APIM-Application-Page-Developer-Portal-Templates.png "APIM-alkalmazás oldal fejlesztői portál sablonjai")  
@@ -223,5 +223,5 @@ Az Azure API Management lehetővé teszi a fejlesztői portál oldalai tartalmá
 }  
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További információ a sablonok használatáról: [API Management fejlesztői portál testreszabása sablonok használatával](api-management-developer-portal-templates.md).

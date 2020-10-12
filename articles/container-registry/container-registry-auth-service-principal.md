@@ -4,10 +4,10 @@ description: Hozzáférés biztosítása a privát tároló beállításjegyzék
 ms.topic: article
 ms.date: 10/04/2019
 ms.openlocfilehash: 8d49628576a1c337efaea3e5286fef00e39def17
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86259145"
 ---
 # <a name="azure-container-registry-authentication-with-service-principals"></a>Azure Container Registry hitelesítés egyszerű szolgáltatásokkal
@@ -95,7 +95,7 @@ az acr login --name myregistry
 
 A CLI azt a tokent használja, amely akkor jön létre, amikor a `az login` -munkamenetet a beállításjegyzékkel hitelesíti.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Az Azure Container Registry szolgáltatással történő hitelesítéssel kapcsolatos egyéb forgatókönyvek [hitelesítésének áttekintését](container-registry-authentication.md) itt tekintheti meg.
 

@@ -10,10 +10,10 @@ ms.reviewer: thsomasu
 ms.lastreviewed: 05/27/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 63841bd603373d0fb325bcf82511ce3fb07b4136
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91315191"
 ---
 # <a name="tutorial-send-push-notifications-to-android-devices-using-firebase-sdk-version-100-preview1"></a>Oktatóanyag: leküldéses értesítések küldése Android-eszközökre a Firebase SDK-Preview1 használatával
@@ -62,23 +62,23 @@ Első lépésként hozzon létre egy projektet a Android Studioban:
 
 2. A projekt létrehozása után válassza a **Firebase hozzáadása az Android-alkalmazáshoz**lehetőséget.
 
-   :::image type="content" source="media/android-sdk/get-started.png" alt-text="Firebase hozzáadása":::
+   :::image type="content" source="media/android-sdk/get-started.png" alt-text="Projekt konfigurálása":::
 
 3. A **Firebase hozzáadása az Android-alkalmazáshoz**   lapon tegye a következőket:
 
    1. Az **android-csomag neve mezőben**másolja a **applicationId**értékét az   alkalmazás **Build. gradle** fájljában. Ebben a példában ez a következő:  `com.fabrikam.fcmtutorial1app` .
 
-      :::image type="content" source="media/android-sdk/specify-package-name-fcm-settings.png" alt-text="Adja meg a csomag nevét":::
+      :::image type="content" source="media/android-sdk/specify-package-name-fcm-settings.png" alt-text="Projekt konfigurálása":::
 
    2. Válassza az **alkalmazás regisztrálása**lehetőséget.
 
 4. Válassza a **letöltés google-services.jsbe**lehetőséget, mentse a fájlt a projekt **alkalmazás**   mappájába, majd válassza a **tovább**lehetőséget.
 
-   :::image type="content" source="media/android-sdk/download-google-service-button.png" alt-text="Google-szolgáltatás letöltése":::
+   :::image type="content" source="media/android-sdk/download-google-service-button.png" alt-text="Projekt konfigurálása":::
 
 5. A Firebase konzolján kattintson a projektjéhez tartozó fogaskerékre. Ezután válassza a **projekt beállításai**lehetőséget.
 
-   :::image type="content" source="media/android-sdk/notification-hubs-firebase-console-project-settings.png" alt-text="Projekt beállításai":::
+   :::image type="content" source="media/android-sdk/notification-hubs-firebase-console-project-settings.png" alt-text="Projekt konfigurálása":::
 
 6. Ha nem töltötte le a **google-services.js** fájlt a Android Studio projekt **alkalmazás**   mappájába, ezt megteheti ezen a lapon.
 
@@ -94,7 +94,7 @@ Első lépésként hozzon létre egy projektet a Android Studioban:
 
 3. A **Notification Hubs**   lapon válassza a **Hozzáadás**lehetőséget   az eszköztáron.
 
-   :::image type="content" source="media/android-sdk/add-hub.png" alt-text="Hub hozzáadása":::
+   :::image type="content" source="media/android-sdk/add-hub.png" alt-text="Projekt konfigurálása":::
 
 4. A **Notification Hubs**   lapon tegye a következőket:
 
@@ -108,15 +108,15 @@ Első lépésként hozzon létre egy projektet a Android Studioban:
 
    5. Válassza a **Létrehozás**lehetőséget.
 
-      :::image type="content" source="media/android-sdk/create-hub.png" alt-text="Hub létrehozása":::
+      :::image type="content" source="media/android-sdk/create-hub.png" alt-text="Projekt konfigurálása":::
 
 5. Válassza az **értesítések**   (harang ikon) lehetőséget, majd válassza **az Ugrás az erőforráshoz**lehetőséget. A listát a Notification Hubs oldalon is frissítheti **Notification Hubs**   , és kiválaszthatja a hubot.
 
-   :::image type="content" source="media/android-sdk/notification-hubs.png" alt-text="Hub kiválasztása":::
+   :::image type="content" source="media/android-sdk/notification-hubs.png" alt-text="Projekt konfigurálása":::
 
 6. A listából válassza a **hozzáférési szabályzatok**lehetőséget   . Vegye figyelembe, hogy két csatlakozási karakterlánc érhető el. A leküldéses értesítések kezeléséhez később szüksége lesz rájuk.
 
-   :::image type="content" source="media/android-sdk/access-policies.png" alt-text="Hozzáférési szabályzatok":::
+   :::image type="content" source="media/android-sdk/access-policies.png" alt-text="Projekt konfigurálása":::
 
    > [!IMPORTANT]
    > Ne használja az **DefaultFullSharedAccessSignature**   szabályzatot az alkalmazásban. Ezt a házirendet csak háttérbeli alkalmazásban lehet használni.
@@ -129,7 +129,7 @@ Első lépésként hozzon létre egy projektet a Android Studioban:
 
 3. Az eszköztáron válassza a **Mentés**lehetőséget.
 
-   :::image type="content" source="media/android-sdk/fcm-server-key.png" alt-text="Kiszolgáló kulcsa":::
+   :::image type="content" source="media/android-sdk/fcm-server-key.png" alt-text="Projekt konfigurálása":::
 
 4. A Azure Portal üzenet jelenik meg, amely szerint a központ frissítése sikeresen megtörtént. A **Mentés**   gomb le van tiltva.
 
@@ -143,15 +143,15 @@ Az értesítési központ már konfigurálva van a Firebase Cloud Messaging szol
 
 2. Válassza ki a projektben használt Android SDK cél verzióját. Ezután válassza a **csomag adatainak megjelenítése**lehetőséget.
 
-   :::image type="content" source="media/android-sdk/notification-hubs-android-studio-sdk-manager.png" alt-text="SDK-kezelő":::
+   :::image type="content" source="media/android-sdk/notification-hubs-android-studio-sdk-manager.png" alt-text="Projekt konfigurálása":::
 
 3. Válassza a **Google API**-k lehetőséget, ha még nincs telepítve.
 
-   :::image type="content" source="media/android-sdk/google-apis-selected.png" alt-text="API-k":::
+   :::image type="content" source="media/android-sdk/google-apis-selected.png" alt-text="Projekt konfigurálása":::
 
 4. Váltson az **SDK-eszközök**   lapra. Ha még nem telepítette a Google Play-szolgáltatásokat, válassza a **Google Play**   -szolgáltatások lehetőséget az alábbi ábrán látható módon. Ezután válassza az **alkalmaz**elemet   a telepítéshez. Jegyezze fel az SDK elérési útját, mert szükség lesz rá egy későbbi lépésben.
 
-   :::image type="content" source="media/android-sdk/google-play-services-selected.png" alt-text="Play-szolgáltatások":::
+   :::image type="content" source="media/android-sdk/google-play-services-selected.png" alt-text="Projekt konfigurálása":::
 
 5. Ha megjelenik a **módosítás megerősítése**   párbeszédpanel, kattintson az **OK gombra**. Az összetevő-telepítő telepíti a kért összetevőket.  **Finish**   Az összetevők telepítése után válassza a Befejezés lehetőséget.
 
@@ -237,11 +237,11 @@ Az értesítési központ már konfigurálva van a Firebase Cloud Messaging szol
 
 4. Győződjön meg arról, hogy rendelkezik virtuális eszközzel az alkalmazás futtatásához. Ha még nem rendelkezik ilyennel, vegyen fel egyet a következő módon:
 
-   1. :::image type="content" source="media/android-sdk/open-device-manager.png" alt-text="Eszközkezelő":::
-   2. :::image type="content" source="media/android-sdk/your-virtual-devices.png" alt-text="Virtuális eszközök":::
+   1. :::image type="content" source="media/android-sdk/open-device-manager.png" alt-text="Projekt konfigurálása":::
+   2. :::image type="content" source="media/android-sdk/your-virtual-devices.png" alt-text="Projekt konfigurálása":::
    3. Futtassa az alkalmazást a kiválasztott eszközön, és ellenőrizze, hogy sikeresen regisztrálja-e az eszközt a hubhoz.
 
-      :::image type="content" source="media/android-sdk/device-registration.png" alt-text="Eszközregisztráció":::
+      :::image type="content" source="media/android-sdk/device-registration.png" alt-text="Projekt konfigurálása":::
 
       > [!NOTE]
       > Előfordulhat, hogy a regisztráció a kezdeti indítás során meghiúsul, amíg meg nem `onTokenRefresh()` történik a példány-azonosító szolgáltatás metódusának meghívása. A frissítés sikeres regisztrációt kezdeményez az értesítési központban.
@@ -258,7 +258,7 @@ Leküldéses értesítéseket küldhet az értesítési központnak a [Azure Po
 
 4. A művelet eredményét a portál oldalának alján található listában tekintheti meg.
 
-   :::image type="content" source="media/android-sdk/notification-hubs-test-send.png" alt-text="Teszt értesítés küldése":::
+   :::image type="content" source="media/android-sdk/notification-hubs-test-send.png" alt-text="Projekt konfigurálása":::
 
 5. Megjelenik az értesítési üzenet az eszközön.
 
@@ -270,7 +270,7 @@ Mielőtt a leküldéses értesítéseket egy emulátoron belül teszteli, győz�
 
 Győződjön meg arról is, hogy hozzáadta Google-fiókját a futó emulátorhoz a **Beállítások**   >  **fiókok**területen. Ellenkező esetben az FCM-sel való regisztrációra tett kísérletek **AUTHENTICATION_FAILED**   kivételt okozhatnak.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban a Firebase Cloud Messaging szolgáltatást használta az értesítések küldéséhez a szolgáltatásban regisztrált összes Android-eszközre. Ha szeretné megtudni, hogy hogyan küldhet leküldéses értesítéseket adott eszközökre, lépjen tovább a következő oktatóanyagra:
 

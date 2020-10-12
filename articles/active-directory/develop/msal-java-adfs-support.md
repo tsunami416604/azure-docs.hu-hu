@@ -14,10 +14,10 @@ ms.author: sagonzal
 ms.reviewer: nacanuma
 ms.custom: aaddev, devx-track-java
 ms.openlocfilehash: 5d01d1143563637e21aaa06a3f997c1507e4d8f1
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88114778"
 ---
 # <a name="active-directory-federation-services-support-in-msal-for-java"></a>Active Directory összevonási szolgáltatások (AD FS) támogatás a MSAL Javához
@@ -46,6 +46,6 @@ Az összevont forgatókönyvben támogatott AD FS verziók a következők:
 
 Ha a vagy a vagy a használatával szerez be tokent `ConfidentialClientApplication.AcquireToken()` `PublicClientApplication.AcquireToken()` , a MSAL for Java beolvassa `IntegratedWindowsAuthenticationParameters` `UsernamePasswordParameters` az identitás-szolgáltatót a Felhasználónév alapján. A MSAL for Java egy [SAML 1,1 token](reference-saml-tokens.md) -tokent kap az identitás-szolgáltatótól, amelyet aztán az Azure ad-nek ad vissza, amely visszaadja a JSON web token (JWT).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az összevont esetért lásd: [Azure Active Directory bejelentkezési viselkedésének konfigurálása alkalmazáshoz egy otthoni tartomány felderítési házirendjének használatával](../manage-apps/configure-authentication-for-federated-users-portal.md)

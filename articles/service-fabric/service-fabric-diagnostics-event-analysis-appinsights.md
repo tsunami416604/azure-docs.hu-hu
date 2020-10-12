@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 11/21/2018
 ms.author: srrengar
 ms.openlocfilehash: a912b7a6d918a40aaae54c9b177250dc3c30c84d
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86256560"
 ---
 # <a name="event-analysis-and-visualization-with-application-insights"></a>Események elemzése és vizualizáció Application Insights
@@ -71,7 +71,7 @@ Miután konfigurálta Application Insights az események és naplók kimenete, n
 
 Az **elemzés** gombra kattintva megtekintheti a Application Insights Analytics-portált, ahol az eseményeket és a nyomkövetéseket nagyobb hatókörrel és választható módon kérdezheti le. További információ erről a [Application Insights Analytics szolgáltatásában](../azure-monitor/log-query/log-query-overview.md)olvasható.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Riasztások beállítása az AI-ben](../azure-monitor/platform/alerts-log.md) a teljesítmény vagy a használat változásairól való értesítéshez
 * Az [intelligens észlelés a Application Insights](../azure-monitor/app/proactive-diagnostics.md) a Application Insights küldött telemetria proaktív elemzését hajtja végre, hogy figyelmeztesse Önt a lehetséges teljesítménnyel kapcsolatos problémákról

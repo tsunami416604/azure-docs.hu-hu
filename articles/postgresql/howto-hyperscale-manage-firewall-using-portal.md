@@ -8,10 +8,10 @@ ms.subservice: hyperscale-citus
 ms.topic: how-to
 ms.date: 9/11/2020
 ms.openlocfilehash: dadd04497eae0e91bdf5ea3caad38beda35f7fa3
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91275421"
 ---
 # <a name="manage-firewall-rules-for-azure-database-for-postgresql---hyperscale-citus"></a>Azure Database for PostgreSQL-nagy kapacitású (Citus) tűzfalszabályok kezelése
@@ -30,18 +30,13 @@ A útmutató lépéseinek elvégzéséhez a következőkre lesz szüksége:
 
 1. A PostgreSQL-kiszolgáló csoport lapon, a biztonság fejléc alatt kattintson a **hálózatkezelés** elemre a tűzfalszabályok megnyitásához.
 
-   :::image type="content" source="./media/howto-hyperscale-manage-firewall-using-portal/1-connection-security.png" alt-text="Azure Portal kattintson a hálózatkezelés elemre":::
+   :::image type="content" source="./media/howto-hyperscale-manage-firewall-using-portal/1-connection-security.png" alt-text="Azure Portal – hálózatkezelés lap":::
 
 2. Kattintson az **aktuális ügyfél IP-címének hozzáadása** elemre a számítógép nyilvános IP-címével rendelkező tűzfalszabály létrehozásához az Azure-rendszer által észlelt módon.
 
-   :::image type="content" source="./media/howto-hyperscale-manage-firewall-using-portal/2-add-my-ip.png" alt-text="Azure Portal – kattintson az ügyfél IP-címének hozzáadása elemre.":::
+   :::image type="content" source="./media/howto-hyperscale-manage-firewall-using-portal/2-add-my-ip.png" alt-text="Azure Portal – hálózatkezelés lap" kifejezésre.
 
-Másik lehetőségként kattintson a **+ 0.0.0.0-255.255.255.255** (a B beállítástól jobbra) gombra, és nem csak az Ön IP-címét, hanem a teljes internetet a koordinátori csomópont 5432-as portjának eléréséhez. Ebben az esetben az ügyfeleknek továbbra is be kell jelentkezniük a megfelelő felhasználónévvel és jelszóval a fürt használatához. Azonban javasoljuk, hogy csak rövid ideig és csak a nem éles adatbázisok esetében engedélyezze a globális hozzáférést.
-
-3. A konfiguráció mentése előtt ellenőrizze az IP-címet. Bizonyos helyzetekben a Azure Portal által megfigyelt IP-cím eltér az Internet és az Azure-kiszolgálók elérésekor használt IP-címről. Ezért előfordulhat, hogy módosítania kell a kezdő IP-címet és a záró IP-címet, hogy a szabály a várt módon működjön.
-   A saját IP-címének vizsgálatához használjon keresőmotort vagy más online eszközt. Keressen például a "mi az én IP-címe" kifejezésre.
-
-   :::image type="content" source="./media/howto-hyperscale-manage-firewall-using-portal/3-what-is-my-ip.png" alt-text="Keresési Bing – mi az az IP-cím":::
+   :::image type="content" source="./media/howto-hyperscale-manage-firewall-using-portal/3-what-is-my-ip.png" alt-text="Azure Portal – hálózatkezelés lap":::
 
 4. További címtartományok hozzáadása. A tűzfalszabályok esetében egyetlen IP-címet vagy címtartományt is megadhat. Ha egyetlen IP-címhez szeretné korlátozni a szabályt, a kezdő IP-cím és a záró IP-cím mezőben adja meg ugyanazt a címet. A tűzfal megnyitása lehetővé teszi a rendszergazdák, a felhasználók és az alkalmazások számára, hogy hozzáférjenek a koordinátori csomóponthoz a 5432-es porton.
 

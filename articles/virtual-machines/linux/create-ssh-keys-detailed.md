@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 07/31/2020
 ms.author: cynthn
 ms.openlocfilehash: 34a84ed333172ea0931c529d2dbeee1b774ae8c5
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87513187"
 ---
 # <a name="detailed-steps-create-and-manage-ssh-keys-for-authentication-to-a-linux-vm-in-azure"></a>Részletes lépések: SSH-kulcsok létrehozása és kezelése az Azure-beli linuxos virtuális gépek hitelesítéséhez
@@ -33,7 +33,7 @@ Ha nem kíván SSH-kulcsokat használni, beállíthatja a linuxos virtuális gé
 
 ## <a name="generate-keys-with-ssh-keygen"></a>Kulcsok generálása ssh-keygen használatával
 
-A kulcsok létrehozásához egy előnyben részesített parancs, `ssh-keygen` amely a Azure Cloud shell, a MacOS vagy Linux rendszerű gazdagépen, illetve a Windows 10 rendszeren elérhető OpenSSH segédprogramokkal érhető el. `ssh-keygen`több kérdés megadását kéri, majd egy titkos kulcsot és egy megfelelő nyilvános kulcsot ír. 
+A kulcsok létrehozásához egy előnyben részesített parancs, `ssh-keygen` amely a Azure Cloud shell, a MacOS vagy Linux rendszerű gazdagépen, illetve a Windows 10 rendszeren elérhető OpenSSH segédprogramokkal érhető el. `ssh-keygen` több kérdés megadását kéri, majd egy titkos kulcsot és egy megfelelő nyilvános kulcsot ír. 
 
 Az SSH-kulcsokat alapértelmezés szerint a `~/.ssh` könyvtár tárolja.  Ha Ön nem rendelkezik `~/.ssh` könyvtárral, akkor az `ssh-keygen` parancs létrehozza azt a megfelelő engedélyekkel.
 
@@ -62,17 +62,17 @@ ssh-keygen \
 
 `ssh-keygen` = a kulcsok létrehozásához használt program,
 
-`-m PEM`= a kulcs formázása PEMként
+`-m PEM` = a kulcs formázása PEMként
 
-`-t rsa`= a létrehozandó kulcs típusa, ebben az esetben RSA formátumban
+`-t rsa` = a létrehozandó kulcs típusa, ebben az esetben RSA formátumban
 
-`-b 4096`= a kulcsban található bitek száma, ebben az esetben 4096
+`-b 4096` = a kulcsban található bitek száma, ebben az esetben 4096
 
 `-C "azureuser@myserver"` = a nyilvános kulcsfájl végéhez fűzött megjegyzés az egyszerű azonosítás érdekében. A rendszer általában egy e-mail-címet használ a megjegyzésként, de a legmegfelelőbb megoldást használja az infrastruktúra számára.
 
-`-f ~/.ssh/mykeys/myprivatekey`= a titkos kulcsfájl fájlnevét, ha úgy dönt, hogy nem használja az alapértelmezett nevet. Egy megfelelő, a-val hozzáfűzött nyilvánoskulcs `.pub` -fájl ugyanabban a címtárban jön létre. A könyvtárnak léteznie kell.
+`-f ~/.ssh/mykeys/myprivatekey` = a titkos kulcsfájl fájlnevét, ha úgy dönt, hogy nem használja az alapértelmezett nevet. Egy megfelelő, a-val hozzáfűzött nyilvánoskulcs `.pub` -fájl ugyanabban a címtárban jön létre. A könyvtárnak léteznie kell.
 
-`-N mypassphrase`= a titkos kulcs fájljának eléréséhez használt további jelszó. 
+`-N mypassphrase` = a titkos kulcs fájljának eléréséhez használt további jelszó. 
 
 ### <a name="example-of-ssh-keygen"></a>Ssh-keygen – példa
 

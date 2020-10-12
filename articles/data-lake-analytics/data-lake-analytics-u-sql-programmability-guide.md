@@ -8,10 +8,10 @@ ms.assetid: 63be271e-7c44-4d19-9897-c2913ee9599d
 ms.topic: how-to
 ms.date: 06/30/2017
 ms.openlocfilehash: 1c22aa9fb91b0a86704b95586afc1779023e85b6
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87288942"
 ---
 # <a name="u-sql-programmability-guide"></a>A U-SQL programozható útmutatója
@@ -83,7 +83,7 @@ OUTPUT @rs1
 
 ### <a name="use-c-expressions-for-todays-date"></a>A mai dátumhoz C#-kifejezések használata
 
-A mai dátum lekéréséhez a következő C# kifejezést használhatja:`DateTime.Now.ToString("M/d/yyyy")`
+A mai dátum lekéréséhez a következő C# kifejezést használhatja: `DateTime.Now.ToString("M/d/yyyy")`
 
 Íme egy példa arra, hogyan használhatja ezt a kifejezést egy parancsfájlban:
 
@@ -529,9 +529,9 @@ Az `IFormatter` illesztőfelület szerializálja és deszerializálja az Object 
 
 * **Szerializálás**: egy objektum vagy objektum gráfjának szerializálására szolgál a megadott adatfolyammal.
 
-`MyType`példány: a típus példánya.  
-`IColumnWriter`író/ `IColumnReader` olvasó: az alapul szolgáló oszlop adatfolyama.  
-`ISerializationContext`Context: Enum, amely a szerializálás során megadja a forrás vagy a cél környezetét az adatfolyamhoz.
+`MyType` példány: a típus példánya.  
+`IColumnWriter` író/ `IColumnReader` olvasó: az alapul szolgáló oszlop adatfolyama.  
+`ISerializationContext` Context: Enum, amely a szerializálás során megadja a forrás vagy a cél környezetét az adatfolyamhoz.
 
 * **Köztes**: azt határozza meg, hogy a forrás vagy a cél környezet nem egy megőrzött tároló.
 
@@ -1071,7 +1071,7 @@ Hasznos lehet egyéni kivonót létrehozni. Ez az adatok importálása során ha
 * Strukturálatlan adatelemzések, például weblapok és e-mailek, vagy félig strukturálatlan, például XML/JSON típusú adat elemzése.
 * Az adatelemzés nem támogatott kódolású.
 
-Felhasználó által definiált Kivonó vagy UDE definiálásához létre kell hozni egy `IExtractor` felületet. A kivonó összes bemeneti paraméterét, például az oszlop/sorok elhatárolóit és a kódolást az osztály konstruktorában kell meghatározni. Az `IExtractor` illesztőfelületnek tartalmaznia kell a felülbírálás definícióját is a `IEnumerable<IRow>` következőképpen:
+Felhasználó által definiált Kivonó vagy UDE definiálásához létre kell hozni egy `IExtractor` felületet. A kivonó összes bemeneti paraméterét, például az oszlop/sorok elhatárolóit és a kódolást az osztály konstruktorában kell meghatározni. Az `IExtractor`  illesztőfelületnek tartalmaznia kell a felülbírálás definícióját is a `IEnumerable<IRow>` következőképpen:
 
 ```csharp
 [SqlUserDefinedExtractor]
@@ -1259,9 +1259,9 @@ public class MyOutputter : IOutputter
 }
 ```
 
-* `Output`minden bemeneti sorhoz meghívva. Visszaadja a `IUnstructuredWriter output` sorhalmazt.
+* `Output` minden bemeneti sorhoz meghívva. Visszaadja a `IUnstructuredWriter output` sorhalmazt.
 * A konstruktor osztály paraméterek átadására szolgál a felhasználó által definiált leszerkesztőhöz.
-* `Close`a nem kötelezően felülbírálja a költséges állapotot, vagy meghatározhatja az utolsó sor megírását.
+* `Close` a nem kötelezően felülbírálja a költséges állapotot, vagy meghatározhatja az utolsó sor megírását.
 
 A **SqlUserDefinedOutputter** attribútum azt jelzi, hogy a típust felhasználó által definiált előtagjaként kell regisztrálni. Ez az osztály nem örökölhető.
 
@@ -2105,7 +2105,7 @@ A **SqlUserDefinedReducer** attribútum azt jelzi, hogy a típust felhasználó 
 A **SqlUserDefinedReducer** egy felhasználó által definiált csökkentő definíció opcionális attribútuma. A IsRecursive tulajdonság definiálására szolgál.
 
 * bool IsRecursive    
-* **true** = azt jelzi, hogy ez a szűkítő asszociatív és kommutatív
+* **true**  = azt jelzi, hogy ez a szűkítő asszociatív és kommutatív
 
 A fő programozható objektumok **bemenetek** és **kimenetek**. A bemeneti objektum a bemeneti sorok enumerálására szolgál. A kimenet a tevékenységek csökkentésének eredményeképpen kimeneti sorok beállítására szolgál.
 

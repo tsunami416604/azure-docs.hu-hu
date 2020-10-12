@@ -10,10 +10,10 @@ ms.subservice: data-lake-storage-gen2
 ms.reviewer: prishet
 ms.custom: devx-track-python
 ms.openlocfilehash: fc99bc645b48739d6d6339111780047496c1984d
-ms.sourcegitcommit: 43558caf1f3917f0c535ae0bf7ce7fe4723391f9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90017115"
 ---
 # <a name="use-python-to-manage-directories-files-and-acls-in-azure-data-lake-storage-gen2"></a>A Python használatával kezelheti a címtárakat, a fájlokat és a hozzáférés-vezérlési listákat Azure Data Lake Storage Gen2
@@ -96,7 +96,7 @@ def initialize_storage_account_ad(storage_account_name, client_id, client_secret
 
 ## <a name="create-a-container"></a>Tároló létrehozása
 
-A tároló fájlrendszerként működik a fájlok számára. Létrehozhat egyet a **FileSystemDataLakeServiceClient. create_file_system** metódus meghívásával.
+A tároló fájlrendszerként működik a fájlok számára. A **FileSystemDataLakeServiceClient.create_file_system** metódus meghívásával létrehozhat egyet.
 
 Ez a példa egy nevű tárolót hoz létre `my-file-system` .
 
@@ -114,7 +114,7 @@ def create_file_system():
 
 ## <a name="create-a-directory"></a>Könyvtár létrehozása
 
-Hozzon létre egy címtár-referenciát a **FileSystemClient. create_directory** metódus meghívásával.
+Hozzon létre egy címtár-hivatkozást a **FileSystemClient.create_directory** metódus meghívásával.
 
 Ez a példa egy nevű könyvtárat helyez `my-directory` el egy tárolóhoz. 
 
@@ -129,7 +129,7 @@ def create_directory():
 
 ## <a name="rename-or-move-a-directory"></a>Címtár átnevezése vagy áthelyezése
 
-Nevezze át vagy helyezze át a könyvtárat a **DataLakeDirectoryClient. rename_directory** metódus meghívásával. Adja meg a kívánt könyvtár elérési útját (a paramétert). 
+Nevezze át vagy helyezze át a könyvtárat a **DataLakeDirectoryClient.rename_directory** metódus meghívásával. Adja meg a kívánt könyvtár elérési útját (a paramétert). 
 
 Ez a példa átnevez egy alkönyvtárat a névre `my-subdirectory-renamed` .
 
@@ -149,7 +149,7 @@ def rename_directory():
 
 ## <a name="delete-a-directory"></a>Könyvtár törlése
 
-A **DataLakeDirectoryClient. delete_directory** metódus meghívásával törölhet egy könyvtárat.
+A **DataLakeDirectoryClient.delete_directory** metódus meghívásával törölhet egy könyvtárat.
 
 Ez a példa törli a nevű könyvtárat `my-directory` .  
 
@@ -166,7 +166,7 @@ def delete_directory():
 
 ## <a name="manage-directory-permissions"></a>Címtár engedélyeinek kezelése
 
-A címtár hozzáférés-vezérlési listájának (ACL) beszerzéséhez hívja meg a **DataLakeDirectoryClient. get_access_control** metódust, és állítsa be az ACL-t úgy, hogy meghívja a **DataLakeDirectoryClient. set_access_control** metódust.
+A címtár hozzáférés-vezérlési listájának (ACL) beszerzéséhez hívja meg a **DataLakeDirectoryClient.get_access_control** metódust, és állítsa be az ACL-t a **DataLakeDirectoryClient.set_access_control** metódus meghívásával.
 
 > [!NOTE]
 > Ha az alkalmazás a Azure Active Directory (Azure AD) használatával engedélyezi a hozzáférést, akkor győződjön meg arról, hogy az alkalmazás által a hozzáférés engedélyezéséhez használt rendszerbiztonsági tag hozzá lett rendelve a [Storage blob-adat tulajdonosi szerepköréhez](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner). Ha többet szeretne megtudni az ACL-engedélyek alkalmazásáról és azok módosításának hatásairól, tekintse meg a  [Azure Data Lake Storage Gen2 hozzáférés-vezérlését](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)ismertető témakört.
@@ -196,11 +196,11 @@ def manage_directory_permissions():
      print(e) 
 ```
 
-Lekérheti és beállíthatja egy tároló gyökérkönyvtárának ACL-listáját is. A gyökérkönyvtár beszerzéséhez hívja meg a **FileSystemClient. _get_root_directory_client** metódust.
+Lekérheti és beállíthatja egy tároló gyökérkönyvtárának ACL-listáját is. A gyökérkönyvtár beszerzéséhez hívja meg a **FileSystemClient._get_root_directory_client** metódust.
 
 ## <a name="upload-a-file-to-a-directory"></a>Fájl feltöltése könyvtárba 
 
-Először hozzon létre egy fájlt a célhelyen a **DataLakeFileClient** osztály egy példányának létrehozásával. Töltsön fel egy fájlt a **DataLakeFileClient. append_data** metódus meghívásával. Ügyeljen arra, hogy a feltöltést a **DataLakeFileClient. flush_data** metódus meghívásával végezze el.
+Először hozzon létre egy fájlt a célhelyen a **DataLakeFileClient** osztály egy példányának létrehozásával. Töltsön fel egy fájlt a **DataLakeFileClient.append_data** metódus meghívásával. Ügyeljen arra, hogy a feltöltést a **DataLakeFileClient.flush_data** metódus meghívásával végezze el.
 
 Ez a példa egy szövegfájlt tölt fel egy nevű könyvtárba `my-directory` .   
 
@@ -226,11 +226,11 @@ def upload_file_to_directory():
 ```
 
 > [!TIP]
-> Ha a fájl mérete nagy, a kódnak több hívást is el kell végeznie a **DataLakeFileClient. append_data** metódushoz. Ehelyett érdemes lehet a **DataLakeFileClient. upload_data** metódust használni. Így feltöltheti a teljes fájlt egyetlen hívással. 
+> Ha a fájl mérete nagy, akkor a kódnak több hívást kell tennie a **DataLakeFileClient.append_data** metódushoz. Ehelyett érdemes inkább a **DataLakeFileClient.upload_data** metódust használni. Így feltöltheti a teljes fájlt egyetlen hívással. 
 
 ## <a name="upload-a-large-file-to-a-directory"></a>Nagyméretű fájl feltöltése egy könyvtárba
 
-A **DataLakeFileClient. upload_data** metódus használatával nagyméretű fájlokat tölthet fel anélkül, hogy több hívást kellene tennie a **DataLakeFileClient. append_data** metódushoz.
+A **DataLakeFileClient.upload_data** metódus használatával nagyméretű fájlokat tölthet fel anélkül, hogy több hívást kellene tennie a **DataLakeFileClient.append_data** metódusnak.
 
 ```python
 def upload_file_to_directory_bulk():
@@ -254,7 +254,7 @@ def upload_file_to_directory_bulk():
 
 ## <a name="manage-file-permissions"></a>Fájlengedélyek kezelése
 
-Egy fájl hozzáférés-vezérlési listájának (ACL) beszerzéséhez hívja meg a **DataLakeFileClient. get_access_control** metódust, és állítsa be az ACL-t úgy, hogy meghívja a **DataLakeFileClient. set_access_control** metódust.
+Egy fájl hozzáférés-vezérlési listájának (ACL) beszerzéséhez hívja meg a **DataLakeFileClient.get_access_control** metódust, és állítsa be az ACL-t a **DataLakeFileClient.set_access_control** metódus meghívásával.
 
 > [!NOTE]
 > Ha az alkalmazás a Azure Active Directory (Azure AD) használatával engedélyezi a hozzáférést, akkor győződjön meg arról, hogy az alkalmazás által a hozzáférés engedélyezéséhez használt rendszerbiztonsági tag hozzá lett rendelve a [Storage blob-adat tulajdonosi szerepköréhez](https://docs.microsoft.com/azure/role-based-access-control/built-in-roles#storage-blob-data-owner). Ha többet szeretne megtudni az ACL-engedélyek alkalmazásáról és azok módosításának hatásairól, tekintse meg a  [Azure Data Lake Storage Gen2 hozzáférés-vezérlését](https://docs.microsoft.com/azure/storage/blobs/data-lake-storage-access-control)ismertető témakört.
@@ -288,7 +288,7 @@ def manage_file_permissions():
 
 ## <a name="download-from-a-directory"></a>Letöltés egy címtárból 
 
-Nyisson meg egy helyi fájlt írásra. Ezután hozzon létre egy **DataLakeFileClient** -példányt, amely a letölteni kívánt fájlt jelöli. Hívja meg a **DataLakeFileClient. read_file** fájlt a fájl bájtjainak olvasásához, majd írja be a bájtokat a helyi fájlba. 
+Nyisson meg egy helyi fájlt írásra. Ezután hozzon létre egy **DataLakeFileClient** -példányt, amely a letölteni kívánt fájlt jelöli. Hívja meg a **DataLakeFileClient.read_filet** a fájl bájtjainak olvasásához, majd írja be a bájtokat a helyi fájlba. 
 
 ```python
 def download_file_from_directory():
@@ -314,7 +314,7 @@ def download_file_from_directory():
 ```
 ## <a name="list-directory-contents"></a>Könyvtár tartalmának listázása
 
-A könyvtár tartalmának listázásához hívja meg a **FileSystemClient. get_paths** metódust, majd az eredmények alapján sorolja fel azokat.
+A könyvtár tartalmának listázásához hívja meg a **FileSystemClient.get_paths** metódust, majd az eredmények alapján sorolja fel azokat.
 
 Ez a példa kinyomtatja az egyes alkönyvtárak és fájlok elérési útját, amely egy nevű könyvtárban található `my-directory` .
 

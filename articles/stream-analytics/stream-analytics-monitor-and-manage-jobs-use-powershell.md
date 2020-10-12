@@ -8,10 +8,10 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 03/28/2017
 ms.openlocfilehash: 0387b4363a438ac48142d97b2a829faf38f1895d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87036658"
 ---
 # <a name="monitor-and-manage-stream-analytics-jobs-with-azure-powershell-cmdlets"></a>Stream Analytics feladatok figyelése és kezelése Azure PowerShell-parancsmagokkal
@@ -217,7 +217,7 @@ Get-AzStreamAnalyticsTransformation -ResourceGroupName StreamAnalytics-Default-C
 
 Ez a PowerShell-parancs a StreamingJob nevű átalakítással kapcsolatos információkat ad vissza a (StreamingJob) feladatban.
 
-### <a name="new-azurestreamanalyticsinput--new-azstreamanalyticsinput"></a>Új – AzureStreamAnalyticsInput | Új – AzStreamAnalyticsInput
+### <a name="new-azurestreamanalyticsinput--new-azstreamanalyticsinput"></a>New-AzureStreamAnalyticsInput | New-AzStreamAnalyticsInput
 Új bemenetet hoz létre egy Stream Analytics feladaton belül, vagy frissít egy meglévő megadott bemenetet.
 
 A bemenet neve megadható a. JSON fájlban vagy a parancssorban. Ha mindkettő meg van adva, a parancssorban szereplő névnek meg kell egyeznie a fájl egy fájljával.
@@ -276,7 +276,7 @@ New-AzStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central-US
 
 Ez a PowerShell-parancs lecseréli a EntryStream nevű meglévő bemeneti forrás definícióját a fájl definíciója alapján.
 
-### <a name="new-azurestreamanalyticsjob--new-azstreamanalyticsjob"></a>Új – AzureStreamAnalyticsJob | Új – AzStreamAnalyticsJob
+### <a name="new-azurestreamanalyticsjob--new-azstreamanalyticsjob"></a>New-AzureStreamAnalyticsJob | New-AzStreamAnalyticsJob
 Új Stream Analytics-feladatot hoz létre a Microsoft Azureban, vagy egy meglévő megadott feladatok definícióját frissíti.
 
 A feladatok neve megadható a. JSON fájlban vagy a parancssorban. Ha mindkettő meg van adva, a parancssorban szereplő névnek meg kell egyeznie a fájl egy fájljával.
@@ -319,7 +319,7 @@ New-AzStreamAnalyticsJob -ResourceGroupName StreamAnalytics-Default-Central-US -
 
 Ez a PowerShell-parancs a StreamingJob tartozó feladatdefiníció helyébe lép.
 
-### <a name="new-azurestreamanalyticsoutput--new-azstreamanalyticsoutput"></a>Új – AzureStreamAnalyticsOutput | Új – AzStreamAnalyticsOutput
+### <a name="new-azurestreamanalyticsoutput--new-azstreamanalyticsoutput"></a>New-AzureStreamAnalyticsOutput | New-AzStreamAnalyticsOutput
 Létrehoz egy új kimenetet egy Stream Analytics feladatokon belül, vagy frissít egy meglévő kimenetet.  
 
 A kimenet neve megadható a. JSON fájlban vagy a parancssorban. Ha mindkettő meg van adva, a parancssorban szereplő névnek meg kell egyeznie a fájl egy fájljával.
@@ -362,7 +362,7 @@ New-AzStreamAnalyticsOutput -ResourceGroupName StreamAnalytics-Default-Central-U
 
 Ez a PowerShell-parancs lecseréli a "output" definícióját a StreamingJob.
 
-### <a name="new-azurestreamanalyticstransformation--new-azstreamanalyticstransformation"></a>Új – AzureStreamAnalyticsTransformation | Új – AzStreamAnalyticsTransformation
+### <a name="new-azurestreamanalyticstransformation--new-azstreamanalyticstransformation"></a>New-AzureStreamAnalyticsTransformation | New-AzStreamAnalyticsTransformation
 Új átalakítást hoz létre egy Stream Analytics feladatokon belül, vagy frissíti a meglévő átalakítást.
 
 Az átalakítás neve megadható a. JSON fájlban vagy a parancssorban. Ha mindkettő meg van adva, a parancssorban szereplő névnek meg kell egyeznie a fájl egy fájljával.
@@ -465,7 +465,7 @@ Remove-AzStreamAnalyticsOutput -ResourceGroupName StreamAnalytics-Default-Centra
 
 Ez a PowerShell-parancs eltávolítja a kimeneti kimenetet a StreamingJob.  
 
-### <a name="start-azurestreamanalyticsjob--start-azstreamanalyticsjob"></a>Start – AzureStreamAnalyticsJob | Start – AzStreamAnalyticsJob
+### <a name="start-azurestreamanalyticsjob--start-azstreamanalyticsjob"></a>Start-AzureStreamAnalyticsJob | Start-AzStreamAnalyticsJob
 Aszinkron módon helyez üzembe és indít el egy Stream Analytics feladatot a Microsoft Azureban.
 
 **1\. példa**
@@ -484,7 +484,7 @@ Start-AzStreamAnalyticsJob -ResourceGroupName StreamAnalytics-Default-Central-US
 
 Ez a PowerShell-parancs elindítja a feladatot a StreamingJob egy egyéni kimeneti kezdési időponttal, amely 2012, 12:12:12 UTC értékre van állítva.
 
-### <a name="stop-azurestreamanalyticsjob--stop-azstreamanalyticsjob"></a>Stop-AzureStreamAnalyticsJob | Leállítás – AzStreamAnalyticsJob
+### <a name="stop-azurestreamanalyticsjob--stop-azstreamanalyticsjob"></a>Stop-AzureStreamAnalyticsJob | Stop-AzStreamAnalyticsJob
 Aszinkron módon leállít egy Stream Analytics feladatot a Microsoft Azure-ben való futtatásból, és lefoglalja a használatban lévő erőforrásokat. A feladatdefiníció és a metaadatok a Azure Portal és a felügyeleti API-kon keresztül is elérhetők maradnak az előfizetésen belül, így a feladatok szerkeszthetők és újraindíthatók. Leállított állapotban lévő feladatokért nem számítunk fel díjat.
 
 **1\. példa**
@@ -503,7 +503,7 @@ Stop-AzStreamAnalyticsJob -ResourceGroupName StreamAnalytics-Default-Central-US 
 
 Ez a PowerShell-parancs leállítja a StreamingJob feladatot.  
 
-### <a name="test-azurestreamanalyticsinput--test-azstreamanalyticsinput"></a>Teszt – AzureStreamAnalyticsInput | Teszt – AzStreamAnalyticsInput
+### <a name="test-azurestreamanalyticsinput--test-azstreamanalyticsinput"></a>Test-AzureStreamAnalyticsInput | Test-AzStreamAnalyticsInput
 Ellenőrzi, hogy Stream Analytics tud-e csatlakozni egy megadott bemenethez.
 
 **1\. példa**
@@ -522,7 +522,7 @@ Test-AzStreamAnalyticsInput -ResourceGroupName StreamAnalytics-Default-Central-U
 
 Ez a PowerShell-parancs a StreamingJob bemeneti EntryStream a kapcsolatok állapotát teszteli.  
 
-### <a name="test-azurestreamanalyticsoutput--test-azstreamanalyticsoutput"></a>Teszt – AzureStreamAnalyticsOutput | Teszt – AzStreamAnalyticsOutput
+### <a name="test-azurestreamanalyticsoutput--test-azstreamanalyticsoutput"></a>Test-AzureStreamAnalyticsOutput | Test-AzStreamAnalyticsOutput
 Ellenőrzi, hogy Stream Analytics tud-e csatlakozni a megadott kimenethez.
 
 **1\. példa**

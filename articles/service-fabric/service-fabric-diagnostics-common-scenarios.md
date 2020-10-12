@@ -4,10 +4,10 @@ description: Ismerje meg az Azure Service Fabric-alkalmazásokon belüli által�
 ms.topic: article
 ms.date: 02/25/2019
 ms.openlocfilehash: f92bc02082d8bcd9d917f05c93d3da413f772cd0
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86257729"
 ---
 # <a name="diagnose-common-scenarios-with-service-fabric"></a>Gyakori forgatókönyvek diagnosztizálása Service Fabric
@@ -130,7 +130,7 @@ Az alkalmazások Reliable Services vagy szereplőinek teljesítményének nyomon
 
 A megbízható [szolgáltatásokkal](service-fabric-reliable-serviceremoting-diagnostics.md) és [szereplőkkel](service-fabric-reliable-actors-diagnostics.md) kapcsolatos teljesítményszámlálók teljes listájáért olvassa el a következő hivatkozásokat:
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Gyakori programkód-aktiválási hibák megkeresése](./service-fabric-diagnostics-code-package-errors.md)
 * [Riasztások beállítása az AI-ben](../azure-monitor/platform/alerts-log.md) a teljesítmény vagy a használat változásairól való értesítéshez

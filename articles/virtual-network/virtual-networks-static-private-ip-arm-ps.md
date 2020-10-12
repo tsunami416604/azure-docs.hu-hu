@@ -18,10 +18,10 @@ ms.date: 02/07/2019
 ms.author: kumud
 ms.custom: ''
 ms.openlocfilehash: ced76b73a8a08e6886cf0cef04c74a82d05c75dd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84708127"
 ---
 # <a name="create-a-virtual-machine-with-a-static-private-ip-address-using-powershell"></a>Statikus magánhálózati IP-címmel rendelkező virtuális gép létrehozása a PowerShell használatával
@@ -99,7 +99,7 @@ A következő lépéseket a helyi számítógépről vagy a Azure Cloud Shell ha
 > [!IMPORTANT]
 > A virtuális gép internetről való eléréséhez nyilvános IP-címet kell hozzárendelni a virtuális géphez. A dinamikus magánhálózati IP-címek hozzárendelését is módosíthatja statikus hozzárendelésre. További információ: [IP-címek hozzáadása vagy módosítása](virtual-network-network-interface-addresses.md). Emellett azt javasoljuk, hogy korlátozza a virtuális gép hálózati forgalmát úgy, hogy hálózati biztonsági csoportot társít a hálózati adapterhez, az alhálózatot, amelyet a hálózati adaptert vagy mindkettőt létrehozott. Részletekért lásd: [hálózati biztonsági csoportok kezelése](manage-network-security-group.md).
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs rá szükség, a [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) használatával eltávolíthatja az erőforráscsoportot és a benne található összes erőforrást:
 

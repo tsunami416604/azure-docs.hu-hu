@@ -4,10 +4,10 @@ description: A Service Fabric alkalmazás frissítésével kapcsolatos paraméte
 ms.topic: conceptual
 ms.date: 11/08/2018
 ms.openlocfilehash: 6b6116bf1188fcf191b2d672e6c698bb3c050e6c
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86247965"
 ---
 # <a name="application-upgrade-parameters"></a>Alkalmazásfrissítési paraméterek
@@ -52,7 +52,7 @@ Az állapot-értékelési paraméterek megadása nem kötelező. Ha az állapot-
 > | --- | --- | --- |
 > | ApplicationParameter |PS, VS| Megadja az alkalmazás paramétereinek felülbírálásait.<br>A PowerShell-alkalmazás paraméterei szórótábla név/érték párokként vannak megadva. Például: @ {"VotingData_MinReplicaSetSize" = "3"; "VotingData_PartitionCount" = "1"}.<br>A Visual Studio alkalmazás paramétereinek megadhatók az **alkalmazás-paraméterek fájl** mezőjében a közzététel Service Fabric alkalmazásban párbeszédpanelen.
 > | Jóváhagyás |PS| Az engedélyezett értékek értéke **igaz** és **hamis**. A parancsmag futtatása előtt megerősítést kér. |
-> | ConsiderWarningAsError |PS, VS |Az engedélyezett értékek értéke **igaz** és **hamis**. Az alapértelmezett érték a **False** (Hamis). Az alkalmazás állapotának kiértékelése során hibaként kezelheti az alkalmazáshoz tartozó figyelmeztetési állapottal kapcsolatos eseményeket. Alapértelmezés szerint a Service Fabric nem értékeli ki a figyelmeztetési állapottal kapcsolatos eseményeket (hibák), így a frissítés akkor is folytatódhat, ha figyelmeztető események vannak. |
+> | ConsiderWarningAsError |PS, VS |Az engedélyezett értékek értéke **igaz** és **hamis**. Az alapértelmezett érték **false (hamis**). Az alkalmazás állapotának kiértékelése során hibaként kezelheti az alkalmazáshoz tartozó figyelmeztetési állapottal kapcsolatos eseményeket. Alapértelmezés szerint a Service Fabric nem értékeli ki a figyelmeztetési állapottal kapcsolatos eseményeket (hibák), így a frissítés akkor is folytatódhat, ha figyelmeztető események vannak. |
 > | DefaultServiceTypeHealthPolicy | PS, VS |Meghatározza a figyelt frissítéshez használandó alapértelmezett szolgáltatástípus MaxPercentUnhealthyPartitionsPerService, MaxPercentUnhealthyReplicasPerPartition, MaxPercentUnhealthyServices formátumban megadott állapotát. Például az 5, 10, 15 a következő értékeket jelzi: MaxPercentUnhealthyPartitionsPerService = 5, MaxPercentUnhealthyReplicasPerPartition = 10, MaxPercentUnhealthyServices = 15. |
 > | Force | PS, VS | Az engedélyezett értékek értéke **igaz** és **hamis**. Azt jelzi, hogy a frissítési folyamat kihagyja a figyelmeztető üzenetet, és akkor is kényszeríti a frissítést, ha a verziószám nem módosult. Ez a helyi teszteléshez hasznos, de nem ajánlott éles környezetben használni, mivel a meglévő telepítést el kell távolítani, ami leállítja az időt és a potenciális adatvesztést. |
 > | ForceRestart |PS, VS |Ha a szolgáltatási kód frissítése nélkül frissít egy konfigurációs vagy adatcsomagot, a szolgáltatás csak akkor indul újra, ha a ForceRestart tulajdonság értéke TRUE ( **igaz**). Ha a frissítés befejeződött, Service Fabric értesíti a szolgáltatást arról, hogy az új konfigurációs csomag vagy adatcsomag elérhető. A szolgáltatás feladata a módosítások alkalmazása. Ha szükséges, a szolgáltatás újra tud indítani. |
@@ -82,7 +82,7 @@ Service Fabric az alkalmazások frissítése a Service Fabric parancssori felül
 | --- | --- |
 | alkalmazás-azonosító  |A frissítendő alkalmazás azonosítója. <br> Ez általában az alkalmazás teljes neve a "Fabric:" URI-séma nélkül. Az 6,0-es verziótól kezdődően a hierarchikus nevek a " \~ " karakterrel vannak tagolva. Ha például az alkalmazás neve "Fabric:/SajátPr/App1", az alkalmazás identitása a korábbi verziókban a következő: "SajátPr \~ App1", 6.0 + és "SajátPr/App1".|
 alkalmazás verziója |Annak az alkalmazásnak a verziója, amelyet a frissítési célok határoznak meg.|
-paraméterek  |Az alkalmazás frissítésekor alkalmazandó felülbírálások JSON-kódolású listája.|
+parameters  |Az alkalmazás frissítésekor alkalmazandó felülbírálások JSON-kódolású listája.|
 
 ### <a name="optional-parameters"></a>Választható paraméterek
 
@@ -101,9 +101,9 @@ szolgáltatás – állapot – szabályzat | A JSON-kódolású leképezés a s
 timeout | Meghatározza a művelet időtúllépési időtartamát másodpercben. Alapértelmezett: 60. |
 frissítés – tartomány – időtúllépés | Az egyes frissítési tartományok befejezésének időtartamát a *FailureAction* végrehajtása előtt kell végrehajtani. A rendszer először egy ISO 8601 időtartamot jelölő sztringként értelmezi. Ha ez nem sikerül, a rendszer az ezredmásodpercek teljes számát jelölő számként értelmezi. Az alapértelmezett érték soha nem (végtelen), és megfelelően testre kell szabni az alkalmazáshoz. Alapértelmezett: P10675199DT02H48M 05.4775807 S. |
 frissítés – időtúllépés | Az egyes frissítési tartományok befejezésének időtartamát a *FailureAction* végrehajtása előtt kell végrehajtani. A rendszer először egy ISO 8601 időtartamot jelölő sztringként értelmezi. Ha ez nem sikerül, a rendszer az ezredmásodpercek teljes számát jelölő számként értelmezi. Az alapértelmezett érték soha nem (végtelen), és megfelelően testre kell szabni az alkalmazáshoz. Alapértelmezett: P10675199DT02H48M 05.4775807 S.|
-Figyelmeztetés – hiba | Az engedélyezett értékek értéke **igaz** és **hamis**. Az alapértelmezett érték a **False** (Hamis). Jelzőként adható át. Az alkalmazás állapotának kiértékelése során hibaként kezelheti az alkalmazáshoz tartozó figyelmeztetési állapottal kapcsolatos eseményeket. Alapértelmezés szerint a Service Fabric nem értékeli ki a figyelmeztetési állapottal kapcsolatos eseményeket (hibák), így a frissítés akkor is folytatódhat, ha figyelmeztető események vannak. |
+Figyelmeztetés – hiba | Az engedélyezett értékek értéke **igaz** és **hamis**. Az alapértelmezett érték **false (hamis**). Jelzőként adható át. Az alkalmazás állapotának kiértékelése során hibaként kezelheti az alkalmazáshoz tartozó figyelmeztetési állapottal kapcsolatos eseményeket. Alapértelmezés szerint a Service Fabric nem értékeli ki a figyelmeztetési állapottal kapcsolatos eseményeket (hibák), így a frissítés akkor is folytatódhat, ha figyelmeztető események vannak. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [Az alkalmazás a Visual Studióval történő frissítése](service-fabric-application-upgrade-tutorial.md) végigvezeti egy alkalmazás frissítésén a Visual Studióval.
 
 [Az alkalmazás PowerShell használatával történő frissítése](service-fabric-application-upgrade-tutorial-powershell.md) végigvezeti az alkalmazás frissítésén a PowerShell használatával.

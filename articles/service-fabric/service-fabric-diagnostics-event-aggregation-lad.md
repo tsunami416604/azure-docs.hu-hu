@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 2/25/2019
 ms.author: srrengar
 ms.openlocfilehash: 453258bb5768a2faa8f4e42cce86d02125283026
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86259195"
 ---
 # <a name="event-aggregation-and-collection-using-linux-azure-diagnostics"></a>Események összesítése és gyűjtése linuxos Azure Diagnostics használatával
@@ -41,7 +41,7 @@ Ha a fürt létrehozása során a diagnosztikai bővítményt a fürtben lévő 
 Ezzel konfigurálja a LAD-ügynököt a megadott naplófájlok figyelésére. Minden alkalommal, amikor új sort fűz a fájlhoz, létrehoz egy syslog-bejegyzést, amelyet a rendszer a megadott tárolóba (táblára) küld.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 1. A hibák elhárítása során megfontolandó események részletesebb megismeréséhez tekintse meg a [lttng érhető el dokumentációját](https://lttng.org/docs) és a [Lad használatával](../virtual-machines/extensions/diagnostics-linux.md)foglalkozó témakört.
 2. [A log Analytics ügynök beállítása](service-fabric-diagnostics-event-analysis-oms.md) a metrikák gyűjtéséhez, a fürtön üzembe helyezett tárolók figyeléséhez és a naplók megjelenítéséhez 

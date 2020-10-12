@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 05/28/2020
 ms.author: allensu
 ms.openlocfilehash: fbd4c4ecfa2be9815e5d301a02460dc28171716a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91329261"
 ---
 # <a name="public-ip-addresses"></a>Nyilvános IP-címek
@@ -37,7 +37,7 @@ Az Azure Resource Manager szolgáltatásban a [nyilvános IP-cím](virtual-netwo
 
 A nyilvános IP-címek IPv4- vagy IPv6-címekkel jönnek létre. 
 
-## <a name="sku"></a>Termékváltozat
+## <a name="sku"></a>SKU
 
 A nyilvános IP-címek a következő termékváltozatok valamelyikével jönnek létre:
 

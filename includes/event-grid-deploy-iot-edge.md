@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: event-grid
 author: spelluru
 ms.service: event-grid
@@ -9,10 +9,10 @@ ms.date: 10/10/2019
 ms.author: spelluru
 ms.custom: include file
 ms.openlocfilehash: 0fc6a62a94f31617209bcc60bfaa95bc8927551a
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86050490"
 ---
 ## <a name="deploy-event-grid-iot-edge-module"></a>Event Grid IoT Edge modul üzembe helyezése
@@ -46,7 +46,7 @@ Az üzembe helyezési jegyzék egy JSON-dokumentum, amely leírja, hogy mely mod
 [!INCLUDE [event-grid-edge-module-version-update](event-grid-edge-module-version-update.md)]
 
    * **Név**: eventgridmodule
-   * **Rendszerkép URI-ja**:`mcr.microsoft.com/azure-event-grid/iotedge:latest`
+   * **Rendszerkép URI-ja**: `mcr.microsoft.com/azure-event-grid/iotedge:latest`
    * **Tároló-létrehozási beállítások**:
 
 ```json
@@ -67,7 +67,7 @@ Az üzembe helyezési jegyzék egy JSON-dokumentum, amely leírja, hogy mely mod
     }
 ```
 
- 1. Kattintson a **Mentés** gombra
+ 1. Kattintson a **Mentés** gombra.
  1. Az útvonalak szakasz folytatásához kattintson a **tovább** gombra.
 
     > [!NOTE]

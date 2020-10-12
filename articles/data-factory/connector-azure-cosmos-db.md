@@ -12,13 +12,13 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 12/11/2019
 ms.openlocfilehash: be6dbb74883f12498c5c011e35fa955509ff627c
-ms.sourcegitcommit: 1a0dfa54116aa036af86bd95dcf322307cfb3f83
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88042768"
 ---
-# <a name="copy-and-transform-data-in-azure-cosmos-db-sql-api-by-using-azure-data-factory"></a>Azure Cosmos DB (SQL API) adatainak másolása és átalakítása Azure Data Factory használatával
+# <a name="copy-and-transform-data-in-azure-cosmos-db-sql-api-by-using-azure-data-factory"></a>Adatok másolása és átalakítása az Azure Cosmos DB-ben (SQL API) az Azure Data Factory használatával
 
 > [!div class="op_single_selector" title1="Válassza ki az Ön által használt Data Factory-szolgáltatás verzióját:"]
 > * [1-es verzió](v1/data-factory-azure-documentdb-connector.md)
@@ -157,7 +157,7 @@ A másolási tevékenység **forrása** szakasz a következő tulajdonságokat t
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
 | típus | A másolási tevékenység forrásának **Type** tulajdonságát **CosmosDbSqlApiSource**értékre kell állítani. |Igen |
-| lekérdezés |Az adatolvasás Azure Cosmos DB lekérdezésének megadásához.<br/><br/>Példa:<br /> `SELECT c.BusinessEntityID, c.Name.First AS FirstName, c.Name.Middle AS MiddleName, c.Name.Last AS LastName, c.Suffix, c.EmailPromotion FROM c WHERE c.ModifiedDate > \"2009-01-01T00:00:00\"` |Nem <br/><br/>Ha nincs megadva, a rendszer az SQL-utasítást hajtja végre:`select <columns defined in structure> from mycollection` |
+| lekérdezés |Az adatolvasás Azure Cosmos DB lekérdezésének megadásához.<br/><br/>Példa:<br /> `SELECT c.BusinessEntityID, c.Name.First AS FirstName, c.Name.Middle AS MiddleName, c.Name.Last AS LastName, c.Suffix, c.EmailPromotion FROM c WHERE c.ModifiedDate > \"2009-01-01T00:00:00\"` |Nem <br/><br/>Ha nincs megadva, a rendszer az SQL-utasítást hajtja végre: `select <columns defined in structure> from mycollection` |
 | preferredRegions | Azoknak a régióknak az előnyben részesített listája, amelyekhez csatlakozni kíván az adatok Cosmos DBból való beolvasása során. | Nem |
 | pageSize | A lekérdezési eredményben szereplő dokumentumok száma oldalanként. Az alapértelmezett érték a "-1", ami azt jelenti, hogy a szolgáltatás oldalsó dinamikus oldalának mérete legfeljebb 1000. | Nem |
 
@@ -324,6 +324,6 @@ Séma – agnosztikus másolás:
 
 Ha például SQL Serverról Azure Cosmos DBra végez áttelepítést, a másolási tevékenység könnyedén leképezheti a táblázatos adatokat a forrásból a JSON-dokumentumok Cosmos DBba való lelapulása érdekében. Bizonyos esetekben érdemes lehet újratervezni az adatmodellt úgy, hogy optimalizálja a NoSQL használati eseteit az [Azure Cosmos db adatmodellezése](../cosmos-db/modeling-data.md)alapján, például az adatok denormalizálása egy JSON-dokumentumban található összes kapcsolódó alelem beágyazásával. Ilyen esetben tekintse át [ezt a cikket](../cosmos-db/migrate-relational-to-cosmos-db-sql-api.md) , amely bemutatja, hogyan érheti el Azure Data Factory másolási tevékenység használatával.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A másolási tevékenység által támogatott adattárak listáját a Azure Data Factoryban található forrásként és nyelőként tekintheti meg. lásd: [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats).

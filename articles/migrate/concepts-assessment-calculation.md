@@ -4,10 +4,10 @@ description: Tudnivalók a Azure Migrate Server Assessment értékeléséről
 ms.topic: conceptual
 ms.date: 05/27/2020
 ms.openlocfilehash: 4020df3ef77e4b8ae0618108f539322092b93079
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91275523"
 ---
 # <a name="server-assessment-overview-migrate-to-azure-vms"></a>A kiszolgáló értékelésének áttekintése (Migrálás az Azure-beli virtuális gépekre)
@@ -152,7 +152,7 @@ Tulajdonság | Részletek | Azure-készültségi állapot
 --- | --- | ---
 **Rendszerindítás típusa** | Az Azure a BIOS rendszerindítási típusával támogatja a virtuális gépeket, nem az UEFI-t. | Feltételesen üzemkész, ha a rendszerindítás UEFI típusú.
 **Cores** | Minden gépnek legfeljebb 128 maggal kell rendelkeznie, amely az Azure-beli virtuális gépek által támogatott maximális szám.<br/><br/> Ha rendelkezésre áll a teljesítmény előzményei, Azure Migrate az összehasonlításhoz a felhasznált magokat veszi figyelembe. Ha az értékelési beállítások egy kényelmi tényezőt határoznak meg, a kihasználatlan magok száma megszorozza a komfort tényezővel.<br/><br/> Ha nincsenek teljesítménybeli előzmények, a Azure Migrate a lefoglalt magok használatával alkalmazza a komfort tényezőt. | Készen áll, ha a magok száma a határértéken belül van
-**RAM** | Az egyes gépek legfeljebb 3 892 GB RAM-mal rendelkezhetnek, ami az Azure M sorozatú Standard_M128m &nbsp; <sup>2</sup> virtuális gép által támogatott maximális méret. [További információ](../virtual-machines/sizes.md).<br/><br/> Ha elérhetők a teljesítmény előzményei, Azure Migrate a felhasznált RAM-ot az összehasonlításhoz. Ha meg van adva egy kényelmi tényező, a kihasznált RAM-ot a komfort faktor megszorozza.<br/><br/> Ha nincsenek előzmények, a rendszer a lefoglalt RAM-ot használja a komfort tényező alkalmazásához.<br/><br/> | Készen áll, ha a RAM mennyisége a határértéken belül van
+**RAM** | Az egyes gépek legfeljebb 3 892 GB RAM-mal rendelkezhetnek, ami az Azure M sorozatú Standard_M128m &nbsp; <sup>2</sup> virtuális gép által támogatott maximális méret. [További információk](../virtual-machines/sizes.md).<br/><br/> Ha elérhetők a teljesítmény előzményei, Azure Migrate a felhasznált RAM-ot az összehasonlításhoz. Ha meg van adva egy kényelmi tényező, a kihasznált RAM-ot a komfort faktor megszorozza.<br/><br/> Ha nincsenek előzmények, a rendszer a lefoglalt RAM-ot használja a komfort tényező alkalmazásához.<br/><br/> | Készen áll, ha a RAM mennyisége a határértéken belül van
 **Storage-lemez** | A lemez lefoglalt mérete nem haladhatja meg a 32 TB-ot. Bár az Azure támogatja az 64 TB-os lemezeket az Azure ultra SSD Disks szolgáltatással, Azure Migrate: a Server Assessment jelenleg a 32 TB-ot ellenőrzi a lemez mérete miatt, mert még nem támogatja ultra SSD. <br/><br/> A géphez csatolt lemezek számának, beleértve az operációsrendszer-lemezt, 65 vagy kevesebbnek kell lennie. | Készen áll, ha a lemez mérete és száma a határértékeken belül van
 **Hálózat** | A gépekhez nem tartozhat több, mint 32 hálózati adapter (NIC). | Készen áll, ha a hálózati adapterek száma a korláton belül van
 

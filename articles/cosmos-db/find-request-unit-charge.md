@@ -8,10 +8,10 @@ ms.date: 09/01/2019
 ms.author: thweiss
 ms.custom: devx-track-js
 ms.openlocfilehash: 81660bee32cace458424c9975c74ca7980148e29
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91316188"
 ---
 # <a name="find-the-request-unit-charge-in-azure-cosmos-db"></a>A kérési egység díjszabásának megkeresése Azure Cosmos DB
@@ -188,7 +188,7 @@ Jelenleg a kérelmek díját a Azure Portal csak a lekérdezésekhez lehet megke
 
 1. A **lekérdezési statisztikák** lehetőség kiválasztásával jelenítheti meg a tényleges kérelmek díját a végrehajtott kérelemért.
 
-:::image type="content" source="./media/find-request-unit-charge/portal-mongodb-query.png" alt-text="Képernyőkép a MongoDB-lekérdezési kérelmekért a Azure Portal":::
+:::image type="content" source="./media/find-request-unit-charge/portal-mongodb-query.png" alt-text="Képernyőkép az SQL-lekérdezési kérések díjszabásáról a Azure Portal":::
 
 ### <a name="use-the-mongodb-net-driver"></a>A MongoDB .NET-illesztőprogram használata
 

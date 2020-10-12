@@ -7,13 +7,13 @@ ms.author: juluk
 ms.date: 06/29/2020
 author: jluk
 ms.openlocfilehash: d8ae03d52691a6c30f78439a579e7e7c136dda76
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90975282"
 ---
-# <a name="customize-cluster-egress-with-a-user-defined-route"></a>Fürt kilépésének testreszabása felhasználó által megadott útvonallal
+# <a name="customize-cluster-egress-with-a-user-defined-route"></a>A fürt kilépésének testreszabása User-Defined útvonalon
 
 Az AK-fürtökből való kilépések testreszabhatók az adott forgatókönyvek kihasználása érdekében. Alapértelmezés szerint az AK kiépít egy szabványos SKU-Load Balancer, amelyet a kimenő forgalomhoz kell beállítani és használni. Előfordulhat azonban, hogy az alapértelmezett beállítás nem teljesíti az összes forgatókönyv követelményeit, ha a nyilvános IP-címek nem megengedettek, vagy további ugrásokra van szükség a kimenő forgalomhoz.
 

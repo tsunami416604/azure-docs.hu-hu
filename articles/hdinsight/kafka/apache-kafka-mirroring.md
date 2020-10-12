@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 11/29/2019
 ms.openlocfilehash: 278fbdf7010fe7b14488bb021ab8a366393ad512
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86087362"
 ---
 # <a name="use-mirrormaker-to-replicate-apache-kafka-topics-with-kafka-on-hdinsight"></a>A MirrorMaker használata Apache Kafka-témakörök replikálására a Kafka on HDInsight esetében
@@ -81,7 +81,7 @@ Ez az architektúra két fürtöt tartalmaz különböző erőforráscsoportok �
 1. Hozzon létre virtuális hálózati társításokat. Ez a lépés két társítást hoz létre: egyet a **Kafka-Primary-vnet** és a **Kafka-másodlagos-vnet** , valamint a Kafka- **másodlagos-vnet** és a **Kafka-Primary-vnet**között.
     1. Válassza ki a **Kafka-Primary-vnet** virtuális hálózatot.
     1. Válassza **a** **Beállítások**területen a társítások lehetőséget.
-    1. Válassza a **Hozzáadás** elemet.
+    1. Válassza a **Hozzáadás** lehetőséget.
     1. A társ-kezelés **hozzáadása** képernyőn adja meg a részleteket az alábbi képernyőképen látható módon.
 
         ![HDInsight Kafka vnet-társítás hozzáadása](./media/apache-kafka-mirroring/hdi-add-vnet-peering.png)

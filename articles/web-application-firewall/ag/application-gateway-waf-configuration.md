@@ -8,10 +8,10 @@ ms.date: 02/20/2020
 ms.author: victorh
 ms.topic: conceptual
 ms.openlocfilehash: ddf631601510e725d77cc391ad41192a47ab0cf1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84752476"
 ---
 # <a name="web-application-firewall-request-size-limits-and-exclusion-lists"></a>Webalkalmazási tűzfal kérelmek méretének korlátai és kizárási listája
@@ -24,9 +24,9 @@ Az Azure Application Gateway webalkalmazási tűzfal (WAF) védelmet biztosít a
 
 A WAF kizárási listája lehetővé teszi bizonyos WAF kiértékelését. Gyakori példa Active Directory a hitelesítési vagy a jelszó mezőkhöz használt beszúrt tokenek. Ezek az attribútumok olyan speciális karaktereket tartalmaznak, amelyek a WAF-szabályokból hamis pozitív riasztást indíthatnak. Miután hozzáadta az attribútumot a WAF kizárási listájához, nem számít semmilyen konfigurált és aktív WAF szabály. A kizárási listák globálisak a hatókörben.
 
-A következő attribútumok adhatók hozzá a kizárási listához név szerint. A kiválasztott mező értékeit a rendszer nem értékeli ki a WAF-szabályok alapján, de a nevük továbbra is fennáll (lásd az alábbi 1. példát, a felhasználói ügynök fejlécének értékét a rendszer kizárja a WAF kiértékelése alól). A kizárási listán el kell távolítani a mező értékének ellenőrzését.
+A következő attribútumok adhatók hozzá a kizárási listához név szerint. A kiválasztott mező értékeit a rendszer nem értékeli ki a WAF-szabályok alapján, de a nevük továbbra is fennáll (lásd az alábbi 1. példát, a User-Agent fejléc értéke ki van zárva a WAF kiértékelése alól). A kizárási listán el kell távolítani a mező értékének ellenőrzését.
 
-* Kérelemfejlécek
+* Kérések fejlécei
 * Cookie-k kérése
 * A kérelem attribútumának neve (ARG) kizárási elemként vehető fel, például:
 

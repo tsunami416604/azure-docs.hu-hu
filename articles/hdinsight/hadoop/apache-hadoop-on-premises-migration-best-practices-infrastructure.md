@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/06/2019
 ms.openlocfilehash: b9f7e93af61dbcf306f7d6eb105cb113412a423a
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86083100"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---infrastructure-best-practices"></a>Helyszíni Apache Hadoop-fürtök migrálása az Azure HDInsight-infrastruktúrára – ajánlott eljárások
@@ -101,7 +101,7 @@ A HDInsight előre megírt parancsfájlokat biztosít a következő összetevők
 
 A parancsfájlok műveletei az Azure Marketplace-en is HDInsight-alkalmazásként közzétehetők.
 
-További információért tekintse át a következő cikkeket:
+További információkért tekintse át a következő cikkeket:
 
 - [Külső gyártótól származó Apache Hadoop alkalmazások telepítése a HDInsight-on](../hdinsight-apps-install-applications.md)
 - [HDInsight-fürtök testreszabása parancsfájl-műveletek használatával](../hdinsight-hadoop-customize-cluster-linux.md)
@@ -172,7 +172,7 @@ A HDInsight új vagy meglévő Azure-Virtual Networkhoz is hozzáadhatók. Ha a 
 > [!Note]  
 > A HDInsight jelenleg nem támogatja a kényszerített bújtatást. A kényszerített bújtatás egy olyan alhálózat-beállítás, amely az eszközre irányuló kimenő internetes forgalmat ellenőrzés és naplózás céljából kényszeríti. Távolítsa el a kényszerített bújtatást, mielőtt telepítené a HDInsight egy alhálózatba, vagy hozzon létre egy új alhálózatot a HDInsight. A HDInsight emellett nem támogatja a kimenő hálózati kapcsolatok korlátozását.
 
-További információért tekintse át a következő cikkeket:
+További információkért tekintse át a következő cikkeket:
 
 - [Azure Virtual-Networks – áttekintés](../../virtual-network/virtual-networks-overview.md)
 - [Azure HDInsight kiterjesztése Azure virtuális hálózat használatával](../hdinsight-plan-virtual-network-deployment.md)
@@ -181,7 +181,7 @@ További információért tekintse át a következő cikkeket:
 
 A HDInsight támogatja a [virtuális hálózati szolgáltatás-végpontokat](../../virtual-network/virtual-network-service-endpoints-overview.md), amelyek lehetővé teszik az Azure Blob Storage, Azure Data Lake Storage Gen2, Cosmos db és SQL-adatbázisokhoz való biztonságos kapcsolódást. A szolgáltatás-végpont Azure HDInsight való engedélyezésével a forgalom a biztonságos útvonalon halad át az Azure-adatközponton belül. Ezzel a fokozott biztonsággal a hálózati rétegben zárolhatja big data Storage-fiókjait a megadott virtuális hálózatokra (virtuális hálózatok), és továbbra is zökkenőmentesen használhatja a HDInsight-fürtöket az adateléréshez és a feldolgozáshoz.
 
-További információért tekintse át a következő cikkeket:
+További információkért tekintse át a következő cikkeket:
 
 - [Virtuális hálózati szolgáltatásvégpontok](../../virtual-network/virtual-network-service-endpoints-overview.md)
 - [A HDInsight biztonság növelése a szolgáltatási végpontokkal](https://azure.microsoft.com/blog/enhance-hdinsight-security-with-service-endpoints/)

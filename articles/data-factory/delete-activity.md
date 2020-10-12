@@ -13,10 +13,10 @@ ms.devlang: na
 ms.topic: conceptual
 ms.date: 08/12/2020
 ms.openlocfilehash: 47a280a46cbc0650efb9a7576bb21bb31d1d2613
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91330417"
 ---
 # <a name="delete-activity-in-azure-data-factory"></a>Törlési tevékenység az Azure Data Factoryben
@@ -86,13 +86,13 @@ A Azure Data Factory törlés tevékenységgel törölheti a fájlokat vagy mapp
 
 | Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
-| adatkészlet | Az adatkészlet hivatkozását adja meg a törlendő fájlok vagy mappák meghatározásához | Yes |
+| adatkészlet | Az adatkészlet hivatkozását adja meg a törlendő fájlok vagy mappák meghatározásához | Igen |
 | rekurzív | Azt jelzi, hogy a rendszer törli-e a fájlokat rekurzív módon az almappákból, vagy csak a megadott mappából.  | Nem. A mező alapértelmezett értéke: `false`. |
 | maxConcurrentConnections | Azon kapcsolatok száma, amelyek a Storage Store-hoz csatlakoznak egyidejűleg a mappák vagy fájlok törléséhez.   |  Nem. A mező alapértelmezett értéke: `1`. |
-| enablelogging | Azt jelzi, hogy rögzíteni kell-e a törölt mappát vagy fájlneveket. Ha az értéke TRUE (igaz), meg kell adnia egy Storage-fiókot a naplófájl mentéséhez, hogy nyomon tudja követni a törlési tevékenység viselkedését a naplófájl olvasásával. | No |
-| logStorageSettings | Csak akkor alkalmazható, ha a EnableLogging = True.<br/><br/>A tárolási tulajdonságok olyan csoportja, amely megadhatja, hogy hová szeretné menteni a DELETE tevékenység által törölt mappát vagy fájlneveket tartalmazó naplófájlt. | No |
-| linkedServiceName | Csak akkor alkalmazható, ha a EnableLogging = True.<br/><br/>Az [Azure Storage](connector-azure-blob-storage.md#linked-service-properties), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#linked-service-properties)vagy [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#linked-service-properties) társított szolgáltatása, amely a DELETE tevékenység által törölt mappát vagy fájlneveket tartalmazó naplófájlt tárolja. Vegye figyelembe, hogy a fájlok törléséhez ugyanazt a Integration Runtime-típust kell konfigurálnia, mint amelyet a DELETE tevékenység használ. | No |
-| path | Csak akkor alkalmazható, ha a EnableLogging = True.<br/><br/>A naplófájlnak a Storage-fiókba való mentésének elérési útja. Ha nem ad meg elérési utat, a szolgáltatás létrehoz egy tárolót. | No |
+| enablelogging | Azt jelzi, hogy rögzíteni kell-e a törölt mappát vagy fájlneveket. Ha az értéke TRUE (igaz), meg kell adnia egy Storage-fiókot a naplófájl mentéséhez, hogy nyomon tudja követni a törlési tevékenység viselkedését a naplófájl olvasásával. | Nem |
+| logStorageSettings | Csak akkor alkalmazható, ha a EnableLogging = True.<br/><br/>A tárolási tulajdonságok olyan csoportja, amely megadhatja, hogy hová szeretné menteni a DELETE tevékenység által törölt mappát vagy fájlneveket tartalmazó naplófájlt. | Nem |
+| linkedServiceName | Csak akkor alkalmazható, ha a EnableLogging = True.<br/><br/>Az [Azure Storage](connector-azure-blob-storage.md#linked-service-properties), [Azure Data Lake Storage Gen1](connector-azure-data-lake-store.md#linked-service-properties)vagy [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#linked-service-properties) társított szolgáltatása, amely a DELETE tevékenység által törölt mappát vagy fájlneveket tartalmazó naplófájlt tárolja. Vegye figyelembe, hogy a fájlok törléséhez ugyanazt a Integration Runtime-típust kell konfigurálnia, mint amelyet a DELETE tevékenység használ. | Nem |
+| path | Csak akkor alkalmazható, ha a EnableLogging = True.<br/><br/>A naplófájlnak a Storage-fiókba való mentésének elérési útja. Ha nem ad meg elérési utat, a szolgáltatás létrehoz egy tárolót. | Nem |
 
 ## <a name="monitoring"></a>Figyelés
 
@@ -120,7 +120,7 @@ A törlési tevékenység eredményét két helyen tekintheti meg és figyelheti
 
 ### <a name="sample-log-file-of-the-delete-activity"></a>A törlési tevékenység minta naplófájlja
 
-| Name | Kategória | Állapot | Hiba |
+| Name (Név) | Kategória | Állapot | Hiba |
 |:--- |:--- |:--- |:--- |
 | test1/yyy.jsbekapcsolva | Fájl | Törölve |  |
 | teszt2/hello789.txt | Fájl | Törölve |  |
