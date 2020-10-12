@@ -13,10 +13,10 @@ ms.author: jaszymas
 ms.reviewer: vanto, emlisa
 ms.date: 09/21/2020
 ms.openlocfilehash: f0ebd511d0b706d1d2066ea87f45c89ae536da69
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91321424"
 ---
 # <a name="an-overview-of-azure-sql-database-and-sql-managed-instance-security-capabilities"></a>A Azure SQL Database és az SQL felügyelt példányának biztonsági képességeinek áttekintése
@@ -75,9 +75,9 @@ Ajánlott eljárásként hozzon létre egyéni szerepköröket, ha szükséges. 
 
 ### <a name="row-level-security"></a>Sorszintű biztonság
 
-A sor szintű biztonság lehetővé teszi az ügyfelek számára, hogy a lekérdezést végrehajtó felhasználó jellemzői alapján szabályozzák az adatbázistábla soraihoz való hozzáférést (például csoporttagság vagy végrehajtási környezet). A sor szintű biztonság egyéni címkézett biztonsági fogalmak megvalósítására is használható. További információ: [sor szintű biztonság](/sql/relational-databases/security/row-level-security).
+A Row-Level biztonság lehetővé teszi az ügyfelek számára, hogy a lekérdezést végrehajtó felhasználó jellemzői alapján szabályozzák az adatbázistábla soraihoz való hozzáférést (például csoporttagság vagy végrehajtási környezet). Row-Level biztonság az egyéni címkéken alapuló biztonsági fogalmak megvalósítására is használható. További információ: [sor szintű biztonság](/sql/relational-databases/security/row-level-security).
 
-![Ez a diagram azt mutatja, hogy a sor szintű biztonsági védelem egy SQL-adatbázis egyes sorait a felhasználók által egy ügyfélalkalmazás segítségével érheti el.](./media/security-overview/azure-database-rls.png)
+![A diagram azt mutatja, hogy Row-Level biztonsági védelem egy SQL-adatbázis egyes sorait a felhasználók által egy ügyfélalkalmazás segítségével érheti el.](./media/security-overview/azure-database-rls.png)
 
 ## <a name="threat-protection"></a>Fenyegetések elleni védelem
 

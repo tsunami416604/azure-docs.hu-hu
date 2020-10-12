@@ -11,15 +11,15 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: 4e8813647211e0adbfe43a45ae0d19dc12a4a165
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90936100"
 ---
-# <a name="set-the-database-engine-settings-for-azure-arc-enabled-postgresql-hyperscale"></a>Az adatbázismotor beállításainak megadása az Azure arc-kompatibilis PostgreSQL-nagy kapacitású
+# <a name="set-the-database-engine-settings-for-azure-arc-enabled-postgresql-hyperscale"></a>Az Azure Arc-kompatibilis, rugalmas skálázású PostgreSQL adatbázismotor-beállításainak megadása
 
-Ez a dokumentum ismerteti a PostgreSQL nagy kapacitású-kiszolgálócsoport adatbázismotor-beállításainak egyéni (nem alapértelmezett) értékekre való beállításának lépéseit. Az adatbázismotor paramétereinek beállításával és az alapértelmezett értékkel kapcsolatos részletekért tekintse meg a PostgreSQL dokumentációját [itt](https://www.postgresql.org/docs/current/runtime-config.html).
+Ez a dokumentum a rugalmas skálázású PostgreSQL-kiszolgálócsoport adatbázismotorjának egyéni (nem alapértelmezett) értékre való beállításának lépéseit ismerteti. Az adatbázismotor paramétereinek beállításával és az alapértelmezett értékkel kapcsolatos részletekért tekintse meg a PostgreSQL dokumentációját [itt](https://www.postgresql.org/docs/current/runtime-config.html).
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
@@ -53,7 +53,7 @@ azdata arc postgres server edit -n <server group name>, [{--engine-settings, -e}
 azdata arc postgres server show -n <server group name>
 ```
 
-Például:
+Példa:
 
 ```console
 azdata arc postgres server show -n postgres01
@@ -86,7 +86,7 @@ Futtassa a következőt:
 azdata arc postgres server show -n <server group name>
 ```
 
-Például:
+Példa:
 
 ```console
 azdata arc postgres server show -n postgres01
@@ -115,13 +115,13 @@ A parancs általános formátuma:
 kubectl describe <kind of the custom resource> <server group name> -n <namespace name>
 ```
 
-Például:
+Példa:
 
 ```console
 kubectl describe postgresql-12 postgres01
 ```
 
-Ha a motor beállításaihoz egyéni értékek vannak beállítva, akkor a rendszer visszaadja azokat. Például:
+Ha a motor beállításaihoz egyéni értékek vannak beállítva, akkor a rendszer visszaadja azokat. Példa:
 
 ```console
 Engine:
@@ -150,7 +150,7 @@ Az alábbi parancsok a koordinátor csomópont paramétereit és a PostgreSQL-na
 azdata arc server edit -n <server group name> -e <parameter name>=<parameter value>
 ```
 
-Például:
+Példa:
 
 ```console
 azdata arc postgres server edit -n postgres01 -e shared_buffers=8MB
@@ -162,7 +162,7 @@ azdata arc postgres server edit -n postgres01 -e shared_buffers=8MB
 azdata arc postgres server edit -n <server group name> -e '<parameter name>=<parameter value>, <parameter name>=<parameter value>,...'
 ```
 
-Például:
+Példa:
 
 ```console
 azdata arc postgres server edit -n postgres01 -e 'shared_buffers=8MB, max_connections=50'
@@ -172,7 +172,7 @@ azdata arc postgres server edit -n postgres01 -e 'shared_buffers=8MB, max_connec
 
 Ha egy paramétert az alapértelmezett értékre szeretne visszaállítani, állítsa be úgy, hogy ne jelezzen értéket. 
 
-Például:
+Példa:
 
 ```console
 azdata arc postgres server edit -n postgres01 -e shared_buffers=
@@ -184,7 +184,7 @@ azdata arc postgres server edit -n postgres01 -e shared_buffers=
 azdata arc postgres server edit -n <server group name> -e '' -re
 ```
 
-Például:
+Példa:
 
 ```console
 azdata arc postgres server edit -n postgres01 -e '' -re
@@ -198,7 +198,7 @@ azdata arc postgres server edit -n postgres01 -e '' -re
 azdata arc postgres server edit -n <server group name> -e '<parameter name>="<parameter value>"'
 ```
 
-Például:
+Példa:
 
 ```console
 azdata arc postgres server edit -n postgres01 -e 'custom_variable_classes = "plpgsql,plperl"'
@@ -208,7 +208,7 @@ azdata arc postgres server edit -n postgres01 -e 'custom_variable_classes = "plp
 
 A környezeti változót a "" "belül kell becsomagolni, hogy az ne legyen megoldva a beállítása előtt.
 
-Például: 
+Példa: 
 
 ```console
 azdata arc postgres server edit -n postgres01 -e 'search_path = "$user"'

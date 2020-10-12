@@ -10,10 +10,10 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
 ms.openlocfilehash: 672c9f0d5403ae27a26d58617dca44f0f1121411
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90904167"
 ---
 # <a name="tutorial-sync-data-from-sql-edge-to-azure-blob-storage-by-using-azure-data-factory"></a>Oktatóanyag: adatok szinkronizálása az SQL Edge-ből az Azure Blob Storage-ba a Azure Data Factory használatával
@@ -218,6 +218,6 @@ Hozzon létre egy adatelőállítót az [oktatóanyag](../data-factory/quickstar
 
 6. Váltson a bal oldali **Monitorozás** lapra. Láthatja a manuális eseményindítás által elindított folyamatfuttatás állapotát. A lista frissítéséhez kattintson a **Frissítés** gombra.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az oktatóanyagban szereplő Azure Data Factory folyamat óránként egy SQL Edge-példányból származó adatokból másolja az Azure Blob Storage-ba egy helyet. Ha többet szeretne megtudni a Data Factory használatáról más forgatókönyvekben, tekintse meg ezeket az [oktatóanyagokat](../data-factory/tutorial-copy-data-portal.md).

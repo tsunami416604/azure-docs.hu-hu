@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 09/09/2020
 ms.author: mlottner
 ms.openlocfilehash: c348b800e9587f13e6ff004317a2aa12efb03394
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90936215"
 ---
 # <a name="tutorial-configure-security-agents"></a>Oktatóanyag: biztonsági ügynökök konfigurálása
@@ -117,7 +117,7 @@ A következő táblázat a Defender által a IoT biztonsági ügynökök számá
 
 Az alapértelmezett értékek a [GitHub](https\://aka.ms/iot-security-module-default)megfelelő sémájában érhetők el.
 
-| Name| Állapot | Érvényes értékek| Alapértelmezett értékek| Leírás |
+| Name (Név)| status | Érvényes értékek| Alapértelmezett értékek| Leírás |
 |----------|------------------------------------------------------------------------------|----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|---------------|---------------|
 |highPriorityMessageFrequency|Kötelező: hamis |Érvényes értékek: időtartam ISO 8601 formátumban |Alapértelmezett érték: PT7M |A magas prioritású üzenetek küldése előtti maximális időtartam.|
 |lowPriorityMessageFrequency |Kötelező: hamis|Érvényes értékek: időtartam ISO 8601 formátumban |Alapértelmezett érték: PT5H |Az alacsony prioritású üzenetek küldésének maximális ideje.|

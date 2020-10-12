@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 05/26/2020
 ms.openlocfilehash: a64d5cebfd8e70e2f54a66193a7041c47887c54a
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90898907"
 ---
 # <a name="apply-image-transformation"></a>Képátalakítás alkalmazása 
@@ -47,7 +47,7 @@ Az átalakítás megadásához kapcsolódnia kell egy [init rendszerkép-transzf
 
 ### <a name="module-parameters"></a>Modul paramétereinek
 
-| Name | Tartomány | Típus | Alapértelmezett                   | Leírás                              |
+| Name (Név) | Tartomány | Típus | Alapértelmezett                   | Leírás                              |
 | ---- | ----- | ---- | ------------------------- | ---------------------------------------- |
 | Mód | Bármelyik   | Mód | (Meg kell adni a felhasználót a megadásához) | Milyen célra használja a bemeneti átalakítást. Érdemes kizárni a "véletlenszerű" átalakítási műveleteket a következtetésekben, de megtarthatja őket a képzésben |
 

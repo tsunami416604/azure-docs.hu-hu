@@ -10,10 +10,10 @@ ms.date: 03/08/2019
 ms.topic: conceptual
 ms.custom: mqtt, devx-track-js
 ms.openlocfilehash: 21d0587b951d909f0091eccf9a7f86a484bc5051
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91324042"
 ---
 # <a name="create-and-test-a-new-simulated-device"></a>Új szimulált eszköz létrehozása és tesztelése
@@ -31,7 +31,7 @@ A második forgatókönyvben a contoso egy új intelligens villanykörte-eszköz
 
 *Tulajdonságok*
 
-| Name                     | Értékek                      |
+| Name (Név)                     | Értékek                      |
 | ------------------------ | --------------------------- |
 | Szín                    | Fehér, piros, kék            |
 | Fényerő               | 0 – 100                    |
@@ -41,9 +41,9 @@ A második forgatókönyvben a contoso egy új intelligens villanykörte-eszköz
 
 Az alábbi táblázat azokat az adatstream-jelentéseket mutatja be, amelyeket a villanykörte jelent a felhőnek:
 
-| Name   | Értékek      |
+| Name (Név)   | Értékek      |
 | ------ | ----------- |
-| Állapot | "on", "off" |
+| status | "on", "off" |
 | Hőmérséklet | Fok F |
 | online | igaz, hamis |
 
@@ -54,7 +54,7 @@ Az alábbi táblázat azokat az adatstream-jelentéseket mutatja be, amelyeket a
 
 A következő táblázat az új eszköz által támogatott műveleteket mutatja be:
 
-| Name        |
+| Name (Név)        |
 | ----------- |
 | Bekapcsolás   |
 | Kikapcsolás  |
@@ -63,7 +63,7 @@ A következő táblázat az új eszköz által támogatott műveleteket mutatja 
 
 Az alábbi táblázat az eszköz kezdeti állapotát mutatja be:
 
-| Name                     | Értékek |
+| Name (Név)                     | Értékek |
 | ------------------------ | -------|
 | Kezdeti szín            | Fehér  |
 | Kezdeti fényerő       | 75     |
@@ -465,7 +465,7 @@ Poster beállítása:
 
 1. Kattintson a **fájl > importálás**elemre. Ezután kattintson a **fájlok kiválasztása**elemre.
 
-1. Navigáljon a **Device-szimulációs-DotNet-Master/docs/Poster** mappába. Válassza az **Azure IoT-eszköz szimulációs megoldás gyorsító. postman_collection** és az **Azure IoT-eszköz szimulációs megoldásának gyorsítása elemet. postman_environment** és kattintson a **Megnyitás**gombra.
+1. Navigáljon a **Device-szimulációs-DotNet-Master/docs/Poster** mappába. Válassza az **Azure IoT-eszköz szimulációs megoldás Accelerator.postman_collection** és az **Azure IoT-eszköz szimulációs megoldás Accelerator.postman_environment** és kattintson a **Megnyitás**gombra.
 
 1. Bontsa ki az **Azure IoT-eszköz szimulációs megoldásának Gyorssegédjét** a küldendő kérelmekre.
 

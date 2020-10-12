@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: pafarley
 ms.openlocfilehash: f1dfe88741a304da92901d3997c746654336ef54
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85800040"
 ---
 # <a name="moderate-with-custom-term-lists-in-the-api-console"></a>Mérsékelt az API-konzol egyéni feltételekkel rendelkező listája
@@ -91,7 +91,7 @@ Miután módosította a feltételek listáját, frissítenie kell az indexét, h
 
    Lista metaadatainak hozzáadása kulcs-érték párokként, és nem a tényleges kifejezések.
  
-6. Válassza a **Küldés**lehetőséget. A lista létrejött. Jegyezze fel az új listához társított **azonosító** értéket. Erre az AZONOSÍTÓra szüksége lesz a más feltételek listázása felügyeleti funkcióihoz.
+6. Válassza a **Küldés** lehetőséget. A lista létrejött. Jegyezze fel az új listához társított **azonosító** értéket. Erre az AZONOSÍTÓra szüksége lesz a más feltételek listázása felügyeleti funkcióihoz.
 
    ![Kifejezések listája – a konzol válaszának létrehozása mező megjeleníti a lista AZONOSÍTÓját](images/try-terms-list-create-2.png)
  
@@ -113,7 +113,7 @@ Miután módosította a feltételek listáját, frissítenie kell az indexét, h
 
     Megnyílik a **kifejezés – az összes kifejezés beolvasása API-** konzol.
 
-11. A **listId** mezőben adja meg a lista azonosítóját, majd írja be az előfizetési kulcsot. Válassza a **Küldés**lehetőséget.
+11. A **listId** mezőben adja meg a lista azonosítóját, majd írja be az előfizetési kulcsot. Válassza a **Küldés** lehetőséget.
 
 12. A **válasz tartalma** mezőben ellenőrizze a beírt feltételeket.
 
@@ -172,6 +172,6 @@ Szerkesztheti a lista nevét és leírását, és metaadatokat is hozzáadhat.
    ![Lejárati listák – részletek frissítése konzol kérelem törzsének szerkesztése](images/try-terms-list-change-1.png)
  
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az alkalmazással való integrációhoz használja a kódban szereplő REST API, vagy Kezdje a [kifejezést a .net](term-lists-quickstart-dotnet.md) gyors útmutatóval.

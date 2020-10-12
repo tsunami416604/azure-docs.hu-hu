@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: egeaney
 ms.openlocfilehash: c959231826125349ecd6a62afe529248f7ac2eec
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91326796"
 ---
 # <a name="form-recognizer-encryption-of-data-at-rest"></a>Űrlap-felismerő titkosítása inaktív adatok esetén
@@ -29,5 +29,5 @@ Az Azure űrlap-felismerő automatikusan titkosítja az adatait a felhőben val�
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [Űrlap-felismerő ügyfél által felügyelt kulcs kérésének űrlapja](https://aka.ms/cogsvc-cmk)
+* [Űrlap-felismerő Customer-Managed kulcs kérésének űrlapja](https://aka.ms/cogsvc-cmk)
 * [További információ a Azure Key Vault](https://docs.microsoft.com/azure/key-vault/key-vault-overview)

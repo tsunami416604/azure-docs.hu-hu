@@ -12,10 +12,10 @@ ms.custom:
 - device-developer
 - devx-track-js
 ms.openlocfilehash: 87284b88076cbd205a5d8ae388fe0b37c35cf6f4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91328547"
 ---
 # <a name="tutorial-create-and-connect-a-client-application-to-your-azure-iot-central-application-nodejs"></a>Oktatóanyag: ügyfélalkalmazás létrehozása és összekötése az Azure IoT Central alkalmazással (Node.js)
@@ -336,7 +336,7 @@ Láthatja, hogy az eszköz hogyan válaszol a parancsokra és a tulajdonságokra
 
 [!INCLUDE [iot-central-monitor-environmental-sensor-raw-data](../../../includes/iot-central-monitor-environmental-sensor-raw-data.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha továbbra is szeretne IoT Central oktatóanyagokat használni, és többet szeretne megtudni egy IoT Central megoldás létrehozásáról, tekintse meg a következő témakört:
 

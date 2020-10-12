@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/10/2020
 ms.custom: seodec18, devx-track-csharp
 ms.openlocfilehash: 9cf929a3a6f5b3752b030f449b3b24b2bdc941a1
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90907334"
 ---
 # <a name="develop-net-standard-user-defined-functions-for-azure-stream-analytics-jobs-preview"></a>.NET-es szabványos felhasználó által definiált függvények fejlesztése Azure Stream Analytics feladatokhoz (előzetes verzió)
@@ -110,21 +110,21 @@ A következő lépések bemutatják, hogyan adhat hozzá C# UDF-függvényt a St
 
 1. Kattintson a jobb gombbal a **függvények** mappára, és válassza az **elem hozzáadása**lehetőséget.
 
-   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/visual-studio-code-csharp-udf-add-function.png" alt-text="Új függvény hozzáadása Azure Stream Analytics projektben":::
+   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/visual-studio-code-csharp-udf-add-function.png" alt-text="Azure Stream Analytics projekt a Visual Studio Code-ban":::
 
 2. Adjon hozzá egy C#-függvényt a Azure Stream Analytics projekthez **SquareFunction** .
 
-   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/visual-studio-code-csharp-udf-add-function-2.png" alt-text="CSharp függvény kiválasztása Stream Analytics projektből a VS Code-ban":::
+   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/visual-studio-code-csharp-udf-add-function-2.png" alt-text="Azure Stream Analytics projekt a Visual Studio Code-ban":::
 
-   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/visual-studio-code-csharp-udf-add-function-name.png" alt-text="Adja meg a CSharp függvény nevét a VS Code-ban":::
+   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/visual-studio-code-csharp-udf-add-function-name.png" alt-text="Azure Stream Analytics projekt a Visual Studio Code-ban":::
 
 3. A C#-függvény konfigurációjában válassza a **tár projekt elérési útjának** kiválasztása lehetőséget a c#-projekt kiválasztásához a legördülő listából, és válassza a **projekt összeállítása** lehetőséget a projekt felépítéséhez. Ezután válassza az **osztály kiválasztása** lehetőséget, **válassza** ki a kapcsolódó osztályt és metódust a legördülő listából. A Stream Analytics lekérdezés módszereire, típusaira és funkcióira vonatkozóan az osztályokat *nyilvánosként* kell definiálni, és az objektumokat *statikus nyilvánosként*kell definiálni.
 
-   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/visual-studio-code-csharp-udf-choose-project.png" alt-text="Stream Analytics C Sharp Function konfiguráció VS kód":::
+   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/visual-studio-code-csharp-udf-choose-project.png" alt-text="Azure Stream Analytics projekt a Visual Studio Code-ban":::
 
     Ha a C# UDF-t egy DLL-fájlból szeretné használni, válassza a DLL **elérési útja** kiválasztása lehetőséget a dll kiválasztásához. Ezután válassza az **osztály kiválasztása** lehetőséget, **válassza** ki a kapcsolódó osztályt és metódust a legördülő listából.
 
-   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/visual-studio-code-csharp-udf-choose-dll.png" alt-text="Stream Analytics C Sharp függvény konfigurálása":::
+   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/visual-studio-code-csharp-udf-choose-dll.png" alt-text="Azure Stream Analytics projekt a Visual Studio Code-ban":::
 
 4. Hívja meg az UDF-t a Azure Stream Analytics lekérdezésben.
 
@@ -136,7 +136,7 @@ A következő lépések bemutatják, hogyan adhat hozzá C# UDF-függvényt a St
 
 5. Mielőtt elküldi a feladatot az Azure-ba, konfigurálja a csomag elérési útját a feladatok konfigurációs fájljában, a `JobConfig.json` **CustomCodeStorage** szakaszban. Válassza **ki az előfizetését** a codelensben-ben az előfizetés kiválasztásához, és válassza ki a Storage-fiókot és a tároló nevét a legördülő listából. Hagyja meg az **elérési utat** alapértelmezettként. Ez a lépés nem szükséges a helyi teszteléshez.
 
-   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/visual-studio-code-csharp-udf-configure-storage-account.png" alt-text="Könyvtár elérési útjának kiválasztása":::
+   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/visual-studio-code-csharp-udf-configure-storage-account.png" alt-text="Azure Stream Analytics projekt a Visual Studio Code-ban":::
 
 ## <a name="develop-a-udf-in-visual-studio"></a>UDF fejlesztése a Visual Studióban
 
@@ -166,39 +166,39 @@ Helyi projektre való hivatkozás a Visual Studióban:
 
 Ebben a példában a **UDFTest** egy C#-beli függvénytár-projekt, és a **ASAUDFDemo** a Azure stream Analytics projekt, amely a **UDFTest**-re hivatkozik.
 
-:::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-demo.png" alt-text="Azure Stream Analytics IoT Edge-projekt a Visual Studióban":::
+:::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-demo.png" alt-text="Azure Stream Analytics projekt a Visual Studio Code-ban":::
 
 1. Hozzon létre egy C#-projektet, amely lehetővé teszi a C# UDF-re mutató hivatkozás hozzáadását a Azure Stream Analytics lekérdezésből.
 
-   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-build-project.png" alt-text="Azure Stream Analytics IoT Edge-projekt létrehozása a Visual Studióban":::
+   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-build-project.png" alt-text="Azure Stream Analytics projekt a Visual Studio Code-ban":::
 
 2. Adja hozzá a C#-projektre mutató hivatkozást az ASA projektben. Kattintson a jobb gombbal a hivatkozások csomópontra, majd válassza a hivatkozás hozzáadása parancsot.
 
-   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-add-reference.png" alt-text="Hivatkozás hozzáadása C#-projekthez a Visual Studióban":::
+   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-add-reference.png" alt-text="Azure Stream Analytics projekt a Visual Studio Code-ban":::
 
 3. Válassza ki a C#-projekt nevét a listából.
 
-   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-choose-project-name.png" alt-text="Válassza ki a C#-projekt nevét a hivatkozási listából":::
+   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-choose-project-name.png" alt-text="Azure Stream Analytics projekt a Visual Studio Code-ban":::
 
 4. Meg kell jelennie a **Megoldáskezelőban**található **referenciák** alatt felsorolt **UDFTest** .
 
-   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-added-reference.png" alt-text="A felhasználó által definiált függvény hivatkozásának megtekintése a megoldás Explorerben":::
+   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-added-reference.png" alt-text="Azure Stream Analytics projekt a Visual Studio Code-ban":::
 
 5. Kattintson a jobb gombbal a **functions** mappára, és válassza az **új elem**lehetőséget.
 
-   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-add-csharp-function.png" alt-text="Új elem hozzáadása a functions szolgáltatáshoz Azure Stream Analytics Edge-megoldásban":::
+   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-add-csharp-function.png" alt-text="Azure Stream Analytics projekt a Visual Studio Code-ban":::
 
 6. Adjon hozzá egy C#-függvényt **SquareFunction.jsa** Azure stream Analytics projekthez.
 
-   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-add-csharp-function-2.png" alt-text="A Visual Studióban Stream Analytics Edge-elemek CSharp függvényének kiválasztása":::
+   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-add-csharp-function-2.png" alt-text="Azure Stream Analytics projekt a Visual Studio Code-ban":::
 
 7. Kattintson duplán a függvényre **megoldáskezelő** a konfigurációs párbeszédpanel megnyitásához.
 
-   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-csharp-function-config.png" alt-text="C Sharp Function konfiguráció a Visual Studióban":::
+   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-csharp-function-config.png" alt-text="Azure Stream Analytics projekt a Visual Studio Code-ban":::
 
 8. A C# függvény konfigurációjában válassza a **Betöltés az ASA-projekthez** és a kapcsolódó szerelvény, osztály és metódus nevét a legördülő listából. A Stream Analytics lekérdezés módszereire, típusaira és funkcióira vonatkozóan az osztályokat *nyilvánosként* kell definiálni, és az objektumokat *statikus nyilvánosként*kell definiálni.
 
-   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-asa-csharp-function-config.png" alt-text="Stream Analytics C Sharp Function Configuration Visual Studio":::
+   :::image type="content" source="media/stream-analytics-edge-csharp-udf-methods/stream-analytics-edge-udf-asa-csharp-function-config.png" alt-text="Azure Stream Analytics projekt a Visual Studio Code-ban":::
 
 ## <a name="existing-packages"></a>Meglévő csomagok
 

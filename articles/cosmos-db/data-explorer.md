@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 09/23/2020
 ms.author: dech
 ms.openlocfilehash: ebfb175de67d7bb8ea011ac340b57f5d62d9e223
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91318806"
 ---
 # <a name="work-with-data-using-azure-cosmos-explorer"></a>Adatok kezelése az Azure Cosmos Explorerrel 
@@ -35,7 +35,7 @@ A Azure Cosmos DB Explorer egy önálló, webalapú felület, amellyel megtekint
 
 4. Nyissa meg a **adatkezelő** panelt, és válassza a **teljes képernyő megnyitása**lehetőséget. Az előugró párbeszédpanelen két hozzáférési URL-címet tekinthet meg – **írható** és **olvasható**. Ezek az URL-címek lehetővé teszik a Azure Cosmos DB fiók ideiglenes megosztását más felhasználókkal. A fiókhoz való hozzáférés 24 órán belül lejár, amely után új hozzáférési URL-címmel vagy a kapcsolati karakterlánccal csatlakozhat. 
 
-   **Írás és olvasás – ha** az írási-olvasási URL-címet más felhasználókkal osztja meg, megtekintheti és módosíthatja az adott fiókhoz tartozó adatbázisokat, gyűjteményeket, lekérdezéseket és egyéb erőforrásokat.
+   **Írható-** olvasható – ha a Read-Write URL-címet más felhasználókkal osztja meg, megtekintheti és módosíthatja az adott fiókhoz társított adatbázisokat, gyűjteményeket, lekérdezéseket és egyéb erőforrásokat.
 
    **Olvasás** – ha a csak olvasási URL-címet más felhasználókkal osztja meg, megtekintheti az adott fiókhoz társított adatbázisokat, gyűjteményeket, lekérdezéseket és egyéb erőforrásokat. Ha például egy lekérdezés eredményét szeretné megosztani a csapattársakkal, akik nem férnek hozzá a Azure Portalhoz vagy a Azure Cosmos DB-fiókjához, akkor megadhatja az URL-címet.
 

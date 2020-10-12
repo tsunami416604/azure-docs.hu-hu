@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 09/04/2020
 ms.author: b-juche
 ms.openlocfilehash: e1be0879af02fac0f7ae926a02ea23fd6be84de4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91325689"
 ---
 # <a name="manage-snapshots-by-using-azure-netapp-files"></a>Pillanatképek kezelése az Azure NetApp Filesszal
@@ -179,7 +179,7 @@ Ha a kötet létrehozásakor a pillanatkép elérési útjának elrejtése jelö
 
 1. A `ls` Linux parancs használatával listázhatja a címtárból visszaállítani kívánt fájlt `.snapshot` . 
 
-    Például:
+    Példa:
 
     `$ ls my.txt`   
     `ls: my.txt: No such file or directory`   
@@ -194,7 +194,7 @@ Ha a kötet létrehozásakor a pillanatkép elérési útjának elrejtése jelö
 
 2. A `cp` parancs használatával másolja a fájlt a szülő könyvtárba.  
 
-    Például: 
+    Példa: 
 
     `$ cp .snapshot/hourly.2020-05-15_1306/my.txt .`   
 
@@ -221,6 +221,6 @@ Ha a kötet létrehozásakor a pillanatkép elérési útjának elrejtése jelö
 
 ## <a name="next-steps"></a>Következő lépések
 
-* [Pillanatkép-házirendek – problémamegoldás](troubleshoot-snapshot-policies.md)
+* [Pillanatkép-szabályzatokkal kapcsolatos problémák elhárítása](troubleshoot-snapshot-policies.md)
 * [Az Azure NetApp Files erőforráskorlátai](azure-netapp-files-resource-limits.md)
 * [Azure NetApp Files Pillanatképek 101 videó](https://www.youtube.com/watch?v=uxbTXhtXCkw&feature=youtu.be)

@@ -14,10 +14,10 @@ ms.date: 02/16/2017
 ms.author: mathoma
 ms.custom: seo-lt-2019
 ms.openlocfilehash: b3f2e8b56af41d1729b9786adda3abdcc4eb0b02
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91325028"
 ---
 # <a name="configure-a-load-balancer-for-a-sql-server-always-on-availability-group-in-azure-virtual-machines"></a>Terheléselosztó konfigurálása SQL Server always on rendelkezésre állási csoporthoz az Azure-ban Virtual Machines
@@ -124,7 +124,7 @@ A mintavétel határozza meg, hogy az Azure hogyan ellenőrzi, hogy a SQL Server
    | **Intervallum** |*5* |
    | **Nem kifogástalan állapot küszöbértéke** |*2* |
 
-4.  Válassza az **OK** lehetőséget. 
+4.  Kattintson az **OK** gombra. 
 
 > [!NOTE]
 > Győződjön meg arról, hogy a megadott port meg van nyitva a tűzfalon mindkét SQL Server példányon. Mindkét példányhoz szükség van egy bejövő szabályra a használt TCP-porthoz. További információ: [Tűzfalszabály hozzáadása vagy szerkesztése](https://technet.microsoft.com/library/cc753558.aspx). 
@@ -157,7 +157,7 @@ A terheléselosztási szabályok azt konfigurálhatják, hogy a terheléseloszt�
    > Előfordulhat, hogy az összes beállítás megtekintéséhez le kell görgetni a panelt.
    > 
 
-4. Válassza az **OK** lehetőséget. 
+4. Kattintson az **OK** gombra. 
 
 5. Az Azure konfigurálja a terheléselosztási szabályt. A terheléselosztó most úgy van konfigurálva, hogy átirányítsa a forgalmat a rendelkezésre állási csoport figyelőjét futtató SQL Server-példányra. 
 
@@ -257,7 +257,7 @@ Ha IP-címet szeretne hozzáadni egy terheléselosztó számára a Azure Portal,
     |**Háttérport** |Használja ugyanazt az értéket, mint a **port**.
     |**Háttérkészlet** |Az SQL Server példányokkal rendelkező virtuális gépeket tartalmazó készlet. 
     |**Állapotteszt** |Válassza ki a létrehozott mintavételt.
-    |**Munkamenet-állandóság** |Nincsenek
+    |**Munkamenet-állandóság** |Nincs
     |**Üresjárati időkorlát (perc)** |Alapértelmezett (4)
     |**Lebegőpontos IP-cím (közvetlen kiszolgáló visszaadása)** | Engedélyezve
 
@@ -306,7 +306,7 @@ Ha egy rendelkezésre állási csoport részt vesz egy elosztott rendelkezésre 
    |**Háttérport** | 5022 – ugyanazt az értéket használja, mint a **port**.
    |**Háttérkészlet** |Az SQL Server példányokkal rendelkező virtuális gépeket tartalmazó készlet. 
    |**Állapotteszt** |Válassza ki a létrehozott mintavételt.
-   |**Munkamenet-állandóság** |Nincsenek
+   |**Munkamenet-állandóság** |Nincs
    |**Üresjárati időkorlát (perc)** |Alapértelmezett (4)
    |**Lebegőpontos IP-cím (közvetlen kiszolgáló visszaadása)** | Engedélyezve
 

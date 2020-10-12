@@ -1,16 +1,16 @@
 ---
-title: A Backup-hagyaték szabályozása a Backup Center használatával
+title: Biztonsági mentések szabályozása a Backup Centerrel
 description: Ismerje meg, hogyan szabályozhatja az Azure-környezetet annak biztosításához, hogy az összes erőforrás megfelel a Backup Center biztonsági mentési perspektívájának.
 ms.topic: conceptual
 ms.date: 09/01/2020
 ms.openlocfilehash: 8a16769be827bf34e5be82409d5b8eb014cdcf1a
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91614329"
 ---
-# <a name="govern-your-backup-estate-using-backup-center"></a>A Backup-hagyaték szabályozása a Backup Center használatával
+# <a name="govern-your-backup-estate-using-backup-center"></a>Biztonsági mentések szabályozása a Backup Centerrel
 
 A Backup Center segítségével szabályozhatja az Azure-környezetet, így biztosítva, hogy minden erőforrás megfelel a biztonsági mentési perspektívának. Az alábbiakban a Backup Center irányítási képességeiből tájékozódhat:
 
@@ -44,7 +44,7 @@ A **Protected DataSources** menüpont kiválasztásával megtekintheti az össze
 
 ![Védhető adatforrások menü](./media/backup-center-govern-environment/protectable-datasources.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Biztonsági másolatok figyelése és üzemeltetése](backup-center-monitor-operate.md)
 * [Műveletek végrehajtása a Backup Center használatával](backup-center-actions.md)

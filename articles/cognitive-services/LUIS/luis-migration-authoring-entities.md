@@ -6,10 +6,10 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 05/08/2020
 ms.openlocfilehash: 667226770d25ef1687420b1c13bc71863f987e33
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91324688"
 ---
 # <a name="migrate-to-v3-authoring-entity"></a>Migrálás v3 authoring entitásba
@@ -50,7 +50,7 @@ Az áttelepítés során vegye figyelembe a következőket az áttelepítési te
     * Entitások
         * Reguláriskifejezés-entitás
         * Listaentitás
-    * Funkciók
+    * Szolgáltatások
         * Kifejezések listája
 * A következő elemeket kell áttelepíteni a **változásokkal**:
     * Entitások

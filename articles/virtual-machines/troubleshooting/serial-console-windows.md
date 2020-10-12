@@ -1,6 +1,6 @@
 ---
 title: Windowsos Azure soros konzol | Microsoft Docs
-description: Kétirányú soros konzol Azure Virtual Machines és Virtual Machine Scale Sets Windows-példa használatával.
+description: Bi-Directional soros konzol Azure Virtual Machines és Virtual Machine Scale Sets Windows-példa használatával.
 services: virtual-machines-windows
 documentationcenter: ''
 author: asinn826
@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 5/1/2019
 ms.author: alsin
 ms.openlocfilehash: c5c139cb94358d70d1f23b68f2a369adb953da08
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91325980"
 ---
 # <a name="azure-serial-console-for-windows"></a>Windows rendszerhez készült Azure soros konzol
@@ -148,7 +148,7 @@ A soros konzolhoz való hozzáférés csak azokra a felhasználókra korlátozó
 ### <a name="channel-security"></a>Csatorna biztonsága
 A visszaadott és oda továbbított összes adatforgalom titkosítva van a huzalon.
 
-### <a name="audit-logs"></a>Auditnaplók
+### <a name="audit-logs"></a>Naplók
 A soros konzolhoz való összes hozzáférés jelenleg a virtuális gép [rendszerindítási diagnosztikai](./boot-diagnostics.md) naplóiban van naplózva. A naplókhoz való hozzáférést az Azure-beli virtuális gép rendszergazdája birtokolja és felügyeli.
 
 > [!CAUTION]
@@ -163,7 +163,7 @@ Ha egy felhasználó csatlakozik a soros konzolhoz, és egy másik felhasználó
 ## <a name="accessibility"></a>Akadálymentesség
 A kisegítő lehetőségek az Azure soros konzol egyik fő témája. Ebből a célból biztosítjuk, hogy a soros konzol elérhető legyen a látássérültek számára, vagy akik nagyothallók, illetve akik esetleg nem tudják használni az egeret.
 
-### <a name="keyboard-navigation"></a>Navigáció a billentyűzeten
+### <a name="keyboard-navigation"></a>Navigálás billentyűzettel
 A billentyűzet **Tab** billentyűjét használva navigáljon a soros konzol felületén a Azure Portal. A hely ki lesz emelve a képernyőn. A soros konzol ablakának fókuszának elhagyásához nyomja le a **CTRL F6 billentyűt**a + **F6** billentyűzeten.
 
 ### <a name="use-the-serial-console-with-a-screen-reader"></a>A soros konzol használata képernyőolvasóval
@@ -171,7 +171,7 @@ A soros konzol beépített képernyőolvasó-támogatással rendelkezik. A bekap
 
 ## <a name="common-scenarios-for-accessing-the-serial-console"></a>A soros konzol elérésének gyakori forgatókönyvei
 
-Használati eset          | Műveletek a soros konzolon
+Forgatókönyv          | Műveletek a soros konzolon
 :------------------|:-----------------------------------------
 Helytelen tűzfalszabályok | Nyissa meg a soros konzolt, és javítsa a Windows tűzfal szabályait.
 Fájlrendszer-sérülés/-ellenőrzési | Nyissa meg a soros konzolt, és állítsa helyre a fájlrendszert.

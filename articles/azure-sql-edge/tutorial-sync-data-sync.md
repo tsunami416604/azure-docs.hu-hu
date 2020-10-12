@@ -10,10 +10,10 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 05/19/2020
 ms.openlocfilehash: 5830cedfdce54c4cd91eb60a5cd2145309e965b0
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90904105"
 ---
 # <a name="tutorial-sync-data-from-sql-edge-to-azure-sql-database-by-using-sql-data-sync"></a>Oktatóanyag: adatok szinkronizálása az SQL Edge-ből a Azure SQL Databasere SQL-adatszinkronizálás használatával
@@ -59,7 +59,7 @@ A SQL-adatszinkronizálásról további információt a következő cikkekben ta
 
 * [A szinkronizálási séma frissítése a Transact-SQL vagy a](../azure-sql/database/sql-data-sync-update-sync-schema.md) [PowerShell használatával](../azure-sql/database/scripts/update-sync-schema-in-sync-group.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 
 * [Azure SQL Database és az Azure SQL Edge közötti szinkronizáláshoz használja a PowerShellt](../azure-sql/database/scripts/sql-data-sync-sync-data-between-azure-onprem.md). Ebben az oktatóanyagban cserélje le az `OnPremiseServer` adatbázis adatait az Azure SQL Edge részleteire.

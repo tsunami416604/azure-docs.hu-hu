@@ -13,10 +13,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 05/28/2020
 ms.openlocfilehash: aef29eef7eb53c4cc4ffcc4926f9efe533374178
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91319452"
 ---
 # <a name="choose-between-the-vcore-and-dtu-purchasing-models---azure-sql-database-and-sql-managed-instance"></a>Választás a virtuális mag és a DTU beszerzési modelljei közül – Azure SQL Database és az SQL felügyelt példánya
@@ -104,7 +104,7 @@ A munkaterhelés által használt erőforrások nem érintik az Azure-felhőben 
 
 ![Határolókeret](./media/purchasing-models/bounding-box.png)
 
-A DTU leghasznosabb a különböző számítási méretek és szolgáltatási szintek adatbázisai számára lefoglalt relatív erőforrások megismerése. Például:
+A DTU leghasznosabb a különböző számítási méretek és szolgáltatási szintek adatbázisai számára lefoglalt relatív erőforrások megismerése. Példa:
 
 - A DTU megkettőzése az adatbázis számítási méretének növelésével egyenlő az adatbázis számára elérhető erőforrások készletének megkettőzésével.
 - A prémium szintű szolgáltatási szint P11-adatbázisa a 1750 DTU 350-szor több DTU számítási teljesítményt biztosít, mint az alapszintű szolgáltatási szint adatbázisa 5 DTU.  
@@ -127,7 +127,7 @@ Hozzáadhat további Edtu az adatbázis-leállás nélküli meglévő készletek
 
 ### <a name="determine-the-number-of-dtus-needed-by-a-workload"></a>A munkaterhelés által igényelt DTU számának meghatározása
 
-Ha meglévő helyszíni vagy SQL Server virtuális gépek munkaterhelését szeretné áttelepíteni SQL Databasere, a [DTU-kalkulátor](https://dtucalculator.azurewebsites.net/) használatával közelítse meg a szükséges DTU számát. Meglévő SQL Database számítási feladatokhoz használja a [lekérdezési teljesítménnyel](query-performance-insight-use.md) kapcsolatos elemzéseket az adatbázis-erőforrás-felhasználás (DTU) megismeréséhez, és mélyebb elemzéseket kaphat a számítási feladatok optimalizálásához. A [sys. dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) dinamikus felügyeleti nézet (DMV) lehetővé teszi az elmúlt órában az erőforrás-felhasználás megtekintését. A [sys. resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) katalógus nézet az elmúlt 14 napban az erőforrás-felhasználást jeleníti meg, de az átlagosan öt percenként.
+Ha meglévő helyszíni vagy SQL Server virtuális gépek munkaterhelését szeretné áttelepíteni SQL Databasere, a [DTU-kalkulátor](https://dtucalculator.azurewebsites.net/) használatával közelítse meg a szükséges DTU számát. Meglévő SQL Database számítási feladatokhoz használja a [lekérdezési teljesítménnyel](query-performance-insight-use.md) kapcsolatos elemzéseket az adatbázis-erőforrás-felhasználás (DTU) megismeréséhez, és mélyebb elemzéseket kaphat a számítási feladatok optimalizálásához. A [sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) dinamikus felügyeleti nézet (DMV) lehetővé teszi az elmúlt órában az erőforrás-felhasználás megtekintését. Az [sys.resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) katalógus nézet az elmúlt 14 napban az erőforrás-felhasználást jeleníti meg, de az átlagosan öt perces átlagot biztosít.
 
 ### <a name="determine-dtu-utilization"></a>DTU kihasználtságának meghatározása
 
@@ -135,7 +135,7 @@ Egy adatbázis vagy egy rugalmas készlet DTU/eDTU-korlátjának (DTU/eDTU-kihas
 
 `avg_dtu_percent = MAX(avg_cpu_percent, avg_data_io_percent, avg_log_write_percent)`
 
-A képlet bemeneti értékei a [sys. dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database), a [sys. resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)és a [sys. elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database) DMV szerezhetők be. Más szóval, a DTU/eDTU-kihasználtság százalékos arányának meghatározása egy adatbázis vagy egy rugalmas készlet DTU/eDTU-korlátja felé, a legnagyobb százalékos értéket kell választania a következők közül: `avg_cpu_percent` , `avg_data_io_percent` és `avg_log_write_percent` egy adott időpontban.
+A képlet bemeneti értékei [sys.dm_db_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database), [sys.resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database)és [sys.elastic_pool_resource_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database) DMV szerezhetők be. Más szóval, a DTU/eDTU-kihasználtság százalékos arányának meghatározása egy adatbázis vagy egy rugalmas készlet DTU/eDTU-korlátja felé, a legnagyobb százalékos értéket kell választania a következők közül: `avg_cpu_percent` , `avg_data_io_percent` és `avg_log_write_percent` egy adott időpontban.
 
 > [!NOTE]
 > Az adatbázisok DTU-korlátját CPU, olvasás, írás és memória határozza meg az adatbázis számára. Mivel azonban a SQL Database motor általában az adatgyorsítótárhoz tartozó összes rendelkezésre álló memóriát használja a teljesítmény javítása érdekében, az `avg_memory_usage_percent` érték általában 100 százalék lesz, az aktuális adatbázis-terheléstől függetlenül. Ezért annak ellenére, hogy a memória indirekt módon befolyásolja a DTU korlátot, a rendszer nem használja a DTU-kihasználtsági képletben.

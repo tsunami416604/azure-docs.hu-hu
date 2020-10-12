@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/14/2020
 ms.author: pafarley
 ms.openlocfilehash: fe76e32bfd9b1734f3c84a400f897b7af7e3168b
-ms.sourcegitcommit: a989fb89cc5172ddd825556e45359bac15893ab7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85800995"
 ---
 # <a name="learn-image-moderation-concepts"></a>A képek moderálásával kapcsolatos fogalmak megismerése
@@ -67,7 +67,7 @@ Példa kivonatra:
 },
 ```
 
-## <a name="detecting-faces"></a>Arcfelismerés
+## <a name="detecting-faces"></a>Arcészlelés
 
 Az arcok észlelése segít a személyes, például a képekben lévő arcok észlelésében. Felderítheti az esetleges arcokat és a lehetséges arcok számát az egyes képekben.
 
@@ -151,6 +151,6 @@ Példa kivonatra:
 
 ![Képek felülvizsgálata emberi moderátorok által](images/moderation-reviews-quickstart-dotnet.PNG)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Tesztelje a [rendszerkép moderálási API-konzolját](try-image-api.md) , és használja a REST API-kód mintáit. Tekintse meg az [értékeléseket, a munkafolyamatokat és a feladatokat](./review-api.md) , amelyekből megtudhatja, hogyan állíthatja be az emberi felülvizsgálatokat.

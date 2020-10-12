@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 6a68d7574d16485c378f6066a652471d52fa0c30
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91319979"
 ---
 # <a name="azure-ad-connect-sync-configure-filtering"></a>Az Azure AD Connect szinkronizálása: a szűrés konfigurálása
@@ -299,9 +299,9 @@ Hajtsa végre a következő lépéseket:
 A szinkronizálás után a rendszer az összes módosítást exportálja. Mielőtt megkezdené a módosításokat az Azure AD-ben, ellenőrizni kívánja, hogy a módosítások helyesek-e.
 
 1. Indítson el egy parancssort, és nyissa meg a következőt: `%ProgramFiles%\Microsoft Azure AD Sync\bin` .
-2. Futtassa az `csexport "Name of Connector" %temp%\export.xml /f:x` parancsot.  
+2. A `csexport "Name of Connector" %temp%\export.xml /f:x` parancs futtatása.  
    Az összekötő neve a szinkronizációs szolgáltatásban található. Az Azure AD esetében az "contoso.com – Azure AD" kifejezéshez hasonló név szerepel.
-3. Futtassa az `CSExportAnalyzer %temp%\export.xml > %temp%\export.csv` parancsot.
+3. A `CSExportAnalyzer %temp%\export.xml > %temp%\export.csv` parancs futtatása.
 4. Most már van egy fájlja a (z)% Temp% megnevezett export.csvban, amely megvizsgálható a Microsoft Excelben. Ez a fájl tartalmazza az exportálandó összes módosítást.
 5. Végezze el a szükséges módosításokat az adatokon vagy a konfiguráción, majd futtassa újra ezeket a lépéseket (importálás, szinkronizálás és ellenőrzés), amíg az exportálandó módosítások elvártak lesznek.
 

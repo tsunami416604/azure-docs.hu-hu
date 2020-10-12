@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 09/22/2020
 ms.openlocfilehash: 30c2da4ac750375c66b92cdca552e1a51a8dbc40
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90940401"
 ---
 # <a name="limits-in-azure-database-for-postgresql---flexible-server"></a>Korlátok Azure Database for PostgreSQL – rugalmas kiszolgáló
@@ -29,7 +29,7 @@ Alább láthatók a kapcsolatok maximális száma az árképzési szinten és a 
 | **Burstable**        |        |             |                 |                      |
 | B1ms                 | 1      | 2 GiB       | 50              | 47                   |
 | B2s                  | 2      | 4. GiB       | 100             | 97                   |
-| **általános célú**  |        |             |                 |                      |
+| **Általános célú**  |        |             |                 |                      |
 | D2s_v3               | 2      | 8 GiB       | 214             | 211                  |
 | D4s_v3               | 4      | 16 GiB      | 429             | 426                  |
 | D8s_v3               | 8      | 32 GiB      | 859             | 856                  |
@@ -66,7 +66,7 @@ A PostgreSQL-kapcsolatok, akár tétlenek is, körülbelül 10 MB memóriát fog
 
 - A fő adatbázismotor-verziók közötti automatikus áttelepítés jelenleg nem támogatott. Ha a következő főverzióra szeretne frissíteni, hozzon létre egy [memóriaképet, és állítsa vissza](../howto-migrate-using-dump-and-restore.md) egy olyan kiszolgálóra, amely az új motor verziójával lett létrehozva.
 
-### <a name="networking"></a>Hálózatkezelés
+### <a name="networking"></a>Hálózat
 
 - A VNET-ben és a-ban való áthelyezés jelenleg nem támogatott.
 - A nyilvános hozzáférésnek a VNET belüli üzembe helyezésével való kombinálása jelenleg nem támogatott.
@@ -75,7 +75,7 @@ A PostgreSQL-kapcsolatok, akár tétlenek is, körülbelül 10 MB memóriát fog
 
 ### <a name="high-availability"></a>Magas rendelkezésre állás
 
-- Zóna – a redundáns HA jelenleg nem támogatott a feltört kiszolgálók esetében.
+- Zone-Redundant HA jelenleg nem támogatott a betört kiszolgálók esetében.
 - Az adatbázis-kiszolgáló IP-címe akkor változik meg, ha a kiszolgáló átadja a HA készenléti állapotot. Győződjön meg arról, hogy a kiszolgáló IP-címe helyett a DNS-rekordot használja.
 
 ### <a name="availability-zones"></a>Rendelkezésre állási zónák

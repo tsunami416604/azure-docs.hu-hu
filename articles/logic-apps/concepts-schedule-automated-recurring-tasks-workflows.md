@@ -7,10 +7,10 @@ ms.reviewer: deli, jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 03/25/2020
 ms.openlocfilehash: a5f01e81564561fe43ef6e55e6e9b3b67d6e1d77
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84945613"
 ---
 # <a name="schedule-and-run-recurring-automated-tasks-processes-and-workflows-with-azure-logic-apps"></a>Ismétlődő automatizált feladatok, folyamatok és munkafolyamatok ütemezése és futtatása az Azure Logic Apps használatával
@@ -126,10 +126,10 @@ Tehát attól függetlenül, hogy a múltban milyen messzire van szükség a kez
 
 Az alábbi példa a beállításokat támogató eseményindítók különböző ismétlődéseit jeleníti meg:
 
-| Eseményindító | Ismétlődés | Intervallum | Gyakoriság | Kezdési idő | Ezeken a napokon | Ezekben az órákban | Ezekben a percekben | Megjegyzés |
+| Eseményindító | Ismétlődés | Időköz | Frequency | Kezdési idő | Ezeken a napokon | Ezekben az órákban | Ezekben a percekben | Megjegyzés |
 |---------|------------|----------|-----------|------------|---------------|----------------|------------------|------|
-| Megismétlődésének <br>Csúszóablak | Futtatás 15 percenként (nincs kezdő dátum és idő) | 15 | Perc | nEz egy | érhető | nEz egy | nEz egy | Ez az ütemezés azonnal elindul, majd az utolsó futási idő alapján kiszámítja a jövőbeli ismétlődéseket. |
-| Megismétlődésének <br>Csúszóablak | Futtatás 15 percenként (kezdő dátummal és idővel) | 15 | Perc | *StartDate* T*kezdő időpont*– Z | érhető | nEz egy | nEz egy | Ez az ütemezés nem indul el *hamarabb* a megadott kezdési dátumnál és időpontnál, majd az utolsó futási idő alapján kiszámítja a jövőbeli ismétlődéseket. |
+| Megismétlődésének <br>Csúszóablak | Futtatás 15 percenként (nincs kezdő dátum és idő) | 15 | Minute | nEz egy | érhető | nEz egy | nEz egy | Ez az ütemezés azonnal elindul, majd az utolsó futási idő alapján kiszámítja a jövőbeli ismétlődéseket. |
+| Megismétlődésének <br>Csúszóablak | Futtatás 15 percenként (kezdő dátummal és idővel) | 15 | Minute | *StartDate* T*kezdő időpont*– Z | érhető | nEz egy | nEz egy | Ez az ütemezés nem indul el *hamarabb* a megadott kezdési dátumnál és időpontnál, majd az utolsó futási idő alapján kiszámítja a jövőbeli ismétlődéseket. |
 | Megismétlődésének <br>Csúszóablak | Minden órában fut, az óra (kezdő dátummal és idővel) | 1 | Óra | *StartDate* THH: 00:00Z | érhető | nEz egy | nEz egy | Ez az ütemterv nem indul el *hamarabb* a megadott kezdési dátumnál és időpontnál. A jövőbeli ismétlődések óránként futnak a "00" percben, amely a kezdési időpontból lesz kiszámítva. <p>Ha a gyakoriság értéke "Week" vagy "Month", akkor ez az ütemterv hetente vagy havonta egy nappal fut le. |
 | Megismétlődésének <br>Csúszóablak | Futtatás óránként, naponta (nincs kezdő dátum és idő) | 1 | Óra | nEz egy | érhető | nEz egy | nEz egy | Ez az ütemezés azonnal elindul, és az utolsó futási idő alapján kiszámítja a jövőbeli ismétlődéseket. <p>Ha a gyakoriság értéke "Week" vagy "Month", akkor ez az ütemterv hetente vagy havonta egy nappal fut le. |
 | Megismétlődésének <br>Csúszóablak | Futtatás óránként, minden nap (kezdő dátummal és idővel) | 1 | Óra | *StartDate* T*kezdő időpont*– Z | érhető | nEz egy | nEz egy | Ez az ütemezés nem indul el *hamarabb* a megadott kezdési dátumnál és időpontnál, majd az utolsó futási idő alapján kiszámítja a jövőbeli ismétlődéseket. <p>Ha a gyakoriság értéke "Week" vagy "Month", akkor ez az ütemterv hetente vagy havonta egy nappal fut le. |
@@ -147,8 +147,8 @@ Az alábbi példa a beállításokat támogató eseményindítók különböző 
 | Ismétlődés | A munkaidőn belül minden órában futtatható. | 1 | Hét | nEz egy | Válassza a szombat és a vasárnap kivételével az összes napot. | Válassza ki a nap azon óráját, amelyet szeretne. | Válassza ki a kívánt órányi percet. | Ha például a munkaidő 8:00 – 5:00 PM, válassza a "8, 9, 10, 11, 12, 13, 14, 15, 16, 17" lehetőséget a nap órájában *plusz* "0", az óra percében. |
 | Ismétlődés | Hetente egyszer fut a hétvégén | 1 | Hét | nEz egy | "Szombat", "vasárnap" | Válassza ki a nap azon óráját, amelyet szeretne. | Szükség szerint válassza ki az óra bármelyik percét. | Ez az ütemterv minden szombaton és vasárnap a megadott ütemterv szerint fut. |
 | Ismétlődés | Futás 15 percenként, csak hétfőn | 2 | Hét | nEz egy | Hétfőtől | 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23 | 0, 15, 30, 45 | Ez az ütemterv 15 percenként minden más hétfőn fut. |
-| Ismétlődés | Minden hónap futtatása | 1 | Hónap | *StartDate* T*kezdő időpont*– Z | érhető | érhető | érhető | Ez az ütemezés nem indul el *hamarabb* a megadott kezdési dátumnál és időpontnál, és kiszámítja a jövőbeli ismétlődéseket a kezdő dátumon és időpontban. Ha nem ad meg kezdési dátumot és időpontot, az ütemterv a létrehozás dátumát és időpontját használja. |
-| Ismétlődés | Minden órában futtatható havonta egy napra | 1 | Hónap | {Lásd: Megjegyzés} | érhető | 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23 | {Lásd: Megjegyzés} | Ha nem ad meg kezdési dátumot és időpontot, az ütemterv a létrehozás dátumát és időpontját használja. Az ismétlődési ütemterv percének vezérléséhez határozza meg az óra percét, a kezdési időpontot, vagy használja a létrehozási időt. Ha például a kezdési vagy a létrehozási idő 8:25, akkor ez az ütemterv 8:25 ÓRAKOR, 9:25 AM, 10:25 és hasonló módon fut. |
+| Ismétlődés | Minden hónap futtatása | 1 | Month (hónap) | *StartDate* T*kezdő időpont*– Z | érhető | érhető | érhető | Ez az ütemezés nem indul el *hamarabb* a megadott kezdési dátumnál és időpontnál, és kiszámítja a jövőbeli ismétlődéseket a kezdő dátumon és időpontban. Ha nem ad meg kezdési dátumot és időpontot, az ütemterv a létrehozás dátumát és időpontját használja. |
+| Ismétlődés | Minden órában futtatható havonta egy napra | 1 | Month (hónap) | {Lásd: Megjegyzés} | érhető | 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, 11, 12, 13, 14, 15, 16, 17, 18, 19, 20, 21, 22, 23 | {Lásd: Megjegyzés} | Ha nem ad meg kezdési dátumot és időpontot, az ütemterv a létrehozás dátumát és időpontját használja. Az ismétlődési ütemterv percének vezérléséhez határozza meg az óra percét, a kezdési időpontot, vagy használja a létrehozási időt. Ha például a kezdési vagy a létrehozási idő 8:25, akkor ez az ütemterv 8:25 ÓRAKOR, 9:25 AM, 10:25 és hasonló módon fut. |
 |||||||||
 
 <a name="run-once"></a>

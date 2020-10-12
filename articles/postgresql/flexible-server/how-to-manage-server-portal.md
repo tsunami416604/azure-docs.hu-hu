@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/22/2020
 ms.custom: mvc, devx-track-azurecli
 ms.openlocfilehash: 13d78110f50d6ce72b8525914ed0e91dfcadd2cc
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90935675"
 ---
 # <a name="manage-an-azure-database-for-postgresql---flexible-server-using-the-azure-portal"></a>Azure Database for PostgreSQL rugalmas kiszolgáló kezelése a Azure Portal használatával
@@ -52,7 +52,7 @@ A rendszergazdai szerepkör jelszava a Azure Portal használatával módosíthat
 2. Adjon meg egy új jelszót, és erősítse meg a jelszót. A szövegmező a jelszó bonyolultságára vonatkozó követelményeket fogja kérni.
 
 > [!div class="mx-imgBorder"]
-> :::image type="content" source="./media/howto-manage-server-portal/reset-password.png" alt-text="jelszó alaphelyzetbe állítása rugalmas kiszolgálóhoz":::
+> :::image type="content" source="./media/howto-manage-server-portal/reset-password.png" alt-text="a Storage rugalmas kiszolgáló méretezése":::
 
 3. Az új jelszó mentéséhez kattintson a **Mentés** gombra.
 
@@ -63,7 +63,7 @@ Ha már nincs szüksége rá, törölheti a kiszolgálót.
 1. Válassza ki a kiszolgálót a Azure Portal. Az **Áttekintés** ablakban válassza a **Törlés**lehetőséget.
 2. Írja be a kiszolgáló nevét a beviteli mezőbe annak megerősítéséhez, hogy törölni kívánja a kiszolgálót.
 
-   :::image type="content" source="./media/howto-manage-server-portal/delete-server.png" alt-text="a rugalmas kiszolgáló törlése":::
+   :::image type="content" source="./media/howto-manage-server-portal/delete-server.png" alt-text="a Storage rugalmas kiszolgáló méretezése":::
 
    > [!IMPORTANT]
    > A kiszolgáló törlése visszafordíthatatlan.

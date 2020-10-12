@@ -15,10 +15,10 @@ ms.date: 06/12/2018
 ms.author: allensu
 ms.custom: mvc
 ms.openlocfilehash: 43718f8ebc851f27035f2999bfb4ff3ec12ca5b4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84887726"
 ---
 # <a name="create-an-azure-cdn-endpoint"></a>Azure CDN végpont létrehozása
@@ -101,7 +101,7 @@ Jelentkezzen be az [Azure Portalra](https://portal.azure.com) az Azure-fiókjáv
    
     Ha a CDN-tartománynevet úgy kísérli meg használni, hogy a végpont konfigurációja propagálva legyen a jelenléti pontra (POP) szolgáló kiszolgálókra, előfordulhat, hogy HTTP 404-válasz állapotot kap. Ha a végpont létrehozása óta több óra van, és továbbra is 404 választ kap, tekintse meg [a 404 állapotkódot visszaadó Azure CDN-végpontok hibaelhárítása](cdn-troubleshoot-endpoint.md)című témakört.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 Ha már nem szükséges végpontot törölni, válassza ki, majd válassza a **Törlés**lehetőséget. 
 
 ## <a name="next-steps"></a>További lépések

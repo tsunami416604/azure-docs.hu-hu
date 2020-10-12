@@ -10,15 +10,15 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: d876862d8f41ab8df646bef051629fd45c4d4601
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90939624"
 ---
 # <a name="view-logs-and-metrics-using-kibana-and-grafana"></a>Naplók és metrikák megtekintése a Kibana és a Grafana használatával
 
-A Kibana és a Grafana webes irányítópultok révén az Azure arc-kompatibilis adatszolgáltatások által használt Kubernetes-névterek betekintést és átláthatóságot biztosítanak.
+A Kibana és a Grafana webes irányítópultok megállapításokat és átláthatóságot biztosítanak az Azure Arc-kompatibilis adatszolgáltatások által használt Kubernetes-névterekben.
 
 [!INCLUDE [azure-arc-data-preview](../../../includes/azure-arc-data-preview.md)]
 
@@ -28,7 +28,7 @@ Az irányítópultok eléréséhez le kell kérnie a fürt IP-címét. A helyes 
 
 ### <a name="azure-virtual-machine"></a>Azure virtuális gép
 
-A nyilvános IP-cím lekéréséhez használja a következő parancsot:
+A nyilvános IP-címet a következő paranccsal kérheti le:
 
 ```console
 az network public-ip list -g azurearcvm-rg --query "[].{PublicIP:ipAddress}" -o table
@@ -64,7 +64,7 @@ Az alábbi példa bemutatja, hogyan teheti ezt meg egy Azure-beli virtuális gé
 
 Az alábbi lépések kiemelik, hogyan hozhat létre NSG-szabályt a Kibana és a Grafana végpontokhoz:
 
-### <a name="find-the-name-of-the-nsg"></a>A NSG nevének megkeresése
+### <a name="find-the-name-of-the-nsg"></a>Az NSG-név megkeresése
 
 ```console
 az network nsg list -g azurearcvm-rg --query "[].{NSGName:name}" -o table

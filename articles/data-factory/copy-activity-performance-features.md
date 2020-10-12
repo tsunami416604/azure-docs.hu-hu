@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/24/2020
 ms.openlocfilehash: 8e46e9b323657b747fd73bad3b25ed66390f3aa9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91324331"
 ---
 # <a name="copy-activity-performance-optimization-features"></a>Másolási tevékenység teljesítményének optimalizálási funkciói
@@ -150,10 +150,10 @@ Konfigurálja a **enableStaging** beállítást a másolási tevékenységben an
 
 | Tulajdonság | Leírás | Alapértelmezett érték | Kötelező |
 | --- | --- | --- | --- |
-| enableStaging |Itt adhatja meg, hogy egy átmeneti átmeneti tárolón keresztül kívánja-e az Adatmásolást. |Hamis |No |
+| enableStaging |Itt adhatja meg, hogy egy átmeneti átmeneti tárolón keresztül kívánja-e az Adatmásolást. |Hamis |Nem |
 | linkedServiceName |Adja meg egy [Azure Blob Storage](connector-azure-blob-storage.md#linked-service-properties) vagy [Azure Data Lake Storage Gen2](connector-azure-data-lake-storage.md#linked-service-properties) társított szolgáltatás nevét, amely az átmeneti átmeneti tárolóként használt tároló példányára hivatkozik. |N.A. |Igen, ha a **enableStaging** értéke TRUE (igaz) |
-| path |Itt adhatja meg, hogy milyen elérési utat kívánja használni az előkészített adatkészletekben. Ha nem ad meg elérési utat, a szolgáltatás létrehoz egy tárolót az ideiglenes adattároláshoz. |N.A. |No |
-| enableCompression |Megadja, hogy a rendszer a célhelyre való másolás előtt tömöríti-e az adatfájlokat. Ez a beállítás csökkenti az átvitel alatt álló adatmennyiséget. |Hamis |No |
+| path |Itt adhatja meg, hogy milyen elérési utat kívánja használni az előkészített adatkészletekben. Ha nem ad meg elérési utat, a szolgáltatás létrehoz egy tárolót az ideiglenes adattároláshoz. |N.A. |Nem |
+| enableCompression |Megadja, hogy a rendszer a célhelyre való másolás előtt tömöríti-e az adatfájlokat. Ez a beállítás csökkenti az átvitel alatt álló adatmennyiséget. |Hamis |Nem |
 
 >[!NOTE]
 > Ha a szakaszos másolást engedélyezte a tömörítést, az átmeneti blobhoz társított szolgáltatás egyszerű vagy MSI-hitelesítése nem támogatott.

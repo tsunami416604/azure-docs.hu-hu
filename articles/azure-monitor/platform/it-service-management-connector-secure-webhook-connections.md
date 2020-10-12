@@ -7,10 +7,10 @@ author: nolavime
 ms.author: v-jysur
 ms.date: 09/08/2020
 ms.openlocfilehash: 9b6180f2480d8a92dc0ebdd2cad474a9eef3cbe4
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91328853"
 ---
 # <a name="connect-azure-to-itsm-tools-by-using-secure-export"></a>Az Azure és a ITSM-eszközök összekapcsolhatók a biztonságos exportálás használatával
@@ -19,7 +19,7 @@ Ebből a cikkből megtudhatja, hogyan konfigurálhatja a kapcsolatot az IT szolg
 
 A biztonságos exportálás a [it-szolgáltatásmenedzsmenti csatoló (ITSMC)](./itsmc-overview.md)frissített verziója. Mindkét verzió lehetővé teszi, hogy munkaelemeket hozzon létre egy ITSM eszközben, amikor Azure Monitor riasztásokat küld. A funkciók mérőszám-, napló-és műveletnapló-riasztásokat tartalmaznak.
 
-A ITSMC a Felhasználónév és a jelszó hitelesítő adatait használja. A biztonságos exportálás erősebb hitelesítéssel rendelkezik, mert Azure Active Directoryt (Azure AD) használ. Az Azure AD a Microsoft felhőalapú identitás-és hozzáférés-kezelési szolgáltatása. Segít a felhasználóknak bejelentkezni, és hozzáférni a belső vagy külső erőforrásokhoz. Az Azure AD és a ITSM segítségével azonosíthatja a külső rendszernek elküldett Azure-riasztásokat (az Azure AD-alkalmazás azonosítója alapján).
+A ITSMC a Felhasználónév és a jelszó hitelesítő adatait használja. A biztonságos exportálás erősebb hitelesítéssel rendelkezik, mert Azure Active Directoryt (Azure AD) használ. Az Azure AD a Microsoft felhőalapú identitás- és hozzáférés-kezelési szolgáltatása. Segít a felhasználóknak bejelentkezni, és hozzáférni a belső vagy külső erőforrásokhoz. Az Azure AD és a ITSM segítségével azonosíthatja a külső rendszernek elküldett Azure-riasztásokat (az Azure AD-alkalmazás azonosítója alapján).
 
 > [!NOTE]
 > Az Azure ITSM-eszközökhöz való összekapcsolásának lehetősége a biztonságos exportálás előzetes verzióban érhető el.

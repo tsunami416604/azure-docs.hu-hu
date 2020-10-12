@@ -8,10 +8,10 @@ ms.date: 7/23/2020
 ms.topic: how-to
 ms.service: digital-twins
 ms.openlocfilehash: bb5ff0bf7347b87fdc3a103a03f9ff58279a367d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91320769"
 ---
 # <a name="set-up-an-azure-digital-twins-instance-and-authentication-cli"></a>Azure digitális Twins-példány és-hitelesítés beállítása (CLI)
@@ -78,7 +78,7 @@ Ennek a parancsnak az eredménye a létrehozott szerepkör-hozzárendeléssel ka
 >
 > [Azure Active Directory felhasználók Azure Portal oldalán](https://portal.azure.com/#blade/Microsoft_AAD_IAM/UsersManagementMenuBlade/AllUsers) válassza ki a felhasználói fiókot, és nyissa meg a részleteit. A felhasználó *ObjectId*másolása:
 >
-> :::image type="content" source="media/includes/user-id.png" alt-text="A felhasználó oldalának nézete Azure Portal kiemelve a GUID azonosítót az objektumazonosító mezőben" lightbox="media/includes/user-id.png":::
+> :::image type="content" source="media/includes/user-id.png" alt-text="Parancsablak az erőforráscsoport és az Azure Digital Twins-példány sikeres létrehozásával" lightbox="media/includes/user-id.png":::
 >
 > Ezután ismételje meg a szerepkör-hozzárendelési lista parancsát a felhasználó *objektumazonosító* használatával a `assignee` fenti paraméterhez.
 
@@ -115,8 +115,7 @@ Mentse ezt a fájlt _**manifest.jsként**_.
 
 Ezután töltse fel ezt a fájlt Cloud Shellba. A Cloud Shell ablakban kattintson a "fájlok feltöltése/letöltése" ikonra, és válassza a "feltöltés" lehetőséget.
 
-:::image type="content" source="media/how-to-set-up-instance/cloud-shell/cloud-shell-upload.png" alt-text="A feltöltési lehetőség kiválasztását ábrázoló Cloud Shell ablak":::
-Nyissa meg az imént létrehozott *manifest.js* , és nyomja meg a "Megnyitás" lehetőséget.
+:::image type="content" source="media/how-to-set-up-instance/cloud-shell/cloud-shell-upload.png" alt-text="Parancsablak az erőforráscsoport és az Azure Digital Twins-példány sikeres létrehozásával" lehetőséget.
 
 Ezután futtassa a következő parancsot egy alkalmazás regisztrációjának létrehozásához egy *nyilvános ügyfél/natív (mobil & asztali)* válasz URL-címével `http://localhost` . Szükség szerint cserélje le a helyőrzőket:
 
@@ -126,7 +125,7 @@ az ad app create --display-name <name-for-your-app-registration> --native-app --
 
 Íme a parancs kimenetének részlete, amely a létrehozott regisztrációval kapcsolatos információkat jeleníti meg:
 
-:::image type="content" source="media/how-to-set-up-instance/cloud-shell/new-app-registration.png" alt-text="Cloud Shell új Azure AD-alkalmazás regisztrációjának kimenete":::
+:::image type="content" source="media/how-to-set-up-instance/cloud-shell/new-app-registration.png" alt-text="Parancsablak az erőforráscsoport és az Azure Digital Twins-példány sikeres létrehozásával":::
 
 ### <a name="verify-success"></a>Sikeres ellenőrzés
 
@@ -140,7 +139,7 @@ Ezután ellenőrizze, hogy a feltöltött *manifest.js* beállításai megfelel�
 
 Ezután válassza az *Áttekintés* lehetőséget a menüsávon az alkalmazás regisztrációjának részleteinek megtekintéséhez:
 
-:::image type="content" source="media/how-to-set-up-instance/portal/app-important-values.png" alt-text="Az alkalmazás regisztrációjának fontos értékeit a portálon tekintheti meg":::
+:::image type="content" source="media/how-to-set-up-instance/portal/app-important-values.png" alt-text="Parancsablak az erőforráscsoport és az Azure Digital Twins-példány sikeres létrehozásával":::
 
 Jegyezze **fel a lapon** megjelenő *alkalmazás (ügyfél) azonosítóját* és *KÖNYVTÁRát (bérlői azonosítóját)* . Ezekre az értékekre később szükség lesz az [ügyfélalkalmazás hitelesítéséhez az Azure digitális Twins API](how-to-authenticate-client.md)-kon. Ha nem az a személy, aki az ilyen alkalmazások kódját fogja írni, meg kell osztania ezeket az értékeket a következő személlyel:.
 

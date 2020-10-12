@@ -7,10 +7,10 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.openlocfilehash: 44519a21296fd658f12b8d7df2191797b16caf7f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91320897"
 ---
 # <a name="use-azure-policy-to-implement-governance-and-controls-for-azure-cosmos-db-resources"></a>A Azure Policy használata Azure Cosmos DB erőforrások irányításának és szabályozásának megvalósításához
@@ -126,7 +126,7 @@ A képernyőképen a következő megfelelőségi kiértékelési eredmények lá
 - A két fiók közül nulla megfelel egy olyan házirendnek, amely megköveteli, hogy a fiók több írási helyhez legyen konfigurálva
 - A két fiók közül nulla megfelel egy olyan házirendnek, amelyet az erőforrások üzembe helyezése engedélyezett az Azure-régiók számára.
 
-:::image type="content" source="./media/policy/compliance.png" alt-text="Megfelelési eredmények a felsorolt Azure Policy-hozzárendelésekhez":::
+:::image type="content" source="./media/policy/compliance.png" alt-text="Azure Cosmos DB beépített szabályzat-definíciók keresése":::
 
 A nem megfelelő erőforrások javításához tekintse meg a következő témakört: [erőforrások szervizelése Azure Policysal](../governance/policy/how-to/remediate-resources.md).
 

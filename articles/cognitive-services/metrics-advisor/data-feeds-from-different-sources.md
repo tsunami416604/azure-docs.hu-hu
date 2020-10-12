@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/04/2020
 ms.author: aahi
 ms.openlocfilehash: 343db078880f55701730e096c3da85a6a7e5428a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91324467"
 ---
 # <a name="add-data-feeds-from-different-data-sources-to-metrics-advisor"></a>Adatcsatornák hozzáadása különböző adatforrásokból a metrikai TANÁCSADÓBA
@@ -23,7 +23,7 @@ Ebből a cikkből megtudhatja, hogy milyen beállítások és követelmények vo
 
 ## <a name="supported-authentication-types"></a>Támogatott hitelesítési típusok
 
-| Hitelesítési típusok | Description |
+| Hitelesítési típusok | Leírás |
 | ---------------------|-------------|
 |**Basic** | Az adatforrásokhoz való hozzáféréshez alapszintű paramétereket kell biztosítania. Például egy kapcsolatok sztringjét vagy kulcsát. Az adatcsatorna-rendszergazdák megtekinthetik ezeket a hitelesítő adatokat. |
 | **AzureManagedIdentity** | Az Azure-erőforrások [felügyelt identitásai](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/overview) a Azure Active Directory egyik funkciója. Azure-szolgáltatásokat biztosít automatikusan felügyelt identitással az Azure AD-ben. Az identitás használatával bármely olyan szolgáltatás hitelesíthető, amely támogatja az Azure AD-hitelesítést.|
@@ -40,10 +40,10 @@ Ebből a cikkből megtudhatja, hogy milyen beállítások és követelmények vo
 |[**Azure Application Insights**](#appinsights)|  Alapszintű |
 |[**Azure Blob Storage (JSON)**](#blob) | Alapszintű<br>ManagedIdentity|
 |[**Azure Cosmos DB (SQL)**](#cosmosdb) | Alapszintű |
-|[**Azure Adatkezelő (Kusto)**](#kusto) | Alapszintű<br>ManagedIdentity|
+|[**Azure Data Explorer (Kusto)**](#kusto) | Alapszintű<br>ManagedIdentity|
 |[**2. generációs Azure Data Lake Storage**](#adl) | Alapszintű<br>DataLakeGen2SharedKey<br>Szolgáltatásnév<br>Egyszerű szolgáltatásnév a Key vaultból<br> |
 |[**Azure SQL Database/SQL Server**](#sql) | Alapszintű<br>ManagedIdentity<br>Szolgáltatásnév<br>Egyszerű szolgáltatásnév a Key vaultból<br>AzureSQLConnectionString
-|[**Azure Table Storage**](#table) | Alapszintű | 
+|[**Azure-Table Storage**](#table) | Alapszintű | 
 |[**ElasticSearch**](#es) | Alapszintű |
 |[**Http-kérelem**](#http) | Alapszintű | 
 |[**InfluxDB (InfluxQL)**](#influxdb) | Alapszintű |
@@ -93,7 +93,7 @@ Hozzon létre egy **hitelesítőadat-entitást** , és használja azt az adatfor
   
   * v1 (alapértelmezett érték)
 
-      A rendszer csak a metrikák *nevét* és *értékét* fogadja el. Például:
+      A rendszer csak a metrikák *nevét* és *értékét* fogadja el. Példa:
     
       ``` JSON
       {"count":11, "revenue":1.23}
@@ -101,7 +101,7 @@ Hozzon létre egy **hitelesítőadat-entitást** , és használja azt az adatfor
 
   * v2
 
-      A metrikák *dimenzióit* és az *időbélyeget* is elfogadjuk. Például:
+      A metrikák *dimenzióit* és az *időbélyeget* is elfogadjuk. Példa:
       
       ``` JSON
       [
@@ -131,7 +131,7 @@ JSON-fájlokban csak egy időbélyeg engedélyezett.
     select StartDate, JobStatusId, COUNT(*) AS JobNumber from IngestionJobs WHERE and StartDate = '2019-12-12 00:00:00'
     ```
 
-## <a name="span-idkustoazure-data-explorer-kustospan"></a><span id="kusto">Azure Adatkezelő (Kusto)</span>
+## <a name="span-idkustoazure-data-explorer-kustospan"></a><span id="kusto">Azure Data Explorer (Kusto)</span>
 
 * **Kapcsolódási karakterlánc**: az Azure adatkezelő (Kusto) kapcsolódási karakterláncának beolvasásával kapcsolatos információkért tekintse meg a [kapcsolódási karakterlánc megtekintése és másolása](https://docs.microsoft.com/azure/data-explorer/kusto/api/connection-strings/kusto) című témakört.
 
@@ -159,7 +159,7 @@ JSON-fájlokban csak egy időbélyeg engedélyezett.
   * `%h` az óra a következőképpen van formázva `HH`
   * `%M` a perc a következőképpen van formázva `mm`
 
-A jelenleg mérőszámok tanácsadója a következő módon támogatja a JSON-fájlokban lévő adatsémát. Például:
+A jelenleg mérőszámok tanácsadója a következő módon támogatja a JSON-fájlokban lévő adatsémát. Példa:
 
 ``` JSON
 [
@@ -210,7 +210,7 @@ The timestamp field must match one of these two formats:
     select StartDate, JobStatusId, COUNT(*) AS JobNumber from IngestionJobs WHERE and StartDate = '2019-12-12 00:00:00'
     ```
 
-## <a name="span-idtableazure-table-storagespan"></a><span id="table">Azure Table Storage</span>
+## <a name="span-idtableazure-table-storagespan"></a><span id="table">Azure-Table Storage</span>
 
 * **Kapcsolódási karakterlánc**: a kapcsolódási sztringnek az Azure Table Storageból való beolvasásával kapcsolatos információkért tekintse meg a [kapcsolódási karakterlánc megtekintése és másolása](https://docs.microsoft.com/azure/storage/common/storage-account-keys-manage?toc=%2Fazure%2Fstorage%2Ftables%2Ftoc.json&tabs=azure-portal#view-account-access-keys) című témakört.
 

@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: how-to
 ms.date: 9/21/2020
 ms.openlocfilehash: 7a01863b3a0c29e94550be67ca957655cff32660
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90935071"
 ---
 # <a name="manage-an-azure-database-for-mysql---flexible-server-preview-using-azure-portal"></a>Azure Database for MySQL rugalmas kiszolgáló (előzetes verzió) kezelése Azure Portal használatával
@@ -50,7 +50,7 @@ A rendszergazdai szerepkör jelszava a Azure Portal használatával módosíthat
 2. Adjon meg egy új jelszót, és erősítse meg a jelszót. A szövegmező a jelszó bonyolultságára vonatkozó követelményeket fogja kérni.
 
    > [!div class="mx-imgBorder"]
-   > :::image type="content" source="./media/howto-manage-server-portal/reset-password.png" alt-text="jelszó alaphelyzetbe állítása rugalmas kiszolgálóhoz":::
+   > :::image type="content" source="./media/howto-manage-server-portal/reset-password.png" alt-text="a Storage rugalmas kiszolgáló méretezése":::
 
 3. Az új jelszó mentéséhez kattintson a **Mentés** gombra.
 
@@ -63,7 +63,7 @@ Ha már nincs szüksége rá, törölheti a kiszolgálót.
 2. Írja be a kiszolgáló nevét a beviteli mezőbe annak megerősítéséhez, hogy törölni kívánja a kiszolgálót.
 
    > [!div class="mx-imgBorder"]
-   > :::image type="content" source="./media/howto-manage-server-portal/delete-server.png" alt-text="a rugalmas kiszolgáló törlése":::
+   > :::image type="content" source="./media/howto-manage-server-portal/delete-server.png" alt-text="a Storage rugalmas kiszolgáló méretezése":::
 
    > [!NOTE]
    > A kiszolgáló törlése visszafordíthatatlan.

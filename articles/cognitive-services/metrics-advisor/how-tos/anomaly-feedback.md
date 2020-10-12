@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/10/2020
 ms.author: aahi
 ms.openlocfilehash: 50d422edf1a4b45132d0b86eac9d4947cef5e5bf
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90935429"
 ---
 # <a name="adjust-anomaly-detection-using-feedback"></a>Anomáliadetektálás beállítása visszajelzés használatával
@@ -37,26 +37,26 @@ Ha a visszajelzési jegyzet mód aktiválva van, kattintson egy pontra a **vissz
 
 Vegye **fontolóra a Megjegyzés szövegmezőben** való kilépését egy időben, és kattintson a **Save (Mentés** ) gombra a visszajelzés mentéséhez.
 
-:::image type="content" source="../media/feedback/feedback-menu.png" alt-text="Visszajelzés menü.":::
+:::image type="content" source="../media/feedback/feedback-menu.png" alt-text="Visszajelzési jegyzet mód.":::
 
 ## <a name="give-feedback-for-multiple-continuous-points"></a>Visszajelzés küldése több folyamatos pontról
 
 Egyszerre több folyamatos pontra is küldhet visszajelzést. ehhez kattintson a lefelé gombra, és húzza az egérmutatót a jegyzetként használni kívánt pontokra. Ugyanazt a visszajelzési menüt fogja látni, mint a fentieket. A **Save (Mentés**) gombra kattintás után ugyanez a visszajelzés lesz alkalmazva az összes kiválasztott pontra.
 
-:::image type="content" source="../media/feedback/continuous-points.png" alt-text="Több pont kiválasztása":::
+:::image type="content" source="../media/feedback/continuous-points.png" alt-text="Visszajelzési jegyzet mód.":::
 
 ## <a name="how-to-view-my-feedback"></a>Visszajelzés megtekintése
 
 Ha meg szeretné tekinteni, hogy módosult-e a pont anomália-észlelése, vigye a kurzort a pont fölé. Az elemleírás a **visszajelzések szerint jelenik meg: igaz,** ha az észlelés megváltozott. Ha **Hamis értéket**jelenít meg, akkor a visszajelzések kiszámítása a ponton megtörtént, de a rendellenességek észlelésének eredménye nem módosult.
 
-:::image type="content" source="../media/feedback/affected-point.png" alt-text="Visszajelzéssel érintett pont":::
+:::image type="content" source="../media/feedback/affected-point.png" alt-text="Visszajelzési jegyzet mód.":::
 
 ## <a name="when-should-i-annotate-an-anomaly-as-normal"></a>Mikor kell a "NORMAL" értékre jegyzett anomáliát
 
 Számos oka lehet annak, ha egy anomália hamis riasztás. Ha az alábbi forgatókönyvek valamelyike alkalmazható, érdemes lehet a következő metrikai tanácsadói funkciókat használni:
 
 
-|Használati eset  |Ajánlás |
+|Forgatókönyv  |Ajánlás |
 |---------|---------|
 |Az anomáliát az ismert adatforrás-változás okozza, például egy rendszerváltozás.     | Ne jegyezze fel ezt a anomáliát, ha ez a forgatókönyv nem várható rendszeresen újra.        |
 |A rendellenességet a nyaralás okozta.     | A anomáliák észlelésének megjelölése megadott időpontokban az [előre beállított események](configure-metrics.md#preset-events) használatával.       |

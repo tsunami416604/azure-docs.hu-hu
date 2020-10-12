@@ -15,10 +15,10 @@ ms.reviewer: hirsin
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: b719e866852d2e865c16c62fddd8c549ae505b7d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85551548"
 ---
 # <a name="authorize-access-to-web-applications-using-openid-connect-and-azure-active-directory"></a>Hozzáférés engedélyezése webalkalmazásoknak OpenID Connect és az Azure Active Directory használatával
@@ -108,7 +108,7 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 &nonce=7362CAEA-9CA5-4B43-9BA3-34D7C303EBA7
 ```
 
-| Paraméter | Típus | Description |
+| Paraméter | Típus | Leírás |
 | --- | --- | --- |
 | Bérlő |kötelező |A `{tenant}` kérelem elérési útjának értéke használható annak szabályozására, hogy ki jelentkezhet be az alkalmazásba. Az engedélyezett értékek a bérlői azonosítók, például `8eaef023-2b34-4da1-9baa-8bc8c9d6a490` vagy a `contoso.onmicrosoft.com` `common` bérlői független tokenek esetében. |
 | client_id |kötelező |Az alkalmazáshoz hozzárendelt, az Azure AD-vel regisztrált alkalmazás azonosítója. Ezt a Azure Portalban találja. Kattintson a **Azure Active Directory**, majd az alkalmazás **regisztrálása**elemre, válassza ki az alkalmazást, és keresse meg az alkalmazás azonosítóját az alkalmazás lapon. |
@@ -117,8 +117,8 @@ client_id=6731de76-14a6-49ae-97bc-6eba6914391e
 | egyszeri |kötelező |A kérelemben szereplő, az alkalmazás által generált érték, amely az eredményül kapott `id_token` jogcímként szerepel. Az alkalmazás ezután ellenőrizheti ezt az értéket a jogkivonat-Visszajátszási támadások enyhítése érdekében. Az érték általában egy véletlenszerű, egyedi karakterlánc vagy GUID, amely a kérelem forrásának azonosítására szolgál. |
 | redirect_uri | ajánlott |Az alkalmazás redirect_uri, ahol az alkalmazás elküldhet és fogadhat hitelesítési válaszokat. Pontosan meg kell egyeznie a portálon regisztrált redirect_urisével, kivéve, ha az URL-címet kódolni kell. Ha hiányzik, a rendszer visszaküldi a felhasználói ügynököt az alkalmazáshoz regisztrált átirányítási URI-k egyikére, véletlenszerűen. A maximális hossz 255 bájt |
 | response_mode |választható |Meghatározza azt a módszert, amelyet az eredményül kapott authorization_codenek az alkalmazásba való visszaküldéséhez kell használni. A támogatott értékek `form_post` a *http-űrlapok utáni* és `fragment` az *URL-töredékek*esetében használhatók. A webalkalmazások esetében javasoljuk, `response_mode=form_post` hogy a használatával biztosítsa a tokenek legbiztonságosabb átvitelét az alkalmazásba. Az alapértelmezett érték minden folyamathoz, beleértve az id_token is `fragment` .|
-| state |ajánlott |A jogkivonat-válaszban visszaadott kérelemben szereplő érték. Bármely kívánt tartalom sztringje lehet. A véletlenszerűen generált egyedi érték általában a [helyek közötti kérelmek hamisításának megelőzésére](https://tools.ietf.org/html/rfc6749#section-10.12)szolgál. Az állapot az alkalmazásban a felhasználó állapotára vonatkozó információk kódolására is használatos, mielőtt a hitelesítési kérelem bekövetkezett volna, például az oldal vagy a megtekintés. |
-| gyors |választható |Megadja a szükséges felhasználói beavatkozás típusát. Jelenleg az egyetlen érvényes érték a következők egyike: "bejelentkezhessen," None "és" beleegyezett ". `prompt=login`kényszeríti a felhasználót, hogy adja meg a kérelem hitelesítő adatait, és zárja be az egyszeri bejelentkezést. `prompt=none`Ez ellentétes – biztosítja, hogy a felhasználó semmilyen interaktív kérés nélkül nem jelenik meg. Ha a kérést nem lehet csendes úton végrehajtani az egyszeri bejelentkezésen keresztül, a végpont hibát ad vissza. `prompt=consent`a felhasználó bejelentkezése után elindítja a OAuth jóváhagyása párbeszédpanelt, amely arra kéri a felhasználót, hogy adjon engedélyt az alkalmazásnak. |
+| állapot |ajánlott |A jogkivonat-válaszban visszaadott kérelemben szereplő érték. Bármely kívánt tartalom sztringje lehet. A véletlenszerűen generált egyedi érték általában a [helyek közötti kérelmek hamisításának megelőzésére](https://tools.ietf.org/html/rfc6749#section-10.12)szolgál. Az állapot az alkalmazásban a felhasználó állapotára vonatkozó információk kódolására is használatos, mielőtt a hitelesítési kérelem bekövetkezett volna, például az oldal vagy a megtekintés. |
+| gyors |választható |Megadja a szükséges felhasználói beavatkozás típusát. Jelenleg az egyetlen érvényes érték a következők egyike: "bejelentkezhessen," None "és" beleegyezett ". `prompt=login` kényszeríti a felhasználót, hogy adja meg a kérelem hitelesítő adatait, és zárja be az egyszeri bejelentkezést. `prompt=none` Ez ellentétes – biztosítja, hogy a felhasználó semmilyen interaktív kérés nélkül nem jelenik meg. Ha a kérést nem lehet csendes úton végrehajtani az egyszeri bejelentkezésen keresztül, a végpont hibát ad vissza. `prompt=consent` a felhasználó bejelentkezése után elindítja a OAuth jóváhagyása párbeszédpanelt, amely arra kéri a felhasználót, hogy adjon engedélyt az alkalmazásnak. |
 | login_hint |választható |A használatával előre kitöltheti a felhasználó bejelentkezési oldalának username/e-mail címe mezőjét, ha már ismeri a felhasználónevét. Az alkalmazások gyakran használják ezt a paramétert az újrahitelesítés során, miután már kibontotta a felhasználónevet egy korábbi bejelentkezésből a `preferred_username` jogcím használatával. |
 
 Ezen a ponton a felhasználónak meg kell adnia a hitelesítő adatait, és el kell végeznie a hitelesítést.
@@ -138,7 +138,7 @@ id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNB...&state=12345
 | Paraméter | Leírás |
 | --- | --- |
 | id_token |A `id_token` kért alkalmazás. A használatával `id_token` ellenőrizheti a felhasználó identitását, és megkezdheti a munkamenetet a felhasználóval. |
-| state |A kérelemben szereplő, a jogkivonat-válaszban visszaadott érték. A véletlenszerűen generált egyedi érték általában a [helyek közötti kérelmek hamisításának megelőzésére](https://tools.ietf.org/html/rfc6749#section-10.12)szolgál. Az állapot az alkalmazásban a felhasználó állapotára vonatkozó információk kódolására is használatos, mielőtt a hitelesítési kérelem bekövetkezett volna, például az oldal vagy a megtekintés. |
+| állapot |A kérelemben szereplő, a jogkivonat-válaszban visszaadott érték. A véletlenszerűen generált egyedi érték általában a [helyek közötti kérelmek hamisításának megelőzésére](https://tools.ietf.org/html/rfc6749#section-10.12)szolgál. Az állapot az alkalmazásban a felhasználó állapotára vonatkozó információk kódolására is használatos, mielőtt a hitelesítési kérelem bekövetkezett volna, például az oldal vagy a megtekintés. |
 
 ### <a name="error-response"></a>Hiba válasza
 
@@ -161,7 +161,7 @@ error=access_denied&error_description=the+user+canceled+the+authentication
 
 Az alábbi táblázat azokat a hibakódokat ismerteti, amelyeket a rendszer a `error` hiba válaszának paraméterében adhat vissza.
 
-| Hibakód | Description | Ügyfél művelete |
+| Hibakód | Leírás | Ügyfél művelete |
 | --- | --- | --- |
 | invalid_request |Protokollhiba, például hiányzó kötelező paraméter. |Javítsa ki és küldje el újra a kérelmet. Ez egy fejlesztési hiba, és általában a kezdeti tesztelés során történik. |
 | unauthorized_client |Az ügyfélalkalmazás nem jogosult engedélyezési kód igénylésére. |Ez általában akkor fordul elő, ha az ügyfélalkalmazás nincs regisztrálva az Azure AD-ben, vagy nem kerül be a felhasználó Azure AD-bérlőbe. Az alkalmazás arra kéri a felhasználót, hogy telepítse az alkalmazást, és hozzáadja azt az Azure AD-hez. |
@@ -197,7 +197,7 @@ post_logout_redirect_uri=http%3A%2F%2Flocalhost%2Fmyapp%2F
 
 ```
 
-| Paraméter | Típus | Description |
+| Paraméter | Típus | Leírás |
 | --- | --- | --- |
 | post_logout_redirect_uri |ajánlott |Az URL-cím, amelyet a felhasználónak át kell irányítani a sikeres kijelentkezés után.  Ennek az URL-címnek meg kell egyeznie az alkalmazás regisztrációs portálján az alkalmazáshoz regisztrált átirányítási URI-k egyikével.  Ha *post_logout_redirect_urit* nem tartalmaz, a felhasználó általános üzenetet jelenít meg. |
 
@@ -248,7 +248,7 @@ id_token=eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsIng1dCI6Ik1uQ19WWmNB...&code=AwABAA
 | --- | --- |
 | id_token |A `id_token` kért alkalmazás. A használatával `id_token` ellenőrizheti a felhasználó identitását, és megkezdheti a munkamenetet a felhasználóval. |
 | code |Az alkalmazás által kért authorization_code. Az alkalmazás az engedélyezési kóddal kérhet hozzáférési jogkivonatot a célként megadott erőforráshoz. Authorization_codes rövid életűek, és általában körülbelül 10 perc múlva lejárnak. |
-| state |Ha a kérelemben szerepel egy State paraméter, akkor a válaszban ugyanazt az értéket kell megjelennie. Az alkalmazásnak ellenőriznie kell, hogy a kérelemben és a válaszban szereplő állapot értékek azonosak-e. |
+| állapot |Ha a kérelemben szerepel egy State paraméter, akkor a válaszban ugyanazt az értéket kell megjelennie. Az alkalmazásnak ellenőriznie kell, hogy a kérelemben és a válaszban szereplő állapot értékek azonosak-e. |
 
 ### <a name="error-response"></a>Hiba válasza
 

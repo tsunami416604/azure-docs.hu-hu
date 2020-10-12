@@ -7,10 +7,10 @@ ms.date: 07/28/2020
 ms.author: dukek
 ms.subservice: alerts
 ms.openlocfilehash: 7937b412b1eb3f311f0212f19c4eb9fc7782459d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91327731"
 ---
 # <a name="create-and-manage-action-groups-in-the-azure-portal"></a>Műveletcsoportok létrehozása és kezelése az Azure Portalon
@@ -135,7 +135,7 @@ Az értesítő e-mailt csak az *elsődleges e-mail* -címre küldi a rendszer.
 
 A műveleti csoportban korlátozott számú e-mail művelet lehet. Tekintse meg a [díjszabási információkat](./alerts-rate-limiting.md) ismertető cikket.
 
-### <a name="function"></a>Funkció
+### <a name="function"></a>Függvény
 Meghívja a meglévő HTTP-trigger végpontját [Azure Functionsban](../../azure-functions/functions-create-first-azure-function.md#create-a-function-app).
 
 A műveleti csoportban korlátozott számú Function művelet lehet.
@@ -159,7 +159,7 @@ A műveleti csoportok webhook művelettel kihasználhatja a Azure Active Directo
     > [!NOTE]
     > A szkript végrehajtásához az [Azure ad alkalmazás-rendszergazda szerepkör](../../active-directory/users-groups-roles/directory-assign-admin-roles.md#available-roles) tagjának kell lennie.
     
-    - Módosítsa a PowerShell-parancsfájl összekapcsolási AzureAD hívását az Azure AD-bérlői azonosító használatára.
+    - Módosítsa a PowerShell-parancsfájl Connect-AzureAD hívását az Azure AD-bérlő AZONOSÍTÓjának használatára.
     - Módosítsa a PowerShell-parancsfájl változóját $myAzureADApplicationObjectId az Azure AD-alkalmazás Object ID-azonosítójának használatára.
     - Futtassa a módosított parancsfájlt.
     
