@@ -8,10 +8,10 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 05/01/2020
 ms.openlocfilehash: 8e88e5e8a9fbe1881959c5183dc01b11ac681bdf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82780375"
 ---
 # <a name="parameterizing-mapping-data-flows"></a>Leképezési adatfolyamok paraméterezése
@@ -67,7 +67,7 @@ Ha karakterlánc típusú adatcsatorna-kifejezési paramétert rendel hozzá, a 
 Ha az adatáramlási paraméter `stringParam` értékkel rendelkező folyamat paraméterre hivatkozik `upper(column1)` . 
 
 - Ha a kifejezés be van jelölve, `$stringParam` a kiértékeli az összes nagybetűs Column1 értékét.
-- Ha a kifejezés nincs bejelölve (az alapértelmezett viselkedés), `$stringParam` a kiértékelés a következőre`'upper(column1)'`
+- Ha a kifejezés nincs bejelölve (az alapértelmezett viselkedés),  `$stringParam` a kiértékelés a következőre `'upper(column1)'`
 
 #### <a name="passing-in-timestamps"></a>Időbélyegek átadása
 
@@ -84,7 +84,7 @@ Tegyük fel, hogy van egy Integer paraméter `intParam` , amely egy string típu
 
 ![Adatfolyam-paraméter beállítása](media/data-flow/parameter-pipeline-2.png "Adatfolyam-paraméter beállítása")
 
-`@pipeline.parameters.pipelineParam`futásidőben van hozzárendelve érték `abs(1)` .
+`@pipeline.parameters.pipelineParam` futásidőben van hozzárendelve érték `abs(1)` .
 
 ![Adatfolyam-paraméter beállítása](media/data-flow/parameter-pipeline-4.png "Adatfolyam-paraméter beállítása")
 

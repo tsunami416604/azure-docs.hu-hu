@@ -8,10 +8,10 @@ ms.date: 09/20/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: 9833f63d999ab7c24174853bd37f4e7a76f6dfbf
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91329431"
 ---
 # <a name="security-control-v2-network-security"></a>Security Control v2: hálózati biztonság
@@ -116,7 +116,7 @@ Az Azure-erőforrások védelmet nyújthatnak a külső hálózatokból érkező
 -   Az adatvédelmet a DDoS-támadások ellen biztosíthatja az Azure-beli virtuális hálózatokon a DDoS standard szintű védelem engedélyezésével. 
 -   A Azure Security Center használatával azonosíthatja a fentiekkel kapcsolatos hibás konfigurációs kockázatokat. 
 
-- [Azure Firewall-dokumentáció](/azure/firewall/)
+- [Azure Firewall dokumentáció](/azure/firewall/)
 
 - [Az Azure WAF üzembe helyezése](../../web-application-firewall/overview.md)
 
@@ -126,7 +126,7 @@ Az Azure-erőforrások védelmet nyújthatnak a külső hálózatokból érkező
 
 **Ügyfelek biztonságával foglalkozó érdekelt felek** ([További információ](/azure/cloud-adoption-framework/organize/cloud-security#security-functions)):
 
-Nincsenek
+Nincs
 
 ## <a name="ns-5-deploy-intrusion-detectionintrusion-prevention-systems-idsips"></a>NS-5: behatolás-észlelési/Behatolás-megelőzési rendszerek (AZONOSÍTÓk/IP-címek) üzembe helyezése
 

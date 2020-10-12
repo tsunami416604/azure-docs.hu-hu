@@ -8,10 +8,10 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 08/19/2020
 ms.openlocfilehash: 7f0a8fcb841399eb910f5f043cc75ddad037ee30
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88606854"
 ---
 # <a name="plan-and-manage-costs-for-azure-cosmos-db"></a>A Azure Cosmos DB költségeinek megtervezése és kezelése
@@ -71,7 +71,7 @@ A Azure Portal Azure Cosmos DB erőforrásainak használatának megkezdése utá
 1. Hozzon létre egy új tárolót, például egy Graph-tárolót.
 1. Adja meg a számítási feladatokhoz szükséges átviteli sebességet, például 400 RU/s. Az átviteli sebesség értékének megadása után a díjszabási becslést a következő képernyőképen látható módon jelenítheti meg:
 
-   :::image type="content" source="./media/plan-manage-costs/cost-estimate-portal.png" alt-text="Költségbecslés Azure Portal":::
+   :::image type="content" source="./media/plan-manage-costs/cost-estimate-portal.png" alt-text="Költségbecslés a Azure Cosmos DB Capacity kalkulátorban":::
 
 ## <a name="use-budgets-and-cost-alerts"></a>Költségvetések és költségriasztások használata
 
@@ -93,11 +93,11 @@ A Cost Analysis használatakor különböző időintervallumok esetén megtekint
 
 1. Egy szolgáltatás, például a Azure Cosmos DB költségeinek szűkítéséhez válassza a **szűrő hozzáadása** , majd a **szolgáltatásnév**lehetőséget. Ezután válassza ki a **Azure Cosmos db** elemet a listából. Íme egy példa, amely csak a Azure Cosmos DBra vonatkozó költségeket mutatja:
  
-   :::image type="content" source="./media/plan-manage-costs/cost-analysis-pane.png" alt-text="Költségek figyelése a Cost Analysis ablaktáblával":::
+   :::image type="content" source="./media/plan-manage-costs/cost-analysis-pane.png" alt-text="Költségbecslés a Azure Cosmos DB Capacity kalkulátorban":::
 
 Az előző példában a február hónapra vonatkozóan a Azure Cosmos DB aktuális díja látható. A diagramok a hely és az erőforráscsoport szerint Azure Cosmos DB költségeket is tartalmazzák.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A díjszabással kapcsolatos további információkért tekintse meg a következő cikkeket Azure Cosmos DB:
 

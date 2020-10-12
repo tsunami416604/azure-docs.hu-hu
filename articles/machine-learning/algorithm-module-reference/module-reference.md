@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 05/19/2020
 ms.openlocfilehash: 9a2e21696409c320b89d1fed54fefad953b955e1
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90886400"
 ---
 # <a name="algorithm--module-reference-for-azure-machine-learning-designer"></a>Algoritmus & Azure Machine Learning Designer modul-hivatkozása
@@ -55,8 +55,8 @@ Az algoritmusok kiválasztásával kapcsolatos segítségért lásd:
 | Modell pontozása és kiértékelése | Mérje fel a betanított modell pontosságát. | [Átalakítás alkalmazása](apply-transformation.md) <br/> [Adatok hozzárendelése fürtökhöz](assign-data-to-clusters.md) <br/> [Modell keresztellenőrzése](cross-validate-model.md) <br/> [Modell értékelése](evaluate-model.md) <br/> [Képmodell pontozása](score-image-model.md) <br/> [Relevanciamodell](score-model.md) |
 | Python-nyelv | Kód írása és beágyazása modulba a Python és a folyamat integrálásához. | [Python-modell létrehozása](create-python-model.md) <br/> [Python-szkript futtatása](execute-python-script.md) |
 | R nyelv | Kód írása és beágyazása egy modulba az R és a folyamat integrálásához. | [R-szkript végrehajtása](execute-r-script.md) |
-| Text Analytics | Speciális számítási eszközöket biztosít a strukturált és strukturálatlan szöveggel való munkához. |  [Szó konvertálása vektorrá](convert-word-to-vector.md) <br/> [N-Gram-funkciók kinyerése szövegből](extract-n-gram-features-from-text.md) <br/> [Funkciókivonatolás](feature-hashing.md) <br/> [Szöveg előfeldolgozása](preprocess-text.md) <br/> [Rejtett Dirichlet-lefoglalás](latent-dirichlet-allocation.md) <br/> [Vowpal Wabbit modell pontozása](score-vowpal-wabbit-model.md) <br/> [Vowpal Wabbit modell betanítása](train-vowpal-wabbit-model.md)|
-| Computer Vision | Rendszerkép-adatok előfeldolgozása és rendszerkép-felismeréssel kapcsolatos modulok. |  [Képátalakítás alkalmazása](apply-image-transformation.md) <br/> [Átalakítás képkönyvtárrá](convert-to-image-directory.md) <br/> [Képátalakítás indítása](init-image-transformation.md) <br/> [Képkönyvtár felosztása](split-image-directory.md) <br/> [DenseNet](densenet.md) <br/> [ResNet](resnet.md) |
+| Szövegelemzés | Speciális számítási eszközöket biztosít a strukturált és strukturálatlan szöveggel való munkához. |  [Szó konvertálása vektorrá](convert-word-to-vector.md) <br/> [N-Gram-funkciók kinyerése szövegből](extract-n-gram-features-from-text.md) <br/> [Funkciókivonatolás](feature-hashing.md) <br/> [Szöveg előfeldolgozása](preprocess-text.md) <br/> [Rejtett Dirichlet-lefoglalás](latent-dirichlet-allocation.md) <br/> [Vowpal Wabbit modell pontozása](score-vowpal-wabbit-model.md) <br/> [Vowpal Wabbit modell betanítása](train-vowpal-wabbit-model.md)|
+| Számítógépes látástechnológia | Rendszerkép-adatok előfeldolgozása és rendszerkép-felismeréssel kapcsolatos modulok. |  [Képátalakítás alkalmazása](apply-image-transformation.md) <br/> [Átalakítás képkönyvtárrá](convert-to-image-directory.md) <br/> [Képátalakítás indítása](init-image-transformation.md) <br/> [Képkönyvtár felosztása](split-image-directory.md) <br/> [DenseNet](densenet.md) <br/> [ResNet](resnet.md) |
 | Ajánlás | Build-javaslatok modelljei. | [Ajánló értékelése](evaluate-recommender.md) <br/> [SVD-ajánló pontozása](score-svd-recommender.md) <br/> [Wide and Deep ajánló pontozása](score-wide-and-deep-recommender.md)<br/> [SVD-ajánló betanítása](train-SVD-recommender.md) <br/> [Wide and Deep ajánló betanítása](train-wide-and-deep-recommender.md)|
 | Rendellenességek észlelése | Hozzon létre anomáliák észlelési modelljeit. | [PCA-alapú rendellenesség-észlelés](pca-based-anomaly-detection.md) <br/> [Rendellenesség-észlelési modell betanítása](train-anomaly-detection-model.md) |
 

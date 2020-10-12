@@ -12,10 +12,10 @@ ms.author: bonova
 ms.reviewer: ''
 ms.date: 07/11/2019
 ms.openlocfilehash: a33ff6b927045389c3692201fa70839c6a466ede
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90887663"
 ---
 # <a name="sql-server-instance-migration-to-azure-sql-managed-instance"></a>SQL Server példány áttelepítése az Azure SQL felügyelt példányára
@@ -70,7 +70,7 @@ A SQL Server-példány méréséhez szükséges paraméterek némelyike a követ
 
 - [Figyelje a CPU-használatot a SQL Server példányon](https://techcommunity.microsoft.com/t5/Azure-SQL-Database/Monitor-CPU-usage-on-SQL-Server/ba-p/680777#M131) , és jegyezze fel az átlagos és a maximális CPU-használatot.
 - [Figyelje a memória használatát a SQL Server példányon](https://docs.microsoft.com/sql/relational-databases/performance-monitor/monitor-memory-usage) , és határozza meg a különböző összetevők, például a puffer készlet, a terv gyorsítótár, az erőforráskészlet-készlet, [a memórián belüli OLTP](https://docs.microsoft.com/sql/relational-databases/in-memory-oltp/monitor-and-troubleshoot-memory-usage?view=sql-server-2017)stb. által használt memória mennyiségét. Emellett meg kell találnia az oldal átlagos és csúcsérték értékét a memória várható élettartama teljesítményszámláló számára.
-- Figyelje a lemez i/o-használatát a forrás SQL Server példányon a [sys. dm_io_virtual_file_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql) vagy a [teljesítményszámlálók](https://docs.microsoft.com/sql/relational-databases/performance-monitor/monitor-disk-usage)használatával.
+- A lemez i/o-használatának figyelése a forrás SQL Server példányon [sys.dm_io_virtual_file_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-io-virtual-file-stats-transact-sql) nézet vagy [teljesítményszámlálók](https://docs.microsoft.com/sql/relational-databases/performance-monitor/monitor-disk-usage)használatával.
 - A számítási feladatok és a lekérdezési teljesítmény, illetve a SQL Server példány figyelése a dinamikus felügyeleti nézetek vagy a lekérdezési tárolók vizsgálatával, ha az áttelepítés egy SQL Server 2016 + verzióról történik. Azonosítsa a számítási feladat legfontosabb lekérdezéseinek átlagos időtartamát és CPU-felhasználását, hogy összehasonlítsa őket a felügyelt példányon futó lekérdezésekkel.
 
 > [!Note]

@@ -11,10 +11,10 @@ author: sdgilley
 ms.date: 08/20/2020
 ms.custom: seoapril2019, seodec18
 ms.openlocfilehash: 71032c49ac5164f13189baf64668f8998fdc186a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91276084"
 ---
 # <a name="how-azure-machine-learning-works-architecture-and-concepts"></a>A Azure Machine Learning működése: architektúra és fogalmak
@@ -33,7 +33,7 @@ A munkaterület a következő központi hely:
 * Tárolja a Azure Machine Learning használatakor létrehozott eszközöket, beleértve a következőket:
   * [Környezetek](#environments)
   * [Kísérletek](#experiments)
-  * [Pipelines](#ml-pipelines)
+  * [Folyamatok](#ml-pipelines)
   * [Adatkészletek](#datasets-and-datastores)
   * [Modellek](#models)
   * [Végpontok](#endpoints)

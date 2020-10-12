@@ -4,10 +4,10 @@ ms.topic: include
 ms.custom: include file
 ms.date: 5/17/2020
 ms.openlocfilehash: 79a45825be66b44d869ef741917436de87a1f5d0
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83653198"
 ---
 Ismerje meg a normalizálás [fogalmait](../luis-concept-utterance.md#utterance-normalization-for-diacritics-and-punctuation) , valamint a [verzió](https://westus.dev.cognitive.microsoft.com/docs/services/5890b47c39e2bb17b84a55ff/operations/versions-update-application-version-settings) API-k használatával frissítse ezeket a beállításokat, vagy használja a Luis-portál **felügyelet** szakaszát, a **Beállítások** lapot.

@@ -4,10 +4,10 @@ description: Megtudhatja, hogyan válthat egy Service Fabric-fürtöt a tanúsí
 ms.topic: conceptual
 ms.date: 09/06/2019
 ms.openlocfilehash: a90290430616302dbbe9ab9cf717510070936529
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86247914"
 ---
 # <a name="change-cluster-from-certificate-thumbprint-to-common-name"></a>Fürt módosítása tanúsítvány-ujjlenyomatról köznapi névre
@@ -191,7 +191,7 @@ New-AzResourceGroupDeployment -ResourceGroupName $groupname -Verbose `
     -TemplateParameterFile "C:\temp\cluster\parameters.json" -TemplateFile "C:\temp\cluster\template.json" 
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * További információ a [fürt biztonságáról](service-fabric-cluster-security.md).
 * Tudnivalók a [fürt tanúsítványainak átváltásáról](service-fabric-cluster-rollover-cert-cn.md)
 * [Fürt tanúsítványainak frissítése és kezelése](service-fabric-cluster-security-update-certs-azure.md)

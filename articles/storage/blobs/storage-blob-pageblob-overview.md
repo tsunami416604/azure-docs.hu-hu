@@ -11,21 +11,21 @@ ms.reviewer: wielriac
 ms.subservice: blobs
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 542c9374b70cd765ed27dd4dd158ad81035269f0
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89018841"
 ---
 # <a name="overview-of-azure-page-blobs"></a>Az Azure-oldal Blobok áttekintése
 
 Az Azure Storage háromféle blob Storage-típust kínál: Blobok blokkolását, blobok és Blobok hozzáfűzését. A blokkos Blobok blokkokból állnak, és ideálisak a szöveges vagy bináris fájlok tárolására, valamint a nagyméretű fájlok hatékony feltöltésére. A hozzáfűzési Blobok is blokkokból állnak, de a hozzáfűzési műveletekhez vannak optimalizálva, így ideálisak a naplózási forgatókönyvekhez. Az oldal 512 Blobok összesen legfeljebb 8 TB méretű lapokat alkotnak, és a gyakori véletlenszerű olvasási/írási műveletekhez lettek kialakítva. Az oldal Blobok az Azure IaaS-lemezek alapjai. Ebből a cikkből megtudhatja, hogyan fejti ki a Blobok funkcióit és előnyeit.
 
-Az oldal Blobok a 512 bájtos lapok gyűjteményei, amelyek lehetővé teszik a bájtok tetszőleges tartományának olvasását/írását. Ezért az oldal Blobok ideálisak az olyan index-alapú és ritka adatstruktúrák tárolására, mint az operációs rendszer és az adatlemezek Virtual Machines és adatbázisokhoz. Az Azure SQL DB például a blobokat használja az adatbázisok alapjául szolgáló állandó tárterületként. Emellett a lapozófájlokat gyakran használják tartomány alapú frissítéssel rendelkező fájlokhoz is.  
+Az oldal Blobok a 512 bájtos lapok gyűjteményei, amelyek lehetővé teszik a bájtok tetszőleges tartományának olvasását/írását. Ezért az oldal Blobok ideálisak az olyan index-alapú és ritka adatstruktúrák tárolására, mint az operációs rendszer és az adatlemezek Virtual Machines és adatbázisokhoz. Az Azure SQL DB például a blobokat használja az adatbázisok alapjául szolgáló állandó tárterületként. Emellett a Range-Based-frissítésekkel rendelkező fájlok esetében is gyakran használják az oldal blobokat.  
 
 Az Azure Page Blobok legfontosabb funkciói a REST-felület, a mögöttes tároló tartóssága, valamint a zökkenőmentes áttelepítési képességek az Azure-ban. Ezeket a funkciókat részletesebben a következő szakaszban tárgyaljuk. Emellett az Azure-lapok Blobok jelenleg két típusú tárolóban támogatottak: Premium Storage és standard Storage. A Premium Storage kifejezetten olyan számítási feladatokhoz lett tervezve, amelyek konzisztens nagy teljesítményű és kis késleltetésű, prémium szintű oldal-blobokat biztosítanak a nagy teljesítményű tárolási helyzetekben. A standard szintű Storage-fiókok költséghatékonyan használhatók a késést nem okozó számítási feladatok futtatásához.
 
-## <a name="sample-use-cases"></a>Példa használati esetekre
+## <a name="sample-use-cases"></a>Használati példák
 
 Az Azure IaaS-lemezektől kezdődően néhány felhasználási esetet ismertetünk az oldal-Blobok esetében. Az Azure-oldal Blobok az Azure IaaS virtuális lemezek platformjának gerincét jelentik. Az Azure operációs rendszer és az adatlemezek is olyan virtuális lemezekként valósulnak meg, amelyekben az tartósan az Azure Storage platformon tárolják, majd a maximális teljesítmény érdekében a virtuális gépeknek továbbítják azokat. Az Azure-lemezek a Hyper-V [VHD formátumában](https://technet.microsoft.com/library/dd979539.aspx) tárolódnak, és az Azure Storage-ban [oldal blobként](/rest/api/storageservices/Understanding-Block-Blobs--Append-Blobs--and-Page-Blobs#about-page-blobs) vannak tárolva. A virtuális lemezek Azure IaaS-alapú virtuális gépekhez való használata mellett az oldal Blobok is engedélyezhetik a Pásti és a DBaaS forgatókönyveket, például az Azure SQL DB szolgáltatást, amely jelenleg az SQL-adatok tárolására szolgáló blobokat használ, és lehetővé teszi a gyors, véletlenszerű írási és olvasási műveleteket az adatbázis számára. Egy másik példa lenne, ha a közös hozzáférésű videoszerkesztő alkalmazásokhoz való megosztott média eléréséhez tartozó Péter-szolgáltatással rendelkezik, az oldal Blobok lehetővé teszik a gyors hozzáférést az adathordozón található véletlenszerű helyekhez. Emellett lehetővé teszi, hogy több felhasználó is gyorsan és hatékonyan szerkessze és egyesítse ugyanazt az adathordozót. 
 

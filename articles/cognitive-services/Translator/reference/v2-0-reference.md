@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 05/15/2018
 ms.author: swmachan
 ms.openlocfilehash: 7fa148579e7525933d388b8a93c9a3476f473cb6
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83588615"
 ---
 # <a name="translator-v20"></a>Translator v 2.0
@@ -52,7 +52,7 @@ Ha meg szeretné akadályozni, hogy a fordítás káromkodása a forrás szöveg
 |ProfanityAction    |Művelet |Példa forrása (Japán)  |Példa fordításra (angol)  |
 |:--|:--|:--|:--|
 |NoAction   |Default (Alapértelmezett): Ugyanaz, mint a beállítás beállítása. A káromkodás a forrás és a cél között lesz továbbítva.        |彼はジャッカスです 。     |Ő egy seggfej.   |
-|Megjelölve     |A profán szavakat az XML-címkék \< profán> és a \< /profanity> veszi körül.       |彼はジャッカスです 。 |\<>a seggfej \< /profanity>.  |
+|Megjelölve     |A profán szavakat az XML-címkék és a is veszi körül \<profanity> \</profanity> .       |彼はジャッカスです 。 |Ő egy \<profanity> seggfej \</profanity> .  |
 |Törölve    |A profán szavakat a rendszer a pótlás nélkül eltávolítja a kimenetből.     |彼はジャッカスです 。 |Ő a.   |
 
     
@@ -88,10 +88,10 @@ Válasz tartalmának típusa: Application/XML
 |AppID  |üres    |Kötelező. Ha a `Authorization` vagy a `Ocp-Apim-Subscription-Key` fejlécet használja, hagyja `appid` üresen a mezőt. Ellenkező esetben adjon meg egy karakterláncot, amely tartalmaz `"Bearer" + " " + "access_token"` .|lekérdezés|sztring|
 |szöveg|üres   |Kötelező. A lefordítani kívánt szöveget jelölő sztring. A szöveg legfeljebb 10 000 karaktert tartalmazhat.|lekérdezés|sztring|
 |a|üres   |Választható. Egy karakterlánc, amely a lefordított szöveg nyelvi kódját jelöli. Például: en, angol nyelven.|lekérdezés|sztring|
-|erre:|üres |Kötelező. Egy karakterlánc, amely annak a nyelvnek a kódját jelöli, amelybe a szöveget le kell fordítani.|lekérdezés|sztring|
-|contentType|üres    |Választható. A lefordított szöveg formátuma. A támogatott formátumok a következők: `text/plain` (alapértelmezett) és `text/html` . Minden HTML-elemnek megfelelően formázottnak, teljes elemnek kell lennie.|lekérdezés|sztring|
+|a következőre:|üres |Kötelező. Egy karakterlánc, amely annak a nyelvnek a kódját jelöli, amelybe a szöveget le kell fordítani.|lekérdezés|sztring|
+|contentType|üres    |Választható. A lefordított szöveg formátuma. A támogatott formátumok a következők: `text/plain` (alapértelmezett) és  `text/html` . Minden HTML-elemnek megfelelően formázottnak, teljes elemnek kell lennie.|lekérdezés|sztring|
 |category|üres   |Választható. A fordítás kategóriáját (tartományát) tartalmazó karakterlánc. A mező alapértelmezett értéke: `general`.|lekérdezés|sztring|
-|Engedélyezés|üres  |Kötelező, ha a `appid` mező és a `Ocp-Apim-Subscription-Key` fejléc is üres marad. Engedélyezési jogkivonat: `"Bearer" + " " + "access_token"` .|fejléc|sztring|
+|Engedélyezés|üres  |Kötelező, ha a `appid` mező és a `Ocp-Apim-Subscription-Key` fejléc is üres marad. Engedélyezési jogkivonat:  `"Bearer" + " " + "access_token"` .|fejléc|sztring|
 |Ocp-Apim-Subscription-Key|üres  |Kötelező, ha a `appid` mező és a `Authorization` fejléc is üres marad.|fejléc|sztring|
 
 
@@ -190,7 +190,7 @@ Válasz tartalmának típusa: Application/XML
 
 |Paraméter|Érték|Leírás|Paraméter típusa|Adattípus|
 |:--|:--|:--|:--|:--|
-|Engedélyezés|üres  |Kötelező, ha a `appid` mező és a `Ocp-Apim-Subscription-Key` fejléc is üres marad. Engedélyezési jogkivonat: `"Bearer" + " " + "access_token"` .|fejléc|sztring|
+|Engedélyezés|üres  |Kötelező, ha a `appid` mező és a `Ocp-Apim-Subscription-Key` fejléc is üres marad. Engedélyezési jogkivonat:  `"Bearer" + " " + "access_token"` .|fejléc|sztring|
 |Ocp-Apim-Subscription-Key|üres|Kötelező, ha a `appid` mező és a `Authorization` fejléc is üres marad.|fejléc|sztring|
 
 ### <a name="response-messages"></a>Válaszüzenetek
@@ -209,7 +209,7 @@ A paraméterként átadott nyelvek rövid neveinek beolvasása `languageCodes` ,
 
 A kérelem URI-ja `https://api.microsofttranslator.com/V2/Http.svc/GetLanguageNames` .
 
-A kérelem törzse tartalmaz egy karakterlánc-tömböt, amely az ISO 639-1 nyelvi kódokat jelöli, amelyeknek a felhasználóbarát neveket kell beolvasniuk. Íme egy példa:
+A kérelem törzse tartalmaz egy karakterlánc-tömböt, amely az ISO 639-1 nyelvi kódokat jelöli, amelyeknek a felhasználóbarát neveket kell beolvasniuk. Bemutatunk egy példát:
 
 ```
 <ArrayOfstring xmlns:i="https://www.w3.org/2001/XMLSchema-instance"  xmlns="http://schemas.microsoft.com/2003/10/Serialization/Arrays">
@@ -233,7 +233,7 @@ Válasz tartalmának típusa: Application/XML
 |:--|:--|:--|:--|:--|
 |AppID|üres|Kötelező. Ha a `Authorization` vagy a `Ocp-Apim-Subscription-Key` fejlécet használja, hagyja `appid` üresen a mezőt. Ellenkező esetben adjon meg egy karakterláncot, amely tartalmaz `"Bearer" + " " + "access_token"` .|lekérdezés|sztring|
 |területi beállítás|üres |Kötelező. Egy karakterlánc, amely a következők egyikét jelöli, és a nyelvi nevek honosítására szolgál: <ul><li>Egy nyelvhez társított ISO 639 2-Letter kisbetűs kulturális kód és egy ISO 3166 2-betűs nagybetűs alkulturális kód kombinációja. <li>Az ISO 639 kisbetűs kulturális környezet kódja önmagában.|lekérdezés|sztring|
-|Engedélyezés|üres  |Kötelező, ha a `appid` mező és a `Ocp-Apim-Subscription-Key` fejléc is üres marad. Engedélyezési jogkivonat: `"Bearer" + " " + "access_token"` .|fejléc|sztring|
+|Engedélyezés|üres  |Kötelező, ha a `appid` mező és a `Ocp-Apim-Subscription-Key` fejléc is üres marad. Engedélyezési jogkivonat:  `"Bearer" + " " + "access_token"` .|fejléc|sztring|
 |Ocp-Apim-Subscription-Key|üres  |Kötelező, ha a `appid` mező és a `Authorization` fejléc is üres marad.|fejléc|sztring|
 
 ### <a name="response-messages"></a>Válaszüzenetek
@@ -248,7 +248,7 @@ Válasz tartalmának típusa: Application/XML
 ## <a name="get-getlanguagesfortranslate"></a>/GetLanguagesForTranslate beolvasása
 
 ### <a name="implementation-notes"></a>Implementációs megjegyzések
-Lekéri a fordítási szolgáltatás által támogatott nyelveket jelölő nyelvi kódok listáját.  `Translate`és `TranslateArray` lefordítható a két nyelv között.
+Lekéri a fordítási szolgáltatás által támogatott nyelveket jelölő nyelvi kódok listáját.  `Translate` és `TranslateArray` lefordítható a két nyelv között.
 
 A kérelem URI-ja `https://api.microsofttranslator.com/V2/Http.svc/GetLanguagesForTranslate` .
 
@@ -266,7 +266,7 @@ Válasz tartalmának típusa: Application/XML
 |Paraméter|Érték|Leírás|Paraméter típusa|Adattípus|
 |:--|:--|:--|:--|:--|
 |AppID|üres|Kötelező. Ha a `Authorization` vagy a `Ocp-Apim-Subscription-Key` fejlécet használja, hagyja `appid` üresen a mezőt. Ellenkező esetben adjon meg egy karakterláncot, amely tartalmaz `"Bearer" + " " + "access_token"` .|lekérdezés|sztring|
-|Engedélyezés|üres  |Kötelező, ha a `appid` mező és a `Ocp-Apim-Subscription-Key` fejléc is üres marad. Engedélyezési jogkivonat: `"Bearer" + " " + "access_token"` .|fejléc|sztring|
+|Engedélyezés|üres  |Kötelező, ha a `appid` mező és a `Ocp-Apim-Subscription-Key` fejléc is üres marad. Engedélyezési jogkivonat:  `"Bearer" + " " + "access_token"` .|fejléc|sztring|
 |Ocp-Apim-Subscription-Key|üres|Kötelező, ha a `appid` mező és a `Authorization` fejléc is üres marad.|fejléc|sztring|
 
 ### <a name="response-messages"></a>Válaszüzenetek
@@ -299,7 +299,7 @@ Válasz tartalmának típusa: Application/XML
 |Paraméter|Érték|Leírás|Paraméter típusa|Adattípus|
 |:--|:--|:--|:--|:--|
 |AppID|üres|Kötelező. Ha a `Authorization` vagy a `Ocp-Apim-Subscription-Key` fejlécet használja, hagyja `appid` üresen a mezőt. Ellenkező esetben adjon meg egy karakterláncot, amely tartalmaz `"Bearer" + " " + "access_token"` .|lekérdezés|sztring|
-|Engedélyezés|üres|Kötelező, ha a `appid` mező és a `Ocp-Apim-Subscription-Key` fejléc is üres marad. Engedélyezési jogkivonat: `"Bearer" + " " + "access_token"` .|fejléc|sztring|
+|Engedélyezés|üres|Kötelező, ha a `appid` mező és a `Ocp-Apim-Subscription-Key` fejléc is üres marad. Engedélyezési jogkivonat:  `"Bearer" + " " + "access_token"` .|fejléc|sztring|
 |Ocp-Apim-Subscription-Key|üres|Kötelező, ha a `appid` mező és a `Authorization` fejléc is üres marad.|fejléc|sztring|
  
 ### <a name="response-messages"></a>Válaszüzenetek
@@ -333,9 +333,9 @@ Válasz tartalmának típusa: Application/XML
 |AppID|üres|Kötelező. Ha a `Authorization` vagy a `Ocp-Apim-Subscription-Key` fejlécet használja, hagyja `appid` üresen a mezőt. Ellenkező esetben adjon meg egy karakterláncot, amely tartalmaz `"Bearer" + " " + "access_token"` .|lekérdezés|sztring|
 |szöveg|üres   |Kötelező. Egy karakterlánc, amely egy vagy több mondatot tartalmaz, amelyeket a megadott nyelven kell kiadni az adatfolyamhoz. A szöveg nem lehet hosszabb 2 000 karakternél.|lekérdezés|sztring|
 |language|üres   |Kötelező. Egy karakterlánc, amely a szöveg támogatott nyelvi kódját jelöli. A kódnak a metódus által visszaadott kódok egyikének kell lennie `GetLanguagesForSpeak` .|lekérdezés|sztring|
-|formátumban|üres|Választható. Egy karakterlánc, amely megadja a Content-Type azonosítót. Jelenleg `audio/wav` és `audio/mp3` elérhető. Az alapértelmezett érték `audio/wav`.|lekérdezés|sztring|
-|beállítások|üres    |Választható. A szintetizált beszéd tulajdonságait megadó karakterlánc:<ul><li>`MaxQuality`és `MinSize` a hangjel minőségének meghatározása. `MaxQuality`a legmagasabb minőséget biztosítja. `MinSize`a legkisebb fájlméretet adja meg. Az alapértelmezett érték: `MinSize` .</li><li>`female`és `male` határozza meg a hang kívánt nemet. A mező alapértelmezett értéke: `female`. A függőleges sáv ( <code>\|</code> ) használatával több beállítást is megadhat. Például:  `MaxQuality|Male`.</li></li></ul>  |lekérdezés|sztring|
-|Engedélyezés|üres|Kötelező, ha a `appid` mező és a `Ocp-Apim-Subscription-Key` fejléc is üres marad. Engedélyezési jogkivonat: `"Bearer" + " " + "access_token"` .|fejléc|sztring|
+|formátumban|üres|Választható. Egy karakterlánc, amely megadja a Content-Type azonosítót. Jelenleg  `audio/wav` és `audio/mp3` elérhető. Az alapértelmezett érték `audio/wav`.|lekérdezés|sztring|
+|beállítások|üres    |Választható. A szintetizált beszéd tulajdonságait megadó karakterlánc:<ul><li>`MaxQuality` és `MinSize` a hangjel minőségének meghatározása. `MaxQuality` a legmagasabb minőséget biztosítja. `MinSize` a legkisebb fájlméretet adja meg. Az alapértelmezett érték:  `MinSize` .</li><li>`female` és `male` határozza meg a hang kívánt nemet. A mező alapértelmezett értéke: `female`. A függőleges sáv ( <code>\|</code> ) használatával több beállítást is megadhat. Például:  `MaxQuality|Male`.</li></li></ul>  |lekérdezés|sztring|
+|Engedélyezés|üres|Kötelező, ha a `appid` mező és a `Ocp-Apim-Subscription-Key` fejléc is üres marad. Engedélyezési jogkivonat:  `"Bearer" + " " + "access_token"` .|fejléc|sztring|
 |Ocp-Apim-Subscription-Key|üres  |Kötelező, ha a `appid` mező és a `Authorization` fejléc is üres marad.|fejléc|sztring|
 
 ### <a name="response-messages"></a>Válaszüzenetek
@@ -368,7 +368,7 @@ Válasz tartalmának típusa: Application/XML
 |:--|:--|:--|:--|:--|
 |AppID|üres  |Kötelező. Ha a `Authorization` vagy a `Ocp-Apim-Subscription-Key` fejlécet használja, hagyja `appid` üresen a mezőt. Ellenkező esetben adjon meg egy karakterláncot, amely tartalmaz `"Bearer" + " " + "access_token"` .|lekérdezés|sztring|
 |szöveg|üres|Kötelező. A szöveget tartalmazó karakterlánc, amelynek a nyelvét azonosítani kell. A szöveg nem lehet hosszabb 10 000 karakternél.|lekérdezés|  sztring|
-|Engedélyezés|üres|Kötelező, ha a `appid` mező és a `Ocp-Apim-Subscription-Key` fejléc is üres marad. Engedélyezési jogkivonat: `"Bearer" + " " + "access_token"` .|fejléc|sztring|
+|Engedélyezés|üres|Kötelező, ha a `appid` mező és a `Ocp-Apim-Subscription-Key` fejléc is üres marad. Engedélyezési jogkivonat:  `"Bearer" + " " + "access_token"` .|fejléc|sztring|
 |Ocp-Apim-Subscription-Key  |üres    |Kötelező, ha a `appid` mező és a `Authorization` fejléc is üres marad.|fejléc|sztring|
 
 ### <a name="response-messages"></a>Válaszüzenetek
@@ -412,7 +412,7 @@ Itt látható a válasz törzsének formátuma:
 ```
 
 ### <a name="response-class-status-200"></a>Válasz osztály (200-es állapot)
-`DetectArray`sikeres volt. Egy olyan karakterlánc-tömböt ad vissza, amely két karakterből álló nyelvi kódot tartalmaz a bemeneti tömb minden sorához.
+`DetectArray` sikeres volt. Egy olyan karakterlánc-tömböt ad vissza, amely két karakterből álló nyelvi kódot tartalmaz a bemeneti tömb minden sorához.
 
 sztring
 
@@ -423,7 +423,7 @@ Válasz tartalmának típusa: Application/XML
 |Paraméter|Érték|Leírás|Paraméter típusa|Adattípus|
 |:--|:--|:--|:--|:--|
 |AppID|üres|Kötelező. Ha a `Authorization` vagy a `Ocp-Apim-Subscription-Key` fejlécet használja, hagyja `appid` üresen a mezőt. Ellenkező esetben adjon meg egy karakterláncot, amely tartalmaz `"Bearer" + " " + "access_token"` .|lekérdezés|sztring|
-|Engedélyezés|üres|Kötelező, ha a `appid` mező és a `Ocp-Apim-Subscription-Key` fejléc is üres marad.  Engedélyezési jogkivonat: `"Bearer" + " " + "access_token"` .|fejléc|sztring|
+|Engedélyezés|üres|Kötelező, ha a `appid` mező és a `Ocp-Apim-Subscription-Key` fejléc is üres marad.  Engedélyezési jogkivonat:  `"Bearer" + " " + "access_token"` .|fejléc|sztring|
 |Ocp-Apim-Subscription-Key|üres|Kötelező, ha a `appid` mező és a `Authorization` fejléc is üres marad.|fejléc|sztring|
 
 ### <a name="response-messages"></a>Válaszüzenetek
@@ -460,13 +460,13 @@ Válasz tartalmának típusa: alkalmazás: XML
 |originalText|üres|Kötelező. Egy karakterlánc, amely a lefordítani kívánt szöveget tartalmazza. A karakterlánc maximális hossza 1 000 karakter.|lekérdezés|sztring|
 |translatedText|üres |Kötelező. Egy karakterlánc, amely a célként megadott nyelvre fordított szöveget tartalmazza. A karakterlánc maximális hossza 2 000 karakter.|lekérdezés|sztring|
 |a|üres   |Kötelező. Egy karakterlánc, amely a szöveg eredeti nyelvének nyelvi kódját jelöli. Például: en for angol és német nyelven.|lekérdezés|sztring|
-|erre:|üres|Kötelező. Egy karakterlánc, amely a szöveg nyelvének fordítására szolgáló nyelv kódját jelöli.|lekérdezés|sztring|
+|a következőre:|üres|Kötelező. Egy karakterlánc, amely a szöveg nyelvének fordítására szolgáló nyelv kódját jelöli.|lekérdezés|sztring|
 |rating|üres |Választható. Egy egész szám, amely a karakterlánc minőségi minősítését jelöli. Az érték-10 és 10 között van. Az alapértelmezett érték 1.|lekérdezés|egész szám|
 |contentType|üres    |Választható. A lefordított szöveg formátuma. A támogatott formátumok a következők: `text/plain` és `text/html` . Minden HTML-elemnek megfelelően formázottnak, teljes elemnek kell lennie.    |lekérdezés|sztring|
 |category|üres|Választható. A fordítás kategóriáját (tartományát) tartalmazó karakterlánc. A mező alapértelmezett értéke: `general`.|lekérdezés|sztring|
 |felhasználó!|üres|Kötelező. Egy karakterlánc, amely a beküldési kezdeményező nyomon követésére szolgál.|lekérdezés|sztring|
 |URI|üres|Választható. A fordítás tartalmának helyét tartalmazó karakterlánc.|lekérdezés|sztring|
-|Engedélyezés|üres|Kötelező, ha a `appid` mező és a `Ocp-Apim-Subscription-Key` fejléc is üres marad.  Engedélyezési jogkivonat: `"Bearer" + " " + "access_token"` .  |fejléc|sztring|
+|Engedélyezés|üres|Kötelező, ha a `appid` mező és a `Ocp-Apim-Subscription-Key` fejléc is üres marad.  Engedélyezési jogkivonat:  `"Bearer" + " " + "access_token"` .  |fejléc|sztring|
 |Ocp-Apim-Subscription-Key|üres|Kötelező, ha a `appid` mező és a `Authorization` fejléc is üres marad.|fejléc|sztring|
 
 ### <a name="response-messages"></a>Válaszüzenetek
@@ -475,7 +475,7 @@ Válasz tartalmának típusa: alkalmazás: XML
 |:--|:--|
 |400    |Hibás kérelem. A bemeneti paraméterek és a részletes hibaüzenetek bejelölése.|
 |401    |Érvénytelen hitelesítő adatok.|
-|410|`AddTranslation`már nem támogatott.|
+|410|`AddTranslation` már nem támogatott.|
 |500    |Kiszolgálóhiba. Ha a hiba továbbra is fennáll, tudassa velünk. Adja meg a kérés időpontját & időpontját és a válasz fejlécében szereplő kérelem AZONOSÍTÓját `X-MS-Trans-Info` .|
 |503    |A szolgáltatás átmenetileg nem érhető el. Próbálkozzon újra, és tudassa velünk, hogy a hiba továbbra is fennáll-e.|
 
@@ -523,7 +523,7 @@ Ezek az elemek a következők `AddtranslationsRequest` :
 * `Options`Szükséges. Beállítások, például,, `Category` `ContentType` `Uri` és `User` . A `User` használata kötelező. `Category`, `ContentType` és `Uri` nem kötelező. A megadott elemeknek betűrendes sorrendben kell szerepelniük.
 
 ### <a name="response-class-status-200"></a>Válasz osztály (200-es állapot)
-`AddTranslationArray`a metódus sikeres. 
+`AddTranslationArray` a metódus sikeres. 
 
 2018. január 31-ig nem lesznek elfogadva a mondatok. A szolgáltatás az 410-es hibakódtal fog válaszolni.
 
@@ -535,7 +535,7 @@ Válasz tartalmának típusa: Application/XML
 
 |Paraméter|Érték|Leírás|Paraméter típusa|Adattípus|
 |:--|:--|:--|:--|:--|
-|Engedélyezés|üres|Kötelező, ha a `appid` mező és a `Ocp-Apim-Subscription-Key` fejléc is üres marad.  Engedélyezési jogkivonat: `"Bearer" + " " + "access_token"` .|fejléc|sztring|
+|Engedélyezés|üres|Kötelező, ha a `appid` mező és a `Ocp-Apim-Subscription-Key` fejléc is üres marad.  Engedélyezési jogkivonat:  `"Bearer" + " " + "access_token"` .|fejléc|sztring|
 |Ocp-Apim-Subscription-Key|üres|Kötelező, ha a `appid` mező és a `Authorization` fejléc is üres marad.|fejléc|sztring|
 
 ### <a name="response-messages"></a>Válaszüzenetek
@@ -544,7 +544,7 @@ Válasz tartalmának típusa: Application/XML
 |:--|:--|
 |400    |Hibás kérelem. A bemeneti paraméterek és a részletes hibaüzenetek bejelölése.|
 |401    |Érvénytelen hitelesítő adatok.|
-|410    |`AddTranslation`már nem támogatott.|
+|410    |`AddTranslation` már nem támogatott.|
 |500    |Kiszolgálóhiba. Ha a hiba továbbra is fennáll, tudassa velünk. Adja meg a kérés időpontját & időpontját és a válasz fejlécében szereplő kérelem AZONOSÍTÓját `X-MS-Trans-Info` .|
 |503|A szolgáltatás átmenetileg nem érhető el. Próbálkozzon újra, és tudassa velünk, hogy a hiba továbbra is fennáll-e.|
 
@@ -571,7 +571,7 @@ Válasz tartalmának típusa: Application/XML
 |AppID|üres  |Kötelező. Ha a `Authorization` vagy a `Ocp-Apim-Subscription-Key` fejlécet használja, hagyja `appid` üresen a mezőt. Ellenkező esetben adjon meg egy karakterláncot, amely tartalmaz `"Bearer" + " " + "access_token"` .|lekérdezés| sztring|
 |szöveg|üres   |Kötelező. Egy karakterlánc, amely a mondatokra bontott szöveget jelöli. A szöveg maximális mérete 10 000 karakter.|lekérdezés|sztring|
 |language   |üres    |Kötelező. Egy karakterlánc, amely a bemeneti szöveg nyelvi kódját jelöli.|lekérdezés|sztring|
-|Engedélyezés|üres|Kötelező, ha a `appid` mező és a `Ocp-Apim-Subscription-Key` fejléc is üres marad. Engedélyezési jogkivonat: `"Bearer" + " " + "access_token"` .   |fejléc|sztring|
+|Engedélyezés|üres|Kötelező, ha a `appid` mező és a `Ocp-Apim-Subscription-Key` fejléc is üres marad. Engedélyezési jogkivonat:  `"Bearer" + " " + "access_token"` .   |fejléc|sztring|
 |Ocp-Apim-Subscription-Key|üres|Kötelező, ha a `appid` mező és a `Authorization` fejléc is üres marad.|fejléc|sztring|
 
 ### <a name="response-messages"></a>Válaszüzenetek
@@ -586,7 +586,7 @@ Válasz tartalmának típusa: Application/XML
 ## <a name="post-gettranslations"></a>/GetTranslations közzététele
 
 ### <a name="implementation-notes"></a>Implementációs megjegyzések
-Lekéri egy adott nyelvi pár fordítási tömbjét az áruházból és az MT-motorból. `GetTranslations`eltér attól, `Translate` hogy az összes elérhető fordítást visszaadja.
+Lekéri egy adott nyelvi pár fordítási tömbjét az áruházból és az MT-motorból. `GetTranslations` eltér attól, `Translate` hogy az összes elérhető fordítást visszaadja.
 
 A kérelem URI-ja `https://api.microsofttranslator.com/V2/Http.svc/GetTranslations` .
 
@@ -668,9 +668,9 @@ Válasz tartalmának típusa: Application/XML
 |AppID|üres|Kötelező. Ha a `Authorization` vagy a `Ocp-Apim-Subscription-Key` fejlécet használja, hagyja `appid` üresen a mezőt. Ellenkező esetben adjon meg egy karakterláncot, amely tartalmaz `"Bearer" + " " + "access_token"` .|lekérdezés|sztring|
 |szöveg|üres|Kötelező. A lefordítani kívánt szöveget jelölő sztring. A szöveg maximális mérete 10 000 karakter.|lekérdezés|sztring|
 |a|üres|Kötelező. Egy karakterlánc, amely a lefordított szöveg nyelvi kódját jelöli.|lekérdezés|sztring|
-|erre: |üres    |Kötelező. Egy karakterlánc, amely a szöveg nyelvének fordítására szolgáló nyelv kódját jelöli.|lekérdezés|sztring|
+|a következőre: |üres    |Kötelező. Egy karakterlánc, amely a szöveg nyelvének fordítására szolgáló nyelv kódját jelöli.|lekérdezés|sztring|
 |maxTranslations|üres|Kötelező. Egy egész szám, amely a visszaadni kívánt fordítások maximális számát jelöli.|lekérdezés|egész szám|
-|Engedélyezés| üres|Kötelező, ha a `appid` mező és a `Ocp-Apim-Subscription-Key` fejléc is üres marad. Engedélyezési jogkivonat: `"Bearer" + " " + "access_token"` .|sztring|  fejléc|
+|Engedélyezés| üres|Kötelező, ha a `appid` mező és a `Ocp-Apim-Subscription-Key` fejléc is üres marad. Engedélyezési jogkivonat:  `"Bearer" + " " + "access_token"` .|sztring|  fejléc|
 |Ocp-Apim-Subscription-Key|üres  |Kötelező, ha a `appid` mező és a `Authorization` fejléc is üres marad.|fejléc|sztring|
 
 ### <a name="response-messages"></a>Válaszüzenetek
@@ -711,7 +711,7 @@ A kérelem törzsének formátuma a következő:
 </GetTranslationsArrayRequest>
 ```
 
-`GetTranslationsArrayRequest`a következő elemeket tartalmazza:
+`GetTranslationsArrayRequest` a következő elemeket tartalmazza:
 
 * `AppId`Szükséges. Ha a `Authorization` fejlécet használja, hagyja `AppId` üresen a mezőt. Ellenkező esetben adjon meg egy karakterláncot, amely tartalmaz `"Bearer" + " " + "access_token"` .
 * `From`Szükséges. Egy karakterlánc, amely a lefordított szöveg nyelvi kódját jelöli.
@@ -788,7 +788,7 @@ Válasz tartalmának típusa: Application/XML
 
 |Paraméter|Érték|Leírás|Paraméter típusa|Adattípus|
 |:--|:--|:--|:--|:--|
-|Engedélyezés  |üres    |Kötelező, ha a `appid` mező és a `Ocp-Apim-Subscription-Key` fejléc is üres marad.  Engedélyezési jogkivonat: `"Bearer" + " " + "access_token"` .|fejléc|sztring|
+|Engedélyezés  |üres    |Kötelező, ha a `appid` mező és a `Ocp-Apim-Subscription-Key` fejléc is üres marad.  Engedélyezési jogkivonat:  `"Bearer" + " " + "access_token"` .|fejléc|sztring|
 |Ocp-Apim-Subscription-Key|üres  |Kötelező, ha a `appid` mező és a `Authorization` fejléc is üres marad.|fejléc|sztring|
 
 ### <a name="response-messages"></a>Válaszüzenetek
@@ -797,7 +797,7 @@ Válasz tartalmának típusa: Application/XML
 |:--|:--|
 |400    |Hibás kérelem. A bemeneti paraméterek és a részletes hibaüzenetek bejelölése.|
 |401    |Érvénytelen hitelesítő adatok.|
-|500    |Kiszolgálóhiba. Ha a hiba továbbra is fennáll, tudassa velünk. Adja meg a kérés időpontját & időpontját és a válasz fejlécében szereplő kérelem AZONOSÍTÓját `X-MS-Trans-Info` .|
+|500    |Kiszolgálóhiba. Ha a hiba továbbra is fennáll, tudassa velünk. Adja meg a kérés időpontját & időpontját és a válasz fejlécében szereplő kérelem AZONOSÍTÓját  `X-MS-Trans-Info` .|
 |503    |A szolgáltatás átmenetileg nem érhető el. Próbálkozzon újra, és tudassa velünk, hogy a hiba továbbra is fennáll-e.|
 
 ## <a name="next-steps"></a>További lépések

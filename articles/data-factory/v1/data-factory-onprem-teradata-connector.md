@@ -13,10 +13,10 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: ecde5784e759ef5259b8c67ed574cef6cae98f30
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84707310"
 ---
 # <a name="move-data-from-teradata-using-azure-data-factory"></a>Adatok áthelyezése a Teradata a Azure Data Factory használatával
@@ -63,12 +63,12 @@ A következő táblázat a Teradata társított szolgáltatáshoz tartozó JSON-
 
 | Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
-| típus |A Type tulajdonságot a következőre kell beállítani: **OnPremisesTeradata** |Yes |
-| kiszolgáló |A Teradata-kiszolgáló neve. |Yes |
-| authenticationType |A Teradata-adatbázishoz való kapcsolódáshoz használt hitelesítés típusa. A lehetséges értékek a következők: névtelen, alapszintű és Windows. |Yes |
-| felhasználónév |Ha alapszintű vagy Windows-hitelesítést használ, adja meg a felhasználónevet. |No |
-| jelszó |Adja meg a felhasználónévhez megadott felhasználói fiókhoz tartozó jelszót. |No |
-| Átjáró neve |Annak az átjárónak a neve, amelyet a Data Factory szolgáltatásnak használnia kell a helyszíni Teradata-adatbázishoz való kapcsolódáshoz. |Yes |
+| típus |A Type tulajdonságot a következőre kell beállítani: **OnPremisesTeradata** |Igen |
+| kiszolgáló |A Teradata-kiszolgáló neve. |Igen |
+| authenticationType |A Teradata-adatbázishoz való kapcsolódáshoz használt hitelesítés típusa. A lehetséges értékek a következők: névtelen, alapszintű és Windows. |Igen |
+| username |Ha alapszintű vagy Windows-hitelesítést használ, adja meg a felhasználónevet. |Nem |
+| jelszó |Adja meg a felhasználónévhez megadott felhasználói fiókhoz tartozó jelszót. |Nem |
+| Átjáró neve |Annak az átjárónak a neve, amelyet a Data Factory szolgáltatásnak használnia kell a helyszíni Teradata-adatbázishoz való kapcsolódáshoz. |Igen |
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
 Az adatkészletek definiálásához rendelkezésre álló & tulajdonságok teljes listáját az [adatkészletek létrehozása](data-factory-create-datasets.md) című cikkben találja. Az adathalmazok (például a struktúra, a rendelkezésre állás és a szabályzat) minden adatkészlet esetében hasonlóak (például az Azure SQL, az Azure Blob, az Azure Table stb.).
@@ -84,7 +84,7 @@ Ha a forrás **RelationalSource** típusú (amely magában foglalja a Teradata),
 
 | Tulajdonság | Leírás | Megengedett értékek | Kötelező |
 | --- | --- | --- | --- |
-| lekérdezés |Az egyéni lekérdezés használatával olvashatja el az adatolvasást. |SQL-lekérdezési karakterlánc. Például: select * from Sajáttábla. |Yes |
+| lekérdezés |Az egyéni lekérdezés használatával olvashatja el az adatolvasást. |SQL-lekérdezési karakterlánc. Például: select * from Sajáttábla. |Igen |
 
 ### <a name="json-example-copy-data-from-teradata-to-azure-blob"></a>JSON-példa: adatok másolása a Teradata-ből az Azure-Blobba
 Az alábbi példa olyan JSON-definíciókat tartalmaz, amelyeket a [Visual Studio](data-factory-copy-activity-tutorial-using-visual-studio.md) vagy a [Azure PowerShell](data-factory-copy-activity-tutorial-using-powershell.md)használatával hozhat létre a folyamat létrehozásához. Bemutatják, hogyan másolhatók adatok a Teradata-ből az Azure-Blob Storageba. Az adatmásolási művelet azonban az [itt](data-factory-data-movement-activities.md#supported-data-stores-and-formats) megadott összes mosogatóba átmásolható a Azure Data Factoryban.
@@ -294,15 +294,15 @@ Az adatok Teradata való áthelyezésekor a rendszer a következő leképezések
 | VarByte |Bájt [] |
 | BigInt |Int64 |
 | ByteInt |Int16 |
-| Decimal |Decimal |
-| Double |Double |
+| Tizedesjegy |Tizedesjegy |
+| Dupla |Dupla |
 | Egész szám |Int32 |
-| Szám |Double |
+| Szám |Dupla |
 | SmallInt |Int16 |
-| Dátum |DateTime |
+| Dátum |Dátum/idő |
 | Idő |időtartam |
 | Időzónával ellátott idő |Sztring |
-| Időbélyeg |DateTime |
+| Timestamp |DateTime |
 | Időbélyeg időzónával |DateTimeOffset |
 | Intervallum napja |időtartam |
 | Nap és óra közötti időszak |időtartam |

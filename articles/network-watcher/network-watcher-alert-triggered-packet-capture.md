@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: eefd67d4d150c0c8d152002a174c62d31fcb8b5f
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90975074"
 ---
 # <a name="use-packet-capture-for-proactive-network-monitoring-with-alerts-and-azure-functions"></a>Az előjelzéses hálózati figyeléshez használja a csomagok rögzítését riasztásokkal és Azure Functionsokkal
@@ -41,7 +41,7 @@ Az Azure-ökoszisztémán belüli Network Watcher, riasztás és függvények ha
 * Network Watcher meglévő példánya. Ha még nem rendelkezik ilyennel, [hozzon létre Network Watcher egy példányát](network-watcher-create.md).
 * Egy meglévő virtuális gép ugyanabban a régióban, mint Network Watcher a [Windows-bővítmény](../virtual-machines/windows/extensions-nwa.md) vagy a [linuxos virtuálisgép-bővítmény](../virtual-machines/linux/extensions-nwa.md).
 
-## <a name="scenario"></a>Használati eset
+## <a name="scenario"></a>Forgatókönyv
 
 Ebben a példában a virtuális gép a szokásosnál több TCP-szegmenst küld, és riasztást szeretne kapni. A TCP-szegmensek példaként használhatók, de bármilyen riasztási feltételt használhat.
 
@@ -80,7 +80,7 @@ Első lépésként létre kell hoznia egy Azure-függvényt a riasztás feldolgo
     |**Előfizetés**|[Az Ön előfizetése] Az előfizetés, amelyhez létre kívánja hozni a Function alkalmazást.||
     |**Erőforráscsoport**|PacketCaptureRG|A Function alkalmazást tartalmazó erőforráscsoport.|
     |**Szolgáltatási csomag**|Használatalapú csomag| A Function app által használt terv típusa. A lehetőségek a következők: felhasználás vagy Azure App Service terv. |
-    |**Hely**|Az USA középső régiója| Az a régió, amelyben létre kívánja hozni a Function alkalmazást.|
+    |**Hely**|USA középső régiója| Az a régió, amelyben létre kívánja hozni a Function alkalmazást.|
     |**Storage-fiók**|automatikusan létrehozott| Az általános célú tároláshoz Azure Functions szükséges Storage-fiók.|
 
 3. A **PacketCaptureExample Function apps** panelen válassza a **functions**  >  **Egyéni függvény**lehetőséget  > **+** .
@@ -91,7 +91,7 @@ Első lépésként létre kell hoznia egy Azure-függvényt a riasztás feldolgo
     |---|---|---|
     |**Forgatókönyv**|Kísérleti|Forgatókönyv típusa|
     |**A függvény neve**|AlertPacketCapturePowerShell|A függvény neve|
-    |**Engedélyszint**|Funkció|A függvény engedélyezési szintje|
+    |**Engedélyszint**|Függvény|A függvény engedélyezési szintje|
 
 ![Függvények – példa][functions1]
 

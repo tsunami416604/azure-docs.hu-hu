@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 04/28/2019
 ms.author: sideeksh
 ms.openlocfilehash: 001ac4918ed5d87bdb801d1bf918a4450e7cf8e0
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90007791"
 ---
 # <a name="enable-azure-vm-disaster-recovery-between-availability-zones"></a>Azure-beli virtuális gép vész-helyreállításának engedélyezése rendelkezésre állási zónák között
@@ -67,7 +67,7 @@ A fentiekben leírtaknak megfelelően a Zone to Zone vész-helyreállítási szo
 
 Mielőtt üzembe helyezi a zónát a virtuális gépek számára a zóna vész-helyreállításához, fontos, hogy a virtuális gépen elérhető egyéb szolgáltatások a zónákhoz is használhatók legyenek.
 
-|Jellemző  | Támogatási nyilatkozat  |
+|Szolgáltatás  | Támogatási nyilatkozat  |
 |---------|---------|
 |A klasszikus virtuális gépeket   |     Nem támogatott    |
 |ARM virtuális gépek    |    Támogatott    |

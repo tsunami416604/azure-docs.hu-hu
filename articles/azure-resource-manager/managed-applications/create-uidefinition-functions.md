@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: tomfitz
 ms.openlocfilehash: e4255f0d42e28a72ad55d9b7f81d0dc49b2950cb
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87040991"
 ---
 # <a name="createuidefinition-functions"></a>CreateUiDefinition függvények
@@ -36,7 +36,7 @@ Adott esetben a függvények kimenetének tulajdonságaira hivatkozhat a pont op
 "[func().prop1]"
 ```
 
-## <a name="collection-functions"></a>Gyűjtési függvények
+## <a name="collection-functions"></a>Gyűjteményfüggvények
 
 Ezek a függvények gyűjtemények, például JSON-karakterláncok, tömbök és objektumok használatával használhatók.
 
@@ -45,13 +45,13 @@ Ezek a függvények gyűjtemények, például JSON-karakterláncok, tömbök és
 * [szűrő](create-ui-definition-collection-functions.md#filter)
 * [első](create-ui-definition-collection-functions.md#first)
 * [utolsó](create-ui-definition-collection-functions.md#last)
-* [hossza](create-ui-definition-collection-functions.md#length)
+* [length](create-ui-definition-collection-functions.md#length) (hossz)
 * [Térkép](create-ui-definition-collection-functions.md#map)
 * [kihagyása](create-ui-definition-collection-functions.md#skip)
 * [felosztása](create-ui-definition-collection-functions.md#split)
 * [take](create-ui-definition-collection-functions.md#take)
 
-## <a name="conversion-functions"></a>Átalakítási függvények
+## <a name="conversion-functions"></a>Konverziós függvények
 
 Ezek a függvények a JSON-adattípusok és a kódolások közötti értékek átalakítására használhatók.
 
@@ -63,7 +63,7 @@ Ezek a függvények a JSON-adattípusok és a kódolások közötti értékek á
 * [float](create-ui-definition-conversion-functions.md#float)
 * [int](create-ui-definition-conversion-functions.md#int)
 * [elemezni](create-ui-definition-conversion-functions.md#parse)
-* [karakterlánc](create-ui-definition-conversion-functions.md#string)
+* [sztring](create-ui-definition-conversion-functions.md#string)
 
 ## <a name="date-functions"></a>Dátumfüggvények
 
@@ -76,7 +76,7 @@ Ezek a függvények a JSON-adattípusok és a kódolások közötti értékek á
 
 Ezek a függvények feltételes használatban is használhatók. Előfordulhat, hogy egyes függvények nem támogatják az összes JSON-adattípust.
 
-* [és](create-ui-definition-logical-functions.md#and)
+* [and](create-ui-definition-logical-functions.md#and)
 * [összefonódik](create-ui-definition-logical-functions.md#coalesce)
 * [egyenlő](create-ui-definition-logical-functions.md#equals)
 * [greater](create-ui-definition-logical-functions.md#greater)
@@ -94,14 +94,14 @@ Ezek a függvények feltételes használatban is használhatók. Előfordulhat, 
 * [div](create-ui-definition-math-functions.md#div)
 * [padló](create-ui-definition-math-functions.md#floor)
 * [Max](create-ui-definition-math-functions.md#max)
-* [p](create-ui-definition-math-functions.md#min)
+* [min](create-ui-definition-math-functions.md#min)
 * [mod](create-ui-definition-math-functions.md#mod)
 * [mul](create-ui-definition-math-functions.md#mul)
 * [Rand](create-ui-definition-math-functions.md#rand)
 * [tartomány](create-ui-definition-math-functions.md#range)
 * [Sub](create-ui-definition-math-functions.md#sub)
 
-## <a name="referencing-functions"></a>Hivatkozó függvények
+## <a name="referencing-functions"></a>Hivatkozási függvények
 
 * [alapjai](create-ui-definition-referencing-functions.md#basics)
 * [helyen](create-ui-definition-referencing-functions.md#location)

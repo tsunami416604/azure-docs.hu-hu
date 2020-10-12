@@ -14,10 +14,10 @@ ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.openlocfilehash: d0cffbd1fa09abef9853e0ef853696c3c8ed353c
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86246809"
 ---
 # <a name="design-secure-applications-on-azure"></a>Biztonságos alkalmazások tervezése az Azure-ban
@@ -25,11 +25,11 @@ Ebben a cikkben a Felhőbeli alkalmazások tervezésekor megfontolandó biztons�
 
 Ebben a cikkben a következő SDL-fázisokat tárgyaljuk:
 
-- Betanítás
+- Oktatás
 - Követelmények
 - Tervezés
 
-## <a name="training"></a>Betanítás
+## <a name="training"></a>Oktatás
 Mielőtt megkezdené a felhőalapú alkalmazás fejlesztését, szánjon időt az Azure biztonságának és adatvédelmének megismerésére. Ennek a lépésnek a segítségével csökkentheti a kihasználható biztonsági rések számát és súlyosságát az alkalmazásban. Az állandóan változó fenyegetést jelentő tájképre való megfelelő reagálásra készen áll.
 
 A betanítási fázisban a következő erőforrásokkal megismerkedhet a fejlesztők számára elérhető Azure-szolgáltatásokkal és az Azure-ban ajánlott biztonsági eljárásokkal:
@@ -316,7 +316,7 @@ Győződjön meg arról, hogy nem naplózza a felhasználó által a webhelyre k
 
 Győződjön meg arról, hogy az alkalmazás figyeli a felhasználói felügyeleti eseményeket, például a sikeres és sikertelen felhasználói bejelentkezéseket, a jelszó alaphelyzetbe állítását, a jelszó módosításait, a fiók zárolását és a felhasználói regisztrációt. Az események naplózása segít észlelni és reagálni az esetlegesen gyanús viselkedésre. Lehetővé teszi az operatív adatok összegyűjtését is, például az alkalmazáshoz való hozzáférést.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A következő cikkekben olyan biztonsági vezérlőket és tevékenységeket ajánlunk, amelyek segíthetnek a biztonságos alkalmazások fejlesztésében és üzembe helyezésében.
 
 - [Biztonságos alkalmazások fejlesztése](secure-develop.md)

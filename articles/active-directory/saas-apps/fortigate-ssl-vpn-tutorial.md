@@ -16,10 +16,10 @@ ms.date: 08/11/2020
 ms.author: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 187903bfbf75ada45b9a539acd1157dfe730747a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91331114"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-fortigate-ssl-vpn"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a FortiGate SSL VPN-lel
@@ -77,11 +77,11 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO-t a Azure Portal
 
 1. A [Azure Portal](https://portal.azure.com/)a **FortiGate SSL VPN-** alkalmazás integrációja oldalon, a **kezelés** szakaszban válassza az **egyszeri bejelentkezés**lehetőséget.
 1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
-1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon válassza az **alapszintű SAML-konfigurációhoz** tartozó ceruza gombot a beállítások szerkesztéséhez:
+1. Az **egyszeri Sign-On beállítása az SAML-vel** lapon válassza az **ALAPszintű SAML-konfigurációhoz** tartozó ceruza gombot a beállítások szerkesztéséhez:
 
    ![Képernyőkép, amely az alapszintű SAML-konfiguráció szerkesztésére szolgáló ceruza gombot mutatja.](common/edit-urls.png)
 
-1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon adja meg a következő értékeket:
+1. Az **egyszeri Sign-On beállítása az SAML-vel** lapon adja meg a következő értékeket:
 
     a. A **bejelentkezési URL-cím** mezőben adjon meg egy URL-címet a mintában `https://<FQDN>/remote/login` .
 
@@ -100,7 +100,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO-t a Azure Portal
 
 1. A FortiGate SSL VPN által igényelt két további jogcím az alábbi táblázatban látható. A jogcímek nevének meg kell egyeznie az oktatóanyag **végrehajtás FortiGate parancssori konfiguráció** szakaszában használt nevekkel. 
 
-   | Name |  Forrás attribútum|
+   | Name (Név) |  Forrás attribútum|
    | ------------ | --------- |
    | username | User. userPrincipalName |
    | csoport | User. groups |
@@ -118,7 +118,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO-t a Azure Portal
    1. A **név**mezőbe írja be a következőt: **Group**.
    1. Kattintson a **Mentés** gombra.   
 
-1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban válassza a **tanúsítvány (Base64)** melletti **Letöltés** hivatkozást a tanúsítvány letöltéséhez és a számítógépbe való mentéséhez:
+1. Az **egyszeres Sign-On beállítása az SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban válassza a **tanúsítvány (Base64)** melletti **Letöltés** hivatkozást a tanúsítvány letöltéséhez és a számítógépen való mentéséhez:
 
     ![A tanúsítvány letöltési hivatkozását megjelenítő képernyőkép.](common/certificatebase64.png)
 

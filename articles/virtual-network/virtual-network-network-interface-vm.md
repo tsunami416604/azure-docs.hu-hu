@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 03/13/2020
 ms.author: kumud
 ms.openlocfilehash: f7253be2844f40ca52df2f9b3bc9cbba552fea2b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85480133"
 ---
 # <a name="add-network-interfaces-to-or-remove-network-interfaces-from-virtual-machines"></a>Hálózati adapterek hozzáadása vagy eltávolítása virtuális gépekről
@@ -117,7 +117,7 @@ A hálózati adapterek beállításairól és azok módosításáról a [hálóz
 
 5. A virtuális gép menüsorában **válassza a**  >  **hálózat leválasztása hálózati adapter**lehetőséget.
 
-6. A **hálózati adapter leválasztása** párbeszédpanelen válassza ki a leválasztani kívánt hálózati adaptert. Ezután kattintson az **OK** gombra.
+6. A **hálózati adapter leválasztása** párbeszédpanelen válassza ki a leválasztani kívánt hálózati adaptert. Ezután válassza az **OK** gombot.
 
     >[!NOTE]
     >Ha csak egy hálózati adapter van felsorolva, akkor nem lehet leválasztani, mert a virtuális gépnek mindig legalább egy hálózati adapterrel kell rendelkeznie.
@@ -157,7 +157,7 @@ A hálózati adapterek beállításairól és azok módosításáról a [hálóz
 
 Több hálózati adapterrel vagy IP-címmel rendelkező virtuális gép létrehozásához tekintse meg a következőt:
 
-|Tevékenység|Eszköz|
+|Feladat|Eszköz|
 |---|---|
 |Több hálózati adapterrel rendelkező virtuális gép létrehozása|[CLI](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json), [PowerShell](../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json)|
 |Egyetlen hálózati adaptert tartalmazó virtuális gép létrehozása több IPv4-címmel|[CLI](virtual-network-multiple-ip-addresses-cli.md), [PowerShell](virtual-network-multiple-ip-addresses-powershell.md)|

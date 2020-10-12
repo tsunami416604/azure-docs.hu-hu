@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/06/2019
 ms.openlocfilehash: 7a76ac3bbe62d48de67815d09e1c8d75f03caa36
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86077898"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---architecture-best-practices"></a>Helyszíni Apache Hadoop-fürtök migrálása az Azure HDInsight-architektúrára – ajánlott eljárások
@@ -30,15 +30,15 @@ Az Azure HDInsight-fürtök adott típusú számítási használatra vannak kial
 |Kötegelt feldolgozás (ETL/ELT)|Hadoop, Spark|
 |Adatraktározás|Hadoop, Spark, interaktív lekérdezés|
 |IoT/streaming|Kafka, Storm, Spark|
-|NoSQL tranzakciós feldolgozás|HBase|
+|NoSQL tranzakciós feldolgozás|A HBase|
 |Interaktív és gyorsabb lekérdezések memórián belüli gyorsítótárazással|Interaktív lekérdezés|
-|Adatelemzés|ML szolgáltatások, Spark|
+|Adattudomány|ML szolgáltatások, Spark|
 
 A következő táblázat a HDInsight-fürtök létrehozásához használható különböző metódusokat mutatja be.
 
 |Eszköz|Böngésző-alapú|Parancssor|REST API|SDK|
 |---|---|---|---|---|
-|[Azure Portalra](../hdinsight-hadoop-create-linux-clusters-portal.md)|X||||
+|[Azure Portal](../hdinsight-hadoop-create-linux-clusters-portal.md)|X||||
 |[Azure Data Factory](../hdinsight-hadoop-create-linux-clusters-adf.md)|X|X|X|X|
 |[Azure CLI (ver 1,0)](../hdinsight-hadoop-create-linux-clusters-azure-cli.md)||X|||
 |[Azure PowerShell](../hdinsight-hadoop-create-linux-clusters-azure-powershell.md)||X|||

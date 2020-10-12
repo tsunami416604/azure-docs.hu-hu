@@ -13,10 +13,10 @@ ms.devlang: na
 ms.tgt_pltfrm: na
 ms.workload: na
 ms.openlocfilehash: 5366da1048e7c6d9612ad8b6b1f1694068bb35fb
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87543027"
 ---
 # <a name="onboarding-and-installing"></a>Előkészítés és telepítés
@@ -48,9 +48,9 @@ Ha megfelel a fenti képesítéseknek, a Microsoft biztonsági kód elemzése b�
 
 >**Partnerek**
 
-- Zónák – kapcsolattartási adatok:cloudsupport@zones.com
-- Wortell – kapcsolattartási adatok:info@wortell.nl
-- Logicis – kapcsolattartási adatok:logicalisleads@us.logicalis.com
+- Zónák – kapcsolattartási adatok: cloudsupport@zones.com
+- Wortell – kapcsolattartási adatok: info@wortell.nl
+- Logicis – kapcsolattartási adatok: logicalisleads@us.logicalis.com
 
 ### <a name="become-a-partner"></a>Legyen Ön is partner
 
@@ -63,7 +63,7 @@ A Microsoft biztonsági kód elemzése csapat a partnereknek szóló szerződés
 1. Válassza a **megosztott**lehetőséget.
 1. Válassza ki a Microsoft biztonsági kód elemzése bővítményt, majd válassza a **telepítés**lehetőséget.
 1. A legördülő listában válassza ki az Azure DevOps-szervezetet a bővítmény telepítéséhez.
-1. Válassza a **Telepítés** lehetőséget. A telepítés befejezése után elkezdheti használni a bővítményt.
+1. Válassza a **Telepítés** gombot. A telepítés befejezése után elkezdheti használni a bővítményt.
 
 >[!NOTE]
 > Még ha nincs hozzáférése a bővítmény telepítéséhez, folytassa a telepítési lépésekkel. A telepítési folyamat során az Azure DevOps-szervezet rendszergazdájától kérhet hozzáférést.
@@ -92,7 +92,7 @@ A bővítmény telepítése után a biztonságos fejlesztési felépítési fela
 > - Egyes Azure DevOps-Build feladatok nem támogatottak, ha kiadási folyamaton keresztül futnak. Konkrétabban az Azure DevOps nem támogatja azokat a feladatokat, amelyek egy kiadási folyamaton belül teszik közzé az összetevőket.
 > - Az Azure DevOps Team buildben paraméterként megadható előre definiált változók listáját az [Azure DevOps Build változói](https://docs.microsoft.com/azure/devops/pipelines/build/variables?tabs=batch&view=vsts)című témakörben tekintheti meg.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Build-feladatok konfigurálásával kapcsolatos további információkért tekintse meg a [konfigurációs útmutatót](security-code-analysis-customize.md) vagy a [YAML konfigurációs útmutatóját](yaml-configuration.md).
 

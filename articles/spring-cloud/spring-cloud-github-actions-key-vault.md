@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/08/2020
 ms.custom: devx-track-java
 ms.openlocfilehash: 995d10b3c7064e462500e0bec4d5d8aa010afe64
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90888773"
 ---
 # <a name="authenticate-azure-spring-cloud-with-key-vault-in-github-actions"></a>Az Azure Spring Cloud hitelesítése Key Vaultekkel a GitHub-műveletekben
@@ -52,7 +52,7 @@ Lépjen a Azure Portal **Key Vault** irányítópultra, kattintson a **hozzáfé
 
 Másolja a hitelesítő adat nevét, például: `azure-cli-2020-01-19-04-39-02` . Nyissa meg a **hozzáférési házirendek** menüt, kattintson a **+ hozzáférési házirend hozzáadása** hivatkozásra.  Válassza `Secret Management` a **sablon**lehetőséget, majd válassza a **rendszerbiztonsági tag**lehetőséget. Illessze be a hitelesítő adat nevét a **fő** / **Select** beviteli mezőbe:
 
- ![Válassza ezt:](./media/github-actions/key-vault2.png)
+ ![Kiválasztás](./media/github-actions/key-vault2.png)
 
  Kattintson a **Hozzáadás** gombra a **hozzáférési házirend hozzáadása** párbeszédpanelen, majd kattintson a **Mentés**elemre.
 

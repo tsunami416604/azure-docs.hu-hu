@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 03/08/2019
 ms.topic: conceptual
 ms.openlocfilehash: 501ca51a9542229a14e98a56679837950a82891e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80258294"
 ---
 # <a name="deploy-the-remote-monitoring-solution-accelerator-using-the-cli"></a>A távoli figyelési megoldás gyorsító üzembe helyezése a parancssori felület használatával
@@ -45,13 +45,13 @@ pcs login
 
 A bejelentkezési folyamat befejezéséhez kövesse a képernyőn megjelenő utasításokat.
 
-## <a name="deployment-options"></a>Üzembe helyezési beállítások
+## <a name="deployment-options"></a>Üzembe helyezési lehetőségek
 
 A megoldás-gyorsító telepítésekor több lehetőség is van a telepítési folyamat konfigurálására:
 
 | Beállítás | Értékek | Leírás |
 | ------ | ------ | ----------- |
-| Termékváltozat    | `basic`, `standard`, `local` | Az _alapszintű_ üzembe helyezés tesztelési és demonstrációs célokra készült, és egyetlen virtuális gépre telepíti az összes szolgáltatást. A _standard szintű_ üzembe helyezés éles környezetben üzemel, és több virtuális gépre helyezi üzembe a szolgáltatást. A _helyi_ telepítés egy Docker-tárolót állít be, amely a helyi gépen futtatja a-szolgáltatásokat, és az Azure Cloud Servicest (például storage és Cosmos db) használja. |
+| SKU    | `basic`, `standard`, `local` | Az _alapszintű_ üzembe helyezés tesztelési és demonstrációs célokra készült, és egyetlen virtuális gépre telepíti az összes szolgáltatást. A _standard szintű_ üzembe helyezés éles környezetben üzemel, és több virtuális gépre helyezi üzembe a szolgáltatást. A _helyi_ telepítés egy Docker-tárolót állít be, amely a helyi gépen futtatja a-szolgáltatásokat, és az Azure Cloud Servicest (például storage és Cosmos db) használja. |
 | Futtatókörnyezet | `dotnet`, `java` | Kiválasztja a webszolgáltatás nyelvi megvalósítását. |
 
 A helyi telepítési lehetőség használatáról további információt [a távoli figyelési megoldás helyi futtatása](iot-accelerators-remote-monitoring-deploy-local.md)című témakörben talál.

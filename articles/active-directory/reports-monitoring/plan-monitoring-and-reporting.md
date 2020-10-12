@@ -13,10 +13,10 @@ ms.author: baselden
 ms.reviewer: plenzke
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cf8ceb308fbcc2156a6df43e0167f4cb544b2d3d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91331199"
 ---
 # <a name="plan-an-azure-active-directory-reporting-and-monitoring-deployment"></a>Azure Active Directory jelentéskészítés és figyelés üzembe helyezésének megtervezése
@@ -99,7 +99,7 @@ A jelentéskészítés és a monitorozás az üzleti igények kielégítésére 
 * Örülök, hogy meg kell felelnie az üzleti igényeknek
 * Nem alkalmazható
 
-|Terület |Description |
+|Terület |Leírás |
 |-|-|
 |Megőrzés| **30 napnál hosszabb napló megőrzése**. Jogi vagy üzleti követelmények miatt a naplókat és az Azure AD bejelentkezési naplóit 30 napnál hosszabb ideig kell tárolni. |
 |Elemzés| **A naplóknak kereshetőnek kell lenniük**. A tárolt naplóknak analitikai eszközökkel kell kereshetőnek lennie. |

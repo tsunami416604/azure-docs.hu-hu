@@ -4,10 +4,10 @@ description: Ebből a cikkből megtudhatja, hogyan állíthat be egyéni rendsze
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 14c8338d6a5ae21847da3a9c774ea6dcdac33ae4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85482071"
 ---
 # <a name="create-a-custom-image-factory-in-azure-devtest-labs"></a>Egyéni rendszerkép-előállító létrehozása Azure DevTest Labs
@@ -18,7 +18,7 @@ A rendszerkép-előállító egy olyan konfigurációs kód, amely az összes k�
 
 A DevTest Labs szolgáltatásban az egyéni rendszerképeket használva a fejlesztői asztalt egy kész állapotba veheti fel a jelentős gyorssegéd. Az Egyéni rendszerképek hátránya az, hogy van valami további a laborban való karbantartáshoz. Például a termékek próbaverziójának időbeli lejárta (vagy) az újonnan kiadott biztonsági frissítések nem érvényesek, ami arra kényszeríti az Egyesült Államokat, hogy rendszeresen frissítse az egyéni rendszerképet. A rendszerkép-előállítóval a forráskód vezérlőelemben bejelölt lemezkép definíciója van, és automatizált folyamattal rendelkezik, hogy a definíció alapján hozzon létre egyéni lemezképeket.
 
-A megoldás lehetővé teszi, hogy a virtuális gépeket egyéni lemezképek alapján hozza létre, és ezzel kiküszöbölje a további folyamatos karbantartási költségeket. Ezzel a megoldással automatikusan létrehozhat egyéni lemezképeket, terjesztheti azokat más DevTest Labs-be, és kivonja a régi lemezképeket. A következő videóban megismerheti a rendszerkép-előállítót, valamint azt, hogy miként implementálható a DevTest Labs szolgáltatással.  Az összes Azure PowerShell-szkript szabadon elérhető, és itt található: [https://aka.ms/dtlimagefactory](https://aka.ms/dtlimagefactory) .
+A megoldás lehetővé teszi, hogy a virtuális gépeket egyéni lemezképek alapján hozza létre, és ezzel kiküszöbölje a további folyamatos karbantartási költségeket. Ezzel a megoldással automatikusan létrehozhat egyéni lemezképeket, terjesztheti azokat más DevTest Labs-be, és kivonja a régi lemezképeket. A következő videóban megismerheti a rendszerkép-előállítót, valamint azt, hogy miként implementálható a DevTest Labs szolgáltatással.  Az összes Azure PowerShell-szkript szabadon elérhető, és itt található:  [https://aka.ms/dtlimagefactory](https://aka.ms/dtlimagefactory) .
 
 <br/>
 

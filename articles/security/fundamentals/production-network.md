@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
 ms.openlocfilehash: 724c2ee2d74ca9cab11280e92faac71c2cb2218e
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87543809"
 ---
 # <a name="the-azure-production-network"></a>Az Azure éles hálózata
@@ -78,7 +78,7 @@ Az Azure-képességekbe beépített további biztonsági funkciók a következő
    - A tűzfalak csak a belső csomópontok kiválasztása esetén érhetők el. A csomagokat csak a forrás IP-címeinek enumerált listájából fogadják el, amelyek mindegyike az Azure-hálózatban található. Előfordulhat például, hogy a vállalati hálózat támadása ezekre a címekre irányuló kéréseket tartalmaz, de a támadások le lesznek tiltva, kivéve, ha a csomag címének egyike volt az Azure-hálózaton belüli enumerálási listán.
      - A peremhálózati hozzáférési útválasztó blokkolja a kimenő csomagokat, amelyek az Azure-hálózaton belüli címekre vannak konfigurálva a beállított statikus útvonalak miatt.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ha többet szeretne megtudni arról, hogy a Microsoft Hogyan védi az Azure-infrastruktúrát, olvassa el a következő témakört:
 
 - [Azure-létesítmények,-telephelyek és fizikai biztonság](physical-security.md)

@@ -13,10 +13,10 @@ ms.date: 02/06/2020
 ms.author: curtand
 ms.custom: user-help
 ms.openlocfilehash: d1059bae047774864868fbe90df50a877f9a3869
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88798057"
 ---
 # <a name="use-collections-in-the-my-apps-portal"></a>Gyűjtemények használata a saját alkalmazások portálján
@@ -40,7 +40,7 @@ A listában megjelenő többi gyűjteményt a rendszergazda hozta létre, és me
 
 Amikor kiválaszt és megtekint egy gyűjteményt, csak azok az alapértelmezett alkalmazások jelennek meg, amelyekhez hozzáfér.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Miután az alkalmazásokat a **saját alkalmazások** portál különböző kategóriáira rendezi, a következőket teheti:
 

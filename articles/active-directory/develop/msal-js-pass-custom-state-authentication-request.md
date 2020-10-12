@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 840c371e63aacf8ef410cbf84cc9f68137dd77df
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85477583"
 ---
 # <a name="pass-custom-state-in-authentication-requests-using-msaljs"></a>Egyéni állapot továbbítása hitelesítési kérelmekben MSAL.js használatával
@@ -46,7 +46,7 @@ export type AuthenticationParameters = {
 
 > [!Note]
 > Ha egy gyorsítótárazott tokent szeretne kihagyni, és a kiszolgálóra lép, adja át a logikai értéket `forceRefresh` a bejelentkezési/jogkivonat-kérelem létrehozásához használt AuthenticationParameters objektumba.
-> `forceRefresh`Alapértelmezés szerint nem ajánlott használni az alkalmazás teljesítményére gyakorolt hatás miatt.
+> `forceRefresh` Alapértelmezés szerint nem ajánlott használni az alkalmazás teljesítményére gyakorolt hatás miatt.
 > A gyorsítótárra támaszkodva jobb felhasználói élményt biztosíthat a felhasználóknak.
 > A gyorsítótár kihagyása csak olyan helyzetekben használható, ahol tudja, hogy a jelenleg gyorsítótárazott adatok nem rendelkeznek naprakész információkkal.
 > Például egy felügyeleti eszköz, amely szerepköröket rendel hozzá egy olyan felhasználóhoz, akinek új jogkivonatot kell beszereznie a frissített szerepkörökkel.

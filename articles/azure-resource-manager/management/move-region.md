@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 09/10/2020
 ms.author: raynew
 ms.openlocfilehash: 7a71502ec361004079e0962d8bc6433316a4ba81
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90007638"
 ---
 # <a name="moving-azure-resources-across-regions"></a>Azure-erőforrások áthelyezése régiók között
@@ -25,7 +25,7 @@ Az erőforrások adott Azure-régióban való üzembe helyezése után számos o
 - **Szolgáltatások/szolgáltatások igazítása**: az erőforrások áthelyezésével kihasználhatja az adott régióban elérhető szolgáltatások és szolgáltatások előnyeit.
 - **Válaszadás az üzleti fejleményekre**: erőforrások áthelyezése egy régióba az üzleti változások, például az összeolvadások vagy a beszerzések megválaszolására válaszul.
 - **Közelség**: erőforrások áthelyezése a vállalat helyi régiójába.
-- Az **adattárolási követelmények teljesítése**: helyezze át az erőforrásokat az adattárolási követelményekhez vagy az adatbesorolási igényekhez való igazodás érdekében. [További információ](https://azure.microsoft.com/mediahandler/files/resourcefiles/achieving-compliant-data-residency-and-security-with-azure/Achieving_Compliant_Data_Residency_and_Security_with_Azure.pdf).
+- Az **adattárolási követelmények teljesítése**: helyezze át az erőforrásokat az adattárolási követelményekhez vagy az adatbesorolási igényekhez való igazodás érdekében. [További információk](https://azure.microsoft.com/mediahandler/files/resourcefiles/achieving-compliant-data-residency-and-security-with-azure/Achieving_Compliant_Data_Residency_and_Security_with_Azure.pdf).
 - **Válaszadás a központi telepítési követelményekre**: a hiba miatt üzembe helyezett erőforrások áthelyezése vagy a kapacitási igényekre való áttérés. 
 - **Válasz a leszerelésre**: erőforrások áthelyezése a régiók leszerelése miatt.
 
@@ -42,8 +42,8 @@ Az erőforrásokat áthelyezheti egy másik régióba az [Azure-erőforrás-mozg
 
 Az erőforrásokat egy másik régióba helyezheti át, néhány különböző módszer használatával:
 
-- **Erőforrások áthelyezésének megkezdése egy**erőforráscsoporthoz: ezzel a módszerrel kiindulhat a régióból egy erőforráscsoporthoz. Az áthelyezni kívánt erőforrások kiválasztása után a folyamat folytatódik az erőforrás-mozgató központban, az erőforrás-függőségek vizsgálatához és az áthelyezési folyamat előkészítéséhez. [További információ](../../resource-mover/move-region-within-resource-group.md).
-- **Erőforrások áthelyezésének megkezdése közvetlenül az erőforrás-mozgató hubhoz**: ezzel a módszerrel közvetlenül a központban helyezheti el a régió áthelyezése folyamatot. [További információ](../../resource-mover/tutorial-move-region-virtual-machines.md).
+- **Erőforrások áthelyezésének megkezdése egy**erőforráscsoporthoz: ezzel a módszerrel kiindulhat a régióból egy erőforráscsoporthoz. Az áthelyezni kívánt erőforrások kiválasztása után a folyamat folytatódik az erőforrás-mozgató központban, az erőforrás-függőségek vizsgálatához és az áthelyezési folyamat előkészítéséhez. [További információk](../../resource-mover/move-region-within-resource-group.md).
+- **Erőforrások áthelyezésének megkezdése közvetlenül az erőforrás-mozgató hubhoz**: ezzel a módszerrel közvetlenül a központban helyezheti el a régió áthelyezése folyamatot. [További információk](../../resource-mover/tutorial-move-region-virtual-machines.md).
 
 
 ## <a name="support-for-region-move"></a>Régió áthelyezésének támogatása

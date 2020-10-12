@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 01/16/2019
 ms.openlocfilehash: e1262a4699bc42cb5b9a4398be2254854c5d5ff2
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86081196"
 ---
 # <a name="migrate-azure-hdinsight-36-apache-storm-to-hdinsight-40-apache-spark"></a>Telepítse át az Azure HDInsight 3,6 Apache Storm HDInsight 4,0 Apache Spark
@@ -33,20 +33,20 @@ Ez a dokumentum útmutatást nyújt a Apache Storm a Spark streaming és a Spark
 
 ## <a name="comparison-between-apache-storm-and-spark-streaming-spark-structured-streaming"></a>Összehasonlítás a Apache Storm és a Spark streaming, a Spark strukturált streaming között
 
-Az Apache Storm különböző szinteken biztosít garantált üzenetfeldolgozást. Egy alapszintű Storm-alkalmazás például garantálhatja a legalább egyszeri feldolgozást, a [Trident](https://storm.apache.org/releases/current/Trident-API-Overview.html) pedig pontosan egyszeri feldolgozást tud biztosítani. A Spark streaming és a Spark strukturált streaming garantálja, hogy minden bemeneti esemény feldolgozása pontosan egyszer történik, még akkor is, ha a csomópont meghibásodik. A Storm olyan modellt használ, amely minden egyes eseményt feldolgoz, és a Micro batch-modellt a Trident használatával is használhatja. A Spark streaming és a Spark strukturált streaming biztosítja a mikro-batch feldolgozási modellt.
+Az Apache Storm különböző szinteken biztosít garantált üzenetfeldolgozást. Egy alapszintű Storm-alkalmazás például garantálhatja a legalább egyszeri feldolgozást, a [Trident](https://storm.apache.org/releases/current/Trident-API-Overview.html) pedig pontosan egyszeri feldolgozást tud biztosítani. A Spark streaming és a Spark strukturált streaming garantálja, hogy minden bemeneti esemény feldolgozása pontosan egyszer történik, még akkor is, ha a csomópont meghibásodik. A Storm olyan modellt használ, amely minden egyes eseményt feldolgoz, és a Micro batch-modellt a Trident használatával is használhatja. A Spark streaming és a Spark strukturált streaming Micro-Batch feldolgozási modellt biztosít.
 
 |  |Storm |Spark-streamelés | Spark strukturált streaming|
 |---|---|---|---|
 |**Esemény-feldolgozási garancia**|Legalább egyszer <br> Pontosan egyszer (Trident) |[Pontosan egyszer](https://spark.apache.org/docs/latest/streaming-programming-guide.html)|[Pontosan egyszer](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html)|
 |**Feldolgozási modell**|Valós idejű <br> Micro batch (Trident) |Micro batch |Micro batch |
-|**Esemény időpontjának támogatása**|[Igen](https://storm.apache.org/releases/2.0.0/Windowing.html)|No|[Igen](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html)|
+|**Esemény időpontjának támogatása**|[Igen](https://storm.apache.org/releases/2.0.0/Windowing.html)|Nem|[Igen](https://spark.apache.org/docs/latest/structured-streaming-programming-guide.html)|
 |**Nyelvek**|Java stb.|Scala, Java, Python|Python, R, Scala, Java, SQL|
 
 ### <a name="spark-streaming-vs-spark-structured-streaming"></a>Spark streaming vs Spark strukturált streaming
 
 A Spark strukturált streaming a Spark streaminget (DStreams) váltja fel. A strukturált streaming továbbra is a fejlesztéseket és a karbantartást fogja kapni, a DStreams pedig csak karbantartási módban lesznek elérhetők. **Megjegyzés: a pont kiemeléséhez hivatkozásokra van szükség**. A strukturált adatfolyamok nem rendelkeznek annyi funkcióval, mint a DStreams az általa támogatott források és nyelők számára, ezért a követelmények kiértékelésével kiválaszthatja a megfelelő Spark stream-feldolgozási lehetőséget.
 
-## <a name="streaming-single-event-processing-vs-micro-batch-processing"></a>Streaming (Single Event) Processing vs Micro-batch feldolgozás
+## <a name="streaming-single-event-processing-vs-micro-batch-processing"></a>Streaming (Single Event) Processing vs Micro-Batch Processing
 
 A Storm olyan modellt biztosít, amely minden egyes eseményt feldolgoz. Ez azt jelenti, hogy a rendszer minden bejövő rekordot feldolgoz, amint megérkeznek. A Spark streaming-alkalmazásoknak meg kell várniuk egy második töredékét az egyes mikro-köteg események összegyűjtéséhez, mielőtt elküldené a köteget a feldolgozásra. Ezzel szemben az eseményvezérelt alkalmazások azonnal feldolgozzák az egyes eseményeket. A Spark streaming késése általában néhány másodperc alatt van. A mikro-batch megközelítés előnyei hatékonyabb adatfeldolgozást és egyszerűbb összesített számításokat tesznek elérhetővé.
 
@@ -57,7 +57,7 @@ A Storm olyan modellt biztosít, amely minden egyes eseményt feldolgoz. Ez azt 
 
 A Storm-topológiák több összetevőből állnak, amelyek egy irányított aciklikus gráfba (DAG) vannak rendezve. Az adatáramlás a gráf összetevői között zajlik. Minden összetevőbe egy vagy több stream érkezik be, valamint egy vagy több streamet sugároz.
 
-|Összetevő |Description |
+|Összetevő |Leírás |
 |---|---|
 |Spout|Az adathalmazt egy topológiába hozza. Egy vagy több streamet sugároznak a topológiába.|
 |Bolt|A kiöntő vagy más boltokból kibocsátott adatfolyamokat használja fel. A boltok opcionálisan streameket is sugározhatnak a topológiába. A boltok felelősek az adatok külső szolgáltatásokba vagy tárolókba, például HDFS-, Kafka- vagy HBase-tárolókba történő kiírásáért.|
@@ -67,7 +67,7 @@ A Storm-topológiák több összetevőből állnak, amelyek egy irányított aci
 
 A Storm a következő három démonból áll, amelyek megőrzik a Storm-fürt működését.
 
-|Démon |Description |
+|Démon |Leírás |
 |---|---|
 |Nimbus|A Hadoop JobTracker hasonlóan a kód a fürt körének terjesztése, valamint a feladatok gépekhez és a hibák figyeléséhez való hozzárendelésének feladata.|
 |Zookeeper|A fürt koordinálásához használatos.|

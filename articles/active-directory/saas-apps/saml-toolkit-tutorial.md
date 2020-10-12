@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 09/10/2020
 ms.author: jeedes
 ms.openlocfilehash: 7886691559a63e6d54ea748582f641f33cecf995
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90979749"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-azure-ad-saml-toolkit"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció az Azure AD SAML Toolkit használatával
@@ -100,7 +100,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás** lehetőségre.
+   1. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -124,7 +124,7 @@ Ebben a szakaszban az Azure AD SAML Toolkit elérésének biztosításával enge
 
     ![Azure AD SAML Toolkit SAML-konfiguráció](./media/saml-toolkit-tutorial/saml-configure.png)
 
-1. Kattintson a **Létrehozás** lehetőségre.
+1. Kattintson a **Létrehozás** elemre.
 
     ![Azure AD SAML Toolkit](./media/saml-toolkit-tutorial/createsso.png)
 
@@ -140,7 +140,7 @@ Ebben a szakaszban az Azure AD SAML Toolkit elérésének biztosításával enge
 
     1. Kattintson a **fájl kiválasztása** elemre, és töltse fel a Azure Portalból letöltött **tanúsítvány-(RAW-)** fájlt.
 
-    1. Kattintson a **Létrehozás** lehetőségre.
+    1. Kattintson a **Létrehozás** elemre.
 
     1. Másolja be a bejelentkezési URL-címet, az azonosítót és az ACS URL-értékeket az SAML Toolkit SSO konfigurációs lapján, és illessze be a beillesztett szövegmezőket a Azure Portal **alapszintű SAML-konfiguráció szakaszában** .
 
@@ -158,6 +158,6 @@ Ebben a szakaszban a következő lehetőségekkel tesztelheti az Azure AD egysze
 
 3. Használhatja a Microsoft Access panelt. Amikor a hozzáférési panelen a SAML-eszközkészlet csempére kattint, automatikusan be kell jelentkeznie az SAML-eszközkészletbe, amelyhez be kell állítania az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Azure AD SAML Toolkit konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezete bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Ismerje meg, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud App Security](https://docs.microsoft.com/cloud-app-security/proxy-deployment-aad)

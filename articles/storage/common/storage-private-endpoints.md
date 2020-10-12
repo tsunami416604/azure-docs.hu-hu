@@ -11,10 +11,10 @@ ms.author: santoshc
 ms.reviewer: santoshc
 ms.subservice: common
 ms.openlocfilehash: 7a216b9e430c10f42d48df01746e111355cf91b8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85513288"
 ---
 # <a name="use-private-endpoints-for-azure-storage"></a>Privát végpontok használata az Azure Storage-hoz
@@ -79,7 +79,7 @@ Ha a VNet kívülről oldja fel a tárolási végpont URL-címét a privát vég
 
 A fenti ábrán látható példában a "StorageAccountA" Storage-fiókhoz tartozó DNS-erőforrásrekordok a privát végpontot üzemeltető VNet kívülről történő feloldáskor a következők:
 
-| Name                                                  | Típus  | Érték                                                 |
+| Név                                                  | Típus  | Érték                                                 |
 | :---------------------------------------------------- | :---: | :---------------------------------------------------- |
 | ``StorageAccountA.blob.core.windows.net``             | CNAME | ``StorageAccountA.privatelink.blob.core.windows.net`` |
 | ``StorageAccountA.privatelink.blob.core.windows.net`` | CNAME | \<storage service public endpoint\>                   |
@@ -89,7 +89,7 @@ Amint azt korábban említettük, a VNet kívüli ügyfelek számára a nyilván
 
 A StorageAccountA tartozó DNS-erőforrásrekordok, amikor a privát végpontot üzemeltető VNet-ügyfél feloldotta a következőt:
 
-| Name                                                  | Típus  | Érték                                                 |
+| Név                                                  | Típus  | Érték                                                 |
 | :---------------------------------------------------- | :---: | :---------------------------------------------------- |
 | ``StorageAccountA.blob.core.windows.net``             | CNAME | ``StorageAccountA.privatelink.blob.core.windows.net`` |
 | ``StorageAccountA.privatelink.blob.core.windows.net`` | A     | 10.1.1.5                                              |
@@ -106,7 +106,7 @@ A tárolási szolgáltatásokhoz tartozó magánhálózati végpontok ajánlott 
 | Tárolási szolgáltatás        | Zóna neve                            |
 | :--------------------- | :----------------------------------- |
 | Blob szolgáltatás           | `privatelink.blob.core.windows.net`  |
-| Data Lake Storage Gen2 | `privatelink.dfs.core.windows.net`   |
+| 2. generációs Data Lake Storage | `privatelink.dfs.core.windows.net`   |
 | Fájlszolgáltatások           | `privatelink.file.core.windows.net`  |
 | Queue szolgáltatás          | `privatelink.queue.core.windows.net` |
 | Table service          | `privatelink.table.core.windows.net` |

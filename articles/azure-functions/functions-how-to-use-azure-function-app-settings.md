@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 04/13/2020
 ms.custom: cc996988-fb4f-47
 ms.openlocfilehash: 057c030b060343d5bc6f85c38d61feee0b01dfde
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83122297"
 ---
 # <a name="manage-your-function-app"></a>A Function alkalmazás kezelése 
@@ -81,7 +81,7 @@ A cikk további részében a következő, a függvények számára hasznos App S
 + [App Service szerkesztő](#editor)
 + [Console](#console)
 + [Speciális eszközök (kudu)](#kudu)
-+ [Üzembe helyezési beállítások](#deployment)
++ [Üzembe helyezési lehetőségek](#deployment)
 + [CORS](#cors)
 + [Hitelesítés](#auth)
 
@@ -107,7 +107,7 @@ Helyi fejlesztés esetén javasolt a [Azure functions Core Tools](functions-run-
 
 ![Kudu konfigurálása](./media/functions-how-to-use-azure-function-app-settings/configure-function-app-kudu.png)
 
-A App Service speciális eszközei (más néven kudu) hozzáférést biztosítanak a Function alkalmazás speciális felügyeleti funkcióihoz. A kudu a rendszerinformációk, az Alkalmazásbeállítások, a környezeti változók, a helybővítmények, a HTTP-fejlécek és a kiszolgálói változók kezelése. A **kudu** a Function app SCM-végpontjának tallózásával is elindíthatja, például:`https://<myfunctionapp>.scm.azurewebsites.net/` 
+A App Service speciális eszközei (más néven kudu) hozzáférést biztosítanak a Function alkalmazás speciális felügyeleti funkcióihoz. A kudu a rendszerinformációk, az Alkalmazásbeállítások, a környezeti változók, a helybővítmények, a HTTP-fejlécek és a kiszolgálói változók kezelése. A **kudu** a Function app SCM-végpontjának tallózásával is elindíthatja, például: `https://<myfunctionapp>.scm.azurewebsites.net/` 
 
 
 ### <a name="deployment-center"></a><a name="deployment"></a>Üzembe helyezési központ
@@ -149,4 +149,4 @@ Ha a függvények HTTP-triggert használnak, megkövetelheti, hogy először hit
 + [Azure Functions – folyamatos üzembe helyezés](functions-continuous-deployment.md)
 
 [Azure CLI]: /cli/azure/
-[Azure Portalra]: https://portal.azure.com
+[Azure Portal]: https://portal.azure.com

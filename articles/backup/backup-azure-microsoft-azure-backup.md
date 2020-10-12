@@ -4,10 +4,10 @@ description: Ebből a cikkből megtudhatja, hogyan készítheti elő a környeze
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.openlocfilehash: 6fe03260cc1759929e7ff9886b1b232a37056866
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90975528"
 ---
 # <a name="install-and-upgrade-azure-backup-server"></a>Azure Backup Server telepítése és frissítése
@@ -54,7 +54,7 @@ A munkaterhelések Azure Backup Serversal való védelme számos árnyalattal re
 
 Ha nem szeretné az alapkiszolgálót az Azure-ban futtatni, akkor futtathatja a kiszolgálót egy Hyper-V virtuális gépen, egy VMware virtuális gépen vagy egy fizikai gazdagépen. A kiszolgálói hardver ajánlott minimális követelményei két mag és 8 GB RAM. A támogatott operációs rendszerek a következő táblázatban láthatók:
 
-| Operációs rendszer | Platform | Termékváltozat |
+| Operációs rendszer | Platform | SKU |
 |:--- | --- |:--- |
 | Windows Server 2019 |64 bit |Standard, Datacenter, Essentials |
 | Windows Server 2016 és legújabb SPs |64 bit |Standard, Datacenter, Essentials  |
@@ -210,7 +210,7 @@ Miután a kinyerési folyamat befejeződött, jelölje be a jelölőnégyzetet a
    >
    >
 
-    ![Microsoft Update](./media/backup-azure-microsoft-azure-backup/update-opt-screen2.png)
+    ![Microsoft Update Opt-In](./media/backup-azure-microsoft-azure-backup/update-opt-screen2.png)
 7. Tekintse át a *Beállítások összegzését* , és válassza a **telepítés**lehetőséget.
 
     ![Beállítások összefoglalása](./media/backup-azure-microsoft-azure-backup/summary-screen.png)
@@ -353,7 +353,7 @@ A MABS frissítéséhez kövesse az alábbi lépéseket:
 
 3. Frissítse a védelmi ügynököket a védett kiszolgálókon.
 4. A biztonsági mentéseket az üzemi kiszolgálók újraindítása nélkül kell folytatni.
-5. Most már megkezdheti az adatok védelmét. Ha modern biztonsági másolati tárhelyre frissít, a védelem alatt kiválaszthatja azokat a köteteket, amelyeken a biztonsági másolatokat tárolni kívánja, és a kiépített terület területen is megkeresheti. [További információ](backup-mabs-add-storage.md).
+5. Most már megkezdheti az adatok védelmét. Ha modern biztonsági másolati tárhelyre frissít, a védelem alatt kiválaszthatja azokat a köteteket, amelyeken a biztonsági másolatokat tárolni kívánja, és a kiépített terület területen is megkeresheti. [További információk](backup-mabs-add-storage.md).
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 

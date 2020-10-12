@@ -9,10 +9,10 @@ ms.service: virtual-machines-windows
 ms.subservice: imaging
 ms.reviewer: danis
 ms.openlocfilehash: 07339ea6c53b2abe959e8e0f164412e502bb06b5
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88068127"
 ---
 # <a name="use-azure-image-builder-for-windows-vms-allowing-access-to-an-existing-azure-vnet"></a>Az Azure rendszerkép-készítő használata a Windows rendszerű virtuális gépekhez, amelyek lehetővé teszik egy meglévő Azure-VNET való hozzáférést
@@ -258,7 +258,7 @@ $runOutJsonStatus
 ```
 ## <a name="create-a-vm"></a>Virtuális gép létrehozása
 
-Most a Build elkészült, létrehozhat egy virtuális gépet a rendszerképből. Használja a [PowerShell New-AzVM dokumentációjának](https://docs.microsoft.com/powershell/module/az.compute/new-azvm?view=azps-2.5.0#description)példáit.
+Most a Build elkészült, létrehozhat egy virtuális gépet a rendszerképből. Használja a [PowerShell New-AzVM dokumentációjában](https://docs.microsoft.com/powershell/module/az.compute/new-azvm?view=azps-2.5.0#description)található példákat.
 
 ## <a name="clean-up"></a>Takarítás
 
@@ -294,7 +294,7 @@ Remove-AzResourceGroup $imageResourceGroup -Force
 # BEWARE!!!!! In this example, you have either used an existing VNET or created one for this example. Do not delete your existing VNET. If you want to delete the VNET Resource group used in this example '$vnetRgName', modify the above code.
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ az [Azure megosztott Képgalériákkal](shared-image-galleries.md)kapcsolatban.
 

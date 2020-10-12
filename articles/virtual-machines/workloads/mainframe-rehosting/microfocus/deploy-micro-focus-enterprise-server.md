@@ -13,10 +13,10 @@ tags: ''
 keywords: ''
 ms.service: multiple
 ms.openlocfilehash: 6780942d922f885c7afebd8e64f4f28654c3800e
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87042538"
 ---
 # <a name="deploy-micro-focus-enterprise-server-50-to-aks"></a>A Micro Focus Enterprise Server 5,0 – AK üzembe helyezése
@@ -35,7 +35,7 @@ Ez egy három lépésből álló folyamat. A következőket kell tennie:
 
 Ez lehetővé teszi, hogy kibővítse (és lekicsinyítse) a nagyvállalati modernizációs számítási feladatait az Azure-ban, a felhőalapú platform valódi előnyeit kihasználva.
 
-Készen? Kezdjük!
+Készen? Kezdjünk hozzá.
 
 ## <a name="create-the-azure-container-registry"></a>A Azure Container Registry létrehozása
 
@@ -73,7 +73,7 @@ Miután bejelentkezett, nyisson meg egy parancssort, és kezdeményezzen a köve
 
 -   **Docker-bejelentkezési acrmf50.azurecr.IO** – a megfelelő formátum itt a *Docker \<registry name\> -Bejelentkezés *. Helyettesítse be a beállításjegyzék létrehozásakor használt nevet.
 
-    -   Szüksége lesz a Azure Portalból másolt **felhasználónévre** és **jelszóra** . A következő képhez hasonlóan kell megjelennie.
+    -   Szüksége lesz a Azure Portalból másolt **felhasználónévre** és **jelszóra** . Ekkor az alábbihoz hasonlónak kell megjelennie.
 
     ![A rendszergazdai parancssor képernyőképe](media/deploy-image-2.png)
 

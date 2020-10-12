@@ -10,10 +10,10 @@ ms.topic: reference
 ms.date: 03/18/2019
 ms.custom: devx-track-dotnet
 ms.openlocfilehash: bf8563274d7aa677249335612d0156d6a5ecbd95
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89018450"
 ---
 # <a name="azure-cosmos-db-table-net-standard-api-download-and-release-notes"></a>Azure Cosmos DB table .NET Standard API: letöltési és kibocsátási megjegyzések
@@ -28,7 +28,7 @@ ms.locfileid: "89018450"
 |   |   |
 |---|---|
 |**SDK letöltése**|[NuGet](https://www.nuget.org/packages/Microsoft.Azure.Cosmos.Table)|
-|**Sample**|[Cosmos DB Table API .NET-minta](https://github.com/Azure-Samples/azure-cosmos-table-dotnet-core-getting-started)|
+|**Minta**|[Cosmos DB Table API .NET-minta](https://github.com/Azure-Samples/azure-cosmos-table-dotnet-core-getting-started)|
 |**Gyors útmutató**|[Gyors útmutató](create-table-dotnet.md)|
 |**Oktatóanyag**|[Oktatóanyag](tutorial-develop-table-dotnet.md)|
 |**Jelenleg támogatott keretrendszer**|[Microsoft .NET Standard 2,0](https://www.nuget.org/packages/NETStandard.Library)|

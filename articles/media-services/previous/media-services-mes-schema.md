@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/19/2019
 ms.author: juliako
 ms.openlocfilehash: 35f79702b7aad51b764ce2edb37c3c76d1fe98e8
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89261512"
 ---
 # <a name="media-encoder-standard-schema"></a>Media Encoder Standard-séma
@@ -99,7 +99,7 @@ Alapértelmezés szerint, ha olyan bemenetet küld a kódolónak, amely csak han
 | **Sávszélességű**<br/><br/> minOccurs = "0" |**xs: int** |A videó réteghez használt, kbps-ben megadott bitrátát adja meg. |
 | **MaxBitrate**<br/><br/> minOccurs = "0" |**xs: int** |A videó réteghez használt maximális sebesség kbps-ben megadva. |
 | **BufferWindow**<br/><br/> minOccurs = "0"<br/><br/> default = "00:00:05" |**xs: idő** |A videó pufferének hossza |
-| **Szélesség**<br/><br/> minOccurs = "0" |**xs: int** |A kimeneti videó keretének szélessége képpontban megadva<br/><br/> Jelenleg a szélességet és a magasságot kell megadnia. A szélességnek és a magasságnak páros számnak kell lennie. |
+| **Szélessége**<br/><br/> minOccurs = "0" |**xs: int** |A kimeneti videó keretének szélessége képpontban megadva<br/><br/> Jelenleg a szélességet és a magasságot kell megadnia. A szélességnek és a magasságnak páros számnak kell lennie. |
 | **Magasság**<br/><br/> minOccurs = "0" |**xs: int** |A kimeneti videó keretének magassága képpontban megadva<br/><br/> Jelenleg a szélességet és a magasságot kell megadnia. A szélességnek és a magasságnak páros számnak kell lennie.|
 | **BFrames**<br/><br/> minOccurs = "0" |**xs: int** |A (B) keretek száma a hivatkozási keretek között. |
 | **ReferenceFrames**<br/><br/> minOccurs = "0"<br/><br/> alapértelmezett = "3" |**xs: int** |A GOP-ban található hivatkozási keretek száma. |
@@ -163,13 +163,13 @@ Hangkodek|Részletek
 
 | Név | Típus | Leírás |
 | --- | --- | --- |
-| **FileName** |**xs: karakterlánc** |A kimeneti fájl neve.<br/><br/> A következő táblázatban ismertetett makrókat használhatja a kimeneti fájlnevek létrehozásához. Például:<br/><br/> **"Outputs": [{"FileName": "{basename}*{felbontás}*{bitráta}. mp4", "Format": {"type": "MP4Format"}}]** |
+| **FileName** |**xs: karakterlánc** |A kimeneti fájl neve.<br/><br/> A következő táblázatban ismertetett makrókat használhatja a kimeneti fájlnevek létrehozásához. Példa:<br/><br/> **"Outputs": [{"FileName": "{basename}*{felbontás}*{bitráta}. mp4", "Format": {"type": "MP4Format"}}]** |
 
 ### <a name="macros"></a>Makrók
 
 | Makró | Leírás |
 | --- | --- |
-| **{Basename}** |Ha a VoD-kódolást végzi, a {basename} a bemeneti eszköz elsődleges fájljának AssetFile.Name tulajdonságának első 32 karaktere.<br/><br/> Ha a bemeneti eszköz egy élő Archívum, akkor a {basename} a kiszolgálói jegyzékfájl trackName attribútumaiból származik. Ha a TopBitrate használatával küld el egy alklip feladatot, a következő módon: "<VideoStream \> TopBitrate</videostream \> ", és a kimeneti fájl tartalmaz videót, akkor a {basename} a trackName első 32 karaktere a legmagasabb sávszélességgel.<br/><br/> Ha ehelyett beküld egy alklip feladatot az összes bemeneti bitráta használatával (például "<VideoStream \> * </videostream \> "), és a kimeneti fájl tartalmazza a videót, akkor a {basename} a megfelelő videó réteg trackName első 32 karaktere. |
+| **{Basename}** |Ha a VoD-kódolást végzi, a {basename} a bemeneti eszköz elsődleges fájljának AssetFile.Name tulajdonságának első 32 karaktere.<br/><br/> Ha a bemeneti eszköz egy élő Archívum, akkor a {basename} a kiszolgálói jegyzékfájl trackName attribútumaiból származik. Ha a TopBitrate használatával küld el egy alklip feladatot, a következő módon: "<VideoStream \> TopBitrate</VideoStream \> ", és a kimeneti fájl tartalmaz videót, akkor a {basename} a trackName első 32 karaktere a legmagasabb sávszélességgel.<br/><br/> Ha ehelyett beküld egy alklip feladatot az összes bemeneti bitráta használatával (például "<VideoStream \> * </VideoStream \> "), és a kimeneti fájl tartalmazza a videót, akkor a {basename} a megfelelő videó réteg trackName első 32 karaktere. |
 | **Codec** |Leképezi a "H264"-t a videóhoz és az "AAC" hanghoz. |
 | **Sávszélességű** |A célként megadott videó bitrátája, ha a kimeneti fájl videó-és hangátviteli sebességet tartalmaz, vagy ha a kimeneti fájl csak hanganyagot tartalmaz. A használt érték a sávszélesség Kbit/s-ban megadva. |
 | **Csatorna** |A Hangcsatornák száma, ha a fájl hangot tartalmaz. |
@@ -217,7 +217,7 @@ Azt is megteheti, hogy a **PreserveResolutionAfterRotation** jelzőt használja,
 
 | Név | Típus | Leírás |
 | --- | --- | --- |
-| **Szélesség**<br/><br/> minOccurs = "0" |**xs: int** | |
+| **Szélessége**<br/><br/> minOccurs = "0" |**xs: int** | |
 | **Magasság**<br/><br/> minOccurs = "0" |**xs: int** | |
 
 ### <a name="attributes"></a>Attribútumok
@@ -231,7 +231,7 @@ Azt is megteheti, hogy a **PreserveResolutionAfterRotation** jelzőt használja,
 
 | Név | Típus | Leírás |
 | --- | --- | --- |
-| **Szélesség**<br/><br/> minOccurs = "0" |**xs: int** | |
+| **Szélessége**<br/><br/> minOccurs = "0" |**xs: int** | |
 | **Magasság**<br/><br/> minOccurs = "0" |**xs: int** | |
 
 ### <a name="attributes"></a>Attribútumok
@@ -245,7 +245,7 @@ Azt is megteheti, hogy a **PreserveResolutionAfterRotation** jelzőt használja,
 
 | Név | Típus | Leírás |
 | --- | --- | --- |
-| **Szélesség**<br/><br/> minOccurs = "0" |**xs: int** | |
+| **Szélessége**<br/><br/> minOccurs = "0" |**xs: int** | |
 | **Magasság**<br/><br/> minOccurs = "0" |**xs: int** | |
 | **Minőség**<br/><br/> minOccurs = "0" |**xs: int** |Érvényes értékek: 1 (legrosszabb) – 100 (legjobb) |
 
@@ -300,7 +300,7 @@ Azt is megteheti, hogy a **PreserveResolutionAfterRotation** jelzőt használja,
 ## <a name="examples"></a>Példák
 Tekintse meg a séma alapján létrehozott XML-előállítók példáit: a [MES (Media Encoder standard) feladatának előbeállításai](media-services-mes-presets-overview.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>Visszajelzés küldése

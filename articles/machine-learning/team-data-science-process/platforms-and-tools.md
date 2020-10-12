@@ -11,10 +11,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 37faf5d8e6292844245f475d9fcf0f832a0cca10
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89439997"
 ---
 # <a name="platforms-and-tools-for-data-science-projects"></a>Az adatelemzési projektek platformja és eszközei
@@ -83,7 +83,7 @@ A Apache Hive egy adattárházrendszer a Hadoop számára, amely lehetővé tesz
 
 A struktúra lehetővé teszi a nagy strukturálatlan adatmennyiségek struktúrájának kivetítését. A struktúra meghatározása után a kaptár használatával lekérdezheti a Hadoop-fürtben lévő összes adat használatát anélkül, hogy a Java-vagy a MapReduce-t kellene használnia. A HiveQL (a kaptár lekérdezési nyelve) lehetővé teszi, hogy lekérdezéseket írjon a T-SQL-hez hasonló utasításokkal.
 
-Az adatszakértők számára a kaptár a rekordok feldolgozásához a kaptár lekérdezésében futtathatja a Python felhasználó által definiált függvényeit (UDF). Ez a képesség jelentős mértékben kibővíti a kaptár-lekérdezések adatelemzési funkcióját. Pontosabban lehetővé teszi, hogy az adatszakértők méretezhető funkciók mérnöki használatát használják a leggyakrabban használt nyelveken: az SQL-Like HiveQL és a Python. 
+Adatszakértők esetében a kaptár a rekordok feldolgozásához a kaptár-lekérdezésekben a Python User-Defined functions (UDF) futtatásával végezhető el. Ez a képesség jelentős mértékben kibővíti a kaptár-lekérdezések adatelemzési funkcióját. Pontosabban lehetővé teszi, hogy az adatszakértők méretezhető funkciók mérnöki használatát használják a leggyakrabban használt nyelveken: az SQL-Like HiveQL és a Python. 
 
 Az Azure HDInsight kaptár-fürtökkel kapcsolatos további információkért lásd: a [kaptár és a HiveQL használata a Hadoop-ben a HDInsight-ben](../../hdinsight/hadoop/hdinsight-use-hive.md). A teljes körű adatelemzési megoldás Azure HDInsight kaptár-fürtökkel való kiépítéséről [a csoportos adatelemzési folyamat működés közben: HDInsight Hadoop-fürtök használata](hive-walkthrough.md)című témakörben olvashat.
 

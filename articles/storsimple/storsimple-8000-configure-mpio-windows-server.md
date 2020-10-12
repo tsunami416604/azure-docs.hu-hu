@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 03/26/2018
 ms.author: alkohli
 ms.openlocfilehash: cc88d5b7a458c3666cdb4469d7021917d27115f3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85514332"
 ---
 # <a name="configure-multipath-io-for-your-storsimple-device"></a>Többutas I/O konfigurálása a StorSimple-eszközhöz
@@ -66,7 +66,7 @@ A szolgáltatás Windows Server-gazdagépre történő telepítéséhez hajtsa v
    5. A **szolgáltatások kiválasztása** lapon válassza a **többutas I/O**lehetőséget, majd kattintson a **tovább**gombra.
    
        ![Szerepkörök és szolgáltatások hozzáadása varázsló 5](./media/storsimple-configure-mpio-windows-server/IC741000.png)
-   6. A **telepítendő összetevők megerősítése** lapon erősítse meg a kijelölést, majd szükség esetén jelölje be **a célkiszolgáló automatikus újraindítása**, amint az alább látható. Kattintson a **telepítés**gombra.
+   6. A **telepítendő összetevők megerősítése** lapon erősítse meg a kijelölést, majd szükség esetén jelölje be **a célkiszolgáló automatikus újraindítása**, amint az alább látható. Kattintson az **Install** (Telepítés) gombra.
    
        ![Szerepkörök és szolgáltatások hozzáadása varázsló 8](./media/storsimple-configure-mpio-windows-server/IC741001.png)
    7. A telepítés befejezésekor értesítést kap. A varázsló bezárásához kattintson a **Bezárás** gombra.

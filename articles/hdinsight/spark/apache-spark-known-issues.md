@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.date: 08/15/2019
 ms.author: hrasheed
 ms.openlocfilehash: 1dbf6478a62675c8b514298007a7663239d8f7cf
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86084642"
 ---
 # <a name="known-issues-for-apache-spark-cluster-on-hdinsight"></a>Ismert problémák a Apache Spark-fürtön a HDInsight-on
@@ -67,13 +67,13 @@ java.io.FileNotFoundException: /var/log/spark/sparkdriver_hdiuser.log (Permissio
 3. Frissítse a Spark-napló helyét a Ambari használatával a 777 engedélyekkel rendelkező könyvtárba.  
 4. Futtassa a Spark-Submit parancsot sudo-ként.  
 
-## <a name="spark-phoenix-connector-is-not-supported"></a>A Spark-Phoenix összekötő nem támogatott
+## <a name="spark-phoenix-connector-is-not-supported"></a>Spark-Phoenix összekötő nem támogatott
 
-A HDInsight Spark-fürtök nem támogatják a Spark-Phoenix összekötőt.
+A HDInsight Spark-fürtök nem támogatják az Spark-Phoenix-összekötőt.
 
 **Kockázatcsökkentő**
 
-Ehelyett a Spark-HBase összekötőt kell használnia. Az utasításokért lásd: a [Spark-HBase-összekötő használata](https://web.archive.org/web/20190112153146/https://blogs.msdn.microsoft.com/azuredatalake/2016/07/25/hdinsight-how-to-use-spark-hbase-connector/).
+Ehelyett a Spark-HBase-összekötőt kell használnia. Az utasításokért lásd: [az Spark-HBase-összekötő használata](https://web.archive.org/web/20190112153146/https://blogs.msdn.microsoft.com/azuredatalake/2016/07/25/hdinsight-how-to-use-spark-hbase-connector/).
 
 ## <a name="issues-related-to-jupyter-notebooks"></a>Jupyter-jegyzetfüzetekkel kapcsolatos problémák
 

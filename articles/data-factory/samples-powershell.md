@@ -11,10 +11,10 @@ ms.reviewer: maghan
 ms.topic: conceptual
 ms.date: 01/16/2018
 ms.openlocfilehash: 6df400e7ce4b66a1589a0c44089148b33ab88638
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89439061"
 ---
 # <a name="azure-powershell-samples-for-azure-data-factory"></a>Azure PowerShell minták a Azure Data Factory
@@ -23,7 +23,7 @@ ms.locfileid: "89439061"
 
 A következő táblázat hivatkozásokat tartalmaz a Azure Data Factory Azure PowerShell parancsfájljaira.
 
-| Script | Description  |
+| Script | Leírás  |
 |---|---|
 |**Adatok másolása**||
 |[Blobok másolása egy mappából az Azure-Blob Storage egy másik mappájába](scripts/copy-azure-blob-powershell.md?toc=%2fpowershell%2fmodule%2ftoc.json)| Ez a PowerShell-parancsfájl blobokat másol egy Azure-beli mappából Blob Storage egy másik mappába, amely ugyanabban a Blob Storage. |

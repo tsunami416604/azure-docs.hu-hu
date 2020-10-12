@@ -16,10 +16,10 @@ ms.date: 09/20/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 4ac3a43776ee71716e618d7a1698aa1915d3d1b7
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91331352"
 ---
 # <a name="considerations-for-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>Az Azure Virtual Machines adatbázis-kezelő üzembe helyezésének szempontjai az SAP-munkaterheléshez
@@ -76,7 +76,7 @@ A dokumentum teljes egészében a következő kifejezéseket használjuk:
 
 Bizonyos Microsoft-dokumentációk többek között egy kicsit másképpen ismertetik a létesítmények közötti forgatókönyveket, különösen a magas rendelkezésre állást biztosító adatbázis-konfigurációk esetében Az SAP-vel kapcsolatos dokumentumok esetében a létesítmények közötti forgatókönyv a telephelyek közötti vagy a privát [ExpressRoute](https://azure.microsoft.com/services/expressroute/) -kapcsolatra, valamint egy, a helyszíni és az Azure közötti elosztott SAP-környezetre vezethető vissza.
 
-## <a name="resources"></a>Források
+## <a name="resources"></a>További források
 Az Azure-beli SAP-munkaterheléseken más cikkek is elérhetők. Az Azure-beli SAP-számítási [feladatok első lépései: első lépések](./get-started.md) , majd válassza ki a kívánt területét.
 
 A következő SAP-megjegyzések az Azure-beli SAP-vel kapcsolatosak, a jelen dokumentumban foglalt területek tekintetében.
@@ -115,7 +115,7 @@ Ennek a fejezetnek a követéséhez olvassa el és Ismerje meg a következő té
 - [Milyen SAP-szoftvert támogatnak az Azure-beli üzemelő példányok?](./sap-supported-product-on-azure.md)
 - [SAP-tevékenységprofil az Azure-beli virtuális gépek támogatott forgatókönyveiben](./sap-planning-supported-configurations.md) 
 
-A fejezet elolvasása előtt meg kell ismernie és ismernie kell a különböző virtuálisgép-sorozatokat, valamint a standard és a Premium Storage közötti különbségeket. 
+A fejezet elolvasása előtt meg kell ismernie és ismernie kell a különböző VM-Series és a standard és a Premium Storage közötti különbségeket. 
 
 Az Azure Block Storage esetében kifejezetten ajánlott az Azure Managed Disks használata. Az Azure Managed Disks szolgáltatással kapcsolatos részletekért olvassa el az [Azure-beli virtuális gépek felügyelt lemezeit](../../managed-disks-overview.md)ismertető cikket.
 
@@ -217,7 +217,7 @@ A következő javaslatok ezeket az I/O-tulajdonságokat feltételezik a szabván
 
 A standard szintű tároláshoz a lehetséges gyorsítótár-típusok a következők:
 
-* Nincsenek
+* Nincs
 * Olvasás
 * Olvasás/írás
 
@@ -225,7 +225,7 @@ A konzisztens és determinisztikus teljesítmény érdekében állítsa be a sza
 
 Az Azure Premium Storage esetében a következő gyorsítótárazási lehetőségek léteznek:
 
-* Nincsenek
+* Nincs
 * Olvasás
 * Olvasás/írás
 * Nincs + írásgyorsító, amely csak az Azure M sorozatú virtuális gépekhez használható
@@ -309,7 +309,7 @@ Ezek az ajánlott eljárások több száz ügyfél-telepítés eredménye:
 > Egyéb forgatókönyvek, amelyekben a hálózati virtuális berendezések nem támogatottak:
 >
 > * A Linux pacemaker-fürtcsomópontok és SBD-eszközöket képviselő Azure-beli virtuális gépek közötti kommunikációs útvonalak a [magas rendelkezésre állású SAP NetWeaver Azure-beli virtuális gépeken SUSE Linux Enterprise Server SAP-alkalmazásokhoz](./high-availability-guide-suse.md)című témakörben leírtak szerint.
-> * Az Azure-beli virtuális gépek és a Windows Server Kibővíthető fájlkiszolgáló (SOFS) közötti kommunikációs útvonalak az Azure-beli [fájlmegosztás használatával egy Windows feladatátvevő fürtön a fürt SAP ASCS/SCS-példányának](./sap-high-availability-guide-wsfc-file-share.md)leírtak szerint. 
+> * Az Azure-beli virtuális gépek és a Windows Server Scale-Out fájlkiszolgáló (SOFS) közötti kommunikációs útvonalak az [Azure-beli fájlmegosztás használatával egy Windows feladatátvevő fürtön, az SAP ASCS/SCS-példányok a fürtben](./sap-high-availability-guide-wsfc-file-share.md)című részében leírtak szerint. 
 >
 > A kommunikációs útvonalon található hálózati virtuális berendezések könnyedén megduplázzák két kommunikációs partner közötti hálózati késést. Emellett az SAP-alkalmazás és az adatbázis-kezelő réteg közötti kritikus útvonalakon is korlátozhatják az átviteli sebességet. Bizonyos felhasználói helyzetekben a hálózati virtuális készülékek a pacemaker Linux-fürtök meghibásodását okozhatják. Ezek olyan esetek, amikor a Linux pacemaker-fürtcsomópontok közötti kommunikáció egy hálózati virtuális berendezésen keresztül kommunikál a SBD-eszközzel.
 >

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/17/2016
 ms.author: routlaw
 ms.openlocfilehash: 6c1bbe48ca5205cf1db49d67a711e9a7523e1845
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88077118"
 ---
 # <a name="using-nodejs-modules-with-azure-applications"></a>A Node.js modulok használata az Azure alkalmazásokkal
@@ -64,28 +64,28 @@ A fájl **package.js** egyik lehetséges problémája, hogy csak a legfelső szi
 > [!NOTE]
 > Ha a Azure App Servicere való központi telepítéskor a fájl <b>package.js</b> natív modulra hivatkozik, az alkalmazás a git használatával történő közzétételekor az alábbi példához hasonló hibaüzenet jelenhet meg:
 >
-> NPM ERR! module-name@0.6.0telepítés: "Node-GYP configure build"
+> NPM ERR! module-name@0.6.0 telepítés: "Node-GYP configure build"
 >
 > NPM ERR! a "CMD"/c "" Node-GYP configure build "" nem sikerült 1
 >
 >
 
 ### <a name="using-a-npm-shrinkwrapjson-file"></a>npm-shrinkwrap.jshasználata fájlon
-A fájl **npm-shrinkwrap.js** a fájlpackage.jsa modul verziószámozási korlátozásait próbálja **meg** kezelni. Míg a fájl **package.js** csak a legfelső szintű modulok verzióit tartalmazza, a fájl **npm-shrinkwrap.js** a teljes modul függőségi láncának verziójának követelményeit tartalmazza.
+A fájl **npm-shrinkwrap.js** a fájlpackage.jsa modul verziószámozási korlátozásait próbálja ** meg** kezelni. Míg a fájl **package.js** csak a legfelső szintű modulok verzióit tartalmazza, a fájl **npm-shrinkwrap.js** a teljes modul függőségi láncának verziójának követelményeit tartalmazza.
 
 Ha az alkalmazás készen áll az éles környezetben való használatra, zárolhatja a verziókra vonatkozó követelményeket, és létrehozhat egy **npm-shrinkwrap.js** fájlt a **NPM Shrinkwrap** parancs használatával. Ez a parancs a **Node \_ ** modules mappában jelenleg telepített verziókat fogja használni, és rögzíti ezeket a verziókat a fájl **npm-shrinkwrap.js** . Miután az alkalmazást telepítette az üzemeltetési környezetbe, a **NPM install** paranccsal elemezheti a **npm-shrinkwrap.jsa** fájlban, és telepítheti az összes felsorolt függőséget. További információ: [NPM-Shrinkwrap](https://docs.npmjs.com/cli/shrinkwrap).
 
 > [!NOTE]
 > Ha a Azure App Servicere való központi telepítéskor a fájl <b>npm-shrinkwrap.js</b> natív modulra hivatkozik, az alkalmazás a git használatával történő közzétételekor az alábbi példához hasonló hibaüzenet jelenhet meg:
 >
-> NPM ERR! module-name@0.6.0telepítés: "Node-GYP configure build"
+> NPM ERR! module-name@0.6.0 telepítés: "Node-GYP configure build"
 >
 > NPM ERR! a "CMD"/c "" Node-GYP configure build "" nem sikerült 1
 >
 >
 
-## <a name="next-steps"></a>További lépések
-Most, hogy megértette, hogyan használhatja Node.js modulokat az Azure-ban, megtudhatja, hogyan [adhatja meg a Node.js verzióját](https://github.com/squillace/nodejs-microservice), hogyan [építhet ki és helyezhet üzembe egy Node.js webalkalmazást](app-service/quickstart-nodejs.md), és [hogyan használhatja az Azure parancssori felületet Mac és Linux rendszereken](https://azure.microsoft.com/blog/using-windows-azure-with-the-command-line-tools-for-mac-and-linux/).
+## <a name="next-steps"></a>Következő lépések
+Most, hogy megértette, hogyan használhatja Node.js modulokat az Azure-ban, megtudhatja, hogyan [adhatja meg a Node.js verzióját](https://github.com/squillace/nodejs-microservice), hogyan [hozhat létre és helyezhet üzembe egy Node.js-webalkalmazást](app-service/quickstart-nodejs.md), és [hogyan használhatja a Mac és Linux rendszerhez készült Azure Command-Line interfészt](https://azure.microsoft.com/blog/using-windows-azure-with-the-command-line-tools-for-mac-and-linux/).
 
 További információk: [Node.js fejlesztői központ](/azure/developer/javascript/).
 

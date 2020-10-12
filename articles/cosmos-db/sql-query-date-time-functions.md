@@ -8,10 +8,10 @@ ms.date: 08/18/2020
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 1ea838224f9d91b000100d5fa9308289619fd963
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88605189"
 ---
 # <a name="date-and-time-functions-azure-cosmos-db"></a>Dátum és idő függvények (Azure Cosmos DB)
@@ -39,9 +39,9 @@ A következő függvények segítségével egyszerűen módosíthatja a DateTime
 * [TicksToDateTime](sql-query-tickstodatetime.md)
 * [TimestampToDateTime](sql-query-timestamptodatetime.md)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Rendszerfunkciók Azure Cosmos DB](sql-query-system-functions.md)
-- [Bevezetés a Azure Cosmos DBba](introduction.md)
+- [Az Azure Cosmos DB bemutatása](introduction.md)
 - [Felhasználó által definiált függvények](sql-query-udfs.md)
 - [Összesítések](sql-query-aggregates.md)

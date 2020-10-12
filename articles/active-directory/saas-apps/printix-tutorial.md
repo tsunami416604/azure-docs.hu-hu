@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 06/29/2017
 ms.author: jeedes
 ms.openlocfilehash: e9bc7969c5fee83944dab7cb35832f82b57c5595
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88552343"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-printix"></a>Oktatóanyag: Azure Active Directory integráció a Printix
@@ -98,50 +98,50 @@ Ebben a szakaszban engedélyezheti az Azure AD egyszeri bejelentkezést a Azure 
 
 1. A Azure Portal **Printix** alkalmazás-integráció lapján kattintson az **egyszeri bejelentkezés**elemre.
 
-    ![Egyszeri bejelentkezés konfigurálása][4]
+    ![Egyetlen Sign-On konfigurálása][4]
 
 1. Az **egyszeri** Bejelentkezés párbeszédpanelen válassza a **mód** **SAML-alapú bejelentkezés** lehetőséget az egyszeri bejelentkezés engedélyezéséhez.
  
-    ![Egyszeri bejelentkezés konfigurálása](./media/printix-tutorial/tutorial_printix_samlbase.png)
+    ![Egyetlen Sign-On konfigurálása](./media/printix-tutorial/tutorial_printix_samlbase.png)
 
 1. A **Printix tartomány és URL-címek** szakaszban hajtsa végre a következő lépéseket:
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/printix-tutorial/tutorial_printix_url.png)
+    ![Egyetlen Sign-On konfigurálása](./media/printix-tutorial/tutorial_printix_url.png)
 
     A **bejelentkezési URL** szövegmezőbe írja be az URL-címet a következő minta használatával: `https://<subdomain>.printix.net`
 
     > [!NOTE] 
-    > Az érték nem valódi. Frissítse az értéket a tényleges bejelentkezési URL-címmel. Az érték beszerzéséhez forduljon a Printix ügyfélszolgálati [csapatához](mailto:support@printix.net) . 
+    > Az érték nem valódi. Frissítse az értéket a tényleges Sign-On URL-címmel. Az érték beszerzéséhez forduljon a Printix ügyfélszolgálati [csapatához](mailto:support@printix.net) . 
  
 1. Az **SAML aláíró tanúsítvány** szakaszban kattintson a **metaadatok XML** elemre, majd mentse a metaadat-fájlt a számítógépen.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/printix-tutorial/tutorial_printix_certificate.png) 
+    ![Egyetlen Sign-On konfigurálása](./media/printix-tutorial/tutorial_printix_certificate.png) 
 
 1. Kattintson a **Save (Mentés** ) gombra.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/printix-tutorial/tutorial_general_400.png)
+    ![Egyetlen Sign-On konfigurálása](./media/printix-tutorial/tutorial_general_400.png)
 
 1. Jelentkezzen be rendszergazdaként a Printix-bérlőbe.
 
 1. A felső menüben kattintson a jobb felső sarokban lévő ikonra, és válassza a "**hitelesítés**" lehetőséget.
    
-    ![Egyszeri bejelentkezés konfigurálása](./media/printix-tutorial/tutorial_printix_06.png)
+    ![Egyetlen Sign-On konfigurálása](./media/printix-tutorial/tutorial_printix_06.png)
 
 1. A **telepítés** lapon válassza az **Azure/Office 365-hitelesítés engedélyezése** lehetőséget.
    
-    ![Egyszeri bejelentkezés konfigurálása](./media/printix-tutorial/tutorial_printix_07.png)
+    ![Egyetlen Sign-On konfigurálása](./media/printix-tutorial/tutorial_printix_07.png)
 
 1. Az **Azure** lapon adja meg a "**összevonás metaadatainak dokumentum**" szövegmezőbe az összevonási metaadatok URL-címét. 
 
     Csatolja a metaadatokat tartalmazó XML-fájlt, amelyet az Azure AD-ből töltött le az [Printix támogatási csapatának](mailto:support@printix.net). Ezután feltöltik az XML-fájlt, és megadják az összevonási metaadatok URL-címét.
    
-    ![Egyszeri bejelentkezés konfigurálása](./media/printix-tutorial/tutorial_printix_08.png)
+    ![Egyetlen Sign-On konfigurálása](./media/printix-tutorial/tutorial_printix_08.png)
    
 1. Kattintson a "**teszt**" gombra, és kattintson az "**OK**" gombra, ha a teszt sikeres volt.
    
      Az Azure Active Directory oldal a **tesztelés** gombra kattintva jelenik meg. "A teszt sikeres volt": az Azure-beli tesztelési fiók hitelesítő adatainak megadása után megjelenik egy üzenet, amely "a beállítások tesztelték az OK" üzenetet. Ezután kattintson az **OK** gombra.
    
-    ![Egyszeri bejelentkezés konfigurálása](./media/printix-tutorial/tutorial_printix_09.png)
+    ![Egyetlen Sign-On konfigurálása](./media/printix-tutorial/tutorial_printix_09.png)
 
 1. Kattintson a **Mentés** gombra a "**hitelesítés**" lapon.
 
@@ -179,7 +179,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Válassza a **jelszó megjelenítése** lehetőséget, és jegyezze fel a **jelszó**értékét.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    d. Kattintson a **Létrehozás** lehetőségre.
  
 ### <a name="creating-a-printix-test-user"></a>Printix-tesztelési felhasználó létrehozása
 
@@ -205,7 +205,7 @@ Ebben a szakaszban a Britta Simon használatával engedélyezheti az Azure egysz
 
 1. Az alkalmazások listában válassza a **Printix**lehetőséget.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/printix-tutorial/tutorial_printix_app.png) 
+    ![Egyetlen Sign-On konfigurálása](./media/printix-tutorial/tutorial_printix_app.png) 
 
 1. A bal oldali menüben kattintson a **felhasználók és csoportok**elemre.
 

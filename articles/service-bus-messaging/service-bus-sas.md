@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 07/30/2020
 ms.custom: devx-track-csharp
 ms.openlocfilehash: fb90b2ae290752753b58b5e96c6c8a8b23f4c168
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89012075"
 ---
 # <a name="service-bus-access-control-with-shared-access-signatures"></a>Service Bus hozzáférés-vezérlés közös hozzáférési aláírásokkal
@@ -181,7 +181,7 @@ Ha SAS-tokent ad a küldőnek vagy az ügyfélnek, nem rendelkezik közvetlenül
 
 ## <a name="use-the-shared-access-signature-at-amqp-level"></a>A közös hozzáférésű aláírás használata (AMQP szinten)
 
-Az előző szakaszban megtudhatta, hogyan használhatja az SAS-tokent egy HTTP POST-kérelemmel az adatoknak a Service Bus való küldéséhez. Amint tudja, hozzáférhet a Service Bushoz a Advanced Message Queueing Protocol (AMQP) használatával, amely a teljesítmény szempontjából előnyben részesített protokoll, és számos forgatókönyv esetén használható. Az SAS-token AMQP-mel való használatának ismertetését a 1,0-as, a 2013-es, de az Azure által támogatott [AMQP-jogcím-alapú biztonsági verzióban](https://www.oasis-open.org/committees/download.php/50506/amqp-cbs-v1%200-wd02%202013-08-12.doc) találja.
+Az előző szakaszban megtudhatta, hogyan használhatja az SAS-tokent egy HTTP POST-kérelemmel az adatoknak a Service Bus való küldéséhez. Amint tudja, hozzáférhet a Service Bushoz a Advanced Message Queueing Protocol (AMQP) használatával, amely a teljesítmény szempontjából előnyben részesített protokoll, és számos forgatókönyv esetén használható. Az SAS-token AMQP-mel való használata a 2013-es [AMQP Claim-Based Security 1,0-es verziójában](https://www.oasis-open.org/committees/download.php/50506/amqp-cbs-v1%200-wd02%202013-08-12.doc) van leírva, de az Azure által jelenleg támogatott.
 
 Mielőtt megkezdené az adatküldést a Service Busba, a közzétevőnek az SAS-jogkivonatot egy **$CBS** nevű, jól DEFINIÁLt AMQP-csomópontra kell küldenie egy AMQP (a szolgáltatás által az összes sas-token beszerzéséhez és ellenőrzéséhez használt "speciális" üzenetsorként jelenik meg). A közzétevőnek meg kell adnia a **ReplyTo** MEZŐT a AMQP üzenetben; Ez az a csomópont, amelyben a szolgáltatás a jogkivonatok érvényesítésének eredményeképpen válaszol a közzétevőnek (egyszerű kérelem/válasz minta a közzétevő és a szolgáltatás között). Ez a válasz-csomópont "menet közben" jön létre, amely a "távoli csomópont dinamikus létrehozására" szól a AMQP 1,0 specifikációban leírtak szerint. Miután ellenőrizte, hogy az SAS-jogkivonat érvényes-e, a közzétevő mehet előre, és megkezdheti az adatküldést a szolgáltatásnak.
 

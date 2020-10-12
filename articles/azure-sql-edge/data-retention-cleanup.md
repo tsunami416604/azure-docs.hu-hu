@@ -10,10 +10,10 @@ ms.author: sourabha
 ms.reviewer: sstein
 ms.date: 09/04/2020
 ms.openlocfilehash: 45ce874ffb626f63b2239c66afdefd091114cbd2
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90888130"
 ---
 # <a name="manage-historical-data-with-retention-policy"></a>Korábbi adatok kezelése adatmegőrzési házirenddel
@@ -79,7 +79,7 @@ A következő hat kiterjesztett esemény segít nyomon követni a karbantartási
 | data_retention_cleanup_exception  | Az adatmegőrzési szabályzattal rendelkező tábla karbantartási folyamata sikertelen lesz. |
 | data_retention_cleanup_completed  | Akkor következik be, amikor az adatmegőrzési szabályzattal rendelkező tábla tisztítási folyamata lejár. |  
 
-Emellett egy nevű új gyűrűs puffer-típus lett `RING_BUFFER_DATA_RETENTION_CLEANUP` hozzáadva a sys. dm_os_ring_buffers dinamikus felügyeleti nézethez. Ez a nézet használható az adatmegőrzési karbantartási műveletek figyelésére. 
+Emellett egy nevű új gyűrűs puffer-típus lett `RING_BUFFER_DATA_RETENTION_CLEANUP` hozzáadva sys.dm_os_ring_buffers dinamikus felügyeleti nézethez. Ez a nézet használható az adatmegőrzési karbantartási műveletek figyelésére. 
 
 
 ## <a name="next-steps"></a>Következő lépések
