@@ -6,10 +6,10 @@ ms.subservice: dsc
 ms.date: 04/06/2020
 ms.topic: conceptual
 ms.openlocfilehash: 3bb42886c653afbdf8975b532bd2e1e1c3c63ce9
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86186537"
 ---
 # <a name="compile-dsc-configurations-in-azure-automation-state-configuration"></a>DSC-konfigurációk fordítása Azure Automation állapot-konfigurációban
@@ -47,7 +47,7 @@ A [Start-AzAutomationDscCompilationJob](/powershell/module/az.automation/start-a
 Start-AzAutomationDscCompilationJob -ResourceGroupName 'MyResourceGroup' -AutomationAccountName 'MyAutomationAccount' -ConfigurationName 'SampleConfig'
 ```
 
-`Start-AzAutomationDscCompilationJob`egy fordítási feladattípust ad vissza, amelyet a feladatok állapotának nyomon követésére használhat. Ezt követően ezt a fordítási feladatot a [Get-AzAutomationDscCompilationJob](/powershell/module/az.automation/get-azautomationdsccompilationjob) használatával határozhatja meg a fordítási feladatok állapotát, és a [Get-AzAutomationDscCompilationJobOutput](/powershell/module/az.automation/get-azautomationdscconfiguration) segítségével megtekintheti a streameket (kimenet). Az alábbi példa elindítja a SampleConfig-konfiguráció összeállítását, megvárja, amíg befejeződik, majd megjeleníti a folyamait.
+`Start-AzAutomationDscCompilationJob` egy fordítási feladattípust ad vissza, amelyet a feladatok állapotának nyomon követésére használhat. Ezt követően ezt a fordítási feladatot a [Get-AzAutomationDscCompilationJob](/powershell/module/az.automation/get-azautomationdsccompilationjob) használatával határozhatja meg a fordítási feladatok állapotát, és a [Get-AzAutomationDscCompilationJobOutput](/powershell/module/az.automation/get-azautomationdscconfiguration) segítségével megtekintheti a streameket (kimenet). Az alábbi példa elindítja a SampleConfig-konfiguráció összeállítását, megvárja, amíg befejeződik, majd megjeleníti a folyamait.
 
 ```powershell
 $CompilationJob = Start-AzAutomationDscCompilationJob -ResourceGroupName 'MyResourceGroup' -AutomationAccountName 'MyAutomationAccount' -ConfigurationName 'SampleConfig'
@@ -127,7 +127,7 @@ Az **összetett erőforrások** funkció lehetővé teszi, hogy a DSC-konfigurá
 
 ### <a name="manage-configurationdata-when-compiling-configurations-in-azure-automation"></a>ConfigurationData kezelése a konfigurációk fordításakor Azure Automation
 
-`ConfigurationData`a egy beépített DSC-paraméter, amely lehetővé teszi a strukturális konfiguráció elkülönítését bármely környezet-specifikus konfigurációból a PowerShell DSC használata közben. További információ: a ["mi" a "WHERE" a POWERSHELL DSC-ben való elválasztása](https://devblogs.microsoft.com/powershell/separating-what-from-where-in-powershell-dsc/).
+`ConfigurationData` a egy beépített DSC-paraméter, amely lehetővé teszi a strukturális konfiguráció elkülönítését bármely környezet-specifikus konfigurációból a PowerShell DSC használata közben. További információ: a ["mi" a "WHERE" a POWERSHELL DSC-ben való elválasztása](https://devblogs.microsoft.com/powershell/separating-what-from-where-in-powershell-dsc/).
 
 > [!NOTE]
 > Azure Automation állapot-konfiguráció összeállításakor a `ConfigurationData` Azure PowerShellban, de nem a Azure Portalban is használható.

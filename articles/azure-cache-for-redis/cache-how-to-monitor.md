@@ -1,5 +1,5 @@
 ---
-title: Az Azure cache figyelése a Redis
+title: Az Azure Cache for Redis monitorozása
 description: Ismerje meg, hogyan figyelheti a Redis-példányok Azure cache állapotát és teljesítményét
 author: yegu-ms
 ms.author: yegu
@@ -7,13 +7,13 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 07/13/2017
 ms.openlocfilehash: 7d703c63ebdc5b70987ead3ed2ccbe5f4843a06f
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88004857"
 ---
-# <a name="how-to-monitor-azure-cache-for-redis"></a>Az Azure cache figyelése a Redis
+# <a name="how-to-monitor-azure-cache-for-redis"></a>Az Azure Cache for Redis monitorozása
 
 Az Azure cache for Redis [Azure monitort](../azure-monitor/index.yml) használ a gyorsítótár-példányok figyelésére. Megtekintheti a metrikákat, rögzítheti a metrikák diagramokat a Kezdőpulton, testreszabhatja a figyelési diagramok dátumát és időtartományát, metrikákat adhat hozzá és távolíthat el a diagramokból, valamint riasztásokat állíthat be bizonyos feltételek teljesülése esetén. Ezek az eszközök lehetővé teszik az Azure cache Redis-példányok állapotának figyelését, valamint a gyorsítótárazási alkalmazások kezelését.
 

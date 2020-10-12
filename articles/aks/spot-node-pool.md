@@ -6,10 +6,10 @@ ms.service: container-service
 ms.topic: article
 ms.date: 02/25/2020
 ms.openlocfilehash: dbb003c287a18810c2c14c4f2ea401fa55cca427
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87987290"
 ---
 # <a name="preview---add-a-spot-node-pool-to-an-azure-kubernetes-service-aks-cluster"></a>Előnézet – direktszínes csomópont-készlet hozzáadása egy Azure Kubernetes Service (ak) fürthöz
@@ -26,7 +26,7 @@ Ez a cikk a Kubernetes és a Azure Load Balancer fogalmak alapszintű megismeré
 
 Ez a szolgáltatás jelenleg előzetes kiadásban elérhető.
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
@@ -138,7 +138,7 @@ A [helyszíni példányok díjszabása][pricing-spot]a régió és az SKU alapj�
 
 A változó díjszabással maximális árat állíthat be az USA dollárban (USD), legfeljebb 5 tizedesjegyet használva. A *0,98765* érték például a maximális $0,98765 USD/óra. Ha a maximális árat a *-1*értékre állítja, a példány nem lesz kizárva az ár alapján. A példány díja a helyszínen érvényes, vagy a standard példány díjszabása, attól függően, hogy a kapacitás és a kvóta rendelkezésre áll-e.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből a cikkből megtudhatta, hogyan adhat hozzá egy helyszíni csomópont-készletet egy AK-fürthöz. További információ a hüvelyek csomópontok közötti szabályozásáról: [ajánlott eljárások a speciális Scheduler-funkciókhoz az AK-ban][operator-best-practices-advanced-scheduler].
 

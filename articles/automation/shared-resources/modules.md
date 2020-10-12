@@ -9,10 +9,10 @@ ms.date: 01/31/2020
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 2bf3dda6e3d99b5ed67298343f5238d304df7e2b
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86187370"
 ---
 # <a name="manage-modules-in-azure-automation"></a>Modulok kezelése az Azure Automationben
@@ -65,7 +65,7 @@ Az Automation nem importálja automatikusan az új vagy meglévő Automation-fi�
 | PSDscResources | 2.9.0.0 |
 | SecurityPolicyDsc | 2.1.0.0 |
 | StateConfigCompositeResources | 1 |
-| xDSCDomainjoin | 1.1 |
+| xDSCDomainjoin | 1,1 |
 | xPowerShellExecutionPolicy | 1.1.0.0 |
 | xRemoteDesktopAdmin | 1.1.0.0 |
 
@@ -87,8 +87,8 @@ Azure Automation támogatja a `Orchestrator.AssetManagement.Cmdlets` Windows ren
 |Get-AutomationPSCredential|`Get-AutomationPSCredential [-Name] <string> [<CommonParameters>]` |
 |Get-AutomationVariable|`Get-AutomationVariable [-Name] <string> [-DoNotDecrypt] [<CommonParameters>]`|
 |Set-AutomationVariable|`Set-AutomationVariable [-Name] <string> -Value <Object> [<CommonParameters>]` |
-|Start – AutomationRunbook|`Start-AutomationRunbook [-Name] <string> [-Parameters <IDictionary>] [-RunOn <string>] [-JobId <guid>] [<CommonParameters>]`|
-|Várakozás – AutomationJob|`Wait-AutomationJob -Id <guid[]> [-TimeoutInMinutes <int>] [-DelayInSeconds <int>] [-OutputJobsTransitionedToRunning] [<CommonParameters>]`|
+|Start-AutomationRunbook|`Start-AutomationRunbook [-Name] <string> [-Parameters <IDictionary>] [-RunOn <string>] [-JobId <guid>] [<CommonParameters>]`|
+|Wait-AutomationJob|`Wait-AutomationJob -Id <guid[]> [-TimeoutInMinutes <int>] [-DelayInSeconds <int>] [-OutputJobsTransitionedToRunning] [<CommonParameters>]`|
 
 Vegye figyelembe, hogy a belső parancsmagok eltérnek az az és a AzureRM parancsmagok elnevezésével. A belső parancsmagok neve nem tartalmaz olyan szavakat `Azure` `Az` , mint a főnév, de a szót használja `Automation` . Azt javasoljuk, hogy használja az az vagy a AzureRM parancsmag használatát az Azure-beli homokozóban vagy egy Windows Hybrid Runbook Worker-ben végzett runbook végrehajtása során. Kevesebb paramétert igényelnek, és a már futó feladatok kontextusában futnak.
 
@@ -144,7 +144,7 @@ Az az modulokat a Azure Portal importálhatja. Ne feledje, hogy csak a szükség
 
     ![Képernyőfelvétel a modulok automatizálási fiókba való importálásáról](../media/modules/import-module.png)
 
-Ezt az importálást a [PowerShell-Galéria](https://www.powershellgallery.com)keresztül is végrehajthatja, ha az importálni kívánt modulra keres rá. Ha megtalálta a modult, jelölje ki, majd válassza a **Azure Automation** fület. Válassza a **telepítés a Azure Automation**lehetőséget.
+Ezt az importálást a [PowerShell-Galéria](https://www.powershellgallery.com)keresztül is végrehajthatja, ha az importálni kívánt modulra keres rá. Ha megtalálta a modult, jelölje ki, majd kattintson a **Azure Automation** fülre. Válassza **a Azure Automation üzembe helyezés**lehetőséget.
 
 ![Képernyőfelvétel a modulok közvetlen importálásáról PowerShell-galéria](../media/modules/import-gallery.png)
 
@@ -242,7 +242,7 @@ Ennek a viselkedésnek a könnyebb és hatékonyabb megközelítése az, ha köz
   }
   ```
 
-A parancsmagok hasonló viselkedését engedélyezheti, ha lehetővé teszi, hogy közvetlenül paraméterként fogadják el a kapcsolódási objektumokat, ahelyett, hogy a paraméterekhez csak a kapcsolódási mezőket. Általában egy paramétert kell beállítania, hogy az Automationt nem használó felhasználók a szórótábla létrehozása nélkül is meghívhatják a parancsmagokat. A set paraméter a `UserAccount` kapcsolódási mező tulajdonságainak továbbítására szolgál. `ConnectionObject`lehetővé teszi a kapcsolatok közvetlen továbbítását.
+A parancsmagok hasonló viselkedését engedélyezheti, ha lehetővé teszi, hogy közvetlenül paraméterként fogadják el a kapcsolódási objektumokat, ahelyett, hogy a paraméterekhez csak a kapcsolódási mezőket. Általában egy paramétert kell beállítania, hogy az Automationt nem használó felhasználók a szórótábla létrehozása nélkül is meghívhatják a parancsmagokat. A set paraméter a `UserAccount` kapcsolódási mező tulajdonságainak továbbítására szolgál. `ConnectionObject` lehetővé teszi a kapcsolatok közvetlen továbbítását.
 
 ### <a name="output-type"></a>Kimenet típusa
 

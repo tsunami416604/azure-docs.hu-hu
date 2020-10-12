@@ -10,10 +10,10 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 07/06/2020
 ms.openlocfilehash: 753d214b520affb59722bc29dbabc50c6e5968f6
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91538721"
 ---
 # <a name="iterative-app-design-for-luis"></a>A LUIS-hoz készült iterációs alkalmazás kialakítása
@@ -24,7 +24,7 @@ A Language Understanding (LUIS) alkalmazás a leghatékonyabban tanul és hajt v
 * A LUIS-alkalmazás sémájának szerkesztése. Ide tartoznak az alábbiak:
     * Leképezések példa hosszúságú kimondott szöveg
     * Entitások
-    * Funkciók
+    * Szolgáltatások
 * Betanítás, tesztelés és közzététel
     * Tesztelés az aktív tanulás előrejelzési végpontján
 * Adatok összegyűjtése végponti lekérdezésekből
@@ -68,7 +68,7 @@ A LUIS-nek néhány példát kell hosszúságú kimondott szöveg az egyes **sz�
 
 Minden esetben a kiírásnak minden szükséges adattal rendelkeznie kell az **entitásokkal**megtervezett és címkézett **adatok kinyeréséhez** .
 
-|Kulcs eleme|Szerep|
+|Kulcs eleme|Cél|
 |--|--|
 |Szándék|A felhasználó hosszúságú kimondott szöveg egyetlen célra vagy műveletbe **osztályozhatja** . Ilyenek például `BookFlight` a és a `GetWeather` .|
 |Entitás|Az adatok **kinyerése** a cél befejezéséhez szükséges. Ilyenek például az utazás dátuma és időpontja, valamint a hely.|
@@ -157,6 +157,6 @@ További információ a [közreműködők](luis-how-to-collaborate.md)hozzájár
 
 Ha egy iterációs ciklust használ, megismételheti a folyamatot. Első lépésként [tekintse meg az előrejelzési végpont hosszúságú kimondott szöveg](luis-how-to-review-endpoint-utterances.md) , amely alacsony megbízhatósággal van megjelölve. Ezeket a hosszúságú kimondott szöveg a helyes előre jelzett szándékot, valamint a helyes és a kinyert entitást is megvizsgálhatja. A módosítások áttekintése és elfogadása után a felülvizsgálati listának üresnek kell lennie.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg az [együttműködéssel](luis-how-to-azure-subscription.md)kapcsolatos fogalmakat.

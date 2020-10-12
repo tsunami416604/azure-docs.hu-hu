@@ -10,10 +10,10 @@ ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 01/28/2020
 ms.openlocfilehash: 8fd42169ab6ccb144215e1b6ad2ece09ff55c07f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87072840"
 ---
 # <a name="use-apache-pig-with-apache-hadoop-on-hdinsight"></a>Az Apache Pig használata a Apache Hadoop on HDInsight
@@ -42,7 +42,7 @@ A Pig Latin is támogatja a felhasználó által definiált függvényeket (UDF)
 
 A Pig Latin nyelvről további információt a [Pig Latin Reference Manual 1](https://archive.cloudera.com/cdh/3/pig/piglatin_ref1.html) és a [Pig Latin Reference Manual 2](https://archive.cloudera.com/cdh/3/pig/piglatin_ref2.html)című részben talál.
 
-## <a name="example-data"></a><a id="data"></a>Példaadatok
+## <a name="example-data"></a><a id="data"></a>Példa az adatértékekre
 
 A HDInsight különböző, a és a címtárakban tárolt adatkészleteket biztosít `/example/data` `/HdiSamples` . Ezek a könyvtárak a fürt alapértelmezett tárolójában találhatók. Az ebben a dokumentumban szereplő Pig példa a *log4j* fájlt használja `/example/data/sample.log` .
 

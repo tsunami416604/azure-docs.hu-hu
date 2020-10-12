@@ -4,10 +4,10 @@ description: Lépésenkénti oktatóanyag, amely bemutatja, hogyan csatlakoztath
 ms.topic: article
 ms.date: 4/23/2020
 ms.openlocfilehash: f50c923104fdfcf26f400f20f0de66a82eb3d245
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87387523"
 ---
 # <a name="tutorial-integrate-functions-with-an-azure-virtual-network"></a>Oktatóanyag: függvények integrálása Azure-beli virtuális hálózattal
@@ -59,7 +59,7 @@ Következő lépésként hozzon létre egy előre konfigurált virtuális GÉPET
     | ------------ | ---------------- | ---------------- |
     | **Előfizetés** | Az Ön előfizetése | Az az előfizetés, amelyben az erőforrások létrejöttek. | 
     | **[Erőforráscsoport](../azure-resource-manager/management/overview.md)**  | myResourceGroup | Válassza ki `myResourceGroup` vagy a Function alkalmazással létrehozott erőforráscsoportot. A Function app, a WordPress VM és a üzemeltetési csomag azonos erőforráscsoport használatával könnyebben törölheti az erőforrásokat, amikor elkészült ezzel az Oktatóanyaggal. |
-    | **Virtuális gép neve** | VNET – WordPress | A virtuális gép nevének egyedinek kell lennie az erőforráscsoporthoz |
+    | **Virtuális gép neve** | VNET-Wordpress | A virtuális gép nevének egyedinek kell lennie az erőforráscsoporthoz |
     | **[Régió](https://azure.microsoft.com/regions/)** | Európa Nyugat-Európa | Válasszon egy Önhöz közeli régiót vagy a virtuális gépet elérő függvények közelében. |
     | **Méret** | B1s | Válassza a **méret módosítása** lehetőséget, majd válassza ki a B1s standard rendszerképet, amely 1 vCPU és 1 GB memóriát tartalmaz. |
     | **Hitelesítés típusa** | Jelszó | A jelszó-hitelesítés használatához meg kell adnia egy **felhasználónevet**és egy biztonságos **jelszót**is, majd **meg kell erősítenie a jelszót**. Ebben az oktatóanyagban nem kell bejelentkeznie a virtuális gépre, hacsak nem kell a hibakeresést végeznie. |
@@ -74,7 +74,7 @@ Következő lépésként hozzon létre egy előre konfigurált virtuális GÉPET
     | ------------ | ---------------- | ---------------- |
     | **Név** | myResourceGroup – vnet | A virtuális hálózathoz generált alapértelmezett nevet használhatja. |
     | **Címtartomány** | 10.10.0.0/16 | Használjon egyetlen címtartományt a virtuális hálózathoz. |
-    | **Alhálózat neve** | Oktatóanyag – net | Az alhálózat neve. |
+    | **Alhálózat neve** | Tutorial-Net | Az alhálózat neve. |
     | **Címtartomány** (alhálózat) | 10.10.1.0/24   | Az alhálózat mérete határozza meg, hogy hány csatolót lehet hozzáadni az alhálózathoz. Ezt az alhálózatot a WordPress webhely használja.  Az `/24` alhálózat 254 gazdagép-címet biztosít. |
 
 1. A virtuális hálózat létrehozásához kattintson **az OK gombra** .
@@ -83,7 +83,7 @@ Következő lépésként hozzon létre egy előre konfigurált virtuális GÉPET
 
 1. Válassza a **felügyelet** fület, majd a **diagnosztika Storage-fiók**területen válassza ki a Function alkalmazással létrehozott Storage-fiókot.
 
-1. Válassza a **Felülvizsgálat és létrehozás** lehetőséget. Az érvényesítés befejezése után válassza a **Létrehozás**lehetőséget. A virtuális gép létrehozási folyamata néhány percet vesz igénybe. A létrehozott virtuális gép csak a virtuális hálózat elérésére használható.
+1. Válassza a **Felülvizsgálat + létrehozás** lehetőséget. Az érvényesítés befejezése után válassza a **Létrehozás**lehetőséget. A virtuális gép létrehozási folyamata néhány percet vesz igénybe. A létrehozott virtuális gép csak a virtuális hálózat elérésére használható.
 
 1. A virtuális gép létrehozása után válassza az **erőforrás keresése** lehetőséget az új virtuális gép oldalának megtekintéséhez, majd válassza a **hálózatkezelés** lehetőséget a **Beállítások**területen.
 
@@ -105,7 +105,7 @@ A virtuális hálózatban lévő virtuális gépeken futó WordPress-webhelyekhe
 
 1. A **VNET-integráció** lapon válassza a **VNET hozzáadása**elemet.
 
-    :::image type="content" source="./media/functions-create-vnet/networking-2.png" alt-text="A VNet-integráció előzetes verziójának hozzáadása":::
+    :::image type="content" source="./media/functions-create-vnet/networking-2.png" alt-text="A Function alkalmazásban válassza a hálózatkezelés lehetőséget.":::
 
 1. A **hálózati szolgáltatások állapota**területen használja az alábbi táblázatban található beállításokat a rendszerkép alatt:
 
@@ -115,7 +115,7 @@ A virtuális hálózatban lévő virtuális gépeken futó WordPress-webhelyekhe
     | ------------ | ---------------- | ---------------- |
     | **Virtual Network** | MyResourceGroup – vnet | Ez a virtuális hálózat a korábban létrehozott. |
     | **Alhálózat** | Új alhálózat létrehozása | Hozzon létre egy alhálózatot a virtuális hálózatban a Function alkalmazás használatára. A VNet-integrációt üres alhálózat használatára kell konfigurálni. Nem számít, hogy a függvények más alhálózatot használnak, mint a virtuális gép. A virtuális hálózat automatikusan átirányítja a forgalmat a két alhálózat között. |
-    | **Alhálózat neve** | Függvény – net | Az új alhálózat neve. |
+    | **Alhálózat neve** | Function-Net | Az új alhálózat neve. |
     | **Virtuális hálózati címterület** | 10.10.0.0/16 | Válassza ki ugyanazt a Címterület-blokkot, amelyet a WordPress-webhely használ. Csak egy címterület van definiálva. |
     | **Címtartomány** | 10.10.2.0/24   | Az alhálózat mérete korlátozza azon példányok számát, amelyeket a prémium szintű csomag funkciójának alkalmazásával fel lehet méretezni. Ez a példa egy `/24` alhálózatot használ, amely 254 elérhető gazdagép-címmel rendelkezik. Ez az alhálózat túl van kiépítve, de könnyen kiszámítható. |
 
@@ -127,9 +127,9 @@ A Function alkalmazás mostantól elérheti azt a virtuális hálózatot, ahol a
 
 Ha a VNet-integráció engedélyezve van, létrehozhat egy proxyt a Function alkalmazásban, hogy továbbítsa a kéréseket a virtuális hálózaton futó virtuális GÉPHEZ.
 
-1. A Function alkalmazásban válassza a bal oldali menü **proxyk** elemét, majd válassza a **Hozzáadás**lehetőséget. Használja az alábbi táblázatban található proxybeállítások közül a rendszerképet:
+1. A Function alkalmazásban válassza a bal oldali menü  **proxyk** elemét, majd válassza a **Hozzáadás**lehetőséget. Használja az alábbi táblázatban található proxybeállítások közül a rendszerképet:
 
-    :::image type="content" source="./media/functions-create-vnet/create-proxy.png" alt-text="Proxybeállítások megadása":::
+    :::image type="content" source="./media/functions-create-vnet/create-proxy.png" alt-text="A Function alkalmazásban válassza a hálózatkezelés lehetőséget.":::
 
     | Beállítás  | Ajánlott érték  | Leírás      |
     | -------- | ---------------- | ---------------- |
@@ -151,7 +151,7 @@ A Function alkalmazás csatlakozik az internethez és a virtuális hálózathoz 
 
 [!INCLUDE [clean-up-section-portal](../../includes/clean-up-section-portal.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban a WordPress-webhely olyan API-ként szolgál, amely a Function alkalmazásban proxy használatával lett meghívva. Ez a forgatókönyv jó oktatóanyagot tesz lehetővé, hiszen egyszerűen beállítható és megjeleníthető. Bármely más, a virtuális hálózaton belül üzembe helyezett API-t használhat. Létrehozhat egy olyan kóddal rendelkező függvényt is, amely meghívja a virtuális hálózaton belül üzembe helyezett API-kat. A reálisabb forgatókönyv egy olyan függvény, amely adatügyfél-API-kat használ a virtuális hálózatban üzembe helyezett SQL Server példány meghívásához.
 

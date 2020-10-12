@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 11/15/2019
 ms.openlocfilehash: 1de9fc480c753b2497a1ea4e3438583b3582bc96
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87072781"
 ---
 # <a name="migrate-on-premises-apache-hadoop-clusters-to-azure-hdinsight---motivation-and-benefits"></a>Helyszíni Apache Hadoop-fürtök migrálása az Azure HDInsight – motiváció és előnyök
@@ -101,7 +101,7 @@ Ez a szakasz olyan sablon-kérdőíveket biztosít, amelyek segítenek a követk
 |Fő csomópont konfigurálása|m/y, CPU, lemez stb.|
 |Adatcsomópontok konfigurálása|m/y, CPU, lemez stb.|
 |Peremhálózati csomópontok konfigurálása|m/y, CPU, lemez stb.|
-|HDFS titkosítás?|Yes|
+|HDFS titkosítás?|Igen|
 |Magas rendelkezésre állás|HDFS HA, Metaadattár HA|
 |Vész-helyreállítás/biztonsági mentés|Biztonsági mentési fürt?|  
 |Fürttől függő rendszerek|SQL Server, Teradata, Power BI, MongoDB|
@@ -155,11 +155,11 @@ Ez a szakasz olyan sablon-kérdőíveket biztosít, amelyek segítenek a követk
 |Rendszergazdák száma|2||
 |Fejlesztők száma|10||
 |Végfelhasználók száma|100||
-|Ismereteit|Hadoop, Spark||
+|Szakértelem|Hadoop, Spark||
 |Az áttelepítési erőfeszítésekhez rendelkezésre álló erőforrások száma|2||
 |**Témakör**: **korlátozások**|||
 |Aktuális korlátozások|A késés magas||
-|Aktuális kihívások|Egyidejűségi probléma||
+|Aktuális feladvány|Egyidejűségi probléma||
 
 ### <a name="azure-requirements-questionnaire"></a>Azure-követelmények – kérdőív
 
@@ -167,35 +167,35 @@ Ez a szakasz olyan sablon-kérdőíveket biztosít, amelyek segítenek a követk
 |---|---|---|
 |**Témakör**: **infrastruktúra** |||
 | Előnyben részesített régió|USA keleti régiója||
-|VNet előnyben részesített?|Yes||
-|HA/DR szükséges?|Yes||
+|VNet előnyben részesített?|Igen||
+|HA/DR szükséges?|Igen||
 |Integráció más felhőalapú szolgáltatásokkal?|ADF, CosmosDB||
-|**Témakör**: **adatáthelyezés**  |||
+|**Témakör**:   **adatáthelyezés**  |||
 |Kezdeti betöltési beállítás|DistCp, adatmező, ADF, WANDisco||
 |Adatátviteli különbözet|DistCp, AzCopy||
 |Folyamatos növekményes adatátvitel|DistCp, Sqoop||
-|**Témakör**: **& riasztás figyelése** |||
+|**Témakör**:   **& riasztás figyelése** |||
 |Az Azure monitoring & a riasztások és a harmadik féltől származó figyelés integrálása|Az Azure monitoring & riasztások használata||
-|**Témakör**: **biztonsági beállítások** |||
-|Magán-és védett adatfolyamatok?|Yes||
-|Tartományhoz csatlakoztatott fürt (ESP)?|     Yes||
-|Helyszíni AD-szinkronizáló a felhőbe?|     Yes||
+|**Témakör**:   **biztonsági beállítások** |||
+|Magán-és védett adatfolyamatok?|Igen||
+|Tartományhoz csatlakoztatott fürt (ESP)?|     Igen||
+|Helyszíni AD-szinkronizáló a felhőbe?|     Igen||
 |A szinkronizálni kívánt AD-felhasználók száma?|          100||
-|Szeretné szinkronizálni a jelszavakat a felhőbe?|    Yes||
-|Csak Felhőbeli felhasználók?|                 Yes||
-|MFA szükséges?|                       No|| 
-|Az adatengedélyezési követelmények?|  Yes||
-|Szerepköralapú Access Control?|        Yes||
-|Naplózás szükséges?|                  Yes||
-|Inaktív adatok titkosítása?|          Yes||
-|Adattitkosítás az átvitel során?|       Yes||
-|**Témakör**: **újraarchitektúra beállításai** |||
+|Szeretné szinkronizálni a jelszavakat a felhőbe?|    Igen||
+|Csak Felhőbeli felhasználók?|                 Igen||
+|MFA szükséges?|                       Nem|| 
+|Az adatengedélyezési követelmények?|  Igen||
+|Role-Based Access Control?|        Igen||
+|Naplózás szükséges?|                  Igen||
+|Inaktív adatok titkosítása?|          Igen||
+|Adattitkosítás az átvitel során?|       Igen||
+|**Témakör**:   **újraarchitektúra beállításai** |||
 |Egyetlen fürt és adott fürtök típusai|Adott fürtök típusai||
 |A tárolók és a távoli tárolók is találhatók?|Távoli tárterület||
 |Kisebb a fürt mérete, mert az adattárolás távolról történik?|Kisebb fürt mérete||
 |Egy nagyméretű fürt helyett több kisebb fürtöt használjon?|Több kisebb fürt használata||
-|Távoli metaadattár használ?|Yes||
-|Megoszthatja a metaadattárak a különböző fürtök között?|Yes||
+|Távoli metaadattár használ?|Igen||
+|Megoszthatja a metaadattárak a különböző fürtök között?|Igen||
 |Felépítési feladatok elkészítése?|Kaptár-feladatok cseréje a Spark-feladatokkal||
 |Az ADF használata az adatelőkészítéshez?|Nem||
 

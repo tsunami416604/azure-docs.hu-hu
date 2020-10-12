@@ -13,10 +13,10 @@ ms.author: ryanwi
 ms.reviewer: paulgarn, hirsin
 ms.custom: aaddev
 ms.openlocfilehash: b65ad1f22d20686a1ee47631f9209e1b15b0ab58
-ms.sourcegitcommit: e69bb334ea7e81d49530ebd6c2d3a3a8fa9775c9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88948130"
 ---
 # <a name="signing-key-rollover-in-microsoft-identity-platform"></a>Kulcs átváltásának aláírása a Microsoft Identity platformon
@@ -37,7 +37,7 @@ Az alkalmazás által kezelt kulcsok átállításának módja az olyan változ�
 * [Erőforrások eléréséhez használható natív ügyfélalkalmazások](#nativeclient)
 * [Erőforrások eléréséhez használható webalkalmazások/API-k](#webclient)
 * [Az Azure App Services használatával létrehozott webalkalmazások/API-k védik az erőforrásokat](#appservices)
-* [Webalkalmazások/API-k az erőforrások védelme .NET OWIN OpenID Connect, WS-fed vagy WindowsAzureActiveDirectoryBearerAuthentication middleware használatával](#owin)
+* [Webalkalmazások/API-k az erőforrások védelme .NET OWIN OpenID Connect, WS-Fed vagy WindowsAzureActiveDirectoryBearerAuthentication middleware használatával](#owin)
 * [Webalkalmazások/API-k az erőforrások védelme .NET Core OpenID Connect vagy JwtBearerAuthentication middleware használatával](#owincore)
 * [Webalkalmazások/API-k az erőforrások védelme Node.js Passport használatával – Azure-ad modul](#passport)
 * [A Visual Studio 2015-es vagy újabb verziójával létrehozott webalkalmazások és API-k az erőforrásokat védik](#vs2015)
@@ -65,8 +65,8 @@ Ez a kategória olyan webalkalmazásokat és webes API-kat használ, amelyek az 
 ### <a name="web-applications--apis-protecting-resources-and-built-using-azure-app-services"></a><a name="appservices"></a>Az Azure App Services használatával létrehozott webalkalmazások/API-k védik az erőforrásokat
 Az Azure App Services hitelesítés/engedélyezés (EasyAuth) funkciója már rendelkezik a kulcs átváltásának automatikus kezeléséhez szükséges logikával.
 
-### <a name="web-applications--apis-protecting-resources-using-net-owin-openid-connect-ws-fed-or-windowsazureactivedirectorybearerauthentication-middleware"></a><a name="owin"></a>Webalkalmazások/API-k az erőforrások védelme .NET OWIN OpenID Connect, WS-fed vagy WindowsAzureActiveDirectoryBearerAuthentication middleware használatával
-Ha az alkalmazás a .NET OWIN OpenID Connect, WS-fed vagy WindowsAzureActiveDirectoryBearerAuthentication middleware-t használja, akkor már rendelkezik a kulcs átváltásának automatikus kezelésére szolgáló szükséges logikával.
+### <a name="web-applications--apis-protecting-resources-using-net-owin-openid-connect-ws-fed-or-windowsazureactivedirectorybearerauthentication-middleware"></a><a name="owin"></a>Webalkalmazások/API-k az erőforrások védelme .NET OWIN OpenID Connect, WS-Fed vagy WindowsAzureActiveDirectoryBearerAuthentication middleware használatával
+Ha az alkalmazás a .NET OWIN OpenID Connect, WS-Fed vagy WindowsAzureActiveDirectoryBearerAuthentication middleware-t használja, akkor már rendelkezik a kulcs átváltásának automatikus kezelésére szolgáló szükséges logikával.
 
 A következő kódrészletek bármelyikének megkeresésével ellenőrizheti, hogy az alkalmazás használja-e az alkalmazás Startup.cs vagy Startup.Auth.cs
 
@@ -284,7 +284,7 @@ Kövesse az alábbi lépéseket annak ellenőrzéséhez, hogy a kulcs átváltá
           </keys>
    ```
 2. A **\<add thumbprint="">** beállításban módosítsa az ujjlenyomat értékét úgy, hogy az egyik karaktert egy másikra cseréli. Mentse a **Web.config** fájlt.
-3. Hozza létre az alkalmazást, majd futtassa. Ha elvégezheti a bejelentkezési folyamatot, az alkalmazás sikeresen frissíti a kulcsot, ha letölti a szükséges információkat a címtár összevonási metaadat-dokumentumból. Ha problémába ütközik a bejelentkezéssel, győződjön meg arról, hogy az alkalmazásban végrehajtott módosítások helyesek, ha beolvassa a [Bejelentkezés hozzáadása a webalkalmazáshoz a Microsoft Identity platform használatával](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect) című cikket, vagy letölti és megvizsgálja a következő mintakód-mintát: [több-bérlős felhőalapú alkalmazás a Azure Active Directory](https://code.msdn.microsoft.com/multi-tenant-cloud-8015b84b).
+3. Hozza létre az alkalmazást, majd futtassa. Ha elvégezheti a bejelentkezési folyamatot, az alkalmazás sikeresen frissíti a kulcsot, ha letölti a szükséges információkat a címtár összevonási metaadat-dokumentumból. Ha problémák merülnek fel, ellenőrizze, hogy helyesek-e az alkalmazás változásai, ha a [Microsoft Identity platform használatával beolvassa a Sign-On hozzáadása a webalkalmazáshoz](https://github.com/Azure-Samples/active-directory-dotnet-webapp-openidconnect) című cikket, vagy letölti és megvizsgálja a következő mintakód-mintát: [több-bérlős felhőalapú alkalmazás a Azure Active Directoryhoz](https://code.msdn.microsoft.com/multi-tenant-cloud-8015b84b).
 
 ### <a name="web-applications-protecting-resources-and-created-with-visual-studio-2008-or-2010-and-windows-identity-foundation-wif-v10-for-net-35"></a><a name="vs2010"></a>Az erőforrásokat védő webalkalmazások és a Visual Studio 2008 vagy 2010 és a Windows Identity Foundation (WIF) 1.0-s verziójának használata a .NET 3,5-hoz
 Ha létrehoz egy alkalmazást a WIF 1.0-s verziójában, nincs megadva olyan mechanizmus, amely automatikusan frissíti az alkalmazás konfigurációját egy új kulcs használatára.

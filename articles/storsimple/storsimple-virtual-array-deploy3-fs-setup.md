@@ -16,10 +16,10 @@ ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 4e544d135883d0c936b3f23b3e50e385268c992c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87006296"
 ---
 # <a name="deploy-storsimple-virtual-array---set-up-as-file-server-via-azure-portal"></a>StorSimple virtuális tömb üzembe helyezése – beállítás fájlkiszolgáló használatával Azure Portal
@@ -124,7 +124,7 @@ A StorSimple virtuális tömb beállításához és konfigurálásához használ
 A szükséges eszköz telepítésének befejezéséhez hajtsa végre a következő lépéseket a [Azure Portal](https://portal.azure.com/) .
 
 #### <a name="to-configure-the-device-as-file-server"></a>Az eszköz konfigurálása fájlkiszolgálóként
-1. Lépjen a StorSimple Eszközkezelő szolgáltatásra, majd lépjen a **felügyeleti > eszközökre**. Válassza ki az imént létrehozott eszközt az **eszközök** panelen. Ez az eszköz úgy jelenik **meg, hogy készen áll a beállításra**.
+1. Lépjen a StorSimple Eszközkezelő szolgáltatásra, majd lépjen a  **felügyeleti > eszközökre**. Válassza ki az imént létrehozott eszközt az **eszközök** panelen. Ez az eszköz úgy jelenik **meg, hogy készen áll a beállításra**.
    
    ![Fájlkiszolgáló konfigurálása](./media/storsimple-virtual-array-deploy3-fs-setup/deployfs2m.png) 
 2. Kattintson az eszközre, és megjelenik egy szalagcím üzenet, amely jelzi, hogy az eszköz készen áll a telepítésre.

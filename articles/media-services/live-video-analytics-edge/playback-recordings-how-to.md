@@ -4,10 +4,10 @@ description: Élő videó-elemzést használhat IoT Edge a folyamatos videofelv�
 ms.topic: how-to
 ms.date: 04/27/2020
 ms.openlocfilehash: 6222d2c05b2fe05945d4bcbef6dbb0d64bd4726a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84261078"
 ---
 # <a name="playback-of-recordings"></a>Felvételek lejátszása 
@@ -51,7 +51,7 @@ Ahol a pontosság értéke a következők egyike lehet: év, hónap, nap vagy te
 |Pontosság|év|hónap|nap|teljes|
 |---|---|---|---|---|
 |Lekérdezés|`/availableMedia?precision=year&startTime=2018&endTime=2019`|`/availableMedia?precision=month& startTime=2018-01& endTime=2019-02`|`/availableMedia?precision=day& startTime=2018-01-15& endTime=2019-02-02`|`/availableMedia?precision=full& startTime=2018-01-15T10:08:11.123& endTime=2019-01-015T12:00:01.123`|
-|Válasz|`{  "timeRanges":[{ "start":"2018", "end":"2019" }]}`|`{  "timeRanges":[{ "start":"2018-03", "end":"2019-01" }]}`|`{  "timeRanges":[    { "start":"2018-03-01", "end":"2018-03-07" },    { "start":"2018-03-09", "end":"2018-03-31" }  ]}`|Teljes hűséggel kapcsolatos válasz. Ha egyáltalán nem voltak hézagok, a kezdés kezdő időpont lesz, és a Befejezés a Befejezés lenne.|
+|Reagálás|`{  "timeRanges":[{ "start":"2018", "end":"2019" }]}`|`{  "timeRanges":[{ "start":"2018-03", "end":"2019-01" }]}`|`{  "timeRanges":[    { "start":"2018-03-01", "end":"2018-03-07" },    { "start":"2018-03-09", "end":"2018-03-31" }  ]}`|Teljes hűséggel kapcsolatos válasz. Ha egyáltalán nem voltak hézagok, a kezdés kezdő időpont lesz, és a Befejezés a Befejezés lenne.|
 |Korlátozza|&#x2022;kezdő időpont <= befejezési időpont<br/>&#x2022;mindkettőnek éééé formátumúnak kell lennie, ellenkező esetben hiba történt.<br/>&#x2022;érték tetszőleges számú lehet.<br/>&#x2022;értékek a következők: inclusive.|&#x2022;kezdő időpont <= befejezési időpont<br/>&#x2022;mindkettőnek éééé-hh formátumúnak kell lennie, ellenkező esetben hibaüzenetet ad vissza.<br/>&#x2022;érték legfeljebb 12 hónap lehet egymástól.<br/>&#x2022;értékek a következők: inclusive.|&#x2022;kezdő időpont <= befejezési időpont<br/>&#x2022;mindkettőnek éééé-hh-nn formátumúnak kell lennie, ellenkező esetben hibaüzenetet kell visszaadnia.<br/>&#x2022;érték legfeljebb 31 napja lehet egymástól.<br/>Az értékek a következők: inclusive.|&#x2022;kezdő időpont < befejezési időközben<br/>&#x2022;érték legfeljebb 25 óra lehet.<br/>&#x2022;értékek a következők: inclusive.|
 
 #### <a name="additional-request-format-considerations"></a>A kérelem formátumának további szempontjai
@@ -209,8 +209,8 @@ GET https://hostname/locatorId/content.ism/availableMedia?precision=day&startTim
 
 A fentiekben leírtaknak megfelelően ezek a szűrők segítenek kijelölni a rögzítés egyes részeit (például: 9 és 11:00 között, az új év napján) a lejátszáshoz. A streaming URL-cím a HLS-on keresztül fog kinézni `https://{hostname-here}/{locatorGUID}/content.ism/manifest(format=m3u8-aapl).m3u8` . A rögzítés egy részének kiválasztásához adjon hozzá egy kezdő időpontot és egy befejezési paramétert, például: `https://{hostname-here}/{locatorGUID}/content.ism/manifest(format=m3u8-aapl,startTime=2019-12-21T08:00:00Z,endTime=2019-12-21T10:00:00Z).m3u8` . Így az időtartomány-szűrők olyan URL-módosítók, amelyek a rögzítési jegyzékben szereplő idővonalának leírására szolgálnak:
 
-* `starttime`egy ISO 8601 DateTime bélyegző, amely leírja a visszaadott jegyzékfájlban a videó idővonalának kívánt kezdési időpontját.
-* `endtime`egy ISO 8601 DateTime bélyegző, amely leírja a jegyzékfájlban visszaadott videó idővonalának kívánt befejezési időpontját.
+* `starttime` egy ISO 8601 DateTime bélyegző, amely leírja a visszaadott jegyzékfájlban a videó idővonalának kívánt kezdési időpontját.
+* `endtime` egy ISO 8601 DateTime bélyegző, amely leírja a jegyzékfájlban visszaadott videó idővonalának kívánt befejezési időpontját.
 
 Az ilyen jegyzékfájlok maximális hossza (időben) nem lehet hosszabb 24 óra.
 
@@ -294,7 +294,7 @@ Ilyen rögzítéssel:
     `GET https://{hostname-here}/{locatorGUID}/content.ism/manifest(format=m3u8-aapl,startTime=2019-12-21T14:01:00.000Z,endTime=2019-12-21T03:00:00.000Z).m3u8`
 * Ha olyan jegyzékfájlt kér, amelyben a kezdő időpont és a befejezési idő a középső részen található "Hole" értéken belül van – mondjuk 08:00 és 10:00 között, akkor a szolgáltatás ugyanúgy viselkedik, mintha egy adott eszköz szűrője üres eredményt eredményezne.
 
-    [Ez egy olyan kérelem, amely üres választ kap]`GET https://{hostname-here}/{locatorGUID}/content.ism/manifest(format=m3u8-aapl,startTime=2019-12-21T08:00:00.000Z,endTime=2019-12-21T10:00:00.000Z).m3u8`
+    [Ez egy olyan kérelem, amely üres választ kap] `GET https://{hostname-here}/{locatorGUID}/content.ism/manifest(format=m3u8-aapl,startTime=2019-12-21T08:00:00.000Z,endTime=2019-12-21T10:00:00.000Z).m3u8`
 * Ha olyan jegyzékfájlt kér, amelyben csak az egyik kezdő időpont vagy a befejezési időpont van, akkor a visszaadott jegyzékfájl csak a TimeSpan egy részét fogja tartalmazni. A kezdő időpont vagy a végső Befejezés értékét a legközelebbi érvényes határhoz igazítja. Ha például a 3 órás adatfolyamot 10 – 01:00-re kérték, a válasz 1-HR értékű adathordozót tartalmaz 12 délig és 01:00 között.
 
     `GET https://{hostname-here}/{locatorGUID}/content.ism/manifest(format=m3u8-aapl,startTime=2019-12-21T10:00:00.000Z,endTime=2019-12-21T13:00:00.000Z).m3u8`
@@ -303,7 +303,7 @@ Ilyen rögzítéssel:
 
 ## <a name="recording-and-playback-latencies"></a>Rögzítés és lejátszás késése
 
-Ha IoT Edge élő videó-elemzést használ egy eszközre való rögzítéshez, meg kell adnia egy segmentLength-tulajdonságot, amely megadja, hogy a modul a felhőbe való rögzítés előtt minimális időtartamú videót (másodpercben) összesítse. Ha például a segmentLength 300 értékre van állítva, akkor a modul 5 percnél többet fog gyűjteni az 5 perces "darab" feltöltés előtt, majd a következő 5 percben a felhalmozási módba lép, majd újra feltölti. A segmentLength növelésének előnye az Azure Storage-tranzakciók költségeinek csökkentése, mivel az olvasási és írási műveletek száma nem lesz gyakoribb, mint minden segmentLength másodpercben.
+Ha IoT Edge élő videó-elemzést használ egy eszközre való rögzítéshez, meg kell adnia egy segmentLength-tulajdonságot, amely megadja, hogy a modul a felhőbe való rögzítés előtt minimális időtartamú videót (másodpercben) összesítse. Ha például a segmentLength 300 értékre van állítva, akkor a modul 5 perces videót fog gyűjteni, mielőtt feltölti az 1 5-es percet a "darab" értékre, majd a következő 5 percben a felhalmozási módba lép, majd feltölti újra. A segmentLength növelésének előnye az Azure Storage-tranzakciók költségeinek csökkentése, mivel az olvasási és írási műveletek száma nem lesz gyakoribb, mint minden segmentLength másodpercben.
 
 Ennek következtében a videó Media Servicesról való folyamatos átvitele legalább ennyi idő alatt késleltetve lesz. 
 

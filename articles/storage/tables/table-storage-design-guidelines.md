@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 04/23/2018
 ms.subservice: tables
 ms.openlocfilehash: f84707e454a8b1f5d5947478fe65108a142a9757
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88236318"
 ---
 # <a name="guidelines-for-table-design"></a>Irányelvek táblatervezéshez
@@ -37,7 +37,7 @@ Az Azure Storage Table szolgáltatással való használatra szolgáló táblák 
 
 Az útmutató elolvasása során olyan példákat talál, amelyek az összes alapelvet bemutatják a gyakorlatban. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Táblatervezési minták](table-storage-design-patterns.md)
 - [Tervezés lekérdezéshez](table-storage-design-for-query.md)

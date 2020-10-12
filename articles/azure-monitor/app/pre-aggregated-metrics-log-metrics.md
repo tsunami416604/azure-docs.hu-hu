@@ -7,10 +7,10 @@ ms.author: vitalyg
 ms.date: 09/18/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: f7bfa15b12618715bf0d911e4b4927a1fa327107
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91539129"
 ---
 # <a name="log-based-and-pre-aggregated-metrics-in-application-insights"></a>Naplóalapú és előre összesített metrikák az Application Insightsban
@@ -69,7 +69,7 @@ A metrikák a Application Insightsba való betöltése, függetlenül attól, ho
 
 Ha az [Egyéni metrikai dimenziók engedélyezése](#custom-metrics-dimensions-and-pre-aggregation) lehetőségre kattint, a metrika-tárolóban lévő előre aggregált mérőszámok összes dimenziójának tárolásához **további** költségeket is létrehozhat az [Egyéni metrikák díjszabása](https://azure.microsoft.com/pricing/details/monitor/)alapján.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Közel valós idejű riasztás](../platform/alerts-metric-near-real-time.md)
 * [GetMetric és TrackValue](./api-custom-events-metrics.md#getmetric)

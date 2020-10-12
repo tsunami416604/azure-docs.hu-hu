@@ -8,10 +8,10 @@ ms.author: bwren
 ms.date: 2/14/2018
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 74211df6f925aaa09a4c87a518056e8ef3206b87
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89078401"
 ---
 # <a name="azure-monitor-powershell-samples"></a>PowerShell-minták Azure Monitor
@@ -149,7 +149,7 @@ E-mailek és webhook-tulajdonságok a és a használatával is létrehozhatók  
 
 A következő táblázat a riasztások metrika használatával történő létrehozásához használt paramétereket és értékeket ismerteti.
 
-| parameter | value |
+| parameter | érték |
 | --- | --- |
 | Név |simpletestdiskwrite |
 | A riasztási szabály helye |USA keleti régiója |
@@ -159,7 +159,7 @@ A következő táblázat a riasztások metrika használatával történő létre
 | operátor |GreaterThan |
 | Küszöbérték (darabszám/mp a metrika esetében) |1 |
 | WindowSize (óó: PP: SS formátum) |00:05:00 |
-| gyűjtő (a metrika statisztikája, amely az átlagot használja, ebben az esetben) |Average |
+| gyűjtő (a metrika statisztikája, amely az átlagot használja, ebben az esetben) |Átlag |
 | Egyéni e-mailek (karakterlánc-tömb) |'foo@example.com','bar@example.com' |
 | e-mail küldése a tulajdonosoknak, közreműködőknek és olvasóknak |-SendToServiceOwners |
 

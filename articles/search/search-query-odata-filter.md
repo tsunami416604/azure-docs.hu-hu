@@ -20,10 +20,10 @@ translation.priority.mt:
 - zh-cn
 - zh-tw
 ms.openlocfilehash: 0f33b5a28d7c83be7e546c3f61bc517047c51312
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88934854"
 ---
 # <a name="odata-filter-syntax-in-azure-cognitive-search"></a>OData $filter szintaxis az Azure-ban Cognitive Search
@@ -32,7 +32,7 @@ Az Azure Cognitive Search [OData szűrő kifejezéseket](query-odata-filter-orde
 
 ## <a name="syntax"></a>Syntax
 
-A OData nyelvének egyik szűrője egy logikai kifejezés, amely viszont a különböző típusú kifejezések egyike lehet, ahogyan az a következő EBNF látható ([bővített Naur űrlap](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)):
+A OData nyelvének egyik szűrője egy logikai kifejezés, amely viszont az alábbi EBNF ([kiterjesztett Backus-Naur űrlap](https://en.wikipedia.org/wiki/Extended_Backus–Naur_form)) alapján különböző típusú kifejezések egyike lehet.
 
 <!-- Upload this EBNF using https://bottlecaps.de/rr/ui to create a downloadable railroad diagram. -->
 
@@ -75,7 +75,7 @@ A logikai kifejezések típusai a következők:
 
 Ha olyan szűrési kifejezést ír, amely nem rendelkezik zárójelekkel az alkifejezések köré, az Azure Cognitive Search az operátor elsőbbségi szabályainak megfelelően értékeli ki azt. Ezek a szabályok azon alapulnak, hogy mely operátorok használják az alkifejezések összevonását. A következő táblázat az operátorok csoportjait sorolja fel a legmagasabbtól a legalacsonyabb prioritásig:
 
-| Csoportosítás | Operátor (ok) |
+| Group | Operátor (ok) |
 | --- | --- |
 | Logikai operátorok | `not` |
 | Összehasonlító operátorok | `eq`, `ne`, `gt`, `lt`, `ge`, `le` |

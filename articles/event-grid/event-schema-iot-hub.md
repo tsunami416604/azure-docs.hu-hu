@@ -4,10 +4,10 @@ description: Ez a cikk az Azure IoT Hub eseményeinek tulajdonságait és sémá
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: 02ecf8d4df55aa6b4319e40892778f85f94e29a7
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86113649"
 ---
 # <a name="azure-iot-hub-as-an-event-grid-source"></a>Azure-IoT Hub Event Grid forrásként
@@ -21,11 +21,11 @@ Az Azure IoT Hub a következő típusú eseményeket bocsátja ki:
 
 | Eseménytípus | Leírás |
 | ---------- | ----------- |
-| Microsoft. Devices. DeviceCreated | Közzétett, ha egy eszköz regisztrálva van egy IoT-hubhoz. |
-| Microsoft. Devices. DeviceDeleted | Közzétételre kerül, ha egy eszközt törölnek egy IoT-hubhoz. | 
-| Microsoft. Devices. DeviceConnected | Akkor jelenik meg, amikor egy eszköz IoT-hubhoz csatlakozik. |
-| Microsoft. Devices. DeviceDisconnected | Akkor jelenik meg, ha egy eszköz le van választva egy IoT hubhoz. | 
-| Microsoft. Devices. DeviceTelemetry | Közzétételre kerül, amikor egy telemetria üzenetet küld egy IoT hub-nak. |
+| Microsoft.Devices.DeviceCreated | Közzétett, ha egy eszköz regisztrálva van egy IoT-hubhoz. |
+| Microsoft.Devices.DeviceDeleted | Közzétételre kerül, ha egy eszközt törölnek egy IoT-hubhoz. | 
+| Microsoft.Devices.DeviceConnected | Akkor jelenik meg, amikor egy eszköz IoT-hubhoz csatlakozik. |
+| Microsoft.Devices.DeviceDisconnected | Akkor jelenik meg, ha egy eszköz le van választva egy IoT hubhoz. | 
+| Microsoft.Devices.DeviceTelemetry | Közzétételre kerül, amikor egy telemetria üzenetet küld egy IoT hub-nak. |
 
 A Event Grid által támogatott összes régióban általánosan elérhetők az eszközök telemetria, kivéve az eszközök összes eseményét. Az telemetria-esemény nyilvános előzetes verzióban érhető el, és minden régióban elérhető az USA keleti régiója, az USA nyugati régiója, Nyugat-Európa, [Azure Government](../azure-government/documentation-government-welcome.md), az [Azure China 21Vianet](/azure/china/china-welcome)és az [Azure Germany](https://azure.microsoft.com/global-infrastructure/germany/)kivételével.
 
@@ -144,10 +144,10 @@ Minden esemény ugyanazt a legfelső szintű adatértéket tartalmazza:
 | -------- | ---- | ----------- |
 | id | sztring | Az esemény egyedi azonosítója. |
 | témakör | sztring | Az eseményforrás teljes erőforrás-elérési útja. Ez a mező nem írható. Az értéket az Event Grid adja meg. |
-| tulajdonos | sztring | Az esemény tárgyra mutató, a közzétevő által megadott elérési út. |
+| tárgy | sztring | Az esemény tárgyra mutató, a közzétevő által megadott elérési út. |
 | eventType | sztring | Az eseményforráshoz felvett eseménytípusok egyike. |
 | eventTime | sztring | Az esemény a szolgáltató UTC-ideje alapján történő létrehozásakor. |
-| adatok | objektum | IoT Hub az eseményekre vonatkozó adatgyűjtést.  |
+| adatok | object | IoT Hub az eseményekre vonatkozó adatgyűjtést.  |
 | dataVersion | sztring | Az adatobjektum sémaverziója. A sémaverziót a közzétevő határozza meg. |
 | metadataVersion | sztring | Az esemény metaadatok sémaverziója. A legfelső szintű tulajdonságokra az Event Grid határozza meg a sémát. Az értéket az Event Grid adja meg. |
 
@@ -165,7 +165,7 @@ A **csatlakoztatott eszköz** és az **eszköz leválasztott** IoT hub eseménye
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
 | moduleId | sztring | A modul egyedi azonosítója. Ez a mező csak modul-eszközök esetén kimenet. Ez a kis-és nagybetűket megkülönböztető karakterlánc legfeljebb 128 karakter hosszúságú lehet, és támogatja az ASCII 7 bites alfanumerikus karaktereket, valamint a következő speciális karaktereket: `- : . + % _ # * ? ! ( ) , = @ ; $ '` . |
-| deviceConnectionStateEventInfo | objektum | Az eszköz kapcsolati állapotával kapcsolatos események adatai
+| deviceConnectionStateEventInfo | object | Az eszköz kapcsolati állapotával kapcsolatos események adatai
 | Sorszám | sztring | Egy szám, amely segít jelezni az eszköz csatlakoztatott vagy leválasztott eseményeinek sorrendjét. A legutóbbi eseménynél az előző eseménynél nagyobb sorszám szerepel. Ez a szám több mint 1, de szigorúan növekszik. Lásd: [a sorozatszám használata](../iot-hub/iot-hub-how-to-order-connection-state-events.md). |
 
 Az **eszköz telemetria** IoT hub esemény esetén az adatobjektum tartalmazza az eszközről a felhőbe irányuló üzenetet az [IoT hub üzenet formátumában](../iot-hub/iot-hub-devguide-messages-construct.md) , és a következő tulajdonságokkal rendelkezik:
@@ -178,9 +178,9 @@ Az **eszköz telemetria** IoT hub esemény esetén az adatobjektum tartalmazza a
 
 Az **eszköz által létrehozott** és az **eszköz törölte** IoT hub eseményeket, az adatobjektum a következő tulajdonságokat tartalmazza:
 
-| Tulajdonság | Típus | Description |
+| Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
-| ikereszköz | objektum | A Twin eszközre vonatkozó információ, amely az alkalmazás-eszköz metaadatainak Felhőbeli ábrázolása. | 
+| ikereszköz | object | A Twin eszközre vonatkozó információ, amely az alkalmazás-eszköz metaadatainak Felhőbeli ábrázolása. | 
 | deviceID | sztring | Az eszköz egyedi azonosítója. | 
 | ETAG | sztring | Egy érvényesítő, amely biztosítja, hogy a frissítések konzisztensek legyenek egy adott eszközön. Minden ETAG egyedinek kell lennie eszközönként. |  
 | deviceEtag| sztring | Egy érvényesítő, amely biztosítja a frissítések egységességét az eszköz beállításjegyzékében. Minden deviceEtag egyedinek kell lennie az eszközönkénti beállításjegyzékben. |
@@ -194,8 +194,8 @@ Az **eszköz által létrehozott** és az **eszköz törölte** IoT hub esemény
 | primaryThumbprint | sztring | Az x509-tanúsítvány elsődleges ujjlenyomata. |
 | secondaryThumbprint | sztring | A x509-tanúsítvány másodlagos ujjlenyomata. | 
 | version | egész szám | Egy egész szám, amely eggyel nő, amikor az eszköz külön frissül. |
-| kívánt | objektum | A tulajdonságok egy része, amely csak az alkalmazás hátterében írható, és az eszköz beolvassa. | 
-| jelentett | objektum | A tulajdonságok egy része, amelyet csak az eszköz írhat, és az alkalmazás háttérbe is beolvashatja. |
+| kívánt | object | A tulajdonságok egy része, amely csak az alkalmazás hátterében írható, és az eszköz beolvassa. | 
+| jelentett | object | A tulajdonságok egy része, amelyet csak az eszköz írhat, és az alkalmazás háttérbe is beolvashatja. |
 | lastUpdated | sztring | Az utolsó eszköz Twin tulajdonságának ISO8601 időbélyegzője. | 
 
 ## <a name="tutorials-and-how-tos"></a>Oktatóanyagok és útmutatók
@@ -205,7 +205,7 @@ Az **eszköz által létrehozott** és az **eszköz törölte** IoT hub esemény
 | [IoT Hub eseményekre való reagálás Event Grid használatával a műveletek elindításához](../iot-hub/iot-hub-event-grid.md) | A IoT Hub és a Event Grid integrálásának áttekintése. |
 | [Eszköz csatlakoztatott és leválasztott eseményeinek megrendelése](../iot-hub/iot-hub-how-to-order-connection-state-events.md) | Az eszköz kapcsolódási állapotával kapcsolatos események megrendelésének módját mutatja be. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A Azure Event Grid bemutatása: [Mi az Event Grid?](overview.md)
 * Ha többet szeretne megtudni a IoT Hub és a Event Grid együttműködéséről, olvassa el a következő témakört: [reagálás a IoT hub eseményekre Event Grid használatával a műveletek elindításához](../iot-hub/iot-hub-event-grid.md).

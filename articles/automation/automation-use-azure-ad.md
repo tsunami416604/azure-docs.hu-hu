@@ -5,10 +5,10 @@ services: automation
 ms.date: 03/30/2020
 ms.topic: conceptual
 ms.openlocfilehash: bbd1f977b548c2b8e7980709ea125c07e22b1fa2
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91400672"
 ---
 # <a name="use-azure-ad-to-authenticate-to-azure"></a>Az Azure AD használata az Azure-beli hitelesítéshez
@@ -32,7 +32,7 @@ Mielőtt telepítené az Azure AD-modulokat a számítógépre:
 
 * Távolítsa el a AzureRM/az modul és a MSOnline modul korábbi verzióit. 
 
-* Távolítsa el a Microsoft Online Services Bejelentkezési segédjét az új PowerShell-modulok helyes működésének biztosításához.  
+* Távolítsa el a Microsoft Online Services Sign-In Assistant eszközt az új PowerShell-modulok helyes működésének biztosításához.  
 
 ### <a name="install-the-azurerm-and-az-modules"></a>A AzureRM és az az modulok telepítése
 
@@ -157,7 +157,7 @@ Workflow Stop-Start-AzureVM
 }
 ```  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A hitelesítő adatok használatának részleteit lásd: [a hitelesítő adatok kezelése Azure Automationban](shared-resources/credentials.md).
 * A modulokkal kapcsolatos további információkért lásd: [modulok kezelése Azure Automationban](shared-resources/modules.md).

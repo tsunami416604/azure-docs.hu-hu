@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 07/11/2019
 ms.openlocfilehash: 36e916eabfca8e997fc3d46ff10f6201203457cd
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88936503"
 ---
 # <a name="diagnose-exceptions-in-your-web-apps-with-application-insights"></a>Webalkalmazások kivételeinek diagnosztizálása az Application Insightsszal
@@ -256,7 +256,7 @@ Cserélje le a HandleError attribútumot a vezérlők új attribútumára.
     ...
 ```
 
-[Sample](https://github.com/AppInsightsSamples/Mvc2UnhandledExceptions)
+[Minta](https://github.com/AppInsightsSamples/Mvc2UnhandledExceptions)
 
 #### <a name="mvc-3"></a>MVC 3
 Regisztrálás `AiHandleErrorAttribute` globális szűrőként a Global.asax.cs-ben:
@@ -271,7 +271,7 @@ Regisztrálás `AiHandleErrorAttribute` globális szűrőként a Global.asax.cs-
      ...
 ```
 
-[Sample](https://github.com/AppInsightsSamples/Mvc3UnhandledExceptionTelemetry)
+[Minta](https://github.com/AppInsightsSamples/Mvc3UnhandledExceptionTelemetry)
 
 #### <a name="mvc-4-mvc5"></a>MVC 4, MVC5
 A AiHandleErrorAttribute regisztrálása globális szűrőként a FilterConfig.cs-ben:
@@ -287,7 +287,7 @@ A AiHandleErrorAttribute regisztrálása globális szűrőként a FilterConfig.c
     }
 ```
 
-[Sample](https://github.com/AppInsightsSamples/Mvc5UnhandledExceptionTelemetry)
+[Minta](https://github.com/AppInsightsSamples/Mvc5UnhandledExceptionTelemetry)
 
 ## <a name="web-api"></a>Webes API
 A Application Insights web SDK 2,6-es verziójától (beta3 és újabb verzióktól) kezdve a Application Insights a vezérlő metódusokban automatikusan kiváltott kezeletlen kivételeket gyűjt a WebAPI 2 +-hoz. Ha korábban már hozzáadott egy egyéni kezelőt az ilyen kivételek nyomon követéséhez (az alábbi példákban leírtak szerint), akkor előfordulhat, hogy a kivételek kétszeres nyomon követésének megakadályozásához eltávolíthatja azt.
@@ -355,7 +355,7 @@ Ezt a felülbírált attribútumot adott vezérlőkhöz hozzáadhatja, vagy hozz
     }
 ```
 
-[Sample](https://github.com/AppInsightsSamples/WebApi_1.x_UnhandledExceptions)
+[Minta](https://github.com/AppInsightsSamples/WebApi_1.x_UnhandledExceptions)
 
 #### <a name="web-api-2x"></a>Webes API 2. x
 Adja hozzá a Iexceptionlogger felület implementációját:
@@ -410,7 +410,7 @@ Adja hozzá ezt a WebApiConfig-szolgáltatásokhoz:
      }
 ```
 
-[Sample](https://github.com/AppInsightsSamples/WebApi_2.x_UnhandledExceptions)
+[Minta](https://github.com/AppInsightsSamples/WebApi_2.x_UnhandledExceptions)
 
 Alternatív megoldásként a következőket teheti:
 
@@ -480,7 +480,7 @@ Add the attribute to the service implementations:
          ...
 ```
 
-[Sample](https://github.com/AppInsightsSamples/WCFUnhandledExceptions)
+[Minta](https://github.com/AppInsightsSamples/WCFUnhandledExceptions)
 
 ## <a name="exception-performance-counters"></a>Kivételi teljesítményszámlálók
 Ha [telepítette a Application Insights ügynököt](./monitor-performance-live-website-now.md) a-kiszolgálóra, a kivételek aránya a .net alapján mérhető. Ez magában foglalja a kezelt és a nem kezelt .NET-kivételeket is.

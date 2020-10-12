@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 10/30/2019
 ms.author: v-erkel
 ms.openlocfilehash: 0da8a4fc1b59976c50cd96f2155715a4cb178cc9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87072771"
 ---
 # <a name="move-data-to-azure-blob-storage"></a>Az Azure Blob Storage-ba irányuló adatáthelyezés
@@ -42,7 +42,7 @@ A részletes információkat a avere CLFSLoad-eloszlás tartalmazza, amely az Az
 A folyamat általános áttekintése:
 
 1. Készítse elő a linuxos rendszert (VM vagy fizikai) a Python 3,6-es vagy újabb verziójával. A Python 3,7 ajánlott a jobb teljesítmény érdekében.
-1. Telepítse a avere-CLFSLoad szoftvert a Linux rendszerre.
+1. Telepítse a Avere-CLFSLoad szoftvert a Linux rendszerre.
 1. Hajtsa végre az átvitelt a Linux parancssorból.
 
 A avere CLFSLoad segédprogramnak a következő információkra van szüksége:

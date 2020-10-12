@@ -6,10 +6,10 @@ ms.subservice: process-automation
 ms.date: 07/15/2019
 ms.topic: conceptual
 ms.openlocfilehash: c01e329e4e4ab403c8966f096239abffee1c1fc5
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86185857"
 ---
 # <a name="send-an-email-from-a-runbook"></a>E-mail küldése runbookból
@@ -18,7 +18,7 @@ E-mailt küldhet egy runbook a [SendGrid](https://sendgrid.com/solutions) a Powe
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Egy Azure-előfizetés. Ha még nem rendelkezik ilyennel, [aktiválhatja MSDN-előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) , vagy regisztrálhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+* Egy Azure-előfizetés. Ha még nem rendelkezik ilyennel,  [aktiválhatja MSDN-előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/) , vagy regisztrálhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * [Egy SendGrid-fiók](../sendgrid-dotnet-how-to-send-email.md#create-a-sendgrid-account).
 * [Automation-fiók](./index.yml) az **az** moduljaival.
 * [Futtató fiók](./manage-runas-account.md) a runbook tárolásához és végrehajtásához.
@@ -150,7 +150,7 @@ $ResourceGroupName = "<your ResourceGroup name>"
 Remove-AzKeyVault -VaultName $VaultName -ResourceGroupName $ResourceGroupName
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ha runbook szeretne küldeni a Log Analytics munkaterületre, tekintse meg a [Azure Automation-feladatok továbbítása Azure monitor naplókhoz](automation-manage-send-joblogs-log-analytics.md)című témakört.
 * Az alapszintű mérőszámok és naplók figyeléséhez lásd: [riasztás használata Azure Automation runbook elindításához](automation-create-alert-triggered-runbook.md).

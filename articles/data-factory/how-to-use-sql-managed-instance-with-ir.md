@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 4/15/2020
 ms.openlocfilehash: 2bdfdd31e2cc9bc964abc040d0631c4760fca283
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90984882"
 ---
 # <a name="use-azure-sql-managed-instance-with-sql-server-integration-services-ssis-in-azure-data-factory"></a>Az Azure SQL felügyelt példányának használata SQL Server Integration Services (SSIS) használatával Azure Data Factory
@@ -116,7 +116,7 @@ Most már áthelyezheti SQL Server Integration Services (SSIS) projektjeit, csom
         | TCP | VirtualNetwork | * | VirtualNetwork | 1433, 11000-11999 |A kimenő adatforgalom engedélyezése a felügyelt SQL-példányok számára. Ha az **átirányítás**helyett a kapcsolódási szabályzat **proxyra** van beállítva, akkor csak az 1433-es port szükséges. |
         | TCP | VirtualNetwork | * | AzureCloud | 443 | A virtuális hálózat Azure-SSIS IR csomópontjai ezt a portot használják az Azure-szolgáltatások, például az Azure Storage és az Azure Event Hubs eléréséhez. |
         | TCP | VirtualNetwork | * | Internet | 80 | Választható A virtuális hálózat Azure-SSIS IR csomópontjai ezt a portot használják a visszavont tanúsítványok listájának internetről való letöltéséhez. Ha letiltja ezt a forgalmat, akkor a teljesítmény-visszalépést tapasztalhatja, ha elindítja az IR-t, és elveszti a tanúsítvány-visszavonási listát a tanúsítvány használatának ellenőrzése érdekében. Ha a célhelyet bizonyos FQDN-re szeretné szűkíteni, tekintse meg az [Azure ExpressRoute vagy a felhasználó által megadott útvonal (UDR) használatát](https://docs.microsoft.com/azure/data-factory/join-azure-ssis-integration-runtime-virtual-network#route)ismertető témakört.|
-        | TCP | VirtualNetwork | * | Tárolás | 445 | Választható Ez a szabály csak akkor szükséges, ha a Azure Filesban tárolt SSIS-csomagot szeretné végrehajtani. |
+        | TCP | VirtualNetwork | * | Storage | 445 | Választható Ez a szabály csak akkor szükséges, ha a Azure Filesban tárolt SSIS-csomagot szeretné végrehajtani. |
         |||||||
 
         1. A **Azure-SSIS IR bejövő követelménye**, amely lehetővé teszi a Azure-SSIS IR számára szükséges forgalom engedélyezését.
@@ -163,7 +163,7 @@ A Azure-SSIS IR létrehozásával kapcsolatos további információkért lásd: 
 
 ## <a name="clean-up-ssisdb-logs"></a>SSISDB-naplók törlése
 
-A SSISDB-naplók adatmegőrzési házirendjét a katalógus alábbi tulajdonságai határozzák meg [. catalog_properties](https://docs.microsoft.com/sql/integration-services/system-views/catalog-catalog-properties-ssisdb-database?view=sql-server-ver15):
+A SSISDB-naplók adatmegőrzési házirendjét az alábbi tulajdonságok határozzák meg [Catalog.catalog_propertiesban](https://docs.microsoft.com/sql/integration-services/system-views/catalog-catalog-properties-ssisdb-database?view=sql-server-ver15):
 
 - OPERATION_CLEANUP_ENABLED
 

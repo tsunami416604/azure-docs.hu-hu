@@ -7,10 +7,10 @@ ms.date: 05/07/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: a194074b75a404e5a28e86015b0d0bcea2619fc2
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88002293"
 ---
 # <a name="security-best-practices"></a>Ajánlott biztonsági eljárások
@@ -42,7 +42,7 @@ A Windows rendszerű virtuális asztali környezetében a következő biztonság
 
 Az ügyfél nem felelős a Microsoft által kezelt biztonsági követelményeknek.
 
-## <a name="azure-security-best-practices"></a>Ajánlott biztonsági eljárások az Azure-ban
+## <a name="azure-security-best-practices"></a>Az Azure ajánlott biztonsági eljárásai
 
 A Windows Virtual Desktop egy Azure-beli szolgáltatás. A Windows rendszerű virtuális asztali környezet biztonságának maximalizálása érdekében ügyeljen arra, hogy a környező Azure-infrastruktúrát és a felügyeleti gépet is biztonságossá tegye. Az infrastruktúra biztonságossá tételéhez gondolja át, hogy a Windows virtuális asztal hogyan illeszkedik a nagyobb Azure-ökoszisztémához. További információ az Azure-beli ökoszisztémáról: az [Azure biztonsági eljárásai és mintái](../security/fundamentals/best-practices-and-patterns.md).
 
@@ -80,7 +80,7 @@ A [feltételes hozzáférés](../active-directory/conditional-access/best-practi
 
 A naplózás engedélyezésével megtekintheti a Windows rendszerű virtuális asztallal kapcsolatos felhasználói és rendszergazdai tevékenységeket. Néhány példa a legfontosabb naplókra:
 
--   [Azure-tevékenységnapló](../azure-monitor/platform/activity-log-collect.md)
+-   [Azure-tevékenység naplója](../azure-monitor/platform/activity-log-collect.md)
 -   [Azure Active Directory tevékenység naplója](../active-directory/reports-monitoring/concept-activity-logs-azure-monitor.md)
 -   [Azure Active Directory](../active-directory/fundamentals/active-directory-whatis.md)
 -   [Munkamenet-gazdagépek](../azure-monitor/platform/agent-windows.md)
@@ -151,6 +151,6 @@ Az operációs rendszer képességeinek korlátozásával megerősítheti a munk
 
 - A nemkívánatos szoftverek futtatásának megakadályozása a munkamenet-gazdagépeken. A munkamenet-gazdagépek további biztonsága érdekében engedélyezheti az alkalmazások zárolását, így biztosíthatja, hogy csak az Ön által engedélyezett alkalmazások futhatnak a gazdagépen.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A többtényezős hitelesítés engedélyezéséről a [többtényezős hitelesítés beállítása](set-up-mfa.md)című témakörben olvashat bővebben.

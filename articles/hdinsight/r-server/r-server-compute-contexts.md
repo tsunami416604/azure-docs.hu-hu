@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/02/2020
 ms.openlocfilehash: 4df3c24c6f0853c1ae7447a8e20e8c2944319686
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86087605"
 ---
 # <a name="compute-context-options-for-ml-services-on-hdinsight"></a>Számítási környezeti beállítások a HDInsight ML-szolgáltatásaihoz
@@ -38,7 +38,7 @@ A *helyi* és a *localpar* beállítások csak a **rxExec** -hívások végrehaj
 
 A következő táblázat összefoglalja a különböző számítási környezeti beállításokat a hívások végrehajtásának beállításához:
 
-| Számítási környezet  | A beállítás módja                      | Végrehajtási környezet                        |
+| Számítási környezet  | A beállítás módja                      | Végrehajtás környezete                        |
 | ---------------- | ------------------------------- | ---------------------------------------- |
 | Helyi szekvenciális | rxSetComputeContext ("local")    | Párhuzamos végrehajtás a peremhálózati csomópont-kiszolgáló magjai között, a rxExec-hívások kivételével, amelyeket a rendszer a sorosan hajt végre. |
 | Helyi párhuzamos   | rxSetComputeContext('localpar') | Párhuzamos végrehajtás a peremhálózati csomópont-kiszolgáló magjai között |

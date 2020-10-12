@@ -10,17 +10,17 @@ ms.date: 01/17/2020
 ms.author: tamram
 ms.subservice: common
 ms.openlocfilehash: c93508bebdcfce35a89b3d5e2a8abecc7ac84722
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91280147"
 ---
 # <a name="storage-account-overview"></a>Tárfiókok áttekintése
 
 Egy Azure Storage-fiók tartalmazza az összes Azure Storage-adatobjektumot: blobokat, fájlokat, várólistákat, táblákat és lemezeket. A Storage-fiók egy egyedi névteret biztosít az Azure Storage-adatok számára, amely a világon bárhonnan elérhető HTTP-vagy HTTPS-kapcsolaton keresztül. Az Azure Storage-fiókban tárolt adatai tartósak, a biztonságos és a nagy mértékben méretezhetők.
 
-Az Azure Storage-fiókok létrehozásával kapcsolatos további információkért lásd: [Storage-fiók létrehozása](storage-account-create.md).
+Az Azure-tárfiókok létrehozásáról az [Azure-tárfiók létrehozása](storage-account-create.md) című oldalon tájékozódhat.
 
 ## <a name="types-of-storage-accounts"></a>A tárfiókok típusai
 

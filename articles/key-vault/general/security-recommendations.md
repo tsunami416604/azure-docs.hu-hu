@@ -11,10 +11,10 @@ ms.date: 09/30/2019
 ms.author: mbaldwin
 ms.custom: security-recommendations
 ms.openlocfilehash: 0c541c848290988bb1f358f045abb2d0cd221de7
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87386758"
 ---
 # <a name="security-recommendations-for-azure-key-vault"></a>Biztonsági javaslatok az Azure Key Vaulthoz
@@ -46,12 +46,12 @@ A cikkben szereplő ajánlások némelyikét a Azure Security Center automatikus
  A Key Vaultban engedélyezni kell a diagnosztikai naplókat | Engedélyezheti a naplókat, és akár egy évig megtarthatja őket. Ez lehetővé teszi, hogy a tevékenységi nyomvonalak újbóli létrehozása a biztonsági incidens bekövetkeztekor vagy a hálózat biztonsága esetén vizsgálat céljára történjen. | [Igen](../../security-center/security-center-identity-access.md) |
 | Annak korlátozása, hogy ki férhet hozzá az Azure Key Vault naplóihoz | [Key Vault naplók](logging.md)) mentse a tárolón végrehajtott tevékenységekkel kapcsolatos információkat, például a tárolók, kulcsok és titkos kódok létrehozását vagy törlését a vizsgálat során. |  - |
 
-## <a name="networking"></a>Hálózatkezelés
+## <a name="networking"></a>Hálózat
 
 | Ajánlás | Megjegyzések | Security Center |
 |-|----|--|
 |Hálózati expozíció korlátozása | A hálózati hozzáférést a tár elérését igénylő megoldások által használt virtuális hálózatokra kell korlátozni. Tekintse át a [Azure Key Vault virtuális hálózati szolgáltatási végpontjának](overview-vnet-service-endpoints.md)információit | - |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Érdeklődjön az alkalmazás szolgáltatójánál, hogy vannak-e további biztonsági követelmények. A biztonságos alkalmazások fejlesztésével kapcsolatos további információkért lásd a [biztonságos fejlesztési dokumentációt](../../security/fundamentals/abstract-develop-secure-apps.md).

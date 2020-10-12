@@ -9,10 +9,10 @@ ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
 ms.openlocfilehash: d79b647d216fe28241e5891def574ab598304828
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89078220"
 ---
 # <a name="azcopy-remove"></a>azcopy remove
@@ -85,7 +85,7 @@ Egyetlen könyvtár eltávolítása olyan Blob Storage-fiókból, amely hierarch
 azcopy rm "https://[account].dfs.core.windows.net/[container]/[path/to/directory]?[SAS]"
 ```
 
-## <a name="options"></a>Beállítások
+## <a name="options"></a>Lehetőségek
 
 **--delete-Pillanatképek** sztring alapértelmezés szerint a törlési művelet meghiúsul, ha egy blob pillanatképekkel rendelkezik. `include`Ezzel a beállítással távolíthatja el a legfelső szintű blobot és annak összes pillanatképét, vagy megadhatja `only` , hogy csak a pillanatképek legyenek eltávolítva, de ne
 

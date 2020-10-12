@@ -13,10 +13,10 @@ ms.reviewer: sasubram
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: aa2ac203f92d401095194bb3f1b5f3ef3c52093b
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87909730"
 ---
 # <a name="allow-or-block-invitations-to-b2b-users-from-specific-organizations"></a>Adott szervezetek B2B-felhasználók felé irányuló meghívásainak engedélyezése vagy letiltása
@@ -45,7 +45,7 @@ Megtagadási lista hozzáadása:
 2. Válassza ki **Azure Active Directory**  >  **felhasználó**  >  **felhasználói beállításait**.
 3. A **külső felhasználók**területen válassza a **külső együttműködési beállítások kezelése**lehetőséget.
 4. Az **együttműködési korlátozások**területen válassza **a meghívások megtagadása a megadott tartományokra**lehetőséget.
-5. A **céltartomány**területen adja meg a blokkolni kívánt tartományok egyikének nevét. Több tartománynál adja meg az egyes tartományokat egy új sorban. Például:
+5. A **céltartomány**területen adja meg a blokkolni kívánt tartományok egyikének nevét. Több tartománynál adja meg az egyes tartományokat egy új sorban. Példa:
 
    ![A megtagadási beállítás megjelenítése a hozzáadott tartományokkal](./media/allow-deny-list/DenyListSettings.png)
  
@@ -66,7 +66,7 @@ Engedélyezési lista hozzáadása:
 2. Válassza ki **Azure Active Directory**  >  **felhasználó**  >  **felhasználói beállításait**.
 3. A **külső felhasználók**területen válassza a **külső együttműködési beállítások kezelése**lehetőséget.
 4. Az **együttműködési korlátozások**területen jelölje be **a csak a megadott tartományokra vonatkozó meghívások engedélyezése (a legszigorúbb)** jelölőnégyzetet.
-5. A **céltartomány**területen adja meg az engedélyezni kívánt tartományok egyikének nevét. Több tartománynál adja meg az egyes tartományokat egy új sorban. Például:
+5. A **céltartomány**területen adja meg az engedélyezni kívánt tartományok egyikének nevét. Több tartománynál adja meg az egyes tartományokat egy új sorban. Példa:
 
    ![Az engedélyezési beállítás megjelenítése a hozzáadott tartományokkal](./media/allow-deny-list/AllowListSettings.png)
  
@@ -140,19 +140,19 @@ A következő példában ugyanaz a példa látható, de a házirend-definíció 
 New-AzureADPolicy -Definition @("{`"B2BManagementPolicy`":{`"InvitationsAllowedAndBlockedDomainsPolicy`":{`"AllowedDomains`": [],`"BlockedDomains`": [`"live.com`"]}}}") -DisplayName B2BManagementPolicy -Type B2BManagementPolicy -IsOrganizationDefault $true 
 ```
 
-Az engedélyezési vagy letiltási lista házirend beállításához használja a [set-AzureADPolicy](https://docs.microsoft.com/powershell/module/azuread/set-azureadpolicy?view=azureadps-2.0-preview) parancsmagot. Például:
+Az engedélyezési vagy letiltási lista házirend beállításához használja a [set-AzureADPolicy](https://docs.microsoft.com/powershell/module/azuread/set-azureadpolicy?view=azureadps-2.0-preview) parancsmagot. Példa:
 
 ```powershell   
 Set-AzureADPolicy -Definition $policyValue -Id $currentpolicy.Id 
 ```
 
-A szabályzat beszerzéséhez használja a [Get-AzureADPolicy](https://docs.microsoft.com/powershell/module/azuread/get-azureadpolicy?view=azureadps-2.0-preview) parancsmagot. Például:
+A szabályzat beszerzéséhez használja a [Get-AzureADPolicy](https://docs.microsoft.com/powershell/module/azuread/get-azureadpolicy?view=azureadps-2.0-preview) parancsmagot. Példa:
 
 ```powershell
 $currentpolicy = Get-AzureADPolicy | ?{$_.Type -eq 'B2BManagementPolicy'} | select -First 1 
 ```
 
-A szabályzat eltávolításához használja a [Remove-AzureADPolicy](https://docs.microsoft.com/powershell/module/azuread/remove-azureadpolicy?view=azureadps-2.0-preview) parancsmagot. Például:
+A szabályzat eltávolításához használja a [Remove-AzureADPolicy](https://docs.microsoft.com/powershell/module/azuread/remove-azureadpolicy?view=azureadps-2.0-preview) parancsmagot. Példa:
 
 ```powershell
 Remove-AzureADPolicy -Id $currentpolicy.Id 

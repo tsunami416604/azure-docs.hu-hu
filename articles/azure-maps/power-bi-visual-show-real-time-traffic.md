@@ -10,10 +10,10 @@ services: azure-maps
 manager: cpendle
 ms.custom: ''
 ms.openlocfilehash: fe9e86f3c1d155a1f0b29f500de3954e360b4aa7
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86261854"
 ---
 # <a name="show-real-time-traffic"></a>Valós idejű forgalom megjelenítése
@@ -30,7 +30,7 @@ A következő beállítások érhetők el a **forgalmi réteg** szakaszban.
 | Incidensek megjelenítése  | Meghatározza, hogy a forgalmi incidensek, például a közúti bezárások és az építőipar megjelenjenek-e a térképen. |
 | Forgalom-ellenőrzés | Egy olyan gombot ad hozzá a térképhez, amely lehetővé teszi a jelentések olvasói számára a forgalmi réteg be-és kikapcsolását.  |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a Azure Maps Power BI vizualizációról:
 

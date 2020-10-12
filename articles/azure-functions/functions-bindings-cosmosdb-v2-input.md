@@ -7,10 +7,10 @@ ms.date: 02/24/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
 ms.openlocfilehash: 42932d712d6c4a94cad28aec924b88fbc126662b
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88212785"
 ---
 # <a name="azure-cosmos-db-input-binding-for-azure-functions-2x-and-higher"></a>Azure Cosmos DB bemeneti kötés Azure Functions 2. x és újabb verziókhoz
@@ -1432,11 +1432,11 @@ A [Java functions futtatókörnyezet könyvtárában](/java/api/overview/azure/f
 
 Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított kötési konfigurációs tulajdonságokat ismerteti `CosmosDB` .
 
-|function.jsa tulajdonságon | Attribútum tulajdonsága |Description|
+|function.jsa tulajdonságon | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
-|**típusa**     | n.a. | Értékre kell állítani `cosmosDB` .        |
-|**irányba**     | n.a. | Értékre kell állítani `in` .         |
-|**név**     | n.a. | A függvényben szereplő dokumentumot jelképező kötési paraméter neve.  |
+|**típusa**     | n/a | Értékre kell állítani `cosmosDB` .        |
+|**irányba**     | n/a | Értékre kell állítani `in` .         |
+|**név**     | n/a | A függvényben szereplő dokumentumot jelképező kötési paraméter neve.  |
 |**databaseName** |**DatabaseName** |A dokumentumot tartalmazó adatbázis.        |
 |**collectionName** |**CollectionName** | A dokumentumot tartalmazó gyűjtemény neve. |
 |**id**    | **ID** | A lekérdezni kívánt dokumentum azonosítója. Ez a tulajdonság támogatja a [kötési kifejezéseket](./functions-bindings-expressions-patterns.md). Ne állítsa be a `id` és a **sqlQuery** tulajdonságot is. Ha nem állítja be az egyiket, a rendszer lekéri a teljes gyűjteményt. |

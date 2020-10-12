@@ -8,10 +8,10 @@ ms.date: 08/14/2020
 ms.author: tisande
 ms.custom: query-reference
 ms.openlocfilehash: 87663c18ddaa5da6740a0f54aa5f2812cbb06af8
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88227187"
 ---
 # <a name="datetimepart-azure-cosmos-db"></a>DateTimePart (Azure Cosmos DB)
@@ -31,8 +31,8 @@ DateTimePart (<DateTimePart> , <DateTime>)
 
 | DateTimePart | rövidítéseket        |
 | ------------ | -------------------- |
-| Év         | "Year", "yyyy", "éé" |
-| Hónap        | "hónap", "PP", "m"   |
+| Year         | "Year", "yyyy", "éé" |
+| Month (hónap)        | "hónap", "PP", "m"   |
 | Nap          | "Day", "dd", "d"     |
 | Óra         | "Hour", "hh"         |
 | Minute       | "minute", "mi", "n"  |
@@ -87,8 +87,8 @@ SELECT DateTimePart("mcs", "2020-01-02T03:04:05.6789123Z") AS MicrosecondsValue
 ]
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Dátum és idő függvények Azure Cosmos DB](sql-query-date-time-functions.md)
 - [Rendszerfunkciók Azure Cosmos DB](sql-query-system-functions.md)
-- [Bevezetés a Azure Cosmos DBba](introduction.md)
+- [Az Azure Cosmos DB bemutatása](introduction.md)

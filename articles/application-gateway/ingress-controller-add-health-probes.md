@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
 ms.openlocfilehash: 8c8b8b0090877db7abc8fae0e44f928e8b10dcf5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84807992"
 ---
 # <a name="add-health-probes-to-your-service"></a>Állapot-mintavétel hozzáadása a szolgáltatáshoz
@@ -50,11 +50,11 @@ Kubernetes API-referenciája:
 * [HttpGet művelet](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.18/#httpgetaction-v1-core)
 
 > [!NOTE]
-> * `readinessProbe`és `livenessProbe` támogatottak, ha a-vel van konfigurálva `httpGet` .
+> * `readinessProbe` és `livenessProbe` támogatottak, ha a-vel van konfigurálva `httpGet` .
 > * A nem a pod-on keresztül kitett porton lévő szondázás jelenleg nem támogatott.
 > * `HttpHeaders`, `InitialDelaySeconds` `SuccessThreshold` nem támogatottak.
 
-##  <a name="without-readinessprobe-or-livenessprobe"></a>Nélkül `readinessProbe` vagy`livenessProbe`
+##  <a name="without-readinessprobe-or-livenessprobe"></a>Nélkül `readinessProbe` vagy `livenessProbe`
 Ha a fenti mintavételek nincsenek megadva, akkor a bejövő vezérlő feltételezi, hogy a szolgáltatás elérhető a `Path` `backend-path-prefix` jegyzethez vagy a `path` `ingress` szolgáltatás definíciójában megadott módon.
 
 ## <a name="default-values-for-health-probe"></a>Az állapot mintavételének alapértelmezett értékei

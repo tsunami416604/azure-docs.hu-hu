@@ -6,10 +6,10 @@ ms.subservice: update-management
 ms.date: 07/16/2018
 ms.topic: conceptual
 ms.openlocfilehash: dabe914ffd4e84e8ded5c0e3b519036479fe33ec
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90987605"
 ---
 # <a name="migrate-azure-monitor-logs-update-deployments-to-azure-portal"></a>Áttelepítési Azure Monitor naplók frissítése a Azure Portal
@@ -43,7 +43,7 @@ Az Operations Management Suite-(OMS-) portál [elavult](../azure-monitor/platfor
 
 A OMS-portálon létrehozott összes frissítési központi telepítésnek más néven számítógépcsoport [néven is](../azure-monitor/platform/computer-groups.md) ismertnek kell lennie, amelynek a neve megegyezik a létező frissítési központi telepítéssel. A mentett keresés a frissítés központi telepítésében ütemezett számítógépek listáját tartalmazza.
 
-:::image type="content" source="media/migrate-oms-update-deployments/oms-deployment.png" alt-text="Képernyőfelvétel a frissítések központi telepítése oldalról a Kiemelt név és kiszolgálók mezőkkel.":::
+:::image type="content" source="media/migrate-oms-update-deployments/oms-deployment.png" alt-text="Képernyőkép az Update Management oldalról.":::
 
 A meglévő mentett keresés használatához kövesse az alábbi lépéseket:
 
@@ -57,7 +57,7 @@ A meglévő mentett keresés használatához kövesse az alábbi lépéseket:
 
     | Tulajdonság | Leírás |
     | --- | --- |
-    |Név |A frissítéstelepítést beazonosító egyedi név. |
+    |Name (Név) |A frissítéstelepítést beazonosító egyedi név. |
     |Operációs rendszer| Válassza a **Linux** vagy a **Windows**lehetőséget.|
     |Frissítendő gépek |Válasszon ki egy mentett keresést, importált csoportot, vagy válasszon ki egy gépet a legördülő listából, és válassza az egyes gépek lehetőséget. Ha a **Gépek** lehetőséget választotta, a gép állapota az **ÜGYNÖK KÉSZÜLTSÉGÉNEK FRISSÍTÉSE** oszlopban látható.</br> A számítógépcsoportok Azure Monitor-naplókban való létrehozásának különböző módszereiről a következő témakörben talál további információt: [számítógépcsoportok Azure monitor-naplókban](../azure-monitor/platform/computer-groups.md) |
     |Frissítési besorolások|Válassza ki az összes szükséges frissítési besorolást. A CentOS nem támogatja ezt a jelölőnégyzetet.|

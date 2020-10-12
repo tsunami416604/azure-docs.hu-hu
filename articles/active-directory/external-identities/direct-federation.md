@@ -1,6 +1,6 @@
 ---
 title: Közvetlen összevonás VÁLLALATKÖZI identitás-szolgáltatóval – Azure AD
-description: Közvetlenül összevonása SAML vagy WS-fed identitás-szolgáltatóval, hogy a vendégek be tudják jelentkezni az Azure AD-alkalmazásokba
+description: Közvetlenül összevonása SAML-vagy WS-Fed-szolgáltatóval, hogy a vendégek be tudják jelentkezni az Azure AD-alkalmazásokba
 services: active-directory
 ms.service: active-directory
 ms.subservice: B2B
@@ -13,10 +13,10 @@ ms.reviewer: mal
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 78ad8761d3a4ff3e3cdab9dee5f50b469ff840fd
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87909560"
 ---
 # <a name="direct-federation-with-ad-fs-and-third-party-providers-for-guest-users-preview"></a>Közvetlen összevonás AD FS és külső szolgáltatókkal a vendég felhasználói számára (előzetes verzió)
@@ -24,7 +24,7 @@ ms.locfileid: "87909560"
 > [!NOTE]
 >  A közvetlen összevonás a Azure Active Directory nyilvános előzetes verziója. További információ az előzetes verziókról: [Kiegészítő használati feltételek a Microsoft Azure előzetes verziójú termékeihez](https://azure.microsoft.com/support/legal/preview-supplemental-terms/).
 
-Ez a cikk azt ismerteti, hogyan állítható be a közvetlen összevonás egy másik szervezettel a B2B-együttműködéshez. Beállíthat közvetlen összevonást bármely olyan szervezettel, amelynek az identitás-szolgáltatója (identitásszolgáltató) támogatja az SAML 2,0 vagy a WS-fed protokollt.
+Ez a cikk azt ismerteti, hogyan állítható be a közvetlen összevonás egy másik szervezettel a B2B-együttműködéshez. Beállíthat közvetlen összevonást bármely olyan szervezettel, amelynek az Identity Provider (identitásszolgáltató) támogatja az SAML 2,0 vagy WS-Fed protokollt.
 Ha közvetlen kapcsolatot hoz létre egy partner identitásszolgáltató, az adott tartományhoz tartozó új vendég felhasználók saját identitásszolgáltató által felügyelt szervezeti fiókkal jelentkezhetnek be az Azure AD-bérlőbe, és megkezdhetik a velük való együttműködést. Nincs szükség arra, hogy a vendég felhasználó külön Azure AD-fiókot hozzon létre.
 > [!NOTE]
 > A közvetlen összevonási vendég felhasználóknak be kell jelentkezniük egy olyan hivatkozás használatával, amely tartalmazza a bérlői környezetet (például `https://myapps.microsoft.com/?tenantid=<tenant id>` vagy `https://portal.azure.com/<tenant id>` egy ellenőrzött tartomány esetén `https://myapps.microsoft.com/\<verified domain>.onmicrosoft.com` ). Az alkalmazásokra és az erőforrásokra mutató közvetlen hivatkozásokat is használhatja, amennyiben azok tartalmazzák a bérlői környezetet. A közvetlen összevonási felhasználók jelenleg nem tudnak bejelentkezni olyan közös végpontok használatával, amelyek nem rendelkeznek bérlői környezettel. Például a, a, a vagy a használatakor `https://myapps.microsoft.com` `https://portal.azure.com` `https://teams.microsoft.com` hibaüzenetet fog eredményezni.
@@ -83,11 +83,11 @@ Nem, ebben a forgatókönyvben az [egyszeri jelszavas e-mail-](one-time-passcode
 Először is a partnervállalat a szükséges jogcímekhez és a függő entitások megbízhatóságához kell konfigurálnia az identitás-szolgáltatót. 
 
 > [!NOTE]
-> Ha szeretné bemutatni, hogyan konfigurálhat egy identitás-szolgáltatót a közvetlen összevonáshoz, használja a Active Directory összevonási szolgáltatások (AD FS) (AD FS) példaként. Tekintse meg a [közvetlen összevonás konfigurálása ad FSsal](direct-federation-adfs.md)című cikket, amely példákat mutat be arra, hogyan konfigurálhatja az AD FS SAML 2,0 vagy ws-fed identitás-szolgáltatóként a közvetlen összevonás előkészítéséhez.
+> Ha szeretné bemutatni, hogyan konfigurálhat egy identitás-szolgáltatót a közvetlen összevonáshoz, használja a Active Directory összevonási szolgáltatások (AD FS) (AD FS) példaként. Tekintse meg a [közvetlen összevonás konfigurálása AD FS](direct-federation-adfs.md)használatával című cikket, amely példákat mutat be a AD FS SAML-2,0 vagy WS-Fed identitás-szolgáltató konfigurálására a közvetlen összevonás előkészítéséhez.
 
 ### <a name="saml-20-configuration"></a>SAML 2,0 konfiguráció
 
-Az Azure AD B2B konfigurálható úgy, hogy az SAML protokollt használó összevonása az alább felsorolt konkrét követelményekkel. Az SAML-identitás szolgáltatója és az Azure AD közötti megbízhatóság beállításával kapcsolatos további információkért lásd: [SAML 2,0 Identity Provider (identitásszolgáltató) használata egyszeri bejelentkezéshez](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-fed-saml-idp).  
+Az Azure AD B2B konfigurálható úgy, hogy az SAML protokollt használó összevonása az alább felsorolt konkrét követelményekkel. Az SAML-identitás szolgáltatója és az Azure AD közötti megbízhatóság beállításával kapcsolatos további információkért lásd:  [SAML 2,0 Identity Provider (identitásszolgáltató) használata egyszeri bejelentkezéshez](https://docs.microsoft.com/azure/active-directory/hybrid/how-to-connect-fed-saml-idp).  
 
 > [!NOTE]
 > A közvetlen összevonás céljának tartománya nem lehet DNS-ellenőrzés alatt állni az Azure AD-ben. A hitelesítési URL-tartománynak meg kell egyeznie a céltartományban, vagy egy engedélyezett identitás-szolgáltató tartományának kell lennie. A részletekért tekintse meg a [korlátozásokat](#limitations) ismertető szakaszt. 
@@ -101,7 +101,7 @@ Az SAML 2,0 válaszához szükséges attribútumok a identitásszolgáltató:
 |---------|---------|
 |AssertionConsumerService     |`https://login.microsoftonline.com/login.srf`         |
 |Célközönség     |`urn:federation:MicrosoftOnline`         |
-|Kiállító     |A partner identitásszolgáltató kiállítói URI-ja, például:`http://www.example.com/exk10l6w90DHM0yi...`         |
+|Kiállító     |A partner identitásszolgáltató kiállítói URI-ja, például: `http://www.example.com/exk10l6w90DHM0yi...`         |
 
 
 A identitásszolgáltató által kiadott SAML 2,0-tokenhez szükséges jogcímek:
@@ -111,25 +111,25 @@ A identitásszolgáltató által kiadott SAML 2,0-tokenhez szükséges jogcímek
 |NameID formátuma     |`urn:oasis:names:tc:SAML:2.0:nameid-format:persistent`         |
 |EmailAddress     |`http://schemas.xmlsoap.org/ws/2005/05/identity/claims/emailaddress`         |
 
-### <a name="ws-fed-configuration"></a>WS-fed konfiguráció 
-Az Azure AD B2B konfigurálható úgy, hogy a WS-fed protokollt használó összevonása az alább felsorolt követelményekkel. Jelenleg az Azure AD-vel való kompatibilitás érdekében tesztelték a két WS-fed szolgáltatót, AD FS és Shibboleth is. A függő entitás megbízhatóságának az Azure AD-vel való létrehozásával kapcsolatos további információkért tekintse meg az [Azure ad Identity Provider kompatibilitási dokumentációjában](https://www.microsoft.com/download/details.aspx?id=56843)elérhető "STS-integrációs dokumentum a WS Protocols használatával" című részt.
+### <a name="ws-fed-configuration"></a>WS-Fed konfiguráció 
+Az Azure AD B2B konfigurálható úgy, hogy az WS-Fed protokollt használó összevonása az alább felsorolt konkrét követelményekkel. A két WS-Fed-szolgáltató jelenleg az Azure AD-vel való kompatibilitásra lett tesztelve AD FS és Shibboleth is. A függő entitás megbízhatóságának az Azure AD-vel való WS-Fed megfelelőségének létrehozásával kapcsolatos további információkért tekintse meg az [Azure ad Identity Provider kompatibilitási dokumentációjában](https://www.microsoft.com/download/details.aspx?id=56843)elérhető "STS-integrációs dokumentum a WS protokollok használatával" című részt.
 
 > [!NOTE]
 > A közvetlen összevonás céljának tartománya nem lehet DNS-ellenőrzés alatt állni az Azure AD-ben. A hitelesítési URL-tartománynak meg kell egyeznie a céltartományban vagy egy engedélyezett identitás-szolgáltató tartományával. A részletekért tekintse meg a [korlátozásokat](#limitations) ismertető szakaszt. 
 
-#### <a name="required-ws-fed-attributes-and-claims"></a>Szükséges WS-fed attribútumok és jogcímek
+#### <a name="required-ws-fed-attributes-and-claims"></a>Szükséges WS-Fed attribútumok és jogcímek
 
-Az alábbi táblázatokban az adott attribútumokra és jogcímekre vonatkozó követelményeket tekintheti meg, amelyeket a külső gyártótól származó "WS-fed" identitás-szolgáltatónál kell konfigurálni. Közvetlen összevonás beállításához a következő attribútumokat kell megkapnia a WS-fed üzenetben az identitás-szolgáltatótól. Ezek az attribútumok konfigurálhatók az online biztonsági jogkivonat szolgáltatás XML-fájljához való csatolással, vagy manuálisan is.
+Az alábbi táblázatok a harmadik féltől származó WS-Fed identitás-szolgáltatónál konfigurált attribútumok és jogcímek követelményeit mutatják be. A közvetlen összevonás beállításához a következő attribútumokat kell megkapnia az Identitáskezelő WS-Fed üzenetében. Ezek az attribútumok konfigurálhatók az online biztonsági jogkivonat szolgáltatás XML-fájljához való csatolással, vagy manuálisan is.
 
-Szükséges attribútumok a WS-fed üzenetben a identitásszolgáltató:
+A WS-Fed üzenetben szereplő kötelező attribútumok a identitásszolgáltató:
  
 |Attribútum  |Érték  |
 |---------|---------|
 |PassiveRequestorEndpoint     |`https://login.microsoftonline.com/login.srf`         |
 |Célközönség     |`urn:federation:MicrosoftOnline`         |
-|Kiállító     |A partner identitásszolgáltató kiállítói URI-ja, például:`http://www.example.com/exk10l6w90DHM0yi...`         |
+|Kiállító     |A partner identitásszolgáltató kiállítói URI-ja, például: `http://www.example.com/exk10l6w90DHM0yi...`         |
 
-A identitásszolgáltató által kiadott WS-fed jogkivonat számára szükséges jogcímek:
+A identitásszolgáltató által kiadott WS-Fed jogkivonat számára szükséges jogcímek:
 
 |Attribútum  |Érték  |
 |---------|---------|
@@ -148,11 +148,11 @@ Ezután konfigurálnia kell az összevonást az Azure AD 1. lépésében konfigu
 2. Válassza ki a **külső identitások**  >  **összes identitás-szolgáltatóját**.
 3. Válassza ki a elemet, majd válassza az **Új SAML/ws-fed identitásszolgáltató**elemet.
 
-    ![Új SAML-vagy WS-fed-identitásszolgáltató hozzáadását bemutató gomb](media/direct-federation/new-saml-wsfed-idp.png)
+    ![Új SAML-vagy WS-Fed-identitásszolgáltató hozzáadását jelző gomb](media/direct-federation/new-saml-wsfed-idp.png)
 
 4. Az **Új SAML/ws-fed identitásszolgáltató** oldalon az **Identity Provider protokoll**területen válassza az **SAML** vagy a **ws-fed**lehetőséget.
 
-    ![Az SAML vagy a WS-fed identitásszolgáltató oldalon található elemzés gombot ábrázoló képernyőfelvétel](media/direct-federation/new-saml-wsfed-idp-parse.png)
+    ![Az SAML-vagy WS-Fed identitásszolgáltató-lapon az elemzés gombot ábrázoló képernyőfelvétel](media/direct-federation/new-saml-wsfed-idp-parse.png)
 
 5. Adja meg a partner szervezete tartománynevét, amely a közvetlen összevonás célként megadott tartományneve lesz.
 6. Feltölthet egy metaadat-fájlt a metaadatok részleteinek feltöltéséhez. Ha a metaadatok manuális bevitelét választja, adja meg a következő adatokat:

@@ -10,10 +10,10 @@ services: azure-maps
 manager: philmea
 ms.custom: devx-track-js
 ms.openlocfilehash: dd4a02ffdc062ed1940d35ca64e02a5e0a88a248
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91333324"
 ---
 # <a name="read-and-write-spatial-data"></a>Térbeli adatok beolvasása és írása
@@ -29,7 +29,7 @@ Az alábbi táblázat azokat a térbeli fájlformátumokat sorolja fel, amelyek 
 | KML               | ✓  |  ✓  |
 | KMZ               | ✓  |  ✓  |
 | Térbeli CSV       | ✓  |  ✓  |
-| Jól ismert szöveg   | ✓  |  ✓  |
+| Well-Known szöveg   | ✓  |  ✓  |
 
 Ezek a következő fejezetek a térbeli IO modul használatával ismertetik az összes olyan eszközt, amely a térbeli információk olvasására és írására használható.
 
@@ -41,7 +41,7 @@ Tömörített fájl (zip vagy KMZ) beolvasásakor a rendszer kibontja és beolva
 
 Az olvasási függvény eredménye egy `SpatialDataSet` objektum. Ez az objektum kiterjeszti a GeoJSON FeatureCollection osztályt. Könnyedén átadható a `DataSource` szolgáltatásnak, hogy egy térképen jelenítse meg a funkcióit. A `SpatialDataSet` nem csak a szolgáltatással kapcsolatos információkat tartalmaz, de tartalmazhat KML-fedéseket, feldolgozási mérőszámokat és egyéb részleteket is, az alábbi táblázatban leírtak szerint.
 
-| Tulajdonság neve | Típus | Description | 
+| Tulajdonság neve | Típus | Leírás | 
 |---------------|------|-------------|
 | `bbox` | `BoundingBox` | Az adatkészletben lévő összes adat határoló mezője. |
 | `features` | `Feature[]` | Az adatkészleten belüli GeoJSON-funkciók. |
@@ -123,26 +123,26 @@ atlas.io.read(data, {
 );
 ```
 
-## <a name="read-and-write-well-known-text-wkt"></a>Jól ismert szöveg olvasása és írása (WKT)
+## <a name="read-and-write-well-known-text-wkt"></a>Well-Known szöveg olvasása és írása (WKT)
 
 A [Well-known Text](https://en.wikipedia.org/wiki/Well-known_text_representation_of_geometry) (WKT) egy nyílt TÉRINFORMATIKAI konzorcium (OGC) szabvány, amely a térbeli geometriák szövegként való ábrázolására szolgál. Számos térinformatikai rendszer támogatja a WKT, például az Azure SQL és az Azure PostgreSQL használatát a PostGIS beépülő modullal. A legtöbb OGC-szabványhoz hasonlóan a koordináták "hosszúsági szélesség" formátumban vannak formázva az "x y" konvencióval való igazításhoz. Például a hosszúság-110 és a szélesség 45 pont `POINT(-110 45)` a WKT formátum használatával írható.
 
 A függvény használatával a jól ismert szöveg olvasható, `atlas.io.ogc.WKT.read` és a függvény használatával írható `atlas.io.ogc.WKT.write` .
 
-## <a name="examples-of-reading-and-writing-well-known-text-wkt"></a>Példák a jól ismert szöveg olvasására és írására (WKT)
+## <a name="examples-of-reading-and-writing-well-known-text-wkt"></a>Példák Well-Known szöveg olvasására és írására (WKT)
 
 A következő kód bemutatja, hogyan olvashatja el a jól ismert szöveges karakterláncot `POINT(-122.34009 47.60995)` , és hogyan jelenítheti meg a térképen a buborék réteg használatával.
 
 <br/>
 
-<iframe height='500' scrolling='no' title='Jól ismert szöveg olvasása' src='//codepen.io/azuremaps/embed/XWbabLd/?height=500&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a tollat <a href='https://codepen.io/azuremaps/pen/XWbabLd/'>olvasható, jól ismert szöveget</a> Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) a <a href='https://codepen.io'>CodePen</a>.
+<iframe height='500' scrolling='no' title='Well-Known szöveg olvasása' src='//codepen.io/azuremaps/embed/XWbabLd/?height=500&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a tollat a CodePen-on Azure Maps () <a href='https://codepen.io/azuremaps/pen/XWbabLd/'>Well-Known szöveggel</a> <a href='https://codepen.io/azuremaps'>@azuremaps</a> <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 A következő kód a jól ismert szövegek olvasását és írását mutatja be előre és vissza.
 
 <br/>
 
-<iframe height='700' scrolling='no' title='Jól ismert szöveg olvasása és írása' src='//codepen.io/azuremaps/embed/JjdyYav/?height=700&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Tekintse meg a tollat a <a href='https://codepen.io/azuremaps/pen/JjdyYav/'>jól ismert szöveg olvasása és írása</a> Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) használatával a <a href='https://codepen.io'>CodePen</a>.
+<iframe height='700' scrolling='no' title='Well-Known szöveg olvasása és írása' src='//codepen.io/azuremaps/embed/JjdyYav/?height=700&theme-id=0&default-tab=result&embed-version=2&editable=true' frameborder='no' allowtransparency='true' allowfullscreen='true' style='width: 100%;'>Lásd a tollat <a href='https://codepen.io/azuremaps/pen/JjdyYav/'>olvasás és írás Well-Known szöveg</a> Azure Maps ( <a href='https://codepen.io/azuremaps'>@azuremaps</a> ) használatával a <a href='https://codepen.io'>CodePen</a>.
 </iframe>
 
 ## <a name="read-and-write-gml"></a>GML olvasása és írása

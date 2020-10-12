@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/02/2020
 ms.openlocfilehash: 9e233b93a1dc054e6d9f713e790e706d589bf01e
-ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89503992"
 ---
 # <a name="migrate-an-apache-hbase-cluster-to-a-new-version"></a>Apache HBase-fürt migrálása egy új verzióra
@@ -32,17 +32,17 @@ Az Apache HBase frissítése előtt győződjön meg arról, hogy a forrás-és 
 
 | Kompatibilitási típus | Főverzió| Alverzió | Patch |
 | --- | --- | --- | --- |
-| Ügyfél – kiszolgáló huzalok kompatibilitása | N | I | Y |
-| Kiszolgáló – kiszolgáló kompatibilitás | N | I | Y |
-| Fájlformátumok kompatibilitása | N | I | Y |
-| Ügyfél API-kompatibilitása | N | I | Y |
-| Ügyfél bináris kompatibilitása | N | N | I |
+| Client-Server huzalok kompatibilitása | N | Y | Y |
+| Server-Server kompatibilitás | N | Y | Y |
+| Fájlformátumok kompatibilitása | N | Y | Y |
+| Ügyfél API-kompatibilitása | N | Y | Y |
+| Ügyfél bináris kompatibilitása | N | N | Y |
 | **Kiszolgálóoldali korlátozott API-kompatibilitás** |  |  |  |
-| Stable | N | I | Y |
-| Fejlődő | N | N | I |
+| Stable | N | Y | Y |
+| Fejlődő | N | N | Y |
 | Instabil | N | N | N |
-| Függőségek kompatibilitása | N | I | Y |
-| Működési kompatibilitás | N | N | I |
+| Függőségek kompatibilitása | N | Y | Y |
+| Működési kompatibilitás | N | N | Y |
 
 ## <a name="upgrade-with-same-apache-hbase-major-version"></a>Frissítés ugyanazzal az Apache HBase főverzióval
 

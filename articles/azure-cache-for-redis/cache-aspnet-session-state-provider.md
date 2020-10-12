@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: devx-track-dotnet
 ms.date: 05/01/2017
 ms.openlocfilehash: 7692bfda16ac1b8789ee49469c46ef8276c97f8a
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88213305"
 ---
 # <a name="aspnet-session-state-provider-for-azure-cache-for-redis"></a>Az Azure Cache for Redis ASP.NET munkamenetállapot-szolgáltatója
@@ -125,7 +125,7 @@ A lépések végrehajtása után az alkalmazás úgy van konfigurálva, hogy az 
 * SQL Server munkamenet-szolgáltatója – ez a szolgáltató tárolja a munkamenet-állapotot az SQL Serverben. Akkor használja ezt a szolgáltatót, ha a munkamenet-állapotot állandó tárolóban szeretné tárolni. A webalkalmazás méretezése, de az SQL Server használata a munkamenet teljesítményére hatással lehet a webalkalmazásra. Ezt a szolgáltatót a [memóriában tárolt OLTP-konfigurációval](https://blogs.msdn.microsoft.com/sqlserverstorageengine/2017/11/28/asp-net-session-state-with-sql-server-in-memory-oltp/) is használhatja a teljesítmény javítása érdekében.
 * A memória munkamenet-állapotának szolgáltatója, például az Azure cache a Redis munkamenet-szolgáltató számára – ez a szolgáltató a legjobbat kínálja mindkét világból. A webalkalmazáshoz egyszerű, gyors és méretezhető munkamenet-szolgáltató is tartozhat. Mivel ez a szolgáltató tárolja a munkamenet-állapotot egy gyorsítótárban, az alkalmazásnak figyelembe kell vennie az elosztott memória-gyorsítótárban való kommunikációhoz kapcsolódó összes jellemzőt, például az átmeneti hálózati hibákat. A gyorsítótár használatának ajánlott eljárásaiért lásd: a Microsoft-minták [gyorsítótárazási útmutatója](../best-practices-caching.md) & az [Azure Cloud Application tervezési és megvalósítási útmutatója](https://github.com/mspnp/azure-guidance).
 
-A munkamenet-állapottal és az egyéb ajánlott eljárásokkal kapcsolatos további információkért lásd: [Webfejlesztés – ajánlott eljárások (valós felhőalapú alkalmazások készítése az Azure](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/web-development-best-practices)-ban).
+A munkamenet-állapottal és az egyéb ajánlott eljárásokkal kapcsolatos további információkért lásd: [Webfejlesztés – ajánlott eljárások (Real-World felhőalapú alkalmazások fejlesztése az Azure-ban)](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/web-development-best-practices).
 
 ## <a name="third-party-session-state-providers"></a>Harmadik féltől származó munkamenet-szolgáltatók
 

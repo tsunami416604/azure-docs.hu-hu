@@ -12,10 +12,10 @@ ms.date: 04/02/2019
 ms.author: pafarley
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 7f1939536e033d2cf964dd2f4ee562e4ee20061b
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88934752"
 ---
 # <a name="use-your-model-with-the-prediction-api"></a>Modell használata az előrejelzési API-val
@@ -43,7 +43,7 @@ Ha a modell közzé lett téve, az __előrejelzési URL-cím__kiválasztásával
 
 ![A teljesítmény lap az előrejelzési URL-cím gombját körülvevő piros négyszögtel jelenik meg.](./media/use-prediction-api/published-iteration-prediction-url.png)
 
-![A Performance (teljesítmény) lap a prediktív URL-címet körülvevő piros négyszöget jeleníti meg a képfájl és az előrejelzési kulcs értékének használatával.](./media/use-prediction-api/prediction-api-info.png)
+![A Performance (teljesítmény) lap egy piros téglalapot jelenít meg, amely egy képfájl és a Prediction-Key érték használatának előrejelzési URL-címét használja.](./media/use-prediction-api/prediction-api-info.png)
 
 
 Ebben az útmutatóban egy helyi rendszerképet fog használni, ezért másolja ki az URL-címet, ha egy ideiglenes helyre mutató **képfájl van** . Másolja a megfelelő __előrejelzési kulcs__ értékét is.

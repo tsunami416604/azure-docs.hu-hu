@@ -8,10 +8,10 @@ ms.date: 07/09/2020
 ms.author: tisande
 ms.custom: query-reference
 ms.openlocfilehash: aec567c642f8eb3cb421ef5a119fe58f3a5fe05a
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86262063"
 ---
 # <a name="datetimefromparts-azure-cosmos-db"></a>DateTimeFromParts (Azure Cosmos DB)
@@ -26,21 +26,21 @@ DateTimeFromParts(<numberYear>, <numberMonth>, <numberDay> [, numberHour]  [, nu
 
 ## <a name="arguments"></a>Argumentumok
   
-*numberYear* Az év egész értékének formátuma`YYYY`
+*numberYear* Az év egész értékének formátuma `YYYY`
 
 *numberMonth*  
-   A hónap egész értékének formátuma`MM`
+   A hónap egész értékének formátuma `MM`
 
 *numberDay*  
-   A nap egész értékének formátuma`DD`
+   A nap egész értékének formátuma `DD`
 
-*numberHour* (nem kötelező) egész érték az óra formátumában`hh`
+*numberHour* (nem kötelező) egész érték az óra formátumában `hh`
 
-*numberMinute* (nem kötelező) egész érték a perc formátumában`mm`
+*numberMinute* (nem kötelező) egész érték a perc formátumában `mm`
 
-*numberSecond* (nem kötelező) egész érték a második formátumnál`ss`
+*numberSecond* (nem kötelező) egész érték a második formátumnál `ss`
 
-*numberOfFractionsOfSecond* (nem kötelező) egész érték a másodpercek töredékes formátuma esetén`.fffffff`
+*numberOfFractionsOfSecond* (nem kötelező) egész érték a másodpercek töredékes formátuma esetén `.fffffff`
 
 ## <a name="return-types"></a>Visszatérési típusok
 
@@ -110,8 +110,8 @@ SELECT DateTimeFromParts(2020, 9, 4, 10, 52, 12, 3456789) AS DateTime
 ]
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Dátum és idő függvények Azure Cosmos DB](sql-query-date-time-functions.md)
 - [Rendszerfunkciók Azure Cosmos DB](sql-query-system-functions.md)
-- [Bevezetés a Azure Cosmos DBba](introduction.md)
+- [Az Azure Cosmos DB bemutatása](introduction.md)

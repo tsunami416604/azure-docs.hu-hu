@@ -5,10 +5,10 @@ Customer intent: As a student, I want to be able to create an HTTP triggered Fun
 ms.topic: how-to
 ms.date: 04/29/2020
 ms.openlocfilehash: ecb2cc20bec602101d683dbfdd3f82a2e199aa16
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87386962"
 ---
 # <a name="create-a-function-using-azure-for-students-starter"></a>Függvény létrehozása az Azure diákoknak kezdőknek
@@ -95,7 +95,7 @@ Az Azure diákoknak kezdők számára a Azure Functions futtatókörnyezet legt�
 * Csak a functions futtatókörnyezet [2. x vagy újabb verziója](functions-versions.md) támogatott.
 * Az összes fejlesztői szerszámozás támogatott szerkesztési és közzétételi függvények esetén. Ide tartozik a VS Code, a Visual Studio, az Azure CLI és a Azure Portal. Ha a portálon kívül bármilyen más eszközt szeretne használni, először létre kell hoznia egy alkalmazást a portálon, majd az alkalmazást központi telepítési célként kell kiválasztania az előnyben részesített eszközön.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ezzel befejezte a Function app létrehozását egy egyszerű HTTP-trigger függvénnyel. Ezután megismerheti a helyi eszközöket, a több nyelvet, a figyelést és az integrációt.
 
