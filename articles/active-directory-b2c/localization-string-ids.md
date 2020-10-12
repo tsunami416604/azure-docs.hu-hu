@@ -11,10 +11,10 @@ ms.date: 07/10/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 611d676f5f588ff32f981692456160e269642a43
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87428133"
 ---
 # <a name="localization-string-ids"></a>Honosítási sztringazonosítók
@@ -27,7 +27,7 @@ A **honosítási** elem lehetővé teszi, hogy a felhasználói útvonalakhoz ta
 
 A következő azonosítók szerepelnek egy AZONOSÍTÓval rendelkező tartalom-definícióhoz `api.signuporsignin` .
 
-| ID | Alapértelmezett érték |
+| ID (Azonosító) | Alapértelmezett érték |
 | -- | ------------- |
 | **local_intro_email** | Bejelentkezés meglévő fiókkal |
 | **logonIdentifier_email** | E-mail-cím |
@@ -54,7 +54,7 @@ A következő példa a felhasználói felület egyes elemeinek használatát mut
 
 ![Regisztrációs vagy bejelentkezési oldal UX-elemek](./media/localization-string-ids/localization-susi.png)
 
-Az Identity Providers AZONOSÍTÓját a felhasználói út **ClaimsExchange** eleme konfigurálja. Az identitás-szolgáltató címének honosítása érdekében a **ElementType** a értékre van állítva `ClaimsProvider` , míg a **elemtípusú** a (z) azonosítójának értéke `ClaimsExchange` .
+Az Identity Providers AZONOSÍTÓját a felhasználói út  **ClaimsExchange** eleme konfigurálja. Az identitás-szolgáltató címének honosítása érdekében a **ElementType** a értékre van állítva `ClaimsProvider` , míg a **elemtípusú** a (z) azonosítójának értéke `ClaimsExchange` .
 
 ```xml
 <OrchestrationStep Order="2" Type="ClaimsExchange">
@@ -81,7 +81,7 @@ Az alábbi példa a Facebook-identitás szolgáltatóját az Arab nyelvre honos�
 
 ### <a name="sign-up-or-sign-in-error-messages"></a>Regisztrációs vagy bejelentkezési hibaüzenetek
 
-| ID | Alapértelmezett érték |
+| ID (Azonosító) | Alapértelmezett érték |
 | -- | ------------- |
 | **UserMessageIfInvalidPassword** | Helytelen a jelszó. |
 | **UserMessageIfClaimsPrincipalDoesNotExist** | Úgy tűnik, hogy nem találja a fiókját. |
@@ -95,22 +95,22 @@ Az alábbi példa a Facebook-identitás szolgáltatóját az Arab nyelvre honos�
 
 A következő a tartalom-definíció azonosítóját `api.localaccountsignup` , illetve a-től kezdődően megjelenő tartalom-definíciót `api.selfasserted` , például `api.selfasserted.profileupdate` és `api.localaccountpasswordreset` .
 
-| ID | Alapértelmezett érték |
+| ID (Azonosító) | Alapértelmezett érték |
 | -- | ------------- |
 | **ver_sent** | Az ellenőrző kód a következőre lett küldve: |
 | **ver_but_default** | Alapértelmezett |
 | **cancel_message** | A felhasználó megszakította az önérvényesített információk megadását |
 | **preloader_alt** | várj, kérlek |
 | **ver_but_send** | Ellenőrző kód küldése |
-| **alert_yes** | Yes |
+| **alert_yes** | Igen |
 | **error_fieldIncorrect** | Egy vagy több mező kitöltése helytelen. Ellenőrizze a bejegyzéseket, és próbálkozzon újra. |
-| **év** | Év |
+| **év** | Year |
 | **verifying_blurb** | Várjon, amíg feldolgozzuk az adatokat. |
 | **button_cancel** | Mégse |
 | **ver_fail_no_retry** | Túl sok helytelen kísérlet történt. Próbálkozzon újra később. |
-| **hónap** | Hónap |
+| **hónap** | Month (hónap) |
 | **ver_success_msg** | Az E-mail cím ellenőrizve. Most már folytathatja. |
-| **months** | Január, február, március, április, május, június, július, augusztus, szeptember, október, november, december |
+| **hónapok** | Január, február, március, április, május, június, július, augusztus, szeptember, október, november, december |
 | **ver_fail_server** | Nem sikerül ellenőrizni az e-mail-címét. Adjon meg egy érvényes e-mail-címet, és próbálkozzon újra. |
 | **error_requiredFieldMissing** | Hiányzik egy kötelező mező. Töltse ki az összes kötelező mezőt, és próbálkozzon újra. |
 | **initial_intro** | Adja meg a következő adatokat. |
@@ -120,7 +120,7 @@ A következő a tartalom-definíció azonosítóját `api.localaccountsignup` , 
 | **ver_incorrect_format** | Helytelen formátumú. |
 | **ver_but_edit** | E-mail módosítása |
 | **ver_but_verify** | Kód ellenőrzése |
-| **alert_no** | No |
+| **alert_no** | Nem |
 | **ver_info_msg** | Az ellenőrző kód el lett küldve a Beérkezett üzenetek mappájába. Másolja az alábbi beviteli mezőbe. |
 | **nap** | Nap |
 | **ver_fail_throttled** | Túl sok kérelem érkezett az e-mail-cím ellenőrzéséhez. Várjon egy kicsit, és próbálkozzon újra. |
@@ -134,14 +134,14 @@ A következő a tartalom-definíció azonosítóját `api.localaccountsignup` , 
 
 ### <a name="sign-up-and-self-asserted-pages-error-messages"></a>Regisztráció és saját maga által vezérelt lapok hibaüzenetei
 
-| ID | Alapértelmezett érték |
+| ID (Azonosító) | Alapértelmezett érték |
 | -- | ------------- |
 | **UserMessageIfClaimsPrincipalAlreadyExists** | Már létezik a megadott AZONOSÍTÓJÚ felhasználó. Válasszon másikat. |
-| **UserMessageIfClaimNotVerified** | A jogcím nincs ellenőrizve:{0} |
-| **UserMessageIfIncorrectPattern** | Helytelen minta a következőhöz:{0} |
-| **UserMessageIfMissingRequiredElement** | Hiányzó kötelező elem:{0} |
-| **UserMessageIfValidationError** | Hiba történt az érvényesítés során:{0} |
-| **UserMessageIfInvalidInput** | {0}Érvénytelen bemenettel rendelkezik. |
+| **UserMessageIfClaimNotVerified** | A jogcím nincs ellenőrizve: {0} |
+| **UserMessageIfIncorrectPattern** | Helytelen minta a következőhöz: {0} |
+| **UserMessageIfMissingRequiredElement** | Hiányzó kötelező elem: {0} |
+| **UserMessageIfValidationError** | Hiba történt az érvényesítés során: {0} |
+| **UserMessageIfInvalidInput** | {0} Érvénytelen bemenettel rendelkezik. |
 | **ServiceThrottled** | Jelenleg túl sok kérés van. Várjon egy ideig, és próbálkozzon újra. |
 
 A következő példa a felhasználói felület egyes elemeinek használatát mutatja be a regisztrációs oldalon:
@@ -157,7 +157,7 @@ Az alábbi példa a felhasználói felület egyes elemeinek használatát mutatj
 
 Az alábbi AZONOSÍTÓk a tartalom-definíció azonosítóját használják `api.phonefactor` .
 
-| ID | Alapértelmezett érték |
+| ID (Azonosító) | Alapértelmezett érték |
 | -- | ------------- |
 | **button_verify** | hívj |
 | **country_code_label** | Országkód |
@@ -207,7 +207,7 @@ Az alábbi példa a felhasználói felület egyes elemeinek használatát mutatj
 
 Az alábbi azonosítók egy [ellenőrző képernyő vezérlőelemhez](display-control-verification.md) tartoznak.
 
-| ID | Alapértelmezett érték |
+| ID (Azonosító) | Alapértelmezett érték |
 | -- | ------------- |
 |verification_control_but_change_claims |Módosítás |
 |verification_control_fail_send_code |Nem sikerült elküldeni a kódot, próbálkozzon újra később. |
@@ -237,12 +237,12 @@ Az alábbi azonosítók egy [ellenőrző képernyő vezérlőelemhez](display-co
 
 A [Rest-szolgáltatás technikai profiljának](restful-technical-profile.md) hibaüzenetei az alábbi azonosítók:
 
-| ID | Alapértelmezett érték |
+| ID (Azonosító) | Alapértelmezett érték |
 | -- | ------------- |
-|DefaultUserMessageIfRequestFailed | Nem sikerült kapcsolatot létesíteni a REST-szolgáltatás végpontja felé. Rest-szolgáltatás URL-címe:{0} |
-|UserMessageIfCircuitOpen | {0}Rest-szolgáltatás URL-címe:{1} |
-|UserMessageIfDnsResolutionFailed | Nem sikerült feloldani a REST-szolgáltatás végpontjának állomásnevét. Rest-szolgáltatás URL-címe:{0} |
-|UserMessageIfRequestTimeout | Nem sikerült kapcsolatot létesíteni a REST-szolgáltatás végpontjának időtúllépési korlátján belül {0} . Rest-szolgáltatás URL-címe:{1} |
+|DefaultUserMessageIfRequestFailed | Nem sikerült kapcsolatot létesíteni a REST-szolgáltatás végpontja felé. Rest-szolgáltatás URL-címe: {0} |
+|UserMessageIfCircuitOpen | {0} Rest-szolgáltatás URL-címe: {1} |
+|UserMessageIfDnsResolutionFailed | Nem sikerült feloldani a REST-szolgáltatás végpontjának állomásnevét. Rest-szolgáltatás URL-címe: {0} |
+|UserMessageIfRequestTimeout | Nem sikerült kapcsolatot létesíteni a REST-szolgáltatás végpontjának időtúllépési korlátján belül {0} . Rest-szolgáltatás URL-címe: {1} |
 
 
 ### <a name="example"></a>Példa
@@ -262,7 +262,7 @@ A [Rest-szolgáltatás technikai profiljának](restful-technical-profile.md) hib
 
 Az [Azure MFA technikai profilhoz](multi-factor-auth-technical-profile.md) tartozó hibaüzenetek azonosítói a következők:
 
-| ID | Alapértelmezett érték |
+| ID (Azonosító) | Alapértelmezett érték |
 | -- | ------------- |
 |UserMessageIfCouldntSendSms | Nem lehet SMS-t küldeni a telefonra, próbálkozzon másik telefonszámmal. |
 |UserMessageIfInvalidFormat | A telefonszám formátuma érvénytelen, javítsa ki, és próbálkozzon újra.|
@@ -290,7 +290,7 @@ Az [Azure MFA technikai profilhoz](multi-factor-auth-technical-profile.md) tarto
 
 Az [Azure ad SSPR technikai profilhoz](aad-sspr-technical-profile.md) tartozó hibaüzenetek azonosítói a következők:
 
-| ID | Alapértelmezett érték |
+| ID (Azonosító) | Alapértelmezett érték |
 | -- | ------------- |
 |UserMessageIfChallengeExpired | A kód lejárt.|
 |UserMessageIfInternalError | Az e-mail szolgáltatás belső hibát észlelt, próbálkozzon újra később.|
@@ -317,7 +317,7 @@ Az [Azure ad SSPR technikai profilhoz](aad-sspr-technical-profile.md) tartozó h
 
 A következő azonosítók egy [egyszeri jelszó technikai profiljának](one-time-password-technical-profile.md) hibaüzenetei
 
-| ID | Alapértelmezett érték |
+| ID (Azonosító) | Alapértelmezett érték |
 | -- | ------------- |
 |UserMessageIfMaxRetryAttempted |A megadott jelszó egyszeri ellenőrzése túllépte a kísérletek maximális számát |
 |UserMessageIfSessionDoesNotExist |Egy jelszó-ellenőrzési munkamenet lejárt |
@@ -343,7 +343,7 @@ A következő azonosítók egy [egyszeri jelszó technikai profiljának](one-tim
 
 A jogcím-átalakítási hibaüzenetek azonosítói a következők:
 
-| ID | Jogcím-átalakítás | Alapértelmezett érték |
+| ID (Azonosító) | Jogcím-átalakítás | Alapértelmezett érték |
 | -- | ------------- |------------- |
 |UserMessageIfClaimsTransformationBooleanValueIsNotEqual |[AssertBooleanClaimIsEqualToValue](boolean-transformations.md#assertbooleanclaimisequaltovalue) | A logikai jogcím értékének összehasonlítása nem sikerült a jogcím "inputClaim" típusához.| 
 |DateTimeGreaterThan |[AssertDateTimeIsGreaterThan](date-transformations.md#assertdatetimeisgreaterthan) | A jogcím-érték összehasonlítása sikertelen volt: a megadott bal oldali operandus nagyobb a jobb oldali operandusnál.|
@@ -369,7 +369,7 @@ A multi-Factor Authentication által használt countryList-értékek a következ
 {"DEFAULT":"Country/Region","AF":"Afghanistan","AX":"Åland Islands","AL":"Albania","DZ":"Algeria","AS":"American Samoa","AD":"Andorra","AO":"Angola","AI":"Anguilla","AQ":"Antarctica","AG":"Antigua and Barbuda","AR":"Argentina","AM":"Armenia","AW":"Aruba","AU":"Australia","AT":"Austria","AZ":"Azerbaijan","BS":"Bahamas","BH":"Bahrain","BD":"Bangladesh","BB":"Barbados","BY":"Belarus","BE":"Belgium","BZ":"Belize","BJ":"Benin","BM":"Bermuda","BT":"Bhutan","BO":"Bolivia","BQ":"Bonaire","BA":"Bosnia and Herzegovina","BW":"Botswana","BV":"Bouvet Island","BR":"Brazil","IO":"British Indian Ocean Territory","VG":"British Virgin Islands","BN":"Brunei","BG":"Bulgaria","BF":"Burkina Faso","BI":"Burundi","CV":"Cabo Verde","KH":"Cambodia","CM":"Cameroon","CA":"Canada","KY":"Cayman Islands","CF":"Central African Republic","TD":"Chad","CL":"Chile","CN":"China","CX":"Christmas Island","CC":"Cocos (Keeling) Islands","CO":"Colombia","KM":"Comoros","CG":"Congo","CD":"Congo (DRC)","CK":"Cook Islands","CR":"Costa Rica","CI":"Côte d'Ivoire","HR":"Croatia","CU":"Cuba","CW":"Curaçao","CY":"Cyprus","CZ":"Czech Republic","DK":"Denmark","DJ":"Djibouti","DM":"Dominica","DO":"Dominican Republic","EC":"Ecuador","EG":"Egypt","SV":"El Salvador","GQ":"Equatorial Guinea","ER":"Eritrea","EE":"Estonia","ET":"Ethiopia","FK":"Falkland Islands","FO":"Faroe Islands","FJ":"Fiji","FI":"Finland","FR":"France","GF":"French Guiana","PF":"French Polynesia","TF":"French Southern Territories","GA":"Gabon","GM":"Gambia","GE":"Georgia","DE":"Germany","GH":"Ghana","GI":"Gibraltar","GR":"Greece","GL":"Greenland","GD":"Grenada","GP":"Guadeloupe","GU":"Guam","GT":"Guatemala","GG":"Guernsey","GN":"Guinea","GW":"Guinea-Bissau","GY":"Guyana","HT":"Haiti","HM":"Heard Island and McDonald Islands","HN":"Honduras","HK":"Hong Kong SAR","HU":"Hungary","IS":"Iceland","IN":"India","ID":"Indonesia","IR":"Iran","IQ":"Iraq","IE":"Ireland","IM":"Isle of Man","IL":"Israel","IT":"Italy","JM":"Jamaica","JP":"Japan","JE":"Jersey","JO":"Jordan","KZ":"Kazakhstan","KE":"Kenya","KI":"Kiribati","KR":"Korea","KW":"Kuwait","KG":"Kyrgyzstan","LA":"Laos","LV":"Latvia","LB":"Lebanon","LS":"Lesotho","LR":"Liberia","LY":"Libya","LI":"Liechtenstein","LT":"Lithuania","LU":"Luxembourg","MO":"Macao SAR","MK":"North Macedonia","MG":"Madagascar","MW":"Malawi","MY":"Malaysia","MV":"Maldives","ML":"Mali","MT":"Malta","MH":"Marshall Islands","MQ":"Martinique","MR":"Mauritania","MU":"Mauritius","YT":"Mayotte","MX":"Mexico","FM":"Micronesia","MD":"Moldova","MC":"Monaco","MN":"Mongolia","ME":"Montenegro","MS":"Montserrat","MA":"Morocco","MZ":"Mozambique","MM":"Myanmar","NA":"Namibia","NR":"Nauru","NP":"Nepal","NL":"Netherlands","NC":"New Caledonia","NZ":"New Zealand","NI":"Nicaragua","NE":"Niger","NG":"Nigeria","NU":"Niue","NF":"Norfolk Island","KP":"North Korea","MP":"Northern Mariana Islands","NO":"Norway","OM":"Oman","PK":"Pakistan","PW":"Palau","PS":"Palestinian Authority","PA":"Panama","PG":"Papua New Guinea","PY":"Paraguay","PE":"Peru","PH":"Philippines","PN":"Pitcairn Islands","PL":"Poland","PT":"Portugal","PR":"Puerto Rico","QA":"Qatar","RE":"Réunion","RO":"Romania","RU":"Russia","RW":"Rwanda","BL":"Saint Barthélemy","KN":"Saint Kitts and Nevis","LC":"Saint Lucia","MF":"Saint Martin","PM":"Saint Pierre and Miquelon","VC":"Saint Vincent and the Grenadines","WS":"Samoa","SM":"San Marino","ST":"São Tomé and Príncipe","SA":"Saudi Arabia","SN":"Senegal","RS":"Serbia","SC":"Seychelles","SL":"Sierra Leone","SG":"Singapore","SX":"Sint Maarten","SK":"Slovakia","SI":"Slovenia","SB":"Solomon Islands","SO":"Somalia","ZA":"South Africa","GS":"South Georgia and South Sandwich Islands","SS":"South Sudan","ES":"Spain","LK":"Sri Lanka","SH":"St Helena, Ascension, Tristan da Cunha","SD":"Sudan","SR":"Suriname","SJ":"Svalbard","SZ":"Swaziland","SE":"Sweden","CH":"Switzerland","SY":"Syria","TW":"Taiwan","TJ":"Tajikistan","TZ":"Tanzania","TH":"Thailand","TL":"Timor-Leste","TG":"Togo","TK":"Tokelau","TO":"Tonga","TT":"Trinidad and Tobago","TN":"Tunisia","TR":"Turkey","TM":"Turkmenistan","TC":"Turks and Caicos Islands","TV":"Tuvalu","UM":"U.S. Outlying Islands","VI":"U.S. Virgin Islands","UG":"Uganda","UA":"Ukraine","AE":"United Arab Emirates","GB":"United Kingdom","US":"United States","UY":"Uruguay","UZ":"Uzbekistan","VU":"Vanuatu","VA":"Vatican City","VE":"Venezuela","VN":"Vietnam","WF":"Wallis and Futuna","YE":"Yemen","ZM":"Zambia","ZW":"Zimbabwe"}
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A honosítási példákat a következő cikkekben találja:
 

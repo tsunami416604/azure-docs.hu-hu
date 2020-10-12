@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 07/31/2019
 ms.author: apimpm
 ms.openlocfilehash: ac9554ae5ca151a377395d3b16598f7070c87d10
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87386044"
 ---
 # <a name="using-azure-api-management-service-with-an-internal-virtual-network"></a>Az Azure API Management használata belső virtuális hálózattal
@@ -131,7 +131,7 @@ Ha egy virtuális hálózatban egyéni DNS-kiszolgálót használ, létrehozhat 
 * A nyilvános és a privát hozzáféréshez hozzárendelt IP-címek megváltozhatnak, ha a szolgáltatás el lett távolítva, majd visszakerül a virtuális hálózatba. Ha ez történik, előfordulhat, hogy frissítenie kell a DNS-regisztrációkat, az útválasztási szabályokat és az IP-korlátozási listát a virtuális hálózaton belül.
 
 ## <a name="related-content"></a><a name="related-content"> </a>Kapcsolódó tartalom
-További információt a következő cikkekben talál:
+További tudnivalókért olvassa el a következő cikket:
 * [Gyakori hálózati konfigurációs problémák az Azure-API Management virtuális hálózatban való beállítása során][Common network configuration problems]
 * [Virtual Network – gyakori kérdések](../virtual-network/virtual-networks-faq.md)
 * [Rekord létrehozása a DNS-ben](/previous-versions/windows/it-pro/windows-2000-server/bb727018(v=technet.10))

@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 04/11/2018
 ms.subservice: tables
 ms.openlocfilehash: b921be718bfeb5eb95d4a802fb4d2a8cdd0946c1
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88236777"
 ---
 # <a name="encrypt-table-data"></a>Tábla adatai titkosítása
@@ -26,7 +26,7 @@ Az egyesítés jelenleg nem támogatott. Mivel előfordulhat, hogy a tulajdonsá
 
 További információ a táblák adatainak titkosításáról: [ügyféloldali titkosítás és Azure Key Vault Microsoft Azure Storagehoz](../common/storage-client-side-encryption.md).  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Tábla kialakítási mintái](table-storage-design-patterns.md)
 - [Kapcsolatok modellezése](table-storage-design-modeling.md)

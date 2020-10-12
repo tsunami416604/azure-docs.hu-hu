@@ -4,10 +4,10 @@ description: Ez a cikk útmutatást nyújt olyan kapcsolati karakterlánc beszer
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 5ae6c66ddbbf4b9946e7037e1a7723043bf60507
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86537190"
 ---
 # <a name="get-an-event-hubs-connection-string"></a>Event Hubs-kapcsolatok karakterláncának beolvasása
@@ -25,7 +25,7 @@ A kapcsolatok karakterlánc-sablonja úgy néz ki, mint
 Endpoint=sb://<FQDN>/;SharedAccessKeyName=<KeyName>;SharedAccessKey=<KeyValue>
 ```
 
-Például a következőhöz hasonló kapcsolatok karakterlánca lehet:`Endpoint=sb://dummynamespace.servicebus.windows.net/;SharedAccessKeyName=DummyAccessKeyName;SharedAccessKey=5dOntTRytoC24opYThisAsit3is2B+OGY1US/fuL3ly=`
+Például a következőhöz hasonló kapcsolatok karakterlánca lehet: `Endpoint=sb://dummynamespace.servicebus.windows.net/;SharedAccessKeyName=DummyAccessKeyName;SharedAccessKey=5dOntTRytoC24opYThisAsit3is2B+OGY1US/fuL3ly=`
 
 Ez a cikk végigvezeti a kapcsolatok sztring beszerzésének különböző módjain.
 
@@ -69,9 +69,9 @@ az eventhubs eventhub authorization-rule keys list --resource-group dummyresourc
 
 Az Event Hubs Azure CLI-parancsaival kapcsolatos további információkért lásd: [Az Azure CLI a Event Hubshoz](/cli/azure/eventhubs).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az alábbi webhelyeken további információt talál az Event Hubsról:
 
 * [Event Hubs áttekintése](./event-hubs-about.md)
-* [Eseményközpont létrehozása](event-hubs-create.md)
+* [Event hub létrehozása](event-hubs-create.md)

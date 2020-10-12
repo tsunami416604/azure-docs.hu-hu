@@ -8,15 +8,15 @@ ms.topic: article
 ms.date: 07/10/2020
 ms.author: mayg
 ms.openlocfilehash: 2dc7bbd060d77b8f90d16e2a336edc1eb6dbf651
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86528995"
 ---
-# <a name="replicate-machines-with-customer-managed-keys-cmk-enabled-disks"></a>Gépek replikálása ügyfél által felügyelt kulcsokkal (CMK) rendelkező lemezekkel
+# <a name="replicate-machines-with-customer-managed-keys-cmk-enabled-disks"></a>Gépek replikálása ügyfél által kezelt kulcsokkal (CMK-) kompatibilis lemezekkel
 
-Ez a cikk azt ismerteti, hogyan replikálhatja az Azure-beli virtuális gépeket az ügyfél által felügyelt kulcsokkal (CMK) rendelkező felügyelt lemezekkel az egyik Azure-régióból a másikba.
+Ez a cikk azt ismerteti, hogyan replikálhat Azure-beli virtuális gépeket Customer-Managed kulcsokkal (CMK) rendelkező felügyelt lemezekkel az egyik Azure-régióból a másikba.
 
 ## <a name="prerequisite"></a>Előfeltétel
 A CMK-kompatibilis felügyelt lemezekkel rendelkező virtuális gépek replikálásának engedélyezése előtt létre kell hoznia a lemezes titkosítási készlet (eke) t a célként megadott régióban a célként megadott előfizetéshez.
@@ -70,7 +70,7 @@ Az alábbi lépéseket követve módosíthatja a Site Recovery alapértelmezett 
 ![A CMK-kompatibilis lemezekkel rendelkező gép replikálásának engedélyezése](./media/azure-to-azure-how-to-enable-replication-cmk-disks/cmk-customize-target-disk-properties.png)
 
 >[!NOTE]
->A kezdeti replikálás során előfordulhat, hogy az állapot frissítése hosszabb ideig is eltarthat. Kattintson a **frissítés** gombra a legutóbbi állapot lekéréséhez.
+>A kezdeti replikálás során előfordulhat, hogy az állapot frissítése hosszabb ideig is eltarthat. Kattintson a **frissítés**  gombra a legutóbbi állapot lekéréséhez.
 
 ## <a name="faqs"></a>Gyakori kérdések
 

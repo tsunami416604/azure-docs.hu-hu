@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 09/28/2018
 ms.author: tomsh
 ms.openlocfilehash: fa23637500755f43bb380a9f20cbe3acc7c3a394
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87925804"
 ---
 # <a name="best-practices-for-securing-paas-web-and-mobile-applications-using-azure-storage"></a>Ajánlott eljárások a Pásti webes és mobil alkalmazások biztonságossá tételéhez az Azure Storage használatával
@@ -78,7 +78,7 @@ Az ügyféloldali titkosítás a Java és a .NET Storage ügyféloldali kódtár
 ## <a name="enable-storage-service-encryption-for-data-at-rest"></a>Storage Service Encryption engedélyezése a nyugalmi állapotban lévő adatokhoz
 Ha a file Storage [Storage Service encryption](/azure/storage/common/storage-service-encryption) engedélyezve van, az adatai automatikusan titkosítva vannak az AES-256 titkosítás használatával. A Microsoft kezeli az összes titkosítási, visszafejtési és kulcskezelő kezelést. Ez a funkció LRS és GRS redundancia-típusok esetén érhető el.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez a cikk az Azure Storage ajánlott biztonsági eljárásainak gyűjteményét mutatta be a Pásti web-és Mobile-alkalmazások biztonságossá tételéhez. További információ a Pásti-telepítések biztonságossá tételéről:
 

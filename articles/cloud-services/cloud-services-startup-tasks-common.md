@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 07/18/2017
 ms.author: tagore
 ms.openlocfilehash: beebe60d70b7e4908bd3e9348fe815036d6955c3
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85920076"
 ---
 # <a name="common-cloud-service-startup-tasks"></a>Gyakori Cloud Service indítási feladatai
@@ -377,7 +377,7 @@ EXIT /B 0
 Íme néhány ajánlott eljárás, amelyet a feladatok webes vagy feldolgozói szerepkörhöz való konfigurálásakor kell követni.
 
 ### <a name="always-log-startup-activities"></a>Az indítási tevékenységek naplózása mindig
-A Visual Studio nem biztosít hibakeresőt a Batch-fájlok beléptetéséhez, ezért jó, ha a lehető legtöbb adatmennyiséget szeretné lekérni a Batch-fájlok működéséről. A Batch-fájlok ( **StdOut** és **stderr**) kimenetének naplózásával fontos információkat adhat meg a Batch-fájlok hibakereséséhez és javításához. Ha a **(z)% Temp%** környezeti változó által rámutatott könyvtárban lévő StartupLog.txt fájlra szeretné naplózni az **StdOut** és a **stderr** , adja hozzá a `>>  "%TEMP%\\StartupLog.txt" 2>&1` bejelentkezni kívánt sorok végéhez a szöveget. Például a **(z)% PathToApp1Install%** könyvtárban lévő setup.exe végrehajtásához:`"%PathToApp1Install%\setup.exe" >> "%TEMP%\StartupLog.txt" 2>&1`
+A Visual Studio nem biztosít hibakeresőt a Batch-fájlok beléptetéséhez, ezért jó, ha a lehető legtöbb adatmennyiséget szeretné lekérni a Batch-fájlok működéséről. A Batch-fájlok ( **StdOut** és **stderr**) kimenetének naplózásával fontos információkat adhat meg a Batch-fájlok hibakereséséhez és javításához. Ha a **(z)% Temp%** környezeti változó által rámutatott könyvtárban lévő StartupLog.txt fájlra szeretné naplózni az **StdOut** és a **stderr** , adja hozzá a `>>  "%TEMP%\\StartupLog.txt" 2>&1` bejelentkezni kívánt sorok végéhez a szöveget. Például a **(z)% PathToApp1Install%** könyvtárban lévő setup.exe végrehajtásához: `"%PathToApp1Install%\setup.exe" >> "%TEMP%\StartupLog.txt" 2>&1`
 
 Az XML leegyszerűsítése érdekében létrehozhat egy burkoló *cmd* -fájlt, amely az összes indítási feladatot meghívja a naplózással, és biztosítja, hogy az egyes alárendelt feladatok ugyanazokat a környezeti változókat tudják megosztva.
 
@@ -499,10 +499,10 @@ További információ a [feladatok](cloud-services-startup-tasks.md) működés�
 [Hozza létre és telepítse](cloud-services-how-to-create-deploy-portal.md) a Cloud Service-csomagot.
 
 [ServiceDefinition. csdef]: cloud-services-model-and-package.md#csdef
-[Tevékenység]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Task
+[Feladat]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Task
 [Startup]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Startup
 [Runtime]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Runtime
-[Környezet]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Environment
+[Environment]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Environment
 [Változó]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Variable
 [RoleInstanceValue]: https://msdn.microsoft.com/library/azure/gg557552.aspx#RoleInstanceValue
 [RoleEnvironment]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.aspx

@@ -8,10 +8,10 @@ ms.date: 07/29/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 1d090070dd7b2afe5ea1ece9b5da8b8b5b7b0780
-ms.sourcegitcommit: 14bf4129a73de2b51a575c3a0a7a3b9c86387b2c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87438968"
 ---
 # <a name="install-and-configure-an-on-premises-data-gateway"></a>Helyszíni adatátjáró telepítése és konfigurálása
@@ -54,7 +54,7 @@ Ha többet szeretne megtudni arról, hogy a Azure Analysis Services hogyan műk�
 
 2. Válassza **a helyszíni adatátjáró**lehetőséget.
 
-   ![Válassza ezt:](media/analysis-services-gateway-install/aas-gateway-installer-select.png)
+   ![Kiválasztás](media/analysis-services-gateway-install/aas-gateway-installer-select.png)
 
 2. Válasszon ki egy helyet, fogadja el a feltételeket, majd kattintson a **telepítés**gombra.
 
@@ -153,7 +153,7 @@ Set-AzAnalysisServicesServer -ResourceGroupName $RGName -Name $servername -Gatew
 
 Ennyi az egész. Ha portok megnyitására vagy hibaelhárításra van szüksége, mindenképpen tekintse [meg a helyszíni adatátjárót](analysis-services-gateway.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Az Analysis Services felügyelete](analysis-services-manage.md)   
 * [Adatlekérdezés az Azure Analysis Servicesből](analysis-services-connect.md)   

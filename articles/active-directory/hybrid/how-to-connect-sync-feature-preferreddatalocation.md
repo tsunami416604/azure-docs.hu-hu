@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1ec5757b41da630c4cb09ad0c096aee87572615d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91319894"
 ---
 # <a name="azure-active-directory-connect-sync-configure-preferred-data-location-for-microsoft-365-resources"></a>Azure Active Directory Connect Sync: Microsoft 365 erőforrások előnyben részesített adathelyének konfigurálása
@@ -142,8 +142,8 @@ A bejövő szinkronizálási szabály lehetővé teszi, hogy az attribútum ért
 
     | Attribútum | Érték | Részletek |
     | --- | --- | --- |
-    | Name | *Adjon meg egy nevet* | Például: "az AD-User preferredDataLocation" |
-    | Description | *Egyéni Leírás megadása* |  |
+    | Name (Név) | *Adjon meg egy nevet* | Például: "az AD-User preferredDataLocation" |
+    | Leírás | *Egyéni Leírás megadása* |  |
     | Csatlakoztatott rendszerek | *A helyszíni Active Directory-összekötő kiválasztása* |  |
     | Csatlakoztatott rendszerobjektum típusa | **Felhasználó** |  |
     | Metaverse objektum típusa | **Személy** |  |
@@ -171,8 +171,8 @@ A kimenő szinkronizálási szabály lehetővé teszi, hogy az attribútum ért�
 
     | Attribútum | Érték | Részletek |
     | ----- | ------ | --- |
-    | Name | *Adjon meg egy nevet* | Például: "az Azure AD – User preferredDataLocation" |
-    | Description | *Adja meg a leírást* ||
+    | Name (Név) | *Adjon meg egy nevet* | Például: "az Azure AD – User preferredDataLocation" |
+    | Leírás | *Adja meg a leírást* ||
     | Csatlakoztatott rendszerek | *Válassza ki az Azure AD-összekötőt* ||
     | Csatlakoztatott rendszerobjektum típusa | **Felhasználó** ||
     | Metaverse objektum típusa | **Személy** ||

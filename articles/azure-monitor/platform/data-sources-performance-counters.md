@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
 ms.openlocfilehash: 49f944aa98bf0bf8090b10d2feeb50af4a2d42b2
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85955488"
 ---
 # <a name="windows-and-linux-performance-data-sources-in-azure-monitor"></a>Windows-és Linux-teljesítményű adatforrások a Azure Monitor
@@ -25,7 +25,7 @@ Amikor először konfigurálja a Windows-vagy Linux-teljesítményszámlálókat
 
 A Windows-teljesítményszámlálók esetében kiválaszthatja az egyes teljesítményszámlálók egy adott példányát. A Linux-teljesítményszámlálók esetében az egyes kiválasztott számlálók a szülő számláló összes alárendelt számlálóján érvényesek. A következő táblázat a Linux és a Windows teljesítményszámlálói számára elérhető általános példányokat mutatja be.
 
-| Példány neve | Description |
+| Példány neve | Leírás |
 | --- | --- |
 | \_Összesen |Összes példány összesen |
 | \* |Minden példány |
@@ -75,11 +75,11 @@ A gyűjteni kívánt teljesítmény-mérőszámok minden objektumát vagy kateg�
 
 Az ebben az elemben található paramétereket a következő táblázat ismerteti.
 
-| Paraméterek | Description |
+| Paraméterek | Leírás |
 |:--|:--|
 | objektum \_ neve | A gyűjtemény objektumának neve. |
 | példányok \_ regexje |  Egy *reguláris kifejezés* , amely meghatározza, hogy mely példányokat kell gyűjteni. Az érték: az `.*` összes példányt megadja. Ha csak az összes példány processzor-metrikáit szeretné összegyűjteni \_ , megadhatja a következőt: `_Total` . Ha csak a crond vagy sshd példányok feldolgozási metrikáit szeretné összegyűjteni, megadhatja a következőt: `(crond\|sshd)` . |
-| számláló \_ neve \_ regex | Egy *reguláris kifejezés* , amely meghatározza, hogy mely számlálókat (az objektumhoz) kell összegyűjteni. Az objektum összes számlálójának összegyűjtéséhez a következőt kell megadnia: `.*` . Ha csak a memória-objektum lapozófájl-számlálóit szeretné összegyűjteni, például megadhatja a következőket:`.+Swap.+` |
+| számláló \_ neve \_ regex | Egy *reguláris kifejezés* , amely meghatározza, hogy mely számlálókat (az objektumhoz) kell összegyűjteni. Az objektum összes számlálójának összegyűjtéséhez a következőt kell megadnia: `.*` . Ha csak a memória-objektum lapozófájl-számlálóit szeretné összegyűjteni, például megadhatja a következőket: `.+Swap.+` |
 | interval | Az objektum számlálóinak gyűjtésének gyakorisága. |
 
 
@@ -98,17 +98,17 @@ A következő táblázat felsorolja a konfigurációs fájlban megadható objekt
 | Logikai lemez | Írási sebesség (írás/mp) |
 | Logikai lemez | Szabad terület (MB) |
 | Logikai lemez | Logikai lemez sebessége (bájt/s) |
-| Memory (Memória) | Rendelkezésre álló memória%-ban |
-| Memory (Memória) | Rendelkezésre álló swap-terület (%) |
-| Memory (Memória) | Felhasznált memória (%) |
-| Memory (Memória) | Felhasznált swap-terület%-ban |
-| Memory (Memória) | Rendelkezésre álló memória (MB) |
-| Memory (Memória) | Rendelkezésre álló memória (MB) |
-| Memory (Memória) | Olvasott lap/mp |
-| Memory (Memória) | Írási idő/mp |
-| Memory (Memória) | Lap/mp |
-| Memory (Memória) | Felhasznált memória (MB) – lapozófájl |
-| Memory (Memória) | Felhasznált memória (MB) |
+| Memória | Rendelkezésre álló memória%-ban |
+| Memória | Rendelkezésre álló swap-terület (%) |
+| Memória | Felhasznált memória (%) |
+| Memória | Felhasznált swap-terület%-ban |
+| Memória | Rendelkezésre álló memória (MB) |
+| Memória | Rendelkezésre álló memória (MB) |
+| Memória | Olvasott lap/mp |
+| Memória | Írási idő/mp |
+| Memória | Lap/mp |
+| Memória | Felhasznált memória (MB) – lapozófájl |
+| Memória | Felhasznált memória (MB) |
 | Network (Hálózat) | Továbbított bájtok összesen |
 | Network (Hálózat) | Fogadott bájtok összesen |
 | Network (Hálózat) | Bájtok összesen |
@@ -203,7 +203,7 @@ A teljesítményadatokat a teljesítmény **típusa és a** következő tábláz
 ## <a name="log-queries-with-performance-records"></a>Lekérdezések naplózása a teljesítménnyel kapcsolatos rekordokkal
 Az alábbi táblázat különböző példákat tartalmaz a teljesítményadatokat lekérő lekérdezések naplózására.
 
-| Lekérdezés | Description |
+| Lekérdezés | Leírás |
 |:--- |:--- |
 | Teljesítmény |Minden teljesítményadatok |
 | Teljesítményfigyelő &#124;, ahol a számítógép = = "Sajátgép" |Egy adott számítógépről származó összes teljesítményadatok |

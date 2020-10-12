@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: c06af1cc7f068070954669fc4ec269c9e679f278
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84886056"
 ---
 # <a name="analyze-usage-statistics-with-azure-cdn-advanced-http-reports"></a>Használati statisztikák elemzése az Azure CDN speciális HTTP-jelentéseivel
@@ -48,7 +48,7 @@ Az egyes régiók részletes forgalmi és sávszélesség-információi közvetl
 
 Az alábbiakban egy rövid leírást talál az egyes Térkép alapú földrajzi jelentésekhez.
 
-| Jelentés neve | Description |
+| Jelentés neve | Leírás |
 | --- | --- |
 | Globális Térkép |Ez a jelentés lehetővé teszi a CDN-tartalom globális igényének megtekintését. Az egyes országok/régiók színkóddal rendelkeznek a világ térképén, hogy jelezze az adott régióból származó találatok százalékos arányát. |
 | Egyesült Államok Térkép |Ez a jelentés lehetővé teszi, hogy megtekintse a CDN-tartalom iránti igényt a Egyesült Államokban. Az egyes állapotok színkódoltak ezen a térképen, hogy jelezze az adott régióból származó találatok százalékos arányát. |
@@ -71,7 +71,7 @@ A sávdiagram létrehozásához használt összes adattal megtekintheti a diagra
 
 Az alábbi jelentések mindkét típusához rövid leírást kell megadnia.
 
-| Jelentés neve | Description |
+| Jelentés neve | Leírás |
 | --- | --- |
 | Legnépszerűbb városok |Ez a jelentés az adott régióból származó találatok számának megfelelően rangsorolja a városokat. |
 | Leggyakoribb országok |Ez a jelentés az adott országból/régióból származó találatok száma szerint rangsorolja az országokat és a régiókat. |

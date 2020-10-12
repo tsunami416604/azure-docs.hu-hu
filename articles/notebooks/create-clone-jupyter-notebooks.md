@@ -4,10 +4,10 @@ description: Azure Notebooks az előzetes verziójú projektek jegyzetfüzetek �
 ms.topic: how-to
 ms.date: 02/25/2019
 ms.openlocfilehash: 4a51f9b12ca24d16858b41357627ff26d233357f
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86181496"
 ---
 # <a name="create-and-clone-projects-in-azure-notebooks-preview"></a>Projektek létrehozása és klónozása Azure Notebooks előzetes verzióban
@@ -28,10 +28,10 @@ Az irányítópulton elvégezhető műveletek attól függnek, hogy a felhaszná
 
 | Parancs | Elérhető a következőhöz | Leírás |
 | --- | --- | --- |
-| **Futtatás** | Tulajdonos | Elindítja a Project kiszolgálót, és megnyitja a projekt mappáját a Jupyter. (Gyakrabban navigáljon először a projekt mappájába, majd indítson el egy jegyzetfüzetet innen.) |
+| **Futtassa** | Tulajdonos | Elindítja a Project kiszolgálót, és megnyitja a projekt mappáját a Jupyter. (Gyakrabban navigáljon először a projekt mappájába, majd indítson el egy jegyzetfüzetet innen.) |
 | **Letöltés** | Bárki | A kiválasztott projekt másolatának letöltése ZIP-fájlként. |
 | **Megosztás** | Bárki | Megjeleníti a megosztás felugró ablakát, amelyen keresztül beszerezhet egy URL-címet egy kiválasztott projekthez, megoszthatja a közösségi médiát, e-mailt küldhet az URL-címmel, valamint HTML-vagy Markdown-kódot is beszerezhet a "notebook elindítása" jelvényre (lásd: [indítási jelvény beszerzése](#obtain-a-launch-badge)) az URL-címmel. |
-| **Szabályzat** | Tulajdonos | Törli a kiválasztott projektet. Ez a művelet nem vonható vissza. |
+| **Törlés** | Tulajdonos | Törli a kiválasztott projektet. Ez a művelet nem vonható vissza. |
 | **Terminál** | Tulajdonos | Elindítja a Project Server kiszolgálót, majd egy új böngészőablakot nyit meg az adott kiszolgálóhoz tartozó bash-terminálon. |
 | **+ Új projekt** | Tulajdonos | Új projekt létrehozása. Lásd: [új projekt létrehozása](#create-a-new-project). |
 | **GitHub-adattár feltöltése** | Tulajdonos | Projekt importálása a GitHubról. [Projekt importálása a githubról](#import-a-project-from-github). |
@@ -82,10 +82,10 @@ A következő fenntartott szavak önmagukban nem használhatók projekt-azonosí
 - html
 - Kezdőlap
 - importálása
-- erőforrástár
+- kódtár
 - felügyelet
 - Új
-- notebook
+- jegyzetfüzet
 - notebookok
 - PDF
 - preview

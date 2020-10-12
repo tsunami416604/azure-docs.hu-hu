@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/29/2020
 ms.author: aahi
 ms.openlocfilehash: aa1cb6e9fdd504622b2f444d511a8dd0e5fc1ca8
-ms.sourcegitcommit: 50ef5c2798da04cf746181fbfa3253fca366feaa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82608378"
 ---
 # <a name="use-speech-service-containers-with-kubernetes-and-helm"></a>A Speech Service-tárolók használata a Kubernetes és a Helm használatával
@@ -27,15 +27,15 @@ A következő előfeltételek a helyszíni beszédfelismerési tárolók haszná
 
 | Kötelező | Cél |
 |----------|---------|
-| Azure-fiók | Ha nem rendelkezik Azure-előfizetéssel, a Kezdés előtt hozzon létre egy [ingyenes fiókot][free-azure-account] . |
+| Azure-fiók | Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot][free-azure-account], mielőtt hozzákezd. |
 | Container Registry hozzáférés | Ahhoz, hogy a Kubernetes lekérje a Docker-rendszerképeket a fürtre, hozzá kell férnie a tároló-beállításjegyzékhez. |
 | Kubernetes CLI | A megosztott hitelesítő adatok a tároló-beállításjegyzékből való kezeléséhez a [KUBERNETES CLI][kubernetes-cli] szükséges. A Kubernetes a Helm előtt is szükséges, amely a Kubernetes csomagkezelő. |
 | Helm parancssori felület | Telepítse a [Helm CLI][helm-install]-t, amely a Helm-diagram (Container Package Definition) telepítéséhez használatos. |
-|Beszédfelismerési erőforrás |A tárolók használatához a következőket kell tennie:<br><br>Egy _Speech_ Azure-erőforrás a társított számlázási kulcs és a számlázási végpont URI azonosítójának lekéréséhez. Mindkét érték elérhető a Azure Portal **beszédének** áttekintése és a kulcsok oldalain, és a tároló elindításához szükséges.<br><br>**{API_KEY}**: erőforrás-kulcs<br><br>**{ENDPOINT_URI}**: végpont URI-ja például:`https://westus.api.cognitive.microsoft.com/sts/v1.0`|
+|Beszédfelismerési erőforrás |A tárolók használatához a következőket kell tennie:<br><br>Egy _Speech_ Azure-erőforrás a társított számlázási kulcs és a számlázási végpont URI azonosítójának lekéréséhez. Mindkét érték elérhető a Azure Portal **beszédének** áttekintése és a kulcsok oldalain, és a tároló elindításához szükséges.<br><br>**{API_KEY}**: erőforrás-kulcs<br><br>**{ENDPOINT_URI}**: végpont URI-ja például: `https://westus.api.cognitive.microsoft.com/sts/v1.0`|
 
 ## <a name="the-recommended-host-computer-configuration"></a>Az ajánlott gazdagép-Számítógép konfigurációja
 
-Hivatkozásként tekintse meg a [beszédfelismerési szolgáltatás tárolójának számítógépének][speech-container-host-computer] részleteit. Ez a *Helm-diagram* automatikusan kiszámítja a CPU-és memória-követelményeket azon alapul, hogy hány dekódolást (egyidejű kérést) határoz meg a felhasználó. Emellett azt is meghatározza, hogy a hang/szöveg bemenetének optimalizálása a következőként van- `enabled`e konfigurálva:. A Helm diagram alapértelmezett értéke, két egyidejű kérelem és az optimalizálás letiltása.
+Hivatkozásként tekintse meg a [beszédfelismerési szolgáltatás tárolójának számítógépének][speech-container-host-computer] részleteit. Ez a *Helm-diagram* automatikusan kiszámítja a CPU-és memória-követelményeket azon alapul, hogy hány dekódolást (egyidejű kérést) határoz meg a felhasználó. Emellett azt is meghatározza, hogy a hang/szöveg bemenetének optimalizálása a következőként van-e konfigurálva: `enabled` . A Helm diagram alapértelmezett értéke, két egyidejű kérelem és az optimalizálás letiltása.
 
 | Szolgáltatás | PROCESSZOR/tároló | Memória/tároló |
 |--|--|--|
@@ -48,9 +48,9 @@ A gazdaszámítógépnek várhatóan rendelkezésre áll egy Kubernetes-fürt. E
 
 ### <a name="sharing-docker-credentials-with-the-kubernetes-cluster"></a>Docker-hitelesítő adatok megosztása a Kubernetes-fürttel
 
-Ha engedélyezni szeretné a Kubernetes- `docker pull` fürt számára a konfigurált rendszerkép (eke) `containerpreview.azurecr.io` t a tároló-beállításjegyzékből, át kell adnia a Docker hitelesítő adatait a fürtbe. Az alábbi [`kubectl create`][kubectl-create] parancs végrehajtásával hozzon létre egy *Docker-beállításjegyzékbeli titkot* a tároló beállításjegyzék-hozzáférési előfeltétele alapján megadott hitelesítő adatok alapján.
+Ha engedélyezni szeretné a Kubernetes-fürt számára a `docker pull` konfigurált rendszerkép (eke) t a `containerpreview.azurecr.io` tároló-beállításjegyzékből, át kell adnia a Docker hitelesítő adatait a fürtbe. Az [`kubectl create`][kubectl-create] alábbi parancs végrehajtásával hozzon létre egy *Docker-beállításjegyzékbeli titkot* a tároló beállításjegyzék-hozzáférési előfeltétele alapján megadott hitelesítő adatok alapján.
 
-A választható parancssori felületen futtassa a következő parancsot. Ne felejtse el lecserélni a `<username>`, `<password>`a és `<email-address>` a értékét a tároló beállításjegyzékbeli hitelesítő adataival.
+A választható parancssori felületen futtassa a következő parancsot. Ne felejtse el lecserélni a `<username>` , a `<password>` és a `<email-address>` értékét a tároló beállításjegyzékbeli hitelesítő adataival.
 
 ```console
 kubectl create secret docker-registry mcr \
@@ -74,13 +74,13 @@ A rendszer a következő kimenetet nyomtatja ki a konzolra, amikor a titkos kulc
 secret "mcr" created
 ```
 
-Annak ellenőrzéséhez, hogy létrejött-e a titkos kulcs [`kubectl get`][kubectl-get] , hajtsa végre a `secrets` jelölőt a következővel:.
+Annak ellenőrzéséhez, hogy létrejött-e a titkos kulcs, hajtsa végre a jelölőt a következővel: [`kubectl get`][kubectl-get] `secrets` .
 
 ```console
 kubectl get secrets
 ```
 
-A kinyomtatja az `kubectl get secrets` összes beállított titkot.
+A `kubectl get secrets` kinyomtatja az összes beállított titkot.
 
 ```console
 NAME    TYPE                              DATA    AGE
@@ -95,7 +95,7 @@ Látogasson el a Microsoft [Helm hubhoz][ms-helm-hub] a Microsoft által kínál
 helm repo add microsoft https://microsoft.github.io/charts/repo
 ```
 
-Ezután a Helm-diagram értékeit fogjuk konfigurálni. Másolja és illessze be a következő YAML egy nevű `config-values.yaml`fájlba. A **Cognitive Services Speech helyszíni Helm diagram**testreszabásával kapcsolatos további információkért lásd: Helm- [diagramok testreszabása](#customize-helm-charts). Cserélje le `# {ENDPOINT_URI}` a `# {API_KEY}` és a megjegyzéseket a saját értékeire.
+Ezután a Helm-diagram értékeit fogjuk konfigurálni. Másolja és illessze be a következő YAML egy nevű fájlba `config-values.yaml` . A **Cognitive Services Speech helyszíni Helm diagram**testreszabásával kapcsolatos további információkért lásd: Helm- [diagramok testreszabása](#customize-helm-charts). Cserélje le a `# {ENDPOINT_URI}` és a `# {API_KEY}` megjegyzéseket a saját értékeire.
 
 ```yaml
 # These settings are deployment specific and users can provide customizations
@@ -134,7 +134,7 @@ textToSpeech:
 ```
 
 > [!IMPORTANT]
-> Ha a `billing` és `apikey` az értékek nincsenek megadva, akkor a szolgáltatások 15 perc után lejárnak. Hasonlóképpen, az ellenőrzés sikertelen lesz, mert a szolgáltatások nem lesznek elérhetők.
+> Ha a `billing` és az `apikey` értékek nincsenek megadva, akkor a szolgáltatások 15 perc után lejárnak. Hasonlóképpen, az ellenőrzés sikertelen lesz, mert a szolgáltatások nem lesznek elérhetők.
 
 ### <a name="the-kubernetes-package-helm-chart"></a>A Kubernetes-csomag (Helm-diagram)
 
@@ -142,11 +142,11 @@ A *Helm diagram* tartalmazza azt a konfigurációt, amelynek a Docker-rendszerk�
 
 > A [Helm diagram][helm-charts] a Kubernetes-erőforrások kapcsolódó készletét leíró fájlok gyűjteménye. Egy diagramot felhasználhat egy egyszerű, például egy Memcached vagy egy összetett Pod üzembe helyezésére, például egy teljes webalkalmazás-verem használatára HTTP-kiszolgálók, adatbázisok, gyorsítótárak és így tovább.
 
-A megadott *Helm-diagramok* lekérik a beszédfelismerési szolgáltatás Docker-rendszerképeit, a szöveges és a beszédfelismerési szolgáltatásokat, valamint a `containerpreview.azurecr.io` tároló-beállításjegyzékből származó beszéd és szöveg szolgáltatást.
+A megadott *Helm-diagramok* lekérik a beszédfelismerési szolgáltatás Docker-rendszerképeit, a szöveges és a beszédfelismerési szolgáltatásokat, valamint a tároló-beállításjegyzékből származó beszéd és szöveg szolgáltatást `containerpreview.azurecr.io` .
 
 ## <a name="install-the-helm-chart-on-the-kubernetes-cluster"></a>A Helm diagram telepítése a Kubernetes-fürtön
 
-A *Helm diagram* telepítéséhez végre kell hajtania a [`helm install`][helm-install-cmd] parancsot `<config-values.yaml>` a megfelelő elérési úttal és fájlnév argumentummal. Az `microsoft/cognitive-services-speech-onpremise` alább hivatkozott Helm-diagram itt érhető el a [Microsoft Helm hub][ms-helm-hub-speech-chart]-on.
+A *Helm diagram* telepítéséhez végre kell hajtania a parancsot a [`helm install`][helm-install-cmd] `<config-values.yaml>` megfelelő elérési úttal és fájlnév argumentummal. Az `microsoft/cognitive-services-speech-onpremise` alább hivatkozott Helm-diagram itt érhető el a [Microsoft Helm hub][ms-helm-hub-speech-chart]-on.
 
 ```console
 helm install onprem-speech microsoft/cognitive-services-speech-onpremise \
@@ -238,7 +238,7 @@ helm test onprem-speech
 ```
 
 > [!IMPORTANT]
-> Ezek a tesztek sikertelenek lesznek, ha a POD `Running` állapota nem, vagy ha a központi telepítés nem `AVAILABLE` szerepel az oszlop alatt. Legyen türelmes, mivel ez akár tíz percet is igénybe vehet.
+> Ezek a tesztek sikertelenek lesznek, ha a POD állapota nem, `Running` vagy ha a központi telepítés nem szerepel az `AVAILABLE` oszlop alatt. Legyen türelmes, mivel ez akár tíz percet is igénybe vehet.
 
 Ezek a tesztek különböző állapot-eredményeket eredményeznek:
 
@@ -249,7 +249,7 @@ RUNNING: text-to-speech-readiness-test
 PASSED: text-to-speech-readiness-test
 ```
 
-A *Helm-tesztek*végrehajtásának alternatívájaként a *külső IP-* címeket és a hozzájuk tartozó portokat is összegyűjtheti a `kubectl get all` paranccsal. Az IP-cím és a port használatával nyisson meg egy webböngészőt, és navigáljon `http://<external-ip>:<port>:/swagger/index.html` a (z) elemre az API hencegő oldalának megtekintéséhez.
+A *Helm-tesztek*végrehajtásának alternatívájaként a *külső IP-* címeket és a hozzájuk tartozó portokat is összegyűjtheti a `kubectl get all` paranccsal. Az IP-cím és a port használatával nyisson meg egy webböngészőt, és navigáljon a `http://<external-ip>:<port>:/swagger/index.html` (z) elemre az API hencegő oldalának megtekintéséhez.
 
 ## <a name="customize-helm-charts"></a>Helm-diagramok testreszabása
 
@@ -266,7 +266,7 @@ A Helm-diagramok hierarchikusak. A hierarchia lehetővé teszi a diagramok örö
 Az alkalmazások az Azure Kubernetes szolgáltatásban (ak) való telepítésével kapcsolatos további információkért [látogasson el ide][installing-helm-apps-in-aks].
 
 > [!div class="nextstepaction"]
-> [Cognitive Services tárolók][cog-svcs-containers]
+> [Cognitive Services-tárolók][cog-svcs-containers]
 
 <!-- LINKS - external -->
 [free-azure-account]: https://azure.microsoft.com/free

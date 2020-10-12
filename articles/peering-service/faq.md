@@ -11,10 +11,10 @@ ms.workload: Infrastructure-services
 ms.date: 05/18/2020
 ms.author: derekol
 ms.openlocfilehash: 55c5e6c5b718dc2de295b9b4418ddc8607a69f8f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84872049"
 ---
 # <a name="peering-service-faq"></a>Peering Service – gyakori kérdések
@@ -22,29 +22,29 @@ ms.locfileid: "84872049"
 Ez a cikk az Azure-partneri szolgáltatások kapcsolataival kapcsolatos leggyakrabban feltett kérdéseket ismerteti.
 
 
-**K. Kik a megcélzott ügyfelek?**
+**Q. Kik a megcélzott ügyfelek?**
 
 A. A célként megadott ügyfelek olyan vállalatok, amelyek a Microsoft Cloud-hoz csatlakoznak az interneten keresztül.
 
-**K. az ügyfelek több szolgáltatóval is regisztrálhatnak a partneri szolgáltatásra?** 
+**Q. Regisztrálhatnak az ügyfelek több szolgáltatóval való partneri szolgáltatásra?** 
 
 A. Igen, az ügyfelek regisztrálhatnak az egyazon régióban vagy különböző régiókban található több szolgáltatóval rendelkező társ szolgáltatásra, de nem ugyanahhoz az előtagokhoz.
 
-**K. lehet, hogy az ügyfelek földrajzi régiónként kiválaszthatnak egy egyedi ISP-t?**
+**Q. Választhatnak-e az ügyfelek földrajzi régiónként egy egyedi ISP-t?**
 
 A. Igen, az ügyfelek megtehetik. Válassza ki a partner ISP-t régiónként, amely megfelel az üzleti és működési igényeinek.
 
-**K. Mi a Microsoft Edge PoP?**
+**Q. Mi a Microsoft Edge PoP?**
 
 A. Ez egy olyan fizikai hely, ahol a Microsoft összekapcsolódik más hálózatokkal. A Microsoft Edge PoP-helyen a szolgáltatások, például az Azure bejárati ajtó és a Azure CDN üzemeltetve vannak. További információ: [Azure CDN](https://docs.microsoft.com/azure/cdn/cdn-features).
 
 ## <a name="peering-service-unique-characteristics"></a>Társ-szolgáltatási szolgáltatás: egyedi jellemzők
 
-**K. Miben különbözik a peering szolgáltatás a normál internet-hozzáféréstől?**
+**Q. Miben különbözik a peering szolgáltatás a normál internet-hozzáféréstől?**
 
 A. A Microsoft-partneri szolgáltatással regisztrált partnereink a Microsofttal együttműködve optimalizált útválasztást és megbízható kapcsolatot biztosítanak a Microsoft szolgáltatásaihoz.  
 
-**K. Miben különbözik a ExpressRoute?**
+**Q. Miben különbözik a társ-szolgáltatási szolgáltatás a ExpressRoute?**
 
 A. Az Azure ExpressRoute egy privát, dedikált, egy vagy több ügyfél-helyről származó szolgáltatás. Míg a társ-szolgáltatás optimalizált nyilvános kapcsolattal rendelkezik, és nem támogatja a magánhálózati kapcsolatokat, a helyi internetes kitörésekhez optimalizált kapcsolódást is biztosít.
 

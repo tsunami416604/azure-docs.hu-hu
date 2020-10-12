@@ -15,10 +15,10 @@ manager: mflasko
 ms.custom: seo-lt-2019, devx-track-azurepowershell
 ms.date: 07/20/2020
 ms.openlocfilehash: 901693c512ddfcf5d3c4dafaec71b1606b5dc5f1
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89077847"
 ---
 # <a name="run-an-ssis-package-with-the-execute-ssis-package-activity-in-azure-data-factory"></a>SSIS-csomag futtatása az SSIS-csomag végrehajtása tevékenységgel az Azure Data Factoryben
@@ -251,7 +251,7 @@ Hajtsa végre a következő lépéseket a SSIS-csomag végrehajtása tevékenys�
 
       Például anélkül, hogy módosítaná az eredeti csomagot a SSDT-on, átalakíthatja a helyszíni – helyszíni adatforgalmát, amely SQL Server fut a helyszíni – Felhőbeli adatforgalomra az ADF-ben futó SSIS-integráción keresztül, ha felülbírálja a **ConnectByProxy**-, **ConnectionString**-és **ConnectUsingManagedIdentity** -tulajdonságok értékeit a meglévő Ügyfélkapcsolat-kezelők esetében.
       
-      Ezek a futásidejű felülbírálások lehetővé tehetik a saját üzemeltetésű IR (SSIS) proxyként való használatát a helyszíni adatokhoz való hozzáférés során. lásd: a [SSIS IR proxyként való konfigurálása](https://docs.microsoft.com/azure/data-factory/self-hosted-integration-runtime-proxy-ssis), valamint Azure SQL Database/felügyelt példányok kapcsolatai a legújabb MSOLEDBSQL illesztőprogrammal, amely lehetővé teszi a Azure Active Directory (HRE) HITELESÍTÉST az ADF [-alapú felügyelt identitással.](https://docs.microsoft.com/sql/integration-services/connection-manager/ole-db-connection-manager?view=sql-server-ver15#managed-identities-for-azure-resources-authentication)
+      Ezek a futásidejű felülbírálások engedélyezhetik Self-Hosted IR (SSIS) proxyként való használatát a helyszíni adatokhoz való hozzáférés során. lásd: a [konfigurálása a SSIS IR proxyként](https://docs.microsoft.com/azure/data-factory/self-hosted-integration-runtime-proxy-ssis), valamint Azure SQL Database/felügyelt példányok kapcsolatai a legújabb MSOLEDBSQL illesztőprogrammal, amely lehetővé teszi a Azure Active Directory (HRE) hitelesítését az ADF által felügyelt identitással, lásd: [HRE hitelesítés konfigurálása az OLEDB-kapcsolatok esetében](https://docs.microsoft.com/sql/integration-services/connection-manager/ole-db-connection-manager?view=sql-server-ver15#managed-identities-for-azure-resources-authentication).
 
       ![Tulajdonságok beállítása a SSDT a kapcsolatkezelő lapon](media/how-to-invoke-ssis-package-ssis-activity/ssis-activity-connection-managers2.png)
    

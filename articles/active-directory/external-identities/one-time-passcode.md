@@ -13,10 +13,10 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan, seoapril2019
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 714e4484c71b995bee186a2d94dc45c7ff82c50d
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87909203"
 ---
 # <a name="email-one-time-passcode-authentication-preview"></a>E-mail egyszeri jelszó-hitelesítés (előzetes verzió)
@@ -71,7 +71,7 @@ Eltarthat néhány percig, amíg a beavatkozás érvénybe lép. Ezt követően 
 1.  Jelentkezzen be az [Azure Portalba](https://portal.azure.com/) Azure ad globális rendszergazdaként.
 2.  A navigációs ablaktáblán válassza a **Azure Active Directory**lehetőséget.
 3.  Külső **identitások**  >  **külső együttműködési beállítások**kiválasztása.
-5.  Az **E-mail egyszeri jelszó engedélyezése a vendégek számára (előzetes verzió)** területen válassza az **Igen**lehetőséget.
+5.  Az **e-mail One-Time PIN-kód engedélyezése a vendégek**számára területen válassza az **Igen**lehetőséget.
  
 ### <a name="to-opt-in-using-powershell"></a>A PowerShell használatának engedélyezése
 
@@ -137,7 +137,7 @@ Eltarthat néhány percig, amíg a letiltási művelet érvénybe lép. Ha kikap
 1.  Jelentkezzen be az [Azure Portalba](https://portal.azure.com/) Azure ad globális rendszergazdaként.
 2.  A navigációs ablaktáblán válassza a **Azure Active Directory**lehetőséget.
 3.  Külső **identitások**  >  **külső együttműködési beállítások**kiválasztása.
-5.  Az **E-mail egyszeri jelszó engedélyezése a vendégek számára (előzetes verzió)** területen válassza a **nem**lehetőséget.
+5.  Az **e-mail One-Time PIN-kód engedélyezése a vendégek**számára szakaszban válassza a **nem**lehetőséget.
 
 ### <a name="to-turn-off-the-preview-using-powershell"></a>Az előnézet kikapcsolása a PowerShell használatával
 Telepítse a legújabb AzureADPreview-modult, ha még nem rendelkezik ezzel (lásd [az előfeltételt: telepítse a fenti legújabb AzureADPreview-modult](#prerequisite-install-the-latest-azureadpreview-module) ). Ezt követően győződjön meg arról, hogy az egyszeri jelszó-előnézeti házirend jelenleg létezik a következő futtatásával:

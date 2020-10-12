@@ -8,10 +8,10 @@ author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/29/2020
 ms.openlocfilehash: dba47073a6676b17c091af048f583ca3e7712999
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87420226"
 ---
 # <a name="create-or-modify-an-offer"></a>Ajánlat létrehozása vagy módosítása
@@ -27,7 +27,7 @@ Ez a hívás egy adott ajánlatot frissít a közzétevő névterén belül, vag
 
 |  **Név**         |  **Leírás**                      |  **Adattípus**  |
 |  --------         |  ----------------                     |  -------------  |
-| publisherId       |  Közzétevő azonosítója, például:`contoso` |   Sztring |
+| publisherId       |  Közzétevő azonosítója, például: `contoso` |   Sztring |
 | offerId           |  Ajánlat azonosítója                     |   Sztring        |
 | api-verzió       |  Az API legújabb verziója            |   Dátum           |
 |  |  |  |
@@ -330,7 +330,7 @@ Ezek a kategóriák és a hozzájuk tartozó kulcsok az Azure-alkalmazások, a V
 | Egyéb | egyéb adatbázisok | egyéb adatbázisok | egyéb |
 | ***Fejlesztői eszközök*** | ***fejlesztői-eszközök-Saas*** | ***fejlesztői – eszközök – Azure-alkalmazások*** | ***fejlesztői – eszközök*** |
 | Eszközök | eszközök – fejlesztői-eszközök | eszközök – fejlesztői-eszközök | eszközök – fejlesztői-eszközök |
-| Scripts | parancsfájlok | parancsfájlok | parancsfájlok |
+| Parancsfájlok | parancsfájlok | parancsfájlok | parancsfájlok |
 | Fejlesztői szolgáltatás | devService | devService | fejlesztő – szolgáltatás |
 | Egyéb | egyéb – fejlesztői – eszközök | egyéb – fejlesztői – eszközök | egyéb |
 | ***DevOps*** | ***devops*** | ***devops*** | ***devops*** |
@@ -342,8 +342,8 @@ Ezek a kategóriák és a hozzájuk tartozó kulcsok az Azure-alkalmazások, a V
 | Üzenetkezelés | üzenetek | üzenetek | üzenetek |
 | Egyéb | egyéb | egyéb | egyéb |
 | ***Eszközök internetes hálózata*** | ***IoT*** | ***Internet-of-Things – Azure-apps*** | ***a dolgok internete*** |
-| IoT Core-szolgáltatások | N.A. | IOT-Core-Services | IOT-Core-Services |
-| IoT Edge modulok | N.A. | IOT – Edge – modulok | IOT – Edge – modulok |
+| IoT Core-szolgáltatások | N/A | IOT-Core-Services | IOT-Core-Services |
+| IoT Edge modulok | N/A | IOT – Edge – modulok | IOT – Edge – modulok |
 | IoT-megoldások | IOT – megoldások | IOT – megoldások | IOT – megoldások |
 | Adatelemzési & vizualizáció | az adatelemzés és a vizualizáció | az adatelemzés és a vizualizáció | az adatelemzés és a vizualizáció |
 | IoT-kapcsolat | IOT – kapcsolat | IOT – kapcsolat | IOT – kapcsolat |
@@ -366,7 +366,7 @@ Ezek a kategóriák és a hozzájuk tartozó kulcsok az Azure-alkalmazások, a V
 | Egyéb | egyéb | egyéb | egyéb |
 | ***Hálózat*** | ***hálózati*** | ***hálózati*** | ***hálózati*** |
 | Berendezések kezelői | berendezés – vezetők | berendezés – vezetők | berendezés – vezetők |
-| Kapcsolatok | kapcsolatok | kapcsolatok | kapcsolatok |
+| Kapcsolat | kapcsolatok | kapcsolatok | kapcsolatok |
 | Tűzfalak | tűzfalak | tűzfalak | tűzfalak |
 | Terheléselosztók | terheléselosztó | terheléselosztó | terheléselosztó |
 | Egyéb | egyéb | egyéb | egyéb |
@@ -375,7 +375,7 @@ Ezek a kategóriák és a hozzájuk tartozó kulcsok az Azure-alkalmazások, a V
 | Veszélyforrások elleni védelem | veszélyforrások elleni védelem | veszélyforrások elleni védelem | veszélyforrások elleni védelem |
 | Information Protection | információ – védelem | információ – védelem | információ – védelem |
 | Egyéb | egyéb | egyéb | egyéb |
-| ***Storage-fiók*** | ***Storage – Saas*** | ***tárolás – Azure-apps*** | ***Storage*** |
+| ***Storage*** | ***Storage – Saas*** | ***tárolás – Azure-apps*** | ***Storage*** |
 | Biztonsági mentés & helyreállítás | biztonsági mentés | biztonsági mentés | biztonsági mentés és helyreállítás |
 | Vállalati hibrid tárolás | nagyvállalati hibrid – tárterület | nagyvállalati hibrid – tárterület | nagyvállalati hibrid – tárterület |
 | Fájlmegosztás | fájlmegosztás | fájlmegosztás | fájlmegosztás |

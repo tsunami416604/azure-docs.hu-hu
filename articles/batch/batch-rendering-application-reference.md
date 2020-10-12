@@ -6,10 +6,10 @@ ms.author: markscu
 ms.date: 08/02/2018
 ms.topic: how-to
 ms.openlocfilehash: ace3fe7aee6b9ffc7226448b455bcfea1f931458
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85964872"
 ---
 # <a name="rendering-applications"></a>Alkalmazások renderelése
@@ -29,7 +29,7 @@ A 3ds Max-ban beépített renderelő elemek mellett a következő megjelenítők
 
 ### <a name="task-command-line"></a>Feladat parancssora
 
-Hívja `3dsmaxcmdio.exe` meg az alkalmazást a parancssori renderelés végrehajtásához egy készlet-csomóponton.  Ez az alkalmazás a feladat futtatásakor megadott elérési úton található. Az `3dsmaxcmdio.exe` alkalmazás ugyanazokkal az elérhető paraméterekkel rendelkezik `3dsmaxcmd.exe` , mint az alkalmazás, amelyet a [3ds Max Súgó dokumentációjában talál](https://help.autodesk.com/view/3DSMAX/2018/ENU/) (renderelés | Parancssori renderelés szakasza).
+Hívja `3dsmaxcmdio.exe` meg az alkalmazást a parancssori renderelés végrehajtásához egy készlet-csomóponton.  Ez az alkalmazás a feladat futtatásakor megadott elérési úton található. Az `3dsmaxcmdio.exe` alkalmazás ugyanazokkal az elérhető paraméterekkel rendelkezik `3dsmaxcmd.exe` , mint az alkalmazás, amelyet a [3ds Max Súgó dokumentációjában talál](https://help.autodesk.com/view/3DSMAX/2018/ENU/) (renderelés | Command-Line renderelési szakasz).
 
 Például:
 

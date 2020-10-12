@@ -13,10 +13,10 @@ ms.reviewer: elisol
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 54f5721ef606b6ea916f5a00031c58f5e2adeb0e
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87909690"
 ---
 # <a name="azure-active-directory-b2b-best-practices"></a>Azure Active Directory B2B – ajánlott eljárások
@@ -26,9 +26,9 @@ Ez a cikk ajánlásokat és ajánlott eljárásokat tartalmaz a vállalatok köz
    > **2021. március 31-ig**a Microsoft többé nem fogja támogatni a meghívások beváltását azáltal, hogy nem felügyelt Azure ad-fiókokat és bérlőket hoz létre vállalatközi együttműködési forgatókönyvek létrehozásához. A felkészülés során javasoljuk, hogy az ügyfelek [e-mail-egyszeri jelszavas hitelesítést](one-time-passcode.md)kérjenek. Szívesen fogadjuk visszajelzését ezen a nyilvános előzetes verzióban, és örömmel vesszük, hogy még több módszert is létre lehetne hozni az együttműködésre.
 
 ## <a name="b2b-recommendations"></a>B2B-javaslatok
-| Javaslat | Megjegyzések |
+| Ajánlás | Megjegyzések |
 | --- | --- |
-| Az összevonása való optimális bejelentkezési élmény érdekében | Amikor csak lehetséges, a összevonása közvetlenül az Identity Providers használatával engedélyezheti a meghívott felhasználóknak, hogy Microsoft-fiókok (MSAs) vagy Azure AD-fiókok létrehozása nélkül jelentkezzenek be a megosztott alkalmazásokba és az erőforrásokra. A [Google összevonási szolgáltatással](google-federation.md) engedélyezheti a B2B vendég felhasználói számára a Google-fiókkal való bejelentkezést. Vagy használhatja a [közvetlen összevonás (előzetes verzió) szolgáltatást](direct-federation.md) úgy, hogy közvetlen összevonást állítson be bármely olyan szervezettel, amelynek az identitás-szolgáltatója (identitásszolgáltató) támogatja az SAML 2,0 vagy a WS-fed protokollt. |
+| Az összevonása való optimális bejelentkezési élmény érdekében | Amikor csak lehetséges, a összevonása közvetlenül az Identity Providers használatával engedélyezheti a meghívott felhasználóknak, hogy Microsoft-fiókok (MSAs) vagy Azure AD-fiókok létrehozása nélkül jelentkezzenek be a megosztott alkalmazásokba és az erőforrásokra. A [Google összevonási szolgáltatással](google-federation.md) engedélyezheti a B2B vendég felhasználói számára a Google-fiókkal való bejelentkezést. Vagy használhatja a [közvetlen összevonás (előzetes verzió) szolgáltatást](direct-federation.md) úgy, hogy közvetlen összevonást állítson be bármely olyan szervezettel, amelynek az identitás-szolgáltatója (identitásszolgáltató) támogatja az SAML 2,0 vagy WS-Fed protokollt. |
 | Az e-mailes egyszeri jelszó (előzetes verzió) funkció használata a B2B-vendégek számára, akik nem tudnak más módon hitelesíteni magukat | Az [egyszer használatos e-mail-jelszó (előzetes verzió)](one-time-passcode.md) funkció hitelesíti a B2B vendég felhasználókat, ha nem hitelesíthetők más módon, például az Azure ad-vel, a Microsoft-fiók (MSA) vagy a Google Federation szolgáltatással. Ha a vendég felhasználó bevált egy meghívót, vagy egy megosztott erőforráshoz fér hozzá, ideiglenes kódot kérhet, amelyet a rendszer elküld az e-mail-címére. Ezután a kód beírásával folytathatja a bejelentkezést. |
 | Vállalati arculat megjelenítése a bejelentkezési oldalon | Testreszabhatja a bejelentkezési oldalát, így az jobban használható a B2B vendég felhasználói számára. Lásd: [vállalati arculat hozzáadása a bejelentkezéshez és a hozzáférési panel oldalaihoz](../fundamentals/customize-branding.md). |
 | Adatvédelmi nyilatkozat hozzáadása a B2B vendég felhasználói beváltási felületéhez | Felveheti a szervezete adatvédelmi nyilatkozatának URL-címét az első alkalommal meghívó beváltási folyamatba, hogy a meghívott felhasználónak el kell fogadnia az adatvédelmi feltételeit a folytatáshoz. További információ [: a szervezet adatvédelmi adatainak hozzáadása Azure Active Directoryban](https://aka.ms/adprivacystatement). |

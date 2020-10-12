@@ -12,10 +12,10 @@ ms.author: vanto
 ms.reviewer: sstein
 ms.date: 12/18/2018
 ms.openlocfilehash: b90f86576928e44e00c548f4f3ad3c22c27b8bb3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85829433"
 ---
 # <a name="split-merge-security-configuration"></a>Felosztás – biztonsági konfiguráció egyesítése
@@ -59,8 +59,8 @@ A kommunikáció titkosításához és a kiszolgáló hitelesítéséhez TLS/SSL
 
 ### <a name="create-a-new-self-signed-certificate"></a>Új önaláírt tanúsítvány létrehozása
 
-1. [Önaláírt tanúsítvány létrehozása](#create-a-self-signed-certificate)
-2. [PFX-fájl létrehozása önaláírt TLS/SSL-tanúsítványhoz](#create-pfx-file-for-self-signed-tlsssl-certificate)
+1. [Self-Signed tanúsítvány létrehozása](#create-a-self-signed-certificate)
+2. [PFX-fájl létrehozása Self-Signed TLS/SSL-tanúsítványhoz](#create-pfx-file-for-self-signed-tlsssl-certificate)
 3. [TLS/SSL-tanúsítvány feltöltése a Cloud Service-be](#upload-tlsssl-certificate-to-cloud-service)
 4. [TLS/SSL-tanúsítvány frissítése a szolgáltatás konfigurációs fájljában](#update-tlsssl-certificate-in-service-configuration-file)
 5. [TLS/SSL-hitelesítésszolgáltató importálása](#import-tlsssl-certification-authority)
@@ -78,10 +78,10 @@ A kommunikáció titkosításához és a kiszolgáló hitelesítéséhez TLS/SSL
 Az ügyféltanúsítványok a szolgáltatáshoz intézett kérések hitelesítéséhez szükségesek. Válassza ki az alábbi három forgatókönyv közül leginkább megfelelőt, és hajtsa végre az összes lépését:
 
 ### <a name="turn-off-client-certificates"></a>Ügyféltanúsítványok kikapcsolása
-1. [Ügyféltanúsítvány-alapú hitelesítés kikapcsolása](#turn-off-client-certificate-based-authentication)
+1. [Ügyfél Certificate-Based hitelesítésének kikapcsolása](#turn-off-client-certificate-based-authentication)
 
 ### <a name="issue-new-self-signed-client-certificates"></a>Új önaláírt Ügyféltanúsítványok kibocsátása
-1. [Önaláírt hitelesítésszolgáltató létrehozása](#create-a-self-signed-certification-authority)
+1. [Self-Signed hitelesítésszolgáltató létrehozása](#create-a-self-signed-certification-authority)
 2. [HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány feltöltése a Cloud Service-be](#upload-ca-certificate-to-cloud-service)
 3. [HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány frissítése a szolgáltatás konfigurációs fájljában](#update-ca-certificate-in-service-configuration-file)
 4. [Ügyféltanúsítványok kiállítása](#issue-client-certificates)
@@ -105,8 +105,8 @@ A szolgáltatási végpontokhoz való hozzáférés az IP-címek meghatározott 
 A metaadat-tárolóban tárolt hitelesítő adatok titkosításához tanúsítvány szükséges. Válassza ki az alábbi három forgatókönyv közül leginkább megfelelőt, és hajtsa végre az összes lépését:
 
 ### <a name="use-a-new-self-signed-certificate"></a>Új önaláírt tanúsítvány használata
-1. [Önaláírt tanúsítvány létrehozása](#create-a-self-signed-certificate)
-2. [PFX-fájl létrehozása önaláírt titkosítási tanúsítványhoz](#create-pfx-file-for-self-signed-tlsssl-certificate)
+1. [Self-Signed tanúsítvány létrehozása](#create-a-self-signed-certificate)
+2. [PFX-fájl létrehozása Self-Signed titkosítási tanúsítványhoz](#create-pfx-file-for-self-signed-tlsssl-certificate)
 3. [Titkosítási tanúsítvány feltöltése a Cloud Service-be](#upload-encryption-certificate-to-cloud-service)
 4. [Titkosítási tanúsítvány frissítése a szolgáltatás konfigurációs fájljában](#update-encryption-certificate-in-service-configuration-file)
 
@@ -444,7 +444,7 @@ Kövesse az alábbi lépéseket:
 3. Válassza a **tanúsítványok**lehetőséget.
 4. Kattintson a **Hozzáadás** parancsra.
 5. Válassza ki a tanúsítványtároló helyét.
-6. Kattintson a **Befejezés** gombra.
+6. Kattintson a **Finish** (Befejezés) gombra.
 7. Kattintson az **OK** gombra.
 8. Bontsa ki a **tanúsítványok**csomópontot.
 9. Bontsa ki a tanúsítványtároló csomópontot.
@@ -464,7 +464,7 @@ A **Tanúsítvány exportálása varázslóban**:
 8. Kattintson a **Tovább** gombra.
 9. Írja be vagy tallózással keresse meg azt a fájlnevet, amelyben tárolni kívánja a tanúsítványt (a-t használja. PFX-bővítmény).
 10. Kattintson a **Tovább** gombra.
-11. Kattintson a **Befejezés** gombra.
+11. Kattintson a **Finish** (Befejezés) gombra.
 12. Kattintson az **OK** gombra.
 
 ## <a name="import-certificate"></a>Tanúsítvány importálása
@@ -482,7 +482,7 @@ A tanúsítvány importálása varázslóban:
 5. Válassza a "hely" tanúsítványokat a következő tárolóban
 6. Kattintson a **Browse** (Tallózás) gombra.
 7. Válassza ki a kívánt tárolót.
-8. Kattintson a **Befejezés** gombra.
+8. Kattintson a **Finish** (Befejezés) gombra.
    
    * Ha a megbízható legfelső szintű hitelesítésszolgáltató tárolót választotta, kattintson az **Igen**gombra.
 9. Kattintson **az OK** gombra az összes párbeszédablak-ablakban.

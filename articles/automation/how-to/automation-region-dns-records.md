@@ -6,10 +6,10 @@ ms.subservice: process-automation
 ms.date: 07/23/2020
 ms.topic: conceptual
 ms.openlocfilehash: 17d0857a8979cfcc632ab8951fb255f97229a665
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87117184"
 ---
 # <a name="dns-records-for-azure-regions-used-by-azure-automation"></a>Az Azure Automation által használt Azure-régiók DNS-rekordjai
@@ -88,7 +88,7 @@ Cserélje le a `<accountId>` értéket a DNS-rekordba az Automation-fiók azonos
 
 ![Automation-fiók elsődleges kulcsának lapja](./media/automation-region-dns-records/automation-account-keys.png)
 
-Másolja az értéket a *fiókok/* URL- **cím** mező után –`https://<GUID>.agentsvc.<region>.azure-automation.net/accounts/<GUID>`
+Másolja az értéket a *fiókok/* URL- **cím** mező után – `https://<GUID>.agentsvc.<region>.azure-automation.net/accounts/<GUID>`
 
 Javasoljuk, hogy használja a [kivételek](../automation-runbook-execution.md#exceptions)meghatározásakor felsorolt címeket. A régió IP-címeinek listája a régiók nevei helyett a következő felhőalapú környezetek esetén töltse le a JSON-fájlt a Microsoft letöltőközpontból:
 

@@ -4,10 +4,10 @@ description: Ez a cikk azt ismerteti, hogyan konfigurálhatja saját kulcsát az
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.openlocfilehash: 18a59b74897b074fea9ee56947c78635f2a3509d
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86537258"
 ---
 # <a name="configure-customer-managed-keys-for-encrypting-azure-event-hubs-data-at-rest-by-using-the-azure-portal"></a>Ügyfél által felügyelt kulcsok konfigurálása az Azure Event Hubs-adatok inaktív titkosításához a Azure Portal használatával
@@ -26,7 +26,7 @@ A Azure Key Vault segítségével kezelheti a kulcsokat, és naplózhatja a kulc
 Ez a cikk bemutatja, hogyan konfigurálhat egy Key vaultot az ügyfél által felügyelt kulcsokkal a Azure Portal használatával. Ha meg szeretné tudni, hogyan hozhat létre kulcstartót a Azure Portal használatával, tekintse meg a következőt [: gyors üzembe helyezés és a titkos kód beolvasása Azure Key Vault a Azure Portal használatával](../key-vault/secrets/quick-create-portal.md).
 
 > [!IMPORTANT]
-> Az ügyfél által felügyelt kulcsok Azure-Event Hubs való használata megköveteli, hogy a kulcstartó két szükséges tulajdonsággal rendelkezzen. Ezek a következők: **Soft delete** és **not Purge**. Ezek a tulajdonságok alapértelmezés szerint engedélyezve vannak, amikor új kulcstartót hoz létre a Azure Portal. Ha azonban egy meglévő kulcstartón kell engedélyeznie ezeket a tulajdonságokat, akkor a PowerShellt vagy az Azure CLI-t kell használnia.
+> Az ügyfél által felügyelt kulcsok Azure-Event Hubs való használata megköveteli, hogy a kulcstartó két szükséges tulajdonsággal rendelkezzen. Ezek a következők:  **Soft delete** és **not Purge**. Ezek a tulajdonságok alapértelmezés szerint engedélyezve vannak, amikor új kulcstartót hoz létre a Azure Portal. Ha azonban egy meglévő kulcstartón kell engedélyeznie ezeket a tulajdonságokat, akkor a PowerShellt vagy az Azure CLI-t kell használnia.
 
 ## <a name="enable-customer-managed-keys"></a>Ügyfél által felügyelt kulcsok engedélyezése
 Az ügyfél által felügyelt kulcsok Azure Portal való engedélyezéséhez kövesse az alábbi lépéseket:
@@ -223,9 +223,9 @@ Ebből a szakaszból megtudhatja, hogyan hozhat létre egy felügyelt szolgálta
 
     > [!NOTE]
     > Cserélje le a következő értékeket: 
-    > - `<EventHubsClusterName>`– A Event Hubs-fürt neve    
-    > - `<EventHubsNamespaceName>`-Event Hubs névtér neve
-    > - `<Location>`– A Event Hubs névtér helye
+    > - `<EventHubsClusterName>` – A Event Hubs-fürt neve    
+    > - `<EventHubsNamespaceName>` -Event Hubs névtér neve
+    > - `<Location>` – A Event Hubs névtér helye
 
     ```json
     {
@@ -360,11 +360,11 @@ Ebben a lépésben frissíteni fogja a Event Hubs névteret a Key Vault-informá
 
     > [!NOTE]
     > Cserélje le a következő értékeket: 
-    > - `<EventHubsClusterName>`– A Event Hubs-fürt neve.        
-    > - `<EventHubsNamespaceName>`-Event Hubs névtér neve
-    > - `<Location>`– A Event Hubs névtér helye
-    > - `<KeyVaultName>`– A Key Vault neve
-    > - `<KeyName>`– A kulcs neve a Key vaultban
+    > - `<EventHubsClusterName>` – A Event Hubs-fürt neve.        
+    > - `<EventHubsNamespaceName>` -Event Hubs névtér neve
+    > - `<Location>` – A Event Hubs névtér helye
+    > - `<KeyVaultName>` – A Key Vault neve
+    > - `<KeyName>` – A kulcs neve a Key vaultban
 
     ```json
     {
@@ -415,7 +415,7 @@ A következő gyakori hibakódokat kell megkeresnie, amikor a BYOK-titkosítás 
 > [!IMPORTANT]
 > Ha engedélyezni szeretné, hogy a Geo-DR olyan névtérben legyen, amely a BYOK-titkosítást használja, a párosítás másodlagos névterének dedikált fürtben kell lennie, és rendelkeznie kell egy hozzá tartozó, rendszerhez rendelt felügyelt identitással. További információ: [felügyelt identitások az Azure-erőforrásokhoz](../active-directory/managed-identities-azure-resources/overview.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Lásd az alábbi cikkeket:
 - [Event Hubs áttekintése](event-hubs-about.md)
 - [Key Vault áttekintése](../key-vault/general/overview.md)

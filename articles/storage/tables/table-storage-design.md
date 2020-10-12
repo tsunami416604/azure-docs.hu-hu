@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 03/09/2020
 ms.subservice: tables
 ms.openlocfilehash: 9fd274fb72c80475ca53d0f1bdedc1e09c10ea60
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88236505"
 ---
 # <a name="design-scalable-and-performant-tables"></a>Méretezhető és nagy teljesítményű táblák tervezése
@@ -49,7 +49,7 @@ Az alábbi példa egy egyszerű tábla-kialakítást mutat be az alkalmazottak �
 <tr>
 <th>FirstName</th>
 <th>LastName</th>
-<th>Kor</th>
+<th>Életkor</th>
 <th>E-mail</th>
 </tr>
 <tr>
@@ -69,7 +69,7 @@ Az alábbi példa egy egyszerű tábla-kialakítást mutat be az alkalmazottak �
 <tr>
 <th>FirstName</th>
 <th>LastName</th>
-<th>Kor</th>
+<th>Életkor</th>
 <th>E-mail</th>
 </tr>
 <tr>
@@ -98,7 +98,7 @@ Az alábbi példa egy egyszerű tábla-kialakítást mutat be az alkalmazottak �
 </td>
 </tr>
 <tr>
-<td>Sales</td>
+<td>Értékesítés</td>
 <td>00010</td>
 <td>2014-08-22T00:50:44Z</td>
 <td>
@@ -106,7 +106,7 @@ Az alábbi példa egy egyszerű tábla-kialakítást mutat be az alkalmazottak �
 <tr>
 <th>FirstName</th>
 <th>LastName</th>
-<th>Kor</th>
+<th>Életkor</th>
 <th>E-mail</th>
 </tr>
 <tr>
@@ -146,7 +146,7 @@ A EGTs emellett potenciális kompromisszumot is bevezet, hogy kiértékelje a ki
 ## <a name="cost-considerations"></a>Költségekkel kapcsolatos szempontok
 A Table Storage szolgáltatás viszonylag olcsó, azonban a kapacitás kihasználtsága és a tranzakciók mennyisége a Table service megoldások kiértékelésének részeként is szerepelnie kell. Számos esetben azonban a denormalizált vagy ismétlődő adatok tárolása a megoldás teljesítményének és méretezhetőségének javítása érdekében érvényes megközelítés. A díjszabással kapcsolatos további információkért lásd: az [Azure Storage díjszabása](https://azure.microsoft.com/pricing/details/storage/).  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Tábla kialakítási mintái](table-storage-design-patterns.md)
 - [Kapcsolatok modellezése](table-storage-design-modeling.md)

@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
 ms.openlocfilehash: 73b6029dfe52a4b32c9a8ce092fcd284ac1ec0e7
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85965041"
 ---
 # <a name="workbook-drop-down-parameters"></a>Munkafüzet legördülő paraméterei
@@ -28,11 +28,11 @@ A legördülő lista megadásának legegyszerűbb módja, ha statikus listát bi
 2. Válassza a _Paraméterek hozzáadása_ lehetőséget a munkafüzetben található hivatkozások közül.
 3. Kattintson a kék _paraméter hozzáadása_ gombra.
 4. A felugró új paraméter panelen írja be a következőket:
-    1. Paraméter neve:`Environment`
-    2. Paraméter típusa:`Drop down`
-    3. Szükséges`checked`
-    4. Engedélyezés `multiple selection` :`unchecked`
-    5. Adatok lekérése:`JSON`
+    1. Paraméter neve: `Environment`
+    2. Paraméter típusa: `Drop down`
+    3. Szükséges `checked`
+    4. Engedélyezés `multiple selection` : `unchecked`
+    5. Adatok lekérése: `JSON`
 5. A JSON bemeneti szövegmezőbe írja be a következő JSON-kódrészletet:
     ```json
     [
@@ -70,11 +70,11 @@ Ha a lekérdezés eredménye/JSON tartalmaz egy "csoport" mezőt, a legördülő
 2. Válassza a _Paraméterek hozzáadása_ lehetőséget a munkafüzetben található hivatkozások közül.
 3. Kattintson a kék _paraméter hozzáadása_ gombra.
 4. A felugró új paraméter panelen írja be a következőket:
-    1. Paraméter neve:`RequestName`
-    2. Paraméter típusa:`Drop down`
-    3. Szükséges`checked`
-    4. Engedélyezés `multiple selection` :`unchecked`
-    5. Adatok lekérése:`Query`
+    1. Paraméter neve: `RequestName`
+    2. Paraméter típusa: `Drop down`
+    3. Szükséges `checked`
+    4. Engedélyezés `multiple selection` : `unchecked`
+    5. Adatok lekérése: `Query`
 5. A JSON bemeneti szövegmezőbe írja be a következő JSON-kódrészletet:
 
     ```kusto

@@ -4,10 +4,10 @@ description: Ez a cikk azt ismerteti, hogyan lehet visszaállítani az Azure-bel
 ms.topic: conceptual
 ms.date: 05/22/2019
 ms.openlocfilehash: 0d6feb512ab4ebcc5b5eaffafe607602fc552984
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90985439"
 ---
 # <a name="restore-sql-server-databases-on-azure-vms"></a>SQL Server-adatbázisok visszaállítása Azure-beli virtuális gépeken
@@ -130,7 +130,7 @@ Ha egy adatbázis helyett. bak fájlként szeretné visszaállítani a biztonsá
     >- A Backup-tárolóban lévő fájlok visszaállításának elindítási `\\<storageacct>.file.core.windows.net\<filesharename>` útja<BR>
     A PsExec letöltése a [Sysinternals](/sysinternals/downloads/psexec) lapról végezhető el.
 
-1. Válassza az **OK** lehetőséget.
+1. Kattintson az **OK** gombra.
 
     ![Válassza a visszaállítás fájlokként lehetőséget.](./media/backup-azure-sql-database/restore-as-files.png)
 

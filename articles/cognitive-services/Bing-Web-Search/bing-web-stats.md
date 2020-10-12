@@ -12,10 +12,10 @@ ms.date: 07/17/2019
 ms.author: scottwhi
 ms.custom: seodec2018
 ms.openlocfilehash: ad2ac118908f1c1f77ea204ae2400913ac0807cb
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86147411"
 ---
 # <a name="add-analytics-to-the-bing-search-apis"></a>Elemzés hozzáadása a Bing Search API-khoz
@@ -90,7 +90,7 @@ A következő lehetséges mérőszámok és végponti korlátozások.
 
 - **Válasz kód eloszlása**: az összes hívás HTTP-állapotkódok a jelentési időszak alatt.
 
-- **Forrás eloszlásának hívása**: a felhasználók által használt böngészők típusai. Például a Microsoft Edge, a Chrome, a Safari és a FireFox. A böngészőn kívüli hívások (például a robotok, a Poster vagy a curl használata a konzolból) a könyvtárak alatt vannak csoportosítva. A forrás meghatározása a kérelem felhasználói ügynök fejlécének értéke alapján történik. Ha a kérelem nem tartalmazza a felhasználói ügynök fejlécét, a Bing megpróbálja származtatni a forrást más jelekből.  
+- **Forrás eloszlásának hívása**: a felhasználók által használt böngészők típusai. Például a Microsoft Edge, a Chrome, a Safari és a FireFox. A böngészőn kívüli hívások (például a robotok, a Poster vagy a curl használata a konzolból) a könyvtárak alatt vannak csoportosítva. A forrás meghatározása a kérelem User-Agent fejlécének értéke alapján történik. Ha a kérelem nem tartalmazza a User-Agent fejlécet, a Bing megpróbálja származtatni a forrást más jelekből.  
 
 - **Biztonságos Keresés eloszlása**: a biztonságos keresési értékek eloszlása. Például: off, mérsékelt vagy szigorú. Ha meg van `safeSearch` adva, a lekérdezési paraméter tartalmazza az értéket. Ellenkező esetben a Bing a mérsékelt értékre írja az értéket.  
 
@@ -98,7 +98,7 @@ A következő lehetséges mérőszámok és végponti korlátozások.
 
 - **Válaszok visszaadása**: a válaszban Web Search API által visszaadott válaszok.
 
-- **Válasz-kiszolgáló eloszlása**: az API-kérelmeket kézbesítő alkalmazáskiszolgáló. A lehetséges értékek a Bing.com (az asztali és hordozható eszközökről kiszolgált forgalom) és a Bing.com (a mobileszközök által kiszolgált forgalom esetében). A kiszolgáló a kérelem felhasználói ügynök fejlécének értéke alapján van meghatározva. Ha a kérelem nem tartalmazza a felhasználói ügynök fejlécét, a Bing megpróbálja a kiszolgálót más jelekből származtatni.
+- **Válasz-kiszolgáló eloszlása**: az API-kérelmeket kézbesítő alkalmazáskiszolgáló. A lehetséges értékek a Bing.com (az asztali és hordozható eszközökről kiszolgált forgalom) és a Bing.com (a mobileszközök által kiszolgált forgalom esetében). A kiszolgáló a kérelem User-Agent fejlécének értéke alapján van meghatározva. Ha a kérelem nem tartalmazza a User-Agent fejlécet, a Bing megpróbálja származtatni a kiszolgálót más jelekből.
 
 ## <a name="next-steps"></a>További lépések
 
