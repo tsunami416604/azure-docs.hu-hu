@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 02/14/2019
 ms.custom: mvc
 ms.openlocfilehash: c4b71328ce59284f8870407c9492d24afe9acd8a
-ms.sourcegitcommit: 02ca0f340a44b7e18acca1351c8e81f3cca4a370
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88586920"
 ---
 # <a name="deploy-a-linux-service-fabric-cluster-into-an-azure-virtual-network"></a>Linux Service Fabric-fürt üzembe helyezése Azure-beli virtuális hálózaton
@@ -169,7 +169,7 @@ sfctl cluster health
 
 Ha nem azonnal tér rá a következő cikkre, érdemes [törölnie a fürtöt](./service-fabric-tutorial-delete-cluster.md) a felmerülő költségek elkerülése érdekében.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Megtudhatja, hogyan [méretezheti a fürtöt](service-fabric-tutorial-scale-cluster.md).
 

@@ -8,10 +8,10 @@ ms.date: 09/13/2019
 ms.author: girobins
 ms.custom: query-reference
 ms.openlocfilehash: 3ffe8fa9286c8594dc72d78582f8c7b0a3d05c78
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85563330"
 ---
 # <a name="type-checking-functions-azure-cosmos-db"></a>Type Check functions (Azure Cosmos DB)
@@ -36,6 +36,6 @@ A következő függvények támogatják a bemeneti értékek típusának ellenő
 ## <a name="next-steps"></a>További lépések
 
 - [Rendszerfunkciók Azure Cosmos DB](sql-query-system-functions.md)
-- [Bevezetés a Azure Cosmos DBba](introduction.md)
+- [Az Azure Cosmos DB bemutatása](introduction.md)
 - [Felhasználó által definiált függvények](sql-query-udfs.md)
 - [Összesítések](sql-query-aggregates.md)

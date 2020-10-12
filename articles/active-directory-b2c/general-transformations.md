@@ -12,10 +12,10 @@ ms.date: 02/03/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 52831a1907d5ca8d13b0477c909d0d0358873973
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85202220"
 ---
 # <a name="general-claims-transformations"></a>Általános jogcím-átalakítások
@@ -28,7 +28,7 @@ Ez a cikk példákat tartalmaz a Azure Active Directory B2C (Azure AD B2C) Ident
 
 Jogcím értékének másolása egy másikra. Mindkét jogcímnek ugyanabból a típusból kell származnia.
 
-| Item | TransformationClaimType | Adattípus | Jegyzetek |
+| Elem | TransformationClaimType | Adattípus | Jegyzetek |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputClaim | karakterlánc, int | A másolandó jogcím típusa. |
 | OutputClaim | outputClaim | karakterlánc, int | A ClaimsTransformation után létrehozott ClaimType meghívása megtörtént. |
@@ -49,18 +49,18 @@ Ennek a jogcím-átalakításnak a használatával karakterlánc-vagy numerikus 
 ### <a name="example"></a>Példa
 
 - Bemeneti jogcímek:
-    - **inputClaim**:bob@contoso.com
+    - **inputClaim**: bob@contoso.com
 - Kimeneti jogcímek:
-    - **outputClaim**:bob@contoso.com
+    - **outputClaim**: bob@contoso.com
 
 ## <a name="doesclaimexist"></a>DoesClaimExist
 
 Ellenőrzi, hogy a **inputClaim** létezik-e vagy sem, és a **outputClaim** igaz vagy hamis értékre állítja.
 
-| Item | TransformationClaimType | Adattípus | Jegyzetek |
+| Elem | TransformationClaimType | Adattípus | Jegyzetek |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | inputClaim |Bármelyik | Az a bemeneti jogcím, amelynek létezését ellenőrizni kell. |
-| OutputClaim | outputClaim | logikai | A ClaimsTransformation után létrehozott ClaimType meghívása megtörtént. |
+| OutputClaim | outputClaim | boolean | A ClaimsTransformation után létrehozott ClaimType meghívása megtörtént. |
 
 Ezzel a jogcím-átalakítással ellenőrizhető, hogy létezik-e jogcím, vagy tartalmaz-e értéket. A visszatérési érték egy logikai érték, amely jelzi, hogy a jogcím létezik-e. A következő példa ellenőrzi, hogy létezik-e e-mail-cím.
 
@@ -78,7 +78,7 @@ Ezzel a jogcím-átalakítással ellenőrizhető, hogy létezik-e jogcím, vagy 
 ### <a name="example"></a>Példa
 
 - Bemeneti jogcímek:
-  - **inputClaim**:someone@contoso.com
+  - **inputClaim**: someone@contoso.com
 - Kimeneti jogcímek:
   - **outputClaim**: true
 
@@ -86,11 +86,11 @@ Ezzel a jogcím-átalakítással ellenőrizhető, hogy létezik-e jogcím, vagy 
 
 A megadott egyszerű szöveg kivonatolása a só és a titok használatával. A használt kivonatoló algoritmus az SHA-256.
 
-| Item | TransformationClaimType | Adattípus | Jegyzetek |
+| Elem | TransformationClaimType | Adattípus | Jegyzetek |
 | ---- | ----------------------- | --------- | ----- |
 | InputClaim | egyszerű szöveges | sztring | A titkosítani kívánt bemeneti jogcím |
 | InputClaim | só | sztring | A Salt paraméter. A jogcím-átalakítás használatával véletlenszerű értéket hozhat létre `CreateRandomString` . |
-| InputParameter | randomizerSecret | sztring | Egy meglévő Azure AD B2C házirend- **kulcsra**mutat. Új házirend-kulcs létrehozásához: a Azure AD B2C-bérlőben válassza a **kezelés**alatt az **identitási élmény keretrendszert**. Válassza ki a **házirend-kulcsok** elemet a bérlőben elérhető kulcsok megtekintéséhez. Válassza a **Hozzáadás** elemet. A **Beállítások**lapon válassza a **manuális**lehetőséget. Adjon meg egy nevet (az előtagot *B2C_1A_* lehet automatikusan hozzáadni.). A **titkos** szövegmezőbe írja be a használni kívánt titkos kulcsot (például 1234567890). A **kulcshasználat**beállításnál válassza az **aláírás**lehetőséget. Válassza a **Létrehozás** lehetőséget. |
+| InputParameter | randomizerSecret | sztring | Egy meglévő Azure AD B2C házirend- **kulcsra**mutat. Új házirend-kulcs létrehozásához: a Azure AD B2C-bérlőben válassza a **kezelés**alatt az **identitási élmény keretrendszert**. Válassza ki a **házirend-kulcsok** elemet a bérlőben elérhető kulcsok megtekintéséhez. Válassza a **Hozzáadás** lehetőséget. A **Beállítások**lapon válassza a **manuális**lehetőséget. Adjon meg egy nevet (az előtagot *B2C_1A_* lehet automatikusan hozzáadni.). A **titkos** szövegmezőbe írja be a használni kívánt titkos kulcsot (például 1234567890). A **kulcshasználat**beállításnál válassza az **aláírás**lehetőséget. Kattintson a **Létrehozás** gombra. |
 | OutputClaim | hash | sztring | A jogcím-átalakítás után létrehozott ClaimType meghívása megtörtént. A inputClaim konfigurált jogcím `plaintext` . |
 
 ```xml
@@ -111,7 +111,7 @@ A megadott egyszerű szöveg kivonatolása a só és a titok használatával. A 
 ### <a name="example"></a>Példa
 
 - Bemeneti jogcímek:
-  - **egyszerű szöveg**:MyPass@word1
+  - **egyszerű szöveg**: MyPass@word1
   - **só**: 487624568
   - **randomizerSecret**: B2C_1A_AccountTransformSecret
 - Kimeneti jogcímek:

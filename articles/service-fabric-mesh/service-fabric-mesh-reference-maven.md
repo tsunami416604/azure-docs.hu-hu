@@ -7,10 +7,10 @@ ms.date: 11/26/2018
 ms.topic: reference
 ms.custom: devx-track-java
 ms.openlocfilehash: 3a1aa004f47ba700ef4b96004dfe5b835788dcc7
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87372467"
 ---
 # <a name="maven-plugin-for-service-fabric-mesh"></a>Maven beépülő modul a Service Fabric Meshhoz
@@ -88,7 +88,7 @@ Futtassa az alábbi parancsot az alkalmazás-erőforrás YAML fájl létrehozás
 mvn azure-sfmesh:init -DapplicationName=helloworldserver
 ```
 
-- Létrehoz egy nevű mappát `servicefabric->appresources` a gyökérkönyvtárban, amely egy nevű alkalmazás-YAML tartalmaz.`app_helloworldserver`
+- Létrehoz egy nevű mappát `servicefabric->appresources` a gyökérkönyvtárban, amely egy nevű alkalmazás-YAML tartalmaz. `app_helloworldserver`
 
 ### <a name="add-resource-to-your-application"></a>Erőforrás hozzáadása az alkalmazáshoz
 
@@ -119,7 +119,7 @@ Futtassa az alábbi parancsot egy átjáró-erőforrás YAML létrehozásához.
 mvn azure-sfmesh:addgateway -DapplicationName=helloworldserver -DdestinationNetwork=helloworldservicenetwork -DgatewayName=helloworldgateway -DlistenerName=helloworldserviceListener -DserviceName=helloworldservice -DsourceNetwork=open -DtcpPort=80
 ```
 
-- Új átjáró YAML létrehozása a (z) `servicefabric->appresources` nevű mappában`gateway_helloworldgateway`
+- Új átjáró YAML létrehozása a (z) `servicefabric->appresources` nevű mappában `gateway_helloworldgateway`
 - `helloworldservicelistener`Az átjárótól érkező hívásokat figyelő szolgáltatás-figyelőre mutató hivatkozások. A a `helloworldservice` szolgáltatásra, `helloworldservicenetwork` a hálózatra és `helloworldserver` az alkalmazásra is hivatkozik. 
 - Az 80-es porton érkező kérések figyelése
 
@@ -151,7 +151,7 @@ Futtassa az alábbi parancsot egy secretvalue erőforrás-YAML létrehozásához
 mvn azure-sfmesh:addsecretvalue -DsecretValue=someVal -DsecretValueName=secret1/v1
 ```
 
-- Hozzon létre egy secretvalue-YAML a (z) `servicefabric->appresources` nevű mappában`secretvalue_secret1_v1`
+- Hozzon létre egy secretvalue-YAML a (z) `servicefabric->appresources` nevű mappában `secretvalue_secret1_v1`
 
 ### <a name="run-the-application-locally"></a>Az alkalmazás helyi futtatása
 

@@ -12,10 +12,10 @@ ms.topic: reference
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: f81af557242503c6380d0ff7bc1dfaed852cd908
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89070683"
 ---
 # <a name="azure-ad-connect--adsynctools-powershell-reference"></a>Azure AD Connect: ADSyncTools PowerShell-hivatkozás
@@ -84,7 +84,7 @@ Accept wildcard characters: False
 Ez a parancsmag a következő általános paramétereket támogatja: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction és -WarningVariable.
 További információ: about_CommonParameters ( https://go.microsoft.com/fwlink/?LinkID=113216) .
 
-## <a name="confirm-adsynctoolsadmoduleloaded"></a>Megerősítés – ADSyncToolsADModuleLoaded
+## <a name="confirm-adsynctoolsadmoduleloaded"></a>Confirm-ADSyncToolsADModuleLoaded
 
 ### <a name="synopsis"></a>SZINOPSZIS
 {{Az Áttekintés}} kitöltése
@@ -107,7 +107,7 @@ PS C:\> {{ Add example code here }}
 
 {{Példa a Leírás hozzáadására}}
 
-## <a name="connect-adsyncdatabase"></a>Kapcsolat – AdSyncDatabase
+## <a name="connect-adsyncdatabase"></a>Connect-AdSyncDatabase
 
 ### <a name="synopsis"></a>SZINOPSZIS
 {{Az Áttekintés}} kitöltése
@@ -212,7 +212,7 @@ Accept wildcard characters: False
 Ez a parancsmag a következő általános paramétereket támogatja: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction és -WarningVariable.
 További információ: about_CommonParameters ( https://go.microsoft.com/fwlink/?LinkID=113216) .
 
-## <a name="export-adsynctoolsconsistencyguidmigration"></a>Exportálás – ADSyncToolsConsistencyGuidMigration
+## <a name="export-adsynctoolsconsistencyguidmigration"></a>Export-ADSyncToolsConsistencyGuidMigration
 
 ### <a name="synopsis"></a>SZINOPSZIS
 ConsistencyGuid-jelentés exportálása
@@ -225,7 +225,7 @@ Export-ADSyncToolsConsistencyGuidMigration [-AlternativeLoginId] [-UserPrincipal
 ```
 
 ### <a name="description"></a>LEÍRÁS
-ConsistencyGuid-jelentést hoz létre az import-ADSyncToolsImmutableIdMigration importálási CSV-fájlja alapján.
+ConsistencyGuid-jelentést hoz létre a CSV-fájl importálásával Import-ADSyncToolsImmutableIdMigration
 
 ### <a name="examples"></a>PÉLDÁK
 
@@ -554,7 +554,7 @@ A függvény lekérdezi a HRE csatlakozási előzményeit, és exportálja az ö
 #Required Parameters
 ```
 
-$sourcePath = Read-Host-prompt "adja meg a naplófájl elérési útját a következő névvel: fájlnév" # " \<Source_Path\> " $outputPath = Read-Host-prompt "adja meg a fájl elérési útját a" # "fájlnévnél \<Out_Path\>
+$sourcePath = Read-Host-prompt "adja meg a naplófájl elérési útját a következő fájlnévvel:" # "" \<Source_Path\> $outputPath = Read-Host-prompt "adja meg a fájl elérési útját a" # "fájlnévvel \<Out_Path\>
  
  Get-ADSyncToolsUsersSourceAnchorChanged-sourcePath $sourcePath-outputPath $outputPath
 
@@ -599,7 +599,7 @@ Accept wildcard characters: False
 Ez a parancsmag a következő általános paramétereket támogatja: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction és -WarningVariable.
 További információ: about_CommonParameters ( https://go.microsoft.com/fwlink/?LinkID=113216) .
 
-## <a name="import-adsynctoolsimmutableidmigration"></a>Importálás – ADSyncToolsImmutableIdMigration
+## <a name="import-adsynctoolsimmutableidmigration"></a>Import-ADSyncToolsImmutableIdMigration
 
 ### <a name="synopsis"></a>SZINOPSZIS
 ImmutableID importálása a HRE-ből
@@ -663,7 +663,7 @@ Ez a parancsmag a következő általános paramétereket támogatja: -Debug, -Er
 További információ: about_CommonParameters ( https://go.microsoft.com/fwlink/?LinkID=113216) .
 
 
-## <a name="invoke-adsyncdatabasequery"></a>Meghívás – AdSyncDatabaseQuery
+## <a name="invoke-adsyncdatabasequery"></a>Invoke-AdSyncDatabaseQuery
 
 ### <a name="synopsis"></a>SZINOPSZIS
 {{Az Áttekintés}} kitöltése
@@ -747,14 +747,14 @@ Minden tanúsítvány biztonsági mentése egy külön fájlnévre történik: O
 Check all users in target OU - Expired Certificates will be copied to separated files and no certificates will be removed
 ```
 
-Remove-ADSyncToolsExpiredCertificates-TargetOU "OU = Users, OU = Corp, DC = contoso, DC = com" – ObjectClass felhasználó
+Remove-ADSyncToolsExpiredCertificates-TargetOU "OU = felhasználók, OU = Corp, DC = contoso, DC = com" – ObjectClass felhasználó
 
 #### <a name="example-2"></a>2. PÉLDA
 ```
 Delete Expired Certs from all Computer objects in target OU - Expired Certificates will be copied to files and removed from AD
 ```
 
-Remove-ADSyncToolsExpiredCertificates-TargetOU "OU = Computers, OU = Corp, DC = contoso, DC = com"-ObjectClass Computer-BackupOnly $false
+Remove-ADSyncToolsExpiredCertificates-TargetOU "OU = számítógépek, OU = Corp, DC = contoso, DC = com" – ObjectClass számítógép – BackupOnly $false
 
 ### <a name="parameters"></a>PARAMÉTEREK
 
@@ -807,7 +807,7 @@ Accept wildcard characters: False
 Ez a parancsmag a következő általános paramétereket támogatja: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction és -WarningVariable.
 További információ: about_CommonParameters ( https://go.microsoft.com/fwlink/?LinkID=113216) .
 
-## <a name="repair-adsynctoolsautoupgradestate"></a>Javítás – ADSyncToolsAutoUpgradeState
+## <a name="repair-adsynctoolsautoupgradestate"></a>Repair-ADSyncToolsAutoUpgradeState
 
 ### <a name="synopsis"></a>SZINOPSZIS
 Rövid leírás
@@ -833,7 +833,7 @@ Example of how to use this cmdlet
 Another example of how to use this cmdlet
 ```
 
-## <a name="resolve-adsynchostaddress"></a>Megoldás – ADSyncHostAddress
+## <a name="resolve-adsynchostaddress"></a>Resolve-ADSyncHostAddress
 
 ### <a name="synopsis"></a>SZINOPSZIS
 {{Az Áttekintés}} kitöltése
@@ -873,7 +873,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-## <a name="restore-adsynctoolsexpiredcertificates"></a>Visszaállítás – ADSyncToolsExpiredCertificates
+## <a name="restore-adsynctoolsexpiredcertificates"></a>Restore-ADSyncToolsExpiredCertificates
 
 ### <a name="synopsis"></a>SZINOPSZIS
 (TEENDŐk) Az AD UserCertificate attribútumának visszaállítása tanúsítványfájl-fájlból
@@ -961,7 +961,7 @@ Accept wildcard characters: False
 Ez a parancsmag a következő általános paramétereket támogatja: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction és -WarningVariable.
 További információ: about_CommonParameters ( https://go.microsoft.com/fwlink/?LinkID=113216) .
 
-## <a name="test-adsyncnetworkport"></a>Teszt – ADSyncNetworkPort
+## <a name="test-adsyncnetworkport"></a>Test-ADSyncNetworkPort
 
 ### <a name="synopsis"></a>SZINOPSZIS
 {{Az Áttekintés}} kitöltése
@@ -1016,7 +1016,7 @@ Accept pipeline input: False
 Accept wildcard characters: False
 ```
 
-## <a name="trace-adsynctoolsadimport"></a>Nyomkövetés – ADSyncToolsADImport
+## <a name="trace-adsynctoolsadimport"></a>Trace-ADSyncToolsADImport
 
 ### <a name="synopsis"></a>SZINOPSZIS
 Nyomkövetési fájl létrehozása a és az AD importálási lépésből
@@ -1140,7 +1140,7 @@ Accept wildcard characters: False
 Ez a parancsmag a következő általános paramétereket támogatja: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction és -WarningVariable.
 További információ: about_CommonParameters ( https://go.microsoft.com/fwlink/?LinkID=113216) .
 
-## <a name="trace-adsynctoolsldapquery"></a>Nyomkövetés – ADSyncToolsLdapQuery
+## <a name="trace-adsynctoolsldapquery"></a>Trace-ADSyncToolsLdapQuery
 
 ### <a name="synopsis"></a>SZINOPSZIS
 Rövid leírás
@@ -1233,7 +1233,7 @@ Accept wildcard characters: False
 Ez a parancsmag a következő általános paramétereket támogatja: -Debug, -ErrorAction, -ErrorVariable, -InformationAction, -InformationVariable, -OutVariable, -OutBuffer, -PipelineVariable, -Verbose, -WarningAction és -WarningVariable.
 További információ: about_CommonParameters ( https://go.microsoft.com/fwlink/?LinkID=113216) .
 
-## <a name="update-adsynctoolsconsistencyguidmigration"></a>Frissítés – ADSyncToolsConsistencyGuidMigration
+## <a name="update-adsynctoolsconsistencyguidmigration"></a>Update-ADSyncToolsConsistencyGuidMigration
 
 ### <a name="synopsis"></a>SZINOPSZIS
 A felhasználók frissítése az új ConsistencyGuid (ImmutableId)

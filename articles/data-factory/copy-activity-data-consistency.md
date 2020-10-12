@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 3/27/2020
 ms.author: yexu
 ms.openlocfilehash: d52d172fa4cc435235079cd88999766df93bfdf0
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86522907"
 ---
 #  <a name="data-consistency-verification-in-copy-activity-preview"></a>Adatkonzisztencia-ellenőrzés a másolási tevékenységben (előzetes verzió)
@@ -139,10 +139,10 @@ A fenti naplófájlban láthatja, sample1.csv ki lett hagyva, mert nem sikerült
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Lásd a másolási tevékenység egyéb cikkeit:
 
-- [Másolási tevékenység – áttekintés](copy-activity-overview.md)
+- [Másolási tevékenység áttekintése](copy-activity-overview.md)
 - [Másolási tevékenység hibatűrése](copy-activity-fault-tolerance.md)
 
 

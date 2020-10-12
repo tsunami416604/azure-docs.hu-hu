@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 03/04/2020
 ms.openlocfilehash: 3ab706b9cdf3c071fd5d3ceca732cff6b660db6b
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87086557"
 ---
 # <a name="connect-hdinsight-to-your-on-premises-network"></a>A HDInsight csatlakoztatása a helyszíni hálózathoz
@@ -246,7 +246,7 @@ Ha úgy szeretné konfigurálni a virtuális hálózatot, hogy az egyéni DNS-ki
 
 4. Válassza az __Egyéni__lehetőséget, majd adja meg az egyéni DNS-kiszolgáló **MAGÁNHÁLÓZATI IP-címét** .
 
-5. Válassza a __Mentés__ lehetőséget.  <br />  
+5. Kattintson a __Mentés__ gombra.  <br />  
 
     ![A hálózat egyéni DNS-kiszolgálójának beállítása](./media/connect-on-premises-network/configure-custom-dns.png)
 

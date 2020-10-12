@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 08/05/2020
 ms.author: zhshang
 ms.openlocfilehash: 5483e10e817ce8a0a7e7c82d817b7bdbbdd9176b
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87853449"
 ---
 # <a name="messages-and-connections-in-azure-signalr-service"></a>Üzenetek és kapcsolatok az Azure Signaler szolgáltatásban
@@ -42,7 +42,7 @@ Az App Server 1 KB-os üzenetet küld az összes csatlakoztatott ügyfélnek, az
 
 Az A ügyfél 1 KB-os üzenetet küld egy másik "B" ügyfélnek, anélkül, hogy az App Serveren kellene haladnia. Az A ügyfél és a szolgáltatás közötti üzenet ingyenes bejövő üzenetet küld. A szolgáltatásból a B ügyfélnek küldött üzenet számlázása kimenő üzenetként történik.
 
-Ha három ügyféllel és egy alkalmazás-kiszolgálóval rendelkezik. Egy ügyfél 4 KB-os üzenetet küld, amely lehetővé teszi a kiszolgáló számára az összes ügyfél számára történő szórást. A számlázott üzenetek száma nyolc: egy üzenet a szolgáltatásból az alkalmazáskiszolgáló felé, valamint három üzenet a szolgáltatástól az ügyfeleknek. Minden üzenet két 2 KB-os üzenetnek számít.
+Ha három ügyféllel és egy alkalmazás-kiszolgálóval rendelkezik. Egy ügyfél 4 KB-os üzenetet küld, amely lehetővé teszi a kiszolgáló számára az összes ügyfél számára történő szórást. A számlázott üzenetek száma nyolc: egy üzenet a szolgáltatásból az alkalmazáskiszolgáló felé, valamint három üzenet a szolgáltatástól az ügyfeleknek. Minden üzenet 2 2 KB-os üzenetnek számít.
 
 ## <a name="how-connections-are-counted"></a>A kapcsolatok számlálása
 

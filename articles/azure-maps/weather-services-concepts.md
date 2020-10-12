@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 4430737814ef904e83b2bf3ce25edf3d44e2668d
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90972043"
 ---
 # <a name="weather-services-in-azure-maps"></a>Időjárási szolgáltatások a Azure Maps
@@ -108,22 +108,22 @@ Az alábbi táblázat útmutatást nyújt a radar-képek értelmezéséhez, vala
 
 | Hexadecimális színkód | Színminta | Időjárási feltétel |
 |----------------|--------------|-------------------|
-| #93c701        | ![Az esőt jelző szín](./media/weather-services-concepts/color-93c701.png) | Csapadékos fény |
-| #ffd701        | ![Az enyhe csapadék színe](./media/weather-services-concepts/color-ffd701.png) | Enyhe csapadék |
-| #f05514        | ![Az eső-nehéz szín.](./media/weather-services-concepts/color-f05514.png) | Eső – nehéz |
-| #dc250e        | ![Eső – súlyos szín](./media/weather-services-concepts/color-dc250e.png) | Eső – súlyos |
-| #9ec8f2        | ![A Snow-Light színének színe](./media/weather-services-concepts/color-9ec8f2.png) | Havazás |
-| #2a8fdb        | ![A Snow-mérsékelt szín.](./media/weather-services-concepts/color-2a8fdb.png) | Havazás – mérsékelt |
-| #144bed        | ![A Snow-Heavy szín színe](./media/weather-services-concepts/color-144bed.png) | Snow – nagy |
-| #020096        | ![A Snow-súlyos szín.](./media/weather-services-concepts/color-020096.png) | Snow – súlyos |
-| #e6a5c8        | ![A jég színét jelző szín](./media/weather-services-concepts/color-e6a5c8.png) | Jeges fény |
-| #d24fa0        | ![A jég moderálásának színe.](./media/weather-services-concepts/color-d24fa0.png) | Jég közepes |
-| #b71691        | ![A jég súlyos színe.](./media/weather-services-concepts/color-b71691.png) | Jég – súlyos |
+| #93c701        | ![Az esőt jelző szín](./media/weather-services-concepts/color-93c701.png) | Rain-Light |
+| #ffd701        | ![Az enyhe csapadék színe](./media/weather-services-concepts/color-ffd701.png) | Rain-Moderate |
+| #f05514        | ![Az eső-nehéz szín.](./media/weather-services-concepts/color-f05514.png) | Rain-Heavy |
+| #dc250e        | ![Eső – súlyos szín](./media/weather-services-concepts/color-dc250e.png) | Rain-Severe |
+| #9ec8f2        | ![A Snow-Light színének színe](./media/weather-services-concepts/color-9ec8f2.png) | Snow-Light |
+| #2a8fdb        | ![A Snow-mérsékelt szín.](./media/weather-services-concepts/color-2a8fdb.png) | Snow-Moderate |
+| #144bed        | ![A Snow-Heavy szín színe](./media/weather-services-concepts/color-144bed.png) | Snow-Heavy |
+| #020096        | ![A Snow-súlyos szín.](./media/weather-services-concepts/color-020096.png) | Snow-Severe |
+| #e6a5c8        | ![A jég színét jelző szín](./media/weather-services-concepts/color-e6a5c8.png) | Ice-Light |
+| #d24fa0        | ![A jég moderálásának színe.](./media/weather-services-concepts/color-d24fa0.png) | Ice-Moderate |
+| #b71691        | ![A jég súlyos színe.](./media/weather-services-concepts/color-b71691.png) | Ice-Severe |
 | #7a1570        | ![A jég nagy színe.](./media/weather-services-concepts/color-7a1570.png) | Ice-Heavy |
 | #c196e6        | ![A mix-Light szín](./media/weather-services-concepts/color-c196e6.png) | Mix-Light |
-| #ae6ee6        | ![A mix-mérsékelt szín.](./media/weather-services-concepts/color-ae6ee6.png) | Mérsékelt keverés |
-| #8a32d7        | ![A mix-Heavy szín](./media/weather-services-concepts/color-8a32d7.png) | Nagy kombináció |
-| #6500ba        | ![A mix-súlyos szín.](./media/weather-services-concepts/color-6500ba.png) | Súlyos kombináció |
+| #ae6ee6        | ![A mix-mérsékelt szín.](./media/weather-services-concepts/color-ae6ee6.png) | Mix-Moderate |
+| #8a32d7        | ![A mix-Heavy szín](./media/weather-services-concepts/color-8a32d7.png) | Mix-Heavy |
+| #6500ba        | ![A mix-súlyos szín.](./media/weather-services-concepts/color-6500ba.png) | Mix-Severe |
 
 Alább láthatók a radar csempék részletes színpalettája hexadecimális színkódokkal és dBZ értékekkel. a dBZ a csapadék intenzitását jelöli az időjárási radarban. 
 
@@ -199,7 +199,7 @@ Az alábbi táblázat útmutatást nyújt az infravörös műholdképek megjelen
 
 | Hexadecimális színkód | Színminta | Felhő hőmérséklete |
 |----------------|--------------|-------------------|
-| #b5b5b5        | ![#B5b5b5 színének csempe](./media/weather-services-concepts/color-b5b5b5.png) | Alacsony hőmérséklet | 
+| #b5b5b5        | ![#B5b5b5 színének csempe](./media/weather-services-concepts/color-b5b5b5.png) | Temperature-Low | 
 | #d24fa0        | ![#D24fa0 színének csempe](./media/weather-services-concepts/color-d24fa0.png) |  |
 | #8a32d7        | ![#8a32d7 színének csempe](./media/weather-services-concepts/color-8a32d7.png) |  |
 | #144bed        | ![#144bed színének csempe](./media/weather-services-concepts/color-144bed.png) |  |
@@ -210,7 +210,7 @@ Az alábbi táblázat útmutatást nyújt az infravörös műholdképek megjelen
 | #f05514        | ![#F05514 színének csempe](./media/weather-services-concepts/color-f05514.png) |  |
 | #dc250e        | ![#Dc250e színének csempe](./media/weather-services-concepts/color-dc250e.png) |  |
 | #ba0808        | ![#Ba0808 színének csempe](./media/weather-services-concepts/color-ba0808.png) |  |
-| #1f1f1f        | ![#1f1f1f színének csempe](./media/weather-services-concepts/color-1f1f1f.png) | Hőmérséklet – magas |
+| #1f1f1f        | ![#1f1f1f színének csempe](./media/weather-services-concepts/color-1f1f1f.png) | Temperature-High |
 
 
 Alább látható az infravörös műholdképek részletes palettája.
@@ -494,7 +494,7 @@ Az alábbi táblázat a rendelkezésre álló index-azonosítókat, azok nevét 
   Por & harag              |18| [Alacsony Extreme 1](#low-extreme-1)
   Mező készültsége            |32| [Gyenge – kiváló 1](#poor-excellent-1)
   Halászat                    |13| [Gyenge – kiváló 1](#poor-excellent-1)
-  Repülési késések              |-3|  [Nagyon valószínűtlen – nagyon valószínű, 2](#very-unlikely-very-likely-2)
+  Repülési késések              |-3|  [Nagyon Unlikely-Very valószínűleg 2](#very-unlikely-very-likely-2)
   Influenza                        |26|  [Hasznos – szélsőséges kockázat](#beneficial-at-extreme-risk)
   Repülési utazási index        |31| [Kiváló – gyenge](#excellent-poor)
   Tüzelőanyag-takarékosság               |37| [Gyenge – kiváló 1](#poor-excellent-1)
@@ -523,7 +523,7 @@ Az alábbi táblázat a rendelkezésre álló index-azonosítókat, azok nevét 
   Sinus-fejfájás             |30|  [Hasznos – szélsőséges kockázat](#beneficial-at-extreme-risk)
   Gördeszka              | 7| [Gyenge – kiváló 1](#poor-excellent-1)
   Sí Időjárás                | 15| [Gyenge – kiváló 1](#poor-excellent-1)
-  Hó napjai                  | 19| [Nagyon valószínűtlen – nagyon valószínű](#very-unlikely-very-likely)
+  Hó napjai                  | 19| [Nagyon Unlikely-Very valószínűleg](#very-unlikely-very-likely)
   Talaj nedvességtartalma              | 34| [Gyenge – kiváló 1](#poor-excellent-1)
   Stargazing                 | 12| [Gyenge – kiváló 1](#poor-excellent-1)
 
@@ -549,7 +549,7 @@ Alább látható az elérhető indexelt csoportok (indexGroupId) listája:
 
 A napi indexek [beolvasása API](https://aka.ms/AzureMapsWeatherDailyIndices) a tartományhoz tartozó értéket és a hozzá tartozó kategórianév nevét adja vissza az egyes index-azonosítók esetében. A tartomány-készletek nem egyeznek az összes indexnél. Az alábbi táblázat az [index-azonosítók és az index-csoportok azonosítói](#index-ids-and-index-groups-ids)között felsorolt támogatott indexek által használt különböző tartomány-készleteket mutatja. A jelen dokumentum [index-azonosítók és tárgymutató-csoportok azonosítók](#index-ids-and-index-groups-ids) szakaszában találhatja meg, hogy mely indexek milyen tartományokat használnak.
 
-### <a name="poor-excellent-1"></a>Gyenge – kiváló 1
+### <a name="poor-excellent-1"></a>Poor-Excellent 1
 
   | Kategórianév | Kezdési tartomány | Záró tartomány |
   ----------------|--------------|------------
@@ -559,7 +559,7 @@ A napi indexek [beolvasása API](https://aka.ms/AzureMapsWeatherDailyIndices) a 
   nagyon jó         |  7  |               8,99
   Kiváló         |  9  |               10
 
-### <a name="poor-excellent-2"></a>Gyenge – kiváló 2
+### <a name="poor-excellent-2"></a>Poor-Excellent 2
 
  | Kategórianév | Kezdési tartomány | Záró tartomány |
   ----------------|--------------|------------
@@ -569,7 +569,7 @@ A napi indexek [beolvasása API](https://aka.ms/AzureMapsWeatherDailyIndices) a 
   nagyon jó      |7,51           |  8,99
   Kiváló      |9              |  10
 
-### <a name="excellent-poor"></a>Kiváló – gyenge
+### <a name="excellent-poor"></a>Excellent-Poor
 
  | Kategórianév | Kezdési tartomány | Záró tartomány |
   ----------------|--------------|------------
@@ -579,7 +579,7 @@ A napi indexek [beolvasása API](https://aka.ms/AzureMapsWeatherDailyIndices) a 
   Elfogadható             |   5,01          |  7,00
   Rossz             |   7,01          |  10,00
 
-### <a name="low-extreme-1"></a>Alacsony Extreme 1
+### <a name="low-extreme-1"></a>Low-Extreme 1
 
    | Kategórianév | Kezdési tartomány | Záró tartomány |
   ----------------|--------------|------------
@@ -589,7 +589,7 @@ A napi indexek [beolvasása API](https://aka.ms/AzureMapsWeatherDailyIndices) a 
   Nagyon magas          |  6         |        7,99
   Extrém            |  8         |        10
 
-### <a name="low-extreme-2"></a>Alacsony Extreme 2
+### <a name="low-extreme-2"></a>Low-Extreme 2
 
    | Kategórianév | Kezdési tartomány | Záró tartomány |
   ----------------|--------------|------------
@@ -599,7 +599,7 @@ A napi indexek [beolvasása API](https://aka.ms/AzureMapsWeatherDailyIndices) a 
   Nagyon magas          |  7            |      8,99
   Extrém            |  9            |      10
 
-### <a name="very-unlikely-very-likely"></a>Nagyon valószínűtlen – nagyon valószínű
+### <a name="very-unlikely-very-likely"></a>Nagyon Unlikely-Very valószínűleg
 
  | Kategórianév | Kezdési tartomány | Záró tartomány |
   ----------------|--------------|------------
@@ -609,7 +609,7 @@ A napi indexek [beolvasása API](https://aka.ms/AzureMapsWeatherDailyIndices) a 
   Valószínűleg             | 6     |           7,99
   Nagyon valószínű        | 8     |           10
 
-### <a name="very-unlikely-very-likely-2"></a>Nagyon valószínűtlen – nagyon valószínű, 2
+### <a name="very-unlikely-very-likely-2"></a>Nagyon Unlikely-Very valószínűleg 2
 
  | Kategórianév | Kezdési tartomány | Záró tartomány |
   ----------------|--------------|------------
@@ -619,7 +619,7 @@ A napi indexek [beolvasása API](https://aka.ms/AzureMapsWeatherDailyIndices) a 
   Valószínűleg             |  5,01     |         7,00
   Nagyon valószínű        |  7,01     |         10,00
 
-### <a name="unlikely-emergency"></a>Nem valószínű – vészhelyzet
+### <a name="unlikely-emergency"></a>Unlikely-Emergency
 
 | Kategórianév | Kezdési tartomány | Záró tartomány |
   ----------------|--------------|------------
@@ -629,7 +629,7 @@ A napi indexek [beolvasása API](https://aka.ms/AzureMapsWeatherDailyIndices) a 
   Figyelmeztetés          |  7     |          8,99
   Sürgősségi        |  9     |          10
 
-### <a name="beneficial-at-extreme-risk"></a>Hasznos – szélsőséges kockázat
+### <a name="beneficial-at-extreme-risk"></a>Beneficial-At szélsőséges kockázat
 
 | Kategórianév | Kezdési tartomány | Záró tartomány |
   ----------------|--------------|------------

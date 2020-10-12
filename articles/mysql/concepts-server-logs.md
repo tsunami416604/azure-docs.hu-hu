@@ -7,13 +7,13 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 4/13/2020
 ms.openlocfilehash: f834ba3355d362e59e2e44f37eca0560b9bf4d7a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81271981"
 ---
-# <a name="slow-query-logs-in-azure-database-for-mysql"></a>Lassú lekérdezési naplók a Azure Database for MySQL
+# <a name="slow-query-logs-in-azure-database-for-mysql"></a>Lassú lekérdezési naplók az Azure Database for MySQL-ben
 Azure Database for MySQL a lassú lekérdezési napló elérhető a felhasználók számára. A tranzakciónaplóhoz való hozzáférés nem támogatott. A lassú lekérdezési napló használatával azonosíthatók a hibaelhárítási teljesítménybeli szűk keresztmetszetek.
 
 További információ a MySQL lassú lekérdezési naplóról: a MySQL-hivatkozás manuális [lassú lekérdezési napló szakasza](https://dev.mysql.com/doc/refman/5.7/en/slow-query-log.html).
@@ -59,18 +59,18 @@ Az alábbi táblázat az egyes naplókat ismerteti. A kimeneti módszertől füg
 |---|---|
 | `TenantId` | A bérlő azonosítója |
 | `SourceSystem` | `Azure` |
-| `TimeGenerated`UTC | A napló UTC-ben való rögzítésének időbélyegzője |
-| `Type` | A napló típusa. Mindig`AzureDiagnostics` |
+| `TimeGenerated` UTC | A napló UTC-ben való rögzítésének időbélyegzője |
+| `Type` | A napló típusa. Mindig `AzureDiagnostics` |
 | `SubscriptionId` | Annak az előfizetésnek a GUID azonosítója, amelyhez a kiszolgáló tartozik |
 | `ResourceGroup` | Azon erőforráscsoport neve, amelyhez a kiszolgáló tartozik |
-| `ResourceProvider` | Az erőforrás-szolgáltató neve. Mindig`MICROSOFT.DBFORMYSQL` |
+| `ResourceProvider` | Az erőforrás-szolgáltató neve. Mindig `MICROSOFT.DBFORMYSQL` |
 | `ResourceType` | `Servers` |
 | `ResourceId` | Erőforrás URI-ja |
 | `Resource` | A kiszolgáló neve |
 | `Category` | `MySqlSlowLogs` |
 | `OperationName` | `LogEvent` |
 | `Logical_server_name_s` | A kiszolgáló neve |
-| `start_time_t`UTC | A lekérdezés elkezdésének ideje |
+| `start_time_t` UTC | A lekérdezés elkezdésének ideje |
 | `query_time_s` | A lekérdezés végrehajtásának teljes időtartama (másodpercben) |
 | `lock_time_s` | A lekérdezés zárolásának teljes ideje másodpercben |
 | `user_host_s` | Felhasználónév |
@@ -141,6 +141,6 @@ Ha a lassú lekérdezési naplók a diagnosztikai naplókon keresztül Azure Mon
     | where query_time_d > 10
     ```    
     
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - [Lassú lekérdezési naplók konfigurálása a Azure Portal](howto-configure-server-logs-in-portal.md)
 - [Lassú lekérdezések naplóinak konfigurálása az Azure CLI-ből](howto-configure-server-logs-in-cli.md).

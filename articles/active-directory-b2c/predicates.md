@@ -12,10 +12,10 @@ ms.date: 03/30/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: b01f1edd4305c09a874b177e4bca373991c9162e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85203809"
 ---
 # <a name="predicates-and-predicatevalidations"></a>Predikátumok és PredicateValidations
@@ -36,7 +36,7 @@ A **predikátumok** elemnek közvetlenül a [BuildingBlocks](buildingblocks.md) 
 
 A **predikátumok** elem a következő elemet tartalmazza:
 
-| Elem | Események | Description |
+| Elem | Események | Leírás |
 | ------- | ----------- | ----------- |
 | Predikátum | 1: n | Predikátumok listája. |
 
@@ -44,28 +44,28 @@ A **predikátum** elem a következő attribútumokat tartalmazza:
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| Azonosító | Yes | A predikátumhoz használt azonosító. Más elemek is használhatják ezt az azonosítót a szabályzatban. |
-| Metódus | Yes | Az érvényesítéshez használandó metódus típusa Lehetséges értékek: [IsLengthRange](#islengthrange), [MatchesRegex](#matchesregex), [IncludesCharacters](#includescharacters)vagy [IsDateRange](#isdaterange).  |
-| HelpText | No | Hibaüzenet a felhasználók számára, ha az ellenőrzés sikertelen. Ez a karakterlánc honosítható a [nyelvi Testreszabás](localization.md) használatával |
+| Id | Igen | A predikátumhoz használt azonosító. Más elemek is használhatják ezt az azonosítót a szabályzatban. |
+| Metódus | Igen | Az érvényesítéshez használandó metódus típusa Lehetséges értékek: [IsLengthRange](#islengthrange), [MatchesRegex](#matchesregex), [IncludesCharacters](#includescharacters)vagy [IsDateRange](#isdaterange).  |
+| HelpText | Nem | Hibaüzenet a felhasználók számára, ha az ellenőrzés sikertelen. Ez a karakterlánc honosítható a [nyelvi Testreszabás](localization.md) használatával |
 
 A **predikátum** elem a következő elemeket tartalmazza:
 
-| Elem | Események | Description |
+| Elem | Események | Leírás |
 | ------- | ----------- | ----------- |
 | UserHelpText | 0:1 | Elavult Hibaüzenet a felhasználók számára, ha az ellenőrzés sikertelen. |
 | Paraméterek | 1:1 | A karakterlánc-érvényesítési metódus típusának paraméterei |
 
 A **Parameters (paraméterek** ) elem a következő elemeket tartalmazza:
 
-| Elem | Események | Description |
+| Elem | Események | Leírás |
 | ------- | ----------- | ----------- |
 | Paraméter | 1: n | A karakterlánc-érvényesítési metódus típusának paraméterei |
 
 A **paraméter** elem a következő attribútumokat tartalmazza:
 
-| Elem | Események | Description |
+| Elem | Események | Leírás |
 | ------- | ----------- | ----------- |
-| Azonosító | 1:1 | A paraméter azonosítója. |
+| Id | 1:1 | A paraméter azonosítója. |
 
 ### <a name="predicate-methods"></a>Predikátum-metódusok
 
@@ -75,8 +75,8 @@ A IsLengthRange metódus ellenőrzi, hogy a karakterlánc-jogcím értéke a meg
 
 | Paraméter | Kötelező | Leírás |
 | ------- | ----------- | ----------- |
-| Maximum | Yes | A megadható karakterek maximális száma. |
-| Minimális | Yes | A karakterek minimális számának megadása kötelező. |
+| Maximum | Igen | A megadható karakterek maximális száma. |
+| Minimális | Igen | A karakterek minimális számának megadása kötelező. |
 
 
 A következő példa egy IsLengthRange metódust mutat be a paraméterekkel, `Minimum` `Maximum` amelyek meghatározzák a karakterlánc hosszának tartományát:
@@ -96,7 +96,7 @@ A MatchesRegex metódus ellenőrzi, hogy egy karakterlánc-jogcím értéke megf
 
 | Paraméter | Kötelező | Leírás |
 | ------- | ----------- | ----------- |
-| Válaszban | Yes | Az egyeztetendő reguláris kifejezési minta. |
+| Válaszban | Igen | Az egyeztetendő reguláris kifejezési minta. |
 
 A következő példa egy `MatchesRegex` metódust mutat be a paraméterrel, `RegularExpression` amely egy reguláris kifejezést határoz meg:
 
@@ -114,7 +114,7 @@ A IncludesCharacters metódus ellenőrzi, hogy egy karakterlánc-jogcím érték
 
 | Paraméter | Kötelező | Leírás |
 | ------- | ----------- | ----------- |
-| CharacterSet | Yes | A megadható karakterek halmaza. Például kisbetűk, nagybetűk, `a-z` `A-Z` számjegyek `0-9` vagy szimbólumok listája, például: `@#$%^&amp;*\-_+=[]{}|\\:',?/~"();!` . |
+| CharacterSet | Igen | A megadható karakterek halmaza. Például kisbetűk, nagybetűk,  `a-z` `A-Z` számjegyek `0-9` vagy szimbólumok listája, például: `@#$%^&amp;*\-_+=[]{}|\\:',?/~"();!` . |
 
 A következő példa egy `IncludesCharacters` metódust mutat be a paraméterrel, `CharacterSet` amely megadja a karakterek készletét:
 
@@ -132,8 +132,8 @@ A IsDateRange metódus ellenőrzi, hogy a Date jogcím értéke a megadott minim
 
 | Paraméter | Kötelező | Leírás |
 | ------- | ----------- | ----------- |
-| Maximum | Yes | A legnagyobb lehetséges dátum, amelyet meg lehet adni. A dátum formátuma a következő: `yyyy-mm-dd` egyezmény vagy `Today` . |
-| Minimális | Yes | A legkisebb lehetséges dátum, amelyet meg lehet adni. A dátum formátuma a következő: `yyyy-mm-dd` egyezmény vagy `Today` .|
+| Maximum | Igen | A legnagyobb lehetséges dátum, amelyet meg lehet adni. A dátum formátuma a következő: `yyyy-mm-dd` egyezmény vagy `Today` . |
+| Minimális | Igen | A legkisebb lehetséges dátum, amelyet meg lehet adni. A dátum formátuma a következő: `yyyy-mm-dd` egyezmény vagy `Today` .|
 
 Az alábbi példa egy `IsDateRange` metódust mutat be a paraméterekkel, `Minimum` `Maximum` amelyek a dátumtartományt a és a formátumával határozzák meg `yyyy-mm-dd` `Today` .
 
@@ -172,7 +172,7 @@ A **PredicateValidations** elemnek közvetlenül kell szerepelnie a **predikátu
 
 A **PredicateValidations** elem a következő elemet tartalmazza:
 
-| Elem | Események | Description |
+| Elem | Események | Leírás |
 | ------- | ----------- | ----------- |
 | PredicateValidation | 1: n | A predikátum érvényesítésének listája. |
 
@@ -180,17 +180,17 @@ A **PredicateValidation** elem a következő attribútumot tartalmazza:
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| Azonosító | Yes | A predikátum érvényesítéséhez használt azonosító. A **claimType** elem a szabályzatban használhatja ezt az azonosítót. |
+| Id | Igen | A predikátum érvényesítéséhez használt azonosító. A **claimType** elem a szabályzatban használhatja ezt az azonosítót. |
 
 A **PredicateValidation** elem a következő elemet tartalmazza:
 
-| Elem | Események | Description |
+| Elem | Események | Leírás |
 | ------- | ----------- | ----------- |
 | PredicateGroups | 1: n | Predikátum-csoportok listája. |
 
 A **PredicateGroups** elem a következő elemet tartalmazza:
 
-| Elem | Események | Description |
+| Elem | Események | Leírás |
 | ------- | ----------- | ----------- |
 | PredicateGroup | 1: n | Predikátumok listája. |
 
@@ -198,11 +198,11 @@ A **PredicateGroup** elem a következő attribútumot tartalmazza:
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| Azonosító | Yes | A predikátum-csoporthoz használt azonosító.  |
+| Id | Igen | A predikátum-csoporthoz használt azonosító.  |
 
 A **PredicateGroup** elem a következő elemeket tartalmazza:
 
-| Elem | Események | Description |
+| Elem | Események | Leírás |
 | ------- | ----------- | ----------- |
 | UserHelpText | 0:1 |  A predikátum leírása, amely hasznos lehet a felhasználók számára, hogy tudják, milyen értékeket kell beírniuk. |
 | PredicateReferences | 1: n | A predikátumokra vonatkozó hivatkozások listája. |
@@ -211,11 +211,11 @@ A **PredicateReferences** elem a következő attribútumokat tartalmazza:
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| MatchAtLeast | No | Megadja, hogy az értéknek meg kell egyeznie legalább annyi predikátum-definícióval, amelyet a bemenet elfogad. Ha nincs megadva, az értéknek meg kell egyeznie az összes predikátum-definícióval. |
+| MatchAtLeast | Nem | Megadja, hogy az értéknek meg kell egyeznie legalább annyi predikátum-definícióval, amelyet a bemenet elfogad. Ha nincs megadva, az értéknek meg kell egyeznie az összes predikátum-definícióval. |
 
 A **PredicateReferences** elem a következő elemeket tartalmazza:
 
-| Elem | Események | Description |
+| Elem | Események | Leírás |
 | ------- | ----------- | ----------- |
 | PredicateReference | 1: n | Egy predikátumra mutató hivatkozás. |
 
@@ -223,7 +223,7 @@ A **PredicateReference** elem a következő attribútumokat tartalmazza:
 
 | Attribútum | Kötelező | Leírás |
 | --------- | -------- | ----------- |
-| Azonosító | Yes | A predikátum érvényesítéséhez használt azonosító.  |
+| Id | Igen | A predikátum érvényesítéséhez használt azonosító.  |
 
 
 ## <a name="configure-password-complexity"></a>Jelszó bonyolultságának konfigurálása

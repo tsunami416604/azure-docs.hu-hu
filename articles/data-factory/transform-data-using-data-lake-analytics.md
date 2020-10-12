@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 08/01/2018
 ms.openlocfilehash: f99bc5b07f3749fac28f60d28b040a7e0682971b
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86522414"
 ---
 # <a name="process-data-by-running-u-sql-scripts-on-azure-data-lake-analytics"></a>Az adatfeldolgozást U-SQL-parancsfájlok futtatásával Azure Data Lake Analytics 
@@ -123,7 +123,7 @@ A következő táblázat ismerteti a tevékenységre jellemző tulajdonságok ne
 | :------------------ | :--------------------------------------- | :------- |
 | name                | A folyamatban szereplő tevékenység neve     | Igen      |
 | leírás         | A tevékenység működését leíró szöveg  | Nem       |
-| típus                | Data Lake Analytics U-SQL tevékenység esetén a tevékenység típusa **DataLakeAnalyticsU-SQL**. | Igen      |
+| típus                | Data Lake Analytics U-SQL tevékenység esetén a tevékenység típusa  **DataLakeAnalyticsU-SQL**. | Igen      |
 | linkedServiceName   | Társított szolgáltatás Azure Data Lake Analytics. A társított szolgáltatással kapcsolatos további információkért lásd: [számítási társított szolgáltatások](compute-linked-services.md) cikk.  |Igen       |
 | scriptPath          | A U-SQL-parancsfájlt tartalmazó mappa elérési útja. A fájl neve megkülönbözteti a kis-és nagybetűket. | Igen      |
 | Scriptlinkedservice szolgáltatás | Társított szolgáltatás, amely összekapcsolja a parancsfájlt tartalmazó **Azure Data Lake Store** vagy **Azure Storage-tárolót** . | Igen      |
@@ -189,7 +189,7 @@ Ehelyett dinamikus paramétereket lehet használni. Például:
 
 Ebben az esetben a bemeneti fájlok továbbra is a/datalake/input mappából lesznek kiválasztva, és a kimeneti fájlok a/datalake/output mappában jönnek létre. A fájlnevek dinamikusak a folyamat indításakor bekövetkező indítási idő alapján.  
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 A következő cikkekből megtudhatja, hogyan alakíthat át más módon az adatátalakítást: 
 
 * [Struktúra tevékenysége](transform-data-using-hadoop-hive.md)

@@ -7,10 +7,10 @@ ms.service: data-catalog
 ms.topic: how-to
 ms.date: 08/01/2019
 ms.openlocfilehash: b8c6c6e33577fe3d49d8f0c7a94a941827f5cf68
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86523434"
 ---
 # <a name="register-data-sources-in-azure-data-catalog"></a>Adatforrások regisztrálása a Azure Data Catalogban
@@ -74,8 +74,8 @@ Az adatforrások regisztrálása a Data Catalog során felderíthetővé teszi a
 
 Egy már regisztrált adatforrás újbóli regisztrálása "upsert" műveletet hajt végre: a meglévő objektumok frissülnek, és új objektumok jönnek létre. A felhasználók által a Data Catalog portálon biztosított metaadatok megmaradnak.
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 Mivel az adatforrásból származó strukturális és leíró metaadatokat másolja a Catalog szolgáltatásba, az adatforrást a Data Catalogban regisztrálva az adatok könnyebben felderíthető és megérthetővé válik. Miután regisztrálta az adatforrást, a Data Catalog-portálon láthatja, felügyelheti és derítheti fel.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az adatforrások regisztrálásával kapcsolatos további információkért tekintse meg az [első lépések Azure Data Catalog](data-catalog-get-started.md) oktatóanyagot.

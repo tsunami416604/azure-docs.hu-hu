@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 11/01/2019
 ms.author: allensu
 ms.openlocfilehash: b8050b973027ac91ede0ba98f4d1c76831da9828
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81259926"
 ---
 # <a name="match-conditions-in-the-standard-rules-engine-for-azure-cdn"></a>A standard szintű szabályok motorjában szereplő feltételek egyeztetése Azure CDN
@@ -97,11 +97,11 @@ A kérelmező helye vagy IP-címe alapján azonosítja a kérelmeket.
 
 Operátor | Támogatott értékek
 ---------|-----------------
-Bármelyik | N.A.
-Földrajzi egyezés | Országhívószám
+Bármelyik | N/A
+Földrajzi egyezés | Országkód
 IP-egyeztetés | IP-cím (szóközzel tagolt)
-Nem | N.A.
-Nem földrajzi egyezés | Országhívószám
+Nem | N/A
+Nem földrajzi egyezés | Országkód
 Nem IP-egyeztetés | IP-cím (szóközzel tagolt)
 
 #### <a name="key-information"></a>Legfontosabb információk
@@ -206,7 +206,7 @@ Azokat a kérelmeket azonosítja, amelyek tartalmazzák a megadott elérési uta
 
 #### <a name="required-fields"></a>Kötelező mezők
 
-Művelet | Érték | Eset átalakítása
+Operátor | Érték | Eset átalakítása
 ---------|-------|---------------
 [Szabványos operátorok listája](#standard-operator-list) | Karakterlánc, int | Nincs átalakítás, kis-és nagybetűk között
 

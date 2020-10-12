@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 05/15/2017
 ms.author: tagore
 ms.openlocfilehash: 0d00db9909f05028b55505400d0810b00e0114c0
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88932542"
 ---
 # <a name="get-started-with-azure-cloud-services-and-aspnet"></a>Ismerkedés az Azure Cloud Services szolgáltatással és az ASP.NET keretrendszerrel
@@ -125,7 +125,7 @@ Az Azure-felhőszolgáltatás az a környezet, amelyben az alkalmazás futni fog
 5. Válassza ki a régiót, ahol telepíteni szeretné az alkalmazást.
 
     Ez a mező határozza meg, hogy a felhőszolgáltatása melyik adatközpontban fog üzemelni. Termelési alkalmazások esetében az ügyfeleihez legközelebb eső régiót kellene kiválasztania. A jelen oktatóanyag esetében válassza az Önhöz legközelebbi régiót.
-5. Kattintson a **Create** (Létrehozás) gombra.
+5. Kattintson a **Létrehozás** elemre.
 
     Az alábbi képen egy CSvccontosoads.cloudapp.net URL-címmel ellátott felhőszolgáltatás létrehozása történik.
 
@@ -154,7 +154,7 @@ Amikor az alkalmazás a felhőben fut, felhőalapú adatbázist fog használni.
 9. Kattintson a **Kiválasztás** elemre az új kiszolgáló kijelöléséhez.
 
     ![Új kiszolgáló](./media/cloud-services-dotnet-get-started/newdbserver.png)
-10. Kattintson a **Create** (Létrehozás) gombra.
+10. Kattintson a **Létrehozás** elemre.
 
 ### <a name="create-an-azure-storage-account"></a>Azure-tárfiók létrehozása
 Az Azure-tárfiók erőforrásokat biztosít az üzenetsor és a blob adatainak felhőbeli tárolásához.
@@ -177,7 +177,7 @@ Egy valós alkalmazás esetében általában külön fiókot hozna létre az alk
     Ha a felhőszolgáltatás és a tárfiók különböző adatközpontokban van (különböző régiókban), a késés mértéke megnő, és az adatközponton kívül használt sávszélességért fizetnie kell. Az adatközponton belül használt sávszélesség ingyenes.
 
     Az Azure-affinitáscsoportok egy olyan mechanizmust biztosítanak, amely minimálisra csökkenti az erőforrások között lévő távolságot az adatközpontban, csökkentve ezáltal a késés mértékét is. A jelen oktatóanyag nem használ affinitáscsoportokat. További információ: [Affinitáscsoportok létrehozása az Azure-ban](/previous-versions/azure/reference/gg715317(v=azure.100)).
-7. Kattintson a **Create** (Létrehozás) gombra.
+7. Kattintson a **Létrehozás** elemre.
 
     ![Új tárfiók](./media/cloud-services-dotnet-get-started/newstorage.png)
 
@@ -760,7 +760,7 @@ Ha a teljes emulátor használatára szeretné módosítani a projekt beállít�
 
 Az alkalmazás teljes emulátorral való futtatásához rendszergazdai jogosultságokkal kell megnyitnia a Visual Studiót.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A Contoso Ads alkalmazás kialakítása szándékosan egyszerű az első lépéseket ismertető oktatóanyag kedvéért. Nem valósítja meg például a [függőségi beszúrást](https://www.asp.net/mvc/tutorials/hands-on-labs/aspnet-mvc-4-dependency-injection) vagy a [működési minták adattárát és egységét](https://www.asp.net/mvc/tutorials/getting-started-with-ef-using-mvc/advanced-entity-framework-scenarios-for-an-mvc-web-application#repo), nem [használ felületet a naplózáshoz](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/monitoring-and-telemetry#log), nem használ [EF Code First áttelepítést](https://www.asp.net/mvc/tutorials/getting-started-with-ef-using-mvc/migrations-and-deployment-with-the-entity-framework-in-an-asp-net-mvc-application) az adatmodellek kezeléséhez vagy [EF-kapcsolati rugalmasságot](https://www.asp.net/mvc/tutorials/getting-started-with-ef-using-mvc/connection-resiliency-and-command-interception-with-the-entity-framework-in-an-asp-net-mvc-application) az átmeneti hálózati hibák kezeléséhez stb.
 
 Az alábbiakban példákat talál felhőszolgáltatás-alkalmazásokra, amelyek több valós kódolási gyakorlatot mutatnak be az egyszerűbbektől az összetettebbekig:

@@ -10,10 +10,10 @@ ms.date: 11/01/2019
 tags: connectors
 ROBOTS: NOINDEX
 ms.openlocfilehash: cd2f8ce45ef9270866941cdedb7c768529c3175f
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90033302"
 ---
 # <a name="monitor-create-and-manage-sftp-files-in-azure-logic-apps"></a>SFTP-fájlok figyelése, létrehozása és kezelése Azure Logic Apps
@@ -56,7 +56,7 @@ Az SFTP-összekötő csak a *50 MB vagy annál kisebb* fájlokat kezeli, és nem
 
 Az SFTP-eseményindítók az SFTP fájlrendszer lekérdezésével és a legutóbbi lekérdezés óta módosított fájlok keresésével működnek. Egyes eszközök lehetővé teszik, hogy a fájlok változásakor őrizze meg az időbélyeget. Ezekben az esetekben le kell tiltania ezt a funkciót, így az trigger működhet. Íme néhány gyakori beállítás:
 
-| SFTP-ügyfél | Műveletek |
+| SFTP-ügyfél | Művelet |
 |-------------|--------|
 | WinSCP | Ugrás a **Beállítások**  >  **Beállítások**  >  **átvitel**  >  **szerkesztési**  >  **megőrzési időbélyegének**  >  **letiltása** |
 | Filezillát | Ugrás az **Transfer**  >  **átvitt fájlok adatmegőrzési időbélyegére –**  >  **Letiltás** |

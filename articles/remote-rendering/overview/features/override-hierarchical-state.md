@@ -7,10 +7,10 @@ ms.date: 02/10/2020
 ms.topic: article
 ms.custom: devx-track-csharp
 ms.openlocfilehash: c098dc6b1d3b41a41246857f8a353dd4f5dfcef1
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90884194"
 ---
 # <a name="hierarchical-state-override"></a>Hierarchikus állapot felülbírálása
@@ -24,7 +24,7 @@ Tegyük fel például, hogy egy autó modelljét szeretné átadni, és a belső
 * Az első összetevő a modell legfelső szintű csomópontjára van rendelve, és a teljes autó transzparens megjelenítését kapcsolja be.
 * A második összetevő a motor gyökérszintű csomópontjára van hozzárendelve, és ismét felülbírálja az állapotot, ha explicit módon kikapcsolja a megtekintési módot.
 
-## <a name="features"></a>Funkciók
+## <a name="features"></a>Szolgáltatások
 
 A felülbírálható állapotok rögzített halmaza:
 

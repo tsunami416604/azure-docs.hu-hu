@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 05/31/2019
 ms.author: allensu
 ms.openlocfilehash: 25b3c1a011e39adea651a6daa1d4ab9aa3a9d186
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81253509"
 ---
 # <a name="azure-cdn-from-verizon-premium-rules-engine-conditional-expressions"></a>Azure CDN a Verizon Premium Rules Engine feltételes kifejezésekkel
@@ -20,7 +20,7 @@ Ez a cikk az Azure Content Delivery Network (CDN) [szabályok motorjának](cdn-v
 
 A szabály első része a feltételes kifejezés.
 
-Feltételes kifejezés | Description
+Feltételes kifejezés | Leírás
 -----------------------|-------------
 IF | Az IF kifejezés mindig a szabály első utasításának részét képezi. Az összes többi feltételes kifejezéshez hasonlóan ez az IF utasításnak egyezéssel kell társítania. Ha nincs megadva további feltételes kifejezés, akkor ez a megfeleltetés határozza meg azt a feltételt, amelynek teljesülnie kell ahhoz, hogy a szolgáltatások egy csoportját alkalmazni lehessen egy kérelemre.
 ÉS HA | A és IF kifejezés csak a következő típusú feltételes kifejezések után vehető fel: IF, és IF. Azt jelzi, hogy egy másik feltételnek kell teljesülnie a kezdeti IF utasításhoz.
@@ -30,12 +30,12 @@ MÁS, HA| MÁS, ha a kifejezés olyan alternatív feltételt határoz meg, amely
 
  > [!TIP]
    > Egy későbbi szabály felülbírálhatja egy korábbi szabály által megadott műveleteket.
-   > Példa: A catch-all szabály A jogkivonat-alapú hitelesítésen keresztül minden kérést biztosít. Egy másik szabály is létrehozható közvetlenül az alatt, hogy bizonyos típusú kérelmek esetében kivételt hozzon létre.
+   > Példa: A catch-all szabály Token-Based hitelesítésen keresztül minden kérést biztosít. Egy másik szabály is létrehozható közvetlenül az alatt, hogy bizonyos típusú kérelmek esetében kivételt hozzon létre.
 
 ## <a name="next-steps"></a>További lépések
 
 - [Azure CDN áttekintése](cdn-overview.md)
 - [Szabályok motor referenciája](cdn-verizon-premium-rules-engine-reference.md)
-- [Szabálymotor egyezési feltételei](cdn-verizon-premium-rules-engine-reference-match-conditions.md)
+- [Szabályok motorjának egyeztetési feltételei](cdn-verizon-premium-rules-engine-reference-match-conditions.md)
 - [Szabálymotor funkciói](cdn-verizon-premium-rules-engine-reference-features.md)
 - [Az alapértelmezett HTTP-viselkedés felülbírálása a szabályok motor használatával](cdn-verizon-premium-rules-engine.md)

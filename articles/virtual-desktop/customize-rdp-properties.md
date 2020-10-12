@@ -7,10 +7,10 @@ ms.date: 09/04/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 7c4bda1ecf28e964db6ba672157790114affe650
-ms.sourcegitcommit: 4a7a4af09f881f38fcb4875d89881e4b808b369b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89462224"
 ---
 # <a name="customize-remote-desktop-protocol-rdp-properties-for-a-host-pool"></a>A gazdagépek RDP protokoll (RDP) tulajdonságainak testreszabása
@@ -28,7 +28,7 @@ Az RDP-fájlok alapértelmezés szerint a következő tulajdonságokkal rendelke
 
 |RDP-tulajdonság|Asztali számítógépen|RemoteAppként|
 |---|---|---|
-|Többszörös figyelési mód|Engedélyezve|N/A|
+|Többszörös figyelési mód|Engedélyezve|N.A.|
 |Meghajtó-átirányítások engedélyezve|Meghajtók, vágólap, nyomtatók, COM-portok, USB-eszközök és intelligens kártyák|Meghajtók, vágólap és nyomtatók|
 |Távoli hang mód|Helyi lejátszás|Helyi lejátszás|
 

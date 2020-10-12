@@ -5,24 +5,24 @@ ms.topic: include
 ms.date: 02/12/2020
 ms.author: wolfma
 ms.openlocfilehash: c8e6c11771ae4cd216b3b1e43f3db7924dca81cd
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77168176"
 ---
 | Földrajzi hely | Régió | Régió azonosítója |
 | ----- | ----- | ----- |
-| Amerika | USA középső régiója | `centralus` |
-| Amerika | USA keleti régiója | `eastus` |
-| Amerika | USA 2. keleti régiója | `eastus2` |
-| Amerika | USA északi középső régiója | `northcentralus` |
-| Amerika | USA déli középső régiója | `southcentralus` |
-| Amerika | USA nyugati középső régiója | `westcentralus` |
-| Amerika | USA nyugati régiója | `westus` |
-| Amerika | USA nyugati régiója, 2. | `westus2` |
-| Amerika | Közép-Kanada | `canadacentral` |
-| Amerika | Dél-Brazília | `brazilsouth` |
+| Észak-, Dél- és Közép-Amerika | USA középső régiója | `centralus` |
+| Észak-, Dél- és Közép-Amerika | USA keleti régiója | `eastus` |
+| Észak-, Dél- és Közép-Amerika | USA 2. keleti régiója | `eastus2` |
+| Észak-, Dél- és Közép-Amerika | USA északi középső régiója | `northcentralus` |
+| Észak-, Dél- és Közép-Amerika | USA déli középső régiója | `southcentralus` |
+| Észak-, Dél- és Közép-Amerika | USA nyugati középső régiója | `westcentralus` |
+| Észak-, Dél- és Közép-Amerika | USA nyugati régiója | `westus` |
+| Észak-, Dél- és Közép-Amerika | USA 2. nyugati régiója | `westus2` |
+| Észak-, Dél- és Közép-Amerika | Közép-Kanada | `canadacentral` |
+| Észak-, Dél- és Közép-Amerika | Dél-Brazília | `brazilsouth` |
 | Ázsia és a Csendes-óceáni térség | Kelet-Ázsia | `eastasia` |
 | Ázsia és a Csendes-óceáni térség | Délkelet-Ázsia | `southeastasia` |
 | Ázsia és a Csendes-óceáni térség | Kelet-Ausztrália | `australiaeast` |

@@ -10,10 +10,10 @@ services: azure-maps
 manager: philmea
 ms.custom: mvc
 ms.openlocfilehash: 3ded5f6186d8ccdae0f42ecb9942c70e09f2dd9f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91310883"
 ---
 # <a name="request-public-transit-data-using-the-azure-maps-mobility-service"></a>A Azure Maps mobilitási szolgáltatással nyilvános árutovábbítási adatai igényelhetők
@@ -38,7 +38,7 @@ Ez az oktatóanyag a [Poster](https://www.postman.com/) alkalmazást használja,
 
 Ahhoz, hogy részletes információkat kérjen a tranzit-ügynökségekről és egy adott nagyvárosi terület támogatott továbbítási típusairól, `metroId` erre a területre szüksége lesz. A [Metro Area API beolvasása](https://aka.ms/AzureMapsMobilityMetro) lehetővé teszi, hogy olyan metró területeket kérjen, amelyekben elérhető a Azure Maps mobilitási szolgáltatás. A válasz olyan részleteket tartalmaz, mint a `metroId` , `metroName` és a Metro terület geometriájának ábrázolása GeoJSON formátumban.
 
-Tegyük fel, hogy beolvassa a Seattle-Tacoma Metro területi AZONOSÍTÓhoz tartozó Metro területet. A Metro-területek AZONOSÍTÓjának kéréséhez hajtsa végre a következő lépéseket:
+Tegyük fel, hogy beolvassa a Metro területet a Seattle-Tacoma Metro területi AZONOSÍTÓhoz. A Metro-területek AZONOSÍTÓjának kéréséhez hajtsa végre a következő lépéseket:
 
 1. Nyissa meg a Poster alkalmazást, és hozzon létre egy gyűjteményt a kérések tárolásához. A Poster alkalmazás teteje közelében válassza az **új**lehetőséget. Az **új létrehozása** ablakban válassza a **gyűjtemény**elemet.  Nevezze el a gyűjteményt, és válassza a **Létrehozás** gombot.
 

@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 05/01/2018
 ms.author: allensu
 ms.openlocfilehash: c3ab722f182e32cf2f3aca6bb2f3d5a9598264af
-ms.sourcegitcommit: 9ce0350a74a3d32f4a9459b414616ca1401b415a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88192604"
 ---
 # <a name="media-streaming-optimization-with-azure-cdn"></a>Médiaadatfolyam-továbbítás optimalizálása Azure CDN 
@@ -86,7 +86,7 @@ A rövid negatív gyorsítótárazási idő hasznos a forrás kiszervezésében,
 | Gyorsítótárazás  | Általános webes kézbesítés | Általános médiaadatfolyam-továbbítás | Igény szerinti video-adatfolyam  
 |--- | --- | --- | ---
 | Gyorsítótárazás: pozitív <br> HTTP 200, 203, 300, <br> 301, 302 és 410 | 7 nap |365 nap | 365 nap   
-| Gyorsítótárazás: negatív <br> HTTP 204, 305, 404, <br> és 405 | Nincsenek | 1 másodperc | 1 másodperc
+| Gyorsítótárazás: negatív <br> HTTP 204, 305, 404, <br> és 405 | Nincs | 1 másodperc | 1 másodperc
  
 ### <a name="deal-with-origin-failure"></a>A származási hiba kezelése  
 
@@ -103,7 +103,7 @@ A következő táblázat felsorolja a médiaadatfolyam-továbbítás optimalizá
 Támogatott folyamatos átviteli típusok | Fájlkiterjesztések  
 --- | ---  
 Apple HLS | m3u8, m3u, m3ub, Key, TS, AAC
-Adobe HDS | f4m, f4x, drmmeta, bootstrap, F4F,<br>Seg – Frag URL-struktúra <br> (megfelelő regex: ^ (/. *) SEQ (\d +) – Frag (\d +)
+Adobe HDS | f4m, f4x, drmmeta, bootstrap, F4F,<br>Seg-Frag URL-struktúra <br> (megfelelő regex: ^ (/. *) SEQ (\d +) – Frag (\d +)
 DASH | mpd, Dash, DivX, ismv, M4s, M4V, MP4, mp4v, <br> sidx, WebM, mp4a, M4A, ISMA
 Smooth streaming | /manifest/, /QualityLevels/Fragments/
   

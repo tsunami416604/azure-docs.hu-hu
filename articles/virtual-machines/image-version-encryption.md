@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 08/11/2020
 ms.author: cynthn
 ms.openlocfilehash: 91f485d03717ab80bac26abd16da165d7b0dead7
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89291925"
 ---
 # <a name="preview-use-customer-managed-keys-for-encrypting-images"></a>Előzetes verzió: az ügyfél által felügyelt kulcsok használata a rendszerképek titkosításához
@@ -59,7 +59,7 @@ A nyilvános előzetes verzióhoz először regisztrálnia kell a szolgáltatás
 Register-AzProviderFeature -FeatureName SIGEncryption -ProviderNamespace Microsoft.Compute
 ```
 
-A regisztráció elvégzése néhány percet vesz igénybe. A Get-AzProviderFeature használatával keresse meg a szolgáltatás regisztrációjának állapotát.
+A regisztráció elvégzése néhány percet vesz igénybe. A szolgáltatás regisztrációjának állapotát a Get-AzProviderFeature használatával lehet megnézni.
 
 ```azurepowershell-interactive
 Get-AzProviderFeature -FeatureName SIGEncryption -ProviderNamespace Microsoft.Compute

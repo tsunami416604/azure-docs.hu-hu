@@ -16,10 +16,10 @@ ms.date: 06/02/2017
 ms.author: alkohli
 ms.custom: ''
 ms.openlocfilehash: 12ab5a9598cc0222f5a3e64985be2e2ea9e7e2fd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85564280"
 ---
 # <a name="replace-a-hardware-component-on-your-storsimple-8000-series-device"></a>Hardver-összetevő cseréje a StorSimple 8000 Series eszközön
@@ -69,11 +69,11 @@ Az eszköz fő hardveres összetevői az alábbi táblázatokban vannak összefo
 
 | Összetevők | # Jelen | Beépülő modul? | Helyettesítési eljárás |
 |:--- |:--- |:--- |:--- |
-| Váz |1 |No |[Az alváz cseréje a StorSimple-eszközön](storsimple-8000-chassis-replacement.md) |
-| Elsődleges vezérlők |2 |Yes |[Vezérlő modul cseréje a StorSimple-eszközön](storsimple-8000-controller-replacement.md) |
-| 764W teljesítmény-és hűtési modulok (PCMs) |2 |Yes |[Az energiaellátási és hűtési rendszer cseréje a StorSimple-eszközön](storsimple-8000-power-cooling-module-replacement.md) |
-| Tartalék akkumulátor |2 |Yes |[A tartalék akkumulátor modul cseréje a StorSimple-eszközön](storsimple-8000-battery-replacement.md) |
-| Lemezmeghajtók |12 |Yes |[Lemezmeghajtó cseréje a StorSimple-eszközön](storsimple-8000-disk-drive-replacement.md) |
+| Váz |1 |Nem |[Az alváz cseréje a StorSimple-eszközön](storsimple-8000-chassis-replacement.md) |
+| Elsődleges vezérlők |2 |Igen |[Vezérlő modul cseréje a StorSimple-eszközön](storsimple-8000-controller-replacement.md) |
+| 764W teljesítmény-és hűtési modulok (PCMs) |2 |Igen |[Az energiaellátási és hűtési rendszer cseréje a StorSimple-eszközön](storsimple-8000-power-cooling-module-replacement.md) |
+| Tartalék akkumulátor |2 |Igen |[A tartalék akkumulátor modul cseréje a StorSimple-eszközön](storsimple-8000-battery-replacement.md) |
+| Lemezmeghajtók |12 |Igen |[Lemezmeghajtó cseréje a StorSimple-eszközön](storsimple-8000-disk-drive-replacement.md) |
 
 **1. táblázat** Az elsődleges házban található hardver-összetevők
 
@@ -81,10 +81,10 @@ Az elsődleges bekerítés és a EBOD ház különbözik az I/O-modulokban. Emel
 
 | Összetevők | # Jelen | Beépülő modul? | Helyettesítési eljárás |
 |:--- |:--- |:--- |:--- |
-| Váz |1 |No |[Az alváz cseréje a StorSimple-eszközön](storsimple-8000-chassis-replacement.md) |
-| EBOD-vezérlők |2 |Yes |[EBOD-vezérlő cseréje a StorSimple-eszközön](storsimple-8000-ebod-controller-replacement.md) |
-| 580W teljesítmény-és hűtési modulok (PCMs) |2 |Yes |[Az energiaellátási és hűtési rendszer cseréje a StorSimple-eszközön](storsimple-8000-power-cooling-module-replacement.md) |
-| Lemezmeghajtók |12 |Yes |[Lemezmeghajtó cseréje a StorSimple-eszközön](storsimple-8000-disk-drive-replacement.md) |
+| Váz |1 |Nem |[Az alváz cseréje a StorSimple-eszközön](storsimple-8000-chassis-replacement.md) |
+| EBOD-vezérlők |2 |Igen |[EBOD-vezérlő cseréje a StorSimple-eszközön](storsimple-8000-ebod-controller-replacement.md) |
+| 580W teljesítmény-és hűtési modulok (PCMs) |2 |Igen |[Az energiaellátási és hűtési rendszer cseréje a StorSimple-eszközön](storsimple-8000-power-cooling-module-replacement.md) |
+| Lemezmeghajtók |12 |Igen |[Lemezmeghajtó cseréje a StorSimple-eszközön](storsimple-8000-disk-drive-replacement.md) |
 
 **2. táblázat** A EBOD ház hardveres összetevői
 
@@ -94,7 +94,7 @@ Az eszközön található beépülőmodul-modulok a következő első és háts�
 
 **1. ábra** Az eszköz előtt
 
-| Címke | Description |
+| Címke | Leírás |
 |:--- |:--- |
 | 0 - 11 |Lemezmeghajtók (összesen 12) |
 
@@ -104,7 +104,7 @@ Mind az elsődleges, mind a EBOD-ház rendelkezik meghajtó-szolgáltatói modul
 
 **2. ábra** Az elsődleges ház hátoldala
 
-| Címke | Description |
+| Címke | Leírás |
 |:--- |:--- |
 | 1 |PCM 0 |
 | 2 |PCM 1 |
@@ -115,7 +115,7 @@ Mind az elsődleges, mind a EBOD-ház rendelkezik meghajtó-szolgáltatói modul
 
 **3. ábra** A EBOD ház hátoldala
 
-| Címke | Description |
+| Címke | Leírás |
 |:--- |:--- |
 | 1 |PCM 0 |
 | 2 |PCM 1 |

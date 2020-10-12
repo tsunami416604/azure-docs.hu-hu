@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/13/2020
 ms.author: erhopf
 ms.openlocfilehash: 2897fe2e0cc8aeb929b0a33f5cdaba9c60f2a244
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81261584"
 ---
 # <a name="record-voice-samples-to-create-a-custom-voice"></a>Hangminták rögzítése egyéni hang létrehozásához
@@ -108,7 +108,7 @@ Szerencsére lehetséges elkerülni ezeket a problémákat. A szöveg számos fo
 |-|-|
 |[CMU Arctic Corpus](http://festvox.org/cmu_arctic/)|Az out-of-Copyright által kiválasztott 1100 mondatok kifejezetten a beszédfelismerési projektekben használhatók. Kiváló kiindulási pont.|
 |Már nem működik<br>szerzői jog|A általában a 1923-nél korábbi verziókban van közzétéve. Angol nyelven a [Project Gutenberg](https://www.gutenberg.org/) több tízezer ilyen munkát kínál. Érdemes lehet az újabb verzióra összpontosítani, mivel a nyelv közelebb lesz a modern angolhoz.|
-|A&nbsp;kormányzat működése|A Egyesült Államok kormányzat által létrehozott alkotások nem tartoznak a Egyesült Államokra, bár a kormány más országokban/régiókban is igényelhet szerzői jogokat.|
+|A kormányzat &nbsp; működése|A Egyesült Államok kormányzat által létrehozott alkotások nem tartoznak a Egyesült Államokra, bár a kormány más országokban/régiókban is igényelhet szerzői jogokat.|
 |Nyilvános tartomány|Azok a munkálatok, amelyekhez kifejezetten elutasításra került a szerzői jog, vagy amelyeket a nyilvános tartományhoz rendeltek. Előfordulhat, hogy a szerzői jogok teljes körű lemondása bizonyos jogszabályokban nem lehetséges.|
 |Permissively – licencelt működés|Az olyan licencek keretében terjesztett munkák, mint a Creative Commons vagy a GNU Free dokumentációs licence (GFDL). A wikipedia a GFDL használja. Bizonyos licencek azonban korlátozásokat szabhatnak a licencelt tartalom teljesítményére, ami hatással lehet az egyéni hangmodell létrehozására, ezért alaposan olvassa el a licencet.|
 

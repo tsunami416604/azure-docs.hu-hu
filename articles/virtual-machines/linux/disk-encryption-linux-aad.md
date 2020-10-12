@@ -9,10 +9,10 @@ ms.author: mbaldwin
 ms.date: 03/15/2019
 ms.custom: seodec18
 ms.openlocfilehash: fa01c4a595a08ffdba56d777128431946540eee5
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87372671"
 ---
 # <a name="enable-azure-disk-encryption-with-azure-ad-on-linux-vms-previous-release"></a>Azure Disk Encryption engedélyezése az Azure AD-vel Linux rendszerű virtuális gépeken (korábbi kiadás)
@@ -25,7 +25,7 @@ Számos lemezes titkosítási forgatókönyvet engedélyezhet, és a lépések a
 - [Hálózatkezelés és Csoportházirend](disk-encryption-overview-aad.md#networking-and-group-policy)
 - [Titkosítási kulcs tárolási követelményei](disk-encryption-overview-aad.md#encryption-key-storage-requirements)
 
-Készítsen [pillanatképet](snapshot-copy-managed-disk.md), készítsen biztonsági másolatot, vagy mindkettőt a lemezek titkosítása előtt. A biztonsági másolatok gondoskodnak arról, hogy a rendszer egy helyreállítási lehetőséget akkor lehessen, ha nem várt hiba történik a titkosítás során. A felügyelt lemezekkel rendelkező virtuális gépek biztonsági mentést igényelnek a titkosítás megkezdése előtt. A biztonsági mentést követően a set-AzVMDiskEncryptionExtension parancsmag használatával titkosíthatja a felügyelt lemezeket a-skipVmBackup paraméter megadásával. További információ a titkosított virtuális gépek biztonsági mentéséről és visszaállításáról: [Azure Backup](../../backup/backup-azure-vms-encryption.md). 
+Készítsen [pillanatképet](snapshot-copy-managed-disk.md), készítsen biztonsági másolatot, vagy mindkettőt a lemezek titkosítása előtt. A biztonsági másolatok gondoskodnak arról, hogy a rendszer egy helyreállítási lehetőséget akkor lehessen, ha nem várt hiba történik a titkosítás során. A felügyelt lemezekkel rendelkező virtuális gépek biztonsági mentést igényelnek a titkosítás megkezdése előtt. A biztonsági mentést követően a Set-AzVMDiskEncryptionExtension parancsmag használatával titkosíthatja a felügyelt lemezeket a-skipVmBackup paraméter megadásával. További információ a titkosított virtuális gépek biztonsági mentéséről és visszaállításáról: [Azure Backup](../../backup/backup-azure-vms-encryption.md). 
 
 >[!WARNING]
  > - Ha korábban [Az Azure ad-alkalmazással Azure Disk Encryption](disk-encryption-overview-aad.md) használta a virtuális gép titkosításához, akkor továbbra is ezt a beállítást kell használnia a virtuális gép titkosításához. Nem használhatja [Azure Disk Encryption](disk-encryption-overview.md) ezen a titkosított virtuális gépen, mert ez nem támogatott forgatókönyv, ami azt jelenti, hogy a titkosított virtuális géphez való áttérés az Azure ad-alkalmazásból még nem támogatott.
@@ -41,7 +41,7 @@ Készítsen [pillanatképet](snapshot-copy-managed-disk.md), készítsen biztons
 Ebben az esetben engedélyezheti a titkosítást a Azure Resource Manager sablon, a PowerShell-parancsmagok vagy az Azure CLI-parancsok használatával. 
 
 >[!IMPORTANT]
- >A Azure Disk Encryption engedélyezése előtt el kell végeznie egy pillanatkép készítését vagy a felügyelt lemezes virtuálisgép-példány biztonsági mentését. A felügyelt lemezről pillanatképet készíthet a Azure Portalről, vagy használhatja a [Azure Backupt](../../backup/backup-azure-vms-encryption.md)is. A biztonsági mentések biztosítják, hogy a titkosítás során fellépő váratlan hibák esetén a helyreállítási lehetőség is lehetséges legyen. A biztonsági mentés után a set-AzVMDiskEncryptionExtension parancsmag használatával titkosíthatja a felügyelt lemezeket a-skipVmBackup paraméter megadásával. A set-AzVMDiskEncryptionExtension parancs a felügyelt lemezes virtuális gépekről a biztonsági mentésig meghiúsul, és ez a paraméter meg van adva. 
+ >A Azure Disk Encryption engedélyezése előtt el kell végeznie egy pillanatkép készítését vagy a felügyelt lemezes virtuálisgép-példány biztonsági mentését. A felügyelt lemezről pillanatképet készíthet a Azure Portalről, vagy használhatja a [Azure Backupt](../../backup/backup-azure-vms-encryption.md)is. A biztonsági mentések biztosítják, hogy a titkosítás során fellépő váratlan hibák esetén a helyreállítási lehetőség is lehetséges legyen. A biztonsági mentést követően a Set-AzVMDiskEncryptionExtension parancsmaggal titkosíthatja a felügyelt lemezeket a-skipVmBackup paraméter megadásával. A Set-AzVMDiskEncryptionExtension parancs a felügyelt lemezes virtuális gépeken meghiúsul, amíg biztonsági másolat készül, és ez a paraméter meg van adva. 
 >
 >A titkosítás titkosítása vagy letiltása a virtuális gép újraindítását okozhatja. 
 >
@@ -81,7 +81,7 @@ Az az [VM encryption Enable](/cli/azure/vm/encryption#az-vm-encryption-enable) p
 ### <a name="enable-encryption-on-an-existing-or-running-linux-vm-by-using-powershell"></a><a name="bkmk_RunningLinuxPSH"> </a> Titkosítás engedélyezése meglévő vagy futó Linux rendszerű virtuális gépen a PowerShell használatával
 A [set-AzVMDiskEncryptionExtension](/powershell/module/az.compute/set-azvmdiskencryptionextension) parancsmag használatával engedélyezheti a titkosítást egy futó IaaS virtuális gépen az Azure-ban. Készítsen [pillanatképet](snapshot-copy-managed-disk.md) , vagy készítsen biztonsági másolatot a virtuális gépről [Azure Backup](../../backup/backup-azure-vms-encryption.md) a lemezek titkosítása előtt. A-skipVmBackup paraméter már meg van adva a PowerShell-parancsfájlokban egy futó Linux rendszerű virtuális gép titkosításához.
 
-- **Futó virtuális gép titkosítása az ügyfél titkos kódjának használatával:** A következő parancsfájl inicializálja a változókat, és futtatja a set-AzVMDiskEncryptionExtension parancsmagot. Az erőforráscsoport, a virtuális gép, a Key Vault, az Azure AD-alkalmazás és az ügyfél titkos kulcsa már előfeltételként lett létrehozva. Cserélje le a MyVirtualMachineResourceGroup, a MyKeyVaultResourceGroup, a MySecureVM, a MySecureVault, a My-HRE-Client-ID és a My-HRE-Client-Secret értékeket az értékekre. Módosítsa a-VolumeType paramétert annak megadásához, hogy mely lemezek vannak titkosítva.
+- **Futó virtuális gép titkosítása az ügyfél titkos kódjának használatával:** A következő parancsfájl inicializálja a változókat, és futtatja a Set-AzVMDiskEncryptionExtension parancsmagot. Az erőforráscsoport, a virtuális gép, a Key Vault, az Azure AD-alkalmazás és az ügyfél titkos kulcsa már előfeltételként lett létrehozva. Cserélje le a MyVirtualMachineResourceGroup, a MyKeyVaultResourceGroup, a MySecureVM, a MySecureVault, a My-HRE-Client-ID és a My-HRE-Client-Secret értékeket az értékekre. Módosítsa a-VolumeType paramétert annak megadásához, hogy mely lemezek vannak titkosítva.
 
      ```azurepowershell
          $VMRGName = 'MyVirtualMachineResourceGroup';
@@ -187,7 +187,7 @@ A EncryptFormatAll beállítás használatához használja az összes olyan megl
 ### <a name="use-the-encryptformatall-parameter-with-a-powershell-cmdlet"></a><a name="bkmk_EFAPSH"> </a> A EncryptFormatAll paraméter használata PowerShell-parancsmaggal
 Használja a [set-AzVMDiskEncryptionExtension](/powershell/module/az.compute/set-azvmdiskencryptionextension) parancsmagot a EncryptFormatAll paraméterrel.
 
-**Futó virtuális gép titkosítása az ügyfél titkos és EncryptFormatAll használatával:** Az alábbi szkript például inicializálja a változókat, és futtatja a set-AzVMDiskEncryptionExtension parancsmagot a EncryptFormatAll paraméterrel. Az erőforráscsoport, a virtuális gép, a Key Vault, az Azure AD-alkalmazás és az ügyfél titkos kulcsa már előfeltételként lett létrehozva. Cserélje le a MyKeyVaultResourceGroup, a MyVirtualMachineResourceGroup, a MySecureVM, a MySecureVault, a My-HRE-Client-ID és a My-HRE-Client-Secret értékeket az értékekre.
+**Futó virtuális gép titkosítása az ügyfél titkos és EncryptFormatAll használatával:** Az alábbi szkript például inicializálja a változókat, és futtatja a Set-AzVMDiskEncryptionExtension parancsmagot a EncryptFormatAll paraméterrel. Az erőforráscsoport, a virtuális gép, a Key Vault, az Azure AD-alkalmazás és az ügyfél titkos kulcsa már előfeltételként lett létrehozva. Cserélje le a MyKeyVaultResourceGroup, a MyVirtualMachineResourceGroup, a MySecureVM, a MySecureVault, a My-HRE-Client-ID és a My-HRE-Client-Secret értékeket az értékekre.
   
    ```azurepowershell
      $KVRGname = 'MyKeyVaultResourceGroup';
@@ -227,7 +227,7 @@ Javasoljuk, hogy legyen egy LVM-on-Crypt beállítás. Az alábbi példákban cs
         echo "/dev/disk/azure/scsi1/lun0 /mnt/mountpoint ext4 defaults,nofail 1 2" >> /etc/fstab
         ```
 
-    4. Futtassa a set-AzVMDiskEncryptionExtension PowerShell-parancsmagot a-EncryptFormatAll használatával a lemezek titkosításához.
+    4. Futtassa a Set-AzVMDiskEncryptionExtension PowerShell-parancsmagot a-EncryptFormatAll a lemezek titkosításához.
 
        ```azurepowershell-interactive
         Set-AzVMDiskEncryptionExtension -ResourceGroupName "MySecureGroup" -VMName "MySecureVM" -DiskEncryptionKeyVaultUrl "https://mykeyvault.vault.azure.net/" -EncryptFormatAll
@@ -246,7 +246,7 @@ Az Azure-ban használható, előre titkosított rendszerképek előkészítésé
 * [Előre titkosított linuxos virtuális merevlemez előkészítése](disk-encryption-sample-scripts.md)
 
 >[!IMPORTANT]
- >A Azure Disk Encryption engedélyezése előtt el kell végeznie egy pillanatkép készítését vagy a felügyelt lemezes virtuálisgép-példány biztonsági mentését. Pillanatképet készíthet a felügyelt lemezről a portálról, vagy használhatja a [Azure Backupt](../../backup/backup-azure-vms-encryption.md)is. A biztonsági mentések biztosítják, hogy a titkosítás során fellépő váratlan hibák esetén a helyreállítási lehetőség is lehetséges legyen. A biztonsági mentés után a set-AzVMDiskEncryptionExtension parancsmag használatával titkosíthatja a felügyelt lemezeket a-skipVmBackup paraméter megadásával. A set-AzVMDiskEncryptionExtension parancs a felügyelt lemezes virtuális gépekről a biztonsági mentésig meghiúsul, és ez a paraméter meg van adva. 
+ >A Azure Disk Encryption engedélyezése előtt el kell végeznie egy pillanatkép készítését vagy a felügyelt lemezes virtuálisgép-példány biztonsági mentését. Pillanatképet készíthet a felügyelt lemezről a portálról, vagy használhatja a [Azure Backupt](../../backup/backup-azure-vms-encryption.md)is. A biztonsági mentések biztosítják, hogy a titkosítás során fellépő váratlan hibák esetén a helyreállítási lehetőség is lehetséges legyen. A biztonsági mentést követően a Set-AzVMDiskEncryptionExtension parancsmaggal titkosíthatja a felügyelt lemezeket a-skipVmBackup paraméter megadásával. A Set-AzVMDiskEncryptionExtension parancs a felügyelt lemezes virtuális gépeken meghiúsul, amíg biztonsági másolat készül, és ez a paraméter meg van adva. 
 >
 >A titkosítás titkosítása vagy letiltása a virtuális gép újraindítását okozhatja.
 
@@ -285,7 +285,7 @@ A PowerShell-szintaxissal ellentétben a CLI-nek nem kell egyedi sorozatot megad
  Ha a PowerShell használatával titkosít egy új lemezt a Linux rendszerben, meg kell adni egy új sorozatot. A Sequence verziójának egyedinek kell lennie. A következő szkript létrehoz egy GUID azonosítót a Sequence verzióhoz. 
  
 
--  **Futó virtuális gép titkosítása az ügyfél titkos kódjának használatával:** A következő parancsfájl inicializálja a változókat, és futtatja a set-AzVMDiskEncryptionExtension parancsmagot. Az erőforráscsoport, a virtuális gép, a Key Vault, az Azure AD-alkalmazás és az ügyfél titkos kulcsa már előfeltételként lett létrehozva. Cserélje le a MyVirtualMachineResourceGroup, a MyKeyVaultResourceGroup, a MySecureVM, a MySecureVault, a My-HRE-Client-ID és a My-HRE-Client-Secret értékeket az értékekre. A-VolumeType paraméter adatlemezekre van beállítva, nem az operációsrendszer-lemezre. Ha a virtuális gépet korábban "operációs rendszer" vagy "all" típusú kötettel titkosították, akkor a-VolumeType paramétert úgy kell módosítani, hogy az operációs rendszer és az új adatlemez is szerepeljen.
+-  **Futó virtuális gép titkosítása az ügyfél titkos kódjának használatával:** A következő parancsfájl inicializálja a változókat, és futtatja a Set-AzVMDiskEncryptionExtension parancsmagot. Az erőforráscsoport, a virtuális gép, a Key Vault, az Azure AD-alkalmazás és az ügyfél titkos kulcsa már előfeltételként lett létrehozva. Cserélje le a MyVirtualMachineResourceGroup, a MyKeyVaultResourceGroup, a MySecureVM, a MySecureVault, a My-HRE-Client-ID és a My-HRE-Client-Secret értékeket az értékekre. A-VolumeType paraméter adatlemezekre van beállítva, nem az operációsrendszer-lemezre. Ha a virtuális gépet korábban "operációs rendszer" vagy "all" típusú kötettel titkosították, akkor a-VolumeType paramétert úgy kell módosítani, hogy az operációs rendszer és az új adatlemez is szerepeljen.
 
      ```azurepowershell
          $KVRGname = 'MyKeyVaultResourceGroup';

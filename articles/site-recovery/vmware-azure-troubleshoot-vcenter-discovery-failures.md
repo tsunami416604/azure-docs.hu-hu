@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 10/29/2019
 ms.author: mayg
 ms.openlocfilehash: d333972ea5f74d1676e5e4b4e1417c6bf5d87b79
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86135357"
 ---
 # <a name="troubleshoot-vcenter-server-discovery-failures"></a>vCenter Server felderítési hibák elhárítása
@@ -20,7 +20,7 @@ Ez a cikk segítséget nyújt a VMware vCenter-felderítési hibák miatt előfo
 
 ## <a name="non-numeric-values-in-the-maxsnapshots-property"></a>Nem numerikus értékek a maxSnapShots tulajdonságban
 
-A 9,20 előtti verziókban a vCenter leválasztja a kapcsolatot, amikor a virtuális gép tulajdonság tulajdonságához nem numerikus értéket kér le `snapshot.maxSnapShots` .
+A 9,20 előtti verziókban a vCenter leválasztja a kapcsolatot, amikor a virtuális gép tulajdonság tulajdonságához nem numerikus értéket kér le  `snapshot.maxSnapShots` .
 
 Ezt a problémát a 95126-es AZONOSÍTÓJÚ hiba azonosítja.
 
@@ -79,6 +79,6 @@ DRA-proxy konfigurálásához:
 
 4. Indítsa újra a DRA Provider szolgáltatást.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [A VMware virtuális gép vész-helyreállítási konfigurációs kiszolgálójának kezelése](./vmware-azure-manage-configuration-server.md#refresh-configuration-server) 

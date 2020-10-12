@@ -12,10 +12,10 @@ ms.author: sstein
 ms.reviewer: ''
 ms.date: 03/12/2019
 ms.openlocfilehash: 9303d84b2862b556a9ccc286ffa118bf1e52b715
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84047523"
 ---
 # <a name="moving-data-between-scaled-out-cloud-databases"></a>Adatok mozgatása kiterjesztett felhőalapú adatbázisok között
@@ -43,7 +43,7 @@ A felosztási egyesítési eszköz Azure-webszolgáltatásként fut. A rendszerg
 
 ## <a name="why-use-the-split-merge-tool"></a>Miért érdemes a Split-Merge eszközt használni
 
-- **Rugalmasság**
+- **Rugalmasságot**
 
   Az alkalmazásoknak rugalmasan kell kiterjeszteniük a Azure SQL Database egyetlen adatbázisának korlátain kívül. Az eszköz használatával az adatok szükség szerint helyezhetők át az új adatbázisokra az integritás megőrzése mellett.
 
@@ -53,7 +53,7 @@ A felosztási egyesítési eszköz Azure-webszolgáltatásként fut. A rendszerg
 
 - **Egyesítés a zsugorodáshoz**
 
-  A kapacitást a vállalat szezonális jellege miatt kell csökkenteni. Az eszköz lehetővé teszi, hogy kevesebb méretezési egységre Szűkítse az üzleti lassulást. A rugalmas méretezésű felosztott egyesítési szolgáltatás "Merge" funkciója magában foglalja ezt a követelményt.
+  A kapacitást a vállalat szezonális jellege miatt kell csökkenteni. Az eszköz lehetővé teszi, hogy kevesebb méretezési egységre Szűkítse az üzleti lassulást. A rugalmasan méretezhető Split-Merge szolgáltatás "Merge" funkciója magában foglalja ezt a követelményt.
 
 - **Pontok kezelése a shardletek áthelyezésével**
 
@@ -117,7 +117,7 @@ A felosztási egyesítési eszköz Azure-webszolgáltatásként fut. A rendszerg
     smm.GetSchemaInfoCollection().Add(Configuration.ShardMapName, schemaInfo);
     ```
 
-    A "Region" és a "Nation" tábla a hivatkozási táblákként van definiálva, és a rendszer a felosztott/egyesítési/áthelyezési műveletekkel másolja őket. a "Customer" és a "Orders" elem a következőként van meghatározva: szilánkokra osztott táblák. `C_CUSTKEY`és `O_CUSTKEY` a kiosztott kulcsként szolgál.
+    A "Region" és a "Nation" tábla a hivatkozási táblákként van definiálva, és a rendszer a felosztott/egyesítési/áthelyezési műveletekkel másolja őket. a "Customer" és a "Orders" elem a következőként van meghatározva: szilánkokra osztott táblák. `C_CUSTKEY` és `O_CUSTKEY` a kiosztott kulcsként szolgál.
 
 - **Hivatkozási integritás**
 
@@ -187,7 +187,7 @@ A felosztott egyesítés szolgáltatás felhőalapú szolgáltatásként fut a M
 
 A felosztott egyesítés szolgáltatás biztosítja a **RequestStatus** táblát a metaadat-tároló adatbázisban a befejezett és a folyamatban lévő kérések figyeléséhez. A táblázat felsorolja az egyes felosztott egyesítési kérelmek sorát, amelyeket elküldtek a felosztott egyesítési szolgáltatás ezen példánya számára. Minden kérelemhez a következő információkat adja meg:
 
-- **Időbélyeg**
+- **Timestamp**
 
   A kérelem elindításának időpontja és dátuma.
 

@@ -8,10 +8,10 @@ ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 05/06/2019
 ms.openlocfilehash: 842563319e09a001fd6e85403d8aee6fb14690ee
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90884422"
 ---
 # <a name="table-colocation-in-azure-database-for-postgresql--hyperscale-citus"></a>Táblázatos elhelyezés Azure Database for PostgreSQLban – nagy kapacitású (Citus)
@@ -47,7 +47,7 @@ CREATE TABLE page (
 
 Most szeretnénk megválaszolni azokat a lekérdezéseket, amelyeket egy ügyfélhez kapcsolódó irányítópulton lehet kibocsátani. Egy példa a "/blog" kezdetű oldalról a hatodik bérlőn "a látogatások számának visszaadása az elmúlt héten" kifejezésre.
 
-Ha az adatok egykiszolgálós üzembe helyezési lehetőséggel voltak, könnyedén kihasználhatjuk a lekérdezését az SQL által kínált, széles körű kapcsolatok használatával:
+Ha az adatok a Single-Server üzembe helyezési lehetőség volt, a lekérdezéseket könnyedén kihasználhatjuk az SQL által kínált, széles körű kapcsolódási műveletek használatával:
 
 ```sql
 SELECT page_id, count(event_id)
@@ -96,7 +96,7 @@ Ezt követően a két lépés eredményeit össze kell kapcsolni az alkalmazáss
 
 A lekérdezések futtatásához a csomópontokon elszórt szegmensekben lévő adatszegmensekben kell megkeresni az adategységeket.
 
-:::image type="content" source="media/concepts-hyperscale-colocation/colocation-inefficient-queries.png" alt-text="Nem hatékony lekérdezések":::
+:::image type="content" source="media/concepts-hyperscale-colocation/colocation-inefficient-queries.png" alt-text="Szilánkok":::
 
 Ebben az esetben az adateloszlás jelentős hátrányait hozza létre:
 
@@ -134,7 +134,7 @@ GROUP BY page_id;
 
 A Filter és a Join on tenant_id nagy kapacitású (Citus) segítségével a teljes lekérdezés megválaszolható az adott bérlő adatait tartalmazó, közösen elhelyezett szegmensek készletével. Egyetlen PostgreSQL-csomópont egyetlen lépésben válaszolhat a lekérdezésre.
 
-:::image type="content" source="media/concepts-hyperscale-colocation/colocation-better-query.png" alt-text="Jobb lekérdezés":::
+:::image type="content" source="media/concepts-hyperscale-colocation/colocation-better-query.png" alt-text="Szilánkok":::
 
 Bizonyos esetekben a lekérdezéseket és a táblázatos sémákat úgy kell módosítani, hogy a bérlői azonosítót egyedi korlátozásokkal és csatlakozási feltételekkel tartalmazzák. Ez a módosítás általában egyszerű.
 

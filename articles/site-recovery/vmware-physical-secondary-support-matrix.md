@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 11/14/2019
 ms.author: raynew
 ms.openlocfilehash: c6f0f48df32db0beb9c0a57982d9bc87b26538d8
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86135141"
 ---
 # <a name="support-matrix-for-disaster-recovery-of-vmware-vms-and-physical-servers-to-a-secondary-site"></a>A VMware virtuális gépek és fizikai kiszolgálók másodlagos helyre való vész-helyreállításának támogatási mátrixa
@@ -86,7 +86,7 @@ Vendég virtuális gép – több hálózati adapter | Igen
 **Storage (gazdagép)** | **Támogatott** 
 --- | --- 
 NFS | Igen 
-SMB 3.0 | N.A. 
+SMB 3.0 | N/A 
 SAN (ISCSI) | Igen 
 Több elérési út (MPIO) | Igen 
 
@@ -95,8 +95,8 @@ Több elérési út (MPIO) | Igen
 **Konfigurálás** | **Támogatott** 
 --- | --- 
 VMDK | Igen 
-VHD/VHDX | N.A. 
-2. generációs VM | N.A. 
+VHD/VHDX | N/A 
+2. generációs VM | N/A 
 Megosztott fürtözött lemez | Igen 
 Titkosított lemez | Nem 
 UEFI| Igen 
@@ -108,9 +108,9 @@ Kötet szalagos lemezzel > 1 TB<br/><br/> LVM | Igen
 Tárolóhelyek | Nem 
 Lemez gyors hozzáadása/eltávolítása | Igen 
 Lemez kizárása | Igen 
-Több elérési út (MPIO) | N.A. 
+Több elérési út (MPIO) | N/A 
 
-## <a name="vaults"></a>Tárolók
+## <a name="vaults"></a>Kulcstartók
 
 **Művelet** | **Támogatott** 
 --- | --- 
@@ -127,7 +127,7 @@ A mobilitási szolgáltatás koordinálja a helyszíni VMware-kiszolgálók, a f
 |Összetevő frissítései | A Scout frissítései tartalmazzák az összes összetevő frissítéseit, beleértve az RX-kiszolgálót, a konfigurációs kiszolgálót, a folyamat-és fő célkiszolgáló, a vContinuum-kiszolgálók és a használni kívánt forráskiszolgáló-kiszolgálókat.<br/><br/> [További információk](vmware-physical-secondary-disaster-recovery.md#download-and-install-component-updates).|
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az [Inmage Scout felhasználói útmutatójának](https://aka.ms/asr-scout-user-guide) letöltése
 

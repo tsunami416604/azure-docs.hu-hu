@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 08/06/2020
 ms.openlocfilehash: 1ba2f5e4b88ae6ae0ed15dbfbbc4fa5c55c45a77
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87874027"
 ---
 # <a name="create-linux-based-clusters-in-hdinsight-by-using-the-azure-portal"></a>Linux-alapú fürtök létrehozása a HDInsight-ben a Azure Portal használatával
@@ -25,7 +25,7 @@ A Azure Portal egy webalapú felügyeleti eszköz a Microsoft Azure felhőben ü
 
 A Azure Portal a fürt legtöbb tulajdonságát elérhetővé teszi. Azure Resource Manager sablonok használatával számos részletet elolvashat. További információ: [Apache Hadoop-fürtök létrehozása a HDInsight-ben Resource Manager-sablonok használatával](hdinsight-hadoop-create-linux-clusters-arm-templates.md).
 
-Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F) a virtuális gép létrehozásának megkezdése előtt.
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
 ## <a name="create-clusters"></a>Fürtök létrehozása
 
@@ -39,7 +39,7 @@ Ha nem rendelkezik Azure-előfizetéssel, mindössze néhány perc alatt létreh
 
 1. Válassza az **Analytics**  >  **Azure HDInsight** lehetőséget a **HDInsight-fürt létrehozása** lap megjelenítéséhez.
 
-## <a name="basics"></a>Alapbeállítások
+## <a name="basics"></a>Alapvető beállítások
 
 ![HDInsight létrehozása a fürt alapjaival](./media/hdinsight-hadoop-create-linux-clusters-portal/azure-portal-cluster-basics.png "Új fürt létrehozása a Azure Portalban")
 
@@ -122,7 +122,7 @@ A **konfiguráció + díjszabás** lapon adja meg a következő információkat:
 |Az autoskálázás engedélyezése|Nem kötelező: jelölje be a jelölőnégyzetet a funkció engedélyezéséhez. További információ: az [Azure HDInsight-fürtök automatikus méretezése](./hdinsight-autoscale-clusters.md).|
 |+ Parancsfájl hozzáadása művelet|Nem kötelező: Ez a beállítás akkor működik, ha egyéni parancsfájllal szeretné testre szabni a fürtöt, mivel a fürt létrehozása folyamatban van. További információ a parancsfájl-műveletekről: [Linux-alapú HDInsight-fürtök testreszabása parancsfájl-műveletek használatával](hdinsight-hadoop-customize-cluster-linux.md).|
 
-Válassza a **felülvizsgálat + >>létrehozása** elemet a fürtkonfiguráció ellenőrzéséhez és a végső lapra való haladáshoz.
+Válassza a **felülvizsgálat + >>létrehozása ** elemet a fürtkonfiguráció ellenőrzéséhez és a végső lapra való haladáshoz.
 
 ## <a name="review--create"></a>Ellenőrzés és létrehozás
 

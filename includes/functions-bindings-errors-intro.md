@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 09/04/2018
 ms.author: glenga
 ms.openlocfilehash: 629de079f7cc7d95d10f8ff951a47b8b8fc62dad
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77474109"
 ---
 Egy Azure Functionsban felmerülő hibák a következő eredetek bármelyike esetén származhatnak:
@@ -34,7 +34,7 @@ A rögzítési és közzétételi hibák kritikus fontosságúak az alkalmazás 
 A következő eseményindítók beépített újrapróbálkozási támogatással rendelkeznek:
 
 * [Azure Blob Storage](../articles/azure-functions/functions-bindings-storage-blob.md)
-* [Azure üzenetsor-tároló](../articles/azure-functions/functions-bindings-storage-queue.md)
+* [Azure Queue Storage](../articles/azure-functions/functions-bindings-storage-queue.md)
 * [Azure Service Bus (Üzenetsor/témakör)](../articles/azure-functions/functions-bindings-service-bus.md)
 
 Alapértelmezés szerint ezek az eseményindítók legfeljebb ötször kérik újra a kérelmeket. Az ötödik újrapróbálkozás után az Azure üzenetsor-tároló és a Azure Service Bus eseményindítók is írhatnak egy üzenetet a [méreg-várólistába](..\articles\azure-functions\functions-bindings-storage-queue-trigger.md#poison-messages).

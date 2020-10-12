@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 06/05/2018
 ms.author: cynthn
 ms.openlocfilehash: d6e5195f43991f4d40af57c1ab4b87aaca475b64
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87373402"
 ---
 # <a name="create-a-linux-virtual-machine-that-uses-ssh-authentication-with-the-rest-api"></a>SSH-hitelesítést használó linuxos virtuális gép létrehozása a REST API
@@ -54,7 +54,7 @@ REST API kérelmekkel kapcsolatos általános információkért tekintse meg [a 
 
 A kérelem törzsének létrehozásához a következő általános definíciók használhatók:
 
-| Név                       | Kötelező | Típus                                                                                | Description  |
+| Name (Név)                       | Kötelező | Típus                                                                                | Leírás  |
 |----------------------------|----------|-------------------------------------------------------------------------------------|--------------|
 | location                   | True (Igaz)     | sztring                                                                              | Erőforrás helye. |
 | name                       |          | sztring                                                                              | A virtuális gép neve. |
@@ -128,7 +128,7 @@ A HTTP-kérelem elküldéséhez használhatja a kívánt ügyfelet. Egy [böngé
 
 A műveletnek két sikeres válasza van a virtuális gép létrehozásához vagy frissítéséhez:
 
-| Név        | Típus                                                                              | Description |
+| Név        | Típus                                                                              | Leírás |
 |-------------|-----------------------------------------------------------------------------------|-------------|
 | 200 OK      | [VirtualMachine](/rest/api/compute/virtualmachines/createorupdate#virtualmachine) | OK          |
 | 201 létrehozva | [VirtualMachine](/rest/api/compute/virtualmachines/createorupdate#virtualmachine) | Létrehozva     |
