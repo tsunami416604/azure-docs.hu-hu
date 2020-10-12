@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 09/15/2020
 ms.author: jingwang
 ms.openlocfilehash: 7d61121b4c80b7b89ec29ade4ab1bfab91a660d9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91334344"
 ---
 # <a name="avro-format-in-azure-data-factory"></a>Avro formátuma Azure Data Factory
@@ -30,9 +30,9 @@ Az adatkészletek definiálásához rendelkezésre álló csoportok és tulajdon
 
 | Tulajdonság         | Leírás                                                  | Kötelező |
 | ---------------- | ------------------------------------------------------------ | -------- |
-| típus             | Az adatkészlet Type tulajdonságát **Avro**értékre kell állítani. | Yes      |
-| location         | A fájl (ok) helyének beállításai. Minden fájl alapú összekötőhöz tartozik a saját hely típusa és a támogatott tulajdonságai `location` . **Tekintse meg a részleteket az összekötő cikk-> adatkészlet tulajdonságai szakaszban**. | Yes      |
-| avroCompressionCodec | A Avro-fájlok írásakor használandó tömörítési kodek. A Avro-fájlokból való olvasáskor Data Factory automatikusan meghatározza a tömörítési kodeket a fájl metaadatai alapján.<br>A támogatott típusok a következők: "**none**" (alapértelmezett), "**deflate**", "**Snappy**". Megjegyzés: a másolási tevékenység jelenleg nem támogatja a Snappy-t az Avro-fájlok olvasásakor/írásakor. | No       |
+| típus             | Az adatkészlet Type tulajdonságát **Avro**értékre kell állítani. | Igen      |
+| location         | A fájl (ok) helyének beállításai. Minden fájl alapú összekötőhöz tartozik a saját hely típusa és a támogatott tulajdonságai `location` . **Tekintse meg a részleteket az összekötő cikk-> adatkészlet tulajdonságai szakaszban**. | Igen      |
+| avroCompressionCodec | A Avro-fájlok írásakor használandó tömörítési kodek. A Avro-fájlokból való olvasáskor Data Factory automatikusan meghatározza a tömörítési kodeket a fájl metaadatai alapján.<br>A támogatott típusok a következők: "**none**" (alapértelmezett), "**deflate**", "**Snappy**". Megjegyzés: a másolási tevékenység jelenleg nem támogatja a Snappy-t az Avro-fájlok olvasásakor/írásakor. | Nem       |
 
 > [!NOTE]
 > A Avro-fájlok nem támogatják az oszlopnév üres területét.
@@ -71,8 +71,8 @@ A másolási tevékenység *** \* forrása \* *** szakaszban a következő tulaj
 
 | Tulajdonság      | Leírás                                                  | Kötelező |
 | ------------- | ------------------------------------------------------------ | -------- |
-| típus          | A másolási tevékenység forrásának Type tulajdonságát **AvroSource**értékre kell állítani. | Yes      |
-| storeSettings | Az adattárakból származó adatok beolvasására szolgáló tulajdonságok csoportja. A fájl alapú összekötők a saját támogatott olvasási beállításaival rendelkeznek `storeSettings` . **Tekintse meg a részleteket az összekötőről szóló cikk – > másolási tevékenység tulajdonságai szakaszban**. | No       |
+| típus          | A másolási tevékenység forrásának Type tulajdonságát **AvroSource**értékre kell állítani. | Igen      |
+| storeSettings | Az adattárakból származó adatok beolvasására szolgáló tulajdonságok csoportja. A fájl alapú összekötők a saját támogatott olvasási beállításaival rendelkeznek `storeSettings` . **Tekintse meg a részleteket az összekötőről szóló cikk – > másolási tevékenység tulajdonságai szakaszban**. | Nem       |
 
 ### <a name="avro-as-sink"></a>Avro fogadóként
 
@@ -80,17 +80,17 @@ A másolási *** \* \* tevékenység*** fogadója szakaszban a következő tulaj
 
 | Tulajdonság      | Leírás                                                  | Kötelező |
 | ------------- | ------------------------------------------------------------ | -------- |
-| típus          | A másolási tevékenység forrásának Type tulajdonságát **AvroSink**értékre kell állítani. | Yes      |
-| formatSettings          | Tulajdonságok csoportja. Tekintse meg az alábbi **Avro írási beállítások** táblázatát.| No      |
-| storeSettings | Az adattárakba való adatíráshoz szükséges tulajdonságok csoportja. A fájl alapú összekötők a saját támogatott írási beállításaival rendelkeznek `storeSettings` . **Tekintse meg a részleteket az összekötőről szóló cikk – > másolási tevékenység tulajdonságai szakaszban**. | No       |
+| típus          | A másolási tevékenység forrásának Type tulajdonságát **AvroSink**értékre kell állítani. | Igen      |
+| formatSettings          | Tulajdonságok csoportja. Tekintse meg az alábbi **Avro írási beállítások** táblázatát.| Nem      |
+| storeSettings | Az adattárakba való adatíráshoz szükséges tulajdonságok csoportja. A fájl alapú összekötők a saját támogatott írási beállításaival rendelkeznek `storeSettings` . **Tekintse meg a részleteket az összekötőről szóló cikk – > másolási tevékenység tulajdonságai szakaszban**. | Nem       |
 
 Támogatott **Avro írási beállítások** a alatt `formatSettings` :
 
 | Tulajdonság      | Leírás                                                  | Kötelező                                              |
 | ------------- | ------------------------------------------------------------ | ----------------------------------------------------- |
-| típus          | A formatSettings típusát **AvroWriteSettings**értékre kell beállítani. | Yes                                                   |
-| maxRowsPerFile | Az Adatmappában való íráskor több fájl írására is választhatja, és a fájlok maximális számát is megadhatja.  | No |
-| fileNamePrefix | `maxRowsPerFile`A konfigurálásakor alkalmazható.<br> Adja meg a fájlnév előtagját, ha több fájlra ír be adatírást, ami a következő mintának eredményezte: `<fileNamePrefix>_00000.<fileExtension>` . Ha nincs megadva, a rendszer automatikusan létrehozza a fájlnév-előtagot. Ez a tulajdonság nem érvényes, ha a forrás fájl-vagy [partíciós](copy-activity-performance-features.md)tárolásra képes adattár.  | No |
+| típus          | A formatSettings típusát **AvroWriteSettings**értékre kell beállítani. | Igen                                                   |
+| maxRowsPerFile | Az Adatmappában való íráskor több fájl írására is választhatja, és a fájlok maximális számát is megadhatja.  | Nem |
+| fileNamePrefix | `maxRowsPerFile`A konfigurálásakor alkalmazható.<br> Adja meg a fájlnév előtagját, ha több fájlra ír be adatírást, ami a következő mintának eredményezte: `<fileNamePrefix>_00000.<fileExtension>` . Ha nincs megadva, a rendszer automatikusan létrehozza a fájlnév-előtagot. Ez a tulajdonság nem érvényes, ha a forrás fájl-vagy [partíciós](copy-activity-performance-features.md)tárolásra képes adattár.  | Nem |
 
 ## <a name="mapping-data-flow-properties"></a>Adatfolyam-tulajdonságok leképezése
 

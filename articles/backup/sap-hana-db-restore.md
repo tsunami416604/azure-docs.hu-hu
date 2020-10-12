@@ -4,10 +4,10 @@ description: Ebből a cikkből megtudhatja, hogyan állíthatja vissza az Azure 
 ms.topic: conceptual
 ms.date: 11/7/2019
 ms.openlocfilehash: c502b7741acd343baefe5e2bf8b95cfc02e46688
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90986083"
 ---
 # <a name="restore-sap-hana-databases-on-azure-vms"></a>SAP HANA-adatbázisok visszaállítása Azure-beli virtuális gépeken
@@ -112,7 +112,7 @@ A visszaállításhoz a következő engedélyek szükségesek:
     > Önálló adatbázis tároló (SDC) visszaállításának az alábbi [ellenőrzéseknek](backup-azure-sap-hana-database-troubleshoot.md#single-container-database-sdc-restore)kell megfelelnie.
 
 1. Ha van ilyen, válassza **a felülírás lehetőséget, ha a kiválasztott HANA-példányon már van ilyen nevű adatbázis**.
-1. Válassza az **OK** lehetőséget.
+1. Kattintson az **OK** gombra.
 
     ![Konfiguráció visszaállítása – végső képernyő](media/sap-hana-db-restore/restore-configuration-last.png)
 

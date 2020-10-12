@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/12/2020
 ms.openlocfilehash: eaafb9536a8667417c0abf4ab570609f2db290bc
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88935347"
 ---
 # <a name="documentation-resources-for-ai-enrichment-in-azure-cognitive-search"></a>Az AI-bővítés dokumentációs erőforrásai az Azure-ban Cognitive Search
@@ -100,4 +100,4 @@ Az alábbi lista a AI-bővítés dokumentációjának összevont listáját tart
 
 + [Az Azure Cognitive Search REST API-jai](/rest/api/searchservice/)
 + [Indexelők az Azure Cognitive Searchben](search-indexer-overview.md)
-+ [Mi az az Azure Cognitive Search?](search-what-is-azure-search.md)
++ [Mi az Azure Cognitive Search?](search-what-is-azure-search.md)

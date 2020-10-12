@@ -12,10 +12,10 @@ ms.date: 07/27/2020
 ms.author: kenwith
 ms.reviewer: arvinh,luleon
 ms.openlocfilehash: 262c3a7c8a668ef25d092b5d523743e0ece89cc3
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88641143"
 ---
 # <a name="using-azure-ad-for-applications-not-listed-in-the-app-gallery"></a>Az Azure AD használata az App Galleryben nem szereplő alkalmazásokhoz
@@ -35,7 +35,7 @@ Hozzáadhat bármely olyan alkalmazást, amely már létezik a szervezetében, v
 
 Ha az egyéni alkalmazások Azure AD-val való integrálásával kapcsolatos fejlesztői útmutatást keres, tekintse meg az [Azure ad hitelesítési forgatókönyveit](../develop/authentication-scenarios.md). Ha olyan alkalmazást fejleszt ki, amely egy modern protokollt használ, például az [OpenId Connect/OAuth](../develop/active-directory-v2-protocols.md) -t a felhasználók hitelesítéséhez, akkor a Azure Portal [Alkalmazásregisztrációk](../develop/quickstart-register-app.md) felületének használatával regisztrálhatja azt a Microsoft Identity platformon.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Gyors üzembe helyezési sorozat az App Management szolgáltatásban](view-applications-portal.md)
 

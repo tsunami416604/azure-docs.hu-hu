@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 04/10/2019
 ms.openlocfilehash: cff2e918c7b67f6d3bccb9b56366cbf034ed1bb5
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89300102"
 ---
 # <a name="manage-access-to-log-data-and-workspaces-in-azure-monitor"></a>Naplóadatok és munkaterületek elérésének felügyelete az Azure Monitorban
@@ -106,7 +106,7 @@ Minden munkaterülethez több fiók is társítható, és mindegyik fiók több 
 
 Az alábbi tevékenységek szintén Azure-engedélyeket igényelnek:
 
-|Műveletek |Azure-engedélyek szükségesek |Jegyzetek |
+|Művelet |Azure-engedélyek szükségesek |Jegyzetek |
 |-------|-------------------------|------|
 | Figyelési megoldások hozzáadása és eltávolítása | `Microsoft.Resources/deployments/*` <br> `Microsoft.OperationalInsights/*` <br> `Microsoft.OperationsManagement/*` <br> `Microsoft.Automation/*` <br> `Microsoft.Resources/deployments/*/write` | Az engedélyeknek az erőforráscsoport vagy előfizetés szinteken kell megadva lenniük. |
 | Tarifacsomag módosítása | `Microsoft.OperationalInsights/workspaces/*/write` | |
@@ -137,9 +137,9 @@ A Log Analytics olvasó szerepkör a következő Azure-műveleteket tartalmazza:
 | Típus    | Engedély | Leírás |
 | ------- | ---------- | ----------- |
 | Művelet | `*/read`   | Az összes Azure-erőforrás és erőforrás-konfiguráció megtekintésének lehetősége. Ez a következők megtekintését foglalja magában: <br> Virtuális gépi bővítmény állapota <br> Az Azure Diagnostics konfigurációja az erőforrásokon <br> Az összes erőforrás tulajdonságai és beállításai. <br> A munkaterületek számára lehetővé teszi, hogy a teljes korlátozás alá eső engedélyek beolvassák a munkaterület beállításait, és lekérdezéseket végezzenek az adatokon. Lásd a fenti részletesebb beállításokat. |
-| Műveletek | `Microsoft.OperationalInsights/workspaces/analytics/query/action` | Elavult, nincs szükség a felhasználókhoz való hozzárendelésre. |
-| Műveletek | `Microsoft.OperationalInsights/workspaces/search/action` | Elavult, nincs szükség a felhasználókhoz való hozzárendelésre. |
-| Műveletek | `Microsoft.Support/*` | Támogatási esetek nyitása |
+| Művelet | `Microsoft.OperationalInsights/workspaces/analytics/query/action` | Elavult, nincs szükség a felhasználókhoz való hozzárendelésre. |
+| Művelet | `Microsoft.OperationalInsights/workspaces/search/action` | Elavult, nincs szükség a felhasználókhoz való hozzárendelésre. |
+| Művelet | `Microsoft.Support/*` | Támogatási esetek nyitása |
 |Nem művelet | `Microsoft.OperationalInsights/workspaces/sharedKeys/read` | Az adatgyűjtési API használatához és az ügynökök telepítéséhez szükséges munkaterület-kulcs olvasásának megakadályozása. Ez megakadályozza, hogy a felhasználó új erőforrásokat adjon a munkaterülethez |
 
 A *Log Analytics közreműködő* szerepkör tagjai a következőket végezhetik el:
@@ -162,7 +162,7 @@ A *Log Analytics közreműködő* szerepkör tagjai a következőket végezhetik
 
 A Log Analytics közreműködő szerepkör a következő Azure-műveleteket tartalmazza:
 
-| Engedély | Description |
+| Engedély | Leírás |
 | ---------- | ----------- |
 | `*/read`     | Az összes erőforrás és erőforrás-konfiguráció megtekintése. Ez a következők megtekintését foglalja magában: <br> Virtuális gépi bővítmény állapota <br> Az Azure Diagnostics konfigurációja az erőforrásokon <br> Az összes erőforrás tulajdonságai és beállításai. <br> A munkaterületek számára lehetővé teszi, hogy a teljes korlátozás alá eső engedélyek beolvassák a munkaterület beállítását, és lekérdezéseket végezzenek az adatokon. Lásd a fenti részletesebb beállításokat. |
 | `Microsoft.Automation/automationAccounts/*` | Azure Automation-fiókok létrehozása és konfigurálása, beleértve runbookok hozzáadását és szerkesztését |
@@ -189,7 +189,7 @@ Javasoljuk, hogy az erőforrás szintjén (munkaterület) végezze el a hozzáre
 
 Ha a felhasználók erőforrás-kontextusos hozzáférés használatával kérdeznek le naplókat egy munkaterületről, a következő engedélyek lesznek az erőforráshoz:
 
-| Engedély | Description |
+| Engedély | Leírás |
 | ---------- | ----------- |
 | `Microsoft.Insights/logs/<tableName>/read`<br><br>Példák:<br>`Microsoft.Insights/logs/*/read`<br>`Microsoft.Insights/logs/Heartbeat/read` | Képes megtekinteni az erőforrás összes naplózási adatforrását.  |
 | `Microsoft.Insights/diagnosticSettings/write` | A diagnosztikai beállítások konfigurálásának lehetősége az erőforráshoz tartozó naplók beállításának engedélyezéséhez. |

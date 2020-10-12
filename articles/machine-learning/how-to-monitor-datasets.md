@@ -12,10 +12,10 @@ ms.date: 06/25/2020
 ms.topic: conceptual
 ms.custom: how-to
 ms.openlocfilehash: 8f54ece9a932ed4cc0adc29747e1c58ee22646c8
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91333868"
 ---
 # <a name="detect-data-drift-preview-on-datasets"></a>Adatcsere (előzetes verzió) észlelése az adatkészleteken
@@ -85,7 +85,7 @@ Elemzés végrehajtása a múltbeli adatokon. | Ez a forgatókönyv felhasználh
 
 Az adatkészlet-figyelők a következő Azure-szolgáltatásoktól függenek.
 
-|Azure-szolgáltatás  |Description  |
+|Azure-szolgáltatás  |Leírás  |
 |---------|---------|
 | *Adathalmaz* | A drift Machine Learning adatkészletek használatával kéri le a betanítási adatokat, és összehasonlítja az adatokat a modell betanításához  Az adatok profiljának generálása a jelentett mérőszámok némelyikét, például a min, a maximumot, a különböző értékeket, a különböző értékek számát hozza létre. |
 | *Azureml-folyamat és-számítás* | A drift számítási feladatot a azureml-folyamat tárolja.  A feladatot igény szerint, vagy ütemezés szerint kell elindítani a drift monitor létrehozási idején konfigurált számítási feladatok futtatásához.
@@ -145,7 +145,7 @@ A **séma** beállításainál adja meg a megadott adatkészlet virtuális vagy 
 
 Ha az adatok a dátum szerint particionálva vannak, ahogy az itt látható, akkor megadhatja a partition_timestamp is.  Ez lehetővé teszi a dátumok hatékonyabb feldolgozását.
 
-:::image type="content" source="media/how-to-monitor-datasets/timeseries-partitiontimestamp.png" alt-text="Partíció időbélyege":::
+:::image type="content" source="media/how-to-monitor-datasets/timeseries-partitiontimestamp.png" alt-text="Időbélyeg beállítása":::
 
 
 ## <a name="create-dataset-monitors"></a>Adatkészlet-figyelők létrehozása
@@ -213,7 +213,7 @@ Az `timeseries` adatkészletek és adatdrift-detektorok beállításának teljes
 
 1. Kattintson a **+ figyelő létrehozása** gombra, és folytassa a varázslót **a Tovább gombra kattintva.**  
 
-:::image type="content" source="media/how-to-monitor-datasets/wizard.png" alt-text="Figyelő varázsló létrehozása":::
+:::image type="content" source="media/how-to-monitor-datasets/wizard.png" alt-text="Időbélyeg beállítása":::
 
 * **Válassza ki a cél adatkészletet**.  A célként megadott adatkészlet egy olyan táblázatos adatkészlet, amelyben az időbélyegző oszlop van megadva, amelyet az adateltolódáshoz elemez a rendszer. A célként megadott adatkészletnek közös szolgáltatásokkal kell rendelkeznie az alapkonfigurációhoz, és olyan `timeseries` adatkészletnek kell lennie, amelybe a rendszer hozzáfűzi az új adatokat. A célként megadott adatkészletben lévő korábbi adatokat elemezni lehet, vagy az új adatokat lehet figyelni.
 
@@ -223,14 +223,14 @@ Az `timeseries` adatkészletek és adatdrift-detektorok beállításának teljes
 
     | Beállítás | Leírás | Tippek | Változtatható | 
     | ------- | ----------- | ---- | ------- |
-    | Name | Az adatkészlet figyelő neve. | | No |
-    | Funkciók | Azoknak a szolgáltatásoknak a listája, amelyeket az adateltolódás az idő múlásával elemezni fog. | A modell kimeneti funkciójának beállítása a koncepciók eltolódásának mérésére. Ne tartalmazzon olyan funkciókat, amelyek természetesen az idő függvényében sodródnak (hónap, év, index stb.). A szolgáltatások listájának módosítása után a backfill és a meglévő adatdrift-figyelő is megadható. | Yes | 
-    | Számítási cél | Azure Machine Learning számítási célt az adatkészlet-figyelő feladatok futtatásához. | | Yes | 
-    | Engedélyezés | Az adatkészlet-figyelő folyamatának ütemezett engedélyezése vagy letiltása | Tiltsa le az ütemtervet, hogy elemezze a korábbi adatértékeket a backfill beállítással. Az adatkészlet-figyelő létrehozása után is engedélyezhető. | Yes | 
-    | Frequency | A folyamat feladatainak beütemezett és a korábbi adatok elemzéséhez használt gyakoriság, ha backfill fut. A beállítások a következők: naponta, hetente vagy havonta. | Minden Futtatás összehasonlítja a cél adatkészletben lévő adatokat a gyakoriság szerint: <li>Napi: a legutóbbi teljes nap összehasonlítása a célként megadott adatkészlet alapkonfigurációval <li>Hetente: a legutóbbi teljes hét (hétfő – vasárnap) összehasonlítása a célként megadott adatkészlet alapkonfigurációval <li>Havi: a legutóbbi teljes hónap összehasonlítása a célként megadott adatkészlet alapkonfigurációval | No | 
-    | Késés | Az adatkészletbe való beérkezéshez szükséges idő (óra). Ha például három napot vesz igénybe az adatkészletet tároló SQL-ADATBÁZISba való beérkezési adat, a késést állítsa 72-re. | Az adatkészlet-figyelő létrehozása után nem módosítható | No | 
-    | E-mail-címek | A riasztások e-mail-címei az adateltolódás százalékos küszöbértékének megszegése alapján. | Az e-maileket Azure Monitor küldi el a rendszer. | Yes | 
-    | Küszöbérték | Az e-mail riasztások százalékos küszöbértéke az e-mailek küldéséhez. | További riasztások és események a munkaterület társított Application Insights erőforrásának számos más metrikáján is megadhatók. | Yes |
+    | Name (Név) | Az adatkészlet figyelő neve. | | Nem |
+    | Szolgáltatások | Azoknak a szolgáltatásoknak a listája, amelyeket az adateltolódás az idő múlásával elemezni fog. | A modell kimeneti funkciójának beállítása a koncepciók eltolódásának mérésére. Ne tartalmazzon olyan funkciókat, amelyek természetesen az idő függvényében sodródnak (hónap, év, index stb.). A szolgáltatások listájának módosítása után a backfill és a meglévő adatdrift-figyelő is megadható. | Igen | 
+    | Számítási cél | Azure Machine Learning számítási célt az adatkészlet-figyelő feladatok futtatásához. | | Igen | 
+    | Engedélyezés | Az adatkészlet-figyelő folyamatának ütemezett engedélyezése vagy letiltása | Tiltsa le az ütemtervet, hogy elemezze a korábbi adatértékeket a backfill beállítással. Az adatkészlet-figyelő létrehozása után is engedélyezhető. | Igen | 
+    | Frequency | A folyamat feladatainak beütemezett és a korábbi adatok elemzéséhez használt gyakoriság, ha backfill fut. A beállítások a következők: naponta, hetente vagy havonta. | Minden Futtatás összehasonlítja a cél adatkészletben lévő adatokat a gyakoriság szerint: <li>Napi: a legutóbbi teljes nap összehasonlítása a célként megadott adatkészlet alapkonfigurációval <li>Hetente: a legutóbbi teljes hét (hétfő – vasárnap) összehasonlítása a célként megadott adatkészlet alapkonfigurációval <li>Havi: a legutóbbi teljes hónap összehasonlítása a célként megadott adatkészlet alapkonfigurációval | Nem | 
+    | Késés | Az adatkészletbe való beérkezéshez szükséges idő (óra). Ha például három napot vesz igénybe az adatkészletet tároló SQL-ADATBÁZISba való beérkezési adat, a késést állítsa 72-re. | Az adatkészlet-figyelő létrehozása után nem módosítható | Nem | 
+    | E-mail-címek | A riasztások e-mail-címei az adateltolódás százalékos küszöbértékének megszegése alapján. | Az e-maileket Azure Monitor küldi el a rendszer. | Igen | 
+    | Küszöbérték | Az e-mail riasztások százalékos küszöbértéke az e-mailek küldéséhez. | További riasztások és események a munkaterület társított Application Insights erőforrásának számos más metrikáján is megadhatók. | Igen |
 
 A varázsló befejezése után az eredményül kapott adatkészlet figyelő megjelenik a listában. Válassza ki, hogy megnyissa a figyelő részleteket tartalmazó lapját.
 
@@ -240,7 +240,7 @@ Ez a szakasz az Azure Studio **adatkészletek**  /  **adatkészlet-figyelők** l
 
 Kezdje a legfelső szintű betekintéssel az adateltolódás nagyságát, és a további megvizsgálandó funkciók kiemelését.
 
-:::image type="content" source="media/how-to-monitor-datasets/drift-overview.png" alt-text="A drift áttekintése":::
+:::image type="content" source="media/how-to-monitor-datasets/drift-overview.png" alt-text="Időbélyeg beállítása":::
 
 
 | Metrika | Leírás | 
@@ -253,7 +253,7 @@ Kezdje a legfelső szintű betekintéssel az adateltolódás nagyságát, és a 
 
 Megtudhatja, hogyan tér el az adatkészlet a megadott időszakban a cél adatkészlettől.  Minél közelebb a 100%-hoz, annál több a két adathalmaz eltérő.
 
-:::image type="content" source="media/how-to-monitor-datasets/drift-magnitude.png" alt-text="Drift nagyságának trendje":::
+:::image type="content" source="media/how-to-monitor-datasets/drift-magnitude.png" alt-text="Időbélyeg beállítása":::
 
 ### <a name="drift-magnitude-by-features"></a>Drift magnitúdó a funkciók alapján
 
@@ -263,7 +263,7 @@ A célként megadott adatkészlet az idő múlásával is bekerül. Az egyes szo
 
 A Azure Machine Learning Studióban kattintson a gráf egyik sávjára, és tekintse meg az adott dátumra vonatkozó szolgáltatási szint részleteit. Alapértelmezés szerint az alapadatkészlet eloszlása és a legutóbbi futtatási eloszlása is megjelenik ugyanazon funkció alapján.
 
-:::image type="content" source="media/how-to-monitor-datasets/drift-by-feature.gif" alt-text="Drift magnitúdó a funkciók alapján":::
+:::image type="content" source="media/how-to-monitor-datasets/drift-by-feature.gif" alt-text="Időbélyeg beállítása":::
 
 Ezek a metrikák a Python SDK-ban is beolvashatók `get_metrics()` egy objektum metódusával `DataDriftDetector` .
 
@@ -271,7 +271,7 @@ Ezek a metrikák a Python SDK-ban is beolvashatók `get_metrics()` egy objektum 
 
 Végül görgessen le az egyes funkciók részleteinek megtekintéséhez.  A diagram fölötti legördülő listából válassza ki a funkciót, és válassza ki a megtekinteni kívánt metrikát.
 
-:::image type="content" source="media/how-to-monitor-datasets/numeric-feature.gif" alt-text="Numerikus funkciók gráfja és összehasonlítása":::
+:::image type="content" source="media/how-to-monitor-datasets/numeric-feature.gif" alt-text="Időbélyeg beállítása":::
 
 A diagram metrikái a szolgáltatás típusától függenek.
 
@@ -293,7 +293,7 @@ A diagram metrikái a szolgáltatás típusától függenek.
 
 Ezen a diagramon válassza ki azt a dátumot, amellyel össze szeretné hasonlítani a szolgáltatások eloszlását a cél és a megjelenített szolgáltatás ezen dátuma között. A numerikus funkciók esetében ez két valószínűségi eloszlást mutat.  Ha a funkció numerikus, akkor megjelenik egy oszlopdiagram.
 
-:::image type="content" source="media/how-to-monitor-datasets/select-date-to-compare.gif" alt-text="Válassza ki a célként összehasonlítani kívánt dátumot":::
+:::image type="content" source="media/how-to-monitor-datasets/select-date-to-compare.gif" alt-text="Időbélyeg beállítása":::
 
 ## <a name="metrics-alerts-and-events"></a>Metrikák, riasztások és események
 

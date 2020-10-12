@@ -8,10 +8,10 @@ ms.date: 03/09/2020
 ms.author: fauhse
 ms.subservice: files
 ms.openlocfilehash: d9cf7b3cf996e41f90e3a40a6ee08d0fd51c8457
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85510333"
 ---
 # <a name="storsimple-1200-migration-to-azure-file-sync"></a>StorSimple 1200 Migrálás Azure File Syncre
@@ -210,7 +210,7 @@ Elvégezte a megosztások/csoportok egy közös gyökerébe vagy kötetbe való 
 A másolatok közül néhányat párhuzamosan is futtathat. Javasoljuk, hogy egyszerre egy Azure-fájlmegosztás hatókörét dolgozza fel.
 
 > [!WARNING]
-> Ha áthelyezte a StorSimple összes adatait a Windows Serverre, és az áttelepítés befejeződött: térjen vissza a Azure Portal ***összes*** szinkronizálási csoportjához, és állítsa be a Felhőbeli kötet szabad területének százalékos értékét a gyorsítótár kihasználtságára alkalmasabb értékre, 20%-ot. 
+> Ha áthelyezte a StorSimple összes adatait a Windows Serverre, és az áttelepítés befejeződött: térjen vissza a Azure Portal ***összes***  szinkronizálási csoportjához, és állítsa be a Felhőbeli kötet szabad területének százalékos értékét a gyorsítótár kihasználtságára alkalmasabb értékre, 20%-ot. 
 
 A felhő-rétegek kötetének szabad területére vonatkozó házirend olyan kötet szintjén működik, amelynek több kiszolgálói végpontja is szinkronizálva van. Ha a szabad területet még egy kiszolgálói végponton is módosítani szeretné, a szinkronizálás továbbra is alkalmazza a legszigorúbb szabályt, és megkísérli a 99%-os szabad lemezterület fenntartását, így a helyi gyorsítótár nem végezhető el a várt módon. Kivéve, ha a célja, hogy csak a ritkán használt, archivált adatmennyiséget tartalmazó kötet névterét adja meg.
 

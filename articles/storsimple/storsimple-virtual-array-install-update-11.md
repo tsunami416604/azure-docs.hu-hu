@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 07/18/2018
 ms.author: alkohli
 ms.openlocfilehash: 6f8ec56cc5747921ee786bd4c069070ff865f9fb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85507925"
 ---
 # <a name="install-update-11-on-your-storsimple-virtual-array"></a>Az 1,1-es frissítés telepítése a StorSimple virtuális tömbön
@@ -32,7 +32,7 @@ A szoftverfrissítések vagy gyorsjavítások alkalmazása a StorSimple virtuál
 > [!IMPORTANT]
 > - Az 1,1-es frissítés megfelel az eszközön **10.0.10307.0** szoftver verziójának. A frissítéssel kapcsolatos újdonságokról a 1,1-es [frissítés kibocsátási megjegyzései](storsimple-virtual-array-update-11-release-notes.md)című témakörben olvashat bővebben.
 >
-> - Ne feledje, hogy frissítés vagy gyorsjavítás telepítése újraindítja az eszközt. Mivel a StorSimple virtuális tömb egyetlen csomópontos eszköz, a folyamatban lévő I/O-műveletek megszakadnak, és az eszköz leállást tapasztal.
+> - Ne feledje, hogy egy frissítés vagy gyorsjavítás telepítése újraindítja az eszközt. Mivel a StorSimple virtuális tömb egyetlen csomópontos eszköz, a folyamatban lévő I/O-műveletek megszakadnak, és az eszköz leállást tapasztal.
 >
 > - Az 1,1-es frissítés csak akkor érhető el a Azure Portalban, ha a virtuális tömb az 1. frissítést futtatja. Az 0,6-es verzió frissítését futtató virtuális tömbök esetében először telepíteni kell a 1,0-es frissítést, majd alkalmaznia kell az Update 1,1 alkalmazást.
 

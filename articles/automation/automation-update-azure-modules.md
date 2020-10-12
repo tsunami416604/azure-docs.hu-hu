@@ -6,10 +6,10 @@ ms.subservice: process-automation
 ms.date: 06/14/2019
 ms.topic: conceptual
 ms.openlocfilehash: 9cc5e5107784d447640ef0ae77d412885b1e5668
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86185772"
 ---
 # <a name="update-azure-powershell-modules"></a>Azure PowerShell-modulok frissítése
@@ -46,7 +46,7 @@ Ha a runbook a szuverén felhőkön szeretné használni, a `AzEnvironment` para
 
 ## <a name="use-the-update-runbook-to-update-a-specific-module-version"></a>Egy adott modul verziójának frissítéséhez használja a runbook frissítését
 
-Ha a PowerShell-galéria elérhető legújabb modul helyett egy adott Azure PowerShell modul verzióját szeretné használni, adja át ezeket a verziókat az `ModuleVersionOverrides` **Update-AutomationAzureModulesForAccount** runbook választható paraméterének. Példákért tekintse meg a [Update-AutomationAzureModulesForAccount.ps1](https://github.com/Microsoft/AzureAutomation-Account-Modules-Update/blob/master/Update-AutomationAzureModulesForAccount.ps1) runbook. Azure PowerShell a paraméterben nem említett modulok a `ModuleVersionOverrides` PowerShell-Galéria legújabb moduljaival frissülnek. Ha nem adja meg a `ModuleVersionOverrides` paramétert, a rendszer az összes modult frissíti a PowerShell-Galéria legújabb moduljaival. Ez a viselkedés ugyanaz, mint az **Azure-modulok frissítése** gomb a Azure Portalban.
+Ha a PowerShell-galéria elérhető legújabb modul helyett egy adott Azure PowerShell modul verzióját szeretné használni, adja át ezeket a verziókat az `ModuleVersionOverrides` **Update-AutomationAzureModulesForAccount** runbook választható paraméterének. Példákért tekintse meg a  [Update-AutomationAzureModulesForAccount.ps1](https://github.com/Microsoft/AzureAutomation-Account-Modules-Update/blob/master/Update-AutomationAzureModulesForAccount.ps1) runbook. Azure PowerShell a paraméterben nem említett modulok a `ModuleVersionOverrides` PowerShell-Galéria legújabb moduljaival frissülnek. Ha nem adja meg a `ModuleVersionOverrides` paramétert, a rendszer az összes modult frissíti a PowerShell-Galéria legújabb moduljaival. Ez a viselkedés ugyanaz, mint az **Azure-modulok frissítése** gomb a Azure Portalban.
 
 ## <a name="next-steps"></a>További lépések
 

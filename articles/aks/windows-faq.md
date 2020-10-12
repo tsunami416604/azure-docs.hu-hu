@@ -6,10 +6,10 @@ services: container-service
 ms.topic: article
 ms.date: 07/29/2020
 ms.openlocfilehash: df9a4dd546ddc5944d9a282e74c2444a5161b862
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87927555"
 ---
 # <a name="frequently-asked-questions-for-windows-server-node-pools-in-aks"></a>Gyakori kérdések a Windows Server Node-készletekről az AK-ban
@@ -58,7 +58,7 @@ A Windows Node-készletekkel rendelkező AK-fürtöknek az Azure CNI (Advanced) 
 
 A Windows-csomópontok jelenleg nem támogatják az [ügyfél forrás IP-címének megőrzését][client-source-ip] .
 
-## <a name="can-i-change-the-max--of-pods-per-node"></a>Módosítható a max. a hüvelyek száma egy csomóponton?
+## <a name="can-i-change-the-max--of-pods-per-node"></a>Módosíthatom-e a csomópontok max. #-ot?
 
 Igen. Az elérhető hatásokkal és lehetőségekkel kapcsolatban lásd: [hüvelyek maximális száma][maximum-number-of-pods].
 
@@ -121,7 +121,7 @@ Igen, használhatja a [Kubernetes webes irányítópultot][kubernetes-dashboard]
 
 Keményen dolgozunk, hogy az összes olyan funkciót felhasználjuk, amire szüksége van az AK-ban, de ha hiányosságok lépnek fel, a nyílt forráskódú és a felsőbb rétegbeli [AK-motor][aks-engine] projekt egyszerű és teljes mértékben testreszabható módot kínál a Kubernetes Azure-ban való futtatására, beleértve a Windows-támogatást is. Mindenképpen tekintse meg a következő [AK-útitervtel][aks-roadmap]kapcsolatos szolgáltatások ütemtervét.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Windows Server-tárolók az AK-ban való megkezdéséhez [hozzon létre egy olyan csomópont-készletet, amely a Windows Server rendszerű][windows-node-cli]
 

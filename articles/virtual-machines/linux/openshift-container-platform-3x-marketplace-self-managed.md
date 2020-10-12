@@ -1,6 +1,6 @@
 ---
-title: A OpenShift Container platform 3,11 saját üzemeltetésű Piactéri ajánlatának üzembe helyezése az Azure-ban
-description: Üzembe helyezheti a OpenShift Container platform 3,11 saját üzemeltetésű Piactéri ajánlatát az Azure-ban.
+title: A OpenShift Container platform 3,11 Self-Managed Marketplace-ajánlat üzembe helyezése az Azure-ban
+description: A OpenShift Container platform 3,11 Self-Managed Marketplace-ajánlatának üzembe helyezése az Azure-ban.
 author: haroldwongms
 manager: mdotson
 ms.service: virtual-machines-linux
@@ -11,10 +11,10 @@ ms.workload: infrastructure
 ms.date: 10/14/2019
 ms.author: haroldw
 ms.openlocfilehash: 36adf35c5fbfc3e88b7d9af425ebabc852707e69
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87374099"
 ---
 # <a name="configure-prerequisites"></a>Előfeltételek konfigurálása

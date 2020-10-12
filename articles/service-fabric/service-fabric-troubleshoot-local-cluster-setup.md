@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 02/23/2018
 ms.author: mikhegn
 ms.openlocfilehash: 76ca0bb7b81b3896538f08ff2ef52ed1ac6b363f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87091606"
 ---
 # <a name="troubleshoot-your-local-development-cluster-setup"></a>Helyi fejlesztői fürtkonfiguráció hibaelhárítása
@@ -42,7 +42,7 @@ Az elérésiút-változó nem lett megfelelően beállítva a telepítés során
 
 ### <a name="cluster-connection-fails-with-object-is-closed"></a>A fürthöz való csatlakozás meghiúsul "az objektum bezárva"
 #### <a name="problem"></a>Probléma
-A kapcsolódáshoz szükséges hívás – a ServiceFabricCluster a következőhöz hasonló hibával meghiúsul:
+A Connect-ServiceFabricCluster hívása a következőhöz hasonló hibával meghiúsul:
 
 ```output
 Connect-ServiceFabricCluster : The object is closed.
@@ -70,7 +70,7 @@ Győződjön meg arról, hogy nem rendelkezik indítási projektként beállíto
 > 
 > 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [A fürt megismerése és hibakeresése rendszerállapot-jelentésekkel](service-fabric-understand-and-troubleshoot-with-system-health-reports.md)
 * [A fürt megjelenítése a Service Fabric Explorerrel](service-fabric-visualizing-your-cluster.md)
 

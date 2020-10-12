@@ -8,10 +8,10 @@ ms.workload: infrastructure-services
 ms.date: 1/24/2018
 ms.author: xujing
 ms.openlocfilehash: ceb8b8b31963317ccbbd1aee9f1b2606afc5a5db
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91279025"
 ---
 # <a name="how-to-deploy-windows-10-on-azure-with-multitenant-hosting-rights"></a>Windows 10 üzembe helyezése az Azure-ban több-bérlős üzemeltetési jogosultságokkal 
@@ -28,10 +28,10 @@ A PowerShell, a parancssori felület és a Azure Resource Manager sablon üzembe
 
 | Operációs rendszer  |      Közzétevő neve      |  Ajánlat | SKU |
 |:----------|:-------------:|:------|:------|
-| Windows 10 Pro    | MicrosoftWindowsDesktop | Windows-10  | RS2 – Pro   |
-| Windows 10 Pro N  | MicrosoftWindowsDesktop | Windows-10  | RS2 – elterült  |
-| Windows 10 Pro    | MicrosoftWindowsDesktop | Windows-10  | RS3 – Pro   |
-| Windows 10 Pro N  | MicrosoftWindowsDesktop | Windows-10  | RS3 – elterült  |
+| Windows 10 Pro    | MicrosoftWindowsDesktop | Windows-10  | RS2-Pro   |
+| Windows 10 Pro N  | MicrosoftWindowsDesktop | Windows-10  | RS2-ProN  |
+| Windows 10 Pro    | MicrosoftWindowsDesktop | Windows-10  | RS3-Pro   |
+| Windows 10 Pro N  | MicrosoftWindowsDesktop | Windows-10  | RS3-ProN  |
 
 ## <a name="uploading-windows-10-vhd-to-azure"></a>Windows 10 virtuális merevlemez feltöltése az Azure-ba
 Ha általánosított Windows 10 virtuális merevlemezt tölt fel, vegye figyelembe, hogy a Windows 10 alapértelmezés szerint nincs engedélyezve a beépített rendszergazdai fiókkal. A beépített rendszergazdai fiók engedélyezéséhez a következő parancsot adja meg az egyéni szkriptek bővítményének részeként.

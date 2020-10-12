@@ -8,10 +8,10 @@ ms.date: 10/09/2019
 ms.author: pabouwer
 zone_pivot_groups: client-operating-system
 ms.openlocfilehash: 871a764c549de75d5a9e1449ba2e0737d38a4094
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83799947"
 ---
 # <a name="use-intelligent-routing-and-canary-releases-with-istio-in-azure-kubernetes-service-aks"></a>Intelligens Útválasztás és Kanári-kiadások használata az Azure Kubernetes Service (Istio) szolgáltatásban (ak)
@@ -23,7 +23,7 @@ Ez a cikk bemutatja, hogyan használhatja a Istio forgalomirányítási funkció
 Ebben a cikkben az alábbiakkal ismerkedhet meg:
 
 > [!div class="checklist"]
-> * Az alkalmazás központi telepítése
+> * Az alkalmazás üzembe helyezése
 > * Az alkalmazás frissítése
 > * Az alkalmazás Kanári-kiadásának kiépítése
 > * Bevezetés véglegesítése
@@ -49,7 +49,7 @@ A felhasználók egy része, amely `2.0` az alkalmazás egy Kanári-kiadáson ke
 
 Ha biztos abban, hogy a verzió `2.0` a vártnak megfelelően működik a felhasználók részhalmazában, akkor az `2.0` összes felhasználó számára elérhetővé kell tennie a verziót.
 
-## <a name="deploy-the-application"></a>Az alkalmazás központi telepítése
+## <a name="deploy-the-application"></a>Az alkalmazás üzembe helyezése
 
 Kezdjük azzal, hogy üzembe helyezi az alkalmazást az Azure Kubernetes-szolgáltatás (ak) fürtjében. Az alábbi ábra bemutatja, hogy mit futtat a szakasz vége `1.0` : az összes olyan összetevő verziója, amelyen a bejövő kérelmek a Istio inbounds-átjárón keresztül lettek kiszolgálva:
 

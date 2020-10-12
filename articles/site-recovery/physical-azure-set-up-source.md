@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.date: 07/03/2019
 ms.author: ramamill
 ms.openlocfilehash: d2cc3627222bcd8de5a5cb1b5c83b04c5d4ef880
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86130191"
 ---
-# <a name="set-up-the-configuration-server-for-disaster-recovery-of-physical-servers-to-azure"></a>A konfigurációs kiszolgáló beállítása az Azure-ba irányuló fizikai kiszolgálók vész-helyreállítására
+# <a name="set-up-the-configuration-server-for-disaster-recovery-of-physical-servers-to-azure"></a>A fizikai kiszolgálók Azure-ba történő vészhelyreállítást végző konfigurációs kiszolgáló beállítása
 
 Ez a cikk azt ismerteti, hogyan állíthatja be a helyszíni környezetet a Windows vagy Linux rendszerű fizikai kiszolgálók Azure-ba történő replikálásának megkezdéséhez.
 
@@ -71,6 +71,6 @@ A következő táblázat a konfigurációs kiszolgáló minimális hardver-, szo
 [!INCLUDE [site-recovery-vmware-to-azure-install-register-issues](../../includes/site-recovery-vmware-to-azure-install-register-issues.md)]
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A következő lépés magában foglalja [a cél környezet beállítását](physical-azure-set-up-target.md) az Azure-ban.

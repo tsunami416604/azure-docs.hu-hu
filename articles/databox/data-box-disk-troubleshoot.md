@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.date: 06/14/2019
 ms.author: alkohli
 ms.openlocfilehash: 1c1b38c4021660b9f59098f8442d16bfd0ecc582
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87925542"
 ---
 # <a name="use-logs-to-troubleshoot-validation-issues-in-azure-data-box-disk"></a>A Azure Data Box Disk érvényesítési problémáinak elhárítása naplók használatával
@@ -21,7 +21,7 @@ Ez a cikk Microsoft Azure Data Box Diskre vonatkozik. A cikk azt ismerteti, hogy
 
 ## <a name="validation-tool-log-files"></a>Ellenőrző eszköz naplófájljai
 
-Ha az [ellenőrzési eszközzel](data-box-disk-deploy-copy-data.md#validate-data)ellenőrzi a lemezeken lévő adatellenőrzéseket, a rendszer létrehoz egy *error.xml* a hibák naplózásához. A naplófájl a `Drive:\DataBoxDiskImport\logs` meghajtó mappájában található. Az érvényesítés futtatásakor a rendszer a hibanapló hivatkozását is megadja.
+Ha az [ellenőrzési eszközzel](data-box-disk-deploy-copy-data.md#validate-data)ellenőrzi a lemezeken lévő adatellenőrzéseket, a rendszer létrehoz egy *error.xml* a hibák naplózásához. A naplófájl a  `Drive:\DataBoxDiskImport\logs` meghajtó mappájában található. Az érvényesítés futtatásakor a rendszer a hibanapló hivatkozását is megadja.
 
 <!--![Validation tool with link to error log](media/data-box-disk-troubleshoot/validation-tool-link-error-log.png)-->
 
@@ -71,7 +71,7 @@ Ha több munkamenetet is futtat az ellenőrzéshez, a rendszer egy naplófájlt 
 
 ## <a name="validation-tool-errors"></a>Ellenőrző eszköz hibái
 
-A következő táblázat összegzi a *error.xmlban* szereplő hibákat a megfelelő javasolt műveletekkel.
+A következő táblázat összegzi a *error.xmlban * szereplő hibákat a megfelelő javasolt műveletekkel.
 
 | Hibakód| Leírás                       | Ajánlott műveletek               |
 |------------|--------------------------|-----------------------------------|
@@ -94,6 +94,6 @@ A következő táblázat összegzi a *error.xmlban* szereplő hibákat a megfele
 | `NonVhdFileNotSupportedForManagedDisk` | Nem VHD-fájl nem tölthető fel felügyelt lemezként. |Távolítsa el a nem VHD-fájlokat a `ManagedDisk` mappából, mivel ezek nem támogatottak, vagy helyezze át ezeket a fájlokat egy `PageBlob` mappába. Próbálja megismételni az ellenőrzést. |
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Az adatfeltöltési hibák](data-box-disk-troubleshoot-upload.md)elhárítása.

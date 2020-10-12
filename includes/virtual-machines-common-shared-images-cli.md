@@ -9,10 +9,10 @@ ms.date: 03/24/2020
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: b49dc6ef2bfee311bc3ca524a5ccb0a4e4b5ca9c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84793646"
 ---
 ## <a name="create-an-image-gallery"></a>Rendszerkép-gyűjtemény létrehozása 
@@ -30,7 +30,7 @@ az sig create --resource-group myGalleryRG --gallery-name myGallery
 
 ## <a name="share-the-gallery"></a>A katalógus megosztása
 
-A rendszerképeket a szerepköralapú Access Control (RBAC) használatával megoszthatja az előfizetések között. A képeket megoszthatja a katalógusban, a képdefinícióban vagy a lemezkép verzió szintjén. Minden olyan felhasználó, aki olvasási engedéllyel rendelkezik a lemezkép verziójához, még az előfizetések között is, a lemezkép verziója segítségével telepítheti a virtuális gépet.
+Role-Based Access Control (RBAC) használatával megoszthatja a lemezképeket az előfizetések között. A képeket megoszthatja a katalógusban, a képdefinícióban vagy a lemezkép verzió szintjén. Minden olyan felhasználó, aki olvasási engedéllyel rendelkezik a lemezkép verziójához, még az előfizetések között is, a lemezkép verziója segítségével telepítheti a virtuális gépet.
 
 Javasoljuk, hogy a katalógus szintjén ossza meg más felhasználókkal. A katalógus objektum-AZONOSÍTÓjának lekéréséhez használja az [az SIG show](/cli/azure/sig#az-sig-show)lehetőséget.
 

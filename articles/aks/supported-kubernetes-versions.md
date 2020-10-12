@@ -7,10 +7,10 @@ ms.date: 09/08/2020
 author: palma21
 ms.author: jpalma
 ms.openlocfilehash: a36eb588c7128f13fb21b368d308ed00171fbb4b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91335534"
 ---
 # <a name="supported-kubernetes-versions-in-azure-kubernetes-service-aks"></a>Az Azure Kubernetes Service-ben (AKS) támogatott Kubernetes-verziók
@@ -149,7 +149,7 @@ A Kubernetes 1,19- [ben a nyílt forráskódú közösség 1 évre kibővített 
 
 **Mi történik, ha egy felhasználó olyan alverzióval frissít egy Kubernetes-fürtöt, amely nem támogatott?**
 
-Ha az *n-3* vagy régebbi verzióját használja, az azt jelenti, hogy a támogatáson kívül esik, és a rendszer a frissítésre kéri. Ha az n-3 verzióról n-2-ra történő verziófrissítés sikeres, akkor a támogatási szabályzatunk keretében visszakerül. Például:
+Ha az *n-3* vagy régebbi verzióját használja, az azt jelenti, hogy a támogatáson kívül esik, és a rendszer a frissítésre kéri. Ha az n-3 verzióról n-2-ra történő verziófrissítés sikeres, akkor a támogatási szabályzatunk keretében visszakerül. Példa:
 
 - Ha a legrégebbi támogatott AK-verzió *1,15. a* , és Ön a *1,14. b* vagy régebbi verziót használja, a támogatáson kívül van.
 - Ha a *1,14. b* verzióról *1.15* -re vagy annál nagyobbra történő frissítés sikeres, a támogatási szabályzatunk keretében visszakerül.

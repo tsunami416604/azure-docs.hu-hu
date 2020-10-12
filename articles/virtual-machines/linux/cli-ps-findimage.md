@@ -7,17 +7,17 @@ ms.topic: how-to
 ms.date: 01/25/2019
 ms.author: cynthn
 ms.openlocfilehash: 34f43d51bf0df488e04605f7f7c77e9c6dcfe9a4
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87374082"
 ---
 # <a name="find-linux-vm-images-in-the-azure-marketplace-with-the-azure-cli"></a>Linux virtuálisgép-rendszerképek keresése az Azure Marketplace-en az Azure CLI-vel
 
 Ez a témakör azt ismerteti, hogyan használhatók az Azure parancssori felületi lemezképek az Azure piactéren. Ezen információk segítségével megadhatja a Piactéri rendszerképet, ha programozott módon hoz létre virtuális gépet a CLI-vel, a Resource Manager-sablonokkal vagy más eszközökkel.
 
-Az elérhető lemezképeket és ajánlatokat az [Azure Marketplace](https://azuremarketplace.microsoft.com/) kirakat, a [Azure Portal](https://portal.azure.com)vagy a [Azure PowerShell](../windows/cli-ps-findimage.md)használatával is böngészheti. 
+Az elérhető lemezképeket és ajánlatokat az [Azure Marketplace](https://azuremarketplace.microsoft.com/) kirakat, a [Azure Portal](https://portal.azure.com)vagy a  [Azure PowerShell](../windows/cli-ps-findimage.md)használatával is böngészheti. 
 
 Győződjön meg arról, hogy telepítette a legújabb [Azure CLI](/cli/azure/install-azure-cli) -t, és bejelentkezett egy Azure-fiókba ( `az login` ).
 
@@ -327,7 +327,7 @@ Kimenet:
 
 ### <a name="accept-the-terms"></a>A feltételek elfogadása
 
-A licencfeltételek megtekintéséhez és elfogadásához használja az az [VM rendszerkép Accept-terms](/cli/azure/vm/image?) parancsot. Ha elfogadja a feltételeket, az előfizetésében engedélyezheti a programozott üzembe helyezést. A rendszerképhez csak egyszer kell elfogadnia a feltételeket. Például:
+A licencfeltételek megtekintéséhez és elfogadásához használja az az [VM rendszerkép Accept-terms](/cli/azure/vm/image?) parancsot. Ha elfogadja a feltételeket, az előfizetésében engedélyezheti a programozott üzembe helyezést. A rendszerképhez csak egyszer kell elfogadnia a feltételeket. Példa:
 
 ```azurecli
 az vm image accept-terms --urn bitnami:rabbitmq:rabbitmq:latest
@@ -362,5 +362,5 @@ az group create --name myResourceGroupVM --location westus
 az vm create --resource-group myResourceGroupVM --name myVM --image bitnami:rabbitmq:rabbitmq:latest --plan-name rabbitmq --plan-product rabbitmq --plan-publisher bitnami
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ha gyorsan szeretné létrehozni a virtuális gépet a rendszerkép információi alapján, tekintse meg a Linux rendszerű virtuális [gépek létrehozása és kezelése az Azure CLI-vel](tutorial-manage-vm.md)című témakört.

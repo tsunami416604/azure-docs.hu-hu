@@ -9,10 +9,10 @@ ms.author: rogarana
 ms.subservice: files
 ms.custom: contperfq1
 ms.openlocfilehash: f64e3459863cc7b7ffddfae824f9c4012802a457
-ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89500317"
 ---
 # <a name="enable-azure-active-directory-domain-services-authentication-on-azure-files"></a>Azure Active Directory Domain Services hitelesítés engedélyezése Azure Files
@@ -89,7 +89,7 @@ Ha engedélyezni szeretné az Azure AD DS hitelesítést az SMB protokollon kere
 1. A Azure Portal nyissa meg a meglévő Storage-fiókot, vagy [hozzon létre egy Storage-fiókot](../common/storage-account-create.md).
 1. A **Beállítások** szakaszban válassza a **Konfigurálás**lehetőséget.
 1. A **fájlmegosztás identitás-alapú hozzáférése** területen kapcsolja be a **Azure Active Directory tartományi szolgáltatás (HRE DS)** kapcsolóját, hogy **engedélyezve**legyen.
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 Az alábbi képen bemutatjuk, hogyan engedélyezhető az Azure AD DS hitelesítés az SMB protokollon keresztül a Storage-fiókhoz.
 

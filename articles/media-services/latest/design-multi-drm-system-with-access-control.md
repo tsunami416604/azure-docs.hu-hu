@@ -15,10 +15,10 @@ ms.date: 08/31/2020
 ms.author: willzhan
 ms.custom: seodec18
 ms.openlocfilehash: 58edf1e0257cf9de8d8f3a3b56f295dcaf1f6cbf
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89298198"
 ---
 # <a name="design-of-a-multi-drm-content-protection-system-with-access-control"></a>Hozzáférés-vezérléssel ellátott Multi-DRM-rendszerek tervezése
@@ -192,11 +192,11 @@ A megvalósítás a következő lépéseket tartalmazza:
 
 7. Hozzon létre egy ASP.NET MVC-alkalmazást a videolejátszó üzemeltetéséhez. Ez a ASP.NET-alkalmazás az Azure AD-Bérlővel szembeni felhasználói hitelesítéssel van védve. A megfelelő jogcímeket a felhasználói hitelesítés után kapott hozzáférési jogkivonatok tartalmazzák. Ehhez a lépéshez az OpenID Connect API használatát javasoljuk. Telepítse az alábbi NuGet-csomagokat:
 
-   * Telepítse a Microsoft. Azure. ActiveDirectory. GraphClient csomagot.
-   * Telepítse a Microsoft. Owin. Security. OpenIdConnect csomagot.
+   * Install-Package Microsoft. Azure. ActiveDirectory. GraphClient
+   * Install-Package Microsoft. Owin. Security. OpenIdConnect
    * Install-Package Microsoft. Owin. Security. cookie-k
    * Install-Package Microsoft.Owin.Host.SystemWeb
-   * Telepítse a Microsoft. IdentityModel. clients. ActiveDirectory csomagot.
+   * Install-Package Microsoft. IdentityModel. clients. ActiveDirectory
 
 8. Hozzon létre egy lejátszót a [Azure Media Player API](https://amp.azure.net/libs/amp/latest/docs/)használatával. A [Azure Media Player PROTECTIONINFO API](https://amp.azure.net/libs/amp/latest/docs/) segítségével meghatározhatja, hogy melyik DRM-technológiát használja a különböző DRM-platformokon.
 

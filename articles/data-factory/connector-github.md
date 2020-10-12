@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 06/03/2020
 ms.author: daperlov
 ms.openlocfilehash: 0e17580524d6a67934aed83c6f745583b92e2422
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84771036"
 ---
 # <a name="use-github-to-read-common-data-model-entity-references"></a>A GitHub használata a Common adatmodell-entitásokra vonatkozó hivatkozások olvasásához
@@ -30,6 +30,6 @@ A GitHub társított szolgáltatás a következő tulajdonságokat támogatja.
 | userName (Felhasználónév) | GitHub-Felhasználónév | igen |
 | jelszó | GitHub-jelszó | igen |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Hozzon létre egy [forrás-adatkészletet](data-flow-source.md) a leképezési adatfolyamban.

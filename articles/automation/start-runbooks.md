@@ -6,17 +6,17 @@ ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
 ms.openlocfilehash: 52cb701312f598b1b8492226709a7d2767db9600
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86187268"
 ---
 # <a name="start-a-runbook-in-azure-automation"></a>Runbook indítása az Azure Automationben
 
 A következő táblázat segítségével határozhatja meg, hogy miként indítható el a runbook olyan Azure Automation, amely leginkább megfelel az adott forgatókönyvnek. Ez a cikk részletesen ismerteti, hogyan kell runbook elindítani a Azure Portal és a Windows PowerShell használatával. Az egyéb módszerekkel kapcsolatos további információkat az alábbi hivatkozásokon keresztül elérhető egyéb dokumentációban találja.
 
-| **Módszer** | **Jellemzők** |
+| **Metódus** | **Jellemzők** |
 | --- | --- |
 | [Azure Portal](#start-a-runbook-with-the-azure-portal) |<li>Legegyszerűbb módszer interaktív felhasználói felülettel.<br> <li>Egyszerű paraméter-értékeket biztosító űrlap.<br> <li>A feladatok állapotának egyszerűen nyomon követhető.<br> <li>Az Azure-bejelentkezéssel hitelesített hozzáférés. |
 | [Windows PowerShell](/powershell/module/azurerm.automation/start-azurermautomationrunbook) |<li>Hívás a parancssorból Windows PowerShell-parancsmagokkal.<br> <li>Több lépésből is megadható az automatizált funkcióban.<br> <li>A kérelem hitelesítése tanúsítvány vagy OAuth egyszerű felhasználói tag/szolgáltatásnév alapján történik.<br> <li>Egyszerű és összetett paramétereket adjon meg.<br> <li>Feladatok állapotának nyomon követése<br> <li>A PowerShell-parancsmagok támogatásához szükséges ügyfél. |
@@ -151,7 +151,7 @@ A [Start-AzAutomationRunbook](/powershell/module/az.automation/start-azautomatio
 Start-AzAutomationRunbook -AutomationAccountName "MyAutomationAccount" -Name "Test-Runbook" -ResourceGroupName "ResourceGroup01"
 ```
 
-`Start-AzAutomationRunbook`egy olyan runbook ad vissza, amelyet a rendszer az állapot nyomon követésére használhat a elindítása után. Ezt követően a [Get-AzAutomationJob](/powershell/module/Az.Automation/Get-AzAutomationJob?view=azps-3.7.0) használatával meghatározhatja a feladatok állapotát, és lekérheti a [Get-AzAutomationJobOutput](/powershell/module/az.automation/get-azautomationjoboutput?view=azps-3.7.0) a kimenet lekéréséhez. Az alábbi példa elindítja a **test-runbook**nevű runbook, megvárja, amíg befejeződik, majd megjeleníti a kimenetét.
+`Start-AzAutomationRunbook` egy olyan runbook ad vissza, amelyet a rendszer az állapot nyomon követésére használhat a elindítása után. Ezt követően a [Get-AzAutomationJob](/powershell/module/Az.Automation/Get-AzAutomationJob?view=azps-3.7.0) használatával meghatározhatja a feladatok állapotát, és lekérheti a [Get-AzAutomationJobOutput](/powershell/module/az.automation/get-azautomationjoboutput?view=azps-3.7.0) a kimenet lekéréséhez. Az alábbi példa elindítja a **test-runbook**nevű runbook, megvárja, amíg befejeződik, majd megjeleníti a kimenetét.
 
 ```azurepowershell-interactive
 $runbookName = "Test-Runbook"

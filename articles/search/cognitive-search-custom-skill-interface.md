@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/06/2020
 ms.openlocfilehash: e78f0d1e8d6d637dfebe1ff475ab8416ba49a263
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88935415"
 ---
 # <a name="how-to-add-a-custom-skill-to-an-azure-cognitive-search-enrichment-pipeline"></a>Egyéni képesség hozzáadása Azure Cognitive Search-bővítési folyamathoz
@@ -160,7 +160,7 @@ Webes API-gazdagító létrehozásakor a kérés részeként a HTTP-fejléceket 
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ez a cikk az egyéni képességek készségkészlet való integrálásához szükséges interfész-követelményeket tárgyalja. Az alábbi hivatkozásokra kattintva további információkat tudhat meg az egyéni képességekről és a készségkészlet-összeállításról.
 

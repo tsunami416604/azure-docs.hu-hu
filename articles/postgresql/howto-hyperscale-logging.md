@@ -8,10 +8,10 @@ ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 7/13/2020
 ms.openlocfilehash: 1dc7bc8e119de7c8fdcf09713286be2633457486
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90895874"
 ---
 # <a name="logs-in-azure-database-for-postgresql---hyperscale-citus"></a>Naplók Azure Database for PostgreSQL-nagy kapacitású (Citus)
@@ -26,11 +26,11 @@ A nagy kapacitású (Citus) koordinátor vagy munkavégző csomóponthoz tartoz�
 
 A kiválasztott csomóponthoz nyissa meg a **diagnosztikai beállításokat**, és kattintson a **+ diagnosztikai beállítás hozzáadása**elemre.
 
-:::image type="content" source="media/howto-hyperscale-logging/diagnostic-settings.png" alt-text="Diagnosztikai beállítások hozzáadása gomb":::
+:::image type="content" source="media/howto-hyperscale-logging/diagnostic-settings.png" alt-text="csomópontok listája":::
 
 Válassza ki az új diagnosztikai beállítások nevét, és jelölje be a **PostgreSQLLogs** jelölőnégyzetet.  Válassza ki, hogy mely célhelyek kapják meg a naplókat.
 
-:::image type="content" source="media/howto-hyperscale-logging/diagnostic-create-setting.png" alt-text="PostgreSQL-naplók kiválasztása":::
+:::image type="content" source="media/howto-hyperscale-logging/diagnostic-create-setting.png" alt-text="csomópontok listája":::
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -18,10 +18,10 @@ ms.date: 03/13/2018
 ms.author: kumud
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: c94c7709a8066b31a6ac1ebc54180d41a303f44a
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89078231"
 ---
 # <a name="route-network-traffic-with-a-route-table-using-powershell"></a>Hálózati forgalom irányítása útválasztási táblázattal a PowerShell használatával
@@ -38,7 +38,7 @@ Egy adott virtuális hálózaton belül az Azure alapértelmezés szerint automa
 * Virtuális gépek (VM) üzembe helyezése különböző alhálózatokban
 * Forgalom irányítása egyik alhálózatról hálózati virtuális berendezésen keresztül
 
-Ha nem rendelkezik Azure-előfizetéssel, létrehozhat egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt nekikezdene a feladatok elvégzésének.
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 

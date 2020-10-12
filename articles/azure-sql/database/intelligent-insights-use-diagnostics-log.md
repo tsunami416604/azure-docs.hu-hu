@@ -12,10 +12,10 @@ ms.author: danil
 ms.reviewer: jrasnik, sstein
 ms.date: 06/12/2020
 ms.openlocfilehash: 5fd0f14f4bbc919efd5b3c236b13654574d456d7
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91334973"
 ---
 # <a name="use-the-intelligent-insights-performance-diagnostics-log-of-azure-sql-database-and-azure-sql-managed-instance-performance-issues"></a>A Azure SQL Database és az Azure SQL felügyelt példányok teljesítményével kapcsolatos problémák Intelligent Insights teljesítmény diagnosztikai naplójának használata
@@ -93,7 +93,7 @@ Az észlelt teljesítménnyel kapcsolatos probléma függvényében a diagnoszti
 | TempDB-tartalom | <li>A lekérdezést kiváltó lekérdezések kivonatai</li><li>Lekérdezés a teljes adatbázis pagelatch-tartalmának várakozási ideje [%]</li> |
 | A rugalmas készlet DTU hiánya | <li>Rugalmas készlet</li><li>Leggyakoribb DTU adatbázis</li><li>A felső fogyasztó által használt készlet DTU százaléka</li> |
 | Regressziós terv | <li>Lekérdezések kivonatai</li><li>Helyes csomag azonosítói</li><li>Rossz terv azonosítói</li> |
-| Adatbázis hatókörű konfigurációs értékének változása | <li>Adatbázis-hatókörű konfiguráció módosításai az alapértelmezett értékekhez képest</li> |
+| Database-Scoped konfiguráció értékének változása | <li>Adatbázis-hatókörű konfiguráció módosításai az alapértelmezett értékekhez képest</li> |
 | Lassú ügyfél | <li>Lekérdezések kivonatai</li><li>Várakozási idő</li> |
 | Díjszabási szintek visszalépése | <li>Szöveges értesítés</li> |
 

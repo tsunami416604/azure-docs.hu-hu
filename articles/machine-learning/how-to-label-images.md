@@ -9,10 +9,10 @@ ms.subservice: core
 ms.topic: tutorial
 ms.date: 07/27/2020
 ms.openlocfilehash: e34fa4af08be898785acbc6f00aa735c1412ec47
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90897561"
 ---
 # <a name="tag-images-in-a-labeling-project"></a>Képek címkézése egy címkézési projektben 
@@ -133,7 +133,7 @@ Ha címkézett adatok oldalát küldi el, az Azure új címkézetlen adatok hozz
 
 Ha végzett a címkézéssel, válassza ki a nevét a címkézési portál jobb felső sarkában, majd válassza a **kijelentkezés lehetőséget.** Ha nem jelentkezik ki, az Azure-ban az idő kimarad, és az adatait egy másik Labeler rendeli hozzá.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ismerje meg a [képbesorolási modellek betanítását az Azure-ban](https://docs.microsoft.com/azure/machine-learning/tutorial-train-models-with-aml)
 

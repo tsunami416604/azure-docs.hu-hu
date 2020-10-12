@@ -8,10 +8,10 @@ ms.workload: infrastructure
 ms.date: 08/29/2019
 ms.author: sandeo
 ms.openlocfilehash: fef1870c396055cb9121aa5d8c7859440d107f98
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88002331"
 ---
 # <a name="preview-log-in-to-a-linux-virtual-machine-in-azure-using-azure-active-directory-authentication"></a>Előzetes verzió: bejelentkezés az Azure-beli linuxos virtuális gépre Azure Active Directory hitelesítéssel
@@ -158,7 +158,7 @@ A rendszer felszólítja, hogy jelentkezzen be az Azure AD-be egy egyszeri haszn
 
 Ha a rendszer kéri, adja meg az Azure AD bejelentkezési hitelesítő adatait a bejelentkezési oldalon. 
 
-A következő üzenet jelenik meg a böngészőben a sikeres hitelesítés után:`You have signed in to the Microsoft Azure Linux Virtual Machine Sign-In application on your device.`
+A következő üzenet jelenik meg a böngészőben a sikeres hitelesítés után: `You have signed in to the Microsoft Azure Linux Virtual Machine Sign-In application on your device.`
 
 A böngészőablak bezárásához térjen vissza az SSH-parancssorba, majd nyomja le az **ENTER** billentyűt. 
 
@@ -212,6 +212,6 @@ Azok a felhasználók, akik beágyazott csoportokon vagy szerepkör-hozzárendel
 
 Ossza meg visszajelzését erről az előzetes verziójú szolgáltatásról, vagy jelentse az [Azure ad visszajelzési fórumát](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032) használó problémákat
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a Azure Active Directoryről: [Mi az Azure Active Directory](../../active-directory/fundamentals/active-directory-whatis.md)

@@ -8,10 +8,10 @@ ms.date: 02/19/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
 ms.openlocfilehash: 3fc8f205bff52fad6e55b7aa6692ec80ae5e954a
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88212160"
 ---
 # <a name="azure-service-bus-output-binding-for-azure-functions"></a>Azure Functions Azure Service Bus kimeneti kötése
@@ -280,11 +280,11 @@ A `ServiceBusQueueOutput` és a `ServiceBusTopicOutput` jegyzetek elérhetők eg
 
 Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított kötési konfigurációs tulajdonságokat ismerteti `ServiceBus` .
 
-|function.jsa tulajdonságon | Attribútum tulajdonsága |Description|
+|function.jsa tulajdonságon | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
-|**típusa** | n.a. | "ServiceBus" értékre kell állítani. Ez a tulajdonság automatikusan be van állítva, amikor létrehozza az triggert a Azure Portalban.|
-|**irányba** | n.a. | "Out" értékre kell állítani. Ez a tulajdonság automatikusan be van állítva, amikor létrehozza az triggert a Azure Portalban. |
-|**név** | n.a. | Annak a változónak a neve, amely a függvény kódjában szereplő üzenetsor vagy témakör üzenetét jelöli. A függvény visszatérési értékének hivatkozásához állítsa a "$return" értéket. |
+|**típusa** | n/a | "ServiceBus" értékre kell állítani. Ez a tulajdonság automatikusan be van állítva, amikor létrehozza az triggert a Azure Portalban.|
+|**irányba** | n/a | "Out" értékre kell állítani. Ez a tulajdonság automatikusan be van állítva, amikor létrehozza az triggert a Azure Portalban. |
+|**név** | n/a | Annak a változónak a neve, amely a függvény kódjában szereplő üzenetsor vagy témakör üzenetét jelöli. A függvény visszatérési értékének hivatkozásához állítsa a "$return" értéket. |
 |**queueName**|**QueueName**|A várólista neve.  Csak akkor állítsa be, ha üzenetsor-üzeneteket küld, nem pedig egy témakörhöz.
 |**topicName**|**TopicName**|A témakör neve. Csak akkor állítható be, ha nem várólistára küldi a témakör üzeneteit.|
 |**kapcsolat**|**Kapcsolat**|A kötéshez használni kívánt Service Bus kapcsolati karakterláncot tartalmazó Alkalmazásbeállítás neve. Ha az Alkalmazásbeállítások neve "AzureWebJobs" előtaggal kezdődik, akkor csak a név hátralévő részét adhatja meg. Ha például a "MyServiceBus" értékre van állítva `connection` , a functions futtatókörnyezet egy "AzureWebJobsMyServiceBus" nevű alkalmazás-beállítást keres. Ha `connection` üresen hagyja, a functions Runtime az alapértelmezett Service Bus a "AzureWebJobsServiceBus" nevű alkalmazás-beállításban található.<br><br>A kapcsolódási karakterlánc beszerzéséhez kövesse a [felügyeleti hitelesítő adatok beolvasása](../service-bus-messaging/service-bus-quickstart-portal.md#get-the-connection-string)című cikkben ismertetett lépéseket. A kapcsolódási karakterláncnak egy Service Bus névtérhez kell tartoznia, nem csak egy adott várólistára vagy témakörre.|
@@ -346,7 +346,7 @@ A beépített kimeneti kötés helyett használja a [Azure Service Bus SDK](../s
 
 ## <a name="exceptions-and-return-codes"></a>Kivételek és visszatérési kódok
 
-| Kötés | Hivatkozás |
+| Kötés | Referencia |
 |---|---|
 | Service Bus | [Service Bus hibakódok](../service-bus-messaging/service-bus-messaging-exceptions.md) |
 | Service Bus | [Service Bus korlátok](../service-bus-messaging/service-bus-quotas.md) |
@@ -384,7 +384,7 @@ Ez a szakasz a kötéshez elérhető globális konfigurációs beállításokat 
 
 Ha a értékre van `isSessionsEnabled` állítva `true` , a `sessionHandlerOptions` rendszer tiszteletben tartja a következőt:.  Ha a értékre van `isSessionsEnabled` állítva `false` , a `messageHandlerOptions` rendszer tiszteletben tartja a következőt:.
 
-|Tulajdonság  |Alapértelmezett | Description |
+|Tulajdonság  |Alapértelmezett | Leírás |
 |---------|---------|---------|
 |prefetchCount|0|Lekérdezi vagy beállítja az üzenet fogadója által egyidejűleg igényelhető üzenetek számát.|
 |maxAutoRenewDuration|00:05:00|Az a maximális időtartam, amelyen belül az üzenet zárolása automatikusan meg lesz újítva.|

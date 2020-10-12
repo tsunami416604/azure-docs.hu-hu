@@ -7,10 +7,10 @@ ms.topic: tutorial
 ms.service: container-service
 ms.date: 04/24/2020
 ms.openlocfilehash: 1ba383b99b8265e01cf757bfb1589a86a934e0e3
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90053871"
 ---
 # <a name="tutorial-create-an-azure-red-hat-openshift-4-cluster"></a>Oktatóanyag: Azure Red Hat OpenShift 4 fürt létrehozása
@@ -217,7 +217,7 @@ az aro create \
 
 A parancs végrehajtása után az `az aro create` általában körülbelül 35 percet vesz igénybe a fürt létrehozásakor.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az oktatóanyag jelen részében megismerkedhetett a következőkkel:
 > [!div class="checklist"]

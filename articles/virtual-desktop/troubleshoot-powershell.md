@@ -7,10 +7,10 @@ ms.date: 06/05/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 03b6da1d35247749d8ec2c6459c8ddee69bfccb6
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88002267"
 ---
 # <a name="windows-virtual-desktop-powershell"></a>Windows Virtual Desktop – PowerShell
@@ -52,7 +52,7 @@ New-AzRoleAssignment -SignInName "admins@contoso.com" -RoleDefinitionName "Deskt
 
 **2. javítás:** Active Directory engedélyekkel rendelkező felhasználónak végre kell hajtania a szerepkör-hozzárendelést.
 
-### <a name="error-new-azwvdhostpool----the-location-is-not-available-for-resource-type"></a>Hiba: New-AzWvdHostPool--a hely nem érhető el az erőforrás típusaként
+### <a name="error-new-azwvdhostpool----the-location-is-not-available-for-resource-type"></a>Hiba: New-AzWvdHostPool – a hely nem érhető el az erőforrás típusaként
 
 ```powershell
 New-AzWvdHostPool_CreateExpanded: The provided location 'southeastasia' is not available for resource type 'Microsoft.DesktopVirtualization/hostpools'. List of available regions for the resource type is 'eastus,eastus2,westus,westus2,northcentralus,southcentralus,westcentralus,centralus'.
@@ -62,7 +62,7 @@ Ok: a Windows virtuális asztal támogatja a gazdagépek, az alkalmazáscsoport 
 
 Javítás: a hibaüzenetben a támogatott régiók listája jelenik meg. Ehelyett használja a támogatott régiók egyikét.
 
-### <a name="error-new-azwvdapplicationgroup-must-be-in-same-location-as-host-pool"></a>Hiba: a New-AzWvdApplicationGroup ugyanazon a helyen kell lennie, mint a gazdaszámítógép.
+### <a name="error-new-azwvdapplicationgroup-must-be-in-same-location-as-host-pool"></a>Hiba: a New-AzWvdApplicationGroupnak a gazdagép-készlettel azonos helyen kell lennie
 
 ```powershell
 New-AzWvdApplicationGroup_CreateExpanded: ActivityId: e5fe6c1d-5f2c-4db9-817d-e423b8b7d168 Error: ApplicationGroup must be in same location as associated HostPool
@@ -72,7 +72,7 @@ New-AzWvdApplicationGroup_CreateExpanded: ActivityId: e5fe6c1d-5f2c-4db9-817d-e4
 
 **Javítás:** Kérje le azt a helyet, amelyben a gazdagép létre lett hozva, majd rendelje hozzá a létrehozandó alkalmazáscsoport ugyanahhoz a helyhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A Windows rendszerű virtuális asztalok és a eszkalációs sávok hibaelhárításával kapcsolatban lásd: [Hibaelhárítás – áttekintés, visszajelzés és támogatás](troubleshoot-set-up-overview.md).
 - A Windows rendszerű virtuális asztali környezet és a gazdagép-készletek beállítása során felmerülő problémák elhárításához tekintse meg a [környezet és az alkalmazáskészlet létrehozása](troubleshoot-set-up-issues.md)című témakört.

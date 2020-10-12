@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/19/2019
 ms.openlocfilehash: d752b747a0156bcef587f81ee421c55a6de81e17
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89079472"
 ---
 # <a name="transform-data-securely-by-using-mapping-data-flow"></a>Az adatforgalom biztonságos átalakítása a leképezési adatfolyam használatával
@@ -254,6 +254,6 @@ A folyamat a közzététel előtt hibakeresést végezhet. Ebben a lépésben az
 
 Ha ezt az oktatóanyagot helyesen követte, a fogadó mappájába írt 83 és 2 oszlopot kell írnia. A blob Storage ellenőrzésével ellenőrizheti, hogy helyesek-e az adatok.
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 
 Ebben az oktatóanyagban a Data Factory felhasználói felülettel létrehozott egy folyamatot, amely egy Data Lake Storage Gen2 forrásból származó adatok egy Data Lake Storage Gen2 fogadóba történő másolását és átalakítását végzi el (mindkettő csak a kiválasztott hálózatokhoz való hozzáférést teszi lehetővé) [Data Factory felügyelt Virtual Network](managed-virtual-network-private-endpoint.md)-ban való leképezési folyamat használatával.

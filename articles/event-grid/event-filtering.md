@@ -4,10 +4,10 @@ description: Ismerteti, hogyan szűrhetők az események Azure Event Grid előfi
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: 837209d4197c271598155776b8d171a705e1f454
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86120092"
 ---
 # <a name="understand-event-filtering-for-event-grid-subscriptions"></a>Event Grid-előfizetések esemény-szűrésének ismertetése
@@ -57,7 +57,7 @@ Az adatmezőkben lévő értékek alapján történő szűréshez és az összeh
 * kulcs – a szűréshez használt esemény adatai mezője. Ez lehet szám, logikai vagy karakterlánc.
 * értékek – a kulcshoz összehasonlítandó érték vagy értékek.
 
-Ha több értékkel rendelkező egyetlen szűrőt ad meg, a rendszer egy **vagy** műveletet hajt végre, így a Key mező értékének az alábbi értékek egyikének kell lennie. Például:
+Ha több értékkel rendelkező egyetlen szűrőt ad meg, a rendszer egy **vagy** műveletet hajt végre, így a Key mező értékének az alábbi értékek egyikének kell lennie. Alább bemutatunk egy példát:
 
 ```json
 "advancedFilters": [
@@ -72,7 +72,7 @@ Ha több értékkel rendelkező egyetlen szűrőt ad meg, a rendszer egy **vagy*
 ]
 ```
 
-Ha több különböző szűrőt is megad, a **és** a műveletet hajtja végre, így minden szűrési feltételnek teljesülnie kell. Például: 
+Ha több különböző szűrőt is megad, a **és** a műveletet hajtja végre, így minden szűrési feltételnek teljesülnie kell. Alább bemutatunk egy példát: 
 
 ```json
 "advancedFilters": [
@@ -121,7 +121,7 @@ Az összes karakterlánc-összehasonlítás **nem** megkülönbözteti a kis-és
 
 A Event Grid sémában lévő eseményekhez használja a következő értékeket a kulcshoz:
 
-* ID
+* ID (Azonosító)
 * Témakör
 * Tárgy
 * EventType
@@ -144,8 +144,8 @@ Az értékek a következőket tehetik:
 
 * szám
 * sztring
-* logikai
-* tömb
+* boolean
+* array
 
 ### <a name="limitations"></a>Korlátozások
 
@@ -307,7 +307,7 @@ Ugyanaz a kulcs több szűrőben is használható.
 ```
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Az események PowerShell-lel és az Azure CLI-vel való szűrésével kapcsolatos további tudnivalókért lásd: [Események szűrése Event Grid](how-to-filter-events.md).
 * Az Event Grid használatának gyors megkezdéséhez tekintse meg [az egyéni események létrehozása és irányítása Azure Event Grid](custom-event-quickstart.md)használatával című témakört.

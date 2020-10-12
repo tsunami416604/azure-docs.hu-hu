@@ -8,10 +8,10 @@ ms.date: 05/19/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 7e1eab20a8e315b977c21de46dd4f6ea2fec9f5d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83701492"
 ---
 # <a name="setup-diagnostic-logging"></a>Diagnosztikai naplózás beállítása
@@ -88,7 +88,7 @@ A metrikák kategória ugyanazokat a [kiszolgálói metrikákat](analysis-servic
     * **Szolgáltatás**. Válassza ezt a lehetőséget a szolgáltatási szint eseményeinek naplózásához. Ha Storage-fiókba végez archiválást, kiválaszthatja az erőforrás-naplók megőrzési időtartamát. A naplók a megőrzési időszak lejárta után törlődnek.
     * **Metrikák**. Válassza ezt a lehetőséget, ha részletes adatokat szeretne tárolni a [mérőszámokban](analysis-services-monitor.md#server-metrics). Ha Storage-fiókba végez archiválást, kiválaszthatja az erőforrás-naplók megőrzési időtartamát. A naplók a megőrzési időszak lejárta után törlődnek.
 
-3. Kattintson a **Save** (Mentés) gombra.
+3. Kattintson a **Mentés** gombra.
 
     Ha a következő hibaüzenet jelenik meg: "a diagnosztika frissítése sikertelen \<workspace name> . Az előfizetés nincs \<subscription id> regisztrálva a Microsoft. bepillantások használatára. " Kövesse a fiók regisztrálásához [Azure Diagnostics](https://docs.microsoft.com/azure/log-analytics/log-analytics-azure-storage) útmutatást, majd próbálja megismételni a műveletet.
 
@@ -154,7 +154,7 @@ A naplók általában néhány órán belül elérhetők a naplózás beállít�
 
 A metrikák és a kiszolgálói események integrálva vannak a Log Analytics munkaterület-erőforrás Xevent típusú eseményekhez, egymás melletti elemzés céljából. A Log Analytics munkaterület úgy is konfigurálható, hogy más Azure-szolgáltatásokból származó eseményeket fogadjon, és átfogó képet kapjon a diagnosztikai naplózási adatokról az architektúrán belül.
 
-A diagnosztikai adatok megtekintéséhez Log Analytics munkaterületen nyissa meg a **naplók** elemet a bal oldali menüben.
+A diagnosztikai adatok megtekintéséhez Log Analytics munkaterületen nyissa meg a **naplók**  elemet a bal oldali menüben.
 
 ![A Azure Portal keresési beállításainak naplózása](./media/analysis-services-logging/aas-logging-open-log-search.png)
 
@@ -213,7 +213,7 @@ Több száz lekérdezést használhat. A lekérdezésekkel kapcsolatos további 
 
 ## <a name="turn-on-logging-by-using-powershell"></a>A naplózás bekapcsolása a PowerShell használatával
 
-Ebben a gyors oktatóanyagban egy olyan Storage-fiókot hoz létre, amely ugyanabban az előfizetésben és erőforráscsoporthoz van, mint az Analysis Service-kiszolgáló. Ezután a set-AzDiagnosticSetting használatával bekapcsolhatja a diagnosztikai naplózást, és elküldheti a kimenetet az új Storage-fiókba.
+Ebben a gyors oktatóanyagban egy olyan Storage-fiókot hoz létre, amely ugyanabban az előfizetésben és erőforráscsoporthoz van, mint az Analysis Service-kiszolgáló. Ezután a Set-AzDiagnosticSetting használatával bekapcsolhatja a diagnosztikai naplózást, és elküldheti a kimenetet az új Storage-fiókba.
 
 ### <a name="prerequisites"></a>Előfeltételek
 Az oktatóanyag elvégzéséhez a következő erőforrásokkal kell rendelkeznie:
@@ -269,7 +269,7 @@ $account = Get-AzResource -ResourceGroupName awsales_resgroup `
 
 ### <a name="enable-logging"></a>Naplózás engedélyezése
 
-A naplózás engedélyezéséhez használja a set-AzDiagnosticSetting parancsmagot az új Storage-fiók, a kiszolgálói fiók és a kategória változóinak együttes használatával. Futtassa a következő parancsot, amely az **-enabled** jelzőt **$true**:
+A naplózás engedélyezéséhez használja az Set-AzDiagnosticSetting parancsmagot az új Storage-fiók, a kiszolgálói fiók és a kategória változóinak együttes használatával. Futtassa a következő parancsot, amely az **-enabled** jelzőt **$true**:
 
 ```powershell
 Set-AzDiagnosticSetting  -ResourceId $account.ResourceId -StorageAccountId $sa.Id -Enabled $true -Categories Engine

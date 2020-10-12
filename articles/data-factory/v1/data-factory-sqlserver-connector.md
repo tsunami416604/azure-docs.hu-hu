@@ -13,10 +13,10 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: fe9a50b5557e6165835abf1df67f7486c260c1c5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84195919"
 ---
 # <a name="move-data-to-and-from-sql-server-using-azure-data-factory"></a>Adatok áthelyezése SQL Serverba és onnan a Azure Data Factory használatával
@@ -76,11 +76,11 @@ A következő táblázat a SQL Server társított szolgáltatáshoz tartozó JSO
 
 | Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
-| típus |A Type tulajdonságot a következőre kell beállítani: **OnPremisesSqlServer**. |Yes |
-| connectionString |Az SQL-hitelesítés vagy a Windows-hitelesítés használatával a SQL Server-adatbázishoz való kapcsolódáshoz szükséges connectionString-adatokat adjon meg. |Yes |
-| Átjáró neve |Annak az átjárónak a neve, amelyet a Data Factory szolgáltatásnak használnia kell a SQL Server adatbázishoz való kapcsolódáshoz. |Yes |
-| felhasználónév |Windows-hitelesítés használata esetén adja meg a felhasználónevet. Példa: **tartománynév \\ Felhasználónév**. |No |
-| jelszó |Adja meg a felhasználónévhez megadott felhasználói fiókhoz tartozó jelszót. |No |
+| típus |A Type tulajdonságot a következőre kell beállítani: **OnPremisesSqlServer**. |Igen |
+| connectionString |Az SQL-hitelesítés vagy a Windows-hitelesítés használatával a SQL Server-adatbázishoz való kapcsolódáshoz szükséges connectionString-adatokat adjon meg. |Igen |
+| Átjáró neve |Annak az átjárónak a neve, amelyet a Data Factory szolgáltatásnak használnia kell a SQL Server adatbázishoz való kapcsolódáshoz. |Igen |
+| username |Windows-hitelesítés használata esetén adja meg a felhasználónevet. Példa: **tartománynév \\ Felhasználónév**. |Nem |
+| jelszó |Adja meg a felhasználónévhez megadott felhasználói fiókhoz tartozó jelszót. |Nem |
 
 A **New-AzDataFactoryEncryptValue** parancsmaggal titkosíthatja a hitelesítő adatokat, és a következő példában látható módon használhatja azokat a kapcsolatok karakterláncában (**EncryptedCredential** tulajdonság):
 
@@ -133,7 +133,7 @@ A typeProperties szakasz különbözik az egyes adatkészletek típusaitól, és
 
 | Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
-| tableName |Annak a táblának vagy nézetnek a neve, amely a társított szolgáltatás által hivatkozott SQL Server adatbázis-példányban található. |Yes |
+| tableName |Annak a táblának vagy nézetnek a neve, amely a társított szolgáltatás által hivatkozott SQL Server adatbázis-példányban található. |Igen |
 
 ## <a name="copy-activity-properties"></a>Másolási tevékenység tulajdonságai
 Ha SQL Server-adatbázisból helyez át adatátvitelt, a másolási tevékenységben a forrás típusát **SqlSource**kell beállítania. Hasonlóképpen, ha az adatátvitelt egy SQL Server adatbázisba helyezi át, a másolási tevékenységben állítsa be a fogadó típusát a **SqlSink**értékre. Ez a szakasz a SqlSource és a SqlSink által támogatott tulajdonságok listáját tartalmazza.
@@ -150,9 +150,9 @@ Ha egy másolási tevékenységben a forrás **SqlSource**típusú, a következ�
 
 | Tulajdonság | Leírás | Megengedett értékek | Kötelező |
 | --- | --- | --- | --- |
-| sqlReaderQuery |Az egyéni lekérdezés használatával olvashatja el az adatolvasást. |SQL-lekérdezési karakterlánc. Például: select * from Sajáttábla. A bemeneti adatkészlet által hivatkozott adatbázisból több táblát is hivatkozhat. Ha nincs megadva, a futtatott SQL-utasítás: válasszon a Sajáttábla közül. |No |
-| sqlReaderStoredProcedureName |Azon tárolt eljárás neve, amely beolvassa az adatokat a forrás táblából. |A tárolt eljárás neve. Az utolsó SQL-utasításnak SELECT utasításnak kell lennie a tárolt eljárásban. |No |
-| storedProcedureParameters |A tárolt eljárás paraméterei. |Név/érték párok. A paraméterek nevének és burkolatának meg kell egyeznie a tárolt eljárás paramétereinek nevével és házával. |No |
+| sqlReaderQuery |Az egyéni lekérdezés használatával olvashatja el az adatolvasást. |SQL-lekérdezési karakterlánc. Például: select * from Sajáttábla. A bemeneti adatkészlet által hivatkozott adatbázisból több táblát is hivatkozhat. Ha nincs megadva, a futtatott SQL-utasítás: válasszon a Sajáttábla közül. |Nem |
+| sqlReaderStoredProcedureName |Azon tárolt eljárás neve, amely beolvassa az adatokat a forrás táblából. |A tárolt eljárás neve. Az utolsó SQL-utasításnak SELECT utasításnak kell lennie a tárolt eljárásban. |Nem |
+| storedProcedureParameters |A tárolt eljárás paraméterei. |Név/érték párok. A paraméterek nevének és burkolatának meg kell egyeznie a tárolt eljárás paramétereinek nevével és házával. |Nem |
 
 Ha a **sqlReaderQuery** meg van adva a SqlSource, a másolási tevékenység futtatja ezt a lekérdezést a SQL Server adatbázis-forráson az adatkéréshez.
 
@@ -168,13 +168,13 @@ A **SqlSink** a következő tulajdonságokat támogatja:
 
 | Tulajdonság | Leírás | Megengedett értékek | Kötelező |
 | --- | --- | --- | --- |
-| writeBatchTimeout |Várakozási idő a kötegelt beszúrási művelet befejezéséhez, mielőtt időtúllépés történt. |időtartomány<br/><br/> Például: "00:30:00" (30 perc). |No |
+| writeBatchTimeout |Várakozási idő a kötegelt beszúrási művelet befejezéséhez, mielőtt időtúllépés történt. |időtartomány<br/><br/> Például: "00:30:00" (30 perc). |Nem |
 | writeBatchSize |Beilleszti az adatmennyiséget az SQL-táblába, ha a puffer mérete eléri a writeBatchSize. |Egész szám (sorok száma) |Nem (alapértelmezett: 10000) |
-| sqlWriterCleanupScript |A másolási tevékenységhez tartozó lekérdezés megadása úgy, hogy az egy adott szeletből származó adatmennyiséget takarítson meg. További információ: [ismételhető másolás](#repeatable-copy) szakasz. |Egy lekérdezési utasítás. |No |
-| sliceIdentifierColumnName |Adja meg az oszlop nevét a másolási tevékenységhez, amely automatikusan generált szelet-azonosítóval egészül ki, amely egy adott szelet adatának az újrafuttatáskor való kitakarítására szolgál. További információ: [ismételhető másolás](#repeatable-copy) szakasz. |A bináris adattípusú oszlop neve (32). |No |
-| sqlWriterStoredProcedureName |A tárolt eljárás neve, amely meghatározza, hogy a forrásadatok hogyan alkalmazhatók a célként megadott táblába, például a saját üzleti logikával történő upsert vagy átalakításra. <br/><br/>Figyelje meg, hogy ez a tárolt eljárás batch-ként lesz **meghívva**. Ha olyan műveletet szeretne végrehajtani, amely csak egyszer fut, és nem rendelkezik a forrásadatok végrehajtásával, például törlés/csonkítása, használja a `sqlWriterCleanupScript` tulajdonságot. |A tárolt eljárás neve. |No |
-| storedProcedureParameters |A tárolt eljárás paraméterei. |Név/érték párok. A paraméterek nevének és burkolatának meg kell egyeznie a tárolt eljárás paramétereinek nevével és házával. |No |
-| sqlWriterTableType |Adja meg a tárolt eljárásban használni kívánt táblanév nevét. A másolási tevékenység lehetővé teszi az áthelyezett adatáthelyezést egy ideiglenes táblában, amely ebben a táblázatban szerepel. A tárolt eljárási kód ezután egyesítheti a meglévő adattal másolható adatmásolási műveleteket. |Egy tábla típusának neve. |No |
+| sqlWriterCleanupScript |A másolási tevékenységhez tartozó lekérdezés megadása úgy, hogy az egy adott szeletből származó adatmennyiséget takarítson meg. További információ: [ismételhető másolás](#repeatable-copy) szakasz. |Egy lekérdezési utasítás. |Nem |
+| sliceIdentifierColumnName |Adja meg az oszlop nevét a másolási tevékenységhez, amely automatikusan generált szelet-azonosítóval egészül ki, amely egy adott szelet adatának az újrafuttatáskor való kitakarítására szolgál. További információ: [ismételhető másolás](#repeatable-copy) szakasz. |A bináris adattípusú oszlop neve (32). |Nem |
+| sqlWriterStoredProcedureName |A tárolt eljárás neve, amely meghatározza, hogy a forrásadatok hogyan alkalmazhatók a célként megadott táblába, például a saját üzleti logikával történő upsert vagy átalakításra. <br/><br/>Figyelje meg, hogy ez a tárolt eljárás batch-ként lesz **meghívva**. Ha olyan műveletet szeretne végrehajtani, amely csak egyszer fut, és nem rendelkezik a forrásadatok végrehajtásával, például törlés/csonkítása, használja a `sqlWriterCleanupScript` tulajdonságot. |A tárolt eljárás neve. |Nem |
+| storedProcedureParameters |A tárolt eljárás paraméterei. |Név/érték párok. A paraméterek nevének és burkolatának meg kell egyeznie a tárolt eljárás paramétereinek nevével és házával. |Nem |
+| sqlWriterTableType |Adja meg a tárolt eljárásban használni kívánt táblanév nevét. A másolási tevékenység lehetővé teszi az áthelyezett adatáthelyezést egy ideiglenes táblában, amely ebben a táblázatban szerepel. A tárolt eljárási kód ezután egyesítheti a meglévő adattal másolható adatmásolási műveleteket. |Egy tábla típusának neve. |Nem |
 
 
 ## <a name="json-examples-for-copying-data-from-and-to-sql-server"></a>JSON-példák adatok másolásához és SQL Server
@@ -553,7 +553,7 @@ A folyamat tartalmaz egy másolási tevékenységet, amely a bemeneti és a kime
 
     A TCP/IP protokoll engedélyezésének részleteit és alternatív módszereit lásd: [kiszolgálói hálózati protokoll engedélyezése vagy letiltása](https://msdn.microsoft.com/library/ms191294.aspx) .
 3. Ugyanebben az ablakban kattintson duplán a **TCP/IP** elemre a **TCP/IP tulajdonságok** ablak elindításához.
-4. Váltson az **IP-címek** lapra. görgessen le a **IPAll** szakasz megjelenítéséhez. Jegyezze fel a **TCP-portot**(az alapértelmezett érték **1433**).
+4. Váltson az **IP-címek** lapra. Görgessen le a **IPAll** szakasz megtekintéséhez. Jegyezze fel a **TCP-portot**(az alapértelmezett érték **1433**).
 5. Hozzon létre egy szabályt a számítógépen a **Windows tűzfal** számára, hogy engedélyezze a bejövő forgalmat ezen a porton keresztül.
 6. **Kapcsolat ellenőrzése**: ha teljesen minősített névvel szeretne csatlakozni a SQL Serverhoz, használja a SQL Server Management Studio egy másik gépről. Például: " \<machine\> . \<domain\> . Corp. \<company\> . com, 1433. "
 
@@ -661,21 +661,21 @@ A leképezés megegyezik a ADO.NET adattípusának SQL Server-leképezésével.
 | Datetime |DateTime |
 | datetime2 |DateTime |
 | DateTimeOffset |DateTimeOffset |
-| Decimal |Decimal |
+| Tizedesjegy |Tizedesjegy |
 | FILESTREAM attribútum (varbinary (max)) |Bájt [] |
-| Float |Double |
+| Lebegőpontos értékek |Dupla |
 | image |Bájt [] |
 | int |Int32 |
-| pénzt |Decimal |
+| pénzt |Tizedesjegy |
 | NCHAR |Karakterlánc, char [] |
 | ntext |Karakterlánc, char [] |
-| numerikus |Decimal |
+| numerikus |Tizedesjegy |
 | nvarchar |Karakterlánc, char [] |
-| valós szám |Egyszeres |
+| valós szám |Egyirányú |
 | ROWVERSION |Bájt [] |
 | idő adattípusúra |DateTime |
 | smallint |Int16 |
-| túlcsordulási |Decimal |
+| túlcsordulási |Tizedesjegy |
 | sql_variant |Objektum |
 | szöveg |Karakterlánc, char [] |
 | time |időtartam |

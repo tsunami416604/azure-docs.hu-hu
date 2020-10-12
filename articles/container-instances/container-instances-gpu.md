@@ -4,10 +4,10 @@ description: Ismerje meg, hogyan helyezhet üzembe az Azure Container instances 
 ms.topic: article
 ms.date: 07/22/2020
 ms.openlocfilehash: 19240560baa0cebdb6777d7b63d8c91832b12e1a
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87387089"
 ---
 # <a name="deploy-container-instances-that-use-gpu-resources"></a>GPU-erőforrásokat használó tároló-példányok üzembe helyezése
@@ -40,7 +40,7 @@ Ha a GPU-t egy Container-példányban szeretné használni, egy *GPU-erőforrás
 * **Darabszám** – a GPU-k száma: **1**, **2**vagy **4**.
 * **SKU** – a GPU SKU: **K80**, **P100**vagy **V100**. Mindegyik SKU az NVIDIA Tesla GPU-ra mutat az alábbi Azure GPU-kompatibilis virtuálisgép-családokban:
 
-  | Termékváltozat | VM-család |
+  | SKU | VM-család |
   | --- | --- |
   | K80 | [NC](../virtual-machines/nc-series.md) |
   | P100 | [NCv2](../virtual-machines/ncv2-series.md) |
@@ -222,7 +222,7 @@ az container delete --resource-group myResourceGroup --name gpucontainergroup -y
 az container delete --resource-group myResourceGroup --name gpucontainergrouprm -y
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * További információ a Container Group [YAML-fájl](container-instances-multi-container-yaml.md) vagy [Resource Manager-sablon](container-instances-multi-container-group.md)használatával történő üzembe helyezéséről.
 * További információ a GPU-ra optimalizált virtuálisgép- [méretekről](../virtual-machines/sizes-gpu.md) az Azure-ban.

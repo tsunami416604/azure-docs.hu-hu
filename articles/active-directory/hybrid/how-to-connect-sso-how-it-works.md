@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect: zökkenőmentes egyszeri bejelentkezés – hogyan működik | Microsoft Docs'
-description: Ez a cikk azt ismerteti, hogyan működik a Azure Active Directory zökkenőmentes egyszeri bejelentkezés funkció.
+title: 'Azure AD Connect: zökkenőmentes egyetlen Sign-On – hogyan működik | Microsoft Docs'
+description: Ez a cikk azt ismerteti, hogyan működik a Azure Active Directory zökkenőmentes egyetlen Sign-On funkció.
 services: active-directory
 keywords: Mi az Azure AD Connect, az Azure AD, az egyszeri bejelentkezéshez szükséges összetevők telepítése Active Directory
 documentationcenter: ''
@@ -17,15 +17,15 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: bde937adba8d2469390a6cf404f6cce8c5008e87
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86144697"
 ---
 # <a name="azure-active-directory-seamless-single-sign-on-technical-deep-dive"></a>Azure Active Directory zökkenőmentes egyszeri bejelentkezés: technikai részletes bemutató
 
-Ez a cikk technikai részleteket tartalmaz a Azure Active Directory zökkenőmentes egyszeri bejelentkezés (SSO) funkció működésének módjáról.
+Ez a cikk technikai részleteket tartalmaz arról, hogy a Azure Active Directory zökkenőmentes egyszeri Sign-On-szolgáltatás működik-e.
 
 ## <a name="how-does-seamless-sso-work"></a>Hogyan működik a zökkenőmentes egyszeri bejelentkezés?
 
@@ -82,8 +82,8 @@ A natív ügyfél bejelentkezési folyamata a következő:
 
 1. A felhasználó egy natív alkalmazást (például az Outlook-ügyfelet) próbál hozzáférni egy tartományhoz csatlakoztatott vállalati eszközről a vállalati hálózaton belül.
 2. Ha a felhasználó még nem jelentkezett be, a natív alkalmazás lekéri a felhasználó felhasználónevét az eszköz Windows-munkamenetében.
-3. Az alkalmazás elküldi a felhasználónevet az Azure AD-nek, és lekéri a bérlő WS-Trust MEX-végpontját. Ezt a WS-Trust végpontot kizárólag a zökkenőmentes SSO szolgáltatás használja, és nem a WS-Trust protokoll általános megvalósítása az Azure AD-ben.
-4. Az alkalmazás ezután lekérdezi a WS-Trust MEX-végpontot, hogy ellenőrizze, hogy elérhető-e az integrált hitelesítési végpont. Az integrált hitelesítési végpontot kizárólag a zökkenőmentes egyszeri bejelentkezés funkció használja.
+3. Az alkalmazás elküldi a felhasználónevet az Azure AD-nek, és lekéri a bérlő WS-Trust MEX-végpontját. Ezt a WS-Trust végpontot kizárólag a zökkenőmentes SSO szolgáltatás használja, és nem az Azure AD-ben a WS-Trust protokoll általános megvalósítása.
+4. Az alkalmazás ezután lekérdezi a WS-Trust MEX-végpontot, hogy elérhető-e az integrált hitelesítési végpont. Az integrált hitelesítési végpontot kizárólag a zökkenőmentes egyszeri bejelentkezés funkció használja.
 5. Ha a 4. lépés sikeres, a rendszer Kerberos-kihívást állít ki.
 6. Ha az alkalmazás képes a Kerberos-jegy beolvasására, azt az Azure AD integrált hitelesítési végpontja továbbítja.
 7. Az Azure AD visszafejti a Kerberos-jegyet, és érvényesíti azt.

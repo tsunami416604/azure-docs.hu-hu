@@ -4,10 +4,10 @@ description: A Azure Backup Server használatával biztonsági mentést készít
 ms.topic: conceptual
 ms.date: 05/15/2017
 ms.openlocfilehash: c5096158ca0e76ca03577347d8dd3e1419a33ca0
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86538700"
 ---
 # <a name="back-up-system-state-and-restore-to-bare-metal-by-using-azure-backup-server"></a>Rendszerállapot biztonsági mentése és visszaállítása operációs rendszer nélküli számítógépre Azure Backup Server
@@ -26,18 +26,18 @@ Az alábbi táblázat összefoglalja, hogy a biztonsági mentést és helyreáll
 |Backup|Probléma|Helyreállítás Azure Backup Server biztonsági másolatból|Rendszerállapot biztonsági mentése esetén helyreállítható|BMR|
 |----------|---------|---------------------------|------------------------------------|-------|
 |**Fájladatok**<br /><br />Az adatok rendszeres biztonsági mentése<br /><br />Teljes biztonsági mentés (BMR)/rendszerállapot biztonsági mentése|Elveszett fájladatok|I|N|N|
-|**Fájladatok**<br /><br />A fájlinformációk Azure Backup Server biztonsági mentése<br /><br />Teljes biztonsági mentés (BMR)/rendszerállapot biztonsági mentése|Elveszett vagy sérült operációs rendszer|N|I|Y|
+|**Fájladatok**<br /><br />A fájlinformációk Azure Backup Server biztonsági mentése<br /><br />Teljes biztonsági mentés (BMR)/rendszerállapot biztonsági mentése|Elveszett vagy sérült operációs rendszer|N|I|I|
 |**Fájladatok**<br /><br />A fájlinformációk Azure Backup Server biztonsági mentése<br /><br />Teljes biztonsági mentés (BMR)/rendszerállapot biztonsági mentése|Elveszett kiszolgáló (az adatkötetek érintetlenek)|N|N|I|
 |**Fájladatok**<br /><br />A fájlinformációk Azure Backup Server biztonsági mentése<br /><br />Teljes biztonsági mentés (BMR)/rendszerállapot biztonsági mentése|Elveszett kiszolgáló (az adatkötetek elvesztek)|I|N|I<br /><br />BMR, majd a biztonsági másolatban tárolt fájlok rendszeres helyreállítása|
 |**SharePoint-adatszolgáltatások**<br /><br />Azure Backup Server a farmon tárolt adatbiztonsági másolatok<br /><br />Teljes biztonsági mentés (BMR)/rendszerállapot biztonsági mentése|Elveszett hely, lista, listaelem, dokumentum|I|N|N|
-|**SharePoint-adatszolgáltatások**<br /><br />Azure Backup Server a farmon tárolt adatbiztonsági másolatok<br /><br />Teljes biztonsági mentés (BMR)/rendszerállapot biztonsági mentése|Elveszett vagy sérült operációs rendszer|N|I|Y|
+|**SharePoint-adatszolgáltatások**<br /><br />Azure Backup Server a farmon tárolt adatbiztonsági másolatok<br /><br />Teljes biztonsági mentés (BMR)/rendszerállapot biztonsági mentése|Elveszett vagy sérült operációs rendszer|N|I|I|
 |**SharePoint-adatszolgáltatások**<br /><br />Azure Backup Server a farmon tárolt adatbiztonsági másolatok<br /><br />Teljes biztonsági mentés (BMR)/rendszerállapot biztonsági mentése|Vészhelyreállítás|N|N|N|
 |Windows Server 2012 R2 Hyper-V<br /><br />A Hyper-V-gazdagép vagy-vendég Azure Backup Server biztonsági mentése<br /><br />A gazdagép teljes biztonsági mentése (BMR)/rendszerállapotának biztonsági mentése|Elveszett virtuális gép|I|N|N|
-|Hyper-V<br /><br />A Hyper-V-gazdagép vagy-vendég Azure Backup Server biztonsági mentése<br /><br />A gazdagép teljes biztonsági mentése (BMR)/rendszerállapotának biztonsági mentése|Elveszett vagy sérült operációs rendszer|N|I|Y|
+|Hyper-V<br /><br />A Hyper-V-gazdagép vagy-vendég Azure Backup Server biztonsági mentése<br /><br />A gazdagép teljes biztonsági mentése (BMR)/rendszerállapotának biztonsági mentése|Elveszett vagy sérült operációs rendszer|N|I|I|
 |Hyper-V<br /><br />A Hyper-V-gazdagép vagy-vendég Azure Backup Server biztonsági mentése<br /><br />A gazdagép teljes biztonsági mentése (BMR)/rendszerállapotának biztonsági mentése|Elvesztett Hyper-V-gazdagép (a virtuális gépek nem sérültek)|N|N|I|
 |Hyper-V<br /><br />A Hyper-V-gazdagép vagy-vendég Azure Backup Server biztonsági mentése<br /><br />A gazdagép teljes biztonsági mentése (BMR)/rendszerállapotának biztonsági mentése|Elvesztett Hyper-V-gazdagép (a virtuális gépek elvesztek)|N|N|I<br /><br />BMR, amelyet a rendszeres Azure Backup Server helyreállítás követ|
 |SQL Server/Exchange<br /><br />Azure Backup Server alkalmazás biztonsági mentése<br /><br />Teljes biztonsági mentés (BMR)/rendszerállapot biztonsági mentése|Elveszett alkalmazásadatok|I|N|N|
-|SQL Server/Exchange<br /><br />Azure Backup Server alkalmazás biztonsági mentése<br /><br />Teljes biztonsági mentés (BMR)/rendszerállapot biztonsági mentése|Elveszett vagy sérült operációs rendszer|N|I|Y|
+|SQL Server/Exchange<br /><br />Azure Backup Server alkalmazás biztonsági mentése<br /><br />Teljes biztonsági mentés (BMR)/rendszerállapot biztonsági mentése|Elveszett vagy sérült operációs rendszer|N|I|I|
 |SQL Server/Exchange<br /><br />Azure Backup Server alkalmazás biztonsági mentése<br /><br />Teljes biztonsági mentés (BMR)/rendszerállapot biztonsági mentése|Elveszett kiszolgáló (az adatbázis és a tranzakciós naplófájlok nem sérültek)|N|N|I|
 |SQL Server/Exchange<br /><br />Azure Backup Server alkalmazás biztonsági mentése<br /><br />Teljes biztonsági mentés (BMR)/rendszerállapot biztonsági mentése|Elveszett kiszolgáló (az adatbázis és a tranzakciós naplófájlok elvesztek)|N|N|I<br /><br />BMR helyreállítás, amelyet a rendszeres Azure Backup Server helyreállítás követ|
 
@@ -83,13 +83,13 @@ A biztonsági mentés befejezésekor a rendszer átviszi a fájlt a biztonsági 
 
 * A BMR-védelem esetében a rendszerállapot-védelemtől eltérően a biztonsági mentési kiszolgálónak nincs lemezterületre vonatkozó követelménye a védett számítógépen. Windows Server biztonsági másolat közvetlenül továbbítja a biztonsági mentéseket a biztonságimásolat-kiszolgáló számítógépére. A biztonságimásolat-áthelyezési feladat nem jelenik meg a biztonsági mentési kiszolgáló **feladatok** nézetében.
 
-* A Backup Server 30 GB helyet foglal le a BMR lévő replika köteten. A tárterület kiosztása a védelmi csoport módosítása varázsló **lemez kiosztása** lapján módosítható. Vagy használhatja a Get-DatasourceDiskAllocation és a set-DatasourceDiskAllocation PowerShell-parancsmagokat is. A helyreállítási pont kötetén a BMR-védelemnek körülbelül 6 GB-nak kell lennie öt nap megőrzéséhez.
+* A Backup Server 30 GB helyet foglal le a BMR lévő replika köteten. A tárterület kiosztása a védelmi csoport módosítása varázsló **lemez kiosztása** lapján módosítható. Vagy használhatja a Get-DatasourceDiskAllocation és a Set-DatasourceDiskAllocation PowerShell-parancsmagokat is. A helyreállítási pont kötetén a BMR-védelemnek körülbelül 6 GB-nak kell lennie öt nap megőrzéséhez.
   * A replika kötetének mérete nem csökkenthető 15 GB-nál kevesebbre.
   * A Backup Server nem számítja ki a BMR-adatforrás méretét. Minden kiszolgáló esetében 30 GB-ot feltételez. Módosítsa az értéket a környezetében várható BMR biztonsági mentések méretétől függően. Nagyjából kiszámíthatja a BMR biztonsági mentésének méretét a felhasznált lemezterület összegeként az összes kritikus köteten. Kritikus kötetek = rendszerindító kötet + rendszerkötet + kötet, amely a rendszerállapot-adatmennyiséget (például Active Directory) üzemelteti.
 
-* Ha a rendszerállapot-védelemről BMR-védelemre vált, a BMR-védelem kevesebb helyet igényel a *helyreállítási pont kötetén*. A köteten található felesleges terület azonban nem lett visszaállítva. A védelmi csoport módosítása varázsló **lemez kiosztása** lapján manuálisan is csökkentheti a kötet méretét. Vagy használhatja a Get-DatasourceDiskAllocation és a set-DatasourceDiskAllocation PowerShell-parancsmagokat is.
+* Ha a rendszerállapot-védelemről BMR-védelemre vált, a BMR-védelem kevesebb helyet igényel a *helyreállítási pont kötetén*. A köteten található felesleges terület azonban nem lett visszaállítva. A védelmi csoport módosítása varázsló **lemez kiosztása** lapján manuálisan is csökkentheti a kötet méretét. Vagy használhatja a Get-DatasourceDiskAllocation és a Set-DatasourceDiskAllocation PowerShell-parancsmagokat is.
 
-    Ha a rendszerállapot-védelemről BMR-védelemre vált, a BMR-védelem több helyet igényel a *replika kötetén*. A kötet automatikusan ki van bővítve. Ha módosítani szeretné az alapértelmezett terület foglalásait, használja a Modify-Diskallocation parancsmaggal módosíthatja PowerShell-parancsmagot.
+    Ha a rendszerállapot-védelemről BMR-védelemre vált, a BMR-védelem több helyet igényel a *replika kötetén*. A kötet automatikusan ki van bővítve. Ha módosítani szeretné az alapértelmezett terület foglalásait, használja a Modify-DiskAllocation PowerShell-parancsmagot.
 
 * Ha a BMR-védelemről rendszerállapot-védelemre vált, több helyre lesz szüksége a helyreállítási pont kötetén. Előfordulhat, hogy a biztonsági mentési kiszolgáló megpróbálja automatikusan megnövelni a kötetet. Ha a tárolóhelyen nincs elég hely, hiba történik.
 
@@ -97,7 +97,7 @@ A biztonsági mentés befejezésekor a rendszer átviszi a fájlt a biztonsági 
 
 ## <a name="before-you-begin"></a>Előkészületek
 
-1. **Azure Backup Server üzembe helyezése**. Ellenőrizze, hogy a biztonsági mentési kiszolgáló megfelelően van-e telepítve. További információ:
+1. **Azure Backup Server üzembe helyezése**. Ellenőrizze, hogy a biztonsági mentési kiszolgáló megfelelően van-e telepítve. További információkért lásd:
     * [A Azure Backup Server rendszerkövetelményei](/system-center/dpm/install-dpm#setup-prerequisites)
     * [A Backup Server védelmi mátrixa](backup-mabs-protection-matrix.md)
 
@@ -121,11 +121,11 @@ Rendszerállapot biztonsági mentése és operációs rendszer nélküli számí
 
     A rövid távú biztonsági mentés mindig lemezre történik, és a lemezről az Azure-ba történő biztonsági mentés lehetőségét Azure Backup (rövid távú vagy hosszú távú) használatával. A hosszú távú biztonsági mentés alternatívájaként a hosszú távú biztonsági mentést egy különálló szalagos eszközre vagy a Backup Serverhez csatlakoztatott szalagos tárba kell beállítani.
 
-1. A **rövid távú célok kiválasztása** lapon válassza ki, hogyan lehet biztonsági mentést készíteni a lemez rövid távú tárolására:
+1. A **Short-Term céljainak kiválasztása** lapon válassza ki, hogyan kell biztonsági mentést készíteni a lemez rövid távú tárolására:
     * A **megőrzési**időtartam beállításnál válassza ki, hogy mennyi ideig szeretné megőrizni a lemezen lévő adatok megtartását.
     * A **szinkronizálás gyakorisága**beállításnál válassza ki, hogy milyen gyakran fusson a növekményes biztonsági mentés lemezre. Ha nem szeretné beállítani a biztonsági mentés időközét, akkor **közvetlenül egy helyreállítási pont előtt**választhatja ki. A Backup Server expressz teljes biztonsági mentést futtat az egyes helyreállítási pontok ütemezése előtt.
 
-1. Ha szalagon szeretné tárolni az adatok hosszú távú tárolását, akkor a **hosszú távú célok megadása** oldalon válassza ki, hogy mennyi ideig tartsa meg a szalagos adatok (1 – 99 év).
+1. Ha szalagon szeretné tárolni az adatok hosszú távú tárolását, akkor a **Long-Term céljainak megadása** lapon válassza ki, hogy mennyi ideig tartsa meg a szalagos adatok (1 – 99 év).
     1. A **biztonsági mentés gyakorisága**beállításnál válassza ki, hogy milyen gyakran szeretné futtatni a szalagos biztonsági mentést. A gyakoriság a kiválasztott megőrzési tartományon alapul:
         * Ha a megőrzési időtartam 1 – 99 év, akkor naponta, hetente, kéthetente, havonta, negyedévente, félévente vagy évente készíthet biztonsági mentést.
         * Ha a megőrzési tartomány 1 – 11 hónap, akkor naponta, hetente, kéthetente vagy havonta készíthet biztonsági mentést.
@@ -159,7 +159,7 @@ Rendszerállapot biztonsági mentése és operációs rendszer nélküli számí
 
     A replikálást végezheti a hálózaton keresztül, vagy offline biztonsági mentést végezhet (kapcsolat nélküli előkészítés). Az offline biztonsági mentés az Azure importálási szolgáltatását használja. További információ: [Offline biztonsági mentési munkafolyamat Azure Backup-ben](offline-backup-azure-data-box.md).
 
-1. Az **Összefoglalás** lapon tekintse át a beállításokat. Miután kiválasztotta a **csoport létrehozása**lehetőséget, az adatműveletek kezdeti replikálása történik. Amikor az adatreplikálás befejeződik, az **állapot** lapon a védelmi csoport állapota **OK**. A biztonsági mentések a védelmi csoport beállításai szerint történnek.
+1. Az  **Összefoglalás** lapon tekintse át a beállításokat. Miután kiválasztotta a **csoport létrehozása**lehetőséget, az adatműveletek kezdeti replikálása történik. Amikor az adatreplikálás befejeződik, az **állapot** lapon a védelmi csoport állapota **OK**. A biztonsági mentések a védelmi csoport beállításai szerint történnek.
 
 ## <a name="recover-system-state-or-bmr"></a>Rendszerállapot vagy BMR helyreállítása
 
@@ -173,7 +173,7 @@ A helyreállítás futtatása a biztonsági mentési kiszolgáló számítógép
 
 1. Az elérhető helyreállítási pontok félkövérrel szedve jelennek meg a naptárban. Válassza ki a használni kívánt helyreállítási pont dátumát és időpontját.
 
-1. A **helyreállítási típus kiválasztása** lapon válassza a **Másolás hálózati mappába**lehetőséget.
+1. A  **helyreállítási típus kiválasztása** lapon válassza a **Másolás hálózati mappába**lehetőséget.
 
 1. A **célhely megadása** lapon válassza ki a másolt adatelem célját.
 
@@ -239,7 +239,7 @@ Windows Server biztonsági másolat futtatása:
 
 1. A **helyreállítási típus kiválasztása** lapon válassza a **rendszerállapot**lehetőséget.
 
-1. A **rendszerállapot-helyreállítás helyének kiválasztása** lapon válassza az **eredeti hely**lehetőséget.
+1. A **rendszerállapot-helyreállítás helyének kiválasztása** lapon válassza az  **eredeti hely**lehetőséget.
 
 1. A **jóváhagyás** lapon válassza a **helyreállítás**lehetőséget.
 

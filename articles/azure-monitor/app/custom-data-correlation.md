@@ -7,10 +7,10 @@ ms.author: evternov
 ms.date: 08/08/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: 17de697686485d695586ffa798196efb4a34c251
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87092915"
 ---
 # <a name="correlating-application-insights-data-with-custom-data-sources"></a>Egyéni adatforrásokkal való korreláció Application Insights
@@ -55,7 +55,7 @@ app('myAI').requests
 ) on $left.cloud_RoleInstance == $right.Computer
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Tekintse meg az [adatgyűjtő API](../platform/data-collector-api.md) -referenciát.
 - További információ az [erőforrások közötti illesztésekről](../log-query/cross-workspace-query.md).

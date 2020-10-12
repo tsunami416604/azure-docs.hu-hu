@@ -8,10 +8,10 @@ ms.author: dalek
 ms.date: 5/7/2020
 ms.reviewer: mbullwin
 ms.openlocfilehash: b695205c08f9039fbf91eaeddb7622b784d81d12
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91400587"
 ---
 # <a name="manage-usage-and-costs-for-application-insights"></a>Használat és költségek kezelése az Application Insights szolgáltatásban
@@ -320,7 +320,7 @@ Mivel ez a csomag csak az Operations Management Suite-előfizetéssel rendelkez�
 
 ### <a name="examples-of-how-to-determine-distinct-node-count"></a>Példák a különböző csomópontok számának meghatározására
 
-| Használati eset                               | Csomópontok napi száma összesen |
+| Forgatókönyv                               | Csomópontok napi száma összesen |
 |:---------------------------------------|:----------------:|
 | 1 alkalmazás 3 Azure App Service példány és 1 virtuális kiszolgáló használatával | 4 |
 | 3 alkalmazás 2 virtuális gépen; az alkalmazások Application Insights erőforrásai ugyanahhoz az előfizetéshez tartoznak, és a csomóponti szinten | 2 | 
@@ -338,7 +338,7 @@ Mivel ez a csomag csak az Operations Management Suite-előfizetéssel rendelkez�
 
 Írhat egy parancsfájlt az árképzési csomag beállításához az Azure Erőforrás-kezelés használatával. [Ismerje meg, hogyan](powershell.md#price).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [mintavételi](./sampling.md)
 

@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/18/2020
 ms.openlocfilehash: a5589a46a63437fb395db280222f8a9e84775df3
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88935075"
 ---
 # <a name="monitor-query-requests-in-azure-cognitive-search"></a>Lekérdezési kérelmek figyelése az Azure Cognitive Search
@@ -38,10 +38,10 @@ A lekérdezések végrehajtása általában ezredmásodpercben történik, ezér
 
 | Aggregáció típusa | Leírás |
 |------------------|-------------|
-| Average | A lekérdezés végrehajtásának időpontjában egy percen belül eltelt másodpercek átlagos száma.|
+| Átlag | A lekérdezés végrehajtásának időpontjában egy percen belül eltelt másodpercek átlagos száma.|
 | Darabszám | Az egyperces intervallumon belül a naplóba kibocsátott metrikák száma. |
 | Maximum | Egy percen belül másodpercenként regisztrált keresési lekérdezések másodpercenkénti száma. |
-| Minimum | Egy perc alatt másodpercenként regisztrált keresési lekérdezések másodpercenkénti száma.  |
+| Minimális | Egy perc alatt másodpercenként regisztrált keresési lekérdezések másodpercenkénti száma.  |
 | Sum | A percen belül végrehajtott lekérdezések összege.  |
 
 Előfordulhat például, hogy egy percen belül egy ilyen mintázattal rendelkezik: egy másodperces magas terhelés, amely a SearchQueriesPerSecond maximális értéke, majd az átlagos terhelés 58 másodperce, végül egy másodperc csak egy lekérdezéssel, amely a minimum.
@@ -56,10 +56,10 @@ Az egész szolgáltatásra kiterjedő lekérdezési teljesítmény a keresési k
 
 | Aggregáció típusa | Késés | 
 |------------------|---------|
-| Average | Lekérdezés átlagos időtartama ezredmásodpercben. | 
+| Átlag | Lekérdezés átlagos időtartama ezredmásodpercben. | 
 | Darabszám | Az egyperces intervallumon belül a naplóba kibocsátott metrikák száma. |
 | Maximum | Leghosszabb ideig futó lekérdezés a mintában. | 
-| Minimum | A legrövidebb futó lekérdezés a mintában.  | 
+| Minimális | A legrövidebb futó lekérdezés a mintában.  | 
 | Összesen | A mintában lévő összes lekérdezés teljes végrehajtási ideje (egy perc) az intervallumon belül.  |
 
 Vegye figyelembe a következő példát a **keresési késési** mérőszámokra: 86 lekérdezés lett mintavétel alatt, átlagosan 23,26 ezredmásodperc. Legalább 0 érték azt jelzi, hogy néhány lekérdezés el lett dobva. A leghosszabb ideig futó lekérdezés 1000 ezredmásodpercet vett igénybe. A végrehajtási idő összesen 2 másodperc volt.
@@ -84,10 +84,10 @@ A szabályozott lekérdezések megerősítéséhez használja a **szabályozott 
 
 | Aggregáció típusa | Throttling |
 |------------------|-----------|
-| Average | Az intervallumon belül eldobott lekérdezések százalékos aránya. |
+| Átlag | Az intervallumon belül eldobott lekérdezések százalékos aránya. |
 | Darabszám | Az egyperces intervallumon belül a naplóba kibocsátott metrikák száma. |
 | Maximum | Az intervallumon belül eldobott lekérdezések százalékos aránya.|
-| Minimum | Az intervallumon belül eldobott lekérdezések százalékos aránya. |
+| Minimális | Az intervallumon belül eldobott lekérdezések százalékos aránya. |
 | Összesen | Az intervallumon belül eldobott lekérdezések százalékos aránya. |
 
 A **szabályozott keresési lekérdezések aránya**, a minimum, a maximum, az átlag és az összes érték azonos értékű: a megadott keresési lekérdezések százalékos aránya, a keresési lekérdezések teljes száma egy percen belül.

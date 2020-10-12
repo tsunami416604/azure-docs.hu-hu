@@ -8,10 +8,10 @@ ms.date: 12/13/2019
 ms.author: mjbrown
 ms.custom: devx-track-js, devx-track-azurecli, devx-track-csharp
 ms.openlocfilehash: 8c4259383196734c6e15c4ea261092938b1dd404
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91282816"
 ---
 # <a name="provision-standard-manual-throughput-on-an-azure-cosmos-container"></a>Standard (manuális) átviteli sebesség kiépítése egy Azure Cosmos-tárolón
@@ -30,7 +30,7 @@ Ez a cikk azt ismerteti, hogyan lehet szabványos (manuális) átviteli sebessé
    * Adja meg a tároló (vagy a tábla vagy a gráf) AZONOSÍTÓját.
    * Adja meg a partíciós kulcs értékét (például: `/userid` ).
    * Adja meg a kiépíteni kívánt átviteli sebességet (például 1000 RUs).
-   * Válassza az **OK** lehetőséget.
+   * Kattintson az **OK** gombra.
 
     :::image type="content" source="./media/how-to-provision-container-throughput/provision-container-throughput-portal-all-api.png" alt-text="Képernyőkép a Adatkezelőről, új gyűjtemény kiemelve":::
 

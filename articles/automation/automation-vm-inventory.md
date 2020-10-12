@@ -7,10 +7,10 @@ keywords: leltár, automatizálás, változás, követés
 ms.date: 06/30/2020
 ms.topic: conceptual
 ms.openlocfilehash: 32d3c17a5f3d152f32b19ffbfd5c9793a7a34b80
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86185721"
 ---
 # <a name="manage-inventory-collection-from-vms"></a>Leltárkezelés virtuális gépekről
@@ -65,7 +65,7 @@ A következő szakaszokban információt talál a különböző kategóriákhoz 
 |---------|---------|
 |Engedélyezve     | Meghatározza, hogy a beállítás aktiválva van-e        |
 |Elem neve     | A nyomon követendő fájl felhasználóbarát neve        |
-|Csoport     | A fájlok logikai csoportosítására szolgáló csoportnév        |
+|Group     | A fájlok logikai csoportosítására szolgáló csoportnév        |
 |Windows-beállításkulcs   | A fájl elérési útja, például: „HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders\Common Startup”      |
 
 ### <a name="windows-files"></a>Windows-fájlok
@@ -74,7 +74,7 @@ A következő szakaszokban információt talál a különböző kategóriákhoz 
 |---------|---------|
 |Engedélyezve     | Igaz, ha a beállítás alkalmazva van, ellenkező esetben hamis.        |
 |Elem neve     | A nyomon követett fájl rövid neve.        |
-|Csoport     | Egy csoport neve a fájlok logikai csoportosításához.       |
+|Group     | Egy csoport neve a fájlok logikai csoportosításához.       |
 |Elérési út megadása     | A fájl keresésének elérési útja, például **c:\temp\myfile.txt**.
 
 ### <a name="linux-files"></a>Linux-fájlok
@@ -83,7 +83,7 @@ A következő szakaszokban információt talál a különböző kategóriákhoz 
 |---------|---------|
 |Engedélyezve     | Igaz, ha a beállítás alkalmazva van, ellenkező esetben hamis.        |
 |Elem neve     | A nyomon követett fájl rövid neve.        |
-|Csoport     | Egy csoport neve a fájlok logikai csoportosításához.        |
+|Group     | Egy csoport neve a fájlok logikai csoportosításához.        |
 |Elérési út megadása     | A fájl keresésének elérési útja, például **/etc/*. conf**.       |
 |Elérési út típusa     | A nyomon követett elemek típusa. Az értékek a fájl és a könyvtár.        |
 |Rekurzió     | True (igaz), ha a rendszer rekurziót használ a nyomon követett elem keresésekor, máskülönben hamis értéket ad.        |

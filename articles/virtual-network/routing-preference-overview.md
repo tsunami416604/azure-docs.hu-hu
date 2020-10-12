@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 05/18/2020
 ms.author: mnayak
 ms.openlocfilehash: 171ae04a70f3639981e74d20d260a03359a0f2c8
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86187438"
 ---
 # <a name="what-is-routing-preference-preview"></a>Mi az útválasztási preferencia (előzetes verzió)?
@@ -65,7 +65,7 @@ A "Microsoft Global Network" nevű útválasztási beállításokat tartalmazó 
 A tároláshoz az elsődleges végpontok mindig a **Microsoft globális hálózatot**használják. A másodlagos végpontokat az **internettel** engedélyezheti, ha a forgalom útválasztását választja. A támogatott tárolási szolgáltatások a következők:
 
 * Blobok
-* Fájlok
+* Files
 * Web
 * Azure DataLake
 
@@ -74,8 +74,8 @@ A két lehetőség közötti árkülönbség az internetes kimenő adatforgalom 
 
 | Kimenő források régiója | 0-5 GB/hó | 5 GB-10 TB/hó | 10-50 TB/hó | 50-150 TB/hó | 150-500 TB/hó |
 | --- | --- | --- | --- | --- | --- |
-| 1\. zóna | 0/GB | $0.085/GB | $0.065/GB | $0.06/GB | $0.04/GB |
-| 2\. zóna | 0/GB | $0,11/GB | $0.075/GB | $0,07/GB | $0.06/GB  |
+| 1. zóna | 0/GB | $0.085/GB | $0.065/GB | $0.06/GB | $0.04/GB |
+| 2. zóna | 0/GB | $0,11/GB | $0.075/GB | $0,07/GB | $0.06/GB  |
 
 [Vegye fel velünk a kapcsolatot](https://azure.microsoft.com/overview/sales-number/) a 500 TB-os havi adatmennyiséggel.
 * 1. zóna – Ausztrália középső régiója, Közép-Ausztrália, Közép-Kanada, Kelet-Kanada, Észak-Európa, Nyugat-Európa, Közép-Franciaország, Dél-Németország, Észak-Németország (nyilvános), Középnyugat-Németország (nyilvános), Kelet-Norvégia, Norvégia nyugati régiója, Észak-Svájc, Nyugat-Svájc, Egyesült Királyság déli régiója, Egyesült Királyság nyugati régiója, USA középső régiója, USA 2. keleti régiója, USA északi középső régiója

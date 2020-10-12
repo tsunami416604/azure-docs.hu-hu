@@ -7,10 +7,10 @@ ms.manager: abhemraj
 ms.author: hamusa
 ms.date: 01/01/2020
 ms.openlocfilehash: b56244fccce623827367d504831ca8db517c108d
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86121639"
 ---
 # <a name="troubleshoot-azure-migrate-projects"></a>Azure Migrate-projektek hibaelhárítása
@@ -63,6 +63,6 @@ A projektek törléséhez [kövesse az alábbi utasításokat](create-manage-pro
 
 Győződjön meg arról, hogy a megfelelő projekt van kiválasztva. A Azure Migrate hub > **kiszolgálók** vagy **adatbázisok**ablakban kattintson a **módosítás** gombra a **projekt migrálása (módosítás)** elemre a képernyő jobb felső sarkában. Válassza ki a megfelelő előfizetést és a projekt nevét > **az OK gombra**. A lapot frissíteni kell a kiválasztott projekt hozzáadott eszközeivel.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Felmérési](how-to-assess.md) vagy [áttelepítési](how-to-migrate.md) eszközök hozzáadása Azure Migrate projektekhez.

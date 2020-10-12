@@ -4,10 +4,10 @@ description: Ez a cikk a Azure DevTest Labs tartozó tevékenységek naplóinak 
 ms.topic: how-to
 ms.date: 07/10/2020
 ms.openlocfilehash: 24b5eb25f1c8c9044ad6e77545381a43a11714f9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87096755"
 ---
 # <a name="view-activity-logs-for-labs-in-azure-devtest-labs"></a>A Labs-beli tevékenységek naplóinak megtekintése Azure DevTest Labs 
@@ -27,24 +27,24 @@ Ez a cikk azt ismerteti, hogyan lehet megtekinteni a tesztkörnyezet tevékenys�
     :::image type="content" source="./media/activity-logs/configuration-policies-link.png" alt-text="Válassza ki a konfigurációt és a házirendeket a bal oldali menüben":::
 1. A **konfiguráció és házirendek** lapon válassza a **tevékenység napló** elemet a **kezelés**alatt a bal oldali menüben. Ekkor meg kell jelennie a laboron végzett műveletek bejegyzéseinek. 
 
-    :::image type="content" source="./media/activity-logs/activity-log.png" alt-text="Tevékenységnapló":::    
+    :::image type="content" source="./media/activity-logs/activity-log.png" alt-text="Válassza ki a konfigurációt és a házirendeket a bal oldali menüben":::    
 1. Válasszon ki egy eseményt, és tekintse meg a részleteket. Az **Összefoglalás** lapon megtekintheti az olyan információkat, mint például a művelet neve, az időbélyegző, valamint a művelet. 
     
-    :::image type="content" source="./media/activity-logs/stop-vm-event.png" alt-text="VM-esemény leállítása – összefoglalás":::        
+    :::image type="content" source="./media/activity-logs/stop-vm-event.png" alt-text="Válassza ki a konfigurációt és a házirendeket a bal oldali menüben":::        
 1. A további részletek megtekintéséhez váltson a **JSON** lapra. A következő példában megtekintheti a virtuális gép nevét, valamint a virtuális gépen végrehajtott műveletet (leállítva).
 
-    :::image type="content" source="./media/activity-logs/stop-vm-event-json.png" alt-text="VM-esemény leállítása – JSON":::           
+    :::image type="content" source="./media/activity-logs/stop-vm-event-json.png" alt-text="Válassza ki a konfigurációt és a házirendeket a bal oldali menüben":::           
 1. Váltson a **change History (előzetes verzió)** lapra a változások előzményeinek megtekintéséhez. A következő példában a virtuális gépen végrehajtott módosítás látható. 
 
-    :::image type="content" source="./media/activity-logs/change-history.png" alt-text="VM-események változási előzményeinek leállítása":::             
+    :::image type="content" source="./media/activity-logs/change-history.png" alt-text="Válassza ki a konfigurációt és a házirendeket a bal oldali menüben":::             
 1. A módosítással kapcsolatos további részletek megtekintéséhez kattintson a Change History (változások előzményei) listára. 
 
-    :::image type="content" source="./media/activity-logs/change-details.png" alt-text="VM-esemény leállítása – részletek":::             
+    :::image type="content" source="./media/activity-logs/change-details.png" alt-text="Válassza ki a konfigurációt és a házirendeket a bal oldali menüben":::             
 
 További információ a tevékenységi naplókról: [Azure-tevékenység naplója](../azure-monitor/platform/activity-log.md).
 
 ## <a name="next-steps"></a>További lépések
 
 - A **riasztások** a tevékenység naplóiban való beállításával kapcsolatos további tudnivalókért lásd: [riasztások létrehozása](create-alerts.md).
-- További információ a tevékenységi naplókról: [Azure-tevékenység naplója](../azure-monitor/platform/activity-log.md).
+- További információ a tevékenységi naplókról:  [Azure-tevékenység naplója](../azure-monitor/platform/activity-log.md).
 

@@ -10,10 +10,10 @@ ms.date: 11/27/2019
 ms.author: prmitiki
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 98341fbbbcafb6aee938870c22050c6edec352ac
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89079047"
 ---
 # <a name="enable-azure-peering-service-on-a-direct-peering-by-using-powershell"></a>Azure-alapú társ-kezelés engedélyezése közvetlenül a PowerShell használatával
@@ -50,7 +50,7 @@ Ha módosítania kell a kapcsolódási beállításokat, tekintse meg a [közvet
 * [Exchange-társ létrehozása vagy módosítása a PowerShell használatával](howto-exchange-powershell.md)
 * [Örökölt Exchange-társ konvertálása Azure-erőforrásra a PowerShell használatával](howto-legacy-exchange-powershell.md)
 
-## <a name="additional-resources"></a>További erőforrások
+## <a name="additional-resources"></a>További források
 Az összes paraméter részletes leírását a következő parancs futtatásával érheti el:
 
 ```powershell

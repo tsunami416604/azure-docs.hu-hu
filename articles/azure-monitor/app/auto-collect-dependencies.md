@@ -7,10 +7,10 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 05/06/2020
 ms.openlocfilehash: ca1c63f042bd06c19f232c2ff8170d23741e73f2
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88936435"
 ---
 # <a name="dependency-auto-collection"></a>Függőségek automatikus összegyűjtése
@@ -24,7 +24,7 @@ Az alábbiakban látható a függőségi hívások jelenleg támogatott listája
 | ASP.NET webűrlapok | 4.5 + |
 | ASP.NET, MVC | 4 + |
 | ASP.NET WebAPI | 4.5 + |
-| ASP.NET Core | 1.1 + |
+| ASP.NET-mag | 1.1 + |
 | <b> Kommunikációs kódtárak</b> |
 | [HttpClient](https://www.microsoft.com/net/) | 4.5 +, .NET Core 1.1 + |
 | [SqlClient](https://www.nuget.org/packages/System.Data.SqlClient) | .NET Core 1.0 +, NuGet 4.3.0 |
@@ -54,7 +54,7 @@ Az alábbiakban látható a függőségi hívások jelenleg támogatott listája
 | [SQL Server]( https://mvnrepository.com/artifact/com.microsoft.sqlserver/mssql-jdbc) | 1 +<sup>†</sup> |
 | [PostgreSQL (bétaverziós támogatás)](https://github.com/Microsoft/ApplicationInsights-Java/blob/master/CHANGELOG.md#version-240-beta) | |
 | [Oracle]( https://www.oracle.com/technetwork/database/application-development/jdbc/downloads/index.html) | 1 +<sup>†</sup> |
-| [MySQL]( https://mvnrepository.com/artifact/mysql/mysql-connector-java) | 1 +<sup>†</sup> |
+| [MySql]( https://mvnrepository.com/artifact/mysql/mysql-connector-java) | 1 +<sup>†</sup> |
 | <b>Naplózási kódtárak</b> | |
 | [Logback](https://logback.qos.ch/) | 1 + |
 | [Log4j](https://logging.apache.org/log4j/) | 1,2 + |
@@ -87,7 +87,7 @@ Az alábbiakban látható a függőségi hívások jelenleg támogatott listája
 | ------------------------|----------|
 | [XMLHttpRequest](https://developer.mozilla.org/docs/Web/API/XMLHttpRequest) | Mind |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Egyéni függőségi követés beállítása a [.net](./asp-net-dependencies.md)-hez.
 - Egyéni függőség-követés beállítása a [Javához](./java-agent.md).

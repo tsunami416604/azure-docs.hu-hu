@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: 5353fa70be4705b28dab9350fcdf7819b22faf54
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90985542"
 ---
 # <a name="core-reports-from-verizon"></a>Alapvető jelentések a Verizontól
@@ -100,7 +100,7 @@ A gyorsítótár-találatok számának csökkentéséhez állítson be egy adate
 * TCP_MISS: ez az állapot azt jelzi, hogy a kért eszköz gyorsítótárazott verziója nem található az ügyfélhez legközelebb lévő POP-ban. Az eszközt egy forrás-vagy egy Origin Shield-kiszolgálótól kéri a rendszer. Ha a forrás-vagy a forrás-védelmi kiszolgáló egy adategységet ad vissza, a rendszer az ügyfél és a peremhálózati kiszolgálón is gyorsítótárazza. Ellenkező esetben a rendszer nem 200-as állapotkódot (például 403 Tiltott vagy 404 nem található) ad vissza.
 * TCP_EXPIRED_HIT: ez az állapot akkor jelenik meg, ha egy olyan kérést, amely egy lejárt TTL-értékkel rendelkező eszközt céloz meg közvetlenül a POP-ból az ügyfélnek. Például, ha az eszköz maximális életkora lejárt. 
   
-   Egy lejárt kérelem általában a forráskiszolgáló újraérvényesítési kérelmét eredményezi. TCP_EXPIRED_HIT állapot esetén a forrás-kiszolgálónak jeleznie kell, hogy az eszköz újabb verziója nem létezik. Ez általában azt eredményezi, hogy az eszköz gyorsítótár-vezérlője frissül, és a fejlécek lejárnak.
+   Egy lejárt kérelem általában a forráskiszolgáló újraérvényesítési kérelmét eredményezi. TCP_EXPIRED_HIT állapot esetén a forrás-kiszolgálónak jeleznie kell, hogy az eszköz újabb verziója nem létezik. Ez a helyzet általában az eszköz Cache-Control frissítését eredményezi, és a fejléceket lejár.
 * TCP_EXPIRED_MISS: ez az állapot akkor jelenik meg, ha egy lejárt gyorsítótárazott eszköz újabb verzióját kézbesíti a rendszer a POP-ból az ügyfélnek. Ez az állapot akkor fordul elő, ha egy gyorsítótárazott eszköz ÉLETTARTAMa lejárt (például lejárt a maximális korhatár), és a forráskiszolgáló az adott eszköz újabb verzióját adja vissza. Az eszköz ezt az új verzióját a gyorsítótárazott verzió helyett az ügyfél szolgáltatja. Emellett a rendszer gyorsítótárazza a peremhálózati kiszolgálón és az ügyfélen.
 * CONFIG_NOCACHE: ez az állapot azt jelzi, hogy egy ügyfél-specifikus konfiguráció a peremhálózati POP megakadályozta az eszköz gyorsítótárazását.
 * NINCS – ez az állapot azt jelzi, hogy a gyorsítótár tartalmának frissességi ellenőrzését nem hajtották végre.

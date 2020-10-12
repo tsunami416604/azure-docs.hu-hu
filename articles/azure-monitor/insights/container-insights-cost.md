@@ -4,10 +4,10 @@ description: Ez a cikk ismerteti a metrikák figyelési költségeit, & a Azure 
 ms.topic: conceptual
 ms.date: 05/29/2020
 ms.openlocfilehash: a03e94fa7650c56a4d3b3beda3c27283329aebbe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84204650"
 ---
 # <a name="understand-monitoring-costs-for-azure-monitor-for-containers"></a>A tárolók Azure Monitor figyelési költségeinek megismerése
@@ -112,13 +112,13 @@ A hozzárendelt Log Analytics munkaterületen megtekintheti az óránként gener
 
 |Táblázat | Becsült méret (MB/óra) |
 |------|---------------|
-|Teljesítmény | 12,9 |
+|Teljesítmény | 12.9 |
 |InsightsMetrics | 11,3 |
 |KubePodInventory | 1.5 |
 |KubeNodeInventory | 0,75 |
 |KubeServices | 0.13 |
 |ContainerInventory | 3,6 |
-|KubeHealth | 0.1 |
+|KubeHealth | 0,1 |
 |KubeMonAgentEvents |0,005 |
 
 Összesen = 31 MB/óra = 23,1 GB/hó (egy hónap = 31 nap)

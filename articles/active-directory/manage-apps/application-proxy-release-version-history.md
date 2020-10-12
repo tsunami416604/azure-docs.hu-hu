@@ -12,10 +12,10 @@ ms.date: 07/22/2020
 ms.subservice: app-mgmt
 ms.author: kenwith
 ms.openlocfilehash: 3f6b1bb189390f6ddd02e9ea2d636dcaa66a4f19
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88210866"
 ---
 # <a name="azure-ad-application-proxy-version-release-history"></a>Azure AD Application Proxy: verziók kiadásának előzményei
@@ -83,7 +83,7 @@ Szeptember 20., 2018: kiadva a letöltéshez
 - A WebSocket-támogatás hozzáadva a QlikSense alkalmazáshoz. A QlikSense és az alkalmazásproxy integrálásával kapcsolatos további tudnivalókért tekintse [meg ezt a](application-proxy-qlik.md)bemutatót. 
 - Továbbfejlesztettük a telepítővarázsló segítségével, hogy könnyebben konfiguráljon egy kimenő proxyt. 
 - A TLS 1,2 beállítása az összekötők alapértelmezett protokollja. 
-- Új végfelhasználói licencszerződés (EULA) lett hozzáadva.  
+- Új End-User licencszerződést (EULA) vett fel.  
 
 ### <a name="fixed-issues"></a>Megoldott problémák
 
@@ -126,6 +126,6 @@ Az összekötők kimenő kapcsolati korlátainak jobb szabályozása.
 
 Ha a 1.5.36.0-nál korábbi verziójú alkalmazásproxy-összekötőt használ, frissítsen a legújabb verzióra, és győződjön meg arról, hogy a legújabb teljes körűen támogatott funkciókkal rendelkezik.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - További információ [a helyszíni alkalmazások távoli eléréséről az Azure ad Application Proxyon keresztül](application-proxy.md).
 - Az alkalmazásproxy használatának megkezdéséhez lásd [: oktatóanyag: helyszíni alkalmazás hozzáadása a táveléréshez alkalmazásproxy](application-proxy-add-on-premises-application.md)használatával.

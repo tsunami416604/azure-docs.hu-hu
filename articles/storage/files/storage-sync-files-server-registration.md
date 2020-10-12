@@ -8,10 +8,10 @@ ms.date: 07/19/2018
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: c457dacd947c7af8a6be94205ed135ce04a49a06
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85509506"
 ---
 # <a name="manage-registered-servers-with-azure-file-sync"></a>Regisztrált kiszolgálók kezelése Azure File Sync
@@ -184,6 +184,6 @@ Ha a Azure File Sync egy Windows Server virtualizálási gazdagépen futó virtu
 
 ## <a name="see-also"></a>Lásd még
 - [Az Azure File Sync üzembe helyezésének megtervezése](storage-sync-files-planning.md)
-- [Az Azure File Sync üzembe helyezése](storage-sync-files-deployment-guide.md)
+- [Azure File Sync – üzembe helyezés](storage-sync-files-deployment-guide.md)
 - [Az Azure File Sync monitorozása](storage-sync-files-monitoring.md)
-- [Azure-fájlok szinkronizálásának hibaelhárítása](storage-sync-files-troubleshoot.md)
+- [Azure File Sync – hibaelhárítás](storage-sync-files-troubleshoot.md)

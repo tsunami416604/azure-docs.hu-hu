@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 08/06/2020
 ms.openlocfilehash: ef85b6f9e4595e7b4ff367da415fad777de68679
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88211313"
 ---
 # <a name="azure-cache-for-redis-development-faqs"></a>Azure cache a Redis-fejlesztéssel kapcsolatos gyakori kérdések
@@ -34,7 +34,7 @@ Ez a szakasz a következő gyakori kérdéseket ismerteti:
 Az Azure cache Redis többféleképpen is elsajátíthatja.
 
 * A [.net](cache-dotnet-how-to-use-azure-redis-cache.md), a [ASP.net](cache-web-app-howto.md), a [Java](cache-java-get-started.md), a [Node.js](cache-nodejs-get-started.md)és a [Python](cache-python-get-started.md)szolgáltatáshoz elérhető oktatóanyagok közül választhat.
-* Megtekintheti [, hogyan hozhat létre nagy teljesítményű alkalmazásokat a Redis Microsoft Azure cache használatával](https://azure.microsoft.com/documentation/videos/how-to-build-high-performance-apps-using-microsoft-azure-cache/).
+* Megtekintheti, [hogyan hozhat létre High-Performance alkalmazásokat a Redis Microsoft Azure cache használatával](https://azure.microsoft.com/documentation/videos/how-to-build-high-performance-apps-using-microsoft-azure-cache/).
 * Megtekintheti az ügyfél dokumentációját a projekt fejlesztői nyelvének megfelelő ügyfelek számára, hogy megtudja, hogyan használhatja a Redis. Számos Redis-ügyfél használható az Azure cache használatával a Redis. A Redis-ügyfelek listáját a következő témakörben tekintheti meg: [https://redis.io/clients](https://redis.io/clients) .
 
 Ha még nem rendelkezik Azure-fiókkal, a következőket teheti:
@@ -45,7 +45,7 @@ Ha még nem rendelkezik Azure-fiókkal, a következőket teheti:
 ### <a name="what-do-the-stackexchangeredis-configuration-options-do"></a>Mi a StackExchange. Redis konfigurációs beállításai?
 A StackExchange. Redis számos lehetőséget kínál. Ez a szakasz néhány gyakori beállításról beszél. További információ a StackExchange. Redis beállításokról: [StackExchange. Redis konfiguráció](https://stackexchange.github.io/StackExchange.Redis/Configuration).
 
-| ConfigurationOptions | Description | Javaslat |
+| ConfigurationOptions | Leírás | Ajánlás |
 | --- | --- | --- |
 | AbortOnConnectFail |Ha igaz értékre van állítva, a kapcsolat hálózati hiba után nem fog újracsatlakozni. |Állítsa hamis értékre, és hagyja, hogy a StackExchange. Redis automatikusan újracsatlakozik. |
 | ConnectRetry |A kapcsolódási kísérletek megismétlésének száma a kezdeti csatlakozás során. |Útmutatásért tekintse meg az alábbi megjegyzéseket. |
@@ -64,7 +64,7 @@ A StackExchange. Redis számos lehetőséget kínál. Ez a szakasz néhány gyak
   * Egyetlen ConnectionMultiplexer-példányt használjon az alkalmazáshoz. A LazyConnection használatával létrehozhat egyetlen, a kapcsolati tulajdonság által visszaadott példányt, ahogy az a [ConnectionMultiplexer osztály használatával a gyorsítótárhoz való kapcsolódással](cache-dotnet-how-to-use-azure-redis-cache.md#connect-to-the-cache)is látható.
   * Állítsa a `ConnectionMultiplexer.ClientName` tulajdonságot az alkalmazás-példány egyedi nevére diagnosztikai célokra.
   * Több `ConnectionMultiplexer` példány használata az egyéni munkaterhelésekhez.
-      * Ezt a modellt követheti, ha eltérő terhelést használ az alkalmazásban. Például:
+      * Ezt a modellt követheti, ha eltérő terhelést használ az alkalmazásban. Példa:
       * A nagyméretű kulcsok kezeléséhez egy multiplexer is tartozhat.
       * A kis kulcsok kezeléséhez egy multiplexer is tartozhat.
       * Megadhat különböző értékeket a kapcsolati időtúllépésekhez, és újrapróbálkozhat a logikával minden egyes használt ConnectionMultiplexer.

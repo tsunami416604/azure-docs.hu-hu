@@ -10,10 +10,10 @@ ms.devlang: dotnet
 ms.topic: conceptual
 ms.date: 07/08/2020
 ms.openlocfilehash: 8648347eb48081389cf360fa949b31bbd0b8c71e
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88936707"
 ---
 # <a name="upgrading-versions-of-the-azure-search-net-management-sdk"></a>A Azure Search .NET Management SDK verzióinak frissítése
@@ -49,10 +49,10 @@ Az 3,0-es verzió a magánhálózati végpontok védelmét az IP-tartományokhoz
 | API | Kategória| Részletek |
 |-----|--------|------------------|
 | [NetworkRuleSet](/rest/api/searchmanagement/services/createorupdate#networkruleset) | IP-tűzfal | A szolgáltatás-végpontokhoz való hozzáférés korlátozása az engedélyezett IP-címek listájára. Lásd: az [IP-tűzfal konfigurálása](service-configure-firewall.md) fogalmak és portál utasításokhoz. |
-| [Megosztott privát kapcsolati erőforrás](/rest/api/searchmanagement/sharedprivatelinkresources) | Private Link | Hozzon létre egy megosztott magánhálózati kapcsolati erőforrást, amelyet egy keresési szolgáltatás használni fog.  |
-| [Magánhálózati végpontok kapcsolatai](/rest/api/searchmanagement/privateendpointconnections) | Private Link | A keresési szolgáltatás kapcsolatainak létrehozása és kezelése privát végponton keresztül. Lásd: [privát végpont létrehozása](service-create-private-endpoint.md) fogalmakhoz és portálhoz – útmutatás.|
-| [Privát kapcsolat erőforrásai](/rest/api/searchmanagement/privatelinkresources/) | Private Link | Egy privát végponti kapcsolatban álló keresési szolgáltatás esetében az azonos virtuális hálózatban használt összes szolgáltatás listájának beolvasása. Ha a keresési megoldás olyan indexelő tartalmaz, amelyek Azure-adatforrásokból (Azure Storage, Cosmos db, Azure SQL) származnak, vagy Cognitive Services vagy Key Vault használ, akkor az összes erőforrásnak rendelkeznie kell végpontokkal a virtuális hálózatban, és az API-nak egy listát kell visszaadnia. |
-| [PublicNetworkAccess](/rest/api/searchmanagement/services/createorupdate#publicnetworkaccess)| Private Link | Ez egy tulajdonság a szolgáltatási kérelmek létrehozásához vagy frissítéséhez. Ha le van tiltva, a privát hivatkozás az egyetlen hozzáférési mód. |
+| [Megosztott privát kapcsolati erőforrás](/rest/api/searchmanagement/sharedprivatelinkresources) | Privát kapcsolat | Hozzon létre egy megosztott magánhálózati kapcsolati erőforrást, amelyet egy keresési szolgáltatás használni fog.  |
+| [Magánhálózati végpontok kapcsolatai](/rest/api/searchmanagement/privateendpointconnections) | Privát kapcsolat | A keresési szolgáltatás kapcsolatainak létrehozása és kezelése privát végponton keresztül. Lásd: [privát végpont létrehozása](service-create-private-endpoint.md) fogalmakhoz és portálhoz – útmutatás.|
+| [Privát kapcsolat erőforrásai](/rest/api/searchmanagement/privatelinkresources/) | Privát kapcsolat | Egy privát végponti kapcsolatban álló keresési szolgáltatás esetében az azonos virtuális hálózatban használt összes szolgáltatás listájának beolvasása. Ha a keresési megoldás olyan indexelő tartalmaz, amelyek Azure-adatforrásokból (Azure Storage, Cosmos db, Azure SQL) származnak, vagy Cognitive Services vagy Key Vault használ, akkor az összes erőforrásnak rendelkeznie kell végpontokkal a virtuális hálózatban, és az API-nak egy listát kell visszaadnia. |
+| [PublicNetworkAccess](/rest/api/searchmanagement/services/createorupdate#publicnetworkaccess)| Privát kapcsolat | Ez egy tulajdonság a szolgáltatási kérelmek létrehozásához vagy frissítéséhez. Ha le van tiltva, a privát hivatkozás az egyetlen hozzáférési mód. |
 
 ### <a name="breaking-changes"></a>Kompatibilitástörő változások
 

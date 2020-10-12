@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 12/05/2016
 ms.custom: devx-track-js
 ms.openlocfilehash: 86f5f4faaaf1c2177e3dcbb8f357bca54554aacd
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91318636"
 ---
 # <a name="manage-azure-data-lake-analytics-using-azure-sdk-for-nodejs"></a>Az Azure Data Lake Analytics kezelése az Azure SDK for Node.js használatával
@@ -26,7 +26,7 @@ Az alábbi verziók támogatottak:
 * **Katalógushoz tartozó REST API-verzió: 2015. 10. 01. előzetes verzió**
 * **Feladathoz tartozó REST API-verzió: 2016. 03. 20. előzetes verzió**
 
-## <a name="features"></a>Funkciók
+## <a name="features"></a>Szolgáltatások
 * Fiókkezelés: létrehozás, lekérés, felsorolás, frissítés és törlés.
 * Feladatkezelés: küldés, lekérés, listázás és visszavonás.
 * Katalóguskezelés: lekérés és listázás.

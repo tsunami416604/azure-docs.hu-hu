@@ -8,15 +8,15 @@ ms.topic: conceptual
 ms.date: 06/18/2020
 ms.author: allensu
 ms.openlocfilehash: 7456402605328592d4f5677767bcd985941173ec
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88639834"
 ---
-# <a name="what-is-azure-private-endpoint"></a>Mi az az Azure Private Endpoint?
+# <a name="what-is-azure-private-endpoint"></a>Mi az az Azure privát végpont?
 
-Az Azure privát végpont egy hálózati adapter, amely privát és biztonságos módon csatlakoztatja Önt egy Azure privát kapcsolat által működtetett szolgáltatáshoz. A privát végpont egy magánhálózati IP-címet használ a VNet, és hatékonyan hozza a szolgáltatást a VNet. A szolgáltatás olyan Azure-szolgáltatás lehet, mint például az Azure Storage, az Azure Cosmos DB, az SQL vagy a saját [privát kapcsolati szolgáltatása](private-link-service-overview.md).
+Az Azure privát végpont egy hálózati adapter, amely privát és biztonságos módon csatlakoztatja Önt egy Azure privát kapcsolat által működtetett szolgáltatáshoz. A privát végpont a virtuális hálózat egyik magánhálózati IP-címét használja, így lényegében bekapcsolja a szolgáltatást a virtuális hálózatba. A szolgáltatás olyan Azure-szolgáltatás lehet, mint például az Azure Storage, az Azure Cosmos DB, az SQL vagy a saját [privát kapcsolati szolgáltatása](private-link-service-overview.md).
   
 ## <a name="private-endpoint-properties"></a>Magánhálózati végpont tulajdonságai 
  A privát végpontok a következő tulajdonságokat határozzák meg: 
@@ -24,7 +24,7 @@ Az Azure privát végpont egy hálózati adapter, amely privát és biztonságos
 
 |Tulajdonság  |Leírás |
 |---------|---------|
-|Név    |    Az erőforráscsoporthoz tartozó egyedi név.      |
+|Name (Név)    |    Az erőforráscsoporthoz tartozó egyedi név.      |
 |Alhálózat    |  A magánhálózati IP-címek virtuális hálózatról való üzembe helyezésére és lefoglalására szolgáló alhálózat. Az alhálózatra vonatkozó követelményekért tekintse meg a jelen cikk korlátozások című szakaszát.         |
 |Magánhálózati kapcsolat erőforrása    |   A privát kapcsolati erőforrás az erőforrás-AZONOSÍTÓval vagy az aliassal való kapcsolódáshoz az elérhető típusok listájából. Az erőforrásnak elküldett összes forgalomhoz egyedi hálózati azonosító jön létre.       |
 |Cél alerőforrás   |      A kapcsolódáshoz használandó alerőforrás. Minden egyes privát kapcsolati erőforrástípus különböző beállításokkal választható ki a megfelelő beállítás alapján.    |
@@ -132,7 +132,7 @@ A következő táblázat tartalmazza a privát végpontok használatakor felisme
 |A hálózati biztonsági csoport (NSG) szabályai és a felhasználó által megadott útvonalak nem vonatkoznak a privát végpontra    |A NSG nem támogatott a privát végpontokon. Míg a privát végpontot tartalmazó alhálózatokhoz NSG társítható, a szabályok nem lesznek érvényesek a privát végpont által feldolgozott forgalomra. A privát végpontok alhálózaton való üzembe helyezéséhez [le kell tiltani a hálózati házirendek kényszerítését](disable-private-endpoint-network-policy.md) . A NSG továbbra is érvényben van az ugyanazon alhálózaton futó egyéb munkaterheléseken. Az összes ügyfél-alhálózat útvonala egy/32 előtagot használ, és az alapértelmezett útválasztási viselkedés megváltoztatásához hasonló UDR van szükség.  | A forgalmat a forrás-ügyfeleken a kimenő forgalomra vonatkozó NSG szabályok használatával szabályozhatja. Egyéni útvonalak üzembe helyezése a/32 előtaggal a privát végponti útvonalak felülbírálásához. A kimenő kapcsolatok NSG és figyelési információi továbbra is támogatottak, és használhatók        |
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - [Privát végpont létrehozása SQL Database a portál használatával ](create-private-endpoint-portal.md)
 - [Privát végpont létrehozása SQL Databasehoz a PowerShell használatával ](create-private-endpoint-powershell.md)
 - [Privát végpont létrehozása SQL Databasehoz a parancssori felület használatával ](create-private-endpoint-cli.md)

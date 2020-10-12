@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.openlocfilehash: 148310419ad4f760219003514dbc078b7c675be6
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91538787"
 ---
 # <a name="data-import-overview---azure-cognitive-search"></a>Az adatimportálás áttekintése – Azure Cognitive Search
@@ -98,7 +98,7 @@ A dokumentum feltöltésének előzetes ellenőrzésének gyors módja a **Searc
 > [!TIP]
 > Számos [Azure Cognitive Search code-minta](https://github.com/Azure-Samples/?utf8=%E2%9C%93&query=search) tartalmaz beágyazott vagy könnyen elérhető adatkészleteket, így könnyen megkezdheti az első lépéseket. A portál emellett egy mintaindexelőt és egy adatforrást is kínál, amely egy kisméretű ingatlan-adatkészletet tartalmaz („realestate-us-sample” néven). Amikor az előre konfigurált indexelő a minta adatforráson futtatja, a rendszer létrehoz egy indexet, és betölti azokat dokumentumokkal, amelyek ezután a keresési Explorerben vagy az Ön által írt kóddal kérhetők le.
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 + [Az indexelő áttekintése](search-indexer-overview.md)
 + [Útmutató a Portal használatához: indexek létrehozása, betöltése és lekérdezése](search-get-started-portal.md)

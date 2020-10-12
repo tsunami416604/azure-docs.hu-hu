@@ -11,13 +11,13 @@ ms.topic: conceptual
 ms.date: 05/20/2020
 ms.author: v-demjoh
 ms.openlocfilehash: bb904482f3cb5900b724803816269f1b10ab3720
-ms.sourcegitcommit: 6fd8dbeee587fd7633571dfea46424f3c7e65169
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/21/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83727877"
 ---
-# <a name="improve-custom-speech-accuracy"></a>Custom Speech pontosság javítása
+# <a name="improve-custom-speech-accuracy"></a>A Custom Speech pontosságának javítása
 
 Ebből a cikkből megtudhatja, hogyan javíthatja az egyéni modell minőségét hang-, emberi címkével ellátott átiratok és kapcsolódó szövegek hozzáadásával.
 
@@ -38,7 +38,7 @@ A különböző forgatókönyvek eltérő minőségi eredményeket hoznak létre
 |----------|----------------------------|------------------|-----------------|---------------------|
 | Call Center | Közepes (< 30% WER) | Alacsony, kivéve, ha mások a háttérben beszélgetnek | Magas lehet. A Call Centers lehet zajos, az átfedésben lévő hangszórók pedig megzavarják a modellt | Közepes. A termékek és a személyek nevei okozhatják ezeket a hibákat |
 | Hangvezérelt asszisztens | Magas (lehet < 10% WER) | Alacsony | Alacsony | Közepes, a dalok címei, terméknév vagy helyei miatt |
-| Diktálás | Magas (lehet < 10% WER) | Alacsony | Alacsony | Magasság |
+| Diktálás | Magas (lehet < 10% WER) | Alacsony | Alacsony | Magas |
 | Videós kódolt feliratok | A videó típusától függ (lehet < 50% WER) | Alacsony | Zene, zajok, mikrofon minősége miatt magas lehet | A szakzsargon okozhatják ezeket a hibákat |
 
 A WER összetevőinek (a Beszúrás, a törlés és a behelyettesítési hibák száma) meghatározása segít meghatározni, hogy milyen típusú adattípust kell hozzáadni a modell tökéletesítéséhez. Az alapmodellek minőségének megtekintéséhez használja a [Custom Speech portált](https://speech.microsoft.com/customspeech) . A portál a WER minőségi díjszabásában összevont beszúrási, helyettesítési és törlési hibák arányát jelenti.
@@ -87,7 +87,7 @@ A következő táblázat a hangfelismerési forgatókönyveket mutatja be, és f
 | Diktálás               | írásos bevitel, például azonnali üzenetek vagy e-mailek | a fentiekhez hasonlóan | a fentiekhez hasonlóan |
 | Videós kódolt feliratok | TV show-szkriptek, filmek, marketing-tartalmak, videó-összefoglalók | videók pontos átiratai | a fentiekhez hasonlóan |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [A modell betanítása](how-to-custom-speech-train-model.md)
 

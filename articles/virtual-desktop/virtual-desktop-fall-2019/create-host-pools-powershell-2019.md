@@ -7,10 +7,10 @@ ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: c035a7fbafe9b3a42fbd16e3f8377014010ddd49
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88003541"
 ---
 # <a name="create-a-host-pool-in-windows-virtual-desktop-classic-with-powershell"></a>Gazdagép létrehozása a Windows Virtual Desktopban (klasszikus) a PowerShell-lel
@@ -108,7 +108,7 @@ A Windows rendszerű virtuális asztali ügynökök regisztrálásához tegye a 
 >[!IMPORTANT]
 >A Windows rendszerű virtuális asztali környezet biztonságossá tételéhez az Azure-ban javasoljuk, hogy ne nyissa meg a 3389-es bejövő portot a virtuális gépeken. A Windows rendszerű virtuális asztal nem igényel olyan nyitott bejövő portot 3389, amellyel a felhasználók hozzáférhetnek a gazdagép-készlet virtuális gépei számára. Ha hibaelhárítási célból meg kell nyitnia a 3389-as portot, javasoljuk, hogy használja a virtuális gépek igény szerinti [elérését](../../security-center/security-center-just-in-time.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy létrehozott egy gazdagépet, feltöltheti azt a RemoteApps szolgáltatással. Ha többet szeretne megtudni az alkalmazások kezeléséről a Windows Virtual Desktopban, tekintse meg az alkalmazáscsoport kezelése oktatóanyagot.
 

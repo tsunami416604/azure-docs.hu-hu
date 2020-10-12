@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 12/13/2019
 ms.custom: devx-track-python
 ms.openlocfilehash: f9b81a7263dc9a1bdae9fd881519ac734da2c6bc
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88642197"
 ---
 # <a name="azure-functions-python-developer-guide"></a>Azure Functions Python fejlesztői útmutató
@@ -471,7 +471,7 @@ Az alapszintű hitelesítési hitelesítő adatokat is használhatja a további 
 
 #### <a name="install-local-packages"></a>Helyi csomagok telepítése
 
-Ha a projekt nem nyilvánosan elérhető csomagokat használ az eszközeink számára, elérhetővé teheti őket az alkalmazásban, az \_ \_ app \_ \_ /. python_packages könyvtárba helyezve. A közzététel előtt futtassa a következő parancsot a függőségek helyi telepítéséhez:
+Ha a projekt a nem nyilvánosan elérhető csomagokat használja az eszközeink számára, elérhetővé teheti őket az alkalmazásban, az \_ \_ app \_ \_ /.python_packages könyvtárba helyezve. A közzététel előtt futtassa a következő parancsot a függőségek helyi telepítéséhez:
 
 ```command
 pip install  --target="<PROJECT_DIR>/.python_packages/lib/site-packages"  -r requirements.txt
@@ -696,7 +696,7 @@ A következő lista a gyakori problémákkal kapcsolatos hibaelhárítási útmu
 
 Az összes ismert probléma és szolgáltatás kérését a [GitHub-problémák](https://github.com/Azure/azure-functions-python-worker/issues) listája követheti nyomon. Ha probléma lép fel, és a GitHubon nem találja a problémát, nyisson meg egy új problémát, és adja meg a probléma részletes leírását.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információkat találhat az alábbi forrásokban:
 
