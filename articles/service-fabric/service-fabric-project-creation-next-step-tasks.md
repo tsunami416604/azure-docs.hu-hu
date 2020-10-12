@@ -4,17 +4,17 @@ description: Ismerje meg a Visual Studióban létrehozott alkalmazás-projektet.
 ms.topic: conceptual
 ms.date: 12/07/2017
 ms.openlocfilehash: e8fc105657bda6114851f4819be4658926ad621c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75349412"
 ---
 # <a name="your-service-fabric-application-and-next-steps"></a>Az Service Fabric alkalmazás és a következő lépések
 Az Azure Service Fabric-alkalmazás létrejött. Ez a cikk néhány olyan oktatóanyagot ismertet, amely kipróbálható, a projekt sminkje, néhány további információ, amely érdekli, és lehetséges a következő lépések.
 
 ## <a name="get-started-with-tutorials-walk-throughs-and-samples"></a>Ismerkedés az oktatóanyagokkal, a bemutatókkal és a mintákkal
-Készen áll a kezdésre?  
+Készen áll?  
 
 A .NET-alkalmazás oktatóanyagának használata. Megtudhatja, hogyan [hozhat létre egy alkalmazást](service-fabric-tutorial-create-dotnet-app.md) ASP.net Core előtér-és állapot-visszaállítási szolgáltatással, hogyan [helyezheti üzembe az alkalmazást](service-fabric-tutorial-deploy-app-to-party-cluster.md) egy fürtön, hogyan [konfigurálhatja a CI/CD](service-fabric-tutorial-deploy-app-with-cicd-vsts.md)-t, és [beállíthatja a figyelést és a diagnosztikát](service-fabric-tutorial-monitoring-aspnet.md).
 

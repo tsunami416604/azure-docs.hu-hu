@@ -9,10 +9,10 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: how-to
 ms.date: 09/02/2020
 ms.openlocfilehash: 9db013d13098fc6aa4552459a2189e0ad8fc3ea6
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89378797"
 ---
 # <a name="build-the-landing-page-for-your-transactable-saas-offer-in-the-commercial-marketplace"></a>A kereskedelmi piactéren felépítheti a transacter SaaS-ajánlat kezdőlapját
@@ -84,7 +84,7 @@ Amikor a vevőt elküldjük a kezdőlapra, a rendszer egy tokent ad hozzá az UR
 > [!NOTE]
 > A legtöbb esetben célszerű ezt a hívást egy második, egybérlős alkalmazásból elkészíteni. Lásd: [két Azure ad-alkalmazás használata a](#use-two-azure-ad-apps-to-improve-security-in-production) jelen cikk korábbi részében a biztonság javítása érdekében.
 
-### <a name="request-an-access-token"></a>Hozzáférési jogkivonat igénylése
+### <a name="request-an-access-token"></a>Hozzáférési jogkivonat kérése
 
 Az alkalmazás SaaS-teljesítési API-kkal történő hitelesítéséhez hozzáférési jogkivonat szükséges, amely az Azure AD OAuth-végpont meghívásával hozható létre. Lásd: [a közzétevő engedélyezési jogkivonatának beszerzése](./partner-center-portal/pc-saas-registration.md#how-to-get-the-publishers-authorization-token).
 

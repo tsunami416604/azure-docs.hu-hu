@@ -15,15 +15,15 @@ ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: 89adc283fa9d6edc49536cb9459a479710c94435
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85921165"
 ---
 # <a name="using-azure-cdn-with-cors"></a>Azure CDN használata a CORS
 ## <a name="what-is-cors"></a>Mi az a CORS?
-A CORS (több eredetű erőforrás-megosztás) egy olyan HTTP-szolgáltatás, amely lehetővé teszi egy tartományon belül futó webalkalmazások elérését egy másik tartomány erőforrásaihoz. A helyek közötti parancsfájlok elleni támadások lehetőségének csökkentése érdekében minden modern webböngészővel [azonos eredetű](https://www.w3.org/Security/wiki/Same_Origin_Policy)biztonsági korlátozást valósíthat meg.  Ez megakadályozza, hogy egy weblap más tartományba tartozó API-kat hívjon fel.  A CORS lehetővé teszi, hogy egy forrás (a forrás tartomány) egy másik forrásban lévő API-kat hívjon fel.
+A CORS (eltérő eredetű erőforrások megosztása) egy olyan HTTP-szolgáltatás, amely egy adott tartományban futó webalkalmazás számára teszi lehetővé, hogy hozzáférjen egy másik tartomány erőforrásaihoz. A helyek közötti parancsfájlok elleni támadások lehetőségének csökkentése érdekében minden modern webböngészővel [azonos eredetű](https://www.w3.org/Security/wiki/Same_Origin_Policy)biztonsági korlátozást valósíthat meg.  Ez megakadályozza, hogy egy weblap más tartományba tartozó API-kat hívjon fel.  A CORS lehetővé teszi, hogy egy forrás (a forrás tartomány) egy másik forrásban lévő API-kat hívjon fel.
 
 ## <a name="how-it-works"></a>Működés
 Kétféle CORS-kérés, *egyszerű kérelem* és *összetett kérelem van.*

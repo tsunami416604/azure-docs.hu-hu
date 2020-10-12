@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
 ms.openlocfilehash: a394fee7178b2e3e167c8bd905ab175b25d1d813
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75397468"
 ---
 # <a name="work-with-strings-in-azure-monitor-log-queries"></a>Karakterláncok használata Azure Monitor naplózási lekérdezésekben
@@ -46,39 +46,39 @@ print @"C:\backslash\not\escaped\with @ prefix"
 
 ## <a name="string-comparisons"></a>Karakterlánc-összehasonlítások
 
-Operátor       |Leírás                         |Kis-és nagybetűk megkülönböztetése|Példa (hozamok `true` )
+Operátor       |Leírás                         |Case-Sensitive|Példa (hozamok `true` )
 ---------------|------------------------------------|--------------|-----------------------
-`==`           |Egyenlő                              |Yes           |`"aBc" == "aBc"`
-`!=`           |Nem egyenlő                          |Yes           |`"abc" != "ABC"`
-`=~`           |Egyenlő                              |No            |`"abc" =~ "ABC"`
-`!~`           |Nem egyenlő                          |No            |`"aBc" !~ "xyz"`
-`has`          |A jobb oldali teljes kifejezés a bal oldali oldalon |No|`"North America" has "america"`
-`!has`         |A jobb oldali nem teljes kifejezés a bal oldali oldalon       |No            |`"North America" !has "amer"` 
-`has_cs`       |A jobb oldali teljes kifejezés a bal oldali oldalon |Yes|`"North America" has_cs "America"`
-`!has_cs`      |A jobb oldali nem teljes kifejezés a bal oldali oldalon       |Yes            |`"North America" !has_cs "amer"` 
-`hasprefix`    |A jobb oldali egy kifejezés-előtag a bal oldali oldalon         |No            |`"North America" hasprefix "ame"`
-`!hasprefix`   |A jobb oldali nem egy kifejezés előtagja a bal oldali oldalon     |No            |`"North America" !hasprefix "mer"` 
-`hasprefix_cs`    |A jobb oldali egy kifejezés-előtag a bal oldali oldalon         |Yes            |`"North America" hasprefix_cs "Ame"`
-`!hasprefix_cs`   |A jobb oldali nem egy kifejezés előtagja a bal oldali oldalon     |Yes            |`"North America" !hasprefix_cs "CA"` 
-`hassuffix`    |A jobb oldali egy kifejezés utótagja a bal oldali oldalon         |No            |`"North America" hassuffix "ica"`
-`!hassuffix`   |A jobb oldali nem egy kifejezés utótagja a bal oldali oldalon     |No            |`"North America" !hassuffix "americ"`
-`hassuffix_cs`    |A jobb oldali egy kifejezés utótagja a bal oldali oldalon         |Yes            |`"North America" hassuffix_cs "ica"`
-`!hassuffix_cs`   |A jobb oldali nem egy kifejezés utótagja a bal oldali oldalon     |Yes            |`"North America" !hassuffix_cs "icA"`
-`contains`     |A jobb oldali a bal oldali alsorozatként jelenik meg.  |No            |`"FabriKam" contains "BRik"`
-`!contains`    |A jobb oldali nem jelenik meg a bal oldali oldalon           |No            |`"Fabrikam" !contains "xyz"`
-`contains_cs`   |A jobb oldali a bal oldali alsorozatként jelenik meg.  |Yes           |`"FabriKam" contains_cs "Kam"`
-`!contains_cs`  |A jobb oldali nem jelenik meg a bal oldali oldalon           |Yes           |`"Fabrikam" !contains_cs "Kam"`
-`startswith`   |A jobb oldali a bal oldali első alsorozata|No            |`"Fabrikam" startswith "fab"`
-`!startswith`  |A jobb oldali nem a bal oldali rész kezdeti alsorozata|No        |`"Fabrikam" !startswith "kam"`
-`startswith_cs`   |A jobb oldali a bal oldali első alsorozata|Yes            |`"Fabrikam" startswith_cs "Fab"`
-`!startswith_cs`  |A jobb oldali nem a bal oldali rész kezdeti alsorozata|Yes        |`"Fabrikam" !startswith_cs "fab"`
-`endswith`     |A jobb oldali a bal oldali záró alsorozata|No             |`"Fabrikam" endswith "Kam"`
-`!endswith`    |A jobb oldali nem a bal oldali záró alsorozata|No         |`"Fabrikam" !endswith "brik"`
-`endswith_cs`     |A jobb oldali a bal oldali záró alsorozata|Yes             |`"Fabrikam" endswith "Kam"`
-`!endswith_cs`    |A jobb oldali nem a bal oldali záró alsorozata|Yes         |`"Fabrikam" !endswith "brik"`
-`matches regex`|a bal oldali oldalon a jobb oldali egyezés szerepel        |Yes           |`"Fabrikam" matches regex "b.*k"`
-`in`           |Az egyik elemmel egyenlő       |Yes           |`"abc" in ("123", "345", "abc")`
-`!in`          |Nem egyenlő az elemek bármelyikével   |Yes           |`"bca" !in ("123", "345", "abc")`
+`==`           |Egyenlő                              |Igen           |`"aBc" == "aBc"`
+`!=`           |Nem egyenlő                          |Igen           |`"abc" != "ABC"`
+`=~`           |Egyenlő                              |Nem            |`"abc" =~ "ABC"`
+`!~`           |Nem egyenlő                          |Nem            |`"aBc" !~ "xyz"`
+`has`          |A jobb oldali teljes kifejezés a bal oldali oldalon |Nem|`"North America" has "america"`
+`!has`         |A jobb oldali nem teljes kifejezés a bal oldali oldalon       |Nem            |`"North America" !has "amer"` 
+`has_cs`       |A jobb oldali teljes kifejezés a bal oldali oldalon |Igen|`"North America" has_cs "America"`
+`!has_cs`      |A jobb oldali nem teljes kifejezés a bal oldali oldalon       |Igen            |`"North America" !has_cs "amer"` 
+`hasprefix`    |A jobb oldali egy kifejezés-előtag a bal oldali oldalon         |Nem            |`"North America" hasprefix "ame"`
+`!hasprefix`   |A jobb oldali nem egy kifejezés előtagja a bal oldali oldalon     |Nem            |`"North America" !hasprefix "mer"` 
+`hasprefix_cs`    |A jobb oldali egy kifejezés-előtag a bal oldali oldalon         |Igen            |`"North America" hasprefix_cs "Ame"`
+`!hasprefix_cs`   |A jobb oldali nem egy kifejezés előtagja a bal oldali oldalon     |Igen            |`"North America" !hasprefix_cs "CA"` 
+`hassuffix`    |A jobb oldali egy kifejezés utótagja a bal oldali oldalon         |Nem            |`"North America" hassuffix "ica"`
+`!hassuffix`   |A jobb oldali nem egy kifejezés utótagja a bal oldali oldalon     |Nem            |`"North America" !hassuffix "americ"`
+`hassuffix_cs`    |A jobb oldali egy kifejezés utótagja a bal oldali oldalon         |Igen            |`"North America" hassuffix_cs "ica"`
+`!hassuffix_cs`   |A jobb oldali nem egy kifejezés utótagja a bal oldali oldalon     |Igen            |`"North America" !hassuffix_cs "icA"`
+`contains`     |A jobb oldali a bal oldali alsorozatként jelenik meg.  |Nem            |`"FabriKam" contains "BRik"`
+`!contains`    |A jobb oldali nem jelenik meg a bal oldali oldalon           |Nem            |`"Fabrikam" !contains "xyz"`
+`contains_cs`   |A jobb oldali a bal oldali alsorozatként jelenik meg.  |Igen           |`"FabriKam" contains_cs "Kam"`
+`!contains_cs`  |A jobb oldali nem jelenik meg a bal oldali oldalon           |Igen           |`"Fabrikam" !contains_cs "Kam"`
+`startswith`   |A jobb oldali a bal oldali első alsorozata|Nem            |`"Fabrikam" startswith "fab"`
+`!startswith`  |A jobb oldali nem a bal oldali rész kezdeti alsorozata|Nem        |`"Fabrikam" !startswith "kam"`
+`startswith_cs`   |A jobb oldali a bal oldali első alsorozata|Igen            |`"Fabrikam" startswith_cs "Fab"`
+`!startswith_cs`  |A jobb oldali nem a bal oldali rész kezdeti alsorozata|Igen        |`"Fabrikam" !startswith_cs "fab"`
+`endswith`     |A jobb oldali a bal oldali záró alsorozata|Nem             |`"Fabrikam" endswith "Kam"`
+`!endswith`    |A jobb oldali nem a bal oldali záró alsorozata|Nem         |`"Fabrikam" !endswith "brik"`
+`endswith_cs`     |A jobb oldali a bal oldali záró alsorozata|Igen             |`"Fabrikam" endswith "Kam"`
+`!endswith_cs`    |A jobb oldali nem a bal oldali záró alsorozata|Igen         |`"Fabrikam" !endswith "brik"`
+`matches regex`|a bal oldali oldalon a jobb oldali egyezés szerepel        |Igen           |`"Fabrikam" matches regex "b.*k"`
+`in`           |Az egyik elemmel egyenlő       |Igen           |`"abc" in ("123", "345", "abc")`
+`!in`          |Nem egyenlő az elemek bármelyikével   |Igen           |`"bca" !in ("123", "345", "abc")`
 
 
 ## <a name="countof"></a>countof
@@ -91,8 +91,8 @@ countof(text, search [, kind])
 ```
 
 ### <a name="arguments"></a>Argumentumok
-- `text`– A bemeneti sztring 
-- `search`– Egyszerű karakterlánc vagy reguláris kifejezés, amely a szövegen belüli egyezést adja meg.
+- `text` – A bemeneti sztring 
+- `search` – Egyszerű karakterlánc vagy reguláris kifejezés, amely a szövegen belüli egyezést adja meg.
 - `kind` - _normál_  |  _regex_ (alapértelmezett: normál).
 
 ### <a name="returns"></a>Válaszok
@@ -132,10 +132,10 @@ extract(regex, captureGroup, text [, typeLiteral])
 
 ### <a name="arguments"></a>Argumentumok
 
-- `regex`– Reguláris kifejezés.
-- `captureGroup`– A kinyerni kívánt rögzítési csoportot jelző pozitív egész konstans. 0 a teljes egyezés esetében 1 a reguláris kifejezésben szereplő első "(" zárójel ")" értékkel egyeztetve, a későbbi zárójelek esetében pedig 2 vagy több.
-- `text`– A keresendő karakterlánc.
-- `typeLiteral`-Egy nem kötelező típusú literál (például typeof (Long)). Ha meg van adni, a kibontott alkarakterlánc erre a típusra lesz konvertálva.
+- `regex` – Reguláris kifejezés.
+- `captureGroup` – A kinyerni kívánt rögzítési csoportot jelző pozitív egész konstans. 0 a teljes egyezés esetében 1 a reguláris kifejezésben szereplő első "(" zárójel ")" értékkel egyeztetve, a későbbi zárójelek esetében pedig 2 vagy több.
+- `text` – A keresendő karakterlánc.
+- `typeLiteral` -Egy nem kötelező típusú literál (például typeof (Long)). Ha meg van adni, a kibontott alkarakterlánc erre a típusra lesz konvertálva.
 
 ### <a name="returns"></a>Válaszok
 Az alkarakterlánc egyeztetve lett a jelzett rögzítési csoport captureGroup, és igény szerint typeLiteral konvertálható.
@@ -239,9 +239,9 @@ replace(regex, rewrite, input_text)
 
 ### <a name="arguments"></a>Argumentumok
 
-- `regex`– Az egyeztetendő reguláris kifejezés. Tartalmazhat rögzítési csoportokat a (z) "(zárójelek") ".
-- `rewrite`– A helyettesítési regex a megfelelő regexben való egyezéshez. A \ 0 paranccsal hivatkozhat a teljes egyezésre, \ 1 az első rögzítési csoporthoz, \ 2 és így tovább a következő rögzítési csoportokhoz.
-- `input_text`– A keresendő bemeneti sztring.
+- `regex` – Az egyeztetendő reguláris kifejezés. Tartalmazhat rögzítési csoportokat a (z) "(zárójelek") ".
+- `rewrite` – A helyettesítési regex a megfelelő regexben való egyezéshez. A \ 0 paranccsal hivatkozhat a teljes egyezésre, \ 1 az első rögzítési csoporthoz, \ 2 és így tovább a következő rögzítési csoportokhoz.
+- `input_text` – A keresendő bemeneti sztring.
 
 ### <a name="returns"></a>Válaszok
 A regex összes egyezésének az újraírás értékelését követő szövege. A egyezések nem fedik át egymást.
@@ -273,9 +273,9 @@ split(source, delimiter [, requestedIndex])
 
 ### <a name="arguments"></a>Argumentumok
 
-- `source`– A megosztva kívánt karakterlánc a megadott elválasztó karakternek megfelelően.
-- `delimiter`– A forrás sztring felosztásához használni kívánt elválasztó karakter.
-- `requestedIndex`– Nem kötelező nulla alapú index. Ha meg van jelölve, a visszaadott karakterlánc-tömb csak az adott elem (ha létezik) marad.
+- `source` – A megosztva kívánt karakterlánc a megadott elválasztó karakternek megfelelően.
+- `delimiter` – A forrás sztring felosztásához használni kívánt elválasztó karakter.
+- `requestedIndex` – Nem kötelező nulla alapú index. Ha meg van jelölve, a visszaadott karakterlánc-tömb csak az adott elem (ha létezik) marad.
 
 
 ### <a name="examples"></a>Példák
@@ -330,9 +330,9 @@ substring(source, startingIndex [, length])
 
 ### <a name="arguments"></a>Argumentumok
 
-- `source`– Az a forrás sztring, amelyet a rendszer az alsztringből fog venni.
-- `startingIndex`– A kért alsztring nulla alapú kiindulási karakterének pozíciója.
-- `length`– Opcionális paraméter, amely a visszaadott alsztring kért hosszának megadására használható.
+- `source` – Az a forrás sztring, amelyet a rendszer az alsztringből fog venni.
+- `startingIndex` – A kért alsztring nulla alapú kiindulási karakterének pozíciója.
+- `length` – Opcionális paraméter, amely a visszaadott alsztring kért hosszának megadására használható.
 
 ### <a name="examples"></a>Példák
 ```Kusto

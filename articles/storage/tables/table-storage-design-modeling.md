@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 04/23/2018
 ms.subservice: tables
 ms.openlocfilehash: 3023b478ef7a4aaf6d9239e997bdf63282b56210
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/17/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88271192"
 ---
 # <a name="modeling-relationships"></a>Kapcsolatok modellezése
@@ -123,7 +123,7 @@ A két konkrét osztály példányait megtarthatja a Table service egyetlen szem
 Ha többet szeretne megtudni arról, hogyan használható több entitás típusa ugyanabban a táblában az ügyfél kódjában, tekintse meg az útmutató későbbi, heterogén entitások típusának használata című szakaszát. Ez példákat tartalmaz arra, hogyan ismerhető fel az entitás típusa az ügyfél kódjában.  
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Táblatervezési minták](table-storage-design-patterns.md)
 - [Tervezés lekérdezéshez](table-storage-design-for-query.md)

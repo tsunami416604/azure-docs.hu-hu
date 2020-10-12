@@ -19,10 +19,10 @@ author: billmath
 ms.custom: ''
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 13d56ec321cd257412c2b0abbe0be655c6cb4dbf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85360095"
 ---
 # <a name="manage-ad-fs-trust-with-azure-ad-using-azure-ad-connect"></a>AD FS-megbízhatóság Azure AD általi kezelése az Azure AD Connect használatával
@@ -39,7 +39,7 @@ A Azure AD Connect felügyelheti a helyszíni Active Directory összevonási szo
 
 A Azure AD Connect **csak** az Azure ad-megbízhatósághoz kapcsolódó beállításokat kezeli. A Azure AD Connect nem módosítja a többi függő entitás megbízhatóságának beállításait AD FSban. A következő táblázat a Azure AD Connect által vezérelt beállításokat tartalmazza.
 
-| Beállítás | Description |
+| Beállítás | Leírás |
 | :--- | :--- |
 | Jogkivonat-aláíró tanúsítvány | Azure AD Connect segítségével alaphelyzetbe állíthatja és újból létrehozhatja a megbízhatóságot az Azure AD-vel. Azure AD Connect a jogkivonat-aláíró tanúsítványok egyszeri azonnali átváltását AD FS és frissíti az Azure AD-tartomány összevonási beállításait.|
 | Jogkivonat-aláírási algoritmus | A Microsoft az SHA-256 használatát javasolja jogkivonat-aláírási algoritmusként. A Azure AD Connect képes megállapítani, hogy a jogkivonat-aláíró algoritmus az SHA-256-nél kevésbé biztonságos értékre van-e beállítva. A következő lehetséges konfigurációs művelet során frissíti a beállítást az SHA-256 értékre. Az új jogkivonat-aláíró tanúsítvány használatához frissíteni kell a függő entitás megbízhatóságát. |
@@ -56,15 +56,15 @@ Az Azure AD-csatlakozás nem frissíti az Azure AD-megbízhatóság összes beá
 
 | Végrehajtási folyamat | Érintett beállítások |
 | :--- | :--- |
-| Első lépés telepítése (expressz) | None |
+| Első lépés telepítése (expressz) | Nincsenek |
 | Első lépés telepítése (új AD FS Farm) | Létrejön egy új AD FS Farm, és az Azure AD-vel való megbízhatósági kapcsolat teljesen létre lett hozva. |
 | Első lépés telepítése (meglévő AD FS Farm, meglévő Azure AD-beli megbízhatóság) | Azure AD-megbízhatósági azonosító, kiállítási átalakítási szabályok, Azure AD-végpontok, alternatív azonosító (ha szükséges), automatikus metaadatok frissítése |
 | Azure AD-megbízhatóság alaphelyzetbe állítása | Jogkivonat-aláíró tanúsítvány, jogkivonat-aláírási algoritmus, Azure AD megbízhatósági azonosító, kiállítási átalakítási szabályok, Azure AD-végpontok, alternatív azonosító (ha szükséges), automatikus metaadatok frissítése |
-| Összevonási kiszolgáló hozzáadása | None |
-| WAP-kiszolgáló hozzáadása | None |
+| Összevonási kiszolgáló hozzáadása | Nincsenek |
+| WAP-kiszolgáló hozzáadása | Nincsenek |
 | Eszközbeállítások | Kiállítási átalakítási szabályok, IWA az eszközök regisztrálásához |
 | Összevont tartomány hozzáadása | Ha a tartomány első alkalommal lett hozzáadva, azaz a beállítás az egytartományos összevonás és a többtartományos összevonás között változik – Azure AD Connect újra létrehozza a bizalmi kapcsolatot. Ha az Azure AD-val való megbízhatóság már konfigurálva van több tartományhoz, a rendszer csak a kiállítási átalakítási szabályokat módosítja |
-| TLS frissítése | None |
+| TLS frissítése | Nincsenek |
 
 Minden olyan művelet során, amelyben minden beállítás módosul, Azure AD Connect biztonsági másolatot készít az aktuális megbízhatósági beállításokról a **%ProgramData%\AADConnect\ADFS** címen.
 
@@ -77,7 +77,7 @@ Minden olyan művelet során, amelyben minden beállítás módosul, Azure AD Co
 
 Azure AD Connect biztosítja, hogy az Azure AD-megbízhatóság mindig a javasolt jogcím-szabályok megfelelő készletével legyen konfigurálva. A Microsoft az Azure AD-kapcsolat használatát javasolja az Azure AD-megbízhatóság kezeléséhez. Ez a szakasz felsorolja a kiállítási átalakítási szabályokat és azok leírását.
 
-| Szabály neve | Description |
+| Szabály neve | Leírás |
 | --- | --- |
 | UPN-probléma | Ez a szabály a userPrincipalName értékét kérdezi le a userPrincipalName szinkronizálási beállításaiban konfigurált attribútum alapján.|
 | Egyéni ImmutableId-jogcím ObjectGUID és msdsconsistencyguid lekérdezése | Ez a szabály egy ideiglenes értéket helyez el a folyamatban a ObjectGUID és a msdsconsistencyguid értékhez, ha létezik |

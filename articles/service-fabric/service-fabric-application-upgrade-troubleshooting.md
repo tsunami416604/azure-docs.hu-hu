@@ -4,10 +4,10 @@ description: Ez a cikk a Service Fabric-alkalmazások frissítésével és megol
 ms.topic: conceptual
 ms.date: 2/23/2018
 ms.openlocfilehash: d462f2c2482e0fbb4d252967754a9675ed362674
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75377922"
 ---
 # <a name="troubleshoot-application-upgrades"></a>Alkalmazásfrissítések hibaelhárítása
@@ -200,7 +200,7 @@ A frissítés során azonban a D állapota Kifogástalan lehet, amíg a C nem me
 
 ### <a name="i-did-not-specify-a-health-policy-for-application-upgrade-but-the-upgrade-still-fails-for-some-time-outs-that-i-never-specified"></a>Nem határoztam meg az alkalmazás frissítésére vonatkozó állapotfigyelő szabályzatot, de a frissítés továbbra is meghiúsul egy olyan időtúllépés miatt, amely soha nem volt megadva
 
-Ha a frissítési kérelem nem ad meg állapot-szabályzatokat, azok az alkalmazás aktuális verziójának *ApplicationManifest.xml* származnak. Ha például az X alkalmazást az 1,0-es verzióról az 2,0-es verzióra frissíti, a rendszer az 1,0-as verzióban megadott Application Health-szabályzatokat használja. Ha a frissítéshez másik állapotházirend használata szükséges, akkor a szabályzatot az alkalmazás-frissítési API-hívás részeként kell megadni. Az API-hívás részeként megadott szabályzatok csak a frissítés során érvényesek. A frissítés befejezése után a rendszer a *ApplicationManifest.xmlban* megadott házirendeket használja.
+Ha a frissítési kérelem nem ad meg állapot-szabályzatokat, azok az alkalmazás aktuális verziójának *ApplicationManifest.xml* származnak. Ha például az X alkalmazást az 1,0-es verzióról az 2,0-es verzióra frissíti, a rendszer az 1,0-as verzióban megadott Application Health-szabályzatokat használja. Ha a frissítéshez másik állapotházirend használata szükséges, akkor a szabályzatot az alkalmazás-frissítési API-hívás részeként kell megadni. Az API-hívás részeként megadott szabályzatok csak a frissítés során érvényesek. A frissítés befejezése után a rendszer a *ApplicationManifest.xmlban * megadott házirendeket használja.
 
 ### <a name="incorrect-time-outs-are-specified"></a>Helytelen időtúllépés van megadva
 

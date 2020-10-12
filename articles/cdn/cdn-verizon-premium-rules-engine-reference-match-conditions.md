@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 05/26/2020
 ms.author: allensu
 ms.openlocfilehash: efd6e6a93cd4ca79e6c4b6de69f8514e2d71b252
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84323314"
 ---
 # <a name="azure-cdn-from-verizon-premium-rules-engine-match-conditions"></a>Azure CDN a Verizon Premium szabályainak motorjának egyeztetési feltételeiről
@@ -28,10 +28,10 @@ Az egyeztetési feltételt például a következőre használhatja:
 
 ## <a name="match-conditions"></a><a name="top"></a>Egyezési feltételek
 
-* [Mindig](#always)
+* [Always](#always) (Mindig)
 * [Eszköz](#device)
 * [Hely](#location)
-* [Forrás](#origin)
+* [Származási](#origin)
 * [Kérés](#request)
 * [URL-cím](#url)
 
@@ -43,7 +43,7 @@ Az egyeztetési feltételt például a következőre használhatja:
 
 Ezek a megfeleltetési feltételek a kérelmek azonosítására szolgálnak az ügyfél felhasználói ügynöke alapján.
 
-| Name       | Szerep                                                           |
+| Name (Név)       | Cél                                                           |
 |------------|-------------------------------------------------------------------|
 | Márkanév | Azonosítja a kérelmeket, hogy az eszköz márkanév megfelel-e: <br> **-** Megadott érték ([név literál](https://docs.vdms.com/cdn/Content/HRE/M/D-Brand-Name-Literal.htm)) <br> **-** Reguláris kifejezés ([brand name regex](https://docs.vdms.com/cdn/Content/HRE/M/D-Brand-Name-Regex.htm)) <br> **-** Adott minta ([márkanév helyettesítő karakter](https://docs.vdms.com/cdn/Content/HRE/M/D-Brand-Name-Wildcard.htm)) |
 | Eszköz operációs rendszere | Azonosítja a kérelmeket, hogy az eszköz operációs rendszere megfelel-e: <br> **-** Adott érték ([eszköz operációs rendszerének literálja](https://docs.vdms.com/cdn/Content/HRE/M/D-Device-OS-Literal.htm)) <br> **-** Reguláris kifejezés ([eszköz operációs rendszerének regexje](https://docs.vdms.com/cdn/Content/HRE/M/D-Device-OS-Regex.htm)) <br> **-** Adott minta ([eszköz operációs rendszer helyettesítője](https://docs.vdms.com/cdn/Content/HRE/M/D-Device-OS-Wildcard.htm)) |
@@ -77,7 +77,7 @@ Ezek a megfeleltetési feltételek a kérelmek azonosítására szolgálnak az �
 
 Ezek a megfeleltetési feltételek a kérelmek azonosítására szolgálnak a kérelmező helye alapján.
 
-| Name       | Szerep                                                           |
+| Name (Név)       | Cél                                                           |
 |------------|-------------------------------------------------------------------|
 | [AS szám](https://docs.vdms.com/cdn/Content/HRE/M/AS-Number.htm) | Az adott hálózatból származó kérelmeket azonosítja. |
 | Város neve | Azonosítja a kérelmeket attól, hogy olyan városból származnak-e, amelynek a neve megegyezik a következővel: <br> **-** Megadott érték ([város neve literál](https://docs.vdms.com/cdn/Content/HRE/M/City-Name-Literal.htm)) <br> **-** Reguláris kifejezés ([város neve regex](https://docs.vdms.com/cdn/Content/HRE/M/City-Name-Regex.htm)) |
@@ -96,11 +96,11 @@ Mindkét egyeztetési feltétel ugyanazokat a képességeket biztosítja. Javaso
 
 **[Vissza a tetejére](#top)**
 
-### <a name="origin"></a><a name="origin"></a>Forrás
+### <a name="origin"></a><a name="origin"></a>Származási
 
 Ezek a megfeleltetési feltételek olyan kérelmek azonosítására szolgálnak, amelyek a CDN-tárolóra vagy egy ügyfél-forrás kiszolgálóra mutatnak.
 
-| Name       | Szerep                                                           |
+| Name (Név)       | Cél                                                           |
 |------------|-------------------------------------------------------------------|
 | [CDN-forrás](https://docs.vdms.com/cdn/Content/HRE/M/CDN-Origin.htm) | A CDN-tárolón tárolt tartalomra vonatkozó kérelmeket azonosítja. |
 | [Ügyfél forrása](https://docs.vdms.com/cdn/Content/HRE/M/Customer-Origin.htm) | Az adott ügyfél-kiszolgálón tárolt tartalomra vonatkozó kérelmeket azonosítja. |
@@ -111,7 +111,7 @@ Ezek a megfeleltetési feltételek olyan kérelmek azonosítására szolgálnak,
 
 Ezek a megfeleltetési feltételek a kérelmeknek a tulajdonságok alapján történő azonosítására szolgálnak.
 
-| Name              | Szerep                                                                |
+| Name (Név)              | Cél                                                                |
 |-------------------|------------------------------------------------------------------------|
 | [Ügyfél IP-címe](https://docs.vdms.com/cdn/Content/HRE/M/Client-IP-Address.htm) | Az adott IP-címről származó kérelmeket azonosítja. |
 | Cookie paraméter  | Azonosít egy kérést, hogy tartalmazza-e a megfelelő cookie-t: <br> **-** Adott érték (a[cookie paraméter literál](https://docs.vdms.com/cdn/Content/HRE/M/Cookie-Parameter-Literal.htm)) <br> **-** Reguláris kifejezés (a[cookie paraméterének regexje](https://docs.vdms.com/cdn/Content/HRE/M/Cookie-Parameter-Regex.htm) <br> **-** Adott minta ([cookie-paraméter helyettesítő karaktere](https://docs.vdms.com/cdn/Content/HRE/M/Cookie-Parameter-Wildcard.htm)) |
@@ -125,7 +125,7 @@ Ezek a megfeleltetési feltételek a kérelmeknek a tulajdonságok alapján tör
 
 ### <a name="url"></a><a name="url"></a>URL-cím
 
-| Name              | Szerep                                                                |
+| Name (Név)              | Cél                                                                |
 |-------------------|------------------------------------------------------------------------|
 | URL-cím | A kérelmeket a relatív elérési úttal, például a fájlnévvel együtt azonosítja: <br> **-** Adott érték ([URL-cím konstans](https://docs.vdms.com/cdn/Content/HRE/M/URL-Path-Literal.htm)) <br> **-** Reguláris kifejezés ([URL-elérési út regex](https://docs.vdms.com/cdn/Content/HRE/M/URL-Path-Regex.htm)) <br> **-** Adott minta ([URL-elérési út helyettesítő karaktere](https://docs.vdms.com/cdn/Content/HRE/M/URL-Path-Wildcard.htm)) |
 | URL elérési útja könyvtár | Meghatározza a kérelmeket, hogy relatív elérési útja megfelel-e: <br> **-** Adott érték ([URL-cím-könyvtár literál](https://docs.vdms.com/cdn/Content/HRE/M/URL-Path-Directory-Literal.htm)) <br> **-** Adott minta ([URL-elérésiút-könyvtár helyettesítő karaktere](https://docs.vdms.com/cdn/Content/HRE/M/URL-Path-Directory-Wildcard.htm)) |

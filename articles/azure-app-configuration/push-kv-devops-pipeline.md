@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 07/27/2020
 ms.author: lcozzens
 ms.openlocfilehash: c1142ef7b37dee916118964778f6c1db2a65d591
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88719701"
 ---
 # <a name="push-settings-to-app-configuration-with-azure-pipelines"></a>Beállítások leküldése az alkalmazás konfigurációjához az Azure-folyamatokkal
@@ -87,7 +87,7 @@ Az alkalmazás-konfiguráció leküldéses feladata a következő paramétereket
 - **Label (címke**): az egyes kulcs-értékekhez hozzáadott karakterlánc, amely az alkalmazás konfigurációs tárolójában található címke.
 - **Content Type (tartalomtípus**): az egyes kulcs-értékekhez hozzáadott karakterlánc, amely az alkalmazás konfigurációs tárolójában található tartalomtípus.
 - **Címkék**: egy JSON-objektum a (z `{"tag1":"val1", "tag2":"val2"}` ) formátumban, amely meghatározza az alkalmazás-konfigurációs tárolóba leküldett minden egyes kulcshoz hozzáadott címkéket.
-- **Az összes többi kulcs-érték törlése a tárolóban a megadott előtaggal és címkével: az**alapértelmezett érték nincs **bejelölve**.
+- **A tárolóban lévő összes többi Key-Values törlése a megadott előtaggal és címkével: az**alapértelmezett érték nincs **bejelölve**.
   - **Bejelölve**: eltávolítja az alkalmazás-konfigurációs tároló összes olyan kulcs-értékét, amely megegyezik a megadott előtaggal és címkével, mielőtt az új kulcs-értékeket kikényszeríti a konfigurációs fájlból.
   - **Nincs bejelölve**: leküldi a konfigurációs fájl összes kulcs-értékét az alkalmazás konfigurációs tárolójába, és az alkalmazás konfigurációs tárolójában lévő minden más elemet érintetlenül hagy.
 

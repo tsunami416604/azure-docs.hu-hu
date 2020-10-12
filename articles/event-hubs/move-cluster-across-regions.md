@@ -4,10 +4,10 @@ description: Ez a cikk bemutatja, hogyan helyezhet át egy Azure Event Hubs dedi
 ms.topic: how-to
 ms.date: 09/01/2020
 ms.openlocfilehash: 94be44ee8f9442a3a65e899d7a58524b2570f194
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89380832"
 ---
 # <a name="move-an-azure-event-hubs-dedicated-cluster-to-another-region"></a>Azure Event Hubs dedikált fürt áthelyezése egy másik régióba
@@ -50,7 +50,7 @@ A sablon üzembe helyezésével hozzon létre egy Event Hubs dedikált fürtöt 
     4. A **Beállítások** szakaszban hajtsa végre a következő lépéseket:    
         1. Adja meg az új **fürt nevét**. 
 
-            :::image type="content" source="./media/move-cluster-across-regions/deploy-template.png" alt-text="Resource Manager-sablon üzembe helyezése":::
+            :::image type="content" source="./media/move-cluster-across-regions/deploy-template.png" alt-text="Resource Manager-sablon letöltése":::
     5. Kattintson a lap alján található **felülvizsgálat + létrehozás** lehetőségre. 
     1. A **felülvizsgálat + létrehozás** lapon tekintse át a beállításokat, majd kattintson a **Létrehozás**gombra.  
 

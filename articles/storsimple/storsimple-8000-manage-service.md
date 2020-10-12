@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 05/09/2018
 ms.author: alkohli
 ms.openlocfilehash: 73373f788a4a87a36a800d69ffcdc646f4cd2084
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91249552"
 ---
 # <a name="deploy-the-storsimple-device-manager-service-for-storsimple-8000-series-devices"></a>A StorSimple Eszközkezelő szolgáltatás üzembe helyezése a StorSimple 8000 Series-eszközökön
@@ -191,23 +191,23 @@ A Azure Portal csak a 5,0-es vagy újabb frissítést futtató StorSimple-eszkö
 
 | Művelet                                                                                                                       | Támogatott      |
 |---------------------------------------------------------------------------------------------------------------------------------|----------------|
-| Eszköz regisztrálása                                                                                                               | Yes            |
-| Az eszközbeállítások, például az általános, a hálózat és a biztonság konfigurálása                                                                | Yes            |
-| Frissítések vizsgálata, letöltése és telepítése                                                                                             | Yes            |
-| Eszköz inaktiválása                                                                                                               | Yes            |
-| Eszköz törlése                                                                                                                   | Yes            |
-| Mennyiségi tároló létrehozása, módosítása és törlése                                                                                   | No             |
-| Kötet létrehozása, módosítása és törlése                                                                                             | No             |
-| Biztonsági mentési szabályzat létrehozása, módosítása és törlése                                                                                      | No             |
-| Manuális biztonsági mentés készítése                                                                                                            | No             |
+| Eszköz regisztrálása                                                                                                               | Igen            |
+| Az eszközbeállítások, például az általános, a hálózat és a biztonság konfigurálása                                                                | Igen            |
+| Frissítések vizsgálata, letöltése és telepítése                                                                                             | Igen            |
+| Eszköz inaktiválása                                                                                                               | Igen            |
+| Eszköz törlése                                                                                                                   | Igen            |
+| Mennyiségi tároló létrehozása, módosítása és törlése                                                                                   | Nem             |
+| Kötet létrehozása, módosítása és törlése                                                                                             | Nem             |
+| Biztonsági mentési szabályzat létrehozása, módosítása és törlése                                                                                      | Nem             |
+| Manuális biztonsági mentés készítése                                                                                                            | Nem             |
 | Ütemezett biztonsági mentés készítése                                                                                                         | Nem alkalmazható |
-| Visszaállítás egy biztonságimásolat                                                                                                        | No             |
-| Klónozás egy 3,0-es vagy újabb frissítést futtató eszközre <br> A forrásoldali eszköz a 3,0-es frissítés előtti verziót futtatja.                                | Yes            |
-| Klónozás egy, a 3,0-es frissítés előtti verziót futtató eszközre                                                                          | No             |
-| Feladatátvétel forrásként szolgáló eszközként <br> (egy, a 3,0-es frissítés előtt futó eszközről egy 3,0-es vagy újabb verziót futtató eszközre)                                                               | Yes            |
-| Feladatátvétel célként megadott eszközként <br> (a 3,0-es frissítés előtti verziót futtató eszközre)                                                                                   | No             |
-| Riasztás törlése                                                                                                                  | Yes            |
-| Biztonsági mentési szabályzatok, biztonsági mentési katalógus, kötetek, mennyiségi tárolók, figyelési diagramok, feladatok és a klasszikus portálon létrehozott riasztások megtekintése | Yes            |
+| Visszaállítás egy biztonságimásolat                                                                                                        | Nem             |
+| Klónozás egy 3,0-es vagy újabb frissítést futtató eszközre <br> A forrásoldali eszköz a 3,0-es frissítés előtti verziót futtatja.                                | Igen            |
+| Klónozás egy, a 3,0-es frissítés előtti verziót futtató eszközre                                                                          | Nem             |
+| Feladatátvétel forrásként szolgáló eszközként <br> (egy, a 3,0-es frissítés előtt futó eszközről egy 3,0-es vagy újabb verziót futtató eszközre)                                                               | Igen            |
+| Feladatátvétel célként megadott eszközként <br> (a 3,0-es frissítés előtti verziót futtató eszközre)                                                                                   | Nem             |
+| Riasztás törlése                                                                                                                  | Igen            |
+| Biztonsági mentési szabályzatok, biztonsági mentési katalógus, kötetek, mennyiségi tárolók, figyelési diagramok, feladatok és a klasszikus portálon létrehozott riasztások megtekintése | Igen            |
 | Az eszközök vezérlőinek be-és kikapcsolása                                                                                              | Igen            |
 
 

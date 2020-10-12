@@ -13,10 +13,10 @@ ms.date: 01/10/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: e5d2c6b0460c3a7566adb17601aceb57e57f4d0b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74931788"
 ---
 # <a name="move-data-from-db2-by-using-azure-data-factory-copy-activity"></a>Adatok áthelyezése a DB2-ből Azure Data Factory másolási tevékenység használatával
@@ -56,7 +56,7 @@ A Data Factory DB2-összekötő a következő IBM DB2 platformokat és verzióka
 
 > [!TIP]
 > Ha a következő hibaüzenet jelenik meg: "az SQL-utasítás végrehajtási kérelmének megfelelő csomag nem található. SQLSTATE = 51002 SQLCODE =-805, "az ok a szükséges csomag nem jön létre a normál felhasználó számára az operációs rendszeren. A probléma megoldásához kövesse az alábbi utasításokat a DB2-kiszolgáló típusához:
-> - DB2 for i (AS400): lehetővé teszi, hogy a felhasználó létrehozza a gyűjteményt a normál felhasználó számára a másolási tevékenység futtatása előtt. A gyűjtemény létrehozásához használja a következő parancsot:`create collection <username>`
+> - DB2 for i (AS400): lehetővé teszi, hogy a felhasználó létrehozza a gyűjteményt a normál felhasználó számára a másolási tevékenység futtatása előtt. A gyűjtemény létrehozásához használja a következő parancsot: `create collection <username>`
 > - DB2 for z/OS vagy LUW: magas jogosultsági szintű fiók használata – egy olyan Kiemelt felhasználó vagy rendszergazda, amely csomag-vagy BINDADD rendelkezik, és a VÉGREHAJTÁSt a nyilvános engedélyekkel együtt engedélyezi – a másolás egyszeri futtatásához. A másolás során a rendszer automatikusan létrehozza a szükséges csomagot. Ezt követően visszaválthat a normál felhasználóra a későbbi másolási futtatásokhoz.
 
 ## <a name="getting-started"></a>Első lépések
@@ -80,14 +80,14 @@ A következő táblázat felsorolja a DB2-hez társított szolgáltatáshoz tart
 
 | Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
-| **típusa** |Ezt a tulajdonságot **OnPremisesDb2**értékre kell beállítani. |Yes |
-| **Server** |A DB2-kiszolgáló neve. |Yes |
-| **adatbázis** |A DB2-adatbázis neve. |Yes |
-| **séma** |A séma neve a DB2-adatbázisban. Ez a tulajdonság megkülönbözteti a kis-és nagybetűket. |No |
-| **authenticationType** |A DB2-adatbázishoz való kapcsolódáshoz használt hitelesítés típusa. A lehetséges értékek a következők: névtelen, alapszintű és Windows. |Yes |
-| **username** |A felhasználói fiók neve, ha alapszintű vagy Windows-hitelesítést használ. |No |
-| **alaphelyzetbe állítása** |A felhasználói fiók jelszava. |No |
-| **Átjáró neve** |Annak az átjárónak a neve, amelyet a Data Factory szolgáltatásnak használnia kell a helyszíni DB2-adatbázishoz való kapcsolódáshoz. |Yes |
+| **típusa** |Ezt a tulajdonságot **OnPremisesDb2**értékre kell beállítani. |Igen |
+| **Server** |A DB2-kiszolgáló neve. |Igen |
+| **adatbázis** |A DB2-adatbázis neve. |Igen |
+| **séma** |A séma neve a DB2-adatbázisban. Ez a tulajdonság megkülönbözteti a kis-és nagybetűket. |Nem |
+| **authenticationType** |A DB2-adatbázishoz való kapcsolódáshoz használt hitelesítés típusa. A lehetséges értékek a következők: névtelen, alapszintű és Windows. |Igen |
+| **username** |A felhasználói fiók neve, ha alapszintű vagy Windows-hitelesítést használ. |Nem |
+| **alaphelyzetbe állítása** |A felhasználói fiók jelszava. |Nem |
+| **Átjáró neve** |Annak az átjárónak a neve, amelyet a Data Factory szolgáltatásnak használnia kell a helyszíni DB2-adatbázishoz való kapcsolódáshoz. |Igen |
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
 Az adatkészletek definiálásához rendelkezésre álló csoportok és tulajdonságok listáját az [adatkészletek létrehozása](data-factory-create-datasets.md) című cikkben találja. Az adathalmazok (például a **struktúra**, a **rendelkezésre állás** **és az adatkészlet** JSON-szabályzata) minden adatkészlet esetében hasonlóak (az Azure SQL, az Azure Blob Storage, az Azure Table Storage stb.).
@@ -105,7 +105,7 @@ Másolási tevékenység esetén, ha a forrás **RelationalSource** típusú (am
 
 | Tulajdonság | Leírás | Megengedett értékek | Kötelező |
 | --- | --- | --- | --- |
-| **lekérdezés** |Az egyéni lekérdezéssel olvashatja el az adatgyűjtést. |SQL-lekérdezési karakterlánc. Például:`"query": "select * from "MySchema"."MyTable""` |Nem (ha meg van adva egy adatkészlet **Táblanév** tulajdonsága) |
+| **lekérdezés** |Az egyéni lekérdezéssel olvashatja el az adatgyűjtést. |SQL-lekérdezési karakterlánc. Például: `"query": "select * from "MySchema"."MyTable""` |Nem (ha meg van adva egy adatkészlet **Táblanév** tulajdonsága) |
 
 > [!NOTE]
 > A séma és a tábla neve megkülönbözteti a kis-és nagybetűket. A lekérdezési utasításban a tulajdonságok nevét "" (idézőjelek) használatával tegye meg.
@@ -310,15 +310,15 @@ A következő leképezéseket használja a rendszer, amikor a másolási tevéke
 | SmallInt |Int16 |
 | Egész szám |Int32 |
 | BigInt |Int64 |
-| Valós |Egyszeres |
-| Double |Double |
-| Float |Double |
-| Decimal |Decimal |
-| DecimalFloat |Decimal |
-| Numerikus |Decimal |
-| Dátum |DateTime |
+| Valós |Egyirányú |
+| Dupla |Dupla |
+| Lebegőpontos értékek |Dupla |
+| Tizedesjegy |Tizedesjegy |
+| DecimalFloat |Tizedesjegy |
+| Numerikus |Tizedesjegy |
+| Dátum |Dátum/idő |
 | Idő |időtartam |
-| Időbélyeg |DateTime |
+| Timestamp |DateTime |
 | Xml |Bájt [] |
 | Char |Sztring |
 | VarChar |Sztring |
@@ -336,15 +336,15 @@ A következő leképezéseket használja a rendszer, amikor a másolási tevéke
 | SmallInt |Int16 |
 | Egész szám |Int32 |
 | BigInt |Int64 |
-| Valós |Egyszeres |
-| Double |Double |
-| Float |Double |
-| Decimal |Decimal |
-| DecimalFloat |Decimal |
-| Numerikus |Decimal |
-| Dátum |DateTime |
+| Valós |Egyirányú |
+| Dupla |Dupla |
+| Lebegőpontos értékek |Dupla |
+| Tizedesjegy |Tizedesjegy |
+| DecimalFloat |Tizedesjegy |
+| Numerikus |Tizedesjegy |
+| Dátum |Dátum/idő |
 | Idő |időtartam |
-| Időbélyeg |DateTime |
+| Timestamp |DateTime |
 | Xml |Bájt [] |
 | Char |Sztring |
 

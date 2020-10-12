@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 06/20/2018
 ms.author: apimpm
 ms.openlocfilehash: cbdc81789fcd996774090f12523e7404c0aa0111
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86205852"
 ---
 # <a name="automatically-scale-an-azure-api-management-instance"></a>Az Azure API Management-példány automatikus skálázása  
@@ -31,7 +31,7 @@ A cikk végigvezeti az automatikus méretezés konfigurálásának folyamatán, 
 
 A cikk lépéseinek követéséhez a következőket kell tennie:
 
-+ Aktív Azure-előfizetéssel rendelkezik.
++ Aktív Azure-előfizetés
 + Azure API Management-példánnyal rendelkezik. További információ: [Azure API Management-példány létrehozása](get-started-create-service-instance.md).
 + Ismerje meg az [Azure API Management-példány kapacitásának](api-management-capacity.md)koncepcióját.
 + [Az Azure API Management-példányok manuális skálázási folyamatának](upgrade-and-scale.md)megismerése, beleértve a költségeket.
@@ -74,7 +74,7 @@ Az alábbi lépéseket követve konfigurálhatja az Azure API Management szolgá
 
    Egy Felskálázási szabály például kiválthatja egy Azure API Management egység hozzáadását, ha az elmúlt 30 percben az átlagos kapacitási metrika meghaladja a 80%-ot. Az alábbi táblázat egy ilyen szabály konfigurációját tartalmazza.
 
-    | Paraméter             | Érték             | Megjegyzések                                                                                                                                                                                                                                                                           |
+    | Paraméter             | Érték             | Jegyzetek                                                                                                                                                                                                                                                                           |
     |-----------------------|-------------------|---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
     | Metrikaforrás         | Aktuális erőforrás  | Határozza meg a szabályt az aktuális Azure API Management erőforrás-metrikák alapján.                                                                                                                                                                                                     |
     | *Feltételek*            |                   |                                                                                                                                                                                                                                                                                 |
@@ -101,7 +101,7 @@ Az alábbi lépéseket követve konfigurálhatja az Azure API Management szolgá
 
     A szabály skálázása például kiválthatja egy Azure API Management egység eltávolítását, ha az elmúlt 30 percben az átlagos kapacitási metrika 35%-nál kisebb. Az alábbi táblázat egy ilyen szabály konfigurációját tartalmazza.
 
-    | Paraméter             | Érték             | Megjegyzések                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
+    | Paraméter             | Érték             | Jegyzetek                                                                                                                                                                                                                                                                                                                                                                                                                                                                                               |
     |-----------------------|-------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
     | Metrikaforrás         | Aktuális erőforrás  | Határozza meg a szabályt az aktuális Azure API Management erőforrás-metrikák alapján.                                                                                                                                                                                                                                                                                                                                                                                                                         |
     | *Feltételek*            |                   |                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                     |

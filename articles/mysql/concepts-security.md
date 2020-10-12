@@ -7,10 +7,10 @@ ms.service: mysql
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: 5caed64beb43cbb1e884a3dde6bc0052c617f83e
-ms.sourcegitcommit: 3246e278d094f0ae435c2393ebf278914ec7b97b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89378780"
 ---
 # <a name="security-in-azure-database-for-mysql"></a>Biztonság az Azure Database for MySQL-ben
@@ -38,7 +38,7 @@ Az IP-tűzfalszabályok az egyes kérelmek feladó IP-címe alapján biztosítan
 A Virtual Network szolgáltatás végpontja kiterjeszti a virtuális hálózati kapcsolatot az Azure-gerincen. A virtuális hálózati szabályok használatával engedélyezheti a Azure Database for MySQL-kiszolgáló számára a virtuális hálózatban lévő kijelölt alhálózatok kapcsolatainak engedélyezését. További információt a [Virtual Network szolgáltatás végpontjának áttekintése](concepts-data-access-and-security-vnet.md)című témakörben talál.
 
 ### <a name="private-ip"></a>Magánhálózati IP-cím
-A privát hivatkozás lehetővé teszi, hogy privát végponton keresztül kapcsolódjon az Azure-Azure Database for MySQLhoz. Az Azure Private link lényegében az Azure-szolgáltatásokat a privát Virtual Networkon (VNet) belül hozza elérhetővé. A Péter-erőforrások a magánhálózati IP-cím használatával ugyanúgy érhetők el, mint a VNet lévő többi erőforráshoz. További információt a [privát hivatkozások áttekintése](concepts-data-access-security-private-link.md) című témakörben talál.
+A privát hivatkozás lehetővé teszi, hogy privát végponton keresztül kapcsolódjon az Azure-Azure Database for MySQLhoz. Az Azure Private Link lényegében elérhetővé teszi az Azure-szolgáltatásokat a virtuális magánhálózaton belül. A PaaS-erőforrások a magánhálózati IP-cím használatával érhetők el, ugyanúgy, mint a virtuális hálózat más erőforrásai. További információt a [privát hivatkozások áttekintése](concepts-data-access-security-private-link.md) című témakörben talál.
 
 ## <a name="access-management"></a>Hozzáférés-kezelés
 

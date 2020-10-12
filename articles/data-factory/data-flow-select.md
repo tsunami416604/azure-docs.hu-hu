@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 06/02/2020
 ms.openlocfilehash: 70e0a95a85920562af8bf9d3fffa6633709dccc5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84322090"
 ---
 # <a name="select-transformation-in-mapping-data-flow"></a>Átalakítás kiválasztása az adatforgalom leképezése elemben
@@ -72,7 +72,7 @@ Ha a megadott leképezés rendelkezik hierarchiával, akkor a szabályokon alapu
 
 ![szabály alapú leképezés](media/data-flow/rule-based-hierarchy.png "Szabály alapú leképezés")
 
-A fenti példa a komplex oszlopok összes aloszlopára illeszkedik `a` . `a`két aloszlopot tartalmaz `b` , és `c` . A kimeneti séma két oszlopot fog tartalmazni, `b` és `c` a "Name as" feltételnek kell lennie `$$` .
+A fenti példa a komplex oszlopok összes aloszlopára illeszkedik `a` . `a` két aloszlopot tartalmaz `b` , és `c` . A kimeneti séma két oszlopot fog tartalmazni, `b` és `c` a "Name as" feltételnek kell lennie `$$` .
 
 ### <a name="parameterization"></a>Paraméterezés
 

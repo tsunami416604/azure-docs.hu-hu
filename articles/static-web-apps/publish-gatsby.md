@@ -9,10 +9,10 @@ ms.date: 05/08/2020
 ms.author: aapowell
 ms.custom: devx-track-js
 ms.openlocfilehash: e24a2a19eb39e2c6c7612631ad98f95cb4c5b9ef
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91250164"
 ---
 # <a name="tutorial-publish-a-gatsby-site-to-azure-static-web-apps-preview"></a>Oktatóanyag: Gatsby-webhely közzététele az Azure statikus Web Apps előzetes verziójában
@@ -102,7 +102,7 @@ A következő lépések bemutatják, hogyan hozhat létre egy új statikus webhe
 
 1. Az _SKU_esetében válassza az **ingyenes**lehetőséget.
 
-   :::image type="content" source="./media/publish-gatsby/basic-app-details.png" alt-text="Részletek kitöltve":::
+   :::image type="content" source="./media/publish-gatsby/basic-app-details.png" alt-text="Statikus Web Apps (előzetes verzió) létrehozása a portálon":::
 
 1. Kattintson a **Bejelentkezés a GitHub** gombbal gombra.
 
@@ -112,7 +112,7 @@ A következő lépések bemutatják, hogyan hozhat létre egy új statikus webhe
 
 1. A _ág_ válassza a **Master**elemet.
 
-   :::image type="content" source="./media/publish-gatsby/completed-github-info.png" alt-text="Elkészült GitHub-információ":::
+   :::image type="content" source="./media/publish-gatsby/completed-github-info.png" alt-text="Statikus Web Apps (előzetes verzió) létrehozása a portálon":::
 
 ### <a name="build"></a>Létrehozás
 
@@ -126,7 +126,7 @@ Ezután adja hozzá a konfigurációs beállításokat, amelyeket a létrehozás
 
    Az API-k _helyének_ értéke nem szükséges, mivel jelenleg nem TELEPÍTenek API-t.
 
-   :::image type="content" source="./media/publish-gatsby/build-details.png" alt-text="Összeállítási beállítások":::
+   :::image type="content" source="./media/publish-gatsby/build-details.png" alt-text="Statikus Web Apps (előzetes verzió) létrehozása a portálon":::
 
 ### <a name="review-and-create"></a>Áttekintés és létrehozás
 
@@ -138,13 +138,13 @@ Ezután adja hozzá a konfigurációs beállításokat, amelyeket a létrehozás
 
 1. Az erőforrás képernyőn kattintson az _URL_ hivatkozásra az üzembe helyezett alkalmazás megnyitásához. Előfordulhat, hogy várnia kell egy percet vagy kettőt a GitHub-művelet befejeződésére.
 
-   :::image type="content" source="./media/publish-gatsby/deployed-app.png" alt-text="Üzembe helyezett alkalmazás":::
+   :::image type="content" source="./media/publish-gatsby/deployed-app.png" alt-text="Statikus Web Apps (előzetes verzió) létrehozása a portálon":::
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 [!INCLUDE [cleanup-resource](../../includes/static-web-apps-cleanup-resource.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > [Egyéni tartomány hozzáadása](custom-domain.md)

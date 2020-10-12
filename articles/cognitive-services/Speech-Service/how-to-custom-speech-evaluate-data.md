@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/06/2019
 ms.author: erhopf
 ms.openlocfilehash: cadbe79bbe0af2b5cebacb3d0c7c4e910fc7dbb8
-ms.sourcegitcommit: 9b5c20fb5e904684dc6dd9059d62429b52cb39bc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85856826"
 ---
 # <a name="evaluate-custom-speech-accuracy"></a>A Custom Speech pontosságának értékelése
@@ -33,7 +33,7 @@ A helytelenül azonosított szavak három kategóriába sorolhatók:
 * Törlés (D): a hipotézis átiratában nem észlelhető szavak
 * Helyettesítő (k): a hivatkozás és a hipotézis között helyettesített szavak
 
-Íme egy példa:
+Bemutatunk egy példát:
 
 ![Helytelenül azonosított szavak – példa](./media/custom-speech/custom-speech-dis-words.png)
 
@@ -56,7 +56,7 @@ Modellek kiértékelése egymás mellett:
 3. Kattintson a **teszt hozzáadása**gombra.
 4. Válassza ki a **pontosság kiértékelése**elemet. Adja meg a teszt nevét, leírását, és válassza ki a hang + emberi-címkével ellátott átírási adatkészletet.
 5. Válasszon legfeljebb két modellt, amelyeket szeretne tesztelni.
-6. Kattintson a **Létrehozás** lehetőségre.
+6. Kattintson a **Létrehozás** elemre.
 
 A teszt sikeres létrehozása után összehasonlíthatja az eredményeket egymás mellett.
 

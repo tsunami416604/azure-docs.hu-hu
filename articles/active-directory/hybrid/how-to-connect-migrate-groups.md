@@ -12,10 +12,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5ef693a48dc52854e4e1fd8359ef24f65ce236f7
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85358582"
 ---
 # <a name="migrate-groups-from-one-forest-to-another-for-azure-ad-connect"></a>Csoportok áttelepítése az egyik erdőből a másikba Azure AD Connect
@@ -25,7 +25,7 @@ Ez a cikk azt ismerteti, hogyan lehet csoportokat áttelepíteni az egyik erdőb
 ## <a name="prerequisites"></a>Előfeltételek
 
 - Azure AD Connect 1.5.18.0 vagy újabb verzió
-- A forrás-Anchor attribútum értéke`mS-DS-ConsistencyGuid`
+- A forrás-Anchor attribútum értéke `mS-DS-ConsistencyGuid`
 
 ## <a name="migrate-groups"></a>Csoportok átmigrálása
 

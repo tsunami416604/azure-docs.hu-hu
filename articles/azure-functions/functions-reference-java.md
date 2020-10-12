@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 09/14/2018
 ms.custom: devx-track-java
 ms.openlocfilehash: 1dd98ede537321403053e2e7c8a5f4f7272665d4
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89144923"
 ---
 # <a name="azure-functions-java-developer-guide"></a>A Java fejlesztői útmutató Azure Functions
@@ -17,7 +17,7 @@ Ez az útmutató részletes információkat tartalmaz, amelyek segítenek a Azur
 
 Ha a Azure Functions új, Java-fejlesztőként, vegye figyelembe a következő cikkek egyikét:
 
-| Első lépések | Fogalmak| 
+| Első lépések | Alapelvek| 
 | -- | -- |  
 | <ul><li>[Java-függvény a Visual Studio Code használatával](./functions-create-first-function-vs-code.md?pivots=programming-language-java)</li><li>[Java/Maven függvény a Terminal/parancssor használatával](./functions-create-first-azure-function-azure-cli.md?pivots=programming-language-java)</li><li>[Java-függvény a Gradle használatával](functions-create-first-java-gradle.md)</li><li>[Java-függvény az Eclipse használatával](functions-create-maven-eclipse.md)</li><li>[Java-függvény a IntelliJ IDEA használatával](functions-create-maven-intellij.md)</li></ul> | <ul><li>[Fejlesztői útmutató](functions-reference.md)</li><li>[Üzemeltetési lehetőségek](functions-scale.md)</li><li>[Teljesítménnyel &nbsp; kapcsolatos megfontolások](functions-best-practices.md)</li></ul> |
 
@@ -145,7 +145,7 @@ Az alábbi táblázat a functions futtatókörnyezet minden egyes főverziójáh
 | Függvények verziója | Java-verziók (Windows) | Java-verziók (Linux) |
 | ----- | ----- | --- |
 | 3. x | 11 (előzetes verzió)<br/>8 | 11 (előzetes verzió)<br/>8 |
-| 2. x | 8 | n.a. |
+| 2. x | 8 | n/a |
 
 Ha nem ad meg Java-verziót az üzemelő példányhoz, a Maven archetípus alapértelmezett értéke a Java 8 az Azure-ba való üzembe helyezés során.
 
@@ -431,7 +431,7 @@ Az előző példában a a `queryValue` `name` http-kérelem URL-címében a lek�
 > [!NOTE]
 > A jegyzetben megadott névnek egyeznie kell a metadata tulajdonsággal.
 
-## <a name="execution-context"></a>Végrehajtási környezet
+## <a name="execution-context"></a>Végrehajtás környezete
 
 `ExecutionContext`a ben definiált `azure-functions-java-library` , segítő metódusokat tartalmaz a functions futtatókörnyezettel folytatott kommunikációhoz. További információkért tekintse meg a [ExecutionContext-referenciát ismertető cikket](/java/api/com.microsoft.azure.functions.executioncontext).
 

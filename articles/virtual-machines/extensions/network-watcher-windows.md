@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 02/14/2017
 ms.author: mimckitt
 ms.openlocfilehash: e78a18055d85e2105ea604d568c154c889ab0655
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86206022"
 ---
 # <a name="network-watcher-agent-virtual-machine-extension-for-windows"></a>Network Watcher Agent virtuálisgép-bővítmény a Windowshoz
@@ -64,7 +64,7 @@ A következő JSON a Network Watcher ügynök bővítmény sémáját jeleníti 
 
 ### <a name="property-values"></a>Tulajdonságértékek
 
-| Név | Érték/példa |
+| Name (Név) | Érték/példa |
 | ---- | ---- |
 | apiVersion | 2015-06-15 |
 | közzétevő | Microsoft. Azure. NetworkWatcher |
@@ -76,7 +76,7 @@ A következő JSON a Network Watcher ügynök bővítmény sémáját jeleníti 
 
 Az Azure virtuálisgép-bővítmények Azure Resource Manager-sablonokkal helyezhetők üzembe. A Azure Resource Manager sablon előző szakaszában részletes JSON-sémát használva futtathatja az Network Watcher Agent bővítményt egy Azure Resource Manager sablon központi telepítése során.
 
-## <a name="powershell-deployment"></a>PowerShell-telepítés
+## <a name="powershell-deployment"></a>A PowerShell telepítése
 
 A `Set-AzVMExtension` parancs használatával telepítse a Network Watcher Agent virtuálisgép-bővítményt egy meglévő virtuális gépre:
 

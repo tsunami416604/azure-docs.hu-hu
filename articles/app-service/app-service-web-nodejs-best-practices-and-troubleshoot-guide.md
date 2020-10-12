@@ -9,10 +9,10 @@ ms.date: 11/09/2017
 ms.author: msangapu
 ms.custom: seodec18
 ms.openlocfilehash: 3b4a9547a1bd62b7464b4a79fe68720572630f3d
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88961890"
 ---
 # <a name="best-practices-and-troubleshooting-guide-for-node-applications-on-azure-app-service-windows"></a>Ajánlott eljárások és hibaelhárítási útmutató a Azure App Service Windows rendszerű csomópont-alkalmazásokhoz
@@ -143,7 +143,7 @@ let keepaliveAgent = new Agent({
 Előfordulhat, hogy a portálon a nagy CPU-fogyasztással kapcsolatban Azure App Servicera vonatkozó javaslatot kap. Bizonyos [mérőszámok](web-sites-monitor.md)figyeléséhez beállíthatja a figyelőket is. Ha ellenőrzi a CPU-használatot az [Azure Portal irányítópultján](../azure-monitor/app/web-monitor-performance.md), ellenőrizze a processzorok maximális értékeit, hogy ne hagyja ki a csúcsérték értékét.
 Ha úgy gondolja, hogy az alkalmazása túl sok CPU-t használ, és nem tudja megmagyarázni, hogy miért, a Node-alkalmazás megkereséséhez.
 
-#### <a name="profiling-your-node-application-on-azure-app-service-with-v8-profiler"></a>A Node-alkalmazás profilkészítése Azure App Service a V8-Profilerrel
+#### <a name="profiling-your-node-application-on-azure-app-service-with-v8-profiler"></a>A Node-alkalmazás profilkészítése Azure App Serviceon V8-Profiler
 
 Tegyük fel például, hogy van egy Hello World-alkalmazás, amelyet a következő módon szeretne profilt használni:
 
@@ -205,7 +205,7 @@ Az előző kód a WriteConsoleLog függvényt, majd a profil kimenetét írja a 
 
 ![A profil. cpuprofile fájlt megjelenítő képernyőkép.](./media/app-service-web-nodejs-best-practices-and-troubleshoot-guide/scm_profile.cpuprofile.png)
 
-Töltse le ezt a fájlt, és nyissa meg a Chrome F12-eszközökkel. Nyomja meg az F12 billentyűt a Chrome-on, majd válassza a **profilok** fület. Válassza a **Betöltés** gombot. Válassza ki a letöltött Profile. cpuprofile fájlt. Kattintson az imént betöltött profilra.
+Töltse le ezt a fájlt, és nyissa meg a Chrome F12-eszközökkel. Nyomja meg az F12 billentyűt a Chrome-ban, majd válassza a **profilok** fület. Kattintson a **Load (Betöltés** ) gombra. Válassza ki a letöltött Profile. cpuprofile fájlt. Kattintson az imént betöltött profilra.
 
 ![Képernyőkép, amely megjeleníti a betöltött profil. cpuprofile fájlt.](./media/app-service-web-nodejs-best-practices-and-troubleshoot-guide/chrome_tools_view.png)
 

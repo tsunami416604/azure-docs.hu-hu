@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 03/09/2020
 ms.author: trbye
 ms.openlocfilehash: ccc7fcd748323e05f21edcfff1535085d2cdbdc7
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81421933"
 ---
 A tömörített hang kezelésére a [GStreamer](https://gstreamer.freedesktop.org)használatával kerül sor. Licencelési okokból a GStreamer bináris fájlok nincsenek lefordítva és csatolva a Speech SDK-hoz. Ehelyett az Androidhoz készült előre elkészített bináris fájlokat kell használnia. Az előre elkészített kódtárak letöltéséhez lásd: [telepítés Android-fejlesztéshez](https://gstreamer.freedesktop.org/documentation/installing/for-android-development.html?gi-language=c).
 
-A `libgstreamer_android.so` használata kötelező. Győződjön meg arról, hogy a GStreamer beépülő modulja `libgstreamer_android.so`össze van kapcsolva.
+A `libgstreamer_android.so` használata kötelező. Győződjön meg arról, hogy a GStreamer beépülő modulja össze van kapcsolva `libgstreamer_android.so` .
 
 ```makefile
 GSTREAMER_PLUGINS := coreelements app audioconvert mpg123 \
@@ -21,7 +21,7 @@ GSTREAMER_PLUGINS := coreelements app audioconvert mpg123 \
     opus wavparse alaw mulaw flac
 ```
 
-Alább látható `Android.mk` egy `Application.mk` példa és egy fájl. A `gstreamer` megosztott objektum létrehozásához kövesse az alábbi lépéseket`libgstreamer_android.so`:.
+Alább látható egy példa `Android.mk` és egy `Application.mk` fájl. A megosztott objektum létrehozásához kövesse az alábbi lépéseket `gstreamer` : `libgstreamer_android.so` .
 
 ```makefile
 # Android.mk
@@ -76,7 +76,7 @@ APP_PLATFORM = android-21
 APP_BUILD_SCRIPT = Android.mk
 ```
 
-Az Ubuntu 16,04 `libgstreamer_android.so` -es vagy a 18,04-es verziójában a következő paranccsal hozhat létre. A következő parancssorok csak a [GStreamer Android-verzió 1.14.4](https://gstreamer.freedesktop.org/data/pkg/android/1.14.4/gstreamer-1.0-android-universal-1.14.4.tar.bz2) lettek tesztelve [Android NDK b16b.](https://dl.google.com/android/repository/android-ndk-r16b-linux-x86_64.zip)
+`libgstreamer_android.so`Az Ubuntu 16,04-es vagy a 18,04-es verziójában a következő paranccsal hozhat létre. A következő parancssorok csak a [GStreamer Android-verzió 1.14.4](https://gstreamer.freedesktop.org/data/pkg/android/1.14.4/gstreamer-1.0-android-universal-1.14.4.tar.bz2) lettek tesztelve [Android NDK b16b.](https://dl.google.com/android/repository/android-ndk-r16b-linux-x86_64.zip)
 
 ```sh
 # Assuming wget and unzip already installed on the system
@@ -108,4 +108,4 @@ ndk-build -C $(pwd)/gstreamer "NDK_APPLICATION_MK=Application.mk" APP_ABI=armeab
 #ndk-build -C $(pwd)/gstreamer "NDK_APPLICATION_MK=Application.mk" APP_ABI=x86 NDK_LIBS_OUT=$(pwd)
 ```
 
-Miután a megosztott objektum (`libgstreamer_android.so`) létrehozta az alkalmazás fejlesztőjét, el kell helyeznie a megosztott objektumot az Android-alkalmazásban, hogy a Speech SDK tudja betölteni.
+Miután a megosztott objektum () létrehozta az `libgstreamer_android.so` alkalmazás fejlesztőjét, el kell helyeznie a megosztott objektumot az Android-alkalmazásban, hogy a SPEECH SDK tudja betölteni.

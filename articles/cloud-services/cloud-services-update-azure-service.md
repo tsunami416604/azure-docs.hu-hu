@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 04/19/2017
 ms.author: tagore
 ms.openlocfilehash: 731f4e8cc8a93f33d6887f44fc8d09585e92a75a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75360344"
 ---
 # <a name="how-to-update-a-cloud-service"></a>Felhőalapú szolgáltatás frissítése
@@ -53,7 +53,7 @@ A következő táblázat a szolgáltatásnak a frissítés során engedélyezett
 | Helyi tárolási beállítások |Csak<sup>2</sup> |Igen |Igen |
 | Szerepkörök hozzáadása vagy eltávolítása egy szolgáltatásban |Igen |Igen |Igen |
 | Egy adott szerepkör példányainak száma |Igen |Igen |Igen |
-| A szolgáltatáshoz tartozó végpontok száma vagy típusa |Igen<sup>2</sup> |Nem |Yes |
+| A szolgáltatáshoz tartozó végpontok száma vagy típusa |Igen<sup>2</sup> |Nem |Igen |
 | A konfigurációs beállítások nevei és értékei |Igen |Igen |Igen |
 | A konfigurációs beállítások értékei (de nem nevei) |Igen |Igen |Igen |
 | Új tanúsítványok hozzáadása |Igen |Igen |Igen |
@@ -104,7 +104,7 @@ Ha a szolgáltatást egyetlen példányról több példányra frissíti, akkor a
 |Virtuális gép újraindítása|Megőrzi|Megőrzi|Megőrzi|
 |Portál újraindítása|Megőrzi|Megőrzi|Megsemmisül|
 |Portál rendszerképének alaphelyzetbe állítása|Megőrzi|Megsemmisül|Megsemmisül|
-|Helyben történő frissítés|Megőrzi|Megőrzi|Megsemmisül|
+|In-Place frissítés|Megőrzi|Megőrzi|Megsemmisül|
 |Csomópont-áttelepítés|Megsemmisül|Megsemmisül|Megsemmisül|
 
 Vegye figyelembe, hogy a fenti listában az E: meghajtó a szerepkör legfelső szintű meghajtóját jelöli, és nem lehet rögzítetten kódolva. Ehelyett használja a **% RoleRoot%** környezeti változót a meghajtó megjelenítéséhez.

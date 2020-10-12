@@ -9,10 +9,10 @@ ms.date: 05/29/2020
 ms.author: wachegha
 ms.custom: devx-track-js
 ms.openlocfilehash: c84367a5e3ab57090f59196e8474c14cba87f32b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91250147"
 ---
 # <a name="add-an-api-to-azure-static-web-apps-preview-with-azure-functions"></a>API hozzáadása az Azure statikus Web Apps előzetes verziójához Azure Functions
@@ -43,7 +43,7 @@ A projekt létrehozása után másolja az URL-címet a böngészőben az új tá
 1. Az **F1** billentyű lenyomásával nyissa meg a parancsot a parancs palettáján.
 1. Illessze be az URL-címet a _git: Clone_ parancssorba, majd nyomja le az **ENTER**billentyűt.
 
-   :::image type="content" source="media/add-api/vscode-git-0.png" alt-text="GitHub-projekt klónozása a Visual Studio Code használatával":::
+   :::image type="content" source="media/add-api/vscode-git-0.png" alt-text="Új Tárház létrehozása a vaníliatől – alapszintű":::
 
     Az utasításokat követve válassza ki a tárház helyét a projekt klónozásához.
 
@@ -59,7 +59,7 @@ Ezután létre kell hoznia egy Azure Functions projektet az alkalmazás API-ját
 1. Válassza ki az **API** -mappát a projekt-munkaterület könyvtáraként
 1. Válassza a **kiválasztás** lehetőséget.
 
-   :::image type="content" source="media/add-api/create-azure-functions-vscode-1.png" alt-text="Új Azure Functions létrehozása a Visual Studio Code használatával":::
+   :::image type="content" source="media/add-api/create-azure-functions-vscode-1.png" alt-text="Új Tárház létrehozása a vaníliatől – alapszintű":::
 
 1. Adja meg a következő információkat a kérdésekben:
 
@@ -145,13 +145,13 @@ A Visual Studio Code integrálva van [Azure functions Core Tools](../azure-funct
 
     Az alapvető eszközök a futó alkalmazás kimenetét jelenítik meg a _terminál_ panelen. A kimenet részeként megtekintheti a helyileg futtatott HTTP-triggeres függvény URL-végpontját.
 
-    :::image type="content" source="media/add-api/create-azure-functions-vscode-2.png" alt-text="Új Azure Functions létrehozása a Visual Studio Code használatával":::
+    :::image type="content" source="media/add-api/create-azure-functions-vscode-2.png" alt-text="Új Tárház létrehozása a vaníliatől – alapszintű":::
 
 1. A-t futtató alapvető eszközökkel navigáljon a következő URL-címre, és ellenőrizze, hogy az API helyesen fut-e: `http://localhost:7071/api/message` .
 
    A böngészőben a válasznak az alábbi példához hasonlóan kell kinéznie:
 
-   :::image type="content" source="media/add-api/create-azure-functions-vscode-3.png" alt-text="Új Azure Functions létrehozása a Visual Studio Code használatával":::
+   :::image type="content" source="media/add-api/create-azure-functions-vscode-3.png" alt-text="Új Tárház létrehozása a vaníliatől – alapszintű":::
 
 1. A hibakeresési munkamenet leállításához nyomja le a **SHIFT + F5** billentyűkombinációt.
 
@@ -199,7 +199,7 @@ Az Azure-ba való üzembe helyezéskor az API-ra irányuló kérelmek automatiku
 
     Ekkor megjelenik az API-üzenet a weblapon.
 
-   :::image type="content" source="media/add-api/create-azure-functions-vscode-4.png" alt-text="Új Azure Functions létrehozása a Visual Studio Code használatával":::
+   :::image type="content" source="media/add-api/create-azure-functions-vscode-4.png" alt-text="Új Tárház létrehozása a vaníliatől – alapszintű":::
 
    > [!NOTE]
    > A fájl kiszolgálásához más HTTP-kiszolgálókat vagy proxykat is használhat `index.html` . A `index.html` rendszerhez való hozzáférés `file:///` nem fog működni.
@@ -216,7 +216,7 @@ A Visual Studio Code használatával véglegesítheti és leküldheti a módosí
 1. Nyomja meg az **F1** billentyűt
 1. Írja be a **git: leküldéses** és nyomja le az **ENTER** billentyűt
 
-## <a name="create-a-static-web-app"></a>Statikus Webalkalmazás létrehozása
+## <a name="create-a-static-web-app"></a>Statikus webalkalmazás létrehozása
 
 1. Navigáljon a [Azure Portal](https://portal.azure.com)
 1. Kattintson az **Erőforrás létrehozása** gombra
@@ -251,11 +251,11 @@ Ezután adja hozzá a következőt a Build adataihoz.
 
     Mivel az alkalmazás a háttérben jön létre, kattintson a szalagcímre, amely tartalmaz egy hivatkozást a Build állapotának megtekintéséhez.
 
-    :::image type="content" source="media/add-api/github-action-flag.png" alt-text="GitHub-munkafolyamat":::
+    :::image type="content" source="media/add-api/github-action-flag.png" alt-text="Új Tárház létrehozása a vaníliatől – alapszintű":::
 
 1. Az üzembe helyezés befejezését követően a szervezeti egység a webalkalmazáshoz navigálva az _Áttekintés_ oldalon megjelenő _URL_ hivatkozásra kattintva érheti el.
 
-    :::image type="content" source="media/add-api/static-app-url-from-portal.png" alt-text="A statikus alkalmazás URL-címének elérése a Azure Portal":::
+    :::image type="content" source="media/add-api/static-app-url-from-portal.png" alt-text="Új Tárház létrehozása a vaníliatől – alapszintű":::
 
 ## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 

@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 04/24/2020
 ms.author: cherylmc
 ms.openlocfilehash: 1e0bc9a17a12afac6d91867b19aba0f90b7f6edb
-ms.sourcegitcommit: 2bab7c1cd1792ec389a488c6190e4d90f8ca503b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/17/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88270750"
 ---
 # <a name="create-an-azure-bastion-host-using-the-portal"></a>Azure-beli megerősített gazdagép létrehozása a portál használatával
@@ -59,7 +59,7 @@ Ez a szakasz segítséget nyújt egy új Azure Bastion-erőforrás létrehozás�
 1. A **bástya létrehozása** lapon kattintson a **Létrehozás**gombra.
 1. Megjelenik egy üzenet, amely tájékoztatja, hogy a telepítés folyamatban van. Az állapot ekkor megjelenik ezen a lapon az erőforrások létrehozásakor. A megerősített erőforrás létrehozása és üzembe helyezése körülbelül 5 percet vesz igénybe.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információért olvassa el a [megerősített gyakori kérdések](bastion-faq.md) című témakört.
 

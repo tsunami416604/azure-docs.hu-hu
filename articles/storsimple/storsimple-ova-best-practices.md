@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 07/25/2019
 ms.author: alkohli
 ms.openlocfilehash: bdf69a9ff7b3260b47042f296a47826e3c52387b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81460647"
 ---
 # <a name="storsimple-virtual-array-best-practices"></a>A StorSimple Virtual Array ajánlott eljárásai
@@ -121,7 +121,7 @@ Ezért javasoljuk, hogy:
 * Győződjön meg arról, hogy a virtuális tömb a Active Directory saját szervezeti egységében (OU) van.
 * Győződjön meg arról, hogy a virtuális tömbhöz nincsenek alkalmazva csoportházirend-objektumok (GPO-k). Az öröklés letiltásával biztosíthatja, hogy a virtuális tömb (gyermek csomópont) ne örökölje automatikusan a szülő csoportházirend-objektumait. További információkért keresse fel az [öröklés tiltása](https://technet.microsoft.com/library/cc731076.aspx)lehetőséget.
 
-### <a name="networking"></a>Hálózatkezelés
+### <a name="networking"></a>Hálózat
 A virtuális tömb hálózati konfigurációja a helyi webes felületen keresztül történik. A virtuális hálózati adapter azon a hypervisoron keresztül engedélyezhető, amelyben a virtuális tömb ki van építve. A [hálózati beállítások](storsimple-virtual-array-deploy3-fs-setup.md) lapon konfigurálhatja a virtuális hálózati adapter IP-címét, alhálózatát és átjáróját.  Az eszköz elsődleges és másodlagos DNS-kiszolgálóját, időbeállításait és opcionális proxybeállításait is megadhatja. A hálózati konfiguráció többsége egyszeri beállítás. A virtuális tömb üzembe helyezése előtt tekintse át a [StorSimple hálózati követelményeit](storsimple-ova-system-requirements.md#networking-requirements) .
 
 A virtuális tömb üzembe helyezésekor javasoljuk, hogy kövesse az alábbi ajánlott eljárásokat:
@@ -149,7 +149,7 @@ Használja a következő javaslatokat a virtuális tömbhöz társított Storage
   
   * Azt javasoljuk, hogy a késések csökkentése érdekében a távoli irodában/fiókirodában legközelebb eső régióban hozza létre a StorSimple virtuális tömböt.
   * Vegye figyelembe, hogy a Storage-fiókok nem helyezhetők át különböző régiókban. Emellett a szolgáltatás nem helyezhető át az előfizetések között.
-  * Használjon olyan Storage-fiókot, amely redundanciát valósít meg az adatközpontok között. A rendszer a Geo-redundáns tárolást (GRS), a Zone redundáns tárolást (ZRS) és a helyileg redundáns tárolást (LRS) is támogatja a virtuális tömbben való használathoz. A különböző típusú Storage-fiókokkal kapcsolatos további információkért nyissa meg az [Azure Storage-replikációt](../storage/common/storage-redundancy.md).
+  * Használjon olyan Storage-fiókot, amely redundanciát valósít meg az adatközpontok között. A Geo-Redundant Storage (GRS), a Zone redundáns Storage (ZRS) és a helyileg redundáns tárolás (LRS) egyaránt támogatott a virtuális tömbben való használathoz. A különböző típusú Storage-fiókokkal kapcsolatos további információkért nyissa meg az [Azure Storage-replikációt](../storage/common/storage-redundancy.md).
 
 ### <a name="shares-and-volumes"></a>Megosztások és kötetek
 A StorSimple virtuális tömbben akkor oszthat ki megosztásokat, ha fájlkiszolgálóként és kötetként van konfigurálva iSCSI-kiszolgálóként. A megosztások és kötetek létrehozásával kapcsolatos ajánlott eljárások a mérethez és a konfigurált típushoz kapcsolódnak.
@@ -287,6 +287,6 @@ Előfordulhat, hogy több virtuális tömböt kell központilag telepíteni ahho
 * Több virtuális tömb üzembe helyezése esetén javasolt a terheléselosztási perspektívából a tömböt a különböző hypervisor-gazdagépekre terjeszteni.
 * Több virtuális tömb (ha fájlkiszolgáló vagy iSCSI-kiszolgálóként van konfigurálva) elosztott fájlrendszer névtérben is üzembe helyezhető. A részletes lépésekért látogasson el a [hibrid felhőalapú tárolás telepítési útmutatóját a elosztott fájlrendszer névtér megoldásához](https://www.microsoft.com/download/details.aspx?id=45507). Elosztott fájlrendszer replikáció használata jelenleg nem ajánlott a virtuális tömbben való használathoz. 
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 Ismerje meg, hogyan [felügyelheti a StorSimple virtuális tömböt](storsimple-virtual-array-manager-service-administration.md) a StorSimple Manager szolgáltatáson keresztül.
 

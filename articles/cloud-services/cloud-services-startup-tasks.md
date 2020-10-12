@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 07/05/2017
 ms.author: tagore
 ms.openlocfilehash: fa48953e5e86ffa758fe556b7fb1072be9d74647
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75360310"
 ---
 # <a name="how-to-configure-and-run-startup-tasks-for-a-cloud-service"></a>Felhőalapú szolgáltatás indítási feladatainak konfigurálása és futtatása
@@ -154,10 +154,10 @@ Ismerje meg, hogyan hajthat végre [gyakori indítási feladatokat](cloud-servic
 A felhőalapú szolgáltatás [becsomagolása](cloud-services-model-and-package.md) .  
 
 [ServiceDefinition. csdef]: cloud-services-model-and-package.md#csdef
-[Tevékenység]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Task
+[Feladat]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Task
 [Indítás]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Startup
 [Futtatókörnyezet]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Runtime
-[Környezet]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Environment
+[Environment]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Environment
 [Változó]: https://msdn.microsoft.com/library/azure/gg557552.aspx#Variable
 [RoleInstanceValue]: https://msdn.microsoft.com/library/azure/gg557552.aspx#RoleInstanceValue
 [RoleEnvironment]: https://msdn.microsoft.com/library/azure/microsoft.windowsazure.serviceruntime.roleenvironment.aspx

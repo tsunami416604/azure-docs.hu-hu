@@ -4,10 +4,10 @@ description: Ismerje meg, hogyan kezelheti és figyelheti az Azure-beli virtuál
 ms.topic: conceptual
 ms.date: 08/02/2020
 ms.openlocfilehash: 5a677221f16d00c19ee7083b72540ac7e1bb9cd0
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89145433"
 ---
 # <a name="manage-azure-vm-backups-with-azure-backup-service"></a>Azure-beli virtuális gépek biztonsági másolatainak kezelése Azure Backup szolgáltatással
@@ -30,13 +30,13 @@ A biztonsági mentéseket az irányítópult használatával és az egyes virtu�
 Virtuális gépek megtekintése a tároló irányítópultján:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
-1. A bal oldali menüben válassza a **minden szolgáltatás**lehetőséget.
+1. A bal oldali menüben válassza a **Minden szolgáltatás** lehetőséget.
 
-    ![Minden szolgáltatás kiválasztása](./media/backup-azure-manage-vms/select-all-services.png)
+    ![Válassza a Minden szolgáltatás elemet](./media/backup-azure-manage-vms/select-all-services.png)
 
-1. A **minden szolgáltatás** párbeszédpanelen írja be a *Recovery Services*értéket. Az erőforrás-szűrők listája a bemenet alapján. Az erőforrások listájában válassza a **Recovery Services**-tárolók lehetőséget.
+1. A **Minden szolgáltatás** párbeszédpanelen írja be a következőt: *Recovery Services*. A rendszer a megadott kulcsszavak alapján szűri az erőforrások listáját. Az erőforrások listájából válassza a **Recovery Services-tárolók** elemet.
 
-    ![Adja meg és válassza ki Recovery Services tárolókat](./media/backup-azure-manage-vms/all-services.png)
+    ![Recovery Services-tárolók megadása és kiválasztása](./media/backup-azure-manage-vms/all-services.png)
 
     Megjelenik az előfizetésben található Recovery Services-tárolók listája.
 
@@ -86,7 +86,7 @@ Biztonsági mentési szabályzat kezelése:
 
      ![Biztonsági mentési szabályzat kiválasztása](./media/backup-azure-manage-vms/backup-policy-create-new.png)
 
-## <a name="run-an-on-demand-backup"></a>Igény szerinti biztonsági mentés futtatása
+## <a name="run-an-on-demand-backup"></a>Igény szerinti biztonsági mentések futtatása
 
 A virtuális gép igény szerinti biztonsági mentését a védelem beállítása után is futtathatja. Tartsa szem előtt az alábbi adatokat:
 

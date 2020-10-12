@@ -14,17 +14,17 @@ ms.topic: article
 ms.date: 07/19/2019
 ms.author: tehnoonr
 ms.openlocfilehash: a09c15466a4a9f62b2696b087cb7ab23cc767379
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75430573"
 ---
 # <a name="failed-to-update-api-management-service-hostnames"></a>Nem sikerült frissíteni API Management Service-gazdagépeket
 
 Ez a cikk a "nem sikerült frissíteni API Management Service hostnames" hibát mutatja be, amely akkor fordulhat elő, ha egyéni tartományt ad hozzá az Azure API Management szolgáltatáshoz. Ez a cikk a probléma megoldásához nyújt hibaelhárítási lépéseket.
 
-## <a name="symptoms"></a>Probléma
+## <a name="symptoms"></a>Hibajelenségek
 
 Ha a API Management szolgáltatáshoz egyéni tartományt próbál felvenni egy Azure Key Vault tanúsítványának használatával, a következő hibaüzenet jelenik meg:
 

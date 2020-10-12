@@ -9,10 +9,10 @@ ms.service: iot-dps
 services: iot-dps
 manager: timlt
 ms.openlocfilehash: 8bd896573dbd0b24df11c0d66009098de19654ac
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74974938"
 ---
 # <a name="how-to-manage-device-enrollments-with-azure-portal"></a>Az eszközök regisztrálásának kezelése az Azure Portal használatával
@@ -32,9 +32,9 @@ Az eszközöket kétféleképpen lehet regisztrálni a kiépítési szolgáltat�
   1. Kattintson arra az eszköz-kiépítési szolgáltatásra, amelyhez regisztrálni kívánja az eszközt az erőforrások listájából.  
   1. A kiépítési szolgáltatásban:  
      a. Kattintson a **regisztrációk kezelése**lehetőségre, majd válassza a **regisztrációs csoportok** lapot.  
-     b. Kattintson a felül lévő **Hozzáadás** gombra.  
+     b. Kattintson a felül található **Hozzáadás** gombra.  
      c. Amikor megjelenik a "beléptetési csoport hozzáadása" panel, adja meg a beléptetési lista bejegyzésének információit.  A **csoport nevét** kötelező megadni. Válassza a "CA vagy Intermediate" lehetőséget is a **tanúsítvány típusához**, majd töltse fel az eszközök csoport **elsődleges tanúsítványát** .  
-     d. Kattintson a **Save** (Mentés) gombra. A regisztrációs csoport sikeres létrehozásakor a csoport neve jelenik meg a **regisztrációs csoportok** lapon.  
+     d. Kattintson a **Mentés** gombra. A regisztrációs csoport sikeres létrehozásakor a csoport neve jelenik meg a **regisztrációs csoportok** lapon.  
 
      [![Beléptetési csoport a portálon](./media/how-to-manage-enrollments/group-enrollment.png)](./media/how-to-manage-enrollments/group-enrollment.png#lightbox)
     
@@ -47,9 +47,9 @@ Az eszközöket kétféleképpen lehet regisztrálni a kiépítési szolgáltat�
     1. Kattintson arra az eszköz-kiépítési szolgáltatásra, amelyhez regisztrálni kívánja az eszközt az erőforrások listájából.
     1. A kiépítési szolgáltatásban:  
        a. Kattintson a **regisztrációk kezelése**lehetőségre, majd válassza az **Egyéni regisztrációk** lapot.  
-       b. Kattintson a felül lévő **Hozzáadás** gombra.   
+       b. Kattintson a felül található **Hozzáadás** gombra.   
        c. Amikor megjelenik a "regisztráció hozzáadása" panel, adja meg a beléptetési lista bejegyzésének információit. Először válassza ki az eszköz igazolási **mechanizmusát** (X. 509 vagy TPM). Az X. 509 igazolásához fel kell töltenie az eszközhöz tartozó levél **elsődleges tanúsítványát** . A TPM használatához meg kell adnia az eszköz **igazolási kulcsát** és **regisztrációs azonosítóját** .  
-       d. Kattintson a **Save** (Mentés) gombra. A regisztrációs csoport sikeres létrehozásakor látnia kell az eszközt az **Egyéni regisztrációk** lapon.  
+       d. Kattintson a **Mentés** gombra. A regisztrációs csoport sikeres létrehozásakor látnia kell az eszközt az **Egyéni regisztrációk** lapon.  
 
        [![Egyéni regisztráció a portálon](./media/how-to-manage-enrollments/individual-enrollment.png)](./media/how-to-manage-enrollments/individual-enrollment.png#lightbox)
 

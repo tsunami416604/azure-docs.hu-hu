@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: bba3666fbce6a8ea591654d1abdad319f1e0857c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86999517"
 ---
 # <a name="use-windows-powershell-for-storsimple-to-administer-your-device"></a>Eszköz felügyelete a Windows PowerShell StorSimple-bővítményével
@@ -50,14 +50,14 @@ Győződjön meg arról, hogy a következő Putty-beállításokat használja a 
 1. A PuTTY **újrakonfigurálása** párbeszédpanel **Kategória** ablaktábláján válassza a **billentyűzet**elemet.
 2. Győződjön meg arról, hogy a következő beállítások vannak kiválasztva (az új munkamenet indításakor ez az alapértelmezett beállítás).
    
-   | Billentyûzet eleme | Válassza ezt: |
+   | Billentyûzet eleme | Kiválasztás |
    | --- | --- |
    | Backspace-kulcs |Control-? (127) |
    | Kezdőlap és a Befejezés kulcsa |Standard |
    | Funkcióbillentyűk és billentyűzet |ESC [n ~ |
    | Kurzor kulcsainak kezdeti állapota |Normál |
    | Numerikus billentyűzet kezdeti állapota |Normál |
-   | További billentyűzet-funkciók engedélyezése |A Control-Alt eltér a AltGr |
+   | További billentyűzet-funkciók engedélyezése |Control-Alt eltér a AltGr |
    
     ![Támogatott Putty-beállítások](./media/storsimple-windows-powershell-administration/IC740877.png)
 3. Kattintson az **Alkalmaz** gombra.
@@ -157,8 +157,8 @@ A következő rövid leírást nyújt a Windows PowerShell-felület súgójának
 
 ### <a name="to-get-help-for-a-cmdlet"></a>A parancsmag súgójának beszerzése
 
-* Ha bármilyen parancsmaghoz vagy függvényhez szeretne segítséget kérni, használja a következő parancsot:`Get-Help <cmdlet-name>`
-* Bármely parancsmag online súgójának beszerzéséhez használja az előző parancsmagot a következő `-Online` paraméterrel:`Get-Help <cmdlet-name> -Online`
+* Ha bármilyen parancsmaghoz vagy függvényhez szeretne segítséget kérni, használja a következő parancsot: `Get-Help <cmdlet-name>`
+* Bármely parancsmag online súgójának beszerzéséhez használja az előző parancsmagot a következő `-Online` paraméterrel: `Get-Help <cmdlet-name> -Online`
 * A teljes súgóhoz használhatja a `–Full` paramétert, és példákat is használhat a `–Examples` paraméterrel.
 
 ### <a name="to-update-help"></a>A Súgó frissítése
@@ -167,7 +167,7 @@ A súgót egyszerűen frissítheti a Windows PowerShell felületén. A következ
 
 #### <a name="to-update-cmdlet-help"></a>A parancsmag súgójának frissítése
 1. Indítsa el a Windows PowerShellt a **Futtatás rendszergazdaként** beállítással.
-2. A parancssorba írja be a következőt:`Update-Help`
+2. A parancssorba írja be a következőt:  `Update-Help`
 3. A frissített súgófájlok lesznek telepítve.
 4. A súgófájlok telepítését követően írja be a következőt: `Get-Help Get-Command` . Megjeleníti azoknak a parancsmagoknak a listáját, amelyekhez a Súgó elérhető.
 

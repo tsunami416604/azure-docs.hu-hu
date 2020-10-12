@@ -7,10 +7,10 @@ ms.service: cache
 ms.topic: conceptual
 ms.date: 10/18/2019
 ms.openlocfilehash: 12d78846f5892e71388de6e6e76b868f9b14d4de
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88008916"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-server-side-issues"></a>Az Azure Cache for Redis kiszolgálóoldali hibáinak elhárítása
@@ -35,12 +35,12 @@ A kiszolgálóoldali memória-terhelés a kérelmek feldolgozását késleltető
 
 A Redis két statisztikát tesz elérhetővé az [info](https://redis.io/commands/info) paranccsal, amely segíthet a probléma azonosításában: "used_memory" és "used_memory_rss". Ezek a [metrikák](cache-how-to-monitor.md#view-metrics-with-azure-monitor) a portál használatával tekinthetők meg.
 
-Több lehetséges módosítást is végezhet a memóriahasználat kifogástalan megőrzése érdekében:
+Számos különféle módosítást végezhet, hogy a memóriahasználat megfelelő maradjon:
 
-- [Állítsa be a memória-házirendet](cache-configure.md#maxmemory-policy-and-maxmemory-reserved) , és állítsa be a lejárati időt a kulcsokra. Előfordulhat, hogy ez a szabályzat nem elegendő, ha töredezettsége van.
+- [Állítsa be a memória-házirendet](cache-configure.md#maxmemory-policy-and-maxmemory-reserved) , és állítsa be a lejárati időt a kulcsokra. Töredezettség esetén előfordulhat, hogy ez a szabályzat nem lesz elegendő.
 - [Állítson be egy olyan maxmemory foglalt értéket](cache-configure.md#maxmemory-policy-and-maxmemory-reserved) , amely elég nagy a memória töredezettségének kompenzálására.
-- Bontsa ki a nagy gyorsítótárban lévő objektumokat kisebb kapcsolódó objektumokra.
-- [Riasztásokat hozhat létre](cache-how-to-monitor.md#alerts) a metrikák, például a használt memória számára, hogy korán értesüljön a lehetséges hatásokról.
+- Ossza fel a nagy méretű, gyorsítótárazott objektumokat kisebb kapcsolódó objektumokra.
+- [Hozzon létre riasztásokat](cache-how-to-monitor.md#alerts) olyan metrikákhoz, mint a felhasznált memória mennyisége, így hamar értesülhet a lehetséges hatásokról.
 - Nagyobb méretű gyorsítótár-méretre [méretezheti](cache-how-to-scale.md) a memóriát.
 
 ## <a name="high-cpu-usage-or-server-load"></a>Magas CPU-használat vagy-kiszolgáló terhelése
@@ -70,7 +70,7 @@ A "cache Read" és a "cache Write" metrikák használatával megtekintheti, hogy
 Az olyan helyzetek enyhítése, amikor a hálózati sávszélesség-használat a maximális kapacitáshoz közeledik:
 
 - Az ügyfél hívási viselkedésének módosítása a hálózati igény csökkentése érdekében.
-- [Riasztásokat hozhat létre](cache-how-to-monitor.md#alerts) olyan mérőszámokon, mint például a gyorsítótár olvasási vagy gyorsítótár-írási lehetősége, hogy korán értesüljön a lehetséges hatásokról.
+- [Hozzon létre riasztásokat](cache-how-to-monitor.md#alerts) olyan metrikákhoz, mint például a gyorsítótár-olvasás vagy a gyorsítótárírás, így idejekorán értesülhet a lehetséges negatív hatásokról.
 - Nagyobb méretű gyorsítótár-méretre [Méretezés](cache-how-to-scale.md) nagyobb hálózati sávszélesség-kapacitással.
 
 ## <a name="additional-information"></a>További információ
@@ -78,5 +78,5 @@ Az olyan helyzetek enyhítése, amikor a hálózati sávszélesség-használat a
 - [Az Azure Cache for Redis ügyféloldali hibáinak elhárítása](cache-troubleshoot-client.md)
 - [A megfelelő szint kiválasztása](cache-overview.md#choosing-the-right-tier)
 - [Hogyan lehet teljesítménytesztet és tesztelni a gyorsítótár teljesítményét?](cache-management-faq.md#how-can-i-benchmark-and-test-the-performance-of-my-cache)
-- [Az Azure cache figyelése a Redis](cache-how-to-monitor.md)
+- [Az Azure Cache for Redis monitorozása](cache-how-to-monitor.md)
 - [Hogyan Futtathatok Redis-parancsokat?](cache-development-faq.md#how-can-i-run-redis-commands)

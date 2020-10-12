@@ -10,10 +10,10 @@ ms.date: 04/15/2020
 ms.author: euang
 ms.reviewer: euang
 ms.openlocfilehash: 6a38b61ee03aa4853526586ca60542bd3641b66f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91249399"
 ---
 # <a name="what-is-delta-lake"></a>Mi az a Delta Lake?
@@ -24,7 +24,7 @@ Az Azure szinapszis által tartalmazott Delta Lake aktuális verziója a Scala, 
 
 ## <a name="key-features"></a>A legfontosabb jellemzők
 
-| Funkció | Leírás |
+| Szolgáltatás | Leírás |
 | --- | --- |
 | **SAVAS tranzakciók** | Az adattavak jellemzően több folyamaton és folyamaton keresztül vannak feltöltve, amelyek némelyike az olvasással párhuzamosan ír adatokat. A Delta Lake és a tranzakciók hozzáadását megelőzően az adatmérnököknek az adatok integritásának biztosítására szolgáló manuális hiba miatt kellett átesniük. A Delta Lake ismerős savas tranzakciókat biztosít az adattavak számára. Szerializált, az elkülönítési szint legerősebb szintjét biztosítja. Ismerkedjen meg [a Delta Lake-be: a tranzakciónapló kicsomagolásával](https://databricks.com/blog/2019/08/21/diving-into-delta-lake-unpacking-the-transaction-log.html).|
 | **Méretezhető metaadatok kezelésére** | A big data még a metaadatok is lehetnek "big data". A Delta Lake az adatokhoz hasonlóan kezeli a metaadatokat, és kihasználja a Spark elosztott feldolgozási teljesítményét az összes metaadatának kezeléséhez. Ennek eredményeképpen a Delta Lake könnyedén kezelheti a több milliárd partíciót és fájlt tartalmazó petabyte táblázatokat. |

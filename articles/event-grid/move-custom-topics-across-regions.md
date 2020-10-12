@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 08/28/2020
 ms.openlocfilehash: d0656a4f6ec1c7431cf7111f786b0f1d779166e3
-ms.sourcegitcommit: d7352c07708180a9293e8a0e7020b9dd3dd153ce
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89145339"
 ---
 # <a name="move-azure-event-grid-custom-topics-to-another-region"></a>Egyéni témakörök áthelyezése másik régióba Azure Event Grid
@@ -38,22 +38,10 @@ Első lépésként exportáljon egy Resource Manager-sablont az egyéni témakö
     :::image type="content" source="./media/move-custom-topics-across-regions/search-topics.png" alt-text="Event Grid témakörök keresése és kiválasztása":::
 3. Válassza ki azt a **témakört** , amelyet egy Resource Manager-sablonba szeretne exportálni. 
 
-    :::image type="content" source="./media/move-custom-topics-across-regions/select-custom-topic.png" alt-text="Egyéni témakör kiválasztása":::   
+    :::image type="content" source="./media/move-custom-topics-across-regions/select-custom-topic.png" alt-text="Event Grid témakörök keresése és kiválasztása":::   
 4. A **Event Grid témakör** lapon válassza a bal oldali **menüben a** **sablon exportálása** lehetőséget, majd válassza a **Letöltés** lehetőséget az eszköztáron. 
 
-    :::image type="content" source="./media/move-custom-topics-across-regions/export-template-download.png" alt-text="Sablon exportálása – > Letöltés":::   
-
-    > [!IMPORTANT]
-    > A rendszer csak a témakört exportálja a sablonba. A témakör előfizetései nem lesznek exportálva. Ezért elő kell készítenie a témakör előfizetéseit, miután áthelyezte a témakört a célhelyre. 
-5. Keresse meg a portálról letöltött **. zip** fájlt, és bontsa ki a fájlt egy tetszőleges mappába. Ez a zip-fájl sablon-és Parameters JSON-fájlokat tartalmaz. 
-1. Nyissa ** meg atemplate.jst** egy tetszőleges szerkesztőben. 
-8. `location`A **témakör** erőforrásának frissítése a célként megadott régióba vagy helyre. A helykód beszerzéséhez tekintse meg az [Azure-helyek](https://azure.microsoft.com/global-infrastructure/locations/)című témakört. A régió kódja a régió neve, szóközök nélkül, például `West US` egyenlő `westus` .
-
-    ```json
-    "type": "Microsoft.EventGrid/topics",
-    "apiVersion": "2020-06-01",
-    "name": "[parameters('topics_mytopic0130_name')]",
-    "location": "westus"
+    :::image type="content" source="./media/move-custom-topics-across-regions/export-template-download.png" alt-text="Event Grid témakörök keresése és kiválasztása"
     ```
 1. **Mentse** a sablont. 
 
@@ -74,14 +62,14 @@ A sablon üzembe helyezésével egyéni témakört hozhat létre a célhelyen.
     1. A **témakör neve**mezőben adjon meg egy új nevet a témakörhöz. 
     1. Kattintson a lap alján található **felülvizsgálat + létrehozás** lehetőségre. 
     
-        :::image type="content" source="./media/move-custom-topics-across-regions/deploy-template.png" alt-text="Egyéni telepítés":::
+        :::image type="content" source="./media/move-custom-topics-across-regions/deploy-template.png" alt-text="Event Grid témakörök keresése és kiválasztása":::
     1. A **felülvizsgálat + létrehozás** lapon tekintse át a beállításokat, majd válassza a **Létrehozás**lehetőséget. 
 
 ## <a name="verify"></a>Ellenőrzés
 
 1. Miután az üzembe helyezés sikeres volt, válassza az **Ugrás erőforráshoz**lehetőséget. 
 
-    :::image type="content" source="./media/move-custom-topics-across-regions/navigate-custom-topic.png" alt-text="Erőforrás megnyitása":::
+    :::image type="content" source="./media/move-custom-topics-across-regions/navigate-custom-topic.png" alt-text="Event Grid témakörök keresése és kiválasztása":::
 1. Ellenőrizze, hogy megjelenik-e az egyéni témakör **Event Grid témakör** lapja.   
 1. Az [Egyéni események átirányítása webes végpontra](custom-event-quickstart-portal.md#send-an-event-to-your-topic) című szakasz lépéseit követve küldhet eseményeket a témakörbe. Ellenőrizze, hogy a webhook-eseménykezelő meghívása megtörtént-e. 
 

@@ -8,10 +8,10 @@ ms.service: data-factory
 ms.topic: conceptual
 ms.date: 11/01/2019
 ms.openlocfilehash: e63c3f329cb9c1fd5ca91274540f5145c3ad098a
-ms.sourcegitcommit: dee7b84104741ddf74b660c3c0a291adf11ed349
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85921547"
 ---
 # <a name="transformation-functions-in-wrangling-data-flow"></a>Transzformációs függvények a huzavona-adatfolyamban
@@ -68,15 +68,15 @@ A következő M függvény oszlopok hozzáadása vagy átalakítása: [table. Ad
 ----------------------
 * Power Query egy beágyazott illesztést fog létrehozni (Table. NestedJoin; a felhasználók manuálisan is írhatnak [table. AddJoinColumn](https://docs.microsoft.com/powerquery-m/table-addjoincolumn)).
     A felhasználóknak ezt követően ki kell bontaniuk a beágyazott illesztési oszlopot egy nem beágyazott illesztésbe (Table. ExpandTableColumn, más kontextusban nem támogatott).
-* Az M Function [tábla. az JOIN](https://docs.microsoft.com/powerquery-m/table-join) közvetlenül is írható, így elkerülhető, hogy további bővítési lépésre van szükség, de a felhasználónak biztosítania kell, hogy ne legyenek duplikált oszlopnevek az összekapcsolt táblák között.
-* Támogatott illesztési típus: [Inner](https://docs.microsoft.com/powerquery-m/joinkind-inner), [LeftOuter](https://docs.microsoft.com/powerquery-m/joinkind-leftouter), [RightOuter](https://docs.microsoft.com/powerquery-m/joinkind-rightouter), [FullOuter](https://docs.microsoft.com/powerquery-m/joinkind-fullouter)
-* A [Value. Equals](https://docs.microsoft.com/powerquery-m/value-equals) és az [Value. NullableEquals](https://docs.microsoft.com/powerquery-m/value-nullableequals) egyaránt támogatott a kulcsfontosságú esélyegyenlőségi Összehasonlításként
+* Az M Function   [tábla. az JOIN](https://docs.microsoft.com/powerquery-m/table-join) közvetlenül is írható, így elkerülhető, hogy további bővítési lépésre van szükség, de a felhasználónak biztosítania kell, hogy ne legyenek duplikált oszlopnevek az összekapcsolt táblák között.
+* Támogatott illesztési típus:   [Inner](https://docs.microsoft.com/powerquery-m/joinkind-inner),   [LeftOuter](https://docs.microsoft.com/powerquery-m/joinkind-leftouter),   [RightOuter](https://docs.microsoft.com/powerquery-m/joinkind-rightouter),   [FullOuter](https://docs.microsoft.com/powerquery-m/joinkind-fullouter)
+* A   [Value. Equals](https://docs.microsoft.com/powerquery-m/value-equals) és az   [Value. NullableEquals](https://docs.microsoft.com/powerquery-m/value-nullableequals) egyaránt támogatott a kulcsfontosságú esélyegyenlőségi Összehasonlításként
 
 ## <a name="group-by"></a>Csoportosítási szempont
 
 A [table. Group](https://docs.microsoft.com/powerquery-m/table-group) használatával összesítheti az értékeket.
 * Összesítési függvénnyel kell használni
-* Támogatott aggregációs függvények: [table. sorszám](https://docs.microsoft.com/powerquery-m/table-rowcount), [List. SZUM](https://docs.microsoft.com/powerquery-m/list-sum), [lista. Count](https://docs.microsoft.com/powerquery-m/list-count), [Listázás. Average](https://docs.microsoft.com/powerquery-m/list-average), [lista. min](https://docs.microsoft.com/powerquery-m/list-min), [lista. max](https://docs.microsoft.com/powerquery-m/list-max), [List. StandardDeviation](https://docs.microsoft.com/powerquery-m/list-standarddeviation), [Listázás. First](https://docs.microsoft.com/powerquery-m/list-first), [Listázás. Last](https://docs.microsoft.com/powerquery-m/list-last)
+* Támogatott aggregációs függvények:   [table. sorszám](https://docs.microsoft.com/powerquery-m/table-rowcount),   [List. SZUM](https://docs.microsoft.com/powerquery-m/list-sum),   [lista. Count](https://docs.microsoft.com/powerquery-m/list-count),   [Listázás. Average](https://docs.microsoft.com/powerquery-m/list-average),   [lista. min](https://docs.microsoft.com/powerquery-m/list-min),   [lista. max](https://docs.microsoft.com/powerquery-m/list-max),   [List. StandardDeviation](https://docs.microsoft.com/powerquery-m/list-standarddeviation),   [Listázás. First](https://docs.microsoft.com/powerquery-m/list-first),   [Listázás. Last](https://docs.microsoft.com/powerquery-m/list-last)
 
 ## <a name="sorting"></a>Rendezés
 
@@ -88,7 +88,7 @@ Tartsa meg és távolítsa el a Top, Keep Range (megfelelő M függvények, csak
 
 ## <a name="known-unsupported-functions"></a>Ismert nem támogatott függvények
 
-| Függvény | Állapot |
+| Függvény | status |
 | -- | -- |
 | Table.PromoteHeaders | Nem támogatott. Ugyanezt az eredményt az "első sor fejlécként" beállítással lehet megvalósítani az adatkészletben. |
 | Table.CombineColumns | Ez egy olyan gyakori forgatókönyv, amely közvetlenül nem támogatott, de úgy érhető el, hogy hozzáad egy új oszlopot, amely két adott oszlopot ÖSSZEFŰZ.  Például: table. AddColumn (RemoveEmailColumn, "Name", each [FirstName] & "" & [LastName]) |

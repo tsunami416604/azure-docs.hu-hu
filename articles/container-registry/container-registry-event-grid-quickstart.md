@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 08/23/2018
 ms.custom: seodec18
 ms.openlocfilehash: dbeba56820a520e3435eeb0c5c8dbc5aae981241
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "78403240"
 ---
 # <a name="quickstart-send-events-from-private-container-registry-to-event-grid"></a>Gyors útmutató: események küldése a privát tároló beállításjegyzékből a Event Gridba
@@ -19,7 +19,7 @@ A cikk lépéseinek elvégzése után a tároló-beállításjegyzékből eljutt
 
 ![Webböngésző – a minta-webalkalmazás három fogadott eseménysel való megjelenítése][sample-app-01]
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot][azure-account].
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot][azure-account], mielőtt hozzákezd.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -35,7 +35,7 @@ RESOURCE_GROUP_NAME=myResourceGroup
 az group create --name $RESOURCE_GROUP_NAME --location eastus
 ```
 
-## <a name="create-a-container-registry"></a>Tároló-beállításjegyzék létrehozása
+## <a name="create-a-container-registry"></a>Tárolóregisztrációs adatbázis létrehozása
 
 Ezután helyezzen üzembe egy tároló-beállításjegyzéket az erőforráscsoporthoz az alábbi parancsokkal. Az az [ACR Create][az-acr-create] parancs futtatása előtt állítsa be a `ACR_NAME` beállításjegyzék nevét. A névnek egyedinek kell lennie az Azure-on belül, és 5-50 alfanumerikus karakterre van korlátozva.
 
@@ -202,7 +202,7 @@ Az alábbi képernyőfelvételen a három eseménnyel rendelkező minta alkalmaz
 
 Gratulálunk! Ha a és az `ImagePushed` `ImageDeleted` eseményeket látja, a beállításjegyzék az eseményeket Event Gridba küldi, és Event Grid továbbítja ezeket az eseményeket a webalkalmazás-végpontnak.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha elkészült az ebben a rövid útmutatóban létrehozott erőforrásokkal, az alábbi Azure CLI-paranccsal törölheti őket. Egy erőforráscsoport törlésekor a benne lévő összes erőforrás véglegesen törlődik.
 
