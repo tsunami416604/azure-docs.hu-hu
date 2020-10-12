@@ -1,7 +1,7 @@
 ---
-title: 'PCA-alapú anomáliák észlelése: modul leírása'
+title: 'PCA-Based anomália észlelése: modul leírása'
 titleSuffix: Azure Machine Learning
-description: Ismerje meg, hogy a PCA-alapú anomáliák észlelési moduljának használatával hogyan hozhat létre egy anomália-észlelési modellt az elsődleges összetevők elemzése (PCA) alapján.
+description: Megtudhatja, hogyan hozhat létre a PCA-Based rendellenesség-észlelési modullal egy, a fő összetevő-elemzésen (PCA) alapuló anomália-észlelési modellt.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,19 +10,19 @@ author: likebupt
 ms.author: keli19
 ms.date: 02/22/2020
 ms.openlocfilehash: fa90fcb9ebc17be9a658b08873234eada98b0fba
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90898465"
 ---
-# <a name="pca-based-anomaly-detection-module"></a>PCA-alapú anomáliák észlelése modul
+# <a name="pca-based-anomaly-detection-module"></a>PCA-Based rendellenesség-észlelési modul
 
-Ez a cikk azt ismerteti, hogyan használható a Azure Machine Learning Designer PCA-alapú rendellenesség-észlelési modulja, amely az elsődleges összetevők elemzése (PEM) alapján anomália-észlelési modellt hoz létre.
+Ez a cikk azt ismerteti, hogyan használható a PCA-Based anomáliák észlelése modul a Azure Machine Learning Designerben, hogy a fő összetevők elemzése (PCA) alapján hozzon létre egy anomália-észlelési modellt.
 
 Ez a modul segítséget nyújt olyan modellek létrehozásában, amelyekben könnyű beolvasni az egyik osztályból származó betanítási adatait, például az érvényes tranzakciókat, de nehéz a megcélzó rendellenességeket kielégítő mintákat beolvasni. 
 
-Ha például a csalárd tranzakciókat szeretné felderíteni, gyakran nincs elég példa arra, hogy betanítsa a csalást. Előfordulhat azonban, hogy sok példája van a jó tranzakciókkal kapcsolatban. A PEM-alapú anomáliák észlelése modul megoldja a problémát az elérhető szolgáltatások elemzésével, amely meghatározza, hogy mit jelent a "normál" osztály. A modul ezután a távolsági metrikákat alkalmazza a rendellenességeket képviselő esetek azonosítására. Ez a megközelítés lehetővé teszi a modell betanítását meglévő, kiegyensúlyozatlan adatértékek használatával.
+Ha például a csalárd tranzakciókat szeretné felderíteni, gyakran nincs elég példa arra, hogy betanítsa a csalást. Előfordulhat azonban, hogy sok példája van a jó tranzakciókkal kapcsolatban. A PCA-Based rendellenesség-észlelési modul megoldja a problémát az elérhető szolgáltatások elemzésével, amely meghatározza, hogy mit jelent a "normál" osztály. A modul ezután a távolsági metrikákat alkalmazza a rendellenességeket képviselő esetek azonosítására. Ez a megközelítés lehetővé teszi a modell betanítását meglévő, kiegyensúlyozatlan adatértékek használatával.
 
 ## <a name="more-about-principal-component-analysis"></a>További tudnivalók a fő összetevők elemzéséről
 
@@ -38,7 +38,7 @@ A PEM működéséről és az anomáliák észlelésének megvalósításáról 
 
 - [Véletlenszerű szerkezetű struktúra keresése: valószínűségi algoritmusok a](http://users.cms.caltech.edu/~jtropp/papers/HMT11-Finding-Structure-SIREV.pdf) Halko, a Martinsson és a TROPP
 
-## <a name="how-to-configure-pca-based-anomaly-detection"></a>A PCA-alapú anomáliák észlelésének konfigurálása
+## <a name="how-to-configure-pca-based-anomaly-detection"></a>PCA-Based anomáliák észlelésének konfigurálása
 
 1. Adja hozzá a **PCA-alapú anomália-észlelési** modult a folyamathoz a tervezőben. Ez a modul az **anomáliák észlelése** kategóriában található.
 

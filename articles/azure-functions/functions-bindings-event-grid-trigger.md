@@ -7,10 +7,10 @@ ms.date: 02/14/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, fasttrack-edit, devx-track-python
 ms.openlocfilehash: 96daa93c28617bd34f263b11afcd244e3b7bacf0
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88214139"
 ---
 # <a name="azure-event-grid-trigger-for-azure-functions"></a>Azure Functions Azure Event Grid trigger
@@ -307,7 +307,7 @@ A [EventGridTrigger](https://github.com/Azure/azure-functions-java-library/blob/
 
 Az alábbi táblázat a *function.js* fájlon beállított kötési konfigurációs tulajdonságait ismerteti. Nincsenek beállítva konstruktor-paraméterek vagy tulajdonságok az `EventGridTrigger` attribútumban.
 
-|function.jsa tulajdonságon |Description|
+|function.jsa tulajdonságon |Leírás|
 |---------|---------|
 | **típusa** | Kötelező – a következőre kell beállítani: `eventGridTrigger` . |
 | **irányba** | Kötelező – a következőre kell beállítani: `in` . |
@@ -407,7 +407,7 @@ Az Event Grid triggerrel Azure Portalban fejlesztett függvények esetében vál
 
 Ha ezt a hivatkozást választja, a portálon megnyílik az **esemény-előfizetés létrehozása** lap, amelyen már meg van adva az aktuális eseményindító-végpont.
 
-:::image type="content" source="media/functions-bindings-event-grid/endpoint-url.png" alt-text="Már definiált függvény-végponttal rendelkező esemény-előfizetés létrehozása" :::
+:::image type="content" source="media/functions-bindings-event-grid/endpoint-url.png" alt-text="Új esemény-előfizetés összekapcsolása a portálon való aktiváláshoz." :::
 
 Az előfizetések Azure Portal használatával történő létrehozásával kapcsolatos további információkért tekintse meg az [egyéni esemény-Azure Portal létrehozása](../event-grid/custom-event-quickstart-portal.md) a Event Grid dokumentációjában.
 

@@ -17,13 +17,13 @@ ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 512aed93906968b14f7c6a13e08f74bbeb2f5f31
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87431075"
 ---
-# <a name="header-based-authentication-for-single-sign-on-with-application-proxy-and-pingaccess"></a>Fejléc-alapú hitelesítés egyszeri bejelentkezéshez alkalmazásproxy és PingAccess
+# <a name="header-based-authentication-for-single-sign-on-with-application-proxy-and-pingaccess"></a>Fejlécalapú hitelesítés alkalmazásproxyval és PingAccess segítségével történő egyszeri bejelentkezéshez
 
 Az Azure Active Directory (Azure AD) alkalmazásproxy partneri kapcsolatban áll a PingAccess, így az Azure AD-ügyfelek több alkalmazáshoz is hozzáférhetnek. A PingAccess kibővíti a [meglévő alkalmazásproxy-ajánlatokat](application-proxy.md) , hogy egyszeri bejelentkezéses hozzáférést biztosítson az olyan alkalmazásokhoz, amelyek fejléceket használnak a hitelesítéshez.
 
@@ -96,7 +96,7 @@ Saját helyszíni alkalmazás közzététele:
    > [!NOTE]
    > Ha ez az első alkalmazása, az 3000-es porton kezdje el, és térjen vissza a beállítás frissítéséhez, ha módosítja a PingAccess-konfigurációt. További alkalmazások esetén a portnak meg kell egyeznie a PingAccess-ben konfigurált figyelővel. További információ a [PingAccess lévő figyelőkről](https://support.pingidentity.com/s/document-item?bundleId=pingaccess-52&topicId=reference/ui/pa_c_Listeners.html).
 
-1. Válassza a **Hozzáadás** elemet. Megjelenik az új alkalmazás Áttekintés lapja.
+1. Válassza a **Hozzáadás** lehetőséget. Megjelenik az új alkalmazás Áttekintés lapja.
 
 Most rendeljen hozzá egy felhasználót az alkalmazás teszteléséhez, és válassza a fejléc-alapú egyszeri bejelentkezés lehetőséget:
 
@@ -163,7 +163,7 @@ Az adatok összegyűjtése:
 
 1. A **Leírás**mezőbe írja be a következőt: `PingAccess key` .
 1. A **lejárat**szakaszban válassza ki a PingAccess kulcs beállításának módját: **1 év**, **2 év**vagy **soha**.
-1. Válassza a **Hozzáadás** elemet. A PingAccess kulcs az ügyfél titkos kulcsainak táblázatában jelenik meg, és egy véletlenszerű karakterláncot, amely az **érték** mezőben kitöltést eredményez.
+1. Válassza a **Hozzáadás** lehetőséget. A PingAccess kulcs az ügyfél titkos kulcsainak táblázatában jelenik meg, és egy véletlenszerű karakterláncot, amely az **érték** mezőben kitöltést eredményez.
 1. A PingAccess kulcs **értéke** mező mellett válassza a **Másolás vágólapra** ikont, majd másolja és mentse. Ezt az értéket később is megadhatja a PingAccess-ügyfél titkos kulcsaként.
 
 **A `acceptMappedClaims` mező frissítése:**
@@ -231,7 +231,7 @@ Ezek a lépések segítséget nyújtanak a PingAccess telepítéséhez és egy P
 
 Az összes lépés elvégzése után az alkalmazásnak futnia kell. A teszteléshez nyisson meg egy böngészőt, és navigáljon arra a külső URL-címre, amelyet az alkalmazás Azure-ban való közzétételekor hozott létre. Jelentkezzen be az alkalmazáshoz rendelt tesztelési fiókkal.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [A PingAccess konfigurálása az Azure AD-hoz a Microsoft Azure AD alkalmazásproxy használatával közzétett alkalmazások védelemmel való ellátásához](https://support.pingidentity.com/s/document-item?bundleId=pingaccess-52&topicId=agents/azure/pa_c_PAAzureSolutionOverview.html)
 - [Egyszeri bejelentkezés a Azure Active Directory alkalmazásaiba](what-is-single-sign-on.md)

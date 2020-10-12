@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 01/09/2020
 ms.author: cherylmc
 ms.openlocfilehash: f68631771b8f86d995108112b1243ab38bf826bc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84984797"
 ---
 # <a name="configure-a-point-to-site-connection-by-using-certificate-authentication-classic"></a>Pont – hely kapcsolat konfigurálása tanúsítványalapú hitelesítés használatával (klasszikus)
@@ -21,7 +21,7 @@ ms.locfileid: "84984797"
 Ez a cikk bemutatja, hogyan hozhat létre pont – hely kapcsolattal rendelkező VNet. Ezt a vnet a klasszikus üzemi modellel hozza létre a Azure Portal használatával. A konfiguráció önaláírt vagy hitelesítésszolgáltató által kibocsátott tanúsítványokat használ a kapcsolódó ügyfelek hitelesítéséhez. Ezt a konfigurációt egy másik központi telepítési eszközzel vagy modellel is létrehozhatja az alábbi cikkekben ismertetett beállítások használatával:
 
 > [!div class="op_single_selector"]
-> * [Azure Portalra](vpn-gateway-howto-point-to-site-resource-manager-portal.md)
+> * [Azure Portal](vpn-gateway-howto-point-to-site-resource-manager-portal.md)
 > * [PowerShell](vpn-gateway-howto-point-to-site-rm-ps.md)
 > * [(Klasszikus) Azure Portal](vpn-gateway-howto-point-to-site-classic-azure-portal.md)
 >
@@ -81,7 +81,7 @@ Mielőtt elkezdené, ellenőrizze, hogy rendelkezik-e Azure-előfizetéssel. Ha 
 
 Ha még nem rendelkezik virtuális hálózattal (VNet), hozzon létre egyet. A képernyőképek csak példaként szolgálnak. Ne felejtse el ezeket az értékeket a saját értékeire cserélni. Az alábbi lépésekkel hozhat létre virtuális hálózatokat az Azure portállal:
 
-1. A [Azure Portal](https://portal.azure.com) menüben vagy a **Kezdőlap** lapon válassza az **erőforrás létrehozása**lehetőséget. Megnyílik az **új** oldal.
+1. Az [Azure Portal](https://portal.azure.com) menüjében vagy a **Kezdőlapon** válassza az **Erőforrás létrehozása** elemet. Megnyílik az **új** oldal.
 
 2. A **Keresés a piactéren** mezőbe írja be a *virtuális hálózat* kifejezést, és válassza a **virtuális hálózat** elemet a visszaadott listából. Megnyílik a **virtuális hálózat** lap.
 
@@ -93,7 +93,7 @@ Ha még nem rendelkezik virtuális hálózattal (VNet), hozzon létre egyet. A k
 
 5. Válassza ki a használni kívánt **előfizetést** a legördülő listából.
 
-6. Válasszon ki egy meglévő **erőforráscsoportot**. Vagy hozzon létre egy új erőforráscsoportot az **új létrehozása** elem kiválasztásával, és adjon meg egy nevet. Ha új erőforráscsoportot hoz létre, a tervezett konfigurációs értékeknek megfelelően nevezze el az erőforráscsoportot. További információ az erőforráscsoportok használatáról: [Azure Resource Manager Overview (áttekintés](../azure-resource-manager/management/overview.md#resource-groups)).
+6. Válasszon ki egy meglévő **erőforráscsoportot**. Vagy hozzon létre egy új erőforráscsoportot az **új létrehozása** elem kiválasztásával, és adjon meg egy nevet. Ha új erőforráscsoportot hoz létre, a tervezett konfigurációs értékeknek megfelelően nevezze el az erőforráscsoportot. További információ az erőforráscsoportokkal kapcsolatban: [Az Azure Resource Manager áttekintése](../azure-resource-manager/management/overview.md#resource-groups).
 
 7. Válassza ki a VNet **helyét** . Ez a beállítás határozza meg a VNet üzembe helyezett erőforrások földrajzi helyét.
 
@@ -138,7 +138,7 @@ Ebben a lépésben létrehoz egy átjáró-alhálózatot és egy dinamikus útv�
  
 ## <a name="create-certificates"></a><a name="generatecerts"></a>Tanúsítványok létrehozása
 
-Az Azure tanúsítványokat használ a VPN-ügyfelek hitelesítéséhez pont – hely VPN-kapcsolatokhoz. A főtanúsítvány nyilvánoskulcs-adatait feltölti az Azure-ba. A nyilvános kulcsot Ezután *megbízhatónak*tekinti a rendszer. Az ügyféltanúsítványt a megbízható főtanúsítványból kell létrehozni, majd telepíteni kell az egyes ügyfélszámítógépekre a tanúsítványok – aktuális User\Personal\Certificates tanúsítványtárolóban. A tanúsítvány az ügyfél hitelesítésére szolgál a VNet való csatlakozáskor. 
+Az Azure tanúsítványokat használ a VPN-ügyfelek hitelesítéséhez pont – hely VPN-kapcsolatokhoz. A főtanúsítvány nyilvánoskulcs-adatait feltölti az Azure-ba. A nyilvános kulcsot Ezután *megbízhatónak*tekinti a rendszer. Az ügyféltanúsítványt a megbízható főtanúsítványból kell létrehozni, majd telepíteni kell az összes ügyfélszámítógépen a Certificates-Current User\Personal\Certificates-tanúsítványtárolóban. A tanúsítvány az ügyfél hitelesítésére szolgál a VNet való csatlakozáskor. 
 
 Ha önaláírt tanúsítványokat használ, azokat meghatározott paraméterek használatával kell létrehoznia. Létrehozhat egy önaláírt tanúsítványt a [PowerShell és a Windows 10](vpn-gateway-certificates-point-to-site.md), vagy a [MakeCert](vpn-gateway-certificates-point-to-site-makecert.md)utasítások használatával. Fontos, hogy kövesse ezeket az utasításokat, amikor önaláírt főtanúsítványokat használ, és az önaláírt főtanúsítványból állít elő ügyféltanúsítványt. Ellenkező esetben a létrehozott tanúsítványok nem lesznek kompatibilisek a P2S-kapcsolatokkal, és hibaüzenetet kap.
 

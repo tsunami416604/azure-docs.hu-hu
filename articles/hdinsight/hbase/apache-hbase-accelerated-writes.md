@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 01/24/2020
 ms.openlocfilehash: 99253aa2e7e2e1f3f58f2ab7d5c40a695c2b9690
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88654854"
 ---
 # <a name="azure-hdinsight-accelerated-writes-for-apache-hbase"></a>Azure HDInsight-beli gyorsított írási műveletek Apache HBase-hez
@@ -32,7 +32,7 @@ Ha egy **RegionServer** összeomlik vagy elérhetetlenné válik a MemStore kiü
 
 ## <a name="accelerated-writes-feature-in-azure-hdinsight-for-apache-hbase"></a>Gyorsított írási funkciók az Azure HDInsight for Apache HBase
 
-A gyorsított írási funkció megoldja a Felhőbeli tárolásban lévő írási és olvasási műveletek által okozott nagyobb írási késések problémáját.  Az Apache HBase-fürtök HDInsight gyorsított írási funkciója minden RegionServer (feldolgozó csomópont) prémium szintű SSD által felügyelt lemezeket csatol. Az írási előre megadott naplók ezután a prémium szintű felügyelt lemezekre csatlakoztatott Hadoop fájlrendszerbe (HDFS) lesznek írva, a felhőalapú tárolás helyett.  A prémium szintű Managed-Disks SSD-ket használ, és kiváló I/O-teljesítményt biztosít hibatűréssel.  A nem felügyelt lemezekkel ellentétben, ha az egyik tárolási egység leáll, az nem érinti az azonos rendelkezésre állási csoportba tartozó más tárolási egységeket.  Ennek eredményeképpen a felügyelt lemezek alacsony írási késést és nagyobb rugalmasságot biztosítanak alkalmazásai számára. Az Azure által felügyelt lemezekről az [Azure Managed Disks bemutatása](../../virtual-machines/managed-disks-overview.md)című témakörben olvashat bővebben.
+A gyorsított írási funkció megoldja a Felhőbeli tárolásban lévő írási és olvasási műveletek által okozott nagyobb írási késések problémáját.  Az Apache HBase-fürtök HDInsight gyorsított írási funkciója minden RegionServer (feldolgozó csomópont) prémium szintű SSD által felügyelt lemezeket csatol. Az írási előre megadott naplók ezután a prémium szintű felügyelt lemezekre csatlakoztatott Hadoop fájlrendszerbe (HDFS) lesznek írva, a felhőalapú tárolás helyett.  A prémium szintű felügyelt lemez Solid-State lemezeket (SSD-ket) használ, és kiváló I/O-teljesítményt biztosít hibatűréssel.  A nem felügyelt lemezekkel ellentétben, ha az egyik tárolási egység leáll, az nem érinti az azonos rendelkezésre állási csoportba tartozó más tárolási egységeket.  Ennek eredményeképpen a felügyelt lemezek alacsony írási késést és nagyobb rugalmasságot biztosítanak alkalmazásai számára. Az Azure által felügyelt lemezekről az [Azure Managed Disks bemutatása](../../virtual-machines/managed-disks-overview.md)című témakörben olvashat bővebben.
 
 ## <a name="how-to-enable-accelerated-writes-for-hbase-in-hdinsight"></a>Gyorsított írások engedélyezése a HBase a HDInsight-ben
 

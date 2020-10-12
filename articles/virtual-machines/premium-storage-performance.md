@@ -8,10 +8,10 @@ ms.date: 10/05/2020
 ms.author: rogarana
 ms.subservice: disks
 ms.openlocfilehash: f89358f4ca34c39527d7e65307ada042ba3df7e0
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91776153"
 ---
 # <a name="azure-premium-storage-design-for-high-performance"></a>Azure Premium Storage: nagy teljesítményű kialakítás
@@ -197,7 +197,7 @@ Ha meg szeretné tudni, hogy az IO-méret milyen hatással van az alkalmazás te
 
 ## <a name="high-scale-vm-sizes"></a>Nagy léptékű virtuális gépek méretei
 
-Amikor elkezd megtervezni egy alkalmazást, az egyik első teendő, válasszon egy virtuális gépet az alkalmazás üzemeltetéséhez. A Premium Storage nagy méretű virtuálisgép-méretekkel rendelkezik, amelyek nagyobb számítási teljesítményt igénylő alkalmazásokat futtathatnak, és nagy helyi lemezes I/O-teljesítményt igényelnek. Ezek a virtuális gépek gyorsabb processzorokat, nagyobb memória-mag arányt és SSD-meghajtót biztosítanak a helyi lemez számára. Példák a DS és a GS sorozatú virtuális gépeket Premium Storage támogató nagy méretű virtuális gépekre.
+Amikor elkezd megtervezni egy alkalmazást, az egyik első teendő, válasszon egy virtuális gépet az alkalmazás üzemeltetéséhez. A Premium Storage nagy méretű virtuálisgép-méretekkel rendelkezik, amelyek nagyobb számítási teljesítményt igénylő alkalmazásokat futtathatnak, és nagy helyi lemezes I/O-teljesítményt igényelnek. Ezek a virtuális gépek gyorsabb processzorokat, nagyobb memória-mag arányt és Solid-State meghajtót (SSD) biztosítanak a helyi lemez számára. Példák a DS és a GS sorozatú virtuális gépeket Premium Storage támogató nagy méretű virtuális gépekre.
 
 A nagy léptékű virtuális gépek különböző méretekben érhetők el, különböző számú CPU-mag, memória, operációs rendszer és ideiglenes lemez mérete miatt. Minden virtuálisgép-mérethez a virtuális géphez csatolható adatlemezek maximális száma is tartozik. Ezért a kiválasztott virtuálisgép-méret befolyásolja, hogy mennyi feldolgozási, memória-és tárolókapacitás érhető el az alkalmazás számára. Emellett a számítási és tárolási költségeket is befolyásolja. Az alábbi példa a DS-sorozatok és a GS-sorozatok legnagyobb virtuálisgép-méretének specifikációit mutatja be:
 
@@ -222,7 +222,7 @@ Ha azonban ugyanazt az alkalmazást Premium Storage-on üzemelteti, akkor a virt
 
 Az alábbi táblázat összefoglalja a forgatókönyvnek a standard és a Premium Storage szerinti lebontását.
 
-| &nbsp; | **Standard** | **Prémium** |
+| &nbsp; | **Normál** | **Prémium** |
 | --- | --- | --- |
 | **Virtuális gép ára havonta** |$1 570,58 (szabványos \_ D14) |$1 003,66 (szabványos \_ DS13) |
 | **Lemezek havi díja** |$1 638,40 (32 x 1 – TB lemez) |$544,34 (4 x P30-lemez) |
@@ -279,7 +279,7 @@ Az adatlemezek ajánlott lemezgyorsítótár-beállításai a következők:
 
 | **Lemezes gyorsítótárazási beállítás** | **a beállítás használatára vonatkozó javaslat** |
 | --- | --- |
-| Nincsenek |Konfigurálja a gazdagép-gyorsítótárat a Nincs értékre a csak írható és a nagy írási sebességű lemezekhez. |
+| Nincs |Konfigurálja a gazdagép-gyorsítótárat a Nincs értékre a csak írható és a nagy írási sebességű lemezekhez. |
 | ReadOnly |A gazdagép-gyorsítótár írásvédettként való konfigurálása írásvédett és írható lemezekhez. |
 | ReadWrite |Konfigurálja a gazdagép-gyorsítótárat úgy, hogy csak akkor ReadWrite, ha az alkalmazás megfelelően kezeli a gyorsítótárazott adatlemezek írását, ha szükséges. |
 

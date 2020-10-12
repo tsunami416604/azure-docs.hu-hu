@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4e4797c3e089e0ae9d15cc604e9f93605978b36c
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87419767"
 ---
 # <a name="enable-on-premises-azure-active-directory-password-protection"></a>Helyszíni Azure Active Directory jelszavas védelem engedélyezése
@@ -67,7 +67,7 @@ Előfordulhat, hogy az érintett végfelhasználóknak az informatikai személyz
 > [!NOTE]
 > Az Azure AD jelszavas védelme nem szabályozza az ügyfélszámítógép által a gyenge jelszavak elutasításakor megjelenő hibaüzenetet.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha testre szeretné szabni a tiltott jelszavak listáját a szervezet számára, tekintse meg [Az Azure ad jelszavas védelem egyéni tiltott jelszavak listájának konfigurálása](tutorial-configure-custom-password-protection.md)című témakört.
 

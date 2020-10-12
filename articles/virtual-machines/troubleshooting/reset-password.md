@@ -14,17 +14,17 @@ ms.topic: troubleshooting
 ms.date: 08/20/2019
 ms.author: delhan
 ms.openlocfilehash: c6bfd5b9ff3626593916533f27c5c2755cebcb13
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87028481"
 ---
 # <a name="how-to-reset-local-linux-password-on-azure-vms"></a>Helyi Linux-jelszó visszaállítása Azure-beli virtuális gépeken
 
 Ez a cikk számos módszert ismertet a helyi linuxos virtuális gépek (VM) jelszavának alaphelyzetbe állításához. Ha a felhasználói fiók lejárt, vagy csak egy új fiókot szeretne létrehozni, akkor a következő módszerekkel hozhat létre új helyi rendszergazdai fiókot, és újból hozzáférhet a virtuális géphez.
 
-## <a name="symptoms"></a>Probléma
+## <a name="symptoms"></a>Hibajelenségek
 
 Nem tud bejelentkezni a virtuális gépre, és megjelenik egy üzenet, amely jelzi, hogy a használt jelszó helytelen. Emellett a VMAgent nem használható a jelszó alaphelyzetbe állításához a Azure Portal.
 

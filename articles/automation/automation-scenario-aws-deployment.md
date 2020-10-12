@@ -6,10 +6,10 @@ ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
 ms.openlocfilehash: 456a7e4f07b2416e1d2037205574f2e7149e70e2
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86185942"
 ---
 # <a name="deploy-an-amazon-web-services-vm-with-a-runbook"></a>Amazon Web Services virtuális gép üzembe helyezése runbook
@@ -44,7 +44,7 @@ Miután telepítette az AWS PowerShell-modult, létrehozhat egy runbook, amely e
 > A parancsfájlra vonatkozó további beállítások és információk a [PowerShell-galériaban](https://www.powershellgallery.com/packages/New-AwsVM/)érhetők el.
 > 
 
-1. Töltse le a New-AwsVM PowerShell-szkriptet a PowerShell-galéria egy PowerShell-munkamenet megnyitásával, és írja be a következő parancsot:<br>
+1. Töltse le a PowerShell-parancsfájlt New-AwsVM a PowerShell-galéria egy PowerShell-munkamenet megnyitásával, és írja be a következő parancsot:<br>
    ```powershell
    Save-Script -Name New-AwsVM -Path <path>
    ```
@@ -92,7 +92,7 @@ Miután telepítette az AWS PowerShell-modult, létrehozhat egy runbook, amely e
 Győződjön meg arról, hogy az AWS PowerShell-modul a Azure Automationba lett importálva.  
 3. A Azure Automation-ben állítsa be a részletes **naplózási** **rekordokat** , és ha szükséges, a runbook művelet **naplózása és** **a**nyomkövetés a következőre lehetőséget.<br><br> ![Runbook naplózás és nyomkövetés ](./media/automation-scenario-aws-deployment/runbook-settings-logging-and-tracing.png) .  
 4. Kattintson a **Start** gombra a runbook elindításához, majd kattintson az **OK** gombra a Start runbook panel megnyitásakor.
-5. A Runbook indítása panelen adja meg a virtuális gép nevét. Fogadja el a parancsfájlban előre konfigurált egyéb paraméterek alapértelmezett értékeit. A runbook-feladatok elindításához kattintson **az OK** gombra.<br><br> ![A New-AwsVM runbook elindítása](./media/automation-scenario-aws-deployment/runbook-start-job-parameters.png)
+5. A Runbook indítása panelen adja meg a virtuális gép nevét. Fogadja el a parancsfájlban előre konfigurált egyéb paraméterek alapértelmezett értékeit. A runbook-feladatok elindításához kattintson **az OK** gombra.<br><br> ![New-AwsVM runbook elindítása](./media/automation-scenario-aws-deployment/runbook-start-job-parameters.png)
 6. Megnyílik a létrehozott runbook-feladatokhoz tartozó feladatok ablaktábla. A panel bezárásához.
 7. Megtekintheti a feladatok előrehaladását, és megtekintheti a kimeneti streameket a runbook-feladatok ablaktábla **összes naplójának** kiválasztásával.<br><br> ![Stream kimenete](./media/automation-scenario-aws-deployment/runbook-job-streams-output.png)
 8. Ha ellenőrizni szeretné, hogy a virtuális gép üzembe helyezése folyamatban van-e, jelentkezzen be az AWS felügyeleti konzolba, ha jelenleg nincs bejelentkezve.<br><br> ![AWS-konzol üzembe helyezett virtuális gép](./media/automation-scenario-aws-deployment/aws-instances-status.png)

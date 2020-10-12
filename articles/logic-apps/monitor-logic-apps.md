@@ -7,10 +7,10 @@ ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 05/04/2020
 ms.openlocfilehash: 66796a819c0ca7e114d82210a988fc7e13003941
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87078198"
 ---
 # <a name="monitor-run-status-review-trigger-history-and-set-up-alerts-for-azure-logic-apps"></a>Futtatási állapot monitorozása, triggerelőzmények áttekintése és riasztások beállítása az Azure Logic Appshez
@@ -50,9 +50,9 @@ Minden alkalommal, amikor az eseményindító egy elemhez vagy eseményhez tüze
    |--------|-------------|
    | **Megszakítva** | A munkafolyamat futott, de megszakítási kérelmet kapott |
    | **Sikertelen** | Legalább egy művelet meghiúsult, és a munkafolyamatban nem lettek beállítva újabb műveletek a hiba kezelésére. |
-   | **Fut** | A munkafolyamat jelenleg fut. <p>Ez az állapot a szabályozott munkafolyamatok esetében vagy a jelenlegi díjszabási csomag miatt is megjelenhet. További információkért tekintse meg a [díjszabási oldalon található műveletek korlátait](https://azure.microsoft.com/pricing/details/logic-apps/). Ha beállítja a [diagnosztikai naplózást](../logic-apps/monitor-logic-apps.md), információt kaphat az esetlegesen előforduló szabályozási eseményekről. |
+   | **Futó** | A munkafolyamat jelenleg fut. <p>Ez az állapot a szabályozott munkafolyamatok esetében vagy a jelenlegi díjszabási csomag miatt is megjelenhet. További információkért tekintse meg a [díjszabási oldalon található műveletek korlátait](https://azure.microsoft.com/pricing/details/logic-apps/). Ha beállítja a [diagnosztikai naplózást](../logic-apps/monitor-logic-apps.md), információt kaphat az esetlegesen előforduló szabályozási eseményekről. |
    | **Sikeres** | Az összes művelet sikeres volt. <p>**Megjegyzés**: Ha valamilyen hiba történt egy adott művelet során, a munkafolyamat egy későbbi művelete ezt a hibát kezelte. |
-   | **Várakozás** | A munkafolyamat nem indult el vagy szünetel, például egy még futó korábbi munkafolyamat miatt. |
+   | **Várakozó** | A munkafolyamat nem indult el vagy szünetel, például egy még futó korábbi munkafolyamat miatt. |
    |||
 
 1. Egy adott Futtatás lépéseinek és egyéb információinak áttekintéséhez a futtatási **Előzmények**területen válassza ki a Futtatás elemet.

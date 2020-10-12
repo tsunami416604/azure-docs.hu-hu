@@ -10,10 +10,10 @@ ms.subservice: azure-arc-data
 ms.date: 09/22/2020
 ms.topic: conceptual
 ms.openlocfilehash: d22976254cc804ca53060fb284abde8e80a684e6
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91319726"
 ---
 # <a name="release-notes---azure-arc-enabled-data-services-preview"></a>Kibocsátási megjegyzések – az Azure arc-kompatibilis adatszolgáltatások (előzetes verzió)
@@ -24,7 +24,7 @@ ms.locfileid: "91319726"
 
 A nyilvános előzetes verzióban elérhető az Azure arc-kompatibilis adatszolgáltatások. Az arc-kompatibilis adatszolgáltatások lehetővé teszik az adatszolgáltatások bárhol történő kezelését.
 
-- SQL Managed Instance
+- Felügyelt SQL-példány
 - PostgreSQL nagy kapacitású
 
 Útmutatás: [Mi az az Azure arc-kompatibilis adatszolgáltatás?](overview.md)
@@ -54,7 +54,7 @@ Erre a kiadásra a következő problémák érvényesek:
 
 - Az SQL felügyelt példányainak neve nem lehet hosszabb 13 karakternél.
 - Nincs helyben történő frissítés az Azure arc-adatkezelő vagy adatbázis-példányok számára.
-- Az ív használatára engedélyezett adattároló-lemezképek nincsenek aláírva.  Előfordulhat, hogy a Kubernetes-csomópontokat úgy kell konfigurálnia, hogy az aláíratlan tárolók lemezképeit le lehessen húzni.  Ha például a Docker-t tároló futtatókörnyezetként használja, beállíthatja a DOCKER_CONTENT_TRUST = 0 környezeti változót, és újraindulhat.  Más tároló-futtatókörnyezetek hasonló beállításokkal rendelkeznek, mint például a [OpenShift](https://docs.openshift.com/container-platform/4.5/openshift_images/image-configuration.html#images-configuration-file_image-configuration).
+- Az Arc-kompatibilis adatszolgáltatások tárolórendszerképei nem rendelkeznek aláírással.  Lehet, hogy konfigurálnia kell a Kubernetes-csomópontokat az aláírás nélküli tárolórendszerképek lekérésére.  Ha például a Docker-t tároló futtatókörnyezetként használja, beállíthatja a DOCKER_CONTENT_TRUST = 0 környezeti változót, és újraindulhat.  Más tároló-futtatókörnyezetek hasonló beállításokkal rendelkeznek, ilyen például az [OpenShift](https://docs.openshift.com/container-platform/4.5/openshift_images/image-configuration.html#images-configuration-file_image-configuration).
 - Nem hozható létre az Azure arc használatára képes SQL felügyelt példányok vagy PostgreSQL nagy kapacitású-kiszolgálócsoportok a Azure Portal.
 - Most, ha az NFS-t használja, az Azure arc-adatkezelő létrehozása előtt be kell állítania a allowRunAsRoot True értékre a telepítési profil fájlban.
 - Csak az SQL és a PostgreSQL bejelentkezési hitelesítés.  Azure Active Directory vagy Active Directory nem támogatott.

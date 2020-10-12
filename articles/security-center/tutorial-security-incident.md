@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 09/30/2020
 ms.author: memildin
 ms.openlocfilehash: a04f94f5ebc7c1fdaf7b95e71dc8549e19863b39
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91614156"
 ---
 # <a name="tutorial-triage-investigate-and-respond-to-security-alerts"></a>Oktatóanyag: osztályozás, vizsgálat és válaszadás a biztonsági riasztásokra
@@ -112,7 +112,7 @@ Ha nem folytatja a folytatást, vagy le szeretné tiltani valamelyik funkciót:
 1. Válassza ki az adott előfizetést.
 1. A visszalépéshez válassza az **Azure Defender kikapcsolva**lehetőséget.
 1. Az automatikus kiépítés letiltásához nyissa meg az **adatgyűjtés** lapot, és állítsa be az **automatikus kiépítés** **beállítást.**
-4. Válassza a **Mentés** lehetőséget.
+4. Kattintson a **Mentés** gombra.
 
 >[!NOTE]
 > Az automatikus kiépítés letiltása nem távolítja el a Log Analytics ügynököt olyan Azure-beli virtuális gépekről, amelyek már rendelkeznek ügynökkel. Az automatikus kiépítés letiltása korlátozza az erőforrások biztonsági monitorozását.

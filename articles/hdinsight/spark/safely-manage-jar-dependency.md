@@ -9,10 +9,10 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 02/05/2020
 ms.openlocfilehash: b5b8c014a7150ad83875b9fd361c3538d865d153
-ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90064122"
 ---
 # <a name="safely-manage-jar-dependencies"></a>Jar-függőségek biztonságos kezelése
@@ -27,7 +27,7 @@ Az árnyékolás lehetővé teszi a függőségek belefoglalását és átnevez�
 ## <a name="how-to-shade-a-package"></a>Hogyan lehet egy csomagot árnyékolni?
 
 ### <a name="use-uber-jar"></a>Az Über-jar használata
-Az Über-jar egyetlen jar-fájl, amely az alkalmazás jar-t és annak függőségeit is tartalmazza. Az Über-jar függőségei alapértelmezés szerint nem árnyékoltak. Bizonyos esetekben ez a verziók ütközését eredményezheti, ha más összetevők vagy alkalmazások a könyvtárak egy másik verziójára hivatkoznak. Ennek elkerüléséhez létrehozhat egy über-jar-fájlt a függőségek árnyékolt (vagy az összes) használatával.
+Az Über-jar egyetlen jar-fájl, amely az alkalmazás jar-t és annak függőségeit is tartalmazza. Az Über-jar függőségei alapértelmezés szerint nem árnyékoltak. Bizonyos esetekben ez a verziók ütközését eredményezheti, ha más összetevők vagy alkalmazások a könyvtárak egy másik verziójára hivatkoznak. Ennek elkerüléséhez létrehozhat egy Uber-Jar-fájlt a függőségek árnyékolt (vagy az összes) használatával.
 
 ### <a name="shade-package-using-maven"></a>Csomag árnyékolása a Maven használatával
 A Maven a Java és a Scala nyelveken írt alkalmazásokat is felépítheti. A Maven-Shade-plugin segítségével egyszerűen hozhat létre árnyékolt über-jar-t.

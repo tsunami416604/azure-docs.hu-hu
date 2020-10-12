@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.service: iot-central
 services: iot-central
 ms.openlocfilehash: beeb771ea5053dd0ad867a7568aa64bbb2d0b4ed
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90985292"
 ---
 # <a name="configure-the-application-dashboard"></a>Az alkalmazás irányítópultjának konfigurálása
@@ -33,7 +33,7 @@ A **Szerkesztés** vagy az **új**lehetőség kiválasztása után az irányít�
 1. Válasszon ki egy vagy több eszközt az **eszközök** legördülő menüben a csempén való megjelenítéshez. Ekkor megjelenik az eszközökön elérhető telemetria, tulajdonságok és parancsok.
 1. Válassza a **hőmérséklet** lehetőséget a telemetria szakaszban, majd kattintson a **csempe hozzáadása**lehetőségre. A csempe most már az irányítópulton látható, ahol módosíthatja a vizualizációt, átméretezheti a csempét, és konfigurálhatja:
 
-:::image type="content" source="media/howto-add-tiles-to-your-dashboard/device-details.png" alt-text="Hőmérséklet-telemetria csempe hozzáadása az irányítópulthoz":::
+:::image type="content" source="media/howto-add-tiles-to-your-dashboard/device-details.png" alt-text="Az egyéni alkalmazás sablonján alapuló alkalmazások irányítópultja":::
 
 Ha befejezte a csempék hozzáadását és testreszabását az irányítópulton, válassza a **Mentés**lehetőséget.
 
@@ -60,7 +60,7 @@ A következő táblázat ismerteti az irányítópulthoz felvehető különböz�
 | Térkép              | A térképes csempék egy vagy több eszköz helyét jelenítik meg a térképen. Akár 100 pontot is megjeleníthet egy eszköz tartózkodási előzményeiről. Megjelenítheti például a mintavételes útvonalat, ahol egy eszköz az elmúlt héten van.|
 | KPI              |  A KPI-csempék egy vagy több eszköz összesített telemetria-értékeit jelenítik meg egy adott időszakban. A segítségével például megjelenítheti az elmúlt órában egy vagy több eszközre vonatkozóan elért maximális hőmérsékletet és nyomást.|
 | Vonaldiagram       | A vonalas diagram csempék egy vagy több összesített telemetria-értéket ábrázolnak egy adott időszakra vonatkozóan egy vagy több eszközhöz. Megjeleníthet például egy diagramot, amely az elmúlt órában egy vagy több eszköz átlagos hőmérsékletét és terhelését ábrázolja.|
-| Sávdiagram        | A oszlopdiagram-csempék egy vagy több összesített telemetria-értéket ábrázolnak egy adott időszakra vonatkozóan egy vagy több eszközhöz. Megjeleníthet például egy sávdiagram, amely egy vagy több eszköz átlagos hőmérsékletét és terhelését jeleníti meg az elmúlt órában.|
+| Oszlopdiagram        | A oszlopdiagram-csempék egy vagy több összesített telemetria-értéket ábrázolnak egy adott időszakra vonatkozóan egy vagy több eszközhöz. Megjeleníthet például egy sávdiagram, amely egy vagy több eszköz átlagos hőmérsékletét és terhelését jeleníti meg az elmúlt órában.|
 | Tortadiagram        | A tortadiagram csempéi egy vagy több összesített telemetria-értéket jelenítenek meg egy vagy több eszközhöz egy adott időszakra vonatkozóan.|
 | Intenzitástérkép         | A Heat Map csempék egy vagy több, színként jelölt eszköz adatait jelenítik meg.|
 | Utolsó ismert érték | Az utolsó ismert érték csempék egy vagy több eszköz legújabb telemetria-értékeit jelenítik meg. Ezt a csempét használhatja például egy vagy több eszköz legutóbbi hőmérséklet-, nyomás-és páratartalom-értékének megjelenítésére. |
@@ -75,23 +75,23 @@ Az összesített értékeket megjelenítő csempék esetében válassza a teleme
 
 A vonalas diagramok, a sávdiagramok és a tortadiagramok esetében testreszabhatja a különböző telemetria-értékek színét. Válassza a paletta ikont a testreszabni kívánt telemetria mellett:
 
-:::image type="content" source="media/howto-add-tiles-to-your-dashboard/color-customization.png" alt-text="Telemetria érték színének módosítása":::
+:::image type="content" source="media/howto-add-tiles-to-your-dashboard/color-customization.png" alt-text="Az egyéni alkalmazás sablonján alapuló alkalmazások irányítópultja":::
 
 A karakterlánc-tulajdonságokat vagy telemetria értékeket megjelenítő csempék esetében kiválaszthatja, hogyan jelenjen meg a szöveg. Ha például az eszköz egy karakterlánc-tulajdonságban tárolja az URL-címet, akkor megjeleníthető hivatkozásként. Ha az URL-cím egy képre hivatkozik, az utolsó ismert érték vagy tulajdonság csempén jelenítheti meg a képet. A karakterlánc megjelenítésének módosításához a csempe konfigurációjában válassza a fogaskerék ikont a telemetria típusa vagy tulajdonsága mellett:
 
-:::image type="content" source="media/howto-add-tiles-to-your-dashboard/string-customization.png" alt-text="Karakterlánc megjelenítésének módosítása csempén":::
+:::image type="content" source="media/howto-add-tiles-to-your-dashboard/string-customization.png" alt-text="Az egyéni alkalmazás sablonján alapuló alkalmazások irányítópultja":::
 
 A numerikus **KPI**, az **utolsó ismert érték**és a **tulajdonságlapok** esetében feltételes formázást használhat a csempe színének a jelenlegi érték alapján történő testreszabásához. A feltételes formázás hozzáadásához válassza a **Konfigurálás** lehetőséget a csempén, majd válassza a **feltételes formázás** ikont az érték mellett a testreszabáshoz:
 
-:::image type="content" source="media/howto-add-tiles-to-your-dashboard/conditional-formatting-1.png" alt-text="A csempék konfigurálási beállításának megkeresését bemutató képernyőkép, majd a feltételes formázás ikonja":::
+:::image type="content" source="media/howto-add-tiles-to-your-dashboard/conditional-formatting-1.png" alt-text="Az egyéni alkalmazás sablonján alapuló alkalmazások irányítópultja":::
 
 Adja meg a feltételes formázási szabályokat:
 
-:::image type="content" source="media/howto-add-tiles-to-your-dashboard/conditional-formatting-2.png" alt-text="Az átlagos folyamat feltételes formázási szabályait bemutató képernyőkép. Három szabály van – a THA 20 értéke zöld, a 50-nál kevesebb sárga, míg a 50-es minden más vörös":::
+:::image type="content" source="media/howto-add-tiles-to-your-dashboard/conditional-formatting-2.png" alt-text="Az egyéni alkalmazás sablonján alapuló alkalmazások irányítópultja":::
 
 Az alábbi képernyőfelvételen a feltételes formázási szabály hatása látható:
 
-:::image type="content" source="media/howto-add-tiles-to-your-dashboard/conditional-formatting-3.png" alt-text="Képernyőfelvétel: a sárga háttérszín az átlagos vízfolyás csempén. A csempe száma 40,84":::
+:::image type="content" source="media/howto-add-tiles-to-your-dashboard/conditional-formatting-3.png" alt-text="Az egyéni alkalmazás sablonján alapuló alkalmazások irányítópultja":::
 
 ## <a name="next-steps"></a>Következő lépések
 

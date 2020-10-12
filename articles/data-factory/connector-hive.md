@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 09/04/2019
 ms.author: jingwang
 ms.openlocfilehash: 587cdd54f09be2761026c25ccd80fb67d3eb6bb0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84987047"
 ---
 # <a name="copy-data-from-hive-using-azure-data-factory"></a>Adatok másolása a kaptárból Azure Data Factory használatával 
@@ -50,26 +50,26 @@ A kaptár társított szolgáltatás a következő tulajdonságokat támogatja:
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | A Type tulajdonságot a következőre kell beállítani: **struktúra** | Yes |
-| gazda | A kaptár-kiszolgáló IP-címe vagy állomásneve, amely több gazdagép esetében ";" karakterrel elválasztva (csak akkor, ha a serviceDiscoveryMode engedélyezve van).  | Yes |
-| port | A kaptár-kiszolgáló által az ügyfélkapcsolatok figyeléséhez használt TCP-port. Ha csatlakozik az Azure Hdinsight-hoz, a 443-as portot kell megadnia. | Yes |
-| serverType | A kaptár-kiszolgáló típusa. <br/>Az engedélyezett értékek a következők: **HiveServer1**, **HiveServer2**, **HiveThriftServer** | No |
-| thriftTransportProtocol | A takarékossági rétegben használandó átviteli protokoll. <br/>Az engedélyezett értékek: **Binary**, **SASL**, **http** | No |
-| authenticationType | A kaptár-kiszolgáló eléréséhez használt hitelesítési módszer. <br/>Az engedélyezett értékek: **Anonymous**, **username**, **UsernameAndPassword**, **WindowsAzureHDInsightService**. A Kerberos-hitelesítés jelenleg nem támogatott. | Yes |
-| serviceDiscoveryMode | igaz, ha a ZooKeeper szolgáltatás használatát jelzi, a hamis értéket nem.  | No |
-| zooKeeperNameSpace | A ZooKeeper névtér, amely alatt a kaptár-kiszolgáló 2 csomópontja hozzá van adva.  | No |
-| useNativeQuery | Megadja, hogy az illesztőprogram natív HiveQL-lekérdezéseket használ-e, vagy a HiveQL-ben egy egyenértékű űrlapra konvertálja őket.  | No |
-| felhasználónév | A kaptár-kiszolgáló eléréséhez használt Felhasználónév.  | No |
-| jelszó | A felhasználóhoz tartozó jelszó. Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). | No |
-| httpPath | A kaptár-kiszolgálónak megfelelő részleges URL-cím.  | No |
-| enableSsl | Megadja, hogy a kiszolgálóval létesített kapcsolatok titkosítva vannak-e a TLS protokollal. Az alapértelmezett érték a hamis.  | No |
-| trustedCertPath | A megbízható HITELESÍTÉSSZOLGÁLTATÓI tanúsítványokat tartalmazó. PEM fájl teljes elérési útja a kiszolgáló TLS-kapcsolaton keresztüli ellenőrzéséhez. Ez a tulajdonság csak akkor állítható be, ha a TLS-t saját üzemeltetésű IR-vel használja. Az alapértelmezett érték az IR-vel telepített hitesítésszolgáltatói. PEM fájl.  | No |
-| useSystemTrustStore | Megadja, hogy a rendszer a rendszermegbízhatósági tárolóból vagy egy megadott PEM-fájlból kíván-e HITELESÍTÉSSZOLGÁLTATÓI tanúsítványt használni. Az alapértelmezett érték a hamis.  | No |
-| allowHostNameCNMismatch | Megadja, hogy szükséges-e a CA által kiállított TLS/SSL-tanúsítvány neve ahhoz, hogy a kiszolgáló állomásneve megegyezzen a TLS-kapcsolaton keresztül. Az alapértelmezett érték a hamis.  | No |
-| allowSelfSignedServerCert | Megadja, hogy engedélyezi-e az önaláírt tanúsítványokat a kiszolgálóról. Az alapértelmezett érték a hamis.  | No |
-| Connectvia tulajdonsággal | Az adattárhoz való kapcsolódáshoz használt [Integration Runtime](concepts-integration-runtime.md) . További tudnivalók az [Előfeltételek](#prerequisites) szakaszban olvashatók. Ha nincs megadva, az alapértelmezett Azure Integration Runtime használja. |No |
+| típus | A Type tulajdonságot a következőre kell beállítani: **struktúra** | Igen |
+| gazda | A kaptár-kiszolgáló IP-címe vagy állomásneve, amely több gazdagép esetében ";" karakterrel elválasztva (csak akkor, ha a serviceDiscoveryMode engedélyezve van).  | Igen |
+| port | A kaptár-kiszolgáló által az ügyfélkapcsolatok figyeléséhez használt TCP-port. Ha csatlakozik az Azure Hdinsight-hoz, a 443-as portot kell megadnia. | Igen |
+| serverType | A kaptár-kiszolgáló típusa. <br/>Az engedélyezett értékek a következők: **HiveServer1**, **HiveServer2**, **HiveThriftServer** | Nem |
+| thriftTransportProtocol | A takarékossági rétegben használandó átviteli protokoll. <br/>Az engedélyezett értékek: **Binary**, **SASL**, **http** | Nem |
+| authenticationType | A kaptár-kiszolgáló eléréséhez használt hitelesítési módszer. <br/>Az engedélyezett értékek: **Anonymous**, **username**, **UsernameAndPassword**, **WindowsAzureHDInsightService**. A Kerberos-hitelesítés jelenleg nem támogatott. | Igen |
+| serviceDiscoveryMode | igaz, ha a ZooKeeper szolgáltatás használatát jelzi, a hamis értéket nem.  | Nem |
+| zooKeeperNameSpace | A ZooKeeper névtér, amely alatt a kaptár-kiszolgáló 2 csomópontja hozzá van adva.  | Nem |
+| useNativeQuery | Megadja, hogy az illesztőprogram natív HiveQL-lekérdezéseket használ-e, vagy a HiveQL-ben egy egyenértékű űrlapra konvertálja őket.  | Nem |
+| username | A kaptár-kiszolgáló eléréséhez használt Felhasználónév.  | Nem |
+| jelszó | A felhasználóhoz tartozó jelszó. Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). | Nem |
+| httpPath | A kaptár-kiszolgálónak megfelelő részleges URL-cím.  | Nem |
+| enableSsl | Megadja, hogy a kiszolgálóval létesített kapcsolatok titkosítva vannak-e a TLS protokollal. Az alapértelmezett érték a hamis.  | Nem |
+| trustedCertPath | A megbízható HITELESÍTÉSSZOLGÁLTATÓI tanúsítványokat tartalmazó. PEM fájl teljes elérési útja a kiszolgáló TLS-kapcsolaton keresztüli ellenőrzéséhez. Ez a tulajdonság csak akkor állítható be, ha a TLS-t saját üzemeltetésű IR-vel használja. Az alapértelmezett érték az IR-vel telepített hitesítésszolgáltatói. PEM fájl.  | Nem |
+| useSystemTrustStore | Megadja, hogy a rendszer a rendszermegbízhatósági tárolóból vagy egy megadott PEM-fájlból kíván-e HITELESÍTÉSSZOLGÁLTATÓI tanúsítványt használni. Az alapértelmezett érték a hamis.  | Nem |
+| allowHostNameCNMismatch | Megadja, hogy szükséges-e a CA által kiállított TLS/SSL-tanúsítvány neve ahhoz, hogy a kiszolgáló állomásneve megegyezzen a TLS-kapcsolaton keresztül. Az alapértelmezett érték a hamis.  | Nem |
+| allowSelfSignedServerCert | Megadja, hogy engedélyezi-e az önaláírt tanúsítványokat a kiszolgálóról. Az alapértelmezett érték a hamis.  | Nem |
+| Connectvia tulajdonsággal | Az adattárhoz való kapcsolódáshoz használt [Integration Runtime](concepts-integration-runtime.md) . További tudnivalók az [Előfeltételek](#prerequisites) szakaszban olvashatók. Ha nincs megadva, az alapértelmezett Azure Integration Runtime használja. |Nem |
 
-**Példa:**
+**Példa**
 
 ```json
 {
@@ -98,8 +98,8 @@ Ha adatokat szeretne másolni a kaptárból, állítsa az adatkészlet Type (tí
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **HiveObject** | Yes |
-| séma | A séma neve. |Nem (ha a "lekérdezés" van megadva a tevékenység forrásában)  |
+| típus | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **HiveObject** | Igen |
+| schema | A séma neve. |Nem (ha a "lekérdezés" van megadva a tevékenység forrásában)  |
 | tábla | A tábla neve. |Nem (ha a "lekérdezés" van megadva a tevékenység forrásában)  |
 | tableName | A tábla neve, beleértve a séma részét. Ez a tulajdonság visszamenőleges kompatibilitás esetén támogatott. Az új számítási feladatokhoz használja a és a elemet `schema` `table` . | Nem (ha a "lekérdezés" van megadva a tevékenység forrásában) |
 
@@ -130,10 +130,10 @@ Az adatok struktúrából való másolásához állítsa a forrás típusát a m
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **HiveSource** | Yes |
-| lekérdezés | Az egyéni SQL-lekérdezés használatával olvassa be az adatolvasást. Példa: `"SELECT * FROM MyTable"`. | Nem (ha meg van adva a "táblanév" az adatkészletben) |
+| típus | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **HiveSource** | Igen |
+| lekérdezés | Az egyéni SQL-lekérdezés használatával olvassa be az adatolvasást. Például: `"SELECT * FROM MyTable"`. | Nem (ha meg van adva a "táblanév" az adatkészletben) |
 
-**Példa:**
+**Példa**
 
 ```json
 "activities":[

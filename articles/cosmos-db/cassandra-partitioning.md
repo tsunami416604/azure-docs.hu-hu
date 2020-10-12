@@ -8,10 +8,10 @@ ms.subservice: cosmosdb-cassandra
 ms.topic: conceptual
 ms.date: 05/20/2020
 ms.openlocfilehash: 26df3c49e44dd79d87a1e0a982ceb8133f425447
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87423320"
 ---
 # <a name="partitioning-in-azure-cosmos-db-cassandra-api"></a>Particionálás Azure Cosmos DB Cassandra API
@@ -58,7 +58,7 @@ Ebben a kialakításban a `id` mezőt elsődleges kulcsként definiáljuk. Az el
 
 ## <a name="compound-primary-key"></a>Összetett elsődleges kulcs
 
-Az Apache Cassandra is tartalmaz egy koncepciót `compound keys` . Egy összetett `primary key` több oszlopból áll; az első oszlop a `partition key` , és a további oszlopok `clustering keys` . Az a szintaxisa `compound primary key` alább látható:
+Az Apache Cassandra is tartalmaz egy koncepciót  `compound keys` . Egy összetett `primary key` több oszlopból áll; az első oszlop a `partition key` , és a további oszlopok `clustering keys` . Az a szintaxisa `compound primary key` alább látható:
 
 ```shell
 PRIMARY KEY (partition_key_column_name, clustering_column_name [, ...])
@@ -110,7 +110,7 @@ CREATE TABLE uprofile.user (
    PRIMARY KEY ((firstname, lastname), id) );
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Tudnivalók a [particionálásról és a horizontális skálázásról Azure Cosmos db](partition-data.md).
 * További információ [a kiépített átviteli sebességről Azure Cosmos db](request-units.md).

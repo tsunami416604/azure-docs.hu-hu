@@ -8,10 +8,10 @@ author: navits09
 ms.author: navits
 ms.date: 08/07/2020
 ms.openlocfilehash: bc34d2044c3a91fe18e900b21d589dde855754d3
-ms.sourcegitcommit: ef69245ca06aa16775d4232b790b142b53a0c248
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91774578"
 ---
 # <a name="create-a-dynamics-365-business-central-offer"></a>Microsoft Dynamics 365 Business Central-ajánlat létrehozása
@@ -129,7 +129,7 @@ Itt adhatja meg az ajánlat részleteit, például a nevet, a leírást és a k�
 5. Használati feltételek
 6. Adatvédelmi irányelvek
 7. Ajánlat neve
-8. Összegzés
+8. Összefoglalás
 9. Leírás
 10. Képernyőképek/videók
 

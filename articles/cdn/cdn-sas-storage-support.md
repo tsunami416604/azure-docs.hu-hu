@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 06/21/2018
 ms.author: allensu
 ms.openlocfilehash: d716b026159311c12341c30a8c32d5a9ecc6fa3f
-ms.sourcegitcommit: 0b8320ae0d3455344ec8855b5c2d0ab3faa974a3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87432742"
 ---
 # <a name="using-azure-cdn-with-sas"></a>A Azure CDN használata SAS használatával
@@ -58,7 +58,7 @@ Ez a legegyszerűbb beállítás, és egyetlen SAS-tokent használ, amelyet a re
 
 2. Miután beállította az SAS-t a Storage-fiókjához, a fájl eléréséhez az SAS-tokent kell használnia a CDN-végpont és a forráskiszolgáló URL-címei alapján. 
    
-   Az eredményül kapott CDN-végpont URL-címének formátuma a következő:`https://<endpoint hostname>.azureedge.net/<container>/<file>?sv=<SAS token>`
+   Az eredményül kapott CDN-végpont URL-címének formátuma a következő: `https://<endpoint hostname>.azureedge.net/<container>/<file>?sv=<SAS token>`
 
    Például:   
    ```
@@ -90,7 +90,7 @@ Ez a beállítás csak a **Verizon-profilokból származó Azure CDN Premium** e
    ![CDN URL-cím újraírása szabály – bal oldali ](./media/cdn-sas-storage-support/cdn-url-rewrite-rule.png)
     ![ CDN URL-cím újraírása szabály – jobb](./media/cdn-sas-storage-support/cdn-url-rewrite-rule-option-4.png)
 
-2. Az új szabály aktívvá válása után bárki hozzáférhet a CDN-végpont megadott tárolójában lévő fájlokhoz, függetlenül attól, hogy SAS-jogkivonatot használnak-e az URL-címben. A formátum a következő:`https://<endpoint hostname>.azureedge.net/<container>/<file>`
+2. Az új szabály aktívvá válása után bárki hozzáférhet a CDN-végpont megadott tárolójában lévő fájlokhoz, függetlenül attól, hogy SAS-jogkivonatot használnak-e az URL-címben. A formátum a következő: `https://<endpoint hostname>.azureedge.net/<container>/<file>`
  
    Például:   
    `https://sasstoragedemo.azureedge.net/container1/demo.jpg`
@@ -134,14 +134,14 @@ Azure CDN biztonsági jogkivonat-hitelesítés használatához a Verizon-profiln
 
 Mivel a SAS-paraméterek nem láthatók a Azure CDN számára, Azure CDN a rájuk vonatkozó kézbesítési viselkedését nem tudja módosítani. A definiált paraméterek korlátozásai csak azokra a kérelmekre érvényesek, amelyeket a Azure CDN a forráskiszolgálón, nem az ügyféltől érkező kérések Azure CDN. Ezt a különbséget fontos figyelembe venni az SAS-paraméterek beállításakor. Ha ezek a speciális funkciók szükségesek, és a [3. lehetőséget](#option-3-using-cdn-security-token-authentication-with-a-rewrite-rule)használja, állítsa be a megfelelő korlátozásokat a Azure CDN biztonsági jogkivonatra.
 
-| SAS-paraméter neve | Description |
+| SAS-paraméter neve | Leírás |
 | --- | --- |
 | Indítás | Az az idő, ameddig Azure CDN megkezdődhet a blob-fájl elérésének ideje. Az óra torzítása miatt (ha egy órajel-jel különböző időpontokban érkezik a különböző összetevőknél), akkor a 15 perccel korábbi időpontot válassza, ha azt szeretné, hogy az eszköz azonnal elérhető legyen. |
 | Befejezés | Az az idő, amely után a Azure CDN már nem fér hozzá a blob-fájlhoz. A korábban gyorsítótárazott fájlok Azure CDN továbbra is elérhetők. A fájl lejárati idejének szabályozásához állítsa be a megfelelő lejárati időt a Azure CDN biztonsági jogkivonatban, vagy Ürítse ki az eszközt. |
 | Engedélyezett IP-címek | Választható. Ha a **verizon Azure CDNt**használja, ezt a paramétert beállíthatja a [Verizon Edge Server IP-címtartományok Azure CDN](/azure/cdn/cdn-pop-list-api)által meghatározott tartományokra. Ha **Azure CDNt**használ a Akamai-ból, az IP-címtartományok paraméter nem állítható be, mert az IP-címek nem statikusak.|
 | Engedélyezett protokollok | A fiók SAS-fiókjával végzett kérelem számára engedélyezett protokoll (ok). A HTTPS-beállítás ajánlott.|
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az SAS-vel kapcsolatos további információkért tekintse meg a következő cikkeket:
 - [Közös hozzáférésű jogosultságkódok (SAS) használata](https://docs.microsoft.com/azure/storage/common/storage-dotnet-shared-access-signature-part-1)
