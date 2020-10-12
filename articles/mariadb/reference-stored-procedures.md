@@ -7,10 +7,10 @@ ms.service: mariadb
 ms.topic: conceptual
 ms.date: 3/18/2020
 ms.openlocfilehash: 453cb28b3053ee2fd2706a5537dc71b6cdca4174
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91539843"
 ---
 # <a name="azure-database-for-mariadb-management-stored-procedures"></a>Azure Database for MariaDB felügyelet tárolt eljárásai
@@ -25,11 +25,11 @@ A következő tárolt eljárások a forrás és a replika közötti felhőbe ir�
 
 |**Tárolt eljárás neve**|**Bemeneti paraméterek**|**Kimeneti paraméterek**|**Használati Megjegyzés**|
 |-----|-----|-----|-----|
-|*MySQL. az_replication_change_master*|master_host<br/>master_user<br/>master_password<br/>master_port<br/>master_log_file<br/>master_log_pos<br/>master_ssl_ca|N.A.|Az adatok SSL-móddal történő átviteléhez adja át a HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány környezetét a master_ssl_ca paraméternek. </br><br>Az adatok SSL nélküli átviteléhez adjon meg egy üres karakterláncot a master_ssl_ca paraméternek.|
-|*MySQL. az_replication _start*|N.A.|N.A.|Elindítja a replikálást.|
-|*MySQL. az_replication _stop*|N.A.|N.A.|Leállítja a replikálást.|
-|*MySQL. az_replication _remove_master*|N.A.|N.A.|Eltávolítja a replikálási kapcsolatot a forrás és a replika között.|
-|*MySQL. az_replication_skip_counter*|N.A.|N.A.|Egy replikációs hiba kihagyása.|
+|*mysql.az_replication_change_master*|master_host<br/>master_user<br/>master_password<br/>master_port<br/>master_log_file<br/>master_log_pos<br/>master_ssl_ca|N.A.|Az adatok SSL-móddal történő átviteléhez adja át a HITELESÍTÉSSZOLGÁLTATÓI tanúsítvány környezetét a master_ssl_ca paraméternek. </br><br>Az adatok SSL nélküli átviteléhez adjon meg egy üres karakterláncot a master_ssl_ca paraméternek.|
+|*mysql.az_replication _start*|N.A.|N.A.|Elindítja a replikálást.|
+|*mysql.az_replication _stop*|N.A.|N.A.|Leállítja a replikálást.|
+|*mysql.az_replication _remove_master*|N.A.|N.A.|Eltávolítja a replikálási kapcsolatot a forrás és a replika között.|
+|*mysql.az_replication_skip_counter*|N.A.|N.A.|Egy replikációs hiba kihagyása.|
 
 A Azure Database for MariaDB a forrás és a replika közötti felhőbe irányuló replikálás beállításához tekintse meg a [felhőbe irányuló replikálás konfigurálását ismertető témakört](howto-data-in-replication.md).
 
@@ -39,10 +39,10 @@ A következő tárolt eljárások érhetők el Azure Database for MariaDB a kisz
 
 |**Tárolt eljárás neve**|**Bemeneti paraméterek**|**Kimeneti paraméterek**|**Használati Megjegyzés**|
 |-----|-----|-----|-----|
-|*MySQL. az_kill*|processlist_id|N.A.|Egyenértékű a [`KILL CONNECTION`](https://dev.mysql.com/doc/refman/8.0/en/kill.html) paranccsal. Leállítja a megadott processlist_idhoz társított kapcsolatokat, miután leállította a kapcsolatok végrehajtásának utasításait.|
-|*MySQL. az_kill_query*|processlist_id|N.A.|Egyenértékű a [`KILL QUERY`](https://dev.mysql.com/doc/refman/8.0/en/kill.html) paranccsal. Leállítja azt az utasítást, amely szerint a kapcsolatok jelenleg végrehajtás alatt állnak. Maga a kapcsolatok maradnak életben.|
-|*MySQL. az_load_timezone*|N.A.|N.A.|Betölti az időzóna-táblákat, hogy a `time_zone` paraméter megnevezett értékre legyen beállítva (pl. "USA/csendes-óceáni térség").|
+|*mysql.az_kill*|processlist_id|N.A.|Egyenértékű a [`KILL CONNECTION`](https://dev.mysql.com/doc/refman/8.0/en/kill.html) paranccsal. Leállítja a megadott processlist_idhoz társított kapcsolatokat, miután leállította a kapcsolatok végrehajtásának utasításait.|
+|*mysql.az_kill_query*|processlist_id|N.A.|Egyenértékű a [`KILL QUERY`](https://dev.mysql.com/doc/refman/8.0/en/kill.html) paranccsal. Leállítja azt az utasítást, amely szerint a kapcsolatok jelenleg végrehajtás alatt állnak. Maga a kapcsolatok maradnak életben.|
+|*mysql.az_load_timezone*|N.A.|N.A.|Betölti az időzóna-táblákat, hogy a `time_zone` paraméter megnevezett értékre legyen beállítva (pl. "USA/csendes-óceáni térség").|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - További információ a [felhőbe irányuló replikálás](howto-data-in-replication.md) beállításáról
 - Az [időzóna-táblázatok](howto-server-parameters.md#working-with-the-time-zone-parameter) használatának ismertetése

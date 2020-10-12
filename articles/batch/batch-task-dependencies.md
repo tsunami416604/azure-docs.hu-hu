@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.date: 05/22/2017
 ms.custom: H1Hack27Feb2017, devx-track-csharp
 ms.openlocfilehash: 05b1bb289c215208be448d8ca7de144c82b313b8
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88936979"
 ---
 # <a name="create-task-dependencies-to-run-tasks-that-depend-on-other-tasks"></a>Tevékenységek függőségeinek létrehozása a más feladatoktól függő feladatok futtatásához
@@ -203,7 +203,7 @@ A [TaskDependencies][github_taskdependencies] minta projekt a githubon lévő [A
 - Egyéb feladatoktól függő feladatok létrehozása
 - A feladatok végrehajtása számítási csomópontok készletén.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A Batch [alkalmazáscsomag](batch-application-packages.md) szolgáltatásának segítségével egyszerűen telepítheti és futtathatja a tevékenységek által a számítási csomópontokon végrehajtott alkalmazásokat.
 - A csomópontok feladatok futtatására való felkészülési módszereinek áttekintését lásd: [alkalmazások telepítése és az adatok előkészítése a Batch számítási csomópontjain][forum_post] a Azure batch fórumban. A Azure Batch csapat tagjainak egyike írta, ez a bejegyzés egy jó alapozó az alkalmazások másolásának különböző módjairól, a feladatok bemeneti adatairól és más fájlokról a számítási csomópontok számára.

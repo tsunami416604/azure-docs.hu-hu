@@ -1,6 +1,6 @@
 ---
 title: Klasszikus Azure-előfizetés rendszergazdái
-description: Ismerteti, hogyan lehet hozzáadni vagy módosítani az Azure-beli társ-rendszergazda és szolgáltatás-rendszergazdai szerepköröket, valamint a fiók rendszergazdájának megtekintését.
+description: Ismerteti, hogyan lehet hozzáadni vagy módosítani az Azure Co-Administrator és a szolgáltatás-rendszergazdai szerepköröket, valamint a fiók rendszergazdájának megtekintését.
 services: active-directory
 documentationcenter: ''
 author: rolyon
@@ -15,28 +15,28 @@ ms.date: 01/22/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: 76b41e25a95f23b66edfbd4715037074537221f9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87076436"
 ---
 # <a name="azure-classic-subscription-administrators"></a>Klasszikus Azure-előfizetés rendszergazdái
 
 A Microsoft azt javasolja, hogy az Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC) segítségével kezelje az Azure-erőforrásokhoz való hozzáférést. Ha azonban továbbra is a klasszikus üzemi modellt használja, akkor klasszikus előfizetés-rendszergazdai szerepkört kell használnia: a szolgáltatás-rendszergazdát és a társ-rendszergazdát. További információ: Azure Resource Manager és [klasszikus üzembe helyezés](../azure-resource-manager/management/deployment-models.md).
 
-Ez a cikk a társ-rendszergazda és a szolgáltatás-rendszergazdai szerepkörök hozzáadását és módosítását, valamint a fiók rendszergazdájának megtekintését ismerteti.
+Ez a cikk azt ismerteti, hogyan lehet hozzáadni vagy módosítani a Co-Administrator és a szolgáltatás-rendszergazdai szerepköröket, valamint a fiók rendszergazdájának megtekintését.
 
 ## <a name="add-a-co-administrator"></a>Társadminisztrátor hozzáadása
 
 > [!TIP]
-> Csak akkor kell hozzáadnia egy társ-rendszergazdát, ha a felhasználónak az [Azure Service Management PowerShell-modul](/powershell/module/servicemanagement/azure.service)használatával kell kezelnie a klasszikus Azure-telepítést. Ha a felhasználó csak a klasszikus erőforrások kezeléséhez használja a Azure Portal, nem kell hozzáadnia a felhasználó klasszikus rendszergazdáját.
+> Csak akkor kell hozzáadnia egy Co-Administrator, ha a felhasználónak az [Azure Service Management PowerShell-modul](/powershell/module/servicemanagement/azure.service)használatával kell kezelnie a klasszikus Azure-telepítéseket. Ha a felhasználó csak a klasszikus erőforrások kezeléséhez használja a Azure Portal, nem kell hozzáadnia a felhasználó klasszikus rendszergazdáját.
 
 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) szolgáltatás-rendszergazdaként vagy társ-rendszergazdaként.
 
 1. Nyissa meg az [Előfizetések](https://portal.azure.com/#blade/Microsoft_Azure_Billing/SubscriptionsBlade) nézetet, és válasszon ki egy előfizetést.
 
-    A társ-rendszergazdák csak az előfizetés hatókörében rendelhetők hozzá.
+    Co-Administrators csak az előfizetés hatókörében lehet hozzárendelni.
 
 1. Kattintson a **Hozzáférés-vezérlés (IAM)** elemre.
 
@@ -52,7 +52,7 @@ Ez a cikk a társ-rendszergazda és a szolgáltatás-rendszergazdai szerepkörö
 
     ![A társ-rendszergazda hozzáadására szolgáló képernyőkép](./media/classic-administrators/add-coadmin.png)
 
-## <a name="add-a-guest-user-as-a-co-administrator"></a>Vendég felhasználó hozzáadása társ-rendszergazdaként
+## <a name="add-a-guest-user-as-a-co-administrator"></a>Vendég felhasználó hozzáadása Co-Administratorként
 
 Ha egy vendég felhasználót szeretne hozzáadni a társ-rendszergazdaként, kövesse az előző, a [társ-rendszergazda hozzáadása](#add-a-co-administrator) szakaszban leírt lépéseket. A vendég felhasználónak meg kell felelnie a következő feltételeknek:
 
@@ -62,11 +62,11 @@ Ha további információt szeretne arról, hogyan adhat hozzá egy vendég felha
 
 ### <a name="differences-for-guest-users"></a>A vendég felhasználói közötti különbségek
 
-A társ-rendszergazda szerepkörrel rendelkező vendég felhasználók bizonyos különbségeket láthatnak a társ-rendszergazda szerepkörrel rendelkező felhasználókhoz képest. Vegyük példaként a következő esetet:
+Előfordulhat, hogy a Co-Administrator szerepkörhöz rendelt vendég felhasználók a Co-Administrator szerepkörrel rendelkező felhasználókhoz képest eltéréseket tapasztalnak. Vegyük példaként a következő esetet:
 
 - Az A felhasználó Azure AD-fiókkal (munkahelyi vagy iskolai fiókkal) az Azure-előfizetések szolgáltatás-rendszergazdája.
 - A B felhasználó Microsoft-fiók rendelkezik.
-- Az A felhasználó hozzárendeli a társ-rendszergazda szerepkört a B felhasználóhoz.
+- Az A felhasználó hozzárendeli a Co-Administrator szerepkört a B felhasználóhoz.
 - A B felhasználó szinte mindent megtehet, de nem tudja regisztrálni az alkalmazásokat, vagy megkeresni a felhasználókat az Azure AD-címtárban.
 
 Azt várná, hogy a B felhasználó mindent tud kezelni. Ennek a különbségnek az az oka, hogy a Microsoft-fiók a tag felhasználója helyett vendég felhasználóként adja hozzá az előfizetéshez. A vendég felhasználók a felhasználókhoz képest eltérő alapértelmezett engedélyekkel rendelkeznek az Azure AD-ben. Például a felhasználók más felhasználókat is olvashatnak az Azure AD-ben, és a vendég felhasználói nem. A tagok felhasználói regisztrálhatnak új egyszerű szolgáltatásokat az Azure AD-ben, és a vendég felhasználói nem rendelkezhetnek.
@@ -77,7 +77,7 @@ Vegye figyelembe, hogy az [Azure beépített szerepkörei](../role-based-access-
 
 A felhasználók és a vendég felhasználók összevetésével kapcsolatos információkért tekintse [meg a mi az alapértelmezett felhasználói engedélyek a Azure Active Directory?](../active-directory/fundamentals/users-default-permissions.md)című témakört.
 
-## <a name="remove-a-co-administrator"></a>Társ-rendszergazda eltávolítása
+## <a name="remove-a-co-administrator"></a>Co-Administrator eltávolítása
 
 1. Jelentkezzen be a [Azure Portal](https://portal.azure.com) szolgáltatás-rendszergazdaként vagy társ-rendszergazdaként.
 
@@ -87,7 +87,7 @@ A felhasználók és a vendég felhasználók összevetésével kapcsolatos info
 
 1. Kattintson a **klasszikus rendszergazdák** fülre.
 
-1. Vegyen fel egy pipát az eltávolítani kívánt társ-rendszergazda mellett.
+1. Vegyen fel egy pipát az eltávolítani kívánt Co-Administrator mellett.
 
 1. Kattintson az **Eltávolítás** elemre.
 
@@ -125,8 +125,8 @@ Azure-előfizetések esetében csak egy szolgáltatás-rendszergazda lehet. A sz
 
 | Fiók-rendszergazdai fiók | Megváltoztathatja a szolgáltatás rendszergazdáját egy másik Microsoft-fiók? | Megváltoztathatja a szolgáltatás-rendszergazdát egy olyan Azure AD-fiókra, amely ugyanabban a címtárban van? | Megváltoztathatja a szolgáltatás rendszergazdáját egy másik címtárban lévő Azure AD-fiókra? |
 | --- | --- | --- | --- |
-| Microsoft-fiók | Yes | Nem | Nem |
-| Azure AD-fiók | Igen | Igen | No |
+| Microsoft-fiók | Igen | Nem | Nem |
+| Azure AD-fiók | Igen | Igen | Nem |
 
 Ha a fiók rendszergazdája Azure AD-fiók, akkor a szolgáltatás-rendszergazdát egy olyan Azure AD-fiókra módosíthatja, amely ugyanabban a címtárban van, de nem egy másik címtárban. Például abby@contoso.com megváltoztathatja a szolgáltatás-rendszergazdát bob@contoso.com , de nem módosíthatja a szolgáltatás-rendszergazdát, hogy a john@notcontoso.com john@notcontoso.com contoso.com-címtárban ne legyen jelen.
 
@@ -151,5 +151,5 @@ A fiók rendszergazdájának megtekintéséhez kövesse az alábbi lépéseket.
 ## <a name="next-steps"></a>További lépések
 
 * [A különböző szerepkörök ismertetése](../role-based-access-control/rbac-and-directory-admin-roles.md)
-* [Azure-beli szerepkör-hozzárendelések hozzáadása vagy eltávolítása a Azure Portal használatával](../role-based-access-control/role-assignments-portal.md)
+* [Azure-beli szerepkör-hozzárendelés hozzáadása vagy eltávolítása az Azure Portal használatával](../role-based-access-control/role-assignments-portal.md)
 * [Azure-előfizetés-rendszergazdák hozzáadása vagy módosítása](../cost-management-billing/manage/add-change-subscription-administrator.md)

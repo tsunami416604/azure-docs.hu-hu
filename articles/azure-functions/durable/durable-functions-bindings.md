@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 12/17/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 899bc3fdc94b8232acd3edf3e0cbab3c481ff8f2
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87081848"
 ---
 # <a name="bindings-for-durable-functions-azure-functions"></a>Durable Functions kötései (Azure Functions)
@@ -32,7 +32,7 @@ Ha Orchestrator függvényeket ír a parancsfájlkezelési nyelveken (például 
 }
 ```
 
-* `orchestration`annak a FELÁLLÍTÁSNAK a neve, amelyet az ügyfeleknek használniuk kell, amikor szeretnék elindítani a Orchestrator függvény új példányait. Ez a tulajdonság nem kötelező. Ha nincs megadva, a rendszer a függvény nevét használja.
+* `orchestration` annak a FELÁLLÍTÁSNAK a neve, amelyet az ügyfeleknek használniuk kell, amikor szeretnék elindítani a Orchestrator függvény új példányait. Ez a tulajdonság nem kötelező. Ha nincs megadva, a rendszer a függvény nevét használja.
 
 Belsőleg ez az aktiválási kötés a Function app alapértelmezett Storage-fiókjában lévő várólisták sorát kérdezi le. Ezek a várólisták a bővítmény belső implementációjának részletei, ezért nincsenek explicit módon konfigurálva a kötési tulajdonságok között.
 
@@ -60,7 +60,7 @@ A előkészítési trigger kötése a bemeneteket és kimeneteket is támogatja.
 
 ### <a name="trigger-sample"></a>Példa triggerre
 
-A következő mintakód azt szemlélteti, hogy a legegyszerűbb ""Helló világ!"alkalmazás" Orchestrator függvény a következőképpen néz ki:
+A következő mintakód azt szemlélteti, hogy a legegyszerűbb "„Helló világ!” alkalmazás" Orchestrator függvény a következőképpen néz ki:
 
 #### <a name="c"></a>C#
 
@@ -92,7 +92,7 @@ module.exports = df.orchestrator(function*(context) {
 > [!NOTE]
 > A JavaScript-rendszerszervezőket érdemes használni `return` . A `durable-functions` kódtár gondoskodik a metódus meghívásáról `context.done` .
 
-A legtöbb Orchestrator függvény hívja a Activity functions funkciót, ezért itt látható egy ""Helló világ!"alkalmazás" példa, amely bemutatja, hogyan hívhat meg egy tevékenységi függvényt:
+A legtöbb Orchestrator függvény hívja a Activity functions funkciót, ezért itt látható egy "„Helló világ!” alkalmazás" példa, amely bemutatja, hogyan hívhat meg egy tevékenységi függvényt:
 
 #### <a name="c"></a>C#
 
@@ -139,7 +139,7 @@ Ha a VS Code-ot vagy a Azure Portal fejlesztési célokra használja, a tevéken
 }
 ```
 
-* `activity`a tevékenység neve. Ez az érték annak a névnek a neve, amelyet a Orchestrator függvények a tevékenység függvényének meghívására használnak. Ez a tulajdonság nem kötelező. Ha nincs megadva, a rendszer a függvény nevét használja.
+* `activity` a tevékenység neve. Ez az érték annak a névnek a neve, amelyet a Orchestrator függvények a tevékenység függvényének meghívására használnak. Ez a tulajdonság nem kötelező. Ha nincs megadva, a rendszer a függvény nevét használja.
 
 Belsőleg ez az aktiválási kötés a Function app alapértelmezett Storage-fiókjában lévő várólistát kérdezi le. Ez a várólista a bővítmény belső implementációjának részletes adatai, ezért nincs explicit módon konfigurálva a kötési tulajdonságok között.
 
@@ -165,7 +165,7 @@ A tevékenység-trigger kötés támogatja a bemeneteket és a kimeneteket is, u
 
 ### <a name="trigger-sample"></a>Példa triggerre
 
-Az alábbi mintakód azt mutatja be, hogy egy egyszerű ""Helló világ!"alkalmazás" tevékenységi funkció hogyan nézhet ki:
+Az alábbi mintakód azt mutatja be, hogy egy egyszerű "„Helló világ!” alkalmazás" tevékenységi funkció hogyan nézhet ki:
 
 #### <a name="c"></a>C#
 
@@ -261,8 +261,8 @@ Ha programozási nyelveket (például *. CSX* vagy *. js* fájlt) használ a fej
 }
 ```
 
-* `taskHub`– Olyan helyzetekben használatos, amikor több Function-alkalmazás osztozik ugyanazzal a Storage-fiókkal, de el kell különíteni egymástól. Ha nincs megadva, a rendszer az alapértelmezett értéket `host.json` használja. Ennek az értéknek meg kell egyeznie a cél Orchestrator függvények által használt értékkel.
-* `connectionName`– Egy, a Storage-fiókhoz tartozó kapcsolatok sztringjét tartalmazó Alkalmazásbeállítás neve. A megadott Orchestrator függvények által használt Storage-fióknak meg kell egyeznie. Ha nincs megadva, a rendszer az alapértelmezett Storage-fiókhoz tartozó kapcsolatok karakterláncot használja a Function alkalmazáshoz.
+* `taskHub` – Olyan helyzetekben használatos, amikor több Function-alkalmazás osztozik ugyanazzal a Storage-fiókkal, de el kell különíteni egymástól. Ha nincs megadva, a rendszer az alapértelmezett értéket `host.json` használja. Ennek az értéknek meg kell egyeznie a cél Orchestrator függvények által használt értékkel.
+* `connectionName` – Egy, a Storage-fiókhoz tartozó kapcsolatok sztringjét tartalmazó Alkalmazásbeállítás neve. A megadott Orchestrator függvények által használt Storage-fióknak meg kell egyeznie. Ha nincs megadva, a rendszer az alapértelmezett Storage-fiókhoz tartozó kapcsolatok karakterláncot használja a Function alkalmazáshoz.
 
 > [!NOTE]
 > A legtöbb esetben azt javasoljuk, hogy hagyja ki ezeket a tulajdonságokat, és használja az alapértelmezett viselkedést.
@@ -303,7 +303,7 @@ public static Task Run(
 
 ### <a name="client-sample-not-visual-studio"></a>Ügyfél minta (nem Visual Studio)
 
-Ha nem a Visual studiót használja a fejlesztéshez, a következőfunction.jsis létrehozhatja *a* fájlon. Ebből a példából megtudhatja, hogyan konfigurálhat egy üzenetsor által aktivált függvényt, amely a tartós előkészítési ügyfél kötését használja:
+Ha nem a Visual studiót használja a fejlesztéshez, a következőfunction.jsis létrehozhatja * a* fájlon. Ebből a példából megtudhatja, hogyan konfigurálhat egy üzenetsor által aktivált függvényt, amely a tartós előkészítési ügyfél kötését használja:
 
 ```json
 {
@@ -523,8 +523,8 @@ Ha programozási nyelveket (például *. CSX* vagy *. js* fájlt) használ a fej
 }
 ```
 
-* `taskHub`– Olyan helyzetekben használatos, amikor több Function-alkalmazás osztozik ugyanazzal a Storage-fiókkal, de el kell különíteni egymástól. Ha nincs megadva, a rendszer az alapértelmezett értéket `host.json` használja. Ennek az értéknek meg kell egyeznie a cél entitás függvények által használt értékkel.
-* `connectionName`– Egy, a Storage-fiókhoz tartozó kapcsolatok sztringjét tartalmazó Alkalmazásbeállítás neve. A relációs sztring által képviselt Storage-fióknak meg kell egyeznie a TARGET Entity functions által használttal. Ha nincs megadva, a rendszer az alapértelmezett Storage-fiókhoz tartozó kapcsolatok karakterláncot használja a Function alkalmazáshoz.
+* `taskHub` – Olyan helyzetekben használatos, amikor több Function-alkalmazás osztozik ugyanazzal a Storage-fiókkal, de el kell különíteni egymástól. Ha nincs megadva, a rendszer az alapértelmezett értéket `host.json` használja. Ennek az értéknek meg kell egyeznie a cél entitás függvények által használt értékkel.
+* `connectionName` – Egy, a Storage-fiókhoz tartozó kapcsolatok sztringjét tartalmazó Alkalmazásbeállítás neve. A relációs sztring által képviselt Storage-fióknak meg kell egyeznie a TARGET Entity functions által használttal. Ha nincs megadva, a rendszer az alapértelmezett Storage-fiókhoz tartozó kapcsolatok karakterláncot használja a Function alkalmazáshoz.
 
 > [!NOTE]
 > A legtöbb esetben azt javasoljuk, hogy hagyja ki a nem kötelező tulajdonságokat, és használja az alapértelmezett viselkedést.

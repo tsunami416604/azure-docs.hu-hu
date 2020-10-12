@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: af5399be44d2946775622598c5c1db3d8355f7cd
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86257070"
 ---
 # <a name="sfctl-store"></a>sfctl-tároló
@@ -19,7 +19,7 @@ Hajtsa végre az alapszintű fájl szintű műveleteket a fürt rendszerkép-tá
 
 |Parancs|Leírás|
 | --- | --- |
-| törlés | Törli a meglévő rendszerkép-tároló tartalmát. |
+| delete | Törli a meglévő rendszerkép-tároló tartalmát. |
 | gyökér – információ | Lekéri a tartalom adatait a rendszerkép-tároló gyökerében. |
 | stat | A rendszerkép-tároló tartalmának adatainak beolvasása. |
 
@@ -89,6 +89,6 @@ A megadott contentPath lévő rendszerkép-tároló tartalmának adatait adja vi
 | --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - [Állítsa](service-fabric-cli.md) be a Service Fabric CLI-t.
 - Megtudhatja, hogyan használhatja a Service Fabric CLI-t a [minta-parancsfájlok](./scripts/sfctl-upgrade-application.md)használatával.

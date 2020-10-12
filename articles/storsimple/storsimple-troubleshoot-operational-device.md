@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 11/03/2017
 ms.author: alkohli
 ms.openlocfilehash: eaf6b1825a258b11a2e345c771909822de73dfcf
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90056489"
 ---
 # <a name="troubleshoot-an-operational-storsimple-device"></a>Operatív StorSimple-eszköz hibáinak megoldása
@@ -48,7 +48,7 @@ A következő táblázat ismerteti azokat a hibákat, amelyek akkor fordulhatnak
 | Nem. | Hibaüzenet vagy feltétel | Lehetséges okok | Javasolt művelet |
 |:--- |:--- |:--- |:--- |
 | 1 |350032-es hiba: ez az eszköz már inaktiválva van. |Ez a hiba akkor jelenik meg, ha a telepítővarázsló egy inaktivált eszközön fut. |A következő lépésekhez [forduljon Microsoft ügyfélszolgálata](storsimple-contact-microsoft-support.md) . Inaktivált eszköz nem helyezhető üzembe. Az eszköz újbóli aktiválása előtt szükség lehet a gyári beállítások visszaállítására. |
-| 2 |Meghívó-Hcssetupwizard parancsmagot: ERROR_INVALID_FUNCTION (kivétel a HRESULT: 0x80070001) |A DNS-kiszolgáló frissítése sikertelen. A DNS-beállítások globális beállítások, és az összes engedélyezett hálózati adapteren alkalmazhatók. |Engedélyezze a felületet, és alkalmazza újra a DNS-beállításokat. Ez megzavarhatja a hálózatot más engedélyezett felületek esetében, mivel ezek a beállítások globálisak. |
+| 2 |Invoke-HcsSetupWizard: ERROR_INVALID_FUNCTION (kivétel a HRESULT: 0x80070001) |A DNS-kiszolgáló frissítése sikertelen. A DNS-beállítások globális beállítások, és az összes engedélyezett hálózati adapteren alkalmazhatók. |Engedélyezze a felületet, és alkalmazza újra a DNS-beállításokat. Ez megzavarhatja a hálózatot más engedélyezett felületek esetében, mivel ezek a beállítások globálisak. |
 | 3 |Az eszköz úgy tűnik, hogy online állapotban van a StorSimple Manager Service Portalon, de ha megpróbálja befejezni a minimális telepítést, és menti a konfigurációt, a művelet meghiúsul. |A kezdeti beállítás során a webproxy nincs konfigurálva, még akkor is, ha valóban van proxykiszolgáló. |A hiba megkereséséhez használja a [test-HcsmConnection parancsmagot][2] . Ha nem tudja elhárítani a problémát, [lépjen kapcsolatba Microsoft ügyfélszolgálata](storsimple-contact-microsoft-support.md) . |
 | 4 |Meghívás – Hcssetupwizard parancsmagot: az érték nem a várt tartományon belül esik. |Az alhálózati maszk helytelenül állítja elő ezt a hibát. A lehetséges okok a következők: <ul><li> Az alhálózati maszk hiányzik vagy üres.</li><li>Az IPv6-előtag formátuma helytelen.</li><li>Az interfész felhőben engedélyezve van, de az átjáró hiányzik vagy helytelen.</li></ul>Vegye figyelembe, hogy a rendszer automatikusan engedélyezi a 0 értéket, ha a telepítővarázsló segítségével konfigurálja azokat. |A probléma meghatározásához használja a 0.0.0.0 vagy a 256.256.256.256 alhálózatot, és tekintse meg a kimenetet. Szükség szerint adja meg az alhálózati maszk, az átjáró és az IPv6-előtag helyes értékeit. |
 

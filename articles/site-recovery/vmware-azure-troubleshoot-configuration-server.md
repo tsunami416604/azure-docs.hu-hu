@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 02/13/2019
 ms.author: ramamill
 ms.openlocfilehash: b60a53b05c0d2c80c36c94e27e4d00952b5af954
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86113071"
 ---
 # <a name="troubleshoot-configuration-server-issues"></a>A konfigurációs kiszolgáló problémáinak elhárítása
@@ -28,8 +28,8 @@ A forrás számítógép a mobilitási ügynök telepítésekor regisztrálja a 
    1. Ellenőrizze, hogy a kért állomásnév megegyezik-e a forrásszámítógép gazdagép-azonosítójával.
    2. Ellenőrizze, hogy a forrásszámítógép rendelkezik-e legalább egy, a fizikai hálózati adapterhez hozzárendelt IP-címmel. Ahhoz, hogy az ügynök sikeres legyen, a forrásoldali gépnek rendelkeznie kell legalább egy érvényes, a fizikai hálózati adapterhez rendelt IP v4-címmel.
    3. Futtassa a következő parancsok egyikét a forrásszámítógépen a forrásoldali gép összes IP-címének lekéréséhez:
-      - Windows esetén:`> ipconfig /all`
-      - Linux esetén:`# ifconfig -a`
+      - Windows esetén: `> ipconfig /all`
+      - Linux esetén: `# ifconfig -a`
 
 3. Ha a sztring **nem található érvényes IP-cím** , keresse meg a következő karakterláncot: **Reason =>null**. Ez a hiba akkor fordul elő, ha a forrásszámítógép üres gazdagépet használ a konfigurációs kiszolgálóval való regisztráláshoz. Ha a karakterlánc megtalálható:
     - A problémák megoldását követően kövesse a [forrásoldali számítógép regisztrálása a konfigurációs kiszolgálóval](vmware-azure-troubleshoot-configuration-server.md#register-source-machine-with-configuration-server) című témakör útmutatásait, hogy manuálisan próbálja megismételni a regisztrációt.
@@ -234,7 +234,7 @@ Ez a hiba akkor fordulhat elő, ha több konfigurációs kiszolgáló (CS) péld
 
 A hiba megoldása érdekében:
 
-1. Távolítsa el az elavult/régi CS virtuális gépet a vCenter-ből. További információ: [kiszolgálók eltávolítása és a védelem letiltása](site-recovery-manage-registration-and-protection.md).
+1. Távolítsa el az elavult/régi CS virtuális gépet a vCenter-ből. További információ:  [kiszolgálók eltávolítása és a védelem letiltása](site-recovery-manage-registration-and-protection.md).
 2. Jelentkezzen be a konfigurációs kiszolgáló virtuális gépre, és kapcsolódjon a MySQL svsdb1-adatbázishoz. 
 3. Hajtsa végre a következő lekérdezést:
 

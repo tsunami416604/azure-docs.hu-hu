@@ -9,10 +9,10 @@ ms.date: 04/25/2019
 ms.author: cynthn
 ms.custom: include file
 ms.openlocfilehash: 213fec9e7d9da56d34f79fee7e677b0e6bbd7a63
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89304082"
 ---
 ## <a name="update-resources"></a>Erőforrások frissítése
@@ -20,12 +20,12 @@ ms.locfileid: "89304082"
 Bizonyos korlátozások vonatkoznak a frissítésre. A következő elemek frissíthetők: 
 
 Megosztott képgyűjtemény:
-- Description
+- Leírás
 
 Rendszerkép definíciója:
 - Ajánlott vCPU
 - Ajánlott memória
-- Description
+- Leírás
 - Élettartam vége
 
 Rendszerkép verziója:

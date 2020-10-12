@@ -16,10 +16,10 @@ ms.topic: how-to
 ms.date: 02/15/2018
 ms.author: allensu
 ms.openlocfilehash: 562d5010458fc938d9d62fed5d0d2c8284f2055d
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88936945"
 ---
 # <a name="manage-expiration-of-web-content-in-azure-cdn"></a>A webes tartalmak elévülésének kezelése Azure CDN-ben
@@ -38,7 +38,7 @@ A gyorsítótár beállításait a Azure Portal a [CDN gyorsítótárazási szab
 > További információ arról, hogy a Azure CDN hogyan használható a fájlokhoz és egyéb erőforrásokhoz való hozzáférés felgyorsításához: [Az Azure Content Delivery Network áttekintése](cdn-overview.md).
 > 
 
-## <a name="setting-cache-control-headers-by-using-cdn-caching-rules"></a>A Cache-Control fejlécek beállítása CDN gyorsítótárazási szabályok használatával
+## <a name="setting-cache-control-headers-by-using-cdn-caching-rules"></a>Cache-Control fejlécek beállítása CDN gyorsítótárazási szabályok használatával
 A webkiszolgáló fejlécének beállítására szolgáló előnyben részesített módszer a `Cache-Control` Azure Portal gyorsítótárazási szabályainak használata. További információ a CDN gyorsítótárazási szabályairól: [Azure CDN gyorsítótárazási viselkedés szabályozása gyorsítótárazási szabályokkal](cdn-caching-rules.md).
 
 > [!NOTE] 
@@ -57,7 +57,7 @@ A webkiszolgáló fejlécének beállítására szolgáló előnyben részesíte
    ![CDN-gyorsítótárazási oldal](./media/cdn-manage-expiration-of-cloud-service-content/cdn-caching-page.png)
 
 
-**Webkiszolgáló gyorsítótár-vezérlő fejlécének beállítása globális gyorsítótárazási szabályok használatával:**
+**Webkiszolgáló Cache-Control fejlécének beállítása globális gyorsítótárazási szabályok használatával:**
 
 1. A **globális gyorsítótárazási szabályok**területen állítsa be a **lekérdezési karakterlánc gyorsítótárazási viselkedését** a **lekérdezési karakterláncok figyelmen kívül hagyása** és a **gyorsítótárazási viselkedés** beállítása **felülbírálásra**
       
@@ -67,9 +67,9 @@ A webkiszolgáló fejlécének beállítására szolgáló előnyben részesíte
 
    Ez a globális gyorsítótárazási szabály egy óra gyorsítótári időtartamát állítja be, és a végpontra irányuló összes kérést érinti. Felülbírálja `Cache-Control` `Expires` a végpont által megadott forráskiszolgáló által elküldett bármely vagy HTTP-fejlécet.   
 
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
-**Webkiszolgáló-fájl gyorsítótár-vezérlő fejlécének beállítása egyéni gyorsítótárazási szabályok használatával:**
+**Webkiszolgáló-fájl Cache-Control fejlécének beállítása egyéni gyorsítótárazási szabályok használatával:**
 
 1. Az **Egyéni gyorsítótárazási szabályok**alatt hozzon létre két egyeztetési feltételt:
 
@@ -81,10 +81,10 @@ A webkiszolgáló fejlécének beállítására szolgáló előnyben részesíte
 
     Az első egyéni gyorsítótárazási szabály a `/webfolder1` végpont által megadott forráskiszolgáló mappájában lévő fájlok esetében négy órányi gyorsítótári időtartamot állít be. A második szabály csak a fájl első szabályát felülbírálja, `file1.txt` és két órás gyorsítótári időtartamot állít be.
 
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 
-## <a name="setting-cache-control-headers-by-using-configuration-files"></a>A Cache-Control fejlécek beállítása konfigurációs fájlok használatával
+## <a name="setting-cache-control-headers-by-using-configuration-files"></a>Cache-Control fejlécek beállítása konfigurációs fájlok használatával
 A statikus tartalom, például a képek és a stíluslapok esetében a frissítés gyakoriságát a webalkalmazás **applicationHost.config** vagy **Web.config** konfigurációs fájljainak módosításával szabályozhatja. A `Cache-Control` tartalom fejlécének beállításához használja az `<system.webServer>/<staticContent>/<clientCache>` elemet valamelyik fájlban.
 
 ### <a name="using-applicationhostconfig-files"></a>ApplicationHost.config fájlok használata
@@ -109,7 +109,7 @@ A következő XML-konfigurációs fájl példája azt mutatja be, hogyan állít
 
 A **cacheControlMaxAge** attribútum használatához be kell állítania a **cacheControlMode** attribútum értékét a következőre: `UseMaxAge` . Ez a beállítás a HTTP-fejlécet és direktívát okozta a `Cache-Control: max-age=<nnn>` válaszhoz való hozzáadáshoz. A **cacheControlMaxAge** attribútum TimeSpan-értékének formátuma a következő: `<days>.<hours>:<min>:<sec>` . Az érték másodpercre van átalakítva, és az irányelv értékeként lesz használva `Cache-Control` `max-age` . További információ az `<clientCache>` elemről: ügyfél- [ \<clientCache> gyorsítótár ](https://www.iis.net/ConfigReference/system.webServer/staticContent/clientCache).  
 
-## <a name="setting-cache-control-headers-programmatically"></a>A Cache-Control fejlécek programozott módon történő beállítása
+## <a name="setting-cache-control-headers-programmatically"></a>Cache-Control fejlécek programozott módon történő beállítása
 A ASP.NET alkalmazások esetében a CDN gyorsítótárazási viselkedését programozott módon szabályozhatja a .NET API **HttpResponse. cache** tulajdonságának beállításával. További információ a **HttpResponse. cache** tulajdonságról: [HttpResponse. cache Property](/dotnet/api/system.web.httpresponse.cache#System_Web_HttpResponse_Cache) és [HttpCachePolicy osztály](/dotnet/api/system.web.httpcachepolicy).  
 
 Az alkalmazás tartalmának programozott gyorsítótárazásához a ASP.NET-ben kövesse az alábbi lépéseket:
@@ -131,7 +131,7 @@ Response.Cache.SetLastModified(DateTime.Now);
 ## <a name="testing-the-cache-control-header"></a>A Cache-Control fejléc tesztelése
 Könnyedén ellenőrizheti a webes tartalom ÉLETTARTAMának beállításait. A böngésző [fejlesztői eszközeivel](https://developer.microsoft.com/microsoft-edge/platform/documentation/f12-devtools-guide/)ellenőrizze, hogy a webes tartalom tartalmazza-e a `Cache-Control` Válasz fejlécét. Olyan eszközt is használhat, mint például a **wget**, a [Poster](https://www.getpostman.com/)vagy a [Hegedűs](https://www.telerik.com/fiddler) , és megvizsgálhatja a válasz fejléceit.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [A **clientCache** elem részleteinek olvasása](https://www.iis.net/ConfigReference/system.webServer/staticContent/clientCache)
 * [Olvassa el a **HttpResponse. cache** tulajdonság dokumentációját.](/dotnet/api/system.web.httpresponse.cache#System_Web_HttpResponse_Cache) 
 * [A **HttpCachePolicy osztály** dokumentációjának elolvasása](/dotnet/api/system.web.httpcachepolicy)  

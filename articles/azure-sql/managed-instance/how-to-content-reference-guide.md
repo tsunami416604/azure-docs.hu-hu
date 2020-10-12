@@ -13,10 +13,10 @@ ms.author: jovanpop
 ms.reviewer: sstein
 ms.date: 04/16/2019
 ms.openlocfilehash: 208793d3ba8c3463abe892b368beb41d4b79f214
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91617451"
 ---
 # <a name="azure-sql-managed-instance-content-reference"></a>Az Azure SQL felügyelt példányának tartalmi referenciája
@@ -67,7 +67,7 @@ Ebben a cikkben az Azure SQL felügyelt példányának kezeléséhez és konfigu
 - [A lekérdezési tároló használata a teljesítmény figyeléséhez](https://docs.microsoft.com/sql/relational-databases/performance/best-practice-with-the-query-store#Insight)
 - [Teljesítményproblémák elhárítása az Intelligent Insights segítségével](../database/intelligent-insights-troubleshoot-performance.md)
 - [A Intelligent Insights diagnosztikai napló használata](../database/intelligent-insights-use-diagnostics-log.md)
-- [Memóriabeli OLTP-terület figyelése](../in-memory-oltp-monitor-space.md)
+- [In-Memory OLTP-terület figyelése](../in-memory-oltp-monitor-space.md)
 
 ### <a name="extended-events"></a>Bővített események
 
@@ -79,7 +79,7 @@ Ebben a cikkben az Azure SQL felügyelt példányának kezeléséhez és konfigu
 
 - [Riasztások létrehozása a felügyelt példányhoz](alerts-create.md)
 
-## <a name="operations"></a>Üzemeltetés
+## <a name="operations"></a>Műveletek
 
 - [Felhasználó által kezdeményezett manuális feladatátvétel a felügyelt SQL-példányon](user-initiated-failover.md)
 
@@ -108,6 +108,6 @@ Ebben a cikkben az Azure SQL felügyelt példányának kezeléséhez és konfigu
 - [SaaS-videóindexelő](../database/saas-tenancy-video-index-wingtip-brk3120-20171011.md)
 - [SaaS-alkalmazásbiztonság](../database/saas-tenancy-elastic-tools-multi-tenant-row-level-security.md)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Első lépések: az [SQL felügyelt példányának telepítése](instance-create-quickstart.md).

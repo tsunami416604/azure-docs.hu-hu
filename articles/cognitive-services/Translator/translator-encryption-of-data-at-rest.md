@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 08/28/2020
 ms.author: egeaney
 ms.openlocfilehash: ce7ff6ae134835de23a0d2670e8b4f44783654f8
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89079200"
 ---
 # <a name="translator-encryption-of-data-at-rest"></a>Inaktív adatok Translator-titkosítása
@@ -37,7 +37,7 @@ Olyan előfizetésekhez, amelyek csak a Microsoft által felügyelt titkosítás
 Alapértelmezés szerint az előfizetés a Microsoft által felügyelt titkosítási kulcsokat használja. Az előfizetést az ügyfél által felügyelt kulcsok (CMK) nevű saját kulcsokkal is kezelheti. A CMK nagyobb rugalmasságot biztosít a hozzáférés-vezérlések létrehozásához, forgatásához, letiltásához és visszavonásához. Továbbá az adatok védelméhez használt titkosítási kulcsok naplózására is lehetősége van. Ha az előfizetéshez CMK van konfigurálva, a rendszer dupla titkosítást biztosít, amely második védelmi réteget kínál, miközben lehetővé teszi a titkosítási kulcs vezérlését a Azure Key Vaulton keresztül.
 
 > [!IMPORTANT]
-> Az ügyfél által felügyelt kulcsok a Translator szolgáltatás összes díjszabási szintjéhez elérhetők. Ha az ügyfél által felügyelt kulcsok használatát szeretné igénybe venni, töltse ki és küldje el a [fordító ügyfél által felügyelt kulcs kérése űrlapot](https://aka.ms/cogsvc-cmk) , amely körülbelül 3-5 munkanapot vesz igénybe, hogy visszahallgassa a kérés állapotát. Igénytől függően előfordulhat, hogy egy várólistába helyezi, és a rendszer jóváhagyja a helyet, és elérhetővé válik. Miután jóváhagyta a CMK és a Translator Service használatát, létre kell hoznia egy új Translator-erőforrást. A fordítói erőforrás létrehozása után a Azure Key Vault használatával beállíthatja a felügyelt identitást.
+> Az ügyfél által felügyelt kulcsok a Translator szolgáltatás összes díjszabási szintjéhez elérhetők. Ha az ügyfél által felügyelt kulcsok használatát szeretné igénybe venni, töltse ki és küldje el a [Translator Customer-Managed Key kérelem űrlapját](https://aka.ms/cogsvc-cmk) , amely körülbelül 3-5 munkanapot vesz igénybe, hogy visszahallgassa a kérés állapotát. Igénytől függően előfordulhat, hogy egy várólistába helyezi, és a rendszer jóváhagyja a helyet, és elérhetővé válik. Miután jóváhagyta a CMK és a Translator Service használatát, létre kell hoznia egy új Translator-erőforrást. A fordítói erőforrás létrehozása után a Azure Key Vault használatával beállíthatja a felügyelt identitást.
 
 Az alábbi lépéseket követve engedélyezheti az ügyfél által felügyelt kulcsokat a fordító számára:
 
@@ -47,7 +47,7 @@ Az alábbi lépéseket követve engedélyezheti az ügyfél által felügyelt ku
 
 ### <a name="enable-customer-managed-keys"></a>Ügyfél által felügyelt kulcsok engedélyezése
 
-Az ügyfél által felügyelt kulcsok tárolásához Azure Key Vaultt kell használnia. Létrehozhatja saját kulcsait, és tárolhatja őket egy kulcstartóban, vagy használhatja a Azure Key Vault API-kat kulcsok létrehozásához. A Cognitive Services erőforrásnak és a kulcstartónak ugyanabban a régióban és ugyanabban a Azure Active Directory (Azure AD) bérlőben kell lennie, de különböző előfizetésekben lehet. További információ a Azure Key Vaultről: [Mi az Azure Key Vault?](https://docs.microsoft.com/azure/key-vault/key-vault-overview)
+A felhasználó által kezelt kulcsok tárolásához az Azure Key Vaultot kell használnia. Létrehozhatja saját kulcsait, és tárolhatja őket egy kulcstartóban, vagy használhatja a Azure Key Vault API-kat kulcsok létrehozásához. A Cognitive Services erőforrásnak és a kulcstartónak ugyanabban a régióban és ugyanabban a Azure Active Directory (Azure AD) bérlőben kell lennie, de különböző előfizetésekben lehet. További információ a Azure Key Vaultről: [Mi az Azure Key Vault?](https://docs.microsoft.com/azure/key-vault/key-vault-overview)
 
 Egy új Cognitive Services erőforrás mindig Microsoft által felügyelt kulcsokkal van titkosítva. Az ügyfél által felügyelt kulcsokat nem lehet engedélyezni az erőforrás létrehozásának időpontjában. Az ügyfél által felügyelt kulcsok Azure Key Vault tárolódnak, és a kulcstárolót olyan hozzáférési házirendekkel kell kiépíteni, amelyek kulcsfontosságú engedélyeket biztosítanak a Cognitive Services erőforráshoz társított felügyelt identitásnak. A felügyelt identitás az erőforrás létrehozása után azonnal elérhető.
 

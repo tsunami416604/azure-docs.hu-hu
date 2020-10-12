@@ -12,10 +12,10 @@ ms.custom: project-no-code
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 1d631c47225fac7d8a95541313593333a1399e07
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87115965"
 ---
 # <a name="define-custom-attributes-in-azure-active-directory-b2c"></a>Egyéni attribútumok definiálása a Azure Active Directory B2Cban
@@ -40,7 +40,7 @@ ms.locfileid: "87115965"
 5. Adja meg az egyéni attribútum **nevét** (például "ShoeSize").
 6. Válassza ki az **adattípust**. Csak a **String**, a **Boolean**és az **int** érték érhető el.
 7. Igény szerint megadhat egy **leírást** az információs célokra.
-8. Kattintson a **Létrehozás** lehetőségre.
+8. Kattintson a **Létrehozás** elemre.
 
 Az egyéni attribútum már elérhető a **felhasználói attribútumok** listájában és a felhasználói folyamatokban való használathoz. Egyéni attribútum csak akkor jön létre, amikor az első alkalommal használja a felhasználói folyamatokban, és nem, amikor hozzáadja a **felhasználói attribútumok**listájához.
 
