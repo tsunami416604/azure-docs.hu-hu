@@ -7,10 +7,10 @@ ms.date: 04/30/2020
 ms.reviewer: yutlin
 ms.custom: seodec18
 ms.openlocfilehash: f7301809b3befc41110a32062d6e478c412fa56e
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90981121"
 ---
 # <a name="secure-a-custom-dns-name-with-a-tlsssl-binding-in-azure-app-service"></a>Egyéni DNS-név biztonságossá tétele TLS/SSL-kötéssel Azure App Service
@@ -108,9 +108,9 @@ Két módosítást kell végeznie, potenciálisan:
 
 A különböző böngészőkben keresse meg az alkalmazást, és ellenőrizze, hogy az alkalmazás elérhető-e `https://<your.custom.domain>` .
 
-:::image type="content" source="./media/configure-ssl-bindings/app-with-custom-ssl.png" alt-text="Képernyőkép: a contoso.com URL-cím kiemelésével megjeleníthető példa az egyéni tartományra való tallózásra.":::
+:::image type="content" source="./media/configure-ssl-bindings/app-with-custom-ssl.png" alt-text="Képernyőkép: a contoso.com URL-cím kiemelésével megjeleníthető példa az egyéni tartományra való tallózásra.&quot;:::
 
-Az alkalmazás kódja a "x-appservice-proto" fejlécen keresztül ellenőrizheti a protokollt. A fejléc értéke `http` vagy `https` . 
+Az alkalmazás kódja a &quot;x-appservice-proto" fejlécen keresztül ellenőrizheti a protokollt. A fejléc értéke `http` vagy `https` . 
 
 > [!NOTE]
 > Ha az alkalmazás tanúsítvány-ellenőrzési hibákat ad, valószínűleg önaláírt tanúsítványt használ.

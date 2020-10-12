@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 11/02/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 2b99d032b953caecfca2b34d5eadafe94f45f307
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87809373"
 ---
 # <a name="manage-instances-in-durable-functions-in-azure"></a>Durable Functions-példányok kezelése az Azure-ban
@@ -162,7 +162,7 @@ A példányokat közvetlenül is elindíthatja a [Azure functions Core Tools](..
 * ** `input` (nem kötelező)**: bemenet a függvénybe, vagy beágyazott, vagy egy JSON-fájlon keresztül. A fájlok esetében adjon hozzá egy előtagot a fájl elérési útjához `@` , például: `@path/to/file.json` .
 * ** `id` (nem kötelező)**: a koordináló példány azonosítója. Ha nem megadja ezt a paramétert, a parancs véletlenszerű GUID azonosítót használ.
 * ** `connection-string-setting` (nem kötelező)**: a használni kívánt tárolási kapcsolódási karakterláncot tartalmazó Alkalmazásbeállítás neve. Az alapértelmezett érték a AzureWebJobsStorage.
-* ** `task-hub-name` (nem kötelező)**: a használni kívánt Durable functions-feladathoz tartozó központ neve. Az alapértelmezett érték a DurableFunctionsHub. Ezt ahost.jsis beállíthatja [a](durable-functions-bindings.md#host-json) DurableTask: HubName használatával.
+* ** `task-hub-name` (nem kötelező)**: a használni kívánt Durable functions-feladathoz tartozó központ neve. Az alapértelmezett érték a DurableFunctionsHub. Ezt ahost.jsis beállíthatja [ a](durable-functions-bindings.md#host-json) DurableTask: HubName használatával.
 
 > [!NOTE]
 > A Core Tools parancsai feltételezik, hogy egy Function alkalmazás gyökérkönyvtárában futtatja őket. Ha explicit módon megadja a `connection-string-setting` és a `task-hub-name` paramétereket, bármelyik címtárból futtathatja a parancsokat. Habár futtathatja ezeket a parancsokat egy futó Function app-gazdagép nélkül, előfordulhat, hogy bizonyos effektusok nem figyelhetők meg, kivéve, ha a gazdagép fut. A `start-new` parancs például enqueues a cél tevékenység központba, de a rendszer valójában nem fut, kivéve, ha van olyan Function app Host-folyamat, amely képes feldolgozni az üzenetet.
@@ -259,7 +259,7 @@ Az [Azure functions Core Tools](../functions-run-local.md) paranccsal közvetlen
 * ** `show-input` (nem kötelező)**: Ha a értékre `true` van állítva, a válasz tartalmazza a függvény bemenetét. Az alapértelmezett érték `false`.
 * ** `show-output` (nem kötelező)**: Ha a értékre `true` van állítva, a válasz tartalmazza a függvény kimenetét. Az alapértelmezett érték `false`.
 * ** `connection-string-setting` (nem kötelező)**: a használni kívánt tárolási kapcsolódási karakterláncot tartalmazó Alkalmazásbeállítás neve. A mező alapértelmezett értéke: `AzureWebJobsStorage`.
-* ** `task-hub-name` (nem kötelező)**: a használni kívánt Durable functions-feladathoz tartozó központ neve. A mező alapértelmezett értéke: `DurableFunctionsHub`. Ahost.jsis beállítható [a](durable-functions-bindings.md#host-json)DurableTask: HubName használatával.
+* ** `task-hub-name` (nem kötelező)**: a használni kívánt Durable functions-feladathoz tartozó központ neve. A mező alapértelmezett értéke: `DurableFunctionsHub`. Ahost.jsis beállítható [ a](durable-functions-bindings.md#host-json)DurableTask: HubName használatával.
 
 A következő parancs lekérdezi egy példány állapotát (beleértve a bemenetet és a kimenetet is), amely egy 0ab8c55a66644d68a3a8b220b12d209c-es előkészítési példány azonosítója. Feltételezi, hogy a `func` parancsot a Function alkalmazás gyökérkönyvtárában futtatja:
 
@@ -350,7 +350,7 @@ A példányokat közvetlenül is lekérdezheti az [Azure functions Core Tools](.
 * ** `top` (nem kötelező)**: Ez a parancs támogatja a lapozást. Ez a paraméter a beolvasott példányok számának felel meg. Az alapértelmezett érték 10.
 * ** `continuation-token` (nem kötelező)**: a lekérdezni kívánt példányok lapját vagy szakaszát jelző jogkivonat. Mindegyik `get-instances` végrehajtás egy jogkivonatot ad vissza a következő példányoknak.
 * ** `connection-string-setting` (nem kötelező)**: a használni kívánt tárolási kapcsolódási karakterláncot tartalmazó Alkalmazásbeállítás neve. A mező alapértelmezett értéke: `AzureWebJobsStorage`.
-* ** `task-hub-name` (nem kötelező)**: a használni kívánt Durable functions-feladathoz tartozó központ neve. A mező alapértelmezett értéke: `DurableFunctionsHub`. Ahost.jsis beállítható [a](durable-functions-bindings.md#host-json)DurableTask: HubName használatával.
+* ** `task-hub-name` (nem kötelező)**: a használni kívánt Durable functions-feladathoz tartozó központ neve. A mező alapértelmezett értéke: `DurableFunctionsHub`. Ahost.jsis beállítható [ a](durable-functions-bindings.md#host-json)DurableTask: HubName használatával.
 
 ```bash
 func durable get-instances
@@ -459,7 +459,7 @@ A Azure Functions Core Tools a parancsot szűrők segítségével is használhat
 * ** `top` (nem kötelező)**: a beolvasott példányok száma kérelem alapján. Az alapértelmezett érték 10.
 * ** `continuation-token` (nem kötelező)**: a lekérdezni kívánt példányok lapját vagy szakaszát jelző jogkivonat. Mindegyik `get-instances` végrehajtás egy jogkivonatot ad vissza a következő példányoknak.
 * ** `connection-string-setting` (nem kötelező)**: a használni kívánt tárolási kapcsolódási karakterláncot tartalmazó Alkalmazásbeállítás neve. A mező alapértelmezett értéke: `AzureWebJobsStorage`.
-* ** `task-hub-name` (nem kötelező)**: a használni kívánt Durable functions-feladathoz tartozó központ neve. A mező alapértelmezett értéke: `DurableFunctionsHub`. Ahost.jsis beállítható [a](durable-functions-bindings.md#host-json)DurableTask: HubName használatával.
+* ** `task-hub-name` (nem kötelező)**: a használni kívánt Durable functions-feladathoz tartozó központ neve. A mező alapértelmezett értéke: `DurableFunctionsHub`. Ahost.jsis beállítható [ a](durable-functions-bindings.md#host-json)DurableTask: HubName használatával.
 
 Ha nem ad meg szűrőket ( `created-after` , `created-before` vagy `runtime-status` ), a parancs egyszerűen lekéri a `top` példányokat, és nem számít a futtatókörnyezet állapota vagy a létrehozás ideje.
 
@@ -531,7 +531,7 @@ A [Azure functions Core Tools](../functions-run-local.md) parancs használatáva
 * ** `id` (kötelező)**: a megszakítani kívánt összehangoló példány azonosítója.
 * ** `reason` (nem kötelező)**: a megszakítás oka.
 * ** `connection-string-setting` (nem kötelező)**: a használni kívánt tárolási kapcsolódási karakterláncot tartalmazó Alkalmazásbeállítás neve. A mező alapértelmezett értéke: `AzureWebJobsStorage`.
-* ** `task-hub-name` (nem kötelező)**: a használni kívánt Durable functions-feladathoz tartozó központ neve. A mező alapértelmezett értéke: `DurableFunctionsHub`. Ahost.jsis beállítható [a](durable-functions-bindings.md#host-json)DurableTask: HubName használatával.
+* ** `task-hub-name` (nem kötelező)**: a használni kívánt Durable functions-feladathoz tartozó központ neve. A mező alapértelmezett értéke: `DurableFunctionsHub`. Ahost.jsis beállítható [ a](durable-functions-bindings.md#host-json)DurableTask: HubName használatával.
 
 A következő parancs leállítja a 0ab8c55a66644d68a3a8b220b12d209c AZONOSÍTÓval rendelkező előkészítési példányt:
 
@@ -608,7 +608,7 @@ A [Azure functions Core Tools](../functions-run-local.md) parancs használatáva
 * **`event-name`**: A emelni kívánt esemény neve.
 * ** `event-data` (nem kötelező)**: az előkészítési példánynak küldendő adatértékek. Ez lehet egy JSON-fájl elérési útja, vagy közvetlenül a parancssorban is megadható az információ.
 * ** `connection-string-setting` (nem kötelező)**: a használni kívánt tárolási kapcsolódási karakterláncot tartalmazó Alkalmazásbeállítás neve. A mező alapértelmezett értéke: `AzureWebJobsStorage`.
-* ** `task-hub-name` (nem kötelező)**: a használni kívánt Durable functions-feladathoz tartozó központ neve. A mező alapértelmezett értéke: `DurableFunctionsHub`. Ahost.jsis beállítható [a](durable-functions-bindings.md#host-json)DurableTask: HubName használatával.
+* ** `task-hub-name` (nem kötelező)**: a használni kívánt Durable functions-feladathoz tartozó központ neve. A mező alapértelmezett értéke: `DurableFunctionsHub`. Ahost.jsis beállítható [ a](durable-functions-bindings.md#host-json)DurableTask: HubName használatával.
 
 ```bash
 func durable raise-event --id 0ab8c55a66644d68a3a8b220b12d209c --event-name MyEvent --event-data @eventdata.json
@@ -1028,7 +1028,7 @@ A következő parancs törli a tevékenység központhoz társított összes Azu
 func durable delete-task-hub --task-hub-name UserTest
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Útmutató a verziószámozás kezeléséhez](durable-functions-versioning.md)

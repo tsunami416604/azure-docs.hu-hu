@@ -8,10 +8,10 @@ ms.service: web-application-firewall
 ms.date: 01/31/2020
 ms.author: victorh
 ms.openlocfilehash: bdb115cf6d0f0aa2c55f6143015a323df6faa114
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83744304"
 ---
 # <a name="geomatch-custom-rules-preview"></a>Egyéni Geomatch-szabályok (előzetes verzió)
@@ -100,7 +100,7 @@ Ha a Geomatch operátort használja, a választókat a következő kétjegyű or
 | HR | Horvátország|
 | HT | Haiti|
 | HU | Magyarország|
-| ID | Indonézia|
+| ID (Azonosító) | Indonézia|
 | IE | Írország|
 | IL | Izrael|
 | IN | India|
@@ -173,7 +173,7 @@ Ha a Geomatch operátort használja, a választókat a következő kétjegyű or
 | RU | Orosz Föderáció|
 | RW | Ruanda|
 | SA | Szaúd-Arábia|
-| SD | Szudán|
+| Szórás | Szudán|
 | SE | Svédország|
 | SG | Szingapúr|
 | SI | Szlovénia|

@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9c8dcc8766b21551f3cd62289805fe735ef0f333
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91317616"
 ---
 # <a name="azure-ad-connect-automatic-upgrade"></a>Azure AD Connect: automatikus frissítés
@@ -43,7 +43,7 @@ Az automatikus frissítés aktuális állapotát a PowerShell-parancsmaggal lehe
 | Felfüggesztve |Csak a rendszeren állítható be. A rendszer **jelenleg nem** jogosult automatikus frissítések fogadására. |
 | Disabled (Letiltva) |Az automatikus frissítés le van tiltva. |
 
-Az **engedélyezett** és a **letiltott** érték közötti váltás a következővel: `Set-ADSyncAutoUpgrade` . Csak a rendszeren kell beállítani a **felfüggesztett**állapotot.  A 1.1.750.0 előtt a set-ADSyncAutoUpgrade parancsmag letiltja az automatikus frissítést, ha az automatikus frissítés állapota felfüggesztve értékre lett állítva. Ez a funkció mostantól megváltozott, így nem blokkolja az autoupgrade funkciót.
+Az **engedélyezett** és a **letiltott** érték közötti váltás a következővel: `Set-ADSyncAutoUpgrade` . Csak a rendszeren kell beállítani a **felfüggesztett**állapotot.  A 1.1.750.0 előtt a Set-ADSyncAutoUpgrade parancsmag letiltja az automatikus frissítést, ha az automatikus frissítés állapota felfüggesztve értékre lett állítva. Ez a funkció mostantól megváltozott, így nem blokkolja az autoupgrade funkciót.
 
 Az automatikus frissítés a Azure AD Connect Healtht használja a frissítési infrastruktúrához. Az automatikus frissítés működéséhez győződjön meg arról, hogy megnyitotta az URL-címeket a proxykiszolgálóhoz **Azure ad Connect Health** az [Office 365 URL-címek és IP-címtartományok](https://support.office.com/article/Office-365-URLs-and-IP-address-ranges-8548a211-3fe7-47cb-abb1-355ea5aa88a2)dokumentációjában leírtaknak megfelelően.
 
@@ -71,7 +71,7 @@ Most már láthatja az automatikus frissítés állapotával kapcsolatos esemén
 
 Az eredmény kódja egy előtaggal rendelkezik, amely áttekintést nyújt az állapotról.
 
-| Eredmény-kód előtagja | Description |
+| Eredmény-kód előtagja | Leírás |
 | --- | --- |
 | Success |A telepítés frissítése sikeresen megtörtént. |
 | UpgradeAborted |Egy ideiglenes feltétel leállította a frissítést. Újból próbálkozik újra, és a várt érték az, hogy később sikeres lesz. |
@@ -79,7 +79,7 @@ Az eredmény kódja egy előtaggal rendelkezik, amely áttekintést nyújt az á
 
 Itt találja a leggyakoribb üzenetek listáját. Nem sorolja fel az összeset, de az eredményről tájékoztató üzenetnek Egyértelműnek kell lennie a problémával kapcsolatban.
 
-| Eredmény üzenet | Description |
+| Eredmény üzenet | Leírás |
 | --- | --- |
 | **UpgradeAborted** | |
 | UpgradeAbortedCouldNotSetUpgradeMarker |Nem lehet írni a beállításjegyzékbe. |

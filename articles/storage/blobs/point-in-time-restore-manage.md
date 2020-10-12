@@ -10,10 +10,10 @@ ms.date: 09/23/2020
 ms.author: tamram
 ms.subservice: blobs
 ms.openlocfilehash: 828b5c34aaccf2a53aa197f921a8ef02d46821ae
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91280470"
 ---
 # <a name="perform-a-point-in-time-restore-on-block-blob-data"></a>Időponthoz tartozó visszaállítás végrehajtása a blob-adatok blokkolása közben
@@ -52,7 +52,7 @@ Az alábbi képen egy olyan Storage-fiók látható, amely az időponthoz tartoz
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-Az időponthoz való visszaállítás PowerShell használatával történő konfigurálásához először telepítse az az [. Storage](https://www.powershellgallery.com/packages/Az.Storage) modul 2.6.0 vagy újabb verzióját. Ezután hívja meg az Enable-AzStorageBlobRestorePolicy parancsot, hogy engedélyezze a tárolási fiók időponthoz való visszaállítását.
+Az időponthoz való visszaállítás PowerShell használatával történő konfigurálásához először telepítse az az [. Storage](https://www.powershellgallery.com/packages/Az.Storage) modul 2.6.0 vagy újabb verzióját. Ezután hívja meg a Enable-AzStorageBlobRestorePolicy parancsot, hogy engedélyezze a tárolási fiók időponthoz való visszaállítását.
 
 A következő példa engedélyezi a helyreállítható törlést, és beállítja a helyreállítható törlés megőrzési időtartamát, lehetővé teszi a hírcsatornák és verziószámozások módosítását, majd engedélyezi az időponthoz való visszaállítást.    A példa futtatásakor ne felejtse el lecserélni a szögletes zárójelben lévő értékeket a saját értékeire:
 
@@ -122,7 +122,7 @@ Ha a Storage-fiókban lévő összes tárolót és blobot vissza szeretné áll�
 1. A jelölőnégyzet bejelölésével erősítse meg, hogy folytatni kívánja a folytatást.
 1. A visszaállítási művelet elindításához válassza a **visszaállítás** lehetőséget.
 
-    :::image type="content" source="media/point-in-time-restore-manage/restore-all-containers-portal.png" alt-text="A tárolók egy adott visszaállítási pontra történő visszaállítását bemutató képernyőkép":::
+    :::image type="content" source="media/point-in-time-restore-manage/restore-all-containers-portal.png" alt-text="A Azure Portal időponthoz való visszaállításának konfigurálását bemutató képernyőkép":::
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -169,14 +169,14 @@ Ha egy vagy több tárolóban lévő Blobok egy tartományát szeretné visszaá
 1. Adja meg a visszaállítani kívánt tartományokat. A perjelek (/) használatával megszabhatja a tároló nevét a blob előtagja alapján.
 1. Alapértelmezés szerint a **kijelölt tárolók visszaállítása** ablaktábla egy olyan tartományt határoz meg, amely a tárolóban lévő összes blobot tartalmazza. Ha nem szeretné visszaállítani a teljes tárolót, törölje ezt a tartományt. Az alapértelmezett tartomány az alábbi képen látható.
 
-    :::image type="content" source="media/point-in-time-restore-manage/delete-default-blob-range.png" alt-text="Képernyőfelvétel a törlendő alapértelmezett blob-tartományról az egyéni tartomány megadását megelőzően":::
+    :::image type="content" source="media/point-in-time-restore-manage/delete-default-blob-range.png" alt-text="A Azure Portal időponthoz való visszaállításának konfigurálását bemutató képernyőkép":::
 
 1. A jelölőnégyzet bejelölésével erősítse meg, hogy folytatni kívánja a folytatást.
 1. A visszaállítási művelet elindításához válassza a **visszaállítás** lehetőséget.
 
 Az alábbi képen egy tartományon futó visszaállítási művelet látható.
 
-:::image type="content" source="media/point-in-time-restore-manage/restore-multiple-container-ranges-portal.png" alt-text="A Blobok tartományának egy vagy több tárolóban való visszaállítását bemutató képernyőfelvétel":::
+:::image type="content" source="media/point-in-time-restore-manage/restore-multiple-container-ranges-portal.png" alt-text="A Azure Portal időponthoz való visszaállításának konfigurálását bemutató képernyőkép":::
 
 A rendszerképben látható visszaállítási művelet a következő műveleteket hajtja végre:
 

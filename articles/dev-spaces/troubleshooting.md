@@ -6,10 +6,10 @@ ms.topic: troubleshooting
 description: Az Azure dev Spaces engedélyezése és használata során felmerülő gyakori problémák elhárítása és megoldása
 keywords: 'Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók, Helm, Service Mesh, szolgáltatás háló útválasztás, kubectl, k8s '
 ms.openlocfilehash: d697a11f3087c31a49d9b88e99b18bab686a2b59
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90981074"
 ---
 # <a name="azure-dev-spaces-troubleshooting"></a>Az Azure dev Spaces hibaelhárítása
@@ -50,13 +50,13 @@ az aks use-dev-spaces -g <resource group name> -n <cluster name>
 
 ### <a name="controller-create-failing-because-of-controller-name-length"></a>A vezérlő létrehozása sikertelen a vezérlő nevének hossza miatt
 
-Az Azure dev Spaces-vezérlő neve nem lehet 31 karakternél hosszabb. Ha a vezérlő neve meghaladja a 31 karaktert, amikor egy AK-fürtön engedélyezi a dev Spaces-t, vagy létrehoz egy vezérlőt, hibaüzenet jelenik meg. Például:
+Az Azure dev Spaces-vezérlő neve nem lehet 31 karakternél hosszabb. Ha a vezérlő neve meghaladja a 31 karaktert, amikor egy AK-fürtön engedélyezi a dev Spaces-t, vagy létrehoz egy vezérlőt, hibaüzenet jelenik meg. Példa:
 
 ```console
 Failed to create a Dev Spaces controller for cluster 'a-controller-name-that-is-way-too-long-aks-east-us': Azure Dev Spaces Controller name 'a-controller-name-that-is-way-too-long-aks-east-us' is invalid. Constraint(s) violated: Azure Dev Spaces Controller names can only be at most 31 characters long*
 ```
 
-A probléma megoldásához hozzon létre egy másik nevű vezérlőt. Például:
+A probléma megoldásához hozzon létre egy másik nevű vezérlőt. Példa:
 
 ```cmd
 azds controller create --name my-controller --target-name MyAKS --resource-group MyResourceGroup
@@ -160,7 +160,7 @@ Tegyük fel például, hogy egy Helm parancs használatával futtatja a teljes a
 
 Az Azure dev Spaces konfigurálható úgy, hogy a projekt egy adott _Docker_ mutasson. Ha úgy tűnik, hogy az Azure dev Spaces nem a tárolók felépítésére várt _Docker_ használja, akkor előfordulhat, hogy explicit módon meg kell adnia az Azure dev Spaces-Docker, amelyeket használni kíván. 
 
-A probléma megoldásához nyissa meg az _azds. YAML_ fájlt, amelyet az Azure dev Spaces hozott létre a projektben. Frissítési *konfigurációk: fejlesztés: build: Docker* , hogy a használni kívánt Docker mutasson. Például:
+A probléma megoldásához nyissa meg az _azds. YAML_ fájlt, amelyet az Azure dev Spaces hozott létre a projektben. Frissítési *konfigurációk: fejlesztés: build: Docker* , hogy a használni kívánt Docker mutasson. Példa:
 
 ```yaml
 ...
@@ -207,7 +207,7 @@ install:
 
 Ez a hiba akkor fordulhat elő, ha a szolgáltatási kód nem indul el. Az ok gyakran a felhasználói kódban van. További diagnosztikai adatok megjelenítéséhez engedélyezze a szolgáltatás indításakor részletesebb naplózást.
 
-A parancssorban a használatával engedélyezze a részletesebb `--verbose` naplózást. A használatával kimeneti formátumot is megadhat `--output` . Például:
+A parancssorban a használatával engedélyezze a részletesebb `--verbose` naplózást. A használatával kimeneti formátumot is megadhat `--output` . Példa:
 
 ```cmd
 azds up --verbose --output json
@@ -318,7 +318,7 @@ A felügyelt identitás részleteinek listázásához futtassa a következő par
 az aks show -g <resourcegroup> -n <cluster> -o json --query "{clientId: identityProfile.kubeletidentity.clientId, resourceId: identityProfile.kubeletidentity.resourceId}"
 ```
 
-A fenti parancs kimenete a felügyelt identitás *clientId* és *resourceId* . Például:
+A fenti parancs kimenete a felügyelt identitás *clientId* és *resourceId* . Példa:
 
 ```json
 {
@@ -359,7 +359,7 @@ kubectl apply -f clusteridentity.yaml
 kubectl apply -f clusteridentitybinding.yaml
 ```
 
-A *AzureIdentity* és a *AzureIdentityBinding* objektumok üzembe helyezése után a *aadpodidbinding: My-Label-Value* címkével elérheti a fürt felügyelt identitását. Adja hozzá ezt a címkét, és telepítse újra az összes olyan munkaterhelést, amely bármely fejlesztői térben fut. Például:
+A *AzureIdentity* és a *AzureIdentityBinding* objektumok üzembe helyezése után a *aadpodidbinding: My-Label-Value* címkével elérheti a fürt felügyelt identitását. Adja hozzá ezt a címkét, és telepítse újra az összes olyan munkaterhelést, amely bármely fejlesztői térben fut. Példa:
 
 ```yaml
 apiVersion: apps/v1
@@ -422,9 +422,9 @@ A probléma megoldásához zárjuk be és nyissa meg újra a Visual Studio Code-
 
 ### <a name="error-internal-watch-failed-watch-enospc-when-attaching-debugging-to-a-nodejs-application"></a>Hiba "a belső figyelés sikertelen: ENOSPC megtekintése" a hibakeresés Node.js alkalmazáshoz való csatolásakor
 
-Ez a hiba akkor fordul elő, ha a pod-t futtató csomópont a hibakeresővel csatlakoztatni kívánt Node.js alkalmazással túllépte az *FS. inotify. max_user_watches* értéket. Bizonyos esetekben előfordulhat, [hogy az *FS. inotify. max_user_watches* alapértelmezett értéke túl kicsi ahhoz, hogy a hibakeresőt közvetlenül egy Pod-hez csatolja](https://github.com/Azure/AKS/issues/772).
+Ez a hiba akkor fordul elő, ha a pod-t futtató csomópont a hibakeresővel csatlakoztatni kívánt Node.js alkalmazással túllépte a *FS.inotify.max_user_watches* értéket. Bizonyos esetekben előfordulhat, [hogy az *FS.inotify.max_user_watches* alapértelmezett értéke túl kicsi ahhoz, hogy a hibakeresőt közvetlenül a pod-hez csatolja](https://github.com/Azure/AKS/issues/772).
 
-A probléma ideiglenes megkerülő megoldásként növelje az *FS. inotify. max_user_watches* értékét a fürt mindegyik csomópontján, majd indítsa újra a csomópontot a módosítások érvénybe léptetéséhez.
+A probléma ideiglenes megkerülő megoldásként növelje a *FS.inotify.max_user_watches* értékét a fürt mindegyik csomópontján, majd indítsa újra a csomópontot a módosítások érvénybe léptetéséhez.
 
 ## <a name="other-common-issues"></a>Egyéb gyakori problémák
 
@@ -443,7 +443,7 @@ A probléma megoldása:
 
 ### <a name="authorization-error-microsoftdevspacesregisteraction"></a>"Microsoft. DevSpaces/regisztráció/művelet" engedélyezési hiba
 
-Az Azure fejlesztői tárhelyek kezeléséhez *tulajdonosi* vagy *közreműködői* hozzáférésre van szüksége az Azure-előfizetésben. Ha a fejlesztői helyeket szeretné kezelni, és nem rendelkezik *tulajdonosi* vagy *közreműködői* hozzáféréssel a társított Azure-előfizetéshez, akkor egy engedélyezési hiba jelenhet meg. Például:
+Az Azure fejlesztői tárhelyek kezeléséhez *tulajdonosi* vagy *közreműködői* hozzáférésre van szüksége az Azure-előfizetésben. Ha a fejlesztői helyeket szeretné kezelni, és nem rendelkezik *tulajdonosi* vagy *közreműködői* hozzáféréssel a társított Azure-előfizetéshez, akkor egy engedélyezési hiba jelenhet meg. Példa:
 
 ```output
 The client '<User email/Id>' with object id '<Guid>' does not have authorization to perform action 'Microsoft.DevSpaces/register/action' over scope '/subscriptions/<Subscription Id>'.

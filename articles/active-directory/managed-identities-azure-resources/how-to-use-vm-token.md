@@ -16,10 +16,10 @@ ms.date: 12/01/2017
 ms.author: barclayn
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4683a77b9467775fbe368e2017416e0fbff9718c
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89266289"
 ---
 # <a name="how-to-use-managed-identities-for-azure-resources-on-an-azure-vm-to-acquire-an-access-token"></a>Egy Azure-beli virtuális gépen található Azure-erőforrások felügyelt identitásának használata hozzáférési jogkivonat beszerzéséhez 
@@ -400,6 +400,6 @@ Az újrapróbálkozáshoz a következő stratégiát javasoljuk:
 Tekintse meg az Azure ad- [hitelesítést támogató Azure-szolgáltatásokat](./services-support-managed-identities.md) az Azure ad-t támogató erőforrások listájáért, valamint az Azure-erőforrások felügyelt identitásokkal való tesztelését, valamint a hozzájuk tartozó erőforrás-azonosítókat.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az Azure-beli virtuális gépeken található Azure-erőforrások felügyelt identitásának engedélyezéséhez lásd: [felügyelt identitások konfigurálása egy virtuális gépen az Azure-erőforrásokhoz a Azure Portal használatával](qs-configure-portal-windows-vm.md).

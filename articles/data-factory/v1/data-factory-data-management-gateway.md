@@ -13,10 +13,10 @@ ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
 ms.openlocfilehash: 68459253114e97c5e113b863a075c210ef50bf2e
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89441119"
 ---
 # <a name="data-management-gateway"></a>Adatkezelési átjáró
@@ -95,7 +95,7 @@ Az adatkezelési átjárót a következő módokon lehet telepíteni:
 2. Kattintson a **Letöltés**lehetőségre, válassza ki a **64 bites** verziót (a 32 bites verzió nem támogatott), és kattintson a **tovább**gombra.
 3. Futtassa közvetlenül az **MSI** -t, vagy mentse a merevlemezre, és futtassa a parancsot.
 4. Az **üdvözlőlapon** válassza ki a kívánt **nyelvet** , majd kattintson a **tovább**gombra.
-5. **Fogadja el** a végfelhasználói licencszerződést, és kattintson a **tovább**gombra.
+5. **Fogadja el** az End-User licencszerződést, és kattintson a **tovább**gombra.
 6. Válassza ki az átjáró telepítéséhez szükséges **mappát** , majd kattintson a **tovább**gombra.
 7. A **Telepítésre kész** oldalon kattintson a **Telepítés** elemre.
 8. A telepítés befejezéséhez kattintson a **Befejezés** gombra.
@@ -140,7 +140,7 @@ Két tűzfalat kell figyelembe vennie: a **vállalati tűzfal** a szervezet köz
 
 A vállalati tűzfal szintjén a következő tartományokat és kimenő portokat kell konfigurálnia:
 
-| Tartománynevek | Portok | Description |
+| Tartománynevek | Portok | Leírás |
 | --- | --- | --- |
 | *.servicebus.windows.net |443 |Adatátviteli szolgáltatás-háttérrel való kommunikációhoz használatos |
 | *.core.windows.net |443 |Szakaszos másoláshoz használatos az Azure Blob használatával (ha be van állítva)|
@@ -366,7 +366,7 @@ Az alábbi táblázat az **átjáró-csomópontok** listájában szereplő oszlo
 
 Figyelési tulajdonság | Leírás
 :------------------ | :----------
-Név | Az átjáróhoz társított logikai átjáró és csomópontok neve. A csomópont egy helyszíni Windows-gép, amelyen az átjáró telepítve van. További információ arról, hogyan lehet egynél több csomópontot (legfeljebb négy csomópontot) egyetlen logikai átjáróban megtekinteni: [adatkezelés átjáró – magas rendelkezésre állás és méretezhetőség](data-factory-data-management-gateway-high-availability-scalability.md).
+Name (Név) | Az átjáróhoz társított logikai átjáró és csomópontok neve. A csomópont egy helyszíni Windows-gép, amelyen az átjáró telepítve van. További információ arról, hogyan lehet egynél több csomópontot (legfeljebb négy csomópontot) egyetlen logikai átjáróban megtekinteni: [adatkezelés átjáró – magas rendelkezésre állás és méretezhetőség](data-factory-data-management-gateway-high-availability-scalability.md).
 status | A logikai átjáró és az átjáró csomópontjainak állapota. Példa: online/offline/korlátozott/stb. További információ ezekről az állapotokról: [átjáró állapota](#gateway-status) szakasz.
 Verzió | Megjeleníti a logikai átjáró és az egyes átjáró-csomópontok verzióját. A logikai átjáró verziószáma a csoport csomópontjainak többsége alapján van meghatározva. Ha a logikai átjáró beállításában különböző verziójú csomópontok vannak, akkor csak a logikai átjáróval megegyező verziószámmal rendelkező csomópontok működnek. Mások korlátozott módban vannak, és manuálisan kell frissíteni (csak abban az esetben, ha az automatikus frissítés meghiúsul).
 Igénybe vehető memória | Rendelkezésre álló memória egy átjáró-csomóponton. Ez az érték a közel valós idejű pillanatkép.

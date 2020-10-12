@@ -5,10 +5,10 @@ ms.date: 01/08/2020
 ms.topic: how-to
 ms.reviewer: v-umha
 ms.openlocfilehash: 7300a5dcfb0150e6182636dcb71bacfa68c787db
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87076913"
 ---
 # <a name="monitor-azure-blockchain-service-through-azure-monitor"></a>Az Azure Blockchain szolgáltatás monitorozása Azure Monitor  
@@ -36,7 +36,7 @@ Diagnosztikai beállítás létrehozásakor meg kell adnia, hogy a rendszer mily
 
 **Blockchain** – válassza ki a kategóriát, ha figyelni szeretné a ngnix-proxy naplóit. Az összes ügyfél-tranzakciós adat naplózási és hibakeresési célból elérhető.  
 
-**Blockchain** – válassza ki a kategóriát a felügyelt szolgáltatás által üzemeltetett Blockchain-alkalmazás naplóinak beolvasásához. Például egy ABS-kvórum tag esetében ezek a naplók a Kvórumból származó naplók.  
+**Blockchain** – válassza ki a kategóriát a felügyelt szolgáltatás által üzemeltetett Blockchain-alkalmazás naplóinak beolvasásához. Egy ABS-Quorum-tag esetében például ezek a naplók a kvórum naplói.  
 
 **Metrikai kérelmek**: válassza ki, hogy az Azure-mérőszámokban automatikusan begyűjtött metrikai adatokat gyűjtsön a Azure Cosmos DBról a célhelyekre a diagnosztikai beállításban. A metrikai adatok összegyűjtése az erőforrás-naplókkal mindkét típusú adat elemzéséhez, valamint a Azure Monitoron kívüli metrikai adatok küldéséhez.
 
@@ -79,7 +79,7 @@ Minden erőforrás-napló egy legfelső szintű közös sémát használ a block
 A következő táblázat az Azure Blockchain-proxy naplófájljainak tulajdonságait sorolja fel Azure Monitor-naplókba vagy Azure Storage-ba gyűjtve.  
 
 
-| Tulajdonság neve  | Description |
+| Tulajdonság neve  | Leírás |
 |:---|:---|
 | time | A művelet bekövetkeztekor megadott dátum és idő (UTC). |
 | resourceID  | Az Azure Blockchain Service-erőforrás, amely számára engedélyezve vannak a naplók.  |
@@ -105,7 +105,7 @@ A következő táblázat az Azure Blockchain-proxy naplófájljainak tulajdonsá
 Az alábbi táblázat az Azure Blockchain-alkalmazások naplóihoz tartozó tulajdonságokat sorolja fel.
 
 
-| Tulajdonság neve  | Description |
+| Tulajdonság neve  | Leírás |
 |:---|:---|
 | time | A művelet bekövetkeztekor megadott dátum és idő (UTC). |
 | resourceID  | Az Azure Blockchain Service-erőforrás, amely számára engedélyezve vannak a naplók.|
@@ -131,11 +131,11 @@ Az összes Azure Monitor támogatott mérőszám (beleértve az Azure Blockchain
 A következő táblázat az Azure Blockchain-szolgáltatás Blockchain-erőforrásához összegyűjtött mérőszámok listáját tartalmazza.
 
 
-| Metrika neve | Egység  |  Összesítés típusa| Description   |
+| Metrika neve | Egység  |  Összesítés típusa| Leírás   |
 |---|---|---|---|
 | Függőben lévő tranzakciók   | Darabszám  |  Átlag | A bányászra váró tranzakciók száma.   |
-| Feldolgozott blokkok   | Darabszám  | Összeg  |  Az egyes időintervallumokban feldolgozott blokkok száma. Jelenleg a blokk mérete 5 másodperc, ezért egy percen belül minden egyes csomópont 5 perc alatt feldolgozza 12 blokkot és 60 blokkot.   |
-|Feldolgozott tranzakciók    | Darabszám  | Összeg  | Egy blokkban feldolgozott tranzakciók száma.    |
+| Feldolgozott blokkok   | Darabszám  | Sum  |  Az egyes időintervallumokban feldolgozott blokkok száma. Jelenleg a blokk mérete 5 másodperc, ezért egy percen belül minden egyes csomópont 5 perc alatt feldolgozza 12 blokkot és 60 blokkot.   |
+|Feldolgozott tranzakciók    | Darabszám  | Sum  | Egy blokkban feldolgozott tranzakciók száma.    |
 |Várólistán lévő tranzakciók    |  Darabszám | Átlag  | Azon tranzakciók száma, amelyeket nem lehet azonnal kibányászni. Ennek oka az lehet, hogy a megrendelésük megérkezett, és a jövőben az előző tranzakció megérkezésére vár. Vagy két tranzakció is lehet ugyanazzal a számmal (egyszer használatos), és ugyanaz a gáz érték, ezért a másodikat nem lehet kibányászni.   |
 
 ### <a name="connection-metrics"></a>Kapcsolatok metrikái  
@@ -143,12 +143,12 @@ A következő táblázat az Azure Blockchain-szolgáltatás Blockchain-erőforr�
 A következő táblázat felsorolja az Azure Blockchain-szolgáltatási tag erőforrásához összegyűjtött különböző kapcsolatok mérőszámait. Ezek az NGINX proxy metrikái.
 
 
-| Metrika neve | Egység  |  Összesítés típusa| Description |
+| Metrika neve | Egység  |  Összesítés típusa| Leírás |
 |---|---|---|---|
-| Elfogadott kapcsolatok   | Darabszám  |  Összeg | Az elfogadott ügyfélkapcsolatok teljes száma.   |
+| Elfogadott kapcsolatok   | Darabszám  |  Sum | Az elfogadott ügyfélkapcsolatok teljes száma.   |
 | Aktív kapcsolatok  | Darabszám  | Átlag  |  Az aktív ügyfélkapcsolatok aktuális száma, beleértve a várakozási kapcsolatokat.    |
-|Kezelt kapcsolatok    | Darabszám  | Összeg  | A kezelt kapcsolatok teljes száma. Általában a paraméter értéke megegyezik az elfogadott kapcsolatok értékével, kivéve, ha egyes erőforrás-korlátokat nem sikerült elérni.     |
-|Kezelt kérelmek     |  Darabszám | Összeg  | Az ügyfelek kéréseinek teljes száma.  |
+|Kezelt kapcsolatok    | Darabszám  | Sum  | A kezelt kapcsolatok teljes száma. Általában a paraméter értéke megegyezik az elfogadott kapcsolatok értékével, kivéve, ha egyes erőforrás-korlátokat nem sikerült elérni.     |
+|Kezelt kérelmek     |  Darabszám | Sum  | Az ügyfelek kéréseinek teljes száma.  |
 
 
 ### <a name="performance-metrics"></a>Teljesítmény-metrikák
@@ -156,17 +156,17 @@ A következő táblázat felsorolja az Azure Blockchain-szolgáltatási tag erő
 A következő táblázat felsorolja az Azure Blockchain-tag erőforrásának egyes csomópontjain összegyűjtött teljesítménymutatókat.  
 
 
-| Metrika neve | Egység  |  Összesítés típusa| Description   |
+| Metrika neve | Egység  |  Összesítés típusa| Leírás   |
 |---|---|---|---|
 | CPU-használat százaléka   | Százalék  |  Max | A CPU-használat százalékos aránya.     |
-| IO olvasási bájtok   | Kilobájtban   | Összeg  |  Az IO olvasási bájtjainak összege az blockchain-tag erőforrásának összes csomópontján.      |
-|IO írási bájtjai     | Kilobájtban   | Összeg  | Az i/o-érték bájtban kifejezett összege a blockchain-tag erőforrás összes csomópontján.     |
+| IO olvasási bájtok   | Kilobájtban   | Sum  |  Az IO olvasási bájtjainak összege az blockchain-tag erőforrásának összes csomópontján.      |
+|IO írási bájtjai     | Kilobájtban   | Sum  | Az i/o-érték bájtban kifejezett összege a blockchain-tag erőforrás összes csomópontján.     |
 |Memória korlátja       |  Gigabájt   | Átlag    | A blockchain folyamat számára elérhető maximális memória a csomóponton. |
 |Memóriahasználat     | Gigabájt  |  Átlag | Az összes csomópont átlagosan felhasznált memória mennyisége.  |
 | Memóriahasználat százaléka     | Százalék   | Átlag  |  Az összes csomópontban átlagosan felhasznált memória százalékos aránya.       |
 |Tárterület-használat      | Gigabájt   | Átlag  | Az összes csomóponton átlagosan használt GB tárterület.       |
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ a [Blockchain Data Manager](./data-manager.md) a Blockchain-információk Azure Event Gridba való rögzítéséhez és átalakításához.

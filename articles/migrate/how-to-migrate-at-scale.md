@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 04/01/2019
 ms.author: snehaa
 ms.openlocfilehash: c354c1c9dfacfcb6bf84f1140b58deca60c1874e
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86109841"
 ---
 # <a name="scale-migration-of-vms"></a>Virtuális gépek áttelepítésének méretezése 
@@ -67,6 +67,6 @@ Miután a CSV elkészült, végrehajthatja a következő lépéseket a helyszín
 ## <a name="how-to-migrate-to-managed-disks"></a>Migrálás a Managed Disks szolgáltatásba
 Alapértelmezés szerint a parancsfájl áttelepíti a virtuális gépeket a felügyelt lemezekre az Azure-ban. Ha a megadott Storage-fiók egy Premium Storage-fiók, a prémium szintű felügyelt lemezek az áttelepítés után jönnek létre. A cache Storage-fiók továbbra is szabványos fiók lehet. Ha a célként megadott Storage-fiók egy szabványos Storage-fiók, a standard lemezeket az áttelepítés után hozza létre a rendszer. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [További](../site-recovery/migrate-tutorial-on-premises-azure.md) információ a kiszolgálók Azure-ba való áttelepítéséről Azure site Recovery használatával

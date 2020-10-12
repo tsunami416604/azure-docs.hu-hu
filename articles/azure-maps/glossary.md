@@ -1,6 +1,6 @@
 ---
 title: Azure Maps Szószedet | Microsoft Docs
-description: A Azure Maps, a hely-alapú szolgáltatásokhoz és a GIS-hez kapcsolódó általánosan használt kifejezések glosszáriuma.
+description: A Azure Mapshoz, Location-Based szolgáltatásokhoz és a GIS-hez kapcsolódó általánosan használt kifejezések glosszáriuma.
 author: rbrundritt
 ms.author: richbrun
 ms.date: 09/18/2018
@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: cpendle
 ms.openlocfilehash: 4c3e6216c172b0ba1273fea1690c030a05f4c456
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83742219"
 ---
 # <a name="glossary"></a>Szószedet
@@ -71,7 +71,7 @@ Az alábbi lista a Azure Maps-szolgáltatásokhoz használt általános szavakat
 
 <a name="bounding-box"></a>**Határolókeret**: a térképen egy téglalap alakú terület ábrázolására szolgáló koordináták halmaza. 
 
-## <a name="c"></a>C#
+## <a name="c"></a>C
 
 <a name="cadastre"></a>**Kataszter**: a regisztrált földterületek és tulajdonságok nyilvántartása. Lásd még: [parcella](#parcel).
 
@@ -105,7 +105,7 @@ Az alábbi lista a Azure Maps-szolgáltatásokhoz használt általános szavakat
 
 <a name="cylindrical-projection"></a>**Hengeres kivetítés**: egy gömb vagy gömb pontjait egy tangens vagy szekáns hengerre átalakító kivetítés. A henger ekkor felülről lefelé van darabolva, és egy síkban van lelapulva.
 
-## <a name="d"></a>D
+## <a name="d"></a>T
 
 <a name="datum"></a>**Datum**: egy mérési rendszer, egy adott felületen (horizontális Datum) vagy magasságon (függőlegesen) belüli vagy alá tartozó magasságú koordinátarendszer hivatkozási előírásai.
 

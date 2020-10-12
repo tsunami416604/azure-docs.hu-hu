@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.date: 09/16/2020
 ms.author: jasteppe
 ms.openlocfilehash: 64056ef2f63331686553c52040af9e10ee0ac468
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90982980"
 ---
 # <a name="azure-iot-connector-for-fhir-preview-troubleshooting-guide"></a>Azure IoT-összekötő a FHIR (előzetes verzió) – hibaelhárítási útmutató
@@ -99,18 +99,18 @@ Az Azure technikai támogatásához meg kell adni a leképezési fájlok másola
 
 2. Válassza ki a **"Connector" (összekötő** ) elemet, amelyről a konvertálási leképezés JSON-fájlját másolni szeretné.
 
-   :::image type="content" source="media/iot-troubleshoot/map-files-select-connector-with-box.png" alt-text="IoT Connector2" lightbox="media/iot-troubleshoot/map-files-select-connector-with-box.png":::
+   :::image type="content" source="media/iot-troubleshoot/map-files-select-connector-with-box.png" alt-text="IoT Connector1" lightbox="media/iot-troubleshoot/map-files-select-connector-with-box.png":::
 
 > [!NOTE]
 > Ezt a folyamatot a **"FHIR-leképezés konfigurálása"** JSON-fájl tartalmának másolásához és mentéséhez is használhatja.
 
 3. Válassza az **"eszköz-hozzárendelés konfigurálása"** lehetőséget.
 
-    :::image type="content" source="media/iot-troubleshoot/map-files-select-device-with-box.png" alt-text="IoT Connector3" lightbox="media/iot-troubleshoot/map-files-select-device-with-box.png":::
+    :::image type="content" source="media/iot-troubleshoot/map-files-select-device-with-box.png" alt-text="IoT Connector1" lightbox="media/iot-troubleshoot/map-files-select-device-with-box.png":::
 
 4. Válassza ki a JSON tartalmát, és végezze el a másolási műveletet (például: válassza a CTRL + c billentyűkombinációt). 
 
-   :::image type="content" source="media/iot-troubleshoot/map-files-select-device-json-with-box.png" alt-text="IoT Connector4" lightbox="media/iot-troubleshoot/map-files-select-device-json-with-box.png":::
+   :::image type="content" source="media/iot-troubleshoot/map-files-select-device-json-with-box.png" alt-text="IoT Connector1" lightbox="media/iot-troubleshoot/map-files-select-device-json-with-box.png":::
 
 5. Végezze el a beillesztési műveletet (például a CTRL + v billentyűkombinációt) egy új fájlba egy szerkesztőben (például: Visual Studio Code, notepad), és mentse a fájlt egy *. JSON kiterjesztéssel.
 

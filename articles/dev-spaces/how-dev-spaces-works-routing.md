@@ -6,10 +6,10 @@ ms.topic: conceptual
 description: Ismerteti azokat a folyamatokat, amelyekkel a Power Azure dev Spaces és az Útválasztás működik
 keywords: Azure dev Spaces, dev Spaces, Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók
 ms.openlocfilehash: 6987bbaaebe342b571d5b19fe0e37bebd5b8b6e1
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90981311"
 ---
 # <a name="how-routing-works-with-azure-dev-spaces"></a>Hogyan működik az Útválasztás az Azure dev Spaces-szel
@@ -55,7 +55,7 @@ Létrehozhat egy másik fejlesztői területből származtatott új fejlesztői 
 
 A származtatott fejlesztői terület is intelligens módon irányítja a kérelmeket a saját alkalmazásai és a szülőtől megosztott alkalmazások között. Az Útválasztás úgy működik, hogy megpróbál átirányítani egy alkalmazást a származtatott fejlesztői területen, és visszakerül a megosztott alkalmazásra a szülő fejlesztői területről. Ha az alkalmazás nincs a szülő térben, az Útválasztás visszakerül a szülő terület megosztott alkalmazására.
 
-Például:
+Példa:
 * A fejlesztői terület *alapértelmezett értéke* az Applications *Servicea* és a *serviceB*.
 * A dev Space *Azureus* az *alapértelmezett értékből*származik.
 * A *servicea* frissített verziója van üzembe helyezve az *azureuser*-ben.

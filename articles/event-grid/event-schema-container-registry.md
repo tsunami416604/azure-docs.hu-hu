@@ -4,10 +4,10 @@ description: A Container Registry eseményekhez megadott tulajdonságokat ismert
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: d216fe88ee6aaad33fbbe3b93b8c4f8a6e952a71
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86113717"
 ---
 # <a name="azure-container-registry-as-an-event-grid-source"></a>Azure Container Registry Event Grid forrásként
@@ -155,11 +155,11 @@ Egy esemény a következő legfelső szintű adattal rendelkezik:
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
 | témakör | sztring | Az eseményforrás teljes erőforrás-elérési útja. Ez a mező nem írható. Az értéket az Event Grid adja meg. |
-| tulajdonos | sztring | Az esemény tárgyra mutató, a közzétevő által megadott elérési út. |
+| tárgy | sztring | Az esemény tárgyra mutató, a közzétevő által megadott elérési út. |
 | eventType | sztring | Az eseményforráshoz felvett eseménytípusok egyike. |
 | eventTime | sztring | Az esemény a szolgáltató UTC-ideje alapján történő létrehozásakor. |
 | id | sztring | Az esemény egyedi azonosítója. |
-| adatok | objektum | BLOB Storage-események |
+| adatok | object | BLOB Storage-események |
 | dataVersion | sztring | Az adatobjektum sémaverziója. A sémaverziót a közzétevő határozza meg. |
 | metadataVersion | sztring | Az esemény metaadatok sémaverziója. A legfelső szintű tulajdonságokra az Event Grid határozza meg a sémát. Az értéket az Event Grid adja meg. |
 
@@ -169,9 +169,9 @@ Az adatobjektum a következő tulajdonságokkal rendelkezik:
 | -------- | ---- | ----------- |
 | id | sztring | Az eseményazonosító. |
 | időbélyeg | sztring | Az az időpont, amikor az esemény bekövetkezett. |
-| action | sztring | A megadott eseményt magában foglaló művelet. |
-| cél | objektum | Az esemény célja. |
-| kérelem | objektum | Az eseményt létrehozó kérelem. |
+| művelet | sztring | A megadott eseményt magában foglaló művelet. |
+| cél | object | Az esemény célja. |
+| kérelem | object | Az eseményt létrehozó kérelem. |
 
 A célobjektum a következő tulajdonságokkal rendelkezik:
 
@@ -188,7 +188,7 @@ A célobjektum a következő tulajdonságokkal rendelkezik:
 
 A kérelem objektum a következő tulajdonságokkal rendelkezik:
 
-| Tulajdonság | Típus | Description |
+| Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
 | id | sztring | Az eseményt kezdeményező kérelem azonosítója. |
 | addr | sztring | Az eseményt kezdeményező ügyfél-kapcsolat IP-címe vagy állomásneve, illetve esetleg portja. Ez az érték a szabványos HTTP-kérelem RemoteAddr. |
@@ -202,7 +202,7 @@ A kérelem objektum a következő tulajdonságokkal rendelkezik:
 | [Gyors útmutató: tárolói beállításjegyzékbeli események küldése](../container-registry/container-registry-event-grid-quickstart.md?toc=%2fazure%2fevent-grid%2ftoc.json) | Bemutatja, hogyan küldhet Container Registry eseményeket az Azure CLI használatával. |
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A Azure Event Grid bemutatása: [Mi az Event Grid?](overview.md)
 * Azure Event Grid-előfizetés létrehozásával kapcsolatos további információkért lásd: [Event Grid előfizetés sémája](subscription-creation-schema.md).

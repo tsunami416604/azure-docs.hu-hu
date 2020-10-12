@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 07/31/2020
 ms.author: cshoe
 ms.openlocfilehash: 266df5371ff5f47526fa9d6567c62e31d51ebb05
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87810224"
 ---
 # <a name="shifting-from-expressjs-to-azure-functions"></a>Váltás Express.jsról Azure Functionsra
@@ -136,6 +136,6 @@ A fájl következő _function.js_ a függvény konfigurációs információit ta
 
 A `get` `methods` tömbben definiálva a függvény a HTTP-kérelmek számára érhető el `GET` . Ha azt szeretné, hogy az API a támogatási `POST` kérelmeket fogadja el, `post` a tömböt is hozzáadhatja a tömbhöz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ az interaktív oktatóanyag-újrabontási [Node.js és a kiszolgáló nélküli API-k expressz API-kkal Azure functions](/learn/modules/shift-nodejs-express-apis-serverless/)

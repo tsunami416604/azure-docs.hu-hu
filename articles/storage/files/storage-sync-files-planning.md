@@ -9,10 +9,10 @@ ms.author: rogarana
 ms.subservice: files
 ms.custom: references_regions
 ms.openlocfilehash: 876a96f579bff8d30e454e927054a951734f44ba
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89441099"
 ---
 # <a name="planning-for-an-azure-file-sync-deployment"></a>Az Azure File Sync üzembe helyezésének megtervezése
@@ -98,7 +98,7 @@ A következő táblázatban a névtér méretét, valamint a tipikus általános
 |---------|---------|---------|---------|
 | 3        | 1.4     | 2        | 8 (kezdeti szinkronizálás)/2 (jellemző adatforgalom)      |
 | 5        | 2.3     | 2        | 16 (kezdeti szinkronizálás)/4 (jellemző adatforgalom)    |
-| 10       | 4,7     | 4        | 32 (kezdeti szinkronizálás)/8 (jellemző adatforgalom)   |
+| 10       | 4.7     | 4        | 32 (kezdeti szinkronizálás)/8 (jellemző adatforgalom)   |
 | 30       | 14,0    | 8        | 48 (kezdeti szinkronizálás)/16 (jellemző forgalom)   |
 | 50       | 23,3    | 16       | 64 (kezdeti szinkronizálás)/32 (jellemző forgalom)  |
 | 100 *     | 46,6    | 32       | 128 (kezdeti szinkronizálás)/32 (jellemző forgalom)  |
@@ -147,7 +147,7 @@ Csak NTFS-kötetek támogatottak; A ReFS, a FAT, a FAT32 és más fájlrendszere
 
 Az alábbi táblázat az NTFS fájlrendszer szolgáltatásainak együttműködési állapotát mutatja be: 
 
-| Jellemző | Támogatás állapota | Jegyzetek |
+| Szolgáltatás | Támogatás állapota | Jegyzetek |
 |---------|----------------|-------|
 | Hozzáférés-vezérlési lista (ACL-ek) | Teljes mértékben támogatott | A Windows-stílusú tulajdonosi hozzáférés-vezérlési listát a Azure File Sync őrzi meg, és a Windows Server a kiszolgálói végpontokon kényszeríti ki. Az ACL-ek az Azure-fájlmegosztás közvetlen csatlakoztatása esetén is kikényszeríthető, azonban ez további konfigurálást igényel. További információért tekintse meg az [Identity szakaszt](#identity) . |
 | Rögzített hivatkozások | Kimarad | |
@@ -192,7 +192,7 @@ Vegye figyelembe, hogy a mennyiségi megtakarítás csak a kiszolgálón érvén
 > [!Note]  
 > Ha engedélyezni szeretné a Windows Server 2019-es verzión engedélyezve lévő, felhőalapú rétegekből származó kötetek adatmásolásának támogatását, telepítenie kell a Windows Update [KB4520062](https://support.microsoft.com/help/4520062) , és Azure file Sync ügynök 9.0.0.0 vagy újabb verziójára van szükség.
 
-**Windows Server 2012 R2**  
+**Windows Server 2012 R2**  
 A Azure file Sync nem támogatja az deduplikálás és a felhőalapú rétegek használatát ugyanarra a kötetre a Windows Server 2012 R2 rendszeren. Ha egy köteten engedélyezve van az deduplikálás, a Felhőbeli rétegek letiltását le kell tiltani. 
 
 **Megjegyzések**

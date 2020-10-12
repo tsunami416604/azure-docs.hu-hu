@@ -11,10 +11,10 @@ ms.subservice: common
 services: storage
 tags: ''
 ms.openlocfilehash: efae9cd2a73bf6df89007ac313ca6dfe6efe6ddd
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87075953"
 ---
 # <a name="troubleshoot-latency-using-storage-analytics-logs"></a>Késési problémák elhárítása Storage Analytics-naplók használatával
@@ -87,17 +87,17 @@ Az alábbi lépések bemutatják, hogyan azonosíthatja és elháríthatja a ké
 
    A végpontok közötti késleltetés kiszámítása a következő egyenlet használatával történik:
 
-   * Végpontok közötti késés = kiszolgáló-késés + ügyfél késése
+   * Végpontok közötti késés = Server-Latency + ügyfél késése
 
    Az ügyfél késésének kiszámítása a naplóbejegyzés használatával:
 
-   * Ügyfél késése = végpontok közötti késés – kiszolgáló – késés
+   * Ügyfél késése = végpontok közötti késés – Server-Latency
 
         Például: 8453 – 391 = 8062ms
 
    A következő táblázat a nagy késleltetésű OperationType és a RequestStatus eredményekkel kapcsolatos információkat tartalmaz:
 
-   | BLOB típusa |RequestStatus =<br>Success|RequestStatus =<br>Sas NetworkError|Javaslat|
+   | BLOB típusa |RequestStatus =<br>Success|RequestStatus =<br>Sas NetworkError|Ajánlás|
    |---|---|---|---|
    |GetBlob|Igen|Nem|[**GetBlob művelet:** RequestStatus = sikeres](#getblob-operation-requeststatus--success)|
    |GetBlob|Nem|Igen|[**GetBlob művelet:** RequestStatus = (SAS) NetworkError](#getblob-operation-requeststatus--sasnetworkerror)|
@@ -111,10 +111,10 @@ Az alábbi lépések bemutatják, hogyan azonosíthatja és elháríthatja a ké
 A "javasolt lépések" szakasz 5. lépésében említettek szerint tekintse meg az alábbi értékeket:
 
 * Végpontok közötti késés
-* Kiszolgáló – késés
-* Ügyfél – késés
+* Server-Latency
+* Client-Latency
 
-A **RequestStatus = sikerrel**rendelkező **GetBlob-műveletben** , ha a **maximális idő** az **ügyfél-késésben**van elköltve, ez azt jelzi, hogy az Azure Storage nagy mennyiségű időt tölt ki az ügyfélnek az adatírás során. Ez a késleltetés ügyféloldali problémát jelez.
+A **RequestStatus = sikerrel**rendelkező **GetBlob-műveletben** , ha a **maximális idő** az **ügyfél-késésben**van elköltve, ez azt jelzi, hogy az Azure Storage nagy mennyiségű időt tölt ki az ügyfélnek az adatírás során. Ez a késleltetés Client-Side problémát jelez.
 
 **Ajánlás**
 
@@ -126,8 +126,8 @@ A **RequestStatus = sikerrel**rendelkező **GetBlob-műveletben** , ha a **maxim
 A "javasolt lépések" szakasz 5. lépésében említettek szerint tekintse meg az alábbi értékeket:
 
 * Végpontok közötti késés
-* Kiszolgáló – késés
-* Ügyfél – késés
+* Server-Latency
+* Client-Latency
 
 A **RequestStatus = (SAS) NetworkError**rendelkező **GetBlob-műveletekben** , ha a **maximális idő** az **ügyfél-késésben**van elköltve, a leggyakoribb probléma az, hogy az ügyfél le van választva, mielőtt lejár az időkorlát a tárolási szolgáltatásban.
 
@@ -141,10 +141,10 @@ A **RequestStatus = (SAS) NetworkError**rendelkező **GetBlob-műveletekben** , 
 A "javasolt lépések" szakasz 5. lépésében említettek szerint tekintse meg az alábbi értékeket:
 
 * Végpontok közötti késés
-* Kiszolgáló – késés
-* Ügyfél – késés
+* Server-Latency
+* Client-Latency
 
-Ha a **RequestStatus = sikerrel**rendelkező **put művelet** során a **maximális idő** az **ügyfél-késésben**van, akkor ez azt jelzi, hogy az ügyfél több időt vesz igénybe az Azure Storage-ba való adatküldéshez. Ez a késleltetés ügyféloldali problémát jelez.
+Ha a **RequestStatus = sikerrel**rendelkező **put művelet** során a **maximális idő** az **ügyfél-késésben**van, akkor ez azt jelzi, hogy az ügyfél több időt vesz igénybe az Azure Storage-ba való adatküldéshez. Ez a késleltetés Client-Side problémát jelez.
 
 **Ajánlás**
 
@@ -156,8 +156,8 @@ Ha a **RequestStatus = sikerrel**rendelkező **put művelet** során a **maximá
 A "javasolt lépések" szakasz 5. lépésében említettek szerint tekintse meg az alábbi értékeket:
 
 * Végpontok közötti késés
-* Kiszolgáló – késés
-* Ügyfél – késés
+* Server-Latency
+* Client-Latency
 
 A **RequestStatus = (SAS) NetworkError**rendelkező **PutBlob-műveletekben** , ha a **maximális idő** az **ügyfél-késésben**van elköltve, a leggyakoribb probléma az, hogy az ügyfél le van választva, mielőtt lejár az időkorlát a tárolási szolgáltatásban.
 

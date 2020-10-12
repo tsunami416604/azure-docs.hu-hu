@@ -6,10 +6,10 @@ ms.topic: conceptual
 description: Ismerteti azokat a folyamatokat, amelyekkel a Power Azure dev Spaces
 keywords: Azure dev Spaces, dev Spaces, Docker, Kubernetes, Azure, AK, Azure Kubernetes szolgáltatás, tárolók
 ms.openlocfilehash: 81408ed4bbe5322538d893b29c7397104c5b0844
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90981279"
 ---
 # <a name="how-azure-dev-spaces-works"></a>Az Azure Dev Spaces működése
@@ -22,7 +22,7 @@ Az Azure dev Spaces számos lehetőséget kínál a Kubernetes-alkalmazások gyo
 
 Az Azure dev Spaces szolgáltatás csökkenti a Kubernetes-alkalmazás fejlesztését, tesztelését és iterációját az AK-fürt környezetében. Ez a csökkentési erőfeszítések lehetővé teszik a fejlesztők számára, hogy alkalmazásaikat üzleti logikára összpontosítsanak, és nem konfigurálja a szolgáltatásaikat a Kubernetes-ben való futtatásra.
 
-### <a name="bridge-to-kubernetes"></a>Híd Kubernetes
+### <a name="bridge-to-kubernetes"></a>Bridge to Kubernetes
 
 A Kubernetes híd használatával összekapcsolhatja a fejlesztői számítógépet a Kubernetes-fürttel, így a programkódot futtathatja és hibakeresést végezhet a fejlesztői számítógépen, mintha a fürtön futna. A Bridge to Kubernetes átirányítja a csatlakoztatott fürt közötti forgalmat úgy, hogy a fürtön egy olyan Pod-t futtat, amely távoli ügynökként működik a fejlesztői számítógép és a fürt közötti forgalom átirányításához. Ez a forgalom átirányítása lehetővé teszi a fürtön futó fejlesztői számítógép és szolgáltatások programkódjának a kommunikációt, mintha ugyanabban a fürtben lennének. A fejlesztői számítógép Kubernetes-fürthöz való csatlakoztatásával kapcsolatos további információkért lásd: [How the Bridge to Kubernetes Works][how-it-works-bridge-to-kubernetes].
 

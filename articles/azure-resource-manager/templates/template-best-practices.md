@@ -4,10 +4,10 @@ description: A Azure Resource Manager sablonok létrehozásához ajánlott megk�
 ms.topic: conceptual
 ms.date: 07/10/2020
 ms.openlocfilehash: 1121c66e0bcd7de39afd5bea85866fd9ad007ce4
-ms.sourcegitcommit: 85eb6e79599a78573db2082fe6f3beee497ad316
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87809255"
 ---
 # <a name="arm-template-best-practices"></a>ARM-sablon – ajánlott eljárások
@@ -44,7 +44,7 @@ Az ebben a szakaszban található információk hasznosak lehetnek, ha [paramét
 
 * Használjon teve-esetet a paraméterek neveihez.
 
-* Paraméterek használata olyan beállításokhoz, amelyek a környezettől függően változnak, például SKU, size vagy Capacity.
+* A paraméterek olyan beállításokhoz használhatók, amelyek a környezettől függően, például az SKU, a méret vagy a kapacitás szerint változnak.
 
 * Használja az egyszerű azonosításhoz megadni kívánt erőforrásnevek paramétereit.
 
@@ -278,7 +278,7 @@ Az ARM-sablon tesztelési eszközkészlete egy olyan parancsfájl, amely ellenő
 
 A sablon befejezése után futtassa a tesztelési eszközkészletet, és ellenőrizze, hogy van-e lehetőség az informatikai megvalósítás javítására. További információ: [ARM template test Toolkit](test-toolkit.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A sablonfájl struktúrájával kapcsolatos információkért lásd [az ARM-sablonok szerkezetének és szintaxisának megismerését](template-syntax.md)ismertető témakört.
 * Az összes Azure-beli felhőalapú környezetben működő sablonok létrehozásával kapcsolatos javaslatokért lásd: [ARM-sablonok fejlesztése a Felhőbeli konzisztencia](templates-cloud-consistency.md)érdekében.

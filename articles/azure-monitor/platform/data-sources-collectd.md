@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 11/27/2018
 ms.openlocfilehash: 488f273336da05738609333f911fe3a90ba59496
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86111983"
 ---
 # <a name="collect-data-from-collectd-on-linux-agents-in-azure-monitor"></a>Adatgyűjtés a Linux-ügynököktől a Azure Monitor-ban gyűjtött adatokból
@@ -123,14 +123,14 @@ A Log Analytics-ügynök által már összegyűjtött infrastruktúra-metrikák 
 | Begyűjtött metrika mező | Azure Monitor mező |
 |:--|:--|
 | `host` | Computer |
-| `plugin` | None |
+| `plugin` | Nincs |
 | `plugin_instance` | Példány neve<br>Ha **plugin_instance** értéke *Null* , akkor példánynév = "*_Total*" |
 | `type` | ObjectName |
 | `type_instance` | CounterName<br>Ha **type_instance** értéke *Null* , akkor a CounterName =**blank** |
 | `dsnames[]` | CounterName |
-| `dstypes` | None |
+| `dstypes` | Nincs |
 | `values[]` | Kártyabirtokos számlájának megterhelését |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * További információ az adatforrásokból és megoldásokból gyűjtött adatok elemzéséhez szükséges [naplók lekérdezéséről](../log-query/log-query-overview.md) . 
 * [Egyéni mezők](custom-fields.md) használatával elemezheti az adatokat a syslog-rekordokból az egyes mezőkbe.

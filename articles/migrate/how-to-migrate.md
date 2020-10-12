@@ -4,10 +4,10 @@ description: Megtudhatja, hogyan adhat hozzá áttelepítési eszközöket a Azu
 ms.topic: article
 ms.date: 04/26/2020
 ms.openlocfilehash: b6ac8ed64d3f12783cc16f0428874a19d027adf9
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86109807"
 ---
 # <a name="add-migration-tools"></a>Migrálási eszközök hozzáadása
@@ -63,6 +63,6 @@ Nagy mennyiségű adatok Azure-ba történő átmásolásához rendeljen egy Azu
 2. A **Azure Data Box kiválasztása**lapon adja meg az előfizetését. 
 3. Az átvitel az Azure-ba lesz importálva. Határozza meg az adatforrást és az Azure-régió célhelyét.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A [Hyper-V](tutorial-migrate-hyper-v.md) -vagy [VMware](tutorial-migrate-vmware.md) -alapú virtuális gépekre Azure Migrate kiszolgáló áttelepítését használó áttelepítés kipróbálása.

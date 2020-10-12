@@ -4,10 +4,10 @@ description: Ez a cikk áttekintést nyújt Azure Service Bus üzenetkezelési e
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 3ee03fe5219736a1b1ca66c652fe6ac410cb40cb
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87799616"
 ---
 # <a name="service-bus-queues-topics-and-subscriptions"></a>Service Bus queues, topics, and subscriptions (Service Bus-üzenetsorok, -témakörök és -előfizetések)
@@ -75,7 +75,7 @@ Az alábbi entitások elérhetők a Java Message Service (JMS) 2,0 API-n kereszt
 
 További információ a [JMS 2,0-entitásokról](java-message-service-20-entities.md) és [azok](how-to-use-java-message-service-20.md)használatáról.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információt és példákat a Service Bus üzenetkezelés használatával kapcsolatban a következő speciális témakörökben talál:
 

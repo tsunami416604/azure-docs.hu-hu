@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 11/28/2018
 ms.openlocfilehash: 407257dbe9fbfa560153d5044263fc4c947cb05c
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86111932"
 ---
 # <a name="collecting-custom-json-data-sources-with-the-log-analytics-agent-for-linux-in-azure-monitor"></a>Egyéni JSON-adatforrások gyűjtése a Linux rendszerhez készült Log Analytics-ügynökkel Azure Monitor
@@ -58,7 +58,7 @@ Az itt hozzáadott konfigurációs fájlhoz a `/etc/opt/microsoft/omsagent/<work
 `sudo chown omsagent:omiusers /etc/opt/microsoft/omsagent/conf/omsagent.d/exec-json.conf`
 
 ### <a name="configure-output-plugin"></a>Kimeneti beépülő modul konfigurálása 
-Adja hozzá a következő kimeneti beépülő modul konfigurációját a fő konfigurációhoz a `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf` vagy egy külön konfigurációs fájlban`/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/`
+Adja hozzá a következő kimeneti beépülő modul konfigurációját a fő konfigurációhoz a `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.conf` vagy egy külön konfigurációs fájlban `/etc/opt/microsoft/omsagent/<workspace id>/conf/omsagent.d/`
 
 ```xml
 <match oms.api.**>
@@ -103,5 +103,5 @@ A beágyazott JSON-adatforrások támogatottak, de a szülő mező alapján inde
 ```
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * További információ az adatforrásokból és megoldásokból gyűjtött adatok elemzéséhez szükséges [naplók lekérdezéséről](../log-query/log-query-overview.md) . 
