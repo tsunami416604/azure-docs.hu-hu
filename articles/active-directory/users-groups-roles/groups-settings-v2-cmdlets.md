@@ -15,10 +15,10 @@ ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c00c89e5f81bcb142c50e5f3438c1af2d72a9de5
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90056217"
 ---
 # <a name="azure-active-directory-version-2-cmdlets-for-group-management"></a>Azure Active Directory 2-es verziójú parancsmagok a csoport kezeléséhez
@@ -146,7 +146,7 @@ Ha új csoportot szeretne létrehozni a címtárban, használja a New-AzureADGro
 
 ## <a name="update-groups"></a>Frissítési csoportok
 
-Meglévő csoport frissítéséhez használja a set-AzureADGroup parancsmagot. Ebben a példában az "Intune-rendszergazdák" csoport DisplayName tulajdonságát módosítjuk. Először a Get-AzureADGroup parancsmaggal és a szűréssel keresse meg a csoportot a DisplayName attribútum használatával:
+Meglévő csoport frissítéséhez használja a Set-AzureADGroup parancsmagot. Ebben a példában az "Intune-rendszergazdák" csoport DisplayName tulajdonságát módosítjuk. Először a Get-AzureADGroup parancsmaggal és a szűréssel keresjük meg a csoportot a DisplayName attribútum használatával:
 
 ```powershell
     PS C:\Windows\system32> Get-AzureADGroup -Filter "DisplayName eq 'Intune Administrators'"
@@ -197,7 +197,7 @@ Ha már megtalálta a csoportot, a Description (Leírás) tulajdonság frissül,
 
 ## <a name="delete-groups"></a>Csoportok törlése
 
-A címtárból származó csoportok törléséhez használja a Remove-AzureADGroup parancsmagot az alábbi módon:
+A címtárból származó csoportok törléséhez használja a Remove-AzureADGroup parancsmagot a következő módon:
 
 ```powershell
     PS C:\Windows\system32> Remove-AzureADGroup -ObjectId b11ca53e-07cc-455d-9a89-1fe3ab24566b
@@ -207,7 +207,7 @@ A címtárból származó csoportok törléséhez használja a Remove-AzureADGro
 
 ### <a name="add-members"></a>Tagok hozzáadása
 
-Ha új tagokat szeretne felvenni egy csoportba, használja az Add-AzureADGroupMember parancsmagot. Ezzel a paranccsal egy tagot adhat hozzá az előző példában használt Intune-rendszergazdák csoportjához:
+Ha új tagokat szeretne felvenni egy csoportba, használja a Add-AzureADGroupMember parancsmagot. Ezzel a paranccsal egy tagot adhat hozzá az előző példában használt Intune-rendszergazdák csoportjához:
 
 ```powershell
     PS C:\Windows\system32> Add-AzureADGroupMember -ObjectId 31f1ff6c-d48c-4f8a-b2e1-abca7fd399df -RefObjectId 72cd4bbd-2594-40a2-935c-016f3cfeeeea
@@ -260,7 +260,7 @@ Ha a ObjectID 72cd4bbd-2594-40a2-935c-016f3cfeeeea rendelkező felhasználó cso
     https://graph.windows.net/85b5ff1e-0402-400c-9e3c-0f9e965325d1/$metadata#Collection(Edm.String)             {31f1ff6c-d48c-4f8a-b2e1-abca7fd399df}
 ```
 
-A visszaadott érték azoknak a csoportoknak a listája, amelyeknek ez a felhasználó a tagja. Ezt a módszert alkalmazhatja a névjegyek, csoportok vagy egyszerű szolgáltatások tagságának a csoportok adott listájához való megadására is, a Select-AzureADGroupIdsContactIsMemberOf, Select-AzureADGroupIdsGroupIsMemberOf vagy Select-AzureADGroupIdsServicePrincipalIsMemberOf használatával.
+A visszaadott érték azoknak a csoportoknak a listája, amelyeknek ez a felhasználó a tagja. Ezt a módszert alkalmazhatja a névjegyek, csoportok vagy egyszerű szolgáltatások tagságának megadására is a csoportok adott listájához a Select-AzureADGroupIdsContactIsMemberOf, a Select-AzureADGroupIdsGroupIsMemberOf vagy a Select-AzureADGroupIdsServicePrincipalIsMemberOf használatával
 
 ## <a name="disable-group-creation-by-your-users"></a>Csoport létrehozásának letiltása a felhasználók számára
 
@@ -282,7 +282,7 @@ A csoportok létrehozásának letiltása a nem rendszergazda felhasználók szá
   
 ## <a name="manage-owners-of-groups"></a>Csoportok tulajdonosainak kezelése
 
-A tulajdonosok egy csoportba való felvételéhez használja az Add-AzureADGroupOwner parancsmagot:
+A tulajdonosok egy csoportba való felvételéhez használja a Add-AzureADGroupOwner parancsmagot:
 
 ```powershell
     PS C:\Windows\system32> Add-AzureADGroupOwner -ObjectId 31f1ff6c-d48c-4f8a-b2e1-abca7fd399df -RefObjectId 72cd4bbd-2594-40a2-935c-016f3cfeeeea

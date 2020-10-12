@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 06/12/2020
 ms.openlocfilehash: 23a486dfe1256cea46f6722873950ffcb1bde084
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84982696"
 ---
 # <a name="copy-data-from-dynamics-ax-by-using-azure-data-factory"></a>Adatok másolása a Dynamics AX-ból Azure Data Factory használatával
@@ -63,13 +63,13 @@ A Dynamics AX társított szolgáltatás a következő tulajdonságokat támogat
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | A **Type** tulajdonságot **DynamicsAX**értékre kell beállítani. |Yes |
-| url | A Dynamics AX (vagy a Dynamics 365 pénzügyi és műveleti) példányának OData-végpontja. |Yes |
-| servicePrincipalId | Határozza meg az alkalmazás ügyfél-AZONOSÍTÓját. | Yes |
-| servicePrincipalKey | Az alkalmazás kulcsának meghatározása. Megjelöli ezt a mezőt **SecureString** , hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). | Yes |
-| Bérlő | Adja meg a bérlői adatokat (tartománynevet vagy bérlői azonosítót), amely alatt az alkalmazás található. A Azure Portal jobb felső sarkában lévő egér fölé helyezve lekéri. | Yes |
-| aadResourceId | Határozza meg az HRE-erőforrást, amelyhez engedélyt kér. Ha például a Dynamics URL-cím `https://sampledynamics.sandbox.operations.dynamics.com/data/` , a megfelelő HRE-erőforrás általában `https://sampledynamics.sandbox.operations.dynamics.com` . | Yes |
-| Connectvia tulajdonsággal | Az adattárhoz való kapcsolódáshoz használt [Integration Runtime](concepts-integration-runtime.md) . Kiválaszthatja Azure Integration Runtime vagy a saját üzemeltetésű Integration Runtime (ha az adattár egy magánhálózaton található). Ha nincs megadva, a rendszer az alapértelmezett Azure Integration Runtime használja. |No |
+| típus | A **Type** tulajdonságot **DynamicsAX**értékre kell beállítani. |Igen |
+| url | A Dynamics AX (vagy a Dynamics 365 pénzügyi és műveleti) példányának OData-végpontja. |Igen |
+| servicePrincipalId | Határozza meg az alkalmazás ügyfél-AZONOSÍTÓját. | Igen |
+| servicePrincipalKey | Az alkalmazás kulcsának meghatározása. Megjelöli ezt a mezőt **SecureString** , hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). | Igen |
+| Bérlő | Adja meg a bérlői adatokat (tartománynevet vagy bérlői azonosítót), amely alatt az alkalmazás található. A Azure Portal jobb felső sarkában lévő egér fölé helyezve lekéri. | Igen |
+| aadResourceId | Határozza meg az HRE-erőforrást, amelyhez engedélyt kér. Ha például a Dynamics URL-cím `https://sampledynamics.sandbox.operations.dynamics.com/data/` , a megfelelő HRE-erőforrás általában `https://sampledynamics.sandbox.operations.dynamics.com` . | Igen |
+| Connectvia tulajdonsággal | Az adattárhoz való kapcsolódáshoz használt [Integration Runtime](concepts-integration-runtime.md) . Kiválaszthatja Azure Integration Runtime vagy a saját üzemeltetésű Integration Runtime (ha az adattár egy magánhálózaton található). Ha nincs megadva, a rendszer az alapértelmezett Azure Integration Runtime használja. |Nem |
 
 **Példa**
 
@@ -107,8 +107,8 @@ Ha adatokat szeretne másolni a Dynamics AX-ból, állítsa az adatkészlet **Ty
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | Az adatkészlet **Type** tulajdonságát **DynamicsAXResource**értékre kell állítani. | Yes |
-| path | A Dynamics AX OData entitás elérési útja. | Yes |
+| típus | Az adatkészlet **Type** tulajdonságát **DynamicsAXResource**értékre kell állítani. | Igen |
+| path | A Dynamics AX OData entitás elérési útja. | Igen |
 
 **Példa**
 
@@ -141,9 +141,9 @@ Az adatok Dynamics AX-ből való másolásához állítsa a **forrás** típusá
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | A másolási tevékenység forrásának **Type** tulajdonságát **DynamicsAXSource**értékre kell állítani. | Yes |
-| lekérdezés | OData-lekérdezési beállítások az adatszűréshez. Példa: `"?$select=Name,Description&$top=5"`.<br/><br/>**Megjegyzés**: az összekötő a következő összetett URL-címről másolja az adatokból: `[URL specified in linked service]/[path specified in dataset][query specified in copy activity source]` . További információ: [OData URL-összetevők](https://www.odata.org/documentation/odata-version-3-0/url-conventions/). | No |
-| httpRequestTimeout | A válasz kéréséhez szükséges HTTP-kérelem időkorlátja (a **TimeSpan** érték). Ez az érték a válasz lekérésének időtúllépése, nem pedig a válaszüzenetek olvasásának időtúllépése. Ha nincs megadva, az alapértelmezett érték **00:30:00** (30 perc). | No |
+| típus | A másolási tevékenység forrásának **Type** tulajdonságát **DynamicsAXSource**értékre kell állítani. | Igen |
+| lekérdezés | OData-lekérdezési beállítások az adatszűréshez. Példa: `"?$select=Name,Description&$top=5"`.<br/><br/>**Megjegyzés**: az összekötő a következő összetett URL-címről másolja az adatokból: `[URL specified in linked service]/[path specified in dataset][query specified in copy activity source]` . További információ: [OData URL-összetevők](https://www.odata.org/documentation/odata-version-3-0/url-conventions/). | Nem |
+| httpRequestTimeout | A válasz kéréséhez szükséges HTTP-kérelem időkorlátja (a **TimeSpan** érték). Ez az érték a válasz lekérésének időtúllépése, nem pedig a válaszüzenetek olvasásának időtúllépése. Ha nincs megadva, az alapértelmezett érték **00:30:00** (30 perc). | Nem |
 
 **Példa**
 

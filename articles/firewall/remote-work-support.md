@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 05/04/2020
 ms.author: victorh
 ms.openlocfilehash: 68789d3b8a4be51a381e95d6e6f840331b46b4e9
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91400111"
 ---
 # <a name="azure-firewall-remote-work-support"></a>Azure Firewall távoli munkahelyi támogatás
@@ -26,6 +26,6 @@ A otthoni házirendekkel kapcsolatos munkához számos IT-szervezet szükséges 
 
 A Windows Virtual Desktop egy átfogó asztali és app Virtualization szolgáltatás, amely az Azure-ban fut. Ez az egyetlen olyan virtuális asztali infrastruktúra (VDI), amely egyszerűsített felügyeletet, többmunkamenetes Windows 10 rendszert, Microsoft 365 alkalmazások nagyvállalati verzióinak optimalizálását és a Távoli asztali szolgáltatások (RDS) környezetek támogatását biztosítja. Percek alatt üzembe helyezheti és méretezheti a Windows rendszerű asztali számítógépeit és alkalmazásait, és beépített biztonsági és megfelelőségi funkciókat érhet el. A Windows virtuális asztal nem igényli a virtuális hálózathoz való bejövő hozzáférés megnyitását. Azonban engedélyeznie kell a kimenő hálózati kapcsolatok készletét a virtuális hálózatban futó Windows virtuális asztali virtuális gépekhez. További információ: [a Azure Firewall használata a Windows rendszerű virtuális asztali környezetek elleni védelemhez](protect-windows-virtual-desktop.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a [Windows rendszerű virtuális asztali környezetről](https://docs.microsoft.com/azure/virtual-desktop/).

@@ -15,10 +15,10 @@ ms.date: 06/17/2020
 ms.author: rolyon
 ms.reviewer: bagovind
 ms.openlocfilehash: 9819b90ba390e8601cc33a17338ce9b16bf3b3cc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84982492"
 ---
 # <a name="list-azure-role-definitions"></a>Azure-szerepkör-definíciók listázása
@@ -356,7 +356,7 @@ A szerepkör-definíciók listázásához használja a [szerepkör-definíciók 
 1. Cserélje le a *{Filter}* helyére azt a feltételt, amelyet alkalmazni szeretne a szerepkör-definíciós lista szűréséhez.
 
     > [!div class="mx-tableFixed"]
-    > | Szűrés | Description |
+    > | Szűrő | Leírás |
     > | --- | --- |
     > | `$filter=atScopeAndBelow()` | Felsorolja a megadott hatókör és az alhatókörek szerepkör-definícióit. |
     > | `$filter=type+eq+'{type}'` | Felsorolja a megadott típusú szerepkör-definíciókat. A szerepkör típusa lehet `CustomRole` vagy `BuiltInRole` . |
@@ -476,7 +476,7 @@ Az alábbi ábrán egy példa látható a kimenetre:
 
 ## <a name="next-steps"></a>További lépések
 
-- [Azure beépített szerepkörök](built-in-roles.md)
+- [Beépített Azure-szerepkörök](built-in-roles.md)
 - [Egyéni Azure-szerepkörök](custom-roles.md)
 - [Azure-beli szerepkör-hozzárendelések listázása a Azure Portal használatával](role-assignments-list-portal.md)
-- [Azure-beli szerepkör-hozzárendelések hozzáadása vagy eltávolítása a Azure Portal használatával](role-assignments-portal.md)
+- [Azure-beli szerepkör-hozzárendelés hozzáadása vagy eltávolítása az Azure Portal használatával](role-assignments-portal.md)

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 05/08/2020
 tags: connectors
 ms.openlocfilehash: de85a61cbd699ec9ac2669f8abb6217254038de9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91334582"
 ---
 # <a name="create-and-manage-records-in-common-data-service-by-using-azure-logic-apps"></a>Rekordok létrehozása és kezelése Common Data Serviceban Azure Logic Apps használatával
@@ -51,9 +51,9 @@ Ebben a példában adja hozzá a Common Data Service eseményindítót, amely ú
 
    | Tulajdonság | Kötelező | Leírás |
    |----------|----------|-------------|
-   | **Környezet** | Yes | A figyelni kívánt környezet, például "Fabrikam Sales Production". További információ: [Power platform – környezetek – áttekintés](/power-platform/admin/environments-overview). |
-   | **Entitás neve** | Yes | A figyelni kívánt entitás, például "leads" |
-   | **Hatókör** | Yes | Az új rekordot létrehozó forrás, például egy felhasználó a céges egységben vagy a szervezet bármely felhasználója. Ez a példa a "Business Unit" szolgáltatást használja. |
+   | **Environment** | Igen | A figyelni kívánt környezet, például "Fabrikam Sales Production". További információ: [Power platform – környezetek – áttekintés](/power-platform/admin/environments-overview). |
+   | **Entitás neve** | Igen | A figyelni kívánt entitás, például "leads" |
+   | **Hatókör** | Igen | Az új rekordot létrehozó forrás, például egy felhasználó a céges egységben vagy a szervezet bármely felhasználója. Ez a példa a "Business Unit" szolgáltatást használja. |
    ||||
 
 ## <a name="add-common-data-service-action"></a>Common Data Service művelet hozzáadása
@@ -72,8 +72,8 @@ Most adjon hozzá egy Common Data Service műveletet, amely létrehoz egy új "l
 
    | Tulajdonság | Kötelező | Leírás |
    |----------|----------|-------------|
-   | **Szervezet neve** | Yes | Az a környezet, amelyben létre kívánja hozni a rekordot, és nem feltétlenül ugyanazt a környezetet kell megadnia az triggerben, de ebben a példában a "Fabrikam értékesítési termelés" szerepel. |
-   | **Entitás neve** | Yes | Az entitás, amelyben létre szeretné hozni a rekordot, például "feladatok" |
+   | **Szervezet neve** | Igen | Az a környezet, amelyben létre kívánja hozni a rekordot, és nem feltétlenül ugyanazt a környezetet kell megadnia az triggerben, de ebben a példában a "Fabrikam értékesítési termelés" szerepel. |
+   | **Entitás neve** | Igen | Az entitás, amelyben létre szeretné hozni a rekordot, például "feladatok" |
    | **Tárgy** | Igen, az ebben a példában kiválasztott entitás alapján | A feladat céljával kapcsolatos rövid leírás |
    ||||
 
@@ -87,7 +87,7 @@ Most adjon hozzá egy Common Data Service műveletet, amely létrehoz egy új "l
 
       ![Válassza ki a feladat rekordban használni kívánt trigger-kimeneteket](./media/connect-common-data-service/create-new-record-action-select-trigger-outputs.png)
 
-      | Trigger kimenete | Description |
+      | Trigger kimenete | Leírás |
       |----------------|-------------|
       | **Keresztnév** | Az első név a rekordban, amelyet elsődleges partnerként kíván használni a feladatban. |
       | **Vezetéknév** | A tevékenység rekordjában az elsődleges partnerként használandó utolsó név a vezető rekordban |

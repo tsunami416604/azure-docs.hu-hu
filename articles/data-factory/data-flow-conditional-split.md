@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/21/2020
 ms.openlocfilehash: eece6f97e82f3800d4f59ac1849b34c2a1e4635b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83800088"
 ---
 # <a name="conditional-split-transformation-in-mapping-data-flow"></a>Feltételes felosztású átalakítás a leképezési adatfolyamban
@@ -47,7 +47,7 @@ Az adatfolyam-Kifejezésszerkesztő használatával adjon meg egy kifejezést a 
 
 ### <a name="example"></a>Példa
 
-Az alábbi példa egy nevű feltételes felosztású átalakítás, `SplitByYear` amely a bejövő adatfolyamot veszi át `CleanData` . Ez a transzformáció két felosztott feltételt `year < 1960` és `year > 1980` . `disjoint`hamis, mert az adatértékek az első egyező feltételnek felelnek meg. Minden, az első feltételnek megfelelő sor a kimeneti adatfolyamba kerül `moviesBefore1960` . A második feltételnek megfelelő összes fennmaradó sor a kimeneti adatfolyamra mutat `moviesAFter1980` . Az összes többi sor az alapértelmezett adatfolyamon keresztül folyik `AllOtherMovies` .
+Az alábbi példa egy nevű feltételes felosztású átalakítás, `SplitByYear` amely a bejövő adatfolyamot veszi át `CleanData` . Ez a transzformáció két felosztott feltételt `year < 1960` és `year > 1980` . `disjoint` hamis, mert az adatértékek az első egyező feltételnek felelnek meg. Minden, az első feltételnek megfelelő sor a kimeneti adatfolyamba kerül `moviesBefore1960` . A második feltételnek megfelelő összes fennmaradó sor a kimeneti adatfolyamra mutat `moviesAFter1980` . Az összes többi sor az alapértelmezett adatfolyamon keresztül folyik `AllOtherMovies` .
 
 Az Data Factory UX-ben ez az átalakítás az alábbi képhez hasonlóan néz ki:
 

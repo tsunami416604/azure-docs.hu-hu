@@ -4,10 +4,10 @@ description: Ismerkedjen meg a Hyper-V felmérés támogatásával Azure Migrate
 ms.topic: conceptual
 ms.date: 06/14/2020
 ms.openlocfilehash: 16eeb0822a8d598c74ab5118fbd39bda84186db0
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91318177"
 ---
 # <a name="support-matrix-for-hyper-v-assessment"></a>A Hyper-V felmérés támogatási mátrixa
@@ -23,7 +23,7 @@ A Hyper-V virtuális gép értékelésének beállításához létre kell hoznia
 --- | ---
 **Értékelési korlátok** | Egyetlen [Azure Migrate-projektben](migrate-support-matrix.md#azure-migrate-projects)akár 35 000 Hyper-V virtuális gépet is felfedezhet és felderítheti.
 **Projekt korlátai** | Egy Azure-előfizetésben több projektet is létrehozhat. A Hyper-V-alapú virtuális gépeken kívül a projektek tartalmazhatják a VMware virtuális gépeket és a fizikai kiszolgálókat is, az egyes alkalmazásokra vonatkozó értékelési korlátokig.
-**Felfedezés** | A Azure Migrate készülék legfeljebb 5000 Hyper-V virtuális gépet képes felderíteni.<br/><br/> A készülék legfeljebb 300 Hyper-V gazdagéphez tud csatlakozni.
+**Felderítés** | A Azure Migrate készülék legfeljebb 5000 Hyper-V virtuális gépet képes felderíteni.<br/><br/> A készülék legfeljebb 300 Hyper-V gazdagéphez tud csatlakozni.
 **Értékelés** | Egyetlen csoportban legfeljebb 35 000 gépet adhat hozzá.<br/><br/> Egy csoportra vonatkozóan akár 35 000 virtuális gépet is megvizsgálhat egyetlen értékeléssel.
 
 [További](concepts-assessment-calculation.md) információ az értékelésekről.

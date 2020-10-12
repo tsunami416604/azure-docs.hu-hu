@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 07/20/2020
 ms.author: amverma
 ms.openlocfilehash: ccc9df8078bb7fec8be7d72b0ae18ed416bb10ca
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87096743"
 ---
 # <a name="infiniband-driver-extension-for-windows"></a>A Windows InfiniBand-illesztőprogram-bővítménye
@@ -69,12 +69,12 @@ A következő JSON a bővítmény sémáját jeleníti meg.
 
 ### <a name="properties"></a>Tulajdonságok
 
-| Name | Érték/példa | Adattípus |
+| Name (Név) | Érték/példa | Adattípus |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | dátum |
 | közzétevő | Microsoft. HpcCompute | sztring |
 | típus | InfiniBandDriverWindows | sztring |
-| typeHandlerVersion | 1.2 | int |
+| typeHandlerVersion | 1,2 | int |
 
 
 

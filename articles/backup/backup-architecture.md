@@ -4,10 +4,10 @@ description: Áttekintést nyújt a Azure Backup szolgáltatás által használt
 ms.topic: conceptual
 ms.date: 02/19/2019
 ms.openlocfilehash: 6f95e8f6edaef61a7c5971a46ed4bff1a34e3dbe
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91614002"
 ---
 # <a name="azure-backup-architecture-and-components"></a>Architektúra és összetevők Azure Backup
@@ -43,8 +43,8 @@ A tárolók a következő funkciókkal rendelkeznek:
 - Megfigyelheti a tárolóban lévő biztonsági másolati elemeket, beleértve az Azure-beli virtuális gépeket és a helyszíni gépeket is.
 - A tár hozzáférését az [Azure szerepköralapú hozzáférés-vezérléssel (Azure RBAC)](../role-based-access-control/role-assignments-portal.md)kezelheti.
 - Megadhatja, hogyan replikálja a rendszer a tárolóban lévő adattárakat:
-  - **Helyileg redundáns tárolás (LRS)**: az adatközpontok meghibásodása elleni védelem érdekében a LRS-t használhatja. A LRS replikálja az adatmennyiséget egy tárolási méretezési egységbe. [További információ](../storage/common/storage-redundancy.md#locally-redundant-storage).
-  - **Geo-redundáns tárolás (GRS)**: az egész régióra kiterjedő kimaradások elleni védelemhez használhatja a GRS. A GRS egy másodlagos régióba replikálja az adatait. [További információ](../storage/common/storage-redundancy.md#geo-redundant-storage).
+  - **Helyileg redundáns tárolás (LRS)**: az adatközpontok meghibásodása elleni védelem érdekében a LRS-t használhatja. A LRS replikálja az adatmennyiséget egy tárolási méretezési egységbe. [További információk](../storage/common/storage-redundancy.md#locally-redundant-storage).
+  - **Geo-redundáns tárolás (GRS)**: az egész régióra kiterjedő kimaradások elleni védelemhez használhatja a GRS. A GRS egy másodlagos régióba replikálja az adatait. [További információk](../storage/common/storage-redundancy.md#geo-redundant-storage).
   - **Zone-redundáns tárolás (ZRS)**: a [rendelkezésre állási zónákban](https://docs.microsoft.com/azure/availability-zones/az-overview#availability-zones)replikálja az adatait, így garantálva az adattárolást és a rugalmasságot ugyanabban a régióban. [További információ](../storage/common/storage-redundancy.md#zone-redundant-storage)
   - Recovery Services tárolók alapértelmezés szerint a GRS használják.
 
@@ -96,7 +96,7 @@ A tárterület-használat, a helyreállítási időre vonatkozó célkitűzés (
 
 A következő táblázat összefoglalja a különböző típusú biztonsági másolatok támogatott funkcióit:
 
-**Funkció** | **Fájlok és mappák közvetlen biztonsági mentése (a MARS-ügynök használatával)** | **Azure-beli virtuális gép biztonsági mentése** | **Gépek vagy alkalmazások DPM/MABS**
+**Szolgáltatás** | **Fájlok és mappák közvetlen biztonsági mentése (a MARS-ügynök használatával)** | **Azure-beli virtuális gép biztonsági mentése** | **Gépek vagy alkalmazások DPM/MABS**
 --- | --- | --- | ---
 Biztonsági mentés a tárba | ![Igen][green] | ![Igen][green] | ![Igen][green]
 Biztonsági mentés DPM-vagy MABS-lemezre, majd az Azure-ba | | | ![Igen][green]
@@ -224,7 +224,7 @@ Ha felügyelt lemezekkel állítja vissza a virtuális gépeket, visszaállítha
 - A visszaállítási folyamat során az Azure kezeli a felügyelt lemezeket. Ha a Storage-fiók lehetőséget használja, akkor a visszaállítási folyamat során létrehozott Storage-fiókot kell kezelnie.
 - Ha egy titkosított felügyelt virtuális gépet állít vissza, akkor a visszaállítási folyamat megkezdése előtt győződjön meg arról, hogy a virtuális gép kulcsainak és titkos kulcsai léteznek a kulcstartóban.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tekintse át a támogatási mátrixot, [ahol megismerheti a biztonsági mentési forgatókönyvek támogatott funkcióit és korlátozásait](backup-support-matrix.md).
 - Állítsa be a biztonsági mentést az alábbi forgatókönyvek egyikére:

@@ -10,10 +10,10 @@ ms.date: 04/15/2019
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: 0e98078fe2799d1c524190c8ced36588f35498b4
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86186435"
 ---
 # <a name="get-started-with-azure-automation-state-configuration"></a>Ismerkedés a Azure Automation állapot-konfigurációval
@@ -83,7 +83,7 @@ A konfiguráció importálása után megtekintheti azt a Azure Portalban.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 1. A bal oldalon kattintson az **összes erőforrás** elemre, majd az Automation-fiók nevére.
-1. Az Automation-fiók lapon válassza az **állapot konfigurálása (DSC)** lehetőséget a **konfiguráció kezelése**területen.
+1. Az Automation-fiók lapon válassza az  **állapot konfigurálása (DSC)** lehetőséget a **konfiguráció kezelése**területen.
 1. Az állapot konfigurálása (DSC) lapon kattintson a **konfigurációk** fülre, majd a **TestConfig**elemre. Ez az előző eljárásban importált konfiguráció neve.
 1. A TestConfig-konfiguráció ablaktáblán kattintson a **konfigurációs forrás megtekintése**elemre.
 

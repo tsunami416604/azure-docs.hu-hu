@@ -8,10 +8,10 @@ ms.service: azure-education
 ms.subservice: education-hub
 ms.date: 06/30/2020
 ms.openlocfilehash: 276ab2cc1d79235c00ce1bb50ff9b648bb1de6ea
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87096652"
 ---
 # <a name="troubleshooting-student-login-issues"></a>A tanulói bejelentkezési problémák elhárítása
@@ -39,16 +39,16 @@ Ha egy tanuló rendelkezik egy meglévő Microsoft-fiókval (például Xbox), ak
 
 1. Kattintson **a kezelés a microsoftba való bejelentkezés módjára**. A rendszer megkéri, hogy ellenőrizze az identitását. A rendszer e-mailben elküld egy biztonsági kódot.
 
-    :::image type="content" source="media/troubleshoot-accounts/manage-sign-in.png" alt-text="A bejelentkezés kezelése." border="false":::
+    :::image type="content" source="media/troubleshoot-accounts/manage-sign-in.png" alt-text="Bejelentkezési hibaüzenet." border="false":::
 
 1. Adja meg az e-mailben megadott biztonsági kódot.
 
-    :::image type="content" source="media/troubleshoot-accounts/sign-in-enter-code.png" alt-text="Adja meg a bejelentkezési kódot." border="false":::!
+    :::image type="content" source="media/troubleshoot-accounts/sign-in-enter-code.png" alt-text="Bejelentkezési hibaüzenet." border="false":::!
 
 1. Kattintson az **E-mail hozzáadása** a fiókhoz lehetőségre, és adja meg az egyetemi e-mail-címét.
 Amikor legközelebb bejelentkezik, az egyetemi e-mail-címével férhet hozzá az Azure fejlesztői eszközökhöz az oktatási célra.
 
-    :::image type="content" source="media/troubleshoot-accounts/manage-sign-in-add-email.png" alt-text="A Microsoftba való bejelentkezés módjának kezelése." border="false":::
+    :::image type="content" source="media/troubleshoot-accounts/manage-sign-in-add-email.png" alt-text="Bejelentkezési hibaüzenet." border="false":::
 
 ## <a name="next-steps"></a>További lépések
 - [Gyakori kérdések](program-faq.md)

@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 05/1/2020
 ms.author: tugup
 ms.openlocfilehash: a39aecf16d1c3303c0a590b389ba2aa69d4472f2
-ms.sourcegitcommit: 42107c62f721da8550621a4651b3ef6c68704cd3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87405126"
 ---
 # <a name="azure-service-fabric-hosting-lifecycle"></a>Azure Service Fabric üzemeltetési életciklus
@@ -58,7 +58,7 @@ Ha egy CodePackage összeomlik, Service Fabric egy back-off használatával ind�
 A back-off érték mindig min (RetryTime, **ActivationMaxRetryInterval**), és ez az érték lehet állandó, lineáris vagy exponenciális a **ActivationRetryBackoffExponentiationBase** config alapján.
 
 - Állandó: if **ActivationRetryBackoffExponentiationBase** = = 0, RetryTime = **ActivationRetryBackoffInterval**;
-- Lineáris: Ha **ActivationRetryBackoffExponentiationBase** = = 0, akkor a RetryTime = ContinuousFailureCount * **ActivationRetryBackoffInterval** , ahol a ContinousFailureCount az a szám, ahányszor egy CodePackage összeomlik vagy nem sikerül aktiválni.
+- Lineáris: Ha  **ActivationRetryBackoffExponentiationBase** = = 0, akkor a RetryTime = ContinuousFailureCount * **ActivationRetryBackoffInterval** , ahol a ContinousFailureCount az a szám, ahányszor egy CodePackage összeomlik vagy nem sikerül aktiválni.
 - Exponenciális: RetryTime = (**ActivationRetryBackoffInterval** másodpercben) * (**ActivationRetryBackoffExponentiationBase** ^ ContinuousFailureCount);
     
 A viselkedést a gyors újraindításhoz hasonlóan szabályozhatja. Beszéljünk a lineárisról. Ez azt jelenti, hogy ha egy CodePackage összeomlik, a kezdési időköz 10, 20 és 30 40 másodperc után lesz, amíg a CodePackage inaktiválva nem lesz. 
@@ -81,7 +81,7 @@ Service Fabric mindig lineáris biztonsági mentést használ, ha a letöltés s
 > [!NOTE]
 > A konfigurációk módosítása előtt tekintse át az alábbi példákat.
 
-* Ha a CodePackage megtartja a összeomlik és a biztonsági mentést, a ServiceType le lesz tiltva. Ha azonban az aktiválások konfigurációja olyan, hogy gyorsan újraindul, akkor a CodePackage néhány alkalommal elérheti a ServiceType letiltását. Például: tegyük fel, hogy a CodePackage megérkezik, regisztrálja Service Fabric, majd összeomlik a ServiceType. Ebben az esetben az **ServiceTypeDisableGraceInterval** időszak megszakadása esetén a rendszer megszakítja a regisztráció típusát. Ez pedig megismételhető, amíg a CodePackage a **ServiceTypeDisableGraceInterval** -nál nagyobb értékre vált, majd a ServiceType le lesz tiltva a csomóponton. Ezért előfordulhat, hogy a ServiceType a csomóponton való letiltása előtt egy ideig lehet.
+* Ha a CodePackage megtartja a összeomlik és a biztonsági mentést, a ServiceType le lesz tiltva. Ha azonban az aktiválások konfigurációja olyan, hogy gyorsan újraindul, akkor a CodePackage néhány alkalommal elérheti a ServiceType letiltását. Például: tegyük fel, hogy a CodePackage megérkezik, regisztrálja Service Fabric, majd összeomlik a ServiceType. Ebben az esetben az **ServiceTypeDisableGraceInterval** időszak megszakadása esetén a rendszer megszakítja a regisztráció típusát. Ez pedig megismételhető, amíg a CodePackage a  **ServiceTypeDisableGraceInterval** -nál nagyobb értékre vált, majd a ServiceType le lesz tiltva a csomóponton. Ezért előfordulhat, hogy a ServiceType a csomóponton való letiltása előtt egy ideig lehet.
 
 * Aktiválások esetén, amikor Service Fabric rendszernek replikát kell elhelyeznie egy csomóponton, az RA (ReconfigurationAgent) megkérdezi az alrendszert, hogy aktiválja az alkalmazást, és 15 másodpercenként (**RAPMessageRetryInterval**) újrapróbálkozik az aktiválási kéréssel. Ha Service Fabric rendszer tudni szeretné, hogy a ServiceType le lett tiltva, az üzemeltetési aktiválási műveletnek hosszabb ideig kell élnie, mint az újrapróbálkozási időköz és a **ServiceTypeDisableGraceInterval**. Tegyük fel például, hogy a fürtben a konfigurációk **ActivationMaxFailureCount** 5 értékre van állítva, és a **ActivationRetryBackoffInterval** értéke 1 MP. Ez azt jelenti, hogy az aktiválási művelet a következő után fog megjelenni: (0 + 1 + 2 + 3 + 4) = 10 mp (az első újrapróbálkozás azonnali), és ezt követően a gazdagép újrapróbálkozik. Ebben az esetben az aktiválási művelet befejezve lesz, és 15 másodperc elteltével nem próbálkozik újra. Ez azért történt, mert a Service Fabric 15 másodpercen belül kimerítette az összes újrapróbálkozást. Így a ReconfigurationAgent minden újrapróbálkozása új aktiválási műveletet hoz létre az alrendszer üzemeltetése során, és a minta megőrzi az ismétlődést, és a ServiceType soha nem lesz letiltva a csomóponton. Mivel a ServiceType nem fog letiltani a csomóponton, az SF rendszer Component FM (FailoverManager) nem helyezi át a replikát egy másik csomópontra.
 > 
@@ -128,27 +128,27 @@ Az aktiválási/decativation befolyásoló alapértékekkel rendelkező konfigur
 
 ### <a name="servicetype"></a>ServiceType
 **ServiceTypeDisableFailureThreshold**: alapértelmezett 1. A hibák számának küszöbértéke, amely után az FM (FailoverManager) értesítést kap, hogy letiltsa a szolgáltatás típusát a csomóponton, és egy másik csomópontot próbál meg elhelyezésre.
-**ServiceTypeDisableGraceInterval**: alapértelmezett 30 mp. az az időtartam, amely után a szolgáltatástípus le lehet tiltani.
+**ServiceTypeDisableGraceInterval**: alapértelmezés szerint 30 mp. Az az időtartam, amely után a szolgáltatástípus le lehet tiltani.
 **ServiceTypeRegistrationTimeout**: alapértelmezett 300 másodperc. A ServiceType Service Fabric való regisztrálásának időtúllépése.
 
 ### <a name="activation"></a>Aktiválás
-**ActivationRetryBackoffInterval**: alapértelmezett 10 mp. leállítási időköz minden aktiválási hiba esetén.
+**ActivationRetryBackoffInterval**: alapértelmezett 10 mp. Leállítási időköz minden aktiválási hiba esetén.
 **ActivationMaxFailureCount**: alapértelmezett 20. A maximális darabszám, amely után a rendszer újrapróbálkozik a sikertelen aktiválással. 
 **ActivationRetryBackoffExponentiationBase**: alapértelmezett 1,5.
-**ActivationMaxRetryInterval**: alapértelmezett 3600 mp. max vissza az aktiváláshoz a hibáknál.
+**ActivationMaxRetryInterval**: alapértelmezett 3600 másodperc. Max. a hibák elhárítása az aktiváláshoz.
 **CodePackageContinuousExitFailureResetInterval**: alapértelmezett 300 másodperc. A CodePackage folyamatos kilépési hibáinak számának alaphelyzetbe állítására szolgáló időkorlát.
 
 ### <a name="download"></a>Letöltés
 **DeploymentRetryBackoffInterval**: alapértelmezett 10. Az üzembe helyezési hiba időkorlátja.
-**DeploymentMaxRetryInterval**: alapértelmezett 3600 mp. max. a telepítés sikertelen volt.
+**DeploymentMaxRetryInterval**: alapértelmezett 3600 másodperc. A telepítéshez szükséges maximális biztonsági mentés a hibák esetén.
 **DeploymentMaxFailureCount**: alapértelmezett 20. Az alkalmazás központi telepítése újra próbálkozik a DeploymentMaxFailureCount, mielőtt az alkalmazás telepítése a csomóponton meghiúsul.
 
 ### <a name="deactivation"></a>Inaktiválása
-**DeactivationScanInterval**: alapértelmezett 600 másodperc. a szervizcsomag tárolására szolgáló minimális idő, ha még soha nem üzemeltetett replikát, azaz Ha nincs használatban.
+**DeactivationScanInterval**: alapértelmezett 600 másodperc. Egy replika üzemeltetéséhez szükséges minimális idő a szervizcsomag tárolására, ha még soha nem üzemeltetett replikát, azaz Ha nincs használatban.
 **DeactivationGraceInterval**: alapértelmezett 60 másodperc. A szervizcsomagnak egy másik replika futtatására adott idő, ha **megosztott** négyszínes modell esetén replikát üzemeltetett.
 **ExclusiveModeDeactivationGraceInterval**: alapértelmezett 1 MP. Az az idő, amelyet a szervizcsomagnak egy másik replikát kell üzemeltetni, ha a **kizárólagos** folyamatmodell esetében bármilyen replikát futtatott.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [Alkalmazás becsomagolása][a3] és üzembe helyezése készen áll a telepítésre.
 
 [Alkalmazások telepítése és eltávolítása][a4]. Ez a cikk azt ismerteti, hogyan használható a PowerShell az alkalmazások példányainak kezeléséhez.

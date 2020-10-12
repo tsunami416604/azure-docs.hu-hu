@@ -7,10 +7,10 @@ ms.date: 04/15/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
 ms.openlocfilehash: 51c611b2565ae0a5a054a45f0aedcb039351b46b
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88208370"
 ---
 # <a name="monitoring-azure-functions-with-azure-monitor-logs"></a>Azure Functions figyelése Azure Monitor naplókkal
@@ -38,7 +38,7 @@ A Azure Monitor az Azure Adatkezelő által használt [Kusto-lekérdezési nyelv
 
 1. Adja meg a **diagnosztikai beállítások nevét**, majd kattintson a **Mentés**gombra.
 
-   :::image type="content" source="media/functions-monitor-log-analytics/choose-table.png" alt-text="Diagnosztikai beállítás hozzáadása":::
+   :::image type="content" source="media/functions-monitor-log-analytics/choose-table.png" alt-text="Diagnosztikai beállítások kiválasztása":::
 
 ## <a name="user-generated-logs"></a>Felhasználó által generált naplók
 
@@ -89,7 +89,7 @@ A generált naplók lekérdezése:
 
    Azure Functions az összes naplót a **FunctionAppLogs** táblába írja a **LogManagement**alatt. 
 
-   :::image type="content" source="media/functions-monitor-log-analytics/querying.png" alt-text="Lekérdezési ablak Log Analytics munkaterületen":::
+   :::image type="content" source="media/functions-monitor-log-analytics/querying.png" alt-text="Diagnosztikai beállítások kiválasztása":::
 
 Íme néhány példa a lekérdezésekre:
 

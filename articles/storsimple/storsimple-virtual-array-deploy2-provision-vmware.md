@@ -9,10 +9,10 @@ ms.date: 07/25/2019
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 9810a34021aa039354aad24f84aff373229c0190
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87021477"
 ---
 # <a name="deploy-storsimple-virtual-array---provision-in-vmware"></a>StorSimple virtuális tömb üzembe helyezése VMware-ben
@@ -169,13 +169,13 @@ A következő lépések végrehajtásával helyezzen üzembe egy virtuális eszk
 32. A **Speciális beállítások** lapon fogadja el az alapértelmezett értéket.
 
     ![Képernyőkép a speciális beállítások lapról. A virtuális eszköz csomópontja az SCSI (0:0) értékre van beállítva, és a tovább gomb ki van emelve.](./media/storsimple-virtual-array-deploy2-provision-vmware/image33.png)
-33. A **kész** lapon tekintse át a lemez beállításait. Kattintson a **Befejezés** gombra.
+33. A **kész** lapon tekintse át a lemez beállításait. Kattintson a **Finish** (Befejezés) gombra.
 
     ![Képernyőkép a készen áll a teljes oldalról. A lemez beállításainak összegzése látható, a Befejezés gomb pedig ki van emelve.](./media/storsimple-virtual-array-deploy2-provision-vmware/image34.png)
-34. Térjen vissza a virtuális gép tulajdonságai lapra. A rendszer új merevlemezt ad hozzá a virtuális géphez. Kattintson a **Befejezés** gombra.
+34. Térjen vissza a virtuális gép tulajdonságai lapra. A rendszer új merevlemezt ad hozzá a virtuális géphez. Kattintson a **Finish** (Befejezés) gombra.
 
     ![Képernyőkép a virtuális gép tulajdonságai lapról. A hardver lista tartalmazza az új merevlemezt, és a Befejezés gomb ki van emelve.](./media/storsimple-virtual-array-deploy2-provision-vmware/image35.png)
-35. A jobb oldali ablaktáblán válassza ki a virtuális gépet, és keresse meg az **Összefoglalás** lapot. tekintse át a virtuális gép beállításait.
+35. A jobb oldali ablaktáblán válassza ki a virtuális gépet, és navigáljon az **Összefoglalás** lapra. Tekintse át a virtuális gép beállításait.
 
     ![Képernyőkép az vSphere-ügyfél összegzése lapról. Az új virtuális gép ki van emelve, és a hozzá tartozó erőforrások és általános tulajdonságok láthatók.](./media/storsimple-virtual-array-deploy2-provision-vmware/image36.png)
 
@@ -196,10 +196,10 @@ Az alábbi lépések végrehajtásával indítsa el a virtuális eszközt, és c
    ![Képernyőkép a vSphere-ügyfél konzoljának lapról. A jelszó mező üres.](./media/storsimple-virtual-array-deploy2-provision-vmware/image38.png)
 3. Biztonsági okokból az eszköz rendszergazdai jelszava az első bejelentkezéskor lejár. A rendszer megkéri a jelszó módosítására.
 
-   ![Képernyőfelvétel a vSphere-ügyfél konzoljának lapról. a lapon lévő szöveg azt jelzi, hogy a jelszót módosítani kell.](./media/storsimple-virtual-array-deploy2-provision-vmware/image39.png)
+   ![Képernyőkép a vSphere-ügyfél konzoljának lapról. Az oldalon lévő szöveg azt jelzi, hogy a jelszót módosítani kell.](./media/storsimple-virtual-array-deploy2-provision-vmware/image39.png)
 4. Olyan jelszót adjon meg, amely legalább 8 karakterből áll. A jelszónak 3 a következő követelményeknek kell szerepelnie: kis-és nagybetűk, számok és speciális karakterek. Írja be ismét a jelszót a megerősítéséhez. A rendszer értesítést küld arról, hogy a jelszó megváltozott.
 
-   ![Képernyőfelvétel a vSphere-ügyfél konzoljának lapról. a lapon lévő szöveg azt jelzi, hogy a jelszó megváltozott.](./media/storsimple-virtual-array-deploy2-provision-vmware/image40.png)
+   ![Képernyőkép a vSphere-ügyfél konzoljának lapról. Az oldalon lévő szöveg azt jelzi, hogy a jelszó megváltozott.](./media/storsimple-virtual-array-deploy2-provision-vmware/image40.png)
 5. A jelszó sikeres módosítása után a virtuális eszköz újraindulhat. Várjon, amíg az újraindítás befejeződik. Előfordulhat, hogy az eszköz Windows PowerShell-konzolja egy folyamatjelző sáv mellett jelenik meg.
 
    ![Képernyőkép, amely egy folyamatjelző sáv segítségével mutatja be a konzol ablakát. Az ablakban lévő szöveg jelzi, hogy a kezdeti beállítás folyamatban van, és megkéri a felhasználót, hogy várjon.](./media/storsimple-virtual-array-deploy2-provision-vmware/image41.png)
@@ -215,7 +215,7 @@ Az alábbi lépések végrehajtásával indítsa el a virtuális eszközt, és c
 
     `Set-HcsIpAddress –Name Ethernet –IpAddress 10.161.22.90 –Netmask 255.255.255.0 –Gateway 10.161.22.1`
 
-    ![Képernyőfelvétel: a Get-Help set-HcsIpAddress parancs kimenetét és a set-HcsIpAddress parancs helyes használatát bemutató konzolablak.](./media/storsimple-virtual-array-deploy2-provision-vmware/image44.png)
+    ![Képernyőfelvétel: a Get-Help Set-HcsIpAddress parancs kimenetét és a Set-HcsIpAddress parancs helyes használatát bemutató konzolablak.](./media/storsimple-virtual-array-deploy2-provision-vmware/image44.png)
 9. Miután a kezdeti beállítás befejeződött és az eszköz elindult, az eszköz szalagcímének szövege jelenik meg. Jegyezze fel a szalagcímen megjelenő IP- és URL-címet az eszköz kezeléséhez. Ezt az IP-címet fogja használni a virtuális eszköz webes felhasználói felületéhez való kapcsolódáshoz, valamint a helyi telepítés és regisztráció befejezéséhez.
 
    ![Képernyőfelvétel: a konzol ablakának megjelenítése az eszköz szalagcímének szövegével. Ez a szöveg tartalmazza az eszköz IP-címét és URL-címét.](./media/storsimple-virtual-array-deploy2-provision-vmware/image45.png)

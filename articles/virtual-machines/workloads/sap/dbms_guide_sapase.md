@@ -16,10 +16,10 @@ ms.date: 04/13/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: ce13c3bce7cdeb0f3e6dcf1f731be22d93a65587
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88654599"
 ---
 # <a name="sap-ase-azure-virtual-machines-dbms-deployment-for-sap-workload"></a>SAP ASE Azure-beli virtuális gépek DBMS üzembe helyezése SAP számítási feladatokhoz
@@ -179,7 +179,7 @@ Az Azure-ba való feltöltés előtt a tömörítés alkalmazására vonatkozó 
 * A tömörítés végrehajtásának időtartama rövidebb, feltételezve, hogy az egyik nagyobb CPU-igényű vagy magasabb I/O-sávszélességgel vagy kisebb I/O-késéssel rendelkező erősebb hardvert használhat.
 * A kisebb adatbázis-méretek kevesebb költséget okozhatnak a lemez kiosztása során
 
-Az adatés LOB-tömörítés az Azure Virtual Machines üzemeltetett virtuális gépeken működik, mivel a helyszínen működik. Ha további információt szeretne arról, hogy miként ellenőrizhető, hogy a tömörítés már használatban van-e egy meglévő SAP-adatbázison, tekintse meg az [SAP-támogatási megjegyzés 1750510](https://launchpad.support.sap.com/#/notes/1750510). Az SAP betekintő adatbázis-tömörítési szolgáltatásával kapcsolatos további információkért lásd [: SAP-támogatás megjegyzés #2121797](https://launchpad.support.sap.com/#/notes/2121797)
+Az adatkezelési és a LOB-Compression az Virtual Machines Azure-ban üzemeltetett virtuális gépeken működnek, mint a helyszínen. Ha további információt szeretne arról, hogy miként ellenőrizhető, hogy a tömörítés már használatban van-e egy meglévő SAP-adatbázison, tekintse meg az [SAP-támogatási megjegyzés 1750510](https://launchpad.support.sap.com/#/notes/1750510). Az SAP betekintő adatbázis-tömörítési szolgáltatásával kapcsolatos további információkért lásd [: SAP-támogatás megjegyzés #2121797](https://launchpad.support.sap.com/#/notes/2121797)
 
 ## <a name="high-availability-of-sap-ase-on-azure"></a>Az Azure-beli SAP-bekapcsolás magas rendelkezésre állása 
 A HADR felhasználói útmutatója a 2 csomópontos SAP-alapú "mindig-on" megoldás beállítását és konfigurációját ismerteti.  Emellett a harmadik vész-helyreállítási csomópont is támogatott. Az SAP-benyújtó számos magas rendelkezésre állású konfigurációt támogat, többek között a megosztott lemezeket és a natív operációsrendszer-fürtözést. Az Azure-ban az egyetlen támogatott konfiguráció, ha a fault Managert nem a lebegőpontos IP-cím nélkül használja.  A lebegőpontos IP-cím metódus nem fog működni az Azure-ban.  Az SAP-kernel egy "HA aware" alkalmazás, és ismeri az elsődleges és a másodlagos SAP-benyújtó kiszolgálókat. Az SAP bevezetési és az Azure közötti integráció nem áll fenn, az Azure belső terheléselosztó nincs használatban. Ezért a szabványos SAP-bevezető dokumentációt kell követnie az [SAP-HADR felhasználói útmutatójának](https://help.sap.com/viewer/efe56ad3cad0467d837c8ff1ac6ba75c/16.0.3.7/en-US/a6645e28bc2b1014b54b8815a64b87ba.html) kiindulásával 
@@ -188,7 +188,7 @@ A HADR felhasználói útmutatója a 2 csomópontos SAP-alapú "mindig-on" megol
 > Az Azure-ban az egyetlen támogatott konfiguráció, ha a fault Managert nem a lebegőpontos IP-cím nélkül használja.  A lebegőpontos IP-cím metódus nem fog működni az Azure-ban. 
 
 ### <a name="third-node-for-disaster-recovery"></a>Harmadik csomópont a vész-helyreállításhoz
-A helyi magas rendelkezésre álláshoz szükséges SAP-alapú folyamatos használaton túl érdemes lehet kiterjeszteni a konfigurációt egy másik Azure-régióban lévő aszinkron módon replikált csomópontra. Az ilyen forgatókönyvek dokumentációja [itt](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/installation-procedure-for-sybase-16-3-patch-level-3-always-on/ba-p/368199)található.
+A magas rendelkezésre állású SAP-Always-On használata esetén előfordulhat, hogy egy másik Azure-régióban lévő aszinkron módon replikált csomópontra szeretné kiterjeszteni a konfigurációt. Az ilyen forgatókönyvek dokumentációja [itt](https://techcommunity.microsoft.com/t5/running-sap-applications-on-the/installation-procedure-for-sybase-16-3-patch-level-3-always-on/ba-p/368199)található.
 
 ## <a name="sap-ase-database-encryption--ssl"></a>SAP-alapú adatbázis-titkosítási & SSL 
 Az SAP Software kiépítési kezelője (SWPM) lehetőséget ad az adatbázis titkosítására a telepítés során.  Ha titkosítást szeretne használni, javasoljuk, hogy az SAP teljes adatbázis-titkosítást használja.  Tekintse meg a dokumentációban ismertetett részleteket:
@@ -239,7 +239,7 @@ a tranzakciós DBACockpit létrehozott hivatkozások a következőhöz hasonlóa
 
 Attól függően, hogy az SAP-szolgáltatást üzemeltető Azure-beli virtuális gép hogyan kapcsolódik az AD-hez és a DNS-hez, meg kell győződnie arról, hogy az ICM teljes állomásnevet használ, amely feloldható azon a gépen, amelyen a DBACockpit megnyitja. Lásd: [SAP-támogatás megjegyzés #773830](https://launchpad.support.sap.com/#/notes/773830) annak megismeréséhez, hogy az ICM hogyan határozza meg a teljes állomásnevet a profil paraméterei alapján, és ha szükséges, állítsa be explicit módon az icm/host_name_full paramétert.
 
-Ha a virtuális gépet csak felhőalapú, a helyszíni és az Azure közötti kapcsolat nélküli környezetben telepítette, meg kell adnia egy nyilvános IP-címet és egy-t `domainlabel` . A virtuális gép nyilvános DNS-nevének formátuma így néz ki:
+Ha a virtuális gépet olyan Cloud-Only környezetben telepítette, amely a helyszíni és az Azure közötti kapcsolat nélkül üzemel, meg kell határoznia egy nyilvános IP-címet és a-t `domainlabel` . A virtuális gép nyilvános DNS-nevének formátuma így néz ki:
 
 > `<custom domainlabel`>. `<azure region`>. cloudapp.azure.com
 > 

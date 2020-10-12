@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 06/01/2020
 ms.author: apimpm
 ms.openlocfilehash: 1ebebed465952bbb5d3e8f82ae1c7776c441c6b0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87096737"
 ---
 # <a name="observability-in-azure-api-management"></a>Megfigyelhető az Azure API Management
@@ -42,6 +42,6 @@ Az alábbi táblázat összefoglalja az API-k megfigyeléséhez API Management �
 
 A fent említett eszközöket a felhőben a felügyelt átjáró támogatja. A [saját](self-hosted-gateway-overview.md) üzemeltetésű átjáró jelenleg nem küld Azure monitornak diagnosztikai naplókat. A helyi átjáró üzembe helyezésekor azonban helyileg is konfigurálhatja és megtarthatja a naplókat. További információkért lásd: [felhőalapú metrikák és naplók konfigurálása saját üzemeltetésű átjáróhoz](how-to-configure-cloud-metrics-logs.md) , valamint [helyi mérőszámok és naplók konfigurálása a saját üzemeltetésű átjáróhoz](how-to-configure-local-metrics-logs.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Kövesse az oktatóanyagokat, és ismerkedjen meg API Management](import-and-publish.md)

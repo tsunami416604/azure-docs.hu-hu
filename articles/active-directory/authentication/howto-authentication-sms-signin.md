@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: rateller
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 8360eae71ddd41d3105dbd037f273139262727ad
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87419563"
 ---
 # <a name="configure-and-enable-users-for-sms-based-authentication-using-azure-active-directory-preview"></a>Felhasználók konfigurálása és engedélyezése SMS-alapú hitelesítéshez Azure Active Directory használatával (előzetes verzió)
@@ -110,7 +110,7 @@ A sikeres kiépítés után egy pipa jelenik meg az *SMS-bejelentkezés engedél
 
 Az SMS-alapú bejelentkezéshez már engedélyezett felhasználói fiók teszteléséhez hajtsa végre a következő lépéseket:
 
-1. Nyisson meg egy új InPrivate-vagy inkognitóban-böngészőablakot a következőhöz[https://www.office.com][office]
+1. Nyisson meg egy új InPrivate-vagy inkognitóban-böngészőablakot a következőhöz [https://www.office.com][office]
 1. A jobb felső sarokban válassza a **Bejelentkezés**lehetőséget.
 1. A bejelentkezési kérésben adja meg az előző szakaszban a felhasználóhoz társított telefonszámot, majd kattintson a **tovább**gombra.
 
@@ -144,7 +144,7 @@ Ha hibaüzenet jelenik meg, amikor a Azure Portal egy felhasználói fiókhoz pr
 1. Győződjön meg arról, hogy a telefonszám nem használatos a bérlő más részén.
 1. Győződjön meg arról, hogy a fiókhoz nincs beállítva hangszám. Ha a hangszám be van állítva, törölje a telefonszámot, és próbálkozzon újra.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Azure AD-ba való bejelentkezés további módjai jelszó nélkül, például a Microsoft Authenticator alkalmazás-vagy FIDO2 biztonsági kulcsainak használata: az [Azure ad-hez készült jelszó nélküli hitelesítési beállítások][concepts-passwordless].
 

@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 06/05/2017
 ms.author: alkohli
 ms.openlocfilehash: dbb7e835d110bcb6cb81fd5425a2aafbb578e692
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90054850"
 ---
 # <a name="use-storsimple-snapshot-manager-to-connect-and-manage-storsimple-devices"></a>A StorSimple Snapshot Manager használata a StorSimple-eszközök csatlakoztatásához és kezeléséhez
@@ -33,7 +33,7 @@ A **nézet** kiválasztásának függvényében az **eredmények** ablaktábla a
 
 | Eredmények oszlop | Leírás |
 |:--- |:--- |
-| Név |A klasszikus Azure portálon konfigurált eszköz neve |
+| Name (Név) |A klasszikus Azure portálon konfigurált eszköz neve |
 | Modell |Az eszköz modellje |
 | Verzió |Az eszközre telepített szoftver verziója |
 | status |Az eszköz elérhető-e |

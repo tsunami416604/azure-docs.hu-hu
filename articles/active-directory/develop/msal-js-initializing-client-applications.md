@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 5af5d3a88262792f4b32e2ce3d8143ac680f083a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87027036"
 ---
 # <a name="initialize-client-applications-using-msaljs"></a>Ügyfélalkalmazások inicializálása MSAL.js használatával
@@ -107,9 +107,9 @@ msalInstance.handleRedirectPromise().then((tokenResponse) => {
 
 Az ígéretből három lehetséges eredmény érhető el:
 
-- `.then`meghívása és `tokenResponse` igaz: az alkalmazás egy sikeres átirányítási műveletből tér vissza.
-- `.then`meghívása és `tokenResponse` hamis ( `null` ): az alkalmazás nem ad vissza átirányítási műveletből.
-- `.catch`meghívása: az alkalmazás egy átirányítási műveletből tér vissza, és hiba történt.
+- `.then` meghívása és `tokenResponse` igaz: az alkalmazás egy sikeres átirányítási műveletből tér vissza.
+- `.then` meghívása és `tokenResponse` hamis ( `null` ): az alkalmazás nem ad vissza átirányítási műveletből.
+- `.catch` meghívása: az alkalmazás egy átirányítási műveletből tér vissza, és hiba történt.
 
 ## <a name="initialize-msaljs-1x-apps"></a>MSAL.js 1. x alkalmazás inicializálása
 

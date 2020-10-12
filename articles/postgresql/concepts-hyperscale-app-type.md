@@ -8,10 +8,10 @@ ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 07/17/2020
 ms.openlocfilehash: 92333857177d33307d6997bfcbdf79787d3ab127
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90895950"
 ---
 # <a name="determining-application-type"></a>Alkalmazás típusának meghatározása
@@ -22,7 +22,7 @@ A nagy kapacitású-on (Citus) jól működő alkalmazások széles körben műk
 
 ## <a name="at-a-glance"></a>Dióhéjban
 
-| Több-bérlős alkalmazások                                 | Valós idejű alkalmazások                                |
+| Több-bérlős alkalmazások                                 | Alkalmazások Real-Time                                |
 |-----------------------------------------------------------|-------------------------------------------------------|
 | Időnként több tucat vagy több száz tábla található a sémában          | Kis számú tábla                                |
 | Egy bérlőhöz (vállalathoz/áruházhoz) kapcsolódó lekérdezések egyszerre | Viszonylag egyszerű elemzési lekérdezések összesítésekkel |

@@ -10,10 +10,10 @@ ms.author: rolyon
 ms.date: 09/22/2020
 ms.custom: generated
 ms.openlocfilehash: ade4a6b791a8aca963a056800bd8c58767aeb766
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91400094"
 ---
 # <a name="azure-resource-provider-operations"></a>Azure erőforrás-szolgáltatói műveletek
@@ -22,7 +22,7 @@ Ez a szakasz a beépített szerepkörökben használt Azure-erőforrás-szolgál
 
 A műveletek listájának megtekintéséhez kattintson az erőforrás-szolgáltató nevére a következő táblázatban.
 
-## <a name="all"></a>Az összes
+## <a name="all"></a>Mind
 
 | Általános kérdések |
 | --- |
@@ -121,7 +121,7 @@ A műveletek listájának megtekintéséhez kattintson az erőforrás-szolgálta
 | [Microsoft. segédösszetevője](#microsoftdevtestlab) |
 | [Microsoft. LabServices](#microsoftlabservices) |
 | [Microsoft. VisualStudio](#microsoftvisualstudio) |
-| **Migrate** |
+| **Migrate (Áttelepítés)** |
 | [Microsoft. Migrálás](#microsoftmigrate) |
 | [Microsoft. OffAzure](#microsoftoffazure) |
 | **Figyelés** |
@@ -1339,7 +1339,7 @@ Azure-szolgáltatás [: Application Gateway](../application-gateway/index.yml), 
 > | Microsoft. Network/vpnsites/delete | Törli a VPN-hely erőforrását. |
 > | Microsoft. Network/vpnSites/vpnSiteLinks/READ | VPN-hely hivatkozásának beolvasása |
 
-## <a name="storage"></a>Tárolás
+## <a name="storage"></a>Storage
 
 ### <a name="microsoftclassicstorage"></a>Microsoft. ClassicStorage
 
@@ -1421,7 +1421,7 @@ Azure-szolgáltatás: [Azure Data Box](../databox/index.yml)
 > | Microsoft. DataBox/Operations/READ | A műveletek listázása vagy beolvasása |
 > | **DataAction** | **Leírás** |
 > | Microsoft. DataBox/regisztráció/művelet | Szolgáltató regisztrálása a Microsoft. Databox |
-> | Microsoft. DataBox/regisztráció/művelet | A Microsoft. Databox szolgáltató regisztrációjának megszüntetése |
+> | Microsoft. DataBox/regisztráció/művelet | Un-Register szolgáltató: Microsoft. Databox |
 > | Microsoft. DataBox/feladatok/megszakítás/művelet | Megszakítja a folyamatban lévő rendelést. |
 > | Microsoft. DataBox/Jobs/bookShipmentPickUp/művelet | Lehetővé teszi a visszaszállítások felvételének lefoglalását. |
 > | Microsoft. DataBox/Jobs/listCredentials/művelet | Felsorolja a rendeléshez kapcsolódó titkosítatlan hitelesítő adatokat. |
@@ -2606,7 +2606,7 @@ Azure-szolgáltatás: [app Service](../app-service/index.yml), [Azure functions]
 > | Microsoft. Web/staticSites/customdomains/validate/Action | Egyéni tartomány érvényesítése statikus helyhez |
 > | Microsoft. Web/staticSites/functions/READ | Statikus hely funkcióinak listázása |
 
-## <a name="containers"></a>Tárolók
+## <a name="containers"></a>Containers
 
 ### <a name="microsoftcontainerinstance"></a>Microsoft. ContainerInstance
 
@@ -5667,7 +5667,7 @@ Azure-szolgáltatás: [API Management](../api-management/index.yml)
 > | Microsoft. ApiManagement/Service/policyDescriptions/READ | Felsorolja az összes házirend leírását. |
 > | Microsoft. ApiManagement/Service/policySnippets/READ | Felsorolja az összes házirend-kódrészletet. |
 > | Microsoft. ApiManagement/Service/portalSettings/READ | A portál beállításainak gyűjteményét listázza. vagy jelentkezzen be a portálra, vagy kérje meg a portál regisztrációját vagy a portál delegálási beállításainak beszerzését. |
-> | Microsoft. ApiManagement/szolgáltatás/portalSettings/írás | A bejelentkezési beállítások frissítése. vagy a bejelentkezési beállítások létrehozása vagy frissítése. vagy frissítse a regisztrációs beállításokat, vagy frissítse a regisztrációs beállításokat, vagy frissítse a delegálási beállításokat. vagy a delegálási beállítások létrehozása vagy frissítése. |
+> | Microsoft. ApiManagement/szolgáltatás/portalSettings/írás | Frissítse Sign-In beállításait. vagy Sign-In-beállítások létrehozása vagy frissítése. vagy frissítse a regisztrációs beállításokat, vagy frissítse a regisztrációs beállításokat, vagy frissítse a delegálási beállításokat. vagy a delegálási beállítások létrehozása vagy frissítése. |
 > | Microsoft. ApiManagement/Service/portalSettings/listSecrets/művelet | Beolvassa a portál delegálási beállításainak érvényesítési kulcsát. vagy töltse le a médiatartalom blob-tárolójának URI-ját. |
 > | Microsoft. ApiManagement/szolgáltatás/termékek/olvasás | Felsorolja a megadott szolgáltatási példányban található termékek gyűjteményét. vagy lekéri az azonosító alapján megadott termék részleteit. |
 > | Microsoft. ApiManagement/szolgáltatás/termékek/írás | Létrehoz vagy frissít egy terméket. vagy frissítse a meglévő termék részleteit. |
@@ -6287,8 +6287,8 @@ Azure-szolgáltatás: Azure Active Directory
 > | Microsoft. aadiam/diagnosticsettings/READ | Diagnosztikai beállítások olvasása |
 > | Microsoft. aadiam/diagnosticsettings/delete | Diagnosztikai beállítások törlése |
 > | Microsoft. aadiam/diagnosticsettingscategories/READ | Diagnosztikai beállítások kategóriáinak olvasása |
-> | Microsoft. aadiam/metricDefinitions/READ | Bérlői szintű metrika definícióinak olvasása |
-> | Microsoft. aadiam/mérőszámok/olvasás | Bérlői szintű metrikák olvasása |
+> | Microsoft. aadiam/metricDefinitions/READ | Tenant-Level metrika-definíciók olvasása |
+> | Microsoft. aadiam/mérőszámok/olvasás | Tenant-Level metrikák olvasása |
 > | Microsoft. aadiam/privateLinkForAzureAD/READ | Privát hivatkozás házirend-definíciójának olvasása |
 > | Microsoft. aadiam/privateLinkForAzureAD/Write | Privát kapcsolati szabályzat definíciójának létrehozása és frissítése |
 > | Microsoft. aadiam/privateLinkForAzureAD/delete | Magánhálózati kapcsolati szabályzat definíciójának törlése |
@@ -6867,7 +6867,7 @@ Azure-szolgáltatás: [Azure DevOps](https://docs.microsoft.com/azure/devops/)
 > | Microsoft. VisualStudio/Project/delete | Projekt törlése |
 > | Microsoft. VisualStudio/Project/READ | Projekt beolvasása |
 
-## <a name="migrate"></a>Migrate
+## <a name="migrate"></a>Migrate (Áttelepítés)
 
 ### <a name="microsoftmigrate"></a>Microsoft. Migrálás
 
@@ -7216,7 +7216,7 @@ Azure-szolgáltatás: [Azure Migrate](../migrate/migrate-services-overview.md)
 > | Microsoft. OffAzure/VMwareSites/vCenter/READ | Egy VMware-vCenter tulajdonságainak beolvasása |
 > | Microsoft. OffAzure/VMwareSites/vCenter/Write | A VMware-vCenter létrehozása vagy frissítése |
 
-## <a name="monitor"></a>Monitor
+## <a name="monitor"></a>Figyelés
 
 ### <a name="microsoftalertsmanagement"></a>Microsoft. AlertsManagement
 
@@ -9448,7 +9448,7 @@ Azure-szolgáltatás: [Bing Maps](https://docs.microsoft.com/BingMaps/)
 > | Microsoft. BingMaps/mapApis/listUsageMetrics/művelet | A Microsoft. BingMaps/mapApis metrikáinak listázása |
 > | Microsoft. BingMaps/Operations/READ | A Microsoft. BingMaps műveleteinek listázása |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Erőforrás-szolgáltató egyeztetése a szolgáltatással](../azure-resource-manager/management/azure-services-resource-providers.md)
 - [Beépített Azure-szerepkörök](built-in-roles.md)

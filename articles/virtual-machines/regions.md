@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.workload: infrastructure-services
 ms.date: 05/28/2019
 ms.openlocfilehash: 094b78fa35da451101f4f5664cca46292d78d146
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88650553"
 ---
 # <a name="regions-for-virtual-machines-in-azure"></a>Az Azure-beli virtuális gépek régiói
@@ -85,10 +85,10 @@ A következő táblázat a tárreplikáció típusai közötti különbségek r�
 Az árak a választott tárolótípus és rendelkezésre állás függvényében változnak.
 
 **Azure Managed Disks**
-* A prémium szintű Managed Disks SSD-meghajtókkal és standard Managed Disksekkel támogatja a normál fonási lemezek. Mind a Premium, mind a Standard Managed Disks szolgáltatás díjszabása a kiépített lemezkapacitás szerint alakul.
+* A prémium szintű Managed Diskseket Solid-State meghajtók (SSD-k) és standard Managed Disks támogatja a normál fonási lemezek. Mind a Premium, mind a Standard Managed Disks szolgáltatás díjszabása a kiépített lemezkapacitás szerint alakul.
 
 **Nem felügyelt lemezek**
-* A Premium Storage szolgáltatás SSD-meghajtókon alapul, és a lemez kapacitása alapján kell fizetni.
+* A Premium Storage-t Solid-State-meghajtók (SSD-k) végzik, és a díjat a lemez kapacitása alapján számítjuk fel.
 * A Standard szintű tárterület általános merevlemezekkel működik, a díjszabás pedig a kihasznált kapacitástól és a rendelkezésre álló, választott tárterülettől függ.
   * Az RA-GRS esetében egy további georeplikációs adatátviteli díj is érvényben van, az adatok másik Azure-régióba történő replikálásához használt sávszélességre vonatkozóan.
 

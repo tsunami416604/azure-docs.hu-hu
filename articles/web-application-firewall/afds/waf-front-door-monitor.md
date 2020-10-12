@@ -8,10 +8,10 @@ services: web-application-firewall
 ms.date: 06/09/2020
 ms.author: victorh
 ms.openlocfilehash: 596374d4f3f188e08a10bd25b36b178cc79a6e57
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84808952"
 ---
 # <a name="azure-web-application-firewall-monitoring-and-logging"></a>Azure webalkalmazási tűzfal figyelése és naplózása
@@ -24,7 +24,7 @@ A FrontDoor naplóval rendelkező WAF integrálva van a [Azure monitor](../../az
 
 Azure Portal válassza a bejárati erőforrás típusa lehetőséget. A bal oldali **figyelési** / **metrikák** lapról hozzáadhat **WebApplicationFirewallRequestCount** a WAF-szabályoknak megfelelő kérelmek számának nyomon követéséhez. Az egyéni szűrők a műveleti típusok és a szabályok nevei alapján hozhatók létre.
 
-:::image type="content" source="../media/waf-frontdoor-monitor/waf-frontdoor-metrics.png" alt-text="WAFMetrics":::
+:::image type="content" source="../media/waf-frontdoor-monitor/waf-frontdoor-metrics.png" alt-text="WAFMetrics ":::
 
 ## <a name="logs-and-diagnostics"></a>Naplók és diagnosztika
 
@@ -36,13 +36,13 @@ A [FrontdoorAccessLog](../../frontdoor/front-door-diagnostics.md) az összes ké
 
 | Tulajdonság  | Leírás |
 | ------------- | ------------- |
-|Műveletek|A kérelemben végrehajtott művelet|
+|Művelet|A kérelemben végrehajtott művelet|
 | ClientIp (Ügyfél IP-címe) | Annak az ügyfélnek az IP-címe, amely a kérelmet elvégezte. Ha a kérelemben a fejléchez X-továbbítás történt, akkor az ügyfél IP-címe a fejléc mezőből lesz kiválasztva. |
 | ClientPort | Az ügyfél IP-portja, amely a kérést elvégezte. |
 | Részletek|További részletek a megfeleltetett kérelemről |
 || matchVariableName: a kérelemben szereplő http-paraméter neve egyezik, például a fejléc neve|
 || matchVariableValue: a megfeleltetést kiváltó értékek|
-| Gazdagép | Az egyeztetett kérelem állomásneve |
+| Gazda | Az egyeztetett kérelem állomásneve |
 | Szabályzat | Annak a WAF-házirendnek a neve, amelyhez a kérelem illeszkedik. |
 | PolicyMode | A WAF házirend működési módja. A lehetséges értékek a következők: "megelőzés" és "észlelés" |
 | RequestUri | Az egyeztetett kérelem teljes URI-ja. |

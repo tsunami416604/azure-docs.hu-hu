@@ -7,10 +7,10 @@ ms.service: mariadb
 ms.topic: how-to
 ms.date: 6/8/2020
 ms.openlocfilehash: 45d93797b72b3b35dd44cddc22124acb73eb3454
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86121095"
 ---
 # <a name="connect-to-azure-database-for-mariadb-with-redirection"></a>Kapcsolódás Azure Database for MariaDBhoz átirányítás használatával
@@ -44,7 +44,7 @@ Az átirányítási viselkedést a értéke határozza meg `mysqlnd_azure.enable
 
 Ha a mysqlnd_azure bővítmény (1.0.0-1.0.3 verzió) régebbi verzióját használja, az átirányítási viselkedést a értéke határozza meg `mysqlnd_azure.enabled` . Az érvényes értékek `off` (az alábbi táblázatban szereplő viselkedéssel hasonlóan viselkednek), és `on` (az alábbi táblázat szerint viselkednek `preferred` ).  
 
-|**mysqlnd_azure. enableRedirect érték**| **Viselkedés**|
+|**mysqlnd_azure. enableRedirect érték**| **Működés**|
 |----------------------------------------|-------------|
 |`off` vagy `0`|Az átirányítás nem lesz használatban. |
 |`on` vagy `1`|– Ha a kapcsolat nem használ SSL-t az illesztőprogram oldalán, nem történik kapcsolat. A rendszer a következő hibaüzenetet adja vissza: *"mysqlnd_azure. enableRedirect, de az SSL-beállítás nincs beállítva a kapcsolati karakterláncban. Az átirányítás csak SSL használatával lehetséges. "*<br>-Ha az SSL használatban van az illesztőprogram oldalán, de az átirányítás nem támogatott a kiszolgálón, az első kapcsolat megszakad, és a rendszer a következő hibaüzenetet adja vissza: *"a kapcsolat megszakadt, mert az átirányítás nincs engedélyezve a MariaDB-kiszolgálón, vagy a hálózati csomag nem felel meg az átirányítási protokollnak."*<br>-Ha a MariaDB-kiszolgáló támogatja az átirányítás használatát, de az átirányított csatlakozás valamilyen okból meghiúsult, akkor az első proxy-csatlakozást is megszakítja. Az átirányított kapcsolatok hibájának visszaadása.|
@@ -161,5 +161,5 @@ $db_name = 'testdb';
 ?>
  ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További információ a kapcsolatok karakterláncáról: a [kapcsolatok karakterláncai](howto-connection-string.md).

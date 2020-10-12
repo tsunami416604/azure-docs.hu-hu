@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 05/21/2020
 ms.author: tisande
 ms.openlocfilehash: 3d07657fc3345ddd8dfadd163dc3c9f957d77af3
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90068387"
 ---
 # <a name="indexing-in-azure-cosmos-db---overview"></a>Indexelés az Azure Cosmos DB-ben – Áttekintés
@@ -180,7 +180,7 @@ Az adatindexelés során kinyert elérési utak megkönnyítik az index keresés
 
 Vegyük például a következő lekérdezést: `SELECT location FROM location IN company.locations WHERE location.country = 'France'` . A lekérdezési predikátum (elemek szűrése, ahol bármely hely "Franciaország" országa/régiója) megfelel az alábbi piros színnel jelölt elérési útnak:
 
-:::image type="content" source="./media/index-overview/matching-path.png" alt-text="Megadott elérési út megfeleltetése egy fában belül" border="false":::
+:::image type="content" source="./media/index-overview/matching-path.png" alt-text="Az előző elem faszerkezetként van ábrázolva" border="false":::
 
 > [!NOTE]
 > Egy olyan `ORDER BY` záradék, amelyet egy adott tulajdonság megrendelése *mindig* egy tartomány indexre van szüksége, és sikertelen lesz, ha az általa hivatkozott elérési út nem rendelkezik ilyennel. Hasonlóképpen, a `ORDER BY` több tulajdonság által megrendelést igénylő lekérdezésnek *mindig* összetett indexre van szüksége.

@@ -9,10 +9,10 @@ ms.date: 09/09/2020
 ms.author: raynew
 ms.custom: mvc
 ms.openlocfilehash: e3e2c9aa42ff3189e90f57d7c6e92b2a71f46639
-ms.sourcegitcommit: 51df05f27adb8f3ce67ad11d75cb0ee0b016dc5d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90061604"
 ---
 # <a name="tutorial-move-azure-sql-database-resources-to-another-region"></a>Oktatóanyag: Azure SQL Database-erőforrások áthelyezése egy másik régióba
@@ -36,7 +36,7 @@ Eben az oktatóanyagban az alábbiakkal fog megismerkedni:
 > [!NOTE]
 > Az oktatóanyagok a forgatókönyvek kipróbálásának leggyorsabb elérési útját mutatják be, és az alapértelmezett beállításokat használják. 
 
-Ha nem rendelkezik Azure-előfizetéssel, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/). Ezután jelentkezzen be a [Azure Portalba](https://portal.azure.com).
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/), mielőtt hozzákezd. Ezután jelentkezzen be a [Azure Portalba](https://portal.azure.com).
 
 ## <a name="prerequisites"></a>Előfeltételek
 
@@ -50,7 +50,7 @@ Ha nem rendelkezik Azure-előfizetéssel, kezdés előtt hozzon létre egy [ingy
 ## <a name="check-sql-requirements"></a>SQL-követelmények keresése
 
 1. [Győződjön](support-matrix-move-region-sql.md) meg arról, hogy mely adatbázis/rugalmas készlet funkciók támogatottak a másik régióba való áthelyezéshez.
-2. A célként megadott régióban hozzon létre egy célkiszolgáló minden forráskiszolgálón. [További információ](/azure/azure-sql/database/active-geo-replication-security-configure#how-to-configure-logins-and-users).
+2. A célként megadott régióban hozzon létre egy célkiszolgáló minden forráskiszolgálón. [További információk](/azure/azure-sql/database/active-geo-replication-security-configure#how-to-configure-logins-and-users).
 4. Ha az adatbázisok transzparens adattitkosítással (TDE) vannak titkosítva, és a Azure Key Vault saját titkosítási kulcsát használja, [Ismerje meg, hogyan](../key-vault/general/move-region.md) helyezheti át a kulcstartókat egy másik régióba.
 5. Ha az SQL-adatszinkronizálás engedélyezve van, a rendszer a tagok adatbázisainak áthelyezését is támogatja. Az áthelyezést követően be kell állítania az SQL-adatszinkronizálást az új céladatbázis-adatbázisba.
 6. Az áthelyezés előtt távolítsa el a speciális adatbiztonsági beállításokat. Az áthelyezést követően [konfigurálja a beállításokat](/azure/sql-database/sql-database-advanced-data-security) a célként megadott régió SQL Server szintjén.
@@ -101,7 +101,7 @@ Válassza ki az áthelyezni kívánt erőforrásokat.
 > 
 > - A SQL Server jelenleg *manuális hozzárendelés függőben* állapotú.
 > - Az egyéb hozzáadott erőforrások *előkészítése függő* állapotban van.
-> - Ha el kívánja távolítani egy erőforrást egy áthelyezési gyűjteményből, akkor a művelet metódusa attól függ, hogy hol található az áthelyezési folyamat. [További információ](remove-move-resources.md).
+> - Ha el kívánja távolítani egy erőforrást egy áthelyezési gyűjteményből, akkor a művelet metódusa attól függ, hogy hol található az áthelyezési folyamat. [További információk](remove-move-resources.md).
 
 ## <a name="resolve-dependencies"></a>Függőségek feloldása
 
@@ -275,7 +275,7 @@ Az áthelyezést követően lehetőség van a forrás régió erőforrásainak t
 1. A **régiók között**kattintson a törölni kívánt forrás-erőforrások nevére.
 2. Az egyes erőforrások Tulajdonságok lapján válassza a **Törlés**lehetőséget.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az oktatóanyag során az alábbi lépéseket fogja végrehajtani:
 

@@ -8,10 +8,10 @@ ms.date: 07/08/2020
 ms.author: akjosh
 ms.custom: include file
 ms.openlocfilehash: 662afb902c97e164cc24bc664b854db118904210
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89494264"
 ---
 A megosztott képkatalógus egy olyan szolgáltatás, amely segít felépíteni a lemezképek körét a szerkezet és a szervezet számára. A megosztott képtárak a következőket biztosítják:
@@ -123,7 +123,7 @@ Az a régió, amelyet a megosztott rendszerkép replikál, a rendszer a létreho
 
 ![A képek replikálásának módját bemutató ábra](./media/shared-image-galleries/replication.png)
 
-## <a name="access"></a>Access
+## <a name="access"></a>Hozzáférés
 
 Mivel a megosztott képtára, a képdefiníció és a rendszerkép verziója minden erőforrás, a beépített natív Azure RBAC-vezérlőkkel is megoszthatók. A RBAC használatával ezeket az erőforrásokat megoszthatja más felhasználókkal, egyszerű szolgáltatásokkal és csoportokkal is. Akár a bérlőn kívüli személyekhez is megoszthatja a hozzáférést. Miután egy felhasználó hozzáfér a megosztott lemezkép verziójához, üzembe helyezhet egy virtuális gépet vagy egy virtuálisgép-méretezési készletet.  Itt látható a megosztási mátrix, amely segít megérteni, hogy a felhasználó milyen módon férhet hozzá:
 

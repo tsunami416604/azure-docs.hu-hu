@@ -9,10 +9,10 @@ ms.date: 7/22/2020
 ms.author: mimckitt
 ms.custom: sttsinar
 ms.openlocfilehash: 13894e534dc8d6dd89baf75ea2bd3b6500b718f7
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88650961"
 ---
 # <a name="azure-virtual-machine-sizes-naming-conventions"></a>Az Azure-beli virtuális gépek méretei elnevezési konvenciói
@@ -60,7 +60,7 @@ Ez az oldal az Azure-beli virtuális gépekhez használt elnevezési konvenciók
 |Érték | Magyarázat|
 |---|---|
 | Family (Család) | N | 
-| Alárendelt család | M |
+| Alárendelt család | C |
 | vCPU száma | 4 |
 | Adalékanyag-funkciók | a = AMD-alapú processzor <br> s = Premium Storage képes |
 | Gyorssegéd típusa | T4 |

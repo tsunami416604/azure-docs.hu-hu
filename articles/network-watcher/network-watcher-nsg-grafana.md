@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 09/15/2017
 ms.author: damendo
 ms.openlocfilehash: 5ec4b9343efab9ae501b2b3dcc606e6e3f5fe826
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91399686"
 ---
 # <a name="manage-and-analyze-network-security-group-flow-logs-using-network-watcher-and-grafana"></a>Hálózati biztonsági csoport folyamatábráinak kezelése és elemzése Network Watcher és Grafana használatával
@@ -27,7 +27,7 @@ A [hálózati biztonsági csoport (NSG) folyamatábrája](network-watcher-nsg-fl
 
 A hálózatban számos NSG engedélyezheti a flow naplózását. A naplózási adatok mennyisége nehézkesen elemezheti és betekintést nyerhet a naplókba. Ez a cikk megoldást nyújt ezen NSG-naplók központi felügyeletére a Grafana, egy nyílt forráskódú gráf-kezelő eszköz, egy ElasticSearch, egy elosztott keresési és elemzési motor, valamint a Logstash, amely egy nyílt forráskódú kiszolgálóoldali adatfeldolgozási folyamat.  
 
-## <a name="scenario"></a>Használati eset
+## <a name="scenario"></a>Forgatókönyv
 
 A NSG-flow naplói engedélyezve vannak a Network Watcher használatával, és az Azure Blob Storage-ban tárolódnak. A Logstash beépülő modul a blob Storage-ból való kapcsolódáshoz és feldolgozáshoz, valamint a ElasticSearch való elküldéséhez használható.  A flow-naplók ElasticSearch való tárolása után a rendszer elemezheti és testre szabhatja a Grafana testreszabott irányítópultján.
 
@@ -205,7 +205,7 @@ Az alábbi képernyőképen egy gráf és egy diagram látható, amely a felső 
 
 A Network Watcher ElasticSearch és Grafana való integrálásával mostantól kényelmes és központosított módon kezelheti és jelenítheti meg a NSG, valamint más-más adatmennyiségeket is. A Grafana számos más nagy teljesítményű gráf-funkcióval rendelkezik, amelyekkel a folyamatok további kezeléséhez és a hálózati forgalom jobb megismeréséhez is használható. Most, hogy már beállította és csatlakoztatta az Azure-hoz egy Grafana-példányt, nyugodtan folytathatja az általa kínált egyéb funkciók megismerését.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [Network Watcher](network-watcher-monitoring-overview.md)használatáról.
 

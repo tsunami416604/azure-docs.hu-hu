@@ -12,10 +12,10 @@ manager: celestedg
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: db68528a810ebc9cd61b205dd5167396d75db7f7
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91613985"
 ---
 # <a name="add-an-api-connector-to-a-user-flow"></a>API-összekötő hozzáadása felhasználói folyamathoz
@@ -38,7 +38,7 @@ Az API- [Összekötők](api-connectors-overview.md)használatához először lé
    - Jelenleg csak az alapszintű hitelesítés támogatott. Ha alapszintű hitelesítés nélküli API-t szeretne használni fejlesztési célokra, egyszerűen adja meg az API által figyelmen kívül hagyható dummy- **felhasználónevet** és- **jelszót** . Ha egy API-kulccsal rendelkező Azure-függvényt használ, a kódot lekérdezési paraméterként is megadhatja a **végpont URL-címében** (például https []() ://contoso.azurewebsites.NET/API/Endpoint<b>? Code = 0123456789</b>).
 
    ![Új API-összekötő konfigurálása](./media/self-service-sign-up-add-api-connector/api-connector-config.png)
-8. Válassza a **Mentés** lehetőséget.
+8. Kattintson a **Mentés** gombra.
 
 > [!IMPORTANT]
 > Korábban be kellett állítania, hogy mely felhasználói attribútumok legyenek elküldve az API-nak ("küldési jogcímek"), és hogy mely felhasználói attribútumok fogadják el az API-t ("fogadott jogcímek"). Mostantól alapértelmezés szerint minden felhasználói attribútumot elküld a rendszer, ha értékkel rendelkezik, és az API egy "Folytatás" válaszban visszaadja a felhasználói attribútumot.
@@ -102,7 +102,7 @@ Az alábbi lépéseket követve hozzáadhat egy API-összekötőt egy önkiszolg
 
    ![API-k hozzáadása a felhasználói folyamathoz](./media/self-service-sign-up-add-api-connector/api-connectors-user-flow-select.png)
 
-6. Válassza a **Mentés** lehetőséget.
+6. Kattintson a **Mentés** gombra.
 
 ## <a name="after-signing-in-with-an-identity-provider"></a>Az identitás-szolgáltatóval való bejelentkezés után
 
@@ -326,7 +326,7 @@ Győződjön meg a következőket:
 * Ha szükséges, használjon agresszívebb naplózási szintet (például "trace" vagy "debug") a fejlesztésben.
 * Az API figyelése hosszú válaszidő esetén.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 <!-- - Learn [where you can enable an API connector](api-connectors-overview.md#where-you-can-enable-an-api-connector-in-a-user-flow) -->
 - Ismerje meg, hogyan [adhat hozzá egyéni jóváhagyási munkafolyamatot önkiszolgáló regisztrációhoz](self-service-sign-up-add-approvals.md)
 - Ismerkedjen meg az [Azure Function](code-samples-self-service-sign-up.md#api-connector-azure-function-quickstarts)gyors üzembe helyezési mintákkal.

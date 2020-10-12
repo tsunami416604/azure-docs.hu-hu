@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/15/2020
 ms.openlocfilehash: f1d8715fcadeda5ccd1a98192a70939b0c359c88
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84976676"
 ---
 # <a name="skillset-concepts-in-azure-cognitive-search"></a>Az Azure Cognitive Search készségkészlet kapcsolatos fogalmak
@@ -85,7 +85,7 @@ Az első két képesség alább látható:
 }
 ```
 > [!NOTE]
-> A kifejezések létrehozásához a [feltételes képesség](cognitive-search-skill-conditional.md) használatával összetett szakértelmével hozhat létre a hurok és az elágazás segítségével. A szintaxis a [JSON-mutató](https://tools.ietf.org/html/rfc6901) útvonalának jelölésén alapul, és néhány módosítással azonosítja a csomópontokat a dúsítási fában. A egy `"/"` szinttel lejjebb halad a fában, és a `"*"` -minden operátorként működik a környezetben. Ebben a cikkben számos példa szemlélteti a szintaxist. 
+> A kifejezések létrehozásához a [feltételes képesség](cognitive-search-skill-conditional.md) használatával összetett szakértelmével hozhat létre a hurok és az elágazás segítségével. A szintaxis a [JSON-mutató](https://tools.ietf.org/html/rfc6901) útvonalának jelölésén alapul, és néhány módosítással azonosítja a csomópontokat a dúsítási fában. A egy `"/"` szinttel lejjebb halad a fában, és a  `"*"` -minden operátorként működik a környezetben. Ebben a cikkben számos példa szemlélteti a szintaxist. 
 
 ### <a name="enrichment-tree"></a>Dúsítási fa
 
@@ -98,8 +98,8 @@ Ha egy dokumentum a dúsítási folyamatban van, akkor a rendszer a tartalom és
 |AdatSource\Parsing mód|Alapértelmezett|JSON, JSON-sorok & CSV|
 |---|---|---|
 |Blob Storage|/document/content<br>/Document/normalized_images/*<br>…|/document/{key1}<br>/document/{key2}<br>…|
-|SQL|/document/{column1}<br>/document/{column2}<br>…|N.A. |
-|Cosmos DB|/document/{key1}<br>/document/{key2}<br>…|N.A.|
+|SQL|/document/{column1}<br>/document/{column2}<br>…|N/A |
+|Cosmos DB|/document/{key1}<br>/document/{key2}<br>…|N/A|
 
  A képességek végrehajtásával új csomópontokat vesznek fel a dúsítási fában. Ezek az új csomópontok ezután az alárendelt képességekhez bemenetként, a Knowledge Store-ban való kivetítéssel, vagy az index mezőihez való leképezéssel használhatók. A dúsítások nem változtathatók meg, a csomópontok nem szerkeszthetők. Mivel a szakértelmével összetettebbek, így a dúsítási fában marad, de a dúsítási fában nem minden csomópontnak kell azt az indexbe vagy a tudásbázisba tenni. 
 
@@ -115,7 +115,7 @@ Minden egyes szaktudáshoz környezet szükséges. A környezet meghatározza A 
 
 + A bemenetek alakja. Többszintű gyűjtemények esetén a szülő-gyűjtemény kontextusának beállítása hatással lesz a szakértelem bemenetének alakzatára. Ha például az országok/régiók listáját tartalmazó dúsítási fában van egy lista, a rendszer minden olyan állapotot tartalmaz, amely tartalmazza a ZIP-kódok listáját.
 
-|Környezet|Bevitel|Bemenet alakja|Szaktudás meghívása|
+|Környezet|Input (Bemenet)|Bemenet alakja|Szaktudás meghívása|
 |-------|-----|--------------|----------------|
 |`/document/countries/*` |`/document/countries/*/states/*/zipcodes/*` |Az országban/régióban lévő összes ZIP-kód listája |Országonként/régiónként |
 |`/document/countries/*/states/*` |"/Document/countries/*/States/*/ZipCodes/*" |Az állapotban lévő ZIP-kódok listája | Az ország/régió és az állapot kombinációja után|
@@ -223,7 +223,7 @@ A példa kiterjesztéséhez dönthet úgy, hogy eltávolítja a beágyazott form
 
 #### <a name="shaper-skill-and-projection"></a>Formáló képesség és kivetítés
 
-Ez 
+Ez a 
 
 > [!Note]
 > A dokumentum táblázat néhány oszlopa el lett távolítva ebből a példából a rövidség kedvéért.

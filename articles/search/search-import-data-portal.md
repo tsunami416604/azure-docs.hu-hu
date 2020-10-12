@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 11/04/2019
 ms.openlocfilehash: 7cff009d5d1e187e8d0330fadca530b57b3e3d21
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88935211"
 ---
 # <a name="import-data-wizard-for-azure-cognitive-search"></a>Az Azure Cognitive Search adatimportálási varázslója
@@ -69,7 +69,7 @@ A varázsló futtatása előtt létre kell hoznia ezt az egyetlen táblát vagy 
 | **Azure virtuális gépen futó SQL Server** |Adja meg a teljes szolgáltatásnevet, a felhasználói azonosítót és a jelszót, valamint az adatbázist a kapcsolatok karakterláncként. Az adatforrás használatához a helyi tárolóban rendelkeznie kell egy korábban telepített tanúsítvánnyal, amely titkosítja a kapcsolatot. Útmutatásért lásd: [SQL VM-kapcsolódás az Azure Cognitive Searchhoz](search-howto-connecting-azure-sql-iaas-to-azure-search-using-indexers.md). <br/><br/>Az oldalon meg kell adni a sorhalmazt biztosító táblát vagy nézetet. Ez a lehetőség a sikeres csatlakozás után jelenik meg: egy legördülő listából választhatja ki a kívánt elemet. |
 | [**Azure Cosmos DB**](search-howto-index-cosmosdb.md)|A követelmények a következőket tartalmazzák: a fiók, az adatbázis és a gyűjtemény. Az index tartalmazza a gyűjteményben szereplő összes dokumentumot. Megadhat egy lekérdezést, amely lelapul vagy szűrheti a sorhalmazt, vagy hagyja üresen a lekérdezést. A varázslóban nincs szükség lekérdezésre.|
 | [**Azure-Blob Storage**](search-howto-indexing-azure-blob-storage.md) |A követelmények a következőket tartalmazzák: a tárolási fiók és egy tároló. Szükség esetén, ha csoportosítási célból a blob-nevek egy virtuális elnevezési konvenciót követnek, akkor a név virtuáliskönyvtár-részét a tárolóban található mappa neveként is megadhatja. A további információkat [a Blob Storage indexelését](search-howto-indexing-azure-blob-storage.md) ismertető témakör tartalmazza. |
-| [**Azure Table Storage**](search-howto-indexing-azure-tables.md) |A követelmények a következőket tartalmazzák: a tárolási fiók és egy táblanév. Szükség esetén megadhat egy lekérdezést a táblák részhalmazának beolvasásához. A további információkat [a Table Storage indexelését](search-howto-indexing-azure-tables.md) ismertető témakör tartalmazza. |
+| [**Azure-Table Storage**](search-howto-indexing-azure-tables.md) |A követelmények a következőket tartalmazzák: a tárolási fiók és egy táblanév. Szükség esetén megadhat egy lekérdezést a táblák részhalmazának beolvasásához. A további információkat [a Table Storage indexelését](search-howto-indexing-azure-tables.md) ismertető témakör tartalmazza. |
 
 ## <a name="wizard-output"></a>Varázsló kimenete
 

@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.service: automation
 ms.custom: has-adal-ref
 ms.openlocfilehash: 1cbb5be8c1a4045b218c0e6bf5ac7ed0b901aa80
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87904802"
 ---
 # <a name="troubleshoot-runbook-issues"></a>Runbookkal kapcsolatos hibák elhárítása
@@ -122,7 +122,7 @@ A probléma okának megállapításához kövesse az alábbi lépéseket:
    }
    ```
 
-## <a name="scenario-run-login-azurermaccount-to-log-in"></a><a name="login-azurerm"></a>Forgatókönyv: a login-AzureRMAccount futtatása a bejelentkezéshez
+## <a name="scenario-run-login-azurermaccount-to-log-in"></a><a name="login-azurerm"></a>Forgatókönyv: Login-AzureRMAccount futtatása a bejelentkezéshez
 
 ### <a name="issue"></a>Probléma
 
@@ -368,7 +368,7 @@ A probléma megoldásához használja az alábbi megoldások bármelyikét:
 * Ha a név ütközik, és a parancsmag két különböző modulban érhető el, oldja meg a problémát a parancsmag teljes nevének használatával. Így használhatja például a következőt: `ModuleName\CmdletName`.
 * Ha a helyszíni runbook egy hibrid feldolgozói csoportban hajtja végre, győződjön meg arról, hogy a modul és a parancsmag telepítve van a hibrid feldolgozót futtató számítógépen.
 
-## <a name="scenario-incorrect-object-reference-on-call-to-add-azaccount"></a><a name="object-reference-not-set"></a>Forgatókönyv: helytelen objektum-hivatkozás az Add-AzAccount hívásához
+## <a name="scenario-incorrect-object-reference-on-call-to-add-azaccount"></a><a name="object-reference-not-set"></a>Forgatókönyv: helytelen objektum-hivatkozás a Add-AzAccount hívásakor
 
 ### <a name="issue"></a>Probléma
 
@@ -677,7 +677,7 @@ Kövesse az [5. lépés – hitelesítés hozzáadása az Azure-erőforrások ke
 
 ## <a name="recommended-documents"></a>Ajánlott dokumentumok
 
-* [Runbook végrehajtása az Azure Automationben](../automation-runbook-execution.md)
+* [Runbook végrehajtás a Azure Automationban](../automation-runbook-execution.md)
 * [Runbook indítása Azure Automation](../start-runbooks.md)
 
 ## <a name="next-steps"></a>Következő lépések

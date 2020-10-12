@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 4/15/2019
 ms.author: mayg
 ms.openlocfilehash: 308958f00a3658196f124ac911d4d0195ebeb228
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86119837"
 ---
 # <a name="run-the-deployment-planner-for-vmware-disaster-recovery"></a>A VMware vész-helyreállítás Deployment Planner futtatása
@@ -44,7 +44,7 @@ Először létre kell hoznia a profillal ellátni kívánt virtuális gépek lis
     Set-ExecutionPolicy –ExecutionPolicy AllSigned
     ```
 
-4. Előfordulhat, hogy a következő parancsot kell futtatnia, ha a VIServer nem ismeri fel a parancsmag nevét.
+4. Előfordulhat, hogy a következő parancsot kell futtatnia, ha Connect-VIServer nem ismeri fel a parancsmag nevét.
 
     ```powershell
     Add-PSSnapin VMware.VimAutomation.Core
@@ -296,5 +296,5 @@ ASRDeploymentPlanner.exe -Operation GetThroughput -Directory  E:\vCenter1_Profil
 >
 >  4. Módosítsa a Site Recovery beállításait a folyamatkiszolgálón [a replikációhoz használt hálózati sávszélesség növelésével](./site-recovery-plan-capacity-vmware.md#control-network-bandwidth).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [A generált jelentés elemzése](site-recovery-vmware-deployment-planner-analyze-report.md).

@@ -10,10 +10,10 @@ ms.date: 11/09/2018
 ms.topic: conceptual
 ms.custom: devx-track-js
 ms.openlocfilehash: 2789ed642979616a4491a61d146d8468552ec2e5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91318466"
 ---
 # <a name="customize-the-remote-monitoring-solution-accelerator"></a>A távoli figyelési megoldáshoz tartozó gyorssegéd testreszabása
@@ -32,7 +32,7 @@ Az alábbi lépések ismertetik a helyi környezet beállításának folyamatát
 
 1. Telepítse a megoldás-gyorsító **alapszintű** példányát a **számítógépek** CLI használatával. Jegyezze fel az üzemelő példány nevét és a virtuális géphez megadott hitelesítő adatokat. További információ: [üzembe helyezés a parancssori felület használatával](iot-accelerators-remote-monitoring-deploy-cli.md).
 
-1. Ha engedélyezni szeretné az SSH-hozzáférést ahhoz a virtuális géphez, amely a megoldásban lévő szolgáltatásokat üzemelteti, használja a Azure Portal vagy a Azure Cloud Shell. Például:
+1. Ha engedélyezni szeretné az SSH-hozzáférést ahhoz a virtuális géphez, amely a megoldásban lévő szolgáltatásokat üzemelteti, használja a Azure Portal vagy a Azure Cloud Shell. Példa:
 
     ```azurecli-interactive
     az network nsg rule update --name SSH --nsg-name {your solution name}-nsg --resource-group {your solution name} --access Allow
@@ -40,7 +40,7 @@ Az alábbi lépések ismertetik a helyi környezet beállításának folyamatát
 
     Csak a tesztelés és a fejlesztés során engedélyezze az SSH-hozzáférést. Ha engedélyezi az SSH- [t, akkor azonnal le kell tiltania, amint befejezte a használatát](../security/fundamentals/network-best-practices.md#disable-rdpssh-access-to-virtual-machines).
 
-1. A virtuális gép nevének és nyilvános IP-címének megkereséséhez használja a Azure Portal vagy a Azure Cloud Shell. Például:
+1. A virtuális gép nevének és nyilvános IP-címének megkereséséhez használja a Azure Portal vagy a Azure Cloud Shell. Példa:
 
     ```azurecli-interactive
     az resource list --resource-group {your solution name} -o table

@@ -7,10 +7,10 @@ ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: fd14af6c95654708f339f4a68cd333d0e3162553
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89078180"
 ---
 # <a name="scale-windows-virtual-desktop-classic-session-hosts-using-azure-automation"></a>Windows rendszerű virtuális asztali (klasszikus) munkamenet-gazdagépek méretezése Azure Automation használatával
@@ -28,9 +28,9 @@ A skálázási eszköz alacsony költségű automatizálási lehetőséget bizto
 
 A skálázási eszköz használatával a következőket végezheti el:
 
-- A virtuális gépeket a csúcson és a maximum munkaidőn alapuló kezdési és leállítási időszakokra ütemezhet.
+- A virtuális gépeket a maximális és a Off-Peak munkaidő alapján kell elindítani és leállítani.
 - Virtuális gépek vertikális felskálázása a munkamenetek száma alapján a CPU Core-ban.
-- Méretezés a virtuális gépeken a munkaidőn kívüli időszakban, így a munkamenet-gazdagépek minimális száma nem fut le.
+- Off-Peak óra alatt méretezheti a virtuális gépeket, így a munkamenet-gazdagépek minimális száma fut.
 
 A skálázási eszköz egy Azure Automation-fiók, egy PowerShell-runbook, egy webhook és az Azure Logic app függvényének kombinációját használja. Az eszköz futtatásakor az Azure Logic app meghívja a webhookot a Azure Automation runbook elindításához. A runbook Ezután létrehoz egy feladatot.
 

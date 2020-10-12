@@ -12,13 +12,13 @@ manager: celestedg
 ms.reviewer: mal
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fc3ef7d168c17ec10fe64925adbda7044a2a4c82
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87909311"
 ---
-# <a name="leave-an-organization-as-a-guest-user"></a>A szervezet kihagyása vendég felhasználóként
+# <a name="leave-an-organization-as-a-guest-user"></a>Szervezet elhagyása vendégfelhasználóként
 
 Egy Azure Active Directory (Azure AD) B2B vendég felhasználó dönthet úgy, hogy bármikor elhagyja a szervezetet, ha már nincs szükségük az adott szervezettől származó alkalmazások használatára vagy a társítás fenntartására. Egy felhasználó saját maga is hagyhatja a szervezetét anélkül, hogy kapcsolatba kellene lépnie a rendszergazdával.
 
