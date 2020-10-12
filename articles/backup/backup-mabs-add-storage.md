@@ -4,10 +4,10 @@ description: Ismerkedjen meg a Azure Backup Server új szolgáltatásaival. Ez a
 ms.topic: conceptual
 ms.date: 11/13/2018
 ms.openlocfilehash: b077296e58e1193e454a686a392d802e905500a5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91292897"
 ---
 # <a name="add-storage-to-azure-backup-server"></a>Tárterület hozzáadása az Azure Backup Serverhez
@@ -87,9 +87,9 @@ Szintaxis:
 Update-DPMDiskStorage [-Volume] <Volume> [[-FriendlyName] <String> ] [[-DatasourceType] <VolumeTag[]> ] [-Confirm] [-WhatIf] [ <CommonParameters>]
 ```
 
-A következő képernyőképen az Update-DPMDiskStorage parancsmag látható a PowerShell-ablakban.
+Az alábbi képernyőfelvételen a PowerShell-ablak Update-DPMDiskStorage parancsmagja látható.
 
-![Az Update-DPMDiskStorage parancs a PowerShell-ablakban](./media/backup-mabs-add-storage/mabs-add-storage-8.png)
+![A Update-DPMDiskStorage parancs a PowerShell-ablakban](./media/backup-mabs-add-storage/mabs-add-storage-8.png)
 
 A PowerShell használatával végrehajtott módosítások megjelennek a biztonsági mentési kiszolgáló felügyeleti konzolban.
 
@@ -105,7 +105,7 @@ A védelmi csoportokat nem kötelező átállítani a Modern Backup Storage hasz
 
    ![Tag védelmének leállítása](/system-center/dpm/media/upgrade-to-dpm-2016/dpm-2016-stop-protection1.png)
 
-2. A **csoportból való eltávolítás** párbeszédpanelen tekintse át a felhasznált lemezterületet és a tárterület rendelkezésre álló szabad területét. Az alapértelmezés ilyenkor a helyreállítási pontok meghagyása a lemezen, hagyva, hogy lejárjanak a megőrzési szabályzatuk szerint. Válassza az **OK** lehetőséget.
+2. A **csoportból való eltávolítás** párbeszédpanelen tekintse át a felhasznált lemezterületet és a tárterület rendelkezésre álló szabad területét. Az alapértelmezés ilyenkor a helyreállítási pontok meghagyása a lemezen, hagyva, hogy lejárjanak a megőrzési szabályzatuk szerint. Kattintson az **OK** gombra.
 
    Ha azonnal vissza kívánja adni a felhasznált lemezterületet az ingyenes tárterületre, jelölje be a **replika törlése a lemezen** jelölőnégyzetet az ehhez a taghoz tartozó biztonsági mentési információk (és helyreállítási pontok) törléséhez.
 

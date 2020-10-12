@@ -10,10 +10,10 @@ ms.date: 10/23/2019
 ms.reviewer: jushiman
 ms.custom: mimckitt
 ms.openlocfilehash: eb7d4d8a6f1c1ee55601cdd839e330147e60bcc7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87011073"
 ---
 # <a name="orchestration-modes-preview"></a>Előkészítési módok (előzetes verzió)
@@ -42,7 +42,7 @@ A virtuálisgép-méretezési csoportok két különböző előkészítési mód
 
 ## <a name="orchestration-modes"></a>Vezénylési módok
 
-| Funkció                     | "orchestrationMode": "VM" (VirtualMachine) | "orchestrationMode": "ScaleSetVM" (VirtualMachineScaleSetVM) |
+| Szolgáltatás                     | "orchestrationMode": "VM" (VirtualMachine) | "orchestrationMode": "ScaleSetVM" (VirtualMachineScaleSetVM) |
 |-----------------------------|--------------------------------------------|--------------------------------------------------------------|
 | Virtuális gép konfigurációs modellje      | Nincs                                       | Kötelező |
 | Új virtuális gép felvétele a méretezési csoportba  | A virtuális gép létrehozásakor a rendszer explicit módon hozzáadja a virtuális gépeket a méretezési csoporthoz. | A virtuális gépek implicit módon jönnek létre és a méretezési csoportba kerülnek a virtuálisgép-konfigurációs modell, a példányszám és az automatikus skálázási szabályok alapján. | |

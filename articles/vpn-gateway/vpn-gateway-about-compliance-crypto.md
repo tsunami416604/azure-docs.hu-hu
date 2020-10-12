@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.author: yushwang
 ms.openlocfilehash: 499d184d373b896ba7bffcf990693ef5e6ac466b
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88032424"
 ---
 # <a name="about-cryptographic-requirements-and-azure-vpn-gateways"></a>A titkosítási követelmények és az Azure VPN-átjárók
@@ -36,7 +36,7 @@ Az Azure VPN Gateway alapértelmezett házirendjének beállítása: [Tudnivaló
 
 Az egyes titkosítási algoritmusokat vagy paramétereket igénylő kommunikációhoz – jellemzően a megfelelőségi vagy biztonsági követelmények miatt – mostantól konfigurálhatja az Azure-beli VPN-átjárókat, hogy egyéni IPsec/IKE-házirendet használjanak az adott titkosítási algoritmusokkal és kulcsokkal, nem pedig az Azure alapértelmezett házirendjének készleteit.
 
-Például: az Azure VPN-átjárók IKEv2 alapmódú házirendjei csak a Diffie-Hellman csoport 2 (1024 bit) használatát használják, míg előfordulhat, hogy az IKE-ben használni kívánt erősebb csoportokat kell megadnia, például a 14 (2048 bites), a Group 24 (2048 bites MODP) vagy az ECP (elliptikus görbe csoportok) 256 vagy 384 bit (a 19. és a. csoport). A hasonló követelmények az IPsec-alapú gyorsmódú házirendekre is érvényesek.
+Az Azure VPN-átjárók IKEv2 alapmódú házirendjei például csak Diffie-Hellman 2. csoportot (1024 bit) használnak, míg előfordulhat, hogy az IKE-ben használni kívánt erősebb csoportokat kell megadnia, például a 14 (2048 bites), a Group 24 (2048-bit MODP csoport) vagy az ECP (elliptikus görbe csoportok) 256 vagy 384 bit (a 19. és a. csoport). A hasonló követelmények az IPsec-alapú gyorsmódú házirendekre is érvényesek.
 
 ## <a name="custom-ipsecike-policy-with-azure-vpn-gateways"></a>Egyéni IPsec/IKE-házirend Azure VPN Gateway átjárókkal
 
@@ -57,7 +57,7 @@ Létrehozhat egy IPsec/IKE-szabályzatot, és alkalmazhatja azt egy új vagy meg
 
 [!INCLUDE [vpn-gateway-ipsecikepolicy-faq-include](../../includes/vpn-gateway-faq-ipsecikepolicy-include.md)]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A kapcsolatok Egyéni IPsec/IKE-szabályzatának konfigurálásával kapcsolatos részletes útmutatásért lásd: [IPSec/IKE-házirend konfigurálása](vpn-gateway-ipsecikepolicy-rm-powershell.md) .
 

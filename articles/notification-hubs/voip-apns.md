@@ -7,10 +7,10 @@ ms.date: 3/23/2020
 ms.topic: how-to
 ms.service: notification-hubs
 ms.openlocfilehash: c99af881b8f93b75633741c2352dc5df17dd2963
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80146887"
 ---
 # <a name="use-apns-voip-through-notification-hubs-not-officially-supported"></a>A APNS VOIP használata Notification Hubson keresztül (hivatalosan nem támogatott)
@@ -21,7 +21,7 @@ A APNS VOIP-értesítéseket az Azure Notification Hubs használatával lehet ha
 
 Ha továbbra is APNS VOIP-értesítéseket küld Notification Hubson keresztül, vegye figyelembe a következő korlátozásokat:
 
-- A VOIP-értesítések küldése megköveteli `apns-topic` , hogy a fejléc az ALKALMAZÁSCSOMAG azonosítójának és az `.voip` utótagnak legyen beállítva. Például a Bundle ID-vel rendelkező minta alkalmazás esetében `com.microsoft.nhubsample` a fejlécet a következőre `apns-topic` kell beállítani:`com.microsoft.nhubsample.voip.`
+- A VOIP-értesítések küldése megköveteli `apns-topic` , hogy a fejléc az ALKALMAZÁSCSOMAG azonosítójának és az `.voip` utótagnak legyen beállítva. Például a Bundle ID-vel rendelkező minta alkalmazás esetében `com.microsoft.nhubsample` a fejlécet a következőre `apns-topic` kell beállítani: `com.microsoft.nhubsample.voip.`
 
    Ez a módszer nem működik megfelelően az Azure Notification Hubsban, mert az alkalmazás köteg-AZONOSÍTÓját a hub APNS hitelesítő adatainak részeként kell konfigurálni, és az érték nem módosítható. Emellett a Notification Hubs nem teszi lehetővé a fejléc értékének `apns-topic` felülbírálását futásidőben.
 

@@ -15,10 +15,10 @@ ms.author: markvi
 ms.reviewer: dhanyahk
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b705cf6ac6fd25c7794db7651db5bc5c5c0e790c
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89230619"
 ---
 # <a name="find-activity-reports-in-the-azure-portal"></a>Tevékenységjelentések keresése az Azure Portalon
@@ -33,7 +33,7 @@ A naplók jelentés több jelentést is egyesít az alkalmazások tevékenysége
 2. Válassza ki a címtárat a jobb felső sarokban, majd válassza ki a **Azure Active Directory** panelt a bal oldali navigációs ablaktáblán.
 3. Válassza a **naplók** lehetőséget a Azure Active Directory panel **tevékenység** szakaszában. 
 
-    ![Naplók](./media/howto-find-activity-reports/482.png "Naplók")
+    ![Auditnaplók](./media/howto-find-activity-reports/482.png "Naplók")
 
 A naplózott jelentés a következő jelentéseket összesíti:
 
@@ -52,7 +52,7 @@ A naplózási jelentésben a speciális szűrés használatával férhet hozzá 
 
 A kategóriák a következők:
 
-- Összes
+- Mind
 - AdministrativeUnit
 - ApplicationManagement
 - Hitelesítés
@@ -73,7 +73,7 @@ A **szolgáltatás** legördülő szűrővel is szűrheti egy adott szolgáltat�
 
 A szolgáltatások a következők:
 
-- Összes
+- Mind
 - Hozzáférési felülvizsgálatok
 - Fiók kiépítése 
 - Alkalmazás egyszeri bejelentkezés
@@ -106,7 +106,7 @@ A bejelentkezések jelentésének elérése:
 
 A bejelentkezési jelentés használatával megtekintheti az alkalmazás használatának részleteit a Felhasználónév vagy az alkalmazás nevének szűrésével.
 
-![Bejelentkezési események szűrése lap](./media/howto-find-activity-reports/07.png "Bejelentkezési események szűrése lap")
+![Sign-In események lap szűrése](./media/howto-find-activity-reports/07.png "Sign-In események lap szűrése")
 
 ## <a name="security-reports"></a>Biztonsági jelentések
 

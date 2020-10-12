@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 01/09/2018
 ms.author: alkohli
 ms.openlocfilehash: 113b72ddf7e5d508c8a0b577d4004d4fbd83e8e5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84699107"
 ---
 # <a name="unpack-rack-mount-and-cable-your-storsimple-8100-device"></a>A StorSimple 8100-eszköz kicsomagolása, rack-csatlakoztatása és kábele
@@ -42,7 +42,7 @@ Ezután végezze el az alábbi lépéseket az eszköz kicsomagolásához.
    
     **A tárolóeszköz kicsomagolt nézete**
    
-   | Címke | Description |
+   | Címke | Leírás |
    | --- | --- |
    |   1 |Csomagolási mező |
    |   2 |Alsó hab |
@@ -104,7 +104,7 @@ A 19 hüvelykes rack kabinet használva a csatlakoztatási sínek készlete is e
 
     **Belső vasúti diaképek csatlakoztatása a ház oldalaihoz**
    
-    Címke | Description
+    Címke | Leírás
     ----- | -----------
     1     | M 3x4 gomb – Head csavarok
     2     | Alváz-diák
@@ -118,7 +118,7 @@ A 19 hüvelykes rack kabinet használva a csatlakoztatási sínek készlete is e
    
     **Külső sín szerelvények csatlakoztatása a rackhez**
    
-   | Címke | Description |
+   | Címke | Leírás |
    | --- | --- |
    |   1 |Befogó csavar |
    |   2 |Szögletes furatos elülső állvány utáni csavar |
@@ -144,7 +144,7 @@ Az imént telepített rack Rails használatával hajtsa végre az alábbi lépé
    
     **A karima-sapkák telepítése**
    
-   | Címke | Description |
+   | Címke | Leírás |
    | --- | --- |
    |   1 |Rögzítési csavar |
 
@@ -178,13 +178,13 @@ Az eszköz aktív-készenléti konfiguráció: bármikor, az egyik vezérlő mod
 A redundáns vezérlő feladatátvételének támogatásához csatlakoztassa az eszközt a következő lépésekben leírtaknak megfelelően.
 
 #### <a name="to-cable-for-network-connection"></a>Hálózati kapcsolatok kábele
-1. Az eszköz hat hálózati csatolóval rendelkezik az egyes vezérlőkön: négy 1 GB/s és 2 10 GB/s Ethernet-port. Azonosítsa a különböző adatportokat az eszköz hátlapján.
+1. Az eszköz hat hálózati csatolóval rendelkezik a következő vezérlőkön: 4 1 GB/s, 2 10 Gbps Ethernet port. Azonosítsa a különböző adatportokat az eszköz hátlapján.
    
     ![8100-eszköz hátlapja](./media/storsimple-8100-hardware-installation/HCSBackplaneof2UDevicewithPortsLabeled.jpg)
    
     **Az eszköz hátoldala, amely az adatportokat mutatja**
    
-   | Címke | Description |
+   | Címke | Leírás |
    | --- | --- |
    |   0, 1, 4, 5 |1 GbE hálózati adapterek |
    |   2, 3 |10 GbE hálózati adapter |
@@ -195,15 +195,15 @@ A redundáns vezérlő feladatátvételének támogatásához csatlakoztassa az 
 
     **Az eszköz hálózati kábelezései**
 
-   |Címke | Description |
+   |Címke | Leírás |
    |----- | ----------- |
    | A    | Helyi Internet-hozzáféréssel rendelkező LAN |
    | B    | Vezérlő 0 |
-   | C#    | PCM 0 |
-   | D    | Vezérlő 1 |
+   | C    | PCM 0 |
+   | T    | Vezérlő 1 |
    | E    | PCM 1 |
    | F, G | Hosts |
-   | 0-5  | Hálózati illesztők |
+   | 0-5  | Hálózati adapterek |
 
 
 

@@ -4,10 +4,10 @@ description: Ebben az oktatóanyagban egy egyéni szabályzat-definíciót Azure
 ms.date: 06/16/2020
 ms.topic: tutorial
 ms.openlocfilehash: 72282cbc5ed1877cf3f61b792235e8dc2f72fffe
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89649836"
 ---
 # <a name="tutorial-create-a-custom-policy-definition"></a>Oktatóanyag: egyéni szabályzat-definíció létrehozása
@@ -476,7 +476,7 @@ Ebben az oktatóanyagban sikeresen elvégezte a következőket:
 > - A használandó effektus meghatározása
 > - A szabályzat definíciójának tagjai
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ezután az egyéni házirend-definíció használatával hozzon létre és rendeljen hozzá egy házirendet:
 

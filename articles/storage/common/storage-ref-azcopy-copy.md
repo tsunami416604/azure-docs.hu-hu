@@ -9,10 +9,10 @@ ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
 ms.openlocfilehash: 736746cc710e4e22f61edaa7b2dfd1ceef3d90eb
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89645481"
 ---
 # <a name="azcopy-copy"></a>azcopy copy
@@ -214,7 +214,7 @@ Másolja a gyűjtők egy részhalmazát egy helyettesítő karakter (*) szimból
 - azcopy cp "https://s3.amazonaws.com/[bucket*name]/" "https://[destaccount].blob.core.windows.net?[SAS]" --recursive
 ```
 
-## <a name="options"></a>Beállítások
+## <a name="options"></a>Lehetőségek
 
 **– biztonsági mentés** Aktiválja a Windows SeBackupPrivilege a feltöltésekhez vagy SeRestorePrivilege a letöltésekhez, hogy lehetővé tegye a AzCopy számára az összes fájl megtekintését és olvasását, a fájlrendszer engedélyeitől függetlenül, valamint az összes engedély visszaállítását. Megköveteli, hogy a AzCopy-t futtató fiók már rendelkezik ezekkel az engedélyekkel (például rendszergazdai jogokkal rendelkezik, vagy a `Backup Operators` csoport tagja). Ez a jelző aktiválja azokat a jogosultságokat, amelyekkel a fiók már rendelkezik.
 

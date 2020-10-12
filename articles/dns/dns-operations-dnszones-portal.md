@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 05/18/2017
 ms.author: rohink
 ms.openlocfilehash: 9b6cac64d2e3def673f6d7c27e80bd64eead9e97
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84689163"
 ---
 # <a name="how-to-manage-dns-zones-in-the-azure-portal"></a>DNS-zónák kezelése a Azure Portal
@@ -40,7 +40,7 @@ Ez a cikk bemutatja, hogyan kezelheti a DNS-zónákat a Azure Portal használat�
 
    | **Beállítás** | **Érték** | **Részletek** |
    |---|---|---|
-   |**Name (Név)**|contoso.com|A DNS-zóna neve|
+   |**Név**|contoso.com|A DNS-zóna neve|
    |**Előfizetés**|[Az Ön előfizetése]|Válassza ki azt az előfizetést, amelyben létre fogja hozni a DNS-zónát.|
    |**Erőforráscsoport**|**Új létrehozása:** contosoDNSRG|Hozzon létre egy erőforráscsoportot. Az erőforráscsoport nevének egyedinek kell lennie a kiválasztott előfizetésen belül. Az erőforráscsoportokkal kapcsolatos további információkért olvassa el [A Resource Manager](../azure-resource-manager/management/overview.md?toc=%2fazure%2fdns%2ftoc.json#resource-groups) áttekintése című cikket.|
    |**Hely**|USA nyugati régiója||

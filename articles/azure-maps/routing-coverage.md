@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.openlocfilehash: 160e8182a2de56b494e8f37bbedf4a8cec66c608
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88030894"
 ---
 # <a name="azure-maps-routing-coverage"></a>Útválasztási lefedettség Azure Maps
@@ -162,7 +162,7 @@ A következő táblázat a Azure Maps útválasztásának lefedettségi informá
 | Belarusz                        |        ✓       |                      |             |
 | Belgium                        |        ✓       |         ✓            |     ✓      | 
 | Bolívia                        |        ✓       |                      |             |
-| Bosznia-Hercegovina             |        ✓       |                      |             |
+| Bosnia-Herzegovina             |        ✓       |                      |             |
 | Bulgária                       |        ✓       |         ✓            |     ✓      | 
 | Horvátország                        |        ✓       |         ✓            |     ✓      |
 | Ciprus                         |        ✓       |                      |             |
@@ -243,6 +243,6 @@ A következő táblázat a Azure Maps útválasztásának lefedettségi informá
 | Jemen                          |        ✓       |                      |             |
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Azure Maps útválasztással kapcsolatos további információkért tekintse meg az [útválasztási](https://docs.microsoft.com/rest/api/maps/route) hivatkozási lapokat.

@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 10/30/2018
 ms.author: aagup
 ms.openlocfilehash: f98bf4f4518abd5f1b1a826e355c851acc055852
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86246690"
 ---
 # <a name="restoring-backup-in-azure-service-fabric"></a>Biztonsági mentés visszaállítása az Azure-ban Service Fabric
@@ -207,7 +207,7 @@ _Adatvesztés_ vagy _adatsérülés_esetén a megbízható állapot-nyilvántart
 
 A következő példa a [megbízható állapot-nyilvántartó szolgáltatás és a Reliable Actors rendszeres biztonsági mentésének engedélyezése](service-fabric-backuprestoreservice-quickstart-azurecluster.md#enabling-periodic-backup-for-reliable-stateful-service-and-reliable-actors). Ebben a példában egy biztonsági mentési szabályzat van engedélyezve a partícióhoz, és a szolgáltatás biztonsági mentést készít a kívánt gyakorisággal az Azure Storage-ban.
 
-Válasszon ki egy biztonsági másolatot a [GetBackupAPI](service-fabric-backuprestoreservice-quickstart-azurecluster.md#list-backups)kimenetéről. Ebben a forgatókönyvben a biztonsági mentés ugyanabból a fürtből jön létre, mint korábban.
+Válasszon ki egy biztonsági másolatot a  [GetBackupAPI](service-fabric-backuprestoreservice-quickstart-azurecluster.md#list-backups)kimenetéről. Ebben a forgatókönyvben a biztonsági mentés ugyanabból a fürtből jön létre, mint korábban.
 
 A visszaállítás elindításához válasszon ki egy biztonsági másolatot a listából. Az _adatvesztés_aktuális / _adatsérülése_esetén válassza a következő biztonsági mentést:
 
@@ -317,13 +317,13 @@ A visszaállítási kérelem a következő sorrendben halad:
 
 ## <a name="automatic-restore"></a>Automatikus visszaállítás
 
-A Service Fabric-fürtben megbízható állapot-nyilvántartó szolgáltatás és Reliable Actors partíciók állíthatók be az _automatikus visszaállításhoz_. A biztonsági mentési szabályzat értéke `AutoRestore` _true (igaz_). Az _automatikus visszaállítás_ engedélyezése automatikusan visszaállítja az adatok biztonsági mentését a legutóbbi partícióról az adatvesztés jelentésekor. További információ:
+A Service Fabric-fürtben megbízható állapot-nyilvántartó szolgáltatás és Reliable Actors partíciók állíthatók be az _automatikus visszaállításhoz_. A biztonsági mentési szabályzat értéke `AutoRestore` _true (igaz_). Az _automatikus visszaállítás_ engedélyezése automatikusan visszaállítja az adatok biztonsági mentését a legutóbbi partícióról az adatvesztés jelentésekor. További információkért lásd:
 
 - [Automatikus visszaállítás engedélyezése a biztonsági mentési házirendben](service-fabric-backuprestoreservice-configure-periodic-backup.md#auto-restore-on-data-loss)
 - [RestorePartition API-referenciák](/rest/api/servicefabric/sfclient-api-restorepartition)
 - [GetPartitionRestoreProgress API-referenciák](/rest/api/servicefabric/sfclient-api-getpartitionrestoreprogress)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - [Rendszeres biztonsági mentési konfiguráció ismertetése](./service-fabric-backuprestoreservice-configure-periodic-backup.md)
 - [Biztonsági mentés visszaállítása REST API referenciája](/rest/api/servicefabric/sfclient-index-backuprestore)
 

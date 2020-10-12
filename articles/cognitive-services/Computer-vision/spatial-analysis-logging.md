@@ -11,15 +11,15 @@ ms.topic: conceptual
 ms.date: 09/11/2020
 ms.author: aahi
 ms.openlocfilehash: f85a7e2acf911772ecc6562217918352e909fcbb
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91254074"
 ---
 # <a name="telemetry-and-troubleshooting"></a>Telemetria és hibaelhárítás
 
-A térbeli elemzés számos funkciót tartalmaz a rendszer állapotának figyelésére, valamint a problémák diagnosztizálására.
+A térbeli elemzés olyan funkciókat tartalmaz, amelyekkel monitorozható a rendszer állapota, és amelyek segítenek a hibák diagnosztizálásában.
 
 ## <a name="enable-visualizations"></a>Vizualizációk engedélyezése
 
@@ -229,7 +229,7 @@ A naplók feltöltése igény szerint történik a `getRTCVLogs` IoT Edge metód
 >[!NOTE]
 > Ha a `getRTCVLogs` metódust üres adattartalommal hívja meg, az eszközön telepített összes tároló listáját fogja visszaadni. A metódus neve megkülönbözteti a kis-és nagybetűket. Ha a metódus neve nem megfelelő, akkor 501-as hibaüzenetet kap.
 
-:::image type="content" source="./media/spatial-analysis/direct-log-collection.png" alt-text="A getRTCVLogs metódus meghívása ":::
+:::image type="content" source="./media/spatial-analysis/direct-log-collection.png" alt-text="Azure Monitor telemetria jelentés":::
 ![getRTCVLogs Direct metódus lapja](./media/spatial-analysis/direct-log-collection.png)
 
  

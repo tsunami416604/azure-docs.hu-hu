@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 56f266eaba76bb990a4d2bc3d902f4c5911d9c47
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86026185"
 ---
 # <a name="data-science-using-scala-and-spark-on-azure"></a>Adatelemzés a Scala és a Spark használatával az Azure rendszerben
@@ -77,18 +77,18 @@ val beginningTime = Calendar.getInstance().getTime()
 
 A Jupyter-jegyzetfüzetekhez biztosított Spark-kernelek előre beállított környezettel rendelkeznek. Nem kell explicit módon beállítania a Spark vagy a kaptár környezetét, mielőtt elkezdi a munkát a fejleszteni kívánt alkalmazással. Az előre beállított környezetek a következők:
 
-* `sc`SparkContext
-* `sqlContext`HiveContext
+* `sc` SparkContext
+* `sqlContext` HiveContext
 
 ### <a name="spark-magics"></a>Spark-varázslatok
 A Spark kernel néhány előre definiált "varázslatot" tartalmaz, amelyek olyan speciális parancsok, amelyekkel meghívható `%%` . A következő kódrészletek közül kettőt használunk.
 
-* `%%local`Megadja, hogy a következő sorokban a kód helyileg fog futni. A kódnak érvényes Scala-kódnak kell lennie.
-* `%%sql -o <variable name>`Struktúra-lekérdezést hajt végre a szolgáltatáson `sqlContext` . Ha a `-o` paramétert átadja, a rendszer a lekérdezés eredményét `%%local` Spark-adatkeretként őrzi meg a Scala környezetben.
+* `%%local` Megadja, hogy a következő sorokban a kód helyileg fog futni. A kódnak érvényes Scala-kódnak kell lennie.
+* `%%sql -o <variable name>` Struktúra-lekérdezést hajt végre a szolgáltatáson `sqlContext` . Ha a `-o` paramétert átadja, a rendszer a lekérdezés eredményét `%%local` Spark-adatkeretként őrzi meg a Scala környezetben.
 
 A Jupyter-jegyzetfüzetek és az előre definiált "Magics" kernelekkel kapcsolatos további információkért `%%` (például `%%local` :) tekintse [meg a Jupyter notebookok számára elérhető kerneleket a HDInsight Spark Linux-fürtökkel a HDInsight-on](../../hdinsight/spark/apache-spark-jupyter-notebook-kernels.md).
 
-### <a name="import-libraries"></a>Tárak importálása
+### <a name="import-libraries"></a>Kódtárak importálása
 Importálja a Spark, a MLlib és más könyvtárakat, amelyekre szüksége lesz a következő kód használatával.
 
 ```scala
@@ -258,8 +258,8 @@ sqlResultsDF.show(3)
 | fare_amount | passenger_count | tip_amount | végű |
 | --- | --- | --- | --- |
 |        13,5 |1.0 |2.9 |1.0 |
-|        16,0 |2.0 |3.4 |1.0 |
-|        10,5 |2.0 |1.0 |1.0 |
+|        16,0 |2,0 |3.4 |1.0 |
+|        10,5 |2,0 |1.0 |1.0 |
 
 ## <a name="data-exploration-and-visualization"></a>Adatfelderítés és-vizualizáció
 Miután a Sparkba helyezte az információt, az adatelemzési folyamat következő lépése az adatelemzési és vizualizációs eredmények mélyebb megismerése. Ebben a szakaszban az SQL-lekérdezések használatával vizsgálja meg a taxi-adatforrásokat. Ezt követően importálja az eredményeket egy adatkeretbe, hogy az automatikus vizualizáció Jupyter funkció használatával kirajzolja a célzott változókat és a vizuális ellenőrzéshez szükséges jövőbeli funkciókat.

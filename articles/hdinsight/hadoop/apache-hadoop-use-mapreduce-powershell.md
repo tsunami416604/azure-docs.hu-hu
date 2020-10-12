@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 01/08/2020
 ms.openlocfilehash: ff0c7001184af58432a7915b3a7df29f900bedec
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87006602"
 ---
 # <a name="run-mapreduce-jobs-with-apache-hadoop-on-hdinsight-using-powershell"></a>MapReduce-feladatok futtatása a HDInsight Apache Hadoop a PowerShell használatával
@@ -35,10 +35,10 @@ A következő parancsmagok használhatók a MapReduce-feladatok távoli HDInsigh
 
 |Parancsmag | Leírás |
 |---|---|
-|Kapcsolat – AzAccount|Azure PowerShell hitelesíti az Azure-előfizetését.|
-|Új – AzHDInsightMapReduceJobDefinition|Új *feladatdefiníció* létrehozása a megadott MapReduce-adatok használatával.|
-|Start – AzHDInsightJob|A HDInsight elküldi a feladatot, és elindítja a feladatot. A rendszer egy *feladatütemezés* visszaadását adja vissza.|
-|Várakozás – AzHDInsightJob|A feladattípust használja a feladatok állapotának vizsgálatához. Megvárja, amíg a feladatok befejeződik, vagy túllépi a várakozási időt.|
+|Connect-AzAccount|Azure PowerShell hitelesíti az Azure-előfizetését.|
+|New-AzHDInsightMapReduceJobDefinition|Új *feladatdefiníció* létrehozása a megadott MapReduce-adatok használatával.|
+|Start-AzHDInsightJob|A HDInsight elküldi a feladatot, és elindítja a feladatot. A rendszer egy *feladatütemezés* visszaadását adja vissza.|
+|Wait-AzHDInsightJob|A feladattípust használja a feladatok állapotának vizsgálatához. Megvárja, amíg a feladatok befejeződik, vagy túllépi a várakozási időt.|
 |Get-AzHDInsightJobOutput|A feladatok kimenetének beolvasására szolgál.|
 
 A következő lépések bemutatják, hogyan használhatja ezeket a parancsmagokat feladatok futtatására a HDInsight-fürtben.

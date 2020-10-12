@@ -7,10 +7,10 @@ ms.assetid: b1584d16-e0d2-4019-ad1f-f04be8c5b430
 ms.topic: conceptual
 ms.date: 03/21/2017
 ms.openlocfilehash: d8f0a5697a128deb75537f3d48a3830dc7ba9df9
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87132534"
 ---
 # <a name="get-started-with-azure-data-lake-analytics-using-the-azure-portal"></a>Az Azure Data Lake Analytics használatának első lépései az Azure Portalon
@@ -61,7 +61,7 @@ OUTPUT @a
 2. Illessze be a fenti U-SQL-szkript szövegét. Nevezze el a feladatot. 
 3. A feladat indításához kattintson az **Elküldés** gombra.   
 4. Figyelje a feladat **Állapot** értékét, és várjon, amíg a feladat állapota **Sikeres** nem lesz.
-5. Válassza az **adatlapot,** majd válassza a **kimenetek** lapot. Válassza ki a nevű kimeneti fájlt, `data.csv` és tekintse meg a kimeneti adatokat.
+5. Válassza az **adatlapot, majd a** **kimenetek** lapot. Válassza ki a nevű kimeneti fájlt `data.csv` , és tekintse meg a kimeneti adatokat.
 
 ## <a name="see-also"></a>Lásd még
 

@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 06/03/2020
 ms.asset: 0c4127f2-d936-48ef-b430-a9198e425d81
 ms.openlocfilehash: 87bc415c125a387d98ac88255d77fb1867564acf
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91254261"
 ---
 # <a name="release-notes-for-microsoft-azure-backup-server"></a>Microsoft Azure Backup-kiszolgáló kibocsátási megjegyzései
@@ -60,8 +60,8 @@ Ez a cikk az Microsoft Azure Backup Server (MABS) v3 ismert problémáit és meg
 4. [Telepítés](/sql/ssms/download-sql-server-management-studio-ssms) SQL Server Management Studio (SSMS).
 5. Konfigurálja a jelentéskészítést a paraméterekkel az [SSRS-konfigurációban az SQL 2017](./backup-azure-microsoft-azure-backup.md#upgrade-mabs)használatával dokumentált módon.
 6. [Telepítés](backup-azure-microsoft-azure-backup.md) MABS V3.
-7. [Visszaállítás](/sql/relational-databases/backup-restore/restore-a-database-backup-using-ssms) SQL a SSMS használatával és a DPM-Sync eszköz futtatása az [itt](/system-center/dpm/back-up-the-dpm-server#using-dpmsync)leírtak szerint.
-8. Frissítse a "DataBaseVersion" tulajdonságot a dbo. tbl_DLS_GlobalSetting táblában a következő parancs használatával:
+7. [Visszaállítás](/sql/relational-databases/backup-restore/restore-a-database-backup-using-ssms) SQL SSMS használatával és DPM-Sync eszköz futtatása az [itt](/system-center/dpm/back-up-the-dpm-server#using-dpmsync)leírtak szerint.
+8. Frissítse a "DataBaseVersion" tulajdonságot dbo.tbl_DLS_GlobalSetting táblában a következő parancs használatával:
 
     ```sql
             UPDATE dbo.tbl_DLS_GlobalSetting

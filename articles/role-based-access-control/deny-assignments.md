@@ -16,10 +16,10 @@ ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
 ms.openlocfilehash: a5f17f009caa9306631debf511f2c890f8f2a450
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82733771"
 ---
 # <a name="understand-azure-deny-assignments"></a>Az Azure deny-hozzárendelések ismertetése
@@ -85,7 +85,7 @@ Principals              : {
 Az összes rendszerbiztonsági tag egyesíthető az `ExcludePrincipals` összes rendszerbiztonsági tag letiltásával, kivéve egyes felhasználók esetén. Minden rendszerbiztonsági tag a következő korlátozásokkal rendelkezik:
 
 - Csak a alkalmazásban használható, `Principals` és nem használható a alkalmazásban `ExcludePrincipals` .
-- `Principals[i].Type`értékre kell állítani `SystemDefined` .
+- `Principals[i].Type` értékre kell állítani `SystemDefined` .
 
 ## <a name="next-steps"></a>További lépések
 

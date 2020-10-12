@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 12/17/2019
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: a41a5828a82d81c5e7e8749fee70cd15e17bb9d0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84697690"
 ---
 # <a name="optimize-the-performance-and-reliability-of-azure-functions"></a>Az Azure Functions teljesítményének és megbízhatóságának optimalizálása
@@ -44,7 +44,7 @@ Az Event hubok hasznosak a nagy mennyiségű kommunikáció támogatásához.
 
 ### <a name="write-functions-to-be-stateless"></a>Az írási függvények állapot nélküliek lesznek 
 
-A függvények állapot nélküliek és idempotens, ha lehetséges. Társítson minden szükséges állapotinformációkat az adataihoz. Például egy feldolgozandó megrendelés valószínűleg egy társított taggal fog rendelkezni `state` . Egy függvény az adott állapot alapján feldolgozhat egy rendelést, miközben maga a függvény állapota változatlan marad. 
+A függvények állapot nélküliek és idempotens, ha lehetséges. Társítson minden szükséges állapotinformációt az adataihoz. Például egy feldolgozandó megrendelés valószínűleg egy társított taggal fog rendelkezni `state` . Egy függvény az adott állapot alapján feldolgozhat egy rendelést, miközben maga a függvény állapota változatlan marad. 
 
 A idempotens functions használata különösen ajánlott időzítő eseményindítókkal. Ha például olyan dolog van, amely naponta egyszer kell futnia, írja meg, hogy a nap folyamán bármikor fusson ugyanazzal az eredménnyel. A függvény akkor léphet ki, ha egy adott nap nem működik. Ha egy korábbi Futtatás nem fejeződött be, a következő futtatásnak kell megadnia, ahol abbahagyta.
 
@@ -118,7 +118,7 @@ További gazdagép-konfigurációs beállítások találhatók a [host.json Conf
 
 ## <a name="next-steps"></a>További lépések
 
-További információkért lásd a következőket:
+További információkat találhat az alábbi forrásokban:
 
 * [Kapcsolatok kezelése a Azure Functionsban](manage-connections.md)
 * [Azure App Service ajánlott eljárások](../app-service/app-service-best-practices.md)

@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 05/06/2020
 ms.author: lagayhar
 ms.openlocfilehash: b6377cdcdb5816426eba62fdbef79eeb42659dcc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82892081"
 ---
 # <a name="how-to-use-groups-in-workbooks"></a>Csoportok használata munkafüzeteknél
@@ -24,7 +24,7 @@ A munkafüzetek csoportjai több dolog esetében hasznosak:
 
 - Layout
   - Azokban az esetekben, amikor az elemeket függőlegesen szeretné szervezni, létrehozhat olyan elemek csoportjait, amelyek mindegyike összesítve lesz, és a csoport stílusát úgy állítja be, hogy az egyes elemek százalékos szélessége ne legyen a százalékban megadva.
-- Láthatóság
+- Visibility (Látótávolság)
   - Olyan helyzetekben, ahol sok elemet szeretne elrejteni/megjeleníteni, beállíthatja az elemek teljes csoportjának láthatóságát az egyes elemek láthatósági beállításainak megadása helyett. Ez hasznos lehet a lapokat használó sablonokban, mivel a lap tartalmaként egy csoportot is használhat, a teljes csoport pedig elrejthető/megjeleníthető a kijelölt lapon beállított paraméterek alapján.
 - Teljesítmény
   - Olyan esetekben, ahol nagyon nagy méretű sablonnal vagy lapokkal rendelkezik, az egyes szakaszokat saját alsablonba alakíthatja, és csoportok használatával betöltheti a legfelső szintű sablonban lévő összes alsablont. Az alsablonok tartalma nem töltődik be vagy fut addig, amíg egy felhasználó el nem látja a csoportokat. További információ a [nagyméretű sablonok számos](#how-to-split-a-large-template-into-many-templates)sablonba való felosztásáról.
@@ -98,8 +98,8 @@ Amikor egy sablon betöltődik egy csoportba, a munkafüzet megkísérli egyesí
 
 Vegyünk egy olyan sablont, amely a tetején két paraméterrel rendelkezik.
 
-- `TimeRange`– a Time Range paraméter.
-- `Filter`– egy szöveges paraméter.
+- `TimeRange` – a Time Range paraméter.
+- `Filter` – egy szöveges paraméter.
 
 ![Paraméterek szerkesztése elem: "legfelső szintű paraméterek"](./media/workbooks-groups/groups-top-level-params.png)
 
@@ -113,12 +113,12 @@ Ha a második sablon betöltődik a csoportba, az ismétlődő paraméterek ki l
 
 Vegyünk egy olyan csoport sablonját, amely a tetején két paraméterrel rendelkezik.
 
-- `TimeRange`– a Time Range paraméter.
-- `FilterB`-egy szöveges paraméter, vegye figyelembe, hogy nem `Filter` a legfelső sablonhoz hasonló.
+- `TimeRange` – a Time Range paraméter.
+- `FilterB` -egy szöveges paraméter, vegye figyelembe, hogy nem `Filter` a legfelső sablonhoz hasonló.
 
 ![A Group elemek szerkesztése a paraméterek eredményével egyesítve](./media/workbooks-groups/groups-wont-merge-away.png)
 
-Ha a csoport item's-sablonja be van töltve, a `TimeRange` paraméter ki lesz egyesítve a csoportból. Ezután a munkafüzetben a kezdeti paraméterek és a (z) `TimeRange` `Filter` , valamint a csoport paraméterének lépései csak a következők lesznek:`FilterB`
+Ha a csoport item's-sablonja be van töltve, a `TimeRange` paraméter ki lesz egyesítve a csoportból. Ezután a munkafüzetben a kezdeti paraméterek és a (z) `TimeRange` `Filter` , valamint a csoport paraméterének lépései csak a következők lesznek: `FilterB`
 
 ![a nem egyesítésre kerülő paraméterek eredménye](./media/workbooks-groups/groups-wont-merge-away-result.png)
 

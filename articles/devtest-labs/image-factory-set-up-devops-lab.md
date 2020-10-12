@@ -4,10 +4,10 @@ description: Ez a cikk a rendszerkép-előállító Azure DevOps (korábban Visu
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: fa7050bae1ff8681e04b6ab38220be9eaf38a64a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85476138"
 ---
 # <a name="run-an-image-factory-from-azure-devops"></a>Rendszerkép-előállító futtatása az Azure DevOpsból
@@ -26,7 +26,7 @@ A csapat rendszerkép-előállítójának bevezetésének következő lépése a
     - Configuration. A rendszerkép-előállító bemenetei
         - GoldenImages. Ez a mappa olyan JSON-fájlokat tartalmaz, amelyek az egyéni lemezképek definícióit jelölik.
         - Labs.jsbekapcsolva. Az a fájl, ahol a csapatok a megadott egyéni rendszerképek fogadására regisztrálhatnak.
-- Parancsfájlok. A rendszerkép-előállító motorja.
+- Szkriptek. A rendszerkép-előállító motorja.
 
 Az ebben a szakaszban található cikkek további információt nyújtanak ezekről a parancsfájlokról és sablonokról.
 
@@ -43,7 +43,7 @@ A rendszerkép-előállítóhoz tartozó összes PowerShell, sablon és konfigur
 1. Látogasson el az előző lépésben létrehozott Azure DevOps-projektre (az URL-cím a következőhöz hasonló **: https: \/ / \<accountname> . VisualStudio.com/MyFirstProject**).
 2. Válassza **az adattár importálása**lehetőséget.
 3. Adja meg a DevTest Labs **-tárház klónozási URL-címét** : `https://github.com/Azure/azure-devtestlab` .
-4. Kattintson az **Importálás** gombra.
+4. Válassza az **Importálás** lehetőséget.
 
     ![Git-tárház importálása](./media/set-up-devops-lab/import-git-repo.png)
 
@@ -107,7 +107,7 @@ Ha kijelöli a felépítési feladatot, a jobb oldali ablaktáblán látható ö
 3. Válassza ki a **szolgáltatási végpontot**.
 4. A **parancsfájl elérési útja**beállításnál válassza a **... lehetőséget. (három pont)** a jobb oldalon.
 5. Navigáljon **MakeGoldenImageVMs.ps1** parancsfájlhoz.
-6. A parancsfájl paramétereinek a következőhöz hasonlóan kell kinéznie:`-ConfigurationLocation $(System.DefaultWorkingDirectory)$(ConfigurationLocation) -DevTestLabName $(DevTestLabName) -vmSize $(VMSize) -machineUserName $(MachineUserName) -machinePassword (ConvertTo-SecureString -string '$(MachinePassword)' -AsPlainText -Force) -StandardTimeoutMinutes $(StandardTimeoutMinutes)`
+6. A parancsfájl paramétereinek a következőhöz hasonlóan kell kinéznie: `-ConfigurationLocation $(System.DefaultWorkingDirectory)$(ConfigurationLocation) -DevTestLabName $(DevTestLabName) -vmSize $(VMSize) -machineUserName $(MachineUserName) -machinePassword (ConvertTo-SecureString -string '$(MachinePassword)' -AsPlainText -Force) -StandardTimeoutMinutes $(StandardTimeoutMinutes)`
 
     ![A Build definíciójának befejezése](./media/set-up-devops-lab/complete-build-definition.png)
 

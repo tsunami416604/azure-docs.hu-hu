@@ -10,10 +10,10 @@ ms.custom: hdinsightactive,hdiseo17may2017
 ms.topic: conceptual
 ms.date: 07/12/2019
 ms.openlocfilehash: 052b12817b788ff38f0fab72a5420896b062c732
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82857419"
 ---
 # <a name="failure-spark-job-debugging-with-azure-toolkit-for-intellij-preview"></a>Hiba a Spark-feladatok hibakereséséhez Azure Toolkit for IntelliJ (előzetes verzió)
@@ -44,7 +44,7 @@ Hozzon létre egy Spark 2.3.2-projektet a hibák hibakeresésének folytatásáh
 
      ![Hibakeresési projekt létrehozása a IntelliJ](./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-projectfor-failure-debug.png)
 
-   c. Válassza a **Tovább** lehetőséget.
+   c. Válassza a **Tovább** gombot.
 
 2. Az **új projekt** ablakban végezze el a következő lépéseket:
 
@@ -56,7 +56,7 @@ Hozzon létre egy Spark 2.3.2-projektet a hibák hibakeresésének folytatásáh
 
    c. A **Spark-verzió** legördülő listában válassza a **Spark 2.3.2 (Scala 2.11.8)** elemet.
 
-   d. Válassza a **Befejezés** gombot.
+   d. Válassza a **Befejezés** lehetőséget.
 
 3. Válassza a **src**  >  **Main**  >  **Scala** elemet a kód a projektben való megnyitásához. Ez a példa a **AgeMean_Div ()** parancsfájlt használja.
 
@@ -72,7 +72,7 @@ Hozzon létre egy Spark Scala/Java-alkalmazást, majd futtassa az alkalmazást e
 
    ![IntelliJ új konfiguráció hozzáadása](./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-new-configuraion-01.png)
 
-3. Váltson **távoli futtatásra a fürt** lapon. adja meg a **név**, a **Spark-fürt**és a **fő osztály nevét**. Eszközeink támogatják a **végrehajtókkal**való hibakeresést. A **numExectors**, az alapértelmezett érték 5, és jobb, ha nem nagyobb, mint 3. A futási idő csökkentése érdekében a **Spark. fonál. maxAppAttempts** felveheti a **feladatok konfigurációba** , és az értéket 1-re állíthatja. A konfiguráció mentéséhez kattintson **az OK** gombra.
+3. Váltson **távoli futtatásra a fürt** lapon. Adja meg a **név**, a **Spark-fürt**és a **fő osztály nevét**. Eszközeink támogatják a **végrehajtókkal**való hibakeresést. A **numExectors**, az alapértelmezett érték 5, és jobb, ha nem nagyobb, mint 3. A futási idő csökkentése érdekében a **Spark. fonál. maxAppAttempts** felveheti a **feladatok konfigurációba** , és az értéket 1-re állíthatja. A konfiguráció mentéséhez kattintson **az OK** gombra.
 
    ![IntelliJ új hibakeresési konfigurációk futtatása](./media/apache-spark-intellij-tool-failure-debug/hdinsight-create-new-configuraion-002.png)
 

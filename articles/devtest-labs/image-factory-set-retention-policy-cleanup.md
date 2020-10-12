@@ -4,10 +4,10 @@ description: Megtudhatja, hogyan konfigurálhat egy adatmegőrzési szabályzato
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 115fdff215399a9a51171161191ecf5009e8e20e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85476053"
 ---
 # <a name="set-up-retention-policy-in-azure-devtest-labs"></a>Adatmegőrzési szabályzat beállítása Azure DevTest Labs
@@ -47,7 +47,7 @@ Ez a feladat eltávolítja a régi rendszerképeket, és csak a **ImageRetention
 
 ![Régi rendszerképek kivonása PowerShell-feladat](./media/set-retention-policy-cleanup/retire-old-image-task.png)
 
-A parancsfájl paraméterei a következők:`-ConfigurationLocation $(System.DefaultWorkingDirectory)$(ConfigurationLocation) -SubscriptionId $(SubscriptionId) -DevTestLabName $(devTestLabName) -ImagesToSave $(ImageRetention)`
+A parancsfájl paraméterei a következők: `-ConfigurationLocation $(System.DefaultWorkingDirectory)$(ConfigurationLocation) -SubscriptionId $(SubscriptionId) -DevTestLabName $(devTestLabName) -ImagesToSave $(ImageRetention)`
 
 ## <a name="queue-the-build"></a>A Build várólistája
 Most, hogy elvégezte a Build-definíciót, egy új buildet várólistára helyez, hogy minden működik-e. Miután a Build sikeresen befejeződik, az új egyéni lemezképek megjelennek a cél laborban, és ha bejelöli a lemezkép-előállító labort, nem látja a kiépített virtuális gépeket. Továbbá ha további buildeket is várólistára helyez, a karbantartási feladatok a régi egyéni rendszerképeket a DevTest Labs szolgáltatásból kivonásával, a létrehozási változókban beállított megőrzési értékkel összhangban láthatják.

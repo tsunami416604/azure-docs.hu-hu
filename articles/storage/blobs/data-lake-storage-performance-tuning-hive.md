@@ -9,10 +9,10 @@ ms.date: 11/18/2019
 ms.author: normesta
 ms.reviewer: stewu
 ms.openlocfilehash: fb908fe94f940073753ea8e1cde3da2b2a0c4b6b
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88034770"
 ---
 # <a name="tune-performance-hive-hdinsight--azure-data-lake-storage-gen2"></a>Teljesítmény hangolása: struktúra, HDInsight & Azure Data Lake Storage Gen2
@@ -58,7 +58,7 @@ Az I/O-igényes munkaterhelések a TEZ-tároló méretének csökkentésével t�
 A futó vagy párhuzamos feladatok egyidejű számát a rendszer a FONALak teljes memóriája alapján fogja megkötni.  A FONALas tárolók száma határozza meg, hogy hány egyidejű feladat futhat.  Ha a szál memóriáját szeretné megkeresni egy csomóponton, nyissa meg a Ambari.  Navigáljon a FONALhoz, és tekintse meg a konfigurációk lapot.  Ebben az ablakban a szál memóriája jelenik meg.  
 
 - Összes fonal memóriája = csomópontok * FONÁL memória/csomópont
-- \#of fonal-tárolók = a fonal teljes memóriája/TEZ-tároló mérete
+- \# of fonal-tárolók = a fonal teljes memóriája/TEZ-tároló mérete
 
 A Data Lake Storage Gen2 használatával javíthatja a teljesítményt, hogy a lehető legnagyobb mértékben növelje a párhuzamosságot.  A TEZ automatikusan kiszámítja a létrehozandó feladatok számát, így nem kell azt beállítania.   
 
@@ -68,7 +68,7 @@ Tegyük fel, hogy 8 csomópontos D14-fürtöt tartalmaz.
 
 - Összes fonal memóriája = csomópontok * FONÁL memória/csomópont
 - Összes szál memóriája = 8 csomópont * 96GB = 768GB
-- \#FONALas tárolók esetén = 768GB/3072MB = 256
+- \# FONALas tárolók esetén = 768GB/3072MB = 256
 
 ## <a name="further-information-on-hive-tuning"></a>További információ a kaptár hangolásáról
 

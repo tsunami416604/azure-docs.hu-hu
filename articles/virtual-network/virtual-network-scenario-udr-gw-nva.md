@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 05/05/2016
 ms.author: kumud
 ms.openlocfilehash: 1d2dde4e77a39b114f721cd6d2be250141984e7f
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86231709"
 ---
 # <a name="virtual-appliance-scenario"></a>Virtuális berendezés forgatókönyve
@@ -77,30 +77,30 @@ Annak biztosítása érdekében, hogy a kommunikáció a megfelelő tűzfal-bere
 ### <a name="azgwudr"></a>azgwudr
 Ebben az esetben az egyetlen, a helyszínről az Azure-ba irányuló forgalom lesz használva a tűzfalak kezeléséhez a **AZF3**való csatlakozással, és a forgalomnak a belső tűzfalon ( **AZF2**) keresztül kell haladnia. Ezért csak egy útvonal szükséges a **GatewaySubnet** az alább látható módon.
 
-| Destination (Cél) | Következő ugrás | Magyarázat |
+| Cél | Következő ugrás | Magyarázat |
 | --- | --- | --- |
 | 10.0.4.0/24 |10.0.3.11 |Lehetővé teszi a helyszíni forgalom számára a felügyeleti tűzfal **AZF3** elérését |
 
 ### <a name="azsn2udr"></a>azsn2udr
-| Destination (Cél) | Következő ugrás | Magyarázat |
+| Cél | Következő ugrás | Magyarázat |
 | --- | --- | --- |
 | 10.0.3.0/24 |10.0.2.11 |Engedélyezi a forgalmat az alkalmazáskiszolgáló futtatására szolgáló háttér-alhálózaton a **AZF2** használatával. |
 | 0.0.0.0/0 |10.0.2.10 |Lehetővé teszi az összes többi forgalom átirányítását a **AZF1** -on keresztül |
 
 ### <a name="azsn3udr"></a>azsn3udr
-| Destination (Cél) | Következő ugrás | Magyarázat |
+| Cél | Következő ugrás | Magyarázat |
 | --- | --- | --- |
 | 10.0.2.0/24 |10.0.3.10 |Lehetővé teszi, hogy a **azsn2** az App Serverről a webkiszolgálóról a **AZF2** keresztül áramlson át |
 
 A helyszíni adatközpontot a **onpremvnet** alhálózatai számára is létre kell hoznia.
 
 ### <a name="onpremsn1udr"></a>onpremsn1udr
-| Destination (Cél) | Következő ugrás | Magyarázat |
+| Cél | Következő ugrás | Magyarázat |
 | --- | --- | --- |
 | 192.168.2.0/24 |192.168.1.4 |Engedélyezi a **onpremsn2** a **OPFW** keresztül |
 
 ### <a name="onpremsn2udr"></a>onpremsn2udr
-| Destination (Cél) | Következő ugrás | Magyarázat |
+| Cél | Következő ugrás | Magyarázat |
 | --- | --- | --- |
 | 10.0.3.0/24 |192.168.2.4 |Engedélyezi a forgalmat az Azure-beli **OPFW** keresztül |
 | 192.168.1.0/24 |192.168.2.4 |Engedélyezi a **onpremsn1** a **OPFW** keresztül |

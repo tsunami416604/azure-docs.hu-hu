@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 07/16/2019
 ms.author: erhopf
 ms.openlocfilehash: eace63effdbd62d8f08395aa16683627b475a963
-ms.sourcegitcommit: f7e160c820c1e2eb57dc480b2a8fd6bef7053e91
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86232525"
 ---
 # <a name="speech-devices-sdk-microphone-array-recommendations"></a>Beszédfelismerési eszközök SDK mikrofon tömb javaslatai
@@ -30,7 +30,7 @@ A következő tömb-geometriák használata ajánlott a Microsoft audio Stacktel
 | A mikrofon & geometriája | Körkörös tömb | Körkörös tömb | Lineáris tömb | Lineáris tömb |
 | --- | -------------- | --- | ------------ | --- |
 |     | <img src="media/speech-devices-sdk/7-mic-c.png" alt="7 mic circular array" width="150"/> | <img src="media/speech-devices-sdk/4-mic-c.png" alt="4 mic circular array" width="150"/> | <img src="media/speech-devices-sdk/4-mic-l.png" alt="4 mic linear array" width="150"/> | <img src="media/speech-devices-sdk/2-mic-l.png" alt="2 mic linear array" width="150"/> |
-| \#Mikrofon | 7 | 4 | 4 | 2 |
+| \# Mikrofon | 7 | 4 | 4 | 2 |
 | Geometria | 6 külső, 1 központ, sugár = 42,5 mm, egyenletesen elhelyezkedő | 3 külső, 1 központ, sugár = 42,5 mm, egyenletesen elhelyezkedő | Hossz = 120 mm, térköz = 40 mm | Térköz = 40 mm |
 
 A mikrofon-csatornákat a fenti tömbben ábrázolt számozásnak megfelelően kell megrendelni, a 0-tól való növekedéssel. A Microsoft audio Stackhez a hanglejátszás további hivatkozása szükséges az ECHO lemondásának elvégzéséhez.
@@ -41,7 +41,7 @@ A mikrofon-összetevőket úgy kell kiválasztani, hogy pontosan reprodukálni l
 
 A mikrofonok kiválasztásakor a javasolt tulajdonságok a következők:
 
-| Paraméterek | Ajánlott |
+| Paraméter | Ajánlott |
 | --------- | ----------- |
 | SNR | \>= 65 dB (1 kHz jel 94 dBSPL, A-súlyozott zaj) |
 | Amplitúdó egyeztetése | ± 1 dB @ 1 kHz |
@@ -60,9 +60,9 @@ A megfelelő összetevők kiválasztását megfelelő elektroakusztikus-integrá
 
 A mikrofon tömb teljesítménye az eszközbe való integráláskor eltér az összetevő-specifikációtól. Fontos, hogy a mikrofonok az integráció után is megfelelőek legyenek. Ezért az eszköz teljesítménye a rögzített nyereség vagy EQ után mérve a következő javaslatoknak kell megfelelnie:
 
-| Paraméterek          | Ajánlott                                        |
+| Paraméter          | Ajánlott                                        |
 | ------------------ | -------------------------------------------------- |
-| SNR                | \>63 dB (1 kHz-es jel 94 dBSPL, A-súlyozott zaj) |
+| SNR                | \> 63 dB (1 kHz-es jel 94 dBSPL, A-súlyozott zaj) |
 | Kimeneti érzékenység | -26 dBFS/PA @ 1 kHz (ajánlott)                  |
 | Amplitúdó egyeztetése | ± 2 dB, 200-8000 Hz                                |
 | THD\*             | ≤ 1%, 200-8000 Hz, 94 dBSPL, 5. sorrend             |
@@ -76,18 +76,18 @@ A mikrofon tömb teljesítménye az eszközbe való integráláskor eltér az ö
 
 Mivel az ECHO-lemondás szükséges a beszélőket tartalmazó beszédfelismerési eszközökhöz, további javaslatok is elérhetők a hangszórók kiválasztásához és az integrációhoz.
 
-| Paraméterek | Ajánlott |
+| Paraméter | Ajánlott |
 | --------- | ----------- |
 | A linearitás szempontjai | Nem lineáris feldolgozás a hangsugárzó-hivatkozás után, ellenkező esetben a hardveres visszacsatolási hivatkozási adatfolyam szükséges |
 | Beszélő visszacsatolása | WASAPI, privát API-k, egyéni ALSA beépülő modul (Linux) vagy belső vezérlőprogram-csatornán keresztül biztosított |
 | THD | 3rd oktáv-sávok minimális 5., 70 dBA lejátszás @ 0,8 m ≤ 6,3%, 315-500 Hz ≤ 5%, 630-5000 Hz |
-| Visszhangos csatlakozás a mikrofonokhoz | \>-10 dB TCLw-T használó ITU-T G. 122 melléklet B. 4 módszer, normalizálva a MIC szintjére<br />TCLw = TCLwmeasured \+ (mért szint – a cél kimenetének érzékenysége)<br />TCLw = TCLwmeasured \+ (mért szint – (-26)) |
+| Visszhangos csatlakozás a mikrofonokhoz | \> -10 dB TCLw-T használó ITU-T G. 122 melléklet B. 4 módszer, normalizálva a MIC szintjére<br />TCLw = TCLwmeasured \+ (mért szint – a cél kimenetének érzékenysége)<br />TCLw = TCLwmeasured \+ (mért szint – (-26)) |
 
 ## <a name="integration-design-architecture"></a>Integrációs tervezési architektúra
 
 A következő, architektúrára vonatkozó irányelvek szükségesek a mikrofonok eszközbe való integrálásakor:
 
-| Paraméterek | Ajánlás |
+| Paraméter | Ajánlás |
 | --------- | -------------- |
 | A MIC-portok hasonlósága | Az összes mikrofonos port azonos hosszúságú a tömbben |
 | MIC-portok méretei | A port mérete Ø 0,8-1,0 mm. Port hossz/port átmérő \< 2 |

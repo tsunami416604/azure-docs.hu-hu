@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 04/27/2020
 ms.openlocfilehash: fb795a9d7100019b2b1820c592f87025b77f5878
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86045858"
 ---
 # <a name="troubleshoot-apache-oozie-in-azure-hdinsight"></a>Az Apache Oozie hibáinak megoldása az Azure HDInsight
@@ -40,7 +40,7 @@ JA009: Cannot initialize Cluster. Please check your configuration for map
 
 Az **job.xml** fájlban használt Azure Blob Storage-címek nem tartalmazzák a tároló-vagy a Storage-fiók nevét. A blob Storage-címnek a formátumnak kell lennie `wasbs://containername@storageaccountname.blob.core.windows.net` .
 
-### <a name="resolution"></a>Megoldás:
+### <a name="resolution"></a>Feloldás
 
 Módosítsa a feladatok által használt BLOB Storage-címeket.
 
@@ -60,7 +60,7 @@ JA002: User: oozie is not allowed to impersonate <USER>
 
 Az aktuális engedélyezési beállítások nem teszik lehetővé, hogy a Oozie megszemélyesítse a megadott felhasználói fiókot.
 
-### <a name="resolution"></a>Megoldás:
+### <a name="resolution"></a>Feloldás
 
 A Oozie megszemélyesítheti a csoport felhasználóit **`users`** . A használatával `groups USERNAME` megtekintheti azokat a csoportokat, amelyeknek a felhasználói fiók tagja. Ha a felhasználó nem tagja a **`users`** csoportnak, akkor a következő paranccsal adhatja hozzá a felhasználót a csoporthoz:
 
@@ -87,7 +87,7 @@ Launcher ERROR, reason: Main class [org.apache.oozie.action.hadoop.SqoopMain], e
 
 A Sqoop nem tudja betölteni az adatbázis eléréséhez szükséges adatbázis-illesztőt.
 
-### <a name="resolution"></a>Megoldás:
+### <a name="resolution"></a>Feloldás
 
 Ha a Sqoop-t egy Oozie-feladatokból használja, akkor az adatbázis-illesztőt is fel kell vennie a többi erőforrással, például a workflow.xml, a feladatokhoz. A workflow.xml szakaszának adatbázis-illesztőprogramját tartalmazó archívumra is hivatkozhat `<sqoop>...</sqoop>` .
 

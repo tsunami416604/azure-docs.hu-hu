@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 04/10/2020
 ms.author: ramamill
 ms.openlocfilehash: 14f0eaee1ede4da3b80ddd94d5c915438e97f8f4
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90530063"
 ---
 # <a name="about-the-mobility-service-for-vmware-vms-and-physical-servers"></a>Tudnivalók a VMware virtuális gépek és a fizikai kiszolgálók mobilitási szolgáltatásáról
@@ -85,15 +85,15 @@ A mobilitási szolgáltatás leküldéses telepítése során a következő lép
 
 1. A telepítés figyelése a **telepítési folyamatban**. A telepítés befejezése után válassza a **Folytatás a konfigurációval** lehetőséget a szolgáltatás konfigurációs kiszolgálóval való regisztrálásához.
 
-    :::image type="content" source="./media/vmware-physical-mobility-service-install-manual/mobility3.png" alt-text="Mobilitási szolgáltatás regisztrációs lapja.":::
+    :::image type="content" source="./media/vmware-physical-mobility-service-install-manual/mobility3.png" alt-text="Mobilitási szolgáltatás telepítési lehetőség lapja.":::
 
 1. A **konfigurációs kiszolgáló részletei**területen válassza ki a konfigurált IP-címet és jelszót.
 
-    :::image type="content" source="./media/vmware-physical-mobility-service-install-manual/mobility4.png" alt-text="Mobilitási szolgáltatás regisztrációs lapja.":::
+    :::image type="content" source="./media/vmware-physical-mobility-service-install-manual/mobility4.png" alt-text="Mobilitási szolgáltatás telepítési lehetőség lapja.":::
 
 1. A regisztráció befejezéséhez válassza a **regisztráció** lehetőséget.
 
-    :::image type="content" source="./media/vmware-physical-mobility-service-install-manual/mobility5.png" alt-text="Mobilitási szolgáltatás regisztrációjának utolsó lapja.":::
+    :::image type="content" source="./media/vmware-physical-mobility-service-install-manual/mobility5.png" alt-text="Mobilitási szolgáltatás telepítési lehetőség lapja.":::
 
 ## <a name="install-the-mobility-service-using-command-prompt"></a>A mobilitási szolgáltatás telepítése parancssor használatával
 

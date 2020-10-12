@@ -9,15 +9,15 @@ ms.topic: how-to
 ms.date: 12/06/2018
 ms.custom: seodec18
 ms.openlocfilehash: e0e2244d8c70ca2e6d379e741d543d9cd260b7f8
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86044583"
 ---
 # <a name="build-an-iot-solution-by-using-stream-analytics"></a>IoT-megoldás létrehozása Stream Analytics használatával
 
-## <a name="introduction"></a>Introduction (Bevezetés)
+## <a name="introduction"></a>Bevezetés
 Ebben a megoldásban megtudhatja, hogyan használhatja a Azure Stream Analyticst az adatok valós idejű elemzéséhez. A fejlesztők könnyedén egyesítheti az adatstreameket, például a streameket, a naplókat és az eszköz által generált eseményeket, valamint a múltbeli rekordokat vagy a hivatkozási adatokat az üzleti elemzések elvégzéséhez. A Microsoft Azureban üzemeltetett, teljes mértékben felügyelt, valós idejű adatfolyam-számítási szolgáltatásként Azure Stream Analytics a rugalmasságot, a kis késést és a méretezhetőséget percek alatt üzembe helyezheti.
 
 A megoldás befejezése után a következőkre nyílik lehetősége:
@@ -43,7 +43,7 @@ Ez a megoldás két adatfolyammal működik. A díjköteles állomások belépte
 ### <a name="entry-data-stream"></a>Bejegyzés adatfolyama
 A belépési adatfolyam tartalmazza az autókra vonatkozó információkat, amikor autópályadíj-állomásokat visznek be. A kilépési adatok eseményei a minta alkalmazásban található webalkalmazásból áramlanak egy Event hub-várólistába.
 
-| TollID | EntryTime | LicensePlate | Állapot | Gyártó | Modell | VehicleType | VehicleWeight | Autópályadíj | Címke |
+| TollID | EntryTime | LicensePlate | Állam | Gyártó | Modell | VehicleType | VehicleWeight | Autópályadíj | Címke |
 | --- | --- | --- | --- | --- | --- | --- | --- | --- | --- |
 | 1 |2014-09-10 12:01:00.000 |JNB 7001 |NY |Honda |CRV |1 |0 |7 | |
 | 1 |2014-09-10 12:02:00.000 |YXZ 1001 |NY |Toyota |Camry |1 |0 |4 |123456789 |
@@ -54,12 +54,12 @@ A belépési adatfolyam tartalmazza az autókra vonatkozó információkat, amik
 
 Itt látható az oszlopok rövid leírása:
 
-| Oszlop | Description |
+| Oszlop | Leírás |
 | --- | --- |
 | TollID |A díjköteles fülke egyedi azonosítására szolgáló díjköteles fülke azonosítója |
 | EntryTime |A járműnek az autópályadíj-kezelőbe való belépésének dátuma és időpontja (UTC) |
 | LicensePlate |A jármű rendszámtábla-száma |
-| Állapot |Egyesült Államok állapot |
+| Állam |Egyesült Államok állapot |
 | Gyártó |A személygépkocsi gyártója |
 | Modell |Az autó modelljének száma |
 | VehicleType |1 a személyszállító járművek vagy a 2 kereskedelmi járművek számára |
@@ -81,7 +81,7 @@ A kilépési adatfolyam az autópályadíj-állomást elhagyó autókkal kapcsol
 
 Itt látható az oszlopok rövid leírása:
 
-| Oszlop | Description |
+| Oszlop | Leírás |
 | --- | --- |
 | TollID |A díjköteles fülke egyedi azonosítására szolgáló díjköteles fülke azonosítója |
 | ExitTime |A jármű kilépésének dátuma és időpontja az autópályadíj-kezelőből UTC szerint |
@@ -101,7 +101,7 @@ A megoldás egy kereskedelmi jármű regisztrációs adatbázisának statikus pi
 
 Itt látható az oszlopok rövid leírása:
 
-| Oszlop | Description |
+| Oszlop | Leírás |
 | --- | --- |
 | LicensePlate |A jármű rendszámtábla-száma |
 | Regisztrációban |A jármű regisztrációs azonosítója |

@@ -12,10 +12,10 @@ ms.date: 03/11/2019
 ms.author: pafarley
 ms.custom: seodec18
 ms.openlocfilehash: 4e6c2db5333962d7ae43534998ffc1c48b0dba45
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80244562"
 ---
 # <a name="detecting-image-types-with-computer-vision"></a>Rendszerképek típusának észlelése Computer Vision
@@ -26,7 +26,7 @@ A [kép elemzése](https://westus.dev.cognitive.microsoft.com/docs/services/5adf
 
 Computer Vision elemez egy rendszerképet, és az alábbi táblázatban leírtak szerint a képfájlnak azt a valószínűségét határozza meg, hogy a kép egy 0 és 3 közötti skálán legyen.
 
-| Érték | Jelentés |
+| Érték | Értelmezés |
 |-------|---------|
 | 0 | Nem ClipArt |
 | 1 | Nem egyértelmű |
@@ -115,7 +115,7 @@ A következő JSON-válaszok azt szemléltetik, hogy milyen Computer Vision ad v
 
 ## <a name="use-the-api"></a>Az API használata
 
-A rendszerkép típusú észlelési funkció a [rendszerkép elemzése](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API részét képezi. Ezt az API-t natív SDK-n vagy REST-hívásokon keresztül hívhatja. Belefoglalás `ImageType` a **visualFeatures** lekérdezési paraméterbe. Ezután, amikor megkapja a teljes JSON-választ, egyszerűen elemezze a `"imageType"` szakasz tartalmának karakterláncát.
+A rendszerkép típusú észlelési funkció a [rendszerkép elemzése](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API részét képezi. Ezt az API-t natív SDK-n vagy REST-hívásokon keresztül hívhatja. Belefoglalás `ImageType` a **visualFeatures** lekérdezési paraméterbe. Ezután, amikor megkapja a teljes JSON-választ, egyszerűen elemezze a szakasz tartalmának karakterláncát `"imageType"` .
 
 * [Gyors útmutató: Computer Vision .NET SDK](./quickstarts-sdk/client-library.md?pivots=programming-language-csharp)
 * [Gyors útmutató: rendszerkép elemzése (REST API)](./quickstarts/csharp-analyze.md)

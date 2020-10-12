@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 04/28/2020
 ms.reviewer: sunayv
 ms.openlocfilehash: 7d968c62afbfc92952f747e1e7627c98fe07436d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87015085"
 ---
 # <a name="exporting-an-azure-hosted-api-to-powerapps-and-microsoft-flow"></a>Azure-ban üzemeltetett API exportálása PowerApps és Microsoft Flow
@@ -60,7 +60,7 @@ Az Exportálás **expressz** módban való végrehajtásához kövesse az alább
 
     |Beállítás|Leírás|
     |--------|------------|
-    |**Környezet**|Válassza ki azt a környezetet, amelyre az egyéni összekötőt menteni kívánja. További információkat a [Környezetek áttekintésében](https://powerapps.microsoft.com/tutorials/environments-overview/) találhat.|
+    |**Environment**|Válassza ki azt a környezetet, amelyre az egyéni összekötőt menteni kívánja. További információkat a [Környezetek áttekintésében](https://powerapps.microsoft.com/tutorials/environments-overview/) találhat.|
     |**Egyéni API neve**|Adjon meg egy nevet, amelyet a PowerApps és a Microsoft Flow-építők látnak majd az összekötők listájában.|
     |**Biztonsági konfiguráció előkészítése**|Ha szükséges, adja meg a biztonsági konfigurációs adatokat, amelyek szükségesek ahhoz, hogy hozzáférést biztosítson a felhasználóknak az API-hoz. Ez a példa egy API-kulcsot mutat be. További információ: az alábbi [hitelesítési típus megadása](#auth) .|
  

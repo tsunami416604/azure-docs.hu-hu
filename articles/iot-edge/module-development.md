@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 96bd6b461a5374b5f5bc578c5f58dbcd09cd7087
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84699294"
 ---
 # <a name="develop-your-own-iot-edge-modules"></a>Saját IoT Edge-modulok fejlesztése
@@ -77,7 +77,7 @@ Az alábbi táblázatban szereplő összes nyelv esetében IoT Edge támogatja a
 
 | Fejlesztési nyelv | Fejlesztési eszközök |
 | -------------------- | ----------------- |
-| C# | Visual Studio Code<br>Visual Studio 2017/2019 |
+| C | Visual Studio Code<br>Visual Studio 2017/2019 |
 | C# | Visual Studio Code<br>Visual Studio 2017/2019 |
 | Java | Visual Studio Code |
 | Node.js | Visual Studio Code |
@@ -92,7 +92,7 @@ Az alábbi táblázatban szereplő összes nyelv esetében IoT Edge támogatja a
 
 | Fejlesztési nyelv | Fejlesztési eszközök |
 | -------------------- | ----------------- |
-| C# | Visual Studio 2017/2019 |
+| C | Visual Studio 2017/2019 |
 | C# | Visual Studio Code (nincs hibakeresési képesség)<br>Visual Studio 2017/2019 |
 
 ## <a name="next-steps"></a>További lépések
@@ -103,4 +103,4 @@ Az alábbi táblázatban szereplő összes nyelv esetében IoT Edge támogatja a
 
 [Modulok fejlesztése a Visual Studio Code használatával IoT Edge](how-to-vs-code-develop-module.md)
 
-[Az Azure IoT Hub SDK-k megismerése és használata](../iot-hub/iot-hub-devguide-sdks.md)
+[Az Azure IoT Hub SDK-k ismertetése és használata](../iot-hub/iot-hub-devguide-sdks.md)

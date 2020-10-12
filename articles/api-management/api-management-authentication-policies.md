@@ -14,16 +14,16 @@ ms.topic: article
 ms.date: 06/12/2020
 ms.author: apimpm
 ms.openlocfilehash: 4d077f6b3c84b0279a7a1c99243240192c2b45d1
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86243715"
 ---
 # <a name="api-management-authentication-policies"></a>API Management-hitelesítési szabályzatok
 Ez a témakör az alábbi API Management szabályzatokra mutató hivatkozást tartalmaz. A házirendek hozzáadásával és konfigurálásával kapcsolatos információkért lásd: [szabályzatok API Management](https://go.microsoft.com/fwlink/?LinkID=398186).
 
-##  <a name="authentication-policies"></a><a name="AuthenticationPolicies"></a>Hitelesítési házirendek
+##  <a name="authentication-policies"></a><a name="AuthenticationPolicies"></a> Hitelesítési házirendek
 
 -   Egyszerű hitelesítéssel [hitelesítheti alapszintű](api-management-authentication-policies.md#Basic) hitelesítést a háttér-szolgáltatással.
 
@@ -31,7 +31,7 @@ Ez a témakör az alábbi API Management szabályzatokra mutató hivatkozást ta
 
 -   [Hitelesítés felügyelt identitással](api-management-authentication-policies.md#ManagedIdentity) – hitelesítés a API Management szolgáltatás [felügyelt identitásával](../active-directory/managed-identities-azure-resources/overview.md) .
 
-##  <a name="authenticate-with-basic"></a><a name="Basic"></a>Hitelesítés alapszintű
+##  <a name="authenticate-with-basic"></a><a name="Basic"></a> Hitelesítés alapszintű
  Az `authentication-basic` alapszintű hitelesítést használó háttér-szolgáltatással történő hitelesítéshez használja a szabályzatot. Ez a házirend hatékonyan állítja be a HTTP-engedélyezési fejlécet a szabályzatban megadott hitelesítő adatoknak megfelelő értékre.
 
 ### <a name="policy-statement"></a>Szabályzati utasítás
@@ -66,7 +66,7 @@ Ez a témakör az alábbi API Management szabályzatokra mutató hivatkozást ta
 
 -   **Házirend-hatókörök:** az összes hatókör
 
-##  <a name="authenticate-with-client-certificate"></a><a name="ClientCertificate"></a>Hitelesítés ügyféltanúsítvány használatával
+##  <a name="authenticate-with-client-certificate"></a><a name="ClientCertificate"></a> Hitelesítés ügyféltanúsítvány használatával
  Használja a `authentication-certificate` szabályzatot a háttér-szolgáltatással történő hitelesítéshez az ügyféltanúsítvány használatával. Először az [API Management kell telepíteni](https://go.microsoft.com/fwlink/?LinkID=511599) a tanúsítványt, és annak ujjlenyomata azonosítja.
 
 ### <a name="policy-statement"></a>Szabályzati utasítás
@@ -117,7 +117,7 @@ Ebben a példában az ügyféltanúsítvány a szabályzatban van beállítva, �
   
 -   **Házirend-hatókörök:** az összes hatókör  
 
-##  <a name="authenticate-with-managed-identity"></a><a name="ManagedIdentity"></a>Hitelesítés felügyelt identitással  
+##  <a name="authenticate-with-managed-identity"></a><a name="ManagedIdentity"></a> Hitelesítés felügyelt identitással  
  A `authentication-managed-identity` szabályzat használatával végezzen hitelesítést a háttér-szolgáltatással a felügyelt identitás használatával. Ez a szabályzat lényegében a felügyelt identitás használatával szerez hozzáférési jogkivonatot Azure Active Directoryről a megadott erőforrás eléréséhez. A jogkivonat sikeres beszerzését követően a szabályzat a fejlécben lévő jogkivonat értékét a `Authorization` séma alapján állítja be `Bearer` .
 
 A rendszer által hozzárendelt identitás és a több felhasználó által hozzárendelt identitás is használható a jogkivonat igényléséhez. Ha `client-id` nincs megadva, a rendszer által hozzárendelt identitást feltételezzük. Ha a `client-id` változót a rendszer a felhasználó által hozzárendelt identitásra vonatkozóan kéri Azure Active Directory
@@ -194,7 +194,7 @@ A rendszer által hozzárendelt identitás és a több felhasználó által hozz
   
 -   **Házirend-hatókörök:** az összes hatókör
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További információ a házirendek használatáról:
 
 + [Szabályzatok API Management](api-management-howto-policies.md)

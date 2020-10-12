@@ -8,10 +8,10 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 01/23/2020
 ms.openlocfilehash: 86367f1dce3cc8040555827935e9ca2f9f9fb4c5
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86045399"
 ---
 # <a name="debug-azure-stream-analytics-queries-locally-using-job-diagram-in-visual-studio"></a>Azure Stream Analytics lekérdezések hibakeresése helyileg a Visual Studióban a feladatok diagramjának használatával
@@ -52,23 +52,23 @@ Ebben a szakaszban megismerheti a diagram egyes részeihez elérhető metrikáka
 
 ![Feladatütemezés élő bemeneti forrásai](./media/debug-locally-using-job-diagram/live-input.png)
 
-|Metric|Leírás|
+|Metrika|Leírás|
 |-|-|
 |**TaxiRide**| A bemenet neve.|
-|**Eseményközpont** | Bemeneti forrás típusa|
+|**Event Hub** | Bemeneti forrás típusa|
 |**Események**|Az olvasott események száma.|
 |**Várakozó-események forrásai**|Hány üzenetet kell olvasni Event Hubs és IoT Hub bemenetekhez.|
 |**Bájtban lévő események**|A beolvasott bájtok száma.|
 | **Csökkentett teljesítményű események**|Azon események száma, amelyek nem a deszerializálás miatt voltak probléma.|
 |**Korai események**| Az alkalmazás időbélyegét tartalmazó események száma a felső vízjel előtt.|
 |**Késői események**| Az alkalmazás időbélyegzővel rendelkező eseményeinek száma a felső vízjel után.|
-|**Eseményforrás**| Az olvasott adategységek száma. Például a Blobok száma.|
+|**Eseményforrások**| Az olvasott adategységek száma. Például a Blobok száma.|
 
 #### <a name="input-sources-local-input"></a>Bemeneti források (helyi bemenet)
 
 ![Munkaköri diagram helyi bemeneti forrásai](./media/debug-locally-using-job-diagram/local-input.png)
 
-|Metric|Leírás|
+|Metrika|Leírás|
 |-|-|
 |**TaxiRide**| A bemenet neve.|
 |**Sorok száma**| A lépésből generált sorok száma.|
@@ -79,7 +79,7 @@ Ebben a szakaszban megismerheti a diagram egyes részeihez elérhető metrikáka
 
 ![Feladatütemezés lekérdezési lépése](./media/debug-locally-using-job-diagram/query-step.png)
 
-|Metric|Leírás|
+|Metrika|Leírás|
 |-|-|
 |**TripData**|Az ideiglenes eredményhalmaz neve.|
 |**Sorok száma**| A lépésből generált sorok száma.|
@@ -89,7 +89,7 @@ Ebben a szakaszban megismerheti a diagram egyes részeihez elérhető metrikáka
 
 ![Feladatütemezés helyi kimeneti elsüllyedés](./media/debug-locally-using-job-diagram/live-output.png)
 
-|Metric|Leírás|
+|Metrika|Leírás|
 |-|-|
 |**regionaggEH**|A kimenet neve.|
 |**Események**|A nyelők számára Kimenõ események száma.|
@@ -98,7 +98,7 @@ Ebben a szakaszban megismerheti a diagram egyes részeihez elérhető metrikáka
 
 ![Feladatütemezés helyi kimeneti elsüllyedés](./media/debug-locally-using-job-diagram/local-output.png)
 
-|Metric|Leírás|
+|Metrika|Leírás|
 |-|-|
 |**regionaggEH**|A kimenet neve.|
 |**Helyi kimenet**| Eredmény kimenete egy helyi fájlba.|
