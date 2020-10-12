@@ -4,10 +4,10 @@ description: Ismerteti, hogyan lehet kiértékelni az Azure-ba való áttelepít
 ms.topic: how-to
 ms.date: 03/23/2020
 ms.openlocfilehash: 6490a5448bb68dcccd61784d149e9765107400c2
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87171906"
 ---
 # <a name="assess-large-numbers-of-vmware-vms-for-migration-to-azure"></a>Nagy számú VMware virtuális gép értékelése az Azure-ba való áttelepítéshez
@@ -37,7 +37,7 @@ A nagyszámú VMware virtuális gép értékelésének tervezésekor néhány do
 - A **felderítési fiókok megtervezése**: az Azure Migrate készülék olyan fiókot használ, amely hozzáféréssel rendelkezik vCenter Serverhoz, hogy felderítse a virtuális gépeket az értékeléshez és az áttelepítéshez Ha 10 000-nál több virtuális gépet derít fel, több fiókot kell beállítania, mivel az szükséges, hogy a projektek két készülékéről felderített virtuális gépek között ne legyen átfedés. 
 
 > [!NOTE]
-> Ha több berendezést állít be, ügyeljen arra, hogy a virtuális gépek ne legyenek átfedésben a megadott vCenter-fiókok között. Egy ilyen átfedéssel rendelkező felderítés nem támogatott forgatókönyv. Ha egynél több berendezés észleli a virtuális gépet, az a felderítésben és a problémák során duplikálja a virtuális gép replikálását a kiszolgáló áttelepítésének Azure Portal használatával.
+> Ha több berendezést állít be, ügyeljen arra, hogy a virtuális gépek ne legyenek átfedésben a megadott vCenter-fiókok között. Az ilyen átfedés mellett zajló felderítés nem támogatott forgatókönyv. Ha egynél több berendezés észleli a virtuális gépet, az a felderítésben és a problémák során duplikálja a virtuális gép replikálását a kiszolgáló áttelepítésének Azure Portal használatával.
 
 ## <a name="planning-limits"></a>Tervezési korlátok
  
@@ -56,9 +56,9 @@ Ezekkel a korlátozásokkal kapcsolatban néhány példa az üzemelő példányo
 **vCenter-kiszolgáló** | **Kiszolgálókon futó virtuális gépek** | **Ajánlás** | **Művelet**
 ---|---|---|---
 Eggyel | < 10 000 | Egy Azure Migrate projekt.<br/> Egy készülék.<br/> Egy vCenter-fiók a felderítéshez. | Állítsa be a készüléket, és kapcsolódjon vCenter Server fiókkal.
-Eggyel | > 10 000 | Egy Azure Migrate projekt.<br/> Több készülék.<br/> Több vCenter-fiók. | Állítsa be a készüléket minden 10 000 virtuális gépre.<br/><br/> Állítsa be a vCenter-fiókokat, és ossza fel a leltárt, hogy korlátozza a fiókok hozzáférését a 10 000-nél kevesebb virtuális gépre.<br/> Csatlakoztasson minden készüléket a vCenter-kiszolgálóhoz egy fiókkal.<br/> Elemezheti a függőségeket a különböző készülékekkel felderített gépek között. <br/> <br/> Győződjön meg arról, hogy a virtuális gépek között nincs átfedés a megadott vCenter-fiókok között. Egy ilyen átfedéssel rendelkező felderítés nem támogatott forgatókönyv. Ha egy virtuális gépet több berendezés is felderít, akkor a rendszer duplikálja a felderítésben és a problémákban, miközben engedélyezi a virtuális gép replikálását a kiszolgáló áttelepítésének Azure Portal használatával.
+Eggyel | > 10 000 | Egy Azure Migrate projekt.<br/> Több készülék.<br/> Több vCenter-fiók. | Állítsa be a készüléket minden 10 000 virtuális gépre.<br/><br/> Állítsa be a vCenter-fiókokat, és ossza fel a leltárt, hogy korlátozza a fiókok hozzáférését a 10 000-nél kevesebb virtuális gépre.<br/> Csatlakoztasson minden készüléket a vCenter-kiszolgálóhoz egy fiókkal.<br/> Elemezheti a függőségeket a különböző készülékekkel felderített gépek között. <br/> <br/> Győződjön meg arról, hogy a virtuális gépek között nincs átfedés a megadott vCenter-fiókok között. Az ilyen átfedés mellett zajló felderítés nem támogatott forgatókönyv. Ha egy virtuális gépet több berendezés is felderít, akkor a rendszer duplikálja a felderítésben és a problémákban, miközben engedélyezi a virtuális gép replikálását a kiszolgáló áttelepítésének Azure Portal használatával.
 Többszörös | < 10 000 |  Egy Azure Migrate projekt.<br/> Több készülék.<br/> Egy vCenter-fiók a felderítéshez. | Állítsa be a készülékeket, és kapcsolódjon a vCenter Serverhoz egy fiókkal.<br/> Elemezheti a függőségeket a különböző készülékekkel felderített gépek között.
-Többszörös | > 10 000 | Egy Azure Migrate projekt.<br/> Több készülék.<br/> Több vCenter-fiók. | Ha vCenter Server felderítést < 10 000 virtuális gépeket, állítson be egy berendezést az egyes vCenter Serverokhoz.<br/><br/> Ha vCenter Server felderítést > 10 000 virtuális gépeket, állítson be egy berendezést minden 10 000 virtuális gép számára.<br/> Állítsa be a vCenter-fiókokat, és ossza fel a leltárt, hogy korlátozza a fiókok hozzáférését a 10 000-nél kevesebb virtuális gépre.<br/> Csatlakoztasson minden készüléket a vCenter-kiszolgálóhoz egy fiókkal.<br/> Elemezheti a függőségeket a különböző készülékekkel felderített gépek között. <br/><br/> Győződjön meg arról, hogy a virtuális gépek között nincs átfedés a megadott vCenter-fiókok között. Egy ilyen átfedéssel rendelkező felderítés nem támogatott forgatókönyv. Ha egy virtuális gépet több berendezés is felderít, akkor a rendszer duplikálja a felderítésben és a problémákban, miközben engedélyezi a virtuális gép replikálását a kiszolgáló áttelepítésének Azure Portal használatával.
+Többszörös | > 10 000 | Egy Azure Migrate projekt.<br/> Több készülék.<br/> Több vCenter-fiók. | Ha vCenter Server felderítést < 10 000 virtuális gépeket, állítson be egy berendezést az egyes vCenter Serverokhoz.<br/><br/> Ha vCenter Server felderítést > 10 000 virtuális gépeket, állítson be egy berendezést minden 10 000 virtuális gép számára.<br/> Állítsa be a vCenter-fiókokat, és ossza fel a leltárt, hogy korlátozza a fiókok hozzáférését a 10 000-nél kevesebb virtuális gépre.<br/> Csatlakoztasson minden készüléket a vCenter-kiszolgálóhoz egy fiókkal.<br/> Elemezheti a függőségeket a különböző készülékekkel felderített gépek között. <br/><br/> Győződjön meg arról, hogy a virtuális gépek között nincs átfedés a megadott vCenter-fiókok között. Az ilyen átfedés mellett zajló felderítés nem támogatott forgatókönyv. Ha egy virtuális gépet több berendezés is felderít, akkor a rendszer duplikálja a felderítésben és a problémákban, miközben engedélyezi a virtuális gép replikálását a kiszolgáló áttelepítésének Azure Portal használatával.
 
 
 
@@ -68,7 +68,7 @@ Ha több-bérlős környezetet szeretne tervezni, a felderítést a vCenter Serv
 
 - A berendezés felderítési hatókörét beállíthatja egy vCenter Server adatközpontra, fürtökre vagy a fürtök, a gazdagépek vagy az egyes virtuális gépek mappájára vagy mappára.
 - Ha a környezet a bérlők között van megosztva, és az egyes bérlőket külön szeretné felderíteni, akkor a hatókörhöz való hozzáférést a berendezés által a felderítéshez használt vCenter-fiókhoz is elérheti. 
-    - Előfordulhat, hogy a virtuális gépek mappáinak hatókörét szeretné használni, ha a bérlők megosztják a gazdagépeket. Azure Migrate nem tudja felderíteni a virtuális gépeket, ha a vCenter-fiókhoz hozzáférés van megadva a vCenter VM-mappa szintjén. Ha a virtuális gép mappáiban szeretné kiterjeszteni a felderítést, a vCenter-fióknak csak olvasási hozzáférése van hozzárendelve a virtuális gép szintjén. [További információ](set-discovery-scope.md).
+    - Előfordulhat, hogy a virtuális gépek mappáinak hatókörét szeretné használni, ha a bérlők megosztják a gazdagépeket. Azure Migrate nem tudja felderíteni a virtuális gépeket, ha a vCenter-fiókhoz hozzáférés van megadva a vCenter VM-mappa szintjén. Ha a virtuális gép mappáiban szeretné kiterjeszteni a felderítést, a vCenter-fióknak csak olvasási hozzáférése van hozzárendelve a virtuális gép szintjén. [További információk](set-discovery-scope.md).
 
 ## <a name="prepare-for-assessment"></a>Felkészülés az értékelésre
 

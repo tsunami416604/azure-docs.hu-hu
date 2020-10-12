@@ -4,10 +4,10 @@ description: Egy Azure Container Registry feladat (ACR-feladat) konfigurálása 
 ms.topic: article
 ms.date: 07/06/2020
 ms.openlocfilehash: 8b961a2ff6a795f03798cc6f6a7d303391036ef8
-ms.sourcegitcommit: bcb962e74ee5302d0b9242b1ee006f769a94cfb8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86057355"
 ---
 # <a name="cross-registry-authentication-in-an-acr-task-using-an-azure-managed-identity"></a>Több beállításjegyzékbeli hitelesítés egy ACR-feladatban egy Azure által felügyelt identitás használatával 
@@ -18,7 +18,7 @@ Ebből a cikkből megtudhatja, hogyan engedélyezheti a felügyelt identitásoka
 
 Az Azure-erőforrások létrehozásához ehhez a cikkhez az Azure CLI 2.0.68 vagy újabb verzióját kell futtatnia. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése][azure-cli].
 
-## <a name="scenario-overview"></a>Forgatókönyv áttekintése
+## <a name="scenario-overview"></a>A forgatókönyv áttekintése
 
 A példában szereplő feladat egy másik Azure Container registryből származó alaprendszerkép lekérése egy alkalmazás rendszerképének elkészítéséhez és leküldéséhez. Az alaprendszerkép lekéréséhez konfigurálja a feladatot egy felügyelt identitással, és rendelje hozzá a megfelelő engedélyeket. 
 

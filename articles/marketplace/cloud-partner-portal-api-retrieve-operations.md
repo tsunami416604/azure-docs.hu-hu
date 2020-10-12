@@ -8,10 +8,10 @@ author: mingshen-ms
 ms.author: mingshen
 ms.date: 07/14/2020
 ms.openlocfilehash: cb44d977407a7e854603e6bbacf3591752b109c2
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87271943"
 ---
 # <a name="retrieve-operations"></a>Műveletek lekérése
@@ -33,7 +33,7 @@ Az ajánlat összes műveletének lekérése, vagy egy adott művelet beolvasás
 
 |  **Név**          |      **Leírás**                                                                                           | **Adattípus** |
 |  ----------------  |     --------------------------------------------------------------------------------------------------------   |  -----------  |
-|  publisherId       |  Közzétevő azonosítója, például:`Contoso`                                                                   |  Sztring       |
+|  publisherId       |  Közzétevő azonosítója, például: `Contoso`                                                                   |  Sztring       |
 |  offerId           |  Ajánlat azonosítója                                                                                              |  Sztring       |
 |  operationId       |  GUID, amely egyedileg azonosítja a műveletet az ajánlaton. Lehetséges, hogy a operationId ezt az API-t használja, és a válasz HTTP-fejlécében is visszakerül a hosszú ideig futó műveletre, például a [közzétételi ajánlat](./cloud-partner-portal-api-publish-offer.md) API-ra.  |   Guid   |
 |  api-verzió       | Az API legújabb verziója |    Dátum      |
@@ -172,7 +172,7 @@ Az ajánlat összes műveletének lekérése, vagy egy adott művelet beolvasás
 |  **Név**                    |  **Leírás**                                                                                  |
 |  --------------------        |  ------------------------------------------------------------------------------------------------ |
 |  id                          | A műveletet egyedileg azonosító GUID                                                       |
-|  submissionType              | Meghatározza az ajánlathoz jelentett művelet típusát, például:`Publish/GoLive`      |
+|  submissionType              | Meghatározza az ajánlathoz jelentett művelet típusát, például: `Publish/GoLive`      |
 |  createdDateTime             | UTC datetime a művelet létrehozásakor                                                       |
 |  lastActionDateTime          | UTC dátum és idő, amikor a legutóbbi frissítés befejeződött a műveletnél                                       |
 |  status                      | A művelet állapota vagy `not started` \| `running` \| `failed` \| `completed` . Egyszerre csak egy művelet lehet állapottal rendelkezhet `running` . |
@@ -196,8 +196,8 @@ Az ajánlat összes műveletének lekérése, vagy egy adott művelet beolvasás
 
 | **Kód**  |   **Leírás**                                                                                  |
 |  -------- |   -------------------------------------------------------------------------------------------------|
-|  200      | `OK`– A kérés feldolgozása sikeres volt, és a kért művelet (ek) vissza lettek küldve.        |
-|  400      | `Bad/Malformed request`– A hiba-válasz törzse több információt is tartalmazhat.                    |
-|  403      | `Forbidden`– Az ügyfél nem fér hozzá a megadott névtérhez.                          |
-|  404      | `Not found`– A megadott entitás nem létezik.                                                 |
+|  200      | `OK` – A kérés feldolgozása sikeres volt, és a kért művelet (ek) vissza lettek küldve.        |
+|  400      | `Bad/Malformed request` – A hiba-válasz törzse több információt is tartalmazhat.                    |
+|  403      | `Forbidden` – Az ügyfél nem fér hozzá a megadott névtérhez.                          |
+|  404      | `Not found` – A megadott entitás nem létezik.                                                 |
 |  |  |

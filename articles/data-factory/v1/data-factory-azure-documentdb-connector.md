@@ -13,10 +13,10 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: a638184d5232de916ebd25360147301a93309dd9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84702294"
 ---
 # <a name="move-data-to-and-from-azure-cosmos-db-using-azure-data-factory"></a>Adatok áthelyezése Azure Cosmos DBba és onnan a Azure Data Factory használatával
@@ -56,10 +56,10 @@ A következő szakaszokban részletesen ismertetjük azokat a JSON-tulajdonságo
 ## <a name="linked-service-properties"></a>Társított szolgáltatás tulajdonságai
 A következő táblázat a Azure Cosmos DB társított szolgáltatáshoz tartozó JSON-elemek leírását tartalmazza.
 
-| **Tulajdonság** | **Leírás** | **Szükséges** |
+| **Tulajdonság** | **Leírás** | **Kötelező** |
 | --- | --- | --- |
-| típus |A Type tulajdonságot a következőre kell beállítani: **DocumentDb** |Yes |
-| connectionString |Azure Cosmos DB adatbázishoz való kapcsolódáshoz szükséges információk megadásához. |Yes |
+| típus |A Type tulajdonságot a következőre kell beállítani: **DocumentDb** |Igen |
+| connectionString |Azure Cosmos DB adatbázishoz való kapcsolódáshoz szükséges információk megadásához. |Igen |
 
 Példa:
 
@@ -80,9 +80,9 @@ Az adatkészletek definiálásához rendelkezésre álló &i tulajdonságok telj
 
 A typeProperties szakasz különbözik az egyes adatkészletek típusaitól, és információt nyújt az adattárban található adatok helyéről. A **DocumentDbCollection** típusú adatkészlet typeProperties szakasza a következő tulajdonságokkal rendelkezik.
 
-| **Tulajdonság** | **Leírás** | **Szükséges** |
+| **Tulajdonság** | **Leírás** | **Kötelező** |
 | --- | --- | --- |
-| collectionName |A Cosmos DB dokumentum-gyűjtemény neve. |Yes |
+| collectionName |A Cosmos DB dokumentum-gyűjtemény neve. |Igen |
 
 Példa:
 
@@ -121,18 +121,18 @@ A tevékenység typeProperties szakaszában elérhető tulajdonságok az egyes t
 
 Másolási tevékenység esetén, ha a forrás típusa **DocumentDbCollectionSource** , a következő tulajdonságok érhetők el a **typeProperties** szakaszban:
 
-| **Tulajdonság** | **Leírás** | **Megengedett értékek** | **Szükséges** |
+| **Tulajdonság** | **Leírás** | **Megengedett értékek** | **Kötelező** |
 | --- | --- | --- | --- |
-| lekérdezés |Itt adhatja meg az adatolvasási lekérdezést. |Azure Cosmos DB által támogatott lekérdezési karakterlánc. <br/><br/>Például: `SELECT c.BusinessEntityID, c.PersonType, c.NameStyle, c.Title, c.Name.First AS FirstName, c.Name.Last AS LastName, c.Suffix, c.EmailPromotion FROM c WHERE c.ModifiedDate > \"2009-01-01T00:00:00\"` |No <br/><br/>Ha nincs megadva, a futtatott SQL-utasítás:`select <columns defined in structure> from mycollection` |
-| nestingSeparator |A dokumentum beágyazásának jelzésére szolgáló speciális karakter |Bármilyen karakter. <br/><br/>Azure Cosmos DB a JSON-dokumentumok NoSQL-tárolója, ahol beágyazott struktúrák engedélyezettek. Azure Data Factory lehetővé teszi a felhasználó számára a hierarchia jelölését a nestingSeparator-n keresztül, amely a következő: "." a fenti példákban. Az elválasztó használatával a másolási tevékenység a "név. First", a "név. középső" és a "name. Last" kifejezésnek megfelelően létrehozza a "Name" objektumot az első, középső és utolsó értékkel. |No |
+| lekérdezés |Itt adhatja meg az adatolvasási lekérdezést. |Azure Cosmos DB által támogatott lekérdezési karakterlánc. <br/><br/>Például: `SELECT c.BusinessEntityID, c.PersonType, c.NameStyle, c.Title, c.Name.First AS FirstName, c.Name.Last AS LastName, c.Suffix, c.EmailPromotion FROM c WHERE c.ModifiedDate > \"2009-01-01T00:00:00\"` |Nem <br/><br/>Ha nincs megadva, a futtatott SQL-utasítás: `select <columns defined in structure> from mycollection` |
+| nestingSeparator |A dokumentum beágyazásának jelzésére szolgáló speciális karakter |Bármilyen karakter. <br/><br/>Azure Cosmos DB a JSON-dokumentumok NoSQL-tárolója, ahol beágyazott struktúrák engedélyezettek. Azure Data Factory lehetővé teszi a felhasználó számára a hierarchia jelölését a nestingSeparator-n keresztül, amely a következő: "." a fenti példákban. Az elválasztó használatával a másolási tevékenység a "név. First", a "név. középső" és a "name. Last" kifejezésnek megfelelően létrehozza a "Name" objektumot az első, középső és utolsó értékkel. |Nem |
 
 A **DocumentDbCollectionSink** a következő tulajdonságokat támogatja:
 
-| **Tulajdonság** | **Leírás** | **Megengedett értékek** | **Szükséges** |
+| **Tulajdonság** | **Leírás** | **Megengedett értékek** | **Kötelező** |
 | --- | --- | --- | --- |
 | nestingSeparator |A forrás oszlop nevének egy speciális karaktere, amely azt jelzi, hogy beágyazott dokumentumra van szükség. <br/><br/>A fenti példában például a `Name.First` kimenet táblában a következő JSON-struktúra jön létre a Cosmos db dokumentumban:<br/><br/>"Name": {<br/>    "Első": "John"<br/>}, |A beágyazási szinteket elválasztó karakter.<br/><br/>Az alapértelmezett érték `.` (pont). |A beágyazási szinteket elválasztó karakter. <br/><br/>Az alapértelmezett érték `.` (pont). |
 | writeBatchSize |A Azure Cosmos DB szolgáltatás számára a dokumentumok létrehozásához szükséges párhuzamos kérelmek száma.<br/><br/>Ennek a tulajdonságnak a használatával javíthatja a teljesítményt a Cosmos DBba való adatmásoláskor. Nagyobb teljesítmény várható, ha a writeBatchSize növelése miatt Cosmos DB több párhuzamos kérelem küldése történik. Azonban el kell kerülnie a szabályozást, amely a következő hibaüzenetet eredményezi: "a kérelmek aránya nagy".<br/><br/>A szabályozást számos tényező határozza meg, többek között a dokumentumok mérete, a dokumentumok feltételeinek száma, a célhelyek indexelési szabályzata stb. A másolási műveleteknél jobb gyűjteményt (például S3) is használhat, hogy a lehető legtöbb átviteli sebesség elérhető legyen (2 500 kérelem egység/másodperc). |Egész szám |Nem (alapértelmezett: 5) |
-| writeBatchTimeout |Várakozási idő a művelet befejezéséhez, mielőtt időtúllépés történt. |időtartomány<br/><br/> Például: "00:30:00" (30 perc). |No |
+| writeBatchTimeout |Várakozási idő a művelet befejezéséhez, mielőtt időtúllépés történt. |időtartomány<br/><br/> Például: "00:30:00" (30 perc). |Nem |
 
 ## <a name="importexport-json-documents"></a>JSON-dokumentumok importálása/exportálása
 A Cosmos DB-összekötő használatával könnyedén elvégezheti a

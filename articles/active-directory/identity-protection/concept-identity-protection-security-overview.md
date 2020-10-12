@@ -12,13 +12,13 @@ manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: db61a3f9034908043695bc7db3a16551bf4659c3
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86024077"
 ---
-# <a name="azure-active-directory-identity-protection---security-overview"></a>Azure Active Directory Identity Protection – biztonsági áttekintés
+# <a name="azure-active-directory-identity-protection---security-overview"></a>Azure Active Directory Identity Protection – Biztonsági áttekintés
 
 A Azure Portal [biztonsági áttekintése](https://aka.ms/IdentityProtectionRefresh) betekintést nyújt a szervezet biztonsági állapotára. Segít azonosítani a lehetséges támadásokat és értelmezni a szabályzatok hatékonyságát.
 

@@ -1,5 +1,5 @@
 ---
-title: 'Kétosztályos támogatású vektoros gép: modul-hivatkozás'
+title: 'Two-Class támogatási vektoros gép: modul-hivatkozás'
 titleSuffix: Azure Machine Learning
 description: Ismerje meg, hogyan használható a **kétosztályos támogatású vektoros gépi** modul a Azure Machine learning egy olyan modell létrehozásához, amely a támogatási vektoros gép algoritmusán alapul.
 services: machine-learning
@@ -10,13 +10,13 @@ author: likebupt
 ms.author: keli19
 ms.date: 04/22/2020
 ms.openlocfilehash: 1dc2f8bdf6ed2823b44d25bdf65766b1f7ae060c
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90907674"
 ---
-# <a name="two-class-support-vector-machine-module"></a>Kétosztályos támogatású vektoros gépi modul
+# <a name="two-class-support-vector-machine-module"></a>Two-Class a Vector Machine modul támogatása
 
 Ez a cikk a Azure Machine Learning Designer egyik modulját ismerteti.
 

@@ -14,10 +14,10 @@ ms.workload: iaas-sql-server
 ms.date: 06/27/2020
 ms.author: mathoma
 ms.openlocfilehash: 8459ab364fc0af15dd1a1b0035e4ce27d192f7a9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91293458"
 ---
 # <a name="business-continuity-and-hadr-for-sql-server-on-azure-virtual-machines"></a>Üzletmenet-folytonosság és HADR az Azure-ban SQL Server Virtual Machines
@@ -150,7 +150,7 @@ További információ az ügyfelek kapcsolatáról:
 * [Ügyfelek összekötése egy adatbázis-tükrözési munkamenettel (SQL Server)](https://technet.microsoft.com/library/ms175484.aspx)
 * [Csatlakozás a rendelkezésre állási csoport figyelője számára a hibrid informatikai szolgáltatásban](https://docs.microsoft.com/archive/blogs/sqlalwayson/connecting-to-availability-group-listener-in-hybrid-it)
 * [A rendelkezésre állási csoport figyelők, az ügyfélkapcsolatok és az alkalmazások feladatátvétele (SQL Server)](https://technet.microsoft.com/library/hh213417.aspx)
-* [Adatbázis-tükrözési kapcsolatok karakterláncok használata rendelkezésre állási csoportokkal](https://technet.microsoft.com/library/hh213417.aspx)
+* [Database-Mirroring kapcsolatok karakterláncok használata rendelkezésre állási csoportokkal](https://technet.microsoft.com/library/hh213417.aspx)
 
 ### <a name="network-latency-in-hybrid-it"></a>Hálózati késés a hibrid informatikai szolgáltatásban
 A HADR-megoldás üzembe helyezésével feltételezhető, hogy a helyszíni hálózat és az Azure közötti magas hálózati késés fordul elő. Amikor replikákat telepít az Azure-ba, szinkron véglegesítés helyett aszinkron végrehajtást használjon a szinkronizálási módhoz. Ha a helyszíni és az Azure-ban egyaránt telepíti az adatbázis-tükrözési kiszolgálókat, a magas szintű biztonsági mód helyett használja a nagy teljesítményű módot.

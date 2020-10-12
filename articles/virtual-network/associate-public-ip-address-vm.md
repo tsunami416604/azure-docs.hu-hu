@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 02/21/2019
 ms.author: allensu
 ms.openlocfilehash: 9b5fc9e4118d98905138b7f205f61d85a96b60b0
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88035467"
 ---
 # <a name="associate-a-public-ip-address-to-a-virtual-machine"></a>Nyilvános IP-cím hozzárendelése virtuális géphez
@@ -212,6 +212,6 @@ Telepítse a [PowerShellt](/powershell/azure/install-az-ps), vagy használja a A
 
 Ahhoz, hogy az internetről csatlakozhasson a nyilvános IP-címhez, győződjön meg arról, hogy a szükséges portok nyitva vannak minden olyan hálózati biztonsági csoportban, amelyet a hálózati adapterhez, a hálózati adapterhez vagy mindkettőhöz kapcsolódott. Bár a biztonsági csoportok a hálózati adapter magánhálózati IP-címére szűrik a forgalmat, ha a bejövő internetes forgalom a nyilvános IP-címen érkezik, az Azure lefordítja a nyilvános címet a magánhálózati IP-címére, így ha egy hálózati biztonsági csoport meggátolja a forgalmat, a nyilvános IP-címmel folytatott kommunikáció meghiúsul. A hálózati adapterek és az alhálózatok érvényes biztonsági szabályait a [portál](diagnose-network-traffic-filter-problem.md#diagnose-using-azure-portal), a [CLI](diagnose-network-traffic-filter-problem.md#diagnose-using-azure-cli)vagy a [PowerShell](diagnose-network-traffic-filter-problem.md#diagnose-using-powershell)használatával tekintheti meg.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Hálózati biztonsági csoporttal engedélyezze a bejövő internetes forgalmat a virtuális gépre. A hálózati biztonsági csoportok létrehozásával kapcsolatos további információkért lásd: [a hálózati biztonsági csoportok használata](manage-network-security-group.md#work-with-network-security-groups). A hálózati biztonsági csoportokkal kapcsolatos további tudnivalókért tekintse meg a [biztonsági csoportok](security-overview.md)című témakört.

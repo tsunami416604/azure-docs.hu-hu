@@ -8,10 +8,10 @@ ms.service: storage
 ms.subservice: blobs
 ms.topic: how-to
 ms.openlocfilehash: 332d6da35af0eaae9d9d15258a152734f0a9eba6
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88033631"
 ---
 # <a name="how-to-use-blob-storage-from-c"></a>BLOB Storage használata a C++-ból
@@ -157,7 +157,7 @@ blob3.upload_text(U("other text"));
 Azt is megteheti, hogy a **upload_from_file** metódus használatával feltölthet egy fájlt egy blokk-blobba.
 
 ## <a name="how-to-list-the-blobs-in-a-container"></a>Útmutató: tárolóban lévő Blobok listázása
-A tárolóban lévő blobok listázásához először kérje le a tároló hivatkozását. Ezután a tároló **list_blobs** metódusával kérheti le a blobokat és/vagy címtárakat. Ha a tulajdonságok és metódusok gazdag készletét szeretné elérni egy visszaadott **list_blob_item**, meg kell hívnia a **list_blob_item. as_blob** metódust egy **cloud_blob** objektum beszerzéséhez, vagy a list_blob **. as_directory** metódust egy cloud_blob_directory objektum beszerzéséhez. A következő kód bemutatja, hogyan kérhető le és jeleníthető meg az egyes elemek URI-ja a **saját minta-tároló** tárolóban:
+A tárolóban lévő blobok listázásához először kérje le a tároló hivatkozását. Ezután a tároló **list_blobs** metódusával kérheti le a blobokat és/vagy címtárakat. Ha a tulajdonságok és metódusok gazdag készletét szeretné elérni egy visszaadott **list_blob_item**, meg kell hívnia a **list_blob_item. a _blob** metódussal lekérhet egy  **cloud_blob** -objektumot, vagy a list_blob **. as _directory** metódust cloud_blob_directory objektum beolvasásához. A következő kód bemutatja, hogyan kérhető le és jeleníthető meg az egyes elemek URI-ja a **saját minta-tároló** tárolóban:
 
 ```cpp
 // Retrieve storage account from connection string.
@@ -254,7 +254,7 @@ azure::storage::cloud_block_blob blockBlob = container.get_block_blob_reference(
 blockBlob.delete_blob();
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Most, hogy megismerte a blob Storage alapjait, az alábbi hivatkozásokat követve további információkat tudhat meg az Azure Storage-ról.
 
 - [A Queue Storage használata C++-szal](../storage-c-plus-plus-how-to-use-queues.md)

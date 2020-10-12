@@ -9,10 +9,10 @@ ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
 ms.openlocfilehash: 8ccd9120937148043590d30232acd6b556b09dc6
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87015272"
 ---
 # <a name="manage-database-roles-and-users"></a>Adatbázis-szerepkörök és-felhasználók kezelése
@@ -42,7 +42,7 @@ Táblázatos modell projekt létrehozásakor szerepköröket hozhat létre, és 
   
 4.  Válasszon egyet a következő engedélyek közül:  
   
-    |Engedély|Description|  
+    |Engedély|Leírás|  
     |----------------|-----------------|  
     |**Nincs**|A tagok nem tudják olvasni vagy módosítani a modell sémáját, és nem tudják lekérdezni az adatlekérdezéseket.|  
     |**Olvasás**|A tagok adatlekérdezéseket végezhetnek (a sorok szűrőinek alapján), de nem módosíthatják a modell sémáját.|  
@@ -71,7 +71,7 @@ Szerepkörök és felhasználók egy központilag telepített modell-adatbázish
 
 3. Válasszon ki egy engedélyt.
 
-   |Engedély|Description|  
+   |Engedély|Leírás|  
    |----------------|-----------------|  
    |**Teljes hozzáférés (rendszergazda)**|A tagok módosíthatják a modell sémáját, feldolgozhatják és lekérhetik az összes adatlekérdezést.| 
    |**Adatbázis feldolgozása**|A tagok az összes művelet feldolgozását és feldolgozását is futtathatják. A modell sémája nem módosítható, és nem lehet adatlekérdezést végrehajtani.|  
@@ -119,7 +119,7 @@ Ebben a példában egy B2B külső felhasználót és egy csoportot adnak hozzá
 
 ## <a name="to-add-roles-and-users-by-using-powershell"></a>Szerepkörök és felhasználók hozzáadása a PowerShell használatával
 
-A [SQLServer](https://docs.microsoft.com/analysis-services/powershell/analysis-services-powershell-reference) modul a feladat-specifikus adatbázis-kezelési parancsmagokat és az általános célú meghívó-ASCmd parancsmagot biztosít, amely egy táblázatos modell parancsnyelv-(TMSL-) lekérdezését vagy parancsfájlját fogadja el. Az adatbázis-szerepkörök és a felhasználók kezeléséhez a következő parancsmagok használhatók.
+A [SQLServer](https://docs.microsoft.com/analysis-services/powershell/analysis-services-powershell-reference) modul a feladat-specifikus adatbázis-kezelési parancsmagokat és az általános célú Invoke-ASCmd parancsmagot tartalmazza, amely egy táblázatos modell PARANCSNYELV (TMSL) lekérdezését vagy parancsfájlját fogadja el. Az adatbázis-szerepkörök és a felhasználók kezeléséhez a következő parancsmagok használhatók.
   
 |Parancsmag|Leírás|
 |------------|-----------------| 

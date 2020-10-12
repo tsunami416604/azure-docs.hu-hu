@@ -7,10 +7,10 @@ ms.date: 10/18/2019
 ms.author: alehall
 ms.custom: mvc
 ms.openlocfilehash: 074e3db3234794aa891d5452b0c19060193c6d0c
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86243970"
 ---
 # <a name="running-apache-spark-jobs-on-aks"></a>Apache Spark feladatok futtatása az AK-on
@@ -330,7 +330,7 @@ A feladatok futtatásakor a rendszer a távoli jar URL-cím helyett a `local://`
 > [!WARNING]
 > A Spark [dokumentációjában][spark-docs]: "a Kubernetes Scheduler jelenleg kísérleti jellegű. A későbbi verziókban a konfiguráció, a tároló-lemezképek és a entrypoints viselkedési változásai lehetnek.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További részletekért tekintse meg a Spark dokumentációját.
 

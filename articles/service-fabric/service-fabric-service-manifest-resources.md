@@ -4,10 +4,10 @@ description: A végponti erőforrások leírása a szolgáltatás jegyzékfájlj
 ms.topic: conceptual
 ms.date: 09/16/2020
 ms.openlocfilehash: c0c3c45c47447390901e5e0d60e77ab6b85a6a0d
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91354759"
 ---
 # <a name="specify-resources-in-a-service-manifest"></a>Erőforrások meghatározása a szolgáltatás jegyzékfájljában
@@ -198,7 +198,7 @@ Adja meg az alábbi paramétereket:
   </Parameters>
 ```
 
-Az alkalmazás telepítése során ezeket az értékeket ApplicationParameters-ként adhatja át.  Például:
+Az alkalmazás telepítése során ezeket az értékeket ApplicationParameters-ként adhatja át.  Példa:
 
 ```powershell
 PS C:\> New-ServiceFabricApplication -ApplicationName fabric:/myapp -ApplicationTypeName "AppType" -ApplicationTypeVersion "1.0.0" -ApplicationParameter @{Port='1001'; Protocol='https'; Type='Input'; Port1='2001'; Protocol='http'}
@@ -206,7 +206,7 @@ PS C:\> New-ServiceFabricApplication -ApplicationName fabric:/myapp -Application
 
 Megjegyzés: Ha egy adott ApplicationParameter megadott érték üres, a megfelelő Végpontneve tartozó ServiceManifest megadott alapértelmezett értékre megyünk vissza.
 
-Például:
+Példa:
 
 Ha a megadott ServiceManifest
 

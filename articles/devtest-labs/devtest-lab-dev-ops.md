@@ -4,10 +4,10 @@ description: Ismerje meg, hogyan használhatók a Azure DevTest Labs Labs a foly
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 8a5d35a541e079b7d39cae2ec43da608274533f5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85481068"
 ---
 # <a name="integration-of-azure-devtest-labs-and-azure-devops"></a>A Azure DevTest Labs és az Azure DevOps integrációja
@@ -29,10 +29,10 @@ Ha a CI/CD-folyamaton belül labort használ, egyszerűbbé válik több külön
 ### <a name="development--operation"></a>Fejlesztés/művelet 
 A labort olyan csapatra kell összpontosítani, amely egy szolgáltatás területén működik. Ez a közös fókusz lehetővé teszi a területtel kapcsolatos erőforrások, például az eszközök, a parancsfájlok vagy a Resource Manager-sablonok megosztását. Gyorsabb változásokat tesz lehetővé, miközben a negatív hatásokat egy kisebb csoportra korlátozza. Ezek a megosztott erőforrások lehetővé teszik, hogy a fejlesztő fejlesztési virtuális gépeket hozzon létre az összes szükséges kóddal, eszközzel és konfigurációval. Létrehozhatók akár dinamikusan, akár olyan rendszerrel, amely alapszintű lemezképeket hoz létre a testreszabásokkal. Nem csak a fejlesztők hozhatnak létre virtuális gépeket, de létrehozhatnak DevTest Labs-környezeteket is a szükséges sablonok alapján a megfelelő Azure-erőforrások létrehozásához a laborban. Bármilyen módosítást vagy roncsolásos munkát végezhet a tesztkörnyezet környezetében anélkül, hogy ez hatással lenne másnak. Vegye figyelembe azt a forgatókönyvet, ahol a termék az ügyfél gépén telepített önálló rendszer. Ebben az esetben a DevTest Labs továbbfejlesztette a virtuális gépek létrehozását, amely magában foglalja a további szoftverek telepítését az összetevők használatával, valamint a felhasználói konfigurációk előkészítését a kód gyorsabb belső hurok-teszteléséhez. 
   
-## <a name="cicd-pipeline"></a>CI/CD-folyamat 
+## <a name="cicd-pipeline"></a>CI-/CD-folyamat 
 A CI/CD-folyamat a DevOps egyik kritikus összetevője, amely kódot helyez át a fejlesztőtől egy lekéréses kérelemből, integrálja azt a meglévő kóddal, és üzembe helyezi az üzemi ökoszisztémában. Az összes erőforrásnak nem kell laboron belül lennie. Egy Jenkins-gazdagép például a laboron kívül is beállítható egy állandó erőforrásként. Íme néhány példa arra, hogyan integrálhatja a laborokat a folyamatba. 
 
-### <a name="build"></a>Felépítés 
+### <a name="build"></a>Létrehozás 
 A létrehozási folyamat arra összpontosít, hogy létrehozzon egy olyan összetevő-csomagot, amelyet a rendszer a kiadási folyamatba való átadásra fog végezni. A laborok a build folyamat részeként a Build-ügynökök és más támogatási erőforrások helyeként is szerepelhetnek. Az infrastruktúra dinamikus kiépítésének lehetősége nagyobb szabályozást tesz lehetővé. Ha több környezettel rendelkezik a laborban, minden egyes Build aszinkron módon futtatható, miközben a környezeti információk részeként a Build ID-t használja, hogy egyedileg azonosítsa az erőforrásokat az adott buildhez.   
 
 A Build-ügynökök esetében a labor a hozzáférés korlátozásával növeli a biztonságot, és csökkenti a véletlen sérülés lehetőségét.  

@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 03/31/2020
 ms.author: kumud
 ms.openlocfilehash: f969d7edc22c9c36481ca42449193af5f8c7b0d9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84709997"
 ---
 # <a name="deploy-virtual-machine-scale-sets-with-ipv6-in-azure"></a>Virtuálisgép-méretezési csoportok üzembe helyezése IPv6-ban az Azure-ban
@@ -27,7 +27,7 @@ Ebből a cikkből megtudhatja, hogyan helyezhet üzembe egy kettős verem (IPv4 
 2.    Hozzon létre egy Dual stack Load balancert.  
 3.    Hozzon létre hálózati biztonsági csoport (NSG) szabályait.  
 
-Az egyetlen virtuális gépről eltérő lépés a hálózati adapter (NIC) olyan konfigurációját hozza létre, amely a virtuálisgép-méretezési csoport erőforrását használja: networkProfile/Networkinterfaceconfigurations szakaszához. A JSON-struktúra hasonló az egyes virtuális gépekhez használt Microsoft. Network/networkInterfaces objektumhoz, a hálózati adapter és az IPv4-IpConfiguration elsődleges illesztőfelületként való beállításával, az **"elsődleges": true** attribútummal, az alábbi példában látható módon:
+Az egyetlen virtuális gépről eltérő lépés a hálózati adapter (NIC) olyan konfigurációját hozza létre, amely a virtuálisgép-méretezési csoport erőforrását használja: networkProfile/Networkinterfaceconfigurations szakaszához. A JSON-struktúra hasonló az egyes virtuális gépekhez használt Microsoft. Network/networkInterfaces objektumhoz, a hálózati adapter és az IPv4-IpConfiguration elsődleges illesztőfelületként való beállításával, az **"elsődleges": true**  attribútummal, az alábbi példában látható módon:
 
 ```json
           "networkProfile": {

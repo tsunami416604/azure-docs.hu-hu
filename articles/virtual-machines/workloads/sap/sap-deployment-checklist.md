@@ -16,10 +16,10 @@ ms.date: 08/10/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 9991bae3d5c8487cc80cca0bf9a249e715b5c521
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89650699"
 ---
 # <a name="sap-workloads-on-azure-planning-and-deployment-checklist"></a>SAP-munkaterhelések az Azure-ban: tervezési és üzembe helyezési ellenőrzőlista
@@ -135,7 +135,7 @@ Javasoljuk, hogy a kísérleti üzembe helyezés során egy teljes HADR-megoldá
             - Oracle Linux 7,5. Ha a RHCKL kernelt használja, a Release 3.10.0-862.13.1. el7 szükséges. Ha az Oracle UEK-kernelt használja, az 5. kiadás szükséges.
         - Tesztelje és értékelje ki a hálózati késést az SAP alkalmazási rétegbeli virtuális gépek és az adatbázis-kezelő virtuális gépek között az SAP-támogatási megjegyzések [#500235](https://launchpad.support.sap.com/#/notes/500235) és [#1100926](https://launchpad.support.sap.com/#/notes/1100926/E)alapján. Értékelje ki az eredményeket a hálózati késéssel kapcsolatos útmutatóban az [SAP-támogatási megjegyzés #1100926](https://launchpad.support.sap.com/#/notes/1100926/E). A hálózati késésnek közepes vagy jó tartományban kell lennie. A kivételek a virtuális gépek és a HANA nagyméretű példányok közötti forgalomra vonatkoznak, a [jelen cikkben](./hana-network-architecture.md#networking-architecture-for-hana-large-instance)leírtak szerint.
         - Győződjön meg arról, hogy a ILB központi telepítései a közvetlen kiszolgáló visszaadását használják. Ez a beállítás csökkenti a késést, ha az Azure ILB az adatbázis-kezelő réteg magas rendelkezésre állású konfigurációi esetében használják.
-        - Ha Azure Load Balancer a Linux vendég operációs rendszerekkel együtt használja, ellenőrizze, hogy a **net. IPv4. Tcp_timestamps** Linux hálózati paraméter értéke **0**. Ez az ajánlás ütközik az [SAP megjegyzés #2382421](https://launchpad.support.sap.com/#/notes/2382421)régebbi verzióiban található javaslatokkal. Az SAP-Megjegyzés frissítve lett azzal az állapottal, hogy ez a paraméter **0** értékűre van állítva az Azure Load balancerrel való együttműködéshez.
+        - Ha Azure Load Balancer a Linux vendég operációs rendszerekkel együtt használja, ellenőrizze, hogy a Linux hálózati **net.IPv4.tcp_timestamps** paraméter értéke **0**. Ez az ajánlás ütközik az [SAP megjegyzés #2382421](https://launchpad.support.sap.com/#/notes/2382421)régebbi verzióiban található javaslatokkal. Az SAP-Megjegyzés frissítve lett azzal az állapottal, hogy ez a paraméter **0** értékűre van állítva az Azure Load balancerrel való együttműködéshez.
         - Érdemes lehet az [Azure Proximity-elhelyezési csoportokat](../../linux/co-location.md) használni az optimális hálózati késés érdekében. További információ: [Azure Proximity-elhelyezési csoportok optimális hálózati késéshez SAP-alkalmazásokkal](sap-proximity-placement-scenarios.md).
    4. Magas rendelkezésre állású és vész-helyreállítási üzemelő példányok.
         - Ha egy adott Azure rendelkezésre állási zóna meghatározása nélkül helyezi üzembe az SAP-alkalmazás rétegét, győződjön meg arról, hogy minden olyan virtuális gép, amely az SAP-párbeszédpanelek példányait vagy az egyetlen SAP-rendszer összes közbenső példányát futtatja egy [rendelkezésre állási csoportba](../../windows/manage-availability.md)
@@ -161,7 +161,7 @@ Javasoljuk, hogy a kísérleti üzembe helyezés során egy teljes HADR-megoldá
             -   [SAP-támogatás Megjegyzés #2753418 – lehetséges teljesítmény-romlás az időzítő tartaléka miatt](https://launchpad.support.sap.com/#/notes/2753418)
             -   [SAP-támogatás Megjegyzés #2791572 – teljesítmény romlása az Azure-beli Hyper-V VDSO-támogatásának hiánya miatt](https://launchpad.support.sap.com/#/notes/2791572)
             -   [SAP-támogatás Megjegyzés #2382421 – a hálózati konfiguráció optimalizálása a HANA-és az operációs rendszer szintjén](https://launchpad.support.sap.com/#/notes/2382421)
-            -   [SAP-támogatás Megjegyzés #2694118 – Red Hat Enterprise Linux HA Azure-beli bővítmény](https://launchpad.support.sap.com/#/notes/2694118)
+            -   [SAP-támogatás Megjegyzés #2694118 – Red Hat Enterprise Linux HA Add-On az Azure-ban](https://launchpad.support.sap.com/#/notes/2694118)
             -   [SAP-támogatás Megjegyzés #1984787 – SUSE LINUX Enterprise Server 12: telepítési megjegyzések](https://launchpad.support.sap.com/#/notes/1984787)
             -   [SAP-támogatás Megjegyzés #2002167-Red Hat Enterprise Linux 7. x: telepítés és frissítés](https://launchpad.support.sap.com/#/notes/0002002167)
             -   [SAP-támogatás Megjegyzés #2292690-SAP HANA DB: ajánlott operációsrendszer-beállítások a RHEL 7 rendszerhez](https://launchpad.support.sap.com/#/notes/0002292690)

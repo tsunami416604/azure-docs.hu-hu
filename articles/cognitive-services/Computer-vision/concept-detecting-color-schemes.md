@@ -12,10 +12,10 @@ ms.date: 02/08/2019
 ms.author: pafarley
 ms.custom: seodec18
 ms.openlocfilehash: af0c39ed8211ac2041d143112437ad5d6b384259
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "80244732"
 ---
 # <a name="detect-color-schemes-in-images"></a>Képek színsémáinak észlelése
@@ -75,12 +75,12 @@ A következő táblázat Computer Vision fekete-fehér kiértékelését mutatja
 
 | Kép | Fekete & fehér? |
 |-------|----------------|
-|![A Manhattanben található épületek fekete-fehér képe](./Images/bw_buildings.png) | igaz |
+|![A Manhattanben található épületek fekete-fehér képe](./Images/bw_buildings.png) | true |
 |![Egy kék ház és az első udvar](./Images/house_yard.png) | hamis |
 
 ## <a name="use-the-api"></a>Az API használata
 
-A színséma-észlelési funkció a [rendszerkép elemzése](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API részét képezi. Ezt az API-t natív SDK-n vagy REST-hívásokon keresztül hívhatja. Belefoglalás `Color` a **visualFeatures** lekérdezési paraméterbe. Ezután, amikor megkapja a teljes JSON-választ, egyszerűen elemezze a `"color"` szakasz tartalmának karakterláncát.
+A színséma-észlelési funkció a [rendszerkép elemzése](https://westcentralus.dev.cognitive.microsoft.com/docs/services/5adf991815e1060e6355ad44/operations/56f91f2e778daf14a499e1fa) API részét képezi. Ezt az API-t natív SDK-n vagy REST-hívásokon keresztül hívhatja. Belefoglalás `Color` a **visualFeatures** lekérdezési paraméterbe. Ezután, amikor megkapja a teljes JSON-választ, egyszerűen elemezze a szakasz tartalmának karakterláncát `"color"` .
 
 * [Gyors útmutató: Computer Vision .NET SDK](./quickstarts-sdk/client-library.md?pivots=programming-language-csharp)
 * [Gyors útmutató: rendszerkép elemzése (REST API)](./quickstarts/csharp-analyze.md)

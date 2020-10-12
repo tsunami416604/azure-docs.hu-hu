@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 1/10/2019
 ms.author: aahi
 ms.openlocfilehash: d15058126f43fff328acfc563ffd081164a69a90
-ms.sourcegitcommit: 537c539344ee44b07862f317d453267f2b7b2ca6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84710558"
 ---
 # <a name="language-and-region-support-for-the-bing-news-search-api"></a>A Bing News Search API nyelvi és területi támogatása
@@ -122,7 +122,7 @@ A lekérdezési paraméterben megadható ország/régió kódok listáját itt `
 
 A lekérdezési paraméterben megadható ország/régió kódok a következők: `cc` A lista módosítása változhat.  
 
-|Ország/régió|Országhívószám|  
+|Ország/régió|Országkód|  
 |---------------------|------------------|  
 |Argentína|AR|  
 |Ausztrália|AU|  
@@ -137,7 +137,7 @@ A lekérdezési paraméterben megadható ország/régió kódok a következők: 
 |Németország|DE|  
 |Hongkong (KKT)|HK|  
 |India|IN|  
-|Indonézia|ID|  
+|Indonézia|ID (Azonosító)|  
 |Olaszország|IT|  
 |Japán|JP|  
 |Dél-Korea|KR|  

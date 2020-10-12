@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 05/08/2020
 ms.author: tisande
 ms.openlocfilehash: f33cf20b76655a893fe7eebd9e6e6569d35de98f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83005954"
 ---
 # <a name="select-clause-in-azure-cosmos-db"></a>SELECT záradék Azure Cosmos DB
@@ -59,7 +59,7 @@ SELECT <select_specification>
 
 ## <a name="remarks"></a>Megjegyzések
 
-A `SELECT *` szintaxis csak akkor érvényes, ha a from záradék pontosan egy aliast deklarált. `SELECT *`identitás-kivetítést biztosít, amely akkor lehet hasznos, ha nincs szükség leképezésre. A SELECT * utasítás csak akkor érvényes, ha a FROM záradék meg van adva, és csak egyetlen bemeneti forrást mutat be.  
+A `SELECT *` szintaxis csak akkor érvényes, ha a from záradék pontosan egy aliast deklarált. `SELECT *` identitás-kivetítést biztosít, amely akkor lehet hasznos, ha nincs szükség leképezésre. A SELECT * utasítás csak akkor érvényes, ha a FROM záradék meg van adva, és csak egyetlen bemeneti forrást mutat be.  
   
 Mindkettő `SELECT <select_list>` `SELECT *` "szintaktikai cukor", és az alábbiakban látható egyszerű Select utasításokkal is megadható.  
   

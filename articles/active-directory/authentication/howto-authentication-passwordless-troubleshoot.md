@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: aakapo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: ecab82e43bff6c0d1d83c9c1cdc38cafd809e277
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89236662"
 ---
 # <a name="troubleshooting-for-hybrid-deployments-of-fido2-security-keys-in-azure-ad-preview"></a>Hibaelhárítás a FIDO2 biztonsági kulcsok hibrid üzembe helyezéséhez az Azure AD-ben (előzetes verzió)
@@ -46,7 +46,7 @@ A FIDO2 biztonsági kulcsainak és a helyszíni erőforrások hibrid elérésén
 
 A Windows Hello Face a legjobb megoldás a felhasználók regisztrálására szolgáló eszköz számára. A FIDO2 biztonsági kulcsai megosztott eszközökön való használatra készültek, vagy a vállalati Windows Hello-regisztráció akadályt jelent.
 
-Ha a Windows Hello Face megakadályozza, hogy a felhasználók kipróbálják a FIDO2 biztonsági kulcsának bejelentkezési forgatókönyvét, a felhasználók kikapcsolhatják a Hello Face bejelentkezést a **beállítások > bejelentkezési beállítások menüpontban**.
+Ha a Windows Hello Face megakadályozza, hogy a felhasználók kipróbálják a FIDO2 biztonsági kulcsának bejelentkezési forgatókönyvét, a felhasználók kikapcsolhatják a Hello Face bejelentkezést a **beállítások > Sign-In lehetőségre**kattintva.
 
 ### <a name="users-arent-able-to-use-fido2-security-keys-immediately-after-they-create-a-hybrid-azure-ad-joined-machine"></a>A felhasználók nem tudják azonnal használni a FIDO2 biztonsági kulcsait a hibrid Azure AD-hez csatlakoztatott számítógép létrehozása után
 
@@ -86,9 +86,9 @@ A rendszer a következő eseménynaplókat és beállításkulcs-adatokat gyűjt
 
 **Beállításkulcsok**
 
-* *HKEY_LOCAL_MACHINE \SOFTWARE\Policies\Microsoft\FIDO [ \* ]*
-* *HKEY_LOCAL_MACHINE \SOFTWARE\Policies\Microsoft\PasswordForWork \* [ \* ]*
-* *HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\Policies\PasswordForWork \* [ \* ]*
+* *HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\FIDO [ \* ]*
+* *HKEY_LOCAL_MACHINE\SOFTWARE\Policies\Microsoft\PasswordForWork\* [ \* ]*
+* *HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Policies\PasswordForWork\* [ \* ]*
 
 **Diagnosztikai adatok**
 

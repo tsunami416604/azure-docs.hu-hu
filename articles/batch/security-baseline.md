@@ -8,10 +8,10 @@ ms.date: 04/09/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: 1eb24871817f365efe58b8e687563727df74493c
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89400976"
 ---
 # <a name="azure-security-baseline-for-batch"></a>Azure biztonsági alapkonfiguráció a Batch szolgáltatáshoz
@@ -366,7 +366,7 @@ https://docs.microsoft.com/azure/security-center/security-center-identity-access
 
 **Felelősség**: ügyfél
 
-### <a name="34-utilize-single-sign-on-sso-with-azure-active-directory"></a>3,4: egyszeri bejelentkezés (SSO) kihasználása Azure Active Directory
+### <a name="34-utilize-single-sign-on-sso-with-azure-active-directory"></a>3,4: egyetlen Sign-On (SSO) kihasználása Azure Active Directory
 
 **Útmutató**: nem alkalmazható, míg a Azure batch támogatja az Azure ad-hitelesítést, az egyszeri bejelentkezés nem támogatott.
 
@@ -1135,7 +1135,7 @@ https://docs.microsoft.com/powershell/module/azurerm.keyvault/restore-azurekeyva
 
 ### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9,4: a biztonsági másolatok és az ügyfél által felügyelt kulcsok védelmének biztosítása
 
-**Útmutató**: ha a Azure Key Vault a Azure batch Pool Storage-fiókokhoz kapcsolódó kulcsok tárolására használatos, engedélyezze a helyreállítható törlést Azure Key Vault a kulcsok véletlen vagy rosszindulatú törléssel szembeni védelemmel való ellátásához.
+**Útmutató**: Ha Azure Key Vaultt használ a Azure batch Pool Storage-fiókokhoz kapcsolódó kulcsok tárolására, a kulcsok véletlen vagy rosszindulatú Törlés elleni megvédéséhez engedélyezze a Azure Key Vault Soft-Delete.
 
 A Soft delete engedélyezése a Azure Key Vaultban:
 

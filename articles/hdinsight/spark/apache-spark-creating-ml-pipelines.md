@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 07/22/2019
 ms.openlocfilehash: c270e9865aff30184ea236f56ab20ede78c5d577
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86075450"
 ---
 # <a name="create-an-apache-spark-machine-learning-pipeline"></a>Apache Spark Machine Learning-folyamat létrehozása
@@ -29,7 +29,7 @@ A transzformátorok és a kalkulátorok minden állapot nélküli példánya saj
 
 ## <a name="pipeline-example"></a>Példa a folyamatra
 
-Egy ML-folyamat gyakorlati használatának bemutatása érdekében ebben a példában a `HVAC.csv` HDInsight-fürt alapértelmezett tárolójában előre betöltött minta adatfájlt használunk, vagy az Azure Storage vagy a Data Lake Storage. A fájl tartalmának megtekintéséhez navigáljon a `/HdiSamples/HdiSamples/SensorSampleData/hvac` címtárhoz. `HVAC.csv`több időpontot tartalmaz, és a cél és a tényleges hőmérséklet is megadható a különböző épületekben található HVAC (*fűtő, szellőzés és légkondicionáló*) rendszerek esetében. A cél a modell betanítása az adatra, és egy adott épület előrejelzési hőmérsékletének előállítása.
+Egy ML-folyamat gyakorlati használatának bemutatása érdekében ebben a példában a `HVAC.csv` HDInsight-fürt alapértelmezett tárolójában előre betöltött minta adatfájlt használunk, vagy az Azure Storage vagy a Data Lake Storage. A fájl tartalmának megtekintéséhez navigáljon a `/HdiSamples/HdiSamples/SensorSampleData/hvac` címtárhoz. `HVAC.csv` több időpontot tartalmaz, és a cél és a tényleges hőmérséklet is megadható a különböző épületekben található HVAC (*fűtő, szellőzés és légkondicionáló*) rendszerek esetében. A cél a modell betanítása az adatra, és egy adott épület előrejelzési hőmérsékletének előállítása.
 
 A következő kód:
 
@@ -81,7 +81,7 @@ training = documents.toDF()
 A példában szereplő folyamat három szakaszból áll: `Tokenizer` és `HashingTF` (mindkettő transzformátor) és `Logistic Regression` (egy kalkulátor).  A DataFrame kinyert és elemzett adatait a `training` rendszer a folyamaton keresztül a `pipeline.fit(training)` hívásakor átfolyik.
 
 1. Első lépésként a a `Tokenizer` `SystemInfo` bemeneti oszlopot (amely a rendszerazonosító és a kor értékeiből áll) egy `words` kimeneti oszlopba osztja fel. Ezt az új `words` oszlopot a rendszer hozzáadja a DataFrame. 
-2. A második szakasza `HashingTF` átalakítja az új `words` oszlopot a szolgáltatás-vektorokra. Ezt az új `features` oszlopot a rendszer hozzáadja a DataFrame. Ezek az első két szakasz a transzformátorok. 
+2. A második szakasza `HashingTF` átalakítja az új `words` oszlopot a szolgáltatás-vektorokra. Ezt az új  `features` oszlopot a rendszer hozzáadja a DataFrame. Ezek az első két szakasz a transzformátorok. 
 3. A harmadik szakasz `LogisticRegression` egy kalkulátor, így a folyamat meghívja a metódust a létrehozásához `LogisticRegression.fit()` `LogisticRegressionModel` . 
 
 ```python

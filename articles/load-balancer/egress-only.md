@@ -1,5 +1,5 @@
 ---
-title: Csak kimenő terheléselosztó konfigurációja
+title: Csak kifelé irányuló terheléselosztó konfigurációja
 titleSuffix: Azure Load Balancer
 description: Ebből a cikkből megtudhatja, hogyan hozható létre belső terheléselosztó kimenő NAT-vel
 services: load-balancer
@@ -14,13 +14,13 @@ ms.workload: infrastructure-services
 ms.date: 08/07/2020
 ms.author: allensu
 ms.openlocfilehash: b44f626546b313299701687157b37b7df021bd61
-ms.sourcegitcommit: bfeae16fa5db56c1ec1fe75e0597d8194522b396
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88038257"
 ---
-# <a name="outbound-only-load-balancer-configuration"></a>Csak kimenő terheléselosztó konfigurációja
+# <a name="outbound-only-load-balancer-configuration"></a>Csak kifelé irányuló terheléselosztó konfigurációja
 
 Belső és külső standard Load balancerek együttes használata a belső terheléselosztó mögötti virtuális gépek kimenő kapcsolatának létrehozásához. 
 
@@ -63,7 +63,7 @@ Hozzon létre egy virtuális gépet az új virtuális hálózaton.
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com).
 
-2. A képernyő bal felső részén válassza az **erőforrás létrehozása > hálózatkezelés > virtuális hálózat** lehetőséget, vagy keressen rá a **virtuális hálózatra** a keresőmezőbe.
+2. Válassza ki a képernyő bal felső részén az **Erőforrás létrehozása > Hálózatkezelés > Virtuális hálózat** lehetőséget, vagy a keresőmezőben keressen rá a **virtuális hálózat** kifejezésre.
 
 2. A **virtuális hálózat létrehozása**területen adja meg vagy válassza ki ezt az információt az **alapok** lapon:
 
@@ -71,9 +71,9 @@ Hozzon létre egy virtuális gépet az új virtuális hálózaton.
     |------------------|-----------------------------------------------------------------|
     | **Projekt részletei**  |                                                                 |
     | Előfizetés     | Válassza ki az Azure-előfizetését                                  |
-    | Erőforráscsoport   | Válassza az **Új létrehozása** lehetőséget. </br> Adja meg a **myresourcegrouplb erőforráscsoportban**. </br> Válassza az **OK** lehetőséget. |
-    | **Példány részletei** |                                                                 |
-    | Name (Név)             | **MyVNet** megadása                                    |
+    | Erőforráscsoport   | Válassza az **Új létrehozása** lehetőséget. </br> Adja meg a **myresourcegrouplb erőforráscsoportban**. </br> Kattintson az **OK** gombra. |
+    | **Példány adatai** |                                                                 |
+    | Name             | **MyVNet** megadása                                    |
     | Régió           | Válassza az **USA 2. keleti** régióját |
 
 3. Válassza az **IP-címek** lapot, vagy válassza a **következő: IP-címek** gombot az oldal alján.
@@ -82,7 +82,7 @@ Hozzon létre egy virtuális gépet az új virtuális hálózaton.
 
     | Beállítás            | Érték                      |
     |--------------------|----------------------------|
-    | IPv4-címterület | Adja meg a **10.1.0.0/16** értéket |
+    | IPv4-címtartomány | Adja meg a **10.1.0.0/16** értéket |
 
 5. Az **alhálózat neve**alatt válassza ki az **alapértelmezett**szót.
 
@@ -103,7 +103,7 @@ Hozzon létre egy virtuális gépet az új virtuális hálózaton.
     |--------------------|----------------------------|
     | Bástya neve | **MyBastionHost** megadása |
     | AzureBastionSubnet címterület | Adja meg a **10.1.1.0/24** értéket |
-    | Nyilvános IP-cím | Válassza az **Új létrehozása** lehetőséget. </br> A **név**mezőbe írja be a következőt: **myBastionIP**. </br> Válassza az **OK** lehetőséget. |
+    | Nyilvános IP-cím | Válassza az **Új létrehozása** lehetőséget. </br> A **név**mezőbe írja be a következőt: **myBastionIP**. </br> Kattintson az **OK** gombra. |
 
 
 8. Válassza a **felülvizsgálat + létrehozás** lapot, vagy kattintson a **felülvizsgálat + létrehozás** gombra.
@@ -121,7 +121,7 @@ Hozzon létre egy virtuális gépet az új virtuális hálózaton.
     | **Projekt részletei** |  |
     | Előfizetés | Válassza ki az Azure-előfizetését |
     | Erőforráscsoport | **Myresourcegrouplb erőforráscsoportban** kiválasztása |
-    | **Példány részletei** |  |
+    | **Példány adatai** |  |
     | Virtuális gép neve | **MyVM** megadása |
     | Régió | Válassza az **USA 2. keleti** régióját |
     | Rendelkezésre állási beállítások | Válassza az **infrastruktúra-redundancia nem szükséges** lehetőséget |
@@ -132,9 +132,9 @@ Hozzon létre egy virtuális gépet az új virtuális hálózaton.
     | Felhasználónév | Adjon meg egy felhasználónevet |
     | Jelszó | Adja meg a jelszót |
     | Jelszó megerősítése | Jelszó újbóli megadása |
-    | **Bejövőport-szabályok** |  |
+    | **Bejövő portok szabályai** |  |
     | Nyilvános bejövő portok | Válassza ki a **kijelölt portok engedélyezése** lehetőséget |
-    | Bejövő portok kiválasztása | **RDP kiválasztása (3389)** |
+    | Válassza ki a bejövő portokat | **RDP kiválasztása (3389)** |
 
 3. Válassza a **hálózatkezelés** lapot, vagy válassza a **Tovább: lemezek**, majd a **Tovább: hálózatkezelés**lehetőséget.
   
@@ -158,7 +158,7 @@ Hozzon létre egy virtuális gépet az új virtuális hálózaton.
     | **Figyelés** |  |
     | Rendszerindítási diagnosztika | Kijelölés **kikapcsolva** |
    
-7. Válassza az **Áttekintés + létrehozás** lehetőséget. 
+7. Válassza a **Felülvizsgálat + létrehozás** lehetőséget. 
   
 8. Tekintse át a beállításokat, majd kattintson a **Létrehozás**gombra.
 
@@ -184,7 +184,7 @@ Adja hozzá a létrehozott virtuális gépet a háttérrendszer-készlethez.  Ez
     | Name (Név)                   | **MyInternalLoadBalancer** megadása                                   |
     | Régió         | Válassza az **USA 2. keleti régiója** lehetőséget.                                        |
     | Típus          | Válassza a **belső**lehetőséget.                                        |
-    | Termékváltozat           | **Standard** kiválasztása |
+    | SKU           | **Standard** kiválasztása |
     | Virtuális hálózat | Válassza ki az előző lépésben létrehozott **myVNet** . |
     | Alhálózat  | Válassza ki az előző lépésben létrehozott **myBackendSubnet** . |
     | IP-cím hozzárendelése | Válassza a **dinamikus**lehetőséget. |
@@ -206,7 +206,7 @@ Adja hozzá a létrehozott virtuális gépet a háttérrendszer-készlethez.  Ez
     | Name (Név)                   | **MyPublicLoadBalancer** megadása                                   |
     | Régió         | Válassza az **USA 2. keleti régiója** lehetőséget.                                        |
     | Típus          | Válassza a **Nyilvános** lehetőséget.                                        |
-    | Termékváltozat           | **Standard** kiválasztása |
+    | SKU           | **Standard** kiválasztása |
     | Nyilvános IP-cím | Válassza az **Új létrehozása** lehetőséget. |
     | Nyilvános IP-cím | Írja be a **myFrontendIP** szöveget a szövegmezőbe.|
     | A rendelkezésre állási zóna | **Zóna kiválasztása – redundáns** |
@@ -256,7 +256,7 @@ A háttérbeli címkészlet **myPublicBackendPool**létrehozása:
 
 4. Adja meg a virtuális gép létrehozásakor megadott felhasználónevet és jelszót.
 
-5. Válassza a **Kapcsolódás** lehetőséget.
+5. Kattintson a **Csatlakozás** gombra.
 
 6. Nyissa meg az Internet Explorert.
 
@@ -291,7 +291,7 @@ A háttérbeli címkészlet **myPublicBackendPool**létrehozása:
 
 4. Adja meg a virtuális gép létrehozásakor megadott felhasználónevet és jelszót.
 
-5. Válassza a **Kapcsolódás** lehetőséget.
+5. Kattintson a **Csatlakozás** gombra.
 
 6. Nyissa meg az Internet Explorert.
 
@@ -307,7 +307,7 @@ Ha már nincs rá szükség, törölje az erőforráscsoportot, a terheléselosz
 
 Ehhez válassza ki az erőforráscsoport **myresourcegrouplb erőforráscsoportban** , majd válassza a **Törlés**lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban létrehozta a "kimenő forgalom" konfigurációt a nyilvános és belső terheléselosztó kombinációjával.  
 

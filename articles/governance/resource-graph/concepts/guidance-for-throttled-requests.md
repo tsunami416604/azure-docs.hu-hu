@@ -5,10 +5,10 @@ ms.date: 08/03/2020
 ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.openlocfilehash: c8576fe38433026a28a3fb09a03332b5dd756bab
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89006006"
 ---
 # <a name="guidance-for-throttled-requests-in-azure-resource-graph"></a>Útmutató a szabályozott kérelmekhez az Azure Resource Graph-ban
@@ -118,7 +118,7 @@ A lekérdezéseket az előfizetés, az erőforráscsoport vagy az egyes erőforr
 
 ## <a name="staggering-queries"></a>Lekérdezések eltolása
 
-A szabályozás érvénybe léptetése miatt a lekérdezéseket érdemes lépcsőzetesen megfogalmazni. Vagyis a 60-lekérdezések egyidejű küldése helyett a lekérdezéseket négy, 5 másodperces Windows rendszerre kell osztani:
+A szabályozás érvénybe léptetése miatt a lekérdezéseket érdemes lépcsőzetesen megfogalmazni. Vagyis a 60-lekérdezések egyidejű küldése helyett a lekérdezéseket a 4 5-Second Windowsba kell osztani:
 
 - Nem lépcsőzetes lekérdezés ütemezése
 

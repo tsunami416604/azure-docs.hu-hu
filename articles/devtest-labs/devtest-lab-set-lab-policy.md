@@ -4,10 +4,10 @@ description: Megtudhatja, hogyan határozhat meg olyan labor-házirendeket, mint
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: a7ada980b2a251b8164f2e1a20f65da54c89ba72
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90530352"
 ---
 # <a name="manage-all-policies-for-a-lab-in-azure-devtest-labs"></a>A labor összes szabályzatának kezelése Azure DevTest Labs
@@ -29,7 +29,7 @@ Az engedélyezett virtuálisgép-méretek beállítására szolgáló szabályza
 
 1. Ha engedélyezi ezt a házirendet, válasszon ki egy vagy több virtuálisgép-méretet, amelyek a laborban hozhatók létre.
 
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 ## <a name="set-virtual-machines-per-user"></a>Virtuális gépek beállítása felhasználónként
 A **virtuális gépekre** vonatkozó házirend felhasználónként megadhatja, hogy az egyes felhasználók hány virtuális gépet hozhatnak létre. Ha a felhasználó egy virtuális gépet próbál létrehozni vagy igényelni, amikor a felhasználói korlát teljesült, egy hibaüzenet jelzi, hogy a virtuális gép nem hozható létre/nem igényelhető. 
@@ -42,7 +42,7 @@ A **virtuális gépekre** vonatkozó házirend felhasználónként megadhatja, h
 
 1. Válassza az **Igen** lehetőséget, ha korlátozni szeretné az SSD-t (SSD-t) használó virtuális gépek számát. Ha nem szeretné korlátozni az SSD-t használó virtuális gépek számát, válassza a **nem**lehetőséget. Ha az **Igen**lehetőséget választja, adjon meg egy értéket, amely az SSD használatával létrehozható virtuális gépek számát jelzi. 
 
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 ## <a name="set-virtual-machines-per-lab"></a>Virtuális gépek beállítása tesztkörnyezetben
 A **virtuális gépekre** vonatkozó szabályzat a laborban meghatározza az aktuális laborhoz létrehozható virtuális gépek számát. Ha a felhasználó egy virtuális gépet próbál létrehozni a labor korlátjának teljesülése esetén, a hibaüzenet azt jelzi, hogy a virtuális gép nem hozható létre. 
@@ -55,7 +55,7 @@ A **virtuális gépekre** vonatkozó szabályzat a laborban meghatározza az akt
 
 1. Válassza az **Igen** lehetőséget, ha korlátozni szeretné az SSD-t (SSD-t) használó virtuális gépek számát. Ha nem szeretné korlátozni az SSD-t használó virtuális gépek számát, válassza a **nem**lehetőséget. Ha az **Igen**lehetőséget választja, adjon meg egy értéket, amely az SSD használatával létrehozható virtuális gépek számát jelzi. 
 
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 ## <a name="set-auto-shutdown"></a>Automatikus leállítás beállítása
 Az automatikus leállítási szabályzat segít a laborban lévő virtuális gépek leállításának időpontjának meghatározásában.
@@ -72,7 +72,7 @@ Az automatikus leállítási szabályzat segít a laborban lévő virtuális gé
 
    A webhookokkal kapcsolatos további információkért lásd: [webhook vagy API Azure-függvény létrehozása](../azure-functions/functions-bindings-http-webhook.md). 
 
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 Alapértelmezés szerint, ha engedélyezve van, ez a házirend az aktuális laborban található összes virtuális gépre vonatkozik. Ha egy adott virtuális gépről szeretné eltávolítani a beállítást, nyissa meg a virtuális gép felügyeleti paneljét, és módosítsa az **automatikus leállítás** beállítást.
 
@@ -111,7 +111,7 @@ Az automatikus indítási házirend segítségével megadhatja, hogy mikor indul
 
 3. Ha engedélyezi ezt a házirendet, határozza meg az ütemezett kezdési időpontot, az időzónát és a hét azon napját, amelyre az idő vonatkozik. 
 
-4. Válassza a **Mentés** lehetőséget.
+4. Kattintson a **Mentés** gombra.
 
 Ha engedélyezve van, a rendszer nem alkalmazza automatikusan a szabályzatot az aktuális laborban található virtuális gépekre. Ha egy adott virtuális gépre szeretné alkalmazni a beállítást, nyissa meg a virtuális gép felügyeleti paneljét, és módosítsa az **automatikus indítási** beállítást.
 

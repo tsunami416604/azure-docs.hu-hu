@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 02/25/2019
 ms.author: srrengar
 ms.openlocfilehash: 58319b47c78a85b4f06c2c834db20f6c42cc1939
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86247421"
 ---
 # <a name="monitor-and-diagnose-services-in-a-local-machine-development-setup"></a>Szolgáltatások monitorozása és diagnosztizálása egy helyi gép fejlesztési beállításánál
@@ -53,7 +53,7 @@ A **Actor-sablonokból** létrehozott projektek esetében (állapot nélküli va
 
 Miután hozzáadta az egyéni ETW-nyomkövetést a szolgáltatás kódjához, felépítheti, telepítheti és futtathatja az alkalmazást, hogy megtekintse az esemény (eke) t a diagnosztikai események megjelenítőben. Ha az **F5 billentyűvel**végzi az alkalmazás hibakeresését, a rendszer automatikusan megnyitja a diagnosztikai események megjelenítőjét.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ugyanaz a nyomkövetési kód, amelyet a fenti alkalmazáshoz adott a helyi diagnosztika esetében, az alkalmazás Azure-fürtön való futtatásakor használható eszközökkel fog működni. Tekintse át ezeket a cikkeket, amelyek az eszközök különböző lehetőségeit tárgyalják, és leírják, hogyan állíthatja be őket.
 
 * [Naplók összegyűjtése a Azure Diagnostics](./service-fabric-diagnostics-event-aggregation-wad.md)

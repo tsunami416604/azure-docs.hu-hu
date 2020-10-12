@@ -11,10 +11,10 @@ ms.author: aashishb
 author: aashishb
 ms.date: 04/27/2020
 ms.openlocfilehash: 405b0aa051d0d1142d7dd4ccbf2bca4ef9cc3545
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89650591"
 ---
 # <a name="azure-machine-learning-monitoring-data-reference"></a>Az Azure Machine learning monitorozási adatreferenciája
@@ -128,7 +128,7 @@ Az alábbi táblázatok felsorolják az összes metrika Azure Machine Learning g
 
 **Modell**
 
-| Metrika | Unit (Egység) | Description |
+| Metrika | Egység | Leírás |
 | ----- | ----- | ----- |
 | A modell üzembe helyezése nem sikerült | Darabszám | A sikertelen telepítési modellek száma. |
 | A modell üzembe helyezése elindult | Darabszám | A modell központi telepítésének száma megkezdődött. |
@@ -140,7 +140,7 @@ Az alábbi táblázatok felsorolják az összes metrika Azure Machine Learning g
 
 A kvóta adatai csak Azure Machine Learning számítási feladatokhoz használhatók.
 
-| Metrika | Unit (Egység) | Description |
+| Metrika | Egység | Leírás |
 | ----- | ----- | ----- |
 | Aktív magok | Darabszám | Az aktív számítási magok száma. |
 | Aktív csomópontok | Darabszám | Az aktív csomópontok száma. |
@@ -158,7 +158,7 @@ A kvóta adatai csak Azure Machine Learning számítási feladatokhoz használha
 
 A kvóta metrikáinak szűrésére a következő dimenziók használhatók:
 
-| Méret | Elérhető metrikák (k) | Description |
+| Méret | Elérhető metrikák (k) | Leírás |
 | ---- | ---- | ---- |
 | Fürt neve | Az összes kvóta mérőszáma | A számítási példány neve. |
 | VM-család neve | Kvóta kihasználtsága (%) | A fürt által használt virtuálisgép-család neve. |
@@ -166,25 +166,25 @@ A kvóta metrikáinak szűrésére a következő dimenziók használhatók:
 
 **Erőforrás**
 
-| Metrika | Unit (Egység) | Description |
+| Metrika | Egység | Leírás |
 | ----- | ----- | ----- |
 | CpuUtilization | Százalék | A CPU százalékát használták egy adott csomóponthoz egy futtatási/feladatban. Ez a metrika csak akkor jelenik meg, ha egy művelet egy csomóponton fut. Egy adott feladattípus egy vagy több csomópontot is használhat. Ez a mérőszám egy csomóponton van közzétéve. |
 | GpuUtilization | Százalék | A GPU hány százalékát használták egy adott csomóponthoz egy futtatási/feladatban. Egy csomópont egy vagy több GPU-val rendelkezhet. Ez a mérőszám egy GPU-onként van közzétéve. |
 
 Az alábbi méretek használhatók az erőforrás-metrikák szűréséhez:
 
-| Méret | Description |
+| Méret | Leírás |
 | ----- | ----- |
 | CreatedTime | |
 | DeviceId | Az eszköz azonosítója (GPU). Csak a GpuUtilization esetében érhető el. |
 | NodeId | Annak a csomópontnak az azonosítója, amelybe a feladatot futtatja. |
 | RunId | A futtatási/feladatokhoz tartozó azonosító. |
 
-**Futtatás**
+**Futtassa**
 
 A képzések futtatásával kapcsolatos információk.
 
-| Metrika | Unit (Egység) | Description |
+| Metrika | Egység | Leírás |
 | ----- | ----- | ----- |
 | Befejezett futtatások | Darabszám | A befejezett futtatások száma. |
 | Sikertelen futtatások | Darabszám | A sikertelen futtatások száma. |
@@ -192,7 +192,7 @@ A képzések futtatásával kapcsolatos információk.
 
 A következő méretek használhatók a futtatási metrikák szűréséhez:
 
-| Méret | Description |
+| Méret | Leírás |
 | ---- | ---- |
 | ComputeType | A futtatáshoz használt számítási típus. |
 | PipelineStepType | A Futtatás során használt [PipelineStep](https://docs.microsoft.com/python/api/azureml-pipeline-core/azureml.pipeline.core.pipelinestep?view=azure-ml-py&preserve-view=true) típusa. |

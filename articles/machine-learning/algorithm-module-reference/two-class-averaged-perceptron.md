@@ -1,7 +1,7 @@
 ---
-title: 'Kétosztályos átlagú Perceptron: modul-hivatkozás'
+title: 'Two-Class átlagos Perceptron: modul-hivatkozás'
 titleSuffix: Azure Machine Learning
-description: Ismerje meg, hogyan használható a kétosztályos átlagú Perceptron modul a Azure Machine Learningban egy gépi tanulási modell létrehozásához az átlagos Perceptron algoritmus alapján.
+description: Megtudhatja, hogyan használhatja a Azure Machine Learning Two-Class átlagos Perceptron modulját egy gépi tanulási modell létrehozásához az átlagos Perceptron algoritmus alapján.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,13 +10,13 @@ author: likebupt
 ms.author: keli19
 ms.date: 04/22/2020
 ms.openlocfilehash: 3e5351ed2d400e0b1a10a913bb62391851030053
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90907756"
 ---
-# <a name="two-class-averaged-perceptron-module"></a>Kétosztályos átlagú Perceptron modul
+# <a name="two-class-averaged-perceptron-module"></a>Two-Class átlagos Perceptron modul
 
 Ez a cikk a Azure Machine Learning Designer egyik modulját ismerteti.
 
@@ -30,7 +30,7 @@ Az *átlagos perceptron módszer* egy neurális hálózat korai és egyszerű ve
 
 Az egyszerűbb perceptron modellek a lineárisan elválasztható minták tanulására alkalmasak, míg a neurális hálózatok (különösen a mély neurális hálózatok) összetettebb osztálybeli határokat tudnak modellezni. Azonban a perceptrons gyorsabbak, és mivel az eseteket a sorosan dolgozzák fel, a perceptrons folyamatos képzéssel használható.
 
-## <a name="how-to-configure-two-class-averaged-perceptron"></a>Kétosztályos átlagú Perceptron konfigurálása
+## <a name="how-to-configure-two-class-averaged-perceptron"></a>Two-Class átlagos Perceptron konfigurálása
 
 1.  Adja hozzá a **kétosztályos átlagú Perceptron-** modult a folyamathoz.  
 

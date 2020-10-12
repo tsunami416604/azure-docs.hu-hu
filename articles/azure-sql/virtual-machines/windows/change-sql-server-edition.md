@@ -14,10 +14,10 @@ ms.author: mathoma
 ms.reviewer: jroth
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 06587d80851839188f8d8dcfa870d331e8fa96d3
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91293356"
 ---
 # <a name="in-place-change-of-sql-server-edition-on-azure-vm"></a>Az Azure-beli virtuális gépen futó SQL Server kiadásának módosítása helyben
@@ -35,7 +35,7 @@ A SQL Server kiadásának helyben történő megváltoztatásához a következő
 
 - Egy [Azure-előfizetés](https://azure.microsoft.com/free/).
 - Az [SQL VM erőforrás-szolgáltatónál](sql-vm-resource-provider-register.md)regisztrált [Windows-SQL Server VM](https://docs.microsoft.com/azure/virtual-machines/windows/sql/virtual-machines-windows-portal-sql-server-provision) .
-- Állítsa be az adathordozót SQL Server **kívánt kiadásával** . A frissítési [garanciával](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default) rendelkező ügyfelek a [mennyiségi licencelési központból](https://www.microsoft.com/Licensing/servicecenter/default.aspx)szerezhetik be a telepítési adathordozót. Azok az ügyfelek, akik nem rendelkeznek frissítési garanciával, a kívánt kiadással rendelkező Azure Marketplace SQL Server VM-rendszerkép telepítési adathordozóját használhatják (általában a következő helyen található `C:\SQLServerFull` ). 
+- Állítsa be az adathordozót SQL Server **kívánt kiadásával** . A [Frissítési garanciával](https://www.microsoft.com/licensing/licensing-programs/software-assurance-default) rendelkező ügyfelek a [Mennyiségilicenc-szolgáltatási központból](https://www.microsoft.com/Licensing/servicecenter/default.aspx) szerezhetik be a telepítési adathordozót. Azok az ügyfelek, akik nem rendelkeznek frissítési garanciával, a kívánt kiadással rendelkező Azure Marketplace SQL Server VM-rendszerkép telepítési adathordozóját használhatják (általában a következő helyen található `C:\SQLServerFull` ). 
 
 
 ## <a name="upgrade-an-edition"></a>Kiadás frissítése

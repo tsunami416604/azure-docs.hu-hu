@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 05/30/2018
 ms.author: kumud
 ms.openlocfilehash: 1c23244707179e05c63ed44b5915e58eefd3f4a3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84705049"
 ---
 # <a name="diagnose-a-virtual-machine-routing-problem"></a>Virtuális gép útválasztási problémáinak diagnosztizálása
@@ -85,7 +85,7 @@ Az előző kimenetben a hálózati adapter neve *myVMNic1*.
 
 ## <a name="diagnose-using-azure-cli"></a>Diagnosztizálás az Azure CLI használatával
 
-Az alábbi parancsokat futtathatja a [Azure Cloud Shell](https://shell.azure.com/bash), vagy futtathatja a CLI-t a számítógépről is. Ehhez a cikkhez az Azure CLI 2.0.32 vagy újabb verziójára van szükség. A telepített verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](/cli/azure/install-azure-cli). Ha helyileg futtatja az Azure CLI-t, a `az login` [szükséges engedélyekkel](virtual-network-network-interface.md#permissions)rendelkező fiókkal is futtatnia kell az Azure-ba, és be kell jelentkeznie.
+Az alábbi parancsokat futtathatja a  [Azure Cloud Shell](https://shell.azure.com/bash), vagy futtathatja a CLI-t a számítógépről is. Ehhez a cikkhez az Azure CLI 2.0.32 vagy újabb verziójára van szükség. A telepített verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne: [Az Azure CLI telepítése](/cli/azure/install-azure-cli). Ha helyileg futtatja az Azure CLI-t, a `az login` [szükséges engedélyekkel](virtual-network-network-interface.md#permissions)rendelkező fiókkal is futtatnia kell az Azure-ba, és be kell jelentkeznie.
 
 Szerezze be a hálózati adapter érvényes útvonalait az [az Network NIC show-effektív-Route-Table](/cli/azure/network/nic#az-network-nic-show-effective-route-table)paranccsal. A következő példa egy *myVMNic1* nevű hálózati adapter érvényes útvonalait olvassa be, amely egy *myResourceGroup*nevű erőforráscsoport:
 

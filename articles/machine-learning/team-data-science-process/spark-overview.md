@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 3aa33efa9aa416ad1dfefd2fe957ce04b2b14432
-ms.sourcegitcommit: 0100d26b1cac3e55016724c30d59408ee052a9ab
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86027460"
 ---
 # <a name="overview-of-data-science-using-spark-on-azure-hdinsight"></a>Az adatelemzés áttekintése az Azure HDInsight Spark használatával
@@ -50,9 +50,9 @@ Ezeket a jegyzetfüzeteket a Jupyter notebook Server pySpark3 kernelében kell f
 > [!NOTE]
 > A légitársaság adatkészlete a Spark 2,0 notebookokhoz lett hozzáadva, így jobban szemlélteti a besorolási algoritmusok használatát. Tekintse meg a következő hivatkozásokat a légitársaságok időpontjának indulási adatkészletével és az időjárási adatkészlettel kapcsolatban:
 > 
-> - A légitársaságok időpontjának kiindulási adatvédelme:[https://www.transtats.bts.gov/ONTIME/](https://www.transtats.bts.gov/ONTIME/)
+> - A légitársaságok időpontjának kiindulási adatvédelme: [https://www.transtats.bts.gov/ONTIME/](https://www.transtats.bts.gov/ONTIME/)
 > 
-> - Repülőtér időjárási adatkészletei:[https://www.ncdc.noaa.gov/](https://www.ncdc.noaa.gov/)
+> - Repülőtér időjárási adatkészletei: [https://www.ncdc.noaa.gov/](https://www.ncdc.noaa.gov/)
 
 <!-- -->
 

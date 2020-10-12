@@ -1,7 +1,7 @@
 ---
-title: 'Kétosztályos logisztikai regresszió: modul-hivatkozás'
+title: 'Two-Class logisztikai regresszió: modul leírása'
 titleSuffix: Azure Machine Learning
-description: Ismerje meg, hogyan használható a kétosztályos logisztikai regressziós modul a Azure Machine Learning egy logisztikai regressziós modell létrehozásához, amely két (és csak kettő) eredmény előrejelzésére használható.
+description: Megtudhatja, hogyan használhatja a Azure Machine Learning Two-Class logisztikai regressziós modulját egy logisztikai regressziós modell létrehozásához, amely két (és csak két) eredmény előrejelzésére használható.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,13 +10,13 @@ author: likebupt
 ms.author: keli19
 ms.date: 04/22/2020
 ms.openlocfilehash: 525293c7ae3d0af49f6deaa0ce9d3cb037d9ba38
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90907705"
 ---
-# <a name="two-class-logistic-regression-module"></a>Kétosztályos logisztikai regressziós modul
+# <a name="two-class-logistic-regression-module"></a>Two-Class logisztikai regressziós modul
 
 Ez a cikk a Azure Machine Learning Designer egyik modulját ismerteti.
 

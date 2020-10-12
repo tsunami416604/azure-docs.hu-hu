@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 04/08/2020
 ms.author: kumud
 ms.openlocfilehash: 416ca556e298fa088916a554860d05725bc1cf72
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86045501"
 ---
 # <a name="plan-virtual-networks"></a>Virtuális hálózatok tervezése
@@ -85,7 +85,7 @@ Az Azure több alapértelmezett útvonalat hoz létre a kimenő forgalomhoz egy 
 
 Ha egyéni útválasztást kell megvalósítani, javasoljuk, hogy ismerkedjen meg az [Azure-beli útválasztással](virtual-networks-udr-overview.md).
 
-## <a name="connectivity"></a>Kapcsolatok
+## <a name="connectivity"></a>Kapcsolat
 
 Az Azure VPN Gateway használatával virtuális hálózatokat is összekapcsolhat más virtuális hálózatokkal vagy a helyszíni hálózattal.
 
@@ -115,4 +115,4 @@ A házirendek a következő hierarchiára lesznek alkalmazva: felügyeleti csopo
 
 ## <a name="next-steps"></a>További lépések
 
-Ismerje meg a [virtuális hálózat](manage-virtual-network.md), az [alhálózat és a szolgáltatás végpontjának](virtual-network-manage-subnet.md), a [hálózati adapter](virtual-network-network-interface.md) [, a társítás, a](virtual-network-manage-peering.md) [hálózat és az alkalmazás biztonsági csoportjának](manage-network-security-group.md), illetve az [útválasztási táblázatnak](manage-route-table.md)a feladatait, beállításait és lehetőségeit.
+Ismerje meg a [virtuális hálózat](manage-virtual-network.md), az [alhálózat és a szolgáltatás végpontjának](virtual-network-manage-subnet.md), a [hálózati adapter](virtual-network-network-interface.md) [, a társítás, a](virtual-network-manage-peering.md)  [hálózat és az alkalmazás biztonsági csoportjának](manage-network-security-group.md), illetve az [útválasztási táblázatnak](manage-route-table.md)a feladatait, beállításait és lehetőségeit.

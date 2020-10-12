@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 11/21/2018
 ms.author: srrengar
 ms.openlocfilehash: e1871df962a26def8c12000f8b8bc0cf31bae9a0
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86247659"
 ---
 # <a name="application-logging"></a>Alkalmazásnaplózás
@@ -32,6 +32,6 @@ Amikor létrehoz egy Service Fabric megoldást egy sablonból a Visual Studióba
 
 Fontos, hogy alaposan megtervezze, hogyan fogja kiépíteni a kódot. A megfelelő kialakítási terv segít elkerülni a kód alapjainak esetleges destabilizálása, majd a kód visszavonása szükséges. A kockázat csökkentése érdekében olyan rendszerállapot-függvénytárat választhat, mint például a Microsoft [. Extensions. Logging](https://www.nuget.org/packages/Microsoft.Extensions.Logging/), amely a Microsoft ASP.net Core része. ASP.NET Core rendelkezik egy [ILogger](/dotnet/api/microsoft.extensions.logging.ilogger) -felülettel, amely a választott szolgáltatóval használható, és minimalizálja a meglévő kódra gyakorolt hatást. A kódot a Windows-és Linux-ASP.NET Coreon, a teljes .NET-keretrendszerben is használhatja, így a rendszerállapot-kódok szabványosítva vannak.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Miután kiválasztotta a naplózási szolgáltatót az alkalmazások és szolgáltatások kiválasztásához, a naplókat és az eseményeket összesíteni kell, mielőtt bármilyen Analysis platformba el lehetne őket juttatni. A Azure Monitor ajánlott lehetőségek megismeréséhez olvassa el a [Application Insights](service-fabric-diagnostics-event-analysis-appinsights.md) és a [EventFlow segítségével](service-fabric-diagnostics-event-aggregation-eventflow.md) című témakört.

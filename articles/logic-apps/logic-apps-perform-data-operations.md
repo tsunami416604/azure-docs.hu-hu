@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 09/20/2019
 ms.openlocfilehash: baa6e5732221d120ff71217a3a86a942794c53f4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84710371"
 ---
 # <a name="perform-data-operations-in-azure-logic-apps"></a>Adatműveletek végrehajtása a Azure Logic Appsban
@@ -29,20 +29,20 @@ Ezek a táblázatok összefoglalják a felhasználható adatműveleteket, amelye
 
 Ezek a műveletek segítenek a tömbökben tárolt adatmennyiségek kezelésében.
 
-| Műveletek | Description |
+| Művelet | Leírás |
 |--------|-------------|
 | [**CSV-tábla létrehozása**](#create-csv-table-action) | Hozzon létre egy vesszővel tagolt (CSV) táblázatot egy tömbből. |
 | [**HTML-tábla létrehozása**](#create-html-table-action) | Hozzon létre egy HTML-táblázatot egy tömbből. |
 | [**Tömb szűrése**](#filter-array-action) | Tömb részhalmazának létrehozása egy tömbből a megadott szűrő vagy feltétel alapján. |
 | [**Csatlakozás**](#join-action) | Hozzon létre egy karakterláncot egy tömb összes eleméből, és válassza el az egyes elemeket a megadott karakterrel. |
-| [**Válassza ezt:**](#select-action) | Hozzon létre egy tömböt a megadott tulajdonságok közül egy másik tömb összes eleméhez. |
+| [**Válassza**](#select-action) | Hozzon létre egy tömböt a megadott tulajdonságok közül egy másik tömb összes eleméhez. |
 ||| 
 
 **JSON-műveletek**
 
 Ezek a műveletek segítenek JavaScript Object Notation (JSON) formátumban tárolt adatmennyiségek kezelésében.
 
-| Műveletek | Description |
+| Művelet | Leírás |
 |--------|-------------|
 | [**Összeállítás**](#compose-action) | Hozzon létre egy üzenetet vagy karakterláncot több olyan bemenetből, amely különböző adattípusokkal rendelkezhet. Ezt a karakterláncot ezután egyetlen bemenetként használhatja, és nem kell ismételten megadnia ugyanazt a bemenetet. Létrehozhat például egy JSON-üzenetet különböző bemenetekről. |
 | [**JSON-elemzés**](#parse-json-action) | Felhasználóbarát adattokeneket hozhat létre a JSON-tartalmak tulajdonságaihoz, így könnyebben használhatja a logikai alkalmazásaiban található tulajdonságokat. |

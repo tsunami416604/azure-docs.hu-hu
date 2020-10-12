@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 12/16/2019
 ms.author: duau
 ms.openlocfilehash: a5829399b70871903c8eb433b95e0cb09e5d2c60
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89398086"
 ---
 # <a name="create-and-manage-expressroute-public-peering"></a>ExpressRoute nyilvános társának létrehozása és kezelése
@@ -28,7 +28,7 @@ Ebből a cikkből megtudhatja, hogyan hozhat létre és kezelhet nyilvános tár
 >A nyilvános társítás elavult. Az új ExpressRoute-áramkörökben nem hozhatók létre nyilvános társak. Ha egy új ExpressRoute-áramkört használ, használja a [Microsoft-partnert](expressroute-circuit-peerings.md#microsoftpeering) az Azure-szolgáltatásokhoz.
 >
 
-## <a name="connectivity"></a>Kapcsolatok
+## <a name="connectivity"></a>Kapcsolat
 
 A kapcsolat mindig a WAN-ból Microsoft Azure szolgáltatások felé kezdeményezhető. Microsoft Azure szolgáltatás nem tud kapcsolatot létesíteni a hálózattal ezen az útválasztási tartományon keresztül. Ha a ExpressRoute-áramkör engedélyezve van az Azure-beli nyilvános kapcsolatok esetében, az [Azure-ban használt nyilvános IP-tartományokat](../virtual-network/virtual-network-ip-addresses-overview-arm.md#public-ip-addresses) az áramkörön keresztül érheti el.
 

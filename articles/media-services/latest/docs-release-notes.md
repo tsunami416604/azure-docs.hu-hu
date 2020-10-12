@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 08/31/2020
 ms.author: inhenkel
 ms.openlocfilehash: 78879733a35395ae2dc486ab8eb08da544925a8a
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89255154"
 ---
 # <a name="azure-media-services-v3-documentation-updates"></a>A Azure Media Services v3 dokumentációjának frissítései
@@ -43,7 +43,7 @@ Ez a cikk a legfrissebb Media Services v3 dokumentációs frissítéseit tárgya
 
 A [stream Wirecast](live-events-wirecast-quickstart.md) rövid útmutatóval bővült az élő közvetítés. Bemutatja, hogyan hozhat létre Azure Media Services élő streamet a Azure Portal és a Wirecast használatával.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Áttekintés](media-services-overview.md)
 - [A Media Services v3 kibocsátási megjegyzései](release-notes.md)

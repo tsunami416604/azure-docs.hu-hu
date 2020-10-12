@@ -9,10 +9,10 @@ ms.date: 02/24/2019
 ms.topic: conceptual
 ms.service: azure-spatial-anchors
 ms.openlocfilehash: 1877934cb604d140d7700c2e537d6dc187b63cc4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83005529"
 ---
 # <a name="create-an-effective-anchor-experience-by-using-azure-spatial-anchors"></a>Hatékony Anchor-élmény létrehozása Azure térbeli horgonyok használatával
@@ -76,7 +76,7 @@ Hasonlóképpen, azokban a környezetekben, ahol a vizualizációs funkciók mó
 
 Sok esetben a horgony az alkalmazás felhasználói felületének belépési pontja. Gyorsan és megbízhatóan szeretné átvenni ezt a lépést, így a felhasználók megadhatják a felhasználói élményt. Az idő, amikor a felhasználók megtalálják a horgonyokat, fontos tervezési lépés. Érdemes meggondolni, hogyan találhatja meg a horgonyokat két széles forgatókönyv esetén: *célok* és *szobák*.
 
-### <a name="targets"></a>Célokat
+### <a name="targets"></a>Targets
 
 A cél forgatókönyvben a horgony helye jól ismert. Például egy kitalált Mixed-Reality festészeti alkalmazásban az egyik felhasználó egy virtuális vászonra helyezi a falra. Arra utasítja a helyiség többi felhasználóját, hogy az eszközeit a falon ugyanazon a helyen mutasson, hogy megkeresse a horgonyt, és megkezdje a felhasználói élményt.
 

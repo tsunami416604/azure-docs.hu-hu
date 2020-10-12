@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 05/20/2020
 ms.custom: contperfq1
 ms.openlocfilehash: 092757728e791f60616d9dceca43e109e7f0019e
-ms.sourcegitcommit: afa1411c3fb2084cccc4262860aab4f0b5c994ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88757812"
 ---
 # <a name="data-storage-optimization-for-apache-spark"></a>Apache Spark adattárolási optimalizálása
@@ -60,7 +60,7 @@ A korábbi Spark-verziók a RDD és az absztrakt adatokat, a Spark 1,3-es és a 
 | Azure Blob Storage | **wasb:**//URL/ | **Standard** | Igen | Átmeneti fürt |
 | Azure Blob Storage (biztonságos) | **wasbs:**//URL/ | **Standard** | Igen | Átmeneti fürt |
 | Azure Data Lake Storage Gen 2| **abfs:**//URL/ | **Gyorsabb** | Igen | Átmeneti fürt |
-| 1. generációs Azure Data Lake Storage| **ADL:**//URL/ | **Gyorsabb** | Igen | Átmeneti fürt |
+| Azure Data Lake Storage Gen 1| **ADL:**//URL/ | **Gyorsabb** | Igen | Átmeneti fürt |
 | Helyi HDFS | **hdfs:**//URL/ | **Leggyorsabb** | Nem | Interaktív 24/7-fürt |
 
 A tárolási lehetőségek teljes leírását lásd: [tárolási lehetőségek összehasonlítása az Azure HDInsight-fürtökkel való használathoz](../hdinsight-hadoop-compare-storage-options.md).
