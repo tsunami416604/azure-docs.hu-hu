@@ -14,10 +14,10 @@ ms.topic: troubleshooting
 ms.date: 08/28/2019
 ms.author: tiag
 ms.openlocfilehash: 5a2fd7fcfdae8559bfb39bffff7c73c7082a86aa
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87543282"
 ---
 # <a name="linux-vm-boots-to-grub-rescue"></a>A Linux rendszerű virtuális gép a grub Rescue-t indítja
@@ -45,7 +45,7 @@ A kapott hibától függően kövesse az alábbi kockázatcsökkentő lépéseke
 
     1. Győződjön meg arról `/etc/default/grub` , hogy létezik, és megfelelő/kívánt beállításokkal rendelkezik. Ha nem tudja, hogy melyek az alapértelmezett beállítások, megtekintheti a működő virtuális gépeket.
 
-    2. Ezután futtassa a következő parancsot a konfiguráció újralétrehozásához:`grub2-mkconfig -o /boot/grub2/grub.cfg`
+    2. Ezután futtassa a következő parancsot a konfiguráció újralétrehozásához: `grub2-mkconfig -o /boot/grub2/grub.cfg`
 
    * Ha a hiányzó fájl `/boot/grub/menu.lst` , akkor ez a hiba a régebbi operációsrendszer-verziók esetében (**RHEL 6. x**, **CentOS 6. x** és **Ubuntu 14,04**), így a parancsok eltérhetnek. A megfelelő parancsok biztosításához egy régi kiszolgálót kell megadnia, és tesztelni kell.
 
@@ -65,7 +65,7 @@ A kapott hibától függően kövesse az alábbi kockázatcsökkentő lépéseke
 
    * Ha a hiányzó fájl `/boot/grub/menu.lst` , akkor ez a hiba a régebbi operációsrendszer-verziók esetében (**RHEL 6. x**, **CentOS 6. x** és **Ubuntu 14,04**), így a parancsok elhalasztható. Hozzon létre egy régi kiszolgálót, és ellenőrizze, hogy a megfelelő parancsok vannak-e megadva.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Az Azure Virtual Machine Agent áttekintése](../extensions/agent-windows.md)
 * [Virtuálisgép-bővítmények és-szolgáltatások a Windows rendszerhez](../extensions/features-windows.md)

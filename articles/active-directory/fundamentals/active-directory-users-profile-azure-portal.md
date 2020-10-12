@@ -13,10 +13,10 @@ ms.author: ajburnle
 ms.reviewer: jeffsta
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 63b716aa22954af51a9eb53a0d04a8299d348c71
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87797237"
 ---
 # <a name="add-or-update-a-users-profile-information-using-azure-active-directory"></a>Felhasználói profil adatainak hozzáadása vagy frissítése az Azure Active Directory használatával
@@ -50,14 +50,14 @@ Ahogy látja, a felhasználó profiljában további információk érhetők el, 
 
     - **Hitelesítési kapcsolattartási adatok.** Ellenőrizze ezeket az adatokat, és győződjön meg arról, hogy a felhasználó számára aktív telefonszám és e-mail-cím található. Ezeket az információkat a Azure Active Directory használja annak biztosítására, hogy a felhasználó valóban a felhasználó legyen a bejelentkezés során. A hitelesítési kapcsolattartási adatokat csak globális rendszergazda frissítheti.
 
-4. Válassza a **Mentés** lehetőséget.
+4. Kattintson a **Mentés** gombra.
 
     A rendszer minden módosítást elment a felhasználó számára.
 
     >[!Note]
     >A Windows Server Active Directory segítségével frissítse az identitást, a kapcsolattartási adatokat vagy a feladatokat azon felhasználók számára, akiknek a forrása a Windows Server Active Directory. A frissítés befejezése után meg kell várnia, hogy a következő szinkronizálási ciklus befejeződjön, mielőtt látni fogja a módosításokat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A felhasználói profilok frissítése után a következő alapvető folyamatokat végezheti el:
 
 - [Felhasználók hozzáadása vagy törlése](add-users-azure-active-directory.md)

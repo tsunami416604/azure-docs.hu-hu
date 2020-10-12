@@ -13,10 +13,10 @@ ms.author: ryanwi
 ms.reviewer: hirsin
 ms.custom: aaddev
 ms.openlocfilehash: 0c5abf345fda9db4cc5123360245e42ea0ef40e1
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88115033"
 ---
 # <a name="whats-new-for-authentication"></a>A hitelesítés újdonságai
@@ -69,7 +69,7 @@ Az 256 karakternél hosszabb jelszavakkal rendelkező felhasználók, amelyek k�
 
 A bejelentkezési naplók hibája a következő lesz: AADSTS 50052: InvalidPasswordExceedsMaxLength
 
-Üzenetet`The password entered exceeds the maximum length of 256. Please reach out to your admin to reset the password.`
+Üzenetet `The password entered exceeds the maximum length of 256. Please reach out to your admin to reset the password.`
 
 Szervizkiszolgáló
 
@@ -127,7 +127,7 @@ A probléma megoldásához a rendszergazdai engedélyekkel hozza létre az ügyf
 
 #### <a name="example-request"></a>Példakérelem
 
-`https://login.microsoftonline.com/contoso.com/oauth2/authorize?resource=https://gateway.contoso.com/api&response_type=token&client_id=14c88eee-b3e2-4bb0-9233-f5e3053b3a28&...`Ebben a példában az erőforrás-bérlő (szolgáltató) a contoso.com, az erőforrás-alkalmazás egy, a contoso-bérlőhöz nevű egybérlős alkalmazás `gateway.contoso.com/api` , és az ügyfélalkalmazás `14c88eee-b3e2-4bb0-9233-f5e3053b3a28` .  Ha az ügyfélalkalmazás a Contoso.com-n belül rendelkezik egyszerű szolgáltatással, akkor a kérelem folytatódhat.  Ha azonban ez nem így van, a kérelem sikertelen lesz a fenti hibával.
+`https://login.microsoftonline.com/contoso.com/oauth2/authorize?resource=https://gateway.contoso.com/api&response_type=token&client_id=14c88eee-b3e2-4bb0-9233-f5e3053b3a28&...` Ebben a példában az erőforrás-bérlő (szolgáltató) a contoso.com, az erőforrás-alkalmazás egy, a contoso-bérlőhöz nevű egybérlős alkalmazás `gateway.contoso.com/api` , és az ügyfélalkalmazás `14c88eee-b3e2-4bb0-9233-f5e3053b3a28` .  Ha az ügyfélalkalmazás a Contoso.com-n belül rendelkezik egyszerű szolgáltatással, akkor a kérelem folytatódhat.  Ha azonban ez nem így van, a kérelem sikertelen lesz a fenti hibával.
 
 Ha a contoso-átjáró alkalmazás több-bérlős alkalmazás volt, akkor a kérést a rendszer a Contoso.com-on belüli egyszerű szolgáltatástól függetlenül folytatja.
 

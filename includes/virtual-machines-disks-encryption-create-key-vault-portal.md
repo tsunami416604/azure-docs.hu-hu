@@ -9,17 +9,17 @@ ms.date: 03/23/2020
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: a967777b65c06cf23239a47e8e691fb3a29231b4
-ms.sourcegitcommit: d39f2cd3e0b917b351046112ef1b8dc240a47a4f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88815470"
 ---
 Az ügyfél által felügyelt kulcsok beállítása a lemezekhez megköveteli, hogy az erőforrásokat egy adott sorrendben hozzon létre, ha az első alkalommal végzi el. Először létre kell hoznia és be kell állítania egy Azure Key Vault.
 
 ## <a name="set-up-your-azure-key-vault"></a>A Azure Key Vault beállítása
 
-1. Jelentkezzen be az [Azure Portalra](https://aka.ms/diskencryptionupdates).
+1. Jelentkezzen be az [Azure Portalon](https://aka.ms/diskencryptionupdates).
 1. Keresse meg és válassza ki a **kulcstárolókat**.
 
     [![Képernyőfelvétel a Azure Portal a Keresés párbeszédpanel kibontásával.](./media/virtual-machines-disk-encryption-portal/server-side-encryption-key-vault-portal-search.png)](./media/virtual-machines-disk-encryption-portal/sever-side-encryption-key-vault-portal-search-expanded.png#lightbox)
@@ -65,7 +65,7 @@ Az ügyfél által felügyelt kulcsok beállítása a lemezekhez megköveteli, h
 1. **A kulcs kiválasztásához kattintson a kattintás gombra**.
 1. Válassza ki a korábban létrehozott Key vaultot és kulcsot, valamint a verziót.
 1. Kattintson a **kiválasztás**gombra.
-1. Válassza a **felülvizsgálat + létrehozás** , majd a **Létrehozás**lehetőséget.
+1. Válassza az **Áttekintés és létrehozás**, majd a **Létrehozás** lehetőséget.
 
     ![Képernyőkép a lemez titkosítás-létrehozási paneljéről. Az előfizetés, az erőforráscsoport, a lemez titkosítási készlet neve, a régió és a Key Vault + Key választó megjelenítése.](./media/virtual-machines-disk-encryption-portal/server-side-encryption-disk-set-blade.png)
 

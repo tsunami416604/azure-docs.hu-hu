@@ -8,10 +8,10 @@ ms.assetid: a0e045f1-73d6-427f-868d-7b55c10f811b
 ms.topic: how-to
 ms.date: 12/05/2016
 ms.openlocfilehash: cbce903bc7463cd917d48e341614afbe18536262
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87531210"
 ---
 # <a name="manage-azure-data-lake-analytics-using-the-azure-portal"></a>Az Azure Data Lake Analytics kezelése az Azure Portal használatával
@@ -35,7 +35,7 @@ Ez a cikk ismerteti, hogyan kezelheti Azure Data Lake Analytics fiókokat, adatf
    3. **Erőforráscsoport**: az az Azure-erőforráscsoport, amelyben létre kell hozni a fiókot. 
    4. **Hely**: az Data Lake Analytics-fiókhoz tartozó Azure-adatközpont. 
    5. **Data Lake Store**: a Data Lake Analytics-fiókhoz használandó alapértelmezett tároló. A Azure Data Lake Store fióknak és a Data Lake Analytics fióknak ugyanazon a helyen kell lennie.
-4. Kattintson a **Létrehozás** lehetőségre. 
+4. Kattintson a **Létrehozás** elemre. 
 
 ### <a name="delete-a-data-lake-analytics-account"></a>Data Lake Analytics fiók törlése
 
@@ -53,7 +53,7 @@ Data Lake Analytics fiók törlése előtt törölje az alapértelmezett Data La
 
 A Data Lake Analytics a következő adatforrásokat támogatja:
 
-* Data Lake Store
+* Data Lake Storage
 * Azure Storage
 
 A Adatkezelő használatával böngészheti az adatforrásokat, és alapszintű fájlkezelési műveleteket hajthat végre. 
@@ -87,13 +87,13 @@ A **felhasználó hozzáadása varázslóval** egyszerűen kiépítheti az új D
 3. Válasszon ki egy felhasználót, majd kattintson a **kiválasztás**elemre.
 4. Válasszon ki egy szerepkört, majd kattintson a **kiválasztás**elemre. Ha új fejlesztőt szeretne beállítani Azure Data Lake használatára, válassza ki a **Data Lake Analytics fejlesztői** szerepkört.
 5. Válassza ki a U-SQL-adatbázisokhoz tartozó hozzáférés-vezérlési listákat (ACL-eket). Ha elégedett a lehetőségeivel, kattintson a **kiválasztás**elemre.
-6. Válassza ki az ACL-eket a fájlokhoz. Az alapértelmezett tároló esetében ne módosítsa a "/" gyökérmappa és a/System mappához tartozó ACL-eket. Válassza a **Kiválasztás** lehetőséget.
+6. Válassza ki az ACL-eket a fájlokhoz. Az alapértelmezett tároló esetében ne módosítsa a "/" gyökérmappa és a/System mappához tartozó ACL-eket. Kattintson a **Kiválasztás** elemre.
 7. Tekintse át a kiválasztott módosításokat, majd kattintson a **Futtatás**gombra.
 8. A varázsló befejezése után kattintson a **kész**gombra.
 
-## <a name="manage-role-based-access-control"></a>Szerepköralapú Access Control kezelése
+## <a name="manage-role-based-access-control"></a>Role-Based kezelése Access Control
 
-A többi Azure-szolgáltatáshoz hasonlóan a szerepköralapú Access Control (RBAC) segítségével szabályozhatja, hogy a felhasználók hogyan használják a szolgáltatást.
+A többi Azure-szolgáltatáshoz hasonlóan a Role-Based Access Control (RBAC) segítségével szabályozhatja, hogy a felhasználók hogyan használják a szolgáltatást.
 
 A standard Azure-szerepkörök a következő képességekkel rendelkeznek:
 * **Tulajdonos**: feladatokat küldhet be, figyelheti a feladatokat, megszakíthatja a feladatokat bármely felhasználótól, és konfigurálhatja a fiókot.

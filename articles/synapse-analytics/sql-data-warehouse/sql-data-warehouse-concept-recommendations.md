@@ -12,10 +12,10 @@ ms.author: kevin
 ms.reviewer: igorstan
 ms.custom: azure-synapse
 ms.openlocfilehash: e4564005e3b9cc9673cc20596d4114d102174b9e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85482853"
 ---
 # <a name="synapse-sql-recommendations"></a>Szinapszis SQL-javaslatok
@@ -38,7 +38,7 @@ Az optimálisnál rosszabb statisztikai adatok súlyosan befolyásolhatják a le
 
 - [Táblázat statisztikáinak létrehozása és frissítése](sql-data-warehouse-tables-statistics.md)
 
-Ha meg szeretné tekinteni az érintett táblák listáját a javaslatok alapján, futtassa az alábbi [T-SQL-szkriptet](https://github.com/Microsoft/sql-data-warehouse-samples/blob/master/samples/sqlops/MonitoringScripts/ImpactedTables). Az Advisor folyamatosan futtatja ugyanazt a T-SQL-szkriptet a javaslatok létrehozásához.
+Ha meg szeretné tekinteni az érintett táblák listáját a javaslatok alapján, futtassa az alábbi  [T-SQL-szkriptet](https://github.com/Microsoft/sql-data-warehouse-samples/blob/master/samples/sqlops/MonitoringScripts/ImpactedTables). Az Advisor folyamatosan futtatja ugyanazt a T-SQL-szkriptet a javaslatok létrehozásához.
 
 ## <a name="replicate-tables"></a>Táblák replikálása
 

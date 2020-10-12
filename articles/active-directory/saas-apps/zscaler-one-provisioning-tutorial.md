@@ -12,10 +12,10 @@ ms.topic: article
 ms.date: 03/27/2019
 ms.author: jeedes
 ms.openlocfilehash: 978f8ff5e57a5a9a1df10152713c8c42901b3b6f
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88545860"
 ---
 # <a name="tutorial-configure-zscaler-one-for-automatic-user-provisioning"></a>Oktatóanyag: a Zscaler konfigurálása az automatikus felhasználó-kiépítés számára
@@ -88,11 +88,11 @@ Ez a szakasz végigvezeti az Azure AD kiépítési szolgáltatás konfigurálás
 
     ![Az Zscaler egy hivatkozást az alkalmazások listájában](common/all-applications.png)
 
-3. Válassza ki a **kiépítés** lapot.
+3. Válassza a **Kiépítés** lapot.
 
     ![Zscaler egy kiépítés](./media/zscaler-one-provisioning-tutorial/provisioning-tab.png)
 
-4. Állítsa a **kiépítési módot** **automatikus**értékre.
+4. Állítsa a **Kiépítési mód** mezőt **Automatikus** értékre.
 
     ![Zscaler egy kiépítési mód](./media/zscaler-one-provisioning-tutorial/provisioning-credentials.png)
 
@@ -106,7 +106,7 @@ Ez a szakasz végigvezeti az Azure AD kiépítési szolgáltatás konfigurálás
 
     ![Zscaler egy SAML konfigurálása](./media/zscaler-one-provisioning-tutorial/secret-token-2.png)
 
-    b. Válassza a **scim-alapú kiépítés engedélyezése** lehetőséget az **alap URL-cím** és a **tulajdonosi jogkivonat**beállításainak beszerzéséhez. Ezután mentse a beállításokat. Másolja az **alap URL-címet** a **bérlő URL-címére** a Azure Portal. Másolja a **tulajdonosi jogkivonat** -beállítást a Azure Portal **titkos jogkivonatára** .
+    b. Válassza az **SCIM-Based kiépítés engedélyezése** lehetőséget az **alap URL-cím** és a **tulajdonosi jogkivonat**beállításainak beszerzéséhez. Ezután mentse a beállításokat. Másolja az **alap URL-címet** a **bérlő URL-címére** a Azure Portal. Másolja a **tulajdonosi jogkivonat** -beállítást a Azure Portal **titkos jogkivonatára** .
 
 7. Miután kitöltötte az 5. lépésben látható mezőket, válassza a **kapcsolat tesztelése** lehetőséget, és győződjön meg róla, hogy az Azure ad képes csatlakozni a Zscaler. Ha a kapcsolat meghiúsul, győződjön meg arról, hogy a Zscaler egy fiók rendszergazdai jogosultságokkal rendelkezik, és próbálkozzon újra.
 
@@ -116,7 +116,7 @@ Ez a szakasz végigvezeti az Azure AD kiépítési szolgáltatás konfigurálás
 
     ![Zscaler egy értesítő e-mailt](./media/zscaler-one-provisioning-tutorial/notification.png)
 
-9. Válassza a **Mentés** lehetőséget.
+9. Kattintson a **Mentés** gombra.
 
 10. A **leképezések** szakaszban válassza a **szinkronizálás Azure Active Directory felhasználók Zscaler egyet**.
 
@@ -161,7 +161,7 @@ Az Azure AD-kiépítési naplók beolvasásával kapcsolatos információkért l
 
 ## <a name="next-steps"></a>További lépések
 
-* [Megtudhatja, hogyan tekintheti át a naplókat, és hogyan kérhet jelentéseket a kiépítési tevékenységekről](../active-directory-saas-provisioning-reporting.md)
+* [Tudnivalók a naplók áttekintéséről és az átadási tevékenységekkel kapcsolatos jelentések lekéréséről](../active-directory-saas-provisioning-reporting.md)
 
 <!--Image references-->
 [1]: ./media/zscaler-one-provisioning-tutorial/tutorial-general-01.png

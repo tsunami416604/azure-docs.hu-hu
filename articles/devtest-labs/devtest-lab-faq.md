@@ -4,10 +4,10 @@ description: Ez a cikk a Azure DevTest Labs kapcsolatos gyakori kérdések (GYIK
 ms.topic: article
 ms.date: 07/17/2020
 ms.openlocfilehash: 3f36b8238ccb69b3b1f14166b522e47d5debe54e
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87289375"
 ---
 # <a name="azure-devtest-labs-faq"></a>Azure DevTest Labs GYIK
@@ -29,9 +29,9 @@ Jelenleg dolgozunk a meglévő blogbejegyzések áttelepítésén (kivéve a le�
 A kiesési frissítéseket a Twitter-leírónk használatával tesszük elérhetővé a mostantól kezdődően. Kövessen minket a Twitteren az kimaradások és az ismert hibák legújabb frissítéseinek beszerzéséhez.
 
 ### <a name="twitter"></a>Twitter
-A Twitter-leírónk:[@azlabservices](https://twitter.com/azlabservices)
+A Twitter-leírónk: [@azlabservices](https://twitter.com/azlabservices)
 
-## <a name="general"></a>Általános
+## <a name="general"></a>Általános kérdések
 ### <a name="what-if-my-question-isnt-answered-here"></a>Mi a teendő, ha nem válaszolt a kérdésre?
 Ha a kérdés nem szerepel a listán, tudassa velünk, hogy segítsen megtalálni a választ.
 
@@ -68,7 +68,7 @@ A DevTest Labs egy ingyenes szolgáltatás. A laborok létrehozása és a házir
 ## <a name="security"></a>Biztonság
 
 ### <a name="what-are-the-different-security-levels-in-devtest-labs"></a>Melyek a DevTest Labs különböző biztonsági szintjei?
-A biztonsági hozzáférést szerepköralapú Access Control (RBAC) alapján határozzák meg. A hozzáférés működésének megismeréséhez segítséget nyújt a RBAC által meghatározott engedély, szerepkör és hatókör közötti különbségek megismerésében.
+A biztonsági hozzáférést Role-Based Access Control (RBAC) határozza meg. A hozzáférés működésének megismeréséhez segítséget nyújt a RBAC által meghatározott engedély, szerepkör és hatókör közötti különbségek megismerésében.
 
 - **Engedély**: az engedély meghatározott hozzáférés egy adott művelethez. Az engedélyek például olvasási jogosultsággal rendelkezhetnek az összes virtuális géphez.
 - **Szerepkör**: a szerepkör a felhasználók számára csoportosítható és hozzárendelhető engedélyek összessége. Egy előfizetéshez tartozó tulajdonosi szerepkörrel rendelkező felhasználó például hozzáférhet az előfizetésen belüli összes erőforráshoz.

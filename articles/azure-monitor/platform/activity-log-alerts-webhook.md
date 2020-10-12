@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 03/31/2017
 ms.subservice: alerts
 ms.openlocfilehash: 018bf7ac9c24669df798e9ba05c667dcb72d94a6
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87321836"
 ---
 # <a name="webhooks-for-azure-activity-log-alerts"></a>Webhookok az Azure-beli tevékenység naplójának értesítéseihez
@@ -269,7 +269,7 @@ A szolgáltatás állapotával kapcsolatos értesítési tevékenységekről ér
 | resourceGroupName |Az érintett erőforráshoz tartozó erőforráscsoport neve. |
 | properties |Az `<Key, Value>` esemény részleteit tartalmazó párok (azaz) készlete `Dictionary<String, String>` . |
 | esemény |Az eseménnyel kapcsolatos metaadatokat tartalmazó elem. |
-| engedélyezés |Az esemény szerepköralapú Access Control tulajdonságai. Ezek a tulajdonságok általában tartalmazzák a műveletet, a szerepkört és a hatókört. |
+| engedélyezés |Az esemény Role-Based Access Control tulajdonságai. Ezek a tulajdonságok általában tartalmazzák a műveletet, a szerepkört és a hatókört. |
 | category |Az esemény kategóriája. A támogatott értékek a következők: adminisztráció, riasztás, biztonság, ServiceHealth és javaslatok. |
 | hívó |A művelet, UPN-jogcím vagy SPN-jogcím végrehajtását végző felhasználó e-mail-címe a rendelkezésre állás alapján. Bizonyos rendszerhívások esetében null értékű lehet. |
 | correlationId |Általában egy GUID formátumú karakterlánc. A correlationId események ugyanahhoz a nagyobb művelethez tartoznak, és általában egy correlationId osztoznak. |

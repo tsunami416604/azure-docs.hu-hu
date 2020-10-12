@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.service: iot-central
 ms.custom: contperfq1
 ms.openlocfilehash: 9738b7d3fb435888e7ffc248b7b2ac6c0ef42471
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90974403"
 ---
 # <a name="export-iot-data-to-cloud-destinations-using-data-export"></a>IoT-adatexportálás a Felhőbeli célhelyekre az adatexportálás használatával
@@ -272,11 +272,11 @@ Az alábbi példa egy exportált tulajdonság-módosítási üzenetet mutat be a
 
 Az alábbi táblázat az [örökölt adatexportálás](howto-export-data-legacy.md) és az új adatexportálási funkciók közötti különbségeket mutatja be:
 
-| Képességek  | Örökölt adatexportálás | Új adatexportálás |
+| Funkciók  | Örökölt adatexportálás | Új adatexportálás |
 | :------------- | :---------- | :----------- |
 | Elérhető adattípusok | Telemetria, eszközök, eszközök sablonjai | Telemetria, tulajdonságok módosításai |
-| Szűrés | Nincsenek | Az exportált adattípustól függ. Telemetria, szűrés telemetria, üzenet tulajdonságai, tulajdonságértékek alapján |
-| Modellbővítések | Nincsenek | Gazdagítsa az eszköz egyéni sztringjét vagy tulajdonságának értékét |
+| Szűrés | Nincs | Az exportált adattípustól függ. Telemetria, szűrés telemetria, üzenet tulajdonságai, tulajdonságértékek alapján |
+| Modellbővítések | Nincs | Gazdagítsa az eszköz egyéni sztringjét vagy tulajdonságának értékét |
 | Célhelyek | Azure Event Hubs, Azure Service Bus várólisták és témakörök, Azure Blob Storage | Ugyanaz, mint a korábbi adatexportáláshoz és webhookokhoz|
 | Támogatott alkalmazások verziói | V2, V3 | Csak v3 |
 | Jelentős korlátok | 5 export/alkalmazás, 1 cél/exportálás | 10 exportálás – cél kapcsolatok száma alkalmazás szerint |

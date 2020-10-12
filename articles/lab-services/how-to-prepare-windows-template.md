@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 06/26/2020
 ms.author: enewman
 ms.openlocfilehash: cf1b9db8de2c0f2c852a41d1e30343c5cef1b20b
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91396688"
 ---
 # <a name="guide-to-setting-up-a-windows-template-machine-in-azure-lab-services"></a>Útmutató Windows-sablonok számítógépének beállításához Azure Lab Services
@@ -216,7 +216,7 @@ A Windows 10 számos beépített alkalmazást tartalmaz, amelyek esetleg nem sz�
 Get-AppxPackage | Where {$_.NonRemovable -eq $false} | select Name
 ```
 
-Egy alkalmazás eltávolításához használja a Remove-Appx parancsmagot.  Az alábbi példa bemutatja, hogyan távolíthatja el az XBox-hoz kapcsolódó összes információt.
+Egy alkalmazás eltávolításához használja az Remove-Appx parancsmagot.  Az alábbi példa bemutatja, hogyan távolíthatja el az XBox-hoz kapcsolódó összes információt.
 
 ```powershell
 Get-AppxPackage -Name *xbox* | foreach { if (-not $_.NonRemovable) { Remove-AppxPackage $_} }
@@ -230,5 +230,5 @@ Telepítsen más alkalmazásokat, amelyeket gyakran használnak a Windows áruh�
 
 Ez a cikk a Windows-sablonos virtuális gép hatékony osztályra történő előkészítésének opcionális lépéseit mutatja be.  A lépések közé tartozik például a OneDrive telepítése és a Microsoft 365 telepítése, a Windows frissítéseinek telepítése és a frissítések telepítése Microsoft Store alkalmazásokhoz.  Azt is ismertetjük, hogyan állíthatja be a frissítéseket egy olyan ütemtervre, amely az osztály számára a legjobban működik.  
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Tekintse meg a Windows leállítási viselkedésének szabályozása a költségek kezeléséhez: [útmutató a Windows leállítási viselkedésének szabályozásához](how-to-windows-shutdown.md) .

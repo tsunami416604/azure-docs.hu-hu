@@ -4,10 +4,10 @@ description: Ez a cikk a hiba-elemzési szolgáltatást ismerteti Service Fabric
 ms.topic: conceptual
 ms.date: 06/15/2017
 ms.openlocfilehash: 4e879b0b39d58f115b4661d47cf2ae564ba14e5d
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91531377"
 ---
 # <a name="introduction-to-the-fault-analysis-service"></a>A hiba-elemzési szolgáltatás bemutatása
@@ -85,7 +85,7 @@ A hiba-elemzési szolgáltatás funkciói a System. Fabric névtérben találhat
 
 A PowerShell használatához telepítenie kell a Service Fabric SDK-t. Az SDK telepítése után a ServiceFabric PowerShell-modul automatikusan betöltődik a használatára.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A valóban felhőbe méretezhető szolgáltatások létrehozásához elengedhetetlen, hogy az üzembe helyezés előtt és után is gondoskodjon arról, hogy a szolgáltatások valós hibákkal bírjanak. A szolgáltatások világában ma már nagyon fontos a gyors innováció és a kód gyors mozgatása az éles környezetbe. A hiba-elemzési szolgáltatás segít a szolgáltatás fejlesztői számára, hogy pontosan ezt végezzék.
 
 Megkezdheti az alkalmazások és szolgáltatások tesztelését a beépített [tesztelési forgatókönyvek](service-fabric-testability-scenarios.md)használatával, vagy saját tesztelési forgatókönyvek létrehozásával a hiba-elemzési szolgáltatás által biztosított [hibákkal](service-fabric-testability-actions.md) .

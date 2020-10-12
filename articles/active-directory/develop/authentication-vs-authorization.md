@@ -14,10 +14,10 @@ ms.author: ryanwi
 ms.reviewer: jmprieur, saeeda, sureshja, hirsin
 ms.custom: aaddev, identityplatformtop40, scenarios:getting-started
 ms.openlocfilehash: 095bc5594cf9b6eaf0df7929ea83c25a401793e2
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86252113"
 ---
 # <a name="authentication-vs-authorization"></a>Hitelesítés és engedélyezés
@@ -46,7 +46,7 @@ A következő a Microsoft Identity platform által használt különböző proto
 * **OAuth vs SAML**: a hitelesítéshez a rendszer a OAuth használja. Tekintse meg a [Microsoft Identity platform és a OAuth 2,0 SAML-tulajdonos állítási folyamatát](v2-saml-bearer-assertion.md) , hogy a két protokoll hogyan használható egyszerre a felhasználó hitelesítésére (SAML használatával) és a védett erőforrásokhoz való hozzáférés engedélyezésére (a OAuth 2,0 használatával).
 * **OpenID Connect vs SAML**: az OpenID Connect és az SAML is használatos egy felhasználó hitelesítéséhez, és az egyszeri bejelentkezés engedélyezésére szolgál. Az SAML-hitelesítést gyakran használják olyan identitás-szolgáltatókkal, mint az Azure AD-ba összevont Active Directory összevonási szolgáltatások (AD FS) (ADFS), ezért gyakran használják a vállalati alkalmazásokban. Az OpenID Connect általában kizárólag a felhőben, például a Mobile apps, a Web Sites és a web API-k esetében használatos.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A hitelesítési és engedélyezési alapismeretekkel kapcsolatos egyéb témakörökhöz:
 
@@ -55,5 +55,5 @@ A hitelesítési és engedélyezési alapismeretekkel kapcsolatos egyéb témak�
 * Az [alkalmazás bejelentkezési folyamata](app-sign-in-flow.md) című témakörben megismerheti a webes, asztali és mobil alkalmazások bejelentkezési folyamatát a Microsoft Identity platformon.
 
 * Ha többet szeretne megtudni a Microsoft Identity platform által megvalósított protokollokról, tekintse [meg a OAuth 2,0 és az OpenID Connect protokollok című témakört a Microsoft Identity platformon](active-directory-v2-protocols.md).
-* További információ arról, hogyan támogatja a Microsoft Identity platform az egyszeri bejelentkezést az [egyszeri bejelentkezéses SAML protokollon](single-sign-on-saml-protocol.md) .
+* Az egyszeri bejelentkezést támogató Microsoft Identity platformmal kapcsolatos további információkért lásd: [single Sign-On SAML protokoll](single-sign-on-saml-protocol.md) .
 * Az egyszeri bejelentkezés az alkalmazásban való megvalósításának különböző módjaival kapcsolatos további információkért lásd: [egyszeri bejelentkezés a Azure Active Directory alkalmazásaihoz](../manage-apps/what-is-single-sign-on.md) .

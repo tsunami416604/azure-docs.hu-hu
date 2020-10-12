@@ -8,10 +8,10 @@ ms.date: 01/28/2019
 ms.author: rajanaki
 ms.custom: MVC
 ms.openlocfilehash: 61d596c4b3a65c54e1a70682adad5b7328c384f8
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90007366"
 ---
 # <a name="moving-azure-vms-to-another-azure-region"></a>Azure-beli virtuális gépek áthelyezése másik Azure-régióba
@@ -89,7 +89,7 @@ A korábban említett [architektúrák](#typical-architectures-for-a-multi-tier-
 
      ![VIRTUÁLIS gépek üzembe helyezése rendelkezésre állási csoportokban és Availability Zones](media/move-vm-overview/aset-azone.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 > [!div class="nextstepaction"]
 > 

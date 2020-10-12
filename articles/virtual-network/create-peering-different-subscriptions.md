@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 04/09/2019
 ms.author: kumud
 ms.openlocfilehash: 79062ae45f04b290f6e4120906b98590ce95dbe1
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87833266"
 ---
 # <a name="create-a-virtual-network-peering---resource-manager-different-subscriptions-and-azure-active-directory-tenants"></a>Hozzon létre egy virtuális hálózati társ-erőforrás-kezelőt, különböző előfizetéseket és Azure Active Directory bérlőket
@@ -60,7 +60,7 @@ Az alábbi lépések különböző fiókokat használnak az egyes előfizetések
 6. A **myVnetA-hozzáférés-vezérlés (iam)** területen válassza a **+ szerepkör-hozzárendelés hozzáadása**elemet.
 7. Válassza a **hálózati közreműködő** elemet a **szerepkör** mezőben.
 8. A **kiválasztás** mezőben válassza a *felhasználób*lehetőséget, vagy írja be a felhasználób e-mail-címét a kereséshez.
-9. Válassza a **Mentés** lehetőséget.
+9. Kattintson a **Mentés** gombra.
 10. A **myVnetA-hozzáférés-vezérlés (iam)** területen válassza a **Tulajdonságok** lehetőséget a bal oldalon található beállítások függőleges listájában. Másolja ki az **erőforrás-azonosítót**, amelyet egy későbbi lépésben használ. Az erőforrás-azonosító a következő példához hasonló: `/subscriptions/<Subscription Id>/resourceGroups/myResourceGroupA/providers/Microsoft.Network/virtualNetworks/myVnetA` .
 11. Jelentkezzen ki a portálról felhasználóként, majd jelentkezzen be Felhasználób-ként.
 12. Hajtsa végre a 2-3 lépést, írja be vagy válassza ki az alábbi értékeket a 3. lépésben:
@@ -305,7 +305,7 @@ Az oktatóanyag befejezése után érdemes lehet törölni az oktatóanyagban l�
    ```
 
 2. Jelentkezzen ki az Azure-ból felhasználóként, és jelentkezzen be Felhasználób néven.
-3. Futtassa a következő parancsot:
+3. Hajtsa végre a következő parancsot:
 
    ```azurecli-interactive
    az group delete --name myResourceGroupB --yes
@@ -320,13 +320,13 @@ Az oktatóanyag befejezése után érdemes lehet törölni az oktatóanyagban l�
    ```
 
 2. Jelentkezzen ki az Azure-ból felhasználóként, és jelentkezzen be Felhasználób néven.
-3. Futtassa a következő parancsot:
+3. Hajtsa végre a következő parancsot:
 
    ```powershell
    Remove-AzResourceGroup -Name myResourceGroupB -force
    ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Alaposan megismerheti a fontos [virtuális hálózati társítási korlátozásokat és a viselkedést](virtual-network-manage-peering.md#requirements-and-constraints) , mielőtt létrehozza a virtuális hálózatokat az éles környezetben való használatra.
 - További információ az összes [virtuális hálózati társ](virtual-network-manage-peering.md#create-a-peering)-összevonási beállításról.

@@ -8,10 +8,10 @@ ms.workload: infrastructure
 ms.date: 07/17/2020
 ms.author: cynthn
 ms.openlocfilehash: 36ac0058f8f2cf3ca106b30c86207e46d0712193
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87830546"
 ---
 # <a name="use-infrastructure-automation-tools-with-virtual-machines-in-azure"></a>Infrastruktúra-automatizálási eszközök használata az Azure-beli virtuális gépekkel
@@ -57,7 +57,7 @@ Az alábbiak végrehajtásának módját ismerheti meg:
 
 
 ## <a name="cloud-init"></a>Cloud-init
-A [cloud-init](https://cloudinit.readthedocs.io) egy széles körben használt módszer a Linux rendszerű virtuális gépek első indításkor való testreszabásához. A cloud-init használatával csomagokat telepíthet és fájlokat írhat, vagy beállíthatja a felhasználókat és a biztonságot. Mivel a Cloud-init a kezdeti rendszerindítási folyamat során hívásra kerül, nincs szükség további lépésekre vagy ügynökökre a konfiguráció alkalmazásához.  A fájlok megfelelő formázásáról további információt `#cloud-config` a [Cloud-init dokumentációs webhelyén](https://cloudinit.readthedocs.io/en/latest/topics/format.html#cloud-config-data)talál.  `#cloud-config`a fájlok a Base64 kódolású szövegfájlok.
+A [cloud-init](https://cloudinit.readthedocs.io) egy széles körben használt módszer a Linux rendszerű virtuális gépek első indításkor való testreszabásához. A cloud-init használatával csomagokat telepíthet és fájlokat írhat, vagy beállíthatja a felhasználókat és a biztonságot. Mivel a Cloud-init a kezdeti rendszerindítási folyamat során hívásra kerül, nincs szükség további lépésekre vagy ügynökökre a konfiguráció alkalmazásához.  A fájlok megfelelő formázásáról további információt `#cloud-config` a [Cloud-init dokumentációs webhelyén](https://cloudinit.readthedocs.io/en/latest/topics/format.html#cloud-config-data)talál.  `#cloud-config` a fájlok a Base64 kódolású szövegfájlok.
 
 A cloud-init különböző disztribúciókon is működik. Például nem kell az **apt-get install** vagy a **yum install** használatával telepítenie a csomagokat. Ehelyett megadhatja a telepítendő csomagok listáját. A cloud-init automatikusan a natív csomagkezelő eszközt használja a kiválasztott disztribúcióhoz.
 
@@ -138,7 +138,7 @@ Az alábbiak végrehajtásának módját ismerheti meg:
 
 
 ## <a name="azure-resource-manager-template"></a>Azure Resource Manager-sablon
-[Azure Resource Manager](../azure-resource-manager/templates/overview.md) az Azure üzembe helyezési és kezelési szolgáltatása. Olyan felügyeleti réteget biztosít, amely lehetővé teszi az Azure-előfizetésében lévő erőforrások létrehozását, frissítését és törlését. A felügyeleti funkciókat, például a hozzáférés-vezérlést, a zárolásokat és a címkéket használhatja az erőforrások biztonságossá tételéhez és rendszerezéséhez az üzembe helyezés után.
+[Azure Resource Manager](../azure-resource-manager/templates/overview.md) az Azure üzembe helyezési és kezelési szolgáltatása. Olyan felügyeleti réteget biztosít, amely lehetővé teszi az Azure-előfizetésében lévő erőforrások létrehozását, frissítését és törlését. Az üzembe helyezés után az erőforrások biztonságossá tételéhez és rendszerezéséhez olyan felügyeleti funkciókat használhat, mint a hozzáférés-vezérlés, a zárolások és a címkék.
 
 Az alábbiak végrehajtásának módját ismerheti meg:
 
@@ -147,5 +147,5 @@ Az alábbiak végrehajtásának módját ismerheti meg:
 - [Töltse le a virtuális gép sablonját](./windows/download-template.md).
 - [Hozzon létre egy Azure rendszerkép-szerkesztői sablont](./linux/image-builder-json.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Számos különböző lehetőség áll rendelkezésre az infrastruktúra-automatizálási eszközök használatára az Azure-ban. Ön szabadon használhatja az igényeinek és környezetének legmegfelelőbb megoldást. A kezdéshez és az Azure-ba beépített eszközök kipróbálásához lásd: [Linux](./linux/tutorial-automate-vm-deployment.md) vagy [Windows rendszerű](./windows/tutorial-automate-vm-deployment.md) virtuális gép testreszabásának automatizálása.

@@ -5,15 +5,15 @@ ms.topic: conceptual
 ms.date: 06/17/2020
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: e76287c4524831a84a22fb23ddf8a5fdee8bc12b
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87827282"
 ---
 # <a name="lock-resources-to-prevent-unexpected-changes"></a>Erőforrások zárolása a váratlan módosítások megelőzése érdekében
 
-Előfordulhat, hogy egy rendszergazdának zárolnia kell egy előfizetést, erőforráscsoportot vagy erőforrást, így akadályozva meg más vállalati felhasználókat a kritikus erőforrások véletlen törlésében vagy módosításában. A zárolási szintet **CanNotDelete** (nem törölhető) vagy **ReadOnly** (csak olvasható) értékre állíthatja be. A portálon a zárolások neve **Törlés** és **csak olvasható** .
+Rendszergazdaként szüksége lehet egy előfizetés, erőforráscsoport vagy erőforrás zárolására annak érdekében, hogy a szervezet többi felhasználója ne tudja véletlenül törölni vagy módosítani a kritikus fontosságú erőforrásokat. A zárolási szintet **CanNotDelete** (nem törölhető) vagy **ReadOnly** (csak olvasható) értékre állíthatja be. A portálon a zárolások neve **Törlés** és **csak olvasható** .
 
 * A **CanNotDelete** azt jelzi, hogy a jogosult felhasználók továbbra is olvashatják és módosíthatják az erőforrásokat, de nem tudják törölni az erőforrást.
 * A **readonly** érték azt jelenti, hogy a jogosult felhasználók olvasni tudnak egy erőforrást, de nem tudják törölni vagy frissíteni az erőforrást. A zárolás alkalmazása hasonló ahhoz, hogy korlátozza az összes jogosult felhasználót az **olvasó** szerepkör által megadott engedélyekkel.
@@ -76,13 +76,13 @@ Ha Resource Manager-sablont használ a zárolás üzembe helyezéséhez, a név 
 
 Ha egy **erőforráshoz**zárolást alkalmaz, használja a következő formátumokat:
 
-* neve`{resourceName}/Microsoft.Authorization/{lockName}`
-* típusa`{resourceProviderNamespace}/{resourceType}/providers/locks`
+* neve `{resourceName}/Microsoft.Authorization/{lockName}`
+* típusa `{resourceProviderNamespace}/{resourceType}/providers/locks`
 
 Ha egy **erőforráscsoport** vagy **előfizetés**esetében zárolást alkalmaz, használja a következő formátumokat:
 
-* neve`{lockName}`
-* típusa`Microsoft.Authorization/locks`
+* neve `{lockName}`
+* típusa `Microsoft.Authorization/locks`
 
 Az alábbi példa egy olyan sablont mutat be, amely egy app Service-csomagot, egy webhelyet és egy zárolást hoz létre a webhelyen. A zárolás erőforrástípus a zárolási és **/providers/Locks**erőforrás típusa. A zárolás neve úgy jön létre, hogy összefűzi az erőforrás nevét a **/Microsoft.Authorization/** és a zárolás nevével.
 

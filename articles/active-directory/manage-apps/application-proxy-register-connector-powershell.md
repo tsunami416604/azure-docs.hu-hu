@@ -17,10 +17,10 @@ ms.reviewer: japere
 ms.custom: it-pro, has-adal-ref
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a5fc1b84e624828d7feb64bd53e8fe8ffff2a7ff
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88054834"
 ---
 # <a name="create-an-unattended-installation-script-for-the-azure-ad-application-proxy-connector"></a>Felügyelet nélküli telepítési parancsfájl létrehozása az Azure AD Application Proxy-összekötőhöz
@@ -45,7 +45,7 @@ A felügyelet nélküli telepítéshez két lépés szükséges. Először telep
 A következő lépésekkel telepítheti az összekötőt a regisztráció nélkül:
 
 1. Nyisson meg egy parancssort.
-2. Futtassa a következő parancsot, amelyben a/q csendes telepítést jelent. A csendes telepítés nem kéri, hogy fogadja el a végfelhasználói licencszerződést.
+2. Futtassa a következő parancsot, amelyben a/q csendes telepítést jelent. Egy csendes telepítés nem kéri, hogy fogadja el a End-User licencszerződést.
 
    ```
    AADApplicationProxyConnectorInstaller.exe REGISTERCONNECTOR="false" /q
@@ -206,7 +206,7 @@ Az összekötő regisztrálására két módszer használható:
    .\RegisterConnector.ps1 -modulePath "C:\Program Files\Microsoft AAD App Proxy Connector\Modules\" -moduleName "AppProxyPSModule" -Authenticationmode Token -Token $SecureToken -TenantId <tenant GUID> -Feature ApplicationProxy
    ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Alkalmazások közzététele saját tartománynév használatával](application-proxy-configure-custom-domain.md)
 * [Egyszeri bejelentkezés engedélyezése](application-proxy-configure-single-sign-on-with-kcd.md)
 * [Az alkalmazásproxyval kapcsolatos problémák hibaelhárítása](application-proxy-troubleshoot.md)

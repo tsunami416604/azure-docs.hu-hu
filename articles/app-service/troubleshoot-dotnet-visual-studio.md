@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 08/29/2016
 ms.custom: devx-track-csharp, seodec18
 ms.openlocfilehash: 72df946ed35dfdfd2811089a51ab9403d2e0567c
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90983013"
 ---
 # <a name="troubleshoot-an-app-in-azure-app-service-using-visual-studio"></a>Alkalmazások hibakeresése Azure App Service a Visual Studióval
@@ -70,15 +70,15 @@ A Visual Studio hozzáférést biztosít az alkalmazás-felügyeleti függvénye
 
 **Kiszolgálóhiba a következő alkalmazásban: "/".**
 
-:::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/genericerror.png" alt-text="A webböngészőben a "/" alkalmazáshiba miatt kiszolgálóhiba jelenik meg.":::
+:::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/genericerror.png" alt-text="A webböngészőben a &quot;/&quot; alkalmazáshiba miatt kiszolgálóhiba jelenik meg.":::
 
 **Hiba történt:**
 
-:::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/genericerror1.png" alt-text="Képernyőkép, amely egy webböngészőben előforduló általános hiba példáját mutatja be.":::
+:::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/genericerror1.png" alt-text="A webböngészőben a &quot;/&quot; alkalmazáshiba miatt kiszolgálóhiba jelenik meg.":::
 
 **A webhely nem tudja megjeleníteni a lapot**
 
-:::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/genericerror2.png" alt-text="Képernyőfelvétel: a webhely nem tudja megjeleníteni az oldal hibáját egy webböngészőben.":::
+:::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/genericerror2.png" alt-text="A webböngészőben a &quot;/&quot; alkalmazáshiba miatt kiszolgálóhiba jelenik meg.":::
 
 A hiba okának megállapításához gyakran a legegyszerűbb módszer a részletes hibaüzenetek engedélyezése, amely az előző képernyőképek első lépéseit ismerteti. Ehhez szükség van az üzembe helyezett Web.config fájl módosítására. Szerkesztheti a *Web.config* fájlt a projektben, és újból üzembe helyezheti a projektet, vagy létrehozhat egy [Web.config átalakítót](https://www.asp.net/mvc/tutorials/deployment/visual-studio-web-deployment/web-config-transformations) és üzembe helyezhet egy hibakeresési buildet, de gyorsabb módja van: a **Megoldáskezelőben**közvetlenül megtekintheti és szerkesztheti a távoli alkalmazás fájljait a *távoli nézet* funkció használatával.
 
@@ -139,7 +139,7 @@ Ez a szakasz bemutatja, hogyan lehet távolról hibakeresést végezni a [ASP.NE
 
 1. A **Server Explorerben**kattintson a jobb gombbal az alkalmazásra, majd kattintson a **hibakereső csatolása**parancsra.
 
-    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-attachdebugger.png" alt-text="Képernyőfelvétel a Server Explorer ablakáról, amely egy kiválasztott alkalmazást mutat be, majd a hibakereső csatolása lehetőségre kattint.":::
+    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-attachdebugger.png" alt-text="A webböngészőben a &quot;/&quot; alkalmazáshiba miatt kiszolgálóhiba jelenik meg.":::
 
     A böngésző automatikusan megnyílik az Azure-ban futó kezdőlapon. Előfordulhat, hogy várnia kell 20 másodpercet, amíg az Azure beállítja a kiszolgálót a hibakereséshez. Ez a késleltetés csak akkor történik meg, amikor az első alkalommal hibakeresési módban futtatja az alkalmazást egy 48 órás időszakban. Ha ugyanezen az időszakon belül újra elindítja a hibakeresést, nincs késés.
 
@@ -192,7 +192,7 @@ A távoli hibakeresés csak a folyamatos webjobs-feladatok esetében működik. 
 
 8. Kattintson a **hibakereső csatolása**elemre.
 
-    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/wjattach.png" alt-text="Képernyőkép a ContosoAdsWebJob, amely a legördülő menüben kiválasztotta a hibakeresőt, és csatolja a Debugger elemet.":::
+    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/wjattach.png" alt-text="A webböngészőben a &quot;/&quot; alkalmazáshiba miatt kiszolgálóhiba jelenik meg.":::
 
     A böngésző automatikusan megnyílik az Azure-ban futó kezdőlapon. Előfordulhat, hogy várnia kell 20 másodpercet, amíg az Azure beállítja a kiszolgálót a hibakereséshez. Ez a késleltetés csak akkor történik meg, amikor az első alkalommal hibakeresési módban futtatja az alkalmazást egy 48 órás időszakban. Ha ugyanezen az időszakon belül újra elindítja a hibakeresést, nincs késés.
 
@@ -340,11 +340,11 @@ A `WebPageTraceListener` lehetővé teszi a nyomkövetési kimenet megtekintés�
 1. A böngészőablak címsorában adja hozzá a *trace. axd* címet az URL-címhez, majd nyomja le az ENTER billentyűt (az URL-cím hasonló `http://localhost:53370/trace.axd` ).
 1. Az **alkalmazás-nyomkövetés** lapon kattintson a **részletek megtekintése** elemre az első sorban (ne a BrowserLink sor).
 
-    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-traceaxd1.png" alt-text="Képernyőkép az alkalmazás-nyomkövetési oldalról egy webböngészőben, amely az első sorban kiválasztott részletek megjelenítését jeleníti meg.":::
+    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-traceaxd1.png" alt-text="A webböngészőben a &quot;/&quot; alkalmazáshiba miatt kiszolgálóhiba jelenik meg.":::
 
     Megjelenik a **kérelem részletei** lap, és a **nyomkövetési adatok** szakaszban a metódushoz hozzáadott nyomkövetési utasítások kimenete látható `Index` .
 
-    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-traceaxd2.png" alt-text="A webböngészőben a kérelem részletei oldal képernyőképe, amely a nyomkövetési adatok szakaszban Kiemelt üzenetet jelenít meg.":::
+    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-traceaxd2.png" alt-text="A webböngészőben a &quot;/&quot; alkalmazáshiba miatt kiszolgálóhiba jelenik meg.":::
 
     Alapértelmezés szerint `trace.axd` csak helyileg érhető el. Ha azt szeretné, hogy elérhető legyen egy távoli alkalmazásból, a `localOnly="false"` `trace` *Web.config* fájlban lévő elemhez hozzáadhatja az elemet a következő példában látható módon:
 
@@ -361,11 +361,11 @@ A `WebPageTraceListener` lehetővé teszi a nyomkövetési kimenet megtekintés�
     Miután a Visual Studio közzétette a frissítést, megnyílik egy böngészőablak a kezdőlapon (feltéve, hogy nem törölte a **cél URL-címet** a **Kapcsolódás** lapon).
 3. A **Server Explorerben**kattintson a jobb gombbal az alkalmazásra, és válassza a **folyamatos átviteli naplók megtekintése**lehetőséget.
 
-    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-viewlogsmenu.png" alt-text="Képernyőfelvétel a Server Explorer böngészőről a jobb gombbal az alkalmazásra kattintva, az új ablakban kiválasztott folyamatos átviteli naplók megtekintésével.":::
+    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-viewlogsmenu.png" alt-text="A webböngészőben a &quot;/&quot; alkalmazáshiba miatt kiszolgálóhiba jelenik meg.":::
 
     A **kimeneti** ablak azt mutatja, hogy csatlakozik a naplózási szolgáltatáshoz, és minden percben olyan értesítési sort ad hozzá, amely a napló megjelenítésének hiányában leáll.
 
-    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-nologsyet.png" alt-text="A kimeneti ablak képernyőképe, amely példát mutat be egy, az értesítési sorokkal rendelkező log streaming szolgáltatással létesített kapcsolódásra.":::
+    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-nologsyet.png" alt-text="A webböngészőben a &quot;/&quot; alkalmazáshiba miatt kiszolgálóhiba jelenik meg.":::
 
 4. Az alkalmazás kezdőlapját megjelenítő böngészőablakban kattintson a **kapcsolat**elemre.
 
@@ -394,7 +394,7 @@ A `WebPageTraceListener` lehetővé teszi a nyomkövetési kimenet megtekintés�
 ### <a name="output-window-features"></a>A kimeneti ablak funkciói
 A **kimeneti** ablak **Microsoft Azure naplók** lapján több gomb és egy szövegmező látható:
 
-:::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-icons.png" alt-text="Képernyőfelvétel: a kimeneti ablak Microsoft Azure naplók lapjának gombjai és szövegdoboza.":::
+:::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-icons.png" alt-text="A webböngészőben a &quot;/&quot; alkalmazáshiba miatt kiszolgálóhiba jelenik meg.":::
 
 Ezek a következő funkciókat hajtják végre:
 
@@ -458,15 +458,15 @@ A **kimeneti** ablakban nyomon követhető naplók is letölthetők *. zip* -fá
 
 1. A **kimeneti** ablakban kattintson a **streaming naplók letöltése**elemre.
 
-    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-downloadicon.png" alt-text="Képernyőkép a kimeneti ablakról, amely a streaming naplók letöltése gombot jelölte ki.":::
+    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-downloadicon.png" alt-text="A webböngészőben a &quot;/&quot; alkalmazáshiba miatt kiszolgálóhiba jelenik meg.":::
 
     A fájlkezelő a kiválasztott letöltött fájllal nyílik meg a *letöltések* mappájába.
 
-    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-downloadedfile.png" alt-text="Képernyőkép a fájlkezelő letöltések mappájában egy kiválasztott letöltött fájllal.":::
+    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-downloadedfile.png" alt-text="A webböngészőben a &quot;/&quot; alkalmazáshiba miatt kiszolgálóhiba jelenik meg.":::
 
 2. Bontsa ki a *. zip* fájlt, és láthatja a következő mappastruktúrát:
 
-    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-logfilefolders.png" alt-text="Képernyőkép a. zip-fájl mappájának struktúrájáról a fájl kibontása után.":::
+    :::image type="content" source="./media/web-sites-dotnet-troubleshoot-visual-studio/tws-logfilefolders.png" alt-text="A webböngészőben a &quot;/&quot; alkalmazáshiba miatt kiszolgálóhiba jelenik meg.":::
 
    * Az alkalmazás-nyomkövetési naplók a *LogFiles\Application* mappában található *. txt* fájlokban találhatók.
    * A webkiszolgálói naplók a *. log* fájlokban találhatók a *LogFiles\http\RawLogs* mappában. A fájlok megtekintéséhez és módosításához használhatja a [log Parser](https://www.microsoft.com/download/details.aspx?displaylang=en&id=24659) eszközt is.
@@ -643,7 +643,7 @@ Ha az alkalmazás egy Azure web API-t vagy Mobile Services háttér-használatot
 ### <a name="tracing-in-aspnet-applications"></a>Nyomkövetés a ASP.NET-alkalmazásokban
 Nincsenek alapos és naprakész bevezetések az interneten elérhető ASP.NET-nyomkövetéshez. A legjobb megoldás, ha a régi bevezető anyagok a Web Formshoz lettek írva, mert az MVC még nem létezett, és kiegészíti az adott problémákra koncentráló újabb blogbejegyzéseket. Néhány jó kezdési hely a következő erőforrások:
 
-* [Monitorozás és telemetria (valós felhőalapú alkalmazások készítése az Azure-ban)](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/monitoring-and-telemetry).<br>
+* [Monitorozás és telemetria (Real-World felhőalapú alkalmazások fejlesztése az Azure-ban)](https://www.asp.net/aspnet/overview/developing-apps-with-windows-azure/building-real-world-cloud-apps-with-windows-azure/monitoring-and-telemetry).<br>
   E-könyv fejezet az Azure Cloud Applications nyomkövetési javaslataival.
 * [ASP.NET nyomkövetés](/previous-versions/dotnet/articles/ms972204(v=msdn.10))<br/>
   Régi, de még mindig jó erőforrás a tárgy alapszintű bevezetéséhez.

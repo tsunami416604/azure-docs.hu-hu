@@ -16,10 +16,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 0bfca096eb49ee9f1807935de1dac49151cc8ac3
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84743762"
 ---
 # <a name="configure-security-alerts-for-azure-resource-roles-in-privileged-identity-management"></a>Azure-beli erőforrás-szerepkörökre vonatkozó biztonsági riasztások konfigurálása Privileged Identity Management
@@ -28,7 +28,7 @@ Privileged Identity Management (PIM) riasztásokat állít elő, amikor gyanús 
 
 ![Azure-erőforrások – riasztások lap, a riasztás, a kockázati szint és a darabszám](media/pim-resource-roles-configure-alerts/rbac-alerts-page.png)
 
-## <a name="review-alerts"></a>Riasztások áttekintése
+## <a name="review-alerts"></a>Riasztások felülvizsgálata
 
 Válassza ki a riasztást, hogy megjelenjen egy jelentés, amely felsorolja a riasztást kiváltó felhasználókat vagy szerepköröket, valamint a Szervizelési útmutatót.
 
@@ -36,13 +36,13 @@ Válassza ki a riasztást, hogy megjelenjen egy jelentés, amely felsorolja a ri
 
 ## <a name="alerts"></a>Riasztások
 
-| Riasztás | Severity | Eseményindító | Ajánlás |
+| Riasztás | Súlyosság | Eseményindító | Ajánlás |
 | --- | --- | --- | --- |
 | **Túl sok tulajdonos van hozzárendelve egy erőforráshoz** |Közepes |Túl sok felhasználó rendelkezik tulajdonosi szerepkörrel. |Tekintse át a listában szereplő felhasználókat, és rendeljen hozzá néhányat a kevésbé Kiemelt szerepkörökhöz. |
 | **Túl sok állandó tulajdonos van hozzárendelve egy erőforráshoz** |Közepes |Túl sok felhasználó van hozzá véglegesen rendelve egy szerepkörhöz. |Tekintse át a listában szereplő felhasználókat, és rendelje újra a szerepkör-használathoz szükséges aktiválást. |
 | **Ismétlődő szerepkör létrehozva** |Közepes |Több szerepkör azonos feltételekkel rendelkezik. |Csak az egyik szerepkört használja. |
 
-### <a name="severity"></a>Severity
+### <a name="severity"></a>Súlyosság
 
 - **Magas**: a szabályzat megsértése miatt azonnali műveletre van szükség. 
 - **Közepes**: nincs szükség azonnali műveletre, de az esetleges szabályzat megsértését jelzi.

@@ -7,13 +7,13 @@ ms.service: container-service
 ms.topic: conceptual
 ms.date: 08/11/2020
 ms.openlocfilehash: c066931cece60d14767b86254020ea5ba4bad1be
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88854502"
 ---
-# <a name="support-lifecycle-for-azure-red-hat-openshift-4"></a>Támogatási életciklus az Azure Red Hat OpenShift 4 rendszerhez
+# <a name="support-lifecycle-for-azure-red-hat-openshift-4"></a>Az Azure Red Hat OpenShift 4 támogatási életciklusa
 
 A Red Hat nagyjából három havonta kibocsátja a Red Hat OpenShift Container platform (OCP) alverzióit. Ezek a kiadások új funkciókat és fejlesztési lehetőségeket tartalmaznak. A javítási kiadások gyakoribbak (általában hetente), és csak a kritikus hibajavítások egy alverzión belül. Ezek a javítások a biztonsági rések vagy a jelentős hibák javítását is tartalmazhatják.
 

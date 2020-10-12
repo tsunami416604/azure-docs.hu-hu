@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 08/04/2020
 ms.openlocfilehash: f3ae081c8657a3ee6a27b0f9208c3eb4e4e745cc
-ms.sourcegitcommit: 5a37753456bc2e152c3cb765b90dc7815c27a0a8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87759733"
 ---
 # <a name="create-custom-views-by-using-view-designer-in-azure-monitor"></a>Egyéni nézetek létrehozása a Azure Monitor View Designer használatával
@@ -106,6 +106,6 @@ A nézetek szerkesztési módban való használatának lehetőségeit az alábbi
 | Importálás      | Importálja a másik munkaterületről exportált *omsview* fájlt. Ez a művelet felülírja a meglévő nézet konfigurációját. |
 | Klónozás       | Létrehoz egy új nézetet, és megnyitja a Tervező nézetben. Az új nézet neve megegyezik az eredeti névvel, de a *Másolás* hozzá van fűzve. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Csempék](view-designer-tiles.md) hozzáadása az egyéni nézethez.
 * [Vizualizációs részek](view-designer-parts.md) hozzáadása az egyéni nézethez.

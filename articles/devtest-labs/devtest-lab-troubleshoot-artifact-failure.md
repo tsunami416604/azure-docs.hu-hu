@@ -4,10 +4,10 @@ description: A DevTest Labs olyan információkat biztosít, amelyek segítség�
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 440ce6a537ac8d6a21ae8010bfbb3c38a82bf01e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85480813"
 ---
 # <a name="diagnose-artifact-failures-in-the-lab"></a>Az összetevők hibáinak diagnosztizálása a laborban 

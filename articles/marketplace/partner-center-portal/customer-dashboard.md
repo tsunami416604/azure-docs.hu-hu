@@ -8,10 +8,10 @@ ms.date: 07/22/2020
 author: shganesh-dev
 ms.author: shganesh
 ms.openlocfilehash: 44e992bb1445e1e58f42ec150a8e2c0682eea98b
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87317586"
 ---
 # <a name="customer-dashboard-in-commercial-marketplace-analytics"></a>Az Ügyfél irányítópult a kereskedelmi piactér-elemzésekben
@@ -110,7 +110,7 @@ Az **ügyfelek oldal** szűrői az ügyfelek oldal szintjén lesznek alkalmazva.
 >[!NOTE]
 > Az ügyfél rácsa, az oldal szűrői és a lehetséges kijelölések részletes definíciói az alább található GYIK-cikkben találhatók.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A partner Center kereskedelmi piactéren elérhető analitikai jelentések áttekintését lásd: [a partner Center kereskedelmi piacának elemzései](./analytics.md).
 - Az ajánlathoz tartozó Piactéri tevékenységet összefoglaló összesített adatok grafikonok, trendek és értékek esetében lásd: [az összefoglaló irányítópult a kereskedelmi piactér elemzésében](./summary-dashboard.md).

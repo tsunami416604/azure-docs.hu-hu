@@ -13,17 +13,17 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: 273e9f7ce65cdd15000b1cc4ac7c19cde5992992
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91396773"
 ---
 # <a name="monitor-vpn-gateways-with-network-watcher-troubleshooting"></a>VPN-átjárók figyelése Network Watcher hibaelhárítással
 
 A hálózati teljesítmény alapos betekintést biztosít a megbízható szolgáltatások biztosításához az ügyfeleknek. Ezért fontos, hogy gyorsan felderítse a hálózati leállás feltételeit, és javítsa a kiesési feltétel enyhítését. A Azure Automation lehetővé teszi a feladatok programozott módon történő megvalósítását és futtatását a runbookok használatával. A Azure Automation használata tökéletes receptet hoz létre a folyamatos és proaktív hálózati figyelés és riasztások elkészítése során.
 
-## <a name="scenario"></a>Használati eset
+## <a name="scenario"></a>Forgatókönyv
 
 Az alábbi képen egy többrétegű alkalmazás található, amely VPN Gateway és alagút használatával létesített helyszíni kapcsolattal rendelkezik. A VPN Gateway működésének biztosítása kritikus fontosságú az alkalmazások teljesítményében.
 
@@ -183,7 +183,7 @@ Kattintson a Save (Mentés) gombra az ütemterv runbook való mentéséhez.
 
 ![10. lépés][10]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megértette, hogyan integrálhatja Network Watcher hibaelhárítást a Azure Automationval, megtudhatja, hogyan indíthat el a csomagok rögzítését a virtuális gépek riasztásai számára, ha meglátogatja a [riasztás által aktivált csomagok rögzítését az Azure Network Watcher](network-watcher-alert-triggered-packet-capture.md)használatával.
 

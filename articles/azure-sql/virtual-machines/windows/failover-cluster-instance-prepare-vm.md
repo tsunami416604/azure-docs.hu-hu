@@ -13,10 +13,10 @@ ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
 ms.openlocfilehash: f42d6c8015061406958bdc16473dc0f042d3143a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91272498"
 ---
 # <a name="prepare-virtual-machines-for-an-fci-sql-server-on-azure-vms"></a>Virtuális gépek előkészítése a (z) rendszerhez (SQL Server Azure-beli virtuális gépeken)
@@ -105,7 +105,7 @@ Az egyes virtuális gépeken nyissa meg a SQL Server által használt Windows t�
 
 Ez a tábla a szükséges portokat részletezi az Ön által megnyitható portoktól függően: 
 
-   | Rendeltetés | Port | Jegyzetek
+   | Cél | Port | Jegyzetek
    | ------ | ------ | ------
    | SQL Server | TCP 1433 | Normál port a SQL Server alapértelmezett példányaihoz. Ha a katalógusból rendszerképet használt, a rendszer automatikusan megnyitja a portot. </br> </br> **Felhasználta**: az összes%-os konfiguráció. |
    | Állapotadat-mintavétel | TCP 59999 | Bármilyen nyitott TCP-port. Konfigurálja a terheléselosztó [állapotának](hadr-vnn-azure-load-balancer-configure.md#configure-health-probe) mintavételét és a fürtöt a port használatára. </br> </br> **A**(z): a Load Balancer használatával. |

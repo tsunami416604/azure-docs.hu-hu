@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 07/17/2020
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019
 ms.openlocfilehash: 8363011187a4c2ef77681ece4bb8b1de73ec7a63
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87801489"
 ---
 # <a name="use-java-message-service-20-api-with-azure-service-bus-premium-preview"></a>A Java Message Service 2,0 API és a Azure Service Bus Premium (előzetes verzió) használata
@@ -47,7 +47,7 @@ A függőségek importálása után a Java-alkalmazások JMS-szolgáltatótól f
 
 Ha a JMS-ügyfelekkel szeretne csatlakozni a Azure Service Bushoz, akkor az **elsődleges kapcsolati karakterlánc**alatt lévő [Azure Portal](https://portal.azure.com) "megosztott elérési szabályzatok" részében elérhető **kapcsolati sztringre** van szükség.
 
-1. A`ServiceBusJmsConnectionFactorySettings`
+1. A `ServiceBusJmsConnectionFactorySettings`
 
     ```java
     ServiceBusJmsConnectionFactorySettings connFactorySettings = new ServiceBusJmsConnectionFactorySettings();
@@ -60,7 +60,7 @@ Ha a JMS-ügyfelekkel szeretne csatlakozni a Azure Service Bushoz, akkor az **el
     ConnectionFactory factory = new ServiceBusJmsConnectionFactory(ServiceBusConnectionString, connFactorySettings);
     ```
 
-3. A `ConnectionFactory` vagy a létrehozásához használja `Connection` a`Session` 
+3. A `ConnectionFactory` vagy a létrehozásához használja `Connection` a `Session` 
 
     ```java
     Connection connection = factory.createConnection();
@@ -124,13 +124,13 @@ JMSConsumer sharedDurableConsumer = jmsContext.createSharedDurableConsumer(topic
 Message msg = (Message) sharedDurableConsumer.receive();
 ```
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 
 Ez az útmutató bemutatja, hogyan használhatók a Java-üzenetküldést (JMS) használó Java-ügyfélalkalmazások a AMQP 1,0-mel a Azure Service Bus használatával.
 
 Más nyelvekről is használhat Service Bus AMQP 1,0-et, beleértve a .NET, a C, a Python és a PHP-t is. Az ezekkel a különböző nyelvekkel létrehozott összetevők megbízhatóan és teljes hűséggel cserélhetik az üzeneteket a Service Bus AMQP 1,0-támogatásának használatával.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Azure Service Bus és a Java Message Service-(JMS-) entitásokkal kapcsolatos további információkért tekintse meg az alábbi hivatkozásokat – 
 * [Service Bus – várólisták, témakörök és előfizetések](service-bus-queues-topics-subscriptions.md)

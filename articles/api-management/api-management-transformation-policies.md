@@ -13,16 +13,16 @@ ms.topic: article
 ms.date: 03/11/2019
 ms.author: apimpm
 ms.openlocfilehash: 0182c3aa9095ad6f7bf3d8d86f115517e9efb020
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86249603"
 ---
 # <a name="api-management-transformation-policies"></a>API Management-átalakítási szabályzatok
 Ez a témakör az alábbi API Management szabályzatokra mutató hivatkozást tartalmaz. A házirendek hozzáadásával és konfigurálásával kapcsolatos információkért lásd: [szabályzatok API Management](https://go.microsoft.com/fwlink/?LinkID=398186).
 
-##  <a name="transformation-policies"></a><a name="TransformationPolicies"></a>Átalakítási házirendek
+##  <a name="transformation-policies"></a><a name="TransformationPolicies"></a> Átalakítási házirendek
 
 -   [A JSON konvertálása XML](api-management-transformation-policies.md#ConvertJSONtoXML) formátumba – átalakítja a kérelem vagy a válasz törzsét a JSON-ből az XML-be.
 
@@ -44,7 +44,7 @@ Ez a témakör az alábbi API Management szabályzatokra mutató hivatkozást ta
 
 -   [XML átalakítása XSLT használatával](api-management-transformation-policies.md#XSLTransform) – XSL-transzformációt alkalmaz a kérelem vagy válasz törzsében lévő XML formátumra.
 
-##  <a name="convert-json-to-xml"></a><a name="ConvertJSONtoXML"></a>JSON konvertálása XML-fájllá
+##  <a name="convert-json-to-xml"></a><a name="ConvertJSONtoXML"></a> JSON konvertálása XML-fájllá
  A `json-to-xml` szabályzat egy kérelem vagy válasz törzsét átalakítja a JSON-ből az XML-be.
 
 ### <a name="policy-statement"></a>Szabályzati utasítás
@@ -88,7 +88,7 @@ Ez a témakör az alábbi API Management szabályzatokra mutató hivatkozást ta
 
 -   **Házirend-hatókörök:** az összes hatókör
 
-##  <a name="convert-xml-to-json"></a><a name="ConvertXMLtoJSON"></a>XML konvertálása JSON formátumba
+##  <a name="convert-xml-to-json"></a><a name="ConvertXMLtoJSON"></a> XML konvertálása JSON formátumba
  A `xml-to-json` házirend XML-ből JSON-ra alakítja át a kérelem vagy a válasz törzsét. Ez a szabályzat az API-k csak XML háttérbeli webszolgáltatások alapján történő modernizálására használható.
 
 ### <a name="policy-statement"></a>Szabályzati utasítás
@@ -132,7 +132,7 @@ Ez a témakör az alábbi API Management szabályzatokra mutató hivatkozást ta
 
 -   **Házirend-hatókörök:** az összes hatókör
 
-##  <a name="find-and-replace-string-in-body"></a><a name="Findandreplacestringinbody"></a>Karakterlánc keresése és cseréje a törzsben
+##  <a name="find-and-replace-string-in-body"></a><a name="Findandreplacestringinbody"></a> Karakterlánc keresése és cseréje a törzsben
  A `find-and-replace` házirend egy kérelem vagy válasz alkarakterláncot talál, és egy másik alkarakterlánccal helyettesíti.
 
 ### <a name="policy-statement"></a>Szabályzati utasítás
@@ -158,7 +158,7 @@ Ez a témakör az alábbi API Management szabályzatokra mutató hivatkozást ta
 |Név|Leírás|Kötelező|Alapértelmezett|
 |----------|-----------------|--------------|-------------|
 |a|A keresendő sztring.|Igen|N/A|
-|erre:|A behelyettesítendő sztring. A keresési karakterlánc eltávolításához nulla hosszúságú helyettesítő karakterláncot kell megadni.|Igen|N/A|
+|a következőre:|A behelyettesítendő sztring. A keresési karakterlánc eltávolításához nulla hosszúságú helyettesítő karakterláncot kell megadni.|Igen|N/A|
 
 ### <a name="usage"></a>Használat
  Ez a szabályzat a következő házirend- [részekben](./api-management-howto-policies.md#sections) és [hatókörökben](./api-management-howto-policies.md#scopes)használható.
@@ -167,7 +167,7 @@ Ez a témakör az alábbi API Management szabályzatokra mutató hivatkozást ta
 
 -   **Házirend-hatókörök:** az összes hatókör
 
-##  <a name="mask-urls-in-content"></a><a name="MaskURLSContent"></a>URL-címek maszkolása a tartalomban
+##  <a name="mask-urls-in-content"></a><a name="MaskURLSContent"></a> URL-címek maszkolása a tartalomban
  A `redirect-content-urls` rewrites (maszkok) hivatkozások a válasz törzsében, hogy a megfelelő hivatkozásra mutassanak az átjárón keresztül. A kimenő szakaszban a válasz törzsére mutató hivatkozások újraírására használhatja, hogy azok az átjáróra mutassanak. Ellentétes hatásként használja a bejövő szakaszt.
 
 > [!NOTE]
@@ -198,7 +198,7 @@ Ez a témakör az alábbi API Management szabályzatokra mutató hivatkozást ta
 
 -   **Házirend-hatókörök:** az összes hatókör
 
-##  <a name="set-backend-service"></a><a name="SetBackendService"></a>Háttérbeli szolgáltatás beállítása
+##  <a name="set-backend-service"></a><a name="SetBackendService"></a> Háttérbeli szolgáltatás beállítása
  A `set-backend-service` házirend segítségével átirányíthatja a bejövő kérelmeket egy másik háttérre, mint az adott művelet API-beállításaiban megadott beállításokkal. Ez a házirend a bejövő kérelem háttérbeli szolgáltatásának alap URL-címét módosítja a házirendben megadott értékre.
 
 ### <a name="policy-statement"></a>Szabályzati utasítás
@@ -242,7 +242,7 @@ Kezdetben a háttérbeli szolgáltatás alap URL-címe az API-beállításokból
 
 Ha a [<válassza \> ](api-management-advanced-policies.md#choose) a házirend-utasítás alkalmazása beállítást, a háttérrendszer URL-címe a `http://contoso.com/api/8.2` `http://contoso.com/api/9.1` Version kérelem lekérdezési paraméterének értékétől függően újra megváltozhat. Ha például az érték `"2013-15"` a végső kérelem URL-címe lesz `http://contoso.com/api/8.2/partners/15?version=2013-05&subscription-key=abcdef` .
 
-Ha a kérés további átalakítására van szükség, más [átalakítási házirendek](api-management-transformation-policies.md#TransformationPolicies) is használhatók. Ha például most el szeretné távolítani a lekérdezési paramétert, hogy a kérés egy adott verziójú háttérbe legyen irányítva, a [lekérdezési karakterlánc beállítása paraméter](api-management-transformation-policies.md#SetQueryStringParameter) -házirend használatával eltávolíthatja a most redundáns Version attribútumot.
+Ha a kérés további átalakítására van szükség, más [átalakítási házirendek](api-management-transformation-policies.md#TransformationPolicies) is használhatók. Ha például most el szeretné távolítani a lekérdezési paramétert, hogy a kérés egy adott verziójú háttérbe legyen irányítva, a  [lekérdezési karakterlánc beállítása paraméter](api-management-transformation-policies.md#SetQueryStringParameter) -házirend használatával eltávolíthatja a most redundáns Version attribútumot.
 
 ### <a name="example"></a>Példa
 
@@ -283,7 +283,7 @@ Ebben a példában a házirend a kérést egy Service Fabric-háttérre irányí
 
 -   **Házirend-hatókörök:** az összes hatókör
 
-##  <a name="set-body"></a><a name="SetBody"></a>Törzs beállítása
+##  <a name="set-body"></a><a name="SetBody"></a> Törzs beállítása
  A `set-body` házirend segítségével állítsa be az üzenettörzs a bejövő és a kimenő kérelmeket. Az üzenet törzsének eléréséhez használhatja a `context.Request.Body` tulajdonságot vagy a (z `context.Response.Body` ) függvényt attól függően, hogy a házirend a bejövő vagy kimenő szakaszban van-e.
 
 > [!IMPORTANT]
@@ -453,7 +453,7 @@ OriginalUrl.
 
 -   **Házirend-hatókörök:** az összes hatókör
 
-##  <a name="set-http-header"></a><a name="SetHTTPheader"></a>HTTP-fejléc beállítása
+##  <a name="set-http-header"></a><a name="SetHTTPheader"></a> HTTP-fejléc beállítása
  A `set-header` házirend egy értéket rendel egy meglévő válaszhoz és/vagy kérelem fejlécéhez, vagy új választ és/vagy kérési fejlécet ad hozzá.
 
  HTTP-fejléceket tartalmazó listát szúr be egy HTTP-üzenetbe. Bejövő folyamatba való helyezéskor ez a házirend beállítja a cél szolgáltatásnak átadott kérelem HTTP-fejléceit. A kimenő folyamatokban ez a házirend állítja be a HTTP-fejléceket az átjáró ügyfelének küldött válaszhoz.
@@ -497,14 +497,14 @@ OriginalUrl.
  További információ: [Policy Expressions](api-management-policy-expressions.md) and [Context változó](api-management-policy-expressions.md#ContextVariables).
 
 > [!NOTE]
-> Egy fejléc több értéke egy CSV-karakterlánchoz van fűzve, például:`headerName: value1,value2,value3`
+> Egy fejléc több értéke egy CSV-karakterlánchoz van fűzve, például: `headerName: value1,value2,value3`
 >
 > A kivételek közé tartoznak a szabványosított fejlécek, amelyek értékei:
 > - tartalmazhat vesszőket ( `User-Agent` , `WWW-Authenticate` , `Proxy-Authenticate` ),
 > - tartalmazhat dátumot ( `Cookie` , `Set-Cookie` , `Warning` ),
 > - a következőt tartalmazza: dátum ( `Date` ,,,, `Expires` `If-Modified-Since` `If-Unmodified-Since` `Last-Modified` , `Retry-After` ).
 >
-> A kivételek esetén több fejléc-érték nem lesz összefűzve egyetlen karakterláncban, és külön fejlécként lesznek átadva, például:`User-Agent: value1`
+> A kivételek esetén több fejléc-érték nem lesz összefűzve egyetlen karakterláncban, és külön fejlécként lesznek átadva, például: `User-Agent: value1`
 >`User-Agent: value2`
 >`User-Agent: value3`
 
@@ -513,7 +513,7 @@ OriginalUrl.
 |Név|Leírás|Kötelező|
 |----------|-----------------|--------------|
 |fejléc beállítása|Gyökérelem.|Igen|
-|value|Megadja a beállítandó fejléc értékét. Több azonos nevű fejléchez további elemek is hozzáadhatók `value` .|Nem|
+|érték|Megadja a beállítandó fejléc értékét. Több azonos nevű fejléchez további elemek is hozzáadhatók `value` .|Nem|
 
 ### <a name="properties"></a>Tulajdonságok
 
@@ -529,7 +529,7 @@ OriginalUrl.
 
 -   **Házirend-hatókörök:** az összes hatókör
 
-##  <a name="set-query-string-parameter"></a><a name="SetQueryStringParameter"></a>Lekérdezési karakterlánc paraméterének beállítása
+##  <a name="set-query-string-parameter"></a><a name="SetQueryStringParameter"></a> Lekérdezési karakterlánc paraméterének beállítása
  A `set-query-parameter` házirend hozzáadja, lecseréli az értéket vagy törli a kérelem lekérdezési karakterláncának paraméterét. Felhasználható a háttérrendszer által várt lekérdezési paraméterek átadására, amelyek a kérelemben nem kötelező vagy soha nem jelennek meg.
 
 ### <a name="policy-statement"></a>Szabályzati utasítás
@@ -568,7 +568,7 @@ OriginalUrl.
 |Név|Leírás|Kötelező|
 |----------|-----------------|--------------|
 |set-Query-paraméter|Gyökérelem.|Igen|
-|value|Megadja a beállítandó lekérdezési paraméter értékét. Az azonos nevű lekérdezési paraméterekhez további elemek is hozzáadhatók `value` .|Igen|
+|érték|Megadja a beállítandó lekérdezési paraméter értékét. Az azonos nevű lekérdezési paraméterekhez további elemek is hozzáadhatók `value` .|Igen|
 
 ### <a name="properties"></a>Tulajdonságok
 
@@ -584,12 +584,12 @@ OriginalUrl.
 
 -   **Házirend-hatókörök:** az összes hatókör
 
-##  <a name="rewrite-url"></a><a name="RewriteURL"></a>URL-cím újraírása
+##  <a name="rewrite-url"></a><a name="RewriteURL"></a> URL-cím újraírása
  A `rewrite-uri` szabályzat az alábbi példában látható módon átalakítja a kérés URL-címét a nyilvános űrlapról a webszolgáltatás által várt űrlapra.
 
-- Nyilvános URL-cím –`http://api.example.com/storenumber/ordernumber`
+- Nyilvános URL-cím – `http://api.example.com/storenumber/ordernumber`
 
-- Kérelem URL-címe –`http://api.example.com/v2/US/hardware/storenumber&ordernumber?City&State`
+- Kérelem URL-címe – `http://api.example.com/v2/US/hardware/storenumber&ordernumber?City&State`
 
   Ez a szabályzat akkor használható, ha egy emberi és/vagy böngésző-barát URL-címet át kell alakítani a webszolgáltatás által várt URL-formátumba. Ezt a házirendet csak akkor kell alkalmazni, ha alternatív URL-formátumot tesznek elérhetővé, például tiszta URL-címeket, REST-URL-címeket, felhasználóbarát URL-címeket vagy olyan SEO-barát URL-címeket, amelyek nem tartalmaznak lekérdezési karakterláncot, hanem csak az erőforrás elérési útját tartalmazzák (a séma és a hatóság után). Ezt gyakran esztétikai, használhatósági vagy keresőmotor-optimalizálási (SEO) célokra kell elvégezni.
 
@@ -662,7 +662,7 @@ OriginalUrl.
 
 -   **Házirend-hatókörök:** az összes hatókör
 
-##  <a name="transform-xml-using-an-xslt"></a><a name="XSLTransform"></a>XML átalakítása XSLT használatával
+##  <a name="transform-xml-using-an-xslt"></a><a name="XSLTransform"></a> XML átalakítása XSLT használatával
  A `Transform XML using an XSLT` szabályzat egy XSL-transzformációt alkalmaz a kérelem vagy válasz törzsében lévő XML-re.
 
 ### <a name="policy-statement"></a>Szabályzati utasítás
@@ -726,7 +726,7 @@ OriginalUrl.
 
 -   **Házirend-hatókörök:** az összes hatókör
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információkért tekintse át a következők témaköröket:
 

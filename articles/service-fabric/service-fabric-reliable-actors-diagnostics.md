@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 10/26/2017
 ms.author: abhisram
 ms.openlocfilehash: a38a11d9cf062cd0a45890d43afe9b2530b2b7bb
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86258458"
 ---
 # <a name="diagnostics-and-performance-monitoring-for-reliable-actors"></a>A Reliable Actors diagnosztizálása és teljesítmény-figyelése
@@ -159,7 +159,7 @@ Amikor az ügyfél egy metódust egy Actor proxy objektumon keresztül hív meg,
 | Service Fabric színész |Kérelem deszerializálásának átlagos ezredmásodperce |Igénybe vett idő (ezredmásodpercben) a színészi kérelem üzenetének deszerializálásához, amikor a szolgáltatás megkapja a szolgáltatást |
 | Service Fabric színész |Válasz szerializálásának átlagos ezredmásodperce |Igénybe vett idő (ezredmásodpercben), hogy a rendszer a válasz küldése előtt szerializálja a szolgáltatásbeli válaszüzenetet az ügyfélnek. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Hogyan Reliable Actors használni a Service Fabric platformot?](service-fabric-reliable-actors-platform.md)
 * [A Actor API-referenciájának dokumentációja](/previous-versions/azure/dn971626(v=azure.100))
 * [Mintakód](https://github.com/Azure-Samples/service-fabric-dotnet-getting-started)

@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 07/31/2020
 ms.openlocfilehash: 155f27b9f04db74955640aad8f582fdf05539368
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87511938"
 ---
 # <a name="using-functions-in-azure-monitor-log-queries"></a>Függvények használata Azure Monitor log-lekérdezésekben
@@ -23,7 +23,7 @@ A **Save (Mentés** ) gombra kattintva hozzon létre egy Azure Portal log Analyt
 
 | Beállítás | Leírás |
 |:---|:---|
-| Név           | A lekérdezés megjelenített neve a **query Explorerben**. |
+| Name (Név)           | A lekérdezés megjelenített neve a **query Explorerben**. |
 | Mentés másként        | Függvény |
 | Függvény aliasa | A függvény más lekérdezésekben való használatának rövid neve. A nem tartalmazhat szóközt, és egyedinek kell lennie. |
 | Kategória       | A **lekérdezési Explorerben**mentett lekérdezések és függvények rendszerezésének kategóriája. |

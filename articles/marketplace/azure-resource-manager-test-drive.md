@@ -8,10 +8,10 @@ ms.date: 06/19/2020
 ms.author: keferna
 author: keferna
 ms.openlocfilehash: 92fd4d629585ed465e2891be2dce1c1bdc8c88e6
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87287949"
 ---
 # <a name="azure-resource-manager-test-drive"></a>Azure Resource Manager tesztelési meghajtó
@@ -122,7 +122,7 @@ A test Drive inicializálja ezt a paramétert egy új véletlenszerű felhaszná
 }
 ```
 
-Minta értéke:`admin68876`
+Minta értéke: `admin68876`
 
 A megoldáshoz véletlenszerű vagy állandó felhasználónevet is használhat.
 
@@ -144,7 +144,7 @@ A test Drive inicializálja ezt a paramétert egy új véletlenszerű jelszóval
 }
 ```
 
-Minta értéke:`Lp!ACS^2kh`
+Minta értéke:  `Lp!ACS^2kh`
 
 A megoldáshoz véletlenszerű vagy állandó jelszavakat is használhat.
 
@@ -166,7 +166,7 @@ A test Drive inicializálja ezt a paramétert egy olyan egyedi GUID azonosítóv
 }
 ```
 
-Minta értéke:`b8c8693e-5673-449c-badd-257a405a6dee`
+Minta értéke: `b8c8693e-5673-449c-badd-257a405a6dee`
 
 Ezzel a paraméterrel egyedileg azonosíthatja a tesztelési meghajtó munkamenetét, ha szükséges.
 
@@ -266,7 +266,7 @@ Példa:
 
 ### <a name="subscription-limits"></a>Előfizetési korlátok
 
-Ne feledkezzen meg az előfizetés és a szolgáltatás korlátairól. Ha például akár tíz 4 magos virtuális gépet szeretne üzembe helyezni, győződjön meg arról, hogy a laborhoz használt előfizetés lehetővé teszi a 40 magok használatát. Az Azure-előfizetéssel és a szolgáltatás korlátaival kapcsolatos további információkért lásd: [Azure-előfizetések és-szolgáltatások korlátai, kvótái és megkötései](../azure-resource-manager/management/azure-subscription-service-limits.md). Egyszerre több tesztvezetés is elvégezhető. Ellenőrizze, hogy az előfizetés képes-e kezelni a magok számát, szorozva az egyidejű tesztelési meghajtók teljes számával.
+Ne feledkezzen meg az előfizetés és a szolgáltatás korlátairól. Ha például az 10 4-os virtuális gépeket szeretné üzembe helyezni, gondoskodnia kell arról, hogy a laborhoz használt előfizetés lehetővé tegye a 40 magok használatát. Az Azure-előfizetéssel és a szolgáltatás korlátaival kapcsolatos további információkért lásd: [Azure-előfizetések és-szolgáltatások korlátai, kvótái és megkötései](../azure-resource-manager/management/azure-subscription-service-limits.md). Egyszerre több tesztvezetés is elvégezhető. Ellenőrizze, hogy az előfizetés képes-e kezelni a magok számát, szorozva az egyidejű tesztelési meghajtók teljes számával.
 
 ### <a name="what-to-upload"></a>Mi a feltöltés?
 
@@ -310,10 +310,10 @@ Az utolsó szakasz a tesztelési meghajtók automatikus üzembe helyezése az Az
    3. Adja meg az alkalmazás nevét.
    4. Válassza ki a **webalkalmazás/API** **típusát** .
    5. Adjon meg bármilyen értéket a bejelentkezési URL-címben, ez a mező nincs használatban.
-   6. Válassza a **Létrehozás** lehetőséget.
+   6. Kattintson a **Létrehozás** gombra.
    7. Az alkalmazás létrehozása után válassza a **Tulajdonságok**  >  **több-bérlős beállítást** , majd a **Mentés**lehetőséget.
 
-4. Válassza a **Mentés** lehetőséget.
+4. Kattintson a **Mentés** gombra.
 
 5. Másolja ki az alkalmazás AZONOSÍTÓját a regisztrált alkalmazáshoz, és illessze be a test Drive (teszt) mezőbe.
 
@@ -331,7 +331,7 @@ Az utolsó szakasz a tesztelési meghajtók automatikus üzembe helyezése az Az
 
       ![Engedélyek hozzáadása](media/test-drive/access-control-permissions.jpg)
 
-   1. Válassza a **Mentés** lehetőséget.
+   1. Kattintson a **Mentés** gombra.
 
 7. **Azure ad alkalmazás** hitelesítési kulcs létrehozása. A **kulcsok**területen adja meg a **kulcs leírását**, állítsa be az időtartamot, hogy **Soha ne járjon le** (a lejárt kulcs megszakítja a tesztelési meghajtót éles környezetben), majd válassza a **Mentés**lehetőséget. Másolja és illessze be ezt az értéket a szükséges tesztvezetés mezőjébe.
 
@@ -351,7 +351,7 @@ Ne törölje az ügyfelek számára kiépített tesztvezetés-példányokat. a t
 
 Ha már elégedett az előzetes verzió ajánlatával, itt az ideje, hogy **éljünk**! Végső felülvizsgálati folyamattal ellenőrizheti a teljes végpontok közötti élményt. Ha elutasítjuk az ajánlatot, elküldjük Önnek az ajánlat mérnöki kapcsolattartóját, amely elmagyarázza, mit kell rögzíteni.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Ha követte az ajánlat a partner Centerben való létrehozásához szükséges utasításokat, a vissza nyílra kattintva térjen vissza ehhez a témakörhöz.
 - További információ a tesztelési meghajtók egyéb típusairól: [Mi a test Drive?](what-is-test-drive.md).

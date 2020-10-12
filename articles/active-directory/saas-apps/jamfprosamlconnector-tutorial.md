@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 02/11/2020
 ms.author: jeedes
 ms.openlocfilehash: 780421d93916c7da7897dfa15d09dc895cf56280
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88552662"
 ---
 # <a name="tutorial-azure-active-directory-sso-integration-with-jamf-pro"></a>Oktatóanyag: Azure Active Directory SSO-integráció a JAMF Pro-val
@@ -71,8 +71,8 @@ Ebben a szakaszban az Azure AD SSO konfigurálását és tesztelését végezhet
 Ebben a szakaszban engedélyezheti az Azure AD SSO-t a Azure Portalban.
 
 1. A [Azure Portal](https://portal.azure.com/)a **JAMF Pro** -alkalmazás integrációja lapon keresse meg a **kezelés** szakaszt, és válassza az **egyszeri bejelentkezés**lehetőséget.
-1. Az **egyszeri bejelentkezési módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
-1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon válassza az **alapszintű SAML-konfigurációhoz** tartozó toll ikont a beállítások szerkesztéséhez.
+1. Az **egyetlen Sign-On módszer kiválasztása** lapon válassza az **SAML**lehetőséget.
+1. Az **egyszeri Sign-On beállítása az SAML-vel** lapon válassza az **ALAPszintű SAML-konfigurációhoz** tartozó toll ikont a beállítások szerkesztéséhez.
 
    ![Szerkessze az alapszintű SAML-konfiguráció lapot.](common/edit-urls.png)
 
@@ -87,7 +87,7 @@ Ebben a szakaszban engedélyezheti az Azure AD SSO-t a Azure Portalban.
     > [!NOTE]
     > Ezek az értékek nem valósak. Frissítse ezeket az értékeket a tényleges azonosítóval, a válasz URL-címével és a bejelentkezési URL-címmel. A tényleges azonosító értékét a JAMF Pro portál **egyszeri bejelentkezés** szakaszában találja, amelyet az oktatóanyag későbbi részében talál. Kibonthatja a tényleges altartomány értéket az azonosító értékből, és a bejelentkezési URL-cím és a válasz URL-címének használatával kinyerheti az altartomány adatait. Az Azure Portal **alapszintű SAML-konfiguráció** szakaszában látható képleteket is megtekintheti.
 
-1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon lépjen az **SAML aláíró tanúsítvány** szakaszra, válassza a **Másolás** gombot az **alkalmazás-összevonási metaadatok URL-címének**másolásához, majd mentse a számítógépre.
+1. Az **egyszeres Sign-On beállítása az SAML-vel** lapon válassza az **SAML aláíró tanúsítványa** szakaszt, és a **Másolás** gombra kattintva másolja az **alkalmazás-összevonási metaadatok URL-címét**, majd mentse a számítógépre.
 
     ![Az SAML-aláíró tanúsítvány letöltési hivatkozása](common/copy-metadataurl.png)
 
@@ -139,15 +139,15 @@ Ebben a szakaszban B. Simon hozzáférést biztosít a JAMF Pro-hoz.
 
 5. Válassza az **egyszeri bejelentkezés**lehetőséget.
 
-    ![Egyszeri bejelentkezés kiválasztása a JAMF Pro-ban](./media/jamfprosamlconnector-tutorial/configure2.png)
+    ![Egyetlen Sign-On kiválasztása a JAMF Pro-ban](./media/jamfprosamlconnector-tutorial/configure2.png)
 
 6. Az **egyszeri bejelentkezés** oldalon hajtsa végre az alábbi lépéseket.
 
-    ![Az egyszeri bejelentkezési oldal a JAMF Pro-ban](./media/jamfprosamlconnector-tutorial/configure3.png)
+    ![A JAMF Pro egyetlen Sign-On lapja](./media/jamfprosamlconnector-tutorial/configure3.png)
 
     a. Válassza a **Szerkesztés** elemet.
 
-    b. Jelölje be az **egyszeri bejelentkezéses hitelesítés engedélyezése** jelölőnégyzetet.
+    b. Jelölje be az **egyszeri Sign-On hitelesítés engedélyezése** jelölőnégyzetet.
 
   c. Válassza az **Azure** lehetőséget az identitás- **szolgáltató** legördülő menüből.
 
@@ -162,7 +162,7 @@ Ebben a szakaszban B. Simon hozzáférést biztosít a JAMF Pro-hoz.
 
 7. Ugyanazon a lapon görgessen le a felhasználó- **hozzárendelés** szakaszhoz. Ezután hajtsa végre az alábbi lépéseket.
 
-    ![A JAMF Pro egyszeri bejelentkezési oldalának felhasználói leképezése szakasza.](./media/jamfprosamlconnector-tutorial/tutorial-jamfprosamlconnector-single.png)
+    ![A JAMF Pro egyetlen Sign-On oldalának felhasználói leképezése szakasza.](./media/jamfprosamlconnector-tutorial/tutorial-jamfprosamlconnector-single.png)
 
     a. Válassza a **NameID** lehetőséget az **identitás-szolgáltató felhasználói leképezéséhez**. Alapértelmezés szerint ez a beállítás a **NameID**értékre van állítva, de egyéni attribútumot is meghatározhat.
 
@@ -170,9 +170,9 @@ Ebben a szakaszban B. Simon hozzáférést biztosít a JAMF Pro-hoz.
 
     c. Illessze be az értéket az `http://schemas.microsoft.com/ws/2008/06/identity/claims/groups` **Identity Provider csoport attribútumának neve** mezőbe.
 
-    d. Ugyanazon a lapon görgessen le a **Biztonság** szakaszhoz, és jelölje be az **egyszeri bejelentkezéses hitelesítés megkerülésének engedélyezése a felhasználóknak**jelölőnégyzetet. Ennek eredményeképpen a felhasználók nem lesznek átirányítva az Identity Provider bejelentkezési oldalára hitelesítésre, és közvetlenül a JAMF Pro-be is bejelentkezhetnek. Ha a felhasználó az JAMF keresztül próbál hozzáférni a Pro-hoz, az identitásszolgáltató által kezdeményezett egyszeri bejelentkezéses hitelesítés és engedélyezés történik.
+    d. Ugyanazon a lapon görgessen le a **Biztonság** szakaszhoz, és válassza **a felhasználók számára az egyszeri Sign-On hitelesítés megkerülésének engedélyezése**lehetőséget. Ennek eredményeképpen a felhasználók nem lesznek átirányítva az Identity Provider bejelentkezési oldalára hitelesítésre, és közvetlenül a JAMF Pro-be is bejelentkezhetnek. Ha a felhasználó az JAMF keresztül próbál hozzáférni a Pro-hoz, az identitásszolgáltató által kezdeményezett egyszeri bejelentkezéses hitelesítés és engedélyezés történik.
 
-    e. Válassza a **Mentés** lehetőséget.
+    e. Kattintson a **Mentés** gombra.
 
 ### <a name="create-a-jamf-pro-test-user"></a>JAMF Pro test-felhasználó létrehozása
 
@@ -214,7 +214,7 @@ Felhasználói fiók létrehozásához hajtsa végre a következő lépéseket:
 
     f. A **jelszó ellenőrzése** mezőben adja meg újra a felhasználó jelszavát.
 
-    : Válassza a **Mentés** lehetőséget.
+    : Kattintson a **Mentés** gombra.
 
 ## <a name="test-the-sso-configuration"></a>Az egyszeri bejelentkezés konfigurációjának tesztelése
 

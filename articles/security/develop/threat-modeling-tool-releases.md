@@ -17,10 +17,10 @@ ms.topic: article
 ms.date: 03/22/2019
 ms.author: jegeib
 ms.openlocfilehash: e6f8ba54218f9b5b730ce3454c087d6072930edf
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87825871"
 ---
 # <a name="threat-modeling-tool-releases"></a>Threat Modeling Tool kiadások
@@ -49,6 +49,6 @@ A Microsoft Threat Modeling Tool jelenleg ingyenes, [Kattintásra letölthető](
 - [Microsoft Threat MODELING Tool GA kiadás verziója 7.1.51023.1](threat-modeling-tool-releases-71510231.md) – november 1 2018
 - [Microsoft Threat MODELING Tool GA kiadás verziója 7.1.50911.2](threat-modeling-tool-releases-71509112.md) – szeptember 12 2018
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Töltse le a [Microsoft Threat Modeling Tool](https://aka.ms/threatmodelingtool)legújabb verzióját.

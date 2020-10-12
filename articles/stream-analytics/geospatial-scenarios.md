@@ -7,10 +7,10 @@ ms.service: stream-analytics
 ms.topic: how-to
 ms.date: 04/02/2019
 ms.openlocfilehash: 9792641da4b3aebad047179e2c02dad757027801
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86045263"
 ---
 # <a name="geofencing-and-geospatial-aggregation-scenarios-with-azure-stream-analytics"></a>Geokerítések és térinformatikai összesítési forgatókönyvek Azure Stream Analytics
@@ -70,7 +70,7 @@ A "C" eszköz a 2. AZONOSÍTÓJÚ épületen belül található, amely nem enged
 
 ### <a name="site-with-multiple-allowed-devices"></a>Hely több engedélyezett eszközzel
 
-Ha egy hely több eszközt is engedélyez, az eszközök azonosítóinak tömbje meghatározható a alkalmazásban, `AllowedDeviceID` és egy felhasználó által definiált függvény használható a `WHERE` záradékban annak ellenőrzéséhez, hogy az adatfolyam-eszköz azonosítója megfelel-e a listában szereplő összes eszköz azonosítójának. További információkért tekintse meg a [JavaScript UDF](stream-analytics-javascript-user-defined-functions.md) -oktatóanyag a felhőalapú feladatokhoz és a [C# UDF](stream-analytics-edge-csharp-udf.md) -oktatóanyag az Edge-feladatokhoz című témakört.
+Ha egy hely több eszközt is engedélyez, az eszközök azonosítóinak tömbje meghatározható a ben, a záradékban pedig User-Defined függvény használható, amely ellenőrzi, hogy `AllowedDeviceID` `WHERE` az adatfolyam-eszköz azonosítója megfelel-e a listában szereplő összes eszköz azonosítójának. További információkért tekintse meg a [JavaScript UDF](stream-analytics-javascript-user-defined-functions.md) -oktatóanyag a felhőalapú feladatokhoz és a [C# UDF](stream-analytics-edge-csharp-udf.md) -oktatóanyag az Edge-feladatokhoz című témakört.
 
 ## <a name="geospatial-aggregation"></a>Térinformatikai összesítés
 

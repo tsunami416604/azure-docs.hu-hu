@@ -15,13 +15,13 @@ ms.topic: troubleshooting
 ms.date: 09/16/2020
 ms.author: b-juche
 ms.openlocfilehash: 3aaa5d2bc6fdbda0d1db212539c719aa65cae61b
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90709017"
 ---
-# <a name="troubleshoot-cross-region-replication"></a>Régiók közötti replikáció – problémamegoldás
+# <a name="troubleshoot-cross-region-replication"></a>Régiók közötti replikáció hibaelhárítása
 
 Ez a cikk azokat a hibaüzeneteket és megoldásokat ismerteti, amelyek segíthetnek a Azure NetApp Files régiók közötti replikációs problémáinak elhárításában. 
 
@@ -68,7 +68,7 @@ Ez a cikk azokat a hibaüzeneteket és megoldásokat ismerteti, amelyek segíthe
 
 * [Régiók közötti replikáció](cross-region-replication-introduction.md)
 * [A régiók közötti replikáció használatára vonatkozó követelmények és szempontok](cross-region-replication-requirements-considerations.md)
-* [Replikációs társítás létrehozása](cross-region-replication-create-peering.md)
+* [Replikációs társviszony létrehozása](cross-region-replication-create-peering.md)
 * [Replikációs kapcsolat állapotának megjelenítése](cross-region-replication-display-health-status.md)
 * [Vészhelyreállítás kezelése](cross-region-replication-manage-disaster-recovery.md)
-* [Régiók közötti replikáció – problémamegoldás](troubleshoot-cross-region-replication.md)
+* [Régiók közötti replikáció hibaelhárítása](troubleshoot-cross-region-replication.md)

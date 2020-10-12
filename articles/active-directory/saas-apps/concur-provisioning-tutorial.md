@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
 ms.openlocfilehash: 9e7ac5afb176e58ce47f918ddcbab742ecb90baf
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91317446"
 ---
 # <a name="tutorial-configure-concur-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó-kiépítés megadásának beállítása
@@ -48,7 +48,7 @@ A kiépítési szolgáltatás konfigurálása és engedélyezése előtt el kell
 Ez a szakasz végigvezeti az Azure AD és a hozzá tartozó felhasználói fiókok kiépítési API-k összekapcsolásának, valamint a kiépítési szolgáltatás konfigurálásának az Azure AD-ben a felhasználó-és csoport-hozzárendelésen alapuló, a felhasználók és csoportok hozzárendelése alapján való létrehozásához, frissítéséhez és letiltásához.
 
 > [!Tip] 
-> Dönthet úgy is, hogy az SAML-alapú egyszeri bejelentkezést is engedélyezte az [Azure Portalban](https://portal.azure.com)megadott utasításokat követve. Az egyszeri bejelentkezés az automatikus kiépítés függetlenül is konfigurálható, bár ez a két funkció egymáshoz tartozik.
+> Dönthet úgy is, hogy az SAML-alapú önálló Sign-Ont is engedélyezte a [Azure Portalban](https://portal.azure.com)megadott utasításokat követve. Az egyszeri bejelentkezés az automatikus kiépítés függetlenül is konfigurálható, bár ez a két funkció egymáshoz tartozik.
 
 ### <a name="to-configure-user-account-provisioning"></a>A felhasználói fiókok üzembe helyezésének konfigurálása:
 

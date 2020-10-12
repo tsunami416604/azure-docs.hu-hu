@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 07/17/2020
 ms.author: thomasge
 ms.openlocfilehash: 836a5a003268a98dd8e63eed9bfdba741abcf4ed
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91397045"
 ---
 # <a name="use-managed-identities-in-azure-kubernetes-service"></a>Felügyelt identitások használata az Azure Kubernetes szolgáltatásban
@@ -37,20 +37,20 @@ A következő erőforrást kell telepítenie:
 
 Az AK számos felügyelt identitást használ a beépített szolgáltatásokhoz és bővítményekhez.
 
-| Identitás                       | Név    | Használati eset | Alapértelmezett engedélyek | Saját identitás használata
+| Identitás                       | Name (Név)    | Használati eset | Alapértelmezett engedélyek | Saját identitás használata
 |----------------------------|-----------|----------|
 | Vezérlősík | nem látható | Az AK által használt felügyelt hálózati erőforrások, beleértve a bejövő terheléselosztó és az AK által felügyelt nyilvános IP-címek | A csomópont-erőforráscsoport közreműködői szerepköre | Előnézet
 | Kubelet | AK-fürt neve – agentpool | Hitelesítés Azure Container Registry (ACR) | NA (kubernetes v 1.15 +) | Egyelőre nem támogatott
-| Bővítmény | AzureNPM | Nincs szükség identitásra | NA | No
-| Bővítmény | AzureCNI-hálózat figyelése | Nincs szükség identitásra | NA | No
-| Bővítmény | azurepolicy (forgalomirányító) | Nincs szükség identitásra | NA | No
-| Bővítmény | azurepolicy | Nincs szükség identitásra | NA | No
-| Bővítmény | Calico | Nincs szükség identitásra | NA | No
-| Bővítmény | Irányítópult | Nincs szükség identitásra | NA | No
-| Bővítmény | HTTPApplicationRouting | A szükséges hálózati erőforrások kezelése | A DNS-zónához tartozó csomópont-erőforráscsoport, közreműködői szerepkör olvasói szerepköre | No
-| Bővítmény | Bejövő alkalmazások átjárója | A szükséges hálózati erőforrások kezelése| A csomópont-erőforráscsoport közreműködői szerepköre | No
-| Bővítmény | omsagent | AK-metrikák küldésére szolgál Azure Monitor | A metrikák figyelése – közzétevői szerepkör | No
-| Bővítmény | Virtuális csomópont (ACIConnector) | Azure Container Instances (ACI) szükséges hálózati erőforrásait kezeli | A csomópont-erőforráscsoport közreműködői szerepköre | No
+| Bővítmény | AzureNPM | Nincs szükség identitásra | NA | Nem
+| Bővítmény | AzureCNI-hálózat figyelése | Nincs szükség identitásra | NA | Nem
+| Bővítmény | azurepolicy (forgalomirányító) | Nincs szükség identitásra | NA | Nem
+| Bővítmény | azurepolicy | Nincs szükség identitásra | NA | Nem
+| Bővítmény | Calico | Nincs szükség identitásra | NA | Nem
+| Bővítmény | Irányítópult | Nincs szükség identitásra | NA | Nem
+| Bővítmény | HTTPApplicationRouting | A szükséges hálózati erőforrások kezelése | A DNS-zónához tartozó csomópont-erőforráscsoport, közreműködői szerepkör olvasói szerepköre | Nem
+| Bővítmény | Bejövő alkalmazások átjárója | A szükséges hálózati erőforrások kezelése| A csomópont-erőforráscsoport közreműködői szerepköre | Nem
+| Bővítmény | omsagent | AK-metrikák küldésére szolgál Azure Monitor | A metrikák figyelése – közzétevői szerepkör | Nem
+| Bővítmény | Virtual-Node (ACIConnector) | Azure Container Instances (ACI) szükséges hálózati erőforrásait kezeli | A csomópont-erőforráscsoport közreműködői szerepköre | Nem
 | OSS-projekt | HRE-Pod-Identity | Lehetővé teszi az alkalmazások számára a felhőalapú erőforrások biztonságos elérését Azure Active Directory (HRE) használatával | NA | Az engedélyek megadásának lépései https://github.com/Azure/aad-pod-identity#role-assignment .
 
 ## <a name="create-an-aks-cluster-with-managed-identities"></a>AK-fürt létrehozása felügyelt identitásokkal
@@ -205,7 +205,7 @@ A saját felügyelt identitások használatával történő sikeres fürtök a u
  },
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * Felügyelt identitást használó fürtök létrehozásához használjon [Azure Resource Manager (ARM) sablonokat ][aks-arm-template] .
 
 <!-- LINKS - external -->

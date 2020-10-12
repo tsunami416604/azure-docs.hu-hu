@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 05/04/2017
 ms.reviewer: antonfr
 ms.openlocfilehash: c817e2c7f609bbbec52eff1b898a8d7c53209a28
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87321309"
 ---
 # <a name="smart-detection---performance-anomalies"></a>Intelligens észlelés – teljesítménybeli rendellenességek
@@ -34,7 +34,7 @@ Nem, egy értesítés nem azt jelenti, hogy az alkalmazásnak feltétlenül van 
 
 ## <a name="how-do-i-fix-it"></a>Hogyan lehet kijavítani a hibát?
 
-Az értesítések közé tartoznak a diagnosztikai információk. Íme egy példa:
+Az értesítések közé tartoznak a diagnosztikai információk. Bemutatunk egy példát:
 
 
 ![Íme egy példa a kiszolgálói válaszidő-romlás észlelésére](media/proactive-performance-diagnostics/server_response_time_degradation.png)

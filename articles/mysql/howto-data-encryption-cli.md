@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 03/30/2020
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: eb83cd4fe7e98b1cde6dcee5d3f25fa5e35f1d2c
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87799819"
 ---
 # <a name="data-encryption-for-azure-database-for-mysql-by-using-the-azure-cli"></a>Azure Database for MySQL adattitkosítás az Azure CLI használatával
@@ -82,7 +82,7 @@ Ismerje meg, hogyan állíthatja be és kezelheti a Azure Database for MySQL ada
     az mysql server key create –name  <server name>  -g <resource_group> --kid <key url>
     ```
 
-    Kulcs URL-címe:`https://YourVaultName.vault.azure.net/keys/YourKeyName/01234567890123456789012345678901>`
+    Kulcs URL-címe:  `https://YourVaultName.vault.azure.net/keys/YourKeyName/01234567890123456789012345678901>`
 
 ## <a name="using-data-encryption-for-restore-or-replica-servers"></a>Adattitkosítás használata visszaállítási vagy replika kiszolgálók esetén
 
@@ -126,7 +126,7 @@ az mysql server key create –name  <server name> -g <resource_group> --kid <key
 az mysql server key show --name  <server name>  -g <resource_group> --kid <key url>
 ```
 
-Kulcs URL-címe:`https://YourVaultName.vault.azure.net/keys/YourKeyName/01234567890123456789012345678901>`
+Kulcs URL-címe: `https://YourVaultName.vault.azure.net/keys/YourKeyName/01234567890123456789012345678901>`
 
 ### <a name="list-the-key-used"></a>A használt kulcs listázása
 
@@ -266,6 +266,6 @@ Emellett Azure Resource Manager-sablonokkal is engedélyezheti az adattitkosít�
 
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
  Az adattitkosítással kapcsolatos további tudnivalókért tekintse meg az [adattitkosítás Azure Database for MySQL az ügyfél által felügyelt kulccsal](concepts-data-encryption-mysql.md)című témakört.

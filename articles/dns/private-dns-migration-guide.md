@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 06/18/2019
 ms.author: rohink
 ms.openlocfilehash: 9302e922d509f3145fd7913835ce896a6da860fd
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84699464"
 ---
 # <a name="migrating-legacy-azure-dns-private-zones-to-new-resource-model"></a>Örökölt Azure DNS privát zónák áttelepítése új erőforrás-modellbe
@@ -27,7 +27,7 @@ az network dns zone list --query "[?zoneType=='Private']"
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-Győződjön meg arról, hogy telepítette a Azure PowerShell legújabb verzióját. További információ a Azure PowerShell (az) és a telepítési látogatásrólhttps://docs.microsoft.com/powershell/azure/new-azureps-module-az
+Győződjön meg arról, hogy telepítette a Azure PowerShell legújabb verzióját. További információ a Azure PowerShell (az) és a telepítési látogatásról https://docs.microsoft.com/powershell/azure/new-azureps-module-az
 
 Győződjön meg arról, hogy az az. PrivateDns modul van telepítve a Azure PowerShell. A modul telepítéséhez nyisson meg egy rendszergazda jogú PowerShell-ablakot (felügyeleti mód), és írja be a következő parancsot.
 
@@ -50,7 +50,7 @@ Adja meg a "A" értéket, ha a rendszer kéri a parancsfájl telepítését
 
 ![A parancsfájl telepítése](./media/private-dns-migration-guide/install-migration-script.png)
 
-Manuálisan is beszerezheti a PowerShell-szkript legújabb verzióját a következő helyen:https://www.powershellgallery.com/packages/PrivateDnsMigrationScript
+Manuálisan is beszerezheti a PowerShell-szkript legújabb verzióját a következő helyen: https://www.powershellgallery.com/packages/PrivateDnsMigrationScript
 
 >[!IMPORTANT]
 >Az áttelepítési parancsfájl nem futtatható az Azure Cloud shellben, és az internethez csatlakozó virtuális gépen vagy helyi számítógépen kell végrehajtani.

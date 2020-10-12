@@ -4,10 +4,10 @@ description: Azure Event Grid partneri témakör beírása. Ismerje meg az erőf
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: 36f2178b7c21af016f9074d6f973a01cedb873d7
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87826789"
 ---
 # <a name="onboard-as-an-azure-event-grid-partner"></a>Bevezető Azure Event Grid partnerként
@@ -59,7 +59,7 @@ A partneri témakörök lehetővé teszik az események közzétételét Azure E
 A következő erőforrás-modell a partneri témakörökben található.
 
 ### <a name="partner-registrations"></a>Partneri regisztrációk
-* Erőforrás`partnerRegistrations`
+* Erőforrás `partnerRegistrations`
 * Használja: partnerek
 * Leírás: rögzíti a szolgáltatott szoftver (SaaS) globális metaadatait (például név, megjelenítendő név, leírás, beállítási URI).
     
@@ -75,13 +75,13 @@ A következő erőforrás-modell a partneri témakörökben található.
 * Hatókör: a partner előfizetésében él.
 
 ### <a name="event-channel"></a>Esemény-csatorna
-* Erőforrás`partnerNamespaces/eventChannels`
+* Erőforrás `partnerNamespaces/eventChannels`
 * Használja: partnerek
 * Leírás: az esemény-alagutak tükrözik az ügyfél partneri témakörét. Egy esemény-alagút létrehozásával és a metaadatokban az ügyfél Azure-előfizetésének és erőforráscsoportének megadásával Event Grid, hogy partneri témakört hozzon létre az ügyfél számára. Event Grid az ARM-hívással hozza létre a megfelelő partnerTopic az ügyfél előfizetésében. A partneri témakör egy függőben lévő állapotban jön létre. Egy-az-egyhez kapcsolat áll fenn az egyes esemény-alagutak és a partneri témakörök között.
 * Hatókör: a partner előfizetésében él.
 
 ### <a name="partner-topics"></a>Partnertémakörök
-* Erőforrás`partnerTopics`
+* Erőforrás `partnerTopics`
 * Használja: ügyfelek
 * Leírás: a partneri témakörök hasonlóak az egyéni témakörökhöz és a Event Grid rendszerbeli témaköreihez. Minden partneri témakör egy adott forráshoz (például `Contoso:myaccount` ) és egy adott partneri témakörhöz (például contoso) van társítva. Az ügyfelek a partneri témakörben esemény-előfizetéseket hozhatnak létre az események különböző eseménykezelők számára történő átirányításához.
 
@@ -89,9 +89,9 @@ A következő erőforrás-modell a partneri témakörökben található.
 * Hatókör: az ügyfél előfizetésében él.
 
 ### <a name="partner-topic-types"></a>Partneri témák típusai
-* Erőforrás`partnerTopicTypes`
+* Erőforrás `partnerTopicTypes`
 * Használja: ügyfelek
-* Leírás: a partneri témák a bérlői szintű erőforrástípusok, amelyek lehetővé teszik, hogy az ügyfelek felfedezzék a jóváhagyott partneri témakörök listáját. Az URL-cím így néz ki:https://management.azure.com/providers/Microsoft.EventGrid/partnerTopicTypes)
+* Leírás: a partneri témák a bérlői szintű erőforrástípusok, amelyek lehetővé teszik, hogy az ügyfelek felfedezzék a jóváhagyott partneri témakörök listáját. Az URL-cím így néz ki: https://management.azure.com/providers/Microsoft.EventGrid/partnerTopicTypes)
 * Hatókör: globális
 
 ## <a name="publish-events-to-event-grid"></a>Események közzététele Event Grid
@@ -105,7 +105,7 @@ A CloudEvents 1,0 séma használatával teheti közzé az eseményeket a Azure E
 1.  A közzétételi szolgáltatás HTTP-BEJEGYZÉST végez a következőhöz: `https://contoso.westus2-1.eventgrid.azure.net/api/events?api-version=2018-01-01` .
 1.  A kérelemben adjon meg egy AEG-sas-Key nevű fejlécet, amely a hitelesítés kulcsát tartalmazza. Ez a kulcs a partneri névtér létrehozásakor lett kiépítve. Egy érvényes fejléc-érték például az AEG-sas-Key: VXbGWce53249Mt8wuotr0GPmyJ/nDT4hgdEj9DpBeRr38arnnm5OFg = =.
 1.  Állítsa be a Content-type fejlécet az "Application/cloudevents-batch + JSON;" értékre. charset = UTF-8a ".
-1.  Végezzen HTTP-BEJEGYZÉST a közzétételi URL-címre az adott régiónak megfelelő események kötegével. Például:
+1.  Végezzen HTTP-BEJEGYZÉST a közzétételi URL-címre az adott régiónak megfelelő események kötegével. Példa:
 
 ``` json
 [
@@ -150,7 +150,7 @@ A partnerNamespace-végpontra való közzététel után választ kap. A válasz 
 | Helytelen végpont                 | 404 Nem található         |
 | Tömb vagy esemény meghaladja a méretkorlátot | 413 túl nagy a hasznos adat |
 
-## <a name="references"></a>Referencia
+## <a name="references"></a>Hivatkozások
 
   * [Swagger](https://github.com/ahamad-MS/azure-rest-api-specs/blob/master/specification/eventgrid/resource-manager/Microsoft.EventGrid/preview/2020-04-01-preview/EventGrid.json)
   * [ARM-sablon](/azure/templates/microsoft.eventgrid/allversions)
@@ -167,7 +167,7 @@ A partnerNamespace-végpontra való közzététel után választ kap. A válasz 
   * [Ugrás](https://github.com/Azure/azure-sdk-for-go)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [A partneri témakörök áttekintése](partner-topics-overview.md)
 - [Partneri témakörök bevezetésének űrlapja](https://aka.ms/gridpartnerform)
 - [Auth0-partneri témakör](auth0-overview.md)

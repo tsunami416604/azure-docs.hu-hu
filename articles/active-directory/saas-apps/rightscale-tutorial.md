@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 03/26/2019
 ms.author: jeedes
 ms.openlocfilehash: 75c0542764e94ae57379fa225b4e064a58da3af1
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88553376"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-rightscale"></a>Oktatóanyag: Azure Active Directory integráció a RightScale
@@ -73,7 +73,7 @@ Az egyszeri bejelentkezés működéséhez az Azure AD-felhasználó és a Right
 Az Azure AD egyszeri bejelentkezés RightScale való konfigurálásához és teszteléséhez a következő építőelemeket kell végrehajtania:
 
 1. Az **[Azure ad egyszeri bejelentkezésének konfigurálása](#configure-azure-ad-single-sign-on)** – lehetővé teszi a felhasználók számára a funkció használatát.
-2. **[RightScale egyszeri bejelentkezés konfigurálása](#configure-rightscale-single-sign-on)** – az egyszeri bejelentkezés beállításainak konfigurálása az alkalmazás oldalán.
+2. **[RightScale egyszeri bejelentkezés konfigurálása](#configure-rightscale-single-sign-on)** – az egyes Sign-On beállítások konfigurálása az alkalmazás oldalán.
 3. **[Azure ad-felhasználó létrehozása](#create-an-azure-ad-test-user)** – az Azure ad egyszeri bejelentkezés teszteléséhez a Britta Simon használatával.
 4. **[Az Azure ad-teszt felhasználójának kiosztása](#assign-the-azure-ad-test-user)** – a Britta Simon engedélyezése az Azure ad egyszeri bejelentkezés használatára.
 5. **[Hozzon létre RightScale-teszt felhasználót](#create-rightscale-test-user)** – hogy a RightScale Britta, a felhasználó Azure ad-képviseletéhez kapcsolódó partnerrel rendelkezzen.
@@ -93,7 +93,7 @@ Az Azure AD egyszeri bejelentkezés RightScale való konfigurálásához hajtsa 
 
     ![Egyszeri bejelentkezési mód kiválasztása](common/select-saml-option.png)
 
-3. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
+3. Az **egyszeri Sign-On beállítása az SAML-vel** lapon kattintson a **Szerkesztés** ikonra az **alapszintű SAML-konfiguráció** párbeszédpanel megnyitásához.
 
     ![Alapszintű SAML-konfiguráció szerkesztése](common/edit-urls.png)
 
@@ -107,7 +107,7 @@ Az Azure AD egyszeri bejelentkezés RightScale való konfigurálásához hajtsa 
 
     A **bejelentkezési URL-cím** szövegmezőbe írja be az URL-címet:  `https://login.rightscale.com/`
 
-6. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállítások alapján, és mentse a számítógépre.
+6. Az **egyszeres Sign-On beállítása az SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban kattintson a **Letöltés** gombra a **tanúsítvány (Base64)** letöltéséhez a megadott beállítások alapján, és mentse azt a számítógépre.
 
     ![A tanúsítvány letöltési hivatkozása](common/certificatebase64.png)
 
@@ -121,38 +121,38 @@ Az Azure AD egyszeri bejelentkezés RightScale való konfigurálásához hajtsa 
 
     c. Kijelentkezési URL-cím
 
-### <a name="configure-rightscale-single-sign-on"></a>RightScale egyszeri bejelentkezés konfigurálása
+### <a name="configure-rightscale-single-sign-on"></a>RightScale egyetlen Sign-On konfigurálása
 
 1. Ahhoz, hogy az egyszeri bejelentkezés konfigurálva legyen az alkalmazáshoz, be kell jelentkeznie a RightScale-bérlőbe rendszergazdaként.
 
 2. A felső menüben kattintson a **Beállítások** fülre, és válassza az **egyszeri bejelentkezés**lehetőséget.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/rightscale-tutorial/tutorial_rightscale_001.png)
+    ![Egyetlen Sign-On konfigurálása](./media/rightscale-tutorial/tutorial_rightscale_001.png)
 
 3. Az **SAML-szolgáltatók**hozzáadásához kattintson az **új** gombra.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/rightscale-tutorial/tutorial_rightscale_002.png)
+    ![Egyetlen Sign-On konfigurálása](./media/rightscale-tutorial/tutorial_rightscale_002.png)
 
 4. A **megjelenítendő név**szövegmezőben adja meg a vállalat nevét.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/rightscale-tutorial/tutorial_rightscale_003.png)
+    ![Egyetlen Sign-On konfigurálása](./media/rightscale-tutorial/tutorial_rightscale_003.png)
 
 5. Jelölje be a **RightScale által kezdeményezett egyszeri bejelentkezés engedélyezése felderítési mutató használatával lehetőséget** , majd adja meg a **tartománynevet** az alábbi szövegmezőben.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/rightscale-tutorial/tutorial_rightscale_004.png)
+    ![Egyetlen Sign-On konfigurálása](./media/rightscale-tutorial/tutorial_rightscale_004.png)
 
 6. Illessze be azt a **bejelentkezési URL-címet** , amelyet a Azure Portalból másolt az **SAML SSO-végpontra** a RightScale-ben.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/rightscale-tutorial/tutorial_rightscale_006.png)
+    ![Egyetlen Sign-On konfigurálása](./media/rightscale-tutorial/tutorial_rightscale_006.png)
 
 7. Illessze be az **Azure ad-azonosító** értékét, amelyet a Azure Portalból másolt az **SAML-EntityID** a RightScale-ben.
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/rightscale-tutorial/tutorial_rightscale_008.png)
+    ![Egyetlen Sign-On konfigurálása](./media/rightscale-tutorial/tutorial_rightscale_008.png)
 
 8. Kattintson a **böngésző** gombra a Azure Portalból letöltött tanúsítvány feltöltéséhez.
 
 
-    ![Egyszeri bejelentkezés konfigurálása](./media/rightscale-tutorial/tutorial_rightscale_009.png)
+    ![Egyetlen Sign-On konfigurálása](./media/rightscale-tutorial/tutorial_rightscale_009.png)
 
 9. Kattintson a **Mentés** gombra.
 
@@ -179,7 +179,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Create** (Létrehozás) gombra.
+    d. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

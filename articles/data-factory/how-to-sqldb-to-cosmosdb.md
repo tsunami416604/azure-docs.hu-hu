@@ -9,13 +9,13 @@ ms.topic: conceptual
 ms.date: 04/29/2020
 ms.author: makromer
 ms.openlocfilehash: 3d2ef6fb0cd7af444b9bff755eee4eee70d03d15
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82691904"
 ---
-# <a name="migrate-normalized-database-schema-from-azure-sql-database-to-azure-cosmosdb-denormalized-container"></a>Normalizált adatbázis-séma migrálása Azure SQL Databaseról Azure CosmosDB-re normalizált tárolóba
+# <a name="migrate-normalized-database-schema-from-azure-sql-database-to-azure-cosmosdb-denormalized-container"></a>Normalizált adatbázisséma migrálása Azure SQL Database-ből denormalizált Azure Cosmos DB-tárolóba
 
 Ez az útmutató bemutatja, hogyan végezheti el a Azure SQL Database meglévő normalizált adatbázis-sémáját, és hogyan alakíthatja át egy Azure CosmosDB-re normalizált sémába az Azure CosmosDB való betöltéshez.
 

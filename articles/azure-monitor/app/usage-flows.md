@@ -7,10 +7,10 @@ ms.author: daviste
 ms.date: 01/24/2018
 ms.reviewer: mbullwin
 ms.openlocfilehash: a31ab24b96fa44787d08801a0680f94ff98bb5a2
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87309269"
 ---
 # <a name="analyze-user-navigation-patterns-with-user-flows-in-application-insights"></a>Felhasználói navigációs mintázatok elemzése Felhasználókövetésekkel Application Insights
@@ -87,7 +87,7 @@ Használja a **Szerkesztés** menü **felosztás** lehetőségeit:
 1. Válassza ki azt az eseményt, amelyet le szeretne bontani az **esemény** menüjében.
 2. Válasszon egy dimenziót a **dimenzió** menüben. Ha például egy "gomb rákattintáskor" nevű eseményre van szüksége, próbálja ki a "gomb neve" nevű egyéni tulajdonságot.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [A használat áttekintése](usage-overview.md)
 * [Felhasználók, munkamenetek és események](usage-segmentation.md)

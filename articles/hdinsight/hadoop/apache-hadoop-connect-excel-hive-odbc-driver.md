@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 04/22/2020
 ms.openlocfilehash: b5499a8c4fd6ee200ca0fac800c8c17c92a1cc0c
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86087843"
 ---
 # <a name="connect-excel-to-apache-hadoop-in-azure-hdinsight-with-the-microsoft-hive-odbc-driver"></a>Az Excel és az Apache Hadoop csatlakoztatása az Azure HDInsightban a Microsoft Hive ODBC-illesztővel
@@ -48,10 +48,10 @@ A következő lépések bemutatják, hogyan hozhat létre egy struktúra ODBC-ad
 
 1. Írja be vagy válassza ki az alábbi értékeket:
 
-   | Tulajdonság | Description |
+   | Tulajdonság | Leírás |
    | --- | --- |
    |  Adatforrás neve |Adjon nevet az adatforrásának |
-   |  Állomás (ok) |Írja be a `HDInsightClusterName.azurehdinsight.net` (igen) kifejezést. Például: `myHDICluster.azurehdinsight.net`. Megjegyzés: `HDInsightClusterName-int.azurehdinsight.net` támogatott, ha az ügyfél virtuális gépe ugyanahhoz a virtuális hálózathoz van felhasználva. |
+   |  Állomás (ok) |Írja be a következő szöveget: `HDInsightClusterName.azurehdinsight.net`. Például: `myHDICluster.azurehdinsight.net`. Megjegyzés: `HDInsightClusterName-int.azurehdinsight.net` támogatott, ha az ügyfél virtuális gépe ugyanahhoz a virtuális hálózathoz van felhasználva. |
    |  Port |Használja a **443** számú portot. (Ez a port megváltozott a 563-ról 443-ra.) |
    |  Adatbázis |Használja az **alapértelmezett értéket**. |
    |  Mechanizmus |A **Windows Azure HDInsight szolgáltatás** kiválasztása |
@@ -96,7 +96,7 @@ A következő lépések leírják, hogyan importálhat egy struktúra-táblázat
 
 ## <a name="next-steps"></a>További lépések
 
-Ebből a cikkből megtudhatta, hogyan használhatja a Microsoft kaptár ODBC-illesztőt a HDInsight szolgáltatás adatainak az Excelbe való lekéréséhez. Hasonlóképpen lekérheti az HDInsight szolgáltatás adatait a SQL Databaseba. Az adatok az HDInsight szolgáltatásba is feltölthetők. További tudnivalókért lásd:
+Ebből a cikkből megtudhatta, hogyan használhatja a Microsoft kaptár ODBC-illesztőt a HDInsight szolgáltatás adatainak az Excelbe való lekéréséhez. Hasonlóképpen lekérheti az HDInsight szolgáltatás adatait a SQL Databaseba. Az adatok az HDInsight szolgáltatásba is feltölthetők. További információ:
 
 * Az [Azure HDInsight-ban a Microsoft Power BI Apache Hivei az adatmegjelenítést](apache-hadoop-connect-hive-power-bi.md).
 * [Interaktív lekérdezési struktúra-adatmegjelenítés az Azure HDInsight Power BIával](../interactive-query/apache-hadoop-connect-hive-power-bi-directquery.md).

@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 03/01/2020
 ms.author: juergent
 ms.openlocfilehash: 183273e6f93bbfda8ed4e5fe913192994a0b6ce2
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87833385"
 ---
 # <a name="sap-hana-azure-backup-on-file-level"></a>SAP HANA Azure Backup a fájl szintjén
@@ -43,7 +43,7 @@ Az egyik dedikált virtuális merevlemezt helyezhet SAP HANA biztonsági másola
 
 ## <a name="azure-blobxfer-utility-details"></a>Az Azure blobxfer segédprogram részletei
 
-Az Azure Storage-beli könyvtárak és fájlok tárolására a CLI vagy a PowerShell használatával, illetve az [Azure SDK](https://azure.microsoft.com/downloads/)-k egyikének használatával lehet létrehozni egy eszközt. Az adatok Azure Storage-ba történő másolásához használható használatra kész AzCopy is. (lásd: [adatok átvitele a AzCopy parancssori segédprogrammal](../../../storage/common/storage-use-azcopy-v10.md)).
+Az Azure Storage-beli könyvtárak és fájlok tárolására a CLI vagy a PowerShell használatával, illetve az [Azure SDK](https://azure.microsoft.com/downloads/)-k egyikének használatával lehet létrehozni egy eszközt. Az adatok Azure Storage-ba történő másolásához használható használatra kész AzCopy is. (lásd: [adatok átvitele a AzCopy Command-Line segédprogrammal](../../../storage/common/storage-use-azcopy-v10.md)).
 
 Ezért a blobxfer SAP HANA biztonságimásolat-fájlok másolására használták. Nyílt forráskód, amelyet számos ügyfél használ éles környezetben, és elérhető a [githubon](https://github.com/Azure/blobxfer). Ez az eszköz lehetővé teszi, hogy az egyiket közvetlenül az Azure Blob Storage-ba vagy az Azure-fájlmegosztásba másolja. Számos hasznos funkciót is kínál, például az MD5-kivonatot vagy az automatikus párhuzamosságot, ha több fájllal rendelkező könyvtárat másol.
 
@@ -117,6 +117,6 @@ A Azure Fileson elvégzett tesztekben nem az Azure Premium Files körülbelül 9
 
 Az Azure Files SAP HANA biztonsági mentési fájljainak tárolása érdekes lehetőség lehet. Különösen az Azure Premium-fájlok jobb késésével és teljesítményével.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Az Azure Virtual Machines SAP HANA biztonsági mentési útmutatója](sap-hana-backup-guide.md) áttekintést nyújt az első lépésekről.
 * Ha meg szeretné tudni, hogyan hozhat létre magas rendelkezésre állást, és hogyan tervezheti meg az Azure-beli SAP HANA vész-helyreállítását (nagyméretű példányok), tekintse meg [a SAP HANA (nagyméretű példányok) magas rendelkezésre állását és a](hana-overview-high-availability-disaster-recovery.md)

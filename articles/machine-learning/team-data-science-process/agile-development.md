@@ -11,10 +11,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 113c11b749b42bbaf9e5e40cdf63623288997a92
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89440286"
 ---
 # <a name="agile-development-of-data-science-projects"></a>Az adatelemzési projektek gyors fejlesztése
@@ -152,7 +152,7 @@ Az adatszakértők sokkal kényelmesebben érezhetik magukat egy agilis sablonna
    1. A **név**alatt cserélje le az **EPICT** *TDSP-projektekkel*. 
    1. A **várakozó munkaelemek**területen válassza az **új munkaelem típusa**lehetőséget, írja be a *TDSP projektet*, és válassza a **Hozzáadás**lehetőséget. 
    1. Az **alapértelmezett munkaelem típusa**területen válassza a legördülő listát, majd a **TDSP projektet**. 
-   1. Válassza a **Mentés** lehetőséget.
+   1. Kattintson a **Mentés** gombra.
    
    ![Portfólió-várakozó fájlok szintjének beállítása](./media/agile-development/13-rename.png)  
    

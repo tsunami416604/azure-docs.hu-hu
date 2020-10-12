@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 03/19/2020
 ms.author: kumud
 ms.openlocfilehash: 664e3851370be812cd7a0e58cf9beb1fddb5d991
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87290994"
 ---
 # <a name="create-change-or-delete-a-route-table"></a>Útválasztási táblázat létrehozása, módosítása vagy törlése
@@ -127,7 +127,7 @@ Az útválasztási táblázatot igény szerint hozzárendelheti egy alhálózath
 
 1. Az **útválasztási táblázatban**válassza ki azt az útválasztási táblázatot, amelyet az alhálózathoz kíván rendelni.
 
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 Ha a virtuális hálózat egy Azure VPN Gateway-átjáróhoz csatlakozik, ne társítson útválasztási táblázatot az [átjáró-alhálózathoz](../vpn-gateway/vpn-gateway-about-vpn-gateway-settings.md?toc=%2fazure%2fvirtual-network%2ftoc.json#gwsub) , amely tartalmazza a *0.0.0.0/0*rendeltetésű útvonalat. Ellenkező esetben előfordulhat, hogy az átjárószolgáltatás nem működik megfelelően. További információ a *0.0.0.0/0* útvonalon való használatáról: [virtuális hálózati forgalom útválasztása](virtual-networks-udr-overview.md#default-route).
 
@@ -152,7 +152,7 @@ Amikor alhálózatból választ ki egy útválasztási táblázatot, az Azure az
 
 1. Az **útválasztási táblázatban**válassza a **nincs**lehetőséget.
 
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 ### <a name="dissociate-a-route-table---commands"></a>Útválasztási táblázat leválasztása – parancsok
 
@@ -190,13 +190,13 @@ Az útválasztási táblázatokban az Azure-beli hely és az előfizetés alapj�
 
 1. Adja meg az útvonal egyedi **útvonalának nevét** az útválasztási táblázatban.
 
-1. Adja meg **a CIDR**(osztály nélküli tartományok közötti útválasztás) jelölését, amelynek a forgalmát át szeretné irányítani. Az előtag nem duplikálható egynél több útvonalon az útválasztási táblában, bár az előtag egy másik előtagjan belül is lehet. Ha például *10.0.0.0/16* előtagot adott meg egy útvonalon, akkor továbbra is definiálhat egy másik útvonalat a *10.0.0.0/22-* előtaggal. Az Azure a leghosszabb előtag-egyezés alapján kiválasztja a forgalom útvonalát. További információ: [how Azure kiválasztja az útvonalat](virtual-networks-udr-overview.md#how-azure-selects-a-route).
+1. Adja meg a **címnek**az osztály nélküli Inter-Domain ÚTVÁLASZTÁSI (CIDR) jelölését, amelynek a forgalmát át szeretné irányítani. Az előtag nem duplikálható egynél több útvonalon az útválasztási táblában, bár az előtag egy másik előtagjan belül is lehet. Ha például *10.0.0.0/16* előtagot adott meg egy útvonalon, akkor továbbra is definiálhat egy másik útvonalat a *10.0.0.0/22-* előtaggal. Az Azure a leghosszabb előtag-egyezés alapján kiválasztja a forgalom útvonalát. További információ: [how Azure kiválasztja az útvonalat](virtual-networks-udr-overview.md#how-azure-selects-a-route).
 
 1. Válasszon egy **következő ugrási típust**. További információ a következő ugrási típusokról: [virtuális hálózati forgalom útválasztása](virtual-networks-udr-overview.md).
 
 1. Ha a **virtuális berendezés** **következő ugrási típusát** választotta, adjon meg egy IP-címet a **következő ugrási címhez**.
 
-1. Válassza az **OK** lehetőséget.
+1. Kattintson az **OK** gombra.
 
 ### <a name="create-a-route---commands"></a>Útvonal-parancsok létrehozása
 
@@ -333,7 +333,7 @@ Rövid várakozás után az Azure megadja a következő ugrás típusát és a f
 
 A táblák és útvonalak útválasztási feladatainak elvégzéséhez a fiókját hozzá kell rendelni a [hálózati közreműködő szerepkörhöz](../role-based-access-control/built-in-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json#network-contributor) vagy egy [Egyéni szerepkörhöz](../role-based-access-control/custom-roles.md?toc=%2fazure%2fvirtual-network%2ftoc.json) , amely az alábbi táblázatban felsorolt megfelelő műveletekhez van rendelve:
 
-| Művelet                                                          |   Név                                                  |
+| Művelet                                                          |   Name (Név)                                                  |
 |--------------------------------------------------------------   |   -------------------------------------------           |
 | Microsoft. Network/routeTables/READ                              |   Útválasztási táblázat beolvasása                                    |
 | Microsoft. Network/routeTables/Write                             |   Útválasztási táblázat létrehozása vagy frissítése                        |

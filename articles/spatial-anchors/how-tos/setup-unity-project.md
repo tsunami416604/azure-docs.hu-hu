@@ -9,10 +9,10 @@ ms.date: 09/29/2020
 ms.topic: how-to
 ms.service: azure-spatial-anchors
 ms.openlocfilehash: da983719dc66656aa28cab4aea0bae558c2a7162
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91530416"
 ---
 # <a name="configuring-azure-spatial-anchors-in-a-unity-project"></a>Azure térbeli horgonyok konfigurálása Unity-projektben
@@ -79,7 +79,7 @@ Ha elkészült, a `dependencies` szakasznak a következőhöz hasonlóan kell ki
 
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Útmutató: horgonyok létrehozása és megkeresése az egységben](./create-locate-anchors-unity.md)

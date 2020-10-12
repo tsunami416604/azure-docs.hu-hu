@@ -9,10 +9,10 @@ ms.author: mlearned
 description: Azure IoT Edge számítási feladatok üzembe helyezése
 keywords: Kubernetes, arc, Azure, K8s, tárolók
 ms.openlocfilehash: bfaa43a03ddd98616b22fc3fc7b4dccb4c38f44c
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86103976"
 ---
 # <a name="deploy-azure-iot-edge-workloads-preview"></a>Azure IoT Edge számítási feladatok üzembe helyezése (előzetes verzió)
@@ -49,7 +49,7 @@ Az Azure arc és a Azure IoT Edge nagyon jól kiegészíti egymás képességeit
 
 ## <a name="create-a-configuration-for-iot-edge"></a>Konfiguráció létrehozása IoT Edgehoz
 
-Példa a tárházra:https://github.com/veyalla/edgearc
+Példa a tárházra: https://github.com/veyalla/edgearc
 
 Ez a tárház a IoT Edge Helm diagramra mutat, és az előfeltételek szakaszban létrehozott titkos kulcsra hivatkozik.
 
@@ -69,6 +69,6 @@ A konfigurációt a használatával távolíthatja el:
 az k8sconfiguration delete -g AzureArcTest --cluster-name AzureArcIotEdge --name iotedge
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [A fürt konfigurációjának szabályozása Azure Policy használatával](./use-azure-policy.md)

@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 08/28/2020
 ms.author: alkohli
 ms.openlocfilehash: 544625fe9fd2dbd87ad7330d7277494cbfbe6eb9
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90891084"
 ---
 # <a name="create-certificates-for-your-azure-stack-edge-pro-using-azure-stack-hub-readiness-checker-tool"></a>Tanúsítványok létrehozása a Azure Stack Edge Pro-hoz Azure Stack hub Readiness-ellenőrző eszköz használatával 
@@ -73,7 +73,7 @@ Az alábbi lépések segítségével készítheti elő az Azure Stack Edge Pro-e
     
 4. Tanúsítványkérelem létrehozásához adja meg a következő információkat. Ha VPN-tanúsítványt hoz létre, néhány ilyen bemenet nem érvényes. 
     
-    |Bevitel |Leírás  |
+    |Input (Bemenet) |Leírás  |
     |---------|---------|
     |`OutputRequestPath`|A fájl elérési útja a helyi ügyfélszámítógépen, amelyen létre szeretné hozni a tanúsítványokat.        |
     |`DeviceName`|Az eszköz helyi webes felhasználói felületének **eszközök** lapján található név. <br> Ez a mező nem szükséges a VPN-tanúsítványokhoz.         |

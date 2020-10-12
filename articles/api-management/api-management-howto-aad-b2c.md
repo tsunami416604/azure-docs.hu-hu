@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 7b586edd7adce8bcea61419005a3ce8cfc814fb3
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86254945"
 ---
 # <a name="how-to-authorize-developer-accounts-by-using-azure-active-directory-b2c-in-azure-api-management"></a>Fejlesztői fiókok engedélyezése az Azure Active Directory B2C használatával az Azure API Managementben
@@ -124,7 +124,7 @@ A **regisztrációs űrlap: a OAuth** widget a OAuth való regisztrációhoz has
 
     ![A regisztráció befejeződött][api-management-registration-complete]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 *  [Azure Active Directory B2C áttekintése]
 *  [Azure Active Directory B2C: bővíthető házirend-keretrendszer]

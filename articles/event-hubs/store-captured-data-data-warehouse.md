@@ -6,10 +6,10 @@ ms.date: 06/23/2020
 ms.topic: tutorial
 ms.custom: devx-track-csharp
 ms.openlocfilehash: b2a35647422c91d6859e1889f906ae512ce41a56
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89436612"
 ---
 # <a name="tutorial-migrate-captured-event-hubs-data-to-azure-synapse-analytics-using-event-grid-and-azure-functions"></a>Oktatóanyag: rögzített Event Hubs-adatszolgáltatások migrálása az Azure szinapszis Analyticsbe Event Grid és Azure Functions használatával
@@ -118,7 +118,7 @@ WITH (CLUSTERED COLUMNSTORE INDEX, DISTRIBUTION = ROUND_ROBIN);
 
    ![Cél függvényalkalmazás](./media/store-captured-data-data-warehouse/pick-target.png)
 
-1. Válassza ki a sablonnal üzembe helyezett függvényalkalmazást. Kattintson az **OK** gombra.
+1. Válassza ki a sablonnal üzembe helyezett függvényalkalmazást. Válassza az **OK** lehetőséget.
 
    ![Függvényalkalmazás kiválasztása](./media/store-captured-data-data-warehouse/select-function-app.png)
 
@@ -176,7 +176,7 @@ Most beállította az Event hub, az Azure szinapszis Analytics, az Azure függv�
 ## <a name="verify-captured-data-in-data-warehouse"></a>A rögzített adatok ellenőrzése az adattárházban
 Néhány perc elteltével lekérdezi a táblázatot az Azure szinapszis Analytics szolgáltatásban. Megfigyelheti, hogy a WindTurbineDataGenerator által generált adatforrások adatfolyamba kerültek az Event hub-ba, egy Azure Storage-tárolóba rögzítve, majd az Azure-függvény által az Azure szinapszis Analytics-táblázatba migrálva.  
 
-## <a name="next-steps"></a>Következő lépések 
+## <a name="next-steps"></a>További lépések 
 Ha gyakorlatban is használható elemzésekre vágyik, használjon hatékony adatvizualizációs eszközöket az adattárházával.
 
 Ez a cikk bemutatja, hogyan használható [a Power bi az Azure szinapszis Analytics](/power-bi/connect-data/service-azure-sql-data-warehouse-with-direct-connect) használatával

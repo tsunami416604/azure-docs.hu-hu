@@ -13,10 +13,10 @@ ms.workload: iaas-sql-server
 ms.date: 06/02/2020
 ms.author: mathoma
 ms.openlocfilehash: e98bfbf58c179fe9df0d99e0522e5747d220ae52
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91317021"
 ---
 # <a name="cluster-configuration-best-practices-sql-server-on-azure-vms"></a>A fürt konfigurálásának ajánlott eljárásai (SQL Server Azure-beli virtuális gépeken)
@@ -27,7 +27,7 @@ A magas rendelkezésre állást és a vész-helyreállítást (HADR) használó 
 Ez a cikk a [Feladatátvevőfürt-példányok (FCIs-EK)](failover-cluster-instance-overview.md) és a [rendelkezésre állási csoportok](availability-group-overview.md) számára ajánlott, az Azure-beli virtuális gépeken való használattal SQL Server. 
 
 
-## <a name="networking"></a>Hálózatkezelés
+## <a name="networking"></a>Hálózat
 
 Egyetlen NIC-kiszolgálót (fürtcsomópont) és egyetlen alhálózatot használjon. Az Azure hálózatkezelésének fizikai redundancia van, így a további hálózati adapterek és alhálózatok szükségtelenek az Azure-beli virtuális gépek vendég fürtjében. A fürt ellenőrzési jelentése figyelmezteti, hogy a csomópontok csak egyetlen hálózaton érhetők el. Ezt a figyelmeztetést figyelmen kívül hagyhatja az Azure-beli virtuális gépek vendég feladatátvevő fürtökön.
 
@@ -82,7 +82,7 @@ Első lépésként tekintse [meg a tanúsító fájlmegosztás konfigurálása](
 
 **Támogatott operációs rendszer**: Windows Server 2012 és újabb verziók   
 
-## <a name="connectivity"></a>Kapcsolatok
+## <a name="connectivity"></a>Kapcsolat
 
 A hagyományos helyszíni hálózati környezetekben a SQL Server feladatátvevő fürt példánya egyetlen számítógépen futó SQL Server egyetlen példánya lehet. Mivel a feladatátvevő fürt példánya feladatátvételt hajt végre a csomópontról a csomópontra, a példány virtuális hálózatának neve (VNN) egységes csatlakozási pontot biztosít, és lehetővé teszi, hogy az alkalmazások a SQL Server-példányhoz kapcsolódjanak anélkül, hogy a csomópont éppen aktív. Feladatátvétel esetén a virtuális hálózat neve az új aktív csomópontra van regisztrálva az indítás után. Ez a folyamat átlátható a SQL Serverhoz csatlakozó ügyfél vagy alkalmazás számára, és ez lekicsinyíti az állásidőt, amely miatt az ügyfél vagy az alkalmazás hibát tapasztal. 
 
