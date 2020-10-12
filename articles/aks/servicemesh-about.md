@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 10/09/2019
 ms.author: pabouwer
 ms.openlocfilehash: eca49a3fac1ea0398ebe1d05bde20fbca3c81232
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77594311"
 ---
 # <a name="about-service-meshes"></a>A szolgáltatás rácsvonalai
@@ -38,7 +38,7 @@ Az **adatsík** jellemzően olyan proxyból áll, amely transzparens módon van 
 
 ![Jellemző a Service Mesh architektúrája](media/servicemesh/typical-architecture.png)
 
-## <a name="capabilities"></a>Képességek
+## <a name="capabilities"></a>Funkciók
 
 Az egyes szolgáltatásokhoz tartozó rácsvonalak természetes illeszkedéssel rendelkeznek, és a konkrét forgatókönyvek támogatására összpontosítanak, de általában úgy találja, hogy a legtöbb esetben a következő lehetőségek közül több is megvalósítható.
 

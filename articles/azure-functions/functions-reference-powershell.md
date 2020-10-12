@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.custom: devx-track-dotnet, devx-track-azurepowershell
 ms.date: 04/22/2019
 ms.openlocfilehash: 1da4154530f823d391aea779011a34a35edfd070
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89071159"
 ---
 # <a name="azure-functions-powershell-developer-guide"></a>Azure Functions PowerShell fejlesztői útmutató
@@ -145,7 +145,7 @@ A következő közös paraméterek is támogatottak:
 
 További információ: [About általánosparaméterek](https://go.microsoft.com/fwlink/?LinkID=113216).
 
-#### <a name="push-outputbinding-example-http-responses"></a>Leküldéses OutputBinding – példa: HTTP-válaszok
+#### <a name="push-outputbinding-example-http-responses"></a>Push-OutputBinding példa: HTTP-válaszok
 
 Egy HTTP-trigger a nevű kimeneti kötés használatával ad vissza egy választ `response` . A következő példában a kimeneti kötés `response` értéke "output #1":
 
@@ -174,7 +174,7 @@ PS >Push-OutputBinding -Name response -Value ([HttpResponseContext]@{
 }) -Clobber
 ```
 
-#### <a name="push-outputbinding-example-queue-output-binding"></a>Leküldéses OutputBinding – példa: várólista kimeneti kötése
+#### <a name="push-outputbinding-example-queue-output-binding"></a>Push-OutputBinding példa: várólista kimeneti kötése
 
 `Push-OutputBinding` az adatokat kimeneti kötésekre küldi, például egy [Azure üzenetsor-tároló kimeneti kötését](functions-bindings-storage-queue-output.md). A következő példában a várólistára írt üzenet "output #1" értékkel rendelkezik:
 

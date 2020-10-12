@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 09/22/2020
 ms.custom: seodec18
 ms.openlocfilehash: 2819bb5e4000f18653e47b616a551d69ec525d2c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91271307"
 ---
 # <a name="choose-a-vm-size-for-compute-nodes-in-an-azure-batch-pool"></a>Virtuális gép méretének kiválasztása Azure Batch készlet számítási csomópontjaihoz
@@ -31,8 +31,8 @@ A virtuálisgép-konfigurációban található batch-készletek szinte minden VM
 | Alapszintű A | Minden méret, *kivéve* a Basic_A0 (a0) |
 | A | Minden méret, *kivéve* Standard_A0 |
 | Av2 | Minden méret |
-| B | Nincsenek |
-| DC | Nincsenek |
+| B | Nincs |
+| DC | Nincs |
 | Dv2, DSv2 | Minden méret |
 | Dv3, Dsv3 | Minden méret |
 | <sup>1</sup> . Dav4 | Minden méret |
@@ -61,7 +61,7 @@ A virtuálisgép-konfigurációban található batch-készletek szinte minden VM
 | NV | Minden méret |
 | <sup>1</sup> . NVv3 | Minden méret |
 | NVv4 | Nincs – még nem érhető el |
-| SAP HANA | Nincsenek |
+| SAP HANA | Nincs |
 
 <sup>1</sup> ezek a virtuálisgép-sorozatok lefoglalhatók a virtuális gépek konfigurációjában található batch-készletekben, de létre kell hoznia egy új batch-fiókot, és egy adott [kvóta növelését](batch-quota-limit.md#increase-a-quota)kell kérnie. Ez a korlátozás akkor törlődik, ha a virtuálisgép-sorozatok vCPU-kvótája teljes mértékben támogatott a Batch-fiókok esetében.
 

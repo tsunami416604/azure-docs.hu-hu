@@ -12,10 +12,10 @@ ms.date: 09/09/2019
 ms.author: kefre
 ms.custom: seodec18, devx-track-csharp
 ms.openlocfilehash: c86b06ff46f1ddc8d22d2ab7ec4bc8620a8c862f
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88933171"
 ---
 # <a name="analyze-videos-in-near-real-time"></a>Videók elemzése közel valós időben
@@ -243,7 +243,7 @@ Ha készen áll a minták integrálására, a saját projektjeiből hivatkozhat 
 
 A VideoFrameAnalyzer-, hang-, videó-és szöveg-megértési képességei az Azure Cognitive Services-t használják. A Microsoft fogadja a képeket, a hang-és a videót, valamint a feltöltött egyéb adatok (az alkalmazáson keresztül), és felhasználhatja őket szolgáltatás-javító célokra. Szükségünk van az Ön közreműködésére az alkalmazás által az Azure Cognitive Services szolgáltatásba küldött adatok tulajdonosainak védelmében.
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
 Ebből a cikkből megtudhatta, hogyan futtathatja a közel valós idejű elemzést élő videós streameken az arc-és Computer Vision szolgáltatások használatával. Azt is megtanulta, hogyan használhatja a minta kódját a kezdéshez.
 

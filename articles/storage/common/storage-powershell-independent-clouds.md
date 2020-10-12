@@ -11,10 +11,10 @@ ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: b610a5537d110a4046bd42ac86f5c938aeafe953
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89072953"
 ---
 # <a name="managing-storage-in-the-azure-independent-clouds-using-powershell"></a>Tárolók kezelése az Azure független felhőkben a PowerShell használatával
@@ -71,7 +71,7 @@ A következő táblázat a német felhőhöz visszaadott helyszíneket mutatja b
 
 Az egyes környezetek végpont-utótagja eltér az Azure nyilvános végponttól. Például az Azure nyilvános blob-végpont utótagja a **blob.Core.Windows.net**. A kormányzati felhő esetében a blob Endpoint utótagja **blob.Core.usgovcloudapi.net**.
 
-### <a name="get-endpoint-using-get-azenvironment"></a>Végpont beolvasása a Get-AzEnvironment használatával
+### <a name="get-endpoint-using-get-azenvironment"></a>Végpont beolvasása Get-AzEnvironment használatával
 
 A végpont utótagjának lekérése a [Get-AzEnvironment](/powershell/module/az.accounts/get-azenvironment)használatával. A végpont a környezet *StorageEndpointSuffix* tulajdonsága.
 
@@ -85,7 +85,7 @@ Get-AzEnvironment | select Name, StorageEndpointSuffix
 
 Ez a parancs a következő eredményeket adja vissza.
 
-| Név| StorageEndpointSuffix|
+| Name (Név)| StorageEndpointSuffix|
 |----|----|
 | AzureChinaCloud | core.chinacloudapi.cn|
 | AzureCloud | core.windows.net |
@@ -102,7 +102,7 @@ Az eredmények a következő értékekhez hasonlóak:
 
 |Tulajdonság neve|Érték|
 |----|----|
-| Név | `AzureGermanCloud` |
+| Name (Név) | `AzureGermanCloud` |
 | EnableAdfsAuthentication | `False` |
 | ActiveDirectoryServiceEndpointResourceI | `http://management.core.cloudapi.de/` |
 | GalleryURL | `https://gallery.cloudapi.de/` |

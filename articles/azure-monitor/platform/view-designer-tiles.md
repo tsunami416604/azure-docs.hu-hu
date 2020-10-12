@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 01/17/2018
 ms.openlocfilehash: 0320be3a2cfbb96367799577a6e56bcf5da87dcb
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77658506"
 ---
 # <a name="reference-guide-to-view-designer-tiles-in-azure-monitor"></a>Útmutató a tervezői csempék Azure Monitor való megtekintéséhez
@@ -24,13 +24,13 @@ További információ a tervező nézetéről:
 
 A következő táblázat ismerteti az elérhető tervezői csempéket:  
 
-| Csempe | Description |
+| Csempe | Leírás |
 |:--- |:--- |
 | [Szám](#number-tile) |Egy lekérdezés rekordjainak száma. |
 | [Két szám](#two-numbers-tile) |Két különböző lekérdezésből származó rekordok száma. |
 | [Gyűrű](#donut-tile) | Egy lekérdezésen alapuló diagram, amely egy összegző értékkel rendelkezik a központban. |
 | Vonalas diagram és ábrafelirat | Egy lekérdezésen alapuló vonalas diagram, valamint egy összesítő értéket tartalmazó ábrafelirat. |
-| [Vonalas diagram](#line-chart-tile) |Egy lekérdezésen alapuló vonalas diagram. |
+| [Vonaldiagram](#line-chart-tile) |Egy lekérdezésen alapuló vonalas diagram. |
 | [Két idősor](#two-timelines-tile) | Oszlopdiagram két sorozattal, amelyek mindegyike külön lekérdezésen alapul. |
 
 A következő szakaszok részletesen ismertetik a csempék típusát és azok tulajdonságait.
@@ -43,14 +43,14 @@ A **szám** csempe a rekordok számát jeleníti meg egy napló lekérdezésből
 
 ![Szám csempe](media/view-designer-tiles/tile-number.png)
 
-| Beállítás | Description |
+| Beállítás | Leírás |
 |:--- |:--- |
-| Name |A csempe tetején megjelenő szöveg |
-| Description |A csempe neve alatt megjelenő szöveg |
+| Név |A csempe tetején megjelenő szöveg |
+| Leírás |A csempe neve alatt megjelenő szöveg |
 | **Csempe** | |
 | Jelmagyarázat |Az érték alatt megjelenő szöveg |
 | Lekérdezés |A futtatott lekérdezés. Megjelenik a lekérdezés által visszaadott rekordok száma. |
-| **Felsőfokú** |**Adatfolyam-ellenőrzés>** |
+| **Felsőfokú** |** Adatfolyam-ellenőrzés>** |
 | Engedélyezve |Válassza ezt a hivatkozást, ha az adatfolyam-ellenőrzést engedélyezni kell a csempén. Ez a megközelítés egy másik üzenetet biztosít, ha az információ nem érhető el. Általában arra használja a megközelítést, hogy a nézet telepítésekor az ideiglenes időszakban üzenetet szolgáltasson, és az adatmennyiség elérhetővé válik. |
 | Lekérdezés |A futtatott lekérdezés, amely meghatározza, hogy elérhetők-e az adatnézet. Ha a lekérdezés nem ad vissza eredményt, egy üzenet jelenik meg a fő lekérdezés értékének helyén. |
 | Üzenet |Az az üzenet, amely akkor jelenik meg, ha az adatáramlás-ellenőrző lekérdezés nem ad vissza adatmennyiséget. Ha nem ad meg üzenetet, a rendszer *elvégez egy értékelési* állapotjelző üzenetet. |
@@ -61,17 +61,17 @@ Ez a csempe a rekordok számát jeleníti meg két különböző naplózási lek
 
 ![Két szám csempe](media/view-designer-tiles/tile-two-numbers.png)
 
-| Beállítás | Description |
+| Beállítás | Leírás |
 |:--- |:--- |
-| Name |A csempe tetején megjelenő szöveg |
-| Description |A csempe neve alatt megjelenő szöveg |
+| Név |A csempe tetején megjelenő szöveg |
+| Leírás |A csempe neve alatt megjelenő szöveg |
 | **Első csempe** | |
 | Jelmagyarázat |Az érték alatt megjelenő szöveg |
 | Lekérdezés |A futtatott lekérdezés. Megjelenik a lekérdezés által visszaadott rekordok száma. |
 | **Második csempe** | |
 | Jelmagyarázat |Az érték alatt megjelenő szöveg |
 | Lekérdezés |A futtatott lekérdezés. Megjelenik a lekérdezés által visszaadott rekordok száma. |
-| **Felsőfokú** |**Adatfolyam-ellenőrzés>** |
+| **Felsőfokú** |** Adatfolyam-ellenőrzés>** |
 | Engedélyezve |Válassza ezt a hivatkozást, ha az adatfolyam-ellenőrzést engedélyezni kell a csempén. Ez a megközelítés egy másik üzenetet biztosít, ha az információ nem érhető el. Általában arra használja a megközelítést, hogy a nézet telepítésekor az ideiglenes időszakban üzenetet szolgáltasson, és az adatmennyiség elérhetővé válik. |
 | Lekérdezés |A futtatott lekérdezés, amely meghatározza, hogy elérhetők-e az adatnézet. Ha a lekérdezés nem ad vissza eredményt, egy üzenet jelenik meg a fő lekérdezés értékének helyén. |
 | Üzenet |Az az üzenet, amely akkor jelenik meg, ha az adatáramlás-ellenőrző lekérdezés nem ad vissza adatmennyiséget. Ha nem ad meg üzenetet, a rendszer *elvégez egy értékelési* állapotjelző üzenetet. |
@@ -82,10 +82,10 @@ A **fánk** csempe egyetlen számot jelenít meg, amely összefoglalja a log lek
 
 ![Fánk csempe](media/view-designer-tiles/tile-donut.png)
 
-| Beállítás | Description |
+| Beállítás | Leírás |
 |:--- |:--- |
-| Name |A csempe tetején megjelenő szöveg |
-| Description |A csempe neve alatt megjelenő szöveg |
+| Név |A csempe tetején megjelenő szöveg |
+| Leírás |A csempe neve alatt megjelenő szöveg |
 | **Gyűrű** | |
 | Lekérdezés |A fánkhoz futtatott lekérdezés. Az első tulajdonság egy szöveges érték, a második tulajdonság pedig egy numerikus érték. A lekérdezés általában a *mérték* kulcsszó használatával összegzi az eredményeket. |
 | **Gyűrű** |**> központ** |
@@ -95,7 +95,7 @@ A **fánk** csempe egyetlen számot jelenít meg, amely összefoglalja a log lek
 | **Gyűrű** |**> további beállítások** |
 | Színek |A három legfontosabb tulajdonsághoz megjelenített szín Ha alternatív színeket szeretne megadni az adott tulajdonságértékek számára, használjon *speciális színleképezést*. |
 | Speciális színleképezés |Megjeleníti az adott tulajdonság értékeit jelölő színt. Ha a megadott érték a három legfontosabb, a normál szín helyett a helyettesítő szín jelenik meg. Ha a tulajdonság értéke nem az első három, a szín nem jelenik meg. |
-| **Felsőfokú** |**Adatfolyam-ellenőrzés>** |
+| **Felsőfokú** |** Adatfolyam-ellenőrzés>** |
 | Engedélyezve |Válassza ezt a hivatkozást, ha az adatfolyam-ellenőrzést engedélyezni kell a csempén. Ez a megközelítés egy másik üzenetet biztosít, ha az információ nem érhető el. Általában arra használja a megközelítést, hogy a nézet telepítésekor az ideiglenes időszakban üzenetet szolgáltasson, és az adatmennyiség elérhetővé válik. |
 | Lekérdezés |A futtatott lekérdezés, amely meghatározza, hogy elérhetők-e az adatnézet. Ha a lekérdezés nem ad vissza eredményt, egy üzenet jelenik meg a fő lekérdezés értékének helyén. |
 | Üzenet |Az az üzenet, amely akkor jelenik meg, ha az adatáramlás-ellenőrző lekérdezés nem ad vissza adatmennyiséget. Ha nem ad meg üzenetet, a rendszer *elvégez egy értékelési* állapotjelző üzenetet. |
@@ -106,17 +106,17 @@ Ez a csempe egy olyan vonalas diagram, amely egyszerre több adatsorozatot jelen
 
 ![Vonalas diagram és ábrafelirat csempe](media/view-designer-tiles/tile-line-chart.png)
 
-| Beállítás | Description |
+| Beállítás | Leírás |
 |:--- |:--- |
-| Name |A csempe tetején megjelenő szöveg |
-| Description |A csempe neve alatt megjelenő szöveg |
-| **Vonalas diagram** | |
+| Név |A csempe tetején megjelenő szöveg |
+| Leírás |A csempe neve alatt megjelenő szöveg |
+| **Vonaldiagram** | |
 | Lekérdezés |A vonalas diagramhoz futtatott lekérdezés Az első tulajdonság egy szöveges érték, a második tulajdonság pedig egy numerikus érték. A lekérdezés általában a *mérték* kulcsszó használatával összegzi az eredményeket. Ha a lekérdezés az *intervallum* kulcsszót használja, az x tengely ezt az időtartamot használja. Ha a lekérdezés nem használja az *intervallum* kulcsszót, az x tengely óránkénti időközöket használ. |
-| **Vonalas diagram** |**> Y tengely** |
+| **Vonaldiagram** |**> Y tengely** |
 | Logaritmikus skála használata |Válassza ezt a hivatkozást, ha logaritmikus méretezést szeretne használni az y tengelyhez. |
 | Egység |Adja meg a lekérdezés által visszaadott értékek egységeit. Ezek az adatok a diagramon lévő feliratok megjelenítésére szolgálnak, amelyek az értékeket és opcionálisan az értékek átalakítását jelzik. Az **egység típusa** határozza meg az egység kategóriáját, és meghatározza az **aktuálisan elérhető egység típusú** értékeket. Ha kijelöl egy értéket a **Konvertálás** értékre, akkor a rendszer a numerikus értékeket az **aktuális egység** típusról a **Konvertálás** típusra konvertálja. |
 | Egyéni címke |Az y tengelyen megjelenített szöveg az *egység* típusához tartozó címke mellett. Ha nincs megadva címke, csak az *egység* típusa jelenik meg. |
-| **Felsőfokú** |**Adatfolyam-ellenőrzés>** |
+| **Felsőfokú** |** Adatfolyam-ellenőrzés>** |
 | Engedélyezve |Válassza ezt a hivatkozást, ha az adatfolyam-ellenőrzést engedélyezni kell a csempén. Ez a megközelítés egy másik üzenetet biztosít, ha az információ nem érhető el. Általában arra használja a megközelítést, hogy a nézet telepítésekor az ideiglenes időszakban üzenetet szolgáltasson, és az adatmennyiség elérhetővé válik. |
 | Lekérdezés |A futtatott lekérdezés, amely meghatározza, hogy elérhetők-e az adatnézet. Ha a lekérdezés nem ad vissza eredményt, egy üzenet jelenik meg a fő lekérdezés értékének helyén. |
 | Üzenet |Az az üzenet, amely akkor jelenik meg, ha az adatáramlás-ellenőrző lekérdezés nem ad vissza adatmennyiséget. Ha nem ad meg üzenetet, a rendszer *elvégez egy értékelési* állapotjelző üzenetet. |
@@ -127,21 +127,21 @@ Ez a csempe egy olyan vonalas diagrammal is rendelkezik, amely egyszerre több a
 
 ![Vonalas diagram és ábrafelirat csempe](media/view-designer-tiles/tile-line-chart-callout.png)
 
-| Beállítás | Description |
+| Beállítás | Leírás |
 |:--- |:--- |
-| Name |A csempe tetején megjelenő szöveg |
-| Description |A csempe neve alatt megjelenő szöveg |
-| **Vonalas diagram** | |
+| Név |A csempe tetején megjelenő szöveg |
+| Leírás |A csempe neve alatt megjelenő szöveg |
+| **Vonaldiagram** | |
 | Lekérdezés |A vonalas diagramhoz futtatott lekérdezés Az első tulajdonság egy szöveges érték, a második tulajdonság pedig egy numerikus érték. A lekérdezés általában a *mérték* kulcsszó használatával összegzi az eredményeket. Ha a lekérdezés az *intervallum* kulcsszót használja, az x tengely ezt az időtartamot használja. Ha a lekérdezés nem használja az *intervallum* kulcsszót, az x tengely óránkénti időközöket használ. |
-| **Vonalas diagram** |**> ábrafelirat** |
+| **Vonaldiagram** |**> ábrafelirat** |
 | Képfelirat címe | A képfelirat értéke felett megjelenő szöveg |
 | Adatsorozat neve |A képfelirat értékeként használandó sorozat-tulajdonság értéke. Ha nincs megadva adatsorozat, a rendszer a lekérdezés összes rekordját használja. |
 | Művelet |A Value tulajdonságon végrehajtott művelet, amely egyetlen értékként összegzi a képfeliratot.<ul><li>Average (átlag): az összes rekord értékének átlaga.</li><li>Darabszám: a lekérdezés által visszaadott összes rekord száma.</li><li>Utolsó minta: a diagramon szereplő utolsó intervallum értéke.</li><li>Max: a diagramban található intervallumok maximális értéke.</li><li>Min: a diagramban szereplő intervallumok minimális értéke.</li><li>Sum: az összes rekord értékének összege.</li></ul> |
-| **Vonalas diagram** |**> Y tengely** |
+| **Vonaldiagram** |**> Y tengely** |
 | Logaritmikus skála használata |Válassza ezt a hivatkozást, ha logaritmikus méretezést szeretne használni az y tengelyhez. |
 | Egység |Adja meg a lekérdezés által visszaadott értékek egységeit. Ezek az adatok az értékek típusát jelző, és opcionálisan az értékek átalakítására szolgáló diagram-címkék megjelenítésére szolgálnak. Az *egység* típusa határozza meg az egység kategóriáját, és meghatározza a rendelkezésre álló *aktuális egység* típusú értékeket. Ha a *Konvertálás a*értékre lehetőséget választja, a rendszer a numerikus értékeket az *aktuális egység* típusról a *Konvertálás* típusra konvertálja. |
 | Egyéni címke |Az y tengelyen megjelenített szöveg az *egység* típusához tartozó címke mellett. Ha nincs megadva címke, csak az *egység* típusa jelenik meg. |
-| **Felsőfokú** |**Adatfolyam-ellenőrzés>** |
+| **Felsőfokú** |** Adatfolyam-ellenőrzés>** |
 | Engedélyezve |Válassza ezt a hivatkozást, ha az adatfolyam-ellenőrzést engedélyezni kell a csempén. Ez a megközelítés egy másik üzenetet biztosít, ha az információ nem érhető el. Általában arra használja a megközelítést, hogy a nézet telepítésekor az ideiglenes időszakban üzenetet szolgáltasson, és az adatmennyiség elérhetővé válik. |
 | Lekérdezés |A futtatott lekérdezés, amely meghatározza, hogy elérhetők-e az adatnézet. Ha a lekérdezés nem ad vissza eredményt, egy üzenet jelenik meg a fő lekérdezés értékének helyén. |
 | Üzenet |Az az üzenet, amely akkor jelenik meg, ha az adatáramlás-ellenőrző lekérdezés nem ad vissza adatmennyiséget. Ha nem ad meg üzenetet, a rendszer *elvégez egy értékelési* állapotjelző üzenetet. |
@@ -152,10 +152,10 @@ A **két idővonal** csempe a két naplózási lekérdezés eredményét jelení
 
 ![Két idősor csempe](media/view-designer-tiles/tile-two-timelines.png)
 
-| Beállítás | Description |
+| Beállítás | Leírás |
 |:--- |:--- |
-| Name |A csempe tetején megjelenő szöveg |
-| Description |A csempe neve alatt megjelenő szöveg |
+| Név |A csempe tetején megjelenő szöveg |
+| Leírás |A csempe neve alatt megjelenő szöveg |
 | Első diagram | |
 | Jelmagyarázat |Az első adatsorozat ábrafelirata alatt megjelenő szöveg |
 | Szín |Az első adatsorozat oszlopaihoz használt szín |
@@ -166,7 +166,7 @@ A **két idővonal** csempe a két naplózási lekérdezés eredményét jelení
 | Szín |A második adatsorozat oszlopaihoz használt szín |
 | Diagram lekérdezése |A második adatsorozathoz futtatott lekérdezés. Az egyes időintervallumokon belül a rekordok számát a diagram oszlopai jelölik. |
 | Művelet |A Value tulajdonságon végrehajtott művelet, amely egyetlen értékként összegzi a képfeliratot.<ul><li>Average (átlag): az összes rekord értékének átlaga.</li><li>Darabszám: a lekérdezés által visszaadott összes rekord száma.</li><li>Utolsó minta: a diagramon szereplő utolsó intervallum értéke.</li><li>Max: a diagramban található intervallumok maximális értéke. |
-| **Felsőfokú** |**Adatfolyam-ellenőrzés>** |
+| **Felsőfokú** |** Adatfolyam-ellenőrzés>** |
 | Engedélyezve |Válassza ezt a hivatkozást, ha az adatfolyam-ellenőrzést engedélyezni kell a csempén. Ez a megközelítés egy másik üzenetet biztosít, ha az információ nem érhető el. Általában arra használja a megközelítést, hogy a nézet telepítésekor az ideiglenes időszakban üzenetet szolgáltasson, és az adatmennyiség elérhetővé válik. |
 | Lekérdezés |A futtatott lekérdezés, amely meghatározza, hogy elérhetők-e az adatnézet. Ha a lekérdezés nem ad vissza eredményt, egy üzenet jelenik meg a fő lekérdezés értékének helyén. |
 | Üzenet |Az az üzenet, amely akkor jelenik meg, ha az adatáramlás-ellenőrző lekérdezés nem ad vissza adatmennyiséget. Ha nem ad meg üzenetet, a rendszer *elvégez egy értékelési* állapotjelző üzenetet. |

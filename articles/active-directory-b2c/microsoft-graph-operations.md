@@ -12,10 +12,10 @@ ms.date: 02/20/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 27fe1a41365d96a4179f8c659b63dc22c7b9fc93
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "78184248"
 ---
 # <a name="microsoft-graph-operations-available-for-azure-ad-b2c"></a>A Azure AD B2C számára elérhető Microsoft Graph műveletek
@@ -63,7 +63,7 @@ A következő műveletek lehetővé teszik a Azure AD B2C megbízhatósági kere
 - [Frissítse vagy hozza létre a megbízhatósági keretrendszer szabályzatát.](https://docs.microsoft.com/graph/api/trustframework-put-trustframeworkpolicy)
 - [Meglévő megbízhatósági keretrendszer házirendjének törlése](https://docs.microsoft.com/graph/api/trustframeworkpolicy-delete)
 
-## <a name="policy-keys"></a>Szabályzat kulcsai
+## <a name="policy-keys"></a>Szabályzatkulcsok
 
 Az Identity Experience Framework egy egyéni szabályzatban hivatkozott titkokat tárolja az összetevők közötti megbízhatósági kapcsolat létrehozásához. Ezek a titkok lehetnek szimmetrikus vagy aszimmetrikus kulcsok/értékek. A Azure Portalban ezek az entitások **házirend kulcsaként**jelennek meg.
 
@@ -100,7 +100,7 @@ A Microsoft Graph API legfelső szintű erőforrása a [megbízható keretrendsz
 
 Azure AD B2C egy olyan könyvtárat biztosít, amely felhasználónként 100 egyéni attribútumot tud tárolni. A felhasználói folyamatok esetében ezek a bővítmény-tulajdonságok [a Azure Portal használatával kezelhetők](custom-policy-custom-attributes.md). Egyéni házirendek esetén a Azure AD B2C létrehozza a tulajdonságot az első alkalommal, amikor a házirend egy értéket ír a bővítmény tulajdonságba.
 
-## <a name="audit-logs"></a>Auditnaplók
+## <a name="audit-logs"></a>Naplók
 
 - [Naplófájlok listázása](https://docs.microsoft.com/graph/api/directoryaudit-list)
 

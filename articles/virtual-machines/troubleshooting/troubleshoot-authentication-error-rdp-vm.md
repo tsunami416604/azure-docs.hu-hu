@@ -15,17 +15,17 @@ ms.devlang: azurecli
 ms.date: 11/01/2018
 ms.author: delhan
 ms.openlocfilehash: cc1ad3104596cc7ad4bb48f88e4c8312bc833371
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87088563"
 ---
 # <a name="troubleshoot-authentication-errors-when-you-use-rdp-to-connect-to-azure-vm"></a>Azure-beli virtuális géphez RDP használatával való csatlakozáskor jelentkező hitelesítési hibák elhárítása
 
 Ez a cikk segítséget nyújt az Azure-beli virtuális gépekhez (VM) való csatlakozáskor RDP protokoll (RDP) kapcsolat használatakor fellépő hitelesítési hibák elhárításához.
 
-## <a name="symptoms"></a>Probléma
+## <a name="symptoms"></a>Hibajelenségek
 
 Egy olyan Azure-beli virtuális gép képernyőképét rögzíti, amely megjeleníti az üdvözlő képernyőt, és jelzi, hogy az operációs rendszer fut. Ha azonban a Távoli asztali kapcsolat használatával próbál csatlakozni a virtuális géphez, a következő hibaüzenetek egyike jelenik meg.
 
@@ -246,7 +246,7 @@ reg query "HKLM\SYSTEM\CurrentControlSet\Control\SecurityProviders\SCHANNEL\Prot
 > [!Note]
 > Szerezze be az SSH/TLS verzió x. x verzióját a vendég operációs rendszer naplóiból a SCHANNEL-hibákon.
 
-#### <a name="check-fips-compliant-algorithms-connections"></a><a name="fips-compliant"></a>FIPs-kompatibilis algoritmusok kapcsolatainak keresése
+#### <a name="check-fips-compliant-algorithms-connections"></a><a name="fips-compliant"></a> FIPs-kompatibilis algoritmusok kapcsolatainak keresése
 
 A távoli asztal kényszeríthető úgy, hogy csak a FIPs-kompatibilis algoritmus-kapcsolatokat használja. Ezt beállításkulcs használatával lehet beállítani. Ehhez nyisson meg egy rendszergazda jogú parancssort, és kérdezze le a következő kulcsokat:
 

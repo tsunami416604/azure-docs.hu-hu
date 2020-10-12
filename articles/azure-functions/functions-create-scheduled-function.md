@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.date: 04/16/2020
 ms.custom: mvc, cc996988-fb4f-47
 ms.openlocfilehash: 9e542c493c02174364072f91d092f05ad9ec69cf
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90973089"
 ---
 # <a name="create-a-function-in-azure-that-is-triggered-by-a-timer"></a>Időzítő által aktivált függvény létrehozása az Azure-ban
@@ -20,7 +20,7 @@ Megtudhatja, hogyan használhatja a Azure Functionst olyan [kiszolgáló](https:
 
 Az oktatóanyag elvégzéséhez:
 
-+ Ha nem rendelkezik Azure-előfizetéssel, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
++ Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
 ## <a name="create-an-azure-function-app"></a>Azure-függvényalkalmazás létrehozása
 
@@ -36,15 +36,15 @@ Az új Function-alkalmazás készen áll a használatra. Ezután létre fog hozn
 
 1. A Function alkalmazásban válassza a **függvények**, majd a **+ Hozzáadás** lehetőséget. 
 
-   :::image type="content" source="./media/functions-create-scheduled-function/function-add-function.png" alt-text="Adjon hozzá egy függvényt a Azure Portal." border="true":::
+   :::image type="content" source="./media/functions-create-scheduled-function/function-add-function.png" alt-text="A függvényalkalmazás elkészült." border="true":::
 
 1. Válassza ki az **időzítő trigger** sablonját. 
 
-    :::image type="content" source="./media/functions-create-scheduled-function/function-select-timer-trigger.png" alt-text="Válassza ki az időzítő triggert a Azure Portalban." border="true":::
+    :::image type="content" source="./media/functions-create-scheduled-function/function-select-timer-trigger.png" alt-text="A függvényalkalmazás elkészült." border="true":::
 
 1. Konfigurálja az új triggert a rendszerkép alatti táblázatban megadott beállításokkal, majd válassza a **create Function (függvény létrehozása**) lehetőséget.
 
-    :::image type="content" source="./media/functions-create-scheduled-function/function-configure-timer-trigger.png" alt-text="Képernyőfelvétel: az új függvény oldal, amelyen a kiválasztott időzítő-trigger sablon látható." border="true":::
+    :::image type="content" source="./media/functions-create-scheduled-function/function-configure-timer-trigger.png" alt-text="A függvényalkalmazás elkészült." border="true":::
     
     | Beállítás | Ajánlott érték | Leírás |
     |---|---|---|
@@ -55,11 +55,11 @@ Az új Function-alkalmazás készen áll a használatra. Ezután létre fog hozn
 
 1. A függvényben válassza a **Code + test (kód + tesztelés** ) lehetőséget, és bontsa ki a naplókat.
 
-    :::image type="content" source="./media/functions-create-scheduled-function/function-test-timer-trigger.png" alt-text="Tesztelje az időzítő triggert a Azure Portalban." border="true":::
+    :::image type="content" source="./media/functions-create-scheduled-function/function-test-timer-trigger.png" alt-text="A függvényalkalmazás elkészült." border="true":::
 
 1. A naplókba írt információk megtekintésével ellenőrizze a végrehajtást.
 
-    :::image type="content" source="./media/functions-create-scheduled-function/function-view-timer-logs.png" alt-text="Tekintse meg az időzítő triggert a Azure Portalban." border="true":::
+    :::image type="content" source="./media/functions-create-scheduled-function/function-view-timer-logs.png" alt-text="A függvényalkalmazás elkészült." border="true":::
 
 Most módosíthatja a függvény ütemezését, hogy ne percenként, hanem óránként egyszer fusson.
 
@@ -69,11 +69,11 @@ Most módosíthatja a függvény ütemezését, hogy ne percenként, hanem órá
 
 1. Válassza az **időzítő (myTimer)** lehetőséget.
 
-    :::image type="content" source="./media/functions-create-scheduled-function/function-update-timer-schedule.png" alt-text="Frissítse az időzítő ütemtervet a Azure Portalban." border="true":::
+    :::image type="content" source="./media/functions-create-scheduled-function/function-update-timer-schedule.png" alt-text="A függvényalkalmazás elkészült." border="true":::
 
 1. Frissítse az **ütemezett** értéket a értékre `0 0 */1 * * *` , majd válassza a **Mentés**lehetőséget.  
 
-    :::image type="content" source="./media/functions-create-scheduled-function/function-edit-timer-schedule.png" alt-text="A függvények időzítési ütemezésének módosítása az Azure Portalon." border="true":::
+    :::image type="content" source="./media/functions-create-scheduled-function/function-edit-timer-schedule.png" alt-text="A függvényalkalmazás elkészült." border="true":::
 
 Mostantól óránként egyszer fut a függvény.
 

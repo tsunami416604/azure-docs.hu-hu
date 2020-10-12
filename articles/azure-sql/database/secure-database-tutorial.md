@@ -11,10 +11,10 @@ ms.reviewer: ''
 ms.date: 09/21/2020
 ms.custom: seoapril2019 sqldbrb=1
 ms.openlocfilehash: bec60875561a9d821642d850c27e47d4f906aba3
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90885417"
 ---
 # <a name="tutorial-secure-a-database-in-azure-sql-database"></a>Oktatóanyag: adatbázis biztonságossá tétele Azure SQL Databaseban
@@ -210,7 +210,7 @@ Azure AD-hitelesítéssel rendelkező felhasználó hozzáadása:
    ```
 
 > [!NOTE]
-> Az Azure AD-felhasználók a csoportok típusával és típusával vannak megjelölve az adatbázis-metaadatokban `E (EXTERNAL_USER)` `X (EXTERNAL_GROUPS)` . További információ: [sys. database_principals](/sql/relational-databases/system-catalog-views/sys-database-principals-transact-sql).
+> Az Azure AD-felhasználók a csoportok típusával és típusával vannak megjelölve az adatbázis-metaadatokban `E (EXTERNAL_USER)` `X (EXTERNAL_GROUPS)` . További információ: [sys.database_principals](/sql/relational-databases/system-catalog-views/sys-database-principals-transact-sql).
 
 ### <a name="secure-connection-strings"></a>Biztonságos kapcsolatok karakterláncai
 
@@ -336,9 +336,9 @@ A titkosítás engedélyezése vagy ellenőrzése:
     ![Transzparens adattitkosítás](./media/secure-database-tutorial/encryption-settings.png)
 
 > [!NOTE]
-> A titkosítási állapot megtekintéséhez kapcsolódjon az adatbázishoz az [SSMS](connect-query-ssms.md) használatával, és kérdezze le a `encryption_state` [sys. dm_database_encryption_keys](/sql/relational-databases/system-dynamic-management-views/sys-dm-database-encryption-keys-transact-sql) nézet oszlopát. A állapot `3` azt jelzi, hogy az adatbázis titkosítva van.
+> A titkosítási állapot megtekintéséhez kapcsolódjon az adatbázishoz az [SSMS](connect-query-ssms.md) használatával, és kérdezze le a `encryption_state` [sys.dm_database_encryption_keys](/sql/relational-databases/system-dynamic-management-views/sys-dm-database-encryption-keys-transact-sql) nézet oszlopát. A állapot `3` azt jelzi, hogy az adatbázis titkosítva van.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban megtanulta, hogy csak néhány egyszerű lépéssel javítsa az adatbázis biztonságát. Megtanulta végrehajtani az alábbi műveleteket:
 

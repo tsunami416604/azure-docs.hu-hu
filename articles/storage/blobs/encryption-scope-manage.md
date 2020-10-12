@@ -10,10 +10,10 @@ ms.author: tamram
 ms.reviewer: ozgun
 ms.subservice: common
 ms.openlocfilehash: 9210c54305427c82d5666d68573fd3af41e8cef7
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90972194"
 ---
 # <a name="create-and-manage-encryption-scopes-preview"></a>Titkosítási hatókörök létrehozása és kezelése (előzetes verzió)
@@ -179,7 +179,7 @@ Ha meg szeretné tudni, hogyan konfigurálhatja az Azure Storage-titkosítást a
 
 A Azure Portal lévő Storage-fiókok titkosítási hatókörének megtekintéséhez navigáljon a Storage-fiók **titkosítási hatókörök** beállításához. Ebből a panelből engedélyezheti vagy letilthatja a titkosítási hatókört, vagy módosíthatja a titkosítási hatókör kulcsát.
 
-:::image type="content" source="media/encryption-scope-manage/list-encryption-scopes-portal.png" alt-text="A Azure Portal titkosítási hatóköreit bemutató képernyőkép":::
+:::image type="content" source="media/encryption-scope-manage/list-encryption-scopes-portal.png" alt-text="Képernyőfelvétel: titkosítási hatókör létrehozása a Azure Portalban":::
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -223,7 +223,7 @@ Ha a Azure Portal egy alapértelmezett titkosítási hatókörrel rendelkező t�
 1. A **titkosítási hatókör** legördülő menüben válassza ki a tároló alapértelmezett titkosítási hatókörét.
 1. Ha szeretné megkövetelni, hogy a tárolóban lévő összes blob az alapértelmezett titkosítási hatókört használja, jelölje be a jelölőnégyzetet, hogy **ezt a titkosítási hatókört használja a tárolóban lévő összes blobhoz**. Ha a jelölőnégyzet be van jelölve, akkor a tárolóban lévő egyes Blobok nem tudják felülbírálni az alapértelmezett titkosítási hatókört.
 
-    :::image type="content" source="media/encryption-scope-manage/create-container-default-encryption-scope.png" alt-text="Az alapértelmezett titkosítási hatókörű tárolót bemutató képernyőfelvétel":::
+    :::image type="content" source="media/encryption-scope-manage/create-container-default-encryption-scope.png" alt-text="Képernyőfelvétel: titkosítási hatókör létrehozása a Azure Portalban":::
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -277,7 +277,7 @@ Ha fel szeretne tölteni egy blobot a Azure Portalban megadott titkosítási hat
 1. Keresse meg a **titkosítási hatókör** legördülő szakaszt. Alapértelmezés szerint a blob a tároló alapértelmezett titkosítási hatókörével jön létre, ha van ilyen. Ha a tároló megköveteli, hogy a Blobok az alapértelmezett titkosítási hatókört használják, ez a szakasz le van tiltva.
 1. Ha másik hatókört szeretne megadni a feltöltött blobhoz, válassza a **meglévő hatókör kiválasztása**lehetőséget, majd válassza ki a kívánt hatókört a legördülő menüből.
 
-    :::image type="content" source="media/encryption-scope-manage/upload-blob-encryption-scope.png" alt-text="A Blobok titkosítási hatókörrel való feltöltését bemutató képernyőkép":::
+    :::image type="content" source="media/encryption-scope-manage/upload-blob-encryption-scope.png" alt-text="Képernyőfelvétel: titkosítási hatókör létrehozása a Azure Portalban":::
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
@@ -380,7 +380,7 @@ A Azure Portal titkosítási hatókörének letiltásához navigáljon a Storage
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 
-Ha le szeretné tiltani egy titkosítási hatókört a PowerShell használatával, hívja meg az Update-AzStorageEncryptionScope parancsot, és adja meg a `-State` paraméter értékét a `disabled` következő példában látható módon:. A titkosítási hatókör újbóli engedélyezéséhez hívja meg ugyanazt a parancsot, és `-State` állítsa be a paramétert `enabled` . Ne felejtse el lecserélni a példában szereplő helyőrző értékeket a saját értékeire:
+Ha le szeretné tiltani egy titkosítási hatókört a PowerShell-lel, hívja meg a Update-AzStorageEncryptionScope parancsot, és adja meg a `-State` paraméter értékét a `disabled` következő példában látható módon:. A titkosítási hatókör újbóli engedélyezéséhez hívja meg ugyanazt a parancsot, és `-State` állítsa be a paramétert `enabled` . Ne felejtse el lecserélni a példában szereplő helyőrző értékeket a saját értékeire:
 
 ```powershell
 Update-AzStorageEncryptionScope -ResourceGroupName $rgName `

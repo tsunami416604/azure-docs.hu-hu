@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.date: 09/09/2020
 ms.author: jeedes
 ms.openlocfilehash: b342731b953f7b68f8fcd9e55c49c907e5e8cc5d
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90973505"
 ---
 # <a name="tutorial-integrate-atlassian-cloud-with-azure-active-directory"></a>Oktatóanyag: a Atlassian-felhő integrálása Azure Active Directory
@@ -114,7 +114,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
    ![SAML az Azure-ban](./media/atlassian-cloud-tutorial/saml-in-azure.png)
 
-1. Az **egyszeri bejelentkezés SAML-vel való beállítása** lapon görgessen le a Atlassian- **felhő beállításához**
+1. Az **egyszeri Sign-On beállítása az SAML-vel** lapon görgessen le a **Atlassian-felhő beállításához**
    
    a. Kattintson a **konfigurációs URL-címek** elemre.
 
@@ -128,7 +128,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
    ![entitás azonosítója és SS](./media/atlassian-cloud-tutorial/entity-id-and-ss.png)
 
-1. Az **egyszeri bejelentkezés az SAML-vel** lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg a **tanúsítvány (Base64)** elemet, majd a **Letöltés** gombra kattintva töltse le a tanúsítványt, és mentse a számítógépre.
+1. Az **egyszeres Sign-On beállítása SAML** használatával lapon az **SAML aláíró tanúsítvány** szakaszban keresse meg a **tanúsítvány (Base64)** elemet, majd a **Letöltés** gombra kattintva töltse le a tanúsítványt, és mentse a számítógépre.
 
    ![aláíró tanúsítvány](./media/atlassian-cloud-tutorial/certificate.png)
 
@@ -136,7 +136,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
 1. SAML-konfiguráció **hozzáadása/mentése** a Atlassian-ben
 
-1. Ha az alkalmazást **identitásszolgáltató** kezdeményezett módban szeretné konfigurálni, szerkessze **Az Azure** -beli **egyszeri bejelentkezés beállítása az SAML-vel** lapon, és nyissa meg az **SAML egyszeri bejelentkezési oldalt** a Atlassian felügyeleti portálján.
+1. Ha az alkalmazást **identitásszolgáltató** kezdeményezett módban szeretné konfigurálni, szerkessze az **egyszeri Sign-On beállítása az SAML-vel** az Azure-ban beállítás **alapszintű** SAML-konfiguráció szakaszát, és nyissa meg az **SAML egyszeri bejelentkezési oldalt** a Atlassian felügyeleti portálon
 
    a. Másolja az **SP-entitás azonosítójának** értékét a Atlassian-ből, illessze be az Azure **azonosító (Entity ID)** mezőjébe, és állítsa be alapértelmezettként.
    
@@ -150,7 +150,7 @@ Az alábbi lépéseket követve engedélyezheti az Azure AD SSO használatát a 
 
    ![URL-cím képe](./media/atlassian-cloud-tutorial/urls.png)
    
-1. Ha az alkalmazást **SP** -ben kezdeményezett módban szeretné konfigurálni, szerkessze az Azure **-beli egyszeri bejelentkezés beállítása az SAML-vel** című **alapszintű SAML-konfiguráció** szakaszát. Másolja a **példány URL-címét** (az 1. lépésből), és illessze be a **bejelentkezési URL-cím** mezőbe az Azure-ban
+1. Ha az alkalmazást **SP** -ben kezdeményezett módban kívánja konfigurálni, szerkessze az Azure-beli SAML-oldal **Sign-On beállításának** **alapszintű SAML-konfiguráció** szakaszát. Másolja a **példány URL-címét** (az 1. lépésből), és illessze be a **bejelentkezési URL-cím** mezőbe az Azure-ban
 
    ![Szerkesztés gomb az URL-címekben](./media/atlassian-cloud-tutorial/edit-button.png)
 
@@ -198,7 +198,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás** lehetőségre.
+   1. Kattintson a **Létrehozás** elemre.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -250,6 +250,6 @@ Ebben a szakaszban a következő lehetőségekkel tesztelheti az Azure AD egysze
 A Microsoft Access panel használatával bármilyen módban tesztelheti az alkalmazást. Ha a hozzáférési panelen a Atlassian felhő csempére kattint, ha az SP módban van konfigurálva, a rendszer átirányítja az alkalmazás bejelentkezési lapjára a bejelentkezési folyamat elindításához, és ha IDENTITÁSSZOLGÁLTATÓ módban van konfigurálva, automatikusan be kell jelentkeznie arra a Atlassian-felhőbe, amelyhez be szeretné állítani az egyszeri bejelentkezést. További információ a hozzáférési panelről: [Bevezetés a hozzáférési panelre](https://docs.microsoft.com/azure/active-directory/active-directory-saas-access-panel-introduction).
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A Atlassian-felhő konfigurálása után kényszerítheti a munkamenet-vezérlést, amely valós időben védi a szervezet bizalmas adatai kiszűrése és beszivárgását. A munkamenet-vezérlő a feltételes hozzáférésből is kiterjeszthető. [Megtudhatja, hogyan kényszerítheti ki a munkamenet-vezérlést Microsoft Cloud app Security használatával](https://docs.microsoft.com/cloud-app-security/proxy-deployment-any-app).

@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 08/08/2019
 ms.author: sutalasi
 ms.openlocfilehash: fa4d61599e102f9a2580e704ee7a02486067daa2
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86135793"
 ---
 # <a name="replicate-azure-disk-encryption-enabled-virtual-machines-to-another-azure-region"></a>Azure Disk Encryption-kompatibilis virtuális gépek replikálása egy másik Azure-régióba
@@ -22,7 +22,7 @@ Ez a cikk azt ismerteti, hogyan replikálhatja az Azure-beli virtuális gépeket
 > A Site Recovery jelenleg a Windows operációs rendszert futtató virtuális gépekhez Azure Active Directory (HRE) és anélkül is támogatja az ADE-t. A Linux operációs rendszerek esetében csak az ADE használatát HRE nélkül támogatjuk. Továbbá az ADE 1,1-et (HRE nélkül) futtató gépek esetében a virtuális gépnek felügyelt lemezeket kell használnia. A nem felügyelt lemezekkel rendelkező virtuális gépek nem támogatottak. Ha az ADE 0,1 (HRE) értékről 1,1-re vált, le kell tiltania a replikálást, és engedélyeznie kell egy virtuális gép replikálását a 1,1 engedélyezése után.
 
 
-## <a name="required-user-permissions"></a><a id="required-user-permissions"></a>Szükséges felhasználói engedélyek
+## <a name="required-user-permissions"></a><a id="required-user-permissions"></a> Szükséges felhasználói engedélyek
 Site Recovery megköveteli a felhasználónak, hogy rendelkezzen a kulcstartó létrehozásához szükséges engedélyekkel, és a forrástartomány kulcstartóból másolja a kulcsokat a cél régió kulcstartóba.
 
 Ha engedélyezni szeretné a lemezes titkosítást használó virtuális gépek replikálását a Azure Portalból, a felhasználónak a következő engedélyekkel kell rendelkeznie a **forrás-és a célként megadott régió** kulcstárolójában is.
@@ -122,7 +122,7 @@ Az alábbi lépéseket követve módosíthatja a Site Recovery alapértelmezett 
 4. Miután a virtuális gépek engedélyezettek a replikáláshoz, a virtuális gépek állapotát a **replikált elemek**területen tekintheti meg.
 
 >[!NOTE]
->A kezdeti replikálás során előfordulhat, hogy az állapot frissítése hosszabb ideig is eltarthat. Kattintson a **frissítés** gombra a legutóbbi állapot lekéréséhez.
+>A kezdeti replikálás során előfordulhat, hogy az állapot frissítése hosszabb ideig is eltarthat. Kattintson a **frissítés**  gombra a legutóbbi állapot lekéréséhez.
 
 ## <a name="update-target-vm-encryption-settings"></a>Cél virtuális gép titkosítási beállításainak frissítése
 A következő esetekben frissítenie kell a cél virtuális gép titkosítási beállításait:
@@ -155,6 +155,6 @@ A [célként megadott Key vaulthoz](#required-user-permissions) szükséges enge
 
 **A javítás módja:** Lépjen a **Home**kulcstartók  >  **Keyvaults**  >  **ContosotargetKeyvault**  >  **hozzáférési szabályzatok lehetőségre** , és adja hozzá a megfelelő engedélyeket.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [További](site-recovery-test-failover-to-azure.md) információ a feladatátvételi teszt futtatásáról.

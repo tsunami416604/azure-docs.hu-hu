@@ -9,10 +9,10 @@ services: iot-accelerators
 ms.date: 11/12/2018
 ms.topic: conceptual
 ms.openlocfilehash: c192ba73da0cfaf1832b6a1e572bd71b250a976b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74168367"
 ---
 # <a name="add-an-email-action"></a>E-mail művelet hozzáadása
@@ -81,7 +81,7 @@ Az alábbi lépéseket követve adhat hozzá egy e-mail-műveletet egy meglévő
 
 Az e-mail-művelettel rendelkező szabály már engedélyezve van. A művelet minden indításakor új e-mailt küld a címzetteknek.
 
-## <a name="sign-in-to-outlook"></a>Bejelentkezés az Outlookba<a name="outlook"></a>
+## <a name="sign-in-to-outlook"></a>Bejelentkezés az Outlookba <a name="outlook"></a>
 
 Amikor első alkalommal engedélyez egy e-mail-műveletet a megoldás-gyorsító alkalmazásban, be kell jelentkeznie az Outlookba. Ez a művelet beállítja az e-mail-értesítéseket küldő e-mail-fiókot.
 
@@ -132,13 +132,13 @@ A következő lépések segítséget nyújtanak a bejelentkezéshez és az e-mai
 
 1. Kattintson az **Engedélyezés**gombra. A rendszer felszólítja, hogy jelentkezzen be. A bejelentkezéshez használt fióknak annak az e-mail-címnek kell lennie, amelyet az alkalmazás az e-mailes értesítések küldéséhez használ:
 
-1. Kattintson a **Save** (Mentés) gombra. Térjen vissza a megoldás-gyorsító oldalára, és frissítse az oldalt.
+1. Kattintson a **Mentés** gombra. Térjen vissza a megoldás-gyorsító oldalára, és frissítse az oldalt.
 
 1. Ha sikeresen konfigurálta az e-mail-értesítést, a következő üzenet jelenik meg:
 
    ![Sikeres Outlook-bejelentkezés](./media/iot-accelerators-remote-monitoring-email-actions/success-email.png)
 
-## <a name="customize-the-email-html"></a>Az e-mail HTML testreszabása<a name="htmledit"></a>
+## <a name="customize-the-email-html"></a>Az e-mail HTML testreszabása <a name="htmledit"></a>
 
 A távoli figyelési megoldás gyorsítása beépített, alapszintű HTML-sablont biztosít a műveleti e-mailekhez. Az e-mail sablon az e-mail művelet beállításaiban szereplő értékeket használja. Íme egy példa e-mailben:
 
@@ -156,9 +156,9 @@ A következő lépések bemutatják, hogyan szerkesztheti a HTML e-mail-sablont.
 
 1. Az üzenet testreszabásához hozzáadhat vagy eltávolíthat bármilyen paramétert ebben a sablonban. A hívásokat igény szerint is hozzáadhatja, eltávolíthatja vagy lecserélheti:
 
-    Például a .NET-kódban:`emailTemplate = emailTemplate.Replace("${subject}", emailAction.GetSubject());`
+    Például a .NET-kódban:  `emailTemplate = emailTemplate.Replace("${subject}", emailAction.GetSubject());`
 
-    Például a Java-kódban:`this.emailTemplate.replace("${subject}", emailAction.GetSubject());`
+    Például a Java-kódban:  `this.emailTemplate.replace("${subject}", emailAction.GetSubject());`
 
 1. A sablonban szereplő paraméterek a formáját alkotják `${...}` . Egy paraméter törléséhez törölje a szükséges sort. Paraméter hozzáadásához adjon hozzá egy sort a beszúrandó értékkel.
 

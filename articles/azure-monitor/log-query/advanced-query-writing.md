@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 11/15/2018
 ms.openlocfilehash: 3d228c62cd2d1bcb7f4515cd698186e2ebcbe929
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77670287"
 ---
 # <a name="writing-advanced-queries-in-azure-monitor"></a>Speciális lekérdezések írása a Azure Monitorban
@@ -69,7 +69,7 @@ Event
 ```
 
 ## <a name="print"></a>Nyomtatás
-`print`egy olyan táblát ad vissza, amely egyetlen oszlopból és egy sorból áll, amely a számítás eredményét jeleníti meg. Ezt gyakran használják olyan esetekben, amikor egyszerű számításra van szükség. Ha például az aktuális időt szeretné megkeresni a PST-ben, és hozzá szeretne adni egy oszlopot az EST használatával:
+`print` egy olyan táblát ad vissza, amely egyetlen oszlopból és egy sorból áll, amely a számítás eredményét jeleníti meg. Ezt gyakran használják olyan esetekben, amikor egyszerű számításra van szükség. Ha például az aktuális időt szeretné megkeresni a PST-ben, és hozzá szeretne adni egy oszlopot az EST használatával:
 
 ```Kusto
 print nowPst = now()-8h
@@ -77,7 +77,7 @@ print nowPst = now()-8h
 ```
 
 ## <a name="datatable"></a>DataTable
-`datatable`lehetővé teszi az adathalmazok meghatározását. Adjon meg egy sémát és egy értéket, majd a táblázatot a többi lekérdezési elembe. Például a RAM-használati táblázat létrehozásához és az átlagos érték óránkénti kiszámításához:
+`datatable` lehetővé teszi az adathalmazok meghatározását. Adjon meg egy sémát és egy értéket, majd a táblázatot a többi lekérdezési elembe. Például a RAM-használati táblázat létrehozásához és az átlagos érték óránkénti kiszámításához:
 
 ```Kusto
 datatable (TimeGenerated: datetime, usage_percent: double)

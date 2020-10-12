@@ -11,10 +11,10 @@ ms.topic: how-to
 ms.date: 07/15/2020
 ms.author: alkohli
 ms.openlocfilehash: 8783d5ce5596cdb4678c09b79c09797ef62cc9c9
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86527829"
 ---
 # <a name="restore-a-storsimple-volume-from-a-backup-set"></a>StorSimple-kötet helyreállítása biztonságimásolat-készletből
@@ -59,9 +59,9 @@ A következő kikötések vonatkoznak a hő-alapú visszaállításokra:
 
 A 4. frissítésben a Windows PowerShell-parancsmagok segítségével lekérdezheti a futó rehidratáló feladatokat, megszakíthatja a rehidratálás feladatát, és lekérheti a rehidratáló feladat állapotát.
 
-* `Get-HcsRehydrationJob`– Ez a parancsmag beolvassa a rehidratáló feladatok állapotát. Egyetlen újrahidratáló feladatot indítunk el egy köteten.
+* `Get-HcsRehydrationJob` – Ez a parancsmag beolvassa a rehidratáló feladatok állapotát. Egyetlen újrahidratáló feladatot indítunk el egy köteten.
 
-* `Set-HcsRehydrationJob`– Ez a parancsmag lehetővé teszi a rehidratáló feladat szüneteltetését, leállítását, folytatását, ha a rehidratálás folyamatban van.
+* `Set-HcsRehydrationJob` – Ez a parancsmag lehetővé teszi a rehidratáló feladat szüneteltetését, leállítását, folytatását, ha a rehidratálás folyamatban van.
 
 A rehidratáló parancsmagokkal kapcsolatos további információkért nyissa meg a [Windows PowerShell-parancsmagok referenciáját a StorSimple](https://technet.microsoft.com/library/dn688168.aspx).
 
@@ -134,7 +134,7 @@ A rendszer riasztást küld, ha a visszaállítási művelet valamilyen okból m
 
 A visszaállítási művelet befejezéséhez állítsa offline állapotba a kötetet a gazdagépen, majd próbálja megismételni a visszaállítási műveletet. Vegye figyelembe, hogy a visszaállítási folyamat során végrehajtott összes módosítás elvész.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * Ismerje meg, hogyan [kezelheti a StorSimple-köteteket](storsimple-8000-manage-volumes-u2.md).
 * Ismerje meg, hogyan kezelheti a [StorSimple-eszközt a StorSimple Eszközkezelő szolgáltatással](storsimple-8000-manager-service-administration.md).
 

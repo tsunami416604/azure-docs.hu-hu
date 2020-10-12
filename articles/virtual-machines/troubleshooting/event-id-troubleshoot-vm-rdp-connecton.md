@@ -15,17 +15,17 @@ ms.devlang: azurecli
 ms.date: 11/01/2018
 ms.author: delhan
 ms.openlocfilehash: 507cd6cfe9f251dbc304b579d634ff986b001264
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87088597"
 ---
 # <a name="troubleshoot-azure-vm-rdp-connection-issues-by-event-id"></a>Az Azure-beli virtuális gépek kapcsolati hibáinak elhárítása eseményazonosító alapján 
 
 Ez a cikk azt ismerteti, hogyan használhatók az eseményazonosító az Azure-beli virtuális gépekhez (VM) Távoli asztal protokoll (RDP) kapcsolatait megakadályozó problémák elhárításához.
 
-## <a name="symptoms"></a>Probléma
+## <a name="symptoms"></a>Hibajelenségek
 
 Egy Azure-beli virtuális géphez való kapcsolódáshoz egy Távoli asztal protokoll (RDP) munkamenetet próbál használni. A hitelesítő adatok bevitele után a kapcsolat meghiúsul, és a következő hibaüzenet jelenik meg:
 
@@ -57,7 +57,7 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Microsoft-Windo
 **Napló neve:**      Rendszer <br />
 **Forrás:**        Microsoft-Windows-TerminalServices-RemoteConnectionManager <br />
 **Dátum:**          *idő* <br />
-**Eseményazonosító:** 1058 <br />
+**Eseményazonosító:**      1058 <br />
 **Feladat kategóriája:** NEz egy <br />
 **Szint:**         Hiba <br />
 **Kulcsszavak:**      Klasszikus <br />
@@ -68,7 +68,7 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Microsoft-Windo
 **Napló neve:**      Rendszer <br />
 **Forrás:**        Microsoft-Windows-TerminalServices-RemoteConnectionManager <br />
 **Dátum:**          *idő* <br />
-**Eseményazonosító:** 1058 <br />
+**Eseményazonosító:**      1058 <br />
 **Feladat kategóriája:** NEz egy <br />
 **Szint:**         Hiba <br />
 **Kulcsszavak:**      Klasszikus <br />
@@ -79,7 +79,7 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Microsoft-Windo
 **Napló neve:**      Rendszer <br />
 **Forrás:**        Microsoft-Windows-TerminalServices-RemoteConnectionManager <br />
 **Dátum:**          *idő* <br />
-**Eseményazonosító:** 1057 <br />
+**Eseményazonosító:**      1057 <br />
 **Feladat kategóriája:** NEz egy <br />
 **Szint:**         Hiba <br />
 **Kulcsszavak:**      Klasszikus <br />
@@ -96,8 +96,8 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Schannel'] and 
 
 **Napló neve:**      Rendszer <br />
 **Forrás:**        Schannel <br />
-**Dátum:** – <br />
-**Eseményazonosító:** 36870 <br />
+**Dátum:**          – <br />
+**Eseményazonosító:**      36870 <br />
 **Feladat kategóriája:** NEz egy <br />
 **Szint:**         Hiba <br />
 **Kulcsszavak**       <br />
@@ -218,8 +218,8 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name='Schannel'] and 
 
 **Napló neve:**      Rendszer <br />
 **Forrás:**        Schannel <br />
-**Dátum:** – <br />
-**Eseményazonosító:** 36871 <br />
+**Dátum:**          – <br />
+**Eseményazonosító:**      36871 <br />
 **Feladat kategóriája:** NEz egy <br />
 **Szint:**         Hiba <br />
 **Kulcsszavak**       <br />
@@ -249,7 +249,7 @@ wevtutil qe system /c:1 /f:text /q:"Event[System[Provider[@Name=' Microsoft-Wind
 **Napló neve:**      Microsoft-Windows-TerminalServices-SessionBroker/Operational <br />
 **Forrás:**        Microsoft-Windows-TerminalServices-SessionBroker <br />
 **Dátum:**          *idő* <br />
-**Eseményazonosító:** 2056 <br />
+**Eseményazonosító:**      2056 <br />
 **Feladat kategóriája:** (109) <br />
 **Szint:**         Hiba <br />
 **Kulcsszavak**       <br />
@@ -265,7 +265,7 @@ Sikertelen volt az adatbázisba való bejelentkezés.
 **Napló neve:**      Microsoft-Windows-TerminalServices-SessionBroker-Client/Operational <br />
 **Forrás:**        Microsoft-Windows-TerminalServices-SessionBroker-Client <br />
 **Dátum:**          *idő* <br />
-**Eseményazonosító:** 1296 <br />
+**Eseményazonosító:**      1296 <br />
 **Feladat kategóriája:** (104) <br />
 **Szint:**         Hiba <br />
 **Kulcsszavak**       <br />
@@ -288,7 +288,7 @@ Az állomásnév a belső Windows-adatbázis bejegyzéseivel és függőségeive
 
 A probléma megoldásához újra kell telepíteni a Távoli asztali kapcsolatszervező szerepkört és a belső Windows-adatbázist.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Schannel-események](/previous-versions/windows/it-pro/windows-server-2012-R2-and-2012/dn786445(v=ws.11))
 

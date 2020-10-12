@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/14/2019
 ms.author: raynew
 ms.openlocfilehash: 6b68b4c943ec96620427978c2309f27e1fb1f217
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74082563"
 ---
 # <a name="prepare-network-mapping-for-hyper-v-vm-disaster-recovery-to-azure"></a>Hálózati leképezés előkészítése a Hyper-V virtuális gép vész-helyreállítására az Azure-ba
@@ -55,15 +55,15 @@ Az alábbi példa szemlélteti ezt a mechanizmust. Vessünk egy olyan szervezete
 
 **Hely** | **VMM-kiszolgáló** | **Virtuálisgép-hálózatok** | **Leképezve erre**
 ---|---|---|---
-New York | VMM – NewYork| VMNetwork1 – NewYork | Leképezve a VMNetwork1-Chicago-hoz
- |  | VMNetwork2 – NewYork | Nincs leképezve
-Chicago | VMM – Chicago| VMNetwork1 – Chicago | Leképezve a következőre: VMNetwork1-NewYork
- | | VMNetwork2 – Chicago | Nincs leképezve
+New York | VMM-NewYork| VMNetwork1-NewYork | Leképezve VMNetwork1-Chicago
+ |  | VMNetwork2-NewYork | Nincs leképezve
+Chicago | VMM-Chicago| VMNetwork1-Chicago | Leképezve VMNetwork1-NewYork
+ | | VMNetwork2-Chicago | Nincs leképezve
 
 Ebben a példában:
 
 - Ha a VMNetwork1-NewYork csatlakoztatott virtuális gépekhez hoz létre replika virtuális gépet, akkor az a VMNetwork1-Chicago-hoz csatlakozik.
-- Ha a VMNetwork2-NewYork vagy a VMNetwork2-Chicago számára hoz létre replika virtuális gépet, az nem fog csatlakozni egyetlen hálózathoz sem.
+- Ha VMNetwork2-NewYork vagy VMNetwork2-Chicago számára hoz létre replika virtuális gépet, az nem fog csatlakozni egyetlen hálózathoz sem.
 
 A VMM-felhők beállítása a példánkban és a felhőkhöz társított logikai hálózatok között történik.
 
@@ -73,16 +73,16 @@ A VMM-felhők beállítása a példánkban és a felhőkhöz társított logikai
 ---|---|---
 GoldCloud1 | GoldCloud2 |
 SilverCloud1| SilverCloud2 |
-GoldCloud2 | <p>NA</p><p></p> | <p>LogicalNetwork1 – NewYork</p><p>LogicalNetwork1 – Chicago</p>
-SilverCloud2 | <p>NA</p><p></p> | <p>LogicalNetwork1 – NewYork</p><p>LogicalNetwork1 – Chicago</p>
+GoldCloud2 | <p>NA</p><p></p> | <p>LogicalNetwork1-NewYork</p><p>LogicalNetwork1-Chicago</p>
+SilverCloud2 | <p>NA</p><p></p> | <p>LogicalNetwork1-NewYork</p><p>LogicalNetwork1-Chicago</p>
 
 ### <a name="logical-and-vm-network-settings"></a>Logikai és virtuális gép hálózati beállításai
 
 **Hely** | **Logikai hálózat** | **Társított virtuálisgép-hálózat**
 ---|---|---
-New York | LogicalNetwork1 – NewYork | VMNetwork1 – NewYork
-Chicago | LogicalNetwork1 – Chicago | VMNetwork1 – Chicago
- | LogicalNetwork2Chicago | VMNetwork2 – Chicago
+New York | LogicalNetwork1-NewYork | VMNetwork1-NewYork
+Chicago | LogicalNetwork1-Chicago | VMNetwork1-Chicago
+ | LogicalNetwork2Chicago | VMNetwork2-Chicago
 
 ### <a name="target-network-settings"></a>Célként megadott hálózati beállítások
 
@@ -90,9 +90,9 @@ Ezen beállítások alapján a cél virtuálisgép-hálózat kiválasztásakor a
 
 **Kiválasztás** | **Védett felhő** | **A felhő védelme** | **Elérhető célként megadott hálózat**
 ---|---|---|---
-VMNetwork1 – Chicago | SilverCloud1 | SilverCloud2 | Elérhető
+VMNetwork1-Chicago | SilverCloud1 | SilverCloud2 | Elérhető
  | GoldCloud1 | GoldCloud2 | Elérhető
-VMNetwork2 – Chicago | SilverCloud1 | SilverCloud2 | Nem érhető el
+VMNetwork2-Chicago | SilverCloud1 | SilverCloud2 | Nem elérhető
  | GoldCloud1 | GoldCloud2 | Elérhető
 
 
@@ -101,13 +101,13 @@ Ha a célként megadott hálózat több alhálózattal rendelkezik, és az egyik
 
 ### <a name="failback-behavior"></a>Feladat-visszavétel viselkedése
 
-Ha szeretné megtekinteni, hogy mi történik a feladat-visszavétel (visszirányú replikálás) esetén, tegyük fel, hogy a VMNetwork1-NewYork VMNetwork1-Chicago-ra van leképezve a következő beállításokkal.
+Ha szeretné megtekinteni, hogy mi történik a feladat-visszavétel (visszirányú replikálás) esetén, tegyük fel, hogy VMNetwork1-NewYork a VMNetwork1-Chicago-ra van leképezve a következő beállításokkal.
 
 
 **VM** | **Csatlakoztatva a VM-hálózathoz**
 ---|---
-VM1 | VMNetwork1 – hálózat
-VM2 (VM1-replika) | VMNetwork1 – Chicago
+VM1 | VMNetwork1-Network
+VM2 (VM1-replika) | VMNetwork1-Chicago
 
 Ezekkel a beállításokkal vizsgáljuk meg, hogy mi történik néhány lehetséges forgatókönyvben.
 
@@ -115,7 +115,7 @@ Ezekkel a beállításokkal vizsgáljuk meg, hogy mi történik néhány lehets�
 ---|---
 A feladatátvétel után a 2. virtuális gép hálózati tulajdonságaiban nincs változás. | A VM-1 továbbra is csatlakoztatva van a forrás hálózathoz.
 A 2. virtuális gép hálózati tulajdonságai a feladatátvétel után módosulnak, és a kapcsolat megszakadt. | A VM-1 kapcsolat megszakadt.
-A 2. virtuális gép hálózati tulajdonságai a feladatátvétel után módosulnak, és a VMNetwork2-Chicago-hoz csatlakoznak. | Ha a VMNetwork2-Chicago nincs leképezve, a VM-1 le lesz választva.
+A 2. virtuális gép hálózati tulajdonságai a feladatátvétel után módosulnak, és a VMNetwork2-Chicago-hoz csatlakoznak. | Ha VMNetwork2-Chicago nincs leképezve, a VM-1 kapcsolat le lesz választva.
 A VMNetwork1-Chicago hálózati leképezése módosult. | A VM-1 a VMNetwork1-Chicago-hoz hozzárendelt hálózathoz lesz csatlakoztatva.
 
 

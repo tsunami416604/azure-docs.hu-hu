@@ -4,10 +4,10 @@ description: Az alkalmazás ZIP-csomagjának üzembe helyezése az atomenergia-s
 ms.topic: article
 ms.date: 01/14/2020
 ms.openlocfilehash: 5cc909d79b3f5ea2b4c6a3da12bc7250addbe00c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77920722"
 ---
 # <a name="run-your-app-in-azure-app-service-directly-from-a-zip-package"></a>Az alkalmazás futtatása Azure App Service közvetlenül egy ZIP-csomagból
@@ -37,7 +37,7 @@ Az `WEBSITE_RUN_FROM_PACKAGE` Alkalmazásbeállítás lehetővé teszi a futtat�
 az webapp config appsettings set --resource-group <group-name> --name <app-name> --settings WEBSITE_RUN_FROM_PACKAGE="1"
 ```
 
-`WEBSITE_RUN_FROM_PACKAGE="1"`lehetővé teszi az alkalmazás futtatását egy helyi csomagból az alkalmazásba. [Távoli csomagból is futtatható](#run-from-external-url-instead).
+`WEBSITE_RUN_FROM_PACKAGE="1"` lehetővé teszi az alkalmazás futtatását egy helyi csomagból az alkalmazásba. [Távoli csomagból is futtatható](#run-from-external-url-instead).
 
 ## <a name="run-the-package"></a>A csomag futtatása
 

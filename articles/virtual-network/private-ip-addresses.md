@@ -15,13 +15,13 @@ ms.workload: infrastructure-services
 ms.date: 05/28/2020
 ms.author: allensu
 ms.openlocfilehash: 13688b73c0cd73e13e407f1b75beb8dda61a754f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84172374"
 ---
-# <a name="private-ip-addresses"></a>Magánhálózati IP-címek
+# <a name="private-ip-addresses"></a>Privát IP-címek
 A magánhálózati IP-címek lehetővé teszik az Azure-beli erőforrások közötti kommunikációt. 
 
 Az erőforrások a következőket tehetik:
@@ -97,7 +97,7 @@ A lehetséges használható kiosztási módszerek is megjelennek:
 
 | Legfelső szintű erőforrás | IP-cím társítása | Dinamikus | Statikus |
 | --- | --- | --- | --- |
-| Virtuális gép |Hálózati illesztő |Igen |Igen |
+| Virtuális gép |Hálózati adapter |Igen |Igen |
 | Terheléselosztó |Előtér-konfiguráció |Igen |Igen |
 | Alkalmazásátjáró |Előtér-konfiguráció |Igen |Igen |
 

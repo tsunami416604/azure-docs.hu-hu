@@ -8,10 +8,10 @@ ms.date: 4/9/2019
 ms.topic: conceptual
 ms.author: ramamill
 ms.openlocfilehash: a74d9347d0050a2970e698ae616eb09fe32bdc5b
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86135457"
 ---
 # <a name="plan-capacity-and-scaling-for-vmware-disaster-recovery-to-azure"></a>Kapacitás megtervezése és méretezése a VMware vész-helyreállításhoz az Azure-ba
@@ -79,8 +79,8 @@ Miután a [Site Recovery Deployment Planner](site-recovery-deployment-planner.md
 
 * **Sávszélesség szabályozása**: az Azure-ba replikált VMware-forgalom egy adott folyamat-kiszolgálón halad át. A sávszélesség szabályozása a folyamat-kiszolgálóként futó gépeken végezhető el.
 * A **sávszélesség befolyásolása**: befolyásolhatja a replikációhoz használt sávszélességet néhány beállításkulcs használatával:
-  * A **HKEY_LOCAL_MACHINE \SOFTWARE\Microsoft\Windows az Azure Backup\Replication\UploadThreadsPerVM** beállításazonosító megadja a lemez adatátviteli (kezdeti vagy különbözeti replikációja) által használt szálak számát. A magasabb érték növeli a replikáláshoz használt hálózati sávszélességet.
-  * A **HKEY_LOCAL_MACHINE \Software\microsoft\windows Azure Backup\Replication\DownloadThreadsPerVM** beállításazonosító meghatározza, hogy hány szálat használ a rendszer az adatátvitelhez a feladat-visszavétel során.
+  * A **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Replication\UploadThreadsPerVM** beállításazonosító meghatározza, hogy hány szálat kell használni a lemez adatátviteléhez (a kezdeti vagy a különbözeti replikációhoz). A magasabb érték növeli a replikáláshoz használt hálózati sávszélességet.
+  * A **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Replication\DownloadThreadsPerVM** beállításazonosító meghatározza, hogy hány szálat használ a rendszer az adatátvitelhez a feladat-visszavétel során.
 
 ### <a name="throttle-bandwidth"></a>Sávszélesség szabályozása
 
@@ -92,7 +92,7 @@ Miután a [Site Recovery Deployment Planner](site-recovery-deployment-planner.md
 
     ![A Azure Backup tulajdonságai párbeszédpanel képernyőképe](./media/site-recovery-vmware-to-azure/throttle2.png)
 
-A szabályozáshoz a [Set-OBMachineSetting](/previous-versions/windows/powershell-scripting/hh770409(v=wps.640)) parancsmag is használható. Íme egy példa:
+A szabályozáshoz a [Set-OBMachineSetting](/previous-versions/windows/powershell-scripting/hh770409(v=wps.640)) parancsmag is használható. Bemutatunk egy példát:
 
 ```azurepowershell-interactive
 $mon = [System.DayOfWeek]::Monday
@@ -104,7 +104,7 @@ A **Set-OBMachineSetting -NoThrottle** beállítás azt jelenti, hogy nincs szü
 
 ### <a name="alter-the-network-bandwidth-for-a-vm"></a>A virtuális gép hálózati sávszélességének módosítása
 
-1. A virtuális gép beállításjegyzékében lépjen a **HKEY_LOCAL_MACHINE \Software\microsoft\windows Azure Backup\Replication**.
+1. A virtuális gép beállításjegyzékében lépjen a **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows Azure Backup\Replication**elemre.
    * A replikálási lemez sávszélesség-forgalmának megváltoztatásához módosítsa a **UploadThreadsPerVM**értékét. Ha nem létezik, hozza létre a kulcsot.
    * Ha módosítani szeretné az Azure-beli feladat-visszavételi forgalom sávszélességét, módosítsa a **DownloadThreadsPerVM**értékét.
 2. Az egyes kulcsok alapértelmezett értéke **4**. A szükségesnél több erőforrással ellátott hálózatban érdemes módosítani a beállításazonosítók alapértelmezett értékét. A maximálisan használható érték **32**. Az optimális érték kiválasztásához kövesse figyelemmel a forgalmat.
@@ -163,13 +163,13 @@ Fő célkiszolgáló hozzáadása Windows-alapú virtuális géphez:
 7. Adja meg a konfigurációs kiszolgáló IP-címét, majd írja be a jelszót. A hozzáférési kód létrehozásával kapcsolatos további információkért lásd: [konfigurációs kiszolgáló jelszavainak](vmware-azure-manage-configuration-server.md#generate-configuration-server-passphrase)létrehozása. 
 
     ![A konfigurációs kiszolgáló IP-címének és jelszavának megadását bemutató képernyőkép](media/site-recovery-plan-capacity-vmware/cs-ip-passphrase.PNG)
-8. Kattintson a **Register** (Regisztrálás) elemre. A regisztráció befejeződése után válassza a **Befejezés**lehetőséget.
+8. Válassza a **Regisztráció** lehetőséget. A regisztráció befejeződése után válassza a **Befejezés**lehetőséget.
 
 A regisztráció sikeres befejeződése után a kiszolgáló megjelenik a Azure Portal **Recovery Services**tárolóban  >  **site Recovery infrastruktúra**  >  -**konfigurációs kiszolgálók**csomópontban a konfigurációs kiszolgáló fő célkiszolgálón.
 
  > [!NOTE]
  > Töltse le a [Windows rendszerhez készült fő célkiszolgáló egyesített telepítési fájljának](https://aka.ms/latestmobsvc)legújabb verzióját.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 [Site Recovery Deployment Planner](https://aka.ms/asr-deployment-planner)letöltése és futtatása.

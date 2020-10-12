@@ -11,10 +11,10 @@ ms.date: 06/13/2017
 ms.author: tamram
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: b95c5ab243fbd938e8a7eb1d3b9619b0d46fb046
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89072950"
 ---
 # <a name="delete-containers-based-on-container-name-prefix"></a>Tárolók törlése a nevük előtagja alapján
@@ -47,7 +47,7 @@ A szkript a következő parancsokat használja a tárolók a nevük előtagja al
 | [Get-AzStorageContainer](/powershell/module/az.storage/Get-AzStorageContainer) | Felsorolja a Storage-fiókhoz társított tároló tárolókat. |
 | [Remove-AzStorageContainer](/powershell/module/az.storage/Remove-AzStorageContainer) | Eltávolítja a megadott Storage-tárolót. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az Azure PowerShell modullal kapcsolatos további információért lásd az [Azure PowerShell dokumentációját](/powershell/azure/).
 

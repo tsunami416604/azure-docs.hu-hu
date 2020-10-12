@@ -1,7 +1,7 @@
 ---
 title: Webes keresési végpont
 titleSuffix: Azure Cognitive Services
-description: A webes keresési eredmények beszerzéséhez küldjön `GET` egy kérelmet a következő végpontnak. A fejlécek és az URL-paraméterek további specifikációkat határoznak meg.
+description: A webes keresési eredmények beszerzéséhez küldjön egy `GET` kérelmet a következő végpontnak. A fejlécek és az URL-paraméterek további specifikációkat határoznak meg.
 services: cognitive-services
 author: aahill
 manager: nitinme
@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 11/14/2018
 ms.author: aahi
 ms.openlocfilehash: 2edc6a4cf4d4fb174c1b2067d8b3fb3b6f31859f
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "74111339"
 ---
 # <a name="web-search-endpoint"></a>Web Search végpont
@@ -23,9 +23,9 @@ A **Web Search API** weblapokat, híreket, képeket, videókat és [entitásokat
 
 ## <a name="endpoint"></a>Végpont
 
-Ha a Bing API használatával szeretné lekérni a webes keresési eredményeket `GET` , küldjön egy kérelmet a következő végpontnak. A fejlécek és az URL-paraméterek további specifikációkat határoznak meg.
+Ha a Bing API használatával szeretné lekérni a webes keresési eredményeket, küldjön egy `GET` kérelmet a következő végpontnak. A fejlécek és az URL-paraméterek további specifikációkat határoznak meg.
 
-**Végpont**: olyan webes eredményeket ad vissza, amelyek az által `?q=""`definiált felhasználó keresési lekérdezésére vonatkoznak.
+**Végpont**: olyan webes eredményeket ad vissza, amelyek az által definiált felhasználó keresési lekérdezésére vonatkoznak `?q=""` .
 
 ```http
 GET https://api.cognitive.microsoft.com/bing/v7.0/search

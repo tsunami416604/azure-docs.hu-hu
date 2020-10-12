@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 06/02/2020
 zone_pivot_groups: app-service-platform-windows-linux
 ms.openlocfilehash: 48b111966d58af80b6c34fa17231034f4f0cc213
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91311835"
 ---
 # <a name="configure-a-nodejs-app-for-azure-app-service"></a>Node.js alkalmazás konfigurálása Azure App Servicehoz
@@ -131,7 +131,7 @@ az webapp config set --resource-group <resource-group-name> --name <app-name> --
 
 ### <a name="run-npm-start"></a>NPM-indítás futtatása
 
-Az alkalmazás használatának megkezdéséhez `npm start` csak ellenőrizze, hogy `start` van-e parancsfájl a fájl *package.js* . Például:
+Az alkalmazás használatának megkezdéséhez `npm start` csak ellenőrizze, hogy `start` van-e parancsfájl a fájl *package.js* . Példa:
 
 ```json
 {
@@ -179,7 +179,7 @@ az webapp config set --resource-group <resource-group-name> --name <app-name> --
 
 A [Visual Studio Code](https://code.visualstudio.com/) -ban távolról is hibakeresést végezhet a Node.js alkalmazásban, ha úgy konfigurálja, hogy a PM2-mel [fusson](#run-with-pm2), kivéve ha * .config.js, *. YML vagy *. YAML*használatával futtatja.
 
-A legtöbb esetben nincs szükség további konfigurációra az alkalmazáshoz. Ha az alkalmazás egy *process.js* fájllal (alapértelmezett vagy egyéni) fut, akkor `script` a JSON-gyökérben tulajdonsággal kell rendelkeznie. Például:
+A legtöbb esetben nincs szükség további konfigurációra az alkalmazáshoz. Ha az alkalmazás egy *process.js* fájllal (alapértelmezett vagy egyéni) fut, akkor `script` a JSON-gyökérben tulajdonsággal kell rendelkeznie. Példa:
 
 ```json
 {
@@ -209,7 +209,7 @@ process.env.NODE_ENV
 
 Alapértelmezés szerint a App Service Build Automation akkor fut, `npm install --production` Amikor felismeri, hogy a Node.js alkalmazást a git vagy a zip üzembe helyezése lehetővé teszi a Build Automation használatával. Ha az alkalmazáshoz a népszerű Automation-eszközök, például a morog, a Bower vagy a Nyelő szükséges, egy [egyéni telepítési parancsfájlt](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script) kell megadnia a futtatásához.
 
-Ha engedélyezni szeretné, hogy a tárház futtassa ezeket az eszközöket, hozzá kell adnia azokat a függőségekhez *package.json.* Például:
+Ha engedélyezni szeretné, hogy a tárház futtassa ezeket az eszközöket, hozzá kell adnia azokat a függőségekhez *package.json.* Példa:
 
 ```json
 "dependencies": {
@@ -317,7 +317,7 @@ if (req.secure) {
 Ha egy működő Node.js alkalmazás másképp viselkedik App Service vagy hibákat tartalmaz, próbálkozzon a következőkkel:
 
 - [A log stream elérése](#access-diagnostic-logs).
-- Az alkalmazás helyi tesztelése éles módban. A App Service éles módban futtatja Node.js-alkalmazásait, ezért gondoskodnia kell arról, hogy a projekt a várt módon működjön a helyi üzemi módban. Például:
+- Az alkalmazás helyi tesztelése éles módban. A App Service éles módban futtatja Node.js-alkalmazásait, ezért gondoskodnia kell arról, hogy a projekt a várt módon működjön a helyi üzemi módban. Példa:
     - A *package.jstól*függően különböző csomagok is telepíthetők üzemi módba (vagy `dependencies` `devDependencies` ).
     - Bizonyos webes keretrendszerek eltérő üzemi módban telepíthetnek statikus fájlokat.
     - Bizonyos webes keretrendszerek éles módban történő futtatáskor egyéni indítási parancsfájlokat is használhatnak.

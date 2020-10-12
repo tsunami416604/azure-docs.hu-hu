@@ -4,10 +4,10 @@ description: A Windows rendszerű gépek biztonsági mentéséhez használja a M
 ms.topic: conceptual
 ms.date: 03/03/2020
 ms.openlocfilehash: d2cdd5d1fa98462a70d72fd9f8723685952b665a
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90052222"
 ---
 # <a name="back-up-windows-server-files-and-folders-to-azure"></a>Windows Server-fájlok és-mappák biztonsági mentése az Azure-ba
@@ -36,7 +36,7 @@ A biztonsági mentési házirend azt adja meg, hogy mikor kell pillanatképeket 
 
 Azure Backup nem veszi figyelembe automatikusan a nyári időszámítást (DST). Ez az alapértelmezett érték bizonyos eltéréseket okozhat a tényleges idő és az ütemezett biztonsági mentés ideje között.
 
-Biztonsági mentési szabályzat létrehozásához:
+Biztonsági mentési szabályzat létrehozása:
 
 1. A MARS-ügynök letöltése és regisztrálása után nyissa meg az ügynök konzolját. A megkereséséhez keressen rá a gépen a **Microsoft Azure Backup** kifejezésre.  
 
@@ -127,7 +127,7 @@ A hálózati sávszélesség-szabályozás engedélyezése:
     ![Hálózati sávszélesség-szabályozás beállítása biztonsági mentési műveletekhez](./media/backup-configure-vault/throttling-dialog.png)
 1. A munkaidőben és a munkaidőn belül engedélyezett sávszélesség megadására használható. A sávszélesség értéke 512 kbps, és akár 1 023 Mbps is lehet. Ezután válassza az **OK** gombot.
 
-## <a name="run-an-on-demand-backup"></a>Igény szerinti biztonsági mentés futtatása
+## <a name="run-an-on-demand-backup"></a>Igény szerinti biztonsági mentések futtatása
 
 1. A MARS-ügynökben válassza a **biztonsági mentés most**lehetőséget.
 

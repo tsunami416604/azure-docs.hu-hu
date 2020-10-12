@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 08/16/2018
 ms.openlocfilehash: d164c53e7e2be55f3cede389901a256ba388808d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "77670304"
 ---
 # <a name="aggregations-in-azure-monitor-log-queries"></a>Összesítések Azure Monitor naplóbeli lekérdezésekben
@@ -22,7 +22,7 @@ ms.locfileid: "77670304"
 
 Ez a cikk az összesítő függvényeket ismerteti Azure Monitor napló lekérdezésekben, amelyek hasznos módszereket kínálnak az adatok elemzéséhez. Ezek a függvények a `summarize` bemeneti tábla összesített eredményeivel rendelkező táblázatot előállító operátorral működnek.
 
-## <a name="counts"></a>Száma
+## <a name="counts"></a>Darabszám
 
 ### <a name="count"></a>count
 Az eredményhalmazban szereplő sorok számának megszámlálása a szűrők alkalmazása után. A következő példa a _perf_ táblában lévő sorok teljes számát adja vissza az elmúlt 30 percben. Az eredmény egy *count_* nevű oszlopban lesz visszaadva, kivéve, ha egy adott nevet rendel hozzá:
@@ -121,7 +121,7 @@ Perf
 
 Ez azt jelezheti, hogy egyes számítógép-processzorok hasonló medián értékekkel rendelkeznek, de míg egyesek a medián körül vannak, a többi számítógép sokkal alacsonyabb és magasabb CPU-értékeket jelentett, ami azt jelenti, hogy a tüskéket észleltek.
 
-### <a name="variance"></a>Eltérés
+### <a name="variance"></a>Variance
 Egy érték eltérésének közvetlen kiértékeléséhez használja a szórás és a variancia módszert:
 
 ```Kusto

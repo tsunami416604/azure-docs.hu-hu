@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 07/17/2017
 ms.author: cynthn
 ms.openlocfilehash: b4d6b20e63c42616aad0f8776fae159a0f2aa455
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87088376"
 ---
 # <a name="common-powershell-commands-for-azure-virtual-networks"></a>Azure-beli virtuális hálózatok általános PowerShell-parancsai
@@ -46,13 +46,13 @@ Bizonyos változók hasznosak lehetnek, ha a cikkben szereplő parancsok közül
 | Feladat | Parancs |
 | ---- | ------- |
 | Virtuális hálózatok listázása |[Get-AzVirtualNetwork](/powershell/module/az.network/get-azvirtualnetwork) -ResourceGroupName $myResourceGroup<BR><BR>Az erőforráscsoport összes virtuális hálózatát listázza. |
-| Virtuális hálózattal kapcsolatos információk beolvasása |Get-AzVirtualNetwork-Name "myVNet" – ResourceGroupName $myResourceGroup |
+| Virtuális hálózattal kapcsolatos információk beolvasása |Get-AzVirtualNetwork neve: "myVNet" – ResourceGroupName $myResourceGroup |
 | Virtuális hálózatban lévő alhálózatok listázása |Get-AzVirtualNetwork-Name "myVNet" – ResourceGroupName $myResourceGroup &#124; alhálózatok kiválasztása |
 | Alhálózat adatainak beolvasása |[Get-AzVirtualNetworkSubnetConfig](/powershell/module/az.network/get-azvirtualnetworksubnetconfig) -Name "mySubnet1" – VirtualNetwork $vnet<BR><BR>Beolvassa a megadott virtuális hálózat alhálózatának adatait. A $vnet érték a Get-AzVirtualNetwork által visszaadott objektumot jelöli. |
 | IP-címek listázása |[Get-AzPublicIpAddress](/powershell/module/az.network/get-azpublicipaddress) -ResourceGroupName $myResourceGroup<BR><BR>Felsorolja az erőforráscsoport nyilvános IP-címeit. |
 | Load balancerek listázása |[Get-AzLoadBalancer](/powershell/module/az.network/get-azloadbalancer) -ResourceGroupName $myResourceGroup<BR><BR>Az erőforráscsoport összes terheléselosztó listáját listázza. |
 | Hálózati adapterek listázása |[Get-AzNetworkInterface](/powershell/module/az.network/get-aznetworkinterface) -ResourceGroupName $myResourceGroup<BR><BR>Az erőforráscsoport összes hálózati adapterét listázza. |
-| Hálózati csatolóval kapcsolatos információk beolvasása |Get-AzNetworkInterface-Name "myNIC" – ResourceGroupName $myResourceGroup<BR><BR>Egy adott hálózati adapter információinak beolvasása. |
+| Hálózati csatolóval kapcsolatos információk beolvasása |Get-AzNetworkInterface neve: "myNIC" – ResourceGroupName $myResourceGroup<BR><BR>Egy adott hálózati adapter információinak beolvasása. |
 | Hálózati adapter IP-konfigurációjának beolvasása |[Get-AzNetworkInterfaceIPConfig](/powershell/module/az.network/get-aznetworkinterfaceipconfig) -Name "myNICIP" – hálózati adaptere $NIC<BR><BR>A megadott hálózati adapter IP-konfigurációjával kapcsolatos információk beolvasása. A $nic érték a Get-AzNetworkInterface által visszaadott objektumot jelöli. |
 
 ## <a name="manage-network-resources"></a>Hálózati erőforrások kezelése
@@ -65,5 +65,5 @@ Bizonyos változók hasznosak lehetnek, ha a cikkben szereplő parancsok közül
 | Terheléselosztó törlése |[Remove-AzLoadBalancer](/powershell/module/az.network/remove-azloadbalancer) -Name "myLoadBalancer" – ResourceGroupName $myResourceGroup<BR><BR>Eltávolítja a megadott terheléselosztó-csoportot az erőforráscsoporthoz. |
 | Nyilvános IP-cím törlése |[Remove-AzPublicIpAddress](/powershell/module/az.network/remove-azpublicipaddress)-Name "myIPAddress" – ResourceGroupName $myResourceGroup<BR><BR>Eltávolítja a megadott nyilvános IP-címet az erőforráscsoporthoz. |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Használja az imént létrehozott hálózati adaptert a [virtuális gép létrehozásakor](./quick-create-powershell.md?toc=/azure/virtual-machines/windows/toc.json).

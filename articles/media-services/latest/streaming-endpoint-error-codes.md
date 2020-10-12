@@ -14,10 +14,10 @@ ms.topic: error-reference
 ms.date: 05/07/2019
 ms.author: inhenkel
 ms.openlocfilehash: 8442c52052a2016da002d392c6fe0834b3813229
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89295325"
 ---
 # <a name="streaming-endpoint-origin-errors"></a>Streamvégpont (forrás) hibái
@@ -202,7 +202,7 @@ Tekintse meg a [Azure Media Services közösségi](media-services-community.md) 
 
 - [Kódolási hibakódok](/rest/api/media/jobs/get#joberrorcode)
 - [Azure Media Services fogalmak](concepts-overview.md)
-- [Kvóták és korlátozások](limits-quotas-constraints.md)
+- [Kvóták és korlátok](limits-quotas-constraints.md)
 
 ## <a name="next-steps"></a>Következő lépések
 
