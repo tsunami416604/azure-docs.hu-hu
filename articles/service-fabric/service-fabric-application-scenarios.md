@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 01/08/2020
 ms.custom: sfrev
 ms.openlocfilehash: aaf8204158f720d8c69c98af758071cd91f6eff0
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86248169"
 ---
 # <a name="service-fabric-application-scenarios"></a>Alkalmazás-forgatókönyvek Service Fabric
@@ -23,7 +23,7 @@ Az alkalmazások létrehozásával kapcsolatos tervezési útmutatásért olvass
 
 * **Adatgyűjtés, feldolgozás és IoT**: a Service Fabric nagy léptéket kezel, és alacsony késéssel jár az állapot-nyilvántartó szolgáltatásain keresztül. Több millió eszközön képes feldolgozni az adatmennyiséget, ahol az eszközhöz és a számítási feladatsorhoz tartozó adatmennyiség található.
 
-    Azok az ügyfelek, akik a Service Fabric használatával építették IoT-szolgáltatásokat, például a [Honeywell](https://customers.microsoft.com/story/honeywell-builds-microservices-based-thermostats-on-azure), a [PCL-konstrukció](https://customers.microsoft.com/story/pcl-construction-professional-services-azure), a [Crestron](https://customers.microsoft.com/story/crestron-partner-professional-services-azure), a [BMW](https://customers.microsoft.com/story/bmw-enables-driver-mobility-via-azure-service-fabric/), a [Schneider Electric](https://customers.microsoft.com/story/schneider-electric-powers-engergy-solutions-on-azure-service-fabric)és a [Mesh rendszerek](https://customers.microsoft.com/story/mesh-systems-lights-up-the-market-with-iot-based-azure-solutions).
+    Azok az ügyfelek, akik a Service Fabric használatával építették IoT-szolgáltatásokat, például a [Honeywell](https://customers.microsoft.com/story/honeywell-builds-microservices-based-thermostats-on-azure), a [PCL-konstrukció](https://customers.microsoft.com/story/pcl-construction-professional-services-azure), a [Crestron](https://customers.microsoft.com/story/crestron-partner-professional-services-azure), a  [BMW](https://customers.microsoft.com/story/bmw-enables-driver-mobility-via-azure-service-fabric/), a [Schneider Electric](https://customers.microsoft.com/story/schneider-electric-powers-engergy-solutions-on-azure-service-fabric)és a [Mesh rendszerek](https://customers.microsoft.com/story/mesh-systems-lights-up-the-market-with-iot-based-azure-solutions).
 
 * **Játékok és munkamenet-alapú interaktív alkalmazások**: Service Fabric akkor lehet hasznos, ha az alkalmazás kis késleltetésű olvasást és írást igényel, például online játékokban vagy azonnali üzenetküldésben. A Service Fabric lehetővé teszi az interaktív, állapot-nyilvántartó alkalmazások összeállítását anélkül, hogy külön tárolót vagy gyorsítótárat kellene létrehoznia. Tekintse meg az [Azure-játékok megoldásait](https://azure.microsoft.com/solutions/gaming/) , amelyekkel megtudhatja, hogyan [használhatja a Service Fabrict a játékokban](/gaming/azure/reference-architectures/multiplayer-synchronous-sf)
 
@@ -65,7 +65,7 @@ Az alábbi példa az állapot nélküli szolgáltatásokat használó alkalmazá
 
 Az alábbi példa egy állapot-nyilvántartó szolgáltatásokat használó alkalmazás: ![ állapot-nyilvántartó szolgáltatásokat használó alkalmazás][Image2]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ismerkedjen meg az állapot nélküli és állapot-nyilvántartó szolgáltatásokkal a Service Fabric [Reliable Services](service-fabric-reliable-services-quick-start.md) és a [Reliable Actors](service-fabric-reliable-actors-get-started.md) programozási modellekkel.
 * Látogasson el a Azure Architecture Centerra, és útmutatást nyújt az Azure-beli [szolgáltatások létrehozásához](/azure/architecture/microservices/).

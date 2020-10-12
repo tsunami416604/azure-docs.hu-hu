@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 10/09/2018
 ms.openlocfilehash: 19f42270e37c42cf56bbde04f73c01027a56ff63
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89657383"
 ---
 # <a name="create-conditional-statements-that-control-workflow-actions-in-azure-logic-apps"></a>A Azure Logic Apps munkafolyamat-műveleteinek vezérlésére szolgáló feltételes utasítások létrehozása
@@ -36,7 +36,7 @@ Tegyük fel például, hogy van egy logikai alkalmazás, amely túl sok e-mailt 
 
 1. Adjon hozzá egy feltételt a kívánt helyen. 
 
-   Ha fel szeretne venni egy feltételt a lépések között, vigye a mutatót arra a nyílra, ahová a feltételt hozzá szeretné adni. Válassza ki a megjelenő **pluszjelet** ( **+** ), majd válassza a **művelet hozzáadása**lehetőséget. Például:
+   Ha fel szeretne venni egy feltételt a lépések között, vigye a mutatót arra a nyílra, ahová a feltételt hozzá szeretné adni. Válassza ki a megjelenő **pluszjelet** ( **+** ), majd válassza a **művelet hozzáadása**lehetőséget. Példa:
 
    ![Művelet hozzáadása a lépések között](./media/logic-apps-control-flow-conditional-statement/add-action.png)
 
@@ -69,7 +69,7 @@ Tegyük fel például, hogy van egy logikai alkalmazás, amely túl sok e-mailt 
    Alfeltételekkel rendelkező csoport hozzáadásához **válassza a**Hozzáadás  >  **csoport**hozzáadása lehetőséget. 
    A meglévő sorok csoportosításához jelölje be a sorok jelölőnégyzetét, és válassza a három pontra (...), majd a **csoport készítése**lehetőséget.
 
-1. **Ha az értéke TRUE (igaz** ), és **Ha hamis**, adja hozzá a végrehajtandó lépéseket az alapján, hogy teljesül-e a feltétel. Például:
+1. **Ha az értéke TRUE (igaz** ), és **Ha hamis**, adja hozzá a végrehajtandó lépéseket az alapján, hogy teljesül-e a feltétel. Példa:
 
    ![Feltétel "If true" és "If false" elérési utak esetén](./media/logic-apps-control-flow-conditional-statement/condition-yes-no-path.png)
 

@@ -4,10 +4,10 @@ description: Ismerje meg, hogyan használhatók a szolgáltatásként nyújtott 
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: eec37527386098174906dc2737d7b763241da3f2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85478739"
 ---
 # <a name="use-platform-as-a-service-paas-services-in-azure-devtest-labs"></a>A szolgáltatásként nyújtott platform (a-Service) szolgáltatás használata Azure DevTest Labs
@@ -44,7 +44,7 @@ Vannak olyan egyéni tesztkörnyezet-információk, amelyek az erőforráscsopor
 A [Tesztkörnyezet virtuális hálózatához csatlakozó környezetek](connect-environment-lab-virtual-network.md) című cikk azt ismerteti, hogyan lehet módosítani a Resource Manager-sablont a `$(LabSubnetId)` jogkivonat használatára. Környezet létrehozásakor a `$(LabSubnetId)` jogkivonatot az első alhálózati jel váltja fel, ahol a **virtuális gép létrehozási** beállítása beállítás értéke TRUE ( **igaz**). Lehetővé teszi, hogy a környezet a korábban létrehozott hálózatokat használja. Ha ugyanazokat a Resource Manager-sablonokat szeretné használni a tesztelés előkészítési és éles környezetekben, használja `$(LabSubnetId)` alapértelmezett értékként egy Resource Manager-sablon paraméterében. 
 
 #### <a name="environment-storage-account"></a>Környezeti Storage-fiók
-A DevTest Labs támogatja a [beágyazott Resource Manager-sablonok](../azure-resource-manager/templates/linked-templates.md)használatát. A [[beágyazott Azure Resource Manager-sablonok üzembe helyezése tesztelési környezetek számára című](deploy-nested-template-environments.md) cikk azt ismerteti, hogyan használhatók `_artifactsLocation` és `_artifactsLocationSasToken` tokenek egy URI-hoz egy Resource Manager-sablonhoz a fő sablon beágyazott mappájában vagy a-ben. A két jogkivonattal kapcsolatos további információkért tekintse meg az [Azure Resource Manager – ajánlott eljárásokat ismertető útmutató](https://github.com/Azure/azure-quickstart-templates/blob/master/1-CONTRIBUTION-GUIDE/best-practices.md) **telepítési** összetevők című szakaszát.
+A DevTest Labs támogatja a [beágyazott Resource Manager-sablonok](../azure-resource-manager/templates/linked-templates.md)használatát. A [[beágyazott Azure Resource Manager-sablonok üzembe helyezése tesztelési környezetek számára című](deploy-nested-template-environments.md) cikk azt ismerteti, hogyan használhatók  `_artifactsLocation` és `_artifactsLocationSasToken` tokenek egy URI-hoz egy Resource Manager-sablonhoz a fő sablon beágyazott mappájában vagy a-ben. A két jogkivonattal kapcsolatos további információkért tekintse meg az [Azure Resource Manager – ajánlott eljárásokat ismertető útmutató](https://github.com/Azure/azure-quickstart-templates/blob/master/1-CONTRIBUTION-GUIDE/best-practices.md) **telepítési** összetevők című szakaszát.
 
 ## <a name="user-experience"></a>Felhasználó felület
 

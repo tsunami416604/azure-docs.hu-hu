@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 03/09/2020
 ms.openlocfilehash: 78ff8adcc2b50f89daa37112b14d219233559dab
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86075570"
 ---
 # <a name="monitor-cluster-performance-in-azure-hdinsight"></a>A fürt teljesítményének figyelése az Azure HDInsight
@@ -27,9 +27,9 @@ A Hadoop-fürtök a legoptimálisabb teljesítményt biztosíthatják, ha a für
 
 Ha magas szintű áttekintést szeretne kapni a fürt csomópontjairól és betöltéséről, jelentkezzen be a [Ambari webes felhasználói felületére](hdinsight-hadoop-manage-ambari.md), majd válassza a **gazdagépek** lapot. A gazdagépek teljes tartományneveik szerepelnek a felsorolásban. Az egyes gazdagépek működési állapotát színes állapot kijelzője mutatja:
 
-| Szín | Description |
+| Szín | Leírás |
 | --- | --- |
-| Vörös | A gazdagépen legalább egy fő összetevő nem működik. Vigye az egérmutatót egy olyan elemleírás megjelenítéséhez, amely felsorolja az érintett összetevőket. |
+| Piros | A gazdagépen legalább egy fő összetevő nem működik. Vigye az egérmutatót egy olyan elemleírás megjelenítéséhez, amely felsorolja az érintett összetevőket. |
 | Narancssárga | A gazdagépen legalább egy másodlagos összetevő nem működik. Vigye az egérmutatót egy olyan elemleírás megjelenítéséhez, amely felsorolja az érintett összetevőket. |
 | Sárga | A Ambari-kiszolgáló több mint 3 percen belül nem kapott szívverést a gazdagépről. |
 | Zöld | Normál Futási állapot. |
@@ -84,7 +84,7 @@ Ha a fürtön lévő tároló Azure Data Lake Storage (ADLS), akkor a sávszéle
 
 ## <a name="troubleshoot-sluggish-node-performance"></a>A csomópontok lassú működésével kapcsolatos hibák megoldása
 
-Bizonyos esetekben előfordulhat, hogy a fürtön kevés a szabad lemezterület. Vizsgálja meg a következő lépéseket:
+Bizonyos esetekben lassú működés tapasztalható, mivel a fürtön kevés a szabad lemezterület. Vizsgálja meg a következő lépéseket:
 
 1. Az [SSH-parancs](./hdinsight-hadoop-linux-use-ssh-unix.md) használatával csatlakozzon az egyes csomópontokhoz.
 
@@ -97,7 +97,7 @@ Bizonyos esetekben előfordulhat, hogy a fürtön kevés a szabad lemezterület.
 
 1. Tekintse át a kimenetet, és ellenőrizze, hogy vannak-e nagyméretű fájlok a `mnt` mappában vagy más mappákban. A és a `usercache` `appcache` (mnt/Resource/Hadoop/fonal/local/usercache/kaptár/AppCache/) mappák általában nagyméretű fájlokat tartalmaznak.
 
-1. Ha nagy fájlok vannak, akkor a jelenlegi feladatokban a fájl növekedése vagy egy sikertelen előző feladatokkal kapcsolatos probléma is hozzájárulhat. Annak ellenőrzéséhez, hogy ezt a viselkedést egy aktuális feladatok okozzák-e, futtassa a következő parancsot:
+1. Ha nagy fájlok vannak, akkor a jelenlegi feladatokban a fájl növekedése vagy egy sikertelen előző feladatokkal kapcsolatos probléma is hozzájárulhat. Futtassa az alábbi parancsot, hogy ellenőrizze, hogy ez a viselkedés egy aktuális feladatnak köszönhető-e: 
 
     ```bash
     sudo du -h --max-depth=1 /mnt/resource/hadoop/yarn/local/usercache/hive/appcache/
@@ -109,7 +109,7 @@ Bizonyos esetekben előfordulhat, hogy a fürtön kevés a szabad lemezterület.
     yarn application -kill -applicationId <application_id>
     ```
 
-    Cserélje le `application_id` az alkalmazást az alkalmazás-azonosítóra. Ha nincs megadva adott feladat, folytassa a következő lépéssel.
+    Cserélje le `application_id` az alkalmazást az alkalmazás-azonosítóra. Ha nem jelez konkrét feladatot, ugorjon a következő lépésre.
 
 1. A fenti parancs befejezése után, vagy ha nincsenek megadva adott feladatok, törölje az azonosított nagyméretű fájlokat egy olyan parancs futtatásával, amely a következőhöz hasonló:
 

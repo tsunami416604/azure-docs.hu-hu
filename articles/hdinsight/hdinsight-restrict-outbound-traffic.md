@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/17/2020
 ms.openlocfilehash: f87c3665f558b3185e95b0ad0aa18a883439a221
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87006517"
 ---
 # <a name="configure-outbound-network-traffic-for-azure-hdinsight-clusters-using-firewall"></a>Az Azure HDInsight-fürtök kimenő hálózati forgalmának konfigurálása tűzfal használatával
@@ -63,19 +63,19 @@ Hozzon létre egy alkalmazás-szabálygyűjtemény, amely lehetővé teszi a fü
 
     | Tulajdonság|  Érték|
     |---|---|
-    |Név| FwAppRule|
+    |Name (Név)| FwAppRule|
     |Prioritás|200|
     |Művelet|Engedélyezés|
 
     **FQDN-címkék szakasz**
 
-    | Name | Forrás címe | FQDN címke | Jegyzetek |
+    | Name (Név) | Forrás címe | FQDN címke | Jegyzetek |
     | --- | --- | --- | --- |
     | Rule_1 | * | WindowsUpdate és HDInsight | A HDI-szolgáltatásokhoz szükséges |
 
     **Cél teljes tartománynevek szakasz**
 
-    | Name | Forrásoldali címek | Protokoll: Port | Cél teljes tartománynevek | Jegyzetek |
+    | Name (Név) | Forrásoldali címek | Protokoll: Port | Cél teljes tartománynevek | Jegyzetek |
     | --- | --- | --- | --- | --- |
     | Rule_2 | * | https: 443 | login.windows.net | Engedélyezi a Windows-bejelentkezési tevékenységet |
     | Rule_3 | * | https: 443 | login.microsoftonline.com | Engedélyezi a Windows-bejelentkezési tevékenységet |
@@ -83,7 +83,7 @@ Hozzon létre egy alkalmazás-szabálygyűjtemény, amely lehetővé teszi a fü
 
    ![Title: adja meg az alkalmazási szabály gyűjtésének részleteit](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-app-rule-collection-details.png)
 
-1. Válassza a **Hozzáadás** elemet.
+1. Válassza a **Hozzáadás** lehetőséget.
 
 ### <a name="configure-the-firewall-with-network-rules"></a>A tűzfal konfigurálása hálózati szabályokkal
 
@@ -97,29 +97,29 @@ Hozza létre a hálózati szabályokat a HDInsight-fürt megfelelő konfigurál�
 
     | Tulajdonság|  Érték|
     |---|---|
-    |Név| FwNetRule|
+    |Name (Név)| FwNetRule|
     |Prioritás|200|
     |Művelet|Engedélyezés|
 
     **IP-címek szakasz**
 
-    | Name | Protokoll | Forrásoldali címek | Cél címei | Célportok | Jegyzetek |
+    | Name (Név) | Protokoll | Forrásoldali címek | Cél címei | Célportok | Jegyzetek |
     | --- | --- | --- | --- | --- | --- |
     | Rule_1 | UDP | * | * | 123 | Időszolgáltatás |
-    | Rule_2 | Bármely | * | DC_IP_Address_1, DC_IP_Address_2 | * | Ha Enterprise Security Package-t (ESP) használ, adjon hozzá egy hálózati szabályt az IP-címek szakaszban, amely lehetővé teszi a HRE-DS-vel való kommunikációt az ESP-fürtök esetében. A tartományvezérlők IP-címeit a HRE-DS szakaszban találja a portálon. |
+    | Rule_2 | Bármelyik | * | DC_IP_Address_1, DC_IP_Address_2 | * | Ha Enterprise Security Package-t (ESP) használ, adjon hozzá egy hálózati szabályt az IP-címek szakaszban, amely lehetővé teszi a HRE-DS-vel való kommunikációt az ESP-fürtök esetében. A tartományvezérlők IP-címeit a HRE-DS szakaszban találja a portálon. |
     | Rule_3 | TCP | * | A Data Lake Storage fiókjának IP-címe | * | Ha Azure Data Lake Storage használ, akkor az IP-címek szakaszban hozzáadhat egy hálózati szabályt, amely ADLS Gen1 és a Gen2 SNI probléma megoldásához használható. Ezzel a beállítással a rendszer átirányítja a forgalmat a tűzfalra. Ami magasabb költségekkel járhat a nagyméretű adatterhelések esetében, a forgalom pedig naplózható és naplózható a tűzfal naplófájljaiban. Határozza meg a Data Lake Storage fiókjának IP-címét. Használhat egy PowerShell-parancsot, például a `[System.Net.DNS]::GetHostAddresses("STORAGEACCOUNTNAME.blob.core.windows.net")` teljes tartománynevet az IP-címek feloldásához.|
     | Rule_4 | TCP | * | * | 12000 | Választható Ha Log Analytics használ, hozzon létre egy hálózati szabályt az IP-címek szakaszban, hogy engedélyezze a kommunikációt a Log Analytics munkaterülettel. |
 
     **A szolgáltatás címkéi szakasza**
 
-    | Name | Protokoll | Forráscímek | Szolgáltatáscímkék | Célport | Jegyzetek |
+    | Name (Név) | Protokoll | Forráscímek | Szolgáltatáscímkék | Célport | Jegyzetek |
     | --- | --- | --- | --- | --- | --- |
     | Rule_7 | TCP | * | SQL | 1433 | Konfiguráljon egy hálózati szabályt az SQL-hez tartozó szolgáltatás-címkék szakaszban, amely lehetővé teszi az SQL-forgalom naplózását és naplózását. Hacsak nem konfigurálta a SQL Serverhoz tartozó szolgáltatási végpontokat a HDInsight alhálózaton, ami megkerüli a tűzfalat. |
     | Rule_8 | TCP | * | Azure Monitor | * | választható Azok az ügyfelek, akik automatikus méretezési funkciót terveznek, hozzá kell adni ezt a szabályt. |
     
    ![Title: adja meg az alkalmazási szabálygyűjtemény gyűjteményét](./media/hdinsight-restrict-outbound-traffic/hdinsight-restrict-outbound-traffic-add-network-rule-collection.png)
 
-1. Válassza a **Hozzáadás** elemet.
+1. Válassza a **Hozzáadás** lehetőséget.
 
 ### <a name="create-and-configure-a-route-table"></a>Útválasztási táblázat létrehozása és konfigurálása
 

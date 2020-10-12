@@ -10,10 +10,10 @@ ms.workload: infrastructure-services
 ms.date: 09/02/2020
 ms.author: cherylmc
 ms.openlocfilehash: ec2516010768eded939b0ffa44c197f102c7766b
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89401197"
 ---
 # <a name="add-a-site-to-site-connection-to-a-vnet-with-an-existing-vpn-gateway-connection"></a>Helyek közötti kapcsolat hozzáadása egy meglévő VPN Gateway-kapcsolattal rendelkező VNet
@@ -35,7 +35,7 @@ Ezt a táblázatot úgy frissítjük, ahogy új cikkek és további eszközök v
 
 [!INCLUDE [vpn-gateway-table-multi-site](../../includes/vpn-gateway-table-multisite-include.md)]
 
-## <a name="before-you-begin"></a><a name="before"></a>Kezdés előtt
+## <a name="before-you-begin"></a><a name="before"></a>Előkészületek
 Ellenőrizze a következő elemeket:
 
 * Nem konfigurál új, meglévő ExpressRoute és VPN Gateway konfigurációt.

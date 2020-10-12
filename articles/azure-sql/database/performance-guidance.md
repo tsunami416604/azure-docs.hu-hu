@@ -13,10 +13,10 @@ ms.author: sstein
 ms.reviewer: jrasnick
 ms.date: 03/10/2020
 ms.openlocfilehash: 54a6293a29a407a7014aafb66587dcb01fc13337
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89645785"
 ---
 # <a name="tune-applications-and-databases-for-performance-in-azure-sql-database-and-azure-sql-managed-instance"></a>Alkalmazások és adatbázisok hangolása a Azure SQL Database és az Azure SQL felügyelt példányának teljesítményéhez
@@ -122,7 +122,7 @@ A létrehozást követően ugyanez a SELECT utasítás egy másik tervet is vál
 
 ![A javított indexekkel rendelkező lekérdezési terv](./media/performance-guidance/query_plan_corrected_indexes.png)
 
-A legfontosabb az, hogy a megosztott, a nyersanyag-rendszerek i/o-kapacitása korlátozottabb, mint egy dedikált kiszolgáló-gép esetén. A felesleges i/o-k minimálisra csökkentik a rendszer maximális előnyeit a szolgáltatási rétegek számítási méretének erőforrásaiban. A megfelelő fizikai adatbázis-kialakítási lehetőségek jelentős mértékben javítják az egyes lekérdezések késését, javítják a méretezési egység által kezelt egyidejű kérelmek átviteli sebességét, és minimálisra csökkenthetik a lekérdezés teljesítéséhez szükséges költségeket. A hiányzó index DMV kapcsolatos további információkért lásd: [sys. dm_db_missing_index_details](https://msdn.microsoft.com/library/ms345434.aspx).
+A legfontosabb az, hogy a megosztott, a nyersanyag-rendszerek i/o-kapacitása korlátozottabb, mint egy dedikált kiszolgáló-gép esetén. A felesleges i/o-k minimálisra csökkentik a rendszer maximális előnyeit a szolgáltatási rétegek számítási méretének erőforrásaiban. A megfelelő fizikai adatbázis-kialakítási lehetőségek jelentős mértékben javítják az egyes lekérdezések késését, javítják a méretezési egység által kezelt egyidejű kérelmek átviteli sebességét, és minimálisra csökkenthetik a lekérdezés teljesítéséhez szükséges költségeket. További információ a hiányzó index DMV: [sys.dm_db_missing_index_details](https://msdn.microsoft.com/library/ms345434.aspx).
 
 ### <a name="query-tuning-and-hinting"></a>Lekérdezések finomhangolása és célzása
 
@@ -216,7 +216,7 @@ A példa második része egy lekérdezési mutató használatával közli, hogy 
 
 ![Lekérdezés finomhangolása lekérdezési javaslat használatával](./media/performance-guidance/query_tuning_3.png)
 
-Megtekintheti a **sys. resource_stats** tábla hatásait (a teszt végrehajtásának idejétől, valamint az adatoknak a táblával való feltöltésének időpontjában). Ebben a példában az 1. rész a 22:25:00-es időintervallumban, a 2. rész pedig a 22:35:00-es időpontban fut. A korábbi időablak több erőforrást használt az adott időtartományban, mint a későbbi (a tervezés hatékonyságának javítása miatt).
+Megtekintheti a **sys.resource_stats** táblázatban látható hatást (a teszt végrehajtásának idejétől, valamint az adatoknak a táblával való feltöltésének késleltetése). Ebben a példában az 1. rész a 22:25:00-es időintervallumban, a 2. rész pedig a 22:35:00-es időpontban fut. A korábbi időablak több erőforrást használt az adott időtartományban, mint a későbbi (a tervezés hatékonyságának javítása miatt).
 
 ```sql
 SELECT TOP 1000 *
@@ -230,7 +230,7 @@ ORDER BY start_time DESC
 > [!NOTE]
 > Bár az ebben a példában szereplő kötet szándékosan kicsi, az optimálisnál kisebb paraméterek hatása jelentős lehet, különösen nagyobb adatbázisok esetén. A szélsőséges esetekben a gyors esetek és a lassú esetek esetében is másodpercek alatt lehet a különbség.
 
-A **sys. resource_stats** vizsgálatával megállapíthatja, hogy egy teszt erőforrása több vagy kevesebb erőforrást használ, mint egy másik teszt. Amikor összehasonlítja az adatmennyiséget, elkülöníti a tesztek időzítését, hogy ne legyenek ugyanabban az 5 perces ablakban a **sys. resource_stats** nézetben. A gyakorlat célja, hogy minimálisra csökkentse a felhasznált erőforrások teljes mennyiségét, és ne csökkentse a maximális erőforrásokat. Általában egy kódrészlet optimalizálása a késéshez is csökkenti az erőforrások felhasználását. Győződjön meg arról, hogy az alkalmazáson végzett módosítások szükségesek, és hogy a módosítások nem érintik negatívan az alkalmazásban a lekérdezési mutatókat használó személy felhasználói élményét.
+**Sys.resource_stats** ellenőrizheti, hogy egy teszt erőforrása több vagy kevesebb erőforrást használ-e, mint egy másik teszt. Amikor összehasonlítja az adatmennyiséget, elkülöníti a tesztek időzítését, hogy ne legyenek ugyanabban az 5 perces ablakban a **sys.resource_stats** nézetben. A gyakorlat célja, hogy minimálisra csökkentse a felhasznált erőforrások teljes mennyiségét, és ne csökkentse a maximális erőforrásokat. Általában egy kódrészlet optimalizálása a késéshez is csökkenti az erőforrások felhasználását. Győződjön meg arról, hogy az alkalmazáson végzett módosítások szükségesek, és hogy a módosítások nem érintik negatívan az alkalmazásban a lekérdezési mutatókat használó személy felhasználói élményét.
 
 Ha a munkaterhelés ismétlődő lekérdezéseket tartalmaz, gyakran érdemes rögzíteni és érvényesíteni a csomag választási lehetőségeit, mivel az az adatbázis üzemeltetéséhez szükséges minimális erőforrás-méretet vezérli. Az érvényesítése után időnként újra megvizsgálja a csomagokat, hogy azok ne legyenek lecsökkentve. További információ a [lekérdezési mutatókkal (Transact-SQL)](https://msdn.microsoft.com/library/ms181714.aspx).
 

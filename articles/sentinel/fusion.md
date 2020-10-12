@@ -13,10 +13,10 @@ ms.workload: na
 ms.date: 08/30/2020
 ms.author: yelevin
 ms.openlocfilehash: ba872f221f3bde29f0bb48b04dc2259d3ab4938a
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90906273"
 ---
 # <a name="advanced-multistage-attack-detection-in-azure-sentinel"></a>Fejlett többlépcsős támadások észlelése az Azure Sentinelben
@@ -40,7 +40,7 @@ Ez az észlelés alapértelmezés szerint engedélyezve van az Azure Sentinelben
 
 1. Válassza az **aktív szabályok**lehetőséget, majd a **Name (név** ) oszlopban keresse meg a **speciális többlépcsős támadás észlelése** elemet a **fúziós** szabály típusának szűrésével. Ellenőrizze az **állapot** oszlopot, és erősítse meg, hogy az észlelés engedélyezve van vagy le van tiltva.
 
-    :::image type="content" source="./media/fusion/selecting-fusion-rule-type.png" alt-text="{ALT-Text}":::
+    :::image type="content" source="./media/fusion/selecting-fusion-rule-type.png" alt-text="{alt-text}":::
 
 1. Az állapot módosításához válassza ki ezt a bejegyzést, és a **speciális többlépcsős támadás-észlelés** panelen válassza a **Szerkesztés**lehetőséget.
 
@@ -422,7 +422,7 @@ Ez a forgatókönyv jelenleg **nyilvános előzetes**verzióban érhető el.
 
 **Mitre ATT&CK-taktika:** Kezdeti hozzáférés, végrehajtás, oldalirányú mozgás, jogosultság-eszkaláció
 
-**Mitre ATT&CK technikák:** Nyilvános alkalmazás (T1190) kiaknázása, az ügyfél-végrehajtás (T1203) kiaknázása, a távoli szolgáltatások kiaknázása (T1210), a jogosultságok eszkalációjának kiaknázása (T1068)
+**Mitre ATT&CK technikák:** Public-Facing alkalmazás (T1190) kiaknázása, az ügyfél-végrehajtás (T1203) kiaknázása, a távoli szolgáltatások kiaknázása (T1210), a jogosultságok eszkalációjának kiaknázása (T1068)
 
 **Adatösszekötő-források:** Microsoft Defender for Endpoint (korábban MDATP), Palo Alto Networks 
 

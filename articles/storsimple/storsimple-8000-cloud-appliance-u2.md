@@ -15,10 +15,10 @@ ms.workload: NA
 ms.date: 11/08/2017
 ms.author: alkohli
 ms.openlocfilehash: 219e2b77a0f6f30307c43f006fcdd3828d3c8fbf
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87021375"
 ---
 # <a name="deploy-and-manage-a-storsimple-cloud-appliance-in-azure-update-3-and-later"></a>A StorSimple Cloud Appliance üzembe helyezése és kezelése az Azure-ban (3. frissítés és újabb)
@@ -47,7 +47,7 @@ A StorSimple felhőalapú készülék két modellben érhető el: a hagyományos
 | **Maximális kapacitás** |30 TB |64 TB |
 | **Azure VM** |Standard_A3 (4 mag, 7 GB memória)| Standard_DS3 (4 mag, 14 GB memória)|
 | **Régiónkénti elérhetőség** |Minden Azure-régió |A Premium Storage-ot támogató Azure-régiók és DS3 Azure-beli virtuális gépek<br></br>[Ebben a listában](https://azure.microsoft.com/regions/services/) ellenőrizheti, hogy a **Virtuális gépek &gt; DS-sorozat** és a **Storage &gt; Disk Storage** termékek egyaránt elérhetők-e az adott régióban. |
-| **Tárolás típusa** |A helyi lemezeken Azure Standard szintű tárolást használ<br></br> További információ a [Standard szintű tárfiók létrehozásáról](../storage/common/storage-create-storage-account.md) |Azure Premium Storaget használ a helyi lemezekhez<sup>2</sup> <br></br> |
+| **Tárolási típus** |A helyi lemezeken Azure Standard szintű tárolást használ<br></br> További információ a [Standard szintű tárfiók létrehozásáról](../storage/common/storage-create-storage-account.md) |Azure Premium Storaget használ a helyi lemezekhez<sup>2</sup> <br></br> |
 | **Útmutató a számítási feladatokhoz** |A fájlok elemszintű lekérése a biztonsági másolatokból |Felhőalapú fejlesztési és tesztelési forgatókönyvek <br></br>Kis késés és nagyobb teljesítményű számítási feladatok<br></br>Másodlagos vészhelyreállítási eszköz |
 
 <sup>1</sup> *korábbi nevén 1100*.

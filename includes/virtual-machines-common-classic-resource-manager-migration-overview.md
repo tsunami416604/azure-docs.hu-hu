@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: virtual-machines
 author: tanmaygore
 ms.service: virtual-machines
@@ -9,10 +9,10 @@ ms.date: 02/06/2020
 ms.author: tagore
 ms.custom: include file
 ms.openlocfilehash: b874cefc2521089da02b90b9241be93e80836d6e
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87507451"
 ---
 Ez a cikk azt ismerteti, hogyan telepíthet át szolgáltatásként (IaaS) elérhető erőforrásokat a Klasszikusból a Resource Manager-alapú üzemi modellekre, és hogyan csatlakozhat az előfizetésben található két üzemi modellből származó erőforrásokhoz a virtuális hálózatok közötti átjárók használatával. További információ: [Azure Resource Manager funkciók és előnyök](../articles/azure-resource-manager/management/overview.md). 
@@ -107,7 +107,7 @@ Bizonyos funkciók és konfigurációk jelenleg nem támogatottak; a következő
 ### <a name="unsupported-features"></a>Nem támogatott funkciók
 A következő funkciók jelenleg nem támogatottak. Szükség esetén eltávolíthatja ezeket a beállításokat, áttelepítheti a virtuális gépeket, majd újból engedélyezheti a beállításokat a Resource Manager-alapú üzemi modellben.
 
-| Erőforrás-szolgáltató | Funkció | Ajánlás |
+| Erőforrás-szolgáltató | Szolgáltatás | Ajánlás |
 | --- | --- | --- |
 | Compute | Nem társított virtuálisgép-lemezek. | A rendszer áttelepíti a virtuális merevlemezek mögötti blobokat, amikor a rendszer áttelepíti a Storage-fiókot |
 | Compute | Virtuálisgép-lemezképek. | A rendszer áttelepíti a virtuális merevlemezek mögötti blobokat, amikor a rendszer áttelepíti a Storage-fiókot |
@@ -120,7 +120,7 @@ A következő konfigurációk jelenleg nem támogatottak.
 
 | Szolgáltatás | Konfiguráció | Ajánlás |
 | --- | --- | --- |
-| Resource Manager |Szerepköralapú Access Control (RBAC) klasszikus erőforrásokhoz |Mivel az erőforrások URI-ja módosul az áttelepítés után, azt javasoljuk, hogy tervezze meg azokat a RBAC-házirend-frissítéseket, amelyekre az áttelepítés után szükség van. |
+| Resource Manager |Role-Based Access Control (RBAC) klasszikus erőforrásokhoz |Mivel az erőforrások URI-ja módosul az áttelepítés után, azt javasoljuk, hogy tervezze meg azokat a RBAC-házirend-frissítéseket, amelyekre az áttelepítés után szükség van. |
 | Compute |Egy virtuális géppel társított több alhálózat |Az alhálózat konfigurációjának frissítése, hogy csak egy alhálózatra hivatkozzon. Ehhez a virtuális gépről el kell távolítania egy másodlagos hálózati ADAPTERt (amely egy másik alhálózatra hivatkozik), és az áttelepítés befejeződése után újra csatlakoztatni kell. |
 | Compute |Virtuális hálózathoz tartozó virtuális gépek, de nincs hozzárendelve explicit alhálózat |Lehetősége van törölni a virtuális gépet. |
 | Compute |Riasztásokkal rendelkező virtuális gépek, autoskálázási szabályzatok |Az áttelepítés áthalad, és ezek a beállítások el lesznek dobva. Javasoljuk, hogy az áttelepítés megkezdése előtt értékelje ki a környezetét. Azt is megteheti, hogy újrakonfigurálja a riasztási beállításokat az áttelepítés befejeződése után. |

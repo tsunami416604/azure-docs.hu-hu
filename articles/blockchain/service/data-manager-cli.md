@@ -5,10 +5,10 @@ ms.date: 03/30/2020
 ms.topic: how-to
 ms.reviewer: ravastra
 ms.openlocfilehash: f067f4413f6ad8541cd36a7581f9243bed4e195f
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87023738"
 ---
 # <a name="configure-blockchain-data-manager-using-azure-cli"></a>A Blockchain Data Manager konfigurálása az Azure CLI-vel
@@ -38,7 +38,7 @@ A Cloud Shell megnyitásához válassza a **Kipróbálás** lehetőséget egy k�
 
 Ha a parancssori felület helyi telepítését és használatát választja, akkor ehhez a rövid útmutatóhoz az Azure CLI 2.0.51 vagy újabb verziójára van szükség. A verzió azonosításához futtassa a következőt: `az --version`. Ha telepíteni vagy frissíteni szeretne, tekintse meg az [Azure CLI telepítését](/cli/azure/install-azure-cli)ismertető témakört.
 
-## <a name="create-a-resource-group"></a>Hozzon létre egy erőforráscsoportot
+## <a name="create-a-resource-group"></a>Erőforráscsoport létrehozása
 
 Hozzon létre egy erőforráscsoportot az [az group create](/cli/azure/group) paranccsal. Az Azure-erőforráscsoport olyan logikai tároló, amelybe a rendszer üzembe helyezi és kezeli az Azure-erőforrásokat. A következő példában létrehozunk egy *myResourceGroup* nevű erőforráscsoportot a *eastus* helyen:
 
@@ -59,7 +59,7 @@ az resource create \
                    --properties <watcher resource properties>
 ```
 
-| Paraméter | Description |
+| Paraméter | Leírás |
 |-----------|-------------|
 | resource-group | Az erőforráscsoport neve, ahol a Blockchain Data Manager példányt hozza létre. |
 | name | A Blockchain Data Manager példányának neve. |
@@ -121,7 +121,7 @@ az resource create \
                    --properties <input resource properties>
 ```
 
-| Paraméter | Description |
+| Paraméter | Leírás |
 |-----------|-------------|
 | resource-group | Az erőforráscsoport neve, ahol a bemeneti erőforrást létre kell hozni. |
 | name | A bemenet neve. |
@@ -193,7 +193,7 @@ az resource create \
                    --properties <output resource properties>
 ```
 
-| Paraméter | Description |
+| Paraméter | Leírás |
 |-----------|-------------|
 | resource-group | Az erőforráscsoport neve, ahol a kimeneti erőforrást létre kell hozni. |
 | name | A kimenet neve. |
@@ -270,7 +270,7 @@ az resource create \
                    --properties <Application resource properties>
 ```
 
-| Paraméter | Description |
+| Paraméter | Leírás |
 |-----------|-------------|
 | resource-group | Az erőforráscsoport neve, ahol létre kell hozni az alkalmazás erőforrását. |
 | name | Az alkalmazás neve. |
@@ -345,7 +345,7 @@ az resource invoke-action \
                           --ids /subscriptions/<Subscription ID>/resourceGroups/<Resource group>/providers/Microsoft.Blockchain/watchers/<Watcher name>
 ```
 
-| Paraméter | Description |
+| Paraméter | Leírás |
 |-----------|-------------|
 | művelet | A figyelő futtatásához használja a **Start** parancsot. |
 | azonosítók | Figyelő erőforrás-azonosítója. Cserélje le a \<Subscription ID\> , a \<Resource group\> és a \<Watcher name\> értéket a figyelők erőforrásának értékeire.|
@@ -370,7 +370,7 @@ az resource invoke-action \
                           --ids /subscriptions/<Subscription ID>/resourceGroups/<Resource group>/providers/Microsoft.Blockchain/watchers/<Watcher name>
 ```
 
-| Paraméter | Description |
+| Paraméter | Leírás |
 |-----------|-------------|
 | művelet | A figyelő leállításához használja a **Leállítás** lehetőséget. |
 | azonosítók | A figyelő neve. Cserélje le a \<Subscription ID\> , a \<Resource group\> és a \<Watcher name\> értéket a figyelők erőforrásának értékeire. |

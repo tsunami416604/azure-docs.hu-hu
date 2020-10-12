@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 06/28/2018
 ms.author: tomfitz
 ms.openlocfilehash: fe70c42387e9dedea8943b5dcce04a1f9ded5190
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87033289"
 ---
 # <a name="microsoftstoragestorageaccountselector-ui-element"></a>Microsoft. Storage. StorageAccountSelector FELHASZNÁLÓIFELÜLET-elem
@@ -49,7 +49,7 @@ A vezérlő lehetővé teszi, hogy a felhasználó új Storage-fiókot hozzon l�
 }
 ```
 
-## <a name="sample-output"></a>Példa kimenet
+## <a name="sample-output"></a>Példakimenet
 
 ```json
 {
@@ -64,7 +64,7 @@ A vezérlő lehetővé teszi, hogy a felhasználó új Storage-fiókot hozzon l�
 
 - Ha meg van adva, a `defaultValue.name` rendszer automatikusan érvényesíti az egyediséget. Ha a Storage-fiók neve nem egyedi, a felhasználónak másik nevet kell megadnia, vagy egy meglévő Storage-fiókot kell választania.
 - Az alapértelmezett értéke `defaultValue.type` **Premium_LRS**.
-- A nem meghatározott típusok `constraints.allowedTypes` rejtettek, és az itt megadott típusok `constraints.excludedTypes` láthatók. `constraints.allowedTypes`és `constraints.excludedTypes` mindkettő nem kötelező, de nem használható egyszerre.
+- A nem meghatározott típusok `constraints.allowedTypes` rejtettek, és az itt megadott típusok `constraints.excludedTypes` láthatók. `constraints.allowedTypes` és `constraints.excludedTypes` mindkettő nem kötelező, de nem használható egyszerre.
 - Ha az `options.hideExisting` értéke **igaz**, a felhasználó nem választhat meglévő Storage-fiókot. Az alapértelmezett érték: **hamis**.
 
 ## <a name="next-steps"></a>További lépések

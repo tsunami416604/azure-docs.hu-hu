@@ -13,23 +13,23 @@ ms.workload: infrastructure-services
 ms.date: 02/22/2017
 ms.author: damendo
 ms.openlocfilehash: d72a981749af87e1b73625bdce2e0fd2d24fff0d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84724919"
 ---
 # <a name="manage-packet-captures-with-azure-network-watcher-using-the-azure-cli"></a>A csomagok rögzítésének kezelése az Azure Network Watcher Az Azure CLI használatával
 
 > [!div class="op_single_selector"]
-> - [Azure Portalra](network-watcher-packet-capture-manage-portal.md)
+> - [Azure Portal](network-watcher-packet-capture-manage-portal.md)
 > - [PowerShell](network-watcher-packet-capture-manage-powershell.md)
 > - [Azure CLI](network-watcher-packet-capture-manage-cli.md)
 > - [Azure REST API](network-watcher-packet-capture-manage-rest.md)
 
 Network Watcher a csomagok rögzítése lehetővé teszi, hogy rögzítési munkameneteket hozzon létre a virtuális gépekre irányuló és onnan érkező forgalom nyomon követéséhez. A rögzítési munkamenethez szűrőket biztosít, hogy csak a kívánt forgalmat rögzítsen. A csomagok rögzítése segít a hálózati rendellenességek reaktív és proaktív módon történő diagnosztizálásában. A többi felhasználás magában foglalja a hálózati statisztikák összegyűjtését, a hálózati behatolásokkal kapcsolatos információk megszerzését, az ügyfél és a kiszolgáló közötti kommunikáció hibakeresését. A csomagok rögzítésének távoli kiváltásához ez a funkció megkönnyíti a csomagok rögzítésének a manuális és a kívánt gépen való futtatásának terhét, ami értékes időt takarít meg.
 
-A cikkben szereplő lépések végrehajtásához [telepítenie kell a Mac, Linux és Windows rendszerhez készült Azure parancssori felületet (Azure CLI)](/cli/azure/install-azure-cli).
+A cikkben szereplő lépések végrehajtásához [telepítenie kell a Mac, Linux és Windows rendszerhez készült azure Command-Line felületet (Azure CLI)](/cli/azure/install-azure-cli).
 
 Ez a cikk végigvezeti a csomagok rögzítéséhez jelenleg elérhető különböző felügyeleti feladatokon.
 
@@ -50,7 +50,7 @@ Ez a cikk feltételezi, hogy rendelkezik a következő erőforrásokkal:
 
 ## <a name="install-vm-extension"></a>Virtuálisgép-bővítmény telepítése
 
-### <a name="step-1"></a>1\. lépés
+### <a name="step-1"></a>1. lépés
 
 Futtassa a `az vm extension set` parancsot a csomag rögzítési ügynökének telepítéséhez a vendég virtuális gépen.
 
@@ -82,7 +82,7 @@ Linux rendszerű virtuális gépek esetén:
 az vm extension show --resource-group resourceGroupName --vm-name virtualMachineName --name AzureNetworkWatcherExtension
 ```
 
-Az alábbi példa a futtatási választ szemlélteti`az vm extension show`
+Az alábbi példa a futtatási választ szemlélteti `az vm extension show`
 
 ```json
 {
@@ -108,7 +108,7 @@ Az alábbi példa a futtatási választ szemlélteti`az vm extension show`
 
 Miután az előző lépések befejeződik, a rendszer telepíti a csomag-rögzítési ügynököt a virtuális gépre.
 
-### <a name="step-1"></a>1\. lépés
+### <a name="step-1"></a>1. lépés
 
 Egy Storage-fiók beolvasása. Ez a Storage-fiók tárolja a csomag rögzítésére szolgáló fájlt.
 
@@ -224,7 +224,7 @@ az network watcher packet-capture delete --name packetCaptureName --location wes
 
 ## <a name="download-a-packet-capture"></a>Csomagok rögzítésének letöltése
 
-A csomag-rögzítési munkamenet befejezése után a rögzítési fájl feltölthető a blob Storage-ba vagy egy helyi fájlba a virtuális gépen. A csomag rögzítésének tárolási helye a munkamenet létrehozásakor van meghatározva. A Storage-fiókba mentett rögzítési fájlok elérésének kényelmes eszköze Microsoft Azure Storage Explorer, amely letölthető innen:https://storageexplorer.com/
+A csomag-rögzítési munkamenet befejezése után a rögzítési fájl feltölthető a blob Storage-ba vagy egy helyi fájlba a virtuális gépen. A csomag rögzítésének tárolási helye a munkamenet létrehozásakor van meghatározva. A Storage-fiókba mentett rögzítési fájlok elérésének kényelmes eszköze Microsoft Azure Storage Explorer, amely letölthető innen:  https://storageexplorer.com/
 
 Ha meg van adva egy Storage-fiók, a rendszer a csomag rögzítési fájljait a következő helyen menti a Storage-fiókba:
 

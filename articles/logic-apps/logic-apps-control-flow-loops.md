@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 01/05/2019
 ms.openlocfilehash: 5bd637f4e4a786cd4cba0f70c4b2349e354469fd
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89657468"
 ---
 # <a name="create-loops-that-repeat-workflow-actions-or-process-arrays-in-azure-logic-apps"></a>Munkafolyamatok tevékenységeit ismétlő vagy tömböket feldolgozó hurkok létrehozása az Azure Logic Appsben
@@ -247,9 +247,9 @@ Ez a példa minden nap 8:00-kor kezdődik, így a logikai alkalmazás egy válto
 
 A "ig" ciklusban az alapértelmezett korlátok a végrehajtás leállítása, ha bármelyik feltétel teljesül:
 
-| Tulajdonság | Alapértelmezett érték | Description | 
+| Tulajdonság | Alapértelmezett érték | Leírás | 
 | -------- | ------------- | ----------- | 
-| **Száma** | 60 | A hurok bezárása előtt futó hurkok maximális száma. Az alapértelmezett érték 60 ciklus. | 
+| **Darabszám** | 60 | A hurok bezárása előtt futó hurkok maximális száma. Az alapértelmezett érték 60 ciklus. | 
 | **Időtúllépés** | PT1H | A huroknak a hurokból való kilépése előtti futtatásának legnagyobb ideje. Az alapértelmezett érték egy óra, és ISO 8601 formátumban van megadva. <p>Az időtúllépési érték kiértékelése minden hurok ciklusakor megtörténik. Ha a hurok bármelyik művelete hosszabb időt vesz igénybe, mint az időkorlát, az aktuális ciklus nem áll le. A következő ciklus azonban nem indul el, mert a korlátozási feltétel nem teljesül. | 
 |||| 
 

@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/15/2019
 ms.author: raynew
 ms.openlocfilehash: 7d11fa8605d9cd5f335b6be56097caf7a5222bbd
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89006941"
 ---
 # <a name="monitor-site-recovery-with-azure-monitor-logs"></a>A Site Recovery monitorozása az Azure Monitor naplóival
@@ -36,7 +36,7 @@ A következőkre lesz szüksége:
 
 - Legalább egy gép védve van egy Recovery Services-tárolóban.
 - Log Analytics munkaterület Site Recovery naplók tárolására. [További](../azure-monitor/learn/quick-create-workspace.md) információ a munkaterület beállításáról.
-- Alapvető ismeretek a naplók írásához, futtatásához és elemzéséhez Log Analyticsban. [További információ](../azure-monitor/log-query/get-started-portal.md).
+- Alapvető ismeretek a naplók írásához, futtatásához és elemzéséhez Log Analyticsban. [További információk](../azure-monitor/log-query/get-started-portal.md).
 
 Javasoljuk, hogy a Kezdés előtt tekintse át az [általános monitorozási kérdéseket](monitoring-common-questions.md) .
 

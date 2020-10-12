@@ -11,10 +11,10 @@ author: nibaccam
 ms.author: nibaccam
 ms.date: 04/09/2020
 ms.openlocfilehash: 77b5b52153c552008406b4b85083bcba5542cebe
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87012722"
 ---
 # <a name="prevent-overfitting-and-imbalanced-data-with-automated-machine-learning"></a>Az automatizált gépi tanulással megakadályozhatja a túlilleszkedő és a kiegyensúlyozatlan adatkezelést
@@ -27,7 +27,7 @@ A gépi tanulás túlterhelése akkor fordul elő, ha egy modell túl jól illes
 
 Vegye figyelembe a következő betanított modelleket és a hozzájuk kapcsolódó betanítási és tesztelési pontosság.
 
-| Modellezés | Vonat pontossága | Teszt pontossága |
+| Modell | Vonat pontossága | Teszt pontossága |
 |-------|----------------|---------------|
 | A | 99.9% | 95% |
 | B | 87% | 87% |
@@ -81,7 +81,7 @@ A rendszer a gépi tanulási besorolási forgatókönyvek esetében általában 
 
 Emellett az automatikus ML-futtatások automatikusan létrehozzák a következő diagramokat, amelyek segítségével megismerheti a modell besorolásának helyességét, és azonosíthatja a kiegyensúlyozatlan adatok által potenciálisan érintett modelleket.
 
-Diagram| Description
+Diagram| Leírás
 ---|---
 [Zavart mátrix](how-to-understand-automated-ml.md#confusion-matrix)| Kiértékeli a helyesen kategorizált címkéket az adatok tényleges címkéjén. 
 [Pontosság – visszahívás](how-to-understand-automated-ml.md#precision-recall-chart)| Kiértékeli a helyes feliratok arányát az adatokban található címkézett példányok arányával. 

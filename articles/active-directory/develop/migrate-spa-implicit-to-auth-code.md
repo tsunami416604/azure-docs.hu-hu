@@ -13,10 +13,10 @@ ms.date: 07/17/2020
 ms.author: hahamil
 ms.custom: aaddev
 ms.openlocfilehash: b7316756aab7875dce50a3783cb95ca42676b970
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87027087"
 ---
 # <a name="migrate-a-javascript-single-page-app-from-implicit-grant-to-auth-code-flow"></a>JavaScript-alapú egyoldalas alkalmazás migrálása implicit engedélyről az Auth Code flow-ba
@@ -48,11 +48,11 @@ Kövesse az alábbi **lépéseket a webplatform-** átirányítási URI-k által
     :::image type="content" source="media/migrate-spa-implicit-to-auth-code/portal-01-implicit-warning-banner.png" alt-text="Implicit flow figyelmeztetési szalagcím a webalkalmazás csempén Azure Portal":::
 1. *Csak* azokat az átirányítási URI-ket válassza, amelyek alkalmazásai MSAL.js 2. x-et használják, majd válassza a **Konfigurálás**lehetőséget.
 
-    :::image type="content" source="media/migrate-spa-implicit-to-auth-code/portal-02-select-redirect-uri.png" alt-text="Az átirányítási URI ablaktábla kiválasztása a SPA panelen Azure Portal":::
+    :::image type="content" source="media/migrate-spa-implicit-to-auth-code/portal-02-select-redirect-uri.png" alt-text="Implicit flow figyelmeztetési szalagcím a webalkalmazás csempén Azure Portal":::
 
 Ezek az átirányítási URI-k mostantól megjelennek az **egyoldalas alkalmazás** -platform csempén, amely azt mutatja, hogy az CORS-támogatás az engedélyezési kód folyamatával és a PKCE engedélyezve van ezen URI-k esetében.
 
-:::image type="content" source="media/migrate-spa-implicit-to-auth-code/portal-03-spa-redirect-uri-tile.png" alt-text="Egyoldalas alkalmazás csempéje az alkalmazás regisztrációjában Azure Portal":::
+:::image type="content" source="media/migrate-spa-implicit-to-auth-code/portal-03-spa-redirect-uri-tile.png" alt-text="Implicit flow figyelmeztetési szalagcím a webalkalmazás csempén Azure Portal":::
 
 [Új alkalmazás-regisztrációt is létrehozhat](scenario-spa-app-registration.md) , ha nem frissíti az átirányítási URI-ket a meglévő regisztráció során.
 

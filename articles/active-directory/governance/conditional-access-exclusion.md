@@ -17,10 +17,10 @@ ms.author: barclayn
 ms.reviewer: mwahl
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: def74cccb3ad2c45a18210cc9d5a0d7ff0ba76f6
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88783688"
 ---
 # <a name="use-azure-ad-access-reviews-to-manage-users-excluded-from-conditional-access-policies"></a>Az Azure AD hozzáférési felülvizsgálatok használata a feltételes hozzáférési házirendből kizárt felhasználók felügyeletéhez
@@ -63,7 +63,7 @@ Az alábbi lépéseket követve hozzon létre egy új Azure AD-csoportot és egy
 
 ### <a name="create-an-exclusion-group"></a>Kizárási csoport létrehozása
 
-1. Jelentkezzen be az Azure Portalra.
+1. Jelentkezzen be az Azure portálra.
 
 2. A bal oldali navigációs sávon kattintson a **Azure Active Directory** , majd a **csoportok**elemre.
 
@@ -164,7 +164,7 @@ Most, hogy mindent megtesz a hely, a csoport, a feltételes hozzáférési szab�
 
 Rendszergazdaként biztos lehet abban, hogy a kizárási csoportok a szabályzatokhoz való kezelése időnként elkerülhetetlen. A csoportok karbantartásával azonban rendszeresen, a vállalat tulajdonosa vagy a felhasználók is megtekinthetik őket, és az Azure AD hozzáférési felülvizsgálatokkal könnyebben ellenőrizhetők a változások.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Csoportok vagy alkalmazások hozzáférési felülvizsgálatának létrehozása](create-access-review.md)
 - [Mi a feltételes hozzáférés a Azure Active Directory?](../conditional-access/overview.md)

@@ -5,10 +5,10 @@ ms.date: 11/21/2019
 ms.topic: conceptual
 ms.reviewer: zeyadr
 ms.openlocfilehash: 7b8885ba08d35db20d1eb7e75141cb173913b386
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84712530"
 ---
 # <a name="azure-blockchain-service-consortium"></a>Azure Blockchain Service Consortium
@@ -31,13 +31,13 @@ Az Azure Blockchain szolgáltatásban a konzorciumok felügyeletével felügyelh
 
 A konzorcium résztvevői lehetnek magánszemélyek vagy szervezetek, és felhasználói szerepkört vagy rendszergazdai szerepkört rendelhetnek hozzá. A következő táblázat a két szerepkör közötti magas szintű különbségeket sorolja fel:
 
-| Műveletek | Felhasználói szerepkör | Rendszergazdai szerepkör
+| Művelet | Felhasználói szerepkör | Rendszergazdai szerepkör
 |--------|:----:|:------------:|
 | Új tag létrehozása | Igen | Igen |
-| Új tagok meghívása | Nem | Yes |
-| Tag résztvevői szerepkörének beállítása vagy módosítása | Nem | Yes |
+| Új tagok meghívása | Nem | Igen |
+| Tag résztvevői szerepkörének beállítása vagy módosítása | Nem | Igen |
 | Tag megjelenítendő nevének módosítása | Csak a saját tag számára | Csak a saját tag számára |
-| Tagok eltávolítása | Csak a saját tag számára | Yes |
+| Tagok eltávolítása | Csak a saját tag számára | Igen |
 | Részvétel a blockchain-tranzakciókban | Igen | Igen |
 
 ### <a name="user-role"></a>Felhasználói szerepkör

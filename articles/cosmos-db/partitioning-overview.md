@@ -7,10 +7,10 @@ ms.service: cosmos-db
 ms.topic: conceptual
 ms.date: 05/06/2020
 ms.openlocfilehash: aa7d67cd6bd1bd422bd257b75ac5bde3bd534d7e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85481833"
 ---
 # <a name="partitioning-in-azure-cosmos-db"></a>Particionálás az Azure Cosmos DB-ben
@@ -48,7 +48,7 @@ A partíciós kulcs kiválasztásával egy egyszerű, de fontos kialakítási le
 Az **összes** tároló esetében a partíciós kulcsnak a következőket kell tennie:
 
 * Olyan tulajdonságnak kell lennie, amely nem módosítható értékkel rendelkezik. Ha a tulajdonság a partíciós kulcs, a tulajdonság értéke nem frissíthető.
-* Magas fokú kardinális. Más szóval a tulajdonságnak a lehetséges értékek széles körének kell lennie.
+* Magas számossággal rendelkezik. Más szóval a tulajdonságnak a lehetséges értékek széles körének kell lennie.
 * A kérési egység (RU) felhasználásának és az adattárolásnak egyenletes elosztása az összes logikai partíción keresztül. Ez biztosítja a fizikai partíciók esetében is az RU-felhasználást és a tárolók eloszlását.
 
 Ha Azure Cosmos DB [több tételes savas tranzakcióra](database-transactions-optimistic-concurrency.md#multi-item-transactions) van szüksége, akkor [tárolt eljárásokat vagy eseményindítókat](how-to-write-stored-procedures-triggers-udfs.md#stored-procedures)kell használnia. Minden JavaScript-alapú tárolt eljárás és eseményindító hatóköre egyetlen logikai partícióra van korlátozva.

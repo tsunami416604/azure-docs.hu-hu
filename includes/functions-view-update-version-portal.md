@@ -9,10 +9,10 @@ ms.date: 11/26/2018
 ms.author: glenga
 ms.custom: include file
 ms.openlocfilehash: aa9a715fdafc143a116458691965087b016dec1f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83343354"
 ---
 A következő eljárással tekintheti meg és frissítheti a Function app által jelenleg használt futtatókörnyezet verzióját.
@@ -27,4 +27,4 @@ A következő eljárással tekintheti meg és frissítheti a Function app által
 
 1. Ha megváltoztatja a futtatókörnyezet verzióját, térjen vissza az **Áttekintés** lapra, és válassza az **Újraindítás** lehetőséget az alkalmazás újraindításához.  A Function app az 1. x futtatókörnyezetben futtatja az újraindítást, és a függvények létrehozásakor a rendszer az 1. x verziójú sablonokat használja.
 
-    :::image type="content" source="./media/functions-view-update-version-portal/functions-restart-function-app.png" alt-text="Indítsa újra a Function alkalmazást." border="true":::
+    :::image type="content" source="./media/functions-view-update-version-portal/functions-restart-function-app.png" alt-text="Tekintse meg a futtatókörnyezet verzióját." border="true":::

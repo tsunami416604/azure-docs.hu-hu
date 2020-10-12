@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 2/7/2019
 ms.author: rohink
 ms.openlocfilehash: 9b37d313aa5d8c2255b4e3be69831dfcb50238ea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84712547"
 ---
 # <a name="delegate-an-azure-dns-subdomain-using-azure-powershell"></a>Azure DNS altartomány delegálása Azure PowerShell használatával
@@ -67,7 +67,7 @@ $RecordSet = New-AzDnsRecordSet -Name engineering -RecordType NS -ResourceGroupN
 A delegálás teszteléséhez használja az nslookupt.
 
 1. Indítson el egy PowerShell-ablakot.
-2. A parancssorba írja be a következőt:`nslookup www.engineering.contoso.com.`
+2. A parancssorba írja be a következőt: `nslookup www.engineering.contoso.com.`
 3. Meg kell kapnia egy nem mérvadó választ, amely a **10.10.10.10**.
 
 ## <a name="next-steps"></a>További lépések

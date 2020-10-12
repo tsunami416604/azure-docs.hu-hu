@@ -10,10 +10,10 @@ ms.date: 08/17/2020
 ms.author: swmachan
 ms.topic: conceptual
 ms.openlocfilehash: f4c3d23f6abbdc20d210e5ddda6c527d27654bb0
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88510759"
 ---
 # <a name="what-is-a-dictionary"></a>Mi az a szótár?
@@ -43,6 +43,6 @@ A modelleket csak a szótárak adatai alapján lehet betanítani. Ehhez válassz
 - A mondatok szótárának használatakor a rendszer figyelmen kívül hagyja a mondat végét. Ha például a forrás-szótár "Ez a mondat a központozás vége!" kifejezést tartalmazza, akkor az "Ez a mondat írásjelekkel végződik" kifejezéseket tartalmazó fordítási kérések egyeznek.
 - Ha egy szó többször is megjelenik egy szótárban, a rendszer mindig a megadott utolsó bejegyzést fogja használni. Ezért a szótár nem tartalmazhat ugyanazon szó több fordítását.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Olvassa el [a dokumentumok formátumait ismertető útmutatót](document-formats-naming-convention.md).

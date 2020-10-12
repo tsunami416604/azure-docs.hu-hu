@@ -16,10 +16,10 @@ ms.author: curtand
 ms.custom: pim
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 763441d023e4a707c6a1edc09abfb6d8e5525723
-ms.sourcegitcommit: 9c3cfbe2bee467d0e6966c2bfdeddbe039cad029
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88782736"
 ---
 # <a name="invite-guest-users-and-assign-azure-resource-roles-in-privileged-identity-management"></a>Vendég felhasználók meghívása és Azure-beli erőforrás-szerepkörök kiosztása Privileged Identity Management
@@ -163,7 +163,7 @@ A naplókat megtekintve nyomon követheti, hogy a vendégek mit csinálnak.
 
     ![Címtár-naplózási naplók listázási dátuma, cél, kezdeményező és tevékenység](./media/pim-resource-roles-external-users/audit-directory.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Azure AD-beli rendszergazdai szerepkörök kiosztása Privileged Identity Management](pim-how-to-add-role-to-user.md)
 - [Mi a vendég felhasználói hozzáférés az Azure AD B2B együttműködésben?](../external-identities/what-is-b2b.md)

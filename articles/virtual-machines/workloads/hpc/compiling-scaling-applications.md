@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 05/15/2019
 ms.author: amverma
 ms.openlocfilehash: 72178b61d7033167ed48a8ddbb661daad6081df7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87020111"
 ---
 # <a name="scaling-hpc-applications"></a>HPC-alkalmazások méretezése
@@ -33,7 +33,7 @@ Az AMD-optimalizáló C/C++ Compiler (AOCC) fordítórendszer magas szintű fejl
 
 ### <a name="clang"></a>Csenget
 
-A csenget egy C, C++ és Objective-C fordító, amely az előfeldolgozást, az elemzést, az optimalizálást, a kód generálását, a szerelvényt és a csatolást kezeli. A csenget támogatja a `-march=znver1` jelölőt, amely lehetővé teszi a legjobb kód generálását és finomhangolását az AMD Zen-alapú x86-architektúrája számára.
+A csenget egy C, C++ és Objective-C fordító, amely az előfeldolgozást, az elemzést, az optimalizálást, a kód generálását, a szerelvényt és a csatolást kezeli. A csenget támogatja a  `-march=znver1` jelölőt, amely lehetővé teszi a legjobb kód generálását és finomhangolását az AMD Zen-alapú x86-architektúrája számára.
 
 ### <a name="flang"></a>FLANG
 

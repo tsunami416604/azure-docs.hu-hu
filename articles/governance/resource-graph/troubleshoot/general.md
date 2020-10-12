@@ -4,10 +4,10 @@ description: Ismerje meg, hogy miként lehet elhárítani a különböző SDK-k 
 ms.date: 08/10/2020
 ms.topic: troubleshooting
 ms.openlocfilehash: 052c3e1c10f1b0ca94653f086e2df4f3d395070e
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88056941"
 ---
 # <a name="troubleshoot-errors-using-azure-resource-graph"></a>Hibák elhárítása az Azure Resource Graph használatával
@@ -104,7 +104,7 @@ Ha az ügyfél nem rendelkezik olvasási engedéllyel az összes megadott előfi
 
 Vegyen fel legalább egy előfizetést az előfizetések listájában, amelyet a lekérdezést futtató ügyfélnek legalább olvasási hozzáféréssel kell rendelkezniük. További információ: [engedélyek az Azure Resource Graph-ban](../overview.md#permissions-in-azure-resource-graph).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha nem látja a problémát, vagy nem tudja megoldani a problémát, további támogatásért látogasson el az alábbi csatornák egyikére:
 

@@ -6,12 +6,12 @@ ms.topic: conceptual
 author: bwren
 ms.author: bwren
 ms.date: 06/08/2020
-ms.openlocfilehash: a69a58da85cf1ee03046626bb076c5cd44196279
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.openlocfilehash: 4ec7cd2b0f573a9a74f82546da2367edcf721539
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
-ms.locfileid: "87828710"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91441449"
 ---
 # <a name="deploy-azure-monitor-at-scale-using-azure-policy"></a>Azure Monitor üzembe helyezése méretezéssel Azure Policy használatával
 Néhány Azure Monitor funkció egyszer vagy korlátozott számú alkalommal van konfigurálva, másokat meg kell ismételni minden figyelni kívánt erőforrásnál. Ez a cikk azokat a módszereket ismerteti, amelyekkel a Azure Policy használatával méretezhetők a Azure Monitorek, így biztosítható, hogy az összes Azure-erőforrás monitorozása következetes legyen és pontosan legyen konfigurálva.
@@ -41,7 +41,7 @@ A figyeléshez kapcsolódó beépített szabályzat-definíciók megtekintéséh
 2. Válassza a **definíciók**lehetőséget.
 3. A **Típus mezőben**válassza a *beépített* lehetőséget, és a **Kategória**beállításnál válassza a *figyelés*lehetőséget.
 
-  ![Beépített szabályzat-definíciók](media/deploy-scale/builtin-policies.png)
+  ![Képernyőkép a Azure Policy-definíciók oldaláról Azure Portal a figyelés kategória és a beépített típus házirend-definícióinak listáját jeleníti meg.](media/deploy-scale/builtin-policies.png)
 
 
 ## <a name="diagnostic-settings"></a>Diagnosztikai beállítások
@@ -54,7 +54,7 @@ Az egyes erőforrástípusok két beépített házirend-definícióval rendelkez
 
 Az alábbi képen például az Data Lake Analytics beépített diagnosztikai beállítási szabályzatának definíciói láthatók.
 
-  ![Beépített szabályzat-definíciók](media/deploy-scale/builtin-diagnostic-settings.png)
+  ![Részleges képernyőkép a Azure Policy-definíciók lapról, amely két beépített diagnosztikai beállítási házirend-definíciót mutat be Data Lake Analyticshoz.](media/deploy-scale/builtin-diagnostic-settings.png)
 
 ### <a name="custom-policy-definitions"></a>Egyéni szabályzat-definíciók
 A beépített házirenddel nem rendelkező erőforrástípusok esetén létre kell hoznia egy egyéni szabályzat-definíciót. Ezt manuálisan is megteheti a Azure Portal egy meglévő beépített szabályzat másolásával, majd az erőforrástípus módosításával. Ez hatékonyabb, ha a szabályzatot a PowerShell-galéria parancsfájl használatával hozza létre a programozott módon.
@@ -109,7 +109,7 @@ A kezdeményezés létrehozásával kapcsolatos részletekért tekintse meg a [k
 ### <a name="assignment"></a>Hozzárendelés 
 Rendelje hozzá a kezdeményezést egy Azure felügyeleti csoporthoz, előfizetéshez vagy erőforráscsoporthoz a figyelni kívánt erőforrások körétől függően. A [felügyeleti csoport](../governance/management-groups/overview.md) különösen akkor hasznos, ha a szervezet több előfizetéssel rendelkezik.
 
-![Kezdeményezési hozzárendelés](media/deploy-scale/initiative-assignment.png)
+![Képernyőfelvétel a diagnosztikai beállítások hozzárendelési kezdeményezés szakaszában található alapismeretek lap beállításokról Azure Portal Log Analytics munkaterületen.](media/deploy-scale/initiative-assignment.png)
 
 A kezdeményezési paraméterek használatával megadhatja a munkaterületet vagy bármely más részletet a kezdeményezés összes házirend-definíciójában. 
 
@@ -146,7 +146,7 @@ A folyamat részleteiért lásd: [Azure monitor for VMS engedélyezése Azure Po
 ### <a name="virtual-machine-scale-sets"></a>Virtuálisgép-méretezési csoportok
 Ha Azure Policyt szeretne használni a virtuálisgép-méretezési csoportok figyelésének engedélyezéséhez, rendelje hozzá a **virtuálisgép-méretezési csoportok Azure monitor engedélyezése** az Azure felügyeleti csoportjához, az előfizetéshez vagy az erőforrás-csoporthoz a figyelni kívánt erőforrások körétől függően. A [felügyeleti csoport](../governance/management-groups/overview.md) különösen akkor hasznos, ha a szervezet több előfizetéssel rendelkezik.
 
-![Kezdeményezési hozzárendelés](media/deploy-scale/virtual-machine-scale-set-assign-initiative.png)
+![Képernyőkép a Azure Portal hozzárendelésének kiosztása oldalról. A kezdeményezés definíciója az Azure Monitor engedélyezése a virtuálisgép-méretezési csoportokhoz.](media/deploy-scale/virtual-machine-scale-set-assign-initiative.png)
 
 Válassza ki azt a munkaterületet, amelybe az adatküldés történik. Ennek a munkaterületnek telepítve kell lennie a *VMInsights* -megoldásnak a következő témakörben leírt módon: []() .
 
@@ -178,7 +178,7 @@ Lehetnek olyan helyzetek, amikor telepíteni szeretné a Log Analytics ügynök�
 |A Windows rendszerű virtuálisgép-méretezési csoportokhoz tartozó Log Analytics-ügynök üzembe helyezése |Telepítse a Windows rendszerű virtuálisgép-méretezési csoportokhoz Log Analytics Agent ügynököt, ha a virtuális gép lemezképe (OS) definiálva van a listában, és az ügynök nincs telepítve. |
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a [Azure Policyról](../governance/policy/overview.md).
 - További információ a [diagnosztikai beállításokról](platform/diagnostic-settings.md).

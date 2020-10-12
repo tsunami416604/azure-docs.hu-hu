@@ -5,10 +5,10 @@ ms.date: 08/31/2020
 ms.topic: how-to
 ms.reviewer: caleteet
 ms.openlocfilehash: 4364d2f616c8eaadedf12baf4bf77810eec69fdb
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89230534"
 ---
 # <a name="use-the-ethereum-blockchain-connector-with-azure-logic-apps"></a>A Ethereum Blockchain-összekötő használata a Azure Logic Apps
@@ -60,7 +60,7 @@ Akkor használja a Ethereum Blockchain-eseményindítókat, ha azt szeretné, ho
     | **Esemény neve** | Válasszon ki egy intelligens szerződési eseményt az ellenõrzéshez. Az esemény elindítja a logikai alkalmazást. |
     | **Intervallum** és **gyakoriság** | Válassza ki, hogy milyen gyakran szeretné megkeresni az eseményt. |
 
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 A logikai alkalmazás befejezéséhez hozzáadhat egy új lépést, amely a Ethereum Blockchain esemény eseményindítóján alapuló műveletet hajt végre. Küldjön például egy e-mailt.
 

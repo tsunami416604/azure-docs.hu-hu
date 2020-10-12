@@ -18,10 +18,10 @@ ms.date: 02/03/2020
 ms.author: rdhillon
 ms.custom: ''
 ms.openlocfilehash: 1d4fcc280ba2e34d2fa81584846441ad6fe81431
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84708195"
 ---
 # <a name="manage-data-exfiltration-to-azure-storage-accounts-with-virtual-network-service-endpoint-policies-using-azure-powershell"></a>Az Azure Storage-fiókok kiszűrése való kezelése virtuális hálózati szolgáltatás végponti házirendjeivel Azure PowerShell használatával
@@ -39,7 +39,7 @@ Ebben a cikkben az alábbiakkal ismerkedhet meg:
 * Erősítse meg az engedélyezett Storage-fiókhoz való hozzáférést az alhálózaton.
 * Győződjön meg arról, hogy a hozzáférés meg van tagadva a nem engedélyezett Storage-fiókhoz az alhálózaton.
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
 [!INCLUDE [cloud-shell-try-it.md](../../includes/cloud-shell-try-it.md)]
 
@@ -374,7 +374,7 @@ A megosztáshoz való hozzáférés megtagadva, és `New-PSDrive : Access is den
 
 Zárja be a távoli asztali munkamenetet a *myVmPublic* virtuális géppel.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 Ha már nincs rá szükség, a [Remove-AzResourceGroup](/powershell/module/az.resources/remove-azresourcegroup) használatával eltávolíthatja az erőforráscsoportot és a benne található összes erőforrást:
 

@@ -8,10 +8,10 @@ ms.date: 07/13/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: 7726a0f1acb8f7fde2b491979d478badeca1b384
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89400381"
 ---
 # <a name="azure-security-baseline-for-windows-virtual-machines"></a>Windows Virtual Machines Azure biztonsági alapterve
@@ -969,7 +969,7 @@ A legtöbb esetben a Microsoft Base VM-sablonok a Azure Automation kívánt áll
 
 **Útmutató**: a Managed Service Identity együttes használata a Azure Key Vault a Felhőbeli alkalmazások titkos felügyeletének egyszerűsítése és biztonságossá tétele érdekében.
 
-* [Az Azure által felügyelt identitások integrálása](../../azure-app-configuration/howto-integrate-azure-managed-service-identity.md)
+* [Integráció a Azure-Managed identitásokkal](../../azure-app-configuration/howto-integrate-azure-managed-service-identity.md)
 
 * [Key Vault létrehozása](../../key-vault/secrets/quick-create-portal.md)
 
@@ -1089,7 +1089,7 @@ Az Azure Disk Encryption használata esetén visszaállíthatja az Azure-beli vi
 
 ### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9,4: a biztonsági másolatok és az ügyfél által felügyelt kulcsok védelmének biztosítása
 
-**Útmutató**: az Azure által felügyelt lemezek Azure Backup használatával történő biztonsági mentésekor a virtuális gépek Storage Service encryption (SSE) inaktív állapotban vannak titkosítva. A Azure Backup a Azure Disk Encryption használatával titkosított Azure-beli virtuális gépek biztonsági mentését is elvégezheti. A Azure Disk Encryption a BitLocker titkosítási kulcsaival (BEKs) integrálható, amelyek titkos kulccsal rendelkeznek a Key vaultban. A Azure Disk Encryption Azure Key Vault kulcs-titkosítási kulcsokkal (KEK) is integrálva van. A kulcsok véletlen vagy rosszindulatú törléssel szembeni védelemének engedélyezéséhez engedélyezze a Key Vault törlését.
+**Útmutató**: az Azure által felügyelt lemezek Azure Backup használatával történő biztonsági mentésekor a virtuális gépek Storage Service encryption (SSE) inaktív állapotban vannak titkosítva. A Azure Backup a Azure Disk Encryption használatával titkosított Azure-beli virtuális gépek biztonsági mentését is elvégezheti. A Azure Disk Encryption a BitLocker titkosítási kulcsaival (BEKs) integrálható, amelyek titkos kulccsal rendelkeznek a Key vaultban. A Azure Disk Encryption Azure Key Vault kulcs-titkosítási kulcsokkal (KEK) is integrálva van. A kulcsok véletlen vagy rosszindulatú törléssel szembeni védelemmel való ellátásához engedélyezze a Key Vault Soft-Delete.
 
 * [Soft Delete a virtuális gépekhez](../../backup/soft-delete-virtual-machines.md)
 

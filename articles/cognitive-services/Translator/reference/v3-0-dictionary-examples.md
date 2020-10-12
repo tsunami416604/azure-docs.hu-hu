@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 01/21/2020
 ms.author: swmachan
 ms.openlocfilehash: a1d86ac354524cb4d7bf9f9776b8605f244d92f7
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83592508"
 ---
 # <a name="translator-30-dictionary-examples"></a>Translator 3,0: példák a szótárra
@@ -37,7 +37,7 @@ A lekérdezési karakterláncon átadott kérési paraméterek a következők:
 | --------- | ----------- |
 | api-verzió <img width=200/> | **Kötelező paraméter**.<br/>Az ügyfél által kért API-verzió. Az értéknek a számnak kell lennie `3.0` . |
 | a | **Kötelező paraméter**.<br/>Megadja a bemeneti szöveg nyelvét. A forrás nyelvének a hatókörben szereplő [támogatott nyelvek](./v3-0-languages.md) egyikének kell lennie `dictionary` . |
-| erre: | **Kötelező paraméter**.<br/>Megadja a kimeneti szöveg nyelvét. A célként megadott nyelvnek a hatókörben szereplő [támogatott nyelvek](./v3-0-languages.md) egyikének kell lennie `dictionary` .  | 
+| a következőre: | **Kötelező paraméter**.<br/>Megadja a kimeneti szöveg nyelvét. A célként megadott nyelvnek a hatókörben szereplő [támogatott nyelvek](./v3-0-languages.md) egyikének kell lennie `dictionary` .  | 
 
 A kérelem fejlécei a következők:
 

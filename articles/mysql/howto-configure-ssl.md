@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 07/08/2020
 ms.custom: devx-track-python, devx-track-csharp
 ms.openlocfilehash: 1bedeb752a18d7a0212ede2b34526efb8ea09287
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90905832"
 ---
 # <a name="configure-ssl-connectivity-in-your-application-to-securely-connect-to-azure-database-for-mysql"></a>Az SSL-kapcsolat konfigurálása az alkalmazásban a Azure Database for MySQLhoz való biztonságos csatlakozáshoz
@@ -63,7 +63,7 @@ mysql.exe -h mydemoserver.mysql.database.azure.com -u Username@mydemoserver -p -
 
 A Azure Portal használatával keresse fel a Azure Database for MySQL-kiszolgálót, majd kattintson a **kapcsolatbiztonsági**elemre. A váltógomb használatával engedélyezheti vagy letilthatja az **SSL-kapcsolat érvényesítése** beállítást, majd kattintson a **Mentés**gombra. A Microsoft azt javasolja, hogy mindig engedélyezze az **SSL-kapcsolat betartatása** beállítást a fokozott biztonság érdekében.
 
-:::image type="content" source="./media/howto-configure-ssl/enable-ssl.png" alt-text="Képernyőkép az Azure Portalról az SSL-kapcsolatok kikényszerített Azure Database for MySQL":::
+:::image type="content" source="./media/howto-configure-ssl/enable-ssl.png" alt-text="SSL-konfiguráció mentése":::
 
 ### <a name="using-azure-cli"></a>Az Azure parancssori felület használata
 

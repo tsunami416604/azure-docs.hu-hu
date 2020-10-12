@@ -5,10 +5,10 @@ services: automation
 ms.date: 08/10/2020
 ms.topic: article
 ms.openlocfilehash: 8767687f0b72d3469bef570770ac81fa8300097f
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88055928"
 ---
 # <a name="monitor-runbooks-with-metric-alerts"></a>Runbookok monitorozása metrikariasztásokkal
@@ -46,7 +46,7 @@ A riasztások lehetővé teszik, hogy megadjon egy feltételt a figyeléshez, va
 
 3. A **riasztási logika**szakaszban adja meg a riasztás feltételét és küszöbértékét. A feltétel megadott előnézete az alábbi ábrán látható.
 
-4. A **kiértékelés**alapján területen válassza ki a lekérdezés TimeSpan, és azt, hogy milyen gyakran szeretné futtatni a lekérdezést. Ha például **az elmúlt 5 percben** az **időszakot**választja, és **1 percenként** a **gyakoriságot**, a riasztás az elmúlt 5 percben a feltételnek megfelelő runbookok számát keresi. A lekérdezés percenként fut, és ha a megadott riasztási feltételek már nem találhatók meg egy 5 perces ablakban, a riasztás feloldja magát. Ha végzett, kattintson a **Kész** gombra.
+4. A **kiértékelés**alapján területen válassza ki a lekérdezés TimeSpan, és azt, hogy milyen gyakran szeretné futtatni a lekérdezést. Ha például **az elmúlt 5 percben** az **időszakot**választja, és **1 percenként** a **gyakoriságot**, a riasztás az elmúlt 5 percben a feltételnek megfelelő runbookok számát keresi. A lekérdezés percenként fut, és ha a megadott riasztási feltételek már nem találhatók meg egy 5 perces ablakban, a riasztás feloldja magát. Ha elkészült, kattintson a **kész**gombra.
 
    ![Válasszon ki egy erőforrást a riasztáshoz](./media/automation-alert-activity-log/configure-signal-logic.png)
 
@@ -68,6 +68,6 @@ Ha a riasztási feltételek teljesülnek, a műveleti csoport futtatja a megadot
 
 Ha a metrika már nem a meghatározott küszöbértéken kívül esik, a rendszer inaktiválja a riasztást, és a műveleti csoport futtatja a definiált műveletet. Ha egy e-mail-Művelettípus van kiválasztva, a rendszer elküld egy feloldási e-mailt, amely megoldódott.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * További információ: [riasztások használata Azure Automation runbook elindításához](automation-create-alert-triggered-runbook.md).

@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 06/05/2020
 ms.openlocfilehash: f9f239ea69aaf71e591a447feb300c13a45ba1a4
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90907848"
 ---
 # <a name="latent-dirichlet-allocation-module"></a>Látens Dirichlet kiosztási modul
@@ -188,12 +188,12 @@ A kiszámított indexek kiszámítása után a távolság-alapú hasonlósági m
 |N – gramm|Egész szám|[1; 10]|Kötelező|2|A kivonatolás során generált N-gramm sorrend.|  
 |Normalizálni|Logikai|Igaz vagy hamis|Kötelező|true|A kimenet normalizálása valószínűségek szerint.  Az átalakított adatkészlet a következő lesz: P (témakör&#124;dokumentum), és a szolgáltatás témakörének mátrixa a P (Word&#124;témakör) lesz.|  
 |Az összes beállítás megjelenítése|Logikai|Igaz vagy hamis|Kötelező|Hamis|A scikit-Learn online LDA kapcsolatos további paramétereket jelenít meg.|  
-|Rho paraméter|Float|[0.00001; 1.0]|Akkor érvényes, ha a **minden beállítás megjelenítése** jelölőnégyzet be van jelölve|0,01|Témakör korábbi eloszlása.|  
-|Alfa-paraméter|Float|[0.00001; 1.0]|Akkor érvényes, ha a **minden beállítás megjelenítése** jelölőnégyzet be van jelölve|0,01|A dokumentum korábbi eloszlása című témakör.|  
+|Rho paraméter|Lebegőpontos értékek|[0.00001; 1.0]|Akkor érvényes, ha a **minden beállítás megjelenítése** jelölőnégyzet be van jelölve|0,01|Témakör korábbi eloszlása.|  
+|Alfa-paraméter|Lebegőpontos értékek|[0.00001; 1.0]|Akkor érvényes, ha a **minden beállítás megjelenítése** jelölőnégyzet be van jelölve|0,01|A dokumentum korábbi eloszlása című témakör.|  
 |A dokumentumok becsült száma|Egész szám|[1; int. MaxValue|Akkor érvényes, ha a **minden beállítás megjelenítése** jelölőnégyzet be van jelölve|1000|A dokumentumok becsült száma. A `total_samples` paraméternek felel meg.|  
 |A köteg mérete|Egész szám|[1; 1024]|Akkor érvényes, ha a **minden beállítás megjelenítése** jelölőnégyzet be van jelölve|32|A köteg mérete.|  
 |A tanulási sebesség frissítési ütemtervében használt iteráció kezdeti értéke|Egész szám|[0; int. MaxValue|Akkor érvényes, ha a **minden beállítás megjelenítése** jelölőnégyzet be van jelölve|0|Kezdeti érték, amely a korai iterációk downweights képzési arányát. A `learning_offset` paraméternek felel meg.|  
-|A frissítések során az iterációra alkalmazott teljesítmény|Float|[0.0; 1.0]|Akkor érvényes, ha a **minden beállítás megjelenítése** jelölőnégyzet be van jelölve|0,5|A tanulási arány szabályozása érdekében a rendszer az iterációk számára alkalmazza a szükséges teljesítményt. A `learning_decay` paraméternek felel meg. |  
+|A frissítések során az iterációra alkalmazott teljesítmény|Lebegőpontos értékek|[0.0; 1.0]|Akkor érvényes, ha a **minden beállítás megjelenítése** jelölőnégyzet be van jelölve|0,5|A tanulási arány szabályozása érdekében a rendszer az iterációk számára alkalmazza a szükséges teljesítményt. A `learning_decay` paraméternek felel meg. |  
 |Betanítási Ismétlések száma|Egész szám|[1; 1024]|Akkor érvényes, ha a **minden beállítás megjelenítése** jelölőnégyzet be van jelölve|25|A betanítási Ismétlések száma.|  
 |Ngrams-szótár összeállítása|Logikai|Igaz vagy hamis|Akkor érvényes, ha a **minden beállítás megjelenítése** jelölőnégyzet *nincs* bejelölve|Igaz|Létrehozza a ngrams szótárát a számítástechnikai LDA előtt. Modellek ellenőrzése és értelmezése hasznos.|  
 |Ngram-szótár maximális mérete|Egész szám|[1; int. MaxValue|Akkor érvényes, ha a **ngrams-összeállítási szótár** értéke **true (igaz** )|20000|A ngrams szótár maximális mérete Ha a bemeneti tokenek száma meghaladja ezt a méretet, ütközések merülhetnek fel.|  

@@ -4,10 +4,10 @@ description: Alkalmazások teljesítményének figyelése Azure-beli virtuális 
 ms.topic: conceptual
 ms.date: 08/26/2019
 ms.openlocfilehash: 8b025c5196d65234a632bd1f939bc1116b72dce0
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87024632"
 ---
 # <a name="deploy-the-azure-monitor-application-insights-agent-on-azure-virtual-machines-and-azure-virtual-machine-scale-sets"></a>A Azure Monitor Application Insights-ügynök üzembe helyezése Azure-beli virtuális gépeken és Azure-beli virtuálisgép-méretezési csoportokban

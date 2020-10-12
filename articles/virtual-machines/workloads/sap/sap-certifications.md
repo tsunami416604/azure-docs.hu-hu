@@ -17,10 +17,10 @@ ms.date: 04/21/2020
 ms.author: juergent
 ms.custom: ''
 ms.openlocfilehash: f78d5f839c5dd7816ae28eeed175503427abb43c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87035842"
 ---
 # <a name="sap-certifications-and-configurations-running-on-microsoft-azure"></a>Microsoft Azureon futó SAP-tanúsítványok és-konfigurációk
@@ -34,7 +34,7 @@ Hivatkozik
 
 | SAP-termék | Támogatott operációs rendszer | Azure-ajánlatok |
 | --- | --- | --- |
-| SAP HANA fejlesztői kiadás (beleértve a HANA ügyfélszoftvert, amely a SQLODBC, a ODBO, az ODBC, a JDBC-illesztőprogramok, a HANA Studio és a HANA-adatbázis) | Red Hat Enterprise Linux, SUSE Linux Enterprise | D sorozatú VM-család |
+| SAP HANA fejlesztői kiadás (beleértve a HANA ügyfélszoftvert is, amely SQLODBC, csak ODBO-Windows, ODBC, JDBC illesztőprogramok, HANA Studio és HANA Database) | Red Hat Enterprise Linux, SUSE Linux Enterprise | D sorozatú VM-család |
 | Business One on HANA | SUSE Linux Enterprise | DS14_v2, M32ts, M32ls, M64ls, M64s <br /> [SAP HANA Certified IaaS platformok](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure%23SAP%20Business%20One) |
 | SAP S/4 HANA | Red Hat Enterprise Linux, SUSE Linux Enterprise | A GS5 ellenőrzött rendelkezésre állása. Teljes körű támogatás a M64s, M64ms, M128s, M128ms, M64ls, M32ls, M32ts, M208s_v2, M208ms_v2, M416s_v2, M416ms_v2, <br /> SAP HANA az Azure-ban (nagyméretű példányok) [SAP HANA Certified IaaS platformon](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) |
 | Suite on HANA, OLTP | Red Hat Enterprise Linux, SUSE Linux Enterprise | M64s, M64ms, M128s, M128ms, M64ls, M32ls, M32ts, M208s_v2, M208ms_v2, <br /> M416s_v2, M416ms_v2, SAP HANA az Azure-ban (nagyméretű példányok) [SAP HANA tanúsított IaaS platformok](https://www.sap.com/dmc/exp/2014-09-02-hana-hardware/enEN/iaas.html#categories=Microsoft%20Azure) |
@@ -54,7 +54,7 @@ Hivatkozik
 | --- | --- | --- | --- |
 | SAP Business Suite szoftver | Windows, SUSE Linux Enterprise, Red Hat Enterprise Linux, Oracle Linux |SQL Server, Oracle (csak Windows és Oracle Linux), DB2, SAP bemutató |A5-től A11-ig, a D14, a DS11 a DS15_v2 DS11_v2 DS14, a GS1, a GS5, a M64s, a D64s_v3 D2s_v3 a D2as_v4 D64as_v4, E2s_v3 a E64s_v3, E2as_v4 D11, M64ms, M128s, M128ms, M64ls, M32ls, M32ts,, E64as_v4, M208s_v2, M208ms_v2, M416s_v2 |
 | SAP Business all-in-One | Windows, SUSE Linux Enterprise, Red Hat Enterprise Linux, Oracle Linux |SQL Server, Oracle (csak Windows és Oracle Linux), DB2, SAP bemutató |A5-től A11-ig, a D14, a DS11 a DS15_v2 DS11_v2 DS14, a GS1, a GS5, a M64s, a D64s_v3 D2s_v3 a D2as_v4 D64as_v4, E2s_v3 a E64s_v3, E2as_v4 D11, M64ms, M128s, M128ms, M64ls, M32ls, M32ts,, E64as_v4, M208s_v2, M208ms_v2, M416s_v2 |
-| SAP BusinessObjects BI | Windows |n.a. |A5-től A11-ig, a D14, a DS11 a DS15_v2 DS11_v2 DS14, a GS1, a GS5, a M64s, a D64s_v3 D2s_v3 a D2as_v4 D64as_v4, E2s_v3 a E64s_v3, E2as_v4 D11, M64ms, M128s, M128ms, M64ls, M32ls, M32ts,, E64as_v4, M208s_v2, M208ms_v2, M416s_v2 |
+| SAP BusinessObjects BI | Windows |N/A |A5-től A11-ig, a D14, a DS11 a DS15_v2 DS11_v2 DS14, a GS1, a GS5, a M64s, a D64s_v3 D2s_v3 a D2as_v4 D64as_v4, E2s_v3 a E64s_v3, E2as_v4 D11, M64ms, M128s, M128ms, M64ls, M32ls, M32ts,, E64as_v4, M208s_v2, M208ms_v2, M416s_v2 |
 | SAP NetWeaver | Windows, SUSE Linux Enterprise, Red Hat Enterprise Linux, Oracle Linux |SQL Server, Oracle (csak Windows és Oracle Linux), DB2, SAP bemutató |A5-től A11-ig, a D14, a DS11 a DS15_v2 DS11_v2 DS14, a GS1, a GS5, a M64s, a D64s_v3 D2s_v3 a D2as_v4 D64as_v4, E2s_v3 a E64s_v3, E2as_v4 D11, M64ms, M128s, M128ms, M64ls, M32ls, M32ts,, E64as_v4, M208s_v2, M208ms_v2, M416s_v2 |
 
 ## <a name="other-sap-workload-supported-on-azure"></a>Az Azure-ban támogatott egyéb SAP-munkaterhelések

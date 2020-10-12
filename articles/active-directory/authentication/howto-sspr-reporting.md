@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: rhicock
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9118a99f285dedfe0b76e890db001627e4f85969
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89657135"
 ---
 # <a name="reporting-options-for-azure-ad-password-management"></a>Az Azure AD-jelszókezelés jelentéskészítési lehetőségei
@@ -72,7 +72,7 @@ A következő táblázat a Azure Portal egyes oszlopaihoz beállítható külön
 | --- | --- |
 | Regisztrált adatkezelés |**Másodlagos e-mail**: a felhasználó egy másodlagos e-mail-vagy hitelesítési e-mailt használt a hitelesítéshez.<p><p>**Irodai telefon**: a felhasználó egy Office-telefont használt a hitelesítéshez.<p>**Mobiltelefon**: a felhasználó mobiltelefont vagy hitelesítési telefont használt a hitelesítéshez.<p>**Biztonsági kérdések**: a felhasználó biztonsági kérdéseket használt a hitelesítéshez.<p>**Az előző módszerek, például a másodlagos e-mailek és a mobiltelefon bármely kombinációja**: akkor következik be, amikor kétkapus házirend van megadva, és a felhasználó a jelszó-visszaállítási kérelem hitelesítéséhez használt két módszert jeleníti meg. |
 
-## <a name="self-service-password-management-activity-types"></a>Önkiszolgáló jelszavas felügyeleti tevékenységtípusok
+## <a name="self-service-password-management-activity-types"></a>Self-Service jelszavas kezelés tevékenységtípusok
 
 A következő tevékenységtípusok jelennek meg az **önkiszolgáló jelszavas kezelés** naplózási eseményének kategóriájában:
 

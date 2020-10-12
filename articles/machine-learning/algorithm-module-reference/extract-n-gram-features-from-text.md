@@ -10,10 +10,10 @@ author: likebupt
 ms.author: keli19
 ms.date: 09/01/2019
 ms.openlocfilehash: c21c63bdb64f7c15c049bfe4039ef47cea689922
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90907970"
 ---
 # <a name="extract-n-gram-features-from-text-module-reference"></a>N-Gram-funkciók kinyerése a szöveges modul hivatkozása alapján
@@ -125,7 +125,7 @@ A szószedet tartalmazza az n-Gram-szótárt, amely az elemzés részeként gene
 + **DF**: az n-gramm kifejezés gyakorisági pontszáma az eredeti corpusban.
 + **IDF**: az eredeti Corpus n-grammjának inverz dokumentumának gyakorisági pontszáma.
 
-Manuálisan frissítheti ezt az adatkészletet, de hibákat is bevezethet. Például:
+Manuálisan frissítheti ezt az adatkészletet, de hibákat is bevezethet. Példa:
 
 * A rendszer hibát jelez, ha a modul ismétlődő sorokat talál a bemeneti szókincsben található ugyanazzal a kulccsal. Ügyeljen arra, hogy a szókincsben ne legyen két sor ugyanazzal a Szóval.
 * A szókincs-adatkészletek bemeneti sémájának pontosan egyeznie kell, beleértve az oszlopnevek és az oszlopok típusát is. 

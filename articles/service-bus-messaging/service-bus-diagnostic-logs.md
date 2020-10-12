@@ -4,10 +4,10 @@ description: Ez a cikk a Azure Service Bus számára elérhető összes operatí
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: f227f5a988ccd51425b4f43e87b4ed4d9af74e1f
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88064434"
 ---
 # <a name="enable-diagnostics-logs-for-service-bus"></a>Diagnosztikai naplók engedélyezése a Service Bushoz
@@ -76,7 +76,7 @@ Az üzemeltetési naplók a következő kezelési műveleteket rögzítik:
 
 Az operatív naplók alapértelmezés szerint le vannak tiltva. A diagnosztikai naplók engedélyezéséhez tegye a következőket:
 
-1. A [Azure Portal](https://portal.azure.com)nyissa meg a Azure Service Bus névteret, majd a **figyelés**területen válassza a **diagnosztikai beállítások**elemet.
+1. A [Azure Portal](https://portal.azure.com)nyissa meg a Azure Service Bus névteret, majd a **figyelés**területen válassza a  **diagnosztikai beállítások**elemet.
 
    ![A "diagnosztikai beállítások" hivatkozás](./media/service-bus-diagnostic-logs/image1.png)
 
@@ -103,7 +103,7 @@ Az új beállítások körülbelül 10 percen belül lépnek érvénybe. A napl�
 
 A diagnosztikai beállítások konfigurálásával kapcsolatos további információkért tekintse meg az [Azure Diagnostics-naplók áttekintését](../azure-monitor/platform/platform-logs-overview.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Service Busról további információt a következő témakörben talál:
 

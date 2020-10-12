@@ -13,10 +13,10 @@ ms.date: 01/22/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 462d54a9d89d6f03aed5e221fa02609da786c8c1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84702311"
 ---
 # <a name="move-data-to-and-from-azure-table-using-azure-data-factory"></a>Adatok áthelyezése az Azure Table-be és onnan az Azure Data Factory használatával
@@ -82,7 +82,7 @@ A **AzureTableSource** a következő tulajdonságokat támogatja a typePropertie
 | Tulajdonság | Leírás | Megengedett értékek | Kötelező |
 | --- | --- | --- | --- |
 | azureTableSourceQuery |Az egyéni lekérdezés használatával olvashatja el az adatolvasást. |Azure Table lekérdezési karakterlánc. Tekintse meg a példákat a következő szakaszban. |Nem. Ha egy Táblanév azureTableSourceQuery nélkül van megadva, a rendszer a táblából származó összes rekordot átmásolja a célhelyre. Ha a azureTableSourceQuery is meg van adva, a rendszer a lekérdezésnek megfelelő rekordokat a célhelyre másolja. |
-| azureTableSourceIgnoreTableNotFound |Jelezze, hogy nem létezik-e a lenyelés a tábla kivételével. |IGAZ<br/>HAMIS |No |
+| azureTableSourceIgnoreTableNotFound |Jelezze, hogy nem létezik-e a lenyelés a tábla kivételével. |IGAZ<br/>HAMIS |Nem |
 
 ### <a name="azuretablesourcequery-examples"></a>azureTableSourceQuery-példák
 Ha az Azure Table oszlop karakterlánc típusú:
@@ -101,10 +101,10 @@ A **AzureTableSink** a következő tulajdonságokat támogatja a typeProperties 
 
 | Tulajdonság | Leírás | Megengedett értékek | Kötelező |
 | --- | --- | --- | --- |
-| azureTableDefaultPartitionKeyValue |A fogadó által használható alapértelmezett partíciós kulcs értéke. |Egy karakterlánc-érték. |No |
-| azureTablePartitionKeyName |Adja meg annak az oszlopnak a nevét, amelynek értékeit partíciós kulcsként használja a rendszer. Ha nincs megadva, a rendszer a AzureTableDefaultPartitionKeyValue használja a partíciós kulcsként. |Egy oszlop neve. |No |
-| azureTableRowKeyName |Adja meg annak az oszlopnak a nevét, amelynek az oszlop értékeit a rendszer a sor kulcsaként használja. Ha nincs megadva, használja az egyes sorok GUID azonosítóját. |Egy oszlop neve. |No |
-| azureTableInsertType |Az adatgyűjtés módja az Azure Table-be.<br/><br/>Ez a tulajdonság azt szabályozza, hogy a kimeneti táblában található, egyező partícióval és sorokkal rendelkező meglévő sorok felülírják vagy összevonták-e az értékeket. <br/><br/>Ha szeretné megtudni, hogyan működnek ezek a beállítások (egyesítés és csere), tekintse meg az [entitás beszúrása és egyesítése](https://msdn.microsoft.com/library/azure/hh452241.aspx) , illetve az [entitások beszúrása vagy cseréje](https://msdn.microsoft.com/library/azure/hh452242.aspx) témaköröket. <br/><br> Ez a beállítás a sor szintjére vonatkozik, nem a tábla szintjére, és egyik sem törli a bemeneti tábla azon sorait, amelyek nem szerepelnek a bemenetben. |egyesítés (alapértelmezett)<br/>csere |No |
+| azureTableDefaultPartitionKeyValue |A fogadó által használható alapértelmezett partíciós kulcs értéke. |Egy karakterlánc-érték. |Nem |
+| azureTablePartitionKeyName |Adja meg annak az oszlopnak a nevét, amelynek értékeit partíciós kulcsként használja a rendszer. Ha nincs megadva, a rendszer a AzureTableDefaultPartitionKeyValue használja a partíciós kulcsként. |Egy oszlop neve. |Nem |
+| azureTableRowKeyName |Adja meg annak az oszlopnak a nevét, amelynek az oszlop értékeit a rendszer a sor kulcsaként használja. Ha nincs megadva, használja az egyes sorok GUID azonosítóját. |Egy oszlop neve. |Nem |
+| azureTableInsertType |Az adatgyűjtés módja az Azure Table-be.<br/><br/>Ez a tulajdonság azt szabályozza, hogy a kimeneti táblában található, egyező partícióval és sorokkal rendelkező meglévő sorok felülírják vagy összevonták-e az értékeket. <br/><br/>Ha szeretné megtudni, hogyan működnek ezek a beállítások (egyesítés és csere), tekintse meg az [entitás beszúrása és egyesítése](https://msdn.microsoft.com/library/azure/hh452241.aspx) , illetve az [entitások beszúrása vagy cseréje](https://msdn.microsoft.com/library/azure/hh452242.aspx) témaköröket. <br/><br> Ez a beállítás a sor szintjére vonatkozik, nem a tábla szintjére, és egyik sem törli a bemeneti tábla azon sorait, amelyek nem szerepelnek a bemenetben. |egyesítés (alapértelmezett)<br/>csere |Nem |
 | writeBatchSize |Beilleszti az adatbevitelt az Azure-táblába, amikor a writeBatchSize vagy a writeBatchTimeout találat. |Egész szám (sorok száma) |Nem (alapértelmezett: 10000) |
 | writeBatchTimeout |Beilleszti az adatbevitelt az Azure-táblába a writeBatchSize vagy a writeBatchTimeout találatakor |időtartomány<br/><br/>Például: "00:20:00" (20 perc) |Nem (alapértelmezett érték a Storage-ügyfél alapértelmezett időtúllépési értéke 90 mp) |
 

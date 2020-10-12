@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7d6689b4b67b8462e983ae9b111e0fbc60c422b7
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89657110"
 ---
 # <a name="next-steps-and-how-to-manage-azure-ad-connect"></a>További lépések és a Azure AD Connect kezelése
@@ -72,7 +72,7 @@ Az alábbi táblázat a feladatok összegzését és az egyes feladatok rövid l
 
 ![További feladatok listája](./media/how-to-connect-post-installation/addtasks2.png)
 
-| További feladat | Description |
+| További feladat | Leírás |
 | --- | --- |
 |**Adatvédelmi beállítások**|Megtekintheti, hogy milyen telemetria-adatmegosztások vannak a Microsofttal.|
 |**Aktuális konfiguráció megtekintése**|Tekintse meg az aktuális Azure AD Connect megoldást.  Ide tartozik az általános beállítások, a szinkronizált könyvtárak és a szinkronizálási beállítások. |

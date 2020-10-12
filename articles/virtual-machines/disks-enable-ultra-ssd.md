@@ -9,10 +9,10 @@ ms.author: rogarana
 ms.subservice: disks
 ms.custom: references_regions
 ms.openlocfilehash: e57317dce64b58e5c92684152d840955a30df660
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91441186"
 ---
 # <a name="using-azure-ultra-disks"></a>Az Azure Ultra Disks használata
@@ -407,7 +407,7 @@ Update-AzDisk -ResourceGroupName $resourceGroup -DiskName $diskName -DiskUpdate 
 ```
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Azure Ultra Disks használata az Azure Kubernetes Service-ben (előzetes verzió)](../aks/use-ultra-disks.md).
 - [Helyezze át a naplófájlt egy ultra-lemezre](../azure-sql/virtual-machines/windows/storage-migrate-to-ultradisk.md).

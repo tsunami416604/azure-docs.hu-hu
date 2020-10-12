@@ -4,10 +4,10 @@ description: Az Azure-biztonsági teljesítményteszt tervmintájának áttekint
 ms.date: 06/02/2020
 ms.topic: sample
 ms.openlocfilehash: 4113f350c21087dbda5f69d9c3981e2d169ffc00
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89651897"
 ---
 # <a name="azure-security-benchmark-blueprint-sample"></a>Az Azure Security benchmark tervének mintája
@@ -24,80 +24,80 @@ Az Azure-tervezetek Azure Security benchmark Blueprint-minta üzembe helyezésé
 
 > [!div class="checklist"]
 > - Új terv létrehozása a mintából
-> - A minta másolatának megjelölése **közzétettként**
-> - A terv másolatának kiosztása meglévő előfizetéshez
+> - A minta másolatának megjelölése **Közzétettként**
+> - A terv másolatának hozzárendelése egy meglévő előfizetéshez
 
 Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free), mielőtt hozzákezd.
 
 ### <a name="create-blueprint-from-sample"></a>Terv létrehozása mintából
 
-Először is implementálja a terv mintáját úgy, hogy létrehoz egy új tervet a környezetben a minta kezdőként való használatával.
+Először a tervminta implementálásához hozzon létre egy új tervet a környezetében, és kiindulópontként használja a mintát.
 
-1. A bal oldali panelen válassza a **Minden szolgáltatás** lehetőséget. Keresse meg és válassza ki a **tervrajzokat**.
+1. A bal oldali panelen válassza a **Minden szolgáltatás** lehetőséget. Keresse meg és válassza ki a **Tervek** elemet.
 
-1. A bal oldali **első lépések** lapon kattintson a **Létrehozás** gombra a _terv létrehozása_területen.
+1. A bal oldalon válassza az **Első lépések** oldalt, és válassza a _Terv létrehozása_ területen a **Létrehozás** lehetőséget.
 
 1. Keresse meg az **Azure Security teljesítményteszt** tervezetét _más minták_ alatt, és válassza ki a nevet a minta kiválasztásához.
 
-1. Adja meg a tervezet mintájának _alapjait_ :
+1. Adja meg a tervminta _alapvető beállításait_:
 
    - **Terv neve**: adjon meg egy nevet az Azure Security teljesítményteszt tervezetének mintája számára.
    - **Definíció helye**: használja a három pontot, és válassza ki a felügyeleti csoportot a minta másolatának mentéséhez.
 
-1. Válassza ki az oldal tetején található _összetevők fület_ , vagy a **következőt:** összetevők az oldal alján.
+1. Válassza az oldal tetején lévő _Összetevők_ lapot, vagy az oldal alján lévő **Következő: Összetevők** lehetőséget.
 
-1. Tekintse át a terv mintáját alkotó összetevők listáját. Számos összetevőhöz vannak olyan paraméterek, amelyeket később definiálunk. Válassza a **Piszkozat mentése** lehetőséget, amikor befejezte a tervezet mintájának áttekintését.
+1. Tekintse át a tervmintát alkotó összetevők listáját. Számos összetevőnek olyan paraméterei vannak, amelyeket később definiálunk. Válassza a **Piszkozat mentése** lehetőséget, amikor végzett a tervminta áttekintésével.
 
-### <a name="publish-the-sample-copy"></a>A minta másolatának közzététele
+### <a name="publish-the-sample-copy"></a>Ugyanazon másolat közzététele
 
-A terv mintájának másolata már létre lett hozva a környezetében. A rendszer **Piszkozat** módban jön létre, és **közzé** kell tenni ahhoz, hogy hozzá lehessen rendelni és telepíteni lehessen. A terv mintájának másolata testreszabható a környezet és a szükséges igények alapján, de ez a módosítás elmozdulhat az Azure biztonsági teljesítménytesztekkel kapcsolatos javaslatok segítségével.
+A tervminta másolata létrejött a környezetében. **Piszkozat** módban jött létre, és **közzé kell tenni**, mielőtt hozzárendelhetné és üzembe helyezhetné. A terv mintájának másolata testreszabható a környezet és a szükséges igények alapján, de ez a módosítás elmozdulhat az Azure biztonsági teljesítménytesztekkel kapcsolatos javaslatok segítségével.
 
-1. A bal oldali panelen válassza a **Minden szolgáltatás** lehetőséget. Keresse meg és válassza ki a **tervrajzokat**.
+1. A bal oldali panelen válassza a **Minden szolgáltatás** lehetőséget. Keresse meg és válassza ki a **Tervek** elemet.
 
-1. Válassza a bal oldali **terv-definíciók** lapot. A szűrők használatával megkeresheti a tervezet mintájának másolatát, majd kiválaszthatja.
+1. Válassza a bal oldali **Tervdefiníciók** oldalt. A szűrőkkel keresse meg a tervminta másolatát, majd válassza ki.
 
-1. Válassza a **terv közzététele** lehetőséget az oldal tetején. A jobb oldalon található új lapon adjon meg egy **verziót** a tervezet mintájának másolatához. Ez a tulajdonság akkor hasznos, ha később módosítja a módosítást. Adjon meg olyan **módosítási megjegyzéseket** , mint az "első verzió, amely az Azure Security teljesítményteszt tervezetének mintájában megjelent." Ezután válassza a **Közzététel** elemet az oldal alján.
+1. Válassza ki az oldal tetején található **Terv közzététele** lehetőséget. A jobb oldalt megjelenő új oldalon adja meg a tervminta másolatának **verzióját**. Ez a tulajdonság akkor hasznos, ha később módosításokat végez. Adjon meg olyan **módosítási megjegyzéseket** , mint az "első verzió, amely az Azure Security teljesítményteszt tervezetének mintájában megjelent." Ezután válassza a lap alján található **Közzététel** lehetőséget.
 
-### <a name="assign-the-sample-copy"></a>A minta másolatának kiosztása
+### <a name="assign-the-sample-copy"></a>Ugyanazon másolat hozzárendelése
 
-Miután a tervezet mintájának **közzététele**sikeresen megtörtént, hozzárendelhető egy előfizetéshez, amely a felügyeleti csoporton belül lett mentve. Ezzel a lépéssel megadhatja, hogy az egyes központi telepítések egyediek legyenek-e.
+Miután a tervezet mintájának **közzététele**sikeresen megtörtént, hozzárendelhető egy előfizetéshez, amely a felügyeleti csoporton belül lett mentve. Ebben a lépésben adja meg a paramétereket, hogy a tervminta másolatának minden üzemelő példánya egyedi legyen.
 
-1. A bal oldali panelen válassza a **Minden szolgáltatás** lehetőséget. Keresse meg és válassza ki a **tervrajzokat**.
+1. A bal oldali panelen válassza a **Minden szolgáltatás** lehetőséget. Keresse meg és válassza ki a **Tervek** elemet.
 
-1. Válassza a bal oldali **terv-definíciók** lapot. A szűrők használatával megkeresheti a tervezet mintájának másolatát, majd kiválaszthatja.
+1. Válassza a bal oldali **Tervdefiníciók** oldalt. A szűrőkkel keresse meg a tervminta másolatát, majd válassza ki.
 
-1. Válassza a terv **kiosztása** elemet a terv definíciója oldal tetején.
+1. Válassza ki a Tervdefiníció oldal tetején található **Terv hozzárendelése** lehetőséget.
 
-1. Adja meg a tervrajz-hozzárendelés paramétereinek értékét:
+1. Adja meg a tervhozzárendelés paraméterértékeit:
 
    - Alapvető beállítások
 
-     - **Előfizetések**: válasszon ki egy vagy több olyan előfizetést, amely a felügyeleti csoportban található, és a terv mintájának másolatát mentette. Ha egynél több előfizetést választ ki, a rendszer minden megadott paraméterrel létrehoz egy hozzárendelést.
+     - **Előfizetések**: válasszon ki egy vagy több olyan előfizetést, amely a felügyeleti csoportban található, és a terv mintájának másolatát mentette. Ha egynél több előfizetést választ ki, mindegyikhez létrejön egy hozzárendelés a beírt paraméterekkel.
      - **Hozzárendelés neve**: a név előre ki van töltve a terv neve alapján.
-       Szükség szerint módosítsa a változást, vagy hagyja a következőt:.
+       Módosítsa igény szerint, vagy hagyja meg az eredetit.
      - **Hely**: válassza ki azt a régiót, amelyben létre kívánja hozni a felügyelt identitást. Az Azure Blueprint a hozzárendelt tervben lévő összes összetevő üzembe helyezéséhez ezt a felügyelt identitást használja. További információ: [felügyelt identitások az Azure-erőforrásokhoz](../../../active-directory/managed-identities-azure-resources/overview.md).
      - **Terv definíciójának verziója**: válasszon egy **közzétett** verziót a terv mintájának másolatáról.
 
    - Hozzárendelés zárolása
 
-     Válassza ki a környezethez tartozó terv zárolási beállítását. További információkat talál a [terv-erőforrások zárolásáról](../concepts/resource-locking.md) szóló cikkben.
+     Válassza ki a környezetének megfelelő tervzárolási beállítást. További információkat talál a [terv-erőforrások zárolásáról](../concepts/resource-locking.md) szóló cikkben.
 
    - Felügyelt identitás
 
      Hagyja meg az alapértelmezett _rendszerhez rendelt_ felügyelt identitás beállítást.
 
-   - Összetevő paramétereinek
+   - Összetevő paraméterei
 
-     Az ebben a szakaszban meghatározott paraméterek a definiált összetevőre vonatkoznak. Ezek a paraméterek [dinamikus paraméterek](../concepts/parameters.md#dynamic-parameters) , mert a terv hozzárendelése során vannak meghatározva. A teljes listát vagy az összetevő paramétereit és azok leírását lásd: összetevő- [Paraméterek táblázata](#artifact-parameters-table).
+     Az ebben a szakaszban megadott paraméterek arra az összetevőre érvényesek, amelyben meg lettek határozva. Ezek a paraméterek [dinamikus paraméterek](../concepts/parameters.md#dynamic-parameters) , mert a terv hozzárendelése során vannak meghatározva. A teljes listát vagy az összetevő paramétereit és azok leírását lásd: összetevő- [Paraméterek táblázata](#artifact-parameters-table).
 
-1. Az összes paraméter megadása után válassza a lap alján található **hozzárendelés** elemet. A terv-hozzárendelés létrejött, és az összetevő üzembe helyezése megkezdődik. Az üzembe helyezés nagyjából egy órát vesz igénybe. Az üzembe helyezés állapotának megtekintéséhez nyissa meg a terv-hozzárendelést.
+1. Az összes paraméter megadása után válassza az oldal alján lévő **Hozzárendelés** lehetőséget. Létrejön a terv hozzárendelése, és megkezdődik az összetevő üzembe helyezése. Az üzembe helyezés nagyjából egy órát vesz igénybe. Az üzembe helyezés állapotának ellenőrzéséhez nyissa meg a terv hozzárendelését.
 
 > [!WARNING]
-> Az Azure BluePrints szolgáltatás és a beépített tervrajzi minták **díjmentesek**. Az Azure-erőforrások [díjszabása termékenként](https://azure.microsoft.com/pricing/)történik. A [díjszabási számológép](https://azure.microsoft.com/pricing/calculator/) használatával megbecsülheti a tervrajzi minta által üzembe helyezett erőforrások futtatásának költségeit.
+> Az Azure Blueprints szolgáltatás és a beépített tervminták **ingyenesek**. Az Azure-erőforrások [díjszabása termékalapú](https://azure.microsoft.com/pricing/). A [díjkalkulátorral](https://azure.microsoft.com/pricing/calculator/) megbecsülheti a tervminta által üzembe helyezett erőforrások futtatásának költségét.
 
 ### <a name="artifact-parameters-table"></a>Összetevő-paraméterek táblázata
 
-A következő táblázat a tervrajz-összetevő paramétereinek listáját tartalmazza:
+A következő táblázat a terv összetevő-paramétereinek listáját tartalmazza:
 
 |Összetevő neve|Összetevő típusa|Paraméter neve|Leírás|
 |-|-|-|-|
@@ -114,7 +114,7 @@ A következő táblázat a tervrajz-összetevő paramétereinek listáját tarta
 |Azure Security teljesítményteszt-javaslatok naplózása és konkrét támogató virtuálisgép-bővítmények üzembe helyezése|Szabályzat-hozzárendelés|Legújabb Windows Python-verzió|A App Services legújabb támogatott Python-verziója|
 |Azure Security teljesítményteszt-javaslatok naplózása és konkrét támogató virtuálisgép-bővítmények üzembe helyezése|Szabályzat-hozzárendelés|Legújabb Linux Python-verzió|A App Services legújabb támogatott Python-verziója|
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További cikkek a tervekről és a használatukról:
 

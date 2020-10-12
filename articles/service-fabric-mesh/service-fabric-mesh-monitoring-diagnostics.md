@@ -7,10 +7,10 @@ ms.date: 03/19/2019
 ms.author: srrengar
 ms.custom: mvc, devcenter
 ms.openlocfilehash: e940f0cf0d1547b317cd9e7bd15ac5486d5e70b2
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86248407"
 ---
 # <a name="monitoring-and-diagnostics"></a>Monitorozás és diagnosztika
@@ -49,7 +49,7 @@ A rácsvonal-környezet a tárolók működésének módját jelző néhány mé
 | MemoryUtilization | ActualMem/AllocatedMem százalékként | % |
 | AllocatedCpu | Azure Resource Manager sablonként lefoglalt CPU | Millicores |
 | AllocatedMemory | Lefoglalt memória Azure Resource Manager sablonként | MB |
-| ActualCpu | CPU-használat | Millicores |
+| ActualCpu | Processzorhasználat | Millicores |
 | ActualMemory | Memóriahasználat | MB |
 | Tároló állapota: | 0 – érvénytelen: a tároló állapota ismeretlen <br> 1 – függőben: a tároló az indítást ütemezte <br> 2 – kezdő: a tároló a kezdési folyamatban van <br> 3 – elindítva: a tároló sikeresen elindult <br> 4 – Leállítás: a tároló leállítása folyamatban van <br> 5 – leállítva: a tároló sikeresen leállt | N/A |
 | ApplicationStatus | 0 – ismeretlen: az állapot nem olvasható be. <br> 1 – kész: az alkalmazás sikeresen fut <br> 2 – verziófrissítés: folyamatban van egy frissítés <br> 3 – létrehozás: folyamatban van az alkalmazás létrehozása <br> 4 – törlés: az alkalmazás törlése folyamatban van <br> 5 – sikertelen: az alkalmazás telepítése nem sikerült | N/A |
@@ -116,6 +116,6 @@ In addition to the metrics explorer, we also have a dashboard available out of t
 ![Container Insights](./media/service-fabric-mesh-monitoring-diagnostics/containerinsights.png)
 -->
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * A Service Fabric Meshsel kapcsolatos további információkért olvassa el a [Service Fabric Mesh áttekintésével](service-fabric-mesh-overview.md) foglalkozó cikket.
 * Ha többet szeretne megtudni a Azure Monitor metrikák parancsairól, tekintse meg a [Azure monitor CLI-docs](/cli/azure/monitor/metrics?view=azure-cli-latest#az-monitor-metrics-list)című témakört.

@@ -13,10 +13,10 @@ ms.custom: seo-lt-2019
 ms.topic: troubleshooting
 ms.date: 02/20/2020
 ms.openlocfilehash: 2db941edef93b1e836e82753a6d6016adb977e65
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91322597"
 ---
 # <a name="troubleshoot-dms-errors-when-connecting-to-source-databases"></a>A forrásadatbázisokhoz való csatlakozás során fellépő DMS-hibák elhárítása
@@ -58,7 +58,7 @@ A forrás AWS RDS PostgreSQL-adatbázishoz való csatlakozással kapcsolatos leh
 | Hiba         | Ok és hibaelhárítás részletei |
 | ------------- | ------------- |
 | **Hiba [101]**[08001] – a csatlakoztatás sikertelen. HIBA [08001] időkorlát lejárt. | Ez a hiba akkor fordul elő, ha a postgres-illesztő nem tud csatlakozni a forráskiszolgálóról. A probléma megoldásához tekintse meg a táblázat alatti megjegyzésben felsorolt hibaelhárítási dokumentumokat, majd próbálkozzon újra. |
-| **Hiba: a (z) wal_level paraméter értéke {Value}. A replikáció engedélyezéséhez módosítsa a "logikai" értékre.** | Ez a hiba akkor fordul elő, ha a wal_level paraméter értéke helytelen. A probléma megoldásához módosítsa az RDS. logical_replication a (z) paraméterben az 1 értékre, majd indítsa újra a példányt. További információkért lásd: [Előfeltételek az Azure PostgreSQL-re való áttelepítéshez a DMS](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online#prerequisites) vagy [a PostgreSQL használatával az Amazon RDS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_PostgreSQL.html)-ben. |
+| **Hiba: a (z) wal_level paraméter értéke {Value}. A replikáció engedélyezéséhez módosítsa a "logikai" értékre.** | Ez a hiba akkor fordul elő, ha a wal_level paraméter értéke helytelen. A probléma megoldásához módosítsa a paraméter-csoport rds.logical_replication értékét 1-re, majd indítsa újra a példányt. További információkért lásd: [Előfeltételek az Azure PostgreSQL-re való áttelepítéshez a DMS](https://docs.microsoft.com/azure/dms/tutorial-postgresql-azure-postgresql-online#prerequisites) vagy [a PostgreSQL használatával az Amazon RDS](https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/CHAP_PostgreSQL.html)-ben. |
 
 > [!NOTE]
 > A forrás AWS RDS PostgreSQL-adatbázishoz való csatlakozással kapcsolatos hibák elhárításával kapcsolatban tekintse meg a következő forrásokat:

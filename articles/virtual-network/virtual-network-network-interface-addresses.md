@@ -17,10 +17,10 @@ ms.workload: infrastructure-services
 ms.date: 01/22/2020
 ms.author: allensu
 ms.openlocfilehash: 265ed0f4cb58a321bde78714f36123bf197d42f6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84711000"
 ---
 # <a name="add-change-or-remove-ip-addresses-for-an-azure-network-interface"></a>Azure hálózati adapter IP-címének hozzáadása, módosítása vagy eltávolítása
@@ -54,10 +54,10 @@ A hálózati adapterekhez szükség szerint annyi [magán](#private) -és [nyilv
 
    |Beállítás|Kötelező?|Részletek|
    |---|---|---|
-   |Name|Yes|Egyedinek kell lennie a hálózati adapterhez|
-   |Típus|Yes|Mivel IP-konfigurációt ad hozzá egy meglévő hálózati adapterhez, és az egyes hálózati adaptereknek [elsődleges](#primary) IP-konfigurációval kell rendelkezniük, az egyetlen lehetőség a **másodlagos**.|
-   |Magánhálózati IP-cím hozzárendelési módszere|Yes|[**Dinamikus**](#dynamic): az Azure a következő elérhető címeket rendeli hozzá a hálózati adapterhez tartozó alhálózat-címtartomány számára. [**Statikus**](#static): Ha a hálózati adaptert a (z) rendszerhez tartozó alhálózat-címtartomány számára nem használt címeket rendel hozzá.|
-   |Nyilvános IP-cím|No|**Letiltva:** A nyilvános IP-cím erőforrás jelenleg nincs társítva az IP-konfigurációhoz. **Engedélyezve:** Válasszon egy meglévő IPv4 nyilvános IP-címet, vagy hozzon létre egy újat. Ha meg szeretné tudni, hogyan hozható létre nyilvános IP-cím, olvassa el a [nyilvános IP-címekkel](virtual-network-public-ip-address.md#create-a-public-ip-address) foglalkozó cikket.|
+   |Name (Név)|Igen|Egyedinek kell lennie a hálózati adapterhez|
+   |Típus|Igen|Mivel IP-konfigurációt ad hozzá egy meglévő hálózati adapterhez, és az egyes hálózati adaptereknek [elsődleges](#primary) IP-konfigurációval kell rendelkezniük, az egyetlen lehetőség a **másodlagos**.|
+   |Magánhálózati IP-cím hozzárendelési módszere|Igen|[**Dinamikus**](#dynamic): az Azure a következő elérhető címeket rendeli hozzá a hálózati adapterhez tartozó alhálózat-címtartomány számára. [**Statikus**](#static): Ha a hálózati adaptert a (z) rendszerhez tartozó alhálózat-címtartomány számára nem használt címeket rendel hozzá.|
+   |Nyilvános IP-cím|Nem|**Letiltva:** A nyilvános IP-cím erőforrás jelenleg nincs társítva az IP-konfigurációhoz. **Engedélyezve:** Válasszon egy meglévő IPv4 nyilvános IP-címet, vagy hozzon létre egy újat. Ha meg szeretné tudni, hogyan hozható létre nyilvános IP-cím, olvassa el a [nyilvános IP-címekkel](virtual-network-public-ip-address.md#create-a-public-ip-address) foglalkozó cikket.|
 6. Manuálisan adja hozzá a másodlagos magánhálózati IP-címeket a virtuális gép operációs rendszeréhez a [több IP-cím társítása a virtuális gép operációs](virtual-network-multiple-ip-addresses-portal.md#os-config) rendszeréhez című cikk utasításait követve. Az IP-címek virtuális gépi operációs rendszerhez való manuális hozzáadása előtt tekintse meg a [magánhálózati](#private) IP-címek című témakört. Ne adjon meg nyilvános IP-címeket a virtuális gép operációs rendszeréhez.
 
 **Parancsok**
@@ -130,7 +130,7 @@ Az elsődleges IP-konfiguráción kívül a hálózati adapterek nulla vagy töb
 
 A következő IP-címeket rendelheti hozzá egy [IP-konfigurációhoz](#ip-configurations):
 
-### <a name="private"></a>Privát
+### <a name="private"></a>Személyes
 
 A magánhálózati [IPv4](#ipv4) -vagy IPv6-címek lehetővé teszik, hogy a virtuális gépek más erőforrásokkal kommunikáljanak a virtuális hálózatokban vagy más csatlakoztatott hálózatokban. 
 
@@ -205,7 +205,7 @@ A rendszer létrehoz egy nyilvános IP-címet az alapszintű vagy a standard SKU
 ## <a name="next-steps"></a>További lépések
 Ha eltérő IP-konfigurációval rendelkező virtuális gépet szeretne létrehozni, olvassa el a következő cikkeket:
 
-|Tevékenység|Eszköz|
+|Feladat|Eszköz|
 |---|---|
 |Több hálózati adapterrel rendelkező virtuális gép létrehozása|[CLI](../virtual-machines/linux/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json), [PowerShell](../virtual-machines/windows/multiple-nics.md?toc=%2fazure%2fvirtual-network%2ftoc.json)|
 |Egyetlen hálózati adaptert tartalmazó virtuális gép létrehozása több IPv4-címmel|[CLI](virtual-network-multiple-ip-addresses-cli.md), [PowerShell](virtual-network-multiple-ip-addresses-powershell.md)|

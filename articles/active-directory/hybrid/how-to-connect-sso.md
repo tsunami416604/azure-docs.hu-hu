@@ -1,6 +1,6 @@
 ---
-title: 'Azure AD Connect: zökkenőmentes egyszeri bejelentkezés | Microsoft Docs'
-description: Ez a témakör a Azure Active Directory (Azure AD) zökkenőmentes egyszeri bejelentkezését ismerteti, valamint azt, hogy a vállalati hálózaton belül hogyan biztosíthat valódi egyszeri bejelentkezést a vállalati asztali felhasználók számára.
+title: 'Azure AD Connect: zökkenőmentes egyetlen Sign-On | Microsoft Docs'
+description: Ez a témakör Azure Active Directory (Azure AD) zökkenőmentes önálló Sign-Onét ismerteti, valamint azt, hogy a vállalati hálózaton belül hogyan biztosíthat valódi egyszeri bejelentkezést a vállalati asztali felhasználók számára.
 services: active-directory
 keywords: Mi az Azure AD Connect, az Azure AD, az egyszeri bejelentkezéshez szükséges összetevők telepítése Active Directory
 documentationcenter: ''
@@ -17,13 +17,13 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1708b3b8777b32aac7c160a1084235ba1b2eda13
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89658363"
 ---
-# <a name="azure-active-directory-seamless-single-sign-on"></a>Zökkenőmentes egyszeri bejelentkezés Azure Active Directory
+# <a name="azure-active-directory-seamless-single-sign-on"></a>Közvetlen egyszeri bejelentkezés az Azure Active Directoryba
 
 ## <a name="what-is-azure-active-directory-seamless-single-sign-on"></a>Mi az Azure Active Directory zökkenőmentes egyszeri bejelentkezés?
 
@@ -33,7 +33,7 @@ Az Azure Active Directory közvetlen egyszeri bejelentkezése (Azure AD közvetl
 
 A zökkenőmentes egyszeri bejelentkezést a jelszó- [kivonatoló szinkronizálással](how-to-connect-password-hash-synchronization.md) vagy az [átmenő hitelesítési](how-to-connect-pta.md) bejelentkezési módszerekkel kombinálhatja. A zökkenőmentes SSO _nem_ alkalmazható a Active Directory ÖSSZEVONÁSI szolgáltatások (AD FS) (ADFS) szolgáltatásra.
 
-![Zökkenőmentes egyszeri bejelentkezés](./media/how-to-connect-sso/sso1.png)
+![Zökkenőmentes egyszeri Sign-On](./media/how-to-connect-sso/sso1.png)
 
 >[!IMPORTANT]
 >A zökkenőmentes egyszeri bejelentkezéshez a felhasználó eszközének csak **tartományhoz csatlakoztatottnak** kell lennie, de az [Azure ad-hez csatlakoztatott](../devices/concept-azure-ad-join.md) vagy [hibrid Azure ad-hez csatlakoztatott](../devices/concept-azure-ad-join-hybrid.md) eszközökön nem használható. Az egyszeri bejelentkezés az Azure AD-ben, a hibrid Azure AD-hez csatlakoztatott és az Azure AD által regisztrált eszközök az [elsődleges frissítési jogkivonat](../devices/concept-primary-refresh-token.md)alapján működik.
@@ -63,11 +63,11 @@ A zökkenőmentes egyszeri bejelentkezést a jelszó- [kivonatoló szinkronizál
 
 | OS\Browser |Internet Explorer|Microsoft Edge|Google Chrome|Mozilla Firefox|Safari|
 | --- | --- |--- | --- | --- | -- 
-|Windows 10|Igen\*|Igen|Igen|Igen\*\*\*|N/A
-|Windows 8.1|Yes\*|N/A|Yes|Igen\*\*\*|N/A
-|Windows 8|Yes\*|N/A|Yes|Igen\*\*\*|N/A
-|Windows 7|Yes\*|N/A|Yes|Igen\*\*\*|N/A
-|Windows Server 2012 R2 vagy újabb|igen\*\*|N/A|Yes|Igen\*\*\*|N/A
+|Windows 10|Igen\*|Igen|Igen|Igen\*\*\*|N.A.
+|Windows 8.1|igen\*|N.A.|Igen|Igen\*\*\*|N.A.
+|Windows 8|igen\*|N.A.|Igen|Igen\*\*\*|N.A.
+|Windows 7|igen\*|N.A.|Igen|Igen\*\*\*|N.A.
+|Windows Server 2012 R2 vagy újabb|igen\*\*|N.A.|Igen|Igen\*\*\*|N.A.
 |Mac OS X|N.A.|N.A.|Igen\*\*\*|Igen\*\*\*|Igen\*\*\*
 
 

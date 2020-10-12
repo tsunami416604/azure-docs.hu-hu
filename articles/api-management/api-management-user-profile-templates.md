@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 1aef238ec0b947dda1417b567b343ae9d92754d9
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86249512"
 ---
 # <a name="user-profile-templates-in-azure-api-management"></a>Felhasználói profil sablonjai az Azure API Management
@@ -40,7 +40,7 @@ Az Azure API Management lehetővé teszi a fejlesztői portál oldalai tartalmá
 
 [!INCLUDE [premium-dev-standard-basic.md](../../includes/api-management-availability-premium-dev-standard-basic.md)]
   
-##  <a name="profile"></a><a name="Profile"></a>Profil  
+##  <a name="profile"></a><a name="Profile"></a> Profil  
  A **profil** sablon lehetővé teszi a felhasználói profil lapjának testreszabását a fejlesztői portálon.  
   
  ![Felhasználói profil lap](./media/api-management-user-profile-templates/APIM-User-Profile-Page.png "APIM-felhasználói profil lapja")  
@@ -116,8 +116,8 @@ Az Azure API Management lehetővé teszi a fejlesztői portál oldalai tartalmá
 |`applications`|[Alkalmazás](api-management-template-data-model-reference.md#Application) -entitások gyűjteménye.|Az aktuális felhasználó alkalmazásai.|  
 |`changePasswordUrl`|sztring|Az aktuális felhasználó jelszavának módosítására szolgáló relatív URL-cím.|  
 |`changeNameOrEmailUrl`|sztring|Az aktuális felhasználó nevének és e-mail-címének módosítására szolgáló relatív URL-cím.|  
-|`canChangePassword`|logikai|Azt határozza meg, hogy az aktuális felhasználó módosíthatja-e a jelszavát.|  
-|`isSystemUser`|logikai|Azt határozza meg, hogy az aktuális felhasználó tagja-e a beépített [csoportok](api-management-key-concepts.md#groups)egyikének.|  
+|`canChangePassword`|boolean|Azt határozza meg, hogy az aktuális felhasználó módosíthatja-e a jelszavát.|  
+|`isSystemUser`|boolean|Azt határozza meg, hogy az aktuális felhasználó tagja-e a beépített [csoportok](api-management-key-concepts.md#groups)egyikének.|  
   
 ### <a name="sample-template-data"></a>Minta sablonjának adatterülete  
   
@@ -185,7 +185,7 @@ Az Azure API Management lehetővé teszi a fejlesztői portál oldalai tartalmá
 }  
 ```  
   
-##  <a name="subscriptions"></a><a name="Subscriptions"></a>Előfizetések  
+##  <a name="subscriptions"></a><a name="Subscriptions"></a> Előfizetések  
  Az **előfizetési** sablon lehetővé teszi a fejlesztői portál felhasználói profil oldalának előfizetések szakaszának testreszabását.  
   
  ![Felhasználói előfizetés lapja](./media/api-management-user-profile-templates/APIM-User-Subscription-Page.png "APIM felhasználói előfizetés lapja")  
@@ -337,8 +337,8 @@ Az Azure API Management lehetővé teszi a fejlesztői portál oldalai tartalmá
 |`applications`|[Alkalmazás](api-management-template-data-model-reference.md#Application) -entitások gyűjteménye.|Az aktuális felhasználó alkalmazásai.|  
 |`changePasswordUrl`|sztring|Az aktuális felhasználó jelszavának módosítására szolgáló relatív URL-cím.|  
 |`changeNameOrEmailUrl`|sztring|Az aktuális felhasználó nevének és e-mail-címének módosítására szolgáló relatív URL-cím.|  
-|`canChangePassword`|logikai|Azt határozza meg, hogy az aktuális felhasználó módosíthatja-e a jelszavát.|  
-|`isSystemUser`|logikai|Azt határozza meg, hogy az aktuális felhasználó tagja-e a beépített [csoportok](api-management-key-concepts.md#groups)egyikének.|  
+|`canChangePassword`|boolean|Azt határozza meg, hogy az aktuális felhasználó módosíthatja-e a jelszavát.|  
+|`isSystemUser`|boolean|Azt határozza meg, hogy az aktuális felhasználó tagja-e a beépített [csoportok](api-management-key-concepts.md#groups)egyikének.|  
   
 ### <a name="sample-template-data"></a>Minta sablonjának adatterülete  
   
@@ -406,7 +406,7 @@ Az Azure API Management lehetővé teszi a fejlesztői portál oldalai tartalmá
 }  
 ```  
   
-##  <a name="applications"></a><a name="Applications"></a>Alkalmazások  
+##  <a name="applications"></a><a name="Applications"></a> Alkalmazások  
  Az **alkalmazások** sablon lehetővé teszi a fejlesztői portál felhasználói profil oldalának előfizetések szakaszának testreszabását.  
   
  ![Felhasználói fiókok alkalmazásainak lapja](./media/api-management-user-profile-templates/APIM-User-Account-Applications-Page.png "APIM – felhasználói fiókok alkalmazásainak lapja")  
@@ -500,8 +500,8 @@ Az Azure API Management lehetővé teszi a fejlesztői portál oldalai tartalmá
 |`applications`|[Alkalmazás](api-management-template-data-model-reference.md#Application) -entitások gyűjteménye.|Az aktuális felhasználó alkalmazásai.|  
 |`changePasswordUrl`|sztring|Az aktuális felhasználó jelszavának módosítására szolgáló relatív URL-cím.|  
 |`changeNameOrEmailUrl`|sztring|Az aktuális felhasználó nevének és e-mail-címének módosítására szolgáló relatív URL-cím.|  
-|`canChangePassword`|logikai|Azt határozza meg, hogy az aktuális felhasználó módosíthatja-e a jelszavát.|  
-|`isSystemUser`|logikai|Azt határozza meg, hogy az aktuális felhasználó tagja-e a beépített [csoportok](api-management-key-concepts.md#groups)egyikének.|  
+|`canChangePassword`|boolean|Azt határozza meg, hogy az aktuális felhasználó módosíthatja-e a jelszavát.|  
+|`isSystemUser`|boolean|Azt határozza meg, hogy az aktuális felhasználó tagja-e a beépített [csoportok](api-management-key-concepts.md#groups)egyikének.|  
   
 ### <a name="sample-template-data"></a>Minta sablonjának adatterülete  
   
@@ -569,7 +569,7 @@ Az Azure API Management lehetővé teszi a fejlesztői portál oldalai tartalmá
 }  
 ```  
   
-##  <a name="update-account-info"></a><a name="UpdateAccountInfo"></a>Fiókadatok frissítése  
+##  <a name="update-account-info"></a><a name="UpdateAccountInfo"></a> Fiókadatok frissítése  
  A **fiók frissítése** sablon segítségével testre szabhatja a **frissítési fiók adatai** lapot a fejlesztői portálon.  
   
  ![Felhasználói fiókadatok lap fejlesztői portál sablonjai](./media/api-management-user-profile-templates/APIM-User-Account-Info-Page-Developer-Portal-Templates.png "A APIM felhasználói fiókadatok oldal fejlesztői portál sablonjai")  
@@ -626,5 +626,5 @@ Az Azure API Management lehetővé teszi a fejlesztői portál oldalai tartalmá
 }  
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 További információ a sablonok használatáról: [API Management fejlesztői portál testreszabása sablonok használatával](api-management-developer-portal-templates.md).

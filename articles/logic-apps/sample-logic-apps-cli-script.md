@@ -8,10 +8,10 @@ ms.topic: article
 ms.custom: mvc
 ms.date: 07/30/2020
 ms.openlocfilehash: ceb4a3356ef78d2129f76bd11f555a9ca5206d51
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87505834"
 ---
 # <a name="azure-cli-script-sample---create-a-logic-app"></a>Azure CLI parancsfájl-minta – logikai alkalmazás létrehozása
@@ -25,7 +25,7 @@ Ez a szkript egy minta logikai alkalmazást hoz létre az [Azure CLI Logic apps 
 
 * Aktív előfizetéssel rendelkező Azure-fiók. Ha nem rendelkezik Azure-előfizetéssel, [hozzon létre egy ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
 * Az [Azure CLI](/cli/azure/install-azure-cli?view=azure-cli-latest) telepítve van a helyi számítógépen.
-* A számítógépre telepített [Logic apps Azure CLI-bővítmény](/cli/azure/azure-cli-extensions-list?view=azure-cli-latest) . A bővítmény telepítéséhez használja a következő parancsot:`az extension add --name logic`
+* A számítógépre telepített [Logic apps Azure CLI-bővítmény](/cli/azure/azure-cli-extensions-list?view=azure-cli-latest) . A bővítmény telepítéséhez használja a következő parancsot: `az extension add --name logic`
 * [Munkafolyamat-definíció](quickstart-logic-apps-azure-cli.md#workflow-definition) a logikai alkalmazáshoz. A JSON-fájlnak meg kell felelnie a [munkafolyamat-definíció nyelvi sémájának](logic-apps-workflow-definition-language.md).
 * API-csatlakozás egy e-mail-fiókhoz egy támogatott [Logic apps-összekötőn](../connectors/apis-list.md) keresztül ugyanabban az erőforráscsoportban, mint a logikai alkalmazás. Ez a példa az [Office 365 Outlook](../connectors/connectors-create-api-office365-outlook.md) Connectort használja, de más összekötőket is használhat, mint például a [Outlook.com](../connectors/connectors-create-api-outlook.md).
 

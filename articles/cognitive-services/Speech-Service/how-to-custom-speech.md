@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 02/17/2020
 ms.author: trbye
 ms.openlocfilehash: b9ac473c3864b4be06c978e7d6a3555bb4550d2a
-ms.sourcegitcommit: 269da970ef8d6fab1e0a5c1a781e4e550ffd2c55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88056839"
 ---
 # <a name="what-is-custom-speech"></a>Mi az Custom Speech?
@@ -66,7 +66,7 @@ Az első projekt létrehozásához válassza a **beszéd-szöveg/egyéni beszéd
 > [!IMPORTANT]
 > A [Custom Speech portált](https://aka.ms/custom-speech) nemrég frissítették! Ha korábban létrehozott, modelleket, teszteket és közzétett végpontokat hozott létre a CRIS.ai-portálon vagy API-kkal, létre kell hoznia egy új projektet az új portálon a régi entitásokhoz való kapcsolódáshoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Az adatfeldolgozás előkészítése és tesztelése](how-to-custom-speech-test-data.md)
 * [Az adatai ellenőrzése](how-to-custom-speech-inspect-data.md)

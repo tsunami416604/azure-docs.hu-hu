@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 07/23/2020
 ms.openlocfilehash: 178c339f6f47569160a9a748794678c610f35734
-ms.sourcegitcommit: d7bd8f23ff51244636e31240dc7e689f138c31f0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87171632"
 ---
 # <a name="use-azure-active-directory-for-authentication-with-postgresql"></a>Azure Active Directory használata a PostgreSQL-sel való hitelesítéshez
@@ -137,7 +137,7 @@ psql "host=mydb.postgres... user=user@tenant.onmicrosoft.com@mydb dbname=postgre
 
 Fontos szempontok a csatlakozáskor:
 
-* `user@tenant.onmicrosoft.com`annak az Azure AD-felhasználónak vagy-csoportnak a neve, amelyhez csatlakozni próbál
+* `user@tenant.onmicrosoft.com` annak az Azure AD-felhasználónak vagy-csoportnak a neve, amelyhez csatlakozni próbál
 * Mindig fűzze hozzá a kiszolgálónevet az Azure AD-felhasználó/csoport neve után (például `@mydb` )
 * Ügyeljen arra, hogy pontosan az Azure AD-felhasználó vagy-csoport nevének pontos módját használja
 * Az Azure AD felhasználói és csoportjai neve megkülönbözteti a kis-és nagybetűket
@@ -155,7 +155,7 @@ Ha Azure AD-felhasználót szeretne hozzáadni a Azure Database for PostgreSQL-a
 3. Szerepkör létrehozása `<user>@yourtenant.onmicrosoft.com` a Azure Database for PostgreSQLban.
 4. `<user>@yourtenant.onmicrosoft.com`A szerepkör azure_ad_user tagja legyen. Ezt csak az Azure AD-felhasználók kapják meg.
 
-**Például**
+**Példa**
 
 ```sql
 CREATE ROLE "user1@yourtenant.onmicrosoft.com" WITH LOGIN IN ROLE azure_ad_user;
@@ -168,7 +168,7 @@ CREATE ROLE "user1@yourtenant.onmicrosoft.com" WITH LOGIN IN ROLE azure_ad_user;
 
 Ha engedélyezni szeretné az Azure AD-csoport számára az adatbázishoz való hozzáférést, használja ugyanazt a mechanizmust, mint a felhasználók számára, hanem adja meg a csoport nevét:
 
-**Például**
+**Példa**
 
 ```sql
 CREATE ROLE "Prod DB Readonly" WITH LOGIN IN ROLE azure_ad_user;

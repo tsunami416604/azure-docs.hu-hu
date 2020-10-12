@@ -6,10 +6,10 @@ ms.author: flborn
 ms.date: 02/13/2020
 ms.topic: reference
 ms.openlocfilehash: fe684d15e2ce9b8d302db4eb6bd31dd1416abf21
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83196545"
 ---
 # <a name="network-requirements"></a>A hálózatra vonatkozó követelmények
@@ -21,11 +21,11 @@ Az Azure-adatközpontok stabil, kis késleltetésű hálózati kapcsolatai eleng
 A hálózati követelmények pontos feltételei a konkrét használati esettől függenek, például a távoli jelenet gráfon végzett módosítások számával és gyakoriságával, valamint a megjelenített nézet bonyolultságával, de számos iránymutatással gondoskodhat arról, hogy a lehető legjobb élmény legyen:
 
 * Az internetkapcsolatnak legalább **40 MB/** s sebességű, illetve **5 MB/s sebességű** , az Azure távoli renderelés egyetlen felhasználói munkamenete számára szükséges támogatását kell támogatnia, feltéve, hogy nincs versengő forgalom a hálózaton. A jobb élmény érdekében ajánlott magasabb díjszabást javasolni. Ha több felhasználóval is rendelkezik ugyanazon a hálózaton, ezek a követelmények a megfelelő skálázással rendelkeznek.
-* Az **5 GHz-es Wi-Fi együttes** használata általában jobb eredményeket hoz létre, mint az 2,4 GHz-es Wi-Fi sávban, bár mindkettőnek működnie kell.
-* Ha a közelben más Wi-Fi-hálózatok vannak, ne használja ezeket a hálózatokat a Wi-Fi csatornákon. A hálózati ellenőrzési eszközök, például a [WifiInfoView](https://www.nirsoft.net/utils/wifi_information_view.html) segítségével ellenőrizheti, hogy a Wi-Fi-hálózat által használt csatornák szabad-e a versengő forgalomtól.
-* Szigorúan **Kerülje a Wi-Fi repeaterek vagy a** LAN-over-vezetékes továbbítás használatát.
-* **Kerülje a versengő sávszélességet** – többek között a video-vagy játék-adatfolyamot – ugyanazon a Wi-Fi-hálózaton.
-* A **jó Wi-Fi jel erőssége** elengedhetetlen. Ha lehetséges, maradjon a Wi-Fi hozzáférési ponthoz, és elkerülje az ügyfél-eszköz és a hozzáférési pontok közötti akadályokat.
+* Az **5 GHz-es Wi-Fi együttes** használata általában jobb eredményeket eredményez, mint az 2,4 GHz-es Wi-Fi sávban, bár mindkettőnek működnie kell.
+* Ha a közelben más Wi-Fi hálózatok vannak, ne használja a többi hálózat által használt Wi-Fi csatornákat. A hálózati ellenőrzési eszközök, például a [WifiInfoView](https://www.nirsoft.net/utils/wifi_information_view.html) segítségével ellenőrizheti, hogy a Wi-Fi hálózat által használt csatornák szabadok-e a versengő forgalomtól.
+* Szigorúan **Kerülje a Wi-Fi repeaterek vagy a** LAN-alapú hálózati kábeles továbbítás használatát.
+* **Kerülje a versengő sávszélességet** – például a video-vagy játék-adatfolyamot – ugyanazon a Wi-Fi hálózaton.
+* A **jó Wi-Fi a jelerősség** elengedhetetlen. Ha lehetséges, maradjon a Wi-Fi hozzáférési ponthoz, és elkerülje az ügyfél-eszköz és a hozzáférési pontok közötti akadályokat.
 * Győződjön meg arról, hogy mindig csatlakozik a **legközelebbi Azure-adatközponthoz** a [régiójában](regions.md). Minél közelebb van az adatközponthoz, annál kisebb a hálózati késés, ami óriási hatással van a hologramos stabilitásra.
 
 > [!NOTE]
@@ -33,7 +33,7 @@ A hálózati követelmények pontos feltételei a konkrét használati esettől 
 
 ## <a name="network-performance-tests"></a>Hálózati teljesítménnyel kapcsolatos tesztek
 
-Ha szeretné megismerni, hogy a hálózati kapcsolat minősége elegendő-e az Azure távoli renderelés futtatásához, meglévő online eszközöket is használhat. Javasoljuk, hogy az ilyen online eszközöket olyan ésszerűen nagy teljesítményű laptopon futtassa, amely ugyanahhoz a Wi-Fi-hálózathoz csatlakozik, mint az az eszköz, amelyen az Azure távoli renderelési ügyfélalkalmazás futtatását tervezi. A tesztek mobiltelefonon vagy HoloLens2 való futtatásának eredményei általában kevésbé hasznosak, mert bebizonyosodott, hogy az alacsony teljesítményű végponti eszközökön jelentős eltéréseket mutatnak. Az a hely, ahol a laptopot elhelyezi, nagyjából ugyanazon a helyen kell lennie, ahol az Azure távoli renderelési ügyfélalkalmazás futtatására várt eszközt fogja használni.
+Ha szeretné megismerni, hogy a hálózati kapcsolat minősége elegendő-e az Azure távoli renderelés futtatásához, meglévő online eszközöket is használhat. Javasoljuk, hogy az online eszközöket olyan ésszerűen nagy teljesítményű laptopon futtassa, amely ugyanahhoz a Wi-Fihoz csatlakozik, mint az Azure-beli távoli renderelési ügyfélalkalmazás futtatását tervező eszköz. A tesztek mobiltelefonon vagy HoloLens2 való futtatásának eredményei általában kevésbé hasznosak, mert bebizonyosodott, hogy az alacsony teljesítményű végponti eszközökön jelentős eltéréseket mutatnak. Az a hely, ahol a laptopot elhelyezi, nagyjából ugyanazon a helyen kell lennie, ahol az Azure távoli renderelési ügyfélalkalmazás futtatására várt eszközt fogja használni.
 
 Íme néhány egyszerű lépés a hálózati kapcsolat gyors teszteléséhez:
 
@@ -49,6 +49,6 @@ Javasoljuk, hogy a tesztet többször is futtassa, és a legrosszabb eredmények
 Habár az alacsony késés nem garantálható, hogy az Azure távoli renderelés jól működik a hálózaton, általában úgy láttuk, hogy olyan helyzetekben, amikor a tesztek sikeresen sikeresek voltak.
 Ha olyan összetevőket észlel, mint például az instabil, a vibrálás vagy az Ugrás Hologramok az Azure távoli renderelés futtatásakor, tekintse meg a [hibaelhárítási útmutatót](../resources/troubleshoot.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Gyors útmutató: modell megjelenítése egységgel](../quickstarts/render-model.md)
