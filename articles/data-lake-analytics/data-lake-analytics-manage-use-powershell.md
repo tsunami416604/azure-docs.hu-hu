@@ -8,10 +8,10 @@ ms.assetid: ad14d53c-fed4-478d-ab4b-6d2e14ff2097
 ms.topic: how-to
 ms.date: 06/29/2018
 ms.openlocfilehash: 70a251db6c08f353f9c50512c41551e7a909a059
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87125649"
 ---
 # <a name="manage-azure-data-lake-analytics-using-azure-powershell"></a>Az Azure Data Lake Analytics kezelése az Azure PowerShell-lel
@@ -137,7 +137,7 @@ Az alapértelmezett Data Lake Store fiókot az adatforrások listájának szűr�
 Get-AdlAnalyticsDataSource -Account $adla  | ? { $_.IsDefault } 
 ```
 
-### <a name="add-a-data-source"></a>Adatforrások felvétele
+### <a name="add-a-data-source"></a>Adatforrás hozzáadása
 
 ```powershell
 
@@ -205,7 +205,7 @@ Get-AdlJob -Account $adla
 
 ### <a name="list-the-top-n-jobs"></a>A legfontosabb N feladat listázása
 
-Alapértelmezés szerint a feladatok listája a beküldési idő szerint van rendezve. Így a legutóbb elküldött feladatok először megjelennek. Alapértelmezés szerint a ADLA-fiók 180 napig emlékszik a feladatokra, de alapértelmezés szerint a Get-AdlJob parancsmag csak az első 500 értéket adja vissza. A-Top paraméterrel meghatározott számú feladatot listázhat.
+Alapértelmezés szerint a feladatok listája a beküldési idő szerint van rendezve. Így a legutóbb elküldött feladatok először megjelennek. Alapértelmezés szerint a ADLA-fiók 180 napig visszaveszi a feladatokat, de a Get-AdlJob parancsmag alapértelmezés szerint csak az első 500 értéket adja vissza. A-Top paraméterrel meghatározott számú feladatot listázhat.
 
 ```powershell
 $jobs = Get-AdlJob -Account $adla -Top 10

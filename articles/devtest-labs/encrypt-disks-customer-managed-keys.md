@@ -4,10 +4,10 @@ description: Megtudhatja, hogyan titkosíthatja az operációs rendszer (OS) lem
 ms.topic: article
 ms.date: 09/01/2020
 ms.openlocfilehash: 257894c6318c9ca083c72daf3c888f7d509ae683
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89489828"
 ---
 # <a name="encrypt-operating-system-os-disks-using-customer-managed-keys-in-azure-devtest-labs"></a>Operációs rendszer (OS) lemezek titkosítása az ügyfél által felügyelt kulcsok használatával Azure DevTest Labs
@@ -39,14 +39,14 @@ A következő szakasz bemutatja, hogyan állíthatja be a labor tulajdonosa a ti
     1. A **lemez titkosítási készlete** lapon a bal oldali menüben válassza a **hozzáférés-vezérlés (iam)** lehetőséget. 
     1. Válassza a **+ Hozzáadás** lehetőséget az eszköztáron, majd válassza **a szerepkör-hozzárendelés hozzáadása**lehetőséget.  
 
-        :::image type="content" source="./media/encrypt-disks-customer-managed-keys/add-role-management-menu.png" alt-text="Szerepkör-kezelés hozzáadása – menü":::
+        :::image type="content" source="./media/encrypt-disks-customer-managed-keys/add-role-management-menu.png" alt-text="Felügyelt kulcsok":::
     1. A **szerepkör-hozzárendelés hozzáadása** lapon válassza ki az **olvasó** szerepkört vagy egy olyan szerepkört, amely nagyobb hozzáférést tesz lehetővé. 
     1. Írja be annak a labornak a nevét, amelyhez a rendszer a lemez titkosítási készletét használni fogja, majd válassza ki a labor nevét (a laborhoz a rendszerszintű identitást) a legördülő listából. 
     
-        :::image type="content" source="./media/encrypt-disks-customer-managed-keys/select-lab.png" alt-text="A tesztkörnyezet rendszerfelügyelt identitásának kiválasztása":::        
+        :::image type="content" source="./media/encrypt-disks-customer-managed-keys/select-lab.png" alt-text="Felügyelt kulcsok":::        
     1. Válassza az eszköztár **Save** (Mentés) elemét. 
 
-        :::image type="content" source="./media/encrypt-disks-customer-managed-keys/save-role-assignment.png" alt-text="Szerepkör-hozzárendelés mentése":::
+        :::image type="content" source="./media/encrypt-disks-customer-managed-keys/save-role-assignment.png" alt-text="Felügyelt kulcsok":::
 3. Adja hozzá a labor **rendszerhez rendelt identitását** a **virtuális gép közreműködői** szerepkörhöz az **előfizetés**  ->  **-hozzáférés-vezérlés (iam)** lapon. A lépések hasonlóak az előző lépések lépéseihez. 
 
     
@@ -54,7 +54,7 @@ A következő szakasz bemutatja, hogyan állíthatja be a labor tulajdonosa a ti
     1. Válassza a **Hozzáférés-vezérlés (IAM)** lehetőséget. 
     1. Válassza a **+ Hozzáadás** lehetőséget az eszköztáron, majd kattintson **a szerepkör-hozzárendelés hozzáadása**lehetőségre. 
     
-        :::image type="content" source="./media/encrypt-disks-customer-managed-keys/subscription-access-control-page.png" alt-text="Előfizetés – > hozzáférés-vezérlés (IAM) lap":::
+        :::image type="content" source="./media/encrypt-disks-customer-managed-keys/subscription-access-control-page.png" alt-text="Felügyelt kulcsok":::
     1. A **szerepkör-hozzárendelés hozzáadása** lapon válassza a **virtuális gép közreműködője** lehetőséget a szerepkörhöz.
     1. Írja be a labor nevét, majd a legördülő listából válassza ki a labor **nevét** (a tesztkörnyezet rendszerhez rendelt identitása). 
     1. Válassza az eszköztár **Save** (Mentés) elemét. 
@@ -64,12 +64,12 @@ A következő szakasz bemutatja, hogyan állíthatja be a labor tulajdonosa a ti
 1. A Azure Portalban a labor kezdőlapján válassza a **konfiguráció és házirendek** elemet a bal oldali menüben. 
 1. A **konfiguráció és házirendek** lapon válassza a **lemezek (előzetes verzió)** lehetőséget a **titkosítás** szakaszban. Alapértelmezés szerint a **titkosítási típus** a platform által **felügyelt kulccsal történő titkosításra**van beállítva.
 
-    :::image type="content" source="./media/encrypt-disks-customer-managed-keys/disks-page.png" alt-text="A konfiguráció és a házirendek lap lemezek lapja":::
+    :::image type="content" source="./media/encrypt-disks-customer-managed-keys/disks-page.png" alt-text="Felügyelt kulcsok":::
 1. A **titkosítás típusa**beállításnál válassza a legördülő lista **ügyfél által felügyelt kulcsával történő titkosítás** lehetőséget. 
 1. A **lemezes titkosítási készlet**esetében válassza ki a korábban létrehozott lemezes titkosítási készletet. Ez ugyanaz a lemezes titkosítási készlet, amelyet a labor rendszerhez rendelt identitása tud elérni.
 1. Válassza az eszköztár **Save** (Mentés) elemét. 
 
-    :::image type="content" source="./media/encrypt-disks-customer-managed-keys/disk-encryption-set.png" alt-text="Titkosítás engedélyezése az ügyfél által felügyelt kulccsal":::
+    :::image type="content" source="./media/encrypt-disks-customer-managed-keys/disk-encryption-set.png" alt-text="Felügyelt kulcsok":::
 1. A következő szöveget tartalmazó üzenetablakban: *Ez a beállítás a tesztkörnyezetben újonnan létrehozott gépekre lesz érvényes. A régi operációsrendszer-lemez titkosítva marad a régi lemezes titkosítási készlettel*, majd kattintson **az OK gombra**. 
 
     A konfigurálást követően a labor operációsrendszer-lemezeket a rendszer a lemez titkosítási készletével megadott ügyfél által felügyelt kulccsal fogja titkosítani. 
@@ -79,15 +79,15 @@ A következő szakasz bemutatja, hogyan állíthatja be a labor tulajdonosa a ti
 1. Nyissa meg a laborban egy, az ügyfél által felügyelt kulccsal rendelkező lemez titkosításának engedélyezése után létrehozott labor virtuális gépet.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/encrypt-disks-customer-managed-keys/enabled-encryption-vm.png" alt-text="Virtuális gép, amelyen engedélyezve van a lemez titkosítása":::
+    > :::image type="content" source="./media/encrypt-disks-customer-managed-keys/enabled-encryption-vm.png" alt-text="Felügyelt kulcsok":::
 1. Kattintson a virtuális gép erőforráscsoporthoz, és kattintson az operációsrendszer-lemezre.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/encrypt-disks-customer-managed-keys/vm-resource-group.png" alt-text="Virtuálisgép-erőforráscsoport":::
+    > :::image type="content" source="./media/encrypt-disks-customer-managed-keys/vm-resource-group.png" alt-text="Felügyelt kulcsok":::
 1. Lépjen a titkosításhoz, és ellenőrizze, hogy a titkosítás beállítása ügyfél által felügyelt kulcsra van-e beállítva a kiválasztott lemezes titkosítási készlettel.
 
     > [!div class="mx-imgBorder"]
-    > :::image type="content" source="./media/encrypt-disks-customer-managed-keys/validate-encryption.png" alt-text="Titkosítás ellenőrzése":::
+    > :::image type="content" source="./media/encrypt-disks-customer-managed-keys/validate-encryption.png" alt-text="Felügyelt kulcsok":::
   
 ## <a name="next-steps"></a>Következő lépések
 

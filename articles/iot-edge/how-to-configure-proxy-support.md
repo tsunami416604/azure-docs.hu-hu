@@ -11,10 +11,10 @@ ms.custom:
 - amqp
 - contperfq1
 ms.openlocfilehash: e6c85ba79c21c9a8120feebc02477506eb93d2e5
-ms.sourcegitcommit: 206629373b7c2246e909297d69f4fe3728446af5
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89500368"
 ---
 # <a name="configure-an-iot-edge-device-to-communicate-through-a-proxy-server"></a>IoT Edge-eszköz konfigurálása proxykiszolgálón keresztüli kommunikációra
@@ -73,13 +73,13 @@ Ha Windows rendszerű eszközön telepíti a IoT Edge futtatókörnyezetet, két
 
 Az alábbi lépések a Windows telepítésének példáját szemléltetik a következő `-proxy` argumentum használatával:
 
-1. A meghívó-webkérési parancsnak proxy-információra van szüksége a telepítési parancsfájl eléréséhez. Ezután az Deploy-IoTEdge parancsnak szüksége van a proxy adataira a telepítési fájlok letöltéséhez.
+1. A Invoke-WebRequest parancsnak proxy információra van szüksége a telepítési parancsfájl eléréséhez. Ezután a Deploy-IoTEdge parancsnak szüksége van a proxy adataira a telepítési fájlok letöltéséhez.
 
    ```powershell
    . {Invoke-WebRequest -proxy <proxy URL> -useb aka.ms/iotedge-win} | Invoke-Expression; Deploy-IoTEdge -proxy <proxy URL>
    ```
 
-2. Az inicializálás-IoTEdge parancsnak nem kell átesnie a proxykiszolgálóhoz, így a második lépés csak a Request-webkéréshez szükséges proxy-információkat igényli.
+2. A Initialize-IoTEdge parancsnak nem kell átesnie a proxykiszolgálót, így a második lépés csak a Request-webkéréshez szükséges proxy-információkat igényli.
 
    ```powershell
    . {Invoke-WebRequest -proxy <proxy URL> -useb aka.ms/iotedge-win} | Invoke-Expression; Initialize-IoTEdge

@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: b78d3cab17b0cc4085c824cf35d4c6037f0e2af5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91319860"
 ---
 # <a name="azure-ad-connect-upgrade-from-a-previous-version-to-the-latest"></a>Azure AD Connect: frissítés egy előző verzióról a legújabbra
@@ -33,7 +33,7 @@ Ha az rSync-ről szeretne frissíteni, tekintse meg a következőt: [verziófris
 
 Néhány különböző stratégia használható a Azure AD Connect frissítéséhez.
 
-| Metódus | Leírás |
+| Módszer | Leírás |
 | --- | --- |
 | [Automatikus frissítés](how-to-connect-install-automatic-upgrade.md) |Ez a legegyszerűbb módszer az expressz telepítéssel rendelkező ügyfelek számára. |
 | [Frissítés helyben](#in-place-upgrade) |Ha egyetlen kiszolgálóval rendelkezik, a telepítést helyben is frissítheti ugyanarra a kiszolgálóra. |
@@ -131,7 +131,7 @@ Előfordulhatnak olyan helyzetek, amikor nem szeretné, hogy ezek a felülbírá
 5. Az ütemező folytatásához futtassa a következő parancsmagot: `Set-ADSyncScheduler -SyncCycleEnabled $true`
 
    >[!IMPORTANT]
-   > Ne felejtse el végrehajtani a szükséges szinkronizálási lépéseket a lehető leghamarabb. Ezeket a lépéseket manuálisan is végrehajthatja a Synchronization Service Manager használatával, vagy hozzáadhatja a felülbírálásokat a set-ADSyncSchedulerConnectorOverride parancsmag használatával.
+   > Ne felejtse el végrehajtani a szükséges szinkronizálási lépéseket a lehető leghamarabb. Ezeket a lépéseket manuálisan is végrehajthatja a Synchronization Service Manager használatával, vagy hozzáadhatja a felülbírálásokat a Set-ADSyncSchedulerConnectorOverride parancsmag használatával.
 
 Ha a felülbírálásokat a teljes importáláshoz és a teljes szinkronizáláshoz is hozzá szeretné adni egy tetszőleges összekötőn, futtassa a következő parancsmagot:  `Set-ADSyncSchedulerConnectorOverride -ConnectorIdentifier <Guid> -FullImportRequired $true -FullSyncRequired $true`
 

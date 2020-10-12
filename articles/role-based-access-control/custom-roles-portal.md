@@ -13,10 +13,10 @@ ms.workload: identity
 ms.date: 07/13/2020
 ms.author: rolyon
 ms.openlocfilehash: 91d2605dddd6107d09e635969f5e5d98c2a02d60
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86511721"
 ---
 # <a name="create-or-update-azure-custom-roles-using-the-azure-portal"></a>Egyéni Azure-szerepkörök létrehozása vagy módosítása az Azure Portal segítségével
@@ -35,7 +35,7 @@ Az Azure-ban több ezer engedély található, amelyeket esetleg belefoglalhat a
 
 | Metódus | Leírás |
 | --- | --- |
-| Megtekintheti a meglévő szerepköröket | Megtekintheti a meglévő szerepköröket, hogy megtudja, milyen engedélyek vannak használatban. További információ: [Azure beépített szerepkörök](built-in-roles.md). |
+| Megtekintheti a meglévő szerepköröket | Megtekintheti a meglévő szerepköröket, hogy megtudja, milyen engedélyek vannak használatban. További információ: [Beépített Azure-szerepkörök](built-in-roles.md). |
 | Engedélyek keresése kulcsszó alapján | Ha a Azure Portal használatával hoz létre egyéni szerepkört, az engedélyek kulcsszava alapján is megkereshetők. Megkeresheti például a *virtuális gépet* vagy a *Számlázási* engedélyeket. Ezt a keresési funkciót a [4. lépés: engedélyek című szakasza](#step-4-permissions)tárgyalja. |
 | Az összes engedély letöltése | Amikor létrehoz egy egyéni szerepkört a Azure Portal használatával, letöltheti az összes engedélyt CSV-fájlként, majd megkeresheti a fájlt. Az **engedélyek hozzáadása** panelen kattintson a minden engedély **letöltése** gombra az összes engedély letöltéséhez. További információ az engedélyek hozzáadása panelen: [4. lépés: engedélyek](#step-4-permissions). |
 | A dokumentumok engedélyeinek megtekintése | A rendelkezésre álló engedélyeket [Azure Resource Manager erőforrás-szolgáltatói műveleteknél](resource-provider-operations.md)tekintheti meg. |
@@ -335,7 +335,7 @@ Az alábbi lépéseket követve megtekintheti az egyéni szerepköröket.
 
     Az egyéni szerepkör teljes törlése eltarthat néhány percig.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Oktatóanyag: egyéni Azure-szerepkör létrehozása Azure PowerShell használatával](tutorial-custom-role-powershell.md)
 - [Egyéni Azure-szerepkörök](custom-roles.md)

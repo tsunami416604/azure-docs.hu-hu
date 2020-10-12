@@ -8,10 +8,10 @@ ms.topic: article
 ms.date: 11/12/2019
 ms.author: raynew
 ms.openlocfilehash: 9b05d9952628e550beae5cedc49e051936a9d633
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87927283"
 ---
 # <a name="set-up-disaster-recovery-to-azure-for-on-premises-physical-servers"></a>Vész-helyreállítás beállítása az Azure-ba helyszíni fizikai kiszolgálók esetén
@@ -32,7 +32,7 @@ Ebből az oktatóanyagból megtudhatja, hogyan állíthatja be a helyszíni fizi
 Az oktatóanyag elvégzéséhez:
 
 - Győződjön meg arról, hogy ismeri a forgatókönyv [architektúráját és összetevőit](physical-azure-architecture.md) .
-- Minden összetevőre vonatkozóan tekintse át a [támogatási követelményeket](vmware-physical-secondary-support-matrix.md).
+- Tekintse át az összes összetevő [támogatási követelményeit](vmware-physical-secondary-support-matrix.md) .
 - Győződjön meg arról, hogy a replikálni kívánt kiszolgálók megfelelnek az Azure-beli [virtuális gépek követelményeinek](vmware-physical-secondary-support-matrix.md#replicated-vm-support).
 - Készítse elő az Azure-t. Szüksége lesz egy Azure-előfizetésre, egy Azure-beli virtuális hálózatra és egy Storage-fiókra.
 - Készítsen elő egy fiókot a mobilitási szolgáltatás automatikus telepítéséhez minden replikálni kívánt kiszolgálón.
@@ -84,8 +84,8 @@ Hozzon létre egy [Azure Storage-fiókot](../storage/common/storage-account-crea
 A mobilitási szolgáltatást minden replikálni kívánt kiszolgálón telepíteni kell. A Site Recovery automatikusan telepíti ezt a szolgáltatást, amikor engedélyezi a replikációt a kiszolgálón. Az automatikus telepítéshez elő kell készítenie egy fiókot, amelyet Site Recovery fog használni a kiszolgálóhoz való hozzáféréshez.
 
 - Tartományi vagy helyi fiókot is használhat
-- Windows rendszerű virtuális gépek esetén, ha nem használ tartományi fiókot, tiltsa le a távoli felhasználói hozzáférés-vezérlést a helyi gépen. Ehhez a regisztrálás **HKEY_LOCAL_MACHINE \software\microsoft\windows\currentversion\policies\system**területen adja hozzá a DWORD bejegyzés **LocalAccountTokenFilterPolicy**, amelynek értéke 1.
-- A beállítás parancssori felületről való letiltásához írja be a következőt a beállításjegyzékbe:``REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1.``
+- Windows rendszerű virtuális gépek esetén, ha nem használ tartományi fiókot, tiltsa le a távoli felhasználói hozzáférés-vezérlést a helyi gépen. Ehhez a Register ( **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System**) területen adja hozzá a DWORD bejegyzés **LocalAccountTokenFilterPolicy**, amelynek értéke 1.
+- A beállítás parancssori felületről való letiltásához írja be a következőt a beállításjegyzékbe:       ``REG ADD HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System /v LocalAccountTokenFilterPolicy /t REG_DWORD /d 1.``
 - Linux esetén a fióknak a forrás Linux-kiszolgáló gyökerének kell lennie.
 
 
@@ -184,6 +184,6 @@ Engedélyezze a replikációt az egyes kiszolgálókon.
 
 A hozzáadott kiszolgálók figyeléséhez ellenőrizheti a **konfigurációs kiszolgálók**utolsó felderített idejét a következő  >  **helyen:**. Ha gépeket szeretne felvenni anélkül, hogy az ütemezett felderítési időt kellene várnia, jelölje ki a konfigurációs kiszolgálót (ne kattintson rá), majd kattintson a **frissítés**gombra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Futtasson vész-helyreállítási részletezést](tutorial-dr-drill-azure.md).

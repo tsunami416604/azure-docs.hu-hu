@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 06/23/2020
 ms.custom: seo-java-july2019, seo-java-august2019, seo-java-september2019, devx-track-java
 ms.openlocfilehash: 97031abaedaa3e5595e290fa0292646feb744d47
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90086691"
 ---
 # <a name="use-the-java-message-service-with-azure-service-bus-and-amqp-10"></a>A Java-Üzenetkezelő szolgáltatás használata a Azure Service Bus és a AMQP 1,0
@@ -303,7 +303,7 @@ public class JmsQueueQuickstart {
 }
 ```
 
-### <a name="run-the-application"></a>Az alkalmazás futtatása
+### <a name="run-the-application"></a>Alkalmazás futtatása
 
 Adja át a **kapcsolati karakterláncot** a megosztott hozzáférési szabályzatokból az alkalmazás futtatásához.
 A következő kimenet az alkalmazást futtató űrlap:
@@ -386,7 +386,7 @@ Service Bus feldarabolja a vezérlő síkot az adatsíkon, így nem támogatja t
 | createTemporaryQueue        | Hozzon létre egy várólistát a felügyeleti API, az eszközök vagy a portál használatával, amely lejárati időszakra van beállítva a *AutoDeleteOnIdle* . |
 | receiveNoWait               | Használja a Service Bus SDK által biztosított Receive () metódust, és nagyon alacsony vagy nulla időtúllépést ad meg. |
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 
 Ez a cikk bemutatja, hogyan használhatja Service Bus felügyelt üzenetkezelési funkciókat, például a várólistákat és a közzétételi vagy előfizetési témákat a Java-ból a népszerű JMS API és a AMQP 1,0 használatával.
 

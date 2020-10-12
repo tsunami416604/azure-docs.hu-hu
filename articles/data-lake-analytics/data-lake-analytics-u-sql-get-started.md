@@ -8,10 +8,10 @@ ms.service: data-lake-analytics
 ms.topic: how-to
 ms.date: 06/23/2017
 ms.openlocfilehash: 6f2af2eed8aa01f35e1813bcd910f3ea22e2a335
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87128845"
 ---
 # <a name="get-started-with-u-sql-in-azure-data-lake-analytics"></a>Ismerkedés az U-SQL Azure Data Lake Analytics
@@ -56,8 +56,8 @@ Figyelje meg a mező adattípusa melletti kérdőjelet `Duration` . Ez azt jelen
 ### <a name="key-concepts"></a>Fő fogalmak
 
 * **Sorhalmaz változói**: a sorhalmazt előállító összes lekérdezési kifejezés hozzárendelhető egy változóhoz. A U-SQL a T-SQL változó elnevezési mintáját ( `@searchlog` például) követi a parancsfájlban.
-* A **kinyerési** kulcsszó beolvassa az adatokat egy fájlból, és az olvasáskor meghatározza a sémát. `Extractors.Tsv`a egy beépített U-SQL-kivonó a tabulátorral tagolt fájlokhoz. Egyéni kiállítók fejlesztése is megtehető.
-* A **kimenet** egy sorhalmazból egy fájlba írja az adatokat. `Outputters.Csv()`a egy beépített U-SQL-leválasztó, vesszővel tagolt értékű fájl létrehozásához. Egyéni előállítók is fejleszthetők.
+* A **kinyerési** kulcsszó beolvassa az adatokat egy fájlból, és az olvasáskor meghatározza a sémát. `Extractors.Tsv` a egy beépített U-SQL-kivonó a tabulátorral tagolt fájlokhoz. Egyéni kiállítók fejlesztése is megtehető.
+* A **kimenet** egy sorhalmazból egy fájlba írja az adatokat. `Outputters.Csv()` a egy beépített U-SQL-leválasztó, vesszővel tagolt értékű fájl létrehozásához. Egyéni előállítók is fejleszthetők.
 
 ### <a name="file-paths"></a>Fájlelérési utak
 

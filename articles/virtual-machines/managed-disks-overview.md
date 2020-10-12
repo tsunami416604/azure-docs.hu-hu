@@ -9,10 +9,10 @@ ms.author: rogarana
 ms.subservice: disks
 ms.custom: contperfq1
 ms.openlocfilehash: 773c5f95cdbec6961b063720106794e6ec00451d
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89299932"
 ---
 # <a name="introduction-to-azure-managed-disks"></a>Bevezetés az Azure-beli felügyelt lemezek használatába
@@ -76,7 +76,7 @@ Engedélyezheti az Azure-nak, hogy kezelje a kulcsait, ezek a platform által fe
 
 #### <a name="azure-disk-encryption"></a>Azure Disk Encryption
 
-Azure Disk Encryption lehetővé teszi a IaaS virtuális gépek által használt operációs rendszer és adatlemezek titkosítását. Ez a titkosítás felügyelt lemezeket tartalmaz. A Windows rendszerben a meghajtók titkosítása az iparági szabványnak megfelelő BitLocker titkosítási technológiával történik. A Linux rendszerben a lemezek titkosítása a DM-Crypt technológiával történik. A titkosítási folyamat integrálva van az Azure Key Vaulttal, így vezérelheti és felügyelheti a lemeztitkosítási kulcsokat. További információ: [Azure Disk Encryption Linux rendszerű virtuális gépekhez](linux/disk-encryption-overview.md) vagy [Azure Disk Encryption Windows rendszerű virtuális gépekhez](windows/disk-encryption-overview.md).
+Azure Disk Encryption lehetővé teszi a IaaS virtuális gépek által használt operációs rendszer és adatlemezek titkosítását. Ez a titkosítás felügyelt lemezeket tartalmaz. A Windows rendszerben a meghajtók titkosítása az iparági szabványnak megfelelő BitLocker titkosítási technológiával történik. A Linux esetében a lemezek a DM-Crypt technológiával vannak titkosítva. A titkosítási folyamat integrálva van az Azure Key Vaulttal, így vezérelheti és felügyelheti a lemeztitkosítási kulcsokat. További információ: [Azure Disk Encryption Linux rendszerű virtuális gépekhez](linux/disk-encryption-overview.md) vagy [Azure Disk Encryption Windows rendszerű virtuális gépekhez](windows/disk-encryption-overview.md).
 
 ## <a name="disk-roles"></a>Lemezes szerepkörök
 

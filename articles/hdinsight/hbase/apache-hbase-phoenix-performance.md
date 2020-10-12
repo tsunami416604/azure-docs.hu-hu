@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/27/2019
 ms.openlocfilehash: 0dfb93db1af807459c37653189a90b754c933aa4
-ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89504791"
 ---
 # <a name="apache-phoenix-performance-best-practices"></a>Az Apache Phoenix teljesítményével kapcsolatos ajánlott eljárások
@@ -52,7 +52,7 @@ Ezzel az új elsődleges kulccsal a Phoenix által generált sorok kulcsai a kö
 
 A fenti első sorban a rowkey az alábbi módon jelenik meg:
 
-|rowkey|       kulcs|   Érték|
+|rowkey|       kulcs|   érték|
 |------|--------------------|---|
 |  Dole-John-111|address |1111 San Gabriel Dr.|  
 |  Dole-John-111|telefon |1-425-000-0002|  

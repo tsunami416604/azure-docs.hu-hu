@@ -4,10 +4,10 @@ description: Ez a cikk áttekintést nyújt az Azure-hoz készült Backup Center
 ms.topic: conceptual
 ms.date: 09/30/2020
 ms.openlocfilehash: 2857433e00a678603e30c8e5fc276020c4658f2e
-ms.sourcegitcommit: 06ba80dae4f4be9fdf86eb02b7bc71927d5671d3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91614282"
 ---
 # <a name="overview-of-backup-center"></a>A Backup Center áttekintése
@@ -45,7 +45,7 @@ Tekintse meg a következő videót a Backup Center képességeinek megismerésé
 
 A [következő lépésekkel](#next-steps) megismerheti a Backup Center által biztosított különböző képességeket, és hogy miként használhatja ezeket a képességeket a biztonsági mentési környezet hatékony kezeléséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Biztonsági másolatok figyelése és üzemeltetése](backup-center-monitor-operate.md)
 * [A biztonsági mentési hagyaték szabályozása](backup-center-govern-environment.md)

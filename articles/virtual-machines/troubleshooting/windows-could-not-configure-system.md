@@ -1,5 +1,5 @@
 ---
-title: A Windows nem tudja befejezni a rendszer konfigurálását
+title: Hibaelhárítás – a Windows nem tudta befejezni a rendszer konfigurálását
 titlesuffix: Azure Virtual Machines
 description: Ez a cikk az Azure-beli virtuális gépek indítását megakadályozó hibák megoldásának lépéseit ismerteti.
 services: virtual-machines-windows, azure-resource-manager
@@ -16,13 +16,13 @@ ms.topic: troubleshooting
 ms.date: 09/09/2020
 ms.author: v-miegge
 ms.openlocfilehash: 9c170607d6300c4921285e85ac78db5a8a18ad9b
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90078809"
 ---
-# <a name="troubleshoot-windows-could-not-finish-configuring-the-system"></a>A Windows nem tudja befejezni a rendszer konfigurálását
+# <a name="troubleshoot-windows-could-not-finish-configuring-the-system"></a>Hibaelhárítás – a Windows nem tudta befejezni a rendszer konfigurálását
 
 Ez a cikk az Azure-beli virtuális gépek (VM) rendszerindítását megakadályozó problémák megoldásának lépéseit ismerteti.
 

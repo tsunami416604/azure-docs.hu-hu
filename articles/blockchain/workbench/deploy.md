@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.reviewer: ravastra
 ms.custom: references_regions
 ms.openlocfilehash: b46a35b45a51d0cc76942c4ca142c4c7792a28b4
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87077016"
 ---
 # <a name="deploy-azure-blockchain-workbench-preview"></a>Az Azure Blockchain Workbench előzetes verziójának üzembe helyezése
@@ -111,7 +111,7 @@ Az előfeltételként szükséges lépések elvégzése után készen áll a Blo
 
 1. Tekintse át az összegzést, és ellenőrizze, hogy a paraméterek pontosak-e.
 
-    ![Összegzés](media/deploy/blockchain-workbench-summary.png)
+    ![Összefoglalás](media/deploy/blockchain-workbench-summary.png)
 
 1. Válassza a **Létrehozás** lehetőséget a feltételek elfogadásához és az Azure Blockchain Workbench üzembe helyezéséhez.
 

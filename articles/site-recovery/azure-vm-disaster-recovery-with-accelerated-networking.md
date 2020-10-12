@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 04/08/2019
 ms.author: harshacs
 ms.openlocfilehash: 1d2d3b3aacc00428c96cde0f8230421a98151ae2
-ms.sourcegitcommit: 1fe5127fb5c3f43761f479078251242ae5688386
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90068013"
 ---
 # <a name="accelerated-networking-with-azure-virtual-machine-disaster-recovery"></a>Gyorsított hálózatkezelés az Azure-beli virtuális gépek vész-helyreállításával
@@ -53,7 +53,7 @@ Azure Site Recovery támogatja a gyorsabb hálózatkezelést a replikált virtu�
 
 ### <a name="supported-operating-systems"></a>Támogatott operációs rendszerek
 Az Azure-katalógusból az alábbi disztribúciók támogatottak:
-* **Ubuntu 16,04**
+* **Ubuntu 16.04**
 * **SLES 12 SP3**
 * **RHEL 7,4**
 * **CentOS 7.4**

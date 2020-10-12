@@ -11,10 +11,10 @@ ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: blobs
 ms.openlocfilehash: 0ed8b04353c50bff53d074ebdb1efa2a286c8e59
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90086572"
 ---
 # <a name="prevent-anonymous-public-read-access-to-containers-and-blobs"></a>Tárolók és Blobok névtelen nyilvános olvasási hozzáférésének tiltása
@@ -59,7 +59,7 @@ Kövesse az alábbi lépéseket egy olyan metrika létrehozásához, amely nyomo
 
 A metrika konfigurálása után a névtelen kérelmek megjelennek a gráfon. Az alábbi képen az elmúlt 30 percben összesített névtelen kérelmek láthatók.
 
-:::image type="content" source="media/anonymous-read-access-prevent/metric-anonymous-blob-requests.png" alt-text="A blob Storage-hoz tartozó összesített névtelen kérelmeket bemutató képernyőkép":::
+:::image type="content" source="media/anonymous-read-access-prevent/metric-anonymous-blob-requests.png" alt-text="A metrika a blob-tranzakciók összegére való konfigurálását bemutató képernyőkép":::
 
 A riasztási szabályt úgy is konfigurálhatja, hogy értesítést kapjon, ha egy adott számú névtelen kérelem kerül a Storage-fiókjába. További információ: [metrikus riasztások létrehozása, megtekintése és kezelése Azure monitor használatával](../../azure-monitor/platform/alerts-metric.md).
 
@@ -85,7 +85,7 @@ Az Azure Storage-beli adatAzure Monitor és az Azure Log Analytics való elemzé
 1. A **Kategória részletei**területen, a **napló** szakaszban válassza ki a naplózandó kérelmek típusát. Az összes névtelen kérelem olvasási kérelem lesz, ezért a névtelen kérelmek rögzítéséhez válassza a **StorageRead** lehetőséget.
 1. A **célhely részletei**területen válassza **a Küldés log Analyticsba**lehetőséget. Válassza ki az előfizetését és a korábban létrehozott Log Analytics munkaterületet, ahogy az az alábbi képen is látható.
 
-    :::image type="content" source="media/anonymous-read-access-prevent/create-diagnostic-setting-logs.png" alt-text="A naplózási kérelmek diagnosztikai beállításainak létrehozását bemutató képernyőkép":::
+    :::image type="content" source="media/anonymous-read-access-prevent/create-diagnostic-setting-logs.png" alt-text="A metrika a blob-tranzakciók összegére való konfigurálását bemutató képernyőkép":::
 
 Miután létrehozta a diagnosztikai beállítást, a rendszer a Storage-fiókra irányuló kérelmeket a beállításnak megfelelően naplózza. További információ: [diagnosztikai beállítás létrehozása az erőforrás-naplók és-metrikák az Azure-ban való összegyűjtéséhez](../../azure-monitor/platform/diagnostic-settings.md).
 
@@ -241,7 +241,7 @@ Ha meg szeretné tekinteni a megfelelőségi jelentést a Azure Portalban, köve
 1. Szűrje az eredményeket az előző lépésben létrehozott szabályzat-hozzárendelés nevére. A jelentés azt jeleníti meg, hogy hány erőforrás felel meg a szabályzatnak.
 1. További részletekért tekintse meg a jelentés részletezését, beleértve a nem megfelelő tárolási fiókok listáját.
 
-    :::image type="content" source="media/anonymous-read-access-prevent/compliance-report-policy-portal.png" alt-text="A blob Public Access naplózási szabályzatának megfelelőségi jelentését bemutató képernyőkép":::
+    :::image type="content" source="media/anonymous-read-access-prevent/compliance-report-policy-portal.png" alt-text="A metrika a blob-tranzakciók összegére való konfigurálását bemutató képernyőkép":::
 
 ## <a name="use-azure-policy-to-enforce-authorized-access"></a>A jogosult hozzáférés kikényszeríthető Azure Policy használata
 
@@ -277,7 +277,7 @@ Miután létrehozta a szabályzatot a megtagadási hatállyal, és hozzárendeli
 
 Az alábbi képen látható az a hiba, amely akkor fordul elő, ha olyan Storage-fiókot próbál létrehozni, amely lehetővé teszi a nyilvános hozzáférést (az új fiók alapértelmezése), ha egy megtagadási hatással rendelkező szabályzat megköveteli, hogy a nyilvános hozzáférés ne legyen engedélyezve.
 
-:::image type="content" source="media/anonymous-read-access-prevent/deny-policy-error.png" alt-text="A házirend megsértése esetén a Storage-fiók létrehozásakor előforduló hibát ábrázoló képernyőkép":::
+:::image type="content" source="media/anonymous-read-access-prevent/deny-policy-error.png" alt-text="A metrika a blob-tranzakciók összegére való konfigurálását bemutató képernyőkép":::
 
 ## <a name="next-steps"></a>Következő lépések
 

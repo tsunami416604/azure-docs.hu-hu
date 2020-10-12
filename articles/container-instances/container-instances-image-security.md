@@ -5,10 +5,10 @@ ms.topic: article
 ms.date: 01/10/2020
 ms.custom: ''
 ms.openlocfilehash: f49f115e10326887cf4d23406437467256b7df2e
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87922234"
 ---
 # <a name="security-considerations-for-azure-container-instances"></a>A Azure Container Instances biztonsági szempontjai
@@ -117,7 +117,7 @@ Más informatikai környezetekhez hasonlóan a tároló-ökoszisztémával kapcs
 
 * A [tárolók Azure monitor](../azure-monitor/insights/container-insights-overview.md) figyeli az Azure Kubernetes szolgáltatásban (ak) üzemeltetett Kubernetes környezetekben üzembe helyezett számítási feladatok teljesítményét. A tárolók Azure Monitor a teljesítmény láthatóságát azáltal, hogy a mérőszámok API-n keresztül Kubernetes elérhető vezérlőket, csomópontokat és tárolókat gyűjt a memória és a processzor metrikáinak összegyűjtéséhez. 
 
-* Az [Azure Container monitoring megoldás](../azure-monitor/insights/containers.md) segítségével egyetlen helyen tekintheti meg és kezelheti a többi Docker-és Windows-tároló gazdagépét. Például:
+* Az [Azure Container monitoring megoldás](../azure-monitor/insights/containers.md) segítségével egyetlen helyen tekintheti meg és kezelheti a többi Docker-és Windows-tároló gazdagépét. Példa:
 
   * Tekintse meg a tárolók által használt parancsokat megjelenítő részletes naplózási információkat. 
   * A tárolók hibaelhárítása központi naplók megtekintésével és keresésével anélkül, hogy távolról kellene megtekintenie a Docker-vagy a Windows-gazdagépeket.  
@@ -142,7 +142,7 @@ A tároló ökoszisztémájának, például a Kubernetes-fürt, a tároló-beál
 * [Azure Container monitoring megoldás](../azure-monitor/insights/containers.md)
 * [Azure Container instances](container-instances-log-analytics.md) és [Azure Container Registry](../container-registry/container-registry-diagnostics-audit-logs.md) erőforrás-naplói
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Tekintse meg a [Container instances Azure biztonsági alaptervét](security-baseline.md) , amely segítséget nyújt az üzembe helyezés biztonsági helyzetének javításához.
 

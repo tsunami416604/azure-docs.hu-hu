@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/24/2019
 ms.openlocfilehash: 327a8a0de0d144a5c1d8494a6dd22a8b89a7bd93
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87081049"
 ---
 # <a name="run-apache-hive-queries-using-powershell"></a>Apache Hive lekérdezések futtatása a PowerShell használatával
@@ -67,7 +67,7 @@ A következő lépések bemutatják, hogyan használhatja ezeket a parancsmagoka
     2012-02-03      19:25:27        SampleClass4    [ERROR] incorrect       id
     ```
 
-4. Ahogy azt korábban említettük, `Invoke-Hive` használható egy lekérdezés futtatására és a válaszra való várakozásra. A következő parancsfájl használatával megtekintheti, hogyan működik a Meghívási struktúra:
+4. Ahogy azt korábban említettük, `Invoke-Hive` használható egy lekérdezés futtatására és a válaszra való várakozásra. A következő szkripttel láthatja, hogyan működik a Invoke-Hive:
 
     [!code-powershell[main](../../../powershell_scripts/hdinsight/use-hive/use-hive.ps1?range=50-71)]
 
@@ -101,7 +101,7 @@ Get-AzHDInsightJobOutput `
 
 Ez a parancsmag a STDERR írt adatokat adja vissza a feladatok feldolgozásakor.
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
 Amint láthatja, a Azure PowerShell egyszerű módszert kínál a kaptár-lekérdezések futtatására egy HDInsight-fürtben, figyelheti a feladat állapotát, és lekérheti a kimenetet.
 

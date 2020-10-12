@@ -13,10 +13,10 @@ ms.author: ferno
 ms.reviewer: mathoma
 ms.date: 04/28/2020
 ms.openlocfilehash: b0f2a6fcd888afd7eb99a810fad6e876fe6ff4ac
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91617060"
 ---
 # <a name="tutorial-configure-replication-between-two-managed-instances"></a>Oktatóanyag: két felügyelt példány közötti replikáció konfigurálása
@@ -324,6 +324,6 @@ GO
 
 Az Azure-erőforrások tisztításához [törölje az SQL felügyelt példányának erőforrásait az erőforráscsoporthoz](../../azure-resource-manager/management/manage-resources-portal.md#delete-resources) , majd törölje az erőforráscsoportot `SQLMI-Repl` . 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információkat is megtudhat a [tranzakciós replikálásról az Azure SQL felügyelt példányával](replication-transactional-overview.md) kapcsolatban, vagy megismerheti az [SQL felügyelt példányok közzétevője/terjesztője és az Azure-beli virtuális gép SQL-előfizetője](replication-two-instances-and-sql-server-configure-tutorial.md)közötti replikáció konfigurálását. 

@@ -12,20 +12,20 @@ ms.author: jrasnick
 ms.reviewer: genemi
 ms.date: 01/25/2019
 ms.openlocfilehash: 2134cf1fda5f0f1699feb46582813d198304f92e
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91616380"
 ---
-# <a name="monitor-in-memory-oltp-storage-in-azure-sql-database-and-azure-sql-managed-instance"></a>Memóriában tárolt OLTP-tárolók figyelése Azure SQL Database és az Azure SQL felügyelt példányain
+# <a name="monitor-in-memory-oltp-storage-in-azure-sql-database-and-azure-sql-managed-instance"></a>In-Memory OLTP-tároló figyelése Azure SQL Database és az Azure SQL felügyelt példányain
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
 
-Memóriában tárolt [OLTP](in-memory-oltp-overview.md)használata esetén a memóriában optimalizált táblák és a táblázat változói a memóriában tárolt OLTP-tárolóban találhatók.
+A memóriában tárolt [OLTP](in-memory-oltp-overview.md)használatakor az adatok a memóriában optimalizált táblákban és a táblázat változói In-Memory OLTP-tárolóban találhatók.
 
-## <a name="determine-whether-data-fits-within-the-in-memory-oltp-storage-cap"></a>Annak megállapítása, hogy a memóriában lévő OLTP-tárolóban található adatmennyiség megfelel-e
+## <a name="determine-whether-data-fits-within-the-in-memory-oltp-storage-cap"></a>Annak megállapítása, hogy az adatmennyiség megfelel-e az In-Memory OLTP Storage Cap-ban
 
-Határozza meg a különböző szolgáltatási rétegek tárolási sapkáit. Az egyes prémium és üzletileg kritikus szolgáltatási szinteken a memóriában tárolt OLTP maximális mérete található.
+Határozza meg a különböző szolgáltatási rétegek tárolási sapkáit. Az egyes prémium és üzletileg kritikus szolgáltatási szinteken a OLTP maximális mérete In-Memory.
 
 - [DTU-alapú erőforrás-korlátok – önálló adatbázis](database/resource-limits-dtu-single-databases.md)
 - [DTU-alapú erőforrás-korlátok – rugalmas készletek](database/resource-limits-dtu-elastic-pools.md)
@@ -55,9 +55,9 @@ Vagy használja a következő lekérdezést a memóriában tárolt tárterület 
 
 ## <a name="correct-out-of-in-memory-oltp-storage-situations---errors-41823-and-41840"></a>A memóriában tárolt OLTP-tárolási helyzetek javítása – 41823-es és 41840-es hibák
 
-Az adatbázis memóriában lévő OLTP-tárolási korlátjának beírásával a rendszer beilleszti, FRISSÍTI, módosítja és létrehozza a műveleteket, a 41823-as hibaüzenettel (az önálló adatbázisok esetében) vagy a 41840-es hibával (rugalmas készletek esetén). Mindkét hiba miatt az aktív tranzakció megszakad.
+Az adatbázis In-Memory OLTP-tárolójának felső határának megkeresése során a rendszer a következő hibaüzenetet eredményezi: INSERT, UPDATE, ALTER és CREATE művelet, amely meghiúsul az 41823-as (önálló adatbázisok esetében) vagy a 41840-es (a rugalmas készletek esetében) Mindkét hiba miatt az aktív tranzakció megszakad.
 
-A 41823-es és a 41840-es hibaüzenetek azt jelzik, hogy az adatbázisban vagy a készletben lévő memória-optimalizált táblák és Table változók elérte a maximális memóriabeli OLTP-tárolási méretet.
+A 41823-es és a 41840-es hibaüzenetek azt jelzik, hogy az adatbázisban vagy a készletben lévő memória-optimalizált táblák és Table változók elértek a maximális In-Memory OLTP.
 
 A hiba elhárításához a következők egyikét kell tennie:
 
@@ -65,8 +65,8 @@ A hiba elhárításához a következők egyikét kell tennie:
 - Frissítse a szolgáltatási szintet úgy, hogy az a memóriára optimalizált táblákban tárolt adatokhoz elég memóriabeli tárterületet biztosítson.
 
 > [!NOTE]
-> Ritka esetekben a 41823-es és a 41840-es hibák átmenetiek lehetnek, ami azt jelenti, hogy elegendő memóriabeli OLTP-tárterület áll rendelkezésre, és a művelet sikeres újrapróbálkozik. Ezért javasoljuk, hogy figyelje a memóriában elérhető teljes OLTP-tárolót, és próbálkozzon újra a 41823-es vagy 41840-os hiba esetén. Az újrapróbálkozási logikával kapcsolatos további információkért lásd: [ütközések észlelése és újrapróbálkozási logika a memóriában tárolt OLTP](https://docs.microsoft.com/sql/relational-databases/In-memory-oltp/transactions-with-memory-optimized-tables#conflict-detection-and-retry-logic).
+> Ritka esetekben a 41823-es és a 41840-es hibák átmenetiek lehetnek, ami azt jelenti, hogy elegendő rendelkezésre állású In-Memory OLTP tárterület, és a művelet sikeres újrapróbálható. Ezért javasoljuk, hogy figyelje a teljes rendelkezésre álló In-Memory OLTP-tárolót, és ismételje meg a 41823-es vagy a 41840-es hibát. Az újrapróbálkozási logikával kapcsolatos további információkért lásd: [ütközések észlelése és újrapróbálkozási logika In-Memory OLTP](https://docs.microsoft.com/sql/relational-databases/In-memory-oltp/transactions-with-memory-optimized-tables#conflict-detection-and-retry-logic).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A figyelési útmutató: a [dinamikus felügyeleti nézetek használatával történő figyelés](database/monitoring-with-dmvs.md).

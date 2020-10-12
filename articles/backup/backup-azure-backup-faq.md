@@ -4,17 +4,17 @@ description: 'Gyakori kérdésekre adott válaszok a következő témakörökben
 ms.topic: conceptual
 ms.date: 07/07/2019
 ms.openlocfilehash: 26d833dfea214c5f29b77c2ac34a5f8863c7fbc0
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90986419"
 ---
 # <a name="azure-backup---frequently-asked-questions"></a>Azure Backup – Gyakori kérdések
 
 Ez a cikk az Azure Backup szolgáltatással kapcsolatban gyakran feltett kérdésekre ad választ.
 
-## <a name="recovery-services-vault"></a>Helyreállítási tár
+## <a name="recovery-services-vault"></a>Recovery Services-tároló
 
 ### <a name="is-there-any-limit-on-the-number-of-vaults-that-can-be-created-in-each-azure-subscription"></a>Az egyes Azure-előfizetésekben létrehozható tárolók száma korlátozott?
 

@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 03/05/2020
 ms.custom: references_regions
 ms.openlocfilehash: 41511abaa071bd0f64ee699c52486b71ec036a68
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87926450"
 ---
 # <a name="support-matrix-for-sql-server-backup-in-azure-vms"></a>Az Azure-beli virtuális gépek SQL Server biztonsági mentésének támogatási mátrixa
@@ -65,7 +65,7 @@ A biztonsági mentési beállítások és a biztonsági másolatok típusaitól 
 Összes | Elsődleges
 Differenciál | Elsődleges
 Napló |  Elsődleges
-Csak másolás – teljes |  Elsődleges
+Copy-Only teljes |  Elsődleges
 
 #### <a name="backup-preference-secondary-only"></a>Biztonsági mentési beállítás: csak másodlagos
 
@@ -74,7 +74,7 @@ Csak másolás – teljes |  Elsődleges
 Összes | Elsődleges
 Differenciál | Elsődleges
 Napló |  Másodlagos
-Csak másolás – teljes |  Másodlagos
+Copy-Only teljes |  Másodlagos
 
 #### <a name="backup-preference-secondary"></a>Biztonsági mentési beállítások: másodlagos
 
@@ -83,7 +83,7 @@ Csak másolás – teljes |  Másodlagos
 Összes | Elsődleges
 Differenciál | Elsődleges
 Napló |  Másodlagos
-Csak másolás – teljes |  Másodlagos
+Copy-Only teljes |  Másodlagos
 
 #### <a name="no-backup-preference"></a>Nincs biztonsági mentési beállítás
 
@@ -92,8 +92,8 @@ Csak másolás – teljes |  Másodlagos
 Összes | Elsődleges
 Differenciál | Elsődleges
 Napló |  Másodlagos
-Csak másolás – teljes |  Másodlagos
+Copy-Only teljes |  Másodlagos
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg, hogyan [készíthet biztonsági mentést egy](backup-azure-sql-database.md) Azure-beli virtuális gépen futó SQL Server-adatbázisról.

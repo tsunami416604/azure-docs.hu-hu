@@ -6,10 +6,10 @@ ms.author: flborn
 ms.date: 02/04/2020
 ms.topic: how-to
 ms.openlocfilehash: 5c638b434ceb31b57689b11971f48eb322b94726
-ms.sourcegitcommit: 25bb515efe62bfb8a8377293b56c3163f46122bf
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87985614"
 ---
 # <a name="use-the-model-conversion-rest-api"></a>A modellátalakító REST API használata
@@ -131,7 +131,7 @@ Egy "status" mezőt tartalmazó JSON-dokumentumot ad vissza, amely a következő
 
 Ha az állapot "hiba", akkor egy további "hiba" mező jelenik meg, amely tartalmaz egy "üzenet" almezőt, amely tartalmazza a hiba adatait. A kimeneti tárolóba további naplók lesznek feltöltve.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Modellek átalakítása az Azure Blob Storage használatával](blob-storage.md)
 - [Modell átalakítása](model-conversion.md)
