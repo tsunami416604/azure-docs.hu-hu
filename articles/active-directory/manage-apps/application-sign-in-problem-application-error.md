@@ -17,10 +17,10 @@ ms.author: kenwith
 ms.reviewer: asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c826a679c1c64e113beb6b2cc5ffd29f82b55a3b
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84759538"
 ---
 # <a name="an-app-page-shows-an-error-message-after-the-user-signs-in"></a>Egy alkalmazás lap hibaüzenetet jelenít meg, miután a felhasználó bejelentkezik
@@ -124,7 +124,7 @@ Az alábbi lépéseket követve módosíthatja, hogy az SAML-jogkivonat mely ré
 
 7. Az alkalmazás betöltése után válassza az **egyszeri bejelentkezés** lehetőséget a navigációs ablaktáblán.
 
-8. Az **SAML-aláíró tanúsítvány**területen válassza a **speciális tanúsítvány-aláírási beállítások megjelenítése**lehetőséget.
+8. Az **SAML-aláíró tanúsítvány**területen válassza a  **speciális tanúsítvány-aláírási beállítások megjelenítése**lehetőséget.
 
 9. Válassza ki azt az **aláírási lehetőséget** , amelyet az alkalmazás a következő lehetőségek közül vár:
 

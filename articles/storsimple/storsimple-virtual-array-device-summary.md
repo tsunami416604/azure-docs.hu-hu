@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 11/29/2016
 ms.author: manuaery
 ms.openlocfilehash: 1ab72788c768568366f2627055015c74028330b5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85515241"
 ---
 # <a name="use-the-device-summary-blade-for-storsimple-device-manager-connected-to-storsimple-virtual-array"></a>A StorSimple virtuális tömbhöz csatlakoztatott StorSimple-Eszközkezelő eszköz összefoglalási paneljének használata
@@ -49,7 +49,7 @@ Az Essentials terület a fontos tulajdonságok némelyikét rögzíti, például
 
 * A **használati** diagramon megtekintheti a virtuális tömbben használt elsődleges tárterületet, valamint az elmúlt 7 napban felhasznált Felhőbeli tárterületet, az alapértelmezett időtartamot. A diagram jobb felső sarkában található **Szerkesztés** lehetőséggel különböző időskálát választhat.
 
-* A **megosztások** vagy **kötetek** csempe az eszközön az állapot szerint csoportosított megosztások vagy kötetek számának összegzését tartalmazza. A csempére kattintva nyissa meg a **megosztások** vagy **kötetek** listája panelt, majd kattintson egy egyéni megosztásra vagy kötetre a tulajdonságainak megtekintéséhez vagy módosításához. További információ: a [megosztások kezelése](storsimple-virtual-array-manage-shares.md) vagy a [kötetek kezelése](storsimple-virtual-array-manage-volumes.md).
+* A **megosztások** vagy **kötetek** csempe az eszközön az állapot szerint csoportosított megosztások vagy kötetek számának összegzését tartalmazza. A csempére kattintva nyissa meg a **megosztások**  vagy **kötetek** listája panelt, majd kattintson egy egyéni megosztásra vagy kötetre a tulajdonságainak megtekintéséhez vagy módosításához. További információ: a [megosztások kezelése](storsimple-virtual-array-manage-shares.md) vagy a [kötetek kezelése](storsimple-virtual-array-manage-volumes.md).
 
 ## <a name="next-steps"></a>További lépések
 Az alábbiak végrehajtásának módját ismerheti meg:

@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 2c91a59e57613934c946e3cd56089b330893a51a
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86260343"
 ---
 # <a name="sfctl-mesh-secret"></a>sfctl mesh titkos kódja
@@ -19,7 +19,7 @@ A háló titkos erőforrásainak beolvasása és törlése.
 
 |Parancs|Leírás|
 | --- | --- |
-| törlés | A titkos erőforrás törlése. |
+| delete | A titkos erőforrás törlése. |
 | list | Felsorolja az összes titkos erőforrást. |
 | megjelenítés | Lekéri a titkos erőforrást a megadott névvel. |
 
@@ -81,6 +81,6 @@ A titkos erőforrás információinak beolvasása a megadott névvel. Az inform�
 | --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - [Állítsa be](service-fabric-cli.md) a Service Fabric CLI-t.
 - Megtudhatja, hogyan használhatja a Service Fabric CLI-t a [minta-parancsfájlok](./scripts/sfctl-upgrade-application.md)használatával.

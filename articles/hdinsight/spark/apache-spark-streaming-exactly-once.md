@@ -9,10 +9,10 @@ ms.custom: hdinsightactive
 ms.topic: how-to
 ms.date: 11/15/2018
 ms.openlocfilehash: 8e0037f6aea4aef53efc192066027e0a0143bda1
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86086177"
 ---
 # <a name="create-apache-spark-streaming-jobs-with-exactly-once-event-processing"></a>Apache Spark streaming-feladatok létrehozása pontosan egyszeri esemény-feldolgozással
@@ -49,7 +49,7 @@ A Spark Streamingben a források, például a Event Hubs és a Kafka *megbízhat
 
 ### <a name="use-the-write-ahead-log"></a>A Write-Ahead napló használata
 
-A Spark streaming támogatja egy írási idejű napló használatát, amelyben az egyes fogadott eseményeket először a Spark ellenőrzőpont-könyvtárába írja a hibatűrő tárolóban, majd egy rugalmasan elosztott adatkészlet (RDD) tárolja. Az Azure-ban a hibatűrő tárolót az Azure Storage vagy a Azure Data Lake Storage HDFS. A Spark streaming-alkalmazásban az írási és olvasási napló minden fogadó esetében engedélyezve van, ha a konfigurációs beállítást a értékre állítja `spark.streaming.receiver.writeAheadLog.enable` `true` . Az írási és olvasási napló hibatűrést biztosít mind az illesztőprogram, mind a végrehajtók meghibásodása esetén.
+A Spark streaming támogatja egy Write-Ahead napló használatát, amelyben minden fogadott esemény először a Spark ellenőrzőpont-könyvtárába lett írva a hibatűrő tárolóban, majd egy rugalmasan elosztott adatkészletben (RDD) tárolódik. Az Azure-ban a hibatűrő tárolót az Azure Storage vagy a Azure Data Lake Storage HDFS. A Spark streaming-alkalmazásban a Write-Ahead napló minden fogadó esetében engedélyezve van, ha a konfigurációs beállítást a értékre állítja `spark.streaming.receiver.writeAheadLog.enable` `true` . A Write-Ahead napló hibatűrést biztosít mind az illesztőprogram, mind a végrehajtó meghibásodása esetén.
 
 Az esemény adataival kapcsolatos feladatokat futtató munkavégzők esetében minden RDD definíciója a több feldolgozón replikált és elosztott. Ha egy feladat meghiúsul, mert az azt futtató feldolgozó összeomlott, a feladat újraindul egy másik feldolgozón, amely az esemény adatai replikáját használja, így az esemény nem vész el.
 

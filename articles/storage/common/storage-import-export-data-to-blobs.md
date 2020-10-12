@@ -9,10 +9,10 @@ ms.date: 03/12/2020
 ms.author: alkohli
 ms.subservice: common
 ms.openlocfilehash: 6d12c0ce0df44c37f4e7df49df2c11301513917c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85514215"
 ---
 # <a name="use-the-azure-importexport-service-to-import-data-to-azure-blob-storage"></a>Az Azure import/export szolgáltatás használata az Azure-ba való adatimportálásra Blob Storage
@@ -77,12 +77,12 @@ A meghajtók előkészítéséhez végezze el a következő lépéseket.
 
     A használt paramétereket a következő táblázat ismerteti:
 
-    |Beállítás  |Description  |
+    |Beállítás  |Leírás  |
     |---------|---------|
     |/j     |A naplófájl neve, a. jrn kiterjesztéssel. Egy naplófájl jön létre egy meghajtón. Javasoljuk, hogy a lemez sorozatszámát használja a naplófájl neveként.         |
     |/ID     |A munkamenet-azonosító. A parancs minden példányához használjon egyedi munkamenet-számot.      |
     |/t:     |A szállítandó lemez meghajtóbetűjele. Például: meghajtó `D` .         |
-    |BK     |A meghajtó BitLocker-kulcsa. A numerikus jelszava a kimenetből`manage-bde -protectors -get D:`      |
+    |BK     |A meghajtó BitLocker-kulcsa. A numerikus jelszava a kimenetből `manage-bde -protectors -get D:`      |
     |/srcdir:     |A szállítandó lemez meghajtóbetűjele, majd a `:\` . Például: `D:\`.         |
     |/dstdir:     |A cél tároló neve az Azure Storage-ban.         |
     |/blobtype:     |Ezzel a beállítással adható meg, hogy milyen típusú blobokat kíván importálni az alkalmazásba. A blokk Blobok esetében ez a `BlockBlob` és a Blobok esetében is `PageBlob` .         |
@@ -127,7 +127,7 @@ Az alábbi lépések végrehajtásával hozzon létre egy importálási feladato
 
 6. **Visszaszállítási adatok**:
 
-   * Válassza ki a szolgáltatót a legördülő listából. Ha a FedEx/DHL-től eltérő szolgáltatót szeretne használni, válasszon ki egy meglévő lehetőséget a legördülő menüből. Lépjen kapcsolatba Azure Data Box operatív csapatával a `adbops@microsoft.com` használni kívánt szolgáltatóra vonatkozó információkkal.
+   * Válassza ki a szolgáltatót a legördülő listából. Ha a FedEx/DHL-től eltérő szolgáltatót szeretne használni, válasszon ki egy meglévő lehetőséget a legördülő menüből. Lépjen kapcsolatba Azure Data Box operatív csapatával a `adbops@microsoft.com`  használni kívánt szolgáltatóra vonatkozó információkkal.
    * Adjon meg egy érvényes, a szállítóval létrehozott számlaszámot. A Microsoft ezt a fiókot használja a meghajtók visszaszállításához az importálási feladatok befejezését követően. Ha nem rendelkezik fiókkal, hozzon létre egy [FedEx](https://www.fedex.com/us/oadr/) vagy [DHL](https://www.dhl.com/) Carrier-fiókot.
    * Adjon meg egy teljes és érvényes nevet, telefont, e-mailt, utcanév-címet, várost, irányítószámot, államot/régiót és országot/régiót.
 

@@ -11,13 +11,13 @@ ms.topic: conceptual
 ms.date: 05/01/2020
 ms.author: wellsi
 ms.openlocfilehash: a2652bed6c8e7dec0a6fe8f9471793c3873646bf
-ms.sourcegitcommit: 31236e3de7f1933be246d1bfeb9a517644eacd61
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82781756"
 ---
-# <a name="how-to-configure-a-microphone-array"></a>Mikrofon tömb konfigurálása
+# <a name="how-to-configure-a-microphone-array"></a>Mikrofonsor konfigurálásának módja
 
 Ebből a cikkből megtudhatja, hogyan konfigurálhat egy [mikrofonos tömböt](https://aka.ms/sdsdk-microphone). Ez magában foglalja a munkaszög beállítását, valamint azt, hogy a Speech Devices SDK melyik mikrofont használja.
 
@@ -36,20 +36,20 @@ A v 1.11.0 a Speech Devices SDK a [JSON-fájlokból](https://aka.ms/sdsdk-micarr
 
 
 ## <a name="windows"></a>Windows
-Windows rendszeren a rendszer automatikusan beolvassa a mikrofon tömb geometriájának adatait az audio-illesztőprogramból. Így a tulajdonságok `DeviceGeometry` `SelectedGeometry`, és `MicArrayGeometryConfigFile` a megadása nem kötelező. A használatával `MicArrayGeometryConfigFile` megadott [JSON-fájlt](https://aka.ms/sdsdk-micarray-json) csak a beamforming-tartomány beszerzésére használjuk.
+Windows rendszeren a rendszer automatikusan beolvassa a mikrofon tömb geometriájának adatait az audio-illesztőprogramból. Így a tulajdonságok, `DeviceGeometry`  `SelectedGeometry` és a `MicArrayGeometryConfigFile` megadása nem kötelező. A használatával megadott [JSON-fájlt](https://aka.ms/sdsdk-micarray-json) `MicArrayGeometryConfigFile` csak a beamforming-tartomány beszerzésére használjuk.
 
-Ha egy mikrofon-tömb van megadva `AudioConfig::FromMicrophoneInput`a használatával, akkor a megadott mikrofont használjuk. Ha nincs megadva a mikrofon vagy `AudioConfig::FromDefaultMicrophoneInput` a neve, akkor az alapértelmezett mikrofont használjuk, amely a Windows hangbeállításokban van megadva.
+Ha egy mikrofon-tömb van megadva a használatával `AudioConfig::FromMicrophoneInput` , akkor a megadott mikrofont használjuk. Ha nincs megadva a mikrofon vagy a `AudioConfig::FromDefaultMicrophoneInput` neve, akkor az alapértelmezett mikrofont használjuk, amely a Windows hangbeállításokban van megadva.
 A Speech Devices SDK-ban a Microsoft audio stack csak a 16 KHz-es integrált minta arányú mintavételi sebességeket támogatja.
 
 ## <a name="linux"></a>Linux
-Linux rendszeren a mikrofon geometriájának adatait meg kell adni. A használata `DeviceGeometry` és `SelectedGeometry` továbbra is támogatott. A `MicArrayGeometryConfigFile` tulajdonság használatával a JSON-fájlon keresztül is megadható. A Windowshoz hasonlóan a beamforming tartományt is megadhatja a JSON-fájl.
+Linux rendszeren a mikrofon geometriájának adatait meg kell adni. A használata `DeviceGeometry` és `SelectedGeometry` továbbra is támogatott. A tulajdonság használatával a JSON-fájlon keresztül is megadható `MicArrayGeometryConfigFile` . A Windowshoz hasonlóan a beamforming tartományt is megadhatja a JSON-fájl.
 
-Ha egy mikrofon-tömb van megadva `AudioConfig::FromMicrophoneInput`a használatával, akkor a megadott mikrofont használjuk. Ha nincs megadva a mikrofon vagy `AudioConfig::FromDefaultMicrophoneInput` a neve, akkor a rendszer az *alapértelmezett*nevű ALSA-eszközről rögzíti a rekordot. Alapértelmezés szerint az *alapértelmezett érték* mindig a 0. eszközre mutat, de a felhasználók módosíthatják a `asound.conf` fájlban. 
+Ha egy mikrofon-tömb van megadva a használatával `AudioConfig::FromMicrophoneInput` , akkor a megadott mikrofont használjuk. Ha nincs megadva a mikrofon vagy a `AudioConfig::FromDefaultMicrophoneInput` neve, akkor a rendszer az *alapértelmezett*nevű ALSA-eszközről rögzíti a rekordot. Alapértelmezés szerint az *alapértelmezett érték* mindig a 0. eszközre mutat, de a felhasználók módosíthatják a `asound.conf` fájlban. 
 
 A Speech Devices SDK-ban a Microsoft audio stack csak a 16 KHz-es integrált adatmennyiségek esetében támogatja a leegyszerűsítést. Emellett a következő formátumok támogatottak: 32 bites IEEE little endian float, 32 bites kis endian aláírt int, 24 bites kis endian aláírt int, 16 bites kis endian aláírt int, és 8 bites aláírt int.
 
 ## <a name="android"></a>Android
-A Speech Devices SDK jelenleg csak a [Roobo v1](speech-devices-sdk-android-quickstart.md) -t támogatja. A viselkedés ugyanaz, mint a korábbi verziók, `MicArrayGeometryConfigFile` a Now tulajdonság kivételével a beamforming-TARTOMÁNYT tartalmazó JSON-fájl megadására is használható.
+A Speech Devices SDK jelenleg csak a [Roobo v1](speech-devices-sdk-android-quickstart.md) -t támogatja. A viselkedés ugyanaz, mint a korábbi verziók, `MicArrayGeometryConfigFile` a Now tulajdonság kivételével a beamforming-tartományt tartalmazó JSON-fájl megadására is használható.
 
 ## <a name="microphone-array-configuration-json"></a>Mikrofon tömb konfigurációjának JSON
 

@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 08/03/2020
 ms.author: jingwang
 ms.openlocfilehash: 14b3857211eca39ebe09a3a0752ca1d8eee17bc0
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87529993"
 ---
 # <a name="copy-data-from-xero-using-azure-data-factory"></a>Adatok másolása a Xero a Azure Data Factory használatával
@@ -176,7 +176,7 @@ Az adatok Xero való másolásához állítsa a forrás típusát a másolás te
 | típus | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **XeroSource** | Igen |
 | lekérdezés | Az egyéni SQL-lekérdezés használatával olvassa be az adatolvasást. Például: `"SELECT * FROM Contacts"`. | Nem (ha meg van adva a "táblanév" az adatkészletben) |
 
-**Például**
+**Példa**
 
 ```json
 "activities":[
@@ -236,31 +236,31 @@ Az alábbi táblázatokban ugyanazok az adatok szerepelnek a minimális és a te
 - Overpayments_Allocations 
 - Előlegek 
 - Prepayments_Allocations 
-- Bevételek 
+- Nyugták 
 - Receipt_Validation_Errors 
 - Tracking_Categories
 
 A következő táblázatok csak a teljes sémával kérhetők le:
 
-- Befejezés. Bank_Transaction_Line_Items 
-- Befejezés. Bank_Transaction_Line_Item_Tracking 
-- Befejezés. Contact_Group_Contacts 
-- Befejezés. Contacts_Contact_ személy 
-- Befejezés. Credit_Note_Line_Items 
-- Befejezés. Credit_Notes_Line_Items_Tracking 
-- Befejezés. Expense_Claim_ befizetések 
-- Befejezés. Expense_Claim_Receipts 
-- Befejezés. Invoice_Line_Items 
-- Befejezés. Invoices_Line_Items_Tracking
-- Befejezés. Manual_Journal_Lines 
-- Befejezés. Manual_Journal_Line_Tracking 
-- Befejezés. Overpayment_Line_Items 
-- Befejezés. Overpayment_Line_Items_Tracking 
-- Befejezés. Prepayment_Line_Items 
-- Befejezés. Prepayment_Line_Item_Tracking 
-- Befejezés. Receipt_Line_Items 
-- Befejezés. Receipt_Line_Item_Tracking 
-- Befejezés. Tracking_Category_Options
+- Complete.Bank_Transaction_Line_Items 
+- Complete.Bank_Transaction_Line_Item_Tracking 
+- Complete.Contact_Group_Contacts 
+- Complete.Contacts_Contact_ személyek 
+- Complete.Credit_Note_Line_Items 
+- Complete.Credit_Notes_Line_Items_Tracking 
+- Complete.Expense_Claim_ kifizetések 
+- Complete.Expense_Claim_Receipts 
+- Complete.Invoice_Line_Items 
+- Complete.Invoices_Line_Items_Tracking
+- Complete.Manual_Journal_Lines 
+- Complete.Manual_Journal_Line_Tracking 
+- Complete.Overpayment_Line_Items 
+- Complete.Overpayment_Line_Items_Tracking 
+- Complete.Prepayment_Line_Items 
+- Complete.Prepayment_Line_Item_Tracking 
+- Complete.Receipt_Line_Items 
+- Complete.Receipt_Line_Item_Tracking 
+- Complete.Tracking_Category_Options
 
 ## <a name="lookup-activity-properties"></a>Keresési tevékenység tulajdonságai
 

@@ -8,10 +8,10 @@ ms.date: 06/26/2019
 ms.topic: conceptual
 keywords: Kinect, Azure, beolvasás, érzékelő, kamera, SDK, mélység, RGB, képek, szín, rögzítés, felbontás, puffer
 ms.openlocfilehash: fed5c7340d287d9103ba35f0fd3d80c0fff6e3ec
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87538914"
 ---
 # <a name="retrieve-azure-kinect-image-data"></a>Azure-beli Kinect-képadatok beolvasása
@@ -94,7 +94,7 @@ Ha [`k4a_image_release()`](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/m
 
 ## <a name="access-image-buffers"></a>Hozzáférés a képpufferekhez
 
-[`k4a_image_t`](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/structk4a__image__t.html)számos hozzáférő funkcióval rendelkezik a rendszerkép tulajdonságainak lekéréséhez.
+[`k4a_image_t`](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/structk4a__image__t.html) számos hozzáférő funkcióval rendelkezik a rendszerkép tulajdonságainak lekéréséhez.
 
 A rendszerkép memória-pufferének eléréséhez használja a [k4a_image_get_buffer](https://microsoft.github.io/Azure-Kinect-Sensor-SDK/master/group___functions_ga2ef070cf4e543cd0f726478af332546e.html#ga2ef070cf4e543cd0f726478af332546e).
 
@@ -118,7 +118,7 @@ if (image != NULL)
 k4a_capture_release(capture);
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most már tudja, hogyan rögzítheti és koordinálhatja a kamerák képeit a szín és a mélység között az Azure Kinect-eszköz használatával. A következőket is teheti:
 

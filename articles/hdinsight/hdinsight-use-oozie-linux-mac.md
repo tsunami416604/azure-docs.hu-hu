@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/27/2020
 ms.openlocfilehash: 1e88fc64ea297f70f56478588312675fb233f221
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86085939"
 ---
 # <a name="use-apache-oozie-with-apache-hadoop-to-define-and-run-a-workflow-on-linux-based-azure-hdinsight"></a>Az Apache Oozie használata az Apache Hadooppal a munkafolyamatok Linux-alapú Azure HDInsighton való meghatározásához és futtatásához
@@ -37,7 +37,7 @@ A Oozie segítségével a rendszerre vonatkozó feladatokat is ütemezhet, péld
 
 * **Egy Azure SQL Database**.  Lásd: [adatbázis létrehozása Azure SQL Databaseban a Azure Portalban](../sql-database/sql-database-get-started.md).  Ez a cikk egy **oozietest**nevű adatbázist használ.
 
-* A fürtök elsődleges tárolójának URI-sémája. `wasb://`Azure Storage esetén `abfs://` Azure Data Lake Storage Gen2 vagy Azure Data Lake Storage Gen1 esetén `adl://` . Ha a biztonságos átvitel engedélyezve van az Azure Storage-hoz, az URI a következő lesz: `wasbs://` . Lásd még: [biztonságos átvitel](../storage/common/storage-require-secure-transfer.md).
+* A fürtök elsődleges tárolójának URI-sémája. `wasb://` Azure Storage esetén `abfs://` Azure Data Lake Storage Gen2 vagy Azure Data Lake Storage Gen1 esetén `adl://` . Ha a biztonságos átvitel engedélyezve van az Azure Storage-hoz, az URI a következő lesz: `wasbs://` . Lásd még: [biztonságos átvitel](../storage/common/storage-require-secure-transfer.md).
 
 ## <a name="example-workflow"></a>Példa munkafolyamat
 
@@ -306,7 +306,7 @@ A feladatdefiníció leírja, hol található a workflow.xml. Azt is leírja, ho
     |Helyőrző értéke| Felülírt érték|
     |---|---|
     |wasbs://mycontainer \@ mystorageaccount.blob.Core.Windows.net| Az 1. lépésből kapott érték.|
-    |admin| A HDInsight-fürt bejelentkezési neve, ha a rendszergazda nem.|
+    |felügyelet| A HDInsight-fürt bejelentkezési neve, ha a rendszergazda nem.|
     |serverName| Azure SQL Database kiszolgálónév.|
     |sqlLogin| Azure SQL Database kiszolgálói bejelentkezés.|
     |sqlPassword| Azure SQL Database kiszolgáló bejelentkezési jelszava.|

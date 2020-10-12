@@ -4,10 +4,10 @@ description: A földrajzi régiók használata feladatátvételhez és a vész-h
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: 8c203ed197c1e5bfb15cfb503a04df79b85c630e
-ms.sourcegitcommit: 5dbea4631b46d9dde345f14a9b601d980df84897
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91372523"
 ---
 # <a name="azure-service-bus-geo-disaster-recovery"></a>Azure Service Bus geo-vész-helyreállítás
@@ -17,7 +17,7 @@ Ha a teljes Azure-régiók vagy-adatközpontok (ha nincsenek használatban [rend
 A Geo-vész-helyreállítási funkció globálisan elérhető a Service Bus Premium SKU-hoz. 
 
 >[!NOTE]
-> A Geo-vész-helyreállítás jelenleg csak a metaadatokat (várólisták, témakörök, előfizetések, szűrők) másolja át az elsődleges névtérről a másodlagos névtérre, ha párosítva van.
+> Geo-Disaster a helyreállítás jelenleg csak a metaadatokat (várólisták, témakörök, előfizetések, szűrők) másolja át az elsődleges névtérről a másodlagos névtérre, ha párosítva van.
 
 ## <a name="outages-and-disasters"></a>Kimaradások és katasztrófák
 

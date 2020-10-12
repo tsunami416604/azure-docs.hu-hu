@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 07/10/2019
 ms.author: danlep
 ms.openlocfilehash: 2b28cc742bb981e0db535d39cb0c7fbf027470ea
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83673764"
 ---
 ### <a name="identity-tier"></a>Identitási rétegek 
 
-A Microsoft-Oracle partnerség lehetővé teszi, hogy egységes identitást állítson be az Azure-ban, a OCI-ban és az Oracle-alkalmazásban. A JD Edwards EnterpriseOne vagy PeopleSoft alkalmazáscsomag esetében az Oracle HTTP-kiszolgáló (OHS) egy példánya szükséges az Azure AD és az Oracle IDCS közötti egyszeri bejelentkezés beállításához.
+Az Microsoft-Oracle partneri együttműködés lehetővé teszi, hogy egységes identitást állítson be az Azure-ban, a OCI-ben és az Oracle-alkalmazásban. A JD Edwards EnterpriseOne vagy PeopleSoft alkalmazáscsomag esetében az Oracle HTTP-kiszolgáló (OHS) egy példánya szükséges az Azure AD és az Oracle IDCS közötti egyszeri bejelentkezés beállításához.
 
 A OHS fordított proxyként működik az alkalmazási szinten, ami azt jelenti, hogy a végfelhasználók felé irányuló összes kérelem áthalad. Az Oracle Access Manager WebGate egy OHS webkiszolgáló beépülő modul, amely minden, a befejezési alkalmazásra vonatkozó kérelmet elfogja. Ha egy hozzáférő erőforrás védett (hitelesített munkamenet szükséges), a WebGate a felhasználó böngészőjén keresztül kezdeményezi a OIDC-hitelesítési folyamatot az Identity Cloud Service használatával. Az OpenID Connect WebGate által támogatott folyamatokkal kapcsolatos további információkért tekintse meg az [Oracle Access Manager dokumentációját](https://docs.oracle.com/cd/E52734_01/oam/AIAAG/GUID-1E927D1B-FB83-425B-8768-85DB441821A4.htm#AIAAG7327).
 

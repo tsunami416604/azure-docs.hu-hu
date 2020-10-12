@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/23/2020
 ms.openlocfilehash: a692f4dd86d110f7f0a91a862a7b16ac28345de5
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86084528"
 ---
 # <a name="use-apache-zeppelin-notebooks-with-apache-spark-cluster-on-azure-hdinsight"></a>Apache Zeppelin-notebookok használata Apache Spark-fürtökön az Azure HDInsight rendszerében
@@ -159,7 +159,7 @@ A fentiekben leírtak szerint a `%sh` tolmács nem támogatott a HDInsight 4,0-t
 
 Az emelt szintű tartományi felhasználók a `Shiro.ini` fájl segítségével szabályozhatják a tolmács felhasználói felületének elérését. Csak ezek a felhasználók hozhatnak létre új `%sh` tolmácsokat, és állíthatnak be engedélyeket az egyes új `%sh` tolmácsok számára. A fájl használatával történő hozzáférés vezérléséhez `shiro.ini` kövesse az alábbi lépéseket:
 
-1. Adjon meg egy új szerepkört egy meglévő tartományi csoport neve alapján. A következő példában a `adminGroupName` HRE Kiemelt jogosultságú felhasználók csoportja. Ne használjon speciális karaktereket vagy szóközöket a csoport nevében. A `=` szerepkör engedélyeinek megadása utáni karakterek. `*`azt jelenti, hogy a csoport teljes körű engedélyekkel rendelkezik.
+1. Adjon meg egy új szerepkört egy meglévő tartományi csoport neve alapján. A következő példában a `adminGroupName` HRE Kiemelt jogosultságú felhasználók csoportja. Ne használjon speciális karaktereket vagy szóközöket a csoport nevében. A `=` szerepkör engedélyeinek megadása utáni karakterek. `*` azt jelenti, hogy a csoport teljes körű engedélyekkel rendelkezik.
 
     ```
     [roles]
@@ -197,7 +197,7 @@ A szolgáltatás Ambari való ellenőrzéséhez navigáljon `https://CLUSTERNAME
 
 A szolgáltatás parancssorból való érvényesítéséhez az SSH-t a fő csomóponthoz kell bejelentkeznie. Váltson a felhasználóra a Zeppelin parancs használatával `sudo su zeppelin` . Állapot parancsai:
 
-|Parancs |Description |
+|Parancs |Leírás |
 |---|---|
 |`/usr/hdp/current/zeppelin-server/bin/zeppelin-daemon.sh status`|A szolgáltatás állapota.|
 |`/usr/hdp/current/zeppelin-server/bin/zeppelin-daemon.sh --version`|Szolgáltatás verziója.|

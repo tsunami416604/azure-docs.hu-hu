@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 06/02/2017
 ms.author: alkohli
 ms.openlocfilehash: 045cec85174a88d1d608a4adc679461008852768
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85514595"
 ---
 # <a name="replace-a-power-and-cooling-module-on-your-storsimple-device"></a>Az energiaellátási és hűtési rendszer cseréje a StorSimple-eszközön
@@ -61,7 +61,7 @@ Kövesse ezeket az utasításokat, ha készen áll egy energiagazdálkodási és
    
      **1. ábra** Az eszköz előlapja  
    
-   | Címke | Description |
+   | Címke | Leírás |
    |:--- |:--- |
    | 1 |Némítás gomb |
    | 2 |Rendszerteljesítmény |
@@ -74,7 +74,7 @@ Kövesse ezeket az utasításokat, ha készen áll egy energiagazdálkodási és
    
      **2. ábra** A PCM hátoldala kijelző LED-ekkel
    
-   | Címke | Description |
+   | Címke | Leírás |
    |:--- |:--- |
    | 1 |AC áramszünet |
    | 2 |Ventilátor meghibásodása |
@@ -88,7 +88,7 @@ Kövesse ezeket az utasításokat, ha készen áll egy energiagazdálkodási és
    
      **3. ábra** Eszköz hátoldala beépülő modulokkal 
    
-   | Címke | Description |
+   | Címke | Leírás |
    |:--- |:--- |
    | 1 |PCM 0 |
    | 2 |PCM 1 |

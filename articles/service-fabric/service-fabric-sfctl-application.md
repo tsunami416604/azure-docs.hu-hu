@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 880770345eb7d65850db322bd97d64c60b6681ee
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86260871"
 ---
 # <a name="sfctl-application"></a>sfctl-alkalmazás
@@ -20,7 +20,7 @@ Alkalmazások és alkalmazások típusainak létrehozása, törlése és kezelé
 |Parancs|Leírás|
 | --- | --- |
 | létrehozás | Létrehoz egy Service Fabric alkalmazást a megadott leírás használatával. |
-| törlés | Töröl egy meglévő Service Fabric alkalmazást. |
+| delete | Töröl egy meglévő Service Fabric alkalmazást. |
 | telepített | Egy Service Fabric csomóponton telepített alkalmazás információinak beolvasása. |
 | központilag telepített – állapot | Egy Service Fabric csomóponton telepített alkalmazás állapotával kapcsolatos információk beolvasása. |
 | központilag telepített – lista | A Service Fabric csomóponton telepített alkalmazások listájának beolvasása. |
@@ -548,6 +548,6 @@ A csomag összes fájljának feltöltési folyamata opcionálisan megjeleníthet
 | --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - [Állítsa](service-fabric-cli.md) be a Service Fabric CLI-t.
 - Megtudhatja, hogyan használhatja a Service Fabric CLI-t a [minta-parancsfájlok](./scripts/sfctl-upgrade-application.md)használatával.

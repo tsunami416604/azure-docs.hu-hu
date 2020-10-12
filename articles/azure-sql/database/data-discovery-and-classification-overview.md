@@ -14,10 +14,10 @@ ms.reviewer: vanto
 ms.date: 09/21/2020
 tags: azure-synapse
 ms.openlocfilehash: 6f324b1b0b5ed1882050684e7ac1c8ec4ea573dc
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90886499"
 ---
 # <a name="data-discovery--classification"></a>Adatfelderítés és -besorolás
@@ -142,7 +142,7 @@ A T-SQL osztályozási szolgáltatással való használatáról a következő hi
 
 - Egy vagy több oszlop besorolásának hozzáadása vagy frissítése: [érzékenységi besorolás hozzáadása](https://docs.microsoft.com/sql/t-sql/statements/add-sensitivity-classification-transact-sql)
 - A besorolás eltávolítása egy vagy több oszlopból: az [érzékenység besorolásának eldobása](https://docs.microsoft.com/sql/t-sql/statements/drop-sensitivity-classification-transact-sql)
-- Az adatbázis összes besorolásának megtekintése: [sys. sensitivity_classifications](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-sensitivity-classifications-transact-sql)
+- Az adatbázis összes besorolásának megtekintése: [sys.sensitivity_classifications](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-sensitivity-classifications-transact-sql)
 
 ### <a name="use-powershell-cmdlets"></a>PowerShell-parancsmagok használata
 Az Azure SQL Database és az Azure SQL felügyelt példányaira vonatkozó besorolások és javaslatok kezelése a PowerShell használatával.

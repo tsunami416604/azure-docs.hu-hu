@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 579294388dbcf9f785ef41e06505c14b6767565f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83677943"
 ---
 # <a name="manage-azure-maps-creator"></a>Azure Maps létrehozójának kezelése
@@ -23,17 +23,17 @@ Ebből a cikkből megtudhatja, hogyan hozhat létre és törölhet egy létrehoz
 
 ## <a name="create-creator-resource"></a>Létrehozó erőforrás létrehozása
 
-1. Jelentkezzen be a [Azure Portalba](https://portal.azure.com)
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com)
 
-2. Válassza ki a Azure Maps fiókját. Ha a **legutóbbi erőforrások**alatt nem látja a Azure Maps-fiókját, akkor navigáljon a Azure Portal menüre. Válassza az **Összes erőforrás** elemet. Keresse meg és válassza ki a Azure Maps fiókját.
+2. Válassza ki a Azure Maps fiókját. Ha a **legutóbbi erőforrások**alatt nem látja a Azure Maps-fiókját, akkor navigáljon a Azure Portal menüre. Válassza a **Minden erőforrás** elemet. Keresse meg és válassza ki a Azure Maps fiókját.
 
     ![Azure Maps portál kezdőlapja](./media/how-to-manage-creator/select-maps-account.png)
 
-3. Miután megtörtént a Azure Maps-fiók lapon, navigáljon az **Áttekintés** lehetőségre a **Creator**alatt. Azure Maps létrehozó erőforrás létrehozásához kattintson a **Létrehozás** gombra.
+3. Miután megtörtént a Azure Maps-fiók lapon, navigáljon az **Áttekintés** lehetőségre a **Creator**alatt. Azure Maps létrehozó erőforrás létrehozásához kattintson a  **Létrehozás**  gombra.
 
     ![Azure Maps létrehozó lap létrehozása](./media/how-to-manage-creator/creator-blade-settings.png)
 
-4. Adja meg a létrehozó erőforrás nevét és helyét. Jelenleg a Creator csak a Egyesült Államok támogatott. Kattintson az **Áttekintés + létrehozás** elemre.
+4. Adja meg a létrehozó erőforrás nevét és helyét. Jelenleg a Creator csak a Egyesült Államok támogatott. Kattintson a **Felülvizsgálat + létrehozás** elemre.
 
    ![Adja meg a létrehozó fiókadatok oldalát](./media/how-to-manage-creator/creator-creation-dialog.png)
 
@@ -45,7 +45,7 @@ Ebből a cikkből megtudhatja, hogyan hozhat létre és törölhet egy létrehoz
 
    ![Erőforrás központi telepítésének állapota lap](./media/how-to-manage-creator/creator-resource-created.png)
 
-7. Kattintson az **Erőforrás megnyitása** elemre. A létrehozó erőforrás nézet oldal megjeleníti a létrehozó erőforrás állapotát és a kiválasztott demográfiai régiót.
+7. Kattintson az **Erőforrás megnyitása** lehetőségre. A létrehozó erőforrás nézet oldal megjeleníti a létrehozó erőforrás állapotát és a kiválasztott demográfiai régiót.
 
     ![Létrehozó állapota lap](./media/how-to-manage-creator/creator-resource-view.png)
 
@@ -71,7 +71,7 @@ A létrehozó örökli a Azure Maps Access Control (IAM) beállításait. Az ada
 
 A létrehozói használati adatok a Azure Maps használati diagramokban és a tevékenység naplójában vannak beépítve.  További információ: [a hitelesítés kezelése Azure Mapsban](https://docs.microsoft.com/azure/azure-maps/how-to-manage-authentication).
 
-## <a name="access-to-creator-services"></a>Hozzáférés az Creator Serviceshez
+## <a name="access-to-creator-services"></a>Hozzáférés a Creator szolgáltatásaihoz
 
 A Creator Services csak a létrehozás során kiválasztott helyről érhető el. Ha a rendszer a kiválasztott helyen kívülről kezdeményezi a létrehozói szolgáltatásokat, a rendszer egy felhasználói hibaüzenetet küld vissza. Ha a kiválasztott helyen kívülről szeretne hívásokat kezdeményezni, a szolgáltatás URL-címének tartalmaznia kell a földrajzi előtagot a kiválasztott helyekhez. Ha például a létrehozót a Egyesült Államok hozza létre, a konverziós szolgáltatásnak küldött összes hívást el kell küldenie a következőnek: `us.atlas.microsoft.com/conversion/convert` .
 
@@ -88,7 +88,7 @@ Bevezetés a beltéri leképezés létrehozója számára:
 > [Adatátalakítás](creator-indoor-maps.md#convert-a-drawing-package)
 
 > [!div class="nextstepaction"]
-> [Adatkészlet](creator-indoor-maps.md#datasets)
+> [Adathalmaz](creator-indoor-maps.md#datasets)
 
 > [!div class="nextstepaction"]
 > [Tileset](creator-indoor-maps.md#tilesets)

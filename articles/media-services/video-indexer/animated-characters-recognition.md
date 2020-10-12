@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 11/19/2019
 ms.author: juliako
 ms.openlocfilehash: 3b449f68b25fce19dc034d2a0db0ae5ce8a28ec7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87047496"
 ---
 # <a name="animated-character-detection-preview"></a>Animált karakterek felismerése (előzetes verzió)
@@ -208,7 +208,7 @@ Tekintse meg az animált karaktereket a generált JSON-fájlban.
 
 ## <a name="limitations"></a>Korlátozások
 
-* Jelenleg az "animációs azonosítás" képesség nem támogatott a kelet-ázsiai régióban.
+* Az "animációs azonosítás" képesség jelenleg nem támogatott East-Asia régióban.
 * A videóban kis vagy nagy méretű karakterek nem azonosíthatók megfelelően, ha a videó minősége gyenge.
 * Javasoljuk, hogy az animált karakterek (például egy animált sorozat) esetében használjon modellt.
 

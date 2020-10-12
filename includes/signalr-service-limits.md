@@ -14,10 +14,10 @@ ms.workload: TBD
 ms.date: 05/11/2020
 ms.author: zhshang
 ms.openlocfilehash: 496d98c5faebfcef511152476b58dd6257dbbedc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83673543"
 ---
 | Erőforrás | Alapértelmezett korlát | Felső korlát | 
@@ -28,7 +28,7 @@ ms.locfileid: "83673543"
 | Az Azure Signaler szolgáltatás összes egységének számítása régiónként |150 |Korlátlan |
 | Kapcsolat/egység/nap az ingyenes szinten |20 |20 |
 | Kapcsolat/egység/nap a standard szinthez |1,000 |1,000|
-| Befoglalt üzenet/egység/nap ingyenes csomag esetén|20000 |20000 |
+| Befoglalt üzenet/egység/nap ingyenes csomag esetén|20 000 |20 000 |
 | További üzenet/egység/nap az ingyenes szinten|0 |0 |
 | Befoglalt üzenetek/egység/nap a standard szinthez|1,000,000 |1,000,000 |
 | További üzenetek egységenkénti napi szinten a standard szinthez|Korlátlan |Korlátlan |

@@ -7,10 +7,10 @@ ms.service: azure-functions
 ms.topic: tutorial
 ms.date: 06/17/2020
 ms.openlocfilehash: 948e4f74763efd641bc0f089c679cdaf7c2f784e
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91530068"
 ---
 # <a name="tutorial-establish-azure-functions-private-site-access"></a>Oktatóanyag: Azure Functions Private site-hozzáférés létrehozása
@@ -67,7 +67,7 @@ Az oktatóanyag első lépése egy új virtuális gép létrehozása egy virtuá
     | _Előfizetés_ | Az Ön előfizetése | Az az előfizetés, amelyben az erőforrások létrejöttek. |
     | [_Erőforráscsoport_](../azure-resource-manager/management/overview.md) | myResourceGroup | Válassza ki az oktatóanyaghoz tartozó összes erőforrást tartalmazó erőforráscsoportot.  Ugyanezen erőforráscsoport használatával egyszerűbbé válik az erőforrások törlése, amikor ezzel az Oktatóanyaggal végzett. |
     | _Virtuális gép neve_ | myVM | A virtuális gép nevének egyedinek kell lennie az erőforráscsoporthoz |
-    | [_Region_](https://azure.microsoft.com/regions/) | USA USA északi középső régiója | Válasszon egy Önhöz közeli régiót vagy az elérni kívánt funkciók közelében. |
+    | [_Régió_](https://azure.microsoft.com/regions/) | USA USA északi középső régiója | Válasszon egy Önhöz közeli régiót vagy az elérni kívánt funkciók közelében. |
     | _Nyilvános bejövő portok_ | Nincs | Válassza a **nincs** lehetőséget, hogy a virtuális géphez ne legyen bejövő kapcsolat az internetről. A virtuális géphez való távoli hozzáférés az Azure Bastion szolgáltatáson keresztül lesz konfigurálva. |
 
 1. Válassza a _hálózatkezelés_ fület, és válassza az **új létrehozása** lehetőséget az új virtuális hálózat konfigurálásához.
@@ -91,7 +91,7 @@ Az oktatóanyag első lépése egy új virtuális gép létrehozása egy virtuá
 1. A _hálózatkezelés_ lapon ellenőrizze, hogy **nincs** -e kiválasztva a _nyilvános IP-cím_beállítás.
 1. Válassza a _felügyelet_ fület, majd a _diagnosztikai Storage-fiók_területen válassza az **új létrehozása** lehetőséget egy új Storage-fiók létrehozásához.
 1. Hagyja meg az _identitás_, az _automatikus leállítás_és a _biztonsági mentési_ csoportok alapértelmezett értékeit.
-1. Válassza az _Áttekintés + létrehozás_ lehetőséget. Az érvényesítés befejezése után válassza a **Létrehozás**lehetőséget. A virtuális gép létrehozási folyamata néhány percet vesz igénybe.
+1. Válassza a _Felülvizsgálat + létrehozás_ lehetőséget. Az érvényesítés befejezése után válassza a **Létrehozás**lehetőséget. A virtuális gép létrehozási folyamata néhány percet vesz igénybe.
 
 ## <a name="configure-azure-bastion"></a>Az Azure Bastion konfigurálása
 

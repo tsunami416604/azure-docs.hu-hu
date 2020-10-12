@@ -4,10 +4,10 @@ description: Ismerje meg, hogyan támogatja a Azure Service Bus a Advanced Messa
 ms.topic: article
 ms.date: 06/23/2020
 ms.openlocfilehash: c91c7965b94216f3f3bcb47e0cb652ce22a0217a
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88066338"
 ---
 # <a name="amqp-10-support-in-service-bus"></a>AMQP 1,0-támogatás Service Bus
@@ -63,18 +63,18 @@ Jelenleg a következő ügyféloldali függvénytárak ismertek a Service Bus-ve
 | Nyelv | Kódtár |
 | --- | --- |
 | Java |Apache csontos Java Message Service (JMS) ügyfél<br/>IIT szoftver SwiftMQ Java-ügyfél |
-| C# |Apache csontos-proton – C |
+| C |Apache csontos-proton – C |
 | PHP |Apache csontos proton – PHP |
-| Python |Apache csontos proton – Python |
+| Python |Apache csontos Proton-Python |
 | C# |AMQP .NET Lite |
 
 **2. ábra: AMQP 1,0 ügyféloldali kódtárak táblázata**
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 * A AMQP 1,0 egy nyílt, megbízható üzenetkezelési protokoll, amellyel többplatformos hibrid alkalmazások hozhatók létre. A AMQP 1,0 egy oázis standard.
 * A AMQP 1,0 támogatás mostantól elérhető Azure Service Busban, valamint Service Bus a Windows Serverhez (Service Bus 1,1). A díjszabás megegyezik a meglévő protokollokkal.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Készen áll a tanulásra? Látogasson el a következő hivatkozásokra:
 
 * [Service Bus használata a .NET-ről a AMQP használatával]

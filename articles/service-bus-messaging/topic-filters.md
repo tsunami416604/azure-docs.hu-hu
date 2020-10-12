@@ -4,10 +4,10 @@ description: Ez a cikk azt ismerteti, hogyan határozhatja meg, hogy az előfize
 ms.topic: conceptual
 ms.date: 06/23/2020
 ms.openlocfilehash: 5df343ff63c01a7cf10315b758e3d6fba8ac5674
-ms.sourcegitcommit: d8b8768d62672e9c287a04f2578383d0eb857950
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88066746"
 ---
 # <a name="topic-filters-and-actions"></a>Témakörszűrők és -műveletek
@@ -30,7 +30,7 @@ A Service Bus három szűrési feltételt támogat:
      - **ReplyTo**
      - **ReplyToSessionId**
      - **SessionId** 
-     - **Hogy**
+     - **Művelet**
      - bármely felhasználó által definiált tulajdonság. 
      
      Ha egy tulajdonsághoz tartozó üzenet értéke megegyezik a korrelációs szűrőben megadott értékkel, akkor egyezés áll fenn. Karakterlánc-kifejezések esetében az összehasonlítás a kis-és nagybetűk megkülönböztetése. Több egyezési tulajdonság megadásakor a szűrő logikai és feltételként kombinálja őket, ami azt jelenti, hogy a szűrőnek egyeznie kell, minden feltételnek egyeznie kell.
@@ -57,9 +57,9 @@ Az Útválasztás szűrőket használ az üzenetek különböző témakör-előf
 > [!NOTE]
 > Mivel a Azure Portal mostantól támogatja a Service Bus Explorer funkcióit, a portálon létrehozhatók és szerkeszthetők az előfizetési szűrők. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Tekintse meg a következő mintákat: 
 
 - [.NET – alapszintű küldési és fogadási útmutató szűrőkkel](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/GettingStarted/BasicSendReceiveTutorialwithFilters/BasicSendReceiveTutorialWithFilters)
 - [.NET – témakör szűrők](https://github.com/Azure/azure-service-bus/tree/master/samples/DotNet/Microsoft.Azure.ServiceBus/TopicFilters)
-- [Azure Resource Manager sablon](/azure/templates/microsoft.servicebus/2017-04-01/namespaces/topics/subscriptions/rules)
+- [Azure Resource Manager-sablon](/azure/templates/microsoft.servicebus/2017-04-01/namespaces/topics/subscriptions/rules)

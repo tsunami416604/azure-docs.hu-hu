@@ -8,10 +8,10 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 08/15/2019
 ms.openlocfilehash: 31cdef281b1cb26d01a4690c815e3d3621e2c053
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84709045"
 ---
 # <a name="outofmemoryerror-exceptions-for-apache-spark-in-azure-hdinsight"></a>Működése OutOfMemoryError-kivételek az Azure HDInsight Apache Spark
@@ -56,7 +56,7 @@ java.lang.OutOfMemoryError
 
 Ennek a kivételnek a legvalószínűbb oka az, hogy nem áll rendelkezésre elég halom memória a Java virtuális gépekhez (JVMs). Ezek a JVMs végrehajtók vagy illesztőprogramokként lesznek elindítva a Apache Spark alkalmazás részeként.
 
-### <a name="resolution"></a>Megoldás:
+### <a name="resolution"></a>Feloldás
 
 1. Határozza meg a Spark-alkalmazás által kezelendő adatok maximális méretét. Becsülje meg a méretet a bemeneti adatok, a bemeneti adatok átalakításával előállított köztes adatok és a köztes adatok további átalakításával létrehozott kimeneti adatok maximális mérete alapján. Ha a kezdeti becslés nem elegendő, növelje a méretet kis mértékben, és ismételje meg a memória hibáit.
 
@@ -114,7 +114,7 @@ hadoop fs -du -s -h wasb:///hdp/spark2-events/application_1503957839788_0264_1/
 **2.1 G**  wasb:///hdp/spark2-events/application_1503957839788_0264_1
 ```
 
-### <a name="resolution"></a>Megoldás:
+### <a name="resolution"></a>Feloldás
 
 A Spark-előzmények kiszolgálójának memóriáját a `SPARK_DAEMON_MEMORY` Spark-konfigurációban található tulajdonság szerkesztésével és az összes szolgáltatás újraindításával növelheti.
 
@@ -194,13 +194,13 @@ Exception in thread "main" java.lang.OutOfMemoryError: unable to create new nati
 
 ### <a name="cause"></a>Ok
 
-`java.lang.OutOfMemoryError: unable to create new native thread`kiemeli, hogy az operációs rendszer nem tud több natív szálat hozzárendelni a JVMs. Megerősítette, hogy ezt a kivételt a folyamaton belüli szálak számának korlátja okozza.
+`java.lang.OutOfMemoryError: unable to create new native thread` kiemeli, hogy az operációs rendszer nem tud több natív szálat hozzárendelni a JVMs. Megerősítette, hogy ezt a kivételt a folyamaton belüli szálak számának korlátja okozza.
 
 Ha a Livy-kiszolgáló váratlanul leáll, a Spark-fürtökkel létesített összes kapcsolat leáll, ami azt jelenti, hogy az összes feladat és kapcsolódó adat el fog veszni. A HDP 2,6 munkamenet-helyreállítási mechanizmus bevezetésekor a Livy a Zookeeper-ben tárolja a munkamenet részleteit a Livy-kiszolgáló újbóli helyreállítása után.
 
 Ha nagy számú feladatot küldenek el a Livy-on keresztül, a Livy-kiszolgáló magas rendelkezésre állásának részeként a rendszer a ZK (HDInsight-fürtökön) tárolja ezeket a munkamenet-állapotokat, és helyreállítja ezeket a munkameneteket a Livy szolgáltatás újraindításakor. A váratlan megszakítás utáni újraindításkor a Livy egy szálat hoz létre egy munkamenetben, és ez egy bizonyos számú, a-helyreállított munkamenetet generál, ami túl sok szálat hoz létre.
 
-### <a name="resolution"></a>Megoldás:
+### <a name="resolution"></a>Feloldás
 
 Törölje az összes bejegyzést az alábbi lépésekkel.
 
@@ -239,7 +239,7 @@ Törölje az összes bejegyzést az alábbi lépésekkel.
 1. Várjon, amíg a fenti parancs befejeződik, és a kurzor visszaadja a kérdést, majd újraindítja a Livy szolgáltatást a Ambari-ból, amelynek sikeresnek kell lennie.
 
 > [!NOTE]
-> `DELETE`a Livy munkamenet befejezése után a végrehajtás befejeződött. A Livy batch-munkamenetek nem törlődnek automatikusan, amint a Spark-alkalmazás befejeződik, ami a tervezés szerint történik. A Livy-munkamenetek egy POST-kérelemmel létrehozott entitások a Livy Rest Serveren. Az `DELETE` entitás törléséhez hívás szükséges. Vagy várnia kell a GC beindítását.
+> `DELETE` a Livy munkamenet befejezése után a végrehajtás befejeződött. A Livy batch-munkamenetek nem törlődnek automatikusan, amint a Spark-alkalmazás befejeződik, ami a tervezés szerint történik. A Livy-munkamenetek egy POST-kérelemmel létrehozott entitások a Livy Rest Serveren. Az `DELETE` entitás törléséhez hívás szükséges. Vagy várnia kell a GC beindítását.
 
 ---
 

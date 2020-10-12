@@ -9,10 +9,10 @@ ms.date: 01/09/2018
 ms.author: alkohli
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: c8f4269235c494ff9dd8d1bf8e0ef940562f8927
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85515272"
 ---
 # <a name="turn-on-or-turn-off-your-storsimple-8000-series-device"></a>A StorSimple 8000 Series eszköz bekapcsolása vagy kikapcsolása
@@ -86,12 +86,12 @@ Egy áramszünet vagy megszakítás egy StorSimple-eszközt tud leállítani. A 
 * [Csak elsődleges bekerítéssel rendelkező eszköz](#8100)
 * [EBOD bekerítéssel rendelkező eszköz](#8600)
 
-### <a name="device-with-primary-enclosure-only"></a>Csak elsődleges bekerítéssel rendelkező eszköz<a name="8100"></a>
+### <a name="device-with-primary-enclosure-only"></a>Csak elsődleges bekerítéssel rendelkező eszköz <a name="8100"></a>
 A rendszer akkor is folytathatja a normál működést, ha áramkimaradás van az egyik áramforrásával. Az eszköz magas rendelkezésre állásának biztosítása érdekében azonban a lehető leghamarabb állítsa vissza az áramellátást a tápegységre.
 
 Ha áramkimaradás vagy áramkimaradás áll fenn mindkét tápegységen, a rendszer sorrendbe állítása és ellenőrzése megtörténik. A visszaállított állapot után a rendszer automatikusan bekapcsol.
 
-### <a name="device-with-ebod-enclosure"></a>EBOD bekerítéssel rendelkező eszköz<a name="8600"></a>
+### <a name="device-with-ebod-enclosure"></a>EBOD bekerítéssel rendelkező eszköz <a name="8600"></a>
 #### <a name="power-loss-on-one-power-supply"></a>Áramkimaradás egyetlen tápegységen
 A rendszer akkor is folytathatja a normál működést, ha az elsődleges házban vagy az EBOD-házban áramkimaradás van az egyik áramforrásával. Az eszköz magas rendelkezésre állásának biztosítása érdekében azonban a lehető leghamarabb állítsa vissza az áramellátást a tápegységre.
 
@@ -140,7 +140,7 @@ Előfordulhat, hogy egy futó StorSimple-eszközt le kell állítani, ha áthely
 * [Eszköz elsődleges bekerítéssel](#8100a)
 * [EBOD bekerítéssel rendelkező eszköz](#8600a)
 
-### <a name="device-with-primary-enclosure"></a>Eszköz elsődleges bekerítéssel<a name="8100a"></a>
+### <a name="device-with-primary-enclosure"></a>Eszköz elsődleges bekerítéssel <a name="8100a"></a>
 Az eszköz leállításához a Azure Portalon vagy a Windows PowerShell StorSimple-bővítménye keresztül teheti meg az eszközt. 
 
 > [!IMPORTANT]
@@ -152,7 +152,7 @@ Az eszköz leállításához a Azure Portalon vagy a Windows PowerShell StorSimp
 
 Miután elvégezte a Windows PowerShell StorSimple-bővítménye vagy a Azure Portal elérését, kövesse a [StorSimple-eszköz leállítása](storsimple-8000-manage-device-controller.md#shut-down-a-storsimple-device)című témakör lépéseit. 
 
-### <a name="device-with-ebod-enclosure"></a>EBOD bekerítéssel rendelkező eszköz<a name="8600a"></a>
+### <a name="device-with-ebod-enclosure"></a>EBOD bekerítéssel rendelkező eszköz <a name="8600a"></a>
 > [!IMPORTANT]
 > Az elsődleges bekerítés és a EBOD bekerítésének leállítása előtt győződjön meg arról, hogy az eszköz összes összetevője kifogástalan állapotú. A Azure Portal navigáljon az **eszközök**  >  **figyelése**  >  **hardver állapota**elemre, és ellenőrizze, hogy az összes összetevő kifogástalan állapotú-e.
 

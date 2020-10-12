@@ -4,10 +4,10 @@ description: Megtudhatja, hogyan csomagolhat egy meglévő alkalmazást vendég 
 ms.topic: conceptual
 ms.date: 03/30/2020
 ms.openlocfilehash: 72fde75e16341164106bb952d0bb66b83be744e1
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86259261"
 ---
 # <a name="package-and-deploy-an-existing-executable-to-service-fabric"></a>Meglévő végrehajtható fájl becsomagolása és üzembe helyezése Service Fabric
@@ -29,9 +29,9 @@ A Visual Studio egy Service Fabric szolgáltatási sablont biztosít, amely seg�
    * A *program* meghatározza azt a végrehajtható fájlt, amelyet futtatni kell a szolgáltatás elindításához.
    * Az *argumentumok* a végrehajtható fájlnak átadandó argumentumokat határozzák meg. Az argumentumokkal rendelkező paraméterek listája lehet.
    * A *WorkingFolder* meghatározza az elindítani kívánt folyamat munkakönyvtárát. Három értéket is megadhat:
-     * `CodeBase`Megadja, hogy a munkakönyvtár az alkalmazáscsomag kódjának könyvtárába lesz állítva ( `Code` az előző adatstruktúrában látható könyvtár).
-     * `CodePackage`azt adja meg, hogy a munkakönyvtár az alkalmazáscsomag gyökerére lesz beállítva ( `GuestService1Pkg` az előző fájl struktúrában látható).
-     * `Work`Megadja, hogy a fájlok a Work nevű alkönyvtárba kerülnek.
+     * `CodeBase` Megadja, hogy a munkakönyvtár az alkalmazáscsomag kódjának könyvtárába lesz állítva ( `Code` az előző adatstruktúrában látható könyvtár).
+     * `CodePackage` azt adja meg, hogy a munkakönyvtár az alkalmazáscsomag gyökerére lesz beállítva ( `GuestService1Pkg` az előző fájl struktúrában látható).
+     * `Work` Megadja, hogy a fájlok a Work nevű alkönyvtárba kerülnek.
 4. Nevezze el a szolgáltatást, és kattintson az **OK** gombra.
 5. Ha a szolgáltatásnak szüksége van egy végpontra a kommunikációhoz, most hozzáadhatja a protokollt, a portot és a típust a ServiceManifest.xml fájlhoz. Például: `<Endpoint Name="NodeAppTypeEndpoint" Protocol="http" Port="3000" UriScheme="http" PathSuffix="myapp/" Type="Input" />`.
 6. Mostantól a csomagot és a közzétételi műveletet a helyi fürtön is használhatja a Visual Studióban található megoldás hibakeresésével. Ha elkészült, közzéteheti az alkalmazást egy távoli fürtön, vagy bejelölheti a megoldást a forrás vezérlőelemre.
@@ -147,7 +147,7 @@ A CodePackage elem a szolgáltatás kódjának helyét (és verzióját) adja me
 <CodePackage Name="Code" Version="1.0.0.0">
 ```
 
-A `Name` elem használatával adható meg a könyvtár neve a szolgáltatás kódját tartalmazó alkalmazáscsomagban. `CodePackage`szintén rendelkezik az `version` attribútummal. Ez használható a kód verziójának megadására, valamint a szolgáltatás kódjának frissítésére is a Service Fabric alkalmazás-életciklus-kezelési infrastruktúrájának használatával.
+A `Name` elem használatával adható meg a könyvtár neve a szolgáltatás kódját tartalmazó alkalmazáscsomagban. `CodePackage` szintén rendelkezik az `version` attribútummal. Ez használható a kód verziójának megadására, valamint a szolgáltatás kódjának frissítésére is a Service Fabric alkalmazás-életciklus-kezelési infrastruktúrájának használatával.
 
 #### <a name="optional-update-setupentrypoint"></a>Nem kötelező: a SetupEntrypoint frissítése
 
@@ -180,12 +180,12 @@ A `EntryPoint` szolgáltatás jegyzékfájljának eleme a szolgáltatás indít�
 
 Az `ExeHost` elem meghatározza a szolgáltatás elindításához használandó végrehajtható fájlt (és argumentumokat). Az attribútum hozzáadásával `IsExternalExecutable="true"` `ExeHost` azt jelezheti, hogy a program külső végrehajtható fájl a kód csomagján kívül. Például: `<ExeHost IsExternalExecutable="true">`.
 
-* `Program`annak a végrehajtható fájlnak a nevét adja meg, amelynek el kell indítania a szolgáltatást.
-* `Arguments`meghatározza a végrehajtható fájlnak átadandó argumentumokat. Az argumentumokkal rendelkező paraméterek listája lehet.
-* `WorkingFolder`meghatározza az elindítani kívánt folyamat munkakönyvtárát. Három értéket is megadhat:
-  * `CodeBase`azt adja meg, hogy a munkakönyvtár az alkalmazáscsomag ( `Code` az előző fájl struktúrában található könyvtár) kódjának könyvtárába lesz állítva.
-  * `CodePackage`Megadja, hogy a munkakönyvtár az alkalmazáscsomag gyökerére lesz beállítva ( `GuestService1Pkg` az előző fájl struktúrájában).
-    * `Work`Megadja, hogy a fájlok a Work nevű alkönyvtárba kerülnek.
+* `Program` annak a végrehajtható fájlnak a nevét adja meg, amelynek el kell indítania a szolgáltatást.
+* `Arguments` meghatározza a végrehajtható fájlnak átadandó argumentumokat. Az argumentumokkal rendelkező paraméterek listája lehet.
+* `WorkingFolder` meghatározza az elindítani kívánt folyamat munkakönyvtárát. Három értéket is megadhat:
+  * `CodeBase` azt adja meg, hogy a munkakönyvtár az alkalmazáscsomag ( `Code` az előző fájl struktúrában található könyvtár) kódjának könyvtárába lesz állítva.
+  * `CodePackage` Megadja, hogy a munkakönyvtár az alkalmazáscsomag gyökerére lesz beállítva ( `GuestService1Pkg` az előző fájl struktúrájában).
+    * `Work` Megadja, hogy a fájlok a Work nevű alkönyvtárba kerülnek.
 
 A WorkingFolder hasznos a megfelelő munkakönyvtár beállítása, hogy a relatív elérési utakat az alkalmazás-vagy inicializálási parancsfájlok is felhasználhatják.
 
@@ -201,7 +201,7 @@ A WorkingFolder hasznos a megfelelő munkakönyvtár beállítása, hogy a relat
 Az előző példában az `Endpoint` elem meghatározza azokat a végpontokat, amelyeket az alkalmazás figyelni tud. Ebben a példában a Node.js alkalmazás a 3000-es porton a http-t figyeli.
 
 Emellett megkérheti Service Fabric, hogy tegye közzé ezt a végpontot a elnevezési szolgáltatás, hogy más szolgáltatások is felderítsék a szolgáltatás végpontjának címeit. Ez lehetővé teszi, hogy képes legyen kommunikálni a vendég végrehajtható fájlok között.
-A közzétett végpont címe űrlap `UriScheme://IPAddressOrFQDN:Port/PathSuffix` . `UriScheme`és `PathSuffix` opcionális attribútumok. `IPAddressOrFQDN`annak a csomópontnak az IP-címe vagy teljes tartományneve, amelybe a végrehajtható fájl kerül, és amelyet a rendszer kiszámít.
+A közzétett végpont címe űrlap `UriScheme://IPAddressOrFQDN:Port/PathSuffix` . `UriScheme` és `PathSuffix` opcionális attribútumok. `IPAddressOrFQDN` annak a csomópontnak az IP-címe vagy teljes tartományneve, amelybe a végrehajtható fájl kerül, és amelyet a rendszer kiszámít.
 
 A következő példában a szolgáltatás üzembe helyezését követően a Service Fabric Explorer egy, `http://10.1.4.92:3000/myapp/` a szolgáltatási példányhoz közzétett végpont jelenik meg. Ha ez egy helyi gép, akkor a következőt látja: `http://localhost:3000/myapp/` .
 
@@ -257,11 +257,11 @@ A konzol átirányítását az elem használatával lehet konfigurálni a `Servi
 </EntryPoint>
 ```
 
-`ConsoleRedirection`a konzol kimenetének (stdout és stderr) átirányítására is használható egy munkakönyvtárra. Ez lehetővé teszi annak ellenőrzését, hogy nincsenek-e hibák az alkalmazás telepítése vagy végrehajtása során a Service Fabric-fürtben.
+`ConsoleRedirection` a konzol kimenetének (stdout és stderr) átirányítására is használható egy munkakönyvtárra. Ez lehetővé teszi annak ellenőrzését, hogy nincsenek-e hibák az alkalmazás telepítése vagy végrehajtása során a Service Fabric-fürtben.
 
-`FileRetentionCount`meghatározza, hogy a rendszer hány fájlt ment a munkakönyvtárba. Az 5 érték például azt jelenti, hogy az előző öt végrehajtás naplófájljai a munkakönyvtárban tárolódnak.
+`FileRetentionCount` meghatározza, hogy a rendszer hány fájlt ment a munkakönyvtárba. Az 5 érték például azt jelenti, hogy az előző öt végrehajtás naplófájljai a munkakönyvtárban tárolódnak.
 
-`FileMaxSizeInKb`Megadja a naplófájlok maximális méretét.
+`FileMaxSizeInKb` Megadja a naplófájlok maximális méretét.
 
 A naplófájlok a szolgáltatás egyik munkakönyvtárában lesznek mentve. Annak megállapításához, hogy a fájlok hol találhatók, Service Fabric Explorer segítségével határozza meg, hogy melyik csomóponton fut a szolgáltatás, és hogy melyik munkakönyvtárat használja a rendszer. Ezt a folyamatot a cikk későbbi részében tárgyaljuk.
 
@@ -311,7 +311,7 @@ Ha a Server Explorer használatával keres a címtárban, a munkakönyvtár és 
 
 ![A napló helye](./media/service-fabric-deploy-existing-app/loglocation.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a cikkben megtanulta, hogyan csomagolhat vendég végrehajtható fájlt, és hogyan helyezheti üzembe a Service Fabric. A kapcsolódó információkkal és feladatokkal kapcsolatban tekintse meg a következő cikkeket.
 

@@ -1,6 +1,6 @@
 ---
 title: Azure Firewall fenyegetések felderítésére alapuló szűrés
-description: A fenyegetésekkel kapcsolatos intelligencia-alapú szűrés engedélyezhető a tűzfal számára, hogy riasztást kapjon, és megtagadja a forgalmat az ismert kártékony IP-címekre és tartományokra.
+description: Engedélyezheti a veszélyforrás-felderítésen alapuló szűrést a tűzfalon az ismert kártékony IP-címekről és tartományokból származó vagy ezek felé irányuló adatforgalommal kapcsolatos riasztáshoz, illetve a forgalom letiltásához.
 services: firewall
 author: vhorne
 ms.service: firewall
@@ -8,15 +8,15 @@ ms.topic: article
 ms.date: 05/12/2020
 ms.author: victorh
 ms.openlocfilehash: e51cc8905a7b4a88bb7f7dabaf24bb30159ff86c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83655090"
 ---
 # <a name="azure-firewall-threat-intelligence-based-filtering"></a>Azure Firewall fenyegetés intelligencia-alapú szűrés
 
-A fenyegetésekkel kapcsolatos intelligencia-alapú szűrés engedélyezhető a tűzfal számára, hogy riasztást kapjon, és megtagadja a forgalmat az ismert kártékony IP-címekre és tartományokra. Az IP-címek és tartományok forrása a Microsoft Threat Intelligence-hírcsatorna. A [intelligens biztonsági gráf](https://www.microsoft.com/security/operations/intelligence) a Microsoft fenyegetésekkel kapcsolatos intelligenciát, és több szolgáltatás, például Azure Security Center használatát is használja.<br>
+Engedélyezheti a veszélyforrás-felderítésen alapuló szűrést a tűzfalon az ismert kártékony IP-címekről és tartományokból származó vagy ezek felé irányuló adatforgalommal kapcsolatos riasztáshoz, illetve a forgalom letiltásához. Az IP-címek és -tartományok forrása a Microsoft veszélyforrás-felderítési hírcsatornája. A [intelligens biztonsági gráf](https://www.microsoft.com/security/operations/intelligence) a Microsoft fenyegetésekkel kapcsolatos intelligenciát, és több szolgáltatás, például Azure Security Center használatát is használja.<br>
 <br>
 
 :::image type="content" source="media/threat-intel/firewall-threat.png" alt-text="Tűzfal-veszélyforrások felderítése" border="false":::
@@ -27,7 +27,7 @@ Dönthet úgy, hogy csak a riasztást naplózza egy szabály indításakor, vagy
 
 Alapértelmezés szerint a fenyegetési intelligencia-alapú szűrés riasztási módban van engedélyezve. Ezt a funkciót nem lehet kikapcsolni, vagy módosítani a módot, amíg a portál felülete elérhetővé nem válik a régiójában.
 
-:::image type="content" source="media/threat-intel/threat-intel-ui.png" alt-text="Fenyegetésekkel kapcsolatos intelligencia-alapú szűrési portál felülete":::
+:::image type="content" source="media/threat-intel/threat-intel-ui.png" alt-text="Tűzfal-veszélyforrások felderítése":::
 
 ## <a name="logs"></a>Naplók
 

@@ -14,17 +14,17 @@ ms.date: 03/27/2019
 ms.author: ryanwi
 ms.reviewer: zachowd
 ms.openlocfilehash: 6e768c1e938006afd62fc097a80f8ebc3ea0f3e6
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88115475"
 ---
 # <a name="understanding-azure-ad-application-consent-experiences"></a>Az Azure AD-alkalmazások hozzájárulási folyamatának ismertetése
 
 További információ az Azure Active Directory (Azure AD) alkalmazás-engedélyezési felhasználói élményről. Így intelligens módon kezelheti a szervezete alkalmazásait és/vagy fejlesztheti az alkalmazásokat, és így zökkenőmentesen megadhatja a felhasználói élményt.
 
-## <a name="consent-and-permissions"></a>Engedély és engedélyek
+## <a name="consent-and-permissions"></a>Hozzájárulás és engedélyek
 
 A hozzájárulás egy olyan felhasználó, aki engedélyt ad egy alkalmazásnak a védett erőforrások elérésére a nevükben. A rendszergazda vagy a felhasználó megkérheti, hogy engedélyezze a hozzáférést a szervezethez vagy az egyes adatszolgáltatásokhoz.
 
@@ -80,7 +80,7 @@ A felhasználók a közös engedélyezési forgatókönyvekben láthatják a bel
         
     1. A nem rendszergazda felhasználók ugyanazt a képernyőt fogják látni, mint 2. II.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - Részletes áttekintést kaphat [arról, hogy az Azure ad-beli engedélyezési keretrendszer hogyan valósítja meg a hozzájárulásukat](./quickstart-register-app.md).
 - További részletekért tekintse meg, [Hogyan használhatják a több-bérlős alkalmazások a](./howto-convert-app-to-be-multi-tenant.md) "felhasználó" és a "rendszergazda" jogosultságot a "felhasználói" és "rendszergazdai" engedély megvalósításához, és támogatják a fejlettebb többrétegű alkalmazás-mintákat.
 - Ismerje meg [, hogyan konfigurálhatja az alkalmazás közzétevő tartományát](howto-configure-publisher-domain.md).

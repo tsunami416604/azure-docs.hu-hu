@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: H1Hack27Feb2017,hdinsightactive
 ms.date: 12/16/2019
 ms.openlocfilehash: 8031e917d998b877e6c3a5830d69abf81c9bdebe
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86086721"
 ---
 # <a name="analyze-twitter-data-using-apache-hive-and-apache-hadoop-on-hdinsight"></a>Twitter-adataik elemzése Apache Hive és Apache Hadoop használatával a HDInsight-on
@@ -37,7 +37,7 @@ A Twitter lehetővé teszi az egyes tweetek JavaScript Object Notation (JSON) do
    | Mező | Érték |
    |--- |--- |
    | Name (Név) |MyHDInsightApp |
-   | Description |MyHDInsightApp |
+   | Leírás |MyHDInsightApp |
    | Webhely |`https://www.myhdinsightapp.com` |
 
 4. Válassza az **Igen, elfogadom**lehetőséget, majd válassza **a Twitter-alkalmazás létrehozása**lehetőséget.

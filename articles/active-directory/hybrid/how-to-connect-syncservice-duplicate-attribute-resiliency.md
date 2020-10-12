@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d1d364089d5df24cfc4e7a75c3fd6b81248f0cd6
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91313314"
 ---
 # <a name="identity-synchronization-and-duplicate-attribute-resiliency"></a>Identitásszinkronizálás és ismétlődő attribútumok rugalmassága
@@ -66,7 +66,7 @@ Annak ellenőrzéséhez, hogy a szolgáltatás engedélyezve van-e a bérlő sz�
 `Get-MsolDirSyncFeatures -Feature DuplicateProxyAddressResiliency`
 
 > [!NOTE]
-> Már nem használhatja a set-MsolDirSyncFeature parancsmagot úgy, hogy proaktívan engedélyezze a duplikált attribútum rugalmassági funkcióját, mielőtt bekapcsolta a bérlőhöz. A szolgáltatás teszteléséhez létre kell hoznia egy új Azure Active Directory bérlőt.
+> A továbbiakban nem használhatja Set-MsolDirSyncFeature parancsmagot, hogy proaktívan engedélyezze a duplikált attribútum rugalmassági funkcióját, mielőtt bekapcsolja a bérlőhöz. A szolgáltatás teszteléséhez létre kell hoznia egy új Azure Active Directory bérlőt.
 
 ## <a name="identifying-objects-with-dirsyncprovisioningerrors"></a>DirSyncProvisioningError típusú hibákat tartalmazó objektumok azonosítása
 A rendszer jelenleg két módszerrel azonosítja azokat az objektumokat, amelyek az ismétlődő tulajdonságok ütközése miatt a hibákkal rendelkeznek, Azure Active Directory a PowerShellt és a [Microsoft 365 felügyeleti központot](https://admin.microsoft.com). A jövőben további portálon alapuló jelentéskészítésre is kiterjeszthetők.
@@ -85,7 +85,7 @@ Ezután használja a következő parancsmagokat és operátorokat a hibák kül�
 2. [Tulajdonság típusa szerint](#by-property-type)
 3. [Ütköző értékkel](#by-conflicting-value)
 4. [Karakterlánc-keresés használata](#using-a-string-search)
-5. Rendezve
+5. Sorted
 6. [Korlátozott mennyiségű vagy az összes](#in-a-limited-quantity-or-all)
 
 #### <a name="see-all"></a>Az összes megjelenítése
@@ -145,7 +145,7 @@ Ezen ismert problémák egyike sem okozza az adatvesztést vagy a szolgáltatás
 **Alapvető viselkedés:**
 
 1. Az adott attribútum-konfigurációval rendelkező objektumok továbbra is megkapják az exportálási hibákat a karanténba helyezett attribútum (ok) helyett.  
-   Például:
+   Példa:
    
     a. Új felhasználó jön létre az AD-ben a **joe \@ contoso.com** és a ProxyAddress SMTP UPN-vel **: Joe \@ contoso.com**
    
@@ -157,7 +157,7 @@ Ezen ismert problémák egyike sem okozza az adatvesztést vagy a szolgáltatás
 **Office portál jelentés**:
 
 1. Az UPN-ütközőben lévő két objektum részletes hibaüzenete ugyanaz. Ez azt jelzi, hogy mindkét esetben az UPN-t módosították/karanténba helyezte, ha valójában csak az egyikük módosította az adatmennyiséget.
-2. Az egyszerű felhasználónévi ütközés részletes hibaüzenete egy olyan felhasználó helytelen displayName-üzenetét jeleníti meg, aki az UPN-t módosította/karanténba helyezte. Például:
+2. Az egyszerű felhasználónévi ütközés részletes hibaüzenete egy olyan felhasználó helytelen displayName-üzenetét jeleníti meg, aki az UPN-t módosította/karanténba helyezte. Példa:
    
     a. **A felhasználó** elsőként szinkronizál az **UPN = User \@ contoso.com**.
    

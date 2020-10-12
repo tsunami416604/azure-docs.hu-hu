@@ -4,10 +4,10 @@ description: Irányelvek és javaslatok Service Fabric megbízható gyűjtemény
 ms.topic: conceptual
 ms.date: 03/10/2020
 ms.openlocfilehash: 63e6de436bdaceed7f1d2a78e8385dd14bfc0ed6
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86260913"
 ---
 # <a name="guidelines-and-recommendations-for-reliable-collections-in-azure-service-fabric"></a>Irányelvek és javaslatok az Azure-Service Fabric megbízható gyűjteményekhez
@@ -40,21 +40,21 @@ A következő szempontokat érdemes figyelembe venni:
   Ez azt jelenti, hogy az egyetlen másodlagosból beolvasott adatok egyik verziója hamis lehet.
   Az Elsődlegesből való beolvasás mindig stabil: soha nem lehet hamisan haladni.
 * A megbízható gyűjteményben az alkalmazás által megőrzött adatok biztonsága/adatvédelme a saját döntése, valamint a tárolási felügyelet által biztosított védelem tárgya. I.E. Az operációs rendszer lemezének titkosítása felhasználható az inaktív adatok védelme érdekében.
-* `ReliableDictionary`a számbavétel a kulcs alapján rendezett, rendezett adatszerkezetet használ. A számbavétel hatékonyságát a véglegesíti a rendszer egy ideiglenes szórótábla adja hozzá, és később áthelyezi a fő rendezett adatstruktúra utáni ellenőrzőpontra. A hozzáadási/frissítési/törlési lehetőség az o (1) és a legrosszabb esetben a (z) O (log n) esetek legjobb futtatókörnyezetét adja meg, ha a kulcs jelenléte ellenőrzés alatt áll. A beolvasás lehet az O (1) vagy az O (log n), attól függően, hogy a legutóbbi véglegesítés vagy egy régebbi véglegesítés után olvassa-e a rendszer.
+* `ReliableDictionary` a számbavétel a kulcs alapján rendezett, rendezett adatszerkezetet használ. A számbavétel hatékonyságát a véglegesíti a rendszer egy ideiglenes szórótábla adja hozzá, és később áthelyezi a fő rendezett adatstruktúra utáni ellenőrzőpontra. A hozzáadási/frissítési/törlési lehetőség az o (1) és a legrosszabb esetben a (z) O (log n) esetek legjobb futtatókörnyezetét adja meg, ha a kulcs jelenléte ellenőrzés alatt áll. A beolvasás lehet az O (1) vagy az O (log n), attól függően, hogy a legutóbbi véglegesítés vagy egy régebbi véglegesítés után olvassa-e a rendszer.
 
 ## <a name="volatile-reliable-collections"></a>Felejtő megbízható gyűjtemények
 Az illékony megbízható gyűjtemények használatának eldöntése során vegye figyelembe a következőket:
 
-* ```ReliableDictionary```illékony támogatással rendelkezik
-* ```ReliableQueue```illékony támogatással rendelkezik
-* ```ReliableConcurrentQueue```NEM rendelkezik felejtő támogatással
+* ```ReliableDictionary``` illékony támogatással rendelkezik
+* ```ReliableQueue``` illékony támogatással rendelkezik
+* ```ReliableConcurrentQueue``` NEM rendelkezik felejtő támogatással
 * A megőrzött szolgáltatások nem hozhatók létre illékonyak. A ```HasPersistedState``` jelző módosítása a ```false``` teljes szolgáltatás teljesen új létrehozásához
 * A felejtő szolgáltatások nem hozhatók létre. A ```HasPersistedState``` jelző módosítása a ```true``` teljes szolgáltatás teljesen új létrehozásához
-* ```HasPersistedState```a szolgáltatás szintű konfiguráció. Ez azt jelenti, hogy **minden** gyűjteményt megtartanak vagy változékonyak. Az illékony és megőrzött gyűjtemények nem kombinálhatók
+* ```HasPersistedState``` a szolgáltatás szintű konfiguráció. Ez azt jelenti, hogy **minden** gyűjteményt megtartanak vagy változékonyak. Az illékony és megőrzött gyűjtemények nem kombinálhatók
 * A felejtő partíció Kvórumának elvesztése a teljes adatvesztést eredményezi
 * A biztonsági mentés és a visszaállítás nem érhető el a felejtő szolgáltatásokhoz
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [A Reliable Collections használata](service-fabric-work-with-reliable-collections.md)
 * [Tranzakciók és zárolások](service-fabric-reliable-services-reliable-collections-transactions-locks.md)
 * Az adatkezelés

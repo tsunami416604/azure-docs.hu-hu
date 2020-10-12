@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: jsimmons
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 25199aeb7a3ed6332e74ad05835a8c4fca763c00
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88116461"
 ---
 # <a name="troubleshoot-on-premises-azure-ad-password-protection"></a>Hibakeresés: helyszíni Azure AD jelszavas védelem
@@ -50,7 +50,7 @@ Ennek a problémának a fő tünete a DC-ügynök rendszergazdai eseménynaplój
 
 1. Győződjön meg arról, hogy az erdő és az összes proxykiszolgáló regisztrálva van ugyanazon az Azure-bérlőn.
 
-   Ezt a követelményt a `Get-AzureADPasswordProtectionProxy` és a PowerShell- `Get-AzureADPasswordProtectionDCAgent` parancsmagok futtatásával, majd az `AzureTenant` egyes visszaadott elemek tulajdonságának összehasonlításával is megtekintheti. A megfelelő működés érdekében a jelentett bérlő nevének meg kell egyeznie az összes tartományvezérlő-ügynök és proxykiszolgáló között.
+   Ezt a követelményt a  `Get-AzureADPasswordProtectionProxy` és a PowerShell- `Get-AzureADPasswordProtectionDCAgent` parancsmagok futtatásával, majd az `AzureTenant` egyes visszaadott elemek tulajdonságának összehasonlításával is megtekintheti. A megfelelő működés érdekében a jelentett bérlő nevének meg kell egyeznie az összes tartományvezérlő-ügynök és proxykiszolgáló között.
 
    Ha egy Azure-bérlő regisztrációjának eltérési feltétele létezik, ezt a problémát a `Register-AzureADPasswordProtectionProxy` és/vagy a PowerShell-parancsmagok igény szerint történő futtatásával lehet megállapítani `Register-AzureADPasswordProtectionForest` , hogy az összes regisztrációhoz ugyanazt az Azure-bérlő hitelesítő adatait használja.
 
@@ -84,7 +84,7 @@ The forest has not been registered with Azure. Password policies cannot be downl
 
 Ennek a hibának két lehetséges oka van.
 
-1. Az erdő valóban nincs regisztrálva. A probléma megoldásához futtassa a Register-AzureADPasswordProtectionForest parancsot a [központi telepítési követelményekben](howto-password-ban-bad-on-premises-deploy.md)leírtak szerint.
+1. Az erdő valóban nincs regisztrálva. A probléma megoldásához futtassa a Register-AzureADPasswordProtectionForest parancsot a [telepítési követelmények](howto-password-ban-bad-on-premises-deploy.md)című témakörben leírtak szerint.
 1. Az erdő regisztrálva van, de a tartományvezérlő ügynöke nem tudja visszafejteni az erdő regisztrációs információit. Ebben az esetben ugyanaz az alapvető ok, mint a fentiekben felsorolt #2 a [DC Agent nem tudja titkosítani vagy visszafejteni a jelszóházirend-fájlokat](howto-password-ban-bad-on-premises-troubleshoot.md#dc-agent-is-unable-to-encrypt-or-decrypt-password-policy-files). Az elmélet megerősítésének egyszerű módja, hogy ezt a hibaüzenetet csak a Windows Server 2012 vagy a Windows Server 2012R2 rendszerű tartományvezérlők esetében fogja látni, míg a Windows Server 2016-es és újabb rendszerű tartományvezérlők által futtatott tartományvezérlői ügynökök rendben vannak. A megkerülő megoldás ugyanaz: frissítse az összes tartományvezérlőt a Windows Server 2016-es vagy újabb verziójára.
 
 ## <a name="weak-passwords-are-being-accepted-but-should-not-be"></a>A rendszer nem fogadja el a gyenge jelszavakat, de nem feltétlenül kell
@@ -260,7 +260,7 @@ Ha úgy döntött, hogy eltávolítja az Azure AD jelszavas védelem szoftverét
 
    Ez az elérési út eltérő, ha a SYSVOL-megosztás nem alapértelmezett helyen van konfigurálva.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Gyakori kérdések az Azure AD jelszavas védelméről](howto-password-ban-bad-on-premises-faq.md)
 

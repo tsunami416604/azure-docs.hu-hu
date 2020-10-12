@@ -13,10 +13,10 @@ ms.workload: tbd
 ms.date: 8/17/2020
 ms.author: yohaddad
 ms.openlocfilehash: d79fd60f4fe3786cfe3106329904d9d262078411
-ms.sourcegitcommit: 70ee014d1706e903b7d1e346ba866f5e08b22761
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90024213"
 ---
 # <a name="azure-guest-os-releases-and-sdk-compatibility-matrix"></a>Azure vendég operációs rendszerek kiadásai és SDK-kompatibilitási mátrix
@@ -201,7 +201,7 @@ A szeptemberi vendég operációs rendszer megjelent.
 |~~WA-GUEST-OS-5.23 _201809-01~~ |2018. október 12. |December 14., 2018 |
 
 ## <a name="family-4-releases"></a>4. család kiadásai
-**Windows Server 2012 R2**
+**Windows Server 2012 R2**
 
 .NET-keretrendszer telepítve: 3,5, 4.5.1, 4.5.2
 

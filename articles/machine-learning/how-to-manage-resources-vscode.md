@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.custom: how-to
 ms.date: 09/30/2020
 ms.openlocfilehash: 1120a3636b7ce24dde0d33c213f9063f910123c4
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91530629"
 ---
 # <a name="manage-azure-machine-learning-resources-with-the-vs-code-extension-preview"></a>Azure Machine Learning erőforrások kezelése a VS Code bővítménnyel (előzetes verzió)
@@ -424,6 +424,6 @@ A központi telepítések létrehozása és törlése mellett megtekintheti és 
         - A központi telepítés konfigurációs fájlja megjelenik a szerkesztőben. Ha elégedett a konfigurációval, válassza a **Mentés és folytatás** lehetőséget, vagy nyissa meg a vs Code parancs-palettát (**tekintse meg > Command paletta**), és írja be az **Azure ml: mentés és folytatás**gombot.
     - A központi telepítés konfigurációs beállításainak megtekintéséhez válassza a **szolgáltatás tulajdonságainak megtekintése**lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Képbesorolási modell betanítása](tutorial-train-deploy-image-classification-model-vscode.md) a vs Code bővítménnyel.

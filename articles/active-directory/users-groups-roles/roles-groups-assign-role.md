@@ -14,10 +14,10 @@ ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: f45b5709369dfc2025b55bc3acec69e9328ce403
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87513417"
 ---
 # <a name="assign-a-role-to-a-cloud-group-in-azure-active-directory"></a>Szerepkör kiosztása egy felhőalapú csoporthoz Azure Active Directory
@@ -40,7 +40,7 @@ A csoportok Azure AD-szerepkörökhöz való hozzárendeléséhez hasonló a fel
 
     [![Az új szerepkör-hozzárendeléshez csak a hozzárendelhető csoportok jelennek meg.](media/roles-groups-assign-role/eligible-groups.png "Az új szerepkör-hozzárendeléshez csak a hozzárendelhető csoportok jelennek meg.")](media/roles-groups-assign-role/eligible-groups.png#lightbox)
 
-1. Válassza a **Hozzáadás** elemet.
+1. Válassza a **Hozzáadás** lehetőséget.
 
 A szerepkör-engedélyek hozzárendelésével kapcsolatos további információkért lásd: [rendszergazdai és nem rendszergazdai szerepkörök kiosztása a felhasználók számára](../fundamentals/active-directory-users-assign-role-azure-portal.md).
 
@@ -102,4 +102,4 @@ POST https://graph.microsoft.com/beta/roleManagement/directory/roleAssignments
 ## <a name="next-steps"></a>További lépések
 
 - [Felhőalapú csoportok használata a szerepkör-hozzárendelések kezeléséhez](roles-groups-concept.md)
-- [Felhőalapú csoportokhoz rendelt szerepkörök hibaelhárítása](roles-groups-faq-troubleshooting.md)
+- [A felhőbeli csoportokhoz hozzárendelt szerepkörökkel kapcsolatos hibák elhárítása](roles-groups-faq-troubleshooting.md)

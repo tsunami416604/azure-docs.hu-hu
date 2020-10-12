@@ -4,15 +4,15 @@ description: Megtudhatja, hogyan teheti elérhetővé a koncepciót, hogy Azure 
 ms.topic: article
 ms.date: 06/2/2020
 ms.openlocfilehash: 9c28cf9eebd8a39a2edce48e4fb8b96dc7608d80
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87288018"
 ---
 # <a name="deliver-a-proof-of-concept"></a>A koncepció igazolása 
 
-Azure DevTest Labs egyik fő forgatókönyve a Felhőbeli fejlesztési és tesztelési környezetek engedélyezése. Erre példák a következők:
+Azure DevTest Labs egyik fő forgatókönyve a Felhőbeli fejlesztési és tesztelési környezetek engedélyezése. Példák erre vonatkozóan:
 
 * Fejlesztői asztalok létrehozása a felhőben.
 * Környezetek konfigurálása teszteléshez.

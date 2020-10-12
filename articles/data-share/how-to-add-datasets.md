@@ -7,10 +7,10 @@ ms.service: data-share
 ms.topic: how-to
 ms.date: 07/30/2020
 ms.openlocfilehash: 540cdc2948cbcd97bf7c8872f3aace2862280434
-ms.sourcegitcommit: 29400316f0c221a43aff3962d591629f0757e780
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87513489"
 ---
 # <a name="how-to-add-datasets-to-an-existing-share-in-azure-data-share"></a>Adatkészletek hozzáadása meglévő megosztáshoz az Azure-beli adatmegosztásban
@@ -21,7 +21,7 @@ Az adatkészletek megosztás létrehozásakor történő hozzáadásával kapcso
 
 ## <a name="navigate-to-a-sent-data-share"></a>Navigáljon az elküldett adatmegosztáshoz
 
-Az Azure-adatmegosztás területen navigáljon az elküldett megosztáshoz, és válassza az **adatkészletek** lapot. további adatkészletek hozzáadásához kattintson az **+ adatkészletek hozzáadása** gombra.
+Az Azure-adatmegosztás területen navigáljon az elküldett megosztáshoz, és válassza az **adatkészletek** lapot. További adathalmazok hozzáadásához kattintson az **+ adatkészletek hozzáadása** gombra.
 
 ![Adatkészletek hozzáadása](./media/how-to/how-to-add-datasets/add-datasets.png)
 

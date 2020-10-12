@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 09/16/2020
 ms.author: b-juche
 ms.openlocfilehash: f2a50872fdb71419a0c3f068712ec67523a098e0
-ms.sourcegitcommit: 7374b41bb1469f2e3ef119ffaf735f03f5fad484
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90708787"
 ---
 # <a name="requirements-and-considerations-for-using-cross-region-replication"></a>A régiók közötti replikáció használatára vonatkozó követelmények és szempontok 
@@ -40,10 +40,10 @@ Vegye figyelembe az alábbi követelményeket és szempontokat a Azure NetApp Fi
 * Ha a replikációs kapcsolat aktív vagy megszakadt, a replikálási kapcsolat törlését követően manuálisan is törölheti a replikálási kapcsolat forrás kötetén található manuális pillanatképeket. A cél kötethez tartozó manuális Pillanatképek nem törölhetők, amíg a replikálási kapcsolat megszakad.
 
 ## <a name="next-steps"></a>Következő lépések
-* [Replikációs társítás létrehozása](cross-region-replication-create-peering.md)
+* [Replikációs társviszony létrehozása](cross-region-replication-create-peering.md)
 * [Replikációs kapcsolat állapotának megjelenítése](cross-region-replication-display-health-status.md)
 * [Vészhelyreállítás kezelése](cross-region-replication-manage-disaster-recovery.md)
 * [Kötet replikációs metrikái](azure-netapp-files-metrics.md#replication)
-* [Régiók közötti replikáció – problémamegoldás](troubleshoot-cross-region-replication.md)
+* [Régiók közötti replikáció hibaelhárítása](troubleshoot-cross-region-replication.md)
 
 

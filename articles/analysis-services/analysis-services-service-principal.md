@@ -8,10 +8,10 @@ ms.date: 07/07/2020
 ms.author: owend
 ms.reviewer: minewiskan
 ms.openlocfilehash: 28947d1fa4ece5d6285651ef07342cae06ad8bc8
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86077371"
 ---
 # <a name="automation-with-service-principals"></a>Automatizálás szolgáltatásnevekkel
@@ -24,14 +24,14 @@ A Analysis Services a felügyelt identitások által végrehajtott műveleteket 
 
 ## <a name="create-service-principals"></a>Szolgáltatásnevek létrehozása
  
-Az egyszerű szolgáltatások a Azure Portal vagy a PowerShell használatával hozhatók létre. További tudnivalókért lásd:
+Az egyszerű szolgáltatások a Azure Portal vagy a PowerShell használatával hozhatók létre. További információ:
 
 [Szolgáltatásnév létrehozása – Azure Portal](../active-directory/develop/howto-create-service-principal-portal.md)   
 [Szolgáltatásnév létrehozása – PowerShell](../active-directory/develop/howto-authenticate-service-principal-powershell.md)
 
 ## <a name="store-credential-and-certificate-assets-in-azure-automation"></a>A hitelesítő adatok és a tanúsítványok eszközeinek tárolása Azure Automation
 
-Az egyszerű szolgáltatás hitelesítő adatai és tanúsítványai biztonságosan tárolhatók Azure Automation runbook-műveletekhez. További tudnivalókért lásd:
+Az egyszerű szolgáltatás hitelesítő adatai és tanúsítványai biztonságosan tárolhatók Azure Automation runbook-műveletekhez. További információ:
 
 [Hitelesítőadat-eszközök a Azure Automation](../automation/automation-credentials.md)   
 [Az Azure Automation tanúsítvány adategységei](../automation/automation-certificates.md)
@@ -50,7 +50,7 @@ A szolgáltatás egyszerű appID és jelszava vagy tanúsítványa ugyanúgy has
 
 #### <a name="using-azanalysisservices-module"></a><a name="azmodule"></a>Az az. AnalysisServices modul használata
 
-Ha az az [. AnalysisServices](/powershell/module/az.analysisservices) modullal erőforrás-kezelési műveletekhez egyszerű szolgáltatásnevet használ, használja a `Connect-AzAccount` parancsmagot. 
+Ha az az [. AnalysisServices](/powershell/module/az.analysisservices)  modullal erőforrás-kezelési műveletekhez egyszerű szolgáltatásnevet használ, használja a `Connect-AzAccount` parancsmagot. 
 
 A következő példában a appID és a Password (jelszó) használatával vezérelheti a vezérlési sík műveleteit a csak olvasási replikák szinkronizálásához, és felskálázást végezhet:
 

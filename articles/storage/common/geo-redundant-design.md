@@ -12,10 +12,10 @@ ms.reviewer: artek
 ms.subservice: common
 ms.custom: devx-track-csharp
 ms.openlocfilehash: a6aed0630acf6ee6624c72831a2cdc88e6c0a91d
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89013061"
 ---
 # <a name="use-geo-redundancy-to-design-highly-available-applications"></a>A Geo-redundancia használata a magasan elérhető alkalmazások kialakításához
@@ -233,6 +233,6 @@ Ezt a példát úgy is kiterjesztheti, hogy a kérések szélesebb körét elhal
 
 Ha elvégezte az alkalmazás csak olvasható módra való váltásának küszöbértékeit, akkor könnyebben tesztelheti a nem éles tranzakciós kötetekkel kapcsolatos viselkedést.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az elsődleges és másodlagos végpontok közötti váltás menetét bemutató teljes minta: [Azure-minták – az áramkör-megszakító minta és ra-GRS tároló használatával](https://github.com/Azure-Samples/storage-dotnet-circuit-breaker-pattern-ha-apps-using-ra-grs).

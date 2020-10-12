@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 06/19/2017
 ms.author: alkohli
 ms.openlocfilehash: baa035269f4a5b2f39263264f23183b308264ead
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85513948"
 ---
 # <a name="manage-your-storsimple-device-controllers"></a>StorSimple-eszközök vezérlőinek kezelése
@@ -117,7 +117,7 @@ A következő lépések végrehajtásával alaphelyzetbe állíthatja Microsoft 
    
     `Reset-HcsFactoryDefault`
    
-    Egy vezérlő visszaállításához használja a [reset-HcsFactoryDefault](https://technet.microsoft.com/library/dn688132.aspx) parancsmagot a `-scope` paraméterrel.)
+    Egy vezérlő visszaállításához használja a  [reset-HcsFactoryDefault](https://technet.microsoft.com/library/dn688132.aspx) parancsmagot a `-scope` paraméterrel.)
    
     A rendszer többször is újraindul. A rendszer értesítést küld, ha az Alaphelyzetbe állítás sikeresen befejeződött. A rendszermodelltől függően 45-60 percet is igénybe vehet egy 8100-es eszközön és 60-90 percen belül egy 8600-re a folyamat befejezéséhez.
    
@@ -126,21 +126,21 @@ Ebben a szakaszban összefoglaljuk a StorSimple-vezérlők kezelésével kapcsol
 
 **Q.** Mi történik, ha az eszközön lévő vezérlők állapota Kifogástalan, és be van kapcsolva, és újraindulok vagy leállítottam az aktív vezérlőt?
 
-**Egy.** Ha az eszközön lévő vezérlők állapota Kifogástalan, és be van kapcsolva, a rendszer megerősítést kér. A következőket dönthet:
+**A.** Ha az eszközön lévő vezérlők állapota Kifogástalan, és be van kapcsolva, a rendszer megerősítést kér. A következőket dönthet:
 
 * **Indítsa újra az aktív vezérlőt** – értesítést kap arról, hogy egy aktív vezérlő újraindítása miatt az eszköz feladatátvételt okozott a passzív vezérlőnek. A vezérlő újraindul.
 * **Aktív vezérlő leállítása** – értesítést kap arról, hogy az aktív vezérlő leállítása leállást eredményez. A vezérlő bekapcsolásához le kell küldenie az eszköz főkapcsoló gombját is.
 
 **Q.** Mi történik, ha az eszközön található passzív vezérlő nem érhető el vagy ki van kapcsolva, és újraindulok vagy leállítottam az aktív vezérlőt?
 
-**Egy.** Ha az eszközön található passzív vezérlő nem érhető el vagy ki van kapcsolva, és a következőket választja:
+**A.** Ha az eszközön található passzív vezérlő nem érhető el vagy ki van kapcsolva, és a következőket választja:
 
 * **Indítsa újra az aktív vezérlőt** – értesítést kap arról, hogy a művelet folytatása a szolgáltatás átmeneti megszakadását eredményezi, és a rendszer megerősítést kér.
 * **Aktív vezérlő leállítása** – a rendszer értesítést küld a művelet folytatásáról. Az eszköz bekapcsolásához le kell küldenie az egyik vagy mindkét vezérlő főkapcsoló gombját is. A rendszer megerősítést kér.
 
 **Q.** Mikor nem sikerül a vezérlő újraindítása vagy leállítása?
 
-**Egy.** A vezérlő újraindítása vagy leállítása sikertelen lehet, ha:
+**A.** A vezérlő újraindítása vagy leállítása sikertelen lehet, ha:
 
 * Folyamatban van egy eszköz frissítése.
 * Már folyamatban van egy vezérlő újraindítása.
@@ -148,15 +148,15 @@ Ebben a szakaszban összefoglaljuk a StorSimple-vezérlők kezelésével kapcsol
 
 **Q.** Hogyan állapítható meg, hogy a rendszer újraindította vagy leállította-e a vezérlőt?
 
-**Egy.** A vezérlő állapotát a vezérlő panelen tekintheti meg. A vezérlő állapota jelzi, hogy a vezérlő újraindítási vagy leállítási folyamatban van-e. Emellett a **riasztások** panel tájékoztató riasztást is tartalmaz, ha a vezérlő újraindul vagy leáll. A vezérlő újraindítási és leállítási műveleteit a tevékenység naplófájljai is rögzítik. A tevékenységek naplóival kapcsolatos további információkért [tekintse meg a tevékenységek naplóinak megtekintése](storsimple-8000-service-dashboard.md#view-the-activity-logs)című témakört.
+**A.** A vezérlő állapotát a vezérlő panelen tekintheti meg. A vezérlő állapota jelzi, hogy a vezérlő újraindítási vagy leállítási folyamatban van-e. Emellett a **riasztások** panel tájékoztató riasztást is tartalmaz, ha a vezérlő újraindul vagy leáll. A vezérlő újraindítási és leállítási műveleteit a tevékenység naplófájljai is rögzítik. A tevékenységek naplóival kapcsolatos további információkért [tekintse meg a tevékenységek naplóinak megtekintése](storsimple-8000-service-dashboard.md#view-the-activity-logs)című témakört.
 
 **Q.** Van hatással az I/O-re a vezérlő feladatátvételének eredményeképpen?
 
-**Egy.** A kezdeményezők és az aktív vezérlő közötti TCP-kapcsolatok alaphelyzetbe állnak a vezérlő feladatátvételének eredményeképpen, de a rendszer újra létrejön, amikor a passzív vezérlő feltételezi a műveletet. Előfordulhat, hogy a művelet során a kezdeményezők és az eszköz között egy ideiglenes (30 másodpercnél rövidebb) szünet történik.
+**A.** A kezdeményezők és az aktív vezérlő közötti TCP-kapcsolatok alaphelyzetbe állnak a vezérlő feladatátvételének eredményeképpen, de a rendszer újra létrejön, amikor a passzív vezérlő feltételezi a műveletet. Előfordulhat, hogy a művelet során a kezdeményezők és az eszköz között egy ideiglenes (30 másodpercnél rövidebb) szünet történik.
 
 **Q.** Hogyan visszaküldi a vezérlőt a szolgáltatásnak a leállítása és eltávolítása után?
 
-**Egy.** Ahhoz, hogy egy vezérlőt vissza lehessen adni a szolgáltatásnak, be kell szúrnia azt a [StorSimple-eszköz vezérlő-moduljának cseréje](storsimple-8000-controller-replacement.md)című részében leírtak szerint.
+**A.** Ahhoz, hogy egy vezérlőt vissza lehessen adni a szolgáltatásnak, be kell szúrnia azt a [StorSimple-eszköz vezérlő-moduljának cseréje](storsimple-8000-controller-replacement.md)című részében leírtak szerint.
 
 ## <a name="next-steps"></a>További lépések
 * Ha olyan problémák merülnek fel a StorSimple-vezérlőkben, amelyeket az oktatóanyagban felsorolt eljárások használatával nem tud feloldani, [forduljon Microsoft ügyfélszolgálatahoz](storsimple-8000-contact-microsoft-support.md).
