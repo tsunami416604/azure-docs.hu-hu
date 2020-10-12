@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
 ms.openlocfilehash: 5a896d3fbe2d191473b10655ccb19c5759762131
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84803639"
 ---
 # <a name="load-balancing-on-multiple-ip-configurations-by-using-the-azure-portal"></a>Terheléselosztás több IP-konfiguráción a Azure Portal használatával
@@ -78,7 +78,7 @@ A virtuális hálózat minden egyes virtuális gépén adja hozzá a másodlagos
 
         2. A **magánhálózati IP-cím**, **kiosztási** beállítás területen válassza a **statikus**lehetőséget.
 
-        3. Válassza az **OK** lehetőséget.
+        3. Kattintson az **OK** gombra.
 
 A másodlagos hálózati adapter második IP-konfigurációjának befejeződése után megjelenik az adott hálózati adapter **IP-konfigurációk** beállításai között.
 
@@ -112,7 +112,7 @@ Az egyes webhelyekhez (contoso.com és fabrikam.com) konfigurálja az előtér-I
 
    3. A **hely**mezőben válassza ki a virtuális gépekkel megegyező helyet.
 
-   4. Válassza az **OK** lehetőséget.
+   4. Kattintson az **OK** gombra.
 
       A nyilvános IP-címek létrehozása után azok a **nyilvános IP-** címek alatt jelennek meg.
 
@@ -152,7 +152,7 @@ Minden webhelyhez (contoso.com és fabrikam.com) konfigurálja a háttérbeli c�
 
     2. A **hálózati IP-konfiguráció**területen válassza ki az előző lépésben kiválasztott virtuális gép másodlagos hálózati ADAPTERÉNEK IP-konfigurációját (például **VM1NIC2-ipconfig2** vagy **VM2NIC2-ipconfig2**).
 
-7. Válassza az **OK** lehetőséget.
+7. Kattintson az **OK** gombra.
 
 Miután konfigurálta a háttér-készletet, a címek a terheléselosztó **háttér-készletének** beállításai alatt jelennek meg.
 
@@ -166,7 +166,7 @@ Miután konfigurálta a háttér-készletet, a címek a terheléselosztó **hát
 
 3. A **Beállítások**területen válassza az **állapot**mintavétel elemet. A következő ablaktáblán a felső részen válassza a **Hozzáadás**lehetőséget. 
 
-4. Adja meg az állapot-mintavétel nevét (például **http**). Válassza az **OK** lehetőséget.
+4. Adja meg az állapot-mintavétel nevét (például **http**). Kattintson az **OK** gombra.
 
 ### <a name="step-6-configure-load-balancing-rules"></a>6. lépés: terheléselosztási szabályok konfigurálása
 

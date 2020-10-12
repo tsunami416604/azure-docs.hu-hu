@@ -16,10 +16,10 @@ ms.author: rolyon
 ms.reviewer: bagovind
 ms.custom: ''
 ms.openlocfilehash: 7c6f9203385c47da9803fb05358889d00d77d3e5
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86511636"
 ---
 # <a name="understand-azure-role-definitions"></a>Az Azure szerepkör-definíciók ismertetése
@@ -239,7 +239,7 @@ Tulajdonos
 &nbsp;&nbsp;&nbsp;&nbsp;Műveletek<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`*`
 
-Storage blob adatközreműködői
+Storage-blobadatok közreműködője
 
 &nbsp;&nbsp;&nbsp;&nbsp;Műveletek<br>
 &nbsp;&nbsp;&nbsp;&nbsp;`Microsoft.Storage/storageAccounts/blobServices/containers/delete`<br>
@@ -294,7 +294,7 @@ Az `Actions` engedély meghatározza azokat a felügyeleti műveleteket, amelyek
 Az `NotActions` engedély meghatározza azokat a felügyeleti műveleteket, amelyek ki vannak zárva az engedélyezetttől `Actions` . Akkor használja az `NotActions` engedélyt, ha az engedélyezni kívánt műveletek csoportja a korlátozott műveletek kizárásával könnyebben definiálható. A szerepkör (hatályos engedélyek) által biztosított hozzáférés kiszámítása a műveletek műveletből való kivonásával történik `NotActions` `Actions` .
 
 > [!NOTE]
-> Ha a felhasználó olyan szerepkört rendel hozzá, amely kizár egy műveletet a alkalmazásban `NotActions` , és olyan második szerepkörhöz van rendelve, amely hozzáférést biztosít ugyanahhoz a művelethez, a felhasználó számára engedélyezett a művelet végrehajtása. `NotActions`nem megtagadási szabály – egyszerűen egy kényelmes módszer, amely lehetővé teszi, hogy az egyes műveleteket ki kell zárni.
+> Ha a felhasználó olyan szerepkört rendel hozzá, amely kizár egy műveletet a alkalmazásban `NotActions` , és olyan második szerepkörhöz van rendelve, amely hozzáférést biztosít ugyanahhoz a művelethez, a felhasználó számára engedélyezett a művelet végrehajtása. `NotActions` nem megtagadási szabály – egyszerűen egy kényelmes módszer, amely lehetővé teszi, hogy az egyes műveleteket ki kell zárni.
 >
 
 ## <a name="dataactions"></a>DataActions
@@ -314,7 +314,7 @@ Az `DataActions` engedély meghatározza azokat az adatműveleteket, amelyeket a
 Az `NotDataActions` engedély meghatározza azokat az adatműveleteket, amelyek ki vannak zárva az engedélyezett tartományból `DataActions` . A szerepkör (hatályos engedélyek) által biztosított hozzáférés kiszámítása a műveletek műveletből való kivonásával történik `NotDataActions` `DataActions` . Mindegyik erőforrás-szolgáltató biztosítja az API-k megfelelő készletét az adatműveletek teljesítéséhez.
 
 > [!NOTE]
-> Ha egy felhasználó olyan szerepkört kap, amely kizár egy adatműveletet a alkalmazásban `NotDataActions` , és olyan második szerepkört rendel hozzá, amely ugyanahhoz az adatművelethez hozzáférést biztosít, akkor a felhasználó elvégezheti az adatműveletet. `NotDataActions`nem megtagadási szabály – egyszerűen csak egy kényelmes módszer, amely lehetővé teszi az adatműveletek egy készletének kizárását, ha bizonyos adatműveleteket ki kell zárni.
+> Ha egy felhasználó olyan szerepkört kap, amely kizár egy adatműveletet a alkalmazásban `NotDataActions` , és olyan második szerepkört rendel hozzá, amely ugyanahhoz az adatművelethez hozzáférést biztosít, akkor a felhasználó elvégezheti az adatműveletet. `NotDataActions` nem megtagadási szabály – egyszerűen csak egy kényelmes módszer, amely lehetővé teszi az adatműveletek egy készletének kizárását, ha bizonyos adatműveleteket ki kell zárni.
 >
 
 ## <a name="assignablescopes"></a>AssignableScopes
@@ -335,7 +335,7 @@ A beépített szerepkörök `AssignableScopes` a gyökérszintű hatókörre () 
 
 További információ az `AssignableScopes` Egyéni szerepkörökről: [Egyéni Azure-szerepkörök](custom-roles.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Beépített Azure-szerepkörök](built-in-roles.md)
 * [Egyéni Azure-szerepkörök](custom-roles.md)

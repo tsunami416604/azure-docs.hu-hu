@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 07/28/2020
 ms.author: zarhoads
 ms.openlocfilehash: fab4943cad1a87bda70a4c4332ab6135ed99bf1b
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89022275"
 ---
 # <a name="best-practices-for-pod-security-in-azure-kubernetes-service-aks"></a>Ajánlott eljárások a pod Security számára az Azure Kubernetes szolgáltatásban (ak)
@@ -97,7 +97,7 @@ A pod Identity projekt használata lehetővé teszi a hitelesítést az Azure-sz
 
 Ha az alkalmazásoknak hitelesítő adatokra van szükségük, kommunikálnak a digitális tárolóval, lekérik a legújabb titkos tartalmakat, majd csatlakoznak a szükséges szolgáltatáshoz. Azure Key Vault lehet ez a digitális tároló. A következő ábrán látható az egyszerűsített munkafolyamat, amely a Azure Key Vault a pod felügyelt identitások használatával beolvassa a hitelesítő adatokat.
 
-:::image type="content" source="media/developer-best-practices-pod-security/basic-key-vault.svg" alt-text="Egyszerűsített munkafolyamat a hitelesítő adatok beolvasásához a Key Vault Pod által felügyelt identitás használatával":::
+:::image type="content" source="media/developer-best-practices-pod-security/basic-key-vault.svg" alt-text="Egyszerűsített munkafolyamat a pod által felügyelt identitáshoz az Azure-ban":::
 
 A Key Vault a titkokat, például a hitelesítő adatokat, a Storage-fiók kulcsait vagy a tanúsítványokat tárolja és rendszeresen elforgatja. A [Secrets Store CSI-illesztőprogram Azure Key Vault szolgáltatójának](https://github.com/Azure/secrets-store-csi-driver-provider-azure#usage)használatával integrálhatja Azure Key Vaultt egy AK-fürttel. A Secrets Store CSI-illesztőprogram lehetővé teszi, hogy az AK-fürt natív módon beolvassa a titkos tartalmat a Key Vaultból, és biztonságosan biztosítsa azokat csak a kérelmező Pod számára. Működjön együtt a fürt üzemeltetőjével, hogy a Secrets Store CSI-illesztőprogramot az AK munkavégző csomópontokra telepítse. A pod felügyelt identitással hozzáférést kérhet Key Vaulthoz, és beolvashatja a Secrets Store CSI-illesztőprogramon keresztül szükséges titkos tartalmat.
 

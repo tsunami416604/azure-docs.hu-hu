@@ -15,10 +15,10 @@ ms.workload: infrastructure
 ms.date: 02/13/2020
 ms.author: juergent
 ms.openlocfilehash: 527d9e2e43a4003dd5300c26fc58b1e456186351
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87077399"
 ---
 # <a name="high-availability-of-ibm-db2-luw-on-azure-vms-on-red-hat-enterprise-linux-server"></a>Az IBM Db2 LUW magas rendelkezésre állása Azure-beli virtuális gépeken Red Hat Enterprise Linux Serveren
@@ -33,7 +33,7 @@ A támogatott IBM DB2-verziók 10,5-es és újabb verziójúak, az SAP Note [192
 
 A telepítés megkezdése előtt tekintse meg a következő SAP-megjegyzéseket és dokumentációt:
 
-| SAP-Megjegyzés | Description |
+| SAP-Megjegyzés | Leírás |
 | --- | --- |
 | [1928533] | SAP-alkalmazások az Azure-ban: támogatott termékek és Azure-beli virtuális gépek típusai |
 | [2015553] | SAP az Azure-on: támogatási előfeltételek |
@@ -41,7 +41,7 @@ A telepítés megkezdése előtt tekintse meg a következő SAP-megjegyzéseket 
 | [2191498] | SAP Linuxon az Azure-ban: továbbfejlesztett monitorozás |
 | [2243692] | Linux on Azure (IaaS) VM: SAP-licenctel kapcsolatos problémák |
 | [2002167] | Red Hat Enterprise Linux 7. x: telepítés és frissítés |
-| [2694118] | Red Hat Enterprise Linux HA Azure-beli bővítmény |
+| [2694118] | Red Hat Enterprise Linux HA Add-On az Azure-ban |
 | [1999351] | Az SAP-hez készült bővített Azure monitoring hibaelhárítása |
 | [2233094] | DB6: SAP-alkalmazások az Azure-ban, amelyek az IBM DB2-t használják Linuxra, UNIX-ra és Windowsra – további információk |
 | [1612105] | DB6: a HADR-mel kapcsolatos gyakori kérdések |
@@ -54,11 +54,11 @@ A telepítés megkezdése előtt tekintse meg a következő SAP-megjegyzéseket 
 | [Azure Virtual Machines üzembe helyezés az SAP-hez Linux rendszeren][deployment-guide] (ez a cikk) |
 | [Azure Virtual Machines adatbázis-kezelő rendszer (adatbázisok) üzembe helyezése az SAP-hez Linux][dbms-guide] rendszeren – útmutató |
 | [SAP számítási feladatok az Azure tervezési és üzembe helyezési ellenőrzőlistáján][azr-sap-plancheck] |
-| [A Red Hat Enterprise Linux 7 magas rendelkezésre állású bővítményének áttekintése][rhel-ha-addon] |
-| [Magas rendelkezésre állású bővítmények felügyelete][rhel-ha-admin] |
-| [Magas rendelkezésre állású bővítmények leírása][rhel-ha-ref] |
+| [A Red Hat Enterprise Linux 7 magas rendelkezésre állású Add-On áttekintése][rhel-ha-addon] |
+| [Magas rendelkezésre állású Add-On felügyelet][rhel-ha-admin] |
+| [Magas rendelkezésre állású Add-On referenciája][rhel-ha-ref] |
 | [A RHEL magas rendelkezésre állású fürtökre vonatkozó támogatási szabályzatok – Microsoft Azure Virtual Machines a fürt tagjai][rhel-azr-supp]
-| [Red Hat Enterprise Linux 7,4 (és újabb) magas rendelkezésre állású fürt telepítése és konfigurálása Microsoft Azure][rhel-azr-inst]
+| [Red Hat Enterprise Linux 7,4 (és újabb) High-Availability fürt telepítése és konfigurálása Microsoft Azure][rhel-azr-inst]
 | [IBM Db2 Azure-beli virtuális gépek DBMS üzembe helyezése SAP számítási feladatokhoz][dbms-db2] |
 | [IBM DB2 HADR 11,1][db2-hadr-11.1] |
 | [IBM DB2 HADR 10,5][db2-hadr-10.5] |
@@ -495,7 +495,7 @@ A J2EE konfigurációs eszköz használatával megvizsgálhatja vagy frissíthet
     
     <pre><code>jdbc:db2://db-virt-hostname:5912/TSP:deferPrepares=0</code></pre>  
     
-1. Válassza a **Hozzáadás** elemet.
+1. Válassza a **Hozzáadás** lehetőséget.
 1. A módosítások mentéséhez válassza a bal felső sarokban található lemez ikont.
 1. A konfigurációs eszköz bezárásához.
 1. Indítsa újra a Java-példányt.
@@ -507,7 +507,7 @@ A naplózási archiválást csak az elsődleges adatbázis hajtja végre. Ha meg
 
 Javasoljuk, hogy olyan közös NFS-megosztást vagy GlusterFS állítson be, amelyben mindkét csomópontból a naplók íródnak. Az NFS-megosztásnak vagy-GlusterFS nagyon elérhetőnek kell lennie. 
 
-Használhatja a meglévő, magasan elérhető NFS-megosztásokat vagy GlusterFS a szállításokhoz vagy a profilok címtárához. További információ:
+Használhatja a meglévő, magasan elérhető NFS-megosztásokat vagy GlusterFS a szállításokhoz vagy a profilok címtárához. További információkért lásd:
 
 - [Red Hat Enterprise Linuxon futó Azure-beli virtuális gépeken üzemelő GlusterFS SAP NetWeaverhez][glusterfs] 
 - [Magas rendelkezésre állás az Azure-beli virtuális gépeken futó SAP NetWeaver-hez Red Hat Enterprise Linuxon Azure NetApp Files SAP-alkalmazásokhoz][anf-rhel]

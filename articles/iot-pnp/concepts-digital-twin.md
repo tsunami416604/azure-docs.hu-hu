@@ -1,5 +1,5 @@
 ---
-title: A IoT Plug and Play digitális Twins ismertetése
+title: Az IoT Plug and Play digitális ikreinek ismertetése
 description: Ismerje meg, hogyan használja a IoT Plug and Play a digitális ikreket
 author: prashmo
 ms.author: prashmo
@@ -8,13 +8,13 @@ ms.topic: conceptual
 ms.service: iot-pnp
 services: iot-pnp
 ms.openlocfilehash: 5d5ffe4e7d92530f18e278382ab3637c3326e57c
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91578053"
 ---
-# <a name="understand-iot-plug-and-play-digital-twins"></a>A IoT Plug and Play digitális Twins ismertetése
+# <a name="understand-iot-plug-and-play-digital-twins"></a>Az IoT Plug and Play digitális ikreinek ismertetése
 
 A IoT Plug and Play-eszközök a [Digital Twins Definition Language (DTDL)](https://github.com/Azure/opendigitaltwins-dtdl) sémája által leírt modellt implementálják. A modell leírja az adott eszközhöz tartozó összetevők, tulajdonságok, parancsok és telemetria-üzenetek készletét. Az eszközök Twin és a digitális iker inicializálása az első alkalommal, amikor egy IoT Plug and Play eszköz csatlakozik egy IoT hubhoz.
 
@@ -22,7 +22,7 @@ A IoT Plug and Play a DTDL 2-es verzióját használja. További információ er
 
 A DTDL nem kizárólag IoT Plug and Play. Más IoT-szolgáltatások, például az [Azure digitális Twins](../digital-twins/overview.md), a teljes környezetek, például épületek és energiahálózatok ábrázolására használhatók. További információ: [Twin models ismertetése az Azure Digital twinsban](../digital-twins/concepts-models.md).
 
-Ez a cikk azt ismerteti, hogyan jelennek meg az összetevők és a tulajdonságok a különálló eszközök *kívánt* és *jelentett* részeiben. Azt is leírja, hogyan képezi le ezeket a fogalmakat a megfelelő digitális Twin-re.
+Ez a cikk azt ismerteti, hogyan jelennek meg az összetevők és a tulajdonságok a különálló eszközök *kívánt* és *jelentett* részeiben. Emellett azt is ismerteti, hogyan kapcsolódnak ezek a fogalmak a megfelelő digitális ikerhez.
 
 A cikk IoT Plug and Play eszköze, amely a hőmérséklet- [vezérlő modelljét](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/TemperatureController.json) implementálja [termosztát](https://github.com/Azure/opendigitaltwins-dtdl/blob/master/DTDL/v2/samples/Thermostat.json) -összetevővel.
 
@@ -131,7 +131,7 @@ A tulajdonságok olyan adatmezők, amelyek egy entitás állapotát jelölik (p�
 
 #### <a name="read-only-property"></a>Írásvédett tulajdonság
 
-Séma:
+Séma
 
 ```json
 {
@@ -309,9 +309,9 @@ Az alábbi kódrészletek az összetevő egymás melletti JSON-ábrázolását m
 
 Az Azure Digital Twins a **Get Digital Twin**, a **Digital Twin frissítése**, az **Component parancs meghívása** és az eszközök digitális iker-kezelésének **meghívása paranccsal** érhető el. Használhatja a [REST API-kat](https://docs.microsoft.com/rest/api/iothub/service/digitaltwin) közvetlenül vagy egy [Service SDK](../iot-pnp/libraries-sdks.md)-n keresztül.
 
-## <a name="digital-twin-change-events"></a>Digitális kettős változási események
+## <a name="digital-twin-change-events"></a>Digitális ikermódosítási események
 
-Ha a digitális kettős változási események engedélyezve vannak, az esemény akkor aktiválódik, amikor az összetevő vagy a tulajdonság jelenlegi vagy kívánt értéke megváltozik. A digitális kettős változási események a [JSON-javítás](http://jsonpatch.com/) formátumában jönnek létre. A kapcsolódó események az eszköz Twin formátumában jönnek létre, ha a kettős módosítási esemény engedélyezve van.
+Ha a digitális iker módosítási eseményei engedélyezve vannak, az esemény akkor aktiválódik, amikor az összetevő vagy a tulajdonság aktuális vagy kívánt értéke megváltozik. A digitális kettős változási események a [JSON-javítás](http://jsonpatch.com/) formátumában jönnek létre. A kapcsolódó események az eszköz Twin formátumában jönnek létre, ha a kettős módosítási esemény engedélyezve van.
 
 Ha meg szeretné tudni, hogyan engedélyezheti az útválasztást az eszközök és a digitális kettős események esetében, tekintse meg az [eszközről a felhőbe irányuló üzenetek különböző végpontokra való küldésére szolgáló IoT hub üzenet-útválasztás használata](../iot-hub/iot-hub-devguide-messages-d2c.md#non-telemetry-events) Az üzenet formátumának megismeréséhez tekintse meg [IoT hub üzenetek létrehozása és olvasása](../iot-hub/iot-hub-devguide-messages-construct.md)című témakört.
 
@@ -377,7 +377,7 @@ content-encoding:utf-8
 > [!NOTE]
 > A kettős módosítás értesítési üzenetei a két eszközön és a digitális kettős változási értesítésen is bekapcsolva jelennek meg.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy megismerte a digitális ikreket, íme néhány további erőforrás:
 

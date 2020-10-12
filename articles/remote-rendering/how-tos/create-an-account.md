@@ -6,10 +6,10 @@ ms.author: flborn
 ms.date: 02/11/2020
 ms.topic: how-to
 ms.openlocfilehash: 7a4e6d80d80441a1b94c1fb2bd8f82f247235fe3
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91318092"
 ---
 # <a name="create-an-azure-remote-rendering-account"></a>Azure Remote Rendering-fiók létrehozása
@@ -52,7 +52,7 @@ A *régió* lehetőség kitöltéséhez tekintse meg az [elérhető régiók lis
 
 A (z) és a (z) értékeit a **`arrAccountId`** **`arrAccountKey`** portálon találja, az alábbi lépések szerint:
 
-* Ugrás a [Azure Portal](https://www.portal.azure.com)
+* Nyissa meg az [Azure Portalt](https://www.portal.azure.com)
 * A **"távoli renderelési fiók"** kifejezés megkeresése – a **"legutóbbi erőforrások"** listában kell szerepelnie. A felső menüsorban is megkeresheti a keresést. Ebben az esetben ellenőrizze, hogy a használni kívánt előfizetés ki van-e választva az alapértelmezett előfizetés-szűrőben (a keresősáv melletti szűrő ikon):
 
 ![Előfizetés-szűrő](./media/azure-subscription-filter.png)

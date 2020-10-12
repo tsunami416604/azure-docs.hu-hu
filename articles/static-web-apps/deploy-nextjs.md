@@ -9,10 +9,10 @@ ms.date: 05/08/2020
 ms.author: chnwamba
 ms.custom: devx-track-js
 ms.openlocfilehash: 554a7504e4e72eb2b2921c56e535343398cfa8b6
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91333647"
 ---
 # <a name="deploy-server-rendered-nextjs-websites-on-azure-static-web-apps-preview"></a>Kiszolgáló által megjelenített Next.js webhelyek üzembe helyezése az Azure statikus Web Apps előzetes verziójában
@@ -63,7 +63,7 @@ Első lépésként hozzon létre egy új tárházat a GitHub-fiókjában egy sab
 
 Ha a keretrendszerre vagy a könyvtárra kattint, megjelenik a kijelölt elem részleteit tartalmazó oldal:
 
-:::image type="content" source="media/deploy-nextjs/start-nextjs-details.png" alt-text="Részletek lap":::
+:::image type="content" source="media/deploy-nextjs/start-nextjs-details.png" alt-text="Next.js alkalmazás elindítása":::
 
 ## <a name="generate-a-static-website-from-nextjs-build"></a>Statikus webhely létrehozása Next.js buildből
 
@@ -146,7 +146,7 @@ Az alábbi lépések bemutatják, hogyan lehet összekapcsolni a GitHubra lekül
 1. A *régió* legördülő menüben válassza ki az Önhöz legközelebb eső régiót.
 1. Válassza az **ingyenes** lehetőséget az SKU legördülő menüből.
 
-   :::image type="content" source="media/deploy-nextjs/create-static-web-app.png" alt-text="Statikus Webalkalmazás létrehozása":::
+   :::image type="content" source="media/deploy-nextjs/create-static-web-app.png" alt-text="Next.js alkalmazás elindítása":::
 
 ### <a name="add-a-github-repository"></a>GitHub-adattár hozzáadása
 
@@ -157,7 +157,7 @@ Az új statikus Web Apps fióknak hozzá kell férnie a tárházhoz a Next.js al
 1. Keresse meg és válassza ki a korábban létrehozott adattár nevét.
 1. Válassza a **főkiszolgáló** elemet a *ág* legördülő menüből.
 
-   :::image type="content" source="media/deploy-nextjs/connect-github.png" alt-text="A GitHub csatlakoztatása":::
+   :::image type="content" source="media/deploy-nextjs/connect-github.png" alt-text="Next.js alkalmazás elindítása":::
 
 ### <a name="configure-the-build-process"></a>A létrehozási folyamat konfigurálása
 
@@ -165,7 +165,7 @@ Az Azure statikus Web Apps úgy lett felépítve, hogy automatikusan végezze el
 
 1. A statikus kimeneti mappa konfigurálásához kattintson a **build (létrehozás** ) lapra.
 
-   :::image type="content" source="media/deploy-nextjs/build-tab.png" alt-text="Build lap":::
+   :::image type="content" source="media/deploy-nextjs/build-tab.png" alt-text="Next.js alkalmazás elindítása":::
 
 2. Írja **be az** *alkalmazás* -összetevő szövegmezőbe.
 
@@ -195,7 +195,7 @@ Térjen vissza a terminálhoz, és futtassa a következő parancsot `git pull or
 
 Navigáljon az újonnan telepített webhelyre, és kattintson az egyik keretrendszer vagy könyvtár emblémára. A Részletek lap beszerzése helyett egy 404-es hibaüzenet jelenik meg.
 
-:::image type="content" source="media/deploy-nextjs/404-in-production.png" alt-text="404 dinamikus útvonalakon":::
+:::image type="content" source="media/deploy-nextjs/404-in-production.png" alt-text="Next.js alkalmazás elindítása":::
 
 Ennek a hibának az oka az, hogy Next.js csak az alkalmazás konfigurációja alapján hozta létre a kezdőlapot.
 
@@ -231,7 +231,7 @@ Ennek a hibának az oka az, hogy Next.js csak az alkalmazás konfigurációja al
 
 2. Küldje le az új módosításokat a GitHub-tárházba, és várjon néhány percet, amíg a GitHub-műveletek újra felépítik a helyet. A Build befejezése után a 404-es hiba eltűnik.
 
-   :::image type="content" source="media/deploy-nextjs/404-in-production-fixed.png" alt-text="404 a dinamikus útvonalakon kijavítva":::
+   :::image type="content" source="media/deploy-nextjs/404-in-production-fixed.png" alt-text="Next.js alkalmazás elindítása":::
 
 > [!div class="nextstepaction"]
 > [Egyéni tartomány beállítása](custom-domain.md)

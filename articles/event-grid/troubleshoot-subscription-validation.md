@@ -4,10 +4,10 @@ description: Ez a cikk bemutatja, hogyan lehet elhárítani az előfizetés érv
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: 48844859013507ab684ef8879b7b85dd6b6fe8cd
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86118987"
 ---
 # <a name="troubleshoot-azure-event-grid-subscription-validations"></a>Azure Event Grid előfizetés érvényességének hibáinak megoldása
@@ -72,7 +72,7 @@ Ha a webhook 403 (tiltott) értékkel tér vissza a válaszban, ellenőrizze, ho
   - 942430 (korlátozott SQL-karakteres anomáliák észlelése (argumentumok): a speciális karakterek száma túllépve (12)
   - 920230 (több URL-kódolás észlelhető)
   - 942130 (SQL injection támadás: az SQL-tautológia észlelve.)
-  - 931130 (lehetséges távoli fájlok felvételének (RFI) támadása = off-domain Reference/link)
+  - 931130 (lehetséges távoli fájlok felvételének (RFI) támadása = Off-Domain hivatkozás/hivatkozás)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ha további segítségre van szüksége, tegye fel a problémát a [stack overflow fórumba](https://stackoverflow.com/questions/tagged/azure-eventgrid) , vagy nyisson meg egy [támogatási jegyet](https://azure.microsoft.com/support/options/). 

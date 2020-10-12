@@ -13,17 +13,17 @@ ms.workload: infrastructure
 ms.date: 11/19/2018
 ms.author: genli
 ms.openlocfilehash: 0f5a414f00ffa50114f090fc19f37b8a85428547
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86509001"
 ---
 # <a name="cannot-connect-remotely-to-a-windows-10-or-windows-server-2016-vm-in-azure-because-of-netvscsys"></a>Nem lehet távolról csatlakozni a Windows 10 vagy Windows Server 2016 rendszerű virtuális géphez az Azure-ban netvsc.sys
 
 Ez a cikk azt ismerteti, hogyan lehet elhárítani egy olyan problémát, amelyben nincs hálózati kapcsolat, ha Windows 10 vagy Windows Server 2016 Datacenter rendszerű virtuális géphez (VM) csatlakozik a Hyper-V Server 2016 gazdagépen.
 
-## <a name="symptoms"></a>Probléma
+## <a name="symptoms"></a>Hibajelenségek
 
 RDP protokoll (RDP) használatával nem lehet csatlakozni Azure Windows 10 vagy Windows Server 2016 rendszerű virtuális géphez. A [rendszerindítási diagnosztika](boot-diagnostics.md)képernyőn a képernyő piros keresztet mutat a hálózati adapteren (NIC). Ez azt jelzi, hogy a virtuális gépnek nincs kapcsolata, miután az operációs rendszer teljesen betöltődött.
 

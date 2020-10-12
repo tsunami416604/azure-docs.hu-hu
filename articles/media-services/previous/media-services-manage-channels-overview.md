@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: eb508831d7a10537f27bb5b4e55f3a0627ce1f3c
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89265966"
 ---
 # <a name="overview-of-live-streaming-using-media-services"></a>Az élő közvetítés áttekintése Media Services használatával
@@ -74,7 +74,7 @@ A Media Services 2,10 kiadástól kezdve a csatorna létrehozásakor megadhatja,
 
 Az alábbi táblázat a Media Services által támogatott két csatorna típusának összehasonlítását ismerteti.
 
-| Funkció | Áteresztő csatorna | Standard szintű csatorna |
+| Szolgáltatás | Áteresztő csatorna | Standard szintű csatorna |
 | --- | --- | --- |
 | Az egyszeres sávszélességű bemenetek a felhőben több bitrátára vannak kódolva |Nem |Igen |
 | Maximális felbontás, rétegek száma |1080p, 8 réteg, 60 + fps |720p, 6 réteg, 30 fps |
@@ -153,7 +153,7 @@ Az alábbi táblázat azt mutatja be, hogy a csatorna állapotai hogyan képezhe
 | Csatorna állapota | A portál felhasználói felületének kijelzői | Számlázási? |
 | --- | --- | --- |
 | Indítás |Indítás |Nem (átmeneti állapot) |
-| Fut |Kész (nincs futó program)<br/>vagy<br/>Streaming (legalább egy futó program) |IGEN |
+| Futó |Kész (nincs futó program)<br/>vagy<br/>Streaming (legalább egy futó program) |IGEN |
 | Leállítás |Leállítás |Nem (átmeneti állapot) |
 | Leállítva |Leállítva |Nem |
 

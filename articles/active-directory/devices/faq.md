@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: ravenn
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c8d03b8f13a016dc21e37b82f66abc8050ef17d8
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89266782"
 ---
 # <a name="azure-active-directory-device-management-faq"></a>Azure Active Directory eszközkezelés – gyakori kérdések
@@ -215,7 +215,7 @@ Ez a viselkedés:
 
 - A felhasználói hitelesítő adatai már nem érvényesek.
 - A számítógép nem tud kommunikálni Azure Active Directoryokkal. Keresse meg a hálózati kapcsolattal kapcsolatos problémákat.
-- Az összevont bejelentkezésekhez szükséges, hogy az összevonási kiszolgáló támogassa a WS-Trust végpontokat, amelyek engedélyezve vannak és elérhetők. 
+- Az összevont bejelentkezések esetében az összevonási kiszolgálónak támogatnia kell az engedélyezett és elérhető WS-Trust-végpontokat. 
 - Engedélyezte az átmenő hitelesítést. Ezért az ideiglenes jelszót módosítani kell a bejelentkezéskor.
 
 ---
@@ -320,7 +320,7 @@ Az UPN-módosítások a Windows 10 2004 Update szolgáltatással támogatottak. 
 - Az első hozzáférés kipróbálásakor a rendszer felszólítja a felhasználókat, hogy regisztrálják az eszközt a vállalati portál használatával.
 
 ---
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ az [Azure ad regisztrált eszközeiről](concept-azure-ad-register.md)
 - További információ az [Azure ad-hez csatlakoztatott eszközökről](concept-azure-ad-join.md)

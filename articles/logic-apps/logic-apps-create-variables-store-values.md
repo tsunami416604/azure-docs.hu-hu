@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: conceptual
 ms.date: 09/20/2019
 ms.openlocfilehash: b486b94a74d98f5630bd0bf40ebf0864c2ec5ab8
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91333902"
 ---
 # <a name="store-and-manage-values-by-using-variables-in-azure-logic-apps"></a>Értékek tárolása és felügyelete változók használatával az Azure Logic Appsben
@@ -67,12 +67,12 @@ Létrehozhat egy változót, és deklarálhatja az adattípusát és a kezdeti �
 
    | Tulajdonság | Kötelező | Érték |  Leírás |
    |----------|----------|-------|--------------|
-   | **Név** | Yes | <*változó – név*> | A növekményes változó neve |
-   | **Típus** | Yes | <*változó típusa*> | A változó adattípusa |
-   | **Érték** | No | <*kezdő érték*> | A változó kezdeti értéke <p><p>**Tipp**: bár nem kötelező, állítsa be ezt az értéket ajánlott eljárásként, hogy mindig tudja a változó indítási értékét. |
+   | **Név** | Igen | <*változó – név*> | A növekményes változó neve |
+   | **Típus** | Igen | <*változó típusa*> | A változó adattípusa |
+   | **Érték** | Nem | <*kezdő érték*> | A változó kezdeti értéke <p><p>**Tipp**: bár nem kötelező, állítsa be ezt az értéket ajánlott eljárásként, hogy mindig tudja a változó indítási értékét. |
    |||||
 
-   Például:
+   Példa:
 
    ![Változó inicializálása](./media/logic-apps-create-variables-store-values/initialize-variable.png)
 
@@ -207,11 +207,11 @@ Egy változó állandó értékkel *való növeléséhez vagy* növeléséhez ad
 
    | Tulajdonság | Kötelező | Érték |  Leírás |
    |----------|----------|-------|--------------|
-   | **Név** | Yes | <*változó – név*> | A növekményes változó neve |
-   | **Érték** | No | <*növekmény – érték*> | A változó növeléséhez használt érték. Az alapértelmezett érték egy. <p><p>**Tipp**: bár nem kötelező, állítsa be ezt az értéket ajánlott eljárásként, hogy mindig tudja a változó növelésének adott értékét. |
+   | **Név** | Igen | <*változó – név*> | A növekményes változó neve |
+   | **Érték** | Nem | <*növekmény – érték*> | A változó növeléséhez használt érték. Az alapértelmezett érték egy. <p><p>**Tipp**: bár nem kötelező, állítsa be ezt az értéket ajánlott eljárásként, hogy mindig tudja a változó növelésének adott értékét. |
    ||||
 
-   Például:
+   Példa:
 
    ![Növekmény értékének példája](./media/logic-apps-create-variables-store-values/increment-variable-action-information.png)
 
@@ -328,8 +328,8 @@ Itt láthatók a **változó csökkentése** művelet tulajdonságai:
 
 | Tulajdonság | Kötelező | Érték |  Leírás |
 |----------|----------|-------|--------------|
-| **Név** | Yes | <*változó – név*> | A csökkentő változó neve | 
-| **Érték** | No | <*növekmény – érték*> | A változó csökkentésének értéke. Az alapértelmezett érték egy. <p><p>**Tipp**: bár nem kötelező, állítsa be ezt az értéket ajánlott eljárásként, hogy mindig tisztában legyen a változó csökkentése érdekében megadott értékkel. |
+| **Név** | Igen | <*változó – név*> | A csökkentő változó neve | 
+| **Érték** | Nem | <*növekmény – érték*> | A változó csökkentésének értéke. Az alapértelmezett érték egy. <p><p>**Tipp**: bár nem kötelező, állítsa be ezt az értéket ajánlott eljárásként, hogy mindig tisztában legyen a változó csökkentése érdekében megadott értékkel. |
 ||||| 
 
 Ha a tervezőből a kód nézet szerkesztőjére vált, a **változó csökkentése** művelet a logikai alkalmazás definíciójában jelenik meg, amely JSON formátumú.
@@ -361,8 +361,8 @@ Az alábbi tulajdonságok a **set változóra** vonatkozó művelet tulajdonság
 
 | Tulajdonság | Kötelező | Érték |  Leírás |
 |----------|----------|-------|--------------|
-| **Név** | Yes | <*változó – név*> | A módosítandó változó neve |
-| **Érték** | Yes | <*új érték*> | Az érték, amelyet hozzá kíván rendelni a változóhoz. Mindkettőnek azonos adattípussal kell rendelkeznie. |
+| **Név** | Igen | <*változó – név*> | A módosítandó változó neve |
+| **Érték** | Igen | <*új érték*> | Az érték, amelyet hozzá kíván rendelni a változóhoz. Mindkettőnek azonos adattípussal kell rendelkeznie. |
 ||||| 
 
 > [!NOTE]
@@ -419,8 +419,8 @@ A Hozzáfűzés a következőhöz: **...** műveletekhez tartozó tulajdonságok
 
 | Tulajdonság | Kötelező | Érték |  Leírás |
 |----------|----------|-------|--------------|
-| **Név** | Yes | <*változó – név*> | A módosítandó változó neve |
-| **Érték** | Yes | <*Hozzáfűzés – érték*> | A hozzáfűzni kívánt érték, amely bármilyen típusú lehet |
+| **Név** | Igen | <*változó – név*> | A módosítandó változó neve |
+| **Érték** | Igen | <*Hozzáfűzés – érték*> | A hozzáfűzni kívánt érték, amely bármilyen típusú lehet |
 |||||
 
 Ha a tervezőből a kód nézet szerkesztőjére vált, a **Hozzáfűzés a tömbhöz változó** művelet a logikai alkalmazás definíciójában jelenik meg, amely JSON formátumú. Ez a példa egy tömb változót hoz létre, és egy másik értéket helyez el a tömb utolsó elemeként. Az eredmény egy olyan frissített változó, amely tartalmazza ezt a tömböt: `[1,2,3,"red"]`

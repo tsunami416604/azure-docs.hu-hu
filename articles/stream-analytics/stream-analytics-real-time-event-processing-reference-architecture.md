@@ -8,10 +8,10 @@ ms.service: stream-analytics
 ms.topic: conceptual
 ms.date: 01/24/2017
 ms.openlocfilehash: 23c7112639a64097d95df29bde16636702837f9e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83832979"
 ---
 # <a name="reference-architecture-real-time-event-processing-with-microsoft-azure-stream-analytics"></a>Hivatkozási architektúra: valós idejű események feldolgozása Microsoft Azure Stream Analytics
@@ -24,12 +24,12 @@ Microsoft Azure széles körű katalógust nyújt az elemzési technológiákró
 
 ## <a name="contents"></a>Tartalom
 * Végrehajtási összefoglaló
-* A valós idejű elemzés bemutatása
-* Valós idejű adatértékek kiosztása az Azure-ban
-* Gyakori forgatókönyvek a valós idejű elemzésekhez
+* A Real-Time Analytics bemutatása
+* Real-Time-adatmennyiségek kiosztása az Azure-ban
+* Gyakori forgatókönyvek Real-Time elemzésekhez
 * Architektúra és összetevők
   * Adatforrások
-  * Adatintegrációs réteg
+  * Data-Integration réteg
   * Valós idejű elemzési réteg
   * Adattárolási réteg
   * Megjelenítés/fogyasztás réteg

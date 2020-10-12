@@ -14,10 +14,10 @@ ms.workload: na
 ms.date: 08/11/2019
 ms.author: memildin
 ms.openlocfilehash: 7700e151a49dbfbad452927ba4a308651a0b584a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84782812"
 ---
 # <a name="cross-tenant-management-in-security-center"></a>Több-bérlős felügyelet a Security Center
@@ -28,7 +28,7 @@ A több-bérlős felügyelet lehetővé teszi, hogy az Azure-beli [delegált er�
 
 - A több Bérlővel rendelkező szervezetek biztonsági csoportjai egyetlen helyről tekinthetik meg és kezelhetik biztonsági állapotát.
 
-## <a name="set-up-cross-tenant-management"></a>A több-bérlős felügyelet beállítása
+## <a name="set-up-cross-tenant-management"></a>Bérlők közötti felügyelet beállítása
 
 A több-bérlős felügyelet beállítása a felügyelt bérlők erőforrásaihoz való hozzáférés delegálásával a saját bérlőhöz az [Azure delegált erőforrás-kezelés](../lighthouse/concepts/azure-delegated-resource-management.md)használatával.
 
@@ -43,7 +43,7 @@ A felső menüsorban kattintson a szűrő ikonra, és válassza ki az előfizet�
 
   ![Bérlők szűrése](./media/security-center-cross-tenant-management/cross-tenant-filter.png)
 
-A nézetek és a műveletek alapvetően azonosak. Az alábbiakban néhány példa következik:
+A nézetek és a műveletek alapvetően azonosak. Néhány példa:
 
 - **Biztonsági házirendek kezelése**: az egyik nézetből számos erőforrás biztonsági állapotát kezelheti a [szabályzatokkal](tutorial-security-policy.md), a biztonsági javaslatokkal kapcsolatos műveleteket, valamint a biztonsági adatok gyűjtését és kezelését.
 - A **biztonságos pontszám és a megfelelőségi helyzet javítása**: a bérlők közötti láthatósággal megtekintheti az összes bérlő teljes biztonsági állapotát, valamint azt, hogy miként és hogyan lehet legjobban javítani a [biztonságos pontszámot](secure-score-security-controls.md) és a [megfelelőségi testhelyzetet](security-center-compliance-dashboard.md) .

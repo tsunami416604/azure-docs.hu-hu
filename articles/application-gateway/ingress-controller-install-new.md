@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
 ms.openlocfilehash: cbebf430bf44ccdee51bf44b11b8b01f23544dcc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84807142"
 ---
 # <a name="how-to-install-an-application-gateway-ingress-controller-agic-using-a-new-application-gateway"></a>Application Gateway beáramlási vezérlő (AGIC) telepítése új Application Gateway használatával
@@ -22,7 +22,7 @@ Az alábbi utasítások azt feltételezik, hogy Application Gateway beáramló v
 
 Az alábbi parancssori műveletekhez [Azure Cloud Shell](https://shell.azure.com/) használatát javasoljuk. Indítsa el a rendszerhéjt a shell.azure.com, vagy kattintson a hivatkozásra:
 
-[![Beágyazás elindítása](https://shell.azure.com/images/launchcloudshell.png "Az Azure Cloud Shell indítása")](https://shell.azure.com)
+[![Beágyazás elindítása](https://shell.azure.com/images/launchcloudshell.png "Az Azure Cloud Shell elindítása")](https://shell.azure.com)
 
 Másik lehetőségként indítsa el Cloud Shell a Azure Portal a következő ikon használatával:
 
@@ -30,10 +30,10 @@ Másik lehetőségként indítsa el Cloud Shell a Azure Portal a következő iko
 
 A [Azure Cloud Shell](https://shell.azure.com/) már rendelkezik az összes szükséges eszközzel. Ha másik környezetet szeretne használni, győződjön meg arról, hogy telepítve vannak a következő parancssori eszközök:
 
-* `az`– Azure CLI: [telepítési utasítások](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
-* `kubectl`-Kubernetes parancssori eszköz: [telepítési utasítások](https://kubernetes.io/docs/tasks/tools/install-kubectl)
-* `helm`-Kubernetes csomagkezelő: [telepítési utasítások](https://github.com/helm/helm/releases/latest)
-* `jq`-parancssori JSON-processzor: [telepítési utasítások](https://stedolan.github.io/jq/download/)
+* `az` – Azure CLI: [telepítési utasítások](https://docs.microsoft.com/cli/azure/install-azure-cli?view=azure-cli-latest)
+* `kubectl` -Kubernetes parancssori eszköz: [telepítési utasítások](https://kubernetes.io/docs/tasks/tools/install-kubectl)
+* `helm` -Kubernetes csomagkezelő: [telepítési utasítások](https://github.com/helm/helm/releases/latest)
+* `jq` -parancssori JSON-processzor: [telepítési utasítások](https://stedolan.github.io/jq/download/)
 
 
 ## <a name="create-an-identity"></a>Identitás létrehozása
@@ -124,7 +124,7 @@ az aks get-credentials --resource-group $resourceGroupName --name $aksClusterNam
   Azure Active Directory Pod Identity jogkivonat-alapú hozzáférést biztosít [Azure Resource Manager (ARM)](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)számára.
 
   A [HRE Pod Identity](https://github.com/Azure/aad-pod-identity) a következő összetevőket fogja hozzáadni a Kubernetes-fürthöz:
-   * Kubernetes [CRDs](https://kubernetes.io/docs/tasks/access-kubernetes-api/custom-resources/custom-resource-definitions/): `AzureIdentity` , `AzureAssignedIdentity` ,`AzureIdentityBinding`
+   * Kubernetes [CRDs](https://kubernetes.io/docs/tasks/access-kubernetes-api/custom-resources/custom-resource-definitions/): `AzureIdentity` , `AzureAssignedIdentity` , `AzureIdentityBinding`
    * [Felügyelt identitás-vezérlő (MIC)](https://github.com/Azure/aad-pod-identity#managed-identity-controllermic) összetevő
    * [Csomópont által felügyelt identitás (NMI)](https://github.com/Azure/aad-pod-identity#node-managed-identitynmi) összetevő
 
@@ -256,7 +256,7 @@ A [Helm](https://docs.microsoft.com/azure/aks/kubernetes-helm) a Kubernetes csom
      - `appgw.name`: A Application Gateway neve. Például: `applicationgatewayd0f0`
      - `appgw.shared`: Ezt a logikai jelzőt alapértelmezett értékre kell állítani `false` . A beállítás értékeként `true` [megosztott Application Gatewayra](https://github.com/Azure/application-gateway-kubernetes-ingress/blob/072626cb4e37f7b7a1b0c4578c38d1eadc3e8701/docs/setup/install-existing.md#multi-cluster--shared-app-gateway)van szükség.
      - `kubernetes.watchNamespace`: Adja meg a név területet, amely AGIC kell néznie. Ez lehet egy karakterlánc-érték vagy a névterek vesszővel tagolt listája.
-    - `armAuth.type`: lehet `aadPodIdentity` vagy`servicePrincipal`
+    - `armAuth.type`: lehet `aadPodIdentity` vagy `servicePrincipal`
     - `armAuth.identityResourceID`: Az Azure által felügyelt identitás erőforrás-azonosítója
     - `armAuth.identityClientId`: Az identitás ügyfél-azonosítója. Az identitással kapcsolatos további információkért lásd alább.
     - `armAuth.secretJSON`: Csak akkor szükséges, ha a szolgáltatás egyszerű titkos típusát választotta (ha `armAuth.type` be van állítva `servicePrincipal` ) 
@@ -267,7 +267,7 @@ A [Helm](https://docs.microsoft.com/azure/aks/kubernetes-helm) a Kubernetes csom
    > ```azurecli
    > az identity show -g <resource-group> -n <identity-name>
    > ```
-   > `<resource-group>`a fenti parancs a Application Gateway erőforráscsoport. `<identity-name>`a létrehozott identitás neve. Egy adott előfizetéshez tartozó összes identitás a következő használatával listázható:`az identity list`
+   > `<resource-group>` a fenti parancs a Application Gateway erőforráscsoport. `<identity-name>` a létrehozott identitás neve. Egy adott előfizetéshez tartozó összes identitás a következő használatával listázható: `az identity list`
 
 
 1. Telepítse a Application Gateway beáramló vezérlő csomagot:

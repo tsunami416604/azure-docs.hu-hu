@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/01/2020
 ms.author: aahi
 ms.openlocfilehash: 52df2ad0dc4c60c24e341a9765e31bcf9776bf5e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91277291"
 ---
 # <a name="install-and-run-the-spatial-analysis-container-preview"></a>A térbeli elemzési tároló telepítése és futtatása (előzetes verzió)
@@ -65,7 +65,7 @@ Ebben a cikkben a következő szoftvercsomagok letöltésére és telepítésér
 
 | Követelmény | Leírás |
 |--|--|
-| Kamera | A térbeli elemzési tároló nem kötődik egy adott kamera-márkához. A kamera eszközének a következőnek kell lennie: a valós idejű Streaming Protocol (RTSP) és a H. 264 kódolás támogatása, a gazdaszámítógép számára elérhetőnek kell lennie, és képesnek kell lennie a folyamatos átvitelre a 15FPS és az 1080p felbontásban. |
+| Kamera | A térbeli elemzési tároló nem kötődik egy adott kamera-márkához. A kamera eszközének a következőnek kell lennie: a Real-Time Streaming Protocol (RTSP) és a H. 264 kódolás támogatása, a gazdaszámítógép számára elérhetőnek kell lennie, és képesnek kell lennie a folyamatos átvitelre a 15FPS és az 1080p felbontásban |
 | Linux operációs rendszer | Az [Ubuntu Desktop 18,04 LTS](http://releases.ubuntu.com/18.04/) -et telepíteni kell a gazdagépre.  |
 
 
@@ -419,7 +419,7 @@ A térbeli elemzési tároló számlázási adatokat küld az Azure-nak az Azure
 Az Azure Cognitive Services-tárolók nem rendelkeznek licenccel a mérési/számlázási végponthoz való csatlakozás nélkül. Engedélyeznie kell a tárolókat, hogy mindig a számlázási végponttal kommunikáljanak a számlázási adatokkal. Cognitive Services tárolók nem küldenek ügyféladatokat, például az elemzett videót vagy képet a Microsoftnak.
 
 
-## <a name="summary"></a>Összefoglalás
+## <a name="summary"></a>Összegzés
 
 Ebben a cikkben megtanulta a térbeli elemzési tároló letöltésére, telepítésére és futtatására vonatkozó fogalmakat és munkafolyamatokat. Összegezve:
 

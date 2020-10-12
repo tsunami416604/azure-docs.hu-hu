@@ -1,13 +1,13 @@
 ---
-title: Azure VMware-megoldás üzembe helyezése
+title: Az Azure VMware Solution üzembe helyezése
 description: Az Azure VMware-megoldás a Azure Portal használatával történő üzembe helyezésének lépései.
 ms.topic: include
 ms.date: 09/28/2020
 ms.openlocfilehash: 4d0881721cd8c13d1b6c9fb3a29e4cdb6d6a753f
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91578315"
 ---
 <!-- Used in deploy-azure-vmware-solution.md and tutorial-create-private-cloud.md -->

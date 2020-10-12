@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 05/26/2020
 ms.author: jingwang
 ms.openlocfilehash: 3c65ed7e5fa6bb1652791eee75d4caa4c9c5f1ca
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83873637"
 ---
 # <a name="copy-data-from-db2-by-using-azure-data-factory"></a>Adatok másolása a DB2-ből Azure Data Factory használatával
@@ -69,26 +69,26 @@ A DB2 társított szolgáltatás a következő tulajdonságokat támogatja:
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | A Type tulajdonságot a következőre kell beállítani: **DB2** | Yes |
-| connectionString | Itt adhatja meg a DB2-példányhoz való kapcsolódáshoz szükséges adatokat.<br/> A jelszót a Azure Key Vaultban is elhelyezheti, és lekérheti a `password` konfigurációt a kapcsolatok sztringből. További részletekért tekintse meg a következő mintákat, és [tárolja a hitelesítő adatokat Azure Key Vault](store-credentials-in-key-vault.md) cikkben. | Yes |
-| Connectvia tulajdonsággal | Az adattárhoz való kapcsolódáshoz használt [Integration Runtime](concepts-integration-runtime.md) . További tudnivalók az [Előfeltételek](#prerequisites) szakaszban olvashatók. Ha nincs megadva, az alapértelmezett Azure Integration Runtime használja. |No |
+| típus | A Type tulajdonságot a következőre kell beállítani: **DB2** | Igen |
+| connectionString | Itt adhatja meg a DB2-példányhoz való kapcsolódáshoz szükséges adatokat.<br/> A jelszót a Azure Key Vaultban is elhelyezheti, és lekérheti a `password` konfigurációt a kapcsolatok sztringből. További részletekért tekintse meg a következő mintákat, és [tárolja a hitelesítő adatokat Azure Key Vault](store-credentials-in-key-vault.md) cikkben. | Igen |
+| Connectvia tulajdonsággal | Az adattárhoz való kapcsolódáshoz használt [Integration Runtime](concepts-integration-runtime.md) . További tudnivalók az [Előfeltételek](#prerequisites) szakaszban olvashatók. Ha nincs megadva, az alapértelmezett Azure Integration Runtime használja. |Nem |
 
 A kapcsolatok karakterláncán belüli jellemző tulajdonságok:
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| kiszolgáló |A DB2-kiszolgáló neve. Megadhatja azt a portszámot, amelyet a kiszolgáló neve a kettősponttal elválasztva, például: `server:port` .<br>A DB2-összekötő használja az DDM/DRDA protokollt, és alapértelmezés szerint a 50000-as portot használja, ha nincs megadva. Előfordulhat, hogy az adott DB2-adatbázis által használt port eltér a verziótól és a beállításaitól, például az alapértelmezett port 50000, az alapértelmezett port a, az alapértelmezett AS400 446 vagy 448, ha a TLS engedélyezve van. A port konfigurálásának módjáról a következő DB2-dokumentumokat tekintse meg: [DB2 z/os](https://www.ibm.com/support/knowledgecenter/SSEPGG_11.5.0/com.ibm.db2.luw.qb.dbconn.doc/doc/t0008229.html), [DB2 ISERIES](https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_74/ddp/rbal1ports.htm)és [DB2 LUW](https://www.ibm.com/support/knowledgecenter/en/SSEKCU_1.1.3.0/com.ibm.psc.doc/install/psc_t_install_typical_db2_port.html). |Yes |
-| adatbázis |A DB2-adatbázis neve. |Yes |
-| authenticationType |A DB2-adatbázishoz való kapcsolódáshoz használt hitelesítés típusa.<br/>Az engedélyezett érték: **alapszintű**. |Yes |
-| felhasználónév |Adja meg a DB2-adatbázishoz való kapcsolódáshoz használandó felhasználónevet. |Yes |
-| jelszó |Adja meg a felhasználónévhez megadott felhasználói fiókhoz tartozó jelszót. Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). |Yes |
-| packageCollection | Itt adhatja meg, hogy a rendszer hol hozza létre az ADF által az adatbázis lekérdezése során automatikusan létrehozott szükséges csomagokat. Ha nincs beállítva, Data Factory a {username} értéket használja alapértelmezett értékként. | No |
-| certificateCommonName | Ha SSL (SSL) vagy Transport Layer Security (TLS) titkosítást használ, meg kell adnia egy értéket a tanúsítvány köznapi neveként. | No |
+| kiszolgáló |A DB2-kiszolgáló neve. Megadhatja azt a portszámot, amelyet a kiszolgáló neve a kettősponttal elválasztva, például: `server:port` .<br>A DB2-összekötő használja az DDM/DRDA protokollt, és alapértelmezés szerint a 50000-as portot használja, ha nincs megadva. Előfordulhat, hogy az adott DB2-adatbázis által használt port eltér a verziótól és a beállításaitól, például az alapértelmezett port 50000, az alapértelmezett port a, az alapértelmezett AS400 446 vagy 448, ha a TLS engedélyezve van. A port konfigurálásának módjáról a következő DB2-dokumentumokat tekintse meg: [DB2 z/os](https://www.ibm.com/support/knowledgecenter/SSEPGG_11.5.0/com.ibm.db2.luw.qb.dbconn.doc/doc/t0008229.html), [DB2 ISERIES](https://www.ibm.com/support/knowledgecenter/ssw_ibm_i_74/ddp/rbal1ports.htm)és [DB2 LUW](https://www.ibm.com/support/knowledgecenter/en/SSEKCU_1.1.3.0/com.ibm.psc.doc/install/psc_t_install_typical_db2_port.html). |Igen |
+| adatbázis |A DB2-adatbázis neve. |Igen |
+| authenticationType |A DB2-adatbázishoz való kapcsolódáshoz használt hitelesítés típusa.<br/>Az engedélyezett érték: **alapszintű**. |Igen |
+| username |Adja meg a DB2-adatbázishoz való kapcsolódáshoz használandó felhasználónevet. |Igen |
+| jelszó |Adja meg a felhasználónévhez megadott felhasználói fiókhoz tartozó jelszót. Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). |Igen |
+| packageCollection | Itt adhatja meg, hogy a rendszer hol hozza létre az ADF által az adatbázis lekérdezése során automatikusan létrehozott szükséges csomagokat. Ha nincs beállítva, Data Factory a {username} értéket használja alapértelmezett értékként. | Nem |
+| certificateCommonName | Ha SSL (SSL) vagy Transport Layer Security (TLS) titkosítást használ, meg kell adnia egy értéket a tanúsítvány köznapi neveként. | Nem |
 
 > [!TIP]
 > Ha az állapotot jelző hibaüzenetet kap, akkor a rendszer `The package corresponding to an SQL statement execution request was not found. SQLSTATE=51002 SQLCODE=-805` nem hoz létre egy szükséges csomagot a felhasználó számára. Alapértelmezés szerint az ADF megpróbál létrehozni egy csomagot a nevű gyűjteményben, amely a DB2-hez való kapcsolódáshoz használt felhasználó. Adja meg a Package Collection tulajdonságot, amely azt jelzi, hogy hol szeretné létrehozni az ADF-t a szükséges csomagok létrehozásához az adatbázis lekérdezése során.
 
-**Példa:**
+**Példa**
 
 ```json
 {
@@ -166,8 +166,8 @@ Az adatok DB2-ből való másolásához a következő tulajdonságok támogatott
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **Db2Table** | Yes |
-| séma | A séma neve. |Nem (ha a "lekérdezés" van megadva a tevékenység forrásában)  |
+| típus | Az adatkészlet Type tulajdonságát a következőre kell beállítani: **Db2Table** | Igen |
+| schema | A séma neve. |Nem (ha a "lekérdezés" van megadva a tevékenység forrásában)  |
 | tábla | A tábla neve. |Nem (ha a "lekérdezés" van megadva a tevékenység forrásában)  |
 | tableName | A sémával rendelkező tábla neve. Ez a tulajdonság visszamenőleges kompatibilitás esetén támogatott. `schema`A és `table` az új számítási feladatok használata. | Nem (ha a "lekérdezés" van megadva a tevékenység forrásában) |
 
@@ -201,10 +201,10 @@ Az adatok DB2-ből történő másolásához a másolási tevékenység **forrá
 
 | Tulajdonság | Leírás | Kötelező |
 |:--- |:--- |:--- |
-| típus | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **Db2Source** | Yes |
-| lekérdezés | Az egyéni SQL-lekérdezés használatával olvassa be az adatolvasást. Példa: `"query": "SELECT * FROM \"DB2ADMIN\".\"Customers\""`. | Nem (ha meg van adva a "táblanév" az adatkészletben) |
+| típus | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **Db2Source** | Igen |
+| lekérdezés | Az egyéni SQL-lekérdezés használatával olvassa be az adatolvasást. Például: `"query": "SELECT * FROM \"DB2ADMIN\".\"Customers\""`. | Nem (ha meg van adva a "táblanév" az adatkészletben) |
 
-**Példa:**
+**Példa**
 
 ```json
 "activities":[
@@ -252,20 +252,20 @@ Az adatok DB2-ből való másolása során a rendszer a következő leképezése
 | Dátum |Datetime |
 | DB2DynArray |Sztring |
 | DbClob |Sztring |
-| Decimal |Decimal |
-| DecimalFloat |Decimal |
-| Double |Double |
-| Float |Double |
+| Tizedesjegy |Tizedesjegy |
+| DecimalFloat |Tizedesjegy |
+| Dupla |Dupla |
+| Lebegőpontos értékek |Dupla |
 | Grafikus |Sztring |
 | Egész szám |Int32 |
 | LongVarBinary |Bájt [] |
 | LongVarChar |Sztring |
 | LongVarGraphic |Sztring |
-| Numerikus |Decimal |
-| Valós |Egyszeres |
+| Numerikus |Tizedesjegy |
+| Valós |Egyirányú |
 | SmallInt |Int16 |
 | Idő |időtartam |
-| Időbélyeg |DateTime |
+| Timestamp |DateTime |
 | VarBinary |Bájt [] |
 | VarChar |Sztring |
 | VarGraphic |Sztring |

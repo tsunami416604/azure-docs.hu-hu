@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 03/18/2019
 ms.author: juliako
 ms.openlocfilehash: 57a91622bef401d946a383e3be39f2e566fa50b4
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89267836"
 ---
 # <a name="input-metadata"></a>Bemeneti metaadatok
@@ -72,7 +72,7 @@ Tekintse meg a cikk végén található XML-példát: [XML-példa](media-service
 | **Programok**<br /><br /> minOccurs = "0" | |Minden [program elem](media-services-input-metadata-schema.md#Programs) gyűjteménye, amikor az adategység fájlja MPEG-TS formátumú. |
 | **VideoTracks**<br /><br /> minOccurs = "0" | |Az egyes fizikai adatfájlok tartalmazhatnak nulla vagy több, a megfelelő tároló formátumba felhasználható videókat. Ez az elem az adatfájl részét képező összes [VideoTracks](media-services-input-metadata-schema.md#VideoTracks) gyűjteményét tartalmazza. |
 | **AudioTracks**<br /><br /> minOccurs = "0" | |Az egyes fizikai adatfájlok tartalmazhatnak nulla vagy több, a megfelelő tároló formátumba felhasználható hangsávot. Ez az elem az adatfájl részét képező összes [AudioTracks](media-services-input-metadata-schema.md#AudioTracks) gyűjteményét tartalmazza. |
-| **Metaadatok**<br /><br /> minOccurs = "0" maxOccurs = "nem kötött" |[MetadataType](media-services-input-metadata-schema.md#MetadataType) |Az adatfájl metaadatai key\value karakterláncként jelennek meg. Például:<br /><br /> **&lt;Metadata kulcs = "nyelv" érték = "ENG"/&gt;** |
+| **Metaadatok**<br /><br /> minOccurs = "0" maxOccurs = "nem kötött" |[MetadataType](media-services-input-metadata-schema.md#MetadataType) |Az adatfájl metaadatai key\value karakterláncként jelennek meg. Példa:<br /><br /> **&lt;Metadata kulcs = "nyelv" érték = "ENG"/&gt;** |
 
 ## <a name="tracktype"></a><a name="TrackType"></a> TrackType
 Tekintse meg a cikk végén található XML-példát: [XML-példa](media-services-input-metadata-schema.md#xml).  
@@ -130,7 +130,7 @@ Tekintse meg a cikk végén található XML-példát: [XML-példa](media-service
 | **Profil** |**xs: karakterlánc** |A Video Track profilja. |
 | **Szintű** |**xs: karakterlánc** |A videó követési szintje. |
 | **PixelFormat** |**xs: karakterlánc** |A Video Track képpontjának formátuma |
-| **Szélesség**<br /><br /> Kötelező |**xs: int** |Kódolt videó szélessége képpontban megadva |
+| **Szélessége**<br /><br /> Kötelező |**xs: int** |Kódolt videó szélessége képpontban megadva |
 | **Magasság**<br /><br /> Kötelező |**xs: int** |Kódolt videó magassága képpontban megadva. |
 | **DisplayAspectRatioNumerator**<br /><br /> Kötelező |**xs: dupla** |Videó megjelenítési oldalarányának számlálója |
 | **DisplayAspectRatioDenominator**<br /><br /> Kötelező |**xs: dupla** |Videó megjelenítési méretarányának nevezője |
@@ -151,7 +151,7 @@ Tekintse meg a cikk végén található XML-példát: [XML-példa](media-service
 | Név | Típus | Leírás |
 | --- | --- | --- |
 | **kulcs**<br /><br /> Kötelező |**xs: karakterlánc** |A kulcs/érték párokban található kulcs. |
-| **érték**<br /><br /> Kötelező |**xs: karakterlánc** |A kulcs/érték párokban szereplő érték. |
+| **value**<br /><br /> Kötelező |**xs: karakterlánc** |A kulcs/érték párokban szereplő érték. |
 
 ## <a name="programtype"></a><a name="ProgramType"></a> ProgramType
 A **ProgramType** egy globális összetett típus, amely egy programot ír le.  
@@ -647,7 +647,7 @@ A következő példa a bemeneti metaadat-fájlt szemlélteti.
 </AssetFiles>  
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>Visszajelzés küldése

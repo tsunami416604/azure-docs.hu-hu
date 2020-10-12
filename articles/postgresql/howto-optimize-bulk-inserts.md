@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 5/6/2019
 ms.openlocfilehash: 4d10f06577738364e3f4a0ea40221d37ebfb31c0
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86116284"
 ---
 # <a name="optimize-bulk-inserts-and-use-transient-data-on-an-azure-database-for-postgresql---single-server"></a>Tömeges beszúrások optimalizálása és átmeneti adatmennyiség használata egy Azure Database for PostgreSQL – egyetlen kiszolgálón 
@@ -19,7 +19,7 @@ Ez a cikk azt ismerteti, hogyan optimalizálható a tömeges beszúrási művele
 ## <a name="use-unlogged-tables"></a>Nem naplózott táblák használata
 Ha olyan munkaterhelési műveletekkel rendelkezik, amelyek átmeneti adatokat tartalmaznak, vagy nagyméretű adatkészleteket szúrnak be ömlesztve, érdemes lehet a nem naplózott táblákat használni.
 
-A nem naplózott táblák egy PostgreSQL-szolgáltatás, amely hatékonyan használható a tömeges beszúrások optimalizálására. A PostgreSQL írási idejű naplózást (WAL) használ. A szolgáltatás alapértelmezés szerint az atomi és a tartósságot biztosítja. A sav tulajdonságait az atomenergia, a konzisztencia, az elkülönítés és a tartósság teszi elérhetővé. 
+A nem naplózott táblák egy PostgreSQL-szolgáltatás, amely hatékonyan használható a tömeges beszúrások optimalizálására. A PostgreSQL Write-Ahead naplózást (WAL) használ. A szolgáltatás alapértelmezés szerint az atomi és a tartósságot biztosítja. A sav tulajdonságait az atomenergia, a konzisztencia, az elkülönítés és a tartósság teszi elérhetővé. 
 
 A nem naplózott táblázatba való Beszúrás azt jelenti, hogy a PostgreSQL a tranzakciónaplóba való írás nélkül beszúrja a naplóba, ami maga az I/O művelet. Ennek eredményeképpen ezek a táblázatok lényegesen gyorsabbak, mint a hagyományos táblák.
 
@@ -34,7 +34,7 @@ A nem naplózott táblák nem rendelkeznek összeomlás-biztonsággal. Egy nem n
 
 Egyes ügyfelek munkaterhelései körülbelül 15%-os teljesítménybeli javulást tapasztaltak, ha nem naplózott táblákat használtak.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Tekintse át az átmeneti adatok és a nagyméretű tömeges beszúrások felhasználásának munkaterhelését. Tekintse meg a következő PostgreSQL-dokumentációt:
  
 - [Táblázatos SQL-parancsok létrehozása](https://www.postgresql.org/docs/current/static/sql-createtable.html)

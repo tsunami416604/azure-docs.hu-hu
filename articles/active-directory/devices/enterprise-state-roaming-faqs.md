@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: na
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d9510bd564ced2f458a9a78ff23200bb32358c3e
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89268536"
 ---
 # <a name="settings-and-data-roaming-faq"></a>Beállítások és adatroaming GYIK
@@ -29,7 +29,7 @@ Ez a cikk bizonyos kérdésekre ad választ, amelyekkel a rendszergazdák a beá
 * *Téma*, amely magában foglalja az asztali témát és a tálca beállításait is.
 * *Az Internet Explorer beállításai* az utoljára megnyitott lapokkal és kedvencekkel együtt.
 * A *Microsoft Edge böngésző beállításai*, például a kedvencek és az olvasások listája.
-* *Jelszavak*, beleértve az internetes jelszavakat, a Wi-Fi profilokat és egyebeket.
+* *Jelszavak*, például internetes jelszavak, Wi-Fi profilok és egyebek.
 * *Nyelvi beállítások*, beleértve egyebek között a billentyűzetkiosztások beállításait, a rendszer nyelvét, és a dátum és idő beállításait.
 * *Könnyű kezelés funkciók*, például kontrasztos témák, Narrátor és Nagyító.
 * *Egyéb Windows-beállítások*, például az egér beállításai.
@@ -66,7 +66,7 @@ Ha a helyszíni Active Directory tartomány csatlakozik az Azure AD-hez, az eszk
 Ha a vállalati eszközön bármilyen személyes adatait tárolta, vegye figyelembe, hogy a Windows operációs rendszer és az alkalmazásadatok megkezdik az Azure AD-vel való szinkronizálást. Ez az alábbi következményekkel jár:
 
 * A személyes Microsoft-fiók beállításai a munkahelyi vagy iskolai Azure AD-fiókok beállításaitól függetlenül lesznek elsodródva. Ennek az az oka, hogy a Microsoft-fiók és az Azure AD-beállítások szinkronizálása mostantól külön fiókokat használ.
-* Az Azure AD-n keresztül szinkronizáljuk a személyes adatokat, például a Wi-Fi-jelszavakat, a webes hitelesítő adatokat és az Internet Explorer azon kedvenceit, amelyek korábban szinkronizálva lettek egy csatlakoztatott Microsoft-fiók használatával.
+* Az Azure AD-n keresztül szinkronizáljuk a személyes adatokat, például a Wi-Fi jelszavakat, a webes hitelesítő adatokat és az Internet Explorer azon kedvenceit, amelyek korábban szinkronizálva lettek egy csatlakoztatott Microsoft-fiók használatával.
 
 ## <a name="how-do-microsoft-account-and-azure-ad-enterprise-state-roaming-interoperability-work"></a>Hogyan működik a Microsoft-fiók és az Azure AD Enterprise State Roaming együttműködési képesség?
 
@@ -77,7 +77,7 @@ A Windows 10 november 2015-es vagy újabb kiadásaiban Enterprise State Roaming 
 Ha a különböző Azure AD-bérlők több Azure AD-fiókja ugyanazon az eszközön található, frissítenie kell az eszköz beállításjegyzékét az Azure Rights Management szolgáltatással való kommunikációra minden egyes Azure AD-bérlő esetében.  
 
 1. Keresse meg az egyes Azure AD-bérlők GUID azonosítóját. Nyissa meg a Azure Portal, és válasszon ki egy Azure AD-bérlőt. A bérlő GUID-azonosítója a kiválasztott bérlő tulajdonságlapján található (a https://portal.azure.com/#blade/Microsoft_AAD_IAM/ActiveDirectoryMenuBlade/Properties) címkével ellátott **CÍMTÁR-azonosítóval**. 
-2. A GUID azonosító megadása után hozzá kell adnia a **HKEY_LOCAL_MACHINE \software\microsoft\windows\settingsync\winmsipc \<tenant ID GUID> **beállításkulcsot.
+2. A GUID azonosító megadása után hozzá kell adnia a **HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\SettingSync\WinMSIPC\<tenant ID GUID> **beállításkulcsot.
    A **bérlői azonosító GUID** kulcsában hozzon létre egy új, **AllowedRMSServerUrls**nevű Multi-String értéket (reg-multi-sz). Az adatmennyiség beállításnál határozza meg az eszköz által használt többi Azure-bérlő licencelési terjesztési pontjának URL-címeit.
 3. A licencelési terjesztési pontok URL-címei a **Get-AadrmConfiguration** parancsmagnak a AADRM modulból való futtatásával találhatók meg. Ha a **LicensingIntranetDistributionPointUrl** és a **LicensingExtranetDistributionPointUrl** értéke eltérő, akkor mindkét értéket meg kell adni. Ha az értékek megegyeznek, csak egyszer kell megadnia az értéket.
 
@@ -135,6 +135,6 @@ Ha a szervezet már használ barangolást a Windows 10-es verzióban az Azure Ri
 
 Az ismert problémák listájáért tekintse meg a [hibaelhárítási](enterprise-state-roaming-troubleshooting.md) szakaszban található dokumentációt. 
 
-## <a name="next-steps"></a>További lépések 
+## <a name="next-steps"></a>Következő lépések 
 
 Áttekintést a [vállalati állapot barangolásának áttekintése](enterprise-state-roaming-overview.md) című témakörben talál.

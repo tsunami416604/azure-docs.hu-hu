@@ -4,10 +4,10 @@ description: Lemezek kizárása a replikációból az Azure-ba Azure Site Recove
 ms.topic: conceptual
 ms.date: 12/17/2019
 ms.openlocfilehash: 15989fbfd65f758eb777c5170c217aba8707e0be
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91333664"
 ---
 # <a name="exclude-disks-from-disaster-recovery"></a>Lemezek kizárása a vész-helyreállításból
@@ -201,7 +201,7 @@ Ezek a lemezek a forrás virtuális gépen vannak.
 **Lemez neve** | **Vendég operációsrendszer-lemez** | **Meghajtó betűjele** | **Lemez adattípusa**
 --- | --- | --- | ---
 DB-Disk0-OS | Disk0 | C:\ | Operációsrendszer-lemez
-DB-Disk1 (kizárás a replikációból) | Disk1 | D:\ | pagefile.sys
+DB-Disk1 (kizárás a replikálásból) | Disk1 | D:\ | pagefile.sys
 DB-Disk2 | Disk2 | E:\ | Felhasználói adatok, 1
 DB-Disk3 | Disk3 | F:\ | Felhasználói adatok, 2
 
@@ -210,7 +210,7 @@ A forrás virtuális gép lapozófájl-beállításai a következők:
 ![Képernyőfelvétel a virtuális memória párbeszédpanelről a D: meghajtó [lapozófájl mennyisége] sorban, amely a lapozófájl mérete (MB) 3000-7000.](./media/exclude-disks-replication/pagefile-d-drive-source-vm.png)
 
 1. Engedélyezzük a virtuális gép replikálását.
-2. A replikációból kizárjuk az adatbázis-Disk1.
+2. DB-Disk1 kizárása a replikációból.
 
 #### <a name="disks-after-failover"></a>Lemezek feladatátvétel után
 
@@ -236,7 +236,7 @@ Ezek a lemezek a forrás virtuális gépen vannak.
 **Lemez neve** | **Vendég operációsrendszer-lemez** | **Meghajtó betűjele** | **Lemez adattípusa**
 --- | --- | --- | ---
 DB-Disk0-OS | Disk0 | C:\ | Operációsrendszer-lemez
-DB-Disk1 (kizárás a replikációból) | Disk1 | G:\ | pagefile.sys
+DB-Disk1 (kizárás a replikálásból) | Disk1 | G:\ | pagefile.sys
 DB-Disk2 | Disk2 | E:\ | Felhasználói adatok, 1
 DB-Disk3 | Disk3 | F:\ | Felhasználói adatok, 2
 
@@ -245,7 +245,7 @@ A helyszíni virtuális gépen a lapozófájl beállításai a következők:
 ![Lapozófájl-beállítások a helyszíni virtuális gépen](./media/exclude-disks-replication/pagefile-g-drive-source-vm.png)
 
 1. Engedélyezzük a virtuális gép replikálását.
-2. A replikációból kizárjuk az adatbázis-Disk1.
+2. DB-Disk1 kizárása a replikációból.
 
 #### <a name="disks-after-failover"></a>Lemezek feladatátvétel után
 

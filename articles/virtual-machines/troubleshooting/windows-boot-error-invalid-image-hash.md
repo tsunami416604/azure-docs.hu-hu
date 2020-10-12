@@ -16,10 +16,10 @@ ms.topic: troubleshooting
 ms.date: 09/03/2020
 ms.author: v-miegge
 ms.openlocfilehash: f607ebb64b27c45ec696d7fcd431a0ba2342697f
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89447809"
 ---
 # <a name="windows-boot-manager-error---0xc0000428-status-invalid-image-hash"></a>Windows rendszerindítási kezelő – hiba – a 0xC0000428 állapota érvénytelen képkivonat
@@ -58,7 +58,7 @@ Az előzetes verziójú lemezképek egy kijelölt életciklussal rendelkeznek, �
 
 `a699494373c04fc0bc8f2bb1389d6106__Windows-Server-Technical-Preview-201505.01-en.us-127GB.vhd`
 
-Nem lehet kiterjeszteni egy előnézeti kép lejárati dátumát. Ha az előzetes verzió lejárt, a virtuális gép már nem fog tudni elindulni.
+Az előzetes verziójú rendszerkép lejárati dátumát nem tudja meghosszabbítani. Az előzetes verzió lejárta után a virtuális gép többé nem indítható el.
 
 - A terméktől függően előfordulhat, hogy a próbaidőszak változhat. Például a Windows előnézeti lemezképek 180 napos próbaidőszakot biztosítanak.
 

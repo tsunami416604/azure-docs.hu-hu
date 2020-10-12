@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 09/29/2020
 ms.author: yelevin
 ms.openlocfilehash: 011ddb883c028a954a8b0683c220bf6341eddb66
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91578146"
 ---
 # <a name="manage-multiple-tenants-in-azure-sentinel-as-an-mssp"></a>Több bérlő kezelése az Azure Sentinelben MSSP
@@ -50,7 +50,7 @@ Ha Ön felügyelt biztonsági szolgáltató (MSSP), és az [Azure Lighthouse](..
 > [!NOTE]
 > A felügyelt munkaterületen belülről nem telepíthet összekötőket az Azure Sentinelben. Összekötő üzembe helyezéséhez közvetlenül be kell jelentkeznie arra a bérlőre, amelyen az összekötőt telepíteni kívánja, majd a szükséges engedélyekkel hitelesítenie kell magát.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből a dokumentumból megtudhatta, hogyan kezelheti zökkenőmentesen több Azure Sentinel-bérlőt. Az Azure Sentinel szolgáltatással kapcsolatos további tudnivalókért tekintse meg a következő cikkeket:
 - Ismerje meg, hogyan tekintheti meg [az adatait, és hogyan érheti el a potenciális fenyegetéseket](quickstart-get-visibility.md).

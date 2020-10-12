@@ -9,10 +9,10 @@ ms.custom:
 - references_regions
 - fasttrack-edit
 ms.openlocfilehash: a037c903a72ba79b79c7e6b011fe025aefd7b51d
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91578036"
 ---
 # <a name="azure-functions-premium-plan"></a>Prémium csomag Azure Functions
@@ -34,7 +34,7 @@ Ebben a példában cserélje le az `<RESOURCE_GROUP>` erőforráscsoportot és a
 
 A terv létrehozásakor az [az functionapp Create](/cli/azure/functionapp#az-functionapp-create) paranccsal hozhatja létre a Function alkalmazást. A portálon a csomag és az alkalmazás is egyszerre jön létre. A teljes Azure CLI-szkriptre vonatkozó példát a [Function app létrehozása prémium](scripts/functions-cli-create-premium-plan.md)szintű csomagban talál.
 
-## <a name="features"></a>Funkciók
+## <a name="features"></a>Szolgáltatások
 
 A következő szolgáltatások használhatók a prémium csomagba telepített alkalmazások működéséhez.
 
@@ -124,7 +124,7 @@ az resource update -g <resource_group> -n <premium_plan_name> --set sku.capacity
 
 A csomag létrehozásakor vagy skálázásakor három példány mérete közül választhat.  Az egyes példányok kiosztása után a rendszer a másodpercenként kiosztott magok és memóriák teljes számát számlázza.  Az alkalmazás igény szerint automatikusan több példányra is kibővíthető.  
 
-|Termékváltozat|Cores|Memória|Storage|
+|SKU|Cores|Memória|Storage|
 |--|--|--|--|
 |EP1|1|3.5 GB|250GB|
 |EP2|2|7GB|250GB|
@@ -141,7 +141,7 @@ Az alábbiakban láthatók az egyes régiók és operációs rendszerek konfigur
 
 Tekintse meg a függvények teljes regionális elérhetőségét itt: [Azure.com](https://azure.microsoft.com/global-infrastructure/services/?products=functions)
 
-|Region| Windows | Linux |
+|Régió| Windows | Linux |
 |--| -- | -- |
 |Ausztrália középső régiója| 100 | Nem érhető el |
 |Ausztrália 2. középső régiója| 100 | Nem érhető el |
@@ -149,7 +149,7 @@ Tekintse meg a függvények teljes regionális elérhetőségét itt: [Azure.com
 |Délkelet-Ausztrália | 100 | 20 |
 |Dél-Brazília| 100 | 20 |
 |Közép-Kanada| 100 | 20 |
-|Az USA középső régiója| 100 | 20 |
+|USA középső régiója| 100 | 20 |
 |Kelet-Kína 2| 100 | 20 |
 |Észak-Kína 2| 100 | 20 |
 |Kelet-Ázsia| 100 | 20 |
@@ -181,7 +181,7 @@ Tekintse meg a függvények teljes regionális elérhetőségét itt: [Azure.com
 |USA nyugati régiója| 100 | 20 |
 |USA 2. nyugati régiója| 100 | 20 |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [A Azure Functions méretezési és üzemeltetési lehetőségeinek megismerése](functions-scale.md)
