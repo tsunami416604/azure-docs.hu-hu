@@ -10,10 +10,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: 3277dc4d9c4485b117bfcfd1d6e130e7370cd8c2
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90936094"
 ---
 # <a name="connect-to-azure-arc-enabled-sql-managed-instance"></a>Kapcsolódás az Azure arc használatára képes SQL felügyelt példányhoz
@@ -49,7 +49,7 @@ Kapcsolat Azure Data Studio, SQL Server Management Studio vagy SQLCMD
 
 Nyissa meg Azure Data Studiot, és kapcsolódjon a példányhoz a fenti külső végpont IP-címével és portszámával. Ha Azure-beli virtuális gépet használ, szüksége lesz a _nyilvános_ IP-címére, amely azonosítható az [Azure-beli virtuális gépek üzembe helyezésével kapcsolatos speciális Megjegyzés](#special-note-about-azure-virtual-machine-deployments)használatával.
 
-Például:
+Példa:
 
 - Kiszolgáló: 52.229.9.30, 30913
 - Felhasználónév: SA
@@ -82,7 +82,7 @@ Egy szabály beállításához ismernie kell a NSG nevét, amely az alábbi para
 az network nsg list -g azurearcvm-rg --query "[].{NSGName:name}" -o table
 ```
 
-Ha megkapta a NSG nevét, a következő parancs használatával adhat hozzá tűzfalszabály-szabályt. A példában szereplő értékek egy NSG-szabályt hoznak létre a 30913-es porthoz, és lehetővé teszik a csatlakozást **bármely** forrás IP-címről.  Ez nem az ajánlott biztonsági eljárás!  Az ügyfél IP-címére vagy a csoport vagy a szervezet IP-címeire jellemző IP-címtartomány megadásával jobban lezárhatja a dolgokat.
+Ha megkapta a NSG nevét, a következő parancs használatával adhat hozzá tűzfalszabály-szabályt. A példában szereplő értékek egy NSG-szabályt hoznak létre a 30913-es porthoz, és lehetővé teszik a csatlakozást **bármely** forrás IP-címről.  Ez nem az ajánlott biztonsági eljárás!  A hatékonyabb zárolás érdekében megadhat egy -forrás-cím-előtagok formátumú értéket, amely kifejezetten az ügyfél IP-címéhez vagy olyan IP-címtartományhoz tartozik, amely lefedi a csapat vagy a szervezet IP-címeit.
 
 Cserélje le az `--destination-port-ranges` alábbi paraméter értékét a `azdata sql instance list` fenti F parancsból kapott portszámra.
 

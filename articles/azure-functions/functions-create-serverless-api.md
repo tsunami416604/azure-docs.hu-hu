@@ -7,10 +7,10 @@ ms.date: 04/27/2020
 ms.author: mahender
 ms.custom: mvc
 ms.openlocfilehash: 440eb1f39284f8d99a8d6b9067b018c4a54fcd27
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87083021"
 ---
 # <a name="customize-an-http-endpoint-in-azure-functions"></a>HTTP-végpont testreszabása Azure Functions
@@ -37,7 +37,7 @@ Alapértelmezés szerint a HTTP-trigger függvény a HTTP-metódusok fogadásár
 
 1. Használja az alábbi táblázatban megadott HTTP-trigger beállításait.
 
-    | Mező | Mintaérték | Description |
+    | Mező | Mintaérték | Leírás |
     |---|---|---|
     | Útvonalsablon | /hello | Meghatározza, hogy melyik útvonalat használja a függvény meghívására |
     | Engedélyszint | Névtelen | Opcionális: A függvényt API-kulcs nélkül is elérhetővé teszi |
@@ -45,7 +45,7 @@ Alapértelmezés szerint a HTTP-trigger függvény a HTTP-metódusok fogadásár
 
     Nem tartalmazza az `/api` alapútvonal előtagját az útválasztási sablonban, mert egy globális beállítás kezeli.
 
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 További információ a HTTP-függvények testreszabásáról: [Azure FUNCTIONS http-kötések](./functions-bindings-http-webhook.md).
 
@@ -95,7 +95,7 @@ Ismételje meg a [Függvényalkalmazás létrehozása](./functions-create-first-
     > [!NOTE] 
     > Azért érdemes alkalmazásbeállításokat használni a gazdagép konfigurálásához, hogy a proxynak ne legyen nem módosítható környezeti függősége. Az alkalmazásbeállítások használatakor lehetősége van áthelyezni a proxykonfigurációt más környezetekbe, és ekkor a környezetspecifikus alkalmazásbeállítások fognak vonatkozni rá.
 
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 ### <a name="creating-a-proxy-on-the-frontend"></a>Proxy létrehozása az előtérben
 
@@ -107,18 +107,18 @@ Ismételje meg a [Függvényalkalmazás létrehozása](./functions-create-first-
 
     | Mező | Mintaérték | Leírás |
     |---|---|---|
-    | Név | HelloProxy | Felhasználóbarát név, kizárólag kezelési célra |
+    | Name (Név) | HelloProxy | Felhasználóbarát név, kizárólag kezelési célra |
     | Útvonalsablon | /api/remotehello | Meghatározza, hogy melyik útvonalat használja a proxy meghívására |
     | Háttér-URL | https://%HELLO_HOST%/api/hello | Meghatározza a végpontot, ahova továbbítja a kéréseket a proxyn keresztül |
 
     
-    :::image type="content" source="./media/functions-create-serverless-api/creating-proxy.png" alt-text="Proxy létrehozása":::
+    :::image type="content" source="./media/functions-create-serverless-api/creating-proxy.png" alt-text="HTTP-függvény testreszabása":::
 
     A Azure Functions-proxyk nem adja `/api` meg az alap elérési út előtagját, amelynek szerepelnie kell az útválasztási sablonban. A `%HELLO_HOST%` szintaxis a korábban létrehozott alkalmazás-beállításra hivatkozik. A feloldott URL az eredeti függvényre fog mutatni.
 
 1. Próbálja ki az új proxyt úgy, hogy átmásolja a proxy URL-címét, és teszteli azt a böngészőben vagy a kedvenc HTTP-ügyfelével:
-    - Névtelen függvények esetén használja a következőt: `https://YOURPROXYAPP.azurewebsites.net/api/remotehello?name="Proxies"` .
-    - Engedélyezési funkciót használó függvények esetén: `https://YOURPROXYAPP.azurewebsites.net/api/remotehello?code=YOURCODE&name="Proxies"` .
+    - Névtelen függvények esetén használja a következőt:   `https://YOURPROXYAPP.azurewebsites.net/api/remotehello?name="Proxies"` .
+    - Engedélyezési funkciót használó függvények esetén:   `https://YOURPROXYAPP.azurewebsites.net/api/remotehello?code=YOURCODE&name="Proxies"` .
 
 ## <a name="create-a-mock-api"></a>API-utánzat létrehozása
 

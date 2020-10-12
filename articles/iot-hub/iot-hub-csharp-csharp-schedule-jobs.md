@@ -10,10 +10,10 @@ ms.date: 08/20/2019
 ms.author: robinsh
 ms.custom: mqtt, devx-track-csharp
 ms.openlocfilehash: d99cc571394ad7a9c85fb7367c672f96a7302362
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89018501"
 ---
 # <a name="schedule-and-broadcast-jobs-net"></a>Feladatok ütemezett és szórása (.NET)
@@ -58,7 +58,7 @@ Az oktatóanyag végén két .NET-es (C#) konzolos alkalmazás található:
 
 * Győződjön meg arról, hogy a 8883-es port meg van nyitva a tűzfalon. A cikkben szereplő MQTT protokollt használ, amely a 8883-as porton keresztül kommunikál. Lehetséges, hogy ez a port bizonyos vállalati és oktatási hálózati környezetekben blokkolva van. A probléma megoldásával kapcsolatos további információkért lásd: [csatlakozás IoT hubhoz (MQTT)](iot-hub-mqtt-support.md#connecting-to-iot-hub).
 
-## <a name="create-an-iot-hub"></a>IoT Hub létrehozása
+## <a name="create-an-iot-hub"></a>IoT-központ létrehozása
 
 [!INCLUDE [iot-hub-include-create-hub](../../includes/iot-hub-include-create-hub.md)]
 
@@ -78,7 +78,7 @@ Ebben a szakaszban egy olyan .NET-konzol alkalmazást hoz létre, amely a megold
 
 1. Megoldáskezelő kattintson a jobb gombbal a **SimulateDeviceMethods** projektre, majd válassza a **NuGet-csomagok kezelése**lehetőséget.
 
-1. A **NuGet csomagkezelő**területén válassza a **Tallózás** lehetőséget, és keresse meg a **Microsoft. Azure. Devices. Client**elemet. Válassza a **Telepítés** lehetőséget.
+1. A **NuGet csomagkezelő**területén válassza a **Tallózás** lehetőséget, és keresse meg a **Microsoft. Azure. Devices. Client**elemet. Válassza a **Telepítés** gombot.
 
     ![NuGet csomagkezelő ablak ügyfélalkalmazás](./media/iot-hub-csharp-csharp-schedule-jobs/device-app-nuget.png)
 

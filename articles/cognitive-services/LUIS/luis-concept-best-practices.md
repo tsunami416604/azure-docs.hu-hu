@@ -6,10 +6,10 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 05/17/2020
 ms.openlocfilehash: a16267b0bc5d9b550c73dc4e1dafee8304ec0237
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91541821"
 ---
 # <a name="best-practices-for-building-a-language-understanding-luis-app"></a>Ajánlott eljárások a Language Understanding (LUIS) alkalmazások létrehozásához
@@ -193,6 +193,6 @@ Ne adjon hozzá túl sok [mintázatot](luis-concept-patterns.md). LUIS célja, h
 
 Vegyen fel 10 vagy 15 hosszúságú kimondott szöveg a képzés és a közzététel előtt. Ez lehetővé teszi, hogy megtekintse az előrejelzés pontosságának hatását. Egyetlen Kimondás hozzáadásával nem lehet látható hatással a pontszámra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Megtudhatja, hogyan [tervezze meg alkalmazását](luis-how-plan-your-app.md) a Luis-alkalmazásban.

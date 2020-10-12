@@ -4,14 +4,14 @@ description: Ez a cikk a tűzfalbeállítások konfigurálását ismerteti Event
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: fd190a13a177b6b6d0f6b0dbcaa35d63dccd93c9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91324161"
 ---
 # <a name="configure-ip-firewall-for-azure-event-grid-topics-or-domains"></a>IP-tűzfal konfigurálása Azure Event Grid témakörökhöz vagy tartományokhoz 
-Alapértelmezés szerint a témakör és a tartomány elérhető az internetről, feltéve, hogy a kérés érvényes hitelesítéssel és engedélyezéssel rendelkezik. Az IP-tűzfallal továbbra is korlátozhatja, hogy csak IPv4-címek vagy IPv4-címtartományok legyenek a [CIDR (osztály nélküli tartományok közötti útválasztás)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) jelöléssel. A más IP-címről származó közzétevőket a rendszer elutasítja, és 403 (tiltott) választ fog kapni. A Event Grid által támogatott hálózati biztonsági funkciókkal kapcsolatos további információkért lásd: [Event Grid hálózati biztonsága](network-security.md).
+Alapértelmezés szerint a témakör és a tartomány elérhető az internetről, feltéve, hogy a kérés érvényes hitelesítéssel és engedélyezéssel rendelkezik. Az IP-tűzfallal a [CIDR (osztály nélküli Inter-Domain útválasztás)](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) jelöléssel tovább korlátozhatja az IPv4-címek vagy az IPv4-címtartományok körét. A más IP-címről származó közzétevőket a rendszer elutasítja, és 403 (tiltott) választ fog kapni. A Event Grid által támogatott hálózati biztonsági funkciókkal kapcsolatos további információkért lásd: [Event Grid hálózati biztonsága](network-security.md).
 
 Ez a cikk azt ismerteti, hogyan konfigurálható az IP-tűzfalbeállítások Azure Event Grid témakörökhöz vagy tartományokhoz.
 

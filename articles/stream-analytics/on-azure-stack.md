@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 08/21/2020
 ms.custom: seodec18
 ms.openlocfilehash: 1fe035d99f8a5962406d5aae3f093d71d432b310
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88860848"
 ---
 # <a name="run-azure-stream-analytics-on-azure-stack-preview"></a>Azure Stream Analytics futtatása Azure Stack (előzetes verzió)
@@ -64,7 +64,7 @@ Amikor Azure Stream Analytics-feladatot hoz létre egy IoT Edge-eszköz futtatá
 
    | Mező | Érték |
    | --- | --- |
-   | Név | Adja meg a tárfiók egyedi nevét. |
+   | Name (Név) | Adja meg a tárfiók egyedi nevét. |
    | Hely | Válassza ki az Önhöz legközelebb eső helyet.|
    | Előfizetés | Válassza ugyanazt az előfizetést, mint az IoT Hub esetében.|
    | Erőforráscsoport | Azt javasoljuk, hogy ugyanazt az erőforráscsoportot használja az [IoT Edge](https://docs.microsoft.com/azure/iot-edge/quickstart) rövid útmutatók és oktatóanyagok során létrehozott összes tesztelési erőforráshoz. Például: **IoTEdgeResources**. |
@@ -175,6 +175,6 @@ Miután létrejött a Stream Analytics-feladat az Azure Portalon, konfigurálhat
    > [!div class="mx-imgBorder"]
    > [![Üzembe helyezés lap ](media/on-azure-stack/edge-deployment.png)](media/on-azure-stack/edge-deployment.png#lightbox)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [IoT Edge-eszközökön futó Azure Stream Analytics](https://docs.microsoft.com/azure/stream-analytics/stream-analytics-edge)
 - [Stream Analytics Edge-feladatok fejlesztése](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)

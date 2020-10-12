@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 11/27/2018
 ms.author: sharrai
 ms.openlocfilehash: 3217c30737a133c1c1092fc4a8a8caaa0338e980
-ms.sourcegitcommit: ac5cbef0706d9910a76e4c0841fdac3ef8ed2e82
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89425874"
 ---
 # <a name="add-a-vmm-script-to-a-recovery-plan"></a>VMM-parancsfájl hozzáadása helyreállítási tervhez
@@ -43,7 +43,7 @@ A helyreállítási tervekben PowerShell-parancsfájlokat is használhat. Ahhoz,
 
   Ha a megosztott kódtár elérési útja távoli (vagy helyi, de nem a MSCVMMLibrary van megosztva), a következőképpen konfigurálja a megosztást a \\ libserver2. contoso. com\share\ használatával példaként:
   
-  1. Nyissa meg a Beállításszerkesztőt, és lépjen **HKEY_LOCAL_MACHINE \Software\microsoft\azure site Recovery\Registration**.
+  1. Nyissa meg a Beállításszerkesztőt, majd lépjen a **HKEY_LOCAL_MACHINE\SOFTWARE\MICROSOFT\Azure Site Recovery\Registration**elemre.
 
   1. Módosítsa a **ScriptLibraryPath** értékét a ** \\ \libserver2.contoso.com\share \\ **értékre. A teljes FQDN meghatározása. Adja meg a megosztási hely engedélyeit. Ez a megosztás legfelső szintű csomópontja. A legfelső szintű csomópont kereséséhez a VMM-ben nyissa meg a könyvtárban található legfelső szintű csomópontot. A megnyíló elérési út az elérési út gyökerét képezi. Ezt az elérési utat kell használnia a változóban.
 

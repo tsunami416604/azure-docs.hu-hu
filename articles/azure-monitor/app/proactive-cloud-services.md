@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 06/07/2018
 ms.reviewer: harelbr
 ms.openlocfilehash: 1cdfc6dc3ac74997743512ee07f9293699e3ad10
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87309290"
 ---
 # <a name="alert-on-issues-in-azure-cloud-services-using-the-azure-diagnostics-integration-with-azure-application-insights"></a>Riasztás az Azure Cloud Services az Azure Diagnostics Azure-beli integrációjának használatával Application Insights
@@ -107,7 +107,7 @@ Dönthet úgy, hogy a műveleti csoport több különböző típusú műveletet 
 
 Miután definiálta a műveleti csoportot, erősítse meg a módosításokat, majd kattintson a **riasztási szabály létrehozása**elemre.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További információ az automatikus észlelésről:
 

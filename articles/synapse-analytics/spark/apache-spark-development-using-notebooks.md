@@ -10,12 +10,12 @@ ms.date: 05/01/2020
 ms.author: ruxu
 ms.reviewer: ''
 ms.custom: devx-track-python
-ms.openlocfilehash: 0f6f193f531be746d3ef4920b86855ffa49efda2
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.openlocfilehash: d0063594309dc7a1c12c61b6dd18fec1d93f1082
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
-ms.locfileid: "91260444"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91893084"
 ---
 # <a name="create-develop-and-maintain-synapse-studio-preview-notebooks-in-azure-synapse-analytics"></a>A szinapszis Studio (előzetes verzió) jegyzetfüzetek létrehozása, fejlesztése és karbantartása az Azure szinapszis Analyticsben
 
@@ -90,8 +90,8 @@ Az adat-és változók nem hivatkozhatnak közvetlenül különböző nyelveken 
 
    ```scala
    %%scala
-   val scalaDataFrame = spark.read.option("format", "DW connector predefined type")
-   scalaDataFrame.registerTempTable( "mydataframetable" )
+   val scalaDataFrame = spark.read.sqlanalytics("mySQLPoolDatabase.dbo.mySQLPoolTable")
+   scalaDataFrame.createOrReplaceTempView( "mydataframetable" )
    ```
 
 2. A 2. cellában a Spark SQL használatával kérdezheti le az adatgyűjtést.
@@ -119,7 +119,7 @@ Az IntelliSense-funkciók a különböző nyelveken a lejárat különböző szi
 |PySpark (Python)|Igen|Igen|Igen|Igen|Igen|Igen|Igen|Igen|
 |Spark (Scala)|Igen|Igen|Igen|Igen|-|-|-|Igen|
 |SparkSQL|Igen|Igen|-|-|-|-|-|-|
-|.NET for Spark (C#)|Yes|-|-|-|-|-|-|-|
+|.NET for Spark (C#)|Igen|-|-|-|-|-|-|-|
 
 ### <a name="format-text-cell-with-toolbar-buttons"></a>Szöveg cellájának formázása eszköztár gombjaival
 

@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 10/23/2019
 ms.author: jeedes
-ms.openlocfilehash: ae8a1fa68e61e160ce08b93bf66776a050b45613
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: e05a2a4ba12d5fc665090d5bf078da520000f43b
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88554164"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945362"
 ---
 # <a name="tutorial-azure-active-directory-single-sign-on-sso-integration-with-officespace-software"></a>Oktatóanyag: Azure Active Directory egyszeri bejelentkezéses (SSO) integráció a OfficeSpace szoftverrel
 
@@ -124,7 +124,7 @@ Ebben a szakaszban egy tesztelési felhasználót hoz létre a Azure Portal B. S
    1. A **Név** mezőbe írja a következőt: `B.Simon`.  
    1. A Felhasználónév mezőben adja meg a **nevet** username@companydomain.extension . Például: `B.Simon@contoso.com`.
    1. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a **jelszó** mezőben megjelenő értéket.
-   1. Kattintson a **Létrehozás** elemre.
+   1. Kattintson a **Létrehozás** gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 
@@ -150,11 +150,11 @@ Ebben a szakaszban a B. Simon segítségével engedélyezheti az Azure egyszeri 
 
 2. Válassza a **Beállítások** , majd az **Összekötők**lehetőséget.
 
-    ![Egyetlen Sign-On konfigurálása az alkalmazás oldalán](./media/officespace-tutorial/tutorial_officespace_002.png)
+    ![Képernyőkép, amely a "beállítások" legördülő menü "összekötők" lehetőséget jeleníti meg.](./media/officespace-tutorial/tutorial_officespace_002.png)
 
 3. Kattintson az **SAML-hitelesítés**elemre.
 
-    ![Egyetlen Sign-On konfigurálása az alkalmazás oldalán](./media/officespace-tutorial/tutorial_officespace_003.png)
+    ![Képernyőkép, amely a "hitelesítés" szakaszt jeleníti meg "S A M L hitelesítés" művelettel.](./media/officespace-tutorial/tutorial_officespace_003.png)
 
 4. Az **SAML hitelesítés** szakaszban hajtsa végre a következő lépéseket:
 

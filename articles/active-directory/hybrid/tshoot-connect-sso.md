@@ -1,6 +1,6 @@
 ---
-title: 'Azure Active Directory Connect: zökkenőmentes egyszeri bejelentkezés – problémamegoldás | Microsoft Docs'
-description: Ez a témakör azt ismerteti, hogyan lehet elhárítani Azure Active Directory zökkenőmentes egyszeri bejelentkezést
+title: 'Azure Active Directory Connect: zökkenőmentes, egyetlen Sign-On hibáinak megoldása | Microsoft Docs'
+description: Ez a témakör azt ismerteti, hogyan lehet hibaelhárítási Azure Active Directory zökkenőmentes egyetlen Sign-On
 services: active-directory
 author: billmath
 ms.reviewer: swkrish
@@ -14,15 +14,15 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 60f23efa4f46849e1fe8b0ebe05cdd83ec16f49e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91294818"
 ---
-# <a name="troubleshoot-azure-active-directory-seamless-single-sign-on"></a>Azure Active Directory zökkenőmentes egyszeri bejelentkezés hibáinak megoldása
+# <a name="troubleshoot-azure-active-directory-seamless-single-sign-on"></a>Azure Active Directory zökkenőmentes egyetlen Sign-On hibáinak megoldása
 
-Ez a cikk segítséget nyújt a Azure Active Directory (Azure AD) zökkenőmentes egyszeri bejelentkezéssel (zökkenőmentes SSO) kapcsolatos gyakori problémákról.
+Ez a cikk segítséget nyújt a Azure Active Directory (Azure AD) zökkenőmentes egyszeri Sign-On (zökkenőmentes SSO) kapcsolatos gyakori problémákról.
 
 ## <a name="known-issues"></a>Ismert problémák
 

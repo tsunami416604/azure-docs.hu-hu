@@ -11,12 +11,12 @@ ms.workload: identity
 ms.topic: tutorial
 ms.date: 01/08/2019
 ms.author: jeedes
-ms.openlocfilehash: e0ea1d3f5c2676176e2f6e15077d13ec43e673af
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: b40a124c9cee05e8d06df3de6539c566bb2ac76a
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "88544298"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945143"
 ---
 # <a name="tutorial-azure-active-directory-integration-with-gtnexus-sso-system"></a>Oktatóanyag: Azure Active Directory integráció a GTNexus SSO-rendszerrel
 
@@ -101,11 +101,11 @@ Az Azure AD egyszeri bejelentkezés GTNexus SSO-rendszerrel való konfigurálás
 
     a. Kattintson a **metaadat-fájl feltöltése**elemre.
 
-    ![image](common/upload-metadata.png)
+    ![Képernyőkép, amely az "alapszintű k L konfiguráció" lapot jeleníti meg a "metaadat-fájl feltöltése" művelet kiválasztásával.](common/upload-metadata.png)
 
     b. Kattintson a **mappa emblémára** a metaadat-fájl kiválasztásához, majd kattintson a **feltöltés**elemre.
 
-    ![image](common/browse-upload-metadata.png)
+    ![Képernyőfelvétel: a "mappa" embléma és a "feltöltés" gomb kiválasztásával megjelenített "fájl kiválasztása" mező.](common/browse-upload-metadata.png)
 
     c. A metaadat-fájl feltöltése után az **azonosító** és a **Válasz URL-** értékei automatikusan fel lesznek töltve a GTNexus SSO System szakasz szövegmezőbe:
 
@@ -145,7 +145,7 @@ Ennek a szakasznak a célja, hogy egy teszt felhasználót hozzon létre a Britt
 
     c. Jelölje be a **jelszó megjelenítése** jelölőnégyzetet, majd írja le a jelszó mezőben megjelenő értéket.
 
-    d. Kattintson a **Létrehozás** elemre.
+    d. Kattintson a **Létrehozás** gombra.
 
 ### <a name="assign-the-azure-ad-test-user"></a>Az Azure AD-teszt felhasználójának kiosztása
 

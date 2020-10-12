@@ -2,15 +2,13 @@
 title: Egyéni rendelkezésre állási tesztek létrehozása és futtatása Azure Functions használatával
 description: Ez a dokumentum azt ismerteti, hogyan hozhat létre egy Azure-függvényt a TrackAvailability () használatával, amely rendszeres időközönként a TimerTrigger függvényben megadott konfigurációnak megfelelően fog futni. A teszt eredményét a rendszer elküldi a Application Insights-erőforrásnak, ahol a rendelkezésre állási eredmények adataira vonatkozó lekérdezéssel és riasztással kapcsolatos értesítéseket fog kapni. A testreszabott tesztek lehetővé teszik az összetettebb rendelkezésre állási tesztek megírását, mint amennyi a portál felhasználói felületén lehetséges, figyelheti az alkalmazást az Azure-VNET belül, módosíthatja a végponti címeket, vagy létrehozhat egy rendelkezésre állási tesztet, ha az nem érhető el a régióban.
 ms.topic: conceptual
-author: mrbullwinkle
-ms.author: mbullwin
 ms.date: 05/04/2020
-ms.openlocfilehash: bf756255d5eb0ffb3e57f13f4248fb8e38f26129
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 3553b212d1b63d4bd239893ba90aa3465d98df60
+ms.sourcegitcommit: ba7fafe5b3f84b053ecbeeddfb0d3ff07e509e40
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/09/2020
-ms.locfileid: "91773178"
+ms.lasthandoff: 10/12/2020
+ms.locfileid: "91945651"
 ---
 # <a name="create-and-run-custom-availability-tests-using-azure-functions"></a>Egyéni rendelkezésre állási tesztek létrehozása és futtatása Azure Functions használatával
 
@@ -185,7 +183,7 @@ A naplók (Analitika) használatával megtekintheti a rendelkezésre állási er
 >[!div class="mx-imgBorder"]
 >![Képernyőfelvétel: az új lekérdezés lap, amelynek függőségei a 50-ra korlátozódnak.](media/availability-azure-functions/dependencies.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Alkalmazástérkép](./app-map.md)
 - [Tranzakció diagnosztikája](./transaction-diagnostics.md)

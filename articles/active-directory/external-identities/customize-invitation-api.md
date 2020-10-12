@@ -12,10 +12,10 @@ manager: celestedg
 ms.reviewer: elisolMS
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2cc959d23aebea082d873e9474998e7f17b1b320
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91295158"
 ---
 # <a name="azure-active-directory-b2b-collaboration-api-and-customization"></a>Azure Active Directory B2B együttműködési API és testreszabás
@@ -100,7 +100,7 @@ A következő lehetőségek közül választhat:
 
 ### <a name="invitation-status"></a>Meghívás állapota
 
-Miután meghívót küldött egy külső felhasználótól, a **Get-AzureADUser** parancsmag segítségével megtekintheti, hogy elfogadták-e. A Get-AzureADUser következő tulajdonságai vannak feltöltve, amikor egy külső felhasználó elküld egy meghívót:
+Miután meghívót küldött egy külső felhasználótól, a **Get-AzureADUser** parancsmag segítségével megtekintheti, hogy elfogadták-e. A rendszer a következő tulajdonságokat tölti fel Get-AzureADUser, ha egy külső felhasználó meghívót küld:
 
 * A **UserState** jelzi, hogy a meghívás **PendingAcceptance** vagy **elfogadva**van-e.
 * A **UserStateChangedOn** a **UserState** tulajdonság legutóbbi módosításának időbélyegét jeleníti meg.

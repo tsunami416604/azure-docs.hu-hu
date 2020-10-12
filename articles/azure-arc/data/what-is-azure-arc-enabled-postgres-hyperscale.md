@@ -10,10 +10,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: 7e8746d9b29b0b4af30ba799628328acc3fd8bc0
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90936017"
 ---
 # <a name="what-is-azure-arc-enabled-postgresql-hyperscale"></a>Mi az Azure arc engedélyezve PostgreSQL nagy kapacitású?
@@ -43,7 +43,7 @@ Ez az Azure-beli szolgáltatásként elérhető postgres-adatbázismotor nagy ka
 
 ## <a name="azure-arc-enabled-postgresql-hyperscale"></a>Azure arc engedélyezve PostgreSQL nagy kapacitású
 
-:::image type="content" source="media/postgres-hyperscale/postgresql-hyperscale-arc.png" alt-text="Azure arc engedélyezve PostgreSQL nagy kapacitású":::
+:::image type="content" source="media/postgres-hyperscale/postgresql-hyperscale-arc.png" alt-text="Azure SQL Database PostgreSQL-nagy kapacitású (Citus)":::
 
 Ez az Azure arc-kompatibilis adatszolgáltatások által elérhető postgres-adatbázismotor nagy kapacitású formája. Emellett a Citus bővítmény is, amely lehetővé teszi a nagy kapacitású élményét. Ezen az űrlapon ügyfeleink a rendszereket üzemeltető infrastruktúrát biztosítják, és működtetik azokat.
 

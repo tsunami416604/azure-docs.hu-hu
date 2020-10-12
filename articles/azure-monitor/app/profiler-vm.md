@@ -7,10 +7,10 @@ ms.author: cweining
 ms.date: 11/08/2019
 ms.reviewer: mbullwin
 ms.openlocfilehash: f514dd7b54ac091535aeab43a8a7d2a645b50a09
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87315825"
 ---
 # <a name="profile-web-apps-running-on-an-azure-virtual-machine-or-a-virtual-machine-scale-set-by-using-application-insights-profiler"></a>Azure-beli virtuális gépen vagy virtuálisgép-méretezési csoporton futó profil Web Apps Application Insights Profiler használatával
@@ -54,7 +54,7 @@ Ez a cikk bemutatja, hogyan érheti el az Azure-beli virtuális gépen (VM) vagy
 
    A módosítások alkalmazása általában teljes sablont vagy felhőalapú, a PowerShell-parancsmagokkal vagy a Visual Studióval végzett közzétételt tartalmaz.  
 
-   A következő PowerShell-parancsok alternatív megközelítést biztosítanak a meglévő virtuális gépekhez, amelyek csak a Azure Diagnostics-bővítményt érintik. Adja hozzá a korábban említett ProfilerSink a Get-AzVMDiagnosticsExtension parancs által visszaadott konfigurációhoz. Ezután adja át a frissített konfigurációt a set-AzVMDiagnosticsExtension parancsnak.
+   A következő PowerShell-parancsok alternatív megközelítést biztosítanak a meglévő virtuális gépekhez, amelyek csak a Azure Diagnostics-bővítményt érintik. Adja hozzá a korábban említett ProfilerSink az Get-AzVMDiagnosticsExtension parancs által visszaadott konfigurációhoz. Ezután adja át a frissített konfigurációt a Set-AzVMDiagnosticsExtension parancsnak.
 
     ```powershell
     $ConfigFilePath = [IO.Path]::GetTempFileName()

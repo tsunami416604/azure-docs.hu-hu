@@ -4,10 +4,10 @@ description: Ez a cikk a helyi Hyper-V virtuális gépeken az Azure-ba való vé
 ms.date: 11/12/2019
 ms.topic: conceptual
 ms.openlocfilehash: c168ba9ff14e57f238069e8ca5b0c34a8fb58015
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87799888"
 ---
 # <a name="common-questions---hyper-v-to-azure-disaster-recovery"></a>Vészhelyreállítás Hyper-V-ről Azure-ba – Gyakori kérdések
@@ -74,7 +74,7 @@ Igen. Amikor létrehoz egy tárolót egy régióban, biztosítjuk, hogy az Site 
 Igen, [Az Azure-ban](../storage/common/storage-service-encryption.md) a titkosítás és a titkosítás is támogatott.
 
 
-## <a name="deployment"></a>Telepítés
+## <a name="deployment"></a>Üzembe helyezés
 
 ### <a name="what-can-i-do-with-hyper-v-to-azure-replication"></a>Mire használhatom a Hyper-V-t az Azure-ba történő replikációhoz?
 

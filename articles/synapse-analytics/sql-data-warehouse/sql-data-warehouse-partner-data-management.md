@@ -12,10 +12,10 @@ ms.author: mabasile
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 8f2e41779e72d565e24b67fd8b18afd87a112e62
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91542095"
 ---
 # <a name="azure-synapse-analytics-data-management-partners"></a>Az Azure szinapszis Analytics adatkezelési partnerei
@@ -36,7 +36,7 @@ Ez a cikk a Microsoft partner vállalatait mutatja be az Azure Szinapszisot tám
 | ![SqlDBM](./media/sql-data-warehouse-partner-data-management/sqldbm-logo.png) |**SqlDBM**<br>A SqlDBM egy felhőalapú adatmodellezési eszköz, amely egyszerű és kényelmes megoldást kínál az adatbázis bármely böngészőn belüli fejlesztésére. A szükséges adatbázis-szabályok és objektumok, például az adatbázis-kulcsok, a sémák, az indexek, az oszlopok megkötései és a kapcsolatok beépítése. |[Termék lap](http://sqldbm.com/)<br> [Azure Marketplace](https://azuremarketplace.microsoft.com/en-us/marketplace/apps/sqldbm1583438206845.sqldbm-data-modeling-tool?tab=Overview)<br>|
 | ![Teleran](./media/sql-data-warehouse-partner-data-management/teleran-logo.jpg) |**Teleran**<br>A Teleran lekérdezési vezérlője megakadályozza a nem megfelelő és rosszul formázott lekérdezések elérését a szinapszisok és a számítási erőforrások pazarlása érdekében. Intelligens üzeneteket küld az elemzési felhasználóknak, hogy hatékonyabban használhassák az adatokat. A cél az, hogy biztosítsa a jó üzleti eredményeket anélkül, hogy feleslegesen felhasználja az Azure-költségeket. A Teleran-használat elemzése a felhasználó-, alkalmazás-, lekérdezési és adatfelhasználási tevékenységek elemzését biztosítja. Lehetővé teszi, hogy mindig a teljes képet a mi folyik. Lehetővé teszi a szolgáltatás fejlesztését, az üzleti hatékonyság növelését és a szinapszisok fogyasztási költségeinek optimalizálását. |[Termék lap](https://teleran.com/azure-synapse-optimization-cost-control/)<br>|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A többi partnerrel kapcsolatos további információkért tekintse meg az [üzleti intelligencia-partnerek](sql-data-warehouse-partner-business-intelligence.md), [az adatintegrációs partnerek](sql-data-warehouse-partner-data-integration.md)és a [Machine learning és AI-partnerek](sql-data-warehouse-partner-machine-learning-ai.md)című témakört.
 
 

@@ -17,10 +17,10 @@ ms.date: 08/12/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: a4856b2578a007f72aeeec64588ac7f9c58158de
-ms.sourcegitcommit: b33c9ad17598d7e4d66fe11d511daa78b4b8b330
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88861187"
 ---
 # <a name="sap-ascsscs-instance-multi-sid-high-availability-with-windows-server-failover-clustering-and-azure-shared-disk"></a>SAP ASCS/SCS instance multi-SID magas rendelkezésre állás a Windows Server feladatátvételi fürtszolgáltatással és az Azure megosztott lemezzel
@@ -103,11 +103,11 @@ A sorba helyezni replikációs kiszolgáló 1 (ERS1) és a sorba helyezni Replic
 | --- | --- | --- |---| ---|
 | első fürtcsomópont ASCS/SCS-fürt |PR1-ASCs-10 |10.0.0.4 |PR1-ASCs-avset |PR1PPG |
 | második fürtcsomópont ASCS/SCS-fürt |PR1-ASCs-11 |10.0.0.5 |PR1-ASCs-avset |PR1PPG |
-| Fürt hálózatnév | pr1clust |10.0.0.42 (**csak** a Win 2016-fürt esetében) | n.a. | n.a. |
-| **SID1** ASCS-fürt hálózatnév | PR1 – ascscl |10.0.0.43 | n.a. | n.a. |
-| **SID1** ERS-fürt hálózatának neve (**csak** ERS2 esetében) | PR1 – erscl |10.0.0.44 | n.a. | n.a. |
-| **SID2** ASCS-fürt hálózatnév | PR2 – ascscl |10.0.0.45 | n.a. | n.a. |
-| **SID2** ERS-fürt hálózatának neve (**csak** ERS2 esetében) | PR1 – erscl |10.0.0.46 | n.a. | n.a. |
+| Fürt hálózatnév | pr1clust |10.0.0.42 (**csak** a Win 2016-fürt esetében) | n/a | n/a |
+| **SID1** ASCS-fürt hálózatnév | PR1 – ascscl |10.0.0.43 | n/a | n/a |
+| **SID1** ERS-fürt hálózatának neve (**csak** ERS2 esetében) | PR1 – erscl |10.0.0.44 | n/a | n/a |
+| **SID2** ASCS-fürt hálózatnév | PR2 – ascscl |10.0.0.45 | n/a | n/a |
+| **SID2** ERS-fürt hálózatának neve (**csak** ERS2 esetében) | PR1 – erscl |10.0.0.46 | n/a | n/a |
 
 ### <a name="create-azure-internal-load-balancer"></a>Azure belső terheléselosztó létrehozása
 
@@ -478,7 +478,7 @@ A vázolt feladatátvételi tesztek esetében feltételezzük, hogy az SAP ASCS 
 3. Indítsa újra az A fürtcsomópont-csomópontot a Azure Portal. Ez automatikusan feladatátvételt kezdeményez az SAP \<SID\> -fürtből az a csomópontról a B csomópontra.  
 4. Indítsa újra az A fürtcsomópont Azure PowerShell használatával. Ez automatikusan feladatátvételt kezdeményez az SAP \<SID\> -fürtből az a csomópontról a B csomópontra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Készítse elő az Azure-infrastruktúrát az SAP-hez a Windows feladatátvevő fürt és az SAP ASCS/SCS-példány megosztott lemezének használatával][sap-high-availability-infrastructure-wsfc-shared-disk]
 * [SAP NetWeaver HA telepítése Windows feladatátvevő fürtön és megosztott lemezen egy SAP ASCS/SCS-példányhoz][sap-high-availability-installation-wsfc-shared-disk]

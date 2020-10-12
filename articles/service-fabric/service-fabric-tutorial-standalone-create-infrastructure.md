@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 05/11/2018
 ms.custom: mvc
 ms.openlocfilehash: c7a18b0dcdc04bdf66ac4b36ce7376ee018eb238
-ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91842903"
 ---
 # <a name="tutorial-create-aws-infrastructure-to-host-a-service-fabric-cluster"></a>Oktatóanyag: AWS-infrastruktúra létrehozása Service Fabric-fürt futtatásához
@@ -87,7 +87,7 @@ A két utolsó szabállyal nyissa meg a Service Fabricet az egész világ szám�
 
 Végezetül csak meg kell nyitnunk a 8080-as portot, hogy láthassa az üzembe helyezett alkalmazást. Válassza az **Add Rule** (Szabály hozzáadása) lehetőséget, a legördülő listából válassza a **Custom TCP Rule** (Egyéni TCP-szabály) elemet, és a porttartományhoz adja meg a `8080` értéket, majd a Source (Forrás) legördülő menüben válassza az Anywhere (Bárhol) értéket.
 
-Most már minden szabály meg van adva. Válassza a **Mentés** lehetőséget.
+Most már minden szabály meg van adva. Kattintson a **Mentés** gombra.
 
 ## <a name="connect-to-an-instance-and-validate-connectivity"></a>Kapcsolódás egy példányhoz és a kapcsolat ellenőrzése
 
@@ -133,7 +133,7 @@ A tűzfalban lévő portok megnyitására ez a PowerShell-parancs szolgál:
 New-NetFirewallRule -DisplayName "Service Fabric Ports" -Direction Inbound -Action Allow -RemoteAddress LocalSubnet -Protocol TCP -LocalPort 135, 137-139, 445
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A sorozat első részében megismerte, hogyan indíthat el három EC2-példányt, és hogyan konfigurálhatja őket a Service Fabric telepítéséhez:
 

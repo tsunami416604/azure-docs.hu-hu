@@ -16,10 +16,10 @@ search.appverid:
 - MET150
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c16882f35c9ca79644cd2b51ce4cd88bba516ed2
-ms.sourcegitcommit: 3be3537ead3388a6810410dfbfe19fc210f89fec
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89652069"
 ---
 # <a name="implement-password-hash-synchronization-with-azure-ad-connect-sync"></a>A jelszókivonat-szinkronizálás implementálása Azure AD Connect-szinkronizálással
@@ -113,7 +113,7 @@ Ha engedélyezve van, az Azure AD nem minden szinkronizált felhasználóhoz csa
 
 Javasoljuk, hogy engedélyezze a EnforceCloudPasswordPolicyForPasswordSyncedUsers a jelszó-kivonat szinkronizálásának engedélyezése előtt, hogy a jelszó-kivonatok kezdeti szinkronizálása ne adja hozzá az `DisablePasswordExpiration` értéket a felhasználók PasswordPolicies attribútumához.
 
-Az alapértelmezett Azure AD-jelszóházirend megköveteli, hogy a felhasználók 90 naponta megváltoztassák a jelszavukat. Ha az AD-szabályzat 90 nap is, a két házirendnek egyeznie kell. Ha azonban az AD-házirend nem 90 nap, a set-MsolPasswordPolicy PowerShell-paranccsal módosíthatja az Azure AD-jelszó szabályzatát.
+Az alapértelmezett Azure AD-jelszóházirend megköveteli, hogy a felhasználók 90 naponta megváltoztassák a jelszavukat. Ha az AD-szabályzat 90 nap is, a két házirendnek egyeznie kell. Ha azonban az AD-házirend nem 90 nap, akkor a Set-MsolPasswordPolicy PowerShell-paranccsal módosíthatja az Azure AD-jelszó házirendjét.
 
 Az Azure AD egy regisztrált tartományon belüli külön jelszó-elévülési szabályzatot támogat.
 
@@ -122,7 +122,7 @@ Figyelmeztetés: ha vannak olyan szinkronizált fiókok, amelyeknek az Azure AD-
 `Set-AzureADUser -ObjectID <User Object ID> -PasswordPolicies "DisablePasswordExpiration"`
 
 > [!NOTE]
-> A set-MsolPasswordPolicy PowerShell-parancs összevont tartományokon nem fog működni. 
+> Az Set-MsolPasswordPolicy PowerShell-parancs összevont tartományokon nem fog működni. 
 
 #### <a name="synchronizing-temporary-passwords-and-force-password-change-on-next-logon"></a>Ideiglenes jelszavak szinkronizálása és a "jelszó módosítása a következő bejelentkezéskor"
 

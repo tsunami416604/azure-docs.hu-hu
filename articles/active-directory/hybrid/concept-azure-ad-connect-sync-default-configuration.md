@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 5e55526e0a63a0c603e2b62ccb3ac0efed911cff
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91295226"
 ---
 # <a name="azure-ad-connect-sync-understanding-the-default-configuration"></a>Az Azure AD Connect szinkronizálása: az alapértelmezett konfiguráció ismertetése
@@ -186,7 +186,7 @@ Az átalakítás szakasz a célobjektum összes olyan attribútumát definiálja
 
 ![A szinkronizálási szabály szerkesztőjének átalakítások lapja](./media/concept-azure-ad-connect-sync-default-configuration/syncruletransformations.png)
 
-Ha ezt a konfigurációt környezetbe szeretné helyezni, a fiók-erőforrás erdő üzembe helyezése esetén a fiók erdőben és az Exchange-és Lync-beállításokat tartalmazó erőforrás-erdőben letiltott fiókkal kell megkeresni egy engedélyezett fiókot. A megtekintett szinkronizálási szabály tartalmazza a bejelentkezéshez szükséges attribútumokat, és ezek az attribútumok olyan erdőből származnak, ahol engedélyezve van a fiók. Ezek az attribútumok egyetlen szinkronizálási szabályba vannak helyezve.
+Ha ezt a konfigurációt kontextusban szeretné elhelyezni, egy Account-Resource erdőben üzemelő példányban, az Exchange-és Lync-beállításokkal rendelkező erőforrás-erdőben a fiók erdő és egy letiltott fiók található. A megtekintett szinkronizálási szabály tartalmazza a bejelentkezéshez szükséges attribútumokat, és ezek az attribútumok olyan erdőből származnak, ahol engedélyezve van a fiók. Ezek az attribútumok egyetlen szinkronizálási szabályba vannak helyezve.
 
 Az átalakítás különböző típusokkal rendelkezhet: állandó, közvetlen és kifejezés.
 
@@ -220,7 +220,7 @@ A szinkronizálási szabályok elsőbbségi sorrendjét a telepítővarázsló c
 ### <a name="putting-it-all-together"></a>Végső összeállítás
 Most már tudjuk, hogy a szinkronizálási szabályokkal tisztában lehet azzal, hogy a konfiguráció hogyan működik a különböző szinkronizálási szabályokkal. Ha megtekint egy felhasználót és a metaverse-hoz hozzájáruló attribútumokat, a szabályok a következő sorrendben lesznek alkalmazva:
 
-| Név | Megjegyzés |
+| Name (Név) | Megjegyzés |
 |:--- |:--- |
 | A from AD – felhasználói csatlakozás |Szabály az összekötő terület objektumainak metaverse-vel való csatlakoztatásához. |
 | A from AD – felhasználóifiók engedélyezve |Az Azure AD-be és Microsoft 365ba való bejelentkezéshez szükséges attribútumok. Ezeket az attribútumokat az engedélyezett fiókból szeretnénk használni. |

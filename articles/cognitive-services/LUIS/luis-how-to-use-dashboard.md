@@ -10,10 +10,10 @@ ms.subservice: language-understanding
 ms.topic: how-to
 ms.date: 11/08/2019
 ms.openlocfilehash: 4867a065a85fab1e4abc7f19401239e5b76e1da4
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91541407"
 ---
 # <a name="how-to-use-the-dashboard-to-improve-your-app"></a>Az alkalmazás fejlesztése az irányítópult használatával
@@ -152,7 +152,7 @@ Határozza meg, hogy milyen százalékos arányt szeretne a vállalata számára
 
 A szűrő segítségével megtalálhatja az adott problémával kapcsolatos leképezéseket:
 
-|Szűrés|Javasolt százalék|Szerep|
+|Szűrő|Javasolt százalék|Cél|
 |--|--|--|
 |A legtöbb problémás szándék|-|**Kezdjen el ide** – a hosszúságú kimondott szöveg kijavításával az alkalmazás a többi javításnál nagyobb javulást tesz elérhetővé.|
 |Az alábbi helyes előrejelzések|60%|Ez a hosszúságú kimondott szöveg százalékos aránya a kiválasztott szándékban, amelyek helyesek, de a küszöbérték alatti megbízhatósági pontszámok. |
@@ -167,6 +167,6 @@ Mi az a biztos, hogy előrejelzési megbízhatósági pontszám? Az alkalmazásf
 
 Ez a két szűrő lehetővé teszi, hogy megkeresse a hosszúságú kimondott szöveg a küszöbértéken túli kiválasztott szándékban. Ezt a két százalékot a hiba százalékában tekintheti át. Ha a jóslatok 10-15%-os hibájának arányát szeretné megállapítani, állítsa a szűrési küszöbértéket 15%-ra az érték felett található összes hosszúságú kimondott szöveg megkereséséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Azure-erőforrások kezelése](luis-how-to-azure-subscription.md)

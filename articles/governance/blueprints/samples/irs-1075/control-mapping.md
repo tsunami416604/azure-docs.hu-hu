@@ -4,10 +4,10 @@ description: Az IRS 1075 Blueprint minta leképezésének vezérlése. Mindegyik
 ms.date: 08/19/2020
 ms.topic: sample
 ms.openlocfilehash: 7bfe1b55868cadd3bb757cb15e95a5c3dc463855
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91541305"
 ---
 # <a name="control-mapping-of-the-irs-1075-blueprint-sample"></a>Az IRS 1075 tervrajzi minta leképezésének vezérlése
@@ -29,7 +29,7 @@ Ez a terv segít áttekinteni azokat a fiókokat, amelyek esetleg nem felelnek m
 - Az olvasási engedélyekkel rendelkező külső fiókokat el kell távolítani az előfizetésből
 - Az írási engedélyekkel rendelkező külső fiókokat el kell távolítani az előfizetésből
 
-## <a name="9321-ac-2-7-account-management--role-based-schemes"></a>9.3.2.1 AC-2 (7) Fiókkezelés | Szerepköralapú sémák
+## <a name="9321-ac-2-7-account-management--role-based-schemes"></a>9.3.2.1 AC-2 (7) Fiókkezelés | Role-Based sémák
 
 Az Azure [Azure szerepköralapú hozzáférés-vezérlést (Azure RBAC)](../../../../role-based-access-control/overview.md) valósít meg, amellyel kezelheti, hogy ki férhet hozzá az Azure-beli erőforrásokhoz. A Azure Portal használatával áttekintheti, hogy ki férhet hozzá az Azure-erőforrásokhoz és azok engedélyeihez. Ez a terv [Azure Policy](../../../policy/overview.md) definíciókat is HOZZÁRENDEL az SQL-kiszolgálók és a Service Fabric Azure Active Directory-hitelesítésének naplózásához. A Azure Active Directory hitelesítés használata lehetővé teszi az egyszerűbb engedélyek kezelését és az adatbázis-felhasználók és más Microsoft-szolgáltatások központosított Identitáskezelés kezelését. A terv emellett egy Azure Policy definíciót rendel hozzá az egyéni Azure RBAC-szabályok használatának naplózásához. Az egyéni Azure RBAC-szabályok megvalósításának megismerése segíthet a szükséges és a megfelelő implementáció ellenőrzésében, mivel az egyéni Azure RBAC-szabályok hibásak.
 
@@ -147,7 +147,7 @@ A Azure Security Center adaptív alkalmazás-vezérlése egy intelligens, automa
 
 - Az adaptív alkalmazások vezérlőit engedélyezni kell a virtuális gépeken
 
-## <a name="93511-cm-11-user-installed-software"></a>9.3.5.11 CM-11 felhasználó által telepített szoftver
+## <a name="93511-cm-11-user-installed-software"></a>9.3.5.11 CM – 11 User-Installed szoftver
 
 A Azure Security Center adaptív alkalmazás-vezérlése egy intelligens, automatizált, teljes körű alkalmazás-szűrési megoldás, amely képes blokkolni vagy megakadályozni bizonyos szoftverek futtatását a virtuális gépeken. Az alkalmazás-vezérlőelem segítségével érvényesítheti és figyelheti a szoftverkorlátozó házirendek megfelelőségét. Ez a tervrajz olyan [Azure Policy](../../../policy/overview.md) -definíciót rendel hozzá, amely segít a virtuális gépek figyelésében, amelyekben az alkalmazás engedélyezett listája javasolt, de még nincs konfigurálva.
 
@@ -164,7 +164,7 @@ Azure Site Recovery replikálja a virtuális gépeken futó munkaterheléseket e
 Ez a terv segít a privilegizált hozzáférés korlátozásában és szabályozásában [Azure Policy](../../../policy/overview.md) definíciók hozzárendelésével olyan fiókokat naplózni, amelyek tulajdonosi és/vagy írási engedélyekkel nem rendelkeznek a többtényezős hitelesítés engedélyezésével. A többtényezős hitelesítés révén a fiókok biztonságban maradhatnak, még akkor is, ha az egyik hitelesítő adat biztonsága sérül. A többtényezős hitelesítés engedélyezése nélküli fiókok figyelésével azonosíthatja azokat a fiókokat, amelyek nagyobb valószínűséggel veszélyeztethetik.
 
 - Az MFA-t engedélyezni kell az előfizetéshez tartozó tulajdonosi engedélyekkel rendelkező fiókokon
-- Az MFA-t engedélyezni kell az előfizetés írási engedéllyel rendelkező fiókjain
+- Az MFA-t engedélyezni kell az előfizetés írási engedélyekkel rendelkező fiókjaiban
 
 ## <a name="9372-ia-2-2-identification-and-authentication-organizational-users--network-access-to-non-privileged-accounts"></a>9.3.7.2 IA-2 (2) azonosítás és hitelesítés (szervezeti felhasználók) | Nem Kiemelt fiókok hálózati hozzáférése
 
@@ -183,7 +183,7 @@ Ez a terv azokat a [Azure Policy](../../../policy/overview.md) definíciókat re
 - \[Előzetes verzió \] : követelmények telepítése a jelszavak nélküli fiókkal rendelkező linuxos virtuális gépek naplózására
 - \[Előzetes \] verzió: követelmények telepítése a jelszavakat nem tároló Windows-alapú virtuális gépek naplózásához visszafejthető titkosítással
 
-## <a name="9375-ia-5-1-authenticator-management--password-based-authentication"></a>9.3.7.5 IA-5 (1) hitelesítő kezelése | Jelszó-alapú hitelesítés
+## <a name="9375-ia-5-1-authenticator-management--password-based-authentication"></a>9.3.7.5 IA-5 (1) hitelesítő kezelése | Password-Based hitelesítés
 
 Ez a terv segítséget nyújt az erős jelszavak betartatásához olyan [Azure Policy](../../../policy/overview.md) -definíciók hozzárendelésével, amelyek a minimális szilárdságot és egyéb jelszavakat nem igénylő Windows rendszerű virtuális gépeket naplózzák. A virtuális gépeknek a jelszó erőssége megsértésével kapcsolatos ismerete segít megtenni a szükséges javítási műveleteket, hogy az összes virtuálisgép-felhasználói fiók jelszava megfeleljen a szervezete jelszavas házirendjének.
 

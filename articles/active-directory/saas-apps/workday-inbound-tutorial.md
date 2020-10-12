@@ -11,10 +11,10 @@ ms.workload: identity
 ms.date: 05/26/2020
 ms.author: chmutali
 ms.openlocfilehash: 53132cc21b8298f951f2daa979ed433103ad0ac0
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91541288"
 ---
 # <a name="tutorial-configure-workday-for-automatic-user-provisioning"></a>Oktatóanyag: munkanapok konfigurálása a felhasználók automatikus kiépítési felállításához
@@ -370,7 +370,7 @@ Vigye át a letöltött ügynök telepítőjét a kiszolgálói gazdagépre, és
    >[!div class="mx-imgBorder"]
    >![Kilépés képernyő](./media/workday-inbound-tutorial/pa_install_screen_9.png "Kilépés képernyő")
    
-1. Ellenőrizze az ügynök telepítését, és ellenőrizze, hogy fut-e. Ehhez nyissa meg a "szolgáltatások" beépülő modult, és keresse meg a "Microsoft Azure AD kapcsolat létesítése ügynök" nevű szolgáltatást.
+1. Ellenőrizze az ügynök telepítését, és győződjön meg arról, hogy fut a "szolgáltatások" Snap-In megnyitásával, és keresse meg a "Microsoft Azure AD kapcsolat létesítése ügynök" nevű szolgáltatást.
 
    >[!div class="mx-imgBorder"]
    >![Képernyőfelvétel a szolgáltatásokban futó Microsoft Azure AD-létesítési ügynökről.](./media/workday-inbound-tutorial/services.png)
@@ -478,7 +478,7 @@ Ebben a szakaszban azt fogja beállítani, hogy a felhasználói adatok hogyan �
 
          * **Csak a létrehozás során** – alkalmazza ezt a leképezést kizárólag felhasználói létrehozási műveletekre
 
-1. A leképezések mentéséhez kattintson a **Save (Mentés** ) gombra az attribútum-leképezési szakasz tetején.
+1. A leképezések mentéséhez kattintson a Attribute-Mapping szakasz tetején található **Mentés** gombra.
    >[!div class="mx-imgBorder"]
    >![Képernyőkép, amely megjeleníti a kiválasztott "Mentés" műveletet tartalmazó "attribútum-hozzárendelés" lapot.](./media/workday-inbound-tutorial/wd_2.png)
 
@@ -1049,7 +1049,7 @@ Ennek a módosításnak a végrehajtásához a [munkanap Studio](https://communi
 8.    Kattintson a kis **Konfigurálás** hivatkozásra a kérelem/válasz ablaktáblán a munkanap hitelesítő adatainak megadásához. Győződjön meg a **hitelesítésről**, majd adja meg a munkanap-integrációs rendszer fiókjához tartozó felhasználónevet és jelszót. Ügyeljen arra, hogy a felhasználónevet \@ bérlőként formázza, és hagyja kiválasztva a **WS-Security UsernameToken** beállítást.
    ![Képernyőfelvétel: a "username" és a "password" beírt "Security" (biztonság) lap van kijelölve, és "WS-Security username token".](./media/workday-inbound-tutorial/wdstudio2.png)
 
-9. Válassza az **OK** lehetőséget.
+9. Kattintson az **OK** gombra.
 
 10. A **kérelem** ablaktáblában illessze be az alábbi XML-fájlt. **Employee_ID** beállítása egy valós felhasználó ALKALMAZOTTi azonosítójára a munkahelyen belüli bérlőben. Állítsa be a **WD: Version verziót** a használni kívánt WWS-verzióra. Válasszon ki egy olyan felhasználót, aki rendelkezik a kinyerni kívánt attribútummal.
 
@@ -1126,7 +1126,7 @@ Ennek a módosításnak a végrehajtásához a [munkanap Studio](https://communi
 
     ![Munkanap Studio](./media/workday-inbound-tutorial/wdstudio_aad2.png)
 
-11. Válassza a fenti **Mentés** , majd az **Igen** lehetőséget a párbeszédpanelre. Ha még meg van nyitva, az attribútum-leképezési képernyő bezárásához.
+11. Válassza a fenti **Mentés** , majd az **Igen** lehetőséget a párbeszédpanelre. Ha még nyitva van, akkor a Attribute-Mapping képernyő bezárásához.
 
 12. A fő **kiépítés** lapon válassza a **munkavégző munkatársak szinkronizálása a helyszínen Active Directory** (vagy a **munkatársak szinkronizálása az Azure ad**-be) lehetőséget.
 

@@ -15,10 +15,10 @@ ms.custom:
 - 'Role: IoT Device'
 - devx-track-js
 ms.openlocfilehash: 304ded466aeb734388c13b87331eb4813e850e56
-ms.sourcegitcommit: b87c7796c66ded500df42f707bdccf468519943c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91842818"
 ---
 # <a name="tutorial-implement-a-device-firmware-update-process"></a>Oktatóanyag: Eszközök belsővezérlőprogram-frissítési folyamatának implementálása
@@ -207,7 +207,7 @@ Ha szeretné, a CLI-t is használhatja:
 az group delete --name tutorial-iot-hub-rg
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez az oktatóanyag bemutatta, hogyan implementálható a csatlakoztatott eszközök belsővezérlőprogram-frissítési folyamata. Folytassa a következő oktatóanyaggal, amely azt ismerteti, hogyan használható az Azure IoT Hub Portal-eszközök és az Azure CLI-parancsok az eszközök kapcsolatának teszteléséhez.
 

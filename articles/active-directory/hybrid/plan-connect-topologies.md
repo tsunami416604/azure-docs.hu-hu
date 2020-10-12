@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 7616ceed812b21f471609d95f59a0d0270dd7f52
-ms.sourcegitcommit: f8d2ae6f91be1ab0bc91ee45c379811905185d07
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89658509"
 ---
 # <a name="topologies-for-azure-ad-connect"></a>Azure AD Connect-topológiák
@@ -29,7 +29,7 @@ Ez a cikk ismerteti a különböző helyszíni és Azure Active Directory (Azure
 
 A cikkben található képek jelmagyarázata:
 
-| Description | Szimbólum |
+| Leírás | Szimbólum |
 | --- | --- |
 | Helyszíni Active Directory erdő |![Helyszíni Active Directory erdő](./media/plan-connect-topologies/LegendAD1.png) |
 | Helyszíni Active Directory szűrt importálással |![Active Directory szűrt importálással](./media/plan-connect-topologies/LegendAD2.png) |
@@ -165,7 +165,7 @@ Ez a topológia a következő korlátozásokkal rendelkezik a más támogatott h
 * A Windows 10-es eszközökhöz csak egy Azure AD-bérlő társítható.
 * Az egyszeri bejelentkezési (SSO) beállítás a jelszó-kivonatolási szinkronizáláshoz és az átmenő hitelesítéshez csak egy Azure AD-Bérlővel használható.
 
-A kölcsönösen kizárható objektumokra vonatkozó követelmények a visszaírási is érvényesek. Egyes visszaírási-funkciók nem támogatottak ehhez a topológiához, mert egyetlen helyszíni konfigurációt feltételeznek. Ezek a funkciók a következők:
+A kölcsönösen kizárható objektumokra vonatkozó követelmények a visszaírási is érvényesek. Egyes visszaírási-funkciók nem támogatottak ehhez a topológiához, mert egyetlen helyszíni konfigurációt feltételeznek. Ezek a lehetőségek a következők:
 
 * A csoport visszaírási alapértelmezett konfigurációval.
 * Eszköz visszaírási.

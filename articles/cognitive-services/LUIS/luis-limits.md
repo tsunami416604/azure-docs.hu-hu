@@ -6,10 +6,10 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 06/04/2020
 ms.openlocfilehash: 5ef681e335cf49a1759a096766b5ccd70545e60a
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91324705"
 ---
 # <a name="limits-for-your-luis-model-and-keys"></a>A LUIS-modell és-kulcsok korlátai
@@ -56,7 +56,7 @@ Az objektumok nevének egyedinek kell lennie, ha az azonos szint más objektumai
 |--|--|
 |Szándék, entitás|Az összes leképezésnek és az entitás nevének egyedinek kell lennie az alkalmazás egy verziójában.|
 |ML entitás-összetevők|Az adott entitáson belül minden gépi tanulási entitás-összetevőnek (gyermek entitásnak) egyedinek kell lennie az azonos szinten lévő összetevőkhöz.|
-|Funkciók | Az összes megnevezett funkciónak, például a kifejezések listájának egyedinek kell lennie az alkalmazás egy verzióján belül.|
+|Szolgáltatások | Az összes megnevezett funkciónak, például a kifejezések listájának egyedinek kell lennie az alkalmazás egy verzióján belül.|
 |Entitásszerepkörök|Az entitás vagy entitás összetevő összes szerepkörének egyedinek kell lennie, ha ugyanazon az entitás szintjén (szülő, gyermek, unoka stb.) vannak.|
 
 ## <a name="object-naming"></a>Objektum elnevezése
@@ -108,7 +108,7 @@ A [beszédfelismerési funkció](../speech-service/how-to-recognize-intents-from
 
 ## <a name="keyboard-controls"></a>Billentyűzet vezérlőelem
 
-|Billentyűzet bemenete | Description |
+|Billentyűzet bemenete | Leírás |
 |--|--|
 |Vezérlő + E|a jogkivonatok és entitások közötti váltás a hosszúságú kimondott szöveg listán|
 

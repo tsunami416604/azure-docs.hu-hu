@@ -7,16 +7,16 @@ ms.service: media-services
 ms.topic: reference
 ms.date: 04/20/2020
 ms.openlocfilehash: 88048c3328114f17b30859efb41bb9f059b71439
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91296365"
 ---
 # <a name="feature-list"></a>Funkciólista #
 Itt láthatók a tesztelt funkciók és a nem támogatott funkciók listája:
 
-| Funkció | TESZTELT | RÉSZLEGESEN TESZTELT | KIPRÓBÁLATLAN | TÁMOGATOTT | MEGJEGYZÉSEK |
+| Szolgáltatás | TESZTELT | RÉSZLEGESEN TESZTELT | KIPRÓBÁLATLAN | TÁMOGATOTT | MEGJEGYZÉSEK |
 | ------- | ------ | ---------------- | -------- | ----------- | ----- |
 | **Lejátszás**                                |        |                  |          |             |                                                                                                                      |
 | Alapszintű igény szerinti lejátszás                | X      |                  |          |             | Csak Azure Media Services streamek támogatása                                                                      |
@@ -31,7 +31,7 @@ Itt láthatók a tesztelt funkciók és a nem támogatott funkciók listája:
 | Flash-tartalék (vaku)                | X      |                  |          |             | Nem minden szolgáltatás érhető el ebben a technológiában.                                                                         |
 | Silverlight tartalék Silverlight      | X      |                  |          |             | Nem minden szolgáltatás érhető el ebben a technológiában.                                                                         |
 | Natív HLS átmenő (Html5)         |        | X                |          |             | A platform korlátozásai miatt nem minden szolgáltatás érhető el ebben a technológiában.                                            |
-| **Funkciók**                                |        |                  |          |             |                                                                                                                      |
+| **Szolgáltatások**                                |        |                  |          |             |                                                                                                                      |
 | API-támogatás                             | X      |                  |          |             | Lásd: ismert problémák listája                                                                                                |
 | Alapszintű felhasználói felület                                | X      |                  |          |                                                                                                                                    |
 | Inicializálás JavaScript használatával       | X      |                  |          |             |                                                                                                                      |
@@ -59,7 +59,7 @@ Itt láthatók a tesztelt funkciók és a nem támogatott funkciók listája:
 | Elemzés                               |        | X                |          |             | Az AMP lehetővé teszi az elemzési és diagnosztikai események figyelését, hogy az Ön által választott elemzési háttérbe küldjék.  Az események és tulajdonságok a platform korlátai miatt nem érhetők el a technológiák között.                                                                            |
 | Egyéni bőrök                            |        |                  | X        |             | Ez a forgatókönyv úgy érhető el, ha a vezérlőket hamis értékre állítja be, és saját HTML-és CSS-t használ.           |
 | Sáv tisztításának megkeresése                      |        |                  |          | X           |                                                                                                                      |
-| Trükk – lejátszás                              |        |                  |          | X           |                                                                                                                      |
+| Trick-Play                              |        |                  |          | X           |                                                                                                                      |
 | Csak hang                              | X      |                  |          |           | A AzureHtml5JS támogatja. A progresszív MP3-lejátszás képes együttműködni a HTML5-technológiával, ha a platform támogatja azt.                                                                                                        |
 | Csak videó                              | X      |                  |          |           | A AzureHtml5JS támogatja.                                                                                                        |
 | Több időszakos bemutató               |        |                  |          | X                                                                                                                                  |

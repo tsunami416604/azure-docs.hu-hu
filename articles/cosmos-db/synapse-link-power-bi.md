@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: acomet
 ms.openlocfilehash: 03ea1b0cdfef30935b38078d0811d1408a78c41e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90935398"
 ---
 # <a name="use-power-bi-and-synapse-sql-serverless-to-analyze-azure-cosmos-db-data-with-synapse-link-preview"></a>A Power BI és a szinapszis SQL Server nélküli használata a Azure Cosmos DB-alapú adatelemzéshez a szinapszis-hivatkozással (előzetes verzió)
@@ -46,7 +46,7 @@ A szinapszis munkaterületen lépjen a **fejlesztés** lapra, válassza ki az **
 
 Minden munkaterülethez tartozik egy szinapszis SQL Server nélküli végpont. Az SQL-szkript létrehozása után a felső eszköztáron, az **SQL-hez igény szerint**.
 
-:::image type="content" source="./media/synapse-link-power-bi/enable-sql-on-demand-endpoint.png" alt-text="Az SQL-parancsfájl engedélyezése a szinapszis SQL Server nélküli végpontjának használatára a munkaterületen":::
+:::image type="content" source="./media/synapse-link-power-bi/enable-sql-on-demand-endpoint.png" alt-text="SQL-szkript hozzáadása a szinapszis Analytics-munkaterülethez":::
 
 Hozzon létre egy új, **RetailCosmosDB**nevű adatbázist, és egy SQL-nézetet a szinapszis kapcsolattal rendelkező tárolók között. A következő parancs bemutatja, hogyan hozhat létre adatbázist:
 
@@ -106,7 +106,7 @@ GROUP BY p.[advertising], p.[storeId], p.[weekStarting], q.[largeHH]
 
 Válassza a **Futtatás** lehetőséget, amely a következő táblázatot adja eredményként:
 
-:::image type="content" source="./media/synapse-link-power-bi/join-views-query-results.png" alt-text="Lekérdezési eredmények a StoreDemographics és a RetailSales nézetek csatlakoztatása után":::
+:::image type="content" source="./media/synapse-link-power-bi/join-views-query-results.png" alt-text="SQL-szkript hozzáadása a szinapszis Analytics-munkaterülethez":::
 
 ## <a name="model-views-over-containers-with-power-bi"></a>A tárolók Power BI
 
@@ -141,7 +141,7 @@ Most lépjen a **jelentés** ablakra, és hozzon létre egy jelentést, amely ö
 1. Húzza a **productCode** a **RetailSales** nézetből a jelmagyarázatba egy adott termékcsoport kiválasztásához.
 Miután kiválasztotta ezeket a beállításokat, az alábbi képernyőképhez hasonló diagramot kell látnia:
 
-:::image type="content" source="./media/synapse-link-power-bi/household-size-average-revenue-report.png" alt-text="Jelentés, amely összehasonlítja a háztartások méretének relatív fontosságát az áruházbeli átlagos bevételhez képest.":::
+:::image type="content" source="./media/synapse-link-power-bi/household-size-average-revenue-report.png" alt-text="SQL-szkript hozzáadása a szinapszis Analytics-munkaterülethez":::
 
 ## <a name="next-steps"></a>Következő lépések
 

@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: b-juche
 ms.openlocfilehash: 2b52ad50854092cddd7b9e79cbeebd4a83017081
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91325410"
 ---
 # <a name="set-up-a-capacity-pool"></a>Kapacitáskészlet beállítása
@@ -71,5 +71,5 @@ Már rendelkeznie kell egy létrehozott NetApp-fiókkal.
 - [Tárolási hierarchia](azure-netapp-files-understand-storage-hierarchy.md) 
 - [Az Azure NetApp Files szolgáltatásszintjei](azure-netapp-files-service-levels.md)
 - [Azure NetApp Files díjszabási oldala](https://azure.microsoft.com/pricing/details/storage/netapp/)
-- [Manuális QoS-kapacitás készletének kezelése](manage-manual-qos-capacity-pool.md)
+- [Manuális QoS-kapacitáskészlet kezelése](manage-manual-qos-capacity-pool.md)
 - [Alhálózat delegálása az Azure NetApp Fileshoz](azure-netapp-files-delegate-subnet.md)

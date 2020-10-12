@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 11/03/2019
 ms.author: azfuncdf
 ms.openlocfilehash: 56a9861f0e25e1dcdf741cfdf5c8830dd9b6fc1f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91325810"
 ---
 # <a name="performance-and-scale-in-durable-functions-azure-functions"></a>Teljesítmény és méretezés a Durable Functionsben (Azure Functions)
@@ -264,7 +264,7 @@ Ha éles alkalmazások Durable Functions használatát tervezi használni, fonto
 
 A következő táblázat a korábban ismertetett forgatókönyvek várható *maximális* átviteli számát mutatja. A "példány" egy Orchestrator függvény egyetlen példányára hivatkozik, amely egy kisméretű ([a1](../../virtual-machines/sizes-previous-gen.md)) virtuális gépen fut Azure app Serviceban. A rendszer minden esetben feltételezi, hogy a [kiterjesztett munkamenetek](#orchestrator-function-replay) engedélyezve vannak. A tényleges eredmények a kód által végzett CPU-vagy I/O-műveletektől függően változhatnak.
 
-| Használati eset | Maximális átviteli sebesség |
+| Forgatókönyv | Maximális átviteli sebesség |
 |-|-|
 | Szekvenciális tevékenységek végrehajtása | 5 tevékenység másodpercenként, a példányok száma szerint |
 | Párhuzamos tevékenységek végrehajtása (ventilátor – kimenő) | 100 tevékenység/másodperc/példány |

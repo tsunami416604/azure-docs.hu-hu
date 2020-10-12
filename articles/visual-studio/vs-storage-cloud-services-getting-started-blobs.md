@@ -14,10 +14,10 @@ ms.date: 12/02/2016
 ms.author: ghogen
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: 670aef4f6f866788ef7a1a4502de242e765f5cc6
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89017651"
 ---
 # <a name="get-started-with-azure-blob-storage-and-visual-studio-connected-services-cloud-services-projects"></a>Ismerkedés az Azure Blob Storage-hez és a Visual Studióhoz kapcsolódó szolgáltatásokkal (felhőszolgáltatás-projektek)
@@ -113,7 +113,7 @@ using (var fileStream = System.IO.File.OpenRead(@"path\myfile"))
 }
 ```
 
-## <a name="list-the-blobs-in-a-container"></a>A tárolóban lévő blobok listázása
+## <a name="list-the-blobs-in-a-container"></a>Tárolóban lévő blobok kilistázása
 A tárolóban lévő blobok listázásához először kérje le a tároló hivatkozását. Ezt követően a tároló **ListBlobs** metódusának segítéségével lekérheti a benne lévő blobokat és/vagy könyvtárakat. Ha a tulajdonságok és metódusok gazdag készletét szeretné elérni egy visszaadott **IListBlobItem**, azt egy **CloudBlockBlob**, **CloudPageBlob**vagy **CloudBlobDirectory** objektumra kell átadnia. Ha a típus ismereten, akkor a típusellenőrzés segítségével határozza meg, hogy milyen típussá kell átalakítani. Az alábbi kód bemutatja, hogyan kérhető le és küldhető el a **photos** tárolóban lévő egyes elemek URI azonosítója:
 
 ```csharp

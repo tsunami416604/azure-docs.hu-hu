@@ -14,10 +14,10 @@ ms.custom: ''
 ms.date: 07/24/2020
 ms.author: inhenkel
 ms.openlocfilehash: 9d784e1697dfbcbfec509c1a51c9b832b533c97b
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87830750"
 ---
 # <a name="how-to-use-azure-portal-to-invoke-direct-methods"></a>A Azure Portal használata közvetlen metódusok meghívásához
@@ -60,17 +60,17 @@ A `GraphTopologyList` metódus hívásával lekérheti az aktuálisan telepítet
 1. Kattintson a **metódus meghívása** gombra az oldal tetején.<br><br>
     ![metódus meghívása gomb](media/use-azure-portal-to-invoke-directs-methods/direct-method.png)
 1. Az **eredmény** területén az 200-es állapotú üzenetnek kell megjelennie.<br><br>
-    ![kapcsolat időtúllépése](media/use-azure-portal-to-invoke-directs-methods/connection-timeout.png)
+    ![kapcsolat időkorlátja](media/use-azure-portal-to-invoke-directs-methods/connection-timeout.png)
 
 ## <a name="responses"></a>Válaszok
 
-| Feltétel             | Állapotkód | Részletes hibakód |
+| Condition (Állapot)             | Állapotkód | Részletes hibakód |
 |-----------------------|-------------|---------------------|
-| Success               | 200         | N/A                 |
+| Success               | 200         | N.A.                 |
 | Általános felhasználói hibák   | 400 tartomány   |                     |
 | Általános kiszolgálói hibák | 500 tartomány   |                     |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A [közvetlen metódusok](./direct-methods.md) oldalon további közvetlen módszerek is megtalálhatók.
 

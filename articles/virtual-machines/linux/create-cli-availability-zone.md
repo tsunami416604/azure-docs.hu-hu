@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.date: 04/05/2018
 ms.author: cynthn
 ms.openlocfilehash: 964d2b5d89fd91aca68e9b47b0049529fe284848
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87828999"
 ---
 # <a name="create-a-linux-virtual-machine-in-an-availability-zone-with-the-azure-cli"></a>Linuxos virtuális gép létrehozása rendelkezésre állási zónában az Azure CLI-vel
@@ -186,6 +186,6 @@ A kimenet azt mutatja, hogy az IP-cím ugyanabban a rendelkezésre állási zón
 }
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebből a cikkből megtudhatta, hogyan hozható létre virtuális gép egy rendelkezésre állási zónában. További információ az Azure-beli virtuális gépek [rendelkezésre állásáról](../availability.md) .

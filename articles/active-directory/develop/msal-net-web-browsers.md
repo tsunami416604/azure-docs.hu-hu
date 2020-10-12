@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: devx-track-csharp, aaddev
 ms.openlocfilehash: bf51f39a789b91a4cb0b88eb8bb1f2989bec7358
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88165821"
 ---
 # <a name="using-web-browsers-msalnet"></a>Böngészők használata (MSAL.NET)
@@ -41,7 +41,7 @@ Fontos tisztában lenni azzal, hogy a jogkivonat interaktív beszerzése során 
 
 A MSAL.NET egy multi-Framework könyvtár, amely keretrendszer-specifikus kóddal rendelkezik, amely egy felhasználói felületi vezérlőben futtatja a böngészőt (például a klasszikus .NET-es verzióban a WinForms-t használja, a Xamarin pedig natív mobil vezérlőket használ, stb.). Ezt a vezérlőt `embedded` webes felhasználói felületnek nevezzük. Azt is megteheti, hogy a MSAL.NET képes a rendszerindító böngésző kiindítására is.
 
-Általában azt javasoljuk, hogy használja a platform alapértelmezését, és ez általában a rendszerböngésző. A rendszerböngésző jobban megjegyezi a korábban bejelentkezett felhasználókat. Ha módosítania kell ezt a viselkedést, használja a következőt`WithUseEmbeddedWebView(bool)`
+Általában azt javasoljuk, hogy használja a platform alapértelmezését, és ez általában a rendszerböngésző. A rendszerböngésző jobban megjegyezi a korábban bejelentkezett felhasználókat. Ha módosítania kell ezt a viselkedést, használja a következőt `WithUseEmbeddedWebView(bool)`
 
 ### <a name="at-a-glance"></a>Dióhéjban
 

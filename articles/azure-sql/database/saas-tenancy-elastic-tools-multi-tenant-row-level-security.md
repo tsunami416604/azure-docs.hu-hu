@@ -12,10 +12,10 @@ ms.author: vanto
 ms.reviewer: sstein
 ms.date: 12/18/2018
 ms.openlocfilehash: b9550f365eb11ffff87add041824504488c0de15
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91619933"
 ---
 # <a name="multi-tenant-applications-with-elastic-database-tools-and-row-level-security"></a>Több-bérlős alkalmazások rugalmas adatbázis-eszközökkel és sor szintű biztonsággal
@@ -254,7 +254,7 @@ GO
 ```
 
 > [!TIP]
-> Összetett projektekben előfordulhat, hogy a predikátumot több száz táblára kell felvennie, ami unalmas lehet. Létezik egy segítő tárolt eljárás, amely automatikusan létrehoz egy biztonsági házirendet, és feltesz egy predikátumot a séma összes táblájába. További információkért tekintse meg a következő blogbejegyzéset: a [sor szintű biztonság alkalmazása az összes táblára – segítő parancsfájl (blog)](https://techcommunity.microsoft.com/t5/sql-server/apply-row-level-security-to-all-tables-helper-script/ba-p/384360).
+> Összetett projektekben előfordulhat, hogy a predikátumot több száz táblára kell felvennie, ami unalmas lehet. Létezik egy segítő tárolt eljárás, amely automatikusan létrehoz egy biztonsági házirendet, és feltesz egy predikátumot a séma összes táblájába. További információkért tekintse meg a blogbejegyzés [Row-Level biztonság alkalmazása az összes táblára – segítő szkriptet (blog)](https://techcommunity.microsoft.com/t5/sql-server/apply-row-level-security-to-all-tables-helper-script/ba-p/384360).
 
 Most, ha újra futtatja a minta alkalmazást, a bérlők csak azokat a sorokat látják, amelyek tartoznak hozzájuk. Emellett az alkalmazás nem szúrhat be olyan sorokat, amelyek nem a szegmens adatbázishoz jelenleg csatlakozó bérlők közé tartoznak. Emellett az alkalmazás nem tudja frissíteni a TenantId bármely olyan sorban, amelyet láthat. Ha az alkalmazás valamelyikre próbálkozik, a rendszer egy DbUpdateException emel.
 
@@ -303,7 +303,7 @@ SqlDatabaseUtils.SqlRetryPolicy.ExecuteAction(() =>
 
 > [!NOTE]
 > Ha az alapértelmezett korlátozásokat használja egy Entity Framework projekthez, azt javasoljuk, hogy a TenantId oszlopot *ne* foglalja bele az EF-adatmodellbe. Ennek az az oka, hogy Entity Framework lekérdezések automatikusan megadják az alapértelmezett értékeket, amelyek felülbírálják a munkamenet-környezetet használó T-SQL-ben létrehozott alapértelmezett korlátozásokat \_ .
-> Ha például a minta projektben szeretné használni az alapértelmezett korlátozásokat, távolítsa el a TenantId a DataClasses.cs-ből (és futtassa az Add-Migration parancsot a csomagkezelő konzolon), és a T-SQL használatával győződjön meg arról, hogy a mező csak az adatbázis tábláiban van. Így az EF automatikusan helytelenül adja meg az alapértelmezett értékeket az adatok beszúrásakor.
+> Ha például az alapértelmezett korlátozásokat szeretné használni a mintavételezési projektben, távolítsa el a TenantId a DataClasses.cs (és futtassa Add-Migration a csomagkezelő konzolon), és a T-SQL használatával győződjön meg arról, hogy a mező csak az adatbázis tábláiban van. Így az EF automatikusan helytelenül adja meg az alapértelmezett értékeket az adatok beszúrásakor.
 
 ### <a name="optional-enable-a-superuser-to-access-all-rows"></a>Választható Az összes sor elérésének engedélyezése a *rendszergazda* számára
 
@@ -342,7 +342,7 @@ GO
 ### <a name="maintenance"></a>Karbantartás
 
 - **Új**szegmensek hozzáadása: hajtsa végre a T-SQL-szkriptet az RLS bármely új szegmensen való engedélyezéséhez, ellenkező esetben a rendszer nem szűri az ilyen szegmensek lekérdezéseit.
-- **Új táblák hozzáadása**: Ha új táblát hoz létre, vegyen fel egy szűrőt és a tiltási predikátumot az összes szegmens biztonsági házirendjébe. Ellenkező esetben a rendszer nem szűri az új tábla lekérdezéseit. Ez a Hozzáadás egy DDL-trigger használatával automatizálható, a következő témakörben leírtak szerint: a [sor szintű biztonság automatikus alkalmazása az újonnan létrehozott táblákra (blog)](https://techcommunity.microsoft.com/t5/SQL-Server/Apply-Row-Level-Security-automatically-to-newly-created-tables/ba-p/384393).
+- **Új táblák hozzáadása**: Ha új táblát hoz létre, vegyen fel egy szűrőt és a tiltási predikátumot az összes szegmens biztonsági házirendjébe. Ellenkező esetben a rendszer nem szűri az új tábla lekérdezéseit. Ez a Hozzáadás egy DDL-trigger használatával automatizálható, a [Row-Level biztonság automatikus alkalmazása az újonnan létrehozott táblákra (blog)](https://techcommunity.microsoft.com/t5/SQL-Server/Apply-Row-Level-Security-automatically-to-newly-created-tables/ba-p/384393)című cikkben leírtak szerint.
 
 ## <a name="summary"></a>Összegzés
 

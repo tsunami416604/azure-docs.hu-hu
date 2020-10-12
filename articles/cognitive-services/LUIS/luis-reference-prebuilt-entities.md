@@ -10,10 +10,10 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 07/20/2020
 ms.openlocfilehash: 7a4654b8f389ad18010bb4ad211103f2816a18ee
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91542002"
 ---
 # <a name="entities-per-culture-in-your-luis-model"></a>Entitások/kulturális elemek a LUIS-modellben
@@ -346,10 +346,10 @@ KeyPhrase is not available.
 -->
 
 ## <a name="contribute-to-prebuilt-entity-cultures"></a>Az előre elkészített entitások kultúrájának elősegítése
-Az előre összeállított entitások a felismerők – szöveg nyílt forráskódú projektben vannak kifejlesztve. [Hozzájárul](https://github.com/Microsoft/Recognizers-Text) a projekthez. Ez a projekt kulturális pénznemre vonatkozó példákat tartalmaz.
+Az előre összeállított entitások a Recognizers-Text nyílt forráskódú projektben vannak kifejlesztve. [Hozzájárul](https://github.com/Microsoft/Recognizers-Text) a projekthez. Ez a projekt kulturális pénznemre vonatkozó példákat tartalmaz.
 
-A GeographyV2 és a PersonName nem szerepelnek a felismerők – Text projektben. Az előre elkészített entitásokkal kapcsolatos problémák esetén nyisson meg egy [támogatási kérést](../../azure-portal/supportability/how-to-create-azure-support-request.md).
+A GeographyV2 és a PersonName nem szerepelnek a Recognizers-Text projektben. Az előre elkészített entitásokkal kapcsolatos problémák esetén nyisson meg egy [támogatási kérést](../../azure-portal/supportability/how-to-create-azure-support-request.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tudnivalók a [számokról](luis-reference-prebuilt-number.md), a [datetimeV2](luis-reference-prebuilt-datetimev2.md)és a [Pénznem](luis-reference-prebuilt-currency.md) entitásokról.

@@ -4,11 +4,11 @@ description: Adattár hitelesítő adatainak konfigurálása a lemezképek a tá
 ms.topic: conceptual
 ms.date: 12/09/2019
 ms.custom: sfrev
-ms.openlocfilehash: 142ede6fcc59063d83854712a966a90c7472923b
-ms.sourcegitcommit: 9c262672c388440810464bb7f8bcc9a5c48fa326
+ms.openlocfilehash: 9bd6e6a0a22f7568760f014897fd28ff47e9450b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89421424"
 ---
 # <a name="configure-repository-credentials-for-your-application-to-download-container-images"></a>Az alkalmazás adattárbeli hitelesítő adatainak konfigurálása a tároló lemezképének letöltéséhez
@@ -83,10 +83,6 @@ Itt látható egy példa arra, hogy mire lehet felvenni a `Hosting` fájl Cluste
           {
             "name": "DefaultContainerRepositoryPasswordType",
             "value": "PlainText"
-          },
-          {
-        "name": "DefaultMSIEndpointForTokenAuthentication",
-        "value": "URI"
           }
         ]
       },
@@ -121,25 +117,6 @@ Service Fabric támogatja a tokenek használatát hitelesítő adatként a táro
 
     > [!NOTE]
     > A True ( `UseDefaultRepositoryCredentials` igaz) érték TRUE (igaz) értékre van állítva az `UseTokenAuthenticationCredentials` üzembe helyezés során.
-
-### <a name="using-token-credentials-outside-of-azure-global-cloud"></a>Jogkivonat-hitelesítő adatok használata az Azure globális felhőn kívül
-
-Ha jogkivonat-alapú beállításjegyzékbeli hitelesítő adatokat használ, Service Fabric beolvas egy jogkivonatot a virtuális gép nevében, hogy az ACR-nek mutassanak. Alapértelmezés szerint a Service Fabric olyan jogkivonatot kér, amelynek a célközönsége a globális Azure Cloud-végpont. Ha egy másik felhőalapú példányra (például az Azure Germany-ra vagy Azure Governmentra) helyez üzembe, akkor felül kell bírálnia a paraméter alapértelmezett értékét `DefaultMSIEndpointForTokenAuthentication` . Ha nem telepít speciális környezetet, ne bírálja felül ezt a paramétert. Ha így van, az alapértelmezett értéket fogja lecserélni, amely a
-
-```
-http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https://management.core.windows.net/
-```
-
-a megfelelő erőforrás-végpontot a környezetéhez. Az [Azure Germany](https://docs.microsoft.com/azure/germany/germany-developer-guide#endpoint-mapping)esetében például a felülbírálás a következő lesz: 
-
-```json
-{
-    "name": "DefaultMSIEndpointForTokenAuthentication",
-    "value": "http://169.254.169.254/metadata/identity/oauth2/token?api-version=2018-02-01&resource=https://management.core.cloudapi.de/"
-}
-```
-
-[További információ a virtuálisgép-méretezési csoport jogkivonatának beolvasásáról](https://docs.microsoft.com/azure/active-directory/managed-identities-azure-resources/how-to-use-vm-token).
 
 ## <a name="next-steps"></a>Következő lépések
 
