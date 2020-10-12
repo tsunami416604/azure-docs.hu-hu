@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.custom: devx-track-csharp
 ms.date: 10/18/2019
 ms.openlocfilehash: bf8b20dadd2fcd78657aa6877e796b645332dd94
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88213459"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-timeouts"></a>Azure Cache for Redis-időtúllépések hibaelhárítása
@@ -122,4 +122,4 @@ A lehetséges kiváltó okok kivizsgálásához a következő lépéseket haszn�
 - [Az Azure Cache for Redis ügyféloldali hibáinak elhárítása](cache-troubleshoot-client.md)
 - [Az Azure Cache for Redis kiszolgálóoldali hibáinak elhárítása](cache-troubleshoot-server.md)
 - [Hogyan lehet teljesítménytesztet és tesztelni a gyorsítótár teljesítményét?](cache-management-faq.md#how-can-i-benchmark-and-test-the-performance-of-my-cache)
-- [Az Azure cache figyelése a Redis](cache-how-to-monitor.md)
+- [Az Azure Cache for Redis monitorozása](cache-how-to-monitor.md)

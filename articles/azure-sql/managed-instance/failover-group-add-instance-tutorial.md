@@ -13,10 +13,10 @@ ms.author: mathoma
 ms.reviewer: sashan, sstein
 ms.date: 08/27/2019
 ms.openlocfilehash: df10e2b674a8e97766ee96a802e614e2bd797b7b
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91617740"
 ---
 # <a name="tutorial-add-sql-managed-instance-to-a-failover-group"></a>Oktatóanyag: SQL felügyelt példány hozzáadása feladatátvételi csoporthoz
@@ -1154,7 +1154,7 @@ Nincsenek elérhető parancsfájlok a Azure Portal számára.
 
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ebben az oktatóanyagban egy feladatátvételi csoportot konfigurált két felügyelt példány között. Megtanulta végrehajtani az alábbi műveleteket:
 

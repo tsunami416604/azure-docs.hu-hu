@@ -5,15 +5,15 @@ ms.topic: include
 ms.date: 10/26/2018
 ms.author: alkohli
 ms.openlocfilehash: a5a286753e438b7d65f3d33a82669c4f7e79a282
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86544626"
 ---
 #### <a name="to-create-public-endpoints-on-the-cloud-appliance"></a>Nyilvános végpontok létrehozása a felhőalapú készüléken
 
-1. Jelentkezzen be az Azure Portalra.
+1. Jelentkezzen be az Azure portálra.
 2. Lépjen a **Virtuális gépek** elemre, majd válassza ki a felhőalapú készülékként használt virtuális gépet, és kattintson rá.
     
 3. Létre kell hozni egy hálózati biztonság csoportra (network security group, NSG) vonatkozó szabályt a virtuális gépbe és gépből irányuló forgalom szabályozásához. Az NSG-re vonatkozó szabály létrehozásához hajtsa végre az alábbi lépéseket.

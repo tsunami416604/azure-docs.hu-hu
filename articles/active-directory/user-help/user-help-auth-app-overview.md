@@ -12,10 +12,10 @@ ms.topic: end-user-help
 ms.date: 01/15/2020
 ms.author: curtand
 ms.openlocfilehash: 7f4c09a32794e13b0e0041ee916401b714d8509e
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90055231"
 ---
 # <a name="what-is-the-microsoft-authenticator-app"></a>Mi a Microsoft Authenticator alkalmazás?
@@ -71,7 +71,7 @@ A fiók típusától függően a szervezet dönthet úgy, hogy kétfaktoros elle
 
 ## <a name="in-this-section"></a>A szakasz tartalma
 
-| Cikk | Description |
+| Cikk | Leírás |
 | ------ | ------------ |
 | [Az alkalmazás letöltése és telepítése](user-help-auth-app-download-install.md) | Leírja, hogy hol és hogyan lehet beolvasni és telepíteni a Microsoft Authenticator alkalmazást az Android és az iOS rendszerű eszközökön. |
 | [Munkahelyi vagy iskolai fiókjainak hozzáadása](user-help-auth-app-add-work-school-account.md) | Ismerteti, hogyan adhat hozzá különböző munkahelyi vagy iskolai és személyes fiókokat a Microsoft Authenticator alkalmazáshoz. |

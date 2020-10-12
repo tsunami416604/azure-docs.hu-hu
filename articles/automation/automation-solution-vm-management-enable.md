@@ -6,10 +6,10 @@ ms.subservice: process-automation
 ms.date: 04/01/2020
 ms.topic: conceptual
 ms.openlocfilehash: dde2c3e4cf496bb15ca91c72d9a41936af7051c5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83743755"
 ---
 # <a name="enable-startstop-vms-during-off-hours"></a>Virtuális gépek munkaidőn kívüli indításának és leállításának engedélyezése
@@ -82,7 +82,7 @@ Miután rákattintott az **OK gombra**, a rendszer érvényesíti a konfiguráci
   
 4. Az **ütemterv** mezőben kiválaszthatja a szolgáltatás által a virtuális gépek felügyeletének ütemtervét. Válassza ki az ütemterv kezdési dátumát és időpontját, és hozzon létre egy ismétlődő napi ütemtervet a kiválasztott időponttól kezdve. Egy másik régió kiválasztása nem érhető el. Ha a szolgáltatás konfigurálása után szeretné beállítani az ütemtervet a megadott időzónára, tekintse meg [az indítási és leállítási ütemtervek módosítása](automation-solution-vm-management-config.md#modify-the-startup-and-shutdown-schedules)című témakört.
 
-5. Ha e-mail-értesítéseket szeretne fogadni egy [műveleti csoportból](../azure-monitor/platform/action-groups.md), fogadja el az alapértelmezett **Igen** értéket az **e-mail értesítések** mezőben, és adjon meg egy érvényes e-mail-címet. Ha a **nem** lehetőséget választja, de az e-mail-értesítések fogadására később dönt, akkor frissítheti az érvényes e-mail-címekkel létrehozott műveleti csoportot, vesszővel elválasztva. 
+5. Ha e-mail-értesítéseket szeretne fogadni egy [műveleti csoportból](../azure-monitor/platform/action-groups.md), fogadja el az alapértelmezett **Igen** értéket az  **e-mail értesítések** mezőben, és adjon meg egy érvényes e-mail-címet. Ha a **nem** lehetőséget választja, de az e-mail-értesítések fogadására később dönt, akkor frissítheti az érvényes e-mail-címekkel létrehozott műveleti csoportot, vesszővel elválasztva. 
 
 6. Engedélyezze a következő riasztási szabályokat:
 
@@ -98,7 +98,7 @@ A Start/Stop VMs during off-hours nem tartalmaz előre meghatározott riasztáso
 
 1. Miután konfigurálta a szolgáltatáshoz szükséges kezdeti beállításokat, kattintson az **OK** gombra a paraméterek lap bezárásához.
 
-2. Kattintson a **Létrehozás** lehetőségre. Az összes beállítás ellenőrzése után a szolgáltatás telepíti az előfizetését. Ez a folyamat több másodpercig is eltarthat, és a menü **értesítések** részén nyomon követheti a folyamat állapotát.
+2. Kattintson a **Létrehozás** elemre. Az összes beállítás ellenőrzése után a szolgáltatás telepíti az előfizetését. Ez a folyamat több másodpercig is eltarthat, és a menü **értesítések** részén nyomon követheti a folyamat állapotát.
 
     > [!NOTE]
     > Ha Azure Cloud Solution Provider (Azure CSP) előfizetéssel rendelkezik, az üzembe helyezés befejezése után az Automation-fiókjában lépjen a **változók** elemre a **megosztott erőforrások** területen, és állítsa a [External_EnableClassicVMs](automation-solution-vm-management.md#variables) változót **hamis**értékre. Ezzel leállítja a megoldást a klasszikus virtuálisgép-erőforrások keresésére.

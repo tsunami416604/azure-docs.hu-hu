@@ -4,10 +4,10 @@ description: Ismerje meg, hogyan állíthat be biztonságos Service Fabric-fürt
 ms.topic: conceptual
 ms.date: 08/16/2018
 ms.openlocfilehash: fd2c472d24f305e42f1706e5fc49168ccde2a580
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86258758"
 ---
 # <a name="create-a-service-fabric-cluster-using-azure-resource-manager"></a>Service Fabric-fürt létrehozása Azure Resource Manager használatával 
@@ -278,7 +278,7 @@ az sf cluster create --resource-group $resourceGroupName --location $resourceGro
     --template-file $templateFilePath --parameter-file $parameterFilePath 
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ezen a ponton egy biztonságos fürt fut az Azure-ban. Ezután [kapcsolódjon a fürthöz](service-fabric-connect-to-secure-cluster.md) , és Ismerje meg, hogyan [kezelheti az alkalmazási titkokat](service-fabric-application-secret-management.md).
 
 A JSON-szintaxis és a tulajdonságok sablon használatára a következő témakörben talál további információt: [Microsoft. ServiceFabric/fürtök sablonjának leírása](/azure/templates/microsoft.servicefabric/clusters).

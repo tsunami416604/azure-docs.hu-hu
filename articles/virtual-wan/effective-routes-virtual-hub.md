@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 09/22/2020
 ms.author: cherylmc
 ms.openlocfilehash: ad487aa7492abcf02988c78ccfa2ba7cd4798249
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90983653"
 ---
 # <a name="view-virtual-hub-effective-routes"></a>Virtuális központ érvényes útvonalainak megtekintése
@@ -33,7 +33,7 @@ Az oldal kimenete a következő mezőket jeleníti meg:
 * **Forrás: az**útválasztási forrás erőforrás-azonosítója.
 * **Elérési út**: a BGP attribútum as (autonóm rendszer) elérési útja felsorolja az összes olyan számot, amelyet át kell adni ahhoz, hogy elérje azt a helyet, ahol az elérési utat csatolták, a meghirdetve.
 
-### <a name="example"></a><a name="example"></a>Példa
+### <a name="example"></a><a name="example"></a>Például
 
 A következő példában szereplő értékek azt jelzik, hogy a virtuális hub-kapcsolatok vagy az útválasztási táblázat megtanulta a 10.2.0.0/24 (ág-előtag) útvonalát. Megtanulta az útvonalat a **VPN következő ugrásának típusa** VPN_S2S_Gateway a **következő ugrás** VPN Gateway erőforrás-azonosítóval. Az **útvonal kezdőpontja** a kezdeményező VPN-átjáró/útválasztási tábla/kapcsolat erőforrás-azonosítójára mutat. Az **elérési** út a ág as elérési útját jelöli.
 

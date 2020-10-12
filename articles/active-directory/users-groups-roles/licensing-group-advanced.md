@@ -16,10 +16,10 @@ ms.reviewer: sumitp
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: c7cc4065297c35164f1e37b187c6280b3d3546ee
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91538840"
 ---
 # <a name="scenarios-limitations-and-known-issues-using-groups-to-manage-licensing-in-azure-active-directory"></a>Forgatókönyvek, korlátozások és ismert problémák csoportok használatával a licencelés kezeléséhez Azure Active Directory
@@ -163,7 +163,7 @@ Az [Azure ad-naplók](../reports-monitoring/concept-audit-logs.md#audit-logs) ha
 
 Amikor egy licenc megváltozik egy csoporton, az Azure AD elkezdi alkalmazni a módosításokat az összes felhasználóra.
 
-1. Ha szeretné megtekinteni, hogy a csoportok mikor kezdték meg a feldolgozást, állítsa be a **tevékenység** szűrőt, hogy *megkezdje a csoport alapú licenc alkalmazását* Vegye figyelembe, hogy a művelet szereplője *Microsoft Azure ad csoport-alapú licencelés* – egy olyan rendszerfiók, amely az összes csoportos licencelési módosítás végrehajtásához használatos.
+1. Ha szeretné megtekinteni, hogy a csoportok mikor kezdték meg a feldolgozást, állítsa be a **tevékenység** szűrőt, hogy *megkezdje a csoport alapú licenc alkalmazását* Vegye figyelembe, hogy a művelet szereplője *Microsoft Azure AD Group-Based licencelése* – egy olyan rendszerfiók, amely az összes csoportos licencelési módosítás végrehajtásához használatos.
    >[!TIP]
    > Kattintson a lista egyik elemére a *módosított tulajdonságok* mező megjelenítéséhez – ez megjeleníti a feldolgozásra kiválasztott licencek változásait. Ez akkor hasznos, ha egy csoporton több módosítást hajtott végre, és nem biztos benne, hogy melyik lett feldolgozva.
 
@@ -179,7 +179,7 @@ Amikor egy licenc megváltozik egy csoporton, az Azure AD elkezdi alkalmazni a m
    > ```
 
 3. Ha meg szeretné tekinteni a csoport feldolgozásának teljes naplóját, beleértve az összes felhasználó módosítását, állítsa be a következő szűrőket:
-   - **Kezdeményező (színész)**: "Microsoft Azure ad csoport alapú licencelés"
+   - **Kezdeményező (színész)**: "Microsoft Azure ad Group-Based licencelés"
    - **Dátumtartomány** (nem kötelező): egyéni tartomány, ha tudja, hogy egy adott csoport elindult, és befejeződött a feldolgozás.
 
 Ez a minta kimenet a feldolgozás kezdetét, az összes eredményül kapott felhasználói változást és a feldolgozás befejezését mutatja.
@@ -219,7 +219,7 @@ Ha Group-alapú licencelést használ, érdemes megismernie az alábbi korlátoz
 
   Az ilyen típusú korlátozások megkerülő megoldásként nyissa meg a **csoport** panelt az Azure ad-ben, és kattintson az **újrafeldolgozás**gombra. Ez a parancs feldolgozza a csoport összes felhasználóját, és ha lehetséges, feloldja a hibák állapotait.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A csoportalapú licencelés segítségével folytatott licenckezelés egyéb forgatókönyveivel kapcsolatos további tudnivalókért tekintse át az alábbi témaköröket:
 

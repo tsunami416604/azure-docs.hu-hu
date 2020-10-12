@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.openlocfilehash: 52230d6b13c4210e0ff8e85d0a3efe39af55f6e2
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88935058"
 ---
 # <a name="collect-and-analyze-log-data-for-azure-cognitive-search"></a>Az Azure-Cognitive Search naplózási adatainak összegyűjtése és elemzése
@@ -195,7 +195,7 @@ A blob Storage a naplófájlok archiválására szolgál. A naplófájl megtekin
 
 Miután letöltötte a fájlt, nyissa meg egy JSON-szerkesztőben a tartalom megtekintéséhez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha még nem tette meg, tekintse át a keresési szolgáltatás figyelésének alapjait, és ismerkedjen meg a teljes körű felügyeleti funkciókkal.
 

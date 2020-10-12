@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 06/17/2020
 ms.author: sstein
 ms.openlocfilehash: 0e44280c0a6c0d39c98e3aeecd5e9a3707332e81
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88236573"
 ---
 # <a name="whats-new-in-azure-sql-database--sql-managed-instance"></a>A Azure SQL Database & SQL felügyelt példányának újdonságai
@@ -42,7 +42,7 @@ Ez a táblázat a terminológia változásának gyors összehasonlítását bizt
 |**Azure SQL Database**|*Önálló adatbázis* Azure SQL Database| Ha nincs kifejezetten megadva, a terméknév Azure SQL Database a rugalmas készletbe telepített önálló adatbázisokat és adatbázisokat is tartalmazza. |
 |**Azure SQL Database**|*Rugalmas készlet* Azure SQL Database| Ha nincs kifejezetten megadva, a terméknév Azure SQL Database a rugalmas készletbe telepített önálló adatbázisokat és adatbázisokat is tartalmazza.  |
 |**Azure SQL Database** |Azure SQL Database | Bár a kifejezés változatlan marad, az már csak az önálló adatbázisra és a rugalmas készletekre vonatkozik, és nem tartalmazza a felügyelt példányt. |
-| **Azure SQL**| N/A | Ez az Azure-ban elérhető SQL Server adatbázismotor-termékek családját jelenti: Azure SQL Database, Azure SQL felügyelt példány és Azure-beli virtuális gépeken SQL Server. | 
+| **Azure SQL**| N.A. | Ez az Azure-ban elérhető SQL Server adatbázismotor-termékek családját jelenti: Azure SQL Database, Azure SQL felügyelt példány és Azure-beli virtuális gépeken SQL Server. | 
 
 ## <a name="features-in-public-preview"></a>A nyilvános előzetes verzióban elérhető funkciók
 

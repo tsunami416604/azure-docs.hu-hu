@@ -4,10 +4,10 @@ description: Ez a cikk útmutatást nyújt az éles környezetekben IoT Edge mod
 ms.topic: conceptual
 ms.date: 04/27/2020
 ms.openlocfilehash: c34e05e184cfa6f0933701a76177fae3eed70c0a
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87071940"
 ---
 # <a name="production-readiness-and-best-practices"></a>Termelési készenlét és ajánlott eljárások
@@ -152,7 +152,7 @@ A peremhálózati eszközként használt linuxos virtuális gép nem válaszol, 
 1. `sudo apt-get autoremove1`
 
     Az automatikus eltávolítási lehetőség eltávolítja azokat a csomagokat, amelyeket a rendszer automatikusan telepített, mert más csomagok is szükségesek, de a többi csomag eltávolításával már nincs rájuk szükség.
-1. `sudo docker image ls`– A peremhálózati rendszeren lévő Docker-rendszerképek listáját jeleníti meg
+1. `sudo docker image ls` – A peremhálózati rendszeren lévő Docker-rendszerképek listáját jeleníti meg
 1. `sudo docker system prune `
 
     A Docker konzervatív módszert alkalmaz a fel nem használt objektumok (gyakran "Garbage Collection"), például képek, tárolók, kötetek és hálózatok tisztítására: ezeket az objektumokat általában nem távolítja el a rendszer, hacsak nem kifejezetten kéri a Docker használatát. Ennek hatására a Docker további lemezterületet is igénybe vehet. Minden objektumtípus esetében a Docker egy aszalt szilva parancsot biztosít. Emellett a Docker System aszalt szilva szolgáltatással egyszerre több típusú objektumot is kitakaríthat. További információkért lásd a nem [használt Docker-objektumok aszalt szilvát](https://docs.docker.com/config/pruning/)ismertető témakört.

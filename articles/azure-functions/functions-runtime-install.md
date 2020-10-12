@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 11/28/2017
 ms.author: anwestg
 ms.openlocfilehash: 73b9533fa00c783e1cfb85270198f5c00c66afd5
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86540383"
 ---
 # <a name="install-the-azure-functions-runtime-preview-2"></a>A 2. Azure Functions-futtatókörnyezet előzetes verziójának telepítése
@@ -87,7 +87,7 @@ A Azure Functions-futtatókörnyezet telepítésének befejezéséhez végre kel
 
     ![Azure Functions-futtatókörnyezet előnézet IIS][11]
 
-1. Kattintson a **szolgáltatások** fülre.  Ezen a lapon láthatók a Azure Functions-futtatókörnyezet konfigurációs eszköz szolgáltatásainak állapota.  Ha a **Azure functions gazdagép aktiválási szolgáltatása** nem fut a kezdeti konfigurálás után, kattintson a **szolgáltatás indítása**lehetőségre.
+1. Kattintson a **szolgáltatások** fülre.  Ezen a lapon láthatók a Azure Functions-futtatókörnyezet konfigurációs eszköz szolgáltatásainak állapota.  Ha a  **Azure functions gazdagép aktiválási szolgáltatása** nem fut a kezdeti konfigurálás után, kattintson a **szolgáltatás indítása**lehetőségre.
 
     ![Azure Functions-futtatókörnyezet előzetes verzió konfigurációjának befejezése][12]
 

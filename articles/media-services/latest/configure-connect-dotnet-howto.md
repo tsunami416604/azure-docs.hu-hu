@@ -15,10 +15,10 @@ ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: has-adal-ref, devx-track-csharp
 ms.openlocfilehash: b9b72e8340722f8ddc97b3769ce22e607974a508
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89297399"
 ---
 # <a name="connect-to-media-services-v3-api---net"></a>Kapcsolódás Media Services V3 API-hoz – .NET
@@ -48,7 +48,7 @@ Az ebben a témakörben található minta alkalmazás a célokat célozza meg `n
 1. A Visual Studióban válassza az **eszközök**  >  **NuGet csomagkezelő**  >  **NuGet-kezelő konzolt**.
 2. A **Package Manager Console (csomagkezelő konzol** ) ablakban a `Install-Package` következő NuGet-csomagok hozzáadásához használja a parancsot. Például: `Install-Package Microsoft.Azure.Management.Media`.
 
-|Csomag|Description|
+|Csomag|Leírás|
 |---|---|
 |`Microsoft.Azure.Management.Media`|Azure Media Services SDK. <br/>Győződjön meg arról, hogy a legújabb Azure Media Services csomagot használja, és ellenőrizze a [Microsoft. Azure. Management. Media eszközt](https://www.nuget.org/packages/Microsoft.Azure.Management.Media).|
 |`Microsoft.Rest.ClientRuntime.Azure.Authentication`|ADAL-hitelesítési kódtár a NET-hez készült Azure SDK-hoz|

@@ -14,10 +14,10 @@ ms.topic: conceptual
 ms.date: 08/02/2020
 ms.author: guybo
 ms.openlocfilehash: f945c58b256c2a024a62b15a1bca1841483e1849
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91279433"
 ---
 # <a name="endorsed-linux-distributions-on-azure"></a>Támogatott Linux-disztribúciók az Azure-ban
@@ -50,14 +50,14 @@ Az Azure-nak szüksége van arra, hogy a támogatott Linux-disztribúciók közz
 
 ## <a name="azure-tuned-kernels"></a>Azure által hangolt kernelek
 
-Az Azure szorosan együttműködik a különböző támogatott Linux-disztribúciókkal az Azure Marketplace-en közzétett lemezképek optimalizálásához. Ezen együttműködés egyik aspektusa az Azure platformra optimalizált, "hangolt" Linux-kernelek fejlesztése, amely a Linux-disztribúció teljes mértékben támogatott összetevőiként érhető el. Az Azure által hangolt kernelek új funkciókkal és teljesítménnyel kapcsolatos újdonságokkal rendelkeznek, és gyorsabb (általában negyedéves) ritmust tartalmaznak a terjesztésből elérhető alapértelmezett vagy általános kernelekhez képest.
+Az Azure szorosan együttműködik a különböző támogatott Linux-disztribúciókkal az Azure Marketplace-en közzétett lemezképek optimalizálásához. Ezen együttműködés egyik aspektusa az Azure platformra optimalizált, "hangolt" Linux-kernelek fejlesztése, amely a Linux-disztribúció teljes mértékben támogatott összetevőiként érhető el. A Azure-Tuned kernelek új funkciókat és teljesítménnyel kapcsolatos újdonságokat tartalmaznak, és a disztribúcióból elérhető alapértelmezett vagy általános kernelekhez képest gyorsabb (általában negyedéves) ritmussal rendelkeznek.
 
-A legtöbb esetben ezek a kernelek előre telepítve lesznek az Azure Marketplace-en az alapértelmezett lemezképeken, így az ügyfelek azonnal kihasználhatják ezeket az optimalizált kerneleket. Az Azure-ban hangolt kernelekről további információt az alábbi hivatkozásokon talál:
+A legtöbb esetben ezek a kernelek előre telepítve lesznek az Azure Marketplace-en az alapértelmezett lemezképeken, így az ügyfelek azonnal kihasználhatják ezeket az optimalizált kerneleket. Ezekről a Azure-Tuned kernelekről további információt az alábbi hivatkozásokon talál:
 
-- [CentOS Azure által hangolt kernel – a CentOS virtualizációs SIG használatával érhető el](https://wiki.centos.org/SpecialInterestGroup/Virtualization)
+- [CentOS Azure-Tuned kernel – a CentOS virtualizációs SIG használatával érhető el](https://wiki.centos.org/SpecialInterestGroup/Virtualization)
 - [Debian Cloud kernel – elérhető a Debian 10 és a Debian 9 "backports" rendszerképpel az Azure-ban](https://wiki.debian.org/Cloud/MicrosoftAzure)
-- [SLES Azure-ban hangolt kernel](https://www.suse.com/c/a-different-builtin-kernel-for-azure-on-demand-images/)
-- [Ubuntu Azure által hangolt kernel](https://blog.ubuntu.com/2017/09/21/microsoft-and-canonical-increase-velocity-with-azure-tailored-kernel)
+- [SLES Azure-Tuned kernel](https://www.suse.com/c/a-different-builtin-kernel-for-azure-on-demand-images/)
+- [Ubuntu Azure-Tuned kernel](https://blog.ubuntu.com/2017/09/21/microsoft-and-canonical-increase-velocity-with-azure-tailored-kernel)
 
 ## <a name="partners"></a>Partnerek
 

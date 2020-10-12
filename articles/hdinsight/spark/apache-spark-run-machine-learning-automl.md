@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 12/13/2019
 ms.openlocfilehash: 6e472c65897fa57cdb1e0b09d94c62913e268040
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86087470"
 ---
 # <a name="run-azure-machine-learning-workloads-with-automated-machine-learning-on-apache-spark-in-hdinsight"></a>Azure Machine Learning számítási feladatok futtatása automatikus gépi tanulással a HDInsight-ben Apache Spark
@@ -21,7 +21,7 @@ Azure Machine Learning leegyszerűsíti és felgyorsítja a gépi tanulási mode
 ## <a name="install-azure-machine-learning-on-an-hdinsight-cluster"></a>Azure Machine Learning telepítése HDInsight-fürtön
 
 Az automatizált gépi tanulással kapcsolatos általános útmutatókért lásd [: oktatóanyag: automatikus gépi tanulás használata a regressziós modell létrehozásához](../../machine-learning/tutorial-auto-train-models.md).
-Minden új HDInsight-Spark-fürt előre telepítve van a AzureML-AutoML SDK-val.
+Az összes új HDInsight-Spark-fürt előre telepítve van a AzureML-AutoML SDK-val.
 
 > [!Note]
 > Azure Machine Learning csomagok települnek a Python3 Conda-környezetbe. A telepített Jupyter-jegyzetfüzetet a PySpark3 kernel használatával kell futtatni.

@@ -15,10 +15,10 @@ ms.custom: it-pro
 ms.reviewer: martincoetzer; MarkMorow
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d845c1fbefd5c9a6119d089824eba6cc35228a3e
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90055809"
 ---
 # <a name="securing-privileged-access-for-hybrid-and-cloud-deployments-in-azure-ad"></a>Emelt szintű hozzáférés biztosítása Azure AD hibrid- és felhőkörnyezetekhez
@@ -322,7 +322,7 @@ Az Azure log-integráció lehetővé teszi, hogy az Azure-erőforrásokból szá
 
 * Azure-tevékenység naplói
 * Azure Security Center-riasztások
-* Azure-erőforrás-naplók
+* Azure-erőforrásnaplók
 
 ### <a name="additional-steps-for-organizations-managing-access-to-other-cloud-apps-via-azure-ad"></a>További lépések a más felhőalapú alkalmazásokhoz való hozzáférést kezelő szervezetek számára az Azure AD-n keresztül
 
@@ -359,7 +359,7 @@ Az ütemterv 4. fázisát hat hónapon belül és azt meghaladóan kell megvaló
 Az emelt szintű hozzáférés biztonságossá tétele fontos, hogy biztonsági garanciákat hozzon létre üzleti eszközei számára. Azonban egy teljes biztonsági program részeként kell szerepelnie, amely folyamatos biztonsági garanciákat biztosít. A programnak olyan elemeket kell tartalmaznia, mint például a következők:
 
 * Szabályzat
-* Üzemeltetés
+* Műveletek
 * Információbiztonság
 * Kiszolgálók
 * Alkalmazások

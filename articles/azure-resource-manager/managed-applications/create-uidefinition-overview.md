@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 07/14/2020
 ms.author: tomfitz
 ms.openlocfilehash: 327fa1d7eb73d8e65bb4f81c1dff0fe2bec2913b
-ms.sourcegitcommit: 5ed504a9ddfbd69d4f2d256ec431e634eb38813e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89319567"
 ---
 # <a name="createuidefinitionjson-for-azure-managed-applications-create-experience"></a>CreateUiDefinition.json az Azure-beli felügyelt példány létrehozási felületéhez
@@ -129,7 +129,7 @@ A esetében válassza ki a `location` felülbírálni kívánt hely vezérlőele
 
 Az **alapismeretek** lépés az első lépés, amikor a Azure Portal elemzi a fájlt. Alapértelmezés szerint az alapvető lépések lépés lehetővé teszi a felhasználók számára az előfizetés, az erőforráscsoport és a telepítés helyének kiválasztását.
 
-:::image type="content" source="./media/create-uidefinition-overview/basics.png" alt-text="Alapértelmezett alapbeállítások":::
+:::image type="content" source="./media/create-uidefinition-overview/basics.png" alt-text="Lap varázsló":::
 
 Ebben a szakaszban további elemeket is hozzáadhat. Ha lehetséges, adjon hozzá olyan elemeket, amelyek a központi telepítési szintű paramétereket kérdezik le, például egy fürt vagy egy rendszergazdai hitelesítő adatok nevét.
 

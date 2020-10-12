@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 04/01/2020
 ms.author: aahi
 ms.openlocfilehash: 740311226a662ea3d3f8bba3ee5156e14f74516b
-ms.sourcegitcommit: c293217e2d829b752771dab52b96529a5442a190
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88244295"
 ---
 # <a name="use-docker-compose-to-deploy-multiple-containers"></a>A Docker Compose használata több tároló üzembe helyezéséhez
@@ -176,7 +176,7 @@ Nyisson meg egy böngészőt a gazdagépen, és nyissa meg a **localhost** -ot a
 
 ![Űrlap-felismerő tároló](media/form-recognizer-swagger-page.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [Cognitive Services tárolók](../cognitive-services-container-support.md)

@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 08/22/2019
 ms.author: johndeu
 ms.openlocfilehash: f826ee9ef3c9fff0b721a9c79d3c12e0adbd5f7f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91336394"
 ---
 # <a name="signaling-timed-metadata-in-live-streaming"></a>Időzített metaadatok jelzése élő adatfolyamban 
@@ -57,7 +57,7 @@ Ez a specifikáció több, a Media Services által támogatott üzemmódot vázo
 | DASH                | Dinamikus adaptív átvitel HTTP-n keresztül                                                                                                                                                                                                          |
 | Smooth              | Smooth Streaming protokoll                                                                                                                                                                                                                     |
 | MPEG2 – TS            | MPEG 2 átviteli streamek                                                                                                                                                                                                                      |
-| RTMP                | Valós idejű multimédia protokoll                                                                                                                                                                                                                 |
+| RTMP                | Multimédia protokoll Real-Time                                                                                                                                                                                                                 |
 | uimsbf              | Előjel nélküli egész, legjelentősebb bit.                                                                                                                                                                                                 |
 
 ---
@@ -84,10 +84,10 @@ A következő dokumentumok olyan rendelkezéseket tartalmaznak, amelyek az ebben
 | [MS-SSTR-betöltés]  | [Azure Media Services darabolt MP4 élő betöltési specifikáció](./media-services-fmp4-live-ingest-overview.md)                                                      |
 | [RFC8216]         | R. Pantos, Ed.; W. May. HTTP Live Streaming. Augusztus 2017. Tájékoztató. [https://tools.ietf.org/html/rfc8216](https://tools.ietf.org/html/rfc8216)                                                            |
 | [RFC4648]         | A Base16, a Base32 és a Base64-alapú adatkódolások [https://tools.ietf.org/html/rfc4648](https://tools.ietf.org/html/rfc4648)                                                                                     |
-| RTMP            | ["Az Adobe valós idejű üzenetkezelési protokollja", december 21., 2012](https://www.adobe.com/devnet/rtmp.html)                                                                                                            |
+| RTMP            | ["Az Adobe Real-Time üzenetküldési protokollja", december 21., 2012](https://www.adobe.com/devnet/rtmp.html)                                                                                                            |
 | [SCTE-35-2019]    | SCTE 35:2019 – digitális program beszúrása cueing üzenet a kábelhez – https://www.scte.org/SCTEDocs/Standards/ANSI_SCTE%2035%202019r1.pdf                                                                       |
-| [SCTE-214-1]      | SCTE 214-1 2016 – MPEG DASH IP-alapú kábeltelevíziós szolgáltatásokhoz 1. rész: MPD-korlátozások és-bővítmények                                                                                                                 |
-| [SCTE-214-3]      | SCTE 214-3 2015 MPEG DASH IP-alapú kábeltelevíziós szolgáltatásokhoz 3. rész: kötőjel/FF-profil                                                                                                                                  |
+| [SCTE-214-1]      | SCTE 214-1 2016 – MPEG DASH IP-Based Cable Services 1. rész: MPD megkötések és bővítmények                                                                                                                 |
+| [SCTE-214-3]      | SCTE 214-3 2015 MPEG DASH IP-Based Cable Services 3. rész: kötőjel/FF-profil                                                                                                                                  |
 | [SCTE-224]        | SCTE 224 2018r1 – esemény ütemezése és értesítési felület                                                                                                                                                  |
 | [SCTE-250]        | Esemény-és jelzőlámpa-kezelési API (a ()                                                                                                                                                                      |
 
@@ -208,7 +208,7 @@ Az [MPEG-DASH] EventStream XML-adattartalom sémája a következőképpen van de
 ```
 
 ### <a name="built-in-supported-scheme-id-uris"></a>Beépített támogatott séma azonosító URI-k
-| Séma AZONOSÍTÓjának URI-ja                 | Description                                                                                                                                                                                                                                          |
+| Séma AZONOSÍTÓjának URI-ja                 | Leírás                                                                                                                                                                                                                                          |
 | ----------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | https: \/ /aomedia.org/emsg/ID3 | Leírja, hogy a [ID3v2] metaadatok hogyan hajthatók végre időzített metaadatokként egy CMAF-kompatibilis [MPEGCMAF] darabolt MP4-ben. További információért lásd az [időzített metaadatokat a Common Media Application Format (CMAF) alkalmazásban.](https://github.com/AOMediaCodec/id3-emsg) |
 
@@ -295,7 +295,7 @@ Az "onCuePoint" típusú üzenet típusa az [Adobe-Flash-AS] értékben van defi
 
 | Tulajdonság   | Leírás                                                                                                                                                                                                                     |
 | ---------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
-| név       | A névnek "**scte35**" értéknek kell lennie az elemi Live-ban.                                                                                                                                                                              |
+| name       | A névnek "**scte35**" értéknek kell lennie az elemi Live-ban.                                                                                                                                                                              |
 | time       | Az az idő másodpercben, amikor a Cue-pont bekövetkezett a videóban az idősor során                                                                                                                                           |
 | típus       | A Cue-pont típusát "**Event**" értékre kell beállítani.                                                                                                                                                                             |
 | parameters | A név/érték párok összevonási tömbje, amely a SCTE-35 üzenetből származó információkat tartalmazza, beleértve az azonosítót és az időtartamot is. Ezeket az értékeket Azure Media Services elemzi, és a jegyzékfájl díszítési címkéjén szerepel. |
@@ -1053,7 +1053,7 @@ A EventStream elem a következő attribútumokkal rendelkezik:
 | **Attribútum neve** | **Típus**                | **Szükséges?** | **Leírás**                                                                                                                                                                                                                                                                                                                                                                         |
 | ------------------ | ----------------------- | ------------- | --------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | scheme_id_uri      | sztring                  | Kötelező      | Az üzenet sémáját azonosítja. A séma a séma attribútum értékeként van beállítva az élő kiszolgáló jegyzékfájlja mezőben. Az értéknek az üzenet sémáját azonosító URN-nek vagy URL- **címnek kell** lennie; A támogatott kimeneti schemeId "urn: SCTE: scte35:2014: XML + bin"/[SCTE-214-1] SEC 6.7.4 (MPD) lehet, mivel a szolgáltatás jelenleg csak az "XML + bin"-t támogatja, ha rövid idő alatt az MPD szerepel. |
-| value              | sztring                  | Választható      | Egy további karakterlánc-érték, amelyet a séma tulajdonosai használ az üzenet szemantikai testreszabásához. Annak érdekében, hogy a több esemény streamjét ugyanazzal a sémával megkülönböztesse, az értéket az esemény-adatfolyam **nevére kell beállítani** (trackName az [MS-SSTR-betöltés] vagy az AMF-üzenet neveként az [RTMP] betöltéséhez).                                                                         |
+| érték              | sztring                  | Választható      | Egy további karakterlánc-érték, amelyet a séma tulajdonosai használ az üzenet szemantikai testreszabásához. Annak érdekében, hogy a több esemény streamjét ugyanazzal a sémával megkülönböztesse, az értéket az esemény-adatfolyam **nevére kell beállítani** (trackName az [MS-SSTR-betöltés] vagy az AMF-üzenet neveként az [RTMP] betöltéséhez).                                                                         |
 | Időskála          | 32 bites előjel nélküli egész szám | Kötelező      | Az időskála másodpercenkénti száma.                                                                                                                                                                                                                                                                                                                                                     |
 
 

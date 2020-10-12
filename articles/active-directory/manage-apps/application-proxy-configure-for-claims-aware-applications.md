@@ -16,10 +16,10 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 97def0608251f65aa222e13760877d4287135d08
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87386979"
 ---
 # <a name="working-with-claims-aware-apps-in-application-proxy"></a>Jogcímbarát alkalmazások használata az Application proxyban
@@ -54,7 +54,7 @@ Ha az alkalmazásokhoz tartozó összes belső URL-cím teljes tartománynevet (
 
    ![Egy végponthoz beállított megbízható URL-érték hozzáadása – képernyőfelvétel](./media/application-proxy-configure-for-claims-aware-applications/appproxyendpointtrustedurl.png)  
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Natív ügyfélalkalmazások engedélyezése a proxy alkalmazásokkal való kommunikációhoz](application-proxy-configure-native-client-application.md)
 
 

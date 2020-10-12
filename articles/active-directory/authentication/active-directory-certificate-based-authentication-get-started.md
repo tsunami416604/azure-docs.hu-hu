@@ -13,10 +13,10 @@ ms.reviewer: annaba
 ms.collection: M365-identity-device-management
 ms.custom: has-adal-ref
 ms.openlocfilehash: 94955e27dcadb3acbea03926d6d1ed73e9c5c9ed
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87051343"
 ---
 # <a name="get-started-with-certificate-based-authentication-in-azure-active-directory"></a>A tanúsítványalapú hitelesítés első lépései az Azure Active Directoryban
@@ -184,7 +184,7 @@ Az alábbi lépések az engedélyezési jogkivonat frissítésének és érvény
         Set-MsolUser -UserPrincipalName test@yourdomain.com -StsRefreshTokensValidFrom ("03/05/2016")
 ```
 
-A beállított dátumnak a jövőben kell lennie. Ha a dátum nem a jövőben, a **StsRefreshTokensValidFrom** tulajdonság nincs beállítva. Ha a dátum jövőbeli, a **StsRefreshTokensValidFrom** az aktuális időpontra van állítva (nem a set-MsolUser parancs által jelzett dátumra).
+A beállított dátumnak a jövőben kell lennie. Ha a dátum nem a jövőben, a **StsRefreshTokensValidFrom** tulajdonság nincs beállítva. Ha a dátum a jövőben, a **StsRefreshTokensValidFrom** az aktuális időpontra van állítva (nem a Set-MsolUser parancs által jelzett dátumra).
 
 ## <a name="step-4-test-your-configuration"></a>4. lépés: a konfiguráció tesztelése
 

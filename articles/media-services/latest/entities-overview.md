@@ -14,10 +14,10 @@ ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: seodec18, devx-track-csharp
 ms.openlocfilehash: 9a8cff3685cdaad011332adf58dc76f74976cd44
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89300187"
 ---
 # <a name="filtering-ordering-and-paging-of-media-services-entities"></a>Media Services entitások szűrése, rendezése és lapozása
@@ -47,7 +47,7 @@ Tartomány operátorai:
 - `ge`: Ellenőrizze, hogy a mező értéke *nagyobb-e, vagy egyenlő-* e az állandó értékkel.
 - `le`: Megvizsgálhatja, hogy egy mező *kisebb vagy egyenlő-e, mint* egy konstans érték.
 
-## <a name="filter"></a>Szűrés
+## <a name="filter"></a>Szűrő
 
 A használatával `$filter` OData szűrő paramétert adhat meg, amely csak azokat az objektumokat keresi meg, amelyekre kíváncsi.
 
@@ -66,7 +66,7 @@ var firstPage = await MediaServicesArmClient.Assets.ListAsync(CustomerResourceGr
 
 ## <a name="order-by"></a>Rendezési sorrend
 
-Ezzel a paranccsal `$orderby` rendezheti a visszaadott objektumokat a megadott paraméterrel. Például:  
+Ezzel a paranccsal `$orderby` rendezheti a visszaadott objektumokat a megadott paraméterrel. Példa:  
 
 ```
 GET https://management.azure.com/subscriptions/00000000-0000-0000-0000-000000000000/resourceGroups/mediaresources/providers/Microsoft.Media/mediaServices/amstestaccount/assets?api-version=2018-07-01$orderby=properties/created%20gt%202018-05-11T17:39:08.387Z
@@ -158,7 +158,7 @@ client.Jobs.List(config.ResourceGroup, config.AccountName, VideoAnalyzerTransfor
 
 A következő táblázat bemutatja, hogyan alkalmazhatja a szűrési és a rendezési beállításokat különböző entitásokra:
 
-|Entitás neve|Tulajdonság neve|Szűrés|Rendelés|
+|Entitás neve|Tulajdonság neve|Szűrő|Rendelés|
 |---|---|---|---|
 |[Adategységek](/rest/api/media/assets/)|name|`eq`, `gt`, `lt`, `ge`, `le`|`asc` és `desc`|
 ||Properties. alternateId |`eq`||
@@ -182,7 +182,7 @@ A következő táblázat bemutatja, hogyan alkalmazhatja a szűrési és a rende
 || tulajdonságok. létrehozva      | `gt`, `ge`, `lt`, `le`| `asc` és `desc`|
 || Properties. lastModified | `gt`, `ge`, `lt`, `le`| `asc` és `desc`|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Eszközök listázása](/rest/api/media/assets/list)
 * [A tartalmi kulcs házirendjeinek listázása](/rest/api/media/contentkeypolicies/list)

@@ -4,10 +4,10 @@ description: Ismerteti Azure Resource Manager hatókörének fogalmát, valamint
 ms.date: 09/22/2020
 ms.topic: conceptual
 ms.openlocfilehash: 83eda330a35b007abfa37046a202b14728726849
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90984437"
 ---
 # <a name="understand-scope-in-azure-policy"></a>A hatókör megismerése Azure Policy

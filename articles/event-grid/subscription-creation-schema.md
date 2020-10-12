@@ -4,10 +4,10 @@ description: Ez a cikk a Azure Event Gridval való eseményre való feliratkozá
 ms.topic: reference
 ms.date: 07/07/2020
 ms.openlocfilehash: 21016627e545cc4935b4ac213df675e894c12d95
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86119072"
 ---
 # <a name="event-grid-subscription-schema"></a>Event Grid előfizetési séma
@@ -30,8 +30,8 @@ Az esemény-előfizetés nevének 3-64 karakter hosszúnak kell lennie, és csak
 
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
-| destination | objektum | A végpontot meghatározó objektum. |
-| filter | objektum | Egy választható mező az események típusának szűréséhez. |
+| destination | object | A végpontot meghatározó objektum. |
+| filter (szűrő) | object | Egy választható mező az események típusának szűréséhez. |
 
 ### <a name="destination-object"></a>célobjektum
 
@@ -44,7 +44,7 @@ Az esemény-előfizetés nevének 3-64 karakter hosszúnak kell lennie, és csak
 
 | Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
-| includedEventTypes | tömb | Egyezés, ha az eseményben szereplő eseménytípus pontos egyezést mutat az adott eseménytípus egyikének megadásához. Hibát jelez, ha az esemény neve nem egyezik az eseményforrás regisztrált eseménytípus nevével. Az alapértelmezett érték minden eseménytípus esetében megfelel. |
+| includedEventTypes | array | Egyezés, ha az eseményben szereplő eseménytípus pontos egyezést mutat az adott eseménytípus egyikének megadásához. Hibát jelez, ha az esemény neve nem egyezik az eseményforrás regisztrált eseménytípus nevével. Az alapértelmezett érték minden eseménytípus esetében megfelel. |
 | subjectBeginsWith | sztring | Előtag – az üzenet tárgy mezőjének megfelelő szűrő. Az alapértelmezett vagy az üres karakterlánc mindennek megfelel. | 
 | subjectEndsWith | sztring | Utótag – az esemény üzenet tárgy mezőjének megfelelő szűrő. Az alapértelmezett vagy az üres karakterlánc mindennek megfelel. |
 | isSubjectCaseSensitive | sztring | A kis-és nagybetűk megkülönböztetését szabályozza a szűrőkhöz. |
@@ -71,6 +71,6 @@ Az esemény-előfizetés nevének 3-64 karakter hosszúnak kell lennie, és csak
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A Event Grid bemutatása: [Mi az Event Grid?](overview.md)

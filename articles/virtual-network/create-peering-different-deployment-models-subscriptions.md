@@ -14,10 +14,10 @@ ms.date: 06/25/2020
 ms.author: kumud
 ms.reviewer: anavin
 ms.openlocfilehash: 88e576231e0231a105cd9ec303f63307b5eaff89
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87051618"
 ---
 # <a name="create-a-virtual-network-peering---different-deployment-models-and-subscriptions"></a>Virtuális hálózati társítás létrehozása – különböző üzembe helyezési modellek és előfizetések
@@ -72,7 +72,7 @@ Ez az oktatóanyag különböző fiókokat használ az egyes előfizetésekhez. 
     - Hely: *USA keleti* **régiója**
 
 14. A portál tetején található **erőforrások keresése** mezőben írja be a következőt: *myVnetB*. Kattintson a **myVnetB** elemre, amikor megjelenik a keresési eredmények között. Megjelenik egy panel a **myVnetB** virtuális hálózathoz.
-15. A megjelenő **myVnetB** panelen kattintson a **Tulajdonságok** elemre a panel bal oldalán található beállítások függőleges listájában. Másolja ki az **erőforrás-azonosítót**, amelyet egy későbbi lépésben használ. Az erőforrás-azonosító az alábbi példához hasonló:`/subscriptions/<Subscription ID>/resourceGroups/myResourceGroupB/providers/Microsoft.ClassicNetwork/virtualNetworks/myVnetB`
+15. A megjelenő **myVnetB** panelen kattintson a **Tulajdonságok** elemre a panel bal oldalán található beállítások függőleges listájában. Másolja ki az **erőforrás-azonosítót**, amelyet egy későbbi lépésben használ. Az erőforrás-azonosító az alábbi példához hasonló: `/subscriptions/<Subscription ID>/resourceGroups/myResourceGroupB/providers/Microsoft.ClassicNetwork/virtualNetworks/myVnetB`
 16. Hajtsa végre a 5-9-es lépést a myVnetB, majd írja be a **felhasználót** a 8. lépésben.
 17. Jelentkezzen ki a portálról Felhasználób, és jelentkezzen be felhasználóként.
 18. A portál tetején található **erőforrások keresése** mezőben írja be a következőt: *myVnetA*. Kattintson a **myVnetA** elemre, amikor megjelenik a keresési eredmények között. Megjelenik egy panel a **myVnet** virtuális hálózathoz.

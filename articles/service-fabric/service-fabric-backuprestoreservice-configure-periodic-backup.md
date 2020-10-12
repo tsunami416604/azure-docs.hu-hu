@@ -4,10 +4,10 @@ description: Az Service Fabric rendszeres biztonsági mentési és visszaállít
 ms.topic: article
 ms.date: 2/01/2019
 ms.openlocfilehash: 852e430a9183d92e13536fd6499f3d1404985455
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91538619"
 ---
 # <a name="understanding-periodic-backup-configuration-in-azure-service-fabric"></a>Az Azure Service Fabric rendszeres biztonsági mentési konfigurációjának ismertetése
@@ -237,7 +237,7 @@ Az alábbiakban a támogatott változatokkal kapcsolatos rövid információk sz
  
 - [Partíció biztonsági mentési listájának beolvasása](/rest/api/servicefabric/sfclient-api-getpartitionbackuplist): a megadott partícióhoz elérhető biztonsági másolatok listáját adja vissza.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 - [Biztonsági mentés visszaállítása REST API referenciája](/rest/api/servicefabric/sfclient-index-backuprestore)
 
 [0]: ./media/service-fabric-backuprestoreservice/backup-policy-association-example.png

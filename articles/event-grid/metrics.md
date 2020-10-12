@@ -4,10 +4,10 @@ description: Ez a cikk a Azure Event Grid szolgáltatás által támogatott Azur
 ms.topic: conceptual
 ms.date: 08/13/2020
 ms.openlocfilehash: 06c43b1990efc977cae33ced3f66f02e2de0b9c4
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88225172"
 ---
 # <a name="metrics-supported-by-azure-event-grid"></a>Azure Event Grid által támogatott metrikák
@@ -15,7 +15,7 @@ Ez a cikk a névterek által kategorizált Event Grid mérőszámok listáját t
 
 ## <a name="microsofteventgriddomains"></a>Microsoft. EventGrid/tartományok
 
-|Metrika|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Egység|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |DeadLetteredCount|Igen|Kézbesítetlen levelek eseményei|Darabszám|Összesen|Az esemény-előfizetésnek megfelelő, kézbesítetlen levelekből származó összes esemény|Témakör, EventSubscriptionName, DomainEventSubscriptionName, DeadLetterReason|
 |DeliveryAttemptFailCount|Nem|Sikertelen kézbesítések eseményei|Darabszám|Összesen|Az esemény-előfizetésnek nem sikerült kézbesíteni az összes eseményt|Témakör, EventSubscriptionName, DomainEventSubscriptionName, error, ErrorType|
@@ -30,7 +30,7 @@ Ez a cikk a névterek által kategorizált Event Grid mérőszámok listáját t
 
 ## <a name="microsofteventgrideventsubscriptions"></a>Microsoft. EventGrid/eventSubscriptions
 
-|Metrika|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Egység|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |DeadLetteredCount|Igen|Kézbesítetlen levelek eseményei|Darabszám|Összesen|Az esemény-előfizetésnek megfelelő, kézbesítetlen levelekből származó összes esemény|DeadLetterReason|
 |DeliveryAttemptFailCount|Nem|Sikertelen kézbesítések eseményei|Darabszám|Összesen|Az esemény-előfizetésnek nem sikerült kézbesíteni az összes eseményt|Hiba, ErrorType|
@@ -42,7 +42,7 @@ Ez a cikk a névterek által kategorizált Event Grid mérőszámok listáját t
 
 ## <a name="microsofteventgridextensiontopics"></a>Microsoft. EventGrid/extensionTopics
 
-|Metrika|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Egység|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |PublishFailCount|Igen|Sikertelen események közzététele|Darabszám|Összesen|A témakörben nem sikerült közzétenni az összes eseményt|ErrorType, hiba|
 |PublishSuccessCount|Igen|Közzétett események|Darabszám|Összesen|A témakörben közzétett összes esemény|Nincsenek méretek|
@@ -52,7 +52,7 @@ Ez a cikk a névterek által kategorizált Event Grid mérőszámok listáját t
 
 ## <a name="microsofteventgridsystemtopics"></a>Microsoft. EventGrid/systemTopics
 
-|Metrika|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Egység|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |DeadLetteredCount|Igen|Kézbesítetlen levelek eseményei|Darabszám|Összesen|Az esemény-előfizetésnek megfelelő, kézbesítetlen levelekből származó összes esemény|DeadLetterReason, EventSubscriptionName|
 |DeliveryAttemptFailCount|Nem|Sikertelen kézbesítések eseményei|Darabszám|Összesen|Az esemény-előfizetésnek nem sikerült kézbesíteni az összes eseményt|Hiba, ErrorType, EventSubscriptionName|
@@ -68,7 +68,7 @@ Ez a cikk a névterek által kategorizált Event Grid mérőszámok listáját t
 
 ## <a name="microsofteventgridtopics"></a>Microsoft. EventGrid/témakörök
 
-|Metrika|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Unit (Egység)|Aggregáció típusa|Leírás|Dimenziók|
+|Metrika|Exportálható diagnosztikai beállításokkal?|Metrika megjelenítendő neve|Egység|Aggregáció típusa|Leírás|Dimenziók|
 |---|---|---|---|---|---|---|
 |DeadLetteredCount|Igen|Kézbesítetlen levelek eseményei|Darabszám|Összesen|Az esemény-előfizetésnek megfelelő, kézbesítetlen levelekből származó összes esemény|DeadLetterReason, EventSubscriptionName|
 |DeliveryAttemptFailCount|Nem|Sikertelen kézbesítések eseményei|Darabszám|Összesen|Az esemény-előfizetésnek nem sikerült kézbesíteni az összes eseményt|Hiba, ErrorType, EventSubscriptionName|
@@ -81,5 +81,5 @@ Ez a cikk a névterek által kategorizált Event Grid mérőszámok listáját t
 |PublishSuccessLatencyInMs|Igen|Sikeres közzétételi késés|Ezredmásodpercben|Összesen|Sikeres közzétételi késés (ezredmásodpercben)|Nincsenek méretek|
 |UnmatchedEventCount|Igen|Páratlan események|Darabszám|Összesen|A témakörben szereplő esemény-előfizetéseknek nem megfelelő események összesen|Nincsenek méretek|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Tekintse meg a következő cikket: [diagnosztikai naplók](diagnostic-logs.md)

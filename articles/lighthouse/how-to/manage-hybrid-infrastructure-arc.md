@@ -4,10 +4,10 @@ description: Ismerje meg, hogyan kezelheti hatékonyan az ügyfelek számítóg�
 ms.date: 09/22/2020
 ms.topic: how-to
 ms.openlocfilehash: 66a798265683045d7ff9f3d8d811141800d08f9b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91336615"
 ---
 # <a name="manage-hybrid-infrastructure-at-scale-with-azure-arc"></a>A hibrid infrastruktúra kezelése az Azure arc skálával

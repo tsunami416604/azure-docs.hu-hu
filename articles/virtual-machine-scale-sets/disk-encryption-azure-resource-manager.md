@@ -10,10 +10,10 @@ ms.date: 10/10/2019
 ms.reviewer: mimckitt
 ms.custom: mimckitt
 ms.openlocfilehash: 4284e94f8d8d0effd160c5048f54fcbede417e38
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86129751"
 ---
 # <a name="encrypt-virtual-machine-scale-sets-with-azure-resource-manager"></a>Virtuálisgép-méretezési csoportok titkosítása Azure Resource Manager
@@ -42,7 +42,7 @@ Ez után kövesse az alábbi lépéseket:
 2. Adja meg a kötelező mezőket, majd fogadja el a feltételeket és a kikötéseket.
 3. A sablon üzembe helyezéséhez kattintson a **vásárlás** elemre.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Azure Disk Encryption a virtuálisgép-méretezési csoportokhoz](disk-encryption-overview.md)
 - [Virtuálisgép-méretezési csoportok titkosítása az Azure CLI használatával](disk-encryption-cli.md)

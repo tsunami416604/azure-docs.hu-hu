@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 06/30/2020
 ms.author: victorh
 ms.openlocfilehash: 9184bf7baa85420e067edb4c0aafccb7e6711225
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86512180"
 ---
 # <a name="azure-firewall-rule-processing-logic"></a>Az Azure Firewall szabályfeldolgozási logikája
@@ -32,6 +32,6 @@ A szülő házirendből örökölt hálózati szabályok gyűjteményeit mindig 
 
 Alapértelmezés szerint a házirend örökli a szülő házirend fenyegetésének intelligencia üzemmódját. Ezt felülbírálhatja úgy, hogy a fenyegetési intelligencia módot egy másik értékre állítja be a házirend-beállítások lapon. Csak szigorúbb értékkel lehet felülbírálni. Ha például a szülői házirend *csak riasztásra*van beállítva, a helyi házirendet beállíthatja *riasztásra és megtagadásre*, de nem kapcsolhatja ki.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [További információ a Azure Firewall Managerről](overview.md)

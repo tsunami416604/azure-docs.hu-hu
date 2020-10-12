@@ -4,10 +4,10 @@ description: Felügyelt identitások használata az Azure Service Fabric alkalma
 ms.topic: article
 ms.date: 10/09/2019
 ms.openlocfilehash: 07f960c01367ab42a434a8c2e1e276d9c5f7bd11
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86253643"
 ---
 # <a name="how-to-leverage-a-service-fabric-applications-managed-identity-to-access-azure-services"></a>Service Fabric alkalmazás felügyelt identitásának kihasználása az Azure-szolgáltatások eléréséhez
@@ -345,7 +345,7 @@ Minta hiba:
 
 A következő lista a felügyelt identitásokra jellemző jellemző Service Fabric hibák listáját tartalmazza:
 
-| Kód | Üzenet | Leírás | 
+| Code | Üzenet | Leírás | 
 | ----------- | ----- | ----------------- |
 | SecretHeaderNotFound | A titkos kód nem található a kérelem fejlécében. | A hitelesítési kódot nem adta meg a kérelem. | 
 | ManagedIdentityNotFound | Nem található felügyelt identitás a megadott alkalmazás-gazdagéphez. | Az alkalmazás nem rendelkezik identitással, vagy a hitelesítési kód ismeretlen. |
@@ -373,7 +373,7 @@ Azt javasoljuk, hogy a sávszélesség-szabályozás miatti kérelmeket az aláb
 ## <a name="resource-ids-for-azure-services"></a>Az Azure-szolgáltatások erőforrás-azonosítói
 Tekintse meg az Azure ad- [hitelesítést támogató Azure-szolgáltatásokat](../active-directory/managed-identities-azure-resources/services-support-managed-identities.md) az Azure ad-t támogató erőforrások listáját, valamint a hozzájuk tartozó erőforrás-azonosítókat.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Azure Service Fabric-alkalmazás üzembe helyezése rendszerhez rendelt felügyelt identitással](./how-to-deploy-service-fabric-application-system-assigned-managed-identity.md)
 * [Azure Service Fabric-alkalmazás üzembe helyezése felhasználó által hozzárendelt felügyelt identitással](./how-to-deploy-service-fabric-application-user-assigned-managed-identity.md)
 * [Azure Service Fabric-alkalmazások hozzáférésének biztosítása más Azure-erőforrásokhoz](./how-to-grant-access-other-resources.md)

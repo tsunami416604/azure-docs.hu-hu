@@ -6,10 +6,10 @@ ms.topic: how-to
 ms.date: 04/28/2020
 ms.custom: cc996988-fb4f-47
 ms.openlocfilehash: c7dc18d8186d7262154cc0718bb6ad77ebbb5d2e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85829839"
 ---
 # <a name="create-a-function-triggered-by-azure-cosmos-db"></a>Azure Cosmos DB által aktivált függvény létrehozása
@@ -22,13 +22,13 @@ Megismerheti, hogyan hozhat létre egy olyan függvényt, amelyet az aktivál, h
 
 Az oktatóanyag elvégzéséhez:
 
-+ Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
++ Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
 > [!NOTE]
 > [!INCLUDE [SQL API support only](../../includes/functions-cosmosdb-sqlapi-note.md)]
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
-Jelentkezzen be az [Azure Portalba](https://portal.azure.com/) az Azure-fiókjával.
+Jelentkezzen be az [Azure Portalra](https://portal.azure.com/) az Azure-fiókjával.
 
 ## <a name="create-an-azure-cosmos-db-account"></a>Azure Cosmos DB-fiók létrehozása
 
@@ -50,7 +50,7 @@ Ezután létrehozhat egy függvényt az új függvényalkalmazásban.
 
 1. Az **új függvény** lapon írja be `cosmos` a kifejezést a Keresés mezőbe, majd válassza ki a **Azure Cosmos db trigger** sablont.
 
-   :::image type="content" source="./media/functions-create-cosmos-db-triggered-function/function-choose-cosmos.png" alt-text="Függvények oldal a Azure Portal":::
+   :::image type="content" source="./media/functions-create-cosmos-db-triggered-function/function-choose-cosmos.png" alt-text="Azure Cosmos DB kód":::
 
 
 1. Konfigurálja az új triggert a következő táblázatban megadott beállításokkal:
@@ -62,17 +62,17 @@ Ezután létrehozhat egy függvényt az új függvényalkalmazásban.
     | **Adatbázis neve** | Feladatok | A figyelni kívánt gyűjteményt tartalmazó adatbázis neve. |
     | **Gyűjtemény neve** | Elemek | A figyelni kívánt gyűjtemény neve. |
     | **Gyűjtemény neve bérletekhez** | leases | A bérletek tárolására szolgáló gyűjtemény neve. |
-    | **Címbérlet-gyűjtemény létrehozása, ha nem létezik** | Yes | Ellenőrzi a címbérleti gyűjtemény létezését, és automatikusan létrehozza azt. |
+    | **Címbérlet-gyűjtemény létrehozása, ha nem létezik** | Igen | Ellenőrzi a címbérleti gyűjtemény létezését, és automatikusan létrehozza azt. |
 
-    :::image type="content" source="./media/functions-create-cosmos-db-triggered-function/functions-cosmosdb-trigger-settings.png" alt-text="Az Azure Cosmos DB-eseményindító létrehozása":::
+    :::image type="content" source="./media/functions-create-cosmos-db-triggered-function/functions-cosmosdb-trigger-settings.png" alt-text="Azure Cosmos DB kód":::
 
-1. Válassza a **létrehozási függvény**lehetőséget. 
+1. Válassza a **Függvény létrehozása** lehetőséget. 
 
     Az Azure létrehozza a Cosmos DB trigger függvényt.
 
 1. A sablon alapú függvény kódjának megjelenítéséhez válassza a **Code + test (kód + tesztelés**) lehetőséget.
 
-    :::image type="content" source="./media/functions-create-cosmos-db-triggered-function/function-cosmosdb-template.png" alt-text="Cosmos DB-függvénysablon C# környezetben":::
+    :::image type="content" source="./media/functions-create-cosmos-db-triggered-function/function-cosmosdb-template.png" alt-text="Azure Cosmos DB kód":::
 
     Ez a függvénysablon a naplókba írja a dokumentumok számát és az első dokumentumazonosítót.
 
@@ -100,8 +100,8 @@ Ezután kapcsolódjon a Azure Cosmos DB-fiókjához, és hozza létre a `Items` 
     | ---|---|--- |
     | **Adatbázis-azonosító** | Feladatok |Az új adatbázis neve. A névnek meg kell egyeznie a függvénykötésben meghatározott névvel. |
     | **Tároló azonosítója** | Elemek | Az új tároló neve. A névnek meg kell egyeznie a függvénykötésben meghatározott névvel.  |
-    | **[Partíciókulcs](../cosmos-db/partition-data.md)** | /kategória|Az egyes partíciók között az adatokat egyenletesen elosztó partíciókulcs. A megfelelő partíciós kulcs kiválasztásával fontos szerepet játszik a teljesítményű tárolók létrehozásában. | 
-    | **Teljesítmény** |400 kérelemegység| Használja az alapértelmezett értéket. Később lehetősége lesz növelni az átviteli sebességet a késés csökkentése érdekében. |    
+    | **[Partíciós kulcs](../cosmos-db/partition-data.md)** | /kategória|Az egyes partíciók között az adatokat egyenletesen elosztó partíciókulcs. A megfelelő partíciós kulcs kiválasztásával fontos szerepet játszik a teljesítményű tárolók létrehozásában. | 
+    | **Átviteli sebesség** |400 kérelemegység| Használja az alapértelmezett értéket. Később lehetősége lesz növelni az átviteli sebességet a késés csökkentése érdekében. |    
 
 1. Az elemek tároló létrehozásához kattintson **az OK** gombra. Eltarthat egy rövid ideig, amíg a tároló létre nem kerül.
 
@@ -111,15 +111,7 @@ Ha a függvény kötésében megadott tároló létezik, akkor tesztelheti a fü
 
 1. Bontsa ki az új **elemek** tárolót Adatkezelőban, majd válassza az **elemek**, majd az **új elem**lehetőséget.
 
-    :::image type="content" source="./media/functions-create-cosmos-db-triggered-function/create-item-in-container.png" alt-text="Elem létrehozása az elemek tárolóban":::
-
-1. Cserélje le az új elem tartalmát a következő tartalomra, majd válassza a **Mentés**lehetőséget.
-
-    ```yaml
-    {
-        "id": "task1",
-        "category": "general",
-        "description": "some task"
+    :::image type="content" source="./media/functions-create-cosmos-db-triggered-function/create-item-in-container.png" alt-text="Azure Cosmos DB kód"
     }
     ```
 
@@ -129,7 +121,7 @@ Ha a függvény kötésében megadott tároló létezik, akkor tesztelheti a fü
 
 1. (Nem kötelező) Térjen vissza a dokumentumhoz, hajtson végre egy módosítást, majd kattintson a **Frissítés** elemre. Térjen vissza a függvénynaplókhoz és ellenőrizze, hogy a frissítés is aktiválta-e a függvényt.
 
-## <a name="clean-up-resources"></a>Erőforrások felszabadítása
+## <a name="clean-up-resources"></a>Az erőforrások eltávolítása
 
 [!INCLUDE [Next steps note](../../includes/functions-quickstart-cleanup.md)]
 

@@ -10,10 +10,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/24/2020
 ms.openlocfilehash: 84ddc4b427f6dc168c044f34b41e81e3b0ff19e5
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88935041"
 ---
 # <a name="service-administration-for-azure-cognitive-search-in-the-azure-portal"></a>Szolgáltatás-felügyelet az Azure Cognitive Search a Azure Portal
@@ -137,7 +137,7 @@ Nincs olyan észlelési módszer, amely közli, hogy mely indexek vannak tárolv
 
 Ha segítségre van szüksége a jövőbeli tervezéssel kapcsolatban, érdemes lehet megtekinteni a tárterületet (az [indexek statisztikájának lekérése](/rest/api/searchservice/Get-Index-Statistics)használatával), hogy megtekintse, mennyit használt 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Automatizálás a [PowerShell](search-manage-powershell.md) -lel
 

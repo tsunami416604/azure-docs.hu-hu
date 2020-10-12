@@ -4,10 +4,10 @@ description: A Auth0 és az Azure-szolgáltatások közötti események befejez�
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: 6cd440075c6400b58c23f879b53da26abe4f9e75
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86103280"
 ---
 # <a name="integrate-azure-event-grid-with-auth0"></a>Azure Event Grid integrálása a Auth0
@@ -87,7 +87,7 @@ Próbáljon meg [egy olyan Auth0 műveletet meghívni, amely egy eseményt indí
 ## <a name="delivery-attempts-and-retries"></a>Kézbesítési kísérletek és újrapróbálkozások
 A Auth0-események továbbítása az Azure-ba egy streaming mechanizmus használatával történik. Minden eseményt a rendszer a Auth0-ben indít el. Ha Event Grid nem tudja fogadni az eseményt, a Auth0 legfeljebb háromszor próbálkozik az esemény kézbesítésével. Ellenkező esetben a Auth0 naplózza a hibát a rendszerbe történő kézbesítéshez.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Auth0-partneri témakör](auth0-overview.md)
 - [A partneri témakörök áttekintése](partner-topics-overview.md)

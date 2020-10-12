@@ -13,10 +13,10 @@ ms.author: bonova
 ms.reviewer: sstein, jovanpop, sachinp
 ms.date: 09/14/2020
 ms.openlocfilehash: 71392b652f305f085e8eddbfe75e0585a756bc4a
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91618114"
 ---
 # <a name="overview-of-azure-sql-managed-instance-resource-limits"></a>Az Azure SQL felügyelt példányok erőforrás-korlátainak áttekintése
@@ -36,7 +36,7 @@ Az SQL felügyelt példányának jellemzői és erőforrás-korlátai a mögött
 | **Hardver** | Intel® E5-2673 v3 (Haswell) 2,4 GHz-es processzorok, csatlakoztatott SSD virtuális mag = 1 PP (fizikai mag) | Intel® E5-2673 v4 (Broadwell) 2,3 GHz, Intel® SP-8160 (Skylake) és Intel® 8272CL (Cascade Lake) 2,5 GHz processzorok, gyors NVMe SSD, virtuális mag = 1 LP (Hyper-thread) |
 | **Virtuális magok száma** | 8, 16, 24 virtuális mag | 4, 8, 16, 24, 32, 40, 64, 80 virtuális mag |
 | **Maximális memória (memória/mag arány)** | 7 GB/virtuális mag<br/>További virtuális mag hozzáadásával további memóriát érhet el. | 5,1 GB/virtuális mag<br/>További virtuális mag hozzáadásával további memóriát érhet el. |
-| **Memóriában tárolt OLTP memória maximális száma** | Példány korlátja: 1 – 1,5 GB/virtuális mag| Példány korlátja: 0,8 – 1,65 GB/virtuális mag |
+| **Maximális In-Memory OLTP memória** | Példány korlátja: 1 – 1,5 GB/virtuális mag| Példány korlátja: 0,8 – 1,65 GB/virtuális mag |
 | **Példányok maximálisan fenntartott tárterülete** |  Általános célú: 8 TB<br/>Üzletileg kritikus: 1 TB | Általános célú: 8 TB<br/> Üzletileg kritikus 1 TB, 2 TB vagy 4 TB a magok számától függően |
 
 > [!IMPORTANT]
@@ -65,7 +65,7 @@ Az SQL felügyelt példányának két szolgáltatási szintje van: [általános 
 > [!Important]
 > A üzletileg kritikus Service-szintű szolgáltatás a felügyelt SQL-példány (másodlagos replika) egy további beépített példányát biztosítja, amely csak olvasható számítási feladatokhoz használható. Ha elkülönítheti az írási és olvasási lekérdezéseket és a csak olvasható/analitikai/jelentéskészítési lekérdezéseket, akkor a virtuális mag és a memóriát is megkezdheti ugyanarra az árakra. Előfordulhat, hogy a másodlagos replika néhány másodperccel az elsődleges példány mögött van, ezért olyan jelentéskészítési/elemzési munkaterhelések kiszervezésére lett kialakítva, amelyeknek nincs szükségük pontos aktuális állapotára. Az alábbi táblázatban a **csak olvasható lekérdezések** a másodlagos replikán végrehajtott lekérdezések.
 
-| **Funkció** | **Általános célú** | **Üzletileg kritikus** |
+| **Szolgáltatás** | **Általános célú** | **Üzletileg kritikus** |
 | --- | --- | --- |
 | Virtuális magok száma\* | Gen4:8, 16, 24<br/>Gen5:4, 8, 16, 24, 32, 40, 64, 80 | Gen4:8, 16, 24 <br/> Gen5:4, 8, 16, 24, 32, 40, 64, 80 <br/>\*A csak olvasható lekérdezések esetében azonos számú virtuális mag van hozzárendelve. |
 | Maximális memória | Gen4:56 GB – 168 GB (7GB/virtuális mag)<br/>Gen5:20,4 GB – 408 GB (5.1 GB/virtuális mag)<br/>További virtuális mag hozzáadásával további memóriát érhet el. | Gen4:56 GB – 168 GB (7GB/virtuális mag)<br/>Gen5:20,4 GB-408 GB (5.1 GB/virtuális mag) olvasási és írási lekérdezésekhez<br/>+ további 20,4 GB – 408 GB (5.1 GB/virtuális mag) a csak olvasható lekérdezésekhez.<br/>További virtuális mag hozzáadásával további memóriát érhet el. |
@@ -90,7 +90,7 @@ Az SQL felügyelt példányának két szolgáltatási szintje van: [általános 
 Néhány további szempont: 
 
 - A **jelenleg elérhető példányok tárolási mérete** a fenntartott példányok méretének és a felhasznált tárolóhelynek a különbsége.
-- A felhasználói és a rendszeradatbázisokban lévő adatfájlok és a naplófájlok mérete is szerepel a tárolók maximális méretével összehasonlítva. A [sys. master_files](/sql/relational-databases/system-catalog-views/sys-master-files-transact-sql) rendszernézet segítségével meghatározhatja az adatbázisok által felhasznált teljes területet. A hibanapló nem marad meg, és nem szerepel a méretben. A tárolók mérete nem tartalmazza a biztonsági mentéseket.
+- A felhasználói és a rendszeradatbázisokban lévő adatfájlok és a naplófájlok mérete is szerepel a tárolók maximális méretével összehasonlítva. A [sys.master_files](/sql/relational-databases/system-catalog-views/sys-master-files-transact-sql) rendszernézet segítségével meghatározhatja az adatbázisok által felhasznált teljes területet. A hibanapló nem marad meg, és nem szerepel a méretben. A tárolók mérete nem tartalmazza a biztonsági mentéseket.
 - Az átviteli sebesség és a IOPS az általános célú szinten attól függ, hogy az SQL felügyelt példánya nem kifejezetten korlátozza a [fájlméretet](#file-io-characteristics-in-general-purpose-tier) .
   Egy másik Azure-régióban is létrehozhat egy további olvasható replikát az [automatikus feladatátvételi csoportok](../database/auto-failover-group-configure.md) használatával
 - A példányok maximális IOPS a fájlok elrendezésével és a számítási feladatok eloszlásával függ. Tegyük fel például, hogy ha 7 x TB-os fájlt hoz létre, amely Max 5K IOPS-t és 7 kis fájlt (128 GB-nál kisebb) a 500 38500 IOPS Vegye figyelembe, hogy a rendszer néhány IOPS is használ az automatikus biztonsági mentéshez.
@@ -142,7 +142,7 @@ A következő táblázat a támogatott előfizetési típusok **alapértelmezett
 
 |Előfizetés típusa| SQL felügyelt példányok alhálózatai maximális száma | Virtuális mag egységek maximális száma * |
 | :---| :--- | :--- |
-|Utólagos elszámolás|3|320|
+|Használatalapú fizetés|3|320|
 |CSP |8 (15 egyes régiókban * *)|960 (1440 egyes régiókban * *)|
 |Utólagos elszámolású fejlesztési/tesztelési funkciók|3|320|
 |Enterprise Dev/Test|3|320|
@@ -161,7 +161,7 @@ A következő táblázat a támogatott előfizetési típusok **alapértelmezett
 
 Ha az aktuális régiókban több példányra van szüksége, küldjön egy támogatási kérést a kvóta kiterjesztéséhez a Azure Portal használatával. További információ: [a kérelmek kvótájának növekedése Azure SQL Database](../database/quota-increase-request.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ az SQL felügyelt példányáról: [Mi az SQL felügyelt példánya?](sql-managed-instance-paas-overview.md).
 - A díjszabással kapcsolatos információkért lásd: az [SQL felügyelt példányának díjszabása](https://azure.microsoft.com/pricing/details/sql-database/managed/).

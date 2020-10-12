@@ -6,10 +6,10 @@ ms.subservice: process-automation
 ms.date: 12/14/2018
 ms.topic: conceptual
 ms.openlocfilehash: f175e495af8e925c0d5a6c61669a5e2f44f73ae7
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86186000"
 ---
 # <a name="learn-powershell-workflow-for-azure-automation"></a>A Azure Automation PowerShell-munkafolyamatának megismerése
@@ -76,7 +76,7 @@ $Service = Get-Service -Name MyService
 $Service.Stop()
 ```
 
-Ha ezt a munkafolyamatban próbálja meg futtatni, a következő hibaüzenet jelenik meg:`Method invocation is not supported in a Windows PowerShell Workflow.`
+Ha ezt a munkafolyamatban próbálja meg futtatni, a következő hibaüzenet jelenik meg: `Method invocation is not supported in a Windows PowerShell Workflow.`
 
 Az egyik lehetőség, hogy becsomagolja ezt a két sornyi kódot egy [InlineScript](#use-inlinescript) -blokkba. Ebben az esetben `Service` a blokkon belüli szolgáltatási objektumot jelöli.
 
@@ -261,7 +261,7 @@ Workflow Copy-Files
 }
 ```
 
-Mivel a felhasználói név hitelesítő adatai nem maradnak meg a [felfüggesztési munkafolyamat](/powershell/module/psworkflow/about/about_suspend-workflow) tevékenységének meghívása vagy az utolsó ellenőrzőpont után, a hitelesítő adatokat NULL értékre kell állítania, majd újra le kell kérni azokat az objektum-áruházból, `Suspend-Workflow` vagy az ellenőrzőpont neve után.  Ellenkező esetben előfordulhat, hogy a következő hibaüzenet jelenik meg:`The workflow job cannot be resumed, either because persistence data could not be saved completely, or saved persistence data has been corrupted. You must restart the workflow.`
+Mivel a felhasználói név hitelesítő adatai nem maradnak meg a [felfüggesztési munkafolyamat](/powershell/module/psworkflow/about/about_suspend-workflow) tevékenységének meghívása vagy az utolsó ellenőrzőpont után, a hitelesítő adatokat NULL értékre kell állítania, majd újra le kell kérni azokat az objektum-áruházból, `Suspend-Workflow` vagy az ellenőrzőpont neve után.  Ellenkező esetben előfordulhat, hogy a következő hibaüzenet jelenik meg: `The workflow job cannot be resumed, either because persistence data could not be saved completely, or saved persistence data has been corrupted. You must restart the workflow.`
 
 A következő kód bemutatja, hogyan kezelheti ezt a helyzetet a PowerShell-munkafolyamatok runbookok.
 

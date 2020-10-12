@@ -4,10 +4,10 @@ description: Ez a cikk az Azure Event Hubs for Apache Kafka szolgáltatással ko
 ms.topic: reference
 ms.date: 07/20/2020
 ms.openlocfilehash: f9a03d1d3433461a575b32cd69893408a8b0ef97
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87096646"
 ---
 # <a name="recommended-configurations-for-apache-kafka-clients"></a>Apache Kafka ügyfelek ajánlott konfigurációi
@@ -60,8 +60,8 @@ Tulajdonság | Ajánlott értékek | Engedélyezett tartomány | Jegyzetek
 Tulajdonság | Ajánlott értékek | Engedélyezett tartomány | Jegyzetek
 ---|---:|-----:|---
 `retries` | > 0 | | Az alapértelmezett érték a 2. Javasoljuk, hogy tartsa meg ezt az értéket. 
-`request.timeout.ms` | 30000.. 60000 | > 20000| EH belsőleg alapértelmezés szerint legalább 20 000 MS-ot tesz ki.  `librdkafka`az alapértelmezett érték 5000, ami problematikus lehet. *Az alacsonyabb időtúllépési értékkel rendelkező kérelmek elfogadásakor az ügyfél viselkedése nem garantált.*
-`partitioner` | `consistent_random` | Lásd: librdkafka dokumentáció | `consistent_random`az alapértelmezett és a legjobb.  Az üres és a null kulcsok kezelése a legtöbb esetben ideális megoldás.
+`request.timeout.ms` | 30000.. 60000 | > 20000| EH belsőleg alapértelmezés szerint legalább 20 000 MS-ot tesz ki.  `librdkafka` az alapértelmezett érték 5000, ami problematikus lehet. *Az alacsonyabb időtúllépési értékkel rendelkező kérelmek elfogadásakor az ügyfél viselkedése nem garantált.*
+`partitioner` | `consistent_random` | Lásd: librdkafka dokumentáció | `consistent_random` az alapértelmezett és a legjobb.  Az üres és a null kulcsok kezelése a legtöbb esetben ideális megoldás.
 `enable.idempotence` | hamis | | A idempotencia jelenleg nem támogatott.
 `compression.codec` | `none` || A tömörítés jelenleg nem támogatott.
 
@@ -77,7 +77,7 @@ Tulajdonság | Ajánlott értékek | Engedélyezett tartomány | Jegyzetek
 
 Tekintse meg az alábbi táblázatot a konfigurációval kapcsolatos gyakori hibákról.
 
-Probléma | Probléma | Megoldás
+Hibajelenségek | Probléma | Megoldás
 ----|---|-----
 Terheléselosztási hibák eltolása | A fogyasztó túl sokáig vár a lekérdezés () és a szolgáltatás között, és a felhasználó kirúgja a csoportot. | Erre számos lehetősége van: <ul><li>munkamenet időkorlátjának emelése</li><li>az üzenet batch-méretének csökkentése a feldolgozás felgyorsításához</li><li>a párhuzamos feldolgozásának javítása a fogyasztók blokkolása érdekében. lekérdezés ()</li></ul> A három kombináció alkalmazása valószínűleg legbölcsebb.
 Hálózati kivételek nagy teljesítményű átviteli sebességgel | A Java Client + default max. Request. size értéket használja?  Előfordulhat, hogy a kérések túl nagyok. | Lásd a fenti Java-konfigurációkat.

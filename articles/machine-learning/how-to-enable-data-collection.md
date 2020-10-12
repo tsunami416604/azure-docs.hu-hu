@@ -12,10 +12,10 @@ ms.date: 07/14/2020
 ms.topic: conceptual
 ms.custom: how-to
 ms.openlocfilehash: 195fc6100229fca2a05198ffa80108057ad8ad65
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90897581"
 ---
 # <a name="collect-data-from-models-in-production"></a>Adatok gyűjtése üzemi modellből
@@ -175,7 +175,7 @@ A blob Storage-ban összegyűjtött adatok elemzéséhez kiválaszthatja a kív�
 
     [![Power BI tartalom](./media/how-to-enable-data-collection/pbiContent.png)](././media/how-to-enable-data-collection/pbiContent.png#lightbox)
 
-1. Válassza az **OK** lehetőséget. Az adatelőre betöltött sorok.
+1. Kattintson az **OK** gombra. Az adatelőre betöltött sorok.
 
     [![Power BI fájlok egyesítése](./media/how-to-enable-data-collection/pbiCombine.png)](././media/how-to-enable-data-collection/pbiCombine.png#lightbox)
 

@@ -8,10 +8,10 @@ ms.date: 03/18/2020
 ms.author: sngun
 ms.reviewer: sngun
 ms.openlocfilehash: 32266695770f627f7044bce92e4505f45776fd28
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83747361"
 ---
 # <a name="compliance-in-azure-cosmos-db"></a>Megfelelőség az Azure Cosmos DB-ben 
@@ -28,7 +28,7 @@ Azure Cosmos DB az összes Azure-régióban elérhető. A Microsoft öt különb
 
 * A **védelmi minisztérium (DoD) Azure Government** a Egyesült Államok két régiójában érhető el az USA védelmi Minisztériuma számára.
 
-Annak érdekében, hogy az ügyfelek megfeleljenek a saját megfelelőségi kötelezettségeiknek a szabályozott iparágakban és piacokon, az Azure a legnagyobb megfelelőségi portfóliót az iparágban tartja fenn mind a szélesség (az ajánlatok teljes száma), mind a mélység (az értékelés hatókörében lévő ügyfél-szolgáltatások száma) tekintetében.  Az Azure-megfelelőségi ajánlatok négy szegmensbe vannak csoportosítva – globálisan alkalmazható, Egyesült államokbeli kormányzat, iparág-specifikus, régió vagy ország/régió – specifikusak.  A megfelelőségi ajánlatok különféle típusú garanciákat foglalnak magukban, beleértve a független külső könyvvizsgáló cégek által létrehozott formális tanúsítványokat, igazolásokat, érvényességeket, engedélyeket és értékeléseket, valamint a Microsoft által készített szerződéses módosításokat, önértékeléseket és ügyfél-útmutatási dokumentumokat.
+Annak érdekében, hogy az ügyfelek megfeleljenek a saját megfelelőségi kötelezettségeiknek a szabályozott iparágakban és piacokon, az Azure a legnagyobb megfelelőségi portfóliót az iparágban tartja fenn mind a szélesség (az ajánlatok teljes száma), mind a mélység (az értékelés hatókörében lévő ügyfél-szolgáltatások száma) tekintetében.  Az Azure-megfelelőségi ajánlatok négy szegmensbe vannak csoportosítva – globálisan alkalmazható, az Egyesült Államok kormánya, iparág-specifikus, régió- vagy ország-/régió-specifikus.  A megfelelőségi ajánlatok különféle típusú garanciákat foglalnak magukban, beleértve a független külső könyvvizsgáló cégek által létrehozott formális tanúsítványokat, igazolásokat, érvényesítéseket, engedélyeket és értékeléseket, valamint a Microsoft által készített szerződéses módosításokat, önértékeléseket és ügyfélútmutatási dokumentumokat.
 
 ## <a name="azure-cosmos-db-certifications"></a>Azure Cosmos DB minősítések  
 

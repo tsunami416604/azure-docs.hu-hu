@@ -7,10 +7,10 @@ ms.service: mariadb
 ms.topic: how-to
 ms.date: 6/30/2020
 ms.openlocfilehash: 6d050a8bd351617a6ab567243c5b1ef8d9f93ded
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86115910"
 ---
 # <a name="how-to-backup-and-restore-a-server-in-azure-database-for-mariadb-using-the-azure-portal"></a>Kiszolgálók biztonsági mentése és visszaállítása Azure Database for MariaDB a Azure Portal használatával
@@ -37,7 +37,7 @@ Amikor a Azure Portalon keresztül hoz létre kiszolgálót, a **díjszabási r�
 További információ ezekről az értékekről a létrehozás során: [Azure Database for MariaDB Server](quickstart-create-mariadb-server-database-using-azure-portal.md)gyors üzembe helyezése.
 
 A biztonsági másolatok megőrzési időszaka a kiszolgálón a következő lépésekkel módosítható:
-1. Jelentkezzen be az [Azure Portalon](https://portal.azure.com/).
+1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 
 2. Válassza ki a Azure Database for MariaDB-kiszolgálót. Ez a művelet megnyitja az **Áttekintés** lapot.
 
@@ -89,7 +89,7 @@ Ha a kiszolgálót földrajzilag redundáns biztonsági mentésre konfigurálta,
 
 3. **Adatforrásként**válassza a **biztonsági mentés** lehetőséget. Ez a művelet betölti a legördülő listát, amely felsorolja azokat a kiszolgálókat, amelyeken engedélyezve vannak a Geo redundáns biztonsági másolatok.
    
-   :::image type="content" source="./media/howto-restore-server-portal/3-geo-restore.png" alt-text="Válassza ki az adatforrást.":::
+   :::image type="content" source="./media/howto-restore-server-portal/3-geo-restore.png" alt-text="Navigáljon Azure Database for MariaDB.":::
     
    > [!NOTE]
    > A kiszolgálók első létrehozásakor előfordulhat, hogy a Geo-visszaállításhoz nem lesz azonnal elérhető. A szükséges metaadatok feltöltése néhány órát is igénybe vehet.
@@ -97,21 +97,21 @@ Ha a kiszolgálót földrajzilag redundáns biztonsági mentésre konfigurálta,
 
 4. Válassza ki a **biztonsági mentés** legördülő menüt.
    
-   :::image type="content" source="./media/howto-restore-server-portal/4-geo-restore-backup.png" alt-text="Válassza a biztonsági mentés legördülő menüt.":::
+   :::image type="content" source="./media/howto-restore-server-portal/4-geo-restore-backup.png" alt-text="Navigáljon Azure Database for MariaDB.":::
 
 5. Válassza ki a visszaállítani kívánt forráskiszolgáló-kiszolgálót.
    
-   :::image type="content" source="./media/howto-restore-server-portal/5-select-backup.png" alt-text="Válassza a biztonsági mentés lehetőséget.":::
+   :::image type="content" source="./media/howto-restore-server-portal/5-select-backup.png" alt-text="Navigáljon Azure Database for MariaDB.":::
 
-6. A kiszolgáló alapértelmezés szerint a **virtuális mag**számának, a **biztonsági másolatok megőrzési idejének**, a **biztonsági mentési redundancia beállításnak**, a **motor verziószámának**és a **rendszergazdai hitelesítő adatoknak**a értékét fogja megadni Válassza a **Folytatás** elemet. 
+6. A kiszolgáló alapértelmezés szerint a **virtuális mag**számának, a **biztonsági másolatok megőrzési idejének**, a **biztonsági mentési redundancia beállításnak**, a **motor verziószámának**és a **rendszergazdai hitelesítő adatoknak**a értékét fogja megadni Válassza a **Folytatás** lehetőséget. 
    
-   :::image type="content" source="./media/howto-restore-server-portal/6-accept-backup.png" alt-text="Folytassa a biztonsági mentéssel.":::
+   :::image type="content" source="./media/howto-restore-server-portal/6-accept-backup.png" alt-text="Navigáljon Azure Database for MariaDB.":::
 
 7. Adja meg a többi űrlapot a beállításokkal. Bármelyik **helyet**kiválaszthatja.
 
     A hely kiválasztása után a **kiszolgáló konfigurálása** lehetőség kiválasztásával frissítheti a **számítási generációt** (ha elérhető a kiválasztott régióban), a **virtuális mag**, a **biztonsági mentés megőrzési idejét**és a **biztonsági mentési redundancia beállítást**. Az **árképzési szint** (alapszintű, általános célú vagy memória optimalizálása) vagy a **tárolási** méret módosítása a visszaállítás során nem támogatott.
 
-   :::image type="content" source="./media/howto-restore-server-portal/7-create.png" alt-text="Űrlap kitöltése"::: 
+   :::image type="content" source="./media/howto-restore-server-portal/7-create.png" alt-text="Navigáljon Azure Database for MariaDB."::: 
 
 8. Válassza a **felülvizsgálat + létrehozás** lehetőséget a beállítások áttekintéséhez. 
 
@@ -121,7 +121,7 @@ A földrajzi visszaállítás által létrehozott új kiszolgáló ugyanazzal a 
 
 A visszaállítás során létrehozott új kiszolgáló nem rendelkezik az eredeti kiszolgálón található VNet-szolgáltatási végpontokkal. Ezeket a szabályokat külön kell beállítani ehhez az új kiszolgálóhoz. A rendszer visszaállítja az eredeti kiszolgáló tűzfalszabályok beállításait.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - További információ a szolgáltatás [biztonsági mentéséről](concepts-backup.md)
 - A [replikák](concepts-read-replicas.md) megismerése
 - További információ az [üzletmenet-folytonossági](concepts-business-continuity.md) lehetőségekről

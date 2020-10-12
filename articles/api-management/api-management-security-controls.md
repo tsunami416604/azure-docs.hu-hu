@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 09/23/2019
 ms.author: vlvinogr
 ms.openlocfilehash: a147179f7b55e43379b3c3fa3a7a0767cc97b198
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87902575"
 ---
 # <a name="security-controls-for-api-management"></a>A API Management biztonsági vezérlői
@@ -20,9 +20,9 @@ Ez a cikk a API Management beépített biztonsági vezérlőket dokumentálja.
 
 [!INCLUDE [Security controls Header](../../includes/security-controls-header.md)]
 
-## <a name="network"></a>Hálózat
+## <a name="network"></a>Network (Hálózat)
 
-| Biztonsági ellenőrzés | Igen/nem | Megjegyzések | Dokumentáció |
+| Biztonsági ellenőrzés | Igen/nem | Jegyzetek | Dokumentáció |
 |---|---|--|--|
 | Szolgáltatás végpontjának támogatása| Nem | |  |
 | VNet-befecskendezés támogatása| Igen | |  |
@@ -31,7 +31,7 @@ Ez a cikk a API Management beépített biztonsági vezérlőket dokumentálja.
 
 ## <a name="monitoring--logging"></a>& naplózás figyelése
 
-| Biztonsági ellenőrzés | Igen/nem | Megjegyzések| Dokumentáció |
+| Biztonsági ellenőrzés | Igen/nem | Jegyzetek| Dokumentáció |
 |---|---|--|--|
 | Azure monitoring-támogatás (log Analytics, alkalmazás-elemzések stb.)| Igen | | |
 | Vezérlési és felügyeleti síkok naplózása és naplózása| Igen | [Azure Monitor tevékenység naplói](../azure-monitor/platform/platform-logs-overview.md) | |
@@ -40,25 +40,25 @@ Ez a cikk a API Management beépített biztonsági vezérlőket dokumentálja.
 
 ## <a name="identity"></a>Identitás
 
-| Biztonsági ellenőrzés | Igen/nem | Megjegyzések| Dokumentáció |
+| Biztonsági ellenőrzés | Igen/nem | Jegyzetek| Dokumentáció |
 |---|---|--|--|
 | Hitelesítés| Igen | |  |
 | Engedélyezés| Igen | |  |
 
 ## <a name="data-protection"></a>Adatvédelem
 
-| Biztonsági ellenőrzés | Igen/nem | Megjegyzések | Dokumentáció |
+| Biztonsági ellenőrzés | Igen/nem | Jegyzetek | Dokumentáció |
 |---|---|--|--|
 | Kiszolgálóoldali titkosítás nyugalmi állapotban: Microsoft által felügyelt kulcsok | Igen | A bizalmas adatokat, például a tanúsítványokat, a kulcsokat és a titkos névvel ellátott értékeket a szolgáltatás által felügyelt, a szolgáltatási példány kulcsainak megfelelően titkosítja a rendszer. |  |
 | Kiszolgálóoldali titkosítás nyugalmi állapotban: ügyfél által felügyelt kulcsok (BYOK) | Nem | Az összes titkosítási kulcs egy szolgáltatási példányon, a szolgáltatás pedig felügyelt. |  |
-| Oszlop szintű titkosítás (Azure Data Services)| N/A | |  |
+| Oszlop szintű titkosítás (Azure Data Services)| N.A. | |  |
 | Az átvitel közbeni titkosítás (például ExpressRoute titkosítás, VNet titkosítás és VNet-VNet titkosítás)| Igen | Az [expressz útvonal](../expressroute/index.yml) -és VNet-titkosítást az [Azure Networking](../virtual-network/index.yml)szolgáltatja. |  |
 | Titkosított API-hívások| Igen | A felügyeleti sík hívások [Azure Resource Manager](../azure-resource-manager/index.yml) TLS protokollon keresztül történnek. Érvényes JSON webes jogkivonat (JWT) szükséges.  Az adatsík hívások a TLS-vel és az egyik támogatott hitelesítési mechanizmussal (például ügyféltanúsítvány vagy JWT) védhetők. |   |
  |
 
 ## <a name="configuration-management"></a>Konfigurációkezelés
 
-| Biztonsági ellenőrzés | Igen/nem | Megjegyzések| Dokumentáció |
+| Biztonsági ellenőrzés | Igen/nem | Jegyzetek| Dokumentáció |
 |---|---|--|--|
 | Configuration Management-támogatás (konfiguráció verziószámozása stb.)| Igen | Az [Azure API Management DevOps Resource Kit](https://aka.ms/apimdevops) használata |  |
 

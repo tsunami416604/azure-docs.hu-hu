@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 06/03/2020
 ms.custom: seodec18
 ms.openlocfilehash: 4c13df8b537d701400a22cd2871e7f8362f02455
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84417276"
 ---
 # <a name="batch-service-quotas-and-limits"></a>A Bach szolgáltatás kvótái és korlátozásai
@@ -85,11 +85,11 @@ A Batch-fiókra vagy az előfizetésre vonatkozó kvóta növelését a [Azure P
    
     1. **Probléma típusa**  >  **Szolgáltatás-és előfizetési korlátok (kvóták)**
    
-    1. Válassza ki az előfizetését.
+    1. Válassza ki előfizetését.
    
     1. **Kvóta típusa**  >  **Köteg**
       
-       Válassza a **Tovább** lehetőséget.
+       Kattintson a **Tovább** gombra.
     
 1. A **Details** (Részletek) lapon:
       
@@ -109,7 +109,7 @@ A Batch-fiókra vagy az előfizetésre vonatkozó kvóta növelését a [Azure P
 
     1. Válasszon ki egy **súlyosságot** az [üzleti hatásnak](https://aka.ms/supportseverity)megfelelően.
 
-       Válassza a **Tovább** lehetőséget.
+       Kattintson a **Tovább** gombra.
 
 1. A **kapcsolattartási adatok**:
    

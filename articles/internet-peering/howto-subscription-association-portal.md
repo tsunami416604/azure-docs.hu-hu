@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 5/18/2020
 ms.author: derekol
 ms.openlocfilehash: 22cb179925f95fd0762371cc904fcbd02675339a
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91540268"
 ---
 # <a name="associate-peer-asn-to-azure-subscription-using-the-portal"></a>Társ ASN társítása Azure-előfizetéshez a portál használatával
@@ -94,7 +94,7 @@ A PeerAsn módosítása jelenleg nem támogatott. Ha módosítania kell, fordulj
 ## <a name="delete-peerasn"></a>PeerAsn törlése
 A PeerAsn törlése jelenleg nem támogatott. Ha törölnie kell a PeerAsn, forduljon a [Microsoft-partneri](mailto:peering@microsoft.com)kapcsolathoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Közvetlen társviszony létesítése vagy módosítása a portál használatával](howto-direct-portal.md)
 * [Örökölt közvetlen társviszony konvertálása Azure-erőforrássá a portál használatával](howto-legacy-direct-portal.md)

@@ -8,10 +8,10 @@ ms.date: 04/14/2020
 ms.author: mbaldwin
 ms.custom: security-benchmark
 ms.openlocfilehash: 82114164d70eae71678e70ff2bdb7ea44a54d4cd
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87076301"
 ---
 # <a name="security-control-logging-and-monitoring"></a>Biztonsági ellenőrzés: naplózás és figyelés
@@ -76,7 +76,7 @@ Ha a számítási erőforrás a Microsoft tulajdonában van, akkor a Microsoft f
 
 | Azure-azonosító | CIS-azonosítók | Felelősséget |
 |--|--|--|
-| 2.5 | 6.4 | Ügyfél |
+| 2,5 | 6.4 | Ügyfél |
 
 Azure Monitor belül állítsa be a Log Analytics munkaterület megőrzési időszakát a szervezet megfelelőségi szabályainak megfelelően. Használja az Azure Storage-fiókokat hosszú távú/archiválási tároláshoz.
 

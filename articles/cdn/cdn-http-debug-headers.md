@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 04/12/2018
 ms.author: allensu
 ms.openlocfilehash: 4154c6a1e739f935022271e7a101f39d3ee5c500
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84343020"
 ---
 # <a name="x-ec-debug-http-headers-for-azure-cdn-rules-engine"></a>X-EC-hibakeresés a HTTP-fejlécek Azure CDN Rules Engine-hez
@@ -54,7 +54,7 @@ A hibakeresési gyorsítótár válaszának fejléceit a következő fejléc és
 ## <a name="cache-status-code-information"></a>Gyorsítótár-állapotkód adatai
 Az X-EC-debug válasz fejléce képes azonosítani a kiszolgálót, és hogyan kezeli a választ a következő irányelvek alapján:
 
-Fejléc | Description
+Fejléc | Leírás
 -------|------------
 X-EC-hibakeresés: x-EC-cache | Ezt a fejlécet akkor kell jelenteni, ha a tartalom a CDN-en keresztül van átirányítva. Azonosítja a kérelmet teljesítő POP-kiszolgálót.
 X-EC-Debug: x-EC-cache-Remote | Ezt a fejlécet csak akkor kell jelenteni, ha a kért tartalom a forrásként szolgáló védelmi kiszolgálón vagy az ADN-átjáró kiszolgálón lett gyorsítótárazva.
@@ -70,7 +70,7 @@ Az X-EC-debug fejléc a gyorsítótár állapotkód-információit a következő
 A fenti válasz fejlécének szintaxisában használt kifejezések a következőképpen vannak meghatározva:
 - StatusCode: azt jelzi, hogyan kezelte a kért tartalmat a CDN, amely egy gyorsítótár-állapotkód alapján van megjelenítve.
     
-    Ha a jogkivonat-alapú hitelesítés miatt megtagadják a jogosulatlan kérelmeket, a TCP_DENIED állapotkódot lehet jelenteni. Ugyanakkor a rendszer továbbra is használja a NONE állapotkódot a gyorsítótár-állapotjelentések vagy a nyers naplófájlok megtekintésekor.
+    Előfordulhat, hogy a rendszer a TCP_DENIED állapotkódot a NONE érték helyett, ha Token-Based hitelesítés miatt megtagadja a jogosulatlan kérelmeket. Ugyanakkor a rendszer továbbra is használja a NONE állapotkódot a gyorsítótár-állapotjelentések vagy a nyers naplófájlok megtekintésekor.
 
 - Platform: arra a platformra utal, amelyre a tartalmat kérték. A következő kódok érvényesek ehhez a mezőhöz:
 
@@ -103,10 +103,10 @@ A `X-EC-Debug` Válasz fejléce azt jelenti, hogy egy kérelem gyorsítótárazv
 
 A fenti válasz fejlécében használt kifejezés a következőképpen van definiálva:
 
-Érték  | Description
+Érték  | Leírás
 -------| --------
 IGEN    | Azt jelzi, hogy a kért tartalom gyorsítótárazásra alkalmas volt.
-NO     | Azt jelzi, hogy a kért tartalom nem alkalmas a gyorsítótárazásra. Ez az állapot az alábbi okok egyike miatt lehet: <br /> – Ügyfél-specifikus konfiguráció: a fiókhoz tartozó konfiguráció megakadályozza, hogy a pop-kiszolgálók gyorsítótárazzák az eszközöket. Például a szabályok motorja megakadályozhatja, hogy egy eszköz gyorsítótárazva legyen, ha engedélyezi a gyorsítótár megkerülése funkciót a megfelelő kérésekhez.<br /> – Gyorsítótár-válasz fejlécei: a kért objektum gyorsítótár-vezérlési és elévülési fejlécei megakadályozhatják a POP-kiszolgálók gyorsítótárazását.
+NO     | Azt jelzi, hogy a kért tartalom nem alkalmas a gyorsítótárazásra. Ez az állapot az alábbi okok egyike miatt lehet: <br /> -Customer-Specific konfiguráció: a fiókhoz tartozó konfiguráció megakadályozza, hogy a pop-kiszolgálók gyorsítótárazzák az eszközöket. Például a szabályok motorja megakadályozhatja, hogy egy eszköz gyorsítótárazva legyen, ha engedélyezi a gyorsítótár megkerülése funkciót a megfelelő kérésekhez.<br /> – Gyorsítótár-válasz fejlécei: a kért objektum Cache-Control és a fejlécek lejárta megakadályozza a POP-kiszolgálók gyorsítótárazását.
 ISMERETLEN | Azt jelzi, hogy a kiszolgálók nem tudták felmérni, hogy a kért eszköz gyorsítótárazható-e. Ez az állapot általában akkor fordul elő, ha a kérést jogkivonat-alapú hitelesítés miatt megtagadja a rendszer.
 
 ### <a name="sample-response-header"></a>Példa válasz fejlécére
@@ -115,7 +115,7 @@ Az alábbi válasz-fejléc azt jelzi, hogy sikerült-e gyorsítótárazni a kér
 
 `X-EC-Debug: x-ec-check-cacheable: YES`
 
-## <a name="cache-key-response-header"></a>Gyorsítótár – kulcs válaszának fejléce
+## <a name="cache-key-response-header"></a>Cache-Key válasz fejléce
 A `X-EC-Debug: x-ec-cache-key` Válasz fejléce a kért tartalomhoz társított fizikai gyorsítótár-kulcsot jelzi. A fizikai gyorsítótár-kulcs egy olyan útvonalból áll, amely a gyorsítótárazás céljára azonosítja az eszközt. Más szóval a kiszolgálók a gyorsítótár-kulcs által meghatározott elérési úttal összhangban keresik meg egy adott eszköz gyorsítótárazott verzióját.
 
 Ez a fizikai gyorsítótár-kulcs egy dupla továbbítási perjel (//) karakterrel kezdődik, amelyet a tartalom kéréséhez használt protokoll (HTTP vagy HTTPS) követ. Ezt a protokollt követi a kért eszköz relatív elérési útja, amely a tartalom-hozzáférési ponttal kezdődik (például _/000001/_).
@@ -147,7 +147,7 @@ A `X-EC-Debug` Válasz fejléce a gyorsítótár állapotának adatait a követk
 
 A fenti válasz fejlécének szintaxisában használt kifejezések a következőképpen vannak meghatározva:
 
-- MASeconds: a kért tartalom gyorsítótár-vezérlő fejlécei által meghatározott Max-Age (másodpercben) érték.
+- MASeconds: a kért tartalom Cache-Control fejlécében megadott Max-Age (másodpercben) érték.
 
 - MATimePeriod: átalakítja a Max-Age értéket (azaz MASeconds) egy nagyobb egység (például nap) közelítő megfelelő értékére. 
 

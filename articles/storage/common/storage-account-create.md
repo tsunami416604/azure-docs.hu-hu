@@ -11,10 +11,10 @@ ms.author: tamram
 ms.subservice: common
 ms.custom: devx-track-azurecli, devx-track-azurepowershell
 ms.openlocfilehash: 9b993e5a7c5b3ee2327fe26437414d8ce74f7369
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91333579"
 ---
 # <a name="create-a-storage-account"></a>Tárfiók létrehozása
@@ -283,6 +283,6 @@ Másik lehetőségként törölheti az erőforráscsoportot, amely törli a Stor
 
 ## <a name="next-steps"></a>Következő lépések
 
-- [A Storage-fiók áttekintése](storage-account-overview.md)
+- [Tárfiókok áttekintése](storage-account-overview.md)
 - [Frissítés általános célú v2-tárfiókra](storage-account-upgrade.md)
 - [Azure Storage-fiók áthelyezése másik régióba](storage-account-move.md)

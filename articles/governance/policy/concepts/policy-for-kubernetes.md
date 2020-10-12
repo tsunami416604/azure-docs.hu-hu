@@ -4,10 +4,10 @@ description: Ismerje meg, hogyan használja a Azure Policy a Rego-t és a nyílt
 ms.date: 09/29/2020
 ms.topic: conceptual
 ms.openlocfilehash: 67c6af4842ea1f404468497930b08c36ecd1abb9
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91540251"
 ---
 # <a name="understand-azure-policy-for-kubernetes-clusters"></a>A Kubernetes-fürtökhöz tartozó Azure Policy ismertetése
@@ -410,7 +410,7 @@ A következő lépésekkel megkeresheti a fürt kezelésére szolgáló beépít
 
    - Ha ki szeretné zárni a Kubernetes-névtereket a szabályzat kiértékelése alól, a névtér **kizárása**paraméterben határozza meg a névterek listáját. Azt javasoljuk, hogy zárja ki a következőket: _Kube-System_, _forgalomirányító-System_és _Azure-arc_.
 
-1. Válassza az **Áttekintés + létrehozás** lehetőséget.
+1. Válassza a **Felülvizsgálat + létrehozás** lehetőséget.
 
 Másik megoldásként használja a [szabályzat társítása – portál](../assign-policy-portal.md) rövid útmutatót a Kubernetes szabályzat megkereséséhez és hozzárendeléséhez. Keressen egy Kubernetes házirend-definíciót a "naplózási virtuális gépek" minta helyett.
 
@@ -531,7 +531,7 @@ A bővítmény által gyűjtött információk nem személyes adatok. A rendszer
 - Az ügynök telepítése során Azure Policy bővítmény által észlelt kivételek/hibák a szabályzat kiértékelése során
 - A Azure Policy bővítmény által nem telepített forgalomirányító házirend-definíciók száma
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Tekintse át a példákat [Azure Policy mintákon](../samples/index.md).
 - A [Szabályzatdefiníciók struktúrájának](definition-structure.md) áttekintése.

@@ -6,10 +6,10 @@ ms.subservice: process-automation
 ms.date: 04/19/2020
 ms.topic: tutorial
 ms.openlocfilehash: 613ce41820dc5f388af441836bdb4a93e43e5d07
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90987634"
 ---
 # <a name="tutorial-create-a-powershell-workflow-runbook"></a>Oktatóanyag: PowerShell munkafolyamat-runbook létrehozása
@@ -113,13 +113,13 @@ A létrehozott runbook még mindig Piszkozat módban van. Az éles környezetben
 
 7. Miután a runbook állapota megjelenik, kattintson a **kimenet**elemre. Megnyílik a kimenet lap, ahol megtekintheti az `Hello World` üzenetet.
 
-   :::image type="content" source="../media/automation-tutorial-runbook-textual/job-pane-status-blade-outputtile.png" alt-text="Képernyőkép a runbook-feladat panelről, amely a Kiemelt kimenet gombot mutatja.":::
+   :::image type="content" source="../media/automation-tutorial-runbook-textual/job-pane-status-blade-outputtile.png" alt-text="Képernyőkép a runbook-feladat panelről, amely a feladat összegzése szakaszra van kiemelve.":::
 
 8. A kimeneti oldal bezárásához.
 
 9. A forgatókönyv-feladathoz tartozó Streamek panel megnyitásához kattintson **Az összes napló** lehetőségre. Csak `Hello World` a kimeneti adatfolyamban látható. Vegye figyelembe, hogy a streamek panel más streameket jeleníthet meg egy runbook-feladatokhoz, például a részletes és a hiba-adatfolyamokhoz, ha a runbook ezeket írja.
 
-   :::image type="content" source="../media/automation-tutorial-runbook-textual/job-pane-status-blade-alllogstile.png" alt-text="Képernyőkép a runbook-feladat panelről, amelyen a minden napló gomb ki van emelve.":::
+   :::image type="content" source="../media/automation-tutorial-runbook-textual/job-pane-status-blade-alllogstile.png" alt-text="Képernyőkép a runbook-feladat panelről, amely a feladat összegzése szakaszra van kiemelve.":::
 
 10. A MyFirstRunbook lapra való visszatéréshez zárjuk be a streamek panelt és a feladatok panelt.
 
@@ -136,7 +136,7 @@ Most már befejeződött a runbook tesztelése és közzététele, de még nem c
 >[!NOTE]
 >A PowerShell-runbookok esetében a `Add-AzAccount` és a `Add-AzureRMAccount` álneve a következőhöz: `Connect-AzAccount` . Ezeket a parancsmagokat használhatja, vagy [frissítheti a modulokat](../automation-update-azure-modules.md) az Automation-fiókban a legújabb verzióra. Előfordulhat, hogy frissítenie kell a modulokat akkor is, ha nemrég létrehozott egy új Automation-fiókot.
 
-1. Navigáljon a MyFirstRunbook – munkafolyamat lapra, és nyissa meg a szöveges szerkesztőt a **Szerkesztés**gombra kattintva.
+1. Navigáljon a MyFirstRunbook-Workflow lapra, és nyissa meg a szöveges szerkesztőt a **Szerkesztés**gombra kattintva.
 
 2. Törölje a `Write-Output` sort.
 
@@ -224,7 +224,7 @@ A runbook jelenleg elindítja azt a virtuális gépet, amelyet a runbook hardcod
 
 8. A runbook befejezésekor ellenőrizze, hogy a virtuális gép elindult-e.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A PowerShell-lel kapcsolatos további információkért, beleértve a nyelvi referenciákat és a tanulási modulokat, tekintse át a [PowerShell-dokumentumokat](/powershell/scripting/overview).
 * A PowerShell-parancsmagok leírása: [az. Automation](/powershell/module/az.automation/?view=azps-3.7.0#automation).

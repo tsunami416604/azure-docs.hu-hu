@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 02/08/2017
 ms.author: alkohli
 ms.openlocfilehash: 2f606a2ff036c6bc3b4e3c508632d48ae8d40f15
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91400043"
 ---
 # <a name="storsimple-for-cloud-solutions-provider-program-frequently-asked-questions"></a>StorSimple a Cloud Solutions szolgáltatói programhoz: gyakori kérdések
@@ -94,8 +94,8 @@ A CSP-ben a StorSimple támogatási modellje megegyezik a CSP-ben lévő többi 
 A CSP-StorSimple kapcsolatos további információkért nyissa meg a következőt:
 
 - [Microsoft Cloud megoldás-szolgáltatói program](https://partner.microsoft.com/Membership)
-- [Partneri központ](https://partnercenter.microsoft.com/) 
+- [Partnerközpont](https://partnercenter.microsoft.com/) 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ha készen áll a StorSimple üzembe helyezésére, lépjen a [StorSimple üzembe helyezése a CSP-ben](storsimple-partner-csp-deploy.md)című lépésre.

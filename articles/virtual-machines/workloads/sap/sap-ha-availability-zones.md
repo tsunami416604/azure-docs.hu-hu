@@ -17,10 +17,10 @@ ms.date: 03/05/2020
 ms.author: juergent
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 8265d328a23e871dc25692f22138a7bb648a8323
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88653596"
 ---
 # <a name="sap-workload-configurations-with-azure-availability-zones"></a>SAP számításifeladat-konfigurációk az Azure Availability Zones szolgáltatással
@@ -114,7 +114,7 @@ Ehhez a konfigurációhoz a következő szempontokat kell figyelembe venni:
   - Windows rendszer esetén a SIOS DataKeeper használó fürtözött megoldás a [Windows feladatátvevő fürtön lévő SAP ASCS/SCS-példányok fürtözött megosztott lemezzel való használatával, az Azure-ban](./sap-high-availability-guide-wsfc-shared-disk.md)dokumentálva.
   - SUSE Linux esetében az NFS-megosztások, amelyek a [magas rendelkezésre állású NFS](./high-availability-guide-suse-nfs.md)-ben, a SUSE Linux Enterprise Server-on található Azure-beli virtuális gépeken.
     
-    Jelenleg a Microsoft Kibővíthető fájlkiszolgálót használó megoldás, amely az Azure- [infrastruktúra az SAP magas rendelkezésre állásra való előkészítését ismerteti, a Windows feladatátvevő fürt és az SAP ASCS/SCS-példányok fájlmegosztás használatával](./sap-high-availability-infrastructure-wsfc-file-share.md)nem támogatott a zónák között.
+    A Microsoft Scale-Out fájlkiszolgálót használó megoldás jelenleg a [Windows feladatátvevő fürt és az SAP ASCS/SCS-példányok esetében az Azure-infrastruktúra előkészítése a magas rendelkezésre álláshoz](./sap-high-availability-infrastructure-wsfc-file-share.md)című cikkben leírtaknak megfelelően nem támogatott a zónák között.
 - A harmadik zóna a SBD eszköz futtatására szolgál, ha [SUSE Linux pacemaker-fürtöt](./high-availability-guide-suse-pacemaker.md#create-azure-fence-agent-stonith-device) vagy további alkalmazás-példányokat hoz létre.
 - A kritikus fontosságú üzleti folyamatok futtatási időkonzisztenciájának eléréséhez próbáljon meg bizonyos batch-feladatokat és felhasználókat olyan alkalmazás-példányokhoz irányítani, amelyek az aktív adatbázis-kezelői példánnyal rendelkeznek az SAP batch Server-csoportok, az SAP-bejelentkezési csoportok vagy az RFC-csoportok használatával. A zónák közötti feladatátvétel esetén azonban ezeket a csoportokat manuálisan kell áthelyeznie az aktív adatbázis-virtuálisgép-zónán belüli virtuális gépeken futó példányokra.  
 - Előfordulhat, hogy minden zónában érdemes lehet alvó párbeszédpanel-példányokat telepíteni. Ezzel a megoldással azonnal visszatérhet a korábbi erőforrás-kapacitáshoz, ha az alkalmazás példányainak részeként használt zóna kívül esik a szolgáltatáson.
@@ -142,7 +142,7 @@ Ehhez a konfigurációhoz a következő szempontokat kell figyelembe venni:
     - Windows rendszer esetén a SIOS DataKeeper használó fürtözött megoldás a [Windows feladatátvevő fürtön lévő SAP ASCS/SCS-példányok fürtözött megosztott lemezzel való használatával, az Azure-ban](./sap-high-availability-guide-wsfc-shared-disk.md)dokumentálva.
     - SUSE Linux esetében az NFS-megosztások, amelyek a [magas rendelkezésre állású NFS](./high-availability-guide-suse-nfs.md)-ben, a SUSE Linux Enterprise Server-on található Azure-beli virtuális gépeken.
     
-  Jelenleg a Microsoft Kibővíthető fájlkiszolgálót használó megoldás, amely az Azure- [infrastruktúra az SAP magas rendelkezésre állásra való előkészítését ismerteti, a Windows feladatátvevő fürt és az SAP ASCS/SCS-példányok fájlmegosztás használatával](./sap-high-availability-infrastructure-wsfc-file-share.md)nem támogatott a zónák között.
+  A Microsoft Scale-Out fájlkiszolgálót használó megoldás jelenleg a [Windows feladatátvevő fürt és az SAP ASCS/SCS-példányok esetében az Azure-infrastruktúra előkészítése a magas rendelkezésre álláshoz](./sap-high-availability-infrastructure-wsfc-file-share.md)című cikkben leírtaknak megfelelően nem támogatott a zónák között.
 - A harmadik zóna a SBD eszköz futtatására szolgál, ha [SUSE Linux pacemaker-fürtöt](./high-availability-guide-suse-pacemaker.md#create-azure-fence-agent-stonith-device) vagy további alkalmazás-példányokat hoz létre.
 - Az alvó üzemmódú virtuális gépeket a passzív zónában kell üzembe helyezni (egy adatbázis-kezelői pontból), így a zóna meghibásodása esetén elindíthatja az alkalmazás erőforrásait.
     - [Azure site Recovery](https://azure.microsoft.com/services/site-recovery/) jelenleg nem tudja replikálni az aktív virtuális gépeket a zónák közötti, alvó állapotban lévő virtuális gépekre. 
@@ -172,7 +172,7 @@ Ehhez a konfigurációhoz a következő szempontokat kell figyelembe venni:
     - Windows rendszer esetén a SIOS DataKeeper használó fürtözött megoldás a [Windows feladatátvevő fürtön lévő SAP ASCS/SCS-példányok fürtözött megosztott lemezzel való használatával, az Azure-ban](./sap-high-availability-guide-wsfc-shared-disk.md)dokumentálva.
     - SUSE Linux esetében az NFS-megosztások, amelyek a [magas rendelkezésre állású NFS](./high-availability-guide-suse-nfs.md)-ben, a SUSE Linux Enterprise Server-on található Azure-beli virtuális gépeken.
 
-  Jelenleg a Microsoft Kibővíthető fájlkiszolgálót használó megoldás, amely az Azure- [infrastruktúra az SAP magas rendelkezésre állásra való előkészítését ismerteti, a Windows feladatátvevő fürt és az SAP ASCS/SCS-példányok fájlmegosztás használatával](./sap-high-availability-infrastructure-wsfc-file-share.md)nem támogatott a zónák között.
+  A Microsoft Scale-Out fájlkiszolgálót használó megoldás jelenleg a [Windows feladatátvevő fürt és az SAP ASCS/SCS-példányok esetében az Azure-infrastruktúra előkészítése a magas rendelkezésre álláshoz](./sap-high-availability-infrastructure-wsfc-file-share.md)című cikkben leírtaknak megfelelően nem támogatott a zónák között.
 - A harmadik zóna a SBD eszköz futtatására szolgál, ha [SUSE Linux pacemaker-fürtöt](./high-availability-guide-suse-pacemaker.md#create-azure-fence-agent-stonith-device) vagy további alkalmazás-példányokat hoz létre.
 
 

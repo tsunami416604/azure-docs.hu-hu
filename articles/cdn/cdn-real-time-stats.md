@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: 3af2e849aa6658e539b0b5bdbda4428cc28e5ce5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84887225"
 ---
 # <a name="real-time-stats-in-microsoft-azure-cdn"></a>Microsoft Azure CDN valós idejű statisztikái
@@ -89,7 +89,7 @@ Egy adott állapotkód esetében átmenetileg elrejtheti a naplózott adatokat. 
 
 Ez a gráf azt jelzi, hogy hány kapcsolat lett létrehozva a peremhálózati kiszolgálókhoz. Egy adategységre vonatkozó minden kérelem, amely a CDN-eredményeken keresztül halad a kapcsolatok között.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Valós idejű riasztások](cdn-real-time-alerts.md) beszerzése Azure CDN
 * Mélyebb kiásás a [speciális http-jelentésekkel](cdn-advanced-http-reports.md)
 * [Használati minták](cdn-analyze-usage-patterns.md) elemzése

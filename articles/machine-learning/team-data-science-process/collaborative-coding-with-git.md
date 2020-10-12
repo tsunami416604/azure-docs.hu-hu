@@ -11,10 +11,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 739be373992fcd994f085f8571675779e450bfee
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87090212"
 ---
 # <a name="collaborative-coding-with-git"></a>Együttműködésen alapuló kódolás a Gittel
@@ -49,7 +49,7 @@ git checkout <working branch name>
 
 A munkaágra való váltás után megkezdheti a kód vagy a dokumentációs összetevők fejlesztését a munkaelem befejezéséhez. A futó kapcsolók visszaállnak `git checkout master` a `master` ágra.
 
-Célszerű létrehozni egy git ágat minden egyes felhasználói történet munkaelemhez. Ezután az egyes feladatok munkaelemekhez a felhasználói történet ág alapján hozhat létre ágat. Rendezze az ágakat egy olyan hierarchiában, amely a felhasználói történet – feladat kapcsolatnak felel meg, ha több ember dolgozik ugyanazon projekt különböző felhasználói történetén, vagy ugyanazon felhasználói történet különböző feladataiban. Az ütközések csökkentése érdekében az egyes csapattagok egy másik ág, illetve más kódok vagy egyéb összetevők esetében is dolgozhatnak egy adott ág megosztásakor. 
+Célszerű létrehozni egy git ágat minden egyes felhasználói történet munkaelemhez. Ezután az egyes feladatok munkaelemekhez a felhasználói történet ág alapján hozhat létre ágat. Rendezze az ágakat egy olyan hierarchiában, amely megfelel a felhasználó Story-Task kapcsolatának, ha több ember dolgozik ugyanazon projekt különböző felhasználói történetén, vagy ugyanazon felhasználói történet különböző feladataiban. Az ütközések csökkentése érdekében az egyes csapattagok egy másik ág, illetve más kódok vagy egyéb összetevők esetében is dolgozhatnak egy adott ág megosztásakor. 
 
 Az alábbi ábrán a TDSP ajánlott elágazási stratégiája látható. Előfordulhat, hogy nincs szüksége az itt látható sok ágra, különösen akkor, ha csak egy vagy két személy dolgozik egy projekten, vagy csak egy felhasználó dolgozik a felhasználói történet összes feladatán. Az elsődleges ág fejlesztési ága azonban mindig jó gyakorlat, és segít megakadályozni, hogy a kiadási ág megszakítsa a fejlesztési tevékenységeket. A git-ág modell teljes leírását a git- [elágazások sikeres modellje](https://nvie.com/posts/a-successful-git-branching-model/)című témakörben tekintheti meg.
 
