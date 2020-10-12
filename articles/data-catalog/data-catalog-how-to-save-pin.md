@@ -7,10 +7,10 @@ ms.service: data-catalog
 ms.topic: how-to
 ms.date: 08/01/2019
 ms.openlocfilehash: 2d0baed53441893ec294784f0f8092fe89a347c9
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86523706"
 ---
 # <a name="save-searches-and-pin-data-assets-in-azure-data-catalog"></a>Keresések mentése és adategységek rögzítése Azure Data Catalog
@@ -74,5 +74,5 @@ A Data Catalog portál kezdőlapján szerepel a **saját eszközök** szakasz, a
 
 ![A Kezdőlap saját eszközök szakasza](./media/data-catalog-how-to-save-pin/07-my-assets.png)
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 Azure Data Catalog olyan képességeket biztosít, amelyek megkönnyítik a szükséges adatforrások felderítését, így Ön és más szervezeti tagok kevesebb időt keresnek az adatkeresésre, és több időt is igénybe vehetnek. A mentett keresések és a rögzített adategységek ezekre az alapvető képességekre épülnek, így a felhasználók könnyen azonosíthatják azokat az adatforrásokat, amelyeket többször is dolgoznak.

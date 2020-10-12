@@ -17,10 +17,10 @@ ms.author: rolyon
 ms.reviewer: skwan
 ms.custom: it-pro
 ms.openlocfilehash: 870c9c91e285988cdc1fb294b3fc9b3270de7483
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85361904"
 ---
 # <a name="add-or-remove-azure-role-assignments-for-external-guest-users-using-the-azure-portal"></a>Azure-beli szerepkör-hozzárendelések hozzáadása vagy eltávolítása a külső vendég felhasználók számára a Azure Portal használatával
@@ -31,7 +31,7 @@ Az [Azure szerepköralapú hozzáférés-vezérlés (Azure RBAC)](overview.md) n
 
 Szerepkör-hozzárendelések hozzáadásához vagy eltávolításához a következőket kell tennie:
 
-- `Microsoft.Authorization/roleAssignments/write`és `Microsoft.Authorization/roleAssignments/delete` engedélyek, például a [felhasználói hozzáférés rendszergazdája](built-in-roles.md#user-access-administrator) vagy a [tulajdonos](built-in-roles.md#owner)
+- `Microsoft.Authorization/roleAssignments/write` és `Microsoft.Authorization/roleAssignments/delete` engedélyek, például a [felhasználói hozzáférés rendszergazdája](built-in-roles.md#user-access-administrator) vagy a [tulajdonos](built-in-roles.md#owner)
 
 ## <a name="when-would-you-invite-guest-users"></a>Mikor hívja meg a vendég felhasználókat?
 
@@ -79,7 +79,7 @@ Az Azure RBAC a hozzáférés biztosításához rendeljen hozzá egy szerepkört
 
 1. Kattintson a **Hozzáférés-vezérlés (IAM)** elemre.
 
-    Az alábbi képernyőfelvételen az erőforráscsoport hozzáférés-vezérlés (IAM) paneljén látható egy példa. Ha itt bármilyen hozzáférés-vezérlési változást hajt végre, az csak az erőforráscsoporthoz fog vonatkozni.
+    Az alábbi képernyőképen egy példát láthat egy erőforráscsoport Hozzáférés-vezérlés (IAM) paneljére. Ha itt bármilyen hozzáférés-vezérlési változást hajt végre, az csak az erőforráscsoporthoz fog vonatkozni.
 
     ![Egy erőforráscsoport hozzáférés-vezérlés (IAM) panelje](./media/role-assignments-external-users/access-control-resource-group.png)
 
@@ -159,7 +159,7 @@ Mielőtt eltávolít egy vendég felhasználót egy címtárból, először el k
 
    ![Szerepkör-hozzárendelés eltávolítása](./media/role-assignments-external-users/remove-role-assignment-select.png)
 
-1. Kattintson az **Eltávolítás** lehetőségre.
+1. Kattintson az **Eltávolítás** elemre.
 
    ![Szerepkör-hozzárendelés eltávolítási üzenete](./media/role-assignments-external-users/remove-role-assignment.png)
 

@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 11/22/2017
 ms.custom: devx-track-python
 ms.openlocfilehash: 673c8db0b7c6d3d8658d2d3b6cfd7e00f3d7d986
-ms.sourcegitcommit: dea88d5e28bd4bbd55f5303d7d58785fad5a341d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87876206"
 ---
 # <a name="develop-u-sql-with-python-r-and-c-for-azure-data-lake-analytics-in-visual-studio-code"></a>A U-SQL fejlesztése a Python, az R és a C# használatával Azure Data Lake Analytics a Visual Studio Code-ban
@@ -124,7 +124,7 @@ Regisztráljon a Python és az R Extensions szerelvényeket az ADL-fiókjához.
 5. Kattintson a jobb gombbal a **USQL** fájlra, kattintson a **parancsfájl fordítása** vagy a **feladatok** futtatása a feladatokhoz lehetőségre.
 
 ## <a name="develop-c-file"></a>C#-fájl fejlesztése
-A kód mögötti fájl egy olyan C#-fájl, amely egyetlen U-SQL-parancsfájllal van társítva. A kód mögött található UDO, UDA, UDT és UDF dedikált parancsfájlt is meghatározhat. A UDO, a UDA, a UDT és az UDF közvetlenül a szkriptben használható, anélkül, hogy először regisztrálja a szerelvényt. A kód mögötti fájl ugyanabba a mappába kerül, mint a társ U-SQL-parancsfájl. Ha a parancsfájl neve xxx. usql, a kód mögött a xxx.usql.cs lesz elnevezve. Ha manuálisan törli a kód mögötti fájlt, a kód mögötti funkció le van tiltva a társított U-SQL-parancsfájlhoz. További információ az U-SQL-szkriptek vásárlói kódjának írásáról [: egyéni kód írása és használata az u-SQL-ben: felhasználó által definiált függvények]( https://blogs.msdn.microsoft.com/visualstudio/2015/10/28/writing-and-using-custom-code-in-u-sql-user-defined-functions/).
+A kód mögötti fájl egy olyan C#-fájl, amely egyetlen U-SQL-parancsfájllal van társítva. A kód mögött található UDO, UDA, UDT és UDF dedikált parancsfájlt is meghatározhat. A UDO, a UDA, a UDT és az UDF közvetlenül a szkriptben használható, anélkül, hogy először regisztrálja a szerelvényt. A kód mögötti fájl ugyanabba a mappába kerül, mint a társ U-SQL-parancsfájl. Ha a parancsfájl neve xxx. usql, a kód mögött a xxx.usql.cs lesz elnevezve. Ha manuálisan törli a kód mögötti fájlt, a kód mögötti funkció le van tiltva a társított U-SQL-parancsfájlhoz. További információ az U-SQL-szkriptek vásárlói kódjának írásáról [: egyéni kód írása és használata az u-SQL-ben: User-Defined függvények]( https://blogs.msdn.microsoft.com/visualstudio/2015/10/28/writing-and-using-custom-code-in-u-sql-user-defined-functions/).
 
 1. Kattintson az **új fájlra** a munkaterületen.
 2. Írja be a kódot az U-SQL-fájlba. A következő egy mintakód.

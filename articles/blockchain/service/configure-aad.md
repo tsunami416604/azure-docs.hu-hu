@@ -5,10 +5,10 @@ ms.date: 11/22/2019
 ms.topic: how-to
 ms.reviewer: janders
 ms.openlocfilehash: 337d01abc51d310d06aeea3427b770132be4824c
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85208773"
 ---
 # <a name="how-to-configure-azure-active-directory-access-for-azure-blockchain-service"></a>Az Azure Blockchain Service Azure Active Directory-hozzáférésének konfigurálása
@@ -89,7 +89,7 @@ connector.exe -remote <myBlockchainEndpoint>  -method aadclient -client-id <myCl
 
 | Paraméter | Leírás |
 |-----------|-------------|
-| Bérlő azonosítója | Azure AD-tartomány, például:`yourdomain.onmicrosoft.com`
+| Bérlő azonosítója | Azure AD-tartomány, például: `yourdomain.onmicrosoft.com`
 | ügyfél-azonosító | A regisztrált alkalmazás ügyfél-azonosítója az Azure AD-ben
 | ügyfél – titok | A regisztrált alkalmazás ügyfél-titka az Azure AD-ben
 

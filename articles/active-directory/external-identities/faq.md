@@ -13,10 +13,10 @@ ms.reviewer: mal
 ms.custom: it-pro, seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 158caf3a6c4cc0efc2f89e18d065a0112b481ee9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91274044"
 ---
 # <a name="azure-active-directory-b2b-collaboration-faqs"></a>Azure Active Directory B2B-együttműködés – gyakori kérdések
@@ -30,7 +30,7 @@ Az Azure Active Directory (Azure AD) vállalatközi (B2B) együttműködéssel k
 Feltétlenül! A [szolgáltatásról a blogbejegyzésben](https://blogs.technet.microsoft.com/enterprisemobility/2017/04/07/improving-the-branding-logic-of-azure-ad-login-pages/)talál további információt. A szervezet bejelentkezési oldalának testreszabásával kapcsolatos további információkért lásd: [vállalati arculat hozzáadása a bejelentkezéshez és a hozzáférési panel oldalaihoz](../fundamentals/customize-branding.md).
 
 ### <a name="can-b2b-collaboration-users-access-sharepoint-online-and-onedrive"></a>A B2B-együttműködés felhasználói hozzáférhetnek a SharePoint Online-hoz és a OneDrive-hoz?
-Igen. A meglévő vendég felhasználók a SharePoint Online-ban való keresésének lehetősége azonban alapértelmezés szerint **ki van kapcsolva** a People Picker használatával. Ha be szeretné kapcsolni a meglévő vendég felhasználók keresésének lehetőségét, állítsa be a **ShowPeoplePickerSuggestionsForGuestUsers** beállítást **a**be értékre. Ezt a beállítást a bérlő vagy a webhelycsoport szintjén is bekapcsolhatja. Ezt a beállítást a set-SPOTenant és a set-SPOSite parancsmagok segítségével módosíthatja. Ezekkel a parancsmagokkal a tagok a címtárban lévő összes meglévő felhasználónál kereshetnek. A bérlői hatókör változásai nem érintik a már kiépített SharePoint Online-helyeket.
+Igen. A meglévő vendég felhasználók a SharePoint Online-ban való keresésének lehetősége azonban alapértelmezés szerint **ki van kapcsolva** a People Picker használatával. Ha be szeretné kapcsolni a meglévő vendég felhasználók keresésének lehetőségét, állítsa be a **ShowPeoplePickerSuggestionsForGuestUsers** beállítást **a**be értékre. Ezt a beállítást a bérlő vagy a webhelycsoport szintjén is bekapcsolhatja. Ezt a beállítást a Set-SPOTenant és Set-SPOSite parancsmagok segítségével módosíthatja. Ezekkel a parancsmagokkal a tagok a címtárban lévő összes meglévő felhasználónál kereshetnek. A bérlői hatókör változásai nem érintik a már kiépített SharePoint Online-helyeket.
 
 ### <a name="is-the-csv-upload-feature-still-supported"></a>A CSV-feltöltési funkció továbbra is támogatott?
 Igen. A. csv fájl feltöltési funkciójával kapcsolatos további információkért tekintse meg [ezt a PowerShell-mintát](code-samples.md).
@@ -70,7 +70,7 @@ Igen! Létrehozhat egy feltételes hozzáférési szabályzatot, amely letiltja 
 5. Az **új** lap **név** szövegmezőbe írja be a szabályzat nevét (például "a vendégek blokkolják a portál elérését").
 6. A **Hozzárendelések** alatt válassza a **Felhasználók és csoportok** lehetőséget.
 7. A **beágyazás** lapon válassza a **felhasználók és csoportok kiválasztása**lehetőséget, majd válassza az **összes vendég és külső felhasználó (előzetes verzió)** lehetőséget.
-9. Válassza a **Kész** lehetőséget.
+9. Válassza a **Done** (Kész) lehetőséget.
 10. Az **új** lap **hozzárendelések** területén válassza a **Cloud apps vagy műveletek**elemet.
 11. A **Cloud apps vagy műveletek** lapon válassza az **alkalmazások kiválasztása**, majd a **kiválasztás**lehetőséget.
 12. A **Kiválasztás** lapon válassza a **Microsoft Azure-felügyelet** elemet, majd a **Kiválaszt** lehetőséget.

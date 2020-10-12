@@ -9,10 +9,10 @@ ms.subservice: partnercenter-marketplace-publisher
 ms.topic: conceptual
 ms.date: 09/04/2020
 ms.openlocfilehash: 5a09105dac89f3dc241140f16f3d4be72cc97493
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89483626"
 ---
 # <a name="azure-ad-and-transactable-saas-offers-in-the-commercial-marketplace"></a>Az Azure AD és a transactd SaaS-ajánlatok a kereskedelmi piactéren
@@ -45,7 +45,7 @@ A következő szakaszokban részletesen ismertetjük az egyes folyamatok lépés
 
 Ez az ábra a vásárlás felügyeletének négy folyamat lépését mutatja be.
 
-:::image type="content" source="./media/azure-ad-saas/azure-ad-saas-flow-1-4.png" alt-text="A vásárlások kezelésének négy folyamatának lépéseit mutatja be.":::
+:::image type="content" source="./media/azure-ad-saas/azure-ad-saas-flow-1-4.png" alt-text="Bemutatja a vásárlási felügyeletet, az előfizetések kezelését és a nem kötelező felhasználói felügyeleti folyamat lépéseit.":::
 
 Ez a táblázat a vásárlás felügyeleti folyamatának lépéseit ismerteti.
 
@@ -61,7 +61,7 @@ Ez a táblázat a vásárlás felügyeleti folyamatának lépéseit ismerteti.
 
 Ez az ábra az előfizetés-kezelés két folyamatának lépéseit mutatja be.
 
-:::image type="content" source="./media/azure-ad-saas/azure-ad-saas-flow-5-6.png" alt-text="Az előfizetés-kezelés két folyamatának lépéseit mutatja be.":::
+:::image type="content" source="./media/azure-ad-saas/azure-ad-saas-flow-5-6.png" alt-text="Bemutatja a vásárlási felügyeletet, az előfizetések kezelését és a nem kötelező felhasználói felügyeleti folyamat lépéseit.":::
 
 Ez a táblázat az előfizetés-kezelési folyamat lépéseinek részleteit ismerteti.
 
@@ -75,7 +75,7 @@ Ez a táblázat az előfizetés-kezelési folyamat lépéseinek részleteit isme
 
 Ez az ábra a felhasználói felügyelet három folyamatának lépéseit mutatja be.
 
-:::image type="content" source="./media/azure-ad-saas/azure-ad-saas-flow-7-9.png" alt-text="A felhasználói felügyelet három választható folyamatának lépéseit mutatja be.":::
+:::image type="content" source="./media/azure-ad-saas/azure-ad-saas-flow-7-9.png" alt-text="Bemutatja a vásárlási felügyeletet, az előfizetések kezelését és a nem kötelező felhasználói felügyeleti folyamat lépéseit.":::
 
 A 7 – 9. lépést feldolgozhatja a felhasználói felügyeleti folyamatok opcionális lépéseivel. Az Azure AD egyszeri bejelentkezést (SSO) támogató kiadók számára további előnyöket biztosítanak. Ez a táblázat a felhasználói felügyeleti folyamat lépéseinek részleteit ismerteti.
 

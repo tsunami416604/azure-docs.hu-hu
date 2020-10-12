@@ -13,10 +13,10 @@ ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
 ms.openlocfilehash: 7f07f08cd320d94495403b0f5ae65d60d8dc93b5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84195985"
 ---
 # <a name="move-data-between-on-premises-sources-and-the-cloud-with-data-management-gateway"></a>Adatáthelyezés a helyszíni források és a felhő között adatkezelés átjáróval
@@ -96,7 +96,7 @@ Ebben a lépésben a Azure Portal használatával hoz létre egy **ADFTutorialOn
    > [!NOTE]
    > Használja az Internet Explorert vagy a Microsoft ClickOnce-kompatibilis webböngészőt.
    >
-   > Amennyiben Chrome böngészőt használ, keresse fel a [Chrome webáruházát](https://chrome.google.com/webstore/), keressen rá a „ClickOnce” kulcsszóra, válassza ki az egyik ClickOnce-bővítményt, majd telepítse azt.
+   > Ha a Chrome-ot használja, lépjen a [Chrome webáruházba](https://chrome.google.com/webstore/), keressen a "ClickOnce" kulcsszóra, válassza ki az egyik ClickOnce-bővítményt, és telepítse.
    >
    > Tegye ugyanezt a Firefox esetében is (telepítse a bővítményt). Kattintson a **menü megnyitása** gombra az eszköztáron (**három vízszintes vonal** a jobb felső sarokban), kattintson a **bővítmények**lehetőségre, keressen rá a "ClickOnce" kulcsszóra, válassza ki az egyik ClickOnce-bővítményt, és telepítse azt.    
    >

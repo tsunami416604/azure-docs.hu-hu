@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: previous-author=fboylu, previous-ms.author=fboylu
 ms.openlocfilehash: 2961ffb21a1f34ca677e0aede5170689f4e38dca
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84267969"
 ---
 # <a name="azure-ai-guide-for-predictive-maintenance-solutions"></a>Azure AI-útmutató a prediktív karbantartási megoldásokhoz
@@ -43,7 +43,7 @@ A BDM tartalma nem várja az olvasót, hogy bármilyen korábbi adatelemzési is
 
 A vállalatok kritikus fontosságú berendezéseket igényelnek a maximális hatékonyság és kihasználtság érdekében, hogy felismerjék a tőkebefektetések megtérülését. Ezek az eszközök a repülőgép-hajtóművektől, a turbináktól, a felvonóktól és az ipari hűtőberendezésektól függően akár több milliót is tartalmazhatnak, például a fénymásolókat, a kávégépeket vagy a vízhűtőket.
 - Alapértelmezés szerint a legtöbb vállalat a _javító karbantartásra_támaszkodik, ahol a részek a és a meghibásodása esetén is lecserélhetők. A javító karbantartás lehetővé teszi, hogy a részek teljes mértékben használatban legyenek (ezért nem pazarolja az összetevők élettartamát), de a leállási, a munkaerő-és a nem ütemezett karbantartási követelmények (munkaidőn kívüli vagy nem megfelelő helyszínek) költségeit is felhasználhatja.
-- A következő szinten a vállalatok _megelőző karbantartást_végeznek, ahol egy rész hasznos élettartamát határozzák meg, és a hiba előtt megtarthatják vagy lecserélhetik azokat. A megelőző karbantartás elkerüli a nem ütemezett és katasztrofális hibákat. Azonban az ütemezett leállás magas költségei, az összetevő kihasználtsága a hasznos élettartama alatt is fennáll, és továbbra is fennáll a munka.
+- A következő szinten a vállalatok  _megelőző karbantartást_végeznek, ahol egy rész hasznos élettartamát határozzák meg, és a hiba előtt megtarthatják vagy lecserélhetik azokat. A megelőző karbantartás elkerüli a nem ütemezett és katasztrofális hibákat. Azonban az ütemezett leállás magas költségei, az összetevő kihasználtsága a hasznos élettartama alatt is fennáll, és továbbra is fennáll a munka.
 - A _prediktív karbantartás_ célja, hogy optimalizálja az egyensúlyt a javítási és a megelőző karbantartás között az összetevők _időben_ történő cseréje révén. Ez a módszer csak akkor cseréli le ezeket az összetevőket, amikor hibákhoz közelednek. Az összetevők élettartamának (a megelőző karbantartáshoz képest) kibővítésével, valamint a nem ütemezett karbantartási és munkaerő-költségek csökkentésével (a javító karbantartással szemben) a vállalatok költségmegtakarítást és versenyelőnyt biztosítanak.
 
 ## <a name="business-problems-in-pdm"></a>Üzleti problémák a PdM-ben
@@ -114,7 +114,7 @@ A tanulás sikeressége függ attól, hogy milyen minőségben tanulják meg, é
 
 ### <a name="relevant-data"></a>Kapcsolódó adatokat
 
-Először is fontos, hogy az adatokat meg kell adni _a problémához_. Vegye figyelembe, hogy a fentiekben tárgyalt _kerék-meghibásodási_ eset – a betanítási adatoknak a kerék műveletekkel kapcsolatos funkciókat kell tartalmazniuk. Ha a probléma a _vontatási rendszer_meghibásodásának előrejelzése volt, a betanítási adatmennyiségnek a vontatási rendszer minden különböző összetevőjét ki kell terjednie. Az első eset egy adott összetevőt céloz meg, míg a második eset egy nagyobb alrendszer meghibásodását célozza meg. Az általános javaslat az előrejelzési rendszerek megtervezése bizonyos összetevőkkel, a nagyobb alrendszerek helyett, mivel az utóbbi több szétszórt adattal fog rendelkezni. A tartományi szakértő (lásd: a [prediktív karbantartással kapcsolatos problémák](#qualifying-problems-for-predictive-maintenance)) segítséget nyújt az elemzéshez tartozó legfontosabb alkészletek kiválasztásában. A megfelelő adatforrásokat részletesebben ismertetjük a [prediktív karbantartás adatelőkészítési feladataival](#data-preparation-for-predictive-maintenance).
+Először is fontos, hogy az adatokat meg kell adni _a problémához_. Vegye figyelembe, hogy a fentiekben tárgyalt _kerék-meghibásodási_ eset – a betanítási adatoknak a kerék műveletekkel kapcsolatos funkciókat kell tartalmazniuk. Ha a probléma a  _vontatási rendszer_meghibásodásának előrejelzése volt, a betanítási adatmennyiségnek a vontatási rendszer minden különböző összetevőjét ki kell terjednie. Az első eset egy adott összetevőt céloz meg, míg a második eset egy nagyobb alrendszer meghibásodását célozza meg. Az általános javaslat az előrejelzési rendszerek megtervezése bizonyos összetevőkkel, a nagyobb alrendszerek helyett, mivel az utóbbi több szétszórt adattal fog rendelkezni. A tartományi szakértő (lásd: a [prediktív karbantartással kapcsolatos problémák](#qualifying-problems-for-predictive-maintenance)) segítséget nyújt az elemzéshez tartozó legfontosabb alkészletek kiválasztásában. A megfelelő adatforrásokat részletesebben ismertetjük a [prediktív karbantartás adatelőkészítési feladataival](#data-preparation-for-predictive-maintenance).
 
 ### <a name="sufficient-data"></a>Elegendő adatmennyiség
 A hiba-előzményekre vonatkozó adatmennyiséggel kapcsolatban általában két kérdés fordul elő: (1) "hány sikertelen esemény szükséges a modell betanításához?" (2) "hány rekord tekintendő" elegendőnek? " Nincsenek végleges válaszok, de csak a hüvelykujj szabályok. A (1), a hiba eseményeinek száma és a modell jobb számának növelése érdekében. A (2) és a sikertelen események pontos száma az adatoktól és a megoldandó probléma kontextustól függ. De a flip oldalon, ha egy gép túl gyakran meghibásodik, akkor a vállalat lecseréli, ami csökkenti a meghibásodási példányokat. Itt is fontos a tartományi szakértő útmutatása. Vannak azonban olyan metódusok, amelyek megbirkóznak a _ritka események_problémájára. Ezeket a rendszer a [kiegyensúlyozatlan adatkezelési](#handling-imbalanced-data)szakaszban tárgyalja.
@@ -362,7 +362,7 @@ Sok PdM probléma merül fel ilyen kiegyensúlyozatlan adatkészletekben, ahol a
 
 Az adatkezelési osztályok esetében a legtöbb szabványos tanulási algoritmus teljesítménye sérült, mivel ezek a hibák a teljes hiba mértékének minimalizálását célozzák meg. Az 99%-os negatív és 1%-os pozitív példákkal rendelkező adatkészletek esetében a modell az összes példány negatívként való címkézésével megjeleníthető 99%-os pontossággal. A modell azonban helytelenül osztályozza az összes pozitív példát; Tehát még ha a pontossága is magas, az algoritmus nem hasznos. Ennek következtében a hagyományos értékelési mérőszámok, például _a hibák összesített pontossága_ nem elegendő a kiegyensúlyozatlan tanuláshoz. Ha kiegyensúlyozatlan adatkészletekkel szembesül, a modell kiértékeléséhez más mérőszámok is használhatók:
 - Pontosság
-- Visszahívás
+- Recall
 - F1 pontszámok
 - Cost kiigazított ROC (fogadó működési jellemzői)
 
@@ -426,7 +426,7 @@ Az útmutató utolsó szakasza az Azure-ban megvalósított PdM-megoldási sablo
 | # | Cím | Leírás |
 |--:|:------|-------------|
 | 2 | [Azure prediktív karbantartási megoldás sablonja](https://github.com/Azure/AI-PredictiveMaintenance) | Egy nyílt forráskódú megoldási sablon, amely bemutatja az Azure ML-modellezést és egy teljes körű Azure-infrastruktúrát, amely képes a prediktív karbantartási forgatókönyvek támogatására a IoT távoli monitorozása kontextusában. |
-| 3 | [Mélytanulás a prediktív karbantartáshoz](https://github.com/Azure/MachineLearningSamples-DeepLearningforPredictiveMaintenance) | Azure notebook egy bemutató megoldással, amely a LSTM (hosszú rövid távú memória) hálózatokat (az ismétlődő neurális hálózatok osztályát) használja a prediktív karbantartáshoz, egy [blogbejegyzésben a mintában](https://azure.microsoft.com/blog/deep-learning-for-predictive-maintenance).|
+| 3 | [Mélytanulás a prediktív karbantartáshoz](https://github.com/Azure/MachineLearningSamples-DeepLearningforPredictiveMaintenance) | Az Azure notebook olyan bemutató megoldással rendelkezik, amely a prediktív karbantartáshoz LSTM (hosszú Short-Term memória) hálózatokat (az ismétlődő neurális hálózatok osztályát) használja, és [Ez a minta blogbejegyzés](https://azure.microsoft.com/blog/deep-learning-for-predictive-maintenance).|
 | 4 | [Azure prediktív karbantartás a repülőgépipar számára](https://gallery.azure.ai/Solution/Predictive-Maintenance-for-Aerospace-1) | Az egyik első PdM megoldás-sablon, amely az Azure ML v 1.0-s verzióján alapul a repülőgépek karbantartásához. Ez az útmutató ebből a projektből származik. |
 | 5 | [Azure AI-eszközkészlet a IoT Edgehoz](https://github.com/Azure/ai-toolkit-iot-edge) | AI a IoT Edge a TensorFlow használatával; Az eszközkészlet részletes tanulási modelleket biztosít Azure IoT Edge-kompatibilis Docker-tárolókban, és a modelleket REST API-ként teszi elérhetővé.
 | 6 | [Azure IoT prediktív karbantartás](https://github.com/Azure/azure-iot-predictive-maintenance) | Azure IoT Suite számítógépek – előre konfigurált megoldás. A repülőgép-karbantartási PdM sablon IoT Suite. [Egy másik](https://docs.microsoft.com/azure/iot-suite/iot-suite-predictive-overview) , ugyanahhoz a projekthez kapcsolódó dokumentum és [útmutató](https://docs.microsoft.com/azure/iot-suite/iot-suite-predictive-walkthrough) . |

@@ -12,10 +12,10 @@ ms.author: mimart
 ms.subservice: B2C
 ms.date: 02/10/2020
 ms.openlocfilehash: 3106e5a640ed66828558078e6986979ad7195450
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85386215"
 ---
 # <a name="monitor-azure-ad-b2c-with-azure-monitor"></a>Azure AD B2C figyelése Azure Monitor
@@ -74,7 +74,7 @@ A felügyelet egyszerűbbé tételéhez ajánlott az Azure AD felhasználói *cs
 
 Az Azure AD-bérlő (az **ügyfél**) beléptetéséhez hozzon létre egy [Azure Resource Manager sablont](../lighthouse/how-to/onboard-customer.md) az ajánlatához a következő információkkal. A `mspOfferName` és az `mspOfferDescription` értékek láthatók, ha a Azure Portal [szolgáltató lapján](../lighthouse/how-to/view-manage-service-providers.md) megtekinti az ajánlat részleteit.
 
-| Mező   | Definíció |
+| Mező   | Meghatározás |
 |---------|------------|
 | `mspOfferName`                     | A definíciót leíró név. Például *Azure ad B2C felügyelt szolgáltatásokat*. Ez az érték jelenik meg az ügyfél számára az ajánlat címeként. |
 | `mspOfferDescription`              | Az ajánlat rövid leírása. Például *engedélyezi a Azure AD B2C Azure monitorét*.|
@@ -213,7 +213,7 @@ A diagnosztikai beállítások határozzák meg, hogy az erőforráshoz tartozó
 
 - [Azure Storage-fiók](../azure-monitor/platform/resource-logs-collect-storage.md)
 - [Event hub](../azure-monitor/platform/resource-logs-stream-event-hubs.md) -megoldások.
-- [Log Analytics-munkaterület](../azure-monitor/platform/resource-logs-collect-workspace.md)
+- [Log Analytics munkaterület](../azure-monitor/platform/resource-logs-collect-workspace.md)
 
 Ha még nem tette meg, hozzon létre egy példányt a kiválasztott rendeltetési helyhez a [Azure Resource Manager sablonban](#create-an-azure-resource-manager-template)megadott erőforráscsoporthoz.
 
@@ -234,7 +234,7 @@ Azure AD B2C tevékenység naplóinak figyelési beállításainak konfigurálá
 1. Adja meg a beállítás nevét, ha még nem rendelkezik ilyennel.
 1. Jelölje be az egyes célhelyek jelölőnégyzetét a naplók elküldéséhez. Válassza a **Konfigurálás** lehetőséget a beállítások megadásához az alábbi táblázatban leírtak szerint.
 
-    | Beállítás | Description |
+    | Beállítás | Leírás |
     |:---|:---|
     | Archiválás tárfiókba | A Storage-fiók neve. |
     | Streamelés eseményközpontba | Az a névtér, amelyben az Event hub létre lett hozva (ha ez az első adatfolyam-naplók), vagy adatfolyamként továbbítja a (ha már van olyan erőforrás, amely ezen a névtéren keresztül továbbítja a naplózási kategóriát).

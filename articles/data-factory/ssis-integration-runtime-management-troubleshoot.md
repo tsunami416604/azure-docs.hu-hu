@@ -12,10 +12,10 @@ manager: mflasko
 ms.custom: seo-lt-2019
 ms.date: 07/08/2019
 ms.openlocfilehash: b2c1d08656ce9ef6b76e34a943f133859b78345a
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86172026"
 ---
 # <a name="troubleshoot-ssis-integration-runtime-management-in-azure-data-factory"></a>A SSIS Integration Runtime-kezelés hibáinak megoldása Azure Data Factory
@@ -78,7 +78,7 @@ Egyéb problémák esetén tekintse meg az SQL-kivétel hibaüzenetét, és jav�
 
 ### <a name="invalidcatalogdb"></a>InvalidCatalogDb
 
-Az ilyen típusú hibaüzenet így néz ki: "érvénytelen objektumnév" Catalog. catalog_properties "." Ebben az esetben vagy már rendelkezik egy SSISDB nevű adatbázissal, de nem a SSIS IR hozta létre, vagy az adatbázis érvénytelen állapotban van, amelyet az utolsó SSIS IR-kiépítés során hibák okoztak. A meglévő adatbázist elhúzhatja a SSISDB néven, vagy beállíthat egy új SQL Database vagy SQL felügyelt példányt az IR-hez.
+Az ilyen típusú hibaüzenet így néz ki: "érvénytelen objektumnév" catalog.catalog_properties "." Ebben az esetben vagy már rendelkezik egy SSISDB nevű adatbázissal, de nem a SSIS IR hozta létre, vagy az adatbázis érvénytelen állapotban van, amelyet az utolsó SSIS IR-kiépítés során hibák okoztak. A meglévő adatbázist elhúzhatja a SSISDB néven, vagy beállíthat egy új SQL Database vagy SQL felügyelt példányt az IR-hez.
 
 ## <a name="custom-setup-issues"></a>Egyéni telepítési problémák
 
@@ -192,4 +192,4 @@ A Azure-SSIS IR rendszeres időközönként automatikusan frissül. Új IR-csom�
 
 ### <a name="publicipnotusableduringupgrade"></a>PublicIPNotUsableDuringUpgrade
 
-Ha saját statikus nyilvános IP-címeit szeretné használni, két nyilvános IP-címet kell megadni. Az egyiket az IR-csomópontok azonnali létrehozására fogjuk használni, és egy másikat a rendszer az IR frissítése során használ. Ez a hiba akkor fordulhat elő, ha a másik nyilvános IP-cím nem használható a frissítés során. A lehetséges okokért tekintse meg a [InvalidPublicIPSpecified](#InvalidPublicIPSpecified) .
+Ha saját statikus nyilvános IP-címeit szeretné használni, két nyilvános IP-címet kell megadni. Az egyiket az IR-csomópontok azonnali létrehozására fogjuk használni, és egy másikat a rendszer az IR frissítése során használ. Ez a hiba akkor fordulhat elő, ha a másik nyilvános IP-cím nem használható a frissítés során. A lehetséges okokért tekintse meg a  [InvalidPublicIPSpecified](#InvalidPublicIPSpecified) .

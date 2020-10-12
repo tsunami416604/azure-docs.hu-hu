@@ -7,10 +7,10 @@ ms.author: karolz
 ms.reviewer: danlep
 ms.date: 05/28/2020
 ms.openlocfilehash: fbf5dfd68b823b600b11cad3643e5d4004b85ff5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84309815"
 ---
 # <a name="pull-images-from-an-azure-container-registry-to-a-kubernetes-cluster"></a>Képek lekérése egy Azure Container registryből egy Kubernetes-fürtre
@@ -47,7 +47,7 @@ kubectl create secret docker-registry <secret-name> \
 ```
 ahol:
 
-| Érték | Description |
+| Érték | Leírás |
 | :--- | :--- |
 | `secret-name` | A képkeresési titok neve, például *ACR-Secret* |
 | `namespace` | Kubernetes névtér, amely a titkot a következőre helyezi <br/> Csak akkor szükséges, ha a titkot az alapértelmezett névtértől eltérő névtérben kívánja elhelyezni. |
@@ -74,7 +74,7 @@ spec:
     - name: acr-secret
 ```
 
-Az előző példában a a `my-awesome-app:v1` rendszerkép neve, amelyet az Azure Container registryből kell lekérni, és a `acr-secret` létrehozott lekérési titok neve a beállításjegyzék eléréséhez. A pod telepítésekor a Kubernetes automatikusan lekéri a rendszerképet a beállításjegyzékből, ha még nem szerepel a fürtön.
+Az előző példában a a `my-awesome-app:v1` rendszerkép neve, amelyet az Azure Container registryből kell lekérni, és a  `acr-secret` létrehozott lekérési titok neve a beállításjegyzék eléréséhez. A pod telepítésekor a Kubernetes automatikusan lekéri a rendszerképet a beállításjegyzékből, ha még nem szerepel a fürtön.
 
 
 ## <a name="next-steps"></a>További lépések

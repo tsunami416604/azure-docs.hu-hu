@@ -11,17 +11,17 @@ ms.date: 03/22/2019
 ms.author: xiaoyul
 ms.reviewer: igorstan
 ms.openlocfilehash: 40a9e5268b7fccc5c01775c10e55eee47f1aaf3d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85213380"
 ---
 # <a name="use-transactions-in-synapse-sql-pool"></a>Tranzakciók használata a szinapszis SQL-készletben
 
 Ez a cikk tippeket tartalmaz a tranzakciók megvalósításához és a megoldások SQL-készletben való fejlesztéséhez.
 
-## <a name="what-to-expect"></a>Mire számíthat
+## <a name="what-to-expect"></a>Amire számíthat
 
 Ahogy várható, az SQL-készlet az adatraktár számítási feladatainak részeként támogatja a tranzakciókat. Az SQL-készlet méretezésének biztosítása érdekében azonban bizonyos szolgáltatások a SQL Serverhoz képest korlátozottak. Ez a cikk kiemeli a különbségeket.
 

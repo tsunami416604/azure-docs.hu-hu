@@ -11,10 +11,10 @@ ms.date: 11/09/2019
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 5d6d6169f8662c9b973fb7f624a590322f62b0b5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85387524"
 ---
 # <a name="use-the-azure-portal-to-create-and-delete-consumer-users-in-azure-ad-b2c"></a>A Azure Portal használatával hozhat létre és törölhet felhasználói felhasználókat a Azure AD B2C
@@ -48,7 +48,7 @@ Ez a cikk a Azure Portal **felhasználói fiókjainak** használatáról szól. 
 1. Választható Ha szeretné, hogy a felhasználó ne jelentkezzen be, tiltsa le a **bejelentkezést** . A bejelentkezést később is engedélyezheti, ha szerkeszti a felhasználó **profilját** a Azure Portal.
 1. Válassza az **Automatikus létrehozás jelszava** vagy a **jelszó létrehozása**lehetőséget.
 1. Adja **meg a** felhasználó vezetéknevét és **vezetéknevét**.
-1. Válassza a **Létrehozás** lehetőséget.
+1. Kattintson a **Létrehozás** gombra.
 
 Ha nem jelölte be a **Bejelentkezés blokkolását**, a felhasználó bejelentkezhet a megadott bejelentkezési módszerrel (e-mail vagy Felhasználónév).
 

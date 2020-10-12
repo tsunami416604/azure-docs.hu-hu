@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 829a82cb94e5c2a7e7cbc9190047c368299612cd
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90052749"
 ---
 # <a name="features-and-licenses-for-azure-multi-factor-authentication"></a>Az Azure Multi-Factor Authentication szolgáltatásai és licencei
@@ -41,7 +41,7 @@ Az Azure Multi-Factor Authentication a szervezet igényeitől függően különb
 
 A következő táblázat felsorolja az Azure Multi-Factor Authentication különböző verzióiban elérhető funkciókat. Tervezze meg a felhasználói hitelesítés biztonságossá tételének szükségességét, majd határozza meg, hogy melyik megközelítés teljesíti ezeket a követelményeket. Például bár a ingyenes Azure AD biztosít az Azure Multi-Factor Authenticationt biztosító biztonsági alapértékeket, csak a mobil hitelesítő alkalmazás használható a hitelesítési kéréshez, nem pedig telefonhíváshoz vagy SMS-hez. Ez a megközelítés akkor lehet korlátozás, ha nem biztos benne, hogy a Mobile Authentication alkalmazás telepítve van a felhasználó személyes eszközén.
 
-| Jellemző | Ingyenes Azure AD – biztonsági alapértékek | Ingyenes Azure AD – Azure AD globális rendszergazdák | Microsoft 365-alkalmazások | prémium szintű Azure AD P1 vagy P2 |
+| Szolgáltatás | Ingyenes Azure AD – biztonsági alapértékek | Ingyenes Azure AD – Azure AD globális rendszergazdák | Microsoft 365-alkalmazások | prémium szintű Azure AD P1 vagy P2 |
 | --- |:---:|:---:|:---:|:---:|
 | Azure AD-bérlői rendszergazdai fiókok biztosítása MFA-val | ● | ● (Csak*Azure ad globális rendszergazdai* fiókok) | ● | ● |
 | Mobile App második tényezőként | ● | ● | ● | ● |

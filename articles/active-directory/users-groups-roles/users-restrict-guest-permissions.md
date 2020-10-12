@@ -14,10 +14,10 @@ ms.custom: it-pro
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 418be35cb7996acaa7f11f37627d065451c9c7c6
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90055214"
 ---
 # <a name="restrict-guest-access-permissions-preview-in-azure-active-directory"></a>A vendég hozzáférési engedélyei (előzetes verzió) korlátozása Azure Active Directory
@@ -47,7 +47,7 @@ Módosítottuk a vendég felhasználói engedélyeinek meglévő Azure Portal ve
 
     ![Az Azure AD külső együttműködési beállítások lapja](./media/users-restrict-guest-permissions/external-collaboration-settings.png)
 
-1. Válassza a **Mentés** lehetőséget. A módosítások akár 15 percet is igénybe vehetnek a vendég felhasználóinak érvénybe léptetéséhez.
+1. Kattintson a **Mentés** gombra. A módosítások akár 15 percet is igénybe vehetnek a vendég felhasználóinak érvénybe léptetéséhez.
 
 ## <a name="update-with-the-microsoft-graph-api"></a>Frissítés a Microsoft Graph API-val
 
@@ -119,7 +119,7 @@ GuestUserRoleId                                   : 10dae51f-b6af-4016-8d66-8c2a
 PermissionGrantPolicyIdsAssignedToDefaultUserRole : {user-default-legacy}
 ````
 
-### <a name="set-command-set-azureadmsauthorizationpolicy"></a>Set parancs: set-AzureADMSAuthorizationPolicy
+### <a name="set-command-set-azureadmsauthorizationpolicy"></a>Set parancs: Set-AzureADMSAuthorizationPolicy
 
 Példa:
 
