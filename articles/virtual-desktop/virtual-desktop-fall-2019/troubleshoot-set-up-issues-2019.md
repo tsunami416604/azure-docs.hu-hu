@@ -7,10 +7,10 @@ ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: eed1b0e1b01d5d13330b927429eca9a28ff80658
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88009256"
 ---
 # <a name="tenant-and-host-pool-creation-in-windows-virtual-desktop-classic"></a>Bérlői és gazdagépi készlet létrehozása a Windows Virtual Desktopban (klasszikus)
@@ -51,7 +51,7 @@ Contact your IT Admin to review the configuration of your service subscriptions.
 
 **Javítás:** [kövesse ezt az útmutatót](https://docs.microsoft.com/azure/virtual-desktop/virtual-desktop-fall-2019/tenant-setup-azure-active-directory#grant-permissions-to-windows-virtual-desktop) a jóváhagyás megadásához.
 
-### <a name="error-the-user-isnt-authorized-to-query-the-management-service"></a>Hiba: a felhasználó nem rendelkezik jogosultsággal a kezelési szolgáltatás lekérdezéséhez
+### <a name="error-the-user-isnt-authorized-to-query-the-management-service"></a>Hiba: The user isn't authorized to query the management service (A felhasználónak nincs jogosultsága a kezelési szolgáltatás lekérdezéséhez)
 
 > [!div class="mx-imgBorder"]
 > ![Képernyőkép a PowerShell-ablakról, amelyben a felhasználó nem rendelkezik jogosultsággal a kezelési szolgáltatás lekérdezéséhez.](../media/UserNotAuthorizedNewTenant.png)
@@ -177,7 +177,7 @@ A probléma megoldásához tegye a következőket:
 3. A DNS-kiszolgálók menünek a képernyő jobb oldalán kell megjelennie. Az adott menüben válassza az **Egyéni**lehetőséget.
 4. Győződjön meg arról, hogy a DNS-kiszolgálók szerepelnek a tartományvezérlő vagy a Active Directory tartomány egyéni egyeztetése területén. Ha nem látja a DNS-kiszolgálót, akkor adja hozzá az értékét a **DNS-kiszolgáló hozzáadása** mezőben.
 
-### <a name="error-your-deployment-failedunauthorized"></a>Hiba: a telepítés nem sikerült. ..\Unauthorized
+### <a name="error-your-deployment-failedunauthorized"></a>Hiba: Your deployment failed...\Unauthorized (Sikertelen üzembe helyezés...\Jogosulatlan)
 
 ```Error
 {"code":"DeploymentFailed","message":"At least one resource deployment operation failed. Please list deployment operations for details. Please see https://aka.ms/arm-debug for usage details.","details":[{"code":"Unauthorized","message":"{\r\n \"Code\": \"Unauthorized\",\r\n \"Message\": \"The scale operation is not allowed for this subscription in this region. Try selecting different region or scale option.\",\r\n \"Target\": null,\r\n \"Details\": [\r\n {\r\n \"Message\": \"The scale operation is not allowed for this subscription in this region. Try selecting different region or scale option.\"\r\n },\r\n {\r\n \"Code\": \"Unauthorized\"\r\n },\r\n {\r\n \"ErrorEntity\": {\r\n \"ExtendedCode\": \"52020\",\r\n \"MessageTemplate\": \"The scale operation is not allowed for this subscription in this region. Try selecting different region or scale option.\",\r\n \"Parameters\": [\r\n \"default\"\r\n ],\r\n \"Code\": \"Unauthorized\",\r\n \"Message\": \"The scale operation is not allowed for this subscription in this region. Try selecting different region or scale option.\"\r\n }\r\n }\r\n ],\r\n \"Innererror\": null\r\n}"}]}
@@ -198,7 +198,7 @@ A probléma megoldásához tegye a következőket:
 
 **Javítás:** A PowerShell használatával történő bejelentkezéssel ellenőrizze, hogy a Windows rendszerű virtuális asztali környezet kifogástalan állapotú-e. Fejezze be a virtuális gép regisztrációját manuálisan a [gazdagép létrehozása a PowerShell](create-host-pools-powershell-2019.md)-lel.
 
-### <a name="error-the-admin-username-specified-isnt-allowed"></a>Hiba: a megadott rendszergazdai Felhasználónév nem engedélyezett
+### <a name="error-the-admin-username-specified-isnt-allowed"></a>Hiba: The Admin Username specified isn't allowed (A megadott rendszergazdai felhasználónév nem engedélyezett)
 
 > [!div class="mx-imgBorder"]
 > ![A központi telepítés képernyőképe nem sikerült, mert a megadott rendszergazda nem engedélyezett.](../media/f2b3d3700e9517463ef88fa41875bac9.png)
@@ -218,7 +218,7 @@ Nyers hiba – példa:
 
 **Javítás:** Frissítse a felhasználónevet, vagy használjon más felhasználókat.
 
-### <a name="error-vm-has-reported-a-failure-when-processing-extension"></a>Hiba: a virtuális gép hibát jelzett a bővítmény feldolgozásakor
+### <a name="error-vm-has-reported-a-failure-when-processing-extension"></a>Hiba: VM has reported a failure when processing extension (A virtuális gép hibát jelentett egy bővítmény feldolgozásakor)
 
 > [!div class="mx-imgBorder"]
 > ![Az erőforrás-művelet képernyőképe a terminál kiépítési állapotával fejeződött be a telepítés során.](../media/49c4a1836a55d91cd65125cf227f411f.png)
@@ -351,7 +351,7 @@ the VM.\\\"
 
 **Javítás:** Távolítsa el a statikus útvonal, a tűzfalszabály vagy a NSG blokkolását. Szükség esetén megnyithatja a Azure Resource Manager sablon JSON-fájlját egy szövegszerkesztőben, megtekintheti a zip-fájlra mutató hivatkozást, és letöltheti az erőforrást egy engedélyezett helyre.
 
-### <a name="error-the-user-isnt-authorized-to-query-the-management-service"></a>Hiba: a felhasználó nem rendelkezik jogosultsággal a kezelési szolgáltatás lekérdezéséhez
+### <a name="error-the-user-isnt-authorized-to-query-the-management-service"></a>Hiba: The user isn't authorized to query the management service (A felhasználónak nincs jogosultsága a kezelési szolgáltatás lekérdezéséhez)
 
 Nyers hiba – példa:
 
@@ -375,7 +375,7 @@ Add-RdsAccount -DeploymentUrl "https://rdbroker.wvd.microsoft.com"
 New-RdsRoleAssignment -TenantName <Windows Virtual Desktop tenant name> -RoleDefinitionName "RDS Contributor" -SignInName <UPN>
 ```
 
-### <a name="error-user-requires-azure-multi-factor-authentication-mfa"></a>Hiba: a felhasználónak Azure Multi-Factor Authentication (MFA) szükséges
+### <a name="error-user-requires-azure-multi-factor-authentication-mfa"></a>Hiba: User requires Azure Multi-Factor Authentication (MFA) (A felhasználó Azure Multi-Factor Authentication- (MFA-) hitelesítése szükséges)
 
 > [!div class="mx-imgBorder"]
 > ![A központi telepítés képernyőképe nem sikerült, mert nincs Multi-Factor Authentication (MFA)](../media/MFARequiredError.png)
@@ -410,7 +410,7 @@ Ha a GitHub Azure Resource Manager sablont futtatja, adja meg a következő para
 
 **Javítás:** Megadhat egy alhálózatot legalább annyi IP-címmel, amely a piactér felhasználói felületének használatával nem használja a hozzáadott virtuális gépek számát. Ez az alhálózat nevének megadásával végezhető el a "**existingSubnetName**" paraméterben, ha újból [üzembe helyez egy meglévő központi telepítést](expand-existing-host-pool-2019.md#redeploy-from-azure) , vagy [üzembe helyezi a GITHUBról a mögöttes ARM-sablonnal](create-host-pools-arm-template.md#run-the-azure-resource-manager-template-for-provisioning-a-new-host-pool).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A Windows rendszerű virtuális asztalok és a eszkalációs sávok hibaelhárításával kapcsolatban lásd: [Hibaelhárítás – áttekintés, visszajelzés és támogatás](troubleshoot-set-up-overview-2019.md).
 - A virtuális gép (VM) Windows rendszerű virtuális asztali gépen való konfigurálása során felmerülő problémák elhárításával kapcsolatban lásd: a [munkamenet-gazdagép virtuális gép konfigurálása](troubleshoot-vm-configuration-2019.md).

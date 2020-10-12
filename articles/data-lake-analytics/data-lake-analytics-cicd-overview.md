@@ -11,10 +11,10 @@ ms.topic: how-to
 ms.workload: big-data
 ms.date: 09/14/2018
 ms.openlocfilehash: 3517938ae0e08af62a6fcf0d3d0a43a5eaee48dd
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87496117"
 ---
 # <a name="how-to-set-up-a-cicd-pipeline-for-azure-data-lake-analytics"></a>CI/CD-folyamat beállítása Azure Data Lake Analyticshoz  
@@ -355,7 +355,7 @@ A tábla értékű függvények és tárolt eljárások tesztelési eseteinek ho
 
 ## <a name="deploy-u-sql-database-through-azure-pipelines"></a>U-SQL-adatbázis üzembe helyezése az Azure-folyamatokon keresztül
 
-`PackageDeploymentTool.exe`a olyan programozási és parancssori felületeket biztosít, amelyek segítenek az U-SQL Database központi telepítési csomagok, **. usqldbpack**üzembe helyezésében. Az SDK-t az [U-SQL SDK NuGet csomag](https://www.nuget.org/packages/Microsoft.Azure.DataLake.USQL.SDK/)tartalmazza, amely **Build/Runtime/PackageDeploymentTool.exe**helyen található. A használatával az `PackageDeploymentTool.exe` U-SQL-adatbázisokat Azure Data Lake Analytics és helyi fiókokra is telepítheti.
+`PackageDeploymentTool.exe` a olyan programozási és parancssori felületeket biztosít, amelyek segítenek az U-SQL Database központi telepítési csomagok, **. usqldbpack**üzembe helyezésében. Az SDK-t az [U-SQL SDK NuGet csomag](https://www.nuget.org/packages/Microsoft.Azure.DataLake.USQL.SDK/)tartalmazza, amely **Build/Runtime/PackageDeploymentTool.exe**helyen található. A használatával az `PackageDeploymentTool.exe` U-SQL-adatbázisokat Azure Data Lake Analytics és helyi fiókokra is telepítheti.
 
 > [!NOTE]
 >
@@ -425,7 +425,7 @@ Az alábbi lépéseket követve állíthatja be az adatbázis-telepítési felad
     copy USQLSDK\build\runtime\*.* $DBDeploymentTool
     ```
 
-2. Adja hozzá a **parancssori feladatot** egy Build vagy Release folyamathoz, és adja meg a parancsfájlt a hívásával `PackageDeploymentTool.exe` . `PackageDeploymentTool.exe`a a megadott **$DBDeploymentTool** mappában található. A minta parancsfájl a következő: 
+2. Adja hozzá a **parancssori feladatot** egy Build vagy Release folyamathoz, és adja meg a parancsfájlt a hívásával `PackageDeploymentTool.exe` . `PackageDeploymentTool.exe` a a megadott **$DBDeploymentTool** mappában található. A minta parancsfájl a következő: 
 
     * U-SQL-adatbázis üzembe helyezése helyileg:
 

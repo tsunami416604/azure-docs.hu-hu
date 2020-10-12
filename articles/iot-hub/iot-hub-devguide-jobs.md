@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 05/06/2019
 ms.custom: mqtt
 ms.openlocfilehash: 5c14e8cfcbf8df86b0f71d6b12025594d2e648c4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81730108"
 ---
 # <a name="schedule-jobs-on-multiple-devices"></a>Feladatok ütemezése több eszközön
@@ -33,7 +33,7 @@ Az Azure IoT Hub több építőelemet is lehetővé tesz, például az [eszköz�
 A feladatokat a megoldás háttérbe állításával és IoT Hub tartja karban. Egy szolgáltatáshoz kapcsolódó URI-n () keresztül kezdeményezheti a feladatokat `PUT https://<iot hub>/jobs/v2/<jobID>?api-version=2018-06-30` , és egy szolgáltatáshoz kapcsolódó URI-n () keresztül végezheti el a végrehajtást egy végrehajtási feladatokon `GET https://<iot hub>/jobs/v2/<jobID?api-version=2018-06-30` . Ha egy feladat elindítása után szeretné frissíteni a futó feladatok állapotát, futtassa a feladat lekérdezését.
 
 > [!NOTE]
-> Ha elindít egy feladatot, a tulajdonságok nevei és értékei csak az US-ASCII nyomtatható alfanumerikus karaktereket tartalmazhatják, kivéve a következő készletben lévőket:`$ ( ) < > @ , ; : \ " / [ ] ? = { } SP HT`
+> Ha elindít egy feladatot, a tulajdonságok nevei és értékei csak az US-ASCII nyomtatható alfanumerikus karaktereket tartalmazhatják, kivéve a következő készletben lévőket: `$ ( ) < > @ , ; : \ " / [ ] ? = { } SP HT`
 
 ## <a name="jobs-to-execute-direct-methods"></a>Közvetlen metódusok végrehajtásához szükséges feladatok
 

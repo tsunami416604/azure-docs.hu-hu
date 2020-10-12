@@ -8,10 +8,10 @@ ms.topic: troubleshooting
 ms.date: 06/18/2020
 ms.author: caya
 ms.openlocfilehash: 0fdfa6265b81140fa6536082fe7ad4c5fa687fc4
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86207164"
 ---
 # <a name="troubleshoot-common-questions-or-issues-with-ingress-controller"></a>A bejövő adatkezelővel kapcsolatos gyakori kérdések és problémák elhárítása
@@ -95,7 +95,7 @@ A ingresses listájának beolvasása: `kubectl get ingress` . Elvárjuk, hogy l�
 
 ![hüvely](./media/application-gateway-ingress-controller-troubleshooting/tsg--get-ingress.png)
 
-Az egyik hüvely AGIC lesz. `kubectl get pods`Megjeleníti a hüvelyek listáját, amelyek közül az egyik a "beáramló – Azure" lesz. A pod összes naplójának lekérésével `kubectl logs <name-of-ingress-controller-pod>` ellenőrizheti, hogy sikeres volt-e az üzembe helyezés. A sikeres telepítés a következő sorokat adta hozzá a naplóhoz:
+Az egyik hüvely AGIC lesz. `kubectl get pods` Megjeleníti a hüvelyek listáját, amelyek közül az egyik a "beáramló – Azure" lesz. A pod összes naplójának lekérésével `kubectl logs <name-of-ingress-controller-pod>` ellenőrizheti, hogy sikeres volt-e az üzembe helyezés. A sikeres telepítés a következő sorokat adta hozzá a naplóhoz:
 ```
 I0927 22:34:51.281437       1 process.go:156] Applied Application Gateway config in 20.461335266s
 I0927 22:34:51.281585       1 process.go:165] cache: Updated with latest applied config.
@@ -150,7 +150,7 @@ A következőnek kell megfelelnie ahhoz, hogy a AGIC a várt módon működjön:
      aspnetapp           ClusterIP   10.2.63.254    <none>        80/TCP    17h   app=aspnetapp   <none>     
      ```
 
-  3. **Bejövő**, jegyzetekkel ellátott `kubernetes.io/ingress.class: azure/application-gateway` , a fenti szolgáltatásra hivatkozó hivatkozás a [Cloud Shell](https://shell.azure.com/) a következővel:`kubectl get ingress -o wide --show-labels`
+  3. **Bejövő**, jegyzetekkel ellátott `kubernetes.io/ingress.class: azure/application-gateway` , a fenti szolgáltatásra hivatkozó hivatkozás a [Cloud Shell](https://shell.azure.com/) a következővel: `kubectl get ingress -o wide --show-labels`
      ```bash
      delyan@Azure:~$ kubectl get ingress -o wide --show-labels
 
@@ -199,9 +199,9 @@ A következőnek kell megfelelnie ahhoz, hogy a AGIC a várt módon működjön:
 
 
 * Ha a AGIC pod nem kifogástalan állapotú (a `STATUS` fenti parancs oszlopa nem `Running` ):
-  - a naplókból megismerheti a következő okokat:`kubectl logs <pod-name>`
-  - a pod előző példánya esetében:`kubectl logs <pod-name> --previous`
-  - adja meg a pod-t, hogy minél több kontextust kapjon:`kubectl describe pod <pod-name>`
+  - a naplókból megismerheti a következő okokat: `kubectl logs <pod-name>`
+  - a pod előző példánya esetében: `kubectl logs <pod-name> --previous`
+  - adja meg a pod-t, hogy minél több kontextust kapjon: `kubectl describe pod <pod-name>`
 
 
 * Rendelkezik Kubernetes- [szolgáltatással](https://kubernetes.io/docs/concepts/services-networking/service/) és a [bejövő](https://kubernetes.io/docs/concepts/services-networking/ingress/) erőforrásokkal?
@@ -224,7 +224,7 @@ A következőnek kell megfelelnie ahhoz, hogy a AGIC a várt módon működjön:
 
 
 * A AGIC bizonyos kritikus hibák esetén Kubernetes-eseményeket bocsát ki. A következőket tekintheti meg:
-  - a terminálon keresztül`kubectl get events --sort-by=.metadata.creationTimestamp`
+  - a terminálon keresztül `kubectl get events --sort-by=.metadata.creationTimestamp`
   - a böngészőben a [Kubernetes webes felülete (irányítópult)](https://kubernetes.io/docs/tasks/access-application-cluster/web-ui-dashboard/) használatával
 
 
@@ -245,7 +245,7 @@ A Kubernetes-Közösség 9 naplózási szintet létesített a [kubectl](https://
 
 A részletességi szintek a `verbosityLevel` [Helm-config. YAML](#sample-helm-config-file) fájlban lévő változón keresztül állíthatók be. Növelje a részletességi szintet, hogy `5` lekérje a JSON-konfigurációt az [ARM](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview)-nek:
   - Vegyen fel `verbosityLevel: 5` egy sorba saját maga is a [Helm-config. YAML](#sample-helm-config-file) és telepítse újra
-  - naplók beolvasása a`kubectl logs <pod-name>`
+  - naplók beolvasása a `kubectl logs <pod-name>`
 
 ### <a name="sample-helm-config-file"></a>Példa Helm konfigurációs fájlra
 ```yaml

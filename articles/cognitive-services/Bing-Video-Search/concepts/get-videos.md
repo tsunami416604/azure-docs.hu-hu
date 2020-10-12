@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 06/24/2019
 ms.author: aahi
 ms.openlocfilehash: 5add9597924aa77ede875d0056e83eceb4f99598
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "79220302"
 ---
 # <a name="search-for-videos-with-the-bing-video-search-api"></a>Videók keresése a Bing Video Search API
@@ -120,10 +120,10 @@ A [videoId](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bin
 
 Alapértelmezés szerint a Video Search API a lekérdezéshez kapcsolódó összes videót visszaadja. Ha csak ingyenes vagy öt percnél rövidebb videókat szeretne visszakapni, a következő szűrőlekérdezési paramétereket használhatja:
 
-- [díjszabás](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#pricing)&mdash;a videók díjszabása alapján (például ingyenes, vagy a fizetéshez szükséges videók)
-- [videók feloldása](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#resolution)&mdash;feloldással (például 720p vagy nagyobb felbontású videók)
-- [videók videoLength](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videolength)&mdash;szerinti szűrése (például 5 percnél rövidebb videók)
-- [freshness](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#freshness)&mdash;a videók frissesség szerinti szűrése (például a Bing által az elmúlt héten felderített videók)
+- [díjszabás](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#pricing) &mdash; Videók szűrése díjszabás alapján (például az ingyenes vagy a díjköteles videók)
+- [megoldás](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#resolution) &mdash; Videók szűrése feloldással (például 720p vagy magasabb felbontású videók)
+- [videoLength](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#videolength) &mdash; Videók szűrése videó hosszával (például 5 percnél rövidebb videók)
+- [frissesség](https://docs.microsoft.com/rest/api/cognitiveservices-bingsearch/bing-video-api-v7-reference#freshness) &mdash; Videók szűrése életkor szerint (például a Bing által az elmúlt héten felderített videók)
 
 Ha egy konkrét tartományban található videókat szeretne lekérni, foglalja bele a [site:](https://msdn.microsoft.com/library/ff795613.aspx) lekérdezési operátort a lekérdezési sztringbe.
 

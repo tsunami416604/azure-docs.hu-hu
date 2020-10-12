@@ -12,10 +12,10 @@ ms.date: 04/05/2020
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 67ea7324419d86fa5b5c23a2f0aa5f8c057495d1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85385977"
 ---
 # <a name="track-user-behavior-in-azure-active-directory-b2c-using-application-insights"></a>A felhasználó viselkedésének nyomon követése Azure Active Directory B2C a Application Insights használatával
@@ -46,11 +46,11 @@ Ha a Azure AD B2C használatával Application Insightst használ, mindössze ann
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
 2. Győződjön meg arról, hogy az Azure-előfizetését tartalmazó könyvtárat használja, majd a felső menüben válassza ki a **címtár + előfizetés** szűrőt, és válassza ki az előfizetést tartalmazó könyvtárat. Ez a bérlő nem az Ön Azure AD B2C bérlője.
 3. Válassza az **erőforrás létrehozása** lehetőséget a Azure Portal bal felső sarkában, majd keresse meg és válassza a **Application Insights**lehetőséget.
-4. Kattintson a **Létrehozás** lehetőségre.
+4. Kattintson a **Létrehozás** elemre.
 5. Adja meg az erőforrás **nevét** .
 6. Az **alkalmazás típusa**mezőben válassza a **ASP.net webalkalmazás**lehetőséget.
 7. Az **erőforráscsoport**területen válasszon egy meglévő csoportot, vagy adjon meg egy új csoport nevét.
-8. Kattintson a **Létrehozás** lehetőségre.
+8. Kattintson a **Létrehozás** elemre.
 4. A Application Insights erőforrás létrehozása után nyissa meg, bontsa ki az **Essentials**csomópontot, és másolja a kialakítási kulcsot.
 
 ![Application Insights áttekintése és kialakítási kulcsa](./media/analytics-with-application-insights/app-insights.png)
@@ -104,12 +104,12 @@ A jogcím a Azure AD B2C szabályzat végrehajtása során ideiglenes adattárol
 
 A technikai profilok a Azure AD B2C identitási élményének keretrendszerében tekinthetők meg. Ez a táblázat a munkamenetek megnyitásához és az események közzétételéhez használt technikai profilokat határozza meg.
 
-| Technikai profil | Tevékenység |
+| Technikai profil | Feladat |
 | ----------------- | -----|
-| AppInsights – gyakori | Az Azure-beli összes technikai profilban szerepeltetni kívánt paraméterek közös készlete. |
-| AppInsights – SignInRequest | Egy olyan eseményt rögzít, amely `SignInRequest` jogcímeket tartalmaz, ha bejelentkezési kérés érkezett. |
-| AppInsights – UserSignUp | Egy `UserSignUp` eseményt jegyez be, amikor a felhasználó elindítja a bejelentkezési lehetőséget egy bejelentkezési vagy bejelentkezési úton. |
-| AppInsights – SignInComplete | Egy `SignInComplete` hitelesítés sikeres befejezésére vonatkozó eseményt rögzít, ha a rendszer elküldje egy jogkivonatot a függő entitás alkalmazásnak. |
+| AppInsights-Common | Az Azure-beli összes technikai profilban szerepeltetni kívánt paraméterek közös készlete. |
+| AppInsights-SignInRequest | Egy olyan eseményt rögzít, amely `SignInRequest` jogcímeket tartalmaz, ha bejelentkezési kérés érkezett. |
+| AppInsights-UserSignUp | Egy `UserSignUp` eseményt jegyez be, amikor a felhasználó elindítja a bejelentkezési lehetőséget egy bejelentkezési vagy bejelentkezési úton. |
+| AppInsights-SignInComplete | Egy `SignInComplete` hitelesítés sikeres befejezésére vonatkozó eseményt rögzít, ha a rendszer elküldje egy jogkivonatot a függő entitás alkalmazásnak. |
 
 Adja hozzá a profilokat a *TrustFrameworkExtensions.xml* fájlhoz az alapszintű csomagból. Adja hozzá ezeket az elemeket a **ClaimsProviders** elemhez:
 
@@ -223,11 +223,11 @@ Mentse és töltse fel a *TrustFrameworkExtensions.xml* fájlt. Ezután hívja m
 2. Válassza ki a **használati**  >  **eseményeket**.
 3. Állítsa **be** az **elmúlt órában** és **By** **3 percen belül**.  Előfordulhat, hogy a **frissítés** elemre kell kattintania az eredmények megtekintéséhez.
 
-![HASZNÁLAT Application Insights-események Blase](./media/analytics-with-application-insights/app-ins-graphic.png)
+![Application Insights USAGE-Events Blase](./media/analytics-with-application-insights/app-ins-graphic.png)
 
 ## <a name="optional-collect-more-data"></a>Választható További adatok gyűjtése
 
-Az igényeinek megfelelően adja hozzá a jogcím-típusokat és az eseményeket a felhasználói útra. Használhatja a [jogcím-feloldókat](claim-resolver-overview.md) vagy bármely karakterlánc-jogcím típusát, hozzáadhatja a jogcímeket egy **bemeneti jogcím** elem hozzáadásával a Application Insights eseményhez vagy a AppInsights-közös technikai profilhoz.
+Az igényeinek megfelelően adja hozzá a jogcím-típusokat és az eseményeket a felhasználói útra. A jogcím- [feloldókat](claim-resolver-overview.md) vagy bármely karakterlánc-jogcím típusát felhasználhatja a jogcímek hozzáadásához, ha hozzáad egy **bemeneti jogcím** elemet a Application Insights eseményhez vagy a AppInsights-Common technikai profilhoz.
 
 - A **ClaimTypeReferenceId** a jogcím típusára mutató hivatkozás.
 - A **PartnerClaimType** az Azure-adatfelismerésekben megjelenő tulajdonság neve. Használja a szintaxisát `{property:NAME}` , ahol a `NAME` tulajdonságot az eseményhez adja a rendszer.

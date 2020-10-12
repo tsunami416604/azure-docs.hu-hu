@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 09/25/2017
 ms.author: allensu
 ms.openlocfilehash: 43203a756bcb42c7d00de9c11e9223f1d8b9e2a8
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87001587"
 ---
 # <a name="get-started-creating-an-internet-facing-load-balancer-with-ipv6-using-powershell-for-resource-manager"></a>Bevezetés az internetkapcsolattal rendelkező Load Balancer IPv6-tal való létrehozásához a PowerShell használatával a Resource Managerben
@@ -112,7 +112,7 @@ Győződjön meg arról, hogy rendelkezik a PowerShell Azure Resource Manager mo
     > [!IMPORTANT]
     > A terheléselosztó a nyilvános IP-cím tartományának címkéjét használja a teljes tartománynévhez előtagként. Ebben a példában a teljes tartománynevek a következők: *lbnrpipv4.westus.cloudapp.Azure.com* és *lbnrpipv6.westus.cloudapp.Azure.com*.
 
-## <a name="create-a-front-end-ip-configurations-and-a-back-end-address-pool"></a>Előtér-IP-konfigurációk és háttérbeli címkészlet létrehozása
+## <a name="create-a-front-end-ip-configurations-and-a-back-end-address-pool"></a>Front-End IP-konfiguráció és egy Back-End-címkészlet létrehozása
 
 1. A létrehozott nyilvános IP-címeket használó előtér-cím konfigurációjának létrehozása.
 

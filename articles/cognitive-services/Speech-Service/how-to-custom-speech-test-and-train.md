@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 03/27/2020
 ms.author: trbye
 ms.openlocfilehash: f43f7894c46a75894eb648f02ec378f3a8b2633d
-ms.sourcegitcommit: d7fba095266e2fb5ad8776bffe97921a57832e23
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 06/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84628052"
 ---
 # <a name="prepare-data-for-custom-speech"></a>Adatok előkészítése a Custom Speech szolgáltatáshoz
@@ -46,9 +46,9 @@ Ez a táblázat felsorolja az elfogadott adattípusokat, valamint az egyes adatt
 
 | Adattípus | Teszteléshez használatos | Ajánlott mennyiség | Képzéshez használatos | Ajánlott mennyiség |
 |-----------|-----------------|----------|-------------------|----------|
-| [Hang](#audio-data-for-testing) | Yes<br>Vizuális vizsgálathoz használatos | 5 + hangfájl | No | N/A |
-| [Hang + emberi – címkézett átiratok](#audio--human-labeled-transcript-data-for-testingtraining) | Yes<br>A pontosság kiértékeléséhez használatos | 0,5-5 órányi hang | Yes | 1 – 1000 órányi hang |
-| [Kapcsolódó szöveg](#related-text-data-for-training) | No | N/a | Yes | 1-200 MB kapcsolódó szöveg |
+| [Hang](#audio-data-for-testing) | Igen<br>Vizuális vizsgálathoz használatos | 5 + hangfájl | Nem | N/A |
+| [Hang + emberi – címkézett átiratok](#audio--human-labeled-transcript-data-for-testingtraining) | Igen<br>A pontosság kiértékeléséhez használatos | 0,5-5 órányi hang | Igen | 1 – 1000 órányi hang |
+| [Kapcsolódó szöveg](#related-text-data-for-training) | Nem | N/a | Igen | 1-200 MB kapcsolódó szöveg |
 
 A fájlokat típus szerint kell csoportosítani egy adatkészletbe, és. zip fájlként kell feltölteni. Az egyes adatkészletek csak egyetlen adattípust tartalmazhatnak.
 
@@ -80,7 +80,7 @@ Ezzel a táblázattal ellenőrizheti, hogy a hangfájlok formátuma helyesen van
 | Mintavételezési arány              | 8 000 Hz vagy 16 000 Hz |
 | Csatornák                 | 1 (mono)              |
 | Maximális hossz/hang | 2 óra               |
-| Minta formátuma            | PCM, 16 bites           |
+| Minták formátuma            | PCM, 16 bites           |
 | Archív formátum           | .zip                  |
 | Archiválás maximális mérete     | 2 GB                  |
 
@@ -108,7 +108,7 @@ A hangfájlok a rögzítés elején és végén is lehetnek csendben. Ha lehets�
 | Mintavételezési arány              | 8 000 Hz vagy 16 000 Hz               |
 | Csatornák                 | 1 (mono)                            |
 | Maximális hossz/hang | 2 óra (tesztelés)/60 s (képzés) |
-| Minta formátuma            | PCM, 16 bites                         |
+| Minták formátuma            | PCM, 16 bites                         |
 | Archív formátum           | .zip                                |
 | Maximális zip-méret         | 2 GB                                |
 
@@ -199,7 +199,7 @@ A következő táblázat segítségével biztosíthatja, hogy a kiejtésekhez ka
 | kiejtések száma soronként | 1 |
 | Maximális fájlméret | 1 MB (1 KB ingyenes szinten) |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Az adatai ellenőrzése](how-to-custom-speech-inspect-data.md)
 * [Az adatai kiértékelése](how-to-custom-speech-evaluate-data.md)

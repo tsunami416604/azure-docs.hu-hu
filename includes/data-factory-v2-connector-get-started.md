@@ -5,10 +5,10 @@ ms.topic: include
 ms.date: 11/09/2018
 ms.author: jingwang
 ms.openlocfilehash: baa48e4f7193e2f71534e25827e953f0ccf9cb3a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84629515"
 ---
 <!--
@@ -18,7 +18,7 @@ ms.locfileid: "84629515"
 A másolási tevékenység folyamattal való végrehajtásához a következő eszközök vagy SDK-k egyikét használhatja:
 
 - [A Adatok másolása eszköz](../articles/data-factory/quickstart-create-data-factory-copy-data-tool.md)
-- [A Azure Portal](../articles/data-factory/quickstart-create-data-factory-portal.md)
+- [Az Azure Portal](../articles/data-factory/quickstart-create-data-factory-portal.md)
 - [A .NET SDK](../articles/data-factory/quickstart-create-data-factory-dot-net.md)
 - [A Python SDK](../articles/data-factory/quickstart-create-data-factory-python.md)
 - [Azure PowerShell](../articles/data-factory/quickstart-create-data-factory-powershell.md)

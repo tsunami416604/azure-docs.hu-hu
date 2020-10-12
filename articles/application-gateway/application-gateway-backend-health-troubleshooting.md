@@ -8,10 +8,10 @@ ms.topic: troubleshooting
 ms.date: 06/09/2020
 ms.author: surmb
 ms.openlocfilehash: 531a7fd8547130b4897f3dad0900e1c27fb7fe9a
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87132041"
 ---
 <a name="troubleshoot-backend-health-issues-in-application-gateway"></a>A Application Gateway háttérbeli állapotával kapcsolatos problémák elhárítása
@@ -131,7 +131,7 @@ Győződjön meg arról is, hogy a NSG/UDR/tűzfal blokkolja-e a háttér IP-cí
 
 **Megoldás:** Ha ezt a hibaüzenetet kapja, kövesse az alábbi lépéseket:
 
-1.  A böngésző vagy a PowerShell használatával győződjön meg arról, hogy tud-e csatlakozni a háttér-kiszolgálóhoz a HTTP-beállításokban említett porton. Futtassa például a következő parancsot:`Test-NetConnection -ComputerName
+1.  A böngésző vagy a PowerShell használatával győződjön meg arról, hogy tud-e csatlakozni a háttér-kiszolgálóhoz a HTTP-beállításokban említett porton. Futtassa például a következő parancsot: `Test-NetConnection -ComputerName
     www.bing.com -Port 443`
 
 1.  Ha a megadott port nem a kívánt port, a háttér-kiszolgálóhoz való csatlakozáshoz adja meg a Application Gateway megfelelő portszámot.

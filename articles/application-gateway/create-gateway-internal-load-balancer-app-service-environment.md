@@ -15,17 +15,17 @@ ms.workload: infrastructure-services
 ms.date: 06/09/2020
 ms.author: genli
 ms.openlocfilehash: 8861e850e168169762d95c44a54b6a88a036f396
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84628534"
 ---
 # <a name="back-end-server-certificate-is-not-allow-listed-for-an-application-gateway-using-an-internal-load-balancer-with-an-app-service-environment"></a>A háttér-kiszolgálói tanúsítvány nem engedélyezett olyan Application Gateway számára, amely egy belső Load Balancert használ App Service Environment
 
 Ez a cikk a következő problémát ismerteti: A tanúsítvány nem engedélyezett, ha egy belső Load Balancer (ILB) és egy App Service Environment (bevezető) használatával hoz létre egy alkalmazás-átjárót, ha az Azure-ban végpontok közötti TLS-t használ.
 
-## <a name="symptoms"></a>Probléma
+## <a name="symptoms"></a>Hibajelenségek
 
 Amikor egy ILB használatával hoz létre egy Application Gateway-t, a háttérrendszer a háttér-kiszolgálóval is megsérült. Ez a probléma akkor fordul elő, ha az Application Gateway hitelesítési tanúsítványa nem egyezik meg a háttér-kiszolgálón konfigurált tanúsítvánnyal. Példaként tekintse meg a következő forgatókönyvet:
 

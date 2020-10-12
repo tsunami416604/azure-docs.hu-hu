@@ -10,10 +10,10 @@ ms.tgt_pltfrm: arduino
 ms.date: 6/08/2020
 ms.author: robinsh
 ms.openlocfilehash: ed429d2f584da20439b0cb0eedcf4742b9ae4599
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84634519"
 ---
 # <a name="visualize-real-time-sensor-data-from-azure-iot-hub-using-power-bi"></a>Valós idejű érzékelők adatainak megjelenítése az Azure IoT Hub használatával Power BI
@@ -34,7 +34,7 @@ Megtudhatja, hogyan jelenítheti meg a valós idejű érzékelők adatait, amely
 
 * Hozzon létre és tegyen közzé egy Power BI jelentést az adatgyűjtés megjelenítéséhez.
 
-## <a name="what-you-need"></a>Mi szükséges
+## <a name="what-you-need"></a>Amire szükség lesz
 
 * Fejezze be a [málna PI online szimulátor](iot-hub-raspberry-pi-web-simulator-get-started.md) oktatóanyagát vagy az eszköz egyik oktatóanyagát; például a [málna PI és a node.js](iot-hub-raspberry-pi-kit-node-get-started.md). Ezek a cikkek a következő követelményekre vonatkoznak:
   
@@ -64,7 +64,7 @@ Kezdjük egy Stream Analytics feladatok létrehozásával. A feladatnak a létre
 
    ![Stream Analytics-feladatok létrehozása az Azure-ban](./media/iot-hub-live-data-visualization-in-power-bi/create-stream-analytics-job.png)
 
-3. Válassza a **Létrehozás** lehetőséget.
+3. Kattintson a **Létrehozás** gombra.
 
 ### <a name="add-an-input-to-the-stream-analytics-job"></a>Bemenet hozzáadása a Stream Analytics-feladathoz
 
@@ -122,7 +122,7 @@ Kezdjük egy Stream Analytics feladatok létrehozásával. A feladatnak a létre
 
 ### <a name="configure-the-query-of-the-stream-analytics-job"></a>A Stream Analytics-feladat lekérdezésének konfigurálása
 
-1. A **feladatok topológiája**területen válassza a **lekérdezés**lehetőséget.
+1. A **Feladattopológia** területen válassza a **Lekérdezés** lehetőséget.
 
 2. A `[YourInputAlias]` elemet cserélje le a feladat bemeneti áljelére.
 

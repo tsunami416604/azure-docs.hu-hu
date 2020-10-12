@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 10/23/2019
 ms.author: mbullwin
 ms.openlocfilehash: c804cc8942a40e2f30c980636194daa82e0fb0e8
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81687325"
 ---
 # <a name="workbook-text-parameters"></a>Munkafüzet szövegének paraméterei
@@ -27,10 +27,10 @@ A szövegmezők gyakori használata olyan belső változó, amelyet más munkaf�
 2. Válassza a _Paraméterek hozzáadása_ lehetőséget a munkafüzetben található hivatkozások közül.
 3. Kattintson a kék _paraméter hozzáadása_ gombra.
 4. A felugró új paraméter panelen írja be a következőket:
-    1. Paraméter neve:`SlowRequestThreshold`
-    2. Paraméter típusa:`Text`
-    3. Szükséges`checked`
-    4. Alapértelmezett érték beolvasása a lekérdezésből:`unchecked`
+    1. Paraméter neve: `SlowRequestThreshold`
+    2. Paraméter típusa: `Text`
+    3. Szükséges `checked`
+    4. Alapértelmezett érték beolvasása a lekérdezésből: `unchecked`
 5. A paraméter létrehozásához válassza az eszköztár mentés elemét.
 
     ![Egy szöveges paraméter létrehozását bemutató kép](./media/workbooks-text/text-create.png)
@@ -67,10 +67,10 @@ A munkafüzet a következőképpen fog kinézni, mint az olvasási módban.
 2. Válassza a _Paraméterek hozzáadása_ lehetőséget a munkafüzetben található hivatkozások közül.
 3. Kattintson a kék _paraméter hozzáadása_ gombra.
 4. A felugró új paraméter panelen írja be a következőket:
-    1. Paraméter neve:`SlowRequestThreshold`
-    2. Paraméter típusa:`Text`
-    3. Szükséges`checked`
-    4. Alapértelmezett érték beolvasása a lekérdezésből:`checked`
+    1. Paraméter neve: `SlowRequestThreshold`
+    2. Paraméter típusa: `Text`
+    3. Szükséges `checked`
+    4. Alapértelmezett érték beolvasása a lekérdezésből: `checked`
 5. A KQL mezőben adja meg a következő kódrészletet:
     ```kusto
     requests

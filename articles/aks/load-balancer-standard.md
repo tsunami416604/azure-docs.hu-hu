@@ -8,10 +8,10 @@ ms.date: 06/14/2020
 ms.author: jpalma
 author: palma21
 ms.openlocfilehash: a58b00018f6ac89f024661d8d3f50ea5249e620b
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89182122"
 ---
 # <a name="use-a-public-standard-load-balancer-in-azure-kubernetes-service-aks"></a>Nyilvános standard Load Balancer használata az Azure Kubernetes szolgáltatásban (ak)
@@ -229,7 +229,7 @@ A 100-csomópontok feletti biztonság érdekében további IP-címeket kell hozz
 > [!IMPORTANT]
 > Ki kell [számítania a szükséges kvótát, és ellenőriznie kell a követelményeket][requirements] , mielőtt testreszabja a *allocatedOutboundPorts* a kapcsolatok és a skálázási problémák elkerüléséhez.
 
-A **`load-balancer-outbound-ports`** paramétereket a fürt létrehozásakor is használhatja, de meg kell adnia a vagy a, **`load-balancer-managed-outbound-ip-count`** **`load-balancer-outbound-ips`** vagy is **`load-balancer-outbound-ip-prefixes`** .  Például:
+A **`load-balancer-outbound-ports`** paramétereket a fürt létrehozásakor is használhatja, de meg kell adnia a vagy a, **`load-balancer-managed-outbound-ip-count`** **`load-balancer-outbound-ips`** vagy is **`load-balancer-outbound-ip-prefixes`** .  Példa:
 
 ```azurecli-interactive
 az aks create \
@@ -377,7 +377,7 @@ A következő korlátozások érvényesek a terheléselosztó és a *szabványos
 * *Standard szintű* Az SKU-terheléselosztó csak a *szabványos* SKU IP-címeket támogatja.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a Kubernetes Services szolgáltatásról a [Kubernetes Services dokumentációjában][kubernetes-services].
 

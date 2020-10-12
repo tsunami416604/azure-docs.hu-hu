@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 04/08/2020
 ms.openlocfilehash: ade2fd6011bbcdaed4ce31ce70bfb4235429bb0d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81606298"
 ---
 # <a name="surrogate-key-transformation-in-mapping-data-flow"></a>Helyettes kulcs átalakítása a leképezési adatfolyamban 
@@ -41,7 +41,7 @@ Ha a kulcs értékét az előző max. módszerrel szeretné kiosztani, két olya
 
 #### <a name="database-sources"></a>Adatbázis-források
 
-SQL-lekérdezési lehetőséggel válassza ki a MAX () elemet a forrásból. Például:`Select MAX(<surrogateKeyName>) as maxval from <sourceTable>`/
+SQL-lekérdezési lehetőséggel válassza ki a MAX () elemet a forrásból. Például: `Select MAX(<surrogateKeyName>) as maxval from <sourceTable>`/
 
 ![Helyettes kulcs lekérdezése](media/data-flow/sk002.png "Helyettes kulcs transzformációs lekérdezése")
 

@@ -13,10 +13,10 @@ ms.date: 07/18/2018
 ms.author: jingwang
 robots: noindex
 ms.openlocfilehash: 8b94f6388d77cca2ef74c802aec7648091172775
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "79281131"
 ---
 # <a name="move-data-from-salesforce-by-using-azure-data-factory"></a>Adatok áthelyezése a Salesforce a Azure Data Factory használatával
@@ -68,11 +68,11 @@ A következő táblázat a Salesforce társított szolgáltatáshoz tartozó JSO
 
 | Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
-| típus |A Type tulajdonságot a következőre kell beállítani: **Salesforce**. |Yes |
-| environmentUrl | Itt adhatja meg az Salesforce-példány URL-címét. <br><br> – Az alapértelmezett érték a "https: \/ /login.Salesforce.com". <br> – Az adatok a homokozóból való másolásához válassza a " https://test.salesforce.com " lehetőséget. <br> – Az adatok egyéni tartományból történő másolásához írja be például a következőt: "https://[tartomány]. my. Salesforce. com". |No |
-| felhasználónév |Adja meg a felhasználói fiók felhasználónevét. |Yes |
-| jelszó |A felhasználói fiókhoz tartozó jelszó megadása. |Yes |
-| securityToken |A felhasználói fiók biztonsági jogkivonatának megadása. A biztonsági jogkivonat alaphelyzetbe állításával/lekérésével kapcsolatos útmutatásért lásd a [biztonsági jogkivonat beszerzése](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm) című témakört. A biztonsági jogkivonatok általános megismeréséhez lásd: [Biztonság és API](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm). |Yes |
+| típus |A Type tulajdonságot a következőre kell beállítani: **Salesforce**. |Igen |
+| environmentUrl | Itt adhatja meg az Salesforce-példány URL-címét. <br><br> – Az alapértelmezett érték a "https: \/ /login.Salesforce.com". <br> – Az adatok a homokozóból való másolásához válassza a " https://test.salesforce.com " lehetőséget. <br> – Az adatok egyéni tartományból történő másolásához írja be például a következőt: "https://[tartomány]. my. Salesforce. com". |Nem |
+| username |Adja meg a felhasználói fiók felhasználónevét. |Igen |
+| jelszó |A felhasználói fiókhoz tartozó jelszó megadása. |Igen |
+| securityToken |A felhasználói fiók biztonsági jogkivonatának megadása. A biztonsági jogkivonat alaphelyzetbe állításával/lekérésével kapcsolatos útmutatásért lásd a [biztonsági jogkivonat beszerzése](https://help.salesforce.com/apex/HTViewHelpDoc?id=user_security_token.htm) című témakört. A biztonsági jogkivonatok általános megismeréséhez lásd: [Biztonság és API](https://developer.salesforce.com/docs/atlas.en-us.api.meta/api/sforce_api_concepts_security.htm). |Igen |
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
 Az adatkészletek definiálásához elérhető csoportok és tulajdonságok teljes listáját az [adatkészletek létrehozása](data-factory-create-datasets.md) című cikkben találja. Az adatkészletek JSON-struktúrája, rendelkezésre állása és házirendje hasonló az összes adatkészlet-típushoz (Azure SQL, Azure Blob, Azure Table stb.).
@@ -97,7 +97,7 @@ A másolási tevékenységben, ha a forrás típusa **RelationalSource** (amely 
 
 | Tulajdonság | Leírás | Megengedett értékek | Kötelező |
 | --- | --- | --- | --- |
-| lekérdezés |Az egyéni lekérdezés használatával olvashatja el az adatolvasást. |SQL-92 lekérdezés vagy [Salesforce objektum lekérdezési nyelve (SOQL)](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm) lekérdezése. Példa: `select * from MyTable__c`. |Nem (ha meg van adva az **adatkészlet** **Táblanév** ) |
+| lekérdezés |Az egyéni lekérdezés használatával olvashatja el az adatolvasást. |SQL-92 lekérdezés vagy [Salesforce objektum lekérdezési nyelve (SOQL)](https://developer.salesforce.com/docs/atlas.en-us.soql_sosl.meta/soql_sosl/sforce_api_calls_soql.htm) lekérdezése. Például: `select * from MyTable__c`. |Nem (ha meg van adva az **adatkészlet** **Táblanév** ) |
 
 > [!IMPORTANT]
 > Az API-név "__c" része minden egyéni objektumhoz szükséges.
@@ -108,7 +108,7 @@ A másolási tevékenységben, ha a forrás típusa **RelationalSource** (amely 
 ### <a name="retrieving-data-using-where-clause-on-datetime-column"></a>Adatok beolvasása WHERE záradék használatával DateTime oszlopban
 A SOQL vagy az SQL-lekérdezés megadásakor ügyeljen arra, hogy a DateTime formátuma legyen a különbség. Például:
 
-* **SOQL minta**:`$$Text.Format('SELECT Id, Name, BillingCity FROM Account WHERE LastModifiedDate >= {0:yyyy-MM-ddTHH:mm:ssZ} AND LastModifiedDate < {1:yyyy-MM-ddTHH:mm:ssZ}', WindowStart, WindowEnd)`
+* **SOQL minta**: `$$Text.Format('SELECT Id, Name, BillingCity FROM Account WHERE LastModifiedDate >= {0:yyyy-MM-ddTHH:mm:ssZ} AND LastModifiedDate < {1:yyyy-MM-ddTHH:mm:ssZ}', WindowStart, WindowEnd)`
 * **SQL-minta**:
     * **A másolás varázsló használata a lekérdezés megadásához:**`$$Text.Format('SELECT * FROM Account WHERE LastModifiedDate >= {{ts\'{0:yyyy-MM-dd HH:mm:ss}\'}} AND LastModifiedDate < {{ts\'{1:yyyy-MM-dd HH:mm:ss}\'}}', WindowStart, WindowEnd)`
     * **A JSON-szerkesztés használata a lekérdezés megadásához (megfelelő escape-karakter):**`$$Text.Format('SELECT * FROM Account WHERE LastModifiedDate >= {{ts\\'{0:yyyy-MM-dd HH:mm:ss}\\'}} AND LastModifiedDate < {{ts\\'{1:yyyy-MM-dd HH:mm:ss}\\'}}', WindowStart, WindowEnd)`
@@ -117,7 +117,7 @@ A SOQL vagy az SQL-lekérdezés megadásakor ügyeljen arra, hogy a DateTime for
 A Salesforce-jelentésekben lévő adatok lekéréséhez adja meg a lekérdezést úgy `{call "<report name>"}` , mint például:. `"query": "{call \"TestReport\"}"`.
 
 ### <a name="retrieving-deleted-records-from-salesforce-recycle-bin"></a>Törölt rekordok beolvasása a Salesforce Lomtárból
-Ha le szeretné kérdezni a Salesforce Lomtárában lévő nem törölt rekordokat, megadhatja a **"IsDeleted = 1"** kifejezést a lekérdezésben. Példa:
+Ha le szeretné kérdezni a Salesforce Lomtárában lévő nem törölt rekordokat, megadhatja a **"IsDeleted = 1"** kifejezést a lekérdezésben. Például:
 
 * Ha csak a törölt rekordokat szeretné lekérdezni, adja meg a "select * from MyTable__c **Where IsDeleted = 1**" elemet.
 * Az összes olyan rekord lekérdezéséhez, amely tartalmazza a meglévőt és a törölt adatokat, adja meg a "select * from MyTable__c, **ahol a IsDeleted = 0 vagy a IsDeleted = 1**" értéket.
@@ -286,16 +286,16 @@ A RelationalSource által támogatott tulajdonságok listáját a [RelationalSou
 | Salesforce típusa | . NET-alapú típus |
 | --- | --- |
 | Automatikus szám |Sztring |
-| Jelölőnégyzet |Logikai |
-| Currency (Pénznem) |Decimal |
+| Jelölőnégyzet |Logikai érték |
+| Pénznem |Tizedesjegy |
 | Dátum |DateTime |
 | Dátum/idő |DateTime |
 | E-mail |Sztring |
-| Azonosító |Sztring |
+| Id |Sztring |
 | Keresési kapcsolat |Sztring |
 | Többszörös kijelölési lista |Sztring |
-| Szám |Decimal |
-| Százalék |Decimal |
+| Szám |Tizedesjegy |
+| Százalék |Tizedesjegy |
 | Telefon |Sztring |
 | Picklist |Sztring |
 | Szöveg |Sztring |

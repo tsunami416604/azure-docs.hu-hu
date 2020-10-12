@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: 4b2068c3944f9e7616b0666c7bafcafc68ee0cd9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "79471285"
 ---
 # <a name="how-to-install-iot-edge-on-kubernetes-preview"></a>A IoT Edge telepítése a Kubernetes (előzetes verzió)
@@ -25,7 +25,7 @@ IoT Edge integrálható a Kubernetes a rugalmas, magasan elérhető infrastrukt�
 >Az integráció jó mentális modellje a Kubernetes, mint egy másik működési környezet, IoT Edge alkalmazások a Linux és a Windows rendszereken kívül is futhatnak.
 
 ## <a name="architecture"></a>Architektúra 
-A Kubernetes-on a IoT Edge *egyéni erőforrás-definíciót* (CRD) biztosít az Edge-munkaterhelések telepítéséhez. IoT Edge ügynök feltételezi egy *CRD-vezérlő* szerepkörét, amely összehangolja a felhőben felügyelt kívánt állapotot a helyi fürt állapotával.
+A Kubernetes-on a IoT Edge *egyéni erőforrás-definíciót* (CRD) biztosít az Edge-munkaterhelések telepítéséhez. IoT Edge ügynök feltételezi egy  *CRD-vezérlő* szerepkörét, amely összehangolja a felhőben felügyelt kívánt állapotot a helyi fürt állapotával.
 
 A modul élettartamát a Kubernetes Scheduler kezeli, amely fenntartja a modul rendelkezésre állását, és kiválasztja az elhelyezést. IoT Edge felügyeli a fent futó Edge Application platformot, és folyamatosan összehangolja a IoT Hubban megadott kívánt állapotot a peremhálózati fürt állapotával. Az alkalmazás modellje továbbra is ismert modell IoT Edge modulok és útvonalak alapján. A IoT Edge-ügynök vezérlője a Kubernetes natív szerkezetek (például hüvelyek, üzembe helyezések, szolgáltatások stb.) esetében végzi el az *automatikus* fordítási IoT Edge alkalmazási modelljét.
 

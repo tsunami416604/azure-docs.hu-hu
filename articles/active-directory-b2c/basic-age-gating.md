@@ -11,10 +11,10 @@ ms.date: 11/13/2018
 ms.author: mimart
 ms.subservice: B2C
 ms.openlocfilehash: 6bd93f9062f8446ce20436a7a04e2054aaf5be71
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85386131"
 ---
 # <a name="enable-age-gating-in-azure-active-directory-b2c"></a>Az Age kapuzás engedélyezése a Azure Active Directory B2Cban
@@ -33,19 +33,19 @@ Az Age kapuzás két életkori értéket tartalmaz: az életkort, amelyet valaki
 
 | Ország/régió | Ország/régió neve | Kisebb beleegyező életkor | Kisebb kor |
 | -------------- | ------------------- | ----------------- | --------- |
-| Alapértelmezett | None | None | 18 |
-| AE | Egyesült Arab Emírségek | None | 21 |
+| Alapértelmezett | Nincsenek | Nincsenek | 18 |
+| AE | Egyesült Arab Emírségek | Nincsenek | 21 |
 | AT | Ausztria | 14 | 18 |
 | BE | Belgium | 14 | 18 |
 | BG | Bulgária | 16 | 18 |
-| BH | Bahrein | None | 21 |
-| CM | Kamerun | None | 21 |
+| BH | Bahrein | Nincsenek | 21 |
+| CM | Kamerun | Nincsenek | 21 |
 | CY | Ciprus | 16 | 18 |
 | CZ | Cseh Köztársaság | 16 | 18 |
 | DE | Németország | 16 | 18 |
 | DK | Dánia | 16 | 18 |
 | EE | Észtország | 16 | 18 |
-| EG | Egyiptom | None | 21 |
+| EG | Egyiptom | Nincsenek | 21 |
 | ES | Spanyolország | 13 | 18 |
 | JK | Franciaország | 16 | 18 |
 | GB | Egyesült Királyság | 13 | 18 |
@@ -59,18 +59,18 @@ Az Age kapuzás két életkori értéket tartalmaz: az életkort, amelyet valaki
 | LU | Luxemburg | 16 | 18 |
 | LV | Lettország | 16 | 18 |
 | MT | Málta | 16 | 18 |
-| NA | Namíbia | None | 21 |
+| NA | Namíbia | Nincsenek | 21 |
 | NL | Hollandia | 16 | 18 |
 | PL | Lengyelország | 13 | 18 |
 | PT | Portugália | 16 | 18 |
 | RO | Románia | 16 | 18 |
 | SE | Svédország | 13 | 18 |
-| SG | Szingapúr | None | 21 |
+| SG | Szingapúr | Nincsenek | 21 |
 | SI | Szlovénia | 16 | 18 |
 | SK | Szlovákia | 16 | 18 |
-| TD | Csád | None | 21 |
-| TH | Thaiföld | None | 20 |
-| TW | Tajvan | None | 20 |
+| TD | Csád | Nincsenek | 21 |
+| TH | Thaiföld | Nincsenek | 20 |
+| TW | Tajvan | Nincsenek | 20 |
 | USA | Egyesült Államok | 13 | 18 |
 
 ## <a name="age-gating-options"></a>Kor kapuzás beállításai

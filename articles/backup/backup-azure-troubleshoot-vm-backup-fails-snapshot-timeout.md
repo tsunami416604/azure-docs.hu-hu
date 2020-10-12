@@ -5,10 +5,10 @@ ms.topic: troubleshooting
 ms.date: 07/05/2019
 ms.service: backup
 ms.openlocfilehash: e5fc26231cc5d3ad412371c2f8c187b2d0033ee4
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89182037"
 ---
 # <a name="troubleshoot-azure-backup-failure-issues-with-the-agent-or-extension"></a>Azure Backup hibával kapcsolatos hibák elhárítása: az ügynökkel vagy bővítménnyel kapcsolatos problémák
@@ -57,7 +57,7 @@ A Azure Backup a virtuálisgép-Pillanatképek bővítmény használatával kés
   - `C:\Packages\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot`
   - `C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.RecoveryServices.VMSnapshot`
 
-- Ellenőrizze, hogy szükséges-e a **hálózati hozzáférés**: a bővítmények letöltése az Azure Storage bővítmény adattárában és a bővítmény állapotának feltöltése az Azure Storage-ba történik. [További információ](../virtual-machines/extensions/features-windows.md#network-access).
+- Ellenőrizze, hogy szükséges-e a **hálózati hozzáférés**: a bővítmények letöltése az Azure Storage bővítmény adattárában és a bővítmény állapotának feltöltése az Azure Storage-ba történik. [További információk](../virtual-machines/extensions/features-windows.md#network-access).
   - Ha az ügynök nem támogatott verzióját használja, engedélyeznie kell a kimenő hozzáférést az adott régióban lévő Azure Storage-hoz a virtuális gépről.
   - Ha letiltotta a hozzáférést `168.63.129.16` a vendég tűzfal vagy egy proxy használatával, a bővítmények a fentiektől függetlenül sikertelenek lesznek. A 80, 443 és 32526 portok szükségesek, [További információ](../virtual-machines/extensions/features-windows.md#network-access).
 
@@ -249,10 +249,10 @@ Ha a waagent részletes naplózásra van szüksége, kövesse az alábbi lépés
 2. Módosítsa a **naplókat. részletes** érték: *n* – *y*.
 3. Mentse a változást, majd indítsa újra a waagent a jelen szakasz fentebb ismertetett lépéseinek végrehajtásával.
 
-### <a name="vm-agent-configuration-options-are-not-set-for-linux-vms"></a>Nincs beállítva a virtuálisgép-ügynök konfigurációs beállításai (Linux rendszerű virtuális gépek esetén)
+### <a name="vm-agent-configuration-options-are-not-set-for-linux-vms"></a>Nincsenek beállítva VM-Agent konfigurációs beállítások (Linux rendszerű virtuális gépek esetén)
 
 A konfigurációs fájl (/etc/waagent.conf) szabályozza a waagent műveleteit. Konfigurációs fájl beállításai **bővítmények. az engedélyezés** értékének az **y** és a **kiépítés** beállításnak kell lennie. az ügynököt úgy kell beállítani, hogy a biztonsági mentés **automatikusan** működjön.
-A VM-Agent konfigurációs fájl beállításainak teljes listáját lásd: <https://github.com/Azure/WALinuxAgent#configuration-file-options>
+A VM-Agent konfigurációs fájl beállításainak teljes listájáért lásd: <https://github.com/Azure/WALinuxAgent#configuration-file-options>
 
 ### <a name="application-control-solution-is-blocking-iaasbcdrextensionexe"></a>Az alkalmazás-ellenőrzési megoldás blokkolja IaaSBcdrExtension.exe
 

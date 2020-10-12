@@ -8,10 +8,10 @@ ms.date: 06/22/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: 796ef0b82c15940ce9200e0b50916ca657f10b99
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89393893"
 ---
 # <a name="azure-security-baseline-for-cognitive-services"></a>Cognitive Services Azure biztonsági alapterve
@@ -948,7 +948,7 @@ A Microsoft kártevő szoftveres verziója engedélyezve van az Azure-szolgálta
 
 Az életciklus-kezelési funkcióval az adatok archiválási szintre való biztonsági másolatát is használhatja. Emellett a Storage-fiókban tárolt biztonsági másolatok esetében engedélyezze a nem kötelező törlést.
 
-* [Az Azure Storage-redundancia és a szolgáltatási szintű szerződések ismertetése](https://docs.microsoft.com/azure/storage/common/storage-redundancy)
+* [Az Azure Storage-redundancia és a Service-Level-szerződések ismertetése](https://docs.microsoft.com/azure/storage/common/storage-redundancy)
 
 * [Az Azure Blob Storage-életciklus felügyelete](https://docs.microsoft.com/azure/storage/blobs/storage-lifecycle-management-concepts)
 
@@ -992,13 +992,13 @@ Az életciklus-kezelési funkcióval az adatok archiválási szintre való bizto
 
 ### <a name="94-ensure-protection-of-backups-and-customer-managed-keys"></a>9,4: a biztonsági másolatok és az ügyfél által felügyelt kulcsok védelmének biztosítása
 
-**Útmutató**: az Azure DevOps segítségével biztonságosan tárolhatja és kezelheti Azure Resource Manager-sablonjait. Az Azure DevOps felügyelt erőforrások védelme érdekében engedélyeket adhat meg vagy tagadhat meg bizonyos felhasználók, beépített biztonsági csoportok vagy Azure Active Directory (Azure AD) által meghatározott csoportok számára, ha az integrálva van az Azure DevOps, vagy Active Directory, ha a TFS integrálva van.  A szerepköralapú hozzáférés-vezérlés használatával biztosíthatja az ügyfelek által felügyelt kulcsok kezelését. A kulcsok véletlen vagy rosszindulatú Törlés elleni védelme érdekében engedélyezze a Key Vault a védelem törlését és kiürítését. 
+**Útmutató**: az Azure DevOps segítségével biztonságosan tárolhatja és kezelheti Azure Resource Manager-sablonjait. Az Azure DevOps felügyelt erőforrások védelme érdekében engedélyeket adhat meg vagy tagadhat meg bizonyos felhasználók, beépített biztonsági csoportok vagy Azure Active Directory (Azure AD) által meghatározott csoportok számára, ha az integrálva van az Azure DevOps, vagy Active Directory, ha a TFS integrálva van.  A szerepköralapú hozzáférés-vezérlés használatával biztosíthatja az ügyfelek által felügyelt kulcsok kezelését. A kulcsok véletlen vagy rosszindulatú törléssel szembeni védelme érdekében engedélyezze Soft-Delete és törölje a védelmet a Key Vaultban. 
 
 * [Kód tárolása az Azure DevOps](https://docs.microsoft.com/azure/devops/repos/git/gitworkflow?view=azure-devops)
 
 * [Engedélyek és csoportok az Azure DevOps](https://docs.microsoft.com/azure/devops/organizations/security/about-permissions)
 
-* [A helyreállítható törlés és a védelem engedélyezése a Key Vaultban](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
+* [A Soft-Delete engedélyezése és a védelem kiürítése Key Vault](https://docs.microsoft.com/azure/storage/blobs/storage-blob-soft-delete?tabs=azure-portal)
 
 **Azure Security Center figyelés**: igen
 

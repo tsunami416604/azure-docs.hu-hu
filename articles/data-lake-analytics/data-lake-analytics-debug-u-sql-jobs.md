@@ -8,10 +8,10 @@ ms.assetid: bcd0b01e-1755-4112-8e8a-a5cabdca4df2
 ms.topic: how-to
 ms.date: 11/30/2017
 ms.openlocfilehash: ca6fe4ad35e59472e8cf8f3b8476417e01c2668f
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87131871"
 ---
 # <a name="debug-user-defined-c-code-for-failed-u-sql-jobs"></a>Felhasználó által definiált C# kód hibakeresése a sikertelen U-SQL-feladatokhoz
@@ -78,7 +78,7 @@ Ha a felhasználói kód nem szerepel a kód mögötti fájlban, vagy nem regisz
 
 2. A **FailedVertexDebugHost** projekthez tartozó Project mappa elérési útjának beolvasása. 
 
-3. Kattintson a jobb gombbal **a hozzáadott szerelvény forráskódjának projekt > tulajdonságai**elemre, válassza ki a **Build** fület a bal oldalon, majd illessze be a \Bin\Debug végződésű másolt elérési utat **kimeneti > kimeneti útvonalként**. A végső kimeneti útvonal hasonló `<DataLakeTemp path>\fd91dd21-776e-4729-a78b-81ad85a4fba6\loiu0t1y.mfo\FailedVertexDebug\FailedVertexDebugHost\bin\Debug\` .
+3. Right-Click **a hozzáadott Assembly forráskód-projekt > tulajdonságai**elemre, válassza ki a **Build** fület a bal oldalon, majd illessze be a \Bin\Debug végződésű másolt elérési utat **kimeneti > kimeneti útvonalként**. A végső kimeneti útvonal hasonló `<DataLakeTemp path>\fd91dd21-776e-4729-a78b-81ad85a4fba6\loiu0t1y.mfo\FailedVertexDebug\FailedVertexDebugHost\bin\Debug\` .
 
     ![Az U-SQL hibakeresési készletének Azure Data Lake Analytics az PDB elérési útja](./media/data-lake-analytics-debug-u-sql-jobs/data-lake-analytics-set-pdb-path.png)
 

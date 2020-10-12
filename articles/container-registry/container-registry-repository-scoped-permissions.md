@@ -4,10 +4,10 @@ description: Hozzon létre egy jogkivonatot, amely a prémium szintű beállít�
 ms.topic: article
 ms.date: 05/27/2020
 ms.openlocfilehash: 8661ff2e320788d3899ae16dd3bee7d3ff662caa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84509406"
 ---
 # <a name="create-a-token-with-repository-scoped-permissions"></a>Token létrehozása adattárral hatókörrel rendelkező engedélyekkel
@@ -30,7 +30,7 @@ Ez a funkció a **prémium** szintű Container Registry szolgáltatási szinten 
 * Jelenleg nem rendelhet hozzá tárház hatókörű engedélyeket egy Azure Active Directory identitáshoz, például egy egyszerű szolgáltatásnév vagy egy felügyelt identitáshoz.
 * Nem hozhat létre hatókör-leképezést egy olyan beállításjegyzékben, amelyen engedélyezve van a [Névtelen lekéréses hozzáférés](container-registry-faq.md#how-do-i-enable-anonymous-pull-access).
 
-## <a name="concepts"></a>Fogalmak
+## <a name="concepts"></a>Alapelvek
 
 A tárház hatókörű engedélyeinek konfigurálásához hozzon létre egy *jogkivonatot* egy társított *hatókör-térképpel*. 
 
@@ -38,7 +38,7 @@ A tárház hatókörű engedélyeinek konfigurálásához hozzon létre egy *jog
 
   A jogkivonat használatával végzett hitelesítés után a felhasználó vagy a szolgáltatás egy *vagy több tárházra hatókört* is végrehajthat.
 
-  |Műveletek  |Leírás  | Példa |
+  |Művelet  |Leírás  | Példa |
   |---------|---------|--------|
   |`content/delete`    | Adatok eltávolítása az adattárból  | Adattár vagy jegyzékfájl törlése |
   |`content/read`     |  Adatok beolvasása az adattárból |  Összetevő lekérése |
@@ -157,9 +157,9 @@ A következő példa létrehoz egy jogkivonatot, és létrehoz egy hatókör-lek
 1. A **hatókör-hozzárendelés**területen válassza az **új létrehozása**lehetőséget.
 1. A hatókör-leképezés konfigurálása:
     1. Adja meg a hatókör-hozzárendelés nevét és leírását. 
-    1. A **Tárházak**területen adja meg a `samples/hello-world` és az **engedélyek**területen a és a elemet `content/read` `content/write` . Ezután válassza a **+ Hozzáadás**lehetőséget.  
+    1. A **Tárházak**területen adja meg a `samples/hello-world` és az **engedélyek**területen a és a elemet  `content/read` `content/write` . Ezután válassza a **+ Hozzáadás**lehetőséget.  
 
-        :::image type="content" source="media/container-registry-repository-scoped-permissions/portal-scope-map-add.png" alt-text="Hatókör-hozzárendelés létrehozása a portálon":::
+        :::image type="content" source="media/container-registry-repository-scoped-permissions/portal-scope-map-add.png" alt-text="Token létrehozása a portálon":::
 
     1. A Tárházak és engedélyek hozzáadása után válassza a **Hozzáadás** lehetőséget a hatókör-hozzárendelés hozzáadásához.
 1. Fogadja el az **engedélyezett** alapértelmezett jogkivonat- **állapotot** , majd válassza a **Létrehozás**lehetőséget.
@@ -176,7 +176,7 @@ A portálon létrehozott jogkivonat használatához jelszót kell létrehoznia. 
 1. A jelszó képernyőn opcionálisan beállíthat egy lejárati dátumot a jelszóhoz, és válassza a **Létrehozás**lehetőséget. A lejárati dátum beállítása ajánlott.
 1. A jelszó létrehozása után másolja és mentse egy biztonságos helyre. A képernyő bezárása után nem kérhető le generált jelszó, de létrehozhat egy újat.
 
-    :::image type="content" source="media/container-registry-repository-scoped-permissions/portal-token-password.png" alt-text="Jogkivonat-jelszó létrehozása a portálon":::
+    :::image type="content" source="media/container-registry-repository-scoped-permissions/portal-token-password.png" alt-text="Token létrehozása a portálon":::
 
 ## <a name="authenticate-with-token"></a>Hitelesítés jogkivonat használatával
 
@@ -184,13 +184,13 @@ Ha egy felhasználó vagy szolgáltatás jogkivonatot használ a célként megad
 
 A hitelesítési módszer a tokenhez társított konfigurált művelettől vagy művelettől függ.
 
-|Műveletek  |Hitelesítés  |
+|Művelet  |Hitelesítés  |
   |---------|---------|
-  |`content/delete`    | `az acr repository delete`Az Azure CLI-ben<br/><br/>Például: `az acr repository delete --name myregistry --repository myrepo --username MyToken --password xxxxxxxxxx`|
-  |`content/read`     |  `docker login`<br/><br/>`az acr login`Az Azure CLI-ben<br/><br/>Például: `az acr login --name myregistry --username MyToken --password xxxxxxxxxx`  |
-  |`content/write`     |  `docker login`<br/><br/>`az acr login`Az Azure CLI-ben     |
-  |`metadata/read`    | `az acr repository show`<br/><br/>`az acr repository show-tags`<br/><br/>`az acr repository show-manifests`Az Azure CLI-ben   |
-  |`metadata/write`     |  `az acr repository untag`<br/><br/>`az acr repository update`Az Azure CLI-ben |
+  |`content/delete`    | `az acr repository delete` Az Azure CLI-ben<br/><br/>Például: `az acr repository delete --name myregistry --repository myrepo --username MyToken --password xxxxxxxxxx`|
+  |`content/read`     |  `docker login`<br/><br/>`az acr login` Az Azure CLI-ben<br/><br/>Például: `az acr login --name myregistry --username MyToken --password xxxxxxxxxx`  |
+  |`content/write`     |  `docker login`<br/><br/>`az acr login` Az Azure CLI-ben     |
+  |`metadata/read`    | `az acr repository show`<br/><br/>`az acr repository show-tags`<br/><br/>`az acr repository show-manifests` Az Azure CLI-ben   |
+  |`metadata/write`     |  `az acr repository untag`<br/><br/>`az acr repository update` Az Azure CLI-ben |
 
 ## <a name="examples-use-token"></a>Példák: token használata
 
@@ -261,7 +261,7 @@ Az Azure Portalon:
 1. Navigáljon a tároló-beállításjegyzékhez.
 1. A **tárház engedélyei**területen válassza a **hatókör-térképek (előzetes verzió)** lehetőséget, majd válassza ki a frissíteni kívánt hatókör-leképezést.
 1. A **Tárházak**területen adja meg a `samples/alpine` és az **engedélyek**területen a és a elemet `content/read` `content/write` . Ezután válassza a **+ Hozzáadás**lehetőséget.
-1. A **Tárházak**területen válassza az `samples/hello-world` **engedélyek**, majd a kijelölés elemet `content/write` . Kattintson a **Mentés** gombra.
+1. A **Tárházak**területen válassza az `samples/hello-world` **engedélyek**, majd a kijelölés elemet `content/write` . Ez után válassza a **Mentés** lehetőséget.
 
 A hatókör-hozzárendelés frissítése után a következő leküldése sikeres:
 

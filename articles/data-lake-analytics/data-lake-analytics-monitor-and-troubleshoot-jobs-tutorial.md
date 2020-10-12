@@ -7,10 +7,10 @@ ms.assetid: b7066d81-3142-474f-8a34-32b0b39656dc
 ms.topic: troubleshooting
 ms.date: 12/05/2016
 ms.openlocfilehash: 5445ad61295be3637005ead734cc31126c88a440
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87132075"
 ---
 # <a name="monitor-jobs-in-azure-data-lake-analytics-using-the-azure-portal"></a>Feladatok monitorozása az Azure Data Lake Analyticsben az Azure Portallal
@@ -42,7 +42,7 @@ ms.locfileid: "87132075"
 
 6. Kattintson a **duplikált parancsfájl**elemre.
 
-7. Az elérési út frissítése a **következőre** :`/Samples/Data/SearchLog.tsv`
+7. Az elérési út frissítése a **következőre** : `/Samples/Data/SearchLog.tsv`
 
 8. Kattintson a **Feladat elküldése** elemre.
 

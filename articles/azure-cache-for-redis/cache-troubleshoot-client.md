@@ -7,10 +7,10 @@ ms.service: cache
 ms.topic: troubleshooting
 ms.date: 10/18/2019
 ms.openlocfilehash: 122c96c95aea794fbba9cab8a9a5b867f9f34b48
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88008967"
 ---
 # <a name="troubleshoot-azure-cache-for-redis-client-side-issues"></a>Az Azure Cache for Redis ügyféloldali hibáinak elhárítása
@@ -30,7 +30,7 @@ Az ügyfélgépen a memória terhelése minden olyan teljesítménnyel kapcsolat
 A memória terhelésének észlelése az ügyfélen:
 
 - Figyelje meg a memória használatát a gépen, és győződjön meg róla, hogy nem lépi túl a rendelkezésre álló memóriát.
-- Figyelje az ügyfél `Page Faults/Sec` teljesítményszámláló értékét. Normál működés esetén a legtöbb rendszernek van néhány lapja. A kérelmek időtúllépésével megegyező lapokon található tüskék a memória nyomását jelezhetik.
+- Figyelje az ügyfél `Page Faults/Sec` teljesítményszámláló értékét. Normál működés esetén a legtöbb rendszernek van néhány lapja. A kérések időtúllépésével párhuzamosan hirtelen növekvő számú laphibák nagy memóriaterhelést jelezhetnek.
 
 A nagy mennyiségű memória terhelése az ügyfélen több módon is enyhíthető:
 
@@ -41,7 +41,7 @@ A nagy mennyiségű memória terhelése az ügyfélen több módon is enyhíthet
 
 A gyenge beállításokkal összevont adatforgalom `ThreadPool` miatt a Redis-kiszolgáló által már elküldett adatok feldolgozása késéseket eredményezhet, de az ügyfél oldalán még nem használták fel azokat.
 
-Figyelje meg, hogyan `ThreadPool` változnak a statisztikák az idő múlásával [egy példa `ThreadPoolLogger` ](https://github.com/JonCole/SampleCode/blob/master/ThreadPoolMonitor/ThreadPoolLogger.cs)használatával. A `TimeoutException` StackExchange. Redis-ből származó üzeneteket a következőhöz hasonlóan használhatja a további vizsgálathoz:
+Figyelje meg, hogyan `ThreadPool` változnak a statisztikák az idő múlásával [egy példa `ThreadPoolLogger` ](https://github.com/JonCole/SampleCode/blob/master/ThreadPoolMonitor/ThreadPoolLogger.cs)használatával. A  `TimeoutException` StackExchange. Redis-ből származó üzeneteket a következőhöz hasonlóan használhatja a további vizsgálathoz:
 
 ```output
     System.TimeoutException: Timeout performing EVAL, inst: 8, mgr: Inactive, queue: 0, qu: 0, qs: 0, qc: 0, wr: 0, wq: 0, in: 64221, ar: 0,

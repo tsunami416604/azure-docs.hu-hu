@@ -5,10 +5,10 @@ services: container-service
 ms.topic: article
 ms.date: 09/26/2019
 ms.openlocfilehash: c0648100e155d1462f3291a7f5f078cf316bc0aa
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84465643"
 ---
 # <a name="integrate-azure-netapp-files-with-azure-kubernetes-service"></a>Azure NetApp Files integrálása az Azure Kubernetes szolgáltatással
@@ -36,7 +36,7 @@ A Azure NetApp Files használatakor a következő korlátozások érvényesek:
 ## <a name="configure-azure-netapp-files"></a>Azure NetApp Files konfigurálása
 
 > [!IMPORTANT]
-> A *Microsoft. NetApp* erőforrás-szolgáltató regisztrálásához el kell végeznie az előfizetéshez tartozó [Azure NetApp Files várólista-beküldési űrlapot][anf-waitlist] . Az erőforrás nem regisztrálható, amíg meg nem kapja a hivatalos visszaigazoló e-mailt a Azure NetApp Files csapattól.
+> A  *Microsoft. NetApp* erőforrás-szolgáltató regisztrálásához el kell végeznie az előfizetéshez tartozó [Azure NetApp Files várólista-beküldési űrlapot][anf-waitlist] . Az erőforrás nem regisztrálható, amíg meg nem kapja a hivatalos visszaigazoló e-mailt a Azure NetApp Files csapattól.
 
 Regisztrálja a *Microsoft. NetApp* erőforrás-szolgáltatót:
 

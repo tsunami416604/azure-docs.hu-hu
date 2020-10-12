@@ -6,13 +6,13 @@ ms.topic: reference
 ms.date: 07/22/2020
 ms.subservice: metrics
 ms.openlocfilehash: ca6acb97e52123a0663d988b3f217d305bce2c4b
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87131684"
 ---
-# <a name="azure-monitor-platform-metrics-exportable-via-diagnostic-settings"></a>Azure Monitor a platform metrikái exportálható diagnosztikai beállítások használatával
+# <a name="azure-monitor-platform-metrics-exportable-via-diagnostic-settings"></a>A diagnosztikai beállításokon keresztül exportálható Azure Monitor-platformmetrikák
 
 A Azure Monitor alapértelmezés szerint a [platform metrikáit](data-platform-metrics.md) biztosítja konfiguráció nélkül. Számos lehetőséget kínál a platform metrikáinak interakcióra, például a portálon való ábrázolásra, a REST API való hozzáférésre, vagy a PowerShell vagy a parancssori felület használatával történő lekérdezésre. Lásd: [mérőszámok – támogatott](metrics-supported.md) a Azure monitor konszolidált metrikus folyamatával jelenleg elérhető platform-metrikák teljes listájához. A metrikák lekérdezéséhez és eléréséhez használja az [2018-01-01 API-Version](/rest/api/monitor/metricdefinitions). Más mérőszámok a portálon vagy a régi API-k használatával is elérhetők.
 
@@ -218,10 +218,10 @@ A következő lista felsorolja azokat a metrikákat, amelyek viselkedése megvá
 | Microsoft. bepillantások/összetevők | performanceCounters/exceptionsPerSecond |  Kivételek aránya  | 
 | Microsoft. bepillantások/összetevők | Oldalmegtekintések/darabszám |  Lapok nézetei  | 
 | Microsoft. bepillantások/összetevők | kivételek/darabszám |  Kivételek  | 
-| Microsoft. Kusto/fürtök | StreamingIngestResults |  Folyamatos átvitel eredménye  | 
-| Microsoft. Kusto/fürtök | StreamingIngestDuration |  Folyamatos átvitel időtartama  | 
-| Microsoft. Kusto/fürtök | StreamingIngestDataRate |  Adatforgalom adatátviteli sebessége  | 
-| Microsoft. Kusto/fürtök | SteamingIngestRequestRate |  Folyamatos átviteli kérelmek gyakorisága  | 
+| Microsoft. Kusto/fürtök | StreamingIngestResults |  Streamelés betöltési eredménye  | 
+| Microsoft. Kusto/fürtök | StreamingIngestDuration |  Streamelés betöltési időtartama  | 
+| Microsoft. Kusto/fürtök | StreamingIngestDataRate |  Streamelés adatbetöltési sebessége  | 
+| Microsoft. Kusto/fürtök | SteamingIngestRequestRate |  Streamelési betöltési kérelmek gyakorisága  | 
 | Microsoft. Kusto/fürtök | QueryDuration |  Lekérdezés időtartama  | 
 | Microsoft. Kusto/fürtök | KeepAlive |  Életben tartása  | 
 | Microsoft. Kusto/fürtök | IngestionVolumeInMB |  Betöltési mennyiség (MB)  | 
@@ -372,7 +372,7 @@ A következő lista felsorolja azokat a metrikákat, amelyek viselkedése megvá
 | Microsoft. SQL/managedInstances | avg_cpu_percent |  Átlagos CPU-százalék  | 
 | Microsoft. SQL/kiszolgálók | dtu_used |  Használt DTU  | 
 | Microsoft. SQL/kiszolgálók | dtu_consumption_percent |  DTU-kihasználtság (%)  | 
-| Microsoft. SQL/kiszolgálók/adatbázisok | xtp_storage_percent |  Memóriában tárolt OLTP tárolási százaléka  | 
+| Microsoft. SQL/kiszolgálók/adatbázisok | xtp_storage_percent |  In-Memory OLTP-tárolási százalék  | 
 | Microsoft. SQL/kiszolgálók/adatbázisok | workers_percent |  Munkavégzők százalékos aránya  | 
 | Microsoft. SQL/kiszolgálók/adatbázisok | sessions_percent |  Munkamenetek százalékos aránya  | 
 | Microsoft. SQL/kiszolgálók/adatbázisok | physical_data_read_percent |  Adat IO kihasználtsága (%)  | 
@@ -388,7 +388,7 @@ A következő lista felsorolja azokat a metrikákat, amelyek viselkedése megvá
 | Microsoft. SQL/kiszolgálók/adatbázisok | connection_failed |  Sikertelen kapcsolatok  | 
 | Microsoft. SQL/kiszolgálók/adatbázisok | cache_hit_percent |  Gyorsítótár találati százaléka  | 
 | Microsoft. SQL/kiszolgálók/adatbázisok | blocked_by_firewall |  Tűzfal blokkolja  | 
-| Microsoft. SQL/kiszolgálók/elasticPools | xtp_storage_percent |  Memóriában tárolt OLTP tárolási százaléka  | 
+| Microsoft. SQL/kiszolgálók/elasticPools | xtp_storage_percent |  In-Memory OLTP-tárolási százalék  | 
 | Microsoft. SQL/kiszolgálók/elasticPools | workers_percent |  Munkavégzők százalékos aránya  | 
 | Microsoft. SQL/kiszolgálók/elasticPools | sessions_percent |  Munkamenetek százalékos aránya  | 
 | Microsoft. SQL/kiszolgálók/elasticPools | physical_data_read_percent |  Adat IO kihasználtsága (%)  | 
@@ -520,7 +520,7 @@ A következő lista felsorolja azokat a metrikákat, amelyek viselkedése megvá
 | Microsoft. SQL/kiszolgálók/adatbázisok | connection_failed | Sikertelen kapcsolatok | 
 | Microsoft. SQL/kiszolgálók/adatbázisok | blocked_by_firewall | Tűzfal blokkolja | 
 | Microsoft. SQL/kiszolgálók/adatbázisok | holtpont | Holtpontok | 
-| Microsoft. SQL/kiszolgálók/adatbázisok | xtp_storage_percent | Memóriában tárolt OLTP tárolási százaléka | 
+| Microsoft. SQL/kiszolgálók/adatbázisok | xtp_storage_percent | In-Memory OLTP-tárolási százalék | 
 | Microsoft. SQL/kiszolgálók/adatbázisok | workers_percent | Munkavégzők százalékos aránya | 
 | Microsoft. SQL/kiszolgálók/adatbázisok | sessions_percent | Munkamenetek százalékos aránya | 
 | Microsoft. SQL/kiszolgálók/adatbázisok | dtu_used | Használt DTU | 
@@ -545,7 +545,7 @@ A következő lista felsorolja azokat a metrikákat, amelyek viselkedése megvá
 | Microsoft. SQL/kiszolgálók/elasticPools | workers_percent | Munkavégzők százalékos aránya | 
 | Microsoft. SQL/kiszolgálók/elasticPools | sessions_percent | Munkamenetek százalékos aránya | 
 | Microsoft. SQL/kiszolgálók/elasticPools | eDTU_used | használt eDTU | 
-| Microsoft. SQL/kiszolgálók/elasticPools | xtp_storage_percent | Memóriában tárolt OLTP tárolási százaléka | 
+| Microsoft. SQL/kiszolgálók/elasticPools | xtp_storage_percent | In-Memory OLTP-tárolási százalék | 
 | Microsoft. SQL/kiszolgálók | dtu_consumption_percent | DTU-kihasználtság (%) | 
 | Microsoft. SQL/kiszolgálók | dtu_used | Használt DTU | 
 | Microsoft. SQL/managedInstances | avg_cpu_percent | Átlagos CPU-százalék | 

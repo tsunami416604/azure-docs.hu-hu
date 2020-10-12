@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 69733071c5b43ee9c8e6450e3a9924bc656d5c84
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84485608"
 ---
 # <a name="configure-mfa-server-settings"></a>MFA-kiszolgáló beállításainak konfigurálása
@@ -27,7 +27,7 @@ Ez a cikk segítséget nyújt az Azure MFA-kiszolgáló beállításainak kezel�
 
 A következő MFA-kiszolgáló beállításai érhetők el:
 
-| Szolgáltatás | Description |
+| Szolgáltatás | Leírás |
 | ------- | ----------- |
 | Kiszolgáló beállításai | Az MFA-kiszolgáló letöltése és az aktiválási hitelesítő adatok előállítása a környezet inicializálásához |
 | [Egyszeri Mellőzés](#one-time-bypass) | Lehetővé teszi a felhasználók számára a hitelesítést a többtényezős hitelesítés végrehajtása nélkül korlátozott ideig. |
@@ -42,10 +42,10 @@ Egyszeri Mellőzés létrehozásához hajtsa végre a következő lépéseket:
 
 1. Jelentkezzen be rendszergazdaként a [Azure Portalba](https://portal.azure.com) .
 1. Keresse meg és válassza ki a **Azure Active Directory**, majd a **biztonsági**  >  **MFA**  >  **egyszeri mellőzése**elemet.
-1. Válassza a **Hozzáadás** elemet.
+1. Válassza a **Hozzáadás** lehetőséget.
 1. Ha szükséges, válassza ki a replikálási csoportot a mellőzéshez.
 1. Adja meg a felhasználónevet `username\@domain.com` . Adja meg azt a másodpercet, ameddig a megkerülésnek utolsónak kell lennie, és a Mellőzés oka.
-1. Válassza a **Hozzáadás** elemet. Az időkorlát azonnal érvénybe lép. A felhasználónak be kell jelentkeznie, mielőtt az egyszeri Mellőzés lejár.
+1. Válassza a **Hozzáadás** lehetőséget. Az időkorlát azonnal érvénybe lép. A felhasználónak be kell jelentkeznie, mielőtt az egyszeri Mellőzés lejár.
 
 Ugyanezen az ablakban is megtekintheti az egyszeri mellőzési jelentést.
 
@@ -61,10 +61,10 @@ A gyorsítótárazás elsődlegesen akkor használatos, ha a helyszíni rendszer
 A gyorsítótárazás beállításához hajtsa végre a következő lépéseket:
 
 1. Keresse meg **Azure Active Directory**  >  **biztonsági**  >  **MFA**  >  **gyorsítótárazási szabályait**.
-1. Válassza a **Hozzáadás** elemet.
+1. Válassza a **Hozzáadás** lehetőséget.
 1. Válassza ki a **gyorsítótár típusát** a legördülő listából. Adja meg a **gyorsítótárazási másodpercek**maximális számát.
 1. Ha szükséges, válasszon ki egy hitelesítési típust, és adjon meg egy alkalmazást.
-1. Válassza a **Hozzáadás** elemet.
+1. Válassza a **Hozzáadás** lehetőséget.
 
 ## <a name="next-steps"></a>További lépések
 

@@ -10,10 +10,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 04/13/2018
 ms.openlocfilehash: edddd100bddab1d642a8169353298a2d20620274
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "79281339"
 ---
 # <a name="move-data-from-mongodb-using-azure-data-factory"></a>Adatok áthelyezése a MongoDB a Azure Data Factory használatával
@@ -63,15 +63,15 @@ A következő táblázat a **OnPremisesMongoDB** társított szolgáltatáshoz t
 
 | Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
-| típus |A Type tulajdonságot a következőre kell beállítani: **OnPremisesMongoDb** |Yes |
-| kiszolgáló |A MongoDB-kiszolgáló IP-címe vagy állomásneve. |Yes |
+| típus |A Type tulajdonságot a következőre kell beállítani: **OnPremisesMongoDb** |Igen |
+| kiszolgáló |A MongoDB-kiszolgáló IP-címe vagy állomásneve. |Igen |
 | port |A MongoDB-kiszolgáló által az ügyfélkapcsolatok figyeléséhez használt TCP-port. |Nem kötelező, alapértelmezett érték: 27017 |
-| authenticationType |Alapszintű vagy névtelen. |Yes |
-| felhasználónév |Felhasználói fiók a MongoDB eléréséhez. |Igen (ha alapszintű hitelesítést használ). |
+| authenticationType |Alapszintű vagy névtelen. |Igen |
+| username |Felhasználói fiók a MongoDB eléréséhez. |Igen (ha alapszintű hitelesítést használ). |
 | jelszó |A felhasználó jelszava. |Igen (ha alapszintű hitelesítést használ). |
 | authSource |Annak a MongoDB-adatbázisnak a neve, amelyet a hitelesítés hitelesítő adatainak ellenőrzéséhez használni kíván. |Nem kötelező (ha alapszintű hitelesítést használ). alapértelmezett: a databaseName tulajdonsággal megadott rendszergazdai fiókot és adatbázist használja. |
-| databaseName |Az elérni kívánt MongoDB-adatbázis neve. |Yes |
-| Átjáró neve |Azon átjáró neve, amely hozzáfér az adattárhoz. |Yes |
+| databaseName |Az elérni kívánt MongoDB-adatbázis neve. |Igen |
+| Átjáró neve |Azon átjáró neve, amely hozzáfér az adattárhoz. |Igen |
 | encryptedCredential |Az átjáró által titkosított hitelesítő adat. |Választható |
 
 ## <a name="dataset-properties"></a>Adatkészlet tulajdonságai
@@ -81,7 +81,7 @@ A **typeProperties** szakasz különbözik az egyes adatkészletek típusaitól,
 
 | Tulajdonság | Leírás | Kötelező |
 | --- | --- | --- |
-| collectionName |A gyűjtemény neve a MongoDB adatbázisban. |Yes |
+| collectionName |A gyűjtemény neve a MongoDB adatbázisban. |Igen |
 
 ## <a name="copy-activity-properties"></a>Másolási tevékenység tulajdonságai
 A tevékenységek definiálásához elérhető & tulajdonságok teljes listáját a [folyamatok létrehozása](data-factory-create-pipelines.md) című cikkben találja. A tulajdonságok, például a név, a leírás, a bemeneti és a kimeneti táblák, valamint a szabályzatok minden típusú tevékenységhez elérhetők.
@@ -293,9 +293,9 @@ Az adatok MongoDB való áthelyezésekor a rendszer a következő leképezéseke
 | MongoDB típusa | .NET-keretrendszer típusa |
 | --- | --- |
 | Bináris |Bájt [] |
-| Logikai érték |Logikai |
+| Logikai érték |Logikai érték |
 | Dátum |DateTime |
-| NumberDouble |Double |
+| NumberDouble |Dupla |
 | NumberInt |Int32 |
 | NumberLong |Int64 |
 | ObjectID |Sztring |
@@ -321,14 +321,14 @@ A [Másolás varázslóval](data-factory-data-movement-activities.md#create-a-pi
 ### <a name="example"></a>Példa
 Például az alábbi "ExampleTable" olyan MongoDB-tábla, amely egyetlen oszlopból áll, és az egyes cellákban található objektumok tömbje, valamint egy skaláris típusok tömbjét tartalmazó oszlop.
 
-| _id | Ügyfél neve | Számlák | Szolgáltatási szint | Minősítések |
+| _id | Ügyfél neve | Számlák | Szolgáltatásszint | Minősítések |
 | --- | --- | --- | --- | --- |
 | 1111 |ABC |[{invoice_id: "123", elem: "kenyérpirító", Ár: "456", kedvezmény: "0.2"}, {invoice_id: "124", elem: "sütő", Ár: "1235", kedvezmény: "0,2"}] |Ezüst |[5, 6] |
 | 2222 |XYZ |[{invoice_id: "135", elem: "hűtőszekrény", Ár: "12543", kedvezmény: "0,0"}] |Arany |[1, 2] |
 
 Az illesztőprogram több virtuális táblát fog előállítani, hogy ezt az egyetlen táblát képviseljék. Az első virtuális tábla a "ExampleTable" nevű alaptábla, amely az alábbi ábrán látható. Az alaptábla az eredeti tábla összes adatát tartalmazza, de a tömbökből származó adatok ki lettek hagyva, és ki lettek bontva a virtuális táblákban.
 
-| _id | Ügyfél neve | Szolgáltatási szint |
+| _id | Ügyfél neve | Szolgáltatásszint |
 | --- | --- | --- |
 | 1111 |ABC |Ezüst |
 | 2222 |XYZ |Arany |
@@ -365,5 +365,5 @@ Az adatok a kapcsolódó adattárakból való másolása során érdemes megism�
 ## <a name="performance-and-tuning"></a>Teljesítmény és hangolás
 A [másolási tevékenység teljesítményének & hangolási útmutatójában](data-factory-copy-activity-performance.md) megismerheti azokat a főbb tényezőket, amelyek hatással vannak az adatáthelyezés (másolási tevékenység) teljesítményére Azure Data Factory és az optimalizálás különféle módjaival.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az adatok [áthelyezése a helyszíni és a felhő között](data-factory-move-data-between-onprem-and-cloud.md) című cikk részletes útmutatást nyújt olyan adatfolyamatok létrehozásához, amelyek egy helyszíni adattárból egy Azure-adattárba helyezik át az adatok áthelyezését.

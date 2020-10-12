@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,hdiseo17may2017,seoapr2020
 ms.date: 08/13/2020
 ms.openlocfilehash: 15d7b11ed49880a81e52c48a93a72e1491a5b645
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89394329"
 ---
 # <a name="apache-components-and-versions-available-for-azure-hdinsight"></a>Az Azure HDInsight elérhető Apache-összetevők és-verziók
@@ -89,7 +89,7 @@ Ez a táblázat felsorolja a HDInsight azon verzióit, amelyek elérhetők a Azu
 | HDInsight 3,6 Spark             | 2,2               | Kivonulás június 30-ig, 2020          |                             |
 | HDInsight 3,6 Spark             | 2.1               | Kivonulás június 30-ig, 2020          |                             |
 | HDInsight 3,6 Kafka             | 1,1               | Dec. 31.2020                      | Június 30., 2021               |
-| HDInsight 3,6 Kafka             | 1,0               | 2020. június 30-án megszűnt.         |                             |
+| HDInsight 3,6 Kafka             | 1.0               | 2020. június 30-án megszűnt.         |                             |
 | HDInsight 3,6 HBase             | 1,1               | Dec. 31.2020                      | Június 30., 2021               |
 | HDInsight 3,6 interaktív lekérdezés | 2.1               | Dec. 31.2020                      | Június 30., 2021               |
 | HDInsight 3,6 Storm             | 1,1               | Dec. 31.2020                      | Június 30., 2021               |

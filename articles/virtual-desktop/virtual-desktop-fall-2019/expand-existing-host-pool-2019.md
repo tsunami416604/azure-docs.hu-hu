@@ -7,10 +7,10 @@ ms.date: 03/30/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 61cf28b0f1ebee6a0312ec3f23f22b01c6c4919e
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88009171"
 ---
 # <a name="expand-an-existing-host-pool-with-new-session-hosts-in-windows-virtual-desktop-classic"></a>Meglévő gazdagép kibontása új munkamenet-gazdagépekkel a Windows Virtual Desktopban (klasszikus)
@@ -64,7 +64,7 @@ A következőképpen telepítheti újra a Azure Resource Manager sablont a gazda
      >[!NOTE]
      >Ha olyan hibaüzenetet lát, amely azt jelzi, hogy egy másik erőforráscsoportot választ, még ha a beírt érték is helyes, válasszon másik erőforráscsoportot, majd válassza ki az eredeti erőforráscsoportot.
 
-8. Adja meg a következő URL-címet a *_artifactsLocation*számára:`https://raw.githubusercontent.com/Azure/RDS-Templates/master/wvd-templates/`
+8. Adja meg a következő URL-címet a *_artifactsLocation*számára: `https://raw.githubusercontent.com/Azure/RDS-Templates/master/wvd-templates/`
 9. Adja meg a *Rdsh-példányok számának*megadásához használni kívánt munkamenet-gazdagépek új teljes számát. Ha például öt munkamenet-gazdagépről nyolcra bővíti a gazdagép-készletet, írja be a **8**értéket.
 10. Adja meg ugyanazt a meglévő tartományi jelszót, amelyet a meglévő tartományi UPN-hez használt. Ne változtassa meg a felhasználónevet, mert a sablon futtatásakor hibaüzenetet fog okozni.
 11. Adja meg ugyanazt a bérlői rendszergazdai jelszót, amelyet a *bérlői rendszergazdai UPN-hez vagy az alkalmazás-azonosítóhoz*megadott felhasználóhoz vagy alkalmazás-azonosítóhoz használt. Ha újra, ne módosítsa a felhasználónevet.
@@ -74,7 +74,7 @@ A következőképpen telepítheti újra a Azure Resource Manager sablont a gazda
 
 Kövesse az [alkalmazáskészlet létrehozása az Azure Marketplace](create-host-pools-azure-marketplace-2019.md) -en című témakör utasításait, amíg el nem éri [Az Azure Marketplace-ajánlat futtatását az új címkészlet](create-host-pools-azure-marketplace-2019.md#run-the-azure-marketplace-offering-to-provision-a-new-host-pool)kiépítéséhez. Amikor erre a pontra kerül, meg kell adnia az alábbi adatokat az egyes lapokon:
 
-### <a name="basics"></a>Alapbeállítások
+### <a name="basics"></a>Alapvető beállítások
 
 Az ebben a szakaszban szereplő összes értéknek egyeznie kell azzal, amit a gazdagép és a munkamenet-gazda virtuális gépei első létrehozásakor adott meg, kivéve az *alapértelmezett asztali felhasználók*számára:
 
@@ -124,7 +124,7 @@ Az ebben a szakaszban szereplő összes paraméternek meg kell egyeznie a gazdag
 
 Kövesse a [Azure Resource Manager sablon futtatása új címkészlet kiépítési céljára](create-host-pools-arm-template.md#run-the-azure-resource-manager-template-for-provisioning-a-new-host-pool) című témakör utasításait, és adja meg az összes azonos paraméter-értéket, kivéve a *Rdsh-példányok számát*. A sablon futtatása után adja meg a gazdagép-készletben használni kívánt munkamenet-gazda virtuális gépek számát. Ha például öt munkamenet-gazdagépről nyolcra bővíti a gazdagép-készletet, írja be a **8**értéket.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Most, hogy kibontotta a meglévő gazdagép-készletet, bejelentkezhet egy Windows rendszerű virtuális asztali ügyfélbe, és tesztelheti őket egy felhasználói munkamenet részeként. Csatlakozhat egy munkamenethez a következő ügyfelek bármelyikével:
 

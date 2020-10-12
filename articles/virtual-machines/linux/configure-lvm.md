@@ -8,10 +8,10 @@ ms.date: 09/27/2018
 ms.author: guybo
 ms.subservice: disks
 ms.openlocfilehash: 9a3498939ddf57e2520a140ff693a30de913fae0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84658293"
 ---
 # <a name="configure-lvm-on-a-linux-vm-in-azure"></a>Az LVM konfigurálása Linux rendszerű virtuális gépen az Azure-ban
@@ -134,7 +134,7 @@ Ebben az útmutatóban feltételezzük, hogy három adatlemezt csatoltunk, amely
     /dev/mapper/data--vg01-data--lv01 on /data type ext4 (rw)
     ```
 
-5. Választható Failsafe rendszerindítási paraméterek a-ben`/etc/fstab`
+5. Választható Failsafe rendszerindítási paraméterek a-ben `/etc/fstab`
    
     Számos disztribúció tartalmazhatja a `nobootwait` `nofail` fájlhoz adható vagy csatlakoztatási paramétereket `/etc/fstab` . Ezek a paraméterek lehetővé teszik a meghibásodást egy adott fájlrendszer csatlakoztatásakor, és lehetővé teszik a Linux rendszernek a rendszerindítás folytatását akkor is, ha nem tudja megfelelően csatlakoztatni a RAID fájlrendszert. A paraméterekkel kapcsolatos további információkért tekintse meg a terjesztés dokumentációját.
    

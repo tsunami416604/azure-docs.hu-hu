@@ -8,10 +8,10 @@ ms.date: 05/04/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: 21e2b197c31a30ab8a249e2e8e398072a624154c
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89394091"
 ---
 # <a name="azure-security-baseline-for-azure-functions"></a>Azure Functions Azure biztonsági alapterve
@@ -1031,7 +1031,7 @@ A Microsoft kártevő szoftveres verziója engedélyezve van az Azure-szolgálta
 
 **Útmutató**: az alkalmazás rendszeres biztonsági mentésének ütemezéséhez használja a Backup és a Restore funkciót. A prémium szintű csomagban futó functions-alkalmazások ugyanazokat az üzemeltetési funkciókat rendelkeznek, mint a Azure App Service webalkalmazásai, beleértve a "biztonsági mentés és visszaállítás" funkciót is.
 
-Olyan verziókövetés-megoldást is használhat, mint például az Azure Repos és az Azure DevOps a kód biztonságos tárolásához és kezeléséhez. Az Azure DevOps Services számos Azure Storage-funkciót használ, így biztosítva az adatmennyiséget a hardverhiba, a szolgáltatások megszakítása vagy a régió katasztrófája esetén. Emellett az Azure DevOps csapata a véletlen vagy rosszindulatú törlésből származó adatok védelme érdekében eljárást követ.
+Olyan verziókövetés-megoldást is használhat, mint például az Azure Repos és az Azure DevOps a kód biztonságos tárolásához és kezeléséhez. Az Azure DevOps Services számos Azure Storage-funkciót használ, hogy gondoskodni tudjon az adatok rendelkezésre állásáról hardverhiba, szolgáltatáskimaradás vagy régiós katasztrófa esetén. Az Azure DevOps csapata olyan eljárásokat is követ, amelyek a véletlen vagy rosszindulatú törlésektől védi az adatokat.
 
 - [Adatok biztonsági mentése az Azure-ban](../app-service/manage-backup.md)
 
@@ -1049,7 +1049,7 @@ Olyan verziókövetés-megoldást is használhat, mint például az Azure Repos 
 
 **Útmutató**: az alkalmazás rendszeres biztonsági mentésének ütemezéséhez használja a Backup és a Restore funkciót. A prémium szintű csomagban futó functions-alkalmazások ugyanazokat az üzemeltetési funkciókat rendelkeznek, mint a Azure App Service webalkalmazásai, beleértve a "biztonsági mentés és visszaállítás" funkciót is. Ügyfél által felügyelt kulcsok biztonsági mentése Azure Key Vaulton belül.
 
-Olyan verziókövetés-megoldást is használhat, mint például az Azure Repos és az Azure DevOps a kód biztonságos tárolásához és kezeléséhez. Az Azure DevOps Services számos Azure Storage-funkciót használ, így biztosítva az adatmennyiséget a hardverhiba, a szolgáltatások megszakítása vagy a régió katasztrófája esetén. Emellett az Azure DevOps csapata a véletlen vagy rosszindulatú törlésből származó adatok védelme érdekében eljárást követ.
+Olyan verziókövetés-megoldást is használhat, mint például az Azure Repos és az Azure DevOps a kód biztonságos tárolásához és kezeléséhez. Az Azure DevOps Services számos Azure Storage-funkciót használ, hogy gondoskodni tudjon az adatok rendelkezésre állásáról hardverhiba, szolgáltatáskimaradás vagy régiós katasztrófa esetén. Az Azure DevOps csapata olyan eljárásokat is követ, amelyek a véletlen vagy rosszindulatú törlésektől védi az adatokat.
 
 - [Adatok biztonsági mentése az Azure-ban](../app-service/manage-backup.md)
 
@@ -1083,11 +1083,11 @@ Olyan verziókövetés-megoldást is használhat, mint például az Azure Repos 
 
 **Útmutató**: a biztonsági mentés és visszaállítás funkció biztonsági mentései egy Azure Storage-fiókot használnak az előfizetésében. Az Azure Storage minden olyan adattárolót titkosít, amely egy Storage-fiókban található. Alapértelmezés szerint az adattitkosítás a Microsoft által kezelt kulcsokkal történik. A titkosítási kulcsok további szabályozásához megadhatja az ügyfél által felügyelt kulcsokat a tárolási adat titkosításához.
 
-Ha ügyfél által felügyelt kulcsokat használ, győződjön meg arról, hogy a Key Vaultban a helyreállítható törlés engedélyezve van a kulcsok véletlen vagy rosszindulatú törléssel szembeni védeleméhez.
+Ha ügyfél által felügyelt kulcsokat használ, győződjön meg arról, hogy a Key Vaultban Soft-Delete engedélyezve van a kulcsok véletlen vagy rosszindulatú törléssel szembeni védelemhez.
 
 - [Azure Storage-titkosítás inaktív állapotban](../storage/common/storage-service-encryption.md)
 
-- [A Soft delete engedélyezése Key Vault](../storage/blobs/soft-delete-overview.md?tabs=azure-portal)
+- [A Soft-Delete engedélyezése Key Vault](../storage/blobs/soft-delete-overview.md?tabs=azure-portal)
 
 **Azure Security Center figyelés**: igen
 

@@ -9,15 +9,15 @@ ms.service: azure-maps
 services: azure-maps
 manager: ''
 ms.openlocfilehash: 44c5f9f1a7c0d014d101ad45a80e1e53c42f69a3
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88009035"
 ---
 # <a name="display-feature-information"></a>Funkcióinformációk megjelenítése
 
-A térbeli adataikat gyakran pontok, vonalak és sokszögek használatával jelölik. Ezek az adatok gyakran metaadatokkal kapcsolatos adatokkal rendelkeznek. Előfordulhat például, hogy egy adott pont az áruház helyét és a hozzájuk tartozó metaadatokat a neve, címe és az általa kiszolgált élelmiszer típusát jelöli. Ez a metaadatok hozzáadhatók a szolgáltatások tulajdonságaihoz a használatával `JsonObject` . A következő kód egy egyszerű pont funkciót hoz létre egy olyan `title` tulajdonsággal, amelynek értéke ""Helló világ!"alkalmazás!".
+A térbeli adataikat gyakran pontok, vonalak és sokszögek használatával jelölik. Ezek az adatok gyakran metaadatokkal kapcsolatos adatokkal rendelkeznek. Előfordulhat például, hogy egy adott pont az áruház helyét és a hozzájuk tartozó metaadatokat a neve, címe és az általa kiszolgált élelmiszer típusát jelöli. Ez a metaadatok hozzáadhatók a szolgáltatások tulajdonságaihoz a használatával `JsonObject` . A következő kód egy egyszerű pont funkciót hoz létre egy olyan `title` tulajdonsággal, amelynek értéke "„Helló világ!” alkalmazás!".
 
 ```java
 //Create a data source and add it to the map.
@@ -74,7 +74,7 @@ A pirítós üzenetein kívül számos más módon is bemutathatja egy szolgált
 - Adjon hozzá egy [töredéket](https://developer.android.com/guide/components/fragments) az aktuális tevékenységhez.
 - Navigáljon egy másik tevékenységhez vagy nézethez.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ hozzáadása a térképhez:
 

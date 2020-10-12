@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 06/25/2018
 ms.author: allensu
 ms.openlocfilehash: edc17b9636792ce00458716e3461077fa689b3ed
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87001573"
 ---
 # <a name="create-a-public-load-balancer-with-ipv6-using-azure-cli"></a>Nyilvános Load Balancer létrehozása IPv6-tal az Azure CLI használatával
@@ -157,7 +157,7 @@ Ez a példa a következő elemeket hozza létre:
 * Egy NAT-szabályt, amely a 3391-es porton bejövő összes forgalmat lefordítja a 3389-es portra a távoli asztali protokoll (RDP) számára.\*
 * Egy terheléselosztó-szabályt, amely a 80-as porton bejövő összes forgalmat a 80-es porton a háttér-készletben lévő címekre kiegyenlíti.
 
-\*A NAT-szabályok a terheléselosztó mögött egy adott virtuálisgép-példányhoz vannak társítva. Az 3389-es portra érkező hálózati forgalmat a rendszer a NAT-szabályhoz társított virtuális gépre és portra továbbítja. A NAT-szabályhoz meg kell adnia egy protokollt (UDP vagy TCP). Mindkét protokoll nem rendelhető hozzá ugyanahhoz a porthoz.
+\* A NAT-szabályok a terheléselosztó mögött egy adott virtuálisgép-példányhoz vannak társítva. Az 3389-es portra érkező hálózati forgalmat a rendszer a NAT-szabályhoz társított virtuális gépre és portra továbbítja. A NAT-szabályhoz meg kell adnia egy protokollt (UDP vagy TCP). Mindkét protokoll nem rendelhető hozzá ugyanahhoz a porthoz.
 
 1. A PowerShell változók beállítása:
 

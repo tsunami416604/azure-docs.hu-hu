@@ -4,10 +4,10 @@ description: Ez a cikk a Azure Backup korábbi és új diagnosztikai eseményein
 ms.topic: conceptual
 ms.date: 10/30/2019
 ms.openlocfilehash: 3d10053bae5148f33dba6d1207a81bdb16c37577
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89182598"
 ---
 # <a name="use-diagnostics-settings-for-recovery-services-vaults"></a>Recovery Services-tárolók diagnosztikai beállításainak használata
@@ -45,7 +45,7 @@ A tároló diagnosztikai adatainak elküldése a Log Analyticsba:
 1. Adjon nevet a diagnosztikai beállításoknak.
 1. Jelölje be a **küldés log Analyticsra** jelölőnégyzetet, majd válasszon ki egy log Analytics munkaterületet.
 1. Válassza ki az **erőforrás-specifikus** elemet a váltáshoz, és válassza ki a következő hat eseményt: **CoreAzureBackup**, **AddonAzureBackupJobs**, **AddonAzureBackupAlerts**, **AddonAzureBackupPolicy**, **AddonAzureBackupStorage**és **AddonAzureBackupProtectedInstance**.
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
    ![Erőforrás-specifikus mód](./media/backup-azure-diagnostics-events/resource-specific-blade.png)
 
@@ -128,6 +128,6 @@ Az alábbi képen egy olyan felhasználó látható, aki három diagnosztikai be
 
 ![Három beállítás](./media/backup-azure-diagnostics-events/three-settings-example.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [A diagnosztikai események Log Analytics adatmodelljének megismerése](./backup-azure-reports-data-model.md)
