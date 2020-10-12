@@ -12,10 +12,10 @@ ms.reviewer: sstein, bonova, danil
 ms.date: 06/02/2020
 ms.custom: seoapril2019, sqldbrb=1
 ms.openlocfilehash: 1298a1676d7a7ac0321ae768c3e596f481e80a8a
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91617876"
 ---
 # <a name="t-sql-differences-between-sql-server--azure-sql-managed-instance"></a>SQL Server & Azure SQL felügyelt példányának T-SQL-különbségei
@@ -165,7 +165,7 @@ A felügyelt SQL-példány nem fér hozzá a fájlokhoz, így a titkosítási sz
     - Exportáljon egy adatbázist a felügyelt példányból, és importálja SQL Database ugyanazon az Azure AD-tartományon belül. 
     - Exportáljon egy adatbázist a SQL Databaseból, és importálja az SQL felügyelt példányba ugyanazon az Azure AD-tartományon belül.
     - Exportáljon egy adatbázist a felügyelt példányból, és importálja SQL Serverre (2012-es vagy újabb verzióra).
-      - Ebben a konfigurációban az összes Azure AD-felhasználó SQL Server adatbázis-rendszerbiztonsági tagként (Users) jön létre a bejelentkezések nélkül. A felhasználók típusa a következőként jelenik `SQL` meg, és látható a `SQL_USER` sys. database_principals). Engedélyeik és szerepköreik a SQL Server adatbázis-metaadatokban maradnak, és megszemélyesítésre is használhatók. Azonban nem használhatók a SQL Server való hozzáférésre és bejelentkezésre a hitelesítő adataik használatával.
+      - Ebben a konfigurációban az összes Azure AD-felhasználó SQL Server adatbázis-rendszerbiztonsági tagként (Users) jön létre a bejelentkezések nélkül. A felhasználók típusa a következőként jelenik `SQL` meg, és látható a `SQL_USER` sys.database_principals). Engedélyeik és szerepköreik a SQL Server adatbázis-metaadatokban maradnak, és megszemélyesítésre is használhatók. Azonban nem használhatók a SQL Server való hozzáférésre és bejelentkezésre a hitelesítő adataik használatával.
 
 - Csak az SQL felügyelt példány létesítési folyamata által létrehozott kiszolgálói szintű rendszerbiztonsági tag, a kiszolgálói szerepkörök, például a `securityadmin` vagy a `sysadmin` , illetve más bejelentkezési engedélyekkel rendelkező más bejelentkezések az SQL felügyelt példányának főadatbázisában hozhatnak létre Azure ad-kiszolgálói rendszerbiztonsági tagokat (bejelentkezéseket).
 - Ha a bejelentkezés egy SQL-rendszerbiztonsági tag, csak a szerepkör részét képező bejelentkezések `sysadmin` használhatják a Create parancsot az Azure ad-fiókhoz tartozó bejelentkezések létrehozásához.
@@ -174,11 +174,11 @@ A felügyelt SQL-példány nem fér hozzá a fájlokhoz, így a titkosítási sz
 - Az egymást átfedő Azure AD-kiszolgálói rendszerbiztonsági tag (bejelentkezések) Azure AD-rendszergazdai fiókkal való használata engedélyezett. Az Azure ad-kiszolgáló résztvevői (bejelentkezések) elsőbbséget élveznek az Azure AD-rendszergazdával a rendszerbiztonsági tag feloldása és az SQL felügyelt példány engedélyeinek alkalmazása során.
 - A hitelesítés során a rendszer a következő sorozatot alkalmazza a hitelesítő tag feloldására:
 
-    1. Ha az Azure AD-fiók létezik közvetlenül leképezve az Azure AD-kiszolgáló rendszerbiztonsági tagja (login) számára, amely megtalálható a sys-ben. server_principals az "E" típussal, adja meg a hozzáférést, és alkalmazza az Azure AD-kiszolgáló rendszerbiztonsági tag (login) engedélyeit.
-    2. Ha az Azure AD-fiók tagja egy olyan Azure ad-csoportnak, amely az Azure AD-kiszolgáló rendszerbiztonsági tagjához (login) van társítva, amely megtalálható a sys-ben. server_principals X típusúként, adja meg a hozzáférést, és alkalmazza az Azure AD-csoport bejelentkezési engedélyeit.
+    1. Ha az Azure AD-fiók létezik közvetlenül leképezve az Azure AD-kiszolgáló rendszerbiztonsági tagja (login) számára, amely az "E" típus sys.server_principals szerepel, adjon hozzáférést és alkalmazza az Azure AD-kiszolgáló rendszerbiztonsági tag (login) engedélyeit.
+    2. Ha az Azure AD-fiók olyan Azure ad-csoport tagja, amely az Azure ad-kiszolgáló rendszerbiztonsági tagjához (login) van leképezve, amely sys.server_principals "X" típusúként van társítva, engedélyezze a hozzáférést, és alkalmazza az Azure AD-csoport bejelentkezési engedélyeit.
     3. Ha az Azure AD-fiók egy speciális, felügyelt SQL-példányhoz konfigurált Azure AD-rendszergazda, amely nem létezik az SQL felügyelt példány rendszernézeteiben, alkalmazza a felügyelt SQL-példányok Azure AD-rendszergazdájának speciális rögzített engedélyeit (örökölt mód).
-    4. Ha az Azure AD-fiók létezik közvetlenül hozzárendelve egy Azure AD-felhasználóhoz egy adatbázisban, amely szerepel a sys-ben. database_principals az "E" típussal, adjon hozzáférést és alkalmazza az Azure AD-adatbázis felhasználójának engedélyeit.
-    5. Ha az Azure AD-fiók tagja egy olyan Azure ad-csoportnak, amely egy Azure AD-felhasználóhoz van hozzárendelve egy adatbázisban, amely szerepel a sys-ben. database_principals "X" típusúként, adja meg a hozzáférést, és alkalmazza az Azure AD-csoport bejelentkezési engedélyeit.
+    4. Ha az Azure AD-fiók létezik közvetlenül leképezve egy Azure AD-felhasználóhoz egy adatbázisban, amely az "E" típus sys.database_principals szerepel, adjon hozzáférést és alkalmazza az Azure AD-adatbázis felhasználójának engedélyeit.
+    5. Ha az Azure AD-fiók tagja egy olyan Azure ad-csoportnak, amely egy olyan Azure AD-felhasználóhoz van hozzárendelve egy adatbázisban, amely sys.database_principals "X" típussal van leképezve, engedélyezze a hozzáférést, és alkalmazza az Azure AD-csoport bejelentkezési engedélyeit.
     6. Ha egy Azure ad-bejelentkezés egy Azure AD-felhasználói fiókhoz vagy egy Azure AD-csoport fiókjához van rendelve, amely a hitelesítést végző felhasználóra van feloldva, az Azure AD-bejelentkezés összes engedélyét alkalmazza a rendszer.
 
 ### <a name="service-key-and-service-master-key"></a>Szolgáltatási kulcs és szolgáltatás főkulcsa
@@ -433,7 +433,7 @@ A tranzakciós replikáció konfigurálásával kapcsolatos további informáci�
   - `FROM DISK`/`TAPE`a/Backup-eszköz nem támogatott.
   - A biztonságimásolat-készletek nem támogatottak.
 - `WITH` a beállítások nem támogatottak. A visszaállítási kísérletek, például például `WITH` `DIFFERENTIAL` ,, `STATS` `REPLACE` stb., sikertelenek lesznek.
-- `ASYNC RESTORE`: A visszaállítás akkor is folytatódik, ha az ügyfél-kapcsolatok megszakadnak. Ha a rendszer eldobta a-kapcsolatokat, megtekintheti a `sys.dm_operation_status` visszaállítási művelet állapotát, valamint egy létrehozási és ELdobási adatbázist. Lásd: [sys. dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database). 
+- `ASYNC RESTORE`: A visszaállítás akkor is folytatódik, ha az ügyfél-kapcsolatok megszakadnak. Ha a rendszer eldobta a-kapcsolatokat, megtekintheti a `sys.dm_operation_status` visszaállítási művelet állapotát, valamint egy létrehozási és ELdobási adatbázist. Lásd: [sys.dm_operation_status](/sql/relational-databases/system-dynamic-management-views/sys-dm-operation-status-azure-sql-database). 
 
 A következő adatbázis-beállítások vannak beállítva vagy felülbírálva, és később nem módosíthatók: 
 
@@ -541,7 +541,7 @@ A felügyelt SQL-példányok következő MSDB-sémáinak a megfelelő előre def
 
 Az SQL felügyelt példánya részletes információkat helyez el a hibák naplóiban. A hibanapló számos belső rendszereseményt naplóz. Egyéni eljárással olvashatja el a nem releváns bejegyzéseket kiszűrő hibákat. További információ: [SQL felügyelt példány – sp_readmierrorlog](https://blogs.msdn.microsoft.com/sqlcat/2018/05/04/azure-sql-db-managed-instance-sp_readmierrorlog/) vagy [SQL felügyelt példányok bővítménye (előzetes verzió)](/sql/azure-data-studio/azure-sql-managed-instance-extension#logs) Azure Data studiohoz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ az SQL felügyelt példányáról: [Mi az SQL felügyelt példány?](sql-managed-instance-paas-overview.md)
 - A szolgáltatások és összehasonlítások listájáért lásd: az [Azure SQL felügyelt példány funkcióinak összehasonlítása](../database/features-comparison.md).

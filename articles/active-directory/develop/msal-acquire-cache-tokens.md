@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev
 ms.openlocfilehash: 47af4015fa5c6d9a73ee597146890a29b4b9ef9d
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88119895"
 ---
 # <a name="acquire-and-cache-tokens-using-the-microsoft-authentication-library-msal"></a>Tokenek beszerzése és gyorsítótárazása a Microsoft Authentication Library (MSAL) használatával
@@ -42,8 +42,8 @@ Ha az alkalmazásnak olyan hozzáférési jogkivonatot kell igényelnie, amely a
 
 Néhány példa a különböző erőforrásokra vonatkozó hatókör-értékekre:
 
-- Microsoft Graph API:`https://graph.microsoft.com/User.Read`
-- Egyéni webes API:`api://11111111-1111-1111-1111-111111111111/api.read`
+- Microsoft Graph API: `https://graph.microsoft.com/User.Read`
+- Egyéni webes API: `api://11111111-1111-1111-1111-111111111111/api.read`
 
 A hatókör értékének formátuma a hozzáférési jogkivonatot fogadó erőforrástól (az API-tól) és az `aud` általa elfogadott jogcím-értéktől függően változhat.
 
@@ -116,7 +116,7 @@ Amikor az ügyfél hozzáférési jogkivonatot kér, az Azure AD egy hitelesít�
 - Azok a hatókörök, amelyekhez a jogkivonat ki lett állítva.
 - A felhasználó egyedi azonosítója.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha Java-MSAL használ, ismerkedjen meg az [Egyéni jogkivonat-gyorsítótár szerializálásával a MSAL for javában](msal-java-token-cache-serialization.md).
 

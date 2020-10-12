@@ -6,10 +6,10 @@ ms.subservice: process-automation
 ms.date: 03/16/2018
 ms.topic: conceptual
 ms.openlocfilehash: 161272fe35ee9ea1e0880b991273e5d1a79eafb4
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90987332"
 ---
 # <a name="author-graphical-runbooks-in-azure-automation"></a>Grafikus runbookok készítése Azure Automation
@@ -95,7 +95,7 @@ Ha engedélyezi az újrapróbálkozást egy tevékenységhez, beállíthatja a k
 
 Az újrapróbálkozási feltétel egy PowerShell-kifejezés, amelyet a rendszer a tevékenység futtatásakor értékel ki. Ha a kifejezés True (igaz) értékre oldódik, a tevékenység újra lefut. Ha a kifejezés hamis értéket ad vissza, a tevékenység nem fut újra, és a runbook a következő tevékenységre lép.
 
-:::image type="content" source="media/automation-graphical-authoring-intro/retry-condition.png" alt-text="Képernyőfelvétel: az Újrapróbálkozás, amíg ez a feltétel igaz mező, és példák az újrapróbálkozási feltételben használható PowerShell-kifejezésekre.":::
+:::image type="content" source="media/automation-graphical-authoring-intro/retry-condition.png" alt-text="Képernyőfelvétel: az újrapróbálkozási funkció beállításainak engedélyezése.":::
 
 Az újrapróbálkozási feltétel olyan nevű változót használhat `RetryData` , amely hozzáférést biztosít a tevékenység újrapróbálkozásával kapcsolatos információkhoz. Ez a változó a következő táblázatban található tulajdonságokkal rendelkezik:
 
@@ -256,7 +256,7 @@ Az egyes bemeneti paramétereket az alábbi táblázat tulajdonságai határozz�
 
 | Tulajdonság | Leírás |
 |:--- |:--- |
-| Név | Kötelező. A paraméter neve. A névnek egyedinek kell lennie a runbook belül. Betűvel kell kezdődnie, és csak betűket, számokat és aláhúzást tartalmazhat. A név nem tartalmazhat szóközt. |
+| Name (Név) | Kötelező. A paraméter neve. A névnek egyedinek kell lennie a runbook belül. Betűvel kell kezdődnie, és csak betűket, számokat és aláhúzást tartalmazhat. A név nem tartalmazhat szóközt. |
 | Leírás |Választható. A bemeneti paraméter céljának leírása. |
 | Típus | Választható. A paraméter értékének várt adattípus. A Azure Portal minden paraméter esetében megfelelő vezérlést biztosít az adattípushoz, amikor rákérdez a bemenetre. A támogatott paraméterek a következők: string, Int32, Int64, decimális, Boolean, DateTime és Object. Ha nincs kiválasztva adattípus, a rendszer az alapértelmezett karakterláncot adja meg.|
 | Kötelező | Választható. Ez a beállítás határozza meg, hogy meg kell-e adni egy értéket a paraméterhez. Ha úgy dönt `yes` , a runbook indításakor meg kell adni egy értéket. Ha úgy dönt `no` , nincs szükség értékre a runbook indításakor, és az alapértelmezett érték is használható. A runbook nem indítható el, ha nem ad meg értéket minden olyan kötelező paraméterhez, amelyhez nincs megadva alapértelmezett érték. |
@@ -383,7 +383,7 @@ A `Get Run As Connection` tevékenység (vagy `Get-AutomationConnection` ) álla
 
 A következő tevékenység, `Connect-AzAccount` és hozzáadja a hitelesített futtató fiókot a runbook való használathoz.
 
-![A AzAccount paraméter beállítása](media/automation-graphical-authoring-intro/authenticate-conn-to-azure-parameter-set.png)
+![Connect-AzAccount paraméter beállítva](media/automation-graphical-authoring-intro/authenticate-conn-to-azure-parameter-set.png)
 
 >[!NOTE]
 >A PowerShell-runbookok esetében a `Add-AzAccount` és a `Add-AzureRMAccount` álneve a következőhöz: `Connect-AzAccount` . Vegye figyelembe, hogy ezek az aliasok nem érhetők el a grafikus runbookok. A grafikus runbook csak `Connect-AzAccount` saját maguk használhatják.

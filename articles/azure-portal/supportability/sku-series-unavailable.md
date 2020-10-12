@@ -8,17 +8,17 @@ ms.topic: troubleshooting
 ms.date: 01/27/2020
 ms.author: xingwan
 ms.openlocfilehash: 87533b2e0c1397d0b8b2e9a89450a80a75c5e348
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84763822"
 ---
 # <a name="region-or-sku-unavailable"></a>Nem elérhető régió vagy termékváltozat
 
 Ez a cikk azt ismerteti, hogyan oldható fel egy olyan Azure-előfizetés problémája, amely nem fér hozzá egy adott régióhoz vagy virtuális géphez tartozó SKU-hoz.
 
-## <a name="symptoms"></a>Probléma
+## <a name="symptoms"></a>Hibajelenségek
 
 Virtuális gép telepítésekor a következő hibaüzenetek egyike jelenik meg:
 
@@ -76,7 +76,7 @@ Ha nem talál megfelelő régiót vagy SKU-t, hozzon létre egy **előfizetés-k
 
 1. Adja meg a megadható további információkat, valamint a kapcsolattartási adatait.
 
-1. Válassza az **Áttekintés + létrehozás** lehetőséget. Az adatok ellenőrzése után válassza a **Létrehozás** lehetőséget a kérelem létrehozásához.
+1. Válassza a **Felülvizsgálat + létrehozás** lehetőséget. Az adatok ellenőrzése után válassza a **Létrehozás** lehetőséget a kérelem létrehozásához.
 
 ## <a name="send-us-your-suggestions"></a>Küldje el nekünk javaslatait
 

@@ -15,17 +15,17 @@ ms.topic: troubleshooting
 ms.date: 06/15/2020
 ms.author: v-mibufo
 ms.openlocfilehash: 6b50bffd1a44c0cf53f15650f5ff4d938f45df4d
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84908195"
 ---
 # <a name="azure-vm-is-unresponsive-while-applying-security-policy-to-the-system"></a>Az Azure-beli virtuális gép nem válaszol, miközben biztonsági házirendet alkalmaz a rendszerre.
 
 Ez a cikk azokat a problémákat ismerteti, amelyekkel az operációs rendszer leáll, és nem válaszol, miközben egy Azure-beli virtuális gépen alkalmazza a biztonsági házirendet.
 
-## <a name="symptoms"></a>Probléma
+## <a name="symptoms"></a>Hibajelenségek
 
 Ha [rendszerindítási diagnosztika](boot-diagnostics.md) használatával tekinti meg a virtuális gép képernyőképét, látni fogja, hogy a képernyőképen az operációs rendszer elakadt az üzenet indításakor:
 
@@ -33,13 +33,13 @@ Ha [rendszerindítási diagnosztika](boot-diagnostics.md) használatával tekint
 
 :::image type="content" source="media/unresponsive-vm-apply-security-policy/apply-policy.png" alt-text="A Windows Server 2012 R2 indítási képernyőjének képernyőképe megakadt.":::
 
-:::image type="content" source="media/unresponsive-vm-apply-security-policy/apply-policy-2.png" alt-text="Az operációs rendszer indítási képernyőjének képernyőképe megakadt.":::
+:::image type="content" source="media/unresponsive-vm-apply-security-policy/apply-policy-2.png" alt-text="A Windows Server 2012 R2 indítási képernyőjének képernyőképe megakadt.":::
 
 ## <a name="cause"></a>Ok
 
 A probléma számos lehetséges oka lehet. Addig nem fogja tudni a forrást, amíg a memóriakép elemzése nem történik meg.
 
-## <a name="resolution"></a>Megoldás:
+## <a name="resolution"></a>Feloldás
 
 ### <a name="process-overview"></a>Folyamat áttekintése
 
@@ -68,54 +68,7 @@ A memóriakép-gyűjtés és a soros konzol engedélyezéséhez futtassa a köve
 
         A parancsban cserélje le a \<BOOT PARTITON> betűt a partíció betűjelére a csatlakoztatott lemezen, amely tartalmazza a rendszerindító mappát.
 
-        :::image type="content" source="media/unresponsive-vm-apply-security-policy/store-data.png" alt-text="A diagram megjeleníti a BCD-tárolónak egy 1. generációs virtuális gépen való listázásának kimenetét, amely a Windows rendszerindítási azonosító alatt található.":::
-
-     2. A 2. generációs virtuális gépek esetében írja be a következő parancsot, és jegyezze fel a felsorolt azonosítót:
-
-        ```console
-        bcdedit /store <LETTER OF THE EFI SYSTEM PARTITION>:EFI\Microsoft\boot\bcd /enum
-        ```
-
-        - A parancsban cserélje le az \<LETTER OF THE EFI SYSTEM PARTITION> EFI rendszerpartíció betűjét.
-        - Hasznos lehet a Lemezkezelés konzol elindítása az "EFI rendszerpartíció" címkével rendelkező megfelelő rendszerpartíció azonosításához.
-        - Az azonosító lehet egyedi GUID, vagy lehet az alapértelmezett "Csizmadia".
-3. Futtassa a következő parancsokat a soros konzol engedélyezéséhez:
-
-    ```console
-    bcdedit /store <VOLUME LETTER WHERE THE BCD FOLDER IS>:\boot\bcd /ems {<BOOT LOADER IDENTIFIER>} ON
-    ```
-
-    ```console
-    bcdedit /store <VOLUME LETTER WHERE THE BCD FOLDER IS>:\boot\bcd /emssettings EMSPORT:1 EMSBAUDRATE:115200
-    ```
-
-    - A parancsban cserélje le a helyére a \<VOLUME LETTER WHERE THE BCD FOLDER IS> BCD-mappa betűjét.
-    - A parancsban cserélje le \<BOOT LOADER IDENTIFIER> az parancsot az előző lépésben megtalált azonosítóra.
-4. Győződjön meg arról, hogy az operációsrendszer-lemez szabad területe nagyobb, mint a virtuális gép memóriájának mérete (RAM).
-
-    1. Ha nincs elég hely az operációsrendszer-lemezen, akkor módosítania kell a memóriakép fájljának helyét. Ahelyett, hogy a fájlt az operációsrendszer-lemezen hozza létre, áttekintheti a virtuális géphez csatlakoztatott bármely más adatlemezre, amely elegendő szabad hellyel rendelkezik. Ha módosítani szeretné a helyet, cserélje le a "% SystemRoot%" betűjelet a meghajtóbetűjelre (például "F:") az alábbi parancsokban szereplő adatlemezre.
-    2. Adja meg az alábbi parancsokat (a javasolt memóriakép konfigurációja):
-
-        Sérült operációsrendszer-lemez betöltése:
-
-        ```console
-        REG LOAD HKLM\BROKENSYSTEM <VOLUME LETTER OF BROKEN OS DISK>:\windows\system32\config\SYSTEM
-        ```
-
-        Engedélyezés a ControlSet001:
-
-        ```console
-        REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\CrashControl" /v CrashDumpEnabled /t REG_DWORD /d 1 /f
-        REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\CrashControl" /v DumpFile /t REG_EXPAND_SZ /d "%SystemRoot%\MEMORY.DMP" /f
-        REG ADD "HKLM\BROKENSYSTEM\ControlSet001\Control\CrashControl" /v NMICrashDump /t REG_DWORD /d 1 /f
-        ```
-
-        Engedélyezés a ControlSet002:
-
-        ```console
-        REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v CrashDumpEnabled /t REG_DWORD /d 1 /f
-        REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v DumpFile /t REG_EXPAND_SZ /d "%SystemRoot%\MEMORY.DMP" /f
-        REG ADD "HKLM\BROKENSYSTEM\ControlSet002\Control\CrashControl" /v NMICrashDump /t REG_DWORD /d 1 /f
+        :::image type="content" source="media/unresponsive-vm-apply-security-policy/store-data.png" alt-text="A Windows Server 2012 R2 indítási képernyőjének képernyőképe megakadt." /v NMICrashDump /t REG_DWORD /d 1 /f
         ```
 
         Sérült operációsrendszer-lemez eltávolítása:

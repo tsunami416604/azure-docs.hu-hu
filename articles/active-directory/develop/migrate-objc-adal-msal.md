@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: oldalton
 ms.custom: aaddev
 ms.openlocfilehash: 13923596b7ad0f6d3fdef24e847f469645b448ee
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88119929"
 ---
 # <a name="migrate-applications-to-msal-for-ios-and-macos"></a>Alkalmazások migrálása MSAL iOS és macOS rendszerű eszközökre
@@ -53,7 +53,7 @@ A MSAL nyilvános API az Azure AD v 1.0 és a Microsoft Identity platform közö
 
 ### <a name="msalpublicclientapplication-instead-of-adauthenticationcontext"></a>MSALPublicClientApplication helyett ADAuthenticationContext
 
-`ADAuthenticationContext`a egy ADAL-alkalmazás által létrehozott első objektum. A ADAL egy példányát jelöli. Az alkalmazások új példányt hoznak létre `ADAuthenticationContext` minden Azure Active Directory felhőalapú és bérlői (szolgáltatói) kombinációhoz. Ugyanezt a lehetőséget `ADAuthenticationContext` használhatja a több nyilvános ügyfélalkalmazás jogkivonatának lekérésére.
+`ADAuthenticationContext` a egy ADAL-alkalmazás által létrehozott első objektum. A ADAL egy példányát jelöli. Az alkalmazások új példányt hoznak létre `ADAuthenticationContext` minden Azure Active Directory felhőalapú és bérlői (szolgáltatói) kombinációhoz. Ugyanezt a lehetőséget `ADAuthenticationContext` használhatja a több nyilvános ügyfélalkalmazás jogkivonatának lekérésére.
 
 A MSAL-ben a fő interakció egy olyan `MSALPublicClientApplication` objektumon keresztül történik, amely a [OAuth 2,0 nyilvános ügyfél](https://tools.ietf.org/html/rfc6749#section-2.1)után lett modellezve. Az egyik példány `MSALPublicClientApplication` használható több HRE-felhővel és-Bérlővel való interakcióra anélkül, hogy új példányt kellene létrehoznia minden egyes szolgáltatóhoz. A legtöbb alkalmazás esetében az egyik `MSALPublicClientApplication` példány elegendő.
 
@@ -65,7 +65,7 @@ Egyetlen erőforrás-azonosító helyett a MSAL-alkalmazások hatóköröket biz
 
 A MSAL kétféleképpen biztosítható hatókörök:
 
-* Adja meg az alkalmazások által igényelt összes engedély listáját. Például: 
+* Adja meg az alkalmazások által igényelt összes engedély listáját. Példa: 
 
     `@[@"https://graph.microsoft.com/directory.read", @"https://graph.microsoft.com/directory.write"]`
 
@@ -83,7 +83,7 @@ További információt a "/.default" hatókör használatáról [itt](./v2-permi
 
 A ADAL csak az iOS-hez készült UIWebView/WKWebView, valamint a macOS-hez készült Webview-t támogatja. Az iOS-hez készült MSAL több lehetőséget is biztosít a webes tartalom megjelenítéséhez, amikor engedélyezési kódot kér, és már nem támogatja a használatát, `UIWebView` ami javíthatja a felhasználói élményt és biztonságot.
 
-Alapértelmezés szerint a MSAL on iOS a [ASWebAuthenticationSession](https://developer.apple.com/documentation/authenticationservices/aswebauthenticationsession?language=objc)-t használja, amely az Apple által az iOS 12 + rendszerű eszközökön történő hitelesítéshez javasolt. Az egyszeri bejelentkezés (SSO) előnyeit biztosítja az alkalmazások és a Safari böngésző közötti cookie-megosztáson keresztül.
+Alapértelmezés szerint a MSAL on iOS a [ASWebAuthenticationSession](https://developer.apple.com/documentation/authenticationservices/aswebauthenticationsession?language=objc)-t használja, amely az Apple által az iOS 12 + rendszerű eszközökön történő hitelesítéshez javasolt. Az alkalmazások és a Safari böngésző között az egyszeri Sign-On (SSO) előnyeit biztosítja a cookie-megosztáson keresztül.
 
 Az alkalmazás követelményeitől és a kívánt végfelhasználói élménytől függően eltérő webes összetevőt is használhat. További lehetőségek: [támogatott webes nézettípus](customize-webviews.md) .
 
@@ -146,7 +146,7 @@ Az alkalmazás brókerének engedélyezése:
 
 1. Regisztráljon egy Broker-kompatibilis átirányítási URI-formátumot az alkalmazáshoz. A Broker-kompatibilis átirányítási URI formátuma `msauth.<app.bundle.id>://auth` . Cserélje le `<app.bundle.id>` az alkalmazást az alkalmazás Bundle-azonosítójával. Ha a ADAL-ről végez áttelepítést, és az alkalmazása már közvetítő képességgel rendelkezik, semmi feleslegesen nem kell mást tennie. Az előző átirányítási URI-ja teljes mértékben kompatibilis a MSAL, így a 3. lépésre ugorhat.
 
-2. Adja hozzá az alkalmazás átirányítási URI-sémáját az info. plist fájlhoz. Az alapértelmezett MSAL átirányítási URI formátuma a következő: `msauth.<app.bundle.id>` . Például:
+2. Adja hozzá az alkalmazás átirányítási URI-sémáját az info. plist fájlhoz. Az alapértelmezett MSAL átirányítási URI formátuma a következő: `msauth.<app.bundle.id>` . Példa:
 
     ```xml
     <key>CFBundleURLSchemes</key>
@@ -322,7 +322,7 @@ Alapértelmezés szerint a MSAL az iOS-vagy macOS-kulcstartóban gyorsítótára
 A jogkivonat-gyorsítótárazás engedélyezése:
 1. Győződjön meg arról, hogy az alkalmazás megfelelően van aláírva
 2. Lépjen a Xcode-projekt beállításai > **képességek lapon**a  >  **kulcstartó megosztásának engedélyezése** lehetőségre.
-3. Kattintson az elemre **+** , és adja meg a következő **kulcstartó-csoportok** bejegyzést: 3. a, iOS esetén írja be a `com.microsoft.adalcache` 3. b értéket MacOS-be`com.microsoft.identity.universalstorage`
+3. Kattintson az elemre **+** , és adja meg a következő **kulcstartó-csoportok** bejegyzést: 3. a, iOS esetén írja be a `com.microsoft.adalcache` 3. b értéket MacOS-be `com.microsoft.identity.universalstorage`
 
 ### <a name="create-msalpublicclientapplication-and-switch-to-its-acquiretoken-and-acquiretokesilent-calls"></a>Hozzon létre MSALPublicClientApplication, és váltson a acquireToken és a acquireTokeSilent-hívásokra
 
@@ -463,6 +463,6 @@ application.acquireTokenSilent(with: silentParameters) {
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a [hitelesítési folyamatokról és az alkalmazási forgatókönyvekről](authentication-flows-app-scenarios.md)

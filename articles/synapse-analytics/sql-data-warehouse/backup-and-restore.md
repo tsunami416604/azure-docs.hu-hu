@@ -12,10 +12,10 @@ ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019"
 ms.openlocfilehash: d4a08035b03c104555c39311bfb812218cca44b1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85482547"
 ---
 # <a name="backup-and-restore-in-azure-synapse-sql-pool"></a>Biztonsági mentés és visszaállítás az Azure szinapszis SQL-készletben
@@ -76,11 +76,11 @@ A rendszer naponta egyszer hozza létre a Geo-biztonsági mentést egy [párosí
 
 ## <a name="backup-and-restore-costs"></a>Biztonsági mentési és visszaállítási költségek
 
-Megfigyelheti, hogy az Azure-számla tartalmaz egy sort a Storage szolgáltatáshoz, valamint egy sor tételt a vész-helyreállítási tároláshoz. A tárolási díj az elsődleges régióban tárolt adattárolás teljes költsége, valamint a pillanatképek által rögzített növekményes változások. A pillanatképek felszámolásának részletes ismertetését lásd: a [Pillanatképek felmerülésének ismertetése](/rest/api/storageservices/Understanding-How-Snapshots-Accrue-Charges?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json). A Geo-redundáns díj magában foglalja a Geo-biztonsági mentések tárolásának költségeit.  
+Megfigyelheti, hogy az Azure-számla tartalmaz egy sort a Storage szolgáltatáshoz, valamint egy sor tételt a vész-helyreállítási tároláshoz. A tárolási díj az elsődleges régióban tárolt adattárolás teljes költsége, valamint a pillanatképek által rögzített növekményes változások. A pillanatképek felszámolásának részletes ismertetését lásd: a  [Pillanatképek felmerülésének ismertetése](/rest/api/storageservices/Understanding-How-Snapshots-Accrue-Charges?toc=/azure/synapse-analytics/sql-data-warehouse/toc.json&bc=/azure/synapse-analytics/sql-data-warehouse/breadcrumb/toc.json). A Geo-redundáns díj magában foglalja a Geo-biztonsági mentések tárolásának költségeit.  
 
 Az elsődleges adattárház teljes díja és a pillanatképek változásának hét napja a legközelebbi TB-ra lesz kerekítve. Ha például az adattárház 1,5 TB-os, és a pillanatképek a 100 GB-ot rögzítik, akkor az Azure Premium Storage díjszabása 2 TB-os adatforgalmi díjat számítunk fel.
 
-Ha földrajzilag redundáns tárolást használ, külön tárolási díjat kap. A Geo-redundáns tárolót a standard olvasási hozzáférésű, földrajzilag redundáns tárolás (RA-GRS) díjszabás alapján számoljuk el.
+Ha földrajzilag redundáns tárolást használ, külön tárolási díjat kap. A Geo-redundáns tárterület számlázása a standard Read-Access földrajzilag redundáns tárolás (RA-GRS) alapján történik.
 
 Az Azure szinapszis díjszabásával kapcsolatos további információkért lásd: az [Azure szinapszis díjszabása](https://azure.microsoft.com/pricing/details/sql-data-warehouse/gen2/). A régiókban való visszaállításkor nem számítunk fel díjat a kimenő adatforgalomért.
 

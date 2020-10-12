@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 04/16/2018
 ms.author: srrengar
 ms.openlocfilehash: b91a8a8742a5bdc9454ebcbd8894889084a12a79
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86258688"
 ---
 # <a name="performance-monitoring-with-azure-monitor-logs"></a>Teljesítményfigyelés Azure Monitor naplókkal
@@ -89,7 +89,7 @@ Most, hogy hozzáadta a Log Analytics-ügynököt, a Log Analytics portálra bej
 
 ![Log Analytics teljesítményszámláló-lekérdezés](media/service-fabric-diagnostics-event-analysis-oms/oms_node_metrics_table.PNG)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * A megfelelő [teljesítményszámlálók](service-fabric-diagnostics-event-generation-perf.md)összegyűjtése. Ha a Log Analytics-ügynököt egy adott teljesítményszámlálók gyűjtésére szeretné beállítani, tekintse át az [adatforrások konfigurálását ismertető témakört](../azure-monitor/platform/agent-data-sources.md#configuring-data-sources)
 * Azure Monitor naplók konfigurálása az [automatizált riasztások](../azure-monitor/platform/alerts-overview.md) beállításához az észlelés és a diagnosztika támogatásához

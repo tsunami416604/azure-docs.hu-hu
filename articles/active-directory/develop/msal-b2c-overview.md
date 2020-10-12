@@ -14,10 +14,10 @@ ms.author: negoe
 ms.reviewer: nacanuma
 ms.custom: aaddev
 ms.openlocfilehash: 13b478e85278827258ea2fc25a0ee4298039fb1c
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88119790"
 ---
 # <a name="use-microsoft-authentication-library-for-javascript-to-work-with-azure-ad-b2c"></a>A JavaScript használata a Microsoft Authentication Library használatával Azure AD B2C
@@ -201,11 +201,11 @@ Ha a felhasználó **elfelejtette a jelszót**, az alkalmazás olyan hibát jele
 
     A jelszó alaphelyzetbe állítása után a rendszer visszaadja a felhasználót az alkalmazásnak, hogy újra bejelentkezzen.
 
-    :::image type="content" source="media/msal-b2c-overview/user-journey-02-password-reset.png" alt-text="A jelszó-visszaállítási folyamat képernyők Azure AD B2C" border="false":::
+    :::image type="content" source="media/msal-b2c-overview/user-journey-02-password-reset.png" alt-text="Azure AD B2C által megjelenített bejelentkezési képernyő" border="false":::
 
     További információ a hibakódokról és a kezelési kivételekről: [MSAL hiba és kivételek kódjai](msal-handling-exceptions.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ ezekről a Azure AD B2C fogalmakról:
 

@@ -16,10 +16,10 @@ ms.date: 11/13/2017
 ms.author: cynthn
 ms.custom: mvc, devx-track-js, devx-track-azurecli
 ms.openlocfilehash: 7846fc84adfbf34ad8db1dbe16a79cb5345e6021
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91336088"
 ---
 # <a name="tutorial-load-balance-linux-virtual-machines-in-azure-to-create-a-highly-available-application-with-the-azure-cli"></a>Oktatóanyag: Linux rendszerű virtuális gépek terheléselosztása az Azure CLI használatával az Azure-ban magas rendelkezésre állású alkalmazások létrehozásához
@@ -313,7 +313,7 @@ az network nic ip-config address-pool add \
 Az előző lépésben szereplő [az network lb address-pool show](/cli/azure/network/lb/address-pool) paranccsal ellenőrizheti, hogy a virtuális NIC csatlakozik-e a háttércímkészlethez.
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebben az oktatóanyagban létrehozott egy terheléselosztót, majd virtuális gépeket csatolt hozzá. Megtanulta végrehajtani az alábbi műveleteket:
 
 > [!div class="checklist"]

@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: how-to
 ms.date: 07/09/2020
 ms.openlocfilehash: a94afc1ab970c2cd3f509c86efba4e455d46fd13
-ms.sourcegitcommit: 0b2367b4a9171cac4a706ae9f516e108e25db30c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86274509"
 ---
 # <a name="optimize-autovacuum-on-an-azure-database-for-postgresql---single-server"></a>Az autovákuum optimalizálása egy Azure Database for PostgreSQL egyetlen kiszolgálón
@@ -117,7 +117,7 @@ ALTER TABLE t SET (autovacuum_vacuum_cost_delay = 10);
 
 Az autoporszívó egy táblázatos szinkron folyamat. Egy tábla rekordok nagyobb hányada, annál magasabb a "Cost" az autoporszívóhoz. A nagy mennyiségű frissítéssel rendelkező táblákat és a több táblába való törlést is eloszthatja. A táblázatok felosztásával integrálással az autovákuumot, és csökkentheti a "Cost"-t az autoporszívó egyetlen táblán való elvégzéséhez. Emellett növelheti a párhuzamos autovákuumos munkavégzők számát is, hogy a dolgozók ne legyenek liberális módon ütemezve.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha többet szeretne megtudni az autoporszívó használatáról és finomhangolásáról, tekintse meg a következő PostgreSQL-dokumentációt:
 

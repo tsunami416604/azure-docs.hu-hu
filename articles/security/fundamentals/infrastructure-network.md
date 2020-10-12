@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 09/08/2020
 ms.author: terrylan
 ms.openlocfilehash: 3b047489f9cfa3623c11e324cf58114b707c10b7
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89567867"
 ---
 # <a name="azure-network-architecture"></a>Azure hálózati architektúra
@@ -61,7 +61,7 @@ A fenti hálózati összetevők úgy vannak kialakítva, hogy maximális rendelk
 ## <a name="datacenter-network-resiliency"></a>Adatközpont hálózati rugalmassága
 Nézzük meg a rugalmasság kialakításának elvét az Datacenter Network használatával.
 
-Az adatközponti hálózat egy [Clos-hálózat](https://en.wikipedia.org/wiki/Clos_network)módosított verziója, amely magas szintű, kétszakaszos sávszélességet biztosít a Felhőbeli skálázási forgalom számára. A hálózat nagy számú, a hardver meghibásodása által okozott hatás csökkentése érdekében számos típusú eszközt használ. Ezek az eszközök stratégiai helyen találhatók a különböző fizikai helyszíneken, külön energiaellátási és hűtési tartománnyal a környezeti események hatásának csökkentése érdekében.  A vezérlési síkon az összes hálózati eszköz az OSI-modell 3. rétegének útválasztási módjaként fut, ami kiküszöböli a forgalmi hurok korábbi hibáját. A különböző rétegek közötti összes elérési út aktív a magas redundancia és a sávszélesség biztosításához az EQUAL-Cost többutas (ECMP) útvonal használatával.
+Az adatközponti hálózat egy [Clos-hálózat](https://en.wikipedia.org/wiki/Clos_network)módosított verziója, amely magas szintű, kétszakaszos sávszélességet biztosít a Felhőbeli skálázási forgalom számára. A hálózat nagy számú, a hardver meghibásodása által okozott hatás csökkentése érdekében számos típusú eszközt használ. Ezek az eszközök stratégiai helyen találhatók a különböző fizikai helyszíneken, külön energiaellátási és hűtési tartománnyal a környezeti események hatásának csökkentése érdekében.  A vezérlési síkon az összes hálózati eszköz az OSI-modell 3. rétegének útválasztási módjaként fut, ami kiküszöböli a forgalmi hurok korábbi hibáját. A különböző rétegek közötti összes elérési út aktív, hogy magas redundanciát és sávszélességet biztosítson Equal-Cost többutas (ECMP) útválasztás használatával.
 
 A következő ábra azt mutatja be, hogy az adatközpont-hálózatot a különböző hálózati eszközök is kiépítik. A diagramon a sávok olyan hálózati eszközök csoportjait képviselik, amelyek redundanciát és nagy sávszélességű kapcsolatot biztosítanak.
 

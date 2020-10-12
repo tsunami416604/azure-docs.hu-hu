@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 12/13/2019
 ms.author: duau
 ms.openlocfilehash: 6253dd616ca184449f3f144d538c1ed20de54cc2
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89566420"
 ---
 # <a name="expressroute-faq"></a>ExpressRoute – Gyakori kérdések
@@ -407,7 +407,7 @@ A meglévő áramkör továbbra is meghirdeti a Microsoft 365 előtagjait. Ha az
 
 * A 2017 augusztus 1-jén vagy azt követően konfigurált ExpressRoute-áramkörök Microsoft-társítása nem rendelkezik olyan előtagokkal, amelyek csak akkor lesznek meghirdetve, ha az áramkörhöz hozzá van rendelve egy útvonal-szűrő. Alapértelmezés szerint nem jelenik meg előtag.
 
-## <a name="expressroute-direct"></a><a name="expressRouteDirect"></a>ExpressRoute Direct
+## <a name="expressroute-direct"></a><a name="expressRouteDirect"></a>Közvetlen ExpressRoute
 
 [!INCLUDE [ExpressRoute Direct](../../includes/expressroute-direct-faq-include.md)]
 

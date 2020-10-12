@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 09/15/2020
 ms.custom: devx-track-azurecli
 ms.openlocfilehash: cd05fe045532ee1b1f1fb88e502d786daabf9365
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91319554"
 ---
 # <a name="move-resources-to-a-new-resource-group-or-subscription"></a>Erőforrások áthelyezése új erőforráscsoportba vagy előfizetésbe
@@ -178,11 +178,11 @@ Ha megtekinti az erőforráscsoportot, az áthelyezés lehetőség le lesz tiltv
 
 Az áthelyezés beállítás engedélyezéséhez válassza ki az áthelyezni kívánt erőforrásokat. Az összes erőforrás kiválasztásához jelölje be a jelölőnégyzetet a lista tetején. Vagy válassza az erőforrások külön lehetőséget. Az erőforrások kiválasztása után az áthelyezés beállítás engedélyezve van.
 
-:::image type="content" source="./media/move-resource-group-and-subscription/select-resources.png" alt-text="erőforrások kiválasztása":::
+:::image type="content" source="./media/move-resource-group-and-subscription/select-resources.png" alt-text="a Move lehetőség le van tiltva":::
 
 Kattintson az **Áthelyezés** gombra.
 
-:::image type="content" source="./media/move-resource-group-and-subscription/move-options.png" alt-text="mozgatási beállítások":::
+:::image type="content" source="./media/move-resource-group-and-subscription/move-options.png" alt-text="a Move lehetőség le van tiltva":::
 
 Ez a gomb három lehetőséget biztosít:
 
@@ -194,11 +194,11 @@ Válassza ki, hogy az erőforrásokat új erőforráscsoporthoz vagy új előfiz
 
 Válassza ki a cél erőforráscsoportot. Nyugtázza, hogy frissítenie kell a parancsfájlokat ezekhez az erőforrásokhoz, és kattintson **az OK gombra**. Ha az új előfizetésre való áttérést választotta, ki kell választania a cél előfizetést is.
 
-:::image type="content" source="./media/move-resource-group-and-subscription/move-destination.png" alt-text="cél kiválasztása":::
+:::image type="content" source="./media/move-resource-group-and-subscription/move-destination.png" alt-text="a Move lehetőség le van tiltva":::
 
 Az erőforrások áthelyezésének ellenőrzése után megjelenik egy értesítés arról, hogy az áthelyezési művelet fut.
 
-:::image type="content" source="./media/move-resource-group-and-subscription/move-notification.png" alt-text="értesítési":::
+:::image type="content" source="./media/move-resource-group-and-subscription/move-notification.png" alt-text="a Move lehetőség le van tiltva":::
 
 Ha a művelet befejeződött, értesítést kap az eredményről.
 

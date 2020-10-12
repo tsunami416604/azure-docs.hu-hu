@@ -5,15 +5,15 @@ ms.reviewer: utraghuv
 ms.topic: conceptual
 ms.date: 06/08/2017
 ms.openlocfilehash: 5a408dc07e83e790a63f8a252d4ed3f84bf66be4
-ms.sourcegitcommit: 3fb5e772f8f4068cc6d91d9cde253065a7f265d6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89181680"
 ---
 # <a name="security-features-to-help-protect-hybrid-backups-that-use-azure-backup"></a>Biztonsági funkciók a Azure Backupt használó hibrid biztonsági másolatok védelméhez
 
-A biztonsági problémákkal, például a kártevővel, a ransomware és a behatolással kapcsolatos problémák egyre nagyobbak. Ezek a biztonsági problémák költségesek lehetnek a pénz és az adatmennyiség tekintetében. Az ilyen támadások elleni védelem érdekében Azure Backup mostantól biztonsági funkciókat biztosít a hibrid biztonsági másolatok védelméhez. Ez a cikk bemutatja, hogyan engedélyezheti és használhatja ezeket a szolgáltatásokat Azure Recovery Services-ügynök és-Azure Backup Server használatával. Ezek a funkciók a következők:
+A biztonsági problémákkal, például a kártevővel, a ransomware és a behatolással kapcsolatos problémák egyre nagyobbak. Ezek a biztonsági problémák költségesek lehetnek a pénz és az adatmennyiség tekintetében. Az ilyen támadások elleni védelem érdekében Azure Backup mostantól biztonsági funkciókat biztosít a hibrid biztonsági másolatok védelméhez. Ez a cikk bemutatja, hogyan engedélyezheti és használhatja ezeket a szolgáltatásokat Azure Recovery Services-ügynök és-Azure Backup Server használatával. Ezek a lehetőségek a következők:
 
 - **Megelőzés**. A rendszer egy további hitelesítési réteget ad hozzá, amikor egy kritikus művelet, például a jelszó módosítása történik. Ez az ellenőrzés biztosítja, hogy ezeket a műveleteket csak azok a felhasználók tudják végrehajtani, akik rendelkeznek érvényes Azure-beli hitelesítő adatokkal.
 - **Riasztás**. A rendszer értesítést küld az előfizetés-rendszergazdának, amikor egy kritikus művelet, például a biztonsági mentési adattörlés történik. Ez az e-mail biztosítja, hogy a felhasználó gyorsan értesüljön az ilyen műveletekről.
@@ -88,7 +88,7 @@ Ha további hitelesítési réteget ad hozzá a kritikus műveletekhez, a rendsz
 
 A PIN-kód fogadása:
 
-1. Jelentkezzen be az Azure Portalra.
+1. Jelentkezzen be az Azure portálra.
 2. Tallózással keresse meg **Recovery Services**tár  >  **Beállítások**  >  **tulajdonságait**.
 3. A **biztonsági PIN-kód**területen válassza a **készítés**elemet. Ekkor megnyílik egy ablaktábla, amely tartalmazza az Azure Recovery Services Agent felhasználói felületén beírni kívánt PIN-kódot.
     Ez a PIN-kód csak öt percre érvényes, és az adott időszak után automatikusan létrejön.
@@ -112,11 +112,11 @@ A cikkben említett biztonsági funkciók védelmi mechanizmusokat biztosítanak
 
 | Művelet | A hiba részletei | Feloldás |
 | --- | --- | --- |
-| Szabályzat módosítása |Nem lehet módosítani a biztonsági mentési szabályzatot. Hiba: az aktuális művelet végrehajtása egy belső szolgáltatáshiba ([0x29834]) miatt meghiúsult. Némi várakozás után próbálja megismételni a műveletet. If the issue persists, please contact Microsoft support. (Az Azure Key Vault-művelet meghiúsult. Próbálja meg újból végrehajtani a műveletet. Ha a probléma továbbra is fennáll, forduljon a Microsoft támogatási szolgálatához.) |**Okozhat**<br/>Ez a hiba akkor jelenik meg, ha a biztonsági beállítások engedélyezve vannak, és nem támogatott verziót használ (a támogatott verziók a cikk első megjegyzésében vannak megadva). <br/>**Javasolt művelet:**<br/> Ebben az esetben meg kell határoznia a megőrzési időtartamot a megadott minimális megőrzési időtartam (napi hét nap, heti, hetente három hét, havi vagy egy év esetében évente), a szabályzatokkal kapcsolatos frissítések folytatásához. Ha szeretné, az előnyben részesített módszer a biztonsági mentési ügynök frissítése, Azure Backup Server és/vagy DPM, hogy kihasználja az összes biztonsági frissítést. |
-| Hozzáférési kód módosítása |A megadott biztonsági PIN-kód helytelen. (AZONOSÍTÓ: 100130) A művelet végrehajtásához adja meg a helyes biztonsági PIN-kódot. |**Okozhat**<br/> Ez a hiba akkor jelenik meg, ha a kritikus művelet végrehajtása közben érvénytelen vagy lejárt biztonsági PIN-kódot ad meg (például a jelszó módosítása). <br/>**Javasolt művelet:**<br/> A művelet végrehajtásához érvényes biztonsági PIN-kódot kell megadnia. A PIN-kód beszerzéséhez jelentkezzen be Azure Portal, és navigáljon a Recovery Services-tároló > beállítások > tulajdonságok > biztonsági PIN-kód létrehozásához. Használja ezt a PIN-kódot a jelszó módosításához. |
-| Hozzáférési kód módosítása |A művelet sikertelen volt. AZONOSÍTÓ: 120002 |**Okozhat**<br/>Ez a hiba akkor jelenik meg, ha a biztonsági beállítások engedélyezve vannak, és nem támogatott verziót próbál meg módosítani (a cikk első megjegyzésében megadott érvényes verziók).<br/>**Javasolt művelet:**<br/> A jelszó módosításához először frissítenie kell a Backup ügynököt a minimális verzió 2.0.9052, Azure Backup Server az 1. és/vagy DPM minimális DPM 2012 R2 UR12 vagy DPM 2016 UR2 (letöltési hivatkozások alább), majd adjon meg egy érvényes biztonsági PIN-kódot. A PIN-kód beszerzéséhez jelentkezzen be a Azure Portalba, és navigáljon a Recovery Services Vault > beállítások > tulajdonságok > biztonsági PIN-kód létrehozásához. Használja ezt a PIN-kódot a jelszó módosításához. |
+| Szabályzat módosítása |Nem lehet módosítani a biztonsági mentési szabályzatot. Hiba: az aktuális művelet végrehajtása egy belső szolgáltatáshiba ([0x29834]) miatt meghiúsult. Némi várakozás után próbálja megismételni a műveletet. If the issue persists, please contact Microsoft support. (Az Azure Key Vault-művelet meghiúsult. Próbálja meg újból végrehajtani a műveletet. Ha a probléma továbbra is fennáll, forduljon a Microsoft támogatási szolgálatához.) |**Ok:**<br/>Ez a hiba akkor jelenik meg, ha a biztonsági beállítások engedélyezve vannak, és nem támogatott verziót használ (a támogatott verziók a cikk első megjegyzésében vannak megadva). <br/>**Javasolt művelet:**<br/> Ebben az esetben meg kell határoznia a megőrzési időtartamot a megadott minimális megőrzési időtartam (napi hét nap, heti, hetente három hét, havi vagy egy év esetében évente), a szabályzatokkal kapcsolatos frissítések folytatásához. Ha szeretné, az előnyben részesített módszer a biztonsági mentési ügynök frissítése, Azure Backup Server és/vagy DPM, hogy kihasználja az összes biztonsági frissítést. |
+| Hozzáférési kód módosítása |A megadott biztonsági PIN-kód helytelen. (AZONOSÍTÓ: 100130) A művelet végrehajtásához adja meg a helyes biztonsági PIN-kódot. |**Ok:**<br/> Ez a hiba akkor jelenik meg, ha a kritikus művelet végrehajtása közben érvénytelen vagy lejárt biztonsági PIN-kódot ad meg (például a jelszó módosítása). <br/>**Javasolt művelet:**<br/> A művelet végrehajtásához érvényes biztonsági PIN-kódot kell megadnia. A PIN-kód beszerzéséhez jelentkezzen be Azure Portal, és navigáljon a Recovery Services-tároló > beállítások > tulajdonságok > biztonsági PIN-kód létrehozásához. Használja ezt a PIN-kódot a jelszó módosításához. |
+| Hozzáférési kód módosítása |A művelet sikertelen volt. AZONOSÍTÓ: 120002 |**Ok:**<br/>Ez a hiba akkor jelenik meg, ha a biztonsági beállítások engedélyezve vannak, és nem támogatott verziót próbál meg módosítani (a cikk első megjegyzésében megadott érvényes verziók).<br/>**Javasolt művelet:**<br/> A jelszó módosításához először frissítenie kell a Backup ügynököt a minimális verzió 2.0.9052, Azure Backup Server az 1. és/vagy DPM minimális DPM 2012 R2 UR12 vagy DPM 2016 UR2 (letöltési hivatkozások alább), majd adjon meg egy érvényes biztonsági PIN-kódot. A PIN-kód beszerzéséhez jelentkezzen be a Azure Portalba, és navigáljon a Recovery Services Vault > beállítások > tulajdonságok > biztonsági PIN-kód létrehozásához. Használja ezt a PIN-kódot a jelszó módosításához. |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az Azure Recovery Services-tároló használatának [első lépései](backup-azure-vms-first-look-arm.md) a funkciók engedélyezéséhez.
 - [Töltse le a legújabb Azure Recovery Services-ügynököt](https://aka.ms/azurebackup_agent) , hogy megvédje a Windows rendszerű számítógépeket, és védelmet nyújtson biztonsági mentési adatainak a támadásokkal szemben.

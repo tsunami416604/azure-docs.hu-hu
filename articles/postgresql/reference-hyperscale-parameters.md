@@ -8,10 +8,10 @@ ms.subservice: hyperscale-citus
 ms.topic: reference
 ms.date: 08/10/2020
 ms.openlocfilehash: 07f966c7b0be542f848f1a0a4eaf2b5549735b4b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91336241"
 ---
 # <a name="server-parameters"></a>Kiszolgálóparaméterek
@@ -345,7 +345,7 @@ Alapértelmezés szerint a nagy kapacitású (Citus) egyetlen, tetszőleges fela
 * [parallel_tuple_cost](https://www.postgresql.org/docs/current/runtime-config-query.html#GUC-PARALLEL-TUPLE-COST) – a Planner becsült értékét adja meg a feldolgozótól a fő háttérig terjedő rekordoknak (soroknak)
 * [pg_stat_statements. Save](https://www.postgresql.org/docs/current/pgstatstatements.html#id-1.11.7.38.8) – elmenti az pg_stat_statements statisztikát a kiszolgálói leállítások között
 * [pg_stat_statements. Track](https://www.postgresql.org/docs/current/pgstatstatements.html#id-1.11.7.38.8) – kiválasztja, hogy mely utasításokat követik nyomon pg_stat_statements
-* [pg_stat_statements. track_utility](https://www.postgresql.org/docs/current/pgstatstatements.html#id-1.11.7.38.8) – kiválasztja, hogy a segédprogram-parancsokat nyomon követik-e pg_stat_statements
+* [pg_stat_statements. track_utility](https://www.postgresql.org/docs/current/pgstatstatements.html#id-1.11.7.38.8) – kiválasztja, hogy a pg_stat_statements nyomon követik-e a segédprogram parancsait
 * [quote_all_identifiers](https://www.postgresql.org/docs/current/runtime-config-compatible.html#GUC-QUOTE-ALL-IDENTIFIERS) – SQL-töredékek generálásakor az idézőjelek minden azonosítót
 * [random_page_cost](https://www.postgresql.org/docs/current/runtime-config-query.html#GUC-RANDOM-PAGE-COST) – a Planner becslését egy nem szekvenciálisan beolvasott lemez költsége alapján állítja be
 * [row_security](https://www.postgresql.org/docs/current/runtime-config-client.html#GUC-ROW-SECURITY) – engedélyezi a sor biztonságát

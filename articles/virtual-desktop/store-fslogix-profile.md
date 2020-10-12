@@ -7,17 +7,17 @@ ms.date: 10/14/2019
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 0b1a5e36232e74caa34037efbbb0da0c39051998
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89568693"
 ---
 # <a name="storage-options-for-fslogix-profile-containers-in-windows-virtual-desktop"></a>Tárolási beállítások a Windows rendszerű virtuális asztali FSLogix-profilok tárolói számára
 
 Az Azure több tárolási megoldást is kínál, amelyek segítségével tárolhatja a FSLogix-profil tárolóját. Ez a cikk összehasonlítja azokat a tárolási megoldásokat, amelyeket az Azure kínál a Windows rendszerű virtuális asztali FSLogix felhasználói profilok tárolói számára. Javasoljuk, hogy a legtöbb ügyfelünk számára Azure Files a FSLogix-profilok tárolóit.
 
-A Windows rendszerű virtuális asztal az ajánlott felhasználói profil-megoldásként kínál FSLogix-profilokat. A FSLogix a távoli számítástechnikai környezetekben, például a Windows Virtual Desktopban található profilok hordozására szolgál. A bejelentkezéskor a tároló dinamikusan csatlakozik a számítástechnikai környezethez egy natív módon támogatott virtuális merevlemez (VHD) és egy Hyper-V virtuális merevlemez (VHDX) használatával. A felhasználói profil azonnal elérhető, és ugyanúgy jelenik meg a rendszeren, mint a natív felhasználói profil.
+A Windows rendszerű virtuális asztal az ajánlott felhasználói profil-megoldásként kínál FSLogix-profilokat. A FSLogix a távoli számítástechnikai környezetekben, például a Windows Virtual Desktopban található profilok hordozására szolgál. A bejelentkezéskor a tároló dinamikusan csatlakozik a számítástechnikai környezethez egy natív módon támogatott virtuális merevlemez (VHD) és egy Hyper-V virtuális merevlemez (VHDX) használatával. A felhasználói profil azonnal elérhető, és pontosan ugyanúgy jelenik meg a rendszeren, mint a natív felhasználói profilok.
 
 A következő táblázatok összehasonlítják a Storage Solutions Azure Storage-ajánlatokat a Windows rendszerű virtuális asztali FSLogix-profilok tárolójának felhasználói profiljaihoz.
 
@@ -38,7 +38,7 @@ A következő táblázatok összehasonlítják a Storage Solutions Azure Storage
 
 |Szolgáltatások|Azure Files|Azure NetApp Files|Tárolóhelyek – Közvetlen|
 |--------|-----------|------------------|---------------------|
-|Access|Felhő, helyszíni és hibrid (Azure file Sync)|Felhő, helyszíni (ExpressRoute-n keresztül)|Felhő, helyszíni|
+|Hozzáférés|Felhő, helyszíni és hibrid (Azure file Sync)|Felhő, helyszíni (ExpressRoute-n keresztül)|Felhő, helyszíni|
 |Backup|Azure Backup pillanatkép-integráció|Pillanatképek Azure NetApp Files|Azure Backup pillanatkép-integráció|
 |Biztonság és megfelelőség|[Az összes Azure által támogatott tanúsítvány](https://www.microsoft.com/trustcenter/compliance/complianceofferings)|ISO befejezve|[Az összes Azure által támogatott tanúsítvány](https://www.microsoft.com/trustcenter/compliance/complianceofferings)|
 |Azure Active Directory-integráció|[Natív Active Directory és Azure Active Directory Domain Services](https://docs.microsoft.com/azure/storage/files/storage-files-active-directory-overview)|[Azure Active Directory Domain Services és natív Active Directory](../azure-netapp-files/azure-netapp-files-faqs.md#does-azure-netapp-files-support-azure-active-directory)|Natív Active Directory vagy Azure Active Directory Domain Services csak támogatás|

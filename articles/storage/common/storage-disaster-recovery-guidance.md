@@ -1,5 +1,5 @@
 ---
-title: Vész-helyreállítási és Storage-fiók feladatátvétele
+title: Vészhelyreállítás és tárfiók feladatátvétele
 titleSuffix: Azure Storage
 description: Az Azure Storage támogatja a fiókok feladatátvételét a földrajzilag redundáns Storage-fiókok esetében. A fiók feladatátvétele esetén kezdeményezheti a tárolási fiók feladatátvételi folyamatát, ha az elsődleges végpont elérhetetlenné válik.
 services: storage
@@ -11,13 +11,13 @@ ms.author: tamram
 ms.reviewer: artek
 ms.subservice: common
 ms.openlocfilehash: e9bd2db8bcc427118a76f87e49ade422a74a11c1
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87276924"
 ---
-# <a name="disaster-recovery-and-storage-account-failover"></a>Vész-helyreállítási és Storage-fiók feladatátvétele
+# <a name="disaster-recovery-and-storage-account-failover"></a>Vészhelyreállítás és tárfiók feladatátvétele
 
 A Microsoft igyekszik biztosítani, hogy az Azure-szolgáltatások mindig elérhetők legyenek. A nem tervezett szolgáltatások azonban előfordulhatnak. Ha az alkalmazása rugalmasságot igényel, a Microsoft a Geo-redundáns tárolás használatát javasolja, hogy az adatai egy második régióba legyenek másolva. Emellett az ügyfeleknek vészhelyzeti helyreállítási tervvel kell rendelkezniük a regionális szolgáltatások kimaradásának kezelésére. A vész-helyreállítási terv fontos része arra készül, hogy átadja a feladatátvételt a másodlagos végpontnak abban az esetben, ha az elsődleges végpont elérhetetlenné válik.
 
@@ -171,7 +171,7 @@ Ha a Storage-fiókja olvasási hozzáférésre van konfigurálva a másodlagosho
 
 Szélsőséges körülmények között, amikor egy régiót súlyos katasztrófa okoz, a Microsoft regionális feladatátvételt kezdeményezhet. Ebben az esetben nincs szükség beavatkozásra a részen. Amíg a Microsoft által felügyelt feladatátvétel nem fejeződött be, nem rendelkezik írási hozzáféréssel a Storage-fiókhoz. Az alkalmazások a másodlagos régióból is beolvashatók, ha a Storage-fiókja RA-GRS vagy RA-GZRS van konfigurálva.
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 - [A Geo-redundancia használata a magasan elérhető alkalmazások kialakításához](geo-redundant-design.md)
 - [Fiók feladatátvételének indítása](storage-initiate-account-failover.md)

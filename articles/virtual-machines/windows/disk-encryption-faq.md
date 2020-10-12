@@ -9,10 +9,10 @@ ms.author: mbaldwin
 ms.date: 11/01/2019
 ms.custom: seodec18
 ms.openlocfilehash: 0b910e3b119167fb4c6de55289d92b9d538c8ddb
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87284557"
 ---
 # <a name="azure-disk-encryption-for-windows-virtual-machines-faq"></a>Azure Disk Encryption a Windows rendszerű virtuális gépekkel kapcsolatos gyakori kérdések
@@ -124,7 +124,7 @@ Azure Disk Encryption kiválasztja a BitLocker titkosítási módszerét a Windo
 | Windows Server 2012, Windows 8, 8,1, 10 | < 1511 |AES 256 bites *              |
 | Windows Server 2008R2            |        |AES 256-bit diffúzorral |
 
-\*Az AES 256-bit a diffúzorral nem támogatott a Windows 2012 és újabb verziókban.
+\* Az AES 256-bit a diffúzorral nem támogatott a Windows 2012 és újabb verziókban.
 
 A Windows operációs rendszer verziójának meghatározásához futtassa a "winver" eszközt a virtuális gépen.
 

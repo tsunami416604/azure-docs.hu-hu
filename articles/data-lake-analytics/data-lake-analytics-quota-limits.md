@@ -10,10 +10,10 @@ ms.assetid: 49416f38-fcc7-476f-a55e-d67f3f9c1d34
 ms.topic: how-to
 ms.date: 03/15/2018
 ms.openlocfilehash: 0025e35f516543c8fe703daa647ca29ed3fb87e6
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87127587"
 ---
 # <a name="adjust-quotas-and-limits-in-azure-data-lake-analytics"></a>Kvóták és korlátok módosítása az Azure Data Lake Analyticsben
@@ -22,7 +22,7 @@ Megtudhatja, hogyan módosíthatja és növelheti a kvótákat és a korlátokat
 
 ## <a name="azure-subscriptions-limits"></a>Azure-előfizetések korlátai
 
-**ADLA-fiókok maximális száma előfizetésben régiónként:** 5
+**ADLA-fiókok maximális száma előfizetésben régiónként:**  5
 
 Ha hatodik ADLA-fiókot próbál létrehozni, a következő hibaüzenet jelenik meg: "elérte az engedélyezett Data Lake Analytics fiókok maximális számát (5) a régióban az előfizetés neve alatt".
 

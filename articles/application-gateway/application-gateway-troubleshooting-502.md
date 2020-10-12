@@ -8,10 +8,10 @@ ms.topic: troubleshooting
 ms.date: 11/16/2019
 ms.author: amsriva
 ms.openlocfilehash: 1b0abe998540c4fcc0a9b83f6d1175e18a560871
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84808160"
 ---
 # <a name="troubleshooting-bad-gateway-errors-in-application-gateway"></a>Hibás átjárókkal kapcsolatos hibák elhárítása az Application Gatewayben
@@ -82,10 +82,10 @@ Az Application Gateway-példányok üzembe helyezésekor automatikusan beállít
 
 A következő táblázat felsorolja az alapértelmezett állapot-mintavételhez társított értékeket:
 
-| Mintavételi tulajdonság | Érték | Description |
+| Mintavételi tulajdonság | Érték | Leírás |
 | --- | --- | --- |
 | Mintavételi URL-cím |`http://127.0.0.1/` |URL-cím elérési útja |
-| Intervallum |30 |Mintavételi időköz (másodperc) |
+| Időköz |30 |Mintavételi időköz (másodperc) |
 | Időtúllépés |30 |Mintavétel időtúllépése másodpercben |
 | Nem kifogástalan állapot küszöbértéke |3 |Újrapróbálkozások száma. A háttér-kiszolgáló az egymást követő mintavételi hibák számának elérésekor a nem megfelelő állapotú küszöbértéket éri el. |
 
@@ -106,13 +106,13 @@ Az egyéni állapotú tesztek további rugalmasságot tesznek lehetővé az alap
 
 A következő további tulajdonságokat adja hozzá a rendszer:
 
-| Mintavételi tulajdonság | Description |
+| Mintavételi tulajdonság | Leírás |
 | --- | --- |
-| Name |A mintavétel neve. Ez a név szolgál a mintavételre a háttérbeli HTTP-beállításokban. |
+| Name (Név) |A mintavétel neve. Ez a név szolgál a mintavételre a háttérbeli HTTP-beállításokban. |
 | Protokoll |A mintavétel küldéséhez használt protokoll. A mintavétel a háttérbeli HTTP-beállításokban definiált protokollt használja. |
-| Gazdagép |A mintavétel elküldésére szolgáló állomásnév. Csak akkor alkalmazható, ha több hely van konfigurálva az Application gatewayben. Ez különbözik a virtuális gép gazdagépének nevétől. |
+| Gazda |A mintavétel elküldésére szolgáló állomásnév. Csak akkor alkalmazható, ha több hely van konfigurálva az Application gatewayben. Ez különbözik a virtuális gép gazdagépének nevétől. |
 | Elérési út |A mintavétel relatív elérési útja. Az érvényes elérési út "/" karakterrel kezdődik. A mintavétel a \<protocol\> :// \<host\> :\<port\>\<path\> |
-| Intervallum |Mintavételi időköz másodpercben. Ez az időtartam két egymást követő mintavétel között. |
+| Időköz |Mintavételi időköz másodpercben. Ez az időtartam két egymást követő mintavétel között. |
 | Időtúllépés |Mintavétel időtúllépése másodpercben. Ha nem érkezik érvényes válasz ezen az időkorláton belül, a mintavétel sikertelenként van megjelölve. |
 | Nem kifogástalan állapot küszöbértéke |Újrapróbálkozások száma. A háttér-kiszolgáló az egymást követő mintavételi hibák számának elérésekor a nem megfelelő állapotú küszöbértéket éri el. |
 

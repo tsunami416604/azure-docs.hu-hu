@@ -15,16 +15,16 @@ ms.workload: infrastructure-services
 ms.date: 01/26/2020
 ms.author: damendo
 ms.openlocfilehash: 6d16d878b0cf7a73c87b5d6e9263a24c4dfb4383
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84738141"
 ---
 # <a name="configure-nsg-flow-logs-from-an-azure-resource-manager-template"></a>NSG-adatforgalmi naplók konfigurálása Azure Resource Manager sablonból
 
 > [!div class="op_single_selector"]
-> - [Azure Portalra](network-watcher-nsg-flow-logging-portal.md)
+> - [Azure Portal](network-watcher-nsg-flow-logging-portal.md)
 > - [PowerShell](network-watcher-nsg-flow-logging-powershell.md)
 > - [Azure CLI](network-watcher-nsg-flow-logging-cli.md)
 > - [REST API](network-watcher-nsg-flow-logging-rest.md)
@@ -153,7 +153,7 @@ Az alábbi két példa a teljes sablonokat mutatja be a NSG-naplók beállítás
 }
 ```
 
-## <a name="deploying-your-azure-resource-manager-template"></a>A Azure Resource Manager-sablon üzembe helyezése
+## <a name="deploying-your-azure-resource-manager-template"></a>Az Azure Resource Manager-sablon üzembe helyezése
 
 Ez az oktatóanyag feltételezi, hogy rendelkezik egy meglévő erőforráscsoporthoz és egy NSG, amelyen engedélyezheti a folyamat naplózását.
 A fenti példák bármelyikét helyileg is mentheti `azuredeploy.json` . Frissítse a tulajdonságértékek értékét úgy, hogy az előfizetése érvényes erőforrásokra mutasson.

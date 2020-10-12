@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 07/28/2020
 ms.reviewer: sngun
 ms.openlocfilehash: 8fa2fdf23a0d71b854e043b66c0aed7e944c5f39
-ms.sourcegitcommit: cee72954f4467096b01ba287d30074751bcb7ff4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/30/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87450334"
 ---
 # <a name="automated-recommendations-for-azure-cosmos-db"></a>Automatizált javaslatok a Azure Cosmos DB
@@ -28,7 +28,7 @@ A Azure Cosmos DB javaslatai a következő módokon tekinthetők meg:
 
 - Az ajánlásokat a különböző gyűjtők által kategorizált [Azure Advisor](../advisor/advisor-overview.md) is megtalálhatja, például a költségeket, a biztonságot, a megbízhatóságot, a teljesítményt és az operatív kiválóságot. Kiválaszthat bizonyos előfizetéseket és szűrheti az erőforrástípus alapján, amely **Azure Cosmos db fiók**.  Amikor kiválaszt egy konkrét javaslatot, megjeleníti azokat a műveleteket, amelyeket el tud végezni a számítási feladatok kihasználása érdekében.
 
-   :::image type="content" source="./media/automated-recommendations/advisor-pane-recommendations.png" alt-text="Javaslatok megtekintése Azure Advisor panelen":::
+   :::image type="content" source="./media/automated-recommendations/advisor-pane-recommendations.png" alt-text="Javaslatok megtekintése Azure Cosmos DB panelen":::
 
 A Azure Cosmos DB ablaktáblán látható összes javaslat nem érhető el a Azure Advisorban, és fordítva. Ennek oka az, hogy a Azure Advisor ablaktáblán, Azure Cosmos DB ablaktáblán vagy mindkettőn lévő javaslat típusa alapján.
 

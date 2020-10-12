@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 02/07/2020
 ms.author: kumud
 ms.openlocfilehash: c8fdba59a8d31c064745c7a1904204359b386a7f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84707854"
 ---
 # <a name="configure-a-private-ip-address-for-a-vm-using-the-azure-portal"></a>Magánhálózati IP-cím konfigurálása virtuális géphez a Azure Portal használatával
@@ -51,22 +51,22 @@ Ha egy *DNS01* nevű virtuális gépet szeretne létrehozni egy *TestVNet*nevű 
     ![Virtuális gép létrehozása, Azure Portal](./media/virtual-networks-static-ip-arm-pportal/compute-virtual-machine.png)
 3. Az **alapvető beállítások**területen az alábbi táblázatban leírtak szerint határozza meg az elemek értékeit. Ezután válassza a **tovább &nbsp; : &nbsp; lemezek** , majd a **tovább &nbsp; : &nbsp; hálózatkezelés**lehetőséget.
 
-    | Item | Érték |
+    | Elem | Érték |
     | --- | --- |
     | **Előfizetés** | Aktuális előfizetés |
     | **Erőforráscsoport** | **TestRG** (kiválasztás a legördülő listából) |
     | **Virtuális gép neve** | *DNS01* |
-    | **Régió** | **USA USA keleti régiója** |
+    | **Régió** | **(US) Az USA keleti régiója** |
     | **Rendszerkép** | **Windows Server 2019 Datacenter** |
     | **Méret** | **B1ls** **virtuális gép mérete** , **standard szintű** **ajánlat** |
-    | **Username** | A rendszergazdai fiók felhasználóneve |
+    | **Felhasználónév** | A rendszergazdai fiók felhasználóneve |
     | **Jelszó** | A rendszergazda fiókja felhasználónevének jelszava |
     | **Jelszó megerősítése** | A jelszó újra |
 
     ![Alapismeretek lap, virtuális gép létrehozása, Azure Portal](./media/virtual-networks-static-ip-arm-pportal/create-a-virtual-machine-basics.png)
 4. A **hálózatkezelés**területen adja meg az elemek értékeit az alábbi táblázatban leírtak szerint, majd válassza a **tovább**lehetőséget.
 
-    | Item | Érték |
+    | Elem | Érték |
     | --- | --- |
     | **Virtuális hálózat** | **TestVNet** |
     | **Alhálózat** | **FrontEnd** |

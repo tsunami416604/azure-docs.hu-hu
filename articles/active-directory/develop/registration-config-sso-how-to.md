@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 07/15/2019
 ms.author: ryanwi
 ms.openlocfilehash: 465adbb71abaa45160399ecba2ebfb692a8307c2
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88120677"
 ---
 # <a name="how-to-configure-single-sign-on-for-an-application"></a>Egyszeri bejelentkezés konfigurálása alkalmazáshoz
@@ -30,7 +30,7 @@ Android esetén lásd: a [Cross app SSO engedélyezése Androidon](../azuread-de
 
 IOS esetén lásd: a [Cross app SSO engedélyezése iOS-ben](../azuread-dev/howto-v1-enable-sso-ios.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Azure AD SSO](../manage-apps/what-is-single-sign-on.md)<br>
 

@@ -11,10 +11,10 @@ ms.topic: reference
 ms.date: 8/11/2020
 ms.author: swmachan
 ms.openlocfilehash: 6b211dd8ca735ea9ee4a5209aa6030398cca472e
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88121017"
 ---
 # <a name="translator-v30"></a>Translator v 3.0
@@ -156,7 +156,7 @@ Az egyéni végpontot a [fordítói erőforrások](https://ms.portal.azure.com/#
 |Fejlécek|Leírás|
 |:-----|:----|
 |Ocp-Apim-Subscription-Key| Az érték a Translator-előfizetés Azure-beli titkos kulcsa.|
-|OCP-APIM-előfizetés-régió| Az érték a fordítói erőforrás régiója. Ez az érték nem kötelező, ha az erőforrás`global`|
+|OCP-APIM-előfizetés-régió| Az érték a fordítói erőforrás régiója. Ez az érték nem kötelező, ha az erőforrás `global`|
 
 Íme egy példa arra a kérésre, hogy a fordítót az egyéni végpont használatával hívja meg.
 

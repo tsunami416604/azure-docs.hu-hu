@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive,hdiseo17may2017
 ms.date: 04/16/2020
 ms.openlocfilehash: b5ea227ba75a9ecf6666883603dad97d02385b5c
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86086483"
 ---
 # <a name="use-empty-edge-nodes-on-apache-hadoop-clusters-in-hdinsight"></a>Üres peremhálózati csomópontok használata Apache Hadoop-fürtökön a HDInsight-ben
@@ -86,7 +86,7 @@ Ebben a szakaszban egy Resource Manager-sablon használatával ad hozzá egy per
     |Hely|Válassza ki a meglévő HDInsight-fürt helyét.|
     |Fürt neve|Adja meg egy meglévő HDInsight-fürt nevét.|
 
-1. Győződjön meg **arról, hogy elfogadom a fenti feltételeket és kikötéseket**, majd válassza a **vásárlás** lehetőséget a peremhálózati csomópont létrehozásához.
+1. Győződjön meg **arról, hogy elfogadom a fenti feltételeket és kikötéseket**, majd válassza a  **vásárlás** lehetőséget a peremhálózati csomópont létrehozásához.
 
 > [!IMPORTANT]  
 > Ügyeljen arra, hogy kiválassza a meglévő HDInsight-fürthöz tartozó Azure-erőforráscsoportot.  Ellenkező esetben a következő hibaüzenet jelenik meg: "nem lehet végrehajtani a kért műveletet a beágyazott erőforráson. A (z &lt; ) "ClusterName> szülő erőforrás nem található."
@@ -117,7 +117,7 @@ Ebben a szakaszban egy Resource Manager-sablon használatával HDInsight-fürtö
 
     Egyes tulajdonságok a következő sablonban lettek hardcoded: fürt típusa, fürt munkavégző csomópontok száma, Edge-csomópont mérete és peremhálózati csomópont neve.
 
-1. Győződjön meg **arról, hogy elfogadom a fenti feltételeket és kikötéseket**, majd válassza a **vásárlás** lehetőséget a fürt peremhálózati csomóponttal való létrehozásához.
+1. Győződjön meg **arról, hogy elfogadom a fenti feltételeket és kikötéseket**, majd válassza a  **vásárlás** lehetőséget a fürt peremhálózati csomóponttal való létrehozásához.
 
 ## <a name="add-multiple-edge-nodes"></a>Több peremhálózati csomópont hozzáadása
 
@@ -164,7 +164,7 @@ A Azure Portalból törölhet egy peremhálózati csomópontot.
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a cikkben megtanulta, hogyan adhat hozzá egy Edge-csomópontot, és hogyan érheti el a peremhálózati csomópontot. További információt a következő cikkekben talál:
+Ebben a cikkben megtanulta, hogyan adhat hozzá egy Edge-csomópontot, és hogyan érheti el a peremhálózati csomópontot. További tudnivalókért olvassa el a következő cikket:
 
 * [HDInsight-alkalmazások telepítése](hdinsight-apps-install-applications.md): Megtudhatja, hogyan telepíthet HDInsight-alkalmazásokat a fürtjeire.
 * [Egyéni HDInsight-alkalmazások telepítése](hdinsight-apps-install-custom-applications.md): megtudhatja, hogyan helyezhet üzembe egy közzé nem tett HDInsight alkalmazást a HDInsight.

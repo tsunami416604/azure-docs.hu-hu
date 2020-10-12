@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.custom: seo-dt-2019
 ms.date: 06/10/2020
 ms.openlocfilehash: 6567651f76ff19a8105158b243de7582256e0375
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91320914"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-the-azure-portal"></a>Azure SQL Database adatok növekményes betöltése az Azure Blob Storage-ba a Azure Portal használatával
@@ -171,7 +171,7 @@ END
         Az erőforráscsoportokkal kapcsolatos információkért tekintse meg a [Using resource groups to manage your Azure resources](../azure-resource-manager/management/overview.md) (Erőforráscsoportok használata az Azure-erőforrások kezeléséhez) című cikket.  
 6. A **Verzió** résznél válassza a **V2** értéket.
 7. Válassza ki a Data Factory **helyét**. A legördülő listán csak a támogatott helyek jelennek meg. A HDInsight adattárak (Azure Storage, Azure SQL Database, Azure SQL felügyelt példány stb.) és a (z) és a (z) és a (z) adatfeldolgozó által használt számítási erőforrások (stb.) más régiókban is lehetnek.
-8. Kattintson a **Létrehozás** lehetőségre.      
+8. Kattintson a **Létrehozás** elemre.      
 9. A létrehozás befejezése után a **Data Factory** lap a képen látható módon jelenik meg.
 
    ![Data factory kezdőlap](./media/doc-common-process/data-factory-home-page.png)
@@ -201,7 +201,7 @@ Az oktatóanyag során egy olyan folyamatot fogunk létrehozni, amelyben két ke
     3. Válassza ki az **adatbázis nevét** a legördülő listából.
     4. Adja meg a **felhasználóneve**  &  **jelszavát**.
     5. Az SQL Database-adatbázishoz való kapcsolódás teszteléséhez kattintson a **Kapcsolódás tesztelése**gombra.
-    6. Kattintson a **Befejezés** gombra.
+    6. Kattintson a **Finish** (Befejezés) gombra.
     7. Ellenőrizze, hogy a **AzureSqlDatabaseLinkedService** van-e kiválasztva a **társított szolgáltatáshoz**.
 
         ![Új társított szolgáltatás ablak](./media/tutorial-incremental-copy-portal/azure-sql-linked-service-settings.png)
@@ -382,7 +382,7 @@ PersonID | Name | LastModifytime
 
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az oktatóanyagban az alábbi lépéseket hajtotta végre:
 
 > [!div class="checklist"]

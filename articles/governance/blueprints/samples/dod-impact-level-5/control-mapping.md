@@ -4,10 +4,10 @@ description: A DoD Impact Level 5 tervezet-minta leképezésének vezérlése. M
 ms.date: 09/17/2020
 ms.topic: sample
 ms.openlocfilehash: 6cd92cba69367c611a0e3a3c435e41e973a80d73
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91540540"
 ---
 # <a name="control-mapping-of-the-dod-impact-level-5-blueprint-sample"></a>A DoD Impact Level 5 tervezet-minta leképezésének vezérlése
@@ -30,7 +30,7 @@ Ez a terv segít áttekinteni azokat a fiókokat, amelyek esetleg nem felelnek m
 - Az olvasási engedélyekkel rendelkező külső fiókokat el kell távolítani az előfizetésből
 - Az írási engedélyekkel rendelkező külső fiókokat el kell távolítani az előfizetésből
 
-## <a name="ac-2-7-account-management--role-based-schemes"></a>AC-2 (7) Fiókkezelés | Szerepköralapú sémák
+## <a name="ac-2-7-account-management--role-based-schemes"></a>AC-2 (7) Fiókkezelés | Role-Based sémák
 
 Az Azure [Azure szerepköralapú hozzáférés-vezérlést (Azure RBAC)](../../../../role-based-access-control/overview.md) valósít meg, amellyel kezelheti, hogy ki férhet hozzá az Azure-beli erőforrásokhoz. A Azure Portal használatával áttekintheti, hogy ki férhet hozzá az Azure-erőforrásokhoz és azok engedélyeihez. Ez a terv [Azure Policy](../../../policy/overview.md) definíciókat is HOZZÁRENDEL az SQL-kiszolgálók és a Service Fabric Azure Active Directory-hitelesítésének naplózásához. A Azure Active Directory hitelesítés használata lehetővé teszi az egyszerűbb engedélyek kezelését és az adatbázis-felhasználók és más Microsoft-szolgáltatások központosított Identitáskezelés kezelését. A terv emellett egy Azure Policy definíciót rendel hozzá az egyéni Azure RBAC-szabályok használatának naplózásához. Az egyéni Azure RBAC-szabályok megvalósításának megismerése segíthet a szükséges és a megfelelő implementáció ellenőrzésében, mivel az egyéni Azure RBAC-szabályok hibásak.
 
@@ -48,7 +48,7 @@ Az igény szerinti (JIT) virtuálisgép-hozzáférés lezárja az Azure-beli vir
 
 A több eredetű erőforrás-megosztás (CORS) lehetővé teszi App Services-erőforrások kérését egy külső tartományból. A Microsoft azt javasolja, hogy csak a szükséges tartományokat engedélyezze az API-val, a funkcióval és a webalkalmazásokkal való interakcióhoz. Ez a terv egy [Azure Policy](../../../policy/overview.md) definíciót rendel hozzá, amely segít a CORS-erőforrások hozzáférési korlátozásának figyelésében Azure Security Centerban. A CORS-implementációk ismertetése segít ellenőrizni, hogy az információáramlási vezérlők implementálva vannak-e.
 
-- A CORS nem engedélyezheti minden erőforrásnak, hogy hozzáférjen a webalkalmazásokhoz
+- A CORS nem teszi lehetővé minden erőforrás számára a webalkalmazások elérését
 
 ## <a name="ac-5-separation-of-duties"></a>A feladatok AC-5 elkülönítése
 
@@ -145,7 +145,7 @@ Ezek a szabályzat-definíciók a diagnosztikai naplók konfigurációját is na
 - A speciális adatbiztonságot engedélyezni kell a felügyelt SQL-példányon
 - A speciális adatbiztonságot engedélyezni kell az SQL-kiszolgálókon
 
-## <a name="au-12-01-audit-generation--system-wide--time-correlated-audit-trail"></a>AU-12 (01) naplózási generáció | Rendszerszintű/idő-korrelált naplózási nyomvonal
+## <a name="au-12-01-audit-generation--system-wide--time-correlated-audit-trail"></a>AU-12 (01) naplózási generáció | System-Wide/Time-Correlated naplózási nyomvonal
 
 Ez a terv segítséget nyújt a rendszeresemények naplózásához az Azure-erőforrások naplózási beállításait naplózó [Azure Policy](../../../policy/overview.md) -definíciók hozzárendelésével.
 Ehhez a beépített szabályzathoz az erőforrástípusok tömbjét kell megadnia annak vizsgálatához, hogy engedélyezve vannak-e a diagnosztikai beállítások.
@@ -164,7 +164,7 @@ A Azure Security Center adaptív alkalmazás-vezérlése intelligens, automatiz�
 
 - Biztonságos alkalmazások definiálására szolgáló adaptív alkalmazás-vezérlőelemeket engedélyezni kell a gépeken
 
-## <a name="cm-11-user-installed-software"></a>CM-11 felhasználó által telepített szoftver
+## <a name="cm-11-user-installed-software"></a>CM – 11 User-Installed szoftver
 
 A Azure Security Center adaptív alkalmazás-vezérlése intelligens, automatizált, teljes körű alkalmazás-engedélyezési lista megoldás, amely képes blokkolni vagy megakadályozni bizonyos szoftverek futtatását a virtuális gépeken. Az alkalmazás-vezérlőelem segítségével érvényesítheti és figyelheti a szoftverkorlátozó házirendek megfelelőségét. Ez a tervrajz olyan [Azure Policy](../../../policy/overview.md) -definíciót rendel hozzá, amely segít a virtuális gépek figyelésében, ahol az alkalmazás engedélyezési listája ajánlott, de még nincs konfigurálva.
 
@@ -209,7 +209,7 @@ Ez a terv azokat a [Azure Policy](../../../policy/overview.md) definíciókat re
 - Előfeltételek telepítése a jelszavak nélküli fiókkal rendelkező linuxos virtuális gépek naplózásához
 - A jelszavakat nem tároló Windows rendszerű virtuális gépek naplózásának előfeltételei a visszafejthető titkosítás használatával
 
-## <a name="ia-5-1-authenticator-management--password-based-authentication"></a>IA-5 (1) hitelesítő kezelése | Jelszó-alapú hitelesítés
+## <a name="ia-5-1-authenticator-management--password-based-authentication"></a>IA-5 (1) hitelesítő kezelése | Password-Based hitelesítés
 
 Ez a terv segítséget nyújt az erős jelszavak betartatásához olyan [Azure Policy](../../../policy/overview.md) -definíciók hozzárendelésével, amelyek a minimális szilárdságot és egyéb jelszavakat nem igénylő Windows rendszerű virtuális gépeket naplózzák. A virtuális gépeknek a jelszó erőssége megsértésével kapcsolatos ismerete segít megtenni a szükséges javítási műveleteket, hogy az összes virtuálisgép-felhasználói fiók jelszava megfeleljen a szervezete jelszavas házirendjének.
 

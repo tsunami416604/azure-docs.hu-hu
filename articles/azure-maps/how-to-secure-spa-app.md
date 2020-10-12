@@ -11,10 +11,10 @@ services: azure-maps
 manager: timlt
 ms.custom: devx-track-js
 ms.openlocfilehash: e49954065f8a4ec03eb54d7333a3fff34bafb143
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91319656"
 ---
 # <a name="how-to-secure-a-single-page-application-with-non-interactive-sign-in"></a>Egyoldalas alkalmazások biztonságossá tétele nem interaktív bejelentkezéssel
@@ -109,7 +109,7 @@ Az Azure *szerepköralapú hozzáférés-vezérlés (Azure RBAC)* hozzáférés�
     > [!div class="mx-imgBorder"]
     > ![Hozzáférés biztosítása az Azure RBAC](./media/how-to-manage-authentication/how-to-grant-rbac.png)
 
-2. A **szerepkör-hozzárendelések** lap **szerepkör**területén válassza ki a beépített Azure Maps szerepkör-definíciót, például **Azure Maps Adatolvasó** vagy **Azure Maps adatközreműködő**. **A hozzáférés társítása**területen válassza a **függvényalkalmazás**lehetőséget. Válassza ki a résztvevőt név alapján. Ez után válassza a **Mentés** lehetőséget.
+2. A **szerepkör-hozzárendelések** lap **szerepkör**területén válassza ki a beépített Azure Maps szerepkör-definíciót, például **Azure Maps Adatolvasó** vagy **Azure Maps adatközreműködő**. **A hozzáférés társítása**területen válassza a **függvényalkalmazás**lehetőséget. Válassza ki a résztvevőt név alapján. Kattintson a **Mentés** gombra.
 
    * A [szerepkör-hozzárendelések hozzáadása vagy eltávolítása](https://docs.microsoft.com/azure/role-based-access-control/role-assignments-portal)című témakörben talál további információt.
 

@@ -9,10 +9,10 @@ ms.date: 12/20/2017
 ms.author: duau
 ms.custom: seodec18
 ms.openlocfilehash: 6b9a951787df6775b5159433c7172e767ff955b2
-ms.sourcegitcommit: d0541eccc35549db6381fa762cd17bc8e72b3423
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89566075"
 ---
 # <a name="troubleshooting-network-performance"></a>A hálózati teljesítmény hibaelhárítása
@@ -80,7 +80,7 @@ Az eszközkészletet a teljesítmény-teszteléshez három alapvető lépéssel 
 
 3. A teljesítményteszt futtatása
 
-    Először a távoli gazdagépen telepítenie és futtatnia kell a iPerf kiszolgálói módban. Győződjön meg arról is, hogy a távoli gazdagép a 3389-as (RDP for Windows) vagy a 22 (SSH Linux rendszerhez) vagy a 5201-es porton keresztüli adatforgalom iPerf való figyelését figyeli. Ha a távoli gazdagép Windows, telepítse a AzureCT, és futtassa az install-LinkPerformance parancsot a iPerf beállításához és a iPerf kiszolgáló módban való elindításához szükséges tűzfalszabályok létrehozásához. 
+    Először a távoli gazdagépen telepítenie és futtatnia kell a iPerf kiszolgálói módban. Győződjön meg arról is, hogy a távoli gazdagép a 3389-as (RDP for Windows) vagy a 22 (SSH Linux rendszerhez) vagy a 5201-es porton keresztüli adatforgalom iPerf való figyelését figyeli. Ha a távoli gazdagép Windows rendszerű, telepítse a AzureCT, és futtassa a Install-LinkPerformance parancsot a iPerf beállításához és a iPerf a kiszolgáló módban való indításához szükséges tűzfalszabályok létrehozásához. 
     
     Miután a távoli gép elkészült, nyissa meg a PowerShellt a helyi gépen, és indítsa el a tesztet:
     ```powershell
@@ -160,7 +160,7 @@ Teszt beállítása:
  - A 10Gbps prémium szintű ExpressRoute áramkör a privát társak beállításával azonosított helyen.
  - Egy Azure-VNet egy UltraPerformance-átjáróval a megadott régióban.
  - Egy Windows Server 2016 rendszert futtató DS5v2 virtuális gép a VNet. A virtuális gép nem csatlakozik a tartományhoz, és az alapértelmezett Azure-rendszerképből (optimalizálás vagy testreszabás nélkül) készült, és a AzureCT telepítve van.
- - Minden teszt a AzureCT Get-LinkPerformance parancsot használta 5 percenkénti terhelési teszttel a hat teszt futtatásához. Például:
+ - Minden teszt a AzureCT Get-LinkPerformance parancsot használta 5 percenkénti terhelési teszttel a hat teszt futtatásához. Példa:
 
     ```powershell
     Get-LinkPerformance -RemoteHost 10.0.0.1 -TestSeconds 300
@@ -177,7 +177,7 @@ Teszt beállítása:
 >
 >
 
-| ExpressRoute<br/>Hely|Azure<br/>Region | Becsült<br/>Távolság (km) | Késés|1 munkamenet<br/>Sávszélesség | Maximum<br/>Sávszélesség |
+| ExpressRoute<br/>Hely|Azure<br/>Régió | Becsült<br/>Távolság (km) | Késés|1 munkamenet<br/>Sávszélesség | Maximum<br/>Sávszélesség |
 | ------------------------------------------ | --------------------------- |  - | - | - | - |
 | Seattle | USA 2. nyugati régiója        |    191 km |   5 MS | 262,0 MB/s |  3,74 Gbits/s |
 | Seattle | USA nyugati régiója          |  1 094 km |  18 MS |  82,3 MB/s |  3,70 Gbits/s |

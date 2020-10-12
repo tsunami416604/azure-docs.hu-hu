@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 08/18/2017
 ms.author: masnider
 ms.openlocfilehash: 9c258d8d0a7aa26c96ab4f64017770ebdd153e60
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86257521"
 ---
 # <a name="disaster-recovery-in-azure-service-fabric"></a>Vész-helyreállítás az Azure Service Fabric
@@ -151,7 +151,7 @@ Ha azt állapítja meg, hogy a fennmaradó replikák nem elégségesek az adatve
 > [!NOTE]
 > A rendszerszolgáltatások a kvórum elvesztését is elérhetik. A hatás a szóban forgó szolgáltatásra jellemző. Például az elnevezési szolgáltatás Kvórumának elvesztése befolyásolja a névfeloldást, míg a Feladatátvételi felügyelő szolgáltatásban a kvórum elvesztése blokkolja az új szolgáltatások létrehozását és feladatátvételét. 
 > 
-> A Service Fabric rendszerszolgáltatások ugyanazt a mintát követik, mint az állami felügyelettel kapcsolatos szolgáltatások, de nem javasoljuk, hogy próbálja meg áthelyezni a kvórum elvesztését és a lehetséges adatvesztést. Ehelyett azt javasoljuk, hogy [kérjen támogatást](service-fabric-support.md) , hogy megoldást találjon a helyzetére. Általában csak a lefelé irányuló replikák visszaküldését érdemes várni.
+> A Service Fabric rendszerszolgáltatások ugyanazt a mintát követik, mint az állami felügyelettel kapcsolatos szolgáltatások, de nem javasoljuk, hogy próbálja meg áthelyezni a kvórum elvesztését és a lehetséges adatvesztést. Ehelyett azt javasoljuk, hogy  [kérjen támogatást](service-fabric-support.md) , hogy megoldást találjon a helyzetére. Általában csak a lefelé irányuló replikák visszaküldését érdemes várni.
 >
 
 #### <a name="troubleshooting-quorum-loss"></a>A kvórum hibáinak elhárítása
@@ -204,7 +204,7 @@ Az Azure-ban Service Fabric erőforrás-szolgáltató kezeli Service Fabric für
 
 Az önálló Service Fabric-fürtökben és az Azure-ban az elsődleges csomópont típusa a magok futtatásának egyike. Ha elsődleges csomópont-típust határoz meg, Service Fabric automatikusan kihasználja a csomópontok számát, amelyet akár kilenc vetőmag-csomópont létrehozásával, mind a rendszerszolgáltatások hét replikájának létrehozásával biztosít. Ha a véletlenszerű hibák egy halmaza egyidejűleg a replikák többségét kiveszi, a rendszerszolgáltatások kvórum elvesztését fogják megadni. Ha a vetőmag-csomópontok többsége elveszik, akkor a fürt hamarosan leáll.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - Megtudhatja, hogyan szimulálhatja a különböző hibákat a [tesztelési keretrendszer](service-fabric-testability-overview.md)használatával.
 - További katasztrófa-helyreállítási és magas rendelkezésre állású erőforrások olvasása. A Microsoft nagy mennyiségű útmutatót tett közzé ezekkel a témakörökkel kapcsolatban. Bár ezek az erőforrások bizonyos, más termékekben használt technikákra vonatkoznak, számos általános ajánlott eljárást tartalmaznak, amelyeket a Service Fabric kontextusban alkalmazhat:
   - [Rendelkezésre állási ellenőrzőlista](/azure/architecture/checklist/resiliency-per-service)

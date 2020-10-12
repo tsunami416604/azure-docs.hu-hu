@@ -8,10 +8,10 @@ ms.author: jafreebe
 ms.reviewer: ushan
 ms.custom: devx-track-python, github-actions-azure
 ms.openlocfilehash: 2d28d8f1f09814822b29e9d45d4e75283c8955cc
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91618743"
 ---
 # <a name="deploy-to-app-service-using-github-actions"></a>Üzembe helyezés a App Service GitHub-műveletek használatával
@@ -40,7 +40,7 @@ A fájl három szakaszt tartalmaz:
 |Section  |Feladatok  |
 |---------|---------|
 |**Hitelesítés** | 1. Adjon meg egy szolgáltatásnevet vagy egy közzétételi profilt. <br /> 2. hozzon létre egy GitHub-titkot. |
-|**Létrehozás** | 1. Állítsa be a környezetet. <br /> 2. hozza létre a webalkalmazást. |
+|**Építeni** | 1. Állítsa be a környezetet. <br /> 2. hozza létre a webalkalmazást. |
 |**Telepítés** | 1. Telepítse a webalkalmazást. |
 
 ## <a name="use-the-deployment-center"></a>A központi telepítési központ használata
@@ -113,7 +113,7 @@ A [githubon](https://github.com/)tallózzon a tárházban, válassza a **beáll�
 
 Az [alkalmazás szintű hitelesítő adatok](#generate-deployment-credentials)használatához illessze be a letöltött közzétételi profil tartalmát a titkos kulcs érték mezőjébe. Nevezze el a titkot `AZURE_WEBAPP_PUBLISH_PROFILE` .
 
-A GitHub-munkafolyamatok konfigurálásakor használja az `AZURE_WEBAPP_PUBLISH_PROFILE` Azure-webalkalmazás üzembe helyezése műveletet. Például:
+A GitHub-munkafolyamatok konfigurálásakor használja az `AZURE_WEBAPP_PUBLISH_PROFILE` Azure-webalkalmazás üzembe helyezése műveletet. Példa:
     
 ```yaml
 - uses: azure/webapps-deploy@v2
@@ -127,7 +127,7 @@ A [githubon](https://github.com/)tallózzon a tárházban, válassza a **beáll�
 
 [Felhasználói szintű hitelesítő adatok](#generate-deployment-credentials)használatához illessze be a teljes JSON-kimenetet az Azure CLI-parancsból a titkos kulcs érték mezőjébe. Adja meg a titkot a nevet, például: `AZURE_CREDENTIALS` .
 
-Amikor később konfigurálja a munkafolyamat-fájlt, az `creds` Azure bejelentkezési művelethez tartozó titkos kulcsot használja. Például:
+Amikor később konfigurálja a munkafolyamat-fájlt, az `creds` Azure bejelentkezési művelethez tartozó titkos kulcsot használja. Példa:
 
 ```yaml
 - uses: azure/login@v1
@@ -731,7 +731,7 @@ jobs:
 
 ---
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Megtalálhatja a GitHubon különböző adattárakba csoportosított műveleteit, amelyek mindegyike dokumentációt és példákat tartalmaz, amelyek segítséget nyújtanak a GitHub használatához a CI/CD-hez, és az alkalmazások üzembe helyezését az Azure-ban.
 

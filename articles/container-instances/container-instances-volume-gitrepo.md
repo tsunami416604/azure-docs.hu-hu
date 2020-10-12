@@ -4,10 +4,10 @@ description: Megtudhatja, hogyan csatlakoztathat egy Gitrepo típusú-kötetet a
 ms.topic: article
 ms.date: 06/15/2018
 ms.openlocfilehash: 5f361b0bbd4a02f754e47c8321a664af05036601
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86260709"
 ---
 # <a name="mount-a-gitrepo-volume-in-azure-container-instances"></a>Gitrepo típusú-kötet csatlakoztatása Azure Container Instances
@@ -101,7 +101,7 @@ GitHub: [személyes hozzáférési jogkivonat létrehozása a parancssorhoz][pat
 
 Azure Repos: [személyes hozzáférési tokenek létrehozása a hozzáférés hitelesítéséhez][pat-repos]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További mennyiségi típusok csatlakoztatása a Azure Container Instancesban:
 

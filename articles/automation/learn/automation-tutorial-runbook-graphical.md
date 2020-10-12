@@ -7,10 +7,10 @@ ms.subservice: process-automation
 ms.date: 09/15/2020
 ms.topic: tutorial
 ms.openlocfilehash: 81dc23c208ca9fb292c849bdf35d8b91311ed9ce
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90987654"
 ---
 # <a name="tutorial-create-a-graphical-runbook"></a>Oktatóanyag: grafikus runbook létrehozása
@@ -96,7 +96,7 @@ Mielőtt közzéteszi a runbook, hogy az éles környezetben elérhető legyen, 
 
 4. Ha a runbook-feladatok befejeződik, a teszt ablaktábla megjeleníti a kimenetet. Ebben az esetben a következőt látja: `Hello World` .
 
-    !["Helló világ!" alkalmazás runbook kimenete](../media/automation-tutorial-runbook-graphical/runbook-test-results.png)
+    ![„Helló világ!” alkalmazás runbook kimenete](../media/automation-tutorial-runbook-graphical/runbook-test-results.png)
 
 5. A vászonra való visszatéréshez zárja be a Teszt panelt.
 
@@ -124,7 +124,7 @@ A létrehozott runbook még mindig Piszkozat módban van. Az üzemi környezetbe
 
     Vegye figyelembe, hogy a streamek panel más streameket jeleníthet meg egy runbook-feladatokhoz, például a részletes és a hiba-adatfolyamokhoz, ha a runbook ezeket írja.
 
-9. A MyFirstRunbook-grafikus laphoz való visszatéréshez zárjuk be a streamek panelt és a feladatok panelt.
+9. A MyFirstRunbook-Graphical lapra való visszatéréshez zárjuk be a streamek panelt és a feladatok panelt.
 
 10. A runbook összes feladatának megtekintéséhez válassza az **erőforrások**alatt lévő **feladatok** lehetőséget. A feladatok lap felsorolja a runbook által létrehozott összes feladatot. Csak egy feladattípus jelenik meg, mert csak egyszer futtatta a feladatot.
 
@@ -156,7 +156,7 @@ Most, hogy már rendelkezik egy változóval az előfizetés-azonosító tárol�
 >[!NOTE]
 >A PowerShell-runbookok esetében a `Add-AzAccount` és a `Add-AzureRMAccount` álneve a következőhöz: `Connect-AzAccount` . Vegye figyelembe, hogy ezek az aliasok nem érhetők el a grafikus runbookok. A grafikus runbook csak `Connect-AzAccount` saját maguk használhatják.
 
-1. Navigáljon a runbook, és válassza a **Szerkesztés** lehetőséget a MyFirstRunbook-grafikus oldalon.
+1. Navigáljon a runbook, és válassza a **Szerkesztés** lehetőséget a MyFirstRunbook-Graphical oldalon.
 
 2. Nincs szükség a `Write Hello World to output` bejegyzésre. Csak kattintson a három pontra, majd válassza a **Törlés**lehetőséget.
 
@@ -218,7 +218,7 @@ Most, hogy már rendelkezik egy változóval az előfizetés-azonosító tárol�
 
 23. Vigye az egérmutatót `Login to Azure` addig, amíg az alakzat alján egy kör nem jelenik meg. Kattintson a körre, és húzza a nyilat a következőre: `Specify Subscription Id` . A runbook a következőhöz hasonlóan kell kinéznie.
 
-    :::image type="content" source="../media/automation-tutorial-runbook-graphical/runbook-auth-config.png" alt-text="Képernyőkép a runbook a nyílra húzva az "előfizetés-azonosító meghatározása" gombra.":::
+    :::image type="content" source="../media/automation-tutorial-runbook-graphical/runbook-auth-config.png" alt-text="Képernyőkép a runbook a nyílra húzva az &quot;előfizetés-azonosító meghatározása&quot; gombra.":::
 
 ## <a name="step-7---add-activity-to-start-a-virtual-machine"></a>7. lépés – Virtuális gépet elindító tevékenység hozzáadása
 
@@ -242,13 +242,13 @@ Most hozzá kell adnia egy `Start-AzVM` tevékenységet a virtuális gép elind�
 
 9. A teszt **elindításához** kattintson a Start gombra. A művelet befejezését követően győződjön meg arról, hogy a virtuális gép elindult. A runbook a következőhöz hasonlóan kell kinéznie.
 
-    ![Runbook Start-AzVM kimenete](../media/automation-tutorial-runbook-graphical/runbook-startvm.png)
+    ![Runbook Start-AzVM kimenet](../media/automation-tutorial-runbook-graphical/runbook-startvm.png)
 
 ## <a name="step-8---add-additional-input-parameters"></a>8. lépés – további bemeneti paraméterek hozzáadása
 
 A runbook jelenleg a parancsmaghoz megadott erőforráscsoporthoz indítja el a virtuális gépet `Start-AzVM` . A runbook akkor hasznos, ha a runbook indításakor megadja a nevet és az erőforráscsoportot is. Adja hozzá a runbook bemeneti paramétereit a funkció megadásához.
 
-1. A MyFirstRunbook-grafikus oldal **Szerkesztés** gombjára kattintva nyissa meg a grafikus szerkesztőt.
+1. A MyFirstRunbook-Graphical lapon a **Szerkesztés** gombra kattintva nyissa meg a grafikus szerkesztőt.
 
 2. Válassza a **bemenet és kimenet** lehetőséget, majd **adja hozzá a bemenet** elemet a Runbook bemeneti paraméter panel megnyitásához.
 
@@ -363,7 +363,7 @@ Mostantól módosíthatja a runbook, hogy csak akkor próbálja meg elindítani 
 
 31. Indítsa el a runbook a virtuális gép leállításával, és a számítógépnek el kell indulnia.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * További információ a grafikus létrehozásról: [grafikus runbook készítése Azure Automationban](../automation-graphical-authoring-intro.md).
 * A PowerShell-runbookok megkezdéséhez tekintse meg [a PowerShell-Runbook létrehozása](automation-tutorial-runbook-textual-powershell.md)című témakört.

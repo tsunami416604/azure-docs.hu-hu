@@ -10,10 +10,10 @@ ms.date: 10/31/2018
 ms.author: genli
 ms.custom: seodec18
 ms.openlocfilehash: dfaeee6a6e2a9728d7e63fb5681c487fbbd6139e
-ms.sourcegitcommit: 648c8d250106a5fca9076a46581f3105c23d7265
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88958999"
 ---
 # <a name="application-performance-faqs-for-web-apps-in-azure"></a>Az Azure-Web Apps alkalmazások teljesítményével kapcsolatos gyakori kérdések
@@ -103,7 +103,7 @@ A sikertelen kérelmek nyomkövetésének bekapcsolása:
 1. A Azure Portal nyissa meg a webalkalmazást.
 3. Válassza **a minden beállítás**  >  **diagnosztikai naplók**lehetőséget.
 4. A **Sikertelen kérelmek nyomkövetéséhez**válassza **a be**lehetőséget.
-5. Válassza a **Mentés** lehetőséget.
+5. Kattintson a **Mentés** gombra.
 6. A Web App (webalkalmazás) panelen válassza az **eszközök**lehetőséget.
 7. Válassza a **Visual Studio online**lehetőséget.
 8. Ha a beállítás nincs **bekapcsolva**, válassza **a be**lehetőséget.

@@ -8,10 +8,10 @@ ms.topic: troubleshooting
 ms.date: 11/10/2019
 ms.author: raynew
 ms.openlocfilehash: 5a6e4b415a9fe8ea80a84e415879df9d2f359478
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84434368"
 ---
 # <a name="troubleshoot-microsoft-azure-site-recovery-provider-upgrade-failures"></a>A Microsoft Azure Site Recovery Provider frissítésével kapcsolatos hibák elhárítása
@@ -48,7 +48,7 @@ Ahhoz, hogy a frissítés sikeres legyen, a harmadik féltől származó mappa n
 
 A probléma megoldásához.
 
-1. Indítsa el a Beállításszerkesztőt (regedit.exe), és nyissa meg a HKEY_LOCAL_MACHINE \SOFTWARE\WOW6432Node\InMage Systems\Installed Products\10 ágat.
+1. Indítsa el a Beállításszerkesztőt (regedit.exe), és nyissa meg a HKEY_LOCAL_MACHINE\SOFTWARE\WOW6432Node\InMage Systems\Installed Products\10 ágat.
 1. Ellenőrizze a `Build_Version` kulcs értékét. Ha a legújabb verzióra van beállítva, csökkentse a verziószámot. Ha például a legújabb verzió a 9,22. \* a kulcs pedig az `Build_Version` adott értékre van állítva, majd csökkentse azt 9,21-re \* .
 1. Töltse le a legújabb Microsoft Azure Site Recovery egyesített telepítőt:
    1. A Azure Site Recovery cikkben található [szolgáltatási frissítések](service-updates-how-to.md#links-to-currently-supported-update-rollups) jelenleg támogatott kumulatív frissítésekre vonatkozó szakaszában válassza ki azt a szolgáltatót, amelyre frissíteni kíván.
@@ -73,8 +73,8 @@ Microsoft Azure Site Recovery-szolgáltató (DRA) frissítésekor a fő cél tel
 
 Ennek oka a beállításkulcs paraméterének null értéke lehet. A probléma megoldásához –
 
-1. Indítsa el a Beállításszerkesztőt (regedit.exe), és nyissa meg a HKEY_LOCAL_MACHINE \SOFTWARE\Wow6432Node\InMage Systems\Installed Products\4 ágat.
+1. Indítsa el a Beállításszerkesztőt (regedit.exe), és nyissa meg a HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\InMage Systems\Installed Products\4 ágat.
 1. Vizsgálja meg a "InstallDirectory" kulcs értékét.Ha az értéke null, adja hozzá a jelenlegi telepítési könyvtár értékét.
-1. Ehhez hasonlóan nyissa meg a HKEY_LOCAL_MACHINE \SOFTWARE\Wow6432Node\InMage Systems\Installed Products\5 ágat a Rendszerleíróadatbázis-szerkesztőben.
+1. Ehhez hasonlóan nyissa meg a HKEY_LOCAL_MACHINE\SOFTWARE\Wow6432Node\InMage Systems\Installed Products\5 ágat a beállításjegyzék szerkesztőjében.
 1. Vizsgálja meg a "InstallDirectory" kulcs értékét, és adja hozzá a jelenlegi telepítési könyvtár értékét.
 1. Futtassa újra az egyesített telepítő telepítőjét.

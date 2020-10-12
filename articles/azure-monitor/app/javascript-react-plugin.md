@@ -7,10 +7,10 @@ ms.tgt_pltfrm: ibiza
 ms.topic: conceptual
 ms.date: 07/28/2020
 ms.openlocfilehash: 3a11f77384c520bed9824841269be4ad998adba4
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90056200"
 ---
 # <a name="react-plugin-for-application-insights-javascript-sdk"></a>Az Application Insights JavaScript SDK beépülő moduljának reagálása
@@ -64,7 +64,7 @@ export default withAITracking(reactPlugin,appInsights, MyComponent);
 
 ## <a name="configuration"></a>Konfiguráció
 
-| Name    | Alapértelmezett | Description                                                                                                    |
+| Name (Név)    | Alapértelmezett | Leírás                                                                                                    |
 |---------|---------|----------------------------------------------------------------------------------------------------------------|
 | előzmények | null    | Az útválasztó előzményeinek megválaszolása. További információ: [reakciós útválasztó csomag dokumentációja](https://reactrouter.com/web/api/history). Ha meg szeretné tudni, hogyan érheti el az előzmények objektumot az összetevőkön kívül, tekintse meg a [reakciós útválasztó – gyakori kérdések](https://github.com/ReactTraining/react-router/blob/master/FAQ.md#how-do-i-access-the-history-object-outside-of-components)    |
 

@@ -15,10 +15,10 @@ ms.topic: conceptual
 ms.date: 04/04/2019
 ms.author: kenwith
 ms.openlocfilehash: 09a930778e35897671d10f14a95f3fa48ea5e9eb
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88642418"
 ---
 # <a name="plan-an-azure-ad-application-proxy-deployment"></a>Azure AD alkalmazás-proxy telepítési útmutató
@@ -241,7 +241,7 @@ Ellenőrizze, hogy az alkalmazás elérhető-e az alkalmazás-proxyn keresztül 
 
 Az előhitelesítés engedélyezése esetén az Azure AD először a hitelesítést fogja felvenni a felhasználók számára, és ha az egyszeri bejelentkezés be van állítva, akkor a háttérbeli alkalmazás is ellenőrzi a felhasználót, mielőtt hozzáférést kap az alkalmazáshoz. Ha az előhitelesítési mód átadását az Azure AD-be módosítja, a külső URL-cím HTTPS-sel is konfigurálható, ezért a rendszer minden olyan alkalmazást HTTPS-védelemmel fog védeni, amelyet eredetileg a HTTP-hez konfiguráltak.
 
-### <a name="enable-single-sign-on"></a>Egyszeri bejelentkezés engedélyezése
+### <a name="enable-single-sign-on"></a>Egyszeri Sign-On engedélyezése
 
 Az SSO a lehető legjobb felhasználói élményt és biztonságot biztosítja, mivel a felhasználóknak csak egyszer kell bejelentkezniük az Azure AD-hez való hozzáféréskor. Miután a felhasználó előzetesen hitelesítette, az SSO-t a felhasználó nevében, a helyszíni alkalmazáshoz hitelesítő alkalmazásproxy-összekötő hajtja végre. A háttérbeli alkalmazás úgy dolgozza fel a bejelentkezést, mintha a felhasználó lenne.
 
