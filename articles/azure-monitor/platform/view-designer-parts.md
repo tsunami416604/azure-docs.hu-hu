@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 03/12/2018
 ms.openlocfilehash: 1e674bf157d55c9b5f7cf49e8df5e17acb99ee3a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86539397"
 ---
 # <a name="reference-guide-to-view-designer-visualization-parts-in-azure-monitor"></a>Útmutató a Designer vizualizációs részeinek megtekintéséhez Azure Monitor
@@ -77,11 +77,11 @@ A fejléc egyetlen számot jelenít meg, amely egy napló lekérdezésében lév
 | Lekérdezés |A listához futtatandó lekérdezés. Az eredményekben az első tíz rekord első két tulajdonsága jelenik meg. Az első tulajdonság egy szöveges érték, a második tulajdonság pedig egy numerikus érték. A sávokat a rendszer automatikusan hozza létre, amelyek a numerikus oszlop relatív értékén alapulnak.<br><br>A `Sort` lekérdezésben szereplő parancs használatával rendezze a rekordokat a listában. A lekérdezés futtatásához és az összes rekord visszaadásához kattintson **az összes**megjelenítése lehetőségre. |
 | Gráf elrejtése |Válassza ezt a hivatkozást a numerikus oszlop jobb oldalán található gráf letiltásához. |
 | Értékgörbék engedélyezése |Válassza ezt a hivatkozást, ha vízszintes sáv helyett értékgörbék megjelenítését szeretné megjeleníteni. További információ: [Common Settings](#sparklines). |
-| Szín (Color) |A sávok vagy értékgörbék színe |
+| Szín |A sávok vagy értékgörbék színe |
 | Név és érték elválasztója |A Text tulajdonság több értékre való elemzéséhez használt egykarakteres határolójel. További információ: [Common Settings](#sparklines). |
 | Kattintás – Navigálás | A lista egyik elemére kattintva végrehajtott művelet.  További információ: [Common Settings](#click-through-navigation). |
 | **Lista** |**> oszlopok címei** |
-| Name |Az első oszlop tetején megjelenő szöveg |
+| Name (Név) |Az első oszlop tetején megjelenő szöveg |
 | Érték |A második oszlop tetején megjelenő szöveg |
 | **Lista** |**> küszöbértékek** |
 | Küszöbértékek engedélyezése |Válassza ezt a hivatkozást a küszöbértékek engedélyezéséhez. További információ: [Common Settings](#thresholds). |
@@ -107,12 +107,12 @@ A fejlécnek két száma van, amely a rekordok számát jeleníti meg a különb
 | Lekérdezés |A listához futtatandó lekérdezés. Az eredményekben az első tíz rekord első két tulajdonsága jelenik meg. Az első tulajdonság egy szöveges érték, a második tulajdonság pedig egy numerikus érték. A sávokat a rendszer automatikusan hozza létre a numerikus oszlop relatív értéke alapján.<br><br>A `Sort` lekérdezésben szereplő parancs használatával rendezze a rekordokat a listában. A lekérdezés futtatásához és az összes rekord visszaadásához kattintson **az összes**megjelenítése lehetőségre. |
 | Gráf elrejtése |Válassza ezt a hivatkozást a numerikus oszlop jobb oldalán található gráf letiltásához. |
 | Értékgörbék engedélyezése |Válassza ezt a hivatkozást, ha vízszintes sáv helyett értékgörbék megjelenítését szeretné megjeleníteni. További információ: [Common Settings](#sparklines). |
-| Szín (Color) |A sávok vagy értékgörbék színe |
+| Szín |A sávok vagy értékgörbék színe |
 | Művelet |Az értékgörbe számára végrehajtandó művelet. További információ: [Common Settings](#sparklines). |
 | Név és érték elválasztója |A Text tulajdonság több értékre való elemzéséhez használt egykarakteres határolójel. További információ: [Common Settings](#sparklines). |
 | Kattintás – Navigálás | A lista egyik elemére kattintva végrehajtott művelet.  További információ: [Common Settings](#click-through-navigation). |
 | **Lista** |**> oszlopok címei** |
-| Name |Az első oszlop tetején megjelenő szöveg |
+| Name (Név) |Az első oszlop tetején megjelenő szöveg |
 | Érték |A második oszlop tetején megjelenő szöveg |
 | **Lista** |**> küszöbértékek** |
 | Küszöbértékek engedélyezése |Válassza ezt a hivatkozást a küszöbértékek engedélyezéséhez. További információ: [Common Settings](#thresholds). |
@@ -143,17 +143,17 @@ A fejléc egyetlen számot jelenít meg, amely összegzi a log lekérdezés Valu
 | 1. szín<br>2. szín<br>3. szín |Válassza ki a fánkban megjelenő értékek színét. |
 | **További beállítások** |**> speciális színleképezés** |
 | Mező értéke |Írja be annak a mezőnek a nevét, amelyet más színnel kell megjeleníteni, ha az szerepel a fánkban. |
-| Szín (Color) |Válassza ki az egyedi mező színét. |
+| Szín |Válassza ki az egyedi mező színét. |
 | **Lista** | |
 | Lekérdezés |A listához futtatandó lekérdezés. Megjelenik a lekérdezés által visszaadott rekordok száma. |
 | Gráf elrejtése |Válassza ezt a hivatkozást a numerikus oszlop jobb oldalán található gráf letiltásához. |
 | Értékgörbék engedélyezése |Válassza ezt a hivatkozást, ha vízszintes sáv helyett értékgörbék megjelenítését szeretné megjeleníteni. További információ: [Common Settings](#sparklines). |
-| Szín (Color) |A sávok vagy értékgörbék színe |
+| Szín |A sávok vagy értékgörbék színe |
 | Művelet |Az értékgörbe számára végrehajtandó művelet. További információ: [Common Settings](#sparklines). |
 | Név és érték elválasztója |A Text tulajdonság több értékre való elemzéséhez használt egykarakteres határolójel. További információ: [Common Settings](#sparklines). |
 | Kattintás – Navigálás | A lista egyik elemére kattintva végrehajtott művelet.  További információ: [Common Settings](#click-through-navigation). |
 | **Lista** |**> oszlopok címei** |
-| Name |Az első oszlop tetején megjelenő szöveg |
+| Name (Név) |Az első oszlop tetején megjelenő szöveg |
 | Érték |A második oszlop tetején megjelenő szöveg |
 | **Lista** |**> küszöbértékek** |
 | Küszöbértékek engedélyezése |Válassza ezt a hivatkozást a küszöbértékek engedélyezéséhez. További információ: [Common Settings](#thresholds). |
@@ -174,18 +174,18 @@ A fejléc a két naplózási lekérdezés eredményét jeleníti meg az oszlopok
 | Kattintás – Navigálás | A fejlécre való kattintáskor végrehajtott művelet.  További információ: [Common Settings](#click-through-navigation). |
 | **Első diagram <br> második diagramja** | |
 | Jelmagyarázat |Az első adatsorozat ábrafelirata alatt megjelenő szöveg |
-| Szín (Color) |Az adatsorozat oszlopaihoz használandó szín |
+| Szín |Az adatsorozat oszlopaihoz használandó szín |
 | Lekérdezés |Az első adatsorozathoz futtatandó lekérdezés Az egyes időintervallumokban lévő rekordok számát a diagram oszlopai jelölik. |
 | Művelet |Az érték tulajdonságon végrehajtandó művelet, amely egyetlen értékként összegzi a képfeliratot.<ul><li>Sum: az összes rekord értékének összege.</li><li>Average (átlag): az összes rekord értékének átlaga.</li><li>Utolsó minta: a diagramon szereplő utolsó intervallum értéke.</li><li>Első minta: a diagramon szereplő első intervallum értéke.</li><li>Darabszám: a lekérdezés által visszaadott összes rekord száma.</li></ul> |
 | **Lista** | |
 | Lekérdezés |A listához futtatandó lekérdezés. Megjelenik a lekérdezés által visszaadott rekordok száma. |
 | Gráf elrejtése |Válassza ezt a hivatkozást a numerikus oszlop jobb oldalán található gráf letiltásához. |
 | Értékgörbék engedélyezése |Válassza ezt a hivatkozást, ha vízszintes sáv helyett értékgörbék megjelenítését szeretné megjeleníteni. További információ: [Common Settings](#sparklines). |
-| Szín (Color) |A sávok vagy értékgörbék színe |
+| Szín |A sávok vagy értékgörbék színe |
 | Művelet |Az értékgörbe számára végrehajtandó művelet. További információ: [Common Settings](#sparklines). |
 | Kattintás – Navigálás | A lista egyik elemére kattintva végrehajtott művelet.  További információ: [Common Settings](#click-through-navigation). |
 | **Lista** |**> oszlopok címei** |
-| Name |Az első oszlop tetején megjelenő szöveg |
+| Name (Név) |Az első oszlop tetején megjelenő szöveg |
 | Érték |A második oszlop tetején megjelenő szöveg |
 | **Lista** |**> küszöbértékek** |
 | Küszöbértékek engedélyezése |Válassza ezt a hivatkozást a küszöbértékek engedélyezéséhez. További információ: [Common Settings](#thresholds). |
@@ -200,7 +200,7 @@ A fejlécben statikus szöveg és opcionális hivatkozás látható. A lista egy
 | **Általános** | |
 | Csoport címe |A csempe tetején megjelenő szöveg |
 | Új csoport |Válassza ezt a hivatkozást, ha új csoportot szeretne létrehozni a nézetben, az aktuális nézettől kezdődően. |
-| Szín (Color) |A fejléc háttérszíne |
+| Szín |A fejléc háttérszíne |
 | **Fejléc** | |
 | Kép |A fejlécben megjelenő képfájl. |
 | Címke |A fejlécben megjelenített szöveg |
@@ -241,12 +241,12 @@ A fejlécben egy olyan vonalas diagram látható, amely több adatsorozatból á
 | Lekérdezés |A listához futtatandó lekérdezés. Megjelenik a lekérdezés által visszaadott rekordok száma. |
 | Gráf elrejtése |Válassza ezt a hivatkozást a numerikus oszlop jobb oldalán található gráf letiltásához. |
 | Értékgörbék engedélyezése |Válassza ezt a hivatkozást, ha vízszintes sáv helyett értékgörbék megjelenítését szeretné megjeleníteni. További információ: [Common Settings](#sparklines). |
-| Szín (Color) |A sávok vagy értékgörbék színe |
+| Szín |A sávok vagy értékgörbék színe |
 | Művelet |Az értékgörbe számára végrehajtandó művelet. További információ: [Common Settings](#sparklines). |
 | Név és érték elválasztója |A Text tulajdonság több értékre való elemzéséhez használt egykarakteres határolójel. További információ: [Common Settings](#sparklines). |
 | Kattintás – Navigálás | A lista egyik elemére kattintva végrehajtott művelet.  További információ: [Common Settings](#click-through-navigation). |
 | **Lista** |**> oszlopok címei** |
-| Name |Az első oszlop tetején megjelenő szöveg |
+| Name (Név) |Az első oszlop tetején megjelenő szöveg |
 | Érték |A második oszlop tetején megjelenő szöveg |
 | **Lista** |**> küszöbértékek** |
 | Küszöbértékek engedélyezése |Válassza ezt a hivatkozást a küszöbértékek engedélyezéséhez. További információ: [Common Settings](#thresholds). |
@@ -277,12 +277,12 @@ A fejléc több adatsorozatot tartalmazó vonalas diagramot jelenít meg a napl�
 | Lekérdezés |A listához futtatandó lekérdezés. Megjelenik a lekérdezés által visszaadott rekordok száma. |
 | Gráf elrejtése |Válassza ezt a hivatkozást a numerikus oszlop jobb oldalán található gráf letiltásához. |
 | Értékgörbék engedélyezése |Válassza ezt a hivatkozást, ha vízszintes sáv helyett értékgörbék megjelenítését szeretné megjeleníteni. További információ: [Common Settings](#sparklines). |
-| Szín (Color) |A sávok vagy értékgörbék színe |
+| Szín |A sávok vagy értékgörbék színe |
 | Művelet |Az értékgörbe számára végrehajtandó művelet. További információ: [Common Settings](#sparklines). |
 | Név és érték elválasztója |A Text tulajdonság több értékre való elemzéséhez használt egykarakteres határolójel. További információ: [Common Settings](#sparklines). |
 | Kattintás – Navigálás | A lista egyik elemére kattintva végrehajtott művelet.  További információ: [Common Settings](#click-through-navigation). |
 | **Lista** |**> oszlopok címei** |
-| Name |Az első oszlop tetején megjelenő szöveg |
+| Name (Név) |Az első oszlop tetején megjelenő szöveg |
 | Érték |A második oszlop tetején megjelenő szöveg |
 | **Lista** |**> küszöbértékek** |
 | Küszöbértékek engedélyezése |Válassza ezt a hivatkozást a küszöbértékek engedélyezéséhez. További információ: [Common Settings](#thresholds). |
@@ -352,9 +352,9 @@ A következő táblázat a küszöbértékek beállításait ismerteti:
 | Beállítás | Leírás |
 |:--- |:--- |
 | Küszöbértékek engedélyezése |Válassza ezt a hivatkozást, ha egy szín ikont szeretne megjeleníteni az egyes értékek bal oldalán. Az ikon jelzi az érték állapotát a megadott küszöbértékekhez viszonyítva. |
-| Name |A küszöb értékének neve |
+| Name (Név) |A küszöb értékének neve |
 | Küszöbérték |A küszöbérték értéke. Az egyes listaelemek állapotának színe az adott értéknél nagyobb legmagasabb küszöbérték színét adja meg. Ha nem lépi túl a küszöbértéket, a rendszer egy alapértelmezett színt használ. |
-| Szín (Color) |A küszöbértéket jelző szín |
+| Szín |A küszöbértéket jelző szín |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * További információ a vizualizációs részekben található lekérdezések támogatásához használható [naplók lekérdezéséről](../log-query/log-query-overview.md) .

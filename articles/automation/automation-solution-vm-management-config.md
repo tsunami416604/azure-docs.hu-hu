@@ -6,10 +6,10 @@ ms.subservice: process-automation
 ms.date: 06/01/2020
 ms.topic: conceptual
 ms.openlocfilehash: b0bc23d515bebdd0d943bbad33c5ebba35a35605
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90987203"
 ---
 # <a name="configure-startstop-vms-during-off-hours"></a>Start/Stop VMs during off-hours konfigurálása
@@ -143,13 +143,13 @@ Ha Start/Stop VMs during off-hours telepítése után módosítani szeretné az 
 
 2. A StartStop_VM_Notification **lapon kattintson a részletek** elemre. **Details** Ekkor megnyílik az E-mail/SMS/leküldés/hang lap. Frissítse az e-mail-címet, és kattintson **az OK** gombra a módosítások mentéséhez.
 
-    :::image type="content" source="media/automation-solution-vm-management/change-email.png" alt-text="Képernyőkép az e-mailek/SMS/push/Voice lapról, amely egy példaként frissített e-mail-címet mutat be.":::
+    :::image type="content" source="media/automation-solution-vm-management/change-email.png" alt-text="Képernyőkép a figyelő – műveleti csoportok lapról.":::
 
     Másik lehetőségként további műveleteket is hozzáadhat a műveleti csoporthoz, hogy többet tudjon meg a műveleti csoportokról, lásd: [műveleti csoportok](../azure-monitor/platform/action-groups.md)
 
 A következő példa egy olyan e-mailt küld, amelyet a szolgáltatás a virtuális gépek leállításakor küld.
 
-:::image type="content" source="media/automation-solution-vm-management/email.png" alt-text="A szolgáltatás által a virtuális gépek leállításakor küldött példa e-mail-üzenet képernyőképe.":::
+:::image type="content" source="media/automation-solution-vm-management/email.png" alt-text="Képernyőkép a figyelő – műveleti csoportok lapról.":::
 
 ## <a name="add-or-exclude-vms"></a><a name="add-exclude-vms"></a>Virtuális gépek hozzáadása vagy kizárása
 

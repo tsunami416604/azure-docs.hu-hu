@@ -15,10 +15,10 @@ ms.topic: how-to
 ms.date: 01/23/2017
 ms.author: mazha
 ms.openlocfilehash: 6811a06eb3483fd53b6e566033935c3b2e00ceca
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84887246"
 ---
 # <a name="real-time-alerts-in-microsoft-azure-cdn"></a>Valós idejű riasztások Microsoft Azure CDN-ben
@@ -107,7 +107,7 @@ Ez a dokumentum a Microsoft Azure CDN-ben való valós idejű riasztásokat isme
     > 
 13. A riasztási konfiguráció mentéséhez kattintson a **Save (Mentés** ) gombra.  Ha az 5. lépésben beállította a **riasztást** , a riasztás most aktív.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Valós idejű statisztikák elemzése Azure CDN](cdn-real-time-stats.md)
 * Mélyebb kiásás a [speciális http-jelentésekkel](cdn-advanced-http-reports.md)
 * [Használati minták](cdn-analyze-usage-patterns.md) elemzése

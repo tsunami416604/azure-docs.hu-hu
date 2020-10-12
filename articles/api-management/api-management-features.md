@@ -13,10 +13,10 @@ ms.topic: article
 ms.date: 07/15/2020
 ms.author: apimpm
 ms.openlocfilehash: 262d12e1b0ff74570b44b7794f8b55619a9afa97
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87905142"
 ---
 # <a name="feature-based-comparison-of-the-azure-api-management-tiers"></a>Az Azure API Management szintjeinek szolgáltatáson alapuló összehasonlítása
@@ -26,7 +26,7 @@ Az egyes API Management [díjszabási szintjei](https://aka.ms/apimpricing) kül
 > [!IMPORTANT]
 > Vegye figyelembe, hogy a fejlesztői réteg nem üzemi célú használati esetekre és értékelésekre szolgál. Nem biztosít SLA-t.
 
-| Funkció                                                                                      | Felhasználás | Fejlesztő | Alapszintű | Standard | Prémium |
+| Szolgáltatás                                                                                      | Felhasználás | Fejlesztő | Alapszintű | Standard | Prémium |
 | -------------------------------------------------------------------------------------------- | ----------- | --------- | ----- | -------- | ------- |
 | Azure AD-integráció<sup>1</sup>                                                             | Nem          | Igen       | Nem    | Igen      | Igen     |
 | Virtual Network (VNet) támogatása                                                               | Nem          | Igen       | Nem    | Nem       | Igen     |
@@ -39,7 +39,7 @@ Az egyes API Management [díjszabási szintjei](https://aka.ms/apimpricing) kül
 | [TLS-beállítások](api-management-howto-manage-protocols-ciphers.md)                             | Igen         | Igen       | Igen   | Igen      | Igen     |
 | [Külső gyorsítótár](https://aka.ms/apimbyoc)                                                    | Igen         | Igen       | Igen   | Igen      | Igen     |
 | [Ügyféltanúsítvány-alapú hitelesítés](api-management-howto-mutual-certificates-for-clients.md) | Igen         | Igen       | Igen   | Igen      | Igen     |
-| [Biztonsági mentés és helyreállítás](api-management-howto-disaster-recovery-backup-restore.md)               | Nem          | Igen       | Igen   | Igen      | Igen     |
+| [Biztonsági mentés és visszaállítás](api-management-howto-disaster-recovery-backup-restore.md)               | Nem          | Igen       | Igen   | Igen      | Igen     |
 | [Felügyelet a git felett](api-management-configuration-repository-git.md)                        | Nem          | Igen       | Igen   | Igen      | Igen     |
 | Közvetlen felügyeleti API                                                                        | Nem          | Igen       | Igen   | Igen      | Igen     |
 | Naplók és mérőszámok Azure Monitor                                                               | Igen         | Igen       | Igen   | Igen      | Igen     |

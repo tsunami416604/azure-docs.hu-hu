@@ -8,10 +8,10 @@ ms.date: 06/15/2020
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 5ca65a428af02eaf5ae6ac461006c720da4461bd
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91538180"
 ---
 # <a name="cloud-tiering-overview"></a>A felhőalapú rétegek áttekintése
@@ -184,7 +184,7 @@ Invoke-StorageSyncFileRecall -Path <path-to-to-your-server-endpoint> -ThreadCoun
 ``` 
 
 > [!Note]  
-> - A meghívó-StorageSyncFileRecall parancsmag a fájlok letöltési teljesítményének javítására is használható, amikor új kiszolgálói végpontot ad hozzá egy meglévő szinkronizálási csoporthoz.  
+> - A Invoke-StorageSyncFileRecall parancsmag a fájlok letöltési teljesítményének javítására is használható, amikor új kiszolgálói végpontot ad hozzá egy meglévő szinkronizálási csoporthoz.  
 >- Ha a kiszolgálót üzemeltető helyi köteten nincs elég szabad hely az összes rétegű adat felidézéséhez, a `Invoke-StorageSyncFileRecall` parancsmag meghiúsul.  
 
 <a id="sizeondisk-versus-size"></a>

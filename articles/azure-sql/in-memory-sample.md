@@ -1,6 +1,6 @@
 ---
-title: Memóriában tárolt minta
-description: Próbálja ki Azure SQL Database memóriában lévő technológiákat a OLTP és a oszlopcentrikus mintával.
+title: In-Memory minta
+description: Próbálja ki Azure SQL Database In-Memory technológiákat a OLTP és a oszlopcentrikus mintával.
 services: sql-database
 ms.service: sql-database
 ms.subservice: development
@@ -12,23 +12,23 @@ ms.author: jovanpop
 ms.reviewer: ''
 ms.date: 12/18/2018
 ms.openlocfilehash: 2829b1c71aebcc97452fc658e6509e4fae42da8c
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91616805"
 ---
-# <a name="in-memory-sample"></a>Memóriában tárolt minta
+# <a name="in-memory-sample"></a>In-Memory minta
 [!INCLUDE[appliesto-sqldb-sqlmi](includes/appliesto-sqldb-sqlmi.md)]
 
-A Azure SQL Database memóriában lévő technológiái lehetővé teszik az alkalmazás teljesítményének növelését, és csökkentheti az adatbázis költségeit. A Azure SQL Database memóriában lévő technológiák használatával a teljesítménnyel kapcsolatos fejlesztéseket a különböző számítási feladatokkal érheti el.
+A Azure SQL Database In-Memory technológiái lehetővé teszik az alkalmazás teljesítményének növelését, és az adatbázis költségeit is csökkentheti. A Azure SQL Database In-Memory technológiáinak használatával a teljesítménnyel kapcsolatos fejlesztéseket különböző számítási feladatokkal érheti el.
 
-Ebben a cikkben két olyan mintát fog látni, amelyek szemléltetik a memóriában lévő OLTP használatát, valamint a Azure SQL Database oszlopcentrikus indexeit.
+Ebben a cikkben két mintát láthat, amelyek bemutatják In-Memory OLTP használatát, valamint a Azure SQL Database oszlopcentrikus indexeit.
 
 További információkért lásd:
 
 - [Memóriában tárolt OLTP – áttekintés és használati forgatókönyvek](/sql/relational-databases/in-memory-oltp/overview-and-usage-scenarios) (az első lépésekhez kapcsolódó esettanulmányokra és információkra mutató hivatkozásokat tartalmaz)
-- [A memóriában tárolt OLTP dokumentációja](/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization)
+- [In-Memory OLTP dokumentációja](/sql/relational-databases/in-memory-oltp/in-memory-oltp-in-memory-optimization)
 - [Útmutató a oszlopcentrikus indexekhez](/sql/relational-databases/indexes/columnstore-indexes-overview)
 - Hibrid tranzakciós/analitikus feldolgozás (HTAP), más néven [valós idejű operatív elemzés](/sql/relational-databases/indexes/get-started-with-columnstore-for-real-time-operational-analytics)
 
@@ -36,11 +36,11 @@ További információkért lásd:
 
 &nbsp;
 
-## <a name="1-install-the-in-memory-oltp-sample"></a>1. a memóriában tárolt OLTP-minta telepítése
+## <a name="1-install-the-in-memory-oltp-sample"></a>1. Telepítse a In-Memory OLTP mintát
 
-A AdventureWorksLT minta adatbázisát a [Azure Portal](https://portal.azure.com/)néhány kattintással létrehozhatja. Ezt követően a szakasz lépései azt ismertetik, hogyan bővíthetők a AdventureWorksLT-adatbázisok a memóriában lévő OLTP-objektumokkal, és milyen teljesítménybeli előnyökkel járnak.
+A AdventureWorksLT minta adatbázisát a [Azure Portal](https://portal.azure.com/)néhány kattintással létrehozhatja. Az ebben a szakaszban ismertetett lépések bemutatják, hogyan bővítheti AdventureWorksLT-adatbázisát In-Memory OLTP-objektumokkal, és hogyan láthatja el a teljesítmény előnyeit.
 
-A memóriabeli OLTP egyszerűbb, de vizuálisan vonzó teljesítmény-bemutatója a következő helyen található:
+A In-Memory OLTP egyszerűbb, de vizuálisan vonzó teljesítmény-bemutatója a következő helyen található:
 
 - Kiadás: [memóriabeli OLTP-bemutató-v 1.0](https://github.com/Microsoft/sql-server-samples/releases/tag/in-memory-oltp-demo-v1.0)
 - Forráskód: [a memóriában-OLTP-demo-Source-Code](https://github.com/microsoft/sql-server-samples/tree/master/samples/features/in-memory-database)
@@ -51,9 +51,9 @@ A memóriabeli OLTP egyszerűbb, de vizuálisan vonzó teljesítmény-bemutatój
 
 2. Kapcsolódjon az adatbázishoz SQL Server Management Studio [(SSMS.exe)](https://msdn.microsoft.com/library/mt238290.aspx)használatával.
 
-3. Másolja a [memóriában tárolt OLTP Transact-SQL-szkriptet](https://raw.githubusercontent.com/microsoft/sql-server-samples/master/samples/features/in-memory-database/in-memory-oltp/t-sql-scripts/sql_in-memory_oltp_sample.sql) a vágólapra. A T-SQL-szkript létrehozza a szükséges memóriában lévő objektumokat az 1. lépésben létrehozott AdventureWorksLT-mintaadatbázisban.
+3. Másolja a [memóriában tárolt OLTP Transact-SQL-szkriptet](https://raw.githubusercontent.com/microsoft/sql-server-samples/master/samples/features/in-memory-database/in-memory-oltp/t-sql-scripts/sql_in-memory_oltp_sample.sql) a vágólapra. A T-SQL parancsfájl létrehozza a szükséges In-Memory objektumokat az 1. lépésben létrehozott AdventureWorksLT-mintaadatbázisban.
 
-4. Illessze be a T-SQL-szkriptet a SSMS-be, majd hajtsa végre a parancsfájlt. A `MEMORY_OPTIMIZED = ON` záradék Create TABLEi utasítások elengedhetetlenek. Például:
+4. Illessze be a T-SQL-szkriptet a SSMS-be, majd hajtsa végre a parancsfájlt. A `MEMORY_OPTIMIZED = ON` záradék Create TABLEi utasítások elengedhetetlenek. Példa:
 
 ```sql
 CREATE TABLE [SalesLT].[SalesOrderHeader_inmem](
@@ -70,15 +70,15 @@ Ha a T-SQL-szkript futtatásakor a 40536-es hiba jelenik meg, futtassa a követk
 SELECT DatabasePropertyEx(DB_Name(), 'IsXTPSupported');
 ```
 
-A **0** eredmény azt jelenti, hogy a memóriában nem támogatott a memória, és **1** azt jelenti, hogy a rendszer támogatja. A probléma diagnosztizálásához győződjön meg arról, hogy az adatbázis a prémium szintű szolgáltatási szinten van.
+A **0** eredmény azt jelenti, hogy a In-Memory nem támogatott, és **1** azt jelenti, hogy támogatott. A probléma diagnosztizálásához győződjön meg arról, hogy az adatbázis a prémium szintű szolgáltatási szinten van.
 
 ### <a name="about-the-created-memory-optimized-items"></a>A létrehozott memóriára optimalizált elemek ismertetése
 
 **Táblák**: a minta a következő memória-optimalizált táblákat tartalmazza:
 
-- SalesLT. Product_inmem
-- SalesLT. SalesOrderHeader_inmem
-- SalesLT. SalesOrderDetail_inmem
+- SalesLT.Product_inmem
+- SalesLT.SalesOrderHeader_inmem
+- SalesLT.SalesOrderDetail_inmem
 - Bemutató. DemoSalesOrderHeaderSeed
 - Bemutató. DemoSalesOrderDetailSeed
 
@@ -92,7 +92,7 @@ SELECT is_memory_optimized, name, type_desc, durability_desc
     WHERE is_memory_optimized = 1;
 ```
 
-**Natív módon lefordított tárolt eljárás**: megvizsgálhatja a SalesLT. usp_InsertSalesOrder_inmem a katalógus nézet lekérdezésével:
+**Natív módon lefordított tárolt eljárás**: megvizsgálhatja SalesLT.usp_InsertSalesOrder_inmem a katalógus nézet lekérdezésével:
 
 ```sql
 SELECT uses_native_compilation, OBJECT_NAME(object_id), definition
@@ -124,8 +124,8 @@ Ez a szakasz a ostress.exe parancssorba ágyazott T-SQL-parancsfájlt jeleníti 
 
 A következő szkript egy példaként szolgáló értékesítési rendelést szúr be öt sorral a következő memóriára optimalizált *táblákba*:
 
-- SalesLT. SalesOrderHeader_inmem
-- SalesLT. SalesOrderDetail_inmem
+- SalesLT.SalesOrderHeader_inmem
+- SalesLT.SalesOrderDetail_inmem
 
 ```sql
 DECLARE
@@ -160,8 +160,8 @@ A virtuális gépen vagy a választott gazdagépen telepítse a Replay Markup La
 
 További információkért lásd:
 
-- A ostress.exe-vitafórum a [memóriában tárolt OLTP](https://msdn.microsoft.com/library/mt465764.aspx).
-- [Mintaadatbázis a memóriában tárolt OLTP](https://msdn.microsoft.com/library/mt465764.aspx).
+- A [In-Memory OLTP tartozó mintaadatbázis](https://msdn.microsoft.com/library/mt465764.aspx)ostress.exe-vitafóruma.
+- [Mintaadatbázis In-Memory OLTP](https://msdn.microsoft.com/library/mt465764.aspx).
 - A [ostress.exetelepítéséhez szükséges blog ](https://techcommunity.microsoft.com/t5/sql-server-support/cumulative-update-2-to-the-rml-utilities-for-microsoft-sql/ba-p/317910).
 
 <!--
@@ -223,13 +223,13 @@ Miután elvégezte a *_inmem* futtatásának eredményét, hajtsa végre a köve
 
 #### <a name="expected-comparison-results"></a>Várt összehasonlító eredmények
 
-A memórián belüli tesztek azt mutatták, hogy a teljesítmény **kilenc alkalommal** javult ebben az egyszerű munkaterhelésben, és `ostress` egy Azure-beli virtuális gépen fut, amely ugyanabban az Azure-régióban található, mint az adatbázis.
+A In-Memory tesztek azt mutatták, hogy a teljesítmény **kilenc alkalommal** javult ebben az egyszerű számítási feladatban, és `ostress` egy Azure-beli virtuális gépen fut, amely ugyanabban az Azure-régióban található, mint az adatbázis.
 
 <a id="install_analytics_manuallink" name="install_analytics_manuallink"></a>
 
 &nbsp;
 
-## <a name="2-install-the-in-memory-analytics-sample"></a>2. a memóriában tárolt elemzési minta telepítése
+## <a name="2-install-the-in-memory-analytics-sample"></a>2. a In-Memory Analytics-minta telepítése
 
 Ebben a szakaszban összehasonlítja az i/o-és statisztikai eredményeket, ha oszlopcentrikus indexet használ egy hagyományos b-Tree indexhez képest.
 
@@ -242,7 +242,7 @@ A OLTP számítási feladatokhoz a valós idejű elemzések esetében általába
    - Válassza ki a prémium szintű szolgáltatási szintet.
 
 2. Másolja a [sql_in-memory_analytics_sample](https://raw.githubusercontent.com/microsoft/sql-server-samples/master/samples/features/in-memory-database/in-memory-oltp/t-sql-scripts/sql_in-memory_analytics_sample.sql) a vágólapra.
-   - A T-SQL-szkript létrehozza a szükséges memóriában lévő objektumokat az 1. lépésben létrehozott AdventureWorksLT-mintaadatbázisban.
+   - A T-SQL parancsfájl létrehozza a szükséges In-Memory objektumokat az 1. lépésben létrehozott AdventureWorksLT-mintaadatbázisban.
    - A szkript létrehozza a dimenzió táblát és két egyedkapcsolat táblát. Az egyedkapcsolat-táblák 3 500 000-sorokkal vannak feltöltve.
    - A szkript végrehajtása 15 percet is igénybe vehet.
 
@@ -250,7 +250,7 @@ A OLTP számítási feladatokhoz a valós idejű elemzések esetében általába
 
 4. A AdventureWorksLT beállítása a 130 kompatibilitási szintre:<br/>`ALTER DATABASE AdventureworksLT SET compatibility_level = 130;`
 
-    Az 130-as szint nem kapcsolódik közvetlenül a memóriához tartozó szolgáltatásokhoz. Az 130-as szint azonban általában gyorsabb lekérdezési teljesítményt nyújt, mint a 120.
+    Az 130-as szint nem kapcsolódik közvetlenül a In-Memory funkciókhoz. Az 130-as szint azonban általában gyorsabb lekérdezési teljesítményt nyújt, mint a 120.
 
 #### <a name="key-tables-and-columnstore-indexes"></a>Legfontosabb táblák és oszlopcentrikus indexek
 
@@ -333,35 +333,35 @@ GO
 
 A P2 díjszabási csomaggal rendelkező adatbázisban a lekérdezés teljesítményének növelését a hagyományos indexszel összehasonlítva a fürtözött oszlopcentrikus index használatával lehet számítani. A P15 a oszlopcentrikus index használatával várhatóan körülbelül 57-szor a teljesítmény nyeresége.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
-- [1. gyors útmutató: memóriában tárolt OLTP-technológiák a T-SQL teljesítményének növeléséhez](https://msdn.microsoft.com/library/mt694156.aspx)
+- [1. gyors útmutató: In-Memory OLTP Technologies a T-SQL teljesítményének növeléséhez](https://msdn.microsoft.com/library/mt694156.aspx)
 
-- [Memóriában tárolt OLTP használata meglévő Azure SQL-alkalmazásokban](in-memory-oltp-configure.md)
+- [In-Memory OLTP használata meglévő Azure SQL-alkalmazásban](in-memory-oltp-configure.md)
 
-- [Memóriában tárolt OLTP-tárolók figyelése](in-memory-oltp-monitor-space.md) a memóriában lévő OLTP
+- [In-Memory OLTP-tároló figyelése](in-memory-oltp-monitor-space.md) In-Memory OLTP
 
 ## <a name="additional-resources"></a>További források
 
 ### <a name="deeper-information"></a>Mélyebb információk
 
-- [Ismerje meg, hogy a kvórum megduplázza a kulcsfontosságú adatbázis számítási feladatait, miközben 70%-kal csökkenti a DTU a memóriában tárolt OLTP Azure SQL Database](https://customers.microsoft.com/story/quorum-doubles-key-databases-workload-while-lowering-dtu-with-sql-database)
+- [Ismerje meg, hogy a kvórum megduplázza a kulcsfontosságú adatbázis számítási feladatait, miközben 70%-kal csökkenti a DTU a In-Memory OLTP Azure SQL Database](https://customers.microsoft.com/story/quorum-doubles-key-databases-workload-while-lowering-dtu-with-sql-database)
 
 - [Memóriában tárolt OLTP Azure SQL Database blogbejegyzésben](https://azure.microsoft.com/blog/in-memory-oltp-in-azure-sql-database/)
 
-- [Tudnivalók a memóriában tárolt OLTP](https://msdn.microsoft.com/library/dn133186.aspx)
+- [Tudnivalók a In-Memory OLTP](https://msdn.microsoft.com/library/dn133186.aspx)
 
 - [Tudnivalók a oszlopcentrikus indexekről](https://msdn.microsoft.com/library/gg492088.aspx)
 
 - [Tudnivalók a valós idejű operatív elemzésekről](https://msdn.microsoft.com/library/dn817827.aspx)
 
-- Tekintse meg a [gyakori számítási feladatok mintáit és az áttelepítési megfontolásokat](https://msdn.microsoft.com/library/dn673538.aspx) (amelyek a munkaterhelési mintákat ismertetik, ahol a memóriabeli OLTP gyakran jelentős teljesítmény
+- Lásd: [gyakori számítási feladatok mintái és áttelepítési megfontolások](https://msdn.microsoft.com/library/dn673538.aspx) (amelyek a munkaterhelési mintákat ismertetik, ahol a In-Memory OLTP gyakran jelentős teljesítményt nyújt)
 
 #### <a name="application-design"></a>Az alkalmazás kialakítása
 
 - [Memóriában tárolt OLTP (memórián belüli optimalizálás)](https://msdn.microsoft.com/library/dn133186.aspx)
 
-- [Memóriában tárolt OLTP használata meglévő Azure SQL-alkalmazásokban](in-memory-oltp-configure.md)
+- [In-Memory OLTP használata meglévő Azure SQL-alkalmazásban](in-memory-oltp-configure.md)
 
 #### <a name="tools"></a>Eszközök
 

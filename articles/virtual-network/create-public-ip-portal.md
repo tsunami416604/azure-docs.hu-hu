@@ -12,10 +12,10 @@ ms.workload: infrastructure-services
 ms.date: 08/28/2020
 ms.author: blehr
 ms.openlocfilehash: 49a89ee90d28c9c7a3f59424b773ee0f221381e4
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89302730"
 ---
 # <a name="quickstart-create-a-public-ip-address-using-the-azure-portal"></a>Gyors útmutató: nyilvános IP-cím létrehozása a Azure Portal használatával
@@ -35,8 +35,8 @@ A következő lépések végrehajtásával hozzon létre egy **myStandardZRPubli
     | Beállítás                 | Érték                       |
     | ---                     | ---                         |
     | IP-verzió              | IPv4 kiválasztása                 |    
-    | Termékváltozat                     | **Standard** kiválasztása         |
-    | Name                    | *MyStandardZRPublicIP* megadása          |
+    | SKU                     | **Standard** kiválasztása         |
+    | Name (Név)                    | *MyStandardZRPublicIP* megadása          |
     | IP-cím hozzárendelése   | Vegye figyelembe, hogy ez a "statikus" értékként lesz zárolva.                                        |
     | Üresjárati időkorlát (perc)  | Hagyja meg az értéket 4        |
     | DNS-névcímke          | Hagyja üresen az értéket    |
@@ -60,8 +60,8 @@ A következő lépésekkel hozzon létre egy szabványos nyilvános IP-címet eg
     | Beállítás                 | Érték                       |
     | ---                     | ---                         |
     | IP-verzió              | IPv4 kiválasztása                 |    
-    | Termékváltozat                     | **Standard** kiválasztása         |
-    | Name                    | *MyStandardPublicIP* megadása          |
+    | SKU                     | **Standard** kiválasztása         |
+    | Name (Név)                    | *MyStandardPublicIP* megadása          |
     | IP-cím hozzárendelése   | Vegye figyelembe, hogy ez a "statikus" értékként lesz zárolva.                                        |
     | Üresjárati időkorlát (perc)  | Hagyja meg az értéket 4        |
     | DNS-névcímke          | Hagyja üresen az értéket    |
@@ -85,8 +85,8 @@ A következő lépésekkel hozzon létre egy **myBasicPublicIP**nevű alapszint�
     | Beállítás                 | Érték                       |
     | ---                     | ---                         |
     | IP-verzió              | IPv4 kiválasztása                 |    
-    | Termékváltozat                     | **Standard** kiválasztása         |
-    | Name                    | *MyBasicPublicIP* megadása          |
+    | SKU                     | **Standard** kiválasztása         |
+    | Name (Név)                    | *MyBasicPublicIP* megadása          |
     | IP-cím hozzárendelése   | Válassza a **statikus** lehetőséget (lásd az alábbi megjegyzést)                                     |
     | Üresjárati időkorlát (perc)  | Hagyja meg az értéket 4        |
     | DNS-névcímke          | Hagyja üresen az értéket    |

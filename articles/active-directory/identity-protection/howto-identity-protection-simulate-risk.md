@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sahandle
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: cbcc2351b7ead3714cfd21aa30b031cec75074a9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84463756"
 ---
 # <a name="simulating-risk-detections-in-identity-protection"></a>A kockázatok észlelésének szimulálása az Identity Protectionben
@@ -49,7 +49,7 @@ Az alábbi eljárás végrehajtásához a következőket kell használnia:
 
 A bejelentkezés az Identity Protection-irányítópulton 10-15 percen belül megjelenik. 
 
-## <a name="unfamiliar-sign-in-properties"></a>Ismeretlen bejelentkezési tulajdonságok
+## <a name="unfamiliar-sign-in-properties"></a>Szokatlan bejelentkezési tulajdonságok
 
 Ismeretlen helyek szimulálásához be kell jelentkeznie egy helyről, és az eszközön a teszt fiók nem jelentkezett be korábban.
 
@@ -70,7 +70,7 @@ Az alábbi eljárás végrehajtásához olyan felhasználói fiókot kell haszn�
 
 A bejelentkezés az Identity Protection-irányítópulton 10-15 percen belül megjelenik.
 
-## <a name="atypical-travel"></a>Atipikus utazás
+## <a name="atypical-travel"></a>Szokatlan utazás
 
 Az atipikus utazási feltételek szimulálása nehézkes, mert az algoritmus gépi tanulást használ a hamis pozitív állapotok kiszűrésére, például az ismerős eszközökről való atipikus utazásra vagy a címtárban lévő más felhasználók által használt VPN-ről való bejelentkezésre. Emellett az algoritmushoz a felhasználók 14 napos bejelentkezési előzményeit és 10 bejelentkezést kell megadnia, mielőtt megkezdené a kockázati észlelések létrehozását. Az összetett gépi tanulási modellek és a fenti szabályok miatt előfordulhat, hogy az alábbi lépések nem vezetnek a kockázati észleléshez. Előfordulhat, hogy ezeket a lépéseket több Azure AD-fiók esetében is replikálni szeretné az észlelés szimulálása érdekében.
 
@@ -88,7 +88,7 @@ A bejelentkezés 2-4 órán belül megjelenik az Identity Protection irányító
 
 Ez a szakasz a következő cikkben ismertetett módon ismerteti a felhasználó és a bejelentkezési kockázati szabályzatok tesztelésének lépéseit [: a kockázatkezelési házirendek konfigurálása és engedélyezése](howto-identity-protection-configure-risk-policies.md).
 
-### <a name="user-risk-policy"></a>Felhasználói kockázati házirend
+### <a name="user-risk-policy"></a>Felhasználói kockázati szabályzat
 
 A felhasználói kockázatokra vonatkozó biztonsági házirend teszteléséhez hajtsa végre a következő lépéseket:
 
@@ -127,7 +127,7 @@ A bejelentkezési kockázati szabályzat teszteléséhez hajtsa végre a követk
 
 ## <a name="next-steps"></a>További lépések
 
-- [Mi a kockázat?](concept-identity-protection-risks.md)
+- [Mit jelent a kockázat?](concept-identity-protection-risks.md)
 
 - [Útmutató: kockázatkezelési szabályzatok konfigurálása és engedélyezése](howto-identity-protection-configure-risk-policies.md)
 

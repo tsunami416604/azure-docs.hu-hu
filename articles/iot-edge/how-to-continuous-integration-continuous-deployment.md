@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.service: iot-edge
 services: iot-edge
 ms.openlocfilehash: d29a5a6d0d4745655ce5b6d0cead3eaba77ed423
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91281626"
 ---
 # <a name="continuous-integration-and-continuous-deployment-to-azure-iot-edge-devices"></a>Folyamatos integráció és folyamatos üzembe helyezés Azure IoT Edge eszközökön
@@ -80,7 +80,7 @@ Ebben a szakaszban egy új Build-folyamatot hoz létre. A folyamat automatikusan
 
     ![Válassza a Segéd megjelenítése lehetőséget a feladatok paletta megnyitásához](./media/how-to-continuous-integration-continuous-deployment/show-assistant.png)
 
-7. Feladat hozzáadásához vigye a kurzort a YAML végére, vagy bárhová szeretné felvenni a feladathoz tartozó utasításokat. Keresse meg és válassza ki a **Azure IoT Edge**. Adja meg a feladat paramétereit az alábbiak szerint. Ezután válassza a **Hozzáadás** lehetőséget.
+7. Feladat hozzáadásához vigye a kurzort a YAML végére, vagy bárhová szeretné felvenni a feladathoz tartozó utasításokat. Keresse meg és válassza ki a **Azure IoT Edge**. Adja meg a feladat paramétereit az alábbiak szerint. Ezután válassza a **Hozzáadás**lehetőséget.
 
    | Paraméter | Leírás |
    | --- | --- |

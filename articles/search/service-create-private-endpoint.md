@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 05/11/2020
 ms.openlocfilehash: 0cfa7b63d1ce9dd4d9b40cd0eedac247f9c56437
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88935755"
 ---
 # <a name="create-a-private-endpoint-for-a-secure-connection-to-azure-cognitive-search"></a>Hozzon létre egy privát végpontot biztonságos kapcsolódáshoz az Azure Cognitive Search
@@ -64,7 +64,7 @@ Ebben a szakaszban egy új Azure Cognitive Search szolgáltatást fog létrehozn
     | ------- | ----- |
     | **PROJEKT RÉSZLETEI** | |
     | Előfizetés | Válassza ki előfizetését. |
-    | Erőforráscsoport | Válassza a **myResourceGroup**lehetőséget. Ezt az előző szakaszban hozta létre.|
+    | Erőforráscsoport | Válassza a **myResourceGroup** lehetőséget. Ezt az előző szakaszban hozta létre.|
     | **PÉLDÁNY RÉSZLETEI** |  |
     | URL-cím | Adjon meg egy egyedi nevet. |
     | Hely | Válassza ki a kívánt régiót. |
@@ -84,23 +84,23 @@ Ebben a szakaszban egy új Azure Cognitive Search szolgáltatást fog létrehozn
     | Beállítás | Érték |
     | ------- | ----- |
     | Előfizetés | Válassza ki előfizetését. |
-    | Erőforráscsoport | Válassza a **myResourceGroup**lehetőséget. Ezt az előző szakaszban hozta létre.|
+    | Erőforráscsoport | Válassza a **myResourceGroup** lehetőséget. Ezt az előző szakaszban hozta létre.|
     | Hely | Válassza az **USA nyugati**régiója lehetőséget.|
-    | Name (Név) | Adja meg a *myPrivateEndpoint*.  |
-    | Cél alerőforrása | Hagyja meg az alapértelmezett **searchService**. |
-    | **HÁLÓZATI** |  |
+    | Name | Adja meg a *myPrivateEndpoint* nevet.  |
+    | Célzott alerőforrás | Hagyja meg az alapértelmezett **searchService**. |
+    | **HÁLÓZATKEZELÉS** |  |
     | Virtuális hálózat  | Válassza ki a *MyVirtualNetwork* az erőforráscsoport *myResourceGroup*. |
     | Alhálózat | Válassza a *mySubnet*lehetőséget. |
-    | **MAGÁNHÁLÓZATI DNS-INTEGRÁCIÓ** |  |
+    | **PRIVÁT DNS-INTEGRÁCIÓ** |  |
     | Integrálás saját DNS-zónával  | Hagyja meg az alapértelmezett **Igen értéket**. |
     | Privát DNS-zóna  | Hagyja meg az alapértelmezett * * (új) privatelink.search.windows.net * * értéket. |
     |||
 
-1. Válassza az **OK** lehetőséget. 
+1. Kattintson az **OK** gombra. 
 
-1. Válassza az **Áttekintés + létrehozás** lehetőséget. A **felülvizsgálat + létrehozás** oldalon az Azure ellenőrzi a konfigurációt. 
+1. Válassza az **Áttekintés + létrehozás** lehetőséget. Az **Áttekintés és létrehozása** lapra kerül, ahol az Azure érvényesíti az Ön konfigurációját. 
 
-1. Amikor megjelenik az **átadott üzenet ellenőrzése** lehetőség, válassza a **Létrehozás**lehetőséget. 
+1. Amikor megjelenik a **Megfelelt az ellenőrzésen** üzenet, válassza a **Létrehozás** lehetőséget. 
 
 1. Miután befejeződött az új szolgáltatás üzembe helyezése, keresse meg az imént létrehozott erőforrást.
 
@@ -118,27 +118,27 @@ Ebben a szakaszban egy új Azure Cognitive Search szolgáltatást fog létrehozn
     | ------- | ----- |
     | **PROJEKT RÉSZLETEI** | |
     | Előfizetés | Válassza ki előfizetését. |
-    | Erőforráscsoport | Válassza a **myResourceGroup**lehetőséget. Ezt az előző szakaszban hozta létre.  |
+    | Erőforráscsoport | Válassza a **myResourceGroup** lehetőséget. Ezt az előző szakaszban hozta létre.  |
     | **PÉLDÁNY RÉSZLETEI** |  |
     | Virtuális gép neve | Adja meg a *myVm*. |
     | Régió | Válassza az **USA nyugati** régiója vagy bármely Ön által használt régiót. |
     | Rendelkezésre állási beállítások | Az alapértelmezett **infrastruktúra-redundancia megadása nem kötelező**. |
     | Kép | Válassza a **Windows Server 2019 Datacenter**lehetőséget. |
     | Méret | Hagyja meg az alapértelmezett **standard DS1 v2**értéket. |
-    | **RENDSZERGAZDAI FIÓK** |  |
+    | **RENDSZERGAZDAFIÓK** |  |
     | Felhasználónév | Adja meg a választott felhasználónevet. |
-    | Jelszó | Adjon meg egy tetszőleges jelszót. A jelszónak legalább 12 karakter hosszúságúnak kell lennie, [az összetettségre vonatkozó követelmények teljesülése mellett](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
+    | Jelszó | Adjon meg egy tetszőleges jelszót. A jelszónak legalább 12 karakter hosszúnak kell lennie, és meg kell felelnie a [meghatározott összetettségi követelményeknek](../virtual-machines/windows/faq.md?toc=%2fazure%2fvirtual-network%2ftoc.json#what-are-the-password-requirements-when-creating-a-vm).|
     | Jelszó megerősítése | Adja meg újra a jelszót. |
-    | **BEJÖVŐ PORTOK SZABÁLYAI** |  |
+    | **BEJÖVŐPORT-SZABÁLYOK** |  |
     | Nyilvános bejövő portok | Hagyja meg az alapértelmezett **engedélyezett portok engedélyezése beállítást**. |
-    | Bejövő portok kiválasztása | Hagyja meg az alapértelmezett **RDP-t (3389)**. |
-    | **PÉNZ MEGTAKARÍTÁSA** |  |
+    | Válassza ki a bejövő portokat | Hagyja meg az alapértelmezett **RDP-t (3389)**. |
+    | **MEGTAKARÍTÁSI LEHETŐSÉG** |  |
     | Már van Windows-licence? | Hagyja meg az alapértelmezett **nem**értéket. |
     |||
 
 1. Válassza a **Tovább: lemezek**lehetőséget.
 
-1. A **virtuális gép létrehozása – lemezek**területen hagyja meg az alapértelmezett értékeket, és válassza a **Tovább: hálózatkezelés**lehetőséget.
+1. A **Virtuális gép létrehozása – Lemezek** lehetőségnél hagyja meg az alapértelmezett értékeket, és válassza a **Tovább: Hálózatkezelés** lehetőséget.
 
 1. A **virtuálisgép-hálózat létrehozása**területen válassza ki ezt az információt:
 
@@ -149,19 +149,19 @@ Ebben a szakaszban egy új Azure Cognitive Search szolgáltatást fog létrehozn
     | Alhálózat | Hagyja meg az alapértelmezett **mySubnet (10.1.0.0/24)**.|
     | Nyilvános IP-cím | Hagyja meg az alapértelmezett **(új) myVm-IP-címet**. |
     | Nyilvános bejövő portok | Válassza a **kiválasztott portok engedélyezése**lehetőséget. |
-    | Bejövő portok kiválasztása | Válassza a **http** és az **RDP**lehetőséget.|
+    | Válassza ki a bejövő portokat | Válassza a **http** és az **RDP**lehetőséget.|
     ||
 
-1. Válassza az **Áttekintés + létrehozás** lehetőséget. A **felülvizsgálat + létrehozás** oldalon az Azure ellenőrzi a konfigurációt.
+1. Válassza az **Áttekintés + létrehozás** lehetőséget. Az **Áttekintés és létrehozása** lapra kerül, ahol az Azure érvényesíti az Ön konfigurációját.
 
-1. Amikor megjelenik az **átadott üzenet ellenőrzése** lehetőség, válassza a **Létrehozás**lehetőséget. 
+1. Amikor megjelenik a **Megfelelt az ellenőrzésen** üzenet, válassza a **Létrehozás** lehetőséget. 
 
 
 ## <a name="connect-to-the-vm"></a>Kapcsolódás a virtuális géphez
 
 Töltse le, majd kapcsolódjon a virtuális gép *myVm* a következőképpen:
 
-1. A portál keresési sávján adja meg a *myVm*.
+1. A portál keresési sávjába írja be a *myVm* szöveget.
 
 1. Kattintson a **Csatlakozás** gombra. A **Kapcsolódás** gombra kattintva megnyílik a **virtuális géphez való kapcsolódás** .
 
@@ -178,7 +178,7 @@ Töltse le, majd kapcsolódjon a virtuális gép *myVm* a következőképpen:
 
 1. Válassza az **OK** lehetőséget.
 
-1. A bejelentkezés során egy figyelmeztetés jelenhet meg a tanúsítvánnyal kapcsolatban. Ha a tanúsítvány figyelmeztetést kap, válassza az **Igen** vagy a **Folytatás**lehetőséget.
+1. A bejelentkezés során egy figyelmeztetés jelenhet meg a tanúsítvánnyal kapcsolatban. Ha a tanúsítvány figyelmeztetést kap, válassza az **Igen** vagy a **Folytatás** lehetőséget.
 
 1. Ha megjelenik a virtuális gép asztala, csökkentse a helyi asztalra való visszatérést.  
 
@@ -193,7 +193,7 @@ Ha a keresési szolgáltatás végpontja privát, egyes portál-funkciók le van
 
 1. Adja meg az "nslookup [Search szolgáltatás neve]. Search. Windows. net" kifejezést.
 
-    Ehhez hasonló üzenet jelenik meg:
+    Egy ehhez hasonló üzenet jelenik meg:
     ```azurepowershell
     Server:  UnKnown
     Address:  168.63.129.16
@@ -217,5 +217,5 @@ Ha végzett a privát végpont, a Search szolgáltatás és a virtuális gép ha
 1. Válassza az **Erőforráscsoport törlése** elemet. 
 1. Írja be a *myResourceGroup*   **nevet az erőforráscsoport neveként** , majd válassza a **Törlés**lehetőséget.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben a cikkben létrehozott egy virtuális GÉPET egy virtuális hálózaton és egy keresési szolgáltatást egy privát végponttal. Az internetről csatlakozik a virtuális géphez, és biztonságosan kommunikál a keresési szolgáltatással a privát hivatkozás használatával. További információ a privát végpontról: [Mi az az Azure Private Endpoint?](../private-link/private-endpoint-overview.md).

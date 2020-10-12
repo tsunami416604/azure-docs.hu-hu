@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 02/20/2020
 ms.author: tisande
 ms.openlocfilehash: bbfc31e810e2c11cde4907c9d5120b66195191af
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84764978"
 ---
 # <a name="querying-geospatial-data-with-azure-cosmos-db"></a>Térinformatikai adatbázis lekérdezése Azure Cosmos DB
@@ -49,7 +49,7 @@ A térbeli függvények használatával közelségi lekérdezéseket végezhet a
 
 Ha a térbeli indexelést az indexelési házirend tartalmazza, akkor a "távolsági lekérdezések" hatékonyan lesznek kézbesítve az indexen keresztül. További információ a térbeli indexelésről: [térinformatikai indexelés](sql-query-geospatial-index.md). Ha nem rendelkezik térbeli indexszel a megadott elérési utakhoz, a lekérdezés ellenőrzi a tárolót.
 
-`ST_WITHIN`a használatával ellenőrizhető, hogy egy pont egy Sokszögen belül található-e. A gyakran használt sokszögek olyan határokat jelölnek, mint például a zip-kódok, az állami határok vagy a természetes képződmények. Ha a térbeli indexelést is tartalmazza az indexelési házirendben, a "belül" lekérdezéseket a rendszer hatékonyan kézbesíti az indexen keresztül.
+`ST_WITHIN` a használatával ellenőrizhető, hogy egy pont egy Sokszögen belül található-e. A gyakran használt sokszögek olyan határokat jelölnek, mint például a zip-kódok, az állami határok vagy a természetes képződmények. Ha a térbeli indexelést is tartalmazza az indexelési házirendben, a "belül" lekérdezéseket a rendszer hatékonyan kézbesíti az indexen keresztül.
 
 A-ben a sokszög argumentumai `ST_WITHIN` csak egyetlen gyűrűt tartalmazhatnak, azaz a sokszög nem tartalmazhat lyukakat bennük.
 
@@ -99,7 +99,7 @@ A Azure Cosmos DB támogatja az inverz lekérdezések végrehajtását is, azaz 
     }]
 ```
 
-`ST_ISVALID`és használható `ST_ISVALIDDETAILED` annak ellenőrzéséhez, hogy a térbeli objektum érvényes-e. Például a következő lekérdezés ellenőrzi egy pont érvényességét egy tartományon kívüli szélességi értékkel (-132,8). `ST_ISVALID`csak egy logikai értéket ad vissza, és `ST_ISVALIDDETAILED` visszaadja a logikai értéket, és egy olyan karakterláncot, amely az OK okának okát tartalmazza.
+`ST_ISVALID` és használható `ST_ISVALIDDETAILED` annak ellenőrzéséhez, hogy a térbeli objektum érvényes-e. Például a következő lekérdezés ellenőrzi egy pont érvényességét egy tartományon kívüli szélességi értékkel (-132,8). `ST_ISVALID` csak egy logikai értéket ad vissza, és `ST_ISVALIDDETAILED` visszaadja a logikai értéket, és egy olyan karakterláncot, amely az OK okának okát tartalmazza.
 
 **Lekérdezés**
 

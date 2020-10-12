@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 08/12/2020
 ms.custom: seodec18
 ms.openlocfilehash: 26a1208131f1d9d3df7dccd8e27bda37992f043f
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88236669"
 ---
 # <a name="do-sentiment-analysis-with-azure-stream-analytics-and-azure-machine-learning-studio-classic"></a>Azure Stream Analytics és Azure Machine Learning Studio (klasszikus) a hangulat elemzése
@@ -127,7 +127,7 @@ A feladatot a rendszer a blob Storage-ba korábban feltöltött CSV-fájlból ol
    |Tároló|Válassza ki az előző lépésben létrehozott tárolót.|
    |Eseményszerializációs formátum|CSV|
 
-3. Válassza a **Mentés** lehetőséget.
+3. Kattintson a **Mentés** gombra.
 
 ### <a name="configure-the-job-output"></a>A feladatok kimenetének konfigurálása
 
@@ -145,7 +145,7 @@ A művelet az eredményeket ugyanarra a blob-tárolóra küldi, ahol a bemenet b
    |Tároló|Válassza ki az előző lépésben létrehozott tárolót.|
    |Eseményszerializációs formátum|CSV|
 
-3. Válassza a **Mentés** lehetőséget.
+3. Kattintson a **Mentés** gombra.
 
 ### <a name="add-the-machine-learning-function"></a>A Machine Learning függvény hozzáadása
 
@@ -224,7 +224,7 @@ Azure Machine Learning függvényekkel kapcsolatos metrikákat is megtekintheti.
 * A **függvények kérései** a Machine learning webszolgáltatásnak küldött kérések számát jelzik.  
 * A **függvény eseményei** a kérelemben szereplő események számát jelzik. Alapértelmezés szerint minden Machine Learning webszolgáltatásra irányuló kérelem legfeljebb 1 000 eseményt tartalmaz.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Bevezetés a Azure Stream Analyticsba](stream-analytics-introduction.md)
 * [Azure Stream Analytics Query Language Reference (Referencia az Azure Stream Analytics lekérdezési nyelvhez)](https://docs.microsoft.com/stream-analytics-query/stream-analytics-query-language-reference)

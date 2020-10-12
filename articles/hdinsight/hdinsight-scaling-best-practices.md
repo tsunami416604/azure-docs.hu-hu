@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: seoapr2020
 ms.date: 04/29/2020
 ms.openlocfilehash: 44cfc5b651bdd5dc0d7abee575bd964ad0b603d0
-ms.sourcegitcommit: 59ea8436d7f23bee75e04a84ee6ec24702fb2e61
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89505012"
 ---
 # <a name="scale-azure-hdinsight-clusters"></a>Azure HDInsight-fürtök méretezése
@@ -146,13 +146,13 @@ Ha manuálisan szeretné megölni a futó alkalmazást, hajtsa végre a követke
 yarn application -kill <application_id>
 ```
 
-Például:
+Példa:
 
 ```bash
 yarn application -kill "application_1499348398273_0003"
 ```
 
-### <a name="getting-stuck-in-safe-mode"></a>Biztonságos üzemmódba való beragadás
+### <a name="getting-stuck-in-safe-mode"></a>Elakadás csökkentett módban
 
 Amikor lekicsinyít egy fürtöt, a HDInsight az Apache Ambari felügyeleti felületét használja az extra feldolgozói csomópontok leszereléséhez. A csomópontok replikálják a HDFS-blokkokat más online munkavégző csomópontokra. Ezt követően a HDInsight biztonságosan méretezi a fürtöt. A skálázási művelet során a HDFS csökkentett módba kerül. A skálázás befejeződése után HDFS kell lennie. Bizonyos esetekben azonban a HDFS a replikálás alatt álló blokkolás miatt egy méretezési művelet során csökkentett módban ragadja meg.
 

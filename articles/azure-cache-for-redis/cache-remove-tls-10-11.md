@@ -7,10 +7,10 @@ ms.topic: conceptual
 ms.date: 10/22/2019
 ms.author: yegu
 ms.openlocfilehash: 69df5a65df99a7497099e71e9f41701458370c87
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84423921"
 ---
 # <a name="remove-tls-10-and-11-from-use-with-azure-cache-for-redis"></a>A TLS 1,0-es és 1,1-es verziójának eltávolítása az Azure cache használatával a Redis-hez
@@ -31,7 +31,7 @@ Ez a cikk általános útmutatást nyújt a korábbi TLS-verziók függőségein
 
 A módosítások érvénybe léptetésének dátuma:
 
-| Felhő                | 1. fázis kezdési dátuma | 2. fázis kezdő dátuma         |
+| Felhőbeli                | 1. fázis kezdési dátuma | 2. fázis kezdő dátuma         |
 |----------------------|--------------------|----------------------------|
 | Azure (globális)       |  2020. január 13.  | A COVID 19 miatt elhalasztották  |
 | Azure Government     |  Március 13., 2020    | A COVID 19 miatt elhalasztották  |

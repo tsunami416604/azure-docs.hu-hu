@@ -17,10 +17,10 @@ ms.author: kenwith
 ms.reviewer: japere, asteen
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 54673e0018f83024d1c01599d0096c71b6b1d0ae
-ms.sourcegitcommit: 628be49d29421a638c8a479452d78ba1c9f7c8e4
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88642129"
 ---
 # <a name="how-to-configure-single-sign-on-to-an-application-proxy-application"></a>Egyszeri bejelentkezés konfigurálása alkalmazásproxy-alkalmazáshoz
@@ -39,7 +39,7 @@ Konfigurálja az adott típusú egyszeri bejelentkezést. A bejelentkezési mód
 
 -   **Jelszó alapú bejelentkezés**: a jelszó-alapú bejelentkezés bármely olyan alkalmazáshoz használható, amely Felhasználónév és jelszó mezőket használ a bejelentkezéshez. A konfigurációs lépések a [jelszó egyszeri bejelentkezés konfigurálása Azure ad Gallery-alkalmazásokhoz](configure-password-single-sign-on-non-gallery-applications.md)című témakörben találhatók.
 
--   **Integrált Windows-hitelesítés**: integrált Windows-HITELESÍTÉST (IWA) használó alkalmazások esetén az egyszeri bejelentkezés a Kerberos által korlátozott delegáláson (KCD) keresztül engedélyezett. Ez a módszer lehetővé teszi az alkalmazásproxy-összekötők számára az Active Directory a felhasználók megszemélyesítését, valamint a jogkivonatok küldését és fogadását a nevükben. A KCD konfigurálásával kapcsolatos részletek a [KCD dokumentációjában található egyszeri bejelentkezésben](application-proxy-configure-single-sign-on-with-kcd.md)találhatók.
+-   **Integrált Windows-hitelesítés**: integrált Windows-HITELESÍTÉST (IWA) használó alkalmazások esetén az egyszeri bejelentkezés a Kerberos által korlátozott delegáláson (KCD) keresztül engedélyezett. Ez a módszer lehetővé teszi az alkalmazásproxy-összekötők számára az Active Directory a felhasználók megszemélyesítését, valamint a jogkivonatok küldését és fogadását a nevükben. A KCD konfigurálásával kapcsolatos részletek a [KCD dokumentációjának egyetlen Sign-Onban](application-proxy-configure-single-sign-on-with-kcd.md)találhatók.
 
 -   **Fejléc-alapú bejelentkezés**: a fejléc-alapú bejelentkezés egy partneren keresztül érhető el, és további konfigurálásra van szükség. Az egyszeri bejelentkezés olyan alkalmazásra való konfigurálásával kapcsolatos részletekért, amely fejléceket használ a hitelesítéshez, tekintse meg a [PingAccess for Azure ad dokumentációját](application-proxy-configure-single-sign-on-with-ping-access.md).
 
@@ -47,11 +47,11 @@ Konfigurálja az adott típusú egyszeri bejelentkezést. A bejelentkezési mód
 
 Az egyes lehetőségek a "vállalati alkalmazások" alkalmazásban, a bal oldali menüben pedig az **egyszeri bejelentkezési** oldal megnyitásával érhetők el. Vegye figyelembe, hogy ha az alkalmazás a régi portálon lett létrehozva, akkor előfordulhat, hogy nem látja ezeket a lehetőségeket.
 
-Ezen az oldalon egy további bejelentkezési lehetőség is látható: a csatolt bejelentkezés. Ezt a beállítást a alkalmazásproxy is támogatja. Ez a beállítás azonban nem ad hozzá egyszeri bejelentkezést az alkalmazáshoz. Az is előfordulhat, hogy az alkalmazás már rendelkezik egy másik szolgáltatás, például a Active Directory összevonási szolgáltatások (AD FS) használatával történő egyszeri bejelentkezéssel. 
+Ezen az oldalon egy további Sign-On lehetőség is megjelenik: a csatolt bejelentkezés. Ezt a beállítást a alkalmazásproxy is támogatja. Ez a beállítás azonban nem ad hozzá egyszeri bejelentkezést az alkalmazáshoz. Az is előfordulhat, hogy az alkalmazás már rendelkezik egy másik szolgáltatás, például a Active Directory összevonási szolgáltatások (AD FS) használatával történő egyszeri bejelentkezéssel. 
 
 Ez a beállítás lehetővé teszi, hogy a rendszergazda olyan alkalmazásra mutató hivatkozást hozzon létre, amelyet a felhasználók először az alkalmazáshoz való hozzáféréskor érnek el. Ha például van egy olyan alkalmazás, amely a felhasználók hitelesítésére van konfigurálva a Active Directory összevonási szolgáltatások (AD FS) 2,0 használatával, a rendszergazda a "csatolt bejelentkezés" lehetőséggel létrehozhat egy hivatkozást a saját alkalmazásaiban.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - [Jelszó-tároló egyszeri bejelentkezéshez alkalmazásproxy](application-proxy-configure-single-sign-on-password-vaulting.md)
 - [Kerberos által korlátozott delegálás az Application proxyval való egyszeri bejelentkezéshez](application-proxy-configure-single-sign-on-with-kcd.md)
 - [Fejléc-alapú hitelesítés egyszeri bejelentkezéshez alkalmazásproxy](application-proxy-configure-single-sign-on-with-ping-access.md) 

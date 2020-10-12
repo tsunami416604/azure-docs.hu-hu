@@ -1,6 +1,6 @@
 ---
-title: fájl belefoglalása
-description: fájl belefoglalása
+title: fájlbefoglalás
+description: fájlbefoglalás
 services: virtual-machines
 author: roygara
 ms.service: virtual-machines
@@ -9,10 +9,10 @@ ms.date: 03/05/2020
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 4f40a821a0a639fa117dc0844146f28d887166e1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87102712"
 ---
 A növekményes Pillanatképek olyan felügyelt lemezek időpontos biztonsági mentései, amelyekben a rendszer csak a legutóbbi pillanatkép óta történt változásokat tartalmazza. Ha növekményes pillanatképből állít vissza lemezt, a rendszer újraépíti a teljes lemezt, amely a növekményes pillanatkép készítésekor a lemez időpontra történő biztonsági mentését jelöli. Ez az új képesség a felügyelt lemezes Pillanatképek számára potenciálisan költséghatékony lehet, mivel, ha nem választja ki, nem kell a teljes lemezt az egyes pillanatképekkel együtt tárolnia. A teljes pillanatképekhez hasonlóan a növekményes Pillanatképek is használhatók teljes felügyelt lemez vagy teljes pillanatkép létrehozásához.

@@ -10,10 +10,10 @@ ms.date: 08/01/2018
 ms.topic: conceptual
 manager: carmonm
 ms.openlocfilehash: c51ef23e27cd63d3706c104d1e39a14bf61c258e
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86186350"
 ---
 # <a name="edit-textual-runbooks-in-azure-automation"></a>Szöveges runbookok szerkesztése Azure Automation
@@ -62,7 +62,7 @@ Ez a cikk részletesen ismerteti a különböző függvények a szerkesztővel v
 
 ## <a name="edit-an-azure-automation-runbook-using-windows-powershell"></a>Azure Automation runbook szerkesztése a Windows PowerShell használatával
 
-Ha a Windows PowerShell segítségével szeretne szerkeszteni egy runbook, használja a választott szerkesztőt, és mentse a runbook egy **. ps1** fájlba. A runbook tartalmának lekéréséhez az [export-AzAutomationRunbook](/powershell/module/Az.Automation/Export-AzAutomationRunbook) parancsmagot használhatja. Az [import-AzAutomationRunbook](/powershell/module/Az.Automation/import-azautomationrunbook) parancsmag használatával lecserélheti a meglévő Piszkozat runbook a módosítottra.
+Ha a Windows PowerShell segítségével szeretne szerkeszteni egy runbook, használja a választott szerkesztőt, és mentse a runbook egy **. ps1** fájlba. A runbook tartalmának lekéréséhez az [export-AzAutomationRunbook](/powershell/module/Az.Automation/Export-AzAutomationRunbook) parancsmagot használhatja. Az  [import-AzAutomationRunbook](/powershell/module/Az.Automation/import-azautomationrunbook) parancsmag használatával lecserélheti a meglévő Piszkozat runbook a módosítottra.
 
 ### <a name="retrieve-the-contents-of-a-runbook-using-windows-powershell"></a>Runbook tartalmának beolvasása a Windows PowerShell használatával
 

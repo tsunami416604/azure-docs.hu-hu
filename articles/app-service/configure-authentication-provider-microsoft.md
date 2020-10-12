@@ -8,10 +8,10 @@ ms.custom:
 - seodec18
 - fasttrack-edit
 ms.openlocfilehash: 68af882bf240b354bdad1afe322135c048576ed4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83772836"
 ---
 # <a name="configure-your-app-service-or-azure-functions-app-to-use-microsoft-account-login"></a>A App Service vagy Azure Functions alkalmazás konfigurálása a Microsoft-fiók bejelentkezési használatára
@@ -30,7 +30,7 @@ Ebből a témakörből megtudhatja, hogyan konfigurálhatja Azure App Service va
 1. A **támogatott fióktípus**területen válassza a **fiókok bármely szervezeti címtárban (bármely Azure ad-címtár – több-bérlő) és a személyes Microsoft-fiókok (például Skype, Xbox) lehetőséget.**
 1. Az **átirányítási URI**-k területen válassza a Web lehetőséget, majd írja be a **következőt**: `https://<app-domain-name>/.auth/login/aad/callback` . Cserélje le a *\<app-domain-name>* nevet az alkalmazás tartománynevére.  Például: `https://contoso.azurewebsites.net/.auth/login/aad/callback`. Ügyeljen arra, hogy az URL-címben a HTTPS-sémát használja.
 
-1. Kattintson a **Register** (Regisztrálás) elemre.
+1. Válassza a **Regisztráció** lehetőséget.
 1. Másolja az **alkalmazás (ügyfél) azonosítóját**. Erre később még szüksége lesz.
 1. A bal oldali panelen válassza a **tanúsítványok & titkos kulcsok**  >  **új ügyfél titka**lehetőséget. Adja meg a leírást, válassza ki az érvényesség időtartamát, és válassza a **Hozzáadás**lehetőséget.
 1. Másolja a **tanúsítványok & titkok** lapon megjelenő értéket. Miután elhagyta a lapot, nem jelenik meg újra.
@@ -43,7 +43,7 @@ Ebből a témakörből megtudhatja, hogyan konfigurálhatja Azure App Service va
 1. Nyissa meg az alkalmazást a [Azure Portalban].
 1. Válassza a **Beállítások**  >  **hitelesítés/engedélyezés**lehetőséget, és győződjön meg arról, hogy a **app Service hitelesítés** **be van kapcsolva**.
 1. A **hitelesítésszolgáltatók**területen válassza a **Azure Active Directory**lehetőséget. Válassza **Advanced** a speciális **felügyeleti mód**lehetőséget. Illessze be a korábban beszerzett alkalmazás (ügyfél) AZONOSÍTÓját és az ügyfél titkos kulcsát. **`https://login.microsoftonline.com/9188040d-6c67-4c5b-b112-36a304b66dad/v2.0`** A **kiállítói URL-cím** mezőhöz használható.
-1. Válassza az **OK** lehetőséget.
+1. Kattintson az **OK** gombra.
 
    App Service hitelesítést biztosít, de nem korlátozza a webhely tartalmához és API-khoz való jogosult hozzáférést. Engedélyezni kell a felhasználókat az alkalmazás kódjában.
 
@@ -63,4 +63,4 @@ Most már készen áll a Microsoft-fiók használatára a hitelesítéshez az al
 <!-- URLs. -->
 
 [My Applications]: https://go.microsoft.com/fwlink/p/?LinkId=262039
-[Azure Portalra]: https://portal.azure.com/
+[Azure Portal]: https://portal.azure.com/

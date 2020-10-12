@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 01/08/2020
 ms.author: apimpm
 ms.openlocfilehash: 8e02a47cd6ae6e4883b5113b07d4049cd723232d
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86250192"
 ---
 # <a name="how-to-secure-back-end-services-using-client-certificate-authentication-in-azure-api-management"></a>Háttérszolgáltatások biztonságossá tétele ügyféltanúsítvány-alapú hitelesítéssel az Azure API Managementben
@@ -46,7 +46,7 @@ Ez az útmutató bemutatja, hogyan konfigurálhatja az API Management-szolgálta
 3. Kattintson a **+ Hozzáadás** gombra.
     ![Ügyféltanúsítványok hozzáadása](media/api-management-howto-mutual-certificates/apim-client-cert-add.png)
 4. Keresse meg a tanúsítványt, adja meg annak AZONOSÍTÓját és jelszavát.
-5. Kattintson a **Létrehozás** lehetőségre.
+5. Kattintson a **Létrehozás** elemre.
 
 > [!NOTE]
 > A tanúsítványnak **. pfx** formátumúnak kell lennie. Az önaláírt tanúsítványok engedélyezettek.

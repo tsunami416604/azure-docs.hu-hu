@@ -4,10 +4,10 @@ description: A Azure Functions OpenAPI-támogatásának áttekintése
 ms.topic: conceptual
 ms.date: 03/23/2017
 ms.openlocfilehash: 499d4f685e3802fcc37c8a3050ae367207f192d2
-ms.sourcegitcommit: 5b8fb60a5ded05c5b7281094d18cf8ae15cb1d55
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87385823"
 ---
 # <a name="openapi-20-metadata-support-in-azure-functions-preview"></a>OpenAPI 2,0 metaadat-támogatás a Azure Functionsban (előzetes verzió)
@@ -73,7 +73,7 @@ A következő táblázat a Azure Portal beállításokat és a function.jsmegfel
 
 A tárházban swagger.jsmódosításait mostantól az API-definíció URL-címe és az 1. c lépésben feljegyzett kulcs alapján hajtja végre a függvény alkalmazás.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Első lépések oktatóanyag](./functions-openapi-definition.md). Próbálja ki a bemutatót egy OpenAPI-definíció működés közbeni megtekintéséhez.
 * [Azure functions GitHub-tárház](https://github.com/Azure/Azure-Functions/). Tekintse meg a functions tárházat, és küldjön visszajelzést az API-definíció támogatásának előzetes verziójáról. Hozzon fel GitHub-problémát minden, amit frissíteni szeretne.
 * [Azure functions fejlesztői referenciája](functions-reference.md). A kódolási függvények ismertetése és az eseményindítók és kötések meghatározása.

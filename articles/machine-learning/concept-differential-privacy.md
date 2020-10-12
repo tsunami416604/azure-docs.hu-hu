@@ -10,10 +10,10 @@ ms.service: machine-learning
 ms.subservice: core
 ms.topic: conceptual
 ms.openlocfilehash: 9728bf2c86c0629b09e2325650ce288cf9b3cc7e
-ms.sourcegitcommit: 3541c9cae8a12bdf457f1383e3557eb85a9b3187
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86199789"
 ---
 # <a name="preserve-data-privacy-by-using-differential-privacy-and-the-whitenoise-package-preview"></a>Az adatvédelem megőrzése a differenciált adatvédelem és a WhiteNoise-csomag (előzetes verzió) használatával
@@ -76,7 +76,7 @@ A rendszerkönyvtár a következő eszközöket és szolgáltatásokat biztosít
 
 |Összetevő  |Leírás  |
 |---------|---------|
-|Adathozzáférés     | Az SQL-lekérdezések elfogására és feldolgozására szolgáló függvénytár, amely jelentéseket készít. Ez a kódtár a Pythonban van megvalósítva, és a következő ODBC-és DBAPI-adatforrásokat támogatja:<ul><li>PostgreSQL</li><li>SQL Server</li><li>Spark</li><li>Preston</li><li>Pandák</li></ul>|
+|Data Accesss     | Az SQL-lekérdezések elfogására és feldolgozására szolgáló függvénytár, amely jelentéseket készít. Ez a kódtár a Pythonban van megvalósítva, és a következő ODBC-és DBAPI-adatforrásokat támogatja:<ul><li>PostgreSQL</li><li>SQL Server</li><li>Spark</li><li>Preston</li><li>Pandák</li></ul>|
 |Szolgáltatás     | A végrehajtási szolgáltatás, amely REST-végpontot biztosít a kérelmek és a megosztott adatforrások közötti lekérdezések kiszolgálásához. A szolgáltatás úgy lett kialakítva, hogy lehetővé tegye a differenciált adatvédelmi modulok összeállítását, amelyek különböző Delta és epszilon értékeket, más néven heterogén kérelmeket tartalmaznak. Ez a hivatkozási implementáció a korrelált adatok lekérdezéseit érintő további hatásokra utal. |
 |Értékelő     | A sztochasztikus értékelő, amely az adatvédelem megsértését, a pontosságot és a torzítást ellenőrzi. Az értékelő a következő teszteket támogatja: <ul><li>Adatvédelmi teszt – meghatározza, hogy a jelentés megfelel-e a különbözeti adatvédelem feltételeinek.</li><li>Pontossági teszt – meghatározza, hogy a jelentések megbízhatósága a 95%-os megbízhatósági szint miatt a felső és az alsó határokon belülre esik-e.</li><li>Segédprogram tesztelése – meghatározza, hogy a jelentések megbízhatósági határai elég lezárultak-e az adatokhoz, miközben továbbra is maximalizálják az adatvédelmet.</li><li>Torzítási teszt – a jelentések ismétlődő lekérdezésekre való terjesztését méri, így biztosítva, hogy ne legyenek kiegyensúlyozva</li></ul> |
 

@@ -12,10 +12,10 @@ ms.author: dfurman
 ms.reviewer: ''
 ms.date: 03/03/2020
 ms.openlocfilehash: be8e38d38408bd7cf11608d71035bd7cf0808b60
-ms.sourcegitcommit: de2750163a601aae0c28506ba32be067e0068c0c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89488901"
 ---
 # <a name="azure-sql-database-hyperscale-faq"></a>Azure SQL Database nagy kapacitású – gyakori kérdések
@@ -45,12 +45,12 @@ A virtuális mag-alapú szolgáltatási rétegek a következő táblázatban le�
 | **A következőkre alkalmas** |Mind|A költségvetés-orientált kiegyensúlyozott számítási és tárolási lehetőségeket kínál.|A legtöbb üzleti számítási feladat. A tárterület automatikus skálázása 100 TB-ig, gyors vertikális és horizontális számítási skálázás, gyors adatbázis-visszaállítás.|OLTP alkalmazások nagy tranzakciós sebességgel és alacsony IO-késéssel. Maximális rugalmasságot biztosít a hibák és a gyors feladatátvételek esetében, több szinkronban frissített replika használatával.|
 |  **Erőforrás típusa** ||SQL Database/SQL felügyelt példány | Önálló adatbázis | SQL Database/SQL felügyelt példány |
 | **Számítási méret**|SQL Database * | 1 – 80 virtuális mag | 1 – 80 virtuális mag * | 1 – 80 virtuális mag |
-| **Számítási méret**|SQL Managed Instance | 8, 16, 24, 32, 40, 64, 80 virtuális mag | N/A | 8, 16, 24, 32, 40, 64, 80 virtuális mag |
+| **Számítási méret**|Felügyelt SQL-példány | 8, 16, 24, 32, 40, 64, 80 virtuális mag | N.A. | 8, 16, 24, 32, 40, 64, 80 virtuális mag |
 | **Tárolási típus** | Mind |Prémium szintű távoli tárterület (/példány) | A leválasztott tárterület helyi SSD-gyorsítótárral (/példány) | Villámgyors helyi SSD-tároló (példány) |
 | **Tárterület mérete** | SQL Database *| 5 GB – 4 TB | Akár 100 TB | 5 GB – 4 TB |
-| **Tárterület mérete** | SQL Managed Instance  | 32 GB – 8 TB | N/A | 32 GB – 4 TB |
+| **Tárterület mérete** | Felügyelt SQL-példány  | 32 GB – 8 TB | N.A. | 32 GB – 4 TB |
 | **IOPS** | Önálló adatbázis | 500 IOPS/virtuális mag 7000 maximális IOPS | A nagy kapacitású egy többrétegű architektúra, több szinten történő gyorsítótárazással. A hatékony IOPS a munkaterheléstől függ. | 5000 IOPS 200 000 maximális IOPS|
-| **IOPS** | SQL Managed Instance | Fájlmérettől függ | N/A | 1375 IOPS/virtuális mag |
+| **IOPS** | Felügyelt SQL-példány | Fájlmérettől függ | N.A. | 1375 IOPS/virtuális mag |
 |**Rendelkezésre állás**|Mind|1 replika, nincs olvasási felskálázás, nincs helyi gyorsítótár | Több replika, legfeljebb 4 olvasási felskálázás, részleges helyi gyorsítótár | 3 replika, 1 olvasási felskálázás, zóna – redundáns HA, teljes helyi tárterület |
 |**Biztonsági másolatok**|Mind|RA-GRS, 7-35 napos megőrzés (alapértelmezés szerint 7 nap)| RA-GRS, 7 napos megőrzés, állandó időpontok közötti helyreállítási idő (PITR) | RA-GRS, 7-35 napos megőrzés (alapértelmezés szerint 7 nap) |
 

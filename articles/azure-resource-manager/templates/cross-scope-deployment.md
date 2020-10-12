@@ -4,10 +4,10 @@ description: Azt mutatja be, hogyan kell több hatókört megcélozni egy közpo
 ms.topic: conceptual
 ms.date: 07/28/2020
 ms.openlocfilehash: 6161401ac039551a814b595715f56df1ac62dd6c
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87374527"
 ---
 # <a name="deploy-azure-resources-across-scopes"></a>Azure-erőforrások üzembe helyezése hatókörök között
@@ -143,7 +143,7 @@ Az alábbi táblázat azt mutatja, hogy a függvények feloldhatók-e a szülő 
 | ------------- | ----- | ---------- |
 | beágyazott        | külső (alapértelmezett) | Szülő erőforráscsoport |
 | beágyazott        | belső | Alerőforrás-csoport |
-| csatolt        | n.a.   | Alerőforrás-csoport |
+| csatolt        | N/A   | Alerőforrás-csoport |
 
 A következő [példában a sablon](https://github.com/Azure/azure-docs-json-samples/blob/master/azure-resource-manager/crossresourcegroupproperties.json) látható:
 

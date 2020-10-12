@@ -9,10 +9,10 @@ ms.topic: troubleshooting
 ms.custom: hdinsightactive
 ms.date: 04/14/2020
 ms.openlocfilehash: 021bfc0b87b0da800728eda26d9f5222bd52bc1e
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86086959"
 ---
 # <a name="understand-and-resolve-errors-received-from-webhcat-on-hdinsight"></a>A WebHCattől kapott hibák megértése és megoldása HDInsightban
@@ -41,7 +41,7 @@ Ha túllépi a következő alapértelmezett értékeket, akkor csökkenhet a Web
 
 **Http-állapotkód**: 429
 
-| Ok | Megoldás: |
+| Ok | Feloldás |
 | --- | --- |
 | Túllépte a percenkénti Webhcaten által kiszolgált maximális egyidejű kéréseket (alapértelmezett érték: 20). |Csökkentse a munkaterhelést, és győződjön meg arról, hogy nem küldi el az egyidejű kérések maximális számát, vagy növelje az egyidejű kérések korlátját a módosítással `templeton.exec.max-procs` . További információ: [konfiguráció módosítása](#modifying-configuration) |
 
@@ -49,7 +49,7 @@ Ha túllépi a következő alapértelmezett értékeket, akkor csökkenhet a Web
 
 **Http-állapotkód**: 503
 
-| Ok | Megoldás: |
+| Ok | Feloldás |
 | --- | --- |
 | Ez az állapotkód általában a fürt elsődleges és másodlagos Átjárócsomóponthoz közötti feladatátvétel során fordul elő |Várjon két percet, majd próbálja megismételni a műveletet. |
 
@@ -57,7 +57,7 @@ Ha túllépi a következő alapértelmezett értékeket, akkor csökkenhet a Web
 
 **Http-állapotkód**: 400
 
-| Ok | Megoldás: |
+| Ok | Feloldás |
 | --- | --- |
 | A feladatok részleteit tisztábban megtisztították |A feladatok előzményeinek alapértelmezett megőrzési ideje 7 nap. Az alapértelmezett megőrzési időtartam módosítható `mapreduce.jobhistory.max-age-ms` . További információ: [konfiguráció módosítása](#modifying-configuration) |
 | A feladatot egy feladatátvétel miatt meggyilkolták |Feladat beküldésének újrapróbálása legfeljebb két percig |
@@ -67,11 +67,11 @@ Ha túllépi a következő alapértelmezett értékeket, akkor csökkenhet a Web
 
 **Http-állapotkód**: 502
 
-| Ok | Megoldás: |
+| Ok | Feloldás |
 | --- | --- |
 | A belső adatgyűjtési folyamat a Webhcaten folyamaton belül következik be |Várjon, amíg befejeződik a Webhcaten-szolgáltatás begyűjtése vagy újraindítása |
 | Időtúllépés a erőforráskezelő szolgáltatás válaszára való várakozáskor. Ez a hiba akkor fordulhat elő, ha az aktív alkalmazások száma a beállított maximális értékre kerül (alapértelmezett 10 000). |Várjon, amíg a jelenleg futó feladatok befejeződik, vagy növelje az egyidejű feladat korlátját módosítással `yarn.scheduler.capacity.maximum-applications` . További információ: a [konfiguráció módosítása](#modifying-configuration) szakasz. |
-| Az összes feladat beolvasására tett kísérlet a [Get/Jobs](https://cwiki.apache.org/confluence/display/Hive/WebHCat+Reference+Jobs) hívással `Fields` , míg a értéke`*` |Ne kérje le *az összes* feladatot. Ehelyett `jobid` a feladatokhoz csak bizonyos feladat-azonosítónál nagyobb részleteket kér le. Vagy ne használja`Fields` |
+| Az összes feladat beolvasására tett kísérlet a [Get/Jobs](https://cwiki.apache.org/confluence/display/Hive/WebHCat+Reference+Jobs) hívással `Fields` , míg a értéke `*` |Ne kérje le *az összes* feladatot. Ehelyett `jobid` a feladatokhoz csak bizonyos feladat-azonosítónál nagyobb részleteket kér le. Vagy ne használja `Fields` |
 | A Webhcaten szolgáltatás nem érhető el a Átjárócsomóponthoz feladatátvétel során |Várjon két percet, és ismételje meg a műveletet. |
 | Több mint 500 függőben lévő feladat van elküldve a Webhcaten-on keresztül |Várjon, amíg a jelenleg függőben lévő feladatok befejeződtek a további feladatok elküldése előtt |
 

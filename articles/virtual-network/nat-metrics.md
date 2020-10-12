@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 03/04/2020
 ms.author: allensu
 ms.openlocfilehash: e3c47a60a6cda074eba7b5c3292577c29f50c2ab
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87424051"
 ---
 # <a name="azure-virtual-network-nat-metrics"></a>Azure Virtual Network NAT-metrikák
@@ -38,11 +38,11 @@ A NAT-átjáró erőforrásai a következő többdimenziós mérőszámokat bizt
 
 | Metrika | Leírás | Ajánlott összesítés | Dimenziók |
 |---|---|---|---|
-| Bájt | Bejövő és kimenő bájtok feldolgozott száma | Összeg | Irány (a; Kimenő), protokoll (6 TCP; 17 UDP) |
-| Csomagok | A bejövő és kimenő csomagok feldolgozása folyamatban | Összeg | Irány (a; Kimenő), protokoll (6 TCP; 17 UDP) |
-| Eldobott csomagok | A NAT-átjáró által eldobott csomagok | Összeg | / |
-| SNAT-kapcsolatok száma | Állapot-átmenetek/időköz | Összeg | Kapcsolat állapota, protokoll (6 TCP; 17 UDP) |
-| SNAT-kapcsolatok száma összesen | Aktuális aktív SNAT-kapcsolatok (~ SNAT-portok használatban) | Összeg | Protokoll (6 TCP; 17 UDP) |
+| Bájt | Bejövő és kimenő bájtok feldolgozott száma | Sum | Irány (a; Kimenő), protokoll (6 TCP; 17 UDP) |
+| Csomagok | A bejövő és kimenő csomagok feldolgozása folyamatban | Sum | Irány (a; Kimenő), protokoll (6 TCP; 17 UDP) |
+| Eldobott csomagok | A NAT-átjáró által eldobott csomagok | Sum | / |
+| SNAT-kapcsolatok száma | Állapot-átmenetek/időköz | Sum | Kapcsolat állapota, protokoll (6 TCP; 17 UDP) |
+| SNAT-kapcsolatok száma összesen | Aktuális aktív SNAT-kapcsolatok (~ SNAT-portok használatban) | Sum | Protokoll (6 TCP; 17 UDP) |
 
 
 ## <a name="alerts"></a>Riasztások
@@ -53,7 +53,7 @@ A metrikákkal kapcsolatos riasztások az összes korábbi [metrika](#metrics)es
 
 A Resource Health nem támogatott.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Tudnivalók a [Virtual Network NAT](nat-overview.md) -ról
 * Tudnivalók a [NAT-átjáró erőforrásáról](nat-gateway-resource.md)

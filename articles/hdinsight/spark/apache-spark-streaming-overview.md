@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/23/2020
 ms.openlocfilehash: a88d4893daa12ff2c35ee7cf8f4e5b7569f854f6
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86086194"
 ---
 # <a name="overview-of-apache-spark-streaming"></a>A Apache Spark streaming áttekintése
@@ -89,7 +89,7 @@ A kimeneti műveletek alkalmazásával leküldheti az átalakítás eredményeit
 wordCounts.print()
 ```
 
-### <a name="run-the-application"></a>Alkalmazás futtatása
+### <a name="run-the-application"></a>Az alkalmazás futtatása
 
 Indítsa el a folyamatos átviteli alkalmazást, és futtassa a parancsot a megszakítási jel fogadása előtt.
 
@@ -154,7 +154,7 @@ SELECT * FROM demo_numbers
 
 Az eredményül kapott kimenet a következő kimenethez hasonlít:
 
-| value | time |
+| érték | time |
 | --- | --- |
 |10 | 1497314465256 |
 |11 | 1497314470272 |
@@ -222,7 +222,7 @@ ssc.start()
 
 Az első perc után 12 bejegyzés van – hat bejegyzés az ablakban gyűjtött két kötegből.
 
-| value | time |
+| érték | time |
 | --- | --- |
 | 1 | 1497316294139 |
 | 2 | 1497316299158
@@ -239,7 +239,7 @@ Az első perc után 12 bejegyzés van – hat bejegyzés az ablakban gyűjtött 
 
 A Spark streaming API-ban elérhető csúszó ablak függvények közé tartozik az ablak, a countByWindow, a reduceByWindow és a countByValueAndWindow. A függvények részleteiért lásd: [átalakítások a DStreams-on](https://people.apache.org/~pwendell/spark-releases/latest/streaming-programming-guide.html#transformations-on-dstreams).
 
-## <a name="checkpointing"></a>Ellenőrzőpontok használata
+## <a name="checkpointing"></a>Ellenőrző pontok használata
 
 A rugalmasság és a hibatűrés biztosításához a Spark streaming az ellenőrzőpontokon alapul, így biztosítva, hogy a stream feldolgozása zavartalan maradjon, még a csomópont meghibásodása előtt is. A Spark ellenőrzőpontokat hoz létre a tartós tároláshoz (Azure Storage vagy Data Lake Storage). Ezek az ellenőrzőpontok a folyamatos átviteli alkalmazások metaadatait, például a konfigurációt és az alkalmazás által meghatározott műveleteket tárolják. Továbbá minden olyan köteg, amely még nem lett feldolgozva, várólistára került. Az ellenőrzőpontok időnként a RDD található adatok mentését is magukban foglalják, hogy gyorsabban építsék újra az adatok állapotát a Spark által felügyelt RDD.
 

@@ -15,17 +15,17 @@ ms.topic: troubleshooting
 ms.date: 06/01/2020
 ms.author: v-miegge
 ms.openlocfilehash: f59903ed111be1fe414f4b3ded250d754c91d323
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87069142"
 ---
 # <a name="troubleshoot-boot-error---disk-read-error-occurred"></a>Rendszerindítási hiba – hiba történt a lemez olvasásakor
 
 Ez a cikk olyan problémák megoldását ismerteti, amelyekben a lemez nem olvasható egy Azure-beli virtuális gépen (VM).
 
-## <a name="symptoms"></a>Probléma
+## <a name="symptoms"></a>Hibajelenségek
 
 Ha [rendszerindítási diagnosztikát](./boot-diagnostics.md) használ a virtuális gép képernyőképének megtekintéséhez, látni fogja, hogy a képernyőképen megjelenik a "lemezes olvasási hiba történt" üzenet. Az újraindításhoz nyomja le a Ctrl+Alt+Del billentyűkombinációt.”
 

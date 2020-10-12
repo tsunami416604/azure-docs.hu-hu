@@ -14,10 +14,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: apimpm
 ms.openlocfilehash: 4a0e8c6eb87b053c0e3ee524c60435dc45d81ff3
-ms.sourcegitcommit: 4e5560887b8f10539d7564eedaff4316adb27e2c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87902258"
 ---
 # <a name="how-to-authorize-developer-accounts-using-oauth-20-in-azure-api-management"></a>Fejlesztői fiókok engedélyezése az Azure API Management OAuth 2,0 használatával
@@ -68,18 +68,18 @@ Ez az útmutató bemutatja, hogyan konfigurálhatja a API Management Service-pé
 
     ![OAuth 2,0 új kiszolgáló](./media/api-management-howto-oauth2/oauth-03.png)
 
-    Egy Azure Active Directory OAuth 2,0-kiszolgáló esetén a **jogkivonat-végpont URL-címének** formátuma a következő lesz, ahol `<TenantID>` a formátuma: `yourapp.onmicrosoft.com` .
+    Egy Azure Active Directory OAuth 2,0-kiszolgáló esetén a **jogkivonat-végpont URL-címének** formátuma a következő lesz, ahol `<TenantID>`  a formátuma: `yourapp.onmicrosoft.com` .
 
     `https://login.microsoftonline.com/<TenantID>/oauth2/token`
 
-    Az **ügyfél-hitelesítési módszerek** alapértelmezett beállítása az **alapszintű**, a **hozzáférési jogkivonat-küldési módszer** pedig az **engedélyezési fejléc**. Ezek az értékek az űrlap ezen szakaszán, az **alapértelmezett hatókörrel**együtt konfigurálhatók.
+    Az **ügyfél-hitelesítési módszerek** alapértelmezett beállítása az **alapszintű**, a  **hozzáférési jogkivonat-küldési módszer** pedig az **engedélyezési fejléc**. Ezek az értékek az űrlap ezen szakaszán, az **alapértelmezett hatókörrel**együtt konfigurálhatók.
 
 6. Az **ügyfél hitelesítő adatai** szakasz tartalmazza az **ügyfél-azonosítót** és az **ügyfél titkát**, amelyet a rendszer a OAuth 2,0-kiszolgáló létrehozása és konfigurálása során kapott. Az **ügyfél-azonosító** és az **ügyfél titkos kulcsának** megadása után létrejön az **engedélyezési kód** **redirect_uri** . Ez az URI a válasz URL-címének konfigurálására szolgál a OAuth 2,0-kiszolgáló konfigurációjában.
 
     Az új fejlesztői portálon az URI utótagja a következőket képezi:
 
-    - `/signin-oauth/code/callback/{authServerName}`hitelesítési kód engedélyezési folyamata
-    - `/signin-oauth/implicit/callback`implicit engedélyezési folyamat esetén
+    - `/signin-oauth/code/callback/{authServerName}` hitelesítési kód engedélyezési folyamata
+    - `/signin-oauth/implicit/callback` implicit engedélyezési folyamat esetén
 
     ![OAuth 2,0 új kiszolgáló](./media/api-management-howto-oauth2/oauth-04.png)
 

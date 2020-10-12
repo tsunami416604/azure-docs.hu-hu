@@ -6,10 +6,10 @@ ms.subservice: change-inventory-management
 ms.date: 06/15/2020
 ms.topic: conceptual
 ms.openlocfilehash: eab509e389c074232526aa93fcebb72f3bc986c0
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86185602"
 ---
 # <a name="manage-change-tracking-and-inventory"></a>A Change Tracking és az Inventory kezelése
@@ -44,7 +44,7 @@ A következő lépésekkel konfigurálhatja a Windows rendszerű számítógépe
     |---------|---------|
     |Engedélyezve     | Igaz, ha a beállítás alkalmazva van, ellenkező esetben hamis.        |
     |Elem neve     | A nyomon követett fájl rövid neve.        |
-    |Csoport     | Egy csoport neve a fájlok logikai csoportosításához.        |
+    |Group     | Egy csoport neve a fájlok logikai csoportosításához.        |
     |Elérési út megadása     | A fájl keresésének elérési útja, például **c:\Temp \\ \* . txt**. Használhat környezeti változókat is, például: `%winDir%\System32\\\*.*` .       |
     |Elérési út típusa     | Az elérési út típusa A lehetséges értékek: fájl és mappa.        |    
     |Rekurzió     | True (igaz), ha a rendszer rekurziót használ a nyomon követett elem keresésekor, máskülönben hamis értéket ad.        |    
@@ -65,7 +65,7 @@ A következő lépésekkel konfigurálhatja a fájlok követését a Linux rends
     |---------|---------|
     |Engedélyezve     | Igaz, ha a beállítás alkalmazva van, ellenkező esetben hamis.        |
     |Elem neve     | A nyomon követett fájl rövid neve.        |
-    |Csoport     | Egy csoport neve a fájlok logikai csoportosításához.        |
+    |Group     | Egy csoport neve a fájlok logikai csoportosításához.        |
     |Elérési út megadása     | A fájl keresésének elérési útja, például **/etc/*. conf**.       |
     |Elérési út típusa     | Az elérési út típusa A lehetséges értékek a fájl és a könyvtár.        |
     |Rekurzió     | True (igaz), ha a rendszer rekurziót használ a nyomon követett elem keresésekor, máskülönben hamis értéket ad.        |
@@ -134,7 +134,7 @@ A következő lépésekkel konfigurálhatja a beállításjegyzék-kulcsok nyomo
     |---------|---------|
     |Engedélyezve     | Értéke TRUE (igaz), ha egy beállítás alkalmazva van, ellenkező esetben hamis.        |
     |Elem neve     | A nyomon követni kívánt beállításkulcs rövid neve.        |
-    |Csoport     | Csoport neve a beállításkulcsok logikai csoportosításához.        |
+    |Group     | Csoport neve a beállításkulcsok logikai csoportosításához.        |
     |Windows-beállításkulcs   | Az elérési úttal rendelkező kulcsnév, például: `HKEY_LOCAL_MACHINE\SOFTWARE\Microsoft\Windows\CurrentVersion\Explorer\User Shell Folders\Common Startup` .      |
 
 ## <a name="search-logs-for-change-records"></a>Naplók keresése a változási rekordokhoz
@@ -143,8 +143,8 @@ A változási rekordok esetében különböző kereséseket végezhet a Azure Mo
 
 |Lekérdezés  |Leírás  |
 |---------|---------|
-|`ConfigurationData`<br>&#124;`where ConfigDataType == "WindowsServices" and SvcStartupType == "Auto"`<br>&#124;`where SvcState == "Stopped"`<br>&#124;`summarize arg_max(TimeGenerated, *) by SoftwareName, Computer`         | Megjeleníti az automatikusra beállított és a leállítottként jelentett Microsoft-szolgáltatások legújabb leltározási rekordjait. Az eredmények a megadott számítógépnév és számítógép legutóbbi rekordjára korlátozódnak.    |
-|`ConfigurationChange`<br>&#124;`where ConfigChangeType == "Software" and ChangeCategory == "Removed"`<br>&#124;`order by TimeGenerated desc`|Megjeleníti a törölt szoftverek módosítási rekordjait.|
+|`ConfigurationData`<br>&#124; `where ConfigDataType == "WindowsServices" and SvcStartupType == "Auto"`<br>&#124; `where SvcState == "Stopped"`<br>&#124; `summarize arg_max(TimeGenerated, *) by SoftwareName, Computer`         | Megjeleníti az automatikusra beállított és a leállítottként jelentett Microsoft-szolgáltatások legújabb leltározási rekordjait. Az eredmények a megadott számítógépnév és számítógép legutóbbi rekordjára korlátozódnak.    |
+|`ConfigurationChange`<br>&#124; `where ConfigChangeType == "Software" and ChangeCategory == "Removed"`<br>&#124; `order by TimeGenerated desc`|Megjeleníti a törölt szoftverek módosítási rekordjait.|
 
 ## <a name="create-alerts-on-changes"></a>Riasztások létrehozása a változásokról
 

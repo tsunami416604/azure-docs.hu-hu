@@ -12,10 +12,10 @@ ms.date: 01/10/2020
 ms.author: tdsp
 ms.custom: seodec18, previous-author=deguhath, previous-ms.author=deguhath
 ms.openlocfilehash: 8350437d04fd019aab8fb22be8ad0e9a4a2831d7
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87012178"
 ---
 # <a name="move-data-to-sql-server-on-an-azure-virtual-machine"></a>Adatok áthelyezés SQL Server-kiszolgálóra Azure-beli virtuális gépeken
@@ -28,8 +28,8 @@ Az alábbi táblázat összefoglalja az Azure-beli virtuális gépeken SQL Serve
 
 | <b>FORRÁS</b> | <b>CÉL: SQL Server Azure-beli virtuális gépen</b> |
 | --- | --- |
-| <b>Sima fájl</b> |1. <a href="#insert-tables-bcp">parancssori tömeges másolási segédprogram (BCP)</a><br> 2. <a href="#insert-tables-bulkquery">tömeges beszúrási SQL-lekérdezés</a><br> 3. <a href="#sql-builtin-utilities">a SQL Server grafikus beépített segédprogramjai</a> |
-| <b>Helyszíni SQL Server</b> |1. <a href="#deploy-a-sql-server-database-to-a-microsoft-azure-vm-wizard">SQL Server-adatbázis üzembe helyezése egy Microsoft Azure VM-varázslóban</a><br> 2. <a href="#export-flat-file">Exportálás egy egyszerű fájlba</a><br> 3. <a href="#sql-migration">SQL Database áttelepítési varázsló</a> <br> 4. <a href="#sql-backup">az adatbázis biztonsági mentése és visszaállítása</a><br> |
+| <b>Sima fájl</b> |1. <a href="#insert-tables-bcp">parancssori tömeges másolási segédprogram (BCP) </a><br> 2. <a href="#insert-tables-bulkquery">tömeges beszúrási SQL-lekérdezés </a><br> 3. <a href="#sql-builtin-utilities">a SQL Server grafikus beépített segédprogramjai</a> |
+| <b>Helyszíni SQL Server</b> |1. <a href="#deploy-a-sql-server-database-to-a-microsoft-azure-vm-wizard">SQL Server-adatbázis üzembe helyezése egy Microsoft Azure VM-varázslóban</a><br> 2. <a href="#export-flat-file">Exportálás egy egyszerű fájlba </a><br> 3. <a href="#sql-migration">SQL Database áttelepítési varázsló </a> <br> 4. <a href="#sql-backup">az adatbázis biztonsági mentése és visszaállítása </a><br> |
 
 Ez a dokumentum azt feltételezi, hogy az SQL-parancsok végrehajtása SQL Server Management Studio vagy Visual Studio Adatbázis-böngészőból történik.
 
@@ -46,7 +46,7 @@ Ez az oktatóanyag feltételezi, hogy rendelkezik a következővel:
 * Kiépített **SQL Server egy Azure-beli virtuális gépen**. Útmutatásért lásd: [Azure SQL Server virtuális gép beállítása IPython notebook-kiszolgálóként a speciális elemzésekhez](../data-science-virtual-machine/setup-sql-server-virtual-machine.md).
 * **Azure PowerShell** helyileg telepítve és konfigurálva. Útmutatásért lásd: [Azure PowerShell telepítése és konfigurálása](/powershell/azure/).
 
-## <a name="moving-data-from-a-flat-file-source-to-sql-server-on-an-azure-vm"></a><a name="filesource_to_sqlonazurevm"></a>Adatok áthelyezése egy egyszerű fájlból a SQL Serverba egy Azure-beli virtuális gépen
+## <a name="moving-data-from-a-flat-file-source-to-sql-server-on-an-azure-vm"></a><a name="filesource_to_sqlonazurevm"></a> Adatok áthelyezése egy egyszerű fájlból a SQL Serverba egy Azure-beli virtuális gépen
 Ha az adatai egy sor/oszlop formátumú (sorba rendezett) fájlban vannak, a következő módszerekkel lehet áthelyezni SQL Server VM az Azure-ba:
 
 1. [Parancssori tömeges másolási segédprogram (BCP)](#insert-tables-bcp)

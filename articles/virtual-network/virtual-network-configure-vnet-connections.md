@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 08/28/2019
 ms.author: kaushika
 ms.openlocfilehash: f25e42b1785f83e0b93c346e260055247a4ab29d
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91400706"
 ---
 # <a name="configure-and-validate-virtual-network-or-vpn-connections"></a>Virtuális hálózati vagy VPN-kapcsolatok konfigurálása és ellenőrzése
@@ -258,7 +258,7 @@ A kapcsolási objektumnak BGP-kompatibilisnek kell lennie. Az értéket beállí
 
 ### <a name="validate-the-bgp-configuration"></a>A BGP-konfiguráció ellenőrzése
 
-Annak ellenőrzéséhez, hogy a BGP megfelelően van-e konfigurálva, futtathatja a `get-AzureRmVirtualNetworkGateway` és a `get-AzureRmLocalNetworkGateway` parancsmagok. Ezután észreveheti a BGP-vel kapcsolatos kimenetet a `BgpSettingsText` részben. Például:
+Annak ellenőrzéséhez, hogy a BGP megfelelően van-e konfigurálva, futtathatja a `get-AzureRmVirtualNetworkGateway` és a `get-AzureRmLocalNetworkGateway` parancsmagok. Ezután észreveheti a BGP-vel kapcsolatos kimenetet a `BgpSettingsText` részben. Példa:
 
 ```
 {
@@ -304,7 +304,7 @@ Az Azure-beli virtuális hálózati átjárók típusa nem módosítható házir
 > [!Note]
 > Ez a folyamat körülbelül 60 percet vesz igénybe.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Azure-beli virtuális gépek közötti kapcsolatok hibaelhárítása](https://docs.microsoft.com/azure/virtual-network/virtual-network-troubleshoot-connectivity-problem-between-vms)
 

@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 10/11/2017
 ms.author: alkohli
 ms.openlocfilehash: 38500edeca2241bfa9ab093e037af18159994b02
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87920415"
 ---
 # <a name="role-based-access-control-for-storsimple"></a>Szerepköralapú Access Control a StorSimple
@@ -194,6 +194,6 @@ A szerepkör létrehozása után megtekintheti a szerepkörhöz társított enge
     ![Felhasználók megtekintése a StorSimple infra rendszergazdai szerepkörben](./media/storsimple-8000-role-based-access-control/rbac-infra-admin-permissions1.png)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ismerje meg, hogyan [rendelhet hozzá egyéni szerepköröket belső és külső felhasználók](../role-based-access-control/role-assignments-external-users.md)számára.

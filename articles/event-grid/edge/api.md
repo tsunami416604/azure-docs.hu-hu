@@ -8,10 +8,10 @@ ms.reviewer: spelluru
 ms.date: 07/08/2020
 ms.topic: article
 ms.openlocfilehash: 414487d460d897eff787b11915db560706b29eb4
-ms.sourcegitcommit: 1e6c13dc1917f85983772812a3c62c265150d1e7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86171754"
 ---
 # <a name="rest-api"></a>REST API
@@ -22,8 +22,8 @@ Ez a cikk a Azure Event Grid REST API-jait ismerteti IoT Edge
 ### <a name="base-url"></a>Kiindulási URL-cím
 A Event Grid on IoT Edge a következő API-kat teszi elérhetővé a HTTP-n (5888-as porton) és a HTTPS-en (4438-es port
 
-* HTTP-alap URL-cím:http://eventgridmodule:5888
-* HTTPS alap URL-címe:https://eventgridmodule:4438
+* HTTP-alap URL-cím: http://eventgridmodule:5888
+* HTTPS alap URL-címe: https://eventgridmodule:4438
 
 ### <a name="request-query-string"></a>Lekérdezési karakterlánc kérése
 Minden API-kérelemhez a következő lekérdezési karakterlánc paraméter szükséges:
@@ -72,7 +72,7 @@ Minden API hibát ad vissza a következő adattartalommal:
 
 ### <a name="put-topic-create--update"></a>Téma létrehozása (létrehozás/frissítés)
 
-**Kérelem**:``` PUT /topics/<topic_name>?api-version=2019-01-01-preview ```
+**Kérelem**: ``` PUT /topics/<topic_name>?api-version=2019-01-01-preview ```
 
 **Hasznos**adatok:
 
@@ -105,7 +105,7 @@ Minden API hibát ad vissza a következő adattartalommal:
 
 ### <a name="get-topic"></a>Témakör lekérése
 
-**Kérelem**:``` GET /topics/<topic_name>?api-version=2019-01-01-preview ```
+**Kérelem**: ``` GET /topics/<topic_name>?api-version=2019-01-01-preview ```
 
 **Válasz**: http 200
 
@@ -125,7 +125,7 @@ Minden API hibát ad vissza a következő adattartalommal:
 
 ### <a name="get-all-topics"></a>Összes téma beolvasása
 
-**Kérelem**:``` GET /topics?api-version=2019-01-01-preview ```
+**Kérelem**: ``` GET /topics?api-version=2019-01-01-preview ```
 
 **Válasz**: http 200
 
@@ -157,7 +157,7 @@ Minden API hibát ad vissza a következő adattartalommal:
 
 ### <a name="delete-topic"></a>Témakör törlése
 
-**Kérelem**:``` DELETE /topics/<topic_name>?api-version=2019-01-01-preview ```
+**Kérelem**: ``` DELETE /topics/<topic_name>?api-version=2019-01-01-preview ```
 
 **Válasz**: http 200, üres hasznos adat
 
@@ -166,7 +166,7 @@ Az ebben a szakaszban szereplő minták a következőt használják: `EndpointTy
 
 ### <a name="put-event-subscription-create--update"></a>Esemény-előfizetés elhelyezése (létrehozás/frissítés)
 
-**Kérelem**:``` PUT /topics/<topic_name>/eventSubscriptions/<subscription_name>?api-version=2019-01-01-preview ```
+**Kérelem**: ``` PUT /topics/<topic_name>/eventSubscriptions/<subscription_name>?api-version=2019-01-01-preview ```
 
 **Hasznos**adatok:
 ```json
@@ -371,7 +371,7 @@ Az ebben a szakaszban szereplő minták a következőt használják: `EndpointTy
 
 ### <a name="get-event-subscription"></a>Esemény-előfizetés beolvasása
 
-**Kérelem**:``` GET /topics/<topic_name>/eventSubscriptions/<subscription_name>?api-version=2019-01-01-preview ```
+**Kérelem**: ``` GET /topics/<topic_name>/eventSubscriptions/<subscription_name>?api-version=2019-01-01-preview ```
 
 **Válasz**: http 200
 
@@ -476,7 +476,7 @@ Az ebben a szakaszban szereplő minták a következőt használják: `EndpointTy
 
 ### <a name="get-event-subscriptions"></a>Esemény-előfizetések beolvasása
 
-**Kérelem**:``` GET /topics/<topic_name>/eventSubscriptions?api-version=2019-01-01-preview ```
+**Kérelem**: ``` GET /topics/<topic_name>/eventSubscriptions?api-version=2019-01-01-preview ```
 
 **Válasz**: http 200
 
@@ -494,7 +494,7 @@ Az ebben a szakaszban szereplő minták a következőt használják: `EndpointTy
 
 ### <a name="delete-event-subscription"></a>Esemény-előfizetés törlése
 
-**Kérelem**:``` DELETE /topics/<topic_name>/eventSubscriptions/<subscription_name>?api-version=2019-01-01-preview ```
+**Kérelem**: ``` DELETE /topics/<topic_name>/eventSubscriptions/<subscription_name>?api-version=2019-01-01-preview ```
 
 **Válasz**: http 200, nincs hasznos adat
 
@@ -503,7 +503,7 @@ Az ebben a szakaszban szereplő minták a következőt használják: `EndpointTy
 
 ### <a name="send-batch-of-events-in-event-grid-schema"></a>Események kötegének elküldése (Event Grid sémában)
 
-**Kérelem**:``` POST /topics/<topic_name>/events?api-version=2019-01-01-preview ```
+**Kérelem**: ``` POST /topics/<topic_name>/events?api-version=2019-01-01-preview ```
 
 ```json
 [
@@ -525,18 +525,18 @@ Az ebben a szakaszban szereplő minták a következőt használják: `EndpointTy
 
 
 **Adattartalom mező leírása**
-- ```Id```kötelező. A hívó által feltöltött bármely karakterláncérték lehet. Event Grid nem végez ismétlődő észlelést, vagy nem kényszeríti ki a szemantikai műveleteket ezen a területen.
-- ```Topic```nem kötelező, de ha meg kell egyeznie a kérelem URL-címével topic_name
-- ```Subject```kötelező, bármilyen sztring lehet.
-- ```EventType```kötelező, bármilyen sztring lehet.
-- ```EventTime```kötelező, nem érvényesítve, de megfelelő DateTime értéknek kell lennie.
-- ```DataVersion```kötelező
-- ```MetadataVersion```megadása nem kötelező, ha meg van adva, akkor az értéket tartalmazó sztringnek kell lennie```"1"```
-- ```Data```nem kötelező, és bármely JSON-token lehet (szám, karakterlánc, logikai, tömb, objektum)
+- ```Id``` kötelező. A hívó által feltöltött bármely karakterláncérték lehet. Event Grid nem végez ismétlődő észlelést, vagy nem kényszeríti ki a szemantikai műveleteket ezen a területen.
+- ```Topic``` nem kötelező, de ha meg kell egyeznie a kérelem URL-címével topic_name
+- ```Subject``` kötelező, bármilyen sztring lehet.
+- ```EventType``` kötelező, bármilyen sztring lehet.
+- ```EventTime``` kötelező, nem érvényesítve, de megfelelő DateTime értéknek kell lennie.
+- ```DataVersion``` kötelező
+- ```MetadataVersion``` megadása nem kötelező, ha meg van adva, akkor az értéket tartalmazó sztringnek kell lennie ```"1"```
+- ```Data``` nem kötelező, és bármely JSON-token lehet (szám, karakterlánc, logikai, tömb, objektum)
 
 ### <a name="send-batch-of-events-in-custom-schema"></a>Események kötegének elküldése (egyéni sémában)
 
-**Kérelem**:``` POST /topics/<topic_name>/events?api-version=2019-01-01-preview ```
+**Kérelem**: ``` POST /topics/<topic_name>/events?api-version=2019-01-01-preview ```
 
 ```json
 [
@@ -754,7 +754,7 @@ Service Bus témakör közzétételéhez állítsa be a következőt `endpointTy
 
 ## <a name="set-up-storage-queues-as-a-destination"></a>Tárolási várólisták beállítása célhelyként
 
-A Storage-üzenetsor közzétételéhez állítsa be a következőt `endpointType` `storageQueue` :
+A Storage-üzenetsor közzétételéhez állítsa be a következőt  `endpointType` `storageQueue` :
 
 * queueName: az a tárolási várólista neve, amelyet közzé szeretne tennie.
 * connectionString: a Storage-fiókhoz tartozó kapcsolati sztring a tárolási üzenetsor.

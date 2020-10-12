@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 07/06/2020
 ms.author: iainfou
 ms.openlocfilehash: 10eec1527fb0ac5109822da398642613219771f6
-ms.sourcegitcommit: e132633b9c3a53b3ead101ea2711570e60d67b83
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86039840"
 ---
 # <a name="how-objects-and-credentials-are-synchronized-in-an-azure-active-directory-domain-services-managed-domain"></a>Az objektumok és a hitelesítő adatok szinkronizálása egy Azure Active Directory Domain Services felügyelt tartományban
@@ -80,7 +80,7 @@ Az alábbi táblázat azt szemlélteti, hogy az Azure AD-beli felhasználói obj
 | Irányítószám |Irányítószám |
 | preferredLanguage |preferredLanguage |
 | proxyAddresses | proxyAddresses |
-| state |st |
+| állapot |st |
 | streetAddress |streetAddress |
 | surname |sn |
 | telephoneNumber |telephoneNumber |

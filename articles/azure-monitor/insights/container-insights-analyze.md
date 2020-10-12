@@ -4,10 +4,10 @@ description: Ez a cikk azt ismerteti, hogyan tekintheti meg és elemezheti a Kub
 ms.topic: conceptual
 ms.date: 03/26/2020
 ms.openlocfilehash: 888853f0e9e7634cafa5e480752371c501376158
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90988131"
 ---
 # <a name="monitor-your-kubernetes-cluster-performance-with-azure-monitor-for-containers"></a>A Kubernetes-fürt teljesítményének figyelése a Azure Monitor for containers szolgáltatással
@@ -34,8 +34,8 @@ Az összes telepített Kubernetes-fürt állapotának megtekintéséhez válassz
 
 A rácsban megjelenített eredmények köre a következő fürtök megjelenítéséhez használható:
 
-* Az Azure Kubernetes Service-ben üzemeltetett **Azure** -AK-és AK-motor-fürtök
-* **Azure stack (előzetes verzió)** – ak – a Azure Stackban üzemeltetett fürtök
+* Az Azure Kubernetes Service-ben üzemeltetett **Azure** -AK-és AKS-Engine-fürtök
+* **Azure stack (előzetes verzió)** – AKS-Engine-alapú fürtök Azure stack
 * **Nem Azure (előzetes verzió)** – a helyszínen üzemeltetett Kubernetes-fürtök
 * **Összes** – az Azure-ban üzemeltetett összes Kubernetes-fürt, Azure stack és helyszíni környezetek megtekintése a tárolók Azure monitor
 
@@ -66,7 +66,7 @@ Az állapot kiszámítja a fürt általános állapotát úgy, hogy a három ál
 
 A következő táblázat a megfigyelt fürt állapotának a többfürtes nézeten belüli állapotát szabályozó számítás részletezését tartalmazza.
 
-| Figyelt fürt |Állapot |Rendelkezésre állás |
+| Figyelt fürt |status |Rendelkezésre állás |
 |-------|-------|-----------------|
 |**Felhasználói Pod**| | |
 | |Kifogástalan |100% |
@@ -93,7 +93,7 @@ A tárolók Azure monitorhoz való hozzáférése közvetlenül egy AK-fürtből
 - Fürt
 - Csomópontok
 - Vezérlők
-- Tárolók
+- Containers
 
 >[!NOTE]
 >A cikk további részében ismertetett tapasztalatok a Azure Stack vagy más környezetben üzemeltetett Kubernetes-fürtök teljesítményének és állapotának megtekintésére is érvényesek, ha a több fürtből álló nézetből van kiválasztva.
@@ -191,11 +191,11 @@ A **csomópontok** lap megtekintésekor megjelenő információkat az alábbi t�
 
 | Oszlop | Leírás |
 |--------|-------------|
-| Név | A gazdagép neve. |
-| Állapot | A csomópont állapotának Kubernetes. |
+| Name (Név) | A gazdagép neve. |
+| status | A csomópont állapotának Kubernetes. |
 | Min. &nbsp; %, AVG &nbsp; %, 50 &nbsp; %, 90 &nbsp; %, 95. &nbsp; %, Max&nbsp;%  | A csomópontok átlagos százalékos aránya a megadott időtartamon belül a percentilis alapján. |
 | Min, AVG, 50, 90, 95., Max | A csomópontok átlagos tényleges értéke a percentilis alapján a megadott időtartam alatt. Az átlagos értéket a rendszer a csomópont processzor-/memória-korlátja alapján méri. A hüvelyek és a tárolók esetében ez a gazdagép által jelentett átlagos érték. |
-| Tárolók | Tárolók száma. |
+| Containers | Tárolók száma. |
 | Üzemidő | A csomópont elindítása vagy újraindítása óta eltelt időt jelöli. |
 | Tartományvezérlő | Csak a tárolók és a hüvelyek esetében. Azt mutatja, hogy melyik vezérlő található a ben. Nem minden hüvely van vezérlőben, ezért előfordulhat, hogy egyesek **N/a**-t jelenítenek meg. |
 | Trend min &nbsp; %, AVG &nbsp; %, 50 &nbsp; %, 90 &nbsp; %, 95. &nbsp; %, Max&nbsp;% | A oszlopdiagram trendje a vezérlő átlagos százalékos értékének százalékos arányát jelöli. |
@@ -234,11 +234,11 @@ A vezérlők megtekintésekor megjelenő információkat az alábbi táblázat i
 
 | Oszlop | Leírás |
 |--------|-------------|
-| Név | A vezérlő neve.|
-| Állapot | A tárolók összesítési állapota, miután befejezte az állapotot, például *az OK*, a leállítva *, a* *sikertelen*, a *leállított*vagy a *szüneteltetve*állapotot. Ha a tároló fut, de az állapot nem volt megfelelően megjelenítve, vagy nem az ügynök vette át, és 30 percnél nem válaszolt, az állapot *ismeretlen*. Az állapotjelző ikon további részleteit a következő táblázat tartalmazza.|
+| Name (Név) | A vezérlő neve.|
+| status | A tárolók összesítési állapota, miután befejezte az állapotot, például *az OK*, a leállítva *, a* *sikertelen*, a *leállított*vagy a *szüneteltetve*állapotot. Ha a tároló fut, de az állapot nem volt megfelelően megjelenítve, vagy nem az ügynök vette át, és 30 percnél nem válaszolt, az állapot *ismeretlen*. Az állapotjelző ikon további részleteit a következő táblázat tartalmazza.|
 | Min. &nbsp; %, AVG &nbsp; %, 50 &nbsp; %, 90 &nbsp; %, 95. &nbsp; %, Max&nbsp;%| Az egyes entitások átlagos százalékának összesítési átlaga a kiválasztott metrika és a percentilis esetében. |
 | Min, AVG, 50, 90, 95., Max  | A kiválasztott százalékos értékhez tartozó tároló átlagos CPU-millicore vagy memória-teljesítményének összesítése. Az átlagos értéket a hüvely processzor-/memória-korlátja határozza meg. |
-| Tárolók | A vezérlő vagy a pod tárolók teljes száma. |
+| Containers | A vezérlő vagy a pod tárolók teljes száma. |
 | Újraindítja | A tárolók újraindítási számának összesítése. |
 | Üzemidő | A tároló elindítása óta eltelt időt jelöli. |
 | Csomópont | Csak a tárolók és a hüvelyek esetében. Azt mutatja, hogy melyik vezérlő található a ben. |
@@ -246,7 +246,7 @@ A vezérlők megtekintésekor megjelenő információkat az alábbi táblázat i
 
 Az állapot mezőben lévő ikonok jelzik a tárolók online állapotát.
 
-| Ikon | Állapot |
+| Ikon | status |
 |--------|-------------|
 | ![Futtatásra kész állapot ikonja](./media/container-insights-analyze/containers-ready-icon.png) | Futtatás (kész)|
 | ![Várakozó vagy szüneteltetett állapot ikonja](./media/container-insights-analyze/containers-waiting-icon.png) | Várakozás vagy szüneteltetve|
@@ -271,8 +271,8 @@ A tárolók megtekintésekor megjelenő információkat az alábbi táblázat is
 
 | Oszlop | Leírás |
 |--------|-------------|
-| Név | A vezérlő neve.|
-| Állapot | A tárolók állapota, ha van ilyen. Az állapot ikon további részleteket tartalmaz a következő táblázatban.|
+| Name (Név) | A vezérlő neve.|
+| status | A tárolók állapota, ha van ilyen. Az állapot ikon további részleteket tartalmaz a következő táblázatban.|
 | Min. &nbsp; %, AVG &nbsp; %, 50 &nbsp; %, 90 &nbsp; %, 95. &nbsp; %, Max&nbsp;% | Az egyes entitások átlagos százalékos arányának összesítése a kiválasztott metrika és percentilis esetében. |
 | Min, AVG, 50, 90, 95., Max | A kiválasztott százalékos értékhez tartozó tároló átlagos CPU-millicore vagy memória-teljesítményének összesítése. Az átlagos értéket a hüvely processzor-/memória-korlátja határozza meg. |
 | Pod | A tároló, ahol a pod található.|
@@ -283,7 +283,7 @@ A tárolók megtekintésekor megjelenő információkat az alábbi táblázat is
 
 Az állapot mezőben látható ikonok a hüvelyek online állapotát jelzik, az alábbi táblázatban leírtak szerint.
 
-| Ikon | Állapot |
+| Ikon | status |
 |--------|-------------|
 | ![Futtatásra kész állapot ikonja](./media/container-insights-analyze/containers-ready-icon.png) | Futtatás (kész)|
 | ![Várakozó vagy szüneteltetett állapot ikonja](./media/container-insights-analyze/containers-waiting-icon.png) | Várakozás vagy szüneteltetve|

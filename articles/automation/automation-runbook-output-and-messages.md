@@ -6,10 +6,10 @@ ms.subservice: process-automation
 ms.date: 12/04/2018
 ms.topic: conceptual
 ms.openlocfilehash: e4be7934002730253b77b1c129165ad9f19f23b7
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86185976"
 ---
 # <a name="monitor-runbook-output"></a>Runbook kimenetének monitorozása
@@ -18,7 +18,7 @@ A legtöbb Azure Automation runbookok valamilyen típusú kimenettel rendelkezik
 
 Az alábbi táblázat röviden leírja, hogy az egyes streamek milyen viselkedéssel rendelkeznek Azure Portal a közzétett runbookok és a [runbook tesztelése](./manage-runbooks.md)során. A kimeneti adatfolyam a runbookok közötti kommunikáció fő adatfolyama. A többi stream üzenet-adatfolyamként van besorolva, amely a felhasználó felé irányuló információk közlésére szolgál. 
 
-| Adatfolyam | Leírás | Közzétett | Teszt |
+| Adatfolyam | Leírás | Közzétett | Tesztelés |
 |:--- |:--- |:--- |:--- |
 | Hiba |A felhasználónak szóló hibaüzenet. A kivételtől eltérően a runbook alapértelmezés szerint egy hibaüzenet után is folytatódik. |A feladatok előzményeibe írva |Megjelenítés a test output (kimenet) panelen |
 | Hibakeresés |Interaktív felhasználó számára készült üzenetek. Nem használható a runbookok. |Nem írt a feladatok előzményeire |Nem jelenik meg a test output (kimenet) ablaktáblán |
@@ -184,7 +184,7 @@ A runbookok bizonyos Windows PowerShell-beállításokat állíthat [be a külö
 
 A következő táblázat felsorolja a runbookok-ben érvényes preferencia-változók értékeinek viselkedését.
 
-| Érték | Viselkedés |
+| Érték | Működés |
 |:--- |:--- |
 | Folytatás |Naplózza az üzenetet, és folytatja a runbook futtatását. |
 | FolytatásCsendben |Az üzenet naplózása nélkül folytatja a runbook futtatását. Ennek az értéknek az a következménye, hogy figyelmen kívül hagyja az üzenetet. |

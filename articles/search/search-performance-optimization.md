@@ -10,10 +10,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 02/14/2020
 ms.openlocfilehash: 5fd949466978714fe1dc0c4ccc67a3cb8f993314
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88934956"
 ---
 # <a name="scale-for-performance-on-azure-cognitive-search"></a>Az Azure-Cognitive Search teljesítményének méretezése
@@ -119,7 +119,7 @@ Az [Azure Traffic Manager](../traffic-manager/traffic-manager-overview.md) lehet
 
    ![Szolgáltatások – régiók közötti, központi Traffic Manager][3]
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni az egyes díjszabási csomagokról és szolgáltatásokra vonatkozó korlátozásokról, tekintse meg a [szolgáltatási korlátok](search-limits-quotas-capacity.md)című témakört. A partíció-és replika-kombinációkkal kapcsolatos további tudnivalókért tekintse meg [a kapacitás megtervezése](search-capacity-planning.md) című témakört.
 
