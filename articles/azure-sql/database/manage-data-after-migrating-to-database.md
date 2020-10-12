@@ -13,10 +13,10 @@ ms.author: josack
 ms.reviewer: sstein
 ms.date: 02/13/2019
 ms.openlocfilehash: 016bb1e4a0844be2a137108d673159bd041cd351
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89439775"
 ---
 # <a name="new-dba-in-the-cloud--managing-azure-sql-database-after-migration"></a>Új DBA a felhőben – Azure SQL Database kezelése az áttelepítés után
@@ -139,7 +139,7 @@ Alapértelmezés szerint az adatbázis az "Azure-szolgáltatások elérésének 
 
 A szolgáltatási végpontok (SE) lehetővé teszik, hogy a kritikus Azure-erőforrásokat csak az Azure saját privát virtuális hálózatára tegye elérhetővé. Ezzel lényegében megszünteti az erőforrásaihoz való nyilvános hozzáférést. Az Azure-beli virtuális hálózat közötti forgalom az Azure gerinc hálózatán marad. Az SE használata nélkül kényszerített bújtatású csomagok útválasztása. A virtuális hálózata kényszeríti az internetes forgalmat a szervezet és az Azure-szolgáltatás forgalmára, hogy ugyanarra az útvonalra lépjen át. A szolgáltatási végpontokkal optimalizálhatja ezt, mivel a csomagok közvetlenül a virtuális hálózatról az Azure gerinces hálózaton lévő szolgáltatásba áramlanak.
 
-![VNet szolgáltatási végpontok](./media/manage-data-after-migrating-to-database/vnet-service-endpoints.png)
+![VNet-szolgáltatásvégpontok](./media/manage-data-after-migrating-to-database/vnet-service-endpoints.png)
 
 #### <a name="reserved-ips"></a>Fenntartott IP-címek
 
@@ -172,7 +172,7 @@ A bizalmas adatok repülés közbeni és nyugalmi állapotban való védelme ér
 |**Jellemzők**|**Always Encrypted**|**Transzparens adattitkosítás**|
 |---|---|---|
 |**Titkosítási tartomány**|Végpontok közötti|Rest-adatok|
-|**A kiszolgáló bizalmas adatokat tud elérni**|No|Igen, mivel az inaktív adatok titkosítása|
+|**A kiszolgáló bizalmas adatokat tud elérni**|Nem|Igen, mivel az inaktív adatok titkosítása|
 |**Engedélyezett T-SQL-műveletek**|Egyenlőség összehasonlítása|Az összes T-SQL Surface terület elérhető|
 |**A funkció használatához szükséges módosítások**|Minimális|Nagyon minimális|
 |**Titkosítási részletesség**|Oszlop szintje|az adatbázis-szintű megadás helyett|
@@ -273,7 +273,7 @@ Ebből a diagramból erőforrás alapján is konfigurálhatja a riasztásokat. E
 
 #### <a name="dynamic-management-views"></a>Dinamikus felügyeleti nézetek
 
-Lekérdezheti a [sys. dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) dinamikus felügyeleti nézetet, hogy az elmúlt egy órában és a [sys. resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) Rendszerkatalógus nézetből visszaállítsa az elmúlt 14 napban az erőforrás-felhasználási statisztikák előzményeit.
+Lekérdezheti az [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) dinamikus felügyeleti nézetet, hogy az elmúlt órában visszaállítsa az erőforrás-felhasználás statisztikáinak előzményeit, valamint a [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) Rendszerkatalógus nézetet az elmúlt 14 nap előzményeinek visszaküldéséhez.
 
 #### <a name="query-performance-insight"></a>Lekérdezési terheléselemző
 
@@ -293,7 +293,7 @@ A teljesítménnyel kapcsolatos problémák megoldásának megközelítése jele
 
 A teljesítménnyel kapcsolatos hibaelhárítás során fontos megállapítani, hogy csak az alkalmazás vagy az adatbázis biztonsági mentése van-e hatással az alkalmazás teljesítményére. A teljesítménnyel kapcsolatos probléma gyakran az alkalmazás rétegében rejlik. Ez lehet az architektúra vagy az adatelérési minta. Tegyük fel például, hogy egy olyan csevegési alkalmazás van, amely érzékeny a hálózati késésre. Ebben az esetben az alkalmazás az alkalmazás és a kiszolgáló, illetve egy zsúfolt hálózat között sok rövid kérelem ("beszédes") miatt válik elérhetővé, és a szolgáltatás gyorsan felveszi a kapcsolatot. Ebben az esetben a teljesítmény javítása érdekében [kötegelt lekérdezéseket](performance-guidance.md#batch-queries)használhat. A batchs használatával rendkívül nagy mértékben biztosíthatja, hogy a kérések feldolgozása egy kötegben történjen. így segítve az adatelérési idő csökkentését és az alkalmazások teljesítményének növelését.
 
-Továbbá, ha az adatbázis általános teljesítményében romlást tapasztal, figyelheti a [sys. dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) és a [sys. resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) dinamikus felügyeleti nézeteket a CPU, az IO és a memória használatának megismeréséhez. Lehetséges, hogy az Ön teljesítménye hatással van az erőforrásokra. Előfordulhat, hogy módosítania kell a számítási méretet és/vagy a szolgáltatási szintet a növekvő és a csökkenő munkaterhelési igények alapján.
+Továbbá, ha az adatbázis általános teljesítményében romlást tapasztal, figyelheti a [sys.dm_db_resource_stats](/sql/relational-databases/system-dynamic-management-views/sys-dm-db-resource-stats-azure-sql-database) és [sys.resource_stats](/sql/relational-databases/system-catalog-views/sys-resource-stats-azure-sql-database) dinamikus felügyeleti nézeteket a CPU, az IO és a memóriahasználat megismerése érdekében. Lehetséges, hogy az Ön teljesítménye hatással van az erőforrásokra. Előfordulhat, hogy módosítania kell a számítási méretet és/vagy a szolgáltatási szintet a növekvő és a csökkenő munkaterhelési igények alapján.
 
 A teljesítménnyel kapcsolatos problémák hangolásával kapcsolatos javaslatok széles körét lásd: [az adatbázis finomhangolása](performance-guidance.md#tune-your-database).
 
@@ -304,7 +304,7 @@ A SQL Database különböző szolgáltatási szinteket kínál alapszintű, stan
 |**Szolgáltatási szint**|**Gyakori használati esetek**|
 |---|---|
 |**Basic**|Egy maroknyi felhasználóval és egy olyan adatbázissal, amely nem rendelkezik magas párhuzamosságtal, méretezéssel és teljesítménnyel kapcsolatos követelményekkel. |
-|**Standard**|A jelentős párhuzamosságtal, méretezéssel és teljesítménnyel kapcsolatos követelményekkel rendelkező alkalmazások alacsony – közepes i/o-igényekkel párosulnak. |
+|**Normál**|A jelentős párhuzamosságtal, méretezéssel és teljesítménnyel kapcsolatos követelményekkel rendelkező alkalmazások alacsony – közepes i/o-igényekkel párosulnak. |
 |**Prémium**|Számos egyidejű felhasználóval, magas CPU/memóriával és magas i/o-igényű alkalmazásokkal. A magas Egyidejűség, a nagy átviteli sebesség és a késésre érzékeny alkalmazások kihasználhatják a prémium szintet. |
 |||
 

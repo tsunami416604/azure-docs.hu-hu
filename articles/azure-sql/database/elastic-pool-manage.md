@@ -11,10 +11,10 @@ ms.reviewer: sstein
 ms.date: 03/12/2019
 ms.custom: seoapril2019 sqldbrb=1
 ms.openlocfilehash: bd3917c42859d4240fbb3a75f951ff38a548e204
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91330808"
 ---
 # <a name="manage-elastic-pools-in-azure-sql-database"></a>Rugalmas készletek kezelése Azure SQL Database
@@ -93,8 +93,8 @@ A meglévő rugalmas készletekben lévő adatbázisok létrehozásához és át
 |[ADATBÁZIS létrehozása (Azure SQL Database)](/sql/t-sql/statements/create-database-azure-sql-database)|Új adatbázist hoz létre egy meglévő készletben vagy egyetlen adatbázisként. Új adatbázis létrehozásához csatlakoznia kell a Master adatbázishoz.|
 | [ALTER DATABASE (Azure SQL Database)](/sql/t-sql/statements/alter-database-azure-sql-database) |Egy adatbázis áthelyezése a, a vagy a rugalmas készletek között.|
 |[ADATBÁZIS eldobása (Transact-SQL)](/sql/t-sql/statements/drop-database-transact-sql)|Töröl egy adatbázist.|
-|[sys. elastic_pool_resource_stats (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database)|A kiszolgálón lévő összes rugalmas készlet erőforrás-használati statisztikáit adja vissza. Minden rugalmas készlethez egy sor tartozik minden 15 másodperces jelentési ablakhoz (percenként négy sor). Ide tartozik a CPU, az IO, a log, a Storage-felhasználás és az egyidejű kérelmek/munkamenetek kihasználtsága a készletben lévő összes adatbázis esetében.|
-|[sys. database_service_objectives (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database)|A kiadást (szolgáltatási szintet), a szolgáltatási célt (árképzési szintet) és a rugalmas készlet nevét adja vissza SQL Database vagy Azure szinapszis Analytics (korábban SQL Data Warehouse) adatbázisához. Ha bejelentkezett a főadatbázisba egy kiszolgálón, az az összes adatbázisra vonatkozó információt adja vissza. Az Azure szinapszis Analytics esetében csatlakoznia kell a Master adatbázishoz.|
+|[sys.elastic_pool_resource_stats (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-elastic-pool-resource-stats-azure-sql-database)|A kiszolgálón lévő összes rugalmas készlet erőforrás-használati statisztikáit adja vissza. Minden rugalmas készlethez egy sor tartozik minden 15 másodperces jelentési ablakhoz (percenként négy sor). Ide tartozik a CPU, az IO, a log, a Storage-felhasználás és az egyidejű kérelmek/munkamenetek kihasználtsága a készletben lévő összes adatbázis esetében.|
+|[sys.database_service_objectives (Azure SQL Database)](/sql/relational-databases/system-catalog-views/sys-database-service-objectives-azure-sql-database)|A kiadást (szolgáltatási szintet), a szolgáltatási célt (árképzési szintet) és a rugalmas készlet nevét adja vissza SQL Database vagy Azure szinapszis Analytics (korábban SQL Data Warehouse) adatbázisához. Ha bejelentkezett a főadatbázisba egy kiszolgálón, az az összes adatbázisra vonatkozó információt adja vissza. Az Azure szinapszis Analytics esetében csatlakoznia kell a Master adatbázishoz.|
 
 ## <a name="rest-api"></a>REST API
 

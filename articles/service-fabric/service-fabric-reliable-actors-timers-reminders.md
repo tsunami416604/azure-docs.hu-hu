@@ -5,10 +5,10 @@ ms.topic: conceptual
 ms.date: 11/02/2017
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 2b97b15ca4eb287f8d8f2c1af932f22acafae546
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89016546"
 ---
 # <a name="actor-timers-and-reminders"></a>Színészi időzítők és emlékeztetők
@@ -222,7 +222,7 @@ CompletableFuture reminderUnregistration = unregisterReminderAsync(reminder);
 
 Ahogy fent látható, a `UnregisterReminderAsync` (c#) vagy a `unregisterReminderAsync` (Java) metódus fogad egy `IActorReminder` (c#) vagy `ActorReminder` (Java) felületet. A Actor alaposztálya a `GetReminder` (c#) vagy `getReminder` (Java) metódust támogatja, amely a (z `IActorReminder` ) (c#) vagy (Java) felület lekérésére használható a `ActorReminder` felszólítás nevének megadásával. Ez azért hasznos, mert a szereplőnek nem kell megtartania a (c#) vagy (Java `IActorReminder` `ActorReminder` `RegisterReminder` `registerReminder` ) metódus hívásával visszaadott (c#) vagy (Java) felületet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ismerje meg a megbízható Actors eseményeket és újbóli belépés:
 * [Színészi események](service-fabric-reliable-actors-events.md)
 * [Actor újbóli belépés](service-fabric-reliable-actors-reentrancy.md)

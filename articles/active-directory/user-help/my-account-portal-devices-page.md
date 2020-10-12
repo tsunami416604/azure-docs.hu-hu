@@ -12,10 +12,10 @@ ms.topic: end-user-help
 ms.date: 07/29/2020
 ms.author: curtand
 ms.openlocfilehash: 784ee418c3713cce53d7e99e30fd445e75d144da
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88798210"
 ---
 # <a name="manage-your-connected-devices-from-the-devices-page"></a>A csatlakoztatott eszközök kezelése az eszközök lapról
@@ -64,7 +64,7 @@ Ha kizárta az eszközét, vagy végzetes hibát észlel, lépjen egy másik esz
 
 2. Válassza a **BitLocker-kulcsok megtekintése** a zárolt eszközhöz lehetőséget, és jegyezze fel a zárolt eszköz BitLocker-kulcsát.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A csatlakoztatott eszközök megtekintése után a következőket teheti:
 

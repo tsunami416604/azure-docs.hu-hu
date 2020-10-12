@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 11/04/2019
 ms.author: v-umha
 ms.openlocfilehash: c66d3d6fd3ee0bcba01db61183f40cd3ccf3f39d
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88797938"
 ---
 # <a name="troubleshoot-azure-farmbeats"></a>Az Azure FarmBeats hibaelhárítása
@@ -17,7 +17,7 @@ ms.locfileid: "88797938"
 Ez a cikk az Azure FarmBeats kapcsolatos gyakori problémák megoldásait ismerteti. További segítségért forduljon a [Q&támogatási fórumhoz](https://aka.ms/farmbeatssupport) , vagy küldjön nekünk e-mailt a következő címen: farmbeatssupport@microsoft.com .
 
 > [!NOTE]
-  > Ha áprilisban telepítette a FarmBeats, és a feladatok nem üres hibaüzenettel rendelkeznek, előfordulhat, hogy a telepítéshez nem rendeltek le batch-kvótát a kritikus állapotú és biztonsági szervezetek támogatásának rangsorolásához. További információért lásd [itt](https://azure.microsoft.com/blog/update-2-on-microsoft-cloud-services-continuity/) . A feladatok sikeres futtatásához le kell kérnie a virtuális gépek lefoglalását a Batch-fiókba.
+  > Ha áprilisban telepítette a FarmBeats, és a feladatok nem üres hibaüzenettel rendelkeznek, előfordulhat, hogy a telepítéshez nem rendeltek le batch-kvótát a kritikus állapotú és biztonsági szervezetek támogatásának rangsorolásához. További információt [itt](https://azure.microsoft.com/blog/update-2-on-microsoft-cloud-services-continuity/) talál. A feladatok sikeres futtatásához le kell kérnie a virtuális gépek lefoglalását a Batch-fiókba.
 
 ## <a name="install-issues"></a>Telepítési problémák
 

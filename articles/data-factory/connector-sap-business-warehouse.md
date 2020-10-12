@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 09/04/2019
 ms.openlocfilehash: 86d4f82b70a6b6b3ceed262cf96fa291e26dd53c
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87534379"
 ---
 # <a name="copy-data-from-sap-business-warehouse-using-azure-data-factory"></a>Adatok másolása az SAP Business Warehouse-ból Azure Data Factory használatával
@@ -77,7 +77,7 @@ Az SAP Business Warehouse (BW) társított szolgáltatása a következő tulajdo
 | jelszó | A felhasználó jelszava. Megjelöli ezt a mezőt SecureString, hogy biztonságosan tárolja Data Factoryban, vagy [hivatkozjon a Azure Key Vault tárolt titkos kulcsra](store-credentials-in-key-vault.md). | Igen |
 | Connectvia tulajdonsággal | Az adattárhoz való kapcsolódáshoz használt [Integration Runtime](concepts-integration-runtime.md) . A saját üzemeltetésű Integration Runtime az [Előfeltételek](#prerequisites)szakaszban említettek szerint kell megadni. |Igen |
 
-**Például**
+**Példa**
 
 ```json
 {
@@ -108,7 +108,7 @@ Az adatkészletek definiálásához rendelkezésre álló csoportok és tulajdon
 
 Az adatok SAP BWból való másolásához állítsa az adatkészlet Type (típus) tulajdonságát **SapBwCube**értékre. A RelationalTable típusú SAP BW adatkészlet esetében nem támogatottak a típus-specifikus tulajdonságok.
 
-**Például**
+**Példa**
 
 ```json
 {
@@ -140,7 +140,7 @@ Az adatok SAP BWból történő másolásához a másolási tevékenység **forr
 | típus | A másolási tevékenység forrásának Type tulajdonságát a következőre kell beállítani: **SapBwSource** | Igen |
 | lekérdezés | Megadja az MDX-lekérdezést, amely beolvassa az SAP BW-példány adatait. | Igen |
 
-**Például**
+**Példa**
 
 ```json
 "activities":[
@@ -183,9 +183,9 @@ Az adatok SAP BWból való másolása során a rendszer a következő leképezé
 | ACCP | Int |
 | CHAR | Sztring |
 | Ügyf | Sztring |
-| CURR | Decimal |
+| CURR | Tizedesjegy |
 | CUKY | Sztring |
-| DECEMBER | Decimal |
+| DECEMBER | Tizedesjegy |
 | FLTP | Dupla |
 | INT1 | Bájt |
 | INT2 | Int16 |
@@ -194,7 +194,7 @@ Az adatok SAP BWból való másolása során a rendszer a következő leképezé
 | LCHR | Sztring |
 | LRAW | Bájt [] |
 | PREC | Int16 |
-| QUAN | Decimal |
+| QUAN | Tizedesjegy |
 | NYERS | Bájt [] |
 | RAWSTRING | Bájt [] |
 | KARAKTERLÁNC | Sztring |
@@ -209,5 +209,5 @@ Az adatok SAP BWból való másolása során a rendszer a következő leképezé
 A tulajdonságok részleteinek megismeréséhez tekintse meg a [keresési tevékenységet](control-flow-lookup-activity.md).
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A Azure Data Factory a másolási tevékenység által forrásként és nyelőként támogatott adattárak listáját lásd: [támogatott adattárak](copy-activity-overview.md#supported-data-stores-and-formats).

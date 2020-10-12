@@ -8,10 +8,10 @@ ms.tgt_pltfrm: na
 ms.topic: conceptual
 ms.date: 02/02/2020
 ms.openlocfilehash: 360578a36b92711c55b1fc65befa1b3df7927aad
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91330893"
 ---
 # <a name="unify-multiple-azure-monitor-application-insights-resources"></a>Több Azure Monitor Application Insights erőforrás egységesítése 
@@ -73,7 +73,7 @@ Az alábbi táblázat a Log Analytics és Application Insights közötti sémák
 | AvailabilityMessage | message |
 | AvailabilityRunLocation | location |
 | AvailabilityTestId | id |
-| AvailabilityTestName | név |
+| AvailabilityTestName | name |
 | AvailabilityTimestamp | időbélyeg |
 | Böngésző | client_browser |
 | City | client_city |
@@ -82,7 +82,7 @@ Az alábbi táblázat a Log Analytics és Application Insights közötti sémák
 | Ország | client_CountryOrRegion | 
 | CustomEventCount | itemCount | 
 | CustomEventDimensions | customDimensions |
-| CustomEventName | név | 
+| CustomEventName | name | 
 | DeviceModel | client_Model | 
 | DeviceType | client_Type | 
 | ExceptionCount | itemCount | 
@@ -94,12 +94,12 @@ Az alábbi táblázat a Log Analytics és Application Insights közötti sémák
 | Operációs rendszer | client_OS | 
 | PageViewCount | itemCount |
 | PageViewDuration | duration | 
-| PageViewName | név | 
+| PageViewName | name | 
 | ParentOperationID | operation_Id | 
 | RequestCount | itemCount | 
 | RequestDuration | duration | 
 | RequestID | id | 
-| RequestName | név | 
+| RequestName | name | 
 | RequestSuccess | sikeres | 
 | ResponseCode | resultCode | 
 | Szerepkör | cloud_RoleName |

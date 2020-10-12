@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 12/1/2016
 ms.author: alkohli
 ms.openlocfilehash: d7c7cf335336cc552adaf5d9490bc58d64b0cdc9
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85515434"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-administer-your-storsimple-virtual-array"></a>A StorSimple Eszközkezelő szolgáltatás használata a StorSimple virtuális tömb felügyeletéhez
@@ -63,7 +63,7 @@ Az egyes munkafolyamatokkal kapcsolatos további információkért kattintson a 
 | Tudnivalók a Storage-fiókokról</br>Storage-fiók hozzáadása</br>Storage-fiók szerkesztése</br>Tárfiók törlése |[A StorSimple virtuális tömbhöz tartozó Storage-fiókok kezelése](storsimple-virtual-array-manage-storage-accounts.md) |
 | Hozzáférés-vezérlési rekordok</br>Hozzáférés-vezérlési rekord hozzáadása vagy módosítása </br>Hozzáférés-vezérlési rekord törlése |[A StorSimple virtuális tömb hozzáférés-vezérlési rekordjainak kezelése](storsimple-virtual-array-manage-acrs.md) |
 | Feladatok részleteinek megjelenítése |[StorSimple virtuális Array-feladatok kezelése](storsimple-virtual-array-manage-jobs.md) |
-| Riasztási beállítások konfigurálása</br>Riasztási értesítések fogadása</br>Riasztások kezelése</br>Riasztások áttekintése |[A StorSimple virtuális tömbhöz tartozó riasztások megtekintése és kezelése](storsimple-virtual-array-manage-alerts.md) |
+| Riasztási beállítások konfigurálása</br>Riasztási értesítések fogadása</br>Riasztások kezelése</br>Riasztások felülvizsgálata |[A StorSimple virtuális tömbhöz tartozó riasztások megtekintése és kezelése](storsimple-virtual-array-manage-alerts.md) |
 | Az eszköz rendszergazdai jelszavának módosítása |[StorSimple virtuális tömb eszköz rendszergazdai jelszavának módosítása](storsimple-virtual-array-change-device-admin-password.md) |
 | Szoftverfrissítések telepítése |[A virtuális tömb frissítése](storsimple-virtual-array-install-update.md) |
 

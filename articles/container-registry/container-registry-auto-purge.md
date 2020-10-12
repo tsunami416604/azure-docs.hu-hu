@@ -4,10 +4,10 @@ description: A kiürítési parancs használatával több címkét és jegyzékf
 ms.topic: article
 ms.date: 05/14/2020
 ms.openlocfilehash: ab6794648babd2bd491ded5788455b75c10d675a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83652636"
 ---
 # <a name="automatically-purge-images-from-an-azure-container-registry"></a>Lemezképek automatikus törlése az Azure Container registryből
@@ -31,23 +31,23 @@ Ha egyetlen képcímkét vagy jegyzékfájlokat szeretne törölni az Azure CLI-
 A `acr purge` Container parancs a képeket címkével törli egy olyan adattárban, amely megfelel egy szűrőnek, és a megadott időtartamnál régebbi. Alapértelmezés szerint a rendszer csak a címkékre mutató hivatkozásokat törli, nem pedig az alapul szolgáló [jegyzékfájlokat](container-registry-concepts.md#manifest) és adatrétegeket. A parancshoz lehetőség van a jegyzékfájlok törlésére is. 
 
 > [!NOTE]
-> `acr purge`nem töröl egy képcímkét vagy-tárat `write-enabled` , amelyben az attribútum be van állítva `false` . További információ: [Container-rendszerkép zárolása egy Azure Container registryben](container-registry-image-lock.md).
+> `acr purge` nem töröl egy képcímkét vagy-tárat `write-enabled` , amelyben az attribútum be van állítva `false` . További információ: [Container-rendszerkép zárolása egy Azure Container registryben](container-registry-image-lock.md).
 
-`acr purge`a úgy lett kialakítva, hogy Container parancsként fusson egy [ACR-feladatban](container-registry-tasks-overview.md), hogy automatikusan hitelesítse azt a beállításjegyzéket, amelyben a feladat fut, és műveleteket hajt végre. A cikkben szereplő példák a `acr purge` parancs- [aliast](container-registry-tasks-reference-yaml.md#aliases) használják egy teljesen minősített tároló képparancsának helyett.
+`acr purge` a úgy lett kialakítva, hogy Container parancsként fusson egy [ACR-feladatban](container-registry-tasks-overview.md), hogy automatikusan hitelesítse azt a beállításjegyzéket, amelyben a feladat fut, és műveleteket hajt végre. A cikkben szereplő példák a `acr purge` parancs- [aliast](container-registry-tasks-reference-yaml.md#aliases) használják egy teljesen minősített tároló képparancsának helyett.
 
 Legalább a következő futtatásakor adja meg a következőket `acr purge` :
 
-* `--filter`– Egy adattár és egy *reguláris kifejezés* , amely alapján szűrheti a címkéket a tárházban. Példák: `--filter "hello-world:.*"` a tárház összes címkéje megegyezik, és a (z `hello-world` `--filter "hello-world:^1.*"` ) kezdetű címkékre illeszkedik `1` . Több `--filter` paramétert is továbbíthat több tárház kiürítéséhez.
-* `--ago`– A go-Style [időtartamának karakterlánca](https://golang.org/pkg/time/) , amely azt jelzi, hogy milyen időtartam után törlődnek a képek. Az időtartam egy vagy több decimális számokból áll, amelyek mindegyike egység utótaggal rendelkezik. Az érvényes időegységek a "d" napok, a "h" órák, az "m" pedig percek közé tartoznak. Például `--ago 2d3h6m` kijelöli az összes szűrt képet, amely az utolsó módosításnál több mint 2 nap, 3 óra és 6 perccel ezelőtt történt, és a `--ago 1.5h` képfájlokat az utolsó módosításnál több mint 1,5 órával ezelõtt kijelöli.
+* `--filter` – Egy adattár és egy *reguláris kifejezés* , amely alapján szűrheti a címkéket a tárházban. Példák: `--filter "hello-world:.*"` a tárház összes címkéje megegyezik, és a (z `hello-world` `--filter "hello-world:^1.*"` ) kezdetű címkékre illeszkedik `1` . Több `--filter` paramétert is továbbíthat több tárház kiürítéséhez.
+* `--ago` – A go-Style [időtartamának karakterlánca](https://golang.org/pkg/time/) , amely azt jelzi, hogy milyen időtartam után törlődnek a képek. Az időtartam egy vagy több decimális számokból áll, amelyek mindegyike egység utótaggal rendelkezik. Az érvényes időegységek a "d" napok, a "h" órák, az "m" pedig percek közé tartoznak. Például `--ago 2d3h6m` kijelöli az összes szűrt képet, amely az utolsó módosításnál több mint 2 nap, 3 óra és 6 perccel ezelőtt történt, és a `--ago 1.5h` képfájlokat az utolsó módosításnál több mint 1,5 órával ezelõtt kijelöli.
 
-`acr purge`több választható paramétert is támogat. Ebben a cikkben a következő két példát használjuk:
+`acr purge` több választható paramétert is támogat. Ebben a cikkben a következő két példát használjuk:
 
-* `--untagged`– Megadja, hogy a rendszer törli a társított címkékkel nem rendelkező jegyzékfájlokat (*címkézetlen jegyzékfájlokat*).
-* `--dry-run`-Megadja, hogy a rendszer nem törli az adatokat, de a kimenet ugyanaz, mint ha a parancsot ezen jelző nélkül futtatja. Ez a paraméter a kiürítési parancsok teszteléséhez hasznos, így meggyőződhet róla, hogy nem törli a megőrizni kívánt információkat.
+* `--untagged` – Megadja, hogy a rendszer törli a társított címkékkel nem rendelkező jegyzékfájlokat (*címkézetlen jegyzékfájlokat*).
+* `--dry-run` -Megadja, hogy a rendszer nem törli az adatokat, de a kimenet ugyanaz, mint ha a parancsot ezen jelző nélkül futtatja. Ez a paraméter a kiürítési parancsok teszteléséhez hasznos, így meggyőződhet róla, hogy nem törli a megőrizni kívánt információkat.
 
 További paraméterekért futtassa a parancsot `acr purge --help` . 
 
-`acr purge`az ACR-feladatok egyéb funkcióit támogatja, beleértve a [futtatási változókat](container-registry-tasks-reference-yaml.md#run-variables) és a [tevékenységek futtatására szolgáló naplókat](container-registry-tasks-logs.md) , amelyeket a rendszer a későbbi lekéréshez is ment.
+`acr purge` az ACR-feladatok egyéb funkcióit támogatja, beleértve a [futtatási változókat](container-registry-tasks-reference-yaml.md#run-variables) és a [tevékenységek futtatására szolgáló naplókat](container-registry-tasks-logs.md) , amelyeket a rendszer a későbbi lekéréshez is ment.
 
 ### <a name="run-in-an-on-demand-task"></a>Futtatás igény szerinti feladatban
 

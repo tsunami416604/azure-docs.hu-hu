@@ -15,10 +15,10 @@ ms.topic: article
 ms.date: 03/20/2019
 ms.author: juliako
 ms.openlocfilehash: 144db6a5ceaf56a35d3ce11dd54e1dfb4c97d7e3
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89264113"
 ---
 # <a name="retry-logic-in-the-media-services-sdk-for-net"></a>Újrapróbálkozási logika a .NET-hez készült Media Services SDK-ban
@@ -39,7 +39,7 @@ Microsoft Azure szolgáltatások használatakor átmeneti hibák léphetnek fel.
 ## <a name="exception-types"></a>Kivételek típusai
 A következő táblázat azokat a kivételeket ismerteti, amelyek miatt a .NET-hez készült Media Services SDK kezeli vagy nem kezeli az átmeneti hibákat okozó műveletek némelyikét.  
 
-| Kivétel | Webes kérelem | Tárolás | Lekérdezés | SaveChanges |
+| Kivétel | Webes kérelem | Storage | Lekérdezés | SaveChanges |
 | --- | --- | --- | --- | --- |
 | WebException<br/>További információ: a [Webkivételi állapotkódok](media-services-retry-logic-in-dotnet-sdk.md#WebExceptionStatus) szakasz. |Igen |Igen |Igen |Igen |
 | DataServiceClientException<br/> További információ: http- [hibák állapotának kódjai](media-services-retry-logic-in-dotnet-sdk.md#HTTPStatusCode). |Nem |Igen |Igen |Igen |
@@ -54,7 +54,7 @@ A következő táblázat azokat a kivételeket ismerteti, amelyek miatt a .NET-h
 ### <a name="webexception-status-codes"></a><a name="WebExceptionStatus"></a> Webkivételi állapotkódok
 A következő táblázat azt mutatja be, hogy az újrapróbálkozási logikát milyen webkivételi hibakódok implementálják. A [WebExceptionStatus](/dotnet/api/system.net.webexceptionstatus?view=netcore-3.1) enumerálás meghatározza az állapotkódot.  
 
-| status | Webes kérelem | Tárolás | Lekérdezés | SaveChanges |
+| status | Webes kérelem | Storage | Lekérdezés | SaveChanges |
 | --- | --- | --- | --- | --- |
 | ConnectFailure |Igen |Igen |Igen |Igen |
 | NameResolutionFailure |Igen |Igen |Igen |Igen |
@@ -72,7 +72,7 @@ A következő táblázat azt mutatja be, hogy az újrapróbálkozási logikát m
 ### <a name="http-error-status-codes"></a><a name="HTTPStatusCode"></a> HTTP-hibák állapotának kódjai
 Ha a lekérdezési és SaveChanges műveletek eldobják a DataServiceClientException, a DataServiceQueryException vagy a DataServiceQueryException, a rendszer a HTTP-hiba állapotkódot adja vissza a StatusCode tulajdonságban.  Az alábbi táblázat bemutatja, hogy az újrapróbálkozási logikát milyen hibakódok implementálják.  
 
-| status | Webes kérelem | Tárolás | Lekérdezés | SaveChanges |
+| status | Webes kérelem | Storage | Lekérdezés | SaveChanges |
 | --- | --- | --- | --- | --- |
 | 401 |Nem |Igen |Nem |Nem |
 | 403 |Nem |Igen<br/>Újrapróbálkozások kezelésére hosszú várakozásokkal. |Nem |Nem |
@@ -85,7 +85,7 @@ Ha a lekérdezési és SaveChanges műveletek eldobják a DataServiceClientExcep
 
 Ha szeretné megtekinteni az Media Services SDK for .NET újrapróbálkozási logikájának tényleges megvalósítását, tekintse meg az [Azure-SDK-for-Media-Services](https://github.com/Azure/azure-sdk-for-media-services/tree/dev/src/net/Client/TransientFaultHandling)című témakört.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [!INCLUDE [media-services-learning-paths-include](../../../includes/media-services-learning-paths-include.md)]
 
 ## <a name="provide-feedback"></a>Visszajelzés küldése

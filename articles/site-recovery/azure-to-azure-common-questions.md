@@ -6,13 +6,13 @@ manager: rochakm
 ms.date: 04/29/2019
 ms.topic: conceptual
 ms.openlocfilehash: 7bc8427a51a9931ca82155232569767f12a8e266
-ms.sourcegitcommit: 3d56d25d9cf9d3d42600db3e9364a5730e80fa4a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87534022"
 ---
-# <a name="common-questions-azure-to-azure-disaster-recovery"></a>Gyakori kérdések: Azure – Azure vész-helyreállítás
+# <a name="common-questions-azure-to-azure-disaster-recovery"></a>Gyakori kérdések: Azure-ból Azure-ba történő vészhelyreállítás
 
 Ez a cikk az Azure-beli virtuális gépek vész-helyreállításával kapcsolatos gyakori kérdéseket válaszolja meg egy másik Azure-régióba [Azure site Recovery](site-recovery-overview.md)használatakor.
 

@@ -8,10 +8,10 @@ ms.date: 3/12/2020
 ms.topic: conceptual
 ms.service: digital-twins
 ms.openlocfilehash: 5821a1d1f6713ef39d7475fb004164e7c0fd71ec
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87062063"
 ---
 # <a name="understand-digital-twins-and-their-twin-graph"></a>A digitális ikrek és a Twin Graph ismertetése
@@ -21,7 +21,7 @@ Egy Azure digitális Twins-megoldásban a környezetében lévő entitásokat az
 > [!TIP]
 > Az "Azure digitális Twins" az Azure-szolgáltatás egészére vonatkozik. A "digitális twin (k)" vagy csak a "twin (k)" a szolgáltatás példányán belüli különálló csomópontokra utal.
 
-## <a name="digital-twins"></a>Digitális Twins
+## <a name="digital-twins"></a>Digital Twins
 
 Ahhoz, hogy létre lehessen hozni egy Digital Twin-et az Azure Digital Twins-példányban, rendelkeznie kell egy, a szolgáltatásba feltöltött *modellel* . A modellek a tulajdonságok, a telemetria és az adott Twin kapcsolatok készletét írják le, egyebek között. A modellben definiált információk típusaiért lásd [*: fogalmak: egyéni modellek*](concepts-models.md).
 
@@ -105,7 +105,7 @@ A digitális Twin-és a kapcsolati adatfájlok egyaránt JSON formátumban vanna
 
 Ha JSON-objektumként jelenik meg, a Digital Twin a következő mezőket jeleníti meg:
 
-| Mező neve | Description |
+| Mező neve | Leírás |
 | --- | --- |
 | `$dtId` | A digitális Twin AZONOSÍTÓját jelölő, felhasználó által megadott karakterlánc |
 | `$etag` | A webkiszolgáló által hozzárendelt szabványos HTTP-mező |
@@ -120,7 +120,7 @@ Ha JSON-objektumként jelenik meg, a Digital Twin a következő mezőket jelení
 | `$metadata.{propertyName}.ackDescription` | [Csak írható tulajdonságok esetében] A `ack` digitális IKeret megvalósító eszköz alkalmazás által visszaadott Leírás |
 | `{componentName}` | Egy JSON-objektum, amely tartalmazza az összetevő tulajdonságának értékeit és metaadatait, hasonlóan a gyökérszintű objektumhoz. Ez az objektum akkor is létezik, ha az összetevő nem rendelkezik tulajdonsággal. |
 | `{componentName}.{propertyName}` | Az összetevő tulajdonságának értéke a JSON-ban ( `string` , szám típusa vagy objektum) |
-| `{componentName}.$metadata` | Az összetevő metaadat-információi, a legfelső szintűhez hasonlóan`$metadata` |
+| `{componentName}.$metadata` | Az összetevő metaadat-információi, a legfelső szintűhez hasonlóan `$metadata` |
 
 Íme egy példa egy, a JSON-objektumként formázott Digital Twin-re:
 
@@ -172,7 +172,7 @@ Ha JSON-objektumként jelenik meg, a Digital Twin a következő mezőket jelení
 
 Ha JSON-objektumként jelenik meg, a digitális iker kapcsolata a következő mezőket jeleníti meg:
 
-| Mező neve | Description |
+| Mező neve | Leírás |
 | --- | --- |
 | `$relationshipId` | Egy felhasználó által megadott karakterlánc, amely a kapcsolat AZONOSÍTÓját jelöli. Ez a karakterlánc egyedi a forrásként szolgáló digitális Twin környezetben, ami azt is jelenti, hogy az `sourceId`  +  `relationshipId` Azure Digital Twins-példány kontextusában egyedi. |
 | `$etag` | A webkiszolgáló által hozzárendelt szabványos HTTP-mező |

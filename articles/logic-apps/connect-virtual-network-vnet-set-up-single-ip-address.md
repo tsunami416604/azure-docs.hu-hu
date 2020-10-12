@@ -7,10 +7,10 @@ ms.reviewer: jonfan, logicappspm
 ms.topic: conceptual
 ms.date: 05/06/2020
 ms.openlocfilehash: 9ee804f7bed01ca0c7f365a04e6108afd9598157
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87066387"
 ---
 # <a name="set-up-a-single-ip-address-for-one-or-more-integration-service-environments-in-azure-logic-apps"></a>Egyetlen IP-cím beállítása egy vagy több integrációs szolgáltatási környezethez Azure Logic Apps
@@ -52,7 +52,7 @@ Ez a témakör bemutatja, hogyan irányíthatja a kimenő forgalmat egy Azure Fi
    | Tulajdonság | Érték | Leírás |
    |----------|-------|-------------|
    | **Útvonal neve** | <*egyedi-útvonal-név*> | Az útvonal egyedi neve az útválasztási táblában |
-   | **Címelőtag** | <*cél – címe*> | Annak a célhelynek a címe, ahol a kimenő forgalmat el szeretné járni. Ügyeljen arra, hogy ehhez a címnek az [osztály nélküli tartományok közötti útválasztási (CIDR) jelölést](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) használja. Ebben a példában ez a memóriacím egy SFTP-kiszolgálóhoz tartozik, amely a következő szakaszban található: [hálózati szabály beállítása](#set-up-network-rule). |
+   | **Címelőtag** | <*cél – címe*> | Annak a célhelynek a címe, ahol a kimenő forgalmat el szeretné járni. Ügyeljen arra, hogy ehhez a címnek az [osztály nélküli Inter-Domain útválasztási (CIDR) jelölést](https://en.wikipedia.org/wiki/Classless_Inter-Domain_Routing) használja. Ebben a példában ez a memóriacím egy SFTP-kiszolgálóhoz tartozik, amely a következő szakaszban található: [hálózati szabály beállítása](#set-up-network-rule). |
    | **A következő ugrás típusa** | **Virtuális berendezés** | A kimenő forgalom által használt [Ugrás típusa](../virtual-network/virtual-networks-udr-overview.md#next-hop-types-across-azure-tools) |
    | **A következő ugrás címe** | <*tűzfal – magánhálózati-IP-cím*> | A tűzfal magánhálózati IP-címe |
    |||
@@ -95,7 +95,7 @@ Ez a témakör bemutatja, hogyan irányíthatja a kimenő forgalmat egy Azure Fi
 
    * [Hálózatszabály konfigurálása](../firewall/tutorial-firewall-deploy-portal.md#configure-a-network-rule)
    * [Az Azure Firewall szabályfeldolgozási logikája](../firewall/rule-processing.md#network-rules-and-applications-rules)
-   * [Azure Firewall GYIK](../firewall/firewall-faq.md)
+   * [Azure Firewall – gyakori kérdések](../firewall/firewall-faq.md)
    * [Azure PowerShell: New-AzFirewallNetworkRule](/powershell/module/az.network/new-azfirewallnetworkrule)
    * [Azure CLI: az Network Firewall Network-Rule](/cli/azure/ext/azure-firewall/network/firewall/network-rule?view=azure-cli-latest#ext-azure-firewall-az-network-firewall-network-rule-create)
 

@@ -8,10 +8,10 @@ ms.author: aadnaik
 ms.reviewer: HDI HiveLLAP Team
 ms.date: 05/05/2020
 ms.openlocfilehash: a9b86f09ade0d437436779ef3e4a17fcdede2cf0
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83664962"
 ---
 # <a name="azure-hdinsight-interactive-query-cluster-hive-llap-sizing-guide"></a>Az Azure HDInsight interaktív lekérdezési fürt (kaptár LLAP) méretezési útmutatója
@@ -29,7 +29,7 @@ Ez a dokumentum ismerteti a HDInsight interaktív lekérdezési fürt (kaptár L
 ***Megjegyzés: az összes ajánlott konfigurációs érték a D14 v2 típusú feldolgozó csomóponton alapul.***  
 
 ### <a name="configuration"></a>**Configuration**    
-| Konfigurációs kulcs      | Javasolt érték  | Description |
+| Konfigurációs kulcs      | Javasolt érték  | Leírás |
 | :---        |    :----:   | :---     |
 | fonal. nodemanager. Resource. Memory – MB | 102400 (MB) | Teljes memória (MB-ban megadva) a csomóponton lévő összes fonal-tárolóhoz | 
 | fonal. Scheduler. maximális kiosztása – MB | 102400 (MB) | Az RM-on lévő összes Container-kérelem maximális kiosztása (MB). Az ennél az értéknél nagyobb memória-kérelmek nem lépnek érvénybe |

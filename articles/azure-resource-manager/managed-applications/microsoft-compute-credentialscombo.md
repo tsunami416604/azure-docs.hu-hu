@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 09/29/2018
 ms.author: tomfitz
 ms.openlocfilehash: 47c88e08e5d2eac09fbcd5b60a8ccd73b46c9616
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87063771"
 ---
 # <a name="microsoftcomputecredentialscombo-ui-element"></a>Microsoft. számítás. CredentialsCombo FELHASZNÁLÓIFELÜLET-elem
@@ -89,7 +89,7 @@ Windows esetén használja a következő sémát:
 }
 ```
 
-## <a name="sample-output"></a>Példa kimenet
+## <a name="sample-output"></a>Példakimenet
 
 Ha `osPlatform` a **Windows**vagy `osPlatform` **Linux** , és a felhasználó egy nyilvános SSH-kulcs helyett jelszót adott meg, a vezérlő a következő kimenetet adja vissza:
 
@@ -111,7 +111,7 @@ Ha `osPlatform` a **Linux** és a felhasználó egy nyilvános SSH-kulcsot adott
 
 ## <a name="remarks"></a>Megjegyzések
 
-- `osPlatform`kötelező megadni, és lehet **Windows** vagy **Linux**.
+- `osPlatform` kötelező megadni, és lehet **Windows** vagy **Linux**.
 - Ha a `constraints.required` értéke **true (igaz**), akkor a jelszónak vagy az SSH nyilvános kulcs szövegmezőknek megfelelő értékekkel kell rendelkezniük a sikeres ellenőrzéshez. Az alapértelmezett érték **true (igaz**).
 - Ha a `options.hideConfirmation` értéke **true (igaz**), a rendszer elrejti a felhasználó jelszavának megerősítésére szolgáló második szövegmezőt. Az alapértelmezett érték: **hamis**.
 - Ha a `options.hidePassword` értéke **true (igaz**), akkor a jelszó-hitelesítés használatának lehetősége rejtett. A szolgáltatás csak akkor használható, ha `osPlatform` a **Linux**. Az alapértelmezett érték: **hamis**.

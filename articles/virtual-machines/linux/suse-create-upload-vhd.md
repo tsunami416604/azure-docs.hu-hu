@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 03/12/2018
 ms.author: guybo
 ms.openlocfilehash: 73e07c612486d5f48b1ad3eca8044a561549092b
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87292128"
 ---
 # <a name="prepare-a-sles-or-opensuse-virtual-machine-for-azure"></a>SLES- vagy openSUSE-alapú virtuális gép előkészítése az Azure-beli használatra
@@ -133,11 +133,11 @@ A saját virtuális merevlemez kiépítésének alternatívájaként a SUSE a BY
 2. Kattintson a **Kapcsolódás** gombra a virtuális gép ablakának megnyitásához.
 3. A rendszerhéjon futtassa a következő parancsot: " `zypper lr` ". Ha a parancs a következőhöz hasonló kimenetet ad vissza, akkor a Tárházak a várt módon lesznek konfigurálva – nincs szükség módosításra (vegye figyelembe, hogy a verziószámok száma változhat):
 
-   | # | Alias                 | Név                  | Engedélyezve | Frissítés
+   | # | Alias                 | Name (Név)                  | Engedélyezve | Frissítés
    | - | :-------------------- | :-------------------- | :------ | :------
    | 1 | Felhő: Tools_13.1      | Felhő: Tools_13.1      | Igen     | Igen
-   | 2 | openSUSE_13.1_OSS     | openSUSE_13.1_OSS     | Igen     | Igen
-   | 3 | openSUSE_13.1_Updates | openSUSE_13.1_Updates | Igen     | Igen
+   | 2 | openSUSE_13 openSUSE_13.1_OSS     | openSUSE_13 openSUSE_13.1_OSS     | Igen     | Igen
+   | 3 | openSUSE_13 openSUSE_13.1_Updates | openSUSE_13 openSUSE_13.1_Updates | Igen     | Igen
 
     Ha a parancs visszaadja a "nincsenek adattárak definiálva..." értéket. Ezután az alábbi parancsokkal adhatja hozzá ezeket a repókat:
 

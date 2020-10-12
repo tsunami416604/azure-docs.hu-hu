@@ -14,10 +14,10 @@ ms.date: 01/17/2020
 ms.author: kenwith
 ms.reviewer: mimart
 ms.openlocfilehash: a385a339122197b7055ef6f54b8e37edea8eae4a
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88078937"
 ---
 # <a name="integrate-with-azure-ad-application-proxy-on-a-network-device-enrollment-service-ndes-server"></a>Integráció az Azure AD Application Proxy hálózati eszközök tanúsítványigénylési szolgáltatásának (NDES) kiszolgálóján
@@ -94,6 +94,6 @@ Az Azure AD Application Proxy az Azure-ra épül. Nagy mennyiségű hálózati s
    * Configuration Manager esetében lépjen a tanúsítvány regisztrációs pontjára, és módosítsa az URL-címet. Ezt az URL-címet kell meghívnia az eszközökre, és be kell mutatnia a feladatát.
    * Az Intune önálló verziójában szerkessze vagy hozzon létre egy új SCEP-házirendet, és adja hozzá az új URL-címet.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A NDES-mel integrált Azure-AD Application Proxy alkalmazások közzétételét teszik elérhetővé a felhasználók számára. További információ: [alkalmazások közzététele az Azure ad Application proxy használatával](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-add-on-premises-application).

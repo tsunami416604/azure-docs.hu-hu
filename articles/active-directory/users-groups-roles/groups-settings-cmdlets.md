@@ -15,10 +15,10 @@ ms.reviewer: krbain
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 63f0c55823899be8eb4146860787aede2cd2d6b5
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88797904"
 ---
 # <a name="azure-active-directory-cmdlets-for-configuring-group-settings"></a>Azure Active Directory-parancsmagok csoportbeállítások konfigurálásához
@@ -53,7 +53,7 @@ A parancsmagok a Azure Active Directory PowerShell V2 modul részét képezik. A
    ```
    
 ## <a name="create-settings-at-the-directory-level"></a>Beállítások létrehozása a címtár szintjén
-Ezek a lépések a címtár szintjén hoznak létre beállításokat, amelyek a címtárban található összes Microsoft 365 csoportra érvényesek. A Get-AzureADDirectorySettingTemplate parancsmag csak a [Graph Azure ad PowerShell előzetes verziójú moduljában](https://www.powershellgallery.com/packages/AzureADPreview)érhető el.
+Ezek a lépések a címtár szintjén hoznak létre beállításokat, amelyek a címtárban található összes Microsoft 365 csoportra érvényesek. A Get-AzureADDirectorySettingTemplate parancsmag csak a [Graph Azure ad PowerShell előzetes verziójának moduljában](https://www.powershellgallery.com/packages/AzureADPreview)érhető el.
 
 1. A Directorysetting objektumok-parancsmagokban meg kell adnia a használni kívánt SettingsTemplate AZONOSÍTÓját. Ha nem ismeri ezt az azonosítót, a parancsmag az összes beállítási sablon listáját adja vissza:
   

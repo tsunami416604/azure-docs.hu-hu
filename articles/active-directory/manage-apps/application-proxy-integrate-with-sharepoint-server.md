@@ -17,10 +17,10 @@ ms.reviewer: japere
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 42dd979f6e069addc1067d0018390c358e79a7b6
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84764536"
 ---
 # <a name="enable-remote-access-to-sharepoint-with-azure-ad-application-proxy"></a>Távoli hozzáférés engedélyezése a SharePointhoz az Azure AD-alkalmazásproxy segítségével
@@ -47,9 +47,9 @@ A SharePoint és az alkalmazásproxy konfigurálásához két URL-cím szükség
 > - A vállalati tartománynévrendszer (DNS) területen hozzon létre egy gazdagépet (A), hogy a SharePoint-WFE (vagy terheléselosztó) mutasson, és ne egy aliast (CName).
 
 Ez a cikk a következő értékeket használja:
-- Belső URL-cím:`https://sharepoint`
-- Külső URL-cím:`https://spsites-demo1984.msappproxy.net/`
-- Alkalmazáskészlet-fiók a SharePoint-webalkalmazáshoz:`Contoso\spapppool`
+- Belső URL-cím: `https://sharepoint`
+- Külső URL-cím: `https://spsites-demo1984.msappproxy.net/`
+- Alkalmazáskészlet-fiók a SharePoint-webalkalmazáshoz: `Contoso\spapppool`
 
 ## <a name="step-1-configure-an-application-in-azure-ad-that-uses-application-proxy"></a>1. lépés: alkalmazás konfigurálása az Azure AD-ben, amely alkalmazásproxy-t használ
 
@@ -188,7 +188,7 @@ A KCD konfigurálásához hajtsa végre az alábbi lépéseket minden összeköt
 1. Keresse meg az Azure AD proxy-összekötőt futtató számítógépet. Ebben a példában ez a SharePoint-kiszolgáló.
 1. Kattintson duplán a számítógépre, majd válassza a **Delegálás** lapot.
 1. Győződjön meg arról, hogy a delegálási beállítások úgy vannak beállítva, hogy a **számítógép csak a megadott szolgáltatások delegálására legyen megbízható**. Ezután válassza **a bármely hitelesítési protokoll használata**lehetőséget.
-1. Válassza a **Hozzáadás** gombot, válassza a **felhasználók vagy számítógépek**lehetőséget, és keresse meg a SharePoint-alkalmazáskészlet fiókját. Példa: `Contoso\spapppool`.
+1. Válassza a **Hozzáadás** gombot, válassza a **felhasználók vagy számítógépek**lehetőséget, és keresse meg a SharePoint-alkalmazáskészlet fiókját. Például: `Contoso\spapppool`.
 1. Az SPN-lista listában válassza ki azt, amelyet korábban hozott létre a szolgáltatásfiók számára.
 1. Kattintson **az OK gombra** , majd kattintson ismét **az OK** gombra a módosítások mentéséhez.
   

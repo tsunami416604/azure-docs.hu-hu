@@ -16,10 +16,10 @@ ms.author: kenwith
 ms.reviewer: jeedes
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1731d5ea5d8db9ea1c5855a32d2daca0387c0bf5
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84763210"
 ---
 # <a name="manage-certificates-for-federated-single-sign-on-in-azure-active-directory"></a>Az összevont egyszeri bejelentkezés tanúsítványainak kezelése Azure Active Directory
@@ -59,12 +59,12 @@ Először hozzon létre és mentsen új tanúsítványt más lejárati dátummal
 1. Válassza ki az érintett alkalmazást. Megjelenik az alkalmazás áttekintő lapja.
 1. Az alkalmazás – Áttekintés lap bal oldali ablaktábláján válassza az **egyszeri bejelentkezés**lehetőséget.
 1. Ha megjelenik az **egyszeri bejelentkezési módszer kiválasztása** lap, válassza az **SAML**lehetőséget.
-1. Az **egyszeri bejelentkezés az SAML-vel – előzetes** verziójának beállítása lapon keresse meg az **SAML aláíró tanúsítvány** fejlécét, és válassza a **Szerkesztés** ikont (egy ceruza). Megjelenik az **SAML aláíró tanúsítvány** lapja, amely megjeleníti az egyes tanúsítványok állapotát (**aktív** vagy **inaktív**), a lejárati dátumot és az ujjlenyomatot (a kivonatoló karakterláncot).
+1. Az **egyszeri Sign-On beállítása az SAML-előnézettel** lapon keresse meg az **SAML-aláíró tanúsítvány** fejlécét, és válassza a **Szerkesztés** ikont (egy ceruza). Megjelenik az **SAML aláíró tanúsítvány** lapja, amely megjeleníti az egyes tanúsítványok állapotát (**aktív** vagy **inaktív**), a lejárati dátumot és az ujjlenyomatot (a kivonatoló karakterláncot).
 1. Válassza az **új tanúsítvány**lehetőséget. Egy új sor jelenik meg a tanúsítványok listája alatt, ahol a lejárati dátum alapértelmezett értéke pontosan három év az aktuális dátum után. (A módosítások még nem lettek mentve, így továbbra is módosíthatja a lejárati dátumot.)
 1. Az új tanúsítvány sorában vigye a kurzort a lejárat dátuma oszlop fölé, és válassza a **dátum kiválasztása** ikont (a naptárat). Ekkor megjelenik egy naptár vezérlőelem, amely megjeleníti az új sor aktuális lejárati dátumának napját.
 1. Az új dátum beállításához használja a naptár vezérlőt. Az aktuális dátum és az aktuális dátumot követő három év közötti időpontot állíthatja be.
 1. Kattintson a **Mentés** gombra. Az új tanúsítvány mostantól **inaktív**állapottal, a választott lejárati dátummal és egy ujjlenyomattal jelenik meg.
-1. Az **X** érték kiválasztásával térjen vissza az **egyszeri bejelentkezés beállítása SAML-előnézet** lapra.
+1. Az **X** érték kiválasztásával térjen vissza a **Set up Single Sign-On for SAML-Preview** oldalára.
 
 ### <a name="upload-and-activate-a-certificate"></a>Tanúsítvány feltöltése és aktiválása
 

@@ -10,10 +10,10 @@ ms.author: vakrishn
 ms.reviewer: sstein
 ms.date: 05/19/2020
 ms.openlocfilehash: abd1bc9b53c303d094d74683da0d6e3fad4d715f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90887472"
 ---
 # <a name="deploy-ml-model-on-azure-sql-edge-using-onnx"></a>ML modell üzembe helyezése az Azure SQL Edge-ben a ONNX használatával 
@@ -223,6 +223,6 @@ Adja meg a következő Python-kódot a Azure Data Studio jegyzetfüzetben, és f
    fig.show()
    ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A ONNX-modellek Azure SQL Edge-ben történő használatáról további információt a [Machine learning és a AI a ONNX az SQL Edge-ben](onnx-overview.md)című témakörben talál.

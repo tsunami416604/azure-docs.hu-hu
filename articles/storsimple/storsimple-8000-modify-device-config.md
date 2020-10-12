@@ -15,10 +15,10 @@ ms.workload: TBD
 ms.date: 09/28/2017
 ms.author: alkohli
 ms.openlocfilehash: d0e13f8e66e6035c22c9c2323b9653c5c4a81671
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85514673"
 ---
 # <a name="use-the-storsimple-device-manager-service-to-modify-your-storsimple-device-configuration"></a>A StorSimple Eszközkezelő szolgáltatás használata a StorSimple-eszköz konfigurációjának módosításához
@@ -44,7 +44,7 @@ A Azure Portal segítségével módosíthatja az eszköz nevét, és hozzárende
 
 A StorSimple Eszközkezelő szolgáltatáshoz csatlakoztatott StorSimple-eszköz alapértelmezett nevet kap. Az alapértelmezett név általában az eszköz sorozatszámát tükrözi. Például a 15 karakter hosszúságú alapértelmezett eszköznév (például 8600-SHX0991003G44HT) a következőket jelzi:
 
-* **8600** – az eszköz modelljét jelzi.
+* **8600**  – az eszköz modelljét jelzi.
 * **SHX** – a gyártási helyet jelzi.
 * **0991003** – egy adott terméket jelez.
 * **G44HT**– az utolsó 5 számjegy növekszik az egyedi sorozatszámok létrehozásához. Lehet, hogy ez nem szekvenciális készlet.

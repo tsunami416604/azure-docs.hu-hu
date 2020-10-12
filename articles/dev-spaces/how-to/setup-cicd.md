@@ -9,10 +9,10 @@ manager: gwallace
 description: Ismerje meg, hogyan állíthat be folyamatos integrációt/folyamatos üzembe helyezést az Azure DevOps és az Azure dev Spaces használatával
 keywords: Docker, Kubernetes, Azure, AK, Azure Container Service, tárolók
 ms.openlocfilehash: c7b3eba0bea85082dbb4e39d108af9471d5dc45e
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88080266"
 ---
 # <a name="use-cicd-with-azure-dev-spaces"></a>A CI/CD és az Azure Dev Spaces használata
@@ -70,7 +70,7 @@ A letiltási lehetőség:
 
 Az _azds_updates_ ág tartalmaz egy egyszerű [Azure pipeline-YAML](/azure/devops/pipelines/yaml-schema?view=vsts&tabs=schema) , amely a *mywebapi* és a *webfrontendhez*szükséges Build-lépéseket határozza meg.
 
-A választott nyelvtől függően a folyamat YAML a következőhöz hasonló elérési úton lett bejelentkezve:`samples/dotnetcore/getting-started/azure-pipelines.dotnetcore.yml`
+A választott nyelvtől függően a folyamat YAML a következőhöz hasonló elérési úton lett bejelentkezve: `samples/dotnetcore/getting-started/azure-pipelines.dotnetcore.yml`
 
 Folyamat létrehozása ebből a fájlból:
 1. A DevOps projekt főoldalán navigáljon a folyamatok > builds elemre.
@@ -119,7 +119,7 @@ Most már rendelkezik egy CI-megoldással, amely automatikusan felépíti a *myw
 1. Kattintson a jobb felső sarokban található **Mentés** elemre, majd **az OK gombra**.
 1. Kattintson a **+ kiadás** elemre (a Mentés gomb mellett), és **hozzon létre egy kiadást**.
 1. Az összetevők területen **ellenőrizze, hogy ki van-e**választva a build-folyamat legújabb buildje.
-1. Kattintson a **Create** (Létrehozás) gombra.
+1. Kattintson a **Létrehozás** lehetőségre.
 
 Az automatizált kiadási folyamat most elindul, üzembe helyezi a *mywebapi* és a *webfrontend* -diagramokat a Kubernetes-fürtön a _fejlesztői_ legfelső szintű helyen. A kiadás előrehaladását az Azure DevOps webes portálján követheti nyomon:
 
@@ -160,7 +160,7 @@ A kiadás akkor történik meg, amikor az összes feladat befejeződött.
 
 A CI/CD-folyamat _gyártási_ fázisa egy terheléselosztó használatával használja a dev Spaces beáramló vezérlőt, hogy hozzáférést _biztosítson a termelési szolgáltatásokhoz_ . A _gyártási_ szakaszban üzembe helyezett szolgáltatások a DNS-nevek helyett IP-címekként érhetők el. Éles környezetben dönthet úgy, hogy saját DNS-konfiguráció alapján saját bevezetési vezérlőt hoz létre a szolgáltatások üzemeltetéséhez.
 
-A webfrontend szolgáltatás IP-címének meghatározásához kattintson a **webfrontend nyilvános IP-címének kinyomtatása** lépésre a napló kimenetének kibontásához. Használja a napló kimenetében megjelenő IP-címet a **webfrontend** alkalmazás eléréséhez.
+A webfrontend szolgáltatás IP-címének meghatározásához kattintson a  **webfrontend nyilvános IP-címének kinyomtatása** lépésre a napló kimenetének kibontásához. Használja a napló kimenetében megjelenő IP-címet a **webfrontend** alkalmazás eléréséhez.
 
 ```cmd
 ...
@@ -183,7 +183,7 @@ Bár a dev Spaces Instrumentation úgy lett kialakítva, hogy _nem_ az alkalmaz�
 >
 > Előfordulhat, hogy törölnie kell az összes hüvelyt a `prod` névtérben, miután ezt megtette, így a fejlesztői szóközök kialakítása nélkül is újra létrehozhatók.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ az Azure dev Spaces működéséről.
 

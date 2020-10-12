@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: jak
 ms.custom: aaddev
 ms.openlocfilehash: 95bd7b5ac325ef5484bd01284c46489acb919a32
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85830349"
 ---
 # <a name="using-redirect-uris-with-the-microsoft-authentication-library-for-ios-and-macos"></a>Átirányítási URI-k használata az iOS és a macOS rendszerhez készült Microsoft Authentication Library használatával
@@ -41,7 +41,7 @@ Az átirányítási URI-azonosítóknak különbözőeknek kell lenniük az egye
 A következő alkalmazás-regisztráció a Azure Portalban:
 
 * Ügyfél-azonosító: `ABCDE-12345` (ez egyetlen ügyfél-azonosító)
-* RedirectUris: `msauth.com.contoso.app1://auth` , `msauth.com.contoso.app2://auth` ,`msauth.com.contoso.app3://auth`
+* RedirectUris: `msauth.com.contoso.app1://auth` , `msauth.com.contoso.app2://auth` , `msauth.com.contoso.app3://auth`
 
 A App1 átirányítást használ `msauth.com.contoso.app1://auth` . \
 A App2 használja `msauth.com.contoso.app2://auth` . \
@@ -53,13 +53,13 @@ Ha olyan kódot telepít át, amely az Azure AD hitelesítési függvénytárat 
 
 ## <a name="msal-redirect-uri-format-requirements"></a>MSAL átirányítási URI-formátumra vonatkozó követelmények
 
-* A MSAL átirányítási URI-nak az űrlapon kell lennie`<scheme>://host`
+* A MSAL átirányítási URI-nak az űrlapon kell lennie `<scheme>://host`
 
     Hol `<scheme>` található az alkalmazás azonosítására szolgáló egyedi karakterlánc. Elsődlegesen az alkalmazás köteg-azonosítóján alapul, amely garantálja az egyediséget. Ha például az alkalmazás Bundle `com.contoso.myapp` -azonosítója, az átirányítási URI a következő formában lesz: `msauth.com.contoso.myapp://auth` .
 
     Ha a ADAL-ről végez áttelepítést, az átirányítási URI-ja valószínűleg a következő formátumú lesz: `<scheme>://[Your_Bundle_Id]` , ahol a egy `scheme` egyedi karakterlánc. A MSAL használatakor ez a formátum továbbra is működni fog.
 
-* `<scheme>`az alkalmazás info. plist fájljában kell regisztrálni `CFBundleURLTypes > CFBundleURLSchemes` .  Ebben a példában a info. plist fájl forráskódként lett megnyitva:
+* `<scheme>` az alkalmazás info. plist fájljában kell regisztrálni `CFBundleURLTypes > CFBundleURLSchemes` .  Ebben a példában a info. plist fájl forráskódként lett megnyitva:
 
     ```xml
     <key>CFBundleURLTypes</key>

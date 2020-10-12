@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 05/14/2020
 ms.openlocfilehash: a8dcd6ae844810213ed6706002cdb9a31de94f60
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83653585"
 ---
 # <a name="unable-to-download-large-data-sets-using-jdbcodbc-and-apache-thrift-software-framework-in-hdinsight"></a>Nem sikerült letölteni a nagyméretű adatkészleteket a HDInsight-ben a JDBC/ODBC és az Apache takarékosság szoftver-keretrendszer használatával
@@ -31,7 +31,7 @@ Buffer overflow. Available: 0, required: 36518. To avoid this, increase spark.kr
 
 Ezt a kivételt a szerializálási folyamat okozta, hogy a megengedettnél több pufferméret legyen felhasználva. A Spark 2.0.0-ben a osztály az `org.apache.spark.serializer.KryoSerializer` objektumok szerializálásához használatos, amikor az adatelérés az Apache takarékosság szoftver-keretrendszeren keresztül történik. Egy másik osztályt használ a hálózaton keresztül küldendő vagy szerializált formában gyorsítótárazott adathoz.
 
-## <a name="resolution"></a>Megoldás:
+## <a name="resolution"></a>Feloldás
 
 Növelje meg a `Kryoserializer` puffer értékét. Adjon hozzá egy nevű kulcsot, `spark.kryoserializer.buffer.max` és állítsa be a `2047` spark2 config alatt `Custom spark2-thrift-sparkconf` . Indítsa újra az összes érintett összetevőt.
 

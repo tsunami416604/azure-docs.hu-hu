@@ -5,10 +5,10 @@ ms.date: 12/09/2019
 ms.topic: article
 ms.reviewer: brendal
 ms.openlocfilehash: f0ba19bf1d7fdf05014ac199fae9392b5c3249d1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87073079"
 ---
 # <a name="azure-blockchain-workbench-configuration-reference"></a>Az Azure Blockchain Workbench konfigurációs referenciája
@@ -35,11 +35,11 @@ A blockchain-alkalmazások olyan konfigurációs metaadatokat, munkafolyamatokat
 
 | Mező | Leírás | Kötelező |
 |-------|-------------|:--------:|
-| ApplicationName | Az alkalmazás egyedi neve. A megfelelő intelligens szerződésnek ugyanazt a **ApplicationName** -t kell használnia a vonatkozó szerződési osztályhoz.  | Yes |
-| DisplayName | Az alkalmazás felhasználóbarát megjelenítendő neve. | Yes |
-| Description | Az alkalmazás leírása. | No |
-| ApplicationRoles | A [ApplicationRoles](#application-roles)gyűjteménye. Azok a felhasználói szerepkörök, akik az alkalmazásban működhetnek vagy részt vehetnek.  | Yes |
-| Munkafolyamatok | [Munkafolyamatok](#workflows)gyűjteménye. Az egyes munkafolyamatok állapotjelző gépnek minősülnek az üzleti logika áramlását vezérelve. | Yes |
+| ApplicationName | Az alkalmazás egyedi neve. A megfelelő intelligens szerződésnek ugyanazt a **ApplicationName** -t kell használnia a vonatkozó szerződési osztályhoz.  | Igen |
+| DisplayName | Az alkalmazás felhasználóbarát megjelenítendő neve. | Igen |
+| Leírás | Az alkalmazás leírása. | Nem |
+| ApplicationRoles | A [ApplicationRoles](#application-roles)gyűjteménye. Azok a felhasználói szerepkörök, akik az alkalmazásban működhetnek vagy részt vehetnek.  | Igen |
+| Munkafolyamatok | [Munkafolyamatok](#workflows)gyűjteménye. Az egyes munkafolyamatok állapotjelző gépnek minősülnek az üzleti logika áramlását vezérelve. | Igen |
 
 Példa: [példa a konfigurációs fájlra](#configuration-file-example).
 
@@ -49,15 +49,15 @@ Az alkalmazás üzleti logikája olyan állapotú gépként is modellezhető, am
 
 | Mező | Leírás | Kötelező | Maximális hossz |
 |-------|-------------|:--------:|-----------:|
-| Name | Egyedi munkafolyamat neve. A megfelelő intelligens szerződésnek ugyanazt a **nevet** kell használnia a vonatkozó szerződési osztályhoz. | Yes | 50 |
-| DisplayName | A munkafolyamat felhasználóbarát megjelenítendő neve. | Yes | 255 |
-| Description | A munkafolyamat leírása. | No | 255 |
-| Kezdeményezők | A [ApplicationRoles](#application-roles)gyűjteménye. A munkafolyamatban szerződések létrehozására jogosult felhasználókhoz hozzárendelt szerepkörök. | Yes | |
-| StartState | A munkafolyamat kezdeti állapotának neve. | Yes | |
-| Tulajdonságok | [Azonosítók](#identifiers)gyűjteménye. Azokat az adatelemzési eszközöket jelöli, amelyek leolvashatók a láncból, vagy megjeleníthetők a felhasználói élmény eszközben. | Yes | |
-| Konstruktor | Meghatározza a munkafolyamat egy példányának létrehozásához szükséges bemeneti paramétereket. | Yes | |
-| Functions | A munkafolyamatban végrehajtható [függvények](#functions) gyűjteménye. | Yes | |
-| Állapotok | Munkafolyamat- [állapotok](#states)gyűjteménye. | Yes | |
+| Name (Név) | Egyedi munkafolyamat neve. A megfelelő intelligens szerződésnek ugyanazt a **nevet** kell használnia a vonatkozó szerződési osztályhoz. | Igen | 50 |
+| DisplayName | A munkafolyamat felhasználóbarát megjelenítendő neve. | Igen | 255 |
+| Leírás | A munkafolyamat leírása. | Nem | 255 |
+| Kezdeményezők | A [ApplicationRoles](#application-roles)gyűjteménye. A munkafolyamatban szerződések létrehozására jogosult felhasználókhoz hozzárendelt szerepkörök. | Igen | |
+| StartState | A munkafolyamat kezdeti állapotának neve. | Igen | |
+| Tulajdonságok | [Azonosítók](#identifiers)gyűjteménye. Azokat az adatelemzési eszközöket jelöli, amelyek leolvashatók a láncból, vagy megjeleníthetők a felhasználói élmény eszközben. | Igen | |
+| Konstruktor | Meghatározza a munkafolyamat egy példányának létrehozásához szükséges bemeneti paramétereket. | Igen | |
+| Functions | A munkafolyamatban végrehajtható [függvények](#functions) gyűjteménye. | Igen | |
+| Állapotok | Munkafolyamat- [állapotok](#states)gyűjteménye. | Igen | |
 
 Példa: [példa a konfigurációs fájlra](#configuration-file-example).
 
@@ -65,7 +65,7 @@ Példa: [példa a konfigurációs fájlra](#configuration-file-example).
 
 Támogatott adattípusok.
 
-| Típus | Description |
+| Típus | Leírás |
 |-------|-------------|
 | address  | A Blockchain, például a *szerződések* vagy a *felhasználók*. |
 | array    | Egyszintű tömb, egész szám, bool, pénz vagy idő típusú tömb. A tömbök lehetnek statikusak vagy dinamikusak. A tömbben található elemek adattípusának megadásához használja a **ElementType** . Lásd: [példa konfiguráció](#example-configuration-of-type-array). |
@@ -74,7 +74,7 @@ Támogatott adattípusok.
 | Enum     | Megnevezett értékek enumerálása. Az enumerálás típusának használatakor megadhatja a EnumValues listáját is. Minden érték 255 karakterből állhat. Az érvényes értékek a következők: kis-és nagybetűk (A-Z, a-z) és számok (0-9). Lásd: [példa konfiguráció és használat a soliding-ben](#example-configuration-of-type-enum). |
 | int      | Egész adattípus. |
 | pénzt    | Pénz adattípus. |
-| state    | Munkafolyamat állapota. |
+| állapot    | Munkafolyamat állapota. |
 | sztring  | Sztring adattípusú. 4000 karakter maximális száma. Lásd: [példa konfiguráció](#example-configuration-of-type-string). |
 | felhasználó!     | Felhasználó típusú címe. |
 | time     | Idő adattípus. |
@@ -170,7 +170,7 @@ Meghatározza a munkafolyamat egy példányának bemeneti paramétereit.
 
 | Mező | Leírás | Kötelező |
 |-------|-------------|:--------:|
-| Paraméterek | Intelligens szerződés elindításához szükséges [azonosítók](#identifiers) gyűjteménye. | Yes |
+| Paraméterek | Intelligens szerződés elindításához szükséges [azonosítók](#identifiers) gyűjteménye. | Igen |
 
 ### <a name="constructor-example"></a>Konstruktor – példa
 
@@ -203,10 +203,10 @@ A munkafolyamaton végrehajtható függvények meghatározása.
 
 | Mező | Leírás | Kötelező | Maximális hossz |
 |-------|-------------|:--------:|-----------:|
-| Name | A függvény egyedi neve. A megfelelő intelligens szerződésnek ugyanazt a **nevet** kell használnia a megfelelő függvényhez. | Yes | 50 |
-| DisplayName | A függvény felhasználóbarát megjelenítendő neve. | Yes | 255 |
-| Description | A függvény leírása | No | 255 |
-| Paraméterek | A függvény paramétereinek megfelelő [azonosítók](#identifiers) gyűjteménye. | Yes | |
+| Name (Név) | A függvény egyedi neve. A megfelelő intelligens szerződésnek ugyanazt a **nevet** kell használnia a megfelelő függvényhez. | Igen | 50 |
+| DisplayName | A függvény felhasználóbarát megjelenítendő neve. | Igen | 255 |
+| Leírás | A függvény leírása | Nem | 255 |
+| Paraméterek | A függvény paramétereinek megfelelő [azonosítók](#identifiers) gyűjteménye. | Igen | |
 
 ### <a name="functions-example"></a>Függvények – példa
 
@@ -251,12 +251,12 @@ Egy munkafolyamaton belül egyedi állapotok gyűjteménye. Az egyes állapotok 
 
 | Mező | Leírás | Kötelező | Maximális hossz |
 |-------|-------------|:--------:|-----------:|
-| Name | Az állapot egyedi neve. A megfelelő intelligens szerződésnek ugyanazt a **nevet** kell használnia a megfelelő állapothoz. | Yes | 50 |
-| DisplayName | Az állapot felhasználóbarát megjelenítendő neve. | Yes | 255 |
-| Description | Az állapot leírása. | No | 255 |
-| KészültségiSzint paraméter értéke | A Blockchain Workbench felhasználói felületén megjelenő egész érték, amely az üzleti logika vezérlési folyamatán belüli előrehaladást mutatja. | Yes | |
-| Stílus | Vizuális mutató, amely azt jelzi, hogy az állapot sikeres vagy sikertelen állapotot képvisel-e. Két érvényes érték létezik: `Success` vagy `Failure` . | Yes | |
-| Áttűnések | Elérhető [átmenetek](#transitions) gyűjteménye az aktuális állapotból a következő készletbe. | No | |
+| Name (Név) | Az állapot egyedi neve. A megfelelő intelligens szerződésnek ugyanazt a **nevet** kell használnia a megfelelő állapothoz. | Igen | 50 |
+| DisplayName | Az állapot felhasználóbarát megjelenítendő neve. | Igen | 255 |
+| Leírás | Az állapot leírása. | Nem | 255 |
+| KészültségiSzint paraméter értéke | A Blockchain Workbench felhasználói felületén megjelenő egész érték, amely az üzleti logika vezérlési folyamatán belüli előrehaladást mutatja. | Igen | |
+| Stílus | Vizuális mutató, amely azt jelzi, hogy az állapot sikeres vagy sikertelen állapotot képvisel-e. Két érvényes érték létezik: `Success` vagy `Failure` . | Igen | |
+| Áttűnések | Elérhető [átmenetek](#transitions) gyűjteménye az aktuális állapotból a következő készletbe. | Nem | |
 
 ### <a name="states-example"></a>Állapotok – példa
 
@@ -320,12 +320,12 @@ A következő állapothoz elérhető műveletek. Egy vagy több felhasználói s
 
 | Mező | Leírás | Kötelező |
 |-------|-------------|:--------:|
-| AllowedRoles | Az áttérés kezdeményezésére jogosult alkalmazások listája. Lehetséges, hogy a megadott szerepkör összes felhasználója el tudja végezni a műveletet. | No |
-| AllowedInstanceRoles | Az átállást kezdeményező, az intelligens szerződésben résztvevő vagy megadott felhasználói szerepkörök listája. A példányok szerepkörei a munkafolyamatokon belüli **tulajdonságokban** vannak meghatározva. A AllowedInstanceRoles egy intelligens szerződés egy példányában részt vevő felhasználót jelöl. A AllowedInstanceRoles lehetővé teszi, hogy egy adott szerződési példányban egy felhasználói szerepkörre korlátozza a műveletet.  Előfordulhat például, hogy csak azt szeretné engedélyezni, hogy a szerződést (InstanceOwner) létrehozó felhasználó a szerepkör típusa (tulajdonos) helyett az összes felhasználó számára is lemondható legyen, ha a szerepkört a AllowedRoles-ben adta meg. | No |
-| DisplayName | Az átmenet felhasználóbarát megjelenítendő neve. | Yes |
-| Description | Az átmenet leírása. | No |
-| Függvény | Az átmenetet kezdeményező függvény neve. | Yes |
-| NextStates | A sikeres áttérés utáni lehetséges következő állapotok gyűjteménye. | Yes |
+| AllowedRoles | Az áttérés kezdeményezésére jogosult alkalmazások listája. Lehetséges, hogy a megadott szerepkör összes felhasználója el tudja végezni a műveletet. | Nem |
+| AllowedInstanceRoles | Az átállást kezdeményező, az intelligens szerződésben résztvevő vagy megadott felhasználói szerepkörök listája. A példányok szerepkörei a munkafolyamatokon belüli **tulajdonságokban** vannak meghatározva. A AllowedInstanceRoles egy intelligens szerződés egy példányában részt vevő felhasználót jelöl. A AllowedInstanceRoles lehetővé teszi, hogy egy adott szerződési példányban egy felhasználói szerepkörre korlátozza a műveletet.  Előfordulhat például, hogy csak azt szeretné engedélyezni, hogy a szerződést (InstanceOwner) létrehozó felhasználó a szerepkör típusa (tulajdonos) helyett az összes felhasználó számára is lemondható legyen, ha a szerepkört a AllowedRoles-ben adta meg. | Nem |
+| DisplayName | Az átmenet felhasználóbarát megjelenítendő neve. | Igen |
+| Leírás | Az átmenet leírása. | Nem |
+| Függvény | Az átmenetet kezdeményező függvény neve. | Igen |
+| NextStates | A sikeres áttérés utáni lehetséges következő állapotok gyűjteménye. | Igen |
 
 ### <a name="transitions-example"></a>Átmenetek – példa
 
@@ -365,8 +365,8 @@ Az alkalmazás szerepkörei olyan szerepköröket határoznak meg, amelyek hozz�
 
 | Mező | Leírás | Kötelező | Maximális hossz |
 |-------|-------------|:--------:|-----------:|
-| Name | Az alkalmazás szerepkörének egyedi neve. A megfelelő intelligens szerződésnek ugyanazt a **nevet** kell használnia a megfelelő szerepkörhöz. Az alaptípusok nevei le vannak foglalva. Az alkalmazás-szerepkör nem nevezhető el ugyanazzal a névvel, mint a [Type](#type)| Yes | 50 |
-| Description | Az alkalmazás szerepkörének leírása. | No | 255 |
+| Name (Név) | Az alkalmazás szerepkörének egyedi neve. A megfelelő intelligens szerződésnek ugyanazt a **nevet** kell használnia a megfelelő szerepkörhöz. Az alaptípusok nevei le vannak foglalva. Az alkalmazás-szerepkör nem nevezhető el ugyanazzal a névvel, mint a [Type](#type)| Igen | 50 |
+| Leírás | Az alkalmazás szerepkörének leírása. | Nem | 255 |
 
 ### <a name="application-roles-example"></a>Példa az alkalmazás szerepköreire
 
@@ -388,10 +388,10 @@ Az azonosítók a munkafolyamat-tulajdonságok, a konstruktorok és a függvény
 
 | Mező | Leírás | Kötelező | Maximális hossz |
 |-------|-------------|:--------:|-----------:|
-| Name | A tulajdonság vagy paraméter egyedi neve. A megfelelő intelligens szerződésnek ugyanazt a **nevet** kell használnia a megfelelő tulajdonsághoz vagy paraméterhez. | Yes | 50 |
-| DisplayName | A tulajdonság vagy paraméter felhasználóbarát megjelenítendő neve. | Yes | 255 |
-| Description | A tulajdonság vagy a paraméter leírása. | No | 255 |
-| Típus | Tulajdonság [adattípusa](#type). | Yes |
+| Name (Név) | A tulajdonság vagy paraméter egyedi neve. A megfelelő intelligens szerződésnek ugyanazt a **nevet** kell használnia a megfelelő tulajdonsághoz vagy paraméterhez. | Igen | 50 |
+| DisplayName | A tulajdonság vagy paraméter felhasználóbarát megjelenítendő neve. | Igen | 255 |
+| Leírás | A tulajdonság vagy a paraméter leírása. | Nem | 255 |
+| Típus | Tulajdonság [adattípusa](#type). | Igen |
 
 ### <a name="identifiers-example"></a>Azonosítók – példa
 

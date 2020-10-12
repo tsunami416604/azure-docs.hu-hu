@@ -12,10 +12,10 @@ ms.topic: end-user-help
 ms.date: 07/29/2020
 ms.author: curtand
 ms.openlocfilehash: 7dcaae80842f06714759cb5c933a62ccd85aac63
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88798091"
 ---
 # <a name="view-or-change-your-settings-in-the-my-account-portal"></a>A saját fiók portál beállításainak megtekintése vagy módosítása
@@ -43,7 +43,7 @@ A megjelenítési nyelv módosítása után érdemes kijelentkeznie, és bejelen
 >
 > ![A fiókom oldal, amely megjeleníti a megjelenítési nyelvi beállításokat a szervezet számára.](media/my-account-portal/my-account-portal-managed-language-settings.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A fiókom-portál beállításainak módosítása után a következőket teheti:
 

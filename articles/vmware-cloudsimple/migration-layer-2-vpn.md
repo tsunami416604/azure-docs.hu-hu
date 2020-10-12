@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: a530a6f656f37657a198af85d93d5404ac88d0e1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83651031"
 ---
 # <a name="migrate-workloads-using-layer-2-stretched-networks"></a>Számítási feladatok migrálása a 2. rétegbeli kiterjesztett hálózatok használatával
@@ -57,8 +57,8 @@ A következő táblázat a támogatott vSphere-verziókat és hálózati adapter
 
 | vSphere verziója | Forrás vSwitch típusa | Virtuális hálózati adapter illesztőprogramja | Cél vSwitch típusa | Támogatott? |
 ------------ | ------------- | ------------ | ------------- | ------------- 
-| Mind | DVS | Mind | DVS | Yes |
-| vSphere 6.7 UI vagy magasabb, 6.5 P03 vagy újabb | DVS | VMXNET3 | N-VDS | Yes |
+| Mind | DVS | Mind | DVS | Igen |
+| vSphere 6.7 UI vagy magasabb, 6.5 P03 vagy újabb | DVS | VMXNET3 | N-VDS | Igen |
 | vSphere 6.7 UI vagy magasabb, 6.5 P03 vagy újabb | DVS | E1000 | N-VDS | [VWware esetében nem támogatott](https://kb.vmware.com/s/article/56991) |
 | vSphere 6.7 UI vagy 6.5 P03, NSX-V vagy Versions, NSX-T 2.2, 6.5 P03 vagy újabb verziók | Mind | Mind | N-VDS | [VWware esetében nem támogatott](https://kb.vmware.com/s/article/56991) |
 
@@ -73,7 +73,7 @@ További információ: [Virtual Private Networks](https://docs.vmware.com/en/VMw
 
 ### <a name="on-premises-network-where-the-standalone-esg-l2-vpn-client-is-deployed"></a>Helyszíni hálózat, amelyben az önálló ESG TANULMÁNYA (L2 VPN-ügyfél) telepítve van
 
-| **Item** | **Érték** |
+| **Elem** | **Érték** |
 |------------|-----------------|
 | Hálózati név | MGMT_NET_VLAN469 |
 | VLAN | 469 |
@@ -83,14 +83,14 @@ További információ: [Virtual Private Networks](https://docs.vmware.com/en/VMw
 
 ### <a name="on-premises-network-to-be-stretched"></a>A helyszíni hálózat kifeszíthető
 
-| **Item** | **Érték** |
+| **Elem** | **Érték** |
 |------------|-----------------|
 | VLAN | 472 |
 | CIDR| 10.250.3.0/24 |
 
 ### <a name="private-cloud-ip-schema-for-nsx-t-tier0-router-l2-vpn-serve"></a>Saját felhőalapú IP-séma a NSX-T Tier0-útválasztóhoz (L2 VPN Serve)
 
-| **Item** | **Érték** |
+| **Elem** | **Érték** |
 |------------|-----------------|
 | Visszacsatolási felület | 192.168.254.254/32 |
 | Bújtatási interfész | 5.5.5.1/29 |
@@ -99,7 +99,7 @@ További információ: [Virtual Private Networks](https://docs.vmware.com/en/VMw
 
 ### <a name="private-cloud-network-to-be-mapped-to-the-stretched-network"></a>A kifeszített hálózathoz hozzárendelni kívánt privát felhőalapú hálózat
 
-| **Item** | **Érték** |
+| **Elem** | **Érték** |
 |------------|-----------------|
 | VLAN | 712 |
 | CIDR| 10.200.15.0/24 |
@@ -163,7 +163,7 @@ Az NSX-T Tier0-útválasztó és az önálló NSX Edge-ügyfél közötti IPsec-
 
     ![IP-előtag-lista létrehozása](media/l2vpn-routing-security02.png)
 
-4. Jelentkezzen be a NSX-T Managerbe, és válassza a **hálózatkezelés**  >  **útválasztási**  >  **útválasztók**  >  **szolgáltató-LR**  >  **Routing**  >  **BGP**-  >  **szomszédok**lehetőséget. Válassza ki az első szomszédot. Kattintson a címtartomány **szerkesztése**elemre  >  **Address Families**. Az IPv4-család esetében szerkessze a **kimeneti szűrő** oszlopot, és válassza ki a létrehozott IP-előtagot. Kattintson a **Save** (Mentés) gombra. Ismételje meg ezt a lépést a második szomszédnál.
+4. Jelentkezzen be a NSX-T Managerbe, és válassza a **hálózatkezelés**  >  **útválasztási**  >  **útválasztók**  >  **szolgáltató-LR**  >  **Routing**  >  **BGP**-  >  **szomszédok**lehetőséget. Válassza ki az első szomszédot. Kattintson a címtartomány **szerkesztése**elemre  >  **Address Families**. Az IPv4-család esetében szerkessze a **kimeneti szűrő** oszlopot, és válassza ki a létrehozott IP-előtagot. Kattintson a **Mentés** gombra. Ismételje meg ezt a lépést a második szomszédnál.
 
     ![IP-előtagi lista csatolása 1. ](media/l2vpn-routing-security03.png) ![ IP-előtag csatolása 2. lista](media/l2vpn-routing-security04.png)
 

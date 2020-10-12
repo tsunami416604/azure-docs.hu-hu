@@ -13,10 +13,10 @@ ms.custom:
 - 'Role: Technical Support'
 - devx-track-csharp
 ms.openlocfilehash: 100f87b8a13fb424706c3b5ec13268cd3ba42bbe
-ms.sourcegitcommit: bf1340bb706cf31bb002128e272b8322f37d53dd
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89438398"
 ---
 # <a name="monitor-the-health-of-azure-iot-hub-and-diagnose-problems-quickly"></a>Az Azure IoT Hub állapotának monitorozása és a problémák gyorsan diagnosztizálása
@@ -352,7 +352,7 @@ IoT Hub rögzíti ezt a naplót, ha egy érvényes nyomkövetési tulajdonságok
 
 Itt `durationMs` nem számítja ki a számítást, mert előfordulhat, hogy a IoT hub órája nem szinkronizálható az eszköz órájával, így az időtartam kiszámítása félrevezető lehet. Az `properties` eszközről a felhőbe irányuló késések rögzítése érdekében a szakasz időbélyegei alapján javasolt a logikát írni.
 
-| Tulajdonság | Típus | Description |
+| Tulajdonság | Típus | Leírás |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
 | **messageSize** | Egész szám | Az eszközről a felhőbe irányuló üzenet mérete bájtban |
 | **deviceId** | ASCII 7 bites alfanumerikus karakterek karakterlánca | Az eszköz identitása |
@@ -386,7 +386,7 @@ IoT Hub rögzíti ezt a naplót, ha az érvényes nyomkövetési tulajdonságoka
 
 A `properties` szakaszban ez a napló további információkat tartalmaz az üzenetek beérkezéséről.
 
-| Tulajdonság | Típus | Description |
+| Tulajdonság | Típus | Leírás |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
 | **isRoutingEnabled** | Sztring | Igaz vagy hamis érték esetén azt jelzi, hogy engedélyezve van-e az üzenet-útválasztás a IoT Hub |
 | **parentSpanId** | Sztring | A fölérendelt üzenet [span-azonosítója](https://w3c.github.io/trace-context/#parent-id) , amely ebben az esetben a D2C-üzenet nyomkövetése lenne |
@@ -418,7 +418,7 @@ IoT Hub rögzíti ezt a naplót, ha az [Útválasztás](iot-hub-devguide-message
 
 A `properties` szakaszban ez a napló további információkat tartalmaz az üzenetek beérkezéséről.
 
-| Tulajdonság | Típus | Description |
+| Tulajdonság | Típus | Leírás |
 |--------------------|-----------------------------------------------|------------------------------------------------------------------------------------------------|
 | **Végpontneve** | Sztring | Az útválasztási végpont neve |
 | **endpointType** | Sztring | Az útválasztási végpont típusa |
@@ -492,7 +492,7 @@ A következő táblázat a különböző Azure IoT SDK-k által használt SDK-ne
 | com. microsoft. Azure. iothub. Service. SDK | Java Service SDK |
 | com. microsoft. Azure. SDK. IOT. IOT-Device-Client | Java-eszköz SDK |
 | com. microsoft. Azure. SDK. IOT. IOT-Service-Client | Java Service SDK |
-| C# | Beágyazott C |
+| C | Beágyazott C |
 | C + (OSSimplified = Azure RTOS) | Azure RTOS |
 
 A diagnosztikai naplókra irányuló lekérdezések végrehajtásakor kinyerheti az SDK Version tulajdonságát. A következő lekérdezés kibontja az SDK Version tulajdonságát (és az eszköz AZONOSÍTÓját) a kapcsolatok eseményei által visszaadott tulajdonságokból. Ez a két tulajdonság az eredményekre, valamint annak az IoT hub-erőforrás-AZONOSÍTÓra van írva, amelyhez az eszköz csatlakozik.

@@ -16,10 +16,10 @@ ms.date: 03/20/2019
 ms.author: juliako
 ms.reviewer: johndeu
 ms.openlocfilehash: 84e94a431efdc84ff6896de416bd222120784899
-ms.sourcegitcommit: bcda98171d6e81795e723e525f81e6235f044e52
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89264283"
 ---
 # <a name="media-services-operations-rest-api-overview"></a>Media Services Operations REST API áttekintése
@@ -80,9 +80,9 @@ A következő a választható fejlécek halmaza:
 | --- | --- | --- |
 | Dátum |RFC 1123 dátum |A kérés időbélyege |
 | Elfogadás |Tartalomtípus |A kért tartalomtípus a válaszhoz, például a következő:<p> -Application/JSON; OData = részletes<p> -Application/Atom + XML<p> A válaszok eltérő tartalomtípussal rendelkezhetnek, például egy blob beolvasásával, ahol a sikeres válasz a blob streamet tartalmazza hasznos adattartalomként. |
-| Elfogadás – kódolás |Gzip, deflate |A GZIP és a deflate kódolás, ha alkalmazható. Megjegyzés: a nagyméretű erőforrások esetében Media Services figyelmen kívül hagyhatja ezt a fejlécet, és nem tömörített adatmennyiséget adhat vissza. |
+| Accept-Encoding |Gzip, deflate |A GZIP és a deflate kódolás, ha alkalmazható. Megjegyzés: a nagyméretű erőforrások esetében Media Services figyelmen kívül hagyhatja ezt a fejlécet, és nem tömörített adatmennyiséget adhat vissza. |
 | Accept-Language |"en", "es" stb. |Megadja a válasz előnyben részesített nyelvét. |
-| Elfogadás – charset |Karakterkészlet típusa, például "UTF-8" |Az alapértelmezett érték az UTF-8. |
+| Accept-Charset |Karakterkészlet típusa, például "UTF-8" |Az alapértelmezett érték az UTF-8. |
 | X-HTTP-Method |HTTP-metódus |Lehetővé teszi az olyan ügyfelek vagy tűzfalak használatát, amelyek nem támogatják az olyan HTTP-metódusokat, mint a PUT vagy a DELETE, ha ezeket a metódusokat szeretné használni, egy GET hívással. |
 | Content-Type |Tartalomtípus |A kérelem törzsének tartalomtípusa a PUT vagy POST kérelmekben. |
 | ügyfél-kérelem azonosítója |Sztring |Egy hívó által definiált érték, amely az adott kérelmet azonosítja. Ha meg van adva, a rendszer ezt az értéket fogja tartalmazni a válaszüzenetben a kérelem leképezéséhez. <p><p>**Fontos**<p>Az értékeket a 2096b (2k) értékre kell korlátozni. |
@@ -124,7 +124,7 @@ A Media Services fiókjának az Azure Portalról történő megszerzésével kap
 
 Az Azure AD-hitelesítéssel REST APIhoz kapcsolódó kódok írásához tekintse meg a következő cikket: az [Azure ad-hitelesítés használata a Azure Media Services API Rest-tel való eléréséhez](media-services-rest-connect-with-aad.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Az Azure AD-hitelesítés Media Services REST API használatával történő használatáról további információt [Az Azure ad-hitelesítés használata a Azure Media Services API Rest-tel való eléréséhez](media-services-rest-connect-with-aad.md)című témakörben talál.
 
 ## <a name="media-services-learning-paths"></a>A Media Services tanulási útvonalai

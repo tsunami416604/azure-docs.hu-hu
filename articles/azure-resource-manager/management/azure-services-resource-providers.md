@@ -4,10 +4,10 @@ description: Felsorolja a Azure Resource Manager összes erőforrás-szolgáltat
 ms.topic: conceptual
 ms.date: 09/04/2020
 ms.openlocfilehash: b740c8ee7c28bfeeaecc42121d0c7ce4a323ab3e
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91330825"
 ---
 # <a name="resource-providers-for-azure-services"></a>Erőforrás-szolgáltatók az Azure-szolgáltatásokhoz
@@ -56,13 +56,13 @@ Ez a cikk bemutatja, hogyan képezhetők le az erőforrás-szolgáltatói névte
 | Microsoft. CognitiveServices | [Cognitive Services](../../cognitive-services/index.yml) |
 | Microsoft. Commerce<sup>1</sup> | Core |
 | Microsoft.Compute | [Virtual Machines](../../virtual-machines/index.yml)<br />[Virtual Machine Scale Sets](../../virtual-machine-scale-sets/index.yml) |
-| Microsoft.<sup>1</sup> . felhasználás | [Költségkezelés](/azure/cost-management/) |
-| Microsoft. ContainerInstance | [Container Instances](../../container-instances/index.yml) |
+| Microsoft.<sup>1</sup> . felhasználás | [Cost Management](/azure/cost-management/) |
+| Microsoft. ContainerInstance | [Tárolópéldányok](../../container-instances/index.yml) |
 | Microsoft. ContainerRegistry | [Container Registry](../../container-registry/index.yml) |
 | Microsoft. Tárolószolgáltatás | [Azure Kubernetes Service (AKS)](../../aks/index.yml) |
-| Microsoft. CostManagement<sup>1</sup> | [Költségkezelés](/azure/cost-management/) |
-| Microsoft. CostManagementExports | [Költségkezelés](/azure/cost-management/) |
-| Microsoft. CustomerLockbox | [Microsoft Azure Ügyfélszéf](../../security/fundamentals/customer-lockbox-overview.md) |
+| Microsoft. CostManagement<sup>1</sup> | [Cost Management](/azure/cost-management/) |
+| Microsoft. CostManagementExports | [Cost Management](/azure/cost-management/) |
+| Microsoft. CustomerLockbox | [Ügyfélszéf a Microsoft Azure-hoz](../../security/fundamentals/customer-lockbox-overview.md) |
 | Microsoft. CustomProviders | [Azure Custom Providers](../custom-providers/overview.md) |
 | Microsoft. DataBox | [Azure Data Box](../../databox/index.yml) |
 | Microsoft. DataBoxEdge | [Azure Stack Edge](../../databox-online/azure-stack-edge-overview.md) |
@@ -78,7 +78,7 @@ Ez a cikk bemutatja, hogyan képezhetők le az erőforrás-szolgáltatói névte
 | Microsoft. DBforMySQL | [Azure Database for MySQL](../../mysql/index.yml) |
 | Microsoft. DBforPostgreSQL | [Azure Database for PostgreSQL](../../postgresql/index.yml) |
 | Microsoft. DeploymentManager | [Azure-telepítéskezelő](../templates/deployment-manager-overview.md) |
-| Microsoft. DesktopVirtualization | [Windows virtuális asztal](../../virtual-desktop/index.yml) |
+| Microsoft. DesktopVirtualization | [Windows Virtual Desktop](../../virtual-desktop/index.yml) |
 | Microsoft.Devices | [Azure IoT Hub](../../iot-hub/index.yml)<br />[Azure IoT Hub Device Provisioning Service](../../iot-dps/index.yml) |
 | Microsoft. DevOps | [Azure DevOps](/azure/devops/) |
 | Microsoft. DevSpaces | [Azure Dev Spaces](../../dev-spaces/index.yml) |
@@ -96,7 +96,7 @@ Ez a cikk bemutatja, hogyan képezhetők le az erőforrás-szolgáltatói névte
 | Microsoft. HardwareSecurityModules | [Azure Dedicated HSM](../../dedicated-hsm/index.yml) |
 | Microsoft. HDInsight | [HDInsight](../../hdinsight/index.yml) |
 | Microsoft. HealthcareApis | [Azure API for FHIR](../../healthcare-apis/index.yml) |
-| Microsoft. HybridCompute | [Azure Arc](../../azure-arc/index.yml) |
+| Microsoft. HybridCompute | [Azure-ív](../../azure-arc/index.yml) |
 | Microsoft. HybridData | [StorSimple](../../storsimple/index.yml) |
 | Microsoft. HybridNetwork  | [Saját peremhálózati zónák](../../networking/edge-zones-overview.md) |
 | Microsoft. ImportExport | [Azure Import/Export](../../storage/common/storage-import-export-service.md) |
@@ -116,7 +116,7 @@ Ez a cikk bemutatja, hogyan képezhetők le az erőforrás-szolgáltatói névte
 | Microsoft. ManagedIdentity | [Azure-erőforrások felügyelt identitásai](../../active-directory/managed-identities-azure-resources/index.yml) |
 | Microsoft. ManagedNetwork | A Pásti Services által felügyelt virtuális hálózatok |
 | Microsoft. ManagedServices | [Azure Lighthouse](../../lighthouse/index.yml) |
-| Microsoft. Management | [Felügyeleti csoportok](../../governance/management-groups/index.yml) |
+| Microsoft. Management | [Management Groups](../../governance/management-groups/index.yml) |
 | Microsoft. Maps | [Azure Maps](../../azure-maps/index.yml) |
 | Microsoft. Marketplace | Core |
 | Microsoft. MarketplaceApps | Core |

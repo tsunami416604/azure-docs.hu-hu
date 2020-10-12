@@ -17,10 +17,10 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 602ca070bcaefd20585681e409ab85e9d455160a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84764689"
 ---
 # <a name="problem-installing-the-application-proxy-agent-connector"></a>Probléma az alkalmazásproxy-ügynök összekötőjének telepítésekor
@@ -61,7 +61,7 @@ Ha egy összekötő telepítése nem sikerül, a kiváltó ok általában az al�
 
 **Tekintse át a szükséges előfeltételeket:**
 
-1.  Ellenőrizze, hogy a gép támogatja-e a TLS 1.2-et – a 2012 R2 utáni összes Windows-verziónak támogatnia kell a TLS 1,2 Ha az összekötő-számítógép 2012 R2 vagy korábbi verziójú, akkor győződjön meg arról, hogy a következő Tudásbázis vannak telepítve a gépen:<https://support.microsoft.com/help/2973337/sha512-is-disabled-in-windows-when-you-use-tls-1.2>
+1.  Ellenőrizze, hogy a gép támogatja-e a TLS 1.2-et – a 2012 R2 utáni összes Windows-verziónak támogatnia kell a TLS 1,2 Ha az összekötő-számítógép 2012 R2 vagy korábbi verziójú, akkor győződjön meg arról, hogy a következő Tudásbázis vannak telepítve a gépen: <https://support.microsoft.com/help/2973337/sha512-is-disabled-in-windows-when-you-use-tls-1.2>
 
 2.  Forduljon a hálózati rendszergazdához, és kérje meg, hogy ellenőrizze, hogy a háttér-proxy és a tűzfal nem blokkolja-e a kimenő forgalom SHA512.
 
@@ -81,7 +81,7 @@ Ellenőrizze az aktuális ügyféltanúsítvány ujjlenyomatát. A tanúsítván
 
 Itt láthatók a lehetséges **IsInUserStore** értékek és jelentések:
 
-- **false (hamis** ) – az ügyféltanúsítvány a Register-AppProxyConnector parancs által kezdeményezett telepítés vagy regisztráció során jött létre. A rendszer a helyi gép tanúsítványtárolójának személyes tárolójában tárolja. 
+- **false (hamis** ) – az ügyféltanúsítvány a Register-AppProxyConnector parancs által kezdeményezett telepítés vagy regisztráció során lett létrehozva. A rendszer a helyi gép tanúsítványtárolójának személyes tárolójában tárolja. 
 
 A tanúsítvány ellenőrzéséhez kövesse az alábbi lépéseket:
 
@@ -103,7 +103,7 @@ A tanúsítvány ellenőrzéséhez kövesse az alábbi lépéseket:
 
 Ha egy összekötő több hónapig nem csatlakozik a szolgáltatáshoz, előfordulhat, hogy a tanúsítványa elavult. A tanúsítvány megújításának meghibásodása egy lejárt tanúsítványhoz vezet. Így az összekötő szolgáltatás leáll. Az 1000-es eseményt a rendszer az összekötő felügyeleti naplójába rögzíti:
 
-"Az összekötő ismételt regisztrálása nem sikerült: az összekötő megbízhatósági tanúsítványa lejárt. Futtassa a Register-AppProxyConnector PowerShell-parancsmagot azon a számítógépen, amelyen az összekötő fut, és regisztrálja újra az összekötőt. "
+"Az összekötő ismételt regisztrálása nem sikerült: az összekötő megbízhatósági tanúsítványa lejárt. Futtassa a PowerShell-parancsmag Register-AppProxyConnector azon a számítógépen, amelyen az összekötő fut, és regisztrálja újra az összekötőt. "
 
 Ebben az esetben távolítsa el, majd telepítse újra az összekötőt a regisztráció elindításához, vagy futtassa a következő PowerShell-parancsokat:
 
@@ -112,7 +112,7 @@ Import-module AppProxyPSModule
 Register-AppProxyConnector
 ```
 
-A Register-AppProxyConnector paranccsal kapcsolatos további tudnivalókért tekintse meg [a felügyelet nélküli telepítési parancsfájl létrehozása az Azure ad Application proxy-összekötőhöz](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-register-connector-powershell) című témakört.
+Az Register-AppProxyConnector paranccsal kapcsolatos további tudnivalókért tekintse meg [a felügyelet nélküli telepítési parancsfájl létrehozása az Azure ad Application proxy-összekötőhöz](https://docs.microsoft.com/azure/active-directory/manage-apps/application-proxy-register-connector-powershell) című témakört.
 
 ## <a name="verify-admin-is-used-to-install-the-connector"></a>Ellenőrizze, hogy a rendszergazda az összekötő telepítéséhez használt-e
 

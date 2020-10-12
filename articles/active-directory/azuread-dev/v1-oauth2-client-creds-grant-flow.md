@@ -14,10 +14,10 @@ ms.reviewer: nacanuma
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: 977dfea28c5c0dc3f34ada0c138556d70c979e04
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85551703"
 ---
 # <a name="service-to-service-calls-using-client-credentials-shared-secret-or-certificate"></a>Szolgáltatások közötti hívások ügyfél-hitelesítő adatokkal (közös titok vagy tanúsítvány)
@@ -52,7 +52,7 @@ Két eset attól függően, hogy az ügyfélalkalmazás egy közös titok vagy e
 ### <a name="first-case-access-token-request-with-a-shared-secret"></a>Első eset: hozzáférési jogkivonat-kérelem közös titokkal
 Közös titkos kulcs használata esetén a szolgáltatás-szolgáltatás hozzáférési jogkivonat-kérelem a következő paramétereket tartalmazza:
 
-| Paraméter | Típus | Description |
+| Paraméter | Típus | Leírás |
 | --- | --- | --- |
 | grant_type |kötelező |Megadja a kért engedélyezési típust. Az ügyfél hitelesítő adatainak megadása esetén a **client_credentials**értéket kell megadni. |
 | client_id |kötelező |Megadja a hívó webszolgáltatás Azure AD-ügyfél-azonosítóját. A hívó alkalmazás ügyfél-AZONOSÍTÓjának megkereséséhez kattintson a [Azure Portal](https://portal.azure.com) **Azure Active Directory**, majd a **Alkalmazásregisztrációk**elemre, majd az alkalmazásra. A client_id az *alkalmazás azonosítója* |
@@ -73,11 +73,11 @@ grant_type=client_credentials&client_id=625bc9f6-3bf6-4b6d-94ba-e97cf07a22de&cli
 ### <a name="second-case-access-token-request-with-a-certificate"></a>Második eset: hozzáférési jogkivonat kérése tanúsítvánnyal
 Egy tanúsítványhoz tartozó szolgáltatás-szolgáltatás hozzáférési jogkivonat-kérelem a következő paramétereket tartalmazza:
 
-| Paraméter | Típus | Description |
+| Paraméter | Típus | Leírás |
 | --- | --- | --- |
 | grant_type |kötelező |A kért válasz típusát adja meg. Az ügyfél hitelesítő adatainak megadása esetén a **client_credentials**értéket kell megadni. |
 | client_id |kötelező |Megadja a hívó webszolgáltatás Azure AD-ügyfél-azonosítóját. A hívó alkalmazás ügyfél-AZONOSÍTÓjának megkereséséhez kattintson a [Azure Portal](https://portal.azure.com) **Azure Active Directory**, majd a **Alkalmazásregisztrációk**elemre, majd az alkalmazásra. A client_id az *alkalmazás azonosítója* |
-| client_assertion_type |kötelező |Az értéknek meg kell felelnie`urn:ietf:params:oauth:client-assertion-type:jwt-bearer` |
+| client_assertion_type |kötelező |Az értéknek meg kell felelnie `urn:ietf:params:oauth:client-assertion-type:jwt-bearer` |
 | client_assertion |kötelező | Az alkalmazáshoz hitelesítő adatként regisztrált tanúsítvány létrehozásához és aláírásához szükséges állítás (JSON Web Token). Tudnivalók a [tanúsítvány hitelesítő adatairól](../develop/active-directory-certificate-credentials.md?toc=/azure/active-directory/azuread-dev/toc.json&bc=/azure/active-directory/azuread-dev/breadcrumb/toc.json) : a tanúsítvány regisztrálásának és az állítás formátumának megismerése.|
 | erőforrás | kötelező |Adja meg a fogadó webszolgáltatás alkalmazás-azonosító URI azonosítóját. Az alkalmazás-azonosító URI azonosítójának megkereséséhez kattintson a Azure Portal **Azure Active Directory**, majd a **Alkalmazásregisztrációk**lehetőségre, majd a szolgáltatásalkalmazás elemre, végül a **Beállítások** és **Tulajdonságok**elemre. |
 
