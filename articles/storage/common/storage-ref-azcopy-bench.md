@@ -9,10 +9,10 @@ ms.author: normesta
 ms.subservice: common
 ms.reviewer: zezha-msft
 ms.openlocfilehash: c1028d0a4a458746c08fd6fa4f16aa952d9962a2
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87282007"
 ---
 # <a name="azcopy-benchmark"></a>azcopy-teljesítményteszt
@@ -73,7 +73,7 @@ Olyan feltöltést futtasson, amely nem törli az átvitt fájlokat. (Ezek a fá
 azcopy bench "https://[account].blob.core.windows.net/[container]?<SAS>" --file-count 100 --delete-test-data=false
 ```
 
-## <a name="options"></a>Beállítások
+## <a name="options"></a>Lehetőségek
 
 **--a blob-Type** karakterlánc határozza meg a blob típusát a célhelyen. A különböző blob-típusok teljesítményértékelésének engedélyezésére szolgál. Megegyezik a másolási parancs azonos nevű paraméterével (az alapértelmezett "észlelés").
 

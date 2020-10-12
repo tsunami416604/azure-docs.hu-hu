@@ -4,10 +4,10 @@ description: Ismerje meg, hogyan használhatók a Azure DevTest Labs az Azure-fo
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: d04ed5dd7bebac0c8f24deb9145c3d2e4b77122e
-ms.sourcegitcommit: 2ffa5bae1545c660d6f3b62f31c4efa69c1e957f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88080334"
 ---
 # <a name="use-devtest-labs-in-azure-pipelines-build-and-release-pipelines"></a>A DevTest Labs használata az Azure Pipelines buildelési és kiadási folyamataiban
@@ -86,7 +86,7 @@ A második feladathoz **Azure app Service üzembe helyezéséhez**adja meg az Az
 ## <a name="test-run"></a>Teszt futtatása
 Most, hogy mindkét folyamat be van állítva, manuálisan hozza létre a buildet, és nézze meg, hogy működik-e. A következő lépés a megfelelő trigger beállítása a létrehozáshoz és a build és a kiadási folyamat összekapcsolása.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Lásd az alábbi cikkeket:
 
 - [Azure DevTest Labs integrálása az Azure-folyamatok folyamatos integrációs és szállítási folyamatával](devtest-lab-integrate-ci-cd.md)

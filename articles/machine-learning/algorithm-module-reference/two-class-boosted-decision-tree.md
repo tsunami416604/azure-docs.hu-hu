@@ -1,7 +1,7 @@
 ---
-title: 'Kétosztályos kibővített döntési fa: modulok leírása'
+title: 'Two-Class megnövelt döntési fa: modulok referenciája'
 titleSuffix: Azure Machine Learning
-description: Megtudhatja, hogyan használhatja a Azure Machine Learning kétosztályos felerősítő döntési famodulját egy gépi tanulási modell létrehozásához, amely a megnövelt döntési fák algoritmusán alapul.
+description: Megtudhatja, hogyan használhatja a Azure Machine Learning Two-Class növelt döntési famodult egy gépi tanulási modell létrehozásához, amely a megnövelt döntési fák algoritmusán alapul.
 services: machine-learning
 ms.service: machine-learning
 ms.subservice: core
@@ -10,13 +10,13 @@ author: likebupt
 ms.author: keli19
 ms.date: 08/24/2020
 ms.openlocfilehash: 833caa0cf264fb49d8b32255f429132cd888c6c0
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90907727"
 ---
-# <a name="two-class-boosted-decision-tree-module"></a>Kétosztályos növelt döntési fa modul
+# <a name="two-class-boosted-decision-tree-module"></a>Two-Class megnövelt döntési fa modul
 
 Ez a cikk a Azure Machine Learning Designer egyik modulját ismerteti.
 

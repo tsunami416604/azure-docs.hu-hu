@@ -11,10 +11,10 @@ ms.author: tamram
 ms.reviewer: fryu
 ms.subservice: blobs
 ms.openlocfilehash: 3a585bc2bf3872a21bde9be036628922ee5743fa
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90087354"
 ---
 # <a name="configure-anonymous-public-read-access-for-containers-and-blobs"></a>Névtelen nyilvános olvasási hozzáférés konfigurálása a tárolók és a Blobok számára
@@ -207,7 +207,7 @@ A Azure Portal egy vagy több meglévő tárolójának nyilvános hozzáférési
 
 Ha a Storage-fiókhoz a nyilvános hozzáférés nem engedélyezett, a tároló nyilvános hozzáférési szintje nem állítható be. Ha megkísérli a tároló nyilvános hozzáférési szintjének beállítását, láthatja, hogy a beállítás le van tiltva, mert a fiókhoz a nyilvános hozzáférés nem engedélyezett.
 
-:::image type="content" source="media/anonymous-read-access-configure/container-public-access-blocked.png" alt-text="Képernyőfelvétel, amely azt mutatja, hogy a tároló nyilvános hozzáférési szintje le van tiltva, ha a nyilvános hozzáférés nem engedélyezett":::
+:::image type="content" source="media/anonymous-read-access-configure/container-public-access-blocked.png" alt-text="A fiókhoz tartozó nyilvános blob-hozzáférés engedélyezését és letiltását bemutató képernyőkép":::
 
 # <a name="powershell"></a>[PowerShell](#tab/powershell)
 

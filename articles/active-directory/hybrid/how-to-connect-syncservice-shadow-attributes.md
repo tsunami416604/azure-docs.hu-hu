@@ -17,10 +17,10 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 128303cb51b39db8442fdda71f949db17923bfa2
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90088970"
 ---
 # <a name="azure-ad-connect-sync-service-shadow-attributes"></a>Azure AD Connect Sync szolgáltatás árnyék-attribútumai
@@ -74,6 +74,6 @@ A ProxyCalc eltarthat egy ideig, hogy feldolgozza a felhasználó módosításai
 ### <a name="quarantined-attribute-values"></a>Karanténba helyezett attribútumok értékei
 A rendszer az árnyék attribútumokat is használja, ha ismétlődő attribútumok vannak megadva. További információ: [duplikált attribútum rugalmassága](how-to-connect-syncservice-duplicate-attribute-resiliency.md).
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 * [Azure AD Connect szinkronizálása](how-to-connect-sync-whatis.md)
 * A helyszíni [identitások integrálása a Azure Active Directorykal](whatis-hybrid-identity.md).

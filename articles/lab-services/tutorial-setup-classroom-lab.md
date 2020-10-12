@@ -4,10 +4,10 @@ description: Ebben az oktatóanyagban a Azure Lab Services használatával áll�
 ms.topic: tutorial
 ms.date: 06/26/2020
 ms.openlocfilehash: 1155646d31ddb8a0a3abce025acde5c4cb645f54
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91336734"
 ---
 # <a name="tutorial-set-up-a-classroom-lab"></a>Oktatóanyag: Osztályterem-tesztkörnyezet beállítása 
@@ -102,7 +102,7 @@ Hozzon létre egy ütemezett eseményt a laborhoz, hogy a laborban lévő virtu�
     ![Ütemterv hozzáadása gomb az ütemtervek lapon](./media/how-to-create-schedules/select-current-schedule.png)
 5. A **REPEAT (ismétlés** ) párbeszédpanelen hajtsa végre a következő lépéseket:
     1. Győződjön meg arról, hogy **minden héten** be van állítva az **ismétlés** mező. 
-    2. Válassza ki azokat a napokat, amelyeknek érvénybe szeretné venni az ütemtervet. A következő példában a hétfő-péntek beállítás van kiválasztva. 
+    2. Válassza ki azokat a napokat, amelyeknek érvénybe szeretné venni az ütemtervet. A következő példában Monday-Friday van kiválasztva. 
     3. Válassza ki az ütemterv **befejezési dátumát** .
     8. Kattintson a **Mentés** gombra. 
 
@@ -147,7 +147,7 @@ Hozzon létre egy ütemezett eseményt a laborhoz, hogy a laborban lévő virtu�
 
     A tanulók osztályhoz való hozzáadásával és a labor használatának felügyeletével kapcsolatos további információkért lásd: [a tanulói használat konfigurálása](how-to-configure-student-usage.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ebben az oktatóanyagban létrehozott egy labort az osztályhoz az Azure-ban. Ha meg szeretné tudni, hogyan férhetnek hozzá a diákok a tesztkörnyezet virtuális gépeihez a regisztrációs hivatkozással, folytassa a következő oktatóanyaggal:
 
 > [!div class="nextstepaction"]

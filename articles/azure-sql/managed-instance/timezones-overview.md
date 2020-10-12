@@ -12,10 +12,10 @@ ms.author: mlandzic
 ms.reviewer: ''
 ms.date: 05/25/2020
 ms.openlocfilehash: fc1532fab23ec520722ea71d814496e786b91651
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91617919"
 ---
 # <a name="time-zones-in-azure-sql-managed-instance"></a>Az Azure SQL felügyelt példányának időzónái
@@ -34,7 +34,7 @@ A támogatott időzónák készlete örökölt a felügyelt példány mögöttes
 
 A [nyári időszámítási idő/időzóna-változások házirendje](https://aka.ms/time) az 2010-ig terjedő korábbi pontosságot biztosítja.
 
-A támogatott időzónák nevét tartalmazó lista a [sys. time_zone_info](/sql/relational-databases/system-catalog-views/sys-time-zone-info-transact-sql) rendszernézeten keresztül érhető el.
+A támogatott időzónák nevét tartalmazó lista a [sys.time_zone_info](/sql/relational-databases/system-catalog-views/sys-time-zone-info-transact-sql) rendszernézeten keresztül érhető el.
 
 ## <a name="set-a-time-zone"></a>Időzóna beállítása
 
@@ -144,7 +144,7 @@ Egy feladatátvételi csoportban lévő elsődleges és másodlagos példányon 
 | Saint-Pierre téli idő | (UTC-03:00) Saint-Pierre és Miquelon |
 | Bahiai téli idő | (UTC-03:00) Salvador |
 | UTC-02 | (UTC-02:00) Egyezményes világidő-02 |
-| Közép-Atlanti téli idő | (UTC-02:00) Közép-Atlanti régi |
+| Mid-Atlantic téli idő | (UTC-02:00) Mid-Atlantic-régi |
 | Azori-szigeteki téli idő | (UTC-01:00) Azori-szigetek |
 | Cape Verdei téli idő | (UTC-01:00) A Cabo Verde. |
 | UTC | (UTC) Egyezményes világidő |
@@ -199,7 +199,7 @@ Egy feladatátvételi csoportban lévő elsődleges és másodlagos példányon 
 | Omszki téli idő | (UTC + 06:00) Omszki |
 | Mianmari téli idő | (UTC + 06:30) Yangon (Rangoon) |
 | Délkelet-ázsiai téli idő | (UTC + 07:00) Bangkok, Hanoi, Jakarta |
-| Az az-i téli idő | (UTC + 07:00) Barnaul, Gorno-Altajszk |
+| Az az-i téli idő | (UTC + 07:00) Barnaul, Gorno-Altaysk |
 | W. Mongóliai téli idő | (UTC + 07:00) Hovd |
 | Észak-ázsiai téli idő | (UTC + 07:00) Krasznojarszk |
 | N. Közép-ázsiai téli idő | (UTC + 07:00) Novoszibirszk |
@@ -230,11 +230,11 @@ Egy feladatátvételi csoportban lévő elsődleges és másodlagos példányon 
 | Norfolki téli idő | (UTC + 11:00) Norfolk-sziget |
 | Szahalin téli idő | (UTC + 11:00) Szahalin |
 | Közép-csendes-óceáni téli idő | (UTC + 11:00) Salamon:, Új-Kaledónia |
-| Orosz időzóna, 11 | (UTC + 12:00) Anadíri, Petropavlovsk-Kamcsatszkij |
+| Orosz időzóna, 11 | (UTC + 12:00) Anadíri, Petropavlovsk-Kamchatsky |
 | Új-zélandi téli idő | (UTC + 12:00) Auckland, Wellington |
 | UTC + 12 | (UTC + 12:00) Egyezményes világidő + 12 |
 | Fidzsi-szigeteki téli idő | (UTC + 12:00) Fidzsi |
-| Kamcsatkai téli idő | (UTC + 12:00) Petropavlovsk – Kamcsatszkij-régi |
+| Kamcsatkai téli idő | (UTC + 12:00) Petropavlovsk-Kamchatsky-régi |
 | Chatham-szigeteki téli idő | (UTC + 12:45) Chatham-szigetek |
 | UTC + 13 | (UTC + 13:00) Egyezményes világidő + 13 |
 | Tonga-i téli idő | (UTC + 13:00) Nuku ' Alofa |
@@ -246,4 +246,4 @@ Egy feladatátvételi csoportban lévő elsődleges és másodlagos példányon 
 - [CURRENT_TIMEZONE (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/functions/current-timezone-transact-sql)
 - [CURRENT_TIMEZONE_ID (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/functions/current-timezone-id-transact-sql)
 - [Időzóna (Transact-SQL)](https://docs.microsoft.com/sql/t-sql/queries/at-time-zone-transact-sql)
-- [sys. time_zone_info (Transact-SQL)](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-time-zone-info-transact-sql)
+- [sys.time_zone_info (Transact-SQL)](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-time-zone-info-transact-sql)

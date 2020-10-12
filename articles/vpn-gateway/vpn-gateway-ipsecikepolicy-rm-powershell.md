@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 09/02/2020
 ms.author: yushwang
 ms.openlocfilehash: 6039eeed2e1bcb348920be986e72089164c614ae
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89392650"
 ---
 # <a name="configure-ipsecike-policy-for-s2s-vpn-or-vnet-to-vnet-connections"></a>IPsec/IKE-szabályzat S2S VPN- vagy VNet–VNet-kapcsolatokhoz történő konfigurálása
@@ -56,7 +56,7 @@ Az ebben a cikkben szereplő utasítások segítséget nyújt az IPsec/IKE-szab�
 
 A következő táblázat felsorolja az ügyfelek által konfigurálható támogatott titkosítási algoritmusokat és főbb erősségeket:
 
-| **IPsec/IKEv2**  | **Beállítások**    |
+| **IPsec/IKEv2**  | **Lehetőségek**    |
 | ---  | --- 
 | IKEv2-titkosítás | AES256, AES192, AES128, DES3, DES  
 | IKEv2-integritás  | SHA384, MD5, SHA1, SHA256  |
@@ -83,8 +83,8 @@ A következő táblázat felsorolja az ügyfelek által konfigurálható támoga
 > 3. A fenti táblázatban:
 >    * A IKEv2 felel meg a Main Mode vagy az 1. fázisnak.
 >    * Az IPsec megfelel a gyors vagy a 2. fázisnak
->    * A DH-csoport meghatározza a fő módban vagy az 1. fázisban használt Diffie-Hellmen csoportot.
->    * A PFS-csoport a gyors módban vagy a 2. fázisban használt Diffie-Hellmen csoportot adta meg
+>    * A DH-csoport a főmódban vagy az 1. fázisban használt Diffie-Hellmen csoportot határozza meg.
+>    * A PFS-csoport a Diffie-Hellmen a gyors módban vagy a 2. fázisban használt csoportot adta meg
 > 4. Az IKEv2 fő módú biztonsági hozzárendelés élettartama 28 800 másodpercen van rögzítve az Azure VPN-átjárókon
 > 5. A "UsePolicyBasedTrafficSelectors" beállítása a kapcsolaton keresztüli $True az Azure VPN-átjárót úgy konfigurálja, hogy a helyi házirend-alapú VPN-tűzfalhoz kapcsolódjon. Ha engedélyezi a PolicyBasedTrafficSelectors-t, gondoskodnia kell arról, hogy a VPN-eszköz megfelelő forgalmi választókkal rendelkezik, amelyek a helyszíni hálózat (helyi hálózati átjáró) előtagjainak az Azure Virtual Network előtagjaihoz tartozó összes kombinációját megadják, nem pedig bármely-a-any érték helyett. Például ha a helyszíni hálózati előtagok a 10.1.0.0/16 és a 10.2.0.0/16, a virtuális hálózati előtagok pedig 192.168.0.0/16 és 172.16.0.0/16, az alábbi forgalomválasztókat kell megadnia:
 >    * 10.1.0.0/16 <====> 192.168.0.0/16
@@ -115,7 +115,7 @@ Ez a szakasz végigvezeti a S2S VPN-kapcsolat IPsec/IKE-házirenddel való létr
 
 A S2S VPN-kapcsolat létrehozásával kapcsolatos részletes útmutatásért tekintse meg [a S2S VPN-kapcsolat létrehozása](vpn-gateway-create-site-to-site-rm-powershell.md) című témakört.
 
-### <a name="before-you-begin"></a><a name="before"></a>Kezdés előtt
+### <a name="before-you-begin"></a><a name="before"></a>Előkészületek
 
 * Győződjön meg arról, hogy rendelkezik Azure-előfizetéssel. Ha még nincs Azure-előfizetése, aktiválhatja [MSDN-előfizetői előnyeit](https://azure.microsoft.com/pricing/member-offers/msdn-benefits-details/), vagy regisztrálhat egy [ingyenes fiókot](https://azure.microsoft.com/pricing/free-trial/).
 * Telepítse a Azure Resource Manager PowerShell-parancsmagokat. A PowerShell-parancsmagok telepítésével kapcsolatos további információkért tekintse meg a [Azure PowerShell áttekintése](/powershell/azure/) című témakört.

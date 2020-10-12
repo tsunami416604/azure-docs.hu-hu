@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 4a75b6be3796a21e3f765ad69eee0578d5f2e9d0
-ms.sourcegitcommit: 6fc156ceedd0fbbb2eec1e9f5e3c6d0915f65b8e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88717846"
 ---
 # <a name="integrate-your-remote-desktop-gateway-infrastructure-using-the-network-policy-server-nps-extension-and-azure-ad"></a>A Távoli asztali átjáró-infrastruktúra integrálása a hálózati házirend-kiszolgáló (NPS) bővítmény és az Azure AD használatával
@@ -51,12 +51,12 @@ A RD-átjáró konfigurálható úgy, hogy egy központi házirend-tárolót has
 
 Ha az Azure-hoz készült NPS-bővítmény integrálva van a hálózati házirend-kiszolgálóval és a Távoli asztali átjáró, a sikeres hitelesítési folyamat a következő:
 
-1. A Távoli asztali átjáró kiszolgáló hitelesítési kérést kap egy távoli asztali felhasználótól egy erőforráshoz, például egy Távoli asztal-munkamenethez való kapcsolódáshoz. RADIUS-ügyfélként a Távoli asztali átjáró-kiszolgáló átalakítja a kérést egy RADIUS Access-Request üzenetre, és elküldi az üzenetet arra a RADIUS-(NPS-) kiszolgálóra, amelyen a hálózati házirend-kiszolgáló bővítmény telepítve van.
+1. A Távoli asztali átjáró kiszolgáló hitelesítési kérést kap egy távoli asztali felhasználótól egy erőforráshoz, például egy Távoli asztal-munkamenethez való kapcsolódáshoz. RADIUS-ügyfélként a Távoli asztali átjáró-kiszolgáló átalakítja a kérést egy RADIUS-Access-Request üzenetbe, és elküldi az üzenetet arra a RADIUS (NPS) kiszolgálónak, amelyen az NPS bővítmény telepítve van.
 1. A Felhasználónév és a jelszó kombinációja Active Directory ellenőrzése alatt áll, és a felhasználó hitelesítése megtörtént.
 1. Ha az NPS-csatlakozási kérelemben és a hálózati házirendekben megadott összes feltétel teljesül (például a napszak vagy a csoporttagság korlátozása), akkor a hálózati házirend-kiszolgáló bővítmény a másodlagos hitelesítésre vonatkozó kérelmet indít el az Azure MFA-val.
 1. Az Azure MFA kommunikál az Azure AD-vel, lekéri a felhasználó adatait, és a támogatott módszerek használatával végrehajtja a másodlagos hitelesítést.
 1. Az MFA-kérdés sikeressége után az Azure MFA a hálózati házirend-kiszolgáló bővítményének eredményét továbbítja.
-1. Az NPS-kiszolgáló, ahol a bővítmény telepítve van, egy RADIUS Access-Accept üzenetet küld a RD CAP szabályzatnak a Távoli asztali átjáró kiszolgálónak.
+1. Az NPS-kiszolgáló, ahol a bővítmény telepítve van, egy RADIUS-Access-Accept üzenetet küld a RD CAP szabályzatnak a Távoli asztali átjáró-kiszolgálónak.
 1. A felhasználó hozzáférést kap a kért hálózati erőforráshoz a RD-átjáróon keresztül.
 
 ## <a name="prerequisites"></a>Előfeltételek

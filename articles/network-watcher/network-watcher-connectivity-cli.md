@@ -14,10 +14,10 @@ ms.workload: infrastructure-services
 ms.date: 07/11/2017
 ms.author: damendo
 ms.openlocfilehash: 1a9aa212c95d8fef58c3fa92b2c1135f81b708be
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84736764"
 ---
 # <a name="troubleshoot-connections-with-azure-network-watcher-using-the-azure-cli"></a>Az Azure Network Watcher kapcsolatának hibáinak megoldása az Azure CLI használatával
@@ -49,7 +49,7 @@ Ez a példa az 80-es porton keresztül ellenőrzi a cél virtuális géphez val�
 az network watcher test-connectivity --resource-group ContosoRG --source-resource MultiTierApp0 --dest-resource Database0 --dest-port 80
 ```
 
-### <a name="response"></a>Válasz
+### <a name="response"></a>Reagálás
 
 A következő válasz az előző példából származik.  Ebben a válaszban az `ConnectionStatus` nem **érhető el**. Láthatja, hogy az összes eljuttatott mintavétel sikertelen volt. A kapcsolat nem sikerült a virtuális berendezésen, mert egy UserRule_Port80 nevű felhasználó konfigurálta, amely a `NetworkSecurityRule` 80-es porton való bejövő forgalom blokkolására van konfigurálva. **UserRule_Port80** Ezek az adatok a kapcsolódási problémák kutatására használhatók.
 
@@ -130,7 +130,7 @@ Ez a példa egy virtuális gép és egy távoli végpont közötti kapcsolatot e
 az network watcher test-connectivity --resource-group ContosoRG --source-resource MultiTierApp0 --dest-address 13.107.21.200 --dest-port 80
 ```
 
-### <a name="response"></a>Válasz
+### <a name="response"></a>Reagálás
 
 A következő példában a látható, hogy `connectionStatus` nem **érhető el**. A `hops` részletek között látható, `issues` hogy a forgalom le lett tiltva, mert egy `UserDefinedRoute` .
 
@@ -188,7 +188,7 @@ A következő példa egy webhelyhez való kapcsolódást ellenőrzi.
 az network watcher test-connectivity --resource-group ContosoRG --source-resource MultiTierApp0 --dest-address https://bing.com --dest-port 80
 ```
 
-### <a name="response"></a>Válasz
+### <a name="response"></a>Reagálás
 
 A következő válaszban láthatja, hogy a `connectionStatus` láthatók **elérhetők**. Ha a csatlakozás sikeres, a késési értékek megadására kerül sor.
 
@@ -234,7 +234,7 @@ Az alábbi példa egy virtuális gép és egy blog Storage-fiók közötti kapcs
 az network watcher test-connectivity --resource-group ContosoRG --source-resource MultiTierApp0 --dest-address https://contosoexamplesa.blob.core.windows.net/
 ```
 
-### <a name="response"></a>Válasz
+### <a name="response"></a>Reagálás
 
 A következő JSON az előző parancsmag futtatásának példája. Az ellenőrzések sikeressége esetén a `connectionStatus` tulajdonság **elérhetőként**jelenik meg.  A tárolási blob és a késés eléréséhez szükséges ugrások számával kapcsolatos részletek.
 

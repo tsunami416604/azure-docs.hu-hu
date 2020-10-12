@@ -13,10 +13,10 @@ ms.author: urmilano
 ms.reviewer: sstein, bonova, MashaMSFT
 ms.date: 09/03/2020
 ms.openlocfilehash: bdb021bc0247972fa29975c62bc9214e3b474e2c
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90995354"
 ---
 # <a name="monitoring-azure-sql-managed-instance-management-operations"></a>Az Azure SQL felügyelt példányok kezelési műveleteinek figyelése
@@ -46,7 +46,7 @@ A következő táblázat összehasonlítja a felügyeleti művelet figyelési le
 | Beállítás | Megőrzés | A megszakítás támogatása | Létrehozás | Frissítés | Törlés | Mégse | Lépések |
 | --- | --- | --- | --- | --- | --- | --- | --- |
 | Erőforráscsoport-telepítések | Végtelen<sup>1</sup> | Nem<sup>2</sup> | Látható | Látható | Nem látható | Látható | Nem látható |
-| Tevékenységnapló | 90 nap | No | Látható | Látható | Látható | Látható |  Nem látható |
+| Tevékenységnapló | 90 nap | Nem | Látható | Látható | Látható | Látható |  Nem látható |
 | Felügyelt példány műveleti API | 24 óra | [Igen](management-operations-cancel.md) | Látható | Látható | Látható | Látható | Látható |
 |  |  |  |  |  |  |  | |
 
@@ -88,7 +88,7 @@ Válassza a **folyamatban lévő művelet** lehetőséget a **folyamatban lévő
 
 # <a name="powershell"></a>[PowerShell](#tab/azure-powershell)
 
-A Get-AzSqlInstanceOperation parancsmag beolvassa a felügyelt példányon végrehajtott műveletekkel kapcsolatos információkat. Egy felügyelt példányon megtekintheti az összes műveletet, vagy megtekintheti az adott műveletet a művelet nevének megadásával.
+A Get-AzSqlInstanceOperation parancsmag a felügyelt példányokon végzett műveletekre vonatkozó információkat olvas be. Egy felügyelt példányon megtekintheti az összes műveletet, vagy megtekintheti az adott műveletet a művelet nevének megadásával.
 
 ```powershell-interactive
 $managedInstance = "yourInstanceName"

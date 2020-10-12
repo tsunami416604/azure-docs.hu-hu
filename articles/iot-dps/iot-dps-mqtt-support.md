@@ -11,10 +11,10 @@ ms.custom:
 - amqp
 - mqtt
 ms.openlocfilehash: 7683f5d60c5d788707e2f89774cee42e7820db87
-ms.sourcegitcommit: 4f1c7df04a03856a756856a75e033d90757bb635
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87924206"
 ---
 # <a name="communicate-with-your-dps-using-the-mqtt-protocol"></a>Kommunikáció a DPS használatával a MQTT protokollal
@@ -48,7 +48,7 @@ Ha egy eszköz nem tudja használni az eszköz SDK-kat, akkor továbbra is csatl
 
 * A **Password (jelszó** ) mezőben használjon sas-tokent. Az SAS-token formátuma megegyezik a HTTPS és a AMQP protokollok esetében is:
 
-  `SharedAccessSignature sr={URL-encoded-resourceURI}&sig={signature-string}&se={expiry}&skn=registration`A resourceURI formátumúnak kell lennie `{idScope}/registrations/{registration_id}` . A szabályzat nevének a (z) értéknek kell lennie `registration` .
+  `SharedAccessSignature sr={URL-encoded-resourceURI}&sig={signature-string}&se={expiry}&skn=registration` A resourceURI formátumúnak kell lennie `{idScope}/registrations/{registration_id}` . A szabályzat nevének a (z) értéknek kell lennie `registration` .
 
   > [!NOTE]
   > Ha X. 509 tanúsítványalapú hitelesítést használ, az SAS-jogkivonat jelszavai nem szükségesek.
@@ -80,7 +80,7 @@ Az eszköznek rendszeresen le kell kérdezni a szolgáltatást, hogy megkapja az
 ## <a name="connecting-over-websocket"></a>Csatlakozás WebSocket-kapcsolaton keresztül
 WebSocket-kapcsolaton keresztüli kapcsolódáskor adja meg az alprotokollot `mqtt` . Kövesse az [RFC 6455](https://tools.ietf.org/html/rfc6455)-et.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni az MQTT protokollról, tekintse meg a [MQTT dokumentációját](https://mqtt.org/).
 

@@ -4,10 +4,10 @@ description: A Azure Maps eseményekhez megadott tulajdonságokat és sémát is
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: 4203bdf5222278b698d656835afebd9769557303
-ms.sourcegitcommit: f988fc0f13266cea6e86ce618f2b511ce69bbb96
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87461986"
 ---
 # <a name="azure-maps-as-an-event-grid-source"></a>Azure Maps Event Grid forrásként
@@ -100,7 +100,7 @@ Az alábbi példa a **GeofenceResult** sémáját mutatja be
 
 Egy esemény a következő legfelső szintű adattal rendelkezik:
 
-| Tulajdonság | Típus | Description |
+| Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
 | témakör | sztring | Az eseményforrás teljes erőforrás-elérési útja. Ez a mező nem írható. Az értéket az Event Grid adja meg. |
 | tárgy | sztring | Az esemény tárgyra mutató, a közzétevő által megadott elérési út. |
@@ -113,7 +113,7 @@ Egy esemény a következő legfelső szintű adattal rendelkezik:
 
 Az adatobjektum a következő tulajdonságokkal rendelkezik:
 
-| Tulajdonság | Típus | Description |
+| Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
 | apiCategory | sztring | Az esemény API-kategóriája. |
 | apiName | sztring | Az esemény API-neve. |
@@ -123,13 +123,13 @@ Az adatobjektum a következő tulajdonságokkal rendelkezik:
 
 A rendszer visszaadja a hiba objektumot, ha hiba történik a Maps API-ban. A hiba objektum a következő tulajdonságokkal rendelkezik:
 
-| Tulajdonság | Típus | Description |
+| Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
 | error | ErrorDetails |Ezt az objektumot akkor adja vissza a rendszer, ha hiba történik a Maps API-ban  |
 
 A ErrorDetails objektum visszaadása akkor történik meg, ha hiba lép fel a Maps API-ban. A ErrorDetails vagy objektum a következő tulajdonságokkal rendelkezik:
 
-| Tulajdonság | Típus | Description |
+| Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
 | code | sztring | A HTTP-állapotkód. |
 | message | sztring | Ha elérhető, a hiba olvasható leírása. |
@@ -137,13 +137,13 @@ A ErrorDetails objektum visszaadása akkor történik meg, ha hiba lép fel a Ma
 
 A InnerError egy olyan objektum, amely szolgáltatás-specifikus adatokat tartalmaz a hibáról. A InnerError objektum a következő tulajdonságokkal rendelkezik: 
 
-| Tulajdonság | Típus | Description |
+| Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
 | code | sztring | A hibaüzenet. |
 
 A geometriák objektum felsorolja a kérelemben a felhasználói időponthoz képest lejárt geofences geometriai azonosítóit. A geometriák objektum a következő tulajdonságokkal rendelkező geometriai elemeket tartalmaz: 
 
-| Tulajdonság | Típus | Description |
+| Tulajdonság | Típus | Leírás |
 |:-------- |:---- |:----------- |
 | DeviceID | sztring | Az eszköz azonosítója. |
 | távolság | sztring | <p>A koordináta távolsága a geokerítésen legközelebbi szegélyéhez. A pozitív érték azt jelenti, hogy a koordináta a geokerítésen kívül esik. Ha a koordináta a geokerítésen kívül esik, de a legközelebb geokerítésen searchBuffer nagyobb a távolság, akkor az érték 999. Negatív érték azt jelenti, hogy a koordináta a geokerítésen belül van. Ha a koordináta a sokszögen belül van, de a legközelebbi geokerítések searchBuffer nem, akkor az érték-999. A 999 érték azt jelenti, hogy nagy a megbízhatóság, hogy a koordináta jól kívül van a geokerítésen. A-999 érték azt jelenti, hogy nagy a megbízhatóság, hogy a koordináta jól működik a geokerítésen belül.<p> |
@@ -154,7 +154,7 @@ A geometriák objektum felsorolja a kérelemben a felhasználói időponthoz ké
 
 Az adatobjektum a következő tulajdonságokkal rendelkezik:
 
-| Tulajdonság | Típus | Description |
+| Tulajdonság | Típus | Leírás |
 | -------- | ---- | ----------- |
 | expiredGeofenceGeometryId | karakterlánc [] | Azon geokerítésen geometria-AZONOSÍTÓinak listája, amelyek a kérelemben megadott felhasználói időhöz képest lejárnak. |
 | geometriák | geometriák [] |Felsorolja a koordináta pozícióját tartalmazó kerítési geometriákat, vagy átfedésben van a searchBuffer a pozíció körül. |

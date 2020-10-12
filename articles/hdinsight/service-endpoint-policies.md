@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: how-to
 ms.date: 07/15/2020
 ms.openlocfilehash: f2752e5ab2bf7c2926ec9e2c0e4929eab91ed377
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88530970"
 ---
 # <a name="configure-virtual-network-service-endpoint-policies-for-azure-hdinsight"></a>Virtuális hálózati szolgáltatás-végponti szabályzatok konfigurálása az Azure HDInsight
@@ -129,7 +129,7 @@ A szükséges szolgáltatási végponti szabályzatok létrehozásához használ
     Set-AzVirtualNetworkSubnetConfig -Name $subnetName -VirtualNetwork $vnet -AddressPrefix $subnet.AddressPrefix -ServiceEndpointPolicy $sep
     ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Azure HDInsight virtuális hálózati architektúra](hdinsight-virtual-network-architecture.md)
 * [Hálózati virtuális berendezés konfigurálása](./network-virtual-appliance.md)

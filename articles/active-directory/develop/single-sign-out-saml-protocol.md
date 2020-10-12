@@ -1,6 +1,6 @@
 ---
 title: Azure egyszeri kijelentkezési SAML protokoll
-description: Ez a cikk az egyszeri kijelentkezési SAML protokollt ismerteti Azure Active Directory
+description: Ez a cikk az Sign-Out SAML protokollt ismerteti Azure Active Directory
 services: active-directory
 author: kenwith
 manager: CelesteDG
@@ -13,13 +13,13 @@ ms.author: kenwith
 ms.custom: aaddev
 ms.reviewer: paulgarn
 ms.openlocfilehash: 1d09355993af96e9e0cd334c57174cdaa771b388
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88118263"
 ---
-# <a name="single-sign-out-saml-protocol"></a>Egyszeri kijelentkezési SAML protokoll
+# <a name="single-sign-out-saml-protocol"></a>Egy Sign-Out SAML protokoll
 
 Azure Active Directory (Azure AD) támogatja az SAML 2,0 webböngésző egyszeri kijelentkezési profilját. Az egyszeri bejelentkezés megfelelő működéséhez az alkalmazás **LogoutURL** explicit módon regisztrálni kell az Azure ad-ben az alkalmazás regisztrálása során. Az Azure AD a LogoutURL használatával irányítja át a felhasználókat, miután kijelentkezett.
 
@@ -40,9 +40,9 @@ A Cloud Service egy üzenetet küld az `LogoutRequest` Azure ad-nek, amely jelzi
 ### <a name="logoutrequest"></a>LogoutRequest
 Az `LogoutRequest` Azure ad-nak eljuttatott elem a következő attribútumokat igényli:
 
-* `ID`-Ez azonosítja a kijelentkezési kérést. A értéke `ID` nem kezdődhet számmal. A tipikus eljárás egy GUID **azonosítójának** hozzáfűzése a GUID karakterlánc-ábrázolásához.
-* `Version`– Az elem értékét állítsa **2,0**-ra. Kötelezően megadandó érték.
-* `IssueInstant`– Ez egy, az `DateTime` egyezményes világidő (UTC) és az [oda-és visszaút formátuma ("o")](/dotnet/standard/base-types/standard-date-and-time-format-strings)karakterlánc. Az Azure AD egy ilyen típusú értéket vár, de nem kényszeríti ki.
+* `ID` -Ez azonosítja a kijelentkezési kérést. A értéke `ID` nem kezdődhet számmal. A tipikus eljárás egy GUID **azonosítójának** hozzáfűzése a GUID karakterlánc-ábrázolásához.
+* `Version` – Az elem értékét állítsa **2,0**-ra. Kötelezően megadandó érték.
+* `IssueInstant` – Ez egy, az `DateTime` egyezményes világidő (UTC) és az [oda-és visszaút formátuma ("o")](/dotnet/standard/base-types/standard-date-and-time-format-strings)karakterlánc. Az Azure AD egy ilyen típusú értéket vár, de nem kényszeríti ki.
 
 ### <a name="issuer"></a>Kiállító
 Az `Issuer` a elemnek `LogoutRequest` pontosan egyeznie kell az Azure ad felhőalapú szolgáltatásának egyik **ServicePrincipalNames** . Ez általában az alkalmazás regisztrációja során megadott **alkalmazás-azonosító URI-ra** van beállítva.

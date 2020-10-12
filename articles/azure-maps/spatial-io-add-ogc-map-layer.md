@@ -9,10 +9,10 @@ ms.service: azure-maps
 services: azure-maps
 manager: philmea
 ms.openlocfilehash: 6efc6b27090ecc7171bb66deb303a4764d9b6f04
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87128556"
 ---
 # <a name="add-a-map-layer-from-the-open-geospatial-consortium-ogc"></a>Térkép réteg hozzáadása a Nyílt térinformatikai konzorciumból (OGC)
@@ -23,12 +23,12 @@ A következő részekben a osztály által támogatott webszolgáltatás-funkci�
 
 **Web Map szolgáltatás (WMS)**
 
-- Támogatott verziók: `1.0.0` , `1.1.0` , `1.1.1` és`1.3.0`
+- Támogatott verziók: `1.0.0` , `1.1.0` , `1.1.1` és `1.3.0`
 - A szolgáltatásnak támogatnia kell a `EPSG:3857` kivetítési rendszer vagy az újravetítések kezelését.
 - A GetFeatureInfo használatához a szolgáltatásnak támogatnia `EPSG:4326` vagy kezelnie kell a kivetítéseket. 
 - Támogatott műveletek:
 
-    | Művelet | Description |
+    | Művelet | Leírás |
     | :-- | :-- |
     | GetCapabilities | A szolgáltatás metaadatainak beolvasása a támogatott funkciókkal |
     | GetMap | Egy adott régióhoz tartozó térképi rendszerkép lekérése |
@@ -36,13 +36,13 @@ A következő részekben a osztály által támogatott webszolgáltatás-funkci�
 
 **Web Map csempe szolgáltatás (WMTS)**
 
-- Támogatott verziók:`1.0.0`
+- Támogatott verziók: `1.0.0`
 - A csempének szögletesnek kell lennie, például: `TileWidth == TileHeight` .
-- A CRS támogatott: `EPSG:3857` vagy`GoogleMapsCompatible` 
+- A CRS támogatott: `EPSG:3857` vagy `GoogleMapsCompatible` 
 - A TileMatrix azonosítójának olyan egész számnak kell lennie, amely megfelel a Térkép nagyítási szintjének. Az Azure-térképen a nagyítási szint a és a közötti `"0"` érték `"22"` . Tehát `"0"` támogatott, de `"00"` nem támogatott.
 - Támogatott műveletek:
 
-    | Művelet | Description |
+    | Művelet | Leírás |
     | :-- | :-- |
     | GetCapabilities | A támogatott műveletek és funkciók beolvasása |
     | GetTile | Képek lekérése egy adott csempéhez |

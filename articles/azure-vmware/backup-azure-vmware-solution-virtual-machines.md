@@ -3,12 +3,12 @@ title: Azure VMware-megoldás virtuális gépek biztonsági mentése Azure Backu
 description: Konfigurálja az Azure VMware-megoldási környezetét a virtuális gépek biztonsági mentésére Azure Backup Server használatával.
 ms.topic: how-to
 ms.date: 06/09/2020
-ms.openlocfilehash: a62bccb729cfa6aec89a3ce6de7283f5d9412428
-ms.sourcegitcommit: a422b86148cba668c7332e15480c5995ad72fa76
+ms.openlocfilehash: b8b5236a8da165efbb8e479e25b58872c4a735ee
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/30/2020
-ms.locfileid: "91580313"
+ms.lasthandoff: 10/09/2020
+ms.locfileid: "91893016"
 ---
 # <a name="back-up-azure-vmware-solution-vms-with-azure-backup-server"></a>Azure VMware-megoldás virtuális gépek biztonsági mentése Azure Backup Server
 
@@ -105,36 +105,6 @@ A VMware 6,7-es verziójában a TLS engedélyezve volt a kommunikációs protoko
 
 1. Kattintson a jobb gombbal a TLS elemre. REG-fájlt, majd válassza az **Egyesítés** vagy a **Megnyitás** lehetőséget a beállítások beállításjegyzékhez való hozzáadásához.
 
-## <a name="add-the-provisioning-ip-address"></a>A kiépítési IP-cím hozzáadása 
-
-Az előzetes verzióban az Azure VMware megoldás nem oldja meg az ESX-gazdagépet a virtuális hálózaton üzembe helyezett virtuális gépről. További lépéseket kell végrehajtania a gazda fájl bejegyzésének a Azure Backup Server virtuális gépen való hozzáadásához.
-
-### <a name="identify-the-ip-address-for-esxi-hosts"></a>Az ESXi-gazdagépek IP-címének azonosítása
-
-1. Nyissa meg a böngészőt, és jelentkezzen be a vCenter URL-címekre. 
-
-   > [!TIP]
-   > Az URL-címeket a [Kapcsolódás a saját felhő helyi vCenter](tutorial-access-private-cloud.md#connect-to-the-local-vcenter-of-your-private-cloud)találja.
-
-1. Válassza ki azt a fürtöt, amely számára engedélyezni szeretné a biztonsági mentést a vSphere-ügyfélen.
-
-   :::image type="content" source="media/azure-vmware-solution-backup/vsphere-client-select-host.png" alt-text="vSphere webes ügyfél":::
-
-1. Válassza **Configure**a  >  **hálózatkezelés**  >  **VMKernel-adapterek**konfigurálása lehetőséget. Az eszközök listájában keresse meg azt a hálózati adaptert, amelyen engedélyezve van az **üzembe** helyezési szerepkör. Jegyezze fel az **IP-címet** és az ESXi-gazdagépet.
-
-   :::image type="content" source="media/azure-vmware-solution-backup/vmkernel-adapters-provisioning-enabled.png" alt-text="vSphere webes ügyfél":::
-
-1. Ismételje meg az előző lépést minden olyan fürthöz tartozó ESXi-állomásnál, amely számára engedélyezni szeretné a biztonsági mentést.
-
-### <a name="update-the-host-file-on-azure-backup-server"></a>A gazdagép fájljának frissítése Azure Backup Server
-
-1. Nyissa meg a Jegyzettömböt rendszergazdaként.
-
-1. Válassza **File**ki  >  a**megnyitott**fájlt, és keressen rá a c:\Windows\System32\Drivers\etc\hosts. kifejezésre.
-
-1. Adja hozzá a bejegyzést az egyes ESXi-gazdagépekhez az előző szakaszban azonosított IP-címmel együtt.
-
-1. Mentse a módosításokat, és zárjuk be a jegyzettömböt.
 
 ## <a name="add-the-account-on-azure-backup-server"></a>Fiók hozzáadása Azure Backup Server
 
@@ -379,7 +349,7 @@ A védett virtuális gépek helyreállítási pontjairól is visszaállíthatja 
 
 1. Az **Összefoglalás** képernyőn tekintse át a beállításokat, majd **kattintson a helyreállítás** elemre a helyreállítási folyamat elindításához. A **helyreállítás állapota** képernyőn a helyreállítási művelet előrehaladása látható.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A biztonsági másolatok beállítása során felmerülő problémák elhárításához tekintse át a Azure Backup Server hibaelhárítási útmutatóját.
 

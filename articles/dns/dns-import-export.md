@@ -9,10 +9,10 @@ ms.date: 7/30/2020
 ms.author: rohink
 ms.topic: how-to
 ms.openlocfilehash: 8f17d7f32d774cac283ec335c372e8f68d50931f
-ms.sourcegitcommit: e71da24cc108efc2c194007f976f74dd596ab013
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87424222"
 ---
 # <a name="import-and-export-a-dns-zone-file-using-the-azure-cli"></a>DNS-zónafájl importálása és exportálása az Azure CLI-vel
@@ -69,9 +69,9 @@ az network dns zone import -g <resource group> -n <zone name> -f <zone file name
 
 Értékek:
 
-* `<resource group>`a Azure DNS zónához tartozó erőforráscsoport neve.
-* `<zone name>`a zóna neve.
-* `<zone file name>`az importálandó zónafájl elérési útja/neve.
+* `<resource group>` a Azure DNS zónához tartozó erőforráscsoport neve.
+* `<zone name>` a zóna neve.
+* `<zone file name>` az importálandó zónafájl elérési útja/neve.
 
 Ha egy ilyen nevű zóna nem létezik az erőforráscsoporthoz, a rendszer létrehozza az Ön számára. Ha a zóna már létezik, az importált rekordhalmazok egyesítve lesznek a meglévő rekordhalmazokkal. 
 
@@ -163,9 +163,9 @@ az network dns zone export -g <resource group> -n <zone name> -f <zone file name
 
 Értékek:
 
-* `<resource group>`a Azure DNS zónához tartozó erőforráscsoport neve.
-* `<zone name>`a zóna neve.
-* `<zone file name>`az exportálandó zóna fájljának elérési útja/neve.
+* `<resource group>` a Azure DNS zónához tartozó erőforráscsoport neve.
+* `<zone name>` a zóna neve.
+* `<zone file name>` az exportálandó zóna fájljának elérési útja/neve.
 
 A zóna importálásához hasonlóan először be kell jelentkeznie, ki kell választania az előfizetést, és az Azure CLI-t a Resource Manager üzemmód használatára kell beállítania.
 
@@ -177,7 +177,7 @@ Ha exportálni szeretné a meglévő Azure DNS zóna **contoso.com** az erőforr
 az network dns zone export -g myresourcegroup -n contoso.com -f contoso.com.txt
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Ismerje meg, hogyan kezelheti a rekordhalmazokat [és rekordokat](dns-getstarted-create-recordset-cli.md) a DNS-zónában.
 

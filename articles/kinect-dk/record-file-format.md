@@ -8,10 +8,10 @@ ms.date: 06/26/2019
 ms.topic: reference
 keywords: Kinect, Azure, szenzor, SDK, mélység, RGB, rekord, lejátszás, Matroska, MKV
 ms.openlocfilehash: 3a78ed158c78df1c9a6eadcc0bfb2e40b22750bd
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87501780"
 ---
 # <a name="use-azure-kinect-sensor-sdk-to-record-file-format"></a>Fájl formátumának rögzítése az Azure Kinect Sensor SDK használatával
@@ -22,7 +22,7 @@ Az. mkv-tároló formátumának alsó szintű részletei a [Matroska webhelyen](
 
 | Követés neve | Kodek formátuma                          |
 |------------|---------------------------------------|
-| SZÍNE      | Mód függő (MJPEG, NV12 vagy YUY2) |
+| SZÍNE      | Mode-Dependent (MJPEG, NV12 vagy YUY2) |
 | MÉLYSÉG      | b16g (16 bites szürkeárnyalatos, Big-Endian)   |
 | IR         | b16g (16 bites szürkeárnyalatos, Big-Endian)   |
 | IMU        | Egyéni struktúra: az alábbi [IMU-minta szerkezete](record-file-format.md#imu-sample-structure) . |

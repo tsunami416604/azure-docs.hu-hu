@@ -10,10 +10,10 @@ ms.topic: how-to
 ms.date: 12/15/2017
 ms.author: cynthn
 ms.openlocfilehash: d02fa8fa23b587db06f3d2d1e08f0a8565471123
-ms.sourcegitcommit: 54d8052c09e847a6565ec978f352769e8955aead
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88510419"
 ---
 # <a name="install-and-configure-mongodb-on-a-windows-vm-in-azure"></a>A MongoDB telepítése és konfigurálása az Azure-beli Windows rendszerű virtuális gépen
@@ -157,6 +157,6 @@ Ha szükséges, hozzon létre egy hálózati biztonsági csoportra vonatkozó sz
 > A MongoDB által használt alapértelmezett port a 27017-es TCP-port. Ez a port `--port` `mongod.exe` manuálisan vagy szolgáltatásból történő indításkor a paraméterrel módosítható. Ha módosítja a portot, ügyeljen arra, hogy frissítse a Windows tűzfal és a hálózati biztonsági csoport szabályait az előző lépésekben.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ebben az oktatóanyagban megtanulta, hogyan telepítheti és konfigurálhatja a MongoDB a Windows rendszerű virtuális gépen. Most már elérheti a MongoDB a Windows rendszerű virtuális gépen a [MongoDB dokumentációjában](https://docs.mongodb.com/manual/)található speciális témakörök követésével.
 

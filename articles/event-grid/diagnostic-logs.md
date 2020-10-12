@@ -4,10 +4,10 @@ description: Ez a cikk az Azure Event Grid-témakör vagy egy tartomány diagnos
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: c8f6734d9d43887d0eb0bb90bb08f727732feac3
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86116743"
 ---
 #  <a name="diagnostic-logs-for-azure-event-grid-topicsdomains"></a>Diagnosztikai naplók Azure Event Grid témakörökhöz/tartományokhoz
@@ -18,7 +18,7 @@ A diagnosztikai beállítások lehetővé teszik Event Grid felhasználók szám
 
 | Tulajdonság neve | Adattípus | Leírás |
 | ------------- | --------- | ----------- | 
-| Idő | DateTime | Az az idő, amikor a naplóbejegyzés létrejött <p>**Példa értéke:** 01-29-2020 09:52:02.700</p> |
+| Idő | DateTime | Az az idő, amikor a naplóbejegyzés létrejött <p>**Példa értéke:**  01-29-2020 09:52:02.700</p> |
 | EventSubscriptionName | Sztring | Az esemény-előfizetés neve <p>**Példa értéke:** "EVENTSUB1"</p> <p>Ez a tulajdonság csak a kézbesítési hibák naplói esetében létezik.</p>  |
 | Kategória | Sztring | A napló kategóriájának neve. <p>**Példa értékei:** "DeliveryFailures" vagy "PublishFailures" | 
 | OperationName | Sztring | A hiba észlelésekor végrehajtott művelet neve.<p>**Példa értékei:** Kézbesítési hibák esetén "kézbesítés". |
@@ -38,5 +38,5 @@ A diagnosztikai beállítások lehetővé teszik Event Grid felhasználók szám
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ha szeretné megtudni, hogyan engedélyezheti a diagnosztikai naplókat a témakörök vagy tartományok számára, olvassa el a [diagnosztikai naplók engedélyezése](enable-diagnostic-logs-topic.md)című témakört.

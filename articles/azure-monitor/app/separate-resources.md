@@ -4,10 +4,10 @@ description: A különböző erőforrásokhoz való közvetlen telemetria fejles
 ms.topic: conceptual
 ms.date: 05/11/2020
 ms.openlocfilehash: 264cbe35e7af50577b345d686b639e47760f428d
-ms.sourcegitcommit: ef055468d1cb0de4433e1403d6617fede7f5d00e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/16/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88258726"
 ---
 # <a name="how-many-application-insights-resources-should-i-deploy"></a>Hány Application Insights erőforrást kell üzembe helyezni
@@ -139,7 +139,7 @@ Figyelje meg azonban, hogy a build verziószámát csak a Microsoft Build motorj
 ### <a name="release-annotations"></a>Kiadási jegyzetek
 Ha az Azure DevOps-t használja, [beolvashatja](../../azure-monitor/app/annotations.md) a diagramokhoz hozzáadott jegyzet jelölőket, amikor új verziót ad ki. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Több szerepkör megosztott erőforrásai](../../azure-monitor/app/app-map.md)
 * [Telemetria inicializáló létrehozása a következő megkülönböztetéséhez | B változatok](../../azure-monitor/app/api-filtering-sampling.md#add-properties)

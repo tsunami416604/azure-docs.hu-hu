@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 07/31/2018
 ms.author: bikang
 ms.openlocfilehash: 7d361d44c349bc7a6e3c041f78d00ad66182fa15
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84711034"
 ---
 # <a name="manage-an-azure-service-fabric-application-by-using-azure-service-fabric-cli-sfctl"></a>Azure Service Fabric-alkalmazás kezelése az Azure Service Fabric parancssori felület (sfctl) használatával
@@ -73,7 +73,7 @@ Az alkalmazáscsomag rendszerkép-tárolóból való törléséhez használja a 
 sfctl store delete --content-path app_package_dir
 ```
 
-`content-path`annak a könyvtárnak a neve, amelyet az alkalmazás létrehozásakor töltött fel.
+`content-path` annak a könyvtárnak a neve, amelyet az alkalmazás létrehozásakor töltött fel.
 
 ### <a name="create-an-application-from-an-application-type"></a>Alkalmazás létrehozása alkalmazás típusától
 
@@ -83,7 +83,7 @@ Az alkalmazás üzembe helyezése után az alábbi parancs használatával nevez
 sfctl application create --app-name fabric:/TestApp --app-type TestAppType --app-version 1.0
 ```
 
-`app-name`az alkalmazás példányához használni kívánt név. További paramétereket az előzőleg kiosztott alkalmazási jegyzékből kaphat.
+`app-name` az alkalmazás példányához használni kívánt név. További paramétereket az előzőleg kiosztott alkalmazási jegyzékből kaphat.
 
 Az alkalmazás nevének az előtaggal kell kezdődnie `fabric:/` .
 

@@ -4,10 +4,10 @@ description: Az alkalmazásadatok titkosítása az Azure Storage-ban, és csomag
 ms.topic: article
 ms.date: 03/06/2020
 ms.openlocfilehash: 1dd0d11baa16a325a22a501d40e22e5bad6adb21
-ms.sourcegitcommit: dccb85aed33d9251048024faf7ef23c94d695145
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87282330"
 ---
 # <a name="encrypt-your-application-data-at-rest-using-customer-managed-keys"></a>Az alkalmazásban tárolt adatok titkosítása az ügyfél által felügyelt kulcsok használatával
@@ -99,7 +99,7 @@ Ha a rendszer elforgatja a Storage-fiók SAS-kulcsát, a Function alkalmazás m�
 
 A Function alkalmazás hozzáférését visszavonhatja a hely adatához, ha letiltja a Function alkalmazás hozzáférését a Key Vaulthoz. Ehhez távolítsa el a Function alkalmazás identitásához tartozó hozzáférési szabályzatot. Ez ugyanaz az identitás, amelyet korábban hozott létre a Key Vault-referenciák konfigurálása során.
 
-## <a name="summary"></a>Összegzés
+## <a name="summary"></a>Összefoglalás
 
 Az alkalmazás fájljai mostantól titkosítva vannak a Storage-fiókban. A Function alkalmazás indításakor lekéri a SAS URL-címét a kulcstartóból. Végül a Function alkalmazás betölti az alkalmazás fájljait a Storage-fiókból. 
 
