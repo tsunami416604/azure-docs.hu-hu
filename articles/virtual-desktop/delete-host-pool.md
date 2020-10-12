@@ -7,10 +7,10 @@ ms.date: 07/11/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: dfc9858bea468389d8ce90677f048e5d1fd3bb82
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88007590"
 ---
 # <a name="delete-a-host-pool"></a>Gazdagépkészlet törlése
@@ -55,7 +55,7 @@ Gazdagép-készlet törlése a Azure Portalban:
 
 9. Ekkor a Azure Portal eltávolítja az összes munkamenet-gazdagépet, és törli a gazdagép-készletet. A rendszer nem törli a munkamenet-gazdagéphez kapcsolódó virtuális gépeket, és az előfizetésében marad.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A gazdagépek létrehozásával kapcsolatos további információkért tekintse meg a következő cikkeket:
 

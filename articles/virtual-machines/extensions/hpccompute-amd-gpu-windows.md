@@ -12,15 +12,15 @@ ms.workload: infrastructure-services
 ms.date: 05/10/2020
 ms.author: vikancha
 ms.openlocfilehash: bc7bfecbcb387fa0da0809a9a2287b243e861c49
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87010869"
 ---
 # <a name="amd-gpu-driver-extension-for-windows"></a>AMD GPU illesztőprogram-bővítmény Windows rendszerhez
 
-Ez a cikk áttekintést nyújt az AMD GPU-illesztőprogramok Windows [NVv4-sorozatú](../nvv4-series.md) virtuális gépeken való üzembe helyezéséhez szükséges virtuálisgép-bővítményről. Ha ezt a bővítményt használó AMD-illesztőprogramokat telepít, elfogadja és elfogadja az [AMD végfelhasználói licencszerződés](https://amd.com/radeonsoftwarems)feltételeit. A telepítési folyamat során a virtuális gép újraindulhat az illesztőprogram telepítésének befejezéséhez.
+Ez a cikk áttekintést nyújt az AMD GPU-illesztőprogramok Windows [NVv4-sorozatú](../nvv4-series.md) virtuális gépeken való üzembe helyezéséhez szükséges virtuálisgép-bővítményről. Ha ezt a bővítményt használó AMD-illesztőprogramokat telepít, elfogadja és elfogadja az [amd End-User licencszerződés](https://amd.com/radeonsoftwarems)feltételeit. A telepítési folyamat során a virtuális gép újraindulhat az illesztőprogram telepítésének befejezéséhez.
 
 Az illesztőprogramok manuális telepítésére és az aktuálisan támogatott verziókra vonatkozó utasítások [itt](../windows/n-series-amd-driver-setup.md)érhetők el.
 
@@ -67,12 +67,12 @@ A következő JSON a bővítmény sémáját jeleníti meg.
 
 ### <a name="properties"></a>Tulajdonságok
 
-| Name | Érték/példa | Adattípus |
+| Name (Név) | Érték/példa | Adattípus |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | dátum |
 | közzétevő | Microsoft. HpcCompute | sztring |
 | típus | AmdGpuDriverWindows | sztring |
-| typeHandlerVersion | 1,0 | int |
+| typeHandlerVersion | 1.0 | int |
 
 
 ## <a name="deployment"></a>Üzembe helyezés

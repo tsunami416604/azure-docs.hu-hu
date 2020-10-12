@@ -7,10 +7,10 @@ ms.topic: article
 ms.date: 09/21/2020
 ms.author: lahugh
 ms.openlocfilehash: 6a9567669445cb5aa94c1108051c961a216fabad
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91335602"
 ---
 # <a name="access-kubernetes-resources-from-the-azure-portal-preview"></a>Kubernetes-erőforrások elérése a Azure Portal (előzetes verzió)
@@ -48,19 +48,19 @@ Ebben a példában a minta AK-fürtöt használjuk az Azure vote-alkalmazás üz
 
 A YAML-fájl hozzáadása után az erőforrás-megjelenítő mindkét létrehozott Kubernetes-szolgáltatást megjeleníti: a belső szolgáltatást (Azure-vote-back) és a külső szolgáltatást (Azure-vote-oldal) az Azure vote alkalmazás eléréséhez. A külső szolgáltatás egy csatolt külső IP-címet tartalmaz, így egyszerűen megtekintheti az alkalmazást a böngészőben.
 
-:::image type="content" source="media/kubernetes-portal/portal-services.png" alt-text="Az Azure vote alkalmazás információi megjelennek a Azure Portalban." lightbox="media/kubernetes-portal/portal-services.png":::
+:::image type="content" source="media/kubernetes-portal/portal-services.png" alt-text="A Azure Portalban megjelenő Kubernetes-Pod-információ." lightbox="media/kubernetes-portal/portal-services.png":::
 
 ### <a name="monitor-deployment-insights"></a>Üzembe helyezési áttekintések figyelése
 
 Az [Azure monitor for containers][enable-monitor] -t használó AK-fürtök gyorsan megtekinthetik az üzembe helyezési eredményeket. A Kubernetes-erőforrások nézetben a felhasználók láthatják az egyes központi telepítések élő állapotát, beleértve a processzor-és memóriahasználat, valamint az Azure-figyelőre való áttérést, amely részletesebb információkat biztosít. Íme egy példa egy minta AK-fürt üzembe helyezésére:
 
-:::image type="content" source="media/kubernetes-portal/deployment-insights.png" alt-text="A Azure Portalban megjelenő üzembe helyezési eredmények." lightbox="media/kubernetes-portal/deployment-insights.png":::
+:::image type="content" source="media/kubernetes-portal/deployment-insights.png" alt-text="A Azure Portalban megjelenő Kubernetes-Pod-információ." lightbox="media/kubernetes-portal/deployment-insights.png":::
 
 ## <a name="edit-yaml"></a>YAML szerkesztése
 
 A Kubernetes erőforrás nézet egy YAML-szerkesztőt is tartalmaz. A beépített YAML-szerkesztő azt jelenti, hogy a portálon belül frissítheti vagy létrehozhatja a szolgáltatásokat és a központi telepítéseket, és azonnal alkalmazhatja a módosításokat.
 
-:::image type="content" source="media/kubernetes-portal/service-editor.png" alt-text="A Azure Portalban megjelenő Kubernetes-szolgáltatás YAML-szerkesztője.":::
+:::image type="content" source="media/kubernetes-portal/service-editor.png" alt-text="A Azure Portalban megjelenő Kubernetes-Pod-információ.":::
 
 A YAML szerkesztése után a módosításokat a **felülvizsgálat + mentés**lehetőség kiválasztásával, a módosítások megerősítésével, majd újbóli mentésével alkalmazza a rendszer.
 
@@ -82,7 +82,7 @@ A Kubernetes erőforrásainak eléréséhez hozzáféréssel kell rendelkeznie a
 
 A meglévő fürtök esetében előfordulhat, hogy engedélyeznie kell a Kubernetes erőforrás-nézetet. Az erőforrás nézet engedélyezéséhez kövesse a fürtben található portálon megjelenő utasításokat.
 
-:::image type="content" source="media/kubernetes-portal/enable-resource-view.png" alt-text="Azure Portal üzenet a Kubernetes erőforrás nézetének engedélyezéséhez." lightbox="media/kubernetes-portal/enable-resource-view.png":::
+:::image type="content" source="media/kubernetes-portal/enable-resource-view.png" alt-text="A Azure Portalban megjelenő Kubernetes-Pod-információ." lightbox="media/kubernetes-portal/enable-resource-view.png":::
 
 > [!TIP]
 > Az [**API-kiszolgáló által engedélyezett IP-tartományokhoz**](api-server-authorized-ip-ranges.md) tartozó AK funkció hozzáadható az API-kiszolgáló hozzáférésének korlátozásához csak a tűzfal nyilvános végpontja számára. Egy másik lehetőség, hogy az ilyen fürtök frissítése a `--api-server-authorized-ip-ranges` helyi ügyfélszámítógép vagy az IP-címtartomány (amelyről a portál böngészése) hozzáférését is tartalmazza. A hozzáférés engedélyezéséhez a számítógép nyilvános IPv4-címe szükséges. Ezt a címet megkeresheti az alábbi paranccsal, vagy a "mi az IP-cím" kifejezéssel az Internet böngészőben.

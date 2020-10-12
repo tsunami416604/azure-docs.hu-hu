@@ -7,10 +7,10 @@ ms.date: 02/25/2019
 ms.topic: conceptual
 ms.custom: devx-track-python
 ms.openlocfilehash: 1ab0b2def1a22470c1d0b6339e1525cd683b4a0b
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90987570"
 ---
 # <a name="manage-python-2-packages-in-azure-automation"></a>Python 2 csomagok kezelése Azure Automation
@@ -25,11 +25,11 @@ Az Automation-fiókban válassza a **Python 2 csomag** lehetőséget a **megoszt
 
 A Python 2 csomag hozzáadása lapon válasszon ki egy helyi csomagot a feltöltéshez. A csomag lehet egy **. WHL** vagy **. tar. gz** fájl. Ha a csomag ki van választva, kattintson **az OK** gombra a feltöltéshez.
 
-:::image type="content" source="media/python-packages/upload-package.png" alt-text="A képernyőképen a Python 2 csomag hozzáadása oldal jelenik meg, amelyhez feltöltött tar. gz fájl van kijelölve.":::
+:::image type="content" source="media/python-packages/upload-package.png" alt-text="A Python 2 csomagok oldalának képernyőképe a bal oldali menüben a Python 2 csomagokat jeleníti meg, és egy kiemelt Python 2 csomagot ad hozzá.":::
 
 A csomag importálása után a rendszer az Automation-fiók Python 2 csomagok lapján jelenik meg. Ha el kell távolítania egy csomagot, válassza ki a csomagot, és kattintson a **Törlés**gombra.
 
-:::image type="content" source="media/python-packages/package-list.png" alt-text="A csomag importálása után a képernyőkép a Python 2 csomagok oldalát jeleníti meg.":::
+:::image type="content" source="media/python-packages/package-list.png" alt-text="A Python 2 csomagok oldalának képernyőképe a bal oldali menüben a Python 2 csomagokat jeleníti meg, és egy kiemelt Python 2 csomagot ad hozzá.":::
 
 ## <a name="import-packages-with-dependencies"></a>Csomagok importálása függőségekkel
 
@@ -54,7 +54,7 @@ A csomagok letöltése után importálhatja őket az Automation-fiókjába.
 * – a \<automationAccount\>
 * – m \<modulePackage\>
 
-:::image type="content" source="media/python-packages/import-python-runbook.png" alt-text="A képernyőképen a jobb oldalon található Start Runbook (első lépések) ablaktáblán látható a import_py2package_from_pypi áttekintése oldal.":::
+:::image type="content" source="media/python-packages/import-python-runbook.png" alt-text="A Python 2 csomagok oldalának képernyőképe a bal oldali menüben a Python 2 csomagokat jeleníti meg, és egy kiemelt Python 2 csomagot ad hozzá.":::
 
 A runbook lehetővé teszi a letölteni kívánt csomag megadását. A paraméter használata például `Azure` letölti az összes Azure-modult és az összes függőséget (körülbelül 105).
 

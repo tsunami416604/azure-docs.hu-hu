@@ -10,10 +10,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: 487308aca3231650aee3fac5ae127006649e19b9
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87073913"
 ---
 # <a name="quickstart---configure-a-private-cloud-environment"></a>Rövid útmutató – privát felhőalapú környezet konfigurálása
@@ -58,13 +58,13 @@ A privát felhők kezelése a CloudSimple-portálon keresztül történik. Sajá
 
 11. Kattintson **a Tovább gombra: Áttekintés és létrehozás**.
 12. Tekintse át a beállításokat. Ha módosítania kell a beállításokat, kattintson az **előző**gombra.
-13. Kattintson a **Létrehozás** lehetőségre.
+13. Kattintson a **Létrehozás** elemre.
 
 Elindul a felhőalapú kiépítési folyamat.  A privát felhő üzembe helyezése akár két óráig is eltarthat.
 
 ## <a name="launch-cloudsimple-portal"></a>A CloudSimple-portál elindítása
 
-A CloudSimple-portált Azure Portalról érheti el.  Az CloudSimple-portál az Azure bejelentkezési hitelesítő adataival lesz elindítva az egyszeri bejelentkezés (SSO) használatával.  A CloudSimple-portál eléréséhez engedélyeznie kell a **CloudSimple szolgáltatás-engedélyezési** alkalmazást.  Az engedélyek megadásával kapcsolatos további információkért lásd: [hozzájárulás a CloudSimple szolgáltatás-engedélyezési alkalmazáshoz](access-cloudsimple-portal.md#consent-to-cloudsimple-service-authorization-application).
+A CloudSimple-portált Azure Portalról érheti el.  Az CloudSimple-portál az Azure bejelentkezési hitelesítő adataival lesz elindítva, egyetlen Sign-On (SSO) használatával.  A CloudSimple-portál eléréséhez engedélyeznie kell a **CloudSimple szolgáltatás-engedélyezési** alkalmazást.  Az engedélyek megadásával kapcsolatos további információkért lásd: [hozzájárulás a CloudSimple szolgáltatás-engedélyezési alkalmazáshoz](access-cloudsimple-portal.md#consent-to-cloudsimple-service-authorization-application).
 
 1. Válassza az **Összes szolgáltatás** elemet.
 2. Keressen rá a **CloudSimple Services**kifejezésre.
@@ -101,7 +101,7 @@ A pont – hely típusú VPN-kapcsolat a legegyszerűbb módszer a privát felh�
 
     * Az **automatikus hozzáadási** beállítások az átjáróhoz tartozó globális házirendet határozzák meg. A beállítások az aktuális átjáróra érvényesek. A beállítások felülbírálása a **Select** területen lehetséges.
     * Válassza a **felügyeleti VLAN-ok vagy a privát felhők alhálózatok hozzáadása**lehetőséget.
-    * A felhasználó által definiált VLAN-ok/alhálózatok hozzáadásához kattintson a **felhasználó által definiált VLAN-ok/alhálózatok hozzáadása**lehetőségre.
+    * A felhasználó által definiált VLAN-ok/alhálózatok hozzáadásához kattintson a  **felhasználó által definiált VLAN-ok/alhálózatok hozzáadása**lehetőségre.
     * A beállítások **kiválasztása** felülbírálja a globális beállításokat az **automatikus Hozzáadás**területen.
 
 7. A beállítások áttekintéséhez kattintson a **tovább** gombra. A módosítások elvégzéséhez kattintson a Szerkesztés ikonra.
@@ -159,7 +159,7 @@ Most már bejelentkezhet a vCenter-be a virtuális gépek és házirendek beáll
     ![VSphere-ügyfél elindítása](media/launch-vcenter-from-cloudsimple-portal.png)
 
 2. Válassza ki a kívánt vSphere-ügyfelet a vCenter eléréséhez, és jelentkezzen be a felhasználónevével és jelszavával.  Az alapértelmezett értékek a következők:
-    * Felhasználónév:`CloudOwner@cloudsimple.local`
+    * Felhasználónév: `CloudOwner@cloudsimple.local`
     * Jelszó: `CloudSimple123!`
 
 A következő eljárások vCenter képernyői a vSphere (HTML5) ügyfélből származnak.

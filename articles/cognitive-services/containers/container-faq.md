@@ -10,10 +10,10 @@ ms.topic: conceptual
 ms.date: 08/31/2020
 ms.author: aahi
 ms.openlocfilehash: 3d35a1f6913d0b657956489d0e57836a05f9eb1d
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90900050"
 ---
 # <a name="azure-cognitive-services-containers-frequently-asked-questions-faq"></a>Azure Cognitive Services-tárolók – gyakori kérdések (GYIK)
@@ -37,14 +37,14 @@ ms.locfileid: "90900050"
 
 **A:** További Cognitive Services elérhetővé tesszük a tárolók ajánlatait. Vegye fel a kapcsolatot a helyi Microsoft-fiók kezelőjével, és szerezzen frissítéseket az új tárolók kiadásairól és más Cognitive Services hirdetményekről.
 
-**K: mi lesz a szolgáltatói szerződés (SLA) Cognitive Services tárolók számára?**
+**K: mi lesz a Service-Level szerződés (SLA) Cognitive Services tárolók számára?**
 
 **A:** Cognitive Services tárolók nem rendelkeznek SLA-val.
 
 Cognitive Services az erőforrások tároló-konfigurációit az ügyfelek vezérlik, így a Microsoft nem biztosít SLA-t általánosan elérhetővé (GA). Az ügyfelek szabadon telepíthetik a helyszíni tárolókat, így meghatározzák a gazdagépek környezetét.
 
 > [!IMPORTANT]
-> Ha többet szeretne megtudni a Cognitive Services szolgáltatói szerződésekről, [látogasson el az SLA-oldalra](https://azure.microsoft.com/support/legal/sla/cognitive-services/v1_1/).
+> Ha többet szeretne megtudni a Cognitive Services Service-Level szerződésekről, [látogasson el az SLA-oldalra](https://azure.microsoft.com/support/legal/sla/cognitive-services/v1_1/).
 
 **K: ezek a tárolók a szuverén felhőkben is elérhetők?**
 

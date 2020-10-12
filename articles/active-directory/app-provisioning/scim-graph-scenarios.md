@@ -12,17 +12,17 @@ ms.date: 04/26/2020
 ms.author: kenwith
 ms.reviewer: arvinh, celested
 ms.openlocfilehash: b69e2c9b12b2db34f3eb70e54d2c6aede6b54784
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88235502"
 ---
 # <a name="using-scim-and-microsoft-graph-together-to-provision-users-and-enrich-your-application-with-the-data-it-needs"></a>A SCIM és a Microsoft Graph együttes használata a felhasználók kiépítéséhez és az alkalmazás bővítéséhez az általa igénybe venni kívánt adattal
 
 **Célközönség:** Ez a cikk a Azure Active Directory (Azure AD) integrálására szolgáló fejlesztők számára készült. Ha az Azure AD-vel már integrált alkalmazásokat szeretne használni, például a nagyítást, a ServiceNow és a DropBoxot, kihagyhatja ezt a cikket, és áttekintheti az alkalmazásra vonatkozó [oktatóanyagokat](../saas-apps/tutorial-list.md) , vagy áttekintheti [a kiépítési szolgáltatás működését](./how-provisioning-works.md).
 
-**Gyakori forgatókönyvek**
+**Gyakori helyzetek**
 
 Az Azure AD az üzembe helyezéshez és az alkalmazások kiépítéséhez használható bővíthető platformot biztosít az alkalmazásokhoz. A döntési fa azt ismerteti, hogy a fejlesztők hogyan használják a [scim](https://aka.ms/scimoverview) és a [Microsoft Graph](/graph/overview) a kiépítés automatizálására. 
 

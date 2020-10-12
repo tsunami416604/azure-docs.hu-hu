@@ -12,10 +12,10 @@ ms.author: anjangsh
 ms.reviewer: igorstan
 ms.custom: seo-lt-2019
 ms.openlocfilehash: 3c8d78c164cefbab03d9d3fa783c75ded9773d38
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87075809"
 ---
 # <a name="geo-restore-for-sql-pool"></a>Geo-visszaállítás az SQL-készlethez
@@ -87,7 +87,7 @@ Az SQL-készletek földrajzi biztonsági mentésből történő visszaállítás
 
 4. Adja meg az **alapok** lapon kért információkat, majd kattintson a **Tovább gombra: további beállítások**.
 
-   ![Alapbeállítások](./media/sql-data-warehouse-restore-from-geo-backup/georestore-dw-1.png)
+   ![Alapvető beállítások](./media/sql-data-warehouse-restore-from-geo-backup/georestore-dw-1.png)
 
 5. A **meglévő** Adatparaméter használata esetén válassza a **biztonsági mentés** lehetőséget, és válassza ki a megfelelő biztonsági mentést a görgetési beállítások közül. Kattintson a **Felülvizsgálat + létrehozás** elemre.
 
@@ -95,7 +95,7 @@ Az SQL-készletek földrajzi biztonsági mentésből történő visszaállítás
 
 6. Az adattárház visszaállítása után győződjön meg arról, hogy az **állapot online állapotban** van.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [Meglévő SQL-készlet visszaállítása](sql-data-warehouse-restore-active-paused-dw.md)
 - [Törölt SQL-készlet visszaállítása](sql-data-warehouse-restore-deleted-dw.md)

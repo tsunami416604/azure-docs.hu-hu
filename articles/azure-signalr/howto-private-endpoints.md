@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 05/06/2020
 ms.author: dayshen
 ms.openlocfilehash: 645b2c643c1c1d4fe82eb5998a35ccc48536603e
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84300203"
 ---
 # <a name="use-private-endpoints-for-azure-signalr-service"></a>Privát végpontok használata az Azure Signaler szolgáltatáshoz
@@ -57,7 +57,7 @@ Ha az Azure Signaler szolgáltatás tartománynevét a VNet kívülről oldja fe
 
 A fenti ábrán látható példában a "foobar" Azure Signaler szolgáltatáshoz tartozó DNS-erőforrásrekordok a privát végpontot üzemeltető VNet kívülről történő feloldáskor a következők:
 
-| Name                                                  | Típus  | Érték                                                 |
+| Név                                                  | Típus  | Érték                                                 |
 | :---------------------------------------------------- | :---: | :---------------------------------------------------- |
 | ``foobar.service.signalr.net``                        | CNAME | ``foobar.privatelink.service.signalr.net``            |
 | ``foobar.privatelink.service.signalr.net``            | A     | \<Azure SignalR Service public IP address\>           |
@@ -66,7 +66,7 @@ Ahogy azt korábban említettük, a hálózati hozzáférés-vezérlés használ
 
 A "foobar" DNS-erőforrásrekordok, amikor a privát végpontot üzemeltető VNet-ügyfél feloldotta a következőt:
 
-| Name                                                  | Típus  | Érték                                                 |
+| Név                                                  | Típus  | Érték                                                 |
 | :---------------------------------------------------- | :---: | :---------------------------------------------------- |
 | ``foobar.service.signalr.net``                        | CNAME | ``foobar.privatelink.service.signalr.net``            |
 | ``foobar.privatelink.service.signalr.net``            | A     | 10.1.1.5                                              |
@@ -89,7 +89,7 @@ A saját DNS-kiszolgáló magánhálózati végpontok támogatására való konf
 
 ### <a name="create-a-private-endpoint-along-with-a-new-azure-signalr-service-in-the-azure-portal"></a>Hozzon létre egy privát végpontot a Azure Portal új Azure Signaler szolgáltatásával együtt
 
-1. Új Azure-jelző szolgáltatás létrehozásakor válassza a **hálózatkezelés** fület. Válassza a **magánhálózati végpont** lehetőséget kapcsolati módszerként.
+1. Új Azure-jelző szolgáltatás létrehozásakor válassza a **hálózatkezelés** fület. Válassza ki a **magánhálózati végpontot** kapcsolati módszerként.
 
     ![Azure szignáló szolgáltatás létrehozása – hálózatkezelés lap](media/howto-private-endpoints/portal-create-blade-networking-tab.png)
 
@@ -97,7 +97,7 @@ A saját DNS-kiszolgáló magánhálózati végpontok támogatására való konf
 
     ![Azure Signaler szolgáltatás létrehozása – privát végpont hozzáadása](media/howto-private-endpoints/portal-create-blade-add-private-endpoint.png)
 
-1. Kattintson az **Áttekintés + létrehozás** elemre.
+1. Kattintson a **Felülvizsgálat + létrehozás** elemre.
 
 ### <a name="create-a-private-endpoint-for-an-existing-azure-signalr-service-in-the-azure-portal"></a>Hozzon létre egy privát végpontot egy meglévő Azure Signal Service-szolgáltatáshoz a Azure Portal
 
@@ -121,7 +121,7 @@ A saját DNS-kiszolgáló magánhálózati végpontok támogatására való konf
 
     ![Privát végpont létrehozása – konfiguráció](media/howto-private-endpoints/portal-create-private-endpoint-configuration.png)
 
-1. Kattintson az **Áttekintés + létrehozás** elemre.
+1. Kattintson a **Felülvizsgálat + létrehozás** elemre.
 
 ### <a name="create-a-private-endpoint-using-azure-cli"></a>Privát végpont létrehozása az Azure CLI-vel
 
@@ -129,7 +129,7 @@ A saját DNS-kiszolgáló magánhálózati végpontok támogatására való konf
     ```console
     az login
     ```
-1. Azure-előfizetés kiválasztása
+1. Válassza ki az Azure-előfizetését
     ```console
     az account set --subscription {AZURE SUBSCRIPTION ID}
     ```

@@ -4,10 +4,10 @@ description: Ez a cikk azt ismerteti, hogyan lehet elküldeni egy eseményt egy 
 ms.topic: conceptual
 ms.date: 07/07/2020
 ms.openlocfilehash: 197d8eb1963300bc6576e664c7c3fd470cf70bb2
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86108243"
 ---
 # <a name="post-to-custom-topic-for-azure-event-grid"></a>Közzététel a Azure Event Grid egyéni témakörében
@@ -92,15 +92,15 @@ Egy érvényes esemény-Adatséma például a következő:
 }]
 ```
 
-## <a name="response"></a>Válasz
+## <a name="response"></a>Reagálás
 
 A témakör-végpontra való közzététel után választ kap. A válasz egy szabványos HTTP-válasz kódja. Néhány gyakori Válasz:
 
-|Eredmény  |Válasz  |
+|Eredmény  |Reagálás  |
 |---------|---------|
-|Sikeres  | 200 OK  |
-|Az esemény adatformátuma helytelen formátumú | 400 hibás kérelem |
-|Érvénytelen hozzáférési kulcs | 401 jogosulatlan |
+|Success  | 200 OK  |
+|Az esemény adatformátuma helytelen formátumú | 400 Hibás kérés |
+|Érvénytelen hozzáférési kulcs | 401 Nem engedélyezett |
 |Helytelen végpont | 404 Nem található |
 |Tömb vagy esemény meghaladja a méretkorlátot | 413 túl nagy a hasznos adat |
 
@@ -119,7 +119,7 @@ Hibák esetén az üzenet törzsének formátuma a következő:
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * További információ az események kézbesítésének figyeléséről: [Event Grid üzenet kézbesítésének figyelése](monitor-event-delivery.md).
 * További információ a hitelesítési kulcsról: [Event Grid biztonság és hitelesítés](security-authentication.md).

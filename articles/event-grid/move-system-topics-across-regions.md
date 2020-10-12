@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.custom: subject-moving-resources
 ms.date: 08/28/2020
 ms.openlocfilehash: eb6029b206e7d47789371ee81e75c4e05c69ee65
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89084531"
 ---
 # <a name="move-azure-event-grid-system-topics-to-another-region"></a>Azure Event Grid rendszertémakörök áthelyezése másik régióba
@@ -35,22 +35,7 @@ Első lépésként exportáljon egy Resource Manager-sablont az erőforráscsopo
     :::image type="content" source="./media/move-system-topics-across-regions/resource-group-page.png" alt-text="Erőforráscsoport lapja":::        
 3. A bal oldali menüben válassza a **sablon exportálása** a **Beállítások**alatt lehetőséget, majd válassza a **Letöltés** lehetőséget az eszköztáron. 
 
-    :::image type="content" source="./media/move-system-topics-across-regions/export-template-menu.png" alt-text="További fiók – sablon exportálása lap":::        
-5. Keresse meg a portálról letöltött **. zip** fájlt, és bontsa ki a fájlt egy tetszőleges mappába. Ez a zip-fájl sablon-és Parameters JSON-fájlokat tartalmaz. 
-1. Nyissa ** meg atemplate.jst** egy tetszőleges szerkesztőben. 
-1. A webhook URL-címét a rendszer nem exportálja a sablonba. Végezze el a következő lépéseket:
-    1. A sablon fájlban keresse meg a **webhook**kifejezést. 
-    1. A **Properties (Tulajdonságok** ) szakaszban adjon hozzá egy vessző ( `,` ) karaktert az utolsó sor végén. Ebben a példában ez a következő: `"preferredBatchSizeInKilobytes": 64` . 
-    1. Adja hozzá a `endpointUrl` tulajdonságot a webhook URL-címéhez beállított értékkel az alábbi példában látható módon. 
-
-        ```json
-        "destination": {
-            "properties": {
-                "maxEventsPerBatch": 1,
-                "preferredBatchSizeInKilobytes": 64,
-                "endpointUrl": "https://mysite.azurewebsites.net/api/updates"
-            },
-            "endpointType": "WebHook"
+    :::image type="content" source="./media/move-system-topics-across-regions/export-template-menu.png" alt-text="Erőforráscsoport lapja"
         }
         ```
 
@@ -91,7 +76,7 @@ A sablon üzembe helyezésével hozzon létre egy Storage-fiókot és egy rendsz
     1. A **rendszertéma neve**mezőbe írja be annak a rendszertémakörnek a nevét, amely a Storage-fiókhoz lesz társítva.  
     1. A **Storage-fiók neve**mezőben adja meg a cél régióban létrehozandó Storage-fiók nevét. 
 
-        :::image type="content" source="./media/move-system-topics-across-regions/deploy-template.png" alt-text="Resource Manager-sablon üzembe helyezése":::
+        :::image type="content" source="./media/move-system-topics-across-regions/deploy-template.png" alt-text="Erőforráscsoport lapja":::
     5. Kattintson a lap alján található **felülvizsgálat + létrehozás** lehetőségre. 
     1. A **felülvizsgálat + létrehozás** lapon tekintse át a beállításokat, majd válassza a **Létrehozás**lehetőséget. 
 
@@ -110,7 +95,7 @@ Erőforráscsoport (forrás vagy cél) törlése a Azure Portal használatával:
 1. A Azure Portal tetején található Keresés ablakban írja be az **erőforráscsoportok**kifejezést, majd válassza az **erőforráscsoportok** lehetőséget a keresési eredmények közül. 
 2. Válassza ki a törölni kívánt erőforráscsoportot, és válassza a **Törlés** lehetőséget az eszköztárból. 
 
-    :::image type="content" source="./media/move-system-topics-across-regions/delete-resource-group-button.png" alt-text="Erőforráscsoport törlése":::
+    :::image type="content" source="./media/move-system-topics-across-regions/delete-resource-group-button.png" alt-text="Erőforráscsoport lapja":::
 3. A jóváhagyás lapon adja meg az erőforráscsoport nevét, majd válassza a **Törlés**lehetőséget.  
 
 ## <a name="next-steps"></a>Következő lépések

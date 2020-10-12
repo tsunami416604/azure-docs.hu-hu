@@ -12,10 +12,10 @@ ms.author: bonova
 ms.reviewer: sstein, vanto
 ms.date: 08/14/2020
 ms.openlocfilehash: c98e377ec216bea6c1d4a96b15b3741aa52672e0
-ms.sourcegitcommit: eb6bef1274b9e6390c7a77ff69bf6a3b94e827fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91618134"
 ---
 # <a name="what-is-azure-sql-managed-instance"></a>Mi az az Azure SQL felügyelt példánya?
@@ -217,7 +217,7 @@ Néhány kulcsfontosságú különbség:
 - Csak automatikus biztonsági mentések és időponthoz tartozó visszaállítások érhetők el. `copy-only`Az ügyfelek olyan biztonsági másolatokat indíthatnak, amelyek nem akadályozzák az automatikus biztonsági mentési láncot.
 - A teljes fizikai elérési utak megadása nem támogatott, ezért az összes vonatkozó forgatókönyvet másképp kell támogatni: az adatbázis visszaállítása nem támogatja az ÁTHELYEZÉSt, az adatbázis létrehozása nem teszi lehetővé a fizikai elérési utak használatát, BULK INSERT csak az Azure-Blobokkal működik, stb.
 - Az SQL felügyelt példánya támogatja az [Azure ad-hitelesítést](../database/authentication-aad-overview.md) a Windows-hitelesítés Felhőbeli alternatívája.
-- A felügyelt SQL-példányok automatikusan kezelik a memóriában tárolt OLTP objektumokat tartalmazó adatbázisok XTP-fájlcsoportok és-fájljait.
+- A felügyelt SQL-példányok automatikusan kezelik az In-Memory OLTP objektumokat tartalmazó adatbázisok XTP-fájlcsoportok és-fájljait.
 - Az SQL felügyelt példánya támogatja a SQL Server Integration Services (SSIS) szolgáltatást, és üzemeltetheti a SSIS-csomagokat tároló SSIS-katalógust (SSISDB), de a rendszer felügyelt Azure-SSIS Integration Runtime (IR) hajtja végre Azure Data Factory. Lásd: [Azure-SSIS IR létrehozása a Data Factoryban](https://docs.microsoft.com/azure/data-factory/create-azure-ssis-integration-runtime). A SSIS funkcióinak összehasonlítását lásd: [SQL Database összehasonlítása az SQL felügyelt példányával](../../data-factory/create-azure-ssis-integration-runtime.md#comparison-of-sql-database-and-sql-managed-instance).
 
 ### <a name="administration-features"></a>Felügyeleti funkciók
@@ -237,7 +237,7 @@ A következő táblázat több, a Transact-SQL szolgáltatáson keresztül elér
 |`SERVERPROPERTY('EngineEdition')`|8|Ez az érték egyedileg azonosítja a felügyelt példányt.|
 |`@@SERVERNAME`, `SERVERPROPERTY ('ServerName')`|Teljes példány DNS-neve a következő formátumban: `<instanceName>` . `<dnsPrefix>` . a database.windows.net, ahol az az `<instanceName>` ügyfél által megadott név, míg a `<dnsPrefix>` neve automatikusan létrejön a globális DNS-név egyediségét garantáló név ("wcus17662feb9ce98"), például:.|Példa: my-managed-instance.wcus17662feb9ce98.database.windows.net|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az első felügyelt példány létrehozásával kapcsolatos információkért lásd: gyors [útmutató](instance-create-quickstart.md).
 - A szolgáltatások és az összehasonlítások listájáért lásd: [általános SQL-szolgáltatások](../database/features-comparison.md).

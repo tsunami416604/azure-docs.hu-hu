@@ -15,10 +15,10 @@ ms.reviewer: elkuzmen
 ms.custom: it-pro;seo-update-azuread-jan
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: a6a7dcb1d24f3c1ff848e3393687b04d79d28058
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90054704"
 ---
 # <a name="take-over-an-unmanaged-directory-as-administrator-in-azure-active-directory"></a>Nem felügyelt címtár átvétele rendszergazdaként az Azure Active Directoryban
@@ -140,27 +140,27 @@ parancsmag | Használat
    ```powershell
    Get-MsolDomain
    ```
-3. A Get-MsolDomainVerificationDns parancsmag futtatásával hozzon létre egy kihívást:
+3. Hozzon létre egy kihívást a Get-MsolDomainVerificationDns parancsmag futtatásával:
    ```powershell
    Get-MsolDomainVerificationDns –DomainName *your_domain_name* –Mode DnsTxtRecord
    ```
-    Például:
+    Példa:
    ```
    Get-MsolDomainVerificationDns –DomainName contoso.com –Mode DnsTxtRecord
    ```
 
-4. Másolja ki a parancs által visszaadott értéket (a kihívást). Például:
+4. Másolja ki a parancs által visszaadott értéket (a kihívást). Példa:
    ```powershell
    MS=32DD01B82C05D27151EA9AE93C5890787F0E65D9
    ```
 5. A nyilvános DNS-névtérben hozzon létre egy olyan DNS TXT-rekordot, amely az előző lépésben másolt értéket tartalmazza. A rekord neve a szülőtartomány neve, így ha létrehozza ezt az erőforrásrekordot a Windows Server DNS-szerepkörének használatával, hagyja üresen a rekord nevét, és illessze be az értéket a szövegmezőbe.
-6. Futtassa a Confirm-MsolDomain parancsmagot a probléma ellenőrzéséhez:
+6. A probléma ellenőrzéséhez futtassa a Confirm-MsolDomain parancsmagot:
   
    ```powershell
    Confirm-MsolDomain –DomainName *your_domain_name* –ForceTakeover Force
    ```
   
-   Például:
+   Példa:
   
    ```powershell
    Confirm-MsolDomain –DomainName contoso.com –ForceTakeover Force

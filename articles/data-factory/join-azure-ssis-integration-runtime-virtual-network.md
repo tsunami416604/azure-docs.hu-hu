@@ -12,10 +12,10 @@ ms.author: sawinark
 ms.reviewer: douglasl
 manager: mflasko
 ms.openlocfilehash: 50abe5071ef424b03d92522e01477d1152930b2e
-ms.sourcegitcommit: ec682dcc0a67eabe4bfe242fce4a7019f0a8c405
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86187812"
 ---
 # <a name="join-an-azure-ssis-integration-runtime-to-a-virtual-network"></a>Azure-SSIS Integration Runtime csatlakoztatása virtuális hálózathoz
@@ -105,7 +105,7 @@ Ez az ábrán a Azure-SSIS IR szükséges kapcsolatok láthatók:
 
 ![Azure-SSIS integrációs modul](media/join-azure-ssis-integration-runtime-virtual-network/azure-ssis-ir.png)
 
-### <a name="set-up-permissions"></a><a name="perms"></a>Engedélyek beállítása
+### <a name="set-up-permissions"></a><a name="perms"></a> Engedélyek beállítása
 
 A Azure-SSIS IR létrehozó felhasználónak a következő engedélyekkel kell rendelkeznie:
 
@@ -117,7 +117,7 @@ A Azure-SSIS IR létrehozó felhasználónak a következő engedélyekkel kell r
 
 - Ha a SSIS IR-t egy klasszikus virtuális hálózathoz csatlakoztatja, javasoljuk, hogy használja a klasszikus virtuális gépek beépített közreműködői szerepkörét. Ellenkező esetben meg kell határoznia egy egyéni szerepkört, amely magában foglalja a virtuális hálózathoz való csatlakozás engedélyét.
 
-### <a name="select-the-subnet"></a><a name="subnet"></a>Válassza ki az alhálózatot
+### <a name="select-the-subnet"></a><a name="subnet"></a> Válassza ki az alhálózatot
 
 Amikor kiválaszt egy alhálózatot: 
 
@@ -141,7 +141,7 @@ Ha saját statikus nyilvános IP-címeit szeretné használni Azure-SSIS IRhoz, 
 
 - A virtuális hálózatnak ugyanabban az előfizetésben és ugyanabban a régióban kell lennie.
 
-### <a name="set-up-the-dns-server"></a><a name="dns_server"></a>A DNS-kiszolgáló beállítása 
+### <a name="set-up-the-dns-server"></a><a name="dns_server"></a> A DNS-kiszolgáló beállítása 
 Ha saját DNS-kiszolgálóját kell használnia a Azure-SSIS IR által csatlakoztatott virtuális hálózaton a privát állomásnév feloldásához, akkor győződjön meg róla, hogy a globális Azure-gazdagépek nevét (például egy nevű Azure Storage-blobot) is fel tudja oldani `<your storage account>.blob.core.windows.net` . 
 
 Az egyik javasolt módszer a következő: 
@@ -153,7 +153,7 @@ További információ: névfeloldás, [amely a saját DNS-kiszolgálóját haszn
 > [!NOTE]
 > Használjon egy teljes tartománynevet (FQDN) a saját magánhálózati neveként, például a `<your_private_server>.contoso.com` helyett használja `<your_private_server>` , mert Azure-SSIS IR nem fogja automatikusan hozzáfűzni a saját DNS-utótagját.
 
-### <a name="set-up-an-nsg"></a><a name="nsg"></a>NSG beállítása
+### <a name="set-up-an-nsg"></a><a name="nsg"></a> NSG beállítása
 Ha meg kell valósítania egy NSG a Azure-SSIS IR által használt alhálózathoz, engedélyezze a bejövő és kimenő forgalmat a következő portokon keresztül: 
 
 -   **Azure-SSIS IR bejövő követelménye**
@@ -172,10 +172,10 @@ Ha meg kell valósítania egy NSG a Azure-SSIS IR által használt alhálózatho
 | Kimenő | TCP | VirtualNetwork | * | Internet | 80 | Választható A virtuális hálózat Azure-SSIS IR csomópontjai ezt a portot használják a visszavont tanúsítványok listájának internetről való letöltéséhez. Ha letiltja ezt a forgalmat, akkor a teljesítmény-visszalépést tapasztalhatja, ha elindítja az IR-t, és elveszti a tanúsítvány-visszavonási listát a tanúsítvány használatának ellenőrzése érdekében. Ha a célhelyet bizonyos FQDN-re szeretné szűkíteni, tekintse meg az **Azure ExpressRoute vagy a UDR használatát** ismertető szakaszt.|
 | Kimenő | TCP | VirtualNetwork | * | SQL | 1433, 11000-11999 | Választható Ez a szabály csak akkor szükséges, ha a virtuális hálózatban lévő Azure-SSIS IR csomópontjai hozzáférnek a kiszolgáló által üzemeltetett SSISDB. Ha a kiszolgálói kapcsolódási házirend az **átirányítás**helyett **proxyra** van beállítva, akkor csak az 1433-es port szükséges. <br/><br/> Ez a kimenő biztonsági szabály nem alkalmazható a virtuális hálózatban lévő SQL felügyelt példány által üzemeltetett SSISDB, vagy a magánhálózati végponttal konfigurált SQL Database. |
 | Kimenő | TCP | VirtualNetwork | * | VirtualNetwork | 1433, 11000-11999 | Választható Ez a szabály csak akkor szükséges, ha a virtuális hálózatban lévő Azure-SSIS IR csomópontjai hozzáférnek a virtuális hálózatban található SQL felügyelt példány által üzemeltetett SSISDB, vagy SQL Database privát végponttal konfigurálták. Ha a kiszolgálói kapcsolódási házirend az **átirányítás**helyett **proxyra** van beállítva, akkor csak az 1433-es port szükséges. |
-| Kimenő | TCP | VirtualNetwork | * | Tárolás | 445 | Választható Ez a szabály csak akkor szükséges, ha a Azure Filesban tárolt SSIS-csomagot szeretné végrehajtani. |
+| Kimenő | TCP | VirtualNetwork | * | Storage | 445 | Választható Ez a szabály csak akkor szükséges, ha a Azure Filesban tárolt SSIS-csomagot szeretné végrehajtani. |
 ||||||||
 
-### <a name="use-azure-expressroute-or-udr"></a><a name="route"></a>Az Azure ExpressRoute vagy a UDR használata
+### <a name="use-azure-expressroute-or-udr"></a><a name="route"></a> Az Azure ExpressRoute vagy a UDR használata
 Ha meg szeretné vizsgálni a kimenő forgalmat a Azure-SSIS IRről, átirányíthatja a Azure-SSIS IRról a helyszíni tűzfal-készülékre kezdeményezett forgalmat az [Azure ExpressRoute](https://azure.microsoft.com/services/expressroute/) kényszerített bújtatásával (a BGP-útvonal, a 0.0.0.0/0, a virtuális hálózatra) vagy a hálózati virtuális berendezés (NVA) használatával tűzfalként vagy [Azure Firewallként](https://docs.microsoft.com/azure/firewall/) a [UDR](../virtual-network/virtual-networks-udr-overview.md)-on keresztül. 
 
 ![Azure-SSIS IR NVA forgatókönyve](media/join-azure-ssis-integration-runtime-virtual-network/azure-ssis-ir-nva.png)
@@ -279,7 +279,7 @@ Ha nincs szüksége a Azure-SSIS IR kimenő forgalmának vizsgálatára, egyszer
 > [!NOTE]
 > Útvonal megadása a következő ugrás típusú **internettel** nem jelenti azt, hogy az összes forgalom az interneten keresztül fog haladni. Ha a cél címe az Azure egyik szolgáltatásához tartozik, az Azure a forgalmat közvetlenül az Azure gerinc hálózatán keresztül irányítja át, és nem irányítja át az internetre.
 
-### <a name="set-up-the-resource-group"></a><a name="resource-group"></a>Az erőforráscsoport beállítása
+### <a name="set-up-the-resource-group"></a><a name="resource-group"></a> Az erőforráscsoport beállítása
 
 A Azure-SSIS IR létre kell hoznia bizonyos hálózati erőforrásokat a virtuális hálózattal azonos erőforráscsoporthoz. Ezek az erőforrások a következők:
 - Egy Azure Load Balancer a name * \<Guid> -azurebatch-cloudserviceloadbalancer*.
@@ -300,7 +300,7 @@ Győződjön meg arról, hogy nem rendelkezik Azure Policy-hozzárendeléssel, a
 
 Győződjön meg arról, hogy az előfizetés erőforrás-kvótája elegendő a fenti három hálózati erőforráshoz. A virtuális hálózatban létrehozott minden egyes Azure-SSIS IR esetében két ingyenes kvótát kell lefoglalni a fenti három hálózati erőforráshoz. Az extra egy kvóta akkor lesz használatban, amikor rendszeresen frissítjük a Azure-SSIS IR.
 
-### <a name="faq"></a><a name="faq"></a>– GYAKORI kérdések
+### <a name="faq"></a><a name="faq"></a> – GYAKORI kérdések
 
 - Hogyan védhető meg a Azure-SSIS IR a bejövő kapcsolatok számára elérhető nyilvános IP-cím? Lehetséges a nyilvános IP-cím eltávolítása?
  
@@ -354,7 +354,7 @@ A portálon konfigurálhat egy Azure Resource Manager virtuális hálózatot, mi
 
    1. A Azure Portal bal oldali menüjében válassza az **előfizetések**lehetőséget. 
 
-   1. Válassza ki az előfizetését. 
+   1. Válassza ki előfizetését. 
 
    1. A bal oldalon válassza az **erőforrás-szolgáltatók**lehetőséget, és győződjön meg arról, hogy **Microsoft.BatCH** egy regisztrált szolgáltató. 
 
@@ -408,7 +408,7 @@ A portálon konfigurálhatja a klasszikus virtuális hálózatot, mielőtt csatl
 
    1. A Azure Portal bal oldali menüjében válassza az **előfizetések**lehetőséget. 
 
-   1. Válassza ki az előfizetését. 
+   1. Válassza ki előfizetését. 
 
    1. A bal oldalon válassza az **erőforrás-szolgáltatók**lehetőséget, és győződjön meg arról, hogy **Microsoft.BatCH** egy regisztrált szolgáltató. 
 

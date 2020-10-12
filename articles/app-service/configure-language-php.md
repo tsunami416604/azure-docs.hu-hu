@@ -1,15 +1,15 @@
 ---
 title: PHP-alkalmazások konfigurálása
-description: Megtudhatja, hogyan konfigurálhat egy PHP-alkalmazást a natív Windows-példányokban vagy egy előre elkészített PHP-tárolóban Azure App Serviceban. Ez a cikk a leggyakoribb konfigurációs feladatokat ismerteti.
+description: Megtudhatja, hogyan konfigurálhat egy PHP-alkalmazást a natív Windows-példányokban vagy egy előre elkészített PHP-tárolóban Azure App Serviceban. A cikk a leggyakoribb konfigurációs feladatokat ismerteti.
 ms.devlang: php
 ms.topic: article
 ms.date: 06/02/2020
 zone_pivot_groups: app-service-platform-windows-linux
 ms.openlocfilehash: afac8273b5729bcf5470be471145214426dc7dab
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90055299"
 ---
 # <a name="configure-a-php-app-for-azure-app-service"></a>PHP-alkalmazás konfigurálása Azure App Servicehoz
@@ -119,7 +119,7 @@ Véglegesítse az összes módosítást, és telepítse a kódot a git használa
 
 Ha azt szeretné, hogy a App Service a népszerű Automation-eszközöket az üzembe helyezési időben, például a morog, a Bower vagy a Nyelő használatával futtassa, [egyéni telepítési parancsfájlt](https://github.com/projectkudu/kudu/wiki/Custom-Deployment-Script)kell megadnia. App Service futtatja ezt a parancsfájlt a git-vel való üzembe helyezéskor, vagy ha engedélyezve van a Build Automation szolgáltatással rendelkező [zip-telepítés](deploy-zip.md) . 
 
-Ha engedélyezni szeretné, hogy a tárház futtassa ezeket az eszközöket, hozzá kell adnia azokat a függőségekhez *package.json.* Például:
+Ha engedélyezni szeretné, hogy a tárház futtassa ezeket az eszközöket, hozzá kell adnia azokat a függőségekhez *package.json.* Példa:
 
 ```json
 "dependencies": {
@@ -203,7 +203,7 @@ fi
 Ha a Build Automation használatával git vagy zip csomagok segítségével helyezi üzembe az alkalmazást, akkor a App Service az alábbi lépésekkel hozhat létre automatizálási lépéseket:
 
 1. Futtassa az egyéni parancsfájlt, ha a meg van adva `PRE_BUILD_SCRIPT_PATH` .
-1. Futtassa az `php composer.phar install` parancsot.
+1. A `php composer.phar install` parancs futtatása.
 1. Futtassa az egyéni parancsfájlt, ha a meg van adva `POST_BUILD_SCRIPT_PATH` .
 
 `PRE_BUILD_COMMAND``POST_BUILD_COMMAND`a és a környezeti változók, amelyek alapértelmezés szerint üresek. Az előkészítő parancsok futtatásához adja meg a következőt: `PRE_BUILD_COMMAND` . A létrehozás utáni parancsok futtatásához adja meg a következőt: `POST_BUILD_COMMAND` .
@@ -231,7 +231,7 @@ az webapp config set --resource-group <resource-group-name> --name <app-name> --
 
 ## <a name="access-environment-variables"></a>Hozzáférés a környezeti változókhoz
 
-App Service az [Alkalmazásbeállítások](configure-common.md#configure-app-settings) az alkalmazás kódján kívül is megadhatók. Ezt követően a szabványos [GETENV ()](https://secure.php.net/manual/function.getenv.php) minta használatával érheti el őket. Ha például egy nevű alkalmazáshoz szeretne hozzáférni `DB_HOST` , használja a következő kódot:
+Az App Service-szel az alkalmazás kódján kívül is [megadhatja az alkalmazások beállításait](configure-common.md#configure-app-settings). Ezt követően a szabványos [GETENV ()](https://secure.php.net/manual/function.getenv.php) minta használatával érheti el őket. Például egy `DB_HOST` nevű alkalmazásbeállítás hozzáféréséhez használja a következő kódot:
 
 ```php
 getenv("DB_HOST")
@@ -318,7 +318,7 @@ Egy fájl használata helyett használhatja a `.user.ini` [ini_set ()](https://w
 
 PHP_INI_USER, PHP_INI_PERDIR és PHP_INI_ALL irányelvek testreszabásához (lásd: [php.ini irányelvek](https://www.php.net/manual/ini.list.php)), adjon hozzá egy *. htaccess* -fájlt az alkalmazás gyökérkönyvtárához.
 
-A *. htaccess* fájlban adja hozzá az irányelveket a `php_value <directive-name> <value>` szintaxis használatával. Például:
+A *. htaccess* fájlban adja hozzá az irányelveket a `php_value <directive-name> <value>` szintaxis használatával. Példa:
 
 ```
 php_value upload_max_filesize 1000M
@@ -469,7 +469,7 @@ A standard [error_log ()](https://php.net/manual/function.error-log.php) segédp
 Ha egy működő PHP-alkalmazás másképp viselkedik App Service vagy hibákat tartalmaz, próbálkozzon a következőkkel:
 
 - [A log stream elérése](#access-diagnostic-logs).
-- Az alkalmazás helyi tesztelése éles módban. App Service éles módban futtatja az alkalmazást, ezért meg kell győződnie arról, hogy a projekt a várt módon működik a helyi üzemi módban. Például:
+- Az alkalmazás helyi tesztelése éles módban. App Service éles módban futtatja az alkalmazást, ezért meg kell győződnie arról, hogy a projekt a várt módon működik a helyi üzemi módban. Példa:
     - A *composer.jstól*függően különböző csomagok is telepíthetők üzemi módba (vagy `require` `require-dev` ).
     - Bizonyos webes keretrendszerek eltérő üzemi módban telepíthetnek statikus fájlokat.
     - Bizonyos webes keretrendszerek éles módban történő futtatáskor egyéni indítási parancsfájlokat is használhatnak.
@@ -489,7 +489,7 @@ Ha egy működő PHP-alkalmazás másképp viselkedik App Service vagy hibákat 
 ::: zone pivot="platform-linux"
 
 > [!div class="nextstepaction"]
-> [App Service Linux – gyakori kérdések](faq-app-service-linux.md)
+> [App Service a Linuxon – gyakori kérdések](faq-app-service-linux.md)
 
 ::: zone-end
 

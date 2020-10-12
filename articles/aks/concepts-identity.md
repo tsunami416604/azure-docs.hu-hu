@@ -7,10 +7,10 @@ ms.date: 07/07/2020
 author: palma21
 ms.author: jpalma
 ms.openlocfilehash: edb6a8e04537a74b7ea7d4c9bd9bd27fdc39e402
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88007080"
 ---
 # <a name="access-and-identity-options-for-azure-kubernetes-service-aks"></a>Hozzáférési és identitás-beállítások az Azure Kubernetes Service (AKS) szolgáltatáshoz
@@ -24,7 +24,7 @@ Ez a cikk bemutatja azokat az alapvető fogalmakat, amelyek segítséget nyújta
   - [RoleBindings és ClusterRoleBindings](#rolebindings-and-clusterrolebindings) 
   - [Kubernetes-szolgáltatásfiókok](#kubernetes-service-accounts)
 - [Azure Active Directory-integráció](#azure-active-directory-integration)
-- [Azure-RBAC](#azure-role-based-access-control-azure-rbac)
+- [Azure RBAC-vel](#azure-role-based-access-control-azure-rbac)
   - [Azure-RBAC az AK-erőforráshoz való hozzáférés engedélyezéséhez](#azure-rbac-to-authorize-access-to-the-aks-resource)
   - [Azure RBAC for Kubernetes-engedélyezés (előzetes verzió)](#azure-rbac-for-kubernetes-authorization-preview)
 
@@ -145,7 +145,7 @@ Az AK a következő négy beépített szerepkört biztosítja. Hasonlóak a [Kub
 
 **Tekintse meg, hogyan használhat Azure RBAC for Kubernetes-hitelesítést [itt](manage-azure-rbac.md).**
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - Az Azure AD és a Kubernetes RBAC megismeréséhez tekintse meg a következőt: [Azure Active Directory integrálása az AK-val][aks-aad].
 - A kapcsolódó ajánlott eljárásokért lásd: [ajánlott eljárások a hitelesítéshez és engedélyezéshez az AK-ban][operator-best-practices-identity].

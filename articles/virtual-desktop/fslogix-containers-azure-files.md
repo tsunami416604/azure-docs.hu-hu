@@ -7,15 +7,15 @@ ms.date: 08/07/2019
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: 669f4baa723b78b8933f3a75fc361c468f9e2df9
-ms.sourcegitcommit: 98854e3bd1ab04ce42816cae1892ed0caeedf461
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/07/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88002391"
 ---
 # <a name="fslogix-profile-containers-and-azure-files"></a>FSLogix-profiltárolók és Azure Files
 
-A Windows Virtual Desktop szolgáltatás felhasználói Profilos megoldásként ajánlja a FSLogix-profilok tárolóit. A FSLogix a távoli számítástechnikai környezetekben, például a Windows Virtual Desktopban található profilok hordozására szolgál. Egy teljes felhasználói profilt tárol egy önálló tárolóban. Bejelentkezéskor a tároló dinamikusan csatlakozik a számítástechnikai környezethez a natív módon támogatott virtuális merevlemez (VHD) és a Hyper-V virtuális merevlemez (VHDX) használatával. A felhasználói profil azonnal elérhető, és ugyanúgy jelenik meg a rendszeren, mint a natív felhasználói profil. Ez a cikk azt ismerteti, hogyan használhatók a FSLogix-profilok tárolói a Windows rendszerű virtuális asztal Azure Files funkciójával.
+A Windows Virtual Desktop szolgáltatás felhasználói Profilos megoldásként ajánlja a FSLogix-profilok tárolóit. A FSLogix a távoli számítástechnikai környezetekben, például a Windows Virtual Desktopban található profilok hordozására szolgál. Egy teljes felhasználói profilt tárol egy önálló tárolóban. Bejelentkezéskor a tároló dinamikusan csatlakozik a számítástechnikai környezethez a natív módon támogatott virtuális merevlemez (VHD) és a Hyper-V virtuális merevlemez (VHDX) használatával. A felhasználói profil azonnal elérhető, és pontosan ugyanúgy jelenik meg a rendszeren, mint a natív felhasználói profilok. Ez a cikk azt ismerteti, hogyan használhatók a FSLogix-profilok tárolói a Windows rendszerű virtuális asztal Azure Files funkciójával.
 
 >[!NOTE]
 >Ha összehasonlító anyagot keres az Azure-beli különböző FSLogix-profilok tárolási lehetőségeivel kapcsolatban, tekintse meg a [FSLogix-profilok tárolási lehetőségei](store-fslogix-profile.md)című témakört.
@@ -45,7 +45,7 @@ A meglévő és a régi Microsoft-megoldások a felhasználói profilokhoz kül�
 
 Az alábbi táblázat a korábbi felhasználói profilok technológiáinak előnyeit és korlátozásait mutatja be.
 
-| Technológia | Modern beállítások | Win32-beállítások | Operációs rendszer beállításai | Felhasználói adatok | Kiszolgáló SKU-ban támogatott | Háttérbeli tároló az Azure-ban | Helyszíni háttérbeli tároló | Verziók támogatása | Későbbi bejelentkezési idő |Megjegyzések|
+| Technológia | Modern beállítások | Win32-beállítások | Operációs rendszer beállításai | Felhasználói adatok | Kiszolgáló SKU-ban támogatott | Háttérbeli tároló az Azure-ban | Helyszíni háttérbeli tároló | Verziók támogatása | Későbbi bejelentkezési idő |Jegyzetek|
 | ---------- | :-------------: | :------------: | :---------: | --------: | :---------------------: | :-----------------------: | :--------------------------: | :-------------: | :---------------------: |-----|
 | **Felhasználói profil lemezei (UPD)** | Igen | Igen | Igen | Igen | Igen | Nem | Igen | 7. győzelem + | Igen | |
 | **Barangoló felhasználói profil (központi felhasználói PROFILHOZ), karbantartási mód** | Nem | Igen | Igen | Igen | Igen| Nem | Igen | 7. győzelem + | Nem | |
@@ -92,7 +92,7 @@ Annak biztosítása érdekében, hogy a Windows rendszerű virtuális asztali k�
 - Az optimális teljesítmény érdekében a tárolási megoldásnak és a FSLogix-profil tárolójának ugyanabban az adatközpont-helyen kell lennie.
 - A fő lemezképet tartalmazó Storage-fióknak ugyanabban a régióban és előfizetésben kell lennie, ahol a virtuális gépek üzembe lettek kiépítve.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A következő útmutatók segítségével állíthatja be a Windows rendszerű virtuális asztali környezetet.
 
