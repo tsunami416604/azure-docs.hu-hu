@@ -14,10 +14,10 @@ ms.author: marsma
 ms.reviewer: saeeda
 ms.custom: aaddev, devx-track-python
 ms.openlocfilehash: 2d41b48613ef7ba883a6a51b0fa67407fb730719
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87846224"
 ---
 # <a name="logging-in-msal-applications"></a>MSAL-alkalmazások naplózása
@@ -48,10 +48,10 @@ Egy adott nyelv MSAL-naplózási adatainak megtekintéséhez válassza a nyelvé
 
 A 3. x MSAL a naplózás az alkalmazáson belül, a `.WithLogging` Builder módosító használatával van beállítva. Ez a metódus nem kötelező paramétereket vesz igénybe:
 
-- `Level`lehetővé teszi a kívánt naplózási szint eldöntését. A hibák beállítása csak hibaüzeneteket kap
-- `PiiLoggingEnabled`lehetővé teszi a személyes és szervezeti adatnaplózást, ha az igaz értékre van állítva. Alapértelmezés szerint ez hamis értékre van állítva, így az alkalmazás nem naplózza a személyes adatait.
-- `LogCallback`egy olyan delegált értékre van beállítva, amely a naplózást végzi. Ha `PiiLoggingEnabled` az értéke igaz, a metódus kétszer kapja meg az üzeneteket: egyszer a `containsPii` paraméter értéke false (hamis), az üzenet pedig személyes adatként nem, a paraméter pedig az `containsPii` igaz értékkel jelenik meg, és az üzenet személyes adatmennyiséget is tartalmazhat. Bizonyos esetekben (ha az üzenet nem tartalmaz személyes adatfájlokat), az üzenet ugyanaz lesz.
-- `DefaultLoggingEnabled`a platform alapértelmezett naplózásának engedélyezése. Alapértelmezés szerint hamis. Ha úgy állítja be az igaz értéket, hogy az asztali/UWP-alkalmazásokban az esemény-nyomkövetést használja, az iOS-és a logcat-NSLog az Androidon.
+- `Level` lehetővé teszi a kívánt naplózási szint eldöntését. A hibák beállítása csak hibaüzeneteket kap
+- `PiiLoggingEnabled` lehetővé teszi a személyes és szervezeti adatnaplózást, ha az igaz értékre van állítva. Alapértelmezés szerint ez hamis értékre van állítva, így az alkalmazás nem naplózza a személyes adatait.
+- `LogCallback` egy olyan delegált értékre van beállítva, amely a naplózást végzi. Ha `PiiLoggingEnabled` az értéke igaz, a metódus kétszer kapja meg az üzeneteket: egyszer a `containsPii` paraméter értéke false (hamis), az üzenet pedig személyes adatként nem, a paraméter pedig az `containsPii` igaz értékkel jelenik meg, és az üzenet személyes adatmennyiséget is tartalmazhat. Bizonyos esetekben (ha az üzenet nem tartalmaz személyes adatfájlokat), az üzenet ugyanaz lesz.
+- `DefaultLoggingEnabled` a platform alapértelmezett naplózásának engedélyezése. Alapértelmezés szerint hamis. Ha úgy állítja be az igaz értéket, hogy az asztali/UWP-alkalmazásokban az esemény-nyomkövetést használja, az iOS-és a logcat-NSLog az Androidon.
 
 ```csharp
 class Program
@@ -86,10 +86,10 @@ class Program
 
 Jelentkezzen be az alkalmazás létrehozásakor egy naplózási visszahívás létrehozásával. A visszahívás a következő paramétereket veszi figyelembe:
 
-- `tag`a könyvtár által visszahívásra átadott karakterlánc. A naplóbejegyzés társítva van, és a naplózási üzenetek rendezésére használható.
-- `logLevel`lehetővé teszi a kívánt naplózási szint eldöntését. A támogatott naplózási szintek a következők:,, `Error` `Warning` `Info` és `Verbose` .
-- `message`a naplóbejegyzés tartalma.
-- `containsPII`Megadja, hogy a rendszer naplózza-e a személyes vagy szervezeti adatüzeneteket tartalmazó üzeneteket. Alapértelmezés szerint ez hamis értékre van állítva, így az alkalmazás nem naplózza a személyes adatait. Ha `containsPII` `true` Ez a módszer, akkor a metódus kétszer fogja fogadni az üzeneteket: egyszer a (z) `containsPII` `false` és a személyes adatként megadott paraméterrel `message` , és egy második alkalommal, amelynél a `containsPii` paraméter be van állítva, `true` és az üzenet személyes adattal is rendelkezhet. Bizonyos esetekben (ha az üzenet nem tartalmaz személyes adatfájlokat), az üzenet ugyanaz lesz.
+- `tag` a könyvtár által visszahívásra átadott karakterlánc. A naplóbejegyzés társítva van, és a naplózási üzenetek rendezésére használható.
+- `logLevel` lehetővé teszi a kívánt naplózási szint eldöntését. A támogatott naplózási szintek a következők:,, `Error` `Warning` `Info` és `Verbose` .
+- `message` a naplóbejegyzés tartalma.
+- `containsPII` Megadja, hogy a rendszer naplózza-e a személyes vagy szervezeti adatüzeneteket tartalmazó üzeneteket. Alapértelmezés szerint ez hamis értékre van állítva, így az alkalmazás nem naplózza a személyes adatait. Ha `containsPII` `true` Ez a módszer, akkor a metódus kétszer fogja fogadni az üzeneteket: egyszer a (z) `containsPII` `false` és a személyes adatként megadott paraméterrel `message` , és egy második alkalommal, amelynél a `containsPii` paraméter be van állítva, `true` és az üzenet személyes adattal is rendelkezhet. Bizonyos esetekben (ha az üzenet nem tartalmaz személyes adatfájlokat), az üzenet ugyanaz lesz.
 
 ```java
 private StringBuilder mLogs;
@@ -129,9 +129,9 @@ Logger.getInstance().setEnableLogcatLog(true);
  Az MSAL.js (JavaScript) naplózásának engedélyezése egy naplózó objektum átadásával a konfiguráció során egy példány létrehozásához `UserAgentApplication` . Ez a naplózó objektum a következő tulajdonságokkal rendelkezik:
 
 - `localCallback`: egy visszahívási példány, amelyet a fejlesztő biztosíthat a naplók egyéni módon történő felhasználásához és közzétételéhez. A localCallback metódus implementálása attól függően, hogy hogyan szeretné átirányítani a naplókat.
-- `level`(nem kötelező): a konfigurálható naplózási szint. A támogatott naplózási szintek a következők:,, `Error` `Warning` `Info` és `Verbose` . A mező alapértelmezett értéke: `Info`.
-- `piiLoggingEnabled`(nem kötelező): ha igaz értékre van állítva, a személyes és szervezeti adatnaplókat naplózza. Alapértelmezés szerint ez hamis, így az alkalmazás nem naplózza a személyes adatait. A személyes adatnaplókat soha nem írja az alapértelmezett kimenetekre, például a konzolra, a Logcat vagy a NSLog.
-- `correlationId`(nem kötelező): egyedi azonosító, amely a kérésnek a hibakeresési célú hozzárendelésére szolgál. Az alapértelmezett érték a RFC4122 4-es verziójának GUID-azonosítója (128 bit).
+- `level` (nem kötelező): a konfigurálható naplózási szint. A támogatott naplózási szintek a következők:,, `Error` `Warning` `Info` és `Verbose` . A mező alapértelmezett értéke: `Info`.
+- `piiLoggingEnabled` (nem kötelező): ha igaz értékre van állítva, a személyes és szervezeti adatnaplókat naplózza. Alapértelmezés szerint ez hamis, így az alkalmazás nem naplózza a személyes adatait. A személyes adatnaplókat soha nem írja az alapértelmezett kimenetekre, például a konzolra, a Logcat vagy a NSLog.
+- `correlationId` (nem kötelező): egyedi azonosító, amely a kérésnek a hibakeresési célú hozzárendelésére szolgál. Az alapértelmezett érték a RFC4122 4-es verziójának GUID-azonosítója (128 bit).
 
 ```javascript
 function loggerCallback(logLevel, message, containsPii) {
@@ -177,7 +177,7 @@ var UserAgentApplication = new Msal.UserAgentApplication(msalConfig);
 typedef void (^MSALLogCallback)(MSALLogLevel level, NSString *message, BOOL containsPII);
 ```
 
-Például:
+Példa:
 
 ```objc
 [MSALGlobalConfig.loggerConfig setLogCallback:^(MSALLogLevel level, NSString *message, BOOL containsPII)
@@ -218,7 +218,7 @@ Ha az iOS-es és macOS-es MSAL használatával jelentkezik be, a naplózási szi
 | `MSALLogLevelInfo` |  A könyvtár belépési pontjai, paraméterekkel és különböző kulcstartó műveletekkel |
 |`MSALLogLevelVerbose`     |  API-nyomkövetés |
 
-Például:
+Példa:
 
 ```objc
 MSALGlobalConfig.loggerConfig.logLevel = MSALLogLevelVerbose;
@@ -226,9 +226,9 @@ MSALGlobalConfig.loggerConfig.logLevel = MSALLogLevelVerbose;
 
  ### <a name="log-message-format"></a>Napló üzenetének formátuma
 
-A MSAL üzenetek része a következő formátumú:`TID = <thread_id> MSAL <sdk_ver> <OS> <OS_ver> [timestamp - correlation_id] message`
+A MSAL üzenetek része a következő formátumú: `TID = <thread_id> MSAL <sdk_ver> <OS> <OS_ver> [timestamp - correlation_id] message`
 
-Például:
+Példa:
 
 `TID = 551563 MSAL 0.2.0 iOS Sim 12.0 [2018-09-24 00:36:38 - 36764181-EF53-4E4E-B3E5-16FE362CFC44] acquireToken returning with error: (MSALErrorDomain, -42400) User cancelled the authorization session.`
 
@@ -255,7 +255,7 @@ A korrelációs azonosítók és időbélyegek megadása a problémák nyomon k�
 typedef void (^MSALLogCallback)(MSALLogLevel level, NSString *message, BOOL containsPII);
 ```
 
-Például:
+Példa:
 
 ```swift
 MSALGlobalConfig.loggerConfig.setLogCallback { (level, message, containsPII) in
@@ -295,7 +295,7 @@ Ha az iOS-es és macOS-es MSAL használatával jelentkezik be, a naplózási szi
 | `MSALLogLevelInfo` |  A könyvtár belépési pontjai, paraméterekkel és különböző kulcstartó műveletekkel |
 |`MSALLogLevelVerbose`     |  API-nyomkövetés |
 
-Például:
+Példa:
 
 ```swift
 MSALGlobalConfig.loggerConfig.logLevel = .verbose
@@ -303,9 +303,9 @@ MSALGlobalConfig.loggerConfig.logLevel = .verbose
 
 ### <a name="log-message-format"></a>Napló üzenetének formátuma
 
-A MSAL üzenetek része a következő formátumú:`TID = <thread_id> MSAL <sdk_ver> <OS> <OS_ver> [timestamp - correlation_id] message`
+A MSAL üzenetek része a következő formátumú: `TID = <thread_id> MSAL <sdk_ver> <OS> <OS_ver> [timestamp - correlation_id] message`
 
-Például:
+Példa:
 
 `TID = 551563 MSAL 0.2.0 iOS Sim 12.0 [2018-09-24 00:36:38 - 36764181-EF53-4E4E-B3E5-16FE362CFC44] acquireToken returning with error: (MSALErrorDomain, -42400) User cancelled the authorization session.`
 
@@ -389,6 +389,6 @@ A MSAL for Python nem naplózza a személyes és a szervezeti adatszolgáltatás
 
 A standard Python-naplózással bármit naplózhat, amit csak szeretne, de Ön felelős a bizalmas adatok biztonságos kezeléséhez és a szabályozási követelmények követéséhez.
 
-A Pythonban történő naplózással kapcsolatos további információkért tekintse meg a Python [naplózási](https://docs.python.org/3/howto/logging.html#logging-basic-tutorial)útmutatóit.
+A Pythonban történő naplózással kapcsolatos további információkért tekintse meg a Python  [naplózási](https://docs.python.org/3/howto/logging.html#logging-basic-tutorial)útmutatóit.
 
 ---

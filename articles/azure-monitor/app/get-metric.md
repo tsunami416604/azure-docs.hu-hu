@@ -1,5 +1,5 @@
 ---
-title: Get-metrika Azure Monitor Application Insights
+title: Get-Metric Azure Monitor Application Insights
 description: Ismerje meg, hogy a GetMetric () hívásával hogyan rögzíthet helyileg előre összevont mérőszámokat a .NET-és .NET Core-alkalmazásokhoz Azure Monitor Application Insights
 ms.service: azure-monitor
 ms.subservice: application-insights
@@ -8,19 +8,19 @@ author: mrbullwinkle
 ms.author: mbullwin
 ms.date: 04/28/2020
 ms.openlocfilehash: 7aacb951d449583c875c71f260957a9d3bc8c663
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86517144"
 ---
 # <a name="custom-metric-collection-in-net-and-net-core"></a>Egyéni metrika-gyűjtemény a .NET-ben és a .NET Core-ban
 
-Az Azure Monitor Application Insights .NET-és .NET Core SDK-k két különböző módszerrel gyűjthetik össze az egyéni metrikákat, `TrackMetric()` és `GetMetric()` . A két módszer közötti fő különbség a helyi összesítés. `TrackMetric()`hiányzik az előzetes összesítés `GetMetric()` , miközben az összesítése már megtörtént. Az ajánlott módszer az Összesítés használata, ezért már `TrackMetric()` nem az egyéni metrikák gyűjtésének előnyben részesített módja. Ez a cikk végigvezeti a GetMetric () metódus használatával, valamint a működésének indoklásával.
+Az Azure Monitor Application Insights .NET-és .NET Core SDK-k két különböző módszerrel gyűjthetik össze az egyéni metrikákat, `TrackMetric()` és `GetMetric()` . A két módszer közötti fő különbség a helyi összesítés. `TrackMetric()` hiányzik az előzetes összesítés `GetMetric()` , miközben az összesítése már megtörtént. Az ajánlott módszer az Összesítés használata, ezért már `TrackMetric()` nem az egyéni metrikák gyűjtésének előnyben részesített módja. Ez a cikk végigvezeti a GetMetric () metódus használatával, valamint a működésének indoklásával.
 
 ## <a name="trackmetric-versus-getmetric"></a>TrackMetric versus GetMetric
 
-`TrackMetric()`egy mérőszámot jelölő nyers telemetria küld. Nem hatékony egyetlen telemetria-elem küldése minden értékhez. `TrackMetric()`a teljesítmény szempontjából nem hatékony, mivel minden `TrackMetric(item)` a telemetria inicializálók és processzorok teljes SDK-folyamatán keresztül halad. `TrackMetric()`A-től eltérően `GetMetric()` a a helyi összesítést kezeli, és ezt követően csak egy perc rögzített intervallumában küldi el az összesített összefoglaló metrikát. Tehát ha a második vagy akár az ezredmásodperc szintjén is figyelnie kell néhány egyéni metrikát, akkor a tárolási és hálózati forgalmi költségek csak percenkénti figyeléssel járnak. Ez jelentősen csökkenti a szabályozás kockázatát is, mivel az összesített metrika számára küldendő telemetria elemek teljes száma jelentősen csökken.
+`TrackMetric()` egy mérőszámot jelölő nyers telemetria küld. Nem hatékony egyetlen telemetria-elem küldése minden értékhez. `TrackMetric()` a teljesítmény szempontjából nem hatékony, mivel minden `TrackMetric(item)` a telemetria inicializálók és processzorok teljes SDK-folyamatán keresztül halad. `TrackMetric()`A-től eltérően `GetMetric()` a a helyi összesítést kezeli, és ezt követően csak egy perc rögzített intervallumában küldi el az összesített összefoglaló metrikát. Tehát ha a második vagy akár az ezredmásodperc szintjén is figyelnie kell néhány egyéni metrikát, akkor a tárolási és hálózati forgalmi költségek csak percenkénti figyeléssel járnak. Ez jelentősen csökkenti a szabályozás kockázatát is, mivel az összesített metrika számára küldendő telemetria elemek teljes száma jelentősen csökken.
 
 Application Insights a-n keresztül gyűjtött egyéni metrikák `TrackMetric()` `GetMetric()` nem tartoznak a [mintavételezésbe](./sampling.md). A mintavétel fontos mérőszámai olyan forgatókönyvekhez vezethetnek, amelyekben előfordulhat, hogy a metrikák körére épülő riasztások megbízhatatlanok lehetnek. Az egyéni mérőszámok soha nem mintavételezésével általában biztos lehet abban, hogy a riasztási küszöbértékek megszegése esetén a riasztás tüzet fog okozni.  Mivel azonban az egyéni metrikák nem mintául szolgálnak, néhány lehetséges probléma van.
 
@@ -285,9 +285,9 @@ computersSold.TrackValue(100, "Dim1Value1", "Dim2Value3");
 // The above call does not track the metric, and returns false.
 ```
 
-* `seriesCountLimit`a metrika által tartalmazott adatsorozatok maximális száma. Ha elérte ezt a korlátot, a meghívja a következőt: `TrackValue()` .
-* `valuesPerDimensionLimit`a dimenziók eltérő értékeinek megkorlátja hasonló módon.
-* `restrictToUInt32Values`meghatározza, hogy a nem negatív egész értékeket kell-e követni.
+* `seriesCountLimit` a metrika által tartalmazott adatsorozatok maximális száma. Ha elérte ezt a korlátot, a meghívja a következőt: `TrackValue()` .
+* `valuesPerDimensionLimit` a dimenziók eltérő értékeinek megkorlátja hasonló módon.
+* `restrictToUInt32Values` meghatározza, hogy a nem negatív egész értékeket kell-e követni.
 
 Íme egy példa arra, hogyan lehet üzenetet küldeni, ha túllépi a felső korlátot:
 
@@ -300,7 +300,7 @@ SeverityLevel.Error);
 }
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [További ](./worker-service.md)információ a Worker Service-alkalmazások figyeléséről.
 * További részletek a [naplózási és előre összesített metrikákkal](./pre-aggregated-metrics-log-metrics.md)kapcsolatban.

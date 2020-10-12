@@ -5,10 +5,10 @@ ms.subservice: alerts
 ms.topic: conceptual
 ms.date: 09/17/2018
 ms.openlocfilehash: 7ed73678e0df1e068782c2a094846132be58cfe2
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86516124"
 ---
 # <a name="alerts-on-activity-log"></a>Tevékenységnaplóval kapcsolatos riasztások
@@ -40,7 +40,7 @@ A műveletnapló riasztásai néhány gyakori lehetőséggel rendelkeznek:
     - Előfizetési szint: például az előfizetésben lévő összes virtuális gép (vagy) az előfizetés összes erőforrása
 - **Erőforráscsoport**: alapértelmezés szerint a rendszer a riasztási szabályt a hatókörben definiált célként megadott erőforrás-csoportba menti. A felhasználó megadhatja azt az erőforráscsoportot is, amelyben a riasztási szabályt tárolni szeretné.
 - **Erőforrás típusa**: erőforrás-kezelő által definiált névtér a riasztás céljához.
-- **Művelet neve**: a [Azure Resource Manager művelet](../../role-based-access-control/resource-provider-operations.md) neve a szerepköralapú Access Controlhoz. A Azure Resource Managerban nem regisztrált műveletek nem használhatók a műveletnapló riasztási szabályaiban.
+- **Művelet neve**: a [Azure Resource Manager művelet](../../role-based-access-control/resource-provider-operations.md) neve Role-Based Access Control. A Azure Resource Managerban nem regisztrált műveletek nem használhatók a műveletnapló riasztási szabályaiban.
 - **Szint**: az esemény súlyossági szintje (tájékoztató, figyelmeztetés, hiba vagy kritikus).
 - **Állapot**: az esemény állapota, általában elindítva, sikertelen, vagy sikeres.
 - A (z) **által kezdeményezett esemény**, más néven "hívó". A műveletet végrehajtó felhasználó e-mail-címe vagy Azure Active Directory azonosítója.
@@ -56,7 +56,7 @@ Ha egy műveletnapló-riasztás aktiválva van, a műveletek vagy értesítések
 A műveleti csoportokkal kapcsolatos további információkért lásd: [műveleti csoportok létrehozása és kezelése a Azure Portalban](action-groups.md).
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - [A riasztások áttekintése](alerts-overview.md).
 - Tudnivalók a [műveletnapló-riasztások létrehozásáról és módosításáról](alerts-activity-log.md).

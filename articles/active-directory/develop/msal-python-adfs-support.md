@@ -14,10 +14,10 @@ ms.author: abpati
 ms.reviewer: nacanuma
 ms.custom: aaddev, devx-track-python
 ms.openlocfilehash: ad874a4b117b7a7ccecea0e1800ca18c6fce8aaa
-ms.sourcegitcommit: 7fe8df79526a0067be4651ce6fa96fa9d4f21355
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87846207"
 ---
 # <a name="active-directory-federation-services-support-in-msal-for-python"></a>Active Directory összevonási szolgáltatások (AD FS) támogatás a MSAL for Pythonban
@@ -53,7 +53,7 @@ Ha a használatával szerez be tokent, a MSAL Python beolvassa `acquire_token_by
 
 ## <a name="connecting-directly-to-ad-fs"></a>Közvetlen csatlakozás AD FS
 
-Ha a címtárat a AD FShoz kapcsolódik, az alkalmazás létrehozásához használni kívánt szolgáltató a következőhöz hasonló lesz:`https://somesite.contoso.com/adfs/`
+Ha a címtárat a AD FShoz kapcsolódik, az alkalmazás létrehozásához használni kívánt szolgáltató a következőhöz hasonló lesz: `https://somesite.contoso.com/adfs/`
 
 A MSAL Python az ADFS 2019-et támogatja.
 

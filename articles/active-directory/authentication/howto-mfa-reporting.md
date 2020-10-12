@@ -13,10 +13,10 @@ ms.reviewer: michmcla
 ms.collection: M365-identity-device-management
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: 6bc07dc4a46327981c432cf8982f0c3a646fda0d
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89068915"
 ---
 # <a name="use-the-sign-ins-report-to-review-azure-multi-factor-authentication-events"></a>A bejelentkezések jelentés használata az Azure Multi-Factor Authentication eseményeinek áttekintéséhez
@@ -127,7 +127,7 @@ Az alábbi táblázat segítséget nyújt az események hibaelhárításához az
 |SUCCESS_NO_PIN_BUT_TIMEOUT | Nincs telefonos bemenet – időtúllépés | A hívást megválaszolták, de nem volt válasz. Ez általában azt jelzi, hogy a hívást a hangposta vette át. |
 | SUCCESS_PIN_EXPIRED | A PIN-kód lejárt és nem változott | A felhasználó PIN-kódja lejárt, és a rendszer megkéri, hogy módosítsa, de a PIN-kód módosítása nem fejeződött be sikeresen. |
 | SUCCESS_USED_CACHE | Használt gyorsítótár | A hitelesítés Multi-Factor Authentication hívás nélkül sikerült, mert egy korábbi sikeres hitelesítés ugyanahhoz a felhasználónévhez a beállított gyorsítótár időkeretén belül történt. |
-| SUCCESS_BYPASSED_AUTH | Kihagyott hitelesítés | A hitelesítés sikeres volt a felhasználó számára indított egyszeri Mellőzés használatával. A mellőzéssel kapcsolatos további részletekért tekintse meg a felhasználói előzmények megkerülő jelentést. |
+| SUCCESS_BYPASSED_AUTH | Kihagyott hitelesítés | A hitelesítés sikeres volt a felhasználó számára kezdeményezett One-Time megkerülés használatával. A mellőzéssel kapcsolatos további részletekért tekintse meg a felhasználói előzmények megkerülő jelentést. |
 | SUCCESS_USED_IP_BASED_CACHE | Használt IP-alapú gyorsítótár | A hitelesítés Multi-Factor Authentication hívás nélkül sikeres volt, mert az előző sikeres hitelesítés ugyanarra a felhasználónévre, hitelesítési típusra, alkalmazás nevére és IP-re történt a beállított gyorsítótári időkereten belül. |
 | SUCCESS_USED_APP_BASED_CACHE | Alkalmazás-alapú gyorsítótár használatban | A hitelesítés Multi-Factor Authentication hívás nélkül sikeres volt, mert egy korábbi sikeres hitelesítés történt ugyanazzal a felhasználónévvel, hitelesítési típussal és alkalmazás nevével a beállított gyorsítótár időkeretén belül. |
 | SUCCESS_INVALID_INPUT | Érvénytelen telefonos bevitel | A telefonról küldött válasz érvénytelen. Ez lehet egy faxkészülék vagy modem, vagy előfordulhat, hogy a felhasználó a PIN-kód részeként megadta a t. |

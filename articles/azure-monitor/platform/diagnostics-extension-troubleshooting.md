@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 05/08/2019
 ms.openlocfilehash: de42a70cf2950aca3dbe151407671306c793ed10
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86515495"
 ---
 # <a name="azure-diagnostics-troubleshooting"></a>Az Azure Diagnostics hibaelhárítása
@@ -37,7 +37,7 @@ A következő néhány fontos napló és összetevő elérési útja. Ezt az inf
 | **A log Collection segédprogram elérési útja** | %SystemDrive%\Packages\GuestAgent\ |
 | **MonAgentHost naplófájl** | C:\Resources\Directory \<CloudServiceDeploymentID> . \<RoleName> . DiagnosticStore\WAD0107\Configuration\MonAgentHost. <seq_num>. log |
 
-### <a name="virtual-machines"></a>Virtuális gépek
+### <a name="virtual-machines"></a>Virtual machines (Virtuális gépek)
 | Összetevő | Elérési út |
 | --- | --- |
 | **Azure Diagnostics konfigurációs fájl** | C:\Packages\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics \<version> \RuntimeSettings |
@@ -49,7 +49,7 @@ A következő néhány fontos napló és összetevő elérési útja. Ezt az inf
 | **A log Collection segédprogram elérési útja** | C:\WindowsAzure\Logs\WaAppAgent.log |
 | **MonAgentHost naplófájl** | C:\WindowsAzure\Logs\Plugins\Microsoft.Azure.Diagnostics.IaaSDiagnostics \<DiagnosticsVersion> \WAD0107\Configuration\MonAgentHost. <seq_num>. log |
 
-## <a name="metric-data-doesnt-appear-in-the-azure-portal"></a>A metrikus adatok nem jelennek meg a Azure Portal
+## <a name="metric-data-doesnt-appear-in-the-azure-portal"></a>A metrikaadatok nem jelennek meg az Azure Portalon
 A Azure Diagnostics a Azure Portal megjeleníthető metrikai adatokat biztosít. Ha problémába ütközik a portálon található adatokkal kapcsolatban, tekintse meg a \* Azure Diagnostics Storage-fiók WADMetrics táblázatát, és ellenőrizze, hogy a megfelelő metrikai rekordok léteznek-e, és győződjön meg arról, hogy az [erőforrás-szolgáltató](../../azure-resource-manager/management/resource-providers-and-types.md) Microsoft. az elemzések regisztrálva vannak.
 
 Itt a tábla **PartitionKey** az erőforrás-azonosító, a virtuális gép vagy a virtuálisgép-méretezési csoport. A **RowKey** a metrika neve (más néven a teljesítményszámláló neve).
@@ -79,7 +79,7 @@ Ha az adott metrika nem tartalmaz adatokat, a **diagnosztikai konfiguráció**  
 Ha a konfiguráció helyesen van beállítva, de továbbra sem látja a metrikai adatokat, a következő irányelvek segítséget nyújtanak a hibakereséshez.
 
 
-## <a name="azure-diagnostics-is-not-starting"></a>Azure Diagnostics nem indul el
+## <a name="azure-diagnostics-is-not-starting"></a>Az Azure Diagnostics nem indul el
 Arról, hogy miért nem sikerült elindítani a Azure Diagnosticst, tekintse meg a **DiagnosticsPluginLauncher. log** és a **DiagnosticsPlugin. log** fájlt a korábban megadott naplófájlok helyén.
 
 Ha ezek a naplók azt jelzik `Monitoring Agent not reporting success after launch` , hogy hiba történt a MonAgentHost.exe elindítása közben. Tekintse meg az előző szakaszban jelzett helyen található naplókat `MonAgentHost log file` .
@@ -91,7 +91,7 @@ DiagnosticsPluginLauncher.exe Information: 0 : [4/16/2016 6:24:15 AM] Diagnostic
 ```
 Ha **negatív** kilépési kódot talál, tekintse meg a [kilépési kód táblát](#azure-diagnostics-plugin-exit-codes) a [hivatkozások szakaszban](#references).
 
-## <a name="diagnostics-data-is-not-logged-to-azure-storage"></a>A diagnosztikai adatait nem naplózza az Azure Storage
+## <a name="diagnostics-data-is-not-logged-to-azure-storage"></a>A diagnosztikai adatok nincsenek naplózva az Azure Storage-ban
 Annak megállapítása, hogy egyik adathalmaz sem jelenik-e meg, vagy egy adott adathalmaz.
 
 ### <a name="diagnostics-infrastructure-logs"></a>Diagnosztikai infrastruktúra naplói
@@ -151,7 +151,7 @@ Ha ellenőrizte, hogy az adatai helyileg vannak rögzítve, de még mindig nem l
 ### <a name="capturing-and-archiving-logs"></a>Naplók rögzítése és archiválása
 Ha úgy gondolja, hogy felveszi a kapcsolatot a támogatási szolgálattal, az első dolog, hogy megkérdezzük a naplók begyűjtését a gépről. Időt takaríthat meg. Futtassa a `CollectGuestLogs.exe` segédprogramot a log Collection segédprogram elérési útján. Létrehoz egy. zip fájlt, amely az összes kapcsolódó Azure-naplóval azonos mappában található.
 
-## <a name="diagnostics-data-tables-not-found"></a>A diagnosztikai adattáblák nem találhatók
+## <a name="diagnostics-data-tables-not-found"></a>Nem találhatóak a diagnosztikai adattáblák
 A ETW-eseményeket tároló Azure Storage-táblákat a következő kód alapján nevezi el:
 
 ```csharp
@@ -283,7 +283,7 @@ A Windows Azure Diagnostics-bővítmény futásidejű függőséggel rendelkezik
 
 Ha olyan gépen próbál Windows Azure Diagnostics-bővítményt futtatni, amely nem rendelkezik .NET 4,5-es vagy újabb verzióval, továbbra is lehetséges. Ez akkor történik meg, amikor egy régi rendszerképből vagy pillanatképből hozza létre a gépet, vagy ha saját egyéni lemezt használ.
 
-Ez általában a **255** -es kilépési kód, amelyDiagnosticsPluginLauncher.exe futtatásakor jelentkezik **.** A hiba a következő kezeletlen kivétel miatt fordul elő:
+Ez általában a **255** -es kilépési kód, amelyDiagnosticsPluginLauncher.exe futtatásakor jelentkezik ** .** A hiba a következő kezeletlen kivétel miatt fordul elő:
 ```
 System.IO.FileLoadException: Could not load file or assembly 'System.Threading.Tasks, Version=1.5.11.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a' or one of its dependencies
 ```

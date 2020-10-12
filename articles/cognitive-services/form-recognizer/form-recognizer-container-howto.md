@@ -11,10 +11,10 @@ ms.date: 07/14/2020
 ms.author: aahi
 ms.custom: devx-track-csharp
 ms.openlocfilehash: e4e85de2fad5c08f296d8089f48fa8614f7f1739
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88925181"
 ---
 # <a name="install-and-run-form-recognizer-containers-preview"></a>Űrlap-felismerő tárolók telepítése és futtatása (előzetes verzió)
@@ -73,7 +73,7 @@ Ez a kulcs a tároló elindítására szolgál, és a megfelelő kognitív szolg
 
 A következő táblázat ismerteti az egyes űrlap-felismerő tárolók lefoglalásához szükséges minimális és ajánlott CPU-magokat és memóriát:
 
-| Tároló | Minimum | Ajánlott |
+| Tároló | Minimális | Ajánlott |
 |-----------|---------|-------------|
 | Form Recognizer | 2 mag, 4 GB memória | 4 mag, 8 GB memória |
 | szövegfelismerés | 1 mag, 8 GB memória | 2 mag, 8 GB memória |
@@ -333,7 +333,7 @@ Ebben a cikkben megtanulta az űrlap-felismerő tárolók letöltésére, telep�
 > [!IMPORTANT]
 >  Cognitive Services tárolók nem futtathatók az Azure-hoz való csatlakozás nélkül. Az ügyfeleknek engedélyeznie kell, hogy a tárolók a számlázási adatokat mindig a mérési szolgáltatással kommunikáljanak. Cognitive Services tárolók nem küldenek ügyféladatokat (például az elemzett képet vagy szöveget) a Microsoftnak.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * Tekintse át a [tárolók konfigurálása](form-recognizer-container-configuration.md) konfigurációs beállításokat.
 * Használjon további [Cognitive Services tárolókat](../cognitive-services-container-support.md).

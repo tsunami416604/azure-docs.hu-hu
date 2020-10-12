@@ -4,10 +4,10 @@ description: Az ausztrál kormány és a védett tervekhez tartozó ISM-minta ho
 ms.date: 09/11/2020
 ms.topic: sample
 ms.openlocfilehash: 605e92b75da1e5363884fc6ef9457251cfbc6e4e
-ms.sourcegitcommit: 3fc3457b5a6d5773323237f6a06ccfb6955bfb2d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90030106"
 ---
 # <a name="control-mapping-of-the-australian-government-ism-protected-blueprint-sample"></a>Az Australian Government által védett tervezetek mintájának vezérlése
@@ -33,7 +33,7 @@ Ez a terv segítséget nyújt az összes erőforrás és erőforráscsoport köz
 ### <a name="0414-personnel-granted-access-to-a-system-and-its-resources-are-uniquely-identifiable"></a>0414 a személyzet egy rendszerhez és erőforrásaihoz való hozzáférése egyedi módon azonosítható
 
 - Az MFA-t engedélyezni kell az előfizetéshez tartozó tulajdonosi engedélyekkel rendelkező fiókokon
-- Az MFA-nak engedélyezve kell lennie az előfizetéséhez tartozó írási engedélyekkel rendelkező fiókoknak
+- Az MFA-t engedélyezni kell az előfizetés minden írási engedéllyel rendelkező fiókjában
 - Az MFA-t engedélyezni kell az előfizetésre vonatkozó olvasási engedéllyel rendelkező fiókokon
 
 ### <a name="1503-standard-access-to-systems-applications-and-data-repositories-is-limited-to-that-required-for-personnel-to-undertake-their-duties"></a>1503 a rendszerekhez, alkalmazásokhoz és adattárakhoz való szabványos hozzáférés arra korlátozódik, hogy a személyzet köteles felvenni feladataikat
@@ -118,7 +118,7 @@ Ez a terv segítséget nyújt az összes erőforrás és erőforráscsoport köz
 ### <a name="1173-multi-factor-authentication-is-used-to-authenticate-all-privileged-users-and-any-other-positions-of-trust"></a>1173 a többtényezős hitelesítés az összes Kiemelt felhasználó és bármely más megbízhatósági kapcsolat hitelesítésére szolgál
 
 - Az MFA-t engedélyezni kell az előfizetéshez tartozó tulajdonosi engedélyekkel rendelkező fiókokon
-- Az MFA-nak engedélyezve kell lennie az előfizetéséhez tartozó írási engedélyekkel rendelkező fiókoknak
+- Az MFA-t engedélyezni kell az előfizetés minden írási engedéllyel rendelkező fiókjában
 
 ### <a name="0421-passphrases-used-for-single-factor-authentication-are-a-minimum-of-14-characters-with-complexity-ideally-as-4-random-words"></a>0421 az egytényezős hitelesítéshez használt hozzáférési kódok legalább 14 karakterből állnak, és ideális esetben 4 véletlenszerű kifejezéssel rendelkeznek
 
@@ -130,7 +130,7 @@ Ez a terv segítséget nyújt az összes erőforrás és erőforráscsoport köz
 ### <a name="1384-multi-factor-authentication-is-used-to-authenticate-users-each-time-they-perform-privileged-actions"></a>1384 a többtényezős hitelesítés a felhasználók hitelesítésére szolgál minden alkalommal, amikor Kiemelt műveleteket végeznek
 
 - Az MFA-t engedélyezni kell az előfizetéshez tartozó tulajdonosi engedélyekkel rendelkező fiókokon
-- Az MFA-nak engedélyezve kell lennie az előfizetéséhez tartozó írási engedélyekkel rendelkező fiókoknak
+- Az MFA-t engedélyezni kell az előfizetés minden írási engedéllyel rendelkező fiókjában
 - Az MFA-t engedélyezni kell az előfizetésre vonatkozó olvasási engedéllyel rendelkező fiókokon
 
 ### <a name="1386-management-traffic-is-only-allowed-to-originate-from-network-zones-that-are-used-to-administer-systems-and-applications"></a>1386 a felügyeleti forgalom csak a rendszerek és alkalmazások felügyeletéhez használt hálózati zónákból lehetséges.
@@ -347,7 +347,7 @@ Ez a terv segítséget nyújt az összes erőforrás és erőforráscsoport köz
 > [!NOTE]
 > Az adott Azure Policy-definíciók rendelkezésre állása Azure Government és más nemzeti felhőkben is változhat. 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 További cikkek a tervekről és a használatukról:
 

@@ -10,13 +10,13 @@ ms.service: iot-pnp
 services: iot-pnp
 manager: peterpr
 ms.openlocfilehash: 20c4452a32c791f33e08c883d8cec89a345ab188
-ms.sourcegitcommit: 46f8457ccb224eb000799ec81ed5b3ea93a6f06f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87352284"
 ---
-# <a name="understand-the-digital-twins-model-parser"></a>A digitális Twins modell elemző ismertetése
+# <a name="understand-the-digital-twins-model-parser"></a>A Digital Twins modellelemző megismerése
 
 A digitális ikrek definíciós nyelvét (DTDL) a [DTDL-specifikáció](https://github.com/Azure/opendigitaltwins-dtdl)írja le. A felhasználók a _digitális Twins Model Parser_ NuGet-csomagot használva ellenőrizhetik és lekérhetik a több fájlban definiált modelleket.
 
@@ -92,6 +92,6 @@ Az érvényesíteni kívánt modell a JSON-fájlokban leírt egy vagy több csat
     }
     ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A cikkben áttekintett Model Parser API számos forgatókönyvet tesz lehetővé a DTDL-modelltől függő feladatok automatizálásához és érvényesítéséhez. Például dinamikusan hozhat létre felhasználói felületet a modellben található információk alapján.

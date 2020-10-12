@@ -10,10 +10,10 @@ ms.workload: infrastructure
 ms.date: 10/23/2019
 ms.author: haroldw
 ms.openlocfilehash: 68bd748e890659e4b79d76e4ccab038f251a937a
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87368183"
 ---
 # <a name="common-prerequisites-for-deploying-openshift-container-platform-311-in-azure"></a>A OpenShift Container platform 3,11 Azure-beli üzembe helyezésének gyakori előfeltételei
@@ -163,7 +163,7 @@ Hozza létre a titkokat az Azure CLI használatával. Alább látható egy péld
 az keyvault secret set --vault-name KeyVaultName -n mastercafile --file ~/certificates/masterca.pem
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ez a cikk a következő témákat tárgyalta:
 > [!div class="checklist"]
@@ -173,4 +173,4 @@ Ez a cikk a következő témákat tárgyalta:
 Következő lépésként helyezzen üzembe egy OpenShift-fürtöt:
 
 - [OpenShift-tároló platform üzembe helyezése](./openshift-container-platform-3x.md)
-- [A OpenShift-tároló platform saját üzemeltetésű Piactéri ajánlatának üzembe helyezése](./openshift-container-platform-3x-marketplace-self-managed.md)
+- [OpenShift-tároló platform Self-Managed Marketplace-ajánlat üzembe helyezése](./openshift-container-platform-3x-marketplace-self-managed.md)

@@ -11,10 +11,10 @@ author: peterclu
 ms.date: 06/28/2020
 ms.custom: designer
 ms.openlocfilehash: c92351131a60b571a102b85f7d11b79ab29d939e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90883121"
 ---
 # <a name="what-is-azure-machine-learning-designer"></a>Mi az Azure Machine Learning Designer? 
@@ -26,7 +26,7 @@ A Azure Machine Learning Designer lehetővé teszi, hogy vizuálisan összekapcs
 
 A tervező a Azure Machine Learning [munkaterületet](concept-workspace.md) használja a megosztott erőforrások rendszerezéséhez, például:
 
-+ [Pipelines](#pipeline)
++ [Folyamatok](#pipeline)
 + [Adatkészletek](#datasets)
 + [Számítási erőforrások](#compute)
 + [Regisztrált modellek](concept-azure-machine-learning-architecture.md#models)
@@ -90,7 +90,7 @@ Ha segítségre van az elérhető gépi tanulási algoritmusok könyvtárában, 
 
 A munkaterületen lévő számítási erőforrások használatával futtathatja a folyamatot, és üzemeltetheti a telepített modelleket valós idejű végpontok vagy folyamat-végpontok (a Batch-következtetések esetében). A támogatott számítási célok a következők:
 
-| Számítási cél | Képzés | Üzembe helyezés |
+| Számítási cél | Oktatás | Üzembe helyezés |
 | ---- |:----:|:----:|
 | Azure Machine Learning számítás | ✓ | |
 | Azure Machine Learning számítási példány | ✓ | |

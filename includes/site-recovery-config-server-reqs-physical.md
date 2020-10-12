@@ -10,10 +10,10 @@ ms.date: 09/03/2018
 ms.author: raynew
 ms.custom: include file
 ms.openlocfilehash: afeae4af9b41bf434b26833a3bd927118a4697ae
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "67179345"
 ---
 **A fizikai kiszolgálók replikálásához szükséges konfiguráció/folyamat kiszolgálói követelmények**
@@ -37,14 +37,14 @@ IP-cím típusa | Statikus
 | 
 **HOZZÁFÉRÉSI BEÁLLÍTÁSOK** | 
 MYSQL | A MySQL-t telepíteni kell a konfigurációs kiszolgálóra. Manuálisan is telepítheti, vagy Site Recovery telepítheti az üzembe helyezés során. Site Recovery a telepítéshez győződjön meg arról, hogy a gép el tudja érni http://cdn.mysql.com/archives/mysql-5.5/mysql-5.5.37-win32.msi .
-URL-címek | A konfigurációs kiszolgálónak hozzá kell férnie ezekhez az URL-címekhez (közvetlenül vagy proxyn keresztül):<br/><br/> Azure AD: `login.microsoftonline.com` ; `login.microsoftonline.us` ;`*.accesscontrol.windows.net`<br/><br/> Replikálási adatok átvitele: `*.backup.windowsazure.com` ;`*.backup.windowsazure.us`<br/><br/> Replikáció kezelése: `*.hypervrecoverymanager.windowsazure.com` ; `*.hypervrecoverymanager.windowsazure.us` ; `https://management.azure.com` ;`*.services.visualstudio.com`<br/><br/> Tárolási hozzáférés: `*.blob.core.windows.net` ;`*.blob.core.usgovcloudapi.net`<br/><br/> Idő szinkronizálása: `time.nist.gov` ;`time.windows.com`<br/><br/> Telemetria (nem kötelező):`dc.services.visualstudio.com`
+URL-címek | A konfigurációs kiszolgálónak hozzá kell férnie ezekhez az URL-címekhez (közvetlenül vagy proxyn keresztül):<br/><br/> Azure AD: `login.microsoftonline.com` ; `login.microsoftonline.us` ; `*.accesscontrol.windows.net`<br/><br/> Replikálási adatok átvitele: `*.backup.windowsazure.com` ; `*.backup.windowsazure.us`<br/><br/> Replikáció kezelése: `*.hypervrecoverymanager.windowsazure.com` ; `*.hypervrecoverymanager.windowsazure.us` ; `https://management.azure.com` ; `*.services.visualstudio.com`<br/><br/> Tárolási hozzáférés: `*.blob.core.windows.net` ; `*.blob.core.usgovcloudapi.net`<br/><br/> Idő szinkronizálása: `time.nist.gov` ; `time.windows.com`<br/><br/> Telemetria (nem kötelező): `dc.services.visualstudio.com`
 Firewall | Az IP-cím alapú tűzfalszabályok lehetővé teszik az Azure URL-címekkel való kommunikációt. Az IP-címtartományok egyszerűsítése és korlátozása érdekében javasoljuk, hogy használjon URL-szűrést.<br/><br/>**Kereskedelmi IP-címek esetén:**<br/><br/>– Engedélyezi az [Azure-adatközpont IP-tartományait](https://www.microsoft.com/download/confirmation.aspx?id=41653)és a HTTPS (443) portot.<br/><br/> – Engedélyezi az USA nyugati régiójában lévő IP-címtartományok használatát (Access Control és Identitáskezelés esetén használatos).<br/><br/> – Engedélyezze az előfizetés Azure-régiójának IP-címtartományok használatát a Azure Active Directory, a biztonsági mentéshez, a replikáláshoz és a tároláshoz szükséges URL-címek támogatásához.<br/><br/> **Kormányzati IP-címek esetén:**<br/><br/> -Engedélyezi a Azure Government adatközpont IP-tartományait és a HTTPS-portot (443).<br/><br/> – Engedélyezi az IP-címtartományok használatát minden US Gov régióban (Virginia, Texas, Arizona és Iowa), hogy támogassa a Azure Active Directoryhoz, a biztonsági mentéshez, a replikáláshoz és a tároláshoz szükséges URL-címeket.
 Portok | 443 engedélyezése (vezérlési csatorna összehangolása)<br/><br/> 9443 engedélyezése (adatátviteli szolgáltatás) 
 
 
 **Konfiguráció/folyamat kiszolgáló méretezési követelményei**
 
-**CPU** | **Memory (Memória)** | **Lemez gyorsítótára** | **Adatváltozási arány** | **Replikált gépek**
+**CPU** | **Memória** | **Lemez gyorsítótára** | **Adatváltozási arány** | **Replikált gépek**
 --- | --- | --- | --- | ---
 8 vCPU<br/><br/> 2 szoftvercsatorna * 4 mag \@ 2,5 GHz | 16GB | 300 GB | 500 GB vagy kevesebb | < 100 gép
 12 vCPU<br/><br/> 2 SOCKS * 6 mag \@ 2,5 GHz | 18 GB | 600 GB | 500 GB – 1 TB | 100 – 150 gép

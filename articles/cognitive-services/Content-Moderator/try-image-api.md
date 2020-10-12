@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 01/10/2019
 ms.author: pafarley
 ms.openlocfilehash: 714621fdcc307ee8b29567fc0d95ca41d31aa9e5
-ms.sourcegitcommit: 58faa9fcbd62f3ac37ff0a65ab9357a01051a64f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 04/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "75448261"
 ---
 # <a name="moderate-images-from-the-api-console"></a>Mérsékelt rendszerképek az API-konzolról
@@ -48,13 +48,13 @@ Mielőtt tesztelni tudja az API-t az online konzolon, szüksége lesz az előfiz
 
    ![A rendszerkép kiértékelése – példa képe](images/sample-image.jpg) 
 
-5. Válassza a **Küldés**lehetőséget.
+5. Válassza a **Küldés** lehetőséget.
 
 6. Az API az egyes besorolások valószínűségi pontszámát adja vissza. Azt is megadja, hogy a rendszerkép megfelel-e a feltételeknek (**igaz** vagy **hamis**). 
 
    ![A rendszerkép kiértékelése – a konzol valószínűségi pontszáma és a feltétel meghatározása](images/try-image-api-3.PNG)
 
-## <a name="face-detection"></a>Arcfelismerés
+## <a name="face-detection"></a>Arcészlelés
 
 A képmoderálási API használatával megkeresheti az arcokat a képen. Ez a beállítás akkor lehet hasznos, ha adatvédelmi problémák merülnek fel, és meg szeretné akadályozni, hogy egy adott arc ne legyen közzétéve a platformon. 
 
@@ -74,7 +74,7 @@ A képmoderálási API használatával megkeresheti az arcokat a képen. Ez a be
 
    ![Rendszerkép keresése – példa kérésre](images/try-image-api-face-request.png)
 
-4. Válassza a **Küldés**lehetőséget. Ebben a példában az API két arcot keres, és visszaadja a képen látható koordinátákat.
+4. Válassza a **Küldés** lehetőséget. Ebben a példában az API két arcot keres, és visszaadja a képen látható koordinátákat.
 
    ![Próbálja ki a képkeresési példákat](images/try-image-api-face-response.png)
 
@@ -96,7 +96,7 @@ A képekben lévő szöveg észleléséhez használhatja a Content Moderator OCR
 
 4. A **kérelem törzse** mezőben használja az alapértelmezett minta képét. Ez ugyanaz a rendszerkép, amelyet az előző szakaszban is használni kell.
 
-5. Válassza a **Küldés**lehetőséget. A kinyert szöveg a JSON-ban jelenik meg:
+5. Válassza a **Küldés** lehetőséget. A kinyert szöveg a JSON-ban jelenik meg:
 
    ![Rendszerkép – OCR-minta válaszának tartalma mező](images/try-image-api-ocr.PNG)
 

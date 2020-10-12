@@ -9,10 +9,10 @@ ms.date: 08/17/2020
 ms.author: helohr
 manager: lizross
 ms.openlocfilehash: a63d7f067665836910b91b2911db522f0a92bbb1
-ms.sourcegitcommit: 023d10b4127f50f301995d44f2b4499cbcffb8fc
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/18/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88556271"
 ---
 # <a name="msix-app-attach-faq"></a>MSIX-alkalmazás csatolása – GYIK
@@ -35,6 +35,6 @@ A szoftver gyártójától MSIX-csomagot fog adni. A nem MSIX csomagok MSIX is �
 
 Windows 10 Enterprise és Windows 10 Enterprise multi-session.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Ha többet szeretne megtudni az MSIX-alkalmazás csatlakoztatásáról, tekintse meg az [Áttekintés](what-is-app-attach.md) [szószedetet](app-attach-glossary.md). Ellenkező esetben Ismerkedjen [meg az alkalmazások csatlakoztatásának beállítása](app-attach.md)című lépéssel.

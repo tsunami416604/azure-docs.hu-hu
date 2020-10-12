@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 05/23/2019
 ms.openlocfilehash: 64be7f01cc9cc7ae77af5386be7a11cd16785dd1
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90882410"
 ---
 # <a name="connectivity-architecture-in-azure-database-for-postgresql"></a>Kapcsolati architektúra a Azure Database for PostgreSQLban
@@ -35,7 +35,7 @@ A következő táblázat felsorolja az Azure Database for PostgreSQL átjáró e
 | Dél-Brazília | 104.41.11.5, 191.233.201.8, 191.233.200.16  |
 | Közép-Kanada |40.85.224.249  |
 | Kelet-Kanada | 40.86.226.166    |
-| Az USA középső régiója | 23.99.160.139, 13.67.215.62, 52.182.136.37, 52.182.136.38     |
+| USA középső régiója | 23.99.160.139, 13.67.215.62, 52.182.136.37, 52.182.136.38     |
 | Kelet-Kína | 139.219.130.35    |
 | Kelet-Kína 2 | 40.73.82.1  |
 | Észak-Kína | 139.219.15.17    |

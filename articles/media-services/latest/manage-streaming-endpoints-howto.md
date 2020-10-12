@@ -16,10 +16,10 @@ ms.date: 08/31/2020
 ms.author: inhenkel
 ms.custom: devx-track-azurecli, devx-track-csharp
 ms.openlocfilehash: 8d3835d78ec55f120f6b9439aea9c29434e6bd47
-ms.sourcegitcommit: 58d3b3314df4ba3cabd4d4a6016b22fa5264f05a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89289477"
 ---
 # <a name="manage-streaming-endpoints-with--media-services-v3"></a>Adatfolyam-végpontok kezelése Media Services v3-val
@@ -62,7 +62,7 @@ További információkért lásd:
 1. A bal oldali ablaktáblán válassza a  **folyamatos átviteli végpontok**lehetőséget.
 1. Válassza ki az elindítani kívánt folyamatos átviteli végpontot, majd kattintson a **Start**gombra.
 
-## <a name="use-the-azure-cli"></a>Az Azure parancssori felületének használata
+## <a name="use-the-azure-cli"></a>Az Azure CLI használata
 
 ```cli
 az ams streaming-endpoint start [--account-name]

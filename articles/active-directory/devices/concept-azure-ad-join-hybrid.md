@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: sandeo
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 259a1324c412dad40d32a8b8e026d84e6f5aa066
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85554924"
 ---
 # <a name="hybrid-azure-ad-joined-devices"></a>Hibrid Azure AD-csatlakoztatott eszközök
@@ -29,7 +29,7 @@ A helyszíni lábnyommal rendelkező szervezetek általában az eszközök kiép
 
 Ha az Ön környezetének van helyszíni AD-lábnyoma, ugyanakkor az Azure Active Directory nyújtotta lehetőségeket is ki szeretné használni, implementálhat hibrid Azure AD-csatlakoztatott eszközöket. Ezek az eszközök a helyszíni Active Directoryhoz csatlakoztatott és a Azure Active Directory regisztrált eszközök.
 
-| Hibrid Azure AD-csatlakozás | Description |
+| Hibrid Azure AD-csatlakozás | Leírás |
 | --- | --- |
 | **Definíció** | Csatlakozott a helyszíni AD-hez és az Azure AD-hez, amely szervezeti fiókot igényel az eszközre való bejelentkezéshez |
 | **Elsődleges célközönség** | Alkalmas a meglévő helyszíni AD-infrastruktúrával rendelkező hibrid szervezetek számára |
@@ -65,5 +65,5 @@ Használja az Azure AD Hybrid-hez csatlakoztatott eszközöket, ha:
 ## <a name="next-steps"></a>További lépések
 
 - [A hibrid Azure AD-csatlakozás implementálásának megtervezése](hybrid-azuread-join-plan.md)
-- [Az eszközök identitásának kezelése a Azure Portal használatával](device-management-azure-portal.md)
+- [Eszközidentitások kezelése az Azure Portal használatával](device-management-azure-portal.md)
 - [Elavult eszközök kezelése az Azure AD-ben](manage-stale-devices.md)

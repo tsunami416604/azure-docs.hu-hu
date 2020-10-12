@@ -7,10 +7,10 @@ ms.date: 02/20/2020
 ms.topic: conceptual
 ms.service: azure-app-configuration
 ms.openlocfilehash: 66d0e32e7dfdd5ab2abee5108ac8ce54c5222747
-ms.sourcegitcommit: f353fe5acd9698aa31631f38dd32790d889b4dbb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87371821"
 ---
 # <a name="sync-your-github-repository-to-app-configuration"></a>A GitHub-tárház szinkronizálása az alkalmazás konfigurációjával
@@ -25,7 +25,7 @@ A GitHub-műveletek [munkafolyamat](https://help.github.com/articles/about-githu
 A GitHub [dokumentációja](https://help.github.com/actions/automating-your-workflow-with-github-actions/configuring-a-workflow) részletes áttekintést nyújt a GitHub-munkafolyamatokról és-műveletekről. 
 
 ## <a name="enable-github-actions-in-your-repository"></a>GitHub-műveletek engedélyezése a tárházban
-A GitHub-művelet elindításához nyissa meg a tárházat, és válassza a **műveletek** fület. Válassza az **Új munkafolyamat**lehetőséget, majd **állítson be egy munkafolyamatot**. Végül keresse meg a piactéren az "Azure app Configuration Sync" kifejezést.
+A GitHub-művelet elindításához nyissa meg a tárházat, és válassza a **műveletek** lapot. Válassza az **Új munkafolyamat**lehetőséget, majd **állítson be egy munkafolyamatot**. Végül keresse meg a piactéren az "Azure app Configuration Sync" kifejezést.
 > [!div class="mx-imgBorder"]
 > ![Válassza a művelet fület](media/find-github-action.png)
 

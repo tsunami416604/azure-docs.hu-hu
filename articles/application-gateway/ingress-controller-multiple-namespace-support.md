@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
 ms.openlocfilehash: 953430421bd30aaa1df352451b549994aeaa1a70
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85556167"
 ---
 # <a name="enable-multiple-namespace-support-in-an-aks-cluster-with-application-gateway-ingress-controller"></a>Több névtér támogatásának engedélyezése egy AK-fürtön Application Gateway bejövő adatkezelővel
@@ -29,11 +29,11 @@ Több névtér támogatásának engedélyezése:
    - törölje a `watchNamespace` kulcsot teljes egészében a [Helm-config fájlból. YAML](#sample-helm-config-file) – a AGIC minden névteret figyelembe vesz
    - `watchNamespace`üres karakterláncra van beállítva – a AGIC minden névteret betart
    - több névtér hozzáadása vesszővel ( `watchNamespace: default,secondNamespace` ) – a AGIC csak a következő névtereket veszi figyelembe:
-2. a Helm-sablon módosításainak alkalmazása a következővel:`helm install -f helm-config.yaml application-gateway-kubernetes-ingress/ingress-azure`
+2. a Helm-sablon módosításainak alkalmazása a következővel: `helm install -f helm-config.yaml application-gateway-kubernetes-ingress/ingress-azure`
 
 Az üzembe helyezést követően több névteret is megfigyelheti, a AGIC a következőket teszi:
   - az összes elérhető névtér bejövő erőforrásainak listázása
-  - Szűrés a bejövő erőforrásokhoz megjegyzésekkel`kubernetes.io/ingress.class: azure/application-gateway`
+  - Szűrés a bejövő erőforrásokhoz megjegyzésekkel `kubernetes.io/ingress.class: azure/application-gateway`
   - kombinált [Application Gateway konfigurációjának](https://github.com/Azure/azure-sdk-for-go/blob/37f3f4162dfce955ef5225ead57216cf8c1b2c70/services/network/mgmt/2016-06-01/network/models.go#L1710-L1744) összeállítása
   - a konfiguráció alkalmazása a társított Application Gateway a [ARM](https://docs.microsoft.com/azure/azure-resource-manager/resource-group-overview) használatával
 
@@ -84,11 +84,11 @@ spec:
 
 Annak ellenére, hogy a bejövő erőforrások felé irányuló forgalmat a rendszer `www.contoso.com` a megfelelő Kubernetes-névterekhez irányítja, csak egy háttérrendszer képes a forgalom kiszolgálására. A AGIC létrehoz egy konfigurációt az egyik erőforrásra vonatkozóan az "első alkalommal kiszolgált" alapján. Ha egyszerre két ingresses-erőforrást hoz létre, akkor az ábécében az egyik korábbi is elsőbbséget élvez. A fenti példában csak a bejövő adatokra vonatkozó beállításokat lehet létrehozni `production` . A Application Gateway a következő erőforrásokkal lesz konfigurálva:
 
-  - Hallgató`fl-www.contoso.com-80`
-  - Útválasztási szabály:`rr-www.contoso.com-80`
-  - Háttér-készlet:`pool-production-contoso-web-service-80-bp-80`
-  - HTTP-beállítások:`bp-production-contoso-web-service-80-80-websocket-ingress`
-  - Állapot mintavétele:`pb-production-contoso-web-service-80-websocket-ingress`
+  - Hallgató `fl-www.contoso.com-80`
+  - Útválasztási szabály: `rr-www.contoso.com-80`
+  - Háttér-készlet: `pool-production-contoso-web-service-80-bp-80`
+  - HTTP-beállítások: `bp-production-contoso-web-service-80-80-websocket-ingress`
+  - Állapot mintavétele: `pb-production-contoso-web-service-80-websocket-ingress`
 
 Vegye figyelembe, hogy a *figyelő* és az *útválasztási szabály*kivételével a létrehozott Application Gateway erőforrások közé tartozik annak a névtérnek () a neve, amelyhez létre lettek `production` hozva.
 

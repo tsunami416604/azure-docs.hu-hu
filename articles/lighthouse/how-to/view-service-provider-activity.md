@@ -4,10 +4,10 @@ description: Az ügyfelek megtekinthetik a naplózott tevékenységeket a szolg�
 ms.date: 07/07/2020
 ms.topic: how-to
 ms.openlocfilehash: 0c92fc9b45d17e37fb3721d9cf087c5e7a62f6d7
-ms.sourcegitcommit: e995f770a0182a93c4e664e60c025e5ba66d6a45
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86131467"
 ---
 # <a name="view-service-provider-activity"></a>Szolgáltatói tevékenység megtekintése
@@ -17,7 +17,7 @@ Azok az ügyfelek, akik az [Azure világítótoronyhoz](../overview.md) delegál
 > [!TIP]
 > Egy Azure Policy beépített szabályzat-definíciót is biztosítunk a hatókörök delegálásának naplózására egy felügyeleti bérlő számára. További információ: [a delegálások naplózása a környezetben](view-manage-service-providers.md#audit-delegations-in-your-environment).
 
-## <a name="view-activity-log-data"></a>Tevékenység naplójának adatnézete
+## <a name="view-activity-log-data"></a>Tevékenységnapló adatainak megtekintése
 
 A [tevékenység naplóját](../../azure-monitor/platform/activity-log.md#view-the-activity-log) a Azure Portal **figyelő** menüjéből tekintheti meg. Ha az eredményeket egy adott előfizetésre szeretné korlátozni, használja a szűrőket egy adott előfizetés kiválasztásához. [A tevékenységek naplózási eseményeit programozott módon is megtekintheti és lekérheti](../../azure-monitor/platform/activity-log.md#view-the-activity-log) .
 
@@ -43,7 +43,7 @@ Létrehozhat lekérdezéseket a naplózott tevékenység elemzéséhez, vagy ado
 
 További információ: [Azure monitorban található naplók áttekintése](../../azure-monitor/log-query/log-query-overview.md).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - További információ a [Azure monitorról](../../azure-monitor/index.yml).
 - Megtudhatja, hogyan [tekintheti meg és kezelheti](view-manage-service-providers.md) a szolgáltatói ajánlatokat a Azure Portalban.
