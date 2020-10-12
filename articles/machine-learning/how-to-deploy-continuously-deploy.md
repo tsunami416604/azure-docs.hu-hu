@@ -11,17 +11,17 @@ ms.date: 08/03/2020
 ms.topic: conceptual
 ms.custom: how-to, tracking-python
 ms.openlocfilehash: c95e1012decf1e3ae4ee3fbab8aae1a4c1a71be9
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87544620"
 ---
 # <a name="continuously-deploy-models"></a>Modellek folyamatos üzembe helyezése
 
 Ez a cikk bemutatja, hogyan használhatja a folyamatos üzembe helyezést az Azure DevOps-ben a regisztrált modellek új verzióinak automatikus vizsgálatához és az új modellek éles környezetbe küldéséhez.
 
-## <a name="prerequisites"></a>Előfeltétel
+## <a name="prerequisites"></a>Előfeltételek
 
 Ez a cikk azt feltételezi, hogy már regisztrált egy modellt a Azure Machine Learning munkaterületen. Tekintse meg [ezt az oktatóanyagot](how-to-train-scikit-learn.md) , amely egy scikit modell betanítását és regisztrálását szemlélteti.
 
@@ -51,7 +51,7 @@ A modellek folyamatos üzembe helyezéséhez használja az [Azure DevOps](https:
 
     [![Modell-trigger engedélyezése](media/how-to-deploy-and-where/set-modeltrigger.png)](media/how-to-deploy-and-where/set-modeltrigger-expanded.png)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Tekintse meg az alábbi projekteket a GitHubon, ahol további példákat talál az ML-modellek folyamatos üzembe helyezésére.
 

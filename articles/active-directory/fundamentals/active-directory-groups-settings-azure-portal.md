@@ -14,10 +14,10 @@ ms.reviewer: krbain
 ms.custom: it-pro, seodec18
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 1e9b38208526ba83e0a0e31e2e139e340a3ee511
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87797525"
 ---
 # <a name="edit-your-group-information-using-azure-active-directory"></a>A csoport adatainak szerkesztése Azure Active Directory használatával
@@ -55,7 +55,7 @@ A Azure Active Directory (Azure AD) használatával szerkesztheti a csoportok be
     
     - **Objektumazonosító.** Az objektumazonosító nem módosítható, de a csoport PowerShell-parancsaiban használható. További információ a PowerShell-parancsmagok használatáról: [Azure Active Directory parancsmagok a csoport beállításainak konfigurálásához](../users-groups-roles/groups-settings-v2-cmdlets.md).
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 E cikkekben további információk találhatók az Azure Active Directoryval kapcsolatban.
 
 - [Csoportok és tagok megtekintése](active-directory-groups-view-azure-portal.md)

@@ -12,10 +12,10 @@ ms.author: danil
 ms.reviewer: jrasnik, sstein
 ms.date: 06/12/2020
 ms.openlocfilehash: 4f6bbbdbbee6cf83a6bea463cf200be0cf671897
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91317055"
 ---
 # <a name="intelligent-insights-using-ai-to-monitor-and-troubleshoot-database-performance-preview"></a>Intelligent Insights AI használata az adatbázis teljesítményének figyelésére és hibakeresésére (előzetes verzió)
@@ -158,7 +158,7 @@ A generált megállapítások az időtúllépési kérelmek számát és az idő
 
 ## <a name="excessive-wait-times"></a>Túlzott várakozási idő
 
-A túlzott várakozási idő modell figyeli az egyes adatbázis-lekérdezéseket. Szokatlanul nagy lekérdezések várakozási statisztikáit észleli, amelyek átlépték a rendszer által felügyelt abszolút küszöbértékeket. A következő lekérdezés túlzott várakozási idejű mérőszámokat észlelt a, a [lekérdezési tároló várakozási statisztikái (sys. query_store_wait_stats)](/sql/relational-databases/system-catalog-views/sys-query-store-wait-stats-transact-sql)használatával:
+A túlzott várakozási idő modell figyeli az egyes adatbázis-lekérdezéseket. Szokatlanul nagy lekérdezések várakozási statisztikáit észleli, amelyek átlépték a rendszer által felügyelt abszolút küszöbértékeket. A következő lekérdezés túlzott várakozási idejű mérőszámokat észlelt a, a [lekérdezési tároló várakozási statisztikái (sys.query_store_wait_stats)](/sql/relational-databases/system-catalog-views/sys-query-store-wait-stats-transact-sql)használatával:
 
 - Erőforrás-korlátok elérése
 - Rugalmas készlet erőforrás-korlátainak elérése

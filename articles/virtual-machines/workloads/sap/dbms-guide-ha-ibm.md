@@ -15,10 +15,10 @@ ms.workload: infrastructure
 ms.date: 03/06/2020
 ms.author: juergent
 ms.openlocfilehash: 7d453fba37e62e8528ae7b4ea86d1604973b84a1
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87052002"
 ---
 # <a name="high-availability-of-ibm-db2-luw-on-azure-vms-on-suse-linux-enterprise-server-with-pacemaker"></a>Az IBM DB2-LUW magas rendelkezésre állása Azure-beli virtuális gépeken SUSE Linux Enterprise Server a pacemakerrel
@@ -33,7 +33,7 @@ A támogatott IBM DB2-verziók 10,5-es és újabb verziójúak, az SAP Note [192
 
 A telepítés megkezdése előtt tekintse meg a következő SAP-megjegyzéseket és dokumentációt:
 
-| SAP-Megjegyzés | Description |
+| SAP-Megjegyzés | Leírás |
 | --- | --- |
 | [1928533] | SAP-alkalmazások az Azure-ban: támogatott termékek és Azure-beli virtuális gépek típusai |
 | [2015553] | SAP az Azure-on: támogatási előfeltételek |
@@ -327,7 +327,7 @@ A következő elemek előtaggal vannak ellátva:
 > - A SLES 15/15 SP1 esetében a verziónak legalább Resource-Agent-4.3.0184.6 ee15eb2-4.13.1 kell lennie.  
 >
 > Vegye figyelembe, hogy a módosítás rövid állásidőt igényel.  
-> Meglévő pacemaker-fürtök esetén, ha a konfigurációt már úgy módosították, hogy a socat használja az [Azure Load-Balancer észlelésének megerősítése](https://www.suse.com/support/kb/doc/?id=7024128)című cikkben leírtak szerint, nem kell azonnal váltania az Azure-LB erőforrás-ügynökre.
+> Meglévő pacemaker-fürtök esetén, ha a konfigurációt már úgy módosították, hogy a socat használja az [azure Load-Balancer észlelésének megerősítése](https://www.suse.com/support/kb/doc/?id=7024128)című cikkben leírtak szerint, nem kell azonnal váltania az Azure-LB erőforrás-ügynökre.
 
 **[1]** IBM DB2 HADR-specifikus pacemaker-konfiguráció:
 <pre><code># Put Pacemaker into maintenance mode
@@ -478,12 +478,12 @@ Ha a telepítést a DB2 HADR-konfiguráció létrehozása előtt végezte el, v�
 
 A J2EE konfigurációs eszköz használatával megvizsgálhatja vagy frissítheti a JDBC URL-címet. Mivel a J2EE konfigurációs eszköz egy grafikus eszköz, telepítenie kell az X Servert:
  
-1. Jelentkezzen be a J2EE-példány elsődleges alkalmazáskiszolgáló kiszolgálójára, és hajtsa végre a következőt:`sudo /usr/sap/*SID*/*Instance*/j2ee/configtool/configtool.sh`
+1. Jelentkezzen be a J2EE-példány elsődleges alkalmazáskiszolgáló kiszolgálójára, és hajtsa végre a következőt:   `sudo /usr/sap/*SID*/*Instance*/j2ee/configtool/configtool.sh`
 1. A bal oldali keretben válassza a **biztonsági tároló**elemet.
 1. A jobb oldali keretben válassza a JDBC/Pool//URL. elemet. \<SAPSID>
 1. Módosítsa az állomásnév nevét a JDBC URL-címében a virtuális állomásnévre.
      `jdbc:db2://db-virt-hostname:5912/TSP:deferPrepares=0`
-1. Válassza a **Hozzáadás** elemet.
+1. Válassza a **Hozzáadás** lehetőséget.
 1. A módosítások mentéséhez válassza a bal felső sarokban található lemez ikont.
 1. A konfigurációs eszköz bezárásához.
 1. Indítsa újra a Java-példányt.
@@ -495,7 +495,7 @@ A naplózási archiválást csak az elsődleges adatbázis hajtja végre. Ha meg
 
 Javasoljuk, hogy olyan közös NFS-megosztást állítson be, amelyben a naplók mindkét csomópontról íródnak. Az NFS-megosztásnak nagyon elérhetőnek kell lennie. 
 
-Használhatja a meglévő, magasan elérhető NFS-megosztásokat a szállításokhoz vagy a profilok címtárához. További információ:
+Használhatja a meglévő, magasan elérhető NFS-megosztásokat a szállításokhoz vagy a profilok címtárához. További információkért lásd:
 
 - [Magas rendelkezésre állás az NFS-en SUSE Linux Enterprise Server Azure-beli virtuális gépeken][nfs-ha] 
 - [Magas rendelkezésre állás az Azure-beli virtuális gépeken futó SAP NetWeaver-hez SUSE Linux Enterprise Serveron Azure NetApp Files SAP-alkalmazásokhoz](./high-availability-guide-suse-netapp-files.md)

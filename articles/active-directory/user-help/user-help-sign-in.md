@@ -13,10 +13,10 @@ ms.date: 07/18/2019
 ms.author: curtand
 ms.custom: user-help
 ms.openlocfilehash: 42ced6632ebfa56af8fe13a02f531b9835e13df3
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88799383"
 ---
 # <a name="sign-in-using-two-step-verification-or-security-info"></a>Bejelentkezés kétlépéses ellenőrzés vagy biztonsági információ használatával
@@ -88,7 +88,7 @@ Ha valamilyen okból nem tudja használni az elsődleges bejelentkezési módsze
 
 3. Miután visszatért a fiókjába, frissítheti az ellenőrzési módszereket (ha szükséges). A módszerek hozzáadásával vagy módosításával kapcsolatos további információkért tekintse meg a [beállítások kezelése kétlépéses ellenőrzéshez](multi-factor-authentication-end-user-manage-settings.md) című cikket.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - A biztonsági adatok [(előzetes verzió) – áttekintés című](./security-info-setup-signin.md) cikkben talál további információt.
 

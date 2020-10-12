@@ -16,10 +16,10 @@ ms.workload: na
 ms.date: 06/28/2018
 ms.author: terrylan
 ms.openlocfilehash: 7b75c9dc874a41d4221c55a8b00dd12d943e80fc
-ms.sourcegitcommit: 8def3249f2c216d7b9d96b154eb096640221b6b9
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/03/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87542942"
 ---
 # <a name="azure-infrastructure-monitoring"></a>Azure-infrastruktúra figyelése   
@@ -49,7 +49,7 @@ Ha a Microsoft tudomásul veszi a berendezésén vagy létesítményein tárolt 
 
 A rendszer létrehoz egy incidens-felügyeleti keretrendszert, amely meghatározza a szerepköröket, és hozzárendeli a feladatokat. Az Azure Security incidensek felügyeleti csapata felelős a biztonsági incidensek kezeléséért, beleértve a eszkalációt, és szükség esetén gondoskodik a szakosodott csapatok bevonásáról. Az Azure Operations managerek feladata a biztonsági és adatvédelmi incidensek vizsgálatának és megoldásának felügyelete.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ha többet szeretne megtudni arról, hogy a Microsoft Hogyan védi az Azure-infrastruktúrát, olvassa el a következő témakört:
 
 - [Azure-létesítmények,-telephelyek és fizikai biztonság](physical-security.md)

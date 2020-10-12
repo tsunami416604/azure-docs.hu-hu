@@ -14,10 +14,10 @@ ms.reviewer: saeeda, hirsin, jmprieur, sureshja, jesakowi, lenalepa, kkrishna, n
 ms.custom: aaddev
 ROBOTS: NOINDEX
 ms.openlocfilehash: c6e59ab0432ad2b7bdccb5ce9916e85eb6d95048
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88116393"
 ---
 # <a name="why-update-to-microsoft-identity-platform-v20"></a>Miért érdemes Microsoft Identitásplatformra (a 2.0-s verzióra) frissíteni?
@@ -61,7 +61,7 @@ A szervezet nevében végrehajtott rendszergazdai jóváhagyás továbbra is az 
 
 A v 1.0-s végpontot használó alkalmazások esetében az alkalmazás **erőforrásként**vagy tokenek címzettjeiként működhet. Az erőforrások meghatározhatnak számos **hatókört** vagy **oAuth2Permissions** , amelyek megértik, lehetővé téve, hogy az ügyfélalkalmazások az adott erőforrásból származó jogkivonatokat igényeljenek egy adott hatókörhöz. Vegye figyelembe a Microsoft Graph API-t egy erőforrásra példaként:
 
-* Erőforrás-azonosító, vagy `AppID URI` :`https://graph.microsoft.com/`
+* Erőforrás-azonosító, vagy `AppID URI` : `https://graph.microsoft.com/`
 * Hatókörök, vagy `oAuth2Permissions` : `Directory.Read` , `Directory.Write` stb.
 
 Ez a Microsoft Identity platform végpontjának igaz értéke. Egy alkalmazás továbbra is erőforrásként működhet, hatóköröket határozhat meg, és egy URI azonosítóval azonosítható. Az ügyfélalkalmazások továbbra is igényelhetnek hozzáférést ezekhez a hatókörökhöz. Az ügyfél által kért engedélyek azonban megváltoztak.

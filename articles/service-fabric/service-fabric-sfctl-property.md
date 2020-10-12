@@ -6,10 +6,10 @@ ms.topic: reference
 ms.date: 1/16/2020
 ms.author: jejarry
 ms.openlocfilehash: 0a5ebd4822c5f0ff1735464bb4d5b42c436ee529
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86260328"
 ---
 # <a name="sfctl-property"></a>sfctl-tulajdonság
@@ -19,7 +19,7 @@ Tulajdonságok tárolása és lekérdezése Service Fabric neve alatt.
 
 |Parancs|Leírás|
 | --- | --- |
-| törlés | Törli a megadott Service Fabric tulajdonságot. |
+| delete | Törli a megadott Service Fabric tulajdonságot. |
 | get | Lekéri a megadott Service Fabric tulajdonságot. |
 | list | Az adott név alatti összes Service Fabric tulajdonság információinak beolvasása. |
 | Put | Létrehoz vagy frissít egy Service Fabric tulajdonságot. |
@@ -120,6 +120,6 @@ Létrehozza vagy frissíti a megadott Service Fabric tulajdonságot egy adott n�
 | --verbose | A naplózás részletességének fokozása. A--hibakeresés a teljes hibakeresési naplókhoz. |
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - [Állítsa be](service-fabric-cli.md) a Service Fabric CLI-t.
 - Megtudhatja, hogyan használhatja a Service Fabric CLI-t a [minta-parancsfájlok](./scripts/sfctl-upgrade-application.md)használatával.

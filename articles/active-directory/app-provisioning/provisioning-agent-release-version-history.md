@@ -12,10 +12,10 @@ ms.subservice: app-provisioning
 ms.author: kenwith
 ms.reviewer: celested
 ms.openlocfilehash: 9e05d1a85f17800ddf4d77e4e4acba6396a8da47
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84781565"
 ---
 # <a name="azure-ad-connect-provisioning-agent-version-release-history"></a>Azure AD Connect kiépítési ügynök: verziók kiadásának előzményei
@@ -46,7 +46,7 @@ A Microsoft közvetlen támogatást biztosít az ügynök legújabb verziójáho
 * További nyomkövetési és naplózási beállítások konfigurálása a kiépítési ügynökkel kapcsolatos problémák felderítéséhez
 * Csak azokat az Azure AD-attribútumokat lehet beolvasni, amelyek a leképezésben vannak konfigurálva a szinkronizálás teljesítményének növeléséhez
 
-### <a name="fixed-issues"></a>Hibák kijavítva:
+### <a name="fixed-issues"></a>Megoldott problémák
 
 * Kijavítva egy olyan hibát, amelyben az ügynök nem válaszoló állapotba került, ha probléma merült fel az Azure AD-beli kapcsolatok meghibásodása esetén
 * Kijavított egy hibát, amely problémát okozott, amikor a bináris adatok beolvasása Azure Active Directory

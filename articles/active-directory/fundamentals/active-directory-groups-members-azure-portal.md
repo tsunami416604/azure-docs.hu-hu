@@ -14,10 +14,10 @@ ms.custom: it-pro, seodec18
 ms.reviewer: krbain
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: fbb7b7da4ed5268e66260e48d6367bbe02f0845a
-ms.sourcegitcommit: fbb66a827e67440b9d05049decfb434257e56d2d
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87797576"
 ---
 # <a name="add-or-remove-group-members-using-azure-active-directory"></a>Csoporttagok hozzáadása vagy eltávolítása Azure Active Directory használatával
@@ -31,7 +31,7 @@ A Azure Active Directory használatával továbbra is hozzáadhat és eltávolí
 
 3. A **csoportok – minden csoport** lapon keresse meg és válassza ki azt a csoportot, amelyhez hozzá kívánja adni a tagot. Ebben az esetben használja a korábban létrehozott csoportot, a **Mdm Policy-West-** t.
 
-    ![Csoportok – minden csoport lap, csoport neve kiemelve](media/active-directory-groups-members-azure-portal/group-all-groups-screen.png)
+    ![Groups-All csoportok lap, csoport neve kiemelve](media/active-directory-groups-members-azure-portal/group-all-groups-screen.png)
 
 4. Az **MDM policy – West áttekintési** lapján válassza a **Tagok** lehetőséget a **Kezelés** területen.
 

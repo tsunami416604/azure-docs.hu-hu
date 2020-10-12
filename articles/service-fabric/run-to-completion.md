@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 03/11/2020
 ms.author: shsha
 ms.openlocfilehash: 6f2f6aa4380fcf6909957118bf682275350ce68c
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86261203"
 ---
 # <a name="runtocompletion"></a>Futtatás befejezésig
@@ -112,7 +112,7 @@ A jelenlegi RunToCompletion-támogatáshoz a következő szempontokat kell figye
 * A RunToCompletion szemantikai feladatokkal rendelkező alkalmazások frissítési forgatókönyvei nem engedélyezettek. A felhasználóknak szükség esetén törölnie kell és újra létre kell hozniuk ezeket az alkalmazásokat.
 * A feladatátvételi események hatására a CodePackages a sikeres befejezést követően újra végrehajtható, ugyanazon a csomóponton vagy a fürt más csomópontjain. Többek között a feladatátvételi események, a csomópontok újraindítása és Service Fabric futtatókörnyezet frissítése egy csomóponton.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 A kapcsolódó információkról a következő cikkekben olvashat.
 

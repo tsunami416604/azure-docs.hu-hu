@@ -7,10 +7,10 @@ ms.service: data-catalog
 ms.topic: conceptual
 ms.date: 08/01/2019
 ms.openlocfilehash: b65697c224f612a1bc9d5bfa193355832cafd73f
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88799247"
 ---
 # <a name="azure-data-catalog-developer-concepts"></a>Azure Data Catalog fejlesztői fogalmak
@@ -74,14 +74,14 @@ Az UX megadhatja a kombináció megjelenítésének módját. Három különböz
 A főbb fogalmak szakaszban bemutatott módon a **Azure Data Catalog** objektummodell olyan elemeket tartalmaz, amelyek lehetnek eszközök vagy jegyzetek. Az elemekhez tulajdonságok tartoznak, amelyek opcionálisak vagy kötelezőek lehetnek. Egyes tulajdonságok minden elemre érvényesek. Egyes tulajdonságok minden eszközre érvényesek. Bizonyos tulajdonságok csak bizonyos típusú eszközökre érvényesek.
 
 ### <a name="system-properties"></a>Rendszertulajdonságok
-<table><tr><td><b>Tulajdonság neve</b></td><td><b>Adattípus</b></td><td><b>Megjegyzések</b></td></tr><tr><td>időbélyeg</td><td>DateTime</td><td>Az objektum utolsó módosításának időpontja. Ezt a mezőt a kiszolgáló hozza létre, amikor egy tétel be van beszúrva, és minden alkalommal, amikor egy adott tétel frissül. A tulajdonság értékét a közzétételi műveletek bemenete figyelmen kívül hagyja.</td></tr><tr><td>ID</td><td>URI</td><td>Az elemek abszolút URL-címe (csak olvasható). Ez az objektum egyedi címezhető URI-ja.  A tulajdonság értékét a közzétételi műveletek bemenete figyelmen kívül hagyja.</td></tr><tr><td>típus</td><td>Sztring</td><td>Az eszköz típusa (csak olvasható).</td></tr><tr><td>ETAG</td><td>Sztring</td><td>Az elem azon verziójához tartozó karakterlánc, amely az optimista Egyidejűség-vezérléshez használható a katalógusban lévő elemeket frissítő műveletek végrehajtásakor. a "*" bármely érték egyeztetésére használható.</td></tr></table>
+<table><tr><td><b>Tulajdonság neve</b></td><td><b>Adattípus</b></td><td><b>Megjegyzések</b></td></tr><tr><td>időbélyeg</td><td>DateTime</td><td>Az objektum utolsó módosításának időpontja. Ezt a mezőt a kiszolgáló hozza létre, amikor egy tétel be van beszúrva, és minden alkalommal, amikor egy adott tétel frissül. A tulajdonság értékét a közzétételi műveletek bemenete figyelmen kívül hagyja.</td></tr><tr><td>ID (Azonosító)</td><td>URI</td><td>Az elemek abszolút URL-címe (csak olvasható). Ez az objektum egyedi címezhető URI-ja.  A tulajdonság értékét a közzétételi műveletek bemenete figyelmen kívül hagyja.</td></tr><tr><td>típus</td><td>Sztring</td><td>Az eszköz típusa (csak olvasható).</td></tr><tr><td>ETAG</td><td>Sztring</td><td>Az elem azon verziójához tartozó karakterlánc, amely az optimista Egyidejűség-vezérléshez használható a katalógusban lévő elemeket frissítő műveletek végrehajtásakor. a "*" bármely érték egyeztetésére használható.</td></tr></table>
 
 ### <a name="common-properties"></a>Közös tulajdonságok
 Ezek a tulajdonságok az összes gyökérszintű eszköz típusára és az összes Megjegyzés típusára vonatkoznak.
 
 <table>
 <tr><td><b>Tulajdonság neve</b></td><td><b>Adattípus</b></td><td><b>Megjegyzések</b></td></tr>
-<tr><td>fromSourceSystem</td><td>Logikai érték</td><td>Azt jelzi, hogy az elem adatainak forrása rendszerből származik-e (például SQL Server adatbázis, Oracle Database), vagy egy felhasználó szerzője.</td></tr>
+<tr><td>fromSourceSystem</td><td>Logikai</td><td>Azt jelzi, hogy az elem adatainak forrása rendszerből származik-e (például SQL Server adatbázis, Oracle Database), vagy egy felhasználó szerzője.</td></tr>
 </table>
 
 ### <a name="common-root-properties"></a>Általános gyökérszintű tulajdonságok
@@ -101,8 +101,8 @@ Ezek a tulajdonságok az összes nem egypéldányos jegyzet típusra vonatkoznak
 ### <a name="root-asset-types"></a>Legfelső szintű eszközök típusai
 A legfelső szintű eszközök típusai azok a típusok, amelyek a katalógusban regisztrálható adategységek különböző típusait jelölik. Minden gyökérszintű típushoz van egy nézet, amely a nézetben szereplő eszközöket és megjegyzéseket ismerteti. A nézet nevét a megfelelő {view_name} URL-szegmensben kell használni, amikor REST API használatával tesz közzé egy eszközt.
 
-<table><tr><td><b>Eszköz típusa (nézet neve)</b></td><td><b>További tulajdonságok</b></td><td><b>Adattípus</b></td><td><b>Engedélyezett jegyzetek</b></td><td><b>Megjegyzések</b></td></tr><tr><td>Tábla ("táblák")</td><td></td><td></td><td>Description<p>FriendlyName<p>Címke<p>Séma<p>ColumnDescription<p>ColumnTag<p> Szakértő<p>Előnézet<p>AccessInstruction<p>TableDataProfile<p>ColumnDataProfile<p>ColumnDataClassification<p>Dokumentáció<p></td><td>A táblázat a táblázatos adatokat ábrázolja.  Például: SQL-tábla, SQL-nézet, Analysis Services táblázatos táblázat, Analysis Services többdimenziós dimenzió, Oracle Table stb.   </td></tr><tr><td>Mérték ("mértékek")</td><td></td><td></td><td>Description<p>FriendlyName<p>Címke<p>Szakértő<p>AccessInstruction<p>Dokumentáció<p></td><td>Ez a típus egy Analysis Services mértéket jelöl.</td></tr><tr><td></td><td>intézkedés</td><td>Oszlop</td><td></td><td>A mértéket leíró metaadatok</td></tr><tr><td></td><td>isCalculated </td><td>Logikai érték</td><td></td><td>Meghatározza, hogy a mérték kiszámítva vagy sem.</td></tr><tr><td></td><td>measureGroup</td><td>Sztring</td><td></td><td>A mérték fizikai tárolója</td></tr><td>KPI (KPI-k)</td><td></td><td></td><td>Description<p>FriendlyName<p>Címke<p>Szakértő<p>AccessInstruction<p>Dokumentáció</td><td></td></tr><tr><td></td><td>measureGroup</td><td>Sztring</td><td></td><td>A mérték fizikai tárolója</td></tr><tr><td></td><td>goalExpression</td><td>Sztring</td><td></td><td>MDX numerikus kifejezés vagy számítás, amely visszaadja a KPI céljának értékét.</td></tr><tr><td></td><td>valueExpression</td><td>Sztring</td><td></td><td>MDX numerikus kifejezés, amely a KPI tényleges értékét adja vissza.</td></tr><tr><td></td><td>statusExpression</td><td>Sztring</td><td></td><td>Egy MDX-kifejezés, amely a KPI állapotát jelöli egy adott időpontban.</td></tr><tr><td></td><td>trendExpression</td><td>Sztring</td><td></td><td>MDX-kifejezés, amely kiértékeli a KPI értékét az idő múlásával. A trend bármilyen időalapú feltétel lehet, amely egy adott üzleti környezetben hasznos.</td>
-<tr><td>Jelentés ("jelentések")</td><td></td><td></td><td>Description<p>FriendlyName<p>Címke<p>Szakértő<p>AccessInstruction<p>Dokumentáció<p></td><td>Ez a típus SQL Server Reporting Services jelentést jelöl </td></tr><tr><td></td><td>assetCreatedDate</td><td>Sztring</td><td></td><td></td></tr><tr><td></td><td>assetCreatedBy</td><td>Sztring</td><td></td><td></td></tr><tr><td></td><td>assetModifiedDate</td><td>Sztring</td><td></td><td></td></tr><tr><td></td><td>assetModifiedBy</td><td>Sztring</td><td></td><td></td></tr><tr><td>Tároló ("tárolók")</td><td></td><td></td><td>Description<p>FriendlyName<p>Címke<p>Szakértő<p>AccessInstruction<p>Dokumentáció<p></td><td>Ez a típus más eszközök tárolóját jelöli, például egy SQL-adatbázist, egy Azure BLOB-tárolót vagy egy Analysis Services modellt.</td></tr></table>
+<table><tr><td><b>Eszköz típusa (nézet neve)</b></td><td><b>További tulajdonságok</b></td><td><b>Adattípus</b></td><td><b>Engedélyezett jegyzetek</b></td><td><b>Megjegyzések</b></td></tr><tr><td>Tábla ("táblák")</td><td></td><td></td><td>Leírás<p>FriendlyName<p>Címke<p>Séma<p>ColumnDescription<p>ColumnTag<p> Szakértő<p>Előnézet<p>AccessInstruction<p>TableDataProfile<p>ColumnDataProfile<p>ColumnDataClassification<p>Dokumentáció<p></td><td>A táblázat a táblázatos adatokat ábrázolja.  Például: SQL-tábla, SQL-nézet, Analysis Services táblázatos táblázat, Analysis Services többdimenziós dimenzió, Oracle Table stb.   </td></tr><tr><td>Mérték ("mértékek")</td><td></td><td></td><td>Leírás<p>FriendlyName<p>Címke<p>Szakértő<p>AccessInstruction<p>Dokumentáció<p></td><td>Ez a típus egy Analysis Services mértéket jelöl.</td></tr><tr><td></td><td>intézkedés</td><td>Oszlop</td><td></td><td>A mértéket leíró metaadatok</td></tr><tr><td></td><td>isCalculated </td><td>Logikai</td><td></td><td>Meghatározza, hogy a mérték kiszámítva vagy sem.</td></tr><tr><td></td><td>measureGroup</td><td>Sztring</td><td></td><td>A mérték fizikai tárolója</td></tr><td>KPI (KPI-k)</td><td></td><td></td><td>Leírás<p>FriendlyName<p>Címke<p>Szakértő<p>AccessInstruction<p>Dokumentáció</td><td></td></tr><tr><td></td><td>measureGroup</td><td>Sztring</td><td></td><td>A mérték fizikai tárolója</td></tr><tr><td></td><td>goalExpression</td><td>Sztring</td><td></td><td>MDX numerikus kifejezés vagy számítás, amely visszaadja a KPI céljának értékét.</td></tr><tr><td></td><td>valueExpression</td><td>Sztring</td><td></td><td>MDX numerikus kifejezés, amely a KPI tényleges értékét adja vissza.</td></tr><tr><td></td><td>statusExpression</td><td>Sztring</td><td></td><td>Egy MDX-kifejezés, amely a KPI állapotát jelöli egy adott időpontban.</td></tr><tr><td></td><td>trendExpression</td><td>Sztring</td><td></td><td>MDX-kifejezés, amely kiértékeli a KPI értékét az idő múlásával. A trend bármilyen időalapú feltétel lehet, amely egy adott üzleti környezetben hasznos.</td>
+<tr><td>Jelentés ("jelentések")</td><td></td><td></td><td>Leírás<p>FriendlyName<p>Címke<p>Szakértő<p>AccessInstruction<p>Dokumentáció<p></td><td>Ez a típus SQL Server Reporting Services jelentést jelöl </td></tr><tr><td></td><td>assetCreatedDate</td><td>Sztring</td><td></td><td></td></tr><tr><td></td><td>assetCreatedBy</td><td>Sztring</td><td></td><td></td></tr><tr><td></td><td>assetModifiedDate</td><td>Sztring</td><td></td><td></td></tr><tr><td></td><td>assetModifiedBy</td><td>Sztring</td><td></td><td></td></tr><tr><td>Tároló ("tárolók")</td><td></td><td></td><td>Leírás<p>FriendlyName<p>Címke<p>Szakértő<p>AccessInstruction<p>Dokumentáció<p></td><td>Ez a típus más eszközök tárolóját jelöli, például egy SQL-adatbázist, egy Azure BLOB-tárolót vagy egy Analysis Services modellt.</td></tr></table>
 
 ### <a name="annotation-types"></a>Jegyzetek típusai
 A jegyzetek típusai a metaadatok olyan típusait jelölik, amelyek a katalógusban más típusokhoz rendelhetők.
@@ -123,11 +123,11 @@ A jegyzetek típusai a metaadatok olyan típusait jelölik, amelyek a katalógus
 <tr><td></td><td>oszlopok</td><td>Oszlop []</td><td>Oszlopos objektumok tömbje. Leírják az oszlopot az adatforrásból származtatott adatokkal.</td></tr>
 
 <tr><td>ColumnDescription ("columnDescriptions")</td><td></td><td></td><td>Ez a tulajdonság egy oszlop leírását tartalmazza.  A rendszer minden felhasználója saját leírásokat adhat hozzá több oszlophoz (legfeljebb egy oszlopra vetítve). Csak a ColumnDescription objektumokat létrehozó felhasználó szerkesztheti őket.  (A rendszergazdák és az eszközök tulajdonosai törölhetik a ColumnDescription objektumot, de nem szerkeszthetik azt). A rendszer külön kezeli ezeket a felhasználó oszlopának leírásait.  Így a ColumnDescription objektumok tömbje minden eszközön (egy oszlopban minden olyan felhasználó számára, aki az adatforrásból származtatott adatokat tartalmaz, valamint az oszlopra vonatkozó ismereteiket is tartalmazza).  A ColumnDescription lazán kötődik a sémához, így elkerülhet a szinkronizálás. Előfordulhat, hogy a ColumnDescription olyan oszlopot ír le, amely már nem létezik a sémában.  A leírás és a séma szinkronizálásban való megtartásához az író gondoskodik.  Az adatforrás tartalmazhat oszlopokra vonatkozó leírást is, amelyek további ColumnDescription objektumokat hoznak létre az eszköz futtatásakor.</td></tr>
-<tr><td></td><td>columnName (oszlopnév)</td><td>Sztring</td><td>Annak az oszlopnak a neve, amelyre a Leírás hivatkozik.</td></tr>
+<tr><td></td><td>columnName</td><td>Sztring</td><td>Annak az oszlopnak a neve, amelyre a Leírás hivatkozik.</td></tr>
 <tr><td></td><td>leírás</td><td>Sztring</td><td>az oszlop rövid leírása (2-3 sor).</td></tr>
 
 <tr><td>ColumnTag ("columnTags")</td><td></td><td></td><td>Ez a tulajdonság egy oszlop címkéjét tartalmazza. A rendszer minden felhasználója több címkét is hozzáadhat egy adott oszlophoz, és több oszlophoz is hozzáadhat címkéket. Csak a ColumnTag objektumokat létrehozó felhasználó szerkesztheti őket. (A rendszergazdák és az eszközök tulajdonosai törölhetik a ColumnTag objektumot, de nem szerkeszthetik azt). A System ezeket a felhasználói oszlopokat külön-külön kezeli.  Így a ColumnTag objektumok tömbje minden eszközön megtalálható.  A ColumnTag lazán kötődik a sémához, így elkerülhet a szinkronizálás. Előfordulhat, hogy a ColumnTag olyan oszlopot ír le, amely már nem létezik a sémában.  Az oszlop címkéje és a sémája szinkronban tartása az író.</td></tr>
-<tr><td></td><td>columnName (oszlopnév)</td><td>Sztring</td><td>Annak az oszlopnak a neve, amelyre a címke hivatkozik.</td></tr>
+<tr><td></td><td>columnName</td><td>Sztring</td><td>Annak az oszlopnak a neve, amelyre a címke hivatkozik.</td></tr>
 <tr><td></td><td>címke</td><td>Sztring</td><td>Az oszlopot leíró címke.</td></tr>
 
 <tr><td>Expert ("szakértők")</td><td></td><td></td><td>Ez a tulajdonság olyan felhasználót tartalmaz, aki az adatkészletben szakértőnek számít. A szakértői vélemények (leírások) buborék az UX tetejére a leírások listázásakor. Minden felhasználó megadhatja saját szakértőit. Csak az adott felhasználó szerkesztheti a szakértői objektumot. (A rendszergazdák és az eszközök tulajdonosai törölhetik a szakértői objektumokat, de nem szerkeszthetik azt).</td></tr>
@@ -150,7 +150,7 @@ A jegyzetek típusai a metaadatok olyan típusait jelölik, amelyek a katalógus
 <tr><td></td><td>oszlopok</td></td><td>ColumnDataProfile[]</td><td>Oszlop típusú adatprofilok tömbje.</td></tr>
 
 <tr><td>ColumnDataClassification ("columnDataClassifications")</td><td></td><td></td><td></td></tr>
-<tr><td></td><td>columnName (oszlopnév)</td><td>Sztring</td><td>Annak az oszlopnak a neve, amelyre a besorolás vonatkozik.</td></tr>
+<tr><td></td><td>columnName</td><td>Sztring</td><td>Annak az oszlopnak a neve, amelyre a besorolás vonatkozik.</td></tr>
 <tr><td></td><td>besorolás</td><td>Sztring</td><td>Az ebben az oszlopban lévő adatbesorolás.</td></tr>
 
 <tr><td>Dokumentáció ("dokumentáció")</td><td></td><td></td><td>Egy adott eszközhöz csak egy dokumentáció rendelhető hozzá.</td></tr>
@@ -185,11 +185,11 @@ A gyakori típusok a tulajdonságok típusaként használhatók, de nem elemek.
 <tr><td></td><td>típus</td><td>sztring</td><td>az oszlop vagy attribútum adattípusa. A megengedett típusok az eszköz forrás típusa függenek.  Csak a típusok egy részhalmaza támogatott.</td></tr>
 <tr><td></td><td>maxLength</td><td>int</td><td>Az oszlop vagy attribútum számára engedélyezett maximális hossz. Az adatforrásból származtatva. Csak bizonyos típusú forrásokra érvényes.</td></tr>
 <tr><td></td><td>pontosság</td><td>byte</td><td>Az oszlop vagy attribútum pontossága. Az adatforrásból származtatva. Csak bizonyos típusú forrásokra érvényes.</td></tr>
-<tr><td></td><td>isNullable</td><td>Logikai érték</td><td>Azt határozza meg, hogy az oszlop tartalmazhat-e null értéket. Az adatforrásból származtatva. Csak bizonyos típusú forrásokra érvényes.</td></tr>
+<tr><td></td><td>isNullable</td><td>Logikai</td><td>Azt határozza meg, hogy az oszlop tartalmazhat-e null értéket. Az adatforrásból származtatva. Csak bizonyos típusú forrásokra érvényes.</td></tr>
 <tr><td></td><td>kifejezés</td><td>sztring</td><td>Ha az érték egy számított oszlop, akkor ez a mező tartalmazza az értéket kifejező kifejezést. Az adatforrásból származtatva. Csak bizonyos típusú forrásokra érvényes.</td></tr>
 
 <tr><td>ColumnDataProfile</td><td></td><td></td><td></td></tr>
-<tr><td></td><td>columnName (oszlopnév) </td><td>sztring</td><td>Az oszlop neve</td></tr>
+<tr><td></td><td>columnName </td><td>sztring</td><td>Az oszlop neve</td></tr>
 <tr><td></td><td>típus </td><td>sztring</td><td>Az oszlop típusa</td></tr>
 <tr><td></td><td>p </td><td>sztring</td><td>Az adatkészletben szereplő minimális érték</td></tr>
 <tr><td></td><td>max. </td><td>sztring</td><td>Az adatkészletben található maximális érték</td></tr>
@@ -343,5 +343,5 @@ A speciális rendszerbiztonsági tag &lt; mindenkinek &gt; van "00000000-0000-00
 > A PUT-ben nem szükséges egy elemek adattartalomának megadása a törzsben: PUT – csak szerepkörök és/vagy engedélyek frissítésére használható.
 > 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 [Azure Data Catalog REST API-hivatkozás](/rest/api/datacatalog/)

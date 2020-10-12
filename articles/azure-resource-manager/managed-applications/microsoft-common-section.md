@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 06/27/2018
 ms.author: tomfitz
 ms.openlocfilehash: 924aff8f2ba3d796b65f52494845f3b10018065c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87063965"
 ---
 # <a name="microsoftcommonsection-ui-element"></a>Microsoft. Common. szakasz FELHASZNÁLÓIFELÜLET-elem
@@ -45,10 +45,10 @@ Egy vezérlőelem, amely egy vagy több elemet csoportosít egy fejléc alá.
 
 ## <a name="remarks"></a>Megjegyzések
 
-- `elements`tartalmaznia kell legalább egy elemet, és az összes elem típusát, kivéve a következőt: `Microsoft.Common.Section` .
+- `elements` tartalmaznia kell legalább egy elemet, és az összes elem típusát, kivéve a következőt: `Microsoft.Common.Section` .
 - Ez az elem nem támogatja a `toolTip` tulajdonságot.
 
-## <a name="sample-output"></a>Példa kimenet
+## <a name="sample-output"></a>Példakimenet
 A elemek kimeneti értékeinek eléréséhez használja az alapértékek `elements` [()](create-ui-definition-referencing-functions.md#basics) vagy a [Steps ()](create-ui-definition-referencing-functions.md#steps) függvényt és a dot jelölést:
 
 ```json

@@ -8,10 +8,10 @@ ms.date: 09/19/2017
 ms.author: rogarana
 ms.subservice: files
 ms.openlocfilehash: 6b201565ae2bcadccf55cee78ade0e011e603a15
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85515391"
 ---
 # <a name="develop-for-azure-files-with-c"></a>Fejlesztés a C++ nyelv Azure Files
@@ -160,7 +160,7 @@ directory.delete_directory_if_exists();
 
 ## <a name="enumerate-files-and-directories-in-an-azure-file-share"></a>Fájlok és könyvtárak enumerálása Azure-fájlmegosztás esetén
 
-Egy megosztáson belüli fájlok és könyvtárak listájának beszerzése egyszerűen elvégezhető a **list_files_and_directories** **cloud_file_directory** -hivatkozással való meghívásával. Ha a tulajdonságok és metódusok gazdag készletét szeretné elérni egy visszaadott **list_file_and_directory_item**, meg kell hívnia a **list_file_and_directory_item. as_file** metódust egy **cloud_file** objektum beszerzéséhez, vagy a list_file_and_directory_item **. as_directory** metódust egy **cloud_file_directory** objektum beszerzéséhez.
+Egy megosztáson belüli fájlok és könyvtárak listájának beszerzése egyszerűen elvégezhető a **list_files_and_directories** **cloud_file_directory** -hivatkozással való meghívásával. Ha a tulajdonságok és metódusok gazdag készletét szeretné elérni egy visszaadott **list_file_and_directory_item**, meg kell hívnia a **list_file_and_directory_item. a _file** metódussal lekérhet egy **cloud_file** -objektumot, vagy a list_file_and_directory_item **. as _directory** metódust **cloud_file_directory** objektum beolvasásához.
 
 A következő kód bemutatja, hogyan kérhető le és jeleníthető meg a megosztás gyökérkönyvtárában lévő egyes elemek URI-ja.
 

@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive
 ms.date: 12/23/2019
 ms.openlocfilehash: 82e3374491aa119d9985ea7ef31e180c920511d3
-ms.sourcegitcommit: 124f7f699b6a43314e63af0101cd788db995d1cb
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86087741"
 ---
 # <a name="create-apache-hbase-clusters-on-hdinsight-in-azure-virtual-network"></a>Apache HBase-fürtök létrehozása a HDInsight-ben az Azure-ban Virtual Network
@@ -43,7 +43,7 @@ Ebben a szakaszban egy Linux-alapú Apache HBase-fürtöt hoz létre egy Azure-b
 > * **Alhálózat neve**: subnet1
 > * **Alhálózati címtartomány**: 10.0.0.0/24
 >
-> `CLUSTERNAME`a a sablon használatakor megadott fürt nevével lesz lecserélve.
+> `CLUSTERNAME` a a sablon használatakor megadott fürt nevével lesz lecserélve.
 
 1. Válassza ki az alábbi képet a sablon megnyitásához a Azure Portal. A sablon az [Azure Gyorsindítás sablonjaiban](https://azure.microsoft.com/resources/templates/101-hdinsight-hbase-linux-vnet/)található.
 
@@ -51,7 +51,7 @@ Ebben a szakaszban egy Linux-alapú Apache HBase-fürtöt hoz létre egy Azure-b
 
 1. Az **Egyéni telepítés** párbeszédpanelen válassza a **Sablon szerkesztése**lehetőséget.
 
-1. Az 165. sorban módosítsa az értéket a következőre: `Standard_A3` `Standard_A4_V2` . Kattintson a **Mentés** gombra.
+1. Az 165. sorban módosítsa az értéket a következőre: `Standard_A3` `Standard_A4_V2` . Ez után válassza a **Mentés** lehetőséget.
 
 1. Fejezze be a fennmaradó sablont a következő információkkal:
 
@@ -66,7 +66,7 @@ Ebben a szakaszban egy Linux-alapú Apache HBase-fürtöt hoz létre egy Azure-b
 
     Válassza **az Elfogadom a fenti feltételeket és a fent leírt feltételeket**.
 
-1. Válassza a **Beszerzés** lehetőséget. Egy fürt létrehozása nagyjából 20 percet vesz igénybe. A fürt létrehozása után kiválaszthatja a fürtöt a portálon a megnyitásához.
+1. Válassza a **Vásárlás** lehetőséget. Egy fürt létrehozása nagyjából 20 percet vesz igénybe. A fürt létrehozása után kiválaszthatja a fürtöt a portálon a megnyitásához.
 
 A cikk befejezése után érdemes lehet törölni a fürtöt. A HDInsight az Azure Storage szolgáltatásban tárolja az adatokat, így biztonságosan törölhet olyan fürtöket, amelyek nincsenek használatban. Ráadásul a HDInsight-fürtök akkor is díjkötelesek, amikor éppen nincsenek használatban. Mivel a fürt költsége a sokszorosa a tároló költségeinek, gazdaságossági szempontból is ésszerű törölni a használaton kívüli fürtöket. A fürtök törlésére vonatkozó utasításokért lásd: [Apache Hadoop-fürtök kezelése a HDInsight-ben a Azure Portal használatával](../hdinsight-administer-use-portal-linux.md#delete-clusters).
 
@@ -146,11 +146,11 @@ Ha ezt az információt Java-alkalmazásokban szeretné használni, kövesse az 
 
 ## <a name="next-steps"></a>További lépések
 
-Ebben a cikkben megtanulta, hogyan hozhat létre Apache HBase-fürtöt. További tudnivalókért lásd:
+Ebben a cikkben megtanulta, hogyan hozhat létre Apache HBase-fürtöt. További információ:
 
 * [Ismerkedés a HDInsight szolgáltatással](../hadoop/apache-hadoop-linux-tutorial-get-started.md)
 * [Üres peremhálózati csomópontok használata a HDInsight](../hdinsight-apps-use-edge-node.md)
 * [Apache HBase-replikálás konfigurálása a HDInsight-ben](apache-hbase-replication.md)
 * [Apache Hadoop-fürtök létrehozása a HDInsight-ben](../hdinsight-hadoop-provision-linux-clusters.md)
 * [Az Apache HBase használatának első lépései a HDInsight Apache Hadoop](./apache-hbase-tutorial-get-started-linux.md)
-* [A Virtual Network áttekintése](../../virtual-network/virtual-networks-overview.md)
+* [Virtual Network áttekintése](../../virtual-network/virtual-networks-overview.md)

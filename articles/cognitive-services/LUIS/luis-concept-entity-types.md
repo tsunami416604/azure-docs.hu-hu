@@ -6,10 +6,10 @@ ms.subservice: language-understanding
 ms.topic: conceptual
 ms.date: 08/06/2020
 ms.openlocfilehash: 398d18642052726af4d4920443bad515ec0b5bef
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91316562"
 ---
 # <a name="extract-data-with-entities"></a>Adatok kinyerése entitásokkal
@@ -99,7 +99,7 @@ A szülő alentitásának gépi tanulási entitásnak kell lennie. Az alentitás
 
 Válassza ki az entitást az Adatkivonatok és a kinyerés utáni megjelenítésük alapján.
 
-|Entitástípus|Rendeltetés|
+|Entitástípus|Cél|
 |--|--|
 |[**Gépi megtanult**](tutorial-machine-learned-entity.md)|Beágyazott, összetett adatok kinyerése a címkével ellátott példákból. |
 |[**Listáját**](reference-entity-list.md)|A **pontos szöveges egyezéssel**kinyert elemek és szinonimáik listája.|

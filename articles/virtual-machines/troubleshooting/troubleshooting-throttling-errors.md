@@ -14,10 +14,10 @@ ms.date: 09/18/2018
 ms.author: changov
 ms.reviewer: vashan, rajraj
 ms.openlocfilehash: b1cc8a43423ecd33218948aaa001fc34877eac60
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87074284"
 ---
 # <a name="troubleshooting-api-throttling-errors"></a>API-szabályozási hibák elhárítása 
@@ -32,7 +32,7 @@ Ha egy Azure API-ügyfél szabályozási hibát észlel, akkor a HTTP-állapot 4
 
 ## <a name="call-rate-informational-response-headers"></a>Hívási sebesség – tájékoztató válasz fejlécei 
 
-| Fejléc                            | Érték formátuma                           | Példa                               | Description                                                                                                                                                                                               |
+| Fejléc                            | Érték formátuma                           | Példa                               | Leírás                                                                                                                                                                                               |
 |-----------------------------------|----------------------------------------|---------------------------------------|-----------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------|
 | x-MS-ratelimit – fennmaradó erőforrás |```<source RP>/<policy or bucket>;<count>```| Microsoft. számítás/HighCostGet3Min; 159 | A fennmaradó API-hívások száma az erőforrás-gyűjtőre vagy a műveleti csoportra kiterjedő szabályozási házirendhez, beleértve a kérelem célját                                                                   |
 | x-ms-request-charge               | ```<count>```                             | 1                                     | A "felszámított hívások száma" a HTTP-kérelemhez a vonatkozó szabályzat korlátja felé. Ez általában 1. A Batch-kérések, például a virtuálisgép-méretezési csoport skálázása több számlálást is igénybe vehet. |
@@ -93,7 +93,7 @@ A PowerShell-parancsmagok REST Service API-t használnak, amelyet közvetlenül 
 
 - Ne próbálja megismételni az Azure Service API-hibákat feltétel nélkül és/vagy azonnal. Gyakori esemény, hogy az ügyfél kódja gyors újrapróbálkozási hurokba kerül, amikor olyan hibát tapasztal, amely nem próbálkozik újra. Az újrapróbálkozások végül kimerítik a megcélzott művelet csoportjának engedélyezett hívási korlátját, és az előfizetés más ügyfeleire is hatással vannak. 
 - A nagy mennyiségű API-automatizálási esetekben érdemes lehet a proaktív ügyféloldali önszabályozást megvalósítani, ha a cél műveleti csoport számára elérhető hívások száma az alacsonyabb küszöbérték alá esik. 
-- Az aszinkron műveletek nyomon követése esetén vegye figyelembe az újrapróbálkozások utáni fejléc-emlékeztetőket. 
+- Az aszinkron műveletek nyomon követése során vegye figyelembe a Retry-After fejléc mutatóit. 
 - Ha az ügyfél kódjának egy adott virtuális gépre vonatkozó információra van szüksége, a virtuális gép közvetlen lekérdezése ahelyett, hogy a megjelenő erőforráscsoporthoz tartozó összes virtuális gépet, vagy a teljes előfizetést fel kell vennie, majd ki kell vennie a szükséges virtuális gépet az ügyféloldali 
 - Ha az ügyfél kódjában virtuális gépek, lemezek és Pillanatképek szükségesek egy adott Azure-helyről, használja a lekérdezés hely szerinti formáját az összes előfizetési virtuális gép lekérdezése helyett, majd az ügyféloldali szűrés hely alapján: `GET /subscriptions/<subId>/providers/Microsoft.Compute/locations/<location>/virtualMachines?api-version=2017-03-30` lekérdezés a számítási erőforrás-szolgáltató regionális végpontok számára. 
 -   A virtuális gépek és a virtuálisgép-méretezési csoportok API-erőforrásainak létrehozásakor vagy frissítésekor sokkal hatékonyabb a visszaadott aszinkron művelet befejezésének követése, mint az erőforrás URL-címén végzett lekérdezés (a alapján `provisioningState` ).

@@ -8,10 +8,10 @@ ms.topic: tutorial
 ms.date: 03/26/2020
 ms.custom: devx-track-java
 ms.openlocfilehash: e5b8dc325fa7eaceaa0274029049f546db5b6995
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90888534"
 ---
 # <a name="use-intellij-to-deploy-azure-spring-cloud-applications"></a>IntelliJ használata az Azure Spring Cloud-alkalmazások üzembe helyezéséhez
@@ -41,7 +41,7 @@ Az Azure Toolkit for IntelliJ IDEA 3.35.0 az IntelliJ **plugins** felhasználói
 1. Kattintson az **ide újraindítása**elemre.
 
 ## <a name="tutorial-procedures"></a>Oktatóanyag-eljárások
-Az alábbi eljárások a IntelliJ IDEA használatával telepítenek egy "Helló világ!" alkalmazás alkalmazást.
+Az alábbi eljárások a IntelliJ IDEA használatával telepítenek egy „Helló világ!” alkalmazás alkalmazást.
 
 * A GS-Spring-boot projekt megnyitása
 * Üzembe helyezés az Azure Spring Cloud-on
@@ -103,6 +103,6 @@ A naplók beszerzése:
 
     ![Adatfolyam-napló kimenete](media/spring-cloud-intellij-howto/streaming-log-output.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 * [Spring-alkalmazás előkészítése az Azure Spring Cloud-hoz](https://docs.microsoft.com/azure/spring-cloud/spring-cloud-tutorial-prepare-app-deployment)
 * [További információ a Azure Toolkit for IntelliJ](https://docs.microsoft.com/azure/developer/java/toolkit-for-intellij/)

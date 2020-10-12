@@ -7,10 +7,10 @@ ms.reviewer: klam, logicappspm
 ms.topic: article
 ms.date: 01/01/2018
 ms.openlocfilehash: 9163071237041d7c8510a644c573e3763434bb0c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87060670"
 ---
 # <a name="create-edit-or-extend-json-for-logic-app-workflow-definitions-in-azure-logic-apps"></a>Logikai alkalmazásokhoz készült JSON-munkafolyamatdefiníciók létrehozása, szerkesztése, vagy kiterjesztése az Azure Logic Appsben
@@ -149,7 +149,7 @@ Először a munkafolyamat lekéri a cikkek listáját. Ezután a munkafolyamat a
 
 *   A [`intersection()`](../logic-apps/logic-apps-workflow-definition-language.md) függvény ellenőrzi, hogy a kategória megfelel-e egy ismert kategóriának.
 
-*   A megfelelő kategória beszerzése után a példa szögletes zárójelek használatával lekéri az elemet a térképről:`parameters[...]`
+*   A megfelelő kategória beszerzése után a példa szögletes zárójelek használatával lekéri az elemet a térképről: `parameters[...]`
 
 ``` json
 {

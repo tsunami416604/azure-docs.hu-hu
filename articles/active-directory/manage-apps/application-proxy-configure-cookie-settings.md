@@ -13,10 +13,10 @@ ms.author: kenwith
 ms.reviewer: japere
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 656841fc8e62e81318ffd568069c0664192b1747
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84764893"
 ---
 # <a name="cookie-settings-for-accessing-on-premises-applications-in-azure-active-directory"></a>Cookie-beállítások a helyszíni alkalmazások eléréséhez Azure Active Directory
@@ -27,9 +27,9 @@ Azure Active Directory (Azure AD) hozzáféréssel és munkamenet-cookie-kkal re
 
 Az [alkalmazásproxy](application-proxy.md) a következő hozzáférési és munkamenet-cookie-beállításokat használja.
 
-| Cookie-beállítás | Alapértelmezett | Description | Javaslatok |
+| Cookie-beállítás | Alapértelmezett | Leírás | Javaslatok |
 | -------------- | ------- | ----------- | --------------- |
-| Csak HTTP-cookie használata | **Nem** | **Igen** , lehetővé teszi, hogy az alkalmazásproxy tartalmazza a HTTPOnly jelzőt a http-válasz fejlécekben. Ez a jelző további biztonsági előnyöket biztosít, például megakadályozza az ügyféloldali parancsfájlok (CSS) használatát a cookie-k másolásával vagy módosításával.<br></br><br></br>Mielőtt támogatjuk a csak HTTP-beállítást, az alkalmazásproxy titkosított és továbbított sütiket egy biztonságos TLS-csatornán keresztül a módosítás elleni védelem érdekében. | A további biztonsági előnyök miatt használja az **Igen** lehetőséget.<br></br><br></br>**Nem** használható olyan ügyfelek vagy felhasználói ügynökök számára, akiknek hozzáférésre van szükségük a munkamenet cookie-hoz. Például a **nem** érték használata olyan RDP-vagy MTSC-ügyfél esetén, amely az alkalmazásproxy használatával csatlakozik egy távoli asztali átjáró-kiszolgálóhoz.|
+| HTTP-Only cookie használata | **Nem** | **Igen** , lehetővé teszi, hogy az alkalmazásproxy tartalmazza a HTTPOnly jelzőt a http-válasz fejlécekben. Ez a jelző további biztonsági előnyöket biztosít, például megakadályozza az ügyféloldali parancsfájlok (CSS) használatát a cookie-k másolásával vagy módosításával.<br></br><br></br>Mielőtt támogatta a HTTP-Only beállítást, az alkalmazásproxy titkosított és továbbított sütiket egy biztonságos TLS-csatornán keresztül a módosítás elleni védelem érdekében. | A további biztonsági előnyök miatt használja az **Igen** lehetőséget.<br></br><br></br>**Nem** használható olyan ügyfelek vagy felhasználói ügynökök számára, akiknek hozzáférésre van szükségük a munkamenet cookie-hoz. Például a **nem** érték használata olyan RDP-vagy MTSC-ügyfél esetén, amely az alkalmazásproxy használatával csatlakozik egy távoli asztali átjáró-kiszolgálóhoz.|
 | Biztonságos cookie használata | **Nem** | **Igen** , lehetővé teszi, hogy az alkalmazásproxy tartalmazza a biztonságos jelölőt a http-válasz fejlécekben. A biztonságos cookie-k biztonságosabbá teszi a cookie-kat egy TLS-védelemmel ellátott csatornán keresztül, például a HTTPS-en keresztül. Ez megakadályozza, hogy a cookie-k a cookie-k egyszerű szövegben való továbbítása miatt ne legyenek megfigyelhetők a jogosulatlan felektől. | A további biztonsági előnyök miatt használja az **Igen** lehetőséget.|
 | Állandó cookie használata | **Nem** | **Igen** , az Application proxy lehetővé teszi, hogy a böngésző bezárásakor ne járjon le a hozzáférési cookie-k. Az adatmegőrzés addig tart, amíg a hozzáférési jogkivonat le nem jár, vagy amíg a felhasználó manuálisan nem törli az állandó cookie-kat. | A **nem** használható a felhasználók hitelesítésének megtartásához kapcsolódó biztonsági kockázat miatt.<br></br><br></br>Javasoljuk, hogy csak az **Igen értéket** használja olyan régebbi alkalmazásokhoz, amelyek nem oszthatják meg a sütiket a folyamatok között. Az állandó cookie-k használata helyett érdemes frissíteni az alkalmazást úgy, hogy kezelni tudja a különböző folyamatok közötti megosztási cookie-kat. Előfordulhat például, hogy állandó cookie-k szükségesek ahhoz, hogy a felhasználók egy SharePoint-webhelyről nyissák meg az Office-dokumentumokat a Explorer nézetben. Állandó cookie-k nélkül ez a művelet meghiúsulhat, ha a hozzáférési cookie-k nem vannak megosztva a böngésző, a Explorer folyamat és az Office-folyamat között. |
 
@@ -41,7 +41,7 @@ A Chrome 80-es és újabb verzióiban a Chromium-t kihasználó böngészőkben 
 
 Az alkalmazásproxy-cookie-k változásai az alábbi néhány héttel a Chrome 80 kiadási dátum előtt jelennek meg.
 
-Továbbá, ha a háttérbeli alkalmazás olyan cookie-kkal rendelkezik, amelyeknek harmadik féltől származó kontextusban is elérhetőnek kell lenniük, explicit módon engedélyeznie kell az alkalmazást, hogy az SameSite = none beállítást használja a cookie-k használatához. Az alkalmazásproxy lefordítja a set-cookie fejlécet az URL-CÍMEKre, és tiszteletben tartja a háttér-alkalmazás által beállított cookie-k beállításait.
+Továbbá, ha a háttérbeli alkalmazás olyan cookie-kkal rendelkezik, amelyeknek harmadik féltől származó kontextusban is elérhetőnek kell lenniük, explicit módon engedélyeznie kell az alkalmazást, hogy az SameSite = none beállítást használja a cookie-k használatához. Az alkalmazásproxy lefordítja az Set-Cookie fejlécet az URL-CÍMEKre, és tiszteletben tartja a háttér-alkalmazás által beállított cookie-k beállításait.
 
 
 

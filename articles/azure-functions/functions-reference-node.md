@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 07/17/2020
 ms.custom: devx-track-js
 ms.openlocfilehash: bd5eea6d97ca5ff20622c651b2c6ee75f9014d55
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91317176"
 ---
 # <a name="azure-functions-javascript-developer-guide"></a>Azure Functions JavaScript fejlesztői útmutató
@@ -201,7 +201,7 @@ module.exports = (context) => {
 
 A függvénynek átadott környezet egy tulajdonságot tesz elérhetővé `executionContext` , amely egy olyan objektum, amely a következő tulajdonságokkal rendelkezik:
 
-| Tulajdonság neve  | Típus  | Description |
+| Tulajdonság neve  | Típus  | Leírás |
 |---------|---------|---------|
 | `invocationId` | Sztring | Egyedi azonosítót biztosít az adott függvény meghívásához. |
 | `functionName` | Sztring | A futó függvény nevét adja meg. |
@@ -293,7 +293,7 @@ context.log(message)
 Lehetővé teszi, hogy az alapértelmezett nyomkövetési szinten írjon a streaming Function naplóiba. A `context.log` (z) rendszeren további naplózási módszerek érhetők el, amelyek lehetővé teszik a függvények naplóinak más nyomkövetési szinten történő írására:
 
 
-| Metódus                 | Leírás                                |
+| Módszer                 | Leírás                                |
 | ---------------------- | ------------------------------------------ |
 | **hiba (_üzenet_)**   | A hiba szintű naplózás vagy az alacsonyabb értékre ír.   |
 | **Figyelmeztetés (_üzenet_)**    | Figyelmeztetési szintű naplózás vagy alacsonyabb értékre írás. |
@@ -451,7 +451,7 @@ A következő táblázat az operációs rendszer által támogatott Node.js-verz
 
 | Függvények verziója | Csomópont verziója (Windows) | Csomópont verziója (Linux) |
 |---|---| --- |
-| 1. x | 6.11.2 (a futtatókörnyezet zárolta) | n.a. |
+| 1. x | 6.11.2 (a futtatókörnyezet zárolta) | n/a |
 | 2. x  | ~ 8<br/>~ 10 (ajánlott)<br/>~ 12<sup>*</sup> | ~ 8 (ajánlott)<br/>~ 10  |
 | 3. x | ~ 10<br/>~ 12 (ajánlott)  | ~ 10<br/>~ 12 (ajánlott) |
 

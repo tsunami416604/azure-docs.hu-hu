@@ -13,10 +13,10 @@ ms.date: 05/31/2020
 ms.author: curtand
 ms.reviewer: olhaun
 ms.openlocfilehash: 5aac6c0b903a3b2adf481a2c63847272122ce2d7
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88798975"
 ---
 # <a name="download-and-install-the-microsoft-authenticator-app"></a>Töltse le és telepítse a Microsoft Authenticator alkalmazást
@@ -49,7 +49,7 @@ Telepítse a Microsoft Authenticator alkalmazás legújabb verzióját az operá
 >[!Important]
 >Ha jelenleg nem a mobileszközön található, akkor továbbra is letöltheti a Microsoft Authenticator alkalmazást a [Microsoft Authenticator oldaláról](https://www.microsoft.com/en-us/account/authenticator).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Az alkalmazás letöltése és telepítése után további információért tekintse meg a [hitelesítő alkalmazás áttekintését](user-help-auth-app-overview.md) . További beállítási lehetőségeket a következő témakörben talál:
 

@@ -10,10 +10,10 @@ ms.reviewer: mikeray
 ms.date: 09/22/2020
 ms.topic: conceptual
 ms.openlocfilehash: c1560325f21fd60e6bdb2a64eb987359a7246ff2
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91317327"
 ---
 # <a name="storage-configuration"></a>Tárolási konfiguráció
@@ -134,7 +134,7 @@ A tárolásnak általában két típusa van:
 
 Az Azure-beli adatszolgáltatásokhoz tartozó egyes szolgáltatások a távoli, megosztott tárterület használatára való konfigurálástól függenek, mivel a szolgáltatások nem képesek replikálni az adatok replikálását. Ezek a szolgáltatások az adatkezelő hüvelyek gyűjteményében találhatók:
 
-|**Szolgáltatás**|**Állandó kötet jogcímei**|
+|**Service**|**Állandó kötet jogcímei**|
 |---|---|
 |**ElasticSearch**|`<namespace>/logs-logsdb-0`, `<namespace>/data-logsdb-0`|
 |**InfluxDB**|`<namespace>/logs-metricsdb-0`, `<namespace>/data-metricsdb-0`|
@@ -175,14 +175,14 @@ Egy példánynak a vagy parancs használatával történő létrehozásakor `azd
 
 Az alábbi táblázat felsorolja az Azure SQL felügyelt példány tárolóján belüli elérési utakat, amelyek az adatforgalom és a naplók állandó kötetére vannak leképezve:
 
-|Paraméter neve, rövid név|Az MSSQL-MIAA tárolón belüli elérési út|Description|
+|Paraméter neve, rövid név|Az MSSQL-MIAA tárolón belüli elérési út|Leírás|
 |---|---|---|
 |`--storage-class-data`, `-scd`|/var/opt|Az MSSQL-telepítéshez és más rendszerfolyamatokhoz tartozó címtárakat tartalmaz. Az MSSQL-címtár alapértelmezett (beleértve a tranzakciós naplókat is), a hibanapló & a biztonsági mentési könyvtárakat tartalmazza|
 |`--storage-class-logs`, `-scl`|/var/log|A konzol kimenetét (stderr, StdOut) tároló könyvtárakat, a tárolón belüli folyamatok egyéb naplózási információit tartalmazza.|
 
 Az alábbi táblázat felsorolja a PostgreSQL-példány tárolóján belüli elérési utakat, amelyek az adatforgalom és a naplók állandó kötetére vannak leképezve:
 
-|Paraméter neve, rövid név|Elérési út a postgres-tárolón belül|Description|
+|Paraméter neve, rövid név|Elérési út a postgres-tárolón belül|Leírás|
 |---|---|---|
 |`--storage-class-data`, `-scd`|/var/opt/postgresql|A postgres-telepítéshez szükséges adatés naplózási könyvtárakat tartalmazza|
 |`--storage-class-logs`, `-scl`|/var/log|A konzol kimenetét (stderr, StdOut) tároló könyvtárakat, a tárolón belüli folyamatok egyéb naplózási információit tartalmazza.|

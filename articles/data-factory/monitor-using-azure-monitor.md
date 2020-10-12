@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 07/13/2020
 ms.openlocfilehash: 6f0e688f3d483536e0d82186dd8e498cdadf97da
-ms.sourcegitcommit: 97a0d868b9d36072ec5e872b3c77fa33b9ce7194
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87563551"
 ---
 # <a name="monitor-and-alert-data-factory-by-using-azure-monitor"></a>Data Factory figyelése és riasztása Azure Monitor használatával
@@ -82,7 +82,7 @@ Hozzon létre vagy adjon hozzá diagnosztikai beállításokat az adatai-előál
     > [!NOTE]
     > Mivel az Azure-tábla nem rendelkezhet több mint 500 oszloppal **, javasoljuk, hogy az** _erőforrás-specifikus módot_válassza. További információ: [log Analytics ismert korlátozások](../azure-monitor/platform/resource-logs-collect-workspace.md#column-limit-in-azurediagnostics).
 
-1. Válassza a **Mentés** lehetőséget.
+1. Kattintson a **Mentés** gombra.
 
 Néhány pillanat elteltével az új beállítás megjelenik az adat-előállító beállításainak listájában. A rendszer a diagnosztikai naplókat az adott munkaterületre továbbítja, amint új esemény-adatforrások jönnek létre. Akár 15 percig is eltarthat egy esemény kibocsátása, és amikor megjelenik a Log Analyticsban.
 
@@ -570,7 +570,7 @@ Itt láthatók a SSIS IR indítási/leállítási/karbantartási műveleteinek n
 
 | Tulajdonság                   | Típus   | Leírás                                                   | Példa                        |
 | -------------------------- | ------ | ------------------------------------------------------------- | ------------------------------ |
-| **idő**                   | Sztring | Az esemény időpontja UTC formátumban:`YYYY-MM-DDTHH:MM:SS.00000Z` | `2017-06-28T21:00:27.3534352Z` |
+| **idő**                   | Sztring | Az esemény időpontja UTC formátumban: `YYYY-MM-DDTHH:MM:SS.00000Z` | `2017-06-28T21:00:27.3534352Z` |
 | **operationName**          | Sztring | A SSIS IR-műveletének neve                            | `Start/Stop/Maintenance` |
 | **Kategória**               | Sztring | A diagnosztikai naplók kategóriája                               | `SSISIntegrationRuntimeLogs` |
 | **correlationId**          | Sztring | Egy adott művelet nyomon követésére szolgáló egyedi azonosító             | `f13b159b-515f-4885-9dfa-a664e949f785Deprovision0059035558` |
@@ -610,15 +610,15 @@ Itt láthatók a SSIS-csomag végrehajtásával a SSIS IR-ben létrehozott esem�
 
 | Tulajdonság                   | Típus   | Leírás                                                          | Példa                        |
 | -------------------------- | ------ | -------------------------------------------------------------------- | ------------------------------ |
-| **idő**                   | Sztring | Az esemény időpontja UTC formátumban:`YYYY-MM-DDTHH:MM:SS.00000Z`        | `2017-06-28T21:00:27.3534352Z` |
-| **operationName**          | Sztring | Ez a következőre van beállítva`YourSSISIRName-SSISPackageEventMessageContext`       | `mysqlmissisir-SSISPackageEventMessageContext` |
+| **idő**                   | Sztring | Az esemény időpontja UTC formátumban: `YYYY-MM-DDTHH:MM:SS.00000Z`        | `2017-06-28T21:00:27.3534352Z` |
+| **operationName**          | Sztring | Ez a következőre van beállítva `YourSSISIRName-SSISPackageEventMessageContext`       | `mysqlmissisir-SSISPackageEventMessageContext` |
 | **Kategória**               | Sztring | A diagnosztikai naplók kategóriája                                      | `SSISPackageEventMessageContext` |
 | **correlationId**          | Sztring | Egy adott művelet nyomon követésére szolgáló egyedi azonosító                    | `e55700df-4caf-4e7c-bfb8-78ac7d2f28a0` |
 | **dataFactoryName**        | Sztring | Az ADF neve                                                 | `MyADFv2` |
 | **integrationRuntimeName** | Sztring | A SSIS IR neve                                             | `MySSISIR` |
 | **szint**                  | Sztring | A diagnosztikai naplók szintje                                         | `Informational` |
-| **operationId**            | Sztring | Egy adott művelet nyomon követésére szolgáló egyedi azonosító a SSISDB-ben          | `1`(1 a **nem** a SSISDB-ben tárolt és a T-SQL-n keresztül meghívott csomagokkal kapcsolatos műveleteket jelenti.) |
-| **contextDepth**           | Sztring | Az esemény-üzenet környezetének mélysége                              | `0`(0 azt jelenti, hogy a csomag végrehajtásának elindulása előtt 1 jelzi a kontextust, amikor hiba történik, és a környezet a hiba miatt tovább nő) |
+| **operationId**            | Sztring | Egy adott művelet nyomon követésére szolgáló egyedi azonosító a SSISDB-ben          | `1` (1 a **nem** a SSISDB-ben tárolt és a T-SQL-n keresztül meghívott csomagokkal kapcsolatos műveleteket jelenti.) |
+| **contextDepth**           | Sztring | Az esemény-üzenet környezetének mélysége                              | `0` (0 azt jelenti, hogy a csomag végrehajtásának elindulása előtt 1 jelzi a kontextust, amikor hiba történik, és a környezet a hiba miatt tovább nő) |
 | **packagePath**            | Sztring | A Package objektum elérési útja az esemény üzenetének környezeti forrásaként      | `\Package` |
 | **contextType**            | Sztring | A Package objektum típusa az esemény üzenetei környezetének forrásaként      | `60`( [további környezeti típusok](https://docs.microsoft.com/sql/integration-services/system-views/catalog-event-message-context?view=sql-server-ver15#remarks):) |
 | **contextSourceName**      | Sztring | A Package objektum neve az esemény üzenetei környezetének forrásaként      | `MyPackage` |
@@ -660,14 +660,14 @@ Itt láthatók a SSIS-csomag végrehajtása által a SSIS IR-ben létrehozott es
 
 | Tulajdonság                   | Típus   | Leírás                                                        | Példa                        |
 | -------------------------- | ------ | ------------------------------------------------------------------ | ------------------------------ |
-| **idő**                   | Sztring | Az esemény időpontja UTC formátumban:`YYYY-MM-DDTHH:MM:SS.00000Z`      | `2017-06-28T21:00:27.3534352Z` |
-| **operationName**          | Sztring | Ez a következőre van beállítva`YourSSISIRName-SSISPackageEventMessages`           | `mysqlmissisir-SSISPackageEventMessages` |
+| **idő**                   | Sztring | Az esemény időpontja UTC formátumban: `YYYY-MM-DDTHH:MM:SS.00000Z`      | `2017-06-28T21:00:27.3534352Z` |
+| **operationName**          | Sztring | Ez a következőre van beállítva `YourSSISIRName-SSISPackageEventMessages`           | `mysqlmissisir-SSISPackageEventMessages` |
 | **Kategória**               | Sztring | A diagnosztikai naplók kategóriája                                    | `SSISPackageEventMessages` |
 | **correlationId**          | Sztring | Egy adott művelet nyomon követésére szolgáló egyedi azonosító                  | `e55700df-4caf-4e7c-bfb8-78ac7d2f28a0` |
 | **dataFactoryName**        | Sztring | Az ADF neve                                               | `MyADFv2` |
 | **integrationRuntimeName** | Sztring | A SSIS IR neve                                           | `MySSISIR` |
 | **szint**                  | Sztring | A diagnosztikai naplók szintje                                       | `Informational` |
-| **operationId**            | Sztring | Egy adott művelet nyomon követésére szolgáló egyedi azonosító a SSISDB-ben        | `1`(1 a **nem** a SSISDB-ben tárolt és a T-SQL-n keresztül meghívott csomagokkal kapcsolatos műveleteket jelenti.) |
+| **operationId**            | Sztring | Egy adott művelet nyomon követésére szolgáló egyedi azonosító a SSISDB-ben        | `1` (1 a **nem** a SSISDB-ben tárolt és a T-SQL-n keresztül meghívott csomagokkal kapcsolatos műveleteket jelenti.) |
 | **messageTime**            | Sztring | Az az idő, amikor az esemény üzenete UTC formátumban lett létrehozva          | `2017-06-28T21:00:27.3534352Z` |
 | **messageType**            | Sztring | Az üzenet típusa                                     | `70`( [további üzenetek típusai](https://docs.microsoft.com/sql/integration-services/system-views/catalog-operation-messages-ssisdb-database?view=sql-server-ver15#remarks)) |
 | **messageSourceType**      | Sztring | Az esemény-üzenet forrásának típusa                              | `20`(lásd: [több üzenet típusú Forrástípus](https://docs.microsoft.com/sql/integration-services/system-views/catalog-operation-messages-ssisdb-database?view=sql-server-ver15#remarks)) |
@@ -678,7 +678,7 @@ Itt láthatók a SSIS-csomag végrehajtása által a SSIS IR-ben létrehozott es
 | **messageSourceId**        | Sztring | A csomag-összetevő egyedi azonosítója az esemény üzenetének forrásaként    | `{1a45a5a4-3df9-4f02-b818-ebf583829ad2}    ` |
 | **subcomponentName**       | Sztring | Az adatáramlási összetevő neve az esemény üzenetének forrásaként       | `SSIS.Pipeline` |
 | **packagePath**            | Sztring | A Package objektum elérési útja az esemény üzenetének forrásaként            | `\Package\Data Flow Task` |
-| **executionPath**          | Sztring | A szülő csomag teljes elérési útja a végrehajtott összetevőre            | `\Transformation\Data Flow Task`(Ez az elérési út az összetevők iterációját is rögzíti) |
+| **executionPath**          | Sztring | A szülő csomag teljes elérési útja a végrehajtott összetevőre            | `\Transformation\Data Flow Task` (Ez az elérési út az összetevők iterációját is rögzíti) |
 | **Szálazonosító**               | Sztring | Az esemény üzenetének naplózásakor végrehajtott szál egyedi azonosítója | `{1a45a5a4-3df9-4f02-b818-ebf583829ad2}    ` |
 
 #### <a name="ssis-executable-statistics-log-attributes"></a>SSIS végrehajtható statisztikai napló attribútumai
@@ -709,19 +709,19 @@ Az alábbi, a SSIS IR SSIS-csomag végrehajtásával létrehozott végrehajthat�
 
 | Tulajdonság                   | Típus   | Leírás                                                      | Példa                        |
 | -------------------------- | ------ | ---------------------------------------------------------------- | ------------------------------ |
-| **idő**                   | Sztring | Az esemény időpontja UTC formátumban:`YYYY-MM-DDTHH:MM:SS.00000Z`    | `2017-06-28T21:00:27.3534352Z` |
-| **operationName**          | Sztring | Ez a következőre van beállítva`YourSSISIRName-SSISPackageExecutableStatistics`  | `mysqlmissisir-SSISPackageExecutableStatistics` |
+| **idő**                   | Sztring | Az esemény időpontja UTC formátumban: `YYYY-MM-DDTHH:MM:SS.00000Z`    | `2017-06-28T21:00:27.3534352Z` |
+| **operationName**          | Sztring | Ez a következőre van beállítva `YourSSISIRName-SSISPackageExecutableStatistics`  | `mysqlmissisir-SSISPackageExecutableStatistics` |
 | **Kategória**               | Sztring | A diagnosztikai naplók kategóriája                                  | `SSISPackageExecutableStatistics` |
 | **correlationId**          | Sztring | Egy adott művelet nyomon követésére szolgáló egyedi azonosító                | `e55700df-4caf-4e7c-bfb8-78ac7d2f28a0` |
 | **dataFactoryName**        | Sztring | Az ADF neve                                             | `MyADFv2` |
 | **integrationRuntimeName** | Sztring | A SSIS IR neve                                         | `MySSISIR` |
 | **szint**                  | Sztring | A diagnosztikai naplók szintje                                     | `Informational` |
-| **executionId**            | Sztring | Egy adott végrehajtás követésének egyedi azonosítója a SSISDB-ben      | `1`(1 a **nem** a SSISDB-ben tárolt vagy T-SQL-n keresztül meghívott csomagokhoz kapcsolódó végrehajtásokat jelenti.) |
-| **executionPath**          | Sztring | A szülő csomag teljes elérési útja a végrehajtott összetevőre          | `\Transformation\Data Flow Task`(Ez az elérési út az összetevők iterációját is rögzíti) |
+| **executionId**            | Sztring | Egy adott végrehajtás követésének egyedi azonosítója a SSISDB-ben      | `1` (1 a **nem** a SSISDB-ben tárolt vagy T-SQL-n keresztül meghívott csomagokhoz kapcsolódó végrehajtásokat jelenti.) |
+| **executionPath**          | Sztring | A szülő csomag teljes elérési útja a végrehajtott összetevőre          | `\Transformation\Data Flow Task` (Ez az elérési út az összetevők iterációját is rögzíti) |
 | **startTime**              | Sztring | Az az idő, amikor a végrehajtható fájl a végrehajtás előtti fázisba lép UTC formátumban  | `2017-06-28T21:00:27.3534352Z` |
 | **endTime**                | Sztring | Az az idő, amikor a végrehajtható fájl a végrehajtás utáni fázisba kerül UTC formátumban | `2017-06-28T21:00:27.3534352Z` |
 | **executionDuration**      | Sztring | A végrehajtható fájl futási ideje (ezredmásodperc)                   | `1,125` |
-| **executionResult**        | Sztring | A végrehajtható fájl futtatásának eredménye                                 | `0`(0 sikert jelez, 1 a hibát jelzi, a 2 a befejezést jelenti, a 3 pedig a megszakítást jelenti) |
+| **executionResult**        | Sztring | A végrehajtható fájl futtatásának eredménye                                 | `0` (0 sikert jelez, 1 a hibát jelzi, a 2 a befejezést jelenti, a 3 pedig a megszakítást jelenti) |
 | **executionValue**         | Sztring | A végrehajtható fájl futtatásával visszaadott felhasználó által megadott érték            | `1` |
 | **resourceId**             | Sztring | Az ADF-erőforrás egyedi azonosítója                               | `/SUBSCRIPTIONS/<subscriptionID>/RESOURCEGROUPS/<resourceGroupName>/PROVIDERS/MICROSOFT.DATAFACTORY/FACTORIES/<dataFactoryName>` |
 
@@ -754,14 +754,14 @@ Itt láthatók a SSIS-csomag végrehajtásával a SSIS IR-ben létrehozott adatf
 
 | Tulajdonság                   | Típus   | Leírás                                                         | Példa                        |
 | -------------------------- | ------ | ------------------------------------------------------------------- | ------------------------------ |
-| **idő**                   | Sztring | Az esemény időpontja UTC formátumban:`YYYY-MM-DDTHH:MM:SS.00000Z`       | `2017-06-28T21:00:27.3534352Z` |
-| **operationName**          | Sztring | Ez a következőre van beállítva`YourSSISIRName-SSISPackageExecutionComponentPhases` | `mysqlmissisir-SSISPackageExecutionComponentPhases` |
+| **idő**                   | Sztring | Az esemény időpontja UTC formátumban: `YYYY-MM-DDTHH:MM:SS.00000Z`       | `2017-06-28T21:00:27.3534352Z` |
+| **operationName**          | Sztring | Ez a következőre van beállítva `YourSSISIRName-SSISPackageExecutionComponentPhases` | `mysqlmissisir-SSISPackageExecutionComponentPhases` |
 | **Kategória**               | Sztring | A diagnosztikai naplók kategóriája                                     | `SSISPackageExecutionComponentPhases` |
 | **correlationId**          | Sztring | Egy adott művelet nyomon követésére szolgáló egyedi azonosító                   | `e55700df-4caf-4e7c-bfb8-78ac7d2f28a0` |
 | **dataFactoryName**        | Sztring | Az ADF neve                                                | `MyADFv2` |
 | **integrationRuntimeName** | Sztring | A SSIS IR neve                                            | `MySSISIR` |
 | **szint**                  | Sztring | A diagnosztikai naplók szintje                                        | `Informational` |
-| **executionId**            | Sztring | Egy adott végrehajtás követésének egyedi azonosítója a SSISDB-ben         | `1`(1 a **nem** a SSISDB-ben tárolt vagy T-SQL-n keresztül meghívott csomagokhoz kapcsolódó végrehajtásokat jelenti.) |
+| **executionId**            | Sztring | Egy adott végrehajtás követésének egyedi azonosítója a SSISDB-ben         | `1` (1 a **nem** a SSISDB-ben tárolt vagy T-SQL-n keresztül meghívott csomagokhoz kapcsolódó végrehajtásokat jelenti.) |
 | **packageName**            | Sztring | A végrehajtott csomagfájl neve                              | `MyPackage.dtsx` |
 | **Feladatnév**               | Sztring | A végrehajtott adatfolyam-feladat neve                                 | `Data Flow Task` |
 | **subcomponentName**       | Sztring | Az adatfolyam-összetevő neve                                     | `Derived Column` |
@@ -802,14 +802,14 @@ Itt láthatók az adatáramlási folyamatok egyes szakaszain átmenő adatmozgá
 
 | Tulajdonság                     | Típus   | Leírás                                                        | Példa                        |
 | ---------------------------- | ------ | ------------------------------------------------------------------ | ------------------------------ |
-| **idő**                     | Sztring | Az esemény időpontja UTC formátumban:`YYYY-MM-DDTHH:MM:SS.00000Z`      | `2017-06-28T21:00:27.3534352Z` |
-| **operationName**            | Sztring | Ez a következőre van beállítva`YourSSISIRName-SSISPackageExecutionDataStatistics` | `mysqlmissisir-SSISPackageExecutionDataStatistics` |
+| **idő**                     | Sztring | Az esemény időpontja UTC formátumban: `YYYY-MM-DDTHH:MM:SS.00000Z`      | `2017-06-28T21:00:27.3534352Z` |
+| **operationName**            | Sztring | Ez a következőre van beállítva `YourSSISIRName-SSISPackageExecutionDataStatistics` | `mysqlmissisir-SSISPackageExecutionDataStatistics` |
 | **Kategória**                 | Sztring | A diagnosztikai naplók kategóriája                                    | `SSISPackageExecutionDataStatistics` |
 | **correlationId**            | Sztring | Egy adott művelet nyomon követésére szolgáló egyedi azonosító                  | `e55700df-4caf-4e7c-bfb8-78ac7d2f28a0` |
 | **dataFactoryName**          | Sztring | Az ADF neve                                               | `MyADFv2` |
 | **integrationRuntimeName**   | Sztring | A SSIS IR neve                                           | `MySSISIR` |
 | **szint**                    | Sztring | A diagnosztikai naplók szintje                                       | `Informational` |
-| **executionId**              | Sztring | Egy adott végrehajtás követésének egyedi azonosítója a SSISDB-ben        | `1`(1 a **nem** a SSISDB-ben tárolt vagy T-SQL-n keresztül meghívott csomagokhoz kapcsolódó végrehajtásokat jelenti.) |
+| **executionId**              | Sztring | Egy adott végrehajtás követésének egyedi azonosítója a SSISDB-ben        | `1` (1 a **nem** a SSISDB-ben tárolt vagy T-SQL-n keresztül meghívott csomagokhoz kapcsolódó végrehajtásokat jelenti.) |
 | **packageName**              | Sztring | A végrehajtott csomagfájl neve                             | `MyPackage.dtsx` |
 | **Feladatnév**                 | Sztring | A végrehajtott adatfolyam-feladat neve                                | `Data Flow Task` |
 | **dataflowPathIdString**     | Sztring | Az adatfolyam elérési útjának nyomon követésére szolgáló egyedi azonosító                          | `Paths[SQLDB Table3.ADO NET Source Output]` |
@@ -833,7 +833,7 @@ A Log Analytics a következő kivételekkel örökli a sémát a Figyelőtől:
     | --- | --- | --- |
     | $. properties. UserProperties | UserProperties | Dinamikus |
     | $. properties. Széljegyzetek | Széljegyzetek | Dinamikus |
-    | $. properties. Bemeneti | Bemenet | Dinamikus |
+    | $. properties. Bemeneti | Input (Bemenet) | Dinamikus |
     | $. properties. Kimeneti | Kimenet | Dinamikus |
     | $. properties. Hiba. errorCode | ErrorCode | int |
     | $. properties. Hiba. üzenet | ErrorMessage | sztring |

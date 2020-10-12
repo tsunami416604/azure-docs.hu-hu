@@ -14,10 +14,10 @@ ms.date: 12/02/2016
 ms.author: ghogen
 ROBOTS: NOINDEX,NOFOLLOW
 ms.openlocfilehash: 9f0a3c3a96a73bd71a9b0c769a3ceff85ae428f1
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89017617"
 ---
 # <a name="getting-started-with-azure-queue-storage-and-visual-studio-connected-services-cloud-services-projects"></a>Ismerkedés az Azure Queue Storage-hez és a Visual Studióhoz kapcsolódó szolgáltatásokkal (felhőszolgáltatás-projektek)
@@ -149,8 +149,8 @@ int? cachedMessageCount = messageQueue.ApproximateMessageCount;
 Console.WriteLine("Number of messages in queue: " + cachedMessageCount);
 ```
 
-## <a name="use-the-async-await-pattern-with-common-azure-queue-apis"></a>Az aszinkron várakozási minta használata a közös Azure üzenetsor API-kkal
-Ez a példa azt szemlélteti, hogyan használható az aszinkron várakozási minta az általános Azure üzenetsor-API-kkal. A minta meghívja az egyes metódusok aszinkron verzióját, ezt az egyes módszerek **aszinkron** utólagos javításával is megtekintheti. Aszinkron módszer használata esetén az aszinkron várakozási minta a helyi végrehajtás felfüggesztését hajtja végre, amíg a hívás be nem fejeződik. Ez a viselkedés lehetővé teszi, hogy az aktuális szál más munkát végezzen, ami segít elkerülni a teljesítmény szűk keresztmetszetét, és javítja az alkalmazás általános reagálását. További információk az Async-Await mintázat használatáról .NET-keretrendszerben: [Async and Await (C# and Visual Basic)](https://msdn.microsoft.com/library/hh191443.aspx) (Async és Await (C# és Visual Basic)).
+## <a name="use-the-async-await-pattern-with-common-azure-queue-apis"></a>Az Async-Await minta használata a közös Azure üzenetsor API-kkal
+Ez a példa azt szemlélteti, hogyan használható a Async-Await minta az általános Azure üzenetsor API-kkal. A minta meghívja az egyes metódusok aszinkron verzióját, ezt az egyes módszerek **aszinkron** utólagos javításával is megtekintheti. Aszinkron módszer használata esetén az aszinkron várakozási minta a helyi végrehajtás felfüggesztését hajtja végre, amíg a hívás be nem fejeződik. Ez a viselkedés lehetővé teszi, hogy az aktuális szál más munkát végezzen, ami segít elkerülni a teljesítmény szűk keresztmetszetét, és javítja az alkalmazás általános reagálását. További információk az Async-Await mintázat használatáról .NET-keretrendszerben: [Async and Await (C# and Visual Basic)](https://msdn.microsoft.com/library/hh191443.aspx) (Async és Await (C# és Visual Basic)).
 
 ```csharp
 // Create a message to put in the queue

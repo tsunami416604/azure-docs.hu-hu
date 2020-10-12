@@ -9,10 +9,10 @@ author: timsander1
 ms.author: tisande
 ms.custom: seodec18
 ms.openlocfilehash: 18a9f97d2cee9dd17345a1c8c0ae0efe442d79a4
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85799394"
 ---
 # <a name="connect-to-an-azure-cosmos-account-using-studio-3t"></a>Kapcsolódás Azure Cosmos-fiókhoz a Studio 3T használatával
@@ -32,89 +32,37 @@ Az alábbi lépéseket követve adhatja hozzá az Azure Cosmos-fiókot a Studio 
 
 2. Kattintson a **Kapcsolódás** gombra a Csatlakozáskezelő megnyitásához, majd kattintson az **új kapcsolat** elemre.
 
-    :::image type="content" source="./media/mongodb-mongochef/ConnectionManager.png" alt-text="A Studio 3T-Csatlakozáskezelő képernyőképe":::
+    :::image type="content" source="./media/mongodb-mongochef/ConnectionManager.png" alt-text="Képernyőfelvétel a kapcsolatok karakterláncának oldaláról":::
 3. Az **új csatlakozás** ablak **kiszolgáló** lapján adja meg az Azure Cosmos-fiók gazdagépét (FQDN) és a portot.
 
-    :::image type="content" source="./media/mongodb-mongochef/ConnectionManagerServerTab.png" alt-text="A Studio 3T Csatlakozáskezelő kiszolgáló lapjának képernyőképe":::
+    :::image type="content" source="./media/mongodb-mongochef/ConnectionManagerServerTab.png" alt-text="Képernyőfelvétel a kapcsolatok karakterláncának oldaláról":::
 4. Az **új kapcsolatok** ablakban a **hitelesítés** lapon válassza az **alapszintű hitelesítési mód (MONGODB-CR vagy SCARM-SHA-1)** lehetőséget, és adja meg a felhasználónevet és a jelszót.  Fogadja el az alapértelmezett hitelesítési adatbázist (rendszergazda), vagy adja meg a saját értékét.
 
-    :::image type="content" source="./media/mongodb-mongochef/ConnectionManagerAuthenticationTab.png" alt-text="A Studio 3T Csatlakozáskezelő hitelesítés lapjának képernyőképe":::
+    :::image type="content" source="./media/mongodb-mongochef/ConnectionManagerAuthenticationTab.png" alt-text="Képernyőfelvétel a kapcsolatok karakterláncának oldaláról":::
 5. Az **új kapcsolat** ablak **SSL** LAPJÁN jelölje be az **SSL protokoll használata a kapcsolódáshoz** jelölőnégyzetet, valamint a **kiszolgáló önaláírt SSL-tanúsítványok fogadása** választógombot.
 
-    :::image type="content" source="./media/mongodb-mongochef/ConnectionManagerSSLTab.png" alt-text="Képernyőfelvétel a Studio 3T-Csatlakozáskezelő SSL-lapjáról":::
+    :::image type="content" source="./media/mongodb-mongochef/ConnectionManagerSSLTab.png" alt-text="Képernyőfelvétel a kapcsolatok karakterláncának oldaláról":::
 6. Kattintson a **Kapcsolódás tesztelése** gombra a kapcsolódási adatok érvényesítéséhez, kattintson az **OK** gombra az új kapcsolódási ablakhoz való visszatéréshez, majd kattintson a **Mentés**gombra.
 
-    :::image type="content" source="./media/mongodb-mongochef/TestConnectionResults.png" alt-text="Képernyőfelvétel a Studio 3T-tesztelési kapcsolatok ablakáról":::
+    :::image type="content" source="./media/mongodb-mongochef/TestConnectionResults.png" alt-text="Képernyőfelvétel a kapcsolatok karakterláncának oldaláról":::
 
 ## <a name="use-studio-3t-to-create-a-database-collection-and-documents"></a>Adatbázis, gyűjtemény és dokumentumok létrehozása a Studio 3T használatával
 Adatbázis, gyűjtemény és dokumentumok létrehozásához a Studio 3T használatával hajtsa végre a következő lépéseket:
 
 1. A **Csatlakozáskezelő**területen jelölje ki a kapcsolatot, majd kattintson a **Csatlakoztatás**gombra.
 
-    :::image type="content" source="./media/mongodb-mongochef/ConnectToAccount.png" alt-text="A Studio 3T-Csatlakozáskezelő képernyőképe":::
+    :::image type="content" source="./media/mongodb-mongochef/ConnectToAccount.png" alt-text="Képernyőfelvétel a kapcsolatok karakterláncának oldaláról":::
 2. Kattintson a jobb gombbal a gazdagépre, majd válassza az **adatbázis hozzáadása**elemet.  Adja meg az adatbázis nevét, majd kattintson **az OK gombra**.
 
-    :::image type="content" source="./media/mongodb-mongochef/AddDatabase1.png" alt-text="Képernyőfelvétel a Studio 3T adatbázis hozzáadása lehetőségéről":::
+    :::image type="content" source="./media/mongodb-mongochef/AddDatabase1.png" alt-text="Képernyőfelvétel a kapcsolatok karakterláncának oldaláról":::
 3. Kattintson a jobb gombbal az adatbázisra, és válassza a **gyűjtemény hozzáadása**elemet.  Adja meg a gyűjtemény nevét, és kattintson a **Létrehozás**gombra.
 
-    :::image type="content" source="./media/mongodb-mongochef/AddCollection.png" alt-text="Képernyőfelvétel a Studio 3T-gyűjtemény hozzáadása lehetőségről":::
+    :::image type="content" source="./media/mongodb-mongochef/AddCollection.png" alt-text="Képernyőfelvétel a kapcsolatok karakterláncának oldaláról":::
 4. Kattintson a **gyűjtemény** menüpontra, majd a **dokumentum hozzáadása**elemre.
 
-    :::image type="content" source="./media/mongodb-mongochef/AddDocument1.png" alt-text="Képernyőfelvétel a Studio 3T hozzáadása dokumentum menüelem":::
-5. A dokumentum hozzáadása párbeszédpanelen illessze be a következőt, majd kattintson a **dokumentum hozzáadása**lehetőségre.
+    :::image type="content" source="./media/mongodb-mongochef/AddDocument1.png" alt-text="Képernyőfelvétel a kapcsolatok karakterláncának oldaláról" vezetéknevű családot, és adja vissza a szülők és az állam mezőket.
 
-    ```json
-    {
-        "_id": "AndersenFamily",
-        "lastName": "Andersen",
-        "parents": [
-            { "firstName": "Thomas" },
-            { "firstName": "Mary Kay"}
-        ],
-        "children": [
-            {
-                "firstName": "Henriette Thaulow", "gender": "female", "grade": 5,
-                "pets": [{ "givenName": "Fluffy" }]
-            }
-        ],
-        "address": { "state": "WA", "county": "King", "city": "seattle" },
-        "isRegistered": true
-    }
-    ```
-    
-6. Adjon hozzá egy másik dokumentumot, ezúttal a következő tartalommal:
-
-    ```json
-    {
-        "_id": "WakefieldFamily",
-        "parents": [
-            { "familyName": "Wakefield", "givenName": "Robin" },
-            { "familyName": "Miller", "givenName": "Ben" }
-        ],
-        "children": [
-            {
-                "familyName": "Merriam",
-                "givenName": "Jesse",
-                "gender": "female", "grade": 1,
-                "pets": [
-                    { "givenName": "Goofy" },
-                    { "givenName": "Shadow" }
-                ]
-            },
-            {
-                "familyName": "Miller",
-                "givenName": "Lisa",
-                "gender": "female",
-                "grade": 8 }
-        ],
-        "address": { "state": "NY", "county": "Manhattan", "city": "NY" },
-        "isRegistered": false
-    }
-    ```
-
-7. Minta lekérdezés végrehajtása. Keressen például egy "Andersen" vezetéknevű családot, és adja vissza a szülők és az állam mezőket.
-
-    :::image type="content" source="./media/mongodb-mongochef/QueryDocument1.png" alt-text="Képernyőkép a Mongo Chef lekérdezési eredményeiről":::
+    :::image type="content" source="./media/mongodb-mongochef/QueryDocument1.png" alt-text="Képernyőfelvétel a kapcsolatok karakterláncának oldaláról":::
 
 ## <a name="next-steps"></a>További lépések
 

@@ -14,10 +14,10 @@ ms.reviewer: vincesm
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 243bc48f7e84951c78ecab3e7f5ee47a85a538bf
-ms.sourcegitcommit: c5021f2095e25750eb34fd0b866adf5d81d56c3a
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88798822"
 ---
 # <a name="assign-custom-roles-with-resource-scope-using-powershell-in-azure-active-directory"></a>Egyéni szerepkörök társítása erőforrás-hatókörrel a PowerShell használatával Azure Active Directory
@@ -160,7 +160,7 @@ Get-AzureADMSRoleAssignment -Filter "roleDefinitionId eq '355aed8a-864b-4e2b-b22
 Remove-AzureADMSRoleAssignment -Id 'qiho4WOb9UKKgng_LbPV7tvKaKRCD61PkJeKMh7Y458-1'
 ```
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Ossza meg velünk az [Azure ad rendszergazdai szerepköreit tartalmazó fórumot](https://feedback.azure.com/forums/169401-azure-active-directory?category_id=166032).
 - A szerepkörökről és az Azure AD rendszergazdai szerepkör-hozzárendeléseiről a [rendszergazdai szerepkörök hozzárendelése](directory-assign-admin-roles.md)című témakörben olvashat bővebben.

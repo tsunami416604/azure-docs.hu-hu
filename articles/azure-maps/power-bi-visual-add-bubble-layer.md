@@ -10,10 +10,10 @@ services: azure-maps
 manager: cpendle
 ms.custom: ''
 ms.openlocfilehash: 4443b0f479079a4722a5d62fea40afcb4a58632d
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86261934"
 ---
 # <a name="add-a-bubble-layer"></a>Buborékréteg hozzáadása
@@ -49,7 +49,7 @@ Ha egy mezőt a **mezők** ablaktábla **Size (méret** ) gyűjtője adja át, a
 |---------------------|--------------|
 | Minimális méret            | A buborék minimális mérete az adatskálázáskor.|
 | Maximális méret            | A buborék maximális mérete az adatméretezés során.|
-| Méretezési módszer | A relatív buborék méretének meghatározásához használt méretezési algoritmus.<br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;• A bemeneti adatok lineáris tartománya lineárisan leképezve a minimális és a maximális méretre. (alapértelmezett)<br/>&nbsp;&nbsp;&nbsp;&nbsp;• A logaritmikusan a minimális és a maximális mérethez leképezett bemeneti adatok naplózási tartománya.<br/>&nbsp;&nbsp;&nbsp;&nbsp;• Köbös-Bezier-az egyéni skálázási módszer létrehozásához X1, y1, x2, y2 értékeket kell megadni egy köbös-Bezier görbe alapján. |
+| Méretezési módszer | A relatív buborék méretének meghatározásához használt méretezési algoritmus.<br/><br/>&nbsp;&nbsp;&nbsp;&nbsp;• A bemeneti adatok lineáris tartománya lineárisan leképezve a minimális és a maximális méretre. (alapértelmezett)<br/>&nbsp;&nbsp;&nbsp;&nbsp;• A logaritmikusan a minimális és a maximális mérethez leképezett bemeneti adatok naplózási tartománya.<br/>&nbsp;&nbsp;&nbsp;&nbsp;• Cubic-Bezier – a Cubic-Bezier görbe X1, y1, x2, y2 értékének megadása egyéni skálázási módszer létrehozásához. |
 
 Ha a méretezési **módszer** **naplózásra**van beállítva, a következő beállítások lesznek elérhetők.
 
@@ -67,19 +67,19 @@ Ha a méretezési **módszer** a **köbös-Bezier**értékre van állítva, a re
 | Y2      | Egy köbméter Bezier-görbe y2 paramétere. |
 
 > [!TIP]
-> [https://cubic-bezier.com/](https://cubic-bezier.com/)a tartalmaz egy praktikus eszközt a köbös-Bezier-görbék paramétereinek létrehozásához.
+> [https://cubic-bezier.com/](https://cubic-bezier.com/) a tartalmaz egy praktikus eszközt a Cubic-Bezier görbék paramétereinek létrehozásához.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Megváltoztathatja, hogyan jelenjenek meg az adatai a térképen:
 
 > [!div class="nextstepaction"]
-> [Oszlopdiagram rétegének hozzáadása](power-bi-visual-add-bar-chart-layer.md)
+> [Oszlopdiagram-réteg hozzáadása](power-bi-visual-add-bar-chart-layer.md)
 
 További környezet hozzáadása a térképhez:
 
 > [!div class="nextstepaction"]
-> [Hivatkozási réteg hozzáadása](power-bi-visual-add-reference-layer.md)
+> [Referenciaréteg hozzáadása](power-bi-visual-add-reference-layer.md)
 
 > [!div class="nextstepaction"]
 > [Mozaikréteg hozzáadása](power-bi-visual-add-tile-layer.md)

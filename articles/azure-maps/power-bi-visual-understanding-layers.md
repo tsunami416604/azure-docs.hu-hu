@@ -10,10 +10,10 @@ services: azure-maps
 manager: cpendle
 ms.custom: ''
 ms.openlocfilehash: a5c7296a0e7b7f6ea33c1f4a669675efd90f9e9a
-ms.sourcegitcommit: dabd9eb9925308d3c2404c3957e5c921408089da
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86261844"
 ---
 # <a name="understanding-layers-in-the-azure-maps-power-bi-visual"></a>A Azure Maps rétegeinek ismertetése Power BI vizualizációban
@@ -79,7 +79,7 @@ A **Formátum** ablaktábla általános réteg szakasza olyan általános beáll
 | Minimális adatérték          | A bemeneti adatok minimális értéke, amelyet a méretre kell méretezni. A kiugró értékek kivágására jó.  |
 | Maximális adatérték          | A skálázáshoz használandó bemeneti adatok maximális értéke. A kiugró értékek kivágására jó.  |
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Megváltoztathatja, hogyan jelenjenek meg az adatai a térképen:
 
@@ -87,12 +87,12 @@ Megváltoztathatja, hogyan jelenjenek meg az adatai a térképen:
 > [Buborékréteg hozzáadása](power-bi-visual-add-bubble-layer.md)
 
 > [!div class="nextstepaction"]
-> [Oszlopdiagram rétegének hozzáadása](power-bi-visual-add-bar-chart-layer.md)
+> [Oszlopdiagram-réteg hozzáadása](power-bi-visual-add-bar-chart-layer.md)
 
 További környezet hozzáadása a térképhez:
 
 > [!div class="nextstepaction"]
-> [Hivatkozási réteg hozzáadása](power-bi-visual-add-reference-layer.md)
+> [Referenciaréteg hozzáadása](power-bi-visual-add-reference-layer.md)
 
 > [!div class="nextstepaction"]
 > [Mozaikréteg hozzáadása](power-bi-visual-add-tile-layer.md)

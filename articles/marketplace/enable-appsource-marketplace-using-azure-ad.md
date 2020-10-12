@@ -8,10 +8,10 @@ author: keferna
 ms.author: keferna
 ms.date: 07/24/2020
 ms.openlocfilehash: a6e304e5ffeab8f0a44cbdfe1566465f2b9bf34a
-ms.sourcegitcommit: d661149f8db075800242bef070ea30f82448981e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88607422"
 ---
 # <a name="integrate-your-commercial-marketplace-listing-with-azure-active-directory"></a>A kereskedelmi Marketplace-lista integrálása a Azure Active Directory
@@ -33,12 +33,12 @@ A különböző kereskedelmi Piactéri [lehetőségek és az ajánlattételi tí
 
 | Csomag típusa    | Meg kell adnia az Azure AD SSO-t a kapcsolatfelvételhez?  | Azure AD SSO szükséges a próbaverzióhoz? | Azure AD SSO szükséges a test Drive-hoz?  | Azure AD SSO szükséges a Transacthoz |
 | :------------------- | :-------------------|:-------------------|:-------------------|:-------------------|
-| Virtuális gép | n.a. | Nem | Nem | Nem |
+| Virtuális gép | N/A | Nem | Nem | Nem |
 | Azure-alkalmazások (megoldás-sablon)  | N.A. | N.A. | N.A. | N.A. |
-| Felügyelt alkalmazások  | N.A. | N.A. | N.A. | No |
+| Felügyelt alkalmazások  | N.A. | N.A. | N.A. | Nem |
 | SaaS  | Nem | Igen | Igen | Igen |
-| Tárolók  | N.A. | N.A. | N.A. | No |
-| Tanácsadási szolgáltatások  | No | N.A. | N.A. | N.A. |
+| Containers  | N.A. | N.A. | N.A. | Nem |
+| Tanácsadási szolgáltatások  | Nem | N.A. | N.A. | N.A. |
 
 A SaaS műszaki követelményeivel kapcsolatos további információkért lásd: [Az Azure ad és a transactd SaaS-ajánlatok a kereskedelmi piactéren](./azure-ad-saas.md).
 
@@ -85,7 +85,7 @@ Az Azure AD használata a következő műveletek egyikének támogatásához has
 - Felhasználónkénti tesztelési meghajtó fejlesztése.
 - Hozzon létre egy több-bérlős minta bemutató alkalmazást, amely egyszeri bejelentkezést használ.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ha még nem tette meg, 
 

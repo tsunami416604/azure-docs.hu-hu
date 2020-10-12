@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/14/2020
 ms.author: aahi
 ms.openlocfilehash: 870b412a1fa5d362ac7b5be1df6c92d95c2936ca
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90977781"
 ---
 # <a name="how-to-configure-alerts-and-get-notifications-using-a-hook"></a>Útmutató: riasztások konfigurálása és értesítések beszerzése Hook használatával
@@ -36,7 +36,7 @@ Az e-mail-Hook az a csatorna, amellyel a rendszer az **e-mailben** megadott e-ma
 
 |Paraméter |Leírás  |
 |---------|---------|
-| Név | Az e-mail Hook neve |
+| Name (Név) | Az e-mail Hook neve |
 | E-mail cím| E-mail-címek, amelyek riasztást küldenek|
 | Külső hivatkozás | Opcionális mező, amely lehetővé teszi a testreszabott átirányítást, például a hibaelhárítási megjegyzésekhez. |
 | Testreszabott anomáliák riasztási címe | A title sablon támogatja a,,,,,,, `${severity}` `${alertSettingName}` `${datafeedName}` `${metricName}` `${detectConfigName}` `${timestamp}` `${topDimension}` `${incidentCount}` , `${anomalyCount}`
@@ -75,7 +75,7 @@ Az Azure DevOps Hook létrehozásához hozzá kell adnia a következő informác
 
 |Paraméter |Leírás  |
 |---------|---------|
-| Név | A Hook neve |
+| Name (Név) | A Hook neve |
 | Szervezet | Az a szervezet, amelyhez a DevOps tartozik |
 | Project | A DevOps adott projektje. |
 | Hozzáférési jogkivonat |  A DevOps való hitelesítéshez használt jogkivonat. | 
@@ -88,11 +88,11 @@ Az Azure DevOps Hook létrehozásához hozzá kell adnia a következő informác
 A metrikák részletei lapon megkeresheti a **riasztási beállítások** szakaszt a metrikák részletei lap bal alsó sarkában. Felsorolja az összes olyan riasztási beállítást, amely a kiválasztott észlelési konfigurációra vonatkozik. Új észlelési konfiguráció létrehozásakor nincs riasztási beállítás, és a rendszer nem küld riasztásokat.  
 A riasztási beállítások módosításához használhatja a **Hozzáadás**, **Szerkesztés** és **Törlés** ikonokat is.
 
-:::image type="content" source="../media/alerts/alert-setting.png" alt-text="Riasztási beállítások menüelem":::
+:::image type="content" source="../media/alerts/alert-setting.png" alt-text="webhook-létrehozási ablak.":::
 
 Kattintson a **Hozzáadás** vagy **Szerkesztés** gombra a riasztási beállítások hozzáadására vagy szerkesztésére szolgáló ablak beszerzéséhez.
 
-:::image type="content" source="../media/alerts/edit-alert.png" alt-text="Riasztási beállítások hozzáadása vagy szerkesztése":::
+:::image type="content" source="../media/alerts/edit-alert.png" alt-text="webhook-létrehozási ablak.":::
 
 **Riasztási beállítás neve**: a riasztási beállítás neve. Ekkor megjelenik a riasztás e-mail címe.
 
@@ -131,10 +131,10 @@ Az **operátor** választó az egyes szakaszok logikai kapcsolata, amely meghat�
 
 |Operátor  |Leírás  |
 |---------|---------|
-|AND     | Csak akkor küldjön riasztást, ha egy sorozat megfelel az egyes riasztási szakaszoknak, és az összes adatpont anomália. Ha a metrikák különböző dimenziós névvel rendelkeznek, a rendszer soha nem aktiválja a riasztást.         |
+|ÉS     | Csak akkor küldjön riasztást, ha egy sorozat megfelel az egyes riasztási szakaszoknak, és az összes adatpont anomália. Ha a metrikák különböző dimenziós névvel rendelkeznek, a rendszer soha nem aktiválja a riasztást.         |
 |VAGY     | Küldje el a riasztást, ha legalább egy szakasz rendellenességeket tartalmaz.         |
 
-:::image type="content" source="../media/alerts/alert-setting-operator.png" alt-text="Több riasztás beállítási szakaszának operátora":::
+:::image type="content" source="../media/alerts/alert-setting-operator.png" alt-text="webhook-létrehozási ablak.":::
 
 ## <a name="next-steps"></a>Következő lépések
 

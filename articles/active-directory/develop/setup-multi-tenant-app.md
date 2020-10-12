@@ -12,10 +12,10 @@ ms.topic: conceptual
 ms.date: 07/15/2019
 ms.author: ryanwi
 ms.openlocfilehash: d865ac8bae475365dbfc6c8bad990a1acc7998f0
-ms.sourcegitcommit: b8702065338fc1ed81bfed082650b5b58234a702
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/11/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88116750"
 ---
 # <a name="how-to-configure-a-new-multi-tenant-application"></a>Új több-bérlős alkalmazás konfigurálása
@@ -27,5 +27,5 @@ A több-bérlős alkalmazásokkal kapcsolatos további információkért tekints
 - Részletes áttekintés [arról, hogyan használható az Azure ad-beli engedélyezési keretrendszer a](./quickstart-register-app.md)több-bérlős alkalmazásokhoz szükséges engedély megvalósításához
 - További részletekért tekintse meg [a több-bérlős alkalmazások konfigurálását és a teljes körű](./howto-convert-app-to-be-multi-tenant.md)használatát, beleértve a regisztrációt, a "közös" végpontot, a "felhasználó" és a "rendszergazda" belefoglalását, a fejlettebb többrétegű forgatókönyvek megvalósítását.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 [AzureAD StackOverflow](https://stackoverflow.com/questions/tagged/azure-active-directory)
