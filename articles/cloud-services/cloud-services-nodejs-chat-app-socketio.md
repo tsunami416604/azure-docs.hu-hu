@@ -11,10 +11,10 @@ ms.date: 08/17/2017
 ms.author: tagore
 ms.custom: devx-track-js
 ms.openlocfilehash: a3f661aa31511c5f1cf35d2e3c0429af6ab0c997
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91327527"
 ---
 # <a name="build-a-nodejs-chat-application-with-socketio-on-an-azure-cloud-service"></a>Node.js csevegési alkalmazás létrehozása Azure Cloud Service-Socket.IO
@@ -124,7 +124,7 @@ A **server.js**módosításainak mentése után a következő lépésekkel telep
     ```
 
    > [!NOTE]
-   > Ha problémák merülnek fel az emulátor indításakor, például: Start-AzureEmulator: váratlan hiba történt.  Részletek: váratlan hiba történt a (z) System. ServiceModel. Channels. ServiceChannel kommunikációs objektum nem használható kommunikációra, mert hibás állapotban van.
+   > Ha problémák merülnek fel az emulátor indításával kapcsolatban, például: Start-AzureEmulator: váratlan hiba történt.  Részletek: váratlan hiba történt a (z) System. ServiceModel. Channels. ServiceChannel kommunikációs objektum nem használható kommunikációra, mert hibás állapotban van.
    >
    > Telepítse újra a AzureAuthoringTools v 2.7.1 és a AzureComputeEmulator v 2,7 – ellenőrizze, hogy a verzió megfelel-e.
 
@@ -139,7 +139,7 @@ A **server.js**módosításainak mentése után a következő lépésekkel telep
     PS C:\node\chatapp\WorkerRole1> Stop-AzureEmulator
     ```
 
-5. Az alkalmazás Azure-ban való üzembe helyezéséhez használja a **publish-AzureServiceProject** parancsmagot. Például:
+5. Az alkalmazás Azure-ban való üzembe helyezéséhez használja a **publish-AzureServiceProject** parancsmagot. Példa:
 
     ```powershell
     PS C:\node\chatapp\WorkerRole1> Publish-AzureServiceProject -ServiceName mychatapp -Location "East US" -Launch

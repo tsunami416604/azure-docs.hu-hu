@@ -4,10 +4,10 @@ description: Ismerje meg az ügynök-alapú VMWare-áttelepítés Azure Migrate 
 ms.topic: conceptual
 ms.date: 01/30/2020
 ms.openlocfilehash: af9e45e47c2f0645d81a571161f15f7d69cfec61
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90532120"
 ---
 # <a name="replication-appliance"></a>Replikációs berendezés
@@ -69,7 +69,7 @@ Hálózati adapter típusa | VMXNET3
 
 A MySQL-t telepíteni kell a replikációs berendezést futtató gépre. Ezt a metódusok egyikével telepítheti.
 
-**Metódus** | **Részletek**
+**Módszer** | **Részletek**
 --- | ---
 Manuális letöltés és telepítés | Töltse le a MySQL-alkalmazást & helyezze a mappába a C:\Temp\ASRSetup, majd telepítse manuálisan.<br/> A készülék a MySQL beállítása után már telepítve lesz.
 Online letöltés nélkül | Helyezze a MySQL Installer alkalmazást a C:\Temp\ASRSetup. mappába. Ha telepíti a készüléket, és rákattint a MySQL letöltésére és telepítésére, a telepítő a hozzáadott telepítőt fogja használni.

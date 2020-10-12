@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.custom: hdinsightactive,seodec18, devx-track-java
 ms.date: 12/24/2019
 ms.openlocfilehash: 7cd368df1f2a94c8f49454530e7f5997f2659a32
-ms.sourcegitcommit: a76ff927bd57d2fcc122fa36f7cb21eb22154cfa
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87323774"
 ---
 # <a name="build-java-applications-for-apache-hbase"></a>Java-alkalmazások készítése Apache HBase
@@ -103,7 +103,7 @@ Ez a szakasz azt jelzi, hogy a projektnek szüksége van a **hbase-Client** és 
 | HDInsight-fürt verziója | Apache HBase-verzió használata |
 | --- | --- |
 | 3,6 | 1.1.2 |
-| 4.0 | 2.0.0 |
+| 4,0 | 2.0.0 |
 
 A HDInsight-verziókkal és-összetevőkkel kapcsolatos további információkért tekintse meg [a HDInsight-ben elérhető különböző Apache Hadoop összetevőket](../hdinsight-component-versioning.md).
 

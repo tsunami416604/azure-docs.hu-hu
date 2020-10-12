@@ -10,10 +10,10 @@ ms.subservice: studio
 ms.topic: tutorial
 ms.date: 07/27/2020
 ms.openlocfilehash: 148a3deb23219036f2fd9d8fe4dad93e9fb96b9b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91348557"
 ---
 # <a name="tutorial-3-deploy-credit-risk-model---azure-machine-learning-studio-classic"></a>3. Oktatóanyag: kredit kockázati modell üzembe helyezése – Azure Machine Learning Studio (klasszikus)
@@ -180,7 +180,7 @@ A klasszikus webszolgáltatás **Machine learning Studio (klasszikus)** vagy a *
 Egy új webszolgáltatást csak a **Machine learning webszolgáltatások** portálon lehet tesztelni.
 
 > [!TIP]
-> Ha a Azure Machine Learning webszolgáltatások portálon végez tesztelést, a portálon létrehozhat mintaadatok, amelyek segítségével tesztelheti a kérelem-válasz szolgáltatást. A **configure (Konfigurálás** ) lapon válassza az "igen" lehetőséget a **mintaadatok engedélyezéséhez?**. Amikor megnyitja a kérelem-válasz fület a **teszt** lapon, a portál kitölti az eredeti hitelkockázat-adatkészletből vett mintaadatok adatait.
+> Ha a Azure Machine Learning webszolgáltatások portálon végez tesztelést, a portálon létrehozhat mintaadatok, amelyek segítségével tesztelheti a Request-Response szolgáltatást. A **configure (Konfigurálás** ) lapon válassza az "igen" lehetőséget a **mintaadatok engedélyezéséhez?**. Amikor megnyitja a Request-Response fület a **teszt** lapon, a portál kitölti az eredeti hitelkockázat-adatkészletből vett mintaadatok adatait.
 
 ### <a name="test-a-classic-web-service"></a>Klasszikus webszolgáltatás tesztelése
 
@@ -240,7 +240,7 @@ További információ a webszolgáltatás eléréséről és használatáról: [
 
 [!INCLUDE [machine-learning-studio-clean-up](../../../includes/machine-learning-studio-clean-up.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban a következő lépéseket végezte el:
 

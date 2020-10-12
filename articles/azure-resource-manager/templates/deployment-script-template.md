@@ -8,10 +8,10 @@ ms.topic: conceptual
 ms.date: 07/24/2020
 ms.author: jgao
 ms.openlocfilehash: fb6d1c9e0e2ca545be850af22df15b342cf8d82c
-ms.sourcegitcommit: 0194a29a960e3615f96a2d9d8a7e681cf3e8f9ab
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89667498"
 ---
 # <a name="use-deployment-scripts-in-templates-preview"></a>Telepítési parancsfájlok használata a sablonokban (előzetes verzió)
@@ -147,7 +147,7 @@ Tulajdonság értékének részletei:
 
     Ha az argumentumok Escape-karaktereket tartalmaznak, a [JsonEscaper](https://www.jsonescaper.com/) használatával megduplázhatja a karaktereket. Illessze be az eredeti Escape-karakterláncot az eszközbe, majd válassza a **Escape**lehetőséget.  Az eszköz egy dupla Escape-karakterláncot ad vissza. Az előző minta sablonban például a következő argumentum: **-name \\ "John Dole \\ "**.  Az Escape **-karakterlánc neve \\ \\ \\ "John Dole \\ \\ \\ "**.
 
-    Ha argumentumként egy ARM-sablon típusú paramétert szeretne átadni, alakítsa át az objektumot egy sztringre a [karakterlánc ()](./template-functions-string.md#string) függvény használatával, majd a [replace ()](./template-functions-string.md#replace) függvény használatával cserélje le a ** \\ "** into ** \\ \\ \\ "** karakterláncot. Például:
+    Ha argumentumként egy ARM-sablon típusú paramétert szeretne átadni, alakítsa át az objektumot egy sztringre a [karakterlánc ()](./template-functions-string.md#string) függvény használatával, majd a [replace ()](./template-functions-string.md#replace) függvény használatával cserélje le a ** \\ "** into ** \\ \\ \\ "** karakterláncot. Példa:
 
     ```json
     replace(string(parameters('tables')), '\"', '\\\"')
@@ -203,7 +203,7 @@ A kimenet a következőképpen fog kinézni:
 
 ## <a name="use-external-scripts"></a>Külső parancsfájlok használata
 
-A beágyazott parancsfájlok mellett külső parancsfájlokat is használhat. Csak a **ps1** fájlnévkiterjesztéssel rendelkező elsődleges PowerShell-parancsfájlok támogatottak. A CLI-parancsfájlok esetében az elsődleges parancsfájlok rendelkezhetnek kiterjesztéssel (vagy kiterjesztés nélkül), feltéve, hogy a parancsfájlok érvényes bash-parancsfájlok. A külső parancsfájlok használatához cserélje le a parancsot a következőre: `scriptContent` `primaryScriptUri` . Például:
+A beágyazott parancsfájlok mellett külső parancsfájlokat is használhat. Csak a **ps1** fájlnévkiterjesztéssel rendelkező elsődleges PowerShell-parancsfájlok támogatottak. A CLI-parancsfájlok esetében az elsődleges parancsfájlok rendelkezhetnek kiterjesztéssel (vagy kiterjesztés nélkül), feltéve, hogy a parancsfájlok érvényes bash-parancsfájlok. A külső parancsfájlok használatához cserélje le a parancsot a következőre: `scriptContent` `primaryScriptUri` . Példa:
 
 ```json
 "primaryScriptURI": "https://raw.githubusercontent.com/Azure/azure-docs-json-samples/master/deployment-script/deploymentscript-helloworld.ps1",
@@ -263,7 +263,7 @@ A parancsfájlok végrehajtásához és a hibaelhárításhoz szükség van egy 
 
 - A támogatott Storage-fiókok a következők:
 
-    | Termékváltozat             | Támogatott típus     |
+    | SKU             | Támogatott típus     |
     |-----------------|--------------------|
     | Premium_LRS     | FileStorage        |
     | Premium_ZRS     | FileStorage        |
@@ -288,7 +288,7 @@ Meglévő Storage-fiók megadásához adja hozzá a következő JSON-t a tulajdo
 ```
 
 - **storageAccountName**: adja meg a Storage-fiók nevét.
-- **storageAccountKey "**: a Storage-fiók kulcsainak egyikét kell megadnia. A [`listKeys()`](./template-functions-resource.md#listkeys) kulcs lekéréséhez használhatja a függvényt. Például:
+- **storageAccountKey "**: a Storage-fiók kulcsainak egyikét kell megadnia. A [`listKeys()`](./template-functions-resource.md#listkeys) kulcs lekéréséhez használhatja a függvényt. Példa:
 
     ```json
     "storageAccountSettings": {
@@ -344,7 +344,7 @@ A Azure PowerShell használatával a telepítési parancsfájlokat az előfizet�
 - [Remove-AzDeploymentScript](/powershell/module/az.resources/remove-azdeploymentscript): eltávolítja a telepítési parancsfájlt és a hozzá tartozó erőforrásokat.
 - [Save-AzDeploymentScriptLog](/powershell/module/az.resources/save-azdeploymentscriptlog): menti a telepítési parancsfájl naplóját a lemezre.
 
-A Get-AzDeploymentScript kimenet a következőhöz hasonló:
+A Get-AzDeploymentScript kimenete a következőhöz hasonló:
 
 ```output
 Name                : runPowerShellInlineWithOutput
@@ -562,7 +562,7 @@ A parancsfájl sikeres tesztelése után a sablonban használható üzembe helye
 
 ## <a name="deployment-script-error-codes"></a>Üzembehelyezési parancsfájl hibakódai
 
-| Hibakód | Description |
+| Hibakód | Leírás |
 |------------|-------------|
 | DeploymentScriptInvalidOperation | Az üzembehelyezési parancsfájl erőforrás-definíciója a sablonban érvénytelen tulajdonságokat tartalmaz. |
 | DeploymentScriptResourceConflict | Nem terminálos állapotú központi telepítési parancsfájl-erőforrás nem törölhető, és a végrehajtás nem haladja meg az 1 órát. Vagy nem futtathatja újra ugyanazt az üzembe helyezési parancsfájlt ugyanazzal az erőforrás-azonosítóval (az előfizetés, az erőforráscsoport neve és az erőforrás neve), de a parancsfájl törzse egyszerre több tartalmat is tartalmaz. |

@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 12/02/2019
 ms.author: jasonh
 ms.openlocfilehash: 6526119a8b20a7c60879fe690aefe96159b062a7
-ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91409765"
 ---
 # <a name="graph-data-modeling-for-azure-cosmos-db-gremlin-api"></a>Graph adatmodellezés Azure Cosmos DB Gremlin API-hoz
@@ -47,11 +47,11 @@ A Graph-objektumok tulajdonságaira vonatkozó ajánlott eljárások a következ
 
 | Objektum | Tulajdonság | Típus | Jegyzetek |
 | --- | --- | --- |  --- |
-| Vertex | ID | Sztring | A partíciók egyedi kikényszerítve. Ha nincs megadva érték a beszúráskor, az automatikusan generált GUID-t fogja tárolni. |
+| Vertex | ID (Azonosító) | Sztring | A partíciók egyedi kikényszerítve. Ha nincs megadva érték a beszúráskor, az automatikusan generált GUID-t fogja tárolni. |
 | Vertex | címke | Sztring | Ez a tulajdonság határozza meg a csúcspont által reprezentált entitás típusát. Ha nincs megadva érték, a rendszer az alapértelmezett "Vertex" értéket fogja használni. |
 | Vertex | properties | Karakterlánc, logikai, numerikus | Az egyes csúcspontokban kulcs-érték párokként tárolt külön tulajdonságok listája. |
 | Vertex | partíciós kulcs | Karakterlánc, logikai, numerikus | Ez a tulajdonság határozza meg, hogy a csúcspont és a kimenő élek hol lesznek tárolva. További információ a [Graph particionálásról](graph-partitioning.md). |
-| Edge | ID | Sztring | A partíciók egyedi kikényszerítve. Alapértelmezés szerint automatikusan létrejön. Az éleket általában nem kell egyedi módon beolvasni egy AZONOSÍTÓval. |
+| Edge | ID (Azonosító) | Sztring | A partíciók egyedi kikényszerítve. Alapértelmezés szerint automatikusan létrejön. Az éleket általában nem kell egyedi módon beolvasni egy AZONOSÍTÓval. |
 | Edge | címke | Sztring | Ez a tulajdonság határozza meg, hogy milyen típusú kapcsolatra van két csúcspont. |
 | Edge | properties | Karakterlánc, logikai, numerikus | Az egyes szegélyekben kulcs-érték párokként tárolt külön tulajdonságok listája. |
 
@@ -105,7 +105,7 @@ A leíró kapcsolati címkék használatával javítható a peremhálózat-felol
 * Használjon nem általános kifejezéseket a kapcsolatok címkézéséhez.
 * Társítsa a forrás csúcspontjának címkéjét a cél csúcspontjának címkéjéhez a kapcsolat nevével.
 
-:::image type="content" source="./media/graph-modeling/graph-modeling-3.png" alt-text="Relációs címkézési példák." border="false":::
+:::image type="content" source="./media/graph-modeling/graph-modeling-3.png" alt-text="Entitás-modell a tulajdonságok csúcspontokkal." border="false":::
 
 Minél pontosabb a felirat, amelyet a bejárás használ az élek szűrésére, annál jobb. Ez a döntés jelentős hatással lehet a lekérdezési díjakra is. A lekérdezési költségeket bármikor kiértékelheti [a executionProfile lépés használatával](graph-execution-profile.md).
 

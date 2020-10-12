@@ -9,10 +9,10 @@ ms.date: 09/28/2020
 ms.author: rogarana
 ms.custom: include file
 ms.openlocfilehash: 7b41105bafedb8eeaffe5f266f5dd824957c57e0
-ms.sourcegitcommit: 3792cf7efc12e357f0e3b65638ea7673651db6e1
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91441188"
 ---
 Jelenleg az ultra-lemezek további korlátozásokkal rendelkeznek, ezek a következők:
@@ -39,7 +39,7 @@ Az alábbi táblázat az ultra lemezek régióit ismerteti, valamint a hozzájuk
 |Kelet-Ausztrália     |Három rendelkezésre állási zóna         |
 |Délkelet-Ázsia    |Három rendelkezésre állási zóna        |
 |Közép-Kanada *     |Három rendelkezésre állási zóna          |
-|Az USA középső régiója     |Három rendelkezésre állási zóna          |
+|USA középső régiója     |Három rendelkezésre állási zóna          |
 |USA keleti régiója     |Három rendelkezésre állási zóna          |
 |USA 2. keleti régiója     |Három rendelkezésre állási zóna         |
 |Közép-Franciaország    |Két rendelkezésre állási zóna        |

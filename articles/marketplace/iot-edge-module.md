@@ -8,10 +8,10 @@ author: keferna
 ms.author: keferna
 ms.date: 08/18/2020
 ms.openlocfilehash: 90267f2b75b7b9c1e77a45d7e3faa4b0bf6dd63a
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91708543"
 ---
 # <a name="iot-edge-modules"></a>IoT Edge-modulok
@@ -42,7 +42,7 @@ A IoT Edge modul ajánlat típusa egy IoT Edge eszközön futó adott típusú t
 
 IoT Edge modulokat csak az Azure Marketplace-en tesszük közzé; A AppSource nem érvényes. További információ az online áruházak közötti különbségekről: [a közzétételi lehetőség meghatározása](determine-your-listing-type.md).
 
-**Számlázási beállítások**
+**Számlázási módok**
 
 A piactér jelenleg **ingyenes** , és **saját licenc (BYOL)** számlázási lehetőségeket biztosít IoT Edge modulokhoz.
 

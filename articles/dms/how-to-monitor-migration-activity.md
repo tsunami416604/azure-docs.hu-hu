@@ -12,10 +12,10 @@ ms.custom: seo-lt-2019
 ms.topic: how-to
 ms.date: 02/20/2020
 ms.openlocfilehash: dc9123735ef65bec89e99a14d25cba881be306fe
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91297470"
 ---
 # <a name="monitor-migration-activity-using-the-azure-database-migration-service"></a>Áttelepítési tevékenység figyelése a Azure Database Migration Service használatával
@@ -108,7 +108,7 @@ A panel alsó részén láthatók a táblák, és az áttelepítés előrehalad�
 
 Az alábbi táblázat a tábla szintű részletekben látható mezőket ismerteti.
 
-| Mező neve        | Description       |
+| Mező neve        | Leírás       |
 | ------------- | ------------- |
 | **A teljes terhelés befejeződött**      | A táblák száma teljes adatterheléssel fejeződött be. |
 | **Teljes terhelés várólistán**      | A teljes betöltésre váró táblák száma.      |
@@ -129,7 +129,7 @@ Két lap jelenik meg, amelyek az áttelepítés előrehaladását mutatják be a
 
 Az alábbi táblázat a táblázat szintű áttelepítési folyamat során megjelenő mezőket ismerteti.
 
-| Mező neve        | Description       |
+| Mező neve        | Leírás       |
 | ------------- | ------------- |
 | **Állapot – szinkronizálás**      | Folyamatos szinkronizálás fut. |
 | **Insert**      | A célhelyre alkalmazott CDC-beszúrások száma.      |

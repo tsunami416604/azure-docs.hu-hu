@@ -7,10 +7,10 @@ ms.service: postgresql
 ms.topic: conceptual
 ms.date: 06/22/2020
 ms.openlocfilehash: 4ab4a64fa395c105ced8e47cdcec019373f7f835
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91708611"
 ---
 # <a name="logical-decoding"></a>Logikai dekódolás
@@ -50,7 +50,7 @@ A kiszolgálót újra kell indítani a paraméter módosítása után. Belsőleg
 
 ### <a name="using-azure-portal"></a>Az Azure Portal használata
 
-1. Az Azure-beli replikáció támogatását állítsa **logikai**értékre. Válassza a **Mentés** lehetőséget.
+1. Az Azure-beli replikáció támogatását állítsa **logikai**értékre. Kattintson a **Mentés** gombra.
 
    :::image type="content" source="./media/concepts-logical/replication-support.png" alt-text="Azure Database for PostgreSQL – replikálás – Azure-replikáció támogatása":::
 
@@ -79,7 +79,7 @@ Az alábbi példában az SQL-felületet használjuk a wal2json beépülő modull
    SELECT * FROM pg_create_logical_replication_slot('test_slot', 'wal2json');
    ```
  
-2. SQL-parancsok kiadása. Például:
+2. SQL-parancsok kiadása. Példa:
    ```SQL
    CREATE TABLE a_table (
       id varchar(40) NOT NULL,

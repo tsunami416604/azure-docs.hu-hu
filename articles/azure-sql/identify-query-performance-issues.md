@@ -12,10 +12,10 @@ ms.author: jovanpop
 ms.reviewer: jrasnick, sstein
 ms.date: 03/10/2020
 ms.openlocfilehash: afc142ec9de0e275d505276d959cfac3e652c55d
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91619763"
 ---
 # <a name="detectable-types-of-query-performance-bottlenecks-in-azure-sql-database"></a>A lekérdezési teljesítményt érintő szűk keresztmetszetek típusai az Azure SQL Database-ben
@@ -153,8 +153,8 @@ A lassú lekérdezési teljesítmény nem kapcsolódik az optimálisnál rosszab
 - Erőforrás-korlátok észlelése [Intelligent Insights](database/intelligent-insights-troubleshoot-performance.md#reaching-resource-limits) használatával
 - Erőforrásokkal kapcsolatos problémák észlelése a [DMV](database/monitoring-with-dmvs.md)használatával:
 
-  - A [sys. dm_db_resource_stats](database/monitoring-with-dmvs.md#monitor-resource-use) DMV a CPU-t, az I/O-t és a memória használatát adja vissza az adatbázishoz. Egy sor minden 15 másodperces intervallumban létezik, még akkor is, ha nincs tevékenység az adatbázisban. A korábbi adatait egy óráig őrzi meg a rendszer.
-  - A [sys. resource_stats](database/monitoring-with-dmvs.md#monitor-resource-use) DMV visszaadja a CPU-használati és adattárolási adatokat Azure SQL Database számára. Az adatok gyűjtése és összesítése öt percenként történik.
+  - A [sys.dm_db_resource_stats](database/monitoring-with-dmvs.md#monitor-resource-use) DMV a CPU-t, az I/O-t és a memória-használatot adja vissza az adatbázishoz. Egy sor minden 15 másodperces intervallumban létezik, még akkor is, ha nincs tevékenység az adatbázisban. A korábbi adatait egy óráig őrzi meg a rendszer.
+  - A [sys.resource_stats](database/monitoring-with-dmvs.md#monitor-resource-use) DMV visszaadja a CPU-használati és tárolási adatokat Azure SQL Database számára. Az adatok gyűjtése és összesítése öt percenként történik.
   - [Sok egyéni lekérdezés, amely összesíti a magas CPU-t](database/monitoring-with-dmvs.md#many-individual-queries-that-cumulatively-consume-high-cpu)
 
 Ha nem elegendő erőforrással azonosítja a problémát, az erőforrások frissítésével növelheti az adatbázis kapacitását, hogy felvegye a CPU-követelményeket. További információkért lásd: [önálló adatbázis-erőforrások méretezése Azure SQL Database](database/single-database-scale.md) és [rugalmas készlet erőforrásainak méretezése a Azure SQL Databaseban](database/elastic-pool-scale.md). A felügyelt példányok skálázásával kapcsolatos információkért lásd: [szolgáltatási rétegbeli erőforrás-korlátok](managed-instance/resource-limits.md#service-tier-characteristics)
@@ -203,16 +203,16 @@ Miután megnyitotta a legoptimálisabb tervet, és a *várakozással kapcsolatos
 Ezeket a metódusokat általában a várakozási típusok leggyakoribb kategóriáinak megjelenítésére használják:
 
 - A Intelligent Insights használatával azonosíthatja a teljesítmény romlásával kapcsolatos lekérdezéseket a [megnövekedett várakozások](database/intelligent-insights-troubleshoot-performance.md#increased-wait-statistic) miatt
-- A [lekérdezési tároló](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store) használatával megkeresheti az egyes lekérdezések várakozási statisztikáit az idő múlásával. A lekérdezési tárolóban a várakozási típusok a várakozási kategóriákba vannak összevonva. A várakozási kategóriák hozzárendelését a [sys. query_store_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-query-store-wait-stats-transact-sql#wait-categories-mapping-table)várakozási típusok között találja.
-- A [sys. dm_db_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-wait-stats-azure-sql-database) használatával információt adhat vissza a lekérdezési művelet során végrehajtott szálak által észlelt összes várakozásról. Ennek az összesített nézetnek a segítségével diagnosztizálhatja a teljesítménnyel kapcsolatos problémákat Azure SQL Database, valamint adott lekérdezésekkel és kötegekkel is. A lekérdezések erőforrásokra, várakozási sorokra vagy külső várakozásokra is várnak.
-- A [sys. dm_os_waiting_tasks](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-os-waiting-tasks-transact-sql) használatával információt adhat vissza az egyes erőforrásokra várakozó feladatok várólistáján.
+- A [lekérdezési tároló](https://docs.microsoft.com/sql/relational-databases/performance/monitoring-performance-by-using-the-query-store) használatával megkeresheti az egyes lekérdezések várakozási statisztikáit az idő múlásával. A lekérdezési tárolóban a várakozási típusok a várakozási kategóriákba vannak összevonva. Megkeresheti a várakozási kategóriák hozzárendelését a [sys.query_store_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-catalog-views/sys-query-store-wait-stats-transact-sql#wait-categories-mapping-table)a várakozási típusoknál.
+- A [sys.dm_db_wait_stats](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-db-wait-stats-azure-sql-database) használatával a lekérdezési művelet során végrehajtott szálak összes várakozásával kapcsolatos információkat adhat vissza. Ennek az összesített nézetnek a segítségével diagnosztizálhatja a teljesítménnyel kapcsolatos problémákat Azure SQL Database, valamint adott lekérdezésekkel és kötegekkel is. A lekérdezések erőforrásokra, várakozási sorokra vagy külső várakozásokra is várnak.
+- A [sys.dm_os_waiting_tasks](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-os-waiting-tasks-transact-sql) használatával adatokat adhat vissza az egyes erőforrásokra várakozó feladatok várólistáján.
 
 A nagy CPU-forgatókönyvek esetében előfordulhat, hogy a Query Store és a wait statisztikája nem tükrözi a CPU-használatot, ha:
 
 - A nagy CPU-fogyasztású lekérdezések végrehajtása még folyamatban van.
 - A nagy CPU-fogyasztásra felhasználható lekérdezések akkor futnak, amikor feladatátvétel történt.
 
-A lekérdezési tárolót nyomon követő DMV és a várakozási statisztikának csak a sikeresen befejezett és időkorlátú lekérdezések eredményei láthatók. Nem jelenítenek meg adatokat a jelenleg végrehajtás alatt álló utasításokhoz, amíg az utasítások befejeződik. A dinamikus felügyeleti nézet [sys. dm_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) használatával követheti nyomon a jelenleg végrehajtás alatt álló lekérdezéseket és a kapcsolódó munkavégző időt.
+A lekérdezési tárolót nyomon követő DMV és a várakozási statisztikának csak a sikeresen befejezett és időkorlátú lekérdezések eredményei láthatók. Nem jelenítenek meg adatokat a jelenleg végrehajtás alatt álló utasításokhoz, amíg az utasítások befejeződik. A dinamikus felügyeleti nézet [sys.dm_exec_requests](https://docs.microsoft.com/sql/relational-databases/system-dynamic-management-views/sys-dm-exec-requests-transact-sql) a jelenleg végrehajtás alatt álló lekérdezések és a hozzájuk tartozó munkavégző idő nyomon követésére használható.
 
 > [!TIP]
 > További eszközök:
@@ -220,6 +220,6 @@ A lekérdezési tárolót nyomon követő DMV és a várakozási statisztikának
 > - [TigerToolbox várakozások és zárak](https://github.com/Microsoft/tigertoolbox/tree/master/Waits-and-Latches)
 > - [TigerToolbox usp_whatsup](https://github.com/Microsoft/tigertoolbox/tree/master/usp_WhatsUp)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [SQL Database monitorozás és hangolás áttekintése](database/monitor-tune-overview.md)

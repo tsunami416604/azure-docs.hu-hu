@@ -10,10 +10,10 @@ ms.author: normesta
 ms.subservice: data-lake-storage-gen2
 ms.reviewer: artek
 ms.openlocfilehash: 1d720aed44358dd314bc4226adb9ad517139cd18
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87836309"
 ---
 # <a name="using-the-hdfs-cli-with-data-lake-storage-gen2"></a>A HDFS CLI használata Data Lake Storage Gen2
@@ -116,7 +116,7 @@ Lásd: [chmod](https://hadoop.apache.org/docs/r2.4.1/hadoop-project-dist/hadoop-
 
 A parancsok teljes listáját megtekintheti a [Apache Hadoop 2.4.1 fájlrendszer rendszerhéj-útmutatójának](https://hadoop.apache.org/docs/r2.4.1/hadoop-project-dist/hadoop-common/FileSystemShell.html) webhelyén.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Azure Data Lake Storage Gen2 képes fiók használata Azure Databricks](./data-lake-storage-quickstart-create-databricks-account.md)
 

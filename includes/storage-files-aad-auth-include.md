@@ -9,10 +9,10 @@ ms.date: 07/30/2019
 ms.author: tamram
 ms.custom: include file
 ms.openlocfilehash: 1da1cfff05418219fdf5217b612103e50efca05d
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87841805"
 ---
 [Azure Files](../articles/storage/files/storage-files-introduction.md) támogatja az identitás-alapú hitelesítést a Server Message Block (SMB) protokollon keresztül [a helyszíni Active Directory tartományi szolgáltatások (AD DS) és a](https://docs.microsoft.com/windows-server/identity/ad-ds/get-started/virtual-dc/active-directory-domain-services-overview) [Azure Active Directory Domain Services (Azure AD DS)](../articles/active-directory-domain-services/overview.md)használatával. Ez a cikk azt ismerteti, hogy az Azure-fájlmegosztás hogyan használhatja a helyszíni vagy az Azure-beli tartományi szolgáltatásokat az Azure-fájlmegosztás SMB-alapú hozzáférésének támogatásához. Az identitás-alapú hozzáférés engedélyezése az Azure-fájlmegosztás lehetővé teszi a meglévő fájlkiszolgálók az Azure-fájlmegosztás nélküli cseréjét a meglévő címtárszolgáltatás cseréje nélkül, a megosztások zökkenőmentes felhasználói hozzáférésének fenntartása mellett. 

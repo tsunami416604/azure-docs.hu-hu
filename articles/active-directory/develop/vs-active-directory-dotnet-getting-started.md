@@ -11,10 +11,10 @@ ms.date: 03/12/2018
 ms.author: ghogen
 ms.custom: devx-track-csharp, aaddev, vs-azure
 ms.openlocfilehash: 15a7c873e4d1e5c962a89b03f2a5cafc88843192
-ms.sourcegitcommit: c28fc1ec7d90f7e8b2e8775f5a250dd14a1622a6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88165464"
 ---
 # <a name="getting-started-with-azure-active-directory-aspnet-mvc-projects"></a>Első lépések Azure Active Directory (ASP.NET MVC-projektekkel)
@@ -80,7 +80,7 @@ A bejelentkezési/kijelentkezés vezérlőelemeknek a nézethez való hozzáadá
 </html>
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Hitelesítési forgatókönyvek Azure Active Directory](./authentication-vs-authorization.md)
 - [Bejelentkezés felvétele a Microsofttal egy ASP.NET-webalkalmazásba](quickstart-v2-aspnet-webapp.md)

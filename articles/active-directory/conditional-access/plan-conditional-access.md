@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: joflore
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 9f1d4c5b55dd2a24c1fb41540fdc5d3ae26849a2
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91258676"
 ---
 # <a name="plan-a-conditional-access-deployment"></a>A feltételes hozzáférés üzembe helyezésének megtervezése
@@ -30,7 +30,7 @@ A Azure Active Directory (Azure AD) feltételes hozzáférés (CA) olyan jeleket
 
 A Microsoft a biztonsági [alapértékek](../fundamentals/concept-fundamentals-security-defaults.md) nevű szabványos feltételes házirendeket biztosít, amelyek biztosítják az alapszintű biztonságot. Előfordulhat azonban, hogy a szervezet nagyobb rugalmasságot igényel, mint a biztonsági alapértékek ajánlata. A feltételes hozzáférés segítségével testre szabhatja a biztonsági beállításokat, és részletesebben is testreszabhatja az igényeinek megfelelő új házirendeket.
 
-## <a name="learn"></a>Learn
+## <a name="learn"></a>Tanulás
 
 Mielőtt elkezdené, győződjön meg arról, hogyan működik a [feltételes hozzáférés](overview.md) , és hogy mikor érdemes használni.
 
@@ -380,7 +380,7 @@ Egyes szervezetek erre a célra rendelkeznek tesztelési Bérlővel. Azonban neh
 
 A tesztelési terv fontos, hogy összehasonlítsa a várt eredmények és a tényleges eredmények összehasonlítását. A tesztelés előtt mindig legyen várakozás. A következő táblázat példákat mutat be a tesztelési esetekre. Állítsa be a forgatókönyveket és a várt eredményeket a HITELESÍTÉSSZOLGÁLTATÓI házirendek konfigurálásának módja alapján.
 
-| Szabályzat| Használati eset| Várt eredmény |
+| Szabályzat| Forgatókönyv| Várt eredmény |
 | - | - | - |
 | [MFA megkövetelése, ha nem működik](untrusted-networks.md)| A meghatalmazott felhasználó bejelentkezik az alkalmazásba egy megbízható helyen/munkahelyen| A felhasználónak nem kell megadnia az MFA-t |
 | [MFA megkövetelése, ha nem működik](untrusted-networks.md)| Az engedélyezve lévő felhasználó bejelentkezik az alkalmazásba, és nem megbízható helyen/munkahelyen| A rendszer felszólítja a felhasználót az MFA használatára, és sikeresen bejelentkezhet |
@@ -493,7 +493,7 @@ Miután összegyűjtötte az adatokat, tekintse meg a következő forrásokat:
 
 * [Bejelentkezési problémák a feltételes hozzáféréssel](troubleshoot-conditional-access.md) – a feltételes hozzáféréssel kapcsolatos váratlan bejelentkezések ismertetése a hibaüzenetek és az Azure ad bejelentkezési naplójának használatával.
 
-* [A mi-if eszköz használata](troubleshoot-conditional-access-what-if.md) – megtudhatja, miért nem adott meg egy házirendet egy adott felhasználóra adott körülmények között, vagy ha egy házirendet ismert állapotban kellene alkalmazni.
+* [A What-If eszköz használata](troubleshoot-conditional-access-what-if.md) – megismerheti, hogy egy adott házirend miért lett vagy nem lett alkalmazva a felhasználóra adott körülmények között, vagy ha egy házirendet ismert állapotban kellene alkalmazni.
 
 ## <a name="next-steps"></a>Következő lépések
 

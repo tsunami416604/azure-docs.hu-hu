@@ -5,10 +5,10 @@ ms.topic: tutorial
 ms.date: 08/27/2020
 ms.custom: references_regions
 ms.openlocfilehash: c7ed1a8fceeddecb942edb541c6112492a6e5a2d
-ms.sourcegitcommit: b48e8a62a63a6ea99812e0a2279b83102e082b61
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91410442"
 ---
 # <a name="tutorial-deploy-a-service-fabric-managed-cluster-preview"></a>Oktatóanyag: Service Fabric felügyelt fürt üzembe helyezése (előzetes verzió)
@@ -65,7 +65,7 @@ New-AzResourceGroup -Name $resourceGroup -Location $location
 
 ## <a name="deploy-a-service-fabric-managed-cluster"></a>Service Fabric felügyelt fürt üzembe helyezése
 
-### <a name="create-a-service-fabric-managed-cluster"></a>Service Fabric felügyelt fürt létrehozása
+### <a name="create-a-service-fabric-managed-cluster"></a>Felügyelt Service Fabric-fürt létrehozása
 
 Ebben a lépésben egy Service Fabric felügyelt fürtöt fog létrehozni a New-AzServiceFabricManagedCluster PowerShell-paranccsal. Az alábbi példa egy myCluster nevű fürtöt hoz létre a myResourceGroup nevű erőforráscsoport-csoportban. Ez az erőforráscsoport a eastus2 régió előző lépésében lett létrehozva.
 
@@ -110,7 +110,7 @@ A parancs végrehajtása több percet is igénybe vehet.
 
 Miután az üzembe helyezés befejeződött, keresse meg a Service Fabric Explorer értéket a portál Service Fabric felügyelt fürt erőforrásának áttekintés lapján. Ha a rendszer rákérdez a tanúsítványra, használja azt a tanúsítványt, amelyhez az ügyfél ujjlenyomatát adták a PowerShell-parancsban.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben a lépésben létrehozta és üzembe helyezte az első Service Fabric felügyelt fürtöt. A fürtök méretezésével kapcsolatos további tudnivalókért tekintse meg a következőt:
 

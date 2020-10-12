@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.date: 09/23/2020
 ms.author: jingwang
 ms.openlocfilehash: e32115c590d73f5c93f322d3bd542096f2964a4c
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91297606"
 ---
 # <a name="get-metadata-activity-in-azure-data-factory"></a>Metaadatok beolvasása tevékenység Azure Data Factory
@@ -33,7 +33,7 @@ A következő funkciók érhetők el a vezérlési folyamatban:
 - Az érvényesítés végrehajtásához használhatja a metaadatok beolvasása tevékenységből a feltételes kifejezésekben szereplő kimenetet.
 - A folyamat akkor aktiválható, ha a feltételt a "Do" utasításon keresztül, a hurok nélkül kell megtenni.
 
-## <a name="capabilities"></a>Képességek
+## <a name="capabilities"></a>Funkciók
 
 A metaadatok beolvasása tevékenység bemenetként fogadja az adatkészletet, és a metaadatok adatait adja vissza kimenetként. Jelenleg a következő összekötők és a megfelelő lekérdezhető metaadatok támogatottak. A visszaadott metaadatok maximális mérete körülbelül 4 MB.
 
@@ -76,7 +76,7 @@ A metaadatok beolvasása tevékenység bemenetként fogadja az adatkészletet, �
 
 A következő metaadatokat adhatja meg a metaadatok beolvasása tevékenység mezőinek listájában a megfelelő információk lekéréséhez:
 
-| Metaadat típusa | Description |
+| Metaadat típusa | Leírás |
 |:--- |:--- |
 | itemName | A fájl vagy mappa neve. |
 | itemType | A fájl vagy mappa típusa. A visszaadott érték a következő: `File` vagy `Folder` . |
@@ -168,10 +168,10 @@ A metaadatok beolvasása tevékenység jelenleg a következő típusú metaadato
 
 Tulajdonság | Leírás | Kötelező
 -------- | ----------- | --------
-Mezőlista | A metaadatokhoz szükséges információk típusai. A támogatott metaadatokkal kapcsolatos részletekért tekintse meg a jelen cikk [metaadat-beállítások](#metadata-options) című szakaszát. | Yes 
-adatkészlet | A metaadatok beolvasása tevékenység által a metaadatokat lekérő hivatkozási adatkészlet. A támogatott összekötők információit a [képességek](#capabilities) című szakaszban találja. Az adatkészlet szintaxisával kapcsolatos részletekért tekintse meg az összekötőhöz kapcsolódó témaköröket. | Yes
-formatSettings | Alkalmazza a Format Type adatkészlet használatakor. | No
-storeSettings | Alkalmazza a Format Type adatkészlet használatakor. | No
+Mezőlista | A metaadatokhoz szükséges információk típusai. A támogatott metaadatokkal kapcsolatos részletekért tekintse meg a jelen cikk [metaadat-beállítások](#metadata-options) című szakaszát. | Igen 
+adatkészlet | A metaadatok beolvasása tevékenység által a metaadatokat lekérő hivatkozási adatkészlet. A támogatott összekötők információit a [képességek](#capabilities) című szakaszban találja. Az adatkészlet szintaxisával kapcsolatos részletekért tekintse meg az összekötőhöz kapcsolódó témaköröket. | Igen
+formatSettings | Alkalmazza a Format Type adatkészlet használatakor. | Nem
+storeSettings | Alkalmazza a Format Type adatkészlet használatakor. | Nem
 
 ## <a name="sample-output"></a>Példakimenet
 

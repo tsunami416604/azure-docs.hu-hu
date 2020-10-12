@@ -11,10 +11,10 @@ ms.date: 04/23/2020
 ms.author: cathys
 keywords: VisualStudio
 ms.openlocfilehash: 5ec8e0f6448e725998628e41b917942966d3ef2a
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87836156"
 ---
 # <a name="visual-studio-images-on-azure"></a>Visual Studio-lemezképek az Azure-ban
@@ -106,7 +106,7 @@ További információ: [általánosított virtuális gép felügyelt rendszerké
 
 Emellett előfordulhat, hogy a fejlesztési feladatokhoz vagy technológiákhoz több méretezésre van szükség, például a fejlesztési konfigurációk és a több gép konfigurációjának változatosságára. A Azure DevTest Labs használatával olyan _recepteket_ hozhat létre, amelyek automatizálják az "arany rendszerkép" kialakítását. A DevTest Labs szolgáltatással is kezelheti a csoportok futó virtuális gépek szabályzatait. A DevTest Labs szolgáltatással kapcsolatos további információkért a [Azure DevTest Labs for Developers használata](../../devtest-labs/devtest-lab-developer-lab.md) a legjobb forrás.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Most, hogy már ismeri az előre konfigurált Visual Studio-rendszerképeket, a következő lépés egy új virtuális gép létrehozása:
 
 * [Virtuális gép létrehozása a Azure Portal](quick-create-portal.md)

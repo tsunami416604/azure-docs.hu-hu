@@ -10,10 +10,10 @@ ms.author: keli19
 ms.custom: seodec18
 ms.date: 03/13/2017
 ms.openlocfilehash: 695539e4739002480b3622eb217ef920d4cb34e2
-ms.sourcegitcommit: d95cab0514dd0956c13b9d64d98fdae2bc3569a0
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91357488"
 ---
 # <a name="perform-analytics-with-azure-machine-learning-studio-classic-using-a-sql-server-database"></a>Elemzések végrehajtása Azure Machine Learning Studio (klasszikus) SQL Server-adatbázis használatával
@@ -40,9 +40,9 @@ Azure Machine Learning Studio (klasszikus) SQL Server-adatbázis eléréséhez l
 
 Az IR-t az idő előtt is telepítheti, ha letölti és futtatja az MSI-telepítőcsomagot a [Microsoft letöltőközpontból](https://www.microsoft.com/download/details.aspx?id=39717). Az MSI-t a meglévő IR legújabb verzióra történő frissítésére is használhatja, minden beállítás megőrzött.
 
-A Data Factory saját üzemeltetésű Integration Runtime a következő előfeltételekkel rendelkezik:
+A Data Factory Self-Hosted Integration Runtime a következő előfeltételekkel rendelkezik:
 
-* A Data Factory saját üzemeltetésű integrációja 64 bites operációs rendszert igényel a .NET-keretrendszer 4.6.1-es vagy újabb verziójának használatával.
+* A Data Factory Self-Hosted integrációhoz a .NET-keretrendszer 4.6.1-es vagy újabb verziójának megfelelő 64 bites operációs rendszer szükséges.
 * A Windows operációs rendszer támogatott verziói a Windows 10, a Windows Server 2012, a Windows Server 2012 R2, a Windows Server 2016. 
 * Az IR-gép ajánlott konfigurációja legalább 2 GHz-es, 4 magos PROCESSZORral, 8 GB RAM-mal és 80 GB-os lemezzel rendelkezik.
 * Ha a gazdaszámítógép hibernált állapotba kerül, az IR nem válaszol az adatkérésekre. Ezért konfigurálja a megfelelő energiasémát a számítógépen az IR telepítése előtt. Ha a gép hibernált állapotra van állítva, az IR-telepítés üzenet jelenik meg.

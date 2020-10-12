@@ -9,10 +9,10 @@ ms.service: iot-dps
 services: iot-dps
 manager: eliotga
 ms.openlocfilehash: b9fc37c6589cdd0bc6a5cdce7b7ebebe2c6e9a85
-ms.sourcegitcommit: 03662d76a816e98cfc85462cbe9705f6890ed638
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90531610"
 ---
 # <a name="iot-hub-device-provisioning-service-dps-terminology"></a>IoT Hub Device Provisioning Service (DPS) terminológia
@@ -123,6 +123,6 @@ Az eszköz azonosítója a IoT Hubban megjelenő azonosító. Előfordulhat, hog
 
 
 
-## <a name="operations"></a>Üzemeltetés
+## <a name="operations"></a>Műveletek
 
 A műveletek az eszköz kiépítési szolgáltatásának számlázási egységei. Egy művelet egy utasítás sikeres befejezése a szolgáltatás számára. A műveletek közé tartozik az eszközök regisztrációja és az újbóli regisztráció; a műveletek olyan szolgáltatás-oldali módosításokat is tartalmaznak, mint például a regisztrációs lista bejegyzéseinek hozzáadása és a regisztrációs lista bejegyzéseinek frissítése.

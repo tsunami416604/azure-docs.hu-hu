@@ -4,10 +4,10 @@ description: Ismerje meg az Azure Service Fabric legfontosabb alapfogalmait és 
 ms.topic: conceptual
 ms.date: 12/08/2017
 ms.openlocfilehash: d09d774ed32c98222b71423ca733f1b4294957ef
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87836700"
 ---
 # <a name="so-you-want-to-learn-about-service-fabric"></a>Szeretne többet megtudni a Service Fabricról?
@@ -66,7 +66,7 @@ Miért van az állapot-nyilvántartó szolgáltatásokkal együtt? A két fő ok
 ## <a name="supported-programming-models"></a>Támogatott programozási modellek
 A Service Fabric többféle módszert kínál a szolgáltatások írására és kezelésére. A szolgáltatások a Service Fabric API-kkal teljes mértékben kihasználhatják a platform funkcióit és alkalmazási keretrendszereit. A szolgáltatások bármilyen nyelven írt és Service Fabric-fürtön tárolt lefordított végrehajtható programok is lehetnek. További információ: [támogatott programozási modellek](service-fabric-choose-framework.md).
 
-### <a name="containers"></a>Tárolók
+### <a name="containers"></a>Containers
 Alapértelmezés szerint a Service Fabric folyamatokként telepíti és aktiválja a szolgáltatásokat. A Service Fabric [tárolókban](service-fabric-containers-overview.md)is telepíthetnek szolgáltatásokat. Fontos, hogy az ugyanazon alkalmazásban lévő tárolókban található folyamatokban és szolgáltatásokban is összekeverheti a szolgáltatásokat. Service Fabric támogatja a Linux-tárolók és Windows-tárolók telepítését a Windows Server 2016-es verziója esetén. Meglévő alkalmazásokat, állapot nélküli szolgáltatásokat vagy állapot-nyilvántartó szolgáltatásokat helyezhet üzembe tárolókban. 
 
 ### <a name="reliable-services"></a>Reliable Services
@@ -75,7 +75,7 @@ A [Reliable Services](service-fabric-reliable-services-introduction.md) egy egys
 ### <a name="reliable-actors"></a>Reliable Actors
 A Reliable Servicesra épülő, [megbízható színészi](service-fabric-reliable-actors-introduction.md) keretrendszer egy alkalmazási keretrendszer, amely a színész kialakítási mintája alapján implementálja a virtuális színész mintáját. A megbízható szereplők keretrendszere a számítási és az állapot-független egységeket használja az egyszálas végrehajtással. A megbízható Actors keretrendszer beépített kommunikációt biztosít a szereplők számára, és előre beállított állapot-megőrzési és kibővíthető konfigurációkat tartalmaz.
 
-### <a name="aspnet-core"></a>ASP.NET Core
+### <a name="aspnet-core"></a>ASP.NET-mag
 A Service Fabric a webes és API-alkalmazások létrehozásához első osztályú programozási modellként integrálódik a [ASP.net Coreba](service-fabric-reliable-services-communication-aspnetcore.md) .  A ASP.NET Core a Service Fabric kétféleképpen használható:
 
 - Vendég végrehajtható fájlként futtatva. Ez elsősorban a meglévő ASP.NET Core alkalmazások futtatására használatos Service Fabric a kód módosítása nélkül.
@@ -182,7 +182,7 @@ A monitorozás és diagnosztika általános munkafolyamata három lépésből á
 
 Ezen a három területen több termék is elérhető, és mindegyikhez szabadon választhat különböző technológiákat. További információért olvassa el [Az Azure Service Fabric figyelését és diagnosztizálását](service-fabric-diagnostics-overview.md)ismertető témakört.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * Megismerkedhet egy [azure-beli fürt](service-fabric-cluster-creation-via-portal.md) vagy egy [önálló windowsbeli fürt](service-fabric-cluster-creation-for-windows-server.md) létrehozásával.
 * Próbáljon szolgáltatást létrehozni a [Reliable Services](service-fabric-reliable-services-quick-start.md) vagy a [Reliable Actors](service-fabric-reliable-actors-get-started.md) programozási modellek használatával.
 * Ismerje meg, hogyan [telepíthet át Cloud Servicesról](service-fabric-cloud-services-migration-differences.md).

@@ -16,10 +16,10 @@ ms.workload: infrastructure-services
 ms.date: 06/16/2020
 ms.author: radeltch
 ms.openlocfilehash: a0dc9f673abcac549fffc7291b8ac376c297da6b
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87836122"
 ---
 # <a name="public-endpoint-connectivity-for-virtual-machines-using-azure-standard-load-balancer-in-sap-high-availability-scenarios"></a>Nyilvános végponti kapcsolat a Virtual Machines az Azure standard Load Balancer használata az SAP magas rendelkezésre állási helyzetekben
@@ -227,7 +227,7 @@ Ha a kimenő forgalom továbbítása harmadik féltől származó tűzfalon kere
 - Ha az Azure kerítés ügynökét használja, győződjön meg arról, hogy a tűzfal konfigurációja lehetővé teszi a kimenő kapcsolatot az Azure felügyeleti API-val: `https://management.azure.com``https://login.microsoftonline.com`   
 - Ha a SUSE Azure-beli nyilvános Felhőbeli frissítési infrastruktúráját használja a frissítések és javítások alkalmazásához, tekintse meg az [Azure nyilvános felhő frissítési infrastruktúrája 101](https://suse.com/c/azure-public-cloud-update-infrastructure-101/)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * [Ismerje meg, hogyan konfigurálhatja a pacemakert a SUSE-ben az Azure-ban](./high-availability-guide-suse-pacemaker.md)
 * [Ismerje meg, hogyan konfigurálhatja a pacemakert az Azure-beli Red Hat-ban](./high-availability-guide-rhel-pacemaker.md)

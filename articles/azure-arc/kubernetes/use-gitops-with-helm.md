@@ -9,10 +9,10 @@ ms.author: mlearned
 description: Az GitOps és a Helm használata az Azure arc-kompatibilis fürtkonfiguráció (előzetes verzió)
 keywords: GitOps, Kubernetes, K8s, Azure, Helm, arc, AK, Azure Kubernetes szolgáltatás, tárolók
 ms.openlocfilehash: eea81d458ac6631c4a023134b3198e4cdb04526e
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91541611"
 ---
 # <a name="deploy-helm-charts-using-gitops-on-arc-enabled-kubernetes-cluster-preview"></a>Helm-diagramok üzembe helyezése GitOps használatával az arc-kompatibilis Kubernetes-fürtön (előzetes verzió)
@@ -135,6 +135,6 @@ Futtassa az alábbi parancsot, és navigáljon a `localhost:8080` böngészőjé
 kubectl port-forward -n arc-k8s-demo svc/arc-k8s-demo 8080:8080
 ```
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [A fürt konfigurációjának szabályozása Azure Policy használatával](./use-azure-policy.md)

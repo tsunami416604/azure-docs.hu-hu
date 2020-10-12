@@ -15,20 +15,20 @@ ms.subservice: hybrid
 ms.author: billmath
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 2cd95d01c9b49bb6002c00c805dc82dcf30941e3
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91295038"
 ---
 #  <a name="use-a-saml-20-identity-provider-idp-for-single-sign-on"></a>SAML 2.0 identitásszolgáltató használata egyszeri bejelentkezéshez
 
-Ez a dokumentum információkat tartalmaz az SAML 2,0-kompatibilis SP-Lite Profile-alapú identitás-szolgáltató használatáról az előnyben részesített biztonsági jogkivonat szolgáltatás (STS)/Identity Provider használatával. Ez a forgatókönyv akkor lehet hasznos, ha már rendelkezik egy olyan helyszíni felhasználói címtárral és jelszó-tárolóval, amely az SAML 2,0 használatával érhető el. Ezt a meglévő felhasználói könyvtárat használhatja a Microsoft 365 és más Azure AD-védelemmel ellátott erőforrásokhoz való bejelentkezéshez. A SAML 2,0 SP-Lite profil a széles körben használt Security Assertion Markup Language (SAML) összevont identitási szabványon alapul, amely lehetővé teszi a bejelentkezést és az attribútumok Exchange-keretrendszerét.
+Ez a dokumentum olyan SAML 2,0-kompatibilis SP-Lite profil-alapú identitás-szolgáltató használatával kapcsolatos információkat tartalmaz, mint az előnyben részesített biztonsági jogkivonat szolgáltatás (STS)/Identity Provider. Ez a forgatókönyv akkor lehet hasznos, ha már rendelkezik egy olyan helyszíni felhasználói címtárral és jelszó-tárolóval, amely az SAML 2,0 használatával érhető el. Ezt a meglévő felhasználói könyvtárat használhatja a Microsoft 365 és más Azure AD-védelemmel ellátott erőforrásokhoz való bejelentkezéshez. Az SAML 2,0 SP-Lite profil a széles körben használt Security Assertion Markup Language (SAML) összevont identitási szabványon alapul, amely lehetővé teszi a bejelentkezést és az attribútumok Exchange-keretrendszerét.
 
 >[!NOTE]
 >Az Azure AD-vel való használatra tesztelt, harmadik féltől származó IDP megtekintéséhez tekintse meg az [Azure ad összevonási kompatibilitási listáját](how-to-connect-fed-compatibility.md)
 
-A Microsoft a megfelelő módon konfigurált SAML 2,0-profil alapú identitásszolgáltató támogatja a Microsoft Cloud Service (például Microsoft 365) integrációját. Az SAML 2,0 Identity Providers harmadik féltől származó termékek, ezért a Microsoft nem nyújt támogatást az üzembe helyezés, a konfigurálás és a velük kapcsolatos ajánlott eljárások során. A megfelelő konfigurálást követően az SAML 2,0 identitás-szolgáltatóval való integráció a Microsoft connectivity Analyzer eszköz használatával tesztelhető a megfelelő konfigurációhoz, amely az alábbiakban olvasható részletesebben. Az SAML 2,0 SP-Lite Profile-alapú identitás-szolgáltatóval kapcsolatos további információkért forduljon az azt szolgáltató szervezethez.
+A Microsoft a megfelelő módon konfigurált SAML 2,0-profil alapú identitásszolgáltató támogatja a Microsoft Cloud Service (például Microsoft 365) integrációját. Az SAML 2,0 Identity Providers harmadik féltől származó termékek, ezért a Microsoft nem nyújt támogatást az üzembe helyezés, a konfigurálás és a velük kapcsolatos ajánlott eljárások során. A megfelelő konfigurálást követően az SAML 2,0 identitás-szolgáltatóval való integráció a Microsoft connectivity Analyzer eszköz használatával tesztelhető a megfelelő konfigurációhoz, amely az alábbiakban olvasható részletesebben. Ha többet szeretne megtudni az SAML 2,0 SP-Lite profil alapú identitás-szolgáltatóról, kérje meg az azt szolgáltató szervezetet.
 
 > [!IMPORTANT]
 > Ebben a bejelentkezési forgatókönyvben csak korlátozott számú ügyfél érhető el az SAML 2,0 Identity Providers használatával, ez a következőket foglalja magában:
@@ -286,7 +286,7 @@ Rendszergazdaként az egyszeri bejelentkezés (más néven identitás-összevon�
 5.  A Windows PowerShell vagy a Azure AD Connect használatával kiépített egy ismert teszt felhasználói rendszerbiztonsági tag Azure Active Directory (Microsoft 365).
 6.  Konfigurálja a címtár-szinkronizálást [Azure ad Connect](whatis-hybrid-identity.md)használatával.
 
-Miután beállította az egyszeri bejelentkezést az SAML 2,0 SP-Lite alapú identitás-szolgáltatóval, ellenőrizze, hogy megfelelően működik-e.
+Miután beállította az egyszeri bejelentkezést az SAML 2,0 SP-Lite-alapú identitás-szolgáltatóval, ellenőrizze, hogy megfelelően működik-e.
 
 >[!NOTE]
 >Ha egy tartományt úgy alakított át, hogy nem ad hozzá egyet, az egyszeri bejelentkezés beállítása akár 24 óráig is eltarthat.

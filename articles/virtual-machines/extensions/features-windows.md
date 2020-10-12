@@ -16,10 +16,10 @@ ms.date: 03/30/2018
 ms.author: akjosh
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 611edb06762b96ded7671b70ec0f5d4f07f51848
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87829084"
 ---
 # <a name="virtual-machine-extensions-and-features-for-windows"></a>Virtuálisgép-bővítmények és-szolgáltatások a Windows rendszerhez
@@ -254,7 +254,7 @@ Ha a **parancs áthelyezésével végrehajtja** a tulajdonságot a **védett** k
 
 A bővítményeket használó Azure IaaS-alapú virtuális gépeken a tanúsítványok konzolon láthatja, hogy a tulajdonos **_Windows Azure CRP-tanúsítványt létrehozó_** tanúsítványokat tartalmaz. A klasszikus RDFE virtuális gépeken ezek a tanúsítványok a **_Windows Azure Service Management_** szolgáltatással rendelkeznek a kiterjesztésekhez.
 
-Ezek a tanúsítványok biztosítják a virtuális gép és a gazdagép közötti kommunikációt a védett beállítások (jelszó, egyéb hitelesítő adatok) a bővítmények által használt átvitele során. A tanúsítványokat az Azure Fabric Controller készíti el, és továbbítja a virtuálisgép-ügynöknek. Ha minden nap leállítja és elindítja a virtuális gépet, előfordulhat, hogy a háló vezérlő létrehoz egy új tanúsítványt. A tanúsítványt a számítógép személyes tanúsítványtárolójában tárolja a rendszer. Ezeket a tanúsítványokat törölni lehet. A virtuálisgép-ügynök szükség esetén újra létrehozza a tanúsítványokat.
+Ezek a tanúsítványok garantálják a virtuális gép és annak gazdagépe közötti biztonságos kommunikációt a bővítmények által használt védett beállítások (jelszó, egyéb hitelesítő adatok) átvitele során. A tanúsítványokat az Azure-hálóvezérlő hozza létre, és a virtuálisgép-ügynök számára lesz átadva. Ha naponta leállítja és elindítja a virtuális gépet, előfordulhat, hogy a hálóvezérlő minden nap új tanúsítványt hoz létre. A tanúsítvány tárolása a számítógép Személyes tanúsítványok tárolójában történik. Ezek a tanúsítványok törölhetők. A virtuálisgép-ügynök szükség esetén újra létrehozza a tanúsítványokat.
 
 ### <a name="how-do-agents-and-extensions-get-updated"></a>Hogyan frissülnek az ügynökök és a bővítmények?
 
@@ -428,6 +428,6 @@ A bővítményeket a következőképpen is eltávolíthatja a Azure Portalban:
 | Azure Diagnostics bővítmény |Azure Diagnostics kezelése |[Azure Diagnostics bővítmény](https://azure.microsoft.com/blog/windows-azure-virtual-machine-monitoring-with-wad-extension/) |
 | Azure VM-hozzáférési bővítmény |Felhasználók és hitelesítő adatok kezelése |[VM-hozzáférési bővítmény Linux rendszerhez](https://azure.microsoft.com/blog/using-vmaccess-extension-to-reset-login-credentials-for-linux-vm/) |
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a virtuálisgép-bővítményekről: [Azure-beli virtuális gépek bővítményei és funkcióinak áttekintése](overview.md).

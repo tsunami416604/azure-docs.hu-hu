@@ -12,10 +12,10 @@ ms.topic: tutorial
 ms.custom: seo-lt-2019; seo-dt-2019, devx-track-azurepowershell
 ms.date: 01/22/2018
 ms.openlocfilehash: 3bd18f697c25f7e81f227e7e1456ba0b3d2150c6
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91541747"
 ---
 # <a name="incrementally-load-data-from-azure-sql-database-to-azure-blob-storage-using-change-tracking-information-using-powershell"></a>Adatok növekményes betöltése a Azure SQL Databaseból az Azure-ba Blob Storage a Change Tracking Information használatával a PowerShell használatával
@@ -287,7 +287,7 @@ Ebben a lépésben egy adatkészletet hoz létre, amely a forrásadatokat jelöl
     }   
     ```
 
-2.  Futtassa a set-AzDataFactoryV2Dataset parancsmagot a következő adatkészlet létrehozásához: SourceDataset
+2.  Futtassa a Set-AzDataFactoryV2Dataset parancsmagot az adatkészlet létrehozásához: SourceDataset
 
     ```powershell
     Set-AzDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "SourceDataset" -File ".\SourceDataset.json"
@@ -329,7 +329,7 @@ Ebben a lépésben egy adatkészletet hoz létre, amely a forrásadattárból m�
     ```
 
     Előfeltételként hozzon létre egy adftutorial nevű tárolót az Azure Blob Storage-ben. Ha még nem létezik, hozza létre a tárolót, vagy állítsa be egy meglévő tároló nevét. Ebben az oktatóanyagban a kimeneti fájl nevét dinamikusan hozzuk létre a következő kifejezéssel: @CONCAT('Incremental-', pipeline().RunId, '.txt').
-2.  Futtassa a set-AzDataFactoryV2Dataset parancsmagot a következő adatkészlet létrehozásához: SinkDataset
+2.  Futtassa a Set-AzDataFactoryV2Dataset parancsmagot az adatkészlet létrehozásához: SinkDataset
 
     ```powershell
     Set-AzDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "SinkDataset" -File ".\SinkDataset.json"
@@ -367,7 +367,7 @@ Ebben a lépésben egy adatkészletet hozunk létre a változáskövetés verzi�
     ```
 
     Előfeltételként hozzon létre egy table_store_ChangeTracking_version nevű táblát.
-2.  Futtassa a set-AzDataFactoryV2Dataset parancsmagot a következő adatkészlet létrehozásához: ChangeTrackingDataset
+2.  Futtassa a Set-AzDataFactoryV2Dataset parancsmagot az adatkészlet létrehozásához: ChangeTrackingDataset
 
     ```powershell
     Set-AzDataFactoryV2Dataset -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "ChangeTrackingDataset" -File ".\ChangeTrackingDataset.json"
@@ -416,7 +416,7 @@ Ebben a lépésben egy másolási tevékenységgel rendelkező folyamatot fog l�
         }
     }
     ```
-2. Futtassa a set-AzDataFactoryV2Pipeline parancsmagot a következő folyamat létrehozásához: FullCopyPipeline.
+2. Futtassa a Set-AzDataFactoryV2Pipeline parancsmagot a következő folyamat létrehozásához: FullCopyPipeline.
 
    ```powershell
     Set-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "FullCopyPipeline" -File ".\FullCopyPipeline.json"
@@ -605,7 +605,7 @@ Ebben a lépésben a következő tevékenységeket tartalmazó folyamatot fog l�
     }
 
     ```
-2. Futtassa a set-AzDataFactoryV2Pipeline parancsmagot a következő folyamat létrehozásához: FullCopyPipeline.
+2. Futtassa a Set-AzDataFactoryV2Pipeline parancsmagot a következő folyamat létrehozásához: FullCopyPipeline.
 
    ```powershell
     Set-AzDataFactoryV2Pipeline -DataFactoryName $dataFactoryName -ResourceGroupName $resourceGroupName -Name "IncrementalCopyPipeline" -File ".\IncrementalCopyPipeline.json"

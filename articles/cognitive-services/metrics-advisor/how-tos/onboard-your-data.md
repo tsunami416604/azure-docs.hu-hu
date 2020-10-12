@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 09/14/2020
 ms.author: aahi
 ms.openlocfilehash: 83ff710804b43837657ea0da7c8f44c245017c7e
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90940128"
 ---
 # <a name="how-to-onboard-your-metric-data-to-metrics-advisor"></a>Útmutató: a metrikai adatok előkészítése a metrikai TANÁCSADÓBA
@@ -76,9 +76,9 @@ Ha az adatpont időbélyegzője ki van hagyva, a metrikák tanácsadója az adat
 |---------|---------|---------|
 | **Megjelenítendő név** | Az eredeti oszlopnév helyett a munkaterületen megjelenítendő név. | |
 |**Timestamp**     | Egy adatpont időbélyege Ha nincs megadva, a metrikák tanácsadója az adatpont betöltésének időbélyegét fogja használni. Minden adatcsatorna esetében legfeljebb egy oszlopot adhat meg timestamp típusúként.        | Választható. Legfeljebb egy oszlopnak kell megadnia. Ha egy **oszlop nem** adható meg időbélyeg-hibaként, ellenőrizze a lekérdezést vagy az adatforrást ismétlődő időbélyegek esetén.      |
-|**mérték**     |  Az adatcsatorna numerikus értékei. Minden adatcsatorna esetében több mértéket is megadhat, de legalább egy oszlopot ki kell jelölni mértékként.        | Legalább egy oszloppal kell megadni.        |
+|**Measure**     |  Az adatcsatorna numerikus értékei. Minden adatcsatorna esetében több mértéket is megadhat, de legalább egy oszlopot ki kell jelölni mértékként.        | Legalább egy oszloppal kell megadni.        |
 |**Méret**     | Kategorikus értékek. A különböző értékek kombinációja egy adott egydimenziós idősorozatot azonosít, például: ország, nyelv, bérlő. Nulla vagy több oszlopot is kijelölhet dimenzióként. Megjegyzés: Ügyeljen arra, hogy a nem karakterlánc típusú oszlopok dimenzióként való kiválasztásakor legyen körültekintő. | Választható.        |
-|**Figyelmen kívül**     | A kijelölt oszlop figyelmen kívül hagyása.        | Választható. Lásd az alábbi szöveget.       |
+|**Kihagyás**     | A kijelölt oszlop figyelmen kívül hagyása.        | Választható. Lásd az alábbi szöveget.       |
 
 Ha figyelmen kívül szeretné hagyni az oszlopokat, javasoljuk, hogy a lekérdezés vagy az adatforrás frissítésével zárja ki ezeket az oszlopokat. Az oszlopokat figyelmen kívül hagyhatja az **oszlopok mellőzése** lehetőséggel, majd **figyelmen kívül hagyhatja** az adott oszlopokat. Ha egy oszlopnak dimenziónak kell lennie, és a rendszer tévesen állítja be a *figyelmen kívül hagyott*adatokat, a metrikák tanácsadója a részleges adatok betöltését követően végezhető el. Tegyük fel például, hogy a lekérdezés adatai a következők:
 
@@ -123,7 +123,7 @@ Vegyük példaként a következő forgatókönyveket:
     Tegyük fel például, hogy van egy idősorozata, amely a dimenzióval (ország, régió) rendelkező értékesítési mérőszámokra áll. Egy adott időbélyeg esetében a következőhöz hasonló lehet:
 
 
-    | Country       | Region           | Sales |
+    | Country       | Régió           | Sales |
     |---------------|------------------|-------|
     | Kanada        | Alberta          | 100   |
     | Kanada        | Brit Columbia | 500   |
@@ -132,7 +132,7 @@ Vegyük példaként a következő forgatókönyveket:
 
     Miután engedélyezte az automatikus összesítést az *összeggel*, a metrikus tanácsadó kiszámítja a dimenzió kombinációkat, és összegzi a metrikákat az adatok betöltése során. Az eredmény lehet:
 
-    | Country       | Region           | Sales |
+    | Country       | Régió           | Sales |
     | ------------ | --------------- | ---- |
     | Kanada        | Alberta          | 100   |
     | NULL          | Alberta          | 100   |
@@ -188,7 +188,7 @@ A betöltési hiba részleteinek megtekintése:
 2. Kattintson az **állapot** elemre, majd válassza a **sikertelen** vagy a **hiba**lehetőséget.
 3. Vigye az egérmutatót egy sikertelen betöltés fölé, és tekintse meg a megjelenő részleteket tartalmazó üzenetet.
 
-:::image type="content" source="../media/datafeeds/check-failed-ingestion.png" alt-text="Sikertelen betöltési vizsgálat":::
+:::image type="content" source="../media/datafeeds/check-failed-ingestion.png" alt-text="Betöltési folyamatjelző sáv":::
 
 A *sikertelen* állapot azt jelzi, hogy az adatforrás betöltését később újra megkísérli a rendszer.
 A *hiba* állapota azt jelzi, hogy a metrikai tanácsadó nem próbálkozik újra az adatforrással. Az adatfrissítéshez manuálisan kell backfill/újratöltést indítania.

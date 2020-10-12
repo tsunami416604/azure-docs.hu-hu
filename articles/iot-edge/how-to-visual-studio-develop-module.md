@@ -9,10 +9,10 @@ ms.date: 3/27/2020
 ms.topic: conceptual
 ms.service: iot-edge
 ms.openlocfilehash: 823b16dcaf113136b10fdaa054da20840b99f02d
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91297045"
 ---
 # <a name="use-visual-studio-2019-to-develop-and-debug-modules-for-azure-iot-edge"></a>Azure IoT Edge-modulok fejlesztése és hibakeresése a Visual Studio 2019 használatával
@@ -232,7 +232,7 @@ Az IoT Edge-eszköz beállításához használt rövid útmutatóban egy modult 
 
 ## <a name="view-generated-data"></a>A létrejött adatok megtekintése
 
-1. Egy adott IoT-eszköz D2C-üzenetének figyeléséhez válassza ki azt a **Cloud Explorerben** a IoT hub-ban, majd kattintson a **művelet** ablak **beépített esemény végpontjának figyelése** elemére.
+1. Egy adott IoT-Edge eszköz D2C-üzenetének figyeléséhez válassza ki azt az IoT hub-ban a **Cloud Explorerben** , majd a **művelet** ablakban kattintson a **beépített esemény végpontjának figyelése** elemre.
 
 1. A figyelési információk leállításához jelölje be a **beépített esemény végpontjának figyelése** a **műveleti** ablakban jelölőnégyzetet.
 

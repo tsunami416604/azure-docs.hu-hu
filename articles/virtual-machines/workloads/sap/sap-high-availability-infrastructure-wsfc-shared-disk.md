@@ -17,10 +17,10 @@ ms.date: 08/25/2020
 ms.author: radeltch
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 8f389581d8fbeb912507b303c46109dd08fcab8d
-ms.sourcegitcommit: 927dd0e3d44d48b413b446384214f4661f33db04
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88871516"
 ---
 # <a name="prepare-the-azure-infrastructure-for-sap-ha-by-using-a-windows-failover-cluster-and-shared-disk-for-sap-ascsscs"></a>Az Azure-infrastruktúra előkészítése az SAP-hez a Windows feladatátvevő fürt és az SAP ASCS/SCS közös lemezének használatával
@@ -192,9 +192,9 @@ A megjelenített forgatókönyv állomásneve és IP-címe a következő:
 | --- | --- | --- |---| ---|
 | első fürtcsomópont ASCS/SCS-fürt |PR1-ASCs-10 |10.0.0.4 |PR1-ASCs-avset |PR1PPG |
 | második fürtcsomópont ASCS/SCS-fürt |PR1-ASCs-11 |10.0.0.5 |PR1-ASCs-avset |PR1PPG |
-| Fürt hálózatnév | pr1clust |10.0.0.42 (**csak** a Win 2016-fürt esetében) | n.a. | n.a. |
-| ASCS-fürt hálózatnév | PR1 – ascscl |10.0.0.43 | n.a. | n.a. |
-| ERS-fürt hálózatának neve (**csak** ERS2 esetében) | PR1 – erscl |10.0.0.44 | n.a. | n.a. |
+| Fürt hálózatnév | pr1clust |10.0.0.42 (**csak** a Win 2016-fürt esetében) | n/a | n/a |
+| ASCS-fürt hálózatnév | PR1 – ascscl |10.0.0.43 | n/a | n/a |
+| ERS-fürt hálózatának neve (**csak** ERS2 esetében) | PR1 – erscl |10.0.0.44 | n/a | n/a |
 
 
 ## <a name="create-azure-internal-load-balancer"></a><a name="fe0bd8b5-2b43-45e3-8295-80bee5415716"></a> Azure belső terheléselosztó létrehozása
@@ -555,6 +555,6 @@ Miután mindkét csomópontra telepítette a SIOS DataKeeper, indítsa el a konf
    _Feladatátvevőfürt-kezelő megjeleníti a replikált DataKeeper lemezt_
 
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * [Telepítse az SAP NetWeaver HA szolgáltatást egy Windows feladatátvevő fürt és egy SAP ASCS/SCS-példány megosztott lemezének használatával][sap-high-availability-installation-wsfc-shared-disk]

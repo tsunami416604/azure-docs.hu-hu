@@ -11,14 +11,14 @@ ms.service: virtual-machines-linux
 ms.workload: infrastructure-services
 ms.tgt_pltfrm: vm-linux
 ms.topic: conceptual
-ms.date: 08/02/2020
+ms.date: 10/09/2020
 ms.author: guybo
-ms.openlocfilehash: f945c58b256c2a024a62b15a1bca1841483e1849
-ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
+ms.openlocfilehash: 1417635c0e510badd191e99786f49dfb509c8206
+ms.sourcegitcommit: b437bd3b9c9802ec6430d9f078c372c2a411f11f
 ms.translationtype: MT
 ms.contentlocale: hu-HU
 ms.lasthandoff: 10/09/2020
-ms.locfileid: "91279433"
+ms.locfileid: "91893407"
 ---
 # <a name="endorsed-linux-distributions-on-azure"></a>Támogatott Linux-disztribúciók az Azure-ban
 
@@ -37,7 +37,7 @@ Az Azure Linux-ügynök már előre telepítve van az Azure Marketplace-lemezké
 | CentOS a szélhámos Wave szoftverrel |CentOS 6. x, 7. x, 8. x |CentOS 6,3: [lis Letöltés](https://www.microsoft.com/download/details.aspx?id=55106)<p>CentOS 6.4 +: a kernelben |Csomag [: a tárházban a "](http://olcentgbl.trafficmanager.net/openlogic/6/openlogic/x86_64/RPMS/) WALinuxAgent" alatt <br/>Forráskód: [GitHub](https://github.com/Azure/WALinuxAgent) |
 | [CoreOS](https://coreos.com/docs/running-coreos/cloud-providers/azure/)<p> A CoreOS mostantól a 2020. május 26-án [véget ért](https://coreos.com/os/eol/) . |Már nem érhető el | | |
 | Debian by Credativ |8.x, 9.x |A kernelben |Csomag: a tárházban a "waagent" alatt <br/>Forráskód: [GitHub](https://github.com/Azure/WALinuxAgent) |
-|Flatcar-tároló linuxos Kinvolk szerint| Stabil, béta| A kernelben | a WA-Linux-Agent már telepítve van a/usr/share/OEM/bin/waagent-ben |
+|Flatcar-tároló linuxos Kinvolk szerint| Pro, STABLE, Beta| A kernelben | a WA-Linux-Agent már telepítve van a/usr/share/OEM/bin/waagent-ben |
 | Oracle-Oracle Linux |6.x, 7.x, 8.x |A kernelben |Csomag: a tárházban a "WALinuxAgent" alatt <br/>Forráskód: [GitHub](https://go.microsoft.com/fwlink/p/?LinkID=250998) |
 | [A Red Hat Red Hat Enterprise Linux](https://docs.microsoft.com/azure/virtual-machines/workloads/redhat/overview) |6.x, 7.x, 8.x |A kernelben |Csomag: a tárházban a "WALinuxAgent" alatt <br/>Forráskód: [GitHub](https://github.com/Azure/WALinuxAgent) |
 | SUSE Linux Enterprise a SUSE használatával |SLES/SLES for SAP 11. x, 12. x, 15. x <br/> [SUSE nyilvános Felhőbeli rendszerképek életciklusa](https://www.suse.com/c/suse-public-cloud-image-life-cycle/) |A kernelben |Csomag<p> 11 a [felhőben: eszközök](https://build.opensuse.org/project/show/Cloud:Tools) tárháza<br>a "nyilvános felhő" modulban a "Python-Azure-Agent" alatt található 12.<br/>Forráskód: [GitHub](https://go.microsoft.com/fwlink/p/?LinkID=250998) |
@@ -58,6 +58,7 @@ A legtöbb esetben ezek a kernelek előre telepítve lesznek az Azure Marketplac
 - [Debian Cloud kernel – elérhető a Debian 10 és a Debian 9 "backports" rendszerképpel az Azure-ban](https://wiki.debian.org/Cloud/MicrosoftAzure)
 - [SLES Azure-Tuned kernel](https://www.suse.com/c/a-different-builtin-kernel-for-azure-on-demand-images/)
 - [Ubuntu Azure-Tuned kernel](https://blog.ubuntu.com/2017/09/21/microsoft-and-canonical-increase-velocity-with-azure-tailored-kernel)
+- [Flatcar-tároló linuxos Pro](https://azuremarketplace.microsoft.com/marketplace/apps/kinvolk.flatcar_pro)
 
 ## <a name="partners"></a>Partnerek
 

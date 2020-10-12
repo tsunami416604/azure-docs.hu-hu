@@ -8,10 +8,10 @@ author: keferna
 ms.author: keferna
 ms.date: 08/07/2020
 ms.openlocfilehash: 5b823b0429feffa87a05faadc78574287bc9b4a4
-ms.sourcegitcommit: 19dce034650c654b656f44aab44de0c7a8bd7efe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/04/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91708339"
 ---
 # <a name="create-an-iot-edge-module-offer"></a>IoT Edge-modulajánlat létrehozása
@@ -48,7 +48,7 @@ Válassza a **Létrehozás** lehetőséget az ajánlat létrehozásához és a f
 
 Az **ajánlat áttekintése** oldalon láthatók az ajánlat közzétételéhez szükséges lépések (a befejezett és a közelgő), valamint az egyes lépések befejezésének időtartamát.
 
-Ezen a lapon olyan hivatkozások találhatók, amelyek az ajánlaton végzett műveletekre vonatkozó műveleteket hajtanak végre. Például:
+Ezen a lapon olyan hivatkozások találhatók, amelyek az ajánlaton végzett műveletekre vonatkozó műveleteket hajtanak végre. Példa:
 
 - Ha az ajánlat Piszkozat- [törlési ajánlat](update-existing-offer.md#delete-a-draft-offer)
 - Ha az ajánlat élő – [az ajánlat értékesítésének leállítása](update-existing-offer.md#stop-selling-an-offer-or-plan)
@@ -131,7 +131,7 @@ Itt megadhatja a piactéren megjelenő ajánlat részleteit. Ebbe beletartozik a
 > [!NOTE]
 > Az ajánlat részleteit nem kötelező angol nyelven megadni, ha az ajánlat leírása a következő kifejezéssel kezdődik: "Ez az alkalmazás csak a [nem angol nyelvű] verzióban érhető el." Azt is megteheti, hogy hasznos hivatkozást biztosít, hogy olyan nyelven kínálja a tartalmat, amely különbözik az ajánlati lista részleteiben használt nyelvtől.
 
-### <a name="name"></a>Név
+### <a name="name"></a>Name (Név)
 
 Az itt megadott név az ajánlat címeként jelenik meg. Ez a mező előre ki van töltve az ajánlat- **alias** mezőben megadott szöveggel az ajánlat létrehozásakor. A nevet később módosíthatja.
 
@@ -149,7 +149,7 @@ Adja meg az ajánlat rövid leírását. Ez akár 100 karakter hosszú lehet, é
 
 Adja meg az ajánlat részletesebb leírását. Ez akár 256 karakter hosszú lehet, és a piactér keresési eredményeiben használható.
 
-### <a name="description"></a>Description
+### <a name="description"></a>Leírás
 
 [!INCLUDE [Long description-1](./includes/long-description-1.md)]
 
@@ -234,9 +234,9 @@ Az alábbi példa bemutatja, hogyan jelennek meg az ajánlati információk az A
 3. Támogatási címe (hivatkozás)
 4. használati feltételei
 5. Adatvédelmi szabályzat címe (hivatkozás)
-6. Név
+6. Name (Név)
 7. Összegzés
-8. Description
+8. Leírás
 9. Hasznos hivatkozások
 10. Képernyőképek/videók
 
@@ -411,7 +411,7 @@ A **rendszerkép-tárház részletei** lapon adja meg a következő információ
 
 Az **Azure Container Registry neve**: adja meg annak a [Azure Container Registry](../../container-registry/container-registry-intro.md) a nevét, amely tartalmazza a tároló képét. A tároló-beállításjegyzéknek a korábban megadott Azure-erőforráscsoporthoz kell lennie. Csak a beállításjegyzék nevét adja meg, ne a teljes bejelentkezési kiszolgáló nevét. Ügyeljen arra, hogy kihagyja a **azurecr.IO** a névben. A beállításjegyzék neve a Azure Portal [tároló-nyilvántartások lapján](https://ms.portal.azure.com/#blade/HubsExtension/BrowseResourceBlade/resourceType/Microsoft.ContainerRegistry%2Fregistries) található.
 
-A **Azure Container Registry rendszergazdai felhasználóneve**: adja meg a tároló képével rendelkező Azure Container Registryhoz társított [rendszergazdai felhasználónevet](../../container-registry/container-registry-authentication.md#admin-account)). A felhasználónévnek és a jelszónak meg kell győződnie arról, hogy a vállalata hozzáférhessen a beállításjegyzékhez. A rendszergazdai Felhasználónév és jelszó beszerzéséhez állítsa a **rendszergazdai** jogosultsággal rendelkező tulajdonságot **true** értékre az Azure parancssori felület (CLI) használatával. Igény szerint beállíthatja, hogy a **rendszergazda felhasználó** **engedélyezze** a Azure Portal.
+A **Azure Container Registry rendszergazdai felhasználóneve**: adja meg a tároló képével rendelkező Azure Container Registryhoz társított [rendszergazdai felhasználónevet](../../container-registry/container-registry-authentication.md#admin-account)). A felhasználónévnek és a jelszónak meg kell győződnie arról, hogy a vállalata hozzáférhessen a beállításjegyzékhez. A rendszergazdai Felhasználónév és jelszó beszerzéséhez állítsa a **rendszergazdai** jogosultsággal rendelkező tulajdonságot **true** értékre az Azure Command-Line Interface (CLI) használatával. Igény szerint beállíthatja, hogy a **rendszergazda felhasználó** **engedélyezze** a Azure Portal.
 
 :::image type="content" source="media/example-iot-update-container-registry.png" alt-text="Bemutatja, hogyan jelenik meg az ajánlat az Azure piactéren.":::
 

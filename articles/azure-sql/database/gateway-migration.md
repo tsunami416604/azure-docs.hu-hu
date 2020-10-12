@@ -11,10 +11,10 @@ ms.author: rohitna
 ms.reviewer: vanto
 ms.date: 07/01/2019
 ms.openlocfilehash: ee55e0a66a0487291233713498f6eb541980dbba
-ms.sourcegitcommit: 3c66bfd9c36cd204c299ed43b67de0ec08a7b968
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90004272"
 ---
 # <a name="azure-sql-database-traffic-migration-to-newer-gateways"></a>Azure SQL Database forgalom áttelepítése újabb átjáróra
@@ -70,7 +70,7 @@ Az új SQL Gateway-átjárók a következő régiókban lesznek hozzáadva. Ezek
 A meglévő SQL Gateway-átjárók a következő régiókban kezdik el a forgalom fogadását. Ezek az SQL-átjárók a **2020 szeptember 1-jén** kezdik el az ügyfelek forgalmának elfogadását:
 - Kelet-Japán: 40.79.184.8, 40.79.192.5
 
-# <a name="completed"></a>[Befejeződött](#tab/completed-ip)
+# <a name="completed"></a>[Befejezve](#tab/completed-ip)
 
 A következő átjárók áttelepítése befejeződött: 
 

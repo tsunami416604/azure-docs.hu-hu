@@ -12,10 +12,10 @@ ms.author: genemi
 ms.reviewer: jrasnik
 ms.date: 12/19/2018
 ms.openlocfilehash: 57449b0bbd39b6ea04ecae5a3ad766ae5687ca0b
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91619831"
 ---
 # <a name="ring-buffer-target-code-for-extended-events-in-azure-sql-database"></a>A kibővített eseményekhez tartozó gyűrűs pufferek Azure SQL Database
@@ -28,15 +28,15 @@ A tesztelés során egy teljes kódrészletet szeretne használni a kibővített
 Ez a témakör egy Transact-SQL-kód mintát mutat be, amely a következőket tartalmazza:
 
 1. Létrehoz egy táblázatot, amely a következővel szemlélteti az-t:.
-2. Munkamenetet hoz létre egy meglévő kiterjesztett eseményhez, nevezetesen: **SQLServer. sql_statement_starting**.
+2. Munkamenetet hoz létre egy meglévő bővített eseményhez, azaz **SQLServer.sql_statement_starting**.
 
    * Az esemény olyan SQL-utasításokra korlátozódik, amelyek egy adott frissítési karakterláncot tartalmaznak: a **(z) "% Update tabEmployee%" utasítást**.
-   * Úgy dönt, hogy elküldi az esemény kimenetét egy gyűrűs puffer típusú célhoz, azaz  **package0. ring_buffer**.
+   * Úgy dönt, hogy elküldi az esemény kimenetét egy gyűrűs puffer típusú célnak, azaz  **package0.ring_buffer**.
 3. Elindítja az esemény-munkamenetet.
 4. Néhány egyszerű SQL UPDATE-utasítást is kiad.
 5. Egy SQL SELECT utasítás kiírása az esemény kimenetének a gyűrűs pufferből való lekéréséhez.
 
-   * a **sys. dm_xe_database_session_targets** és más dinamikus felügyeleti nézetek (DMV-EK) vannak csatlakoztatva.
+   * **sys.dm_xe_database_session_targets** és más dinamikus felügyeleti nézetek (DMV-EK) vannak csatlakoztatva.
 6. Leállítja az esemény-munkamenetet.
 7. Eldobja a gyűrűs puffer célját, hogy felszabadítsa az erőforrásait.
 8. Eldobja az esemény-munkamenetet és a bemutató táblát.
@@ -55,10 +55,10 @@ Ez a témakör egy Transact-SQL-kód mintát mutat be, amely a következőket ta
 
 ## <a name="code-sample"></a>Kódminta
 
-Nagyon kicsi módosítás esetén a következő gyűrűs puffer kód Azure SQL Database vagy Microsoft SQL Server is futtatható. A különbség a (z) "_database" csomópont jelenléte a (z) 5. lépésben a FROM záradékban használt dinamikus felügyeleti nézetek (DMV) nevében. Például:
+Nagyon kicsi módosítás esetén a következő gyűrűs puffer kód Azure SQL Database vagy Microsoft SQL Server is futtatható. A különbség a (z) "_database" csomópont jelenléte a (z) 5. lépésben a FROM záradékban használt dinamikus felügyeleti nézetek (DMV) nevében. Példa:
 
-* sys. dm_xe<strong>_database</strong>_session_targets
-* sys. dm_xe_session_targets
+* sys.dm_xe<strong>_database</strong>_session_targets
+* sys.dm_xe_session_targets
 
 &nbsp;
 

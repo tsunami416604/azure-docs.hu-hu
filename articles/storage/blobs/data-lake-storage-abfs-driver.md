@@ -9,10 +9,10 @@ ms.date: 12/06/2018
 ms.service: storage
 ms.subservice: data-lake-storage-gen2
 ms.openlocfilehash: e9c56f59d6dd64002632a5f74e9f39c51293caab
-ms.sourcegitcommit: 2ff0d073607bc746ffc638a84bb026d1705e543e
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/06/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87836360"
 ---
 # <a name="the-azure-blob-filesystem-driver-abfs-a-dedicated-azure-storage-driver-for-hadoop"></a>Az Azure Blob fájlrendszer-illesztőprogram (ABFS): a Hadoop dedikált Azure Storage-illesztőprogramja
@@ -31,7 +31,7 @@ Vannak azonban olyan függvények, amelyeknek az illesztőprogramnak továbbra i
 
 ### <a name="uri-scheme-to-reference-data"></a>Az adathivatkozás URI-sémája
 
-A Hadoop-en belüli más fájlrendszer-implementációkkal összhangban a ABFS-illesztőprogram meghatározza a saját URI-sémáját, hogy az erőforrások (könyvtárak és fájlok) külön kezelhetők legyenek. Az URI-séma a [Azure Data Lake Storage GEN2 URI használatával](./data-lake-storage-introduction-abfs-uri.md)van dokumentálva. Az URI szerkezete:`abfs[s]://file_system@account_name.dfs.core.windows.net/<path>/<path>/<file_name>`
+A Hadoop-en belüli más fájlrendszer-implementációkkal összhangban a ABFS-illesztőprogram meghatározza a saját URI-sémáját, hogy az erőforrások (könyvtárak és fájlok) külön kezelhetők legyenek. Az URI-séma a [Azure Data Lake Storage GEN2 URI használatával](./data-lake-storage-introduction-abfs-uri.md)van dokumentálva. Az URI szerkezete: `abfs[s]://file_system@account_name.dfs.core.windows.net/<path>/<path>/<file_name>`
 
 A fenti URI formátum használata esetén a standard Hadoop-eszközök és-keretrendszerek használhatók a következő erőforrásokra való hivatkozáshoz:
 
@@ -53,7 +53,7 @@ A ABFS-illesztőprogram két hitelesítési módszert támogat, hogy a Hadoop al
    > [!NOTE]
    > A Azure Data Lake Storage Gen2 csak az Azure AD v 1.0-s végpontokat támogatja.
 
-### <a name="configuration"></a>Configuration
+### <a name="configuration"></a>Konfiguráció
 
 A ABFS-illesztőprogram összes konfigurációja a konfigurációs fájlban van tárolva <code>core-site.xml</code> . A [Ambari](https://ambari.apache.org/)-t tartalmazó Hadoop-disztribúciók esetében a konfiguráció a webportál vagy a Ambari REST API használatával is kezelhető.
 
@@ -63,7 +63,7 @@ Az összes támogatott konfigurációs bejegyzés részletei a [hivatalos Hadoop
 
 A ABFS-illesztőprogram teljes mértékben dokumentálva van a [hivatalos Hadoop dokumentációjában](https://hadoop.apache.org/docs/stable/hadoop-azure/abfs.html)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Azure Databricks-fürt létrehozása](./data-lake-storage-quickstart-create-databricks-account.md)
 - [Az Azure Data Lake Storage Gen2 URI használata](./data-lake-storage-introduction-abfs-uri.md)

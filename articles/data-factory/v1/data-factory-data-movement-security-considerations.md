@@ -12,10 +12,10 @@ ms.date: 01/10/2018
 ms.author: abnarain
 robots: noindex
 ms.openlocfilehash: 9ae4970383802adad755fff4a6ce382db6ce32fe
-ms.sourcegitcommit: 4bebbf664e69361f13cfe83020b2e87ed4dc8fa2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 10/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91619916"
 ---
 # <a name="azure-data-factory---security-considerations-for-data-movement"></a>Azure Data Factory – az adatáthelyezés biztonsági szempontjai
@@ -23,7 +23,7 @@ ms.locfileid: "91619916"
 > [!NOTE]
 > Ez a cikk a Data Factory 1-es verziójára vonatkozik. Ha a Data Factory szolgáltatás aktuális verzióját használja, tekintse [meg a Data Factory adatáthelyezési biztonsági szempontjait](../data-movement-security-considerations.md).
 
-## <a name="introduction"></a>Introduction (Bevezetés)
+## <a name="introduction"></a>Bevezetés
 Ez a cikk azt az alapszintű biztonsági infrastruktúrát ismerteti, amelyet az adatátviteli szolgáltatások Azure Data Factory használnak az adatok biztonságossá tételéhez. Azure Data Factory felügyeleti erőforrások az Azure biztonsági infrastruktúrára épülnek, és az Azure által kínált összes lehetséges biztonsági intézkedést felhasználhatják.
 
 A Data Factory-megoldásokkal egy vagy több [adatfolyamatot](data-factory-create-pipelines.md) is létrehozhat. A folyamatok olyan tevékenységek logikus csoportosításai, amelyek együttesen vesznek részt egy feladat végrehajtásában. Ezek a folyamatok abban a régióban találhatók, ahol az adat-előállítót létrehozták. 
@@ -190,5 +190,5 @@ A következő felhőalapú adattárakhoz az átjáró-számítógép IP-címéne
 **Kérdés:** Mik a tanúsítványokra vonatkozó követelmények az átjáróhoz?
 **Válasz:** Az aktuális átjáróhoz szükség van egy tanúsítványra, amelyet a Hitelesítőadat-kezelő alkalmazás az adattár hitelesítő adatainak biztonságos beállításához használ. Ez a tanúsítvány az átjáró telepítője által létrehozott és konfigurált önaláírt tanúsítvány. Ehelyett saját TLS/SSL-tanúsítványt is használhat. További információ: [Click-Once Hitelesítőadat-kezelő alkalmazás](#click-once-credentials-manager-app) szakasz. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 A másolási tevékenység teljesítményével kapcsolatos további információkért lásd: a [másolási tevékenység teljesítményének és finomhangolásának útmutatója](data-factory-copy-activity-performance.md).

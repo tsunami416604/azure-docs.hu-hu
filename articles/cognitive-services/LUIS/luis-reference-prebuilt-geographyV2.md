@@ -10,10 +10,10 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 10/04/2019
 ms.openlocfilehash: ad6fd62178ec8e987e1e3b6e05cc961bbe15e377
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91541959"
 ---
 # <a name="geographyv2-prebuilt-entity-for-a-luis-app"></a>GeographyV2 előre összeépített entitása egy LUIS-alkalmazáshoz
@@ -22,7 +22,7 @@ Az előre elkészített geographyV2 entitás észleli a helyeket. Mivel ez az en
 ## <a name="subtypes"></a>Altípusok
 A földrajzi helyszínek altípusokkal rendelkeznek:
 
-|Altípus|Szerep|
+|Altípus|Cél|
 |--|--|
 |`poi`|érdekes pont|
 |`city`|város neve|
@@ -205,7 +205,7 @@ Az alábbi példa a **beépített. geographyV2** entitás feloldását mutatja b
 ```
 * * *
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 További információ a [v3 előrejelzési végpontról](luis-migration-api-v3.md).
 

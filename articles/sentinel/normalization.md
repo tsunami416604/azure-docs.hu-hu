@@ -16,10 +16,10 @@ ms.topic: conceptual
 ms.date: 09/08/2020
 ms.author: yelevin
 ms.openlocfilehash: 0c6129a24e6ed083114971df5f254eca54924400
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90939813"
 ---
 # <a name="normalization-in-azure-sentinel"></a>Normalizálás az Azure Sentinelben
@@ -97,7 +97,7 @@ Az elérhető lekérdezési idő elemzői az Azure Sentinel [hivatalos GitHub-t�
 
     1. **Kategória**: választhat egy meglévő kategóriát, vagy létrehozhat új kategóriát (például *NormalizedNetworkSessionsParsers*).
     
-        :::image type="content" source="./media/normalization/save-new-parser.png" alt-text="Az elemző mentése":::
+        :::image type="content" source="./media/normalization/save-new-parser.png" alt-text="Új elemző telepítése":::
 
 Az elemzők megfelelő használatához telepítenie kell az üres hálózati séma-elemzőt is (amely üres táblázatos nézetet hoz létre az összes hálózati munkamenet-séma mezőiről) és a hálózati meta-elemzőt (amely összekapcsolja az összes engedélyezett elemzőt, hogy egyetlen nézetet hozzon létre a hálózati séma különböző forrásaiból származó adatokból). A két elemző telepítése hasonló módon történik a fenti lépésekben.
 
@@ -107,15 +107,11 @@ A lekérdezési függvények mentésekor szükség lehet a lekérdezési tallóz
 
 Ha engedélyezve van, a meta-elemző segítségével lekérdezheti az összes jelenleg engedélyezett elemző egyesített nézetét. Ehhez nyissa meg a Sentinel-naplók lapot, és kérdezze le a meta-elemzőt:
 
-:::image type="content" source="./media/normalization/query-parser.png" alt-text="Az elemző lekérdezése":::
- 
-A "Query Explorer" gombra kattintva a meta-elemzőt vagy az egyes elemzőket is elérheti a Query Explorer használatával a Sentinel naplók oldalon:
+:::image type="content" source="./media/normalization/query-parser.png" alt-text="Új elemző telepítése" gombra kattintva a meta-elemzőt vagy az egyes elemzőket is elérheti a Query Explorer használatával a Sentinel naplók oldalon:
 
-:::image type="content" source="./media/normalization/query-explorer.png" alt-text="Lekérdezési tallózó":::
+:::image type="content" source="./media/normalization/query-explorer.png" alt-text="Új elemző telepítése" mappát (vagy az elemzők létrehozásakor kiválasztott kategória nevét):
 
-A jobb oldali ablaktáblán bontsa ki a "mentett lekérdezések" szakaszt, és keresse meg a "NormalizedNetworkParsers" mappát (vagy az elemzők létrehozásakor kiválasztott kategória nevét):
-
-:::image type="content" source="./media/normalization/find-parser.png" alt-text="Elemző keresése":::
+:::image type="content" source="./media/normalization/find-parser.png" alt-text="Új elemző telepítése":::
 
 Az egyes elemzők lehetőségre kattintva megtekintheti az általa használt mögöttes függvényt, és futtathatja (vagy közvetlenül az aliasával érheti el). Vegye figyelembe, hogy egyes elemzők a normalizált mezők számára is megőrzik az eredeti mezőket a kényelem érdekében. Ezt egyszerűen szerkesztheti az elemző lekérdezésében.
 
@@ -124,11 +120,9 @@ Az egyes elemzők lehetőségre kattintva megtekintheti az általa használt mö
 Ismételje meg a fenti lépéseket (az elemző megkeresése a Query Explorerben), kattintson a megfelelő elemzőre, és tekintse meg a funkció megvalósítását.
 Dönthet például úgy, hogy szerkeszti a meta-elemzőt az egyes elemzők hozzáadásához vagy eltávolításához.
 
-:::image type="content" source="./media/normalization/customize-parser.png" alt-text="Az elemző testreszabása":::
- 
-Ha a függvény módosult, kattintson ismét a Save (Mentés) gombra, és használja ugyanazt a nevet, aliast és kategóriát. A rendszer megnyit egy felülbírálási párbeszédpanelt – nyomja meg az "OK" gombot:
+:::image type="content" source="./media/normalization/customize-parser.png" alt-text="Új elemző telepítése" gombot:
 
-:::image type="content" source="./media/normalization/are-you-sure.png" alt-text="biztos vagy benne":::
+:::image type="content" source="./media/normalization/are-you-sure.png" alt-text="Új elemző telepítése":::
 
 #### <a name="additional-information"></a>További információ
 
