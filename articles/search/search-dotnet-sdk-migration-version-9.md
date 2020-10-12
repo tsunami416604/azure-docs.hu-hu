@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 7726877efcb72caf5bb4c92e2e1c65e5df68f270
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89002708"
 ---
 # <a name="upgrade-to-azure-search-net-sdk-version-9"></a>Frissítés a Azure Search .NET SDK 9-es verziójára
@@ -182,7 +182,7 @@ Ha az alkalmazás nem rendelkezik a szolgáltatáshoz szükséges függőséggel
 
 Ha a "dinamikusan beírt" `Search` , `Suggest` vagy "type" `Get` típusú példányokat visszaadó API-kat használ `Document` , vegye figyelembe, hogy most már deszerializálja az üres JSON-tömböket a `object[]` helyett `string[]` .
 
-## <a name="conclusion"></a>Tanulság
+## <a name="conclusion"></a>Összegzés
 Ha további részletekre van szüksége a Azure Search .NET SDK használatával kapcsolatban, tekintse meg a [.net útmutató](search-howto-dotnet-sdk.md)című témakört.
 
 Üdvözöljük az SDK-val kapcsolatos visszajelzéseit. Ha problémákba ütközik, kérjen segítséget a [stack overflow](https://stackoverflow.com/questions/tagged/azure-search). Ha hibát talál, a probléma az [Azure .net SDK GitHub-tárházában](https://github.com/Azure/azure-sdk-for-net/issues)is megadható. Ügyeljen arra, hogy a probléma címét "[Azure Search]" előtaggal adja meg.

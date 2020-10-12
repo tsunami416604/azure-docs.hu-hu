@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 04/26/2020
 ms.author: apimpm
 ms.openlocfilehash: b560b02544eeb96167e68ed305d4d9942d2b1e0f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82232972"
 ---
 # <a name="self-hosted-gateway-overview"></a>Saját üzemeltetésű átjáró áttekintése
@@ -55,7 +55,7 @@ A felügyelt átjárókban található következő funkciók **nem érhetők el*
 - Ügyféltanúsítvány újraegyeztetése. Ez azt jelenti, hogy a munkahelyi [API-felhasználóknak a kezdeti](api-management-howto-mutual-certificates-for-clients.md) TLS-kézfogás részeként be kell mutatniuk a tanúsítványokat. Ennek biztosításához engedélyezze az ügyféltanúsítvány egyeztetése beállítást a saját üzemeltetésű átjáró egyéni állomásnév beállításakor.
 - Beépített gyorsítótár. Ebből a [dokumentumból](api-management-howto-cache-external.md) megtudhatja, hogyan használhatja a külső gyorsítótárat a saját üzemeltetésű átjárókban.
 
-## <a name="connectivity-to-azure"></a>Csatlakozás az Azure-hoz
+## <a name="connectivity-to-azure"></a>Kapcsolódás az Azure-hoz
 
 A saját üzemeltetésű átjárók a 443-es porton keresztül kimenő TCP/IP-kapcsolatot igényelnek az Azure-hoz. Minden saját üzemeltetésű átjárót egyetlen API Management szolgáltatáshoz kell társítani, és a felügyeleti síkon keresztül kell konfigurálni. A saját üzemeltetésű átjáró az Azure-hoz való kapcsolódást használja a következőhöz:
 

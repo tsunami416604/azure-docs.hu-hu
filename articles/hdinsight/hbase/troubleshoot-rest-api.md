@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 04/08/2020
 ms.openlocfilehash: 3bf63aa08ec4c1deff2551cfcc0cf188a75261bc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82515481"
 ---
 # <a name="rest-api-to-query-apache-hbase-in-azure-hdinsight"></a>REST API az Apache HBase lekérdezéséhez az Azure HDInsight
@@ -26,7 +26,7 @@ Az Apache HBase REST-felület használatával lekérdezheti az alapértelmezett 
 
 A HBase REST API csak az alapértelmezett névtér használata esetén támogatott. Ez egy ismert probléma a HBase-névterek használatával kapcsolatban, illetve olyan hívások kezdeményezésére, amelyek a HDInsight REST-kiszolgálóval rendelkező, oszlopos családokkal rendelkező oszlopokra vonatkoznak. Ennek az az oka, hogy biztonsági probléma van az HDInsight-átjáróval. Ha az API-t használja névtérrel rendelkező tábla létrehozásához, oszlopos családokon keresztül éri el az oszlopokat, meg kell adnia a `:` karaktert, amely biztonsági problémát jelent az IIS-átjáró moduljában.
 
-## <a name="mitigation"></a>Kezelés
+## <a name="mitigation"></a>Kockázatcsökkentés
 
 Az átjáró/REST-kiszolgáló megkerüléséhez telepítse az alkalmazást egy olyan virtuális gépre, amely ugyanabban az Azure-VNet található, mint a HDInsight-fürt. Ezt követően közvetlenül az RPC-n keresztül tud kommunikálni a HBase (a REST-kiszolgáló megkerülésével), vagy a munkavégző csomópontokon futó különálló REST-kiszolgálókon a HDInsight-átjárók megkerülésével.
 

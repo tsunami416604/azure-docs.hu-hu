@@ -10,10 +10,10 @@ ms.author: sgilley
 ms.custom: seodec18
 ms.date: 03/22/2019
 ms.openlocfilehash: a0c99c05701c7f2d64fcfc2f70081f2d7475ce5f
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91343419"
 ---
 # <a name="data-science-for-beginners-video-1-the-5-questions-data-science-answers"></a>Adatelemzés kezdőknek – 1. videó: 5 kérdés, amelyre az adatelemzés választ ad
@@ -66,7 +66,7 @@ Az algoritmusok ezt a családját kétosztályos besorolásnak nevezzük.
 
 Minden olyan kérdés esetében hasznos, amely csak két lehetséges választ tartalmaz.
 
-Például:
+Példa:
 
 * A gumiabroncs sikertelen lesz a következő 1 000 mérföldben: Igen vagy nem?
 * Mely több ügyfelet tartalmaz: egy $5 kupont vagy 25%-os kedvezményt?

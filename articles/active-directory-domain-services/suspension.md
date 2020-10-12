@@ -12,10 +12,10 @@ ms.topic: how-to
 ms.date: 07/09/2020
 ms.author: iainfou
 ms.openlocfilehash: 79b5f4492d05880e263f8d489a64ba0cc218d355
-ms.sourcegitcommit: f844603f2f7900a64291c2253f79b6d65fcbbb0c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/10/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86223397"
 ---
 # <a name="understand-the-health-states-and-resolve-suspended-domains-in-azure-active-directory-domain-services"></a>Az állapot megismerése és a felfüggesztett tartományok feloldása Azure Active Directory Domain Services
@@ -32,7 +32,7 @@ A felügyelt tartomány életciklusán keresztül különböző állapotok jelen
 
 A felügyelt tartomány a következő állapotok egyikében lehet:
 
-* [Fut](#running-state)
+* [Futó](#running-state)
 * [Figyelmet igényel](#needs-attention-state)
 * [Felfüggesztve](#suspended-state)
 * [Törölve](#deleted-state)
@@ -41,7 +41,7 @@ A felügyelt tartomány a következő állapotok egyikében lehet:
 
 Olyan felügyelt tartomány, amely megfelelően van konfigurálva, és probléma nélkül *fut* állapotban van. Ez a felügyelt tartomány kívánt állapota.
 
-### <a name="what-to-expect"></a>Mire számíthat
+### <a name="what-to-expect"></a>Amire számíthat
 
 * Az Azure platform rendszeresen képes figyelni a felügyelt tartomány állapotát.
 * A felügyelt tartományhoz tartozó tartományvezérlők frissítése és frissítése rendszeresen megtörténik.
@@ -58,7 +58,7 @@ A riasztások egyik példája, ha van egy korlátozó hálózati biztonsági cso
 
 További információ: Hogyan lehet [elhárítani a riasztásokat egy felügyelt tartományon][resolve-alerts].
 
-### <a name="what-to-expect"></a>Mire számíthat
+### <a name="what-to-expect"></a>Amire számíthat
 
 Ha egy felügyelt tartomány az *igényeknek megfelelő* , akkor előfordulhat, hogy az Azure-platform nem képes rendszeresen figyelni, javítani, frissíteni vagy biztonsági másolatot készíteni az adatbázisokról. Bizonyos esetekben, például érvénytelen hálózati konfiguráció esetén előfordulhat, hogy a felügyelt tartományhoz tartozó tartományvezérlők nem érhetők el.
 
@@ -79,7 +79,7 @@ A felügyelt tartomány a következő okok egyike miatt **felfüggesztett** áll
 
 A felügyelt tartományok felfüggesztése akkor történik meg, ha az Azure platform nem tudja kezelni, figyelni, javítani vagy biztonsági másolatot készíteni a tartományról. A felügyelt tartomány 15 napig *felfüggesztett* állapotban marad. A felügyelt tartományhoz való hozzáférés fenntartásához azonnal oldja fel a kritikus riasztásokat.
 
-### <a name="what-to-expect"></a>Mire számíthat
+### <a name="what-to-expect"></a>Amire számíthat
 
 Ha egy felügyelt tartomány *felfüggesztett* állapotban van, a következő viselkedés tapasztalható:
 
@@ -110,7 +110,7 @@ Miután megoldotta a riasztásokat, amikor a felügyelt tartomány *felfüggeszt
 
 Ha egy felügyelt tartomány a *felfüggesztett* állapotban marad 15 napig, azt törli a rendszer. Ez a folyamat nem állítható helyre.
 
-### <a name="what-to-expect"></a>Mire számíthat
+### <a name="what-to-expect"></a>Amire számíthat
 
 Ha egy felügyelt tartomány belép a *törölt* állapotba, a következő viselkedés látható:
 

@@ -9,10 +9,10 @@ ms.date: 07/30/2020
 ms.author: glenga
 ms.reviewer: david.ebbo;suwatch;pbatum;naren.soni
 ms.openlocfilehash: de10903be86b52b3415b57a53be81e7fd1661f63
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89226029"
 ---
 # <a name="develop-and-deploy-webjobs-using-visual-studio"></a>Webjobs-feladatok fejlesztése és üzembe helyezése a Visual Studióval
@@ -218,10 +218,10 @@ A webjobs a következő beállításokat támogatja:
 
 | **Beállítás** | **Típus**  | **Leírás** |
 | ----------- | --------- | --------------- |
-| `is_in_place` | Összes | Lehetővé teszi a Webjobs futtatását anélkül, hogy először egy ideiglenes mappába kellene másolni. További információ: [webjobs Working Directory](https://github.com/projectkudu/kudu/wiki/WebJobs#webjob-working-directory). |
+| `is_in_place` | Mind | Lehetővé teszi a Webjobs futtatását anélkül, hogy először egy ideiglenes mappába kellene másolni. További információ: [webjobs Working Directory](https://github.com/projectkudu/kudu/wiki/WebJobs#webjob-working-directory). |
 | `is_singleton` | Folyamatos | A Webjobs csak egy példányon futtatja, ha a méretezés ki van kapcsolva. További információ: [folyamatos munka beállítása](https://github.com/projectkudu/kudu/wiki/WebJobs-API#set-a-continuous-job-as-singleton)egyszeriként. |
 | `schedule` | Kiváltott | Futtassa a Webjobs egy CRON-alapú ütemterven. További információ: NCRONTAB- [kifejezések](../azure-functions/functions-bindings-timer.md#ncrontab-expressions). |
-| `stopping_wait_time`| Összes | Lehetővé teszi a leállítási viselkedés vezérlését. További információ: [kecses leállítás](https://github.com/projectkudu/kudu/wiki/WebJobs#graceful-shutdown). |
+| `stopping_wait_time`| Mind | Lehetővé teszi a leállítási viselkedés vezérlését. További információ: [kecses leállítás](https://github.com/projectkudu/kudu/wiki/WebJobs#graceful-shutdown). |
 
 ### <a name="continuous-execution"></a>Folyamatos végrehajtás
 

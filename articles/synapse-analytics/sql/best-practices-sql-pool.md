@@ -11,10 +11,10 @@ ms.date: 04/15/2020
 ms.author: martinle
 ms.reviewer: igorstan
 ms.openlocfilehash: 8483fd2a1b33330b868fb21d71922377e906e6c8
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85958421"
 ---
 # <a name="best-practices-for-sql-pools-in-azure-synapse-analytics"></a>Ajánlott eljárások az SQL-készletekhez az Azure szinapszis Analyticsben
@@ -71,7 +71,7 @@ A gzip szövegfájlok használatakor az átviteli sebesség maximalizálása ér
 
 A Kiindulás nem optimális a lekérdezéseknél. Az SQL-készletek alapszintű táblái jelenleg csak az Azure Blob-fájlokat és Azure Data Lake tárolót támogatják. Ezek a fájlok nem rendelkeznek biztonsági mentéssel. Ennek eredményeképpen az SQL-készletek nem tudják kiszervezni ezt a munkát, és a teljes fájlt be kell olvasni a tempdb-be való betöltésével, hogy el tudja olvasni az adatforrást.
 
-Ha több lekérdezés is van az ilyen adatlekérdezéshez, akkor érdemes egyszer betölteni ezeket az adatfájlokat, és a lekérdezésekkel a helyi tábla is használható. A cikk további, alapszintű útmutatást tartalmaz a [alapszintű cikkek használatához](data-loading-best-practices.md) .
+Ha több lekérdezés is van az ilyen adatlekérdezéshez, akkor érdemes egyszer betölteni ezeket az adatfájlokat, és a lekérdezésekkel a helyi tábla is használható. A cikk további, alapszintű útmutatást tartalmaz a  [alapszintű cikkek használatához](data-loading-best-practices.md) .
 
 ## <a name="hash-distribute-large-tables"></a>Nagy táblák kivonatos elosztása
 
@@ -171,7 +171,7 @@ Az erőforrás-osztályokkal kapcsolatos további információkért tekintse meg
 
 Ha hosszú késleltetést tapasztal a felhasználói lekérdezésekben, előfordulhat, hogy a felhasználók nagyobb erőforrás-osztályokban futnak. Ez a forgatókönyv az egyidejűségi tárolóhelyek felhasználását segíti elő, ami más lekérdezések várólistára helyezését is okozhatja.  Annak megállapításához, hogy a felhasználók lekérdezései várólistára kerültek-e, futtassa a parancsot, `SELECT * FROM sys.dm_pdw_waits` hogy megjelenjenek-e a sorok.
 
-A számítási [feladatok kezeléséhez](../sql-data-warehouse/resource-classes-for-workload-management.md) és a [sys. dm_pdw_waits](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) cikkekhez tartozó erőforrás-osztályok további információkat biztosítanak.
+A számítási [feladatok kezeléséhez](../sql-data-warehouse/resource-classes-for-workload-management.md) és a [sys.dm_pdw_waits](/sql/relational-databases/system-dynamic-management-views/sys-dm-pdw-waits-transact-sql?toc=/azure/synapse-analytics/toc.json&bc=/azure/synapse-analytics/breadcrumb/toc.json&view=azure-sqldw-latest) cikkekhez tartozó erőforrás-osztályok további információkat biztosítanak.
 
 ## <a name="use-dmvs-to-monitor-and-optimize-your-queries"></a>A lekérdezések megfigyelése és optimalizálása DMV-kkel
 

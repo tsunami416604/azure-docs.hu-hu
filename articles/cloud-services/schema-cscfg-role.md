@@ -10,10 +10,10 @@ caps.latest.revision: 12
 author: tgore03
 ms.author: tagore
 ms.openlocfilehash: b64f9d27e382a39b132593502fed32c565af473a
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "79528421"
 ---
 # <a name="azure-cloud-services-config-role-schema"></a>Az Azure Cloud Services konfigurációjának szerepkör-sémája
@@ -22,7 +22,7 @@ A `Role` konfigurációs fájl eleme határozza meg a szolgáltatás egyes szere
 
 További információ az Azure szolgáltatás konfigurációs sémájáról: [Cloud Service (klasszikus) konfigurációs séma](schema-cscfg-file.md). Az Azure szolgáltatás definíciós sémájával kapcsolatos további információkért lásd: [Cloud Service (klasszikus) definíciós séma](schema-csdef-file.md).
 
-##  <a name="role-element"></a><a name="Role"></a>Szerepkör elem
+##  <a name="role-element"></a><a name="Role"></a> Szerepkör elem
 Az alábbi példa az `Role` elemet és annak alárendelt elemeit mutatja be.
 
 ```xml 

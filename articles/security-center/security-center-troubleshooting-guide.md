@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 09/10/2019
 ms.author: memildin
 ms.openlocfilehash: e2922d19dbcad7da2808a86896e39d21420e73d5
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90904743"
 ---
 # <a name="azure-security-center-troubleshooting-guide"></a>Azure Security Center – Hibaelhárítási útmutató
@@ -105,10 +105,10 @@ Az alábbi táblázat a kommunikációhoz szükséges erőforrásokat tartalmazz
 
 | Ügynök erőforrása | Portok | HTTPS-ellenőrzés kihagyása |
 |---|---|---|
-| *.ods.opinsights.azure.com | 443 | Yes |
-| *.oms.opinsights.azure.com | 443 | Yes |
-| *.blob.core.windows.net | 443 | Yes |
-| *.azure-automation.net | 443 | Yes |
+| *.ods.opinsights.azure.com | 443 | Igen |
+| *.oms.opinsights.azure.com | 443 | Igen |
+| *.blob.core.windows.net | 443 | Igen |
+| *.azure-automation.net | 443 | Igen |
 
 Ha problémába ütközik az ügynök előkészítése során, olvassa el a következő cikket: [Az Operations Management Suite előkészítési problémáinak hibaelhárítása](https://support.microsoft.com/help/3126513/how-to-troubleshoot-operations-management-suite-onboarding-issues).
 
@@ -148,7 +148,7 @@ Ebben a dokumentumban megtanulhatta az Azure Security Center biztonsági szabál
 * [Riasztások érvényesítése az Azure Security Centerben](security-center-alert-validation.md)
 * [E-mail-értesítések az Azure Security Centerben](security-center-provide-security-contact-details.md)
 * [Biztonsági incidensek kezelése az Azure Security Centerben](security-center-incident.md)
-* [Azure Security Center észlelési képességek](security-center-detection-capabilities.md)
+* [Az Azure Security Center észlelési képességei](security-center-detection-capabilities.md)
 * [Partneri megoldások monitorozása Azure Security Centerokkal](security-center-partner-solutions.md) – megtudhatja, hogyan figyelheti a partneri megoldások állapotát.
 * [Azure Security Center GYIK](faq-general.md) – gyakori kérdések a szolgáltatás használatával kapcsolatban
 * [Azure Security blog](https://docs.microsoft.com/archive/blogs/azuresecurity/) – Blogbejegyzések az Azure biztonsági és megfelelőségi funkcióiról.

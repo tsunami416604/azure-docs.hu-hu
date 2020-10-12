@@ -1,5 +1,5 @@
 ---
-title: Proximity elhelyezési csoport létrehozása a portál használatával
+title: Közelségi elhelyezési csoport létrehozása a portál használatával
 description: Megtudhatja, hogyan hozhat létre közelségi elhelyezési csoportot a Azure Portal használatával.
 author: cynthn
 ms.service: virtual-machines
@@ -8,13 +8,13 @@ ms.workload: infrastructure-services
 ms.date: 04/24/2020
 ms.author: cynthn
 ms.openlocfilehash: 6a14e2bd7385430c3d0fbec06259a876af556e38
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82190401"
 ---
-# <a name="create-a-proximity-placement-group-using-the-portal"></a>Proximity elhelyezési csoport létrehozása a portál használatával
+# <a name="create-a-proximity-placement-group-using-the-portal"></a>Közelségi elhelyezési csoport létrehozása a portál használatával
 
 Ha a lehető legközelebb szeretné lekérni a virtuális gépeket, a lehető legkevesebb késést kell megvalósítania, egy [közelségi elhelyezési csoporton](co-location.md#proximity-placement-groups)belül kell telepítenie.
 
@@ -58,7 +58,7 @@ Ha a virtuális gép a rendelkezésre állási csoport része, akkor a virtuáli
 1. A [portálon](https://portal.azure.com) keresse meg a *rendelkezésre állási csoportokat* , és válassza ki a rendelkezésre állási csoportot az eredmények közül.
 1. A virtuális gép kiválasztásával Stop\deallocate az egyes virtuális gépeket a rendelkezésre állási csoportba, majd válassza a **Leállítás** elemet a virtuális gép lapján, majd kattintson **az OK** gombra a virtuális gép leállításához.
 1. A rendelkezésre állási csoport lapján ellenőrizze, hogy az összes virtuális gép rendelkezik-e **leállított (** fel nem sorolt) **állapottal** .
-1. A bal oldali menüben válassza a **Konfigurálás**lehetőséget.
+1. A bal oldali menüben válassza a **Konfiguráció** elemet.
 1. A **közelség elhelyezése**csoportban válasszon ki egy elhelyezési csoportot a legördülő listából, majd válassza a **Mentés**lehetőséget.
 1. A bal oldali menüben válassza az **Áttekintés** lehetőséget a virtuális gépek listájának megjelenítéséhez. 
 1. Válassza ki az egyes virtuális gépeket a rendelkezésre állási csoportból, majd válassza az **Indítás** lehetőséget az egyes virtuális gépek lapon. 

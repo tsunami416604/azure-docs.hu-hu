@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: 9f65ffc9ef24b18ce0f18571c1f3fc91e7ca7fdf
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85414606"
 ---
 # <a name="if-condition-activity-in-azure-data-factory"></a>Ha a feltétel tevékenysége Azure Data Factory
@@ -67,11 +67,11 @@ Az If Condition tevékenység ugyanazokat a funkciókat biztosítja, mint a prog
 
 Tulajdonság | Leírás | Megengedett értékek | Kötelező
 -------- | ----------- | -------------- | --------
-name | Az IF-Condition tevékenység neve. | Sztring | Yes
-típus | **IfCondition** értékre kell állítani | Sztring | Yes
-kifejezés | Igaz vagy hamis értéket megadó kifejezés | Kifejezés az eredmény típusú logikai értékkel | Yes
-ifTrueActivities | A kifejezés kiértékelése során végrehajtott tevékenységek összessége `true` . | Tömb | Yes
-ifFalseActivities | A kifejezés kiértékelése során végrehajtott tevékenységek összessége `false` . | Tömb | Yes
+name | Az IF-Condition tevékenység neve. | Sztring | Igen
+típus | **IfCondition** értékre kell állítani | Sztring | Igen
+kifejezés | Igaz vagy hamis értéket megadó kifejezés | Kifejezés az eredmény típusú logikai értékkel | Igen
+ifTrueActivities | A kifejezés kiértékelése során végrehajtott tevékenységek összessége `true` . | Tömb | Igen
+ifFalseActivities | A kifejezés kiértékelése során végrehajtott tevékenységek összessége `false` . | Tömb | Igen
 
 ## <a name="example"></a>Példa
 Az ebben a példában szereplő folyamat adatokat másol egy bemeneti mappából a kimeneti mappába. A kimeneti mappát a (z) routeSelection folyamat paraméterének értéke határozza meg. Ha a routeSelection értéke TRUE (igaz), a rendszer átmásolja az adatmennyiséget a outputPath1. Ha pedig a routeSelection értéke hamis, a rendszer az outputPath2-re másolja az adatfájlokat. 

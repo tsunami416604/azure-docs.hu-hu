@@ -13,10 +13,10 @@ ms.custom: mvc
 ms.topic: troubleshooting
 ms.date: 07/08/2020
 ms.openlocfilehash: 77c54d6ea463b5a8a4952d243886b80f38312d27
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91291486"
 ---
 # <a name="status-of-migration-scenarios-supported-by-azure-database-migration-service"></a>A Azure Database Migration Service által támogatott áttelepítési forgatókönyvek állapota
@@ -45,7 +45,7 @@ Az alábbi táblázatok azt mutatják be, hogy mely áttelepítési forgatókön
 
 Az alábbi táblázat az offline áttelepítések Azure Database Migration Service támogatását mutatja be.
 
-| Cél  | Forrás | Támogatás | Állapot |
+| Cél  | Forrás | Támogatás | status |
 | ------------- | ------------- |:-------------:|:-------------:|
 | **Azure SQL DB** | SQL Server | ✔ | FE |
 |   | RDS SQL | X |  |
@@ -67,7 +67,7 @@ Az alábbi táblázat az offline áttelepítések Azure Database Migration Servi
 
 Az alábbi táblázat az online áttelepítések Azure Database Migration Service támogatását mutatja be.
 
-| Cél  | Forrás | Támogatás | Állapot |
+| Cél  | Forrás | Támogatás | status |
 | ------------- | ------------- |:-------------:|:-------------:|
 | **Azure SQL DB** | SQL Server | ✔ | FE |
 |   | RDS SQL | ✔ | FE |

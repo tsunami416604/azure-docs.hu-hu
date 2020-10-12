@@ -13,10 +13,10 @@ ms.date: 4/10/2020
 ms.author: moala
 ms.custom: devops
 ms.openlocfilehash: 6cc4fdb82e98c30ca33eec58675f2175dfcc2607
-ms.sourcegitcommit: f845ca2f4b626ef9db73b88ca71279ac80538559
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/09/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89612787"
 ---
 # <a name="tutorial---configure-the-rolling-deployment-strategy-for-azure-linux-virtual-machines"></a>Oktatóanyag – az Azure Linux rendszerű virtuális gépek működés közbeni üzembe helyezési stratégiájának konfigurálása
@@ -89,9 +89,9 @@ Az Azure-t egyszerűen megteheti. A Azure DevOps Projects használatával a köv
 - Egy futtatókörnyezet
 - Azure-szolgáltatás
  
-[További információ](https://azure.microsoft.com/features/devops-projects/).
+[További információk](https://azure.microsoft.com/features/devops-projects/).
  
-## <a name="additional-resources"></a>További erőforrások
+## <a name="additional-resources"></a>További források
 
 - [Üzembe helyezés az Azure-beli virtuális gépeken Azure DevOps Projects használatával](../../devops-project/azure-devops-project-vms.md)
 - [Az alkalmazás folyamatos üzembe helyezésének megvalósítása egy Azure virtuálisgép-méretezési csoportba](/azure/devops/pipelines/apps/cd/azure/deploy-azure-scaleset)

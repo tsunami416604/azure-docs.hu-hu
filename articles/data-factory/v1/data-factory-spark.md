@@ -12,10 +12,10 @@ ms.workload: data-services
 ms.topic: conceptual
 ms.date: 01/10/2018
 ms.openlocfilehash: 3ea719a26f47da98e80abd9e3fcd1785ed8efa69
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82185591"
 ---
 # <a name="invoke-spark-programs-from-azure-data-factory-pipelines"></a>Spark-programok meghívása Azure Data Factory folyamatokból
@@ -60,7 +60,7 @@ Az alábbi általános lépésekkel hozhat létre egy Spark-tevékenységgel ren
 
 1. Töltse fel a **test.py** a **pyFiles** mappába a blob Storage-beli **adfspark** -tárolóban. Ha nem léteznek, hozza létre a tárolót és a mappát.
 
-### <a name="create-a-data-factory"></a>Data factory létrehozása
+### <a name="create-a-data-factory"></a>Adat-előállító létrehozása
 Adat-előállító létrehozásához kövesse az alábbi lépéseket:
 
 1. Jelentkezzen be az [Azure Portalra](https://portal.azure.com/).
@@ -78,7 +78,7 @@ Adat-előállító létrehozásához kövesse az alábbi lépéseket:
 
 1. Jelölje be a **Rögzítés az irányítópulton** jelölőnégyzetet.
 
-1. Válassza a **Létrehozás** lehetőséget.
+1. Kattintson a **Létrehozás** gombra.
 
    > [!IMPORTANT]
    > Data Factory példányok létrehozásához a [Data Factory közreműködő](../../role-based-access-control/built-in-roles.md#data-factory-contributor) szerepkör tagjának kell lennie az előfizetés/erőforráscsoport szintjén.
@@ -118,7 +118,7 @@ Ebben a lépésben létrehoz egy HDInsight társított szolgáltatást, amely ö
 
 1. Másolja és illessze be a következő kódrészletet a Draft-1 (Vázlat-1) ablakba. A JSON-szerkesztőben hajtsa végre a következő lépéseket:
 
-    a. Itt adhatja meg a HDInsight Spark-fürt URI-JÁT. Példa: `https://<sparkclustername>.azurehdinsight.net/`.
+    a. Itt adhatja meg a HDInsight Spark-fürt URI-JÁT. Például: `https://<sparkclustername>.azurehdinsight.net/`.
 
     b. Adja meg annak a felhasználónak a nevét, aki hozzáfér a Spark-fürthöz.
 
@@ -347,7 +347,7 @@ Hozza létre a következő mappastruktúrát a HDInsight társított szolgáltat
 | Elérési út | Leírás | Kötelező | Típus |
 | ---- | ----------- | -------- | ---- |
 | . | A Spark-feladatokhoz tartozó gyökér elérési útja a Storage társított szolgáltatásban. | Igen | Mappa |
-| &lt;felhasználó által definiált&gt; | Az elérési út, amely a Spark-feladathoz tartozó belépési fájlra mutat. | Igen | Fájl |
+| &lt;felhasználó által definiált &gt; | Az elérési út, amely a Spark-feladathoz tartozó belépési fájlra mutat. | Igen | Fájl |
 | ./jars | A rendszer a mappában található összes fájlt feltölti és elhelyezi a fürt Java-osztályútvonal. | Nem | Mappa |
 | ./pyFiles | A rendszer az ebben a mappában található összes fájlt feltölti és elhelyezi a fürt PYTHONPATH. | Nem | Mappa |
 | ./files | A rendszer a mappában található összes fájlt feltöltötte és a végrehajtó munkakönyvtárba helyezi. | Nem | Mappa |

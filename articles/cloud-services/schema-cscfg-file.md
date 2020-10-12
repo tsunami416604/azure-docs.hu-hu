@@ -10,10 +10,10 @@ caps.latest.revision: 35
 author: tgore03
 ms.author: tagore
 ms.openlocfilehash: cb77181e00c97b7f426429793f17af3cb5e84ebe
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "79534745"
 ---
 # <a name="azure-cloud-services-config-schema-cscfg-file"></a>Azure Cloud Services konfigurációs séma (. cscfg fájl)
@@ -51,7 +51,7 @@ A következő témakörök a elem sémáját írják le `ServiceConfiguration` :
 ## <a name="service-configuration-namespace"></a>Szolgáltatás konfigurációs névtere
 A szolgáltatás konfigurációs fájljának XML-névtere a következő: `http://schemas.microsoft.com/ServiceHosting/2008/10/ServiceConfiguration` .
 
-##  <a name="serviceconfiguration-element"></a><a name="ServiceConfiguration"></a>ServiceConfiguration elem
+##  <a name="serviceconfiguration-element"></a><a name="ServiceConfiguration"></a> ServiceConfiguration elem
 Az `ServiceConfiguration` elem a szolgáltatás konfigurációs fájljának legfelső szintű eleme.
 
 Az alábbi táblázat az elem attribútumait ismerteti `ServiceConfiguration` . Minden attribútum értéke karakterlánc típusú.

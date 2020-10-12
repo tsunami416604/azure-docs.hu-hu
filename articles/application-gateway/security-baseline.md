@@ -8,10 +8,10 @@ ms.date: 06/05/2020
 ms.author: mbaldwin
 ms.custom: subject-security-benchmark
 ms.openlocfilehash: b470fa72518f805c10403931280bdec96bda0fbe
-ms.sourcegitcommit: d68c72e120bdd610bb6304dad503d3ea89a1f0f7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/01/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89226539"
 ---
 # <a name="azure-security-baseline-for-azure-application-gateway"></a>Azure biztonsági alapkonfiguráció az Azure Application Gateway
@@ -983,7 +983,7 @@ Konfigurálja az Azure Application Gateway üzemelő példányok diagnosztikai b
 
 **Útmutató**: az Azure Application Gateway nem tárolja az ügyféladatokat. Ha azonban egyéni Azure-szabályzat-definíciókat használ, az Azure DevOps vagy az Azure Repos segítségével biztonságosan tárolhatja és kezelheti a kódot.
 
-Az Azure DevOps Services számos Azure Storage-funkciót használ, így biztosítva az adatmennyiséget a hardverhiba, a szolgáltatások megszakítása vagy a régió katasztrófája esetén. Emellett az Azure DevOps csapata a véletlen vagy rosszindulatú törlésből származó adatok védelme érdekében eljárást követ.
+Az Azure DevOps Services számos Azure Storage-funkciót használ, hogy gondoskodni tudjon az adatok rendelkezésre állásáról hardverhiba, szolgáltatáskimaradás vagy régiós katasztrófa esetén. Az Azure DevOps csapata olyan eljárásokat is követ, amelyek a véletlen vagy rosszindulatú törlésektől védi az adatokat.
 
 * [Az adatelérhetőség ismertetése az Azure DevOps](https://docs.microsoft.com/azure/devops/organizations/security/data-protection?view=azure-devops#data-availability)
 
@@ -1113,7 +1113,7 @@ Emellett egyértelműen megjelölheti az előfizetéseket (pl.: éles környezet
 
 **Felelősség**: megosztott
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 - Lásd az [Azure biztonsági teljesítménytesztét](https://docs.microsoft.com/azure/security/benchmarks/overview)
 - További információ az [Azure biztonsági alaptervekről](https://docs.microsoft.com/azure/security/benchmarks/security-baselines-overview)

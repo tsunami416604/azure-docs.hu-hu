@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.custom: hdinsightactive,seoapr2020
 ms.date: 04/24/2020
 ms.openlocfilehash: cdef21c69e8f05924097d57bbe78b86d38497b86
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82188157"
 ---
 # <a name="configure-apache-spark-settings"></a>Az Apache Spark beállításainak konfigurálása
@@ -29,7 +29,7 @@ A virtuális gépek és a virtuálisgép-méretek száma a HDInsight-fürt csom�
 
 Használja a fürt legjobb Spark-verzióját.  A HDInsight szolgáltatás a Spark és a HDInsight több verzióját is tartalmazza.  A Spark minden verziója tartalmaz egy alapértelmezett fürtkonfiguráció-készletet.  
 
-Új fürt létrehozásakor több Spark-verzió közül választhat. A teljes lista megjelenítéséhez [HDInsight összetevőket és verziókat](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning).
+Új fürt létrehozásakor több Spark-verzió közül választhat. A teljes lista megjelenítéséhez  [HDInsight összetevőket és verziókat](https://docs.microsoft.com/azure/hdinsight/hdinsight-component-versioning).
 
 > [!NOTE]  
 > A HDInsight szolgáltatás Apache Spark alapértelmezett verziója figyelmeztetés nélkül változhat. Ha a verziótól függ, a Microsoft azt javasolja, hogy a .NET SDK, a Azure PowerShell és a klasszikus Azure parancssori felület használatával hozzon létre egy adott verziót.
@@ -90,7 +90,7 @@ Három fő paraméter, amelyet gyakran a Spark-konfigurációk hangolására mó
 > [!NOTE]  
 > Ez a három konfigurációs paraméter konfigurálható a fürt szintjén (a fürtön futó összes alkalmazás esetében), valamint az egyes alkalmazásokhoz is.
 
-A Spark-végrehajtók által használt erőforrásokkal kapcsolatos további információforrás a Spark-alkalmazás felhasználói felülete.  A felhasználói felületen a **végrehajtók** a konfiguráció és a felhasznált erőforrások összefoglaló és részletes nézeteit jelenítik meg.  Döntse el, hogy módosítja-e a végrehajtók értékét a teljes fürtön, vagy a feladatok bizonyos készleteit.
+A Spark-végrehajtók által használt erőforrásokkal kapcsolatos további információforrás a Spark-alkalmazás felhasználói felülete.  A felhasználói felületen a  **végrehajtók** a konfiguráció és a felhasznált erőforrások összefoglaló és részletes nézeteit jelenítik meg.  Döntse el, hogy módosítja-e a végrehajtók értékét a teljes fürtön, vagy a feladatok bizonyos készleteit.
 
 ![Spark-végrehajtók](./media/apache-spark-settings/apache-spark-executors.png)
 

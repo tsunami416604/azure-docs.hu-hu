@@ -15,10 +15,10 @@ ms.workload: na
 ms.date: 12/03/2018
 ms.author: memildin
 ms.openlocfilehash: 56dd74fba46aa8b79c94b1460996bb6edb1ff93f
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90904611"
 ---
 # <a name="tutorial-protect-your-resources-with-azure-security-center"></a>Oktatóanyag: Erőforrások védelme az Azure Security Centerrel
@@ -45,7 +45,7 @@ Az adaptív alkalmazásvezérlők segítségével meghatározhatja a konfigurál
 
 A [gépek támadási felületének csökkentése érdekében kövesse az adaptív alkalmazások használatának szabályozása](security-center-adaptive-application.md)című témakör útmutatását.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Ez az oktatóanyag bemutatta, hogyan korlátozhatja a fenyegetéseknek való kitettségét a következőkkel:
 
 > [!div class="checklist"]

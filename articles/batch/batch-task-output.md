@@ -5,10 +5,10 @@ ms.topic: how-to
 ms.date: 11/14/2018
 ms.custom: H1Hack27Feb2017
 ms.openlocfilehash: 4ebe0b6d57225eff9f3f1251d5e491c95e9b7ffc
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85965110"
 ---
 # <a name="persist-job-and-task-output"></a>Feladatok és tevékenységek kimenetének megőrzése
@@ -59,7 +59,7 @@ Ha bizonyított elnevezési sémát szeretne, vagy ha a Azure Portalban szeretn�
 
 Saját teljes fájlátviteli megoldást is megvalósíthat. Ezt a módszert a következő esetekben használja:
 
-- Az Azure Storage-tól eltérő adattárba szeretné menteni a feladatokat. Ha fájlokat szeretne feltölteni egy adattárba (például az Azure SQL vagy az Azure DataLake), létrehozhat egy egyéni parancsfájlt vagy végrehajtható fájlt, amely feltölthető erre a helyre. Ezt követően az elsődleges végrehajtható fájl futtatása után meghívhatja azt a parancssorban. Egy Windows-csomóponton például meghívhatja ezt a két parancsot:`doMyWork.exe && uploadMyFilesToSql.exe`
+- Az Azure Storage-tól eltérő adattárba szeretné menteni a feladatokat. Ha fájlokat szeretne feltölteni egy adattárba (például az Azure SQL vagy az Azure DataLake), létrehozhat egy egyéni parancsfájlt vagy végrehajtható fájlt, amely feltölthető erre a helyre. Ezt követően az elsődleges végrehajtható fájl futtatása után meghívhatja azt a parancssorban. Egy Windows-csomóponton például meghívhatja ezt a két parancsot: `doMyWork.exe && uploadMyFilesToSql.exe`
 - A kezdeti eredmények ellenőrzését vagy korai feltöltését szeretné elvégezni.
 - A hibakezelés részletes szabályozását szeretné megtartani. Előfordulhat például, hogy saját megoldást szeretne megvalósítani, ha a feladat-függőségi műveletekkel bizonyos feladatokhoz tartozó kilépési kódokon alapuló feltöltési műveleteket szeretne végezni. További információ a feladat-függőségi műveletekről: feladatok [függőségeinek létrehozása a más feladatoktól függő feladatok futtatásához](batch-task-dependencies.md).
 

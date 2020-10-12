@@ -12,10 +12,10 @@ ms.custom: mvc
 ms.topic: troubleshooting
 ms.date: 02/20/2020
 ms.openlocfilehash: 819fe5ced6c91819c817065305a31fca456ea5c0
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91291843"
 ---
 # <a name="known-issuesmigration-limitations-with-using-hybrid-mode"></a>Ismert problémák/áttelepítési korlátozások hibrid mód használatával
@@ -61,7 +61,7 @@ A művelet GenerateCert által létrehozott tanúsítvány egy önaláírt tanú
 
 Alapértelmezés szerint a Azure Database Migration Service Hybrid Worker szolgáltatás helyi rendszerfiókként fut. Módosíthatja a szolgáltatáshoz használt fiókot, ha a használt fiók rendelkezik hálózati engedélyekkel. A szolgáltatás "futtató" fiókjának módosításához használja az alábbi eljárást.
 
-1. Állítsa le a szolgáltatást a Windows-szolgáltatások vagy a PowerShell stop-Service parancsának használatával.
+1. Állítsa le a szolgáltatást a Windows-szolgáltatások vagy a PowerShell Stop-Service parancsának használatával.
 
 2. Frissítse a szolgáltatást egy másik bejelentkezési fiók használatára.
 

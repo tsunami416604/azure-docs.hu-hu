@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 0e9f4602582a8c24f74d6603b732e7b91d97fa8d
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89002691"
 ---
 # <a name="upgrade-to-azure-search-net-sdk-version-3"></a>Frissítés a Azure Search .NET SDK 3-as verziójára
@@ -147,7 +147,7 @@ Ha a 2,0-es verzióról frissít a 3. verzióra, vegye figyelembe, hogy a JSON-�
 
 Ha az alkalmazás ezen funkcióktól függ, nem fog tudni frissíteni a Azure Search .NET SDK 3. verziójára. Továbbra is használhatja a 2,0-es verziót – előzetes verzió. Ne feledje azonban, hogy az **előnézeti SDK-k éles alkalmazásokban való használatát nem javasoljuk**. Az előzetes verziójú funkciók csak értékelésre használhatók, és változhatnak.
 
-## <a name="conclusion"></a>Tanulság
+## <a name="conclusion"></a>Összegzés
 Ha további részletekre van szüksége a Azure Search .NET SDK használatával kapcsolatban, tekintse meg a [.net útmutató](search-howto-dotnet-sdk.md)című témakört.
 
 Üdvözöljük az SDK-val kapcsolatos visszajelzéseit. Ha problémákba ütközik, kérjen segítséget a [stack overflow](https://stackoverflow.com/questions/tagged/azure-search). Ha hibát talál, a probléma az [Azure .net SDK GitHub-tárházában](https://github.com/Azure/azure-sdk-for-net/issues)is megadható. Ügyeljen arra, hogy a probléma címét "[Azure Search]" előtaggal adja meg.

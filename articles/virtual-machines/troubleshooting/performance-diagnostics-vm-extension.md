@@ -14,10 +14,10 @@ ms.topic: troubleshooting
 ms.date: 10/31/2018
 ms.author: genli
 ms.openlocfilehash: c570c43560ad865b8bcc5161cbd0c6731ea4a237
-ms.sourcegitcommit: 07166a1ff8bd23f5e1c49d4fd12badbca5ebd19c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/15/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90090652"
 ---
 # <a name="azure-performance-diagnostics-vm-extension-for-windows"></a>Azure teljesítménydiagnosztikai virtuálisgép-bővítmény Windowsra
@@ -79,7 +79,7 @@ A következő JSON az Azure Performance Diagnostics virtuálisgép-bővítmény�
 |apiVersion|2015-06-15|Az API verziója.
 |közzétevő|Microsoft. Azure. Performance. Diagnostics|A bővítmény közzétevői névterét.
 |típus|AzurePerformanceDiagnostics|A virtuálisgép-bővítmény típusa.
-|typeHandlerVersion|1,0|A bővítmény kezelőjének verziója.
+|typeHandlerVersion|1.0|A bővítmény kezelőjének verziója.
 |performanceScenario|alapvető|Az a teljesítménnyel kapcsolatos forgatókönyv, amelynek az adatai rögzítésére kerül. Az érvényes értékek a következők: **alapszintű**, **vmslow**, **azurefiles**és **Custom**.
 |traceDurationInSeconds|300|A Nyomkövetések időtartama, ha a nyomkövetési beállítások bármelyike ki van választva.
 |perfCounterTrace|P|A teljesítményszámláló nyomkövetésének engedélyezése lehetőség. Az érvényes értékek: **p** vagy üres érték. Ha nem szeretné rögzíteni ezt a nyomkövetést, hagyja üresen az értéket.

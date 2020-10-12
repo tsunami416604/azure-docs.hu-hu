@@ -8,10 +8,10 @@ ms.date: 7/28/2020
 ms.topic: troubleshooting
 ms.service: digital-twins
 ms.openlocfilehash: fc397b6d6beb719e11dc3959bbcf4d75c08a8dda
-ms.sourcegitcommit: 5b6acff3d1d0603904929cc529ecbcfcde90d88b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/21/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88723928"
 ---
 # <a name="troubleshooting-azure-digital-twins-diagnostics-logging"></a>Azure Digital Twins hibaelhárítása: diagnosztika naplózása
@@ -49,7 +49,7 @@ Az alábbi módon engedélyezheti az Azure Digital Twins-példány diagnosztikai
     
 4. Mentse az új beállításokat. 
 
-    :::image type="content" source="media/troubleshoot-diagnostics/diagnostic-settings-details.png" alt-text="Képernyőfelvétel: a diagnosztikai beállítások oldal, ahol a felhasználó kitöltötte a diagnosztikai beállítások nevét, és a kategória részletei és a célhely részletei jelölőnégyzettel rendelkezik. A Mentés gomb ki van emelve.":::
+    :::image type="content" source="media/troubleshoot-diagnostics/diagnostic-settings-details.png" alt-text="A diagnosztikai beállítások lapot és a hozzáadni kívánt gombot ábrázoló képernyőkép":::
 
 Az új beállítások körülbelül 10 percen belül lépnek érvénybe. Ezután a naplók megjelennek a konfigurált célhelyen a példány **diagnosztikai beállítások** lapján. 
 
@@ -71,7 +71,7 @@ Minden naplózási kategória írási, olvasási, törlési és művelet-művele
 | Írás | PUT és PATCH |
 | Olvasás | GET |
 | Törlés | DELETE |
-| Műveletek | POST |
+| Művelet | POST |
 
 Itt látható a műveletek és a megfelelő [Azure digitális Twins REST API](https://docs.microsoft.com/rest/api/azure-digitaltwins/) a különböző kategóriákba bejelentkezett hívások részletes listája. 
 

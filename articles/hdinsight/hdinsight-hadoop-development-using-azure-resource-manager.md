@@ -9,10 +9,10 @@ ms.topic: how-to
 ms.date: 02/21/2018
 ms.author: hrasheed
 ms.openlocfilehash: faf13f580f6600e761cdaa9927fee4efa2b5995f
-ms.sourcegitcommit: 11e2521679415f05d3d2c4c49858940677c57900
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/31/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87500180"
 ---
 # <a name="migrating-to-azure-resource-manager-based-development-tools-for-hdinsight-clusters"></a>Migrálás Azure Resource Manager-alapú fejlesztői eszközökre HDInsight-fürtökhöz
@@ -31,21 +31,21 @@ A HDInsight elavult Azure Service Manager (ASM) alapú eszközök HDInsight. Ha 
 
 A HDInsight Azure-beli klasszikus CLI-n keresztüli használatának alapszintű parancsai a következők:
 
-* `azure hdinsight cluster create`-új HDInsight-fürt létrehozása
-* `azure hdinsight cluster delete`-meglévő HDInsight-fürt törlése
-* `azure hdinsight cluster show`– meglévő fürt adatainak megjelenítése
-* `azure hdinsight cluster list`-Az Azure-előfizetéshez tartozó HDInsight-fürtök listája
+* `azure hdinsight cluster create` -új HDInsight-fürt létrehozása
+* `azure hdinsight cluster delete` -meglévő HDInsight-fürt törlése
+* `azure hdinsight cluster show` – meglévő fürt adatainak megjelenítése
+* `azure hdinsight cluster list` -Az Azure-előfizetéshez tartozó HDInsight-fürtök listája
 
 A `-h` kapcsoló használatával ellenőrizze az egyes parancsok számára elérhető paramétereket és kapcsolókat.
 
 ### <a name="new-commands"></a>Új parancsok
 A Azure Resource Manager elérhető új parancsok a következők:
 
-* `azure hdinsight cluster resize`– dinamikusan módosítja a fürt munkavégző csomópontjainak számát.
-* `azure hdinsight cluster enable-http-access`– engedélyezi a HTTPs-hozzáférést a fürthöz (alapértelmezés szerint)
-* `azure hdinsight cluster disable-http-access`– letiltja a fürthöz való HTTPs-hozzáférést
-* `azure hdinsight script-action`-parancsokat biztosít a parancsfájlok műveleteinek létrehozásához/kezeléséhez a fürtön
-* `azure hdinsight config`– parancsokat biztosít egy konfigurációs fájl létrehozásához, amely a paranccsal használható a `hdinsight cluster create` konfigurációs információk megadásához.
+* `azure hdinsight cluster resize` – dinamikusan módosítja a fürt munkavégző csomópontjainak számát.
+* `azure hdinsight cluster enable-http-access` – engedélyezi a HTTPs-hozzáférést a fürthöz (alapértelmezés szerint)
+* `azure hdinsight cluster disable-http-access` – letiltja a fürthöz való HTTPs-hozzáférést
+* `azure hdinsight script-action` -parancsokat biztosít a parancsfájlok műveleteinek létrehozásához/kezeléséhez a fürtön
+* `azure hdinsight config` – parancsokat biztosít egy konfigurációs fájl létrehozásához, amely a paranccsal használható a `hdinsight cluster create` konfigurációs információk megadásához.
 
 ### <a name="deprecated-commands"></a>Elavult parancsok
 Ha a `azure hdinsight job` parancsokkal feladatokat küld a HDInsight-fürthöz, ezek a parancsok a Resource Manager parancsain keresztül nem érhetők el. Ha programozott módon kell elküldeni a feladatokat a parancsfájlok HDInsight, használja inkább a HDInsight által biztosított REST API-kat. A feladatok REST API-kkal történő elküldésével kapcsolatos további információkért tekintse meg a következő dokumentumokat.
@@ -59,26 +59,26 @@ Az Apache Hadoop MapReduce, Apache Hive és Apache Pig interaktív módon tört�
 ### <a name="examples"></a>Példák
 **Fürt létrehozása**
 
-* Régi parancs (ASM) –`azure hdinsight cluster create myhdicluster --location northeurope --osType linux --storageAccountName mystorage --storageAccountKey <storagekey> --storageContainer mycontainer --userName admin --password mypassword --sshUserName sshuser --sshPassword mypassword`
-* Új parancs –`azure hdinsight cluster create myhdicluster -g myresourcegroup --location northeurope --osType linux --clusterType hadoop --defaultStorageAccountName mystorage --defaultStorageAccountKey <storagekey> --defaultStorageContainer mycontainer --userName admin -password mypassword --sshUserName sshuser --sshPassword mypassword`
+* Régi parancs (ASM) – `azure hdinsight cluster create myhdicluster --location northeurope --osType linux --storageAccountName mystorage --storageAccountKey <storagekey> --storageContainer mycontainer --userName admin --password mypassword --sshUserName sshuser --sshPassword mypassword`
+* Új parancs – `azure hdinsight cluster create myhdicluster -g myresourcegroup --location northeurope --osType linux --clusterType hadoop --defaultStorageAccountName mystorage --defaultStorageAccountKey <storagekey> --defaultStorageContainer mycontainer --userName admin -password mypassword --sshUserName sshuser --sshPassword mypassword`
 
 **Fürt törlése**
 
-* Régi parancs (ASM) –`azure hdinsight cluster delete myhdicluster`
-* Új parancs –`azure hdinsight cluster delete mycluster -g myresourcegroup`
+* Régi parancs (ASM) – `azure hdinsight cluster delete myhdicluster`
+* Új parancs – `azure hdinsight cluster delete mycluster -g myresourcegroup`
 
 **Fürtök listázása**
 
-* Régi parancs (ASM) –`azure hdinsight cluster list`
-* Új parancs –`azure hdinsight cluster list`
+* Régi parancs (ASM) – `azure hdinsight cluster list`
+* Új parancs – `azure hdinsight cluster list`
 
 > [!NOTE]  
 > A List parancsnál a használatával az erőforráscsoport `-g` csak a megadott erőforráscsoporthoz tartozó fürtöket fogja visszaadni.
 
 **Fürt adatainak megjelenítése**
 
-* Régi parancs (ASM) –`azure hdinsight cluster show myhdicluster`
-* Új parancs –`azure hdinsight cluster show myhdicluster -g myresourcegroup`
+* Régi parancs (ASM) – `azure hdinsight cluster show myhdicluster`
+* Új parancs – `azure hdinsight cluster show myhdicluster -g myresourcegroup`
 
 ## <a name="migrating-azure-powershell-to-azure-resource-manager"></a>Azure PowerShell migrálása a Azure Resource Managerba
 A Azure Resource Manager módban Azure PowerShell általános információi a [Azure PowerShell Azure Resource Manager használatával](../powershell-azure-resource-manager.md)találhatók.

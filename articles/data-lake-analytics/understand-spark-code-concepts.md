@@ -7,10 +7,10 @@ ms.topic: how-to
 ms.custom: Understand-apache-spark-code-concepts
 ms.date: 10/15/2019
 ms.openlocfilehash: 7b5be20bb8b5eb1d56c1214104037d5d824445b3
-ms.sourcegitcommit: 0e8a4671aa3f5a9a54231fea48bcfb432a1e528c
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/24/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87132347"
 ---
 # <a name="understand-apache-spark-code-for-u-sql-developers"></a>A U-SQL-fejlesztők Apache Spark kódjának megismerése
@@ -126,7 +126,7 @@ A következő táblázat a Spark, a Scala és a PySpark egyenértékű típusoka
 |`SQL.MAP<K,V>`   |`MapType(keyType, valueType, valueContainsNull)` |`scala.collection.Map` | `MapType(keyType, valueType, valueContainsNull=True)`|
 |`SQL.ARRAY<T>`   |`ArrayType(elementType, containsNull)` |`scala.collection.Seq` | `ArrayType(elementType, containsNull=True)`|
 
-További információ:
+További információkért lásd:
 
 - [org. Apache. Spark. SQL. types](https://spark.apache.org/docs/latest/api/scala/index.html#org.apache.spark.sql.types.package)
 - [Spark SQL-és DataFrames-típusok](https://spark.apache.org/docs/latest/sql-ref-datatypes.html)
@@ -160,14 +160,14 @@ Az U-SQL alapvető nyelve a sorhalmazok átalakítása, és az SQL-alapú. Az al
 - `SELECT`/`FROM`/`WHERE`/`GROUP BY`+ Összesítések +`HAVING`/`ORDER BY`+`FETCH`
 - `INNER`/`OUTER`/`CROSS`/`SEMI``JOIN`kifejezések
 - `CROSS`/`OUTER``APPLY`kifejezések
-- `PIVOT`/`UNPIVOT`kifejezések
-- `VALUES`sorhalmaz konstruktora
+- `PIVOT`/`UNPIVOT` kifejezések
+- `VALUES` sorhalmaz konstruktora
 
-- Kifejezések beállítása`UNION`/`OUTER UNION`/`INTERSECT`/`EXCEPT`
+- Kifejezések beállítása `UNION`/`OUTER UNION`/`INTERSECT`/`EXCEPT`
 
 Emellett az U-SQL számos SQL-alapú skaláris kifejezést is biztosít, például:
 
-- `OVER`ablakos kifejezések
+- `OVER` ablakos kifejezések
 - számos beépített aggregator és rangsorolási függvény ( `SUM` `FIRST` stb.)
 - A legismertebb SQL skaláris kifejezések: `CASE` , `LIKE` , ( `NOT` ) `IN` , `AND` `OR` stb.
 

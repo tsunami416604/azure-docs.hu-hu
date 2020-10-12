@@ -4,10 +4,10 @@ description: Ebből a cikkből megtudhatja, hogyan állíthatja be a beágyazott
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 319695088e967dc3156ecab5c1b9458e77fcc186
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91251474"
 ---
 # <a name="enable-nested-virtualization-on-a-template-virtual-machine-in-azure-lab-services"></a>Beágyazott virtualizálás engedélyezése sablonbeli virtuális gépen Azure Lab Services

@@ -4,10 +4,10 @@ description: A v2 futtatókörnyezettel rendelkező fájl Azure Functions host.j
 ms.topic: conceptual
 ms.date: 04/28/2020
 ms.openlocfilehash: 400ff6f9db421552b2b2736ea48265deefe676ac
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91321849"
 ---
 # <a name="hostjson-reference-for-azure-functions-2x-and-later"></a>Azure Functions 2.x és újabb verziók – host.json referencia 
@@ -145,19 +145,19 @@ A teljes JSON-struktúra esetében tekintse [meg a fájl host.jskorábbi példá
 > [!NOTE]
 > A napló mintavételezése miatt előfordulhat, hogy egyes végrehajtások nem jelennek meg a Application Insights figyelő paneljén. A naplók mintavételezésének elkerüléséhez adja hozzá `excludedTypes: "Request"` a értéket a következőhöz: `samplingSettings` .
 
-| Tulajdonság | Alapértelmezett | Description |
+| Tulajdonság | Alapértelmezett | Leírás |
 | --------- | --------- | --------- | 
-| samplingSettings | n.a. | Lásd: [applicationInsights. samplingSettings](#applicationinsightssamplingsettings). |
+| samplingSettings | n/a | Lásd: [applicationInsights. samplingSettings](#applicationinsightssamplingsettings). |
 | enableLiveMetrics | true | Élő metrikák gyűjtésének engedélyezése. |
 | enableDependencyTracking | true | A függőségek követésének engedélyezése. |
 | enablePerformanceCountersCollection | true | Engedélyezi a kudu teljesítményszámlálók gyűjtését. |
 | liveMetricsInitializationDelay | 00:00:15 | Csak belső használatra. |
-| httpAutoCollectionOptions | n.a. | Lásd: [applicationInsights. httpAutoCollectionOptions](#applicationinsightshttpautocollectionoptions). |
-| snapshotConfiguration | n.a. | Lásd: [applicationInsights. snapshotConfiguration](#applicationinsightssnapshotconfiguration). |
+| httpAutoCollectionOptions | n/a | Lásd: [applicationInsights. httpAutoCollectionOptions](#applicationinsightshttpautocollectionoptions). |
+| snapshotConfiguration | n/a | Lásd: [applicationInsights. snapshotConfiguration](#applicationinsightssnapshotconfiguration). |
 
 ### <a name="applicationinsightssamplingsettings"></a>applicationInsights. samplingSettings
 
-|Tulajdonság | Alapértelmezett | Description |
+|Tulajdonság | Alapértelmezett | Leírás |
 | --------- | --------- | --------- | 
 | isEnabled | true | Engedélyezheti vagy letilthatja a mintavételezést. | 
 | maxTelemetryItemsPerSecond | 20 | Az egyes kiszolgálók gazdagépén másodpercenként naplózott telemetria-elemek megcélzott száma. Ha az alkalmazás számos gazdagépen fut, csökkentse ezt az értéket, hogy az a forgalom teljes célján belül maradjon. | 
@@ -167,13 +167,13 @@ A teljes JSON-struktúra esetében tekintse [meg a fájl host.jskorábbi példá
 | samplingPercentageDecreaseTimeout | 00:00:01 | A mintavételezés százalékos értékének megváltozásakor ez a tulajdonság határozza meg, hogy a későbbiekben milyen hamar Application Insights a mintavételezési százalékos arány a kevesebb adattal való rögzítéshez. |
 | minSamplingPercentage | 0,1 | Mivel a mintavételezési százalék változó, ez a tulajdonság határozza meg a minimálisan megengedett mintavételi százalékot. |
 | maxSamplingPercentage | 100,0 | Mivel a mintavételezési százalék változó, ez a tulajdonság határozza meg a maximálisan megengedett mintavételi százalékot. |
-| movingAverageRatio | 1,0 | A mozgóátlag kiszámításakor a legutóbbi értékhez rendelt súlyozást. 1 értékkel egyenlő vagy annál kisebb értéket használjon. A kisebb értékek miatt az algoritmus kevésbé lesz újraaktiválva a hirtelen változásokkal. |
+| movingAverageRatio | 1.0 | A mozgóátlag kiszámításakor a legutóbbi értékhez rendelt súlyozást. 1 értékkel egyenlő vagy annál kisebb értéket használjon. A kisebb értékek miatt az algoritmus kevésbé lesz újraaktiválva a hirtelen változásokkal. |
 | excludedTypes | null | Pontosvesszővel tagolt lista, amelyet nem szeretne mintát venni. A felismert típusok a következők:,,,, `Dependency` `Event` `Exception` `PageView` `Request` és `Trace` . A rendszer továbbítja a megadott típusok összes példányát. a nem megadott típusok mintául szolgálnak. |
 | includedTypes | null | A mintavételhez használni kívánt típusok pontosvesszővel tagolt listája; az üres lista minden típust magában foglalja. Írja be az `excludedTypes` itt felsorolt felülbírálási típusok listán szereplő típust. A felismert típusok a következők:,,,, `Dependency` `Event` `Exception` `PageView` `Request` és `Trace` . A megadott típusok példányainak mintája; a nem megadott vagy vélelmezett típusú típusok mintavételezés nélkül továbbítódnak. |
 
 ### <a name="applicationinsightshttpautocollectionoptions"></a>applicationInsights. httpAutoCollectionOptions
 
-|Tulajdonság | Alapértelmezett | Description |
+|Tulajdonság | Alapértelmezett | Leírás |
 | --------- | --------- | --------- | 
 | enableHttpTriggerExtendedInfoCollection | true | Engedélyezheti vagy letilthatja a http-eseményindítók kiterjesztett HTTP-kérelmi információit: bejövő kérelmek korrelációs fejlécei, többtényezős kulcsok támogatása, HTTP-metódus, elérési út és válasz. |
 | enableW3CDistributedTracing | true | Engedélyezheti vagy letilthatja a W3C elosztott nyomkövetési protokoll támogatását (és bekapcsolja az örökölt korrelációs sémát). Alapértelmezés szerint engedélyezve `enableHttpTriggerExtendedInfoCollection` , ha igaz. Ha `enableHttpTriggerExtendedInfoCollection` a értéke false (hamis), ez a jelző csak a kimenő kérelmekre vonatkozik, nem a bejövő kérelmekre. |
@@ -183,7 +183,7 @@ A teljes JSON-struktúra esetében tekintse [meg a fájl host.jskorábbi példá
 
 A pillanatképekkel kapcsolatos további információkért tekintse meg a [.NET-alkalmazásokban előforduló kivételek hibakeresését](../azure-monitor/app/snapshot-debugger.md) ismertető témakört, valamint a [Application Insights Snapshot Debugger vagy Pillanatképek megtekintését engedélyező problémákat](../azure-monitor/app/snapshot-debugger-troubleshoot.md)
 
-|Tulajdonság | Alapértelmezett | Description |
+|Tulajdonság | Alapértelmezett | Leírás |
 | --------- | --------- | --------- | 
 | agentEndpoint | null | A Application Insights Snapshot Debugger szolgáltatáshoz való kapcsolódáshoz használt végpont. Ha NULL, a rendszer egy alapértelmezett végpontot használ. |
 | captureSnapshotMemoryWeight | 0,5 | A folyamat aktuális memória-méretéhez megadott súlyozás, ha a rendszer ellenőrzi, hogy van-e elég memória a pillanatkép elvégzéséhez. A várt érték nagyobb, mint 0 megfelelő tört (0 < CaptureSnapshotMemoryWeight < 1). |
@@ -275,7 +275,7 @@ A [gazdagép állapotának figyelésére](https://github.com/Azure/azure-webjobs
 }
 ```
 
-|Tulajdonság  |Alapértelmezett | Description |
+|Tulajdonság  |Alapértelmezett | Leírás |
 |---------|---------|---------| 
 |engedélyezve|true|Megadja, hogy engedélyezve van-e a szolgáltatás. | 
 |healthCheckInterval|10 másodperc|Az időszakos háttér állapotának ellenőrzése közötti időtartam. | 
@@ -307,12 +307,12 @@ A Function alkalmazás naplózási viselkedését szabályozza, beleértve a App
 }
 ```
 
-|Tulajdonság  |Alapértelmezett | Description |
+|Tulajdonság  |Alapértelmezett | Leírás |
 |---------|---------|---------|
 |fileLoggingMode|debugOnly|Meghatározza, hogy a fájlok naplózása milyen szintű legyen engedélyezve.  A lehetőségek a következők:, `never` `always` `debugOnly` . |
-|Naplózási szint|n.a.|Az alkalmazásban lévő függvények naplózási kategóriájának szűrését meghatározó objektum. A 2. x és újabb verziók esetében kövesse a naplózási kategória szűrésének ASP.NET Core elrendezését. Ezzel a beállítással szűrheti az adott függvények naplózását. További információ: [naplózási szűrés](/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering) a ASP.net Core dokumentációjában. |
-|konzol|n.a.| A [konzol](#console) naplózási beállítása. |
-|applicationInsights|n.a.| A [applicationInsights](#applicationinsights) beállítás. |
+|Naplózási szint|n/a|Az alkalmazásban lévő függvények naplózási kategóriájának szűrését meghatározó objektum. A 2. x és újabb verziók esetében kövesse a naplózási kategória szűrésének ASP.NET Core elrendezését. Ezzel a beállítással szűrheti az adott függvények naplózását. További információ: [naplózási szűrés](/aspnet/core/fundamentals/logging/?view=aspnetcore-2.1#log-filtering) a ASP.net Core dokumentációjában. |
+|konzol|n/a| A [konzol](#console) naplózási beállítása. |
+|applicationInsights|n/a| A [applicationInsights](#applicationinsights) beállítás. |
 
 ## <a name="console"></a>konzol
 
@@ -330,7 +330,7 @@ Ez a beállítás a [naplózás](#logging)gyermeke. A konzol naplózását vezé
 }
 ```
 
-|Tulajdonság  |Alapértelmezett | Description |
+|Tulajdonság  |Alapértelmezett | Leírás |
 |---------|---------|---------| 
 |isEnabled|hamis|Engedélyezheti vagy letilthatja a konzol naplózását.| 
 
@@ -374,13 +374,13 @@ Az egyszeri zárolási viselkedés konfigurációs beállításai. További info
 }
 ```
 
-|Tulajdonság  |Alapértelmezett | Description |
+|Tulajdonság  |Alapértelmezett | Leírás |
 |---------|---------|---------| 
 |lockPeriod|00:00:15|Az az időszak, ameddig a rendszer a működési szintet zárolja. A zárolások automatikus megújítása.| 
 |listenerLockPeriod|00:01:00|A figyelő zárolásának időtartama.| 
 |listenerLockRecoveryPollingInterval|00:01:00|A figyelő zárolásának helyreállításához használt időintervallum, ha a figyelő zárolása nem szerezhető be indításkor.| 
 |lockAcquisitionTimeout|00:01:00|Az a maximális időtartam, ameddig a futtatókörnyezet megpróbál zárolást benyerni.| 
-|lockAcquisitionPollingInterval|n.a.|A zárolási beszerzési kísérletek közötti időköz.| 
+|lockAcquisitionPollingInterval|n/a|A zárolási beszerzési kísérletek közötti időköz.| 
 
 ## <a name="version"></a>version
 

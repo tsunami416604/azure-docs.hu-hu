@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 11/04/2019
 ms.custom: devx-track-csharp
 ms.openlocfilehash: bfe24ff38446fa0d0ccea96799e6f42b561713bf
-ms.sourcegitcommit: 419cf179f9597936378ed5098ef77437dbf16295
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89002810"
 ---
 # <a name="upgrade-to-azure-cognitive-search-net-sdk-version-10"></a>Frissítés az Azure Cognitive Search .NET SDK 10-es verziójára
@@ -112,7 +112,7 @@ var webApiSkill = new WebApiSkill(
 
 A formáló képesség mostantól lehetővé teszi a bemeneti konszolidációt a beágyazott környezetekben. Ennek a módosításnak az engedélyezéséhez módosítva lett, `InputFieldMappingEntry` hogy csak egy `Source` tulajdonság vagy a és a tulajdonságok megadásával legyen létrehozva `SourceContext` `Inputs` .
 
-Valószínűleg nem lesz szükség a kód módosítására; vegye figyelembe azonban, hogy a két kombinációnak csak egy része engedélyezett. Ez a következőket jelenti:
+Valószínűleg nem lesz szükség a kód módosítására; vegye figyelembe azonban, hogy a két kombinációnak csak egy része engedélyezett. Ez a következőkkel jár:
 
 - A `InputFieldMappingEntry` csak `Source` az inicializálási lehetőség létrehozása érvényes.
 - Csak a `InputFieldMappingEntry` `SourceContext` és `Inputs` a inicializálása érvényes.

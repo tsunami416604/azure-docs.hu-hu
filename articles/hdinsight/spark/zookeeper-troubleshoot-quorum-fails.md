@@ -8,17 +8,17 @@ ms.author: hrasheed
 ms.reviewer: jasonh
 ms.date: 05/20/2020
 ms.openlocfilehash: 9038630a2623a8b20ddfcf98899ce9a89f16bdc1
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84673360"
 ---
 # <a name="apache-zookeeper-server-fails-to-form-a-quorum-in-azure-hdinsight"></a>Apache ZooKeeper-kiszolgáló nem tud kvórumot alkotni az Azure HDInsight
 
 Ez a cikk az Azure HDInsight-fürtök Zookeeperek kapcsolatos problémák hibaelhárítási lépéseit és lehetséges megoldásait ismerteti.
 
-## <a name="symptoms"></a>Probléma
+## <a name="symptoms"></a>Hibajelenségek
 
 * Az erőforrás-kezelők készenléti módba is léphetnek
 * A Namenodes készenléti állapotban vannak
@@ -57,7 +57,7 @@ Message
 
 * A Zookeeper-kiszolgálók megkeresése a/etc/hosts fájlból vagy a Ambari felhasználói felületéről
 * Futtassa a következő parancsot:
-  * `echo stat | nc <ZOOKEEPER_HOST_IP> 2181`(vagy 2182)  
+  * `echo stat | nc <ZOOKEEPER_HOST_IP> 2181` (vagy 2182)  
   * A 2181-es port az Apache Zookeeper-példány
   * A HDInsight Zookeeper a 2182-es portot használja (ha olyan szolgáltatásokat kíván biztosítani, amelyek nem natív módon vannak megadva)
   * Ha a parancs nem jelenít meg kimenetet, akkor az azt jelenti, hogy a Zookeeper-kiszolgálók nem futnak.
@@ -105,12 +105,12 @@ Node count: 133212
 * A zookeeperek a régi Pillanatképek automatikus törlésére vannak konfigurálva
 * Alapértelmezés szerint az utolsó 30 pillanatkép megmarad
 * A megőrzött Pillanatképek számát a konfigurációs kulcs vezérli `autopurge.snapRetainCount` . Ez a tulajdonság a következő fájlokban található:
-  * `/etc/zookeeper/conf/zoo.cfg`Hadoop Zookeeper
-  * `/etc/hdinsight-zookeeper/conf/zoo.cfg`HDInsight Zookeeper
+  * `/etc/zookeeper/conf/zoo.cfg` Hadoop Zookeeper
+  * `/etc/hdinsight-zookeeper/conf/zoo.cfg` HDInsight Zookeeper
 * Állítsa `autopurge.snapRetainCount` 3 értékre, majd indítsa újra a Zookeeper-kiszolgálókat.
   * A Hadoop Zookeeper config frissíthető, és a szolgáltatás a Ambari-n keresztül indítható újra.
   * A HDInsight Zookeeper manuális leállítása és újraindítása
-    * `sudo lsof -i :2182`Megadja a folyamat AZONOSÍTÓját a kill művelethez
+    * `sudo lsof -i :2182` Megadja a folyamat AZONOSÍTÓját a kill művelethez
     * `sudo python /opt/startup_scripts/startup_hdinsight_zookeeper.py`
 * Ne törölje manuálisan a pillanatképek törlését – a pillanatképek manuális törlése adatvesztést eredményezhet.
 

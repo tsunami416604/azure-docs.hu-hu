@@ -10,10 +10,10 @@ ms.author: keli19
 ms.custom: previous-ms.author=yahajiza, previous-author=YasinMSFT
 ms.date: 01/06/2017
 ms.openlocfilehash: c9cfe05b6547cbdc61a1c8cc6223f08900cf09d9
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91342960"
 ---
 # <a name="deploy-an-azure-machine-learning-studio-classic-web-service"></a>Azure Machine Learning Studio (klasszikus) webszolgáltatás üzembe helyezése
@@ -27,7 +27,7 @@ A Machine Learning Studio (klasszikus) webszolgáltatások felületet biztosíta
 
 A Azure Machine Learning Studio (klasszikus) webszolgáltatásoknak két típusa van:
 
-* Kérelem-válasz szolgáltatás (RR): alacsony késésű, rugalmasan méretezhető szolgáltatás, amely egyetlen adatrekordot mutat be.
+* Request-Response szolgáltatás (ERŐFORRÁSREKORDOK): alacsony késésű, rugalmasan méretezhető szolgáltatás, amely egyetlen adatrekordot mutat be.
 * Batch végrehajtási szolgáltatás (BES): egy aszinkron szolgáltatás, amely adatrekordok kötegét szerzi be.
 
 A BES bemeneti adatai az RRS-ben használt bemeneti adatokhoz hasonlóak. A fő különbség az, hogy a BES több különböző forrásból olvassa be az adatköteget, például az Azure Blob Storage-ból és Azure Table Storage-ből, az Azure SQL Database-ből, a HDInsightból (Hive-lekérdezés) és HTTP-forrásokból.
@@ -160,7 +160,7 @@ A webszolgáltatás gyors üzembe helyezése oldalon a webszolgáltatás létreh
 
 ### <a name="test-your-new-web-service"></a>Az új webszolgáltatás tesztelése
 
-Az új webszolgáltatás teszteléséhez kattintson a gyakori feladatok területen a **webszolgáltatás tesztelése** elemre. A teszt lapon tesztelheti a webszolgáltatást a kérelem-válasz szolgáltatás (RR) vagy egy batch-végrehajtási szolgáltatás (BES) használatával.
+Az új webszolgáltatás teszteléséhez kattintson a gyakori feladatok területen a **webszolgáltatás tesztelése** elemre. A teszt lapon tesztelheti a webszolgáltatást Request-Response szolgáltatásként (RR) vagy kötegelt végrehajtási szolgáltatásként (BES).
 
 Az ERŐFORRÁSREKORDOK tesztelése oldalon megjelennek a kísérlethez megadott bemenetek, kimenetek és a globális paraméterek. A webszolgáltatás teszteléséhez manuálisan megadhatja a bemenetek megfelelő értékeit, vagy megadhatja a tesztelési értékeket tartalmazó vesszővel tagolt (CSV) formátumú fájlt.
 

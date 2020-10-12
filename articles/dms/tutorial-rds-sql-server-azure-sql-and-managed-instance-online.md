@@ -13,10 +13,10 @@ ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 01/08/2020
 ms.openlocfilehash: 12725c28c3e128317301bc51f9ce93f76021cc2b
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91291367"
 ---
 # <a name="tutorial-migrate-rds-sql-server-to-azure-sql-database-or-an-azure-sql-managed-instance-online-using-dms"></a>Oktatóanyag: RDS SQL Server migrálása Azure SQL Database vagy Azure SQL felügyelt példányra online a DMS használatával
@@ -292,7 +292,7 @@ Az első teljes betöltés elkészültével az adatbázisok **Átállásra kész
 
     ![Tevékenység állapota: Befejezve](media/tutorial-rds-sql-to-azure-sql-and-managed-instance/dms-activity-completed.png)
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * További információ az Azure-ba történő online áttelepítéssel kapcsolatos ismert problémákról és korlátozásokról: [ismert problémák és megkerülő megoldások online áttelepítéssel](known-issues-azure-sql-online.md).
 * További információ a Database Migration Serviceről: [Mi a Database Migration Service?](https://docs.microsoft.com/azure/dms/dms-overview).

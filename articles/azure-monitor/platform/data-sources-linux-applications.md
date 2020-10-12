@@ -7,10 +7,10 @@ author: bwren
 ms.author: bwren
 ms.date: 05/04/2017
 ms.openlocfilehash: 10851754bda73fc769e613153582e491265ebb71
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85963240"
 ---
 # <a name="collect-performance-counters-for-linux-applications-in-azure-monitor"></a>Teljesítményszámlálók gyűjtése a Azure Monitor linuxos alkalmazásaihoz 
@@ -44,8 +44,8 @@ A hitelesítési fájlban szereplő bejegyzéseket a következő táblázat isme
 | Tulajdonság | Leírás |
 |:--|:--|
 | Port | A MySQL-példányt figyelő aktuális portot jelöli. A 0. port azt adja meg, hogy a következő tulajdonságok használatosak az alapértelmezett példányhoz. |
-| Kötési címek| Aktuális MySQL-kötés – címe. |
-| felhasználónév| MySQL-felhasználó, amely a MySQL-kiszolgálópéldány figyelésére használatos. |
+| Bind-Address| Aktuális MySQL-kötés – címe. |
+| username| MySQL-felhasználó, amely a MySQL-kiszolgálópéldány figyelésére használatos. |
 | Base64 kódolású jelszó| A MySQL-figyelési felhasználó Base64-kódolású jelszava. |
 | AutoUpdate| Megadja, hogy a rendszer újravizsgálja-e a My. cnf fájl módosításait, és felülírja-e a MySQL-vel kapcsolatos hitelesítési fájlt a MySQL-adatszolgáltató frissítésekor. |
 
@@ -54,7 +54,7 @@ A MySQL-vel kapcsolatos hitelesítési fájl definiálhat egy alapértelmezett p
 
 A következő táblázat példaként tartalmazza a példányok beállításait 
 
-| Description | Fájl |
+| Leírás | File |
 |:--|:--|
 | Az alapértelmezett példány és példány az 3308-as porttal. | `0=127.0.0.1, myuser, cnBwdA==`<br>`3308=, ,`<br>`AutoUpdate=true` |
 | Az alapértelmezett példány és példány a 3308-es porttal és a másik felhasználónévvel és jelszóval. | `0=127.0.0.1, myuser, cnBwdA==`<br>`3308=127.0.1.1, myuser2,cGluaGVhZA==`<br>`AutoUpdate=true` |
@@ -70,7 +70,7 @@ A MySQL-vel rendelkező szolgáltató a MySQL-t használó MySQL-es hitelesíté
 
 A következő táblázat részletesen ismerteti a mycimprovauth használatának szintaxisát.
 
-| Művelet | Példa | Description
+| Művelet | Példa | Leírás
 |:--|:--|:--|
 | *hamis vagy igaz* értékű AutoUpdate | mycimprovauth AutoUpdate false | Megadja, hogy a hitelesítési fájl frissítése automatikusan megtörténjen-e az újraindítás vagy a frissítés során. |
 | alapértelmezett *kötési Felhasználónév jelszava* | mycimprovauth alapértelmezett 127.0.0.1 root pwd | Beállítja az alapértelmezett példányt a MySQL-t használó hitelesítési fájlban.<br>A jelszó mezőt egyszerű szövegként kell megadni – a MySQL-t tartalmazó hitelesítési fájl jelszava a 64-es alapszintű. |

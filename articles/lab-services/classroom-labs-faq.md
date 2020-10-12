@@ -4,10 +4,10 @@ description: Ez a cikk a Azure Lab Servicesban található tantermi laborokkal k
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: ca35d70bc1106e46df4e3c68889b03679fd54b86
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85443298"
 ---
 # <a name="classroom-labs-in-azure-lab-services--frequently-asked-questions-faq"></a>Tanterem Labs Azure Lab Servicesban – gyakori kérdések (GYIK)
@@ -19,7 +19,7 @@ Választ kaphat a Azure Lab Servicesban található osztálytermi laborokkal kap
 A laborhoz beállított kvóta minden tanuló számára a labor teljes időtartamára vonatkozik. A [virtuális gépek ütemezett futási ideje](how-to-create-schedules.md) nem számít bele a felhasználó számára kiosztott kvótába. A kvóta az ütemezett órákon kívüli időre szól, amelyet a tanuló a virtuális gépeken tölt.  A kvótákkal kapcsolatos további információkért lásd: [kvóták beállítása a felhasználók](how-to-configure-student-usage.md#set-quotas-for-users)számára.
 
 ### <a name="if-educator-turns-on-a-student-vm-does-that-affect-the-student-quota"></a>Ha a pedagógus bekapcsol egy tanuló virtuális gépet, akkor ez befolyásolja a tanulói kvótát? 
-Nem. Nem. Amikor a pedagógus bekapcsolja a tanuló virtuális gépet, nem befolyásolja a tanuló számára kiosztott kvótát. 
+Nem. Semmilyet. Amikor a pedagógus bekapcsolja a tanuló virtuális gépet, nem befolyásolja a tanuló számára kiosztott kvótát. 
 
 ## <a name="schedules"></a>Ütemezések
 
@@ -42,7 +42,7 @@ Az egyes virtuális gépek magánhálózati IP-címét a Azure Portalban találh
 ### <a name="what-public-ip-address-range-should-i-open-on-my-organizations-firewall-settings-to-connect-to-lab-virtual-machines-via-rdpssh"></a>Milyen nyilvános IP-címtartományt nyitok meg a szervezetem tűzfal beállításai között, hogy az RDP/SSH-n keresztül csatlakozzanak a labor virtuális gépekhez?
 Lásd: [Azure IP-címtartományok és szolgáltatás-címkék – nyilvános felhő](https://www.microsoft.com/download/details.aspx?id=56519), amely a nyilvános IP-címtartományt biztosítja az Azure-beli adatközpontok számára. Megnyithatja azon régiók IP-címeit, amelyeken a labor fiókjai vannak.
 
-## <a name="virtual-machine-images"></a>Virtuálisgép-lemezképek
+## <a name="virtual-machine-images"></a>Virtuálisgép-rendszerképek
 
 ### <a name="as-a-lab-creator-why-cant-i-enable-additional-image-options-in-the-virtual-machine-images-dropdown-when-creating-a-new-lab"></a>A tesztkörnyezet létrehozója, miért nem engedélyezhető további képbeállítások a virtuálisgép-lemezképek legördülő menüjében új Labor létrehozásakor?
 

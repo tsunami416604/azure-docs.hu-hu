@@ -13,10 +13,10 @@ ms.workload: infrastructure-services
 ms.date: 05/11/2018
 ms.author: ningk
 ms.openlocfilehash: f3b84ba1c3571e3660d1d71a0167a7489c6ec4ff
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82145127"
 ---
 # <a name="integrate-cloud-foundry-with-azure"></a>A Cloud Foundry Azure-ral való integrálása
@@ -40,7 +40,7 @@ Az Azure rendelkezésre állási zónája a virtuális gépek egy csoportját 2 
 ## <a name="2-network-routing"></a>2. hálózati Útválasztás
 Alapértelmezés szerint az Azure alapszintű Load Balancer a bejövő CF API/apps kérelmekhez használatos, és továbbítja őket a Gorouters. A CF-összetevők, például a Diego Brain, a MySQL, az ERT a Load balancert is használhatják a forgalom elosztására. Az Azure teljes körűen felügyelt terheléselosztási megoldásokat is biztosít. Ha a TLS/SSL-lezárást ("SSL-kiszervezést") vagy HTTP/HTTPS-kérelem alkalmazási rétegének feldolgozását keresi, érdemes megfontolnia Application Gateway. A 4. rétegben a magas rendelkezésre állás és a méretezhetőség terheléselosztásához a standard Load balancert érdemes figyelembe venni.
 ### <a name="azure-application-gateway-"></a>Azure Application Gateway *
-Az [Azure Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-introduction) különböző 7. rétegbeli terheléselosztási funkciókat kínál, beleértve az SSL-kiszervezést, a végpontok közötti TLS-t, a webalkalmazási tűzfalat, a cookie-alapú munkamenet-affinitást és egyebeket [Application Gateway a nyílt forráskódú Cloud Foundryban is konfigurálható](https://github.com/cloudfoundry-incubator/bosh-azure-cpi-release/tree/master/docs/advanced/application-gateway). A PCF esetében ellenőrizze a [PCF 2,1 kibocsátási megjegyzéseit](https://docs.pivotal.io/pivotalcf/2-1/pcf-release-notes/opsmanager-rn.html#azure-application-gateway) a POC-teszthez.
+Az [Azure Application Gateway](https://docs.microsoft.com/azure/application-gateway/application-gateway-introduction) különböző 7. rétegbeli terheléselosztási funkciókat kínál, beleértve az SSL-kiszervezést, a végpontok közötti TLS-t, a webalkalmazási tűzfalat, a cookie-alapú munkamenet-affinitást és egyebeket [Application Gateway a nyílt forráskódú Cloud Foundryban is konfigurálható](https://github.com/cloudfoundry-incubator/bosh-azure-cpi-release/tree/master/docs/advanced/application-gateway). A PCF esetében ellenőrizze a  [PCF 2,1 kibocsátási megjegyzéseit](https://docs.pivotal.io/pivotalcf/2-1/pcf-release-notes/opsmanager-rn.html#azure-application-gateway) a POC-teszthez.
 
 ### <a name="azure-standard-load-balancer-"></a>Azure standard Load Balancer *
 A Azure Load Balancer egy 4. rétegbeli terheléselosztó. A szolgáltatás egy elosztott terhelésű készletben lévő szolgáltatások példányai között osztja el a forgalmat. A standard verzió [speciális funkciókat](https://docs.microsoft.com/azure/load-balancer/load-balancer-overview) biztosít az alapszintű verzióhoz. Például 1. A háttér-készlet maximális korlátja 100 és 1000 virtuális gép között van kiemelve.  2. A végpontok mostantól több rendelkezésre állási csoportot is támogatnak egyetlen rendelkezésre állási csoport helyett.  3. További funkciók, például HA portok, gazdagabb monitorozási információk stb. Ha áthelyezi az Azure rendelkezésre állási zónáját, a standard Load Balancer szükséges. Az új központi telepítéshez javasoljuk, hogy kezdjen el az Azure standard Load Balancer. 
@@ -89,7 +89,7 @@ Az Azure első féltől származó szolgáltatásának kihasználása csökkenti
 
 A Pivotal a PCF-ügyfelek számára egy [kis helyigényű ERT](https://docs.pivotal.io/pivotalcf/2-0/customizing/small-footprint.html) -t indított el, az összetevők pedig mindössze 4 virtuális gépen helyezkednek el, amely akár 2500 alkalmazás-példányt is tartalmaz. A próbaverzió már elérhető az [Azure piactéren](https://azuremarketplace.microsoft.com/marketplace/apps/pivotal.pivotal-cloud-foundry).
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 Az Azure-integrációs funkciók először [nyílt forráskódú Cloud Foundry](https://github.com/cloudfoundry-incubator/bosh-azure-cpi-release/tree/master/docs/advanced/)érhetők el, mielőtt a pivotal Cloud Foundry elérhetővé válnak. A *-val jelölt szolgáltatások továbbra sem érhetők el a PCF-on keresztül. A Azure Stack Cloud Foundry integrációját nem fedi le ebben a dokumentumban sem.
 Ha a PCF támogatja a * vagy a Cloud Foundry integrációt a Azure Stackval, lépjen kapcsolatba a Pivotal és a Microsoft-fiók Managerrel a legújabb állapothoz. 
 

@@ -9,10 +9,10 @@ ms.date: 12/06/2019
 ms.author: duau
 ms.custom: devx-track-azurepowershell
 ms.openlocfilehash: a731962f22985268093c547b09a8cd77c5b92660
-ms.sourcegitcommit: 5a3b9f35d47355d026ee39d398c614ca4dae51c6
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89395808"
 ---
 # <a name="connect-a-virtual-network-to-an-expressroute-circuit-using-powershell-classic"></a>Virtuális hálózat összekapcsolása egy ExpressRoute-áramkörrel a PowerShell (klasszikus) használatával
@@ -85,7 +85,7 @@ Az áramkör tulajdonosa bármikor módosíthatja és visszavonhatja az engedél
 
 **Engedély létrehozása**
 
-Az áramkör tulajdonosa más előfizetések rendszergazdái számára engedélyezi a megadott áramkör használatát. A következő példában az áramkör rendszergazdája (contoso IT) lehetővé teszi egy másik előfizetés (dev-test) rendszergazdájának, hogy két virtuális hálózatot kapcsoljon az áramkörhöz. A contoso informatikai rendszergazdája ezt a fejlesztési-tesztelési Microsoft-azonosító megadásával teszi lehetővé. A parancsmag nem küld e-mailt a megadott Microsoft-AZONOSÍTÓnak. Az áramkör tulajdonosának explicit módon értesítenie kell a másik előfizetés tulajdonosát az engedélyezés befejezéséről.
+Az áramkör tulajdonosa más előfizetések rendszergazdái számára engedélyezi a megadott áramkör használatát. A következő példában az áramkör rendszergazdája (contoso IT) lehetővé teszi egy másik előfizetés (dev-test) rendszergazdájának, hogy két virtuális hálózatot kapcsoljon az áramkörhöz. A contoso informatikai rendszergazdája ezt a Dev-Test Microsoft-azonosító megadásával teszi lehetővé. A parancsmag nem küld e-mailt a megadott Microsoft-AZONOSÍTÓnak. Az áramkör tulajdonosának explicit módon értesítenie kell a másik előfizetés tulajdonosát az engedélyezés befejezéséről.
 
 ```powershell
 New-AzureDedicatedCircuitLinkAuthorization -ServiceKey "**************************" -Description "Dev-Test Links" -Limit 2 -MicrosoftIds 'devtest@contoso.com'

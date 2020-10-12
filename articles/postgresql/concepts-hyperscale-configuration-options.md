@@ -8,10 +8,10 @@ ms.subservice: hyperscale-citus
 ms.topic: conceptual
 ms.date: 7/1/2020
 ms.openlocfilehash: 8dc70eaeb9e2c2f5d4cdfef37619e4b04217782e
-ms.sourcegitcommit: 845a55e6c391c79d2c1585ac1625ea7dc953ea89
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/05/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "85964515"
 ---
 # <a name="azure-database-for-postgresql--hyperscale-citus-configuration-options"></a>Azure Database for PostgreSQL – nagy kapacitású (Citus) konfigurációs beállítások
@@ -79,7 +79,7 @@ A nagy kapacitású-(Citus-) kiszolgálócsoportok a következő Azure-régiókb
     * USA keleti régiója
     * USA 2. keleti régiója
     * USA északi középső régiója
-    * USA nyugati régiója, 2.
+    * USA 2. nyugati régiója
 * Ázsia és a Csendes-óceáni térség:
     * Kelet-Ausztrália
     * Kelet-Japán
