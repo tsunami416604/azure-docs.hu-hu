@@ -14,10 +14,10 @@ ms.reviewer: beengen
 ms.custom: it-pro
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: d27cd30d6543d967cca2648597854a06f8ea4eb7
-ms.sourcegitcommit: 814778c54b59169c5899199aeaa59158ab67cf44
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/13/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90053973"
 ---
 # <a name="integrate-linkedin-account-connections-in-azure-active-directory"></a>A LinkedIn-fiókok kapcsolatainak integrálása Azure Active Directory
@@ -94,7 +94,7 @@ Ha az Azure AD felügyeleti központban lévő LinkedIn Account Connections (Lin
 1. Hozzon létre egy csoportházirend objektumot a következő beállítással: **felhasználói konfiguráció**  >  **Felügyeleti sablonok**  >  **Microsoft Office 2016**  >  **egyebek**  >  **az Office-alkalmazások LinkedIn szolgáltatásainak megjelenítése**.
 1. Válassza az **engedélyezve** vagy a **Letiltva**lehetőséget.
   
-   Állapot | Hatás
+   Állam | Hatás
    ------ | ------
    **Engedélyezve** | Engedélyezve van az Office 2016-beállítások az Office- **alkalmazásokban beállítás a LinkedIn funkcióinak megjelenítése** lehetőség. A szervezet felhasználói a LinkedIn funkcióit használhatják az Office 2016-alkalmazásaikban.
    **Disabled** | A **LinkedIn funkcióinak megjelenítése** az Office-alkalmazások Office 2016-beállításokban beállítás le van tiltva, és a végfelhasználók nem változtathatják meg ezt a beállítást. A szervezet felhasználói nem használhatják a LinkedIn szolgáltatásait az Office 2016-alkalmazásokban.

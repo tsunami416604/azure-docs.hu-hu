@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
 ms.openlocfilehash: df8722e8160538daa1535711092790dbb2405097
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84807039"
 ---
 # <a name="use-certificates-with-letsencryptorg-on-application-gateway-for-aks-clusters"></a>LetsEncrypt.org-t használó tanúsítványok használata a Application Gateway AK-fürtökhöz
@@ -58,7 +58,7 @@ Az alábbi lépéseket követve telepítse a [tanúsítvány-kezelőt](https://d
 
     Hozzon létre egy `ClusterIssuer` erőforrást. A ahhoz a hitelesítésszolgáltatóhoz szükséges, `cert-manager` `Lets Encrypt` amely az aláírt tanúsítványokat fogja beszerezni.
 
-    A nem névteret erőforrás használatával a `ClusterIssuer` CERT-Manager több névtérből is felhasználható tanúsítványokat állít ki. `Let’s Encrypt`az ACME protokoll használatával ellenőrzi, hogy egy adott tartománynevet és a tanúsítvány kiállítását kívánja-e használni. További részletek a tulajdonságok konfigurálásáról `ClusterIssuer` . [here](https://docs.cert-manager.io/en/latest/tasks/issuers/index.html) `ClusterIssuer`a utasítja `cert-manager` a tanúsítványokat a `Lets Encrypt` teszteléshez használt átmeneti környezet használatával (a főtanúsítvány a böngésző-és ügyfél-megbízhatósági tárolókban nem található).
+    A nem névteret erőforrás használatával a `ClusterIssuer` CERT-Manager több névtérből is felhasználható tanúsítványokat állít ki. `Let’s Encrypt` az ACME protokoll használatával ellenőrzi, hogy egy adott tartománynevet és a tanúsítvány kiállítását kívánja-e használni. További részletek a tulajdonságok konfigurálásáról `ClusterIssuer` . [here](https://docs.cert-manager.io/en/latest/tasks/issuers/index.html) `ClusterIssuer` a utasítja `cert-manager` a tanúsítványokat a `Lets Encrypt` teszteléshez használt átmeneti környezet használatával (a főtanúsítvány a böngésző-és ügyfél-megbízhatósági tárolókban nem található).
 
     Az alábbi YAML az alapértelmezett kérdés típusa a következő: `http01` . Egyéb kihívások dokumentálva vannak a [Letsencrypt.org típusaival](https://letsencrypt.org/docs/challenge-types/) kapcsolatban
 
@@ -133,8 +133,8 @@ Az alábbi lépéseket követve telepítse a [tanúsítvány-kezelőt](https://d
 4. Éles tanúsítvány
 
     Az előkészítési tanúsítvány sikeres beállítása után átválthat éles ACME-kiszolgálóra:
-    1. Cserélje le az előkészítési jegyzetet a bejövő erőforrásra a következővel:`certmanager.k8s.io/cluster-issuer: letsencrypt-prod`
-    1. Törölje az `ClusterIssuer` előző lépésben létrehozott meglévő előkészítést, és hozzon létre egy újat az Acme-kiszolgáló a fenti ClusterIssuer-YAML való lecserélésével.`https://acme-v02.api.letsencrypt.org/directory`
+    1. Cserélje le az előkészítési jegyzetet a bejövő erőforrásra a következővel: `certmanager.k8s.io/cluster-issuer: letsencrypt-prod`
+    1. Törölje az `ClusterIssuer` előző lépésben létrehozott meglévő előkészítést, és hozzon létre egy újat az Acme-kiszolgáló a fenti ClusterIssuer-YAML való lecserélésével. `https://acme-v02.api.letsencrypt.org/directory`
 
 5. Tanúsítvány lejárata és megújítása
 

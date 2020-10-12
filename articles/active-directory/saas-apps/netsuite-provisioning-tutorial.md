@@ -11,10 +11,10 @@ ms.topic: article
 ms.date: 01/26/2018
 ms.author: jeedes
 ms.openlocfilehash: b428ffc0122f13ef15f870ce734b54fe6707f582
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90983956"
 ---
 # <a name="tutorial-configuring-netsuite-for-automatic-user-provisioning"></a>Oktatóanyag: az automatikus felhasználó üzembe helyezéséhez szükséges a NetSuite konfigurálása
@@ -48,7 +48,7 @@ A kiépítési szolgáltatás konfigurálása és engedélyezése előtt el kell
 Ez a szakasz végigvezeti az Azure AD-nek a NetSuite felhasználói fiók létesítési API-hoz való csatlakoztatásán, valamint a kiépítési szolgáltatás konfigurálásának beállításán az Azure AD-ben a felhasználó-és csoport-hozzárendelésen alapuló hozzárendelt felhasználói fiókok létrehozásához, frissítéséhez és letiltásához.
 
 > [!TIP] 
-> Azt is megteheti, hogy engedélyezte az SAML-alapú egyszeri bejelentkezést a NetSuite számára, a [Azure Portalban](https://portal.azure.com)megadott utasításokat követve. Az egyszeri bejelentkezés az automatikus kiépítés függetlenül is konfigurálható, bár ez a két funkció egymáshoz tartozik.
+> Azt is megteheti, hogy engedélyezte az SAML-alapú egyszeri Sign-On a NetSuite számára, a [Azure Portalban](https://portal.azure.com)megadott utasításokat követve. Az egyszeri bejelentkezés az automatikus kiépítés függetlenül is konfigurálható, bár ez a két funkció egymáshoz tartozik.
 
 ### <a name="to-configure-user-account-provisioning"></a>A felhasználói fiókok üzembe helyezésének konfigurálása:
 
@@ -88,7 +88,7 @@ Elindítja a felhasználók és csoportok szakaszban a Netsuitehoz rendelt felha
 
 Az Azure AD-kiépítési naplók beolvasásával kapcsolatos további információkért lásd: [jelentéskészítés az automatikus felhasználói fiókok üzembe](../app-provisioning/check-status-user-account-provisioning.md)helyezéséhez.
 
-## <a name="additional-resources"></a>További háttéranyagok
+## <a name="additional-resources"></a>További források
 
 * [Felhasználói fiók átadásának kezelése vállalati alkalmazásokhoz](tutorial-list.md)
 * [Mi az az alkalmazás-hozzáférés és az egyszeri bejelentkezés az Azure Active Directoryval?](../manage-apps/what-is-single-sign-on.md)

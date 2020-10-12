@@ -6,17 +6,17 @@ ms.author: mbullwin
 ms.topic: conceptual
 ms.date: 09/23/2020
 ms.openlocfilehash: aab2d1ec5a6c3e046840e736ced0993e560c4661
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91333341"
 ---
 # <a name="migrate-to-workspace-based-application-insights-resources"></a>Áttelepítés munkaterületen alapuló Application Insights erőforrásokra
 
 Ez az útmutató végigvezeti a klasszikus Application Insights erőforrásnak a munkaterület-alapú erőforrásba való áttelepítésének folyamatán. A munkaterület-alapú erőforrások a Application Insights és Log Analytics közötti teljes integrációt támogatják. A munkaterület-alapú erőforrások Application Insights telemetria küldenek egy közös Log Analytics munkaterületre, amely lehetővé teszi [a Azure monitor legújabb funkcióinak](#new-capabilities) elérését, miközben az alkalmazások, az infrastruktúra és a platformok naplóit egyetlen konszolidált helyen tartja.
 
-A munkaterület-alapú erőforrások lehetővé teszik a közös szerepköralapú Access Control (RBAC) használatát az erőforrások között, és kiküszöböli az alkalmazások közötti vagy munkaterület-lekérdezések szükségességét.
+A munkaterület-alapú erőforrások lehetővé teszik a közös Role-Based Access Control (RBAC) használatát az erőforrások között, és szükségtelenné teszi az alkalmazások közötti vagy munkaterület-lekérdezések szükségességét.
 
 **A munkaterület-alapú erőforrások jelenleg minden kereskedelmi régióban és az Egyesült Államok kormányzati szerveiben érhetők el**
 

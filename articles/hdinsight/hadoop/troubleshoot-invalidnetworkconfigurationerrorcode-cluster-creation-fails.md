@@ -8,10 +8,10 @@ ms.service: hdinsight
 ms.topic: troubleshooting
 ms.date: 01/22/2020
 ms.openlocfilehash: 1fb5b78f210a9bd817a2987dcb30fa25d156d5d2
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82780436"
 ---
 # <a name="cluster-creation-fails-with-invalidnetworkconfigurationerrorcode-in-azure-hdinsight"></a>A fürt létrehozása nem sikerül a InvalidNetworkConfigurationErrorCode az Azure HDInsight
@@ -30,7 +30,7 @@ A hiba leírása tartalmazza az "állomásnév feloldása sikertelen" kifejezés
 
 Ez a hiba az egyéni DNS-konfigurációval kapcsolatos problémára mutat. A virtuális hálózaton belüli DNS-kiszolgálók továbbítják a DNS-lekérdezéseket az Azure rekurzív feloldóinak az adott virtuális hálózaton belüli állomásnevek feloldásához (a részletekért lásd: [névfeloldás a virtuális](../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md) hálózatokban). Az Azure rekurzív feloldóit a virtuális IP-168.63.129.16 keresztül érheti el. Ez az IP-cím csak az Azure-beli virtuális gépekről érhető el. Így nem fog működni, ha helyszíni DNS-kiszolgálót használ, vagy a DNS-kiszolgáló egy olyan Azure-beli virtuális gép, amely nem része a fürt virtuális hálózatának.
 
-### <a name="resolution"></a>Megoldás:
+### <a name="resolution"></a>Feloldás
 
 1. SSH-t a fürt részét képező virtuális gépre, és futtassa a parancsot `hostname -f` . Ezzel visszaadja a gazdagép teljes tartománynevét (az `<host_fqdn>` alábbi útmutatásnak megfelelően).
 
@@ -54,9 +54,9 @@ A hiba leírása a következőt tartalmazza: "nem sikerült csatlakozni az Azure
 
 ### <a name="cause"></a>Ok
 
-Az Azure Storage és az SQL nem rendelkezik rögzített IP-címmel, ezért engedélyeznie kell a kimenő kapcsolatokat az összes IP-címhez a szolgáltatások elérésének engedélyezéséhez. A pontos megoldási lépések attól függnek, hogy beállította-e a hálózati biztonsági csoportot (NSG) vagy a felhasználó által definiált szabályokat (UDR). A konfigurációk részletes ismertetését lásd: a [hálózati forgalom szabályozása hálózati biztonsági csoportokkal és felhasználó által megadott útvonalakkal HDInsight](../control-network-traffic.md) .
+Az Azure Storage és az SQL nem rendelkezik rögzített IP-címmel, ezért engedélyeznie kell a kimenő kapcsolatokat az összes IP-címhez a szolgáltatások elérésének engedélyezéséhez. A megoldás pontos lépései attól függnek, hogy van-e beállítva hálózati biztonsági csoport (NSG) vagy User-Defined-szabály (UDR). A konfigurációk részletes ismertetését lásd: a [hálózati forgalom szabályozása hálózati biztonsági csoportokkal és felhasználó által megadott útvonalakkal HDInsight](../control-network-traffic.md) .
 
-### <a name="resolution"></a>Megoldás:
+### <a name="resolution"></a>Feloldás
 
 * Ha a fürt [hálózati biztonsági csoportot (NSG)](../../virtual-network/virtual-network-vnet-plan-design-arm.md)használ.
 
@@ -85,7 +85,7 @@ ErrorDescription: Virtual Network configuration is not compatible with HDInsight
 
 Valószínűleg probléma van az egyéni DNS-beállítással.
 
-### <a name="resolution"></a>Megoldás:
+### <a name="resolution"></a>Feloldás
 
 Ellenőrizze, hogy a 168.63.129.16 az egyéni DNS-láncban van-e. A virtuális hálózaton belüli DNS-kiszolgálók továbbítják a DNS-lekérdezéseket az Azure rekurzív feloldóinak az adott virtuális hálózaton belüli állomásnevek feloldásához. További információ: [névfeloldás a virtuális hálózatokban](../../virtual-network/virtual-networks-name-resolution-for-vms-and-role-instances.md#name-resolution-that-uses-your-own-dns-server). Az Azure rekurzív feloldóit a virtuális IP-168.63.129.16 keresztül érheti el.
 
@@ -95,7 +95,7 @@ Ellenőrizze, hogy a 168.63.129.16 az egyéni DNS-láncban van-e. A virtuális h
     ssh sshuser@CLUSTERNAME-ssh.azurehdinsight.net
     ```
 
-1. Futtassa a következő parancsot:
+1. Hajtsa végre a következő parancsot:
 
     ```bash
     cat /etc/resolv.conf | grep nameserver*

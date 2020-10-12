@@ -9,10 +9,10 @@ ms.topic: conceptual
 ms.date: 09/25/2020
 ms.author: alkohli
 ms.openlocfilehash: 0e0bcde44ba28751761b7db3f6d6fcae8f7bd49c
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91400544"
 ---
 # <a name="choose-an-azure-solution-for-data-transfer"></a>Azure-megoldás kiválasztása adatátvitelhez
@@ -68,7 +68,7 @@ Válaszoljon a következő kérdésekre az adatátviteli megoldás kiválasztás
 
 Az Azure Storage-fiókját Azure Portalban is megtekintheti, és kiválaszthatja az **adatátviteli** funkciót. Adja meg a hálózati sávszélességet a környezetében, az átvinni kívánt adatok méretét és az adatátvitel gyakoriságát. A megadott adatoknak megfelelő optimális adatátviteli megoldások jelennek meg. 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Ismerkedjen meg Azure Storage Explorerával](https://azure.microsoft.com/resources/videos/introduction-to-microsoft-azure-storage-explorer/).
 - [Olvassa el a AzCopy áttekintését](https://docs.microsoft.com/azure/storage/common/storage-use-azcopy-v10).

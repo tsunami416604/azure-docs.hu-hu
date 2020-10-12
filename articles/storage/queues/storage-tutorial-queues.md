@@ -10,10 +10,10 @@ ms.topic: tutorial
 ms.reviewer: dineshm
 ms.custom: devx-track-csharp
 ms.openlocfilehash: 23684dbbc5cb8c2d5fc4880ae8fe1999450928e0
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91400570"
 ---
 # <a name="tutorial-work-with-azure-storage-queues-in-net"></a>Oktatóanyag: az Azure Storage-várólisták használata a .NET-ben
@@ -49,7 +49,7 @@ Először hozzon létre egy Azure Storage-fiókot. A Storage-fiók létrehozás�
 
 Hozzon létre egy **QueueApp**nevű .net Core-alkalmazást. Az egyszerűség kedvéért ez az alkalmazás az üzenetsor használatával küldi el és fogadja az üzeneteket.
 
-1. A konzol ablakban (például a CMD, a PowerShell vagy az Azure CLI) a `dotnet new` paranccsal hozzon létre egy új, **QueueApp**nevű Console-alkalmazást. Ez a parancs egy egyszerű ""Helló világ!"alkalmazás" C#-projektet hoz létre egyetlen forrásfájlban: **program.cs**.
+1. A konzol ablakban (például a CMD, a PowerShell vagy az Azure CLI) a `dotnet new` paranccsal hozzon létre egy új, **QueueApp**nevű Console-alkalmazást. Ez a parancs egy egyszerű "„Helló világ!” alkalmazás" C#-projektet hoz létre egyetlen forrásfájlban: **program.cs**.
 
    ```console
    dotnet new console -n QueueApp

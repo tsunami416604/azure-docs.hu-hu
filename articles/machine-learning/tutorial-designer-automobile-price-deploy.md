@@ -11,10 +11,10 @@ ms.topic: tutorial
 ms.date: 06/28/2020
 ms.custom: designer
 ms.openlocfilehash: a4923e48c890a50d642d937f014e466e998171cf
-ms.sourcegitcommit: 53acd9895a4a395efa6d7cd41d7f78e392b9cfbe
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90896626"
 ---
 # <a name="tutorial-deploy-a-machine-learning-model-with-the-designer"></a>Oktatóanyag: gépi tanulási modell üzembe helyezése a tervezővel
@@ -99,7 +99,7 @@ Miután az AK-szolgáltatás befejezte a kiépítést, térjen vissza a valós i
 
 1. Válassza az **Üzembe helyezés** lehetőséget.
     
-    :::image type="content" source="./media/tutorial-designer-automobile-price-deploy/setup-endpoint.png"alt-text="Az új valós idejű végpont beállítását bemutató képernyőkép":::
+    :::image type="content" source="./media/tutorial-designer-automobile-price-deploy/setup-endpoint.png"alt-text="Képernyőfelvétel a folyamat létrehozása gombról":::
 
     Az üzembe helyezés befejeződése után a vászon fölötti sikeres értesítés jelenik meg. Néhány percet is igénybe vehet.
 
@@ -123,7 +123,7 @@ Az üzembe helyezés befejeződése után a **végpontok** lapon ellenőrizheti 
 
 [!INCLUDE [aml-ui-cleanup](../../includes/aml-ui-cleanup.md)]
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 Ebben az oktatóanyagban megtanulta, hogyan hozhat létre, helyezhet üzembe és használhat fel gépi tanulási modellt a tervezőben. Ha többet szeretne megtudni arról, hogyan használhatja a tervezőt más típusú problémák megoldására, tekintse meg a többi minta folyamatát.
 

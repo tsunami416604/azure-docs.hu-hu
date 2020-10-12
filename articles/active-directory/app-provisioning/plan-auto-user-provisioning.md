@@ -12,10 +12,10 @@ ms.date: 10/17/2019
 ms.author: kenwith
 ms.reviewer: arvindha, celested
 ms.openlocfilehash: 24de1b2cfc5e0804039923f23b6a5cd9f6c6fb80
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88235701"
 ---
 # <a name="plan-an-automatic-user-provisioning-deployment"></a>Automatikus felhasználóátadást használó üzembe helyezés tervezése
@@ -75,7 +75,7 @@ Ez a cikk a következő kifejezéseket használja:
 | Oktatóanyagok| Az [SaaS-alkalmazások Azure ad-vel való integrálásával](../saas-apps/tutorial-list.md)kapcsolatban tekintse meg az oktatóanyagok listáját. |
 | GYIK| [Gyakori kérdések](../app-provisioning/user-provisioning.md) az automatikus felhasználó-kiépítési folyamatról |
 
-### <a name="solution-architectures"></a>Megoldási architektúrák
+### <a name="solution-architectures"></a>Megoldásarchitektúrák
 
 Az Azure AD-kiépítési szolgáltatás a felhasználókat az SaaS-alkalmazásokhoz és más rendszerekhez is kiépíti az egyes alkalmazások gyártói által biztosított felhasználói felügyeleti API-végpontokhoz való csatlakozással. Ezek a felhasználói felügyeleti API-végpontok lehetővé teszik az Azure AD számára a felhasználók programozott módon történő létrehozását, frissítését és eltávolítását.
 
@@ -207,7 +207,7 @@ Az automatikus felhasználó-kiépítés megvalósításához meg kell határozn
 
 Az Azure AD támogatja a közvetlen attribútum-attribútum hozzárendelést, állandó értékek biztosítását vagy [kifejezések írását az attribútumok leképezéséhez](../app-provisioning/functions-for-customizing-application-data.md). Ez a rugalmasság részletesen szabályozza, hogy mi történjen a megtalált rendszer attribútumában. A [Microsoft Graph API](../app-provisioning/export-import-provisioning-configuration.md) és a Graph Explorer használatával exportálhatja a felhasználók kiépítési attribútumait egy JSON-fájlba, majd importálhatja azt az Azure ad-be.
 
-További információkért lásd: [felhasználói kiépítési attribútum testreszabása – SaaS-alkalmazások leképezése Azure Active Directory-ben](../app-provisioning/customize-application-attributes.md).
+További információ: a [felhasználók üzembe helyezési Attribute-Mappings testreszabása az SaaS-alkalmazásokhoz Azure Active Directoryban](../app-provisioning/customize-application-attributes.md).
 
 ### <a name="special-considerations-for-user-provisioning"></a>A felhasználók üzembe helyezésének speciális szempontjai
 
@@ -324,7 +324,7 @@ A kiépítés során esetlegesen felmerülő problémák elhárításához tekin
 
 * [Stack túlfolyó Azure AD-fórum](https://stackoverflow.com/questions/tagged/azure-active-directory)
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 * [Automatikus felhasználó-kiépítés konfigurálása](../app-provisioning/configure-automatic-user-provisioning-portal.md)
 
 * [Kiépítési konfiguráció exportálása vagy importálása Microsoft Graph API használatával](../app-provisioning/export-import-provisioning-configuration.md)

@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/30/2020
 ms.openlocfilehash: d47f6c20246e3210b58dbc9c802a11c866ae305e
-ms.sourcegitcommit: 62e1884457b64fd798da8ada59dbf623ef27fe97
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/26/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88935007"
 ---
 # <a name="monitor-operations-and-activity-of-azure-cognitive-search"></a>Az Azure Cognitive Search működésének és tevékenységének figyelése
@@ -102,7 +102,7 @@ Ha a felhasználónkénti hitelesítéshez üzleti követelmények léteznek, a 
 
 Ezt az információt nem lehet külön naplózni a lekérdezési karakterláncból, amely tartalmazza a $filter paramétert. A jelentéskészítési lekérdezési karakterláncokkal kapcsolatos részletekért lásd: [lekérdezések figyelése](search-monitor-queries.md) .
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 A Azure Monitorekkel való gördülékenység elengedhetetlen az Azure-szolgáltatások, például az Azure-Cognitive Searchek felügyeletéért. Ha nem ismeri a Azure Monitort, szánjon időt az erőforrásokkal kapcsolatos cikkek áttekintésére. Az oktatóanyagokon kívül a következő cikk is jó kiindulópont.
 

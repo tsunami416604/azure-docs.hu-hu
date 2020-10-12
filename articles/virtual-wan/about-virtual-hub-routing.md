@@ -10,10 +10,10 @@ ms.date: 09/22/2020
 ms.author: cherylmc
 ms.custom: fasttrack-edit
 ms.openlocfilehash: 51480a49aab2c1277eeb846c593fcb2bc858d1f0
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90983720"
 ---
 # <a name="about-virtual-hub-routing"></a>Információ a virtuális központ útválasztásáról
@@ -55,7 +55,7 @@ A kapcsolatok dinamikusan propagálják az útvonalakat egy útválasztási táb
 
 Minden egyes virtuális központ esetében az **egyik útválasztási tábla sem** érhető el. A none útválasztási táblázatba való propagálás azt jelenti, hogy nem szükséges útvonalakat továbbítani a kapcsolódásból. A VPN-, ExpressRoute-és felhasználói VPN-kapcsolatok az útvonalakat az azonos útválasztási táblákba terjesztik.
 
-:::image type="content" source="./media/about-virtual-hub-routing/concepts-propagation.png" alt-text="Propagálás":::
+:::image type="content" source="./media/about-virtual-hub-routing/concepts-propagation.png" alt-text="Társulási":::
 
 ### <a name="labels"></a><a name="static"></a>Címkék
 A címkék olyan mechanizmust biztosítanak, amely logikailag csoportosítja az útválasztási táblákat. Ez különösen hasznos lehet az útvonalaknak több útválasztási táblába való csatlakozása során. Az alapértelmezett útválasztási táblázat például egy "default" nevű beépített címkével rendelkezik. Amikor a felhasználók propagálják a kapcsolati útvonalakat az "alapértelmezett" címkére, a rendszer automatikusan az összes alapértelmezett útválasztási táblára alkalmazza a virtuális WAN összes csomópontján. 

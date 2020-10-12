@@ -9,10 +9,10 @@ ms.topic: article
 ms.date: 07/05/2017
 ms.author: tagore
 ms.openlocfilehash: 37189df6b1c9bf3f9fca185226f2ee3eeb3ddd7d
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87092728"
 ---
 # <a name="configuring-a-custom-domain-name-for-an-azure-cloud-service"></a>Egyéni tartománynév konfigurálása Azure felhőszolgáltatáshoz
@@ -62,7 +62,7 @@ CNAME rekord létrehozásához hozzá kell adnia egy új bejegyzést a DNS-tábl
 
        ![a webhely URL-címét bemutató gyors áttekintés szakasz][csurl]
 
-       **VAGY**
+       **OR**
    * Telepítse és konfigurálja az [Azure PowerShellt](/powershell/azure/), majd használja a következő parancsot:
 
        ```powershell
@@ -95,7 +95,7 @@ Rekord létrehozásához először meg kell keresnie a felhőalapú szolgáltat�
 
        ![a VIP-t bemutató gyors áttekintés szakasz][vip]
 
-       **VAGY**
+       **OR**
    * Telepítse és konfigurálja az [Azure PowerShellt](/powershell/azure/), majd használja a következő parancsot:
 
        ```powershell

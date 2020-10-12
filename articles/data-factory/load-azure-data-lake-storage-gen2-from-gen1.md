@@ -13,10 +13,10 @@ ms.topic: conceptual
 ms.custom: seo-lt-2019
 ms.date: 05/13/2019
 ms.openlocfilehash: 6655510a4cfdb88e98319c7fc26c7ae83255bb6f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "81415825"
 ---
 # <a name="copy-data-from-azure-data-lake-storage-gen1-to-gen2-with-azure-data-factory"></a>Adatok másolása Azure Data Lake Storage Gen1ból a Gen2-be Azure Data Factory
@@ -35,11 +35,11 @@ Ebből a cikkből megtudhatja, hogyan másolhat adatok Azure Data Lake Storage G
 
 ## <a name="prerequisites"></a>Előfeltételek
 
-* Azure-előfizetés. Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/).
+* Azure-előfizetés. Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/), mielőtt hozzákezd.
 * Azure Data Lake Storage Gen1 a fiókban lévő adattal.
 * Data Lake Storage Gen2 engedélyezett Azure Storage-fiók. Ha nincs Storage-fiókja, [hozzon létre egy fiókot](https://ms.portal.azure.com/#create/Microsoft.StorageAccount-ARM).
 
-## <a name="create-a-data-factory"></a>Data factory létrehozása
+## <a name="create-a-data-factory"></a>Adat-előállító létrehozása
 
 1. A bal oldali menüben válassza az **erőforrás létrehozása**  >  **adatok és Analitika**  >  **Data Factory**lehetőséget.
    
@@ -52,10 +52,10 @@ Ebből a cikkből megtudhatja, hogyan másolhat adatok Azure Data Lake Storage G
     * **Név**: adjon meg egy globálisan egyedi nevet az Azure-beli adatgyár számára. Ha "a \" LoadADLSDemo nem érhető el" hibaüzenet jelenik \" meg, adjon meg egy másik nevet az adatelőállító számára. Például: _**sajátneve**_**ADFTutorialDataFactory**. Hozza létre újra az adatelőállítót. A Data Factory-összetevők elnevezési szabályait a [Data Factory elnevezési szabályait](naming-rules.md) ismertető cikkben találja.
     * **Előfizetés**: válassza ki azt az Azure-előfizetést, amelyben létre kívánja hozni az adatelőállítót. 
     * **Erőforráscsoport**: válasszon ki egy meglévő erőforráscsoportot a legördülő listából. Kiválaszthatja az **új létrehozása** lehetőséget is, és megadhatja az erőforráscsoport nevét. Az erőforráscsoportokkal kapcsolatos információkért tekintse meg az [Erőforráscsoportok használata az Azure-erőforrások kezeléséhez](../azure-resource-manager/management/overview.md) ismertető cikket. 
-    * **Verzió**: válassza a **v2**elemet.
+    * **Verzió**: Válassza a **V2** lehetőséget.
     * **Hely**: válassza ki az adatelőállító helyét. A legördülő listán csak a támogatott helyek jelennek meg. Az adat-előállító által használt adattárak más helyeken és régiókban is lehetnek. 
 
-3. Válassza a **Létrehozás** lehetőséget.
+3. Kattintson a **Létrehozás** gombra.
 4. A létrehozás befejezése után nyissa meg az adatait a gyárban. Megjelenik a **Data Factory** kezdőlapja, ahogy az a következő képen látható: 
    
    ![Data factory kezdőlap](./media/load-azure-data-lake-storage-gen2-from-gen1/data-factory-home-page.png)
@@ -67,7 +67,7 @@ Ebből a cikkből megtudhatja, hogyan másolhat adatok Azure Data Lake Storage G
 1. Az **első lépések** lapon válassza a **adatok másolása** csempét az Adatmásolás eszköz elindításához. 
 
    ![Adatmásolási eszköz csempe](./media/load-azure-data-lake-storage-gen2-from-gen1/copy-data-tool-tile.png)
-2. A **Tulajdonságok** lapon adja meg a **CopyFromADLSGen1ToGen2** mezőt a **feladat neve** mezőben. Válassza a **Tovább** lehetőséget.
+2. A **Tulajdonságok** lapon adja meg a **CopyFromADLSGen1ToGen2** mezőt a **feladat neve** mezőben. Kattintson a **Tovább** gombra.
 
     ![Tulajdonságok lap](./media/load-azure-data-lake-storage-gen2-from-gen1/copy-data-tool-properties-page.png)
 3. A **forrás adattár** lapon válassza az **+ új kapcsolatok létrehozása**lehetőséget.
@@ -84,7 +84,7 @@ Ebből a cikkből megtudhatja, hogyan másolhat adatok Azure Data Lake Storage G
   
    b. Válassza a **Kapcsolódás tesztelése** lehetőséget a beállítások ellenőrzéséhez. Ezután válassza a **Befejezés**lehetőséget.
   
-   c. Láthatja, hogy az új kapcsolatok létrejöttek. Válassza a **Tovább** lehetőséget.
+   c. Láthatja, hogy az új kapcsolatok létrejöttek. Kattintson a **Tovább** gombra.
    
    > [!IMPORTANT]
    > Ebben az útmutatóban az Azure-erőforrások felügyelt identitását használja a Azure Data Lake Storage Gen1 hitelesítéséhez. Ha a felügyelt identitást a Azure Data Lake Storage Gen1 megfelelő engedélyekkel szeretné biztosítani, kövesse az [alábbi utasításokat](connector-azure-data-lake-store.md#managed-identity).
@@ -95,7 +95,7 @@ Ebből a cikkből megtudhatja, hogyan másolhat adatok Azure Data Lake Storage G
 
     ![Bemeneti fájl vagy mappa kiválasztása](./media/load-azure-data-lake-storage-gen2-from-gen1/choose-input-folder.png)
 
-7. A másolási viselkedést a **fájlok rekurzív** és **bináris másolási** beállítások másolása lehetőség kiválasztásával határozhatja meg. Válassza a **Tovább** lehetőséget.
+7. A másolási viselkedést a **fájlok rekurzív** és **bináris másolási** beállítások másolása lehetőség kiválasztásával határozhatja meg. Kattintson a **Tovább** gombra.
 
     ![Kimeneti mappa meghatározása](./media/load-azure-data-lake-storage-gen2-from-gen1/specify-binary-copy.png)
     
@@ -107,7 +107,7 @@ Ebből a cikkből megtudhatja, hogyan másolhat adatok Azure Data Lake Storage G
 
    a. Válassza ki a Data Lake Storage Gen2 képes fiókot a **Storage-fiók neve** legördülő listából.
    
-   b. Kattintson a **Befejezés** gombra a kapcsolat létrehozásához. Ezután válassza a **tovább**lehetőséget.
+   b. Kattintson a **Befejezés** gombra a kapcsolat létrehozásához. Ezután kattintson a **Tovább** gombra.
    
    ![Azure Data Lake Storage Gen2 fiók meghatározása](./media/load-azure-data-lake-storage-gen2-from-gen1/specify-adls-gen2-account.png)
 

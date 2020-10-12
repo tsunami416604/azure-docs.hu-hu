@@ -8,10 +8,10 @@ ms.author: barbkess
 ms.reviewer: lcozzens
 ms.service: azure-app-configuration
 ms.openlocfilehash: 560a2df5946b9cfe1160864752595e86cc6eeb65
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "82981221"
 ---
 # <a name="how-to-use-managed-identities-for-azure-app-configuration"></a>Felügyelt identitások használata az Azure-alkalmazások konfigurálásához
@@ -27,7 +27,7 @@ Az alkalmazás két típusú identitást biztosíthat:
 
 A rendszer által hozzárendelt identitással rendelkező alkalmazás-konfigurációs tárolók létrehozásához további tulajdonságot kell beállítani az áruházban.
 
-### <a name="using-the-azure-cli"></a>Az Azure parancssori felületének használata
+### <a name="using-the-azure-cli"></a>Az Azure CLI-vel
 
 Felügyelt identitás Azure CLI használatával történő beállításához használja az az [appconfig Identity assign] parancsot egy meglévő konfigurációs tárolón. Ebben a szakaszban három lehetőség van a példák futtatására:
 
@@ -60,7 +60,7 @@ Az alábbi lépések végigvezetik az alkalmazás konfigurációs tárolójának
 
 A felhasználó által hozzárendelt identitással rendelkező alkalmazás-konfigurációs tároló létrehozásához létre kell hoznia az identitást, majd hozzá kell rendelnie az erőforrás-azonosítót a tárolóhoz.
 
-### <a name="using-the-azure-cli"></a>Az Azure parancssori felületének használata
+### <a name="using-the-azure-cli"></a>Az Azure CLI-vel
 
 Felügyelt identitás Azure CLI használatával történő beállításához használja az az [appconfig Identity assign] parancsot egy meglévő konfigurációs tárolón. Ebben a szakaszban három lehetőség van a példák futtatására:
 

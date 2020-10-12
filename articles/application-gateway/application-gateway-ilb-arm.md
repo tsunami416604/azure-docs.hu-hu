@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 11/13/2019
 ms.author: victorh
 ms.openlocfilehash: 439523fe55f231548ebc80ebc5d3b53c2f0d6e2f
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84808139"
 ---
 # <a name="create-an-application-gateway-with-an-internal-load-balancer-ilb"></a>Application Gateway létrehozása belső terheléselosztó (ILB) használatával
@@ -52,7 +52,7 @@ A következő lépések szükségesek egy Application Gateway létrehozásához:
 
 Az Azure Resource Manager parancsmagjainak használatához váltson át PowerShell módba. További információ: [A Windows PowerShell használata a Resource Managerrel](../powershell-azure-resource-manager.md).
 
-### <a name="step-1"></a>1\. lépés
+### <a name="step-1"></a>1. lépés
 
 ```powershell
 Connect-AzAccount
@@ -92,7 +92,7 @@ Az előző példában létrehoztunk egy "appgw-RG" nevű erőforráscsoportot é
 
 Az alábbi példa bemutatja, hogyan hozhat létre egy virtuális hálózatot a Resource Manager használatával:
 
-### <a name="step-1"></a>1\. lépés
+### <a name="step-1"></a>1. lépés
 
 ```powershell
 $subnetconfig = New-AzVirtualNetworkSubnetConfig -Name subnet01 -AddressPrefix 10.0.0.0/24
@@ -118,7 +118,7 @@ Ez a lépés az alhálózati objektumot a következő lépésekhez rendeli $subn
 
 ## <a name="create-an-application-gateway-configuration-object"></a>Hozzon létre egy Application Gateway konfigurációs objektumot
 
-### <a name="step-1"></a>1\. lépés
+### <a name="step-1"></a>1. lépés
 
 ```powershell
 $gipconfig = New-AzApplicationGatewayIPConfiguration -Name gatewayIP01 -Subnet $subnet
@@ -203,7 +203,7 @@ Egy Application Gateway törléséhez a következő lépéseket kell elvégeznie
 2. Távolítsa el az átjárót a `Remove-AzApplicationGateway` parancsmaggal.
 3. A `Get-AzureApplicationGateway` parancsmaggal győződjön meg arról, hogy az átjáró el lett távolítva.
 
-### <a name="step-1"></a>1\. lépés
+### <a name="step-1"></a>1. lépés
 
 Társítsa az Application Gateway objektumot a „$getgw” változóhoz.
 

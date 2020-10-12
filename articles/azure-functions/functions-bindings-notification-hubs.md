@@ -7,10 +7,10 @@ ms.custom: devx-track-csharp
 ms.date: 11/21/2017
 ms.author: cshoe
 ms.openlocfilehash: c4198a1b73f76d61e39324befc85b55bd260e363
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88212230"
 ---
 # <a name="notification-hubs-output-binding-for-azure-functions"></a>Azure Functions Notification Hubs kimeneti kötése
@@ -248,11 +248,11 @@ Az attribútum konstruktorának paraméterei és tulajdonságai a [konfiguráci�
 
 Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított kötési konfigurációs tulajdonságokat ismerteti `NotificationHub` :
 
-|function.jsa tulajdonságon | Attribútum tulajdonsága |Description|
+|function.jsa tulajdonságon | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
-|**típusa** |n.a.| Értékre kell állítani `notificationHub` . |
-|**irányba** |n.a.| Értékre kell állítani `out` . | 
-|**név** |n.a.| Az értesítési központ üzenetének függvény kódjában használt változó neve. |
+|**típusa** |n/a| Értékre kell állítani `notificationHub` . |
+|**irányba** |n/a| Értékre kell állítani `out` . | 
+|**név** |n/a| Az értesítési központ üzenetének függvény kódjában használt változó neve. |
 |**tagExpression** |**TagExpression** | A címkézési kifejezések lehetővé teszik annak megadását, hogy a rendszer az értesítéseket a címkével megegyező értesítések fogadására regisztrált eszközök egy csoportjának adja meg.  További információ: [útválasztási és címkézési kifejezések](../notification-hubs/notification-hubs-tags-segment-push-message.md). |
 |**hubName** | **HubName** | Az értesítési központ erőforrásának neve a Azure Portalban. |
 |**kapcsolat** | **ConnectionStringSetting** | Egy Notification Hubs-kapcsolatok sztringjét tartalmazó Alkalmazásbeállítás neve.  A kapcsolódási karakterláncot az értesítési központ *DefaultFullSharedAccessSignature* értékére kell beállítani. A jelen cikk későbbi, a [kapcsolatok karakterláncának beállítása](#connection-string-setup) című szakaszban talál.|
@@ -297,7 +297,7 @@ Az Alkalmazásbeállítás neve a *function.js* vagy a .NET attribútum kimeneti
 
 ## <a name="exceptions-and-return-codes"></a>Kivételek és visszatérési kódok
 
-| Kötés | Hivatkozás |
+| Kötés | Referencia |
 |---|---|
 | Értesítési központ | [Üzemeltetési útmutató](/rest/api/notificationhubs/) |
 

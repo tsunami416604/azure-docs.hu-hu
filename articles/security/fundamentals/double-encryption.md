@@ -15,14 +15,14 @@ ms.workload: na
 ms.date: 08/13/2020
 ms.author: terrylan
 ms.openlocfilehash: 020e8249f57ccb1a14da798a717a00dcc3962389
-ms.sourcegitcommit: 152c522bb5ad64e5c020b466b239cdac040b9377
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88227152"
 ---
 # <a name="double-encryption"></a>Dupla titkosítás
-A kettős titkosítás olyankor van, ahol két vagy több független titkosítási réteg van engedélyezve, hogy az egyik titkosítási réteg sérülése elleni védelmet nyújtson. Két titkosítási réteg használata csökkenti az adattitkosítással kapcsolatos fenyegetéseket. Például:
+A kettős titkosítás olyankor van, ahol két vagy több független titkosítási réteg van engedélyezve, hogy az egyik titkosítási réteg sérülése elleni védelmet nyújtson. Két titkosítási réteg használata csökkenti az adattitkosítással kapcsolatos fenyegetéseket. Példa:
 
 - Konfigurációs hibák az adattitkosításban
 - Megvalósítási hibák a titkosítási algoritmusban
@@ -42,5 +42,5 @@ A Microsoft megközelítése, hogy a következő két titkosítási réteget eng
 - **Adatátviteli titkosítás Transport Layer Security (TLS) 1,2 használatával az adatvédelemhez, amikor a Cloud Services és Ön között utazik**. Az adatközpontot elhagyó összes forgalom átvitel alatt áll, még akkor is, ha a forgalmi cél egy másik tartományvezérlő ugyanabban a régióban. A TLS 1,2 a használt alapértelmezett biztonsági protokoll. A TLS erős hitelesítést, az üzenetek védelmét és integritását (az üzenetek illetéktelen módosításának, elfogásának és hamisításának észlelését), az együttműködési képességet, az algoritmus rugalmasságát, valamint a könnyű üzembe helyezést és használatot biztosít.
 - **További titkosítási réteg van megadva az infrastruktúra rétegben**. Az IEEE 802.1 AE MAC biztonsági szabványokat (más néven MACsec) használó adatkapcsolati rétegbeli titkosítási módszer a mögöttes hálózati hardveren pont – pont között van alkalmazva. Amikor az Azure-ügyfelek forgalmát átveszi az adatközpontok között – a Microsoft által nem szabályozott fizikai határokon kívül (vagy a Microsoft nevében) – a csomagokat a rendszer a küldés előtt titkosítja és visszafejti az eszközökön, megelőzve a fizikai "személy-középre" vagy a figyelési/wiretapping támadásokat. Mivel ez a technológia önmagában is a hálózati hardverhez van integrálva, a hálózati hardverek esetében a sebesség nélküli titkosítás biztosítja a kapcsolati késleltetés növelését. Ez a MACsec-titkosítás alapértelmezés szerint a régión vagy régión belüli összes Azure-forgalomra vonatkozik, és az ügyfelek részéről nincs szükség beavatkozásra.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ismerje meg [, hogyan használják a titkosítást az Azure-ban](encryption-overview.md).

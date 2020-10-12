@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 09/19/2017
 ms.author: damendo
 ms.openlocfilehash: 62f4a06ec729d896dc11a290bc7a5ccc7c321683
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90984063"
 ---
 # <a name="manage-and-analyze-network-security-group-flow-logs-in-azure-using-network-watcher-and-graylog"></a>Hálózati biztonsági csoport folyamatábráinak kezelése és elemzése az Azure-ban Network Watcher és Graylog használatával
@@ -30,7 +30,7 @@ A hálózatban számos hálózati biztonsági csoporttal rendelkezhet, amelyeken
 > [!Warning]
 > Az alábbi lépések a flow-naplók 1-es verziójával működnek. Részletekért lásd: a [hálózati biztonsági csoportok flow-naplózásának bemutatása](network-watcher-nsg-flow-logging-overview.md). A következő utasítások nem fognak működni a naplófájlok 2-es verziójával, módosítás nélkül.
 
-## <a name="scenario"></a>Használati eset
+## <a name="scenario"></a>Forgatókönyv
 
 A hálózati biztonsági csoport folyamatábrái engedélyezve vannak a Network Watcher használatával. A flow-naplók beáramlanak az Azure Blob Storage-ba. A Logstash beépülő modul a blob Storage-ból való kapcsolódáshoz és feldolgozáshoz, valamint a Graylog való elküldéséhez használható. A flow-naplók Graylog való tárolása után a rendszer elemezheti és testre szabhatja a testreszabott irányítópultok megjelenítését.
 

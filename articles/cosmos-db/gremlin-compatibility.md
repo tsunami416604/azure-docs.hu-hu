@@ -8,10 +8,10 @@ ms.topic: reference
 ms.date: 09/10/2019
 ms.author: sngun
 ms.openlocfilehash: 7257246f618e3028534f3ebd60eaf6f94a3a4720
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87092507"
 ---
 # <a name="azure-cosmos-db-gremlin-compatibility"></a>Azure Cosmos DB Gremlin kompatibilitása
@@ -33,7 +33,7 @@ Azure Cosmos DB Graph Engine szorosan követi az [Apache TinkerPop](https://tink
 
 * ***Rendezés tömb tulajdonságai szerint*** `order().by(<array property>)` nem támogatott. A rendezést csak az egyszerű típusok támogatják.
 
-* A ***nem PRIMITÍV JSON-típusok*** nem támogatottak. Használjon `string` , `number` vagy `true` / `false` típusokat. `null`az értékek nem támogatottak. 
+* A ***nem PRIMITÍV JSON-típusok*** nem támogatottak. Használjon `string` , `number` vagy `true` / `false` típusokat. `null` az értékek nem támogatottak. 
 
 * A ***GraphSONv3*** szerializáló jelenleg nem támogatott. `GraphSONv2`Szerializáló, olvasó és író osztályok használata a kapcsolatok konfigurációjában. A Azure Cosmos DB Gremlin API által visszaadott eredmények formátuma nem egyezik meg a GraphSON formátumával. 
 

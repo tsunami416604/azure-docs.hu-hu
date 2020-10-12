@@ -11,10 +11,10 @@ ms.custom: devx-track-csharp
 ms.date: 11/08/2019
 ms.author: cshoe
 ms.openlocfilehash: f5523c513cc0bdd08c43bdbed5046bf662f1a3e5
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88206584"
 ---
 # <a name="azure-functions-warm-up-trigger"></a>Azure Functions bemelegítő trigger
@@ -227,11 +227,11 @@ A bemelegedési trigger nem támogatott a Javaban attribútumként.
 
 Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított kötési konfigurációs tulajdonságokat ismerteti `WarmupTrigger` .
 
-|function.jsa tulajdonságon | Attribútum tulajdonsága |Description|
+|function.jsa tulajdonságon | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
-| **típusa** | n.a.| Kötelező – a következőre kell beállítani: `warmupTrigger` . |
-| **irányba** | n.a.| Kötelező – a következőre kell beállítani: `in` . |
-| **név** | n.a.| Kötelező – a függvény kódjában használt változó neve.|
+| **típusa** | n/a| Kötelező – a következőre kell beállítani: `warmupTrigger` . |
+| **irányba** | n/a| Kötelező – a következőre kell beállítani: `in` . |
+| **név** | n/a| Kötelező – a függvény kódjában használt változó neve.|
 
 ## <a name="trigger---usage"></a>Trigger – használat
 

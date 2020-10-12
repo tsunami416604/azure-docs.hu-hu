@@ -9,10 +9,10 @@ ms.devlang: dotnet
 ms.topic: how-to
 ms.date: 07/16/2020
 ms.openlocfilehash: 84c2ad3a24d944db6a55f3f21e8a2a0c4084d033
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87099634"
 ---
 # <a name="create-alerts-for-azure-cosmos-db-using-azure-monitor"></a>Riasztások létrehozása Azure Cosmos DBhoz a Azure Monitor használatával
@@ -83,7 +83,7 @@ Ebből a szakaszból megtudhatja, hogyan hozhat létre riasztást, ha a 429-as H
 
    * Adja meg a művelet nevét, és válassza az **e-mail/SMS-üzenet/leküldés/hang** lehetőséget a **művelet típusaként**. A következő képernyőkép a Művelettípus részleteit mutatja be:
 
-     :::image type="content" source="./media/create-alerts/configure-alert-action-type.png" alt-text="A riasztás fogadásához adja meg a művelet típusát (például e-mail értesítés)":::
+     :::image type="content" source="./media/create-alerts/configure-alert-action-type.png" alt-text="Állítsa be a logikát, hogy riasztásokat kapjon a ráta Limited/429-kérelmek esetében":::
 
 1. Töltse ki a **riasztási szabály részletei** szakaszt:
 
@@ -102,7 +102,7 @@ Az alábbiakban néhány példát láthat a riasztások használatára:
 * Adatbázis vagy tároló létrehozásakor, törlésekor vagy frissítésekor.
 * Az adatbázis vagy a tároló átviteli sebessége megváltozik.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 * A [normalizált ru/s metrika figyelése](monitor-normalized-request-units.md) az Azure Cosmos-tárolóban.
 * A művelet [teljesítményének figyelése, illetve a művelet kérése](monitor-request-unit-usage.md) Azure Cosmos DBban.

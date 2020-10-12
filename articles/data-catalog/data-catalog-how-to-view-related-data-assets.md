@@ -7,10 +7,10 @@ ms.service: data-catalog
 ms.topic: how-to
 ms.date: 08/01/2019
 ms.openlocfilehash: fb5352b4cc84801296d9e621053672328b02692a
-ms.sourcegitcommit: 3543d3b4f6c6f496d22ea5f97d8cd2700ac9a481
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86523366"
 ---
 # <a name="how-to-view-related-data-assets-in-azure-data-catalog"></a>Hogyan tekintheti meg a kapcsolódó adategységeket a Azure Data Catalogban?
@@ -46,5 +46,5 @@ Ha további részleteket szeretne látni, például az oszlop teljes nevét, vig
 
 Ha a már regisztrált eszközök közötti kapcsolatokat szeretné felvenni, regisztrálja újra az eszközöket.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 - [Adategységek felügyelete](data-catalog-how-to-manage.md)

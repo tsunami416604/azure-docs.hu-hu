@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 05/06/2020
 ms.author: victorh
 ms.openlocfilehash: ae33d763bda49756e9f90a05feda5089b63ef28b
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91400162"
 ---
 # <a name="use-azure-firewall-to-protect-window-virtual-desktop-deployments"></a>Az Azure Firewall használata a Windows Virtual Desktop üzemelő példányainak védelméhez
@@ -74,6 +74,6 @@ Előfordulhat, hogy a követelményektől függően további tűzfalszabályok k
    Alapértelmezés szerint a Windows rendszerű virtuális gépek a 123-as UDP-porton keresztül csatlakoznak a time.windows.com-hez az idő szinkronizálása érdekében. Hozzon létre egy hálózati szabályt a hozzáférés engedélyezéséhez, vagy a környezetben használt időkiszolgálóhoz.
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - További információ a Windows rendszerű virtuális asztali környezetről: [Mi az a Windows virtuális asztal?](../virtual-desktop/overview.md)

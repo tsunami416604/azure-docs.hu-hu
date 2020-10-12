@@ -7,10 +7,10 @@ ms.author: regutier
 ms.date: 04/14/2020
 ms.reviewer: mbullwin
 ms.openlocfilehash: 719f0cfa0a1f80568acf3231ce3ffab441e5f6b7
-ms.sourcegitcommit: 0820c743038459a218c40ecfb6f60d12cbf538b3
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87117390"
 ---
 # <a name="configure-bring-your-own-storage-byos-for-application-insights-profiler-and-snapshot-debugger"></a>A saját tároló (BYOS) beállítása a Application Insights Profiler és a Snapshot Debugger
@@ -23,7 +23,7 @@ Ha saját tárhelyet használ, a rendszer feltölti ezeket az összetevőket egy
 > [!NOTE]
 > Ha engedélyezi a privát hivatkozásokat, a saját tárterületet is igénybe kell hoznia. További információ a Application Insightshoz tartozó privát hivatkozásokról [: dokumentáció.](../platform/private-link-security.md)
 >
-> Ha az ügyfél által felügyelt kulcsokat engedélyezi, a saját tárterületet is igénybe kell hoznia. A Application Insights ügyfél által felügyelt kulcsaival kapcsolatos további információkért [tekintse meg a dokumentációt.](../platform/customer-managed-keys.md)
+> Ha engedélyezi Customer-Managed kulcsokat, a saját tárterületet kell használnia. A Application Insights Customer-Managed kulcsaival kapcsolatos további információkért [tekintse meg a dokumentációt.](../platform/customer-managed-keys.md)
 
 ## <a name="how-will-my-storage-account-be-accessed"></a>Hogyan lesz elérhető a Storage-fiókom?
 1. A Virtual Machinesban vagy App Serviceban futó ügynökök az összetevők (profilok, Pillanatképek és szimbólumok) feltöltését is feltölthetik a fiókban található blob-tárolóba. Ehhez a folyamathoz kapcsolatba kell lépnie a Application Insights Profiler vagy Snapshot Debugger szolgáltatással, hogy SAS (közös hozzáférésű aláírási) tokent szerezzen be a Storage-fiókjában lévő új blobba.
@@ -37,7 +37,7 @@ Ha saját tárhelyet használ, a rendszer feltölti ezeket az összetevőket egy
 
 ## <a name="how-to-enable-byos"></a>A BYOS engedélyezése
 
-### <a name="create-storage-account"></a>Storage-fiók létrehozása
+### <a name="create-storage-account"></a>Tárfiók létrehozása
 Hozzon létre egy teljesen új Storage-fiókot (ha nem rendelkezik vele) ugyanazon a helyen, mint a Application Insights erőforrás.
 Ha a Application Insights erőforrása be van kapcsolva `West US 2` , akkor a Storage-fióknak a-ben kell lennie `West US 2` .
 
@@ -231,7 +231,7 @@ A BYOS diagnosztika (Profiler/Debugger) konfigurálásához három lehetőség k
 
 ## <a name="troubleshooting"></a>Hibaelhárítás
 ### <a name="template-schema-schema_uri-isnt-supported"></a>A (z) {schema_uri} sablon sémája nem támogatott.
-* Győződjön meg arról, hogy a `$schema` sablon tulajdonsága érvényes. A következő mintát kell követnie:`https://schema.management.azure.com/schemas/{schema_version}/deploymentTemplate.json#`
+* Győződjön meg arról, hogy a `$schema` sablon tulajdonsága érvényes. A következő mintát kell követnie: `https://schema.management.azure.com/schemas/{schema_version}/deploymentTemplate.json#`
 * Győződjön meg arról, hogy a `schema_version` sablon az érvényes értékeken belül van: `2014-04-01-preview, 2015-01-01, 2018-05-01, 2019-04-01, 2019-08-01` .
     Hibaüzenet:
     ```powershell
@@ -280,13 +280,13 @@ Az általános Snapshot Debugger hibaelhárításhoz tekintse meg a [Snapshot De
 * Ha engedélyezve van a Profiler vagy a Snapshot, és Engedélyezem a BYOS-t, a rendszer áttelepíti az adataikat a saját Storage-fiókomba?
     _Nem, nem._
 
-* A BYOS működik a titkosítással a REST és az ügyfél által felügyelt kulcs esetén?
-    _Igen, a BYOS szükséges ahhoz, hogy a Profiler/Debugger engedélyezve legyen a Customer-Manager kulcsaival._
+* A BYOS működik a titkosítással és a Customer-Managed kulccsal?
+    _Igen, a BYOS a szükséges, hogy a Profiler/Debugger engedélyezve legyen Customer-Manager kulcsokkal._
 
 * A BYOS az internetről elszigetelt környezetben fog működni?
     _igen. Valójában a BYOS az elkülönített hálózati forgatókönyvek követelménye._
 
-* A BYOS akkor működik, ha az ügyfél által felügyelt kulcsok és a privát hivatkozások is engedélyezve lettek? 
+* A BYOS működik, ha mindkét Customer-Managed kulcs és privát hivatkozás engedélyezve lett? 
     _Igen, lehetséges._
 
 * Ha engedélyezve van a BYOS, Visszatérhetek a diagnosztikai szolgáltatások tárolási fiókjaival a gyűjtött adatok tárolására? 

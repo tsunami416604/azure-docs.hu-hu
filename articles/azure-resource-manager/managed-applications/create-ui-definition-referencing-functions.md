@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 07/13/2020
 ms.author: tomfitz
 ms.openlocfilehash: ad21c5b34a58c35b2cef5e430be7cb8cd1296402
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87096947"
 ---
 # <a name="createuidefinition-referencing-functions"></a>CreateUiDefinition-hivatkozó függvények
@@ -101,4 +101,4 @@ A következő tulajdonságokat adja vissza:
 
 ## <a name="next-steps"></a>További lépések
 
-* A portál felületének fejlesztéséről az [Azure által felügyelt alkalmazás létrehozásával kapcsolatosCreateUiDefinition.js](create-uidefinition-overview.md)című témakörben olvashat.
+* A portál felületének fejlesztéséről az [ Azure által felügyelt alkalmazás létrehozásával kapcsolatosCreateUiDefinition.js](create-uidefinition-overview.md)című témakörben olvashat.

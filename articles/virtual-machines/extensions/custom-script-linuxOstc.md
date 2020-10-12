@@ -15,10 +15,10 @@ ms.workload: infrastructure-services
 ms.date: 08/14/2018
 ms.author: danis
 ms.openlocfilehash: 1fe915fd58f60e4ad5b1e28b51911678ef2f866c
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87085707"
 ---
 # <a name="use-the-azure-custom-script-extension-version-1-with-linux-virtual-machines"></a>Az egyéni Azure script Extension 1. verziójának használata Linux rendszerű virtuális gépekkel
@@ -70,7 +70,7 @@ Ha a parancsfájl egy helyi kiszolgálón található, akkor továbbra is szüks
 * A szkript futtatásához 90 perc van engedélyezve, ami továbbra is a bővítmény sikertelen kiépítését eredményezi.
 * Ne helyezzen újraindítást a parancsfájlba, ezért a rendszer a telepített többi bővítménnyel kapcsolatos problémákat okoz, és az újraindítás után a bővítmény nem fog folytatódni az újraindítás után. 
 * Ha olyan szkripttel rendelkezik, amely újraindítást eredményez, telepítse az alkalmazásokat, és futtassa a parancsfájlokat stb. Be kell ütemezni az újraindítást egy cron-feladatokkal, vagy olyan eszközök használatával, mint a DSC, a Chef vagy a Puppet Extensions.
-* A bővítmény csak egyszer futtatja a parancsfájlt, ha parancsfájlt szeretne futtatni minden rendszerindításkor, használhatja a [Cloud-init rendszerképet](../linux/using-cloud-init.md) , és használhat [parancsfájlokat rendszerindítási](https://cloudinit.readthedocs.io/en/latest/topics/modules.html#scripts-per-boot) modulként. Azt is megteheti, hogy a parancsfájl segítségével létrehoz egy rendszerszintű szolgáltatási egységet.
+* A bővítmény csak egyszer futtatja a parancsfájlt, ha parancsfájlt szeretne futtatni minden rendszerindításkor, használhatja a [Cloud-init rendszerképet](../linux/using-cloud-init.md)  , és használhat [parancsfájlokat rendszerindítási](https://cloudinit.readthedocs.io/en/latest/topics/modules.html#scripts-per-boot) modulként. Azt is megteheti, hogy a parancsfájl segítségével létrehoz egy rendszerszintű szolgáltatási egységet.
 * Ha egy parancsfájl futását szeretné ütemezni, a bővítmény használatával hozzon létre egy cron-feladatot.
 * Amikor a szkript fut, az Azure Portalon vagy a CLI-n a bővítmény „átmeneti” állapotát fogja látni. Ha egy futó parancsfájl gyakoribb frissítési állapotát szeretné használni, létre kell hoznia a saját megoldását.
 * Az egyéni szkriptek bővítménye nem támogatja natív módon a proxykiszolgálók használatát, azonban használhat olyan fájlátviteli eszközt, amely támogatja a parancsfájlban lévő proxykiszolgálót, például a *curl*-t.
@@ -118,14 +118,14 @@ Ezeket az elemeket bizalmas adatokként kell kezelni, és meg kell adni a bőví
 
 ### <a name="property-values"></a>Tulajdonságértékek
 
-| Name | Érték/példa | Adattípus |
+| Name (Név) | Érték/példa | Adattípus |
 | ---- | ---- | ---- |
 | apiVersion | 2015-06-15 | dátum |
 | közzétevő | Microsoft. OSTCExtensions | sztring |
 | típus | CustomScriptForLinux | sztring |
 | typeHandlerVersion | 1.5 | int |
 | fileUris (például) | `https://github.com/MyProject/Archive/MyPythonScript.py` | array |
-| commandToExecute (például) | Python-MyPythonScript.py\<my-param1\> | sztring |
+| commandToExecute (például) | Python-MyPythonScript.py \<my-param1\> | sztring |
 | enableInternalDNSCheck | true | boolean |
 | storageAccountName (például) | examplestorageacct | sztring |
 | storageAccountKey (például) | TmJK/1N3AbAZ3q/+ hOXoi/l73zOqsaxXDhqa9Y83/v5UpXQp2DQIBuv2Tifp60cE/OaHsJZmQZ7teQfczQj8hg = = | sztring |
@@ -295,7 +295,7 @@ Néhány Megjegyzés:
 
 1. Az engedélyezés az, amikor a parancs elindul.
 1. A letöltés az Azure-ból származó CustomScript-bővítmény-csomag letöltésére vonatkozik, nem a fileUris megadott parancsfájl-fájlokra.
-1. Azt is megtekintheti, hogy melyik naplófájlba írja a rendszer`/var/log/azure/Microsoft.OSTCExtensions.CustomScriptForLinux/1.5.2.2/extension.log`
+1. Azt is megtekintheti, hogy melyik naplófájlba írja a rendszer `/var/log/azure/Microsoft.OSTCExtensions.CustomScriptForLinux/1.5.2.2/extension.log`
 
 A következő lépés a naplófájl bejelölése, ez a formátum:
 

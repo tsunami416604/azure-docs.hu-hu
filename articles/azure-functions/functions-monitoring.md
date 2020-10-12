@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 04/04/2019
 ms.custom: devx-track-csharp, fasttrack-edit
 ms.openlocfilehash: 239d1da028a06d4272ed9b22b624413394aa142f
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88212991"
 ---
 # <a name="monitor-azure-functions"></a>Az Azure Functions monitorozása
@@ -64,7 +64,7 @@ A Application Insights használatáról az [Application Insights dokumentációj
 
 Az Application Insights következő területei hasznosak lehetnek a függvények viselkedésének, teljesítményének és hibáinak kiértékelése során:
 
-| Vizsgálat | Description |
+| Vizsgálat | Leírás |
 | ---- | ----------- |
 | **[Hibák](../azure-monitor/app/asp-net-exceptions.md)** |  Diagramok és riasztások létrehozása a függvények hibái és a kiszolgálói kivételek alapján. A **művelet** neve a függvény neve. A függőségek meghibásodása csak akkor jelenik meg, ha egyéni telemetria valósít meg a függőségekhez. |
 | **[Teljesítmény](../azure-monitor/app/performance-counters.md)** | A teljesítménnyel kapcsolatos problémák elemzéséhez tekintse meg az erőforrás-kihasználtságot és az átviteli sebességet a **felhőalapú szerepkör példányain**. Ez az adat hasznos lehet olyan forgatókönyvek hibakereséséhez, ahol a függvények a mögöttes erőforrások leállását végzik. |
@@ -143,7 +143,7 @@ A Azure Functions naplózó *naplózási szintet* is tartalmaz minden naplóval.
 |Figyelmeztetés     | 3 |
 |Hiba       | 4 |
 |Kritikus    | 5 |
-|Nincsenek        | 6 |
+|Nincs        | 6 |
 
 A naplózási szintet `None` a következő szakaszban ismertetjük. 
 
@@ -724,7 +724,7 @@ az functionapp config appsettings delete --name <FUNCTION_APP_NAME> \
 --setting-names SCALE_CONTROLLER_LOGGING_ENABLED
 ```
 
-## <a name="disable-built-in-logging"></a>Beépített naplózás letiltása
+## <a name="disable-built-in-logging"></a>A beépített naplózás letiltása
 
 A Application Insights engedélyezésekor tiltsa le az Azure Storage-t használó beépített naplózást. A beépített naplózás hasznos a könnyű számítási feladatokkal történő teszteléshez, de nem a nagy terhelésű éles használathoz. Éles monitorozáshoz ajánlott Application Insights. Ha a beépített naplózást éles környezetben használja, előfordulhat, hogy a naplózási rekord nem fejeződött be az Azure Storage-ban való szabályozás miatt.
 

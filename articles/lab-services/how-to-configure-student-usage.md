@@ -4,10 +4,10 @@ description: Megtudhatja, hogyan konfigurálhatja a tanulók számát a laborban
 ms.topic: article
 ms.date: 06/26/2020
 ms.openlocfilehash: 742fcd2b504bce7ad2257edd559e4b66a9172d24
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91399669"
 ---
 # <a name="add-and-manage-lab-users"></a>Tesztkörnyezeti felhasználók létrehozása és felügyelete
@@ -208,7 +208,7 @@ Ha még nem csatolták GitHub-fiókját egy Microsoft-fiókhoz, a következőket
     ![A "CSV exportálása" gomb](./media/how-to-export-users-virtual-machines-csv/users-export-csv.png)
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Lásd az alábbi cikkeket:
 
 - Rendszergazdáknak: [labor-fiókok létrehozása és kezelése](how-to-manage-lab-accounts.md)

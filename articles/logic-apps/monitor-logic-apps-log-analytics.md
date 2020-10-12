@@ -7,10 +7,10 @@ ms.reviewer: divswa, logicappspm
 ms.topic: article
 ms.date: 09/24/2020
 ms.openlocfilehash: 5df596560e97ea9dba38dca4d4ca58e38caabd37
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91333953"
 ---
 # <a name="set-up-azure-monitor-logs-and-collect-diagnostics-data-for-azure-logic-apps"></a>Azure Monitor naplók beállítása és diagnosztikai adatok összegyűjtése Azure Logic Apps
@@ -114,7 +114,7 @@ Ha [Azure monitor naplókban](../azure-monitor/platform/data-platform-logs.md)l�
 
    1. Amikor elkészült, válassza a **Mentés** lehetőséget.
 
-   Például:
+   Példa:
 
    ![Válassza ki Log Analytics munkaterületet és az adataikat a naplózáshoz](./media/monitor-logic-apps-log-analytics/send-diagnostics-data-log-analytics-workspace.png)
 
@@ -181,7 +181,7 @@ A Azure Monitor naplókkal együtt kiterjesztheti a logikai alkalmazás diagnosz
 * [Azure-beli erőforrás-naplók archiválása a Storage-fiókba](../azure-monitor/platform/resource-logs.md#send-to-azure-storage)
 * [Azure platform-naplók továbbítása az Azure Event Hubsba](../azure-monitor/platform/resource-logs.md#send-to-azure-event-hubs)
 
-Ezt követően valós idejű monitorozást érhet el a telemetria és az Analytics használatával más szolgáltatásokból, például a [Azure stream Analytics](../stream-analytics/stream-analytics-introduction.md) és az [Power bi](../azure-monitor/platform/powerbi.md). Például:
+Ezt követően valós idejű monitorozást érhet el a telemetria és az Analytics használatával más szolgáltatásokból, például a [Azure stream Analytics](../stream-analytics/stream-analytics-introduction.md) és az [Power bi](../azure-monitor/platform/powerbi.md). Példa:
 
 * [Stream-adatok Event Hubsról Stream Analytics](../stream-analytics/stream-analytics-define-inputs.md)
 * [Adatfolyamok elemzése Stream Analytics és valós idejű elemzési irányítópult létrehozása Power BI](../stream-analytics/stream-analytics-power-bi-dashboard.md)

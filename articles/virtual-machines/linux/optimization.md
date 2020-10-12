@@ -9,10 +9,10 @@ ms.date: 09/06/2016
 ms.author: rclaus
 ms.subservice: disks
 ms.openlocfilehash: eff512c9d050eb293391233848fcece83e845680
-ms.sourcegitcommit: 271601d3eeeb9422e36353d32d57bd6e331f4d7b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/20/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88654191"
 ---
 # <a name="optimize-your-linux-vm-on-azure"></a>Linux rendszerű virtuális gép optimalizálása az Azure-ban
@@ -123,7 +123,7 @@ Ha a számítási feladatok több IOps igényelnek, mint amennyit csak egyetlen 
 
 A hagyományos RAID-konfiguráció alternatívájaként azt is megteheti, hogy a logikai kötet-kezelőt (LVM) is telepíti úgy, hogy több fizikai lemezt is konfiguráljon egyetlen csíkozott logikai tárolási kötetre. Ebben a konfigurációban az olvasások és írások elosztása a mennyiségi csoportban található több lemezre történik (a RAID0-hez hasonlóan). A teljesítmény szempontjából valószínű, hogy a logikai kötetek csíkozását szeretné használni, így az olvasás és az írás az összes csatlakoztatott adatlemezt felhasználja.  A csíkozott logikai kötetek Azure-beli Linux rendszerű virtuális gépen való konfigurálásával kapcsolatos további részleteket az **[LVM konfigurálása az Azure-ban linuxos virtuális gépen](configure-lvm.md?toc=%2fazure%2fvirtual-machines%2flinux%2ftoc.json)** című témakörben találhat.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 Ne feledje, ahogy az összes optimalizálási vitafórumhoz hasonlóan az egyes módosítások előtt és után is végre kell hajtania a teszteket, hogy mérjék a változás hatását.  Az optimalizálás egy lépésről lépésre haladó folyamat, amely különböző eredményekkel rendelkezik a környezet különböző gépei között.  Előfordulhat, hogy az egyik konfiguráció működése nem működik mások számára.
 
 Néhány hasznos hivatkozás további erőforrásokra:

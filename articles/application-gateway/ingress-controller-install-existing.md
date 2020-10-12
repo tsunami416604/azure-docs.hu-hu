@@ -8,10 +8,10 @@ ms.topic: how-to
 ms.date: 11/4/2019
 ms.author: caya
 ms.openlocfilehash: 0652c49acf58a52244cc27ae3e59120ac7f03858
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84807105"
 ---
 # <a name="install-an-application-gateway-ingress-controller-agic-using-an-existing-application-gateway"></a>Application Gateway beáramlási vezérlő (AGIC) telepítése meglévő Application Gateway használatával
@@ -79,7 +79,7 @@ A [HRE Pod Identity telepítési utasításait](https://github.com/Azure/aad-pod
 Ezután létre kell hoznia egy Azure-identitást, és hozzá kell adnia az IT-részleg engedélyeit.
 A [Cloud Shell](https://shell.azure.com/) használatával futtassa az alábbi parancsokat, és hozzon létre egy identitást:
 
-1. Hozzon létre egy Azure-identitást **ugyanabban az erőforráscsoporthoz, amelyben az AK-csomópontok vannak**. A megfelelő erőforráscsoport kiválasztása fontos. Az alábbi parancsban szükséges erőforráscsoport *nem* az AK-portál ablaktáblán hivatkozott. Ez a `aks-agentpool` virtuális gépek erőforráscsoport. Általában ez az erőforráscsoport kezdődik, `MC_` és tartalmazza az AK nevét. Például:`MC_resourceGroup_aksABCD_westus`
+1. Hozzon létre egy Azure-identitást **ugyanabban az erőforráscsoporthoz, amelyben az AK-csomópontok vannak**. A megfelelő erőforráscsoport kiválasztása fontos. Az alábbi parancsban szükséges erőforráscsoport *nem* az AK-portál ablaktáblán hivatkozott. Ez a `aks-agentpool` virtuális gépek erőforráscsoport. Általában ez az erőforráscsoport kezdődik, `MC_` és tartalmazza az AK nevét. Például: `MC_resourceGroup_aksABCD_westus`
 
     ```azurecli
     az identity create -g <agent-pool-resource-group> -n <identity-name>
@@ -91,9 +91,9 @@ A [Cloud Shell](https://shell.azure.com/) használatával futtassa az alábbi pa
     az identity show -g <resourcegroup> -n <identity-name>
     ```
 
-1. Adja meg az identitás `Contributor` hozzáférést a Application Gatewayhoz. Ehhez szüksége lesz a Application Gateway AZONOSÍTÓra, amely a következőhöz hasonlóan fog kinézni:`/subscriptions/A/resourceGroups/B/providers/Microsoft.Network/applicationGateways/C`
+1. Adja meg az identitás `Contributor` hozzáférést a Application Gatewayhoz. Ehhez szüksége lesz a Application Gateway AZONOSÍTÓra, amely a következőhöz hasonlóan fog kinézni: `/subscriptions/A/resourceGroups/B/providers/Microsoft.Network/applicationGateways/C`
 
-    Az előfizetésben található Application Gateway-azonosítók listájának lekérése a alábbiakkal:`az network application-gateway list --query '[].id'`
+    Az előfizetésben található Application Gateway-azonosítók listájának lekérése a alábbiakkal: `az network application-gateway list --query '[].id'`
 
     ```azurecli
     az role assignment create \
@@ -102,7 +102,7 @@ A [Cloud Shell](https://shell.azure.com/) használatával futtassa az alábbi pa
         --scope <App-Gateway-ID>
     ```
 
-1. Adja meg az identitás `Reader` hozzáférését az Application Gateway erőforráscsoporthoz. Az erőforráscsoport-azonosító a következőképpen fog kinézni: `/subscriptions/A/resourceGroups/B` . Az összes erőforráscsoport az alábbiakkal szerezhető be:`az group list --query '[].id'`
+1. Adja meg az identitás `Reader` hozzáférését az Application Gateway erőforráscsoporthoz. Az erőforráscsoport-azonosító a következőképpen fog kinézni: `/subscriptions/A/resourceGroups/B` . Az összes erőforráscsoport az alábbiakkal szerezhető be: `az group list --query '[].id'`
 
     ```azurecli
     az role assignment create \
@@ -245,7 +245,7 @@ A letöltött zip-fájl JSON-sablonokat, bash-és PowerShell-parancsfájlokat ta
 
 ### <a name="example-scenario"></a>Példaforgatókönyv
 Tekintsük át a két webhely forgalmát kezelő képzeletbeli Application Gateway:
-  - `dev.contoso.com`-egy új AK-ban üzemeltetve, Application Gateway és AGIC használatával
+  - `dev.contoso.com` -egy új AK-ban üzemeltetve, Application Gateway és AGIC használatával
   - `prod.contoso.com`- [Azure virtuálisgép-méretezési csoporton](https://azure.microsoft.com/services/virtual-machine-scale-sets/) üzemeltetve
 
 Az alapértelmezett beállításokkal a AGIC 100%-os tulajdonjogot feltételez a Application Gateway számára. A AGIC felülírja az összes app Gateway konfigurációját. Ha manuálisan szeretne létrehozni egy figyelőt a `prod.contoso.com` (Application Gateway) számára, anélkül, hogy a Kubernetes Beérkezők határozzák meg, a AGIC másodpercek alatt törli a `prod.contoso.com` konfigurációt.

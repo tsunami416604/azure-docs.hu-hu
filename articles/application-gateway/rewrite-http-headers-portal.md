@@ -9,17 +9,17 @@ ms.date: 11/13/2019
 ms.author: absha
 ms.custom: mvc
 ms.openlocfilehash: 4626d40acc9ae84e7fcc5da16add0de7ffe6ffcc
-ms.sourcegitcommit: 877491bd46921c11dd478bd25fc718ceee2dcc08
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/02/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "84807895"
 ---
 # <a name="rewrite-http-request-and-response-headers-with-azure-application-gateway---azure-portal"></a>HTTP-kérelem és válasz-fejlécek újraírása az Azure Application Gateway-Azure Portal
 
 Ez a cikk azt ismerteti, hogyan használható a Azure Portal egy [Application Gateway v2 SKU](<https://docs.microsoft.com/azure/application-gateway/application-gateway-autoscaling-zone-redundant>) -példány konfigurálásához a HTTP-fejlécek újraírásához a kérelmekben és a válaszokban.
 
-Ha még nincs Azure-előfizetése, kezdés előtt hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F).
+Ha nem rendelkezik Azure-előfizetéssel, hozzon létre egy [ingyenes fiókot](https://azure.microsoft.com/free/?WT.mc_id=A261C142F), mielőtt hozzákezd.
 
 ## <a name="before-you-begin"></a>Előkészületek
 
@@ -49,7 +49,7 @@ Több, a HTTP-fejléc Újraírási készletét is létrehozhatja, és az egyes �
 
 ## <a name="sign-in-to-azure"></a>Bejelentkezés az Azure-ba
 
-Jelentkezzen be az [Azure Portalba](https://portal.azure.com/) az Azure-fiókjával.
+Jelentkezzen be az [Azure Portalra](https://portal.azure.com/) az Azure-fiókjával.
 
 ## <a name="configure-header-rewrite"></a>Fejléc újraírásának konfigurálása
 
@@ -67,7 +67,7 @@ Ebben a példában egy átirányítási URL-címet módosítunk a háttérbeli a
 
    - Adja meg az Újraírási készlet nevét a **név** mezőben.
    - Válasszon ki egyet vagy többet a **társított útválasztási szabályok** listában felsorolt szabályok közül. Csak olyan szabályokat választhat ki, amelyek nincsenek társítva más Újraírási készletekhez. A más Újraírási készletekhez már társított szabályok szürkén jelennek meg.
-   - Válassza a **Tovább** lehetőséget.
+   - Kattintson a **Tovább** gombra.
    
      ![Név és társítás hozzáadása](media/rewrite-http-headers-portal/name-and-association.png)
 
@@ -85,7 +85,7 @@ Ebben a példában egy átirányítási URL-címet módosítunk a háttérbeli a
 
    - Válassza a **feltétel hozzáadása** lehetőséget, majd jelölje be az **IF** utasítást tartalmazó jelölőnégyzetet a kibontásához.
 
-     ![Feltétel felvétele](media/rewrite-http-headers-portal/add-condition.png)
+     ![Feltétel hozzáadása](media/rewrite-http-headers-portal/add-condition.png)
 
    - A megjelenő **változó típusa** mezőben válassza a **http-fejléc**lehetőséget.
 
@@ -99,9 +99,9 @@ Ebben a példában egy átirányítási URL-címet módosítunk a háttérbeli a
 
    - Az **operátor** listában válassza az **EQUAL (=)** elemet.
 
-   - Adjon meg egy reguláris kifejezési mintát. Ebben a példában a mintázatot fogjuk használni `(https?):\/\/.*azurewebsites\.net(.*)$` .
+   - Adjon meg egy reguláris kifejezési mintát. Ebben a példában a mintázatot fogjuk használni  `(https?):\/\/.*azurewebsites\.net(.*)$` .
 
-   - Válassza az **OK** lehetőséget.
+   - Kattintson az **OK** gombra.
 
      ![If feltétel konfigurálása](media/rewrite-http-headers-portal/condition.png)
 
@@ -117,7 +117,7 @@ Ebben a példában egy átirányítási URL-címet módosítunk a háttérbeli a
 
    - Adja meg a fejléc értékét. Ebben a példában `{http_resp_Location_1}://contoso.com{http_resp_Location_2}` a fejléc értékét fogjuk használni. Ez az érték a *azurewebsites.net* és a *contoso.com* értéket fogja lecserélni a Location fejlécben.
 
-   - Válassza az **OK** lehetőséget.
+   - Kattintson az **OK** gombra.
 
      ![Művelet hozzáadása](media/rewrite-http-headers-portal/action.png)
 

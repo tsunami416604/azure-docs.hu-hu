@@ -16,10 +16,10 @@ ms.topic: article
 ms.date: 07/23/2018
 ms.author: genli
 ms.openlocfilehash: 477f38e18f1bee881e4a9df23dd37048f39549be
-ms.sourcegitcommit: 3d79f737ff34708b48dd2ae45100e2516af9ed78
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/23/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "87092745"
 ---
 # <a name="configuration-and-management-issues-for-azure-cloud-services-frequently-asked-questions-faqs"></a>Az Azure Cloud Services konfigurálásával és kezelésével kapcsolatos problémák: gyakori kérdések (GYIK)
@@ -192,13 +192,13 @@ A Microsoft folyamatosan figyeli a kiszolgálókat, a hálózatokat és az alkal
 A Windows 10 és a Windows Server 2016 támogatja a HTTP/2-t mind az ügyfél, mind a kiszolgáló oldalon. Ha az ügyfél (böngésző) a TLS protokollon keresztül csatlakozik az IIS-kiszolgálóhoz, amely TLS-bővítményekkel egyeztet a HTTP/2 protokollon keresztül, akkor nem kell módosítania a kiszolgálót. Ennek az az oka, hogy a TLS-n keresztül a HTTP/2 használatát megadó H2-14 fejléc alapértelmezés szerint elküldésre kerül. Ha viszont az ügyfél egy frissítési fejlécet küld a HTTP/2 verzióra való frissítéshez, akkor az alábbi módosítást kell végrehajtania a kiszolgáló oldalon, hogy a frissítés működőképes legyen, és egy HTTP/2-alapú kapcsolatban legyen. 
 
 1. regedit.exe futtatása.
-2. Keresse meg a beállításkulcsot: HKEY_LOCAL_MACHINE \SYSTEM\CurrentControlSet\Services\HTTP\Parameters.
+2. Keresse meg a következő beállításkulcsot: HKEY_LOCAL_MACHINE\SYSTEM\CurrentControlSet\Services\HTTP\Parameters.
 3. Hozzon létre egy új, **DuoEnabled**nevű DWORD értéket.
 4. Állítsa az értékét 1-re.
 5. Indítsa újra a kiszolgálót.
 6. Nyissa meg az **alapértelmezett** webhelyet, és a **kötések**területen hozzon létre egy új TLS-kötést az imént létrehozott önaláírt tanúsítvánnyal. 
 
-További információ:
+További információkért lásd:
 
 - [HTTP/2 az IIS-kiszolgálón](https://blogs.iis.net/davidso/http2)
 - [Videó: HTTP/2 a Windows 10-es verzióban: böngésző, alkalmazások és webkiszolgáló](https://channel9.msdn.com/Events/Build/2015/3-88)
@@ -231,7 +231,7 @@ A Microsoft szigorú eljárást követ, amely nem teszi lehetővé a belső mér
 Ez a hiba akkor fordulhat elő, ha az RDP-fájlt egy Azure Active Directoryhoz csatlakoztatott gépről használja. A probléma megoldásához kövesse az alábbi lépéseket:
 
 1. Kattintson a jobb gombbal a letöltött RDP-fájlra, majd válassza a **Szerkesztés**lehetőséget.
-2. Adja hozzá a "&#92;" előtagot a Felhasználónév előtt. Használja például a **.\username** **nevet a Felhasználónév**helyett.
+2. Adja hozzá a "&#92;" előtagot a Felhasználónév előtt. Használja például a **.\username**  **nevet a Felhasználónév**helyett.
 
 ## <a name="scaling"></a>Méretezés
 

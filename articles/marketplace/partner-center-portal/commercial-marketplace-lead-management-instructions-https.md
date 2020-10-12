@@ -8,10 +8,10 @@ author: keferna
 ms.author: keferna
 ms.date: 03/30/2020
 ms.openlocfilehash: 3cdbe1f3428418f082d53febca950a6a443fe5ff
-ms.sourcegitcommit: d7008edadc9993df960817ad4c5521efa69ffa9f
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86120368"
 ---
 # <a name="use-an-https-endpoint-to-manage-commercial-marketplace-leads"></a>HTTPS-végpont használata a kereskedelmi Piactéri érdeklődők felügyeletéhez
@@ -173,7 +173,7 @@ Ez a cikk azt ismerteti, hogyan hozhat létre egy új folyamatot a Power Gyorsb�
    - **Törzs**: a dinamikus tartalom kiválasztása listából adja hozzá a kívánt adatokat az e-mail törzsébe. Használhatja például a LastName, a FirstName, az E-mail és a Company címet. Ha elkészült az e-mail-értesítés beállításával, az a következő képernyőn látható példához hasonlóan néz ki.
 
 
-       ![Értesítő e-mail – példa](./media/commercial-marketplace-lead-management-instructions-https/send-an-email.png)
+       ![Példa e-mail-értesítésre](./media/commercial-marketplace-lead-management-instructions-https/send-an-email.png)
 
 1. A folyamat befejezéséhez kattintson a **Mentés** gombra. A rendszer létrehoz egy HTTP POST URL-címet, és elérhetővé válik a **http-kérelem fogadása** ablakban. Másolja ezt az URL-t a másolás vezérlőelem használatával, amely a HTTP POST URL-cím jobb oldalán található. A vezérlő használata fontos, hogy ne hagyjon ki a teljes URL-cím egyik részét sem. Mentse ezt az URL-címet, mert szüksége lesz rá, amikor a közzétételi portálon konfigurálja az érdeklődők felügyeletét.
 
@@ -219,7 +219,7 @@ A konfigurációt a [Poster](https://app.getpostman.com/app/download/win64)segí
     >[!NOTE] 
     >Ha nem lát e-mailt a tesztből, ellenőrizze a levélszemét és a levélszemét mappáját. A következő képernyőn megfigyelheti, hogy csak az e-mail-értesítések konfigurálásakor hozzáadott mezők szerepelnek. Ha ez az ajánlat által generált tényleges érdeklődő volt, akkor a törzsben és a Tárgy sorban lévő érdeklődői kapcsolattartótól származó tényleges adatokat is látni fogja.
 
-   ![E-mail érkezett](./media/commercial-marketplace-lead-management-instructions-https/email-received.png)
+   ![Fogadott e-mail](./media/commercial-marketplace-lead-management-instructions-https/email-received.png)
 
 ## <a name="configure-your-offer-to-send-leads-to-the-https-endpoint"></a>Az ajánlat beállítása a HTTPS-végpontnak küldött érdeklődők küldésére
 
@@ -238,7 +238,7 @@ Ha készen áll az ajánlathoz tartozó érdeklődő-felügyeleti információk 
 
 1. A **kapcsolattartási e-mail**cím alatt adja meg a vállalat azon tagjainak e-mail-címeit, akiknek új érdeklődő fogadása esetén e-mail-értesítéseket kell kapniuk. A pontosvesszővel elválasztva több e-mailt is megadhat.
 
-1. Válassza az **OK** lehetőséget.
+1. Kattintson az **OK** gombra.
 
 Az **Érvényesítés** gombra kattintva győződjön meg arról, hogy sikeresen csatlakozott egy érdeklődői célhoz. Ha a művelet sikeres, a vezető célhelyen egy teszt vezet.
 

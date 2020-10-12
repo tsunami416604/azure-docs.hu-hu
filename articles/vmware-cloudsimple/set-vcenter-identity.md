@@ -9,10 +9,10 @@ ms.service: azure-vmware-cloudsimple
 ms.reviewer: cynthn
 manager: dikamath
 ms.openlocfilehash: f6f3b10219775adb02d47a91da2573ea99f30ac0
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88212260"
 ---
 # <a name="set-up-vcenter-identity-sources-to-use-active-directory"></a>VCenter-identitások beállítása a Active Directory használatára
@@ -45,9 +45,9 @@ Ez az útmutató ismerteti azokat a feladatokat, amelyekkel Active Directory tar
 > [!IMPORTANT]
 > **A Active Directory (integrált Windows-hitelesítés) nem támogatott.** Csak az LDAP-kapcsolaton keresztüli Active Directory támogatott az identitás forrásaként.
 
-## <a name="add-on-premises-active-directory-as-a-single-sign-on-identity-source"></a>Helyszíni Active Directory hozzáadása egyszeri bejelentkezési identitás forrásaként
+## <a name="add-on-premises-active-directory-as-a-single-sign-on-identity-source"></a>Helyszíni Active Directory hozzáadása egyetlen Sign-On Identity forrásként
 
-Ha a helyszíni Active Directory egyszeri bejelentkezési identitás forrásaként szeretné beállítani, a következőkre lesz szüksége:
+Ha a helyszíni Active Directory egyetlen Sign-On Identity forrásként szeretné beállítani, a következőkre lesz szüksége:
 
 * [Helyek közötti VPN-kapcsolat](vpn-gateway.md#set-up-a-site-to-site-vpn-gateway) a helyszíni adatközpontból a saját felhőbe.
 * A helyszíni DNS-kiszolgáló IP-címe a vCenter és a platform Services-vezérlőhöz (PSC) lett hozzáadva.
@@ -67,10 +67,10 @@ A Active Directory tartományának beállításakor használja az alábbi tábl�
 | **Felhasználónév** | Azon felhasználó azonosítója, aki legalább olvasási hozzáféréssel rendelkezik a felhasználók és csoportok alapszintű DN-hez. |
 | **Jelszó** | A Felhasználónév által megadott felhasználó jelszava. |
 
-Ha az előző táblázatban szereplő adatokkal rendelkezik, a helyszíni Active Directory egyszeri bejelentkezési identitásként adhatja hozzá a vCenter-on.
+Ha az előző táblázatban szereplő adatokkal rendelkezik, a helyszíni Active Directory a vCenter egyetlen Sign-On Identity forrásaként is hozzáadhatja.
 
 > [!TIP]
-> A [VMware dokumentációs oldalán](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.psc.doc/GUID-B23B1360-8838-4FF2-B074-71643C4CB040.html)találhat további információt az egyszeri bejelentkezési azonosítók forrásairól.
+> A [VMware dokumentációs oldalán](https://docs.vmware.com/en/VMware-vSphere/6.5/com.vmware.psc.doc/GUID-B23B1360-8838-4FF2-B074-71643C4CB040.html)találhat további információt az egyes Sign-On identitási forrásokról.
 
 ## <a name="set-up-new-active-directory-on-a-private-cloud"></a>Új Active Directory beállítása privát felhőben
 
@@ -103,9 +103,9 @@ A Active Directory tartomány beállítása után az új Active Directoryhoz [ho
 
 ## <a name="set-up-active-directory-on-azure"></a>Active Directory beállítása az Azure-ban
 
-Az Azure-on futó Active Directory hasonló a helyileg futó Active Directoryhoz.  Ha az Azure-ban futó Active Directoryt egyszeri bejelentkezési vCenter szeretné beállítani, akkor a vCenter-kiszolgálónak és a PSC-nek hálózati kapcsolattal kell rendelkeznie az Azure Virtual Network, ahol Active Directory szolgáltatások futnak.  Ezt a kapcsolatot az [azure Virtual Network kapcsolattal](azure-expressroute-connection.md) is létrehozhatja az Azure Virtual Network ExpressRoute használatával, ahol Active Directory szolgáltatások futnak a CloudSimple.
+Az Azure-on futó Active Directory hasonló a helyileg futó Active Directoryhoz.  Ha az Azure-ban futó Active Directoryt egyetlen Sign-On vCenter szeretné beállítani, akkor a vCenter-kiszolgálónak és a PSC-nek hálózati kapcsolattal kell rendelkeznie az Azure Virtual Network, ahol Active Directory szolgáltatások futnak.  Ezt a kapcsolatot az [azure Virtual Network kapcsolattal](azure-expressroute-connection.md) is létrehozhatja az Azure Virtual Network ExpressRoute használatával, ahol Active Directory szolgáltatások futnak a CloudSimple.
 
-A hálózati kapcsolatok létrejötte után kövesse a helyszíni [Active Directory hozzáadása egyszeri bejelentkezési identitásként](#add-on-premises-active-directory-as-a-single-sign-on-identity-source) című témakör lépéseit, és adja hozzá az azonosító forrásként.  
+A hálózati kapcsolatok létrejötte után kövesse a helyszíni [Active Directory hozzáadása egyetlen Sign-On Identity forrásként](#add-on-premises-active-directory-as-a-single-sign-on-identity-source) című témakör lépéseit az azonosító forrásként való hozzáadásához.  
 
 ## <a name="add-an-identity-source-on-vcenter"></a>Identity forrás hozzáadása a vCenter
 

@@ -9,10 +9,10 @@ ms.subservice: language-understanding
 ms.topic: reference
 ms.date: 09/29/2019
 ms.openlocfilehash: 384d3df2de551e7c79f13a0fe47ffb26c7825f1b
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91539286"
 ---
 # <a name="simple-entity"></a>Egyszerű entitás
@@ -90,7 +90,7 @@ This is the JSON if `verbose=true` is set in the query string:
 |--|--|--|
 |Egyszerű entitás|`Customer`|`bob jones`|
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 > [!div class="nextstepaction"]
 > [A minta szintaxisának megismerése](reference-pattern-syntax.md)

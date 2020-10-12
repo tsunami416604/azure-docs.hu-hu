@@ -11,10 +11,10 @@ ms.date: 09/05/2019
 ms.author: xiaoyul
 ms.reviewer: nibruno; jrasnick
 ms.openlocfilehash: 7c7109999d478121ba0251de8e7470bc0f38d64c
-ms.sourcegitcommit: bdd5c76457b0f0504f4f679a316b959dcfabf1ef
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/22/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "90984112"
 ---
 # <a name="performance-tune-with-materialized-views"></a>Teljesítmény-Finomhangolás az anyagbeli nézetekkel
@@ -115,7 +115,7 @@ A kimutatott nézetek számának csökkentésére szolgáló beállítások:
 
 - Dobja el az alacsony kihasználtságú vagy már nem szükséges anyagbeli nézeteket.  A letiltott anyagbeli nézet nem tart fenn, de továbbra is A tárolási költségekkel jár.  
 
-- Összekapcsolhatja az azonos vagy hasonló alaptáblákon létrehozott, az adatok átfedését még akkor is, ha az adatok nem fedik át egymást.  A jelentős nézetek kombinálásával a különálló nézetek összege nagyobb méretű nézetet eredményezhet, a karbantartási költségeket azonban csökkenteni kell.  Például:
+- Összekapcsolhatja az azonos vagy hasonló alaptáblákon létrehozott, az adatok átfedését még akkor is, ha az adatok nem fedik át egymást.  A jelentős nézetek kombinálásával a különálló nézetek összege nagyobb méretű nézetet eredményezhet, a karbantartási költségeket azonban csökkenteni kell.  Példa:
 
 ```sql
 

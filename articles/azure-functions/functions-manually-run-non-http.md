@@ -6,10 +6,10 @@ ms.topic: article
 ms.date: 04/23/2020
 ms.author: cshoe
 ms.openlocfilehash: 79aebf7ed80fea370ff7a5d5cc40911da4144414
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91537701"
 ---
 # <a name="manually-run-a-non-http-triggered-function"></a>Nem HTTP által aktivált függvény manuális futtatása
@@ -79,7 +79,7 @@ Nyissa meg a Poster-t, és kövesse az alábbi lépéseket:
 
     :::image type="content" source="./media/functions-manually-run-non-http/azure-portal-functions-master-key-logs.png" alt-text="Keresse meg a másolandó főkulcsot." border="true":::
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - [Kódtesztelési stratégiák az Azure Functions szolgáltatásban](./functions-test-a-function.md)
 - [Az Azure Function Event Grid helyi hibakeresést indít](./functions-debug-event-grid-trigger-local.md)

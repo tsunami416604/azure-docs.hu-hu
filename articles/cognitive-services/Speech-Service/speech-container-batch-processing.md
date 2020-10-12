@@ -11,10 +11,10 @@ ms.topic: conceptual
 ms.date: 07/07/2020
 ms.author: aahi
 ms.openlocfilehash: 3cd6febfc774b214a8c1ae8553e6c127c4f452fa
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91319078"
 ---
 # <a name="batch-processing-kit-for-speech-containers"></a>Batch Processing Kit a Speech containers szolgáltatáshoz
@@ -25,7 +25,7 @@ A Batch Processing kit használatával kiegészítheti és bővítheti a számí
 
 A Batch Kit tároló ingyenesen elérhető a [githubon](https://github.com/microsoft/batch-processing-kit) és a   [Docker hub](https://hub.docker.com/r/batchkit/speech-batch-kit/tags)-on. [Csak a](speech-container-howto.md#billing) használt beszédfelismerési tárolók kell fizetnie.
 
-| Funkció  | Leírás  |
+| Szolgáltatás  | Leírás  |
 |---------|---------|
 | Köteg hangfájljának eloszlása     | Nagy számú fájl automatikus küldése a helyszíni vagy a felhőalapú beszédfelismerési tároló végpontjai számára. A fájlok bármilyen POSIX-kompatibilis köteten lehetnek, beleértve a hálózati fájlrendszereket is.       |
 | A Speech SDK integrációja | A Speech SDK közös jelzőit továbbíthatja, többek között a következőt: n-Best hipotézisek, diarization, nyelv, káromkodás maszkolása.  |
@@ -118,7 +118,7 @@ A Batch Processing Kit három módot kínál a `--run-mode` paraméter használa
 
 `ONESHOT` a Mode (egy bemeneti könyvtárból és választható fájlokból) származó hangfájlok egyetlen kötegét írja át egy kimeneti mappába.
 
-:::image type="content" source="media/containers/batch-oneshot-mode.png" alt-text="Egy diagram, amely a Batch-Kit tároló oneshot módban történő feldolgozását mutatja.":::
+:::image type="content" source="media/containers/batch-oneshot-mode.png" alt-text="Egy példa batch-Kit-tároló munkafolyamatot bemutató diagram.":::
 
 1. Adja meg azokat a Speech Container-végpontokat, amelyeket a Batch-ügyfél a fájlban fog használni `config.yaml` . 
 2. Helyezzen hangfájlokat az átíráshoz egy bemeneti könyvtárba.  
@@ -133,7 +133,7 @@ A Batch Processing Kit három módot kínál a `--run-mode` paraméter használa
 
 `DAEMON` a Mode egy adott mappában lévő meglévő fájlokat írja át, és folyamatosan átmásolja az új hangfájlokat a hozzáadásuk során.          
 
-:::image type="content" source="media/containers/batch-daemon-mode.png" alt-text="Egy diagram, amely a Batch-Kit tárolók feldolgozási fájljait tartalmazza démon módban.":::
+:::image type="content" source="media/containers/batch-daemon-mode.png" alt-text="Egy példa batch-Kit-tároló munkafolyamatot bemutató diagram.":::
 
 1. Adja meg azokat a Speech Container-végpontokat, amelyeket a Batch-ügyfél a fájlban fog használni `config.yaml` . 
 2. Hívja meg a tárolót egy bemeneti könyvtáron. A Batch-ügyfél megkezdi a bejövő fájlok könyvtárának figyelését. 
@@ -146,7 +146,7 @@ A Batch Processing Kit három módot kínál a `--run-mode` paraméter használa
 
 `REST` a Mode egy API-kiszolgáló mód, amely alapszintű HTTP-végpontokat biztosít a hangfájlok kötegelt küldéséhez, az állapot-ellenőrzéshez és a hosszú lekérdezésekhez. A lehetővé teszi a programozott felhasználást egy Python-modul bővítmény vagy egy almodulként való importálás használatával.
 
-:::image type="content" source="media/containers/batch-rest-api-mode.png" alt-text="Egy diagram, amely a Batch-Kit tárolók feldolgozási fájljait tartalmazza démon módban.":::
+:::image type="content" source="media/containers/batch-rest-api-mode.png" alt-text="Egy példa batch-Kit-tároló munkafolyamatot bemutató diagram.":::
 
 1. Adja meg azokat a Speech Container-végpontokat, amelyeket a Batch-ügyfél a fájlban fog használni `config.yaml` . 
 2. HTTP-kérelmek küldésére vonatkozó kérelem küldése az API-kiszolgáló egyik végpontjának. 

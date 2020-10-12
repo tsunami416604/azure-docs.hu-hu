@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: tutorial
 ms.date: 09/25/2020
 ms.openlocfilehash: 3ecef629e38e2823bea101af47899f9b7d6845f0
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91399839"
 ---
 # <a name="tutorial-build-and-deploy-a-custom-skill-with-azure-machine-learning"></a>Oktatóanyag: egyéni szakértelem létrehozása és üzembe helyezése Azure Machine Learning 
@@ -82,15 +82,15 @@ A jegyzetfüzet 4. szakasza négy olyan cellával rendelkezik, amelyek frissíti
 
 A portálon lépjen a Készségkészlet elemre, és válassza ki a Készségkészlet-definíció (JSON) hivatkozást. A portál megjeleníti a készségkészlet tartozó JSON-t, amely a jegyzetfüzet első cellájában lett létrehozva. A megjelenítéstől jobbra legördülő menü látható, ahol kiválaszthatja a szakértelem-definíciós sablont. Válassza ki a Azure Machine Learning (pénzmosás) sablont. adja meg az Azure ML-munkaterület nevét és a végpontot, amelyet a rendszer a következtetési fürtön üzembe helyezett modellhez használt. A sablon a végpont URI-ja és kulcsa alapján lesz frissítve.
 
-> :::image type="content" source="media/cognitive-search-aml-skill/portal-aml-skillset-definition.png" alt-text="Készségkészlet-definíciós sablon":::
+> :::image type="content" source="media/cognitive-search-aml-skill/portal-aml-skillset-definition.png" alt-text="Készségkészlet-definíciós sablon&quot;:::
 
 Másolja a készségkészlet sablont az ablakból, és illessze be a készségkészlet-definícióba a bal oldalon. Szerkessze a sablont, hogy a hiányzó értékeket adja meg a következőhöz:
 
 * Név
 * Leírás
 * Környezet
-* "bemenetek" neve és forrása
-* "outputs" neve és targetName
+* &quot;bemenetek&quot; neve és forrása
+* &quot;outputs" neve és targetName
 
 Mentse a készségkészlet.
 

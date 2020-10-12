@@ -8,10 +8,10 @@ ms.service: web-application-firewall
 ms.date: 02/01/2020
 ms.author: victorh
 ms.openlocfilehash: 10a90a7f94633fac52086953697eb90a98d9509d
-ms.sourcegitcommit: 5cace04239f5efef4c1eed78144191a8b7d7fee8
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 07/08/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "86143843"
 ---
 # <a name="azure-web-application-firewall-waf-policy-overview"></a>Az Azure webalkalmazási tűzfal (WAF) szabályzatának áttekintése
@@ -33,9 +33,9 @@ Ha egyetlen szabályzatot szeretne alkalmazni az összes webhelyre, társíthatj
 
 ## <a name="per-site-waf-policy"></a>Helyek közötti WAF szabályzat
 
-A helyek közötti WAF házirendek segítségével több, különböző biztonsági igényekkel rendelkező helyet is megadhat egy WAF mögött. Ha például öt hely van a WAF mögött, öt különálló WAF-szabályzat közül választhat (egyet az egyes figyelőknél) a kizárások, az egyéni szabályok, a felügyelt szabálykészlet és az egyes helyek összes többi WAF-beállításának testreszabásához.
+A webhelyenként eltérő WAF-szabályzatokkal több, különböző biztonsági igényekkel rendelkező webhelyet is védelem alá helyezhet egyetlen WAF mögött. Ha például öt webhely található a WAF mögött, akkor megadhat öt különálló WAF-szabályzatot (figyelőnként egyet), így testre szabhatja a kizárásokat, az egyéni szabályokat, a felügyelt szabálykészleteket és az egyes webhelyek összes többi WAF-beállítását.
 
-Tegyük fel, hogy az Application Gateway globális szabályzatot alkalmaz. Ezután egy másik szabályzatot alkalmaz egy figyelőre az Application Gateway-ben. A figyelő szabályzata most már csak ezt a figyelőt veszi érvénybe. Az Application Gateway globális házirendje továbbra is érvényes minden olyan figyelőre és elérésiút-alapú szabályra, amely nem rendelkezik a hozzájuk rendelt házirenddel.
+Tegyük fel, hogy az Application Gateway esetében érvényben van egy globális szabályzat. Az Application Gateway egyik figyelőjén ezt követően egy másik szabályzatot alkalmaz. Az adott figyelő szabályzata csak azon az egy figyelőn érvényes. Az Application Gateway globális szabályzata továbbra is érvényes az összes többi olyan figyelőre és elérésiút-alapú szabályra, amelyeknek nincs külön hozzárendelt szabályzatuk.
 
 ## <a name="per-uri-policy"></a>URI-szabályzat
 

@@ -9,10 +9,10 @@ ms.service: cognitive-search
 ms.topic: conceptual
 ms.date: 06/22/2020
 ms.openlocfilehash: bae4cb72201bbc1653db5bb549d67531bda71d50
-ms.sourcegitcommit: f5580dd1d1799de15646e195f0120b9f9255617b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/29/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91537718"
 ---
 # <a name="query-types-and-composition-in-azure-cognitive-search"></a>Az Azure Cognitive Search lekérdezési típusai és összetétele
@@ -165,7 +165,7 @@ Ha azt szeretné, hogy az Azure Cognitive Search az eredményeket a keresési po
 ### <a name="hit-highlighting"></a>Találatok kiemelése
 Az Azure Cognitive Searchban a keresési lekérdezésnek megfelelő keresési eredmények pontos részét kiemelve a, a és a paraméterek használatával egyszerűen elvégezhető **`highlight`** **`highlightPreTag`** **`highlightPostTag`** . Megadhatja, hogy mely *kereshető* mezőknél legyen kiemelve a párosított szöveg, valamint az Azure Cognitive Search által visszaadott egyező szöveg kezdetéhez és végéhez hozzáfűzni kívánt karakterlánc-címkék pontos megadását.
 
-## <a name="see-also"></a>További információ
+## <a name="see-also"></a>Lásd még
 
 + [A teljes szöveges keresés működése az Azure Cognitive Searchban (lekérdezési elemzési architektúra)](search-lucene-query-architecture.md)
 + [Keresési ablak](search-explorer.md)

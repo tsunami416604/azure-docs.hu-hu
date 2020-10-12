@@ -12,10 +12,10 @@ ms.date: 12/14/2017
 ms.author: swmachan
 ROBOTS: NOINDEX
 ms.openlocfilehash: 1fe370070aa97befb418d27def32725bf0a148b3
-ms.sourcegitcommit: bb0afd0df5563cc53f76a642fd8fc709e366568b
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 05/19/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "83592678"
 ---
 # <a name="how-to-return-n-best-translations"></a>N – legjobb fordítások visszaküldése
@@ -28,7 +28,7 @@ A metódus olyan maxTranslations alternatívákat ad vissza, amelyekben a Delta 
 
 Az aláírás:
 
-**Szintaxis**
+**Syntax**
 
 | C# |
 |:---|
@@ -41,7 +41,7 @@ Az aláírás:
 | appId | **Kötelező megadni** Ha az engedélyezési fejlécet használja, hagyja üresen a AppID mezőt, és írjon be egy olyan karakterláncot, amely tartalmazza a "tulajdonos" + "+" hozzáférési tokent.|
 | szöveg | **Kötelező megadni** A lefordítani kívánt szöveget jelölő sztring. A szöveg mérete nem haladhatja meg a 10000 karaktert.|
 | a | **Kötelező megadni** A lefordítani kívánt szöveg nyelvi kódját jelölő sztring. |
-| erre: | **Kötelező megadni** A szöveg fordítására szolgáló nyelvkód jelölő sztring. |
+| a következőre: | **Kötelező megadni** A szöveg fordítására szolgáló nyelvkód jelölő sztring. |
 | maxTranslations | **Kötelező megadni** Egy int, amely a visszaküldött fordítások maximális számát jelöli. |
 | beállítások | Nem **kötelező** Egy TranslateOptions objektum, amely az alább felsorolt értékeket tartalmazza. Ezek mind opcionálisak, és alapértelmezés szerint a leggyakoribb beállítások.
 

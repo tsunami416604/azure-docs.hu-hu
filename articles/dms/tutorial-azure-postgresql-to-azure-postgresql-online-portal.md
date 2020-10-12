@@ -13,10 +13,10 @@ ms.custom: seo-lt-2019
 ms.topic: tutorial
 ms.date: 07/21/2020
 ms.openlocfilehash: 713b1698bff703507f46e1a8f76c6be385f41ec5
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91282460"
 ---
 # <a name="tutorial-migrate-azure-db-for-postgresql---single-server-to-azure-db-for-postgresql---single-server-or-hyperscale-citus-online-using-dms-via-the-azure-portal"></a>Oktatóanyag: az Azure DB for PostgreSQL átmigrálása – egyetlen kiszolgálóról Azure-ADATBÁZISra PostgreSQL-hez – egyetlen kiszolgáló vagy nagy kapacitású (Citus) online a DMS használatával a Azure Portal
@@ -99,7 +99,7 @@ Ahhoz, hogy az összes adatbázis-objektumot táblasémaként, indexekként és 
     psql -h hostname -U db_username -d db_name < your_schema.sql
     ```
 
-    Példa:
+    Például:
 
     ```
     psql -h mypgserver-source.postgres.database.azure.com  -U pguser@mypgserver-source -d dvdrental citus < dvdrentalSchema.sql
@@ -286,7 +286,7 @@ Az első teljes betöltés elkészültével az adatbázisok **Átállásra kész
 
 3. Amikor az adatbázis-áttelepítési **állapot megjelenik,** az alkalmazásokat a Azure Database for PostgreSQL új célként megadott példányához kell kötni.
 
-## <a name="next-steps"></a>Következő lépések
+## <a name="next-steps"></a>További lépések
 
 * Az Azure Database for PostgreSQL-be történő online migrálás végrehajtásakor felmerülő ismert hibákhoz és korlátozásokhoz kapcsolódó információk: [Az Azure Database for PostgreSQL online migrálásával kapcsolatos ismert hibák és kerülő megoldások](known-issues-azure-postgresql-online.md).
 * Az Azure Database Migration Service szolgáltatással kapcsolatos tudnivalók: [Mi az Azure Database Migration Service?](https://docs.microsoft.com/azure/dms/dms-overview).

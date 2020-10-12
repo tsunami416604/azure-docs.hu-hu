@@ -9,10 +9,10 @@ ms.author: owend
 ms.reviewer: minewiskan
 ms.custom: references_regions
 ms.openlocfilehash: 10e091ed58146d992d7b9c1f65b8b64f881a41b9
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91400281"
 ---
 # <a name="connecting-to-servers"></a>Kapcsolódás kiszolgálókhoz
@@ -96,7 +96,7 @@ Cannot initialize the data source object of OLE DB provider "MSOLAP" for linked 
 
 
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 [Az Excelben való kapcsolat](analysis-services-connect-excel.md)    
 [Kapcsolat Power BI](analysis-services-connect-pbi.md)   

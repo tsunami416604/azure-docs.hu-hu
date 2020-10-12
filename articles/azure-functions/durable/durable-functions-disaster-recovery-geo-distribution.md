@@ -6,10 +6,10 @@ ms.topic: conceptual
 ms.date: 08/27/2020
 ms.author: azfuncdf
 ms.openlocfilehash: 01c400f51cce85ef39e9d39bcad1221253c6942d
-ms.sourcegitcommit: 656c0c38cf550327a9ee10cc936029378bc7b5a2
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/28/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "89071210"
 ---
 # <a name="disaster-recovery-and-geo-distribution-in-azure-durable-functions"></a>Vész-helyreállítás és geo-eloszlás az Azure-ban Durable Functions
@@ -20,10 +20,10 @@ A Durable Functionsban az összes állapot alapértelmezés szerint az Azure Sto
 
 Az Összehangolók és az entitások a HTTP-n [keresztül, vagy](durable-functions-types-features-overview.md#client-functions) a más támogatott Azure functions trigger-típusok egyikével aktiválva lehetnek. A [beépített http API](durable-functions-http-features.md#built-in-http-apis)-k használatával is elindíthatók. Az egyszerűség kedvéért ez a cikk az Azure Storage-t és a HTTP-alapú függvény-eseményindítókat érintő forgatókönyvekre összpontosít, valamint a rendelkezésre állás növelését és a vész-helyreállítási tevékenységek során a leállás minimalizálását szolgáló lehetőségeket. Más eseményindító-típusok, például Service Bus vagy Cosmos DB eseményindítók nem lesznek explicit módon lefedettek.
 
-Az alábbi forgatókönyvek az aktív-passzív konfigurációkon alapulnak, mivel ezeket az Azure Storage-használat vezérli. Ez a minta egy biztonsági mentési (passzív) függvény alkalmazásának egy másik régióba való telepítését jelenti. A Traffic Manager figyeli az elsődleges (aktív) function alkalmazást a HTTP rendelkezésre állásához. Ha az elsődleges művelet meghiúsul, a rendszer átadja a feladatokat a Backup Function alkalmazásnak. További információ: az [Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/) [elsődleges forgalmának útválasztási módszere.](../../traffic-manager/traffic-manager-routing-methods.md#priority-traffic-routing-method)
+A következő forgatókönyvek Active-Passive konfigurációkon alapulnak, mivel ezeket az Azure Storage-használat vezérli. Ez a minta egy biztonsági mentési (passzív) függvény alkalmazásának egy másik régióba való telepítését jelenti. A Traffic Manager figyeli az elsődleges (aktív) function alkalmazást a HTTP rendelkezésre állásához. Ha az elsődleges művelet meghiúsul, a rendszer átadja a feladatokat a Backup Function alkalmazásnak. További információ: [Azure Traffic Manager](https://azure.microsoft.com/services/traffic-manager/) [priority Traffic-Routing metódusa.](../../traffic-manager/traffic-manager-routing-methods.md#priority-traffic-routing-method)
 
 > [!NOTE]
-> - A javasolt aktív-passzív konfiguráció biztosítja, hogy az ügyfél mindig képes legyen új, HTTP-n keresztül kiváltani a folyamatokat. Azonban annak következményeként, hogy két Function-alkalmazás ugyanazt a feladatot osztja meg a tárolóban, a rendszer néhány háttérbeli tárolási tranzakciót továbbít egymás között. Ez a konfiguráció ezért a másodlagos Function alkalmazáshoz tartozó további kimenő költségekkel jár.
+> - A javasolt Active-Passive konfiguráció gondoskodik arról, hogy az ügyfél mindig képes legyen új, HTTP-n keresztül kiváltani a folyamatokat. Azonban annak következményeként, hogy két Function-alkalmazás ugyanazt a feladatot osztja meg a tárolóban, a rendszer néhány háttérbeli tárolási tranzakciót továbbít egymás között. Ez a konfiguráció ezért a másodlagos Function alkalmazáshoz tartozó további kimenő költségekkel jár.
 > - Az alapul szolgáló Storage-fiók és a Task hub az elsődleges régióban jön létre, és mindkét Function-alkalmazásban meg van osztva.
 > - A redundánsan telepített functions-alkalmazásoknak ugyanazokat a függvény-hozzáférési kulcsokat kell megosztaniuk, ha HTTP-n keresztül aktiválják őket. A functions futtatókörnyezet olyan [felügyeleti API](https://github.com/Azure/azure-functions-host/wiki/Key-management-API) -t tesz elérhetővé, amely lehetővé teszi a felhasználóknak a funkcióbillentyűk programozott hozzáadását, törlését és frissítését. A kulcskezelő [Azure Resource Manager API](https://www.markheath.net/post/managing-azure-functions-keys-2)-k használatával is lehetséges.
 

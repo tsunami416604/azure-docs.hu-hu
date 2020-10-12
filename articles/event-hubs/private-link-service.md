@@ -4,10 +4,10 @@ description: Ismerje meg, hogyan integrálható az Azure Event Hubs az Azure Pri
 ms.date: 08/22/2020
 ms.topic: article
 ms.openlocfilehash: 59167635cfc0d8c1123a47410c87d6b9151f6f62
-ms.sourcegitcommit: 32c521a2ef396d121e71ba682e098092ac673b30
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/25/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91334242"
 ---
 # <a name="allow-access-to-azure-event-hubs-namespaces-via-private-endpoints"></a>Azure Event Hubs-névterek hozzáférésének engedélyezése privát végpontokon keresztül 
@@ -64,7 +64,7 @@ Ha már rendelkezik Event Hubs névtérrel, a következő lépések végrehajtá
 1. Válassza ki a **privát Endpoint Connections** fület az oldal tetején. 
 1. A lap tetején kattintson a **+ privát végpont** gombra.
 
-    :::image type="content" source="./media/private-link-service/private-link-service-3.png" alt-text="Hálózatkezelés lap – magánhálózati végponti kapcsolatok lap – privát végponti hivatkozás hozzáadása":::
+    :::image type="content" source="./media/private-link-service/private-link-service-3.png" alt-text="Hálózatok lap – kiválasztott hálózatok lehetőség":::
 7. Az **alapvető beállítások** lapon kövesse az alábbi lépéseket: 
     1. Válassza ki azt az **Azure-előfizetést** , amelyben létre szeretné hozni a privát végpontot. 
     2. Válassza ki a privát végpont erőforráshoz tartozó **erőforráscsoportot** .
@@ -201,9 +201,9 @@ Privát végpont létrehozásakor jóvá kell hagyni a kapcsolódást. Ha az er�
 
 Négy kiépítési állapot létezik:
 
-| Szolgáltatási művelet | A szolgáltatás fogyasztói magánhálózati végpontjának állapota | Description |
+| Szolgáltatási művelet | A szolgáltatás fogyasztói magánhálózati végpontjának állapota | Leírás |
 |--|--|--|
-| Nincsenek | Függőben | A kapcsolat manuálisan lett létrehozva, és jóváhagyásra vár a Private link erőforrás-tulajdonostól. |
+| Nincs | Függőben | A kapcsolat manuálisan lett létrehozva, és jóváhagyásra vár a Private link erőforrás-tulajdonostól. |
 | Jóváhagyás | Approved | A kapcsolódás automatikusan vagy manuálisan lett jóváhagyva, és készen áll a használatra. |
 | Elutasítás | Elutasítva | A magánhálózati kapcsolat erőforrásának tulajdonosa elutasította a kapcsolatot. |
 | Eltávolítás | Leválasztott | A kapcsolatot a privát kapcsolat erőforrás-tulajdonosa eltávolította, a magánhálózati végpont informatív lesz, és törölni kell a tisztításhoz. |

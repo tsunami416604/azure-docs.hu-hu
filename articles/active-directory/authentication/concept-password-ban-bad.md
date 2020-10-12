@@ -12,10 +12,10 @@ manager: daveba
 ms.reviewer: rogoya
 ms.collection: M365-identity-device-management
 ms.openlocfilehash: 68419c33286457a770a9988f1f00cc0b5e1f91bc
-ms.sourcegitcommit: 3bf69c5a5be48c2c7a979373895b4fae3f746757
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88235298"
 ---
 # <a name="eliminate-bad-passwords-using-azure-active-directory-password-protection"></a>Helytelen jelszavak eltávolítása Azure Active Directory jelszavas védelem használatával
@@ -222,7 +222,7 @@ Amikor egy felhasználó megpróbál visszaállítani egy jelszót a betiltott v
 
 További licencelési információk, beleértve a költségeket is, a [Azure Active Directory díjszabási oldalon](https://azure.microsoft.com/pricing/details/active-directory/)találhatók.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 Az egyéni tiltott jelszavak listájának használatának megkezdéséhez kövesse az alábbi oktatóanyagot:
 

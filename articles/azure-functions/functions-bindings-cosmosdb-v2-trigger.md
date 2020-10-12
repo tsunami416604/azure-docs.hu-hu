@@ -7,10 +7,10 @@ ms.date: 02/24/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
 ms.openlocfilehash: 838d6244127bc1b3609ab5e925e54dbab7fe3a2d
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88212689"
 ---
 # <a name="azure-cosmos-db-trigger-for-azure-functions-2x-and-higher"></a>Azure Cosmos DB trigger Azure Functions 2. x és újabb verziókhoz
@@ -217,11 +217,11 @@ A [Java functions futtatókörnyezet könyvtárában](/java/api/overview/azure/f
 
 Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított kötési konfigurációs tulajdonságokat ismerteti `CosmosDBTrigger` .
 
-|function.jsa tulajdonságon | Attribútum tulajdonsága |Description|
+|function.jsa tulajdonságon | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
-|**típusa** | n.a. | Értékre kell állítani `cosmosDBTrigger` . |
-|**irányba** | n.a. | Értékre kell állítani `in` . Ez a paraméter automatikusan be van állítva, amikor létrehozza az triggert a Azure Portalban. |
-|**név** | n.a. | A módosítást tartalmazó dokumentumok listáját jelölő függvény kódjában használt változó neve. |
+|**típusa** | n/a | Értékre kell állítani `cosmosDBTrigger` . |
+|**irányba** | n/a | Értékre kell állítani `in` . Ez a paraméter automatikusan be van állítva, amikor létrehozza az triggert a Azure Portalban. |
+|**név** | n/a | A módosítást tartalmazó dokumentumok listáját jelölő függvény kódjában használt változó neve. |
 |**connectionStringSetting**|**ConnectionStringSetting** | A figyelt Azure Cosmos DB-fiókhoz való kapcsolódáshoz használt kapcsolati sztringet tartalmazó Alkalmazásbeállítás neve. |
 |**databaseName**|**DatabaseName**  | Annak a Azure Cosmos DB-adatbázisnak a neve, amelyen a megfigyelt gyűjtemény szerepel. |
 |**collectionName** |**CollectionName** | A figyelni kívánt gyűjtemény neve. |

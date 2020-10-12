@@ -7,10 +7,10 @@ ms.date: 02/24/2020
 ms.author: cshoe
 ms.custom: devx-track-csharp, devx-track-python
 ms.openlocfilehash: 6a75b0c5b30f60afe51eebc395d21b7c05e8af7f
-ms.sourcegitcommit: 4913da04fd0f3cf7710ec08d0c1867b62c2effe7
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 08/14/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "88212758"
 ---
 # <a name="azure-cosmos-db-output-binding-for-azure-functions-2x-and-higher"></a>Azure Cosmos DB kimeneti kötés Azure Functions 2. x és újabb verziókhoz
@@ -564,11 +564,11 @@ A `CosmosDBOutput` jegyzet elérhető az adatCosmos DBba való íráshoz. A jegy
 
 Az alábbi táblázat a fájl és attribútum *function.jsjában* beállított kötési konfigurációs tulajdonságokat ismerteti `CosmosDB` .
 
-|function.jsa tulajdonságon | Attribútum tulajdonsága |Description|
+|function.jsa tulajdonságon | Attribútum tulajdonsága |Leírás|
 |---------|---------|----------------------|
-|**típusa**     | n.a. | Értékre kell állítani `cosmosDB` .        |
-|**irányba**     | n.a. | Értékre kell állítani `out` .         |
-|**név**     | n.a. | A függvényben szereplő dokumentumot jelképező kötési paraméter neve.  |
+|**típusa**     | n/a | Értékre kell állítani `cosmosDB` .        |
+|**irányba**     | n/a | Értékre kell állítani `out` .         |
+|**név**     | n/a | A függvényben szereplő dokumentumot jelképező kötési paraméter neve.  |
 |**databaseName** | **DatabaseName**|A gyűjteményt tartalmazó adatbázis, amelyben a dokumentumot létrehozták.     |
 |**collectionName** |**CollectionName**  | Annak a gyűjteménynek a neve, amelyben a dokumentumot létrehozták. |
 |**Createifnotexists metódust**  |**Createifnotexists metódust**    | Logikai érték, amely azt jelzi, hogy a gyűjtemény létrejött-e, ha nem létezik. Az alapértelmezett érték a *false (hamis* ), mert az új gyűjtemények fenntartott átviteli sebességgel jönnek létre, ami a költségeket is érinti. További tájékoztatás a [díjszabási lapon](https://azure.microsoft.com/pricing/details/cosmos-db/) olvasható.  |
@@ -589,7 +589,7 @@ Alapértelmezés szerint, amikor a függvény kimeneti paraméterére ír, létr
 
 ## <a name="exceptions-and-return-codes"></a>Kivételek és visszatérési kódok
 
-| Kötés | Hivatkozás |
+| Kötés | Referencia |
 |---|---|
 | CosmosDB | [CosmosDB-hibakódok](/rest/api/cosmos-db/http-status-codes-for-cosmosdb) |
 
@@ -614,11 +614,11 @@ Ez a szakasz a kötéshez elérhető globális konfigurációs beállításokat 
 }
 ```
 
-|Tulajdonság  |Alapértelmezett | Description |
+|Tulajdonság  |Alapértelmezett | Leírás |
 |---------|---------|---------|
 |GatewayMode|Átjáró|A függvény által a Azure Cosmos DB szolgáltatáshoz való csatlakozáskor használt kapcsolati mód. A lehetőségek a következők `Direct` , `Gateway`|
 |Protokoll|Https|A függvény által a Azure Cosmos DB szolgáltatáshoz való kapcsolódáskor használt kapcsolati protokoll.  A [két mód magyarázata itt](../cosmos-db/performance-tips.md#networking) olvasható|
-|leasePrefix|n.a.|Az alkalmazás összes függvényében használandó bérlet-előtag.|
+|leasePrefix|n/a|Az alkalmazás összes függvényében használandó bérlet-előtag.|
 
 ## <a name="next-steps"></a>Következő lépések
 

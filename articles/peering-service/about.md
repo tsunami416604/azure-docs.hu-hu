@@ -11,10 +11,10 @@ ms.workload: Infrastructure-services
 ms.date: 05/18/2020
 ms.author: derekol
 ms.openlocfilehash: 03ece391b6f33b47f34705cec1c5907602ac7b23
-ms.sourcegitcommit: 4313e0d13714559d67d51770b2b9b92e4b0cc629
+ms.sourcegitcommit: 829d951d5c90442a38012daaf77e86046018e5b9
 ms.translationtype: MT
 ms.contentlocale: hu-HU
-ms.lasthandoff: 09/27/2020
+ms.lasthandoff: 10/09/2020
 ms.locfileid: "91400179"
 ---
 # <a name="azure-peering-service-overview"></a>Az Azure-partneri szolgáltatás áttekintése
@@ -126,7 +126,7 @@ A Microsoft garantálja, hogy a forgalmat az előnyben részesített útvonalako
 
 A BGP-útvonal rendellenességeit a Azure Portal, ha van ilyen.
 
-## <a name="next-steps"></a>További lépések
+## <a name="next-steps"></a>Következő lépések
 
 - A társ-szolgáltatási kapcsolatokról további információt a következő témakörben talál: [társ-szolgáltatási kapcsolatok](connection.md).
 - A társ-szolgáltatási kapcsolatok telemetria kapcsolatos további tudnivalókért lásd: társítási [szolgáltatás kapcsolódási telemetria](connection-telemetry.md).
